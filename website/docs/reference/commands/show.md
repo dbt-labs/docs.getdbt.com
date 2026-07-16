@@ -5,21 +5,38 @@ id: "show"
 ---
 
 Use `dbt show` to:
-- Compile the dbt-SQL definition of a `model`, `test`, `analysis`, or an arbitrary dbt-SQL query passed `--inline`
+- Compile the dbt-SQL definition of a single `model`, `test`, `analysis`, or an arbitrary dbt-SQL query passed `--inline`
   - `dbt show` does not support [Python (dbt-py)](/docs/build/python-models) models.
+  - Only selecting a single node is supported. [Selector methods](/reference/node-selection/methods), [graph operators](/reference/node-selection/graph-operators), and other methods that select multiple nodes will not be utilized.
 - Run that query against the data warehouse
 - Preview the results in the terminal
 
-By default, `dbt show` will display the first 5 rows from the query result. This can be customized by passing the flag `--limit n`, where `n` is the number of rows to display.
+## How it works
 
-The results of the preview query are not materialized in the data warehouse, or stored in any dbt file. They are only included in dbt's logs and displayed in the terminal. Note also that, if previewing a model, dbt will always compile and run the compiled query from source. It will not select from the already-materialized database relation, even if you've just run the model. (We may support that in the future; if you're interested, upvote or comment on [dbt-core#7391](https://github.com/dbt-labs/dbt-core/issues/7391).)
+By default, `dbt show` will display the first 5 rows from the query result. This can be customized by passing the `limit` or the `inline` flags , where `n` is the number of rows to display.
 
-Example:
+If previewing a model, dbt will always compile and run the compiled query from source. It will not select from the already-materialized database relation, even if you've just run the model. (We may support that in the future; if you're interested, upvote or comment on [dbt-core#7391](https://github.com/dbt-labs/dbt-core/issues/7391).)
+
+#### `limit` flag
+- The `--limit` flag modifies the underlying SQL and not just the number of rows displayed. By using the `--limit n` flag, it means `n` is the number of rows to display and retrieved from the data warehouse. 
+- This means dbt wraps your model's query in a subquery or CTE and applies a SQL `limit n` clause so that your data warehouse only processes and returns that number of rows, making it significantly faster for large datasets.
+
+#### `inline` flag
+- The results of the preview query are only included in dbt's logs and displayed in the terminal and aren't materialized in the data warehouse or stored in any dbt file, except if you use `dbt show --inline`.
+- The `--inline` flags enables you to run ad-hoc SQL, which means dbt can't ensure the query doesn't modify the data warehouse. To ensure no changes are made, use a profile or role with read-only permissions, which are managed directly in your data warehouse. For example: `dbt show --inline "select * from my_table" --profile my-read-only-profile`.
+
+### `--output json` flag
+- The `--output json` flag returns `dbt show` results in JSON format instead of the default human-readable output, which is helpful for scripting and automation.
+- If you want the full terminal output (including logs) to be machine-readable JSON, you can also set `--log-format json`.
+
+## Example
 
 ```
 dbt show --select "model_name.sql"
 ```
+
 or
+
 ```
 dbt show --inline "select * from {{ ref('model_name') }}"
 ```
@@ -70,4 +87,28 @@ $ dbt show -s "unique_my_model_with_duplicates_id"
 | ------------ | --------- |
 |            1 |         2 |
 
+```
+```sh
+dbt show --inline "select 1" --output json --log-format json
+```
+Gives you a result like this:
+
+```json
+{
+  "data": {
+    "is_inline": true,
+    "node_name": "inline_query",
+    "output_format": "json",
+    "preview": "[{\"ID\": 1}]",
+    "quiet": false,
+    "unique_id": "sql_operation.jaffle_shop.inline_query"
+  },
+  "info": {
+    "code": "Q041",
+    "level": "info",
+    "msg": "{\n  \"show\": [\n    {\n      \"ID\": 1\n    }\n  ]\n}\n",
+    "name": "ShowNode",
+    "thread": "MainThread"
+  }
+}
 ```

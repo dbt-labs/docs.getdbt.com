@@ -5,9 +5,13 @@ hoverSnippet: Learn how to get started with the dbt Semantic Layer
 pagination_next: "best-practices/how-we-build-our-metrics/semantic-layer-4-build-metrics"
 ---
 
+import NewSLYAMLCallout from '/snippets/_new-sl-yaml-callout.md';
+
+<NewSLYAMLCallout />
+
 ## How to build a semantic model
 
-A semantic model is the Semantic Layer equivalent to a logical layer model (what historically has just been called a 'model' in dbt land). Just as configurations for models are defined on the `models:` YAML key, configurations for semantic models are housed under `semantic models:`. A key difference is that while a logical model consists of configuration and SQL or Python code, a **semantic model is defined purely via YAML**. Rather than encoding a specific dataset, a **semantic model describes relationships and expressions** that let your end users select and refine their own datasets dynamically and reliably.
+A semantic model is the <Constant name="semantic_layer" /> equivalent to a logical layer model (what historically has just been called a 'model' in dbt land). Just as configurations for models are defined on the `models:` YAML key, configurations for semantic models are housed under `semantic models:`. A key difference is that while a logical model consists of configuration and SQL or Python code, a **semantic model is defined purely via YAML**. Rather than encoding a specific dataset, a **semantic model describes relationships and expressions** that let your end users select and refine their own datasets dynamically and reliably.
 
 - ⚙️ Semantic models are **comprised of three components**:
   - 🫂 **entities**: these describe the **relationships** between various semantic models (think ids)
@@ -33,7 +37,7 @@ semantic_models:
     measures: ... # we'll define these later
 ```
 
-- Next we'll point to the corresponding logical model by supplying a [`ref`](https://docs.getdbt.com/reference/dbt-jinja-functions/ref) in the `model:` property, and a `description` for documentation.
+- Next we'll point to the corresponding logical model by supplying a [`ref`](/reference/dbt-jinja-functions/ref) in the `model:` property, and a `description` for documentation.
 
 <File name="models/marts/orders.yml" />
 
@@ -55,7 +59,7 @@ semantic_models:
 - ⛓️ Unlike many other semantic layers, in MetricFlow **we do not need to describe joins explicitly**, instead the **relationships are implicitly described by entities**.
 - 1️⃣ Each semantic model should have **one primary entity** defined for itself, and **any number of foreign entities** for other semantic models it may join to.
 - 🫂 Entities require a **name and type**
-  - 🔑 Types available are **primary**, **foreign**, **unique** or **natural** — we'll be focused on the first two for now, but you can [read more about unique and natural keys](https://docs.getdbt.com/docs/build/entities#entity-types).
+  - 🔑 Types available are **primary**, **foreign**, **unique** or **natural** — we'll be focused on the first two for now, but you can [read more about unique and natural keys](/docs/build/entities#entity-types).
 
 ### Entities in action
 
@@ -115,7 +119,7 @@ semantic_models:
 - 🧮 Dimensions are the columns that we want to **filter and group by**, **the adjectives of our project**. They come in three types:
   - **categorical**
   - **time**
-  - slowly changing dimensions — [these are covered in the documentation](https://docs.getdbt.com/docs/build/dimensions#scd-type-ii), and a little more complex. To focus on building your mental models of MetricFlow's fundamentals, we won't be using SCDs in this guide.
+  - slowly changing dimensions — [these are covered in the documentation](/docs/build/dimensions#scd-type-ii), and a little more complex. To focus on building your mental models of MetricFlow's fundamentals, we won't be using SCDs in this guide.
 - ➕ We're **not limited to existing columns**, we can use the `expr` property to add simple computations in our dimensions.
 - 📛 Categorical dimensions are the simplest, they simply require a `name` and `type` (type being categorical). **If the `name` property matches the name of the dimension column**, that's it, you're done. If you want or need to use a `name` other than the column name, or do some filtering or computation, **you can supply an optional `expr` property** to evaluate for the dimension.
 
@@ -214,7 +218,7 @@ from source
 - ➕ Here `order_total` and `tax paid` are the **columns we want as measures**.
 - 📝 We can describe them via the code below, specifying a **name, description, aggregation, and expression**.
 - 👍 As before MetricFlow will default to the **name being the name of a column when no expression is supplied**.
-- 🧮 [Many different aggregations](https://docs.getdbt.com/docs/build/measures#aggregation) are available to us. Here we just want sums.
+- 🧮 [Many different aggregations](/docs/build/measures#aggregation) are available to us. Here we just want sums.
 
 <File name="models/marts/orders.yml" />
 
@@ -351,7 +355,7 @@ As you can see, the content of the semantic model is identical in both approache
    - Co-located approach: Uses the same name as the corresponding mart (`orders.yml`)
    - Parallel sub-folder approach: Prefixes the file with `sem_` (`sem_orders.yml`)
 
-Choose the approach that best fits your project structure and team preferences. The co-located approach is often simpler for new projects, while the parallel sub-folder approach can be clearer for migrating large existing projects to the Semantic Layer.
+Choose the approach that best fits your project structure and team preferences. The co-located approach is often simpler for new projects, while the parallel sub-folder approach can be clearer for migrating large existing projects to the <Constant name="semantic_layer" />.
 
 ## Next steps
 

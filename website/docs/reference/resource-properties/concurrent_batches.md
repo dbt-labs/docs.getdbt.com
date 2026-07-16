@@ -8,7 +8,7 @@ description: "Learn about concurrent_batches in dbt."
 <VersionCallout version="1.9" />
 
 <Tabs>
-<TabItem value="Project file">
+<TabItem value="Project YAML file">
 
 
 <File name='dbt_project.yml'>
@@ -23,7 +23,7 @@ models:
 </TabItem>
 
 
-<TabItem value="Config block">
+<TabItem value="SQL file config">
 
 <File name='models/my_model.sql'>
 

@@ -8,15 +8,15 @@ displayed_sidebar: "docs"
 ### Resources
 
 - [Changelog](https://github.com/dbt-labs/dbt-core/blob/1.3.latest/CHANGELOG.md)
-- [dbt Core CLI Installation guide](/docs/core/installation-overview)
-- [Cloud upgrade guide](/docs/dbt-versions/upgrade-dbt-version-in-cloud)
+- [<Constant name="core" /> CLI Installation guide](/docs/local/install-dbt)
+- [Cloud upgrade guide](/docs/dbt-versions/upgrade-dbt-platform-version)
 
 ## What to know before upgrading
 
 We are committed to providing backward compatibility for all versions 1.x. If you encounter an error upon upgrading, please let us know by [opening an issue](https://github.com/dbt-labs/dbt-core/issues/new).
 
-There are three changes in dbt Core v1.3 that may require action from some users:
-1. If you have a `profiles.yml` file located in the root directory where you run dbt, dbt will start preferring that profiles file over the default location on your machine. [You can read more details here](/docs/core/connect-data-platform/connection-profiles#advanced-customizing-a-profile-directory).
+There are three changes in <Constant name="core" /> v1.3 that may require action from some users:
+1. If you have a `profiles.yml` file located in the root directory where you run dbt, dbt will start preferring that profiles file over the default location on your machine. [You can read more details here](/docs/local/profiles.yml#advanced-customizing-a-profile-directory).
 2. If you already have `.py` files defined in the `model-paths` of your dbt project, dbt will start trying to read them as Python models. You can use [the new `.dbtignore` file](/reference/dbtignore) to tell dbt to ignore those files.
 3. If you have custom code accessing the `raw_sql` property of models (with the [model](/reference/dbt-jinja-functions/model) or [graph](/reference/dbt-jinja-functions/graph) objects), it has been renamed to `raw_code`. This is a change to the manifest contract, described in more detail below.
 
@@ -27,7 +27,7 @@ The names of metric properties have changed, with backward compatibility. Those 
 - Renamed `sql` to `expression`
 - Renamed `expression` calculation method metrics to `derived` calculation method metrics
 
-We plan to keep backward compatibility for a full minor version. Defining metrics with the old names will raise an error in dbt Core v1.4.
+We plan to keep backward compatibility for a full minor version. Defining metrics with the old names will raise an error in <Constant name="core" /> v1.4.
 
 ### For consumers of dbt artifacts (metadata)
 
@@ -49,7 +49,7 @@ GitHub discussion with details: [dbt-labs/dbt-core#6011](https://github.com/dbt-
 - Plus, a few related updates to **[exposure properties](/reference/exposure-properties)**: `config`, `label`, and `name` validation.
 
 - **[Custom `node_color`](/reference/resource-configs/docs.md)** in `dbt-docs`. For the first time, you can control the colors displayed in dbt's DAG. Want bronze, silver, and gold layers? It's at your fingertips.
-- **[`Profiles.yml`](/docs/core/connect-data-platform/connection-profiles#advanced-customizing-a-profile-directory)** search order now looks in the current working directory before `~/.dbt`.
+- **[`Profiles.yml`](/docs/local/profiles.yml#advanced-customizing-a-profile-directory)** search order now looks in the current working directory before `~/.dbt`.
 
 
 ### Quick hits

@@ -4,9 +4,7 @@ id: "command-line-options"
 sidebar: "Command line options"
 ---
 
-For consistency, command-line interface (CLI) flags should come right after the `dbt` prefix and its subcommands. This includes "global" flags (supported for all commands). For a list of all dbt CLI flags you can set, refer to [Available flags](/reference/global-configs/about-global-configs#available-flags). When set, CLI flags override [environment variables](/reference/global-configs/environment-variable-configs) and [project flags](/reference/global-configs/project-flags).
-
-Environment variables contain a `DBT_` prefix. 
+For consistency, command-line interface (CLI) flags should come right after the `dbt` prefix and its subcommands. This includes "global" flags (supported for all commands). For the full list of global CLI options for <Constant name="core" /> or the <Constant name="fusion_engine" /> (depending on your [selected docs version](/docs/dbt-versions)), refer to [Available flags](/reference/global-configs/about-global-configs#available-flags). When set, CLI flags override [environment variables](/reference/global-configs/environment-variable-configs) and [project flags](/reference/global-configs/project-flags).
 
 For example, instead of using:
 
@@ -98,3 +96,9 @@ dbt run --no-version-check
 </TabItem>
 
 </Tabs>
+
+## Config precedence
+
+import SettingFlags from '/snippets/_setting-flags.md';
+
+<SettingFlags />

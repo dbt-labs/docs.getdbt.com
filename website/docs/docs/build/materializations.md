@@ -16,6 +16,15 @@ pagination_next: "docs/build/incremental-models"
 
 You can also configure [custom materializations](/guides/create-new-materializations?step=1) in dbt. Custom materializations are a powerful way to extend dbt's functionality to meet your specific needs. 
 
+For a detailed guide on materializations, refer to [Materializations best practices](/best-practices/materializations/1-guide-overview). For information about data streaming, refer to [How to handle real-time data](/best-practices/how-we-handle-real-time-data/1-intro).
+
+
+import CourseCallout from '/snippets/_materialization-video-callout.md';
+
+<CourseCallout resource="Materializations" 
+url="https://learn.getdbt.com/courses/materializations-fundamentals" 
+course="Materializations fundamentals" 
+/>
 
 ## Configuring materializations
 By default, dbt models are materialized as "views". Models can be configured with a different materialization by supplying the [`materialized` configuration](/reference/resource-configs/materialized) parameter as shown in the following tabs.
@@ -57,7 +66,7 @@ models:
 
 <TabItem value="Model file">
 
-Alternatively, materializations can be configured directly inside of the model sql files. This can be useful if you are also setting [Performance Optimization] configs for specific models (for example, [Redshift specific configurations](/reference/resource-configs/redshift-configs) or [BigQuery specific configurations](/reference/resource-configs/bigquery-configs)).
+Alternatively, materializations can be configured directly inside of the model SQL files. This can be useful if you are also setting [Performance Optimization] configs for specific models (for example, [Redshift specific configurations](/reference/resource-configs/redshift-configs) or [BigQuery specific configurations](/reference/resource-configs/bigquery-configs)).
 
 <File name='models/events/stg_event_log.sql'>
 
@@ -80,7 +89,6 @@ Materializations can also be configured in the model's `properties.yml` file.  T
 <File name='models/properties.yml'>
 
 ```yaml
-version: 2
 
 models:
   - name: events
@@ -99,64 +107,64 @@ models:
 
 ### View
 When using the `view` materialization, your model is rebuilt as a view on each run, via a `create view as` statement.
-* **Pros:** No additional data is stored, views on top of source data will always have the latest records in them.
-* **Cons:** Views that perform a significant transformation, or are stacked on top of other views, are slow to query.
-* **Advice:**
-    * Generally start with views for your models, and only change to another materialization when you notice performance problems.
-    * Views are best suited for models that do not do significant transformation, e.g. renaming, or recasting columns.
+- **Pros:** No additional data is stored, views on top of source data will always have the latest records in them.
+- **Cons:** Views that perform a significant transformation, or are stacked on top of other views, are slow to query.
+- **Advice:**
+    - Generally start with views for your models, and only change to another materialization when you notice performance problems.
+    - Views are best suited for models that do not do significant transformation, for example, renaming, or recasting columns.
 
 ### Table
 When using the `table` materialization, your model is rebuilt as a <Term id="table" /> on each run, via a `create table as` statement.
-* **Pros:** Tables are fast to query
-* **Cons:**
-    * Tables can take a long time to rebuild, especially for complex transformations
-    * New records in underlying source data are not automatically added to the table
-* **Advice:**
-  * Use the table materialization for any models being queried by BI tools, to give your end user a faster experience
-  * Also use the table materialization for any slower transformations that are used by many downstream models
+- **Pros:** Tables are fast to query
+- **Cons:**
+    - Tables can take a long time to rebuild, especially for complex transformations
+    - New records in underlying source data are not automatically added to the table
+- **Advice:**
+  - Use the table materialization for any models being queried by BI tools, to give your end user a faster experience
+  - Also use the table materialization for any slower transformations that are used by many downstream models
 
 
 ### Incremental
 `incremental` models allow dbt to insert or update records into a table since the last time that model was run.
-* **Pros:** You can significantly reduce the build time by just transforming new records
-* **Cons:** Incremental models require extra configuration and are an advanced usage of dbt. Read more about using incremental models [here](/docs/build/incremental-models).
-* **Advice:**
-    * Incremental models are best for event-style data
-    * Use incremental models when your `dbt run`s are becoming too slow (i.e. don't start with incremental models)
+- **Pros:** You can significantly reduce the build time by just transforming new records
+- **Cons:** Incremental models require extra configuration and are an advanced usage of dbt. Read more about using incremental models [here](/docs/build/incremental-models).
+- **Advice:**
+    - Incremental models are best for event-style data
+    - Use incremental models when your `dbt run`s are becoming too slow (i.e. don't start with incremental models)
 
 ### Ephemeral
 `ephemeral` models are not directly built into the database. Instead, dbt will interpolate the code from an ephemeral model into its dependent models using a common table expression (<Term id="cte" />). You can control the identifier for this CTE using a [model alias](/docs/build/custom-aliases), but dbt will always prefix the model identifier with `__dbt__cte__`.
 
-* **Pros:**
-    * You can still write reusable logic
+- **Pros:**
+  - You can still write reusable logic
   - Ephemeral models can help keep your <Term id="data-warehouse" /> clean by reducing clutter (also consider splitting your models across multiple schemas by [using custom schemas](/docs/build/custom-schemas)).
-* **Cons:**
-    * You cannot select directly from this model.
-    * [Operations](/docs/build/hooks-operations#about-operations) (for example, macros called using [`dbt run-operation`](/reference/commands/run-operation) cannot `ref()` ephemeral nodes)
-    * Overuse of ephemeral materialization can also make queries harder to debug.
-    * Ephemeral materialization doesn't support [model contracts](/docs/collaborate/govern/model-contracts#where-are-contracts-supported).
-* **Advice:**  Use the ephemeral materialization for:
-    * very light-weight transformations that are early on in your DAG
-    * are only used in one or two downstream models, and
-    * do not need to be queried directly
+- **Cons:**
+    - You cannot select directly from this model.
+    - [Operations](/docs/build/hooks-operations#about-operations) (for example, macros called using [`dbt run-operation`](/reference/commands/run-operation) cannot `ref()` ephemeral nodes)
+    - Overuse of ephemeral materialization can also make queries harder to debug.
+    - Ephemeral materialization doesn't support [model contracts](/docs/mesh/govern/model-contracts#where-are-contracts-supported).
+- **Advice:**  Use the ephemeral materialization for:
+    - Very light-weight transformations that are early on in your DAG
+    - Are only used in one or two downstream models, and
+    - Don't need to be queried directly
 
 ### Materialized View
 
 The `materialized_view` materialization allows the creation and maintenance of materialized views in the target database.
 Materialized views are a combination of a view and a table, and serve use cases similar to incremental models.
 
-* **Pros:**
-  * Materialized views combine the query performance of a table with the data freshness of a view
-  * Materialized views operate much like incremental materializations, however they are usually
+- **Pros:**
+  - Materialized views combine the query performance of a table with the data freshness of a view
+  - Materialized views operate much like incremental materializations, however they are usually
 able to be refreshed without manual interference on a regular cadence (depending on the database), forgoing the regular dbt batch refresh
 required with incremental materializations
-  * `dbt run` on materialized views corresponds to a code deployment, just like views
+  - `dbt run` on materialized views corresponds to a code deployment, just like views
 * **Cons:**
-  * Due to the fact that materialized views are more complex database objects, database platforms tend to have
+  - Due to the fact that materialized views are more complex database objects, database platforms tend to have
 fewer configuration options available; see your database platform's docs for more details
-  * Materialized views may not be supported by every database platform
-* **Advice:**
-  * Consider materialized views for use cases where incremental models are sufficient, but you would like the data platform to manage the incremental logic and refresh.
+  - Materialized views may not be supported by every database platform
+- **Advice:**
+  - Consider materialized views for use cases where incremental models are sufficient, but you would like the data platform to manage the incremental logic and refresh.
 
 #### Configuration Change Monitoring
 
@@ -173,7 +181,7 @@ For example, a `dbt run` command is only needed if there is the potential for a 
 it's effectively a deploy action.
 By contrast, a `dbt run` command is needed for a table in the same scenarios *AND when the data in the table needs to be updated*.
 This also holds true for incremental and snapshot models, whose underlying relations are tables.
-In the table cases, the scheduling mechanism is either dbt Cloud or your local scheduler;
+In the table cases, the scheduling mechanism is either <Constant name="dbt" /> or your local scheduler;
 there is no built-in functionality to automatically refresh the data behind a table.
 However, most platforms (Postgres excluded) provide functionality to configure automatically refreshing a materialized view.
 Hence, materialized views work similarly to incremental models with the benefit of not needing to run dbt to refresh the data.
@@ -258,7 +266,4 @@ def model(dbt, session):
 </WHCode>
 
 **Note:** Incremental models are supported on BigQuery/Dataproc for the `merge` incremental strategy. The `insert_overwrite` strategy is not yet supported.
-
-<Snippet path="discourse-help-feed-header" />
-<DiscourseHelpFeed tags="materialization"/>
 

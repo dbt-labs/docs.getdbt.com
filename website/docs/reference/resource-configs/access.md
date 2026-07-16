@@ -3,47 +3,49 @@ resource_types: [models]
 datatype: access
 ---
 
+import MacroAccessRestrictions from '/snippets/_macro-access-restrictions.md';
+
 <File name='models/<schema>.yml'>
 
 ```yml
-version: 2
 
 models:
   - name: model_name
-    access: private | protected | public
+    config:
+      access: private | protected | public # changed to config in v1.10
 ```
 
 </File>
 
-You can apply access modifiers in config files, including the `dbt_project.yml`, or to models one-by-one in `properties.yml`. Applying access configs to a subfolder modifies the default for all models in that subfolder, so make sure you intend for this behavior. When setting individual model access, a group or subfolder might contain a variety of access levels, so when you designate a model with `access: public` make sure you intend for this behavior.
+You can apply `access` modifiers in config files, including the `dbt_project.yml`, or to models one-by-one in `properties.yml`. Applying `access` configs to a subfolder modifies the default for all models in that subfolder, so make sure you intend for this behavior. When setting individual model access, a group or subfolder might contain a variety of access levels, so when you designate a model with `access: public` make sure you intend for this behavior.
+
+Note that for backwards compatibility, `access` is supported as a top-level key, but without the capabilities of config inheritance.
 
 There are multiple approaches to configuring access:
 
-- In `properties.yml` using the older method: 
+- In `properties.yml` using the older method (dbt v 1.9 and older), top-level &mdash; directly under the model: 
 
   <File name='models/properties_my_public_model.yml'>
   
   ```yml
-  version: 2
   
   models:
     - name: my_public_model
-      access: public # Older method, still supported
+      access: public
       
   ```
   </File>
   
-- In `properties.yml` using the new method (for v1.7 or higher). Use either the older method or the new method, but not both for the same model:
+- In `properties.yml` using the latest method (for v1.10 or higher). Use either the older method or the latest method, but not both for the same model:
 
   <File name='models/properties_my_public_model.yml'>
   
   ```yml
-  version: 2
   
   models:
     - name: my_public_model
       config:
-        access: public # newly supported in v1.7
+        access: public
       
   ```
   </File>
@@ -98,11 +100,13 @@ dbt.exceptions.DbtReferenceError: Parsing Error
   which is not allowed because the referenced node is private to the finance group.
 ```
 
+<MacroAccessRestrictions />
+
 ## Default
 
 By default, all models are "protected." This means that other models in the same project can reference them.
 
 ## Related docs
 
-* [Model Access](/docs/collaborate/govern/model-access#groups)
+* [Model Access](/docs/mesh/govern/model-access#groups)
 * [Group configuration](/reference/resource-configs/group)

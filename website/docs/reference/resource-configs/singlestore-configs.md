@@ -4,7 +4,7 @@ id: "singlestore-configs"
 ---
 
 ## Incremental materialization strategies
-The [`incremental_strategy` config](/docs/build/incremental-models#about-incremental_strategy) controls how dbt builds incremental models. Currently, SingleStoreDB supports only the `delete+insert` configuration.
+The [`incremental_strategy` config](/docs/build/incremental-models#about-incremental_strategy) controls how dbt builds incremental models. Currently, SingleStoreDB supports `delete+insert`, `append`, and `microbatch` configurations.
 
 The `delete+insert` incremental strategy directs dbt to follow a two-step incremental approach. Initially, it identifies and removes the records flagged by the configured `is_incremental()` block. Subsequently, it re-inserts these records.
 
@@ -23,6 +23,51 @@ select ...
 ```
 
 </File>
+
+### Reference tables
+
+SingleStore supports **REFERENCE** tables (available starting from [dbt-singlestore 1.10.0] (https://pypi.org/project/dbt-singlestore/1.10.0/)), which are replicated across the cluster and are useful for small/dimension tables that are frequently joined.
+
+To create a **REFERENCE** table from a dbt model, set `reference=true` on a `table` materialization:
+
+```sql
+{{
+    config(
+        materialized='table',
+        reference=true,
+    )
+}}
+
+select ...
+```
+
+When `reference=true` (default `false`), the adapter generates `CREATE REFERENCE TABLE ...` rather than a regular `CREATE TABLE ...`
+
+### Rowstore reference tables
+
+If you want a rowstore reference table, set `storage_type='rowstore'`:
+
+```sql
+{{
+    config(
+        materialized='table',
+        reference=true,
+        storage_type='rowstore',
+    )
+}}
+
+select ...
+```
+
+This maps to `CREATE ROWSTORE REFERENCE TABLE ...`
+
+#### Restrictions / validation
+
+To match SingleStore semantics, dbt-singlestore enforces:
+
+- No `shard_key` with `reference=true` — reference tables don’t use sharding; compilation fails if both are set.
+
+- SingleStore doesn’t support temporary reference tables. dbt-singlestore fails compilation if `reference=true` would result in a temporary table being created (for example, when `temporary=true` is set, or when a materialization strategy uses temporary tables internally).
 
 ### Keys
 

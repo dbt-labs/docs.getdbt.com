@@ -9,7 +9,7 @@ pagination_next: "best-practices/how-we-build-our-metrics/semantic-layer-9-concl
 
 Now that we've set the stage, it's time to dig in to the fun and messy part: how do we refactor an existing rollup in dbt into semantic models and metrics?
 
-Let's look at the differences we can observe in how we might approach this with MetricFlow supercharging dbt versus how we work without a Semantic Layer. These differences can then inform our structure.
+Let's look at the differences we can observe in how we might approach this with MetricFlow supercharging dbt versus how we work without a <Constant name="semantic_layer" />. These differences can then inform our structure.
 
 - 🍊 In dbt, we tend to create **highly denormalized datasets** that bring **everything you want around a certain entity or process into a single table**.
 - 💜 The problem is, this **limits the dimensionality available to MetricFlow**. The more we pre-compute and 'freeze' into place, the less flexible our data is.
@@ -25,9 +25,9 @@ We recommend an incremental implementation process that looks something like thi
 2. 🔍 Examine all the **entities that are components** of this rollup (for instance, an `active_customers_per_week` rollup may include customers, shipping, and product data).
 3. 🛠️ **Build semantic models** for all the underlying component marts.
 4. 📏 **Build metrics** for the required aggregations in the rollup.
-5. 👯 Create a **clone of the output** on top of the Semantic Layer.
+5. 👯 Create a **clone of the output** on top of the <Constant name="semantic_layer" />.
 6. 💻 Audit to **ensure you get accurate outputs**.
-7. 👉 Identify **any other outputs** that point to the rollup and **move them to the Semantic Layer**.
+7. 👉 Identify **any other outputs** that point to the rollup and **move them to the <Constant name="semantic_layer" />**.
 8. ✌️ Put a **deprecation plan** in place for the now extraneous frozen rollup.
 
 You would then **continue this process** on other outputs and marts moving down a list of **priorities**. Each model as you go along will be faster and easier as you'll **reuse many of the same components** that will already have been semantically modeled.
@@ -42,8 +42,8 @@ So far we've been working in new pointing at a staging model to simplify things 
    - 📏 Does this semantic model **contain measures**?
    - 🕥 Does this semantic model have a **primary timestamp**?
    - 🫂 If a semantic model **has measures but no timestamp** (for example, supplies in the example project, which has static costs of supplies), you'll likely want to **sacrifice some normalization and join it on to another model** that has a primary timestamp to allow for metric aggregation.
-4. 🔄 If we _don't_ need any joins, we'll just go straight to the staging model for our semantic model's `ref`. Locations does have a `tax_rate` measure, but it also has an `ordered_at` timestamp, so we can go **straight to the staging model** here.
-5. 🥇 We specify our **primary entity** (based on `location_id`), dimensions (one categorical, `location_name`, and one **primary time dimension** `opened_at`), and lastly our measures, in this case just `average_tax_rate`.
+4. 🔄 If we _don't_ need any joins, we'll point our semantic model at the mart. Locations has a `tax_rate` measure and an `opened_date` time dimension, so we can reference the `locations` mart directly here.
+5. 🥇 We specify our **primary entity** (based on `location_id`), dimensions (one categorical, `location_name`, and one **primary time dimension** `opened_date`), and lastly our measures, in this case just `average_tax_rate`.
 
 <File name="models/marts/locations.yml" />
 
@@ -52,7 +52,9 @@ semantic_models:
   - name: locations
     description: |
       Location dimension table. The grain of the table is one row per location.
-    model: ref('stg_locations')
+    model: ref('locations')
+    defaults:
+      agg_time_dimension: opened_date
     entities:
       - name: location
         type: primary
@@ -60,7 +62,8 @@ semantic_models:
     dimensions:
       - name: location_name
         type: categorical
-      - name: date_trunc('day', opened_at)
+      - name: opened_date
+        expr: opened_date
         type: time
         type_params:
           time_granularity: day
@@ -68,7 +71,7 @@ semantic_models:
       - name: average_tax_rate
         description: Average tax rate.
         expr: tax_rate
-        agg: avg
+        agg: average
 ```
 
 ## Semantic and logical interaction
@@ -88,12 +91,6 @@ So to calculate, for instance, the cost of ingredients and supplies for a given 
 <File name="models/marts/order_items.sql" />
 
 ```sql
-{{
-   config(
-      materialized = 'table',
-   )
-}}
-
 with
 
 order_items as (
@@ -135,11 +132,15 @@ joined as (
 
    select
       order_items.*,
+
+      orders.ordered_at,
+
+      products.product_name,
       products.product_price,
-      order_supplies_summary.supply_cost,
       products.is_food_item,
       products.is_drink_item,
-      orders.ordered_at
+
+      order_supplies_summary.supply_cost
 
    from order_items
 
@@ -160,8 +161,7 @@ select * from joined
 
 ```yml
 semantic_models:
-   #The name of the semantic model.
-   - name: order_items
+   - name: order_item
       defaults:
          agg_time_dimension: ordered_at
       description: |
@@ -179,7 +179,7 @@ semantic_models:
            expr: product_id
       dimensions:
          - name: ordered_at
-           expr: date_trunc('day', ordered_at)
+           expr: ordered_at
            type: time
            type_params:
              time_granularity: day
@@ -195,11 +195,11 @@ semantic_models:
          - name: food_revenue
            description: The revenue generated for each order item. Revenue is calculated as a sum of revenue associated with each product in an order.
            agg: sum
-           expr: case when is_food_item = 1 then product_price else 0 end
+           expr: case when is_food_item then product_price else 0 end
          - name: drink_revenue
            description: The revenue generated for each order item. Revenue is calculated as a sum of revenue associated with each product in an order.
            agg: sum
-           expr: case when is_drink_item = 1 then product_price else 0 end
+           expr: case when is_drink_item then product_price else 0 end
          - name: median_revenue
            description: The median revenue generated for each order item.
            agg: median
@@ -228,7 +228,7 @@ metrics:
 
 ### Example query
 
-```shell
+```
 dbt sl query --metrics revenue --group-by metric_time__month
 ```
 

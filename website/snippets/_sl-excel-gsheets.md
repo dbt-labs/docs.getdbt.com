@@ -5,8 +5,9 @@
 
 <ul>
   <li>It returns the data to the cell you clicked on. </li>
-  <li> {props.bullet_1}</li> 
+  <li> {props.bullet_1}</li>
   <li>{props.bullet_2}</li>
+  <li>{props.bullet_3}</li>
 </ul>
 
 ## Query Builder functions
@@ -48,11 +49,13 @@
   </tbody>
 </table>
 
-<p>Note: Click the info button next to any metric or dimension to see its defined description from your dbt project.</p>
+<p>Note: Click the **info** button next to any metric or dimension to see its defined description from your dbt project.</p>
 
 #### Modifying time granularity
 
-<p>When you select time dimensions in the <strong>Group By</strong> menu, you'll see a list of available time granularities. The lowest granularity is selected by default. Metric time is the default time dimension for grouping your metrics.</p>
+import SlCustomGranularity from '/snippets/_sl-custom-granularity.md';
+
+<SlCustomGranularity />
 
 #### Filtering data
 

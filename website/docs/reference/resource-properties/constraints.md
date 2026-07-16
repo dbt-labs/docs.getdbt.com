@@ -7,9 +7,18 @@ Constraints are a feature of many data platforms. When specified, the platform w
 
 When enforced, a constraint guarantees that you will never see invalid data in the table materialized by your model. Enforcement varies significantly by data platform.
 
-Constraints require the declaration and enforcement of a model [contract](/reference/resource-configs/contract).
+## Prerequisites
 
-**Constraints are never applied on `ephemeral` models or those materialized as `view`**. Only `table` and `incremental` models support applying and enforcing constraints.
+Before using constraints, ensure the following requirements are met:
+
+- **You use supported materializations** &mdash; Constraints only work on `table` and `incremental` models. Constraints are never applied on `ephemeral` models or those materialized as `view`. 
+- **You enforce a contract** &mdash; To use constraints, your model must declare and enforce a [contract](/reference/resource-configs/contract). This means you need to explicitly define the `data_type` for every column in your model's schema configuration.
+
+### Platform constraint support
+
+import ConstraintsTable from '/snippets/_constraints-table.md'; 
+
+<ConstraintsTable />
 
 ## Defining constraints
 
@@ -29,7 +38,12 @@ Foreign key constraints accept two additional inputs:
 - `to`: A relation input, likely [`ref()`](/reference/dbt-jinja-functions/ref)] and [`source()`](/reference/dbt-jinja-functions/source), indicating the referenced table.
 - `to_columns`: A list of column(s) in that table containing the corresponding primary or unique key.
 
-This syntax for defining foreign keys uses `ref`, meaning it will capture dependencies and works across different environments. It's available in [dbt Cloud "Latest""](/docs/dbt-versions/cloud-release-tracks) and [dbt Core v1.9+](/docs/dbt-versions/core-upgrade/upgrading-to-v1.9).
+This syntax for defining foreign keys uses `ref`, meaning it will capture dependencies and works across different environments. It's available in [<Constant name="dbt" /> **Latest**](/docs/dbt-versions/dbt-release-tracks) and [<Constant name="core" /> v1.9+](/docs/dbt-versions/core-upgrade/upgrading-to-v1.9).
+
+Since constraints support and enforcement [varies by platform](/reference/resource-properties/constraints#platform-specific-support), dbt offers two optional fields you can specify on any filter:
+
+- `warn_unenforced`: Set to `False` to skip warnings for constraints that are supported by your platform but not enforced (like `primary_key` in Snowflake).
+- `warn_unsupported`: Set to `False` to skip warnings for constraints that your platform doesn't support at all (like `check` in Redshift).
 
 <File name='models/schema.yml'>
 
@@ -39,12 +53,14 @@ models:
     
     # required
     config:
+      materialized: table
       contract: {enforced: true}
     
     # model-level constraints
     constraints:
       - type: primary_key
         columns: [first_column, second_column, ...]
+        warn_unsupported: True # show a warning if unsupported
       - type: foreign_key # multi_column
         columns: [first_column, second_column, ...]
         to: ref('my_model_to') | source('source', 'source_table')
@@ -66,6 +82,7 @@ models:
           - type: foreign_key
             to: ref('my_model_to') | source('source', 'source_table')
             to_columns: [other_model_column]
+            warn_unenforced: False # skips warning if supported but not enforced
           - type: ...
 ```
 
@@ -73,55 +90,7 @@ models:
 
 Supported dbt-adapters use these fields when populated, to render out the foreign key constraint instead of `expression`.
 
-For more information on the adapters which support foreign key constraints, have a look at our guide on [Platform constraint support](/docs/collaborate/govern/model-contracts#platform-constraint-support).
-
-</VersionBlock>
-
-<VersionBlock lastVersion="1.8">
-
-When using `foreign_key`, you need to specify the referenced table's schema manually. Use `{{ target.schema }}` in the `expression` field to automatically pass the schema used by the target environment:
-
-`expression: "{{ target.schema }}.customers(customer_id)"` 
-
-Note that later versions of dbt will have more efficient ways of handling this. Find out more about upgrading to the latest version, refer to [About dbt Core versions](/docs/dbt-versions/core) or [Upgrade dbt version in Cloud](/docs/dbt-versions/upgrade-dbt-version-in-cloud).
-
-<File name='models/schema.yml'>
-
-```yml
-models:
-  - name: <model_name>
-    
-    # required
-    config:
-      contract: {enforced: true}
-    
-    # model-level constraints
-    constraints:
-      - type: primary_key
-        columns: [first_column, second_column, ...]
-      - type: foreign_key # multi_column
-        columns: [first_column, second_column, ...]
-        expression: "{{ target.schema }}.other_model_name (other_model_first_column, other_model_second_column, ...)"
-      - type: check
-        columns: [first_column, second_column, ...]
-        expression: "first_column != second_column"
-        name: human_friendly_name
-      - type: ...
-    
-    columns:
-      - name: first_column
-        data_type: string
-        
-        # column-level constraints
-        constraints:
-          - type: not_null
-          - type: unique
-          - type: foreign_key
-            expression: "{{ target.schema }}.other_model_name (other_model_column)"
-          - type: ...
-```
-
-</File>
+For more information on the adapters which support foreign key constraints, have a look at our guide on [Platform constraint support](/docs/mesh/govern/model-contracts#platform-constraint-support).
 
 </VersionBlock>
 
@@ -248,7 +217,7 @@ models:
           - type: primary_key # not enforced  -- will warn & include
           - type: check       # not supported -- will warn & skip
             expression: "id > 0"
-        tests:
+        data_tests:
           - unique            # primary_key constraint is not enforced
       - name: customer_name
         data_type: varchar
@@ -294,7 +263,7 @@ select
 - Snowflake constraints documentation: [here](https://docs.snowflake.com/en/sql-reference/constraints-overview.html)
 - Snowflake data types: [here](https://docs.snowflake.com/en/sql-reference/intro-summary-data-types.html)
 
-Snowflake suppports four types of constraints: `unique`, `not null`, `primary key`, and `foreign key`.
+Snowflake supports four types of constraints: `unique`, `not null`, `primary key`, and `foreign key`.
 
 It is important to note that only the `not null` (and the `not null` property of `primary key`) are actually checked at present.
 The rest of the constraints are purely metadata, not verified when inserting data. Although Snowflake does not validate `unique`, `primary`, or `foreign_key` constraints, you may optionally instruct Snowflake to use them for query optimization by specifying [`rely`](https://docs.snowflake.com/en/user-guide/join-elimination) in the constraint `expression` field.
@@ -335,7 +304,7 @@ models:
           - type: primary_key # not enforced  -- will warn & include
           - type: check       # not supported -- will warn & skip
             expression: "id > 0"
-        tests:
+        data_tests:
           - unique            # need this test because primary_key constraint is not enforced
       - name: customer_name
         data_type: text
@@ -370,7 +339,7 @@ select
 
 <div warehouse="BigQuery">
 
-BigQuery allows defining and enforcing `not null` constraints, and defining (but _not_ enforcing) `primary key` and `foreign key` constraints (which can be used for query optimization). BigQuery does not support defining or enforcing other constraints. For more information, refer to [Platform constraint support](/docs/collaborate/govern/model-contracts#platform-constraint-support)
+BigQuery allows defining and enforcing `not null` constraints, and defining (but _not_ enforcing) `primary key` and `foreign key` constraints (which can be used for query optimization). BigQuery does not support defining or enforcing other constraints. For more information, refer to [Platform constraint support](/docs/mesh/govern/model-contracts#platform-constraint-support)
 
 Documentation: https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language
 
@@ -409,7 +378,7 @@ models:
           - type: primary_key # not enforced  -- will warn & include
           - type: check       # not supported -- will warn & skip
             expression: "id > 0"
-        tests:
+        data_tests:
           - unique            # primary_key constraint is not enforced
       - name: customer_name
         data_type: string
@@ -444,7 +413,6 @@ select
 <File name='models/nested_fields.yml'>
 
 ```yml
-version: 2
 
 models:
   - name: nested_column_constraints_example
@@ -546,7 +514,7 @@ models:
           - type: primary_key # not enforced  -- will warn & include
           - type: check       # not supported -- will warn & skip
             expression: "id > 0"
-        tests:
+        data_tests:
           - unique            # primary_key constraint is not enforced
       - name: customer_name
         data_type: text
@@ -584,7 +552,7 @@ alter table schema_name.my_model add constraint 472394792387497234 check (id > 0
 
 ## Custom constraints 
 
-In dbt Cloud and dbt Core, you can use custom constraints on models for the advanced configuration of tables. Different data warehouses support different syntax and capabilities. 
+In <Constant name="dbt" /> and <Constant name="core" />, you can use custom constraints on models for the advanced configuration of tables. Different data warehouses support different syntax and capabilities. 
 
 Custom constraints allow you to add configuration to specific columns. For example:
 

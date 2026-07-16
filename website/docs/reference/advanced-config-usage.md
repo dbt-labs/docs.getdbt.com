@@ -2,9 +2,9 @@
 title: Advanced configuration usage
 sidebar_label: Advanced usage
 ---
-## Alternative config block syntax
+## Alternative SQL file config syntax
 
-Some configurations may contain characters (e.g. dashes) that cannot be parsed as a jinja argument. For example, the following would return an error:
+Some configurations may contain characters (e.g. dashes) that cannot be parsed as a Jinja argument. For example, the following would return an error:
 
 ```sql
 {{ config(
@@ -15,7 +15,7 @@ Some configurations may contain characters (e.g. dashes) that cannot be parsed a
 select ...
 ```
 
-While dbt provides an alias for any core configurations (e.g. you should use `pre_hook` instead of `pre-hook` in a config block), your dbt project may contain custom configurations without aliases.
+While dbt provides an alias for any core configurations (for example, you should use `pre_hook` instead of `pre-hook` in a config block), your dbt project may contain custom configurations without aliases.
 
 If you want to specify these configurations inside of a model, use the alternative config block syntax:
 

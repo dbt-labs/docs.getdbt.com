@@ -9,18 +9,34 @@ pagination_next: "guides/sl-snowflake-qs"
 pagination_prev: null
 ---
 
-Use MetricFlow in dbt to centrally define your metrics. As a key component of the [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl), MetricFlow is responsible for SQL query construction and defining specifications for dbt semantic models and metrics. It uses familiar constructs like semantic models and metrics to avoid duplicative coding, optimize your development workflow, ensure data governance for company metrics, and guarantee consistency for data consumers.
+Use MetricFlow in dbt to centrally define your metrics. As a key component of the [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl), MetricFlow is responsible for SQL query construction and defining specifications for dbt semantic models and metrics. It uses familiar constructs like semantic models and metrics to avoid duplicative coding, optimize your development workflow, ensure data governance for company metrics, and guarantee consistency for data consumers.
+
+For a complete list of configuration options and property specs, see the [Semantic Layer reference](/reference/semantic-layer-reference).
+
+<Lightbox src="/img/docs/dbt-platform/semantic-layer/sl-concept.png" width="50%" title="This diagram shows how the dbt Semantic Layer works with your data stack." />
 
 MetricFlow allows you to:
 - Intuitively define metrics in your dbt project
-- Develop from your preferred environment, whether that's the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation), [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud), or [dbt Core](/docs/core/installation-overview)
+- Develop from your preferred environment, whether that's the [dbt platform CLI](/docs/platform/dbt-cli-installation), [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio), or [<Constant name="core" />](/docs/local/install-dbt)
 - Use [MetricFlow commands](/docs/build/metricflow-commands) to query and test those metrics in your development environment 
-- Harness the true magic of the universal dbt Semantic Layer and dynamically query these metrics in downstream tools (Available for dbt Cloud [Team or Enterprise](https://www.getdbt.com/pricing/) accounts only).
+- Harness the true magic of the universal <Constant name="semantic_layer" /> and dynamically query these metrics in downstream tools (Available for <Constant name="dbt" /> [Starter, Enterprise, or Enterprise+](https://www.getdbt.com/pricing/) accounts only).
 
 <div className="grid--3-col">
 
+  <Card
+    title="Semantic Layer reference"
+    body="Complete, exhaustive configuration reference for semantic models, metrics, and dimensions."
+    link="/reference/semantic-layer-reference"
+    icon="dbt-bit"/>
+
+  <Card
+    title="Migrate to the latest YAML spec"
+    body="Learn how to migrate from the legacy metrics YAML spec to the latest metrics YAML spec."
+    link="/docs/build/latest-metrics-spec"
+    icon="dbt-bit"/>
+
  <Card
-    title="Quickstart for the dbt Cloud Semantic Layer"
+    title="Quickstart for the dbt Semantic Layer"
     body="Use this guide to build and define metrics, set up the dbt Semantic Layer, and query them using downstream tools."
     link="/guides/sl-snowflake-qs"
     icon="dbt-bit"/>
@@ -39,7 +55,7 @@ MetricFlow allows you to:
 
   <Card
     title="Metrics"
-    body="Define metrics through the powerful combination of measures, constraints, or functions, effortlessly organized in either YAML files or separate files."
+    body="Define metrics in your dbt project using different metric types in YAML files."
     link="/docs/build/metrics-overview"
     icon="dbt-bit"/>
   
@@ -58,14 +74,14 @@ MetricFlow allows you to:
   <Card
     title="Available integrations"
     body="Discover the diverse range of partners that seamlessly integrate with the powerful dbt Semantic Layer, allowing you to query and unlock valuable insights from your data ecosystem."
-    link="/docs/cloud-integrations/avail-sl-integrations"
+    link="/docs/platform-integrations/avail-sl-integrations"
     icon="dbt-bit"/>
 
 </div> <br />
 
 ## Related docs
 
-- [Quickstart guide with the dbt Semantic Layer](/guides/sl-snowflake-qs)
-- [The dbt Semantic Layer: what's next](https://www.getdbt.com/blog/dbt-semantic-layer-whats-next/) blog
-- [dbt Semantic Layer on-demand course](https://learn.getdbt.com/courses/semantic-layer)
-- [dbt Semantic Layer FAQs](/docs/use-dbt-semantic-layer/sl-faqs)
+- [Quickstart guide with the <Constant name="semantic_layer" />](/guides/sl-snowflake-qs)
+- [The <Constant name="semantic_layer" />: what's next](https://www.getdbt.com/blog/dbt-semantic-layer-whats-next/) blog
+- [<Constant name="semantic_layer" /> on-demand course](https://learn.getdbt.com/courses/semantic-layer)
+- [<Constant name="semantic_layer" /> FAQs](/docs/use-dbt-semantic-layer/sl-faqs)

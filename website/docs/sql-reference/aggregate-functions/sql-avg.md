@@ -48,6 +48,6 @@ Snowflake, Databricks, Google BigQuery, and Amazon Redshift all support the abil
 We most commonly see the AVG function used in data work to calculate:
 - The average of key metrics (ex. Average CSAT, average lead time, average order amount) in downstream [fact or dim models](/best-practices/how-we-structure/4-marts)
 - Rolling or moving averages (ex. 7-day, 30-day averages for key metrics) using window functions
-- Averages in [dbt metrics](https://docs.getdbt.com/docs/build/metrics)
+- Averages in [dbt metrics](/docs/build/build-metrics-intro)
 
 This isn’t an extensive list of where your team may be using the AVG function throughout your dbt models and BI tool logic, but contains some common scenarios analytics engineers face in their day-to-day.

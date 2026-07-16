@@ -22,9 +22,9 @@ The [`microbatch` incremental strategy](/docs/build/incremental-microbatch) is i
 
 ### Supported incremental strategies by adapter
 
-This table shows the support of each incremental strategy across adapters available on dbt Cloud's [Latest release track](/docs/dbt-versions/cloud-release-tracks). Some strategies may be unavailable if you're not on "Latest" and the feature hasn't been released to the "Compatible" track.  
+This table shows the support of each incremental strategy across adapters available on Fusion or dbt's [Latest release track](/docs/dbt-versions/dbt-release-tracks). Some strategies may be unavailable if you're not on Latest and the feature hasn't been released to the Compatible track.
 
-If you're interested in an adapter available in dbt Core only, check out the [adapter's individual configuration page](/reference/resource-configs/resource-configs) for more details.
+If you're interested in incremental strategies for additional adapters, check out the [adapter's individual configuration page](/reference/resource-configs) for more details.
 
 Click the name of the adapter in the following table for more information about supported incremental strategies:
 
@@ -34,12 +34,13 @@ Click the name of the adapter in the following table for more information about 
 | [dbt-redshift](/reference/resource-configs/redshift-configs#incremental-materialization-strategies) |     ✅    |    ✅   |  ✅ |   |   ✅   |
 | [dbt-bigquery](/reference/resource-configs/bigquery-configs#merge-behavior-incremental-models)      |           |    ✅   |    | ✅ |  ✅    |
 | [dbt-spark](/reference/resource-configs/spark-configs#incremental-models)                           |     ✅    |    ✅   |    |    ✅   | ✅ |
-| [dbt-databricks](/reference/resource-configs/databricks-configs#incremental-models)                 |     ✅    |    ✅   |    |          ✅         |          ✅         |
+| [dbt-databricks](/reference/resource-configs/databricks-configs#incremental-models)                 |     ✅    |    ✅   | ✅ |          ✅         |          ✅         |
 | [dbt-snowflake](/reference/resource-configs/snowflake-configs#merge-behavior-incremental-models)    |     ✅    |    ✅   | ✅  | ✅ | ✅  |
-| [dbt-trino](/reference/resource-configs/trino-configs#incremental)                                  |     ✅    |    ✅   | ✅  |    |    |
-| [dbt-fabric](/reference/resource-configs/fabric-configs#incremental)                                |     ✅    |         | ✅  |    |    |
-| [dbt-athena](/reference/resource-configs/athena-configs#incremental-models)                         |     ✅    |    ✅   |     | ✅ |    |
+| [dbt-trino](/reference/resource-configs/trino-configs#incremental)                                  |     ✅    |    ✅   | ✅  |    |  ✅  |
+| [dbt-fabric](/reference/resource-configs/fabric-configs#incremental)                                |     ✅    |    ✅   | ✅  |    |  ✅  |
+| [dbt-athena](/reference/resource-configs/athena-configs#incremental-models)                         |     ✅    |    ✅   |     | ✅ | ✅  |
 | [dbt-teradata](/reference/resource-configs/teradata-configs#valid_history-incremental-materialization-strategy)  | ✅    |  ✅   |   ✅   |    |         ✅    |
+| [dbt-duckdb](/reference/resource-configs/duckdb-configs#incremental)  | ✅    |  ✅   |   ✅   |    |         ✅    |
 
 ### Configuring incremental strategy
 
@@ -78,7 +79,7 @@ select ...
 
 If you use the `merge` strategy and specify a `unique_key`, by default, dbt will entirely overwrite matched rows with new values.
 
-On adapters which support the `merge` strategy (including Snowflake, BigQuery, Apache Spark, and Databricks), you may optionally pass a list of column names to a `merge_update_columns` config. In that case, dbt will update _only_ the columns specified by the config, and keep the previous values of other columns.
+On adapters which support the `merge` strategy, you may optionally pass a list of column names to a `merge_update_columns` config. In that case, dbt will update _only_ the columns specified by the config, and keep the previous values of other columns.
 
 <File name='models/my_model.sql'>
 
@@ -116,77 +117,9 @@ select ...
 
 </File>
 
-### About incremental_predicates
+import Incrementalpredicates from '/snippets/_incremental-predicates.md';
 
-`incremental_predicates` is an advanced use of incremental models, where data volume is large enough to justify additional investments in performance. This config accepts a list of any valid SQL expression(s). dbt does not check the syntax of the SQL statements. 
-
-This an example of a model configuration in a `yml` file you might expect to see on Snowflake:
-
-```yml
-
-models:
-  - name: my_incremental_model
-    config:
-      materialized: incremental
-      unique_key: id
-      # this will affect how the data is stored on disk, and indexed to limit scans
-      cluster_by: ['session_start']  
-      incremental_strategy: merge
-      # this limits the scan of the existing table to the last 7 days of data
-      incremental_predicates: ["DBT_INTERNAL_DEST.session_start > dateadd(day, -7, current_date)"]
-      # `incremental_predicates` accepts a list of SQL statements. 
-      # `DBT_INTERNAL_DEST` and `DBT_INTERNAL_SOURCE` are the standard aliases for the target table and temporary table, respectively, during an incremental run using the merge strategy. 
-```
-
-Alternatively, here are the same configurations configured within a model file:
-
-```sql
--- in models/my_incremental_model.sql
-
-{{
-  config(
-    materialized = 'incremental',
-    unique_key = 'id',
-    cluster_by = ['session_start'],  
-    incremental_strategy = 'merge',
-    incremental_predicates = [
-      "DBT_INTERNAL_DEST.session_start > dateadd(day, -7, current_date)"
-    ]
-  )
-}}
-
-...
-
-```
-
-This will template (in the `dbt.log` file) a `merge` statement like:
-```sql
-merge into <existing_table> DBT_INTERNAL_DEST
-    from <temp_table_with_new_records> DBT_INTERNAL_SOURCE
-    on
-        -- unique key
-        DBT_INTERNAL_DEST.id = DBT_INTERNAL_SOURCE.id
-        and
-        -- custom predicate: limits data scan in the "old" data / existing table
-        DBT_INTERNAL_DEST.session_start > dateadd(day, -7, current_date)
-    when matched then update ...
-    when not matched then insert ...
-```
-
-Limit the data scan of _upstream_ tables within the body of their incremental model SQL, which will limit the amount of "new" data processed/transformed.
-
-```sql
-with large_source_table as (
-
-    select * from {{ ref('large_source_table') }}
-    {% if is_incremental() %}
-        where session_start >= dateadd(day, -3, current_date)
-    {% endif %}
-
-),
-
-...
-```
+<Incrementalpredicates />
 
 :::info
 The syntax depends on how you configure your `incremental_strategy`:
@@ -198,13 +131,13 @@ The syntax depends on how you configure your `incremental_strategy`:
 
 Before diving into [custom strategies](#custom-strategies), it's important to understand the built-in incremental strategies in dbt and their corresponding macros:
 
-| `incremental_strategy` | Corresponding macro                    |
-|------------------------|----------------------------------------|
-| `append`               | `get_incremental_append_sql`           |
-| `delete+insert`        | `get_incremental_delete_insert_sql`    |
-| `merge`                | `get_incremental_merge_sql`            |
-| `insert_overwrite`     | `get_incremental_insert_overwrite_sql` |
-| `microbatch`           | `get_incremental_microbatch_sql`       |
+| `incremental_strategy` | Corresponding macro                                                 |
+|------------------------|---------------------------------------------------------------------|
+|[`append`](/docs/build/incremental-strategy#append)|`get_incremental_append_sql`|
+|[`delete+insert`](/docs/build/incremental-strategy#deleteinsert)| `get_incremental_delete_insert_sql`|
+|[`merge` ](/docs/build/incremental-strategy#merge)|`get_incremental_merge_sql`|
+|[`insert_overwrite`](/docs/build/incremental-strategy#insert_overwrite)|`get_incremental_insert_overwrite_sql`|
+|[`microbatch`](/docs/build/incremental-strategy#microbatch) | `get_incremental_microbatch_sql`       |
 
 
 For example, a built-in strategy for the `append` can be defined and used with the following files:
@@ -243,6 +176,48 @@ Define a model models/my_model.sql:
 
 select * from {{ ref("some_model") }}
 ```
+
+#### About built-in incremental strategies
+
+##### `append`
+
+The `append` strategy is simple to implement and has low processing costs. It inserts selected records into the destination table without updating or deleting existing data. This strategy doesn’t align directly with type 1 or type 2 [slowly changing dimensions](https://www.thoughtspot.com/data-trends/data-modeling/slowly-changing-dimensions-in-data-warehouse) (SCD). It differs from SCD1, which overwrites existing records, and only loosely resembles SCD2. While it adds new rows (like SCD2), it doesn’t manage versioning or track historical changes explicitly.
+
+Importantly, `append` doesn't check for duplicates or verify whether a record already exists in the destination. If the same record appears multiple times in the source, it will be inserted again, potentially resulting in duplicate rows. This may not be an issue depending on your use case and data quality requirements.
+
+##### `delete+insert`
+
+The `delete+insert` strategy deletes the data for the `unique_key` from the target table and then inserts the data for those with a `unique_key`, which may be less efficient for larger datasets. It ensures updated records are fully replaced, avoiding partial updates and can be useful when a `unique_key` isn't truly unique or when `merge` is unsupported.
+
+`delete+insert` doesn't map directly to SCD logic (type 1 or 2) because it overwrites data at the row level and while it can add new rows, it does not track history.
+
+For SCD2, use [dbt snapshots](/docs/build/snapshots#what-are-snapshots), not `delete+insert`.
+
+##### `merge`
+
+`merge` inserts records with a `unique_key` that don’t exist yet in the destination table and updates records with keys that do exist &mdash; mirroring the logic of SCD1, where changes are overwritten rather than historically tracked.
+
+This strategy shouldn't be confused with `delete+insert` which deletes matching records before inserting new ones. 
+
+By specifying a `unique_key` (which can be composed of one or more columns), `merge` can also help resolve duplicates. If the `unique_key` already exists in the destination table, `merge` will update the record, so you won't have duplicates. If the records don’t exist, `merge` will insert them.
+
+Note, if you use `merge` without specifying a `unique_key`, it behaves like the `append` strategy.
+
+While the `merge` strategy is useful for keeping tables current, it's best suited for smaller tables or incremental datasets. It can be expensive for large tables because it scans the entire destination table to determine what to update or insert.
+
+##### `insert_overwrite`
+
+The [`insert_overwrite`](https://downloads.apache.org/spark/docs/3.1.1/sql-ref-syntax-dml-insert-overwrite-table.html) strategy is used to efficiently update partitioned tables by replacing entire partitions with new data, rather than merging or updating individual rows. It overwrites only the affected partitions, not the whole table. 
+
+Because it is designed for partitioned data and replaces entire partitions wholesale, it does not align with typical SCD logic, which tracks row-level history or changes.
+
+It's ideal for tables partitioned by date or another key and useful for refreshing recent or corrected data without full table rebuilds.
+
+##### `microbatch`
+
+[`microbatch`](/docs/build/incremental-microbatch#what-is-microbatch-in-dbt) is an incremental strategy designed for processing large time-series datasets by splitting the data into time-based batches (for example, daily or hourly). It supports [parallel batch execution](/docs/build/parallel-batch-execution#how-parallel-batch-execution-works) for faster runs.
+
+For details on which incremental strategies are supported by each adapter, refer to the section [Supported incremental strategies by adapter](/docs/build/incremental-strategy#supported-incremental-strategies-by-adapter).
 
 ### Custom strategies
 
@@ -300,7 +275,7 @@ For example, a user-defined strategy named `insert_only` can be defined and used
 
 </File>
 
-If you use a custom microbatch macro, set a [`require_batched_execution_for_custom_microbatch_strategy` behavior flag](/reference/global-configs/behavior-changes#custom-microbatch-strategy) in your `dbt_project.yml` to enable batched execution of your custom strategy. 
+If you use a custom microbatch macro, use the [`require_batched_execution_for_custom_microbatch_strategy` behavior flag](/reference/global-configs/behavior-flags/require_batched_execution_for_custom_microbatch_strategy) in your `dbt_project.yml` to control batched execution. Set it to `true` to opt in before the flag matures. After the flag matures (default: `true`), set it to `false` to revert to single-invocation behavior.
 
 ### Custom strategies from a package
 
@@ -318,5 +293,3 @@ To use the `merge_null_safe` custom incremental strategy from the `example` pack
 
 </File>
 
-<Snippet path="discourse-help-feed-header" />
-<DiscourseHelpFeed tags="incremental"/>

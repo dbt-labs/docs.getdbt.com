@@ -39,13 +39,13 @@ models:
 <File name='models/schema.yml'>
 
   ```yml
-version: 2
 
 models:
   - name: model_name
-    docs:
-      show: true | false
-      node_color: color_id # Use name (such as node_color: purple) or hex code with quotes (such as node_color: "#cd7f32")
+    config:
+      docs: # changed to config in v1.10
+        show: true | false
+        node_color: color_id # Use name (such as node_color: purple) or hex code with quotes (such as node_color: "#cd7f32")
 ```
 </File>
 
@@ -53,13 +53,13 @@ models:
 
 <TabItem value="sources">
 
-This property is not implemented for sources.
+The `docs` config isn’t supported for sources.
 
 </TabItem>
 
 <TabItem value="seeds">
 
-You can use the docs property in YAML files, including the `dbt_project.yml`:
+You can use the `docs` config in YAML files, including the `dbt_project.yml`:
 
 <File name='dbt_project.yml'>
 
@@ -76,13 +76,13 @@ seeds:
 <File name='seeds/schema.yml'>
 
 ```yml
-version: 2
 
 seeds:
   - name: seed_name
-    docs:
-      show: true | false
-      node_color: color_id # Use name (such as node_color: purple) or hex code with quotes (such as node_color: "#cd7f32")
+    config:
+      docs: # changed to config in v1.10
+        show: true | false
+        node_color: color_id # Use name (such as node_color: purple) or hex code with quotes (such as node_color: "#cd7f32")
 ```
 </File>
 
@@ -90,7 +90,7 @@ seeds:
 
 <TabItem value="snapshots">
 
-You can use the docs property in YAML files, including the `dbt_project.yml`:
+You can use the `docs` config in YAML files, including the `dbt_project.yml`:
 
 <File name='dbt_project.yml'>
 
@@ -108,13 +108,13 @@ snapshots:
 <File name='snapshots/schema.yml'>
 
 ```yml
-version: 2
 
 snapshots:
   - name: snapshot_name
-    docs:
-      show: true | false
-      node_color: color_id # Use name (such as node_color: purple) or hex code with quotes (such as node_color: "#cd7f32")
+    config:
+      docs: # changed to config in v1.10
+        show: true | false
+        node_color: color_id # Use name (such as node_color: purple) or hex code with quotes (such as node_color: "#cd7f32")
 ```
 </File>
 
@@ -122,19 +122,19 @@ snapshots:
 
 <TabItem value="analyses">
 
-You can use the docs property in YAML files, _except_ in `dbt_project.yml`. Refer to [Analysis properties](/reference/analysis-properties) for more info.
+You can configure `docs` for analyses in the `config` block under `analyses:` in your YAML file. Refer to [Analysis properties](/reference/analysis-properties) for more information.
 
 
 <File name='analysis/schema.yml'>
 
 ```yml
-version: 2
 
 analyses:
   - name: analysis_name
-    docs:
-      show: true | false
-      node_color: color_id # Use name (such as node_color: purple) or hex code with quotes (such as node_color: "#cd7f32")
+    config:
+      docs: # changed to config in v1.10
+        show: true | false
+        node_color: color_id # Use name (such as node_color: purple) or hex code with quotes (such as node_color: "#cd7f32")
 ```
 </File>
 
@@ -142,26 +142,30 @@ analyses:
 
 <TabItem value="macros">
 
-You can use the docs property in YAML files, _except_ in `dbt_project.yml`. Refer to [Macro properties](/reference/macro-properties) for more info.
+You can configure `docs` for macros in the `config` block under `macros:` in your YAML file. Refer to [Macro properties](/reference/macro-properties) for more information.
 
 <File name='macros/schema.yml'>
 
 ```yml
-version: 2
-
 macros:
   - name: macro_name
-    docs:
-      show: true | false
+    config: 
+      docs: # changed to config in v1.11
+        show: true | false
 ```
+
 </File>
 
 </TabItem>
 
 </Tabs>
 
+Note that for backwards compatibility, `docs` is supported as a top-level key, but without the capabilities of config inheritance.
+
 ## Definition
-The `docs` property can be used to provide documentation-specific configuration to models. It supports the attribute `show`, which controls whether or not nodes are shown in the auto-generated documentation website. It also supports `node_color` for models, seeds, snapshots, and analyses. Other node types are not supported.
+You can use the `docs` config to provide documentation-specific configuration for resources. It supports the following attributes:
+- `show`: Controls whether nodes appears in the auto-generated documentation website.
+- `node_color`: Controls the colors of nodes displayed in the DAG. This is supported for models, seeds, snapshots, and analyses. Other node types are not supported.
 
 **Note:** Hidden models will still appear in the dbt DAG visualization but will be identified as "hidden.”
 
@@ -208,11 +212,11 @@ The `docs` attribute supports `node_color` to customize the display color of som
 - `node_color` hierarchy:
   - `<example-sql-file.sql>` overrides `schema.yml` overrides `dbt_project.yml`
 
-Note, you need to run or re-run the `dbt docs generate` command to apply and view the customized colors.
+Note, you need to run or re-run the `dbt docs generate` command (<Constant name="core_v1" /> only) to apply and view the customized colors.
 
-:::info Custom node colors not applicable in dbt Explorer
+:::info Custom node colors not applicable in <Constant name="catalog" />
 
-The custom `node_color` attribute isn't applicable in dbt Explorer. Instead, Explorer provides [lenses](/docs/collaborate/explore-projects#lenses), which are map layers for your <Term id="dag"/>. Lenses help you better understand your project's contextual metadata at scale and distinguish specific models or subsets of models.
+The custom `node_color` attribute isn't applicable in <Constant name="catalog" />. Instead, Explorer provides [lenses](/docs/explore/explore-projects#lenses), which are map layers for your <Term id="dag"/>. Lenses help you better understand your project's contextual metadata at scale and distinguish specific models or subsets of models.
 
 :::
 

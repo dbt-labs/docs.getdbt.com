@@ -1,17 +1,33 @@
 ---
 title: "About dbt compile command"
-description: "The dbt compile command creates executable SQL from model, test, and analysis files."
+description: "The dbt compile command creates executable SQL from models, data tests, analyses, functions, and snapshots."
 sidebar_label: "compile"
 id: "compile"
 ---
 
-`dbt compile` generates executable SQL from source `model`, `test`, and `analysis` files. You can find these compiled SQL files in the `target/` directory of your dbt project.
+`dbt compile` generates executable SQL from source files for:
+
+<VersionBlock lastVersion="1.11">
+- [Models](/docs/build/models)
+- [Data tests](/docs/build/data-tests)
+- [Analyses](/docs/build/analyses)
+- [Functions](/docs/build/udfs)
+</VersionBlock>
+<VersionBlock firstVersion="1.12">
+- [Models](/docs/build/models)
+- [Data tests](/docs/build/data-tests)
+- [Analyses](/docs/build/analyses)
+- [Functions](/docs/build/udfs)
+- [Snapshots](/docs/build/snapshots) (available in <Constant name="core" /> v1.12)
+</VersionBlock>
+
+You can find these compiled SQL files in the `target/` directory of your dbt project.
 
 The `compile` command is useful for:
 
-1. Visually inspecting the compiled output of model files. This is useful for validating complex jinja logic or macro usage.
-2. Manually running compiled SQL. While debugging a model or schema test, it's often useful to execute the underlying `select` statement to find the source of the bug.
-3. Compiling `analysis` files. Read more about analysis files [here](/docs/build/analyses).
+- Visually inspecting the compiled output of resource files. This is useful for validating complex Jinja logic or macro usage.
+- Manually running compiled SQL. While debugging a model or [data test](/docs/build/data-tests), it's often useful to execute the underlying `select` statement to find the source of the bug.
+- Compiling `analysis` files. Read more about analysis files [here](/docs/build/analyses).
 
 Some common misconceptions:
 - `dbt compile` is _not_ a pre-requisite of `dbt run`, or other building commands. Those commands will handle compilation themselves.
@@ -79,8 +95,59 @@ select * from "jaffle_shop"."main"."raw_orders"
 
 The command accesses the data platform to cache-related metadata, and to run introspective queries. Use the flags:
 - `--no-populate-cache` to disable the initial cache population. If metadata is needed, it will be a cache miss, requiring dbt to run the metadata query. This is a `dbt` flag, which means you need to add `dbt` as a prefix. For example: `dbt --no-populate-cache`.
-- `--no-introspect` to disable [introspective queries](/faqs/Warehouse/db-connection-dbt-compile#introspective-queries). dbt will raise an error if a model's definition requires running one. This is a `dbt compile` flag, which means you need to add `dbt compile` as a prefix. For example:`dbt compile --no-introspect`.
+- `--no-introspect` to disable [introspective queries](/faqs/Warehouse/db-connection-dbt-compile#introspective-queries). dbt will raise an error if a resource's definition requires running one. This is a `dbt compile` flag, which means you need to add `dbt compile` as a prefix. For example: `dbt compile --no-introspect`.
 
+:::caution Resources that use introspective queries
+Compiled SQL for resources that use introspective queries may depend on metadata from your warehouse. Compilation may be incomplete or may differ depending on the state of that metadata.
+:::
+
+### Compiling tests with `--select`
+
+You can use `dbt compile` to compile tests, as long as your selector matches a test node in the project.
+
+You can also target groups of tests with selector methods:
+
+**Compile all test nodes:**
+
+```bash
+dbt compile --select "resource_type:test"
+```
+
+**Compile only generic tests:**
+
+```bash
+dbt compile --select "test_type:generic"
+```
+
+**Compile only singular tests:**
+
+```bash
+dbt compile --select "test_type:singular"
+```
+
+If dbt returns `selection does not match any nodes`, your selector did not match a discovered node. To troubleshoot:
+
+1. List tests for a model selector:
+
+```bash
+dbt ls --resource-type test --select "MODEL_NAME"
+```
+
+2. Copy one of the returned test node names into `dbt compile --select`:
+
+```bash
+dbt compile --select "TEST_NODE_NAME"
+```
+
+For example, a returned test node name may look like this:
+
+```text
+FULL_TEST_NODE_NAME
+```
+
+3. If no tests are returned, check test definitions and project paths before running `compile` again.
+
+For more selector patterns, refer to [Test selection examples](/reference/node-selection/test-selection-examples).
 
 ### FAQs
 <FAQ path="Warehouse/db-connection-dbt-compile" />

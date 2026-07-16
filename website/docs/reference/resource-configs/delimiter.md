@@ -35,7 +35,6 @@ Or use a custom delimiter to override the values for a specific seed:
 <File name='seeds/properties.yml'>
 
 ```yml
-version: 2
 
 seeds:
   - name: <seed_name>
@@ -96,7 +95,6 @@ Or you can configure custom behavior for one seed. The `country_codes` uses the 
 <File name='seeds/properties.yml'>
 
 ```yml
-version: 2
 
 seeds:
   - name: country_codes

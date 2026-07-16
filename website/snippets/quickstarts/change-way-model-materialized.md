@@ -11,7 +11,7 @@ By default, everything gets created as a view. You can override that at the dire
       ```
 
       </File>
-    - Configure `jaffle_shop` so everything in it will be materialized as a table; and configure `example` so everything in it will be materialized as a view. Update your `models` config block to:
+    - Configure `jaffle_shop` so everything in it will be materialized as a table; and configure `example` so everything in it will be materialized as a view. Update your `models` config in the project YAML file to:
 
       <File name='dbt_project.yml'>
 

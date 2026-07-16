@@ -3,9 +3,11 @@ title: "Project Parsing"
 description: "Read this guide to understand the project parsing configuration in dbt."
 ---
 
+import FusionPartialParseCliFlags from '/snippets/_fusion-partial-parse-cli-flags.md';
+
 ## Related documentation
 - The `dbt parse` [command](/reference/commands/parse)
-- Partial parsing [profile config](/docs/core/connect-data-platform/profiles.yml#partial_parse) and [CLI flags](/reference/global-configs/parsing)
+- Partial parsing [profile config](/docs/local/profiles.yml#partial_parse) and [CLI flags](/reference/global-configs/parsing)
 - Parsing [CLI flags](/reference/global-configs/parsing)
 
 ## What is parsing?
@@ -37,13 +39,23 @@ Starting in v1.0, partial parsing is **on** by default. In development, partial 
 
 The [`PARTIAL_PARSE` global config](/reference/global-configs/parsing) can be enabled or disabled via `profiles.yml`, environment variable, or CLI flag.
 
+<VersionBlock firstVersion="2.0">
+
+:::note <Constant name="fusion" /> and partial parsing
+
+<FusionPartialParseCliFlags />
+
+:::
+
+</VersionBlock>
+
 ### Known limitations
 
 Parse-time attributes (dependencies, configs, and resource properties) are resolved using the parse-time context. When partial parsing is enabled, and certain context variables change, those attributes will _not_ be re-resolved, and are likely to become stale.
 
 In particular, you may see incorrect results if these attributes depend on "volatile" context variables, such as [`run_started_at`](/reference/dbt-jinja-functions/run_started_at), [`invocation_id`](/reference/dbt-jinja-functions/invocation_id), or [flags](/reference/dbt-jinja-functions/flags). These variables are likely (or even guaranteed!) to change in each invocation. dbt Labs _strongly discourages_ you from using these variables to set parse-time attributes (dependencies, configs, and resource properties).
 
-Starting in v1.0, dbt _will_ detect changes in environment variables. It will selectively re-parse only the files that depend on that [`env_var`](/reference/dbt-jinja-functions/env_var) value. (If the env var is used in `profiles.yml` or `dbt_project.yml`, a full re-parse is needed.) However, dbt will _not_ re-render **descriptions** that include env vars. If your descriptions include frequently changing env vars (this is highly uncommon), we recommend that you fully re-parse when generating documentation: `dbt --no-partial-parse docs generate`.
+Starting in v1.0, dbt _will_ detect changes in environment variables. It will selectively re-parse only the files that depend on that [`env_var`](/reference/dbt-jinja-functions/env_var) value. (If the env var is used in `profiles.yml` or `dbt_project.yml`, a full re-parse is needed.) However, dbt will _not_ re-render **descriptions** that include env vars. If your descriptions include frequently changing env vars (this is highly uncommon), we recommend that you fully re-parse when generating documentation: `dbt docs generate --no-partial-parse`.
 
 If certain inputs change between runs, dbt will trigger a full re-parse. The results will be correct, but the full re-parse may be quite slow. Today those inputs are:
 - `--vars`
@@ -55,7 +67,15 @@ If certain inputs change between runs, dbt will trigger a full re-parse. The res
 
 If you're triggering [CI](/docs/deploy/continuous-integration) job runs, the benefits of partial parsing are not applicable to new pull requests (PR) or new branches. However, they are applied on subsequent commits to the new PR or branch. 
 
-If you ever get into a bad state, you can disable partial parsing and trigger a full re-parse by setting the `PARTIAL_PARSE` global config to false, or by deleting `target/partial_parse.msgpack` (e.g. by running `dbt clean`).
+When partial parsing is enabled, dbt may occasionally fail or incorrectly parse the project causing:
+- Nodes (for example, models, sources) to not be found.
+- Configurations to be set incorrectly (for example, different from what is defined in a model's `schema.yml` file).
+
+If you get into this state, you can trigger a full re-parse using any of the following options: 
+- Run the dbt command with `--no-partial-parse`.
+- Delete the `target/partial_parse.msgpack` file by running `dbt clean`.
+
+You can disable partial parsing entirely by setting the `PARTIAL_PARSE` global config to `false`.
 
 ## Static parser
 
@@ -63,8 +83,4 @@ At parse time, dbt needs to extract the contents of `ref()`, `source()`, and `co
 
 The static parser is **on** by default. We believe it can offer *some* speed up to 95% of projects. You may optionally turn it off using the [`STATIC_PARSER` global config](/reference/global-configs/parsing).
 
-For now, the static parser only works with models, and models whose Jinja is limited to those three special macros (`ref`, `source`, `config`). The static parser is at least 3x faster than a full Jinja render. Based on testing with data from dbt Cloud, we believe the current grammar can statically parse 60% of models in the wild. So for the average project, we'd hope to see a 40% speedup in the model parser.
-
-## Experimental parser
-
-Not currently in use.
+For now, the static parser only works with models, and models whose Jinja is limited to those three special macros (`ref`, `source`, `config`). The static parser is at least 3x faster than a full Jinja render. Based on testing with data from <Constant name="dbt" />, we believe the current grammar can statically parse 60% of models in the wild. So for the average project, we'd hope to see a 40% speedup in the model parser.

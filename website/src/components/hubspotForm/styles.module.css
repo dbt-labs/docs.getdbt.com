@@ -72,7 +72,7 @@ textarea:global(.hs-input) {
 }
 
 :global(.hs-submit .hs-button:hover) {
-    background: var(--color-light-teal);
+    background: var(--ifm-color-primary);
 }
 
 :global(.submitted-message) {

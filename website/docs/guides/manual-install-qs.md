@@ -4,7 +4,7 @@ id: manual-install
 description: "Connecting your warehouse to dbt Core using the CLI."
 level: 'Beginner'
 platform: 'dbt-core'
-icon: 'fa-light fa-square-terminal'
+icon: 'square-terminal'
 tags: ['dbt Core','Quickstart']
 hide_table_of_contents: true
 ---
@@ -13,15 +13,15 @@ hide_table_of_contents: true
 
 ## Introduction
 
-When you use dbt Core to work with dbt, you will be editing files locally using a code editor, and running projects using a command line interface (CLI). 
+When you use <Constant name="core" /> to work with dbt, you will be editing files locally using a code editor, and running projects using a command line interface (CLI). 
 
-If you want to edit files and run projects using the web-based dbt Integrated Development Environment (IDE), refer to the [dbt Cloud quickstarts](/guides). You can also develop and run dbt commands using the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) &mdash; a dbt Cloud powered command line.
+If you want to edit files and run projects using the web-based dbt Integrated Development Environment (<Constant name="studio_ide" />), refer to the [<Constant name="dbt" /> quickstarts](/guides). You can also develop and run dbt commands using the [<Constant name="dbt" /> CLI](/docs/platform/dbt-cli-installation) &mdash; a <Constant name="dbt" /> powered command line.
 
 ### Prerequisites
 
 * To use dbt Core, it's important that you know some basics of the Terminal. In particular, you should understand `cd`, `ls` and `pwd` to navigate through the directory structure of your computer easily.
-* Install dbt Core using the [installation instructions](/docs/core/installation-overview) for your operating system.
-* Complete appropriate Setting up and Loading data steps in the Quickstart for dbt Cloud series. For example, for BigQuery, complete [Setting up (in BigQuery)](/guides/bigquery?step=2) and [Loading data (BigQuery)](/guides/bigquery?step=3).
+* Install <Constant name="core" /> using the [installation instructions](/docs/local/install-dbt) for your operating system.
+* Complete appropriate Setting up and Loading data steps in the Quickstart for <Constant name="dbt" /> series. For example, for BigQuery, complete [Setting up (in BigQuery)](/guides/bigquery?step=2) and [Loading data (BigQuery)](/guides/bigquery?step=3).
 * [Create a GitHub account](https://github.com/join) if you don't already have one.
 
 ### Create a starter project
@@ -30,13 +30,16 @@ After setting up BigQuery to work with dbt, you are ready to create a starter pr
 
 ## Create a repository
 
-The following steps use [GitHub](https://github.com/) as the Git provider for this guide, but you can use any Git provider. You should have already [created a GitHub account](https://github.com/join).
+The following steps use [GitHub](https://github.com/) as the <Constant name="git" /> provider for this guide, but you can use any <Constant name="git" /> provider. You should have already [created a GitHub account](https://github.com/join).
 
 1. [Create a new GitHub repository](https://github.com/new) named `dbt-tutorial`.
-2. Select **Public** so the repository can be shared with others. You can always make it private later.
+2. Select one of the following (You can always change this setting later):
+    - **Private (recommended):** To secure your environment and prevent private information (like credentials) from being public.
+    - **Public:** If you need to easily collaborate and share with others, especially outside of your organization. 
+
 3. Leave the default values for all other settings.
 4. Click **Create repository**.
-5. Save the commands from "…or create a new repository on the command line" to use later in [Commit your changes](https://docs.getdbt.com/guides/manual-install?step=6).
+5. Save the commands from "…or create a new repository on the command line" to use later in [Commit your changes](/guides/manual-install?step=6).
 
 ## Create a project
 
@@ -97,7 +100,7 @@ models:
 
 ## Connect to BigQuery
 
-When developing locally, dbt connects to your <Term id="data-warehouse" /> using a [profile](/docs/core/connect-data-platform/connection-profiles), which is a YAML file with all the connection details to your warehouse. 
+When developing locally, dbt connects to your <Term id="data-warehouse" /> using a [profile](/docs/local/profiles.yml), which is a YAML file with all the connection details to your warehouse. 
 
 1. Create a file in the `~/.dbt/` directory named `profiles.yml`.
 2. Move your BigQuery keyfile into this directory.
@@ -162,7 +165,7 @@ You should have an output that looks like this:
 
 Commit your changes so that the repository contains the latest code.
 
-1. Link the GitHub repository you created to your dbt project by running the following commands in Terminal. Make sure you use the correct git URL for your repository, which you should have saved from step 5 in [Create a repository](https://docs.getdbt.com/guides/manual-install?step=2).
+1. Link the GitHub repository you created to your dbt project by running the following commands in Terminal. Make sure you use the correct git URL for your repository, which you should have saved from step 5 in [Create a repository](/guides/manual-install?step=2).
 
 ```shell
 git init
@@ -459,17 +462,17 @@ You need to commit the changes you made to the project so that the repository ha
 
 1. Add all your changes to git: `git add -A`
 2. Commit your changes: `git commit -m "Add customers model, tests, docs"`
-3. Push your changes to your repository: `git push`
+3. Push your changes to your repository: `git push -u origin add-customers-model`
 4. Navigate to your repository, and open a pull request to merge the code into your master branch.
 
 ## Schedule a job
 
-We recommend using dbt Cloud as the easiest and most reliable way to [deploy jobs](/docs/deploy/deployments) and automate your dbt project in production. 
+We recommend using <Constant name="dbt" /> as the easiest and most reliable way to [deploy jobs](/docs/deploy/deployments) and automate your dbt project in production. 
 
 For more info on how to get started, refer to [create and schedule jobs](/docs/deploy/deploy-jobs#create-and-schedule-jobs).
 
-<Lightbox src="/img/docs/dbt-cloud/deployment/run-overview.jpg" width="90%" title="Overview of a dbt Cloud job run, which includes the job run details, trigger type, commit SHA, environment name, detailed run steps, logs, and more."/>
+<Lightbox src="/img/docs/dbt-platform/deployment/run-overview.png" width="90%" title="Overview of a dbt job run, which includes the job run details, trigger type, commit SHA, environment name, detailed run steps, logs, and more."/>
 
-For more information about using dbt Core to schedule a job, refer [dbt airflow](/blog/dbt-airflow-spiritual-alignment) blog post.
+For more information about using <Constant name="core" /> to schedule a job, refer [dbt airflow](/blog/dbt-airflow-spiritual-alignment) blog post.
 
 </div>

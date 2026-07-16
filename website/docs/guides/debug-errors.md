@@ -6,9 +6,8 @@ displayText: Debugging errors
 hoverSnippet: Learn about errors and the art of debugging those errors.
 icon: 'guides'
 hide_table_of_contents: true
-tags: ['Troubleshooting', 'dbt Core', 'dbt Cloud']
+tags: ['Troubleshooting', 'dbt Core', 'dbt platform']
 level: 'Beginner'
-recently_updated: true
 ---
 
 <div style={{maxWidth: '900px'}}>
@@ -23,10 +22,9 @@ Learning how to debug is a skill, and one that will make you great at your role!
     - The `target/compiled` directory contains `select` statements that you can run in any query editor.
     - The `target/run` directory contains the SQL dbt executes to build your models.
     - The `logs/dbt.log` file contains all the queries that dbt runs, and additional logging. Recent errors will be at the bottom of the file.
-    - **dbt Cloud users**: Use the above, or the `Details` tab in the command output.
-    - **dbt Core users**: Note that your code editor _may_ be hiding these files from the tree <Term id="view" /> [VSCode help](https://stackoverflow.com/questions/42891463/how-can-i-show-ignored-files-in-visual-studio-code)).
+    - **<Constant name="dbt" /> users**: Use the above, or the `Details` tab in the command output.
+    - **<Constant name="core" /> users**: Note that your code editor _may_ be hiding these files from the tree <Term id="view" /> [VSCode help](https://stackoverflow.com/questions/42891463/how-can-i-show-ignored-files-in-visual-studio-code)).
 5. If you are really stuck, try [asking for help](/community/resources/getting-help). Before doing so, take the time to write your question well so that others can diagnose the problem quickly.
-
 
 ## Types of errors
 Below, we've listed some of common errors. It's useful to understand what dbt is doing behind the scenes when you execute a command like `dbt run`.
@@ -41,7 +39,7 @@ Below, we've listed some of common errors. It's useful to understand what dbt is
 Let's dive into some of these errors and how to debug 👇. Note: not all errors are covered here!
 
 ## Runtime Errors
-_Note: If you're using the dbt Cloud IDE to work on your project, you're unlikely to encounter these errors._
+_Note: If you're using the <Constant name="studio_ide" /> to work on your project, you're unlikely to encounter these errors._
 
 ### Not a dbt project
 
@@ -109,7 +107,7 @@ To view your profiles.yml file, run:
 open /Users/alice/.dbt
 ```
 
-  - Then execute `open /Users/alice/.dbt` (adjusting accordingly), and check that you have a `profiles.yml` file. If you do not have one, set one up using [these docs](/docs/core/connect-data-platform/profiles.yml)
+  - Then execute `open /Users/alice/.dbt` (adjusting accordingly), and check that you have a `profiles.yml` file. If you do not have one, set one up using [these docs](/docs/local/profiles.yml)
 
 
 </details>
@@ -191,7 +189,7 @@ hello: world # this is not allowed
 
 ## Compilation Errors
 
-_Note: if you're using the dbt Cloud IDE to work on your dbt project, this error often shows as a red bar in your command prompt as you work on your dbt project. For dbt Core users, these won't get picked up until you run `dbt run` or `dbt compile`._
+_Note: if you're using the <Constant name="studio_ide" /> to work on your dbt project, this error often shows as a red bar in your command prompt as you work on your dbt project. For <Constant name="core" /> users, these won't get picked up until you run `dbt run` or `dbt compile`._
 
 
 ### Invalid `ref` function
@@ -235,7 +233,7 @@ To fix this:
 - Use the error message to find your mistake
 
 To prevent this:
-- _(dbt Core users only)_ Use snippets to auto-complete pieces of Jinja ([atom-dbt package](https://github.com/dbt-labs/atom-dbt))
+- _(<Constant name="core" /> only)_ Use snippets to auto-complete pieces of Jinja ([atom-dbt package](https://github.com/dbt-labs/atom-dbt))
 
 </details>
 
@@ -256,7 +254,7 @@ Compilation Error
     4  | - name: customers
     5  |     columns:
     6  |       - name: customer_id
-    7  |         tests:
+    7  |         data_tests:
     8  |           - unique
 
     Raw Error:
@@ -270,13 +268,12 @@ Compilation Error
 
 Usually, it's to do with indentation — here's the offending YAML that caused this error:
 ```yaml
-version: 2
 
 models:
   - name: customers
       columns: # this is indented too far!
       - name: customer_id
-        tests:
+        data_tests:
           - unique
           - not_null
 ```
@@ -287,7 +284,7 @@ To fix this:
 - Find the mistake and fix it
 
 To prevent this:
-- (dbt Core users) Turn on indentation guides in your code editor to help you inspect your files
+- (<Constant name="core" /> users) Turn on indentation guides in your code editor to help you inspect your files
 - Use a YAML validator ([example](http://www.yamllint.com/)) to debug any issues
 
 </details>
@@ -325,7 +322,6 @@ Found a cycle: model.jaffle_shop.customers --> model.jaffle_shop.stg_customers -
 
 ```
 
-
 Your dbt DAG is not acyclic, and needs to be fixed!
 - Update the `ref` functions to break the cycle.
 - If you need to reference the current model, use the [`{{ this }}` variable](/reference/dbt-jinja-functions/this) instead.
@@ -347,11 +343,11 @@ Database Error in model customers (models/customers.sql)
 
 90% of the time, there's a mistake in the SQL of your model. To fix this:
 1. Open the offending file:
-    - **dbt Cloud:** Open the model (in this case `models/customers.sql` as per the error message)
-    - **dbt Core:** Open the model as above. Also open the compiled SQL (in this case `target/run/jaffle_shop/models/customers.sql` as per the error message) — it can be useful to show these side-by-side in your code editor.
+    - **<Constant name="dbt" />:** Open the model (in this case `models/customers.sql` as per the error message)
+    - **<Constant name="core" />:** Open the model as above. Also open the compiled SQL (in this case `target/run/jaffle_shop/models/customers.sql` as per the error message) — it can be useful to show these side-by-side in your code editor.
 2. Try to re-execute the SQL to isolate the error:
-    - **dbt Cloud:** Use the `Preview` button from the model file
-    - **dbt Core:** Copy and paste the compiled query into a query runner (e.g. the Snowflake UI, or a desktop app like DataGrip / TablePlus) and execute it
+    - **<Constant name="dbt" />:** Use the `Preview` button from the model file
+    - **<Constant name="core" />:** Copy and paste the compiled query into a query runner (e.g. the Snowflake UI, or a desktop app like DataGrip / TablePlus) and execute it
 3. Fix the mistake.
 4. Rerun the failed model.
 
@@ -362,8 +358,8 @@ In some cases, these errors might occur as a result of queries that dbt runs "be
 - For incremental models, and snapshots: merge, update and insert statements
 
 In these cases, you should check out the logs — this contains _all_ the queries dbt has run.
-- **dbt Cloud**: Use the `Details` in the command output to see logs, or check the `logs/dbt.log` file
-- **dbt Core**: Open the `logs/dbt.log` file.
+- **<Constant name="dbt" />**: Use the `Details` in the command output to see logs, or check the `logs/dbt.log` file
+- **<Constant name="core" />**: Open the `logs/dbt.log` file.
 
 :::tip Isolating errors in the logs
 If you're hitting a strange `Database Error`, it can be a good idea to clean out your logs by opening the file, and deleting the contents. Then, re-execute `dbt run` for _just_ the problematic model. The logs will _just_ have the output you're looking for.
@@ -373,7 +369,7 @@ If you're hitting a strange `Database Error`, it can be a good idea to clean out
 ## Common pitfalls
 
 ### `Preview` vs. `dbt run`
-_(dbt Cloud IDE users only)_
+_(<Constant name="studio_ide" /> users only)_
 
 There's two interfaces that look similar:
 - The `Preview` button executes whatever SQL statement is in the active tab. It is the equivalent of grabbing the compiled `select` statement from the `target/compiled` directory and running it in a query editor to see the results.
@@ -383,10 +379,10 @@ Using the `Preview` button is useful when developing models and you want to visu
 
 
 ### Forgetting to save files before running
-We’ve all been there. dbt uses the last-saved version of a file when you execute a command. In most code editors, and in the dbt Cloud IDE, a dot next to a filename indicates that a file has unsaved changes. Make sure you hit `cmd + s` (or equivalent) before running any dbt commands — over time it becomes muscle memory.
+We've all been there. dbt uses the last-saved version of a file when you execute a command. In most code editors, and in the <Constant name="studio_ide" />, a dot next to a filename indicates that a file has unsaved changes. Make sure you hit `cmd + s` (or equivalent) before running any dbt commands — over time it becomes muscle memory.
 
 ### Editing compiled files
-_(More likely for dbt Core users)_
+_(More likely for <Constant name="core" /> users)_
 
 If you just opened a SQL file in the `target/` directory to help debug an issue, it's not uncommon to accidentally edit that file! To avoid this, try changing your code editor settings to grey out any files in the `target/` directory — the visual cue will help avoid the issue.
 
@@ -395,7 +391,7 @@ If you just opened a SQL file in the `target/` directory to help debug an issue,
 Here are some useful FAQs to help you debug your dbt project:
 
 - <FAQ path="Troubleshooting/generate-har-file" />
-- <FAQ path="Troubleshooting/auth-expired-error" />  
+- <FAQ path="Troubleshooting/refresh-snowflake-oauth-credentials" />  
 - <FAQ path="Troubleshooting/could-not-parse-project" />
 - <FAQ path="Troubleshooting/gitignore" />
 - <FAQ path="Troubleshooting/job-memory-limits" />

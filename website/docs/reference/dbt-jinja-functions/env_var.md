@@ -1,46 +1,95 @@
 ---
-title: " About env_var function"
+title: "About env_var function"
 sidebar_label: "env_var"
 id: "env_var"
-description: "Incorporate environment variables using `en_var` function."
+description: "Incorporate environment variables using `env_var` function."
 ---
 
-The `env_var` function can be used to incorporate Environment Variables from the system into your dbt project. This `env_var` function can be used in your `profiles.yml` file, the `dbt_project.yml` file, the `sources.yml` file, your `schema.yml` files, and in model `.sql` files. Essentially `env_var` is available anywhere dbt processes jinja code.
+import Envvarsecrets from '/snippets/_env-var-secrets.md';
+import EnvFileBeta from '/snippets/_env-file-beta.md';
+import EnvFileConsiderations from '/snippets/_env-file-considerations.md';
 
-When used in a `profiles.yml` file (to avoid putting credentials on a server), it can be used like this:
+<Envvarsecrets />
 
-<File name='profiles.yml'>
+If the `DBT_USER` and `DBT_ENV_SECRET_PASSWORD` environment variables are present when dbt is invoked, dbt will use these variables in your connection configuration &mdash; for example, in `profiles.yml` when running locally, or in [connection profiles](/docs/platform/about-profiles) if you have a <Constant name="dbt_platform" /> project. If your project references environment variables that aren't set, dbt will raise a compilation error.
 
-```yaml
-profile:
-  target: prod
-  outputs:
-    prod:
-      type: postgres
-      host: 127.0.0.1
-      # IMPORTANT: Make sure to quote the entire Jinja string here
-      user: "{{ env_var('DBT_USER') }}"
-      password: "{{ env_var('DBT_PASSWORD') }}"
-      ....
+
+<VersionBlock firstVersion="1.12">
+
+### Using the `.env` file
+
+<EnvFileBeta />
+
+When running dbt locally ([<Constant name="fusion"/> CLI](/docs/local/install-dbt?version=2), dbt VS Code extension, and <Constant name="core"/> v1.12), dbt automatically loads environment variables from a `.env` file in your current working directory (where you run the dbt command). Shell environment variables take precedence over values in `.env` and will not be overridden by the file.
+
+Create a `.env` file (typically at the root of your dbt project) and define variables using `KEY=value` syntax. For example:
+
+<File name='.env'>
+
+```bash
+DBT_USER=user
+DBT_PASSWORD=password
+DBT_SCHEMA=dbt_schema
 ```
 
 </File>
 
-If the `DBT_USER` and `DBT_PASSWORD` environment variables are present when dbt is invoked, then these variables will be pulled into the profile as expected. If any environment variables are not set, then dbt will raise a compilation error.
+Reference them in your `profiles.yml` using `env_var()`:
 
-:::info Integer Environment Variables
-If passing an environment variable for a property that uses an integer type (for example, `port`, `threads`), be sure to add a filter to the Jinja expression, as shown here. Otherwise, dbt will raise an `['threads']: '1' is not of type 'integer'` error.
-`{{ env_var('DBT_THREADS') | int }}` or `{{ env_var('DB_PORT') | as_number }}` 
+<File name='~/.dbt/profiles.yml'>
+
+```yaml
+my_profile:
+  target: dev
+  outputs:
+    dev:
+      type: postgres
+      host: localhost
+      user: "{{ env_var('DBT_USER') }}"
+      password: "{{ env_var('DBT_PASSWORD') }}"
+      schema: "{{ env_var('DBT_SCHEMA') }}"
+      port: 5432
+      threads: 4
+```
+
+</File>
+
+<EnvFileConsiderations />
+
+</VersionBlock>
+
+### Converting env_vars
+
+Environment variables are always strings. When using them for configurations that expect integers or booleans, you must explicitly convert the value to the correct type.
+
+Use a Jinja filter to convert the string to the correct type:
+
+- **Integers** &mdash; Convert the string to a number using the `int` or [`as_number`](/reference/dbt-jinja-functions/as_number) filter to avoid errors like `'1' is not of type 'integer'`. For example, `"{{ env_var('DBT_THREADS') | int }}"` or `"{{ env_var('DB_PORT') | as_number }}"`.
+
+- **Booleans** &mdash; Convert the string to a boolean explicitly using the [`as_bool`](/reference/dbt-jinja-functions/as_bool) filter. For example, `"{{ env_var('DBT_PERSIST_DOCS_RELATION', False) | as_bool }}"`.
+
+For boolean defaults, use capitalized `True` or `False`. Using lowercase `true` or `false` will be treated as a string and can result in unexpected results.
+
+For example, to disable [`persist_docs`](/reference/resource-configs/persist_docs) using environment variables:
+
+<File name='dbt_project.yml'>
+
+```yml
++persist_docs:
+  relation: "{{ env_var('DBT_PERSIST_DOCS_RELATION', False) | as_bool }}"
+  columns: "{{ env_var('DBT_PERSIST_DOCS_COLUMNS', False) | as_bool }}"
+```
+</File>
+
+:::caution Quoting, curly brackets, & you
+
+Be sure to quote the entire Jinja string. Otherwise, the YAML parser will be confused by the Jinja curly brackets.
 
 :::
 
-:::caution Quoting, Curly Brackets, & You
+### Default values
 
-Be sure to quote the entire jinja string (as shown above), or else the YAML parser will be confused by the Jinja curly brackets.
-
-:::
-
-`env_var` accepts a second, optional argument for default value, like so:
+You can also provide a default value as a second argument:
 
 <File name='dbt_project.yml'>
 
@@ -96,7 +145,12 @@ Compiles to:
 select 1 as id
 ```
 
-### dbt Cloud usage
+### dbt platform usage
 
-If you are using dbt Cloud, you must adhere to the naming conventions for environment variables. Environment variables in dbt Cloud must be prefixed with `DBT_` (including `DBT_ENV_CUSTOM_ENV_` or `DBT_ENV_SECRET`). Environment variables keys are uppercased and case sensitive. When referencing `{{env_var('DBT_KEY')}}` in your project's code, the key must match exactly the variable defined in dbt Cloud's UI.
+If you're using <Constant name="dbt_platform" />, environment variables must be:
+- Prefixed with `DBT_` (including `DBT_ENV_CUSTOM_ENV_` or `DBT_ENV_SECRET`)
+- Uppercase
+- Case-sensitive
+
+When referencing `{{env_var('DBT_KEY')}}` in your project's code, the key must exactly match the variable defined in the <Constant name="dbt_platform" /> user interface.
 

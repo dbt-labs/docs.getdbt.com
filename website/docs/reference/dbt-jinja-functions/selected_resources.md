@@ -20,9 +20,7 @@ empty during parsing. Please read the information on this page to effectively us
 
 ### Usage
 
-The `selected_resources` context variable is a list of all the resources selected by 
-the current dbt command selector. Its value depends on the usage of parameters like
-`--select`, `--exclude` and `--selector`.
+The `selected_resources` context variable is a list of all the resources selected by the current dbt command selector. Its value depends on the usage of parameters like <VersionBlock lastVersion="1.11">`--select`, `--exclude` and `--selector`.</VersionBlock><VersionBlock firstVersion="1.12">`--select` and `--exclude`.</VersionBlock>
 
 For a given run it will look like:
 

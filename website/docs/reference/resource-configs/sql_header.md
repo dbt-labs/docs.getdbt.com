@@ -4,12 +4,24 @@ description: "Sql_header - Read this in-depth guide to learn about configuration
 datatype: "string"
 ---
 
+:::info `sql_header` does not support Jinja or macros like `ref` and `source`
+
+Unlike [pre-hooks and post-hooks](/reference/resource-configs/pre-hook-post-hook), macros like [`ref`](/reference/dbt-jinja-functions/ref), [`source`](/reference/dbt-jinja-functions/source), and references like [`{{ this }}`](/reference/dbt-jinja-functions/this), aren't supported.
+
+The primary function of `set_sql_header` is fairly limited. It's intended to: 
+- [Create UDFs](/reference/resource-configs/sql_header#create-a-bigquery-temporary-udf)
+- [Set script variables](https://cloud.google.com/bigquery/docs/reference/standard-sql/procedural-language) (BigQuery) 
+- [Set temporary session parameters](/reference/resource-configs/sql_header#set-snowflake-session-parameters-for-a-particular-model) (Snowflake)
+
+:::
+
 <Tabs
   defaultValue="models"
   values={[
     { label: 'Models', value: 'models', },
     { label: 'Seeds', value: 'seeds', },
     { label: 'Snapshots', value: 'snapshots', },
+    { label: 'Property file', value: 'property-yaml', },
   ]
 }>
 <TabItem value="models">
@@ -82,6 +94,48 @@ snapshots:
 
 </TabItem>
 
+<TabItem value="property-yaml">
+
+Setting `sql_header` in the `config` of a [generic data test](/docs/build/data-tests) is available starting in <Constant name="core" /> v1.12. Enable the [`require_sql_header_in_test_configs`](/reference/global-configs/behavior-flags/require_sql_header_in_test_configs) flag to use `sql_header` in `properties.yml` for generic data tests.
+
+
+Here's an example of a model-level configuration:
+
+<File name="models/properties.yml">
+
+```yaml
+models:
+  - name: orders
+    data_tests:
+      - unique:
+          name: unique_orders_order_id
+          arguments:
+            column_name: order_id
+          config:
+            sql_header: "-- SQL_HEADER_TEST_MARKER"
+```
+</File>
+
+You can also use `sql_header` for column-level data tests:
+
+<File name="models/properties.yml">
+
+```yaml
+models:
+  - name: orders
+    columns:
+      - name: order_id
+        data_tests:
+          - not_null:
+              name: not_null_orders_order_id
+              config:
+                sql_header: "-- SQL_HEADER_TEST_MARKER"
+```
+
+</File>
+
+</TabItem>
+
 </Tabs>
 
 
@@ -89,6 +143,14 @@ snapshots:
 An optional configuration to inject SQL above the `create table as` and `create view as` statements that dbt executes when building models and snapshots.
 
 `sql_header`s can be set using the config, or by `call`-ing the `set_sql_header` macro (example below).
+
+<VersionBlock firstVersion="1.12">
+
+You can also set `sql_header` in the `config` of a [generic data test](/docs/build/data-tests) at the model or column level in your `properties.yml` file. Use `sql_header` to define SQL that should run before the test executes (for example, to create temporary functions, set session parameters, or declare variables required by the test query). dbt runs this SQL before executing the test.
+
+Enable the [`require_sql_header_in_test_configs`](/reference/global-configs/behavior-flags/require_sql_header_in_test_configs) flag to use `sql_header` for data tests. For more information, refer to [Data test configurations](/reference/data-test-configs).
+
+</VersionBlock>
 
 ## Comparison to pre-hooks
 [Pre-hooks](/reference/resource-configs/pre-hook-post-hook) also provide an opportunity to execute SQL before model creation, as a _preceding_ query. In comparison, SQL in a `sql_header` is run in the same _query_ as the `create table|view as` statement.
@@ -150,3 +212,5 @@ select yes_no_to_boolean(yes_no) from {{ ref('other_model') }}
 ```
 
 </File>
+
+

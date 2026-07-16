@@ -10,12 +10,12 @@ displayed_sidebar: "docs"
 
 - [Discourse](https://discourse.getdbt.com/t/3180)
 - [Changelog](https://github.com/dbt-labs/dbt-core/blob/1.0.latest/CHANGELOG.md)
-- [dbt Core CLI Installation guide](/docs/core/installation-overview)
-- [Cloud upgrade guide](/docs/dbt-versions/upgrade-dbt-version-in-cloud)
+- [<Constant name="core" /> CLI Installation guide](/docs/local/install-dbt)
+- [Cloud upgrade guide](/docs/dbt-versions/upgrade-dbt-platform-version)
 
 ## What to know before upgrading
 
-dbt Core major version 1.0 includes a number of breaking changes! Wherever possible, we have offered backwards compatibility for old behavior, and (where necessary) made migration simple.
+<Constant name="core" /> major version 1.0 includes a number of breaking changes! Wherever possible, we have offered backwards compatibility for old behavior, and (where necessary) made migration simple.
 
 ### Renamed fields in `dbt_project.yml`
 
@@ -31,7 +31,7 @@ dbt Core major version 1.0 includes a number of breaking changes! Wherever possi
 
 ### Tests
 
-The two **test types** are now "singular" and "generic" (instead of "data" and "schema", respectively). The `test_type:` selection method accepts `test_type:singular` and `test_type:generic`. (It will also accept `test_type:schema` and `test_type:data` for backwards compatibility.) **Not backwards compatible:** The `--data` and `--schema` flags to dbt test are no longer supported, and tests no longer have the tags `'data'` and `'schema'` automatically applied. Updated docs: [tests](/docs/build/data-tests), [test selection](/reference/node-selection/test-selection-examples), [selection methods](/reference/node-selection/methods).
+The two **test types** are now "singular" and "generic" (instead of "data" and "schema", respectively). The `test_type:` selection method accepts `test_type:singular` and `test_type:generic`. (It will also accept `test_type:schema` and `test_type:data` for backwards compatibility.) **Not backwards compatible:** The `--data` and `--schema` flags to dbt test are no longer supported, and tests no longer have the tags `'data'` and `'schema'` automatically applied. Updated docs: [data tests](/docs/build/data-tests), [test selection](/reference/node-selection/test-selection-examples), [selection methods](/reference/node-selection/methods).
 
 The `greedy` flag/property has been renamed to **`indirect_selection`**, which is now eager by default. **Note:** This reverts test selection to its pre-v0.20 behavior by default. `dbt test -s my_model` _will_ select multi-parent tests, such as `relationships`, that depend on unselected resources. To achieve the behavior change in v0.20 + v0.21, set `--indirect-selection=cautious` on the CLI or `indirect_selection: cautious` in YAML selectors. Updated docs: [test selection examples](/reference/node-selection/test-selection-examples), [yaml selectors](/reference/node-selection/yaml-selectors).
 
@@ -70,7 +70,7 @@ Several under-the-hood changes from past minor versions, tagged with deprecation
 - Add [metrics](/docs/build/build-metrics-intro), a new node type
 - [Generic tests](/best-practices/writing-custom-generic-tests) can be defined in `tests/generic` (new), in addition to `macros/` (as before)
 - [Parsing](/reference/parsing): partial parsing and static parsing have been turned on by default.
-- [Global configs](/reference/global-configs/about-global-configs) have been standardized. Related updates to [global CLI flags](/reference/global-configs/about-global-configs) and [`profiles.yml`](/docs/core/connect-data-platform/profiles.yml).
+- [Global configs](/reference/global-configs/about-global-configs) have been standardized. Related updates to [global CLI flags](/reference/global-configs/about-global-configs) and [`profiles.yml`](/docs/local/profiles.yml).
 - [The `init` command](/reference/commands/init) has a whole new look and feel. It's no longer just for first-time users.
 - Add `result:<status>` subselectors for smarter reruns when dbt models have errors and tests fail. See examples: [Pro-tips for Workflows](/best-practices/best-practice-workflows#pro-tips-for-workflows)
 - Secret-prefixed [env vars](/reference/dbt-jinja-functions/env_var) are now allowed only in `profiles.yml` + `packages.yml`

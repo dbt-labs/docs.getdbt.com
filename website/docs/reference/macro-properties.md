@@ -5,21 +5,23 @@ id: macro-properties
 
 import PropsCallout from '/snippets/_config-prop-callout.md';
 
-Macro properties can be declared in any `properties.yml` file. <PropsCallout title={frontMatter.title}/> 
+You can declare macro properties and configs in `.yml` files in your project. <PropsCallout title={frontMatter.title}/> 
+
+Macros support a `config` block. You can define `meta` and `docs` within `config`. 
 
 You can name these files `whatever_you_want.yml` and nest them arbitrarily deep in sub-folders.
 
 <File name='macros/<filename>.yml'>
 
 ```yml
-version: 2
 
 macros:
   - name: <macro name>
     [description](/reference/resource-properties/description): <markdown_string>
-    [docs](/reference/resource-configs/docs):
-      show: true | false
-    [meta](/reference/resource-configs/meta): {<dictionary>}
+    config:
+      [docs](/reference/resource-configs/docs):
+        show: true | false
+      [meta](/reference/resource-configs/meta): {<dictionary>}
     [arguments](/reference/resource-properties/arguments):
       - name: <arg name>
         [type](/reference/resource-properties/arguments#type): <string>
@@ -28,6 +30,30 @@ macros:
 
   - name: ... # declare properties of additional macros
 
+```
+
+</File>
+
+## Example
+
+<File name='macros/schema.yml'>
+
+```yaml
+macros:
+  - name: cents_to_dollars
+    description: Converts a numeric column from cents to dollars.
+    config:
+      docs:
+        show: true
+      meta:
+        owner: analytics
+    arguments:
+      - name: column_name
+        type: column
+        description: The column to convert
+      - name: precision
+        type: integer
+        description: Number of decimal places. Defaults to 2.
 ```
 
 </File>

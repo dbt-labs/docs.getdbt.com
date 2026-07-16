@@ -141,9 +141,21 @@ function QuickstartTOC() {
       item.classList.toggle(clsx(style.active), isActive);
     });
 
-    // Scroll to the top of the page when the user clicks next
-    if (window.scrollY > 0) {
-      window.scrollTo(0, 0);
+    // Scroll to the active step content area, accounting for fixed navbar
+    const activeStepWrapper = document.querySelector(
+      `.${style.stepWrapper}[data-step='${activeStep}']`
+    );
+    if (activeStepWrapper) {
+      const navbarHeight = parseInt(
+        getComputedStyle(document.documentElement).getPropertyValue('--ifm-navbar-height') || '85'
+      );
+      const elementPosition = activeStepWrapper.getBoundingClientRect().top + window.scrollY;
+      const offsetPosition = elementPosition - navbarHeight - 20; // Extra 20px padding
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
     }
 
     // Set local storage to the active step

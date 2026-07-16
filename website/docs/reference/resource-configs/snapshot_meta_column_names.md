@@ -83,6 +83,30 @@ To avoid any unintentional data modification, dbt will **not** automatically app
 
 :::
 
+## How [`dbt_scd_id`](/reference/resource-configs/snapshot_meta_column_names#default) is calculated
+
+`dbt_scd_id` is a unique identifier generated for each row in a snapshot. dbt uses this identifier to detect changes in source records and manage versioning in slowly changing dimension (SCD) snapshots.
+
+dbt's snapshot macro handles `dbt_scd_id` in [the dbt-adapters repository](https://github.com/dbt-labs/dbt-adapters/blob/b12c9870d6134905ab09bfda609ce8f81bc4b40a/dbt/include/global_project/macros/materializations/snapshots/strategies.sql#L38).
+
+The hash is computed by concatenating values of the snapshot's [`unique_key`](/reference/resource-configs/unique_key) and either the `updated_at` timestamp (for the timestamp strategy) or the values in `check_cols` (for the check strategy), and then hashing the resulting string using the `md5` function.  This enables dbt to track whether the contents of a row have changed between runs.
+
+Here's an example of a custom hash calculation that combines multiple fields into a single string and hashes the result using `md5`.
+
+ ```sql
+ md5(
+  coalesce(cast(unique_key1 as string), '') || '|' ||
+  coalesce(cast(unique_key2 as string), '') || '|' ||
+  coalesce(cast(updated_at as string), '')
+)
+```
+The exact fields included in the hash depend on the snapshot strategy:
+
+- [`timestamp` strategy](/reference/resource-configs/strategy#use-the-timestamp-strategy): The hash typically combines the [`unique_key`](/reference/resource-configs/unique_key) columns and the `updated_at` value.
+- [`check` strategy](/reference/resource-configs/strategy#use-the-check-strategy): The hash combines the `unique_key` columns and the values of the columns listed in [`check_cols`](/reference/resource-configs/check_cols).
+
+If you don’t want to use `md5`, you can customize the [dispatched macro](https://github.com/dbt-labs/dbt-adapters/blob/4b3966efc50b1d013907a88bee4ab8ebd022d17a/dbt-adapters/src/dbt/include/global_project/macros/materializations/snapshots/strategies.sql#L42-L47).  
+
 ## Example
 
 <File name='snapshots/schema.yml'>

@@ -9,7 +9,20 @@ Now that you've seen how we style our dbt projects, it's time to build your own.
 
 ## Pre-commit hooks
 
-Lastly, to ensure your style guide's automated rules are being followed without additional mental overhead to your team, you can use [pre-commit hooks](https://pre-commit.com/) to automatically check your code for style violations (and often fix them automagically) before it's committed. This is a great way to make sure your style guide is followed by all contributors. We recommend implementing this once you've settled on and published your style guide, and your codebase is conforming to it. This will ensure that all future commits follow the style guide. You can find an excellent set of open source pre-commit hooks for dbt from the community [here in the dbt-checkpoint project](https://github.com/dbt-checkpoint/dbt-checkpoint).
+You can use [pre-commit hooks](https://pre-commit.com/) to automatically check your code for style violations (and often fix them automagically) before you commit. This is a great way to make sure all contributors follow your style guide. We recommend implementing this once you've settled on and published your style guide, and your codebase is conforming to it. This will ensure that all future commits follow the style guide. You can find an excellent set of open source pre-commit hooks for dbt from the community [here in the dbt-checkpoint project](https://github.com/dbt-checkpoint/dbt-checkpoint).
+
+## dbt Project Evaluator
+
+The [`dbt_project_evaluator`](https://github.com/dbt-labs/dbt-project-evaluator) is a package that ensures compliance to [dbt's style guide and best practices](/best-practices/how-we-structure/1-guide-overview). The `dbt_project_evaluator` package highlights areas of a dbt project that are not aligned with dbt's best practices and provides recommendations on how to improve a project. This enables analytics engineers to determine exactly where their projects deviated from dbt's best practices and improve their projects on their own. The `dbt_project_evaluator` package covers the following categories: 
+
+- Modeling
+- Testing
+- Documentation
+- Structure
+- Performance
+- Governance
+
+For more information, see [Introducing the dbt_project_evaluator: Automatically evaluate your dbt project for alignment with best practices](/blog/align-with-dbt-project-evaluator).
 
 ## Style guide template
 
@@ -35,25 +48,25 @@ Things to note:
 
 ## Model Layers
 
-- Only models in `staging` should select from [sources](https://docs.getdbt.com/docs/building-a-dbt-project/using-sources).
-- Models not in the `staging` folder should select from [refs](https://docs.getdbt.com/reference/dbt-jinja-functions/ref).
+- Only models in `staging` should select from [sources](/docs/build/sources).
+- Models not in the `staging` folder should select from [refs](/reference/dbt-jinja-functions/ref).
 
 ## Model File Naming and Coding
 
 - All objects should be plural.  
-  Example: `stg_stripe__invoices.sql` vs. `stg_stripe__invoice.sql`
+  Example: `stg_orders.sql` vs. `stg_order.sql`
 
-- All models should use the naming convention `<type/dag_stage>_<source/topic>__<additional_context>`. See [this article](https://docs.getdbt.com/blog/stakeholder-friendly-model-names) for more information.
+- All models should use the naming convention `<type/dag_stage>_<source/topic>__<additional_context>`. See [this article](/blog/stakeholder-friendly-model-names) for more information.
 
-  - Models in the **staging** folder should use the source's name as the `<source/topic>` and the entity name as the `additional_context`.
+  - Models in the **staging** folder should use the source's name as the `<source/topic>` and the entity name as the `additional_context`. In a single-source project like Jaffle Shop, `stg_orders.sql` and `stg_customers.sql` are clear enough without the source prefix.
 
     Examples:
 
     - seed_snowflake_spend.csv
-    - base_stripe\_\_invoices.sql
-    - stg_stripe\_\_customers.sql
-    - stg_salesforce\_\_customers.sql
-    - int_customers\_\_unioned.sql
+    - stg_orders.sql
+    - stg_customers.sql
+    - stg_salesforce__customers.sql
+    - int_customers__unioned.sql
     - fct_orders.sql
 
 - Schema, table, and column names should be in `snake_case`.
@@ -86,8 +99,8 @@ Things to note:
 
 ## Model Configurations
 
-- Model configurations at the [folder level](https://docs.getdbt.com/reference/model-configs#configuring-directories-of-models-in-dbt_projectyml) should be considered (and if applicable, applied) first.
-- More specific configurations should be applied at the model level [using one of these methods](https://docs.getdbt.com/reference/model-configs#apply-configurations-to-one-model-only).
+- Model configurations at the [folder level](/reference/model-configs#configuring-directories-of-models-in-dbt_projectyml) should be considered (and if applicable, applied) first.
+- More specific configurations should be applied at the model level [using one of these methods](/reference/model-configs#apply-configurations-to-one-model-only).
 - Models within the `marts` folder should be materialized as `table` or `incremental`.
   - By default, `marts` should be materialized as `table` within `dbt_project.yml`.
   - If switching to `incremental`, this should be specified in the model's configuration.

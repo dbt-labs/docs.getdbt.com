@@ -39,21 +39,22 @@ Configure a specific instance of a generic (schema) test:
 <File name='models/<filename>.yml'>
 
 ```yaml
-version: 2
 
 models:
   - name: large_table
     columns:
       - name: my_column
-        tests:
+        data_tests:
           - accepted_values:
-              values: ["a", "b", "c"]
+              arguments: # available in v1.10.5 and higher. Older versions can set the <argument_name> as the top-level property.
+                values: ["a", "b", "c"]
               config:
                 where: "date_column = current_date"
       - name: other_column
-        tests:
+        data_tests:
           - not_null:
-              where: "date_column < current_date"
+              config: 
+                where: "date_column < current_date"
 ```
 
 </File>
@@ -93,7 +94,7 @@ Set the default for all tests in a package or project:
 <File name='dbt_project.yml'>
 
 ```yaml
-tests:
+data_tests:
   +where: "date_column = current_date"
   
   <package_name>:
@@ -122,7 +123,7 @@ You can override this behavior by:
 - Defining a custom `get_where_subquery` in your root project
 - Defining a custom `<adapter>__get_where_subquery` [dispatch candidate](/reference/dbt-jinja-functions/dispatch) in your package or adapter plugin
 
-Within this macro definition, you can reference whatever custom macros you want, based on static inputs from the configuration. At simplest, this enables you to DRY up code that you'd otherwise need to repeat across many different `.yml` files. Because the `get_where_subquery` macro is resolved at runtime, your custom macros can also include [fetching the results of introspective database queries](https://docs.getdbt.com/reference/dbt-jinja-functions/run_query).
+Within this macro definition, you can reference whatever custom macros you want, based on static inputs from the configuration. At simplest, this enables you to DRY up code that you'd otherwise need to repeat across many different `.yml` files. Because the `get_where_subquery` macro is resolved at runtime, your custom macros can also include [fetching the results of introspective database queries](/reference/dbt-jinja-functions/run_query).
 
 #### Example 
 
@@ -131,12 +132,11 @@ Filter your test to the past N days of data, using dbt's cross-platform [`datead
 <File name='models/config.yml'>
 
 ```yml
-version: 2
 models:
   - name: my_model
     columns:
       - name: id
-        tests:
+        data_tests:
           - unique:
               config:
                 where: "date_column > __3_days_ago__"  # placeholder string for static config

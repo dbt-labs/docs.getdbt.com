@@ -21,9 +21,9 @@ packages:
     version: 0.4.0
   - package: calogica/dbt_expectations
     version: 0.4.1
-  - git: https://github.com/dbt-labs/dbt-audit-helper.git
+  - git: https://github.com/dbt-labs/dbt_audit_helper.git
     revision: 0.4.0
-  - git: "https://github.com/dbt-labs/dbt-labs-experimental-features" # git URL
+  - git: "https://github.com/dbt-labs/dbt_labs-experimental-features" # git URL
     subdirectory: "materialized-views" # name of subdirectory containing `dbt_project.yml`
     revision: 0.0.1
   - package: dbt-labs/snowplow
@@ -42,9 +42,9 @@ Installing dbt-labs/codegen@0.4.0
 Installing calogica/dbt_expectations@0.4.1
   Installed from version 0.4.1
   Up to date!
-Installing https://github.com/dbt-labs/dbt-audit-helper.git@0.4.0
+Installing https://github.com/dbt-labs/dbt_audit_helper.git@0.4.0
   Installed from revision 0.4.0
-Installing https://github.com/dbt-labs/dbt-labs-experimental-features@0.0.1
+Installing https://github.com/dbt-labs/dbt_labs-experimental-features@0.0.1
   Installed from revision 0.0.1
    and subdirectory materialized-views
 Installing dbt-labs/snowplow@0.13.0
@@ -60,9 +60,13 @@ Update your versions in packages.yml, then run dbt deps
 
 ## Predictable package installs
 
-Starting in dbt v1.7, dbt generates a `package-lock.yml` file in the root of your project. This file ensures consistent and predictable package installs by storing the exact versions (including commit SHAs) of all resolved packages specified in your `packages.yml` or `dependencies.yml`. This consistency is crucial for maintaining stability in development and production environments, preventing unexpected issues from new releases with potential bugs.
+dbt generates a `package-lock.yml` file in the root of your project. This file records the exact resolved versions (including commit SHAs) of all packages defined in your `packages.yml` or `dependencies.yml` file. The `package-lock.yml` file ensures consistent and repeatable installs across all environments.
 
-When you run `dbt deps`, dbt installs packages based on the locked versions in `package-lock.yml`. To update these locked versions, you must explicitly run `dbt deps --upgrade` and commit the updated `package-lock.yml` file. Storing this file in version control guarantees consistency across all environments and for all developers.
+When you run `dbt deps`, dbt installs packages based on the versions locked in the `package-lock.yml`. This means that as long as your packages file hasn’t changed, the exact same dependency versions will be installed even if newer versions of those packages have been released. This consistency is important to maintain stability in development and production environments, and to prevent unexpected issues from new releases with potential bugs.
+
+If the `packages.yml` file has changed (for example, a new package is added or a version range is updated), then `dbt deps` automatically resolves the new set of dependencies and updates the lock file accordingly. You can also manually trigger an upgrade by running `dbt deps --upgrade`.
+
+To maintain consistency, commit the `package-lock.yml` file to version control. This guarantees consistency across all environments and for all developers.
 
 ### Managing `package-lock.yml`
 
@@ -80,12 +84,10 @@ dbt deps --lock
 
 ### Forcing package updates
 
-To update all packages, even if `packages.yml` hasn’t changed, use the `--upgrade` flag:
+To update all packages, even if `packages.yml` hasn't changed, use the `--upgrade` flag:
 
 ```shell
-
 dbt deps --upgrade
-
 ```
 
 This is particularly useful for fetching the latest commits from the `main` branch of an internally maintained Git package. 

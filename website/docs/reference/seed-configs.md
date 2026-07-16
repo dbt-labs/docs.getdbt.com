@@ -45,14 +45,13 @@ seeds:
 <File name='seeds/properties.yml'>
 
 ```yaml
-version: 2
 
 seeds:
   - name: [<seed-name>]
     config:
       [quote_columns](/reference/resource-configs/quote_columns): true | false
       [column_types](/reference/resource-configs/column_types): {column_name: datatype}
-      [delimiter](/reference/resource-configs/grants): <string>
+      [delimiter](/reference/resource-configs/delimiter): <string>
 
 ```
 
@@ -78,26 +77,6 @@ seeds:
 <TabItem value="project-yaml">
 
 <File name='dbt_project.yml'>
-
-<VersionBlock lastVersion="1.8">
-
-```yaml
-seeds:
-  [<resource-path>](/reference/resource-configs/resource-path):
-    [+](/reference/resource-configs/plus-prefix)[enabled](/reference/resource-configs/enabled): true | false
-    [+](/reference/resource-configs/plus-prefix)[tags](/reference/resource-configs/tags): <string> | [<string>]
-    [+](/reference/resource-configs/plus-prefix)[pre-hook](/reference/resource-configs/pre-hook-post-hook): <sql-statement> | [<sql-statement>]
-    [+](/reference/resource-configs/plus-prefix)[post-hook](/reference/resource-configs/pre-hook-post-hook): <sql-statement> | [<sql-statement>]
-    [+](/reference/resource-configs/plus-prefix)[database](/reference/resource-configs/database): <string>
-    [+](/reference/resource-configs/plus-prefix)[schema](/reference/resource-properties/schema): <string>
-    [+](/reference/resource-configs/plus-prefix)[alias](/reference/resource-configs/alias): <string>
-    [+](/reference/resource-configs/plus-prefix)[persist_docs](/reference/resource-configs/persist_docs): <dict>
-    [+](/reference/resource-configs/plus-prefix)[full_refresh](/reference/resource-configs/full_refresh): <boolean>
-    [+](/reference/resource-configs/plus-prefix)[meta](/reference/resource-configs/meta): {<dictionary>}
-    [+](/reference/resource-configs/plus-prefix)[grants](/reference/resource-configs/grants): {<dictionary>}
-
-```
-</VersionBlock>
 
 <VersionBlock firstVersion="1.9">
 
@@ -131,7 +110,6 @@ seeds:
 <VersionBlock firstVersion="1.9">
 
 ```yaml
-version: 2
 
 seeds:
   - name: [<seed-name>]
@@ -152,28 +130,6 @@ seeds:
 ```
 </VersionBlock>
 
-<VersionBlock lastVersion="1.8">
-
-```yaml
-version: 2
-
-seeds:
-  - name: [<seed-name>]
-    config:
-      [enabled](/reference/resource-configs/enabled): true | false
-      [tags](/reference/resource-configs/tags): <string> | [<string>]
-      [pre_hook](/reference/resource-configs/pre-hook-post-hook): <sql-statement> | [<sql-statement>]
-      [post_hook](/reference/resource-configs/pre-hook-post-hook): <sql-statement> | [<sql-statement>]
-      [database](/reference/resource-configs/database): <string>
-      [schema](/reference/resource-properties/schema): <string>
-      [alias](/reference/resource-configs/alias): <string>
-      [persist_docs](/reference/resource-configs/persist_docs): <dict>
-      [full_refresh](/reference/resource-configs/full_refresh): <boolean>
-      [meta](/reference/resource-configs/meta): {<dictionary>}
-      [grants](/reference/resource-configs/grants): {<dictionary>}
-```
-
-</VersionBlock>
 </File>
 
 </TabItem>
@@ -223,7 +179,6 @@ To apply a configuration to one seed only, provide the full resource path (inclu
 <File name='seeds/marketing/properties.yml'>
 
 ```yml
-version: 2
 
 seeds:
   - name: utm_parameters

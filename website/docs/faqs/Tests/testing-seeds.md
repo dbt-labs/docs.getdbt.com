@@ -6,25 +6,23 @@ id: testing-seeds
 
 ---
 
-To test and document seeds, use a [schema file](/reference/configs-and-properties) and nest the configurations under a `seeds:` key
+To test and document seeds, use a [properties file](/reference/configs-and-properties) and nest the configurations under a `seeds:` key
 
 ## Example
 
-<File name='seeds/schema.yml'>
+<File name='seeds/properties.yml'>
 
 ```yml
-version: 2
-
 seeds:
   - name: country_codes
     description: A mapping of two letter country codes to country names
     columns:
       - name: country_code
-        tests:
+        data_tests:
           - unique
           - not_null
       - name: country_name
-        tests:
+        data_tests:
           - unique
           - not_null
 ```

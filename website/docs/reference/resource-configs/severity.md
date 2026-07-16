@@ -7,7 +7,7 @@ datatype: string
 keywords: [severity, error_if, warn_if]
 ---
 
-Tests return a number of failures—most often, this is the count of rows returned by the test query, but it could be a [custom calculation](/reference/resource-configs/fail_calc). Generally, if the number of failures is nonzero, the test returns an error. This makes sense, as test queries are designed to return all the rows you _don't_ want: duplicate records, null values, etc.
+Tests return a number of failures—most often, this is the count of rows returned by the test query, but it could be a [custom calculation](/reference/resource-configs/fail_calc). Generally, if the number of failures is nonzero, the test returns an error. This makes sense, as test queries are designed to return all the rows you _don't_ want: duplicate records, null values, and more.
 
 It's possible to configure tests to return warnings instead of errors, or to make the test status conditional on the number of failures returned. Maybe 1 duplicate record can count as a warning, but 10 duplicate records should count as an error.
 
@@ -22,7 +22,12 @@ Here's how those play in practice:
 - If `severity: error`, dbt will check the `error_if` condition first. If the error condition is met, the test returns an error. If it's not met, dbt will then check the `warn_if` condition (defaulted to `!=0`). If it's not specified or the warn condition is met, the test warns; if it's not met, the test passes.
 - If `severity: warn`, dbt will skip the `error_if` condition entirely and jump straight to the `warn_if` condition. If the warn condition is met, the test warns; if it's not met, the test passes.
 
-Note that test warn statuses will return errors instead if the [`--warn-error`](/reference/global-configs/warnings) flag is passed. Unless dbt is told to treat warnings as errors, a test with `warn` severity will never return an error.
+By default, a test with `severity: warn` will only ever return a warning, and not cause errors. However, you can promote warnings to errors using:
+
+* `--warn-error`: Promotes _all_ dbt warnings (including test warnings, Jinja warnings, deprecations, and so on.) to errors.
+* `--warn-error-options`: Promotes _only specific types_ of warnings. 
+
+For more information, refer to [Warnings](/reference/global-configs/warnings).
 
 <Tabs
   defaultValue="generic"
@@ -33,21 +38,20 @@ Note that test warn statuses will return errors instead if the [`--warn-error`](
     { label: 'Project level', value: 'project', },
   ]
 }>
-
+ 
 <TabItem value="generic">
 
-Configure a specific instance of a out-of-the-box generic test:
+Configure a specific instance of an out-of-the-box generic test:
 
 <File name='models/<filename>.yml'>
 
 ```yaml
-version: 2
 
 models:
   - name: large_table
     columns:
       - name: slightly_unreliable_column
-        tests:
+        data_tests:
           - unique:
               config:
                 severity: error
@@ -102,7 +106,7 @@ Set the default for all tests in a package or project:
 <File name='dbt_project.yml'>
 
 ```yaml
-tests:
+data_tests:
   +severity: warn  # all tests
 
   <package_name>:
@@ -114,3 +118,28 @@ tests:
 </TabItem>
 
 </Tabs>
+
+### Asserting an expected failure
+
+You can use `error_if` to assert an expected failure. This is useful in package integration tests, for example when validating that a generic test catches known-bad fixture data.
+
+In the following example, the test passes only when it returns one or more failing rows. If the test returns `0` rows, dbt raises an error because `0` satisfies `error_if: '<1'`.
+<File name='models/always_bad.yml'>
+
+```yaml
+models:
+  - name: always_bad
+    data_tests:
+      - dbt_utils.expression_is_true:
+          arguments:
+            expression: "amount > 0"
+          config:
+            error_if: "<1"
+            warn_if: "<0"
+```
+
+</File>
+
+In this example, the test passes only when it returns one or more failing rows. If the test returns `0` rows, dbt raises an error because `0` satisfies `error_if: '<1'`.
+
+Set `warn_if: '<0'` to take warning behavior out of play for this pattern. Without overriding `warn_if`, the default warning condition (`!=0`) can still apply.

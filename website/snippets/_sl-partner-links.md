@@ -6,35 +6,49 @@ The following tools integrate with the dbt Semantic Layer:
 
 <Card
     title="Power BI"
-    link="/docs/cloud-integrations/semantic-layer/power-bi"
+    link="/docs/platform-integrations/semantic-layer/power-bi"
     body="Use reports to query the dbt Semantic Layer with Power BI and produce dashboards with trusted data."
     icon="pbi"/>
 
  <Card
     title="Tableau"
-    link="/docs/cloud-integrations/semantic-layer/tableau"
+    link="/docs/platform-integrations/semantic-layer/tableau"
     body="Learn how to connect to Tableau for querying metrics and collaborating with your team."
     icon="tableau-software"/>
   
   <Card
     title="Google Sheets"
-    link="/docs/cloud-integrations/semantic-layer/gsheets"
+    link="/docs/platform-integrations/semantic-layer/gsheets"
     body="Discover how to connect to Google Sheets for querying metrics and collaborating with your team."
     icon="google-sheets-logo-icon"/>
 
   <Card
     title="Microsoft Excel"
-    link="/docs/cloud-integrations/semantic-layer/excel"
+    link="/docs/platform-integrations/semantic-layer/excel"
     body="Connect to Microsoft Excel to query metrics and collaborate with your team. Available for Excel Desktop or Excel Online."
     icon="excel"/>
 
   <div className="card-container">
     <Card
+      title="Omni"
+      link="https://docs.omni.co/integrations/dbt/semantic-layer"
+      body="Connect Omni to the dbt Semantic Layer to query trusted metrics directly within your Omni data model."
+      icon="omni"/>
+      <a href="https://docs.omni.co/integrations/dbt/semantic-layer"
+      className="external-link"
+      target="_blank"
+      rel="noopener noreferrer">
+      <Icon name='fa-external-link' />
+    </a>
+  </div>
+
+  <div className="card-container">
+    <Card
       title="Dot"
-      link="https://docs.getdot.ai/dot/integrations/dbt-semantic-layer"
+      link="https://docs.getdot.ai/integrations/semantic-layers/dbt-semantic-layer"
       body="Enable everyone to analyze data with AI in Slack or Teams."
       icon="dot-ai"/>
-      <a href="https://docs.getdot.ai/dot/integrations/dbt-semantic-layer"
+      <a href="https://docs.getdot.ai/integrations/semantic-layers/dbt-semantic-layer"
       className="external-link"
       target="_blank"
       rel="noopener noreferrer">
@@ -63,20 +77,6 @@ The following tools integrate with the dbt Semantic Layer:
     icon="klipfolio"
     link="https://support.klipfolio.com/hc/en-us/articles/18164546900759-PowerMetrics-Adding-dbt-Semantic-Layer-metrics"/>
     <a href="https://support.klipfolio.com/hc/en-us/articles/18164546900759-PowerMetrics-Adding-dbt-Semantic-Layer-metrics"
-    className="external-link"
-      target="_blank"
-      rel="noopener noreferrer">
-      <Icon name='fa-external-link' />
-    </a>
-</div>
-
-<div className="card-container">
-  <Card
-    title="Lightdash"
-    body="Check out how to connect, query, and consume reliable dbt metrics in real time "
-    link="https://docs.lightdash.com/references/dbt-semantic-layer"
-    icon="lightdash"/>
-    <a href="https://docs.lightdash.com/references/dbt-semantic-layer"
     className="external-link"
       target="_blank"
       rel="noopener noreferrer">
@@ -143,4 +143,4 @@ The following tools integrate with the dbt Semantic Layer:
 
 </div><br />
 
-Before you connect to these tools, you'll need to first [set up the dbt Semantic Layer](/docs/use-dbt-semantic-layer/setup-sl) and [generate a service token](/docs/dbt-cloud-apis/service-tokens) to create **Semantic Layer Only** and **Metadata Only** permissions.
+Before you connect to these tools, you'll need to first [set up the dbt Semantic Layer](/docs/use-dbt-semantic-layer/setup-sl) and [generate a service token](/docs/dbt-apis/service-tokens) to create **Semantic Layer Only** and **Metadata Only** permissions.

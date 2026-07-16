@@ -7,6 +7,8 @@ description: "dbt uses event_time to understand when an event occurred. When def
 datatype: string
 ---
 
+import EventTimeRequired from '/snippets/_event_time_required.md';
+
 <VersionCallout version="1.9" />
 
 <Tabs>
@@ -88,28 +90,6 @@ snapshots:
 ```
 </File>
 </VersionBlock>
-
-<VersionBlock lastVersion="1.8">
-
-<File name="models/modlename.sql">
-
-```sql
-
-{{ config(
-    event_time: 'my_time_field'
-) }}
-```
-
-</File>
-
-
-import SnapshotYaml from '/snippets/_snapshot-yaml-spec.md';
-
-<SnapshotYaml/>
-</VersionBlock>
-
-
-
 </TabItem>
 
 <TabItem value="sources" label="Sources">
@@ -138,7 +118,9 @@ sources:
 
 ## Definition
 
-dbt uses `event_time` to understand when an event occurred. Configure it in your `dbt_project.yml` file, property YAML file, or config block for [models](/docs/build/models), [seeds](/docs/build/seeds), or [sources](/docs/build/sources).
+dbt uses `event_time` to understand when an event occurred. Configure it in your project YAML file (`dbt_project.yml`), properties YAML file (`models/properties.yml`), or SQL file config for [models](/docs/build/models), [seeds](/docs/build/seeds), or [sources](/docs/build/sources).
+
+<EventTimeRequired/>
 
 ### Usage
 
@@ -181,7 +163,7 @@ models:
 ```
 </File>
 
-Example in a properties YAML file:
+Example in a property file:
 
 <File name='models/properties.yml'>
 
@@ -194,7 +176,7 @@ models:
 
 </File>
 
-Example in sql model config block:
+Example in a config block for a model:
 
 <File name="models/user_sessions.sql">
 
@@ -273,7 +255,7 @@ This setup sets `record_timestamp` as the `event_time` for `my_snapshot`.
 
 <TabItem value="sources" label="Sources">
 
-Here's an example of source properties YAML file:
+Here's an example of a source property file:
 
 <File name='models/properties.yml'>
 

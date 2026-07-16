@@ -1,6 +1,6 @@
-The dbt Cloud CLI doesn't currently support relative paths in the [`packages.yml` file](/docs/build/packages). Instead, use the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud), which supports relative paths in this scenario.
+The <Constant name="platform_cli" /> doesn't currently support relative paths in the [`packages.yml` file](/docs/build/packages). Instead, use the [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio), which supports relative paths in this scenario.
 
-Here's an example of a [local package](/docs/build/packages#local-packages) configuration in the `packages.yml` that won't work with the dbt Cloud CLI:
+Here's an example of a [local package](/docs/build/packages#local-packages) configuration in the `packages.yml` that won't work with the <Constant name="platform_cli" />:
 
 ```yaml
 # repository_root/my_dbt_project_in_a_subdirectory/packages.yml
@@ -13,4 +13,4 @@ In this example, `../shared_macros` is a relative path that tells dbt to look fo
 - `..` &mdash; Go one directory up (to `repository_root`).
 - `/shared_macros` &mdash; Find the `shared_macros` folder in the root directory.
 
-To work around this limitation, use the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud), which fully supports relative paths in `packages.yml`.
+To work around this limitation, use the [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio), which fully supports relative paths in `packages.yml`.

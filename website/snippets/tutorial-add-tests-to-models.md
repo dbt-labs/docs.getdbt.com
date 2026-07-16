@@ -1,6 +1,6 @@
-Adding [tests](/docs/build/data-tests) to a project helps validate that your models are working correctly.
+Adding [data tests](/docs/build/data-tests) to a project helps validate that your models are working correctly.
 
-To add tests to your project:
+To add data tests to your project:
 
 1. Create a new YAML file in the `models` directory, named `models/schema.yml`
 2. Add the following contents to the file:
@@ -14,33 +14,35 @@ To add tests to your project:
       - name: customers
         columns:
           - name: customer_id
-            tests:
+            data_tests:
               - unique
               - not_null
 
       - name: stg_customers
         columns:
           - name: customer_id
-            tests:
+            data_tests:
               - unique
               - not_null
 
       - name: stg_orders
         columns:
           - name: order_id
-            tests:
+            data_tests:
               - unique
               - not_null
           - name: status
-            tests:
+            data_tests:
               - accepted_values:
-                  values: ['placed', 'shipped', 'completed', 'return_pending', 'returned']
+                  arguments: # available in v1.10.5 and higher. Older versions can set the <argument_name> as the top-level property.
+                    values: ['placed', 'shipped', 'completed', 'return_pending', 'returned']
           - name: customer_id
-            tests:
+            data_tests:
               - not_null
               - relationships:
-                  to: ref('stg_customers')
-                  field: customer_id
+                  arguments:
+                    to: ref('stg_customers')
+                    field: customer_id
 
     ```
 

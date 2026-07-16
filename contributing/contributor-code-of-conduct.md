@@ -10,7 +10,6 @@ Individual words might be small, but together they can create community, belongi
 
 
 Here are resources to help you think about inclusive and accessible language and style:
-* [18F Content Guide on Inclusive Language](https://content-guide.18f.gov/inclusive-language/)
 * [Plain language guidelines (US Gov)](https://www.plainlanguage.gov/guidelines/)
 * MailChimp Content Style Guide:
   * [Writing About People](https://styleguide.mailchimp.com/writing-about-people/)

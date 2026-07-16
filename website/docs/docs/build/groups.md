@@ -2,7 +2,6 @@
 title: "Add groups to your DAG"
 sidebar_label: "Groups"
 id: "groups"
-description: "When you define groups in dbt projects, you turn implicit relationships into an explicit grouping."
 keywords:
   - groups access mesh
 ---
@@ -13,21 +12,51 @@ Group members may include models, tests, seeds, snapshots, analyses, and metrics
 
 ### Declaring a group
 
-Groups are defined in `.yml` files, nested under a `groups:` key.
+import DefineGroups from '/snippets/_define-groups.md';
+
+<DefineGroups />
+
+#### Centrally defining a group
+
+To centrally define a group in your project, there are two options:
+
+- Create one `_groups.yml` file in the root of the `models` directory.
+- Create one `_groups.yml` file in the root of a `groups` directory. For this option, you also need to configure [`model-paths`](/reference/project-configs/model-paths) in the `dbt_project.yml` file:
+
+  ```yml 
+  model-paths: ["models", "groups"]
+  ```
+
+
+### Group properties
+
+The following properties are available when defining a group:
+
+| Property | Required | Description |
+|----------|----------|-------------|
+| `name` | Required | A unique name for the group within the project. Used to assign resources via the [`group` config](/reference/resource-configs/group). |
+| `owner` | Required | Identifies who is responsible for the group. Must include either `name:` or `email:`. |
+| `description` | Optional | A human readable description of the group's purpose. Supports markdown and the [`doc` Jinja function](/reference/dbt-jinja-functions/doc).  Supported in v1.10 and later. |
+| `config.meta` | Optional | A dictionary of arbitrary key/value metadata about the group. Useful for storing information such as cost centers, data classifications, or team contact details.
+
 
 <File name='models/marts/finance/finance.yml'>
 
 ```yaml
 groups:
   - name: finance
+    description: "All models owned by the Finance team."
     owner:
-      # 'name' or 'email' is required; additional properties allowed
       email: finance@jaffleshop.com
-      slack: finance-data
-      github: finance-data-team
+    config:
+      meta:
+        data_owner: Finance team
+        cost_center: finance
+        data_classification: sensitive
 ```
 
 </File>
+
 
 ### Adding a model to a group
 
@@ -89,8 +118,8 @@ By default, all models within a group have the `protected` [access modifier](/re
 ```yml
 models:
   - name: finance_private_model
-    access: private
     config:
+      access: private # changed to config in v1.10
       group: finance
 
   # in a different group!
@@ -117,6 +146,6 @@ dbt.exceptions.DbtReferenceError: Parsing Error
 
 ## Related docs
 
-* [Model Access](/docs/collaborate/govern/model-access#groups)
+* [Model Access](/docs/mesh/govern/model-access#groups)
 * [Group configuration](/reference/resource-configs/group)
 * [Group selection](/reference/node-selection/methods#group)

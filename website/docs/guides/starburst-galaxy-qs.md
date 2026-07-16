@@ -1,22 +1,22 @@
 ---
-title: "Quickstart for dbt Cloud and Starburst Galaxy"
+title: "Quickstart for dbt and Starburst Galaxy"
 id: "starburst-galaxy"
 level: 'Beginner'
 icon: 'starburst'
 hide_table_of_contents: true
-tags: ['dbt Cloud','Quickstart']
+tags: ['dbt platform','Quickstart']
 ---
 
 <div style={{maxWidth: '900px'}}>
 
 ## Introduction
 
-In this quickstart guide, you'll learn how to use dbt Cloud with [Starburst Galaxy](https://www.starburst.io/platform/starburst-galaxy/). It will show you how to:
+In this quickstart guide, you'll learn how to use <Constant name="dbt" /> with [Starburst Galaxy](https://www.starburst.io/platform/starburst-galaxy/). It will show you how to:
 
 - Load data into the Amazon S3 bucket. This guide uses AWS as the cloud service provider for demonstrative purposes. Starburst Galaxy also [supports other data sources](https://docs.starburst.io/starburst-galaxy/catalogs/index.html) such as Google Cloud, Microsoft Azure, and more.
 - Connect Starburst Galaxy to the Amazon S3 bucket.
 - Create tables with Starburst Galaxy.
-- Connect dbt Cloud to Starburst Galaxy.
+- Connect <Constant name="dbt" /> to Starburst Galaxy.
 - Take a sample query and turn it into a model in your dbt project. A model in dbt is a select statement.
 - Add tests to your models.
 - Document your models.
@@ -31,7 +31,7 @@ You can also watch the [Build Better Data Pipelines with dbt and Starburst](http
 
 ### Prerequisites 
 
-- You have a [multi-tenant](/docs/cloud/about-cloud/access-regions-ip-addresses) deployment in [dbt Cloud](https://www.getdbt.com/signup/). For more information, refer to [Tenancy](/docs/cloud/about-cloud/tenancy).
+- You have a [multi-tenant](/docs/platform/about-platform/access-regions-ip-addresses) deployment in [<Constant name="dbt" />](https://www.getdbt.com/signup/). For more information, refer to [Tenancy](/docs/platform/about-platform/tenancy).
 - You have a [Starburst Galaxy account](https://www.starburst.io/platform/starburst-galaxy/). If you don't, you can start a free trial. Refer to the [getting started guide](https://docs.starburst.io/starburst-galaxy/get-started.html) in the Starburst Galaxy docs for further setup details.
 - You have an AWS account with permissions to upload data to an S3 bucket.
 - For Amazon S3 authentication, you will need either an AWS access key and AWS secret key with access to the bucket, or you will need a cross account IAM role with access to the bucket. For details, refer to these Starburst Galaxy docs: 
@@ -42,7 +42,7 @@ You can also watch the [Build Better Data Pipelines with dbt and Starburst](http
 ### Related content
 
 - [dbt Learn courses](https://learn.getdbt.com)
-- [dbt Cloud CI job](/docs/deploy/continuous-integration)
+- [<Constant name="dbt" /> CI job](/docs/deploy/continuous-integration)
 - [Job notifications](/docs/deploy/job-notifications)
 - [Source freshness](/docs/deploy/source-freshness)
 - [SQL overview for Starburst Galaxy](https://docs.starburst.io/starburst-galaxy/sql/index.html)    
@@ -95,11 +95,11 @@ In addition to Amazon S3, Starburst Galaxy supports many other data sources. To 
 
     The **Amazon S3** page should look similar to this, except for the **Authentication to S3** section which is dependant on your setup:
 
-    <Lightbox src="/img/quickstarts/dbt-cloud/starburst-galaxy-config-s3.png" title="Amazon S3 connection settings in Starburst Galaxy" />
+    <Lightbox src="/img/quickstarts/dbt-platform/starburst-galaxy-config-s3.png" title="Amazon S3 connection settings in Starburst Galaxy" />
 
 8. Click **Test connection**. This verifies that Starburst Galaxy can access your S3 bucket. 
 9. Click **Connect catalog** if the connection test passes.
-    <Lightbox src="/img/quickstarts/dbt-cloud/test-connection-success.png" title="Successful connection test" />
+    <Lightbox src="/img/quickstarts/dbt-platform/test-connection-success.png" title="Successful connection test" />
 
 10. On the **Set permissions** page, click **Skip**. You can add permissions later if you want.
 11. On the **Add to cluster** page, choose the cluster you want to add the catalog to from the dropdown and click **Add to cluster**.
@@ -116,7 +116,7 @@ In addition to Amazon S3, Starburst Galaxy supports many other data sources. To 
     
     When done, click **Add privileges**.
 
-    <Lightbox src="/img/quickstarts/dbt-cloud/add-privilege.png" title="Add privilege to accountadmin role" />
+    <Lightbox src="/img/quickstarts/dbt-platform/add-privilege.png" title="Add privilege to accountadmin role" />
 
 ## Create tables with Starburst Galaxy
 To query the Jaffle Shop data with Starburst Galaxy, you need to create tables using the Jaffle Shop data that you [loaded to your S3 bucket](#load-data-to-s3). You can do this (and run any SQL statement) from the [query editor](https://docs.starburst.io/starburst-galaxy/query/query-editor.html). 
@@ -124,7 +124,7 @@ To query the Jaffle Shop data with Starburst Galaxy, you need to create tables u
 1. Click **Query > Query editor** on the left sidebar of the Starburst Galaxy UI. The main body of the page is now the query editor. 
 2. Configure the query editor so it queries your S3 bucket. In the upper right corner of the query editor, select your cluster in the first gray box and select your catalog in the second gray box:
 
-    <Lightbox src="/img/quickstarts/dbt-cloud/starburst-galaxy-editor.png" title="Set the cluster and catalog in query editor" />
+    <Lightbox src="/img/quickstarts/dbt-platform/starburst-galaxy-editor.png" title="Set the cluster and catalog in query editor" />
 
 3. Copy and paste these queries into the query editor. Then **Run** each query individually. 
 
@@ -184,7 +184,7 @@ To query the Jaffle Shop data with Starburst Galaxy, you need to create tables u
     ```
 4. When the queries are done, you can see the following hierarchy on the query editor's left sidebar:
 
-    <Lightbox src="/img/quickstarts/dbt-cloud/starburst-data-hierarchy.png" title="Hierarchy of data in query editor" />
+    <Lightbox src="/img/quickstarts/dbt-platform/starburst-data-hierarchy.png" title="Hierarchy of data in query editor" />
 
 5. Verify that the tables were created successfully. In the query editor, run the following queries:
 
@@ -194,36 +194,36 @@ To query the Jaffle Shop data with Starburst Galaxy, you need to create tables u
     select * from jaffle_shop.stripe_payments;
     ```
 
-## Connect dbt Cloud to Starburst Galaxy 
+## Connect dbt to Starburst Galaxy 
 
 1. Make sure you are still logged in to [Starburst Galaxy](https://galaxy.starburst.io/login).
 2. If you haven’t already, set your account’s role to accountadmin. Click your email address in the upper right corner, choose **Switch role** and select **accountadmin**. 
     
     If this role is not listed for you, choose the role you selected in [Connect Starburst Galaxy to the Amazon S3 bucket](#connect-to-s3-bucket) when you added location privilege for your S3 bucket.
 3. Click **Clusters** on the left sidebar.
-4. Find your cluster in the **View clusters** table and click **Connection info**. Choose **dbt** from the **Select client** dropdown. Keep the **Connection information** modal open. You will use details from that modal in dbt Cloud.
-5. In another browser tab, log in to [dbt Cloud](/docs/cloud/about-cloud/access-regions-ip-addresses).
-6. Create a new project in dbt Cloud. Click on your account name in the left side menu, select **Account settings**, and click **+ New Project**.
+4. Find your cluster in the **View clusters** table and click **Connection info**. Choose **dbt** from the **Select client** dropdown. Keep the **Connection information** modal open. You will use details from that modal in <Constant name="dbt" />.
+5. In another browser tab, log in to [<Constant name="dbt" />](/docs/platform/about-platform/access-regions-ip-addresses).
+6. Create a new project in <Constant name="dbt" />. Click on your account name in the left side menu, select **Account settings**, and click **+ New Project**.
 7. Enter a project name and click **Continue**.
 8. Choose **Starburst** as your connection and click **Next**.
 9. Enter the **Settings** for your new project:
     - **Host** – The **Host** value from the **Connection information** modal in your Starburst Galaxy tab.
     - **Port** – 443 (which is the default)
-10. Enter the **Development Credentials** for your new project:
+10. Enter the **User credentials** for your new project:
     - **User** – The **User** value from the **Connection information** modal in your Starburst Galaxy tab. Make sure to use the entire string, including the account's role which is the `/` and all the characters that follow. If you don’t include it, your default role is used and that might not have the correct permissions for project development.
     - **Password** – The password you use to log in to your Starburst Galaxy account.
-    - **Database** – The Starburst catalog you want to save your data to (for example, when writing new tables). For future reference, database is synonymous to catalog between dbt Cloud and Starburst Galaxy. 
+    - **Database** – The Starburst catalog you want to save your data to (for example, when writing new tables). For future reference, database is synonymous to catalog between <Constant name="dbt" /> and Starburst Galaxy. 
     - Leave the remaining options as is. You can use their default values.
-11. Click **Test Connection**. This verifies that dbt Cloud can access your Starburst Galaxy cluster.
+11. Click **Test Connection**. This verifies that <Constant name="dbt" /> can access your Starburst Galaxy cluster.
 12. Click **Next** if the test succeeded. If it failed, you might need to check your Starburst Galaxy settings and credentials.
 
-## Set up a dbt Cloud managed repository 
+## Set up a dbt managed repository 
 <Snippet path="tutorial-managed-repo" />
 
 ## Initialize your dbt project​ and start developing
-Now that you have a repository configured, you can initialize your project and start development in dbt Cloud:
+Now that you have a repository configured, you can initialize your project and start development in <Constant name="dbt" />:
 
-1. Click **Start developing in the IDE**. It might take a few minutes for your project to spin up for the first time as it establishes your git connection, clones your repo, and tests the connection to the warehouse.
+1. Click **Start developing in the <Constant name="studio_ide" />**. It might take a few minutes for your project to spin up for the first time as it establishes your git connection, clones your repo, and tests the connection to the warehouse.
 2. Above the file tree to the left, click **Initialize dbt project**. This builds out your folder structure with example models.
 3. Make your initial commit by clicking **Commit and sync**. Use the commit message `initial commit` and click **Commit**. This creates the first commit to your managed repo and allows you to open a branch where you can add new dbt code.
 4. You can now directly query data from your warehouse and execute `dbt run`. You can try this out now:
@@ -235,10 +235,10 @@ Now that you have a repository configured, you can initialize your project and s
 
 ## Build your first model
 
-You have two options for working with files in the dbt Cloud IDE:
+You have two options for working with files in the <Constant name="studio_ide" />:
 
 - Create a new branch (recommended) &mdash; Create a new branch to edit and commit your changes. Navigate to **Version Control** on the left sidebar and click **Create branch**.
-- Edit in the protected primary branch &mdash; If you prefer to edit, format, or lint files and execute dbt commands directly in your primary git branch. The dbt Cloud IDE prevents commits to the protected branch, so you will be prompted to commit your changes to a new branch.
+- Edit in the protected primary branch &mdash; If you prefer to edit, format, or lint files and execute dbt commands directly in your primary git branch. The <Constant name="studio_ide" /> prevents commits to the protected branch, so you will be prompted to commit your changes to a new branch.
 
 Name the new branch `add-customers-model`.
 
@@ -425,6 +425,6 @@ Later, you can connect your business intelligence (BI) tools to these views and 
 
 
 ## Connect to multiple data sources
-This quickstart focuses on using dbt Cloud to run models against a data lake (S3) by using Starburst Galaxy as the query engine. In most real world scenarios, the data that is needed for running models is actually spread across multiple data sources and is stored in a variety of formats. With Starburst Galaxy, Starburst Enterprise, and Trino, you can run your models on any of the data you need, no matter where it is stored.
+This quickstart focuses on using <Constant name="dbt" /> to run models against a data lake (S3) by using Starburst Galaxy as the query engine. In most real world scenarios, the data that is needed for running models is actually spread across multiple data sources and is stored in a variety of formats. With Starburst Galaxy, Starburst Enterprise, and Trino, you can run your models on any of the data you need, no matter where it is stored.
 
 If you want to try this out, you can refer to the [Starburst Galaxy docs](https://docs.starburst.io/starburst-galaxy/catalogs/) to add more data sources and load the Jaffle Shop data into the source you select. Then, extend your models to query the new data source and the data source you created in this quickstart.

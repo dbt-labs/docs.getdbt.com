@@ -15,6 +15,7 @@ description: "This guide explains how to use the description key to add YAML des
     { label: 'Macros', value: 'macros', },
     { label: 'Data tests', value: 'data_tests', },
     { label: 'Unit tests', value: 'unit_tests', },
+    { label: 'Groups', value: 'groups', },
   ]
 }>
 <TabItem value="models">
@@ -22,7 +23,6 @@ description: "This guide explains how to use the description key to add YAML des
 <File name='models/schema.yml'>
 
 ```yml
-version: 2
 
 models:
   - name: model_name
@@ -43,7 +43,6 @@ models:
 <File name='models/schema.yml'>
 
 ```yml
-version: 2
 
 sources:
   - name: source_name
@@ -68,7 +67,6 @@ sources:
 <File name='seeds/schema.yml'>
 
 ```yml
-version: 2
 
 seeds:
   - name: seed_name
@@ -89,7 +87,6 @@ seeds:
 <File name='snapshots/schema.yml'>
 
 ```yml
-version: 2
 
 snapshots:
   - name: snapshot_name
@@ -110,7 +107,6 @@ snapshots:
 <File name='analysis/schema.yml'>
 
 ```yml
-version: 2
 
 analyses:
   - name: analysis_name
@@ -131,7 +127,6 @@ analyses:
 <File name='macros/schema.yml'>
 
 ```yml
-version: 2
 
 macros:
   - name: macro_name
@@ -177,7 +172,7 @@ models:
   - name: model_name
     columns:
       - name: column_name
-        tests:
+        data_tests:
           - unique:
               description: markdown_string
 ```
@@ -185,17 +180,9 @@ models:
 
 </VersionBlock>
 
-<VersionBlock lastVersion="1.8">
-
-The `description` property is available for [singular data tests](/docs/build/data-tests#singular-data-tests) or [generic data tests](/docs/build/data-tests#generic-data-tests) beginning in dbt v1.9.
-
-</VersionBlock> 
-
 </TabItem>
 
 <TabItem value="unit_tests">
-
-<VersionBlock firstVersion="1.8">
 
 <File name='models/schema.yml'>
 
@@ -221,13 +208,24 @@ unit_tests:
 
 </File>
 
-</VersionBlock>
+</TabItem>
 
-<VersionBlock lastVersion="1.7">
+<TabItem value="groups">
 
-The `description` property is available for [unit tests](/docs/build/unit-tests) beginning in dbt v1.8.
 
-</VersionBlock>
+<File name='models/schema.yml'>
+
+```yml
+
+groups:
+  - name: group_name
+    description: markdown_string  # Supported in v1.10 and later
+    owner:
+      email: owner@example.com
+
+```
+
+</File>
 
 </TabItem>
 
@@ -245,10 +243,11 @@ A user-defined description used to document:
 - macros, and macro arguments
 - data tests, and data test columns
 - unit tests for models
+- groups (dbt Core v1.10+)
 
-These descriptions are used in the documentation website rendered by dbt (refer to [the documentation guide](/docs/build/documentation) or [dbt Explorer](/docs/collaborate/explore-projects)). 
+These descriptions are used in the documentation website rendered by dbt (refer to [the documentation guide](/docs/build/documentation) or [<Constant name="catalog" />](/docs/explore/explore-projects)). 
 
-Descriptions can include markdown, as well as the [`doc` jinja function](/reference/dbt-jinja-functions/doc).
+Descriptions can include markdown, as well as the [`doc` Jinja function](/reference/dbt-jinja-functions/doc).
 
 :::caution You may need to quote your YAML
 
@@ -407,9 +406,9 @@ models:
 
 ### Include an image from your repo in your descriptions
 
-This section applies to dbt Core users only. Including an image from your repository ensures your images are version-controlled. 
+This section applies to <Constant name="core" /> users only. Including an image from your repository ensures your images are version-controlled. 
 
-Both dbt Cloud and dbt Core users can [include an image from the web](#include-an-image-from-the-web-in-your-descriptions), which offers dynamic content, reduced repository size, accessibility, and ease of collaboration.
+Both <Constant name="dbt" /> and <Constant name="core" /> users can [include an image from the web](#include-an-image-from-the-web-in-your-descriptions), which offers dynamic content, reduced repository size, accessibility, and ease of collaboration.
 
 To include an image in your model's `description` field:
 
@@ -451,7 +450,7 @@ If mixing images and text, also consider using a docs block.
 
 ### Include an image from the web in your descriptions
 
-This section applies to dbt Cloud and dbt Core users. Including an image from the web offers dynamic content, reduced repository size, accessibility, and ease of collaboration.
+This section applies to <Constant name="dbt" /> and <Constant name="core" /> users. Including an image from the web offers dynamic content, reduced repository size, accessibility, and ease of collaboration.
 
 To include images from the web, specify the image URL in your model's `description` field:
 
@@ -462,7 +461,7 @@ version: 2
 
 models:
   - name: customers
-    description: "!\[dbt Logo](https://github.com/dbt-labs/dbt-core/blob/main/etc/dbt-core.svg)"
+    description: "!\[dbt Logo](https://raw.githubusercontent.com/dbt-labs/dbt-core/refs/heads/1.latest/docs/images/dbt-core.svg)"
 
     columns:
       - name: customer_id
@@ -475,12 +474,6 @@ models:
 If mixing images and text, also consider using a docs block.
 
 ### Add a description to a data test
-
-<VersionBlock lastVersion="1.8">
-
-<VersionCallout version="1.9" />
-
-</VersionBlock>
 
 You can add a `description` property to a generic or singular data test.
 
@@ -497,7 +490,7 @@ models:
   - name: orders
     columns:
       - name: order_id
-        tests:
+        data_tests:
           - unique:
               description: "The order_id is unique for every row in the orders model"
 ```
@@ -512,7 +505,6 @@ This example shows a singular data test that checks to ensure all values in the 
 <File name='tests/<filename>.yml'>
 
 ```yaml
-version: 2
 data_tests:
   - name: assert_total_payment_amount_is_positive
     description: >
@@ -525,12 +517,6 @@ data_tests:
 Note that in order for the test to run, the `tests/assert_total_payment_amount_is_positive.sql` SQL file has to exist in the `tests` directory.
 
 ### Add a description to a unit test
-
-<VersionBlock lastVersion="1.7">
-
-<VersionCallout version="1.8" />
-
-</VersionBlock>
 
 This example shows a unit test that checks to ensure the `opened_at` timestamp is properly truncated to a date for the `stg_locations` model.
 

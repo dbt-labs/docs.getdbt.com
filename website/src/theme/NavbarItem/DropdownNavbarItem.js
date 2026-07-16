@@ -10,16 +10,56 @@ import NavbarNavLink from '@theme/NavbarItem/NavbarNavLink';
 import NavbarItem from '@theme/NavbarItem';
 
 /* dbt Customizations:
- * Import VersionsNavbarItem component and context
- * Pass versionContext prop into DropdownNavbarItemDesktop or DropdownNavbarItemMobile
- * Custom state to handle version dropdown on click
- * Show version dropdown on version state change
- * Pass versionContext to Comp
- * 
-*/
-// import VersionsNavbarItem from './VersionsNavItem';
+ * Import VersionContext and products from dbt-versions
+ * Version menu filter buttons are driven by product names
+ * Menu items represent sub-products; selection tracked by sub-product name
+ * data-dbt-subproduct attribute triggers version context updates
+ */
 import VersionContext from '../../stores/VersionContext';
-import { versions } from '../../../dbt-versions'
+import { products } from '../../../dbt-versions'
+
+/**
+ * Renders a display string, splitting on \n to create line breaks
+ */
+function renderVersionDisplay(text) {
+  if (!text || !text.includes('\n')) return text;
+  return text.split('\n').map((part, idx, arr) => (
+    <React.Fragment key={idx}>
+      {part}
+      {idx < arr.length - 1 && <br />}
+    </React.Fragment>
+  ));
+}
+
+/**
+ * Returns product names in the order defined in dbt-versions.js
+ */
+function getProductNames() {
+  return products.map((p) => p.name);
+}
+
+/**
+ * Find which product a sub-product belongs to by sub-product name
+ */
+function getProductForSubProduct(subProductName) {
+  for (const product of products) {
+    if (product.subProducts.find((sp) => sp.name === subProductName)) {
+      return product.name;
+    }
+  }
+  return null;
+}
+
+/**
+ * Find a sub-product object by name
+ */
+function findSubProduct(name) {
+  for (const product of products) {
+    const sp = product.subProducts.find((s) => s.name === name);
+    if (sp) return sp;
+  }
+  return null;
+}
 
 function isItemActive(item, localPathname) {
   if (isSamePath(item.to, localPathname)) {
@@ -47,8 +87,12 @@ function DropdownNavbarItemDesktop({
   const dropdownRef = useRef(null);
   const [showDropdown, setShowDropdown] = useState(false);
 
-  // dbt Custom: handle version dropdown state on click
+  // dbt Custom: handle version dropdown hide-on-select behavior
   const [showVersionDropdown, setShowVersionDropdown] = useState(true);
+
+  // dbt Custom: product filter — default to first product (Fusion)
+  const productNames = className === "nav-versioning" ? getProductNames() : [];
+  const [productFilter, setProductFilter] = useState(productNames[0] || null);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -65,20 +109,15 @@ function DropdownNavbarItemDesktop({
     };
   }, [dropdownRef]);
 
-  // dbt Custom: Hide version dropdown on click
-  // This adds dropdown--version--hide class on line 87
+  // Hide version dropdown on item click, then immediately reset so CSS re-triggers
   const handleVersionMenuClick = () => {
     setShowVersionDropdown(false)
   }
 
-  // Run when showVersionDropdown state changes
-  // which occurs during version menu item clicked
-  // This resets version dropdown to original state
-  // and removes the dropdown--version--hide class
   useEffect(() => {
     setShowVersionDropdown(true)
   }, [showVersionDropdown])
-  
+
   return (
     <div
       ref={dropdownRef}
@@ -104,63 +143,111 @@ function DropdownNavbarItemDesktop({
         }}
         label={
           className === "nav-versioning"
-            ? `${versionContext?.customDisplay ? `${versionContext.customDisplay}` : `v${versionContext.version} ${versionContext?.isPrerelease ? "(Beta)" : ""}`}`
+            ? `Version: ${versionContext?.customDisplay || `v${versionContext?.version}`}`
             : props.children ?? props.label
         }
       >
         {props.children ?? props.label}
       </NavbarNavLink>
       <ul className="dropdown__menu">
-        {items.map((childItemProps, i) => {
-          const thisVersion = versions.find(
-            (version) => childItemProps.label == version.version
-          );
-          const versionDisplay = thisVersion?.customDisplay ? thisVersion.customDisplay : `${childItemProps.label} ${thisVersion?.isPrerelease ? " (Beta)" : ""}`;
-                    
-          return (
-            <React.Fragment key={i}>
-              {className === "nav-versioning" ? (
-                <li>
-                  <a
-                    className="dropdown__link nav-versioning-dropdown__link"
-                    data-dbt-version={childItemProps.label}
-                    onClick={(e) => {
-                      handleVersionMenuClick();
-                      versionContext.updateVersion(e);
-                    }}
-                  >
-                    {versionDisplay}
-                  </a>
-                </li>
-              ) : (
-                <NavbarItem
-                  isDropdownItem
-                  onKeyDown={(e) => {
-                    if (i === items.length - 1 && e.key === "Tab") {
-                      e.preventDefault();
-                      setShowDropdown(false);
-                      const nextNavbarItem =
-                        dropdownRef.current.nextElementSibling;
-                      if (nextNavbarItem) {
-                        const targetItem =
-                          nextNavbarItem instanceof HTMLAnchorElement
-                            ? nextNavbarItem
-                            : // Next item is another dropdown; focus on the inner
-                              // anchor element instead so there's outline
-                              nextNavbarItem.querySelector("a");
-                        targetItem.focus();
-                      }
-                    }
+        {className === "nav-versioning" && productNames.length > 1 && (
+          <li className="nav-versioning-filter">
+            <div className="nav-versioning-filter__buttons">
+              {productNames.map((productName) => (
+                <button
+                  key={productName}
+                  className={clsx("nav-versioning-filter__btn", {
+                    "nav-versioning-filter__btn--active": productFilter === productName,
+                  })}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    setProductFilter(productName);
                   }}
-                  activeClassName="dropdown__link--active"
-                  {...childItemProps}
-                  key={i}
-                />
-              )}
-            </React.Fragment>
-          );
-        } 
+                >
+                  {productName}
+                </button>
+              ))}
+              <button
+                className={clsx("nav-versioning-filter__btn", {
+                  "nav-versioning-filter__btn--active": productFilter === null,
+                })}
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  setProductFilter(null);
+                }}
+              >
+                All
+              </button>
+            </div>
+          </li>
         )}
+        {items.map((childItemProps, i) => {
+          // For version menu, childItemProps.label is a sub-product name
+          if (className === "nav-versioning") {
+            const subProductName = childItemProps.label;
+            const thisSubProduct = findSubProduct(subProductName);
+            const owningProduct = getProductForSubProduct(subProductName);
+
+            // Filter: hide if a product filter is active and this sub-product doesn't belong to it
+            if (productFilter !== null && owningProduct !== productFilter) {
+              return null;
+            }
+
+            const isBeta = thisSubProduct?.isBeta || false;
+            const isActive = subProductName === versionContext?.subProduct;
+
+            return (
+              <li key={i}>
+                <a
+                  className={clsx(
+                    "dropdown__link nav-versioning-dropdown__link",
+                    { "nav-versioning-dropdown__link--active": isActive }
+                  )}
+                  data-dbt-subproduct={subProductName}
+                  onClick={(e) => {
+                    handleVersionMenuClick();
+                    const syntheticEvent = { target: e.currentTarget };
+                    versionContext.updateVersion(syntheticEvent);
+                  }}
+                >
+                  {isActive && (
+                    <span className="nav-versioning-checkmark">&#10003;</span>
+                  )}
+                  <span>
+                    {renderVersionDisplay(subProductName)}
+                    {isBeta && " (Beta)"}
+                  </span>
+                </a>
+              </li>
+            );
+          }
+
+          return (
+            <NavbarItem
+              isDropdownItem
+              onKeyDown={(e) => {
+                if (i === items.length - 1 && e.key === "Tab") {
+                  e.preventDefault();
+                  setShowDropdown(false);
+                  const nextNavbarItem =
+                    dropdownRef.current.nextElementSibling;
+                  if (nextNavbarItem) {
+                    const targetItem =
+                      nextNavbarItem instanceof HTMLAnchorElement
+                        ? nextNavbarItem
+                        : nextNavbarItem.querySelector("a");
+                    targetItem.focus();
+                  }
+                }
+              }}
+              activeClassName="dropdown__link--active"
+              {...childItemProps}
+              key={i}
+            />
+          );
+        })}
       </ul>
     </div>
   );
@@ -178,7 +265,6 @@ function DropdownNavbarItemMobile({
   const { collapsed, toggleCollapsed, setCollapsed } = useCollapsible({
     initialState: () => !containsActive,
   });
-  // Expand/collapse if any item active after a navigation
   useEffect(() => {
     if (containsActive) {
       setCollapsed(!containsActive);
@@ -203,7 +289,7 @@ function DropdownNavbarItemMobile({
         }}
         label={
           className === "nav-versioning"
-            ? `${versionContext?.customDisplay ? `${versionContext.customDisplay}` : `v${versionContext.version} ${versionContext?.isPrerelease ? "(Beta)" : ""}`}`
+            ? `Version: ${versionContext?.customDisplay || `v${versionContext?.version}`}`
             : props.children ?? props.label
         }
       >
@@ -211,26 +297,38 @@ function DropdownNavbarItemMobile({
       </NavbarNavLink>
       <Collapsible lazy as="ul" className="menu__list" collapsed={collapsed}>
         {items.map((childItemProps, i) => {
-          const thisVersion = versions.find(
-            (version) => childItemProps.label == version.version
-          );
-          const versionDisplay = thisVersion?.customDisplay
-            ? thisVersion.customDisplay
-            : `${childItemProps.label} ${thisVersion?.isPrerelease ? " (Beta)" : ""}`;
+          if (className === "nav-versioning") {
+            const subProductName = childItemProps.label;
+            const thisSubProduct = findSubProduct(subProductName);
+            const isBeta = thisSubProduct?.isBeta || false;
+            const displayLabel = isBeta ? `${subProductName} (Beta)` : subProductName;
+
+            return (
+              <li key={i} className="menu__list-item">
+                <a
+                  className={clsx(
+                    "menu__link",
+                    { "menu__link--active": subProductName === versionContext?.subProduct }
+                  )}
+                  data-dbt-subproduct={subProductName}
+                  onClick={(e) => {
+                    versionContext.updateVersion({ target: e.currentTarget });
+                    onClick && onClick(e);
+                  }}
+                >
+                  {displayLabel}
+                </a>
+              </li>
+            );
+          }
 
           return (
             <NavbarItem
               mobile
               isDropdownItem
-              data-dbt-version={childItemProps.label}
-              onClick={
-                className === "nav-versioning"
-                  ? (e) => versionContext.updateVersion(e)
-                  : onClick
-              }
+              onClick={onClick}
               activeClassName="menu__link--active"
               {...childItemProps}
-              label={versionDisplay}
               key={i}
             />
           );

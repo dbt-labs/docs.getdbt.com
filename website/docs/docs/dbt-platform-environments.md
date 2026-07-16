@@ -1,0 +1,78 @@
+---
+title: "dbt environments"
+id: "dbt-platform-environments"
+description: "Learn about dbt's development environment to execute your project in the IDE"
+pagination_next: "docs/platform/migration"
+---
+
+An environment determines how <Constant name="dbt" /> will execute your project in the [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio) or [<Constant name="dbt" /> CLI](/docs/platform/dbt-cli-installation) (for development) and scheduled jobs (for deployment).
+
+Critically, in order to execute dbt, environments define three variables:
+
+1. The version of <Constant name="dbt" /> that will be used to run your project
+2. The warehouse connection information (including the target database/schema settings)
+3. The version of your code to execute
+
+Each <Constant name="dbt" /> project can have only one [development environment](#create-a-development-environment), but there is no limit to the number of [deployment environments](/docs/deploy/deploy-environments), providing you the flexibility and customization to tailor the execution of scheduled jobs. 
+
+Use environments to customize settings for different stages of your project and streamline the execution process by using software engineering principles. 
+
+<Lightbox src="/img/dbt-env.png" width="90%" title="dbt environment hierarchy showing projects, environments, connections, and orchestration jobs." />
+
+The following sections detail the different types of environments and how to intuitively configure your development environment in <Constant name="dbt" />. 
+
+import CloudEnvInfo from '/snippets/_cloud-environments-info.md';
+
+<CloudEnvInfo setup={'/snippets/_cloud-environments-info.md'} />
+
+## Create a development environment
+
+To create a new <Constant name="dbt" /> development environment:
+
+1. Navigate to **Orchestration** > **Environments**.
+2. Click **+ Create Environment**.
+3. Select **Development** as the environment type. You can only create one Development environment for a project.
+4. Fill in the fields under **General Settings** and **User credentials**.
+5. Click **Save** to create the environment.
+
+### Set user credentials
+
+To use the dbt <Constant name="studio_ide" /> or <Constant name="platform_cli" />, each developer will need to set up [personal user credentials](/docs/platform/studio-ide/develop-in-studio#get-started-with-the-studio-ide) to your warehouse connection in their **Profile Settings**. This allows you to set separate target information and maintain individual credentials to connect to your warehouse.
+
+<Lightbox src="/img/docs/dbt-platform/refresh-ide/new-development-environment-fields.png" width="85%" height="200" title="Creating a development environment"/>
+
+## Deployment environment
+
+Deployment environments in <Constant name="dbt" /> are necessary to execute scheduled jobs and use other features (like different workspaces for different tasks). You can have many environments in a single <Constant name="dbt" /> project, enabling you to set up each space in a way that suits different needs (such as experimenting or testing).
+
+Even though you can have many environments, only one of them can be the "main" deployment environment. This would be considered your "production" environment and represents your project's "source of truth", meaning it's where your most reliable and final data transformations live.
+
+To learn more about <Constant name="dbt" /> deployment environments and how to configure them, refer to the [Deployment environments](/docs/deploy/deploy-environments) page. For our best practices guide, read [<Constant name="dbt" /> environment best practices](/guides/set-up-ci) for more info.
+
+## Change environment settings
+
+import ChangeEnvironment from '/snippets/_change-environment.md';
+
+<ChangeEnvironment />
+
+## Delete an environment
+
+import DeleteEnvironment from '/snippets/_delete-environment.md';
+
+<DeleteEnvironment />
+
+import JobMonitoring from '/snippets/_in-progress-top-jobs.md';
+
+<JobMonitoring />
+
+## Environment settings history
+
+You can view historical environment settings changes over the last 90 days.
+
+To view the change history: 
+1. Navigate to **Orchestration** from the main menu and click **Environments**. 
+2. Click an **environment name**.
+3. Click **Settings**. 
+4. Click **History**. 
+
+<Lightbox src="/img/docs/deploy/environment-history.png" width="85%" title="Example of the environment history option." />

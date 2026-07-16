@@ -7,7 +7,7 @@ sidebar_label: "Other artifacts"
 
 **Produced by:** [`docs generate`](/reference/commands/cmd-docs)
 
-This file is the skeleton of the [auto-generated dbt documentation website](/docs/collaborate/build-and-view-your-docs). The contents of the site are populated by the [manifest](/reference/artifacts/manifest-json) and [catalog](catalog-json).
+This file is the skeleton of the [auto-generated dbt documentation website](/docs/explore/build-and-view-your-docs). The contents of the site are populated by the [manifest](/reference/artifacts/manifest-json) and [catalog](catalog-json).
 
 Note: the source code for `index.json` comes from the [dbt-docs repo](https://github.com/dbt-labs/dbt-docs). Head over there if you want to make a bug report, suggestion, or contribution relating to the documentation site.
 
@@ -27,7 +27,7 @@ Stores the network representation of the dbt resource DAG.
 
 **Produced by:** [manifest commands](/reference/artifacts/manifest-json)
 
-This file is useful for investigating performance issues in dbt Core's graph algorithms.
+This file is useful for investigating performance issues in <Constant name="core" />'s graph algorithms.
 
 It is more anonymized and compact than [`manifest.json`](/reference/artifacts/manifest-json) and [`graph.gpickle`](#graph.gpickle).
 

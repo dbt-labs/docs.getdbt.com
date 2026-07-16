@@ -22,15 +22,15 @@ Configure a specific instance of a generic (schema) test:
 <File name='models/<filename>.yml'>
 
 ```yaml
-version: 2
 
 models:
   - name: large_table
     columns:
       - name: very_unreliable_column
-        tests:
+        data_tests:
           - accepted_values:
-              values: ["a", "b", "c"]
+              arguments: # available in v1.10.5 and higher. Older versions can set the <argument_name> as the top-level property.
+                values: ["a", "b", "c"]
               config:
                 limit: 1000  # will only include the first 1000 failures
 ```
@@ -82,7 +82,7 @@ Set the default for all tests in a package or project:
 <File name='dbt_project.yml'>
 
 ```yaml
-tests:
+data_tests:
   +limit: 1000  # all tests
   
   <package_name>:

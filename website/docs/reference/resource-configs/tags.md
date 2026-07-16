@@ -6,119 +6,300 @@ datatype: string | [string]
 ---
 
 <Tabs
-  defaultValue="project-yaml"
+  defaultValue="models"
   values={[
-    { label: 'Project file', value: 'project-yaml', },
-    { label: 'Config property', value: 'other-yaml', },
-    { label: 'Config block', value: 'config', },
+    { label: 'Models', value: 'models', },
+    { label: 'Seeds', value: 'seeds', },
+    { label: 'Snapshots', value: 'snapshots', },
+    { label: 'Saved queries', value: 'saved queries', },
+    { label: 'Sources', value: 'sources', },
+    { label: 'Exposures', value: 'exposures', },
+    { label: 'Tests', value: 'tests', },
   ]
 }>
-<TabItem value="project-yaml">
+<TabItem value="models">
 
 <File name='dbt_project.yml'>
 
-<VersionBlock lastVersion="1.8">
-
-```yml
-
-[models](/reference/model-configs):
-  [<resource-path>](/reference/resource-configs/resource-path):
-    +tags: <string> | [<string>] # Supports single strings or list of strings
-
-[snapshots](/reference/snapshot-configs):
-  [<resource-path>](/reference/resource-configs/resource-path):
-    +tags: <string> | [<string>]
-
-[seeds](/reference/seed-configs):
-  [<resource-path>](/reference/resource-configs/resource-path):
-    +tags: <string> | [<string>]
-
-```
-</VersionBlock>
-
 <VersionBlock firstVersion="1.9">
 
 ```yml
-
-[models](/reference/model-configs):
-  [<resource-path>](/reference/resource-configs/resource-path):
-    +tags: <string> | [<string>] # Supports single strings or list of strings
-
-[snapshots](/reference/snapshot-configs):
+models:
   [<resource-path>](/reference/resource-configs/resource-path):
     +tags: <string> | [<string>]
-
-[seeds](/reference/seed-configs):
-  [<resource-path>](/reference/resource-configs/resource-path):
-    +tags: <string> | [<string>]
-
-[saved-queries:](/docs/build/saved-queries)
-  [<resource-path>](/reference/resource-configs/resource-path):
-    +tags: <string> | [<string>]
-
 ```
+
 </VersionBlock>
-
-
-</File>
-</TabItem>
-
-<TabItem value="other-yaml">
-
-<VersionBlock firstVersion="1.9">
-
-The following examples show how to add tags to dbt resources in YAML files. Replace `resource_type` with `exposures`, `models`, `snapshots`, `seeds`, or `saved_queries` as appropriate.
-</VersionBlock>
-
-<VersionBlock lastVersion="1.8">
-
-The following examples show how to add tags to dbt resources in YAML files. Replace `resource_type` with `exposures`, `models`, `snapshots`, or `seeds` as appropriate.
-</VersionBlock>
-
-<File name='resource_type/properties.yml'>
-
-```yaml
-resource_type:
-  - name: resource_name
-    config:
-      tags: <string> | [<string>] # Supports single strings or list of strings
-    # Optional: Add the following specific properties for models
-    columns:
-      - name: column_name
-        tags: <string> | [<string>]
-        tests:
-          test-name:
-            config:
-              tags: "single-string" # Supports single string 
-              tags: ["string-1", "string-2"] # Supports list of strings
-```
 
 </File>
 
-To apply tags to a model in your `models/` directory, add the `config` property similar to the following example:
-
-<File name='models/model.yml'>
+<File name='models/properties.yml'>
 
 ```yaml
 models:
-  - name: my_model
-    description: A model description
+  - name: model_name
     config:
-      tags: ['example_tag']
+      tags: <string> | [<string>]
+    columns:
+      - name: column_name
+        config:
+          tags: <string> | [<string>] # changed to config in v1.10 and backported to 1.9
+        data_tests:
+          - test_name:
+              config:
+                tags: <string> | [<string>]
 ```
 
 </File>
 
-</TabItem>
+<File name='models/<modelname>.sql'>
 
-<TabItem value="config">
-
-<File name='models/model.sql'>
 ```sql
 {{ config(
     tags="<string>" | ["<string>"]
 ) }}
+
+select ...
 ```
+
+</File>
+
+</TabItem>
+
+<TabItem value="seeds">
+
+<File name='dbt_project.yml'>
+
+<VersionBlock firstVersion="1.9">
+
+```yml
+seeds:
+  [<resource-path>](/reference/resource-configs/resource-path):
+    +tags: <string> | [<string>]
+```
+
+</VersionBlock>
+
+</File>
+
+<File name='seeds/properties.yml'>
+
+```yaml
+seeds:
+  - name: seed_name
+    config:
+      tags: <string> | [<string>]
+    columns:
+      - name: column_name
+        config:
+          tags: <string> | [<string>] # changed to config in v1.10 and backported to 1.9
+        data_tests:
+          - test_name:
+              config:
+                tags: <string> | [<string>]
+```
+
+</File>
+
+</TabItem>
+
+<TabItem value="snapshots">
+
+<File name='dbt_project.yml'>
+
+<VersionBlock firstVersion="1.9">
+
+```yml
+snapshots:
+  [<resource-path>](/reference/resource-configs/resource-path):
+    +tags: <string> | [<string>]
+```
+
+</VersionBlock>
+
+</File>
+
+<VersionBlock firstVersion="1.9">
+
+<File name='snapshots/properties.yml'>
+
+```yaml
+snapshots:
+  - name: snapshot_name
+    config:
+      tags: <string> | [<string>]
+```
+
+</File>
+
+</VersionBlock>
+
+<File name='snapshots/<filename>.sql'>
+
+```sql
+{% snapshot snapshot_name %}
+
+{{ config(
+    tags="<string>" | ["<string>"]
+) }}
+
+select ...
+
+{% endsnapshot %}
+```
+
+</File>
+
+</TabItem>
+
+<TabItem value="saved queries">
+
+<File name='dbt_project.yml'>
+
+<VersionBlock firstVersion="1.9">
+
+```yml
+saved-queries:
+  [<resource-path>](/reference/resource-configs/resource-path):
+    +tags: <string> | [<string>]
+```
+
+</VersionBlock>
+
+</File>
+
+<File name='models/semantic_models.yml'>
+
+```yaml
+saved_queries:
+  - name: saved_query_name
+    config:
+      tags: <string> | [<string>]
+```
+
+</File>
+
+</TabItem>
+
+<TabItem value="sources">
+
+<File name='dbt_project.yml'>
+
+<VersionBlock firstVersion="1.9">
+
+```yml
+sources:
+  [<resource-path>](/reference/resource-configs/resource-path):
+    +tags: <string> | [<string>]
+```
+
+</VersionBlock>
+
+</File>
+
+<File name='models/properties.yml'>
+
+```yaml
+sources:
+  - name: source_name
+    config:
+      tags: <string> | [<string>] # changed to config in v1.10
+    tables:
+      - name: table_name
+        config:
+          tags: <string> | [<string>] # changed to config in v1.10
+        columns:
+          - name: column_name
+            config:
+              tags: <string> | [<string>] # changed to config in v1.10 and backported to 1.9
+            data_tests:
+              - test_name:
+                  config:
+                    tags: <string> | [<string>]
+```
+
+</File>
+
+Note that for backwards compatibility, `tags` is supported as a top-level key for sources, but without the capabilities of config inheritance.
+
+</TabItem>
+
+<TabItem value="exposures">
+
+<File name='dbt_project.yml'>
+
+<VersionBlock firstVersion="1.9">
+
+```yml
+exposures:
+  [<resource-path>](/reference/resource-configs/resource-path):
+    +tags: <string> | [<string>]
+```
+
+</VersionBlock>
+
+</File>
+
+<File name='models/exposures.yml'>
+
+```yaml
+exposures:
+  - name: exposure_name
+    config:
+      tags: <string> | [<string>] # changed to config in v1.10
+```
+
+</File>
+
+Note that for backwards compatibility, `tags` is supported as a top-level key for exposures, but without the capabilities of config inheritance.
+
+</TabItem>
+
+<TabItem value="tests">
+
+<File name='dbt_project.yml'>
+
+<VersionBlock firstVersion="1.9">
+
+```yml
+data_tests:
+  [<resource-path>](/reference/resource-configs/resource-path):
+    +tags: <string> | [<string>]
+```
+
+</VersionBlock>
+
+</File>
+
+<File name='models/properties.yml'>
+
+```yaml
+models:
+  - name: model_name
+    columns:
+      - name: column_name
+        data_tests:
+          - test_name:
+              config:
+                tags: <string> | [<string>]
+```
+
+</File>
+
+<File name='tests/<filename>.sql'>
+
+```sql
+{% test test_name() %}
+
+{{ config(
+    tags="<string>" | ["<string>"]
+) }}
+
+select ...
+
+{% endtest %}
+```
+
 </File>
 
 </TabItem>
@@ -139,14 +320,15 @@ These tags can be used as part of the [resource selection syntax](/reference/nod
 You can use the [`+` operator](/reference/node-selection/graph-operators#the-plus-operator) to include upstream or downstream dependencies in your `tag` selection:
 - `dbt run --select tag:my_tag+` &mdash; Run models tagged with `my_tag` and all their downstream dependencies.
 - `dbt run --select +tag:my_tag` &mdash; Run models tagged with `my_tag` and all their upstream dependencies.
-- `dbt run --select +model_name+` &mdash; Run a model, its upstream dependencies, and its downstream dependencies.
-- `dbt run --select tag:my_tag+ --exclude tag:exclude_tag` &mdash; Run model tagged with `my_tag` and their downstream dependencies, and exclude models tagged with `exclude_tag`, regardless of their dependencies.
+- `dbt run --select +tag:my_tag+` &mdash; Run models tagged with `my_tag`, their upstream dependencies, and their downstream dependencies.
+- `dbt run --select tag:my_tag+ --exclude tag:exclude_tag` &mdash; Run models tagged with `my_tag` and their downstream dependencies, and exclude models tagged with `exclude_tag`, regardless of their dependencies.
 
 
 :::tip Usage notes about tags
 
 When using tags, consider the following: 
 
+- Each individual tag must be a string. 
 - Tags are additive across project hierarchy.
 - Some resource types (like sources, exposures) require tags at the top level.
 
@@ -155,7 +337,7 @@ Refer to [usage notes](#usage-notes) for more information.
 
 ## Examples
 
-The following examples show how to apply tags to resources in your project. You can configure tags in the `dbt_project.yml`, `schema.yml`, or SQL files.
+The following examples show how to apply tags to resources in your project. You can configure tags in the `dbt_project.yml`, property files, or SQL files.
 
 ### Use tags to run parts of your project
 
@@ -202,7 +384,7 @@ models:
 
 </File>
 
-To apply tags to a model in your `models/` directory YAML file, you would add the following using the `config` property:
+To apply tags to a model in your `models/` directory YAML property file, you would add the following using the `config` property:
 
 <File name='models/stg_customers.yml'>
 
@@ -275,19 +457,13 @@ seeds:
 
 ### Apply tags to saved queries
 
-<VersionBlock lastVersion="1.8">
-
-<VersionCallout version="1.9" />
-
-</VersionBlock>
-
 
 This following example shows how to apply a tag to a saved query in the `dbt_project.yml` file. The saved query is then tagged with `order_metrics`.
 
 <File name='dbt_project.yml'>
 
 ```yml
-[saved-queries](/docs/build/saved-queries):
+saved-queries:
   jaffle_shop:
     customer_order_metrics:
       +tags: order_metrics
@@ -328,6 +504,33 @@ Run resources with multiple tags using the following commands:
 
 ## Usage notes
 
+### Tags must be strings
+
+Each individual tag must be a string value (for example, `marketing` or `daily`).
+
+In the following example, `my_tag: "my_value"` is invalid because it is a key-value pair.
+
+```yml
+sources:
+  - name: ecom
+    schema: raw
+    description: E-commerce data for the Jaffle Shop
+    config:
+      tags:
+        my_tag: "my_value". # invalid
+    tables:
+      - name: raw_customers
+        config:
+          tags:
+            my_tag: "my_value". # invalid
+```
+
+A warning is raised when the `tags` value is not a string. For example:
+
+```
+Field config.tags: {'my_tag': 'my_value'} is not valid for source (ecom)
+```
+
 ### Tags are additive
 Tags accumulate hierarchically. The [earlier example](/reference/resource-configs/tags#use-tags-to-run-parts-of-your-project) would result in:
 
@@ -338,45 +541,63 @@ Tags accumulate hierarchically. The [earlier example](/reference/resource-config
 | models/marts/dim_customers.sql   | `contains_pii`, `hourly`, `published` |
 | models/metrics/daily_metrics.sql | `contains_pii`, `daily`, `published`  |
 
-### Other resource types
+### Applying tags to specific columns and tests
 
-Tags can also be applied to [sources](/docs/build/sources), [exposures](/docs/build/exposures), and even _specific columns_ in a resource.
-These resources do not yet support the `config` property, so you'll need to specify
-the tags as a top-level key instead.
+You can also apply tags to specific columns in a resource, and to tests.
 
-<File name='models/schema.yml'>
+<File name='models/properties.yml'>
 
 ```yml
-version: 2
-
-exposures:
-  - name: my_exposure
-    tags: ['exposure_tag']
-    ...
-
-sources:
-  - name: source_name
-    tags: ['top_level']
-
-    tables:
-      - name: table_name
-        tags: ['table_level']
-
-        columns:
-          - name: column_name
-            tags: ['column_level']
-            tests:
-              - unique:
-                  tags: ['test_level']
+models:
+  - name: my_model
+    columns:
+      - name: column_name
+        config:
+          tags: ['column_level'] # changed to config in v1.10 and backported to 1.9
+        data_tests:
+          - unique:
+              config:
+                tags: ['test_level'] # changed to config in v1.10
 ```
 
 </File>
 
-
-In the example above, the `unique` test would be selected by any of these four tags:
+In the example above, the `unique` test would be selected by either of these tags:
 ```bash
-dbt test --select tag:top_level
-dbt test --select tag:table_level
 dbt test --select tag:column_level
 dbt test --select tag:test_level
 ```
+
+### Backwards compatibility for sources and exposures
+
+For backwards compatibility, `tags` is supported as a top-level key for sources and exposures (prior to dbt v1.10), but without the capabilities of config inheritance.
+
+<File name='models/properties.yml'>
+
+```yml
+exposures:
+  - name: my_exposure
+    tags: ['exposure_tag'] # top-level key (legacy)
+    # OR use config (v1.10+)
+    config:
+      tags: ['exposure_tag']
+
+sources:
+  - name: source_name
+    tags: ['top_level'] # top-level key (legacy)
+    # OR use config (v1.10+)
+    config:
+      tags: ['top_level']
+    tables:
+      - name: table_name
+        tags: ['table_level'] # top-level key (legacy)
+        # OR use config (v1.10+)
+        config:
+          tags: ['table_level']
+        columns:
+          - name: column_name
+            config:
+              tags: ['column_level'] # changed to config in v1.10 and backported to 1.9
+```
+
+</File>

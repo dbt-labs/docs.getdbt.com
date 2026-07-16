@@ -20,7 +20,7 @@ dbt will mark modified any resource that depends on a changed macro, or on a mac
 
 ### Vars
 
-If a model uses a `var` or `env_var` in its definition, dbt is unable today to identify that lineage in such a way that it can include the model in `state:modified` because the `var` or `env_var` value has changed. It's likely that the model will be marked modified if the change in variable results in a different configuration.
+If a model uses a `var` or `env_var` in its definition, dbt is unable to identify that lineage in such a way that it can include the model in `state:modified` because the `var` or `env_var` value has changed. It's likely that the model will be marked modified if the change in variable results in a different configuration.
 
 ### Tests
 
@@ -61,42 +61,10 @@ import Recommendationoverwritesthemanifest from '/snippets/_recommendation-overw
 
 <VersionBlock firstVersion="1.9">
 
-To reduce false positives during `state:modified` selection due to env-aware logic, you can set the `state_modified_compare_more_unrendered_values` [behavior flag](/reference/global-configs/behavior-changes#behavior-change-flags) to `True`.
+To reduce false positives during `state:modified` selection due to env-aware logic, you can set the `state_modified_compare_more_unrendered_values` [behavior flag](/reference/global-configs/behavior-flags/state_modified_compare_more_unrendered_values) to `true`.
 
 <StateModified features={'/snippets/_state-modified-compare.md'}/>
 
-</VersionBlock>
-
-<VersionBlock lastVersion="1.8">
-State comparison works by identifying discrepancies between two manifests.  Those discrepancies could be the result of:
-
-1. Changes made to a project in development
-2. Env-aware logic that causes different behavior based on the `target`, env vars, etc., which can be avoided if you upgrade to dbt Core 1.9 and set the `state_modified_compare_more_unrendered_values` [behavior flag](/reference/global-configs/behavior-changes#behavior-change-flags) to `True`.
-
-State comparison detects env-aware config in `dbt_project.yml`. This target-based config won't register as a modification:
-
-<File name='dbt_project.yml'>
-
-```yml
-models:
-  +materialized: "{{ 'table' if target.name == 'prod' else 'view' }}"
-```
-
-</File>
-
-Of course, if the raw Jinja expression is modified, it will be marked as a modification.
-
-Note that, as of now, this improved detection is true _only_ for `dbt_project.yml` configuration. It does not apply to:
-- `.yml` resource properties (including `sources`)
-- in-file `config()`
-
-That means the following config—functionally identical to the snippet above—_will_ be marked as a modification when comparing across targets:
-
-```sql
-{{ config(
-    materialized = ('table' if target.name == 'prod' else 'view')
-) }}
-```
 </VersionBlock>
 
 ### Final note

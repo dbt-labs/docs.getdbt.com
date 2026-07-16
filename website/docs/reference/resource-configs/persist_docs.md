@@ -88,7 +88,6 @@ snapshots:
 <File name='snapshots/snapshot_name.yml'>
 
 ```yaml
-version: 2
 
 snapshots:
   - name: snapshot_name
@@ -147,14 +146,53 @@ Some known issues and limitations:
 
 <div warehouse="Databricks">
 
-- Column-level comments require `file_format: delta` (or another "v2 file format")
+- Column-level comments require `file_format: delta` (or another "v2 file format").
 
 
 </div>
 
 <div warehouse="Snowflake">
 
-- No known issues
+- If a column name in a SQL model is in a mixed-case format (for example, `ca_net_ht_N`), the docs for that column will not be persisted. For the docs to persist, there are two options: 
+
+    - Define the column name in the corresponding YML file using lowercase or uppercase letters only.
+    - Use the [`quote`](../resource-properties/columns.md#quoter) configuration in the corresponding YML file.
+
+  See the following sample steps on how to use the `quote` field for columns in a mixed-case format.
+
+    1. Create the following SQL and YML files:
+
+        <File name='<modelname>.sql'>
+
+            ```sql
+            {{ config(materialized='table') }}
+
+            select 1 as "ca_net_ht_N" # note the use of double quotes for the column name
+            ```
+        </File>
+
+        <File name='<modelname>.yml'>
+
+            ```yml
+            models:
+              - name: <modelname>
+                description: This is the table description
+
+            columns:
+              - name: "ca_net_ht_N"
+                description: This should be the description of the column
+                quote: true
+            ```
+        </File>
+
+    2. Run `dbt build -s models/<modelname>.sql --full-refresh`. 
+
+    3. Open the logs at `logs/dbt.log` and check the column description:
+
+        ```log
+        alter table analytics.<schema>.<modelname> alter
+            "ca_net_ht_N" COMMENT $$This should be the description of the column$$;
+        ```
 
 </div>
 
@@ -169,7 +207,6 @@ Supply a [description](/reference/resource-properties/description) for a model:
 <File name='models/schema.yml'>
 
 ```yml
-version: 2
 
 models:
   - name: dim_customers

@@ -8,8 +8,8 @@ displayed_sidebar: "docs"
 ### Resources
 
 - [Changelog](https://github.com/dbt-labs/dbt-core/blob/1.4.latest/CHANGELOG.md)
-- [dbt Core CLI Installation guide](/docs/core/installation-overview)
-- [Cloud upgrade guide](/docs/dbt-versions/upgrade-dbt-version-in-cloud)
+- [<Constant name="core" /> CLI Installation guide](/docs/local/install-dbt)
+- [Cloud upgrade guide](/docs/dbt-versions/upgrade-dbt-platform-version)
 
 **Final release:** January 25, 2023
 
@@ -21,7 +21,7 @@ dbt Labs is committed to providing backward compatibility for all versions 1.x. 
 
 ### For consumers of dbt artifacts (metadata)
 
-The manifest schema version has updated to `v8`. These changes are relevant for people who parse or analyze the contents of the `manifest.json` file, or who have custom code accessing the [`model`](https://docs.getdbt.com/reference/dbt-jinja-functions/model) or [`graph`](https://docs.getdbt.com/reference/dbt-jinja-functions/graph) variables, e.g. `{{ model.root_path }}`.
+The manifest schema version has updated to `v8`. These changes are relevant for people who parse or analyze the contents of the `manifest.json` file, or who have custom code accessing the [`model`](/reference/dbt-jinja-functions/model) or [`graph`](/reference/dbt-jinja-functions/graph) variables, for example, `{{ model.root_path }}`.
 
 Relevant changes:
 - The `root_path` attribute has been removed for non-seed nodes to reduce duplicative information.
@@ -38,7 +38,7 @@ The high-level changes are:
 - Add support for Incremental Predicates (if applicable)
 - Make use of new adapter-zone tests
 
-For more detailed information and to ask any questions, please visit [dbt-core/discussions/6624](https://github.com/dbt-labs/dbt-core/discussions/6624).
+For more detailed information and to ask any questions, please visit [<Constant name="core" />/discussions/6624](https://github.com/dbt-labs/dbt-core/discussions/6624).
 
 ## New and changed documentation
 

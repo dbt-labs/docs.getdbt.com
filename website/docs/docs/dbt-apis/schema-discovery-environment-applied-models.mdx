@@ -1,0 +1,60 @@
+---
+title: "Models object schema"
+sidebar_label: "Models"
+id: "discovery-schema-environment-applied-models"
+---
+ 
+import { NodeArgsTable, SchemaTable } from "./schema";
+
+[Models](/docs/build/models) are the foundational dbt resource that transform raw data into curated datasets using SQL (or Python). Each model represents a single SELECT statement, typically materialized as a table or view in your warehouse. You can query information about models through the Discovery API.
+
+The [Example query](#example-query) illustrates a few fields you can query with the `models` object. Refer to [Fields](#fields) to view the entire schema, which provides all possible fields you can query.
+
+### Arguments
+
+When querying for `models`, you can use the following arguments:
+
+<NodeArgsTable parent="AppliedState" name="models" />
+
+### Example query
+
+You can specify the `environmentId` to return model information for all models in the given environment, including their metadata, configuration, tests, and ownership details, limited to the first 100 results:
+
+```graphql
+query {
+  environment(id: 834) {
+    applied {
+      models (first: 100) {
+        edges {
+          node {
+            name
+            description
+            access
+            accountId
+            catalog {
+              owner
+            }
+            config
+            environmentId
+            tests {
+              name
+              description
+            }
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+### Fields
+
+When querying for `models`, you can use the following fields:
+
+<SchemaTable nodeName="ModelAppliedStateNodeConnection" />
+
+### Key fields from nodes
+
+<SchemaTable nodeName="ModelAppliedStateNode" />
+

@@ -7,21 +7,19 @@ id: documenting-macros
 
 import MacroArgsNote from '/snippets/_validate-macro-args.md';
 
-To document macros, use a [schema file](/reference/macro-properties) and nest the configurations under a `macros:` key
+To document macros, use a [properties file](/reference/macro-properties) and nest the configurations under a `macros:` key
 
 ## Example
 
-<File name='macros/schema.yml'>
+<File name='macros/properties.yml'>
 
 ```yml
-version: 2
-
 macros:
   - name: cents_to_dollars
     description: A macro to convert cents to dollars
     arguments:
       - name: column_name
-        type: string
+        type: column
         description: The name of the column you want to convert
       - name: precision
         type: integer
@@ -45,8 +43,6 @@ To document a custom materialization, use the previously mentioned format to det
 <File name='macros/properties.yml'>
 
 ```yaml
-version: 2
-
 macros:
   - name: materialization_my_materialization_name_default
     description: A custom materialization to insert records into an append-only table and track when they were added.

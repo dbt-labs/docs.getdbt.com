@@ -1,25 +1,31 @@
 {
   "scripts": {
-    "prestart": "npm run prepare",
+    "prestart": "npm run prepare && node scripts/fetch-mcp-readme-tools.js && node scripts/generate-functions-snippet.js",
     "start": "docusaurus start",
+    "prebuild": "node scripts/fetch-mcp-readme-tools.js && node scripts/generate-functions-snippet.js",
     "build": "docusaurus build",
+    "generate:wizard-cli": "node scripts/generate-wizard-cli-reference.js",
     "swizzle": "docusaurus swizzle",
     "test": "npx jest --watch",
     "lint": "eslint --cache",
     "lintAll": "eslint . --fix",
-    "prepare": "cd .. && husky install"
+    "prepare": "cd .. && husky install",
+    "cleanup-duplicates": "node scripts/cleanup_duplicate_constants.js"
   },
   "dependencies": {
+    "@datadog/browser-rum": "^6.27.1",
     "@docusaurus/core": "^3.7.0",
     "@docusaurus/faster": "^3.7.0",
     "@docusaurus/plugin-ideal-image": "^3.7.0",
+    "@docusaurus/plugin-vercel-analytics": "^3.7.0",
     "@docusaurus/preset-classic": "^3.7.0",
     "@docusaurus/theme-search-algolia": "^3.7.0",
     "@mdx-js/react": "^3.0.1",
     "@monaco-editor/react": "^4.4.6",
+    "@signalwire/docusaurus-plugin-llms-txt": "2.0.0-alpha.2",
     "@stoplight/elements": "^7.5.8",
     "@svgr/webpack": "^6.0.0",
-    "axios": "^1.7.9",
+    "axios": "^1.12.0",
     "canvas-confetti": "^1.9.2",
     "classnames": "^2.3.1",
     "clsx": "^1.1.1",
@@ -27,6 +33,7 @@
     "core-js": "^3.20.0",
     "feed": "^4.2.2",
     "file-loader": "^6.2.0",
+    "framer-motion": "^12.23.12",
     "fs": "0.0.2",
     "gray-matter": "^4.0.3",
     "hast-util-is-element": "^1.1.0",
@@ -35,7 +42,7 @@
     "mobx": "^6.3.9",
     "node-polyfill-webpack-plugin": "^3.0.0",
     "papaparse": "^5.3.2",
-    "prism-react-renderer": "^2.3.1",
+    "prism-react-renderer": "^2.4.1",
     "query-string": "^8.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -51,11 +58,9 @@
     "swiper": "^8.4.3",
     "url-loader": "^4.1.1"
   },
-  "optionalDependencies": {
-    "@dbt-labs/react-dbt-dag": "0.8.7"
-  },
   "devDependencies": {
     "@docusaurus/eslint-plugin": "3.7.0",
+    "node-html-parser": "^6.1.0",
     "@swc/core": "^1.2.174",
     "@swc/jest": "^0.2.20",
     "@testing-library/jest-dom": "^6.4.6",
@@ -65,7 +70,7 @@
     "@typescript-eslint/parser": "^5.54.0",
     "buffer": "^6.0.3",
     "css-loader": "^7.1.2",
-    "cypress": "^13.11.0",
+    "cypress": "^15.0.0",
     "dotenv": "^10.0.0",
     "eslint": "^8.35.0",
     "eslint-config-prettier": "^8.6.0",
@@ -74,6 +79,7 @@
     "husky": "^8.0.3",
     "jest": "^29.7.0",
     "jest-cli": "^29.7.0",
+    "jest-environment-jsdom": "^30.3.0",
     "lint-staged": "^13.1.2",
     "path-browserify": "^1.0.1",
     "process": "^0.11.10",
@@ -90,11 +96,16 @@
       "^.+\\.(js|jsx)$": "@swc/jest"
     },
     "testEnvironment": "jsdom",
+    "testEnvironmentOptions": {
+      "url": "http://localhost/"
+    },
     "setupFilesAfterEnv": [
       "<rootDir>/jest.setup.js"
     ],
     "moduleNameMapper": {
-      "\\.css$": "<rootDir>/static/css/__mocks__/styleMock.js"
+      "\\.css$": "<rootDir>/static/css/__mocks__/styleMock.js",
+      "^@docusaurus/router$": "<rootDir>/src/__mocks__/@docusaurus/router.js",
+      "^@docusaurus/useGlobalData$": "<rootDir>/src/__mocks__/@docusaurus/useGlobalData.js"
     }
   },
   "version": "0.0.0",

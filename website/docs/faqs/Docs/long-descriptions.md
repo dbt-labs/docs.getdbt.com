@@ -6,10 +6,9 @@ id: long-descriptions
 ---
 If you need more than a sentence to explain a model, you can:
 1. Split your description over multiple lines using `>`. Interior line breaks are removed and Markdown can be used. This method is recommended for simple, single-paragraph descriptions:
-```yml
-  version: 2
 
-  models:
+```yml
+models:
   - name: customers
     description: >
       Lorem ipsum **dolor** sit amet, consectetur adipisicing elit, sed do eiusmod
@@ -19,10 +18,9 @@ If you need more than a sentence to explain a model, you can:
 ```
 
 2. Split your description over multiple lines using `|`. Interior line breaks are maintained and Markdown can be used. This method is recommended for more complex descriptions:
-```yml
-  version: 2
 
-  models:
+```yml
+models:
   - name: customers
     description: |
       ### Lorem ipsum

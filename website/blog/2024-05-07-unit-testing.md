@@ -210,16 +210,9 @@ group by 1
 
 ### SQL Code fix
 
-```diff
-17c17
-<     count(
----
->     sum(
-23c23
-<     count(
----
->     sum(
-```
+You can see that we changed `count` to `sum` in the SQL code:
+
+<Lightbox src="/img/blog/2024-05-07-unit-testing/changed_code.png" title="SQL changes in code" />
 
 ### Caveats and pro-tips
 
@@ -231,7 +224,7 @@ Before we wrap up, let's do a brief comparison of the different data quality cap
 
 ## Unit tests vs. model contracts vs. data tests
 
-dbt has multiple complementary features that support data quality including [unit tests](https://docs.getdbt.com/docs/build/unit-tests), [model contracts](https://docs.getdbt.com/docs/collaborate/govern/model-contracts), and [data tests](https://docs.getdbt.com/docs/build/data-tests). Here's a table of how they compare and when you might use each:
+dbt has multiple complementary features that support data quality including [unit tests](https://docs.getdbt.com/docs/build/unit-tests), [model contracts](https://docs.getdbt.com/docs/mesh/govern/model-contracts), and [data tests](https://docs.getdbt.com/docs/build/data-tests). Here's a table of how they compare and when you might use each:
 
 | Unit tests | Model contracts | Data tests |
 | --- | --- | --- |

@@ -2,8 +2,10 @@
 title: "About statement blocks"
 sidebar_label: "statement blocks"
 id: "statement-blocks"
-description: "SQL queries that hit database and return results to your jinja context."
+description: "SQL queries that hit database and return results to your Jinja context."
 ---
+
+<VersionBlock lastVersion="1.99">
 
 :::tip Recommendation
 
@@ -11,7 +13,21 @@ We recommend using the [`run_query` macro](/reference/dbt-jinja-functions/run_qu
 
 :::
 
-`statement`s are sql queries that hit the database and return results to your Jinja context. Here’s an example of a `statement` which gets all of the states from a users <Term id="table" />.
+</VersionBlock>
+
+<VersionBlock firstVersion="2.0">
+
+:::tip When to use statement blocks in Fusion
+
+For queries where you need to fetch results (for example, when your macro or Jinja code needs to use data returned from the database), you can use either `statement` blocks with `fetch_result=True` or the [`run_query` macro](/reference/dbt-jinja-functions/run_query).
+
+For <Term id="ddl" /> or utility operations (like `OPTIMIZE`, `VACUUM`, or maintenance queries), use `statement` blocks with `fetch_result=False` when you don't need to access the results in Jinja. This avoids issues with <Constant name="fusion" />'s strict type checking, which can fail when processing result sets that contain `NULL` values in columns declared as non-nullable.
+
+:::
+
+</VersionBlock>
+
+`statement`s are SQL queries that hit the database and return results to your Jinja context. Here’s an example of a `statement` which gets all of the states from a users <Term id="table" />.
 
 <File name='get_states_statement.sql'>
 
@@ -107,3 +123,45 @@ The contents of the returned `data` field is a matrix. It contains a list rows, 
 ```
 
 </File>
+
+<VersionBlock firstVersion="2.0">
+
+## Fire and forget operations
+
+For <Term id="ddl" /> or utility operations where you don't need the results (because you don't use the returned rows in Jinja), set `fetch_result=False`. This is the recommended pattern for operations like `OPTIMIZE` or `VACUUM` on Databricks, which return result sets that may contain null values in non-nullable columns.
+
+<File name='macros/optimize_table.sql'>
+
+```jinja
+{% macro optimize_table(table, zorder_fields=[]) %}
+  {% set zorder_str = zorder_fields | join(', ') %}
+
+  {% set query %}
+    OPTIMIZE {{ table }}
+    {% if zorder_str | length > 0 %}
+      ZORDER BY ({{ zorder_str }})
+    {% endif %}
+  {% endset %}
+
+  {% call statement('optimize', fetch_result=False) %}
+    {{ query }}
+  {% endcall %}
+{% endmacro %}
+```
+
+</File>
+
+You can use this macro in a post-hook:
+
+<File name='dbt_project.yml'>
+
+```yaml
+models:
+  my_project:
+    +post-hook:
+      - "{{ optimize_table(this, ['customer_id', 'order_date']) }}"
+```
+
+</File>
+
+</VersionBlock>

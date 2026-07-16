@@ -1,6 +1,6 @@
 ---
 title: Model configurations
-description: "Reference guide for the model configs available in dbt."
+description: "Read this guide to understand model configurations in dbt."
 meta:
   resource_type: Models
 ---
@@ -23,95 +23,137 @@ import ConfigGeneral from '/snippets/_config-description-general.md';
   values={[
     { label: 'Project file', value: 'project-yaml', },
     { label: 'Property file', value: 'property-yaml', },
-    { label: 'Config block', value: 'config', },
+    { label: 'SQL file config', value: 'config', },
   ]
 }>
 <TabItem value="project-yaml">
 
 <File name='dbt_project.yml'>
 
-<VersionBlock lastVersion="1.8">
+<VersionBlock lastVersion="1.9">
 
 ```yaml
 models:
   [<resource-path>](/reference/resource-configs/resource-path):
     [+](/reference/resource-configs/plus-prefix)[materialized](/reference/resource-configs/materialized): <materialization_name>
     [+](/reference/resource-configs/plus-prefix)[sql_header](/reference/resource-configs/sql_header): <string>
-    [+](/reference/resource-configs/plus-prefix)[on_configuration_change](/reference/resource-configs/on_configuration_change): apply | continue | fail # Only for materialized views on supported adapters
+    [+](/reference/resource-configs/plus-prefix)[on_configuration_change](/reference/resource-configs/on_configuration_change): apply | continue | fail # only for materialized views on supported adapters
     [+](/reference/resource-configs/plus-prefix)[unique_key](/reference/resource-configs/unique_key): <column_name_or_expression>
+
 ```
 
 </VersionBlock>
 
-<VersionBlock firstVersion="1.9">
+<VersionBlock firstVersion="1.10" lastVersion="1.11">
 
 ```yaml
 models:
   [<resource-path>](/reference/resource-configs/resource-path):
     [+](/reference/resource-configs/plus-prefix)[materialized](/reference/resource-configs/materialized): <materialization_name>
     [+](/reference/resource-configs/plus-prefix)[sql_header](/reference/resource-configs/sql_header): <string>
-    [+](/reference/resource-configs/plus-prefix)[on_configuration_change](/reference/resource-configs/on_configuration_change): apply | continue | fail # Only for materialized views on supported adapters
+    [+](/reference/resource-configs/plus-prefix)[on_configuration_change](/reference/resource-configs/on_configuration_change): apply | continue | fail # only for materialized views on supported adapters
     [+](/reference/resource-configs/plus-prefix)[unique_key](/reference/resource-configs/unique_key): <column_name_or_expression>
-    [+](/reference/resource-configs/plus-prefix)[batch_size](/reference/resource-configs/batch-size): day | hour | month | year
-    [+](/reference/resource-configs/plus-prefix)[begin](/reference/resource-configs/begin): "<ISO formatted date or datetime (like, "2024-01-15T12:00:00Z")>"
-    [+](/reference/resource-configs/plus-prefix)[lookback](/reference/resource-configs/lookback): <integer>
-    [+](/reference/resource-configs/plus-prefix)[concurrent_batches](/reference/resource-properties/concurrent_batches): true | false
-```
+    [+](/reference/resource-configs/plus-prefix)[freshness](/reference/resource-configs/freshness): <dict>
+
+  ```
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.12">
+
+```yaml
+models:
+  [<resource-path>](/reference/resource-configs/resource-path):
+    [+](/reference/resource-configs/plus-prefix)[materialized](/reference/resource-configs/materialized): <materialization_name>
+    [+](/reference/resource-configs/plus-prefix)[sql_header](/reference/resource-configs/sql_header): <string>
+    [+](/reference/resource-configs/plus-prefix)[on_configuration_change](/reference/resource-configs/on_configuration_change): apply | continue | fail # only for materialized views on supported adapters
+    [+](/reference/resource-configs/plus-prefix)[unique_key](/reference/resource-configs/unique_key): <column_name_or_expression>
+    [+](/reference/resource-configs/plus-prefix)[freshness](/reference/resource-configs/freshness): <dict>
+    [+](/reference/resource-configs/plus-prefix)[on_error](/reference/resource-configs/on_error): skip_children | continue
+    [+](/reference/resource-configs/plus-prefix)[latest_version_pointer](/reference/resource-configs/latest_version_pointer): <dict>
+
+  ```
 
 </VersionBlock>
 </File>
 
 </TabItem>
-
 
 <TabItem value="property-yaml">
 
+<VersionBlock lastVersion="1.9">
+
 <File name='models/properties.yml'>
 
-<VersionBlock lastVersion="1.8">
-
 ```yaml
-version: 2
 
 models:
-  - name: [<model-name>] #  Must match the filename of a model -- including case sensitivity.
+  - name: [<model-name>]
     config:
       [materialized](/reference/resource-configs/materialized): <materialization_name>
       [sql_header](/reference/resource-configs/sql_header): <string>
-      [on_configuration_change](/reference/resource-configs/on_configuration_change): apply | continue | fail # Only for materialized views on supported adapters
+      [on_configuration_change](/reference/resource-configs/on_configuration_change): apply | continue | fail #only for materialized views on supported adapters
       [unique_key](/reference/resource-configs/unique_key): <column_name_or_expression>
 
 ```
-</VersionBlock>
-
-<VersionBlock firstVersion="1.9">
-
-```yaml
-version: 2
-
-models:
-  - name: [<model-name>] #  Must match the filename of a model -- including case sensitivity.
-    config:
-      [materialized](/reference/resource-configs/materialized): <materialization_name>
-      [sql_header](/reference/resource-configs/sql_header): <string>
-      [on_configuration_change](/reference/resource-configs/on_configuration_change): apply | continue | fail # Only for materialized views on supported adapters
-      [unique_key](/reference/resource-configs/unique_key): <column_name_or_expression>
-      [batch_size](/reference/resource-configs/batch-size): day | hour | month | year
-      [begin](/reference/resource-configs/begin): "<ISO formatted date or datetime (like, "2024-01-15T12:00:00Z")>"
-      [lookback](/reference/resource-configs/lookback): <integer>
-      [concurrent_batches](/reference/resource-properties/concurrent_batches): true | false
-
-```
-</VersionBlock>
 </File>
+</VersionBlock>
 
+<VersionBlock firstVersion="1.10" lastVersion="1.11">
+
+Note, most model configurations are defined under `config`, while `build_after` is set under `freshness`.
+
+<File name='models/properties.yml'>
+
+```yaml
+
+models:
+  - name: [<model-name>]
+    config:
+      [materialized](/reference/resource-configs/materialized): <materialization_name>
+      [sql_header](/reference/resource-configs/sql_header): <string>
+      [on_configuration_change](/reference/resource-configs/on_configuration_change): apply | continue | fail # only for materialized views on supported adapters
+      [unique_key](/reference/resource-configs/unique_key): <column_name_or_expression>
+      [freshness](/reference/resource-configs/freshness):
+        # build_after is nested under freshness. Available on dbt platform Enterprise tiers only.
+        build_after: <dict>
+```
+
+</File>
+</VersionBlock>
+
+<VersionBlock firstVersion="1.12">
+
+Note, most model configurations are defined under `config`, while `build_after` is set under `freshness`.
+
+<File name='models/properties.yml'>
+
+```yaml
+
+models:
+  - name: [<model-name>]
+    config:
+      [materialized](/reference/resource-configs/materialized): <materialization_name>
+      [sql_header](/reference/resource-configs/sql_header): <string>
+      [on_configuration_change](/reference/resource-configs/on_configuration_change): apply | continue | fail # only for materialized views on supported adapters
+      [unique_key](/reference/resource-configs/unique_key): <column_name_or_expression>
+      [freshness](/reference/resource-configs/freshness):
+        # build_after is nested under freshness. Available on dbt platform Enterprise tiers only.
+        build_after: <dict>
+      [on_error](/reference/resource-configs/on_error): skip_children | continue
+      [latest_version_pointer](/reference/resource-configs/latest_version_pointer): <dict>
+```
+
+</File>
+</VersionBlock>
 </TabItem>
+
 
 <TabItem value="config">
 
 <File name='models/<model_name>.sql'>
 
-<VersionBlock lastVersion="1.8">
+<VersionBlock lastVersion="1.9">
 
 ```sql
 
@@ -123,23 +165,37 @@ models:
 ) }}
 
 ```
+
 </VersionBlock>
 
-<VersionBlock firstVersion="1.9">
+<VersionBlock firstVersion="1.10" lastVersion="1.11">
 
 ```sql
 
 {{ config(
     [materialized](/reference/resource-configs/materialized)="<materialization_name>",
     [sql_header](/reference/resource-configs/sql_header)="<string>"
-    [on_configuration_change](/reference/resource-configs/on_configuration_change): apply | continue | fail # Only for materialized views for supported adapters
+    [on_configuration_change](/reference/resource-configs/on_configuration_change): apply | continue | fail # only for materialized views on supported adapters
     [unique_key](/reference/resource-configs/unique_key)='column_name_or_expression'
-    [batch_size](/reference/resource-configs/batch-size)='day' | 'hour' | 'month' | 'year'
-    [begin](/reference/resource-configs/begin)="<ISO formatted date or datetime (like, "2024-01-15T12:00:00Z")>"
-    [lookback](/reference/resource-configs/lookback)= <integer>
-    [concurrent_batches](/reference/resource-properties/concurrent_batches)= true | false
+    [freshness](/reference/resource-configs/freshness)=<dict>
 ) }}
+```
 
+</VersionBlock>
+
+<VersionBlock firstVersion="1.12">
+
+```sql
+
+{{ config(
+    [materialized](/reference/resource-configs/materialized)="<materialization_name>",
+    [sql_header](/reference/resource-configs/sql_header)="<string>"
+    [on_configuration_change](/reference/resource-configs/on_configuration_change): apply | continue | fail # only for materialized views for supported adapters
+    [unique_key](/reference/resource-configs/unique_key)='column_name_or_expression'
+    [freshness](/reference/resource-configs/freshness)=<dict>
+    [on_error](/reference/resource-configs/on_error)="skip_children" | "continue"
+    [latest_version_pointer](/reference/resource-configs/latest_version_pointer)=<dict>
+) }}
 ```
 
 </VersionBlock>
@@ -161,34 +217,13 @@ models:
   values={[
     { label: 'Project file', value: 'project-yaml', },
     { label: 'Property file', value: 'property-yaml', },
-    { label: 'Config block', value: 'config', },
+    { label: 'SQL file config', value: 'config', },
   ]
 }>
 
 <TabItem value="project-yaml">
 
 <File name='dbt_project.yml'>
-
-<VersionBlock lastVersion="1.8">
-
-```yaml
-models:
-  [<resource-path>](/reference/resource-configs/resource-path):
-    [+](/reference/resource-configs/plus-prefix)[enabled](/reference/resource-configs/enabled): true | false
-    [+](/reference/resource-configs/plus-prefix)[tags](/reference/resource-configs/tags): <string> | [<string>]
-    [+](/reference/resource-configs/plus-prefix)[pre-hook](/reference/resource-configs/pre-hook-post-hook): <sql-statement> | [<sql-statement>]
-    [+](/reference/resource-configs/plus-prefix)[post-hook](/reference/resource-configs/pre-hook-post-hook): <sql-statement> | [<sql-statement>]
-    [+](/reference/resource-configs/plus-prefix)[database](/reference/resource-configs/database): <string>
-    [+](/reference/resource-configs/plus-prefix)[schema](/reference/resource-properties/schema): <string>
-    [+](/reference/resource-configs/plus-prefix)[alias](/reference/resource-configs/alias): <string>
-    [+](/reference/resource-configs/plus-prefix)[persist_docs](/reference/resource-configs/persist_docs): <dict>
-    [+](/reference/resource-configs/plus-prefix)[full_refresh](/reference/resource-configs/full_refresh): <boolean>
-    [+](/reference/resource-configs/plus-prefix)[meta](/reference/resource-configs/meta): {<dictionary>}
-    [+](/reference/resource-configs/plus-prefix)[grants](/reference/resource-configs/grants): {<dictionary>}
-    [+](/reference/resource-configs/plus-prefix)[contract](/reference/resource-configs/contract): {<dictionary>}
-
-```
-</VersionBlock>
 
 <VersionBlock firstVersion="1.9">
 
@@ -220,36 +255,12 @@ models:
 
 <File name='models/properties.yml'>
 
-<VersionBlock lastVersion="1.8">
-
-```yaml
-version: 2
-
-models:
-  - name: [<model-name>] # Must match the filename of a model -- including case sensitivity.
-    config:
-      [enabled](/reference/resource-configs/enabled): true | false
-      [tags](/reference/resource-configs/tags): <string> | [<string>]
-      [pre_hook](/reference/resource-configs/pre-hook-post-hook): <sql-statement> | [<sql-statement>]
-      [post_hook](/reference/resource-configs/pre-hook-post-hook): <sql-statement> | [<sql-statement>]
-      [database](/reference/resource-configs/database): <string>
-      [schema](/reference/resource-properties/schema): <string>
-      [alias](/reference/resource-configs/alias): <string>
-      [persist_docs](/reference/resource-configs/persist_docs): <dict>
-      [full_refresh](/reference/resource-configs/full_refresh): <boolean>
-      [meta](/reference/resource-configs/meta): {<dictionary>}
-      [grants](/reference/resource-configs/grants): {<dictionary>}
-      [contract](/reference/resource-configs/contract): {<dictionary>}
-```
-</VersionBlock>
-
 <VersionBlock firstVersion="1.9">
 
 ```yaml
-version: 2
 
 models:
-  - name: [<model-name>] #  Must match the filename of a model -- including case sensitivity.
+  - name: [<model-name>]
     config:
       [enabled](/reference/resource-configs/enabled): true | false
       [tags](/reference/resource-configs/tags): <string> | [<string>]
@@ -275,26 +286,6 @@ models:
 
 <File name='models/<model_name>.sql'>
 
-<VersionBlock lastVersion="1.8">
-
-```sql
-
-{{ config(
-    [enabled](/reference/resource-configs/enabled)=true | false,
-    [tags](/reference/resource-configs/tags)="<string>" | ["<string>"],
-    [pre_hook](/reference/resource-configs/pre-hook-post-hook)="<sql-statement>" | ["<sql-statement>"],
-    [post_hook](/reference/resource-configs/pre-hook-post-hook)="<sql-statement>" | ["<sql-statement>"],
-    [database](/reference/resource-configs/database)="<string>",
-    [schema](/reference/resource-properties/schema)="<string>",
-    [alias](/reference/resource-configs/alias)="<string>",
-    [persist_docs](/reference/resource-configs/persist_docs)={<dict>},
-    [meta](/reference/resource-configs/meta)={<dict>},
-    [grants](/reference/resource-configs/grants)={<dict>},
-    [contract](/reference/resource-configs/contract)={<dictionary>}
-) }}
-
-```
-</VersionBlock>
 
 <VersionBlock firstVersion="1.9">
 
@@ -338,10 +329,9 @@ Model configurations are applied hierarchically. You can configure models from w
 
 1. Using a `config()` Jinja macro within a model.
 2. Using a `config` [resource property](/reference/model-properties) in a `.yml` file.
-3. From the `dbt_project.yml` project file, under the `models:` key. In this case, the model that's nested the deepest will have the highest priority. 
-  - Note, the model name configuration must match the _filename_ of a model &mdash; including case sensitivity. Any mismatched casing can prevent dbt from applying configurations correctly and may affect metadata in [dbt Explorer](/docs/collaborate/explore-projects).
+3. From the project YAML file (`dbt_project.yml`), under the `models:` key. In this case, the model that's nested the deepest will have the highest priority. 
 
-The most specific configuration always takes precedence. In the project file, for example, configurations applied to a `marketing` subdirectory will take precedence over configurations applied to the entire `jaffle_shop` project. To apply a configuration to a model or directory of models, define the [resource path](/reference/resource-configs/resource-path) as nested dictionary keys.
+The most specific configuration always takes precedence. In the project YAML file, for example, configurations applied to a `marketing` subdirectory will take precedence over configurations applied to the entire `jaffle_shop` project. To apply a configuration to a model or directory of models, define the [resource path](/reference/resource-configs/resource-path) as nested dictionary keys.
 
 Model configurations in your root dbt project have _higher_ precedence than configurations in installed packages. This enables you to override the configurations of installed packages, providing more control over your dbt runs. 
 
@@ -389,13 +379,12 @@ Some types of configurations are specific to a particular model. In these cases,
 {{
   config(
     materialized = "table",
-    sort = 'event_time',
-    dist = 'event_id'
+    tags = ["core", "events"]
   )
 }}
 
 
-select * from ...
+select * from {{ ref('raw_events') }}
 ```
 
 </File>
@@ -403,14 +392,47 @@ select * from ...
 <File name='models/events/base/properties.yml'>
 
 ```yaml
-version: 2
 
 models:
   - name: base_events
-    config:
-      materialized: table
-      sort: event_time
-      dist: event_id
+    description: "Standardized event data from raw sources"
+    columns:
+      - name: user_id
+        description: "Unique identifier for a user"
+        data_tests:
+          - not_null
+          - unique
+      - name: event_type
+        description: "Type of event recorded (click, purchase, etc.)"
 ```
 
 </File>
+
+<VersionBlock firstVersion="1.10">
+
+### Configuring source freshness
+
+The model `freshness` config rebuilds models only when new source or upstream data is available. This is useful for models that depend on other models but only need to be updated periodically. For more information, see [freshness](/reference/resource-configs/freshness).
+
+Note that for every `freshness` config, you're required to either set values for both `count` and `period`, or set `freshness: null`. This requirement applies to all `freshness` types: `freshness.warn_after`, `freshness.error_after`, and `freshness.build_after`.
+
+See the following example of a `my_model.yml` file using the `freshness` config:
+
+<File name="models/my_model.yml">
+  
+```yml
+models:
+  - name: stg_orders
+    config:
+      freshness:
+        build_after:  # build this model no more often than every X amount of time, as long as it has new data. Available only on dbt platform Enterprise tiers. 
+          count: <positive_integer>
+          period: minute | hour | day
+          updates_on: any | all # optional config
+```
+  
+</File>
+
+</VersionBlock>
+
+

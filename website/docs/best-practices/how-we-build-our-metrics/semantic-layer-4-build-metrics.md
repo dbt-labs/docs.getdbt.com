@@ -5,6 +5,10 @@ hoverSnippet: Learn how to get started with the dbt Semantic Layer
 pagination_next: "best-practices/how-we-build-our-metrics/semantic-layer-5-advanced-metrics"
 ---
 
+import NewSLYAMLCallout from '/snippets/_new-sl-yaml-callout.md';
+
+<NewSLYAMLCallout />
+
 ## How to build metrics
 
 - 💹 We'll start with one of the most important metrics for any business: **revenue**.
@@ -36,13 +40,13 @@ metrics:
 
 ## Query your metric
 
-You can use the dbt Cloud CLI for metric validation or queries during development, via the `dbt sl` set of subcommands. Here are some useful examples:
+You can use the <Constant name="platform_cli" /> for metric validation or queries during development, via the `dbt sl` set of subcommands. Here are some useful examples:
 
 ```bash
 dbt sl query revenue --group-by metric_time__month
 dbt sl list dimensions --metrics revenue # list all dimensions available for the revenue metric
 ```
 
-- It's best practice any time we're updating our Semantic Layer code to run `dbt parse` to update our development semantic manifest.
-- `dbt sl query` is not how you would typically use the tool in production, that's handled by the dbt Cloud Semantic Layer's features. It's available for testing results of various metric queries in development, exactly as we're using it now.
+- It's best practice any time we're updating our <Constant name="semantic_layer" /> code to run `dbt parse` to update our development semantic manifest.
+- `dbt sl query` is not how you would typically use the tool in production, that's handled by the <Constant name="dbt" /> Semantic Layer's features. It's available for testing results of various metric queries in development, exactly as we're using it now.
 - Note the structure of the above query. We select the metric(s) we want and the dimensions to group them by — we use dunders (double underscores e.g.`metric_time__[time bucket]`) to designate time dimensions or other non-unique dimensions that need a specified entity path to resolve (e.g. if you have an orders location dimension and an employee location dimension both named 'location' you would need dunders to specify `orders__location` or `employee__location`).

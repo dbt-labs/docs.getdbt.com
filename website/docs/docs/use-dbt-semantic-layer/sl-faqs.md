@@ -7,15 +7,15 @@ tags: [Semantic Layer]
 pagination_next: null
 ---
 
-The [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) is a dbt Cloud offering that allows users to centrally define their metrics within their dbt project using [MetricFlow](/docs/build/about-metricflow).
+The [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl) is a <Constant name="dbt" /> offering that allows users to centrally define their metrics within their dbt project using [MetricFlow](/docs/build/about-metricflow).
 
-The dbt Semantic Layer offers:
+The <Constant name="semantic_layer" /> offers:
 
 - Dynamic SQL generation to compute metrics
 - APIs to query metrics and dimensions
-- First-class [integrations](/docs/cloud-integrations/avail-sl-integrations) to query those centralized metrics in downstream tools
+- First-class [integrations](/docs/platform-integrations/avail-sl-integrations) to query those centralized metrics in downstream tools
 
-The dbt Semantic Layer is powered by MetricFlow, which is a source-available component.
+The <Constant name="semantic_layer" /> is powered by MetricFlow, which is a source-available component.
 
 ## Overview of the dbt Semantic Layer
 
@@ -28,7 +28,7 @@ The primary value of the dbt Semantic Layer is to centralize and bring consisten
 - **Simplify your code** by not duplicating metric logic and allowing MetricFlow to perform complex calculations for you.
 - **Empower stakeholders** with rich context and flexible, yet governed experiences.
 
-<Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl-concept.png" width="90%" title="This diagram shows how the dbt Semantic Layer works with your data stack." />
+<Lightbox src="/img/docs/dbt-platform/semantic-layer/sl-concept.png" width="90%" title="This diagram shows how the dbt Semantic Layer works with your data stack." />
 
 </Expandable>
 
@@ -58,12 +58,12 @@ The primary consideration is the flexibility and performance of the underlying q
 - A star schema data model offers more flexibility for dimensions that are available for a given metric, but will require more joins.
 - A fully denormalized data model is simpler, will be materialized to a specific grain, but won’t be able to join to other tables.
 
-While the dbt Semantic Layer will work for both cases, it's best to allow MetricFlow do handle some level of denormalization for you in order to provide more flexibility to metric consumers.
+While the dbt Semantic Layer will work for both cases, it's best to allow MetricFlow to handle some level of denormalization for you in order to provide more flexibility to metric consumers.
 </Expandable>
 
 <Expandable alt_header="How is the dbt Semantic Layer priced?">
 
-The dbt Semantic Layer measures usage in distinct 'Queried Metrics'. Refer to the [Billing](/docs/cloud/billing#what-counts-as-a-queried-metric) to learn more about pricing.
+The dbt Semantic Layer measures usage in distinct 'Queried Metrics'. Refer to the [Billing](/docs/platform/billing/how-pricing-works#what-counts-as-a-queried-metric) to learn more about pricing.
 </Expandable>
 
 ## Availability
@@ -76,31 +76,33 @@ The dbt Semantic Layer supports the following data platforms:
 - BigQuery
 - Databricks
 - Redshift
+- Postgres
+- Trino
 
-Support for other data platforms, such as Fabric and Trino, isn't available at this time. If you're interested in using the dbt Semantic Layer with a data platform not on the list, please [contact us](https://www.getdbt.com/get-started).
+Support for other data platforms, such as Fabric, isn't available at this time. If you're interested in using the dbt Semantic Layer with a data platform not on the list, please [contact us](https://www.getdbt.com/contact).
 </Expandable>
 
 <Expandable alt_header="Do I need to be on a specific version of dbt to use dbt Semantic Layer?">
 
-Yes, the dbt Semantic Layer is compatible with [dbt v1.6 or higher](/docs/dbt-versions/upgrade-dbt-version-in-cloud).
+Yes, the dbt Semantic Layer is compatible with [dbt v1.6 or higher](/docs/dbt-versions/upgrade-dbt-platform-version).
 </Expandable>
 
-<Expandable alt_header="Does dbt Semantic Layer require a specific dbt Cloud plan?">
+<Expandable alt_header="Does dbt Semantic Layer require a specific dbt plan?">
 
-Yes, dbt Cloud [Enterprise or Team](https://www.getdbt.com/pricing) plan customers can access the dbt Semantic Layer.
+Yes, <Constant name="dbt" /> [Starter, Enterprise, or Enterprise+](https://www.getdbt.com/pricing) plan customers can access the dbt Semantic Layer. Certain features like caching and using multiple credentials are available for Enterprise and Enterprise+ plans.
 </Expandable>
 
 <Expandable alt_header="Is there a way to leverage dbt Semantic Layer capabilities in dbt Core?">
 
-The dbt Semantic Layer is proprietary to dbt Cloud, however some components of it are open-source. dbt Core users can use MetricFlow features, like defining metrics in their projects, without a dbt Cloud plan.
+The dbt Semantic Layer is proprietary to <Constant name="dbt" />, however some components of it are open-source. dbt Core users can use MetricFlow features, like defining metrics in their projects, without a <Constant name="dbt" /> plan.
 
-dbt Core users can also query their semantic layer locally using the command line. However, they won't be able to use the [APIs](/docs/dbt-cloud-apis/sl-api-overview) or [available integrations](/docs/cloud-integrations/avail-sl-integrations) to access metrics dynamically.
+dbt Core users can also query their semantic layer locally using the command line. However, they won't be able to use the [APIs](/docs/dbt-apis/sl-api-overview) or [available integrations](/docs/platform-integrations/avail-sl-integrations) to access metrics dynamically.
 
 </Expandable>
 
 <Expandable alt_header="Is there a solution or licensing path for an organization that doesn't use dbt for pipelining, but might like to implement the dbt Semantic Layer?">
 
-If you're interested in the this type of implementation, please reach out to us [here](https://www.getdbt.com/get-started).
+If you're interested in the this type of implementation, please reach out to us [here](https://www.getdbt.com/contact).
 </Expandable>
 
 ## How does the dbt Semantic Layer work?
@@ -113,13 +115,13 @@ If you create a table with a metric, you’ll need to create numerous other tabl
 
 With the dbt Semantic Layer, you don’t need to pre-join or build any tables; rather, you can simply add a few lines of code to your semantic model, and that data will only be computed upon request.
 
-<Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl-concept.png" width="90%" title="This diagram shows how the dbt Semantic Layer works with your data stack." />
+<Lightbox src="/img/docs/dbt-platform/semantic-layer/sl-concept.png" width="90%" title="This diagram shows how the dbt Semantic Layer works with your data stack." />
 
 </Expandable>
 
 <Expandable alt_header="Do I materialize anything when I define a semantic model?">
 
-No, you don't. When querying the dbt Semantic Layer through the [Semantic Layer APIs](/docs/dbt-cloud-apis/sl-api-overview), you're not materializing any data by default.
+No, you don't. When querying the dbt Semantic Layer through the [Semantic Layer APIs](/docs/dbt-apis/sl-api-overview), you're not materializing any data by default.
 
 The dbt Semantic Layer dynamically computes the metric using the underlying data tables. Then it returns the output to the end user.
 </Expandable>
@@ -131,7 +133,7 @@ The dbt Semantic Layer does not store a physical copy of your data. It uses unde
 
 <Expandable alt_header="How does the Semantic Layer handle data?">
 
-The dbt Semantic Layer is part of dbt Cloud. It allows data teams to define metrics once, centrally, and access them from any integrated analytics tool, ensuring consistent answers across diverse datasets. In providing this service, dbt Labs permits clients to access Semantic Layer metrics. Client data passes through the Semantic Layer on the way back from the data warehouse.
+The dbt Semantic Layer is part of the <Constant name="dbt_platform" />. It allows data teams to define metrics once, centrally, and access them from any integrated analytics tool, ensuring consistent answers across diverse datasets. In providing this service, dbt Labs permits clients to access Semantic Layer metrics. Client data passes through the Semantic Layer on the way back from the data warehouse.
 
 dbt Labs handles this in a secure way using encryption and authentication from the client’s data warehouse. In certain cases, such data may be cached on dbt Labs system ephemerally (data is not persistently stored).
 
@@ -141,15 +143,15 @@ No client warehouse data is retained on dbt Labs's systems. We offer a caching s
 
 </Expandable>
 
-<Expandable alt_header="Does our agreement, the Terms of Service (ToS) for dbt Cloud, apply to the Semantic Layer?">
+<Expandable alt_header="Does our agreement, the Terms of Service (ToS) for dbt, apply to the Semantic Layer?">
 
 Yes it does.
 
 </Expandable>
 
-<Expandable alt_header="Where is MetricFlow hosted? How do queries pass through MetricFlow and dbt Cloud and back to the end user?">
+<Expandable alt_header="Where is MetricFlow hosted? How do queries pass through MetricFlow and dbt and back to the end user?">
 
-MetricFlow is hosted in dbt Cloud. Requests from the [Semantic Layer APIs](/docs/dbt-cloud-apis/sl-api-overview) are routed from our API gateway to MetricFlow, which generates the SQL to compute what's requested by the user. MetricFlow hands the SQL back to our gateway, which then executes it against the data platform.
+MetricFlow is hosted in <Constant name="dbt" />. Requests from the [Semantic Layer APIs](/docs/dbt-apis/sl-api-overview) are routed from our API gateway to MetricFlow, which generates the SQL to compute what's requested by the user. MetricFlow hands the SQL back to our gateway, which then executes it against the data platform.
 </Expandable>
 
 <Expandable alt_header="How do I configure the dbt Semantic Layer?">
@@ -157,7 +159,7 @@ MetricFlow is hosted in dbt Cloud. Requests from the [Semantic Layer APIs](/docs
 1. You define [semantic models](/docs/build/semantic-models) in YAML files that describe your data, including entities (for joins), measures (with aggregation types as a building block to your metrics), and dimensions (to slice and dice your metrics).
 
 2. Then you build your metrics on top of these semantic models. This is all done in `.yml` configurations alongside your dbt models in your projects.
-3. Once you've defined your metrics and semantic models, you can [configure the dbt Semantic Layer](/docs/use-dbt-semantic-layer/setup-sl) in dbt Cloud.
+3. Once you've defined your metrics and semantic models, you can [configure the dbt Semantic Layer](/docs/use-dbt-semantic-layer/setup-sl) in <Constant name="dbt" />.
 
 Read our [dbt Semantic Layer quickstart](/guides/sl-snowflake-qs) guide for more information.
 
@@ -244,9 +246,9 @@ Yes! You can validate your semantic nodes (semantic models, metrics, saved queri
 
 <Expandable alt_header="What integrations are supported today?">
 
-There are a number of data applications that have integrations with the dbt Semantic Layer, including Tableau, Google Sheets, Hex, and Mode, among others.
+There are a number of data applications that have integrations with the dbt Semantic Layer, including Tableau, Google Sheets, Hex, Dot, and Mode, among others.
 
-Refer to [Available integrations](/docs/cloud-integrations/avail-sl-integrations) for more information.
+Refer to [Available integrations](/docs/platform-integrations/avail-sl-integrations) for more information.
 
 </Expandable>
 
@@ -274,17 +276,21 @@ Yes, all of our interfaces or APIs expose metric descriptions, which you can sur
 
 <Expandable alt_header="How do fine-grained access controls work with the dbt Semantic Layer?">
 
-The dbt Semantic Layer uses service tokens for authentication, mapped to underlying data platform credentials. These credentials control physical access to the raw data. The credential configuration allows admins to create a credential and map it to service tokens, which can then be shared to relevant teams for BI connection setup. You can configure credentials and service tokens to reflect your teams and their roles. 
+The dbt Semantic Layer uses service or personal tokens for authentication. 
+
+[Service tokens](/docs/dbt-apis/service-tokens) are mapped to underlying data platform credentials. These credentials control physical access to the raw data. The credential configuration allows admins to create a credential and map it to service tokens, which can then be shared to relevant teams for BI connection setup. You can configure credentials and service tokens to reflect your teams and their roles.
+
+Personal access tokens [(PATs)](/docs/dbt-apis/user-tokens) enable user-level authentication. When you use PATs to authenticate, your personal user credentials are used when running queries against the Semantic Layer.
 
 Currently, the credentials you configure when setting up the dbt Semantic Layer are used for every request. Any physical access policies you have tied to your credentials will be respected.
 
-We are currently working on introducing more fine-grained access controls, including user-level access and group credentials, that enable flexible granular permissions.
+
 
 </Expandable>
 
 ## Implementation
 
-<Expandable alt_header="How can I implement dbt Mesh with the dbt Semantic Layer">
+<Expandable alt_header="How can I implement dbt Mesh with the dbt Semantic Layer?">
 
 import SLMeshFAQs from '/snippets/_sl-dbt-mesh-faq.md';
 
@@ -305,9 +311,11 @@ Semantic layer credentials are different than the credentials you use to run dbt
 <Expandable alt_header="How does the dbt Semantic Layer support a dbt Mesh architecture design?">
 
 Currently, semantic models can be created from dbt models that live across projects ([dbt Mesh](/best-practices/how-we-mesh/mesh-1-intro)). In the future, users will also be able to use mesh concepts on semantic objects and define metrics across dbt projects.
+
+<VersionBlock firstVersion="1.12">
+import SLMeshLatestSpec from '/snippets/_sl-mesh-latest-spec.md';
+
+<SLMeshLatestSpec/>
+</VersionBlock>
 </Expandable>
 
-<Expandable alt_header="How do I migrate from the legacy Semantic Layer?">
-
-If you're using the legacy Semantic Layer, we highly recommend you [upgrade your dbt version](/docs/dbt-versions/upgrade-dbt-version-in-cloud) to dbt v1.6 or higher to use the latest dbt Semantic Layer. Refer to the dedicated [migration guide](/guides/sl-migration) for more info.
-</Expandable>

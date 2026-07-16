@@ -1,23 +1,23 @@
 ---
-title: "Quickstart for dbt Cloud and Amazon Athena"
+title: "Quickstart for dbt and Amazon Athena"
 id: "athena"
 # time_to_complete: '30 minutes' commenting out until we test
 level: 'Beginner'
 icon: 'athena'
 hide_table_of_contents: true
-tags: ['Amazon','Athena', 'dbt Cloud','Quickstart']
+tags: ['Amazon','Athena', 'dbt platform','Quickstart']
 ---
 
 <div style={{maxWidth: '900px'}}>
 
 ## Introduction
 
-In this quickstart guide, you'll learn how to use dbt Cloud with Amazon Athena. It will show you how to: 
+In this quickstart guide, you'll learn how to use <Constant name="dbt" /> with Amazon Athena. It will show you how to: 
 
 - Create an S3 bucket for Athena query results.
-- Creat an Athena database.
+- Create an Athena database.
 - Access sample data in a public dataset.
-- Connect dbt Cloud to Amazon Athena.
+- Connect <Constant name="dbt" /> to Amazon Athena.
 - Take a sample query and turn it into a model in your dbt project. A model in dbt is a select statement.
 - Add tests to your models.
 - Document your models.
@@ -29,7 +29,7 @@ You can check out [dbt Fundamentals](https://learn.getdbt.com/courses/dbt-fundam
 
 ### Prerequisites​
 
-- You have a [dbt Cloud account](https://www.getdbt.com/signup/). 
+- You have a [<Constant name="dbt" /> account](https://www.getdbt.com/signup/). 
 - You have an [AWS account](https://aws.amazon.com/).
 - You have set up [Amazon Athena](https://docs.aws.amazon.com/athena/latest/ug/getting-started.html).
 
@@ -96,9 +96,9 @@ To obtain your AWS credentials file:
 
 Retrieve the `aws_access_key_id` and `aws_secret_access_key` from the `~/.aws/credentials` file for a future step.
 
-## Configure the connection in dbt Cloud
+## Configure the connection in dbt
 
-To configure the Athena connection in dbt Cloud:
+To configure the Athena connection in <Constant name="dbt" />:
 1. Click your **account name** on the left-side menu and click **Account settings**.
 1. Click **Connections** and click **New connection**.
 1. Click **Athena** and fill out the required fields (and any optional fields).
@@ -112,21 +112,21 @@ To configure the Athena connection in dbt Cloud:
 To configure the Athena credentials in your environment:
 1. Click **Deploy** on the left-side menu and click **Environments**.
 1. Click **Create environment** and fill out the **General settings**. 
-    - Your **dbt version** must be set to `Versionless` to use the Athena connection. 
+    - Your **dbt version** must be on a [release track](/docs/dbt-versions/dbt-release-tracks) to use the Athena connection. 
 1. Select the Athena connection from the **Connection** dropdown. 
 1. Fill out the `aws_access_key` and `aws_access_id` recorded in previous steps, as well as the `Schema` to write to. 
 1. Click **Test connection** and once it succeeds, **Save** the environment.
 
-Repeat the process to create a [development environment](https://docs.getdbt.com/docs/dbt-cloud-environments#types-of-environments). 
+Repeat the process to create a [development environment](/docs/dbt-platform-environments#types-of-environments). 
 
-## Set up a dbt Cloud managed repository 
+## Set up a dbt managed repository 
 <Snippet path="tutorial-managed-repo" />
 
 ## Initialize your dbt project​ and start developing
 
-Now that you have a repository configured, you can initialize your project and start development in dbt Cloud:
+Now that you have a repository configured, you can initialize your project and start development in <Constant name="dbt" />:
 
-1. Click **Start developing in the IDE**. It might take a few minutes for your project to spin up for the first time as it establishes your git connection, clones your repo, and tests the connection to the warehouse.
+1. Click **Start developing in the <Constant name="studio_ide" />**. It might take a few minutes for your project to spin up for the first time as it establishes your git connection, clones your repo, and tests the connection to the warehouse.
 2. Above the file tree to the left, click **Initialize dbt project**. This builds out your folder structure with example models.
 3. Make your initial commit by clicking **Commit and sync**. Use the commit message `initial commit` and click **Commit**. This creates the first commit to your managed repo and allows you to open a branch where you can add new dbt code.
 4. You can now directly query data from your warehouse and execute `dbt run`. You can try this out now:
@@ -138,10 +138,10 @@ Now that you have a repository configured, you can initialize your project and s
 
 ## Build your first model
 
-You have two options for working with files in the dbt Cloud IDE:
+You have two options for working with files in the <Constant name="studio_ide" />:
 
 - Create a new branch (recommended) &mdash; Create a new branch to edit and commit your changes. Navigate to **Version Control** on the left sidebar and click **Create branch**.
-- Edit in the protected primary branch &mdash; If you prefer to edit, format, or lint files and execute dbt commands directly in your primary git branch. The dbt Cloud IDE prevents commits to the protected branch, so you will be prompted to commit your changes to a new branch.
+- Edit in the protected primary branch &mdash; If you prefer to edit, format, or lint files and execute dbt commands directly in your primary git branch. The <Constant name="studio_ide" /> prevents commits to the protected branch, so you will be prompted to commit your changes to a new branch.
 
 Name the new branch `add-customers-model`.
 

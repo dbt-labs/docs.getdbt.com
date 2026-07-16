@@ -9,6 +9,13 @@ hoverSnippet: Read this guide to understand how using materializations in dbt is
 
 What _really_ happens when you type `dbt build`? Contrary to popular belief, a crack team of microscopic data elves do _not_ construct your data row by row, although the truth feels equally magical. This guide explores the real answer to that question, with an introductory look at the objects that get built into your warehouse, why they matter, and how dbt knows what to build.
 
+import CourseCallout from '/snippets/_materialization-video-callout.md';
+
+<CourseCallout resource="Snapshots" 
+url="https://learn.getdbt.com/courses/snapshots"
+course="Snapshots"
+/>
+
 The configurations that tell dbt how to construct these objects are called _materializations,_ and knowing how to use them is a crucial skill for effective analytics engineering. When you’ve completed this guide, you will have that ability to use the three core materializations that cover most common analytics engineering situations.
 
 :::info

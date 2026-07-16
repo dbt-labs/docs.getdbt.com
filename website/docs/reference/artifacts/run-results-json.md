@@ -117,7 +117,7 @@ models:
   - name: my_model
     columns:
       - name: created_at
-        tests:
+        data_tests:
           - not_null:
               config:
                 store_failures_as: view

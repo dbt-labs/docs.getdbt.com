@@ -17,7 +17,7 @@ You can configure it in all the same places as `store_failures`, including singu
 
 #### Singular test
 
-[Singular test](https://docs.getdbt.com/docs/build/data-tests#singular-data-tests) in `tests/singular/check_something.sql` file
+[Singular test](/docs/build/data-tests#singular-data-tests) in `tests/singular/check_something.sql` file
 
 ```sql
 {{ config(store_failures_as="table") }}
@@ -29,14 +29,14 @@ where 1=0
 
 #### Generic test
 
-[Generic tests](https://docs.getdbt.com/docs/build/data-tests#generic-data-tests) in `models/_models.yml` file
+[Generic tests](/docs/build/data-tests#generic-data-tests) in `models/_models.yml` file
 
 ```yaml
 models:
   - name: my_model
     columns:
       - name: id
-        tests:
+        data_tests:
           - not_null:
               config:
                 store_failures_as: view
@@ -55,7 +55,7 @@ version: "1.0.0"
 config-version: 2
 profile: "sandcastle"
 
-tests:
+data_tests:
   my_project:
     +store_failures_as: table
     my_subfolder_1:

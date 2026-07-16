@@ -55,6 +55,8 @@ Please make sure to take a look at the [SQL expressions section](#sql-expression
     - [cast](#cast)
     - [cast\_bool\_to\_text](#cast_bool_to_text)
     - [safe\_cast](#safe_cast)
+  - [Comparison functions](#comparison-functions)
+    - [equals](#equals)
   - [Date and time functions](#date-and-time-functions)
     - [date](#date)
     - [dateadd](#dateadd)
@@ -105,6 +107,9 @@ Please make sure to take a look at the [SQL expressions section](#sql-expression
 - [cast](#cast)
 - [cast_bool_to_text](#cast_bool_to_text)
 - [safe_cast](#safe_cast)
+
+[**Comparison functions**](#comparison-functions)
+- [equals](#equals)
 
 [**Date and time functions**](#date-and-time-functions)
 - [date](#date)
@@ -711,7 +716,6 @@ array_to_string(
 **Availability**:
 dbt v1.8 or higher. For more information, select the version from the documentation navigation menu.
 
-<VersionBlock firstVersion="1.8">
 
 __Args__:
 
@@ -736,7 +740,6 @@ This macro casts a value to the specified data type. Unlike [safe\_cast](#safe_c
     cast('2016-03-09' as date)
 ```
 
-</VersionBlock>
 
 ### cast_bool_to_text
 __Args__:
@@ -808,14 +811,43 @@ For databases that support it, this macro will return `NULL` when the cast fails
     cast('2016-03-09' as date)
 ```
 
+## Comparison functions
+
+Comparison functions are macros that compare two SQL expressions and return a boolean SQL expression (for example, `TRUE`, `FALSE`, or `UNKNOWN`).
+
+### equals 
+
+__Args__:
+
+- `a`: [attribute name or expression](#sql-expressions).
+- `b`: [attribute name or expression](#sql-expressions).
+
+This macro compares two expressions for equality.
+
+By default, the `equals()` macro follows SQL's [three-valued logic (3VL)](https://modern-sql.com/concept/three-valued-logic), so `NULL = NULL` evaluates to `UNKNOWN` rather than `TRUE`.
+
+When the [`enable_truthy_nulls_equals_macro`](/reference/global-configs/behavior-flags/enable_truthy_nulls_equals_macro) flag is enabled, `equals()` behaves like the [`IS NOT DISTINCT FROM`](https://modern-sql.com/feature/is-distinct-from) SQL operator and treats two `NULL` values as the same.
+
+**Usage**:
+
+```sql
+{{ dbt.equals("column_a", "column_b") }}
+{{ dbt.equals("id", "previous_id") }}
+```
+
+**Sample output (PostgreSQL with [`enable_truthy_nulls_equals_macro`](/reference/global-configs/behavior-flags/enable_truthy_nulls_equals_macro) enabled)**:
+
+```sql
+(column_a IS NOT DISTINCT FROM column_b)
+(id IS NOT DISTINCT FROM previous_id)
+```
+
 ## Date and time functions
 
 ### date
 
 **Availability**:
 dbt v1.8 or later. For more information, select the version from the documentation navigation menu.
-
-<VersionBlock firstVersion="1.8">
 
 __Args__:
 
@@ -836,8 +868,6 @@ This macro converts the `year`, `month`, and `day` into an SQL `DATE` type.
 ```sql
 to_date('2023-10-04', 'YYYY-MM-DD')
 ```
-
-</VersionBlock>
 
 ### dateadd
 __Args__:

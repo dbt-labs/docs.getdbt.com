@@ -1,0 +1,92 @@
+.productCard {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  
+  /* Text size for pill appearance */
+  font-size: 1rem;
+  font-weight: 500;
+  margin-left: 12px;
+  margin-top: 3px;
+  margin-bottom: 3px;
+  line-height: 1.4;
+  vertical-align: middle;
+  
+  /* Rectangular shape */
+  border-radius: 4px;
+  
+  /* Light/dark mode text colors */
+  color: var(--ifm-font-color-base);
+  
+  /* Smooth transitions */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.productCard:hover {
+  transform: scale(1.05);
+}
+
+.productCardLink {
+  text-decoration: none;
+  display: inline-flex;
+}
+
+.productCardLink:hover {
+  text-decoration: none;
+}
+
+/* Animated gradient border */
+.gradientBorder {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    90deg,
+    var(--color-from),
+    var(--color-to),
+    var(--color-from),
+    var(--color-to),
+    var(--color-from)
+  );
+  background-size: 300% 100%;
+  animation: flowGradient var(--animation-duration, 3s) linear infinite;
+  z-index: 0;
+}
+
+@keyframes flowGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 300% 50%;
+  }
+}
+
+/* Inner content area */
+.inner {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3px 6px;
+  margin: 1.5px; 
+  border-radius: 2.5px; 
+  background: var(--color-white); 
+  z-index: 1;
+}
+
+.text {
+  position: relative;
+  z-index: 1;
+  color: inherit;
+}
+
+/* Dark mode adjustments */
+[data-theme='dark'] .productCard {
+  color: var(--ifm-font-color-base);
+}
+
+[data-theme='dark'] .inner {
+  background: var(--color-neutral-primary); 
+}

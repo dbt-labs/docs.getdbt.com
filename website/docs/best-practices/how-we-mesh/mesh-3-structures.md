@@ -9,7 +9,7 @@ When adopting a multi-project architecture, where do you draw the lines between 
 
 How should you organize data workflows in a world where instead of having a single dbt DAG, you have multiple projects speaking to each other, each comprised of their own DAG?
 
-Adopting the dbt Mesh pattern is not a one-size-fits-all process. In fact, it's the opposite! It's about customizing your project structure to fit _your_ team and _your_ data. Now you can mold your organizational knowledge graph to your organizational people graph, bringing people and data closer together rather than compromising one for the other.
+Adopting the <Constant name="mesh" /> pattern is not a one-size-fits-all process. In fact, it's the opposite! It's about customizing your project structure to fit _your_ team and _your_ data. Now you can mold your organizational knowledge graph to your organizational people graph, bringing people and data closer together rather than compromising one for the other.
 
 While there is not a single best way to implement this pattern, there are some common decision points that will be helpful for you to consider.
 
@@ -17,6 +17,10 @@ At a high level, you’ll need to decide:
 
 - Where to draw the lines between your dbt Projects -- i.e. how do you determine where to split your DAG and which models go in which project?
 - How to manage your code -- do you want multiple dbt Projects living in the same repository (mono-repo) or do you want to have multiple repos with one repo per project?
+
+import MeshCourseCallout from '/snippets/_mesh-course-callout.md';
+
+<MeshCourseCallout />
 
 ## Define your project interfaces by splitting your DAG
 
@@ -40,7 +44,6 @@ Horizontal splits separate your DAG based on source or domain. These splits are 
 - **Data from different sources.** For example, clickstream event data and transactional ecommerce data may need to be modeled independently of each other.
 - **Team workflows.** For example, if two embedded groups operate at different paces, you may want to split the projects up so they can move independently.
 
-
 <Lightbox src="/img/best-practices/how-we-mesh/horizontal_split.png" title="A simplified dbt DAG with a dotted line representing a horizontal split." />
 
 ### Combining these strategies
@@ -49,9 +52,7 @@ Horizontal splits separate your DAG based on source or domain. These splits are 
 - **Pick one type of split and focus on that first**. If you have a hub-and-spoke team topology for example, handle breaking out the central platform project before you split the remainder into domains. Then if you need to break those domains up horizontally you can focus on that after the fact.
 - **DRY applies to underlying data, not just code.** Regardless of your strategy, you should not be sourcing the same rows and columns into multiple nodes. When working within a mesh pattern it becomes increasingly important that we don't duplicate logic or data.
 
-
 <Lightbox src="/img/best-practices/how-we-mesh/combined_splits.png" title="A simplified dbt DAG with two dotted lines representing both a vertical and horizontal split." />
-
 
 ## Determine your git strategy
 
@@ -62,7 +63,7 @@ A multi-project architecture can exist in a single repo (monorepo) or as multipl
 
 ## Projects, splits, and teams
 
-Since the launch of dbt Mesh, the most common pattern we've seen is one where projects are 1:1 aligned to teams, and each project has its own codebase in its own repository. This isn’t a hard-and-fast rule: Some organizations want multiple teams working out of a single repo, and some teams own multiple domains that feel awkward to keep combined.
+Since the launch of <Constant name="mesh" />, the most common pattern we've seen is one where projects are 1:1 aligned to teams, and each project has its own codebase in its own repository. This isn’t a hard-and-fast rule: Some organizations want multiple teams working out of a single repo, and some teams own multiple domains that feel awkward to keep combined.
 
 Users may need to contribute models across multiple projects and this is fine. There will be some friction doing this, versus a single repo, but this is _useful_ friction, especially if upstreaming a change from a “spoke” to a “hub.” This should be treated like making an API change, one that the other team will be living with for some time to come. You should be concerned if your teammates find they need to make a coordinated change across multiple projects very frequently (every week), or as a key prerequisite for ~20%+ of their work.
 

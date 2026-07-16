@@ -5,7 +5,7 @@ default_value: {}
 id: "grants"
 ---
 
-You can manage access to the datasets you're producing with dbt by using grants. To implement these permissions, define grants as resource configs on each model, seed, or snapshot. Define the default grants that apply to the entire project in your `dbt_project.yml`, and define model-specific grants within each model's SQL or YAML file.
+You can manage access to the datasets you're producing with dbt by using grants. To implement these permissions, define grants as resource configs on each model, seed, or snapshot. Define the default grants that apply to the entire project in your `dbt_project.yml`, and define model-specific grants within each model's SQL or YAML property file.
 
 The grant resource configs enable you to apply permissions at build time to a specific set of recipients and model, seed, or snapshot. When your model, seed, or snapshot finishes building, dbt ensures that the grants on its view or table match exactly the grants you have configured.
 
@@ -62,7 +62,7 @@ models:
 
 The `grants` config can also be defined:
 
-- under the `models` config block in `dbt_project.yml`
+- under the `models` config in the project file (`dbt_project.yml`)
 - in a `config()` Jinja macro within a model's SQL file
 
 See [configs and properties](/reference/configs-and-properties) for details.
@@ -83,7 +83,7 @@ seeds:
 
 </File>
 
-The `grants` config can also be defined under the `seeds` config block in `dbt_project.yml`. See [configs and properties](/reference/configs-and-properties) for details.
+The `grants` config can also be defined under the `seeds` config in the project file (`dbt_project.yml`). See [configs and properties](/reference/configs-and-properties) for details.
 
 </TabItem>
 
@@ -101,10 +101,11 @@ snapshots:
 
 </File>
 
-The `grants` config can also be defined:
+The `grants` config can be defined:
 
-- under the `snapshots` config block in `dbt_project.yml`
-- in a `config()` Jinja macro within a snapshot's SQL block
+- Under the `snapshots` config in the property file (`snapshots/schema.yml`)
+- Under the `snapshots` config in the project file (`dbt_project.yml`)
+- In a snapshot's SQL file `config()` Jinja macro
 
 See [configs and properties](/reference/configs-and-properties) for details.
 
@@ -151,7 +152,7 @@ Now, the model will grant select to `user_a`, `user_b`, AND `user_c`!
 
 **Notes:**
 - This will only take effect for privileges which include the `+` prefix. Each privilege controls that behavior separately. If we were granting other privileges, in addition to `select`, and those privilege names lacked the `+` prefix, they would continue to "clobber" rather than "add" new grantees.
-- This use of `+`, controlling clobber vs. add merge behavior, is distinct from the use of `+` in `dbt_project.yml` (shown in the example above) for defining configs with dictionary values. For more information, see [the plus prefix](https://docs.getdbt.com/reference/resource-configs/plus-prefix).
+- This use of `+`, controlling clobber vs. add merge behavior, is distinct from the use of `+` in `dbt_project.yml` (shown in the example above) for defining configs with dictionary values. For more information, see [the plus prefix](/reference/resource-configs/plus-prefix).
 - `grants` is the first config to support a `+` prefix for controlling config merge behavior. Currently, it's the only one. If it proves useful, we may extend this capability to new and existing configs in the future.
 
 ### Conditional grants
@@ -320,13 +321,19 @@ models:
 - Databricks automatically enables `grants` on SQL endpoints. For interactive clusters, admins should enable grant functionality using these two setup steps in the Databricks documentation:
   - [Enable table access control for your workspace](https://docs.databricks.com/administration-guide/access-control/table-acl.html)
   - [Enable table access control for a cluster](https://docs.databricks.com/security/access-control/table-acls/table-acl.html)
-- In order to grant `READ_METADATA` or `USAGE`, use [post-hooks](https://docs.getdbt.com/reference/resource-configs/pre-hook-post-hook)
+- In order to grant `READ_METADATA` or `USAGE`, use [post-hooks](/reference/resource-configs/pre-hook-post-hook)
 
 </div>
 
 <div warehouse="Redshift">
 
-* Granting to / revoking from is only fully supported for Redshift users (not [groups](https://docs.aws.amazon.com/redshift/latest/dg/r_Groups.html) or [roles](https://docs.aws.amazon.com/redshift/latest/dg/r_roles-managing.html)). See [dbt-redshift#415](https://github.com/dbt-labs/dbt-redshift/issues/415) for the corresponding issue.
+* Redshift supports granting to users, [groups](https://docs.aws.amazon.com/redshift/latest/dg/r_Groups.html), and [roles](https://docs.aws.amazon.com/redshift/latest/dg/r_roles-managing.html). Use the `group:` or `role:` prefix in grantee names to grant to groups or roles. Unprefixed names are treated as users.
+
+```yaml
+models:
+  +grants:
+    select: ["user1", "user:user2", "group:analysts", "role:reporter"]
+```
 
 </div>
 

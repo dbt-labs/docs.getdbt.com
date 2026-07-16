@@ -21,7 +21,7 @@ Let’s look at how we can use tables and views to get started with materializat
 - ⚙️ We can configure an individual model’s materialization using a **Jinja `config` block**, and passing in the **`materialized` argument**. This tells dbt what materialization to use.
 - 🚰 The underlying specifics of what is run depends on [which **adapter** you’re using](/docs/supported-data-platforms), but the end results will be equivalent.
 - 😌 This is one of the many valuable aspects of dbt: it lets us use a **declarative** approach, specifying the _outcome_ that we want in our code, rather than _specific steps_ to achieve it (the latter is an _imperative_ approach if you want to get computer science-y about it 🤓).
-- 🔍 In the below case, we want to create a SQL **view**, and can **declare** that in a **single line of code**. Note that python models [do not support materializing as views](https://docs.getdbt.com/docs/build/materializations#python-materializations) at this time.
+- 🔍 In the below case, we want to create a SQL **view**, and can **declare** that in a **single line of code**. Note that python models [do not support materializing as views](/docs/build/materializations#python-materializations) at this time.
 
 ```sql
     {{

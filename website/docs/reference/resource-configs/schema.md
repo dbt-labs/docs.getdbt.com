@@ -8,7 +8,7 @@ datatype: string
 <Tabs>
 <TabItem value="model" label="Model">
 
-Specify a [custom schema](/docs/build/custom-schemas#understanding-custom-schemas) for a group of models in your `dbt_project.yml` file or a [config block](/reference/resource-configs/schema#models). 
+Specify a [custom schema](/docs/build/custom-schemas#understanding-custom-schemas) for a group of models in your project YAML file (`dbt_project.yml`) or in a [SQL file config](/reference/resource-configs/schema#models).
  
 For example, if you have a group of marketing-related models and want to place them in a separate schema called `marketing`, you can configure it like this:
 
@@ -49,15 +49,9 @@ This would result in the generated relation being located in the `mappings` sche
 
 <TabItem value="snapshots" label="Snapshots">
 
-<VersionBlock lastVersion="1.8">
-
-Available in dbt Core v1.9 and higher. Select v1.9 or newer from the version dropdown to view the configs. Try it now in the [dbt Cloud "Latest" release track](/docs/dbt-versions/cloud-release-tracks).
-
-</VersionBlock>
-
 <VersionBlock firstVersion="1.9">
 
-Specify a [custom schema](/docs/build/custom-schemas#understanding-custom-schemas) for a snapshot in your `dbt_project.yml` or YAML file.
+Specify a [custom schema](/docs/build/custom-schemas#understanding-custom-schemas) for a snapshot in your `dbt_project.yml` or property file.
 
 For example, if you have a snapshot that you want to load into a schema other than the target schema, you can configure it like this:
 
@@ -78,7 +72,6 @@ In a `snapshots/snapshot_name.yml` file:
 <File name='snapshots/snapshot_name.yml'>
 
 ```yaml
-version: 2
 
 snapshots:
   - name: snapshot_name
@@ -96,7 +89,7 @@ This results in the generated relation being located in the `snapshots` schema s
 
 <TabItem value="saved-queries" label="Saved queries">
 
-Specify a [custom schema](/docs/build/custom-schemas#understanding-custom-schemas) for a [saved query](/docs/build/saved-queries#parameters) in your `dbt_project.yml` or YAML file.
+Specify a [custom schema](/docs/build/custom-schemas#understanding-custom-schemas) for a [saved query](/docs/build/saved-queries#parameters) in your `dbt_project.yml` or property file.
 
 <File name='dbt_project.yml'>
 ```yml
@@ -118,7 +111,7 @@ For example, to save test results in a specific schema, you can configure it lik
 <File name='dbt_project.yml'>
 
 ```yml
-tests:
+data_tests:
   +store_failures: true
   +schema: test_results
 ```
@@ -133,7 +126,7 @@ Refer to [Usage](#usage) for more examples.
 ## Definition
 Optionally specify a custom schema for a [model](/docs/build/sql-models), [seed](/docs/build/seeds), [snapshot](/docs/build/snapshots), [saved query](/docs/build/saved-queries), or [test](/docs/build/data-tests). 
 
-For users on dbt Cloud v1.8 or earlier, use the [`target_schema` config](/reference/resource-configs/target_schema) to specify a custom schema for a snapshot.
+For users on <Constant name="dbt" /> v1.8 or earlier, use the [`target_schema` config](/reference/resource-configs/target_schema) to specify a custom schema for a snapshot.
 
 When dbt creates a relation (<Term id="table" />/<Term id="view" />) in a database, it creates it as: `{{ database }}.{{ schema }}.{{ identifier }}`, e.g. `analytics.finance.payments`
 
@@ -182,7 +175,7 @@ seeds:
 
 </File>
 
-### Tests
+### Data tests
 
 Customize the name of the schema in which tests [configured to store failures](/reference/resource-configs/store_failures) will save their results.
 The resulting schema is `{{ profile.schema }}_{{ tests.schema }}`, with a default suffix of `dbt_test__audit`.
@@ -191,14 +184,14 @@ To use the same profile schema, set `+schema: null`.
 <File name='dbt_project.yml'>
 
 ```yml
-tests:
+data_tests:
   +store_failures: true
   +schema: _sad_test_failures  # Will write tables to my_database.my_schema__sad_test_failures
 ```
 
 </File>
 
-Ensure you have the authorization to create or access schemas for your work. To ensure that the required schemas have the correct permissions, run a sql statement in your respective data platform environment. For example, run the following command if using Redshift (exact authorization query may differ from one data platform to another):
+Ensure you have the authorization to create or access schemas for your work. To ensure that the required schemas have the correct permissions, run a SQL statement in your respective data platform environment. For example, run the following command if using Redshift (exact authorization query may differ from one data platform to another):
 
 ```sql
 create schema if not exists dev_username_dbt_test__audit authorization username;

@@ -12,7 +12,6 @@ import VersionsCallout from '/snippets/_model-version-callout.md';
 <File name='models/<schema>.yml'>
 
 ```yml
-version: 2
 
 models:
   - name: model_name
@@ -43,7 +42,7 @@ The value of the version identifier is used to order versions of a model relativ
 
 In general, we recommend that you use a simple "major versioning" scheme for your models: `1`, `2`, `3`, and so on, where each version reflects a breaking change from previous versions. You are able to use other versioning schemes. dbt will sort your version identifiers alphabetically if the values are not all numeric. You should **not** include the letter `v` in the version identifier, as dbt will do that for you.
 
-To run a model with multiple versions, you can use the [`--select` flag](/reference/node-selection/syntax). Refer to [Model versions](/docs/collaborate/govern/model-versions#run-a-model-with-multiple-versions) for more information and syntax.
+To run a model with multiple versions, you can use the [`--select` flag](/reference/node-selection/syntax). Refer to [Model versions](/docs/mesh/govern/model-versions#run-a-model-with-multiple-versions) for more information and syntax.
 
 
 ### `defined_in`
@@ -60,7 +59,7 @@ This default can be overwritten in two ways:
 - Configuring a custom `alias` within the version yaml, or the versioned model's definition
 - Overwriting dbt's `generate_alias_name` macro, to use different behavior based on `node.version`
 
-See ["Custom aliases"](https://docs.getdbt.com/docs/build/custom-aliases) for more details.
+See ["Custom aliases"](/docs/build/custom-aliases) for more details.
 
 Note that the value of `defined_in` and the `alias` configuration of a model are not coordinated, except by convention. The two are declared and determined independently.
 
@@ -68,20 +67,22 @@ Note that the value of `defined_in` and the `alias` configuration of a model are
 
 The specification of which columns are defined in a model's top-level `columns` property to include or exclude in a versioned implementation of that model.
 
-`include` is either:
-- a list of specific column names to include
-- `'*'` or `'all'`, indicating that **all** columns from the top-level `columns` property should be included in the versioned model
+- `include` is either:
+  - a list of specific column names to include
+  - `'*'` or `'all'`, indicating that **all** columns from the top-level `columns` property should be included in the versioned model
+- `exclude` is a list of column names to exclude. It can only be declared if `include` is set to one of `'*'` or `'all'`.
 
-`exclude` is a list of column names to exclude. It can only be declared if `include` is set to one of `'*'` or `'all'`. 
+:::tip
+Not to be confused with the `--select/--exclude` [syntax](/reference/node-selection/exclude), which is used for model selection.
+:::
 
-The `columns` list of a versioned model can have _at most one_ `include/exclude` element.
+The `columns` list of a versioned model can have _at most one_ `include/exclude` element. However, if none of your model versions specify columns, you don't need to define columns at all and can omit the `columns/include`/`exclude` keys from the versioned model. In this case, dbt will automatically use all top-level columns for all versions. 
 
 You may declare additional columns within the version's `columns` list. If a version-specific column's `name` matches a column included from the top level, the version-specific entry will override that column for that version.
 
 <File name='models/<schema>.yml'>
 
 ```yml
-version: 2
 
 models:
   
@@ -122,7 +123,7 @@ models:
         data_type: text
         constraints:
           - type: not_null
-        tests:
+        data_tests:
           - unique
       - name: customer_country
         data_type: text
@@ -164,9 +165,22 @@ Each other version has declared a modification from the top-level property:
 
 
 ### Our recommendations
+
+<VersionBlock lastVersion="1.11">
+
 - Follow a consistent naming convention for model versions and aliases.
 - Use `defined_in` and `alias` only if you have good reason.
-- Create a view that always points to the latest version of your model. You can automate this for all versioned models in your project with an `on-run-end` hook. For more details, read the full docs on ["Model versions"](/docs/collaborate/govern/model-versions#configuring-database-location-with-alias)
+- Create a view that always points to the latest version of your model. You can automate this for all versioned models in your project with an `on-run-end` hook. For more details, read the full docs on ["Model versions"](/docs/mesh/govern/model-versions#configuring-database-location-with-alias)
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.12">
+
+- Follow a consistent naming convention for model versions and aliases.
+- Use `defined_in` and `alias` only if you have good reason.
+- Use the [`latest_version_pointer`](/reference/resource-configs/latest_version_pointer) config to automatically create a view pointing to the latest version of your model. Enable it per model or globally with the [`latest_version_pointer_enabled_by_default`](/reference/global-configs/behavior-flags/latest_version_pointer_enabled_by_default) flag in `dbt_project.yml`.
+
+</VersionBlock>
 
 ### Detecting breaking changes
 
@@ -215,7 +229,7 @@ Breaking Change to Contract Error in model sometable (models/sometable.sql)
    - order_id (number -> int)
 
   Consider making an additive (non-breaking) change instead, if possible.
-  Otherwise, create a new model version: https://docs.getdbt.com/docs/collaborate/govern/model-versions
+  Otherwise, create a new model version: https://docs.getdbt.com/docs/mesh/govern/model-versions
 ```
 
 </TabItem>

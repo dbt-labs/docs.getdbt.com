@@ -4,7 +4,7 @@ id: "logs"
 sidebar: "logs"
 ---
 
-### Log Formatting
+### Log formatting
 
 dbt outputs logs to two different locations: CLI console and the log file.
 
@@ -13,7 +13,7 @@ The `LOG_FORMAT` and `LOG_FORMAT_FILE` configs specify how dbt's logs should be 
 <File name='Usage'>
 
 ```text
-dbt --log-format json run
+dbt run --log-format json
 ```
 
 </File>
@@ -40,12 +40,12 @@ The `json` format outputs fully structured logs in the <Term id="json" /> format
 {"data": {"adapter_name": "postgres", "adapter_version": "=1.8.0"}, "info": {"category": "", "code": "E034", "extra": {}, "invocation_id": "82131fa0-d2b4-4a77-9436-019834e22746", "level": "info", "msg": "Registered adapter: postgres=1.8.0", "name": "AdapterRegistered", "pid": 7875, "thread": "MainThread", "ts": "2024-05-29T23:32:56.437986Z"}}
 ```
 
-When the `LOG_FORMAT` is set explicitly, it will take affect in both the console and log files whereas the `LOG_FORMAT_FILE` only affects the log file.
+When the `LOG_FORMAT` is set explicitly, it will take effect in both the console and log files, whereas the `LOG_FORMAT_FILE` only affects the log file.
 
 <File name='Usage'>
 
 ```text
-dbt --log-format-file json run
+dbt run --log-format-file json
 ```
 
 </File>
@@ -55,7 +55,7 @@ dbt --log-format-file json run
 Use `json` formatting value in conjunction with the `DEBUG` config to produce rich log information which can be piped into monitoring tools for analysis:
 
 ```text
-dbt --debug --log-format json run
+dbt run --debug --log-format json
 ```
 
 See [structured logging](/reference/events-logging#structured-logging) for more details.
@@ -69,24 +69,24 @@ The `LOG_LEVEL` config sets the minimum severity of events captured in the conso
 - Setting the `--log-level` will configure console and file logs. 
 
   ```text
-  dbt --log-level debug run
+  dbt run --log-level debug
   ```
 
 - Setting the `LOG_LEVEL` to `none` will disable information from being sent to either the console or file logs. 
   
   ```text
-  dbt --log-level none
+  dbt run --log-level none
   ```
 
 - To set the file log level as a different value than the console, use the `--log-level-file` flag. 
 
   ```text
-  dbt --log-level-file error run
+  dbt run --log-level-file error
   ```
 
 - To only disable writing to the logs file but keep console logs, set `LOG_LEVEL_FILE` config to none.
   ```text
-  dbt --log-level-file none
+  dbt run --log-level-file none
   ```
 
 ### Debug-level logging
@@ -98,9 +98,7 @@ The `--debug` flag is also available via shorthand as `-d`.
 <File name='Usage'>
 
 ```text
-dbt --debug run
-...
-
+dbt run --debug
 ```
 
 </File>  
@@ -110,12 +108,12 @@ dbt --debug run
 
 By default, dbt will write logs to a directory named `logs/`, and all other artifacts to a directory named `target/`. Both of those directories are located relative to `dbt_project.yml` of the active project.
 
-Just like other global configs, it is possible to override these values for your environment or invocation by using CLI options (`--target-path`, `--log-path`) or environment variables (`DBT_TARGET_PATH`, `DBT_LOG_PATH`).
+Just like other global configs, it is possible to override these values for your environment or invocation by using CLI options (`--target-path`, `--log-path`) or environment variables (<VersionBlock lastVersion="1.10">`DBT_TARGET_PATH`, `DBT_LOG_PATH`</VersionBlock><VersionBlock firstVersion="1.11">`DBT_ENGINE_TARGET_PATH`, `DBT_ENGINE_LOG_PATH`</VersionBlock>).
 
 
 ### Suppress non-error logs in output
 
-By default, dbt shows all logs in standard out (stdout). You can use the `QUIET` config to show only error logs in stdout. Logs will still include the output of anything passed to the [`print()`](/reference/dbt-jinja-functions/print) macro.  For example, you might suppress all but error logs to more easily find and debug a jinja error.
+By default, dbt shows all logs in standard out (stdout). You can use the `QUIET` config to show only error logs in stdout. Logs will still include the output of anything passed to the [`print()`](/reference/dbt-jinja-functions/print) macro.  For example, you might suppress all but error logs to more easily find and debug a Jinja error.
 
 <File name='profiles.yml'>
 
@@ -129,8 +127,7 @@ config:
 Supply the `-q` or `--quiet` flag to `dbt run` to show only error logs and suppress non-error logs.
 
 ```text
-dbt --quiet run
-...
+dbt run --quiet
 ```
 
 ### dbt list logging
@@ -140,8 +137,8 @@ In [dbt version 1.5](/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-
 
 You can use either of these parameters to ensure clean output that's compatible with downstream processes, such as piping results to [`jq`](https://jqlang.github.io/jq/manual/), a file, or another process:
 
-- `dbt --log-level warn list` (recommended; equivalent to previous default)
-- `dbt --quiet list` (suppresses all logging less than `ERROR` level, except for "printed" messages and list output)
+- `dbt list --log-level warn` (recommended; equivalent to previous default)
+- `dbt list --quiet` (suppresses all logging less than `ERROR` level, except for "printed" messages and list output)
 
 
 ### Logging relational cache events
@@ -166,6 +163,6 @@ config:
 </File>
 
 ```text
-dbt --use-colors-file run
-dbt --no-use-colors-file run
+dbt run --use-colors-file
+dbt run --no-use-colors-file
 ```

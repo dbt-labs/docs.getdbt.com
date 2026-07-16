@@ -237,7 +237,7 @@ models/core/activity_based_interest
 $ cat models/core/activity_based_interest/_activity_based_interest_docs.md
 {% docs activity_based_interest__id %}  
 
-Primary key of the table. See sql for key definition.
+Primary key of the table. See SQL for key definition.
 
 {% enddocs %}
 

@@ -10,7 +10,7 @@ description: "Remote Procedure Call (rpc) dbt server compiles and runs queries, 
 
 dbt Labs actively maintained `dbt-rpc` for compatibility with dbt-core versions up to v1.5. Starting with dbt-core v1.6 (released in July 2023), `dbt-rpc` is no longer supported for ongoing compatibility. 
 
-In the meantime, dbt Labs will be performing critical maintenance only for `dbt-rpc`, until the last compatible version of dbt-core has reached the [end of official support](/docs/dbt-versions/core#latest-releases). At that point, dbt Labs will archive this repository to be read-only.
+In the meantime, dbt Labs will be performing critical maintenance only for `dbt-rpc`, until the last compatible version of dbt-core has reached the [end of official support](/docs/dbt-versions#end-of-life-versions). At that point, dbt Labs will archive this repository to be read-only.
 
 :::
 
@@ -235,7 +235,7 @@ All RPC requests accept the following parameters in addition to the parameters l
 ```
 
 Several of the following request types accept these additional parameters:
-- `threads`: The number of [threads](/docs/core/connect-data-platform/connection-profiles#understanding-threads) to use when compiling (optional)
+- `threads`: The number of [threads](/docs/local/profiles.yml#understanding-threads) to use when compiling (optional)
 - `select`: The space-delimited set of resources to execute (optional). (`models` is also supported on some request types for backwards compatibility.)
 - `selector`: The name of a predefined [YAML selector](/reference/node-selection/yaml-selectors) that defines the set of resources to execute (optional)
 - `exclude`: The space-delimited set of resources to exclude from compiling, running, testing, seeding, or snapshotting (optional)
@@ -400,7 +400,7 @@ Several of the following request types accept these additional parameters:
 
 ### Compiling a query
 
-This query compiles the sql `select {{ 1 + 1 }} as id` (base64-encoded) against the rpc server:
+This query compiles the SQL `select {{ 1 + 1 }} as id` (base64-encoded) against the rpc server:
 
 <File name='rpc-spec.json'>
 
@@ -423,7 +423,7 @@ The resulting response will include a key called `compiled_sql` with a value of 
 
 ### Executing a query
 
-This query executes the sql `select {{ 1 + 1 }} as id` (bas64-encoded) against the rpc server:
+This query executes the SQL `select {{ 1 + 1 }} as id` (bas64-encoded) against the rpc server:
 
 <File name='rpc-run.json'>
 

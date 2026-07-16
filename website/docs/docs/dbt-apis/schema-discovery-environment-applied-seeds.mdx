@@ -1,0 +1,60 @@
+---
+title: "Seeds object schema"
+sidebar_label: "Seeds"
+id: "discovery-schema-environment-applied-seeds"
+---
+ 
+import { NodeArgsTable, SchemaTable } from "./schema";
+
+[Seeds](/docs/build/seeds) are CSV files in your dbt project that dbt can load into your data warehouse. You can query seeds through the Discovery API.
+
+The [Example query](#example-query) illustrates a few fields you can query with the `seeds` object. Refer to [Fields](#fields) to view the entire schema, which provides all possible fields you can query.
+
+### Arguments
+
+When querying for `seeds`, you can use the following arguments:
+
+<NodeArgsTable parent="AppliedState" name="seeds" />
+
+### Example query
+
+You can specify the `environmentId`, filter by the database, and limit to the first 100 to show information about the first 100 seed files in the `analytics` database, including their metadata and file locations:
+
+```graphql
+query ($environmentId: BigInt!, $first: Int!, $filter: GenericMaterializedFilter) {
+  environment(id: $environmentId) {
+    applied {
+      seeds(
+        first: 100,
+        filter: {
+          database: "analytics"
+        }
+      ) {
+        edges {
+          node {
+            description
+            name
+            filePath
+            projectId
+            fqn
+            tags
+            uniqueId
+            resourceType
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+### Fields
+
+When querying for `seeds`, you can use the following fields:
+
+<SchemaTable nodeName="SeedAppliedStateNodeConnection" />
+
+### Key fields from nodes
+
+<SchemaTable nodeName="SeedAppliedStateNode" />
+

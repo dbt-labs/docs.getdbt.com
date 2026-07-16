@@ -12,8 +12,18 @@ The following tips are organized into the following categories:
 - [Package tips](#package-tips) to help you streamline your workflow.
 - [Advanced tips and techniques](#advanced-tips-and-techniques) to help you get the most out of dbt.
 
+If you're developing with the <Constant name="studio_ide" />, you can refer to the [keyboard shortcuts](/docs/platform/studio-ide/keyboard-shortcuts) page to help make development more productive and easier for everyone.
 
-If you're developing with the dbt Cloud IDE, you can refer to the [keyboard shortcuts](/docs/cloud/dbt-cloud-ide/keyboard-shortcuts) page to help make development more productive and easier for everyone.
+## YAML tips
+
+This section clarifies where you can use [Jinja](/docs/build/jinja-macros), nest [vars](/reference/dbt-jinja-functions/var) and [`env_var`](/reference/dbt-jinja-functions/env_var) in your YAML files.
+
+- You can use Jinja in almost every YAML file in dbt _except_ the [`dependencies.yml` file](/docs/build/packages#use-cases). This is because the `dependencies.yml` file doesn't support Jinja.
+- Use `vars` in any YAML file that supports Jinja (like `schema.yml`, `snapshots.yml`). However, note that:
+  - In `dbt_project.yml`, `packages.yml`, and `profiles.yml` files, you must pass `vars` through the CLI using `--vars`, not defined inside the `vars:` block in the YAML file. This is because these files are parsed before Jinja is rendered.
+- You can use `env_var()` in all YAML files that support Jinja. Only `profiles.yml` and `packages.yml` support environment variables for secure values (using the `DBT_ENV_SECRET_` prefix). These are masked in logs and intended for credentials or secrets.
+
+For additional information, check out [<Constant name="core" />'s context docs](https://github.com/dbt-labs/dbt-core/blob/1.latest/core/dbt/context/README.md).
 
 ## Package tips
 
@@ -24,7 +34,7 @@ Leverage these dbt packages to streamline your workflow:
 | [`dbt_codegen`](https://hub.getdbt.com/dbt-labs/codegen/latest/) |Use the package to help you generate YML files for your models and sources and SQL files for your staging models. |
 | [`dbt_utils`](https://hub.getdbt.com/dbt-labs/dbt_utils/latest/) | The package contains macros useful for daily development. For example, `date_spine` generates a table with all dates between the ones provided as parameters. |
 | [`dbt_project_evaluator`](https://hub.getdbt.com/dbt-labs/dbt_project_evaluator/latest) | The package compares your dbt project against a list of our best practices and provides suggestions and guidelines on how to update your models. |
-| [`dbt_expectations`](https://hub.getdbt.com/calogica/dbt_expectations/latest) | The package contains many tests beyond those built into dbt. |
+| [`dbt_expectations`](https://hub.getdbt.com/metaplane/dbt_expectations/latest/) | The package contains many tests beyond those built into dbt. |
 | [`dbt_audit_helper`](https://hub.getdbt.com/#:~:text=adwords-,audit_helper,-codegen) | The package lets you compare the output of 2 queries. Use it when refactoring existing logic to ensure that the new results are identical. |
 | [`dbt_artifacts`](https://hub.getdbt.com/brooklyn-data/dbt_artifacts/latest) | The package saves information about your dbt runs directly to your data platform so that you can track the performance of models over time. |
 | [`dbt_meta_testing`](https://hub.getdbt.com/tnightengale/dbt_meta_testing/latest) | This package checks that your dbt project is sufficiently tested and documented. |
@@ -52,5 +62,5 @@ Leverage these dbt packages to streamline your workflow:
 ## Related docs
 
 - [Quickstart guide](/guides)
-- [About dbt Cloud](/docs/cloud/about-cloud/dbt-cloud-features)
-- [Develop in the Cloud](/docs/cloud/about-develop-dbt)
+- [About <Constant name="dbt" />](/docs/platform/about-platform/dbt-platform-features)
+- [Develop in the Cloud](/docs/platform/about-develop-dbt)

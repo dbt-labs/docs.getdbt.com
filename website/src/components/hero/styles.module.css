@@ -1,5 +1,5 @@
 .Hero {
-  background: #262A38;
+  background: #030711;
   padding-top:3rem;
   padding-bottom:3rem;
   text-align: center;
@@ -13,7 +13,7 @@
 
 .lightBackground {
   background-color: white;
-  color: #262A38 !important;
+  color: #030711 !important;
 }
 
 
@@ -22,7 +22,7 @@
 }
 
 [data-theme='dark'] .lightBackground {
-  background: #262A38;
+  background: #030711;
   color: #fff !important;
 }
 

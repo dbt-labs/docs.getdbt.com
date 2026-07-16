@@ -9,7 +9,7 @@ id: configurable-data-path
 By default, dbt expects your seed files to be located in the `seeds` subdirectory
 of your project.
 
-To change this, update the [seed-paths](reference/project-configs/seed-paths.md) configuration in your `dbt_project.yml`
+To change this, update the [seed-paths](/reference/project-configs/seed-paths) configuration in your `dbt_project.yml`
 file, like so:
 
 <File name='dbt_project.yml'>

@@ -7,7 +7,7 @@ id: "contributing-writing"
 
 #### Overview
 
-The [dbt Product Documentation](https://docs.getdbt.com/docs/introduction) sits at the heart of how people learn to use and engage with dbt. From explaining dbt to newcomers to providing references for advanced functionality and APIs, the product docs are a frequent resource for _every_ dbt Developer.
+The [dbt Product Documentation](/docs/introduction) sits at the heart of how people learn to use and engage with dbt. From explaining dbt to newcomers to providing references for advanced functionality and APIs, the product docs are a frequent resource for _every_ dbt Developer.
 
 #### Contribution opportunities
 
@@ -18,7 +18,7 @@ We strive to create pathways that inspire you to learn more about dbt and enable
 
 #### Sample contributions
 
-We appreciate these contributions because they contain context in the original post (OP) that helps us understand their relevance. The also add value to the docs, even in small ways!
+We appreciate these contributions because they contain context in the original post (OP) that helps us understand their relevance. They also add value to the docs, even in small ways!
 
 - Larger contribution: https://github.com/dbt-labs/docs.getdbt.com/pull/1898
 - Smaller contribution: https://github.com/dbt-labs/docs.getdbt.com/pull/1114
@@ -26,7 +26,7 @@ We appreciate these contributions because they contain context in the original p
 #### Get started
 
 - You can contribute to [docs.getdbt.com](http://docs.getdbt.com) by looking at our repository’s [README](https://github.com/dbt-labs/docs.getdbt.com#readme) or clicking **Edit this page** at the bottom of most pages at docs.getdbt.com.
-- Read the [OSS Expectations](/community/resources/oss-expectations).
+- Read the [Contributor Expectations](/community/resources/contributor-expectations).
 - Find an issue labeled “[good first issue](https://github.com/dbt-labs/docs.getdbt.com/issues?q=is%3Aopen+is%3Aissue+label%3A%22good+first+issue%22+).”
 - Need help: Visit #community-writers on the Community Slack or mention `@dbt-labs/product-docs` in a pull request or issue comment.
 
@@ -34,7 +34,7 @@ We appreciate these contributions because they contain context in the original p
 
 #### Overview
 
-The [dbt Developer Blog](https://docs.getdbt.com/blog) is the place for analytics practitioners to talk about _what it’s like to do data work right now._ This is the place to share tips and tricks, hard won knowledge and stories from the trenches with the dbt Community.
+The [dbt Developer Blog](/blog) is the place for analytics practitioners to talk about _what it’s like to do data work right now._ This is the place to share tips and tricks, hard won knowledge and stories from the trenches with the dbt Community.
 
 #### Contribution opportunities
 
@@ -42,8 +42,8 @@ We want to hear your stories! Did you recently solve a cool problem, discover an
 
 #### Sample contributions
 
-- [Founding an Analytics Engineering Team From Scratch](https://docs.getdbt.com/blog/founding-an-analytics-engineering-team-smartsheet#our-own-take-on-data-mesh)
-- [Tackling the Complexity of Joining Snapshots](https://docs.getdbt.com/blog/joining-snapshot-complexity)
+- [Founding an Analytics Engineering Team From Scratch](/blog/founding-an-analytics-engineering-team-smartsheet#our-own-take-on-data-mesh)
+- [Tackling the Complexity of Joining Snapshots](/blog/joining-snapshot-complexity)
 
 #### Get started
 

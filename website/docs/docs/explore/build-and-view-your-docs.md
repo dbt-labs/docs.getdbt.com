@@ -1,0 +1,84 @@
+---
+title: "Build and view your docs with dbt"
+id: "build-and-view-your-docs"
+description: "Automatically generate project documentation as you run jobs."
+pagination_next: null
+---
+
+<Constant name="dbt" /> enables you to generate documentation for your project and data platform. The documentation is automatically updated with new information after a fully successful job run, ensuring accuracy and relevance.
+
+The default documentation experience in <Constant name="dbt" /> is [<Constant name="catalog" />](/docs/explore/explore-projects), available on [Starter, Enterprise, or Enterprise+ plans](https://www.getdbt.com/pricing/). Use [<Constant name="catalog" />](/docs/explore/explore-projects) to view your project's resources (such as models, tests, and metrics) and their lineage to gain a better understanding of its latest production state.
+
+Refer to [documentation](/docs/build/documentation) for more configuration details.
+
+This shift makes [dbt Docs](#dbt-docs) a legacy documentation feature in <Constant name="dbt" />. dbt Docs is still accessible and offers basic documentation, but it doesn't offer the same speed, metadata, or visibility as <Constant name="catalog" />. dbt Docs is available to <Constant name="dbt" /> developer plans or <Constant name="core_v1" /> users.
+
+## Set up a documentation job
+
+:::note Upcoming change for Fusion jobs
+In a future update, this setup will no longer be applicable for <Constant name="fusion" /> jobs in the <Constant name="dbt_platform" />. Execution commands (`run`, `build`, `seed`, `snapshot`) will automatically trigger metadata generation, so you won't need to add a `dbt docs generate` step or select the **Generate docs on run** option in **Execution settings**.
+:::
+
+<Constant name="catalog" /> uses the [metadata](/docs/explore/explore-projects#generate-metadata) generated after each job run in the production or staging environment, ensuring it always has the latest project results. To view richer metadata, you can set up documentation for a job in <Constant name="dbt" /> when you edit your job settings or create a new job.
+
+Configure the job to [generate metadata](/docs/explore/explore-projects#generate-metadata) when it runs. If you want to view column and statistics for models, sources, and snapshots in <Constant name="catalog" />, then this step is necessary.
+
+To set up a job to generate docs:
+
+1. In the top left, click **Deploy** and select **Jobs**.
+2. Create a new job or select an existing job and click **Settings**.
+3. Under **Execution Settings**, select **Generate docs on run** and click **Save**.
+   <Lightbox src="/img/docs/dbt-platform/using-dbt-platform/documentation-job-execution-settings.png" width="100%" title="Setting up a job to generate documentation"/>
+
+*Note, for dbt Docs users you need to configure the job to generate docs when it runs, then manually link that job to your project. Proceed to [configure project documentation](#configure-project-documentation) so your project generates the documentation when this job runs.*
+
+You can also add the [`dbt docs generate` command](/reference/commands/cmd-docs) to the list of commands in the job run steps. However, you can expect different outcomes when adding the command to the run steps compared to configuring a job selecting the **Generate docs on run** checkbox. 
+
+Review the following options and outcomes:
+
+| Options | Outcomes |
+|--------| ------- |
+| **Select checkbox** | Select the **Generate docs on run** checkbox to automatically generate updated project docs each time your job runs. If that particular step in your job fails, the job can still be successful if all subsequent steps are successful. |
+| **Add as a run step** | Add `dbt docs generate` to the list of commands in the job run steps, in whatever order you prefer. If that particular step in your job fails, the job will fail and all subsequent steps will be skipped.   |
+
+:::tip Tip &mdash; Documentation-only jobs 
+
+To create and schedule documentation-only jobs at the end of your production jobs, add the `dbt compile` command in the **Commands** section.
+
+:::
+
+## dbt Docs
+
+dbt Docs, available on developer plans or <Constant name="core_v1" /> users, generates a website from your dbt project using the `dbt docs generate` command. It provides a central location to view your project's resources, such as models, tests, and lineage  &mdash; and helps you understand the data in your warehouse.
+
+### Configure project documentation
+
+You configure project documentation to generate documentation when the job you set up in the previous section runs. In the project settings, specify the job that generates documentation artifacts for that project. Once you configure this setting, subsequent runs of the job will automatically include a step to generate documentation.
+
+1. From <Constant name="dbt" />, click on your account name in the left side menu and select **Account settings**.
+2. Navigate to **Projects** and select the project that needs documentation.
+3. Click **Edit**.
+4. Under **Artifacts**, select the job that should generate docs when it runs and click **Save**.
+   <Lightbox src="/img/docs/dbt-platform/using-dbt-platform/documentation-project-details.png" width="100%" title="Configuring project documentation"/>
+
+:::tip Use <Constant name="catalog" /> for a richer documentation experience
+For a richer and more interactive experience, try out [<Constant name="catalog" />](/docs/explore/explore-projects), available on [Starter, Enterprise, or Enterprise+ plans](https://www.getdbt.com/pricing/). It includes map layers of your DAG, keyword search, interacts with the <Constant name="studio_ide" />, model performance, project recommendations, and more.
+:::
+
+### Generating documentation
+
+To generate documentation in the <Constant name="studio_ide" />, run the `dbt docs generate` command (<Constant name="core_v1" /> only) in the **Command Bar** in the <Constant name="studio_ide" />. This command will generate the documentation for your dbt project as it exists in development in your IDE session.
+
+After running `dbt docs generate` in the <Constant name="studio_ide" />, click the icon above the file tree, to see the latest version of your documentation rendered in a new browser window.
+
+### View documentation
+
+Once you set up a job to generate documentation for your project, you can click **Catalog** in the navigation and then click on **dbt Docs**. Your project's documentation should open. This link will always help you find the most recent version of your project's documentation in <Constant name="dbt" />.
+
+These generated docs always show the last fully successful run, which means that if you have any failed tasks, including tests, then you will not see changes to the docs by this run. If you don't see a fully successful run, then you won't see any changes to the documentation.
+
+The <Constant name="studio_ide" /> makes it possible to view [documentation](/docs/build/documentation) for your dbt project while your code is still in development. With this workflow, you can inspect and verify what your project's generated documentation will look like before your changes are released to production.
+
+## Related docs
+- [Documentation](/docs/build/documentation)
+- [<Constant name="catalog" />](/docs/explore/explore-projects)

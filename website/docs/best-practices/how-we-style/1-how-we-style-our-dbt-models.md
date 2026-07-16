@@ -11,7 +11,7 @@ id: 1-how-we-style-our-dbt-models
 - Use underscores for naming dbt models; avoid dots.
   - ✅  `models_without_dots`
   - ❌ `models.with.dots`
-  - Most data platforms use dots to separate `database.schema.object`, so using underscores instead of dots reduces your need for [quoting](/reference/resource-properties/quoting) as well as the risk of issues in certain parts of dbt Cloud. For more background, refer to [this GitHub issue](https://github.com/dbt-labs/dbt-core/issues/3246).
+  - Most data platforms use dots to separate `database.schema.object`, so using underscores instead of dots reduces your need for [quoting](/reference/resource-properties/quoting) as well as the risk of issues in certain parts of <Constant name="dbt" />. For more background, refer to [this GitHub issue](https://github.com/dbt-labs/dbt-core/issues/3246).
 - 🔑 Keys should be string data types.
 - 🔑 Consistency is key! Use the same field names across models where possible. For example, a key to the `customers` table should be named `customer_id` rather than `user_id` or 'id'.
 - ❌ Do not use abbreviations or aliases. Emphasize readability over brevity. For example, do not use `cust` for `customer` or `o` for `orders`.

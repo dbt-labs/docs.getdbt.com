@@ -6,9 +6,9 @@ pagination_next: "reference/node-selection/state-comparison-caveats"
 
 State and [defer](/reference/node-selection/defer) can be set by environment variables as well as CLI flags:
 
-- `--state` or `DBT_STATE`: file path
-- `--defer` or `DBT_DEFER`: boolean
-- `--defer-state` or `DBT_DEFER_STATE`: file path to use for deferral only (optional)
+- `--state` or <VersionBlock lastVersion="1.10">`DBT_STATE`</VersionBlock><VersionBlock firstVersion="1.11">`DBT_ENGINE_STATE`</VersionBlock>: file path
+- `--defer` or <VersionBlock lastVersion="1.10">`DBT_DEFER`</VersionBlock><VersionBlock firstVersion="1.11">`DBT_ENGINE_DEFER`</VersionBlock>: boolean
+- `--defer-state` or <VersionBlock lastVersion="1.10">`DBT_DEFER_STATE`</VersionBlock><VersionBlock firstVersion="1.11">`DBT_ENGINE_DEFER_STATE`</VersionBlock>: file path to use for deferral only (optional)
 
 If `--defer-state` is not specified, deferral will use the artifacts supplied by `--state`. This enables more granular control in cases where you want to compare against logical state from one environment or past point in time, and defer to applied state from a different environment or point in time.
 
@@ -36,10 +36,23 @@ The following dbt commands produce `run_results.json` artifacts whose results ca
 
 After issuing one of the above commands, you can reference the results by adding a selector to a subsequent command as follows: 
 
+<VersionBlock lastVersion="1.10">
+
 ```bash
 # You can also set the DBT_STATE environment variable instead of the --state flag.
 dbt run --select "result:<status>" --defer --state path/to/prod/artifacts
 ```
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.11">
+
+```bash
+# You can also set the DBT_ENGINE_STATE environment variable instead of the --state flag.
+dbt run --select "result:<status>" --defer --state path/to/prod/artifacts
+```
+
+</VersionBlock>
 
 The available options depend on the resource (node) type: 
 
@@ -66,15 +79,29 @@ Another element of job state is the `source_status` of a prior dbt invocation. A
 
 The `dbt source freshness` command produces a `sources.json` artifact whose results can be referenced in subsequent dbt invocations. 
 
-When a job is selected, dbt Cloud will surface the artifacts from that job's most recent successful run. dbt will then use those artifacts to determine the set of fresh sources. In your job commands, you can signal dbt to run and test only on the fresher sources and their children by including the `source_status:fresher+` argument. This requires both the previous and current states to have the `sources.json` artifact available. Or plainly said, both job states need to run `dbt source freshness`.
+When a job is selected, <Constant name="dbt" /> will surface the artifacts from that job's most recent successful run. dbt will then use those artifacts to determine the set of fresh sources. In your job commands, you can signal dbt to run and test only on the fresher sources and their children by including the `source_status:fresher+` argument. This requires both the previous and current states to have the `sources.json` artifact available. Or plainly said, both job states need to run `dbt source freshness`.
 
 After issuing the `dbt source freshness` command, you can reference the source freshness results by adding a selector to a subsequent command:
+
+<VersionBlock lastVersion="1.10">
 
 ```bash
 # You can also set the DBT_STATE environment variable instead of the --state flag.
 dbt source freshness # must be run again to compare current to previous state
 dbt build --select "source_status:fresher+" --state path/to/prod/artifacts
 ```
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.11">
+
+```bash
+# You can also set the DBT_ENGINE_STATE environment variable instead of the --state flag.
+dbt source freshness # must be run again to compare current to previous state
+dbt build --select "source_status:fresher+" --state path/to/prod/artifacts
+```
+
+</VersionBlock>
 For more example commands, refer to [Pro-tips for workflows](/best-practices/best-practice-workflows#pro-tips-for-workflows).
 
 ## Related docs

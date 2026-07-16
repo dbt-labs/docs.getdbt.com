@@ -1,4 +1,4 @@
-:::tip Use dbt Copilot
+:::tip Tip
 
-<span>Use [dbt Copilot](/docs/cloud/dbt-copilot), available for dbt Cloud Enterprise accounts, to generate {props.resource} in the dbt Cloud IDE only.</span>
+<span>Use [dbt Wizard](/docs/platform/wizard-platform), available for <Constant name="dbt" /> Enterprise and Enterprise+ accounts, to generate {props.resource} in the <Constant name="studio_ide" /> only.</span>
 :::

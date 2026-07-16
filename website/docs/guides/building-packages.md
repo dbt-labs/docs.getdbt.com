@@ -9,7 +9,6 @@ icon: 'guides'
 hide_table_of_contents: true
 tags: ['dbt Core']
 level: 'Advanced'
-recently_updated: true
 ---
 
 <div style={{maxWidth: '900px'}}>
@@ -30,11 +29,13 @@ Packages typically contain either:
 - macros that solve a particular analytics engineering problem — for example, [auditing the results of a query](https://hub.getdbt.com/dbt-labs/audit_helper/latest/), [generating code](https://hub.getdbt.com/dbt-labs/codegen/latest/), or [adding additional schema tests to a dbt project](https://hub.getdbt.com/calogica/dbt_expectations/latest/).
 - models for a common dataset — for example a dataset for software products like [MailChimp](https://hub.getdbt.com/fivetran/mailchimp/latest/) or [Snowplow](https://hub.getdbt.com/dbt-labs/snowplow/latest/), or even models for metadata about your data stack like [Snowflake query spend](https://hub.getdbt.com/gitlabhq/snowflake_spend/latest/) and [the artifacts produced by `dbt run`](https://hub.getdbt.com/tailsdotcom/dbt_artifacts/latest/). In general, there should be a shared set of industry-standard metrics that you can model (e.g. email open rate).
 
+We also recommend ensuring your package is compatible with [<Constant name="fusion"/>](/docs/fusion) and [<Constant name="core"/>](/docs/local/install-dbt). To ensure <Constant name="fusion"/> compatibility, you can follow the steps in the [Fusion package upgrade guide](/guides/fusion-package-compat).
+
 Packages are _not_ a good fit for sharing models that contain business-specific logic, for example, writing code for marketing attribution, or monthly recurring revenue. Instead, consider sharing a blog post and a link to a sample repo, rather than bundling this code as a package (here's our blog post on [marketing attribution](https://blog.getdbt.com/modeling-marketing-attribution/) as an example).
 
 ## Create your new project
 :::note Using the command line for package development
-We tend to use the command line interface for package development. The development workflow often involves installing a local copy of your package in another dbt project — at present dbt Cloud is not designed for this workflow.
+We tend to use the command line interface for package development. The development workflow often involves installing a local copy of your package in another dbt project — at present <Constant name="dbt" /> is not designed for this workflow.
 :::
 
 1. Use the [dbt init](/reference/commands/init) command to create a new dbt project, which will be your package:
@@ -52,10 +53,15 @@ We recommend that first-time package authors first develop macros and models for
 
 When working on your package, we often find it useful to install a local copy of the package in another dbt project — this workflow is described [here](https://discourse.getdbt.com/t/contributing-to-an-external-dbt-package/657).
 
+### Ensure Fusion compatibility
+If you're building a package, we recommend you ensure it's compatible with [<Constant name="fusion"/>](/docs/fusion) and [<Constant name="core"/>](/docs/local/install-dbt). To ensure <Constant name="fusion"/> compatibility, you can follow the steps in the [Fusion package upgrade guide](/guides/fusion-package-compat).
+
+Doing so will ensure your package is compatible with <Constant name="fusion_engine"/> (and <Constant name="core"/>), but will be displayed with a <Constant name="fusion"/>-compatible badge in dbt package hub.
+
 ### Follow best practices
 _Modeling packages only_
 
-Use our [dbt coding conventions](https://github.com/dbt-labs/corp/blob/main/dbt_style_guide.md), our article on [how we structure our dbt projects](https://docs.getdbt.com/best-practices/how-we-structure/1-guide-overview), and our [best practices](/best-practices) for all of our advice on how to build your dbt project.
+Use our [dbt coding conventions](https://github.com/dbt-labs/corp/blob/main/dbt_style_guide.md), our article on [how we structure our dbt projects](/best-practices/how-we-structure/1-guide-overview), and our [best practices](/best-practices) for all of our advice on how to build your dbt project.
 
 This is where it comes in especially handy to have worked on your own dbt project previously.
 

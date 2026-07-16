@@ -27,18 +27,18 @@ For all of these opportunities, please fill out an [interest form](https://docs.
 - Read [How to Deliver a Fantastic Meetup Talk](/community/resources/speaking-at-a-meetup).
 - Find a [Meetup near you](https://www.meetup.com/pro/dbt/), start attending and let the organizers know you are interested!
 ß
-### Speak at Coalesce
+### Speak at dbt Summit
 
 #### Overview
 
-[Coalesce](https://coalesce.getdbt.com/) is the annual analytics engineering conference hosted by dbt Labs. While Meetups are focused on sharing knowledge with a specific local hub of the Community - Coalesce is the way to share ideas with everyone. Each year we gather together, take stock of what we’ve learned and pool our best ideas about analytics.
+[dbt Summit](https://www.getdbt.com/dbt-summit) is the annual analytics engineering conference hosted by dbt Labs. While Meetups are focused on sharing knowledge with a specific local hub of the Community, dbt Summit is the way to share ideas with everyone. Each year we gather together, take stock of what we’ve learned and pool our best ideas about analytics.
 
 #### Contribution opportunities
 
-- Attend Coalesce:
-  - Coalesce is the once a year gathering for analytics engineers. Whether you choose to join online or at one of our in-person events, attending Coalesce is the best way to get an immersive experience of what the dbt Community is like.
-- Speak at Coalesce!
-  - We’d love to hear what you’ve been working on, thinking about and dreaming up in the analytics engineering space. Coalesce talks can be forward looking views on the industry, deep dives into particular technical solutions or personal stories about your journey in data.
+- Attend dbt Summit:
+  - dbt Summit is the once a year gathering for analytics engineers. Whether you choose to join online or at one of our in-person events, attending dbt Summit is the best way to get an immersive experience of what the dbt Community is like.
+- Speak at dbt Summit!
+  - We’d love to hear what you’ve been working on, thinking about and dreaming up in the analytics engineering space. dbt Summit talks can be forward looking views on the industry, deep dives into particular technical solutions or personal stories about your journey in data.
 
 #### Sample contributions
 
@@ -47,5 +47,5 @@ For all of these opportunities, please fill out an [interest form](https://docs.
 
 #### Get started
 
-- If registrations are open register on the [Coalesce website](https://coalesce.getdbt.com/)
-- Join #coalesce-updates on the dbt Community Slack
+- If registrations are open register on the [dbt Summit website](https://www.getdbt.com/dbt-summit)
+- Join #dbt-summit-updates on the dbt Community Slack

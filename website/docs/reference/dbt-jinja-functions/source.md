@@ -31,7 +31,6 @@ Consider a source defined as follows:
 <File name='models/<filename>.yml'>
 
 ```yaml
-version: 2
 
 sources:
   - name: jaffle_shop # this is the source_name

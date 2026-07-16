@@ -19,14 +19,14 @@ See [Databricks configuration](#databricks-configs) for the Databricks version o
 
 When materializing a model as `table`, you may include several optional configs that are specific to the dbt-spark plugin, in addition to the standard [model configs](/reference/model-configs).
 
-| Option  | Description                                                                                                                        | Required?               | Example                  |
-|---------|------------------------------------------------------------------------------------------------------------------------------------|-------------------------|--------------------------|
+| Option  | Description          | Required?        | <div style={{width:'350px'}}>Example</div>       |
+|---------|----------------------|------------------|--------------------------------------------------|
 | file_format | The file format to use when creating tables (`parquet`, `delta`, `iceberg`, `hudi`, `csv`, `json`, `text`, `jdbc`, `orc`, `hive` or `libsvm`). | Optional | `parquet`|
 | location_root [^1]  | The created table uses the specified directory to store its data. The table alias is appended to it.                               | Optional                | `/mnt/root`              |
 | partition_by  | Partition the created table by the specified columns. A directory is created for each partition.                                   | Optional                | `date_day`              |
 | clustered_by  | Each partition in the created table will be split into a fixed number of buckets by the specified columns.                         | Optional               | `country_code`              |
 | buckets  | The number of buckets to create while clustering                                                                                   | Required if `clustered_by` is specified                | `8`              |
-| tblproperties | The table properties configure table behavior. Properties differ depending on the file format, see reference docs ([Iceberg](https://iceberg.apache.org/docs/latest/configuration/#table-properties), [Parquet](https://spark.apache.org/docs/3.5.4/sql-data-sources-parquet.html#data-source-option), [Delta](https://docs.databricks.com/aws/en/delta/table-properties#delta-table-properties), [Hudi](https://hudi.apache.org/docs/sql_ddl/#table-properties)).
+| tblproperties | The table properties configure table behavior. Properties differ depending on the file format, see reference docs ([Iceberg](https://iceberg.apache.org/docs/latest/configuration/#table-properties), [Parquet](https://spark.apache.org/docs/3.5.4/sql-data-sources-parquet.html#data-source-option), [Delta](https://docs.databricks.com/aws/en/delta/table-properties#delta-table-properties), [Hudi](https://hudi.apache.org/docs/sql_ddl/#table-properties)). | Optional |<code># Iceberg Example<br /> tblproperties:<br />   read.split.target-size: 268435456<br />   commit.retry.num-retries: 10</code> |
 
 [^1]: If you configure `location_root`, dbt specifies a location path in the `create table` statement. This changes the table from "managed" to "external" in Spark/Databricks.
 
@@ -99,7 +99,7 @@ insert into table analytics.spark_incremental
 
 ### The `insert_overwrite` strategy
 
-This strategy is most effective when specified alongside a `partition_by` clause in your model config. dbt will run an [atomic `insert overwrite` statement](https://spark.apache.org/docs/3.0.0-preview/sql-ref-syntax-dml-insert-overwrite-table.html) that dynamically replaces all partitions included in your query. Be sure to re-select _all_ of the relevant data for a partition when using this incremental strategy.
+This strategy is most effective when specified alongside a `partition_by` clause in your model config. dbt will run an [atomic `insert overwrite` statement](https://downloads.apache.org/spark/docs/3.0.0/sql-ref-syntax-dml-insert-overwrite-table.html) that dynamically replaces all partitions included in your query. Be sure to re-select _all_ of the relevant data for a partition when using this incremental strategy.
 
 If no `partition_by` is specified, then the `insert_overwrite` strategy will atomically replace all contents of the table, overriding all existing data with only the new records. The column schema of the table remains the same, however. This can be desirable in some limited circumstances, since it minimizes downtime while the table contents are overwritten. The operation is comparable to running `truncate` + `insert` on other databases. For atomic replacement of Delta-formatted tables, use the `table` materialization (which runs `create or replace`) instead.
 
@@ -125,7 +125,8 @@ If no `partition_by` is specified, then the `insert_overwrite` strategy will ato
 {{ config(
     materialized='incremental',
     partition_by=['date_day'],
-    file_format='parquet'
+    file_format='parquet',
+    incremental_strategy='insert_overwrite'
 ) }}
 
 /*
@@ -315,3 +316,22 @@ snapshots:
 ```
 
 </File>
+
+<VersionBlock firstVersion="1.11">
+
+## Retry handling for PyHive connections
+
+When using HTTP or Thrift connection methods, you can configure how dbt handles polling, timeouts, and connection retries for long-running queries. These settings help prevent queries from hanging indefinitely and automatically recover from connection interruptions during query execution.
+
+There are three profile configurations available: 
+
+| Parameter	| Type	| Default |	Description |
+|-----------|-------|---------|-------------|
+| `poll_interval` | Integer |	5 |	How frequently (in seconds) the adapter polls the Thrift server to check if an async query has completed. |
+| `query_timeout`	| Integer |	None | Maximum duration (in seconds) for query execution. If a query exceeds this duration during polling, dbt raises a `DbtRuntimeError`. No timeout by default. |
+| `query_retries` | Integer |	1 |	How many times the adapter retries when connection loss occurs during query execution. |
+
+The adapter catches specific connection exceptions (such as `ConnectionResetError`, `BrokenPipeError`, and `TTransportException`) and retries with a fresh cursor when connection loss occurs. After exhausting all retries, dbt raises a `DbtRuntimeError` and suggests increasing `query_retries` in your profile.
+
+
+</VersionBlock>

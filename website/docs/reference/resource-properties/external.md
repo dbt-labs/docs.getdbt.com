@@ -6,7 +6,6 @@ datatype: {dictionary}
 <File name='models/<filename>.yml'>
 
 ```yml
-version: 2
 
 sources:
   - name: <source_name>
@@ -21,7 +20,8 @@ sources:
             - name: <column_name>
               data_type: <string>
               description: <string>
-              meta: {dictionary}
+              config:
+                meta: {dictionary} # changed to config in v1.10
             - ...
           <additional_property>: <additional_value>
 ```

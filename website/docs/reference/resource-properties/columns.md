@@ -19,7 +19,6 @@ datatype: test
 <File name='models/<filename>.yml'>
 
 ```yml
-version: 2
 
 models:
   - name: <model_name>
@@ -28,9 +27,10 @@ models:
         data_type: <string>
         [description](/reference/resource-properties/description): <markdown_string>
         [quote](/reference/resource-properties/columns#quote): true | false
-        [tests](/reference/resource-properties/data-tests): ...
-        [tags](/reference/resource-configs/tags): ...
-        [meta](/reference/resource-configs/meta): ...
+        [data_tests](/reference/resource-properties/data-tests): ...
+        config:
+          [tags](/reference/resource-configs/tags): ...
+          [meta](/reference/resource-configs/meta): ...
       - name: <another_column>
         ...
 ```
@@ -44,7 +44,6 @@ models:
 <File name='models/<filename>.yml'>
 
 ```yml
-version: 2
 
 sources:
   - name: <source_name>
@@ -55,9 +54,10 @@ sources:
           [description](/reference/resource-properties/description): <markdown_string>
           data_type: <string>
           [quote](/reference/resource-properties/columns#quote): true | false
-          [tests](/reference/resource-properties/data-tests): ...
-          [tags](/reference/resource-configs/tags): ...
-          [meta](/reference/resource-configs/meta): ...
+          [data_tests](/reference/resource-properties/data-tests): ...
+          config:
+            [tags](/reference/resource-configs/tags): ...
+            [meta](/reference/resource-configs/meta): ...
         - name: <another_column>
           ...
 
@@ -72,7 +72,6 @@ sources:
 <File name='seeds/<filename>.yml'>
 
 ```yml
-version: 2
 
 seeds:
   - name: <seed_name>
@@ -81,9 +80,10 @@ seeds:
         [description](/reference/resource-properties/description): <markdown_string>
         data_type: <string>
         [quote](/reference/resource-properties/columns#quote): true | false
-        [tests](/reference/resource-properties/data-tests): ...
-        [tags](/reference/resource-configs/tags): ...
-        [meta](/reference/resource-configs/meta): ...
+        [data_tests](/reference/resource-properties/data-tests): ...
+        config:
+          [tags](/reference/resource-configs/tags): ...
+          [meta](/reference/resource-configs/meta): ...
       - name: <another_column>
             ...
 ```
@@ -97,7 +97,6 @@ seeds:
 <File name='snapshots/<filename>.yml'>
 
 ```yml
-version: 2
 
 snapshots:
   - name: <snapshot_name>
@@ -106,9 +105,10 @@ snapshots:
         [description](/reference/resource-properties/description): <markdown_string>
         data_type: <string>
         [quote](/reference/resource-properties/columns#quote): true | false
-        [tests](/reference/resource-properties/data-tests): ...
-        [tags](/reference/resource-configs/tags): ...
-        [meta](/reference/resource-configs/meta): ...
+        [data_tests](/reference/resource-properties/data-tests): ...
+        config:
+          [tags](/reference/resource-configs/tags): ...
+          [meta](/reference/resource-configs/meta): ...
       - name: <another_column>
 
 ```
@@ -123,7 +123,6 @@ snapshots:
 <File name='analyses/<filename>.yml'>
 
 ```yml
-version: 2
 
 analyses:
   - name: <analysis_name>
@@ -144,10 +143,10 @@ analyses:
 Columns are not resources in and of themselves. Instead, they are child properties of another resource type. They can define sub-properties that are similar to properties defined at the resource level:
 - `tags`
 - `meta`
-- `tests`
+- `data_tests`
 - `description`
 
-Because columns are not resources, their `tags` and `meta` properties are not true configurations. They do not inherit the `tags` or `meta` values of their parent resources. However, you can select a generic test, defined on a column, using tags applied to its column or top-level resource; see [test selection examples](/reference/node-selection/test-selection-examples#run-tests-on-tagged-columns).
+Because columns are not resources, their `tags` and `meta` properties are not true configurations even when nested under a `config` block. They do not inherit the `tags` or `meta` values of their parent resources. However, you can select a generic test, defined on a column, using tags applied to its column or top-level resource; see [test selection examples](/reference/node-selection/test-selection-examples#run-tests-on-tagged-columns).
 
 Columns may optionally define a `data_type`, which is necessary for:
 - Enforcing a model [contract](/reference/resource-configs/contract)
@@ -172,7 +171,6 @@ The `quote` field can be used to enable or disable quoting for column names.
 <File name='models/schema.yml'>
 
 ```yml
-version: 2
 
 models:
   - name: model_name
@@ -191,7 +189,6 @@ models:
 <File name='models/schema.yml'>
 
 ```yml
-version: 2
 
 sources:
   - name: source_name
@@ -212,7 +209,6 @@ sources:
 <File name='seeds/schema.yml'>
 
 ```yml
-version: 2
 
 seeds:
   - name: seed_name
@@ -231,7 +227,6 @@ seeds:
 <File name='snapshots/schema.yml'>
 
 ```yml
-version: 2
 
 snapshots:
   - name: snapshot_name
@@ -250,7 +245,6 @@ snapshots:
 <File name='analysis/schema.yml'>
 
 ```yml
-version: 2
 
 analyses:
   - name: analysis_name
@@ -285,11 +279,10 @@ Without setting `quote: true`:
 - Documentation may not render correctly, e.g. `group` and `"group"` may not be matched as the same column name.
 
 ### Example
-#### Add tests to a quoted column in a source table
+#### Add data tests to a quoted column in a source table
 This is especially relevant if using Snowflake:
 
 ```yml
-version: 2
 
 sources:
   - name: stripe
@@ -298,7 +291,7 @@ sources:
         columns:
           - name: orderID
             quote: true
-            tests:
+            data_tests:
               - not_null
 
 ```

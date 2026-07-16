@@ -7,6 +7,10 @@
   display_title: Analytics craft
   description: The art of being an analytics practitioner.
   is_featured: true
+- name: ai
+  display_title: AI and agentic coding
+  description: Using AI-powered workflows to build better data products.
+  is_featured: true
 - name: data ecosystem
   display_title: Data ecosystem
   description: Walkthroughs of how top data practitioners use tools in the modern data stack.
@@ -19,5 +23,5 @@
   display_title: SQL magic
   description: Stories of dbt developers making SQL sing across warehouses.
   is_featured: true
-- name: dbt Cloud
-  description: Using dbt Cloud to build for scale
+- name: dbt platform
+  description: Using dbt to build for scale

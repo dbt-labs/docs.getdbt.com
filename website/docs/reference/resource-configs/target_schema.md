@@ -8,7 +8,7 @@ datatype: string
 
 Starting in dbt Core v1.9+, this functionality is no longer utilized. Use the [schema](/reference/resource-configs/schema) config as an alternative to define a custom schema while still respecting the `generate_schema_name` macro. 
 
-Try it now in the [dbt Cloud "Latest" release track](/docs/dbt-versions/cloud-release-tracks).
+Try it now in the [<Constant name="dbt" /> **Latest** release track](/docs/dbt-versions/dbt-release-tracks).
 
 :::
 
@@ -41,8 +41,7 @@ On **BigQuery**, this is analogous to a `dataset`.
 
 ## Default
 
-<VersionBlock lastVersion="1.8" >This is a required parameter, no default is provided. </VersionBlock>
-<VersionBlock firstVersion="1.9.1">In dbt Core v1.9+ and dbt Cloud "Latest" release track, this is not a required parameter. </VersionBlock>
+<VersionBlock firstVersion="1.9">In dbt Core v1.9+ and <Constant name="dbt" /> **Latest** release track, this is not a required parameter. </VersionBlock>
 
 ## Examples
 ### Build all snapshots in a schema named `snapshots`
@@ -57,10 +56,3 @@ snapshots:
 
 </File>
 
-<VersionBlock lastVersion="1.8" >
-
-### Use the same schema-naming behavior as models
-
-For native support of environment-aware snapshots, upgrade to dbt Core version 1.9+ and remove any existing `target_schema` configuration. 
-
-</VersionBlock>

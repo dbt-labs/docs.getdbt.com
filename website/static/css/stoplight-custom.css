@@ -23,9 +23,12 @@
     font-size: 14px !important;
 }
 
-.sl-font-ui a {
-    /* Ensure link colors aren't overriden by docusaurus css */
+.sl-font-ui a,
+.sl-prose a {
+    /* Ensure link colors aren't overridden by docusaurus css */
     color: var(--color-text) !important;
+    /* Underline links */
+    text-decoration: underline !important;
 }
 
 /* Ensure codeblocks are legible when using darkmode */

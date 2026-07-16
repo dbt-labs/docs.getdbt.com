@@ -6,7 +6,7 @@ sidebar: "Print output"
 
 ### Suppress `print()` messages in stdout
 
-By default, dbt includes [`print()`](/reference/dbt-jinja-functions/print) messages in standard out (stdout). You can use the `DBT_PRINT` environment variable to prevent these messages from showing up in stdout.
+By default, dbt includes [`print()`](/reference/dbt-jinja-functions/print) messages in standard out (stdout). You can use the <VersionBlock lastVersion="1.10">`DBT_PRINT`</VersionBlock><VersionBlock firstVersion="1.11">`DBT_ENGINE_PRINT`</VersionBlock> environment variable to prevent these messages from showing up in stdout.
 
 :::warning Syntax deprecation
 
@@ -17,7 +17,7 @@ The original `DBT_NO_PRINT` environment variable has been deprecated, starting w
 Supply `--no-print` flag to `dbt run` to suppress `print()` messages from showing in stdout.
 
 ```text
-dbt --no-print run
+dbt run --no-print
 ```
 
 ### Printer width
@@ -47,8 +47,8 @@ config:
 </File>
 
 ```text
-dbt --use-colors run
-dbt --no-use-colors run
+dbt run --use-colors
+dbt run --no-use-colors
 ```
 
 You can set the color preferences for the file logs only within `profiles.yml` or using the `--use-colors-file / --no-use-colors-file` flags.
@@ -63,6 +63,6 @@ config:
 </File>
 
 ```text
-dbt --use-colors-file run
-dbt --no-use-colors-file run
+dbt run --use-colors-file
+dbt run --no-use-colors-file
 ```

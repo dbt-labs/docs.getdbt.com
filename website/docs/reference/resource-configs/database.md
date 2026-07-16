@@ -48,11 +48,6 @@ This would result in the generated relation being located in the `staging` datab
 
 <TabItem value="snapshots" label="Snapshots">
 
-<VersionBlock lastVersion="1.8">
-
-Available for dbt Cloud release tracks or dbt Core v1.9+. Select v1.9 or newer from the version dropdown to view the configs.
-
-</VersionBlock>
 
 <VersionBlock firstVersion="1.9">
 
@@ -75,7 +70,6 @@ Or in a `snapshot_name.yml` file:
 <File name='snapshots/snapshot_name.yml'>
 
 ```yaml
-version: 2
 
 snapshots:
   - name: snapshot_name
@@ -101,7 +95,7 @@ For example, to save test results in a specific database, you can configure it l
 <File name='dbt_project.yml'>
 
 ```yml
-tests:
+data_tests:
   +store_failures: true
   +database: test_results
 ```
@@ -128,4 +122,5 @@ To learn more about changing the way that dbt generates a relation's `database`,
 
 ## Warehouse specific information
 * BigQuery: `project` and `database` are interchangeable
+* Databricks: `catalog` and `database` are interchangable
 

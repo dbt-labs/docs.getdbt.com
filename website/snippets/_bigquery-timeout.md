@@ -1,0 +1,1 @@
+From <Constant name="core"/> v1.10, the BigQuery adapter cancels BigQuery jobs that exceed their configured timeout by sending a cancellation request. If the request succeeds, dbt stops the job. If the request fails, the BigQuery job may keep running in the background until it finishes or you cancel it manually.

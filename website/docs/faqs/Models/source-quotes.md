@@ -15,11 +15,10 @@ To force dbt to quote one of these values, use the [`quoting` property](/referen
 <File name='models/<filename>.yml'>
 
 ```yaml
-version: 2
-
 sources:
   - name: jaffle_shop
     database: raw
+    schema: jaffle_shop
     quoting:
       database: true
       schema: true

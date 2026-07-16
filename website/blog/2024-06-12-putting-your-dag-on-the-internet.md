@@ -42,7 +42,7 @@ Next, to access network locations outside of Snowflake, you need to define an ex
 
 This API is open and if it requires an API key, handle it similarly to managing secrets. More information on API authentication in Snowflake is available [here](https://docs.snowflake.com/en/user-guide/api-authentication).
 
-For simplicity’s sake, we will show how to create them using [pre-hooks](/reference/resource-configs/pre-hook-post-hook) in a model configuration yml file:
+For simplicity’s sake, we will show how to create them using [pre-hooks](/reference/resource-configs/pre-hook-post-hook) in a model configuration YAML file:
 
 
 ```yml
@@ -72,7 +72,7 @@ def model(dbt, session: snowpark.Session):
 ```
 
 
-The result is a model with some json I can parse, for example, in a SQL model to extract some information: 
+The result is a model with some JSON I can parse, for example, in a SQL model to extract some information: 
 
 
 ```sql
@@ -114,6 +114,6 @@ Traditionally dbt is the T in ELT (dbt overview [here](https://docs.getdbt.com/t
 
 In order to get this functionality shipped quickly, EQT opened a pull request, Snowflake helped with some problems we had with CI and a member of dbt Labs helped write the tests and merge the code in!  
 
-dbt now features this functionality in dbt 1.8+ and all [Release tracks](/docs/dbt-versions/cloud-release-tracks) in dbt Cloud.
+dbt now features this functionality in dbt 1.8+ and all [Release tracks](/docs/dbt-versions/dbt-release-tracks) in dbt Cloud.
 
 dbt Labs staff and community members would love to chat more about it in the [#db-snowflake](https://getdbt.slack.com/archives/CJN7XRF1B) slack channel.

@@ -1,14 +1,22 @@
 .quickstartCard {
-  outline: 1px solid #EFF2F3;
-  border-radius: 10px;
-  box-shadow: 0px 11px 24px rgba(138, 138, 138, .1);
-  padding: 2.5rem 2.5rem 1.5rem 2.5rem;
   max-width: 312px;
   display: flex;
   flex-direction: column;
   text-decoration: none !important;
   transition: all 0.2s ease-in-out;
   position: relative;
+  background: var(--ifm-footer-background-color);
+  color: var(--color-white);
+  border: 1px solid var(--border-neutral-tertiary);
+  border-radius: 16px;
+  padding: 2.5rem 2.5rem 1.5rem 2.5rem;
+  background-color: var(--bg-surface-default);
+}
+
+[data-theme='dark'] .quickstartCard {
+  background-color: var(--bg-surface-inverse);
+  border-color: var(--border-inverse-tertiary);
+  color: var(--text-inverse-primary);
 }
 
 @media (max-width: 768px) {
@@ -17,17 +25,14 @@
   }
 }
 
-.quickstartCard:hover {
-  transform: translateY(-7px);
-  outline: 2px solid var(  --color-green-blue);
-}
-
-.quickstartCard:hover > .start {
+.quickstartCard:hover h4,
+.quickstartCard:hover .start {
   text-decoration: underline;
 }
 
 .quickstartCard .icon {
   max-width: 46px;
+  max-height: 46px;
   font-size: 46px;
   margin-bottom: .8rem;
   color: var(--ifm-menu-color);
@@ -38,16 +43,12 @@
   fill: #fff;
 }
 
-.quickstartCard p {
-  font-weight: 600;
-  color:#262A38;
-  font-size: 1.2rem;
-  line-height: 1.2;
-  margin-bottom: 0.5rem;
+.quickstartCard h4 {
+  color: var(--text-neutral-primary);
 }
 
-[data-theme='dark'] .quickstartCard p {
-  color: #fff;
+[data-theme='dark'] .quickstartCard h4 {
+  color: var(--text-inverse-primary);
 }
 
 .quickstartCard h3:hover {
@@ -66,20 +67,21 @@
   font-size: 1.125rem;
   margin-top: auto;
   padding-top: 2rem;
-  font-weight: 600;
+  font-weight: 500;
+  color: var(--text-neutral-primary);
 }
 
 [data-theme='dark'] .quickstartCard .start {
-  color: #fff;
+  color: var(--text-inverse-primary);
 }
 
 .quickstartCard .start .right_arrow svg {
   margin-left: 4px;
   width: 12.6px;
-  fill: var(--ifm-link-color);
+  fill: var(--text-neutral-primary);
 }
 .quickstartCard .start:hover .right_arrow svg {
-  fill: var(--ifm-link-hover-color)
+  fill: var(--text-neutral-primary);
 }
 
 [data-theme='dark'] .quickstartCard .start .right_arrow svg {
@@ -93,17 +95,6 @@
   margin-top: 1rem;
 }
 
-.quickstartCard .tag_container .tag {
-  background: #E5E7EB;
-  border-radius: 1.5rem;
-  color:#262A38;
-  padding: 0rem 0.75rem;
-}
-
-[data-theme='dark'] .quickstartCard .tag_container .tag {
-  background: #374151;
-  color: #fff;
-}
 
 .infoContainer {
   display: flex;
@@ -121,10 +112,15 @@
 }
 
 .backButton {
-  color: var(--ifm-menu-color);
-  display: flex;
-  align-items: center;
-  gap: 0.2rem;
+  color: var(--text-neutral-primary) !important;
+}
+
+.backButton:hover {
+  text-decoration: underline;
+}
+
+[data-theme='dark'] .backButton {
+  color: var(--text-inverse-primary) !important;
 }
 
 .tag_container {
@@ -133,18 +129,6 @@
   gap: 0.375rem;
   align-items: center;
   margin-bottom: 2rem;
-}
-
-.tag_container .tag {
-  background: #E5E7EB;
-  border-radius: 1.5rem;
-  color:#262A38;
-  padding: 0rem 0.75rem;
-}
-
-[data-theme='dark'] .tag_container .tag {
-  background: #374151;
-  color: #fff;
 }
 
 .infoContainer .time_to_complete svg {
@@ -177,7 +161,6 @@
   }
 }
 .favoriteButton {
-
   top: 1.5rem;
   right: 1.5rem;
   background: none;
@@ -197,11 +180,11 @@
 }
 
 .favoriteButton:hover, .cardFavoriteButton:hover {
-  color: var(  --color-green-blue);
+  color: var(--color-transform-orange-600);
 }
 
 .favoriteButton.favorited, .cardFavoriteButton.favorited {
-  color: #ffd700;
+  color: var(--color-transform-orange-600);
 }
 
 .cardFavoriteButton svg {
@@ -230,9 +213,26 @@
   top: 10px;
   left: 50%;
   transform: translateX(-50%);
-  background-color: #047377;
-  color: rgb(236, 236, 236);
+  background-color: var(--color-transform-orange-600);
+  color: var(--text-neutral-primary);
   padding: 10px;
   border-radius: 5px;
   z-index: 9999;
+}
+
+.cardHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.productBadge {
+  align-self: flex-start;
+  font-size: 0.75rem;
+}
+
+.recently_updated {
+  font-size: 0.75rem;
+  color: var(--color-green-blue);
+  font-weight: 500;
 }

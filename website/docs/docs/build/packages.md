@@ -32,6 +32,20 @@ import UseCaseInfo from '/snippets/_packages_or_dependencies.md';
 
 <UseCaseInfo/>
 
+## How do I create a package?
+
+Creating packages is an advanced use of dbt, but it can be a relatively simple task. The only strict requirement is the presence of a [`dbt_project.yml` file](/reference/dbt_project.yml).
+
+The most common use-cases for packages are:
+
+- Sharing [models](/docs/build/models) to share across multiple projects.
+- Sharing [macros](/docs/build/jinja-macros) to share across multiple projects.
+
+Note that packages can be [private](#private-packages) &mdash; they don't need to be shared publicly. Private packages can be hosted on your own Git provider (for example, GitHub or GitLab).
+
+For instructions on creating dbt packages and additional information, refer to our guide [Building dbt packages](/guides/building-packages?step=1).
+
+
 ## How do I add a package to my project?
 1. Add a file named `dependencies.yml` or `packages.yml` to your dbt project. This should be at the same level as your `dbt_project.yml` file.
 2. Specify the package(s) you wish to add using one of the supported syntaxes, for example:
@@ -91,7 +105,7 @@ Where possible, we recommend installing packages via dbt Hub, since this allows 
 
 In comparison, other package installation methods are unable to handle the duplicate dbt-utils package. 
 
-Advanced users can choose to host an internal version of the package hub based on [this repository](https://github.com/dbt-labs/hub.getdbt.com) and setting the `DBT_PACKAGE_HUB_URL` environment variable.
+Advanced users can choose to host an internal version of the package hub based on [this repository](https://github.com/dbt-labs/hub.getdbt.com) and setting the <VersionBlock lastVersion="1.10">`DBT_PACKAGE_HUB_URL`</VersionBlock><VersionBlock firstVersion="1.11">`DBT_ENGINE_PACKAGE_HUB_URL`</VersionBlock> environment variable.
 
 #### Prerelease versions
 
@@ -129,7 +143,7 @@ packages:
 
 </File>
 
-Add the Git URL for the package, and optionally specify a revision. The revision can be:
+Add the <Constant name="git" /> URL for the package, and optionally specify a revision. The revision can be:
 - a branch name
 - a tagged release
 - a specific commit (full 40-character hash)
@@ -146,7 +160,7 @@ By default, `dbt deps` "pins" each package. See ["Pinning packages"](#pinning-pa
 
 ### Internally hosted tarball URL
 
-Some organizations have security requirements to pull resources only from internal services. To address the need to install packages from hosted environments such as Artifactory or cloud storage buckets, dbt Core enables you to install packages from internally-hosted tarball URLs. 
+Some organizations have security requirements to pull resources only from internal services. To address the need to install packages from hosted environments such as Artifactory or cloud storage buckets, <Constant name="core" /> enables you to install packages from internally-hosted tarball URLs. 
 
 
 ```yaml
@@ -159,49 +173,76 @@ Where `name: 'dbt_utils'` specifies the subfolder of `dbt_packages` that's creat
 
 ## Private packages
 
-### Native private packages <Lifecycle status='beta'/> 
+### Native private packages
 
-dbt Cloud supports private packages from [supported](#prerequisites) Git repos leveraging an existing [configuration](/docs/cloud/git/git-configuration-in-dbt-cloud) in your environment. Previously, you had to configure a [token](#git-token-method) to retrieve packages from your private repos.
+Native private packages let you install packages from [supported](#prerequisites) private <Constant name="git" /> repos using the `private` key, without having to configure a [token](#git-token-method) or write out a full Git URL. This simplifies setup and reduces credential management.
+
+- <Constant name="dbt_platform" />: Uses your existing <Constant name="git" /> [integration](/docs/platform/git/configure-git) for authentication.
+- Locally using <Constant name="fusion" /> or <Constant name="core" /> v1.12+: Uses your system's SSH configuration. Requires the [`provider` key](#using-the-provider-key).
 
 #### Prerequisites
 
-- To use native private packages, you must have one of the following Git providers configured in the **Integrations** section of your **Account settings**:
-  - [GitHub](/docs/cloud/git/connect-github)
-  - [Azure DevOps](/docs/cloud/git/connect-azure-devops)
-    - Private packages only work within a single Azure DevOps project. If your repositories are in different projects within the same organization, you can't reference them in the `private` key at this time.
-    - For Azure DevOps, use the `org/repo` path (not the `org_name/project_name/repo_name` path) with the project tier inherited from the integrated source repository.
-  - Support for GitLab is coming soon.
+- **<Constant name="dbt_platform" />**: You must have one of the following <Constant name="git" /> providers configured in the **Integrations** section of your **Account settings**:
+  - **[GitHub](/docs/platform/git/connect-github)**
+  - **[Azure DevOps](/docs/platform/git/connect-azure-devops)**
+    - Use the `org/project/repo` path with the `ado` provider.
+  - **[GitLab](/docs/platform/git/connect-gitlab)**
+    - Every GitLab repo with private packages must also be a <Constant name="dbt_platform" /> project.
+- **Locally using <Constant name="fusion" /> or <Constant name="core" /> v1.12+**: You must have an SSH key configured on your machine for the relevant Git provider and include the [`provider` key](#using-the-provider-key) in your package configuration.
 
 #### Configuration
 
-Use the `private` key in your `packages.yml` or `dependencies.yml` to clone package repos using your existing dbt Cloud Git integration without having to provision an access token or create a dbt Cloud environment variable. 
-
+Use the `private` key in your `packages.yml` or `dependencies.yml` to clone package repos using your existing <Constant name="dbt" /> Git integration without having to provision an access token or create a <Constant name="dbt" /> environment variable.
 
 <File name="packages.yml">
 
 ```yaml
 packages:
   - private: dbt-labs/awesome_repo # your-org/your-repo path
+    provider: "github" # Supported values: "github", "gitlab", "ado"
   - package: normal packages
   [...]
 ```
 </File>
 
-:::tip Azure DevOps considerations
-
-- Private packages currently only work if the package repository is in the same Azure DevOps project as the source repo.
-- Use the `org/repo` path (not the normal ADO `org_name/project_name/repo_name` path) in the `private` key. 
-- Repositories in different Azure DevOps projects is currently not supported until a future update.
-
-You can use private packages by specifying `org/repo` in the `private` key:
-
-<File name="packages.yml">
+<File name="dependencies.yml">
 
 ```yaml
 packages:
-  - private: my-org/my-repo # Works if your ADO source repo and package repo are in the same project
+  - private: dbt-labs/awesome_repo # your-org/your-repo path
+    provider: "github" # Supported values: "github", "gitlab", "ado"
 ```
 </File>
+
+
+:::info Azure DevOps considerations and limitations
+There are some considerations and limitations when using native private packages from Azure DevOps. Open the expandable section to learn more.
+
+<Expandable alt_header="Native private packages and Azure DevOps limitations">
+
+1. Use the `ado` provider and specify the `org/project/repo` path in the `private` key.
+
+    <File name="packages.yml">
+
+    ```yaml
+    packages:
+      - private: my-org/my-project/my-repo
+        provider: "ado"
+    ```
+    </File>
+
+
+2. On <Constant name="dbt_platform" />, native private packages from Azure DevOps can fail when the package is in a different Azure DevOps project than the job that installs it, especially if your account is connected to many Azure DevOps projects:
+
+    - This happens because <Constant name="dbt_platform" /> has a 32 KB limit for the Azure DevOps authentication details it can use at job runtime. If your connected Azure DevOps projects exceed that limit, <Constant name="dbt_platform" /> can only use the current project's connection. As a result, packages in other Azure DevOps projects can't be accessed and `dbt deps` fails.
+
+    - As a workaround, reduce the number of Azure DevOps projects connected to your account, then rerun `dbt deps`. The number of projects you can connect depends on your Azure DevOps organization structure and repo count.
+    
+    This limitation doesn't affect local development with <Constant name="core" /> or <Constant name="fusion" /> when cloning private packages over SSH.
+
+    We're currently working to address this, and if you're running into issues, please contact your dbt Labs account team.
+
+</Expandable>
 :::
 
 You can pin private packages similar to regular dbt packages:
@@ -213,18 +254,35 @@ packages:
   
 ```
 
-If you are using multiple Git integrations, disambiguate by adding the provider key:
+#### Using the `provider` key
+
+Add the `provider` key when:
+- You are using multiple <Constant name="git" /> integrations or using the <Constant name="fusion_engine" />.
+- You are using <Constant name="fusion" /> locally (with the [<Constant name="fusion" /> CLI](/docs/local/install-dbt?version=2) or the [VS Code extension](/docs/local/install-dbt?version=2)) (required).
+- You are using <Constant name="core" /> v1.12 or later for SSH-based cloning (required).
 
 ```yaml
 packages:
   - private: dbt-labs/awesome_repo
-    provider: "github" # GitHub and Azure are currently supported. GitLab is coming soon.
-
+    provider: "github" # Supported values: "github", "gitlab", "ado"
 ```
 
-With this method, you can retrieve private packages from an integrated Git provider without any additional steps to connect. 
+<Constant name="core" /> and <Constant name="fusion" /> use the `provider` value to construct the correct SSH URL for cloning, based on the provider:
 
-### SSH key method (command line only)
+| Provider | SSH URL format |
+| --- | --- |
+| `github` | `git@github.com:org/repo.git` |
+| `gitlab` | `git@gitlab.com:org/repo.git` |
+| `ado` | `git@ssh.dev.azure.com:v3/org/project/repo` |
+
+<Constant name="core" /> and <Constant name="fusion" /> rely on your system's SSH configuration to authenticate and clone the private repository. If `git clone` works on your system for the private package repo, the private package install should work too.
+
+### SSH key method (CLI only)
+
+:::note
+This method uses the `git:` key with a full SSH URL, which is different from [native private packages](#native-private-packages) that use the `private:` key. For most use cases, native private packages is the recommended approach as it simplifies setup.
+:::
+
 If you're using the Command Line, private packages can be cloned via SSH and an SSH key.
 
 When you use SSH keys to authenticate to your git remote server, you don’t need to supply your username and password each time. Read more about SSH keys, how to generate them, and how to add them to your git provider here: [Github](https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh) and [GitLab](https://docs.gitlab.com/ee/user/ssh.html).
@@ -239,22 +297,22 @@ packages:
 
 </File>
 
-If you're using dbt Cloud, the SSH key method will not work, but you can use the [HTTPS Git Token Method](https://docs.getdbt.com/docs/build/packages#git-token-method).
+If you're using the <Constant name="dbt_platform" />, the SSH key method will not work, but you can use [native private packages](#native-private-packages) or the [HTTPS <Constant name="git" /> Token Method](/docs/build/packages#git-token-method).
 
 
 ### Git token method
 
 :::note
 
-dbt Cloud has [native support](#native-private-packages) for Git hosted private packages with GitHub and Azure DevOps (GitLab coming soon). If you are using a supported [integrated Git environment](/docs/cloud/git/git-configuration-in-dbt-cloud), you no longer need to configure Git tokens to retrieve private packages. 
+[Native private packages](#native-private-packages) is the recommended approach for GitHub, GitLab, and Azure DevOps. The git token method is still functional in <Constant name="core" />, <Constant name="fusion" />, and the <Constant name="dbt_platform" />, but requires provisioning a personal access token. It remains the supported path for <Constant name="core" /> users who need HTTPS-based cloning.
 
 :::
 
 This method allows the user to clone via HTTPS by passing in a git token via an environment variable. Be careful of the expiration date of any token you use, as an expired token could cause a scheduled run to fail. Additionally, user tokens can create a challenge if the user ever loses access to a specific repo.
 
 
-:::info dbt Cloud usage
-If you are using dbt Cloud, you must adhere to the naming conventions for environment variables. Environment variables in dbt Cloud must be prefixed with either `DBT_` or `DBT_ENV_SECRET`. Environment variables keys are uppercased and case sensitive. When referencing `{{env_var('DBT_KEY')}}` in your project's code, the key must match exactly the variable defined in dbt Cloud's UI.
+:::info <Constant name="dbt" /> usage
+If you are using <Constant name="dbt" />, you must adhere to the naming conventions for environment variables. Environment variables in <Constant name="dbt" /> must be prefixed with either `DBT_` or `DBT_ENV_SECRET`. Environment variables keys are uppercased and case sensitive. When referencing `{{env_var('DBT_KEY')}}` in your project's code, the key must match exactly the variable defined in <Constant name="dbt" />'s UI.
 :::
 
 In GitHub:
@@ -275,7 +333,7 @@ packages:
 
 </File>
 
-Read more about creating a GitHub Personal Access token [here](https://docs.github.com/en/enterprise-server@3.1/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token). You can also use a GitHub  App installation [token](https://docs.github.com/en/rest/reference/apps#create-an-installation-access-token-for-an-app).
+Read more about creating a GitHub Personal Access token [here](https://docs.github.com/en/enterprise-server@3.1/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token). You can also use a GitHub App installation [token](https://docs.github.com/en/rest/reference/apps#create-an-installation-access-token-for-an-app).
 
 In GitLab:
 
@@ -333,7 +391,9 @@ packages:
 </File>
 
 ### Local packages
-A "local" package is a dbt project accessible from your local file system. You can install it by specifying the project's path. It works best when you nest the project within a subdirectory relative to your current project's directory.
+A "local" package is a dbt project accessible from your local file system. They're best suited for when there is a common collection of models and macros that you want to share across multiple downstream dbt projects (but each downstream project still has its own unique models, macros, etc).
+
+You can install local packages by specifying the project's path. It works best when you nest the project within a subdirectory relative to your current project's directory. 
 
 <File name='packages.yml'>
 
@@ -362,9 +422,14 @@ There are a few specific use cases where we recommend using a "local" package:
 2. **Testing changes** &mdash; To test changes in one project or package within the context of a downstream project or package that uses it. By temporarily switching the installation to a "local" package, you can make changes to the former and immediately test them in the latter for quicker iteration. This is similar to [editable installs](https://pip.pypa.io/en/stable/topics/local-project-installs/) in Python.
 3. **Nested project** &mdash; When you have a nested project that defines fixtures and tests for a project of utility macros, like [the integration tests within the `dbt-utils` package](https://github.com/dbt-labs/dbt-utils/tree/main/integration_tests).
 
-
 ## What packages are available?
-Check out [dbt Hub](https://hub.getdbt.com) to see the library of published dbt packages!
+To see the library of published dbt packages, check out the [dbt package hub](https://hub.getdbt.com)!
+
+## Fusion package compatibility
+
+import FusionSupportedPackages from '/snippets/_fusion-supported-packages.md';
+
+<FusionSupportedPackages />
 
 ## Advanced package configuration
 ### Updating a package
@@ -377,7 +442,7 @@ When you remove a package from your `packages.yml` file, it isn't automatically 
 
 ### Pinning packages
 
-Beginning with v1.7, running [`dbt deps`](/reference/commands/deps) "pins" each package by creating or updating the `package-lock.yml` file in the _project_root_ where `packages.yml` is recorded. 
+Running [`dbt deps`](/reference/commands/deps) "pins" each package by creating or updating the `package-lock.yml` file in the _project_root_ where `packages.yml` is recorded. 
 
 - The `package-lock.yml` file contains a record of all packages installed.
 - If subsequent `dbt deps` runs contain no changes to `dependencies.yml` or `packages.yml`, dbt-core installs from `package-lock.yml`. 
@@ -416,10 +481,10 @@ seeds:
 
 For example, when using a dataset specific package, you may need to configure variables for the names of the tables that contain your raw data.
 
-Configurations made in your `dbt_project.yml` file will override any configurations in a package (either in the `dbt_project.yml` file of the package, or in config blocks).
+Configurations made in your project YAML file (`dbt_project.yml`) will override any configurations in a package (either in the project YAML file of the package, or in config blocks).
 
 ### Specifying unpinned Git packages
-If your project specifies an "unpinned" Git package, you may see a warning like:
+If your project specifies an "unpinned" <Constant name="git" /> package, you may see a warning like:
 ```
 The git package "https://github.com/dbt-labs/dbt-utils.git" is not pinned.
 This can introduce breaking changes into your project without warning!
@@ -436,3 +501,12 @@ packages:
 ```
 
 </File>
+
+## Troubleshooting
+
+If you encounter errors while working with dbt packages, see the following FAQs:
+
+<FAQ path="Troubleshooting/runtime-packages.yml" />
+<FAQ path="Troubleshooting/dispatch-could-not-find-package" />
+
+

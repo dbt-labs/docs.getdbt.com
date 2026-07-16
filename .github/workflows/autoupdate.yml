@@ -15,7 +15,7 @@ jobs:
     name: autoupdate
     runs-on: ubuntu-22.04
     steps:
-      - uses: chinthakagodawita/autoupdate@v1.7.0
+      - uses: chinthakagodawita/autoupdate@0707656cd062a3b0cf8fa9b2cda1d1404d74437e # chinthakagodawita/autoupdate@v1.7.0
         env:
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
           DRY_RUN: "false"

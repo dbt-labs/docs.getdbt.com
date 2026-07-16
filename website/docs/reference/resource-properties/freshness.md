@@ -1,52 +1,79 @@
+<Tabs>
+<TabItem value="yml" label="Project file">
+
+<File name="dbt_project.yml">
+  
+```yaml
+sources:
+  [<resource-path>](/reference/resource-configs/resource-path):
+    [+](/reference/resource-configs/plus-prefix)[freshness](/reference/resource-properties/freshness):
+      warn_after:  
+        count: <positive_integer>
+        period: minute | hour | day
+```
+  
+</File>
+</TabItem>
+<TabItem value="project" label="Model YAML">
 <File name='models/<filename>.yml'>
 
 ```yaml
 
-version: 2
 
 sources:
   - name: <source_name>
-    freshness:
-      warn_after:
-        [count](#count): <positive_integer>
-        [period](#period): minute | hour | day
-      error_after:
-        [count](#count): <positive_integer>
-        [period](#period): minute | hour | day
-      [filter](#filter): <boolean_sql_expression>
-    [loaded_at_field](#loaded_at_field): <column_name_or_expression>
-    [loaded_at_query](#loaded_at_query) <sql_expression> # v1.10 or higher. Should not be used if loaded_at_field is defined
+    config:
+      freshness: # changed to config in v1.9
+        warn_after:
+          [count](#count): <positive_integer>
+          [period](#period): minute | hour | day
+        error_after:
+          [count](#count): <positive_integer>
+          [period](#period): minute | hour | day
+        [filter](#filter): <boolean_sql_expression>
+      # changed to config in v1.10
+      [loaded_at_field](#loaded_at_field): <column_name_or_expression>
+      # or use loaded_at_query in v1.10 or higher. Should not be used if loaded_at_field is defined
+      [loaded_at_query](#loaded_at_query): <sql_expression>
 
     tables:
       - name: <table_name>
-        freshness:
-          warn_after:
-            [count](#count): <positive_integer>
-            [period](#period): minute | hour | day
-          error_after:
-            [count](#count): <positive_integer>
-            [period](#period): minute | hour | day
-          [filter](#filter): <boolean_sql_expression>
-        [loaded_at_field](#loaded_at_field): <column_name_or_expression>
-        [loaded_at_query](#loaded_at_query) <sql_expression> # v1.10 or higher. Should not be used if loaded_at_field is defined
+        config:
+          # source.table.config.freshness overrides source.config.freshness
+          freshness: 
+            warn_after:
+              [count](#count): <positive_integer>
+              [period](#period): minute | hour | day
+            error_after:
+              [count](#count): <positive_integer>
+              [period](#period): minute | hour | day
+            [filter](#filter): <boolean_sql_expression>
+          # changed to config in v1.10
+          [loaded_at_field](#loaded_at_field): <column_name_or_expression>
+          # or use loaded_at_query in v1.10 or higher. Should not be used if loaded_at_field is defined
+          [loaded_at_query](#loaded_at_query): <sql_expression>
 
         ...
 ```
-
 </File>
+</TabItem>
+</Tabs>
 
 ## Definition
 A freshness block is used to define the acceptable amount of time between the most recent record, and now, for a <Term id="table" /> to be considered "fresh".
 
-In the `freshness` block, one or both of `warn_after` and `error_after` can be provided. If neither is provided, then dbt will not calculate freshness snapshots for the tables in this source.
+In the `freshness` block, one or both of `warn_after` and `error_after` can be provided. If neither is provided, then dbt will not calculate freshness for the tables in this source.
+
+- `warn_after`: Duration (for example, 12 hours) after which dbt raises a warning if the most recent available data is older than this threshold.
+- `error_after`: Duration (for example, 24 hours) after which dbt fails the freshness check if the most recent available data is older than this threshold.
 
 In most cases, the `loaded_at_field` is required. Some adapters support calculating source freshness from the warehouse metadata tables and can exclude the `loaded_at_field`. <VersionBlock firstVersion="1.10">Alternatively, you can define `loaded_at_query` to use custom SQL expression to calculate the timestamp.</VersionBlock>
 
 If a source has a `freshness:` block, dbt will attempt to calculate freshness for that source:
 - If `loaded_at_field` is provided, dbt will calculate freshness via a select query.
-- If `loaded_at_field` is _not_ provided, dbt will calculate freshness via warehouse metadata tables when possible (new in v1.7 on supported adapters). 
+- If `loaded_at_field` is _not_ provided, dbt will calculate freshness via warehouse metadata tables when possible. 
 <VersionBlock firstVersion="1.10"> 
-- If `loaded_at_query` is provided, dbt will calculate freshness via the provided custom sql query.
+- If `loaded_at_query` is provided, dbt will calculate freshness via the provided custom SQL query.
 - If `loaded_at_query` is provided, `loaded_at_field` should not be configured.
 </VersionBlock>
 
@@ -55,8 +82,17 @@ Currently, calculating freshness from warehouse metadata tables is supported on 
 - [Snowflake](/reference/resource-configs/snowflake-configs)
 - [Redshift](/reference/resource-configs/redshift-configs)
 - [BigQuery](/reference/resource-configs/bigquery-configs) (Supported in [`dbt-bigquery`](https://github.com/dbt-labs/dbt-bigquery) version 1.7.3 or higher)
+- [Databricks](/reference/resource-configs/databricks-configs) (Supported in the <Constant name="fusion_engine" />)
 
-Support is coming soon to the [Spark](/reference/resource-configs/spark-configs) adapter.
+<VersionBlock firstVersion="1.12">
+:::note Wildcard table identifiers
+On BigQuery, metadata-based freshness checks are not reliable for sources defined with wildcard table identifiers (for example, `events_*`).
+
+To prevent incorrect freshness results, enable the [`bigquery_reject_wildcard_metadata_source_freshness`](/reference/global-configs/bigquery-changes#the-bigquery_reject_wildcard_metadata_source_freshness-flag) flag in your `dbt_project.yml`. When enabled, dbt raises an error if metadata-based freshness is used with a wildcard table identifier.
+
+To calculate freshness for wildcard tables, configure [`loaded_at_field`](#loaded_at_field) to use query-based freshness checks instead.
+:::
+</VersionBlock>
 
 Freshness blocks are applied hierarchically:
 - A `freshness` and `loaded_at_field` property added to a source will be applied to all tables defined in that source.
@@ -64,36 +100,82 @@ Freshness blocks are applied hierarchically:
 
 This is useful when all of the tables in a source have the same `loaded_at_field`, as is often the case.
 
-To exclude a source from freshness calculations, you have two options:
-- Don't add a `freshness:` block.
-- Explicitly set `freshness: null`.
+To exclude a source from freshness calculations, explicitly set `freshness: null`.
+
+import SaoDeprecated from '/snippets/_sao-deprecated.md';
+
+<SaoDeprecated />
+
+In state-aware orchestration, dbt uses the warehouse metadata by default to check if sources (or upstream models in the case of Mesh) are fresh. For more information on how freshness is used by state-aware orchestration, see [Advanced configurations](/docs/deploy/state-aware-setup#advanced-configurations).
+
+If you're using [dbt State](/docs/deploy/dbt-state-about), `loaded_at_field` and `loaded_at_query` are also used for source freshness detection (for example, to ensure late-arriving records are detected). Refer to [Migrate from state-aware orchestration](/docs/deploy/dbt-state-migration) for more details.
 
 ## loaded_at_field
 
 Optional on adapters that support pulling freshness from warehouse metadata tables, required otherwise.
 <br/><br/>A column name (or expression) that returns a timestamp indicating freshness.
 
+Examples:
+
+```yml
+sources:
+  - name: inventory_updates
+    config:
+      freshness:
+        error_after:
+          count: 24
+          period: hour
+      loaded_at_field: updated_at
+```
+
 If using a date field, you may have to cast it to a timestamp:
 ```yml
-loaded_at_field: "completed_date::timestamp"
+sources:
+  - name: work_orders
+    description: |
+      Work orders from ERP. The completed_date column is stored as DATE but we need to compare it as a timestamp for freshness checks.
+    config:
+      freshness:
+        error_after:
+          count: 24
+          period: hour
+      loaded_at_field: "completed_date::timestamp"
 ```
 
 Or, depending on your SQL variant:
 ```yml
-loaded_at_field: "CAST(completed_date AS TIMESTAMP)"
+sources:
+  - name: purchase_orders
+    description: |
+      Purchase orders. The completed_date is stored as VARCHAR in 'YYYY-MM-DD' format. Use CAST for explicit conversion.
+    config:
+      freshness:
+        error_after:
+          count: 24
+          period: hour
+      loaded_at_field: "CAST(completed_date AS TIMESTAMP)"
 ```
 
 If using a non-UTC timestamp, cast it to UTC first:
 
 ```yml
-loaded_at_field: "convert_timezone('Australia/Sydney', 'UTC', created_at_local)"
+sources:
+  - name: customer_transactions
+    description: |
+      Customer transactions recorded in Sydney local time. Converting to UTC for consistent freshness comparison across sources in different timezones.
+    config:
+      freshness:
+        error_after:
+          count: 24
+          period: hour
+      loaded_at_field: "convert_timezone('Australia/Sydney', 'UTC', created_at_local)"
 ```
 
 <VersionBlock firstVersion="1.10">
 
 ## loaded_at_query
 
-Specify custom SQL to generate the `maxLoadedAt` timestamp on the source (rather than via warehouse metadata or the `loaded_at_field` config).
+Specify custom SQL to generate the `maxLoadedAt` timestamp on the source (rather than via warehouse metadata or the `loaded_at_field` config). Note that `loaded_at_query` should not be used if `loaded_at_field` is defined.
 
 Examples: 
 
@@ -101,16 +183,17 @@ Examples:
 
 sources:
   - name: your_source
-    freshness:
-      error_after:
-        count: 2
-        period: hour
-    loaded_at_query: |
-      select max(_sdc_batched_at) from (
-      select * from {{ this }}
-      where _sdc_batched_at > dateadd(day, -7, current_date)
-      qualify count(*) over (partition by _sdc_batched_at::date) > 2000
-      )
+    config:
+      freshness: # changed to config in v1.9
+        error_after:
+          count: 2
+          period: hour
+      loaded_at_query: |
+        select max(_sdc_batched_at) from (
+        select * from {{ this }}
+        where _sdc_batched_at > dateadd(day, -7, current_date)
+        qualify count(*) over (partition by _sdc_batched_at::date) > 2000
+        )
 
 ```
 
@@ -120,14 +203,16 @@ sources:
   - name: ecom
     schema: raw
     description: E-commerce data for the Jaffle Shop
-    freshness:
-      warn_after:
-        count: 24
-        period: hour
+    config: 
+      freshness: 
+        warn_after:
+          count: 24
+          period: hour
     tables:
       - name: raw_orders
         description: One record per order
-        loaded_at_query: "select {{ current_timestamp() }}"
+        config:
+          loaded_at_query: "select {{ current_timestamp() }}"
 ...
 
 ```
@@ -167,31 +252,33 @@ This is particularly useful if:
 
 ```yaml
 
-version: 2
 
 sources:
   - name: jaffle_shop
     database: raw
+    config: 
+      # changed to config in v1.9
+      freshness: # default freshness
+        warn_after: {count: 12, period: hour}
+        error_after: {count: 24, period: hour}
 
-    freshness: # default freshness
-      warn_after: {count: 12, period: hour}
-      error_after: {count: 24, period: hour}
-
-    loaded_at_field: _etl_loaded_at
+      loaded_at_field: _etl_loaded_at
 
     tables:
       - name: customers # this will use the freshness defined above
 
       - name: orders
-        freshness: # make this a little more strict
-          warn_after: {count: 6, period: hour}
-          error_after: {count: 12, period: hour}
-          # Apply a where clause in the freshness query
-          filter: datediff('day', _etl_loaded_at, current_timestamp) < 2
+        config:
+          freshness: # make this a little more strict
+            warn_after: {count: 6, period: hour}
+            error_after: {count: 12, period: hour}
+            # Apply a where clause in the freshness query
+            filter: datediff('day', _etl_loaded_at, current_timestamp) < 2
 
 
       - name: product_skus
-        freshness: # do not check freshness for this table
+        config:
+          freshness: # do not check freshness for this table
 ```
 
 </File>

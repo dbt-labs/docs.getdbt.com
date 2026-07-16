@@ -10,7 +10,7 @@ Exposures make it possible to define and describe a downstream use of your dbt p
 
 Exposures can be defined in two ways:
 - Manual &mdash; Declared [explicitly](/docs/build/exposures#declaring-an-exposure) in your project’s YAML files.
-- Automatic &mdash;  dbt Cloud [creates and visualizes downstream exposures](/docs/cloud-integrations/downstream-exposures) automatically for supported integrations, removing the need for manual YAML definitions. These downstream exposures are stored in dbt’s metadata system, appear in [dbt Explorer](/docs/collaborate/explore-projects), and behave like manual exposures. However, they don’t exist in YAML files.
+- Automatic &mdash;  <Constant name="dbt" /> [creates and visualizes downstream exposures](/docs/platform-integrations/downstream-exposures) automatically for supported integrations, removing the need for manual YAML definitions. These downstream exposures are stored in dbt’s metadata system, appear in [<Constant name="catalog" />](/docs/explore/explore-projects), and behave like manual exposures. However, they don’t exist in YAML files.
 
 ### Declaring an exposure
 
@@ -21,7 +21,6 @@ The following example shows an exposure definition in a `models/<filename>.yml` 
 <File name='models/<filename>.yml'>
 
 ```yaml
-version: 2
 
 exposures:
 
@@ -56,6 +55,10 @@ _Required:_
 _Expected:_
 - **depends_on**: list of refable nodes, including `metric`, `ref`, and `source`. While possible, it is highly unlikely you will ever need an `exposure` to depend on a `source` directly.
 
+  :::tip
+  Do not confuse this `depends_on` YAML property with the [`-- depends_on`](/reference/dbt-jinja-functions/statement-blocks#example-using-depends_on) a SQL comment directive defined at the top of a model SQL file, which explicitly adds dependencies to the DAG and ensures the referenced resources are built before the model executes.
+  :::
+
 _Optional:_
 - **label**:  May contain spaces, capital letters, or special characters.
 - **url**:  Activates and populates the link to **View this exposure** in the upper right corner of the generated documentation site
@@ -77,13 +80,13 @@ dbt test -s +exposure:weekly_jaffle_report
 
 ```
 
-When we generate the [dbt Explorer site](/docs/collaborate/explore-projects), you'll see the exposure appear:
+When we generate the [<Constant name="catalog" /> site](/docs/explore/explore-projects), you'll see the exposure appear:
 
-<Lightbox src="/img/docs/building-a-dbt-project/dbt-explorer-exposures.jpg" title="Exposures has a dedicated section, under the 'Resources' tab in dbt Explorer,  which lists each exposure in your project."/>
-<Lightbox src="/img/docs/building-a-dbt-project/dag-exposures.png" title="Exposures appear as nodes in the dbt Explorer DAG. It displays an orange 'EXP' indicator within the node. "/>
+<Lightbox src="/img/docs/building-a-dbt-project/dbt-explorer-exposures.png" title="Exposures has a dedicated section, under the project name in dbt Catalog, which lists each exposure in your project."/>
+<Lightbox src="/img/docs/building-a-dbt-project/dag-exposures.png" title="Exposures appear as nodes in the dbt Catalog DAG. It displays an orange 'EXP' indicator within the node. "/>
 
 ## Related docs
 
-* [Exposure properties](/reference/exposure-properties)
-* [`exposure:` selection method](/reference/node-selection/methods#exposure)
-* [Data health tiles](/docs/collaborate/data-tile)
+- [Exposure properties](/reference/exposure-properties)
+- [`exposure:` selection method](/reference/node-selection/methods#exposure)
+- [Data health tiles](/docs/explore/data-tile)

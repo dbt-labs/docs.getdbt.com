@@ -19,7 +19,7 @@ First, let’s consider some properties of various levels of our dbt project and
 
 ### Project-level configuration
 
-Keeping these principles in mind, we can applying these materializations to a project. Earlier we looked at how to configure an individual model’s materializations. In practice though, we’ll want to set materializations at the folder level, and use individual model configs to override those as needed. This will keep our code DRY and avoid repeating the same config blocks in every model.
+Keeping these principles in mind, we can applying these materializations to a project. Earlier we looked at how to configure an individual model's materializations. In practice though, we'll want to set materializations at the folder level, and use individual model configs to override those as needed. This will keep our code DRY and avoid repeating the same config blocks in every model.
 
 - 📂  In the `dbt_project.yml` we have a `models:` section (by default at the bottom of the file) we can use define various **configurations for entire directories**.
 - ⚙️  These are the **same configs that are passed to a `{{ config() }}` block** for individual models, but they get set for _every model in that directory and any subdirectories nested within it_.
@@ -53,6 +53,33 @@ models:
     staging:
       +materialized: view
 ```
+
+### Intermediate models in larger projects
+
+The [Jaffle Shop](https://github.com/dbt-labs/jaffle-shop) example project uses a staging → marts flow and does not include an `intermediate/` folder. In larger projects, intermediate models often sit between staging and marts, breaking up complex transformations into manageable pieces:
+
+- 🚫 Intermediate models are not accessed directly by end users. They exist to simplify mart logic.
+- 🧩 They serve as building blocks that get referenced by marts or other intermediate models.
+- 👻 This makes them ideal candidates for ephemeral materialization, which doesn't create objects in your warehouse.
+
+Ephemeral models are interpolated as <Term id="cte">CTE</Term> into the models that reference them. This keeps your warehouse clean and avoids cluttering it with models that aren't meant for direct querying:
+
+```yaml
+models:
+  jaffle_shop:
+    staging:
+      +materialized: view
+    intermediate:
+      +materialized: ephemeral
+    marts:
+      +materialized: table
+```
+
+:::tip When to avoid ephemeral models
+Ephemeral models can make troubleshooting more difficult since they don't exist as queryable objects. If you need to inspect intermediate results during development, consider materializing them as views in a custom schema with restricted permissions instead. This gives you visibility while keeping them separate from production models.
+:::
+
+For more details on intermediate model patterns, refer to [How we structure our dbt projects: Intermediate](/best-practices/how-we-structure/3-intermediate).
 
 ### Table and incremental marts
 

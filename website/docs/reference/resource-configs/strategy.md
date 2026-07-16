@@ -4,13 +4,6 @@ description: "Strategy - Read this in-depth guide to learn about configurations 
 datatype: timestamp | check
 ---
 
-<VersionBlock lastVersion="1.8">
-
-import SnapshotYaml from '/snippets/_snapshot-yaml-spec.md';
-
-<SnapshotYaml/>
-</VersionBlock>
-
 <Tabs
   defaultValue="timestamp"
   values={[
@@ -35,26 +28,6 @@ import SnapshotYaml from '/snippets/_snapshot-yaml-spec.md';
 </File>
 </VersionBlock>
 
-<VersionBlock lastVersion="1.8">
-
-<File name='snapshots/<filename>.sql'>
-
-```jinja2
-{% snapshot [snapshot_name](snapshot_name) %}
-
-{{ config(
-  strategy="timestamp",
-  updated_at="column_name"
-) }}
-
-select ...
-
-{% endsnapshot %}
-
-```
-
-</File>
-</VersionBlock>
 
 <File name='dbt_project.yml'>
 
@@ -84,24 +57,6 @@ snapshots:
       strategy: check
       check_cols: [column_name] | "all"
   ```
-</File>
-</VersionBlock>
-
-<VersionBlock lastVersion="1.8">
-<File name='snapshots/<filename>.sql'>
-
-```jinja2
-{% snapshot [snapshot_name](snapshot_name) %}
-
-{{ config(
-  strategy="check",
-  check_cols=[column_name] | "all"
-) }}
-
-{% endsnapshot %}
-
-```
-
 </File>
 </VersionBlock>
 
@@ -148,29 +103,6 @@ snapshots:
 </File>
 </VersionBlock>
 
-<VersionBlock lastVersion="1.8">
-<File name='snapshots/timestamp_example.sql'>
-
-```sql
-{% snapshot orders_snapshot_timestamp %}
-
-    {{
-        config(
-          target_schema='snapshots',
-          strategy='timestamp',
-          unique_key='id',
-          updated_at='updated_at',
-        )
-    }}
-
-    select * from {{ source('jaffle_shop', 'orders') }}
-
-{% endsnapshot %}
-```
-
-</File>
-</VersionBlock>
-
 
 ### Use the check strategy
 
@@ -191,26 +123,6 @@ snapshots:
 
 ```
 </File>
-</VersionBlock>
-
-<VersionBlock lastVersion="1.8">
-
-```sql
-{% snapshot orders_snapshot_check %}
-
-    {{
-        config(
-          target_schema='snapshots',
-          strategy='check',
-          unique_key='id',
-          check_cols=['status', 'is_cancelled'],
-        )
-    }}
-
-    select * from {{ source('jaffle_shop', 'orders') }}
-
-{% endsnapshot %}
-```
 </VersionBlock>
 
 ### Advanced: define and use custom snapshot strategy
@@ -238,21 +150,3 @@ snapshots:
 </File>
 </VersionBlock>
 
-
-<VersionBlock lastVersion="1.8">
-<File name='snapshots/<filename>.sql'>
-
-```jinja2
-{% snapshot [snapshot_name](snapshot_name) %}
-
-{{ config(
-  strategy="timestamp_with_deletes",
-  updated_at="column_name"
-) }}
-
-{% endsnapshot %}
-
-```
-
-</File>
-</VersionBlock>

@@ -1,1 +1,0 @@
-### Questions from the Community

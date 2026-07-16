@@ -23,7 +23,6 @@ Exposure names must contain only letters, numbers, and underscores (no spaces or
 <File name='models/<filename>.yml'>
 
 ```yml
-version: 2
 
 exposures:
   - name: <string_with_underscores>
@@ -32,9 +31,11 @@ exposures:
     url: <string>
     maturity: {high, medium, low}  # Indicates level of confidence or stability in the exposure
     [enabled](/reference/resource-configs/enabled): true | false
-    [tags](/reference/resource-configs/tags): [<string>]
-    [meta](/reference/resource-configs/meta): {<dictionary>}
-    owner:
+    [config](/reference/resource-properties/config): # 'tags' and 'meta' changed to config in v1.10
+      [tags](/reference/resource-configs/tags): [<string>] 
+      [meta](/reference/resource-configs/meta): {<dictionary>}
+      enabled: true | false
+    owner: # supports 'name' and 'email' only
       name: <string>
       email: <string>
     
@@ -45,8 +46,6 @@ exposures:
       - metric('metric_name')
       
     label: "Human-Friendly Name for this Exposure!"
-    [config](/reference/resource-properties/config):
-      enabled: true | false
 
   - name: ... # declare properties of additional exposures
 ```
@@ -57,7 +56,6 @@ exposures:
 <File name='models/jaffle/exposures.yml'>
 
 ```yaml
-version: 2
 
 exposures:
 

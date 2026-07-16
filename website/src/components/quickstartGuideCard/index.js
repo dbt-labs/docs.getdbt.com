@@ -4,9 +4,10 @@ import styles from "./styles.module.css";
 import getIconType from "../../utils/get-icon-type";
 import getSvgIcon from "../../utils/get-svg-icon";
 import { isRecentlyUpdated } from "../../utils/get-recently-updated";
+import ProductCard from "../productCard";
 
 export default function QuickstartGuideCard({ frontMatter, onFavoriteUpdate }) {
-  const { id, title, time_to_complete, icon, last_updated } = frontMatter;
+  const { id, title, time_to_complete, icon, last_updated, product_badge } = frontMatter;
   const [isFavorite, setIsFavorite] = useState(false);
 
   useEffect(() => {
@@ -56,7 +57,15 @@ export default function QuickstartGuideCard({ frontMatter, onFavoriteUpdate }) {
       {icon && getIconType(icon, styles.icon)}
 
       <div className={styles.cardHeader}>
-        <p>{title}</p>
+        <h4 className="heading-4">{title}</h4>
+        {product_badge && (
+          <ProductCard 
+            text={product_badge.text || product_badge}
+            colorFrom={product_badge.colorFrom}
+            colorTo={product_badge.colorTo}
+            className={styles.productBadge}
+          />
+        )}
         {isRecent && <span className={styles.recently_updated}>Updated</span>}
         <button
           onClick={toggleFavorite}
@@ -173,11 +182,11 @@ export function QuickstartGuideTitle({ frontMatter }) {
         <div className={styles.tag_container}>
           {tags &&
             tags.map((tag, i) => (
-              <div className={styles.tag} key={i}>
+              <div className={`${styles.tag} tag`} key={i}>
                 {tag}
               </div>
             ))}
-          {level && <div className={styles.tag}>{level}</div>}
+          {level && <div className={`${styles.tag} tag`}>{level}</div>}
         </div>
       )}
     </>

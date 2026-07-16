@@ -34,13 +34,12 @@ Configure a specific instance of a generic (schema) test:
 <File name='models/<filename>.yml'>
 
 ```yaml
-version: 2
 
 models:
   - name: my_model
     columns:
       - name: my_column
-        tests:
+        data_tests:
           - unique:
               config:
                 store_failures: true  # always store failures
@@ -96,7 +95,7 @@ Set the default for all tests in a package or project:
 <File name='dbt_project.yml'>
 
 ```yaml
-tests:
+data_tests:
   +store_failures: true  # all tests
   
   <package_name>:

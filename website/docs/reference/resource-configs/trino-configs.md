@@ -98,6 +98,7 @@ The `dbt-trino` adapter supports these modes in `table` materialization (and [fu
 - `rename` &mdash; Creates an intermediate table, renames the target table to the backup one, and renames the intermediate table to the target one.
 - `drop` &mdash; Drops and re-creates a table. This overcomes the table rename limitation in AWS Glue.
 - `replace` &mdash; Replaces a table using CREATE OR REPLACE clause. Support for table replacement varies across connectors. Refer to the connector documentation for details.
+- `skip` &mdash; Skips table materialization altogether using a CREATE TABLE IF NOT EXISTS clause.
 
 If CREATE OR REPLACE is supported in underlying connector, `replace` is recommended option. Otherwise, the recommended `table` materialization uses `on_table_exists = 'rename'` and is also the default. You can change this default configuration by editing _one_ of these files:
 - the SQL file for your model
@@ -190,7 +191,7 @@ select * from {{ ref('events') }}
 {% endif %}
 ```
 
-Use the `+on_schema_change` property to define how dbt-trino should handle column changes. For more details about this property, see [column changes](https://docs.getdbt.com/docs/building-a-dbt-project/building-models/configuring-incremental-models#what-if-the-columns-of-my-incremental-model-change). 
+Use the `+on_schema_change` property to define how dbt-trino should handle column changes. For more details about this property, see [column changes](/docs/build/incremental-models#what-if-the-columns-of-my-incremental-model-change).
 
 If your connector doesn't support views, set the `+views_enabled` property to `false`.
 
@@ -300,7 +301,7 @@ The `dbt-trino` adapter supports [materialized views](https://trino.io/docs/curr
 
 You can also define custom properties for the materialized view through the `properties` config.
 
-This materialization supports the [full_refresh](https://docs.getdbt.com/reference/resource-configs/full_refresh) config and flag.
+This materialization supports the [full_refresh](/reference/resource-configs/full_refresh) config and flag.
 Whenever you want to rebuild your materialized view (for example, when changing underlying SQL query) run `dbt run --full-refresh`.
 
 You can create a materialized view by editing _one_ of these files:
@@ -370,5 +371,5 @@ models:
 
 ## Model contracts
 
-The `dbt-trino` adapter supports [model contracts](/docs/collaborate/govern/model-contracts). Currently, only [constraints](/reference/resource-properties/constraints) with `type` as `not_null` are supported.
+The `dbt-trino` adapter supports [model contracts](/docs/mesh/govern/model-contracts). Currently, only [constraints](/reference/resource-properties/constraints) with `type` as `not_null` are supported.
 Before using `not_null` constraints in your model, make sure the underlying connector supports `not null`, to avoid running into errors.

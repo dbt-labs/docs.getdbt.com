@@ -7,12 +7,12 @@ description: "The `target` variable contains information about your connection t
 
 The `target` variable contains information about your connection to the warehouse.
 
-- **dbt Core:** These values are based on the target defined in your [profiles.yml](/docs/core/connect-data-platform/profiles.yml) file. Please note that for certain adapters, additional configuration steps may be required. Refer to the [set up page](/docs/core/connect-data-platform/about-core-connections) for your data platform.
-- **dbt Cloud** To learn more about setting up your adapter in dbt Cloud, refer to [About data platform connections](/docs/cloud/connect-data-platform/about-connections).
-   - **[dbt Cloud Scheduler](/docs/deploy/job-scheduler)**: `target.name` is defined per job as described in [Custom target names](/docs/build/custom-target-names). For other attributes, values are defined by the deployment connection. To check these values, click **Deploy** and select **Environments**. Then, select the relevant deployment environment, and click **Settings**.
-   - **[dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud)**: These values are defined by your connection and credentials. To edit these values, click on your account name in the left side menu and select **Account settings**. Then, click **Credentials**. Select and edit a project to set up the credentials and target name.
+- **<Constant name="core" />:** These values are based on the target defined in your [profiles.yml](/docs/local/profiles.yml) file. Please note that for certain adapters, additional configuration steps may be required. Refer to the [set up page](/docs/local/connect-data-platform/about-dbt-connections) for your data platform.
+- **<Constant name="dbt" />** To learn more about setting up your adapter in <Constant name="dbt" />, refer to [About data platform connections](/docs/platform/connect-data-platform/about-connections).
+   - **[<Constant name="orchestrator" />](/docs/deploy/job-scheduler)**: `target.name` is defined per job as described in [Custom target names](/docs/build/custom-target-names). For other attributes, values are defined by the deployment connection. To check these values, click **Deploy** and select **Environments**. Then, select the relevant deployment environment, and click **Settings**.
+   - **[<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio)**: These values are defined by your connection and credentials. To edit these values, click on your account name in the left side menu and select **Account settings**. Then, click **Credentials**. Select and edit a project to set up the credentials and target name.
 
-Some configurations are shared between all adapters, while others are adapter-specific.
+Some configurations are shared between all adapters, while others are adapter-specific. You can also use the [`--target` flag](#using-the---target-flag) to set the active target when running dbt commands.
 
 ## Common
 | Variable | Example | Description |
@@ -51,6 +51,20 @@ Some configurations are shared between all adapters, while others are adapter-sp
 | `target.project` | abc-123 | The project specified in the active profile |
 | `target.dataset` | dbt_alice | The dataset the active profile |
 
+## Using the --target flag
+
+Use the `--target` flag when running dbt commands to set the active target and its associated `target.name` value:
+
+```bash
+dbt run --target dev
+```
+
+```bash
+dbt run --target prod
+```
+
+You can use the `--target` flag with any dbt command to override the default target specified in your `profiles.yml` file. This is useful for running the same dbt project against different environments (like dev, staging, or prod) without changing your configuration files.
+
 ## Examples
 
 ### Use `target.name` to limit data in dev
@@ -73,7 +87,6 @@ you can set up your sources to compile to different databases depending on your
 environment. 
 
 ```yml
-version: 2
  
 sources:
   - name: source_name 

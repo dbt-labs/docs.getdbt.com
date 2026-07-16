@@ -18,7 +18,6 @@ For example, if you have a microbatch model with 12 batches, you can execute tho
 To use parallel execution, you must meet the following prerequisites:
 
 - Use Snowflake as a supported adapter.
-  - More adapters are coming soon!
   - We'll continue to test and add concurrency support for more adapters in the future.
 - A batch can only be run in parallel if:
   - The batch is _not_ the first batch.

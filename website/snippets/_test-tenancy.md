@@ -1,2 +1,1 @@
-
-dbt Cloud is available in both single (virtual private) and multi-tenant configurations.
+<Constant name="dbt" /> is available in single-tenant (virtual private) and multi-tenant SaaS configurations. Many multi-tenant accounts use cell-based hosting with account-specific access URLs; see [Tenancy](/docs/platform/about-platform/tenancy#multi-cell-hosting).

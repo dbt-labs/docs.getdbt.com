@@ -12,11 +12,11 @@ profile: string
 
 ## Definition
 The profile your dbt project should use to connect to your <Term id="data-warehouse" />.
-* If you are developing in dbt Cloud: This configuration is not applicable
-* If you are developing locally: This configuration is required, unless a command-line option like [`--profile`](/docs/core/connect-data-platform/connection-profiles#overriding-profiles-and-targets) is supplied. The `--profile` flag overrides the profile set in `dbt_project.yml`.
+* If you are developing in <Constant name="dbt" />: This configuration is not applicable
+* If you are developing locally: This configuration is required, unless a command-line option like [`--profile`](/docs/local/profiles.yml#overriding-profiles-and-targets) is supplied. The `--profile` flag overrides the profile set in `dbt_project.yml`.
 
 ## Related guides
-* [Connecting to your warehouse using the command line](/docs/core/connect-data-platform/connection-profiles#connecting-to-your-warehouse-using-the-command-line)
+* [Connecting to your warehouse using the command line](/docs/local/profiles.yml#connecting-to-your-warehouse-using-the-command-line)
 
 ## Recommendation
 Often an organization has only one <Term id="data-warehouse" />, so it is sensible to use your organization's name as a profile name, in `snake_case`. For example:

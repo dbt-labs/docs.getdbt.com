@@ -50,7 +50,7 @@ After running this query, the `orders` table will look a little something like t
 
 Let’s be clear: the resulting data from this query looks exactly the same as the upstream `orders` model. However, the `order_id` and `customer_id` fields are now strings, meaning you could easily concat different string variables to them.
 
-> Casting columns to their appropriate types typically happens in our dbt project’s [staging models](https://docs.getdbt.com/best-practices/how-we-structure/2-staging). A few reasons for that: data cleanup and standardization, such as aliasing, casting, and lower or upper casing, should ideally happen in staging models to create downstream uniformity and improve downstream performance.
+> Casting columns to their appropriate types typically happens in our dbt project’s [staging models](/best-practices/how-we-structure/2-staging). A few reasons for that: data cleanup and standardization, such as aliasing, casting, and lower or upper casing, should ideally happen in staging models to create downstream uniformity and improve downstream performance.
 
 ## SQL CAST function syntax in Snowflake, Databricks, BigQuery, and Redshift
 
@@ -62,7 +62,7 @@ You may also see the CAST function replaced with a double colon (::), followed b
 
 You know at one point you’re going to need to cast a column to a different data type. But what are the scenarios folks run into that call for these conversions? At their core, these conversions need to happen because raw source data doesn’t match the analytics or business use case. This typically happens for a few reasons:
 
-- Differences in needs or miscommunication from [backend developers](https://docs.getdbt.com/blog/when-backend-devs-spark-joy#signs-the-data-is-sparking-joy)
+- Differences in needs or miscommunication from [backend developers](/blog/when-backend-devs-spark-joy#signs-the-data-is-sparking-joy)
 - <Term id="etl" /> tools [defaulting to certain data types](https://airbytehq.github.io/integrations/sources/google-sheets/)
 - BI tools require certain fields to be specific data types
 

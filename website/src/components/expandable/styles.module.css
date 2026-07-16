@@ -40,8 +40,8 @@
     top: 10px;
     left: 50%;
     transform: translateX(-50%);
-    background-color: #047377;
-    color: rgb(236, 236, 236);
+    background-color: var(--color-transform-orange-600);
+    color: var(--text-neutral-primary);
     padding: 10px;
     border-radius: 5px;
     z-index: 9999;
@@ -76,9 +76,6 @@ details[open] :local(.toggle)::before {
 }
 
 /* Adjusting for Light and Dark Modes */
-:local(html[data-theme='dark'] .link), :local(html[data-theme='dark'] .headerText) {
-    color: rgba(255, 255, 255, 0.696); /* White text in dark mode */
-}
 
 :local(html[data-theme='dark'] .toggle)::before {
     border-color: white; /* White arrow in dark mode */
@@ -111,15 +108,6 @@ details[open] :local(.toggle)::before {
     background-color: transparent;
 }
 
-:local(html[data-theme='dark'] .link),
-:local(html[data-theme='dark'] .headerText) {
-    color: rgba(255, 255, 255, 0.801); /* White text in dark mode */
-}
-
-:local(html[data-theme='dark'] details .headerText) {
-  color: rgba(255, 255, 255, 0.9); /* Change to white text in dark mode */
-}
-
 :local(.body > p:last-child) {
     margin-bottom: 0px;
     
@@ -149,4 +137,52 @@ details[open] :local(.toggle)::before {
 .headerText {
   display: flex;
   align-items: center;
+}
+
+
+/* Light mode: Black text (default) */
+:local(.headerText),
+:local(.link),
+:local(.header),
+:local(.headerText) a,
+:local(.link) a {
+  color: #000 !important;
+}
+
+/* Dark mode: White text (but exclude admonitions using :not()) */
+:global(html[data-theme="dark"]) :local(.headerText):not(:global([class*="admonitionContent_"] *)),
+:global(html[data-theme="dark"]) :local(.link):not(:global([class*="admonitionContent_"] *)),
+:global(html[data-theme="dark"]) :local(.header):not(:global([class*="admonitionContent_"] *)),
+/* Exclude .lifecycle pills: they set their own colors; forcing link white breaks contrast on light gray pills.
+   Use :global(.lifecycle) — a bare .lifecycle is hashed by CSS modules and would never match the real class. */
+:global(html[data-theme="dark"]) :local(.headerText) a:not(:global(.lifecycle)):not(:global([class*="admonitionContent_"] *)),
+:global(html[data-theme="dark"]) :local(.link) a:not(:global(.lifecycle)):not(:global([class*="admonitionContent_"] *)) {
+  color: #fff !important;
+}
+
+/* Plan / lifecycle pills inside expandable headers: keep dark label text in dark mode (parent link rules use !important) */
+:global(html[data-theme="dark"]) :local(.headerText) :global(a.lifecycle),
+:global(html[data-theme="dark"]) :local(.link) :global(a.lifecycle) {
+  color: #030711 !important;
+}
+
+/* Inside admonitions: ALWAYS black text (both light and dark mode) */
+:global(html[data-theme="dark"]) :global([class*="admonitionContent_"]) :local(.headerText),
+:global(html[data-theme="dark"]) :global([class*="admonitionContent_"]) :local(.link),
+:global(html[data-theme="dark"]) :global([class*="admonitionContent_"]) :local(.header),
+:global(html[data-theme="dark"]) :global([class*="admonitionContent_"]) :local(.headerText) a,
+:global(html[data-theme="dark"]) :global([class*="admonitionContent_"]) :local(.link) a,
+:global([class*="admonitionContent_"]) :local(.headerText),
+:global([class*="admonitionContent_"]) :local(.link),
+:global([class*="admonitionContent_"]) :local(.header),
+:global([class*="admonitionContent_"]) :local(.headerText) a,
+:global([class*="admonitionContent_"]) :local(.link) a {
+  color: #000 !important;
+}
+
+/* Final override: Target the exact HTML structure with maximum specificity */
+html[data-theme="dark"] div[class*="admonitionContent_"] details summary span[class*="headerText_"],
+html[data-theme="dark"] div[class*="admonitionContent_"] details summary span[class*="link_"],
+html[data-theme="dark"] div[class*="admonitionContent_"] summary[class*="header_"] {
+  color: #000 !important;
 }

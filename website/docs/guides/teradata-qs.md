@@ -1,9 +1,9 @@
 ---
-title: "Quickstart for dbt Cloud and Teradata"
+title: "Quickstart for dbt and Teradata"
 id: "teradata"
 level: 'Beginner'
 icon: 'teradata'
-tags: ['dbt Cloud','Quickstart','Teradata']
+tags: ['dbt platform', 'Quickstart','Teradata']
 hide_table_of_contents: true
 ---
 
@@ -11,11 +11,11 @@ hide_table_of_contents: true
 
 ## Introduction
 
-In this quickstart guide, you'll learn how to use dbt Cloud with Teradata Vantage. It will show you how to:
+In this quickstart guide, you'll learn how to use <Constant name="dbt" /> with Teradata Vantage. It will show you how to:
 
 - Create a new Teradata Clearscape instance
 - Load sample data into your Teradata Database
-- Connect dbt Cloud to Teradata.
+- Connect <Constant name="dbt" /> to Teradata.
 - Take a sample query and turn it into a model in your dbt project. A model in dbt is a select statement.
 - Add tests to your models.
 - Document your models.
@@ -27,7 +27,7 @@ You can check out [dbt Fundamentals](https://learn.getdbt.com/courses/dbt-fundam
 
 ### Prerequisites​
 
-- You have a [dbt Cloud account](https://www.getdbt.com/signup/).
+- You have a [<Constant name="dbt" /> account](https://www.getdbt.com/signup/).
 - You have access to a Teradata Vantage instance. You can provision one for free at https://clearscape.teradata.com. See [the ClearScape Analytics Experience guide](https://developers.teradata.com/quickstarts/get-access-to-vantage/clearscape-analytics-experience/getting-started-with-csae/) for details.
 
 ### Related content
@@ -43,9 +43,9 @@ You can check out [dbt Fundamentals](https://learn.getdbt.com/courses/dbt-fundam
 
 The following steps will guide you through how to get the data stored as CSV files in a public S3 bucket and insert it into the tables.
 
-:::tip SQL IDE
+:::tip SQL <Constant name="studio_ide" />
 
-If you created your Teradata Vantage database instance at https://clearscape.teradata.com and you don't have an SQL IDE handy, use the JupyterLab bundled with your database to execute SQL:
+If you created your Teradata Vantage database instance at https://clearscape.teradata.com and you don't have an SQL <Constant name="studio_ide" /> handy, use the JupyterLab bundled with your database to execute SQL:
 
 1. Navigate to [ClearScape Analytics Experience dashboard](https://clearscape.teradata.com/dashboard) and click the **Run Demos** button. The demo will launch JupyterLab.
 
@@ -102,36 +102,40 @@ If you created your Teradata Vantage database instance at https://clearscape.ter
     NO PRIMARY INDEX;
     ```
 
-## Connect dbt Cloud to Teradata
+## Connect dbt to Teradata
 
-1. Create a new project in dbt Cloud. Click on your account name in the left side menu, select **Account settings**, and click **+ New Project**. 
+1. Create a new project in <Constant name="dbt" />. Click on your account name in the left side menu, select **Account settings**, and click **+ New Project**. 
 2. Enter a project name and click **Continue**.
-3. In **Configure your development environment**, click **Add new connection**.
-4. Select **Teradata**, fill in all the required details in the **Settings** section, and test the connection.
+3. In the **Configure your development environment** section, click the **Connection** dropdown menu and select **Add new connection**.
+4. In the **Type** section, select **Teradata**.
+5. Enter your Teradata settings and click **Save**.
 
-  <Lightbox src="/img/teradata/dbt_cloud_teradata_setup_connection_start.png" title="dbt Cloud - Choose Teradata Connection" />
+  <Lightbox src="/img/teradata/dbt_cloud_teradata_setup_connection_start.png" title="dbt - Choose Teradata Connection" />
   
-  <Lightbox src="/img/teradata/dbt_cloud_teradata_account_settings.png" title="dbt Cloud - Teradata Account Settings" />
+  <Lightbox src="/img/teradata/dbt_cloud_teradata_account_settings.png" title="dbt - Teradata Account Settings" />
 
-5. Enter your **Development Credentials** for Teradata with:
+6. Set up your personal user credentials by navigating to **Your profile** > **Credentials**.
+7. Select your project that uses the Teradata connection. 
+8. Click the **configure your development environment and add a connection** link. This directs you to a page where you can enter your personal user credentials.
+9. Enter your **User credentials** for Teradata with:
    * **Username** &mdash; The username of Teradata database.
    * **Password** &mdash; The password of Teradata database.
-   * **Schema** &mdash; The default database to use
+   * **Schema** &mdash; The default database to use.
   
-   <Lightbox src="/img/teradata/dbt_cloud_teradata_development_credentials.png" title="dbt Cloud - Teradata Development Credentials" />
+   <Lightbox src="/img/teradata/dbt_cloud_teradata_development_credentials.png" title="dbt - Teradata User credentials" />
 
-6. Click **Test Connection** to verify that dbt Cloud can access your Teradata Vantage instance.
-7. If the connection test succeeds, click **Next**. If it fails, check your Teradata settings and credentials.
+10. Click **Test Connection** to verify that <Constant name="dbt" /> can access your Teradata Vantage instance.
+11. If the test succeeded, click **Save** to complete the configuration. If it failed, you may need to check your Teradata settings and credentials.
 
-## Set up a dbt Cloud managed repository
+## Set up a dbt managed repository
 
 <Snippet path="tutorial-managed-repo" />
 
 ## Initialize your dbt project​ and start developing
 
-Now that you have a repository configured, you can initialize your project and start development in dbt Cloud:
+Now that you have a repository configured, you can initialize your project and start development in <Constant name="dbt" />:
 
-1. Click **Start developing in the IDE**. It might take a few minutes for your project to spin up for the first time as it establishes your git connection, clones your repo, and tests the connection to the warehouse.
+1. Click **Start developing in the <Constant name="studio_ide" />**. It might take a few minutes for your project to spin up for the first time as it establishes your git connection, clones your repo, and tests the connection to the warehouse.
 2. Above the file tree to the left, click **Initialize your project** to build out your folder structure with example models.
 3. Make your initial commit by clicking **Commit and sync**. Use the commit message `initial commit` to create the first commit to your managed repo. Once you’ve created the commit, you can open a branch to add new dbt code.
 
@@ -177,10 +181,10 @@ You can now delete the files that dbt created when you initialized the project:
 
 ## Build your first model
 
-You have two options for working with files in the dbt Cloud IDE:
+You have two options for working with files in the <Constant name="studio_ide" />:
 
 - Create a new branch (recommended) &mdash; Create a new branch to edit and commit your changes. Navigate to **Version Control** on the left sidebar and click **Create branch**.
-- Edit in the protected primary branch &mdash; If you prefer to edit, format, lint files, or execute dbt commands directly in your primary git branch. The dbt Cloud IDE prevents commits to the protected branch, so you will receive a prompt to commit your changes to a new branch.
+- Edit in the protected primary branch &mdash; If you prefer to edit, format, lint files, or execute dbt commands directly in your primary git branch. The <Constant name="studio_ide" /> prevents commits to the protected branch, so you will receive a prompt to commit your changes to a new branch.
 
 Name the new branch `add-customers-model`.
 
@@ -267,7 +271,7 @@ By default, everything gets created as a view. You can override that at the dire
       ```
 
       </File>
-    - Configure `jaffle_shop` so everything in it will be materialized as a table; and configure `example` so everything in it will be materialized as a view. Update your `models` config block to:
+    - Configure `jaffle_shop` so everything in it will be materialized as a table; and configure `example` so everything in it will be materialized as a view. Update your `models` config in the project YAML file to:
 
       <File name='dbt_project.yml'>
 
@@ -482,13 +486,13 @@ Sources make it possible to name and describe the data loaded into your warehous
 
 </div>
 
-## Add tests to your models
+## Add data tests to your models
 
-Adding [tests](/docs/build/data-tests) to a project helps validate that your models are working correctly.
+Adding [data tests](/docs/build/data-tests) to a project helps validate that your models are working correctly.
 
-To add tests to your project:
+To add data tests to your project:
 
-1. Create a new YAML file in the `models` directory, named `models/schema.yml`
+1. Create a new properties YAML file in the `models` directory, named `models/schema.yml`
 2. Add the following contents to the file:
 
     <File name='models/schema.yml'>
@@ -500,33 +504,35 @@ To add tests to your project:
       - name: bi_customers
         columns:
           - name: customer_id
-            tests:
+            data_tests:
               - unique
               - not_null
 
       - name: stg_customers
         columns:
           - name: customer_id
-            tests:
+            data_tests:
               - unique
               - not_null
 
       - name: stg_orders
         columns:
           - name: order_id
-            tests:
+            data_tests:
               - unique
               - not_null
           - name: status
-            tests:
+            data_tests:
               - accepted_values:
-                  values: ['placed', 'shipped', 'completed', 'return_pending', 'returned']
+                  arguments: # available in v1.10.5 and higher. Older versions can set the <argument_name> as the top-level property.
+                    values: ['placed', 'shipped', 'completed', 'return_pending', 'returned']
           - name: customer_id
-            tests:
+            data_tests:
               - not_null
               - relationships:
-                  to: ref('stg_customers')
-                  field: customer_id
+                  arguments:
+                    to: ref('stg_customers')
+                    field: customer_id
 
     ```
 
@@ -534,11 +540,11 @@ To add tests to your project:
 
 3. Run `dbt test`, and confirm that all your tests passed.
 
-When you run `dbt test`, dbt iterates through your YAML files, and constructs a query for each test. Each query will return the number of records that fail the test. If this number is 0, then the test is successful.
+When you run `dbt test`, dbt iterates through your YAML files, and constructs a query for each data test. Each query will return the number of records that fail the test. If this number is 0, then the data test is successful.
 
 #### FAQs
 
-<FAQ path="Tests/available-tests" alt_header="What tests are available for me to use in dbt? Can I add my own custom tests?" />
+<FAQ path="Tests/available-tests" alt_header="What data tests are available for me to use in dbt? Can I add my own custom tests?" />
 <FAQ path="Tests/test-one-model" />
 <FAQ path="Runs/failed-tests" />
 <FAQ path="Project/schema-yml-name" alt_header="Does my test file need to be named `schema.yml`?" />
@@ -556,7 +562,6 @@ Adding [documentation](/docs/build/documentation) to your project allows you to 
     <File name='models/schema.yml'>
 
     ```yaml
-    version: 2
 
     models:
       - name: bi_customers
@@ -564,7 +569,7 @@ Adding [documentation](/docs/build/documentation) to your project allows you to 
         columns:
           - name: customer_id
             description: Primary key
-            tests:
+            data_tests:
               - unique
               - not_null
           - name: first_order_date
@@ -575,7 +580,7 @@ Adding [documentation](/docs/build/documentation) to your project allows you to 
         columns:
           - name: customer_id
             description: Primary key
-            tests:
+            data_tests:
               - unique
               - not_null
 
@@ -584,19 +589,21 @@ Adding [documentation](/docs/build/documentation) to your project allows you to 
         columns:
           - name: order_id
             description: Primary key
-            tests:
+            data_tests:
               - unique
               - not_null
           - name: status
-            tests:
+            data_tests:
               - accepted_values:
-                  values: ['placed', 'shipped', 'completed', 'return_pending', 'returned']
+                  arguments: # available in v1.10.5 and higher. Older versions can set the <argument_name> as the top-level property.
+                    values: ['placed', 'shipped', 'completed', 'return_pending', 'returned']
           - name: customer_id
-            tests:
+            data_tests:
               - not_null
               - relationships:
-                  to: ref('stg_customers')
-                  field: customer_id
+                  arguments:
+                    to: ref('stg_customers')
+                    field: customer_id
     ```
 
     </File>
@@ -633,7 +640,7 @@ Now that you've built your customer model, you need to commit the changes you ma
 
 ## Deploy dbt
 
-Use dbt Cloud's Scheduler to deploy your production jobs confidently and build observability into your processes. You'll learn to create a deployment environment and run a job in the following steps.
+Use <Constant name="dbt" />'s Scheduler to deploy your production jobs confidently and build observability into your processes. You'll learn to create a deployment environment and run a job in the following steps.
 
 ### Create a deployment environment
 
@@ -655,7 +662,7 @@ As the `jaffle_shop` business gains more customers, and those customers create m
 3. Scroll down to the **Execution Settings** section.
 4. Under **Commands**, add this command as part of your job if you don't see it:
    * `dbt build`
-5. Select the **Generate docs on run** checkbox to automatically [generate updated project docs](/docs/collaborate/build-and-view-your-docs) each time your job runs. 
+5. Select the **Generate docs on run** checkbox to automatically [generate updated project docs](/docs/explore/build-and-view-your-docs) each time your job runs. 
 6. For this exercise, do _not_ set a schedule for your project to run &mdash; while your organization's project should run regularly, there's no need to run this example project on a schedule. Scheduling a job is sometimes referred to as _deploying a project_.
 7. Select **Save**, then click **Run now** to run your job.
 8. Click the run and watch its progress under "Run history."

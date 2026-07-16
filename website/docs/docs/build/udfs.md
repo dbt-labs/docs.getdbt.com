@@ -1,0 +1,569 @@
+---
+title: "User-defined functions"
+description: "Learn how to add user-defined functions (UDFs) to your dbt projects."
+id: "udfs"
+---
+
+# User-defined functions
+
+User-defined functions (UDFs) enable you to define and register custom functions in your warehouse. Like [macros](/docs/build/jinja-macros), UDFs promote code reuse, but they are objects in the warehouse so you can reuse the same logic in tools outside dbt, such as BI tools, data science notebooks, and more. 
+
+UDFs are particularly valuable for sharing logic across multiple tools, standardizing complex business calculations, improving performance for compute-intensive operations (since they're compiled and optimized by your warehouse's query engine), and version controlling custom logic within your dbt project.
+
+dbt creates, updates, and renames UDFs as part of DAG execution. The UDF is built in the warehouse before the model that references it. Refer to [listing and building UDFs](/docs/build/udfs#listing-and-building-udfs) for more info on how to build UDFs in your project.
+
+Refer to [Function properties](/reference/function-properties) or [Function configurations](/reference/function-configs) for more information on the configs/properties for UDFs.
+
+## Prerequisites
+
+* Make sure you're using dbt platform's **Fusion Stable** or **Latest** [release track](/docs/dbt-versions/dbt-release-tracks) or <Constant name="core" /> v1.11+.
+* Use one of the following adapters:
+
+	<Tabs>
+	
+	<TabItem value="core" label="dbt Core">
+	
+	- BigQuery
+	- Snowflake
+	- Redshift
+	- Postgres
+	- Databricks
+	
+	</TabItem>
+	
+	<TabItem value ="fusion" label ="dbt Fusion engine">
+	
+	- BigQuery
+	- Snowflake
+	- Redshift
+	- Databricks
+	
+	</TabItem>
+	</Tabs>
+
+:::important UDF support
+JavaScript UDFs are supported in <Constant name="core" />  v1.12+ (beta) on Snowflake and BigQuery.
+
+Additional languages (for example, Java, Scala) aren't currently supported for UDFs.
+
+See the [Limitations](#limitations) section below for the full list of currently supported UDF capabilities.
+:::
+
+## Defining UDFs in dbt
+
+You can define SQL, Python, and JavaScript (available in <Constant name="core" /> v1.12+) UDFs in dbt. Python UDFs are supported in Snowflake, BigQuery, and Databricks ([Unity Catalog](https://docs.databricks.com/aws/en/data-governance/unity-catalog/) required). JavaScript UDFs are supported in Snowflake and BigQuery.
+
+Follow these steps to define UDFs in dbt:
+
+1. Create a SQL, Python, or JavaScript file under the `functions` directory. For example, this UDF checks if a string represents a positive integer:
+
+    <Tabs>
+
+    <TabItem value="SQL">
+    Define a SQL UDF in a SQL file.
+
+    <File name='functions/is_positive_int.sql'>
+
+    ```sql
+    # syntax for BigQuery, Snowflake, and Databricks
+    REGEXP_INSTR(a_string, '^[0-9]+$')
+
+    # syntax for Redshift and Postgres
+    SELECT REGEXP_INSTR(a_string, '^[0-9]+$')
+
+    ```
+
+    </File>
+
+
+    </TabItem>
+    <TabItem value="Python">
+    Define a Python UDF in a Python file.
+
+    <File name='functions/is_positive_int.py'>
+
+    ```py
+    import re
+
+    def main(a_string):
+        return 1 if re.search(r'^[0-9]+$', a_string or '') else 0
+    ```
+    </File>
+
+    For Databricks, the contents of the `.py` file become the UDF body verbatim, and Databricks evaluates that body directly instead of calling a named entry point. Write the body so its last statement is a top-level `return` that produces the result. Because of that top-level `return`, the Databricks source is a function _body_, not a runnable `.py` module. For example:
+
+    <File name='functions/is_positive_int.py'>
+
+    ```py
+    import re
+
+    def main(a_string):
+        return 1 if re.search(r'^[0-9]+$', a_string or '') else 0
+
+    return main(a_string)
+    ```
+    </File>
+
+    **Note:** Python UDFs on Databricks require [Unity Catalog](https://docs.databricks.com/aws/en/data-governance/unity-catalog/).
+
+    </TabItem>
+    <TabItem value="JavaScript">
+    Define a JavaScript UDF in a JavaScript file.
+
+    :::info Beta feature
+    Support for JavaScript UDFs is a beta feature in <Constant name="core" /> v1.12.
+    ::: 
+
+    <File name='functions/is_positive_int.js'>
+
+    ```js
+    return /^[0-9]+$/.test(a_string) ? 1 : 0;
+    ```
+    </File>
+    </TabItem>
+    </Tabs>
+
+    **Note**: You can specify configs in a config block in the SQL file or in the corresponding properties YAML file in step 2. 
+
+2. Specify the function name and define the config, properties, return type, and optional arguments in a corresponding properties YAML file.
+
+    <Tabs>
+    <TabItem value="SQL">
+
+    <File name='functions/is_positive_int.yml'>
+
+    ```yml
+    functions:
+      - name: is_positive_int       # required
+        description: My UDF that returns 1 if a string represents a naked positive integer (like "10", "+8" is not allowed). # optional
+        config:
+          schema: udf_schema
+          database: udf_db
+          volatility: deterministic
+        arguments:                  # optional
+          - name: a_string          # required if arguments is specified
+            data_type: string       # required if arguments is specified
+            description: The string that I want to check if it's representing a positive integer (like "10") 
+            default_value: "'1'"    # optional, available in Snowflake and Postgres
+        returns:                    # required
+          data_type: integer        # required
+    ```
+    </File>
+
+    </TabItem>
+
+    <!--other types not yet supported
+    <Expandable alt_header="Supported UDF types">
+
+    You can use these values for the `type` property when you define a function in a properties YAML file.
+
+    - `scalar` - Returns a single value per row
+    - `aggregate` - Returns a single value per group, aggregating several rows
+    - `table` - Returns a table result
+    <br></br>
+    For example:
+
+    ```yml
+    functions:
+	  - name: string 
+	    description: string
+      	config:
+	      type: scalar # default value
+    ```
+
+    If not explicitly specified, the `type` config defaults to `scalar`.
+
+    </Expandable>
+    -->
+    
+    <TabItem value="Python">
+    
+    The following configs are required when defining a Python UDF on Snowflake and BigQuery:
+
+    - [`runtime_version`](/reference/resource-configs/runtime-version) &mdash; Specify the Python version to run. Supported values are:
+      - [Snowflake](https://docs.snowflake.com/en/developer-guide/udf/python/udf-python-introduction): `3.10`, `3.11`, `3.12`, and `3.13`
+      - [BigQuery](https://cloud.google.com/bigquery/docs/user-defined-functions-python): `3.11`
+    - [`entry_point`](/reference/resource-configs/entry-point) &mdash; Specify the Python function to be called.
+    <br></br>
+
+	On Databricks, `runtime_version` and `entry_point` are accepted for cross-adapter compatibility but have no effect. Databricks manages the Python runtime internally and uses the function body directly, so dbt displays a warning if you set them.
+
+    You can specify public third-party PyPI packages for your Python UDF with the optional `packages` config. List package names, such as `numpy` and `pandas`, and optionally pin versions, such as `pandas==1.5.0`. The warehouse installs these packages when it creates the UDF, so your UDF can use functionality from external Python libraries. On Snowflake, some packages are installed from the Anaconda repository, and you may need to [accept Anaconda's Terms of Service](https://docs.snowflake.com/en/developer-guide/udf/python/udf-python-packages#using-third-party-packages-from-anaconda) before you can use them.
+
+    :::info Beta feature
+    The `packages` config is a beta feature in <Constant name="core" /> v1.12.
+    :::
+    
+    The following example shows a Python UDF with the required configs (`runtime_version`, `entry_point`), the optional `packages` config, and other common configs:
+
+    <File name='functions/is_positive_int.yml'>
+
+    ```yml
+      functions:
+        - name: is_positive_int # required
+          description: My UDF that returns 1 if a string represents a naked positive integer (like "10", "+8" is not allowed). # optional
+          config:
+            runtime_version: "3.11"   # required for Snowflake and BigQuery; optional and ignored on Databricks
+            entry_point: main         # required for Snowflake and BigQuery; optional and ignored on Databricks
+            packages:                 # optional, Python UDFs only
+              - numpy
+              - pandas==1.5.0
+            schema: udf_schema
+            database: udf_db
+            volatility: deterministic  
+          arguments:                   # optional
+            - name: a_string           # required if arguments is specified
+              data_type: string        # required if arguments is specified
+              description: The string that I want to check if it's representing a positive integer (like "10")
+              default_value: "'1'"     # optional, available in Snowflake and Postgres
+          returns:                     # required
+            data_type: integer         # required
+    ```
+    </File>
+    </TabItem>
+    <TabItem value="JavaScript">
+
+    You can optionally set [`snowflake.quote_args`](/reference/resource-configs/quote_args) to control whether argument names are quoted when creating a JavaScript UDF on Snowflake.
+
+    <File name='functions/is_positive_int.yml'>
+
+    ```yml
+    functions:
+      - name: is_positive_int                    # required
+        description: My UDF that returns 1 if a string represents a naked positive integer (like "10", "+8" is not allowed). # optional
+        config:
+          snowflake:                             # optional
+            quote_args: true                     # optional, JavaScript UDFs on Snowflake only
+        arguments:                               # optional
+          - name: a_string                       # required if arguments is specified
+            data_type: string                    # required if arguments is specified
+            description: The string to check     # optional
+        returns:                                 # required
+          data_type: integer                     # required
+    ```
+    </File>
+    </TabItem>
+    </Tabs>
+
+    :::info volatility warehouse-specific
+   	`volatility` is accepted in dbt for SQL, Python, and JavaScript UDFs, but the handling of it is warehouse-specific. For SQL and Python UDFs on BigQuery, `volatility` is ignored and dbt displays a warning. For JavaScript UDFs on BigQuery, `deterministic` and `non-deterministic` are applied when creating the UDF; `stable` is not supported. In Snowflake, all supported volatility values are applied when creating the UDF. Refer to [volatility](/reference/resource-configs/volatility) for more information.
+    :::
+
+3. Run one of the following `dbt build` commands to build your UDFs and create them in the warehouse:
+
+    Build all UDFs:
+    
+    ```bash
+    dbt build --select "resource_type:function"
+    ```
+
+    Or build a specific UDF:
+
+    ```bash
+    dbt build --select is_positive_int
+    ```
+
+    When you run `dbt build`, the property file (`functions/is_positive_int.yml`) and the corresponding SQL, Python, or JavaScript file work together to generate the `CREATE FUNCTION` statement.
+     
+    The rendered `CREATE FUNCTION` statement depends on which adapter you're using. For example:
+
+    <Tabs>
+
+    <TabItem value="SQL">
+
+    <Tabs>
+    <TabItem value="Snowflake">
+
+    ```sql
+    CREATE OR REPLACE FUNCTION udf_db.udf_schema.is_positive_int(a_string STRING DEFAULT '1')
+    RETURNS INTEGER
+    LANGUAGE SQL
+    IMMUTABLE
+    AS $$
+      REGEXP_INSTR(a_string, '^[0-9]+$')
+    $$;
+    ```
+
+    </TabItem>
+
+    <TabItem value="Redshift">
+
+    ```sql
+    CREATE OR REPLACE FUNCTION udf_db.udf_schema.is_positive_int(a_string VARCHAR)
+    RETURNS INTEGER
+    IMMUTABLE
+    AS $$
+      SELECT REGEXP_INSTR(a_string, '^[0-9]+$')
+    $$ LANGUAGE SQL;
+    ```
+
+    </TabItem>
+
+    <TabItem value="BigQuery">
+
+    ```sql
+    CREATE OR REPLACE FUNCTION udf_db.udf_schema.is_positive_int(a_string STRING)
+    RETURNS INT64
+    AS (
+      REGEXP_INSTR(a_string, r'^[0-9]+$')
+    );
+    ```
+
+    </TabItem>
+
+    <TabItem value="Databricks">
+
+    ```sql
+    CREATE OR REPLACE FUNCTION udf_db.udf_schema.is_positive_int(a_string STRING)
+    RETURNS INT
+    DETERMINISTIC
+    RETURN REGEXP_INSTR(a_string, '^[0-9]+$');
+    ```
+
+    </TabItem>
+
+    <TabItem value="Postgres">
+
+    ```sql
+    CREATE OR REPLACE FUNCTION udf_schema.is_positive_int(a_string text DEFAULT '1')
+    RETURNS int
+    LANGUAGE sql
+    IMMUTABLE
+    AS $$
+      SELECT regexp_instr(a_string, '^[0-9]+$')
+    $$;
+    ```
+
+    </TabItem>
+
+    </Tabs>
+    </TabItem>
+
+    <TabItem value="Python">
+    <Tabs>
+
+    <TabItem value="Snowflake">
+    ```sql
+    CREATE OR REPLACE FUNCTION udf_db.udf_schema.is_positive_int(a_string STRING DEFAULT '1')
+      RETURNS INTEGER
+      LANGUAGE PYTHON
+      RUNTIME_VERSION = '3.11'
+      HANDLER = 'main'
+      PACKAGES = ('numpy', 'pandas==1.5.0')
+    AS $$
+    import re
+    def main(a_string):
+      return 1 if re.search(r'^[0-9]+$', a_string or '') else 0
+    $$;
+    ```
+    </TabItem>
+
+    <TabItem value="BigQuery">
+    ```sql
+    CREATE OR REPLACE FUNCTION udf_db.udf_schema.is_positive_int(a_string STRING)
+    RETURNS INT64
+    LANGUAGE python
+    OPTIONS(
+      runtime_version = "python-3.11",
+      entry_point = "main",
+      packages = ['numpy', 'pandas==1.5.0']
+    )
+    AS r'''
+      import re
+      def main(a_string):
+        return 1 if re.search(r'^[0-9]+$', a_string or '') else 0
+    ''';
+    ```
+    </TabItem>
+
+    <TabItem value="Databricks">
+    ```sql
+    CREATE OR REPLACE FUNCTION udf_db.udf_schema.is_positive_int(a_string STRING)
+    RETURNS INT
+    LANGUAGE PYTHON
+    AS $$
+      import re
+      def main(a_string):
+        return 1 if re.search(r'^[0-9]+$', a_string or '') else 0
+      return main(a_string)
+    $$;
+    ```
+
+    Databricks omits the `RUNTIME_VERSION` and `HANDLER` clauses. The runtime is managed internally, and the contents of your `.py` file become the function body verbatim &mdash; including the trailing `return main(a_string)` that produces the result.
+    </TabItem>
+    </Tabs>
+    </TabItem>
+
+    <TabItem value="JavaScript">
+    <Tabs>
+
+    <TabItem value="Snowflake">
+    ```sql
+    CREATE OR REPLACE FUNCTION udf_db.udf_schema.is_positive_int("a_string" STRING)
+    RETURNS INTEGER
+    LANGUAGE JAVASCRIPT
+    AS $$
+    return /^[0-9]+$/.test(a_string) ? 1 : 0;
+    $$;
+    ```
+    </TabItem>
+
+    <TabItem value="BigQuery">
+    ```sql
+    CREATE OR REPLACE FUNCTION udf_db.udf_schema.is_positive_int(a_string STRING)
+    RETURNS INT64
+    LANGUAGE js
+    AS r'''
+    return /^[0-9]+$/.test(a_string) ? 1 : 0;
+    ''';
+    ```
+    </TabItem>
+    </Tabs>
+    </TabItem>
+    </Tabs>
+
+4. Reference the UDF in a model using the `{{ function(...) }}` macro. For example:
+
+    <File name="models/my_model.sql">
+
+    ```sql
+    select
+        maybe_positive_int_column,
+        {{ function('is_positive_int') }}(maybe_positive_int_column) as is_positive_int
+    from {{ ref('a_model_i_like') }}
+    ```
+    </File>
+
+    When using [`--defer`](/reference/node-selection/defer), `function()` resolves to the existing UDF in the deferred environment (for example, production) if the function is not selected or not yet built in your target environment. This requires a state manifest specified using `--state` or an equivalent environment variable (such as `DBT_ENGINE_STATE`), which dbt uses to determine where to defer. This allows models that depend on UDFs to run successfully in [continuous integration](/docs/deploy/continuous-integration) and development workflows. For more information, refer to [Configure state selection](/reference/node-selection/configure-state).
+
+5. Run `dbt compile` to see how the UDF is referenced. In the following example, the `{{ function('is_positive_int') }}` is replaced by the UDF name `udf_db.udf_schema.is_positive_int`.
+
+    <File name="models/my_model.sql">
+
+    ```sql
+    select
+        maybe_positive_int_column,
+	    udf_db.udf_schema.is_positive_int(maybe_positive_int_column) as is_positive
+    from analytics.dbt_schema.a_model_i_like
+    ```
+    </File>
+
+    In your DAG, a UDF node is created from the SQL/Python and YAML definitions, and there will be a dependency between `is_positive_int` → `my_model`.
+   <Lightbox src="/img/docs/building-a-dbt-project/UDF-DAG.png" width="85%" title="The DAG for the UDF node" />
+
+After defining a UDF, your changes are applied to the UDF in the warehouse the next time you run `dbt build` when you update any of the following:
+
+- The SQL, Python, or JavaScript file that contains its function body (`is_positive_int.sql`, `is_positive_int.py`, or `is_positive_int.js` in these examples)
+- Its configurations
+- Its properties defined in the `.yml` file (such as `arguments` or `returns`)
+
+dbt detects all of these changes when using [`state:modified`](/reference/node-selection/methods#state).
+
+### Defining overloaded UDFs
+
+Use the [`overloads`](/reference/resource-properties/overloads) property (available in <Constant name="core" /> v1.12+) to define multiple argument signatures for the same function. This lets you call the same function name with different input types, without creating separate UDFs for each variant. `overloads` is supported for SQL UDFs in Snowflake and Postgres, and Python and JavaScript UDFs in Snowflake.
+
+To define overloaded UDFs:
+
+1. Add an `overloads` list to the function definition in your properties YAML file. Each entry uses `defined_in` to reference a separate file, with optional `arguments` and `returns`:
+
+    <File name='functions/is_positive_int.yml'>
+
+    ```yml
+    functions:
+      - name: is_positive_int
+        arguments:
+          - name: a_string
+            data_type: string
+        returns:
+          data_type: integer
+        overloads:
+          - defined_in: is_positive_int_numeric   # references functions/is_positive_int_numeric.sql
+            arguments:
+              - name: a_num
+                data_type: numeric
+            returns:              # optional, inherits from root function if omitted
+              data_type: integer
+    ```
+
+    </File>
+
+2. Create a separate file for each overload body.
+
+    For example, the body for the root function, which accepts a `string` argument:
+
+    <File name='functions/is_positive_int.sql'>
+
+    ```sql
+    # Snowflake syntax
+    REGEXP_INSTR(a_string, '^[0-9]+$')
+    ```
+
+    </File>
+
+    And the body for the overload, which accepts a `numeric` argument:
+
+    <File name='functions/is_positive_int_numeric.sql'>
+
+    ```sql
+    # Snowflake syntax
+    CASE WHEN a_num > 0 THEN 1 ELSE 0 END
+    ```
+
+    </File>
+
+All overloads are grouped into one DAG node (the root function), so they're built and selected together. On retry, dbt skips overloads that succeeded and reruns only those that failed. When dbt builds the function, it renders a separate `CREATE FUNCTION` statement for each overload using the same function name but different argument types.
+
+For more information, refer to [`overloads`](/reference/resource-properties/overloads).
+
+## Using UDFs in unit tests
+
+You can use [unit tests](/docs/build/unit-tests) to validate models that reference UDFs. Before running unit tests, make sure the function exists in your warehouse. To ensure that the function exists for a unit test, run:
+
+```bash
+dbt build --select "+my_model_to_test" --empty
+```
+
+Following the example in [Defining UDFs in dbt](#defining-udfs-in-dbt), here's an example of a unit test that validates a model that calls a UDF:
+
+<File name="tests/test_is_positive_int.yml">
+
+```yml
+unit_tests:
+  - name: test_is_positive_int 
+    description: "Check my is_positive_int logic captures edge cases"
+    model: my_model
+    given:
+      - input: ref('a_model_i_like')
+        rows:
+          - { maybe_positive_int_column: 10 }
+          - { maybe_positive_int_column: -4 }
+          - { maybe_positive_int_column: +8 }
+          - { maybe_positive_int_column: 1.0 }
+    expect:
+      rows:
+        - { maybe_positive_int_column: 10,  is_positive: true }
+        - { maybe_positive_int_column: -4,  is_positive: false }
+        - { maybe_positive_int_column: +8,  is_positive: true }
+        - { maybe_positive_int_column: 1.0, is_positive: true }
+```
+</File>
+
+## Listing and building UDFs
+
+Use the [`list` command](/reference/commands/list#listing-functions) to list UDFs in your project: `dbt list --select "resource_type:function"` or `dbt list --resource-type function`.
+
+Use the [`build` command](/reference/commands/build#functions) to select UDFs when building a project: `dbt build --select "resource_type:function"`.
+
+For more information about selecting UDFs, see the examples in [Node selector methods](/reference/node-selection/methods#file).
+
+## Limitations
+- UDFs in other languages (for example, Java or Scala) are not yet supported.
+- JavaScript UDFs are supported in Snowflake and BigQuery only. Using JavaScript UDFs on an unsupported adapter raises a parsing error.
+- Python UDFs are supported in Snowflake, BigQuery, and Databricks only (when using <Constant name="core" /> or <Constant name="fusion" />). Other warehouses aren't yet supported for Python UDFs.
+- Only <Term id="scalar">scalar</Term> and <Term id="aggregate">aggregate</Term> functions are currently supported. For more information, see [Supported function types](/reference/resource-configs/type#supported-function-types).
+- The `overloads` property is supported for SQL UDFs in Snowflake and Postgres, and Python and JavaScript UDFs in Snowflake.
+
+## Related FAQs
+
+<FAQ path="Project/udfs-vs-macros" />

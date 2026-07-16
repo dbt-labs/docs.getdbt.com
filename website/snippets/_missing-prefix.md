@@ -1,0 +1,1 @@
+dbt has deprecated specifying configurations without [the `+` prefix](https://docs.getdbt.com/reference/dbt_project.yml#the--prefix) in `dbt_project.yml`. Only folder and file names can be specified without the `+` prefix within resource configurations in `dbt_project.yml`.

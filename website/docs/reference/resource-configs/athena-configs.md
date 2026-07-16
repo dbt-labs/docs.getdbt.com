@@ -1,6 +1,6 @@
 ---
 title: "Amazon Athena configurations"
-description: "Reference article for the Amazon Athena adapter for dbt Core and dbt Cloud."
+description: "Reference article for the Amazon Athena adapter for dbt Core and the dbt platform."
 id: "athena-configs"
 ---
 
@@ -113,7 +113,7 @@ Consider these limitations and recommendations:
 - `data_cell_filters` management can't be automated outside dbt because the filter can't be attached to the table, which doesn't exist. Once you `enable` this config, dbt will set all filters and their permissions during every dbt run. Such an approach keeps the actual state of row-level security configuration after every dbt run and applies changes if they occur: drop, create, and update filters and their permissions.
 - Any tags listed in `lf_inherited_tags` should be strictly inherited from the database level and never overridden at the table and column level.
 - Currently, `dbt-athena` does not differentiate between an inherited tag association and an override it made previously.
-   - For example,  If a `lf_tags_config` value overrides an inherited tag in one run, and that override is removed before a subsequent run, the prior override will linger and no longer be encoded anywhere (for example, Terraform where the inherited value is configured nor in the DBT project where the override previously existed but now is gone).
+   - For example,  If a `lf_tags_config` value overrides an inherited tag in one run, and that override is removed before a subsequent run, the prior override will linger and no longer be encoded anywhere (for example, Terraform where the inherited value is configured nor in the dbt project where the override previously existed but now is gone).
   
 ### Table location
 
@@ -121,7 +121,7 @@ The saved location of a table is determined in precedence by the following condi
 
 1. If `external_location` is defined, that value is used.
 2. If `s3_data_dir` is defined, the path is determined by that and `s3_data_naming`.
-3. If `s3_data_dir` is not defined, data is stored under `s3_staging_dir/tables/`.
+3. If `s3_data_dir` is not defined, data is stored under `{s3_staging_dir}/tables/`.
 
 The following options are available for `s3_data_naming`:
 
@@ -129,7 +129,7 @@ The following options are available for `s3_data_naming`:
 - `table`: `{s3_data_dir}/{table}/`
 - `table_unique`: `{s3_data_dir}/{table}/{uuid4()}/`
 - `schema_table`: `{s3_data_dir}/{schema}/{table}/`
-- `s3_data_naming=schema_table_unique`: `{s3_data_dir}/{schema}/{table}/{uuid4()}/`
+- `schema_table_unique`: `{s3_data_dir}/{schema}/{table}/{uuid4()}/`
 
 To set the `s3_data_naming` globally in the target profile, overwrite the value in the table config, or set up the value for groups of the models in dbt_project.yml.
 
@@ -137,7 +137,7 @@ Note: If you're using a workgroup with a default output location configured, `s3
 
 ### Incremental models
 
-The following [incremental models](https://docs.getdbt.com/docs/build/incremental-models) strategies are supported:
+The following [incremental models](/docs/build/incremental-models) strategies are supported:
 
 - `insert_overwrite` (default): The insert-overwrite strategy deletes the overlapping partitions from the destination table and then inserts the new records from the source. This strategy depends on the `partitioned_by` keyword! dbt will fall back to the `append` strategy if no partitions are defined.
 - `append`: Insert new records without updating, deleting or overwriting any existing data. There might be duplicate data (great for log or historical data).
@@ -312,11 +312,24 @@ select 'b'        as user_id,
 ```
 
 
-#### HA known issues
+### HA known issues
 
 - There could be a little downtime when swapping from a table with partitions to a table without (and the other way around). If higher performance is needed, consider bucketing instead of partitions.
 - By default, Glue "duplicates" the versions internally, so the last two versions of a table point to the same location.
 - It's recommended to set `versions_to_keep` >= 4, as this will avoid having the older location removed.
+
+### Avoid deleting parquet files
+
+If a dbt model has the same name as an existing table in the AWS Glue catalog, the `dbt-athena` adapter deletes the files in that table’s S3 location before recreating the table using the SQL from the model.
+
+The adapter may also delete data if a model is configured to use the same S3 location as an existing table. In this case, it clears the folder before creating the new table to avoid conflicts during setup.
+
+When dropping a model, the `dbt-athena` adapter performs two cleanup steps for both Iceberg and Hive tables: 
+
+- It deletes the table from the AWS Glue catalog using Glue APIs.
+- It removes the associated S3 data files using a delete operation.
+
+However, for Iceberg tables, using standard SQL like [`DROP TABLE`](https://docs.aws.amazon.com/athena/latest/ug/querying-iceberg-drop-table.html) may not remove all related S3 objects. To ensure proper cleanup in a dbt workflow, the adapter includes a workaround that explicitly deletes these S3 objects. Alternatively, users can enable [`native_drop`](/reference/resource-configs/athena-configs#table-configuration) to let Iceberg handle the cleanup natively.
 
 ### Update glue data catalog
 
@@ -337,11 +350,12 @@ models:
         test: value
     columns:
       - name: id
-        meta:
-          primary_key: true
+        config:
+          meta: # changed to config in v1.10 and backported to 1.9
+            primary_key: true
 ```
 
-Refer to [persist_docs](https://docs.getdbt.com/reference/resource-configs/persist_docs) for more details.
+Refer to [persist_docs](/reference/resource-configs/persist_docs) for more details.
 
 ## Snapshots
 

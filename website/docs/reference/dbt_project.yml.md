@@ -6,10 +6,8 @@ intro_text: "The dbt_project.yml file is a required file for all dbt projects. I
 Every [dbt project](/docs/build/projects) needs a `dbt_project.yml` file — this is how dbt knows a directory is a dbt project. It also contains important information that tells dbt how to operate your project. It works as follows:
 
 - dbt uses [YAML](https://yaml.org/) in a few different places. If you're new to YAML, it would be worth learning how arrays, dictionaries, and strings are represented.
-
-- By default, dbt looks for the `dbt_project.yml` in your current working directory and its parents, but you can set a different directory using the `--project-dir` flag or the `DBT_PROJECT_DIR` environment variable.
-
-- Specify your dbt Cloud project ID in the `dbt_project.yml` file using `project-id` under the `dbt-cloud` config. Find your project ID in your dbt Cloud project URL: For example, in `https://YOUR_ACCESS_URL/11/projects/123456`, the project ID is `123456`.
+- By default, dbt looks for the `dbt_project.yml` in your current working directory and its parents, but you can set a different directory using the `--project-dir` flag or the <VersionBlock lastVersion="1.10">`DBT_PROJECT_DIR`</VersionBlock><VersionBlock firstVersion="1.11">`DBT_ENGINE_PROJECT_DIR`</VersionBlock> environment variable.
+- Specify your <Constant name="dbt" /> project ID in the `dbt_project.yml` file using `project-id` under the [`dbt-cloud` config](/reference/dbt_cloud.yml#the-dbt-cloud-block-in-dbt_projectyml). Find your project ID in your <Constant name="dbt" /> project URL: For example, in `https://YOUR_ACCESS_URL/develop/projects/123456`, the project ID is `123456`.
 
 
 - Note, you can't set up a "property" in the `dbt_project.yml` file if it's not a config (an example is [macros](/reference/macro-properties)). This applies to all types of resources. Refer to [Configs and properties](/reference/configs-and-properties) for more detail.
@@ -36,6 +34,8 @@ The following example is a list of all available configurations in the `dbt_proj
 [snapshot-paths](/reference/project-configs/snapshot-paths): [directorypath]
 [docs-paths](/reference/project-configs/docs-paths): [directorypath]
 [asset-paths](/reference/project-configs/asset-paths): [directorypath]
+[function-paths](/reference/project-configs/function-paths): [directorypath]
+[osi-paths](/reference/project-configs/osi-paths): [directorypath]
 
 [packages-install-path](/reference/project-configs/packages-install-path): directorypath
 
@@ -48,9 +48,13 @@ The following example is a list of all available configurations in the `dbt_proj
 [flags](/reference/global-configs/project-flags):
   [<global-configs>](/reference/global-configs/project-flags)
 
-[dbt-cloud](/docs/cloud/cloud-cli-installation):
-  [project-id](/docs/cloud/configure-cloud-cli#configure-the-dbt-cloud-cli): project_id # Required
-  [defer-env-id](/docs/cloud/about-cloud-develop-defer#defer-in-dbt-cloud-cli): environment_id # Optional
+[dbt-cloud](/reference/dbt_cloud.yml#the-dbt-cloud-block-in-dbt_projectyml):
+  [project-id](/docs/platform/configure-dbt-cli#configure-the-dbt-cli): project_id # Required
+  [defer-env-id](/docs/platform/about-defer#defer-in-dbt-cli): environment_id # Optional
+  [account-host](/docs/platform/about-platform/access-regions-ip-addresses): account-host # Defaults to 'cloud.getdbt.com'; Required if use a different Access URL
+
+[analyses](/docs/build/analyses): # Requires the require_corrected_analysis_fqns flag; available starting v1.12
+  [<analysis-configs>](/reference/analysis-properties)
 
 [exposures](/docs/build/exposures):
   +[enabled](/reference/resource-configs/enabled): true | false
@@ -59,7 +63,8 @@ The following example is a list of all available configurations in the `dbt_proj
   database: true | false
   schema: true | false
   identifier: true | false
-
+  snowflake_ignore_case: true | false  # Fusion-only config. Aligns with Snowflake's session parameter QUOTED_IDENTIFIERS_IGNORE_CASE behavior. 
+                                       # Ignored by dbt Core and other adapters.
 metrics:
   [<metric-configs>](/docs/build/metrics-overview)
 
@@ -81,7 +86,7 @@ snapshots:
 sources:
   [<source-configs>](source-configs)
   
-tests:
+data_tests:
   [<test-configs>](/reference/data-test-configs)
 
 vars:
@@ -94,7 +99,10 @@ vars:
   - macro_namespace: packagename
     search_order: [packagename]
 
-[restrict-access](/docs/collaborate/govern/model-access): true | false
+[restrict-access](/docs/mesh/govern/model-access): true | false
+
+functions:
+  [<function-configs>](/reference/function-configs)
 
 ```
 

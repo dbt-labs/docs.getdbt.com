@@ -1,5 +1,5 @@
 ---
-title: arguments
+title: arguments (for macros)
 sidebar_label: "arguments"
 id: arguments
 ---
@@ -10,13 +10,12 @@ import MacroArgsNote from '/snippets/_validate-macro-args.md';
 
 ```yml
 
-version: 2
 
 macros:
   - name: <macro name>
     arguments:
       - name: <arg name>
-        type: <string>
+        [type](#supported-types): <string>
         description: <markdown_string>
 
 ```
@@ -25,14 +24,9 @@ macros:
 
 ## Definition
 
-The `arguments` property is used to define the parameters that a macro can accept. Each argument can have a `name`, `type`, and `description`.  You can add `arguments` to a [macro property](/reference/macro-properties), which helps in documenting the macro and understanding what inputs it requires.
+The `arguments` property is used to define the parameters that a resource can accept. Each argument can have a `name`, a `type` field, and an optional `description`.
 
-You can validate your macro `arguments` using the [`validate_macro_args`](/reference/global-configs/behavior-changes#macro-argument-validation) flag:
-
-- If the flag is set to `False` (default), dbt will continue to permit any value for `type` and `name`.
-- If flag is set to `True` (opt-in), dbt will raise a warning if the argument names you've added in YAML don't match the argument names you have in your macro or if the argument types aren't valid according to the [supported types](/reference/resource-properties/arguments#supported-types).
-
-If no argument names are documented in YAML, dbt will infer them based on what you have in the macro and include them in the [manifest.json](/reference/artifacts/manifest-json) file.
+For **macros**, you can add `arguments` to a [macro property](/reference/macro-properties), which helps in documenting the macro and understanding what inputs it requires.
 
 ## type
 
@@ -43,7 +37,7 @@ The data type of your argument. This is only used for documentation purposes —
 </VersionBlock>
 <VersionBlock firstVersion="1.10">
 
-The data type of your argument. Unless you use the [`validate_macro_args`](/reference/resource-properties/arguments#supported-types) flag, `type` is only used for documentation purposes — there are no restrictions on the values you can use here.
+The data type of your argument. Setting [`validate_macro_args`](/reference/global-configs/behavior-flags/validate_macro_args) to `true` ensures that documented macro argument names match those in the macro definition and validates their types against the [supported types](#supported-types). When set to `false`, `type` is only used for documentation purposes and there are no restrictions on the values you can specify.
 
 </VersionBlock>
 
@@ -52,7 +46,6 @@ The data type of your argument. Unless you use the [`validate_macro_args`](/refe
 <File name='macros/<filename>.yml'>
 
 ```yml
-version: 2
 
 macros:
   - name: <macro name>
@@ -66,7 +59,7 @@ macros:
 
 ### Supported types
 
-From dbt Core v1.10, when you use the [`validate_macro_args`](/reference/global-configs/behavior-changes#macro-argument-validation) flag, dbt supports the following types for macro arguments:
+From <Constant name="core" /> v1.10, when you use the [`validate_macro_args`](/reference/global-configs/behavior-flags/validate_macro_args) flag, dbt supports the following types for macro arguments:
 
 - `string` or `str`
 - `boolean` or `bool`
@@ -83,7 +76,6 @@ Note that the types follow a Python-like style but are used for documentation an
 
 ## Examples
 
-### Document a macro
 
 <File name='macros/cents_to_dollars.sql'>
 
@@ -99,7 +91,6 @@ Note that the types follow a Python-like style but are used for documentation an
 <File name='macros/cents_to_dollars.yml'>
 
 ```yml
-version: 2
 
 macros:
   - name: cents_to_dollars
@@ -114,3 +105,8 @@ macros:
 ```
 
 </File>
+
+## Related documentation
+
+- [Macro properties](/reference/macro-properties)
+- [Arguments (for functions)](/reference/resource-properties/function-arguments)

@@ -13,7 +13,7 @@ id: "forum-guidelines"
 
 **Guidelines for engaging on the Forum**
 
-The community [Rules of the Road](https://docs.getdbt.com/docs/contributing/slack-rules-of-the-road) apply, and following them is the best way to get momentum behind your discussion or answers to your questions. The following guidelines will set you up for success:
+The community [Rules of the Road](/community/resources/community-rules-of-the-road) apply, and following them is the best way to get momentum behind your discussion or answers to your questions. The following guidelines will set you up for success:
 
 - Be respectful
 - Put effort into your posts
@@ -25,10 +25,10 @@ The community [Rules of the Road](https://docs.getdbt.com/docs/contributing/slac
 The forum is broken down into three categories:
 
 - [Help](https://discourse.getdbt.com/c/help/19)
-  - This is a Q&A style forum where you can ask the dbt Community for help with specific questions about dbt, dbt Cloud, data modeling, or anything else you want a definitive answer on.
+  - This is a Q&A style forum where you can ask the dbt Community for help with specific questions about dbt, <Constant name="dbt" />, data modeling, or anything else you want a definitive answer on.
   - This category is for questions which can plausibly have a _single correct answer_.
     - ✅ How do I debug this Jinja error?
-    - ✅ How do I set up CI in dbt Cloud on GitHub?
+    - ✅ How do I set up CI in <Constant name="dbt" /> on GitHub?
     - ❌ What is the best way to do marketing attribution? (More general Discussions like this are perfect for the [In-Depth Discussions](https://discourse.getdbt.com/c/discussions/21) category)
 - [Show and Tell](https://discourse.getdbt.com/c/show-and-tell/22)
   - This is the place to show off all of the cool things you are doing in dbt. Whether it’s a new macro, design pattern, or package, post here to show the community what you are up to!
@@ -39,7 +39,7 @@ The forum is broken down into three categories:
 
 We are **strongly** committed to building a community where everyone can feel welcome.
 
-The dbt community started with people who were not traditionally considered “technical”, did not have ownership over technical systems, and were often left out of organizational decision-making. We came together to learn from each other, solve hard problems together, and to help build a new discipline where data folks have greater ownership over our own work. It really matters to us that everyone feels like they can ask questions and engage, no matter their professional or personal background.
+The dbt community started with people who were not traditionally considered “technical”, did not have ownership over technical systems, and were often left out of organizational decision-making. We came together to learn from each other, solve hard problems, and help build a new discipline where data folks have greater ownership over our own work. It really matters to us that everyone feels like they can ask questions and engage, no matter their professional or personal background.
 
 Technical forums have the potential to replicate harmful power structures, and can feel intimidating or hostile. We are working hard to create and sustain an inclusive environment through community-building, technological solutions, inclusive content, and diverse contributors. This is a long-term project, and we will continue to iterate and make improvements.
 

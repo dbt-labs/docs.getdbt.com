@@ -4,4 +4,4 @@ To prevent the `manifest.json` from being overwritten before dbt reads it for ch
 
 
 - Write the manifest to a different `--target-path` in the build stage (where dbt would generate the `target/manifest.json`) or before it gets overwritten during job execution to avoid issues with change detection. This allows dbt to detect changes instead of comparing the current state with the just-overwritten version.
-- Pass the `--no-write-json` flag: `dbt --no-write-json ls --select state:modified --state target`: during the reproduction stage.
+- Pass the `--no-write-json` flag: `dbt ls --no-write-json --select state:modified --state target`: during the reproduction stage.

@@ -4,6 +4,8 @@ datatype: deprecation_date
 required: no
 ---
 
+import DeprecationDateCallout from '/snippets/_deprecation-date-callout.md';
+
 <File name='models/<schema>.yml'>
 
 ```yml
@@ -17,7 +19,6 @@ models:
 <File name='models/<schema>.yml'>
 
 ```yml
-version: 2
 models:
   - name: my_model
     description: deprecating in the future
@@ -41,7 +42,9 @@ When `deprecation_date` does not include an offset from UTC, then it is interpre
 
 Declaring a `deprecation_date` for a dbt model provides a mechanism to communicate plans and timelines for long-term support and maintenance and to facilitate change management.
 
-Setting a `deprecation_date` works well in conjunction with other [model governance](/docs/collaborate/govern/about-model-governance) features like [model versions](/docs/collaborate/govern/model-versions), but can also be used independently from them.
+Setting a `deprecation_date` works well in conjunction with other [model governance](/docs/mesh/govern/about-model-governance) features like [model versions](/docs/mesh/govern/model-versions), but can also be used independently from them.
+
+<DeprecationDateCallout />
 
 ### Warning messages
 
@@ -67,7 +70,7 @@ $ dbt parse
 
 ### Selection syntax
 
-There is not specific [node selection syntax](/reference/node-selection/syntax) for `deprecation_date`. [Programmatic invocations](/reference/programmatic-invocations) is one way to identify deprecated models (potentially in conjunction with [dbt list](/reference/commands/list)). e.g., `dbt -q ls  --output json --output-keys database schema alias deprecation_date`.
+There is not specific [node selection syntax](/reference/node-selection/syntax) for `deprecation_date`. [Programmatic invocations](/reference/programmatic-invocations) is one way to identify deprecated models (potentially in conjunction with [dbt list](/reference/commands/list)). e.g., `dbt ls -q --output json --output-keys database schema alias deprecation_date`.
 
 ### Deprecation process
 

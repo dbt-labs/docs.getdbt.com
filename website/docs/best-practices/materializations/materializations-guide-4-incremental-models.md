@@ -44,7 +44,7 @@ Let’s think through the information we’d need to build such a model that onl
 - 🕜  **a timestamp indicating when a record was last updated**, let’s call it our `updated_at` timestamp, as that’s a typical convention and what we have in our example above.
 - ⌛ the **most recent timestamp from this table _in our warehouse_** _—_ that is, the one created by the previous run — to act as a cutoff point. We’ll call the model we’re working in `this`, for ‘this model we’re working in’.
 
-That would lets us construct logic like this:
+That would let us construct logic like this:
 
 ```sql
 select * from orders
@@ -84,7 +84,7 @@ So we’ve found a way to isolate the new rows we need to process. How then do w
 
 Thankfully dbt has some additional configuration and special syntax just for incremental models.
 
-First, let’s look at a config block for incremental materialization:
+First, let's look at a config block for incremental materialization:
 
 ```sql
 {{
@@ -140,13 +140,50 @@ where
 
 Fantastic! We’ve got a working incremental model. On our first run, when there is no corresponding table in the warehouse, `is_incremental` will evaluate to false and we’ll capture the entire table. On subsequent runs it will evaluate to true and we’ll apply our filter logic, capturing only the newer data.
 
-### Late arriving facts
+### Late-arriving facts
 
 Our last concern specific to incremental models is what to do when data is inevitably loaded in a less-than-perfect way. Sometimes data loaders will, for a variety of reasons, load data late. Either an entire load comes in late, or some rows come in on a load after those with which they should have. The following is best practice for every incremental model to slow down the drift this can cause.
 
 - 🕐 For example if most of our records for `2022-01-30` come in the raw schema of our warehouse on the morning of `2022-01-31`, but a handful don’t get loaded til `2022-02-02`, how might we tackle that? There will already be `max(updated_at)` timestamps of `2022-01-31` in the warehouse, filtering out those late records. **They’ll never make it to our model.**
 - 🪟 To mitigate this, we can add a **lookback window** to our **cutoff** point. By **subtracting a few days** from the `max(updated_at)`, we would capture any late data within the window of what we subtracted.
 - 👯 As long as we have a **`unique_key` defined in our config**, we’ll simply update existing rows and avoid duplication. We process more data this way, but in a fixed way, and it keeps our model hewing closer to the source data.
+
+
+#### Using dbt State with incremental models
+
+import SaoDeprecated from '/snippets/_sao-deprecated.md';
+
+<SaoDeprecated />
+
+[dbt State](/docs/deploy/dbt-state-about) works with incremental models. Use [`lag_tolerance`](/reference/resource-configs/lag-tolerance) to control how frequently the model rebuilds based on upstream data changes, and [`pre_clone`](/reference/resource-configs/pre-clone) to pre-populate the model by cloning from production before a run. For example, to skip a rebuild if upstream data changed less than 4 hours ago, and always start from the current production state in local development:
+
+```yaml
+models:
+  - name: fct_events
+    config:
+      state:
+        lag_tolerance: 4h
+        pre_clone: always
+```
+
+The default for `pre_clone` is `if_missing`, which clones production only if the table doesn't already exist locally.
+
+**Late-arriving records:** Late-arriving records may have an earlier event timestamp (for example, `event_date`) than their ingestion timestamp. dbt State may not detect them as new data and skip rebuilding the incremental model, even though your lookback window would normally pick up those records. To ensure late-arriving data is detected, configure a `loaded_at_query` on the source that aligns with the same lookback window used in your incremental filter:
+
+```yaml
+sources:
+  - name: raw_orders
+    tables:
+      - name: orders
+        config:
+          loaded_at_query: |
+            select max(ingested_at)
+            from {{ this }}
+            where ingested_at >= current_timestamp - interval '3 days'
+```
+
+For more details, refer to [dbt State configurations](/reference/resource-configs/dbt-state-configs) and [Source freshness](/reference/resource-properties/freshness).
+
 
 ### Long-term considerations
 

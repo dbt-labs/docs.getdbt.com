@@ -1,38 +1,43 @@
 # name property should not be changed once set
 # or references to CTA will break
-- name: coalesce
-  header: Missed Coalesce?
-  subheader: The annual conference dedicated to the advancement of analytics engineering wrapped up on December 10th.
-  button_text: Watch the talks
-  url: https://getdbt.com/coalesce-2021/
-- name: setup
-  header: "Just Getting Started?"
-  subheader: Check out guides on getting your warehouse set up and connected to dbt Cloud.
-  button_text: Learn more
-  url: https://docs.getdbt.com/quickstarts
-- name: coalesce_2023_signup
-  header: Join data practitioners worldwide at Coalesce 2023
-  subheader: Kicking off on October 16th, both online and in-person (Sydney, London, and San Diego)
-  button_text: Register now
-  url: https://coalesce.getdbt.com/?utm_medium=internal&utm_source=docs&utm_campaign=q3-2024_coalesce-2023_aw&utm_content=coalesce____&utm_term=all___
-- name: coalesce_2023_catchup
-  header: Missed Coalesce 2023?
-  subheader: Watch Coalesce 2023 highlights and full sessions, dbt Labs' annual analytics engineering conference.
-  button_text: Watch the talks
-  url: https://www.youtube.com/playlist?list=PL0QYlrC86xQnT3HLh-XgvoTf9F3lbsADf
-- name: coalesce_2024_signup
-  header: Be part of Coalesce 2024
-  subheader: Coalesce is the premiere analytics engineering conference! Sign up now for innovation, collaboration, and inspiration. Don't miss out!
-  button_text: Register now
-  url: https://coalesce.getdbt.com/register
-- name: coalesce_2024_catchup
-  header: Missed Coalesce 2024?
-  subheader: Catch up on Coalesce 2024 and register to access a select number of on-demand sessions.
-  button_text: Register and watch
-  url: https://coalesce.getdbt.com/register/online 
-- name: developer_day_2025
-  header: dbt Developer Day 
-  subheader: Join us on March 19th or 20th to hear from dbt Labs product leads about exciting new and coming-soon features designed to supercharge data developer workflows.
-  button_text: Save your seat
-  url: https://www.getdbt.com/resources/webinars/dbt-developer-day
+- name: state_of_analytics_engineering_survey
+  header: State of Analytics Engineering Survey
+  subheader: Help us find out what's next for data teams by taking the 2026 State of Analytics Engineering survey
+  button_text: Take the survey
+  url: https://docs.google.com/forms/d/e/1FAIpQLSdbOMc5kT8rFUGHryEO2RcJEzwF9xr_qWE3CHBbOcQpnilyIg/viewform
 
+- name: fast_track_dbt_workshop
+  header: Fast track to dbt workshop
+  subheader: Join our free, Fast track to dbt workshop on June 3 or 4. Build and run your first dbt models!
+  button_text: Register here
+  url: https://www.getdbt.com/resources/webinars/fast-track-to-dbt-workshop/?utm_medium=internal&utm_source=docs&utm_campaign=q1-2027_fast-track-dbt-workshop_aw&utm_content=____&utm_term=all_all__
+
+- name: fusion_webinar
+  header: Is your team ready for Fusion?
+  subheader: Join Brooklyn Data Feb 18 for a practical readiness framework — assess your project, process, and people before you migrate.
+  button_text: Register here
+  url: https://www.getdbt.com/resources/webinars/are-you-ready-for-the-dbt-fusion-engine
+
+- name: state_of_analytics_engineering_virtual_event
+  header: 2026 State of Analytics Engineering Virtual Event
+  subheader: Join us for the 2026 State of Analytics Engineering Virtual Event on April 29 with live Q&A and giveaways!
+  button_text: Register here
+  url: https://www.getdbt.com/resources/webinars/2026-state-of-analytics-engineering-virtual-event/?utm_medium=internal&utm_source=docs&utm_campaign=q1-2027_state-analytics-engineering_aw&utm_content=themed-webinar____&utm_term=all_all__
+
+- name: fast_track_to_dbt_workshop
+  header: Fast track to dbt workshop
+  subheader: Join our free, Fast track to dbt workshop on June 3 or 4. Build and run your first dbt models!
+  button_text: Register here
+  url: https://www.getdbt.com/resources/webinars/fast-track-to-dbt-workshop/?utm_medium=internal&utm_source=docs&utm_campaign=q1-2027_fast-track-dbt-workshop_aw&utm_content=themed-webinar____&utm_term=all_all__
+
+- name: fivetran_dbt_labs_merger_webinar
+  header: Fivetran + dbt Labs
+  subheader: The future of dbt Core v2.0, what we're building together, and live Q&A on June 25
+  button_text: Save your seat!
+  url: https://www.getdbt.com/resources/webinars/fivetran-dbt-labs-the-merger-what-s-shipping-in-dbt-and-live-q-and-a/?utm_medium=internal&utm_source=docs&utm_campaign=q2-2027_fivetran-dbt-merger_aw&utm_content=themed-webinar____&utm_term=all_all__
+
+- name: dbt_state_july_2026_webinar
+  header: "dbt State: Build what's changed, skip what hasn't"
+  subheader: Join us July 15th to learn how to save on warehouse compute costs!
+  button_text: Register here
+  url: https://www.getdbt.com/resources/webinars/dbt-state-build-what-s-changed-skip-what-hasn-t/?utm_medium=internal&utm_source=docs&utm_campaign=q2-2027_dbt-state-deep-dive-product_aw&utm_content=themed-webinar____&utm_term=all_all__

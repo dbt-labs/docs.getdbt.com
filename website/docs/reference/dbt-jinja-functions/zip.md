@@ -5,9 +5,7 @@ sidebar_label: "zip"
 description: "Use this context method to return an iterator of tuples."
 ---
 
-The `zip` context method can be used to return an iterator of tuples, where the i-th tuple contains the i-th element from each of the argument iterables. ([Python docs](https://docs.python.org/3/library/functions.html#zip))
-        :param 
-        :param 
+You can use the `zip` context method to return an iterator of tuples, where the i-th tuple contains the i-th element from each of the argument iterables. For more information, see [Python docs](https://docs.python.org/3/library/functions.html#zip).
         
 __Args__:
 - `*args`: Any number of iterables
@@ -31,7 +29,7 @@ __Args__:
 
 ### zip_strict
 
-The `zip_strict` context method can be used to used to return an iterator of tuples, just like `zip`. The difference to the `zip` context method is that the `zip_strict` method will raise an exception on a `TypeError`, if one of the provided values is not a valid iterable.
+You can use the `zip_strict` context to return an iterator of tuples, just like `zip`. The difference to the `zip` context method is that the `zip_strict` method will raise an exception on a `TypeError`, if one of the provided values is not a valid iterable.
 
 __Args__:
 - `value`: The iterable to convert (e.g. a list)

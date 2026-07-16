@@ -4,16 +4,21 @@ sidebar_label: "environment"
 id: dbt-environment
 ---
 
-The `dbt environment` command enables you to interact with your dbt Cloud environment. Use the command for:
+:::info 
+The dbt platform CLI provides the `dbt environment` command for environment and connection details. If you're using <Constant name="fusion" /> or <Constant name="core" />, use `dbt debug` to inspect profile, target, and connection &mdash; or use `dbtf debug` if you have both Core/Fusion and platform CLIs and want to inspect <Constant name="fusion" />.
+
+:::
+
+The `dbt environment` command enables you to interact with your <Constant name="dbt" /> environment. Use the command for:
 
 - Viewing your local configuration details (account ID, active project ID, deployment environment, and more).
-- Viewing your dbt Cloud configuration details (environment ID, environment name, connection type, and more).
+- Viewing your <Constant name="dbt" /> configuration details (environment ID, environment name, connection type, and more).
 
-This guide lists all the commands and options you can use with `dbt environment` in the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation). To use them, add a command or option like this: `dbt environment [command]` or use the shorthand  `dbt env [command]`.
+This guide lists all the commands and options you can use with `dbt environment` in the [<Constant name="platform_cli" />](/docs/platform/dbt-cli-installation). To use them, add a command or option like this: `dbt environment [command]` or use the shorthand `dbt env [command]`.
 
 ### dbt environment show
 
-`show` command &mdash; To view your local and dbt Cloud configuration details. To run the command with the dbt Cloud CLI, type one of the following commands, including the shorthand:
+The `show` command allows you to view your local and <Constant name="dbt" /> configuration details. To run the command with the <Constant name="platform_cli" />, enter one of the following commands, including the shorthand:
 
 ```shell
 dbt environment show
@@ -32,7 +37,7 @@ Local Configuration:
   Active host name               cloud.getdbt.com
   dbt_cloud.yml file path        /Users/cesar/.dbt/dbt_cloud.yml
   dbt_project.yml file path      /Users/cesar/git/cloud-cli-test-project/dbt_project.yml
-  dbt Cloud CLI version          0.35.7
+  <Constant name="dbt" /> CLI version          0.35.7
   OS info                        darwin arm64
 
 Cloud Configuration:
@@ -56,7 +61,7 @@ Snowflake Connection Details:
   Client session keep alive      false 
 ```
 
-Note, that dbt Cloud won't return anything that is a secret key and will return an 'NA' for any field that isn't configured.
+Note, that <Constant name="dbt" /> won't return anything that is a secret key and will return an 'NA' for any field that isn't configured.
 
 ### dbt environment flags
 
@@ -64,9 +69,8 @@ Use the following flags (or options) with the `dbt environment` command:
 
 - `-h`, `--help` &mdash; To view the help documentation for a specific command in your command line interface.
 
-  ```shell 
+  ```shell
   dbt environment [command] --help
-  dbt environment [command] -h
   ```
 
   The `--help` flag returns the following information:
@@ -90,7 +94,7 @@ Use the following flags (or options) with the `dbt environment` command:
   Use "dbt environment [command] --help" for more information about a command.
   ```
 
-  For example, to view the help documentation for the `show` command, type one of the following commands, including the shorthand:
+  For example, to view the help documentation for the `show` command, enter one of the following commands, including the shorthand:
 
   ```shell
   dbt environment show --help

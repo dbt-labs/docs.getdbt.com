@@ -2,6 +2,7 @@
 title: "Redshift configurations"
 description: "Redshift Configurations - Read this in-depth guide to learn about configurations in dbt."
 id: "redshift-configs"
+tags: ['Redshift', 'dbt Fusion', 'dbt Core']
 ---
 
 <!----
@@ -9,6 +10,8 @@ To-do:
 - use the reference doc structure for this article/split into separate articles
 - think about whether some of these should be outside of models
 --->
+
+import RedshiftDatasharing from '/snippets/_redshift-datasharing.md';
 
 ## Incremental materialization strategies
 
@@ -67,6 +70,60 @@ For more information on distkeys and sortkeys, view Amazon's docs:
 - [AWS Documentation » Amazon Redshift » Database Developer Guide » Designing Tables » Choosing a Data Distribution Style](https://docs.aws.amazon.com/redshift/latest/dg/t_Distributing_data.html)
 - [AWS Documentation » Amazon Redshift » Database Developer Guide » Designing Tables » Choosing Sort Keys](https://docs.aws.amazon.com/redshift/latest/dg/t_Sorting_data.html)
 
+<VersionBlock firstVersion="1.12">
+
+### Session configuration
+
+The Redshift adapter supports the `query_group` session parameter, enabling dbt runs to tag queries for Redshift Workload Manager (WLM) and query logging (for example, `STL_QUERY` and `SVL_QLOG`). You can set `query_group` at the profile level (default for the connection) and override it at the model level.
+
+- **Profile-level configuration**
+
+  Configure `query_group` in your `profiles.yml` to apply a default value to all queries executed using that profile. dbt sets the `query_group` when opening a connection.
+
+  <File name="profiles.yml">
+
+  ```yml
+  outputs:
+    dev:
+      type: redshift
+      host: CLUSTER_ENDPOINT
+      user: REDSHIFT_USER
+      password: REDSHIFT_PASSWORD
+      dbname: REDSHIFT_DBNAME
+      port: 5439
+      schema: analytics
+      threads: 4
+      query_group: QUERY_GROUP_NAME
+  ```
+
+  </File>
+
+  ```sql
+  -- models/a_default_group.sql
+  -- Runs under query_group = 'QUERY_GROUP_NAME' (from the profile)
+  select 1 as id
+  ```
+
+- **Model-level configuration**
+
+  Set `query_group` in a model's `config()` block to temporarily override the default value for that model’s execution. dbt applies the model-level value while the model runs and then restores the default value after model materialization.
+
+  ```sql
+  -- models/b_override_group.sql
+  -- dbt temporarily sets query_group = 'dbt_finance' for this model, then restores the default value
+  {{ config(query_group='dbt_finance') }}
+
+  select 1 as id
+  ```
+
+</VersionBlock>
+
+## Datasharing <Lifecycle status="beta" />
+
+<RedshiftDatasharing />
+
+For setup instructions, see [Redshift setup](/docs/local/connect-data-platform/redshift-setup).
+
 ## Late binding views
 
 Redshift supports <Term id="view">views</Term> unbound from their dependencies, or [late binding views](https://docs.aws.amazon.com/redshift/latest/dg/r_CREATE_VIEW.html#late-binding-views). This DDL option "unbinds" a view from the data it selects from. In practice, this means that if upstream views or tables are dropped with a cascade qualifier, the late-binding view does not get dropped as well.
@@ -117,9 +174,9 @@ with the following configuration parameters:
   groupId="config-languages"
   defaultValue="project-yaml"
   values={[
-    { label: 'Project file', value: 'project-yaml', },
-    { label: 'Property file', value: 'property-yaml', },
-    { label: 'Config block', value: 'config', },
+    { label: 'Project YAML file', value: 'project-yaml', },
+    { label: 'Properties YAML file', value: 'property-yaml', },
+    { label: 'SQL file config', value: 'config', },
   ]
 }>
 
@@ -150,7 +207,6 @@ models:
 <File name='models/properties.yml'>
 
 ```yaml
-version: 2
 
 models:
   - name: [<model-name>]
@@ -231,12 +287,11 @@ As with most data platforms, there are limitations associated with materialized 
 
 Find more information about materialized view limitations in Redshift's [docs](https://docs.aws.amazon.com/redshift/latest/dg/materialized-view-create-sql-command.html#mv_CREATE_MATERIALIZED_VIEW-limitations).
 
-<VersionBlock firstVersion="1.8">
-
 ## Unit test limitations
 
-Redshift doesn't support [unit tests](/docs/build/unit-tests) when the SQL in the common table expression (CTE) contains functions such as `LISTAGG`, `MEDIAN`, `PERCENTILE_CONT`, and so on. These functions must be executed against a user-created table. dbt combines given rows to be part of the CTE, which Redshift does not support. 
+- Redshift doesn't support [unit tests](/docs/build/unit-tests) when the SQL in the common table expression (CTE) contains functions such as `LISTAGG`, `MEDIAN`, `PERCENTILE_CONT`, and so on. These functions must be executed against a user-created table. dbt combines given rows to be part of the CTE, which Redshift does not support.
 
-In order to support this pattern in the future, dbt would need to "materialize" the input fixtures as tables, rather than interpolating them as CTEs. If you are interested in this functionality, we'd encourage you to participate in this issue in GitHub: [dbt-labs/dbt-core#8499](https://github.com/dbt-labs/dbt-core/issues/8499)
+  In order to support this pattern in the future, dbt would need to "materialize" the input fixtures as tables, rather than interpolating them as CTEs. If you are interested in this functionality, we'd encourage you to participate in this issue in GitHub: [dbt-labs/<Constant name="core" />#8499](https://github.com/dbt-labs/dbt-core/issues/8499)
 
-</VersionBlock>
+- Redshift doesn't support unit tests that rely on sources in a database that differs from the models. See this issue in GitHub for more detail: https://github.com/dbt-labs/dbt-redshift/issues/995
+

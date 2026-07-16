@@ -1,0 +1,5322 @@
+{
+  "_meta": {
+    "platform": "databricks",
+    "platform_name": "Databricks",
+    "count": 759
+  },
+  "functions": [
+    {
+      "name": "ABS",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/abs",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ACOS",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/acos",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ACOSH",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/acosh",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ADD_MONTHS",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/add_months",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "AES_DECRYPT",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/aes_decrypt",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "AES_ENCRYPT",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/aes_encrypt",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "AGG",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/agg",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "AGGREGATE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/aggregate",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "AI_ANALYZE_SENTIMENT",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/ai_analyze_sentiment",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "AI_CLASSIFY",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/ai_classify",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "AI_EXTRACT",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/ai_extract",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "AI_FIX_GRAMMAR",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/ai_fix_grammar",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "AI_FORECAST",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/ai_forecast",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "AI_GEN",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/ai_gen",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "AI_GENERATE_TEXT",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/ai_generate_text",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "AI_MASK",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/ai_mask",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "AI_PARSE_DOCUMENT",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/ai_parse_document",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "AI_PREP_SEARCH",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/ai_prep_search",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "AI_QUERY",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/ai_query",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "AI_SIMILARITY",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/ai_similarity",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "AI_SUMMARIZE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/ai_summarize",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "AI_TRANSLATE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/ai_translate",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "AMPERSANDSIGN",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/ampersandsign",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "AND",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/and",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ANY",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/any",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ANY_VALUE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/any_value",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "APPROX_COUNT_DISTINCT",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/approx_count_distinct",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "APPROX_PERCENTILE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/approx_percentile",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "APPROX_TOP_K",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/approx_top_k",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "APPROX_TOP_K_ACCUMULATE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/approx_top_k_accumulate",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "APPROX_TOP_K_COMBINE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/approx_top_k_combine",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "APPROX_TOP_K_ESTIMATE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/approx_top_k_estimate",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "ARRAY",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/array",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ARRAY_AGG",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/array_agg",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ARRAY_APPEND",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/array_append",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ARRAY_COMPACT",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/array_compact",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ARRAY_CONTAINS",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/array_contains",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ARRAY_DISTINCT",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/array_distinct",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ARRAY_EXCEPT",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/array_except",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ARRAY_INSERT",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/array_insert",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ARRAY_INTERSECT",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/array_intersect",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ARRAY_JOIN",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/array_join",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ARRAY_MAX",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/array_max",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ARRAY_MIN",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/array_min",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ARRAY_POSITION",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/array_position",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ARRAY_PREPEND",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/array_prepend",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ARRAY_REMOVE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/array_remove",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ARRAY_REPEAT",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/array_repeat",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ARRAY_SIZE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/array_size",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ARRAY_SORT",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/array_sort",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ARRAY_UNION",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/array_union",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ARRAYS_OVERLAP",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/arrays_overlap",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ARRAYS_ZIP",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/arrays_zip",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "ASCII",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/ascii",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ASIN",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/asin",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ASINH",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/asinh",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ASSERT_TRUE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/assert_true",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ASTERISKSIGN",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/asterisksign",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "ATAN",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/atan",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ATAN2",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/atan2",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ATANH",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/atanh",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "AVG",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/avg",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "BANGEQSIGN",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/bangeqsign",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "BANGSIGN",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/bangsign",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "BASE64",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/base64",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "BETWEEN",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/between",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "BIGINT",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/bigint",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "BIN",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/bin",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "BINARY",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/binary",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "BIT_AND",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/bit_and",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "BIT_COUNT",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/bit_count",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "BIT_GET",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/bit_get",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "BIT_LENGTH",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/bit_length",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "BIT_OR",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/bit_or",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "BIT_REVERSE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/bit_reverse",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "BIT_XOR",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/bit_xor",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "BITMAP_AND_AGG",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/bitmap_and_agg",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "BITMAP_BIT_POSITION",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/bitmap_bit_position",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "BITMAP_BUCKET_NUMBER",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/bitmap_bucket_number",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "BITMAP_CONSTRUCT_AGG",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/bitmap_construct_agg",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "BITMAP_COUNT",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/bitmap_count",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "BITMAP_OR_AGG",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/bitmap_or_agg",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "BOOL_AND",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/bool_and",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "BOOL_OR",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/bool_or",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "BOOLEAN",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/boolean",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "BRACKETSIGN",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/bracketsign",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "BROUND",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/bround",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "BTRIM",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/btrim",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "CARDINALITY",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/cardinality",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "CARETSIGN",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/caretsign",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "CASE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/case",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "CAST",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/cast",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "CBRT",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/cbrt",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "CEIL",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/ceil",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "CEILING",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/ceiling",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "CHAR",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/char",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "CHAR_LENGTH",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/char_length",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "CHARACTER_LENGTH",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/character_length",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "CHARINDEX",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/charindex",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "CHR",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/chr",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "CLOUD_FILES_STATE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/cloud_files_state",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "COALESCE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/coalesce",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "COLLATE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/collate",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "COLLATION",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/collation",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "COLLATIONS",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/collations",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "COLLECT_LIST",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/collect_list",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "COLLECT_SET",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/collect_set",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "COLONCOLONSIGN",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/coloncolonsign",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "COLONSIGN",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/colonsign",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "CONCAT",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/concat",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "CONCAT_WS",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/concat_ws",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "CONTAINS",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/contains",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "CONV",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/conv",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "CONVERT_TIMEZONE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/convert_timezone",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "CORR",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/corr",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "COS",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/cos",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "COSH",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/cosh",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "COT",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/cot",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "COUNT",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/count",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "COUNT_IF",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/count_if",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "COUNT_MIN_SKETCH",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/count_min_sketch",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "COVAR_POP",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/covar_pop",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "COVAR_SAMP",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/covar_samp",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "CRC32",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/crc32",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "CSC",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/csc",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "CUBE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/cube",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "CUME_DIST",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/cume_dist",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "CURDATE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/curdate",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "CURRENT_CATALOG",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/current_catalog",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "CURRENT_DATABASE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/current_database",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "CURRENT_DATE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/current_date",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "CURRENT_METASTORE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/current_metastore",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "CURRENT_RECIPIENT",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/current_recipient",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "CURRENT_SCHEMA",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/current_schema",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "CURRENT_TIME",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/current_time",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "CURRENT_TIMESTAMP",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/current_timestamp",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "CURRENT_TIMEZONE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/current_timezone",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "CURRENT_USER",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/current_user",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "CURRENT_VERSION",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/current_version",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "DATE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/date",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "DATE_ADD",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/date_add",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "DATE_ADD3",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/date_add3",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "DATE_DIFF",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/date_diff",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "DATE_FORMAT",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/date_format",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "DATE_FROM_UNIX_DATE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/date_from_unix_date",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "DATE_PART",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/date_part",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "DATE_SUB",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/date_sub",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "DATE_TRUNC",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/date_trunc",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "DATEADD",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/dateadd",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "DATEADD2",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/dateadd2",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "DATEDIFF",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/datediff",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "DATEDIFF3",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/datediff3",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "DAY",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/day",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "DAYNAME",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/dayname",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "DAYOFMONTH",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/dayofmonth",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "DAYOFWEEK",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/dayofweek",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "DAYOFYEAR",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/dayofyear",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "DECIMAL",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/decimal",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "DECODE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/decode",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "DECODE_CS",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/decode_cs",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "DEGREES",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/degrees",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "DENSE_RANK",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/dense_rank",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "DIV",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/div",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "DOTSIGN",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/dotsign",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "DOUBLE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/double",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "E",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/e",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ELEMENT_AT",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/element_at",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ELT",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/elt",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ENCODE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/encode",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ENDSWITH",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/endswith",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "EQEQSIGN",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/eqeqsign",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "EQSIGN",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/eqsign",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "EQUAL_NULL",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/equal_null",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "EVENT_LOG",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/event_log",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "EVERY",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/every",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "EXISTS",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/exists",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "EXP",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/exp",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "EXPLODE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/explode",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "EXPLODE_OUTER",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/explode_outer",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "EXPM1",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/expm1",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "EXTRACT",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/extract",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "FACTORIAL",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/factorial",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "FILTER",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/filter",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "FIND_IN_SET",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/find_in_set",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "FIRST",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/first",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "FIRST_VALUE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/first_value",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "FLATTEN",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/flatten",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "FLOAT",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/float",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "FLOOR",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/floor",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "FORALL",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/forall",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "FORMAT_NUMBER",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/format_number",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "FORMAT_STRING",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/format_string",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "FROM_AVRO",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/from_avro",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "FROM_CSV",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/from_csv",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "FROM_JSON",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/from_json",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "FROM_UNIXTIME",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/from_unixtime",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "FROM_UTC_TIMESTAMP",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/from_utc_timestamp",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "FROM_XML",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/from_xml",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "GET",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/get",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "GET_JSON_OBJECT",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/get_json_object",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "GETBIT",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/getbit",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "GETDATE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/getdate",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "GREATEST",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/greatest",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "GROUPING",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/grouping",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "GROUPING_ID",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/grouping_id",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "GTEQSIGN",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/gteqsign",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "GTSIGN",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/gtsign",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "H3_BOUNDARYASGEOJSON",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/h3_boundaryasgeojson",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "H3_BOUNDARYASWKB",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/h3_boundaryaswkb",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "H3_BOUNDARYASWKT",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/h3_boundaryaswkt",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "H3_CENTERASGEOJSON",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/h3_centerasgeojson",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "H3_CENTERASWKB",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/h3_centeraswkb",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "H3_CENTERASWKT",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/h3_centeraswkt",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "H3_COMPACT",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/h3_compact",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "H3_COVERASH3",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/h3_coverash3",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "H3_COVERASH3STRING",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/h3_coverash3string",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "H3_DISTANCE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/h3_distance",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "H3_H3TOSTRING",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/h3_h3tostring",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "H3_HEXRING",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/h3_hexring",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "H3_ISCHILDOF",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/h3_ischildof",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "H3_ISPENTAGON",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/h3_ispentagon",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "H3_ISVALID",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/h3_isvalid",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "H3_KRING",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/h3_kring",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "H3_KRINGDISTANCES",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/h3_kringdistances",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "H3_LONGLATASH3",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/h3_longlatash3",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "H3_LONGLATASH3STRING",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/h3_longlatash3string",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "H3_MAXCHILD",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/h3_maxchild",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "H3_MINCHILD",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/h3_minchild",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "H3_POINTASH3",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/h3_pointash3",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "H3_POINTASH3STRING",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/h3_pointash3string",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "H3_POLYFILLASH3",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/h3_polyfillash3",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "H3_POLYFILLASH3STRING",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/h3_polyfillash3string",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "H3_RESOLUTION",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/h3_resolution",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "H3_STRINGTOH3",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/h3_stringtoh3",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "H3_TESSELLATEASWKB",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/h3_tessellateaswkb",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "H3_TOCHILDREN",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/h3_tochildren",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "H3_TOPARENT",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/h3_toparent",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "H3_TRY_COVERASH3",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/h3_try_coverash3",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "H3_TRY_COVERASH3STRING",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/h3_try_coverash3string",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "H3_TRY_DISTANCE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/h3_try_distance",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "H3_TRY_POLYFILLASH3",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/h3_try_polyfillash3",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "H3_TRY_POLYFILLASH3STRING",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/h3_try_polyfillash3string",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "H3_TRY_TESSELLATEASWKB",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/h3_try_tessellateaswkb",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "H3_TRY_VALIDATE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/h3_try_validate",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "H3_UNCOMPACT",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/h3_uncompact",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "H3_VALIDATE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/h3_validate",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "HASH",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/hash",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "HEX",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/hex",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "HISTOGRAM_NUMERIC",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/histogram_numeric",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "HLL_SKETCH_AGG",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/hll_sketch_agg",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "HLL_SKETCH_ESTIMATE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/hll_sketch_estimate",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "HLL_UNION",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/hll_union",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "HLL_UNION_AGG",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/hll_union_agg",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "HOUR",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/hour",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "HTTP_REQUEST",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/http_request",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "HYPOT",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/hypot",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "IF",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/if",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "IFF",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/iff",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "IFNULL",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/ifnull",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ILIKE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/ilike",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "IN",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/in",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "INITCAP",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/initcap",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "INLINE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/inline",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "INLINE_OUTER",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/inline_outer",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "INPUT_FILE_BLOCK_LENGTH",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/input_file_block_length",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "INPUT_FILE_BLOCK_START",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/input_file_block_start",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "INPUT_FILE_NAME",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/input_file_name",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "INSTR",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/instr",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "INT",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/int",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "IP_AS_BINARY",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/ip_as_binary",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "IP_AS_STRING",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/ip_as_string",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "IP_CIDR",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/ip_cidr",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "IP_CIDR_CONTAINS",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/ip_cidr_contains",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "IP_HOST",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/ip_host",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "IP_NETWORK",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/ip_network",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "IP_NETWORK_FIRST",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/ip_network_first",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "IP_NETWORK_LAST",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/ip_network_last",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "IP_PREFIX_LENGTH",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/ip_prefix_length",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "IP_VERSION",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/ip_version",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "IS_ACCOUNT_GROUP_MEMBER",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/is_account_group_member",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "IS_MEMBER",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/is_member",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "IS_VALID_UTF8",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/is_valid_utf8",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "IS_VARIANT_NULL",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/is_variant_null",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ISDISTINCT",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/isdistinct",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "ISEARCH",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/isearch",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "ISFALSE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/isfalse",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "ISNAN",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/isnan",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ISNOTNULL",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/isnotnull",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ISNULL",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/isnull",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ISNULLOP",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/isnullop",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "ISTRUE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/istrue",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "JAVA_METHOD",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/java_method",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "JSON_ARRAY_LENGTH",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/json_array_length",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "JSON_OBJECT_KEYS",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/json_object_keys",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "JSON_TUPLE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/json_tuple",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "KLL_MERGE_AGG_BIGINT",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/kll_merge_agg_bigint",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "KLL_MERGE_AGG_DOUBLE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/kll_merge_agg_double",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "KLL_MERGE_AGG_FLOAT",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/kll_merge_agg_float",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "KLL_SKETCH_AGG_BIGINT",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/kll_sketch_agg_bigint",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "KLL_SKETCH_AGG_DOUBLE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/kll_sketch_agg_double",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "KLL_SKETCH_AGG_FLOAT",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/kll_sketch_agg_float",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "KLL_SKETCH_GET_N_BIGINT",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/kll_sketch_get_n_bigint",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "KLL_SKETCH_GET_N_DOUBLE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/kll_sketch_get_n_double",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "KLL_SKETCH_GET_N_FLOAT",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/kll_sketch_get_n_float",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "KLL_SKETCH_GET_QUANTILE_BIGINT",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/kll_sketch_get_quantile_bigint",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "KLL_SKETCH_GET_QUANTILE_DOUBLE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/kll_sketch_get_quantile_double",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "KLL_SKETCH_GET_QUANTILE_FLOAT",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/kll_sketch_get_quantile_float",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "KLL_SKETCH_GET_RANK_BIGINT",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/kll_sketch_get_rank_bigint",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "KLL_SKETCH_GET_RANK_DOUBLE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/kll_sketch_get_rank_double",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "KLL_SKETCH_GET_RANK_FLOAT",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/kll_sketch_get_rank_float",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "KLL_SKETCH_MERGE_BIGINT",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/kll_sketch_merge_bigint",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "KLL_SKETCH_MERGE_DOUBLE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/kll_sketch_merge_double",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "KLL_SKETCH_MERGE_FLOAT",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/kll_sketch_merge_float",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "KLL_SKETCH_TO_STRING_BIGINT",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/kll_sketch_to_string_bigint",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "KLL_SKETCH_TO_STRING_DOUBLE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/kll_sketch_to_string_double",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "KLL_SKETCH_TO_STRING_FLOAT",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/kll_sketch_to_string_float",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "KURTOSIS",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/kurtosis",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "LAG",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/lag",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "LAST",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/last",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "LAST_DAY",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/last_day",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "LAST_VALUE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/last_value",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "LCASE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/lcase",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "LEAD",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/lead",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "LEAST",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/least",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "LEFT",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/left",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "LEN",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/len",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "LENGTH",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/length",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "LEVENSHTEIN",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/levenshtein",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "LIKE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/like",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "LIST_SECRETS",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/list_secrets",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "LISTAGG",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/listagg",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "LN",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/ln",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "LOCATE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/locate",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "LOG",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/log",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "LOG10",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/log10",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "LOG1P",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/log1p",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "LOG2",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/log2",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "LOWER",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/lower",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "LPAD",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/lpad",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "LTEQGTSIGN",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/lteqgtsign",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "LTEQSIGN",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/lteqsign",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "LTGTSIGN",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/ltgtsign",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "LTRIM",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/ltrim",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "LTSIGN",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/ltsign",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "LUHN_CHECK",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/luhn_check",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "MAKE_DATE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/make_date",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "MAKE_DT_INTERVAL",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/make_dt_interval",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "MAKE_INTERVAL",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/make_interval",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "MAKE_TIME",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/make_time",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "MAKE_TIMESTAMP",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/make_timestamp",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "MAKE_VALID_UTF8",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/make_valid_utf8",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "MAKE_YM_INTERVAL",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/make_ym_interval",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "MAP",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/map",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "MAP_CONCAT",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/map_concat",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "MAP_CONTAINS_KEY",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/map_contains_key",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "MAP_ENTRIES",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/map_entries",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "MAP_FILTER",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/map_filter",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "MAP_FROM_ARRAYS",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/map_from_arrays",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "MAP_FROM_ENTRIES",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/map_from_entries",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "MAP_KEYS",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/map_keys",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "MAP_VALUES",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/map_values",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "MAP_ZIP_WITH",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/map_zip_with",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "MASK",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/mask",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "MAX",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/max",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "MAX_BY",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/max_by",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "MD5",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/md5",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "MEAN",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/mean",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "MEASURE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/measure",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "MEDIAN",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/median",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "MIN",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/min",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "MIN_BY",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/min_by",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "MINUSSIGN",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/minussign",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "MINUSSIGNUNARY",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/minussignunary",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "MINUTE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/minute",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "MOD",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/mod",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "MODE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/mode",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "MONOTONICALLY_INCREASING_ID",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/monotonically_increasing_id",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "MONTH",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/month",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "MONTHS_BETWEEN",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/months_between",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "NAMED_STRUCT",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/named_struct",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "NANVL",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/nanvl",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "NEGATIVE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/negative",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "NEXT_DAY",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/next_day",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "NOT",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/not",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "NOW",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/now",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "NTH_VALUE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/nth_value",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "NTILE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/ntile",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "NULLIF",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/nullif",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "NULLIFZERO",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/nullifzero",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "NVL",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/nvl",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "NVL2",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/nvl2",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "OCTET_LENGTH",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/octet_length",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "OR",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/or",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "OVERLAY",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/overlay",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "PARSE_JSON",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/parse_json",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "PARSE_TIMESTAMP",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/parse_timestamp",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "PARSE_URL",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/parse_url",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "PERCENT_RANK",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/percent_rank",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "PERCENTILE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/percentile",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "PERCENTILE_APPROX",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/percentile_approx",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "PERCENTILE_CONT",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/percentile_cont",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "PERCENTILE_DISC",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/percentile_disc",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "PERCENTSIGN",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/percentsign",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "PI",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/pi",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "PIPEPIPESIGN",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/pipepipesign",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "PIPESIGN",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/pipesign",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "PLUSSIGN",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/plussign",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "PLUSSIGNUNARY",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/plussignunary",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "PMOD",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/pmod",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "POSEXPLODE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/posexplode",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "POSEXPLODE_OUTER",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/posexplode_outer",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "POSITION",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/position",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "POSITIVE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/positive",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "POW",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/pow",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "POWER",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/power",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "PRINTF",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/printf",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "QUARTER",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/quarter",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "QUESTIONDOUBLECOLONSIGN",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/questiondoublecolonsign",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "RADIANS",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/radians",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "RAISE_ERROR",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/raise_error",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "RAND",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/rand",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "RANDN",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/randn",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "RANDOM",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/random",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "RANDSTR",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/randstr",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "RANGE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/range",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "RANK",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/rank",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "READ_FILES",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/read_files",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "READ_KAFKA",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/read_kafka",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "READ_KINESIS",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/read_kinesis",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "READ_PUBSUB",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/read_pubsub",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "READ_PULSAR",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/read_pulsar",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "READ_STATE_METADATA",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/read_state_metadata",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "READ_STATESTORE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/read_statestore",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "REDUCE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/reduce",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "REFLECT",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/reflect",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "REGEXP",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/regexp",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "REGEXP_COUNT",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/regexp_count",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "REGEXP_EXTRACT",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/regexp_extract",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "REGEXP_EXTRACT_ALL",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/regexp_extract_all",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "REGEXP_INSTR",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/regexp_instr",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "REGEXP_LIKE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/regexp_like",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "REGEXP_REPLACE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/regexp_replace",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "REGEXP_SUBSTR",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/regexp_substr",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "REGR_AVGX",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/regr_avgx",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "REGR_AVGY",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/regr_avgy",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "REGR_COUNT",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/regr_count",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "REGR_INTERCEPT",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/regr_intercept",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "REGR_R2",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/regr_r2",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "REGR_SLOPE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/regr_slope",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "REGR_SXX",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/regr_sxx",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "REGR_SXY",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/regr_sxy",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "REGR_SYY",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/regr_syy",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "REMOTE_QUERY",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/remote_query",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "REPEAT",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/repeat",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "REPLACE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/replace",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "REVERSE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/reverse",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "RIGHT",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/right",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "RINT",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/rint",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "RLIKE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/rlike",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ROUND",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/round",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ROW_NUMBER",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/row_number",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "RPAD",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/rpad",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "RTRIM",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/rtrim",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "SCHEMA_OF_CSV",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/schema_of_csv",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "SCHEMA_OF_JSON",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/schema_of_json",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "SCHEMA_OF_JSON_AGG",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/schema_of_json_agg",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "SCHEMA_OF_VARIANT",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/schema_of_variant",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "SCHEMA_OF_VARIANT_AGG",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/schema_of_variant_agg",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "SCHEMA_OF_XML",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/schema_of_xml",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "SEARCH",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/search",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "SEC",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/sec",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "SECOND",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/second",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "SECRET",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/secret",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "SENTENCES",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/sentences",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "SEQUENCE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/sequence",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "SESSION_USER",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/session_user",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "SESSION_WINDOW",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/session_window",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "SHA",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/sha",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "SHA1",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/sha1",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "SHA2",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/sha2",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "SHIFTLEFT",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/shiftleft",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "SHIFTRIGHT",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/shiftright",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "SHIFTRIGHTUNSIGNED",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/shiftrightunsigned",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "SHUFFLE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/shuffle",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "SIGN",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/sign",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "SIGNUM",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/signum",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "SIN",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/sin",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "SINH",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/sinh",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "SIZE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/size",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "SKEWNESS",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/skewness",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "SLASHSIGN",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/slashsign",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "SLICE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/slice",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "SMALLINT",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/smallint",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "SOME",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/some",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "SORT_ARRAY",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/sort_array",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "SOUNDEX",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/soundex",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "SPACE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/space",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "SPARK_PARTITION",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/spark_partition",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "SPLIT",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/split",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "SPLIT_PART",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/split_part",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "SQL_KEYWORDS",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/sql_keywords",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "SQRT",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/sqrt",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_ADDPOINT",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/st_addpoint",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_AREA",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/st_area",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_ASBINARY",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/st_asbinary",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_ASEWKB",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/st_asewkb",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_ASEWKT",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/st_asewkt",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_ASGEOJSON",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/st_asgeojson",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_ASTEXT",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/st_astext",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_ASWKB",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/st_aswkb",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_ASWKT",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/st_aswkt",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_AZIMUTH",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/st_azimuth",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_BOUNDARY",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/st_boundary",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_BUFFER",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/st_buffer",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_CENTROID",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/st_centroid",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_CLOSESTPOINT",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/st_closestpoint",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_COLLECT",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/st_collect",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "ST_CONCAVEHULL",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/st_concavehull",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_CONTAINS",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/st_contains",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_CONVEXHULL",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/st_convexhull",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_COVERS",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/st_covers",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_DIFFERENCE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/st_difference",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_DIMENSION",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/st_dimension",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_DISJOINT",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/st_disjoint",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_DISTANCE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/st_distance",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_DISTANCESPHERE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/st_distancesphere",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_DISTANCESPHEROID",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/st_distancespheroid",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_DUMP",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/st_dump",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_DWITHIN",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/st_dwithin",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_ENDPOINT",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/st_endpoint",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_ENVELOPE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/st_envelope",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_ENVELOPE_AGG",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/st_envelope_agg",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_EQUALS",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/st_equals",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_ESTIMATESRID",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/st_estimatesrid",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_EXTERIORRING",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/st_exteriorring",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_FLIPCOORDINATES",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/st_flipcoordinates",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_FORCE2D",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/st_force2d",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_GEOGFROMEWKT",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/st_geogfromewkt",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_GEOGFROMGEOJSON",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/st_geogfromgeojson",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_GEOGFROMTEXT",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/st_geogfromtext",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_GEOGFROMWKB",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/st_geogfromwkb",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_GEOGFROMWKT",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/st_geogfromwkt",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_GEOHASH",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/st_geohash",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_GEOMETRYN",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/st_geometryn",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_GEOMETRYTYPE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/st_geometrytype",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_GEOMFROMEWKB",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/st_geomfromewkb",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_GEOMFROMEWKT",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/st_geomfromewkt",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_GEOMFROMGEOHASH",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/st_geomfromgeohash",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_GEOMFROMGEOJSON",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/st_geomfromgeojson",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_GEOMFROMTEXT",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/st_geomfromtext",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_GEOMFROMWKB",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/st_geomfromwkb",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_GEOMFROMWKT",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/st_geomfromwkt",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_INTERIORRINGN",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/st_interiorringn",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_INTERSECTION",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/st_intersection",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_INTERSECTS",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/st_intersects",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_ISEMPTY",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/st_isempty",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_ISVALID",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/st_isvalid",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_LENGTH",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/st_length",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_M",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/st_m",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_MAKEENVELOPE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/st_makeenvelope",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "ST_MAKELINE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/st_makeline",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_MAKEPOINT",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/st_makepoint",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "ST_MAKEPOLYGON",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/st_makepolygon",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_MULTI",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/st_multi",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_NDIMS",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/st_ndims",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_NPOINTS",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/st_npoints",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_NRINGS",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/st_nrings",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_NUMGEOMETRIES",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/st_numgeometries",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_NUMINTERIORRINGS",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/st_numinteriorrings",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_NUMPOINTS",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/st_numpoints",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_PERIMETER",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/st_perimeter",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_POINT",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/st_point",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_POINTFROMGEOHASH",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/st_pointfromgeohash",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_POINTN",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/st_pointn",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_POINTONSURFACE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/st_pointonsurface",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "ST_REMOVEPOINT",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/st_removepoint",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_REVERSE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/st_reverse",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_ROTATE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/st_rotate",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_SCALE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/st_scale",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_SETPOINT",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/st_setpoint",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_SETSRID",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/st_setsrid",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_SIMPLIFY",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/st_simplify",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_SRID",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/st_srid",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_STARTPOINT",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/st_startpoint",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_TOUCHES",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/st_touches",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_TRANSFORM",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/st_transform",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_TRANSLATE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/st_translate",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_UNION",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/st_union",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_UNION_AGG",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/st_union_agg",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_WITHIN",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/st_within",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_X",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/st_x",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_XMAX",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/st_xmax",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_XMIN",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/st_xmin",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_Y",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/st_y",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_YMAX",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/st_ymax",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_YMIN",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/st_ymin",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_Z",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/st_z",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_ZMAX",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/st_zmax",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_ZMIN",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/st_zmin",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "STACK",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/stack",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "STARTSWITH",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/startswith",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "STD",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/std",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "STDDEV",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/stddev",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "STDDEV_POP",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/stddev_pop",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "STDDEV_SAMP",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/stddev_samp",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "STR_TO_MAP",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/str_to_map",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "STRING",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/string",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "STRING_AGG",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/string_agg",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "STRUCT",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/struct",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "SUBSTR",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/substr",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "SUBSTRING",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/substring",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "SUBSTRING_INDEX",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/substring_index",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "SUM",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/sum",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TABLE_CHANGES",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/table_changes",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TAN",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/tan",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TANH",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/tanh",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "THETA_DIFFERENCE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/theta_difference",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "THETA_INTERSECTION",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/theta_intersection",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "THETA_INTERSECTION_AGG",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/theta_intersection_agg",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "THETA_SKETCH_AGG",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/theta_sketch_agg",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "THETA_SKETCH_ESTIMATE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/theta_sketch_estimate",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "THETA_UNION",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/theta_union",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "THETA_UNION_AGG",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/theta_union_agg",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TILDESIGN",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/tildesign",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "TIME_DIFF",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/time_diff",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TIME_FROM_MICROS",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/time_from_micros",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "TIME_FROM_MILLIS",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/time_from_millis",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "TIME_FROM_SECONDS",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/time_from_seconds",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "TIME_TO_MICROS",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/time_to_micros",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "TIME_TO_MILLIS",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/time_to_millis",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "TIME_TO_SECONDS",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/time_to_seconds",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "TIME_TRUNC",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/time_trunc",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "TIMEDIFF",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/timediff",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TIMESTAMP",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/timestamp",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TIMESTAMP_MICROS",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/timestamp_micros",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TIMESTAMP_MILLIS",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/timestamp_millis",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TIMESTAMP_SECONDS",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/timestamp_seconds",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TIMESTAMPADD",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/timestampadd",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TIMESTAMPDIFF",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/timestampdiff",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TINYINT",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/tinyint",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TO_AVRO",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/to_avro",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TO_BINARY",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/to_binary",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TO_CHAR",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/to_char",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TO_CSV",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/to_csv",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TO_DATE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/to_date",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TO_GEOGRAPHY",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/to_geography",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TO_GEOMETRY",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/to_geometry",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TO_JSON",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/to_json",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TO_NUMBER",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/to_number",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TO_TIME",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/to_time",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "TO_TIMESTAMP",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/to_timestamp",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TO_UNIX_TIMESTAMP",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/to_unix_timestamp",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TO_UTC_TIMESTAMP",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/to_utc_timestamp",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TO_VARCHAR",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/to_varchar",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "TO_VARIANT_OBJECT",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/to_variant_object",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TO_XML",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/to_xml",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TRANSFORM",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/transform",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TRANSFORM_KEYS",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/transform_keys",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TRANSFORM_VALUES",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/transform_values",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TRANSLATE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/translate",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TRIM",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/trim",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TRUNC",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/trunc",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TRY_ADD",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/try_add",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TRY_AES_DECRYPT",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/try_aes_decrypt",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TRY_AVG",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/try_avg",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TRY_CAST",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/try_cast",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "TRY_DIVIDE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/try_divide",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TRY_ELEMENT_AT",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/try_element_at",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TRY_IP_AS_BINARY",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/try_ip_as_binary",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "TRY_IP_AS_STRING",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/try_ip_as_string",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "TRY_IP_CIDR",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/try_ip_cidr",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "TRY_IP_HOST",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/try_ip_host",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "TRY_MOD",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/try_mod",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TRY_MULTIPLY",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/try_multiply",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TRY_PARSE_JSON",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/try_parse_json",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TRY_PARSE_TIMESTAMP",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/try_parse_timestamp",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TRY_REFLECT",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/try_reflect",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "TRY_SECRET",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/try_secret",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TRY_SUBTRACT",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/try_subtract",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TRY_SUM",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/try_sum",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TRY_TO_BINARY",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/try_to_binary",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TRY_TO_GEOGRAPHY",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/try_to_geography",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TRY_TO_GEOMETRY",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/try_to_geometry",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TRY_TO_NUMBER",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/try_to_number",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TRY_TO_TIME",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/try_to_time",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "TRY_TO_TIMESTAMP",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/try_to_timestamp",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TRY_URL_DECODE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/try_url_decode",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TRY_VALIDATE_UTF8",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/try_validate_utf8",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TRY_VARIANT_GET",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/try_variant_get",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TRY_ZSTD_DECOMPRESS",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/try_zstd_decompress",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TUPLE_DIFFERENCE_DOUBLE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/tuple_difference_double",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TUPLE_DIFFERENCE_INTEGER",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/tuple_difference_integer",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TUPLE_INTERSECTION_AGG_DOUBLE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/tuple_intersection_agg_double",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TUPLE_INTERSECTION_AGG_INTEGER",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/tuple_intersection_agg_integer",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TUPLE_INTERSECTION_DOUBLE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/tuple_intersection_double",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TUPLE_INTERSECTION_INTEGER",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/tuple_intersection_integer",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TUPLE_SKETCH_AGG_DOUBLE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/tuple_sketch_agg_double",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TUPLE_SKETCH_AGG_INTEGER",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/tuple_sketch_agg_integer",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TUPLE_SKETCH_ESTIMATE_DOUBLE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/tuple_sketch_estimate_double",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TUPLE_SKETCH_ESTIMATE_INTEGER",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/tuple_sketch_estimate_integer",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TUPLE_SKETCH_SUMMARY_DOUBLE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/tuple_sketch_summary_double",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TUPLE_SKETCH_SUMMARY_INTEGER",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/tuple_sketch_summary_integer",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TUPLE_SKETCH_THETA_DOUBLE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/tuple_sketch_theta_double",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TUPLE_SKETCH_THETA_INTEGER",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/tuple_sketch_theta_integer",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TUPLE_UNION_AGG_DOUBLE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/tuple_union_agg_double",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TUPLE_UNION_AGG_INTEGER",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/tuple_union_agg_integer",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TUPLE_UNION_DOUBLE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/tuple_union_double",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TUPLE_UNION_INTEGER",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/tuple_union_integer",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TYPEOF",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/typeof",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "UCASE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/ucase",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "UNBASE64",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/unbase64",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "UNHEX",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/unhex",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "UNIFORM",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/uniform",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "UNIX_DATE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/unix_date",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "UNIX_MICROS",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/unix_micros",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "UNIX_MILLIS",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/unix_millis",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "UNIX_SECONDS",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/unix_seconds",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "UNIX_TIMESTAMP",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/unix_timestamp",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "UPPER",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/upper",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "URL_DECODE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/url_decode",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "URL_ENCODE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/url_encode",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "USER",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/user",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "UUID",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/uuid",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "VALIDATE_UTF8",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/validate_utf8",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "VAR_POP",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/var_pop",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "VAR_SAMP",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/var_samp",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "VARIANCE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/variance",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "VARIANT_EXPLODE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/variant_explode",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "VARIANT_EXPLODE_OUTER",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/variant_explode_outer",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "VARIANT_GET",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/variant_get",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "VECTOR_AVG",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/vector_avg",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "VECTOR_COSINE_SIMILARITY",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/vector_cosine_similarity",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "VECTOR_INNER_PRODUCT",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/vector_inner_product",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "VECTOR_L2_DISTANCE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/vector_l2_distance",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "VECTOR_NORM",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/vector_norm",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "VECTOR_NORMALIZE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/vector_normalize",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "VECTOR_SEARCH",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/vector_search",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "VECTOR_SUM",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/vector_sum",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "VERSION",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/version",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "WEEKDAY",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/weekday",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "WEEKOFYEAR",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/weekofyear",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "WIDTH_BUCKET",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/width_bucket",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "WINDOW",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/window",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "WINDOW_TIME",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/window_time",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "XPATH",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/xpath",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "XPATH_BOOLEAN",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/xpath_boolean",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "XPATH_DOUBLE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/xpath_double",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "XPATH_FLOAT",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/xpath_float",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "XPATH_INT",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/xpath_int",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "XPATH_LONG",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/xpath_long",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "XPATH_NUMBER",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/xpath_number",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "XPATH_SHORT",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/xpath_short",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "XPATH_STRING",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/xpath_string",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "XXHASH64",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/xxhash64",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "YEAR",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/year",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ZEROIFNULL",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/zeroifnull",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ZIP_WITH",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/zip_with",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ZSTD_COMPRESS",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/zstd_compress",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ZSTD_DECOMPRESS",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/zstd_decompress",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    }
+  ]
+}

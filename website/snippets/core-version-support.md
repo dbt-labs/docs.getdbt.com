@@ -1,5 +1,5 @@
 
-- **[Active](/docs/dbt-versions/core#ongoing-patches)** &mdash; We will patch regressions, new bugs, and include fixes for older bugs / quality-of-life improvements. We implement these changes when we have high confidence that they're narrowly scoped and won't cause unintended side effects.
-- **[Critical](/docs/dbt-versions/core#ongoing-patches)** &mdash; Newer minor versions transition the previous minor version into "Critical Support" with limited "security" releases for critical security and installation fixes.
-- **[End of Life](/docs/dbt-versions/core#eol-version-support)** &mdash; Minor versions that have reached EOL no longer receive new patch releases.
-- **Deprecated** &mdash; dbt Core versions older than v1.0 are no longer maintained by dbt Labs, nor supported in dbt Cloud.
+- **[Active](/docs/dbt-versions#current-version-support)**: In the first few months after a minor version's initial release, we patch it with bugfix releases. These include fixes for regressions, new bugs, and older bugs / quality-of-life improvements. We implement these changes when we have high confidence that they're narrowly scoped and won't cause unintended side effects.
+- **[Critical](/docs/dbt-versions#current-version-support)**: When a newer minor version ships, the previous one transitions to "Critical Support" for the remainder of its one-year window. Patches during this period are limited to critical security and installation fixes. After the one-year window ends, the version reaches end of life.
+- **[End of Life](/docs/dbt-versions#end-of-life-versions)**: Minor versions that have reached EOL no longer receive new patch releases.
+- **Deprecated**: <Constant name="core" /> versions that are no longer maintained by dbt Labs, nor supported in the <Constant name="dbt_platform" />. 

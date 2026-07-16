@@ -15,10 +15,10 @@ function slugify(text) {
     .replace(/-+$/, ''); // Trim - from end
 }
 
-function Expandable({ children, alt_header = null, lifecycle }) {
+function Expandable({ children, alt_header = null, lifecycle, lifecycle_size, is_open = false }) {
   if (!alt_header) return null;
 
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(is_open);
   const detailsRef = useRef(null);
   const anchorId = slugify(alt_header);
 
@@ -64,10 +64,22 @@ function Expandable({ children, alt_header = null, lifecycle }) {
 
   // Auto-expand when linked via hash (URL fragment)
   useEffect(() => {
-    if (window.location.hash === `#${anchorId}`) {
-      setIsOpen(true);
-      detailsRef.current?.scrollIntoView({ behavior: 'smooth' });
-    }
+    const checkHash = () => {
+      if (window.location.hash === `#${anchorId}`) {
+        setIsOpen(true);
+        detailsRef.current?.scrollIntoView({ behavior: 'smooth' });
+      }
+    };
+
+    // Check on mount
+    checkHash();
+
+    // Listen for hash changes (for anchor links on the same page)
+    window.addEventListener('hashchange', checkHash);
+
+    return () => {
+      window.removeEventListener('hashchange', checkHash);
+    };
   }, [anchorId]);
 
   // Observe search highlight and auto-expand
@@ -95,7 +107,7 @@ function Expandable({ children, alt_header = null, lifecycle }) {
         <span className={styles.headerText}>
           {alt_header}
           <span onClick={(e) => e.stopPropagation()}>
-            <Lifecycle status={lifecycle} />
+            <Lifecycle status={lifecycle} size={lifecycle_size} />
           </span>
         </span>
         <span onClick={handleCopyClick} className={styles.copyIcon}></span>

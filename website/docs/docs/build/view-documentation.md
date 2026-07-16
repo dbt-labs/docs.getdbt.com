@@ -6,44 +6,62 @@ id: "view-documentation"
 
 dbt provides intuitive and scalable tools for viewing your dbt documentation. Detailed documentation is essential for your developers and other stakeholders to gain shared context for your dbt project.
 
-You can view documentation in two complementary ways, depending on your needs:
+You can view documentation in three complementary ways, depending on your needs:
 
 | Option | Description | Availability |
 |------|-------------|--------------|
-| [**dbt Docs**](#dbt-docs) | Generates a static website with model lineage, metadata, and documentation that can be hosted on your web server (like S3 or Netlify). | dbt Core or dbt Cloud Developer plans |
-| [**dbt Explorer**](/docs/collaborate/explore-projects) | The premier documentation experience in dbt Cloud. Builds on dbt Docs to provide a dynamic, real-time interface with rich [metadata](/docs/collaborate/explore-projects#generate-metadata), customizable views, deep insight into your project and resources, and collaborative tools. | dbt Cloud Team or Enterprise plans |
+| [**dbt Docs (Legacy)**](#dbt-docs) | Generates a static website with model lineage, metadata, and documentation that can be hosted on your web server (like S3 or Netlify). | <Constant name="core" /> or <Constant name="dbt" /> Developer plans |
+| [**dbt Docs v2**](#dbt-docs-v2) <Lifecycle status="alpha" size="70" /> | A modern, performant open-source catalog built for data consumers. Includes a redesigned UI, large-project performance, Semantic Layer metadata, column-level lineage (Fusion), and a REST API for AI agents. | <Constant name="fusion_engine" /> and <Constant name="core_v2" /> |
+| [**<Constant name="catalog" />**](/docs/explore/explore-projects) | The premier documentation experience in <Constant name="dbt" />. Builds on dbt Docs to provide a dynamic, real-time interface with rich [metadata](/docs/explore/explore-projects#generate-metadata), customizable views, deep insight into your project and resources, and collaborative tools. | <Constant name="dbt" /> Starter, Enterprise, or Enterprise+ plans |
 
 ## Navigating your documentation
-The following sections describe how to navigate your documentation in dbt Explorer and dbt Docs.
+The following sections describe how to navigate your documentation in <Constant name="catalog" /> and dbt Docs.
 
-### dbt Explorer <Lifecycle status="team,enterprise" />
+### Catalog <Lifecycle status="self_service,managed,managed_plus" />
 
-[dbt Explorer](/docs/collaborate/explore-projects) offers a dynamic, interactive way to explore your models, sources, and lineage.
-To access dbt Explorer, navigate to the **Explore** option in the dbt Cloud navigation menu.
+[<Constant name="catalog" />](/docs/explore/explore-projects) offers a dynamic, interactive way to explore your models, sources, and lineage.
+To access <Constant name="catalog" />, navigate to the **Catalog** option in the <Constant name="dbt" /> navigation menu.
 
 <DocCarousel slidesPerView={1}>
 
-<Lightbox src="/img/docs/collaborate/dbt-explorer/example-model-details.png" width="95%" title="Example of dbt Explorer's resource details page and its lineage." />
+<Lightbox src="/img/docs/collaborate/dbt-explorer/example-model-details.png" width="95%" title="Example of Catalog's resource details page and its lineage." />
 
-<Lightbox src="/img/docs/collaborate/dbt-explorer/explorer-main-page.gif" width="95%" title="Navigate dbt Explorer to discover your project's resources and lineage."/>
+<Lightbox src="/img/docs/collaborate/dbt-explorer/explorer-main-page.gif" width="95%" title="Access Catalog from the lineage tab in a job by double-clicking a lineage node."/>
 
 </DocCarousel>
 
-dbt Explorer offers users a comprehensive suite of features to enhance data project navigation and understanding, like:
+<Constant name="catalog" /> offers users a comprehensive suite of features to enhance data project navigation and understanding, like:
 
 - Interactive lineage visualization for your project's DAG to understand relationships between resources. 
 - Resource search bar with comprehensive filters to help find project resources efficiently and quickly.
-- Model performance insights to access metadata on dbt Cloud runs for in-depth analysis of model performance and quality. 
+- Model performance insights to access metadata on <Constant name="dbt" /> runs for in-depth analysis of model performance and quality. 
 - Project recommendations with suggestions to improve test coverage and documentation across your data estate. 
 - Data health signals to monitor the health and performance of each resource through data health indicators. 
 - Model query history to track consumption queries on your models to gain deeper insights into data usage. 
 - Downstream exposures to automatically expose relevant data models from tools like Tableau to enhance visibility.
 
-For additional details and instructions on how to explore your lineage, navigate your resources, view model query history and data health signals, feature availability, and more &mdash; refer to [Discover data with dbt Explorer](/docs/collaborate/explore-projects).
+For additional details and instructions on how to explore your lineage, navigate your resources, view model query history and data health signals, feature availability, and more &mdash; refer to [Discover data with <Constant name="catalog" />](/docs/explore/explore-projects).
 
-### dbt Docs
+### dbt Docs v2 <Lifecycle status="alpha"/>
 
-dbt Docs provides valuable insights into your dbt Core or dbt Cloud Developer plan projects. The interface enables you to navigate to the documentation for specific models. That might look something like this:
+dbt Docs v2 is the next-generation open-source catalog experience, available when using the <Constant name="fusion_engine" /> and <Constant name="core_v2" />. It is designed for data consumers (analysts, BI users, data scientists, and stakeholders) who need to understand what data exists, how it was built, and whether they can trust it.
+
+Key improvements over dbt Docs:
+
+- **Performance:** Better handling for large dbt projects. The server reads from compact, pre-built index files rather than loading the full `manifest.json` in the browser.
+- **Modernized UI:** Visually aligned with the dbt platform, with better navigation and resource discovery.
+- **Semantic Layer metadata:** Surfaces compiled SQL logic, queryable dimensions, and metric definitions from your dbt Semantic Layer.
+- **Column-level lineage:** Available when using the <Constant name="fusion_engine" />.
+- **REST API:** Exposes a `/api/v1/` interface so AI agents and external tooling can query metadata without a browser. This makes dbt Docs v2 a context source for MCP servers and coding agents.
+
+To generate and serve dbt Docs v2, use the <Constant name="fusion_engine" /> or <Constant name="core_v2" /> to build your project with `--write-index` (for example, `dbt compile --write-index`). Then, run `dbt docs serve`. Add [`--static-analysis strict`](https://docs.getdbt.com/docs/fusion/new-concepts?version=1.13) to also pull column lineage and richer column type metadata from your warehouse. 
+
+Refer to [dbt docs commands](/reference/commands/cmd-docs) for full usage.
+
+
+### dbt Docs (Legacy)
+
+dbt Docs provides valuable insights into your <Constant name="core" /> or <Constant name="dbt" /> Developer plan projects. The interface enables you to navigate to the documentation for specific models. That might look something like this:
 
 <Lightbox src="/img/docs/building-a-dbt-project/testing-and-documentation/f2221dc-Screen_Shot_2018-08-14_at_6.29.55_PM.png" title="Auto-generated documentation for a dbt model"/>
 
@@ -59,7 +77,7 @@ In this example, the `fct_subscription_transactions` model only has one direct p
 
 ## Deploy the documentation site
 
-Effortlessly deploy documentation in dbt Explorer or dbt Docs to make it available to your teams.
+Effortlessly deploy documentation in <Constant name="catalog" /> or dbt Docs to make it available to your teams.
 
 :::caution Security
 
@@ -67,19 +85,18 @@ The `dbt docs serve` command is only intended for local/development hosting of t
 
 :::
 
-### dbt Explorer <Lifecycle status="team,enterprise" />
+### Catalog <Lifecycle status="self_service,managed,managed_plus" />
 
+<Constant name="catalog" /> automatically updates documentation after each production or staging job run using the metadata generated. This means it always has the latest results for your project with no manual deployment required. For details on how <Constant name="catalog" /> uses metadata to automatically update documentation, refer to [Generate metadata](/docs/explore/explore-projects#generate-metadata). 
 
-dbt Explorer automatically updates documentation after each production or staging job run using the metadata generated. This means it always has the latest results for your project with no manual deployment required. For details on how dbt Explorer uses metadata to automatically update documentation, refer to [Generate metadata](/docs/collaborate/explore-projects#generate-metadata). 
+To learn how to deploy your documentation site, see [Build and view your docs with <Constant name="dbt" />](/docs/explore/build-and-view-your-docs).
 
-To learn how to deploy your documentation site, see [Build and view your docs with dbt Cloud](/docs/collaborate/build-and-view-your-docs).
-
-### dbt Docs
+### dbt Docs (Legacy)
 dbt Docs was built to make it easy to host on the web. The site is "static," meaning you don't need any "dynamic" servers to serve the docs. You can host your documentation in several ways:
 
 * Host on [Amazon S3](https://docs.aws.amazon.com/AmazonS3/latest/dev/WebsiteHosting.html) (optionally [with IP access restrictions](https://docs.aws.amazon.com/AmazonS3/latest/dev/example-bucket-policies.html#example-bucket-policies-use-case-3))
 * Publish with [Netlify](https://discourse.getdbt.com/t/publishing-dbt-docs-to-netlify/121)
 * Use your own web server like Apache/Nginx
-* If you're on a dbt Cloud Developer plan, see [Build and view your docs with dbt Cloud](/docs/collaborate/build-and-view-your-docs#dbt-docs) to learn how to deploy your documentation site.
+* If you're on a <Constant name="dbt" /> Developer plan, see [Build and view your docs with <Constant name="dbt" />](/docs/explore/build-and-view-your-docs#dbt-docs) to learn how to deploy your documentation site.
 
-Interested in using dbt Explorer for the complete dbt documentation experience, sign up for a free [dbt Cloud trial](https://www.getdbt.com/signup) or [contact us](https://www.getdbt.com/contact). 
+Interested in using <Constant name="catalog" /> for the complete dbt documentation experience, sign up for a free [<Constant name="dbt" /> trial](https://www.getdbt.com/signup) or [contact us](https://www.getdbt.com/contact). 

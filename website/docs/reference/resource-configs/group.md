@@ -34,11 +34,11 @@ models:
 <File name='models/schema.yml'>
 
 ```yml
-version: 2
 
 models:
   - name: MODEL_NAME
-    group: GROUP
+    config:
+      group: GROUP # changed to config in v1.10
 
 ```
 
@@ -77,7 +77,8 @@ models:
 ```yml
 seeds:
   - name: [SEED_NAME]
-    group: GROUP_NAME
+    config:
+      group: GROUP_NAME # changed to config in v1.10
 ```
 
 </File>
@@ -100,7 +101,6 @@ snapshots:
 <File name='snapshots/properties.yml'>
 
 ```yaml
-version: 2
 
 snapshots:
   - name: snapshot_name
@@ -134,7 +134,7 @@ select ...
 <File name='dbt_project.yml'>
 
 ```yml
-tests:
+data_tests:
   [<resource-path>](resource-path):
     +group: GROUP_NAME
 ```
@@ -144,11 +144,10 @@ tests:
 <File name='tests/properties.yml'>
 
 ```yml
-version: 2
 
 <resource_type>:
   - name: <resource_name>
-    tests:
+    data_tests:
       - <test_name>:
           config:
             group: GROUP_NAME
@@ -190,11 +189,11 @@ select ...
 <File name='analyses/<filename>.yml'>
 
 ```yml
-version: 2
 
 analyses:
   - name: ANALYSIS_NAME
-    group: GROUP_NAME
+    config:
+      group: GROUP_NAME # changed to config in v1.10
 ```
 
 </File>
@@ -217,7 +216,6 @@ metrics:
 <File name='models/metrics.yml'>
 
 ```yaml
-version: 2
 
 metrics:
   - name: [METRIC_NAME]
@@ -243,6 +241,7 @@ semantic-models:
 
 </File>
 
+<VersionBlock lastVersion="1.11">
 <File name='models/semantic_models.yml'>
 
 ```yaml
@@ -253,6 +252,22 @@ semantic_models:
 ```
 
 </File>
+</VersionBlock>
+
+<VersionBlock firstVersion="1.12">
+<File name='models/file_name.yml'>
+
+```yaml
+models:
+  - name: model_name
+    semantic_model:
+      enabled: true
+      group: group_name
+
+```
+
+</File>
+</VersionBlock>
 
 </TabItem>
 
@@ -283,10 +298,12 @@ saved_queries:
 
 </Tabs>
 
+Note that for backwards compatibility, `group` is supported as a top-level key, but without the capabilities of config inheritance.
+
 ## Definition
 An optional configuration for assigning a group to a resource. When a resource is grouped, dbt will allow it to reference private models within the same group.
 
-For more details on reference access between resources in groups, check out [model access](/docs/collaborate/govern/model-access#groups).
+For more details on reference access between resources in groups, check out [model access](/docs/mesh/govern/model-access#groups).
 
 ## Examples
 ### Prevent a 'marketing' group model from referencing a private 'finance' group model
@@ -297,10 +314,12 @@ This is useful if you want to prevent other groups from building on top of model
 ```yml
 models:
   - name: finance_model
-    access: private
-    group: finance
+    config:
+      group: finance # changed to config in v1.10
+      access: private # changed to config in v1.10
   - name: marketing_model
-    group: marketing
+    config:
+      group: marketing # changed to config in v1.10
 ```
 </File>
 
@@ -321,5 +340,5 @@ dbt.exceptions.DbtReferenceError: Parsing Error
 
 ## Related docs
 
-* [Model Access](/docs/collaborate/govern/model-access#groups)
+* [Model Access](/docs/mesh/govern/model-access#groups)
 * [Defining groups](/docs/build/groups)

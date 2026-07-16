@@ -7,11 +7,9 @@ Selector methods return all resources that share a common property, using the
 syntax `method:value`. While it is recommended to explicitly denote the method,
 you can omit it (the default value will be one of `path`, `file` or `fqn`).
 
-<Expandable alt_header="Differences between --select and --selector">
+import UsingCommas from '/snippets/_using-commas.md';
 
-The `--select` and `--selector` arguments sound similar, but they are different. To understand the difference, see [Differences between `--select` and `--selector`](/reference/node-selection/yaml-selectors#difference-between---select-and---selector).
-
-</Expandable>
+<UsingCommas />
 
 Many of the methods below support Unix-style wildcards:
 
@@ -23,7 +21,7 @@ Many of the methods below support Unix-style wildcards:
 | [a-z]    | matches one character from the range given in the bracket |
 
 For example:
-```
+```bash
 dbt list --select "*.folder_name.*"
 dbt list --select "package:*_source"
 ```
@@ -89,6 +87,8 @@ dbt ls --select "+exposure:*" --resource-type source    # list all source tables
 
 ### file
 
+<VersionBlock lastVersion="1.10">
+
 The `file` method can be used to select a model by its filename, including the file extension (`.sql`).
 
 ```bash
@@ -97,6 +97,27 @@ dbt run --select "file:some_model.sql"
 dbt run --select "some_model.sql"
 dbt run --select "some_model"
 ```
+</VersionBlock>
+
+<VersionBlock firstVersion="1.11">
+
+The `file` method can be used to select a model or a function by its filename, including the file extension (`.sql`).
+
+```bash
+# These are equivalent
+dbt run --select "file:some_model.sql"
+dbt run --select "some_model.sql"
+dbt run --select "some_model"
+
+# These are equivalent
+dbt build --select "file:my_function.sql"
+dbt build --select "my_function.sql"
+dbt build --select "my_function"
+
+# To build all models that use the function
+dbt build --select "my_function+"
+```
+</VersionBlock>
 
 ### fqn
 
@@ -148,6 +169,8 @@ Use the `this` package to select nodes from the current project. From the exampl
 Since `this` always refers to the current project, using `package:this` ensures that you're only selecting models from the project you're working in.
 
 ### path
+
+<VersionBlock lastVersion="1.10">
 The `path` method is used to select models/sources defined at or under a specific path.
 Model definitions are in SQL/Python files (not YAML), and source definitions are in YAML files.
 While the `path` prefix is not explicitly required, it may be used to make
@@ -164,25 +187,88 @@ selectors unambiguous.
   dbt run --select "models/staging/github/stg_issues.sql"
   ```
 
-### resource_type
-Use the `resource_type` method to select nodes of a particular type (`model`, `test`, `exposure`, and so on). This is similar to the `--resource-type` flag used by the [`dbt ls` command](/reference/commands/list).
+</VersionBlock>
+
+<VersionBlock firstVersion="1.11">
+
+The `path` method is used to select models, sources, or functions defined at or under a specific path.
+Model definitions are in SQL/Python files (not YAML), and source definitions are in YAML files. Functions are defined in SQL files. While the `path` prefix is not explicitly required, it may be used to make
+selectors unambiguous.
+
 
   ```bash
+  # These two selectors are equivalent
+  dbt run --select "path:models/staging/github"
+  dbt run --select "models/staging/github"
+
+  # These two selectors are equivalent
+  dbt run --select "path:models/staging/github/stg_issues.sql"
+  dbt run --select "models/staging/github/stg_issues.sql"
+
+  # These two selectors are equivalent
+  dbt build --select "path:functions/my_function.sql"
+  dbt build --select "functions/my_function.sql"
+  ```
+
+</VersionBlock>
+
+### resource_type
+
+<VersionBlock lastVersion="1.10">
+
+Use the `resource_type` method to select nodes of a particular type (`model`, `test`, `exposure`, and so on). This is similar to the `--resource-type` flag used by the `dbt build`, `dbt test`, `dbt clone`, and `dbt list` [commands](/reference/dbt-commands#available-commands).
+
+```bash
 dbt build --select "resource_type:exposure"    # build all resources upstream of exposures
 dbt list --select "resource_type:test"         # list all tests in your project
 dbt list --select "resource_type:source"       # list all sources in your project
 ```
 
-### result
+</VersionBlock>
 
-The `result` method is related to the `state` method described above and can be used to select resources based on their result status from a prior run. Note that one of the dbt commands [`run`, `test`, `build`, `seed`] must have been performed in order to create the result on which a result selector operates. You can use `result` selectors in conjunction with the `+` operator. 
+<VersionBlock firstVersion="1.11">
+
+Use the `resource_type` method to select nodes of a particular type (`model`, `test`, `exposure`, `function`, and so on). This is similar to the `--resource-type` flag used by the `dbt build`, `dbt test`, `dbt clone`, and `dbt list` [commands](/reference/dbt-commands#available-commands).
 
 ```bash
-dbt run --select "result:error" --state path/to/artifacts # run all models that generated errors on the prior invocation of dbt run
-dbt test --select "result:fail" --state path/to/artifacts # run all tests that failed on the prior invocation of dbt test
-dbt build --select "1+result:fail" --state path/to/artifacts # run all the models associated with failed tests from the prior invocation of dbt build
-dbt seed --select "result:error" --state path/to/artifacts # run all seeds that generated errors on the prior invocation of dbt seed.
+dbt build --select "resource_type:exposure"    # build all resources upstream of exposures
+dbt build --select "resource_type:function"    # build all functions in your project
+dbt list --select "resource_type:test"         # list all tests in your project
+dbt list --select "resource_type:source"       # list all sources in your project
 ```
+
+</VersionBlock>
+
+### result
+
+The `result` method is related to the [`state` method](/reference/node-selection/methods#state) and can be used to select resources based on their result status from a prior run. Note that one of the dbt commands [`run`, `test`, `build`, `seed`] must have been performed in order to create the result on which a result selector operates. 
+
+You can use `result` selectors in conjunction with the `+` operator. 
+
+```bash
+# run all models that generated errors on the prior invocation of dbt run
+dbt run --select "result:error" --state path/to/artifacts 
+
+# run all tests that failed on the prior invocation of dbt test
+dbt test --select "result:fail" --state path/to/artifacts 
+
+# run all the models associated with failed tests from the prior invocation of dbt build
+dbt build --select "1+result:fail" --state path/to/artifacts
+
+# run all seeds that generated errors on the prior invocation of dbt seed
+dbt seed --select "result:error" --state path/to/artifacts 
+```
+
+- Only use `result:fail` when you want to re-run tests that failed during the last invocation. This selector is specific to test nodes. Tests don't have downstream nodes in the DAG, so using the `result:fail+` selector will only return the failed test itself and not the model or anything built on top of it.
+- On the other hand, `result:error` selects any resource (models, tests, snapshots, and more) that returned an error.
+- As an example, to re-run upstream and downstream resources associated with failed tests, you can use one of the following selectors:
+  ```bash
+  # reruns all the models associated with failed tests from the prior invocation of dbt build
+  dbt build --select "1+result:fail" --state path/to/artifacts
+
+  # reruns the models associated with failed tests and all downstream dependencies - especially useful in deferred state workflows
+  dbt build --select "1+result:fail+" --state path/to/artifacts
+  ```
 
 ### saved_query
 
@@ -192,6 +278,33 @@ The `saved_query` method selects [saved queries](/docs/build/saved-queries).
 dbt list --select "saved_query:*"                    # list all saved queries 
 dbt list --select "+saved_query:orders_saved_query"  # list your saved query named "orders_saved_query" and all upstream resources
 ```
+
+<VersionBlock firstVersion="1.12">
+
+### selector
+
+:::info Beta feature
+The `selector` method is a beta feature in <Constant name="core" /> v1.12.
+:::
+
+The `selector` method selects the nodes defined by a named [YAML selector](/reference/node-selection/yaml-selectors) in `selectors.yml`. Use it in `--select` or `--exclude` strings so you can compose a named selector with other [methods](/reference/node-selection/methods), [graph operators](/reference/node-selection/graph-operators), and [set operators](/reference/node-selection/set-operators).
+
+```bash
+dbt run --select "selector:my_selector"          # same node set as `dbt run --selector my_selector`
+dbt build --select "selector:staging selector:nightly"   # union (space-separated)
+dbt build --select "selector:staging,selector:nightly"   # intersection (comma-separated)
+dbt build --select "1+selector:staging"                  # graph operators
+dbt build --select "selector:staging tag:nightly"        # combine with other methods
+dbt run --select "selector:staging" --exclude "selector:exclude_tests"
+```
+
+When you use the legacy `--selector` flag together with `--select` or `--exclude`, dbt only uses `--selector` for node selection and ignores `--select` and `--exclude`. Starting in <Constant name="core" /> v1.12, dbt raises `SelectExcludeIgnoredWithSelectorWarning` when `--selector` is combined with `--select` or `--exclude`. If you want to combine a selector with these flags, use the `selector:` method instead.
+
+When you run an "unqualified" command (without `--select` or `--exclude`), dbt applies the [default selector](/reference/node-selection/yaml-selectors#default) if you have defined one in `selectors.yml`. When you use `--select` or `--exclude`, dbt ignores the default selector. To include a selector in a `--select` or `--exclude` string, you must explicitly reference it using the `selector:` method.
+
+If selector definitions reference each other in a cycle, dbt raises the `DbtRecursionError` at runtime. For more information, refer to [Selector inheritance](/reference/node-selection/yaml-selectors#selector-inheritance).
+
+</VersionBlock>
 
 ### semantic_model
 
@@ -206,10 +319,12 @@ dbt list --select "+semantic_model:orders"  # list your semantic model named "or
 The `source` method is used to select models that select from a specified [source](/docs/build/sources#using-sources). Use in conjunction with the `+` operator.
 
 
-  ```bash
+```bash
 dbt run --select "source:snowplow+"    # run all models that select from Snowplow sources
+dbt run --select "source:snowplow.events+"    # run all models downstream of the events table in the Snowplow source
 ```
 
+Refer to [source FAQs](/docs/build/sources#faqs) for more info. 
 ### source_status
   
 Another element of job state is the `source_status` of a prior dbt invocation. After executing `dbt source freshness`, for example, dbt creates the `sources.json` artifact which contains execution times and `max_loaded_at` dates for dbt sources. You can read more about `sources.json` on the ['sources'](/reference/artifacts/sources-json) page. 
@@ -220,17 +335,31 @@ The following dbt commands produce `sources.json` artifacts whose results can be
 After issuing one of the above commands, you can reference the source freshness results by adding a selector to a subsequent command as follows: 
 
 
+<VersionBlock lastVersion="1.10">
+
 ```bash
 # You can also set the DBT_STATE environment variable instead of the --state flag.
 dbt source freshness # must be run again to compare current to previous state
 dbt build --select "source_status:fresher+" --state path/to/prod/artifacts
 ```
 
+</VersionBlock>
+
+<VersionBlock firstVersion="1.11">
+
+```bash
+# You can also set the DBT_ENGINE_STATE environment variable instead of the --state flag.
+dbt source freshness # must be run again to compare current to previous state
+dbt build --select "source_status:fresher+" --state path/to/prod/artifacts
+```
+
+</VersionBlock>
+
 ### state
 
 **N.B.** [State-based selection](/reference/node-selection/state-selection) is a powerful, complex feature. Read about [known caveats and limitations](/reference/node-selection/state-comparison-caveats) to state comparison.
 
-The `state` method is used to select nodes by comparing them against a previous version of the same project, which is represented by a [manifest](/reference/artifacts/manifest-json). The file path of the comparison manifest _must_ be specified via the `--state` flag or `DBT_STATE` environment variable.
+The `state` method is used to select nodes by comparing them against a previous version of the same project, which is represented by a [manifest](/reference/artifacts/manifest-json). The file path of the comparison manifest _must_ be specified via the `--state` flag or <VersionBlock lastVersion="1.10">`DBT_STATE`</VersionBlock><VersionBlock firstVersion="1.11">`DBT_ENGINE_STATE`</VersionBlock> environment variable.
 
 `state:new`: There is no node with the same `unique_id` in the comparison manifest
 
@@ -244,7 +373,7 @@ dbt ls --select "state:modified" --state path/to/artifacts   # list all modified
 
 Because state comparison is complex, and everyone's project is different, dbt supports subselectors that include a subset of the full `modified` criteria:
 - `state:modified.body`: Changes to node body (e.g. model SQL, seed values)
-- `state:modified.configs`: Changes to any node configs, excluding `database`/`schema`/`alias`
+- `state:modified.configs`: Changes to any node configs, excluding `database`/`schema`/`alias`/`tags`
 - `state:modified.relation`: Changes to `database`/`schema`/`alias` (the database representation of this node), irrespective of `target` values or `generate_x_name` macros
 - `state:modified.persisted_descriptions`: Changes to relation- or column-level `description`, _if and only if_ `persist_docs` is enabled at each level
 - `state:modified.macros`: Changes to upstream macros (whether called directly or indirectly by another macro)
@@ -268,21 +397,26 @@ These selectors can help you shorten run times by excluding unchanged nodes. Cur
 
 If a node changes its group, downstream references may break, potentially causing build failures.
 
-As `group` is a config, and configs are generally included in `state:modified` detection, modifying the group name everywhere it’s referenced will flag those nodes as "modified".
+As `group` is a config, and configs are generally included in `state:modified` detection, modifying the group name everywhere it's referenced will flag those nodes as "modified".
 
 Depending on whether partial parsing is enabled, you will catch the breakage as part of CI workflows.
 
-- If you change a group name everywhere it’s referenced, and partial parsing is enabled, dbt may only re-parse the changed model.
+- If you change a group name everywhere it's referenced, and partial parsing is enabled, dbt may only re-parse the changed model.
 - If you update a group name in all its references without partial parsing enabled, dbt will re-parse all models and identify any invalid downstream references.
 
-An error along the lines of “there’s nothing to do” can occur when you change the group name *and* something is picked up to be run via `dbt build --select state:modified`. This error will be caught at runtime so long as the CI job is selecting `state:modified+` (including downstreams).
+An error along the lines of "there's nothing to do" can occur when you change the group name *and* something is picked up to be run via `dbt build --select state:modified`. This error will be caught at runtime so long as the CI job is selecting `state:modified+` (including downstreams).
 
 Certain factors can affect how references are used or resolved later on, including:
 
 - Modifying access: if permissions or access rules change, some references might stop working.
 - Modifying `deprecation_date`: if a reference or model version is marked  deprecated, new warnings might appear that affect how references are  processed.
-- Modifying `latest_version`: if there’s no tie to a specific version, the reference or model will point to the latest version.
+- Modifying `latest_version`: if there's no tie to a specific version, the reference or model will point to the latest version.
   -  If a newer version is released, the reference will automatically resolve to the new version, potentially changing the behavior or output of the system that relies on it.
+
+dbt handles state comparison for seed files differently depending on their size:
+
+- **Seed files smaller than 1 MiB** &mdash; Included in the `state:modified` selector only when the contents change.
+- **Seed files 1 MiB or larger** &mdash; Included in the `state:modified` selector only when the seed file path changes.
 
 #### Overwrites the `manifest.json`
 
@@ -308,7 +442,7 @@ dbt run --select "tag:nightly"    # run all models with the `nightly` tag
 
 The `test_name` method is used to select tests based on the name of the generic test
 that defines it. For more information about how generic tests are defined, read about
-[tests](/docs/build/data-tests).
+[data tests](/docs/build/data-tests).
 
 
   ```bash
@@ -318,19 +452,6 @@ dbt test --select "test_name:range_min_max"     # run all instances of a custom 
 ```
 
 ### The test_type
-
-<VersionBlock lastVersion="1.7">
-
-The `test_type` method is used to select tests based on their type, `singular` or `generic`:
-
-```bash
-dbt test --select "test_type:generic"        # run all generic tests
-dbt test --select "test_type:singular"       # run all singular tests
-```
-
-</VersionBlock>
-
-<VersionBlock firstVersion="1.8">
 
 The `test_type` method is used to select tests based on their type: 
 
@@ -347,14 +468,7 @@ dbt test --select "test_type:generic"        # run all generic data tests
 dbt test --select "test_type:singular"       # run all singular data tests
 ```
 
-</VersionBlock>
-
 ### unit_test
-
-<VersionBlock lastVersion="1.7">
-Supported in v1.8 or newer.
-</VersionBlock>
-<VersionBlock firstVersion="1.8">
 
 The `unit_test` method selects [unit tests](/docs/build/unit-tests).
 
@@ -363,11 +477,9 @@ dbt list --select "unit_test:*"                        # list all unit tests
 dbt list --select "+unit_test:orders_with_zero_items"  # list your unit test named "orders_with_zero_items" and all upstream resources
 ```
 
-</VersionBlock>
-
 ### version
 
-The `version` method selects [versioned models](/docs/collaborate/govern/model-versions) based on their [version identifier](/reference/resource-properties/versions) and [latest version](/reference/resource-properties/latest_version).
+The `version` method selects [versioned models](/docs/mesh/govern/model-versions) based on their [version identifier](/reference/resource-properties/versions) and [latest version](/reference/resource-properties/latest_version).
 
 ```bash
 dbt list --select "version:latest"      # only 'latest' versions

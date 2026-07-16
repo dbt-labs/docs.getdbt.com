@@ -4,6 +4,8 @@ description: "on_configuration_change - Read this in-depth guide to learn about 
 datatype: "string"
 ---
 
+import CreationPrecedence from '/snippets/_creation-precedence.md';
+
 :::info
 This functionality is currently only supported for [materialized views](/docs/build/materializations#materialized-view) on a subset of adapters.
 :::
@@ -19,9 +21,9 @@ The `on_configuration_change` config has three settings:
   groupId="config-languages"
   defaultValue="project-yaml"
   values={[
-    { label: 'Project file', value: 'project-yaml', },
-    { label: 'Property file', value: 'property-yaml', },
-    { label: 'Config block', value: 'config', },
+    { label: 'Project YAML file', value: 'project-yaml', },
+    { label: 'Properties YAML file', value: 'property-yaml', },
+    { label: 'SQL file config', value: 'config', },
   ]
 }>
 
@@ -47,7 +49,6 @@ models:
 <File name='models/properties.yml'>
 
 ```yaml
-version: 2
 
 models:
   - name: [<model-name>]
@@ -78,9 +79,4 @@ models:
 
 </Tabs>
 
-Materializations are implemented following this "drop through" life cycle:
-1. If a model does not exist with the provided path, create the new model.
-2. If a model exists, but has a different type, drop the existing model and create the new model. 
-3. If [`--full-refresh`](/reference/resource-configs/full_refresh) is supplied, replace the existing model regardless of configuration changes and the `on_configuration_change` setting.
-4. If there are no configuration changes, perform the default action for that type (e.g. apply refresh for a materialized view).
-5. Determine whether to apply the configuration changes according to the `on_configuration_change` setting.
+<CreationPrecedence />

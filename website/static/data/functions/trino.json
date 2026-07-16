@@ -1,0 +1,2886 @@
+{
+  "_meta": {
+    "platform": "trino",
+    "platform_name": "Trino",
+    "count": 411
+  },
+  "functions": [
+    {
+      "name": "ABS",
+      "category": "A#",
+      "docs_url": "https://trino.io/docs/current/functions/math.html#abs",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ACOS",
+      "category": "A#",
+      "docs_url": "https://trino.io/docs/current/functions/math.html#acos",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ALL_MATCH",
+      "category": "A#",
+      "docs_url": "https://trino.io/docs/current/functions/array.html#all_match",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ANY_MATCH",
+      "category": "A#",
+      "docs_url": "https://trino.io/docs/current/functions/array.html#any_match",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ANY_VALUE",
+      "category": "A#",
+      "docs_url": "https://trino.io/docs/current/functions/aggregate.html#any_value",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "APPROX_DISTINCT",
+      "category": "A#",
+      "docs_url": "https://trino.io/docs/current/functions/aggregate.html#approx_distinct",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "APPROX_MOST_FREQUENT",
+      "category": "A#",
+      "docs_url": "https://trino.io/docs/current/functions/aggregate.html#approx_most_frequent",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "APPROX_PERCENTILE",
+      "category": "A#",
+      "docs_url": "https://trino.io/docs/current/functions/aggregate.html#approx_percentile",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "APPROX_SET",
+      "category": "A#",
+      "docs_url": "https://trino.io/docs/current/functions/hyperloglog.html#approx_set",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ARBITRARY",
+      "category": "A#",
+      "docs_url": "https://trino.io/docs/current/functions/aggregate.html#arbitrary",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ARRAY_AGG",
+      "category": "A#",
+      "docs_url": "https://trino.io/docs/current/functions/aggregate.html#array_agg",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ARRAY_DISTINCT",
+      "category": "A#",
+      "docs_url": "https://trino.io/docs/current/functions/array.html#array_distinct",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ARRAY_EXCEPT",
+      "category": "A#",
+      "docs_url": "https://trino.io/docs/current/functions/array.html#array_except",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ARRAY_FIRST",
+      "category": "A#",
+      "docs_url": "https://trino.io/docs/current/functions/array.html#array_first",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "ARRAY_HISTOGRAM",
+      "category": "A#",
+      "docs_url": "https://trino.io/docs/current/functions/array.html#array_histogram",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "ARRAY_INTERSECT",
+      "category": "A#",
+      "docs_url": "https://trino.io/docs/current/functions/array.html#array_intersect",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ARRAY_JOIN",
+      "category": "A#",
+      "docs_url": "https://trino.io/docs/current/functions/array.html#array_join",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ARRAY_LAST",
+      "category": "A#",
+      "docs_url": "https://trino.io/docs/current/functions/array.html#array_last",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "ARRAY_MAX",
+      "category": "A#",
+      "docs_url": "https://trino.io/docs/current/functions/array.html#array_max",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ARRAY_MIN",
+      "category": "A#",
+      "docs_url": "https://trino.io/docs/current/functions/array.html#array_min",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ARRAY_POSITION",
+      "category": "A#",
+      "docs_url": "https://trino.io/docs/current/functions/array.html#array_position",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ARRAY_REMOVE",
+      "category": "A#",
+      "docs_url": "https://trino.io/docs/current/functions/array.html#array_remove",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ARRAY_SORT",
+      "category": "A#",
+      "docs_url": "https://trino.io/docs/current/functions/array.html#array_sort",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ARRAY_UNION",
+      "category": "A#",
+      "docs_url": "https://trino.io/docs/current/functions/array.html#array_union",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ARRAYS_OVERLAP",
+      "category": "A#",
+      "docs_url": "https://trino.io/docs/current/functions/array.html#arrays_overlap",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ASIN",
+      "category": "A#",
+      "docs_url": "https://trino.io/docs/current/functions/math.html#asin",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "AT_TIMEZONE",
+      "category": "A#",
+      "docs_url": "https://trino.io/docs/current/functions/datetime.html#at_timezone",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ATAN",
+      "category": "A#",
+      "docs_url": "https://trino.io/docs/current/functions/math.html#atan",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ATAN2",
+      "category": "A#",
+      "docs_url": "https://trino.io/docs/current/functions/math.html#atan2",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "AVG",
+      "category": "A#",
+      "docs_url": "https://trino.io/docs/current/functions/aggregate.html#avg",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "BAR",
+      "category": "B#",
+      "docs_url": "https://trino.io/docs/current/functions/color.html#bar",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "BETA_CDF",
+      "category": "B#",
+      "docs_url": "https://trino.io/docs/current/functions/math.html#beta_cdf",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "BING_TILE",
+      "category": "B#",
+      "docs_url": "https://trino.io/docs/current/functions/geospatial.html#bing_tile",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "BING_TILE_AT",
+      "category": "B#",
+      "docs_url": "https://trino.io/docs/current/functions/geospatial.html#bing_tile_at",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "BING_TILE_COORDINATES",
+      "category": "B#",
+      "docs_url": "https://trino.io/docs/current/functions/geospatial.html#bing_tile_coordinates",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "BING_TILE_POLYGON",
+      "category": "B#",
+      "docs_url": "https://trino.io/docs/current/functions/geospatial.html#bing_tile_polygon",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "BING_TILE_QUADKEY",
+      "category": "B#",
+      "docs_url": "https://trino.io/docs/current/functions/geospatial.html#bing_tile_quadkey",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "BING_TILE_ZOOM_LEVEL",
+      "category": "B#",
+      "docs_url": "https://trino.io/docs/current/functions/geospatial.html#bing_tile_zoom_level",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "BING_TILES_AROUND",
+      "category": "B#",
+      "docs_url": "https://trino.io/docs/current/functions/geospatial.html#bing_tiles_around",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "BIT_COUNT",
+      "category": "B#",
+      "docs_url": "https://trino.io/docs/current/functions/bitwise.html#bit_count",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "BITWISE_AND",
+      "category": "B#",
+      "docs_url": "https://trino.io/docs/current/functions/bitwise.html#bitwise_and",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "BITWISE_AND_AGG",
+      "category": "B#",
+      "docs_url": "https://trino.io/docs/current/functions/aggregate.html#bitwise_and_agg",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "BITWISE_LEFT_SHIFT",
+      "category": "B#",
+      "docs_url": "https://trino.io/docs/current/functions/bitwise.html#bitwise_left_shift",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "BITWISE_NOT",
+      "category": "B#",
+      "docs_url": "https://trino.io/docs/current/functions/bitwise.html#bitwise_not",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "BITWISE_OR",
+      "category": "B#",
+      "docs_url": "https://trino.io/docs/current/functions/bitwise.html#bitwise_or",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "BITWISE_OR_AGG",
+      "category": "B#",
+      "docs_url": "https://trino.io/docs/current/functions/aggregate.html#bitwise_or_agg",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "BITWISE_RIGHT_SHIFT",
+      "category": "B#",
+      "docs_url": "https://trino.io/docs/current/functions/bitwise.html#bitwise_right_shift",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "BITWISE_RIGHT_SHIFT_ARITHMETIC",
+      "category": "B#",
+      "docs_url": "https://trino.io/docs/current/functions/bitwise.html#bitwise_right_shift_arithmetic",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "BITWISE_XOR",
+      "category": "B#",
+      "docs_url": "https://trino.io/docs/current/functions/bitwise.html#bitwise_xor",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "BOOL_AND",
+      "category": "B#",
+      "docs_url": "https://trino.io/docs/current/functions/aggregate.html#bool_and",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "BOOL_OR",
+      "category": "B#",
+      "docs_url": "https://trino.io/docs/current/functions/aggregate.html#bool_or",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "CARDINALITY",
+      "category": "C#",
+      "docs_url": "https://trino.io/docs/current/functions/array.html#cardinality",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "CAST",
+      "category": "C#",
+      "docs_url": "https://trino.io/docs/current/functions/conversion.html#cast",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "CBRT",
+      "category": "C#",
+      "docs_url": "https://trino.io/docs/current/functions/math.html#cbrt",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "CEIL",
+      "category": "C#",
+      "docs_url": "https://trino.io/docs/current/functions/math.html#ceil",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "CEILING",
+      "category": "C#",
+      "docs_url": "https://trino.io/docs/current/functions/math.html#ceiling",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "CHAR2HEXINT",
+      "category": "C#",
+      "docs_url": "https://trino.io/docs/current/functions/teradata.html#char2hexint",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "CHECKSUM",
+      "category": "C#",
+      "docs_url": "https://trino.io/docs/current/functions/aggregate.html#checksum",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "CHR",
+      "category": "C#",
+      "docs_url": "https://trino.io/docs/current/functions/string.html#chr",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "CLASSIFY",
+      "category": "C#",
+      "docs_url": "https://trino.io/docs/current/functions/ml.html#classify",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "CODEPOINT",
+      "category": "C#",
+      "docs_url": "https://trino.io/docs/current/functions/string.html#codepoint",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "COLOR",
+      "category": "C#",
+      "docs_url": "https://trino.io/docs/current/functions/color.html#color",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "COMBINATIONS",
+      "category": "C#",
+      "docs_url": "https://trino.io/docs/current/functions/array.html#combinations",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "CONCAT",
+      "category": "C#",
+      "docs_url": "https://trino.io/docs/current/functions/string.html#concat",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "CONCAT_WS",
+      "category": "C#",
+      "docs_url": "https://trino.io/docs/current/functions/string.html#concat_ws",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "CONTAINS",
+      "category": "C#",
+      "docs_url": "https://trino.io/docs/current/functions/array.html#contains",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "CONTAINS_SEQUENCE",
+      "category": "C#",
+      "docs_url": "https://trino.io/docs/current/functions/array.html#contains_sequence",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "CONVEX_HULL_AGG",
+      "category": "C#",
+      "docs_url": "https://trino.io/docs/current/functions/geospatial.html#convex_hull_agg",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "CORR",
+      "category": "C#",
+      "docs_url": "https://trino.io/docs/current/functions/aggregate.html#corr",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "COS",
+      "category": "C#",
+      "docs_url": "https://trino.io/docs/current/functions/math.html#cos",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "COSH",
+      "category": "C#",
+      "docs_url": "https://trino.io/docs/current/functions/math.html#cosh",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "COSINE_DISTANCE",
+      "category": "C#",
+      "docs_url": "https://trino.io/docs/current/functions/math.html#cosine_distance",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "COSINE_SIMILARITY",
+      "category": "C#",
+      "docs_url": "https://trino.io/docs/current/functions/math.html#cosine_similarity",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "COUNT",
+      "category": "C#",
+      "docs_url": "https://trino.io/docs/current/functions/aggregate.html#count",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "COUNT_IF",
+      "category": "C#",
+      "docs_url": "https://trino.io/docs/current/functions/aggregate.html#count_if",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "COVAR_POP",
+      "category": "C#",
+      "docs_url": "https://trino.io/docs/current/functions/aggregate.html#covar_pop",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "COVAR_SAMP",
+      "category": "C#",
+      "docs_url": "https://trino.io/docs/current/functions/aggregate.html#covar_samp",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "CRC32",
+      "category": "C#",
+      "docs_url": "https://trino.io/docs/current/functions/binary.html#crc32",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "CUME_DIST",
+      "category": "C#",
+      "docs_url": "https://trino.io/docs/current/functions/window.html#cume_dist",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "CURRENT_GROUPS",
+      "category": "C#",
+      "docs_url": "https://trino.io/docs/current/functions/session.html#current_groups",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "CURRENT_TIMEZONE",
+      "category": "C#",
+      "docs_url": "https://trino.io/docs/current/functions/datetime.html#current_timezone",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "DATE",
+      "category": "D#",
+      "docs_url": "https://trino.io/docs/current/functions/datetime.html#date",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "DATE_ADD",
+      "category": "D#",
+      "docs_url": "https://trino.io/docs/current/functions/datetime.html#date_add",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "DATE_DIFF",
+      "category": "D#",
+      "docs_url": "https://trino.io/docs/current/functions/datetime.html#date_diff",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "DATE_FORMAT",
+      "category": "D#",
+      "docs_url": "https://trino.io/docs/current/functions/datetime.html#date_format",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "DATE_TRUNC",
+      "category": "D#",
+      "docs_url": "https://trino.io/docs/current/functions/datetime.html#date_trunc",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "DAY",
+      "category": "D#",
+      "docs_url": "https://trino.io/docs/current/functions/datetime.html#day",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "DAY_OF_MONTH",
+      "category": "D#",
+      "docs_url": "https://trino.io/docs/current/functions/datetime.html#day_of_month",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "DAY_OF_WEEK",
+      "category": "D#",
+      "docs_url": "https://trino.io/docs/current/functions/datetime.html#day_of_week",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "DAY_OF_YEAR",
+      "category": "D#",
+      "docs_url": "https://trino.io/docs/current/functions/datetime.html#day_of_year",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "DEGREES",
+      "category": "D#",
+      "docs_url": "https://trino.io/docs/current/functions/math.html#degrees",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "DENSE_RANK",
+      "category": "D#",
+      "docs_url": "https://trino.io/docs/current/functions/window.html#dense_rank",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "DOW",
+      "category": "D#",
+      "docs_url": "https://trino.io/docs/current/functions/datetime.html#dow",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "DOY",
+      "category": "D#",
+      "docs_url": "https://trino.io/docs/current/functions/datetime.html#doy",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "E",
+      "category": "E#",
+      "docs_url": "https://trino.io/docs/current/functions/math.html#e",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ELEMENT_AT",
+      "category": "E#",
+      "docs_url": "https://trino.io/docs/current/functions/array.html#element_at",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "EMPTY_APPROX_SET",
+      "category": "E#",
+      "docs_url": "https://trino.io/docs/current/functions/hyperloglog.html#empty_approx_set",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "EVERY",
+      "category": "E#",
+      "docs_url": "https://trino.io/docs/current/functions/aggregate.html#every",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "EXP",
+      "category": "E#",
+      "docs_url": "https://trino.io/docs/current/functions/math.html#exp",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "EXTRACT",
+      "category": "E#",
+      "docs_url": "https://trino.io/docs/current/functions/datetime.html#extract",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "FEATURES",
+      "category": "F#",
+      "docs_url": "https://trino.io/docs/current/functions/ml.html#features",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "FILTER",
+      "category": "F#",
+      "docs_url": "https://trino.io/docs/current/functions/array.html#filter",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "FIRST_VALUE",
+      "category": "F#",
+      "docs_url": "https://trino.io/docs/current/functions/window.html#first_value",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "FLATTEN",
+      "category": "F#",
+      "docs_url": "https://trino.io/docs/current/functions/array.html#flatten",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "FLOOR",
+      "category": "F#",
+      "docs_url": "https://trino.io/docs/current/functions/math.html#floor",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "FORMAT",
+      "category": "F#",
+      "docs_url": "https://trino.io/docs/current/functions/conversion.html#format",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "FORMAT_DATETIME",
+      "category": "F#",
+      "docs_url": "https://trino.io/docs/current/functions/datetime.html#format_datetime",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "FORMAT_NUMBER",
+      "category": "F#",
+      "docs_url": "https://trino.io/docs/current/functions/conversion.html#format_number",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "FROM_BASE",
+      "category": "F#",
+      "docs_url": "https://trino.io/docs/current/functions/math.html#from_base",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "FROM_BASE32",
+      "category": "F#",
+      "docs_url": "https://trino.io/docs/current/functions/binary.html#from_base32",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "FROM_BASE64",
+      "category": "F#",
+      "docs_url": "https://trino.io/docs/current/functions/binary.html#from_base64",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "FROM_BASE64URL",
+      "category": "F#",
+      "docs_url": "https://trino.io/docs/current/functions/binary.html#from_base64url",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "FROM_BIG_ENDIAN_32",
+      "category": "F#",
+      "docs_url": "https://trino.io/docs/current/functions/binary.html#from_big_endian_32",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "FROM_BIG_ENDIAN_64",
+      "category": "F#",
+      "docs_url": "https://trino.io/docs/current/functions/binary.html#from_big_endian_64",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "FROM_ENCODED_POLYLINE",
+      "category": "F#",
+      "docs_url": "https://trino.io/docs/current/functions/geospatial.html#from_encoded_polyline",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "FROM_HEX",
+      "category": "F#",
+      "docs_url": "https://trino.io/docs/current/functions/binary.html#from_hex",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "FROM_IEEE754_32",
+      "category": "F#",
+      "docs_url": "https://trino.io/docs/current/functions/binary.html#from_ieee754_32",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "FROM_IEEE754_64",
+      "category": "F#",
+      "docs_url": "https://trino.io/docs/current/functions/binary.html#from_ieee754_64",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "FROM_ISO8601_DATE",
+      "category": "F#",
+      "docs_url": "https://trino.io/docs/current/functions/datetime.html#from_iso8601_date",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "FROM_ISO8601_TIMESTAMP",
+      "category": "F#",
+      "docs_url": "https://trino.io/docs/current/functions/datetime.html#from_iso8601_timestamp",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "FROM_ISO8601_TIMESTAMP_NANOS",
+      "category": "F#",
+      "docs_url": "https://trino.io/docs/current/functions/datetime.html#from_iso8601_timestamp_nanos",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "FROM_UNIXTIME",
+      "category": "F#",
+      "docs_url": "https://trino.io/docs/current/functions/datetime.html#from_unixtime",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "FROM_UNIXTIME_NANOS",
+      "category": "F#",
+      "docs_url": "https://trino.io/docs/current/functions/datetime.html#from_unixtime_nanos",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "FROM_UTF8",
+      "category": "F#",
+      "docs_url": "https://trino.io/docs/current/functions/string.html#from_utf8",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "GEOMETRIC_MEAN",
+      "category": "G#",
+      "docs_url": "https://trino.io/docs/current/functions/aggregate.html#geometric_mean",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "GEOMETRY_FROM_HADOOP_SHAPE",
+      "category": "G#",
+      "docs_url": "https://trino.io/docs/current/functions/geospatial.html#geometry_from_hadoop_shape",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "GEOMETRY_INVALID_REASON",
+      "category": "G#",
+      "docs_url": "https://trino.io/docs/current/functions/geospatial.html#geometry_invalid_reason",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "GEOMETRY_NEAREST_POINTS",
+      "category": "G#",
+      "docs_url": "https://trino.io/docs/current/functions/geospatial.html#geometry_nearest_points",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "GEOMETRY_TO_BING_TILES",
+      "category": "G#",
+      "docs_url": "https://trino.io/docs/current/functions/geospatial.html#geometry_to_bing_tiles",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "GEOMETRY_UNION",
+      "category": "G#",
+      "docs_url": "https://trino.io/docs/current/functions/geospatial.html#geometry_union",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "GEOMETRY_UNION_AGG",
+      "category": "G#",
+      "docs_url": "https://trino.io/docs/current/functions/geospatial.html#geometry_union_agg",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "GREAT_CIRCLE_DISTANCE",
+      "category": "G#",
+      "docs_url": "https://trino.io/docs/current/functions/geospatial.html#great_circle_distance",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "GREATEST",
+      "category": "G#",
+      "docs_url": "https://trino.io/docs/current/functions/comparison.html#greatest",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "HAMMING_DISTANCE",
+      "category": "H#",
+      "docs_url": "https://trino.io/docs/current/functions/string.html#hamming_distance",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "HASH_COUNTS",
+      "category": "H#",
+      "docs_url": "https://trino.io/docs/current/functions/setdigest.html#hash_counts",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "HISTOGRAM",
+      "category": "H#",
+      "docs_url": "https://trino.io/docs/current/functions/aggregate.html#histogram",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "HMAC_MD5",
+      "category": "H#",
+      "docs_url": "https://trino.io/docs/current/functions/binary.html#hmac_md5",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "HMAC_SHA1",
+      "category": "H#",
+      "docs_url": "https://trino.io/docs/current/functions/binary.html#hmac_sha1",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "HMAC_SHA256",
+      "category": "H#",
+      "docs_url": "https://trino.io/docs/current/functions/binary.html#hmac_sha256",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "HMAC_SHA512",
+      "category": "H#",
+      "docs_url": "https://trino.io/docs/current/functions/binary.html#hmac_sha512",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "HOUR",
+      "category": "H#",
+      "docs_url": "https://trino.io/docs/current/functions/datetime.html#hour",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "HUMAN_READABLE_SECONDS",
+      "category": "H#",
+      "docs_url": "https://trino.io/docs/current/functions/datetime.html#human_readable_seconds",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "INDEX",
+      "category": "I#",
+      "docs_url": "https://trino.io/docs/current/functions/teradata.html#index",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "INFINITY",
+      "category": "I#",
+      "docs_url": "https://trino.io/docs/current/functions/math.html#infinity",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "INTERSECTION_CARDINALITY",
+      "category": "I#",
+      "docs_url": "https://trino.io/docs/current/functions/setdigest.html#intersection_cardinality",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "INVERSE_BETA_CDF",
+      "category": "I#",
+      "docs_url": "https://trino.io/docs/current/functions/math.html#inverse_beta_cdf",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "INVERSE_NORMAL_CDF",
+      "category": "I#",
+      "docs_url": "https://trino.io/docs/current/functions/math.html#inverse_normal_cdf",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "IS_FINITE",
+      "category": "I#",
+      "docs_url": "https://trino.io/docs/current/functions/math.html#is_finite",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "IS_INFINITE",
+      "category": "I#",
+      "docs_url": "https://trino.io/docs/current/functions/math.html#is_infinite",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "IS_JSON_SCALAR",
+      "category": "I#",
+      "docs_url": "https://trino.io/docs/current/functions/json.html#is_json_scalar",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "IS_NAN",
+      "category": "I#",
+      "docs_url": "https://trino.io/docs/current/functions/math.html#is_nan",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "JACCARD_INDEX",
+      "category": "J#",
+      "docs_url": "https://trino.io/docs/current/functions/setdigest.html#jaccard_index",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "JSON_ARRAY",
+      "category": "J#",
+      "docs_url": "https://trino.io/docs/current/functions/json.html#json-array",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "JSON_ARRAY_CONTAINS",
+      "category": "J#",
+      "docs_url": "https://trino.io/docs/current/functions/json.html#json_array_contains",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "JSON_ARRAY_GET",
+      "category": "J#",
+      "docs_url": "https://trino.io/docs/current/functions/json.html#json_array_get",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "JSON_ARRAY_LENGTH",
+      "category": "J#",
+      "docs_url": "https://trino.io/docs/current/functions/json.html#json_array_length",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "JSON_EXISTS",
+      "category": "J#",
+      "docs_url": "https://trino.io/docs/current/functions/json.html#json-exists",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "JSON_EXTRACT",
+      "category": "J#",
+      "docs_url": "https://trino.io/docs/current/functions/json.html#json_extract",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "JSON_EXTRACT_SCALAR",
+      "category": "J#",
+      "docs_url": "https://trino.io/docs/current/functions/json.html#json_extract_scalar",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "JSON_FORMAT",
+      "category": "J#",
+      "docs_url": "https://trino.io/docs/current/functions/json.html#json_format",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "JSON_OBJECT",
+      "category": "J#",
+      "docs_url": "https://trino.io/docs/current/functions/json.html#json-object",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "JSON_PARSE",
+      "category": "J#",
+      "docs_url": "https://trino.io/docs/current/functions/json.html#json_parse",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "JSON_QUERY",
+      "category": "J#",
+      "docs_url": "https://trino.io/docs/current/functions/json.html#json-query",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "JSON_SIZE",
+      "category": "J#",
+      "docs_url": "https://trino.io/docs/current/functions/json.html#json_size",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "JSON_VALUE",
+      "category": "J#",
+      "docs_url": "https://trino.io/docs/current/functions/json.html#json-value",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "KURTOSIS",
+      "category": "K#",
+      "docs_url": "https://trino.io/docs/current/functions/aggregate.html#kurtosis",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "LAG",
+      "category": "L#",
+      "docs_url": "https://trino.io/docs/current/functions/window.html#lag",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "LAST_DAY_OF_MONTH",
+      "category": "L#",
+      "docs_url": "https://trino.io/docs/current/functions/datetime.html#last_day_of_month",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "LAST_VALUE",
+      "category": "L#",
+      "docs_url": "https://trino.io/docs/current/functions/window.html#last_value",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "LEAD",
+      "category": "L#",
+      "docs_url": "https://trino.io/docs/current/functions/window.html#lead",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "LEARN_CLASSIFIER",
+      "category": "L#",
+      "docs_url": "https://trino.io/docs/current/functions/ml.html#learn_classifier",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "LEARN_LIBSVM_CLASSIFIER",
+      "category": "L#",
+      "docs_url": "https://trino.io/docs/current/functions/ml.html#learn_libsvm_classifier",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "LEARN_LIBSVM_REGRESSOR",
+      "category": "L#",
+      "docs_url": "https://trino.io/docs/current/functions/ml.html#learn_libsvm_regressor",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "LEARN_REGRESSOR",
+      "category": "L#",
+      "docs_url": "https://trino.io/docs/current/functions/ml.html#learn_regressor",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "LEAST",
+      "category": "L#",
+      "docs_url": "https://trino.io/docs/current/functions/comparison.html#least",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "LENGTH",
+      "category": "L#",
+      "docs_url": "https://trino.io/docs/current/functions/string.html#length",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "LEVENSHTEIN_DISTANCE",
+      "category": "L#",
+      "docs_url": "https://trino.io/docs/current/functions/string.html#levenshtein_distance",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "LINE_INTERPOLATE_POINT",
+      "category": "L#",
+      "docs_url": "https://trino.io/docs/current/functions/geospatial.html#line_interpolate_point",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "LINE_INTERPOLATE_POINTS",
+      "category": "L#",
+      "docs_url": "https://trino.io/docs/current/functions/geospatial.html#line_interpolate_points",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "LINE_LOCATE_POINT",
+      "category": "L#",
+      "docs_url": "https://trino.io/docs/current/functions/geospatial.html#line_locate_point",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "LISTAGG",
+      "category": "L#",
+      "docs_url": "https://trino.io/docs/current/functions/aggregate.html#listagg",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "LN",
+      "category": "L#",
+      "docs_url": "https://trino.io/docs/current/functions/math.html#ln",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "LOG",
+      "category": "L#",
+      "docs_url": "https://trino.io/docs/current/functions/math.html#log",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "LOG10",
+      "category": "L#",
+      "docs_url": "https://trino.io/docs/current/functions/math.html#log10",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "LOG2",
+      "category": "L#",
+      "docs_url": "https://trino.io/docs/current/functions/math.html#log2",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "LOWER",
+      "category": "L#",
+      "docs_url": "https://trino.io/docs/current/functions/string.html#lower",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "LPAD",
+      "category": "L#",
+      "docs_url": "https://trino.io/docs/current/functions/string.html#lpad",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "LTRIM",
+      "category": "L#",
+      "docs_url": "https://trino.io/docs/current/functions/string.html#ltrim",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "LUHN_CHECK",
+      "category": "L#",
+      "docs_url": "https://trino.io/docs/current/functions/string.html#luhn_check",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "MAKE_SET_DIGEST",
+      "category": "M#",
+      "docs_url": "https://trino.io/docs/current/functions/setdigest.html#make_set_digest",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "MAP",
+      "category": "M#",
+      "docs_url": "https://trino.io/docs/current/functions/map.html#map",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "MAP_AGG",
+      "category": "M#",
+      "docs_url": "https://trino.io/docs/current/functions/aggregate.html#map_agg",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "MAP_CONCAT",
+      "category": "M#",
+      "docs_url": "https://trino.io/docs/current/functions/map.html#map_concat",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "MAP_ENTRIES",
+      "category": "M#",
+      "docs_url": "https://trino.io/docs/current/functions/map.html#map_entries",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "MAP_FILTER",
+      "category": "M#",
+      "docs_url": "https://trino.io/docs/current/functions/map.html#map_filter",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "MAP_FROM_ENTRIES",
+      "category": "M#",
+      "docs_url": "https://trino.io/docs/current/functions/map.html#map_from_entries",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "MAP_KEYS",
+      "category": "M#",
+      "docs_url": "https://trino.io/docs/current/functions/map.html#map_keys",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "MAP_UNION",
+      "category": "M#",
+      "docs_url": "https://trino.io/docs/current/functions/aggregate.html#map_union",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "MAP_VALUES",
+      "category": "M#",
+      "docs_url": "https://trino.io/docs/current/functions/map.html#map_values",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "MAP_ZIP_WITH",
+      "category": "M#",
+      "docs_url": "https://trino.io/docs/current/functions/map.html#map_zip_with",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "MAX",
+      "category": "M#",
+      "docs_url": "https://trino.io/docs/current/functions/aggregate.html#max",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "MAX_BY",
+      "category": "M#",
+      "docs_url": "https://trino.io/docs/current/functions/aggregate.html#max_by",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "MD5",
+      "category": "M#",
+      "docs_url": "https://trino.io/docs/current/functions/binary.html#md5",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "MERGE",
+      "category": "M#",
+      "docs_url": "https://trino.io/docs/current/functions/hyperloglog.html#merge",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "MERGE_SET_DIGEST",
+      "category": "M#",
+      "docs_url": "https://trino.io/docs/current/functions/setdigest.html#merge_set_digest",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "MILLISECOND",
+      "category": "M#",
+      "docs_url": "https://trino.io/docs/current/functions/datetime.html#millisecond",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "MIN",
+      "category": "M#",
+      "docs_url": "https://trino.io/docs/current/functions/aggregate.html#min",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "MIN_BY",
+      "category": "M#",
+      "docs_url": "https://trino.io/docs/current/functions/aggregate.html#min_by",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "MINUTE",
+      "category": "M#",
+      "docs_url": "https://trino.io/docs/current/functions/datetime.html#minute",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "MOD",
+      "category": "M#",
+      "docs_url": "https://trino.io/docs/current/functions/math.html#mod",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "MONTH",
+      "category": "M#",
+      "docs_url": "https://trino.io/docs/current/functions/datetime.html#month",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "MULTIMAP_AGG",
+      "category": "M#",
+      "docs_url": "https://trino.io/docs/current/functions/aggregate.html#multimap_agg",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "MULTIMAP_FROM_ENTRIES",
+      "category": "M#",
+      "docs_url": "https://trino.io/docs/current/functions/map.html#multimap_from_entries",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "MURMUR3",
+      "category": "M#",
+      "docs_url": "https://trino.io/docs/current/functions/binary.html#murmur3",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "NAN",
+      "category": "N#",
+      "docs_url": "https://trino.io/docs/current/functions/math.html#nan",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "NGRAMS",
+      "category": "N#",
+      "docs_url": "https://trino.io/docs/current/functions/array.html#ngrams",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "NONE_MATCH",
+      "category": "N#",
+      "docs_url": "https://trino.io/docs/current/functions/array.html#none_match",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "NORMAL_CDF",
+      "category": "N#",
+      "docs_url": "https://trino.io/docs/current/functions/math.html#normal_cdf",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "NORMALIZE",
+      "category": "N#",
+      "docs_url": "https://trino.io/docs/current/functions/string.html#normalize",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "NOW",
+      "category": "N#",
+      "docs_url": "https://trino.io/docs/current/functions/datetime.html#now",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "NTH_VALUE",
+      "category": "N#",
+      "docs_url": "https://trino.io/docs/current/functions/window.html#nth_value",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "NTILE",
+      "category": "N#",
+      "docs_url": "https://trino.io/docs/current/functions/window.html#ntile",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "NUMERIC_HISTOGRAM",
+      "category": "N#",
+      "docs_url": "https://trino.io/docs/current/functions/aggregate.html#numeric_histogram",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "OBJECTID_TIMESTAMP",
+      "category": "O#",
+      "docs_url": "https://trino.io/docs/current/functions/../connector/mongodb.html#objectid_timestamp",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "PARSE_DATA_SIZE",
+      "category": "P#",
+      "docs_url": "https://trino.io/docs/current/functions/conversion.html#parse_data_size",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "PARSE_DATETIME",
+      "category": "P#",
+      "docs_url": "https://trino.io/docs/current/functions/datetime.html#parse_datetime",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "PARSE_DURATION",
+      "category": "P#",
+      "docs_url": "https://trino.io/docs/current/functions/datetime.html#parse_duration",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "PERCENT_RANK",
+      "category": "P#",
+      "docs_url": "https://trino.io/docs/current/functions/window.html#percent_rank",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "PI",
+      "category": "P#",
+      "docs_url": "https://trino.io/docs/current/functions/math.html#pi",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "POSITION",
+      "category": "P#",
+      "docs_url": "https://trino.io/docs/current/functions/string.html#position",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "POW",
+      "category": "P#",
+      "docs_url": "https://trino.io/docs/current/functions/math.html#pow",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "POWER",
+      "category": "P#",
+      "docs_url": "https://trino.io/docs/current/functions/math.html#power",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "QDIGEST_AGG",
+      "category": "Q#",
+      "docs_url": "https://trino.io/docs/current/functions/qdigest.html#qdigest_agg",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "QUARTER",
+      "category": "Q#",
+      "docs_url": "https://trino.io/docs/current/functions/datetime.html#quarter",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "RADIANS",
+      "category": "R#",
+      "docs_url": "https://trino.io/docs/current/functions/math.html#radians",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "RAND",
+      "category": "R#",
+      "docs_url": "https://trino.io/docs/current/functions/math.html#rand",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "RANDOM",
+      "category": "R#",
+      "docs_url": "https://trino.io/docs/current/functions/math.html#random",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "RANDOM_STRING",
+      "category": "R#",
+      "docs_url": "https://trino.io/docs/current/functions/../connector/faker.html#random_string",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "RANK",
+      "category": "R#",
+      "docs_url": "https://trino.io/docs/current/functions/window.html#rank",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "REDUCE",
+      "category": "R#",
+      "docs_url": "https://trino.io/docs/current/functions/array.html#reduce",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "REDUCE_AGG",
+      "category": "R#",
+      "docs_url": "https://trino.io/docs/current/functions/aggregate.html#reduce_agg",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "REGEXP_COUNT",
+      "category": "R#",
+      "docs_url": "https://trino.io/docs/current/functions/regexp.html#regexp_count",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "REGEXP_EXTRACT",
+      "category": "R#",
+      "docs_url": "https://trino.io/docs/current/functions/regexp.html#regexp_extract",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "REGEXP_EXTRACT_ALL",
+      "category": "R#",
+      "docs_url": "https://trino.io/docs/current/functions/regexp.html#regexp_extract_all",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "REGEXP_LIKE",
+      "category": "R#",
+      "docs_url": "https://trino.io/docs/current/functions/regexp.html#regexp_like",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "REGEXP_POSITION",
+      "category": "R#",
+      "docs_url": "https://trino.io/docs/current/functions/regexp.html#regexp_position",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "REGEXP_REPLACE",
+      "category": "R#",
+      "docs_url": "https://trino.io/docs/current/functions/regexp.html#regexp_replace",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "REGEXP_SPLIT",
+      "category": "R#",
+      "docs_url": "https://trino.io/docs/current/functions/regexp.html#regexp_split",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "REGR_INTERCEPT",
+      "category": "R#",
+      "docs_url": "https://trino.io/docs/current/functions/aggregate.html#regr_intercept",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "REGR_SLOPE",
+      "category": "R#",
+      "docs_url": "https://trino.io/docs/current/functions/aggregate.html#regr_slope",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "REGRESS",
+      "category": "R#",
+      "docs_url": "https://trino.io/docs/current/functions/ml.html#regress",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "RENDER",
+      "category": "R#",
+      "docs_url": "https://trino.io/docs/current/functions/color.html#render",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "REPEAT",
+      "category": "R#",
+      "docs_url": "https://trino.io/docs/current/functions/array.html#repeat",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "REPLACE",
+      "category": "R#",
+      "docs_url": "https://trino.io/docs/current/functions/string.html#replace",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "REVERSE",
+      "category": "R#",
+      "docs_url": "https://trino.io/docs/current/functions/string.html#reverse",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "RGB",
+      "category": "R#",
+      "docs_url": "https://trino.io/docs/current/functions/color.html#rgb",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ROUND",
+      "category": "R#",
+      "docs_url": "https://trino.io/docs/current/functions/math.html#round",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ROW_NUMBER",
+      "category": "R#",
+      "docs_url": "https://trino.io/docs/current/functions/window.html#row_number",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "RPAD",
+      "category": "R#",
+      "docs_url": "https://trino.io/docs/current/functions/string.html#rpad",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "RTRIM",
+      "category": "R#",
+      "docs_url": "https://trino.io/docs/current/functions/string.html#rtrim",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "SECOND",
+      "category": "S#",
+      "docs_url": "https://trino.io/docs/current/functions/datetime.html#second",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "SEQUENCE",
+      "category": "S#",
+      "docs_url": "https://trino.io/docs/current/functions/table.html#sequence-table-function",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "SHA1",
+      "category": "S#",
+      "docs_url": "https://trino.io/docs/current/functions/binary.html#sha1",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "SHA256",
+      "category": "S#",
+      "docs_url": "https://trino.io/docs/current/functions/binary.html#sha256",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "SHA512",
+      "category": "S#",
+      "docs_url": "https://trino.io/docs/current/functions/binary.html#sha512",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "SHUFFLE",
+      "category": "S#",
+      "docs_url": "https://trino.io/docs/current/functions/array.html#shuffle",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "SIGN",
+      "category": "S#",
+      "docs_url": "https://trino.io/docs/current/functions/math.html#sign",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "SIMPLIFY_GEOMETRY",
+      "category": "S#",
+      "docs_url": "https://trino.io/docs/current/functions/geospatial.html#simplify_geometry",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "SIN",
+      "category": "S#",
+      "docs_url": "https://trino.io/docs/current/functions/math.html#sin",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "SINH",
+      "category": "S#",
+      "docs_url": "https://trino.io/docs/current/functions/math.html#sinh",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "SKEWNESS",
+      "category": "S#",
+      "docs_url": "https://trino.io/docs/current/functions/aggregate.html#skewness",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "SLICE",
+      "category": "S#",
+      "docs_url": "https://trino.io/docs/current/functions/array.html#slice",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "SOUNDEX",
+      "category": "S#",
+      "docs_url": "https://trino.io/docs/current/functions/string.html#soundex",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "SPLIT",
+      "category": "S#",
+      "docs_url": "https://trino.io/docs/current/functions/string.html#split",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "SPLIT_PART",
+      "category": "S#",
+      "docs_url": "https://trino.io/docs/current/functions/string.html#split_part",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "SPLIT_TO_MAP",
+      "category": "S#",
+      "docs_url": "https://trino.io/docs/current/functions/string.html#split_to_map",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "SPLIT_TO_MULTIMAP",
+      "category": "S#",
+      "docs_url": "https://trino.io/docs/current/functions/string.html#split_to_multimap",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "SPOOKY_HASH_V2_32",
+      "category": "S#",
+      "docs_url": "https://trino.io/docs/current/functions/binary.html#spooky_hash_v2_32",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "SPOOKY_HASH_V2_64",
+      "category": "S#",
+      "docs_url": "https://trino.io/docs/current/functions/binary.html#spooky_hash_v2_64",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "SQRT",
+      "category": "S#",
+      "docs_url": "https://trino.io/docs/current/functions/math.html#sqrt",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_AREA",
+      "category": "S#",
+      "docs_url": "https://trino.io/docs/current/functions/geospatial.html#ST_Area",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_ASBINARY",
+      "category": "S#",
+      "docs_url": "https://trino.io/docs/current/functions/geospatial.html#ST_AsBinary",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_ASTEXT",
+      "category": "S#",
+      "docs_url": "https://trino.io/docs/current/functions/geospatial.html#ST_AsText",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_BOUNDARY",
+      "category": "S#",
+      "docs_url": "https://trino.io/docs/current/functions/geospatial.html#ST_Boundary",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_BUFFER",
+      "category": "S#",
+      "docs_url": "https://trino.io/docs/current/functions/geospatial.html#ST_Buffer",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_CENTROID",
+      "category": "S#",
+      "docs_url": "https://trino.io/docs/current/functions/geospatial.html#ST_Centroid",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_CONTAINS",
+      "category": "S#",
+      "docs_url": "https://trino.io/docs/current/functions/geospatial.html#ST_Contains",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_CONVEXHULL",
+      "category": "S#",
+      "docs_url": "https://trino.io/docs/current/functions/geospatial.html#ST_ConvexHull",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_COORDDIM",
+      "category": "S#",
+      "docs_url": "https://trino.io/docs/current/functions/geospatial.html#ST_CoordDim",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_CROSSES",
+      "category": "S#",
+      "docs_url": "https://trino.io/docs/current/functions/geospatial.html#ST_Crosses",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_DIFFERENCE",
+      "category": "S#",
+      "docs_url": "https://trino.io/docs/current/functions/geospatial.html#ST_Difference",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_DIMENSION",
+      "category": "S#",
+      "docs_url": "https://trino.io/docs/current/functions/geospatial.html#ST_Dimension",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_DISJOINT",
+      "category": "S#",
+      "docs_url": "https://trino.io/docs/current/functions/geospatial.html#ST_Disjoint",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_DISTANCE",
+      "category": "S#",
+      "docs_url": "https://trino.io/docs/current/functions/geospatial.html#ST_Distance",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_ENDPOINT",
+      "category": "S#",
+      "docs_url": "https://trino.io/docs/current/functions/geospatial.html#ST_EndPoint",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_ENVELOPE",
+      "category": "S#",
+      "docs_url": "https://trino.io/docs/current/functions/geospatial.html#ST_Envelope",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_ENVELOPEASPTS",
+      "category": "S#",
+      "docs_url": "https://trino.io/docs/current/functions/geospatial.html#ST_EnvelopeAsPts",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_EQUALS",
+      "category": "S#",
+      "docs_url": "https://trino.io/docs/current/functions/geospatial.html#ST_Equals",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_EXTERIORRING",
+      "category": "S#",
+      "docs_url": "https://trino.io/docs/current/functions/geospatial.html#ST_ExteriorRing",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_GEOMETRIES",
+      "category": "S#",
+      "docs_url": "https://trino.io/docs/current/functions/geospatial.html#ST_Geometries",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_GEOMETRYFROMTEXT",
+      "category": "S#",
+      "docs_url": "https://trino.io/docs/current/functions/geospatial.html#ST_GeometryFromText",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_GEOMETRYN",
+      "category": "S#",
+      "docs_url": "https://trino.io/docs/current/functions/geospatial.html#ST_GeometryN",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_GEOMETRYTYPE",
+      "category": "S#",
+      "docs_url": "https://trino.io/docs/current/functions/geospatial.html#ST_GeometryType",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_GEOMFROMBINARY",
+      "category": "S#",
+      "docs_url": "https://trino.io/docs/current/functions/geospatial.html#ST_GeomFromBinary",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_INTERIORRINGN",
+      "category": "S#",
+      "docs_url": "https://trino.io/docs/current/functions/geospatial.html#ST_InteriorRingN",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_INTERIORRINGS",
+      "category": "S#",
+      "docs_url": "https://trino.io/docs/current/functions/geospatial.html#ST_InteriorRings",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_INTERSECTION",
+      "category": "S#",
+      "docs_url": "https://trino.io/docs/current/functions/geospatial.html#ST_Intersection",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_INTERSECTS",
+      "category": "S#",
+      "docs_url": "https://trino.io/docs/current/functions/geospatial.html#ST_Intersects",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_ISCLOSED",
+      "category": "S#",
+      "docs_url": "https://trino.io/docs/current/functions/geospatial.html#ST_IsClosed",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_ISEMPTY",
+      "category": "S#",
+      "docs_url": "https://trino.io/docs/current/functions/geospatial.html#ST_IsEmpty",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_ISRING",
+      "category": "S#",
+      "docs_url": "https://trino.io/docs/current/functions/geospatial.html#ST_IsRing",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_ISSIMPLE",
+      "category": "S#",
+      "docs_url": "https://trino.io/docs/current/functions/geospatial.html#ST_IsSimple",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_ISVALID",
+      "category": "S#",
+      "docs_url": "https://trino.io/docs/current/functions/geospatial.html#ST_IsValid",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_LENGTH",
+      "category": "S#",
+      "docs_url": "https://trino.io/docs/current/functions/geospatial.html#ST_Length",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_LINEFROMTEXT",
+      "category": "S#",
+      "docs_url": "https://trino.io/docs/current/functions/geospatial.html#ST_LineFromText",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_LINESTRING",
+      "category": "S#",
+      "docs_url": "https://trino.io/docs/current/functions/geospatial.html#ST_LineString",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_MULTIPOINT",
+      "category": "S#",
+      "docs_url": "https://trino.io/docs/current/functions/geospatial.html#ST_MultiPoint",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_NUMGEOMETRIES",
+      "category": "S#",
+      "docs_url": "https://trino.io/docs/current/functions/geospatial.html#ST_NumGeometries",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_NUMPOINTS",
+      "category": "S#",
+      "docs_url": "https://trino.io/docs/current/functions/geospatial.html#ST_NumPoints",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_OVERLAPS",
+      "category": "S#",
+      "docs_url": "https://trino.io/docs/current/functions/geospatial.html#ST_Overlaps",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_POINT",
+      "category": "S#",
+      "docs_url": "https://trino.io/docs/current/functions/geospatial.html#ST_Point",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_POINTN",
+      "category": "S#",
+      "docs_url": "https://trino.io/docs/current/functions/geospatial.html#ST_PointN",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_POINTS",
+      "category": "S#",
+      "docs_url": "https://trino.io/docs/current/functions/geospatial.html#ST_Points",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_POLYGON",
+      "category": "S#",
+      "docs_url": "https://trino.io/docs/current/functions/geospatial.html#ST_Polygon",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_RELATE",
+      "category": "S#",
+      "docs_url": "https://trino.io/docs/current/functions/geospatial.html#ST_Relate",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_STARTPOINT",
+      "category": "S#",
+      "docs_url": "https://trino.io/docs/current/functions/geospatial.html#ST_StartPoint",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_SYMDIFFERENCE",
+      "category": "S#",
+      "docs_url": "https://trino.io/docs/current/functions/geospatial.html#ST_SymDifference",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_TOUCHES",
+      "category": "S#",
+      "docs_url": "https://trino.io/docs/current/functions/geospatial.html#ST_Touches",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_UNION",
+      "category": "S#",
+      "docs_url": "https://trino.io/docs/current/functions/geospatial.html#ST_Union",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_WITHIN",
+      "category": "S#",
+      "docs_url": "https://trino.io/docs/current/functions/geospatial.html#ST_Within",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_X",
+      "category": "S#",
+      "docs_url": "https://trino.io/docs/current/functions/geospatial.html#ST_X",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_XMAX",
+      "category": "S#",
+      "docs_url": "https://trino.io/docs/current/functions/geospatial.html#ST_XMax",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_XMIN",
+      "category": "S#",
+      "docs_url": "https://trino.io/docs/current/functions/geospatial.html#ST_XMin",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_Y",
+      "category": "S#",
+      "docs_url": "https://trino.io/docs/current/functions/geospatial.html#ST_Y",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_YMAX",
+      "category": "S#",
+      "docs_url": "https://trino.io/docs/current/functions/geospatial.html#ST_YMax",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_YMIN",
+      "category": "S#",
+      "docs_url": "https://trino.io/docs/current/functions/geospatial.html#ST_YMin",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "STARTS_WITH",
+      "category": "S#",
+      "docs_url": "https://trino.io/docs/current/functions/string.html#starts_with",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "STDDEV",
+      "category": "S#",
+      "docs_url": "https://trino.io/docs/current/functions/aggregate.html#stddev",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "STDDEV_POP",
+      "category": "S#",
+      "docs_url": "https://trino.io/docs/current/functions/aggregate.html#stddev_pop",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "STDDEV_SAMP",
+      "category": "S#",
+      "docs_url": "https://trino.io/docs/current/functions/aggregate.html#stddev_samp",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "STRPOS",
+      "category": "S#",
+      "docs_url": "https://trino.io/docs/current/functions/string.html#strpos",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "SUBSTR",
+      "category": "S#",
+      "docs_url": "https://trino.io/docs/current/functions/string.html#substr",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "SUBSTRING",
+      "category": "S#",
+      "docs_url": "https://trino.io/docs/current/functions/string.html#substring",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "SUM",
+      "category": "S#",
+      "docs_url": "https://trino.io/docs/current/functions/aggregate.html#sum",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TAN",
+      "category": "T#",
+      "docs_url": "https://trino.io/docs/current/functions/math.html#tan",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TANH",
+      "category": "T#",
+      "docs_url": "https://trino.io/docs/current/functions/math.html#tanh",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TDIGEST_AGG",
+      "category": "T#",
+      "docs_url": "https://trino.io/docs/current/functions/tdigest.html#tdigest_agg",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "THETA_SKETCH_CARDINALITY",
+      "category": "T#",
+      "docs_url": "https://trino.io/docs/current/functions/datasketches.html#theta_sketch_cardinality",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "THETA_SKETCH_UNION",
+      "category": "T#",
+      "docs_url": "https://trino.io/docs/current/functions/datasketches.html#theta_sketch_union",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "TIMESTAMP_OBJECTID",
+      "category": "T#",
+      "docs_url": "https://trino.io/docs/current/functions/../connector/mongodb.html#timestamp_objectid",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TIMEZONE",
+      "category": "T#",
+      "docs_url": "https://trino.io/docs/current/functions/datetime.html#timezone",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "TIMEZONE_HOUR",
+      "category": "T#",
+      "docs_url": "https://trino.io/docs/current/functions/datetime.html#timezone_hour",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TIMEZONE_MINUTE",
+      "category": "T#",
+      "docs_url": "https://trino.io/docs/current/functions/datetime.html#timezone_minute",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TO_BASE",
+      "category": "T#",
+      "docs_url": "https://trino.io/docs/current/functions/math.html#to_base",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TO_BASE32",
+      "category": "T#",
+      "docs_url": "https://trino.io/docs/current/functions/binary.html#to_base32",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TO_BASE64",
+      "category": "T#",
+      "docs_url": "https://trino.io/docs/current/functions/binary.html#to_base64",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TO_BASE64URL",
+      "category": "T#",
+      "docs_url": "https://trino.io/docs/current/functions/binary.html#to_base64url",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TO_BIG_ENDIAN_32",
+      "category": "T#",
+      "docs_url": "https://trino.io/docs/current/functions/binary.html#to_big_endian_32",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TO_BIG_ENDIAN_64",
+      "category": "T#",
+      "docs_url": "https://trino.io/docs/current/functions/binary.html#to_big_endian_64",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TO_CHAR",
+      "category": "T#",
+      "docs_url": "https://trino.io/docs/current/functions/teradata.html#to_char",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TO_DATE",
+      "category": "T#",
+      "docs_url": "https://trino.io/docs/current/functions/teradata.html#to_date",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TO_ENCODED_POLYLINE",
+      "category": "T#",
+      "docs_url": "https://trino.io/docs/current/functions/geospatial.html#to_encoded_polyline",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TO_GEOMETRY",
+      "category": "T#",
+      "docs_url": "https://trino.io/docs/current/functions/geospatial.html#to_geometry",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TO_HEX",
+      "category": "T#",
+      "docs_url": "https://trino.io/docs/current/functions/binary.html#to_hex",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TO_IEEE754_32",
+      "category": "T#",
+      "docs_url": "https://trino.io/docs/current/functions/binary.html#to_ieee754_32",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TO_IEEE754_64",
+      "category": "T#",
+      "docs_url": "https://trino.io/docs/current/functions/binary.html#to_ieee754_64",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TO_ISO8601",
+      "category": "T#",
+      "docs_url": "https://trino.io/docs/current/functions/datetime.html#to_iso8601",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TO_MILLISECONDS",
+      "category": "T#",
+      "docs_url": "https://trino.io/docs/current/functions/datetime.html#to_milliseconds",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TO_SPHERICAL_GEOGRAPHY",
+      "category": "T#",
+      "docs_url": "https://trino.io/docs/current/functions/geospatial.html#to_spherical_geography",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TO_TIMESTAMP",
+      "category": "T#",
+      "docs_url": "https://trino.io/docs/current/functions/teradata.html#to_timestamp",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TO_UNIXTIME",
+      "category": "T#",
+      "docs_url": "https://trino.io/docs/current/functions/datetime.html#to_unixtime",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TO_UTF8",
+      "category": "T#",
+      "docs_url": "https://trino.io/docs/current/functions/string.html#to_utf8",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TRANSFORM",
+      "category": "T#",
+      "docs_url": "https://trino.io/docs/current/functions/array.html#transform",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TRANSFORM_KEYS",
+      "category": "T#",
+      "docs_url": "https://trino.io/docs/current/functions/map.html#transform_keys",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TRANSFORM_VALUES",
+      "category": "T#",
+      "docs_url": "https://trino.io/docs/current/functions/map.html#transform_values",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TRANSLATE",
+      "category": "T#",
+      "docs_url": "https://trino.io/docs/current/functions/string.html#translate",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TRIM",
+      "category": "T#",
+      "docs_url": "https://trino.io/docs/current/functions/string.html#trim",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TRIM_ARRAY",
+      "category": "T#",
+      "docs_url": "https://trino.io/docs/current/functions/array.html#trim_array",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TRUNCATE",
+      "category": "T#",
+      "docs_url": "https://trino.io/docs/current/functions/math.html#truncate",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TRY_CAST",
+      "category": "T#",
+      "docs_url": "https://trino.io/docs/current/functions/conversion.html#try_cast",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "TYPEOF",
+      "category": "T#",
+      "docs_url": "https://trino.io/docs/current/functions/conversion.html#typeof",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "UPPER",
+      "category": "U#",
+      "docs_url": "https://trino.io/docs/current/functions/string.html#upper",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "URL_DECODE",
+      "category": "U#",
+      "docs_url": "https://trino.io/docs/current/functions/url.html#url_decode",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "URL_ENCODE",
+      "category": "U#",
+      "docs_url": "https://trino.io/docs/current/functions/url.html#url_encode",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "URL_EXTRACT_FRAGMENT",
+      "category": "U#",
+      "docs_url": "https://trino.io/docs/current/functions/url.html#url_extract_fragment",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "URL_EXTRACT_HOST",
+      "category": "U#",
+      "docs_url": "https://trino.io/docs/current/functions/url.html#url_extract_host",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "URL_EXTRACT_PARAMETER",
+      "category": "U#",
+      "docs_url": "https://trino.io/docs/current/functions/url.html#url_extract_parameter",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "URL_EXTRACT_PATH",
+      "category": "U#",
+      "docs_url": "https://trino.io/docs/current/functions/url.html#url_extract_path",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "URL_EXTRACT_PORT",
+      "category": "U#",
+      "docs_url": "https://trino.io/docs/current/functions/url.html#url_extract_port",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "URL_EXTRACT_PROTOCOL",
+      "category": "U#",
+      "docs_url": "https://trino.io/docs/current/functions/url.html#url_extract_protocol",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "URL_EXTRACT_QUERY",
+      "category": "U#",
+      "docs_url": "https://trino.io/docs/current/functions/url.html#url_extract_query",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "UUID",
+      "category": "U#",
+      "docs_url": "https://trino.io/docs/current/functions/uuid.html#uuid",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "VALUE_AT_QUANTILE",
+      "category": "V#",
+      "docs_url": "https://trino.io/docs/current/functions/qdigest.html#value_at_quantile",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "VALUES_AT_QUANTILES",
+      "category": "V#",
+      "docs_url": "https://trino.io/docs/current/functions/qdigest.html#values_at_quantiles",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "VAR_POP",
+      "category": "V#",
+      "docs_url": "https://trino.io/docs/current/functions/aggregate.html#var_pop",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "VAR_SAMP",
+      "category": "V#",
+      "docs_url": "https://trino.io/docs/current/functions/aggregate.html#var_samp",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "VARIANCE",
+      "category": "V#",
+      "docs_url": "https://trino.io/docs/current/functions/aggregate.html#variance",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "VERSION",
+      "category": "V#",
+      "docs_url": "https://trino.io/docs/current/functions/system.html#version",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "WEEK",
+      "category": "W#",
+      "docs_url": "https://trino.io/docs/current/functions/datetime.html#week",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "WEEK_OF_YEAR",
+      "category": "W#",
+      "docs_url": "https://trino.io/docs/current/functions/datetime.html#week_of_year",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "WIDTH_BUCKET",
+      "category": "W#",
+      "docs_url": "https://trino.io/docs/current/functions/math.html#width_bucket",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "WILSON_INTERVAL_LOWER",
+      "category": "W#",
+      "docs_url": "https://trino.io/docs/current/functions/math.html#wilson_interval_lower",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "WILSON_INTERVAL_UPPER",
+      "category": "W#",
+      "docs_url": "https://trino.io/docs/current/functions/math.html#wilson_interval_upper",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "WITH_TIMEZONE",
+      "category": "W#",
+      "docs_url": "https://trino.io/docs/current/functions/datetime.html#with_timezone",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "WORD_STEM",
+      "category": "W#",
+      "docs_url": "https://trino.io/docs/current/functions/string.html#word_stem",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "XXHASH64",
+      "category": "X#",
+      "docs_url": "https://trino.io/docs/current/functions/binary.html#xxhash64",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "YEAR",
+      "category": "Y#",
+      "docs_url": "https://trino.io/docs/current/functions/datetime.html#year",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "YEAR_OF_WEEK",
+      "category": "Y#",
+      "docs_url": "https://trino.io/docs/current/functions/datetime.html#year_of_week",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "YOW",
+      "category": "Y#",
+      "docs_url": "https://trino.io/docs/current/functions/datetime.html#yow",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ZIP",
+      "category": "Z#",
+      "docs_url": "https://trino.io/docs/current/functions/array.html#zip",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ZIP_WITH",
+      "category": "Z#",
+      "docs_url": "https://trino.io/docs/current/functions/array.html#zip_with",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    }
+  ]
+}

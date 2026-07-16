@@ -47,7 +47,7 @@ dbt is a perfect tool to promote collaboration between data engineers, ML engine
 
 Additionally, dbt Mesh makes maintaining domain ownership extremely easy by breaking up portions of our data projects and pipelines into connected projects where critical models can be published for consumption by others with strict data contracts enforcing quality and governance. This paradigm supports rapid development as each project can be kept to a maintainable size for its contributors and developers. Contracting on published models used between these projects ensures the consistency of the integration points between them.
 
-Finally, dbt Cloud also provides [dbt Explorer](/docs/collaborate/explore-projects) &mdash; a perfect tool to catalog and share knowledge about organizational data across disparate teams. dbt Explorer provides a central place for information on data pipelines, including lineage information, data freshness, and quality. Best of all, dbt Explorer updates every time dbt jobs run, ensuring this information is always up-to-date and relevant.
+Finally, dbt Cloud also provides [dbt Explorer](/docs/explore/explore-projects) &mdash; a perfect tool to catalog and share knowledge about organizational data across disparate teams. dbt Explorer provides a central place for information on data pipelines, including lineage information, data freshness, and quality. Best of all, dbt Explorer updates every time dbt jobs run, ensuring this information is always up-to-date and relevant.
 
 ## What tech is at play?
 

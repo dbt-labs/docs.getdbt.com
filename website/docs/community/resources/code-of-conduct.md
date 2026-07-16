@@ -6,7 +6,7 @@ description: "Learn about the community values that shape our rules, and review 
 
 # dbt Community Code of Conduct
 
-This Code of Conduct applies to all dbt Community spaces, both online and offline. This includes Slack, Discourse, code repositories (dbt Core, dbt packages, etc.), Office Hours, and Meetups. Participants are responsible for knowing and abiding by this Code of Conduct.
+This Code of Conduct applies to all dbt Community spaces, both online and offline. This includes Slack, Discourse, code repositories (<Constant name="core" />, the <Constant name="fusion_engine" />, dbt packages, etc.), dbt Labs virtual events, and Meetups. Participants are responsible for knowing and abiding by this Code of Conduct.
 
 This Code of Conduct has two sections:
 
@@ -24,7 +24,7 @@ Each community member should strive to create more value in the community than t
 
 Ways to demonstrate this value:
 
-- [Coding contributions](/community/contributing/contributing-coding): Contribute to dbt Core, a package, or an adapter. Beyond implementing new functionality, you can also open issues or participate in discussions.
+- [Coding contributions](/community/contributing/contributing-coding): Contribute to <Constant name="core" />, a package, or an adapter. Beyond implementing new functionality, you can also open issues or participate in discussions.
 - [Writing contributions](/community/contributing/contributing-writing): You can suggest edits to every page of the dbt documentation, or suggest a topic for the dbt Developer Blog. 
 - [Join in online](/community/contributing/contributing-online-community): Ask and answer questions on the Discourse forum, kick off a lively discussion in Slack, or even maintain a Slack channel of your own. 
 - [Participate in events](/community/contributing/contributing-realtime-events): Organise a community Meetup, speak at an event, or provide office space/sponsorship for an existing event. 
@@ -102,8 +102,8 @@ Participants asked to stop any harassing behavior are expected to comply immedia
 
 If a participant engages in harassing behavior, the dbt Community Admin team may take any action they deem appropriate, up to and including expulsion from all dbt Community spaces and identification of the participant as a harasser to other dbt Community members or the general public.
 
-## Coalesce and other events
-We reserve the right to prohibit certain directly competitive companies from attending and / or sponsoring Coalesce and other dbt Labs-hosted events. 
+## dbt Summit and other events
+We reserve the right to prohibit certain directly competitive companies from attending and / or sponsoring dbt Summit and other dbt Labs-hosted events. 
 
 While we actively support the broader ecosystem around dbt, it is not the right business decision for us to allow directly competitive companies to market to or sell to our users and customers at events that we invest very significant company resources into hosting. 
 

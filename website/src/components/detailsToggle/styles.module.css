@@ -1,6 +1,7 @@
 :local(.link) :local(.headerText) {
-    color: var(--ifm-link-color);
+    color: var(--color-neutral-primary);
     text-decoration: none;
+    font-weight: 600;
     transition: text-decoration 0.3s; /* Smooth transition */
 }
 
@@ -10,9 +11,13 @@
     cursor: pointer;
 }
 
+:local(html[data-theme='dark'] .link) :local(.headerText) {
+    color: var(--color-white);
+}
+
 :local(.disclaimer) {
     font-size: 0.8em;
-    color: #666;
+    color: var(--color-terminal-black-500);
     margin-left: 10px; /* Adjust as needed */
     text-decoration: none;
 }
@@ -43,11 +48,11 @@
     margin-left: 2em;
     margin-bottom: 10px;
     padding: 20px;
-    background-color: #e3f8f8;
+    background-color: transparent;
 }
 
 :local(html[data-theme='dark'] .body) {
-  background: #333b47;
+  background: transparent;
 }
 
 :local(.body > p:last-child) {

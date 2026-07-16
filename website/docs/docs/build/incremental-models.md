@@ -2,9 +2,13 @@
 title: "Configure incremental models"
 description: "Learn how to configure and optimize incremental models when developing in dbt."
 id: "incremental-models"
-keywords: ["incremental models", "incremental materialization","incremental", "materialization", "incremental model", "incremental strategy", "incremental model configuration"]
+keywords: ["incremental models", "incremental materialization","incremental", "materialization", "incremental model", "incremental strategy", "incremental model configuration", "incremental predicates"]
 intro_text: "Learn how to configure and optimize incremental models when developing in dbt."
 ---
+
+import SnowflakeColumn from '/snippets/_snowflake-column-size.md';
+
+<SnowflakeColumn />
 
 Incremental models are built as tables in your <Term id="data-warehouse" />. The first time a model is run, the <Term id="table" /> is built by transforming _all_ rows of source data. On subsequent runs, dbt transforms _only_ the rows in your source data that you tell dbt to filter for, inserting them into the target table which is the table that has already been built.
 
@@ -28,8 +32,8 @@ select ...
 
 To use incremental models, you also need to tell dbt:
 
-* How to filter the rows on an incremental run
-* The unique key of the model (if any)
+- How to filter the rows on an incremental run
+- The unique key of the model (if any)
 
 ### Understand the is_incremental() macro
 
@@ -86,11 +90,15 @@ For more complex incremental models that make use of Common Table Expressions (C
 
 :::
 
-### Defining a unique key (optional)
+import Incrementalpredicates from '/snippets/_incremental-predicates.md';
 
-A `unique_key` enables updating existing rows instead of just appending new rows. If new information arrives for an existing `unique_key`, that new information can replace the current information instead of being appended to the table. If a duplicate row arrives, it can be ignored. Refer to [strategy specific configs](/docs/build/incremental-strategy#strategy-specific-configs) for more options on managing this update behavior, like choosing only specific columns to update.
+<Incrementalpredicates />
 
-Not specifying a `unique_key` will result in append-only behavior, which means dbt inserts all rows returned by the model's SQL into the preexisting target table without regard for whether the rows represent duplicates.
+### Defining a unique key
+
+Defining the optional [`unique_key` parameter](/reference/resource-configs/unique_key) enables updating existing rows instead of just appending new rows. If new information arrives for an existing `unique_key`, that new information can replace the current information instead of being appended to the table. If a duplicate row arrives, it can be ignored. Refer to [strategy specific configs](/docs/build/incremental-strategy#strategy-specific-configs) for more options on managing this update behavior, like choosing only specific columns to update.
+
+If you don't specify a `unique_key`, most adapters will result in `append`-only behavior, which means dbt inserts all rows returned by the model's SQL into the preexisting target table without regard for whether the rows represent duplicates.
 
 The optional `unique_key` parameter specifies a field (or combination of fields) that defines the grain of your model. That is, the field(s) identify a single unique row. You can define `unique_key` in a configuration block at the top of your model, and it can be a single column name or a list of column names.
 
@@ -108,8 +116,8 @@ Alternatively, you can define a single-column [surrogate key](https://www.getdbt
 
 When you define a `unique_key`, you'll see this behavior for each row of "new" data returned by your dbt model:
 
-* If the same `unique_key` is present in the "new" and "old" model data, dbt will update/replace the old row with the new row of data. The exact mechanics of how that update/replace takes place will vary depending on your database, [incremental strategy](/docs/build/incremental-strategy), and [strategy specific configs](/docs/build/incremental-strategy#strategy-specific-configs).
-* If the `unique_key` is _not_ present in the "old" data, dbt will insert the entire row into the table.
+- If the same `unique_key` is present in the "new" and "old" model data, dbt will update/replace the old row with the new row of data. The exact mechanics of how that update/replace takes place will vary depending on your database, [incremental strategy](/docs/build/incremental-strategy), and [strategy specific configs](/docs/build/incremental-strategy#strategy-specific-configs).
+- If the `unique_key` is _not_ present in the "old" data, dbt will insert the entire row into the table.
 
 Please note that if there's a unique_key with more than one row in either the existing target table or the new incremental rows, the incremental model may fail depending on your database and [incremental strategy](/docs/build/incremental-strategy). If you're having issues running an incremental model, it's a good idea to double check that the unique key is truly unique in both your existing database table and your new incremental rows. You can [learn more about surrogate keys here](https://www.getdbt.com/blog/guide-to-surrogate-key).
 
@@ -162,7 +170,7 @@ To force dbt to rebuild the entire incremental model from scratch, use the `--fu
 $ dbt run --full-refresh --select my_incremental_model+
 ```
 
-It's also advisable to rebuild any downstream models, as indicated by the trailing `+`.
+The trailing `+` in the command above will also run all downstream models that depend on `my_incremental_model`. If any of those downstream dependencies are also incremental models, they will be fully refreshed as well. 
 
 You can optionally use the [`full_refresh config`](/reference/resource-configs/full_refresh) to set a resource to always or never full-refresh at the project or resource level. If specified as true or false, the `full_refresh` config will take precedence over the presence or absence of the `--full-refresh` flag.
 
@@ -197,12 +205,12 @@ models:
 
 </File>
 
-The possible values for `on_schema_change` are:  
+The possible values for `on_schema_change` are:
 
-* `ignore`: Default behavior (see below).
-* `fail`: Triggers an error message when the source and target schemas diverge  
-* `append_new_columns`: Append new columns to the existing table. Note that this setting does *not* remove columns from the existing table that are not present in the new data.
-* `sync_all_columns`: Adds any new columns to the existing table, and removes any columns that are now missing. Note that this is *inclusive* of data type changes. On BigQuery, changing column types requires a full <Term id="table" /> scan; be mindful of the trade-offs when implementing.
+- `ignore`: Default behavior (see below).
+- `fail`: Triggers an error message when the source and target schemas diverge
+- `append_new_columns`: Append new columns to the existing table. Note that this setting does *not* remove columns from the existing table that are not present in the new data.
+- `sync_all_columns`: Adds any new columns to the existing table, and removes any columns that are now missing. Note that this is *inclusive* of data type changes. On BigQuery, changing column types requires a full <Term id="table" /> scan; be mindful of the trade-offs when implementing.
 
 **Note**: None of the `on_schema_change` behaviors backfill values in old records for newly added columns. If you need to populate those values, we recommend running manual updates, or triggering a `--full-refresh`.
 
@@ -222,5 +230,3 @@ If you remove a column from your incremental model and execute a `dbt run`, `dbt
 
 Instead, whenever the logic of your incremental changes, execute a full-refresh run of both your incremental model and any downstream models.
 
-<Snippet path="discourse-help-feed-header" />
-<DiscourseHelpFeed tags="incremental"/>

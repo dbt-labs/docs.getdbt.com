@@ -6,7 +6,7 @@ id: "jinja-macros"
 
 ## Related reference docs
 * [Jinja Template Designer Documentation](https://jinja.palletsprojects.com/page/templates/) (external link)
-* [dbt Jinja context](/reference/dbt-jinja-functions)
+* [dbt Jinja context](/reference/dbt-jinja-functions-context-variables)
 * [Macro properties](/reference/macro-properties)
 
 ## Overview
@@ -15,17 +15,18 @@ In dbt, you can combine SQL with [Jinja](https://jinja.palletsprojects.com), a t
 Using Jinja turns your dbt project into a programming environment for SQL, giving you the ability to do things that aren't normally possible in SQL. It's important to note that Jinja itself isn't a programming language; instead, it acts as a tool to enhance and extend the capabilities of SQL within your dbt projects.
 
 For example, with Jinja, you can:
-* Use control structures (e.g. `if` statements and `for` loops) in SQL
-* Use [environment variables](/reference/dbt-jinja-functions/env_var) in your dbt project for production deployments
-* Change the way your project builds based on the current target.
-* Operate on the results of one query to generate another query, for example:
-  * Return a list of payment methods, to create a subtotal column per payment method (pivot)
-  * Return a list of columns in two relations, and select them in the same order to make it easier to union them together
-* Abstract snippets of SQL into reusable [**macros**](#macros) — these are analogous to functions in most programming languages.
+
+- Use control structures (for example, `if` statements and `for` loops) in SQL
+- Use [environment variables](/reference/dbt-jinja-functions/env_var) in your dbt project for production deployments
+- Change the way your project builds based on the current target.
+- Operate on the results of one query to generate another query, for example:
+  - Return a list of payment methods, to create a subtotal column per payment method (pivot)
+  - Return a list of columns in two relations, and select them in the same order to make it easier to union them together
+- Abstract snippets of SQL into reusable [**macros**](#macros) — these are analogous to functions in most programming languages.
 
 If you've used the [`{{ ref() }}` function](/reference/dbt-jinja-functions/ref), you're already using Jinja!
 
-Jinja can be used in any SQL in a dbt project, including [models](/docs/build/sql-models), [analyses](/docs/build/analyses), [tests](/docs/build/data-tests), and even [hooks](/docs/build/hooks-operations).
+Jinja can be used in any SQL in a dbt project, including [models](/docs/build/sql-models), [analyses](/docs/build/analyses), [data tests](/docs/build/data-tests), and even [hooks](/docs/build/hooks-operations).
 
 :::info Ready to get started with Jinja and macros?
 
@@ -77,7 +78,7 @@ You can recognize Jinja based on the delimiters the language uses, which we refe
 -  **Comments `{# ... #}`**: Jinja comments are used to prevent the text within the comment from executing or outputing a string. Don't use `--` for comment.
 
 When used in a dbt model, your Jinja needs to compile to a valid query. To check what SQL your Jinja compiles to:
-* **Using dbt Cloud:** Click the compile button to see the compiled SQL in the Compiled SQL pane
+* **Using <Constant name="dbt" />:** Click the compile button to see the compiled SQL in the Compiled SQL pane
 * **Using dbt Core:** Run `dbt compile` from the command line. Then open the compiled SQL file in the `target/compiled/{project name}/` directory. Use a split screen in your code editor to keep both files open at once.
 
 ### Macros
@@ -191,5 +192,3 @@ Writing a macro for the first time? Check whether we've open sourced one in [dbt
 {% endfor %}
 ```
 
-<Snippet path="discourse-help-feed-header" />
-<DiscourseHelpFeed tags="wee"/>

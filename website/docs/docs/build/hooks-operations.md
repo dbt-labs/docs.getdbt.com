@@ -149,7 +149,7 @@ Full usage docs for the `run-operation` command can be found [here](/reference/c
 
 These examples from the community highlight some of the use-cases for hooks and operations!
 
-* [In-depth discussion of granting privileges using hooks and operations, for dbt Core versions prior to 1.2](https://discourse.getdbt.com/t/the-exact-grant-statements-we-use-in-a-dbt-project/430)
+* [In-depth discussion of granting privileges using hooks and operations, for <Constant name="core" /> versions prior to 1.2](https://discourse.getdbt.com/t/the-exact-grant-statements-we-use-in-a-dbt-project/430)
 * [Staging external tables](https://github.com/dbt-labs/dbt-external-tables)
 * [Performing a zero copy clone on Snowflake to reset a dev environment](https://discourse.getdbt.com/t/creating-a-dev-environment-quickly-on-snowflake/1151/2)
 * [Running `vacuum` and `analyze` on a Redshift warehouse](https://github.com/dbt-labs/redshift/tree/0.2.3/#redshift_maintenance_operation-source)
