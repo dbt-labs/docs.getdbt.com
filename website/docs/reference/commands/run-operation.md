@@ -50,11 +50,7 @@ $ dbt run-operation --sql '{sql}'
                         Available in dbt Core v1.12+.
 ```
 
-## Using the `--sql` flag <Lifecycle status="beta" />
-
-:::info Beta feature
-The `--sql` flag for `dbt run-operation` is a beta feature in <Constant name="core" /> v1.12.
-:::
+## Using the `--sql` flag
 
 Starting <Constant name="core" /> v1.12, you can use the `--sql` flag to execute ad hoc database statements directly against your warehouse, without defining a macro. This flag is useful for one-off operations like dropping or altering a table, applying grants, or running a data fix. The statement runs through the full Jinja compilation pipeline, so you have access to `ref()`, `source()`, `var()`, `target`, and all other context variables. When your SQL contains no Jinja, dbt skips manifest compilation entirely, making execution faster.
 
