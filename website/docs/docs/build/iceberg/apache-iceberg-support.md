@@ -49,10 +49,4 @@ To the extent possible, dbt tries to abstract away the complexity of table forma
     link="/docs/build/iceberg/adapters/databricks-iceberg-support"
     icon="databricks"/>
 
-<Card
-    title="DuckDB + Iceberg"
-    body="DuckDB Iceberg configurations"
-    link="/docs/build/iceberg/adapters/duckdb-iceberg-support"
-    icon="duckdb"/>
-
 </div>
