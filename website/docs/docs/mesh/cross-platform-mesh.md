@@ -31,32 +31,36 @@ models:
     marts:
       access: public
       catalog_name: finance_db
+```
 
+```yaml
 # jaffle_finance/catalogs.yml
 catalogs:
   - name: finance_db
-    catalog_type: unity
+    type: unity
     config:
       databricks:
         # where jaffle_finance project will write its public models to
-        catalog_database: finance_db # optional - not required if matches catalog 'name'
+        catalog_database: finance_db
+```
 
+```yaml
 # jaffle_marketing/catalogs.yml
 catalogs:
   - name: finance_db
-    catalog_type: unity
+    type: unity
     config:
       snowflake:
         # catalog-linked database pointing to same Unity catalog
         # where jaffle_marketing project will read jaffle_finance public models from
         catalog_database: snowflake_cld__finance_db
-
-# jaffle_marketing/dbt_project.yml
-# Unfortunately, Snowflake CLD ↔ Unity catalog requires quoted lowercase schemas + table identifiers
-quoting:
-  schema: true
-  identifier: true
 ```
+
+:::Note
+
+If you create the [Snowflake catalog-linked database](https://docs.snowflake.com/en/sql-reference/sql/create-database-catalog-linked) with `CATALOG_CASE_SENSITIVITY = CASE_INSENSITIVE`, then you do not need to quote all column and identifier names that Snowflake is reading from or writing to Unity.
+
+:::
 
 What's going on here?
 
@@ -144,3 +148,31 @@ flowchart LR
 		model_b_data
 	end
 ```
+
+<File name='catalogs.yml'>
+
+```yaml
+catalogs:
+  - name: finance_unity
+    type: unity
+    config:
+      databricks:
+        # catalog where jaffle_finance project will write its public models to
+        catalog_database: finance_db
+      snowflake:
+         # name of catalog-linked database
+         # where jaffle_marketing will read jaffle_finance's public models
+         catalog_database: snowflake_cld__finance_db
+  - name: marketing_horizon
+    type: horizon
+    config:
+      snowflake:
+        # database where jaffle_marketing will write its public models to
+        catalog_database: horizon_db
+      databricks:
+         # name of federated catalog in Unity
+         # where jaffle_finance will read jaffle_marketing's public models
+        catalog_database: dbx_federation__horizon_db
+```
+
+</File>
