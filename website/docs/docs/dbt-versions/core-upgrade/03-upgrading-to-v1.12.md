@@ -33,7 +33,7 @@ For more information on how to enable the flag, related behaviors, and parser er
 
 ### Native private packages
 
-<Constant name="core" /> now supports [native private packages](/docs/build/packages#native-private-packages) in `packages.yml` and `dependencies.yml`, at parity with the <Constant name="fusion_engine" />. You can install packages from private GitHub, GitLab, or Azure DevOps repos using the `private` key without configuring a token or full Git URL. dbt uses your system's SSH configuration for authentication. Use the [`provider` key](/docs/build/packages#using-the-provider-key) to specify your Git provider and tell dbt which SSH URL format to construct. For example:
+<Constant name="core" /> now supports [native private packages](/docs/build/packages#native-private-packages) in `packages.yml` and `dependencies.yml`. You can install packages from private GitHub, GitLab, or Azure DevOps repos using the `private` key without configuring a token or full Git URL. dbt uses your system's SSH configuration for authentication. Use the [`provider` key](/docs/build/packages#using-the-provider-key) to specify your Git provider and tell dbt which SSH URL format to construct. For example:
 
 ```yaml
 packages:
