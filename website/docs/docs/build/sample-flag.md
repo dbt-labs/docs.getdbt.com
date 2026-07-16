@@ -24,7 +24,13 @@ The `--sample` flag will become more robust over time, but it only supports time
 
 ## Using the `--sample` flag
 
-The `--sample` flag is available for the [`run`](/reference/commands/run) and [`build`](/reference/commands/build) commands. When used, sample mode generates filtered refs and sources. Since it's using time-based sampling, if you have refs like `{{ ref('some_model') }}` being sampled, you need to set [`event_time`](/reference/resource-configs/event-time) for `some_model` to the field that will be used as the timestamp. 
+The `--sample` flag is available for the [`run`](/reference/commands/run) and [`build`](/reference/commands/build) commands. When used, sample mode wraps each `ref()` and `source()` in a time filter on that resource's configured [`event_time`](/reference/resource-configs/event-time) column. There is no automatic timestamp detection. If `event_time` is not configured on an upstream model, source, or seed, dbt reads the full table instead.
+
+:::warning
+dbt does not warn when it reads a full table because `event_time` is missing. Configure `event_time` on every upstream model, source, or seed you expect to be sampled, or you may unintentionally query large datasets at full scale.
+:::
+
+By default, every `ref()` and `source()` in your model SQL is filtered during a `--sample` run. To leave a relation unfiltered, append `.render()` in the model's `.sql` file. Refer to [Opt out of sampling](#opt-out-of-sampling) for an example.
 
 There are two time-based sample specifications supported for sample mode:
 - **Relative time specs:** Filters sampled data from the time the command is run back to a specified integer and granularity. Supported granularities are:
@@ -34,42 +40,71 @@ There are two time-based sample specifications supported for sample mode:
     - Years
 - **Static time specs:** Filters your data between a defined start and end period using date and/or timestamp.
 
+dbt applies the filter as a subquery with a `WHERE` clause, limited to the time window you pass to `--sample`. Relative time specs are calculated from the time the command runs (UTC).
+
+When you use `--sample`, dbt executes your model SQL against the warehouse and builds tables containing only data from the specified time window.
 
 ### Examples
 
-Let's say you want to run your `stg_customers` model and build the table in your development schema with a relative time spec sample size of three days. Your command in the IDE would look something like this:
+The following examples use a `jaffle_shop` project with `stg_customers` and `stg_orders` staging models, plus an `fct_orders` fact model downstream.
+
+#### Configure `event_time`
+
+Before sample mode can filter a resource, set [`event_time`](/reference/resource-configs/event-time) on the source or model to the column dbt should use for time filtering:
+
+```yml
+sources:
+  - name: jaffle_shop
+    tables:
+      - name: customers
+        config:
+          event_time: customer_created_at
+      - name: orders
+        config:
+          event_time: order_placed_at
+
+models:
+  - name: stg_customers
+    config:
+      event_time: customer_created_at
+  - name: stg_orders
+    config:
+      event_time: order_placed_at
+```
+
+When you run with `--sample`, dbt uses these configs to filter `source()` and `ref()` calls. `stg_customers` reads from the `jaffle_shop.customers` source; `stg_orders` reads from `jaffle_shop.orders`.
+
+#### Run with `--sample`
+
+From the terminal or IDE, run a staging model with a relative time window of three days:
 
 ```
 dbt run --select path/to/stg_customers --sample="3 days"
 ```
 
-If you have an even larger model, for example, `stg_orders` you can set sample mode to hours:
+Run the downstream `fct_orders` model with a shorter window:
 
 ```
-dbt run --select path/to/stg_customers --sample="6 hours"
+dbt run --select path/to/fct_orders --sample="6 hours"
 ```
 
-Next, let's say you want to validate data for your entire business from a sample size further in the past - your busiest week in July, from the first until closing time on the eighth. You can run the following: 
+To sample a fixed historical range instead of a window relative to when the command runs, specify a start and end date or timestamp:
 
 ```
-dbt run --sample="{'start': '2024-07-01', 'end': '2024-07-08 18:00:00'}"
+dbt run --select path/to/fct_orders --sample="{'start': '2024-07-01', 'end': '2024-07-08 18:00:00'}"
 ```
 
-To prevent a `ref` from being sampled, append `.render()` to it:
+#### Opt out of sampling
+
+If a model should read an upstream relation in full during a `--sample` run, append `.render()` to that `ref()` or `source()` in the model's `.sql` file.
+
+In `fct_orders`, you might keep `stg_customers` unfiltered while still sampling `stg_orders`:
 
 ```sql
-
-with
-
-source as (
-
-    select * from {{ ref('stg_customers').render() }}
-
-),
-
-...
-
+select *
+from {{ ref('stg_orders') }}
+left join {{ ref('stg_customers').render() }} as stg_customers using (customer_id)
 ```
 
-dbt will then execute the model SQL against the target data warehouse and build the tables with data from the sample sizes.
+When you run `dbt run --select path/to/fct_orders --sample="6 hours"`, dbt samples `stg_orders` using the `event_time` configured above. `stg_customers` is not sampled because `.render()` skips the time filter for that `ref()`.
  
