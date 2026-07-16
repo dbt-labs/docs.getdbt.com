@@ -1702,6 +1702,7 @@ const sidebarSettings = {
                 "reference/global-configs/logs",
                 "reference/global-configs/cache",
                 "reference/global-configs/failing-fast",
+                "reference/global-configs/hints",
                 "reference/global-configs/indirect-selection",
                 "reference/global-configs/json-artifacts",
                 "reference/global-configs/parsing",
