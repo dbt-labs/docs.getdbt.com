@@ -22,7 +22,7 @@ Before you set up dbt State, make sure you have:
 
 Set up dbt State either in <Constant name="dbt_platform" /> or locally in <Constant name="core" /> by using the following steps depending on how you're using dbt.
 
-<Tabs queryString="state-setup">
+<Tabs queryString="type">
 <TabItem value="platform" label="dbt platform">
 
 #### Enabling dbt State on your account
