@@ -26,6 +26,9 @@ So long as the `jaffle_finance` project writes its public models to an Iceberg c
 
 ```yaml
 # jaffle_finance/dbt_project.yml
+flags:
+  use_catalogs_v2: true
+
 models:
   jaffle_finance:
     marts:
@@ -42,6 +45,12 @@ catalogs:
       databricks:
         # where jaffle_finance project will write its public models to
         catalog_database: finance_db
+```
+
+```yaml
+# jaffle_marketing/dbt_project.yml
+flags:
+  use_catalogs_v2: true
 ```
 
 ```yaml
