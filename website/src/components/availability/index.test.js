@@ -55,17 +55,17 @@ describe('Availability', () => {
     expect(screen.getByRole('tooltip')).toHaveTextContent('Requires Enterprise, Enterprise+ plan.');
   });
 
-  it('renders "Local" alone for local_free (free is implicit for local)', () => {
+  it('renders "Self-hosted" alone for local_free (free is implicit for self-hosted)', () => {
     render(<Availability availability="local_free" />);
-    const badge = screen.getByRole('button', { name: /^local\./i });
-    expect(badge).toHaveTextContent('Local');
+    const badge = screen.getByRole('button', { name: /^self-hosted\./i });
+    expect(badge).toHaveTextContent('Self-hosted');
     expect(badge).not.toHaveTextContent('Free');
   });
 
-  it('renders "Local · Login required" for local_login', () => {
+  it('renders "Self-hosted · Login required" for local_login', () => {
     render(<Availability availability="local_login" />);
     expect(
-      screen.getByRole('button', { name: /local · login required/i })
+      screen.getByRole('button', { name: /self-hosted · login required/i })
     ).toBeInTheDocument();
   });
 
@@ -74,7 +74,7 @@ describe('Availability', () => {
     const badge = screen.getByRole('button', { name: /^login required\./i });
     expect(badge).toHaveTextContent('Login required');
     expect(badge).not.toHaveTextContent('dbt platform');
-    expect(badge).not.toHaveTextContent('Local');
+    expect(badge).not.toHaveTextContent('Self-hosted');
   });
 
   it('renders "Login required · Usage-based" for everywhere_usage (dbt State case)', async () => {
@@ -126,7 +126,7 @@ describe('Availability', () => {
 
     await user.tab();
 
-    expect(screen.getByRole('button', { name: /local · login required/i })).toHaveFocus();
+    expect(screen.getByRole('button', { name: /self-hosted · login required/i })).toHaveFocus();
     expect(screen.getByRole('tooltip')).toBeInTheDocument();
 
     await user.keyboard('{Escape}');
@@ -143,7 +143,7 @@ describe('Availability', () => {
       </>
     );
 
-    await user.click(screen.getByRole('button', { name: /local · login required/i }));
+    await user.click(screen.getByRole('button', { name: /self-hosted · login required/i }));
     expect(screen.getByRole('tooltip')).toBeInTheDocument();
 
     await user.click(screen.getByRole('button', { name: 'Outside' }));

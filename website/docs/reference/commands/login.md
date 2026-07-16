@@ -22,7 +22,7 @@ Run [`dbt login status`](#dbt-login-status) to view your current authentication 
 - [dbt State](/docs/deploy/dbt-state-setup#setting-up-dbt-state) in supported versions
 - advanced features in v2.0 CLI
 
-Refer to [VS Code extension features](/docs/fusion/fusion-availability?version=1.13#dbt-vs-code-extension-features) for the full list of features and their availability.
+Refer to [VS Code extension features](/docs/fusion/fusion-availability?version=2.0#dbt-vs-code-extension-features) for the full list of features and their availability.
 
 `dbt login` doesn't support non-interactive authentication. For [non-interactive](#non-interactive-environments) environments, such as CI/CD jobs, scheduled jobs, or external orchestrators, use a service token instead.
 

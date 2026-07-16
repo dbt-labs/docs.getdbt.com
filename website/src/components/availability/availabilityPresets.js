@@ -1,5 +1,5 @@
 // Availability answers two independent questions for the reader:
-//   surface: where does this feature live? (local | platform | everywhere/omitted)
+//   surface: where does this feature live? (local/self-hosted | platform | everywhere/omitted)
 //   access:  what do I need to use it? (free | login_required | paid_plan | usage_based)
 //
 // These facets are independent — either can render without the other. Badges never
@@ -19,12 +19,12 @@ export const FIELD_LABELS = {
 };
 
 export const SURFACE_LABELS = {
-  local: 'Local',
+  local: 'Self-hosted',
   platform: 'dbt platform',
 };
 
 export const SURFACE_TOOLTIPS = {
-  local: 'Runs locally.',
+  local: 'Runs on your own infrastructure.',
   platform: 'Available in the dbt platform.',
 };
 
@@ -61,7 +61,7 @@ export function getAccessFacets(access, plans, surface) {
   switch (access) {
     case 'free':
       // Free is only rendered paired with the platform surface (rule: bare "dbt platform"
-      // badge could read as paid). Local/everywhere default to free implicitly.
+      // badge could read as paid). Self-hosted/everywhere default to free implicitly.
       return surface === 'platform' ? [{ facet: 'Free', tooltip: ACCESS_TOOLTIPS.Free }] : [];
     case 'login_required':
       return [{ facet: 'Login required', tooltip: ACCESS_TOOLTIPS['Login required'] }];
@@ -122,12 +122,12 @@ export const availabilityPresets = {
     plans: ['enterprise_plus'],
   },
   local_free: {
-    description: 'Local tools with no login required.',
+    description: 'Self-hosted tools with no login required.',
     surface: 'local',
     access: 'free',
   },
   local_login: {
-    description: 'Local tools that need a free dbt account.',
+    description: 'Self-hosted tools that need a free dbt account.',
     surface: 'local',
     access: 'login_required',
   },
