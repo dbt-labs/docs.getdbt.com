@@ -124,7 +124,7 @@ The CLI flags `--manage-state` and `--no-manage-state` are not available in olde
 
 To see how dbt State optimizes your runs, refer to [dbt State usage examples](/docs/deploy/dbt-state-examples).
 
-## Configure lag tolerance
+## Configuring lag tolerance
 
 Lag tolerance allows you to set a tolerance level for older data at the project, environment, or model level. We recommend starting with the following Jinja expression:
 
