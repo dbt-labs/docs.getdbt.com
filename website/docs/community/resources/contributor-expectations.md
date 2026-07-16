@@ -104,7 +104,7 @@ Many labels follow a namespaced `facet:value` model, where each facet answers on
 
 A few internal-only facets also exist but aren't relevant to community contributions.
 
-Alongside the faceted labels, automation still applies a plain `triage` label to new issues in some repositories, marking them as awaiting a maintainer's first response. Older issues may also carry other previous, un-namespaced labels such as `bug`, `enhancement`, `good_first_issue`, `help_wanted`, `duplicate`, `stale`, and `wontfix`. These map onto the faceted labels above (`bug` → `type:bug`, `enhancement` → `type:feature`, `good_first_issue` → `type:good-first-issue`, `wontfix` → `resolution:wontfix`, and so on) and remain in place for continuity. You may see either set while the transition settles.
+New issues are automatically labeled for triage — currently with both the faceted `status:triage` and the legacy `triage` label while automation migrates to the faceted set — to mark them as awaiting a maintainer's first response. Older issues may also carry other previous, un-namespaced labels such as `bug`, `enhancement`, `good_first_issue`, `help_wanted`, `duplicate`, `stale`, and `wontfix`. These map onto the faceted labels above (`bug` → `type:bug`, `enhancement` → `type:feature`, `good_first_issue` → `type:good-first-issue`, `wontfix` → `resolution:wontfix`, and so on) and remain in place for continuity. You may see either set while the transition settles.
 
 ### Pull requests
 
