@@ -138,7 +138,7 @@ models:
 
 </File>
 
-In this example, models in the `prod` target rebuild when upstream data is more than 4 hours old. In all other environments, models wait 7 days before rebuilding.
+In this example, models in the `prod` target rebuild only when upstream data is more than 4 hours old. In all other environments, models wait 7 days before rebuilding.
 
 For more details, refer to the [`lag_tolerance` config reference](/reference/resource-configs/lag-tolerance).
 
