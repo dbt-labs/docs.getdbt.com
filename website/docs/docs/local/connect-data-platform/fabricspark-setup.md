@@ -41,7 +41,7 @@ The Fabric Lakehouse adapter (`dbt-fabricspark`) connects to Fabric Spark throug
 
 <TabItem value="Azure CLI">
 
-Use Azure CLI for local development. This lets <Constant name="core" /> use credentials from an active `az login` session. To use this method, set `authentication: CLI` in your `profiles.yml` file and run `az login`.
+Use Azure CLI for self-hosted dbt installations. This lets <Constant name="core" /> use credentials from an active `az login` session. To use this method, set `authentication: CLI` in your `profiles.yml` file and run `az login`.
 
 When you authenticate, Azure CLI may open a browser window or prompt you to complete sign-in on the [Microsoft device login](https://microsoft.com/devicelogin) page and enter a one-time code to complete sign-in. Once authentication is successful, dbt automatically reuses the active Azure CLI session for subsequent commands.
 
@@ -63,7 +63,7 @@ default:
       schema: LAKEHOUSE_OR_SCHEMA_NAME
       threads: 1
 
-      # Authentication (CLI for local development)
+      # Authentication (CLI for self-hosted dbt installations)
       authentication: CLI
 ```
 

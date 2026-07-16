@@ -39,6 +39,21 @@
   ],
   "redirects": [
     {
+      "source": "/reference/global-configs/behavior-flag-introduction",
+      "destination": "/reference/global-configs/behavior-changes",
+      "permanent": true
+    },
+    {
+      "source": "/reference/global-configs/behavior-flag-maturity",
+      "destination": "/reference/global-configs/behavior-changes",
+      "permanent": true
+    },
+    {
+      "source": "/reference/global-configs/behavior-flag-removed",
+      "destination": "/reference/global-configs/behavior-changes",
+      "permanent": true
+    },
+    {
       "source": "/docs/dbt-versions/core-upgrade/upgrading-to-fusion",
       "destination": "/docs/dbt-versions/core-upgrade/upgrading-to-v2",
       "permanent": true
