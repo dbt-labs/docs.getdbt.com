@@ -327,11 +327,11 @@ data_tests:
 
 ### Tests with and without `arguments`
 
-Some generic data tests need only the test name. Others need extra inputs. Put those inputs under an `arguments` property (available in v1.10.5 and higher).
+Some generic data tests need only the test name. Others need extra inputs, which you nest under an `arguments` property (available in v1.10.5 and higher).
 
 #### Without `arguments`
 
-Tests like `unique` and `not_null` don't need extra inputs. dbt already knows the model and column from the YAML context, so you can list the test by name:
+Tests like `unique` and `not_null` don't need extra inputs. For example, `unique` asserts that a column has no duplicate values, and `not_null` asserts that a column has no nulls. dbt already knows the model and column from the YAML context, so you can list the test by name:
 
 <File name='models/schema.yml'>
 
@@ -349,7 +349,7 @@ models:
 
 #### With `arguments`
 
-Tests like `accepted_values` and `relationships` need parameters for the test macro. Nest those under `arguments:`:
+Tests like `accepted_values` and `relationships` need extra inputs for the test macro. For example, `accepted_values` asserts that a column's values are in a supplied list, and `relationships` asserts that each value exists in another model (referential integrity). Nest those inputs under `arguments:`:
 
 <File name='models/schema.yml'>
 
