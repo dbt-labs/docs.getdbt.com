@@ -21,9 +21,9 @@ dbt Labs is committed to providing backward compatibility for all versions 1.x. 
 ## New and changed features and functionality
 
 ### Opt-in v2 parser
-<Constant name="core" /> v1.12 introduces the `--use-v2-parser` flag that delegates parsing to Fusion's Rust parser instead of dbt Core's own Python parser. The Rust parser is significantly faster than the Python parser — especially on larger projects, where it can be 5–10× quicker. If you're looking to speed up your development workflow or cut down on job startup times. Using the Rust parser is a natural first step toward Fusion compatibility, so you can catch and fix any project issues gradually rather than all at once.
+<Constant name="core" /> v1.12 introduces the `--use-v2-parser` flag that delegates parsing to the new v2 Rust parser instead of the v1 Python parser. The Rust parser is significantly faster than the Python parser — especially on larger projects, where it can be 5–10× quicker. If you're looking to speed up your development workflow or cut down on job startup times. Using the Rust parser is a natural first step toward v2 compatibility, so you can catch and fix any project issues gradually rather than all at once.
 
-This is an opt-in flag that changes no behavior unless explicitly set, making it a low-risk way to test Fusion parser compatibility from within <Constant name="core" /> v1.12.
+This is an opt-in flag that changes no behavior unless explicitly set, making it a low-risk way to test v2 parser compatibility from within <Constant name="core" /> v1.12.
 
 :::note
 The Rust parser is beta. Its output manifest may differ from the Python parser's in edge cases, which can affect downstream behavior. Fall back by removing `--use-v2-parser`, and [report issues](https://github.com/dbt-labs/dbt-core/issues) to help us close the gap.
@@ -31,9 +31,9 @@ The Rust parser is beta. Its output manifest may differ from the Python parser's
 
 For more information on how to enable the flag, related behaviors, and parser error types, refer to [Opt-in v2 parser](/reference/global-configs/parsing#opt-in-v2-parser).
 
-### Native private packages in dbt Core
+### Native private packages
 
-<Constant name="core" /> now supports [native private packages](/docs/build/packages#native-private-packages) in `packages.yml` and `dependencies.yml`, at parity with the <Constant name="fusion_engine" />. You can install packages from private GitHub, GitLab, or Azure DevOps repos using the `private` key without configuring a token or full Git URL. dbt uses your system's SSH configuration for authentication. Use the [`provider` key](/docs/build/packages#using-the-provider-key) to specify your Git provider and tell dbt which SSH URL format to construct. For example:
+<Constant name="core" /> now supports [native private packages](/docs/build/packages#native-private-packages) in `packages.yml` and `dependencies.yml`. You can install packages from private GitHub, GitLab, or Azure DevOps repos using the `private` key without configuring a token or full Git URL. dbt uses your system's SSH configuration for authentication. Use the [`provider` key](/docs/build/packages#using-the-provider-key) to specify your Git provider and tell dbt which SSH URL format to construct. For example:
 
 ```yaml
 packages:
