@@ -18,7 +18,7 @@ Supported cross-platform combinations include:
 - Snowflake ↔ DuckDB using Horizon catalog ([example](https://github.com/dataders/dbt_aws_cloud_cost))
 - Databricks ↔ DuckDB using Unity catalog ([example](https://github.com/dataders/dbt_aws_cloud_cost))
 
-## Example: Snowflake ↔ Databricks using Unity catalog {example-snowflake-databricks}
+## Example: Snowflake ↔ Databricks using Unity catalog {#example-snowflake-databricks}
 
 Let's imagine two "mesh" projects, [`jaffle_finance`](https://github.com/dbt-labs/jaffle-shop-mesh-finance) and [`jaffle_marketing`](https://github.com/dbt-labs/jaffle-shop-mesh-marketing), with a cross-project dependency `jaffle_finance -> jaffle_marketing`.
 
@@ -88,7 +88,7 @@ with monthly_revenue as (
 ...
 ```
 
-<img width="691" height="134" alt="Flow chart: The marketing project's ROI by channel model depends on the finance project's monthly revenue model" src="https://github.com/user-attachments/assets/e0a07911-b9d5-4422-9a81-6287e1946ca2" />
+<img width="691" height="134" alt="Flow chart: The marketing project's ROI by channel model depends on the finance project's monthly revenue model" src="https://github.com/user-attachments/assets/e0a07911-b9d5-4422-9a81-6287e1946ca2" /> 
 
 This works for [both ways of resolving cross-project references](/docs/mesh/govern/project-dependencies):
 
@@ -118,6 +118,7 @@ Previously, if we only used the upstream model's `database` config, then dbt wou
 Instead, dbt now **matches up the `catalog_name`** for the referenced model with the entries in `catalogs.yml` for the currently running (root) project. dbt sees that `jaffle_finance.monthly_revenue` has `catalog_name: finance_db`, which for this project (`jaffle_marketing`) + this platform (Snowflake) is configured with `database: snowflake_cld__finance_db`. Therefore, dbt resolves the reference to:
 
 ```sql
+
 -- marketing/target/compiled/models/marts/roi_by_channel.sql
 with monthly_revenue as (
 
@@ -126,19 +127,21 @@ with monthly_revenue as (
 ),
 
 ...
+
 ```
 
 _And it just works!_
 
 Behind the scenes, Snowflake is syncing Databricks' `finance_db` ↔ Snowflake's `snowflake_cld__finance_db`, with eventual consistency. This means that `finance_db.jaffle_finance.monthly_revenue` in Databricks and `snowflake_cld__finance_db."jaffle_finance"."monthly_revenue"` in Snowflake are pointers to _the exact same Iceberg table_ in the Databricks-managed Unity catalog.
 
-### Alternative approach: catalog federation {catalog-federation}
+### Alternative approach: catalog federation {#catalog-federation}
 
 Writes to external Iceberg catalogs are generally slower than writes to managed Iceberg tables, and they can also run into reliability issues at scale. (See our [blog](/blog/catalog-linked-databases) and [benchmark](https://github.com/dbt-labs/snow-dbx-iceberg-benchmark).)
 
 Instead of having Snowflake write directly to Unity catalog through a catalog-linked database, you can have Snowflake write to its (managed) Horizon catalog, and use [Databricks catalog federation](https://docs.databricks.com/aws/en/query-federation/catalog-federation) to synchronize the Iceberg metadata for subsequent reads.
 
 ```mermaid
+
 flowchart LR
 	source_data --> model_a_logic["model_a (logic)"] --> model_a_data["model_a (data)"] --> |DBX Catalog Federation| model_b_logic["model_b (logic)"] --> model_b_data["model_b (data)"] -->
 |Snow CLD Read| model_c_logic["model_c (logic)"] --> model_c_data["model_c (data)"]
@@ -156,6 +159,7 @@ flowchart LR
 	subgraph unity_catalog
 		model_b_data
 	end
+
 ```
 
 <File name='catalogs.yml'>
