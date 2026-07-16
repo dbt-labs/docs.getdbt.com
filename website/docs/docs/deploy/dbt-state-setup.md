@@ -154,7 +154,7 @@ The more team members you have using dbt State, the better it gets; more team me
 If dbt State is behaving unexpectedly, you can prepend your run command with the `DBT_ENGINE_MANAGE_STATE` environment variable to isolate the issue:
 
 ```bash
-DBT_ENGINE_MANAGE_STATE=1 dbt run --target dev --select "customers"
+DBT_ENGINE_MANAGE_STATE=0 dbt run --target dev --select "customers"
 ```
 
 ## Next steps
