@@ -4,10 +4,6 @@ id: "latest_version_pointer_enabled_by_default"
 sidebar_label: "latest version pointer enabled by default"
 ---
 
-:::info Beta feature
-The `latest_version_pointer_enabled_by_default` flag is a beta feature in <Constant name="core" /> v1.12.
-:::
-
 | latest_version_pointer_enabled_by_default | <Constant name="dbt" /> **Latest** | <Constant name="core" /> | <Constant name="fusion" /> |
 |---|---|---|---|
 | Introduced | 2026.5 | 1.12.0 | Early preview |
