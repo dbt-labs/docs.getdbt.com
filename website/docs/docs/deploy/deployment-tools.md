@@ -41,11 +41,7 @@ Automation servers (such as CodeDeploy, GitLab CI/CD ([video](https://youtu.be/-
 
 Integrate <Constant name="dbt" /> and [Azure Data Factory](https://learn.microsoft.com/en-us/azure/data-factory/) (ADF) for a smooth data process from data ingestion to data transformation. You can seamlessly trigger <Constant name="dbt" /> jobs upon completion of ingestion jobs by using the [dbt API](/docs/dbt-apis/overview) in ADF.
 
-
-The following video provides you with a detailed overview of how to trigger a <Constant name="dbt" /> job via the API in Azure Data Factory.
-
-
-To use the dbt API to trigger a job in <Constant name="dbt" /> through ADF:
+The following steps provides you with a detailed overview of how to trigger a <Constant name="dbt" /> job using the API in Azure Data Factory. To use the dbt API to trigger a job in <Constant name="dbt" /> through ADF:
 
 1. In <Constant name="dbt" />, go to the job settings of the daily production job and turn off the scheduled run in the **Trigger** section.
 2. You'll want to create a pipeline in ADF to trigger a <Constant name="dbt" /> job.

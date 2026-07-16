@@ -2,9 +2,10 @@ import path from "path";
 import math from "remark-math";
 import katex from "rehype-katex";
 import rehypeCodeLanguage from "./plugins/rehypeCodeLanguage.js";
+import remarkBlogFootnoteLinks from "./plugins/remarkBlogFootnoteLinks.js";
 const { themes } = require('prism-react-renderer')
 
-const { versions, versionedPages, versionedCategories } = require("./dbt-versions");
+const { products, versions, versionedPages, versionedCategories } = require("./dbt-versions");
 require("dotenv").config();
 
 /* Set SITE_URL by environment */
@@ -86,14 +87,13 @@ var siteSettings = {
       //debug: true,
     },
     announcementBar: {
-      id: "fast-track-to-dbt-workshop",
-      content:
-      "Join our free, Fast track to dbt workshop on June 3 or 4. Build and run your first dbt models!",
+      id: "dbt-state-july-2026-webinar",
+      content: "dbt State: Build what's changed, skip what hasn't. Join us for a live virtual event on July 15th to learn how to save on warehouse compute costs!",
       isCloseable: true,
     },
     announcementBarActive: true,
     announcementBarLink:
-      "https://www.getdbt.com/resources/webinars/fast-track-to-dbt-workshop",
+      "https://www.getdbt.com/resources/webinars/dbt-state-build-what-s-changed-skip-what-hasn-t/?utm_medium=internal&utm_source=docs&utm_campaign=q2-2027_dbt-state-deep-dive-product_aw&utm_content=themed-webinar____&utm_term=all_all__",
     prism: {
       theme: (() => {
         var theme = themes.nightOwl;
@@ -173,7 +173,7 @@ var siteSettings = {
             },
             {
               label: "Fusion Diaries",
-              href: "https://github.com/dbt-labs/dbt-fusion/discussions/categories/announcements",
+              href: "https://github.com/dbt-labs/dbt-core/discussions/categories/announcements?discussions_q=is:open+diaries+category:Announcements",
             },
             {
               label: "Courses",
@@ -345,7 +345,7 @@ var siteSettings = {
           //showLastUpdateAuthor: false,
 
           sidebarCollapsible: true,
-          exclude: ["hover-terms.md"],
+          exclude: ["hover-terms.md", "faqs/Runs/sao-difference-core.md"],
         },
         blog: {
           blogTitle: "Developer Blog | dbt Developer Hub",
@@ -354,7 +354,7 @@ var siteSettings = {
           postsPerPage: 20,
           blogSidebarTitle: "Recent posts",
           blogSidebarCount: 5,
-          remarkPlugins: [math],
+          remarkPlugins: [math, remarkBlogFootnoteLinks],
           rehypePlugins: [katex],
           // Un-truncated blog posts will throw an error
           // https://docusaurus.io/blog/releases/3.5#onuntruncatedblogposts
@@ -374,6 +374,7 @@ var siteSettings = {
     path.resolve("plugins/buildRSSFeeds"),
     path.resolve("plugins/buildRawMarkdownData"),
     path.resolve("plugins/buildFusionReleases"),
+    path.resolve("plugins/buildPageBanners"),
     [
       "vercel-analytics",
       {
@@ -559,23 +560,18 @@ var siteSettings = {
   },
 };
 
-// If versions json file found, add versions dropdown to nav
-if (versions) {
+// If products defined, add version dropdown to nav using sub-product names as items
+if (products) {
   siteSettings.themeConfig.navbar.items.push({
     label: "Versions",
     position: "left",
     className: "nav-versioning",
-    items: [
-      ...versions.reduce((acc, version) => {
-        if (version?.version) {
-          acc.push({
-            label: `${version.version}`,
-            href: "#",
-          });
-        }
-        return acc;
-      }, []),
-    ],
+    items: products.flatMap((product) =>
+      product.subProducts.map((sp) => ({
+        label: sp.name,
+        href: "#",
+      }))
+    ),
   });
 }
 

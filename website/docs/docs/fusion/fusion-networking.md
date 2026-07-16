@@ -67,7 +67,7 @@ You can also add this to your `.env` file in your project root:
 DBT_SEND_ANONYMOUS_USAGE_STATS=false
 ```
 
-For more details on `.env` file usage, refer to [Environment variables](/docs/local/install-dbt?version=2#environment-variables).
+For more details on `.env` file usage, refer to [Environment variables](/docs/local/configure-environment-variables).
 
 ## Manifest downloads (dbt platform only) <Lifecycle status="enterprise" /> {#manifest-downloads} 
 

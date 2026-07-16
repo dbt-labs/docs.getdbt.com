@@ -8,7 +8,7 @@ Cell-based (multi-cell) accounts are still multi-tenant SaaS: they use the same 
 | Continuous integration jobs   | ✅               | ✅                    | ✅                  | ✅                  | ✅               | 
 | <Constant name="platform_cli" /> | ✅               | ✅                    | ✅                  | ✅                  | ✅               |
 | <Constant name="studio_ide" /> | ✅               | ✅                    | ✅                  | ✅                  | ✅               |
-| <Constant name="copilot" />   | ✅               | ✅                    | ✅                  | ✅                  | ✅               |
+| <Constant name="wizard" />   | ✅               | ✅                    | ✅                  | ✅                  | ✅               |
 | <Constant name="catalog" />  | ✅               | ✅                    | ✅                  | ✅                  | ✅               |
 | <Constant name="mesh" />      | ✅               | ✅                    | ✅                  | ✅                  | ✅               |
 | <Constant name="semantic_layer" />| ✅           | ✅                    | ✅                  | ✅                  | ✅               |

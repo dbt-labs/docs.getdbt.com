@@ -70,6 +70,7 @@ models:
     [+](/reference/resource-configs/plus-prefix)[unique_key](/reference/resource-configs/unique_key): <column_name_or_expression>
     [+](/reference/resource-configs/plus-prefix)[freshness](/reference/resource-configs/freshness): <dict>
     [+](/reference/resource-configs/plus-prefix)[on_error](/reference/resource-configs/on_error): skip_children | continue
+    [+](/reference/resource-configs/plus-prefix)[latest_version_pointer](/reference/resource-configs/latest_version_pointer): <dict>
 
   ```
 
@@ -140,6 +141,7 @@ models:
         # build_after is nested under freshness. Available on dbt platform Enterprise tiers only.
         build_after: <dict>
       [on_error](/reference/resource-configs/on_error): skip_children | continue
+      [latest_version_pointer](/reference/resource-configs/latest_version_pointer): <dict>
 ```
 
 </File>
@@ -192,6 +194,7 @@ models:
     [unique_key](/reference/resource-configs/unique_key)='column_name_or_expression'
     [freshness](/reference/resource-configs/freshness)=<dict>
     [on_error](/reference/resource-configs/on_error)="skip_children" | "continue"
+    [latest_version_pointer](/reference/resource-configs/latest_version_pointer)=<dict>
 ) }}
 ```
 

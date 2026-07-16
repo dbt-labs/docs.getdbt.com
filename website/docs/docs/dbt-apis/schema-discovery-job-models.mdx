@@ -29,8 +29,15 @@ The example query below finds a model by its unique database, schema, and identi
 ```graphql
 {
   job(id: 123) {
-    models(database:"analytics", schema: "analytics", identifier:"dim_customers") {
+    models(
+      database: "analytics"
+      schema: "analytics"
+      identifier: "dim_customers"
+      first: 10
+      after: "{somePaginationCursorValue}"
+    ) {
       uniqueId
+      paginationCursor
     }
   }
 }
@@ -42,14 +49,30 @@ The example query below finds all models in this schema and their respective exe
 ```graphql
 {
   job(id: 123) {
-    models(schema: "analytics") {
+    models(schema: "analytics", first: 10, after: "{somePaginationCursorValue}") {
       uniqueId
       executionTime
+      paginationCursor
     }
   }
 }
 ```
 
+#### Paginate models in a job run
+
+Job-based `models` queries support `first` and `after` for cursor pagination. Each model returns a `paginationCursor` field to fetch the next page. Refer to [Job-based queries](/docs/dbt-apis/discovery-querying#job-based-queries) for paging behavior, supported resource types, and legacy default behavior.
+
+```graphql
+query JobModelsPage($jobId: BigInt!, $runId: BigInt, $first: Int!, $after: String) {
+  job(id: $jobId, runId: $runId) {
+    models(first: $first, after: $after) {
+      uniqueId
+      executionTime
+      paginationCursor
+    }
+  }
+}
+```
 
 ### Fields
 The models object can access the _same fields_ as the [Model node](/docs/dbt-apis/discovery-schema-job-model). The difference is that the models object can output a list so instead of querying for fields for one specific model, you can query for those parameters for all models within a jobID, database, and so on.

@@ -8,7 +8,7 @@ datatype: string
 
 <VersionCallout version="1.12" /> 
 
-# on_error<Lifecycle status="beta" />
+# on_error
 
 <Tabs
   groupId="config-languages"
@@ -67,11 +67,9 @@ models:
 
 ## Definition
 
-:::info Beta feature
-The `on_error` config is a beta feature in <Constant name="core" /> v1.12.
-:::
+The `on_error` config controls what happens to downstream (child) models when a model fails during a run. This config only applies to models; it has no effect on tests. To control whether downstream models run after a test failure, use the [`severity`](/reference/resource-configs/severity) config on your tests instead.
 
-The `on_error` config controls what happens to downstream (child) models when a model fails during a run. This config accepts two values:
+`on_error` accepts two values:
 
 - `skip_children` (default): All downstream models are skipped when the model fails.
 - `continue`: Downstream models continue running when the model fails, instead of being skipped.
@@ -93,7 +91,7 @@ select 1 as id
 
 </File>
 
-When `on_error` is set to `continue` on a model that fails, dbt runs its downstream models rather than skipping them. The failed model itself still appears as an error in the run results.
+When `on_error` is set to `continue` on a model that fails, dbt runs its downstream models rather than skipping them. The failed model still appears as an error in the run results, and the overall run still fails even if all downstream models succeed.
 
 The [`--fail-fast`](/reference/global-configs/failing-fast) flag takes precedence over `on_error: continue`. When `--fail-fast` is set, dbt stops at the first failure and skips all remaining models, regardless of their `on_error` configuration. 
 

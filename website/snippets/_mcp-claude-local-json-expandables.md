@@ -1,18 +1,18 @@
 import MCPExample from '/snippets/_mcp-config-files.md';
 
-<Expandable alt_header="Local MCP with OAuth" lifecycle="managed,managed_plus">
+<Expandable alt_header="Self-hosted MCP with OAuth" lifecycle="self_service,managed,managed_plus">
 
 Configuration for users who want seamless OAuth authentication with the <Constant name="dbt_platform" />. 
 
-Before you begin, make sure your account admin enables AI features on your <Constant name="dbt_platform"/> account to use OAuth. Refer to [Enable dbt Copilot](/docs/platform/enable-dbt-copilot) for more info.
+Before you begin, make sure your account admin enables AI features on your <Constant name="dbt_platform"/> account to use OAuth. Refer to [Enable dbt Wizard](/docs/platform/enable-dbt-ai) for more info.
 
 <MCPExample />
 
 </Expandable>
 
-<Expandable alt_header="Local MCP (CLI only)">
+<Expandable alt_header="Self-hosted MCP (CLI only)">
 
-Local configuration for users who only want to use dbt commands with <Constant name="core" /> or <Constant name="fusion" />
+Self-hosted configuration for users who only want to use dbt commands with <Constant name="core" /> or <Constant name="fusion" />
 
 ```json
 {
@@ -36,7 +36,7 @@ Finding your paths:
 
 </Expandable>
 
-<Expandable alt_header="Local MCP with .env">
+<Expandable alt_header="Self-hosted MCP with .env">
 
 Advanced configuration for users who need custom [environment variables](/docs/dbt-ai/mcp-environment-variables). Put your `.env` file in your _dbt project root_ (same folder as `dbt_project.yml`) and use an absolute path with `--env-file`.
 

@@ -415,7 +415,7 @@ On the **General** tab, you can review the description, latest status, and linea
 
 <Lightbox src="/img/docs/collaborate/dbt-explorer/example-model-details.png" width="100%" title="Example of resource details" />
 
-<Lightbox src="/img/docs/platform-integrations/auto-exposures/explorer-lineage2.jpg" width="95%" title="Example of downstream exposure details for Tableau."/>
+<Lightbox src="/img/docs/platform-integrations/auto-exposures/explorer-lineage2.png" width="95%" title="Example of downstream exposure details for Tableau."/>
 
 </DocCarousel>
 

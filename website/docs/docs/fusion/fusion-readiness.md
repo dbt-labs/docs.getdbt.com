@@ -7,7 +7,7 @@ pagination_next: null
 pagination_prev: null
 ---
 
-The <Constant name="fusion_engine" /> is here and is now generally available for <Constant name="dbt_platform" /> projects on Snowflake! We currently offer it as a [preview](/docs/dbt-versions/product-lifecycles#the-dbt-platform) for all other supported adapters. Even if we haven't enabled it for your account, you can still start preparing your projects for upgrade. Use this checklist to ensure a smooth upgrade once <Constant name="fusion" /> becomes available. If this is all new to you, first [learn about <Constant name="fusion" />](/docs/fusion), its current state, and the features available. 
+The <Constant name="fusion_engine" /> is here and is now generally available for <Constant name="dbt_platform" /> projects on Snowflake! We currently offer it as a [preview](/docs/dbt-versions/product-lifecycles) for all other supported adapters. Even if we haven't enabled it for your account, you can still start preparing your projects for upgrade. Use this checklist to ensure a smooth upgrade once <Constant name="fusion" /> becomes available. If this is all new to you, first [learn about <Constant name="fusion" />](/docs/fusion), its current state, and the features available. 
 
 import FusionReadinessPanel from '/snippets/_fusion-migration-readiness-panel.md';
 
@@ -78,13 +78,14 @@ We determine <Constant name="fusion" /> eligibility using data from your job run
 - [ ] Resolve any job failures &mdash; all jobs must run successfully for eligibility checks to work.
 - [ ] Delete any jobs that are no longer in use to ensure accurate eligibility reporting. 
 - [ ] Make sure you've promoted the changes for deprecation resolution and package upgrades to your git branches that map to your deployment environments.
+- [ ] For eligible jobs, use **Debug on <Constant name="fusion" />** to debug in <Constant name="studio_ide" /> or run once on <Constant name="fusion" />. Refer to [Update your jobs](/guides/prepare-fusion-upgrade?step=7).
 
 ### Stay informed about Fusion progress
 
 The <Constant name="fusion_engine" /> is generally available for <Constant name="dbt_platform" /> projects on Snowflake and in preview for all other eligible projects! Keep up-to-date with these resources: 
 
 - [ ] Check out the [Fusion homepage](https://www.getdbt.com/product/fusion) for available resources, including supported adapters, prerequisites, installation instructions, limitations, and deprecations.
-- [ ] Read the [Upgrade guide](/docs/dbt-versions/core-upgrade/upgrading-to-fusion) to learn about the new features and functionality that impact your dbt projects.
-- [ ] Monitor progress and get insight into the development process by reading the [Fusion Diaries](https://github.com/dbt-labs/dbt-fusion/discussions/categories/announcements).
-- [ ] Catch up on the [cost savings potential](https://www.getdbt.com/blog/announcing-state-aware-orchestration) of Fusion-powered [state-aware orchestration](https://docs.getdbt.com/docs/deploy/state-aware-about) (hint: 30%+ reduction in warehouse spend!)
+- [ ] Read the [Upgrade guide](/docs/dbt-versions/core-upgrade/upgrading-to-v2) to learn about the new features and functionality that impact your dbt projects.
+- [ ] Monitor progress and get insight into the development process by reading the [Fusion Diaries](https://github.com/dbt-labs/dbt-core/discussions/categories/announcements?discussions_q=is:open+diaries+category:Announcements).
+- [ ] Learn how [dbt State](/docs/deploy/dbt-state-about) can reduce warehouse costs by 30%+ by rebuilding models only when data or code changes.
 

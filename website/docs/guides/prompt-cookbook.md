@@ -1,10 +1,10 @@
 ---
-title: How to use prompts for dbt Copilot
-description: A cookbook of prompts and real-world examples to use dbt Copilot efficiently.
+title: How to use prompts for dbt Wizard
+description: A cookbook of prompts and real-world examples to use dbt Wizard efficiently.
 id: prompt-cookbook
 icon: 'dbt-copilot'
 hide_table_of_contents: true
-tags: ['dbt Copilot', 'AI', 'Best practices']
+tags: ['dbt Wizard', 'AI', 'Best practices']
 level: 'Beginner'
 ---
 
@@ -13,10 +13,10 @@ level: 'Beginner'
 ## Overview
 
 <IntroText>
-Learn how to write effective prompts for dbt <Constant name="copilot" /> to generate accurate SQL, models, metrics, and macros. Each recipe is self-contained with its own realistic example.
+Learn how to write effective prompts for dbt <Constant name="wizard" /> to generate accurate SQL, models, metrics, and macros. Each recipe is self-contained with its own realistic example.
 </IntroText>
 
-dbt <Constant name="copilot" /> is an AI assistant that generates SQL, YAML, documentation, tests, semantic models, and macros based on your project's context. The quality of output depends on the clarity of your prompts.
+dbt <Constant name="wizard" /> is an AI assistant that generates SQL, YAML, documentation, tests, semantic models, and macros based on your project's context. The quality of output depends on the clarity of your prompts.
 
 This cookbook provides independent recipes for common prompting tasks. Jump to any section that matches your current need.
 
@@ -32,7 +32,7 @@ This cookbook covers the following topics:
 
 ## Prompt best practices
 
-Writing effective prompts is about giving <Constant name="copilot" /> the right context and clear direction. Follow these principles:
+Writing effective prompts is about giving <Constant name="wizard" /> the right context and clear direction. Follow these principles:
 - [Provide rich context](#provide-rich-context)
 - [Break complex logic into smaller steps](#break-complex-logic-into-smaller-steps)
 - [State the business question, not just the output](#state-the-business-question-not-just-the-output)
@@ -49,7 +49,7 @@ Include the following:
 - Sample values (such as `plan_type` can be "monthly" or "annual")
 
 :::tip
-The following example uses SQL terminology (like data types and joins) because it's generating a SQL query. However, the principle of providing rich context applies to all <Constant name="copilot" /> tasks—whether you're generating macros, documentation, or YAML configurations.
+The following example uses SQL terminology (like data types and joins) because it's generating a SQL query. However, the principle of providing rich context applies to all <Constant name="wizard" /> tasks—whether you're generating macros, documentation, or YAML configurations.
 :::
 
 **Example: Santi's neighborhood café**
@@ -89,7 +89,7 @@ and compare conversion rates: do high-frequency punch-card users convert to our
 Many users try to ask for everything at once in a single prompt. Breaking your request into smaller, sequential steps consistently produces better results.
 :::
 
-For multi-part tasks, write them as a sequence of clear instructions. <Constant name="copilot" /> handles step-by-step logic better than complex, all-in-one requests.
+For multi-part tasks, write them as a sequence of clear instructions. <Constant name="wizard" /> handles step-by-step logic better than complex, all-in-one requests.
 
 **Example:**
 
@@ -170,7 +170,7 @@ Output:
 Sort by total_spent descending, limit to 10 rows.
 ```
 
-**What <Constant name="copilot" /> generates:**
+**What <Constant name="wizard" /> generates:**
 
 ```sql
 select
@@ -192,14 +192,14 @@ limit 10
 - Specific business question with a defined time period
 - Explicit output requirements and sorting logic
 
-**Pro tip:** Start simple, then iterate. If <Constant name="copilot" />'s first attempt isn't perfect, no worries! Refine your prompt with more specific details and let <Constant name="copilot" /> do its magic, it usually gets there in the end ✨
+**Pro tip:** Start simple, then iterate. If <Constant name="wizard" />'s first attempt isn't perfect, no worries! Refine your prompt with more specific details and let <Constant name="wizard" /> do its magic, it usually gets there in the end ✨
 
 ## Use what you already have
 
-You don't need to write everything from scratch. Pull in documentation, definitions, and sample data you already have—it helps <Constant name="copilot" /> understand your specific business context.
+You don't need to write everything from scratch. Pull in documentation, definitions, and sample data you already have—it helps <Constant name="wizard" /> understand your specific business context.
 
 :::tip dbt Insights integration
-When using <Constant name="copilot" /> in [<Constant name="insights" />](/docs/explore/dbt-insights), you can easily cross-reference between <Constant name="copilot" />'s generated SQL and metadata from [dbt Catalog](/docs/explore/explore-projects). This embedded integration makes it seamless to access documentation, definitions, and sample data while building queries.
+When using <Constant name="wizard" /> in [<Constant name="insights" />](/docs/explore/dbt-insights), you can easily cross-reference between <Constant name="wizard" />'s generated SQL and metadata from [dbt Catalog](/docs/explore/explore-projects). This embedded integration makes it seamless to access documentation, definitions, and sample data while building queries.
 :::
 
 ### Define your business rules
@@ -215,7 +215,7 @@ Net revenue = gross sales minus discounts and returns
 
 ### Show sample values
 
-Give <Constant name="copilot" /> examples of what the data actually looks like, especially edge cases:
+Give <Constant name="wizard" /> examples of what the data actually looks like, especially edge cases:
 
 ```text
 Order statuses:
@@ -240,33 +240,33 @@ on customer_id. Filter to the last 30 days for preview only.
 
 ## Create semantic models and metrics
 
-Fast-track your semantic layer strategy with AI-generated YAML using <Constant name="copilot" />.
+Fast-track your semantic layer strategy with AI-generated YAML using <Constant name="wizard" />.
 
-<Constant name="dbt_platform" /> provides built-in generation buttons that automatically  [generate code](/docs/platform/use-dbt-copilot), [documentation](/docs/build/documentation), [data tests](/docs/build/data-tests), [metrics](/docs/build/metrics-overview), and [semantic models](/docs/build/semantic-models) for you with the click of a button in the [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-copilot), [<Constant name="canvas" />](/docs/platform/build-canvas-copilot), and [<Constant name="insights" />](/docs/explore/dbt-insights).
+<Constant name="dbt_platform" /> provides built-in generation buttons that automatically  [generate code](/docs/dbt-ai/wizard-ide), [documentation](/docs/build/documentation), [data tests](/docs/build/data-tests), [metrics](/docs/build/metrics-overview), and [semantic models](/docs/build/semantic-models) for you with the click of a button in the [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-studio-ai), [<Constant name="canvas" />](/docs/platform/build-canvas-copilot), and [<Constant name="insights" />](/docs/explore/dbt-insights).
 
 These features understand your model's structure and generate YAML in the correct location.
 
 **How to generate semantic models:**
 
 1. Navigate to the Studio IDE and select a SQL model file in the **File explorer**
-2. In the **Console** section (under the **Editor**), click the **dbt Copilot** icon to view AI options
+2. In the **Console** section (under the **Editor**), click the **dbt Wizard** icon to view AI options
 3. Select **Semantic model** to create a semantic model based on your SQL model
 4. Review and refine the generated YAML as needed
 
-You can also use <Constant name="copilot" /> to generate documentation, tests, and metrics.
+You can also use <Constant name="wizard" /> to generate documentation, tests, and metrics.
 
 These built-in features automatically understand your model's columns, data types, and relationships, which means you don't need to manually describe your schema or copy-paste between file types.
 
 **Typical workflow:**
-1. Build your SQL model using <Constant name="copilot" /> conversational prompts
+1. Build your SQL model using <Constant name="wizard" /> conversational prompts
 2. Use built-in buttons to add documentation, tests, and semantic models
 3. Refine the generated YAML as needed
 
-For more details, check out the [dbt Copilot](/docs/platform/use-dbt-copilot) docs.
+For more details, check out the [dbt Wizard](/docs/dbt-ai/wizard-ide) docs.
 
 ## Create reusable macros
 
-In this section, we'll look at how to create reusable macros using <Constant name="copilot" />.
+In this section, we'll look at how to create reusable macros using <Constant name="wizard" />.
 
 - [Turn repetitive code into reusable logic](#turn-repetitive-code-into-reusable-logic)
 - [Lower the barrier to entry](#lower-the-barrier-to-entry)
@@ -276,7 +276,7 @@ In this section, we'll look at how to create reusable macros using <Constant nam
 
 A junior analyst keeps copy-pasting CASE statements across models.
 
-**What to give <Constant name="copilot" />:**
+**What to give <Constant name="wizard" />:**
 
 ```text
 Turn this CASE pattern into a reusable macro:
@@ -300,7 +300,7 @@ Macro requirements:
 
 You need a macro but don't know Jinja syntax well.
 
-**What to ask <Constant name="copilot" />:**
+**What to ask <Constant name="wizard" />:**
 
 ```text
 I need a macro that calculates the number of days between two date columns, 
@@ -313,13 +313,13 @@ Parameters:
 Include a docstring explaining how to use it.
 ```
 
-**Outcome:** <Constant name="copilot" /> generates proper Jinja syntax, handles parameters, and includes documentation. You learn Jinja patterns while getting working code.
+**Outcome:** <Constant name="wizard" /> generates proper Jinja syntax, handles parameters, and includes documentation. You learn Jinja patterns while getting working code.
 
 ### Accelerate complex logic design
 
 This is best for advanced users who are comfortable with Jinja.
 
-**What to ask <Constant name="copilot" />:**
+**What to ask <Constant name="wizard" />:**
 
 ```text
 I need a macro that builds a grouped aggregation with optional filters.
@@ -333,11 +333,11 @@ Parameters:
 Include defaults and guardrails for empty lists.
 Add a docstring with parameter descriptions and usage example.
 ```
-**Why this works:** You've outlined the interface (parameters) and edge cases (empty lists), letting <Constant name="copilot" /> handle the Jinja boilerplate while you focus on design. This approach accelerates iteration so you can refine the structure without getting stuck in syntax details.
+**Why this works:** You've outlined the interface (parameters) and edge cases (empty lists), letting <Constant name="wizard" /> handle the Jinja boilerplate while you focus on design. This approach accelerates iteration so you can refine the structure without getting stuck in syntax details.
 
 ## Troubleshoot errors and issues
 
-<Constant name="copilot" /> acts as a fast, context-aware reviewer for failing SQL and macros. It reads errors, inspects your query structure, and suggests minimal fixes. Troubleshooting with <Constant name="copilot" /> gives you:
+<Constant name="wizard" /> acts as a fast, context-aware reviewer for failing SQL and macros. It reads errors, inspects your query structure, and suggests minimal fixes. Troubleshooting with <Constant name="wizard" /> gives you:
 
 - Faster diagnosis by using plain-language translation of errors with likely root causes
 - Safer fixes by biasing toward small, targeted changes
@@ -345,7 +345,7 @@ Add a docstring with parameter descriptions and usage example.
 
 ### Troubleshoot errors
 
-When something breaks, give <Constant name="copilot" /> the error message, your code, and what you expected to happen. Here are a couple of examples to show you how to use <Constant name="copilot" /> to troubleshoot errors.
+When something breaks, give <Constant name="wizard" /> the error message, your code, and what you expected to happen. Here are a couple of examples to show you how to use <Constant name="wizard" /> to troubleshoot errors.
 
 **Example: SQL error**
 
@@ -382,7 +382,7 @@ Show me the rendered SQL from target/compiled and explain what's wrong.
 ## Conclusion
 
 <ConfettiTrigger>
-Congrats, you've now learned some tips on how to create and use prompts for dbt <Constant name="copilot" />  🎉! You can:
+Congrats, you've now learned some tips on how to create and use prompts for dbt <Constant name="wizard" />  🎉! You can:
 
 - Boost your prompting skills by providing rich context and stating clear business questions. Applicable for SQL, macros, documentation, tests, metrics, and semantic models.
 - Amplify your workflow by using existing documentation and project context
@@ -391,7 +391,7 @@ Congrats, you've now learned some tips on how to create and use prompts for dbt 
 
 ### Quick reference checklist
 
-When writing prompts for dbt <Constant name="copilot" />:
+When writing prompts for dbt <Constant name="wizard" />:
 
 - ✅ Provide rich context: Table names, columns, data types, relationships, sample values
 - ✅ Break down complex logic: Write multi-part queries as a sequence of steps
@@ -410,16 +410,16 @@ For troubleshooting:
 
 Start with one task—automating documentation, generating a test, or refactoring a model—and build the habit from there. 
 
-The more you use <Constant name="copilot" />, the more you'll discover ways to accelerate your analytics engineering workflow.
+The more you use <Constant name="wizard" />, the more you'll discover ways to accelerate your analytics engineering workflow.
 
 
-Check out the following docs to learn more about how to use <Constant name="copilot" />:
+Check out the following docs to learn more about how to use <Constant name="wizard" />:
 
-- [About dbt Copilot](/docs/platform/dbt-copilot)
-- [Generate resources](/docs/platform/use-dbt-copilot#generate-resources)
-- [Generate and edit SQL inline](/docs/platform/use-dbt-copilot#generate-and-edit-sql-inline)
-- [Build visual models](/docs/platform/use-dbt-copilot#build-visual-models)
-- [Build queries](/docs/platform/use-dbt-copilot#build-queries)
+- [About dbt Wizard](/docs/platform/wizard-platform)
+- [dbt Wizard in Studio IDE](/docs/dbt-ai/wizard-ide)
+- [Generate resources](/docs/dbt-ai/wizard-ide#generate-resources)
+- [Build visual models with dbt Wizard](/docs/platform/build-canvas-copilot)
+- [Build queries in dbt Insights](/docs/explore/navigate-dbt-insights)
 
 
 </ConfettiTrigger>

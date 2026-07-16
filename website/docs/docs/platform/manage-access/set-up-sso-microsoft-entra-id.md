@@ -100,15 +100,23 @@ Under **Properties** check the toggle setting for **User assignment required?** 
 
 13. Navigate back to [**Default Directory**](https://portal.azure.com/#home) (or **Home**) and then **App registration**.
 14. Select your application and then select **API permissions**.
-15. Click **+Add a permission** and add the permissions shown below.
+15. Click **+Add a permission** and add the permissions shown in the following table:
+
+<SimpleTable>
 
 | API Name | Type | Permission | Required? |
 | --- | --- | --- | --- |
 | Microsoft Graph | Delegated | `User.Read` | Yes |
 | Microsoft Graph | Delegated | `GroupMember.Read.All` | Yes |
-| Microsoft Graph | Delegated | `Directory.AccessAsUser.All` | Optional — may be required if users are assigned to > 200 groups |
+| Microsoft Graph | Delegated | `Directory.Read.All` | Optional — may be required if users are assigned to > 200 groups |
 
-The default scope only requires `User.Read` and `GroupMember.Read.All`. If you assign a user to more than 200 groups, you may need to grant additional permissions such as `Directory.AccessAsUser.All`. 
+</SimpleTable>
+
+The default scope only requires `User.Read` and `GroupMember.Read.All`. If you assign a user to more than 200 groups, you may need to grant additional permissions such as `Directory.Read.All`. 
+
+:::info SSO before December 2025
+If you set up SSO before December 2025, your existing configuration may request `Directory.Read.All` instead of `GroupMember.Read.All`. To use the updated scopes, delete and re-create your SSO [configuration](#configuring-permissions).
+:::
 
 16. Save these permissions, then click **Grant admin consent** to grant admin consent for this directory on behalf of all of your users.
 
@@ -143,7 +151,8 @@ To complete setup, follow the steps below in the <Constant name="dbt" /> applica
 
 25. From <Constant name="dbt" />, click on your account name in the left side menu and select **Account settings**.
 26. Click **SSO & SCIM** from the menu.
-27. Click the **Edit** button and supply the following SSO details:
+27. Click **Get started** if SSO has not been configured, or **Edit** if it has already been set up.
+28. Supply the following SSO details:
 
 | Field | Value |
 | ----- | ----- |
@@ -155,7 +164,7 @@ To complete setup, follow the steps below in the <Constant name="dbt" /> applica
 
 <Lightbox src="/img/docs/dbt-platform/dbt-platform-enterprise/azure/azure-cloud-sso.png" title="Configuring Entra ID AD SSO in dbt" />
 
-28.  Click **Save** to complete setup for the Microsoft Entra ID SSO integration. From here, you can navigate to the login URL generated for your account's _slug_ to test logging in with Entra ID.
+29.  Click **Save** to complete setup for the Microsoft Entra ID SSO integration. From here, you can navigate to the login URL generated for your account's _slug_ to test logging in with Entra ID.
 
 <Snippet path="login_url_note" />
 
@@ -177,9 +186,20 @@ Now that you've set up SSO with Entra ID, you can [set up SCIM](/docs/platform/m
 
 ## Troubleshooting tips
 
+
+<Expandable alt_header="Receiving a 'AADSTS90094: Admin consent is required' error">
+
+If you set up SSO before December 2025, your existing configuration may request `Directory.Read.All` instead of `GroupMember.Read.All`. To use the updated scopes, delete and re-create your SSO [configuration](#configuring-permissions).
+
+</Expandable>
+
+<Expandable alt_header="Domain name mismatch">
+
 Ensure that the domain name under which user accounts exist in Azure matches the domain you supplied in [Supplying credentials](#supplying-credentials) when you configured SSO.
 
 <Lightbox src="/img/docs/dbt-platform/dbt-platform-enterprise/azure/azure-get-domain.png" title="Obtaining the user domain from Azure" />
+
+</Expandable>
 
 For additional troubleshooting &mdash; including "Admin consent required" prompts for new users, "Access Denied" after SAML authentication, and issues with Entity ID or ACS URL changes &mdash; refer to [SSO FAQs and troubleshooting](/docs/platform/manage-access/sso-faq).
 

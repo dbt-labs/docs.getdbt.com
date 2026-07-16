@@ -4,6 +4,7 @@
     "start": "docusaurus start",
     "prebuild": "node scripts/fetch-mcp-readme-tools.js && node scripts/generate-functions-snippet.js",
     "build": "docusaurus build",
+    "generate:wizard-cli": "node scripts/generate-wizard-cli-reference.js",
     "swizzle": "docusaurus swizzle",
     "test": "npx jest --watch",
     "lint": "eslint --cache",

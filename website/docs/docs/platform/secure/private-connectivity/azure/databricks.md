@@ -7,6 +7,7 @@ pagination_next: null
 ---
 
 import SetUpPages from '/snippets/_available-tiers-enterprise-plus.md';
+import PrivateLinkCreateConnection from '/snippets/_privatelink-create-connection.md';
 import PrivateLinkSLA from '/snippets/_private-connection-SLA.md';
 import CloudProviders from '/snippets/_private-connection-across-providers.md';
 
@@ -15,6 +16,14 @@ import CloudProviders from '/snippets/_private-connection-across-providers.md';
 The following steps walk you through the setup of a Databricks Azure Private Link endpoint in the <Constant name="dbt" /> multi-tenant environment.
 
 <CloudProviders type='Databricks'/>
+
+:::warning VNet injection required
+
+Azure supports private endpoints for Databricks workspaces only when the workspace uses VNet injection (a customer-managed VNet). Workspaces on the default Azure-managed VNet reject private endpoint connections with a `NonVNetInjectedWorkspaceNotSupported` error.
+
+Confirm your workspace uses VNet injection before you submit the request. If it doesn't, create a new workspace with VNet injection enabled first. For more information, refer to [Deploy Azure Databricks in your own virtual network](https://learn.microsoft.com/en-us/azure/databricks/security/network/classic/vnet-inject).
+
+:::
 
 ## Configure Azure Private Link
 
@@ -55,8 +64,4 @@ The following steps walk you through the setup of a Databricks Azure Private Lin
 
 Once you've completed the setup in the Databricks environment, you can configure a private endpoint in <Constant name="dbt" />:
 
-1. Navigate to **Settings** → **Create new project** → select **Databricks**. 
-2. You will see two radio buttons: **Public** and **Private**. Select **Private**. 
-3. Select the private endpoint from the dropdown (this automatically populates the hostname/account field).
-4. Configure the remaining data platform details.
-5. Test your connection and save it.
+<PrivateLinkCreateConnection platform="Databricks" />

@@ -145,8 +145,8 @@ Your services can connect to <Constant name="dbt" /> over private connectivity. 
       <td>Azure Fabric</td>
       <td>-</td>
       <td>-</td>
-      <td>❌</td>
-      <td>❌</td>
+      <td>✅</td>
+      <td>✅</td>
       <td>-</td>
     </tr>
     <tr>

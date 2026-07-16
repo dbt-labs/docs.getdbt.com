@@ -94,7 +94,7 @@ Use this table to compare all available flags and how to configure them across i
 | [resource-type](/reference/global-configs/resource-type) (v1.8+) | ✅ | string <br /> default: None | ❌ | `DBT_RESOURCE_TYPES` <br></br> `DBT_EXCLUDE_RESOURCE_TYPES` | `--resource-type` <br></br> `--exclude-resource-type` |
 | [sample](/docs/build/sample-flag) | ✅ | string <br /> default: None | ❌ | `DBT_SAMPLE` | `--sample` |
 | [send_anonymous_usage_stats](/reference/global-configs/usage-stats) | ❌ | boolean <br /> default: True | ✅ | `DBT_SEND_ANONYMOUS_USAGE_STATS` | `--send-anonymous-usage-stats` <br /> `--no-send-anonymous-usage-stats` |
-| [source_freshness_run_project_hooks](/reference/global-configs/behavior-changes#source_freshness_run_project_hooks) | ❌ | boolean <br /> default: True | ✅ | ❌ | ❌ |
+| [source_freshness_run_project_hooks](/reference/global-configs/behavior-flags/source_freshness_run_project_hooks) | ❌ | boolean <br /> default: True | ✅ | ❌ | ❌ |
 | [state](/reference/node-selection/defer) | ❌ | path <br /> default: none | ❌ | `DBT_STATE`, `DBT_DEFER_STATE` | `--state` <br /> `--defer-state` |
 | [static_parser](/reference/global-configs/parsing#static-parser) | ❌ | boolean <br /> default: True | ✅ | `DBT_STATIC_PARSER` | `--static-parser` <br /> `--no-static-parser` |
 | [store_failures](/reference/resource-configs/store_failures) | ✅ | boolean <br /> default: False | ✅ (as resource config) | `DBT_STORE_FAILURES` | `--store-failures` <br /> `--no-store-failures` |
@@ -127,6 +127,7 @@ Use this table to compare all available flags and how to configure them across i
 | [event_time_end](/reference/dbt-jinja-functions/model#batch-properties-for-microbatch-models) | ✅ | datetime <br /> default: None | ❌ | `DBT_ENGINE_EVENT_TIME_END` | `--event-time-end` |
 | [fail_fast](/reference/global-configs/failing-fast) | ✅ | boolean <br /> default: False | ✅ | `DBT_ENGINE_FAIL_FAST` | `--fail-fast` <br /> `-x` <br /> `--no-fail-fast` |
 | [full_refresh](/reference/resource-configs/full_refresh) | ✅ | boolean <br /> default: False | ✅ (as resource config) | `DBT_ENGINE_FULL_REFRESH` | `--full-refresh` <br /> `--no-full-refresh` |
+| [hints_enabled](/reference/global-configs/hints) (v1.12+) | ✅ | boolean <br /> default: True | ✅ | `DBT_ENGINE_HINTS_ENABLED` | `--hints-enabled` <br /> `--no-hints-enabled` |
 | [indirect_selection](/reference/node-selection/test-selection-examples#syntax-examples) | ❌ | enum <br /> default: eager | ✅ | `DBT_ENGINE_INDIRECT_SELECTION` | `--indirect-selection` |
 | [introspect](/reference/commands/compile#introspective-queries) | ❌ | boolean <br /> default: True | ❌ | `DBT_ENGINE_INTROSPECT` | `--introspect` <br /> `--no-introspect` |
 | [log_cache_events](/reference/global-configs/logs#logging-relational-cache-events) | ❌ | boolean <br /> default: False | ❌ | `DBT_ENGINE_LOG_CACHE_EVENTS` | `--log-cache-events` <br /> `--no-log-cache-events` |
@@ -135,6 +136,7 @@ Use this table to compare all available flags and how to configure them across i
 | [log_level_file](/reference/global-configs/logs#log-level) | ❌ | enum <br /> default: debug | ✅ | `DBT_ENGINE_LOG_LEVEL_FILE` | `--log-level-file` |
 | [log_level](/reference/global-configs/logs#log-level) | ❌ | enum <br /> default: info | ✅ | `DBT_ENGINE_LOG_LEVEL` | `--log-level` |
 | [log_path](/reference/global-configs/logs) | ❌ | path <br /> default: None (uses `logs/`) | ❌ | `DBT_ENGINE_LOG_PATH` | `--log-path` |
+| [manage_state](/docs/deploy/dbt-state-setup) (v2.0+) | ✅ | boolean <br /> default: False | ✅ | `DBT_ENGINE_MANAGE_STATE` | `--manage-state` <br /> `--no-manage-state` |
 | [partial_parse](/reference/global-configs/parsing#partial-parsing) | ✅ | boolean <br /> default: True | ✅ | `DBT_ENGINE_PARTIAL_PARSE` | `--partial-parse` <br /> `--no-partial-parse` |
 | [populate_cache](/reference/global-configs/cache) | ✅ | boolean <br /> default: True | ✅ | `DBT_ENGINE_POPULATE_CACHE` | `--populate-cache` <br /> `--no-populate-cache` |
 | [print](/reference/global-configs/print-output#suppress-print-messages-in-stdout) | ❌ | boolean <br /> default: True | ❌ | `DBT_ENGINE_PRINT` | `--print` <br /> `--no-print` |
@@ -146,7 +148,7 @@ Use this table to compare all available flags and how to configure them across i
 | [resource-type](/reference/global-configs/resource-type) (v1.8+) | ✅ | string <br /> default: None | ❌ | `DBT_ENGINE_RESOURCE_TYPES` <br></br> `DBT_ENGINE_EXCLUDE_RESOURCE_TYPES` | `--resource-type` <br></br> `--exclude-resource-type` |
 | [sample](/docs/build/sample-flag) | ✅ | string <br /> default: None | ❌ | `DBT_ENGINE_SAMPLE` | `--sample` |
 | [send_anonymous_usage_stats](/reference/global-configs/usage-stats) | ❌ | boolean <br /> default: True | ✅ | `DBT_ENGINE_SEND_ANONYMOUS_USAGE_STATS` | `--send-anonymous-usage-stats` <br /> `--no-send-anonymous-usage-stats` |
-| [source_freshness_run_project_hooks](/reference/global-configs/behavior-changes#source_freshness_run_project_hooks) | ❌ | boolean <br /> default: True | ✅ | ❌ | ❌ |
+| [source_freshness_run_project_hooks](/reference/global-configs/behavior-flags/source_freshness_run_project_hooks) | ❌ | boolean <br /> default: True | ✅ | ❌ | ❌ |
 | [sqlparse](/reference/global-configs/sqlparse) | ❌ | YAML map <br /> default: MAX_GROUPING_DEPTH and MAX_GROUPING_TOKENS set to null | ❌ | `DBT_ENGINE_SQLPARSE` | `--sqlparse` |
 | [state](/reference/node-selection/defer) | ❌ | path <br /> default: none | ❌ | `DBT_ENGINE_STATE`, `DBT_ENGINE_DEFER_STATE` | `--state` <br /> `--defer-state` |
 | [static_parser](/reference/global-configs/parsing#static-parser) | ❌ | boolean <br /> default: True | ✅ | `DBT_ENGINE_STATIC_PARSER` | `--static-parser` <br /> `--no-static-parser` |
@@ -156,6 +158,7 @@ Use this table to compare all available flags and how to configure them across i
 | [use_colors_file](/reference/global-configs/logs#color) | ❌ | boolean <br /> default: True | ✅ | `DBT_ENGINE_USE_COLORS_FILE` | `--use-colors-file` <br /> `--no-use-colors-file` |
 | [use_colors](/reference/global-configs/print-output#print-color) | ❌ | boolean <br /> default: True | ✅ | `DBT_ENGINE_USE_COLORS` | `--use-colors` <br /> `--no-use-colors` |
 | [use_experimental_parser](/reference/global-configs/parsing#experimental-parser) | ❌ | boolean <br /> default: False | ✅ | `DBT_ENGINE_USE_EXPERIMENTAL_PARSER` | `--use-experimental-parser` <br /> `--no-use-experimental-parser` |
+| [use_v2_parser](/reference/global-configs/parsing#opt-in-v2-parser) | ✅ | boolean <br /> default: False | ✅ | `DBT_ENGINE_USE_V2_PARSER` | `--use-v2-parser` |
 | [version_check](/reference/global-configs/version-compatibility) | ❌ | boolean <br /> default: varies | ✅ | `DBT_ENGINE_VERSION_CHECK` | `--version-check` <br /> `--no-version-check` |
 | [warn_error_options](/reference/global-configs/warnings) | ✅ | dict <br /> default: {} | ✅ | `DBT_ENGINE_WARN_ERROR_OPTIONS` | `--warn-error-options` |
 | [warn_error](/reference/global-configs/warnings) | ✅ | boolean <br /> default: False | ✅ | `DBT_ENGINE_WARN_ERROR` | `--warn-error` |

@@ -116,7 +116,7 @@ The same behavior change flags will naturally extend to dbt packages, which are 
 
 Lastly, we’ve revisited our process around artifact interfaces. These are the workhorses of many integrations in the dbt ecosystem: those maintained by dbt Labs, by third-party vendors, or just homegrown at a particular organization. While these schemas have been versioned and well-defined since dbt Core v1.0, they have changed in many of the minor releases since.
 
-We’ve now [formalized our development best practices](https://github.com/dbt-labs/dbt-core/blob/main/core/dbt/artifacts/README.md#making-changes-to-dbtartifacts) to strongly prefer minor schema evolutions over major breaking changes. We’ve also put [checks in place](https://github.com/dbt-labs/dbt-core/blob/main/.github/workflows/check-artifact-changes.yml) to ensure we’re not unintentionally introducing breaking changes to artifacts, thus avoiding disruption to integrations across the ecosystem.
+We’ve now [formalized our development best practices](https://github.com/dbt-labs/dbt-core/blob/1.latest/docs/arch/7_Artifacts.md) to strongly prefer minor schema evolutions over major breaking changes. We’ve also put [checks in place](https://github.com/dbt-labs/dbt-core/blob/1.latest/.github/workflows/check-artifact-changes.yml) to ensure we’re not unintentionally introducing breaking changes to artifacts, thus avoiding disruption to integrations across the ecosystem.
 
 ## Our commitment
 

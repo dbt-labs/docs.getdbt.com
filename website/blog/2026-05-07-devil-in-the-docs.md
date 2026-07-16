@@ -97,7 +97,7 @@ Alongside this, [dbt agent skills](https://skills.sh/dbt-labs/dbt-agent-skills) 
 - Before: Write a macro, hit an unfamiliar function, alt-tab to a browser, search docs, read the page, return to your editor, try to remember where you were. Or ask AI and get an answer that may not be grounded in the canonical, current docs.
 - After: Ask Claude or your AI tool directly, get an answer grounded in the canonical, current documentation, keep coding! Docs 🤝 canonical source.
 
-We also added the product docs toolset to dbt's [Developer agent](/docs/dbt-ai/developer-agent?version=2.0) experience &mdash; bringing the docs closer to users in dbt platform and the Studio IDE. 🎉
+We also added the product docs toolset to dbt's [Developer agent](/docs/dbt-ai/wizard-ide) experience &mdash; bringing the docs closer to users in dbt platform and the Studio IDE. 🎉
 
 <Lightbox src="/img/blog/2026-04-30-the-devil-is-in-the-docs/dwp-dev-agent.png" width="70%"title="Developer agent using the product docs tools" />
 

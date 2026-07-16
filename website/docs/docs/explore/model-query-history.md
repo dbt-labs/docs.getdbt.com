@@ -29,8 +29,8 @@ So for example, if `model_super_santi` was queried 10 times in the past week, it
 Model query history is supported in the following data warehouses: 
 - Snowflake (Enterprise-tier or higher)
 - BigQuery
-- Redshift <Lifecycle status="beta" />
-- Databricks <Lifecycle status="beta" />
+- Redshift
+- Databricks
 
 ## Prerequisites
 
@@ -44,6 +44,11 @@ To access the features, you should meet the following requirements:
 
 ## Enable query history in dbt
 
+:::note New and existing production environments
+- **New production environments:** <Constant name="dbt" /> automatically enables query history when you create a new [production deployment environment](/docs/deploy/deploy-environments#set-as-production-environment) in **Orchestration** (marked **PROD**). This applies to Snowflake, BigQuery, Redshift, and Databricks on [Enterprise-tier plans](https://www.getdbt.com/pricing/). Development environments are not included.
+- **Existing production environments:** You must enable query history manually in your **PROD** environment settings. Configure the [credential permissions](#credential-permissions) for your warehouse prior to starting the steps in this section.
+:::
+
 To enable model query history in <Constant name="dbt" />, follow these steps:
 
 1. Navigate to **Orchestration** and then **Environments**.
@@ -53,7 +58,7 @@ To enable model query history in <Constant name="dbt" />, follow these steps:
 5. Click the **Enable query history** box to enable. 
 6. **Save** your settings.
 
-<Constant name="dbt" /> automatically enables query history for brand new environments. If query history fails to retrieve data, <Constant name="dbt" /> automatically disables it to prevent unintended warehouse costs.
+If query history fails to retrieve data, <Constant name="dbt" /> automatically disables it to prevent unintended warehouse costs.
    - If the failure is temporary (like a network timeout), <Constant name="dbt" /> may retry.
    - If the problem keeps happening (for example, missing permissions), <Constant name="dbt" /> turns off query history so customers don’t waste warehouse compute.
    
@@ -62,21 +67,27 @@ To enable model query history in <Constant name="dbt" />, follow these steps:
 
 <Lightbox src="/img/docs/collaborate/dbt-explorer/enable-query-history.png" width="95%" title="Enable query history in your environment settings." />
 
-
-
 ## Credential permissions
 
 This section explains the permissions and steps you need to enable and view model query history in <Constant name="catalog" />.
 
 The model query history feature uses the credentials in your production environment to gather metadata from your data warehouse’s query logs. This means you may need elevated permissions with the warehouse. Before making any changes to your data platform permissions, confirm the configured permissions in <Constant name="dbt" />:
 
-1. Navigate to **Deploy** and then **Environments**.
+1. Navigate to **Orchestration** and then **Environments**.
 2. Select the Environment marked **PROD** and click **Settings**.
-3. Look at the information under **Deployment credentials**. 
+3. Click **Edit**.
+4. Click the sync icon in the **Connection profiles** section.
+5. Look at the information under **Deployment credentials**. 
    - Note: Querying query history entails warehouse costs / uses credits.
-<Lightbox src="/img/docs/collaborate/dbt-explorer/model-query-credentials.jpg" width="50%" title="Confirm your deployment credentials in your environment settings page." />
+<DocCarousel slidesPerView={1}>
 
-4. Copy or cross reference those credential permissions with the warehouse permissions and grant your user the right permissions.
+<Lightbox src="/img/docs/dbt-platform/sync-icon.png" width="100%" title="Click the sync icon in the Connection profiles section." />
+
+<Lightbox src="/img/docs/collaborate/dbt-explorer/model-query-credentials.png" width="100%" title="Confirm your deployment credentials in your environment settings page." />
+
+</DocCarousel>
+
+6. Copy or cross reference those credential permissions with the warehouse permissions and grant your user the right permissions.
 
 ### Snowflake model query history
 
@@ -97,7 +108,7 @@ The model query history uses metadata from the [`INFORMATION_SCHEMA.JOBS` view](
 - If you use a BigQuery provided role, we recommend `roles/bigquery.resourceViewer`.
 - If you use a custom role, ensure it includes the `bigquery.jobs.listAll permission`.
 
-### Redshift model query history<Lifecycle status="beta" />
+### Redshift model query history
 
 Model query history uses the `SYS_QUERY_HISTORY` and `SYS_QUERY_DETAIL` system views in Redshift. By default, users can only see their own queries in these views. To surface query history across all warehouse users, your database admin must grant the production environment credentials one of the following:
 
@@ -126,7 +137,7 @@ Because Redshift expands regular views at execution time, scans are attributed t
 
 If your project relies heavily on views, usage may appear lower than expected. This is a known limitation of scan-based attribution rather than missing data.
 
-### Databricks model query history <Lifecycle status="beta" />
+### Databricks model query history
 
 Model query history uses two Unity Catalog system tables: `system.query.history` and `system.access.table_lineage`. Before granting access, confirm the following prerequisites are met:
 
@@ -174,20 +185,20 @@ To enhance your discovery, you can view your model query history in various loca
 2. In the main **Overview** page, click on **Performance** under the **Project details** section. Scroll down to view the **Most consumed models**.
 3. Use the dropdown menu on the right to select the desired time period, with options available for up to the past 3 months. 
 
-<Lightbox src="/img/docs/collaborate/dbt-explorer/most-consumed-models.jpg" width="85%" title="View most consumed models on the 'Performance' page in dbt Catalog." />
+<Lightbox src="/img/docs/collaborate/dbt-explorer/most-consumed-models.png" width="85%" title="View most consumed models on the 'Performance' page in dbt Catalog." />
 
 4. Click on a model for more details and go to the **Performance** tab.
 5. On the **Performance** tab, scroll down to the **Model performance** section. 
 6. Select the **Consumption queries** tab to view the consumption queries over a given time for that model. 
-<Lightbox src="/img/docs/collaborate/model-consumption-queries.jpg" width="90%" title="View consumption queries over time for a given model." />
+<Lightbox src="/img/docs/collaborate/dbt-explorer/model-consumption-queries.png" width="90%" title="View consumption queries over time for a given model." />
 
 ### View from Project lineage
 
 1. To view your model in your project lineage, go to the main **Overview page** and click on **Project lineage.**
 2. In the lower left of your lineage, click on **Lenses** and select **Consumption queries**. 
-<Lightbox src="/img/docs/collaborate/dbt-explorer/model-consumption-lenses.jpg" width="85%" title="View model consumption queries in your lineage using the 'Lenses' feature." />
+<Lightbox src="/img/docs/collaborate/dbt-explorer/model-consumption-lenses.png" width="85%" title="View model consumption queries in your lineage using the 'Lenses' feature." />
 
-3. Your lineage should display a small red box above each model, indicating the consumption query number. The number for each model represents the model consumption over the last 30 days.
+3. Your lineage should display a small purple box above each model, indicating the consumption query number. The number for each model represents the model consumption over the last 30 days.
 
 ### View from Model list
 

@@ -31,14 +31,14 @@ id: "contributing-coding"
 
 #### Overview
 
-<Constant name="core" /> and the <Constant name="fusion_engine" />, adapters, tooling, and the sites powering the Package Hub and Developer Hub are all vibrant community projects. Unlike dbt Packages, contributing code to these projects typically requires some working knowledge of programming languages outside of SQL and Jinja, but the supportive community around these repositories can help you advance those skills. Even without contributing code, there are many ways to be part of communal development in these projects, detailed below. You can find a curated list of the most active OSS/SA projects that dbt Labs supports [here](/community/resources/oss-sa-projects).
+<Constant name="core" /> (including v1, v2 / Fusion, and adapters), as well as the sites powering the Package Hub and Developer Hub, are all vibrant community projects. Unlike dbt Packages, contributing code to these projects typically requires some working knowledge of programming languages outside of SQL and Jinja, but the supportive community around these repositories can help you advance those skills. Even without contributing code, there are many ways to be part of communal development in these projects, detailed below. You can find a curated list of the most active OSS/SA projects that dbt Labs supports [here](/community/resources/oss-sa-projects).
 
 #### Contribution opportunities
 
-There are three primary ways to contribute to the dbt projects. We’ll use the <Constant name="fusion_engine" /> as an example, as the "front door" to the dbt ecosystem and a great place to start for newcomers:
+There are three primary ways to contribute to the dbt projects. We’ll use <Constant name="core" /> as an example, as the "front door" to the dbt ecosystem and a great place to start for newcomers:
 
-- [Open an issue](https://github.com/dbt-labs/dbt-fusion/issues/new/choose) to suggest an improvement or give feedback.
-- Comment on or engage with existing [issues](https://github.com/dbt-labs/dbt-fusion/issues) or [discussions](https://github.com/dbt-labs/dbt-fusion/discussions). For example, upvote issues that would help your organization, comment to add nuance to a feature request, or share how a feature would impact your use of dbt.
+- [Open an issue](https://github.com/dbt-labs/dbt-core/issues/new/choose) to suggest an improvement or give feedback.
+- Comment on or engage with existing [issues](https://github.com/dbt-labs/dbt-core/issues) or [discussions](https://github.com/dbt-labs/dbt-core/discussions). For example, upvote issues that would help your organization, comment to add nuance to a feature request, or share how a feature would impact your use of dbt.
 - Create a pull request that resolves an open Issue. This involves writing the code and tests that add the feature/resolve the bug described in an Issue, and then going through the code review process asynchronously with a dbt Labs engineer. Note that signed commits are required when contributing to <Constant name="core" />. For steps on how to sign commits, see [Signing commits](https://docs.github.com/en/authentication/managing-commit-signature-verification/signing-commits).
 
 #### Sample contributions
@@ -49,7 +49,7 @@ There are three primary ways to contribute to the dbt projects. We’ll use the 
 #### Get started
 
 - Read the <Constant name="core" /> [contribution guide](https://github.com/dbt-labs/dbt-core/blob/main/CONTRIBUTING.md) and the [Contributor Expectations](/community/resources/contributor-expectations).
-- If contributing to the <Constant name="fusion_engine" />, find an issue labeled “[good first issue](https://github.com/dbt-labs/dbt-fusion/issues?q=is%3Aopen+is%3Aissue+label%3Agood_first_issue)”, or look for similar labels on other repositories. If in doubt, also feel free to ask the maintainers for a good first issue, they’ll be excited to welcome you!
+- If contributing to `dbt-core`, find an issue labeled “[good first issue](https://github.com/dbt-labs/dbt-fusion/issues?q=is%3Aopen+is%3Aissue+label%3Agood_first_issue)”, or look for similar labels on other repositories. If in doubt, also feel free to ask the maintainers for a good first issue, they’ll be excited to welcome you!
 
 #### Need help?
 

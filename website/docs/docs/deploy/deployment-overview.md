@@ -45,9 +45,9 @@ Learn how to use <Constant name="dbt" />'s features to help your team ship timel
     icon="dbt-bit"/>
 
 <Card
-    title="State-aware orchestration"
+    title="dbt State"
     body="Intelligently determines which models to build by detecting changes in code or data at each job run."
-    link="/docs/deploy/state-aware-about"
+    link="/docs/deploy/dbt-state-about"
     icon="dbt-bit"/>
 
 <Card

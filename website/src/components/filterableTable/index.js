@@ -364,49 +364,9 @@ const FilterableTable = ({ children }) => {
   // If we're in a SimpleTable context, render as a plain table
   if (isSimpleTable) {
     return (
-      <>
-        <table ref={tableRef} style={{ display: 'none' }}>
-          {children}
-        </table>
-        <table style={{ width: '100%', borderCollapse: 'collapse' }}>
-          <thead>
-            <tr>
-              {headers.map((header, index) => (
-                <th 
-                  key={index}
-                  style={{ 
-                    textAlign: columnAlignments[index] || 'left',
-                    padding: '0.75rem',
-                    border: '1px solid var(--ifm-table-border-color)',
-                    backgroundColor: 'var(--ifm-table-head-background)',
-                    fontWeight: 'bold'
-                  }}
-                >
-                  <Markdown>{header}</Markdown>
-                </th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {initialData.map((row, rowIndex) => (
-              <tr key={rowIndex}>
-                {row.cells.map((cell, cellIndex) => (
-                  <td 
-                    key={cellIndex}
-                    style={{ 
-                      textAlign: columnAlignments[cellIndex] || 'left',
-                      padding: '0.75rem',
-                      border: '1px solid var(--ifm-table-border-color)'
-                    }}
-                  >
-                    <Markdown>{cell}</Markdown>
-                  </td>
-                ))}
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </>
+      <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+        {children}
+      </table>
     );
   }
 

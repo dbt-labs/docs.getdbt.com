@@ -34,8 +34,11 @@ The example query below finds a source by its unique database, schema, and ident
       database: "analytics"
       schema: "analytics"
       identifier: "dim_customers"
+      first: 10
+      after: "{somePaginationCursorValue}"
     ) {
       uniqueId
+      paginationCursor
     }
   }
 }
@@ -48,9 +51,10 @@ The example query below finds all sources in this schema and their respective st
 ```graphql
 {
   job(id: 123) {
-    sources(schema: "analytics") {
+    sources(schema: "analytics", first: 10, after: "{somePaginationCursorValue}") {
       uniqueId
       state
+      paginationCursor
     }
   }
 }

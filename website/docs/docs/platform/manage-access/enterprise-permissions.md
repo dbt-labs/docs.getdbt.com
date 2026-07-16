@@ -45,6 +45,20 @@ Notable features:
 - The default permissions assigned to the `Member` group.
 
 </Expandable>
+
+<Expandable alt_header="Account Viewer">
+The Account Viewer permissions set provides read-only access to the <Constant name="dbt" /> account. Useful for any persona who needs insights into your <Constant name="dbt" /> account without access to create or change configurations.
+
+The Account Viewer permission set is frequently paired with the [Read-only license-type](/docs/platform/manage-access/seats-and-users).
+
+Notable features:
+- Account Viewer is an account-level set.
+- Read-only access to all settings, projects, environments, and runs.
+- Read-only access to audit logs, including sensitive account-level information.
+- No access to the IDE. 
+- Can access <Constant name="catalog" />
+
+</Expandable>
 <Expandable alt_header="Analyst">
 
 The Analyst permission set is designed for users who need to run and analyze dbt models in the IDE but can't create or edit anything outside the IDE. 
@@ -55,6 +69,26 @@ Notable features:
 - Read-only access to environment configs.
 - Can view jobs but can't edit them.
 - Can access <Constant name="catalog" />.
+
+</Expandable>
+<Expandable alt_header="Analyst read" lifecycle="private_beta">
+
+The Analyst read permission set is a project-level set designed for users who need read-only access to analyze dbt models and project resources without the ability to develop or make changes.
+
+:::info Availability
+
+The OAuth integration that lets read-only users connect to analysis features (such as the [dbt MCP server](/docs/dbt-ai/about-mcp)) is available to use. The **Analyst read** permission set and the read-only permission changes described here are in **private beta**. To enable them, contact your account manager.
+
+:::
+
+Notable features:
+- Analyst read is a project-level set.
+- Read-only access to project resources, jobs, runs, and environment configs.
+- Can access <Constant name="catalog" />.
+- Includes `user_credential_write`, so users can view and edit their own user credentials on **Your profile** > **Credentials** without access to the <Constant name="studio_ide" /> or <Constant name="platform_cli" />. Read-only users still need personal user credentials on this page to run warehouse queries in analysis features such as <Constant name="insights" /> and the <Constant name="semantic_layer" />.
+- No write access and no access to develop in the <Constant name="studio_ide" /> or <Constant name="platform_cli" />.
+
+To access the capabilities of this permission set, you _must_ add users to a group that's assigned the Analyst read permission set. Users won't have access until they're added to the group. For the setup steps, refer to [Set up read-only user access](/docs/platform/manage-access/about-user-access#set-up-read-only-user-access).
 
 </Expandable>
 <Expandable alt_header="Billing admin">
@@ -157,6 +191,18 @@ Notable features:
 - Can access <Constant name="catalog" />.
 
 </Expandable>
+<Expandable alt_header="Job creator">
+
+Job creator is a scoped project-level permission set for users who need to create, edit, and run jobs within assigned projects and environments without broader administrative access.
+
+Notable features:
+- Job creator is a project-level set.
+- Can create, edit, and run jobs within assigned projects and environments.
+- Read-only access to environments, environment variables, and related project settings needed to configure jobs.
+- Cannot create or delete environments or edit environment variables.
+- More limited than [Job admin](#job-admin), which can edit environments, environment variables, and data platform configurations.
+
+</Expandable>
 <Expandable alt_header="Job runner">
 
 Job runner is a specialized permission set for users who need access to run jobs and view the outcomes. 
@@ -249,7 +295,7 @@ Notable features:
 </Expandable>
 <Expandable alt_header="Stakeholder and Read-Only">
 
-The Stakeholder and Read-Only are identical permission sets that are similar to Viewer, but without access to sensitive content such as account settings, billing information, or audit logs. Useful for personas who need to monitor projects and their configurations.
+The Stakeholder and Read-Only are identical permission sets that are similar to Account Viewer, but without access to sensitive content such as account settings, billing information, or audit logs. Useful for personas who need to monitor projects and their configurations.
 
 Notable features: 
 - Stakeholder is a project-level set.
@@ -268,19 +314,6 @@ Notable features:
 - Access to manage the project(s) for a team of users. Limited scope and access can be extended via environment permissions. 
 - Read-only access to many account settings (excluding sensitive content like billing and auth providers).
 - Can access <Constant name="catalog" />.
-
-</Expandable>
-<Expandable alt_header="Viewer">
-The Account Viewer permissions set provides read-only access to the <Constant name="dbt" /> account. Useful for any persona who needs insights into your <Constant name="dbt" /> account without access to create or change configurations.
-
-The Viewer permission set is frequently paired with the [Read-only license-type](/docs/platform/manage-access/seats-and-users).
-
-Notable features:
-- Viewer is an account-level set.
-- Read-only access to all settings, projects, environments, and runs.
-- Read-only access to audit logs, including sensitive account-level information.
-- No access to the IDE. 
-- Can access <Constant name="catalog" />
 
 </Expandable>
 

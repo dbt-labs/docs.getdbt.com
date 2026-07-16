@@ -106,6 +106,50 @@ import WhitespaceControl from '/snippets/_whitespace-control.md';
 
 <WhitespaceControl/>
 
+<VersionBlock firstVersion="1.12">
+
+### generate_latest_version_pointer_alias
+
+When the [`latest_version_pointer`](/reference/resource-configs/latest_version_pointer) config is enabled, dbt uses the `generate_latest_version_pointer_alias` macro to determine the name of the pointer view it creates for the latest version of a versioned model. This macro follows the same pattern as [`generate_alias_name`](#generate_alias_name).
+
+The default implementation uses the model's base name (for example, `dim_customers`) unless a custom alias is set using `latest_version_pointer.alias`:
+
+<File name='macros/generate_latest_version_pointer_alias.sql'>
+
+```jinja2
+{% macro generate_latest_version_pointer_alias(custom_alias_name=none, node=none) -%}
+    {{ return(adapter.dispatch('generate_latest_version_pointer_alias', 'dbt')(custom_alias_name, node)) }}
+{%- endmacro %}
+
+{% macro default__generate_latest_version_pointer_alias(custom_alias_name=none, node=none) -%}
+    {%- if custom_alias_name -%}
+        {{ custom_alias_name | trim }}
+    {%- else -%}
+        {{ node.name }}
+    {%- endif -%}
+{%- endmacro %}
+```
+
+</File>
+
+To override the default, create a macro named `generate_latest_version_pointer_alias` in your project. For example, to use a `_latest` suffix instead of the base name:
+
+<File name='macros/get_latest_version_pointer_alias.sql'>
+
+```jinja2
+{% macro generate_latest_version_pointer_alias(custom_alias_name=none, node=none) -%}
+    {%- if custom_alias_name -%}
+        {{ custom_alias_name | trim }}
+    {%- else -%}
+        {{ node.name ~ "_latest" }}
+    {%- endif -%}
+{%- endmacro %}
+```
+
+</File>
+
+</VersionBlock>
+
 ### Dispatch macro - SQL alias management for databases and dbt packages
 
 See docs on macro `dispatch`: ["Managing different global overrides across packages"](/reference/dbt-jinja-functions/dispatch#managing-different-global-overrides-across-packages)

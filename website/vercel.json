@@ -39,8 +39,108 @@
   ],
   "redirects": [
     {
+      "source": "/reference/global-configs/behavior-flag-introduction",
+      "destination": "/reference/global-configs/behavior-changes",
+      "permanent": true
+    },
+    {
+      "source": "/reference/global-configs/behavior-flag-maturity",
+      "destination": "/reference/global-configs/behavior-changes",
+      "permanent": true
+    },
+    {
+      "source": "/reference/global-configs/behavior-flag-removed",
+      "destination": "/reference/global-configs/behavior-changes",
+      "permanent": true
+    },
+    {
+      "source": "/docs/dbt-versions/core-upgrade/upgrading-to-fusion",
+      "destination": "/docs/dbt-versions/core-upgrade/upgrading-to-v2",
+      "permanent": true
+    },
+    {
+      "source": "/docs/dbt-ai/dbt-agents",
+      "destination": "/docs/dbt-ai/about-dbt-ai",
+      "permanent": true
+    },
+    {
+      "source": "/docs/dbt-ai/developer-agent",
+      "destination": "/docs/dbt-ai/wizard-ide",
+      "permanent": true
+    },
+    {
+      "source": "/docs/platform/wizard-chat-in-studio",
+      "destination": "/docs/dbt-ai/wizard-ide",
+      "permanent": true
+    },
+    {
+      "source": "/docs/dbt-ai/about-dbt-wizard",
+      "destination": "/docs/dbt-ai/about-dbt-wizard-cli",
+      "permanent": true
+    },
+    {
+      "source": "/docs/dbt-ai/dbt-wizard-install",
+      "destination": "/docs/dbt-ai/wizard-cli",
+      "permanent": true
+    },
+    {
+      "source": "/docs/platform/dbt-copilot-overview",
+      "destination": "/docs/platform/wizard-overview",
+      "permanent": true
+    },
+    {
+      "source": "/docs/platform/dbt-copilot",
+      "destination": "/docs/platform/wizard-platform",
+      "permanent": true
+    },
+    {
+      "source": "/docs/platform/wizard",
+      "destination": "/docs/platform/wizard-platform",
+      "permanent": true
+    },
+    {
+      "source": "/docs/platform/enable-dbt-copilot",
+      "destination": "/docs/platform/enable-dbt-ai",
+      "permanent": true
+    },
+    {
+      "source": "/docs/platform/use-dbt-copilot",
+      "destination": "/docs/dbt-ai/wizard-ide",
+      "permanent": true
+    },
+    {
+      "source": "/docs/platform/use-dbt-wizard",
+      "destination": "/docs/dbt-ai/wizard-ide",
+      "permanent": true
+    },
+    {
+      "source": "/docs/platform/copilot-chat-in-studio",
+      "destination": "/docs/dbt-ai/wizard-ide",
+      "permanent": true
+    },
+    {
       "source": "/docs/platform/copilot-styleguide",
-      "destination": "/docs/dbt-ai/developer-agent",
+      "destination": "/docs/dbt-ai/wizard-skills",
+      "permanent": true
+    },
+    {
+      "source": "/docs/platform/dbt-copilot-faqs",
+      "destination": "/docs/dbt-ai/dbt-ai-faqs",
+      "permanent": true
+    },
+    {
+      "source": "/docs/platform/wizard-faqs",
+      "destination": "/docs/dbt-ai/dbt-ai-faqs",
+      "permanent": true
+    },
+    {
+      "source": "/docs/platform/build-canvas-dbt-wizard",
+      "destination": "/docs/platform/build-canvas-copilot",
+      "permanent": true
+    },
+    {
+      "source": "/docs/platform/studio-ide/develop-copilot",
+      "destination": "/docs/platform/studio-ide/develop-studio-ai",
       "permanent": true
     },
     {
@@ -5122,6 +5222,26 @@
     {
       "source": "/docs/dbt-cloud-apis/:path*",
       "destination": "/docs/dbt-apis/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/docs/platform-integrations/snowflake-native-app",
+      "destination": "/docs/platform/connect-data-platform/connect-snowflake",
+      "permanent": true
+    },
+    {
+      "source": "/docs/platform-integrations/set-up-snowflake-native-app",
+      "destination": "/docs/platform/connect-data-platform/connect-snowflake",
+      "permanent": true
+    },
+    {
+      "source": "/docs/platform-integrations/snowflake-native-app",
+      "destination": "/docs/platform/connect-data-platform/connect-snowflake",
+      "permanent": true
+    },
+    {
+      "source": "/docs/platform-integrations/set-up-snowflake-native-app",
+      "destination": "/docs/platform/connect-data-platform/connect-snowflake",
       "permanent": true
     }
   ]

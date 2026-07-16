@@ -8,6 +8,7 @@ sidebar_label: "Snowflake"
 # Configuring Snowflake PrivateLink <Lifecycle status="managed_plus" />
 
 import SetUpPages from '/snippets/_available-tiers-enterprise-plus.md';
+import PrivateLinkCreateConnection from '/snippets/_privatelink-create-connection.md';
 import CloudProviders from '/snippets/_private-connection-across-providers.md';
 
 <SetUpPages features={'/snippets/_available-tiers-enterprise-plus.md'}/>
@@ -23,16 +24,12 @@ import SnowflakeOauthWithPL from '/snippets/_snowflake-oauth-with-pl.md';
 ## Configure AWS PrivateLink
 
 This section walks you through the setup of an AWS-hosted Snowflake PrivateLink endpoint in a <Constant name="dbt_platform" />. You can set up in two ways:
-- [Self-serve private endpoints](#self-serve-private-endpoints): Self-serve configuration of Snowflake PrivateLink endpoints directly in <Constant name="dbt_platform" /> user interface. Currently in private beta. 
+- [Self-serve private endpoints](#self-serve-private-endpoints): Self-serve configuration of Snowflake PrivateLink endpoints directly in <Constant name="dbt_platform" /> user interface. Currently in beta. 
 - [Support-led setup](#support-led-setup): Requires contacting dbt Support to configure Snowflake PrivateLink endpoints. Non-self service configuration of Snowflake PrivateLink endpoints. 
 
-### Self-serve private endpoints <Lifecycle status="private_beta" />
+### Self-serve private endpoints <Lifecycle status="beta" />
 
-:::note
-Self-serve private endpoints are currently in private beta for Snowflake on AWS. To join the beta, please reach out to your account manager. 
-
-This feature isn't available for Azure or GCP. If you don't see **Private endpoints** in your account settings, use the [Support-led setup](#support-led-setup) instead.
-:::
+_Self-serve private endpoints are currently in beta for Snowflake on AWS, and available to all eligible customers. This feature isn't available for Azure or GCP. If you don't see **Private endpoints** in your account settings, use the [Support-led setup](#support-led-setup) instead._
 
 This section walks you through the process of requesting a new Snowflake PrivateLink endpoint in <Constant name="dbt_platform" />. 
 
@@ -57,7 +54,7 @@ Before requesting a private endpoint, allowlist <Constant name="dbt" /> Labs' AW
 
 After Snowflake confirms they've allowlisted <Constant name="dbt" /> Labs' AWS account in Snowflake, you can request a new private endpoint. Follow these steps to do so:
 
-1. In <Constant name="dbt_platform" />, go to **Account settings → Integrations → Private endpoints**.
+1. In <Constant name="dbt_platform" />, go to **Account settings → Private endpoints**.
 2. In the **Private endpoints** table, review your existing endpoints. The table shows all private endpoints in your account (including non-Snowflake ones) with the following details:
    - **Name**
    - **Connection type** (for example, Snowflake)
@@ -65,7 +62,7 @@ After Snowflake confirms they've allowlisted <Constant name="dbt" /> Labs' AWS a
    - **Connectivity status** (for example, **Success** or **Unknown**)
    - **Connections** — the number of <Constant name="dbt_platform" /> connections using the endpoint
 
-   You can search by **Name** or **URL**. You can only _create_ new endpoints for Snowflake at this time. To delete an endpoint, contact [dbt Support](mailto:support@getdbt.com).
+   You can search by **Name** or **URL**. The table lists all private endpoints in your account, but self-serve create, edit, and delete is only available for Snowflake on AWS at this time.
 
     <Lightbox src="/img/docs/dbt-platform/private-endpoint-page.png" title="Private endpoints table showing existing endpoints, connectivity status, and the Request new button"/>
 
@@ -85,6 +82,33 @@ Once you configure PrivateLink on the **Connections** page, you'll see the new e
 :::note DNS propagation
 If the connection test fails immediately after setup, this is expected &mdash; it doesn't mean something is wrong. DNS changes can take a few minutes to propagate. Wait a few minutes, then test again before contacting support.
 :::
+
+<Expandable alt_header="Edit or delete a private endpoint" is_open={true}>
+
+If you don't see **Edit** or **Delete endpoint**, contact your account manager to enable private endpoint updates for your account.
+
+**Edit an endpoint**
+
+1. In the **Private endpoints** table, click the endpoint you want to update.
+2. On the endpoint details page, click **Edit**.
+3. Update **Name** and/or **Port** as needed.
+4. Click **Save changes**.
+5. In the **Save changes?** modal, click **Save changes** to apply your updates.
+
+<Lightbox src="/img/docs/dbt-platform/private-endpoint-details-edit.png" title="Private endpoint details page with the Edit button" />
+
+**Delete an endpoint**
+
+An endpoint with associated connections can't be deleted. Remove those connections first.
+
+1. In the **Private endpoints** table, click the endpoint you want to delete.
+2. On the endpoint details page, click **Edit**.
+3. Scroll to the bottom of the page and click **Delete endpoint**.
+4. In the **Delete endpoint** modal, type `DELETE` to confirm, then click **Delete endpoint**.
+
+<Lightbox src="/img/docs/dbt-platform/private-endpoint-details-delete.png" title="Private endpoint details page in edit mode with the Delete endpoint button" />
+
+</Expandable>
 
 #### Duplicate endpoint requests
 
@@ -148,11 +172,7 @@ import PrivateLinkSLA from '/snippets/_private-connection-SLA.md';
 
 Once <Constant name="dbt" /> Support completes the configuration, you can start creating new connections using PrivateLink. 
 
-1. Navigate to **Settings** → **Create new project** → select **Snowflake**. 
-2. You will see two radio buttons: **Public** and **Private**. Select **Private**. 
-3. Select the private endpoint from the dropdown (this automatically populates the hostname/account field).
-4. Configure the remaining data platform details.
-5. Test your connection and save it.
+<PrivateLinkCreateConnection platform="Snowflake" />
 
 ## Configuring internal stage PrivateLink in <Constant name="dbt" />
 
@@ -169,11 +189,11 @@ s3_stage_vpce_dns_name: '*.vpce-012345678abcdefgh-4321dcba.s3.us-west-2.vpce.ama
 <Lightbox src="/img/docs/dbt-platform/snowflake-internal-stage-dns.png" title="Internal Stage DNS"/>
 
 ## Configuring network policies
-If your organization uses [Snowflake Network Policies](https://docs.snowflake.com/en/user-guide/network-policies) to restrict access to your Snowflake account, you need to add a network rule for <Constant name="dbt" />. 
+If your organization uses [Snowflake Network Policies](https://docs.snowflake.com/en/user-guide/network-policies) to restrict access to your Snowflake account, you need to add a network rule for <Constant name="dbt" />. Snowflake supports two network rule types: VPCE ID-based (recommended) and IP/CIDR-based. The following steps use VPCE ID. If your organization requires an IP-based network policy instead, the CIDR range isn't available in the <Constant name="dbt_platform" /> UI. Please contact [dbt Support](mailto:support@getdbt.com) to get it.
 
 You need a VPCE ID to create a network policy in Snowflake:
-1. In <Constant name="dbt_platform" />, go to **Account settings → Integrations → Private endpoints** 
-2. Open your endpoint and locate its **VPCE ID** field on the endpoint details page. 
+1. In <Constant name="dbt_platform" />, go to **Account settings → Private endpoints** 
+2. Click the endpoint in the table, then locate its **Endpoint identifier** field on the endpoint details page. 
 3. If you configured PrivateLink through [Support-led setup](#support-led-setup), or **Private endpoints** is not available in your account settings, contact [<Constant name="dbt" /> Support](mailto:support@getdbt.com) to obtain the VPCE ID. 
 4. If you're creating an endpoint for Internal Stage, the VPCE ID is different from the VPCE ID for the main service endpoint.
 

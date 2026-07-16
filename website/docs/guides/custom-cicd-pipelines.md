@@ -11,7 +11,7 @@ tags: ['dbt platform', 'Orchestration', 'CI']
 level: 'Intermediate'
 search_weight: "heavy"
 keywords:
-  - bitbucket pipeline, custom pipelines, github, gitlab, azure devops, ci/cd custom pipeline
+  - bitbucket pipeline, custom pipelines, github, gitlab, azure devops, aws codecommit, codebuild, codepipeline, ci/cd custom pipeline
 ---
 <div style={{maxWidth: '900px'}}>
 
@@ -44,7 +44,6 @@ Additionally, if you’re using the free tier of GitLab you can still follow thi
 
 ![Warning from GitLab showing payment information is required](/img/guides/orchestration/custom-cicd-pipelines/gitlab-cicd-payment-warning.png)
 
-
 ### How to setup pipelines
 
 This guide provides details for multiple code hosting platforms. Where steps are unique, they are presented without a selection option. If code is specific to a platform (i.e. GitHub, GitLab, Bitbucket) you will see a selection option for each.
@@ -65,7 +64,7 @@ If your <Constant name="git" /> provider has a native integration with <Constant
 
 :::
 
-The setup below shows how to call the <Constant name="dbt" /> API to run a job every time there's a push to your main branch (The branch where pull requests are typically merged. Commonly referred to as the main, primary, or master branch, but can be named differently).
+The setup below shows how to call the <Constant name="dbt" /> API to run a job every time there's a push to your [default branch](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/changing-the-default-branch).
 
 ### 1. Get your dbt API key
 
@@ -89,7 +88,7 @@ When running a CI/CD pipeline you’ll want to use a service token instead of an
 
 ### 2. Put your dbt API key into your repo
 
-This next part will happen in you code hosting platform. We need to save your API key from above into a repository secret so the job we create can access it. It is **not** recommended to ever save passwords or API keys in your code, so this step ensures that your key stays secure, but is still usable for your pipelines.
+Adding you dbt API key to your repo happens in your code hosting platform. You need to save your API key from the previous section as a repository secret so the job we create can access it. Never save passwords or API keys in your code. The following steps ensure that your key stays secure, but is still usable for your pipelines.
 
 <Tabs
   defaultValue="github"
@@ -98,6 +97,7 @@ This next part will happen in you code hosting platform. We need to save your AP
     {label: 'GitLab', value: 'gitlab', },
     {label: 'Azure DevOps', value: 'ado', },  
     {label: 'Bitbucket', value: 'bitbucket', },
+    {label: 'CodeCommit', value: 'codecommit', },
   ]
 }>
 <TabItem value="github">
@@ -122,13 +122,13 @@ Here’s a video showing these steps:
 
 <TabItem value="gitlab">
 
-- Open up your repository where you want to run the pipeline (the same one that houses your dbt project)
-- Click *Settings* > *CI/CD*
-- Under the *Variables* section, click *Expand,* then click *Add variable*
-- It will ask you for a name, so let’s call ours `DBT_API_KEY`
+- Open up your repository where you want to run the pipeline (the same one that houses your dbt project).
+- Click *Settings* > *CI/CD*.
+- Under the *Variables* section, click *Expand,* then click *Add variable*.
+- It will ask you for a name, so let’s call ours `DBT_API_KEY`.
   - **It’s very important that you copy/paste this name exactly because it’s used in the scripts below.**
-- In the *Value* section, paste in the key you copied from <Constant name="dbt" />
-- Make sure the check box next to *Protect variable* is unchecked, and the box next to *Mask variable* is selected (see below)
+- In the *Value* section, paste in the key you copied from <Constant name="dbt" />.
+- Make sure the check box next to *Protect variable* is unchecked, and the box next to *Mask variable* is selected (see below).
   - “Protected” means that the variable is only available in pipelines that run on protected branches or protected tags - that won’t work for us because we want to run this pipeline on multiple branches. “Masked” means that it will be available to your pipeline runner, but will be masked in the logs.
 
   <Lightbox src="/img/guides/orchestration/custom-cicd-pipelines/dbt-api-key-gitlab.png" title="[View of the GitLab window for entering DBT_API_KEY" width="80%" />
@@ -142,18 +142,18 @@ Here’s a video showing these steps:
 
 In Azure:
 
-- Open up your Azure DevOps project where you want to run the pipeline (the same one that houses your dbt project)
-- Click on *Pipelines* and then *Create Pipeline*
-- Select where your git code is located. It should be *Azure Repos <Constant name="git" />*
-  - Select your git repository from the list
-- Select *Starter pipeline* (this will be updated later in Step 4)
-- Click on *Variables* and then *New variable*
-- In the *Name* field, enter the `DBT_API_KEY`
+- Open up your Azure DevOps project where you want to run the pipeline (the same one that houses your dbt project).
+- Click on *Pipelines* and then *Create Pipeline*.
+- Select where your git code is located. It should be *Azure Repos <Constant name="git" />*.
+  - Select your git repository from the list.
+- Select *Starter pipeline* (this will be updated later in Step 4).
+- Click on *Variables* and then *New variable*.
+- In the *Name* field, enter the `DBT_API_KEY`.
   - **It’s very important that you copy/paste this name exactly because it’s used in the scripts below.**
-- In the *Value* section, paste in the key you copied from <Constant name="dbt" />
+- In the *Value* section, paste in the key you copied from <Constant name="dbt" />.
 - Make sure the check box next to *Keep this value secret* is checked. This will mask the value in logs, and you won't be able to see the value for the variable in the UI.
-- Click *OK* and then *Save* to save the variable
-- Save your new Azure pipeline
+- Click *OK* and then *Save* to save the variable.
+- Save your new Azure pipeline.
 
 <Lightbox src="/img/guides/orchestration/custom-cicd-pipelines/dbt-api-key-azure.png" title="View of the Azure pipelines window for entering DBT_API_KEY"/>
 
@@ -162,21 +162,32 @@ In Azure:
 
 In Bitbucket:
 
-- Open up your repository where you want to run the pipeline (the same one that houses your dbt project)
-- In the left menu, click *Repository Settings*
-- Scroll to the bottom of the left menu, and select *Repository variables*
-- In the *Name* field, input `DBT_API_KEY`
+- Open up your repository where you want to run the pipeline (the same one that houses your dbt project).
+- In the left menu, click **Repository Settings**.
+- Scroll to the bottom of the left menu, and select **Repository variables**.
+- In the **Name** field, input `DBT_API_KEY`
   - **It’s very important that you copy/paste this name exactly because it’s used in the scripts below.**
-- In the *Value* section, paste in the key you copied from <Constant name="dbt" />
-- Make sure the check box next to *Secured* is checked. This will mask the value in logs, and you won't be able to see the value for the variable in the UI.
-- Click *Add* to save the variable
+- In the Value section, paste in the key you copied from <Constant name="dbt" />
+- Make sure the check box next to Secured is checked. This will mask the value in logs, and you won't be able to see the value for the variable in the UI.
+- Click **Add** to save the variable
 
     ![View of the Bitbucket window for entering DBT_API_KEY](/img/guides/orchestration/custom-cicd-pipelines/dbt-api-key-bitbucket.png)
 
     Here’s a video showing these steps:
     <WistiaVideo id="1fddpsqpfv" />
 
-  
+</TabItem>
+<TabItem value="codecommit">
+
+In AWS, store your API key in Systems Manager (SSM) Parameter Store instead of a repository secret:
+
+1. Open the AWS console and go to **Systems Manager** → **Parameter Store**.
+2. Click **Create parameter**.
+3. Enter a name for the parameter (for example, `DBT_API_KEY`).
+4. Set the type to **SecureString** and paste in your dbt service token as the value.
+5. Click **Create parameter**.
+
+You’ll reference this parameter in the CodeBuild project environment in step 4.
 
 </TabItem>
 </Tabs>
@@ -191,7 +202,7 @@ my_awesome_project
 │   └── run_and_monitor_dbt_job.py
 ```
 
-This Python file has everything you need to call the <Constant name="dbt" /> API, but requires a few inputs (see snip below). Those inputs are fed to this script through environment variables that will be defined in the next step.
+The following Python file has everything you need to call the <Constant name="dbt" /> API, but requires a few inputs as outlined below. These inputs will be fed to this script through environment variables that will be defined in the next step.
 
 ```python
 #------------------------------------------------------------------------------
@@ -226,6 +237,7 @@ In order to call the <Constant name="dbt" /> API, there are a few pieces of info
     {label: 'GitLab', value: 'gitlab', },
     {label: 'Azure DevOps', value: 'ado', },
     {label: 'Bitbucket', value: 'bitbucket', },
+    {label: 'CodeCommit', value: 'codecommit', },
   ]
 }>
 <TabItem value="github">
@@ -251,7 +263,7 @@ For information about `github` context property names and their use cases, refer
 ```yaml
 name: run dbt job on push
 
-# This filter says only run this job when there is a push to the main branch
+# This filter says only run this job when there is a push to the default branch
 # This works off the assumption that you've restricted this branch to only all PRs to push to the default branch
 # Update the name to match the name of your default branch
 on:
@@ -372,7 +384,7 @@ run-dbt-cloud-job:
 
 For this new job, open the existing Azure pipeline you created above and select the *Edit* button. We'll want to edit the corresponding Azure pipeline YAML file with the appropriate configuration, instead of the starter code, along with including a `variables` section to pass in the required variables.
 
-Copy the below YAML file into your Azure pipeline and update the variables below to match your setup based on the comments in the file. It's worth noting that we changed the `trigger` section so that it will run **only** when there are pushes to a branch named `main` (like a PR merged to your main branch).
+Copy the below YAML file into your Azure pipeline and update the variables below to match your setup based on the comments in the file. It's worth noting that we changed the `trigger` section so that it will run *only* when there are pushes (for example, when a PR is merged) to `main`, but you should use the name of your [default branch](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/changing-the-default-branch).
 
 Read through [Azure's docs](https://learn.microsoft.com/en-us/azure/devops/pipelines/build/triggers?view=azure-devops) on these filters for additional use cases.
 
@@ -414,9 +426,10 @@ For this job, we'll set it up using the `bitbucket-pipelines.yml` file as in the
   defaultValue="single-job"
   values={[
     { label: 'Only job', value: 'single-job', },
-    {label: 'Lint and dbt job', value: 'multi-job', },
+    {label: 'Lint and dbt job', value: 'multi-job', }
   ]
 }>
+
 <TabItem value="single-job">
 
 ```yaml
@@ -469,6 +482,187 @@ pipelines:
 </Tabs>
 
 </TabItem>
+<TabItem value="codecommit">
+
+For CodeCommit, you'll configure a CodeBuild project and an EventBridge rule to trigger a dbt job every time code is pushed to your default branch (for example, when a pull request is merged to `main`).
+
+Add the following files to your dbt project:
+
+```
+my_awesome_project
+├── ci-configuration
+│   └── buildspec-merge.yml
+├── python
+│   └── run_and_monitor_dbt_cloud_job.py
+```
+
+**Create `python/run_and_monitor_dbt_cloud_job.py` with the following content:**
+
+```python
+import requests
+import os
+import time
+
+api_base        = os.getenv('DBT_URL', 'https://cloud.getdbt.com')
+job_cause       = os.getenv('DBT_JOB_CAUSE', 'API-triggered job')
+git_branch      = os.getenv('DBT_JOB_BRANCH', None)
+schema_override = os.getenv('DBT_JOB_SCHEMA_OVERRIDE', None)
+api_key         = os.environ['DBT_API_KEY']
+account_id      = os.environ['DBT_ACCOUNT_ID']
+project_id      = os.environ['DBT_PROJECT_ID']
+job_id          = os.environ['DBT_PR_JOB_ID']
+
+print(f"""
+Configuration:
+api_base: {api_base}
+job_cause: {job_cause}
+git_branch: {git_branch}
+schema_override: {schema_override}
+account_id: {account_id}
+project_id: {project_id}
+job_id: {job_id}
+""")
+
+req_auth_header = {'Authorization': f'Token {api_key}'}
+req_job_url = f'{api_base}/api/v2/accounts/{account_id}/jobs/{job_id}/run/'
+run_status_map = {
+  1:  'Queued',
+  2:  'Starting',
+  3:  'Running',
+  10: 'Success',
+  20: 'Error',
+  30: 'Cancelled',
+}
+
+def run_job(url, headers, cause, branch=None, schema_override=None) -> int:
+  req_payload = {'cause': cause}
+  if branch:
+    req_payload['git_branch'] = branch.replace('refs/heads/', '')
+  if schema_override:
+    req_payload['schema_override'] = schema_override.replace('-', '_')
+  print(f'Triggering job:\n\turl: {url}\n\tpayload: {req_payload}')
+  run_job_resp = requests.post(url, headers=headers, data=req_payload).json()
+  return run_job_resp['data']['id']
+
+def get_run_status(url, headers) -> str:
+  req_status_resp = requests.get(url, headers=headers).json()
+  run_status_code = req_status_resp['data']['status']
+  return run_status_map[run_status_code]
+
+def main():
+  print('Beginning request for job run...')
+  try:
+    run_id = run_job(req_job_url, req_auth_header, job_cause, git_branch, schema_override)
+  except Exception as e:
+    print(f'ERROR! - Could not trigger job:\n {e}')
+    raise
+
+  req_status_url = f'{api_base}/api/v2/accounts/{account_id}/runs/{run_id}/'
+  run_status_link = f'{api_base}/#/accounts/{account_id}/projects/{project_id}/runs/{run_id}/'
+  print(f'Job running! See job status at {run_status_link}')
+
+  time.sleep(30)
+  while True:
+    status = get_run_status(req_status_url, req_auth_header)
+    print(f'Run status -> {status}')
+    if status in ['Error', 'Cancelled']:
+      raise Exception(f'Run failed or canceled. See why at {run_status_link}')
+    if status == 'Success':
+      print(f'Job completed successfully! See details at {run_status_link}')
+      return
+    time.sleep(10)
+
+if __name__ == "__main__":
+    main()
+```
+
+**Create `ci-configuration/buildspec-merge.yml` with the following content:**
+
+Replace the placeholder values with your actual dbt account details:
+
+- `YOUR_DBT_ACCOUNT_ID`: The number after `accounts/` in your dbt job URL
+- `YOUR_DBT_PROJECT_ID`: The number after `projects/` in your dbt job URL
+- `YOUR_DBT_MERGE_JOB_ID`: The number after `jobs/` in the URL of the dbt job you want to run on merge
+- `YOUR_SSM_PARAMETER_NAME`: The name of the SSM parameter you created in step 2 (for example, `DBT_API_KEY`)
+
+```yaml
+version: 0.2
+
+env:
+  variables:
+    DBT_ACCOUNT_ID: YOUR_DBT_ACCOUNT_ID
+    DBT_PROJECT_ID: YOUR_DBT_PROJECT_ID
+    DBT_PR_JOB_ID: YOUR_DBT_MERGE_JOB_ID
+    DBT_URL: https://cloud.getdbt.com
+    DBT_JOB_CAUSE: 'CodeCommit Merge CI Job'
+  parameter-store:
+    DBT_API_KEY: "YOUR_SSM_PARAMETER_NAME"
+
+phases:
+  install:
+    commands:
+      - apt-get update -y
+      - python -m pip install --upgrade pip
+      - pip install requests
+  build:
+    commands:
+      - python -u ./python/run_and_monitor_dbt_cloud_job.py
+```
+
+**Create a CodeBuild project**
+
+Follow the [AWS CodeBuild documentation](https://docs.aws.amazon.com/codebuild/latest/userguide/create-project-console.html) to create a project. Configure the following settings:
+
+- **Source**: Select **AWS CodeCommit**, set the reference type to **Branch**, and select your main branch
+- **Environment**: Select **Ubuntu** as the operating system
+- **Buildspec**: Select **Use a buildspec file** and enter `ci-configuration/buildspec-merge.yml` as the path
+
+Note the service role name shown in the **Environment** section. In **IAM**, find that role and add an inline policy granting permission to read and decrypt the SSM parameter:
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": ["ssm:GetParameter", "ssm:GetParameters"],
+      "Resource": "arn:aws:ssm:YOUR_AWS_REGION:YOUR_AWS_ACCOUNT_ID:parameter/YOUR_SSM_PARAMETER_NAME"
+    },
+    {
+      "Effect": "Allow",
+      "Action": ["kms:Decrypt"],
+      "Resource": "arn:aws:kms:YOUR_AWS_REGION:YOUR_AWS_ACCOUNT_ID:key/alias/aws/ssm"
+    }
+  ]
+}
+```
+
+**Create an EventBridge rule**
+
+1. In the AWS console, go to **Amazon EventBridge** → **Rules** → **Create rule**
+2. Give the rule a name (for example, `dbt-run-on-merge`)
+3. Under **Event pattern**, select **Custom pattern** and paste the following JSON. Substitute `YOUR_AWS_ACCOUNT_ID`, `YOUR_AWS_REGION`, and `YOUR_CODECOMMIT_REPO_NAME` with your values:
+
+```json
+{
+  "source": ["aws.codecommit"],
+  "account": ["YOUR_AWS_ACCOUNT_ID"],
+  "region": ["YOUR_AWS_REGION"],
+  "detail-type": ["CodeCommit Repository State Change"],
+  "resources": ["arn:aws:codecommit:YOUR_AWS_REGION:YOUR_AWS_ACCOUNT_ID:YOUR_CODECOMMIT_REPO_NAME"],
+  "detail": {
+    "event": ["referenceUpdated"],
+    "referenceType": ["branch"],
+    "referenceName": ["main"]
+  }
+}
+```
+
+4. Under **Target**, select **AWS service** → **CodeBuild** and choose the project you created above
+5. When prompted, allow EventBridge to create a new IAM role for the target automatically
+6. Save the rule
+
+</TabItem>
 </Tabs>
 
 ### 5. Test your new action
@@ -480,12 +674,14 @@ Additionally, you’ll see the job in the run history of <Constant name="dbt" />
 <Tabs
   defaultValue="github"
   values={[
-    { label: 'GitHub', value: 'github', },
+    {label: 'GitHub', value: 'github', },
     {label: 'GitLab', value: 'gitlab', },
     {label: 'Azure DevOps', value: 'ado', },
     {label: 'Bitbucket', value: 'bitbucket', },
+    {label: 'CodeCommit', value: 'codecommit', },
   ]
 }>
+
 <TabItem value="github">
 
 <Lightbox src="/img/guides/orchestration/custom-cicd-pipelines/dbt-run-on-merge-github.png" title="dbt run on merge job in GitHub" width="80%" />
@@ -514,6 +710,17 @@ Additionally, you’ll see the job in the run history of <Constant name="dbt" />
 <Lightbox src="/img/guides/orchestration/custom-cicd-pipelines/dbt-cloud-job-bitbucket-triggered.png" title="dbt job showing it was triggered by Bitbucket" width="80%" />
 
 </TabItem>
+<TabItem value="codecommit">
+
+To test the pipeline, merge a pull request (or push a commit directly) to your main branch. You should see a new build start in your CodeBuild project within a few seconds. You can monitor the run in the CodeBuild console under **Build history**.
+
+<Lightbox src="/img/guides/orchestration/custom-cicd-pipelines/codecommit-run-on-pr.png" title="Find new build under build history of CodeBuild console" width="80%" />
+
+In dbt, the job will appear in your run history with a cause of "CodeCommit Merge CI Job".
+
+<Lightbox src="/img/guides/orchestration/custom-cicd-pipelines/codecommit-dbt-cloud-pr.png" title="Check dbt run history for CodeCommit build triggered" width="80%" />
+
+</TabItem>
 </Tabs>
 
 ## Run a dbt job on pull request
@@ -522,12 +729,12 @@ If your git provider is not one with a native integration with <Constant name="d
 
 :::tip Run on PR
 
-If your git provider has a native integration with <Constant name="dbt" />, you can take advantage of the setup instructions [here](/docs/deploy/ci-jobs).
+If your git provider has a native integration with <Constant name="dbt" />, you can take advantage of the [setup instructions](/docs/deploy/ci-jobs).
 This section is only for those projects that connect to their git repository using an SSH key.
 
 :::
 
-The setup for this pipeline will use the same steps as the prior page. Before moving on, follow steps 1-5 from the [prior page](/guides/custom-cicd-pipelines?step=2).
+The setup for this pipeline will use the same steps as the prior page. Before moving on, make sure you follow [steps 1-5](/guides/custom-cicd-pipelines?step=2) from the previous page.
 
 ### 1. Create a pipeline job that runs when PRs are created
 
@@ -535,15 +742,18 @@ The setup for this pipeline will use the same steps as the prior page. Before mo
   defaultValue="bitbucket"
   values={[
     { label: 'Bitbucket', value: 'bitbucket', },
+    { label: 'CodeCommit', value: 'codecommit', }
   ]
 }>
+
 <TabItem value="bitbucket">
 
-For this job, we'll set it up using the `bitbucket-pipelines.yml` file as in the prior step. The YAML file will look pretty similar to our earlier job, but we’ll pass in the required variables to the Python script using `export` statements. Update this section to match your setup based on the comments in the file.
+For this job, we’ll set it up using the `bitbucket-pipelines.yml` file as in the prior step. The YAML file will look pretty similar to our earlier job, but we’ll pass in the required variables to the Python script using `export` statements. Update this section to match your setup based on the comments in the file.
 
 **What is this pipeline going to do?**  
 The setup below will trigger a <Constant name="dbt" /> job to run every time a PR is opened in this repository. It will also run a fresh version of the pipeline for every commit that is made on the PR until it is merged.
-For example: If you open a PR, it will run the pipeline. If you then decide additional changes are needed, and commit/push to the PR branch, a new pipeline will run with the updated code.  
+
+For example,  if you open a PR, it will run the pipeline. If you then decide additional changes are needed, and commit/push to the PR branch, a new pipeline will run with the updated code.  
 
 The following variables control this job:
 
@@ -563,8 +773,8 @@ pipelines:
           name: 'Run dbt PR Job'
           script:
             # Check to only build if PR destination is master (or other branch). 
-            # Comment or remove line below if you want to run on all PR's regardless of destination branch.
-            - if [ "${BITBUCKET_PR_DESTINATION_BRANCH}" != "main" ]; then printf 'PR Destination is not master, exiting.'; exit; fi
+            # Comment or remove line below if you want to run on all PR’s regardless of destination branch.
+            - if [ "${BITBUCKET_PR_DESTINATION_BRANCH}" != "main" ]; then printf ‘PR Destination is not master, exiting.’; exit; fi
             - export DBT_URL="https://cloud.getdbt.com"
             - export DBT_JOB_CAUSE="Bitbucket Pipeline CI Job"
             - export DBT_JOB_BRANCH=$BITBUCKET_BRANCH
@@ -574,6 +784,159 @@ pipelines:
             - export DBT_PR_JOB_ID=00000 # enter your job id here
             - python python/run_and_monitor_dbt_job.py
 ```
+
+</TabItem>
+
+<TabItem value="codecommit">
+
+The setup for CodeCommit follows the same steps as the prior page. Before moving on, follow steps 1–5 from the [prior page](/guides/custom-cicd-pipelines?step=2) to store your API key, add the Python script to your repository, and configure the merge pipeline.
+
+:::note Prerequisites
+Before proceeding, make sure you have also:
+- Connected your dbt project to CodeCommit by following the [CodeCommit integration guide](/docs/platform/git/import-a-project-by-git-url#aws-codecommit)
+- Configured the [pull request URL template for CodeCommit](/docs/platform/git/pr-template#aws-codecommit) in your dbt project settings
+- Created a [CI job](/docs/deploy/ci-jobs) in dbt — do not configure it to trigger on pull requests, since this pipeline will trigger it through the API
+:::
+
+The pull request pipeline uses a separate CodeBuild project from the merge pipeline, because it runs a different dbt job (your CI job) and requires branch and schema values that are dynamically passed at build time from the pull request event.
+
+**1. Add `ci-configuration/buildspec.yml` to your project**
+
+This is separate from the `buildspec-merge.yml` you created in the prior step. It references your CI job and leaves `DBT_JOB_BRANCH` and `DBT_JOB_SCHEMA_OVERRIDE` empty — a Lambda function will pass those values at build time.
+
+Replace the placeholder values with your actual dbt account details:
+
+- `YOUR_DBT_ACCOUNT_ID`: The number after `accounts/` in your dbt job URL
+- `YOUR_DBT_PROJECT_ID`: The number after `projects/` in your dbt job URL
+- `YOUR_DBT_PR_JOB_ID`: The number after `jobs/` in the URL of your CI job
+- `YOUR_SSM_PARAMETER_NAME`: The name of the SSM parameter you created in step 2 of the prior page (for example, `DBT_API_KEY`)
+
+```yaml
+version: 0.2
+
+env:
+  variables:
+    DBT_ACCOUNT_ID: YOUR_DBT_ACCOUNT_ID
+    DBT_PROJECT_ID: YOUR_DBT_PROJECT_ID
+    DBT_PR_JOB_ID: YOUR_DBT_PR_JOB_ID
+    DBT_URL: https://cloud.getdbt.com
+    DBT_JOB_CAUSE: 'CodeCommit Pipeline CI Job'
+    DBT_JOB_BRANCH: ''
+    DBT_JOB_SCHEMA_OVERRIDE: ''
+  parameter-store:
+    DBT_API_KEY: "YOUR_SSM_PARAMETER_NAME"
+
+phases:
+  install:
+    commands:
+      - apt-get update -y
+      - python -m pip install --upgrade pip
+      - pip install requests
+  build:
+    commands:
+      - python -u ./python/run_and_monitor_dbt_cloud_job.py
+```
+
+**2. Create a CodeBuild project for pull requests**
+
+Follow the [AWS CodeBuild documentation](https://docs.aws.amazon.com/codebuild/latest/userguide/create-project-console.html) to create a second project (separate from the one you created for merge). Configure the following settings:
+
+- **Source**: Select **AWS CodeCommit**, set the reference type to **Branch**, and select your main branch
+- **Environment**: Select **Ubuntu** as the operating system
+- **Buildspec**: Select **Use a buildspec file** and enter `ci-configuration/buildspec.yml` as the path
+
+Note the service role name shown in the **Environment** section. In **IAM**, find that role and add an inline policy granting permission to read and decrypt the SSM parameter:
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": ["ssm:GetParameter", "ssm:GetParameters"],
+      "Resource": "arn:aws:ssm:YOUR_AWS_REGION:YOUR_AWS_ACCOUNT_ID:parameter/YOUR_SSM_PARAMETER_NAME"
+    },
+    {
+      "Effect": "Allow",
+      "Action": ["kms:Decrypt"],
+      "Resource": "arn:aws:kms:YOUR_AWS_REGION:YOUR_AWS_ACCOUNT_ID:key/alias/aws/ssm"
+    }
+  ]
+}
+```
+
+**3. Create a Lambda trigger function**
+
+The Lambda function receives the pull request event from EventBridge, extracts the PR branch and PR ID, then starts CodeBuild with those values as environment variable overrides. This is what ensures the dbt CI job runs against your PR branch with a PR-specific schema.
+
+1. In the AWS console, go to **Lambda** → **Create function**
+2. Select **Author from scratch**, name the function (for example, `dbt-ci-trigger`), and choose **Python 3.12** as the runtime
+3. Click **Create function**, then replace the default code with the following:
+
+```python
+import boto3
+
+def lambda_handler(event, context):
+    cb = boto3.client('codebuild')
+
+    source_ref = event['detail']['sourceReference']
+    pr_id = event['detail']['pullRequestId']
+    repo_name = event['detail']['repositoryNames'][0]
+
+    branch = source_ref.replace('refs/heads/', '')
+    schema_override = f'DBT_CLOUD_PR_{repo_name}_{pr_id}'.replace('-', '_').upper()
+
+    print(f'Triggering CodeBuild for branch: {branch}, schema_override: {schema_override}')
+
+    cb.start_build(
+        projectName='YOUR_CODEBUILD_PROJECT_NAME',
+        environmentVariablesOverride=[
+            {'name': 'DBT_JOB_BRANCH', 'value': branch, 'type': 'PLAINTEXT'},
+            {'name': 'DBT_JOB_SCHEMA_OVERRIDE', 'value': schema_override, 'type': 'PLAINTEXT'}
+        ]
+    )
+```
+
+Replace `YOUR_CODEBUILD_PROJECT_NAME` with the name of the CodeBuild project you created above, then click **Deploy**.
+
+4. Go to **Configuration** → **Permissions** → click the execution role name to open IAM
+5. Add an inline policy granting permission to start the CodeBuild project:
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": "codebuild:StartBuild",
+      "Resource": "arn:aws:codebuild:YOUR_AWS_REGION:YOUR_AWS_ACCOUNT_ID:project/YOUR_CODEBUILD_PROJECT_NAME"
+    }
+  ]
+}
+```
+
+**4. Create an EventBridge rule**
+
+1. In the AWS console, go to **Amazon EventBridge** → **Rules** → **Create rule**
+2. Give the rule a name (for example, `dbt-ci-on-pr-created`)
+3. Under **Event pattern**, select **Custom pattern** and paste the following JSON. Substitute `YOUR_AWS_ACCOUNT_ID`, `YOUR_AWS_REGION`, and `YOUR_CODECOMMIT_REPO_NAME` with your values:
+
+    ```json
+    {
+      "source": ["aws.codecommit"],
+      "account": ["YOUR_AWS_ACCOUNT_ID"],
+      "region": ["YOUR_AWS_REGION"],
+      "detail-type": ["CodeCommit Pull Request State Change"],
+      "resources": ["arn:aws:codecommit:YOUR_AWS_REGION:YOUR_AWS_ACCOUNT_ID:YOUR_CODECOMMIT_REPO_NAME"],
+      "detail": {
+        "event": ["pullRequestCreated"],
+        "repositoryNames": ["YOUR_CODECOMMIT_REPO_NAME"]
+      }
+    }
+    ```
+
+4. Under **Target**, select **AWS service** → **Lambda function**, and choose the Lambda function you created above
+5. Save the rule
 
 </TabItem>
 </Tabs>
@@ -586,6 +949,7 @@ Now that you have a new pipeline, it's time to run it and make sure it works. Si
   defaultValue="bitbucket"
   values={[
     {label: 'Bitbucket', value: 'bitbucket', },
+    {label: 'CodeCommit', value: 'codecommit', },
   ]
 }>
 <TabItem value="bitbucket">
@@ -595,6 +959,17 @@ Bitbucket pipeline:
 
 dbt job:
 ![<Constant name="dbt" /> job showing it was triggered by Bitbucket](/img/guides/orchestration/custom-cicd-pipelines/bitbucket-dbt-cloud-pr.png)
+
+</TabItem>
+<TabItem value="codecommit">
+
+To test the pipeline, create a new pull request in your CodeCommit repository on a branch that contains the files you added above. Once you open the pull request, the EventBridge rule fires, Lambda extracts the branch and PR ID, and CodeBuild starts automatically.
+
+CodeBuild run:
+<Lightbox src="/img/guides/orchestration/custom-cicd-pipelines/codecommit-run-on-pr.png" title="CodeBuild run triggered by a CodeCommit pull request" width="85%" />
+
+In dbt, the job run appears in your run history. It will show the PR branch and a schema override in the format `DBT_CLOUD_PR_{REPO_NAME}_{PR_NUMBER}`:
+<Lightbox src="/img/guides/orchestration/custom-cicd-pipelines/codecommit-dbt-cloud-pr.png" title="dbt job showing it was triggered by a CodeCommit pull request" width="85%" />
 
 </TabItem>
 </Tabs>

@@ -1,7 +1,7 @@
 ## Canvas prerequisites
 Before using <Constant name="canvas" />, you should:
 - Have a [<Constant name="dbt" /> Enterprise or Enterprise+](https://www.getdbt.com/pricing) account.
-- Have a [developer license](/docs/platform/manage-access/seats-and-users) with developer credentials set up.
+- Have a [developer license](/docs/platform/manage-access/seats-and-users) with user credentials set up.
 - Be using one of the following adapters:
     - Bigquery
     - Databricks
@@ -15,4 +15,3 @@ Before using <Constant name="canvas" />, you should:
 - Have an existing <Constant name="dbt" /> project already created with a Staging or Production run completed.
 - Verify your Development environment is on a supported [release track](/docs/dbt-versions/dbt-release-tracks) to receive ongoing updates.
 - Have read-only access to the [Staging environment](/docs/deploy/deploy-environments#staging-environment) with the data to be able to execute `run` in the <Constant name="canvas" />. To customize the required access for the <Constant name="canvas" /> user group, refer to [Set up environment-level permissions](/docs/platform/manage-access/environment-permissions-setup) for more information.
-- Have the AI-powered features toggle enabled (for [<Constant name="copilot" /> integration](/docs/platform/dbt-copilot)).

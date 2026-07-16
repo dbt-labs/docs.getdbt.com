@@ -1,52 +1,101 @@
-If you already have the <Constant name="fusion_engine" /> installed, you can skip this step. If you don't have it installed, you can follow these steps to install it:
+Choose your preferred installation method:
 
-1. Open a new command-line window and run the following command to install the <Constant name="fusion_engine" />:
+<Expandable alt_header="Pip installation for Windows, macOS, and Linux">
 
-    <Tabs queryString="installation">
-    <TabItem value="mac-linux" label="macOS & Linux">
+```shell
+python -m pip install --pre dbt
+```
 
-    Run the following command in the terminal:
+To upgrade to a newer version:
 
-    ```shell
-    curl -fsSL https://public.cdn.getdbt.com/fs/install/install.sh | sh -s -- --update
-    ```
+```shell
+python -m pip install --upgrade --pre dbt
+```
 
-    To use `dbtf` immediately after installation, reload your shell so that the new `$PATH` is recognized:
+</Expandable>
 
-    ```shell
-    exec $SHELL
-    ```
+<Expandable alt_header="Standalone installation for macOS and Linux">
 
-    Or, close and reopen your Terminal window. This will load the updated environment settings into the new session.
+```shell
+curl -fsSL https://public.cdn.getdbt.com/fs/install/install.sh | sh -s -- --update
+```
 
-    </TabItem>
-    <TabItem value="windows" label="Windows (PowerShell)">
+To use `dbt` immediately after installation, close and reopen your terminal or reload your shell so that the new `$PATH` is recognized:
 
-    Run the following command in PowerShell:
+```shell
+exec $SHELL
+```
 
-    ```powershell
-    irm https://public.cdn.getdbt.com/fs/install/install.ps1 | iex
-    ```
+To upgrade to a newer version:
 
-    To use `dbtf` immediately after installation, reload your shell so that the new `Path` is recognized:
+```shell
+dbt system update
+```
 
-    ```powershell
-    Start-Process powershell
-    ```
+:::note
+`dbtf system update` installs <Constant name="fusion" /> globally &mdash; it updates your `PATH` in `~/.zshrc` and creates a `dbtf` alias. To manage multiple versions or isolate your install, use separate shell profiles or virtual environments.
+:::
 
-    Or, close and reopen PowerShell. This will load the updated environment settings into the new session.
+</Expandable>
 
-    </TabItem>
-    </Tabs>
+<Expandable alt_header="Standalone installation for Windows">
 
-2. Run the following command to verify you've installed <Constant name="fusion" />:
-    ```bash
-    dbtf --version
-    ```
-    You can use `dbt` or its <Constant name="fusion" /> alias `dbtf` (handy if you already have the Core or platform CLI installed). Default install path:
+```powershell
+irm https://public.cdn.getdbt.com/fs/install/install.ps1 | iex
+```
 
-       - macOS/Linux: `$HOME/.local/bin/dbt`
-       - Windows: `C:\Users\<username>\.local\bin\dbt.exe`
+To use `dbt` immediately after installation, close and reopen or reload your shell so that the new `Path` is recognized:
 
-    The installer adds this path automatically, but you may need to reload your shell for the `dbtf` command to work.
+```powershell
+Start-Process powershell
+```
 
+To upgrade to a newer version:
+
+```shell
+dbt system update
+```
+
+</Expandable>
+
+<Expandable alt_header="Homebrew installation for macOS">
+
+```shell
+brew install dbt
+```
+
+To upgrade to a newer version:
+
+```shell
+brew upgrade dbt
+```
+
+</Expandable>
+
+<Expandable alt_header="Winget installation for Windows">
+
+```shell
+winget install --id dbtLabs.dbt --exact
+```
+
+To upgrade to a specific version:
+
+```shell
+winget install --id dbtLabs.dbt --exact --version <version>
+```
+
+</Expandable>
+
+
+Run the following command to verify your installation:
+
+```bash
+dbt --version
+```
+
+You can use `dbt` or its <Constant name="fusion" /> alias `dbtf` (handy if you already have the Core or platform CLI installed). Default install path:
+
+- macOS/Linux: `$HOME/.local/bin/dbt`
+- Windows: `C:\Users\<username>\.local\bin\dbt.exe`
+
+The installer adds this path automatically, but you may need to reload your shell for the `dbtf` command to work.

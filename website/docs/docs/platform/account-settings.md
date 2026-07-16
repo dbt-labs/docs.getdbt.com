@@ -49,11 +49,11 @@ To use, select the **Enable partial parsing between deployment runs** option fro
 
 ## Account access and enablement
 
-### Enabling dbt Copilot <Lifecycle status="self_service,managed,managed_plus" /> 
+Enable access to features in your account by selecting the appropriate option from your account settings.
 
-[<Constant name="copilot" />](/docs/platform/dbt-copilot) is an AI-powered assistant fully integrated into your dbt experience and is designed to accelerate your analytics workflows.
+### Enabling AI features
 
-To use this feature, your <Constant name="dbt" /> administrator must enable <Constant name="copilot" /> on your account by selecting the **Enable account access to dbt Copilot features** option from the account settings. For more information, see [Enable dbt Copilot](/docs/platform/enable-dbt-copilot).
+Admins can enable access to both <Constant name="wizard" /> (dbt Labs’ AI agent layer, available on the <Constant name="dbt_platform" /> and CLI) and dbt Copilot for authorized users across the <Constant name="dbt_platform" />. 
 
 ### Enabling Advanced CI features <Lifecycle status="managed,managed_plus" />
 

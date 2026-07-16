@@ -73,7 +73,7 @@ function Home() {
                   <Link
                     id="hero-vs-code-cta"
                     className="hero-border-beam-cta"
-                    to="/docs/local/install-dbt?version=2#installation">
+                    to="/docs/local/install-dbt">
                       <span>Install dbt VS Code extension + Fusion</span>
                       </Link>
                 </div>
@@ -87,6 +87,13 @@ function Home() {
                 <h2 className="heading-2">New to dbt? Start here.</h2>
               </div>
               <div className="home-card-grid">
+                <Card
+                  title="dbt Wizard"
+                  tag="Beta"
+                  body="Build, refactor, and validate dbt projects with an AI agent purpose-built for analytics engineering — in the dbt platform or from your terminal."
+                  link="/docs/platform/wizard-overview"
+                  icon="dbt-copilot"
+                />
                 <Card
                   title="dbt Fusion engine"
                   tag="Article"
@@ -120,9 +127,9 @@ function Home() {
               </div>
               <div className="home-card-grid">
                 <Card
-                  title="dbt Copilot"
-                  body="AI-powered assistant that automates code, tests, and documentation in your workflow."
-                  link="/docs/platform/dbt-copilot"
+                  title="dbt Wizard"
+                  body="AI agent purpose-built for analytics engineering — available in the dbt platform and from your terminal."
+                  link="/docs/platform/wizard-overview"
                   icon="dbt-copilot"
                 />
                 <Card
@@ -131,6 +138,13 @@ function Home() {
                   link="/docs/about-dbt-extension"
                   icon="vsce"
                   showBorderBeam
+                />
+                <Card
+                  title="dbt State"
+                  tag="Preview"
+                  body="dbt State makes dbt smarter about what to build — skipping unnecessary rebuilds by reusing nodes when logic and data haven't changed. Works with dbt Core, dbt platform, and the dbt Fusion engine."
+                  link="/docs/deploy/dbt-state-about"
+                  icon="forward"
                 />
                 <Card
                   title="dbt Orchestrator"
@@ -191,7 +205,7 @@ function Home() {
                   <Link to="/docs/dbt-apis/overview">API Docs</Link>
                   <Link to="/docs/introduction">Product Docs</Link>
                   <Link to="/best-practices">Best Practices</Link>
-                  <Link to="/docs/platform/dbt-copilot">Copilot</Link>
+                  <Link to="/docs/platform/wizard-overview">dbt Wizard</Link>
                 </div>
                 <div className="home-link-grid-item">
                   <h4 className="heading-4">Guides</h4>

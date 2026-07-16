@@ -12,7 +12,7 @@ The <Constant name="dbt_platform" /> natively supports developing using a comman
 
 :::note CLI compatibility
 
-The <Constant name="platform_cli" /> is a <Constant name="dbt_platform" /> tool available to users on any [plan](https://www.getdbt.com/pricing). It is intended for use only with the <Constant name="dbt_platform" /> and may conflict with local installations of the <Constant name="core" /> or <Constant name="fusion_engine" /> CLIs. Refer to the [FAQs](#faqs) for more information.
+The <Constant name="platform_cli" /> is a <Constant name="dbt_platform" /> tool available to users on any [plan](https://www.getdbt.com/pricing). It is intended for use only with the <Constant name="dbt_platform" /> and may conflict with self-hosted installations of the <Constant name="core" /> or <Constant name="fusion_engine" /> CLIs. Refer to the [FAQs](#faqs) for more information.
 
 :::
 
@@ -22,7 +22,6 @@ dbt commands run against the platform's infrastructure and benefit from:
 * [Automatic deferral](/docs/platform/about-defer) of build artifacts to your project's production environment 
 * Speedier, lower-cost builds
 * Support for dbt Mesh ([cross-project `ref`](/docs/mesh/govern/project-dependencies))
-* Significant platform improvements, to be released over the coming months
 
 <Lightbox src="/img/docs/dbt-platform/dbt-cli-overview.png" title="Diagram of how the dbt CLI works with dbt's infrastructure to run dbt commands from your local command line." />
 
@@ -36,9 +35,10 @@ The <Constant name="platform_cli" /> is available in all [deployment regions](/d
 
 Refer to the [FAQs](#faqs) for more information about managing multiple <Constant name="platform_cli" /> tools and creating an alias.
 
-:::tip Using the <Constant name="dbt_platform"/> CLI for local development with <Constant name="fusion"/>?
+:::tip Using the <Constant name="dbt_platform"/> CLI for hybrid development with <Constant name="fusion"/>?
 See the [Hybrid development with <Constant name="dbt_platform"/>  and <Constant name="fusion"/>](/guides/fusion-platform-local-workflow) guide to keep credentials, environment variables, and <Constant name="fusion"/> versions in sync across your local CLI and <Constant name="dbt_platform"/>.
 :::
+
 
 ## Install dbt CLI
 
@@ -279,6 +279,16 @@ import CloudCliRelativePath from '/snippets/_cloud-cli-relative-path.md';
 
 <CloudCliRelativePath />
 
+## dbt Wizard
+
+[dbt Wizard](/docs/dbt-ai/wizard-quickstart) is an AI agent purpose-built for analytics engineering. It's grounded in your dbt project through a [native metadata engine](/docs/dbt-ai/wizard-how-it-works#native-metadata-engine) &mdash; a structured context index of your project's lineage, model health, test coverage, and semantic definitions. Before the agent writes a single line, it knows which models are healthy, what depends on what, and where gaps in tests or documentation exist.
+
+- **Build and refactor from natural language**: Describe the change, get a reviewable diff before anything is written to disk.
+- **Validate in a tight loop**: Every proposed change compiles and runs against your warehouse, catching issues before they reach production.
+- **Navigate with full project context**: Traverse the [DAG](/docs/explore/explore-projects), surface downstream impact, and flag affected models, tests, and metrics before acting.
+
+For data practitioners working with a self-hosted installation, this means AI assistance grounded in your actual project state &dash; not a generic code assistant. Bring your own key to experience the full agentic analytics engineering loop. Refer to the [dbt Wizard quickstart](/docs/dbt-ai/wizard-quickstart) to get started.
+
 ## FAQs
 
 <DetailsToggle alt_header="What's the difference between the dbt CLI and dbt Core?">
@@ -337,4 +347,3 @@ The <Constant name="platform_cli" /> allows only one command that writes to the 
 
 </DetailsToggle>
   
-

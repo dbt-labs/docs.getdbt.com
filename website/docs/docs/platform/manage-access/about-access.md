@@ -148,15 +148,49 @@ import LicenseOverrideNote from '/snippets/_license-override-note.md';
 
 ### Permissions
 
-Permissions determine what a developer-licensed user can do in your <Constant name="dbt" /> account. By default, members of the `Owner` and `Member` groups have full access to all areas and features. When you want to restrict access to features, assign users to groups with stricter permission sets. Keep in mind that if a user belongs to multiple groups, the most permissive group will take precedence.
+Permissions determine what users can do in your <Constant name="dbt" /> account. By default, members of the `Owner` and `Member` groups have full access to all areas and features. When you want to restrict access to features, assign users to groups with stricter permission sets. Keep in mind that if a user belongs to multiple groups, the most permissive group will take precedence.
 
-The permissions available depends on whether you're on an [Enterprise, Enterprise+](/docs/platform/manage-access/enterprise-permissions), or [self-service Starter](/docs/platform/manage-access/self-service-permissions) plan. Developer accounts only have a single user, so permissions aren't applicable.
+The permissions available depend on whether you're on an [Enterprise, Enterprise+](/docs/platform/manage-access/enterprise-permissions), or [self-service Starter](/docs/platform/manage-access/self-service-permissions) plan. Developer accounts only have a single user, so permissions aren't applicable.
+
+Some access to user settings (for example, **Credentials** settings in **Your profile**) can be granted with additional permissions (such as `user_credential_write`). Refer to [Enterprise permissions](/docs/platform/manage-access/enterprise-permissions) for more information.
 
 <Lightbox src="/img/docs/dbt-platform/dbt-platform-enterprise/access-control/assign-group-permissions.png" width="60%" title="Example permissions dropdown while editing an existing group." />
 
 Some permissions (those that don't grant full access, like admins) allow groups to be "assigned" to specific projects and environments only. Read about [environment-level permissions](/docs/platform/manage-access/environment-permissions-setup) for more information on restricting environment access.
 
 <Lightbox src="/img/docs/dbt-platform/dbt-platform-enterprise/access-control/environment-access-control.png" width="60%" title="Example environment access control for a group with Git admin assigned." />
+
+### Set up read-only user access <Lifecycle status="private_beta" />
+
+To give users read-only access to analyze dbt models and project resources, assign them the [Analyst read](/docs/platform/manage-access/enterprise-permissions#analyst-read) permission set through a group. Users won't have access until they're added to a group that's assigned the permission set.
+
+:::info Availability
+
+The OAuth integration that lets read-only users connect to analysis features (such as the [dbt MCP server](/docs/dbt-ai/about-mcp)) is available to use. The **Analyst read** permission set and the read-only permission changes described here are in **private beta**. To enable it, contact your account manager.
+
+:::
+
+**1. Create a group with the Analyst read permission set**
+
+You can also add the Analyst read permission set to an existing group.
+
+1. Go to **Account settings** &rarr; **Groups & Licenses**.
+2. Give the group a descriptive name.
+3. Click **Add permission** and select the **Analyst read** permission set.
+4. Select the projects the permission set should apply to. **All projects** is the default option.
+5. Click **Save**.
+
+**2. Assign users the read-only license and add them to the group**
+
+You can skip or automate this step if license mapping and group mapping are enabled through SSO or SCIM. Use this flow to test with a single user.
+
+1. Go to **Account settings** &rarr; **Users**.
+2. Select the user you want to add to the group.
+3. Select the group you want to add the user to and click **Save**.
+
+<Lightbox src="/img/docs/dbt-platform/access-control/analyst-read-permission.png" width="75%" title="Assign a user the read-only license and add them to the group" />
+
+For more information, refer to [Grant access](/docs/platform/manage-access/about-user-access#grant-access).
 
 ## Role-based access control <Lifecycle status="managed,managed_plus" />
 
@@ -222,7 +256,7 @@ Euclid takes the following steps to log in:
 
     <Lightbox src="/img/docs/dbt-platform/dbt-platform-enterprise/access-control/email-verified.png" width="60%" title="The confirmation that the email address is verified." />
 
-Euclid is now logged in to their account. They only have access to the `Jaffle Shop` project. Under **Orchestration**, they can configure development credentials.
+Euclid is now logged in to their account. They only have access to the `Jaffle Shop` project. Under **Orchestration**, they can configure user credentials.
 
 <Lightbox src="/img/docs/dbt-platform/dbt-platform-enterprise/access-control/orchestration-environments.png" width="60%" title="The Orchestration page with the environments." />
 
