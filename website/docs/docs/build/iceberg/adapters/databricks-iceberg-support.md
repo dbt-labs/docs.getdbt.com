@@ -28,9 +28,9 @@ Databricks supports two methods for creating Iceberg tables in its data catalog,
 
 dbt supports both creating managed Iceberg tables and Iceberg-enabled Delta tables (formerly [UniForm](https://www.databricks.com/blog/delta-uniform-universal-format-lakehouse-interoperability)). The behavior flag [`use_managed_iceberg`](/reference/global-configs/databricks-changes#use-managed-iceberg) determines whether dbt creates a managed Iceberg table or a Delta table.
 
-External Iceberg compute engines can read from and write to these Iceberg tables using Unity Catalog's [Iceberg REST API endpoint](https://docs.databricks.com/aws/en/external-access/iceberg). However, Databricks only has limited support for reading from external Iceberg catalogs (and externally managed Iceberg tables) via [Databricks catalog federation](https://docs.databricks.com/aws/en/query-federation/catalog-federation) (configured outside of dbt).
+External Iceberg compute engines can read from and write to these Iceberg tables using Unity Catalog's [Iceberg REST API endpoint](https://docs.databricks.com/aws/en/external-access/iceberg). However, Databricks only has limited support for reading from external Iceberg catalogs (and externally managed Iceberg tables) through [Databricks catalog federation](https://docs.databricks.com/aws/en/query-federation/catalog-federation) (configured outside of dbt).
 
-dbt does not yet support enabling [Iceberg v3](https://docs.databricks.com/aws/en/iceberg/iceberg-v3) on managed Iceberg tables.
+dbt doesn't yet support enabling [Iceberg v3](https://docs.databricks.com/aws/en/iceberg/iceberg-v3) on managed Iceberg tables.
 
 ### External tables
 
@@ -44,8 +44,9 @@ In dbt v2, you may set `location_root` within the catalog definition in `catalog
 ### Catalogs
 
 Configure catalogs in order to:
-- define muiltiple configurations for Databricks-managed Iceberg tables within one catalog
-- support cross-platform mesh
+
+- Define multiple configurations for Databricks-managed Iceberg tables within one catalog
+- Support cross-platform Mesh
 
 Notes:
 - Every Databricks catalog may optionally configure `table_format`. By default, this is set to `iceberg` for `catalog_type=unity`, and `default` for `hive_metastore`.
