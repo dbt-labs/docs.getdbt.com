@@ -38,10 +38,6 @@ When you run a command like `dbt build --select +my_model`, dbt State evaluates 
 
 Without dbt State, every selected node rebuilds on every run regardless of whether anything has changed.
 
-:::note BigQuery: models with external sources always build
-On BigQuery, models backed by external data (such as Google Sheets external tables) always build. BigQuery doesn't expose modification timestamps for external sources, so dbt State can't determine freshness and rebuilds these models every run.
-:::
-
 For the full list of available configs, see [dbt State configs](/reference/resource-configs/dbt-state-configs).
 
 <Expandable alt_header="How dbt State decides whether to rebuild, clone, or reuse">

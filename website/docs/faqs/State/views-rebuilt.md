@@ -5,12 +5,13 @@ sidebar_label: 'Why is my model being rebuilt instead of reused?'
 id: views-rebuilt
 ---
 
-dbt State decides whether to reuse a model by comparing its compiled SQL to the hash from the previous run. If anything changes that compiled SQL between runs, even when the logic hasn't meaningfully changed, dbt State rebuilds the model.
+dbt State decides whether to reuse a model by comparing its compiled SQL to the hash from the previous run. If anything changes that compiled SQL between runs, even when the logic hasn't meaningfully changed, dbt State rebuilds the model. In some cases, dbt State also rebuilds when it can't determine source freshness, regardless of SQL changes.
 
-These two patterns commonly cause unexpected rebuilds:
+The following patterns commonly cause unexpected rebuilds:
 
 - [Views with `select *`](#views-with-select-)
 - [Non-deterministic Jinja templating](#non-deterministic-jinja-templating)
+- [Models with external sources in BigQuery](#models-with-external-sources-in-bigquery)
 
 ## Views with `select *`
 
@@ -51,6 +52,10 @@ If you can't remove `select *`, you can exclude views from running with `--exclu
 Some macros, such as `dbt_utils.get_relations_by_pattern` (an introspective macro) combined with `dbt_utils.union_relations`, can return relations in a different order on each run. That produces different compiled SQL even when your project logic hasn't changed. dbt State detects a new hash and rebuilds the model.
 
 This pattern can affect any model type, not just views. If a base or staging model rebuilds on every run, all of its downstream models rebuild, too.
+
+## Models with external sources in BigQuery
+
+On BigQuery, models that use external sources (such as Google Sheets) always rebuild because BigQuery doesn't expose modification timestamps for external sources, so dbt State can't determine freshness.
 
 ## How to diagnose
 
