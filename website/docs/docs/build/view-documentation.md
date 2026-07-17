@@ -58,6 +58,10 @@ To generate and serve dbt Docs v2, use the <Constant name="fusion_engine" /> or 
 
 Refer to [dbt docs commands](/reference/commands/cmd-docs) for full usage.
 
+#### Self-Hosting Docs V2
+
+
+
 
 ### dbt Docs (Legacy)
 
