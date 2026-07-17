@@ -44,6 +44,11 @@
       "permanent": true
     },
     {
+      "source": "/docs/dbt-versions/dbt-cloud-release-notes",
+      "destination": "/docs/dbt-versions/release-notes",
+      "permanent": true
+    },
+    {
       "source": "/reference/global-configs/behavior-flag-maturity",
       "destination": "/reference/global-configs/behavior-changes",
       "permanent": true
