@@ -17,6 +17,8 @@ unlisted: true
 
 Release notes are grouped by date for single-tenant environments.
 
+<span><img src="/img/fontawesome/rss.svg" alt="RSS" className="rss-icon" />Subscribe to release note updates via [RSS](/feeds/release-notes-st-rss.xml), [Atom](/feeds/release-notes-st-atom.xml), or [JSON Feed](/feeds/release-notes-st-rss.json).</span>
+
 ## July 13, 2026
 
 ## Behavior change
