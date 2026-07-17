@@ -53,7 +53,7 @@ Some macros, such as `dbt_utils.get_relations_by_pattern` (an introspective macr
 
 This pattern can affect any model type, not just views. If a base or staging model rebuilds on every run, all of its downstream models rebuild, too.
 
-## Models with external sources in BigQuery
+## Models with external sources on BigQuery
 
 On BigQuery, models that use external sources (such as Google Sheets) always rebuild because BigQuery doesn't expose modification timestamps for external sources, so dbt State can't determine freshness.
 
