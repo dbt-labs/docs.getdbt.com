@@ -146,7 +146,7 @@ const FEEDS = [
   {
     sourcePath: 'docs/docs/dbt-versions/release-notes.md',
     parse: parseItems,
-    pageUrl: `${siteUrl}/docs/dbt-versions/dbt-cloud-release-notes`,
+    pageUrl: `${siteUrl}/docs/dbt-versions/release-notes`,
     feedPathPrefix: 'release-notes',
     title: 'dbt platform release notes',
     description: 'dbt provides release notes for the dbt platform so you can see recent and historical changes.',

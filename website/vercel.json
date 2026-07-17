@@ -1597,7 +1597,7 @@
     },
     {
       "source": "/docs/dbt-versions/release-notes/:path((?!dbt-cloud-changelog-2021|dbt-cloud-changelog-2019-2020).*)",
-      "destination": "/docs/dbt-versions/dbt-cloud-release-notes",
+      "destination": "/docs/dbt-versions/release-notes",
       "permanent": true
     },
     {

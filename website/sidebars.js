@@ -1053,10 +1053,10 @@ const sidebarSettings = {
       label: "dbt release notes",
       link: {
         type: "doc",
-        id: "docs/dbt-versions/dbt-cloud-release-notes",
+        id: "docs/dbt-versions/release-notes",
       },
       items: [
-        "docs/dbt-versions/dbt-cloud-release-notes",
+        "docs/dbt-versions/release-notes",
         "docs/dbt-versions/dbt-platform-release-notes-gen",
         "docs/dbt-versions/compatible-track-changelog",
         "docs/dbt-versions/2025-release-notes",
