@@ -44,6 +44,11 @@
       "permanent": true
     },
     {
+      "source": "/docs/dbt-versions/dbt-cloud-release-notes",
+      "destination": "/docs/dbt-versions/release-notes",
+      "permanent": true
+    },
+    {
       "source": "/reference/global-configs/behavior-flag-maturity",
       "destination": "/reference/global-configs/behavior-changes",
       "permanent": true
@@ -1597,7 +1602,7 @@
     },
     {
       "source": "/docs/dbt-versions/release-notes/:path((?!dbt-cloud-changelog-2021|dbt-cloud-changelog-2019-2020).*)",
-      "destination": "/docs/dbt-versions/dbt-cloud-release-notes",
+      "destination": "/docs/dbt-versions/release-notes",
       "permanent": true
     },
     {
