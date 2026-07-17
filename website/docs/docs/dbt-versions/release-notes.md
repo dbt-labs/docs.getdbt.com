@@ -1,7 +1,7 @@
 ---
 title: "dbt release notes"
 description: "dbt release notes"
-id: "dbt-cloud-release-notes"
+id: "release-notes"
 sidebar: "dbt release notes"
 pagination_next: null
 pagination_prev: null
