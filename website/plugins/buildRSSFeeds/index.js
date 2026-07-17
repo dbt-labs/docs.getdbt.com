@@ -18,6 +18,19 @@ function parseMonthYearHeading(heading) {
   return new Date(year, monthIdx, 1)
 }
 
+// Parses a "Month Day, Year" heading (for example, "July 13, 2026") into a
+// Date. Returns null for anything that isn't a full date heading, so category
+// headings such as "Enhancements" or "Fixes" are skipped.
+function parseFullDateHeading(heading) {
+  const match = heading.trim().match(/^([a-z]+)\s+(\d{1,2}),\s*(\d{4})$/i)
+  if (!match) return null
+  const monthIdx = MONTH_NAMES.indexOf(match[1].toLowerCase())
+  const day = parseInt(match[2], 10)
+  const year = parseInt(match[3], 10)
+  if (monthIdx === -1 || isNaN(day) || isNaN(year)) return null
+  return new Date(year, monthIdx, day)
+}
+
 function headingToAnchor(heading) {
   return heading.toLowerCase().replace(/[^a-z0-9\s-]/g, '').replace(/\s+/g, '-')
 }
@@ -73,6 +86,35 @@ function parseItems(content, pageUrl) {
   return items
 }
 
+// Parses the single-tenant release notes into RSS items — one item per weekly
+// release date. Dates are H2 headings in "Month Day, Year" form; the category
+// headings nested under each date ("New", "Enhancements", "Fixes", and so on)
+// are skipped so each weekly release surfaces as a single feed entry.
+function parseDatedItems(content, pageUrl) {
+  const items = []
+
+  content.split('\n').forEach((line, order) => {
+    const h2Match = line.match(/^##\s+(.+)$/)
+    if (!h2Match) return
+
+    const heading = h2Match[1].trim()
+    const date = parseFullDateHeading(heading)
+    if (!date) return
+
+    const link = `${pageUrl}#${headingToAnchor(heading)}`
+    items.push({
+      title: `dbt single-tenant release notes — ${heading}`,
+      id: link,
+      link,
+      description: `New dbt single-tenant release notes for ${heading}. Visit the page to see what's new, updated, and fixed.`,
+      date,
+      order,
+    })
+  })
+
+  return items
+}
+
 function buildFeed({ title, description, pageUrl, feedPathPrefix, items }) {
   const today = new Date()
   const feed = new Feed({
@@ -98,6 +140,27 @@ function buildFeed({ title, description, pageUrl, feedPathPrefix, items }) {
   console.log(`"${title}" feed created with ${items.length} entries. Latest: ${items[0].title}`)
 }
 
+// Each entry describes one feed: the source page to read, the parser to run
+// over it, the public page URL its items link to, and the feed metadata.
+const FEEDS = [
+  {
+    sourcePath: 'docs/docs/dbt-versions/release-notes.md',
+    parse: parseItems,
+    pageUrl: `${siteUrl}/docs/dbt-versions/dbt-cloud-release-notes`,
+    feedPathPrefix: 'release-notes',
+    title: 'dbt platform release notes',
+    description: 'dbt provides release notes for the dbt platform so you can see recent and historical changes.',
+  },
+  {
+    sourcePath: 'docs/docs/dbt-versions/dbt-platform-release-notes-gen.md',
+    parse: parseDatedItems,
+    pageUrl: `${siteUrl}/docs/dbt-versions/dbt-platform-release-notes-gen`,
+    feedPathPrefix: 'release-notes-st',
+    title: 'dbt single-tenant release notes',
+    description: 'dbt provides release notes for single-tenant so you can see recent and historical changes.',
+  },
+]
+
 module.exports = function buildRSSFeedsPlugin() {
   return {
     name: 'docusaurus-build-rss-feeds-plugin',
@@ -107,35 +170,30 @@ module.exports = function buildRSSFeedsPlugin() {
         return null
       }
 
-      console.log('Generating RSS Feeds for dbt platform release notes')
+      console.log('Generating RSS Feeds for dbt release notes')
 
-      try {
-        const raw = fs.readFileSync('docs/docs/dbt-versions/release-notes.md', 'utf8')
-        const { content } = matter(raw)
-        const pageUrl = `${siteUrl}/docs/dbt-versions/dbt-cloud-release-notes`
-        const items = parseItems(content, pageUrl)
+      FEEDS.forEach(({ sourcePath, parse, pageUrl, feedPathPrefix, title, description }) => {
+        try {
+          const raw = fs.readFileSync(sourcePath, 'utf8')
+          const { content } = matter(raw)
+          const items = parse(content, pageUrl)
 
-        if (!items.length) {
-          console.warn('No items found in release-notes.md. Skipping feed generation.')
-          return null
+          if (!items.length) {
+            console.warn(`No items found in ${sourcePath}. Skipping feed generation.`)
+            return
+          }
+
+          items.sort((a, b) =>
+            a.date.getTime() !== b.date.getTime()
+              ? b.date - a.date
+              : a.order - b.order
+          )
+
+          buildFeed({ title, description, pageUrl, feedPathPrefix, items })
+        } catch (e) {
+          console.warn(`Could not generate ${title} feed: ${e.message}`)
         }
-
-        items.sort((a, b) =>
-          a.date.getTime() !== b.date.getTime()
-            ? b.date - a.date
-            : a.order - b.order
-        )
-
-        buildFeed({
-          title: 'dbt platform release notes',
-          description: 'dbt provides release notes for the dbt platform so you can see recent and historical changes.',
-          pageUrl,
-          feedPathPrefix: 'release-notes',
-          items,
-        })
-      } catch (e) {
-        console.warn(`Could not generate release notes feed: ${e.message}`)
-      }
+      })
     },
   }
 }
