@@ -5248,6 +5248,11 @@
       "source": "/docs/platform-integrations/set-up-snowflake-native-app",
       "destination": "/docs/platform/connect-data-platform/connect-snowflake",
       "permanent": true
+    },
+    {
+      "source": "/docs/deploy/dbt-state-lag-tolerance",
+      "destination": "/docs/deploy/dbt-state-setup#configuring-lag-tolerance",
+      "permanent": true
     }
   ]
 }
