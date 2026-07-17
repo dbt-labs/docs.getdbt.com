@@ -38,11 +38,12 @@ const products = [
         version: "2.0",
       },
       {
-        name: "dbt Core v1.12 (beta)",
+        name: "dbt Core v1.12",
+        EOLDate: "2027-07-15",
         version: "1.12",
       },
       {
-        name: "Core v1.11",
+        name: "dbt Core v1.11",
         EOLDate: "2026-12-18",
         version: "1.11",
       },

@@ -1,7 +1,7 @@
 ---
-title: "Set up local MCP"
-sidebar_label: "Set up local MCP"
-description: "Learn how to set up the local dbt-mcp server"
+title: "Set up self-hosted MCP"
+sidebar_label: "Set up self-hosted MCP"
+description: "Learn how to set up the self-hosted dbt-mcp server"
 id: "setup-local-mcp"
 ---
 
@@ -10,10 +10,10 @@ import StaticSubdomainRequired from '/snippets/_static-subdomain-required.md';
 import MCPFaqUvx from '/snippets/_mcp-faq-uvx.md';
 import MCPFaqOauth from '/snippets/_mcp-faq-oauth.md';
 
-[The local dbt MCP server](https://github.com/dbt-labs/dbt-mcp) runs locally on your machine and supports <Constant name="core" />, <Constant name="fusion_engine" />, and <Constant name="platform_cli" />. You can use it with or without a <Constant name="dbt_platform" /> account.
+[The self-hosted dbt MCP server](https://github.com/dbt-labs/dbt-mcp) runs on your machine and supports <Constant name="core" />, <Constant name="fusion_engine" />, and <Constant name="platform_cli" />. You can use it with or without a <Constant name="dbt_platform" /> account.
 
 :::note No clone required
-You don't need to clone the dbt-mcp repository to use local MCP. [Install uv](https://docs.astral.sh/uv/getting-started/installation/) and run `uvx dbt-mcp`, which fetches and runs dbt-mcp for you. 
+You don't need to clone the dbt-mcp repository to use self-hosted MCP. [Install uv](https://docs.astral.sh/uv/getting-started/installation/) and run `uvx dbt-mcp`, which fetches and runs dbt-mcp for you. 
 
 If you'd like to contribute to dbt MCP, clone the [dbt-mcp repo](https://github.com/dbt-labs/dbt-mcp) and contribute away!
 :::
@@ -81,7 +81,7 @@ After completing OAuth setup, skip to [Test your configuration](#optional-test-y
 
 This option runs the MCP server locally and connects it to your local dbt project using `DBT_PROJECT_DIR` and `DBT_PATH`.
 
-If you're using the <Constant name="core" /> or <Constant name="fusion" /> CLI and don't need access to <Constant name="dbt_platform" /> features (Discovery API, Semantic Layer, Administrative API), you can set up local MCP with just your dbt project information.
+If you're using the <Constant name="core" /> or <Constant name="fusion" /> CLI and don't need access to <Constant name="dbt_platform" /> features (Discovery API, Semantic Layer, Administrative API), you can set up self-hosted MCP with just your dbt project information.
 
 Add this configuration to your MCP client (refer to the specific [integration guides](#set-up-your-mcp-client) for exact file locations):
 
@@ -305,7 +305,7 @@ You don't need to set `MULTICELL_ACCOUNT_PREFIX` or `DBT_HOST_PREFIX`.
 
 ## Environment variables
 
-The local dbt-mcp supports all flavors of dbt, including <Constant name="core" /> and <Constant name="fusion_engine" />.
+The self-hosted dbt-mcp supports all flavors of dbt, including <Constant name="core" /> and <Constant name="fusion_engine" />.
 
 | Environment variable | Required | Description | Example |
 | --- | --- | --- | --- |

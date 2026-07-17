@@ -4,7 +4,7 @@ sidebar_label: "packages"
 id: packages
 ---
 
-# packages<Lifecycle status="beta" />
+# packages
 
 <VersionCallout version="1.12" /> 
 

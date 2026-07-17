@@ -174,7 +174,7 @@ Staging models sit closest to the raw seed data. Marts models join and shape tha
 
 To run or develop the project, you need dbt installed and a database connected. These links can help:
 
-- **[Install dbt locally](/docs/local/install-dbt):** Cloning doesn't install dbt. You need it to run commands.
+- **[Install self-hosted dbt](/docs/local/install-dbt):** Cloning doesn't install dbt. You need it to run commands.
 - **[Set up a virtual environment](/docs/local/install-dbt):** Keeps dbt separate from other Python projects on your machine.
 - **[About dbt deps command](/reference/commands/deps):** The repo lists packages in `packages.yml`. Run `dbt deps` after you install dbt.
 - **[About dbt projects](/docs/build/projects):** Learn the project structure before editing models.

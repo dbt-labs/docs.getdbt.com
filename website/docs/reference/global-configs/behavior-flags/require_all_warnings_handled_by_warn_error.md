@@ -9,10 +9,12 @@ sidebar_label: "require all warnings handled by warn error"
 | require_all_warnings_handled_by_warn_error | <Constant name="dbt" /> **Latest** | <Constant name="core" /> |
 |---|---|---|
 | Introduced | 2025.06 | 1.10.0 |
-| Matured (default → `true`) | Sep 1, 2026 | — |
+| Matured (default → `true`) | Sep 1, 2026 | 1.12.0 |
 | Removed | — | — |
 
-By default, the `require_all_warnings_handled_by_warn_error` flag is set to `false`.
+<br />
+
+Starting in <Constant name="core" /> v1.12, the `require_all_warnings_handled_by_warn_error` flag defaults to `true`.
 
 When you set `require_all_warnings_handled_by_warn_error` to `true`, all warnings raised during a run are routed through the `--warn-error` / `--warn-error-options` handler. This ensures consistent behavior when promoting warnings to errors or silencing them. When the flag is `false`, only some warnings are processed by the handler while others may bypass it.
 
@@ -39,7 +41,7 @@ We recommend the following rollout plan when setting the `require_all_warnings_h
 
 </Expandable>
 
-## Impact when the flag matures
+## Impact
 
 This only affects projects that use `warn_error: true` or `--warn-error` — common in CI or in <Constant name="dbt_platform" /> production jobs configured for strict mode. Projects without `--warn-error` are not affected.
 

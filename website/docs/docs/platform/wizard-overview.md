@@ -33,7 +33,7 @@ Think of it like a map of your city: <Constant name="wizard" /> knows how everyt
 
 ## Use dbt Wizard
 
-<Constant name="wizard" /> is for anyone doing dbt development — from analytics engineers working locally in the terminal to teams building in the <Constant name="dbt_platform" />. You can use it in the platform with managed or bring-your-own-key (BYOK) credentials, or in the terminal with your own key, with or without a <Constant name="dbt_platform" /> account.
+<Constant name="wizard" /> is for anyone doing dbt development — from analytics engineers working in a self-hosted setup in the terminal to teams building in the <Constant name="dbt_platform" />. You can use it in the platform with managed or bring-your-own-key (BYOK) credentials, or in the terminal with your own key, with or without a <Constant name="dbt_platform" /> account.
 
 <Constant name="wizard" /> is data warehouse agnostic and works with both the [<Constant name="fusion_engine" />](/docs/fusion) and [<Constant name="core" />](/docs/local/install-dbt) &mdash; no specific engine is required.
 
@@ -102,7 +102,7 @@ Refer to [Use cases and examples](/docs/dbt-ai/wizard-use-cases) for more prompt
 
 ## Next steps
 
-Now that you know where to start, continue with **[Use dbt Wizard locally](/docs/dbt-ai/wizard-quickstart)** for local installation and onboarding, or **[Enable AI features in dbt platform](/docs/platform/enable-dbt-ai)** for the platform setup flow.
+Now that you know where to start, continue with **[Use self-hosted dbt Wizard](/docs/dbt-ai/wizard-quickstart)** for installation and onboarding, or **[Enable AI features in dbt platform](/docs/platform/enable-dbt-ai)** for the platform setup flow.
 
 
 ## Related docs

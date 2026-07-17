@@ -304,7 +304,7 @@ const sidebarSettings = {
         },
         {
           type: "category",
-          label: "dbt local installation",
+          label: "dbt self-hosted installation",
           collapsed: true,
           link: { type: "doc", id: "docs/local/about-local" },
           items: [
@@ -852,7 +852,13 @@ const sidebarSettings = {
           type: "category",
           label: "Set up dbt State",
           link: { type: "doc", id: "docs/deploy/dbt-state-setup" },
-          items: ["docs/deploy/dbt-state-setup", "docs/deploy/dbt-state-enable-jobs", "docs/deploy/dbt-state-enable-studio", "docs/deploy/dbt-state-cicd", "docs/deploy/dbt-state-deferral", "docs/deploy/dbt-state-lag-tolerance"],
+          items: [
+            "docs/deploy/dbt-state-setup", 
+            "docs/deploy/dbt-state-enable-jobs", 
+            "docs/deploy/dbt-state-enable-studio", 
+            "docs/deploy/dbt-state-cicd", 
+            "docs/deploy/dbt-state-deferral",
+          ],
         },
         "docs/deploy/dbt-state-trial",
         "docs/deploy/dbt-state-examples",
@@ -1053,10 +1059,10 @@ const sidebarSettings = {
       label: "dbt release notes",
       link: {
         type: "doc",
-        id: "docs/dbt-versions/dbt-cloud-release-notes",
+        id: "docs/dbt-versions/release-notes",
       },
       items: [
-        "docs/dbt-versions/dbt-cloud-release-notes",
+        "docs/dbt-versions/release-notes",
         "docs/dbt-versions/dbt-platform-release-notes-gen",
         "docs/dbt-versions/compatible-track-changelog",
         "docs/dbt-versions/2025-release-notes",
