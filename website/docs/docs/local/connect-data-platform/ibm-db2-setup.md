@@ -19,12 +19,11 @@ meta:
 
 
 The `ibm-dbt-db2` adapter allows you to use dbt to transform and manage data on IBM Db2, leveraging its robust SQL capabilities across LUW (Linux, Unix, Windows), z/OS, and iSeries platforms. Before proceeding, ensure you have the following:
-<ul>
-  <li>An active IBM Db2 database instance (LUW, z/OS, or iSeries) with connection details (host, port, database, schema, etc).</li>
-  <li>Authentication credentials: Username and password.</li>
-  <li>Python 3.10, 3.11, or 3.12 (Python 3.9 not supported due to dbt-core 1.11+ requirements).</li>
-</ul>
-Refer to [Configuring ibm-dbt-db2](https://github.com/IBM/db2-dbt) for guidance on obtaining and organizing these details.
+- An active IBM Db2 database instance (LUW, z/OS, or iSeries) with connection details (host, port, database, schema, etc).
+- Authentication credentials: Username and password.
+- Python 3.10, 3.11, or 3.12 (Python 3.9 not supported due to dbt-core 1.11+ requirements).
+
+Refer to [Configuring ibm-dbt-db2](https://github.com/IBM/db2-dbt) to learn more about obtaining and organizing these details.
 
 
 import SetUpPages from '/snippets/_setup-pages-intro.md';
