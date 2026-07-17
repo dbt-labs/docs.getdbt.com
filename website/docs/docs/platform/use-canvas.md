@@ -13,7 +13,7 @@ import Prerequisites from '/snippets/_canvas-prerequisites.md';
 # Edit and create dbt models <Lifecycle status='managed, managed_plus'/> 
 
 <p style={{ color: '#717d7d', fontSize: '1.1em' }}>
-Access and use <Constant name="canvas" /> to create or edit dbt models through a visual, drag-and-drop experience. Use the built-in AI for custom code generation in your development experience.
+Access and use <Constant name="canvas" /> to create or edit dbt models through a visual, drag-and-drop experience.
 </p>
 
 ## Access Canvas

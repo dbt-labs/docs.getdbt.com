@@ -25,9 +25,9 @@ This page summarizes the default rate limits across the main API and integration
 - [Discovery API](/docs/dbt-apis/discovery-api) (GraphQL): 500 requests per minute (`/graphql/`).
 - [SCIM and IdP provisioning](#scim-and-idp-provisioning): 20 requests every 5 seconds per account.
 - [Remote MCP](#remote-mcp): 5,000 requests per minute per IP (global API rate limit).
-- [Local MCP](#local-mcp): Uses the Administrative and Discovery API limits above.
+- [Self-hosted MCP](#local-mcp): Uses the Administrative and Discovery API limits above.
 
-For SCIM scope, throttling responses, and identity provider behavior, see [SCIM and IdP provisioning](#scim-and-idp-provisioning) and [Set up SCIM](/docs/platform/manage-access/scim). For MCP integration and usage patterns, see [Remote MCP](#remote-mcp) and [Local MCP](#local-mcp).
+For SCIM scope, throttling responses, and identity provider behavior, see [SCIM and IdP provisioning](#scim-and-idp-provisioning) and [Set up SCIM](/docs/platform/manage-access/scim). For MCP integration and usage patterns, see [Remote MCP](#remote-mcp) and [Self-hosted MCP](#local-mcp).
 
 ## Pagination and the Discovery API
 
@@ -49,9 +49,9 @@ For configuration steps, use [Set up SCIM](/docs/platform/manage-access/scim). F
 
 Treat remote MCP automation like any other API client: avoid retrying without pausing between attempts. When you receive a `429` response, wait before trying again, and wait longer between retries if you continue to receive `429` responses.
 
-## Local MCP
+## Self-hosted MCP {#local-mcp}
 
-[Local MCP](/docs/dbt-ai/about-mcp) calls the public [Administrative API](/docs/dbt-apis/admin-api) and [Discovery API](/docs/dbt-apis/discovery-api) directly, so those limits apply: 5,000 requests per minute per account for `/api/` and 500 requests per minute for `/graphql/`, as summarized above.
+[Self-hosted MCP](/docs/dbt-ai/about-mcp) calls the public [Administrative API](/docs/dbt-apis/admin-api) and [Discovery API](/docs/dbt-apis/discovery-api) directly, so those limits apply: 5,000 requests per minute per account for `/api/` and 500 requests per minute for `/graphql/`, as summarized above.
 
 ## Exceeding the rate limit
 

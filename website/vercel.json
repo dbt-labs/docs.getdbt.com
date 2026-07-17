@@ -39,6 +39,26 @@
   ],
   "redirects": [
     {
+      "source": "/reference/global-configs/behavior-flag-introduction",
+      "destination": "/reference/global-configs/behavior-changes",
+      "permanent": true
+    },
+    {
+      "source": "/docs/dbt-versions/dbt-cloud-release-notes",
+      "destination": "/docs/dbt-versions/release-notes",
+      "permanent": true
+    },
+    {
+      "source": "/reference/global-configs/behavior-flag-maturity",
+      "destination": "/reference/global-configs/behavior-changes",
+      "permanent": true
+    },
+    {
+      "source": "/reference/global-configs/behavior-flag-removed",
+      "destination": "/reference/global-configs/behavior-changes",
+      "permanent": true
+    },
+    {
       "source": "/docs/dbt-versions/core-upgrade/upgrading-to-fusion",
       "destination": "/docs/dbt-versions/core-upgrade/upgrading-to-v2",
       "permanent": true
@@ -1582,7 +1602,7 @@
     },
     {
       "source": "/docs/dbt-versions/release-notes/:path((?!dbt-cloud-changelog-2021|dbt-cloud-changelog-2019-2020).*)",
-      "destination": "/docs/dbt-versions/dbt-cloud-release-notes",
+      "destination": "/docs/dbt-versions/release-notes",
       "permanent": true
     },
     {
@@ -5227,6 +5247,11 @@
     {
       "source": "/docs/platform-integrations/set-up-snowflake-native-app",
       "destination": "/docs/platform/connect-data-platform/connect-snowflake",
+      "permanent": true
+    },
+    {
+      "source": "/docs/deploy/dbt-state-lag-tolerance",
+      "destination": "/docs/deploy/dbt-state-setup#configuring-lag-tolerance",
       "permanent": true
     }
   ]

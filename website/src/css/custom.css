@@ -3144,6 +3144,18 @@ html[data-theme='dark'] .sidebar-title {
   display: none;
 }
 
+/* RSS feed icon */
+.rss-icon {
+  width: 14px;
+  height: 14px;
+  margin-right: 6px;
+  vertical-align: middle;
+  opacity: 0.8;
+}
+html[data-theme='dark'] .rss-icon {
+  filter: invert(1);
+}
+
 /* Footnote references rendered in blog list excerpts (see
    plugins/remarkBlogFootnoteLinks.js) — style the deep link like a real
    footnote marker. */

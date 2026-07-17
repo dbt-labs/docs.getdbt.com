@@ -6,7 +6,7 @@ sidebar_label: "OSI semantic layer documents"
 tags: [Metrics, Semantic Layer]
 ---
 
-# OSI semantic layer documents <Lifecycle status="beta" />
+# OSI semantic layer documents
 
 <VersionCallout version="1.12" />
 
