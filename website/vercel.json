@@ -39,6 +39,11 @@
   ],
   "redirects": [
     {
+      "source": "/reference/global-configs/hints",
+      "destination": "/reference/global-configs/about-global-configs",
+      "permanent": true
+    },
+    {
       "source": "/reference/global-configs/behavior-flag-introduction",
       "destination": "/reference/global-configs/behavior-changes",
       "permanent": true
