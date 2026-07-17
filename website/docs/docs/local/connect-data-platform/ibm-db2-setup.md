@@ -90,7 +90,7 @@ my_db2_project:
 
 ### Connection using DSN
 
-Alternatively, you can use a DSN (Data Source Name) configured in your Db2 client:
+Alternatively, you can use a Data Source Name (DSN) configured in your Db2 client:
 
 <File name='~/.dbt/profiles.yml'>
 
@@ -112,7 +112,7 @@ my_db2_project:
 
 ## Host parameters
 
-The following profile fields are required to configure IBM Db2 connections.
+Use the following required and optional profile fields to configure IBM Db2 connections.
 
 | Option    | Required/Optional | Description | Example  |
 | --------- | ------- | ------- | ----------- |
@@ -141,7 +141,7 @@ The following profile fields are required to configure IBM Db2 connections.
 
 
 ## Schemas and databases
-When selecting the database and the schema, make sure the user has read and write access to both. This selection does not limit your ability to query the database. Instead, they serve as the default location for where tables and views are materialized.
+When selecting the database and the schema, make sure you have read and write access to both. This selection does not limit your ability to query the database. Instead, they serve as the default location for where tables and views are materialized.
 
 
 ## Supported features
@@ -216,6 +216,6 @@ Db2 uppercases unquoted identifiers by default. The adapter handles this automat
 ## Notes
 
 - The `ibm-dbt-db2` adapter is built on the `ibm_db` Python driver (version 3.2.8) which is automatically installed with the adapter.
-- **Python Version Requirements**: Requires Python 3.10, 3.11, or 3.12. Python 3.9 is not supported due to dbt-core 1.11+ dependency requirements. Python 3.13+ has not been tested yet.
+- **Python Version Requirements**: Requires Python 3.10, 3.11, or 3.12. Python 3.9 is not supported due to <Constant name="core" /> v1.11+ dependency requirements. Python 3.13+ has not been tested yet.
 - **Constraints**: CHECK, UNIQUE, PRIMARY KEY, and FOREIGN KEY constraints are defined but not enforced by Db2 in the dbt context. Only NOT NULL constraints are enforced.
 - **LISTAGG Limitation**: Db2's LISTAGG function does not support limiting the number of aggregated values.

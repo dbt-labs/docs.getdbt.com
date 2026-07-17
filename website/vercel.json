@@ -621,7 +621,7 @@
       "permanent": true
     },
     {
-      "source": "/docs/core/connect-data-platform/ibm-db2-setup",
+      "source": "/docs/local/connect-data-platform/ibmdb2-setup",
       "destination": "/docs/local/connect-data-platform/ibm-db2-setup",
       "permanent": true
     },
