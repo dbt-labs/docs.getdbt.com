@@ -23,6 +23,8 @@ The `ibm-dbt-db2` adapter allows you to use dbt to transform and manage data on 
 - Authentication credentials: Username and password.
 - Python 3.10, 3.11, or 3.12 (Python 3.9 not supported due to dbt-core 1.11+ requirements).
 
+Note: This adapter is not compatible with dbt Core v2.
+
 Refer to [Configuring ibm-dbt-db2](https://github.com/IBM/db2-dbt) to learn more about obtaining and organizing these details.
 
 
