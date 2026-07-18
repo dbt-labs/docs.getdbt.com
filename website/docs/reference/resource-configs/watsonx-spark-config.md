@@ -1,5 +1,6 @@
 ---
 title: "IBM watsonx.data Spark configurations"
+description: "IBM watsonx.data Spark configurations - Read this in-depth guide to learn about configurations in dbt."
 id: "watsonx-spark-config"
 ---
 

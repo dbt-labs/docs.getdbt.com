@@ -1,5 +1,6 @@
 ---
 title: "Oracle configurations"
+description: "Oracle configurations - Read this in-depth guide to learn about configurations in dbt."
 id: "oracle-configs"
 ---
 

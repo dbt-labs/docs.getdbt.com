@@ -1,5 +1,6 @@
 ---
 title: "Microsoft SQL Server configurations"
+description: "Microsoft SQL Server configurations - Read this in-depth guide to learn about configurations in dbt."
 id: "mssql-configs"
 ---
 

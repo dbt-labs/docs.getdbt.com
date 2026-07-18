@@ -1,5 +1,6 @@
 ---
 title: "Starburst/Trino configurations"
+description: "Starburst/Trino configurations - Read this in-depth guide to learn about configurations in dbt."
 id: "trino-configs"
 ---
 

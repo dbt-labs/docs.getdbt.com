@@ -1,4 +1,5 @@
 ---
+description: "Assign a resource to a group to organize your project and control which models can reference it."
 resource_types: [models, seeds, snapshots, tests, analyses, metrics]
 id: "group"
 ---

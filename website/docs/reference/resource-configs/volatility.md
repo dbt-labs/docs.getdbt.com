@@ -1,5 +1,6 @@
 ---
 title: volatility
+description: "Declare the volatility of a Python UDF (deterministic, stable, or non-deterministic) so the warehouse can optimize how it runs."
 sidebar_label: "volatility"
 id: volatility
 ---

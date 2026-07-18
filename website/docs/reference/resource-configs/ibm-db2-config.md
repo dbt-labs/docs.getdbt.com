@@ -1,5 +1,6 @@
 ---
 title: "IBM Db2 configurations"
+description: "IBM Db2 configurations - Read this in-depth guide to learn about configurations in dbt."
 id: "ibm-db2-config"
 ---
 

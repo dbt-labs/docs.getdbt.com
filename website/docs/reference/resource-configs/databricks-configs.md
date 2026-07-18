@@ -1,5 +1,6 @@
 ---
 title: "Databricks configurations"
+description: "Databricks configurations - Read this in-depth guide to learn about configurations in dbt."
 id: "databricks-configs"
 tags: ['Databricks', 'dbt Fusion', 'dbt Core']
 ---

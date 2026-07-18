@@ -1,5 +1,6 @@
 ---
 title: "Vertica configurations"
+description: "Vertica configurations - Read this in-depth guide to learn about configurations in dbt."
 id: "vertica-configs"
 ---
 ## Configuration of Incremental Models
