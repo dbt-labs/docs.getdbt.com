@@ -42,7 +42,7 @@ Familiarize yourself with these useful terms to help you understand how the job 
 | Job | A collection of run steps, settings, and a trigger to invoke dbt commands against a project in the user's cloud data platform. |
 | Job queue | The job queue acts as a waiting area for job runs when they are scheduled or triggered to run; runs remain in queue until execution begins. More specifically, the Scheduler checks the queue for runs that are due to execute, ensures the run is eligible to start, and then prepares an environment with appropriate settings, credentials, and commands to begin execution. Once execution begins, the run leaves the queue. |
 | Over-scheduled job | A situation when a cron-scheduled job's run duration becomes longer than the frequency of the job’s schedule, resulting in a job queue that will grow faster than the scheduler can process the job’s runs. |
-| Deactivated job | A situation where a job has reached 100 consecutive failing runs. |
+| Deactivated job | A situation where a job has reached 100 consecutive failing runs or belongs to an inactive account. |
 | Prep time | The time <Constant name="dbt" /> takes to create a short-lived environment to execute the job commands in the user's cloud data platform. Prep time varies most significantly at the top of the hour when the <Constant name="dbt" /> Scheduler experiences a lot of run traffic. |
 | Run | A single, unique execution of a dbt job. |
 | Run slot | Run slots control the number of jobs that can run concurrently. Each running job occupies a run slot for the duration of the run. To view the number of run slots available in your plan, check out the [dbt pricing page](https://www.getdbt.com/pricing). <br /><br />Starter and Developer plans are limited to one project each. For additional projects or more run slots, consider upgrading to an [Enterprise-tier plan](https://www.getdbt.com/pricing/).| 
@@ -102,13 +102,17 @@ The scheduler prevents queue clog by canceling runs that aren't needed, ensuring
 
 To prevent over-scheduling, users will need to take action by either refactoring the job so it runs faster or modifying its [schedule](/docs/deploy/deploy-jobs#schedule-days).
 
-## Deactivation of jobs <Lifecycle status='beta' />
+## Deactivation of jobs
 
 To reduce unnecessary resource consumption and reduce contention for run slots in your account, <Constant name="dbt" /> will deactivate a [deploy job](/docs/deploy/deploy-jobs) or a [CI job](/docs/deploy/ci-jobs) if it reaches 100 consecutive failing runs. A banner containing this message is displayed when a job is deactivated: "Job has been deactivated due to repeated run failures. To reactivate, verify the job is configured properly and run manually or reenable any trigger". When this happens, scheduled and triggered-to-run jobs will no longer be enqueued. 
 
-To reactivate a deactivated job, you can either:
+Jobs can also be deactivated when a <Constant name="dbt" /> account is inactive. Account owners receive a warning after 90 days without account activity. If there is no activity for another 7 days, <Constant name="dbt" /> deactivates jobs in the account. A banner containing this message is displayed when a job is deactivated because the account is inactive: "Job has been deactivated because the account is inactive. To reactivate, either log out and log back in to dbt, then wait up to 30 minutes for the system to reactivate the job, or manually edit and save the job."
+
+To reactivate a job deactivated due to repeated run failures, you can either:
 - Update the job's settings to fix the issue and save the job (recommended)
 - Perform a manual run by clicking **Run now** on the job's page
+
+To reactivate jobs deactivated because the account is inactive, either log out and log back in to <Constant name="dbt" />, then wait up to 30 minutes for the system to reactivate the job, or manually edit and save the job.
 
 ## FAQs
 

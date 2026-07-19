@@ -40,7 +40,7 @@ Learn more with the [quickstart for <Constant name="core" />](/guides/duckdb?ste
 You can use dbt in different ways depending on your needs:
 
 - Using the [<Constant name="dbt_platform" />](#dbt-platform) (recommended for most users)
-- [Locally from your command line or code editor](#dbt-local-development)
+- [Locally from your command line or code editor with self-hosted installations](#dbt-local-development)
 - [With <Constant name="wizard" />](#dbt-wizard) for agentic governed data development in dbt
 All options support using the <Constant name="fusion_engine" /> or <Constant name="core" /> engine.
 
@@ -61,7 +61,7 @@ You can learn about plans and pricing on [www.getdbt.com](https://www.getdbt.com
 
 Use the dbt framework and develop dbt projects from your command line or code editor:
 
-- [Install the dbt VS Code extension](/docs/about-dbt-extension) &mdash; Combines the <Constant name="fusion_engine" /> performance with visual features like autocomplete, inline errors, and lineage. Includes [<Term id="lsp" /> features](/docs/about-dbt-lsp) and suitable for users with <Constant name="dbt_platform"/> projects or running dbt locally without a <Constant name="dbt_platform" /> project. _Recommended for local development._
+- [Install the dbt VS Code extension](/docs/about-dbt-extension) &mdash; Combines the <Constant name="fusion_engine" /> performance with visual features like autocomplete, inline errors, and lineage. Includes [<Term id="lsp" /> features](/docs/about-dbt-lsp) and suitable for users with <Constant name="dbt_platform"/> projects or running self-hosted dbt without a <Constant name="dbt_platform" /> project. _Recommended for self-hosted development._
 - [Install the <Constant name="fusion" /> CLI](/docs/local/install-dbt?version=2) &mdash; The <Constant name="fusion_engine" /> from the command line, but doesn't include <Term id="lsp" /> features.
 - [Install the <Constant name="platform_cli" />](/docs/platform/dbt-cli-installation) &mdash; The <Constant name="dbt_platform" /> CLI, which allows you to run dbt commands against your <Constant name="dbt_platform" /> development environment from your local command line.
 - [Install <Constant name="core" />](/docs/local/install-dbt) &mdash; The open-source, Python-based CLI that uses the <Constant name="core_v1" /> engine. Doesn't include <Term id="lsp" /> features.

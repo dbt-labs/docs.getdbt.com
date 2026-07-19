@@ -5,9 +5,9 @@ description: "Condensed reference for all dbt MCP environment variables."
 id: "mcp-environment-variables"
 ---
 
-This page is a condensed reference for all environment variables used by the local dbt MCP server. For full detail on each variable (including examples), see [Set up local MCP](/docs/dbt-ai/setup-local-mcp).
+This page is a condensed reference for all environment variables used by the self-hosted dbt MCP server. For full detail on each variable (including examples), see [Set up self-hosted MCP](/docs/dbt-ai/setup-local-mcp).
 
-## Local CLI
+## Self-hosted CLI
 
 These variables are required to use dbt commands through MCP.
 
