@@ -23,7 +23,7 @@ For dbt-managed AI providers, we have zero data retention (ZDR) agreements in pl
 
 <Expandable alt_header="Does dbt Wizard store or use personal data?">
 
-<Constant name="wizard" /> stores your conversation history &mdash; including your prompts, responses, and any query results returned during your session — so you can revisit past chats.  Conversation history is retained for 90 days; feedback you submit on a <Constant name="wizard" /> conversation is retained for 400 days;  . You can delete your conversation history or feedback at any time in the product. dbt Labs does not use your prompts, chat history, command results, or feedback for model training. 
+<Constant name="wizard" /> stores your conversation history &mdash; including your prompts, responses, and any query results returned during your session — so you can revisit past chats.  Conversation history is retained for 90 days; feedback you submit on a <Constant name="wizard" /> conversation is retained for 400 days. You can delete your conversation history or feedback at any time in the product. dbt Labs does not use your prompts, chat history, command results, or feedback for model training. 
 </Expandable>
 
 <Expandable alt_header="Is my data used by dbt Labs to train AI models?">
