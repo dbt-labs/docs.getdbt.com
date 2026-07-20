@@ -21,10 +21,10 @@ drop table ...
 
 </File>
 
-The list of available flags is defined in the [`flags` module](https://github.com/dbt-labs/dbt-core/blob/HEAD/core/dbt/flags.py) within `dbt-core`.
+The list of available flags is defined in the [`flags` module](https://github.com/dbt-labs/dbt-core/blob/HEAD/crates/dbt-jinja-utils/src/flags.rs) within `dbt-core`.
 
 Recommended use cases include:
-- different <Term id="materialization" /> logic based on "run modes," such as `flags.FULL_REFRESH` and `flags.STORE_FAILURES`
+- different <Term id="materialization" /> logic based on "run modes," such as `flags.FULL_REFRESH`, `flags.STORE_FAILURES`, and `flags.EMPTY`
 - running hooks conditionally based on the current command / task type, via `flags.WHICH`
 
 **Note:** It is _not_ recommended to use flags as an input to parse-time configurations, properties, or dependencies (`ref` + `source`). Flags are likely to change in every invocation of dbt, and their parsed values will become stale (and yield incorrect results) in subsequent invocations that have partial parsing enabled. For more details, see [the docs on parsing](/reference/parsing).
@@ -67,6 +67,21 @@ $ DBT_ENV_CUSTOM_ENV_MYVAR=myvalue dbt compile -s my_model
 -- {'MYVAR': 'myvalue'}
 
 select 1 as id
+```
+
+## flags.EMPTY
+
+`flags.EMPTY` returns `True` when the [`--empty` flag](/docs/build/empty-flag) is passed to a dbt command, and `False` otherwise. This is useful when you need to customize materialization logic or macro behavior depending on whether dbt is running in empty (schema-only) mode.
+
+```sql
+{% macro my_custom_ref(model_name) %}
+    {% if flags.EMPTY %}
+        {# Return zero rows when running with --empty #}
+        (select * from {{ ref(model_name) }} where 1=0)
+    {% else %}
+        {{ ref(model_name) }}
+    {% endif %}
+{% endmacro %}
 ```
 
 ## flags.WHICH
