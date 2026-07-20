@@ -44,6 +44,6 @@
 
 - name: dbt_summit_2026
   header: Join us at dbt Summit
-  subheader: Meet us in Las Vegas, September 16–18, to learn from other dbt practitioners, swap ideas, and share what you're building.
+  subheader: Meet us in Las Vegas, September 16–18, to learn from other dbt practitioners, swap ideas, and come together to shape the future of data and AI.
   button_text: Learn more
   url: https://www.getdbt.com/dbt-summit
