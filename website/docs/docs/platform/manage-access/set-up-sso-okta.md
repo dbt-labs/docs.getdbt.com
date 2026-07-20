@@ -161,9 +161,9 @@ To complete setup, follow the steps below in <Constant name="dbt" />.
 
 ### Supplying credentials
 
-First, navigate to the **Enterprise &gt; Single Sign On** page under Account
-Settings. Next, click the **Edit** button and supply the following SSO details:
-
+1. Navigate to **Account settings** > **SSO & SCIM**.
+2. Click **Get started** if SSO has not been configured, or **Edit** if it has already been set up.
+3. Supply the following SSO details:
 
 | Field | Value |
 | ----- | ----- |
@@ -179,7 +179,7 @@ Settings. Next, click the **Edit** button and supply the following SSO details:
     title="Configuring the application in dbt"
 />
 
-21. Click **Save** to complete setup for the Okta integration. From
+4. Click **Save** to complete setup for the Okta integration. From
     here, you can navigate to the URL generated for your account's _slug_ to
     test logging in with Okta. Additionally, users added the Okta app
     will be able to log in to <Constant name="dbt" /> from Okta directly.
