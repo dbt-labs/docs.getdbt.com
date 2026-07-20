@@ -1,6 +1,6 @@
 ---
 title: "Microsoft Azure Synapse DWH configurations"
-description: "Microsoft Azure Synapse DWH configurations - Read this in-depth guide to learn about configurations in dbt."
+description: "Configure index and distribution settings for Microsoft Azure Synapse data warehuse tables in dbt."
 id: "azuresynapse-configs"
 ---
 

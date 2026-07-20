@@ -1,6 +1,6 @@
 ---
 title: "Databricks configurations"
-description: "Databricks configurations - Read this in-depth guide to learn about configurations in dbt."
+description: "Configure Databricks-specific settings for models in dbt, including file formats, table properties, and materializations."
 id: "databricks-configs"
 tags: ['Databricks', 'dbt Fusion', 'dbt Core']
 ---
