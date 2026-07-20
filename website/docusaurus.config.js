@@ -88,7 +88,7 @@ var siteSettings = {
     },
     announcementBar: {
       id: "dbt-summit-2026",
-      content: "dbt Summit is September 16–18 in Las Vegas. Come learn, share what you're building, and spend time with the dbt community.",
+      content: "Join us at dbt Summit, September 16–18 in Las Vegas. Come learn, swap ideas, and spend time with the dbt community as we shape the future of data and AI.",
       isCloseable: true,
     },
     announcementBarActive: true,
