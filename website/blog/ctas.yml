@@ -43,7 +43,7 @@
   url: https://www.getdbt.com/resources/webinars/dbt-state-build-what-s-changed-skip-what-hasn-t/?utm_medium=internal&utm_source=docs&utm_campaign=q2-2027_dbt-state-deep-dive-product_aw&utm_content=themed-webinar____&utm_term=all_all__
 
 - name: dbt_summit_2026
-  header: Ready to level up at dbt Summit?
-  subheader: Bring your boldest data ideas to Las Vegas, September 16–18, for three days of learning, connecting, and building what's next.
-  button_text: Save my spot
+  header: Join us at dbt Summit
+  subheader: Meet us in Las Vegas, September 16–18, to learn from other dbt practitioners, swap ideas, and share what you're building.
+  button_text: Learn more
   url: https://www.getdbt.com/dbt-summit
