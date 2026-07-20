@@ -1,22 +1,45 @@
-// Availability answers two independent questions for the reader:
+// Availability answers three independent questions for the reader:
+//   engine:  which dbt version line does this apply to? (v1 | v2 | all/omitted)
 //   surface: where does this feature live? (local/self-hosted | platform | everywhere/omitted)
 //   access:  what do I need to use it? (free | login_required | paid_plan | usage_based)
 //
-// These facets are independent — either can render without the other. Badges never
-// mention an engine (Fusion, Core, OSS) — that distinction doesn't belong here.
+// These facets are independent — any can render without the others.
 //
 // Example frontmatter:
 //   availability: platform_starter
 // or, for multi-plan features:
 //   availability:
+//     engine: v2
 //     surface: platform
 //     access: paid_plan
 //     plans: [starter, enterprise, enterprise_plus]
 
 export const FIELD_LABELS = {
+  engine: 'Version',
   surface: 'Where',
   access: 'Access',
 };
+
+// v1 = dbt Core 1.x (1.99 and earlier). v2 = dbt 2.0 and later, including Fusion.
+// "all" (or omitted) means the content applies to both lines — no badge segment renders,
+// same hide-if-universal rule used elsewhere in this file.
+export const ENGINE_LABELS = {
+  v1: 'v1',
+  v2: 'v2',
+};
+
+export const ENGINE_TOOLTIPS = {
+  v1: 'dbt Core 1.x',
+  v2: 'dbt 2.0+',
+};
+
+export function getEngineFacet(engine) {
+  const label = ENGINE_LABELS[engine];
+  if (!label) {
+    return null;
+  }
+  return { facet: label, tooltip: ENGINE_TOOLTIPS[engine] };
+}
 
 export const SURFACE_LABELS = {
   local: 'Self-hosted',

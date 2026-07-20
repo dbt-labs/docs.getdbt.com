@@ -5,6 +5,9 @@ description: "The dbt VS Code extension is backed by the dbt Fusion engine and a
 sidebar_label: "dbt extension features"
 pagination_next: "docs/install-dbt-extension"
 image: /img/docs/extension/extension-features.png
+availability:
+  preset: local_free
+  engine: v2
 ---
 
 # dbt VS Code extension features <Lifecycle status="preview" />

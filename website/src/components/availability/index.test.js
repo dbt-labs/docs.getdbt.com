@@ -55,6 +55,35 @@ describe('Availability', () => {
     expect(screen.getByRole('tooltip')).toHaveTextContent('Requires Enterprise, Enterprise+ plan.');
   });
 
+  it('leads the badge with the engine facet and renders its tooltip row', async () => {
+    const user = userEvent.setup();
+    render(<Availability availability={{ engine: 'v2', surface: 'platform', access: 'free' }} />);
+
+    const badge = screen.getByRole('button', { name: /v2 · dbt platform · free/i });
+    expect(badge).toHaveTextContent('v2 · dbt platform · Free');
+
+    await user.click(badge);
+    const tooltip = screen.getByRole('tooltip');
+    expect(tooltip).toHaveTextContent('Version');
+    expect(tooltip).toHaveTextContent('v2');
+    expect(tooltip).toHaveTextContent('dbt 2.0 and later, including Fusion.');
+  });
+
+  it('renders "v1" alone with its tooltip for engine-only availability', async () => {
+    const user = userEvent.setup();
+    render(<Availability availability={{ engine: 'v1' }} />);
+
+    const badge = screen.getByRole('button', { name: /^v1\./i });
+    await user.click(badge);
+
+    expect(screen.getByRole('tooltip')).toHaveTextContent('dbt Core 1.x (1.99 and earlier).');
+  });
+
+  it('renders nothing extra for an unknown or omitted engine value', () => {
+    const { container } = render(<Availability availability={{ engine: 'all' }} />);
+    expect(container).toBeEmptyDOMElement();
+  });
+
   it('renders "Self-hosted" alone for local_free (free is implicit for self-hosted)', () => {
     render(<Availability availability="local_free" />);
     const badge = screen.getByRole('button', { name: /^self-hosted\./i });

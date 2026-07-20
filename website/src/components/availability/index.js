@@ -6,6 +6,7 @@ import {
   SURFACE_TOOLTIPS,
   availabilityPresets,
   getAccessFacets,
+  getEngineFacet,
 } from './availabilityPresets';
 
 function normalizeAvailability(availability) {
@@ -18,7 +19,7 @@ function normalizeAvailability(availability) {
   const preset = availabilityObject.preset ? availabilityPresets[availabilityObject.preset] : null;
   const merged = { ...preset, ...availabilityObject };
 
-  let { surface, access, plans } = merged;
+  let { engine, surface, access, plans } = merged;
 
   // A platform page with no explicit access requirement defaults to free, with a console
   // warning — bare "dbt platform" badges can otherwise read as implicitly paid.
@@ -32,10 +33,14 @@ function normalizeAvailability(availability) {
     access = 'free';
   }
 
+  const engineFacet = getEngineFacet(engine);
   const accessFacets = getAccessFacets(access, plans, surface);
   const surfaceLabel = SURFACE_LABELS[surface];
 
   const rows = [];
+  if (engineFacet) {
+    rows.push({ label: FIELD_LABELS.engine, value: engineFacet.facet, tooltip: engineFacet.tooltip });
+  }
   if (surfaceLabel) {
     rows.push({ label: FIELD_LABELS.surface, value: surfaceLabel, tooltip: SURFACE_TOOLTIPS[surface] });
   }
@@ -43,7 +48,13 @@ function normalizeAvailability(availability) {
     rows.push({ label: FIELD_LABELS.access, value: facet, tooltip });
   });
 
-  const badgeFacets = [surfaceLabel, ...accessFacets.map(({ facet }) => facet)].filter(Boolean);
+  // Engine leads the badge — it's the axis readers get stuck on first ("does this apply
+  // to my dbt version at all?") before surface/access even matter.
+  const badgeFacets = [
+    engineFacet?.facet,
+    surfaceLabel,
+    ...accessFacets.map(({ facet }) => facet),
+  ].filter(Boolean);
 
   if (!badgeFacets.length) {
     return null;
