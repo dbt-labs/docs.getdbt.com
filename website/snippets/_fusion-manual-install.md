@@ -68,6 +68,7 @@ brew install dbt
 To upgrade to a newer version:
 
 ```shell
+rew tap dbt-labs/dbt
 brew upgrade dbt
 ```
 
