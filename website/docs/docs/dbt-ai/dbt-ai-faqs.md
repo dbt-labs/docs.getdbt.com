@@ -134,7 +134,7 @@ You control the information you submit to <Constant name="wizard" />. dbt Labs d
 
 <Expandable alt_header="Can dbt Wizard data be deleted upon client written request?">
 
-Yes. Conversation history is retained for 90 days by default, and feedback submitted on a dbt Wizard conversation is retained for 400 days. You can delete this information in the product at any time.
+Yes. Conversation history is retained for 90 days by default, and feedback submitted on a <Constant name="wizard" /> conversation is retained for 400 days. You can delete this information in the product at any time.
 If a client identifies personal or sensitive information uploaded to dbt Labs systems, that data can be deleted within 30 days of a written request.
 
 </Expandable>
