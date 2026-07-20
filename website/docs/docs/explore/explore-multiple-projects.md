@@ -2,9 +2,13 @@
 title: "Explore multiple projects"
 sidebar_label: "Explore multiple projects"
 description: "Learn about project-level lineage in dbt Catalog and its uses."
+availability:
+  surface: platform
+  access: paid_plan
+  plans: [enterprise, enterprise_plus]
 ---
 
-# Explore multiple projects <Lifecycle status="managed,managed_plus" />
+# Explore multiple projects
 
 View all the projects and public models in your account (where public models are defined) and gain a better understanding of your cross-project resources and how they're used.
 

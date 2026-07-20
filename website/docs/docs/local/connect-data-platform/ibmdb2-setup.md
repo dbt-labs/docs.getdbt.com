@@ -15,6 +15,7 @@ meta:
   slack_channel_link: 'https://www.getdbt.com/community'
   platform_name: 'IBM DB2'
   config_page: '/reference/resource-configs/no-configs'
+availability: local_free
 ---
 
 

@@ -3,9 +3,13 @@ title: "Set up automatic downstream exposures"
 sidebar_label: "Set up automatic exposures"
 description: "Set up and visualize exposures automatically by auto-generating them from Tableau dashboards, helping you understand how models are used in downstream tools for a richer lineage."
 image: /img/docs/platform-integrations/auto-exposures/explorer-lineage2.png
+availability:
+  surface: platform
+  access: paid_plan
+  plans: [enterprise, enterprise_plus]
 ---
 
-# Set up automatic exposures in Tableau <Lifecycle status="managed,managed_plus" />
+# Set up automatic exposures in Tableau
 
 <IntroText>
 Set up and automatically populate downstream exposures for supported BI tool integrations, like Tableau. Visualize and orchestrate them through <a href="https://docs.getdbt.com/docs/explore/explore-projects">dbt Catalog</a> and the [<Constant name="dbt" /> job scheduler](/docs/deploy/job-scheduler) for a richer experience.

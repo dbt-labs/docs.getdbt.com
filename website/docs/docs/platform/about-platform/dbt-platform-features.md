@@ -6,6 +6,9 @@ description: "Explore dbt's features and learn why the dbt platform is the faste
 hide_table_of_contents: true
 pagination_next: "docs/platform/about-platform/architecture"
 pagination_prev: null
+availability:
+  surface: platform
+  access: login_required
 ---
 
 <Constant name="dbt_platform" /> is the fastest and most reliable way to deploy dbt. Develop, test, schedule, document, and investigate data models all in one browser-based UI.

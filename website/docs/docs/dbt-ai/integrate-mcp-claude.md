@@ -3,6 +3,7 @@ title: "Integrate Claude with dbt MCP"
 sidebar_label: "Integrate Claude with MCP"
 description: "Guide to set up claude with dbt-mcp"
 id: "integrate-mcp-claude"
+availability: all_users
 ---
 
 import McpClaudeLocalJsonExpandables from '/snippets/_mcp-claude-local-json-expandables.md';

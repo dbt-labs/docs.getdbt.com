@@ -3,6 +3,8 @@ title: "About Fusion"
 sidebar_label: "About Fusion"
 id: "about-fusion"
 description: "Fusion is the next-generation engine for dbt."
+availability:
+  engine: v2
 ---
 
 # About the dbt Fusion engine

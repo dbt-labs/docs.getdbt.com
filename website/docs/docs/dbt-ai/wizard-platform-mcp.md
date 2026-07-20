@@ -6,6 +6,10 @@ sidebar_label: "Use MCP servers"
 tags: [AI, Wizard, MCP]
 pagination_prev: "docs/dbt-ai/wizard-platform-skills"
 pagination_next: "docs/dbt-ai/wizard-platform-privacy-data"
+availability:
+  surface: platform
+  access: paid_plan
+  plans: [starter, enterprise, enterprise_plus]
 ---
 
 # Use MCP servers with <Constant name="wizard" /> in the <Constant name="dbt_platform" />

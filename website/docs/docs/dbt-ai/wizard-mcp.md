@@ -4,6 +4,7 @@ id: "wizard-mcp"
 description: "Connect the dbt Wizard CLI to MCP servers to give it more tools and context."
 sidebar_label: "Use MCP servers"
 tags: [AI, Wizard]
+availability: local_free
 ---
 
 import WizardFeedbackCallout from '/snippets/_wizard-feedback-callout.md';

@@ -4,6 +4,7 @@ sidebar_label: "Configure lag tolerance"
 description: "Configure lag tolerance to control how stale upstream data can be before dbt State rebuilds a model."
 id: "dbt-state-lag-tolerance"
 tags: ['dbt State']
+availability: everywhere_usage
 ---
 
 # Configuring lag tolerance in dbt State <Lifecycle status="preview" />

@@ -5,9 +5,13 @@ sidebar_label: "Project dependencies"
 description: "Reference public models across dbt projects"
 pagination_next: null
 keyword: dbt mesh, project dependencies, ref, cross project ref, project dependencies
+availability:
+  surface: platform
+  access: paid_plan
+  plans: [enterprise, enterprise_plus]
 ---
 
-# Project dependencies <Lifecycle status='managed,managed_plus'/>
+# Project dependencies
 
 <IntroText>
 

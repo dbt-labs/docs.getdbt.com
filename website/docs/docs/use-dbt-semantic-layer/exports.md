@@ -3,9 +3,13 @@ title: "Write queries with exports"
 description: "Use exports to write tables to the data platform on a schedule."
 sidebar_label: "Write queries with exports"
 keywords: [DBT_ENGINE_INCLUDE_SAVED_QUERY, DBT_ENGINE_EXPORT_SAVED_QUERIES, exports, dbt, Semantic Layer]
+availability:
+  surface: platform
+  access: paid_plan
+  plans: [starter, enterprise, enterprise_plus]
 ---
 
-# Write queries with exports <Lifecycle status="self_service,managed,managed_plus" />
+# Write queries with exports
 
 Exports enhance [saved queries](/docs/build/saved-queries) by running your saved queries and writing the output to a table or view within your data platform. Saved queries are a way to save and reuse commonly used queries in MetricFlow, exports take this functionality a step further by:
 

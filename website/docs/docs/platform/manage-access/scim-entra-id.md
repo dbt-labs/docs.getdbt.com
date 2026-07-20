@@ -3,11 +3,15 @@ title: "Set up SCIM with Entra ID"
 description: "Configure SCIM for Microsoft Entra ID to automate user and group provisioning."
 id: "scim-entra-id"
 sidebar_label: "Set up SCIM with Entra ID"
+availability:
+  surface: platform
+  access: paid_plan
+  plans: [enterprise, enterprise_plus]
 ---
 
 import ScimLicenseMappingCallout from '/snippets/_scim-license-mapping-callout.md';
 
-# Set up SCIM with Entra ID <Lifecycle status="managed, managed_plus" />
+# Set up SCIM with Entra ID
 
 <Constant name="dbt_platform" /> supports System for Cross-Domain Identity Management (SCIM) with Microsoft Entra ID for user and group provisioning and profile updates.
 

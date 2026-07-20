@@ -4,6 +4,7 @@ id: validation
 description: "The Semantic Layer, powered by MetricFlow, has three types of built-in validations, including Parsing Validation, Semantic Validation, and Data Warehouse validation, which are performed in a sequential and blocking manner."
 sidebar_label: "Validations"
 tags: [Metrics, Semantic Layer]
+availability: all_users
 ---
 
 Validations refer to the process of checking whether a system or configuration meets the expected requirements or constraints. In the case of the <Constant name="semantic_layer" />, powered by MetricFlow, there are three built-in validations &mdash; [parsing](#parsing), [semantic](#semantic), and [data platform](#data-platform).

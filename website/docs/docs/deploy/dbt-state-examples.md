@@ -6,6 +6,7 @@ id: "dbt-state-examples"
 tags: ['dbt State']
 pagination_prev: "docs/deploy/dbt-state-deferral"
 pagination_next: "docs/deploy/dbt-state-migration"
+availability: everywhere_usage
 ---
 
 # Example usage for dbt State <Lifecycle status="preview" />

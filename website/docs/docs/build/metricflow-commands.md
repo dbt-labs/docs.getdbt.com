@@ -4,6 +4,7 @@ id: metricflow-commands
 description: "Query metrics and metadata in your dbt project with the MetricFlow commands."
 sidebar_label: "MetricFlow commands"
 tags: [Metrics, Semantic Layer]
+availability: all_users
 ---
 
 Once you define metrics in your dbt project, you can query metrics, dimensions, and dimension values, and validate your configs using the MetricFlow commands, available across the <Constant name="core" /> or [<Constant name="fusion_engine" />](/docs/fusion). To upgrade to <Constant name="fusion"/>, see [Get started with <Constant name="fusion"/>](/docs/fusion/get-started-fusion). 

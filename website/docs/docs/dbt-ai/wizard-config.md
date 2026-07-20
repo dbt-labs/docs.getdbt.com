@@ -4,6 +4,7 @@ id: "wizard-config"
 description: "Full reference for both dbt Wizard configuration files — the agent runtime config and the per-project dbt Wizard settings."
 sidebar_label: "Config reference"
 tags: [AI, Wizard]
+availability: local_free
 ---
 
 import WizardFeedbackCallout from '/snippets/_wizard-feedback-callout.md';

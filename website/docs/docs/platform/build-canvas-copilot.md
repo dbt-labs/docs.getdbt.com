@@ -2,9 +2,13 @@
 title: "Build with dbt Copilot" 
 sidebar_label: "Build with dbt Copilot" 
 description: "Use dbt Copilot to build visual models in Canvas with natural language prompts"
+availability:
+  surface: platform
+  access: paid_plan
+  plans: [enterprise, enterprise_plus]
 ---
 
-# Build with dbt Copilot <Lifecycle status="managed,managed_plus" /> 
+# Build with dbt Copilot
 
 <IntroText>
 Use dbt Copilot to build visual models in the <Constant name="canvas" /> with natural language prompts.

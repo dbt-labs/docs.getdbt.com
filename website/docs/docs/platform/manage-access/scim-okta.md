@@ -3,9 +3,13 @@ title: "Set up SCIM with Okta"
 description: "Configure SCIM for Okta to automate user and group provisioning and license assignment."
 id: "scim-okta"
 sidebar_label: "Set up SCIM with Okta"
+availability:
+  surface: platform
+  access: paid_plan
+  plans: [enterprise, enterprise_plus]
 ---
 
-# Set up SCIM with Okta <Lifecycle status="managed, managed_plus" />
+# Set up SCIM with Okta
 
 :::info SCIM available for Okta
 System for Cross-Domain Identity Management (SCIM) [license mapping](/docs/platform/manage-access/scim-manage-user-licenses) is currently only supported for Okta. For other providers, license types must be [managed](/docs/platform/manage-access/seats-and-users#mapped-configuration) within the <Constant name="dbt_platform" /> user interface.

@@ -4,6 +4,9 @@ id: "vs-compare-changes"
 description: "Compare how code edits will change your data while you develop your dbt platform project locally with the dbt VS Code extension."
 sidebar_label: "Compare changes locally"
 image: /img/docs/extension/vs-compare-changes-tab.png
+availability:
+  preset: local_login
+  engine: v2
 ---
 
 # Compare changes in local development <Lifecycle status="beta" />

@@ -2,6 +2,7 @@
 title: "Continuous integration jobs in dbt"
 sidebar_label: "CI jobs"
 description: "Learn how to create and set up CI checks to test code changes before deploying to production."
+availability: platform_login
 ---
 
 You can set up [continuous integration](/docs/deploy/continuous-integration) (CI) jobs to run when someone opens a new pull request (PR) in your <Constant name="git" /> repository. By running and testing only _modified_ models, <Constant name="dbt" /> keeps these jobs as resource-conscious as possible on your data platform.

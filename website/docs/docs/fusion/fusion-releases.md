@@ -4,6 +4,8 @@ id: "fusion-releases"
 description: "Track current versions and release history for the dbt Fusion engine."
 pagination_next: null
 pagination_prev: null
+availability:
+  engine: v2
 ---
 
 import FusionReleases from '/src/components/fusionReleases';

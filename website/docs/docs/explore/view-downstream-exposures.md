@@ -5,9 +5,13 @@ description: "Configure downstream exposures automatically from dashboards and u
 pagination_prev: null
 pagination_next:  "docs/explore/data-tile"
 image: /img/docs/platform-integrations/auto-exposures/explorer-lineage.png
+availability:
+  surface: platform
+  access: paid_plan
+  plans: [enterprise, enterprise_plus]
 ---
 
-# Visualize downstream exposures <Lifecycle status="managed,managed_plus" />
+# Visualize downstream exposures
 
 <IntroText>
 Downstream exposures integrate natively with Tableau (Power BI coming soon) and auto-generate downstream lineage in <Constant name="catalog" /> for a richer experience.

@@ -3,6 +3,9 @@ title: "Set up Azure DevOps with Service User"
 id: "setup-service-user"
 description: "You can set up your Azure DevOps by creating a Microsoft Entra ID app and adding it to dbt."
 sidebar_label: "Set up service user"
+availability:
+  surface: platform
+  access: login_required
 ---
 
 ## Service user overview

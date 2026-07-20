@@ -5,9 +5,13 @@ description: "Integrate and query metrics and dimensions in downstream tools usi
 tags: [Semantic Layer, API]
 hide_table_of_contents: true
 pagination_next: "docs/dbt-apis/sl-jdbc"
+availability:
+  surface: platform
+  access: paid_plan
+  plans: [starter, enterprise, enterprise_plus]
 ---
 
-# Semantic Layer APIs <Lifecycle status="self_service,managed,managed_plus" />
+# Semantic Layer APIs
  
 The rapid growth of different tools in the modern data stack has helped data professionals address the diverse needs of different teams. The downside of this growth is the fragmentation of business logic across teams, tools, and workloads.<br /><br />
 

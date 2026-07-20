@@ -5,9 +5,13 @@ description: "You can troubleshoot possible issues and provide security audits b
 sidebar_label: "Audit log"
 pagination_next: null
 pagination_prev: "docs/platform/manage-access/about-user-access"
+availability:
+  surface: platform
+  access: paid_plan
+  plans: [enterprise, enterprise_plus]
 ---
 
-# dbt audit log <Lifecycle status="managed,managed_plus" />
+# dbt audit log
 
 To review actions performed by people in your account, <Constant name="dbt" /> provides logs of audited user and system events in real time. The audit log appears as events happen and includes details such as who performed the action, what the action was, and when it was performed. You can use these details to troubleshoot access issues, perform security audits, or analyze specific events. You can also [query and export audit log events through the API](#using-the-api).
 

@@ -3,6 +3,10 @@ title: "About private connectivity"
 id: private-connectivity
 description: "Configuring private connections."
 sidebar_label: "About private connectivity"
+availability:
+  surface: platform
+  access: paid_plan
+  plans: [enterprise_plus]
 ---
 
 import SetUpPages from '/snippets/_available-tiers-enterprise-plus.md';

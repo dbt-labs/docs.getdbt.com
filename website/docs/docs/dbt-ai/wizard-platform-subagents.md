@@ -5,6 +5,10 @@ description: "Delegate work to specialized subagents in dbt Wizard in the dbt pl
 sidebar_label: "Use subagents"
 tags: [AI, Wizard]
 unlisted: true
+availability:
+  surface: platform
+  access: paid_plan
+  plans: [starter, enterprise, enterprise_plus]
 ---
 
 import WizardFeedbackCallout from '/snippets/_wizard-feedback-callout.md';

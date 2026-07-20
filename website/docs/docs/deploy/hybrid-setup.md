@@ -4,9 +4,13 @@ sidebar_label: "Hybrid setup"
 description: "Learn how to set up hybrid projects in the dbt platform."
 pagination_next: "docs/deploy/deployment-tools"
 pagination_prev: "docs/deploy/hybrid-projects"
+availability:
+  surface: platform
+  access: paid_plan
+  plans: [enterprise_plus]
 ---
 
-# Hybrid setup <Lifecycle status='managed_plus'/>
+# Hybrid setup
 
 <IntroText>
 Set up Hybrid projects to upload <Constant name="core" /> artifacts into <Constant name="dbt" /> for better collaboration and visibility.

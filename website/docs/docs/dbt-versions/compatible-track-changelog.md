@@ -2,6 +2,9 @@
 title: "dbt platform compatible track - changelog"
 sidebar_label: "Compatible track changelog"
 description: "The Compatible release track updates once per month, and it includes up-to-date open source versions as of the monthly release."
+availability:
+  surface: platform
+  access: free
 ---
 
 Select the **Compatible** and **Extended** release tracks if you need a less-frequent release cadence, the ability to test new dbt releases before they go live in production, and/or ongoing compatibility with the latest open source releases of <Constant name="core" />.

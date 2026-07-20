@@ -2,9 +2,13 @@
 title: "Service account tokens"
 id: "service-tokens"
 description: "Service account tokens help you define permissions for securing access to your dbt account and its projects."
+availability:
+  surface: platform
+  access: paid_plan
+  plans: [starter, enterprise, enterprise_plus]
 ---
 
-# Service account tokens <Lifecycle status="self_service,managed,managed_plus" />
+# Service account tokens
 
 Service account tokens enable you to securely authenticate with the <Constant name="dbt" /> API by assigning each token a narrow set of permissions that more precisely manages access to the API. While similar to [personal access tokens](user-tokens), service account tokens belong to an account rather than a user.
 

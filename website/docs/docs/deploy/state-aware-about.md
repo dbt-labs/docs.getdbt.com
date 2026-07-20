@@ -4,9 +4,13 @@ description: "Learn about how state-aware orchestration automatically determines
 id: "state-aware-about"
 tags: ['scheduler','SAO']
 unlisted: true
+availability:
+  surface: platform
+  access: paid_plan
+  plans: [enterprise, enterprise_plus]
 ---
 
-# About state-aware orchestration <Lifecycle status="private_preview,managed,managed_plus" />
+# About state-aware orchestration <Lifecycle status="private_preview" />
 
 <IntroText>
 

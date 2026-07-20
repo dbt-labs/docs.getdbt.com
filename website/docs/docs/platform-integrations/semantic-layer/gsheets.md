@@ -3,9 +3,13 @@ title: "Google Sheets"
 description: "Integrate with Google Sheets to query your metrics in a spreadsheet."
 tags: [Semantic Layer]
 sidebar_label: "Google Sheets"
+availability:
+  surface: platform
+  access: paid_plan
+  plans: [starter, enterprise, enterprise_plus]
 ---
 
-# Google Sheets <Lifecycle status="self_service,managed,managed_plus" />
+# Google Sheets
 
 The <Constant name="semantic_layer" /> offers a seamless integration with Google Sheets through a custom menu. This add-on allows you to build <Constant name="semantic_layer" /> queries and return data on your metrics directly within Google Sheets
 

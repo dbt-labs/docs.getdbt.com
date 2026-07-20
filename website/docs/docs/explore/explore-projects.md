@@ -5,10 +5,14 @@ description: "Learn about Catalog and how to interact with it to understand, imp
 image: /img/docs/collaborate/dbt-explorer/example-project-lineage-graph.png
 pagination_next: "docs/explore/data-health-signals"
 pagination_prev: null
+availability:
+  surface: platform
+  access: paid_plan
+  plans: [starter, enterprise, enterprise_plus]
 ---
  
 
-# Discover data with Catalog <Lifecycle status="self_service,managed,managed_plus" />
+# Discover data with Catalog
 
 <IntroText>
 

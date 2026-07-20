@@ -4,6 +4,8 @@ description: "Start using the Fusion engine locally to take data transformation 
 id: get-started-fusion
 hide_table_of_contents: true
 hide_title: true
+availability:
+  engine: v2
 ---
 
 ### New to dbt? Start here

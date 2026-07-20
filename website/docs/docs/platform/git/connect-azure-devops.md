@@ -2,9 +2,13 @@
 title: "Connect to Azure DevOps"
 id: "connect-azure-devops"
 pagination_next: "docs/platform/git/setup-service-principal"
+availability:
+  surface: platform
+  access: paid_plan
+  plans: [enterprise, enterprise_plus]
 ---
 
-# Connect to Azure DevOps <Lifecycle status="managed,managed_plus" />
+# Connect to Azure DevOps
 
 <Snippet path="available-enterprise-tier-only" />
 

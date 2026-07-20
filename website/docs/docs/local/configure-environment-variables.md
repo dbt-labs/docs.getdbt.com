@@ -5,6 +5,10 @@ description: "Configure environment variables"
 sidebar_label: "Environment variables"
 pagination_next: "docs/local/profiles.yml"
 pagination_prev: "docs/local/install-dbt"
+availability:
+  engine: v2
+  surface: local
+  access: free
 ---
 
 <Constant name="fusion"/> automatically loads environment variables from a `.env` file in your current working directory (the folder you `cd` into and run dbt commands from in your terminal). This helps you manage credentials and settings without hardcoding them in your `profiles.yml` or exposing them in your shell history.

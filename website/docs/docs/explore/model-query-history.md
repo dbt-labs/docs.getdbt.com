@@ -3,9 +3,13 @@ title: "Model query history"
 sidebar_label: "Model query history"
 description: "Import and auto-generate exposures from dashboards and understand how models are used in downstream tools for a richer lineage."
 image: /img/docs/collaborate/dbt-explorer/model-query-queried-models.jpg
+availability:
+  surface: platform
+  access: paid_plan
+  plans: [enterprise, enterprise_plus]
 ---
 
-# Model query history <Lifecycle status="managed,managed_plus" />
+# Model query history
 
 <IntroText>
 Model query history helps data teams track model usage by analyzing query logs.

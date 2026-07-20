@@ -15,6 +15,7 @@ meta:
   slack_channel_link: 'https://getdbt.slack.com/archives/C01DRQ178LQ'
   platform_name: 'Microsoft Fabric'
   config_page: '/reference/resource-configs/fabricspark-configs'
+availability: local_free
 ---
 
 

@@ -16,6 +16,7 @@ meta:
   platform_name: 'Databricks'
   config_page: '/reference/resource-configs/databricks-configs'
   product_badge: "Fusion compatible"
+availability: local_free
 --- 
 
 <VersionBlock firstVersion="2.0">

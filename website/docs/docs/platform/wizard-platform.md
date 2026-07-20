@@ -16,7 +16,7 @@ import WizardSupportedProviders from '/snippets/_wizard-supported-providers.md';
 import WizardPlatformPreviewDisclaimer from '/snippets/_wizard-platform-preview-disclaimer.md';
 import WizardFeedbackCallout from '/snippets/_wizard-feedback-callout.md';
 
-# About dbt Wizard in the dbt platform <Lifecycle status="preview,self_service,managed,managed_plus" />
+# About dbt Wizard in the dbt platform <Lifecycle status="preview" />
 
 <IntroText>
 <Constant name="wizard" /> helps teams ship trusted dbt changes faster and with less risk. It uses native dbt metadata, routes to the right tools, and validates with warehouse awareness so teams can investigate, change, validate, and ship in one place.

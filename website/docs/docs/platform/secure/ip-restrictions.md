@@ -5,9 +5,13 @@ description: "Restrict public access to the dbt platform by allowing only specif
 sidebar_label: "Public IP restrictions"
 pagination_next: "docs/platform/secure/private-connectivity/private-connectivity"
 pagination_prev: null
+availability:
+  surface: platform
+  access: paid_plan
+  plans: [enterprise_plus]
 ---
 
-# Configuring public IP restrictions <Lifecycle status="managed_plus" />
+# Configuring public IP restrictions
 
 import SetUpPages from '/snippets/_available-tiers-enterprise-plus.md';
 

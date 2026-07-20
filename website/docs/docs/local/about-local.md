@@ -5,6 +5,7 @@ description: "dbt tools and resources that can be installed on your local machin
 sidebar_label: "About local installation"
 pagination_next: "docs/local/install-dbt"
 pagination_prev: null
+availability: local_free
 ---
 
 dbt enables data teams to transform data using analytics engineering best practices. You can run dbt locally through a command line interface (CLI) to build, test, and deploy your data transformations, and install additional tools to enhance your workflows. 

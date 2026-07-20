@@ -4,6 +4,8 @@ id: "telemetry"
 description: "Fusion support for telemetry and observability"
 pagination_next: null
 pagination_prev: null
+availability:
+  engine: v2
 ---
 
 import SaoDeprecated from '/snippets/_sao-deprecated.md';

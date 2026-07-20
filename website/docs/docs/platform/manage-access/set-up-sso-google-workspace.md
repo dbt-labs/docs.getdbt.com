@@ -2,9 +2,13 @@
 title: "Set up SSO with Google Workspace"
 description: "Learn how dbt administrators can use Single-Sign On (SSO) via Google GSuite to control access in a dbt account."
 id: "set-up-sso-google-workspace"
+availability:
+  surface: platform
+  access: paid_plan
+  plans: [enterprise, enterprise_plus]
 ---
 
-# Set up SSO with Google Workspace <Lifecycle status="managed, managed_plus" />
+# Set up SSO with Google Workspace
 
 <Constant name="dbt" /> Enterprise-tier plans support Single-Sign On (SSO) via Google GSuite. You will need permissions to create and manage a new Google OAuth2 application, as well as access to enable the Google Admin SDK. Gsuite is a component within Google Cloud Platform (GCP), so you will also need access to a login with permissions to manage the GSuite application within a GCP account.
 

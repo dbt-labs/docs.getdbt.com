@@ -15,6 +15,7 @@ meta:
   slack_channel_link: 'https://www.risingwave.com/slack'
   platform_name: 'RisingWave'
   config_page: '/reference/resource-configs/no-configs'
+availability: local_free
 ---
 
 

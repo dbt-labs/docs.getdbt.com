@@ -3,6 +3,7 @@ title: "Snowflake and Apache Iceberg"
 id: snowflake-iceberg-support
 sidebar_label: "Snowflake Iceberg support"
 description: Understand Snowflake support for Apache Iceberg.
+availability: all_users
 ---
 
 import BaseLocationEnvIsolation from '/snippets/_base-location-env-isolation-warning.md';

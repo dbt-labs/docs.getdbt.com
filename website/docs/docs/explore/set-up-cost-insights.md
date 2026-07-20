@@ -4,11 +4,15 @@ sidebar_label: "Set up Cost Insights"
 description: "Learn how to set up Cost Insights to track warehouse compute costs and view realized savings from state-aware orchestration across your dbt projects and models."
 id: "set-up-cost-insights"
 tags: ['SAO', 'cost savings', 'models built', 'cost insights', 'cost reduction', 'cost optimization']
+availability:
+  surface: platform
+  access: paid_plan
+  plans: [enterprise, enterprise_plus]
 ---
 
 import SaoDeprecated from '/snippets/_sao-deprecated.md';
 
-# Set up Cost Insights <Lifecycle status="beta,managed,managed_plus" />
+# Set up Cost Insights <Lifecycle status="beta" />
 
 This guide walks you through setting up Cost Insights to track warehouse compute costs and cost reductions from dbt State and state-aware orchestration across your dbt projects and models.
 

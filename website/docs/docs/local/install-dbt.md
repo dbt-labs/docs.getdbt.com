@@ -5,6 +5,7 @@ description: "Learn how to install dbt in local environments"
 sidebar_label: "Install dbt"
 pagination_next: "docs/local/configure-environment-variables"
 pagination_prev: null
+availability: local_free
 ---
 
 import FusionManualInstall from '/snippets/_fusion-manual-install.md';

@@ -125,7 +125,7 @@ export default function Availability({ availability }) {
     return null;
   }
 
-  const badgeText = normalized.badgeFacets.join(' · ');
+  const badgeText = normalized.badgeFacets.join(' | ');
 
   return (
     <span
@@ -172,7 +172,7 @@ export default function Availability({ availability }) {
         <span className={styles.badgeText}>
           {normalized.badgeFacets.map((facet, index) => (
             <React.Fragment key={`${facet}-${index}`}>
-              {index > 0 && <span className={styles.badgeSeparator}> · </span>}
+              {index > 0 && <span className={styles.badgeSeparator}> | </span>}
               <span className={styles.badgeFacet}>{facet}</span>
             </React.Fragment>
           ))}
@@ -186,10 +186,7 @@ export default function Availability({ availability }) {
             {normalized.rows.map((row, index) => (
               <React.Fragment key={`${row.label}-${row.value}-${index}`}>
                 <dt>{row.label}</dt>
-                <dd>
-                  {row.value}
-                  {row.tooltip ? <span className={styles.tooltipDescription}> — {row.tooltip}</span> : null}
-                </dd>
+                <dd>{row.tooltip || row.value}</dd>
               </React.Fragment>
             ))}
           </dl>

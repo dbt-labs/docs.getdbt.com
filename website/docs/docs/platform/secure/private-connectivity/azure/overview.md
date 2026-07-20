@@ -3,6 +3,10 @@ title: "Azure private connectivity"
 id: azure-overview
 description: "Configure private connections for Azure deployments of the dbt platform."
 sidebar_label: "About Azure Private Link"
+availability:
+  surface: platform
+  access: paid_plan
+  plans: [enterprise_plus]
 ---
 
 import SetUpPages from '/snippets/_available-tiers-enterprise-plus.md';

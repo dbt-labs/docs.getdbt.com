@@ -5,6 +5,9 @@ description: "Learn how to migrate to account-specific access URLs."
 pagination_next: null
 pagination_prev: null
 unlisted: true
+availability:
+  surface: platform
+  access: login_required
 ---
 
 Account-specific access URLs are being assigned to <Constant name="dbt" /> accounts as part of our ongoing efforts to improve your experience and strengthen security. Each account will receive its own unique <Constant name="dbt_platform" /> and [API access URLs](/docs/dbt-apis/overview) on the **dbt.com** domain rather than sharing generic **getdbt.com** region URLs. For example:

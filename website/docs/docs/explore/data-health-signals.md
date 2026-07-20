@@ -4,9 +4,13 @@ sidebar_label: "Data health signals"
 id: data-health-signals
 description: "Learn how data health signals offer a quick, at-a-glance view of data health when browsing your resources in dbt Catalog."
 image: /img/docs/collaborate/dbt-explorer/data-health-signal.jpg
+availability:
+  surface: platform
+  access: paid_plan
+  plans: [starter, enterprise, enterprise_plus]
 ---
 
-# Data health signals <Lifecycle status="preview,self_service,managed,managed_plus" /> 
+# Data health signals <Lifecycle status="preview" />
 
 Data health signals offer a quick, at-a-glance view of data health when browsing your resources in <Constant name="catalog" />. They keep you informed on the status of your resource's health using the indicators **Healthy**, **Caution**, **Degraded**, or **Unknown**.
 

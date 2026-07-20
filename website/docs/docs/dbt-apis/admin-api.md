@@ -2,11 +2,15 @@
 title: "dbt Administrative API"
 id: "admin-api"
 pagination_next: "docs/dbt-apis/discovery-api"
+availability:
+  surface: platform
+  access: paid_plan
+  plans: [starter, enterprise, enterprise_plus]
 ---
 
 import ApiRateLimitsCallout from '/snippets/_api-rate-limits-callout.md';
 
-# dbt Administrative API <Lifecycle status="self_service,managed,managed_plus" />
+# dbt Administrative API
 
 The <Constant name="dbt" /> Administrative API is enabled by default for [Starter, Enterprise, and Enterprise+ plans](https://www.getdbt.com/pricing/). It can be used to:
 

@@ -2,6 +2,9 @@
 title: "Arrow ADBC and Fusion"
 id: "adbc"
 unlisted: true
+availability:
+  preset: local_free
+  engine: v2
 ---
 
 # Arrow ADBC and Fusion

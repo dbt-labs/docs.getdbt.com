@@ -1,6 +1,7 @@
 ---
 title: "Community adapters"
 id: "community-adapters"
+availability: local_free
 ---
 
 Community adapters are adapter plugins contributed and maintained by members of the community. We welcome and encourage [adapter plugins contributions](/docs/contribute-core-adapters#contribute-to-a-pre-existing-adapter) from the dbt community.  Please be mindful that these [community maintainers](/docs/connect-adapters#maintainers) are intrepid volunteers who donate their time and effort — so be kind, understanding, and help out where you can!

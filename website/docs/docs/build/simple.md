@@ -5,6 +5,7 @@ description: "Use simple metrics to aggregate data directly from columns in your
 sidebar_label: Simple
 tags: [Metrics, Semantic Layer]
 pagination_next: null
+availability: all_users
 ---
 
 <VersionBlock lastVersion="1.11">

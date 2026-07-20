@@ -3,11 +3,15 @@ title: "Manage user licenses with SCIM"
 description: "Automate license assignment for Okta users via SCIM."
 id: "scim-manage-user-licenses"
 sidebar_label: "Manage user licenses with SCIM"
+availability:
+  surface: platform
+  access: paid_plan
+  plans: [enterprise, enterprise_plus]
 ---
 
 import ScimLicenseMappingCallout from '/snippets/_scim-license-mapping-callout.md';
 
-# Manage user licenses with SCIM <Lifecycle status="managed, managed_plus" />
+# Manage user licenses with SCIM
 
 You can manage user license assignments using System for Cross-Domain Identity Management (SCIM) and a user attribute in Okta, so the license type is set as users are provisioned and onboarded.
 

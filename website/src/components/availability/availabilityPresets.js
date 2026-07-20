@@ -76,7 +76,7 @@ function planTooltip(plans) {
   if (plans.length === 1 && plans[0] === 'developer') {
     return 'Free plan and up.';
   }
-  return `Requires ${planListLabel(plans)} plan.`;
+  return `Requires ${planListLabel(plans)}.`;
 }
 
 // Returns an ordered list of { facet, tooltip } for the access badge/tooltip rows.
@@ -87,10 +87,13 @@ export function getAccessFacets(access, plans, surface) {
       // badge could read as paid). Self-hosted/everywhere default to free implicitly.
       return surface === 'platform' ? [{ facet: 'Free', tooltip: ACCESS_TOOLTIPS.Free }] : [];
     case 'login_required':
-      return [{ facet: 'Login required', tooltip: ACCESS_TOOLTIPS['Login required'] }];
+      // On the platform surface, "Login required" is redundant — you can't use dbt
+      // platform without an account, so it's collapsed away (same pattern as "free" above).
+      // Self-hosted/everywhere still show it since login isn't implied there.
+      return surface === 'platform' ? [] : [{ facet: 'Login required', tooltip: ACCESS_TOOLTIPS['Login required'] }];
     case 'usage_based':
       return [
-        { facet: 'Login required', tooltip: ACCESS_TOOLTIPS['Login required'] },
+        ...(surface === 'platform' ? [] : [{ facet: 'Login required', tooltip: ACCESS_TOOLTIPS['Login required'] }]),
         { facet: 'Usage-based', tooltip: ACCESS_TOOLTIPS['Usage-based'] },
       ];
     case 'paid_plan': {

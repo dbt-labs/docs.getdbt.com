@@ -4,6 +4,9 @@ id: install-dbt-extension
 description: "Installation instructions for the dbt extension."
 sidebar_label: "Install the dbt extension"
 image: /img/docs/extension/extension-marketplace.png
+availability:
+  engine: v2
+  preset: local_free
 ---
 
 # Install the dbt VS Code extension <Lifecycle status="preview" />

@@ -4,9 +4,13 @@ id: "sl-cache"
 description: "Cache common queries to speed up performance and reduce query computation."
 tags: [Semantic Layer]
 sidebar_label: "Cache common queries"
+availability:
+  surface: platform
+  access: paid_plan
+  plans: [enterprise, enterprise_plus]
 ---
 
-# Cache common queries <Lifecycle status="managed,managed_plus" />
+# Cache common queries
 
 The <Constant name="semantic_layer" /> allows you to cache common queries in order to speed up performance and reduce compute on expensive queries.
 

@@ -4,6 +4,7 @@ id: "experimental-features"
 sidebar_label: "Preview new dbt platform features"
 description: "Gain early access to many new dbt Labs experimental features by enabling this in your profile."
 pagination_next: null
+availability: platform_login
 ---
 
 dbt Labs often tests experimental features before deciding to continue on the [Product lifecycle](/docs/dbt-versions/product-lifecycles).

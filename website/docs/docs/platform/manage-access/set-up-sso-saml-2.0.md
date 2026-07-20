@@ -1,11 +1,15 @@
 ---
 title: "Set up SSO with SAML 2.0"
 id: "set-up-sso-saml-2.0"
+availability:
+  surface: platform
+  access: paid_plan
+  plans: [enterprise, enterprise_plus]
 ---
 
 import LoginSlug from '/snippets/_login-slug.md';
 
-# Set up SSO with SAML 2.0 <Lifecycle status="managed, managed_plus" />
+# Set up SSO with SAML 2.0
 
 <Constant name="dbt" /> Enterprise-tier plans support single-sign on (SSO) for any SAML 2.0-compliant identity provider (IdP).
 Currently supported features include:

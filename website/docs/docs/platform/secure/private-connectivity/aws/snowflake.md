@@ -3,9 +3,13 @@ title: "Configuring Snowflake and AWS PrivateLink"
 id: aws-snowflake
 description: "Configuring AWS PrivateLink for Snowflake."
 sidebar_label: "Snowflake"
+availability:
+  surface: platform
+  access: paid_plan
+  plans: [enterprise_plus]
 ---
 
-# Configuring Snowflake PrivateLink <Lifecycle status="managed_plus" />
+# Configuring Snowflake PrivateLink
 
 import SetUpPages from '/snippets/_available-tiers-enterprise-plus.md';
 import PrivateLinkCreateConnection from '/snippets/_privatelink-create-connection.md';

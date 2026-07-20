@@ -3,6 +3,9 @@ title: "Upgrading to v1.12"
 id: upgrading-to-v1.12
 description: New features and changes in dbt Core v1.12
 displayed_sidebar: "docs"
+availability:
+  engine: v1
+  access: free
 ---
 
 # Upgrading to v1.12 <Lifecycle status="beta" />

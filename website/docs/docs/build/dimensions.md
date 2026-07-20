@@ -4,6 +4,7 @@ id: dimensions
 description: "Dimensions determine the level of aggregation for a metric, and are non-aggregatable expressions."
 sidebar_label: "Dimensions"
 tags: [Metrics, Semantic Layer]
+availability: all_users
 ---
 
 <VersionBlock lastVersion="1.11">

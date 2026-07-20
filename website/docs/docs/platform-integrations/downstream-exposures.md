@@ -5,9 +5,13 @@ description: "Learn how to use dbt to automatically generate exposures from dash
 pagination_prev: null
 image: /img/docs/platform-integrations/auto-exposures/explorer-lineage.png
 pagination_next: "docs/platform-integrations/downstream-exposures-tableau"
+availability:
+  surface: platform
+  access: paid_plan
+  plans: [enterprise, enterprise_plus]
 ---
 
-# Visualize and orchestrate downstream exposures <Lifecycle status="managed,managed_plus" />
+# Visualize and orchestrate downstream exposures
 
 <IntroText>
 

@@ -3,6 +3,10 @@ title: "Configuring Private Link for Azure Synapse"
 id: azure-synapse
 description: "Configuring Private Link for Azure Synapse."
 sidebar_label: "Azure Synapse"
+availability:
+  surface: platform
+  access: paid_plan
+  plans: [enterprise_plus]
 ---
 
 import SetUpPages from '/snippets/_available-tiers-enterprise-plus.md';

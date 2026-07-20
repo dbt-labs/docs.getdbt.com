@@ -4,6 +4,10 @@ sidebar_label: "Personal access tokens"
 id: "user-tokens"
 pagination_prev: "docs/dbt-apis/rate-limits"
 pagination_next: "docs/dbt-apis/service-tokens"
+availability:
+  surface: platform
+  access: paid_plan
+  plans: [starter, enterprise, enterprise_plus]
 ---
 
 # Account-scoped personal access tokens

@@ -4,11 +4,15 @@ id: "advanced-ci"
 sidebar_label: "Advanced CI"
 description: "Advanced CI enables developers to compare changes by demonstrating the changes the code produces."
 image: /img/docs/dbt-platform/example-ci-compare-changes-tab.png
+availability:
+  surface: platform
+  access: paid_plan
+  plans: [enterprise, enterprise_plus]
 ---
 
 import CompareChangesTable from '/snippets/_compare-changes-table.md';
 
-# Advanced CI <Lifecycle status="managed,managed_plus" />
+# Advanced CI
 
 [Continuous integration workflows](/docs/deploy/continuous-integration) help increase the governance and improve the quality of the data. Additionally for these CI jobs, you can use Advanced CI features, such as [compare changes](#compare-changes), that provide details about the changes between what's currently in your production environment and the pull request's latest commit, giving you observability into how data changes are affected by your code changes. 
 

@@ -7,9 +7,13 @@ tags: [Semantic Layer]
 hide_table_of_contents: false
 pagination_next: "guides/sl-snowflake-qs"
 pagination_prev: null
+availability:
+  surface: platform
+  access: paid_plan
+  plans: [starter, enterprise, enterprise_plus]
 ---
 
-# dbt Semantic Layer <Lifecycle status="self_service,managed,managed_plus" />
+# dbt Semantic Layer
 
 <IntroText>
 

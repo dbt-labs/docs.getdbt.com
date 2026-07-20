@@ -3,11 +3,15 @@ title: "Single sign-on (SSO) Overview"
 id: "sso-overview"
 pagination_next: "docs/platform/manage-access/set-up-sso-saml-2.0"
 pagination_prev: null
+availability:
+  surface: platform
+  access: paid_plan
+  plans: [enterprise, enterprise_plus]
 ---
 
 import UniversalLogin from '/snippets/_universal-login.md';
 
-# Single sign-on (SSO) overview <Lifecycle status="managed, managed_plus" />
+# Single sign-on (SSO) overview
 
 This overview explains how users are provisioned in <Constant name="dbt" /> using single sign-on (SSO).
 <Constant name="dbt" /> supports JIT (Just-in-Time) provisioning and IdP-initiated login.

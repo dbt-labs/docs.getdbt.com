@@ -6,6 +6,7 @@ sidebar: "Available dbt versions"
 pagination_next: null
 pagination_prev: null
 hide_table_of_contents: true
+availability: all_users
 ---
 
 Whether you're using the CLI or working within the <Constant name="dbt_platform" />, your environments are aligned with a versioned release of dbt.

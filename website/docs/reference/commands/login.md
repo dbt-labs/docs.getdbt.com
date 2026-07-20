@@ -4,6 +4,8 @@ sidebar_label: "login"
 id: "login"
 description: "Use dbt login to authenticate and unlock gated features across dbt tools."
 intro_text: "Use dbt login to authenticate once and unlock gated features across dbt tools."
+availability:
+  engine: v2
 ---
 
 :::info

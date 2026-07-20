@@ -3,9 +3,13 @@ title: "About Hybrid projects"
 sidebar_label: "About hybrid projects"
 description: "Learn how to upload dbt Core artifacts into the dbt platform to create and set up hybrid projects."
 pagination_next: "docs/deploy/hybrid-setup"
+availability:
+  surface: platform
+  access: paid_plan
+  plans: [enterprise_plus]
 ---
 
-# About Hybrid projects <Lifecycle status='managed_plus'/>
+# About Hybrid projects
 
 <IntroText>
 With Hybrid projects, your organization can adopt complementary <Constant name="core" /> and <Constant name="dbt" /> workflows (where some teams deploy projects in <Constant name="core" /> and others in <Constant name="dbt" />) and seamlessly integrate these workflows by automatically uploading <Constant name="core" /> [artifacts](/reference/artifacts/dbt-artifacts) into <Constant name="dbt" />.

@@ -6,9 +6,13 @@ description: "The dbt Canvas interface contains an operator toolbar, operators, 
 pagination_next: "docs/platform/use-canvas"
 pagination_prev: "docs/platform/canvas"
 image: /img/docs/dbt-platform/canvas/canvas.png
+availability:
+  surface: platform
+  access: paid_plan
+  plans: [enterprise, enterprise_plus]
 ---
 
-# Navigate the interface <Lifecycle status='managed, managed_plus'/> 
+# Navigate the interface
 
 <p style={{ color: '#717d7d', fontSize: '1.1em' }}>
 

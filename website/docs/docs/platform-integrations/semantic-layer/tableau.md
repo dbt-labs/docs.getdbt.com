@@ -3,9 +3,13 @@ title: "Tableau"
 description: "Use Tableau worksheets to query the dbt Semantic Layer and produce dashboards with trusted date."
 tags: [Semantic Layer]
 sidebar_label: "Tableau"
+availability:
+  surface: platform
+  access: paid_plan
+  plans: [starter, enterprise, enterprise_plus]
 ---
 
-# Tableau <Lifecycle status="self_service,managed,managed_plus" />
+# Tableau
 
 The Tableau integration allows you to use worksheets to query the <Constant name="semantic_layer" /> directly and produce your dashboards with trusted data. It provides a live connection to the <Constant name="semantic_layer" /> through Tableau Desktop or Tableau Server.
 

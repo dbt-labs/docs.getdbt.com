@@ -3,6 +3,9 @@ title: "Upgrading to v2.0"
 id: upgrading-to-v2
 description: New features and changes in v2.0
 displayed_sidebar: "docs"
+availability:
+  engine: v2
+  access: free
 ---
 
 import FusionAdapters from '/snippets/_fusion-dwh.md';

@@ -3,6 +3,7 @@ title: "Release tracks in dbt platform"
 sidebar_label: "About release tracks"
 id: "dbt-release-tracks"
 description: "Learn how to get automatic upgrades to dbt in the dbt platform. Access new features and enhancements as soon as they become available."
+availability: platform_login
 ---
 
 Since May 2024, new capabilities in the dbt framework are delivered continuously to <Constant name="dbt" />. Your projects and environments are upgraded automatically on a cadence that you choose, depending on your <Constant name="dbt" /> plan.

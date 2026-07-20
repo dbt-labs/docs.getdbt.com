@@ -3,9 +3,13 @@ title: "Configuring AWS PrivateLink to your self-hosted service"
 id: aws-self-hosted
 description: "Setting up an AWS PrivateLink connection between dbt and your self-hosted service."
 sidebar_label: "Self-hosted services"
+availability:
+  surface: platform
+  access: paid_plan
+  plans: [enterprise_plus]
 ---
 
-# Configuring AWS PrivateLink for a self-hosted service <Lifecycle status="managed_plus" />
+# Configuring AWS PrivateLink for a self-hosted service
 
 import SetUpPages from '/snippets/_available-tiers-enterprise-plus.md';
 

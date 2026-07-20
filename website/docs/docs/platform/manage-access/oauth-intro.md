@@ -3,9 +3,13 @@ title: "OAuth overview"
 description: "Connect development credentials to data platforms using OAuth in the dbt platform."
 id: "oauth-intro"
 sidebar_label: "OAuth overview"
+availability:
+  surface: platform
+  access: paid_plan
+  plans: [enterprise, enterprise_plus]
 ---
 
-# OAuth overview <Lifecycle status="managed, managed_plus" />
+# OAuth overview
 
 OAuth in <Constant name="dbt_platform" /> lets developers authorize their user credentials with a data platform using that platform’s login or its single sign-on (SSO) instead of storing usernames and passwords in <Constant name="dbt_platform" />. This improves security and aligns with how your team already signs in to the warehouse.
 

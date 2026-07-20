@@ -2,6 +2,7 @@
 title: "Run visibility"
 description: "Monitor your jobs to make performance improvements."
 tags: ["scheduler"]
+availability: platform_login
 ---
 
 You can view the history of your runs and the model timing dashboard to help identify where improvements can be made to jobs.

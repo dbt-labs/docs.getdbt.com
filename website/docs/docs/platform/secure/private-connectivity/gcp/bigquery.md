@@ -3,9 +3,13 @@ title: "Configuring BigQuery and GCP Private Service Connect"
 id: gcp-bigquery
 description: "Configuring GCP Private Service Connect for BigQuery."
 sidebar_label: "BigQuery"
+availability:
+  surface: platform
+  access: paid_plan
+  plans: [enterprise_plus]
 ---
 
-# Configuring BigQuery Private Service Connect <Lifecycle status="managed_plus" />
+# Configuring BigQuery Private Service Connect
 
 import SetUpPages from '/snippets/_available-tiers-enterprise-plus.md';
 import PrivateLinkCreateConnection from '/snippets/_privatelink-create-connection.md';

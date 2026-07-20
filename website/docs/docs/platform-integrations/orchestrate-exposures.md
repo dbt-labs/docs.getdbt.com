@@ -3,9 +3,13 @@ title: "Orchestrate downstream exposures"
 sidebar_label: "Orchestrate exposures"
 description: "Use dbt to proactively refresh the underlying data sources (like Tableau extracts) during scheduled dbt jobs."
 image: /img/docs/platform-integrations/auto-exposures/explorer-lineage2.png
+availability:
+  surface: platform
+  access: paid_plan
+  plans: [enterprise, enterprise_plus]
 ---
 
-# Orchestrate downstream exposures <Lifecycle status="managed,managed_plus,beta" />
+# Orchestrate downstream exposures <Lifecycle status="beta" />
 
 <IntroText>
 

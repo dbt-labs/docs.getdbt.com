@@ -3,9 +3,13 @@ title: "SSO FAQs and troubleshooting"
 description: "Common questions and troubleshooting for single sign-on (SSO) in dbt platform"
 id: "sso-faq"
 sidebar: "SSO FAQ and troubleshooting"
+availability:
+  surface: platform
+  access: paid_plan
+  plans: [enterprise, enterprise_plus]
 ---
 
-# SSO FAQs and troubleshooting <Lifecycle status="managed, managed_plus" />
+# SSO FAQs and troubleshooting
 
 Find answers to common questions about configuring and using single sign-on (SSO) in <Constant name="dbt_platform" />, plus guidance for resolving common issues.
 

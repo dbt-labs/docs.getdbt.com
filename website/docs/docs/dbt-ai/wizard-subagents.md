@@ -4,6 +4,7 @@ id: "wizard-subagents"
 description: "Delegate work to specialized subagents in dbt Wizard CLI."
 sidebar_label: "Use subagents"
 tags: [AI, Wizard]
+availability: local_free
 ---
 
 import WizardFeedbackCallout from '/snippets/_wizard-feedback-callout.md';

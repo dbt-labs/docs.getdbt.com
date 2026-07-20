@@ -3,6 +3,7 @@ title: "Parallel microbatch execution"
 sidebar_label: "Parallel microbatch execution"
 description: "Learn about the 'parallel batch execution' strategy for incremental models."
 intro_text: "Use parallel batch execution to process your microbatch models faster."
+availability: all_users
 ---
 
 The microbatch strategy offers the benefit of updating a model in smaller, more manageable batches. Depending on your use case, configuring your microbatch models to run in parallel offers faster processing, in comparison to running batches sequentially.

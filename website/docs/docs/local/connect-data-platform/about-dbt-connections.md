@@ -6,6 +6,7 @@ sidebar_label: "About data platform connections"
 hide_table_of_contents: true
 pagination_next: null
 pagination_prev: null
+availability: local_free
 ---
 
 dbt connects to your data platform to run SQL transformations against your data. The connection setup depends on which dbt engine you use:

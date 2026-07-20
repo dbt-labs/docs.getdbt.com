@@ -4,6 +4,7 @@ id: "wizard-use-cases"
 description: "Realistic analytics engineering scenarios for dbt Wizard — from building new models to debugging failures."
 sidebar_label: "Use cases and examples"
 tags: [AI, Wizard]
+availability: all_users
 ---
 
 <IntroText>

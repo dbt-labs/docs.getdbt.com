@@ -3,6 +3,7 @@ title: "Project variables"
 description: "Use dbt project variables to configure conditional or reusable logic across models and other resources." 
 id: "project-variables"
 pagination_next: "docs/build/environment-variables"
+availability: all_users
 ---
 
 import VarsYmlBeta from '/snippets/_vars-yml-beta.md';

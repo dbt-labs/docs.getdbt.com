@@ -15,6 +15,7 @@ meta:
   slack_channel_link: 'https://getdbt.slack.com/archives/CNGCW8HKL'
   platform_name: 'Spark'
   config_page: '/reference/resource-configs/spark-configs'
+availability: local_free
 ---
 
 <VersionBlock firstVersion="2.0">

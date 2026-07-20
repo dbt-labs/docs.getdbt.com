@@ -2,9 +2,13 @@
 title: "External metadata ingestion"
 sidebar_label: "External metadata ingestion"
 description: "Connect directly to your data warehouse, giving you visibility into tables, views, and other resources that aren't defined in dbt with dbt Catalog." 
+availability:
+  surface: platform
+  access: paid_plan
+  plans: [enterprise, enterprise_plus]
 ---
 
-# External metadata ingestion <Lifecycle status="managed,managed_plus" /> <Lifecycle status="preview" />
+# External metadata ingestion <Lifecycle status="preview" />
 
 <IntroText>
 

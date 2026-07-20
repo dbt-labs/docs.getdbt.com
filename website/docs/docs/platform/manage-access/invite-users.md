@@ -3,6 +3,10 @@ title: "Invite users to dbt"
 description: "Learn how to manually invite users to dbt"
 id: "invite-users"
 sidebar: "Invite users"
+availability:
+  surface: platform
+  access: paid_plan
+  plans: [starter, enterprise, enterprise_plus]
 ---
 
 <Constant name="dbt" /> makes it easy to invite new users to your environment out of the box. This feature is available to all <Constant name="dbt" /> customers on Starter, Enterprise, and Enterprise+ plans.

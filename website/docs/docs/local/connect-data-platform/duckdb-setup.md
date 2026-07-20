@@ -14,6 +14,7 @@ meta:
   slack_channel_link: 'https://getdbt.slack.com/archives/C039D1J1LA2'
   platform_name: 'Duck DB'
   config_page: '/reference/resource-configs/duckdb-configs'
+availability: local_free
 ---
 
 <VersionBlock firstVersion="2.0">

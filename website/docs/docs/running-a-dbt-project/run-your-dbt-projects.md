@@ -2,6 +2,7 @@
 title: "Run your dbt projects"
 id: "run-your-dbt-projects"
 pagination_prev: null
+availability: all_users
 ---
 
 You can run your dbt projects locally or using the [<Constant name="dbt_platform" />](/docs/platform/about-platform/dbt-platform-features) with the dbt framework.

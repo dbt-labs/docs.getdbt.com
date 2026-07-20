@@ -3,9 +3,13 @@ title: "Configuring Teradata VantageCloud and AWS PrivateLink"
 id: aws-teradata
 description: "Configuring AWS PrivateLink for Teradata VantageCloud."
 sidebar_label: "Teradata VantageCloud"
+availability:
+  surface: platform
+  access: paid_plan
+  plans: [enterprise_plus]
 ---
 
-# Configuring AWS PrivateLink for Teradata VantageCloud <Lifecycle status="managed_plus" />
+# Configuring AWS PrivateLink for Teradata VantageCloud
 
 import SetUpPages from '/snippets/_available-tiers-enterprise-plus.md';
 import PrivateLinkCreateConnection from '/snippets/_privatelink-create-connection.md';

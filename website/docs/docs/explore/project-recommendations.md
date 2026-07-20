@@ -2,9 +2,13 @@
 title: "Project recommendations"
 sidebar_label: "Project recommendations"
 description: "dbt Catalog provides recommendations that you can take to improve the quality of your dbt project."
+availability:
+  surface: platform
+  access: paid_plan
+  plans: [enterprise, enterprise_plus]
 ---
 
-# Project recommendations <Lifecycle status="managed,managed_plus" />
+# Project recommendations
  
 <Constant name="catalog" /> provides recommendations about your project from the `dbt_project_evaluator` [package](https://hub.getdbt.com/dbt-labs/dbt_project_evaluator/latest/) using metadata from the [Discovery API](/docs/dbt-apis/discovery-api). 
 

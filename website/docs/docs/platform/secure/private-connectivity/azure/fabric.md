@@ -3,6 +3,10 @@ title: "Configuring Private Link for Microsoft Fabric"
 id: azure-fabric
 description: "Configuring Azure Private Link for Microsoft Fabric."
 sidebar_label: "Microsoft Fabric"
+availability:
+  surface: platform
+  access: paid_plan
+  plans: [enterprise_plus]
 ---
 
 import SetUpPages from '/snippets/_available-tiers-enterprise-plus.md';

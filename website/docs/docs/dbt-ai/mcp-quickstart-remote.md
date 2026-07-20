@@ -3,6 +3,7 @@ title: "Connect to the remote dbt MCP server"
 sidebar_label: "Connect to the remote dbt MCP server"
 description: "Connect to the remote dbt MCP server via HTTP with no local installation."
 id: "mcp-quickstart-remote"
+availability: platform_login
 ---
 
 import MCPCreditUsage from '/snippets/_mcp-credit-usage.md';

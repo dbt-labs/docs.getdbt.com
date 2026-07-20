@@ -3,9 +3,13 @@ title: "Set up Azure DevOps"
 id: "setup-service-principal"
 description: "You can set up your Azure DevOps by creating a Microsoft Entra ID app and adding it to dbt."
 sidebar_label: "Set up service principal"
+availability:
+  surface: platform
+  access: paid_plan
+  plans: [enterprise, enterprise_plus]
 ---
 
-# Set up Azure DevOps <Lifecycle status="managed,managed_plus" />
+# Set up Azure DevOps
 
 ## Service principal overview
 

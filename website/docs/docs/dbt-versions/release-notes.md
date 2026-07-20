@@ -5,6 +5,8 @@ id: "dbt-cloud-release-notes"
 sidebar: "dbt release notes"
 pagination_next: null
 pagination_prev: null
+availability:
+  surface: platform
 ---
 
 <Constant name="dbt" /> release notes for recent and historical changes. Release notes fall into one of the following categories:

@@ -4,9 +4,13 @@ description: "Learn how to navigate the dbt Insights interface"
 sidebar_label: "Navigate the interface"
 tags: [dbt Insights]
 image: /img/docs/dbt-insights/insights-results.jpg
+availability:
+  surface: platform
+  access: paid_plan
+  plans: [enterprise, enterprise_plus]
 ---
 
-# Navigate the dbt Insights interface <Lifecycle status="managed,managed_plus" />
+# Navigate the dbt Insights interface
 
 <IntroText>
 Learn how to navigate <Constant name="insights" /> interface and use the main components.

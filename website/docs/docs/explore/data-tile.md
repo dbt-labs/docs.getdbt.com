@@ -4,9 +4,13 @@ id: "data-tile"
 sidebar_label: "Data health tile"
 description: "Embed data health tiles in your dashboards to distill data health signals for data consumers."
 image: /img/docs/collaborate/dbt-explorer/data-tile-pass.jpg
+availability:
+  surface: platform
+  access: paid_plan
+  plans: [enterprise, enterprise_plus]
 ---
 
-# Data health tile <Lifecycle status="managed,managed_plus" />
+# Data health tile
 
 With data health tiles, stakeholders will get an at-a-glance confirmation on whether the data they’re looking at is stale or degraded. It allows teams to immediately go back into <Constant name="catalog" /> to see more details and investigate issues.
 

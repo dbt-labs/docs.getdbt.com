@@ -5,6 +5,7 @@ description: "dbt Wizard is an AI agent purpose-built for governed data developm
 sidebar_label: "Overview"
 pagination_next: null
 keywords: ["dbt Wizard", "dbt Agents", "AI", "analytics", "dbt"]
+availability: all_users
 ---
 
 import WizardSupportedProviders from '/snippets/_wizard-supported-providers.md';

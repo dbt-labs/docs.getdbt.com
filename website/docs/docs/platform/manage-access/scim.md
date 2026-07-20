@@ -3,11 +3,15 @@ title: "Set up SCIM"
 description: "Configure SCIM for SSO"
 id: "scim"
 sidebar: "Set up SCIM"
+availability:
+  surface: platform
+  access: paid_plan
+  plans: [enterprise, enterprise_plus]
 ---
 
 import ScimLicenseMappingCallout from '/snippets/_scim-license-mapping-callout.md';
 
-# Set up SCIM <Lifecycle status="managed, managed_plus" />
+# Set up SCIM
 
 The System for Cross-Domain Identity Management (SCIM) makes user data more secure and simplifies the admin and end-user lifecycle experience by automating user identities and groups. You can create or disable user identities in your Identity Provider (IdP), and SCIM will automatically make those changes in near real-time downstream in <Constant name="dbt" />.
 

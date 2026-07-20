@@ -4,6 +4,7 @@ sidebar_label: "Set up dbt State"
 description: "Learn how to install and configure dbt State across dbt Core, dbt platform, and Fusion."
 id: "dbt-state-setup"
 tags: ['dbt State']
+availability: everywhere_usage
 ---
 
 # Setting up dbt State <Lifecycle status="preview" />

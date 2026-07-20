@@ -4,6 +4,9 @@ sidebar_label: "Installation"
 id: dbt-cli-installation
 description: "Instructions for installing and configuring dbt platform's CLI tool."
 pagination_next: "docs/platform/configure-dbt-cli"
+availability:
+  surface: platform
+  access: login_required
 ---
 
 import LongSession from '/snippets/_long-sessions-cli.md';

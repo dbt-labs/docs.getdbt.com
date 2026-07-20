@@ -3,9 +3,13 @@ title: "Configuring Snowflake and GCP Private Service Connect"
 id: gcp-snowflake
 description: "Configuring GCP Private Service Connect for Snowflake."
 sidebar_label: "Snowflake"
+availability:
+  surface: platform
+  access: paid_plan
+  plans: [enterprise_plus]
 ---
 
-# Configuring Snowflake Private Service Connect <Lifecycle status="managed_plus" />
+# Configuring Snowflake Private Service Connect
 
 import SetUpPages from '/snippets/_available-tiers-enterprise-plus.md';
 import PrivateLinkCreateConnection from '/snippets/_privatelink-create-connection.md';
