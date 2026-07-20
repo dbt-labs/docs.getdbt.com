@@ -15,14 +15,16 @@ This flag was removed in <Constant name="core_v2" /> and in <Constant name="fusi
 | skip_nodes_if_on_run_start_fails | <Constant name="dbt" /> **Latest** | <Constant name="core" /> |
 |---|---|---|
 | Introduced | 2024.10 | 1.9.0 |
-| Matured (default → `true`) | Sep 1, 2026 | — |
+| Matured (default → `true`) | Sep 1, 2026 | 1.12.0 |
 | Removed | — | v2.0 |
 
-Set the `skip_nodes_if_on_run_start_fails` flag to `true` to skip all selected resources from running if there is a failure on an `on-run-start` hook.
+<br />
+
+Starting in <Constant name="core" /> v1.12, `skip_nodes_if_on_run_start_fails` defaults to `true`, skipping all selected resources if there is a failure on an `on-run-start` hook.
 
 For more information, refer to [`on-run-start` / `on-run-end`](/reference/project-configs/on-run-start-on-run-end).
 
-## Impact when the flag matures
+## Impact
 
 If your project uses `on-run-start` hooks for non-critical work (for example, telemetry, notifications, audit inserts, attaching session settings), your build will stop producing output whenever a hook fails. Tables and views that previously refreshed daily will stop updating the next time the hook fails.
 

@@ -1,7 +1,7 @@
 ---
 title: "dbt release notes"
 description: "dbt release notes"
-id: "dbt-cloud-release-notes"
+id: "release-notes"
 sidebar: "dbt release notes"
 pagination_next: null
 pagination_prev: null
@@ -14,13 +14,13 @@ pagination_prev: null
 - **Fix:** Bug and security fixes
 - **Behavior change:** A change to existing behavior that doesn't fit into the other categories, such as feature deprecations or changes to default settings
 
-Release notes are grouped by month for both multi-tenant and virtual private cloud (VPC) environments.
+Release notes are grouped by month for both multi-tenant and virtual private cloud (VPC) environments. <span><img src="/img/fontawesome/rss.svg" alt="RSS" className="rss-icon" />Subscribe to release note updates via [RSS](/feeds/release-notes-rss.xml), [Atom](/feeds/release-notes-atom.xml), or [JSON Feed](/feeds/release-notes-rss.json).</span>
 
 For <Constant name="fusion_engine" /> updates, refer to the [dbt-fusion changelog](https://github.com/dbt-labs/dbt-core/blob/main/CHANGELOG-fusion.md).
 
-
 ## July 2026
 
+- **Behavior change:** You can no longer create a [service token](/docs/dbt-apis/service-tokens) using an account-scoped [personal access token](/docs/dbt-apis/user-tokens) (PAT). Requests to the service tokens endpoint authenticated with a PAT now return a `400` error. Use a service token to create new ones instead.
 - **New:** You can now access dbt State settings from **Account settings** > **Billing & Usage**, previously found under **State**. You can manage your trial, enable dbt State on environments and jobs, and set spend alerts &mdash; all in one place. For details, refer to [dbt State trial and billing](/docs/deploy/dbt-state-trial).
 
 ## June 2026
