@@ -35,5 +35,5 @@ The <Constant name="fusion" /> CLI and the language server run independently. Ru
 
 ## Versioning
 
-The <Constant name="fusion" /> CLI and the language server ship in a single <Constant name="fusion_engine" /> binary, so they always share the same version and can't be mismatched with each other. The dbt VS Code extension declares which <Constant name="fusion" /> versions it supports and checks the installed binary at startup. For the compatibility matrix and how to verify binaries for manual or air-gapped installs, refer to [Version compatibility](/docs/fusion/fusion-version-compatibility).
+The <Constant name="fusion" /> CLI and the language server ship in a single <Constant name="fusion_engine" /> binary, so they always share the same version and can't be mismatched. The dbt VS Code extension declares which <Constant name="fusion" /> versions it supports and checks the installed binary at startup. For the compatibility matrix and how to verify binaries for manual or air-gapped installs, refer to [Version compatibility](/docs/fusion/fusion-version-compatibility).
 

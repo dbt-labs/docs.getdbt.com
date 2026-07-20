@@ -89,13 +89,13 @@ If the extension reports that the installed <Constant name="fusion" /> version i
 
 1. Run `dbt --version` to check your installed <Constant name="fusion" /> version.
 2. Compare it against the [version compatibility matrix](/docs/fusion/fusion-version-compatibility#compatibility-matrix) for your extension version.
-3. Update <Constant name="fusion" /> or the extension so both fall within the supported range. Use the **Download compatible version** action in the notification if it's shown.
+3. Update <Constant name="fusion" /> or the extension so both fall within the supported range. Use the **Download compatible version** action in the notification if it appears.
 
 </Expandable>
 
 <Expandable alt_header="dbt Fusion crashes on startup">
 
-If the extension reports that <Constant name="fusion" /> crashed on startup, first confirm the binary runs on its own:
+If the extension reports that <Constant name="fusion" /> crashed on startup, confirm the binary runs on its own:
 
 1. Run `dbt --version` in your terminal. If this fails, reinstall <Constant name="fusion" /> using [Install the <Constant name="fusion" /> CLI](/docs/local/install-dbt?version=2).
 2. Use the **Show Logs** action in the notification (or open the **Output** tab) to review the startup error.
@@ -103,7 +103,7 @@ If the extension reports that <Constant name="fusion" /> crashed on startup, fir
 
 <Expandable alt_header="A known-bad dbt Fusion version is installed">
 
-If the extension warns that your installed <Constant name="fusion" /> version has a known regression, dbt Labs has flagged that release as [known-bad](/docs/fusion/fusion-version-compatibility#known-bad-releases). Update to the version named in the notification:
+If the extension warns that your installed <Constant name="fusion" /> version has a known regression, dbt Labs has flagged that release as [known-bad](/docs/fusion/fusion-version-compatibility#known-bad-releases). Update to the version named in the notification.
 
 For standalone installations:
 ```shell

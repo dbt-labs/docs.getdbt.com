@@ -12,14 +12,14 @@ The <Constant name="fusion_engine" />, its language server (<Term id="lsp" />), 
 
 ## How versioning works
 
-<Constant name="fusion" /> ships as a single binary that provides both the command-line interface (CLI) and the language server (LSP). Because the CLI and LSP come from the _same_ binary, they can't be version-mismatched with each other.
+<Constant name="fusion" /> ships as a single binary that provides both the command-line interface (CLI) and the language server (LSP). Because the CLI and LSP come from the _same_ binary, they always share the same version and can't be mismatched.
 
 The dbt VS Code extension keeps its own release version because it follows the VS Code Marketplace release lifecycle. To make compatibility explicit, each extension release declares the range of <Constant name="fusion_engine" /> versions it supports. When the extension starts the LSP, it checks the installed <Constant name="fusion" /> version against that range and surfaces an [actionable error](#troubleshooting-version-issues) if they don't match.
 
 | Component | Example versioning |
 | --------- | ---------- |
 | <Constant name="fusion_engine" /> binary (CLI + LSP) | `2.0.0-preview.N` |
-| dbt VS Code extension | THe extension version (for example, `0.36.0`), with compatible <Constant name="fusion" /> version range |
+| dbt VS Code extension | The extension version (for example, `0.36.0`), with compatible <Constant name="fusion" /> version range |
 
 ## Compatibility matrix
 
@@ -35,7 +35,7 @@ A dash (-) in the **Max** column means there is no upper bound yet. Any <Constan
 
 ## Check your installed versions
 
-Run `dbt --version` to see the version of the <Constant name="fusion_engine" /> you have installed:
+To confirm your setup is within the supported range, check the version of the <Constant name="fusion_engine" /> you have installed:
 
 ```shell
 dbt --version
