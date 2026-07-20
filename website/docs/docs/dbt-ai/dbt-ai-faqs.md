@@ -69,7 +69,7 @@ dbt Copilot features include quick-action buttons in <Constant name="studio_ide"
 
 <Expandable alt_header="Can I use my existing dbt Copilot action allotment with dbt Wizard?">
 
-Yes, as a temporary compatibility bridge through July 13. After July 13, this bridge ends. 
+Yes, as a temporary compatibility bridge through July 13, 2026 or longer (timeline subject to change).
 
 </Expandable>
 
@@ -125,13 +125,17 @@ In <Constant name="dbt_platform" />, the <Constant name="wizard"/> BYOK option i
 
 <Expandable alt_header="Does dbt Wizard store or use personal data?">
 
-The user clicks the <Constant name="wizard" /> button. Aside from authentication, it works without personal data, but the user controls what is input into <Constant name="wizard" />.
+dbt Wizard stores your conversation history, including prompts, responses, and query results returned during a session, so you can revisit past chats. Conversation history is retained for 90 days, and feedback submitted on a dbt Wizard conversation is retained for 400 days. 
+
+You can delete your conversation history or feedback in the product at any time.
+You control the information you submit to <Constant name="wizard" />. dbt Labs does not use your prompts, conversation history, command results, or feedback to train AI models.
 
 </Expandable>
 
 <Expandable alt_header="Can dbt Wizard data be deleted upon client written request?">
 
-To the extent client identifies personal or sensitive information uploaded by or on behalf of client to dbt Labs systems by the user in error, such data can be deleted within 30 days of written request.
+Yes. Conversation history is retained for 90 days by default, and feedback submitted on a <Constant name="wizard" /> conversation is retained for 400 days. You can delete this information in the product at any time.
+If a client identifies personal or sensitive information uploaded to dbt Labs systems, that data can be deleted within 30 days of a written request.
 
 </Expandable>
 

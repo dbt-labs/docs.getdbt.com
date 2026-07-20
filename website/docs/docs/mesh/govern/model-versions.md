@@ -8,7 +8,6 @@ keyword: governance, model version, model versioning, dbt model versioning
 
 import VersionsCallout from '/snippets/_model-version-callout.md';
 import ModelGovernanceRollback from '/snippets/_model-governance-rollback.md';
-import LatestVersionPointerBeta from '/snippets/_latest-version-pointer-beta.md';
 import LatestVersionPointerCollision from '/snippets/_latest-version-pointer-collision.md';
 
 <VersionsCallout />
@@ -399,9 +398,8 @@ We opted to use `generate_alias_name` for this functionality so that the logic r
 
 If you want a view that always tracks the latest model version instead of pinning to a specific one, see [Pointing to the latest version](#pointing-to-the-latest-version).
 
-### Pointing to the latest version <Lifecycle status="beta" />
+### Pointing to the latest version
 
-<LatestVersionPointerBeta />
 
 The [`latest_version_pointer`](/reference/resource-configs/latest_version_pointer) config automatically creates a view named after the model's base name (for example, `dim_customers`) that always points to the latest versioned relation (for example, `dim_customers_v2`). When you enable it, querying outside of dbt always returns the current version. This config only applies to versioned models.
 
