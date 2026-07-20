@@ -125,7 +125,9 @@ In <Constant name="dbt_platform" />, the <Constant name="wizard"/> BYOK option i
 
 <Expandable alt_header="Does dbt Wizard store or use personal data?">
 
-dbt Wizard stores your conversation history, including prompts, responses, and query results returned during a session, so you can revisit past chats. Conversation history is retained for 90 days, and feedback submitted on a dbt Wizard conversation is retained for 400 days. You can delete your conversation history or feedback in the product at any time.
+dbt Wizard stores your conversation history, including prompts, responses, and query results returned during a session, so you can revisit past chats. Conversation history is retained for 90 days, and feedback submitted on a dbt Wizard conversation is retained for 400 days. 
+
+You can delete your conversation history or feedback in the product at any time.
 You control the information you submit to dbt Wizard. dbt Labs does not use your prompts, conversation history, command results, or feedback to train AI models.
 
 </Expandable>
