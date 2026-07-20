@@ -22,7 +22,7 @@ Release date: July 21, 2026
 
 ### Dependencies
 
-- Pin `pyathena` to <3.35
+- Pin `pyathena` to v3.35 and older
 
 This compatible release includes functionality from the following versions of dbt Core OSS:
 
