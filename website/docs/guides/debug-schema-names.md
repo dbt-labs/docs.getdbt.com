@@ -94,7 +94,7 @@ You should find that the schema dbt is constructing for your model matches the o
 
 Be careful. Snapshots do not follow this behavior if target_schema is set. To have environment-aware snapshots in v1.9+ or <Constant name="dbt" />, remove the [target_schema config](/reference/resource-configs/target_schema) from your snapshots. If you still want a custom schema for your snapshots, use the [`schema`](/reference/resource-configs/schema) config instead.
 
-## Watch for prefixed schema names (for example, `public_silver`)
+## Prefixed schema names
 
 When your profile `schema` is `public` and a model sets `+schema: silver`, dbt's default macro may build `{target.schema}_{custom_schema_name}` — producing relations such as `public_silver.stg_events` instead of `silver.stg_events`.
 
