@@ -13,12 +13,12 @@ import MCPOauthPreflight from '/snippets/_mcp-oauth-preflight.md';
 
 [Microsoft Visual Studio Code (VS Code)](https://code.visualstudio.com/mcp) is a powerful and popular integrated development environment (IDE).
 
-VS Code can connect to either the **local** dbt MCP server (runs on your machine, supports CLI commands like `dbt run`) or the **remote** dbt MCP server (HTTP, no install, consumption-focused). Before starting, make sure you have:
+VS Code can connect to either the **self-hosted** dbt MCP server (runs on your machine, supports CLI commands like `dbt run`) or the **remote** dbt MCP server (HTTP, no install, consumption-focused). Before starting, make sure you have:
 - VS Code installed with the latest updates.
-- For local MCP: completed the [local MCP setup](/docs/dbt-ai/setup-local-mcp) and configured your dbt project paths.
+- For self-hosted MCP: completed the [self-hosted MCP setup](/docs/dbt-ai/setup-local-mcp) and configured your dbt project paths.
 - For remote MCP: your **MCP URL** from **Account settings** &rarr; **Access URLs** &rarr; **MCP Endpoint URL** in <Constant name="dbt_platform" />.
 
-## Set up with local dbt MCP server
+## Set up with self-hosted dbt MCP server
 
 To get started, in VS Code:
 
@@ -44,10 +44,10 @@ To get started, in VS Code:
     You do not need to clone the dbt-mcp repository. Install [uv](https://docs.astral.sh/uv/getting-started/installation/) and run `uvx dbt-mcp` (or use the config below); cloning is only for contributing.
     :::
 
-    <Expandable alt_header="Local MCP with dbt platform OAuth" >
+    <Expandable alt_header="Self-hosted MCP with dbt platform OAuth" >
 
 
-    Local MCP with OAuth is for users who want to use the <Constant name="dbt_platform" /> features.
+    Self-hosted MCP with OAuth is for users who want to use the <Constant name="dbt_platform" /> features.
 
     Before you begin, make sure your account admin has enabled AI features on your <Constant name="dbt_platform"/> account. Refer to [Enable dbt AI](/docs/platform/enable-dbt-ai) for more info.
     
@@ -57,7 +57,7 @@ To get started, in VS Code:
 
     </Expandable>
 
-    <Expandable alt_header="Local MCP (CLI only)">
+    <Expandable alt_header="Self-hosted MCP (CLI only)">
 
     For users who only want to use dbt commands with <Constant name="core" /> or <Constant name="fusion" />
 
@@ -109,9 +109,9 @@ To get started, in VS Code:
 
     </Expandable>
 
-    <Expandable alt_header="Local MCP with .env">
+    <Expandable alt_header="Self-hosted MCP with .env">
 
-    For advanced users who need custom environment variables or service token authentication. Put your `.env` file in your _dbt project root_ (same folder as `dbt_project.yml`) and use an absolute path with `--env-file`. Refer to the [Environment variables reference](/docs/dbt-ai/mcp-environment-variables) for the complete list of available environment variables for the local MCP server.
+    For advanced users who need custom environment variables or service token authentication. Put your `.env` file in your _dbt project root_ (same folder as `dbt_project.yml`) and use an absolute path with `--env-file`. Refer to the [Environment variables reference](/docs/dbt-ai/mcp-environment-variables) for the complete list of available environment variables for the self-hosted MCP server.
 
     Using the `env` field (single-file configuration):
 
@@ -193,7 +193,7 @@ Now, you can access the dbt MCP server in VS Code through interfaces like GitHub
 
 ## Set up with remote dbt MCP server
 
-The remote dbt MCP server runs in <Constant name="dbt_platform" /> &mdash; no `uvx` or local install needed. VS Code connects to it over HTTP from the same `mcp.json` you use for local servers.
+The remote dbt MCP server runs in <Constant name="dbt_platform" /> &mdash; no `uvx` or self-hosted install needed. VS Code connects to it over HTTP from the same `mcp.json` you use for self-hosted servers.
 
 <MCPRemoteOauthBetaCallout />
 

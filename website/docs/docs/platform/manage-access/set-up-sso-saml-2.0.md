@@ -467,8 +467,8 @@ section to complete the integration.
 
 To complete setup, follow the steps below in <Constant name="dbt" />:
 
-1. Navigate to the **Account Settings** and then click on **Single Sign On**.
-2. Click **Edit** on the upper right corner.
+1. Navigate to **Account settings** > **SSO & SCIM**.
+2. Click **Get started** if SSO has not been configured, or **Edit** if it has already been set up.
 3. Provide the following SSO details:
 
    | Field | Value |

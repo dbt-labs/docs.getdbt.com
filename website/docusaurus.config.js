@@ -161,7 +161,7 @@ var siteSettings = {
           items: [
             {
               label: "Release notes",
-              to: "/docs/dbt-versions/dbt-cloud-release-notes",
+              to: "/docs/dbt-versions/release-notes",
             },
             {
               label: "FAQs",

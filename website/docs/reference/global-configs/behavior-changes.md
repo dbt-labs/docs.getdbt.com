@@ -40,14 +40,14 @@ This table outlines which month of the **Latest** release track in <Constant nam
 | [require_explicit_package_overrides_for_builtin_materializations](/reference/global-configs/behavior-flags/require_explicit_package_overrides_for_builtin_materializations) | 2024.04 | 2024.06 | 1.6.14, 1.7.14 | 1.8.0 | 2.0 |
 | [require_resource_names_without_spaces](/reference/global-configs/behavior-flags/require_resource_names_without_spaces) | 2024.05 | 2025.05 | 1.8.0 | 1.10.0 | 2.0 |
 | [source_freshness_run_project_hooks](/reference/global-configs/behavior-flags/source_freshness_run_project_hooks) | 2024.03 | 2025.05 | 1.8.0 | 1.10.0 | 2.0 |
-| [skip_nodes_if_on_run_start_fails](/reference/global-configs/behavior-flags/skip_nodes_if_on_run_start_fails) | 2024.10 | - | 1.9.0 | - | 2.0 |
-| [state_modified_compare_more_unrendered_values](/reference/global-configs/behavior-flags/state_modified_compare_more_unrendered_values) | 2024.10 | - | 1.9.0 | - | 2.0 |
-| [require_yaml_configuration_for_mf_time_spines](/reference/global-configs/behavior-flags/require_yaml_configuration_for_mf_time_spines) | 2024.10 | - | 1.9.0 | - | 2.0 |
-| [require_batched_execution_for_custom_microbatch_strategy](/reference/global-configs/behavior-flags/require_batched_execution_for_custom_microbatch_strategy) | 2024.11 | - | 1.9.0 | - | 2.0 |
-| [require_nested_cumulative_type_params](/reference/global-configs/behavior-flags/require_nested_cumulative_type_params) | 2024.11 | - | 1.9.0 | - | - |
+| [skip_nodes_if_on_run_start_fails](/reference/global-configs/behavior-flags/skip_nodes_if_on_run_start_fails) | 2024.10 | - | 1.9.0 | 1.12.0 | 2.0 |
+| [state_modified_compare_more_unrendered_values](/reference/global-configs/behavior-flags/state_modified_compare_more_unrendered_values) | 2024.10 | - | 1.9.0 | 1.12.0 | 2.0 |
+| [require_yaml_configuration_for_mf_time_spines](/reference/global-configs/behavior-flags/require_yaml_configuration_for_mf_time_spines) | 2024.10 | - | 1.9.0 | 1.12.0 | 2.0 |
+| [require_batched_execution_for_custom_microbatch_strategy](/reference/global-configs/behavior-flags/require_batched_execution_for_custom_microbatch_strategy) | 2024.11 | - | 1.9.0 | 1.12.0 | 2.0 |
+| [require_nested_cumulative_type_params](/reference/global-configs/behavior-flags/require_nested_cumulative_type_params) | 2024.11 | - | 1.9.0 | 1.12.0 | - |
 | [enable_truthy_nulls_equals_macro](/reference/global-configs/behavior-flags/enable_truthy_nulls_equals_macro) | 2025.02 | - | 1.9.0 | - | - |
-| [validate_macro_args](/reference/global-configs/behavior-flags/validate_macro_args) | 2025.03 | - | 1.10.0 | - | - |
-| [require_all_warnings_handled_by_warn_error](/reference/global-configs/behavior-flags/require_all_warnings_handled_by_warn_error) | 2025.06 | - | 1.10.0 | - | - |
+| [validate_macro_args](/reference/global-configs/behavior-flags/validate_macro_args) | 2025.03 | - | 1.10.0 | 1.12.0 | - |
+| [require_all_warnings_handled_by_warn_error](/reference/global-configs/behavior-flags/require_all_warnings_handled_by_warn_error) | 2025.06 | - | 1.10.0 | 1.12.0 | - |
 | [require_generic_test_arguments_property](/reference/global-configs/behavior-flags/require_generic_test_arguments_property) | 2025.07 | 2025.08 | 1.10.5 | 1.10.8 | - |
 | [require_unique_project_resource_names](/reference/global-configs/behavior-flags/require_unique_project_resource_names) | 2025.12 | - | 1.11.0 | - | - |
 | [require_ref_searches_node_package_before_root](/reference/global-configs/behavior-flags/require_ref_searches_node_package_before_root) | 2025.12 | - | 1.11.0 | - | - |
@@ -60,7 +60,7 @@ This table outlines which month of the **Latest** release track in <Constant nam
 
 ### Flags reaching maturity
 
-Several behavior change flags on the dbt platform `Latest` release track are planned to reach maturity on September 1, 2026, switching their default values from `false` to `true`. The September 1 date applies only to the dbt platform release tracks. The flags will still mature in the final release of dbt Core v1.12 as originally planned. For intro dates, refer to the dbt Core behavior changes table.
+Several behavior change flags on the <Constant name="dbt_platform" /> `Latest` release track are planned to reach maturity on September 1, 2026, switching their default values from `false` to `true`. The September 1 date applies only to the <Constant name="dbt_platform" /> release tracks. The flags have reached maturity in <Constant name="core" /> v1.12. For intro dates, refer to the <Constant name="core" /> behavior changes table.
 
 | Flag | Impact |
 |---|---|
@@ -116,13 +116,13 @@ flags:
   require_explicit_package_overrides_for_builtin_materializations: true
   require_resource_names_without_spaces: true
   source_freshness_run_project_hooks: true
-  skip_nodes_if_on_run_start_fails: false
-  state_modified_compare_more_unrendered_values: false
-  require_yaml_configuration_for_mf_time_spines: false
-  require_batched_execution_for_custom_microbatch_strategy: false
-  require_nested_cumulative_type_params: false
-  validate_macro_args: false
-  require_all_warnings_handled_by_warn_error: false
+  skip_nodes_if_on_run_start_fails: false  # true in dbt Core v1.12
+  state_modified_compare_more_unrendered_values: false  # true in dbt Core v1.12
+  require_yaml_configuration_for_mf_time_spines: false  # true in dbt Core v1.12
+  require_batched_execution_for_custom_microbatch_strategy: false  # true in dbt Core v1.12
+  require_nested_cumulative_type_params: false  # true in dbt Core v1.12
+  validate_macro_args: false  # true in dbt Core v1.12
+  require_all_warnings_handled_by_warn_error: false  # true in dbt Core v1.12
   require_generic_test_arguments_property: true
   require_unique_project_resource_names: false
   require_ref_searches_node_package_before_root: false
