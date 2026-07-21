@@ -399,7 +399,7 @@ The resulting table will look like this:
 
 ## Snapshot meta-fields
 
-Snapshot <Term id="table">tables</Term> will be created as a clone of your source dataset, plus some additional meta-fields*.
+Snapshot <Term id="table">tables</Term> will be created as a clone of your source dataset, plus some additional meta-fields.
 
 In <Constant name="core" /> v1.9+ (or available sooner in [the **Latest** release track in <Constant name="dbt" />](/docs/dbt-versions/dbt-release-tracks)):
 - These column names can be customized to your team or organizational conventions using the [`snapshot_meta_column_names`](/reference/resource-configs/snapshot_meta_column_names) config.
@@ -409,15 +409,19 @@ In <Constant name="core" /> v1.9+ (or available sooner in [the **Latest** releas
 
 | Field          | <div style={{width:'250px'}}>Meaning</div> | Notes | Example|
 | -------------- | ------- | ----- | ------- |
-| `dbt_valid_from` | The timestamp when this snapshot row was first inserted and became valid. | This column can be used to order the different "versions" of a record. | `snapshot_meta_column_names: {dbt_valid_from: start_date}` |
+| `dbt_valid_from` | The timestamp when this snapshot row became valid. | Use this to order versions of a record. For a given row, this often matches `dbt_updated_at`, but they mean different things. Refer to [Strategy and meta-field timestamps](#strategy-and-meta-field-timestamps) for examples by strategy. | `snapshot_meta_column_names: {dbt_valid_from: start_date}` |
 | `dbt_valid_to`   | The timestamp when this row became invalidated. For current records, this is `NULL` by default or the value specified in `dbt_valid_to_current`. | The most recent snapshot record will have `dbt_valid_to` set to `NULL` or the specified value.  | `snapshot_meta_column_names: {dbt_valid_to: end_date}` |
-| `dbt_scd_id`     | A unique key generated for each snapshot row. | This is used internally by dbt. | `snapshot_meta_column_names: {dbt_scd_id: scd_id}` |
-| `dbt_updated_at` | The `updated_at` timestamp of the source record when this snapshot row was inserted. | This is used internally by dbt. | `snapshot_meta_column_names: {dbt_updated_at: modified_date}` |
+| `dbt_scd_id`     | A unique key generated for each snapshot row. | Used internally by dbt to identify each SCD version. Refer to [How dbt_scd_id is calculated](/reference/resource-configs/snapshot_meta_column_names#how-dbt_scd_id-is-calculated) to learn how dbt builds this key. | `snapshot_meta_column_names: {dbt_scd_id: scd_id}` |
+| `dbt_updated_at` | The source record's change timestamp when this snapshot row was inserted. | Used internally by dbt. [Strategy and meta-field timestamps](#strategy-and-meta-field-timestamps) describes which value populates this column for each strategy. | `snapshot_meta_column_names: {dbt_updated_at: modified_date}` |
 | `dbt_is_deleted` | A string value indicating if the record has been deleted. (`True` if deleted, `False` if not deleted). |Added when `hard_deletes='new_record'` is configured.  | `snapshot_meta_column_names: {dbt_is_deleted: is_deleted}` |
 
 All of these column names can be customized using the `snapshot_meta_column_names` config. Refer to this [example](/reference/resource-configs/snapshot_meta_column_names#example) for more details.
 
-*The timestamps used for each column are subtly different depending on the strategy you use:
+On insert, `dbt_valid_from` and `dbt_updated_at` are set from the same value. They represent validity start and recorded change time, respectively.
+
+### Strategy and meta-field timestamps
+
+The timestamps used for each column depend on the strategy you use:
 
 - For the `timestamp` strategy, the configured `updated_at` column is used to populate the `dbt_valid_from`, `dbt_valid_to` and `dbt_updated_at` columns.
 
