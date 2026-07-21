@@ -66,7 +66,7 @@ Private DNS on the endpoint only works once <Constant name="dbt" /> (the provide
 <Lightbox src="/img/docs/dbt-platform/aws-ingress-privatelink/enable-private-dns-name.png" title="Enable private DNS name selected under Additional settings"/>
 
 :::warning Always enable private DNS name
-Selecting **Enable private DNS name** automatically provisions the private hosted zone and record set for your `<customer_name>.private.dbt.com` access URL. This is the standard, recommended configuration. Configuring hostnames manually instead can lead to TLS errors, so keep this box checked.
+Selecting **Enable private DNS name** automatically provisions the private hosted zone and record set for your `<customer_name>.private.dbt.com` access URL. This is the standard, recommended configuration. Configuring hostnames manually instead can lead to TLS errors and other issues, so keep this box checked.
 :::
 
 ### Step 4: Choose subnets and a security group
