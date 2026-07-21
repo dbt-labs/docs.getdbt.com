@@ -2,14 +2,14 @@
 title: "Compare changes locally with your dbt platform account"
 id: "vs-compare-changes"
 description: "Compare how code edits will change your data while you develop your dbt platform project locally with the dbt VS Code extension."
-sidebar_label: "Compare changes locally"
+sidebar_label: "Compare changes"
 image: /img/docs/extension/vs-compare-changes-tab.png
 ---
 
-# Compare changes in local development <Lifecycle status="beta,managed,managed_plus" />
+# Compare changes during development <Lifecycle status="beta" />
 
 :::info
-This feature is in beta and rolling out to dbt VS Code extension users on <Constant name="dbt_platform" /> Enterprise or Enterprise+ accounts.
+This feature is in beta. All dbt VS Code extension users can use compare changes during the 14-day trial. After the trial, [sign in or register](/docs/sign-in-dbt-extension) for a <Constant name="dbt_platform" /> account to keep using it.
 :::
 
 The dbt VS Code extension previews and compares how your local edits affect your data in your <Constant name="dbt_platform"/> account &mdash;  including added/removed rows and join verification &mdash;  without waiting on CI.
@@ -30,19 +30,25 @@ Compare changes in development is available for models only. Support for seeds, 
 
 To use the dbt VS Code extension compare changes feature, you need:
 
-- A <Constant name="dbt_platform" /> [Enterprise or Enterprise+](https://www.getdbt.com/pricing) account
 - A <Constant name="fusion" /> [supported data platform](/docs/fusion/supported-features?version=2.0#requirements) (BigQuery, Databricks, Redshift, or Snowflake)
-- The [dbt VS Code extension](/docs/install-dbt-extension) installed with a local installation of the [<Constant name="fusion_engine" />](/docs/fusion/get-started-fusion)
-- [Advanced CI features](/docs/cloud/account-settings#enabling-advanced-ci-features) enabled in your <Constant name="dbt_platform" /> account
-- A `dbt_cloud.yml` file in your local `.dbt` directory (`~/.dbt/dbt_cloud.yml` on macOS/Linux). The extension uses this to authenticate with <Constant name="dbt_platform" />. Without that file, compare changes cannot connect to <Constant name="dbt_platform" />. [Download](/docs/install-dbt-extension?version=2.0#register-with-dbt_cloudyml) it from your <Constant name="dbt_platform" /> account.
-- A baseline state to compare your changes against. See [How it works](#how-it-works) to choose between [automatic deferral](/docs/cloud/about-cloud-develop-defer) or [`manifest.json`](/reference/artifacts/manifest-json?version=2.0) manual setup.
+- The [dbt VS Code extension](/docs/install-dbt-extension) installed with a self-hosted installation of the [<Constant name="fusion_engine" />](/docs/fusion/get-started-fusion)
+- A baseline state to compare your changes against &mdash; refer to [How it works](#how-it-works) to choose between [automatic deferral](/docs/platform/about-defer) or [`manifest.json`](/reference/artifacts/manifest-json?version=2.0) manual setup.
+
+**Sign-in and authentication**
+
+Compare changes is available to all dbt VS Code extension users during the 14-day trial. After the trial:
+
+- **If you use <Constant name="dbt_platform" /> deferral (recommended):** [Sign in or register](/docs/sign-in-dbt-extension) for a free <Constant name="dbt_platform" /> account. You'll also need a [`dbt_cloud.yml`](/reference/dbt_cloud.yml) file in your local `.dbt` directory (`~/.dbt/dbt_cloud.yml` on macOS/Linux) so the extension can fetch the deferred manifest from your environment.
+- **If you set the baseline manually with a `manifest.json`:** No <Constant name="dbt_platform" /> account is required. Point the extension at a local `manifest.json` and compare changes runs against it.
 
 ## How it works
 
 Compare changes in development works by comparing two materialized models in your warehouse. Specifically, it compares the model built in your dev schema (determined by your active profile) against the model referenced in your `manifest.json` (for example, your last production state). Both sides of the comparison are always warehouse tables; it does not compare SQL file contents.
 
-  - If you're using <Constant name="dbt_platform" />'s deferral (recommended): You need at least one successful job run in the environment you are deferring to (usually staging or production). This allows <Constant name="fusion" /> to auto-download the deferred manifest and use that as your baseline state to compare against.
-  - If you're manually setting a `state` directory: You can manually point the extension to a `manifest.json` (for example, copied from another environment) without needing a job run. <br />
+The path you choose determines whether you need a <Constant name="dbt_platform" /> account:
+
+  - **<Constant name="dbt_platform" /> deferral (recommended):** Requires a <Constant name="dbt_platform" /> account and at least one successful job run in the environment you're deferring to (usually staging or production). <Constant name="fusion" /> auto-downloads the deferred manifest and uses it as your baseline state.
+  - **Manual `state` directory:** Point the extension at a local `manifest.json` (for example, copied from another environment). No <Constant name="dbt_platform" /> account is required; no job run is required. <br />
 
 ## Use compare changes
 
@@ -72,7 +78,7 @@ The **Compare** tab displays the changes to the data's primary keys, rows, and c
 
 <Expandable alt_header="Are queries run on behalf of the developer?"> 
 
-  Yes. All comparison queries in development are run using your local development credentials using the `dbt_cloud.yml` file, directly from the dbt VS Code extension. The <Constant name="fusion_engine" /> uses your credentials to execute comparison queries in your warehouse. The results are stored in memory, so that we can keep them populated into the Compare tab for that file until you re-run.
+  Yes. All comparison queries in development run using your development credentials or platform-based user credentials, directly from the dbt VS Code extension. If you authenticated with a [`dbt_cloud.yml`](/reference/dbt_cloud.yml) file, these are the credentials configured in your **Account settings**; otherwise it uses the credentials from your active dbt profile. The <Constant name="fusion_engine" /> uses your credentials to execute comparison queries in your warehouse. The results are stored in memory, so that we can keep them populated into the Compare tab for that file until you re-run.
 </Expandable>
 <Expandable alt_header="Is this using my warehouse credits?"> 
   Yes. Because the comparison runs in your development environment using your dev credentials, it will use your warehouse’s compute.
@@ -81,14 +87,14 @@ The **Compare** tab displays the changes to the data's primary keys, rows, and c
 
   No. When you click **Compare**, the extension builds the model into your development schema automatically, so you don’t need to run `dbt build` yourself. It then compares that development build against the version in your deferred environment (usually staging or production).
 
-  If the model hasn’t been built yet in your deferred environment, the comparison can’t run. For more details, see [Defer to production](/docs/cloud/about-cloud-develop-defer).
+  If the model hasn’t been built yet in your deferred environment, the comparison can’t run. For more details, see [Defer to production](/docs/platform/about-defer).
 
 </Expandable>
 
 
 <Expandable alt_header="How is this different from Advanced CI compare changes?">
 
-The dbt VS Code extension's compare changes feature applies only to your local development environment. If you're looking to compare changes between your production environment and the pull request's latest commit, check out [Advanced CI compare changes](/docs/deploy/advanced-ci#compare-changes).
+The dbt VS Code extension's compare changes feature applies only to your self-hosted dbt development environment. If you're looking to compare changes between your production environment and the pull request's latest commit, check out [Advanced CI compare changes](/docs/deploy/advanced-ci#compare-changes).
 
 import CompareChangesTable from '/snippets/_compare-changes-table.md';
 

@@ -36,7 +36,7 @@ For more info on `gitignore` syntax, refer to the [Git docs](https://git-scm.com
 4. Save the changes but _don't commit_.
 5. Restart the IDE by clicking on the three dots next to the **IDE Status button** on the lower right corner of the IDE screen and select **Restart IDE**.
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-ide/restart-ide.png" width="50%" title="Restart the IDE by clicking the three dots on the lower right or click on the Status bar" />
+<Lightbox src="/img/docs/dbt-platform/platform-ide/restart-ide.png" width="50%" title="Restart the IDE by clicking the three dots on the lower right or click on the Status bar" />
 
 6. Once the <Constant name="studio_ide" /> restarts, go to the **File <Constant name="catalog" />** to delete the following files or folders (if they exist).  No data will be lost:
     * `target`, `dbt_modules`, `dbt_packages`, `logs`
@@ -51,7 +51,7 @@ For more info on `gitignore` syntax, refer to the [Git docs](https://git-scm.com
 12. Once the branch has changed, click the **Pull from remote** button to pull in all the changes. 
 13. Verify the changes by making sure the files/folders in the `.gitignore` file are in italics. 
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-ide/gitignore-italics.png" width="50%" title="A dbt project on the main branch that has properly configured gitignore folders (highlighted in italics)."/>
+<Lightbox src="/img/docs/dbt-platform/platform-ide/gitignore-italics.png" width="50%" title="A dbt project on the main branch that has properly configured gitignore folders (highlighted in italics)."/>
 
 </Expandable>
 
@@ -84,7 +84,7 @@ dbt_modules/
     * `target`, `dbt_modules`, `dbt_packages`, `logs`
 7. Commit (save) the deletions to the main branch.
 8. Switch to the <Constant name="studio_ide" /> , and open the project that you're fixing.
-9. [Rollback your repo to remote](/docs/cloud/git/version-control-basics#the-git-button-in-the-cloud-ide)  in the IDE by clicking on the three dots next to the **IDE Status** button on the lower right corner of the IDE screen, then select **Rollback to remote**.
+9. [Rollback your repo to remote](/docs/platform/git/version-control-basics#the-git-button-in-the-cloud-ide)  in the IDE by clicking on the three dots next to the **IDE Status** button on the lower right corner of the IDE screen, then select **Rollback to remote**.
     * **Note** &mdash; Rollback to remote resets your repo back to an earlier clone from your remote. Any saved but uncommitted changes will be lost, so make sure you copy any modified code that you want to keep in a temporary location outside of <Constant name="dbt" />.
 10. Once you rollback to remote, open the `.gitignore` file in the branch you're working in.  If the new changes aren't included, you'll need to merge the latest commits from the main branch into your working branch.
 11. Go to the **File Explorer** to verify the `.gitignore` file contains the correct entries and make sure the untracked files/folders in the .gitignore file are in *italics*. 
@@ -115,7 +115,7 @@ dbt_modules/
 8. Open a merge request using the git provider web interface.  The merge request should attempt to merge the changes into the 'main' branch that all development branches are created from.
 9. Follow the necessary procedures to get the branch approved and merged into the 'main' branch.  You can delete the branch after the merge is complete. 
 10. Once the merge is complete, go back to the <Constant name="studio_ide" />, and open the project that you're fixing.
-11. [Rollback your repo to remote](/docs/cloud/git/version-control-basics#the-git-button-in-the-cloud-ide) in the <Constant name="studio_ide" /> by clicking on the three dots next to the **<Constant name="studio_ide" /> Status** button on the lower right corner of the <Constant name="studio_ide" /> screen, then select **Rollback to remote**. 
+11. [Rollback your repo to remote](/docs/platform/git/version-control-basics#the-git-button-in-the-cloud-ide) in the <Constant name="studio_ide" /> by clicking on the three dots next to the **<Constant name="studio_ide" /> Status** button on the lower right corner of the <Constant name="studio_ide" /> screen, then select **Rollback to remote**. 
     * **Note** &mdash; Rollback to remote resets your repo back to an earlier clone from your remote. Any saved but uncommitted changes will be lost, so make sure you copy any modified code that you want to keep in a temporary location outside of <Constant name="dbt" />.
 12. Once you rollback to remote, open the `.gitignore` file in the branch you're working in.  If the new changes aren't included, you'll need to merge the latest commits from the main branch into your working branch.
 13. Go to the **File Explorer** to verify the `.gitignore` file contains the correct entries and make sure the untracked files/folders in the .gitignore file are in *italics*. 

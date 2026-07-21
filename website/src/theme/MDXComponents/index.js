@@ -37,13 +37,13 @@ import Callout from '@site/src/components/callout'
 import BlogPostCard from '@site/src/components/blogPostCard';
 import DocCarousel from '@site/src/components/docCarousel';
 import PostCarousel from '@site/src/components/postCarousel';
-import dbtEditor from '@site/src/components/dbt-editor';
 import Icon from '@site/src/components/icon';
 import Lifecycle from '@site/src/components/lifeCycle';
 import ProductCard from '@site/src/components/productCard';
 import DetailsToggle from '@site/src/components/detailsToggle';
 import Expandable from '@site/src/components/expandable';
 import ConfettiTrigger from '@site/src/components/confetti/';
+import WizardPopcorn from '@site/src/components/wizardPopcorn/';
 import VersionCallout from '@site/src/components/versionCallout';
 import IntroText from '@site/src/components/IntroText';
 import Constant from '@site/src/components/constant';
@@ -88,13 +88,13 @@ const MDXComponents = {
   YoutubeVideo: YoutubeVideo,
   VersionBlock: VersionBlock,
   Term: Term,
-  dbtEditor: dbtEditor,
   Icon: Icon,
   Lifecycle: Lifecycle,
   ProductCard: ProductCard,
   DetailsToggle: DetailsToggle,
   Expandable: Expandable,
   ConfettiTrigger: ConfettiTrigger,
+  WizardPopcorn: WizardPopcorn,
   SortableTable: SortableTable,
   FilterableTable: FilterableTable,
   SimpleTable: SimpleTable,

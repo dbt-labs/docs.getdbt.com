@@ -8,6 +8,12 @@ description: "Learn about the performance of your models so you can make improve
 
 <Constant name="catalog" /> provides metadata on <Constant name="dbt" /> runs for in-depth model performance and quality analysis. This feature assists in reducing infrastructure costs and saving time for data teams by highlighting where to fine-tune projects and deployments &mdash; such as model refactoring or job configuration adjustments.
 
+To view model performance in <Constant name="catalog" />:
+
+1. Navigate to **<Constant name="catalog" />** in the left-hand menu.
+2. Select your project in the left sidebar.
+3. Click the **Performance** tab.
+
 <Lightbox src="/img/docs/collaborate/dbt-explorer/explorer-model-performance.gif" width="100%" title="Overview of Performance page navigation."/>
 
 import ExplorerCourse from '/snippets/_explorer-course-link.md';

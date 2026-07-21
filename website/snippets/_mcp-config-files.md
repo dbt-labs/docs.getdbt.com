@@ -2,7 +2,7 @@
 
 <TabItem value="platform-only" label="dbt platform only">
 
-This option is for users who only want dbt platform features (Discovery API, Semantic Layer, job management) without local CLI commands.
+This option is for users who only want dbt platform features (Discovery API, Semantic Layer, job management) without self-hosted dbt CLI commands.
 
 When you use only the dbt platform, the CLI tools are automatically disabled. You can find the `DBT_HOST` field value in your dbt platform account information under **Access URLs**.
 
@@ -21,7 +21,7 @@ When you use only the dbt platform, the CLI tools are automatically disabled. Yo
 }
 ```
 
-**Note:** Replace `YOUR-ACCESS-URL` with your Access URL hostname (for example, `abc123.us1.dbt.com`). Both `abc123.us1.dbt.com` and `https://abc123.us1.dbt.com` are accepted. This enables OAuth authentication without requiring local dbt installation.
+**Note:** Replace `YOUR-ACCESS-URL` with your Access URL hostname (for example, `abc123.us1.dbt.com`). Both `abc123.us1.dbt.com` and `https://abc123.us1.dbt.com` are accepted. This enables OAuth authentication without requiring self-hosted dbt installation.
 
 </TabItem>
 

@@ -62,7 +62,7 @@ export const Feedback = () => {
     try {
       // Execute reCAPTCHA
       const token = await window.grecaptcha.execute(
-        "6LeIksMrAAAAABYsWNCpUv15lXXzEZj91zdDCymo",
+        "6LdcbMEsAAAAAOMzfSqbwkS5beDLJBxqIedWFz6M",
         {
           action: "feedback_submission",
         }

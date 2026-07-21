@@ -86,7 +86,7 @@ Some [plans](https://www.getdbt.com/pricing) support only one dbt project, while
 
 ## New projects
 
-You can create new projects and [share them](/docs/cloud/git/git-version-control) with other people by making them available on a hosted git repository like GitHub, GitLab, and BitBucket.
+You can create new projects and [share them](/docs/platform/git/git-version-control) with other people by making them available on a hosted git repository like GitHub, GitLab, and BitBucket.
 
 After you set up a connection with your data platform, you can [initialize your new project in <Constant name="dbt" />](/guides) and start developing. Or, run [dbt init from the command line](/reference/commands/init) to set up your new project.
 
@@ -94,7 +94,7 @@ During project initialization, dbt creates sample model files in your project di
 
 ## Sample projects
 
-If you want to explore dbt projects more in-depth, you can clone dbt Lab’s [Jaffle shop](https://github.com/dbt-labs/jaffle_shop) on GitHub. It's a runnable project that contains sample configurations and helpful notes.
+If you want to explore dbt projects more in-depth, refer to [Clone the Jaffle Shop sample project](/guides/clone-jaffle-shop). It's a runnable project that contains sample configurations and helpful notes.
 
 If you want to see what a mature, production project looks like, check out the [GitLab Data Team public repo](https://gitlab.com/gitlab-data/analytics/-/tree/master/transform/snowflake-dbt).
 

@@ -1,7 +1,8 @@
 ---
-resource_types: [models]
+resource_types: [models, tests, seeds, snapshots]
 title: "static_analysis"
-description: "Use static_analysis config to control how the Fusion engine performs static SQL analysis for models."
+description: "Use the static_analysis config to control how the Fusion engine performs static SQL analysis for models, tests, seeds, and snapshots."
+intro_text: "static_analysis controls how the Fusion engine analyzes SQL at compile time for models, tests, seeds, and snapshots."
 datatype: string
 default_value: baseline
 sidebar_label: "static_analysis"
@@ -13,9 +14,13 @@ The `static_analysis` config is available in the <Constant name="fusion_engine"/
 
 :::
 
+The `static_analysis` config sets how the <Constant name="fusion_engine" /> validates SQL before execution—using `strict` analysis, a `baseline` that balances checks with compatibility, or `off` to skip analysis when needed. You can find supported configuration locations for each resource type.
+
+To check out which Snowflake functions are supported in <Constant name="fusion"/> in `strict` mode, refer to [Snowflake function support](/reference/resource-configs/snowflake-function-support). For BigQuery, refer to [BigQuery function support](/reference/resource-configs/bigquery-function-support).
+
 <Tabs>
 
-<TabItem value="dbt_project.yml" label="Project YAML file">
+<TabItem value="models" label="Models">
 
 <File name='dbt_project.yml'>
 
@@ -28,10 +33,6 @@ models:
 
 </File>
 
-</TabItem>
-
-<TabItem value="Properties YAML file">
-
 <File name='models/filename.yml'>
 
 ```yml
@@ -42,19 +43,89 @@ models:
 ```
 
 </File>
-</TabItem>
-
-<TabItem value="SQL file config">
 
 <File name='models/model_name.sql'>
 
 ```sql
 {{ config(static_analysis='strict' | 'baseline' | 'off') }}
+```
 
-select 
-  user_id,
-  my_cool_udf(ip_address) as cleaned_ip
-from {{ ref('my_model') }}
+</File>
+
+</TabItem>
+
+<TabItem value="tests" label="Tests">
+
+<File name='dbt_project.yml'>
+
+```yml
+data_tests:
+  +static_analysis: strict | baseline | off
+```
+
+</File>
+
+<File name='models/filename.yml'>
+
+```yml
+models:
+  - name: model_name
+    data_tests:
+      - not_null:
+          arguments:
+            column_name: your_column_name
+          config:
+            static_analysis: strict | baseline | off
+```
+
+</File>
+
+</TabItem>
+
+<TabItem value="seeds" label="Seeds">
+
+<File name='dbt_project.yml'>
+
+```yml
+seeds:
+  [resource-path](/reference/resource-configs/resource-path):
+    +static_analysis: strict | baseline | off
+```
+
+</File>
+
+<File name='seeds/filename.yml'>
+
+```yml
+seeds:
+  - name: seed_name
+    [config](/reference/resource-properties/config):
+      static_analysis: strict | baseline | off
+```
+
+</File>
+
+</TabItem>
+
+<TabItem value="snapshots" label="Snapshots">
+
+<File name='dbt_project.yml'>
+
+```yml
+snapshots:
+  [resource-path](/reference/resource-configs/resource-path):
+    +static_analysis: strict | baseline | off
+```
+
+</File>
+
+<File name='snapshots/filename.yml'>
+
+```yml
+snapshots:
+  - name: snapshot_name
+    [config](/reference/resource-properties/config):
+      static_analysis: strict | baseline | off
 ```
 
 </File>
@@ -64,6 +135,8 @@ from {{ ref('my_model') }}
 </Tabs>
 
 ## Definition
+
+You can configure `static_analysis` for [models](/docs/build/sql-models), [data tests](/docs/build/data-tests), [seeds](/docs/build/seeds), and [snapshots](/docs/build/snapshots).
 
 You can configure if and when the <Constant name="fusion_engine" /> performs static SQL analysis for a model. Configure the `static_analysis` config in your project YAML file (`dbt_project.yml`), model properties YAML file, or in a SQL config block in your model file. Refer to [Principles of static analysis](/docs/fusion/new-concepts?version=1.12#principles-of-static-analysis) for more information on the different modes of static analysis.
 
@@ -131,14 +204,44 @@ See [static analysis CLI flag](/reference/global-configs/static-analysis-flag).
 
 ## Examples
 
-The following examples show how to disable static analysis for all models in a package, for a single model, and for a model that uses a custom UDF.
+The following examples show how to disable or configure `static_analysis` for different scenarios:
 
 <!-- no toc -->
+- [Enable strict analysis for all your models](#enable-strict-analysis-for-all-your-models)
+- [Enable strict analysis for your models, not packages](#enable-strict-analysis-for-your-models-not-packages)
 - [Disable static analysis for all models in a package](#disable-static-analysis-for-all-models-in-a-package)
 - [Disable static analysis in YAML for a single model](#disable-static-analysis-in-yaml-for-a-single-model)
-- [Disable static analysis in SQL for a model using a custom UDF](#disable-static-analysis-in-sql-for-a-model-using-a-custom-udf)   
+- [Disable static analysis in SQL for a model using a custom UDF](#disable-static-analysis-in-sql-for-a-model-using-a-custom-udf)
+- [Configure static analysis for tests](#configure-static-analysis-for-tests)
+- [Configure static analysis for seeds](#configure-static-analysis-for-seeds)
+- [Configure static analysis for snapshots](#configure-static-analysis-for-snapshots)
+
+#### Enable strict analysis for all your models
+
+The recommended way to get maximum SQL validation for your entire project is to set `strict` in the top-level `models` configuration in your `dbt_project.yml`. This configuration applies strict analysis to every model in your project, so you don't need to configure each model individually:
+
+<File name='dbt_project.yml'>
+
+```yml
+name: jaffle_shop
+
+models:
+  jaffle_shop:
+    +static_analysis: strict
+    staging:
+      +materialized: view
+    marts:
+      +materialized: table
+```
+
+</File>
+
+You can set individual subdirectories or models to `baseline` or `off` where needed (for example, models that use unsupported UDFs). Individual models can use less strict settings than the project-level config, but you can't set them to stricter settings. The project default is `baseline`.
+
+In this example, strict static analysis applies only to Jaffle Shop models. Installed packages keep the default `baseline` setting unless you explicitly configure them.
 
 #### Disable static analysis for all models in a package
+
 This example shows how to disable static analysis for all models in a package. The [`+` prefix](/reference/resource-configs/plus-prefix) applies the config to all models in the package.
 
 <File name='dbt_project.yml'>
@@ -189,7 +292,97 @@ from {{ ref('my_model') }}
 
 </File>
 
+#### Configure static analysis for data tests
+
+This example shows how to set static analysis for all tests in a project using `dbt_project.yml`.
+
+<File name='dbt_project.yml'>
+
+```yaml
+# dbt_project.yml
+data_tests:
+  +static_analysis: baseline
+```
+
+</File>
+
+To configure static analysis for a specific data test on a model:
+
+<File name='models/filename.yml'>
+
+```yaml
+# models/filename.yml
+models:
+  - name: my_model
+    data_tests:
+      - not_null:
+          arguments:
+            column_name: order_id
+          config:
+            static_analysis: off
+```
+
+</File>
+
+#### Configure static analysis for seeds
+
+This example shows how to set static analysis for all seeds in a project.
+
+<File name='dbt_project.yml'>
+
+```yaml
+# dbt_project.yml
+seeds:
+  your_project:
+    +static_analysis: baseline
+```
+
+</File>
+
+To configure a single seed in a properties file:
+
+<File name='seeds/filename.yml'>
+
+```yaml
+# seeds/filename.yml
+seeds:
+  - name: my_seed
+    config:
+      static_analysis: off
+```
+
+</File>
+
+#### Configure static analysis for snapshots
+
+This example shows how to set static analysis for all snapshots in a project.
+
+<File name='dbt_project.yml'>
+
+```yaml
+# dbt_project.yml
+snapshots:
+  your_project:
+    +static_analysis: baseline
+```
+
+</File>
+
+To configure a single snapshot in a properties file:
+
+<File name='snapshots/filename.yml'>
+
+```yaml
+# snapshots/filename.yml
+snapshots:
+  - name: my_snapshot
+    config:
+      static_analysis: off
+```
+
+</File>
+
 ## Considerations
 
-- Disabling static analysis means that features of the VS Code extension that depend on SQL comprehension will be unavailable.
-- Static analysis might fail in some cases (for example, dynamic SQL constructs or unrecognized UDFs) and may require setting `static_analysis: off`. For more examples, refer to [When should I turn static analysis off?](/docs/fusion/new-concepts#when-should-i-turn-static-analysis-off).
+- For models, disabling static analysis means that features of the VS Code extension that depend on SQL comprehension will be unavailable.
+- For models, static analysis can fail in some cases (for example, dynamic SQL constructs or unrecognized UDFs) and you might need to set `static_analysis: off`. For more examples, refer to [When should I turn static analysis off?](/docs/fusion/new-concepts#when-should-i-turn-static-analysis-off).

@@ -56,7 +56,7 @@ Choose one of the following paths to get started with the dbt Fusion engine.
 <Card
     title="Upgrade to Fusion"
     body="Learn how to upgrade your cloud-hosted environments to the dbt Fusion engine."
-    link="/docs/dbt-versions/upgrade-dbt-version-in-cloud#dbt-fusion-engine in the dbt platform"
+    link="/docs/dbt-versions/upgrade-dbt-platform-version#dbt-fusion-engine in the dbt platform"
     icon="dbt-bit"/>
 
 </div>

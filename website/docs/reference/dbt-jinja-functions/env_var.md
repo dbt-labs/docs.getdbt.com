@@ -5,11 +5,55 @@ id: "env_var"
 description: "Incorporate environment variables using `env_var` function."
 ---
 
-import Envvarsecrets from '/snippets/_env-var-secrets.md'; 
+import Envvarsecrets from '/snippets/_env-var-secrets.md';
+import EnvFileConsiderations from '/snippets/_env-file-considerations.md';
 
 <Envvarsecrets />
 
-If the `DBT_USER` and `DBT_ENV_SECRET_PASSWORD` environment variables are present when dbt is invoked, dbt will use these variables in your connection configuration &mdash; for example, in `profiles.yml` when running locally, or in [deployment credentials](/docs/deploy/deploy-environments#deployment-credentials) if you have a <Constant name="dbt_platform" /> project. If your project references environment variables that aren't set, dbt will raise a compilation error.
+If the `DBT_USER` and `DBT_ENV_SECRET_PASSWORD` environment variables are present when dbt is invoked, dbt will use these variables in your connection configuration &mdash; for example, in `profiles.yml` when running locally, or in [connection profiles](/docs/platform/about-profiles) if you have a <Constant name="dbt_platform" /> project. If your project references environment variables that aren't set, dbt will raise a compilation error.
+
+
+<VersionBlock firstVersion="1.12">
+
+### Using the `.env` file
+
+When running dbt locally ([<Constant name="fusion"/> CLI](/docs/local/install-dbt?version=2), dbt VS Code extension, and <Constant name="core"/> v1.12), dbt automatically loads environment variables from a `.env` file in your current working directory (where you run the dbt command). Shell environment variables take precedence over values in `.env` and will not be overridden by the file.
+
+Create a `.env` file (typically at the root of your dbt project) and define variables using `KEY=value` syntax. For example:
+
+<File name='.env'>
+
+```bash
+DBT_USER=user
+DBT_PASSWORD=password
+DBT_SCHEMA=dbt_schema
+```
+
+</File>
+
+Reference them in your `profiles.yml` using `env_var()`:
+
+<File name='~/.dbt/profiles.yml'>
+
+```yaml
+my_profile:
+  target: dev
+  outputs:
+    dev:
+      type: postgres
+      host: localhost
+      user: "{{ env_var('DBT_USER') }}"
+      password: "{{ env_var('DBT_PASSWORD') }}"
+      schema: "{{ env_var('DBT_SCHEMA') }}"
+      port: 5432
+      threads: 4
+```
+
+</File>
+
+<EnvFileConsiderations />
+
+</VersionBlock>
 
 ### Converting env_vars
 

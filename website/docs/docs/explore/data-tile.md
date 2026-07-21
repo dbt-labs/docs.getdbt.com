@@ -20,21 +20,21 @@ The data health tile:
 Data health tiles rely on [exposures](/docs/build/exposures) to surface data health signals in your dashboards. An exposure defines how specific outputs &mdash; like dashboards or reports &mdash; depend on your data models. Exposures in dbt can be configured in two ways:
 
 - Manual &mdash; Defined [manually](/docs/build/exposures#declaring-an-exposure) and explicitly in your project’s YAML files.
-- Automatic &mdash; Pulled automatically for supported <Constant name="dbt" /> integrations. <Constant name="dbt" /> automatically [creates and visualizes downstream exposures](/docs/cloud-integrations/downstream-exposures), removing the need for manual YAML definitions. These downstream exposures are stored in dbt’s metadata system, appear in [<Constant name="catalog" />](/docs/explore/explore-projects), and behave like manual exposures, however they don’t exist in YAML files.
+- Automatic &mdash; Pulled automatically for supported <Constant name="dbt" /> integrations. <Constant name="dbt" /> automatically [creates and visualizes downstream exposures](/docs/platform-integrations/downstream-exposures), removing the need for manual YAML definitions. These downstream exposures are stored in dbt’s metadata system, appear in [<Constant name="catalog" />](/docs/explore/explore-projects), and behave like manual exposures, however they don’t exist in YAML files.
 
 <DocCarousel slidesPerView={1}>
-<Lightbox src="/img/docs/collaborate/dbt-explorer/data-tile-pass.jpg" width="60%" title="Example of passing Data health tile in your dashboard." />
+<Lightbox src="/img/docs/collaborate/dbt-explorer/data-tile-pass.png" width="60%" title="Example of passing Data health tile in your dashboard." />
 <Lightbox src="/img/docs/collaborate/dbt-explorer/data-tiles.png" width="60%" title="Embed data health tiles in your dashboards to distill data health signals for data consumers." />
 </DocCarousel>
 
 ## Prerequisites
 
 - You must have a <Constant name="dbt" /> account on an [Enterprise-tier plan](https://www.getdbt.com/pricing/).
-- You must be an account admin to set up [service tokens](/docs/dbt-cloud-apis/service-tokens#permissions-for-service-account-tokens).
-- You must have [develop permissions](/docs/cloud/manage-access/seats-and-users).
+- You must be an account admin to set up [service tokens](/docs/dbt-apis/service-tokens#permissions-for-service-account-tokens).
+- You must have [develop permissions](/docs/platform/manage-access/seats-and-users).
 - You have [exposures](/docs/build/exposures) defined in your project:
   -  If using manual exposures, they must be explicitly defined in your YAML files.
-  - If using automatic downstream exposures, ensure your BI tool is [configured](/docs/cloud-integrations/downstream-exposures-tableau) with <Constant name="dbt" />.
+  - If using automatic downstream exposures, ensure your BI tool is [configured](/docs/platform-integrations/downstream-exposures-tableau) with <Constant name="dbt" />.
 - You have [source freshness](/docs/deploy/source-freshness) enabled in the job that generates this exposure.
 - The exposure used for the data health tile must have the [`type` property](/docs/build/exposures#available-properties) set to `dashboard`. Otherwise, you won't be able to view the **Embed data health tile in your dashboard** dropdown in <Constant name="catalog" />.
 
@@ -44,29 +44,29 @@ First, be sure to enable [source freshness](/docs/deploy/source-freshness) in 
 
 1. Navigate to <Constant name="catalog" /> by clicking on the **Catalog** link in the navigation.
 2. In the main **Overview** page, go to the left navigation.
-3. Under the **Resources** tab, click on **Exposures** to view the [exposures](/docs/build/exposures) list.
+3. Click on **Exposures** to view the [exposures](/docs/build/exposures) list.
 4. Select a dashboard exposure and go to the **General** tab to view the data health information.
-5. In this tab, you’ll see:   
-   - Name of the exposure. 
-   - Data health status: Data freshness passed, Data quality passed, Data may be stale, Data quality degraded.
-   - Resource type (model, source, and so on).
-   - Dashboard status: Failure, Pass, Stale.
-   - You can also see the last check completed, the last check time, and the last check duration.
-6. You can click the **Open Dashboard** button on the upper right to immediately view this in your analytics tool.
+5. In this tab, you’ll see:
+   - The exposure name at the top of the page.
+   - The resource type (for example, **Exposure**) and an **Updated at** timestamp.
+   - A **Data health** section that shows when the **Last check completed** (relative time since the check ran).
+   - A freshness summary (for example, **Data is fresh**) and a breakdown of upstream **Sources** (fresh, delayed, stale, skipped, outdated, unconfigured).
+   - A quality summary (for example, **Data quality passed**) and a breakdown of upstream **Models** and **Tests**.
+6. You can click the **Open in Dashboard** button in the upper right to immediately view this in your analytics tool.
 
-<Lightbox src="/img/docs/collaborate/dbt-explorer/data-tile-exposures.jpg" width="95%" title="View an exposure in dbt Catalog." />
+<Lightbox src="/img/docs/collaborate/dbt-explorer/data-tile-exposures.png" width="95%" title="View an exposure in dbt Catalog." />
 
 ## Embed in your dashboard
 
-Once you’ve navigated to the exposure in <Constant name="catalog" />, you’ll need to set up your data health tile and [service token](/docs/dbt-cloud-apis/service-tokens). You can embed data health tile to any analytics tool that supports URL or iFrame embedding.
+Once you’ve navigated to the exposure in <Constant name="catalog" />, you’ll need to set up your data health tile and [service token](/docs/dbt-apis/service-tokens). You can embed data health tile to any analytics tool that supports URL or iFrame embedding.
 
 Follow these steps to set up your data health tile:
 
 1. Go to **Account settings** in <Constant name="dbt" />.
 2. Select **API tokens** in the left sidebar and then **Service tokens**.
 3. Click on **Create service token** and give it a name.
-4. Select the [**Metadata Only**](/docs/dbt-cloud-apis/service-tokens) permission. This token will be used to embed the tile in your dashboard in the later steps.
-<Lightbox src="/img/docs/collaborate/dbt-explorer/data-tile-setup.jpg" width="95%" title="Set up your dashboard status tile and service token to embed a data health tile" />
+4. Select the [**Metadata Only**](/docs/dbt-apis/service-tokens) permission. This token will be used to embed the tile in your dashboard in the later steps.
+<Lightbox src="/img/docs/collaborate/dbt-explorer/data-tile-setup.png" width="95%" title="Set up your dashboard status tile and service token to embed a data health tile" />
 
 5. Copy the **Metadata Only** token and save it in a secure location. You'll need it token in the next steps.
 6. Navigate back to <Constant name="catalog" /> and select an exposure.
@@ -77,7 +77,7 @@ Follow these steps to set up your data health tile:
 
 7. Below the **Data health** section, expand on the toggle for instructions on how to embed the exposure tile (if you're an account admin with develop permissions). 
 8. In the expanded toggle, you'll see a text field where you can paste your **Metadata Only token**.
-<Lightbox src="/img/docs/collaborate/dbt-explorer/data-tile-example.jpg" width="85%" title="Expand the toggle to embed data health tile into your dashboard." />
+<Lightbox src="/img/docs/collaborate/dbt-explorer/data-tile-example.png" width="85%" title="Expand the toggle to embed data health tile into your dashboard." />
 
 9. Once you’ve pasted your token, you can select either **URL** or **iFrame** depending on which you need to add to your dashboard.
 
@@ -188,16 +188,16 @@ The default experience is the [environment-based data health tile](#view-exposur
 This section is for legacy job-based data health tiles. If you're using the revamped environment-based exposure tile, refer to the previous section. Expand the following to learn more about the legacy job-based data health tile.
 
 <Expandable alt_header="Job-based data health">  
-In <Constant name="dbt" />, the [Discovery API](/docs/dbt-cloud-apis/discovery-api) can power dashboard status tiles, which are job-based.  A dashboard status tile is placed on a dashboard (specifically: anywhere you can embed an iFrame) to give insight into the quality and freshness of the data feeding into that dashboard. This is done in dbt [exposures](/docs/build/exposures).
+In <Constant name="dbt" />, the [Discovery API](/docs/dbt-apis/discovery-api) can power dashboard status tiles, which are job-based.  A dashboard status tile is placed on a dashboard (specifically: anywhere you can embed an iFrame) to give insight into the quality and freshness of the data feeding into that dashboard. This is done in dbt [exposures](/docs/build/exposures).
 
 #### Functionality
 The dashboard status tile looks like this:
 
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/dashboard-status-tiles/passing-tile.jpeg"/>
+<Lightbox src="/img/docs/dbt-platform/using-dbt-platform/dashboard-status-tiles/passing-tile.jpeg"/>
 
 The data freshness check fails if any sources feeding into the exposure are stale. The data quality check fails if any dbt tests fail. A failure state could look like this:
 
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/dashboard-status-tiles/failing-tile.jpeg"/>
+<Lightbox src="/img/docs/dbt-platform/using-dbt-platform/dashboard-status-tiles/failing-tile.jpeg"/>
 
 Clicking into **see details** from the Dashboard Status Tile takes you to a landing page where you can learn more about the specific sources, models, and tests feeding into this exposure.
 
@@ -206,7 +206,7 @@ First, be sure to enable [source freshness](/docs/deploy/source-freshness) in th
 
 In order to set up your dashboard status tile, here is what you need:
 
-1. **Metadata Only token.**  You can learn how to set up a Metadata-Only token [here](/docs/dbt-cloud-apis/service-tokens).
+1. **Metadata Only token.**  You can learn how to set up a Metadata-Only token [here](/docs/dbt-apis/service-tokens).
 
 2. **Exposure name.** You can learn more about how to set up exposures [here](/docs/build/exposures).
 
@@ -220,7 +220,7 @@ You can insert these three fields into the following iFrame, and then embed it *
 
 :::tip Replace `YOUR_ACCESS_URL` with your region and plan's Access URL
 
-<Constant name="dbt" /> is hosted in multiple regions in the world and each region has a different access URL. Replace `YOUR_ACCESS_URL` with the appropriate [Access URL](/docs/cloud/about-cloud/access-regions-ip-addresses) for your region and plan. For example, if your account is hosted in the EMEA region, you would use the following iFrame code:
+<Constant name="dbt" /> is hosted in multiple regions in the world and each region has a different access URL. Replace `YOUR_ACCESS_URL` with the appropriate [Access URL](/docs/platform/about-platform/access-regions-ip-addresses) for your region and plan. For example, if your account is hosted in the EMEA region, you would use the following iFrame code:
 
 ```html/text
 <iframe src='https://metadata.emea.dbt.com/exposure-tile?name=<exposure_name>&jobId=<job_id>&token=<metadata_only_token>' title='Exposure Status Tile'></iframe>
@@ -246,11 +246,11 @@ Note that Mode has also built its own [integration](https://mode.com/get-dbt/) w
 Looker does not allow you to directly embed HTML and instead requires creating a [custom visualization](https://docs.looker.com/admin-options/platform/visualizations). One way to do this for admins is to:
 - Add a [new visualization](https://fishtown.looker.com/admin/visualizations) on the visualization page for Looker admins. You can use [this URL](https://metadata.cloud.getdbt.com/static/looker-viz.js) to configure a Looker visualization powered by the iFrame.  It will look like this:
 
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/dashboard-status-tiles/looker-visualization.jpeg" title="Configure a Looker visualization powered by the iFrame" />
+<Lightbox src="/img/docs/dbt-platform/using-dbt-platform/dashboard-status-tiles/looker-visualization.jpeg" title="Configure a Looker visualization powered by the iFrame" />
 
 - Once you have set up your custom visualization, you can use it on any dashboard! You can configure it with the exposure name, job ID, and token relevant to that dashboard.
 
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/dashboard-status-tiles/custom-looker.jpeg " width="60%"/>
+<Lightbox src="/img/docs/dbt-platform/using-dbt-platform/dashboard-status-tiles/custom-looker.jpeg " width="60%"/>
 </TabItem>
 
 <TabItem value="tableau" label="Tableau">
@@ -264,7 +264,7 @@ https://metadata.YOUR_ACCESS_URL/exposure-tile?name=<exposure_name>&jobId=<job_i
 
 :::tip Replace `YOUR_ACCESS_URL` with your region and plan's Access URL
 
-<Constant name="dbt" /> is hosted in multiple regions in the world and each region has a different access URL. Replace `YOUR_ACCESS_URL` with the appropriate [Access URL](/docs/cloud/about-cloud/access-regions-ip-addresses) for your region and plan. For example, if your account is hosted in the North American region, you would use the following code:
+<Constant name="dbt" /> is hosted in multiple regions in the world and each region has a different access URL. Replace `YOUR_ACCESS_URL` with the appropriate [Access URL](/docs/platform/about-platform/access-regions-ip-addresses) for your region and plan. For example, if your account is hosted in the North American region, you would use the following code:
 
 ```html/text
 https://metadata.cloud.getdbt.com/exposure-tile?name=<exposure_name>&jobId=<job_id>&token=<metadata_only_token>
@@ -272,7 +272,7 @@ https://metadata.cloud.getdbt.com/exposure-tile?name=<exposure_name>&jobId=<job_
 ```
 :::
 
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/dashboard-status-tiles/tableau-object.png" width="60%" title="Configure Tableau by using a Web page object." />
+<Lightbox src="/img/docs/dbt-platform/using-dbt-platform/dashboard-status-tiles/tableau-object.png" width="60%" title="Configure Tableau by using a Web page object." />
 </TabItem>
 
 <TabItem value="sigma" label="Sigma">
@@ -287,7 +287,7 @@ https://metadata.YOUR_ACCESS_URL/exposure-tile?name=<exposure_name>&jobId=<job_i
 
 :::tip Replace `YOUR_ACCESS_URL` with your region and plan's Access URL
 
-<Constant name="dbt" /> is hosted in multiple regions in the world and each region has a different access URL. Replace `YOUR_ACCESS_URL` with the appropriate [Access URL](/docs/cloud/about-cloud/access-regions-ip-addresses) for your region and plan. For example, if your account is hosted in the APAC region, you would use the following code:
+<Constant name="dbt" /> is hosted in multiple regions in the world and each region has a different access URL. Replace `YOUR_ACCESS_URL` with the appropriate [Access URL](/docs/platform/about-platform/access-regions-ip-addresses) for your region and plan. For example, if your account is hosted in the APAC region, you would use the following code:
 
 ```html/text
 https://metadata.au.dbt.com/exposure-tile?name=<exposure_name>&jobId=<job_id>&token=<metadata_only_token>
@@ -295,7 +295,7 @@ https://metadata.au.dbt.com/exposure-tile?name=<exposure_name>&jobId=<job_id>&to
 ```
 :::
 
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/dashboard-status-tiles/sigma-embed.gif" width="60%" title="Configure Sigma by using an embedded UI element." />
+<Lightbox src="/img/docs/dbt-platform/using-dbt-platform/dashboard-status-tiles/sigma-embed.gif" width="60%" title="Configure Sigma by using an embedded UI element." />
 </TabItem>
 </Tabs>
 

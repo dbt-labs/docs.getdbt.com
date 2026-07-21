@@ -49,7 +49,13 @@ You should unit test a model:
 
 dbt Labs strongly recommends only running unit tests in development or CI environments. Since the inputs of the unit tests are static, there's no need to use additional compute cycles running them in production. Use them in development for a test-driven approach and CI to ensure changes don't break them. 
 
-Use the [resource type](/reference/global-configs/resource-type) flag `--exclude-resource-type` or the <VersionBlock lastVersion="1.10">`DBT_EXCLUDE_RESOURCE_TYPES`</VersionBlock><VersionBlock firstVersion="1.11">`DBT_ENGINE_EXCLUDE_RESOURCE_TYPES`</VersionBlock> environment variable to exclude unit tests from your production builds and save compute. 
+Use the [resource type](/reference/global-configs/resource-type) flag `--exclude-resource-type` or the <VersionBlock lastVersion="1.10">`DBT_EXCLUDE_RESOURCE_TYPES`</VersionBlock><VersionBlock firstVersion="1.11">`DBT_ENGINE_EXCLUDE_RESOURCE_TYPES`</VersionBlock> environment variable to exclude unit tests from your production builds and save compute.
+
+To run only unit tests on demand, use the `test_type` selector — this works across all engines (<Constant name="core" /> and <Constant name="fusion" />):
+
+```bash
+dbt test --select "test_type:unit"
+```
 
 ## Unit testing a model
 

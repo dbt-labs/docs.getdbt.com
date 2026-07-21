@@ -29,7 +29,7 @@ Use this page to understand the different types of changes, what to do, and wher
 <Card
   title="Deprecated CLI flags"
   body="Command-line flags passed to dbt commands that are being removed in Fusion.<br/><br/><strong>Impact:</strong> Some ignored (with warnings); <strong>--models</strong> flag will error in Fusion.<br/><br/><strong>Action:</strong> Update job definitions and scripts to remove or replace these flags."
-  link="/docs/dbt-versions/core-upgrade/upgrading-to-fusion#deprecated-flags"
+  link="/docs/dbt-versions/core-upgrade/upgrading-to-v2#deprecated-flags"
   icon="square-terminal"
 />
 
@@ -41,12 +41,12 @@ If you're upgrading to <Constant name="fusion" />, you should:
 
 - [ ] Resolve all [deprecations](/reference/deprecations) to avoid causing errors in <Constant name="fusion" />.
 - [ ] Review [behavior change flags](/reference/global-configs/behavior-changes) to understand how <Constant name="fusion" /> will behave (new behavior is always enabled).
-- [ ] Update [deprecated CLI flags](/docs/dbt-versions/core-upgrade/upgrading-to-fusion#deprecated-flags) to avoid errors in <Constant name="fusion" />.
+- [ ] Update [deprecated CLI flags](/docs/dbt-versions/core-upgrade/upgrading-to-v2#deprecated-flags) to avoid errors in <Constant name="fusion" />.
 
 ## Related docs
 
 - [Full deprecations list](/reference/deprecations)
 - [Behavior change flags](/reference/global-configs/behavior-changes)
-- [Upgrading to <Constant name="fusion" />](/docs/dbt-versions/core-upgrade/upgrading-to-fusion)
+- [Upgrading to <Constant name="fusion" />](/docs/dbt-versions/core-upgrade/upgrading-to-v2)
 - [<Constant name="fusion" /> readiness checklist](/docs/fusion/fusion-readiness)
 - [Events and logging](/reference/events-logging)

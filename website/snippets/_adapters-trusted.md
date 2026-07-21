@@ -2,31 +2,31 @@
 
 <Card
     title="AlloyDB"
-    body="<ul><li><a href='/docs/cloud/connect-data-platform/connect-postgresql-alloydb'>Set up in the dbt platform </a> <br /></li><li><a href='/docs/local/connect-data-platform/alloydb-setup'>Install with dbt Core </a> </li></ul><br /><a href=https://badge.fury.io/py/dbt-postgres><img src=https://badge.fury.io/py/dbt-postgres.svg/></a>"
+    body="<ul><li><a href='/docs/platform/connect-data-platform/connect-postgresql-alloydb'>Set up in the dbt platform </a> <br /></li><li><a href='/docs/local/connect-data-platform/alloydb-setup'>Install with dbt Core </a> </li></ul><br /><a href=https://badge.fury.io/py/dbt-postgres><img src=https://badge.fury.io/py/dbt-postgres.svg/></a>"
     pills='["dbt platform", "dbt Core"]'
     icon="alloydb"/>
 
 <Card
     title="Apache Spark"
-    body="<ul><li><a href='/docs/cloud/connect-data-platform/connect-apache-spark'>Set up in the dbt platform </a> <br /></li><li><a href='/docs/local/connect-data-platform/spark-setup'>Install with dbt Core </a> </li><li><a href='/docs/local/connect-data-platform/spark-setup'>Install with dbt Fusion </a> </li></ul> <br /> <a href=https://badge.fury.io/py/dbt-spark><img src=https://badge.fury.io/py/dbt-spark.svg/></a>"
+    body="<ul><li><a href='/docs/platform/connect-data-platform/connect-apache-spark'>Set up in the dbt platform </a> <br /></li><li><a href='/docs/local/connect-data-platform/spark-setup'>Install with dbt Core </a> </li><li><a href='/docs/local/connect-data-platform/spark-setup'>Install with dbt Fusion </a> </li></ul> <br /> <a href=https://badge.fury.io/py/dbt-spark><img src=https://badge.fury.io/py/dbt-spark.svg/></a>"
     pills='["dbt platform", "dbt Core", "Fusion"]'
     icon="apache-spark"/>
 
  <Card
     title="Athena"
-    body="<ul><li><a href='/docs/cloud/connect-data-platform/connect-amazon-athena'>Set up in the dbt platform</a><br /></li><li><a href='/docs/local/connect-data-platform/athena-setup'>Install with dbt Core </a> </li> </ul><br /><br /><a href=https://badge.fury.io/py/dbt-athena><img src=https://badge.fury.io/py/dbt-athena.svg/></a>"
+    body="<ul><li><a href='/docs/platform/connect-data-platform/connect-amazon-athena'>Set up in the dbt platform</a><br /></li><li><a href='/docs/local/connect-data-platform/athena-setup'>Install with dbt Core </a> </li> </ul><br /><br /><a href=https://badge.fury.io/py/dbt-athena><img src=https://badge.fury.io/py/dbt-athena.svg/></a>"
     pills='["dbt platform", "dbt Core"]'
     icon="athena"/>
 
 <Card
     title="Azure Synapse"
-    body="<ul><li><a href='/docs/cloud/connect-data-platform/connect-azure-synapse-analytics'>Set up in the dbt platform</a> <br /></li><li><a href='/docs/local/connect-data-platform/azuresynapse-setup'>Install with dbt Core  </a> </li> </ul><br /><a href=https://badge.fury.io/py/dbt-synapse><img src=https://badge.fury.io/py/dbt-synapse.svg/></a>"
+    body="<ul><li><a href='/docs/platform/connect-data-platform/connect-azure-synapse-analytics'>Set up in the dbt platform</a> <br /></li><li><a href='/docs/local/connect-data-platform/azuresynapse-setup'>Install with dbt Core  </a> </li> </ul><br /><a href=https://badge.fury.io/py/dbt-synapse><img src=https://badge.fury.io/py/dbt-synapse.svg/></a>"
     pills='["dbt platform", "dbt Core"]'
     icon="azure-synapse-analytics"/>
 
 <Card
     title="BigQuery"
-    body="<ul><li><a href='/docs/cloud/connect-data-platform/connect-bigquery'>Set up in the dbt platform </a> <br /></li><li><a href='/docs/local/connect-data-platform/bigquery-setup'>Install with dbt Core </a> <br /></li><li><a href='/docs/local/connect-data-platform/bigquery-setup'>Install with dbt Fusion </a> </li></ul><br /> <a href=https://badge.fury.io/py/dbt-bigquery><img src=https://badge.fury.io/py/dbt-bigquery.svg/></a>"
+    body="<ul><li><a href='/docs/platform/connect-data-platform/connect-bigquery'>Set up in the dbt platform </a> <br /></li><li><a href='/docs/local/connect-data-platform/bigquery-setup'>Install with dbt Core </a> <br /></li><li><a href='/docs/local/connect-data-platform/bigquery-setup'>Install with dbt Fusion </a> </li></ul><br /> <a href=https://badge.fury.io/py/dbt-bigquery><img src=https://badge.fury.io/py/dbt-bigquery.svg/></a>"
     pills='["dbt platform", "dbt Core", "Fusion"]'
     icon="bigquery"/>
 
@@ -38,9 +38,15 @@
     
 <Card
     title="Databricks"
-    body="<ul><li><a href='/docs/cloud/connect-data-platform/connect-databricks'>Set up in the dbt platform </a> <br /></li><li><a href='/docs/local/connect-data-platform/databricks-setup'>Install with dbt Core  </a> <br /></li><li><a href='/docs/local/connect-data-platform/databricks-setup'>Install with dbt Fusion </a> </li></ul><br /> <a href=https://badge.fury.io/py/dbt-databricks><img src=https://badge.fury.io/py/dbt-databricks.svg/></a>"
+    body="<ul><li><a href='/docs/platform/connect-data-platform/connect-databricks'>Set up in the dbt platform </a> <br /></li><li><a href='/docs/local/connect-data-platform/databricks-setup'>Install with dbt Core  </a> <br /></li><li><a href='/docs/local/connect-data-platform/databricks-setup'>Install with dbt Fusion </a> </li></ul><br /> <a href=https://badge.fury.io/py/dbt-databricks><img src=https://badge.fury.io/py/dbt-databricks.svg/></a>"
     pills='["dbt platform", "dbt Core", "Fusion"]'
     icon="databricks"/>
+
+<Card
+    title="DuckDB"
+    body="<ul><li><a href='/docs/local/connect-data-platform/duckdb-setup?version=1'>Install with dbt Core </a> <br /></li><li><a href='/docs/local/connect-data-platform/duckdb-setup?version=2'>Install with dbt Fusion </a> </li></ul><br /><a href=https://badge.fury.io/py/dbt-duckdb><img src=https://badge.fury.io/py/dbt-duckdb.svg/></a>"
+    pills='["dbt Core", "Fusion"]'
+    icon="duckdb-seeklogo"/>
 
 <Card
     title="Dremio"
@@ -59,6 +65,12 @@
     body="<ul><li><a href='/docs/local/connect-data-platform/exasol-setup'>Install with dbt Core </a> </li> </ul><br /><br /><a href=https://badge.fury.io/py/dbt-exasol><img src=https://badge.fury.io/py/dbt-exasol.svg/></a>"
     pills='["dbt Core"]'
     icon="exasol"/>
+
+<Card
+    title="IBM Db2"
+    body="<ul><li><a href='/docs/local/connect-data-platform/ibm-db2-setup'>Install with dbt Core </a> </li> </ul><br /><br /><a href=https://badge.fury.io/py/ibm-dbt-db2><img src=https://badge.fury.io/py/ibm-dbt-db2.svg/></a>"
+    pills='["dbt Core"]'
+    icon="dbt-ibm-db2"/>
 
 <Card
     title="IBM Netezza"
@@ -81,7 +93,7 @@
 
 <Card
     title="Microsoft Fabric Warehouse"
-    body="<ul><li><a href='/docs/cloud/connect-data-platform/connect-microsoft-fabric'>Set up in the dbt platform </a> <br /></li><li><a href='/docs/local/connect-data-platform/fabric-setup'>Install with dbt Core  </a> </li></ul><br /> <a href=https://badge.fury.io/py/dbt-fabric><img src=https://badge.fury.io/py/dbt-fabric.svg/></a>"
+    body="<ul><li><a href='/docs/platform/connect-data-platform/connect-microsoft-fabric'>Set up in the dbt platform </a> <br /></li><li><a href='/docs/local/connect-data-platform/fabric-setup'>Install with dbt Core  </a> </li></ul><br /> <a href=https://badge.fury.io/py/dbt-fabric><img src=https://badge.fury.io/py/dbt-fabric.svg/></a>"
     pills='["dbt platform", "dbt Core"]'
     icon="fabric_warehouse"/>
 
@@ -100,13 +112,13 @@
 
 <Card
     title="Postgres"
-    body="<ul><li><a href='/docs/cloud/connect-data-platform/connect-postgresql-alloydb'>Set up in the dbt platform </a> <br /></li><li><a href='/docs/local/connect-data-platform/postgres-setup'>Install with dbt Core </a> </li></ul><br />  <a href=https://badge.fury.io/py/dbt-postgres><img src=https://badge.fury.io/py/dbt-postgres.svg/></a>"
+    body="<ul><li><a href='/docs/platform/connect-data-platform/connect-postgresql-alloydb'>Set up in the dbt platform </a> <br /></li><li><a href='/docs/local/connect-data-platform/postgres-setup'>Install with dbt Core </a> </li></ul><br />  <a href=https://badge.fury.io/py/dbt-postgres><img src=https://badge.fury.io/py/dbt-postgres.svg/></a>"
     pills='["dbt platform", "dbt Core"]'
     icon="postgres"/>
 
 <Card
     title="Redshift"
-    body="<ul><li><a href='/docs/cloud/connect-data-platform/connect-redshift'>Set up in the dbt platform </a> <br /></li><li><a href='/docs/local/connect-data-platform/redshift-setup'>Install with dbt Core </a> <br /></li><li><a href='/docs/local/connect-data-platform/redshift-setup'>Install with dbt Fusion </a> </li></ul><br /> <a href=https://badge.fury.io/py/dbt-redshift><img src=https://badge.fury.io/py/dbt-redshift.svg/></a>"
+    body="<ul><li><a href='/docs/platform/connect-data-platform/connect-redshift'>Set up in the dbt platform </a> <br /></li><li><a href='/docs/local/connect-data-platform/redshift-setup'>Install with dbt Core </a> <br /></li><li><a href='/docs/local/connect-data-platform/redshift-setup'>Install with dbt Fusion </a> </li></ul><br /> <a href=https://badge.fury.io/py/dbt-redshift><img src=https://badge.fury.io/py/dbt-redshift.svg/></a>"
     pills='["dbt platform", "dbt Core", "Fusion"]'
     icon="redshift"/>
 
@@ -117,12 +129,6 @@
     icon="risingwave"/>
 
 <Card
-    title="Salesforce Data 360"
-    body="<ul><li><a href='/docs/local/connect-data-platform/salesforce-data-cloud-setup'>Install with dbt Fusion </a> </li></ul><br />"
-    pills='["Fusion"]'
-    icon="salesforce"/>
-
-<Card
     title="SingleStore"
     body="<ul><li><a href='/docs/local/connect-data-platform/singlestore-setup'>Install with dbt Core  </a><br /><br /> <a href=https://badge.fury.io/py/dbt-singlestore><img src=https://badge.fury.io/py/dbt-singlestore.svg/></a></li></ul>"
     pills='["dbt Core"]'
@@ -130,19 +136,19 @@
 
 <Card
     title="Snowflake"
-    body="<ul><li><a href='/docs/cloud/connect-data-platform/connect-snowflake'>Set up in the dbt platform </a> <br /></li><li><a href='/docs/local/connect-data-platform/snowflake-setup'>Install with dbt Core  </a> <br /></li><li><a href='/docs/local/connect-data-platform/snowflake-setup'>Install with dbt Fusion </a> </li></ul><br /> <a href=https://badge.fury.io/py/dbt-snowflake><img src=https://badge.fury.io/py/dbt-snowflake.svg/></a>"
+    body="<ul><li><a href='/docs/platform/connect-data-platform/connect-snowflake'>Set up in the dbt platform </a> <br /></li><li><a href='/docs/local/connect-data-platform/snowflake-setup'>Install with dbt Core  </a> <br /></li><li><a href='/docs/local/connect-data-platform/snowflake-setup'>Install with dbt Fusion </a> </li></ul><br /> <a href=https://badge.fury.io/py/dbt-snowflake><img src=https://badge.fury.io/py/dbt-snowflake.svg/></a>"
     pills='["dbt platform", "dbt Core", "Fusion"]'
     icon="snowflake"/>
 
 <Card
     title="Starburst/Trino"
-    body="<ul><li><a href='/docs/cloud/connect-data-platform/connect-starburst-trino'>Set up in the dbt platform </a> <br /></li><li><a href='/docs/local/connect-data-platform/trino-setup'>Install with dbt Core  </a> </li></ul> <br /> <a href=https://badge.fury.io/py/dbt-trino><img src=https://badge.fury.io/py/dbt-trino.svg/></a>"
+    body="<ul><li><a href='/docs/platform/connect-data-platform/connect-starburst-trino'>Set up in the dbt platform </a> <br /></li><li><a href='/docs/local/connect-data-platform/trino-setup'>Install with dbt Core  </a> </li></ul> <br /> <a href=https://badge.fury.io/py/dbt-trino><img src=https://badge.fury.io/py/dbt-trino.svg/></a>"
     pills='["dbt platform", "dbt Core"]'
     icon="starburst"/>
 
 <Card
     title="Teradata"
-    body="<ul><li><a href='/docs/cloud/connect-data-platform/connect-teradata'>Set up in the dbt platform </a> <br /></li> <li><a href='/docs/local/connect-data-platform/teradata-setup'>Install with dbt Core  </a> </li></ul><br /><a href=https://badge.fury.io/py/dbt-teradata><img src=https://badge.fury.io/py/dbt-teradata.svg/></a>"
+    body="<ul><li><a href='/docs/platform/connect-data-platform/connect-teradata'>Set up in the dbt platform </a> <br /></li> <li><a href='/docs/local/connect-data-platform/teradata-setup'>Install with dbt Core  </a> </li></ul><br /><a href=https://badge.fury.io/py/dbt-teradata><img src=https://badge.fury.io/py/dbt-teradata.svg/></a>"
     pills='["dbt platform", "dbt Core"]'
     icon="teradata"/>
 

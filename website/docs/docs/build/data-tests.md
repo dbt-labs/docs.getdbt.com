@@ -272,6 +272,16 @@ where {{ column_name }} is null
   </TabItem>
 </Tabs>
 
+
+## Running only data tests
+To run data tests while excluding unit tests, use the `test_type` selector &mdash; this works across all engines (<Constant name="core"/> and <Constant name="fusion"/>):
+
+```bash
+dbt test --select "test_type:data"
+```
+
+In <Constant name="core" /> (v1.9+), you can also use `dbt test --resource-type test`. For more options, refer to [test selection examples](/reference/node-selection/test-selection-examples).
+
 ## Storing data test failures
 
 Normally, a data test query will calculate failures as part of its execution. If you set the optional `--store-failures` flag, the [`store_failures`](/reference/resource-configs/store_failures), or the [`store_failures_as`](/reference/resource-configs/store_failures_as) configs, dbt will first save the results of a test query to a table in the database, and then query that table to calculate the number of failures.
@@ -283,8 +293,6 @@ This workflow allows you to query and examine failing records much more quickly 
 Note that, if you choose to store data test failures:
 - Test result tables are created in a schema suffixed or named `dbt_test__audit`, by default. It is possible to change this value by setting a `schema` config. (For more details on schema naming, see [using custom schemas](/docs/build/custom-schemas).)
 - A test's results will always **replace** previous failures for the same test.
-
-
 
 ## New `data_tests:` syntax
 

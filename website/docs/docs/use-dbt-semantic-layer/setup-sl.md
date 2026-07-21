@@ -41,7 +41,7 @@ import SlSetUp from '/snippets/_new-sl-setup.md';
 
 ## Next steps
 
-- Now that you've set up your credentials and tokens, start querying your metrics with the [available integrations](/docs/cloud-integrations/avail-sl-integrations).
+- Now that you've set up your credentials and tokens, start querying your metrics with the [available integrations](/docs/platform-integrations/avail-sl-integrations).
 - [Optimize querying performance](/docs/use-dbt-semantic-layer/sl-cache) using declarative caching.
 - [Validate semantic nodes in CI](/docs/deploy/ci-jobs#semantic-validations-in-ci) to ensure code changes made to dbt models don't break these metrics.
 - If you haven't already, learn how to [build you metrics and semantic models](/docs/build/build-metrics-intro) in your development tool of choice.

@@ -20,8 +20,8 @@ const CONSTANTS_MAP = {
   'dbt Mesh': '<Constant name="mesh" />',
   'Mesh': '<Constant name="mesh" />',
   'Orchestrator': '<Constant name="orchestrator" />',
-  'dbt Copilot': '<Constant name="copilot" />',
-  'Copilot': '<Constant name="copilot" />',
+  'dbt Copilot': '<Constant name="wizard" />',
+  'Copilot': '<Constant name="wizard" />',
   'dbt Semantic Layer': '<Constant name="semantic_layer" />',
   'Semantic Layer': '<Constant name="semantic_layer" />'
 };

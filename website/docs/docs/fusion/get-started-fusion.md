@@ -15,14 +15,14 @@ Once you've caught up on everything [<Constant name="fusion" /> has to offer](/d
 <Card
     title="Install Fusion + VS Code extension"
     body="Learn how to install and configure our most robust set of tools for local development."
-    link="/docs/local/install-dbt?version=2#get-started"
+    link="/docs/local/install-dbt?version=2"
     icon="dbt-bit"
     lifecycle="preview"/>
 
 <Card
     title="Install Fusion CLI only"
     body="Learn how to install and configure the dbt Fusion engine from your command line."
-    link="/docs/local/install-dbt?version=2#get-started"
+    link="/docs/local/install-dbt?version=2"
     icon="dbt-bit"
     lifecycle="preview"/>
 
@@ -51,14 +51,18 @@ Upgrade your existing projects to the <Constant name="fusion_engine" /> and lear
     title="Guide: Prepare to upgrade to Fusion"
     body="Step-by-step guide to prepare your dbt platform projects for upgrading to Fusion."
     link="/guides/prepare-fusion-upgrade"
-    icon="dbt-bit"
-    lifecycle="private_preview"/>
+    icon="dbt-bit" />
 
 <Card
     title="Guide: Upgrade to Fusion"
     body="Learn how to upgrade your eligible projects on the dbt platform to the Fusion engine with this comprehensive guide."
     link="/guides/upgrade-to-fusion"
-    icon="dbt-bit"
-    lifecycle="private_preview"/>
+    icon="dbt-bit" />
+
+<Card
+    title="Guide: dbt platform and local workflows"
+    body="Learn how to keep credentials, environment variables, and Fusion versions in sync between dbt platform and local development."
+    link="/guides/fusion-platform-local-workflow"
+    icon="dbt-bit" />
 
 </div>

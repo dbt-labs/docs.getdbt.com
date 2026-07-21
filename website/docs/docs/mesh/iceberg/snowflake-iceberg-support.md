@@ -202,27 +202,40 @@ These are the additional configurations, unique to Snowflake, that can be suppli
 
 #### Built-in catalog
 
-<VersionBlock lastVersion="1.99">
+<VersionBlock lastVersion="1.11">
 | Field | Required | Accepted values |
 | --- | --- | --- |
 | `change_tracking` | Optional | `True` or `False`    |
 | `data_retention_time_in_days` | Optional | Standard Account: `1`, Enterprise or higher: `0` to `90`, default `1`  |
 | `max_data_extension_time_in_days` | Optional |  `0` to `90` with a default of `14`  |
 | `storage_serialization_policy` | Optional | `COMPATIBLE` or `OPTIMIZED`     |
+| `base_location_root` | Optional | Relative path segment (for example, `'subpath1/subpath2'`) |
+| `base_location_subpath` | Optional | Relative path segment (for example, `'subpath1/subpath2'`), only configurable per-model |
 </VersionBlock>
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 | Field | Required | Accepted values |
 | --- | --- | --- |
 | `change_tracking` | Optional | `True` or `False`    |
 | `data_retention_time_in_days` | Optional | Standard Account: `1`, Enterprise or higher: `0` to `90`, default `1`  |
 | `max_data_extension_time_in_days` | Optional |  `0` to `90` with a default of `14`  |
 | `storage_serialization_policy` | Optional | `COMPATIBLE` or `OPTIMIZED`     |
-| `base_location_root` | Optional | relative path segment (like `'subpath1/subpath2'`) |
-| `base_location_subpath` | Optional | relative path segment (like `'subpath1/subpath2'`), only configurable per-model |
+| `base_location_root` | Optional | Relative path segment (for example, `'subpath1/subpath2'`) |
+| `base_location_subpath` | Optional | Relative path segment (for example, `'subpath1/subpath2'`), only configurable per-model |
+| `iceberg_version` | Optional | `2` (default) or `3` |
 </VersionBlock>
 
 #### REST catalog
 
+<VersionBlock lastVersion="1.11">
+| Field | Required | Accepted values |
+| --- | --- | --- |
+| `auto_refresh` | Optional | `True` or `False`    |
+| `catalog_linked_database` | Required for `catalog type: iceberg_rest` | Catalog-linked database name   |
+| `catalog_linked_database_type` | Optional | Catalog-linked database type. For example, `glue`  |
+| `max_data_extension_time_in_days` | Optional |  `0` to `90` (default: `14`)  |
+| `target_file_size` | Optional | Values like `'AUTO'`, `'16MB'`, `'32MB'`, `'64MB'`, `'128MB'`. Case-insensitive  |
+</VersionBlock>
+<VersionBlock firstVersion="1.12">
 | Field | Required | Accepted values |
 | --- | --- | --- |
 | `auto_refresh` | Optional | `True` or `False`    |
@@ -230,6 +243,8 @@ These are the additional configurations, unique to Snowflake, that can be suppli
 | `catalog_linked_database_type` | Optional | Catalog-linked database type. For example, `glue`  |
 | `max_data_extension_time_in_days` | Optional |  `0` to `90` with a default of `14`  |
 | `target_file_size` | Optional | Values like `'AUTO'`, `'16MB'`, `'32MB'`, `'64MB'`, `'128MB'`. Case-insensitive  |
+| `iceberg_version` | Optional | `2` (default) or `3` |
+</VersionBlock>
 
 -  **storage_serialization_policy:** The serialization policy tells Snowflake what kind of encoding and compression to perform on the table data files. If not specified at table creation, the table inherits the value set at the schema, database, or account level. If the value isn’t specified at any level, the table uses the default value. You can’t change the value of this parameter after table creation.
 - **max_data_extension_time_in_days:** The maximum number of days Snowflake can extend the data retention period for tables to prevent streams on the tables from becoming stale. The `MAX_DATA_EXTENSION_TIME_IN_DAYS` parameter enables you to limit this automatic extension period to control storage costs for data retention, or for compliance reasons. 
@@ -238,12 +253,13 @@ These are the additional configurations, unique to Snowflake, that can be suppli
 - **catalog_linked_database:** [Catalog-linked databases](https://docs.snowflake.com/en/user-guide/tables-iceberg-catalog-linked-database) (CLD) in Snowflake ensures that Snowflake can automatically sync metadata (including namespaces and iceberg tables) from the external Iceberg Catalog and registers them as remote tables in the catalog-linked database. The reason we require the usage of Catalog-linked databases for building Iceberg tables with external catalogs is that without it, dbt will be unable to truly manage the table end-to-end. Snowflake does not support dropping the Iceberg table on non-CLDs in the external catalog; instead, it only allows unlinking the Snowflake table, which creates a discrepancy with how dbt expects to manage the materialized object.
 - **auto_refresh:** Specifies whether Snowflake should automatically poll the external Iceberg catalog for metadata updates. If `REFRESH_INTERVAL_SECONDS` isn’t set on the catalog integration, the default refresh interval is 30 seconds. 
 - **target_file_size:** Specifies a target Parquet file size. Default is `AUTO`.
+<VersionBlock firstVersion="1.12">
+- **iceberg_version:** Specifies the Iceberg format version for the table. Default value is `2`. Set to `3` for improved support for `VARIANT` data types and faster incremental operations. Version 3 uses [deletion vectors](https://docs.snowflake.com/en/user-guide/tables-iceberg-manage#tables-iceberg-deletion-vectors), which let Snowflake mark rows as deleted without rewriting the underlying data files, making incremental runs faster. Note that you cannot change the Iceberg version after table creation. As an alternative, you can [configure the default Iceberg version](https://docs.snowflake.com/en/user-guide/tables-iceberg-v3-specification-support#configure-the-default-iceberg-version) at the account, database, or schema level in Snowflake.
+</VersionBlock>
 
-<VersionBlock firstVersion="2.0">
 You can set the following properties in model configurations under the `adapter_properties` field, or as top-level fields themselves. If present in both places, the value set under `adapter_properties` takes precedence. Refer to [Base location](#base-location) for more information.
 - **base_location_root:** Specifies the prefix of the [`BASE_LOCATION`](https://docs.snowflake.com/en/sql-reference/sql/create-iceberg-table-snowflake#optional-parameters), the write path for the Iceberg table.
 - **base_location_subpath:** Specifies the suffix of the [`BASE_LOCATION`](https://docs.snowflake.com/en/sql-reference/sql/create-iceberg-table-snowflake#optional-parameters), the write path for the Iceberg table. This property can only be set in model configurations, not in `catalogs.yml`.
-</VersionBlock>
 
 ### Configure catalog integration for managed Iceberg tables
 
@@ -262,6 +278,7 @@ catalogs:
         catalog_type: built_in
         adapter_properties:
           change_tracking: True
+          iceberg_version: 3  # available in v1.12+
 
 ```
 
@@ -273,8 +290,8 @@ catalogs:
 {{
     config(
         materialized='table',
-        catalog_name = 'catalog_horizon'
-
+        catalog_name='catalog_horizon',
+        iceberg_version=3,  # available in v1.12+
     )
 }}
 
@@ -305,6 +322,7 @@ For more information, check out the Snowflake reference for [`CREATE ICEBERG TAB
 | `external_volume` | String | Yes(*)   | Specifies the identifier (name) of the external volume where Snowflake writes the Iceberg table's metadata and data files. | `my_s3_bucket`            | *You don't need to specify this if the account, database, or schema already has an associated external volume. [More info](https://docs.snowflake.com/user-guide/tables-iceberg-configure-external-volume#set-a-default-external-volume-at-the-account-database-or-schema-level) |
 | `base_location_root` | String  | No  | If provided, the input will override the default dbt base_location value of `_dbt` |
 | `base_location_subpath` | String | No       | An optional suffix to add to the `base_location` path that dbt automatically specifies.     | `jaffle_marketing_folder` | We recommend that you do not specify this. Modifying this parameter results in a new Iceberg table. See [Base Location](#base-location) for more info.                                                                                                  |
+| `iceberg_version` | Integer | No | Specifies the Iceberg format version for the table. Defaults to `2`. Cannot be changed after table creation. | `3` | Set to `3` for improved `VARIANT` type support and better incremental/snapshot performance through deletion vectors. |
 
 ### Example configuration
 
@@ -319,6 +337,7 @@ To configure an Iceberg table materialization in dbt, refer to the example confi
     materialized = "table",
     table_format="iceberg",
     external_volume="s3_iceberg_snow",
+    iceberg_version=3,  # available in v1.12+
   )
 }}
 

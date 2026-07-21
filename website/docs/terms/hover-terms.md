@@ -1,4 +1,8 @@
 ---
+acid:
+  displayText: ACID
+  hoverSnippet: Atomicity, Consistency, Isolation, and Durability
+
 ade-bench:
   displayText: ADE-bench
   hoverSnippet: The Analytics and Data Engineering benchmark, a framework for evaluating AI agents on data tasks with highly realistic testing environments.
@@ -85,7 +89,7 @@ grain:
 
 idempotent:
   displayText: idempotent
-  hoverSnippet: Idempotent describes a process that gives you the same result no matter how many times you run it.
+  hoverSnippet: An idempotent operation produces the same results no matter how many times you run it. In dbt, this means your model runs will always produce consistent results.
 
 json:
   displayText: JSON
@@ -94,6 +98,14 @@ json:
 lsp:
   displayText: LSP
   hoverSnippet: Language Server Protocol (LSP) enables developer features like live CTE previews, hover info, error highlighting, and more.
+
+managed:
+  displayText: managed
+  hoverSnippet: dbt Labs manages the AI provider connection; no user provider key is required. Refer to
+  hoverLink: /docs/platform/billing
+  hoverLinkText: Billing
+  hoverLinkSuffix: for more info.
+
 
 materialization:
   displayText: materialization
@@ -138,6 +150,10 @@ sql-expression:
 sql-rendering:
   displayText: SQL rendering
   hoverSnippet: The dbt Core engine takes SQL with Jinja, and renders all the macros present in the model to produce SQL that is ready to run against the database. For SQL parsing and compilation capabilities, use the Fusion engine instead to better understand your SQL structure.
+
+selector-expression:
+  displayText: selector expression
+  hoverSnippet: An expression used with --select and --exclude to include or exclude specific nodes in your dbt project.
 
 subquery:
   displayText: subquery

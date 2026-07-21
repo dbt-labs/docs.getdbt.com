@@ -19,18 +19,18 @@ Before you start, consider the following guidelines:
 <VersionBlock lastVersion="1.11">
 
 - Define metrics in YAML and query them using these [new metric specifications](https://github.com/dbt-labs/dbt-core/discussions/7456).
-- You must be on [dbt version](/docs/dbt-versions/upgrade-dbt-version-in-cloud) 1.6 or higher to use MetricFlow. 
+- You must be on [dbt version](/docs/dbt-versions/upgrade-dbt-platform-version) 1.6 or higher to use MetricFlow. 
 - Use MetricFlow with Snowflake, BigQuery, Databricks, Postgres (<Constant name="core" /> only), Trino, or Redshift. 
-- Discover insights and query your metrics using the [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl) and its diverse range of [available integrations](/docs/cloud-integrations/avail-sl-integrations). 
+- Discover insights and query your metrics using the [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl) and its diverse range of [available integrations](/docs/platform-integrations/avail-sl-integrations). 
 
 </VersionBlock>
 
 <VersionBlock firstVersion="1.12">
 
 - Define metrics in YAML and query them using the [latest metric specifications](/docs/build/semantic-models).
-- Available on the [<Constant name="fusion_engine"/>](/docs/fusion/install-fusion) or [dbt Latest](/docs/dbt-versions/cloud-release-tracks) in the <Constant name="dbt_platform" />.
+- Available on the [<Constant name="fusion_engine"/>](/docs/fusion/install-fusion) or [dbt Latest](/docs/dbt-versions/dbt-release-tracks) in the <Constant name="dbt_platform" />.
 - Use MetricFlow with Snowflake, BigQuery, Databricks, Postgres (<Constant name="core" /> only), or Redshift. 
-- Discover insights and query your metrics using the [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl) and its diverse range of [available integrations](/docs/cloud-integrations/avail-sl-integrations).
+- Discover insights and query your metrics using the [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl) and its diverse range of [available integrations](/docs/platform-integrations/avail-sl-integrations).
 
 </VersionBlock>
 
@@ -39,7 +39,7 @@ Before you start, consider the following guidelines:
 
 MetricFlow is a SQL query generation tool designed to streamline metric creation across different data dimensions for diverse business needs. 
 - It operates through YAML files, where a semantic graph links language to data. This graph comprises [semantic models](/docs/build/semantic-models) (data entry points) and [metrics](/docs/build/metrics-overview) (functions for creating quantitative indicators).
-- MetricFlow is developed and maintained as part of the [Open Semantic Interchange (OSI)](https://www.snowflake.com/en/blog/open-semantic-interchange-ai-standard/) initiative. 
+- MetricFlow is developed and maintained by dbt Labs and works with the [Open Semantic Interchange (OSI)](https://github.com/open-semantic-interchange/OSI) format. Starting in <Constant name="core" /> v1.12, you can also define semantic models using [OSI documents](/docs/build/osi-semantic-models) as an alternative to dbt's native YAML configuration.
 - MetricFlow is compatible with dbt version 1.6 and higher.
 - MetricFlow is distributed under the [Apache 2.0 license](https://github.com/dbt-labs/metricflow/blob/main/LICENSE). Data practitioners and enthusiasts are highly encouraged to contribute. Read more about [MetricFlow's license history](https://github.com/dbt-labs/metricflow?tab=readme-ov-file#license-history). 
 - As a part of the <Constant name="semantic_layer" />, MetricFlow empowers organizations to define metrics using YAML abstractions.
@@ -80,7 +80,7 @@ For a semantic model, there are three main pieces of metadata:
 </VersionBlock>
 
 <VersionBlock lastVersion="1.11">
-<Lightbox src="/img/docs/dbt-cloud/semantic-layer/semantic_foundation.jpg" width="70%" title="A semantic model is made up of different components: Entities, Measures, and Dimensions."/>
+<Lightbox src="/img/docs/dbt-platform/semantic-layer/semantic_foundation.jpg" width="70%" title="A semantic model is made up of different components: Entities, Measures, and Dimensions."/>
 </VersionBlock>
 
 ### Metrics 

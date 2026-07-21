@@ -18,10 +18,12 @@ dbt connects to your data platform to run SQL transformations against your data.
 
 The <Constant name="fusion_engine" /> includes built-in support for:
 
-- [Snowflake](/docs/local/connect-data-platform/snowflake-setup)
-- [Databricks](/docs/local/connect-data-platform/databricks-setup)
-- [Amazon Redshift](/docs/local/connect-data-platform/redshift-setup)
-- [Google BigQuery](/docs/local/connect-data-platform/bigquery-setup)
+- [Snowflake](/docs/local/connect-data-platform/snowflake-setup) <Lifecycle status="preview" />
+- [Databricks](/docs/local/connect-data-platform/databricks-setup) <Lifecycle status="private_preview" />
+- [Amazon Redshift](/docs/local/connect-data-platform/redshift-setup) <Lifecycle status="preview" />
+- [Google BigQuery](/docs/local/connect-data-platform/bigquery-setup) <Lifecycle status="preview" />
+- [DuckDB](/docs/local/connect-data-platform/duckdb-setup) <Lifecycle status="beta" />
+- [Apache Spark](/docs/local/connect-data-platform/spark-setup) <Lifecycle status="beta" />
 
 <Constant name="fusion" /> uses [ADBC (Arrow Database Connectivity)](https://arrow.apache.org/adbc/) drivers for high-performance connections to these platforms. No separate adapter installation is required.
 
@@ -75,7 +77,7 @@ The following table lists features available for adapters:
 
 ### Catalog 
 
-For adapters that support it, you can partially build the catalog. This builds the catalog for only selected models via `dbt docs generate --select ...`. For adapters that don't support partial catalog generation, run `dbt docs generate` to build the full catalog.
+For adapters that support it, you can partially build the catalog (<Constant name="core_v1" /> only). This builds the catalog for only selected models via `dbt docs generate --select ...`. For adapters that don't support partial catalog generation, run `dbt docs generate` to build the full catalog.
 
 ### Source freshness
 

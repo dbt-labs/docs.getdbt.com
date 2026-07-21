@@ -63,15 +63,21 @@ But first, she decides to interact with the data to learn more.
 
 From the **Customer model page** in <Constant name="catalog" />, Kimiko selects **Analyze data** from the **Open in...** dropdown. This enables her to query data for the Customer model. Once opened, <Constant name="insights" /> contains a query poised and ready to run.
 
-<Lightbox src="/img/guides/analyst-qs/query.png" width="90%" title="Open query" />
+<DocCarousel slidesPerView={1}>
+
+<Lightbox src="/img/guides/analyst-qs/catalog-analyze-data.png" width="50%" title="Select Analyze data from Catalog" />
+
+<Lightbox src="/img/guides/analyst-qs/query.png" width="90%" title="Open query in Insights" />
+
+</DocCarousel>
 
 When Kimiko runs the query, she can look at the data underyling it. The same context she saw in <Constant name="catalog" /> she now sees in her SQL editing experience.
 
-As she looks through the data, she sees information about each customer. She also notices the `first_ordered_at` column. Kimiko wants to code the query but her SQL is a little rusty so she uses natural language in dbt Copilot:
+As she looks through the data, she sees information about each customer. She also notices the `first_ordered_at` column. Kimiko wants to code the query but her SQL is a little rusty so she uses natural language in dbt Wizard:
 
 *How many new customers did we get in each month last year? I'd like to use my customer model and the first ordered at field to do this analysis.*
 
-dbt Copilot writes SQL that Kimiko decides to use: 
+dbt Wizard writes SQL that Kimiko decides to use: 
 
 ```sql
 select 
@@ -85,7 +91,7 @@ group by 1
 order by 1;
 ```
 
-Kimiko clicks **Replace** to move all of the SQL into her editor and replaces the original query. She runs the new query and reviews the data but decides to limit the dates using Copilot once again:
+Kimiko clicks **Replace** to move all of the SQL into her editor and replaces the original query. She runs the new query and reviews the data but decides to limit the dates using dbt Wizard once again:
 
 *Can we limit the dates to 2024?*
 

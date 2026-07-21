@@ -39,6 +39,131 @@
   ],
   "redirects": [
     {
+      "source": "/reference/global-configs/hints",
+      "destination": "/reference/global-configs/about-global-configs",
+      "permanent": true
+    },
+    {
+      "source": "/reference/global-configs/behavior-flag-introduction",
+      "destination": "/reference/global-configs/behavior-changes",
+      "permanent": true
+    },
+    {
+      "source": "/docs/dbt-versions/dbt-cloud-release-notes",
+      "destination": "/docs/dbt-versions/release-notes",
+      "permanent": true
+    },
+    {
+      "source": "/reference/global-configs/behavior-flag-maturity",
+      "destination": "/reference/global-configs/behavior-changes",
+      "permanent": true
+    },
+    {
+      "source": "/reference/global-configs/behavior-flag-removed",
+      "destination": "/reference/global-configs/behavior-changes",
+      "permanent": true
+    },
+    {
+      "source": "/docs/dbt-versions/core-upgrade/upgrading-to-fusion",
+      "destination": "/docs/dbt-versions/core-upgrade/upgrading-to-v2",
+      "permanent": true
+    },
+    {
+      "source": "/docs/dbt-ai/dbt-agents",
+      "destination": "/docs/dbt-ai/about-dbt-ai",
+      "permanent": true
+    },
+    {
+      "source": "/docs/dbt-ai/developer-agent",
+      "destination": "/docs/dbt-ai/wizard-ide",
+      "permanent": true
+    },
+    {
+      "source": "/docs/platform/wizard-chat-in-studio",
+      "destination": "/docs/dbt-ai/wizard-ide",
+      "permanent": true
+    },
+    {
+      "source": "/docs/dbt-ai/about-dbt-wizard",
+      "destination": "/docs/dbt-ai/about-dbt-wizard-cli",
+      "permanent": true
+    },
+    {
+      "source": "/docs/dbt-ai/dbt-wizard-install",
+      "destination": "/docs/dbt-ai/wizard-cli",
+      "permanent": true
+    },
+    {
+      "source": "/docs/platform/dbt-copilot-overview",
+      "destination": "/docs/platform/wizard-overview",
+      "permanent": true
+    },
+    {
+      "source": "/docs/platform/dbt-copilot",
+      "destination": "/docs/platform/wizard-platform",
+      "permanent": true
+    },
+    {
+      "source": "/docs/platform/wizard",
+      "destination": "/docs/platform/wizard-platform",
+      "permanent": true
+    },
+    {
+      "source": "/docs/platform/enable-dbt-copilot",
+      "destination": "/docs/platform/enable-dbt-ai",
+      "permanent": true
+    },
+    {
+      "source": "/docs/platform/use-dbt-copilot",
+      "destination": "/docs/dbt-ai/wizard-ide",
+      "permanent": true
+    },
+    {
+      "source": "/docs/platform/use-dbt-wizard",
+      "destination": "/docs/dbt-ai/wizard-ide",
+      "permanent": true
+    },
+    {
+      "source": "/docs/platform/copilot-chat-in-studio",
+      "destination": "/docs/dbt-ai/wizard-ide",
+      "permanent": true
+    },
+    {
+      "source": "/docs/platform/copilot-styleguide",
+      "destination": "/docs/dbt-ai/wizard-skills",
+      "permanent": true
+    },
+    {
+      "source": "/docs/platform/dbt-copilot-faqs",
+      "destination": "/docs/dbt-ai/dbt-ai-faqs",
+      "permanent": true
+    },
+    {
+      "source": "/docs/platform/wizard-faqs",
+      "destination": "/docs/dbt-ai/dbt-ai-faqs",
+      "permanent": true
+    },
+    {
+      "source": "/docs/platform/build-canvas-dbt-wizard",
+      "destination": "/docs/platform/build-canvas-copilot",
+      "permanent": true
+    },
+    {
+      "source": "/docs/platform/studio-ide/develop-copilot",
+      "destination": "/docs/platform/studio-ide/develop-studio-ai",
+      "permanent": true
+    },
+    {
+      "source": "/guides/explorer-quickstart",
+      "destination": "/docs/explore/explore-projects",
+      "permanent": true
+    },
+    {
+      "source": "/guides/explorer-qs",
+      "destination": "/docs/explore/explore-projects",
+      "permanent": true
+    },
+    {
       "source": "/community/events",
       "destination": "https://www.getdbt.com/events",
       "source": "/community/spotlight",
@@ -496,8 +621,8 @@
       "permanent": true
     },
     {
-      "source": "/docs/core/connect-data-platform/ibmdb2-setup",
-      "destination": "/docs/local/connect-data-platform/ibmdb2-setup",
+      "source": "/docs/local/connect-data-platform/ibmdb2-setup",
+      "destination": "/docs/local/connect-data-platform/ibm-db2-setup",
       "permanent": true
     },
     {
@@ -652,7 +777,7 @@
     },
     {
       "source": "/docs/collaborate/access-from-dbt-cloud",
-      "destination": "/docs/explore/access-from-dbt-cloud",
+      "destination": "/docs/explore/access-from-dbt-platform",
       "permanent": true
     },
     {
@@ -1312,7 +1437,7 @@
     },
     {
       "source": "/docs/cloud/about-cloud/dark-mode",
-      "destination": "/docs/cloud/about-cloud/change-your-dbt-cloud-theme",
+      "destination": "/docs/platform/about-platform/change-your-dbt-theme",
       "permanent": true
     },
     {
@@ -1432,7 +1557,7 @@
     },
     {
       "source": "/docs/dbt-versions/versionless-cloud",
-      "destination": "/docs/dbt-versions/cloud-release-tracks",
+      "destination": "/docs/dbt-versions/dbt-release-tracks",
       "permanent": true
     },
     {
@@ -1477,12 +1602,17 @@
     },
     {
       "source": "/docs/deploy/deploy-environments#partial-parsing",
-      "destination": "/docs/dbt-cloud-environments#partial-parsing",
+      "destination": "/docs/dbt-platform-environments#partial-parsing",
       "permanent": true
     },
     {
       "source": "/docs/dbt-versions/release-notes/:path((?!dbt-cloud-changelog-2021|dbt-cloud-changelog-2019-2020).*)",
-      "destination": "/docs/dbt-versions/dbt-cloud-release-notes",
+      "destination": "/docs/dbt-versions/release-notes",
+      "permanent": true
+    },
+    {
+      "source": "/docs/dbt-versions/dbt-cloud-release-notes-gen",
+      "destination": "/docs/dbt-versions/dbt-platform-release-notes-gen",
       "permanent": true
     },
     {
@@ -1527,7 +1657,7 @@
     },
     {
       "source": "/docs/dbt-versions/upgrade-core-in-cloud",
-      "destination": "/docs/dbt-versions/upgrade-dbt-version-in-cloud",
+      "destination": "/docs/dbt-versions/upgrade-dbt-platform-version",
       "permanent": true
     },
     {
@@ -1739,7 +1869,7 @@
     },
     {
       "source": "/guides/orchestration/how-to-use-databricks-workflows-to-run-dbt-cloud-jobs",
-      "destination": "/guides/how-to-use-databricks-workflows-to-run-dbt-cloud-jobs",
+      "destination": "/guides/databricks-workflows",
       "permanent": true
     },
     {
@@ -1919,7 +2049,7 @@
     },
     {
       "source": "/docs/collaborate/environments/dbt-cloud-environments",
-      "destination": "/docs/deploy/dbt-cloud-environments",
+      "destination": "/docs/dbt-platform-environments",
       "permanent": true
     },
     {
@@ -2124,7 +2254,7 @@
     },
     {
       "source": "/docs/dbt-cloud-apis/metadata-api",
-      "destination": "/docs/dbt-cloud-apis/discovery-api",
+      "destination": "/docs/dbt-apis/discovery-api",
       "permanent": true
     },
     {
@@ -2465,7 +2595,7 @@
     },
     {
       "source": "/docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-choosing-a-dbt-version",
-      "destination": "/docs/dbt-versions/upgrade-dbt-version-in-cloud",
+      "destination": "/docs/dbt-versions/upgrade-dbt-platform-version",
       "permanent": true
     },
     {
@@ -2935,7 +3065,7 @@
     },
     {
       "source": "/docs/dbt-cloud/dbt-cloud-api/admin-cloud-api",
-      "destination": "/docs/dbt-cloud-apis/admin-cloud-api",
+      "destination": "/docs/dbt-apis/admin-api",
       "permanent": true
     },
     {
@@ -3055,7 +3185,7 @@
     },
     {
       "source": "/docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-upgrading-dbt-versions",
-      "destination": "/docs/dbt-versions/upgrade-dbt-version-in-cloud",
+      "destination": "/docs/dbt-versions/upgrade-dbt-platform-version",
       "permanent": true
     },
     {
@@ -3460,7 +3590,7 @@
     },
     {
       "source": "/docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-choosing-a-dbt-version",
-      "destination": "/docs/dbt-versions/upgrade-dbt-version-in-cloud",
+      "destination": "/docs/dbt-versions/upgrade-dbt-platform-version",
       "permanent": true
     },
     {
@@ -4356,7 +4486,7 @@
     },
     {
       "source": "/dbt-cloud/api-v4",
-      "destination": "/docs/dbt-cloud-apis/admin-cloud-api",
+      "destination": "/docs/dbt-apis/admin-api",
       "permanent": true
     },
     {
@@ -4987,6 +5117,146 @@
     {
       "source": "/report-a-problem",
       "destination": "https://www.getdbt.com/report-a-problem",
+      "permanent": true
+    },
+    {
+      "source": "/docs/platform/about-platform/dbt-cloud-features",
+      "destination": "/docs/platform/about-platform/dbt-platform-features",
+      "permanent": true
+    },
+    {
+      "source": "/docs/platform/about-platform/about-cloud-ide",
+      "destination": "/docs/platform/about-platform/about-studio-ide",
+      "permanent": true
+    },
+    {
+      "source": "/docs/platform/about-platform/about-dbt-cloud",
+      "destination": "/docs/platform/about-platform/dbt-platform-features",
+      "permanent": true
+    },
+    {
+      "source": "/docs/platform/about-platform/change-your-dbt-cloud-theme",
+      "destination": "/docs/platform/about-platform/change-your-dbt-theme",
+      "permanent": true
+    },
+    {
+      "source": "/docs/platform/cloud-cli-installation",
+      "destination": "/docs/platform/dbt-cli-installation",
+      "permanent": true
+    },
+    {
+      "source": "/docs/platform/configure-cloud-cli",
+      "destination": "/docs/platform/configure-dbt-cli",
+      "permanent": true
+    },
+    {
+      "source": "/docs/platform/git/git-configuration-in-dbt-cloud",
+      "destination": "/docs/platform/git/configure-git",
+      "permanent": true
+    },
+    {
+      "source": "/docs/platform/manage-access/cloud-seats-and-users",
+      "destination": "/docs/platform/manage-access/seats-and-users",
+      "permanent": true
+    },
+    {
+      "source": "/docs/platform/studio-ide/develop-in-the-cloud",
+      "destination": "/docs/platform/studio-ide/develop-in-studio",
+      "permanent": true
+    },
+    {
+      "source": "/docs/platform/dbt-cloud-ide/develop-in-the-cloud",
+      "destination": "/docs/platform/studio-ide/develop-in-studio",
+      "permanent": true
+    },
+    {
+      "source": "/docs/platform/dbt-cloud-ide/:path*",
+      "destination": "/docs/platform/studio-ide/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/docs/platform/about-cloud-develop-defer",
+      "destination": "/docs/platform/about-defer",
+      "permanent": true
+    },
+    {
+      "source": "/docs/platform/about-cloud-setup",
+      "destination": "/docs/platform/about-platform-setup",
+      "permanent": true
+    },
+    {
+      "source": "/docs/about-cloud-setup",
+      "destination": "/docs/platform/about-platform-setup",
+      "permanent": true
+    },
+    {
+      "source": "/docs/dbt-versions/cloud-release-tracks",
+      "destination": "/docs/dbt-versions/dbt-release-tracks",
+      "permanent": true
+    },
+    {
+      "source": "/docs/dbt-versions/upgrade-dbt-version-in-cloud",
+      "destination": "/docs/dbt-versions/upgrade-dbt-platform-version",
+      "permanent": true
+    },
+    {
+      "source": "/docs/dbt-apis/admin-cloud-api",
+      "destination": "/docs/dbt-apis/admin-api",
+      "permanent": true
+    },
+    {
+      "source": "/docs/faqs/Accounts/cloud-upgrade-instructions",
+      "destination": "/docs/faqs/Accounts/platform-upgrade-instructions",
+      "permanent": true
+    },
+    {
+      "source": "/docs/faqs/Troubleshooting/long-sessions-cloud-cli",
+      "destination": "/docs/faqs/Troubleshooting/long-sessions-dbt-cli",
+      "permanent": true
+    },
+    {
+      "source": "/docs/cloud/about-cloud/:path*",
+      "destination": "/docs/platform/about-platform/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/docs/cloud/:path*",
+      "destination": "/docs/platform/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/docs/cloud-integrations/:path*",
+      "destination": "/docs/platform-integrations/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/docs/dbt-cloud-apis/:path*",
+      "destination": "/docs/dbt-apis/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/docs/platform-integrations/snowflake-native-app",
+      "destination": "/docs/platform/connect-data-platform/connect-snowflake",
+      "permanent": true
+    },
+    {
+      "source": "/docs/platform-integrations/set-up-snowflake-native-app",
+      "destination": "/docs/platform/connect-data-platform/connect-snowflake",
+      "permanent": true
+    },
+    {
+      "source": "/docs/platform-integrations/snowflake-native-app",
+      "destination": "/docs/platform/connect-data-platform/connect-snowflake",
+      "permanent": true
+    },
+    {
+      "source": "/docs/platform-integrations/set-up-snowflake-native-app",
+      "destination": "/docs/platform/connect-data-platform/connect-snowflake",
+      "permanent": true
+    },
+    {
+      "source": "/docs/deploy/dbt-state-lag-tolerance",
+      "destination": "/docs/deploy/dbt-state-setup#configuring-lag-tolerance",
       "permanent": true
     }
   ]

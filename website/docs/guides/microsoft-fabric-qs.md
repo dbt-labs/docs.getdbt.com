@@ -37,7 +37,7 @@ In this quickstart guide, you'll learn how to use <Constant name="dbt" /> with [
 1. Log in to your [Microsoft Fabric](http://app.fabric.microsoft.com) account.  
 2. On the home page, select the **Synapse Data Warehouse** tile.
 
-    <Lightbox src="/img/quickstarts/dbt-cloud/example-start-fabric.png" width="80%" title="Example of the Synapse Data Warehouse tile" />
+    <Lightbox src="/img/quickstarts/dbt-platform/example-start-fabric.png" width="80%" title="Example of the Synapse Data Warehouse tile" />
 
 3. From **Workspaces** on the left sidebar, navigate to your organization’s workspace. Or, you can create a new workspace; refer to [Create a workspace](https://learn.microsoft.com/en-us/fabric/get-started/create-workspaces) in the Microsoft docs for more details.
 4. Choose your warehouse from the table. Or, you can create a new warehouse; refer to [Create a warehouse](https://learn.microsoft.com/en-us/fabric/data-warehouse/tutorial-create-warehouse) in the Microsoft docs for more details.
@@ -96,7 +96,7 @@ In this quickstart guide, you'll learn how to use <Constant name="dbt" /> with [
     );
     ```
 
-    <Lightbox src="/img/quickstarts/dbt-cloud/example-load-data-ms-fabric.png" width="80%" title="Example of loading data" />
+    <Lightbox src="/img/quickstarts/dbt-platform/example-load-data-ms-fabric.png" width="80%" title="Example of loading data" />
 
 ## Connect dbt to Microsoft Fabric
 
@@ -107,7 +107,7 @@ In this quickstart guide, you'll learn how to use <Constant name="dbt" /> with [
     - **Server** &mdash; Use the service principal's **host** value for the Fabric test endpoint. 
     - **Port** &mdash; 1433 (which is the default).
     - **Database** &mdash; Use the service principal's **database** value for the Fabric test endpoint. 
-5. Enter the **Development credentials** for your new project:
+5. Enter the **User credentials** for your new project:
     - **Authentication** &mdash; Choose **Service Principal** from the dropdown.
     - **Tenant ID** &mdash; Use the service principal’s **Directory (tenant) id** as the value.
     - **Client ID** &mdash; Use the service principal’s **application (client) ID id** as the value.

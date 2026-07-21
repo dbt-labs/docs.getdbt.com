@@ -6,7 +6,7 @@ description: "dbt Catalog provides recommendations that you can take to improve 
 
 # Project recommendations <Lifecycle status="managed,managed_plus" />
  
-<Constant name="catalog" /> provides recommendations about your project from the `dbt_project_evaluator` [package](https://hub.getdbt.com/dbt-labs/dbt_project_evaluator/latest/) using metadata from the [Discovery API](/docs/dbt-cloud-apis/discovery-api). 
+<Constant name="catalog" /> provides recommendations about your project from the `dbt_project_evaluator` [package](https://hub.getdbt.com/dbt-labs/dbt_project_evaluator/latest/) using metadata from the [Discovery API](/docs/dbt-apis/discovery-api). 
 
 - <Constant name="catalog" /> also offers a global view, showing all the recommendations across the project for easy sorting and summarizing.
 - These recommendations provide insight into how you can create a better-documented, better-tested, and better-built dbt project, creating more trust and less confusion.

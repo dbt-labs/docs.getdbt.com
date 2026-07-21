@@ -6,7 +6,22 @@ sidebar: "resource type"
 
 <VersionBlock firstVersion="1.9">
 
-The `--resource-type` and `--exclude-resource-type` flags include or exclude resource types from the `dbt build`, `dbt test`, `dbt clone`, and `dbt list` commands.
+The `--resource-type` and `--exclude-resource-type` flags include or exclude resource types from the `dbt build`, `dbt clone`, `dbt test`, and `dbt list` commands.
+
+<Expandable alt_header="Filtering test types with dbt test">
+
+Use the `test_type` selector to filter test types with `dbt test` &mdash; it works across all engines:
+
+- `dbt test --select test_type:unit` &mdash; runs only unit tests
+- `dbt test --select test_type:data` &mdash; runs only data tests
+
+If you're using <Constant name="core" /> v1.9+, you can also use `--resource-type`:
+
+- `dbt test --resource-type unit_test` &mdash; runs only unit tests
+- `dbt test --resource-type test` &mdash; runs only data tests
+
+For more examples, see [test selection examples](/reference/node-selection/test-selection-examples).
+</Expandable>
 
 </VersionBlock>
 
@@ -122,14 +137,15 @@ dbt build --resource-type test
 
 <VersionBlock firstVersion="1.9">
 
-### Include all data tests during testing
+### Include only data tests during testing
 
-Use the following command to only include data tests when running tests:
+To run only data tests (excluding unit tests) when using `dbt test`, use the `test_type` selector:
 
 <File name='Usage'>
 
 ```text
-dbt test --resource-type test
+dbt test --select test_type:data -- dbt Core and dbt Fusion engines
+dbt test --resource-type test -- dbt Core only
 ```
 
 </File>
@@ -165,14 +181,15 @@ dbt build --exclude-resource-type unit_test
 
 <VersionBlock firstVersion="1.9">
 
-### Exclude all unit tests during testing
+### Exclude unit tests during testing
 
-Use the following command to exclude unit tests when running tests:
+To exclude unit tests when using `dbt test`, use the `test_type` selector to run only data tests:
 
 <File name='Usage'>
 
 ```text
-dbt test --exclude-resource-type unit_test
+dbt test --select test_type:data -- dbt Core and dbt Fusion engines
+dbt test --exclude-resource-type unit_test -- dbt Core only
 ```
 
 </File>

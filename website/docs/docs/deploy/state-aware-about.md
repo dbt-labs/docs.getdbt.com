@@ -3,6 +3,7 @@ title: "About state-aware orchestration"
 description: "Learn about how state-aware orchestration automatically determines which models to build by detecting changes in code or data every time a job runs." 
 id: "state-aware-about"
 tags: ['scheduler','SAO']
+unlisted: true
 ---
 
 # About state-aware orchestration <Lifecycle status="private_preview,managed,managed_plus" />
@@ -14,10 +15,14 @@ Every time a job runs, state-aware orchestration automatically determines which 
 </IntroText>
 
 import FusionLifecycle from '/snippets/_fusion-lifecycle-callout.md';
+import SaoDeprecated from '/snippets/_sao-deprecated.md';
+
+<SaoDeprecated />
 
 <FusionLifecycle />
 
 State-aware orchestration saves you compute costs and reduces runtime because when a job runs, it checks for new records and only builds the models that will change.
+
 
 <Lightbox src="/img/docs/deploy/sao.gif" title="Fusion powered state-aware orchestration" />
 
@@ -165,6 +170,7 @@ The following section lists some considerations when using Efficient testing in 
 
 ## Related FAQs
 
+<FAQ path="Runs/what-happened-to-sao" />
 <FAQ path="Runs/sao-difference-core" />
 
 ## Related docs
@@ -173,3 +179,7 @@ The following section lists some considerations when using Efficient testing in 
 - [Artifacts](/docs/deploy/artifacts)
 - [Continuous integration (CI) jobs](/docs/deploy/ci-jobs)
 - [`freshness`](/reference/resource-configs/freshness)
+- [About dbt State](/docs/deploy/dbt-state-about)
+- [Set up dbt State](/docs/deploy/dbt-state-setup)
+- [dbt State configs](/reference/resource-configs/dbt-state-configs)
+- [Migrate to dbt State](/docs/deploy/dbt-state-migration)

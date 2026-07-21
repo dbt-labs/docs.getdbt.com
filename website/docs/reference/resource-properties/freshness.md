@@ -62,7 +62,7 @@ sources:
 ## Definition
 A freshness block is used to define the acceptable amount of time between the most recent record, and now, for a <Term id="table" /> to be considered "fresh".
 
-In the `freshness` block, one or both of `warn_after` and `error_after` can be provided. If neither is provided, then dbt will not calculate freshness snapshots for the tables in this source.
+In the `freshness` block, one or both of `warn_after` and `error_after` can be provided. If neither is provided, then dbt will not calculate freshness for the tables in this source.
 
 - `warn_after`: Duration (for example, 12 hours) after which dbt raises a warning if the most recent available data is older than this threshold.
 - `error_after`: Duration (for example, 24 hours) after which dbt fails the freshness check if the most recent available data is older than this threshold.
@@ -102,7 +102,13 @@ This is useful when all of the tables in a source have the same `loaded_at_field
 
 To exclude a source from freshness calculations, explicitly set `freshness: null`.
 
-In state-aware orchestration, dbt uses the warehouse metadata by default to check if sources (or upstream models in the case of Mesh) are fresh. For more information on how freshness is used by state-aware orchestration, see [Advanced configurations](/docs/deploy/state-aware-setup#advanced-configurations). 
+import SaoDeprecated from '/snippets/_sao-deprecated.md';
+
+<SaoDeprecated />
+
+In state-aware orchestration, dbt uses the warehouse metadata by default to check if sources (or upstream models in the case of Mesh) are fresh. For more information on how freshness is used by state-aware orchestration, see [Advanced configurations](/docs/deploy/state-aware-setup#advanced-configurations).
+
+If you're using [dbt State](/docs/deploy/dbt-state-about), `loaded_at_field` and `loaded_at_query` are also used for source freshness detection (for example, to ensure late-arriving records are detected). Refer to [Migrate from state-aware orchestration](/docs/deploy/dbt-state-migration) for more details.
 
 ## loaded_at_field
 

@@ -6,6 +6,8 @@ pagination_next: null
 pagination_prev: null
 ---
 
+import SaoDeprecated from '/snippets/_sao-deprecated.md';
+
 The <Constant name="fusion_engine" /> provides a comprehensive telemetry system that replaces [<Constant name="core" />'s structured logging](/reference/events-logging#structured-logging). Built on [OpenTelemetry](https://opentelemetry.io/) conventions and backed by a stable protobuf schema, it enables deep integration with orchestrators, observability platforms, and custom tooling.
 
 This uses the same integration that <Constant name="dbt_platform" /> relies on for orchestration and monitoring, providing proven and production-ready features that work at scale.
@@ -40,10 +42,20 @@ Write a Parquet file (saves to `target/metadata/` directory):
 dbtf build --otel-parquet-file-name telemetry.parquet
 ```
 
+Write a Parquet file with full trace-level logs (recommended for debugging):
+
+```bash
+dbtf build --log-level-file trace --otel-parquet-file-name telemetry.parquet
+```
+
 Export to an OpenTelemetry collector:
 ```bash
 OTEL_EXPORTER_OTLP_ENDPOINT="http://localhost:4318" dbtf build --export-to-otlp
 ```
+
+### Download telemetry from platform job runs
+
+On the <Constant name="dbt_platform" />, <Constant name="fusion"/> job runs store OTel telemetry as Parquet artifacts for dbt command steps. From a completed run, open the **Run summary** tab, select a step, and click **Download** > **Download OTel log**. The option appears only for <Constant name="fusion"/> runs where the step produced an OTel file. For step-by-step instructions, refer to [Downloading logs](/docs/deploy/run-visibility#access-logs).
 
 ## Telemetry data
 
@@ -89,7 +101,7 @@ When <Constant name="fusion" /> skips a node, the telemetry includes a reason:
 | Skip reason      | Description                                                      |
 | ---------------- | ---------------------------------------------------------------- |
 | `upstream`       | A dependency failed.                                              |
-| `cached`         | <Constant name="fusion" /> reused results from cache (no changes detected via [state aware orchestration](/docs/deploy/state-aware-about)). |
+| `cached`         | <Constant name="fusion" /> reused results from cache (no changes detected via [dbt State](/docs/deploy/dbt-state-about)). |
 | `phase_disabled` | The phase was disabled (for example, `--static-analysis off`).    |
 | `noop`           | Node doesn't perform work in this phase (for example, ephemeral models). |
 
@@ -127,6 +139,10 @@ List skipped nodes, reasons, and upstream details:
 cat telemetry.jsonl | jq 'select(.attributes.node_outcome == "NODE_OUTCOME_SKIPPED") | {node: .attributes.unique_id, reason: .attributes.node_skip_reason, upstream: .attributes.node_skip_upstream_detail.upstream_unique_id }'
 ```
 
+### Downloading telemetry from the dbt platform
+
+If you ran a job in the <Constant name="dbt_platform" />, you can download the OpenTelemetry (OTEL) Parquet artifact from the run page using the **Download** dropdown. The download includes the `telemetry-<step>-otel.parquet` file for each step in the run.
+
 ### Parquet analysis with DuckDB
 
 Leverage DuckDB to better understand your telemetry data stored in Parquet files. 
@@ -157,6 +173,10 @@ duckdb.sql("""
     GROUP BY attributes.node_outcome
 """).show()
 ```
+
+### Web-based Parquet viewers
+
+For ad hoc exploration without a local install, web-based Parquet viewers (such as [PondPilot](https://app.pondpilot.io/)) let you upload a Parquet file and run SQL queries in the browser. Some viewers support LLM-assisted query generation to help you explore an unfamiliar schema.
 
 ## OpenTelemetry integration
 
@@ -212,6 +232,8 @@ Note that <Constant name="core" />'s `fail` status maps to <Constant name="fusio
 
 <Constant name="fusion" /> adds `skip_reason: cached` for nodes reused via [State Aware Orchestration](/docs/deploy/state-aware-about), which has no <Constant name="core" /> equivalent.
 
+<SaoDeprecated />
+
 ## Record structure
 
 Each telemetry record contains envelope fields plus event-specific `attributes`:
@@ -252,11 +274,13 @@ Unlike <Constant name="core" />'s structured logging, <Constant name="fusion" />
 
 This makes <Constant name="fusion" /> telemetry a reliable foundation for production integrations, orchestrators, and long-term analytics pipelines.
 
-## Official client library (coming soon) {#official-client-library}
+## Official client library
 
-dbt Labs is developing an official open-source client library. Built in Rust for performance, it will be available as:
+dbt Labs provides an official open-source client library. Built in Rust for performance, it is available as:
 
-- A standalone Rust crate and CLI.
-- A fully-typed Python package wrapping the Rust core.
+- A standalone Rust crate and CLI (`dbt-telemetry-export-cli`).
+- A fully typed Python package wrapping the Rust core, installable via `uv tool install`.
 
-The library will provide type-safe, forward-compatible access to telemetry data—stream JSONL in real-time, query Parquet files, and build custom integrations with confidence that schema changes won't break your code.
+The library provides type-safe, forward-compatible access to telemetry data. Stream JSONL in real time, query Parquet files, and build custom integrations with confidence that schema changes won't break your code.
+
+We'll be announcing the public release in the near future.

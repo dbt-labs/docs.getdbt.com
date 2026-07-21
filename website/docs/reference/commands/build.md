@@ -22,6 +22,12 @@ In DAG order, for selected resources or an entire project.
 - In the case of a test with multiple parents, where one parent depends on the other (e.g. a `relationships` test between `model_a` + `model_b`), that test will block-and-skip children of the most-downstream parent only (`model_b`).
 - If you have a test with multiple parents that are independent of each other, dbt [skips](https://github.com/dbt-labs/dbt-core/blob/d5071fa13502be273596a0b7c8b13d14b6c68655/core/dbt/compilation.py#L224-L257) the downstream node only if that node depends on all of those parents.
 
+<VersionBlock firstVersion="1.12">
+
+**Skipping on model errors:** By default, if a model fails, all downstream models are skipped. Set [`on_error: continue`](/reference/resource-configs/on_error) on a model to allow its downstream models to run even when that model fails.
+
+</VersionBlock>
+
 <VersionBlock lastVersion="1.11">
 
 **Selecting resources:** The `build` task supports standard selection syntax (`--select`, `--exclude`, `--selector`), as well as a `--resource-type` flag that offers a final filter (just like `list`). Whichever resources are selected, those are the ones that `build` will run/test/snapshot/seed.

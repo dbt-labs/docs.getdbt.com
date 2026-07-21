@@ -16,6 +16,6 @@ So for example, if:
 Then:
 
 - In Explorer, only directly referenced public models (`upstream_b` in this case) appear.
-- In the [<Constant name="studio_ide" />](/docs/cloud/studio-ide/develop-in-studio) lineage view, however, `upstream_a` (the indirect dependency) _will_ appear because <Constant name="dbt" /> dynamically resolves the full dependency graph.
+- In the [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio) lineage view, however, `upstream_a` (the indirect dependency) _will_ appear because <Constant name="dbt" /> dynamically resolves the full dependency graph.
 
 This behavior makes sure that <Constant name="catalog" /> only shows the immediate dependencies available to that specific project.

@@ -27,7 +27,7 @@ This section explains how to set and override environment variables in <Constant
 
 Environment variable values can be set in multiple places within <Constant name="dbt" />. As a result, <Constant name="dbt" /> will interpret environment variables according to the following order of precedence (lowest to highest):
 
- <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/Environment Variables/env-var-precdence.png" title="Environment variables order of precedence"/>
+ <Lightbox src="/img/docs/dbt-platform/using-dbt-platform/Environment Variables/env-var-precdence.png" title="Environment variables order of precedence"/>
 
 There are four levels of environment variables:
 
@@ -40,13 +40,13 @@ There are four levels of environment variables:
 
 To set environment variables at the project and environment level, click **Orchestration** in the left-side menu, then select **Environments**. Click **Environment variables** to add and update your environment variables.
 
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/Environment Variables/navigate-to-env-vars.png" title="Environment variables tab"/>
+<Lightbox src="/img/docs/dbt-platform/using-dbt-platform/Environment Variables/navigate-to-env-vars.png" title="Environment variables tab"/>
 
 You'll notice there is a **Project default** column. This is a great place to set a value that will persist across your whole project, independent of where the code is run. We recommend setting this value when you want to supply a catch-all default or add a project-wide token or secret.
 
 To the right of the **Project default** column, you can see all your environments. Values set at the environment level take priority over the project-level default value. This is where you can tell <Constant name="dbt" /> to interpret an environment value differently in your staging versus production environment, as an example.
 
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/Environment Variables/project-environment-view.png" title="Setting project level and environment level values"/>
+<Lightbox src="/img/docs/dbt-platform/using-dbt-platform/Environment Variables/project-environment-view.png" title="Setting project level and environment level values"/>
 
 #### Overriding environment variables at the job level
 
@@ -54,11 +54,11 @@ You may have multiple jobs that run in the same environment, and you'd like the 
 
 When setting up or editing a job, you will see a section where you can override environment variable values defined at the environment or project level.
 
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/Environment Variables/job-override.gif" title="Navigating to environment variables job override settings"/>
+<Lightbox src="/img/docs/dbt-platform/using-dbt-platform/Environment Variables/job-override.gif" title="Navigating to environment variables job override settings"/>
 
 Every job runs in a specific deployment environment, and by default, a job will inherit the values set at the environment level (or the highest precedence level set) for the environment in which it runs. If you'd like to set a different value at the job level, edit the value to override it.
 
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/Environment Variables/job-override.png" title="Setting a job override value"/>
+<Lightbox src="/img/docs/dbt-platform/using-dbt-platform/Environment Variables/job-override.png" title="Setting a job override value"/>
 
 #### Overriding environment variables at the personal level
 
@@ -69,7 +69,7 @@ You can also set a personal value override for an environment variable when you 
 
 To supply an override, developers can edit and specify a different value to use. These values will be respected in the <Constant name="studio_ide" /> both for the Results and Compiled SQL tabs.
 
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/Environment Variables/personal-override.png" width="60%" title="Setting a personal override value"/>
+<Lightbox src="/img/docs/dbt-platform/using-dbt-platform/Environment Variables/personal-override.png" width="60%" title="Setting a personal override value"/>
 
 :::info Appropriate coverage
 If you have not set a project level default value for every environment variable, it may be possible that <Constant name="dbt" /> does not know how to interpret the value of an environment variable in all contexts. In such cases, dbt will throw a compilation error: "Env var required but not provided".
@@ -81,7 +81,7 @@ If you change the value of an environment variable mid-session while using the <
 
 To refresh the <Constant name="studio_ide" /> mid-development, click on either the green 'ready' signal or the red 'compilation error' message at the bottom right corner of the <Constant name="studio_ide" />. A new modal will pop up, and you should select the **Restart IDE** button. This loads your environment variable values into your development environment.
 
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/Environment Variables/refresh-ide.png" title="Refreshing IDE mid-session"/>
+<Lightbox src="/img/docs/dbt-platform/using-dbt-platform/Environment Variables/refresh-ide.png" title="Refreshing IDE mid-session"/>
 
 There are some known issues with partial parsing of a project and changing environment variables mid-session in the IDE. If you find that your dbt project is not compiling to the values you've set, try deleting the `target/partial_parse.msgpack` file in your dbt project which will force dbt to re-compile your whole project.
 
@@ -97,7 +97,7 @@ While all environment variables are encrypted at rest in <Constant name="dbt" />
 
 Environment variables prefixed with `DBT_ENV_SECRET_` are protected with additional security controls. They are encrypted at rest using an encryption key (for example, AWS KMS when your deployment is hosted on AWS) and can only be accessed by decrypting them with that key. Decryption is restricted to specific flows where the value is required, such as when a job runs. Secret keys are never written to logs or error messages and are obfuscated in <Constant name="dbt" />, so they are not exposed in the UI or artifacts, and are only available to dbt at runtime as needed.
 
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/Environment Variables/DBT_ENV_SECRET.png" title="DBT_ENV_SECRET prefix obfuscation"/>
+<Lightbox src="/img/docs/dbt-platform/using-dbt-platform/Environment Variables/DBT_ENV_SECRET.png" title="DBT_ENV_SECRET prefix obfuscation"/>
 
 **Note**: An environment variable can be used to store a [git token for repo cloning](/docs/build/environment-variables#clone-private-packages). We recommend you make the git token's permissions read only and consider using a machine account or service user's PAT with limited repo access in order to practice good security hygiene.
 
@@ -109,10 +109,10 @@ Environment variables prefixed with `DBT_ENV_SECRET_` are protected with additio
 
 The following environment variable is set automatically for the <Constant name="studio_ide" />:
 
-- `DBT_CLOUD_GIT_BRANCH` &mdash; Provides the development Git branch name in the [<Constant name="studio_ide" />](/docs/cloud/studio-ide/develop-in-studio).
+- `DBT_CLOUD_GIT_BRANCH` &mdash; Provides the development Git branch name in the [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio).
   - The variable changes when the branch is changed.
   - Doesn't require restarting the <Constant name="studio_ide" /> after a branch change.
-  - Currently not available in the [<Constant name="dbt" /> CLI](/docs/cloud/cloud-cli-installation).
+  - Currently not available in the [<Constant name="dbt" /> CLI](/docs/platform/dbt-cli-installation).
 
 Use case &mdash; This is useful in cases where you want to dynamically use the Git branch name as a prefix for a [development schema](/docs/build/custom-schemas) (`{{ env_var('DBT_CLOUD_GIT_BRANCH') }}`).
 
@@ -122,7 +122,7 @@ The following environment variables are set automatically:
 
 - `DBT_ENV` &mdash; This key is reserved for the <Constant name="dbt" /> application and will always resolve to 'prod'. For deployment runs only.
 - `DBT_CLOUD_ENVIRONMENT_NAME` &mdash; The name of the <Constant name="dbt" /> environment in which `dbt` is running. 
-- `DBT_CLOUD_ENVIRONMENT_TYPE` &mdash; The type of <Constant name="dbt" /> environment in which `dbt` is running. The valid values are `dev`, `staging`, or `prod`. The value will be empty for [General deployment environments](/docs/dbt-cloud-environments#types-of-environments), so use a default like `{{ env_var('DBT_CLOUD_ENVIRONMENT_TYPE', '') }}`.
+- `DBT_CLOUD_ENVIRONMENT_TYPE` &mdash; The type of <Constant name="dbt" /> environment in which `dbt` is running. The valid values are `dev`, `staging`, or `prod`. The value will be empty for [General deployment environments](/docs/dbt-platform-environments#types-of-environments), so use a default like `{{ env_var('DBT_CLOUD_ENVIRONMENT_TYPE', '') }}`.
 - `DBT_CLOUD_INVOCATION_CONTEXT` &mdash; The context type in which `dbt` is invoked. The values are `dev`, `staging`, `prod`, or `ci`. 
     - Additionally, use `DBT_CLOUD_INVOCATION_CONTEXT` in the `generate_schema_name()` macro to define explicit guidelines to use the default schema only (with the `dbt_cloud_pr prefix`) in CI job runs, even if those CI jobs run in the same environment as production jobs.
 
@@ -164,7 +164,7 @@ Currently, it's not possible to dynamically set environment variables across mod
 
 **Note** &mdash; You can also use this method with Databricks SQL Warehouse.
 
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/Environment Variables/warehouse-override.png" width="60%" title="Adding environment variables to your connection credentials"/>
+<Lightbox src="/img/docs/dbt-platform/using-dbt-platform/Environment Variables/warehouse-override.png" width="60%" title="Adding environment variables to your connection credentials"/>
 
 :::info Environment variables and Snowflake OAuth limitations
 Env vars work well with username/password and keypair, including scheduled jobs, because dbt Core consumes the Jinja inserted into the autogenerated [`profiles.yml`](/docs/local/profiles.yml) and resolves it to do an `env_var` lookup. 
@@ -173,7 +173,7 @@ However, there are some limitations when using env vars with Snowflake OAuth Con
 
 - You can't use them in the account/host field, but they can be used for database, warehouse, and role. For these fields, [use extended attributes](/docs/deploy/deploy-environments#deployment-connection).
 
-Something to note, if you supply an environment variable in the account/host field, Snowflake OAuth Connection will **fail** to connect. This happens because the field doesn't pass through Jinja rendering, so <Constant name="dbt" /> simply passes the literal `env_var` code into a URL string like `{{ env_var("DBT_ACCOUNT_HOST_NAME") }}.snowflakecomputing.com`, which is an invalid hostname. Use [extended attributes](/docs/deploy/deploy-environments#deployment-credentials) instead.
+Something to note, if you supply an environment variable in the account/host field, Snowflake OAuth Connection will **fail** to connect. This happens because the field doesn't pass through Jinja rendering, so <Constant name="dbt" /> simply passes the literal `env_var` code into a URL string like `{{ env_var("DBT_ACCOUNT_HOST_NAME") }}.snowflakecomputing.com`, which is an invalid hostname. Use [extended attributes](/docs/dbt-platform-environments#extended-attributes) instead.
 :::
 
 </Expandable>

@@ -9,7 +9,7 @@ tags: [v1.1.41, v1.1.40, v1.1.39, v1.1.38, v1.1.37, v1.1.36, v1.1.35, v1.1.34, v
 
 :::note
 
-This changelog references dbt versions that are no longer supported and have been removed from the docs. For more information about upgrading to a supported version of dbt in your <Constant name="dbt" /> environment, read [Upgrade dbt version in Cloud](/docs/dbt-versions/upgrade-dbt-version-in-cloud).
+This changelog references dbt versions that are no longer supported and have been removed from the docs. For more information about upgrading to a supported version of dbt in your <Constant name="dbt" /> environment, read [Upgrade dbt version in Cloud](/docs/dbt-versions/upgrade-dbt-platform-version).
 
 :::
 
@@ -37,7 +37,7 @@ We shipped environment variables in <Constant name="dbt" />. Environment variabl
 
 
 ## dbt Cloud v1.1.38 (October 27, 2021)
-Have you used the [Metadata API](/docs/dbt-cloud-apis/discovery-api) yet? The Metadata API is available to customers on the Team and Enterprise plans, and with it, you can learn tons about your dbt project, if it's running dbt v0.19.0 or later. You can now query information about _any_ run, not just the last run of a job. Mo' data, mo' fun!
+Have you used the [Metadata API](/docs/dbt-apis/discovery-api) yet? The Metadata API is available to customers on the Team and Enterprise plans, and with it, you can learn tons about your dbt project, if it's running dbt v0.19.0 or later. You can now query information about _any_ run, not just the last run of a job. Mo' data, mo' fun!
 
 
 ## dbt Cloud v1.1.37 (October 13, 2021)
@@ -93,7 +93,7 @@ We added a DAG in the <Constant name="studio_ide" />, so that you can see your m
 The Metadata API is now in GA! When <Constant name="dbt" /> invokes certain commands like run, test, seed, etc, dbt generates metadata in the form of [artifacts](/reference/artifacts/dbt-artifacts). These artifacts give you tons of information about project set up, run times, test details, compiled SQL, and so much more. Now <Constant name="dbt" /> serves a GraphQL API which supports arbitrary queries over these artifacts, so you can retrieve the metadata you want almost instantaneously.
 
 #### New products and features
-- The Metadata API is the start of our metadata product suite. Learn more about how to use the Metadata API [here](/docs/dbt-cloud-apis/discovery-api).
+- The Metadata API is the start of our metadata product suite. Learn more about how to use the Metadata API [here](/docs/dbt-apis/discovery-api).
 - dbt Enterprise customers using GitHub now get better <Term id="grain">fine-grained</Term> access control in their dbt projects. dbt will enforce git permissions for every developer to ensure that read / write policies in GitHub carry through to the IDE.
 
 
@@ -128,7 +128,7 @@ We shipped a resizable folder pane in the <Constant name="studio_ide" />, and we
 
 
 ## dbt Cloud v1.1.29 (June 23, 2021)
-We're heads down working on a handful of new features that we're going to share at the end of this month. The finish line is in sight. In the meantime, check out our latest release candidates for <Constant name="core" />. The biggest changes are better tests, providing consistency, configurability, and persistence. Additionally, we've refactored partial parsing and introduced an experimental parser; both are set to off by default.
+We're heads down working on a handful of new features that we're going to share at the end of this month. The finish line is in sight. In the meantime, check out our latest release candidates for <Constant name="core" />. The biggest changes are better tests, providing consistency, configurability, and persistence.
 
 #### New products and features
 - Add support for latest Core release candidates to <Constant name="dbt" />: v0.19.2-rc2 and v0.20.0-rc1
@@ -147,7 +147,7 @@ We shipped a far better experience for GitLab users. Be sure to check out new CI
 
 - `Slim CI`: We’ve made Slim CI available for all our cloud customers! With Slim CI, you don't have to rebuild and test all your models; you can instruct dbt Cloud to run jobs on only modified or new resources. If you are a GitHub or GitLab user, try creating a new job that runs on pull requests and you can signal to dbt to run only on these modified resources by including the `state:modified+` argument. Read more about Slim CI [here](/docs/deploy/continuous-integration).
 
-- Native GitLab authentication for <Constant name="dbt" /> Developer and Team Tiers: We’ve shipped native GitLab auth into GA. You can now import new GitLab repos with a couple clicks, trigger CI builds when Merge Requests are opened in GitLab, and carry GitLab permissions through to <Constant name="studio_ide" />'s git actions. Read how to set up native GitLab auth [here](/docs/cloud/git/connect-gitlab).
+- Native GitLab authentication for <Constant name="dbt" /> Developer and Team Tiers: We’ve shipped native GitLab auth into GA. You can now import new GitLab repos with a couple clicks, trigger CI builds when Merge Requests are opened in GitLab, and carry GitLab permissions through to <Constant name="studio_ide" />'s git actions. Read how to set up native GitLab auth [here](/docs/platform/git/connect-gitlab).
 
 #### Bug fixes
 - Allow users to select artifacts from a job that runs source freshness on jobs with the source freshness execution settings set to `ON`.
@@ -189,7 +189,7 @@ A lot of improvements coming for GitLab webhooks and native auth. We also fixed 
 - Updates test command suggestions and regex for common action suggestions
 - Updates order of stylesheet import to fix missing border bug
 - Fix GitLab PR link for Run Page
-- Fix infinite spinner for missing environment or development credentials
+- Fix infinite spinner for missing environment or user credentials
 - Fix infinite spinner when user is missing dev credentials
 - Do not try to push if awaiting a merge
 - Fix deleting schemas

@@ -68,6 +68,8 @@ export default function Lifecycle(props) {
     return null;
   }
 
+  const sizePercent = props.size !== undefined ? parseFloat(props.size) / 100 : 1;
+
   const statuses = props.status.split(',').map(s => {
     const trimmedStatus = s.trim();
     return PLAN_VARIABLES[trimmedStatus] || trimmedStatus;
@@ -85,6 +87,7 @@ export default function Lifecycle(props) {
           cursor: url ? 'pointer' : 'default', // Non-clickable for unknown status
           transition: 'background-color 0.2s ease, transform 0.2s ease, text-decoration 0.2s ease',
           textDecoration: 'none', // No underline
+          fontSize: `${sizePercent}rem`,
         };
 
         // Get display name or fallback to status

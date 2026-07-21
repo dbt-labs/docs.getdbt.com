@@ -1,50 +1,97 @@
 /**
- * Sets the available dbt versions available in the navigation
- * @type {Array.<{
- * version: string,
- * EOLDate: string,
- * isPrerelease: boolean,
- * customDisplay: string,
- * }>}
- * @property {string} version The version number
- * @property {string} EOLDate "End of Life" date which is used to show the EOL banner
- * @property {boolean} isPrerelease Boolean used for showing the prerelease banner
- * @property {string} customDisplay Allows setting a custom display name for the current version
+ * Products define the top-level categories in the version menu.
+ * Each product contains sub-products (release tracks) with an associated version.
  *
- * customDisplay for dbt platform should be a version ahead of latest dbt Core release (GA or beta).
+ * Sub-product properties:
+ * @property {string} name - Display name (must be unique across all products)
+ * @property {string} version - The version number used by VersionBlock for content filtering
+ * @property {boolean} [isBeta] - Marks this sub-product as beta/prerelease
+ * @property {string} [EOLDate] - End-of-life date (YYYY-MM-DD) for EOL banners
+ *
+ * The same version can appear in multiple sub-products. Each sub-product
+ * appears as a separate item in the version menu, even when versions overlap.
  */
-exports.versions = [
+
+const products = [
   {
-    version: "2.0",
-    customDisplay: "dbt Fusion engine (Latest)",
-    isPrerelease: true,
-  },
-    {
-    version: "1.12",
-    customDisplay: "dbt platform (Latest Core)",
+    name: "Fusion",
+    subProducts: [
+      {
+        name: "dbt platform (stable)",
+        version: "2.0",
+      },
+      {
+        name: "dbt Fusion engine",
+        version: "2.0",
+      },
+    ],
   },
   {
-    version: "1.11",
-    customDisplay: "Core v1.11",
-    EOLDate: "2026-12-18",
-  },
-  {
-    version: "1.10",
-    customDisplay: "Core v1.10 (Compatible/Extended)",
-    EOLDate: "2026-06-15",
+    name: "Core",
+    subProducts: [
+      {
+        name: "dbt platform (latest)",
+        version: "1.12",
+      },
+      {
+        name: "dbt Core v2.0 (alpha)",
+        version: "2.0",
+      },
+      {
+        name: "dbt Core v1.12",
+        EOLDate: "2027-07-15",
+        version: "1.12",
+      },
+      {
+        name: "dbt Core v1.11",
+        EOLDate: "2026-12-18",
+        version: "1.11",
+      },
+    ],
   },
 ];
 
+exports.products = products;
+
 /**
- * Controls doc page visibility in the sidebar based on the current version
+ * Backward-compatible versions array derived from products.
+ * When the same version appears in multiple sub-products, the first occurrence wins.
+ * Used by versionedPages/versionedCategories utilities and VersionContext internals.
+ */
+const _seenVersions = new Set();
+exports.versions = products.flatMap((product) =>
+  product.subProducts
+    .filter((sp) => {
+      if (_seenVersions.has(sp.version)) return false;
+      _seenVersions.add(sp.version);
+      return true;
+    })
+    .map((sp) => ({
+      version: sp.version,
+      customDisplay: sp.name,
+      isPrerelease: sp.isBeta || false,
+      EOLDate: sp.EOLDate,
+    }))
+);
+
+/**
+ * Controls doc page visibility in the sidebar based on the current version and/or product.
  * @type {Array.<{
  * page: string,
- * lastVersion: string,
+ * firstVersion?: string,
+ * lastVersion?: string,
+ * product?: string,
  * }>}
- * @property {string} page The target page to hide/show in the sidebar
- * @property {string} lastVersion The last version the page is visible in the sidebar
+ *
+ * `product` — when set, the page is only shown when that top-level product is
+ * selected (e.g. "Fusion" or "Core"). Can be combined with firstVersion /
+ * lastVersion to further restrict by version within that product.
  */
 exports.versionedPages = [
+  {
+    page: "docs/reference/commands/lint",
+    firstVersion: "2.0",  
+  },
   {
     page: "docs/local/connect-data-platform/salesforce-data-cloud-setup",
     firstVersion: "2.0",
@@ -62,35 +109,40 @@ exports.versionedPages = [
     firstVersion: "1.9",
   },
   {
-    page: "docs/cloud/connect-data-platform/connect-apache-spark",
+    page: "docs/platform/connect-data-platform/connect-apache-spark",
+    lastVersion: "1.99",
+
+  },
+  {
+    page: "docs/platform/connect-data-platform/connect-amazon-athena",
     lastVersion: "1.99",
   },
   {
-    page: "docs/cloud/connect-data-platform/connect-amazon-athena",
+    page: "docs/platform/connect-data-platform/connect-azure-synapse-analytics",
     lastVersion: "1.99",
   },
   {
-    page: "docs/cloud/connect-data-platform/connect-azure-synapse-analytics",
+    page: "docs/platform/connect-data-platform/connect-microsoft-fabric",
     lastVersion: "1.99",
   },
   {
-    page: "docs/cloud/connect-data-platform/connect-microsoft-fabric",
+    page: "docs/platform/connect-data-platform/connect-onehouse",
     lastVersion: "1.99",
   },
   {
-    page: "docs/cloud/connect-data-platform/connect-onehouse",
+    page: "docs/platform/connect-data-platform/connect-postgresql-alloydb",
     lastVersion: "1.99",
   },
   {
-    page: "docs/cloud/connect-data-platform/connect-postgresql-alloydb",
+    page: "docs/platform/connect-data-platform/connect-salesforce",
+    firstVersion: "2.0",
+  },
+  {
+    page: "docs/platform/connect-data-platform/connect-starburst-trino",
     lastVersion: "1.99",
   },
   {
-    page: "docs/cloud/connect-data-platform/connect-starburst-trino",
-    lastVersion: "1.99",
-  },
-  {
-    page: "docs/cloud/connect-data-platform/connect-teradata",
+    page: "docs/platform/connect-data-platform/connect-teradata",
     lastVersion: "1.99",
   },
   {
@@ -122,6 +174,10 @@ exports.versionedPages = [
     lastVersion: "1.99",
   },
   {
+    page: "docs/local/connect-data-platform/confluent-setup",
+    lastVersion: "1.99",
+  },
+  {
     page: "docs/local/connect-data-platform/cratedb-setup",
     lastVersion: "1.99",
   },
@@ -143,10 +199,6 @@ exports.versionedPages = [
   },
   {
     page: "docs/local/connect-data-platform/dremio-setup",
-    lastVersion: "1.99",
-  },
-  {
-    page: "docs/local/connect-data-platform/duckdb-setup",
     lastVersion: "1.99",
   },
   {
@@ -178,7 +230,7 @@ exports.versionedPages = [
     lastVersion: "1.99",
   },
   {
-    page: "docs/local/connect-data-platform/ibmdb2-setup",
+    page: "docs/local/connect-data-platform/ibm-db2-setup",
     lastVersion: "1.99",
   },
   {
@@ -297,16 +349,24 @@ exports.versionedPages = [
     page: "reference/global-configs/sqlparse",
     firstVersion: "1.11",
   },
+  {
+    page: "reference/global-configs/user-settings",
+    firstVersion: "1.13",
+  },
 ];
 
 /**
- * Controls doc category visibility in the sidebar based on the current version
+ * Controls doc category visibility in the sidebar based on the current version and/or product.
  * @type {Array.<{
  * category: string,
- * firstVersion: string,
+ * firstVersion?: string,
+ * lastVersion?: string,
+ * product?: string,
  * }>}
- * @property {string} category The target category to hide/show in the sidebar
- * @property {string} firstVersion The first version the category is visible in the sidebar
+ *
+ * `product` — when set, the category is only shown when that top-level product
+ * is selected (e.g. "Fusion" or "Core"). Can be combined with firstVersion /
+ * lastVersion to further restrict by version within that product.
  */
 exports.versionedCategories = [
   {

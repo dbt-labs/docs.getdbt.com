@@ -21,6 +21,7 @@ functions:
       [volatility](/reference/resource-configs/volatility): deterministic | stable | non-deterministic # optional
       [runtime_version](/reference/resource-configs/runtime-version): <string> # required for Python UDFs
       [entry_point](/reference/resource-configs/entry-point): <string> # required for Python UDFs
+      [packages](/reference/resource-configs/packages): [<string>] # optional, Python UDFs only
       [docs](/reference/resource-configs/docs):
         show: true | false
         node_color: <color_id> # Use name (such as node_color: purple) or hex code with quotes (such as node_color: "#cd7f32")
@@ -33,6 +34,18 @@ functions:
     [returns](/reference/resource-properties/returns): # required
       data_type: <string> # required, warehouse-specific
       description: <markdown_string> # optional
+    [overloads](/reference/resource-properties/overloads): # optional, SQL UDFs (Snowflake and Postgres) and Python UDFs (Snowflake), available in v1.12+
+      - defined_in: <string> # required, name of the SQL or Python file containing this overload's body
+        arguments: # optional
+          - name: <string> # required if arguments is specified
+            data_type: <string> # required if arguments is specified, warehouse-specific
+            description: <markdown_string> # optional
+            default_value: <string | boolean | integer> # optional, available in Snowflake and Postgres
+          - name: ... # declare additional arguments
+        returns: # optional, inherits from root function if omitted
+          data_type: <string> # required if returns is specified, warehouse-specific
+          description: <markdown_string> # optional
+      - defined_in: ... # declare additional overloads
 
   - name: ... # declare properties of additional functions
 ```
@@ -43,7 +56,6 @@ functions:
 <File name='functions/schema.yml'>
 
 ```yml
-
 functions:
   - name: is_positive_int
     description: Determines if a string represents a positive (+) integer
@@ -59,5 +71,13 @@ functions:
     returns:
       data_type: boolean
       description: Returns true if the input string represents a positive integer, false otherwise
+    overloads:
+      - defined_in: is_positive_int_numeric
+        arguments:
+          - name: a_num
+            data_type: numeric
+            description: The number that I want to check if it's a positive integer
+        returns:
+          data_type: boolean
 ```
 </File>
