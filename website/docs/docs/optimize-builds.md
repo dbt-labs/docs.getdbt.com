@@ -12,7 +12,7 @@ By default, dbt rebuilds every selected node on every run &mdash; even if nothin
 
 ## dbt State
 
-[dbt State](/docs/deploy/dbt-state-about) is a service that makes dbt smarter about what to build. It integrates into any dbt deployment, including the <Constant name="dbt_platform" /> and the self-hosted <Constant name="fusion_engine" /> and <Constant name="core" />.
+[dbt State](/docs/deploy/dbt-state-about) is a service that makes dbt smarter about what to build. It integrates into any dbt deployment &mdash; including self-hosted deployments using <Constant name="fusion_engine" /> or <Constant name="core" /> &mdash; without requiring a recurring <Constant name="dbt_platform" /> subscription.
 
 Instead of rebuilding every node on every run, it compares each node's logic and upstream data against the previous run and picks the most efficient path:
 
@@ -36,7 +36,7 @@ To enable dbt State:
     dbt login
     ```
 
-Authentication requires a <Constant name="dbt_platform" /> account on a Starter or Enterprise plan with a [free trial](/docs/deploy/dbt-state-trial). For more information, refer to [Setting up dbt State](/docs/deploy/dbt-state-setup).
+Authentication requires a <Constant name="dbt_platform" /> account with a [30-day free trial](/docs/deploy/dbt-state-trial). dbt State pricing is usage-based &mdash; you're billed per target table that dbt State reuses each day, not per <Constant name="dbt_platform" /> seat. For full setup instructions, refer to [Setting up dbt State](/docs/deploy/dbt-state-setup).
 
 ## Deferral
 
