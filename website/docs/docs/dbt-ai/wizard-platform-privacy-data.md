@@ -23,7 +23,7 @@ For dbt-managed AI providers, we have zero data retention (ZDR) agreements in pl
 
 <Expandable alt_header="Does dbt Wizard store or use personal data?">
 
-<Constant name="wizard" /> stores your conversation history &mdash; including your prompts, responses, and any query results returned during your session &mdash; so you can revisit past chats. Conversation content is encrypted at rest and in transit. History is retained for 90 days and is only visible to you; dbt Labs cannot access or decrypt it. You can delete your conversation history at any time in the product. dbt Labs does not use your prompts, chat history, or command results for model training.
+<Constant name="wizard" /> stores your conversation history &mdash; including your prompts, responses, and any query results returned during your session &mdash; so you can revisit past chats.  Conversation history is retained for 90 days; feedback you submit on a <Constant name="wizard" /> conversation is retained for 400 days. You can delete your conversation history or feedback at any time in the product. dbt Labs does not use your prompts, chat history, command results, or feedback for model training. 
 </Expandable>
 
 <Expandable alt_header="Is my data used by dbt Labs to train AI models?">
@@ -38,7 +38,7 @@ dbt Labs only shares client personal information as needed to perform the servic
 
 <Expandable alt_header="Can dbt Wizard data be deleted upon client written request?">
 
-Yes. <Constant name="wizard" /> conversation history is retained for 90 days by default, and you can delete chats in the product at any time. Conversation data &mdash; including query results stored in conversation history &mdash; is encrypted and only decrypted at your request. To the extent a client identifies personal or sensitive information uploaded to dbt Labs systems, that data can be deleted within 30 days of written request.
+Yes. <Constant name="wizard" /> conversation history is retained for 90 days by default, feedback you submit on a <Constant name="wizard" /> conversation is retained for 400 days, and you can delete this information in the product at any time. To the extent a client identifies personal or sensitive information uploaded to dbt Labs systems, that data can be deleted within 30 days of written request.
 </Expandable>
 
 
