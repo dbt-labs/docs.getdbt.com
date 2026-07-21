@@ -87,13 +87,13 @@ var siteSettings = {
       //debug: true,
     },
     announcementBar: {
-      id: "dbt-state-july-2026-webinar",
-      content: "dbt State: Build what's changed, skip what hasn't. Join us for a live virtual event on July 15th to learn how to save on warehouse compute costs!",
+      id: "dbt-summit-2026",
+      content: "Join us at dbt Summit, September 15–18 in Las Vegas. Come learn, swap ideas, and spend time with the dbt community as we shape the future of data and AI.",
       isCloseable: true,
     },
     announcementBarActive: true,
     announcementBarLink:
-      "https://www.getdbt.com/resources/webinars/dbt-state-build-what-s-changed-skip-what-hasn-t/?utm_medium=internal&utm_source=docs&utm_campaign=q2-2027_dbt-state-deep-dive-product_aw&utm_content=themed-webinar____&utm_term=all_all__",
+      "https://www.getdbt.com/dbt-summit/?utm_medium=internal&utm_source=docs&utm_campaign=q3-2027_dbt-summit-2026_aw&utm_content=dbt-summit____&utm_term=all_all__",
     prism: {
       theme: (() => {
         var theme = themes.nightOwl;
@@ -161,7 +161,7 @@ var siteSettings = {
           items: [
             {
               label: "Release notes",
-              to: "/docs/dbt-versions/dbt-cloud-release-notes",
+              to: "/docs/dbt-versions/release-notes",
             },
             {
               label: "FAQs",
