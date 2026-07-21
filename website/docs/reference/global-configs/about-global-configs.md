@@ -127,6 +127,7 @@ Use this table to compare all available flags and how to configure them across i
 | [event_time_end](/reference/dbt-jinja-functions/model#batch-properties-for-microbatch-models) | ✅ | datetime <br /> default: None | ❌ | `DBT_ENGINE_EVENT_TIME_END` | `--event-time-end` |
 | [fail_fast](/reference/global-configs/failing-fast) | ✅ | boolean <br /> default: False | ✅ | `DBT_ENGINE_FAIL_FAST` | `--fail-fast` <br /> `-x` <br /> `--no-fail-fast` |
 | [full_refresh](/reference/resource-configs/full_refresh) | ✅ | boolean <br /> default: False | ✅ (as resource config) | `DBT_ENGINE_FULL_REFRESH` | `--full-refresh` <br /> `--no-full-refresh` |
+| hints_enabled (v1.12+) | ✅ | boolean <br /> default: True | ✅ | `DBT_ENGINE_HINTS_ENABLED` | `--hints-enabled` <br /> `--no-hints-enabled` |
 | [indirect_selection](/reference/node-selection/test-selection-examples#syntax-examples) | ❌ | enum <br /> default: eager | ✅ | `DBT_ENGINE_INDIRECT_SELECTION` | `--indirect-selection` |
 | [introspect](/reference/commands/compile#introspective-queries) | ❌ | boolean <br /> default: True | ❌ | `DBT_ENGINE_INTROSPECT` | `--introspect` <br /> `--no-introspect` |
 | [log_cache_events](/reference/global-configs/logs#logging-relational-cache-events) | ❌ | boolean <br /> default: False | ❌ | `DBT_ENGINE_LOG_CACHE_EVENTS` | `--log-cache-events` <br /> `--no-log-cache-events` |

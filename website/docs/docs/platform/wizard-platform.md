@@ -71,6 +71,12 @@ Always review AI-generated content, as it may be incorrect. For prompt best prac
     icon="wizard"/>
 
 <Card
+    title="Configure BYOK"
+    body="Bring your own API key to use dbt Wizard or dbt Copilot in the dbt platform."
+    link="/docs/platform/wizard-byok-platform"
+    icon="wizard"/>
+
+<Card
     title="Use skills"
     body="Give dbt Wizard reusable instructions for your project."
     link="/docs/dbt-ai/wizard-platform-skills"

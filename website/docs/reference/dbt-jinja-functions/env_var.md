@@ -6,7 +6,6 @@ description: "Incorporate environment variables using `env_var` function."
 ---
 
 import Envvarsecrets from '/snippets/_env-var-secrets.md';
-import EnvFileBeta from '/snippets/_env-file-beta.md';
 import EnvFileConsiderations from '/snippets/_env-file-considerations.md';
 
 <Envvarsecrets />
@@ -17,8 +16,6 @@ If the `DBT_USER` and `DBT_ENV_SECRET_PASSWORD` environment variables are presen
 <VersionBlock firstVersion="1.12">
 
 ### Using the `.env` file
-
-<EnvFileBeta />
 
 When running dbt locally ([<Constant name="fusion"/> CLI](/docs/local/install-dbt?version=2), dbt VS Code extension, and <Constant name="core"/> v1.12), dbt automatically loads environment variables from a `.env` file in your current working directory (where you run the dbt command). Shell environment variables take precedence over values in `.env` and will not be overridden by the file.
 

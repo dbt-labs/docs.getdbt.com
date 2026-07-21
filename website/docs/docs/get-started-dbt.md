@@ -8,9 +8,9 @@ pagination_prev: null
 
 Begin your dbt journey by choosing how you want to develop:
 
-- [**<Constant name="dbt_platform" />** ](#the-dbt-platform) &mdash; Develop in your browser (<Constant name="studio_ide" /> or <Constant name="canvas" />) or use local tools (VS Code extension, <Constant name="platform_cli" />) that connect to your platform account. The platform provides hosted CI/CD, documentation, and more. Supports both the [<Constant name="fusion_engine" />](/docs/fusion) and [<Constant name="core" />](/docs/local/install-dbt) engines.
-- [**Local only**](#dbt-local-installations) &mdash; Use local tools ([VS Code extension](/docs/about-dbt-extension), [<Constant name="fusion" /> CLI](/docs/local/install-dbt?version=2), or [<Constant name="core" />](/docs/local/install-dbt)) to develop and run dbt on your own infrastructure. You can use local tools with or without a <Constant name="dbt_platform" /> account.
-- **Local + <Constant name="dbt_platform" />** &mdash; Use the VS Code extension or <Constant name="platform_cli" /> with a <Constant name="dbt_platform" /> account to develop locally while leveraging platform features like CI/CD, documentation hosting, <Constant name="insights" />, <Constant name="canvas" />, and more.
+- [**<Constant name="dbt_platform" />** ](#the-dbt-platform) &mdash; Develop in your browser (<Constant name="studio_ide" /> or <Constant name="canvas" />) or use self-hosted tools (VS Code extension, <Constant name="platform_cli" />) that connect to your platform account. The platform provides hosted CI/CD, documentation, and more. Supports both the [<Constant name="fusion_engine" />](/docs/fusion) and [<Constant name="core" />](/docs/local/install-dbt) engines.
+- [**Self-hosted only**](#dbt-local-installations) &mdash; Use self-hosted tools ([VS Code extension](/docs/about-dbt-extension), [<Constant name="fusion" /> CLI](/docs/local/install-dbt?version=2), or [<Constant name="core" />](/docs/local/install-dbt)) to develop and run dbt on your own infrastructure.
+- **Self-hosted + <Constant name="dbt_platform" />** &mdash; Use the VS Code extension or <Constant name="platform_cli" /> with a <Constant name="dbt_platform" /> account to develop with a self-hosted installation while leveraging platform features like CI/CD, documentation hosting, <Constant name="insights" />, <Constant name="canvas" />, and more.
 - [**<Constant name="wizard" />**](#dbt-wizard) &mdash; The AI agent for analytics engineering, available in the <Constant name="dbt_platform" /> and from your terminal. Grounded in your project's lineage, model health, and semantic definitions.
 
 ## The dbt platform
@@ -79,13 +79,13 @@ Choose your warehouse to get started with a quickstart:
 
 </div>
 
-## dbt local installations
+## Self-hosted dbt installations
 
-When you install dbt locally, you get command-line tools and the VS Code extension that enable you to transform data using analytics engineering best practices.
+When you install dbt into your Windows, macOS, or Linux environment, you get command-line tools and the VS Code extension that enable you to transform data using analytics engineering best practices.
 
-You can use local tools with or without a <Constant name="dbt_platform" /> account. With an account, the VS Code extension and <Constant name="platform_cli" /> sync with your platform project for CI/CD, documentation, and more. Without an account, you run dbt entirely on your own infrastructure.
+You can use self-hosted tools with or without a <Constant name="dbt_platform" /> account. With an account, the VS Code extension and <Constant name="platform_cli" /> sync with your platform project for CI/CD, documentation, and more. Without an account, you run dbt entirely on your own infrastructure.
 
-Develop locally using the <Constant name="fusion_engine" /> or <Constant name="core" /> engine.
+Develop with a self-hosted installation using the <Constant name="fusion_engine" /> or <Constant name="core" /> engine.
 
 <div className="grid--3-col">
 

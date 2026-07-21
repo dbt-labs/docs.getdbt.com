@@ -6,10 +6,6 @@ sidebar_label: "require corrected analysis fqns"
 
 import AnalysesProjectLevelConfig from '/snippets/_analyses-project-level-config.md';
 
-:::info Beta feature
-The project-level configuration for analyses is a beta feature in <Constant name="core" /> v1.12.
-:::
-
 | require_corrected_analysis_fqns | <Constant name="dbt" /> **Latest** | <Constant name="core" /> |
 |---|---|---|
 | Introduced | 2026.3 | 1.12.0 |

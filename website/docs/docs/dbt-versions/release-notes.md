@@ -1,7 +1,7 @@
 ---
 title: "dbt release notes"
 description: "dbt release notes"
-id: "dbt-cloud-release-notes"
+id: "release-notes"
 sidebar: "dbt release notes"
 pagination_next: null
 pagination_prev: null
@@ -14,10 +14,14 @@ pagination_prev: null
 - **Fix:** Bug and security fixes
 - **Behavior change:** A change to existing behavior that doesn't fit into the other categories, such as feature deprecations or changes to default settings
 
-Release notes are grouped by month for both multi-tenant and virtual private cloud (VPC) environments.
+Release notes are grouped by month for both multi-tenant and virtual private cloud (VPC) environments. <span><img src="/img/fontawesome/rss.svg" alt="RSS" className="rss-icon" />Subscribe to release note updates via [RSS](/feeds/release-notes-rss.xml), [Atom](/feeds/release-notes-atom.xml), or [JSON Feed](/feeds/release-notes-rss.json).</span>
 
 For <Constant name="fusion_engine" /> updates, refer to the [dbt-fusion changelog](https://github.com/dbt-labs/dbt-core/blob/main/CHANGELOG-fusion.md).
 
+## July 2026
+
+- **Behavior change:** You can no longer create a [service token](/docs/dbt-apis/service-tokens) using an account-scoped [personal access token](/docs/dbt-apis/user-tokens) (PAT). Requests to the service tokens endpoint authenticated with a PAT now return a `400` error. Use a service token to create new ones instead.
+- **New:** You can now access dbt State settings from **Account settings** > **Billing & Usage**, previously found under **State**. You can manage your trial, enable dbt State on environments and jobs, and set spend alerts &mdash; all in one place. For details, refer to [dbt State trial and billing](/docs/deploy/dbt-state-trial).
 
 ## June 2026
 
@@ -47,7 +51,7 @@ The following features are new or enhanced as part of dbt Labs announcements at 
   - **New**: Generate and serve [dbt Docs v2](/docs/build/view-documentation#dbt-docs-v2) with the <Constant name="fusion_engine" /> or <Constant name="core" /> v2 by running a dbt command with `--use-index`, then `dbt docs serve`. Add [`--write-catalog`](/reference/commands/cmd-docs#--write-catalog-flag) for richer column type metadata.
 - **Preview**: [dbt State](/docs/deploy/dbt-state-about) is now available in preview!
   - **New**: dbt State skips or clones nodes when the logic and data haven't changed, rather than rebuilding everything on every run. Available natively in <Constant name="dbt" /> v2.0, the <Constant name="dbt_platform" />, and the <Constant name="fusion_engine" />, and as a plugin for <Constant name="core" /> v1.7-1.12. To get started, refer to [Set up dbt State](/docs/deploy/dbt-state-setup).
-  - **New**: [dbt State pricing](/docs/platform/billing#dbt-state-usage) is usage-based at $0.094 per daily unique reuse. New organizations receive a 30-day free trial with no usage limit.
+  - **New**: [dbt State pricing](/docs/platform/billing/dbt-state-usage) is usage-based at $0.094 per daily unique reuse. New organizations receive a 30-day free trial with no usage limit.
   - **Behavior change**: State-aware orchestration is no longer being enabled for new customers. Refer to [Migrate to dbt State](/docs/deploy/dbt-state-migration) for more information.
 
 - **New**: dbt Wizard is available in dbt platform as a public preview. Introducing dbt Wizard CLI as a public beta. Purpose-built for agentic governed data development in dbt, dbt Wizard understands your project through a  [native metadata engine](/docs/dbt-ai/wizard-how-it-works#native-metadata-engine), unlike general-purpose coding agents.
@@ -61,6 +65,7 @@ The following features are new or enhanced as part of dbt Labs announcements at 
 
 ## May 2026
 
+- **Enhancement:** Repository clone failures now surface a more actionable diagnostic message to help you resolve common issues faster. For guidance, refer to [Troubleshooting clone errors](/docs/platform/git/import-a-project-by-git-url#troubleshooting-clone-errors).
 - **Fix:** The connection test failure message now prompts you to verify your connection details and confirm that your credentials have access to the data warehouse, rather than showing a generic failure message.
 - **Enhancement:** Users granted `user_credential_write` can access **Your profile** > **Credentials** without `develop_access` (including read-only users). Environment variable overrides and dbt version overrides still require `develop_access`. Refer to [Enterprise permissions](/docs/platform/manage-access/enterprise-permissions) for more information.
 - **New:** The [Job creator permission set](/docs/platform/manage-access/enterprise-permissions#job-creator) is now available for Enterprise accounts. Assign it to users who need to create, edit, and run jobs within assigned projects and environments without access to edit environments or environment variables.
@@ -68,7 +73,7 @@ The following features are new or enhanced as part of dbt Labs announcements at 
 - **Fix:** When a job cannot clone its repository because no remote URL is configured, the error message now explains the most likely causes (an invalid Git remote URL, a Git provider outage, or a deprecated HTTPS connection) and directs you to verify the URL, confirm your provider is operational, and ensure the repository uses SSH with deploy keys before retrying.
 - **New:** The **Notification Manager** [permission set](/docs/platform/manage-access/enterprise-permissions) is now available for Enterprise accounts. Assign it to users who need to manage Slack, Microsoft Teams, and email job notifications across all projects without requiring full Account Admin access.
 - **Beta**: [Cost Insights](/docs/explore/cost-insights), available in public beta, shows estimated warehouse compute costs and run times for dbt projects and models in <Constant name="dbt_platform"/>, highlighting efficiency gains from [state-aware orchestration](/docs/deploy/state-aware-about). Refer to [Set up Cost Insights](/docs/explore/set-up-cost-insights) and [Explore cost data](/docs/explore/explore-cost-data) to learn more.
-- **New:** Fusion release tracks are now being rolled out across across accounts in phases. Refer to [Fusion release tracks](/docs/dbt-versions/dbt-release-tracks?version=2.0#fusion-release-tracks) for more information.
+- **New:** Fusion release tracks are now being rolled out across accounts in phases. Refer to [Fusion release tracks](/docs/dbt-versions/dbt-release-tracks?version=2.0#fusion-release-tracks) for more information.
 - **Enhancement:** Commands run by <Constant name="copilot" /> and the [<Constant name="dev_agent" />](/docs/dbt-ai/wizard-ide) now appear in the <Constant name="studio_ide" /> **Commands** tab with a <Constant name="copilot" /> icon and **Run by Copilot** tooltip, so you can tell agent-run commands apart from manually run ones.
 - **Fix:** [`state:modified`](/reference/node-selection/methods#state) now detects changes to [UDF](/docs/build/udfs) properties (such as `arguments` and `returns`) defined in `.yml` files. Previously, only changes to the SQL or Python function body were detected.
 - **New:** [Native private packages](/docs/build/packages#native-private-packages) are now generally available (GA).
