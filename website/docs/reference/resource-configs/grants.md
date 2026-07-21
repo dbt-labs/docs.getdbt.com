@@ -1,4 +1,5 @@
 ---
+description: "Manage access to the database objects dbt produces by applying grants to models, seeds, and snapshots at build time."
 resource_types: [models,seeds,snapshots]
 datatype: "{<dictionary>}"
 default_value: {}
