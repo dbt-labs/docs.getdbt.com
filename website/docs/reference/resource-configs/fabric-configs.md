@@ -1,6 +1,6 @@
 ---
 title: "Microsoft Fabric Data Warehouse configurations"
-description: "Read this in-depth guide to learn about Microsoft Fabric Data Warehouse configurations in dbt."
+description: "Configure Microsoft Fabric Data Warehouse settings in dbt, including materializations, incremental strategies, and cross-warehouse references."
 id: "fabric-configs"
 ---
 

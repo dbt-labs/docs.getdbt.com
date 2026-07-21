@@ -1,6 +1,6 @@
 ---
 title: "SingleStore configurations"
-description: "Read this in-depth guide to learn about SingleStore configurations in dbt."
+description: "Configure SingleStore-specific settings for dbt models, including incremental strategies such as delete+insert, append, and microbatch."
 id: "singlestore-configs"
 ---
 

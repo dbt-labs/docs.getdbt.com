@@ -1,6 +1,6 @@
 ---
 title: "MindsDB configurations"
-description: "Read this in-depth guide to learn about MindsDB configurations in dbt."
+description: "Configure MindsDB-specific settings for dbt models, including authentication and connection options."
 id: "mindsdb-configs"
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: "IBM Netezza configurations"
-description: "Read this in-depth guide to learn about IBM Netezza configurations in dbt."
+description: "Configure IBM Netezza-specific settings for dbt models, including instance requirements and adapter permissions."
 id: "ibm-netezza-config"
 ---
 

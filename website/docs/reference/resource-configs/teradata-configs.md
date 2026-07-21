@@ -1,6 +1,6 @@
 ---
 title: "Teradata configurations"
-description: "Read this in-depth guide to learn about Teradata configurations in dbt."
+description: "Configure Teradata-specific settings for dbt models, including quote_columns and other adapter options."
 id: "teradata-configs"
 ---
 

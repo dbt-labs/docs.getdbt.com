@@ -1,6 +1,6 @@
 ---
 title: "IBM Db2 configurations"
-description: "Read this in-depth guide to learn about IBM Db2 configurations in dbt."
+description: "Configure IBM Db2-specific settings for dbt models, including instance requirements and adapter permissions."
 id: "ibm-db2-config"
 ---
 

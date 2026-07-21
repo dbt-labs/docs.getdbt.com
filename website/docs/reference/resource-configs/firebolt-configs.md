@@ -1,6 +1,6 @@
 ---
 title: "Firebolt configurations"
-description: "Read this in-depth guide to learn about Firebolt configurations in dbt."
+description: "Configure Firebolt-specific settings for dbt models, including quote_columns and other adapter options."
 id: "firebolt-configs"
 ---
 
