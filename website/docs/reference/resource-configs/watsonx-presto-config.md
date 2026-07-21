@@ -1,6 +1,6 @@
 ---
 title: "IBM watsonx.data Presto configurations"
-description: "IBM watsonx.data Presto configurations - Read this in-depth guide to learn about configurations in dbt."
+description: " Read this in-depth guide to learn about IBM watsonx.data Presto configurations in dbt."
 id: "watsonx-presto-config"
 ---
 

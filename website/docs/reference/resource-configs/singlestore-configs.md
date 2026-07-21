@@ -1,6 +1,6 @@
 ---
 title: "SingleStore configurations"
-description: "SingleStore configurations - Read this in-depth guide to learn about configurations in dbt."
+description: "Read this in-depth guide to learn about SingleStore configurations in dbt."
 id: "singlestore-configs"
 ---
 

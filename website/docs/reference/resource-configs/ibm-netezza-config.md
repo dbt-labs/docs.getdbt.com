@@ -1,6 +1,6 @@
 ---
 title: "IBM Netezza configurations"
-description: "IBM Netezza configurations - Read this in-depth guide to learn about configurations in dbt."
+description: "Read this in-depth guide to learn about IBM Netezza configurations in dbt."
 id: "ibm-netezza-config"
 ---
 

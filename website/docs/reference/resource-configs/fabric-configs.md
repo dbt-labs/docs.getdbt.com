@@ -1,6 +1,6 @@
 ---
 title: "Microsoft Fabric Data Warehouse configurations"
-description: "Microsoft Fabric Data Warehouse configurations - Read this in-depth guide to learn about configurations in dbt."
+description: "Read this in-depth guide to learn about Microsoft Fabric Data Warehouse configurations in dbt."
 id: "fabric-configs"
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: "MindsDB configurations"
-description: "MindsDB configurations - Read this in-depth guide to learn about configurations in dbt."
+description: "Read this in-depth guide to learn about MindsDB configurations in dbt."
 id: "mindsdb-configs"
 ---
 

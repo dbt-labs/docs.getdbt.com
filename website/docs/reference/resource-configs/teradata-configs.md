@@ -1,6 +1,6 @@
 ---
 title: "Teradata configurations"
-description: "Teradata configurations - Read this in-depth guide to learn about configurations in dbt."
+description: "Read this in-depth guide to learn about Teradata configurations in dbt."
 id: "teradata-configs"
 ---
 
