@@ -1,5 +1,6 @@
 ---
 title: "IBM Netezza configurations"
+description: "Configure IBM Netezza-specific settings for dbt models, including instance requirements and adapter permissions."
 id: "ibm-netezza-config"
 ---
 
