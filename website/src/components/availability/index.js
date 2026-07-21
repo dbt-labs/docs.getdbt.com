@@ -10,8 +10,9 @@ import {
 } from './availabilityPresets';
 
 function normalizeAvailability(availability) {
-  const availabilityObject =
-    typeof availability === 'string' ? { preset: availability } : availability;
+  const availabilityObject = typeof availability === 'string'
+    ? (SURFACE_LABELS[availability] ? { surface: availability } : { preset: availability })
+    : availability;
   if (!availabilityObject || typeof availabilityObject !== 'object') {
     return null;
   }
@@ -19,19 +20,7 @@ function normalizeAvailability(availability) {
   const preset = availabilityObject.preset ? availabilityPresets[availabilityObject.preset] : null;
   const merged = { ...preset, ...availabilityObject };
 
-  let { engine, surface, access, plans } = merged;
-
-  // A platform page with no explicit access requirement defaults to free, with a console
-  // warning — bare "dbt platform" badges can otherwise read as implicitly paid.
-  if (surface === 'platform' && !access) {
-    // eslint-disable-next-line no-console
-    console.warn(
-      `Availability: surface "platform" has no access set (availability: ${JSON.stringify(
-        availabilityObject
-      )}). Defaulting access to "free".`
-    );
-    access = 'free';
-  }
+  const { engine, surface, access, plans } = merged;
 
   const engineFacet = getEngineFacet(engine);
   const accessFacets = getAccessFacets(access, plans, surface);

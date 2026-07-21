@@ -65,28 +65,28 @@ describe('Availability', () => {
     expect(tooltip).not.toHaveTextContent('Starter, Enterprise, Enterprise+ —');
   });
 
-  it('leads the badge with the engine facet and renders its tooltip row', async () => {
+  it('labels the v2 engine facet and renders its tooltip row', async () => {
     const user = userEvent.setup();
     render(<Availability availability={{ engine: 'v2', surface: 'platform', access: 'free' }} />);
 
-    const badge = screen.getByRole('button', { name: /v2 \| dbt platform \| free/i });
-    expect(badge).toHaveTextContent('v2 | dbt platform | Free');
+    const badge = screen.getByRole('button', { name: /available in v2 \| dbt platform \| free/i });
+    expect(badge).toHaveTextContent('Available in v2 | dbt platform | Free');
 
     await user.click(badge);
     const tooltip = screen.getByRole('tooltip');
     expect(tooltip).toHaveTextContent('Version');
-    expect(tooltip).toHaveTextContent('dbt 2.0+');
-    expect(tooltip).not.toHaveTextContent('v2 —');
+    expect(tooltip).toHaveTextContent('Available in v2 (including Fusion)');
+    expect(tooltip).not.toHaveTextContent('Available in v2 —');
   });
 
-  it('renders "v1" alone with its tooltip for engine-only availability', async () => {
+  it('renders "Available in v1" alone with its tooltip for engine-only availability', async () => {
     const user = userEvent.setup();
     render(<Availability availability={{ engine: 'v1' }} />);
 
-    const badge = screen.getByRole('button', { name: /^v1\./i });
+    const badge = screen.getByRole('button', { name: /^available in v1\./i });
     await user.click(badge);
 
-    expect(screen.getByRole('tooltip')).toHaveTextContent('dbt Core 1.x');
+    expect(screen.getByRole('tooltip')).toHaveTextContent('Available in dbt Core 1.x');
   });
 
   it('renders nothing extra for an unknown or omitted engine value', () => {
@@ -155,14 +155,21 @@ describe('Availability', () => {
     expect(badge.textContent).not.toMatch(/fusion|core|oss/i);
   });
 
-  it('defaults an unset platform access to free with a console warning', () => {
-    const warnSpy = jest.spyOn(console, 'warn').mockImplementation(() => {});
+  it('accepts "platform" as shorthand for availability to all dbt platform users', () => {
+    render(<Availability availability="platform" />);
+
+    const badge = screen.getByRole('button', { name: /^dbt platform\./i });
+    expect(badge).toHaveTextContent('dbt platform');
+    expect(badge).not.toHaveTextContent('Free');
+    expect(badge).not.toHaveTextContent('Login required');
+  });
+
+  it('treats a platform surface without access as available to all platform users', () => {
     render(<Availability availability={{ surface: 'platform' }} />);
 
-    expect(screen.getByRole('button', { name: /dbt platform \| free/i })).toBeInTheDocument();
-    expect(warnSpy).toHaveBeenCalled();
-
-    warnSpy.mockRestore();
+    const badge = screen.getByRole('button', { name: /^dbt platform\./i });
+    expect(badge).toHaveTextContent('dbt platform');
+    expect(badge).not.toHaveTextContent('Free');
   });
 
   it('renders nothing without a resolvable surface or access', () => {

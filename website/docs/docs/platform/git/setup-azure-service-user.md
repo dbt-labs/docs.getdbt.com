@@ -5,7 +5,8 @@ description: "You can set up your Azure DevOps by creating a Microsoft Entra ID 
 sidebar_label: "Set up service user"
 availability:
   surface: platform
-  access: login_required
+  access: paid_plan
+  plans: [enterprise, enterprise_plus]
 ---
 
 ## Service user overview

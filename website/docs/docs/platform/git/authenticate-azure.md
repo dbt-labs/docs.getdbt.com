@@ -6,7 +6,8 @@ sidebar_label: "Authenticate with Azure DevOps"
 pagination_next: null
 availability:
   surface: platform
-  access: login_required
+  access: paid_plan
+  plans: [enterprise, enterprise_plus]
 ---
 
 

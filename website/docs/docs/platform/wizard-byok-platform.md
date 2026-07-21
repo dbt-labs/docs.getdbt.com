@@ -4,6 +4,7 @@ sidebar_label: "BYOK configuration"
 description: "Bring your own API key to use dbt Wizard and dbt Copilot in dbt platform. Supports OpenAI, Azure AI Foundry, and Anthropic."
 availability:
   surface: platform
+  access: paid_plan
   plans: [starter, enterprise, enterprise_plus]
 ---
 

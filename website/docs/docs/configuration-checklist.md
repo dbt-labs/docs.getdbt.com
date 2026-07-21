@@ -7,8 +7,7 @@ pagination_next: null
 pagination_prev: null
 availability:
   surface: platform
-  access: paid_plan
-  plans: [starter, enterprise, enterprise_plus]
+  access: all_users
 ---
 
 # dbt platform configuration checklist

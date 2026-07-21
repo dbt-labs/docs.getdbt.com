@@ -7,6 +7,7 @@
 //
 // Example frontmatter:
 //   availability: platform_starter
+//   availability: platform // available to all dbt platform users
 // or, for multi-plan features:
 //   availability:
 //     engine: v2
@@ -20,17 +21,17 @@ export const FIELD_LABELS = {
   access: 'Access',
 };
 
-// v1 = dbt Core 1.x (1.99 and earlier). v2 = dbt 2.0 and later, including Fusion.
+// v1 = dbt Core 1.x (1.99 and earlier). v2 = dbt Fusion engine 2.0 and later.
 // "all" (or omitted) means the content applies to both lines — no badge segment renders,
 // same hide-if-universal rule used elsewhere in this file.
 export const ENGINE_LABELS = {
-  v1: 'v1',
-  v2: 'v2',
+  v1: 'Available in v1',
+  v2: 'Requires dbt Fusion',
 };
 
 export const ENGINE_TOOLTIPS = {
-  v1: 'dbt Core 1.x',
-  v2: 'dbt 2.0+',
+  v1: 'Available in dbt Core 1.x',
+  v2: 'Requires dbt Fusion',
 };
 
 export function getEngineFacet(engine) {
@@ -119,7 +120,7 @@ export const availabilityPresets = {
     access: 'free',
   },
   platform_login: {
-    description: 'dbt platform features that need a free dbt account, but no paid plan.',
+    description: 'dbt platform features available to all signed-in users.',
     surface: 'platform',
     access: 'login_required',
   },

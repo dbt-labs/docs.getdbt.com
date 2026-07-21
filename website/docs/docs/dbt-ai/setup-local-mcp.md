@@ -3,6 +3,8 @@ title: "Set up local MCP"
 sidebar_label: "Set up local MCP"
 description: "Learn how to set up the local dbt-mcp server"
 id: "setup-local-mcp"
+availability:
+  surface: local
 ---
 
 import MCPExample from '/snippets/_mcp-config-files.md';
