@@ -88,12 +88,12 @@ var siteSettings = {
     },
     announcementBar: {
       id: "dbt-summit-2026",
-      content: "Join us at dbt Summit, September 16–18 in Las Vegas. Come learn, swap ideas, and spend time with the dbt community as we shape the future of data and AI.",
+      content: "Join us at dbt Summit, September 15–18 in Las Vegas. Come learn, swap ideas, and spend time with the dbt community as we shape the future of data and AI.",
       isCloseable: true,
     },
     announcementBarActive: true,
     announcementBarLink:
-      "https://www.getdbt.com/dbt-summit",
+      "https://www.getdbt.com/dbt-summit/?utm_medium=internal&utm_source=docs&utm_campaign=q3-2027_dbt-summit-2026_aw&utm_content=dbt-summit____&utm_term=all_all__",
     prism: {
       theme: (() => {
         var theme = themes.nightOwl;
