@@ -22,7 +22,7 @@ The dbt Fusion engine and dbt Core v2 are currently in active development. Refer
 
 ## Additional resources
 
-- Install <Constant name="fusion" /> locally from the [CLI](/docs/local/install-dbt?version=2#get-started)
-- Install the [dbt VS Code extension](/docs/local/install-dbt?version=2#get-started)
+- Install <Constant name="fusion" /> locally from the [CLI](/docs/local/install-dbt?version=2)
+- Install the [dbt VS Code extension](/docs/local/install-dbt?version=2)
 - Upgrade environments to the [<Constant name="fusion_engine" />](/docs/dbt-versions/upgrade-dbt-platform-version#dbt-fusion-engine)
 - <Constant name="fusion" /> [features](/docs/fusion/supported-features#features-and-capabilities)

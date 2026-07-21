@@ -29,8 +29,8 @@ So for example, if `model_super_santi` was queried 10 times in the past week, it
 Model query history is supported in the following data warehouses: 
 - Snowflake (Enterprise-tier or higher)
 - BigQuery
-- Redshift <Lifecycle status="beta" />
-- Databricks <Lifecycle status="beta" />
+- Redshift
+- Databricks
 
 ## Prerequisites
 
@@ -44,6 +44,11 @@ To access the features, you should meet the following requirements:
 
 ## Enable query history in dbt
 
+:::note New and existing production environments
+- **New production environments:** <Constant name="dbt" /> automatically enables query history when you create a new [production deployment environment](/docs/deploy/deploy-environments#set-as-production-environment) in **Orchestration** (marked **PROD**). This applies to Snowflake, BigQuery, Redshift, and Databricks on [Enterprise-tier plans](https://www.getdbt.com/pricing/). Development environments are not included.
+- **Existing production environments:** You must enable query history manually in your **PROD** environment settings. Configure the [credential permissions](#credential-permissions) for your warehouse prior to starting the steps in this section.
+:::
+
 To enable model query history in <Constant name="dbt" />, follow these steps:
 
 1. Navigate to **Orchestration** and then **Environments**.
@@ -53,7 +58,7 @@ To enable model query history in <Constant name="dbt" />, follow these steps:
 5. Click the **Enable query history** box to enable. 
 6. **Save** your settings.
 
-<Constant name="dbt" /> automatically enables query history for brand new environments. If query history fails to retrieve data, <Constant name="dbt" /> automatically disables it to prevent unintended warehouse costs.
+If query history fails to retrieve data, <Constant name="dbt" /> automatically disables it to prevent unintended warehouse costs.
    - If the failure is temporary (like a network timeout), <Constant name="dbt" /> may retry.
    - If the problem keeps happening (for example, missing permissions), <Constant name="dbt" /> turns off query history so customers don’t waste warehouse compute.
    
@@ -103,7 +108,7 @@ The model query history uses metadata from the [`INFORMATION_SCHEMA.JOBS` view](
 - If you use a BigQuery provided role, we recommend `roles/bigquery.resourceViewer`.
 - If you use a custom role, ensure it includes the `bigquery.jobs.listAll permission`.
 
-### Redshift model query history<Lifecycle status="beta" />
+### Redshift model query history
 
 Model query history uses the `SYS_QUERY_HISTORY` and `SYS_QUERY_DETAIL` system views in Redshift. By default, users can only see their own queries in these views. To surface query history across all warehouse users, your database admin must grant the production environment credentials one of the following:
 
@@ -132,7 +137,7 @@ Because Redshift expands regular views at execution time, scans are attributed t
 
 If your project relies heavily on views, usage may appear lower than expected. This is a known limitation of scan-based attribution rather than missing data.
 
-### Databricks model query history <Lifecycle status="beta" />
+### Databricks model query history
 
 Model query history uses two Unity Catalog system tables: `system.query.history` and `system.access.table_lineage`. Before granting access, confirm the following prerequisites are met:
 

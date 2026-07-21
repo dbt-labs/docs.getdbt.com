@@ -56,7 +56,7 @@ For more information, refer to [Using threads](/docs/running-a-dbt-project/using
 You can:
 - Select Fusion from the [dropdown/toggle in the dbt platform](/docs/dbt-versions/upgrade-dbt-platform-version#dbt-fusion-engine)
 - [Install the dbt extension for VSCode](/docs/install-dbt-extension) <Lifecycle status="preview" />
-- [Install the Fusion CLI](/docs/local/install-dbt?version=2#get-started) <Lifecycle status="preview" />
+- [Install the <Constant name="fusion" /> CLI](/docs/local/install-dbt?version=2) <Lifecycle status="preview" />
 
 
 Go straight to the [Quickstart](/guides/fusion) to _feel the Fusion_ as fast as possible. If you're a <Constant name="dbt_platform"/> user and want to keep your local environment in sync with the platform, see the [Hybrid development with <Constant name="dbt_platform"/> and <Constant name="fusion"/>](/guides/fusion-platform-local-workflow) guide.

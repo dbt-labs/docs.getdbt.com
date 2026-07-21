@@ -52,7 +52,7 @@ The <Constant name="studio_ide" /> streamlines your workflow, and features a pop
 
 Refer to [Using defer in <Constant name="dbt" />](/docs/platform/about-defer#defer-in-the-dbt-ide) for more info.
 
-7. **Status:** The <Constant name="studio_ide" /> Status button, located on the lower right of the <Constant name="studio_ide" />, displays the current connection statuses to both the warehouse and the dbt [language server (LSP)](/docs/about-dbt-lsp) status if you're on <Constant name="fusion" /> or the engine server status if you're on <Constant name="core" />. It includes shortcuts to environment settings and developer credentials.
+7. **Status:** The <Constant name="studio_ide" /> Status button, located on the lower right of the <Constant name="studio_ide" />, displays the current connection statuses to both the warehouse and the dbt [language server (LSP)](/docs/about-dbt-lsp) status if you're on <Constant name="fusion" /> or the engine server status if you're on <Constant name="core" />. It includes shortcuts to environment settings and user credentials.
 
     <Lightbox src="/img/docs/dbt-platform/platform-ide/server-status.png" width="60%" title="View the connection statuses for your account."/>
 

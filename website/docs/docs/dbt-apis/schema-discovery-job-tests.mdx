@@ -23,7 +23,7 @@ The example query below finds all tests in this job and includes information abo
 ```graphql
 {
   job(id: 123) {
-    tests {
+    tests(first: 10, after: "{somePaginationCursorValue}") {
       runId
       accountId
       projectId
@@ -31,6 +31,7 @@ The example query below finds all tests in this job and includes information abo
       name
       columnName
       state
+      paginationCursor
     }
   }
 }

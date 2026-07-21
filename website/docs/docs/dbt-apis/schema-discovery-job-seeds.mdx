@@ -12,7 +12,7 @@ The seeds object allows you to query information about all seeds in a given job.
 
 When querying for `seeds`, the following arguments are available.
 
-<NodeArgsTable parent="JobNode" name="seed" />
+<NodeArgsTable parent="JobNode" name="seeds" />
 
 Below we show some illustrative example queries and outline the schema of the seeds object.
 
@@ -23,11 +23,12 @@ The example query below pulls relevant information about all seeds in a given jo
 ```graphql
 {
   job(id: 123) {
-    seeds {
+    seeds(first: 10, after: "{somePaginationCursorValue}") {
       uniqueId
       name
       executionTime
       status
+      paginationCursor
     }
   }
 }

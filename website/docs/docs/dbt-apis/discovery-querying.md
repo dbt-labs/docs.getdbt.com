@@ -5,7 +5,11 @@ sidebar_label: "Query the Discovery API"
 pagination_next: "docs/dbt-apis/discovery-schema-environment"
 ---
 
+import ApiRateLimitsCallout from '/snippets/_api-rate-limits-callout.md';
+
 The Discovery API supports ad-hoc queries and integrations. If you are new to the API, refer to [About the Discovery API](/docs/dbt-apis/discovery-api) for an introduction.
+
+<ApiRateLimitsCallout />
 
 Use the Discovery API to evaluate data pipeline health and project state across runs or at a moment in time. dbt Labs provide a default [GraphQL explorer](https://metadata.cloud.getdbt.com/graphql) for this API, enabling you to run queries and browse the schema. However, you can also use any GraphQL client of your choice to query the API.
 
@@ -197,6 +201,72 @@ pageInfo {
   hasNextPage
 }
 totalCount # Total number of records across all pages
+```
+
+The previously described `PageInfo` and `totalCount` pattern applies to the `environment` endpoints, which return results as a connection of `edges` and `nodes`.
+
+#### Job-based endpoint pagination
+
+Job-based list endpoints also support cursor-based pagination. Use this pattern when you query resources under the [`job`](/docs/dbt-apis/discovery-schema-job) object. These endpoints return a flat list rather than an `edges`/`nodes` connection, so they do not expose a `PageInfo` object.
+
+The following job-based list fields accept `first` and `after`:
+
+- `models`
+- `sources`
+- `seeds`
+- `snapshots`
+- `tests`
+- `macros`
+- `metrics`
+- `exposures`
+
+Pass `first` to set the page size (capped at 100). Each returned item includes a `paginationCursor` field—an opaque, per-element value you select in your query. Pass the last item's `paginationCursor` as `after` on the next request to fetch the following page.
+
+Unlike environment queries, these job-based endpoints do not return a `PageInfo` object or `hasNextPage` field. You have reached the last page when a page returns fewer rows than `first` (or fewer than the default page size).
+
+We recommend always specifying `first` to keep response sizes manageable. Historically, omitting `first` and `after` would cause the API to return all matching rows. For large jobs, best practice is to pass `first` and `after` explicitly so your integration does not depend on unpaginated responses.
+
+:::note Upcoming change to unpaginated requests
+
+In a future update, requests that omit `first` and `after` will return at most 100 rows. dbt Labs will provide advance notice before that change rolls out.
+
+:::
+
+To run the example, use your [Discovery API endpoint](#discovery-api-endpoints) and a [Metadata Only service token](#authorization). Get `jobId` and optional `runId` from the job or run URL, or with the [Admin API](/docs/dbt-apis/admin-api). If you omit `runId`, the API uses the job's latest run. Run the query in the [GraphQL explorer](#run-queries-with-the-graphql-explorer) or via [HTTP requests](#run-queries-using-http-requests).
+
+The example below uses a job's `models` list. The same `first` and `after` arguments work for the other resource types listed above. For a use-case example with more fields, refer to [Use cases and examples for the Discovery API](/docs/dbt-apis/discovery-use-cases-and-examples).
+
+```graphql
+query JobModelsPage($jobId: BigInt!, $runId: BigInt, $first: Int!, $after: String) {
+  job(id: $jobId, runId: $runId) {
+    models(first: $first, after: $after) {
+      uniqueId
+      paginationCursor
+    }
+  }
+}
+```
+
+First page variables:
+
+```json
+{
+  "jobId": 12345,
+  "runId": 67890,
+  "first": 10,
+  "after": null
+}
+```
+
+For the next page, set `after` to the `paginationCursor` from the _last_ row of the previous page. The cursor is an opaque encoded string, not the `uniqueId`. Repeat until a page returns fewer rows than `first` (or fewer than the default page size).
+
+```json
+{
+  "jobId": 12345,
+  "runId": 67890,
+  "first": 10,
+  "after": "Y3Vyc29yOm1vZGVsLm15X3Byb2plY3QuZGltX2N1c3RvbWVycw=="
+}
 ```
 
 ### Filters

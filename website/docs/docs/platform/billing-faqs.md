@@ -7,6 +7,8 @@ pagination_next: null
 pagination_prev: null
 ---
 
+import DevToStarterUpgradeBody from '/snippets/_dev-to-starter-upgrade-body.md';
+
 <IntroText>
 Common questions about <Constant name="dbt" /> plans, billing, and usage. For pricing and plan details, refer to [Billing](/docs/platform/billing).
 </IntroText>
@@ -26,6 +28,12 @@ Consider upgrading to a Starter or Enterprise-tier plan. Starter and Enterprise-
 <Expandable alt_header="I want to upgrade my plan. Will all of my work carry over?">
 
 Yes. Your <Constant name="dbt" /> account will be upgraded without impacting your existing projects and account settings.
+
+</Expandable>
+
+<Expandable alt_header="What happens when I upgrade from Developer to Starter?">
+
+<DevToStarterUpgradeBody />
 
 </Expandable>
 

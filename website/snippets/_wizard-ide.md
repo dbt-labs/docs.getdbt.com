@@ -108,7 +108,7 @@ After you run a command, <Constant name="wizard" /> adds an icon and a tooltip t
 
 ### Bringing your own skills
 
-You can extend <Constant name="wizard" /> with custom skills to encode your team's SQL conventions, naming rules, and modeling workflows — so you don't repeat them in every prompt. See [Skills](/docs/dbt-ai/wizard-skills) for the full reference, including how to create, structure, and invoke skills.
+You can extend <Constant name="wizard" /> with custom skills to encode your team's SQL conventions, naming rules, and modeling workflows — so you don't repeat them in every prompt. See [Skills](/docs/dbt-ai/wizard-platform-skills) for the full reference, including how to create, structure, and invoke skills.
 
 ### Debug job failures
 

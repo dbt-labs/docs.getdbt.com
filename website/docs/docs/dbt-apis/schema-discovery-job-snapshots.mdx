@@ -30,13 +30,14 @@ The example query returns information about all snapshots in this job.
 ```graphql
 {
   job(id: 123) {
-    snapshots {
+    snapshots(first: 10, after: "{somePaginationCursorValue}") {
       uniqueId
       name
       executionTime
       environmentId
       executeStartedAt
       executeCompletedAt
+      paginationCursor
     }
   }
 }

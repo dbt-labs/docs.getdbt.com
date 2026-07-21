@@ -24,7 +24,12 @@ To migrate to dbt State, move your configs from `freshness.build_after` to the n
 | `freshness.build_after.count` + `freshness.build_after.period` | [`state.lag_tolerance`](/reference/resource-configs/lag-tolerance) | Combined into a single field with shorthand values (for example, `1800s`, `30m`, `12h`, `1d`, `2w`) or Jinja expressions |
 
 :::note Backward compatibility in Fusion
-In the <Constant name="fusion_engine" />, dbt State will automatically fall back to your existing `build_after` configs if `lag_tolerance` and `require_fresh_data_from` are not set. This means you can enable dbt State without updating your project configs first.
+In the <Constant name="fusion_engine" />, you can enable dbt State without updating your project configs first.
+
+- If `lag_tolerance` and `require_fresh_data_from` are not set, dbt State falls back to your existing `build_after` configs until `build_after` is deprecated.
+- If neither `build_after` nor the `state` configs exist, dbt State uses its [default configs](/reference/resource-configs/dbt-state-configs): `lag_tolerance: 45m` and `require_fresh_data_from: any`.
+
+dbt Labs will communicate a migration timeline for state-aware orchestration users when dbt State reaches general availability.
 :::
 
 ### Examples

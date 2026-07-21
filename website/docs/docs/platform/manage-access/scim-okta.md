@@ -5,7 +5,10 @@ id: "scim-okta"
 sidebar_label: "Set up SCIM with Okta"
 ---
 
+import ScimAssignGroupPermissions from '/snippets/_scim-assign-group-permissions.md';
+
 # Set up SCIM with Okta <Lifecycle status="managed, managed_plus" />
+
 
 :::info SCIM available for Okta
 System for Cross-Domain Identity Management (SCIM) [license mapping](/docs/platform/manage-access/scim-manage-user-licenses) is currently only supported for Okta. For other providers, license types must be [managed](/docs/platform/manage-access/seats-and-users#mapped-configuration) within the <Constant name="dbt_platform" /> user interface.
@@ -44,9 +47,12 @@ System for Cross-Domain Identity Management (SCIM) [license mapping](/docs/platf
     <Lightbox src="/img/docs/dbt-platform/access-control/provisioning-actions.png" width="70%" title="Ensure the users are properly provisioned with these settings." />
 
 12. Click **Save** to complete the provisioning configuration. 
-13. To complete your group setup, go to **Push Groups** and push your Okta groups to <Constant name="dbt_platform" />. This makes the groups available in <Constant name="dbt_platform" />. Then, an admin must assign the [required permissions](/docs/platform/manage-access/enterprise-permissions) to each group.
+13. To complete your group setup, go to **Push Groups** and push your Okta groups to <Constant name="dbt_platform" />. This makes the groups available in <Constant name="dbt_platform" />.
+
+<ScimAssignGroupPermissions />
 
 You've now configured SCIM for the Okta SSO integration in <Constant name="dbt_platform" />. You can [manage user licenses with SCIM](/docs/platform/manage-access/scim-manage-user-licenses) to set license type for users as they are provisioned.
+
 
 ## SCIM username format
 

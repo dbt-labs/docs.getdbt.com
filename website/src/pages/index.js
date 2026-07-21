@@ -73,7 +73,7 @@ function Home() {
                   <Link
                     id="hero-vs-code-cta"
                     className="hero-border-beam-cta"
-                    to="/docs/local/install-dbt?version=2#installation">
+                    to="/docs/local/install-dbt">
                       <span>Install dbt VS Code extension + Fusion</span>
                       </Link>
                 </div>
@@ -222,7 +222,7 @@ function Home() {
                 </div>
                 <div className="home-link-grid-item">
                   <h4 className="heading-4">Other Resources</h4>
-                  <Link to="/docs/dbt-versions/dbt-cloud-release-notes">Release Notes</Link>
+                  <Link to="/docs/dbt-versions/release-notes">Release Notes</Link>
                   <Link to="/blog">Developer Blog</Link>
                   <Link to="/community/join">Join the Community</Link>
                 </div>

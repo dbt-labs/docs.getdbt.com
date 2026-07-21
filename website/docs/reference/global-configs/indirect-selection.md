@@ -59,7 +59,7 @@ Or you can run tests that only refer to selected nodes using an environment vari
 ```text
 
 $ export DBT_INDIRECT_SELECTION=cautious
-dbt run
+dbt test
 
 ```
 

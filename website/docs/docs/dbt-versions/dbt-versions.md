@@ -6,7 +6,7 @@ pagination_next: "docs/dbt-versions/upgrade-dbt-platform-version"
 pagination_prev: null
 ---
 
-dbt is available in multiple distributions: the <Constant name="fusion_engine"/> (Rust-based, proprietary), <Constant name="core_v2"/> (Rust-based, open-source), and <Constant name="core_v1"/> (Python-based, open-source). dbt Core v1 follows [semantic versioning](https://semver.org/) for the 1.x series; <Constant name="core_v2"/> and the <Constant name="fusion_engine"/> use the 2.x series. This page explains how versioning works for local dbt installations.
+dbt is available in multiple distributions: the <Constant name="fusion_engine"/> (Rust-based, proprietary), <Constant name="core_v2"/> (Rust-based, open-source), and <Constant name="core_v1"/> (Python-based, open-source). dbt Core v1 follows [semantic versioning](https://semver.org/) for the 1.x series; <Constant name="core_v2"/> and the <Constant name="fusion_engine"/> use the 2.x series. This page explains how versioning works for self-hosted dbt installations.
 
 If you're using the <Constant name="dbt_platform" /> (including the <Constant name="platform_cli"/>), you don't need to manage dbt versions yourself. [Release tracks](/docs/dbt-versions/dbt-release-tracks) automatically keep you up to date and provide early access to new features.
 
@@ -108,7 +108,7 @@ Refer to [Supported data platforms](/docs/supported-data-platforms) for the full
 
 ## End-of-life versions
 
-Once a dbt version reaches end-of-life (EOL), it no longer receives patches, including for known bugs. We recommend upgrading to a newer version in [<Constant name="dbt" />](/docs/dbt-versions/upgrade-dbt-platform-version), [<Constant name="fusion" />](/docs/local/install-dbt?version=2#update-fusion) [<Constant name="core" />](/docs/local/install-dbt?version=1#upgrading-dbt-core). All versions prior to v1.0 have been deprecated.
+Once a dbt version reaches end-of-life (EOL), it no longer receives patches, including for known bugs. We recommend upgrading to a newer version in [<Constant name="dbt" />](/docs/dbt-versions/upgrade-dbt-platform-version), [<Constant name="fusion" />](/docs/local/install-dbt?version=2), or [<Constant name="core" />](/docs/local/install-dbt). All versions prior to v1.0 have been deprecated.
 
 ## Current version support
 
@@ -124,6 +124,6 @@ While a minor version is officially supported:
 
 Upgrade to new patch versions as soon as they're available. Upgrade to new minor versions when you're ready because you can only get some features and fixes on the latest minor version.
 
-dbt makes all versions available as prereleases before the final release. For minor versions, we aim to release one or more betas 4+ weeks before the final release so you can try new features and share feedback. Release candidates are available about two weeks before the final release for testing in production-like environments. Refer to the [`dbt-fusion` milestones](https://github.com/dbt-labs/dbt-fusion/milestones) or [`dbt-core` milestones](https://github.com/dbt-labs/dbt-core/milestones) for details.
+dbt makes all versions available as prereleases before the final release. For minor versions, we aim to release one or more betas 4+ weeks before the final release so you can try new features and share feedback. Release candidates are available about two weeks before the final release for testing in production-like environments. Refer to the [`dbt-core` milestones](https://github.com/dbt-labs/dbt-core/milestones) for details.
 
 

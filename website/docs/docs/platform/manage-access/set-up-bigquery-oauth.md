@@ -107,10 +107,6 @@ Select **Allow**. This redirects you back to the <Constant name="dbt_platform" /
 Workload Identity Federation (WIF) allows application workloads, running outside the <Constant name="dbt_platform" />, to act as a service account without the need to manage service accounts or other keys for deployment environments. The following instructions will enable you to authenticate your BigQuery connection in the <Constant name="dbt_platform" /> using WIF. 
 Currently, Microsoft Entra ID is the only supported identity provider (IdP). If you need additional IdP support, please contact your account team.
 
-:::info WIF not supported in <Constant name="fusion_engine"/>
-WIF is not currently supported in [<Constant name="fusion"/>](/docs/fusion/supported-features?version=2.0#bigquery). Use a [Native OAuth connection](#set-up-bigquery-native-oauth) or service account instead. [Support for WIF](https://github.com/dbt-labs/dbt-fusion/issues/1629) is coming soon.
-:::
-
 ### 1. Set up Entra ID
 
 Create an app in Entra where dbt will request access tokens when authenticating to BigQuery via the workload identity pool:
@@ -212,10 +208,19 @@ To connect a new project to your WIF configuration:
 Create a new or updated environment to use the WIF connection. 
 
 When you set your environment connection to the WIF configuration, you will then see two fields appear under the Deployment credentials section: 
-- **Workload pool provider path:** This field is required for all WIF configurations.
-    Example: `//iam.googleapis.com/projects/<numeric_project_id>/locations/global/workloadIdentityPools/<workpool_name>/providers/<workpool_providername>`
-- **Service account impersonation URL:** Used only if you’ve configured your workpool to use a service account impersonation for accessing your BigQuery resources (as opposed to granting the workpool direct resource access to the BigQuery resources).
-    Example: `https://iamcredentials.googleapis.com/v1/projects/-/serviceAccounts<serviceaccountemail>:generateAccessToken`
+- **Workload pool provider path:** This field is required for all WIF configurations. For example:
+ - `//iam.googleapis.com/projects/<numeric_project_id>/locations/global/workloadIdentityPools/<workpool_name>/providers/<workpool_providername>`
+- **Service account impersonation URL:** Used only if you’ve configured your workpool to use a service account impersonation for accessing your BigQuery resources (as opposed to granting the workpool direct resource access to the BigQuery resources). For example:
+ - `https://iamcredentials.googleapis.com/v1/projects/-/serviceAccounts/<serviceaccountemail>:generateAccessToken`
+
+To avoid errors from incorrect casing or typos, we recommend retrieving these values directly from GCP rather than constructing them manually:
+
+1. In the GCP console, go to **IAM & Admin > Workload Identity Federation**.
+2. Click your workload identity pool, then click the provider you created for this configuration.
+3. Click **Download configuration** at the top of the provider detail page.
+4. Open the downloaded JSON file and copy the following values:
+    - The `audience` field &mdash; paste into the **Workload pool provider path** field in dbt.
+    - The `service_account_impersonation_url` field &mdash; paste into the **Service account impersonation URL** field in dbt.
 
 If you don't already have a job based on the deployment environment with a connection set up for WIF, you should create one now. Once you've configured it with the preferred settings, run the job.
 
