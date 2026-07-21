@@ -60,7 +60,7 @@ config:
 
 :::note <Constant name="core" /> flag
 
-The v2 parser flag is only applicable on <Constant name="core" /> v1.12 or higher. If you're already on v2, the flag has no impact.
+The v2 parser flag is only applies to <Constant name="core" /> v1.12 or higher. If you're already on v2, the flag has no impact.
 
 :::
 
