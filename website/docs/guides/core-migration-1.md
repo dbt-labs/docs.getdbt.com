@@ -189,7 +189,7 @@ Environment variables in <Constant name="dbt" /> are managed with a clear [order
 
 - To set these variables for an entire project or specific environments, navigate to **Deploy** > **Environments** > **Environment variables** tab.
 - To set these variables at the job level, navigate to **Deploy** > **Jobs** > **Select your job** > **Settings** > **Advanced settings**.
-- To set these variables at the personal override level, navigate to **Profile Settings** > **Credentials** > **Select your project** > **Environment variables**.
+- To set these variables at the personal override level, navigate to **Your profile** > **Credentials** > **Select your project** > **Environment variables**.
 
 ## Orchestration setup
 

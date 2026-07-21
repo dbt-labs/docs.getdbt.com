@@ -8,7 +8,7 @@ pagination_next: null
 
 dbt Labs often tests experimental features before deciding to continue on the [Product lifecycle](/docs/dbt-versions/product-lifecycles).
 
-You can access experimental features to preview beta features that haven’t yet been released to <Constant name="dbt" />. You can toggle on or off all experimental features in your Profile settings. Experimental features:
+You can access experimental features to preview beta features that haven’t yet been released to <Constant name="dbt" />. You can toggle on or off all experimental features by clicking your account name in the bottom left, selecting **Your profile**, and finding the toggle under **User profile**. Experimental features:
 
 - May not be feature-complete or fully stable as we’re actively developing them.
 - Could be discontinued at any time.
@@ -18,9 +18,8 @@ You can access experimental features to preview beta features that haven’t yet
 
 To enable or disable experimental features:
 
-1. From <Constant name="dbt" />, click on your account name in the left side menu and select **Account settings**.
-2. Go to **Personal profile** under the **Your profile** header.
-2. Find **Experimental features** at the bottom of **Your Profile** page.
+1. Click your account name in the bottom left and select **Your profile**.
+2. Under **User profile**, find **Experimental features**.
 3. Click **Beta** to toggle the features on or off as shown in the following image.
    ![Experimental features](/img/docs/dbt-versions/experimental-feats.png)
 
