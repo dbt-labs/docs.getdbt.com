@@ -1,5 +1,3 @@
-:::tip Data freshness SLAs
-
-To define data freshness service-level agreements (SLAs) at the model level, you can use [dbt State](/docs/deploy/dbt-state-about) and the [`lag_tolerance`](/reference/resource-configs/lag-tolerance) config.
-
+:::tip Supporting data freshness SLAs
+Use [dbt State](/docs/deploy/dbt-state-about) and the [`lag_tolerance`](/reference/resource-configs/lag-tolerance) config to govern data freshness at the model level, helping your team meet freshness Service Level Agreements (SLAs) without unnecessary rebuilds.
 :::
