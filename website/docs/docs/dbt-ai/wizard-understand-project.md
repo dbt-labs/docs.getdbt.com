@@ -1,24 +1,22 @@
 ---
-title: "Understanding a dbt project with dbt Wizard"
+title: "Understanding a dbt project with dbt Wizard CLI"
 id: "wizard-understand-project"
-description: "Use dbt Wizard to map an unfamiliar dbt project, investigate model behavior, and identify downstream impact."
+description: "Use dbt Wizard CLI to map an unfamiliar dbt project, investigate model behavior, and identify downstream impact."
 sidebar_label: "Understand a dbt project"
 tags: [AI, Wizard]
 ---
 
-# Understanding a dbt project with <Constant name="wizard" />
+# Understanding a dbt project with <Constant name="wizard" /> CLI
 
 <IntroText>
-Use <Constant name="wizard" /> to move from a broad project map to evidence-backed answers about model logic, lineage, tests, and data.
+Use <Constant name="wizard" /> CLI to move from a broad project map to evidence-backed answers about model logic, lineage, tests, and data.
 </IntroText>
 
-This workflow helps when you join a project, review an unfamiliar area of the DAG, prepare a refactor, or investigate why a model exists. It is available in <Constant name="wizard" /> CLI and the <Constant name="dbt_platform" />, although the connected tools and project context can differ by surface.
+This workflow helps when you join a project, review an unfamiliar area of the DAG, prepare a refactor, or investigate why a model exists.
 
 ## Prerequisites
 
-In <Constant name="wizard" /> CLI, start from the dbt project root and make sure the project has a current `target/manifest.json`. Refer to [Use <Constant name="wizard" /> locally](/docs/dbt-ai/wizard-quickstart) for setup.
-
-In the <Constant name="dbt_platform" />, open <Constant name="wizard" /> from a connected project and development environment. Refer to [<Constant name="wizard" /> in the <Constant name="dbt_platform" />](/docs/platform/wizard-platform).
+Start <Constant name="wizard" /> from the dbt project root, and make sure the project has a current `target/manifest.json`. Refer to [Use <Constant name="wizard" /> locally](/docs/dbt-ai/wizard-quickstart) for setup.
 
 If you want <Constant name="wizard" /> to inspect warehouse results, you also need a working development connection and permission to query the relevant relations.
 

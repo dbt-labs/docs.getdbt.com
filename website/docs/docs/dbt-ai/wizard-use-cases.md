@@ -204,7 +204,7 @@ In <Constant name="wizard" /> CLI, choose light, medium, heavy, or skipped valid
 
 **Tips:**
 - State the business behavior that must remain true, not only the commands to run
-- In CI, pair this with `wizard review --base main` to validate the diff against your project before opening a PR
+- In CI, use `wizard review --base main` as an additional code review. Keep required parse, build, and test commands as separate merge gates.
 
 ## Add a semantic model
 
