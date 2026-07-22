@@ -65,6 +65,7 @@ The following features are new or enhanced as part of dbt Labs announcements at 
 
 ## May 2026
 
+- **Enhancement:** <Constant name="fusion" /> job runs now always use the OpenTelemetry (OTel) structured log format. The previous feature-flag requirement has been removed, so log output is consistent across <Constant name="fusion" /> runs.
 - **Enhancement:** Repository clone failures now surface a more actionable diagnostic message to help you resolve common issues faster. For guidance, refer to [Troubleshooting clone errors](/docs/platform/git/import-a-project-by-git-url#troubleshooting-clone-errors).
 - **Fix:** The connection test failure message now prompts you to verify your connection details and confirm that your credentials have access to the data warehouse, rather than showing a generic failure message.
 - **Enhancement:** Users granted `user_credential_write` can access **Your profile** > **Credentials** without `develop_access` (including read-only users). Environment variable overrides and dbt version overrides still require `develop_access`. Refer to [Enterprise permissions](/docs/platform/manage-access/enterprise-permissions) for more information.
