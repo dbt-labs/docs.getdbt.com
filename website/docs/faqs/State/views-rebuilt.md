@@ -5,7 +5,9 @@ sidebar_label: 'Why is my model being rebuilt instead of reused?'
 id: views-rebuilt
 ---
 
-dbt State decides whether to reuse a model by comparing its compiled SQL to the hash from the previous run. If anything changes that compiled SQL between runs, even when the logic hasn't meaningfully changed, dbt State rebuilds the model. In some cases, dbt State also rebuilds when it can't determine source freshness, regardless of SQL changes.
+dbt State decides whether to reuse a model by parsing the rendered SQL into a syntax tree and comparing the hash. If the hash has changed (implying the model's logic has changed), dbt State rebuilds the model.
+
+dbt State prioritizes safety and precision; if it can't guarantee skipping a node is safe, then it rebuilds the node to be sure. A few patterns that commonly cause overeager rebuilds are listed on this page, along with recommendations to increase reuse rate.
 
 The following patterns commonly cause unexpected rebuilds:
 
