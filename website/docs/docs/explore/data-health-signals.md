@@ -46,10 +46,6 @@ The health state of a model is determined by the following criteria:
 | 🔴 **Degraded**  | One of the following must be true: <br /><br />- Model failed to build<br />- Model has failing tests<br />- One or more upstream sources are stale:<br />&nbsp;&nbsp;&nbsp;&nbsp;- Freshness check hasn’t run in the past 30 days<br />&nbsp;&nbsp;&nbsp;&nbsp;- Freshness check returned an error |
 | ⚪ **Unknown**    | - Unable to determine health of resource; no job runs have processed the resource.         |
 
-import DataFreshnessSLATip from '/snippets/_data-freshness-sla-tip.md';
-
-<DataFreshnessSLATip />
-
 </TabItem>
 
 <TabItem value="sources" label="Sources">
