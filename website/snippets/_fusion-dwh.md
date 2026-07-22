@@ -32,6 +32,8 @@
       - Basic authentication (username and password)
       - When deployed on Amazon Web Services (AWS): AWS Signature Version 4
         - Supports authentication using single sign-on, service accounts, or user tokens
+    - Spark Connect 
+      - Basic authentication (username and password)
   </Expandable>
 
   <Expandable alt_header="DuckDB (Fusion CLI only)" lifecycle="beta" lifecycle_size="75">
