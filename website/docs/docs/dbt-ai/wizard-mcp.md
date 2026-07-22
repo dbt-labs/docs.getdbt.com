@@ -49,7 +49,7 @@ Avoid defining the same MCP server name in more than one location unless you int
 The <Constant name="wizard"/> CLI lets you add, remove, authenticate, and customize MCP servers, including per-tool approvals, through the `config.toml` file.
 
 :::info MCP servers are a CLI feature
-You can configure external MCP servers only in the <Constant name="wizard" /> CLI. You can't add your own MCP servers in the <Constant name="dbt_platform" /> (<Constant name="studio_ide" /> and the home app). The CLI includes built-in tools for local dbt project context and dbt commands. The separate dbt MCP server and the [dbt Agent Skills collection](https://github.com/dbt-labs/dbt-agent-skills) aren't preinstalled; add them when you need their additional capabilities.
+You can configure MCP servers only in the <Constant name="wizard" /> CLI. You can't add your own MCP servers in the <Constant name="dbt_platform" /> (<Constant name="studio_ide" /> and the home app), but <Constant name="wizard" /> includes built-in dbt tools, such as [dbt Agent skills](https://github.com/dbt-labs/dbt-agent-skills) and product documentation fetching through the dbt MCP server.
 :::
 
 ## Supported MCP server types
