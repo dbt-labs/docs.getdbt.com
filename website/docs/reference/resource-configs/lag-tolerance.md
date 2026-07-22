@@ -1,6 +1,6 @@
 ---
 title: lag_tolerance
-description: "Configure lag_tolerance to prevent unnecessary node rebuilds when upstream data updates more frequently than your node needs to."
+description: "Use lag_tolerance to define data freshness SLAs at the model level and prevent unnecessary node rebuilds."
 id: "lag-tolerance"
 tags: ['dbt State']
 ---
@@ -57,7 +57,9 @@ models:
 
 Source systems may update more frequently than downstream models need to rebuild. For example, a model used for daily reporting doesn't need to refresh more than once per day, even if new upstream data is available hourly.
 
-With `lag_tolerance`, you can prevent those unnecessary rebuilds. When dbt State evaluates whether to rebuild a node, it checks whether upstream parents have fresh data that exceeds the `lag_tolerance` threshold. If they haven't, dbt reuses the existing node rather than cloning or rebuilding it.
+`lag_tolerance` lets you set this threshold at the model level, enforcing a data freshness service-level agreement (SLA) &mdash; you can specify how stale data is allowed to get before dbt triggers a rebuild.
+
+When dbt State evaluates whether to rebuild a node, it checks whether upstream parents have fresh data that exceeds the `lag_tolerance` threshold. If they haven't, dbt reuses the existing node rather than cloning or rebuilding it.
 
 This config accepts two value types:
 
