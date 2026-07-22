@@ -17,7 +17,7 @@ Plugins and hooks are available in the <Constant name="wizard" /> CLI, including
 ## Understand plugins, marketplaces, and hooks
 
 - A **marketplace** is a local or Git source that publishes one or more plugins.
-- A **plugin** is a named bundle with a `.codex-plugin/plugin.json` manifest.
+- A **plugin** is a named bundle with a `.dbt-wizard-plugin/plugin.json` manifest.
 - A **hook** runs a command at a <Constant name="wizard" /> lifecycle event, such as session start, prompt submission, before or after a tool call, a permission request, or session stop.
 
 Hooks can inspect context, add guidance, or block an action depending on the event. Because a hook can execute a command on your machine, review its source and trust request with the same care you would use for any development tool.
@@ -50,7 +50,7 @@ List the configured sources and their local snapshot locations:
 wizard plugin marketplace list
 ```
 
-Before installing a plugin, inspect the marketplace snapshot and the plugin's `.codex-plugin/plugin.json`. Review any referenced skills, MCP server configuration, apps, hook files, and executable scripts.
+Before installing a plugin, inspect the marketplace snapshot and the plugin's `.dbt-wizard-plugin/plugin.json`. Review any referenced skills, MCP server configuration, apps, hook files, and executable scripts.
 
 ## Install and inspect a plugin
 

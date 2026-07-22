@@ -422,7 +422,6 @@ const sidebarSettings = {
                     "docs/dbt-ai/wizard-debug-failed-job",
                     "docs/dbt-ai/wizard-production-deferral",
                     "docs/dbt-ai/wizard-semantic-layer",
-                    "docs/dbt-ai/wizard-ci-review",
                     "docs/dbt-ai/wizard-plugins-hooks",
                   ],
                 },

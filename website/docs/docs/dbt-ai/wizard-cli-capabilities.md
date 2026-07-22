@@ -19,23 +19,22 @@ Choose interactive or headless <Constant name="wizard" /> CLI based on whether t
 | Capability | Interactive CLI | Headless CLI |
 |---|---|---|
 | Ask project-aware questions | Yes | Yes, with `wizard exec` |
-| Use native dbt metadata and lineage | Yes | Yes |
+| Use native dbt metadata and lineage | Yes, when dbt artifacts are available | Yes, when dbt artifacts are available |
 | Propose file changes | Yes | Yes, with a write-enabled sandbox |
 | Review proposed file diffs | In the terminal user interface (TUI) | In command output or generated files |
 | Run dbt commands | Yes, with approvals and sandboxing | Yes, with preconfigured permissions |
 | Run shell commands | Yes, in the configured sandbox | Yes, in the configured sandbox |
-| Use built-in dbt Agent Skills | Yes | Yes |
 | Add project and user-level skills | Yes | Yes |
 | Add custom MCP servers | Yes | Yes |
 | Install plugins and hooks | Yes | Yes |
 | Run a dedicated git diff review | Yes, with `/review` | Yes, with `wizard review` |
-| Run in CI or scripts | No | Yes |
+| Run without the TUI | No | Yes |
 | Generate machine-readable output | No | Yes, with `wizard exec --json` |
 | Resume a conversational session | Yes, with `/resume` | Yes, with `wizard exec resume` |
 
 </SimpleTable>
 
-Some capabilities require additional context. For example, job failure investigation can retrieve run details when the dbt MCP server has Admin API access; otherwise, provide logs and `run_results.json`. Headless file edits require an explicit write-enabled sandbox.
+Some capabilities require additional context. Project-aware analysis depends on current dbt artifacts. Job failure investigation can retrieve run details when the dbt MCP server has Admin API access; otherwise, provide logs and `run_results.json`. Headless file edits require an explicit write-enabled sandbox.
 
 ## Choose the interactive CLI
 
@@ -51,7 +50,7 @@ Refer to [Use <Constant name="wizard" /> locally](/docs/dbt-ai/wizard-quickstart
 
 ## Choose the headless CLI
 
-Use the headless CLI for one-shot analysis, resumable automation, code review, and CI. Configure every permission and dependency before the command starts because there is no interactive approval prompt.
+Use the headless CLI for one-shot analysis, resumable local automation, and code review. Configure every permission and dependency before the command starts because there is no interactive approval prompt.
 
 ```bash
 wizard exec "summarize untested models in models/marts"
@@ -59,7 +58,7 @@ wizard review --base origin/main
 wizard exec resume --last "continue the previous analysis"
 ```
 
-Use deterministic commands for required CI gates, and treat AI review as additional evidence. Refer to [Automating dbt reviews in CI](/docs/dbt-ai/wizard-ci-review) for a complete workflow.
+Treat AI review as additional evidence, and run deterministic parse, lint, and test commands separately.
 
 ## Understand CLI boundaries
 

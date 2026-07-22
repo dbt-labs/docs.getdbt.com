@@ -9,7 +9,7 @@ tags: [AI, Wizard]
 # Debugging a failed dbt job with <Constant name="wizard" /> CLI
 
 <IntroText>
-Use <Constant name="wizard" /> CLI to investigate a failed <Constant name="dbt_platform" /> job from the run evidence to a validated fix. The built-in `troubleshooting-dbt-job-errors` skill guides <Constant name="wizard" /> to check job history, logs, code changes, lineage, and data before it recommends a resolution.
+Use <Constant name="wizard" /> CLI to investigate a failed <Constant name="dbt_platform" /> job from the run evidence to a validated fix. <Constant name="wizard" /> can check job history, logs, code changes, lineage, and data before it recommends a resolution when you provide the evidence or connect the required tools.
 </IntroText>
 
 Use this workflow for scheduled or deployment job failures. For errors that occur only in local development, ask <Constant name="wizard" /> to debug the local command instead.

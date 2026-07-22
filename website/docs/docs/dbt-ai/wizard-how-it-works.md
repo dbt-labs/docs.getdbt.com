@@ -177,19 +177,22 @@ By default, the CLI keeps you in control before it changes your project or runs 
 
 In the terminal:
 
-- <Constant name="wizard" /> shows file edits as diffs before it writes them
-- dbt commands, such as `dbt build` or `dbt test`, ask for confirmation before running
-- Bash commands run in a read-only sandbox, so they can inspect files but can't modify your workspace through the shell
+- <Constant name="wizard" /> shows file changes as diffs so you can review them
+- Commands that need permission under the active approval policy request confirmation before running
+- The active sandbox profile limits where shell commands can read and write. <Constant name="wizard" /> shows the active profile when the session starts.
 
-You can relax these controls for trusted workflows:
+Choose the sandbox profile and approval behavior that match the task:
 
 ```bash
+# Restrict shell commands to read-only access.
+wizard --sandbox read-only
+
 # Never prompt for approval during this session.
 # Useful for trusted tasks where you want Wizard to iterate without stopping.
 wizard --ask-for-approval never
 
 # Allow shell commands to write inside your workspace directory.
-# Useful for commands that generate files, but less restrictive than the default read-only sandbox.
+# Useful for commands that generate files.
 wizard --sandbox workspace-write
 ```
 

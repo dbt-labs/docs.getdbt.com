@@ -12,7 +12,7 @@ tags: [AI, Wizard, Semantic Layer]
 Use <Constant name="wizard" /> CLI to turn a business question or an existing dbt model into version-compatible <Constant name="semantic_layer" /> definitions. <Constant name="wizard" /> inspects model grain, columns, lineage, and nearby YAML before it proposes entities, dimensions, and metrics.
 </IntroText>
 
-This CLI workflow uses the built-in `building-dbt-semantic-layer` skill and project metadata to guide the work.
+This CLI workflow uses your project files and available dbt metadata to guide the work. You can also add the `building-dbt-semantic-layer` skill from the [dbt Agent Skills repository](https://github.com/dbt-labs/dbt-agent-skills) for reusable Semantic Layer guidance.
 
 ## Before you begin
 

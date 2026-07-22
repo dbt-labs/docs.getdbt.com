@@ -22,7 +22,7 @@ Common use cases for <Constant name="wizard" />, with example prompts and what t
 - [Multi-file changes](#multi-file-changes)
 - [Validate before shipping](#validate-before-shipping)
 - [Add a semantic model](#add-a-semantic-model)
-- [CI and scripting](#ci-and-scripting)
+- [Headless scripting](#headless-scripting)
 
 This page assumes you're using <Constant name="wizard" /> in the terminal with an active session or in <Constant name="dbt_platform" />. For examples of using <Constant name="wizard" /> in the Studio IDE, refer to the [Prompt cookbook](/guides/prompt-cookbook). To use <Constant name="wizard" /> in the CLI, use the `wizard` [command reference](/docs/dbt-ai/wizard-cli-reference).
 
@@ -106,7 +106,7 @@ The nightly job failed. What's the root cause and how do I fix it?
 ```
 
 **What <Constant name="wizard" /> does:**
-1. Uses the `troubleshooting-dbt-job-errors` skill (built in, no setup needed) to pull recent job run details
+1. Uses the run evidence you provide, or connected dbt MCP tools, to retrieve and inspect job run details
 2. Identifies the failing model, the error message, and the likely cause
 3. Proposes a fix and shows the diff
 4. Notes if your local branch differs from the job's branch so you have full context
@@ -206,7 +206,7 @@ In <Constant name="wizard" /> CLI, choose light, medium, heavy, or skipped valid
 
 **Tips:**
 - State the business behavior that must remain true, not only the commands to run
-- In CI, use `wizard review --base main` as an additional code review. Keep required parse, build, and test commands as separate merge gates.
+- Use `wizard review --base main` as an additional code review. Run required parse, build, and test commands separately.
 
 ## Add a semantic model
 
@@ -232,9 +232,9 @@ week, and month granularity.
 
 For version-specific examples and validation steps, refer to [Build Semantic Layer definitions with <Constant name="wizard" />](/docs/dbt-ai/wizard-semantic-layer).
 
-## CI and scripting
+## Headless scripting
 
-For tasks you want to automate or run in a pipeline without the TUI:
+For tasks you want to run from a script without the TUI:
 
 ```bash
 # Run a single prompt and exit
@@ -247,8 +247,6 @@ wizard review --base BRANCH_NAME
 wizard exec --json "summarize test coverage by schema"
 ```
 
-For a pull request workflow that preserves review output and keeps deterministic checks separate, refer to [Automate dbt reviews in CI with <Constant name="wizard" />](/docs/dbt-ai/wizard-ci-review).
-
 ## Related docs
 
 - [Use dbt Wizard locally](/docs/dbt-ai/wizard-quickstart)
@@ -257,7 +255,6 @@ For a pull request workflow that preserves review output and keeps deterministic
 - [Add data-informed tests](/docs/dbt-ai/wizard-data-informed-tests)
 - [Debug a failed job](/docs/dbt-ai/wizard-debug-failed-job)
 - [Build Semantic Layer definitions](/docs/dbt-ai/wizard-semantic-layer)
-- [Automate dbt reviews in CI](/docs/dbt-ai/wizard-ci-review)
 - [dbt Wizard overview](/docs/dbt-ai/about-dbt-wizard-cli)
 - [Configure BYOK](/docs/dbt-ai/wizard-byok)
 - [dbt Wizard in Studio IDE](/docs/dbt-ai/wizard-ide): same agent, in the dbt platform
