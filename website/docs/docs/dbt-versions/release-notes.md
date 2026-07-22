@@ -22,6 +22,7 @@ For <Constant name="fusion_engine" /> updates, refer to the [dbt-fusion changelo
 
 - **Behavior change:** You can no longer create a [service token](/docs/dbt-apis/service-tokens) using an account-scoped [personal access token](/docs/dbt-apis/user-tokens) (PAT). Requests to the service tokens endpoint authenticated with a PAT now return a `400` error. Use a service token to create new ones instead.
 - **New:** You can now access dbt State settings from **Account settings** > **Billing & Usage**, previously found under **State**. You can manage your trial, enable dbt State on environments and jobs, and set spend alerts &mdash; all in one place. For details, refer to [dbt State trial and billing](/docs/deploy/dbt-state-trial).
+- **Fix:** Redshift development connections using [external OAuth](/docs/platform/manage-access/redshift-external-oauth) (Okta or Entra ID) through AWS IAM Identity Center now connect successfully. Previously, these connections failed with a `no PostgreSQL user name specified in startup packet` error.
 
 ## June 2026
 

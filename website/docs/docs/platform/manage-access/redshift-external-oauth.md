@@ -241,3 +241,9 @@ Once the connection has been assigned to a development environment, you can conf
 ### Verify connection in Studio
 
 Once your development session has initialized, you can test that you’re able to connect to Redshift using external OAuth by running `dbt debug`.
+
+:::caution Known limitation
+
+The IdP-issued token used for external OAuth connections isn't refreshed during an active development session. If a session stays active and connected for longer than the token's lifetime (typically 1 hour), you might see intermittent reconnect failures until the session is reset. If this happens, start a new development session to get a fresh token.
+
+:::
