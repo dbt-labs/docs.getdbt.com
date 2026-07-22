@@ -1,15 +1,15 @@
 ---
-title: "Debugging a failed dbt job with dbt Wizard"
+title: "Debugging a failed dbt job with dbt Wizard CLI"
 id: "wizard-debug-failed-job"
-description: "Use dbt Wizard to gather job evidence, classify a failure, identify its root cause, and validate a proposed fix."
+description: "Use dbt Wizard CLI to gather job evidence, classify a failure, identify its root cause, and validate a proposed fix."
 sidebar_label: "Debug a failed job"
 tags: [AI, Wizard]
 ---
 
-# Debugging a failed dbt job with <Constant name="wizard" />
+# Debugging a failed dbt job with <Constant name="wizard" /> CLI
 
 <IntroText>
-Use <Constant name="wizard" /> to investigate a failed <Constant name="dbt_platform" /> job from the run evidence to a validated fix. The built-in `troubleshooting-dbt-job-errors` skill guides <Constant name="wizard" /> to check job history, logs, code changes, lineage, and data before it recommends a resolution.
+Use <Constant name="wizard" /> CLI to investigate a failed <Constant name="dbt_platform" /> job from the run evidence to a validated fix. The built-in `troubleshooting-dbt-job-errors` skill guides <Constant name="wizard" /> to check job history, logs, code changes, lineage, and data before it recommends a resolution.
 </IntroText>
 
 Use this workflow for scheduled or deployment job failures. For errors that occur only in local development, ask <Constant name="wizard" /> to debug the local command instead.
@@ -35,7 +35,7 @@ test just to make it pass.
 
 ## Give Wizard access to the evidence
 
-In the <Constant name="dbt_platform" />, <Constant name="wizard" /> can use built-in platform context. In the CLI, connect the [dbt MCP server](/docs/dbt-ai/wizard-mcp#dbt-mcp-server) when you want <Constant name="wizard" /> to retrieve job run history and errors from the Admin API.
+Connect the [dbt MCP server](/docs/dbt-ai/wizard-mcp#dbt-mcp-server) when you want <Constant name="wizard" /> CLI to retrieve job run history and errors from the Admin API.
 
 When the Admin API tools aren't available, provide the following artifacts:
 

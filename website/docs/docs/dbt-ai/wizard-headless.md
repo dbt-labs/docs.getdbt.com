@@ -37,6 +37,18 @@ Use `exec` in CI to analyze a quality question:
 wizard exec "are there any models in models/marts/ with no tests?"
 ```
 
+Resume the most recent recorded session with a new prompt:
+
+```bash
+wizard exec resume --last "continue the previous analysis"
+```
+
+To resume a specific session, replace `SESSION_ID` with its identifier:
+
+```bash
+wizard exec resume SESSION_ID "summarize the remaining work"
+```
+
 ### JSON output
 
 For downstream processing, emit a structured JSON event stream:

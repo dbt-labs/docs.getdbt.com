@@ -49,6 +49,8 @@ permissions:
 jobs:
   review:
     runs-on: ubuntu-latest
+    env:
+      WIZARD_VERSION: "0.1.1-beta.104"
     steps:
       - name: Check out the pull request
         uses: actions/checkout@v4
@@ -57,7 +59,7 @@ jobs:
 
       - name: Install dbt Wizard
         run: |
-          curl -fsSL https://public.cdn.getdbt.com/dbt-wizard/install/install-wizard.sh | sh
+          curl -fsSL https://public.cdn.getdbt.com/dbt-wizard/install/install-wizard.sh | sh -s -- --version "$WIZARD_VERSION"
           wizard --version
 
       - name: Review the pull request
@@ -120,7 +122,7 @@ Keep the schema narrow and version it with the workflow. Validate the final resp
 
 ## Make CI reviews reliable
 
-- Record `wizard --version` in CI logs, and review version updates deliberately.
+- Pin `WIZARD_VERSION`, record `wizard --version` in CI logs, and review version updates deliberately.
 - Use `fetch-depth: 0` so the base branch and merge base are available.
 - Keep the review read-only unless the job is explicitly designed to modify files.
 - Separate AI review from parse, compile, lint, and test gates so the source of a failure is clear.

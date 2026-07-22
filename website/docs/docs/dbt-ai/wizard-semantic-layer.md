@@ -1,18 +1,18 @@
 ---
-title: "Building Semantic Layer definitions with dbt Wizard"
+title: "Building Semantic Layer definitions with dbt Wizard CLI"
 id: "wizard-semantic-layer"
-description: "Use dbt Wizard to plan, write, and validate Semantic Layer entities, dimensions, metrics, and saved queries."
+description: "Use dbt Wizard CLI to plan, write, and validate Semantic Layer entities, dimensions, metrics, and saved queries."
 sidebar_label: "Build Semantic Layer definitions"
 tags: [AI, Wizard, Semantic Layer]
 ---
 
-# Building Semantic Layer definitions with <Constant name="wizard" />
+# Building Semantic Layer definitions with <Constant name="wizard" /> CLI
 
 <IntroText>
-Use <Constant name="wizard" /> to turn a business question or an existing dbt model into version-compatible <Constant name="semantic_layer" /> definitions. <Constant name="wizard" /> inspects model grain, columns, lineage, and nearby YAML before it proposes entities, dimensions, and metrics.
+Use <Constant name="wizard" /> CLI to turn a business question or an existing dbt model into version-compatible <Constant name="semantic_layer" /> definitions. <Constant name="wizard" /> inspects model grain, columns, lineage, and nearby YAML before it proposes entities, dimensions, and metrics.
 </IntroText>
 
-This workflow is available in the <Constant name="wizard" /> CLI, <Constant name="studio_ide" />, and the <Constant name="wizard" /> home tab. <Constant name="wizard" /> uses the built-in `building-dbt-semantic-layer` skill and project metadata to guide the work.
+This CLI workflow uses the built-in `building-dbt-semantic-layer` skill and project metadata to guide the work.
 
 ## Before you begin
 

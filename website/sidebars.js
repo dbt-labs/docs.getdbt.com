@@ -410,7 +410,7 @@ const sidebarSettings = {
               items: [
                 "docs/dbt-ai/about-dbt-wizard-cli",
                 "docs/dbt-ai/wizard-cli",
-                "docs/dbt-ai/wizard-capabilities-by-surface",
+                "docs/dbt-ai/wizard-cli-capabilities",
                 {
                   type: "category",
                   label: "Workflows",
