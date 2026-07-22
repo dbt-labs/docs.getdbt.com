@@ -1,5 +1,6 @@
 ---
 title: "IBM Db2 configurations"
+description: "Configure IBM Db2-specific settings for dbt models, including instance requirements and adapter permissions."
 id: "ibm-db2-config"
 ---
 

@@ -10,6 +10,62 @@ Each monthly **Compatible** release includes functionality matching up-to-date o
 
 For more information, see [release tracks](/docs/dbt-versions/dbt-release-tracks).
 
+## July 2026
+
+Release date: July 21, 2026
+
+### dbt platform
+
+### Fixes
+
+- Prune stale cross-project dependencies from injected external nodes before linking. A publication can list a transitive public ancestor that has since been deleted upstream; injecting it as a dangling `depends_on` edge previously failed compile with `GraphDependencyNotFoundError`. The dead edge is now dropped with a warning and restored once the producing project's publication is regenerated.
+
+### Dependencies
+
+- Pin `pyathena` to v3.35 and older
+
+This compatible release includes functionality from the following versions of dbt Core OSS:
+
+```
+dbt-core==1.11.12
+
+# shared interfaces
+dbt-adapters==1.22.10
+dbt-common==1.37.5
+dbt-extractor==0.6.0
+dbt-semantic-interfaces==0.9.0
+dbt-sl-sdk[sync]==0.13.4
+
+# adapters
+dbt-athena==1.10.2
+dbt-bigquery==1.11.1
+dbt-databricks==1.12.2
+dbt-fabric==1.9.4
+dbt-postgres==1.10.2
+dbt-redshift==1.10.2
+dbt-snowflake==1.11.6
+dbt-spark==1.10.3
+dbt-synapse==1.8.5
+dbt-teradata==1.10.3
+dbt-trino==1.10.2
+```
+
+Changelogs:
+- [dbt-core 1.11.12](https://github.com/dbt-labs/dbt-core/blob/1.11.latest/CHANGELOG.md)
+- [dbt-adapters 1.22.10](https://github.com/dbt-labs/dbt-adapters/blob/main/dbt-adapters/CHANGELOG.md)
+- [dbt-common 1.37.5](https://github.com/dbt-labs/dbt-common/blob/main/CHANGELOG.md)
+- [dbt-athena 1.10.2](https://github.com/dbt-labs/dbt-adapters/blob/stable/dbt-athena/CHANGELOG.md)
+- [dbt-bigquery 1.11.1](https://github.com/dbt-labs/dbt-adapters/blob/stable/dbt-bigquery/CHANGELOG.md)
+- [dbt-databricks 1.12.2](https://github.com/databricks/dbt-databricks/blob/main/CHANGELOG.md)
+- [dbt-fabric 1.9.4](https://github.com/microsoft/dbt-fabric/releases/tag/v1.9.4)
+- [dbt-postgres 1.10.2](https://github.com/dbt-labs/dbt-adapters/blob/stable/dbt-postgres/CHANGELOG.md)
+- [dbt-redshift 1.10.2](https://github.com/dbt-labs/dbt-adapters/blob/stable/dbt-redshift/CHANGELOG.md)
+- [dbt-snowflake 1.11.6](https://github.com/dbt-labs/dbt-adapters/blob/stable/dbt-snowflake/CHANGELOG.md)
+- [dbt-spark 1.10.3](https://github.com/dbt-labs/dbt-adapters/blob/stable/dbt-spark/CHANGELOG.md)
+- [dbt-synapse 1.8.5](https://github.com/microsoft/dbt-synapse/blob/v1.8.latest/CHANGELOG.md)
+- [dbt-teradata 1.10.3](https://github.com/Teradata/dbt-teradata/releases/tag/v1.10.3)
+- [dbt-trino 1.10.2](https://github.com/starburstdata/dbt-trino/blob/master/CHANGELOG.md)
+
 ## June 2026
 
 Release date: June 15, 2026
