@@ -2,9 +2,6 @@
 title: "About installing Fusion"
 description: "Install the Fusion engine locally to take data transformation to the next level."
 id: about-fusion-install
-availability:
-  preset: local_free
-  engine: v2
 ---
 
 # About Fusion local installation <Lifecycle status="preview" />

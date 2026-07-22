@@ -26,12 +26,12 @@ export const FIELD_LABELS = {
 // same hide-if-universal rule used elsewhere in this file.
 export const ENGINE_LABELS = {
   v1: 'Available in v1',
-  v2: 'Requires dbt Fusion',
+  v2: 'Available in v2',
 };
 
 export const ENGINE_TOOLTIPS = {
   v1: 'Available in dbt Core 1.x',
-  v2: 'Requires dbt Fusion',
+  v2: 'Available in v2',
 };
 
 export function getEngineFacet(engine) {

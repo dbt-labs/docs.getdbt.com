@@ -5,9 +5,7 @@ description: "Learn how to develop your dbt projects using dbt."
 sidebar_label: "Develop with dbt" 
 pagination_next: "docs/platform/about-defer"
 intro_text: "Develop dbt projects using the dbt platform, a faster and more reliable way to deploy dbt and manage your project in a single, web-based UI."
-availability:
-  surface: platform
-  access: login_required
+hide_table_of_contents: true
 ---
 
 You can develop in your browser using a <Constant name="dbt" />-powered command line interface (CLI), an integrated development environment (<Constant name="studio_ide" />), or <Constant name="canvas" />.

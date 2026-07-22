@@ -4,8 +4,8 @@ id: sign-in-dbt-extension
 description: "Sign in or register to unlock advanced features in the dbt VS Code extension."
 sidebar_label: "Sign in or register"
 availability:
+  preset: local_free
   engine: v2
-  preset: local_login
 ---
 
 import FusionTroubleshooting from '/snippets/_fusion-troubleshooting.md';

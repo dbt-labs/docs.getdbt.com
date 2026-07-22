@@ -3,9 +3,7 @@ title: "Contribute to dbt Core adapters"
 id: "contribute-core-adapters"
 description: "Contribute to existing dbt Core adapters or open a pull request for a new v1 or v2 adapter."
 pagination_next: null
-availability:
-  engine: v1
-  preset: local_free
+availability: all_users
 ---
 
 The dbt Community helps analytics practitioners share their knowledge, help others, and collectively drive forward the discipline of analytics engineering. There are opportunities here for everyone to contribute, whether you're at the beginning of your analytics engineering journey or you are a seasoned data professional.

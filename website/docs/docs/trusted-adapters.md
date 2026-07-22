@@ -2,7 +2,7 @@
 title: "Trusted adapters"
 id: "trusted-adapters"
 hide_table_of_contents: true
-availability: local_free
+availability: all_users
 ---
 
 

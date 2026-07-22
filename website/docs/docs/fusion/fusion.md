@@ -5,8 +5,6 @@ description: "Fusion is the next-generation engine and development experience fo
 hide_table_of_contents: true
 pagination_next: "docs/fusion/about-fusion"
 pagination_prev: "docs/introduction"
-availability:
-  engine: v2
 ---
 
 # dbt Fusion engine <Lifecycle status="preview" />
