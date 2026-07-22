@@ -283,10 +283,6 @@ dbt list --select "+saved_query:orders_saved_query"  # list your saved query nam
 
 ### selector
 
-:::info Beta feature
-The `selector` method is a beta feature in <Constant name="core" /> v1.12.
-:::
-
 The `selector` method selects the nodes defined by a named [YAML selector](/reference/node-selection/yaml-selectors) in `selectors.yml`. Use it in `--select` or `--exclude` strings so you can compose a named selector with other [methods](/reference/node-selection/methods), [graph operators](/reference/node-selection/graph-operators), and [set operators](/reference/node-selection/set-operators).
 
 ```bash
