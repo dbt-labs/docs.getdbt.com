@@ -12,7 +12,7 @@ tags: [AI, Wizard]
 Use plugins to install a coordinated set of <Constant name="wizard" /> CLI extensions from a marketplace. A plugin can bundle skills, Model Context Protocol (MCP) servers, apps, and lifecycle hooks so a team can distribute a complete workflow together.
 </IntroText>
 
-Plugins and hooks are available in the <Constant name="wizard" /> CLI, including headless runs. You can't install them in <Constant name="studio_ide" /> or the <Constant name="wizard" /> home tab.
+Plugins and hooks are available in interactive <Constant name="wizard" /> CLI sessions. You can't install them in <Constant name="studio_ide" /> or the <Constant name="wizard" /> home tab.
 
 ## Understand plugins, marketplaces, and hooks
 
@@ -75,7 +75,7 @@ wizard plugin add PLUGIN_NAME --marketplace MARKETPLACE_NAME
 Start a new interactive session after installation. Use `/plugins` to browse loaded plugins. If the plugin declares hooks, use `/hooks` to inspect the handlers and their trust status before allowing them to run.
 
 :::caution Review hooks before trusting them
-Don't use `--dangerously-bypass-hook-trust` as a routine setup step. It allows enabled hooks to run without persisted review for that invocation. Reserve it for isolated automation where you have already vetted the complete hook source and execution environment.
+Don't use `--dangerously-bypass-hook-trust` as a routine setup step. It allows enabled hooks to run without persisted review for that invocation. Review each hook and persist its trust decision instead.
 :::
 
 ## Verify the extension

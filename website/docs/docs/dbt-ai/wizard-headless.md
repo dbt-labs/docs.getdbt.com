@@ -1,7 +1,7 @@
 ---
 title: "Headless mode"
 id: "wizard-headless"
-description: "Run dbt Wizard in headless mode for one-shot prompts, scripts, and automated local workflows."
+description: "Run dbt Wizard in headless mode for scripts, CI pipelines, and automation."
 sidebar_label: "Headless mode"
 tags: [AI, Wizard]
 ---
@@ -11,7 +11,7 @@ import WizardFeedbackCallout from '/snippets/_wizard-feedback-callout.md';
 # Headless mode <Lifecycle status="beta"/>
 
 <IntroText>
-<Constant name="wizard" /> can run without the interactive TUI. Use it for one-shot prompts, scripts, and automated local workflows that don't need human-in-the-loop approval.
+<Constant name="wizard" /> can run without the interactive TUI — useful for scripts, CI pipelines, pre-commit hooks, and any workflow where you want a one-shot result without human-in-the-loop approval.
 </IntroText>
 
 <WizardFeedbackCallout />
@@ -30,23 +30,11 @@ Pipe input via stdin:
 echo "which sources have stale freshness?" | wizard exec -
 ```
 
-Use `exec` in a script to analyze a quality question:
+Use `exec` in CI to gate on quality checks:
 
 ```bash
 # Check test coverage before merging
 wizard exec "are there any models in models/marts/ with no tests?"
-```
-
-Resume the most recent recorded session with a new prompt:
-
-```bash
-wizard exec resume --last "continue the previous analysis"
-```
-
-To resume a specific session, replace `SESSION_ID` with its identifier:
-
-```bash
-wizard exec resume SESSION_ID "summarize the remaining work"
 ```
 
 ### JSON output
@@ -82,7 +70,7 @@ Review uncommitted changes:
 wizard review --uncommitted
 ```
 
-Review a branch diff:
+Review a branch diff in CI:
 
 ```bash
 wizard review --base main
@@ -94,15 +82,24 @@ Review a specific commit:
 wizard review --commit abc1234
 ```
 
-Review findings don't automatically produce a failing exit status. Treat the review as additional evidence, and run required parse, lint, and test commands separately.
+### Example: GitHub Actions code review
+
+```yaml
+- name: dbt Wizard review
+  run: |
+    wizard review \
+      --base ${{ github.base_ref }} > review.md
+  env:
+    OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+```
 
 ## Permissions in headless mode
 
 In headless `exec` mode, Wizard runs without interactive approval prompts. Pre-grant the sandbox permissions you need:
 
 ```bash
-# Restrict the agent to read-only analysis
-wizard exec --sandbox read-only "list models with no documentation"
+# Read-only analysis (default — safe for CI)
+wizard exec "list models with no documentation"
 
 # Allow file writes inside the workspace
 wizard exec -s workspace-write "add not_null tests to all primary keys in staging"
@@ -111,7 +108,7 @@ wizard exec -s workspace-write "add not_null tests to all primary keys in stagin
 wizard exec -s workspace-write "compile and validate fct_orders"
 ```
 
-For read-only analysis tasks, such as coverage checks, impact queries, and documentation gaps, pass `--sandbox read-only` explicitly. For tasks that write files or run dbt commands, use a write-enabled sandbox only after reviewing the task and its required credentials.
+For read-only analysis tasks (coverage checks, impact queries, documentation gaps), the default permissions are sufficient. For tasks that write files or run dbt commands, pass the appropriate flags explicitly.
 
 ## Related docs
 

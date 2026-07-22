@@ -22,7 +22,6 @@ Common use cases for <Constant name="wizard" />, with example prompts and what t
 - [Multi-file changes](#multi-file-changes)
 - [Validate before shipping](#validate-before-shipping)
 - [Add a semantic model](#add-a-semantic-model)
-- [Headless scripting](#headless-scripting)
 
 This page assumes you're using <Constant name="wizard" /> in the terminal with an active session or in <Constant name="dbt_platform" />. For examples of using <Constant name="wizard" /> in the Studio IDE, refer to the [Prompt cookbook](/guides/prompt-cookbook). To use <Constant name="wizard" /> in the CLI, use the `wizard` [command reference](/docs/dbt-ai/wizard-cli-reference).
 
@@ -206,7 +205,6 @@ In <Constant name="wizard" /> CLI, choose light, medium, heavy, or skipped valid
 
 **Tips:**
 - State the business behavior that must remain true, not only the commands to run
-- Use `wizard review --base main` as an additional code review. Run required parse, build, and test commands separately.
 
 ## Add a semantic model
 
@@ -231,21 +229,6 @@ week, and month granularity.
 - <Constant name="wizard" /> follows the [dbt Semantic Layer documentation](/docs/build/semantic-models): you can ask it to explain any generated field
 
 For version-specific examples and validation steps, refer to [Build Semantic Layer definitions with <Constant name="wizard" />](/docs/dbt-ai/wizard-semantic-layer).
-
-## Headless scripting
-
-For tasks you want to run from a script without the TUI:
-
-```bash
-# Run a single prompt and exit
-wizard exec "list all models with no tests"
-
-# Code review against a base branch
-wizard review --base BRANCH_NAME
-
-# Output as JSON for downstream processing
-wizard exec --json "summarize test coverage by schema"
-```
 
 ## Related docs
 
