@@ -230,7 +230,7 @@ exports.versionedPages = [
     lastVersion: "1.99",
   },
   {
-    page: "docs/local/connect-data-platform/ibmdb2-setup",
+    page: "docs/local/connect-data-platform/ibm-db2-setup",
     lastVersion: "1.99",
   },
   {

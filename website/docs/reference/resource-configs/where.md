@@ -1,4 +1,5 @@
 ---
+description: "Filter the rows of a model, source, seed, or snapshot that a data test evaluates."
 resource_types: [tests]
 datatype: string
 ---

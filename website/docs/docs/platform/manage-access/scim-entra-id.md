@@ -6,6 +6,8 @@ sidebar_label: "Set up SCIM with Entra ID"
 ---
 
 import ScimLicenseMappingCallout from '/snippets/_scim-license-mapping-callout.md';
+import ScimAssignGroupPermissions from '/snippets/_scim-assign-group-permissions.md';
+
 
 # Set up SCIM with Entra ID <Lifecycle status="managed, managed_plus" />
 
@@ -102,6 +104,8 @@ The following steps go over how to assign users/groups to the SCIM app. Refer to
     - By enabling provisioning, you immediately trigger the initial Microsoft Entra ID sync. Subsequent syncs are triggered every 20-40 minutes, depending on the number of users and groups in the application. Refer to Microsoft Entra ID's [Provisioning tips](https://learn.microsoft.com/en-us/azure/databricks/admin/users-groups/scim/aad#provisioning-tips) documentation for more information.
     - You can also prompt a manual provisioning outside of the cycle by clicking **Restart provisioning**.
     <Lightbox src="/img/docs/dbt-platform/dbt-platform-enterprise/access-control/scim-entraid-manual.png" width="80%" title="Prompt manual provisioning." />
+
+<ScimAssignGroupPermissions />
 
 ## FAQ and troubleshooting
 
