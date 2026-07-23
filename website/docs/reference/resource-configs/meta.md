@@ -1,4 +1,5 @@
 ---
+description: "Attach arbitrary metadata as key-value pairs to dbt resources such as models, sources, seeds, and snapshots."
 resource_types: all
 datatype: "{<dictionary>}"
 default_value: {}

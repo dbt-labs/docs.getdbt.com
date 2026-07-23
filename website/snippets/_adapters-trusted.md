@@ -67,6 +67,12 @@
     icon="exasol"/>
 
 <Card
+    title="IBM Db2"
+    body="<ul><li><a href='/docs/local/connect-data-platform/ibm-db2-setup'>Install with dbt Core </a> </li> </ul><br /><br /><a href=https://badge.fury.io/py/ibm-dbt-db2><img src=https://badge.fury.io/py/ibm-dbt-db2.svg/></a>"
+    pills='["dbt Core"]'
+    icon="dbt-ibm-db2"/>
+
+<Card
     title="IBM Netezza"
     body="<ul><li><a href='/docs/local/connect-data-platform/ibmnetezza-setup'>Install with dbt Core </a> </li> </ul><br /><br /><a href=https://badge.fury.io/py/dbt-ibm-netezza><img src=https://badge.fury.io/py/dbt-ibm-netezza.svg/></a>"
     pills='["dbt Core"]'

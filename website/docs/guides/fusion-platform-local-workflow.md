@@ -10,7 +10,7 @@ recently_updated: true
 
 ## Introduction
 
-Hybrid dbt deployments are becoming increasingly common. <Constant name="fusion" /> adopters are frequently working in several places at once: in the <Constant name="dbt_platform" /> for production runs and IDE-based development, and locally using the <Constant name="dbt_platform"/> CLI or the dbt VS Code extension.
+Hybrid dbt deployments are becoming increasingly common. <Constant name="fusion" /> adopters are frequently working in several places at once: in the <Constant name="dbt_platform" /> for production runs and IDE-based development, and on their local machine using the <Constant name="dbt_platform"/> CLI or the dbt VS Code extension.
 
 These paths are fully supported for <Constant name="dbt_platform" /> users. Keeping the environments in sync across credentials, environment variables, and engine versions is one of the first operational challenges teams encounter.
 
@@ -24,13 +24,13 @@ This guide walks through credentials, environment variables, <Constant name="fus
 
 ## 1. Managing credentials
 
-How you authenticate to your data warehouse locally depends on which local tool you use:
-- [dbt platform CLI](/guides/fusion-platform-local-workflow?step=3#dbt-platform-cli): For a CLI-only local development experience (without the dbt VS Code extension), use the dbt platform CLI with <Constant name="fusion"/> set as your platform release track. Warehouse credentials are managed centrally in <Constant name="dbt_platform" /> and passed through automatically &mdash; no `profiles.yml` required.
+How you authenticate to your data warehouse locally depends on which self-hosted tool you use:
+- [dbt platform CLI](/guides/fusion-platform-local-workflow?step=3#dbt-platform-cli): For a CLI-only development experience (without the dbt VS Code extension), use the dbt platform CLI with <Constant name="fusion"/> set as your platform release track. Warehouse credentials are managed centrally in <Constant name="dbt_platform" /> and passed through automatically &mdash; no `profiles.yml` required.
 - [dbt VS Code extension](/guides/fusion-platform-local-workflow?step=3#dbt-vs-code-extension-profilesyml-required): For IDE-based local development, the dbt VS Code extension runs the <Constant name="fusion_engine" /> and its <Term id="lsp" /> features in a local process. This path requires a `profiles.yml` to connect directly to your warehouse.
 
 ### dbt platform CLI
 
-The [<Constant name="platform_cli" />](/docs/platform/dbt-cli-installation) is the lowest-friction path for <Constant name="dbt_platform" /> users who want a CLI-only local workflow without VS Code. It authenticates using your <Constant name="dbt_platform" /> session, and your warehouse credentials are managed centrally in <Constant name="dbt_platform" /> and passed through automatically.
+The [<Constant name="platform_cli" />](/docs/platform/dbt-cli-installation) is the lowest-friction path for <Constant name="dbt_platform" /> users who want a self-hosted CLI-only workflow without VS Code. It authenticates using your <Constant name="dbt_platform" /> session, and your warehouse credentials are managed centrally in <Constant name="dbt_platform" /> and passed through automatically.
 
 For detailed installation instructions, refer to [Install the dbt CLI](/docs/platform/dbt-cli-installation?version=1.10).
 
@@ -161,7 +161,7 @@ By default, the <Constant name="fusion" /> [installation script](/docs/local/ins
 curl -fsSL https://downloads.getdbt.com/install/dbt-fusion.sh | sh
 ```
 
-To update your local installation to the latest stable release at any time:
+To update your self-hosted installation to the latest stable release at any time:
 
 ```shell
 dbt system update
@@ -203,7 +203,7 @@ If dev containers aren't an option for your team, run `dbt system update` at the
 dbt system update && dbt debug
 ```
 
-Pinning to a specific version number does not work long term here: the **Latest** track on <Constant name="dbt_platform" /> keeps advancing, and a pinned local install falls behind. Aim to stay on **Latest** instead of locking to one release.
+Pinning to a specific version number does not work long term here: the **Latest** track on <Constant name="dbt_platform" /> keeps advancing, and a pinned self-hosted installation falls behind. Aim to stay on **Latest** instead of locking to one release.
 
 To make this easy to remember, add a `dev` target to your project's `Makefile`:
 
@@ -227,7 +227,7 @@ You can also document this convention in your project's `CONTRIBUTING.md` so it'
 
 ## 4. dbt Mesh and deferral
 
-If your project uses [dbt Mesh](/docs/mesh/about-mesh), referencing models from other dbt projects via cross-project refs, <Constant name="fusion" /> handles this automatically during local development when a [`dbt_cloud.yml`](/reference/dbt_cloud.yml) is present.
+If your project uses [dbt Mesh](/docs/mesh/about-mesh), referencing models from other dbt projects via cross-project refs, <Constant name="fusion" /> handles this automatically during development when a [`dbt_cloud.yml`](/reference/dbt_cloud.yml) is present.
 
 ### How it works
 
@@ -259,7 +259,7 @@ Auto-deferral is also on by default. When a [`dbt_cloud.yml`](/reference/dbt_clo
 
 ## Reference table
 
-The following table summarizes the key differences between the two local development paths covered in this guide:
+The following table summarizes the key differences between the two development paths covered in this guide:
 
 <SimpleTable>
 

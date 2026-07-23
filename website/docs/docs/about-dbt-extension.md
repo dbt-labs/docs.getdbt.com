@@ -1,7 +1,7 @@
 ---
 title: About the dbt VS Code extension
 id: about-dbt-extension
-description: "Bring all the speed and power of the dbt Fusion engine to your local development workflow."
+description: "Bring all the speed and power of the self-hosted dbt Fusion engine to your local dbt development workflow."
 sidebar_label: "dbt VS Code extension"
 image: /img/docs/extension/extension-marketplace.png
 pagination_next: "docs/dbt-extension-features"

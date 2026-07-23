@@ -1,6 +1,6 @@
 ## dbt VS Code extension features
 
-The dbt VS Code extension gives you a powerful set of features to level up your local development workflows. To access the full set, register with your email address or sign in with your <Constant name="dbt_platform" /> account. The following table shows which features are available to all users and which require registration:
+The dbt VS Code extension gives you a powerful set of features to level up your development workflows. To access the full set, register with your email address or sign in with your <Constant name="dbt_platform" /> account. The following table shows which features are available to all users and which require registration:
 
 | Feature          | Available to all | Available to registered users |
 |------------------|:----------------:|:---------------------:|

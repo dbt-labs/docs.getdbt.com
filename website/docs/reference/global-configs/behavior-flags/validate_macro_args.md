@@ -9,10 +9,12 @@ sidebar_label: "validate macro args"
 | validate_macro_args | <Constant name="dbt" /> **Latest** | <Constant name="core" /> |
 |---|---|---|
 | Introduced | 2025.03 | 1.10.0 |
-| Matured (default → `true`) | Sep 1, 2026 | — |
+| Matured (default → `true`) | Sep 1, 2026 | 1.12.0 |
 | Removed | — | — |
 
-dbt supports optional validation for macro arguments using the `validate_macro_args` flag. By default, this flag is set to `false`, which means that dbt won't validate the names or types of documented macro arguments.
+<br />
+
+dbt validates macro arguments using the `validate_macro_args` flag. Starting in <Constant name="core" /> v1.12, this flag defaults to `true`.
 
 In the past, dbt didn't enforce a standard vocabulary for the [`type`](/reference/resource-properties/arguments#type) field on macro arguments in YAML. Because of this, the `type` field was used for documentation only, and dbt didn't check that:
 - the argument names matched those in your macro
@@ -51,7 +53,7 @@ Macro argument validation runs during project parsing, not during macro executio
 
 </Expandable>
 
-## Impact when the flag matures
+## Impact
 
 On its own, the flag emits warnings and builds continue. However, these warnings use the force-handled path and respect `--warn-error`, so projects with `--warn-error` set will see build failures at parse time.
 

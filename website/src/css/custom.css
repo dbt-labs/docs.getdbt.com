@@ -1010,6 +1010,16 @@ i.theme-doc-sidebar-item-category.theme-doc-sidebar-item-category-level-2.menu__
   font-size: 1.5rem;
 }
 
+/* Note/admonition headers use sentence case, not all caps.
+   Docusaurus v3 renders the title in a hashed CSS-module class
+   (e.g. admonitionHeading_Gvgb) with text-transform: uppercase,
+   so target it via an attribute selector rather than the hash.
+   Default single-word labels (Note, Tip, ...) are capitalized via
+   i18n/en/code.json; custom titles keep their author-written casing. */
+.theme-admonition [class*="admonitionHeading"] {
+  text-transform: none;
+}
+
 .admonition-icon svg {
   fill: var(--ifm-color-gray-900);
 }
@@ -3146,6 +3156,18 @@ html[data-theme='dark'] .sidebar-title {
 /* Hide reCaptcha badge */
 .grecaptcha-badge {
   display: none;
+}
+
+/* RSS feed icon */
+.rss-icon {
+  width: 14px;
+  height: 14px;
+  margin-right: 6px;
+  vertical-align: middle;
+  opacity: 0.8;
+}
+html[data-theme='dark'] .rss-icon {
+  filter: invert(1);
 }
 
 /* Footnote references rendered in blog list excerpts (see

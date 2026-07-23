@@ -7,7 +7,7 @@ tags: [Metrics, Semantic Layer]
 availability: all_users
 ---
 
-# OSI semantic layer documents <Lifecycle status="beta" />
+# OSI semantic layer documents
 
 <VersionCallout version="1.12" />
 
