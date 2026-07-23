@@ -70,7 +70,7 @@ Choose the **Compatible** and **Extended** release tracks if you need a less-fre
 
 ### Using the Fallback release track
 
-The **Fallback** release track (for both Fusion and dbt) provides an emergency rollback option for account admins if you suspect a regression in the "Extended" track. This is available only for <Constant name="fusion_engine" /> in Enterprise+ accounts.
+The **Fallback** release track provides an emergency rollback option for account admins if you suspect a regression in the "Extended" track. This is available only for <Constant name="fusion_engine" /> in Enterprise+ accounts.
 
 1. Go to **Account settings**
 2. Click the **Fallback** release track button in the <Constant name="dbt_platform" /> interface. This is not accessible through environment settings.
