@@ -5,7 +5,7 @@ description: "Full reference for all wizard subcommands and global flags."
 sidebar_label: "Command reference"
 tags: [AI, Wizard, Reference]
 image: /img/docs/wizard-cli-intro.png
-availability: local_free
+availability: local_all_versions
 ---
 
 import CliGenerated from './_wizard-cli-full-generated.md';

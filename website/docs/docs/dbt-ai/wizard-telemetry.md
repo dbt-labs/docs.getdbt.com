@@ -4,7 +4,7 @@ id: "wizard-telemetry"
 description: "Understand what dbt Wizard CLI telemetry collects, why it is collected, and how to opt out."
 sidebar_label: "Data & privacy"
 tags: [AI, Wizard, Privacy]
-availability: local_free
+availability: local_all_versions
 ---
 
 # <Constant name="wizard" /> CLI data use and telemetry

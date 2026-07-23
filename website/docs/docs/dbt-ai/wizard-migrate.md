@@ -4,7 +4,7 @@ id: "wizard-migrate"
 description: "Move project context and skills from Claude Code to dbt Wizard."
 sidebar_label: "Migrate to dbt Wizard"
 tags: [AI, Wizard]
-availability: local_free
+availability: local_all_versions
 ---
 
 <IntroText>

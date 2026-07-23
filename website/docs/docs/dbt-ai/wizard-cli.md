@@ -5,7 +5,7 @@ description: "Install, verify, update, and uninstall the dbt Wizard CLI on your 
 sidebar_label: "Install and update"
 tags: [AI, Wizard]
 image: /img/docs/wizard-cli-intro.png
-availability: local_free
+availability: local_all_versions
 ---
 
 import WizardSupportedProviders from '/snippets/_wizard-supported-providers.md';

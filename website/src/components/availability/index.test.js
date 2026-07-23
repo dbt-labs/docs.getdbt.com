@@ -124,6 +124,27 @@ describe('Availability', () => {
     ).toHaveAttribute('href', '/docs/platform/dbt-cli-installation');
   });
 
+  it('renders all-version local development guidance for local_all_versions', async () => {
+    const user = userEvent.setup();
+    render(<Availability availability="local_all_versions" />);
+
+    const badge = screen.getByRole('button', {
+      name: /^local development \| dbt platform\./i,
+    });
+    expect(badge).toHaveTextContent('Local development | dbt platform');
+
+    await user.click(badge);
+
+    const tooltip = screen.getByRole('tooltip');
+    expect(tooltip).toHaveTextContent(
+      'Works with dbt platform or open source dbt Core projects.'
+    );
+    expect(tooltip).not.toHaveTextContent('Core 2.0');
+    expect(
+      screen.getByRole('link', { name: 'dbt platform' })
+    ).toHaveAttribute('href', '/docs/platform/dbt-cli-installation');
+  });
+
   it('renders "Self-hosted | Login required" for local_login', () => {
     render(<Availability availability="local_login" />);
     expect(

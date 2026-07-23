@@ -58,14 +58,20 @@ export const SURFACE_TOOLTIPS = {
 
 export const COMPATIBILITY_LABELS = {
   platform: 'dbt platform',
+  platform_all_versions: 'dbt platform',
 };
 
 export const COMPATIBILITY_TOOLTIPS = {
   platform: 'Works with dbt platform or open source dbt Core 2.0 projects.',
+  platform_all_versions: 'Works with dbt platform or open source dbt Core projects.',
 };
 
 export const COMPATIBILITY_TOOLTIP_LINKS = {
   platform: {
+    href: '/docs/platform/dbt-cli-installation',
+    text: 'dbt platform',
+  },
+  platform_all_versions: {
     href: '/docs/platform/dbt-cli-installation',
     text: 'dbt platform',
   },
@@ -176,6 +182,11 @@ export const availabilityPresets = {
     description: 'Local tools for open-source dbt Core v2.0 and dbt platform-connected projects.',
     surface: 'local_development',
     compatibility: 'platform',
+  },
+  local_all_versions: {
+    description: 'Local tools for open-source dbt Core and dbt platform-connected projects.',
+    surface: 'local_development',
+    compatibility: 'platform_all_versions',
   },
   local_login: {
     description: 'Self-hosted tools that need a free dbt account.',
