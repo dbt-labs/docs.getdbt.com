@@ -74,41 +74,6 @@
       "permanent": true
     },
     {
-      "source": "/docs/dbt-ai/wizard-understand-project",
-      "destination": "/best-practices/how-to-use-wizard/wizard-2-understand-project",
-      "permanent": true
-    },
-    {
-      "source": "/docs/dbt-ai/wizard-validate-changes",
-      "destination": "/best-practices/how-to-use-wizard/wizard-3-validate-changes",
-      "permanent": true
-    },
-    {
-      "source": "/docs/dbt-ai/wizard-data-informed-tests",
-      "destination": "/best-practices/how-to-use-wizard/wizard-4-data-informed-tests",
-      "permanent": true
-    },
-    {
-      "source": "/docs/dbt-ai/wizard-debug-failed-job",
-      "destination": "/best-practices/how-to-use-wizard/wizard-5-debug-failed-job",
-      "permanent": true
-    },
-    {
-      "source": "/docs/dbt-ai/wizard-production-deferral",
-      "destination": "/best-practices/how-to-use-wizard/wizard-6-production-deferral",
-      "permanent": true
-    },
-    {
-      "source": "/docs/dbt-ai/wizard-semantic-layer",
-      "destination": "/best-practices/how-to-use-wizard/wizard-7-semantic-layer",
-      "permanent": true
-    },
-    {
-      "source": "/docs/dbt-ai/wizard-plugins-hooks",
-      "destination": "/best-practices/how-to-use-wizard/wizard-8-plugins-hooks",
-      "permanent": true
-    },
-    {
       "source": "/docs/dbt-ai/developer-agent",
       "destination": "/docs/dbt-ai/wizard-ide",
       "permanent": true
