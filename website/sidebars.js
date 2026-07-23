@@ -410,6 +410,20 @@ const sidebarSettings = {
               items: [
                 "docs/dbt-ai/about-dbt-wizard-cli",
                 "docs/dbt-ai/wizard-cli",
+                {
+                  type: "category",
+                  label: "Workflows",
+                  collapsed: true,
+                  items: [
+                    "docs/dbt-ai/wizard-understand-project",
+                    "docs/dbt-ai/wizard-validate-changes",
+                    "docs/dbt-ai/wizard-data-informed-tests",
+                    "docs/dbt-ai/wizard-debug-failed-job",
+                    "docs/dbt-ai/wizard-production-deferral",
+                    "docs/dbt-ai/wizard-semantic-layer",
+                    "docs/dbt-ai/wizard-plugins-hooks",
+                  ],
+                },
                 "docs/dbt-ai/wizard-byok",
                 "docs/dbt-ai/wizard-skills",
                 "docs/dbt-ai/wizard-subagents",
