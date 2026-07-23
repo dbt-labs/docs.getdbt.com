@@ -6,7 +6,6 @@ sidebar_label: "Debug a failed job"
 tags: [AI, Wizard]
 ---
 
-# Debugging a failed dbt job with <Constant name="wizard" /> CLI
 
 <IntroText>
 Use <Constant name="wizard" /> CLI to investigate a failed <Constant name="dbt_platform" /> job from the run evidence to a validated fix. <Constant name="wizard" /> can check job history, logs, code changes, lineage, and data before it recommends a resolution when you provide the evidence or connect the required tools.
