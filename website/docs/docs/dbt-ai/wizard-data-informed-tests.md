@@ -6,7 +6,6 @@ sidebar_label: "Add data-informed tests"
 tags: [AI, Wizard]
 ---
 
-# Adding data-informed tests with <Constant name="wizard" />
 
 <IntroText>
 Use <Constant name="wizard" /> CLI to identify meaningful test gaps, validate assumptions against current warehouse data, and write focused dbt data tests.
