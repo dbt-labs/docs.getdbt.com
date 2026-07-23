@@ -359,6 +359,16 @@ unit_tests:
 
 There is currently no way to unit test whether the dbt framework inserted/merged the records into your existing model correctly, but [we're investigating support for this in the future](https://github.com/dbt-labs/dbt-core/issues/8664).
 
+<VersionBlock firstVersion="1.12">
+
+## Unit testing models with pseudocolumns
+
+Pseudocolumns are columns that are queryable but don't appear in the information schema. By default, dbt retrieves columns as usual when building unit test fixtures. 
+
+Support for pseudocolumns in unit tests is currently implemented for BigQuery only. For BigQuery external tables, dbt automatically includes the `_FILE_NAME` pseudocolumn, so you can reference it in your `dict` or `csv` fixture rows without needing `format: sql`. Refer to [BigQuery configurations](/reference/resource-configs/bigquery-configs#pseudocolumns) for details.
+
+</VersionBlock>
+
 ## Unit testing a model that depends on ephemeral model(s)
 
 If you want to unit test a model that depends on an ephemeral model, you must use `format: sql` for that input.

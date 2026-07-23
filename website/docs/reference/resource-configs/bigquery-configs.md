@@ -1288,7 +1288,34 @@ The BigQuery Python models also have the following additional configuration para
 - [PySpark DataFrame syntax](https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.html)
 
 
-## Unit test limitations
+## Unit tests in BigQuery
+
+### Limitations
 
 You must specify all fields in a BigQuery `STRUCT` for [unit tests](/docs/build/unit-tests). You cannot use only a subset of fields in a `STRUCT`.
+
+<VersionBlock firstVersion="1.12">
+
+### Pseudocolumns
+
+BigQuery external tables expose the `_FILE_NAME` [pseudocolumn](https://cloud.google.com/bigquery/docs/external-data-cloud-storage#querying_files), which is queryable but does not appear in the information schema. dbt includes this pseudocolumn automatically when building unit test fixtures for external tables, so you can include it in your `dict` or `csv` fixture rows without needing `format: sql`.
+
+For example, if your model selects `_FILE_NAME` from an external table source:
+
+```yaml
+unit_tests:
+  - name: test_file_name_logic
+    model: my_model
+    given:
+      - input: source('my_source', 'external_table')
+        rows:
+          - {id: 1, _FILE_NAME: 'gs://bucket/file1.csv'}
+          - {id: 2, _FILE_NAME: 'gs://bucket/file2.csv'}
+    expect:
+      rows:
+        - {id: 1, file_name: 'gs://bucket/file1.csv'}
+        - {id: 2, file_name: 'gs://bucket/file2.csv'}
+```
+
+</VersionBlock>
 
