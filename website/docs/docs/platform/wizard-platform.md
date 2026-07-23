@@ -24,7 +24,7 @@ import WizardFeedbackCallout from '/snippets/_wizard-feedback-callout.md';
 An admin must [enable <Constant name="wizard" />](/docs/platform/enable-dbt-ai) for your account before you can use it in the platform.
 
 <Constant name="wizard" /> comes with various features like:
-- Built-in [agent mode](/docs/dbt-ai/wizard-ide?version=2.0#agent-modes) to help you manage agent control: 
+- Built-in [agent mode](/docs/dbt-ai/wizard-ide#agent-modes) to help you manage agent control: 
     - **Ask for approval** mode allows you to review and approve each file change before <Constant name="wizard" /> takes action
     - **Edit files automatically** mode allows the agent to automatically make edits without approval.  
 - A simplified wayfinder bar shows your current project and branch and guides you through Git tasks, such as committing files or creating a branch.
