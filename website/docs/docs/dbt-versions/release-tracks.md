@@ -103,7 +103,7 @@ Switching to **Fallback** alerts the dbt Support team, who may reach out to help
 - Configure production environments to use **Fusion Extended** (one month behind Stable)
 - Configure development environments to use **Fusion Stable** so developers get access to upcoming changes before they reach production
 
-#### Mantle (dbt Core–based) release tracks
+#### dbt release tracks
 
 **Default** &mdash; Majority of customers on all plans
 - Prioritize immediate access to fixes and features
