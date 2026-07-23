@@ -1,5 +1,5 @@
 ---
-title: "Contribute a dbt Core v2 adapter"
+title: "Contribute a dbt Core v2.0 adapter"
 id: "contribute-core-adapters-v2"
 pagination_next: null
 ---
@@ -12,23 +12,23 @@ This guide is a work in progress — synthesized from internal Fusion v2 adapter
 
 ## Step 1: Introduction
 
-dbt Core v2 adapters work very differently from dbt Core v1 adapters. In v1, each adapter was a standalone Python package that implemented a fragmented Python interface. In dbt Core v2, adapters live **inside a monorepo written in Rust**, connected to warehouses via ADBC (Arrow Database Connectivity) drivers — and the community contribution model has changed accordingly.
+dbt Core v2.0 adapters work very differently from dbt Core v1.x adapters. In v1, each adapter was a standalone Python package that implemented a fragmented Python interface. In dbt Core v2.0, adapters live **inside a monorepo written in Rust**, connected to warehouses via ADBC (Arrow Database Connectivity) drivers — and the community contribution model has changed accordingly.
 
-This guide walks you through contributing a new dbt Core v2 adapter to dbt-core as a community member. The file breakdown in the [reference section](#reference-file-by-file-implementation-guide) shows the ~13 files a complete community dbt Core v2 adapter touches. Exasol, a community contributed dbt Core v2 adapter, is the example used throughout this guide.
+This guide walks you through contributing a new dbt Core v2.0 adapter to dbt-core as a community member. The file breakdown in the [reference section](#reference-file-by-file-implementation-guide) shows the ~13 files a complete community dbt Core v2.0 adapter touches. Exasol, a community contributed dbt Core v2.0 adapter, is the example used throughout this guide.
 
-:::info What is dbt Core v2?
-dbt Core v2 is the new Rust-based dbt engine. Adapters in Core v2 are written in Rust and live inside the `dbt-core` monorepo, rather than as standalone Python packages.
+:::info What is dbt Core v2.0?
+dbt Core v2.0 is the new Rust-based dbt engine. Adapters in Core v2 are written in Rust and live inside the `dbt-core` monorepo, rather than as standalone Python packages.
 :::
 
 ### How adapters are different now
 
-In dbt Core v1, every adapter is:
+In dbt Core v1.x, every adapter is:
 - A **separate Python package** (e.g. `dbt-snowflake`, `dbt-bigquery`)
 - **Community-owned** and maintained independently
 - **Dynamically loaded** at runtime via Python's plugin system
 - Built upon vendor-maintained Python SDK connectors/drivers
 
-In dbt Core v2, adapters are:
+In dbt Core v2.0, adapters are:
 - **Part of the `dbt-core` monorepo**, contributed as PRs
 - **Written in Rust** (with Jinja SQL macros still used for SQL logic)
 - Connected to warehouses via **ADBC drivers** — a unified driver interface that abstracts away connection management
@@ -66,7 +66,7 @@ dbt Labs does not write drivers. If your warehouse doesn't have an ADBC driver y
 
 **What "having an ADBC driver" actually means**
 
-For certain adapters (Snowflake, BigQuery, Databricks, Redshift, DuckDB, ClickHouse, Salesforce, Spark, SQL Server), dbt Core v2 automatically downloads the correct driver binary from the dbt Labs CDN on first use. Users never have to think about it.
+For certain adapters (Snowflake, BigQuery, Databricks, Redshift, DuckDB, ClickHouse, Salesforce, Spark, SQL Server), dbt Core v2.0 automatically downloads the correct driver binary from the dbt Labs CDN on first use. Users never have to think about it.
 
 Community adapters don't have CDN support. Instead, Fusion looks for a shared library by name on the user's system — e.g. `libadbc_driver_exasol.dylib` on macOS, `libadbc_driver_exasol.so` on Linux. If the file isn't present, the connection fails at runtime.
 
@@ -120,15 +120,15 @@ For warehouses not yet in `AdapterType` at all (MySQL, Hive, Vertica, SQL Server
 |---|---|---|
 | `macros/adapters.sql` | `dbt-loader/.../dbt-<wh>/macros/adapters.sql` | Mostly a direct port — same `<wh>__` dispatch prefix, same macro names, same Jinja patterns |
 | `macros/catalog.sql` | Same location | The catalog SQL (`list_relations_without_caching`, `get_catalog`) transfers almost verbatim |
-| Custom materializations and adapter-overrides | Same location | Look out for Jinja that might not yet be supported in dbt Core v2; that will need to be addressed separately |
+| Custom materializations and adapter-overrides | Same location | Look out for Jinja that might not yet be supported in dbt Core v2.0; that will need to be addressed separately |
 | Profile fields in `credentials.py` / `profile_template.yml` | `DbConfig` struct in `dbt-schemas` | Each profile field becomes a struct field — optional fields use `Option<T>` |
 | Connection URI / DSN construction in `connections.py` | `dbt-auth/src/<wh>/mod.rs` | The URI building logic maps cleanly to the auth module pattern |
-| `BaseRelation.quote_policy` / identifier casing behavior | `Policy::new(...)` in `relation_object.rs` | The 3-part vs. 2-part name structure and quote flags map 1:1 to the dbt Core v2 `Policy` struct |
+| `BaseRelation.quote_policy` / identifier casing behavior | `Policy::new(...)` in `relation_object.rs` | The 3-part vs. 2-part name structure and quote flags map 1:1 to the dbt Core v2.0 `Policy` struct |
 | Catalog introspection SQL in macros and `adapter.py` | `get_relation.rs` and Jinja macros | The system catalog table names and queries you already know transfer directly |
 
 **What doesn't transfer by design**
 
-A few components won't transfer 1:1 from v1 to dbt Core v2 — meaning less code and maintenance for you:
+A few components won't transfer 1:1 from v1 to dbt Core v2.0 — meaning less code and maintenance for you:
 - `ConnectionManager` methods (`open`, `cancel`, `get_response`, `execute`) — In v1, these were your responsibility to implement against the Python DB API 2.0 spec. In v2, connection management is owned entirely by the ADBC driver.
 - Python adapter class hierarchy and execution-wrapping methods — now handled by `match adapter_type()` expressions in the shared `adapter_impl.rs` (Step 4.5 explains how these work).
 - `setup.py` / package dependencies on `dbt-core` — dbt Labs handles packaging and distribution once your PR is merged. No `setup.py`, no PyPI release, and no version pinning required.
@@ -203,7 +203,7 @@ Before writing code, it helps to understand the layers you'll be working in.
 
 A key architectural decision in Core v2 is the use of **ADBC (Arrow Database Connectivity)** as the unified driver interface.
 
-In dbt Core v1, adapters connected via Python drivers — often wrapping `pyodbc` or proprietary connection mechanisms. Each adapter owned its connection logic entirely.
+In dbt Core v1.x, adapters connected via Python drivers — often wrapping `pyodbc` or proprietary connection mechanisms. Each adapter owned its connection logic entirely.
 
 In v2, each warehouse connects through an **ADBC driver** — a pre-compiled binary that handles the wire protocol, authentication handshakes, and connection pooling. Your adapter code never touches any of that. For CDN-supported first-party adapters, Fusion downloads this driver automatically on first use. For community adapters, users install it manually — which is why Step 2 covers finding or building a driver.
 

@@ -28,10 +28,8 @@ dbt commands run against the platform's infrastructure and benefit from:
 ## Prerequisites
 
 The <Constant name="platform_cli" /> is available in all [deployment regions](/docs/platform/about-platform/access-regions-ip-addresses) and for both multi-tenant and single-tenant accounts.
-
-- For the best <Constant name="platform_cli" /> experience, install the platform CLI on a machine that doesn't already have the <Constant name="core" /> or <Constant name="fusion" /> CLI installed.
 - If you installed the <Constant name="core" /> CLI in a virtual environment, deactivate that environment or create an alias for the platform CLI before you run platform CLI commands.
-- If you installed the <Constant name="fusion" /> CLI locally, create an alias for the platform CLI before you run platform CLI commands.
+- If you installed dbt locally, create an alias for the platform CLI before you run platform CLI commands.
 
 Refer to the [FAQs](#faqs) for more information about managing multiple <Constant name="platform_cli" /> tools and creating an alias.
 

@@ -13,13 +13,13 @@ import AuthorizeAdditionalAccess from '/snippets/_vsce-authorize-additional-acce
 
 The dbt VS Code extension comes with a suite of features that are available to all users for 14 days. After the 14-day trial, sign in or register for a <Constant name="dbt_platform" /> account to keep using all features, including advanced features such as [live preview for models and CTEs](/docs/dbt-extension-features#live-preview-for-models-and-ctes), [column-level lineage](/docs/dbt-extension-features#rich-lineage-in-context), and more.
 
-Refer to [VS Code extension features](/docs/fusion/fusion-availability?version=1.13#dbt-vs-code-extension-features) for the full list of features and their availability.
+Refer to [VS Code extension features](/docs/dbt-extension-features#feature-availability) for the full list of features and their availability.
 
 Most features remain available without signing in &mdash; only advanced features prompt you to sign in after the trial ends.
 
 <VersionBlock firstVersion="1.13">
 
-To continue using all the features, register or log in using [`dbt login`](/reference/commands/login), available from <Constant name="core" /> v2.0 and later, from the command line. Your login state can be shared across dbt features, including the dbt VS Code extension and, in supported versions, dbt State.
+To continue using all the features, register or log in from the command line using [`dbt login`](/reference/commands/login), available with v2 and later. Your login state can be shared across dbt features, including the dbt VS Code extension and, in supported versions, dbt State.
 
 </VersionBlock>
 
@@ -28,7 +28,7 @@ Run [`dbt login status`](/reference/commands/login#dbt-login-status) to view you
 ## Key points
 
 - The extension is free for organizations for up to 15 users. Refer to the [acceptable use policy](https://www.getdbt.com/dbt-assets/vscode-plugin-aup).
-- Registration links your editor to your registered <Constant name="dbt_platform" /> account so you can keep using gated features after the 14-day trial.
+- Registration links your editor to your registered <Constant name="dbt_platform" /> account so you can keep using advanced features after the 14-day trial.
 - You can authenticate with `dbt login` or register from inside the extension. If you don't have a <Constant name="dbt_platform" /> account, you can create a free account during authentication to unlock advanced features.
 - If a valid [`dbt_cloud.yml`](/reference/dbt_cloud.yml) file exists on your machine, the extension can use it automatically.
 
@@ -65,7 +65,7 @@ There are a couple of different ways to sign in or register for a <Constant name
 
 <VersionBlock lastVersion="1.99">
 
-`dbt login` is available in <Constant name="core" /> v2.0 and later. To install the dbt VS Code extension, [upgrade your project to the <Constant name="fusion_engine" />](/docs/upgrade-to-fusion-extension).
+`dbt login` is available with v2 and later. To install the dbt VS Code extension, [upgrade your project to <Constant name="fusion" />](/docs/upgrade-to-fusion-extension).
 
 </VersionBlock>
 

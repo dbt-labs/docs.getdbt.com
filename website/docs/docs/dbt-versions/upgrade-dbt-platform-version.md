@@ -3,7 +3,7 @@ title: "Upgrade versions in dbt platform"
 id: "upgrade-dbt-platform-version"
 ---
 
-import FusionDWH from '/snippets/_fusion-dwh.md';
+import FusionDWH from '/snippets/_fusion-dwh-platform.md';
 import FusionUpgradeSteps from '/snippets/_fusion-upgrade-steps.md';
 
 In <Constant name="dbt" />, both [jobs](/docs/deploy/jobs) and [environments](/docs/dbt-platform-environments) are configured to use a specific version of <Constant name="core" />. The version can be upgraded at any time.
@@ -49,11 +49,12 @@ Configure your project to use a different dbt version than what's configured in 
 
 ## dbt Fusion engine 
 
-dbt Labs has introduced the new [<Constant name="fusion_engine" />](/docs/fusion), a ground-up rebuild of dbt. This is currently generally available for Snowflake projects and in preview for other supported adapters on the <Constant name="dbt_platform" />. Eligible customers can update environments to <Constant name="fusion" /> using the same workflows as v1.x, but remember:
+dbt Labs has introduced the new [<Constant name="fusion_engine" />](/docs/fusion/about-fusion), a ground-up rebuild of dbt. This is currently generally available for Snowflake projects and in preview for other supported adapters on the <Constant name="dbt_platform" />. Eligible customers can update environments to <Constant name="fusion" /> using the same workflows as v1.x, but remember:
 - If you don't see the `Fusion Stable` release track as an option, you should check with your dbt Labs account team about eligibility.
 - To increase the compatibility of your project, update all jobs and environments to the **Latest** release track and read more about the changes in our [upgrade guide](/docs/dbt-versions/core-upgrade/upgrading-to-v2).
-- Make sure you're using a supported adapter and authentication method:
+- Make sure you're using a [supported adapter](/docs/platform/connect-data-platform/about-connections?version=2.0) and authentication method:
   <FusionDWH /> 
+    <small> _Adapter lifecycle can differ between the <Constant name="dbt_platform" /> and local development &mdash; an adapter can reach GA in the dbt platform before it reaches GA for local use._ </small> <br />
 - Once you upgrade your development environment(s) to `Fusion Stable`, every user will have to restart the IDE.
 
   <Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/platform-upgrading-dbt-versions/upgrade-fusion.png" width="90%" title="Upgrade to the Fusion engine in your environment settings." />

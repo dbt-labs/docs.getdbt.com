@@ -172,6 +172,10 @@ var siteSettings = {
               to: "/docs/dbt-support",
             },
             {
+              label: "Licensing",
+              to: "/docs/dbt-licensing",
+            },
+            {
               label: "Fusion Diaries",
               href: "https://github.com/dbt-labs/dbt-core/discussions/categories/announcements?discussions_q=is:open+diaries+category:Announcements",
             },

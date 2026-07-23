@@ -6,7 +6,7 @@ sidebar_label: "MetricFlow commands"
 tags: [Metrics, Semantic Layer]
 ---
 
-Once you define metrics in your dbt project, you can query metrics, dimensions, and dimension values, and validate your configs using the MetricFlow commands, available across the <Constant name="core" /> or [<Constant name="fusion_engine" />](/docs/fusion). To upgrade to <Constant name="fusion"/>, see [Get started with <Constant name="fusion"/>](/docs/fusion/get-started-fusion). 
+Once you define metrics in your dbt project, you can query metrics, dimensions, and dimension values, and validate your configs using the MetricFlow commands, available across the <Constant name="core" /> or [<Constant name="fusion_engine" />](/docs/fusion/about-fusion). To upgrade to <Constant name="fusion"/>, see [Get started with <Constant name="fusion"/>](/docs/fusion/get-started-fusion). 
  
 MetricFlow allows you to define and query metrics in your dbt project in [<Constant name="dbt_platform" />](/docs/platform/about-develop-dbt) or [<Constant name="core" />](/docs/local/install-dbt). To experience the power of the universal [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl) and dynamically query those metrics in downstream tools, you'll need a <Constant name="dbt" /> [Starter, Enterprise, or Enterprise+](https://www.getdbt.com/pricing/) account. 
 

@@ -6,7 +6,7 @@ id: install-pip-best-practices.md
 ---
 
 :::info
-The <Constant name="fusion_engine" /> is a next-generation, Rust-based engine that powers dbt development across the platform and local tooling. See [<Constant name="fusion_engine" />](/docs/fusion) for more information.
+The <Constant name="fusion_engine" /> is a next-generation, Rust-based engine that powers dbt development across the platform and local tooling. See [<Constant name="fusion_engine" />](/docs/fusion/about-fusion) for more information.
 :::
 
 ## Best practices

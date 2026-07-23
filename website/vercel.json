@@ -39,6 +39,31 @@
   ],
   "redirects": [
     {
+      "source": "/docs/fusion/telemetry",
+      "destination": "/reference/telemetry-observability",
+      "permanent": true
+    },
+    {
+      "source": "/docs/fusion/fusion-networking",
+      "destination": "/docs/local/fusion-networking-requirements",
+      "permanent": true
+    },
+    {
+      "source": "/docs/fusion/new-concepts",
+      "destination": "/docs/build/about-static-analysis",
+      "permanent": true
+    },
+    {
+      "source": "/docs/fusion/fusion",
+      "destination": "/docs/fusion/about-fusion",
+      "permanent": true
+    },
+    {
+      "source": "/docs/fusion",
+      "destination": "/docs/fusion/about-fusion",
+      "permanent": true
+    },
+    {
       "source": "/reference/global-configs/hints",
       "destination": "/reference/global-configs/about-global-configs",
       "permanent": true

@@ -1,7 +1,7 @@
 ---
-title: "Upgrading to v2.0"
+title: "Upgrading to v2"
 id: upgrading-to-v2
-description: New features and changes in v2.0
+description: New features and changes in v2
 displayed_sidebar: "docs"
 ---
 
@@ -11,13 +11,10 @@ import FusionLifecycle from '/snippets/_fusion-lifecycle-callout.md';
 import FusionThreads from '/snippets/_fusion-threads.md';
 import FusionPartialParseCliFlags from '/snippets/_fusion-partial-parse-cli-flags.md';
 
-:::caution dbt Core v2.0 is in alpha
-dbt Core v2.0 is currently in alpha. This does not affect the Fusion in platform rollout, which continues on its existing track.
-:::
+v2 is the current era of dbt, delivered through <Constant name="fusion" />. When you install dbt, you get <Constant name="fusion" /> by default. This guide walks you through upgrading a v1 project to v2. 
 
-v2.0 marks a new foundation for dbt: a faster, Rust-based runtime, rebuilt from the ground up and available in two distributions. For most users, the right choice is [Fusion](/docs/fusion/about-fusion), which extends the open-source core with SQL comprehension, column-level lineage, instant feedback, and platform-connected workflows.
+v2 is faster and stricter, but your existing project language and DAG semantics carry over, so once you upgrade, your project works as before &mdash; just faster.
 
-For license-aware customers, we offer [dbt Core v2.0](/docs/local/install-dbt), a distribution that includes only Apache 2.0 open-source code. Both distributions share the same project language and DAG semantics, so once you upgrade to v2.0, your existing dbt project works with either distribution.
 
 <FusionLifecycle />
 
@@ -25,40 +22,15 @@ import AboutFusion from '/snippets/_about-fusion.md';
 
 <AboutFusion />
 
-## Distributions
+## Install dbt
 
-Two dbt distributions build on the Fusion runtime:
-
-| Distribution | Install | License | What you get |
-|---|---|---|---|
-| **Fusion** | pip, brew, winget, CDN — [see all options](/docs/local/install-dbt?version=2.0) | Proprietary | dbt Core v2.0 foundation plus Fusion features: SQL comprehension, column-level lineage, and more. |
-| **dbt Core v2.0** | pip, brew | Apache 2.0 | Open-source Rust-based runtime: Faster parsing and execution. |
-
-## Installation
-
-For most users, the recommended path is to install Fusion as it includes all of dbt Core v2.0 plus the robust Fusion feature set.
-
-### Fusion
-
-Install Fusion using pip, or see all [installation options](/docs/local/install-dbt?version=2.0) (brew, winget, CDN):
+Upgrading to v2 is an install step. Install dbt using `pip` to get <Constant name="fusion" /> for v2:
 
 ```shell
 python -m pip install --pre dbt
 ```
 
-### dbt Core v2.0
-
-If you specifically need the open-source distribution of v2, install dbt Core. During alpha, you must target either the pre-release version or an explicit pin. You can copy the following commands to install the alpha and immediately update to the most recent version:
-
-Pre-release version:
-```shell
-python -m pip install --pre dbt-core
-```
-
-Explicit pin:
-```shell
-python -m pip install dbt-core==2.0.0-alpha.1
-```
+For full instructions, including Homebrew, winget, and additional options, refer to [Install dbt](/docs/local/install-dbt).
 
 ## What to know before upgrading
 
@@ -66,9 +38,9 @@ This new major version is an opportunity to _strengthen the framework_ by removi
 
 That work is documented below — it should be simple, straightforward, and in many cases, auto-fixable with the [`dbt-autofix`](https://github.com/dbt-labs/dbt-autofix) helper or the [agent skill](https://github.com/dbt-labs/dbt-agent-skills/tree/main/skills/dbt-migration/skills/migrating-dbt-core-to-fusion).
 
-:::tip Test Fusion parser compatibility from dbt Core v1.12
+:::tip Test v2 parser compatibility from dbt Core v1.12
 
-If you're on <Constant name="core" /> v1.12, you can test Fusion parser compatibility before fully migrating by using the opt-in [`--use-v2-parser`](/reference/global-configs/parsing#opt-in-v2-parser) flag. This delegates parsing to the Fusion parser without changing any other behavior, making it a low-risk way to catch compatibility issues early.
+If you're on <Constant name="core" /> v1.12, you can test the rust parser compatibility before fully migrating by using the opt-in [`--use-v2-parser`](/reference/global-configs/parsing#opt-in-v2-parser) flag. This delegates parsing to the v2 parser without changing any other behavior, making it a low-risk way to catch compatibility issues early.
 
 :::
 
@@ -76,7 +48,7 @@ If you're on <Constant name="core" /> v1.12, you can test Fusion parser compatib
 
 ### Supported adapters
 
-The following adapters are supported in v2.0:
+The following adapters are supported in v2:
 
 <FusionAdapters />
 
@@ -88,13 +60,13 @@ v2 will not support any deprecated functionality (see the [Changes overview](/re
 
 ### Ecosystem packages
 
-The most popular `dbt-labs` packages (`dbt_utils`, `audit_helper`, `dbt_external_tables`, `dbt_project_evaluator`) are already compatible with Fusion. External packages published by organizations outside of dbt may use outdated code or incompatible features that fail to parse with the new Fusion engine. We're working with those package maintainers to make packages available for Fusion. Packages requiring an upgrade to a new release for Fusion compatibility, will be documented in this upgrade guide.
+The most popular `dbt-labs` packages (`dbt_utils`, `audit_helper`, `dbt_external_tables`, `dbt_project_evaluator`) are already compatible with v2. External packages published by organizations outside of dbt may use outdated code or incompatible features that fail to parse in v2. We're working with those package maintainers to make packages available for v2. Packages requiring an upgrade to a new release for v2 compatibility, will be documented in this upgrade guide.
 
 ## New and changed features and functionality
 
 ### `dbt login`
 
-In <Constant name="dbt" /> v2.0, [`dbt login`](/reference/commands/login) enables browser-based authentication. It opens a browser window prompting you to sign in to your <Constant name="dbt_platform" /> account or create a free account.
+In <Constant name="dbt" /> v2, [`dbt login`](/reference/commands/login) enables browser-based authentication. It opens a browser window prompting you to sign in to your <Constant name="dbt_platform" /> account or create a free account.
 
 Run [`dbt login status`](/reference/commands/login#dbt-login-status) to view your current authentication status.
 
@@ -108,7 +80,7 @@ When upgrading to v2, you should expect the following changes in functionality:
 
 #### Parse time printing of relations will print out the full qualified name, instead of an empty string
 
-In dbt Core v1, when printing the result of `get_relation()`, the parse time output for that Jinja would print `None` (the undefined object coerces to the string "None").
+In dbt Core v1.x, when printing the result of `get_relation()`, the parse time output for that Jinja would print `None` (the undefined object coerces to the string "None").
 
 In v2, to help with intelligent batching of `get_relation()` calls (and significantly speed up `dbt compile`), dbt needs to construct a relation object with the fully qualified name resolved at parse time for the `get_relation()` adapter call.
 
@@ -132,7 +104,7 @@ identifier='a'
 {{ print('relation_via_api: ' ~ relation_via_api) }}
 ```
 
-The output after `dbt parse` in dbt Core v1:
+The output after `dbt parse` in dbt Core v1.x:
 
 ```
 relation: None
@@ -197,9 +169,9 @@ The following deprecated flags require updates in your job definitions or script
 
 #### Conflicting package versions when a local package depends on a hub package which the root package also wants will error
 
-If a local package depends on a hub package that the root package also wants, `dbt deps` doesn't resolve conflicting versions in <Constant name="core_v1" />; it will install whatever the root project requests.
+If a local package depends on a hub package that the root package also wants, `dbt deps` doesn't resolve conflicting versions in <Constant name="core" /> v1; it will install whatever the root project requests.
 
-Fusion will present an error:
+v2 will present an error:
 
 ```bash
 error: dbt8999: Cannot combine non-exact versions: =0.8.3 and =1.1.1
@@ -264,7 +236,7 @@ In v2, dbt will error out during `parse`.
 In v1, it was possible to create scenarios with duplicate [docs blocks](/docs/build/documentation#using-docs-blocks). For example, you can have two packages with identical docs blocks referenced by an unqualified name in your dbt project. In this case, v1 would use whichever docs block is referenced without any warnings or errors.
 
 
-<Constant name="fusion" /> adds stricter evaluation of names of docs blocks to prevent such ambiguity. It will present an error if it detects duplicate names:
+v2 adds stricter evaluation of names of docs blocks to prevent such ambiguity. It will present an error if it detects duplicate names:
 
 ```bash
 dbt found two docs with the same name: 'docs_block_title' in files: 'models/crm/_crm.md' and 'docs/crm/business_class_marketing.md'
@@ -274,7 +246,7 @@ To resolve this error, rename any duplicate docs blocks.
 
 #### `dbt clean` will not delete any files in configured resource paths or files outside the project directory
 
-In dbt Core v1, `dbt clean` deletes:
+In dbt Core v1.x, `dbt clean` deletes:
 - Any files outside the project directory if `clean-targets` is configured with an absolute path or relative path containing `../`, though there is an opt-in config to disable this (`--clean-project-files-only` / `--no-clean-project-files-only`).
 - Any files in the `asset-paths` or `doc-paths` (even though other resource paths, like `model-paths` and `seed-paths`, are restricted).
 
@@ -282,13 +254,13 @@ In v2, `dbt clean` will not delete any files in configured resource paths or fil
 
 #### All unit tests are run first in `dbt build`
 
-In dbt Core v1, the direct parents of the model being unit tested needed to exist in the warehouse to retrieve the needed column name and type information. `dbt build` runs the unit tests (and their dependent models) _in lineage order_.
+In dbt Core v1.x, the direct parents of the model being unit tested needed to exist in the warehouse to retrieve the needed column name and type information. `dbt build` runs the unit tests (and their dependent models) _in lineage order_.
 
 In v2, `dbt build` runs _all_ of the unit tests _first_, and then builds the rest of the DAG, due to built-in column name and type awareness.
 
 #### Configuring `--threads`
 
-<Constant name="core_v1" /> runs with `--threads 1` by default. You can increase this number to run more nodes in parallel on the remote data platform, up to the max parallelism enabled by the DAG.
+<Constant name="core" /> v1 runs with `--threads 1` by default. You can increase this number to run more nodes in parallel on the remote data platform, up to the max parallelism enabled by the DAG.
 
 v2 handles threading differently depending on your data platform:
 
@@ -298,13 +270,13 @@ For more information, refer to [Using threads](/docs/running-a-dbt-project/using
 
 #### Continue to compile unrelated nodes after hitting a compile error
 
-As soon as <Constant name="core_v1" /> `compile` encounters an error compiling one of your models, dbt stops and doesn't compile anything else.
+As soon as <Constant name="core" /> v1 `compile` encounters an error compiling one of your models, dbt stops and doesn't compile anything else.
 
-When Fusion's `compile` encounters an error, it will skip nodes downstream of the one that failed to compile, but it will keep compiling the rest of the DAG (in parallel, up to the number of configured / optimal threads).
+When v2's `compile` encounters an error, it will skip nodes downstream of the one that failed to compile, but it will keep compiling the rest of the DAG (in parallel, up to the number of configured / optimal threads).
 
 #### Seeds with extra commas don't result in extra columns
 
-In dbt Core v1, if you have an additional comma on your seed, dbt creates a seed with an additional empty column.
+In dbt Core v1.x, if you have an additional comma on your seed, dbt creates a seed with an additional empty column.
 
 For example, the following seed file (with an extra comma):
 
@@ -447,15 +419,15 @@ To access custom configurations stored under meta, use the explicit methods:
 
 For more information, see [config.meta_get()](/reference/dbt-jinja-functions/config#configmeta_get) and [config.meta_require()](/reference/dbt-jinja-functions/config#configmeta_require).
 
-### Fusion compiler
+### v2 compiler
 
 #### Snowflake model functions
 
-<Constant name="fusion" /> supports [Snowflake ML model functions](https://docs.snowflake.com/en/guides-overview-ml-functions), which allow you to call machine learning models directly in SQL. 
+v2 supports [Snowflake ML model functions](https://docs.snowflake.com/en/guides-overview-ml-functions), which allow you to call machine learning models directly in SQL. 
 
-Because model function return types are flexible and defined by the underlying model, <Constant name="fusion" /> uses simplified type checking:
-- **Arguments:** <Constant name="fusion" /> accepts any arguments without strict type validation.
-- **Return type:** <Constant name="fusion" /> treats all model function results as `VARIANT`.
+Because model function return types are flexible and defined by the underlying model, v2 uses simplified type checking:
+- **Arguments:** v2 accepts any arguments without strict type validation.
+- **Return type:** v2 treats all model function results as `VARIANT`.
 
 To use the result in your models, cast it to the expected type:
 
@@ -471,3 +443,16 @@ from {{ ref('my_table') }}
 import FusionPackages from '/snippets/_fusion-supported-packages.md';
 
 <FusionPackages />
+
+## Distributions
+
+v2 is available in two distributions. For more information, refer to [dbt licensing](/docs/dbt-licensing).
+
+<SimpleTable>
+| Distribution | Package | Use it when |
+| --- | --- | --- |
+| <Constant name="fusion" /> | `dbt` | You want the recommended v2 experience, with Fusion installed by default. |
+| dbt Core 2.0 | `dbt-core` | Your organization has a strict requirement to use the Apache 2.0 [open-source runtime](/docs/local/install-dbt-core-v2). |
+</SimpleTable>
+
+If you have a older project that isn’t ready to move to v2, continue using `dbt-core` v1.x for compatibility. For new or upgraded projects, we recommend v2.

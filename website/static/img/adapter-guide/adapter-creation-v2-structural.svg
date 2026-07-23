@@ -7,7 +7,7 @@
   </defs>
 
   <!-- Title -->
-  <text x="320" y="22" text-anchor="middle" font-size="15" font-weight="700" fill="#111">dbt Core v2 system layers</text>
+  <text x="320" y="22" text-anchor="middle" font-size="15" font-weight="700" fill="#111">dbt Core v2.0 system layers</text>
 
   <!-- USER -->
   <rect x="220" y="36" width="200" height="44" rx="6" fill="#f3f4f6" stroke="#e5e7eb" stroke-width="1.5"/>

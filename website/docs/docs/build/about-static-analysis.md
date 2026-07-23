@@ -1,7 +1,7 @@
 ---
-title: "A new concept: static analysis"
-id: "new-concepts"
-sidebar_label: "New concept: static analysis"
+title: "About static analysis"
+id: "about-static-analysis"
+sidebar_label: "About static analysis"
 description: "New concepts and configurations you will encounter when you install the dbt Fusion engine."
 pagination_next: null
 pagination_prev: null
@@ -19,17 +19,11 @@ import FusionLifecycle from '/snippets/_fusion-lifecycle-callout.md';
 
 The <Constant name="fusion_engine" /> [fully comprehends your project's SQL](/blog/the-levels-of-sql-comprehension), enabling advanced capabilities like dialect-aware validation and precise column-level lineage.
 
-It can do this because its compilation step is more comprehensive than that of the <Constant name="core" /> engine. When <Constant name="core" /> referred to _compilation_, it only meant _rendering_ &mdash; converting Jinja-templated strings into a SQL query to send to a database.
+It can do this because its compilation step is more comprehensive than that of the dbt Core v1.x engine. When dbt Core v1.x referred to _compilation_, it only meant _rendering_ &mdash; converting Jinja-templated strings into a SQL query to send to a database.
 
 <Constant name="fusion_engine" /> can also render Jinja, but then it completes a second phase: _static analysis_, producing and validating a logical plan for every rendered query in the project. This step is the cornerstone of Fusion's new capabilities.
 
 </IntroText>
-
-| Step | dbt Core v1 engine | dbt Core v2 (alpha) | dbt Fusion engine |
-|------|--------------------|--------------------|-------------------|
-| Render Jinja into SQL | ✅ | ✅ | ✅ |
-| Produce and statically analyze logical plan | ❌ | ✅ <small>(Fusion + login)</small> | ✅ |
-| Run rendered SQL | ✅ | ✅ | ✅ |
 
 ## Principles of static analysis
 

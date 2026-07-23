@@ -6,7 +6,7 @@ pagination_next: "docs/dbt-versions/upgrade-dbt-platform-version"
 pagination_prev: null
 ---
 
-dbt is available in multiple distributions: the <Constant name="fusion_engine"/> (Rust-based, proprietary), <Constant name="core_v2"/> (Rust-based, open-source), and <Constant name="core_v1"/> (Python-based, open-source). dbt Core v1 follows [semantic versioning](https://semver.org/) for the 1.x series; <Constant name="core_v2"/> and the <Constant name="fusion_engine"/> use the 2.x series. This page explains how versioning works for self-hosted dbt installations.
+v2 is the current generation of dbt &mdash; installing or upgrading gives you <Constant name="fusion_engine"/>, the default experience. <Constant name="core_v2"/> is the Apache 2.0 foundation underneath Fusion. <Constant name="core_v1"/> (Python-based, open-source) remains on the 1.x series and follows semantic versioning; v2 uses the 2.x series. This page covers versioning for local dbt installations.
 
 If you're using the <Constant name="dbt_platform" /> (including the <Constant name="platform_cli"/>), you don't need to manage dbt versions yourself. [Release tracks](/docs/dbt-versions/dbt-release-tracks) automatically keep you up to date and provide early access to new features.
 

@@ -26,7 +26,7 @@ Install <Constant name="wizard" /> locally and start an agentic dbt development 
 
 By the end of this guide, you can install <Constant name="wizard" /> locally, authenticate with your <Constant name="dbt_platform" /> credentials if applicable, complete first-run onboarding, and send your first prompt from the terminal.
 
-<Constant name="wizard" /> is data warehouse agnostic and works with both the [<Constant name="fusion_engine" />](/docs/fusion) and [<Constant name="core" />](/docs/local/install-dbt) &mdash; no specific engine is required.
+<Constant name="wizard" /> is data warehouse agnostic and works with both the [<Constant name="fusion_engine" />](/docs/fusion/about-fusion) and [<Constant name="core" />](/docs/local/install-dbt) &mdash; no specific engine is required.
 
 Be warned, the wizard has been known to <WizardPopcorn>cast spells</WizardPopcorn>.
 

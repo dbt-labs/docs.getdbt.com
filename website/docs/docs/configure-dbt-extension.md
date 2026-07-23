@@ -127,7 +127,7 @@ The following steps will explain how to configure environment variables using Po
 
 #### About `.env` file support
 
-The [<Constant name="fusion"/> CLI](/docs/local/install-dbt?version=2) and the dbt VS Code extension can automatically read environment variables from a `.env` file in your current working directory (the folder you `cd` into and run dbt commands from in your terminal), if one exists. The environment variables you define in the `.env` file are available when running dbt commands in the terminal and when using the extension's menu actions.
+[dbt](/docs/local/install-dbt) and the dbt VS Code extension can automatically read environment variables from a `.env` file in your current working directory (the folder you `cd` into and run dbt commands from in your terminal), if one exists. The environment variables you define in the `.env` file are available when running dbt commands in the terminal and when using the extension's menu actions.
 
 <EnvFileConsiderations />
 
@@ -263,7 +263,7 @@ If you want to use both extensions, keep your ad hoc query files in a separate, 
 ```
 
 :::tip Autocomplete not working?
-If column autocomplete isn't working, it's probably not your file associations. Make sure [strict static analysis](/docs/fusion/new-concepts?version=2.0&name=Fusion#configuring-static_analysis) is enabled &mdash; that's what powers column-level suggestions from your warehouse.
+If column autocomplete isn't working, it's probably not your file associations. Make sure [strict static analysis](/docs/build/about-static-analysis?version=2.0&name=Fusion#configuring-static_analysis) is enabled &mdash; that's what powers column-level suggestions from your warehouse.
 :::
 
 ## Next steps

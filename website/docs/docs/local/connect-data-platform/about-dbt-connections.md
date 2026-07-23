@@ -8,10 +8,7 @@ pagination_next: null
 pagination_prev: null
 ---
 
-dbt connects to your data platform to run SQL transformations against your data. The connection setup depends on which dbt engine you use:
-- [<Constant name="fusion_engine" />](/docs/local/connect-data-platform/about-dbt-connections?version=2)
-- [<Constant name="core" />](/docs/local/connect-data-platform/about-dbt-connections?version=1)
-
+dbt connects to your data platform to run SQL transformations against your data. 
 <VersionBlock firstVersion="2.0">
 
 ## Supported Fusion data platforms
@@ -19,11 +16,13 @@ dbt connects to your data platform to run SQL transformations against your data.
 The <Constant name="fusion_engine" /> includes built-in support for:
 
 - [Snowflake](/docs/local/connect-data-platform/snowflake-setup) <Lifecycle status="preview" />
-- [Databricks](/docs/local/connect-data-platform/databricks-setup) <Lifecycle status="private_preview" />
+- [Databricks](/docs/local/connect-data-platform/databricks-setup) <Lifecycle status="preview" />
 - [Amazon Redshift](/docs/local/connect-data-platform/redshift-setup) <Lifecycle status="preview" />
 - [Google BigQuery](/docs/local/connect-data-platform/bigquery-setup) <Lifecycle status="preview" />
 - [DuckDB](/docs/local/connect-data-platform/duckdb-setup) <Lifecycle status="beta" />
 - [Apache Spark](/docs/local/connect-data-platform/spark-setup) <Lifecycle status="beta" />
+
+<small> _Adapter lifecycle can differ between the <Constant name="dbt_platform" /> and local development. An adapter can reach GA in the dbt platform before it reaches GA for local use._ </small> <br /><br />
 
 <Constant name="fusion" /> uses [ADBC (Arrow Database Connectivity)](https://arrow.apache.org/adbc/) drivers for high-performance connections to these platforms. No separate adapter installation is required.
 

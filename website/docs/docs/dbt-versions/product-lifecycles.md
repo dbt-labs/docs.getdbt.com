@@ -67,9 +67,9 @@ dbt platform features adhere to the following lifecycle path:
 </div>
 
 </TabItem>
-<TabItem value="core" label="dbt Core v1 and v2">
+<TabItem value="core" label="dbt Core v1.x and v2">
 
-dbt Core releases follow semantic versioning. Read more in [About dbt versions](/docs/dbt-versions). dbt Core v1 and v2 releases both adhere to the following lifecycle path:
+dbt Core releases follow semantic versioning. Read more in [About dbt versions](/docs/dbt-versions). dbt Core v1.x and v2 releases both adhere to the following lifecycle path:
 
 <div className="grid--3-col" style={{gap: '1.5rem', marginTop: '1rem'}}>
 
