@@ -118,24 +118,37 @@ import PlusPrefix from '/snippets/_plus-prefix.md';
 
 It's important to follow the correct YAML naming conventions for the configs in your `dbt_project.yml` file to ensure dbt can process them properly. This is especially true for resource types with more than one word.
 
-- Use dashes (`-`) when configuring resource types with multiple words in your `dbt_project.yml` file. Here's an example for [saved queries](/docs/build/saved-queries#configure-saved-query):
+- For most multi-word resource types in `dbt_project.yml`, use dashes (`-`). For example:
 
     <File name="dbt_project.yml">
 
     ```yml
-    saved-queries:  # Use dashes for resource types in the dbt_project.yml file.
+    saved-queries:  # Use dashes for most multi-word resource types in dbt_project.yml.
       my_saved_query:
         +cache:
           enabled: true
     ```
     </File>
 
-- Use underscore (`_`) when configuring resource types with multiple words for YAML files other than the `dbt_project.yml` file. For example, here's the same saved queries resource in the `semantic_models.yml` file:
+- For [data tests](/docs/build/data-tests) and [unit tests](/docs/build/unit-tests), use underscores (`_`) everywhere, including in `dbt_project.yml`:
+
+    <File name="dbt_project.yml">
+
+    ```yml
+    data_tests:  # Use underscores for data_tests and unit_tests, even in dbt_project.yml.
+      +store_failures: true
+
+    unit_tests:
+      +enabled: true
+    ```
+    </File>
+
+- For YAML files other than `dbt_project.yml`, use underscores (`_`) for multi-word resource types. For example, the same saved queries resource in a properties file:
 
     <File name="models/semantic_models.yml">
 
     ```yml
-    saved_queries:  # Use underscores everywhere outside the dbt_project.yml file.
+    saved_queries:  # Use underscores outside of dbt_project.yml.
       - name: saved_query_name
         ... # Rest of the saved queries configuration.
         config:
@@ -143,3 +156,5 @@ It's important to follow the correct YAML naming conventions for the configs in 
             enabled: true
     ```
     </File>
+
+For more information, refer to [Configure saved query](/docs/build/saved-queries#configure-saved-query).
