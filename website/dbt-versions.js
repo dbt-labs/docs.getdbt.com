@@ -34,7 +34,7 @@ const products = [
         version: "1.12",
       },
       {
-        name: "dbt Core v2.0 (alpha)",
+        name: "dbt Core 2.0 (alpha)",
         version: "2.0",
       },
       {
@@ -88,6 +88,70 @@ exports.versions = products.flatMap((product) =>
  * lastVersion to further restrict by version within that product.
  */
 exports.versionedPages = [
+  {
+    page: "docs/dbt-extension-features",
+    firstVersion: "2.0",
+  },
+  {
+    page: "docs/install-dbt-extension",
+    firstVersion: "2.0",
+  },
+  {
+    page: "docs/upgrade-to-fusion-extension",
+    firstVersion: "2.0",
+  },
+  {
+    page: "docs/sign-in-dbt-extension",
+    firstVersion: "2.0",
+  },
+  {
+    page: "docs/configure-dbt-extension",
+    firstVersion: "2.0",
+  },
+  {
+    page: "docs/fusion/about-fusion",
+    firstVersion: "2.0",
+  },
+  {
+    page: "docs/fusion/about-fusion-install",
+    firstVersion: "2.0",
+  },
+  {
+    page: "docs/fusion/adbc",
+    firstVersion: "2.0",
+  },
+  {
+    page: "docs/fusion/vs-compare-changes",
+    firstVersion: "2.0",
+  },
+  {
+    page: "docs/fusion/get-started-fusion",
+    firstVersion: "2.0",
+  },
+  {
+    page: "docs/fusion/fusion-availability",
+    firstVersion: "2.0",
+  },
+  {
+    page: "docs/fusion/supported-features",
+    firstVersion: "2.0",
+  },
+  {
+    page: "docs/fusion/fusion-releases",
+    firstVersion: "2.0",
+  },
+  {
+    page: "reference/telemetry-observability",
+    firstVersion: "2.0",
+  },
+  {
+    page: "docs/local/fusion-networking-requirements",
+    firstVersion: "2.0",
+  },
+  {
+    page: "docs/build/about-static-analysis",
+    firstVersion: "2.0",
+  },
   {
     page: "docs/reference/commands/lint",
     firstVersion: "2.0",  

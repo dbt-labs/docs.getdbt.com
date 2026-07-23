@@ -19,7 +19,7 @@ This guide walks through credentials, environment variables, <Constant name="fus
 ## Prerequisites
 
 - You have a <Constant name="dbt_platform" /> account with at least one project using the <Constant name="fusion_engine" />.
-- You have either the [dbt platform CLI](/docs/platform/dbt-cli-installation) or the [dbt VS Code extension + local <Constant name="fusion" /> CLI](/docs/local/install-dbt?version=2.0#installation) installed.
+- You have either the [dbt platform CLI](/docs/platform/dbt-cli-installation) or the [dbt VS Code extension + local dbt](/docs/local/install-dbt) installed.
 
 
 ## 1. Managing credentials

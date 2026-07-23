@@ -31,5 +31,5 @@ After the minimal compile for your active file, the server continues with a back
 
 Background compilation enables full project analysis once it completes. Until then, some features that need the full graph may be limited. You can monitor compilation progress in your editor's status bar. When the progress notifications clear, the background compile is complete.
 
-The <Constant name="fusion" /> CLI and the language server run independently. Running a command like `dbt run` or `dbt compile` from the terminal does not interrupt or affect LSP compilation.
+dbt and the language server run independently. Running a command like `dbt run` or `dbt compile` from the terminal does not interrupt or affect LSP compilation.
 

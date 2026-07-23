@@ -26,7 +26,7 @@ DuckDB does not require authentication &mdash; it runs locally on your machine.
 
 ### Installing dbt-duckdb
 
-The DuckDB adapter is built into the <Constant name="fusion" /> CLI. To get started, [install <Constant name="fusion" />](/docs/local/install-dbt). We recommend using the [VS Code Extension](/docs/local/install-dbt?version=2) as the development interface.
+The DuckDB adapter is built into v2. To get started, [install dbt](/docs/local/install-dbt). We recommend using the [VS Code Extension](/docs/local/install-dbt?version=2) as the development interface.
 
 #### DuckDB driver and extensions {#driver-and-extensions}
 
@@ -45,7 +45,7 @@ The DuckDB adapter for <Constant name="fusion" /> is in beta. Some features avai
 
 #### Static analysis and local flat files
 
-<Constant name="fusion_engine" /> performs static analysis on your SQL models to determine column types and lineage without executing queries. If your models reference local flat files (CSV, Parquet, or JSON) through DuckDB's `read_csv()`, `read_parquet()`, or `read_json()` functions, <Constant name="fusion" /> may not be able to infer the schema of those files at analysis time. As a result, you may see type-resolution warnings or compilation errors even when the query would succeed at runtime. To learn more, refer to [New concepts](/docs/fusion/new-concepts).
+<Constant name="fusion_engine" /> performs static analysis on your SQL models to determine column types and lineage without executing queries. If your models reference local flat files (CSV, Parquet, or JSON) through DuckDB's `read_csv()`, `read_parquet()`, or `read_json()` functions, <Constant name="fusion" /> may not be able to infer the schema of those files at analysis time. As a result, you may see type-resolution warnings or compilation errors even when the query would succeed at runtime. To learn more, refer to [New concepts](/docs/build/about-static-analysis).
 
 </VersionBlock>
 

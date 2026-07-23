@@ -62,7 +62,7 @@ When a job on the <Constant name="fusion_engine" /> finishes, selecting a step d
 - **Skipped**
 - **No-op**
 
-For more information about each status, refer to [Telemetry and observability](https://docs.getdbt.com/docs/fusion/telemetry#node-outcome).
+For more information about each status, refer to [Fusion telemetry and observability](/reference/telemetry-observability#node-outcome).
 
 <Lightbox src="/img/docs/dbt-platform/deployment/fusion-logs.png" width="80%" title="Structured logs in Fusion" />
 
@@ -78,7 +78,7 @@ For more information about each status, refer to [Telemetry and observability](h
 
 To download it, go to the **Run summary** tab in the job, select a step and click **Download** > **Download OTel log** to export a Parquet file
 
-This option only appears when the step emitted an OTel log artifact.  Some steps, such as `dbt deps`, don't produce one. For analysis examples, refer to [Querying telemetry data](/docs/fusion/telemetry?version=2.0&name=Fusion#querying-telemetry-data).
+This option only appears when the step emitted an OTel log artifact. Some steps, such as `dbt deps`, don't produce one. For analysis examples, refer to [Querying telemetry data](/reference/telemetry-observability#querying-telemetry-data).
 
 
 <Lightbox src="/img/docs/dbt-platform/deployment/download-logs.png" width="85%" title="Download logs" />
@@ -125,4 +125,3 @@ From the **Modified** section, you can view the following:
 To view the dependencies and relationships of the resources in your project more closely, click **View in <Constant name="catalog" />** to launch [<Constant name="catalog" />](/docs/explore/explore-projects). 
 
 <Lightbox src="/img/docs/dbt-platform/example-ci-compare-changes-tab.png" width="85%" title="Example of the Compare tab" />
-
