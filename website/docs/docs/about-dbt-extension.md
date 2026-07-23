@@ -5,9 +5,7 @@ description: "Bring all the speed and power of the self-hosted dbt Fusion engine
 sidebar_label: "dbt VS Code extension"
 image: /img/docs/extension/extension-marketplace.png
 pagination_next: "docs/dbt-extension-features"
-availability:
-  preset: local_free
-  engine: v2
+availability: local_all
 ---
 
 # About the dbt VS Code extension <Lifecycle status="preview" />

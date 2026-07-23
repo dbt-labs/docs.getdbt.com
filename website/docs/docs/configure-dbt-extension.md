@@ -3,9 +3,7 @@ title: "Configure your local environment"
 sidebar_label: "Configure your local environment"
 id: "configure-dbt-extension"
 description: "Optimize your VS Code extension environment (files, env vars, connectivity)."
-availability:
-  engine: v2
-  preset: local_free
+availability: local_all
 ---
 
 import EnvFileConsiderations from '/snippets/_env-file-considerations.md';

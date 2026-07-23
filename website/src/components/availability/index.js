@@ -1,6 +1,9 @@
 import React, { useCallback, useEffect, useId, useMemo, useRef, useState } from 'react';
 import styles from './styles.module.css';
 import {
+  COMPATIBILITY_LABELS,
+  COMPATIBILITY_TOOLTIP_LINKS,
+  COMPATIBILITY_TOOLTIPS,
   FIELD_LABELS,
   SURFACE_LABELS,
   SURFACE_TOOLTIPS,
@@ -20,18 +23,37 @@ function normalizeAvailability(availability) {
   const preset = availabilityObject.preset ? availabilityPresets[availabilityObject.preset] : null;
   const merged = { ...preset, ...availabilityObject };
 
-  const { engine, surface, access, plans } = merged;
+  const {
+    engine,
+    surface,
+    compatibility,
+    access,
+    plans,
+  } = merged;
 
   const engineFacet = getEngineFacet(engine);
   const accessFacets = getAccessFacets(access, plans, surface);
   const surfaceLabel = SURFACE_LABELS[surface];
+  const compatibilityLabel = COMPATIBILITY_LABELS[compatibility];
 
   const rows = [];
   if (engineFacet) {
     rows.push({ label: FIELD_LABELS.engine, value: engineFacet.facet, tooltip: engineFacet.tooltip });
   }
   if (surfaceLabel) {
-    rows.push({ label: FIELD_LABELS.surface, value: surfaceLabel, tooltip: SURFACE_TOOLTIPS[surface] });
+    rows.push({
+      label: FIELD_LABELS.surface,
+      value: surfaceLabel,
+      tooltip: SURFACE_TOOLTIPS[surface],
+    });
+  }
+  if (compatibilityLabel) {
+    rows.push({
+      label: FIELD_LABELS.compatibility,
+      value: compatibilityLabel,
+      tooltip: COMPATIBILITY_TOOLTIPS[compatibility],
+      tooltipLink: COMPATIBILITY_TOOLTIP_LINKS[compatibility],
+    });
   }
   accessFacets.forEach(({ facet, tooltip }) => {
     rows.push({ label: FIELD_LABELS.access, value: facet, tooltip });
@@ -42,6 +64,7 @@ function normalizeAvailability(availability) {
   const badgeFacets = [
     engineFacet?.facet,
     surfaceLabel,
+    compatibilityLabel,
     ...accessFacets.map(({ facet }) => facet),
   ].filter(Boolean);
 
@@ -53,6 +76,24 @@ function normalizeAvailability(availability) {
     badgeFacets,
     rows,
   };
+}
+
+function renderTooltipValue({ tooltip, value, tooltipLink }) {
+  const text = tooltip || value;
+  const linkText = tooltipLink?.text;
+  const linkStart = linkText ? text.indexOf(linkText) : -1;
+
+  if (linkStart === -1) {
+    return text;
+  }
+
+  return (
+    <>
+      {text.slice(0, linkStart)}
+      <a href={tooltipLink.href}>{linkText}</a>
+      {text.slice(linkStart + linkText.length)}
+    </>
+  );
 }
 
 export default function Availability({ availability }) {
@@ -175,7 +216,7 @@ export default function Availability({ availability }) {
             {normalized.rows.map((row, index) => (
               <React.Fragment key={`${row.label}-${row.value}-${index}`}>
                 <dt>{row.label}</dt>
-                <dd>{row.tooltip || row.value}</dd>
+                <dd>{renderTooltipValue(row)}</dd>
               </React.Fragment>
             ))}
           </dl>

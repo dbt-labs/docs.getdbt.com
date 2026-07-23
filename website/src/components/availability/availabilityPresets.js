@@ -1,6 +1,7 @@
 // Availability answers three independent questions for the reader:
 //   engine:  which dbt version line does this apply to? (v1 | v2 | all/omitted)
-//   surface: where does this feature live? (local/self-hosted | platform | everywhere/omitted)
+//   surface: where does this feature live? (local/self-hosted | local_development | platform | everywhere/omitted)
+//   compatibility: what can it connect to? (platform | omitted)
 //   access:  what do I need to use it? (free | login_required | paid_plan | usage_based)
 //
 // These facets are independent — any can render without the others.
@@ -18,6 +19,7 @@
 export const FIELD_LABELS = {
   engine: 'Version',
   surface: 'Where',
+  compatibility: 'Works with',
   access: 'Access',
 };
 
@@ -31,7 +33,7 @@ export const ENGINE_LABELS = {
 
 export const ENGINE_TOOLTIPS = {
   v1: 'Available in dbt Core 1.x',
-  v2: 'Available in v2',
+  v2: 'Available in v2 (including Fusion)',
 };
 
 export function getEngineFacet(engine) {
@@ -44,12 +46,29 @@ export function getEngineFacet(engine) {
 
 export const SURFACE_LABELS = {
   local: 'Self-hosted',
+  local_development: 'Local development',
   platform: 'dbt platform',
 };
 
 export const SURFACE_TOOLTIPS = {
   local: 'Runs on your own infrastructure.',
+  local_development: 'Runs locally.',
   platform: 'Available in the dbt platform.',
+};
+
+export const COMPATIBILITY_LABELS = {
+  platform: 'dbt platform',
+};
+
+export const COMPATIBILITY_TOOLTIPS = {
+  platform: 'Works with dbt platform or open source dbt Core 2.0 projects.',
+};
+
+export const COMPATIBILITY_TOOLTIP_LINKS = {
+  platform: {
+    href: '/docs/platform/dbt-cli-installation',
+    text: 'dbt platform',
+  },
 };
 
 export const PLAN_LABELS = {
@@ -152,6 +171,11 @@ export const availabilityPresets = {
     description: 'Self-hosted tools with no login required.',
     surface: 'local',
     access: 'free',
+  },
+  local_all: {
+    description: 'Local tools for open-source dbt Core v2.0 and dbt platform-connected projects.',
+    surface: 'local_development',
+    compatibility: 'platform',
   },
   local_login: {
     description: 'Self-hosted tools that need a free dbt account.',

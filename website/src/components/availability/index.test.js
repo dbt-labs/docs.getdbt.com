@@ -101,6 +101,29 @@ describe('Availability', () => {
     expect(badge).not.toHaveTextContent('Free');
   });
 
+  it('renders linked local development guidance for local_all', async () => {
+    const user = userEvent.setup();
+    render(<Availability availability="local_all" />);
+
+    const badge = screen.getByRole('button', {
+      name: /^local development \| dbt platform\./i,
+    });
+    expect(badge).toHaveTextContent('Local development | dbt platform');
+
+    await user.click(badge);
+
+    const tooltip = screen.getByRole('tooltip');
+    expect(tooltip).toHaveTextContent('Where');
+    expect(tooltip).toHaveTextContent('Runs locally.');
+    expect(tooltip).toHaveTextContent('Works with');
+    expect(tooltip).toHaveTextContent(
+      'Works with dbt platform or open source dbt Core 2.0 projects.'
+    );
+    expect(
+      screen.getByRole('link', { name: 'dbt platform' })
+    ).toHaveAttribute('href', '/docs/platform/dbt-cli-installation');
+  });
+
   it('renders "Self-hosted | Login required" for local_login', () => {
     render(<Availability availability="local_login" />);
     expect(
