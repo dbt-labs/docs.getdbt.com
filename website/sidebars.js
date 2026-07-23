@@ -1862,6 +1862,23 @@ const sidebarSettings = {
         },
         {
           type: "category",
+          label: "How to use Wizard in your dbt project",
+          link: {
+            type: "doc",
+            id: "best-practices/how-to-use-wizard/wizard-1-intro",
+          },
+          items: [
+            "best-practices/how-to-use-wizard/wizard-2-understand-project",
+            "best-practices/how-to-use-wizard/wizard-3-validate-changes",
+            "best-practices/how-to-use-wizard/wizard-4-data-informed-tests",
+            "best-practices/how-to-use-wizard/wizard-5-debug-failed-job",
+            "best-practices/how-to-use-wizard/wizard-6-production-deferral",
+            "best-practices/how-to-use-wizard/wizard-7-semantic-layer",
+            "best-practices/how-to-use-wizard/wizard-8-plugins-hooks",
+          ],
+        },
+        {
+          type: "category",
           label: "How we build our dbt Mesh projects",
           link: {
             type: "doc",
