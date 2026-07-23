@@ -19,7 +19,7 @@ The dbt VS Code extension requires the <Constant name="fusion_engine" /> and use
 
 All dbt VS Code extension features are available to all users for 14 days. After the 14-day trial period, most features remain available without registration. To keep using advanced features, [register](/docs/sign-in-dbt-extension) for a free <Constant name="dbt_platform" /> account. Existing registered users keep access automatically.
 
-Refer to [VS Code extension features](/docs/fusion/fusion-availability?version=2.0#dbt-vs-code-extension-features) for the full list of features and their availability.
+See the [feature availability](#feature-availability) table for the full list of features and what each needs.
 
 :::
 
@@ -28,6 +28,10 @@ Refer to [VS Code extension features](/docs/fusion/fusion-availability?version=2
 In <Constant name="dbt" /> v2.0 and later, authentication for registration and features that require sign-in is handled by [`dbt login`](/reference/commands/login), so your login state is shared across dbt tools like the dbt VS Code extension and, in supported versions, dbt State.
 
 </VersionBlock>
+
+import ExtensionFeatures from '/snippets/_extension-features.md';
+
+<ExtensionFeatures />
 
 ## Lightning-fast parse times
 

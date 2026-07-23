@@ -95,23 +95,23 @@ function Home() {
                   icon="dbt-copilot"
                 />
                 <Card
-                  title="dbt Fusion engine"
+                  title="dbt Core"
                   tag="Article"
-                  body="Learn about the dbt Fusion engine and see how it enables dbt to operate at speed and scale like never before."
-                  link="/docs/fusion"
+                  body="Explore dbt Core and discover how its shared Rust runtime delivers faster, more scalable performance."
+                  link="/docs/fusion/about-core"
                   icon="zap"
                 />
                 <Card
                   title="Get started with dbt"
                   tag="Guide"
-                  body="Build fast with our quickstart guides."
+                  body="Get up and running quickly with our dbt quickstart guides."
                   link="/docs/get-started-dbt"
                   icon="settings"
                 />
                 <Card
                   title="Move to the dbt platform"
                   tag="Guide"
-                  body="Migrate from dbt Core to the powerful, lightning fast dbt platform today!"
+                  body="Move from self-hosted dbt Core to the dbt platform and follow recommended best practices for building scalable data pipelines."
                   link="/guides/core-migration-1?step=1"
                   icon="tool"
                 />
