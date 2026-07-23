@@ -41,6 +41,10 @@ The agent comes with the following out of the box, meaning no configuration need
 
 <WizardIde />
 
+:::tip Best practices for using dbt Wizard
+For recommended workflows on real project tasks &mdash; understanding a project, validating changes, building Semantic Layer definitions, and more &mdash; refer to [How to use dbt Wizard in your dbt project](/best-practices/how-to-use-wizard/wizard-1-intro). Most of these prompts work the same in Studio IDE.
+:::
+
 ## Related docs
 
 - [About dbt Wizard in the dbt platform](/docs/platform/wizard-platform)

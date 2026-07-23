@@ -28,7 +28,7 @@ That index gives <Constant name="wizard" /> four capabilities that aren't possib
 | Impact analysis | When you ask "what breaks if I change this column?", <Constant name="wizard" /> returns the exact set of downstream models, metrics, tests, and exposures affected — instantly, from the index. Column-level lineage is tracked, so <Constant name="wizard" /> knows not just which models reference a table, but which ones reference that specific column. |
 | Health checks | <Constant name="wizard" /> knows which models have tests, which don't, which have stale data, which have failing contracts, and which had recent run failures — as a structured dataset. You can ask "what's unhealthy in this part of my DAG?" and get a precise answer without running anything. |
 | Data profiling | <Constant name="wizard" /> can profile your data — row counts, column distributions, null rates — and use that context when deciding how to build or refactor a model. It can reason about your data without materializing models or running expensive queries. |
-| Validation loop | <Constant name="wizard" /> validates its own work against the index as a built-in step inside every task — not something you have to prompt for. After generating a change, it checks: does the SQL compile? do downstream refs still resolve? did the new tests pass? If not, it adjusts and retries before showing you anything. |
+| Validation planning | <Constant name="wizard" /> uses project metadata to identify affected resources and choose relevant checks. In the CLI, you control the depth of structured validation before commands run. |
 </SimpleTable>
 
 <Constant name="wizard" /> builds and updates this index from dbt artifacts. In the <Constant name="dbt_platform" />, project state comes from your connected development environment. In the terminal, run `dbt parse`, `dbt compile`, or `dbt build` before a session so <Constant name="wizard" /> has your latest local project state.
@@ -39,24 +39,18 @@ The dbt version <Constant name="wizard" /> displays comes from your project's ma
 
 {/* DIAGRAM: dbt artifacts/manifests → metadata engine → Wizard context */}
 
-## Validation loop mechanics
+## Validation mechanics {#validation-loop-mechanics}
 
-The validation loop runs automatically inside every task. Before showing a diff, <Constant name="wizard" /> checks proposed changes against your live project state using the same index it uses for context.
+Validation can combine static checks, dbt commands, development builds, downstream impact analysis, and development-to-production comparisons. The checks that run depend on the surface, available tools, project state, permissions, and the validation depth you approve.
 
 {/* DIAGRAM: proposed change → validation → diff */}
 
-<SimpleTable>
-| Change type | What <Constant name="wizard" /> checks |
-|---|---|
-| SQL generation | Compile generated SQL |
-| Test generation | Run new tests |
-| Refactors | Verify downstream `ref()`s resolve |
-| Contracts | Check schema compatibility |
-| Semantic Layer changes | Compile semantic definitions |
-| Job investigations | Analyze run results and lineage |
-</SimpleTable>
+In <Constant name="wizard" /> CLI, choose light, medium, heavy, or skipped validation. Medium validation is the default: 
+- Light validation focuses on syntax, linting where supported, tests, and code review without materializing the changed models. 
+- Medium validation adds development materialization and downstream checks. 
+- Heavy validation adds explicit expectations and development-to-production comparisons when the required relations are available.
 
-If a check fails, <Constant name="wizard" /> explains the issue, adjusts the approach, and retries — you only see a diff once the change has passed. This loop runs without prompting; it's part of how <Constant name="wizard" /> works, not a feature you activate.
+<Constant name="wizard" /> reports failures and checks it couldn't complete. A passing check doesn't remove the need to review business logic, and a skipped check should remain visible in your review. For a complete procedure and the approval points for warehouse commands, refer to [Validate dbt changes with <Constant name="wizard" />](/best-practices/how-to-use-wizard/wizard-3-validate-changes).
 
 ## Tools and capabilities
 
@@ -164,20 +158,17 @@ How deferral is handled depends on the mode set up in `wizard_config.toml` for y
 |---|---|
 | `"wizard"` | <Constant name="wizard" /> handles deferral for you. You tell <Constant name="wizard" /> which target from your `profiles.yml` to defer to (it tries to detect one automatically when you first set up the project). <Constant name="wizard" /> then compiles that target and reuses its models for any upstream models you haven't built yourself. |
 | `"fusion_cloud"` | The <Constant name="dbt_platform" /> handles deferral against your connected environment, so <Constant name="wizard" /> doesn't manage local state. |
-| `"dbt-state"` | dbt state handles deferral, so <Constant name="wizard" /> skips its own production compile. |
+| `"cloud_cli"` | The <Constant name="platform_cli" /> handles credentials and deferral through the <Constant name="dbt_platform" />, so <Constant name="wizard" /> doesn't manage local state or inject deferral flags. |
+| `"dbt_state"` | dbt State or run cache handles deferral, so <Constant name="wizard" /> skips its own production compile. |
 | `"manual"` | You maintain the deferral manifest path manually. |
 | `"disabled"` | Deferral is disabled for the project. |
 </SimpleTable>
 
 For more about dbt State, refer to [About dbt State](/docs/deploy/dbt-state-about).
 
-When <Constant name="wizard" /> manages deferral, it always keeps [favor-state](https://docs.getdbt.com/reference/node-selection/defer?version=2.0#favor-state) _off_. `favor-state` is a built-in dbt deferral option, not something you configure in <Constant name="wizard" />.
+The per-project `favor_state` setting defaults to `true`. With favor-state on, deferred relations take precedence. Set `favor_state = false` when you want dbt to use relations you have already built in development and fall back to the deferred environment for relations that aren't available there.
 
-With favor-state off, <Constant name="wizard" /> uses your own dev version of a model when you’ve already built one. If you haven’t built that model yet, it uses the version from the deferred target instead.
-
-If favor-state were _on_, dbt would do the opposite: it would always use the deferred environment’s version, even when you’ve already built the model locally.
-
-<Constant name="wizard" /> stores the deferral mode for each project in `wizard_config.toml` under `deferral.mode`. To set or change it, refer to the [config reference](/docs/dbt-ai/wizard-config#deferral).
+<Constant name="wizard" /> stores the deferral mode for each project in `wizard_config.toml` under `deferral.mode`. For a complete setup and verification procedure, refer to [Developing with production deferral](/best-practices/how-to-use-wizard/wizard-6-production-deferral).
 
 
 ### Approval and sandboxing
@@ -186,19 +177,22 @@ By default, the CLI keeps you in control before it changes your project or runs 
 
 In the terminal:
 
-- <Constant name="wizard" /> shows file edits as diffs before it writes them
-- dbt commands, such as `dbt build` or `dbt test`, ask for confirmation before running
-- Bash commands run in a read-only sandbox, so they can inspect files but can't modify your workspace through the shell
+- <Constant name="wizard" /> shows file changes as diffs so you can review them
+- Commands that need permission under the active approval policy request confirmation before running
+- The active sandbox profile limits where shell commands can read and write. <Constant name="wizard" /> shows the active profile when the session starts.
 
-You can relax these controls for trusted workflows:
+Choose the sandbox profile and approval behavior that match the task:
 
 ```bash
+# Restrict shell commands to read-only access.
+wizard --sandbox read-only
+
 # Never prompt for approval during this session.
 # Useful for trusted tasks where you want Wizard to iterate without stopping.
 wizard --ask-for-approval never
 
 # Allow shell commands to write inside your workspace directory.
-# Useful for commands that generate files, but less restrictive than the default read-only sandbox.
+# Useful for commands that generate files.
 wizard --sandbox workspace-write
 ```
 
@@ -236,6 +230,5 @@ Each CLI session is saved locally. This is separate from platform conversations,
 - [<Constant name="wizard" /> overview](/docs/platform/wizard-overview)
 - [<Constant name="wizard" /> in the dbt platform](/docs/platform/wizard-platform)
 - [Use <Constant name="wizard" /> locally](/docs/dbt-ai/wizard-quickstart)
-- [Use cases and examples](/docs/dbt-ai/wizard-use-cases)
-- [Skills](/docs/dbt-ai/wizard-skills)
 - [<Constant name="wizard" /> command reference](/docs/dbt-ai/wizard-cli-reference)
+- [How to use dbt Wizard in your dbt project](/best-practices/how-to-use-wizard/wizard-1-intro) for recommended workflows
