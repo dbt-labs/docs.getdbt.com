@@ -8,7 +8,7 @@ tags: [AI, Wizard]
 
 
 <IntroText>
-Use <Constant name="wizard" /> CLI to move from a broad project map to evidence-backed answers about model logic, lineage, tests, and data.
+Use <Constant name="wizard" / to move from a broad project map to evidence-backed answers about model logic, lineage, tests, and data.
 </IntroText>
 
 This workflow helps when you join a project, review an unfamiliar area of the DAG, prepare a refactor, or investigate why a model exists.
