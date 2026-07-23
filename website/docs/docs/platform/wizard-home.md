@@ -20,7 +20,7 @@ The <Constant name="wizard" /> home tab is an agent-native development experienc
 
 <DocCarousel slidesPerView={1}>
 <Lightbox src="/img/docs/dbt-platform/wizard-home-empty.png" width="95%" title="dbt Wizard home tab — empty state with quick-start prompts" />
-<Lightbox src="/img/docs/dbt-platform/wizard-home-agent.png" width="95%" title="dbt Wizard home tab — agent refactoring a model with an inline SQL diff" />
+<Lightbox src="/img/docs/dbt-platform/wizard-home-agent.png" width="95%" title="dbt Wizard agent refactoring a docs github model for tech writers :) " />
 </DocCarousel>
 
 The <Constant name="wizard" /> home tab is complementary to the [<Constant name="wizard" /> experience in <Constant name="studio_ide" />](/docs/dbt-ai/wizard-ide). Where the <Constant name="studio_ide" /> supports users working directly within a traditional IDE environment, the home tab is purpose-built for agent-native development &mdash; it reduces overhead and keeps you focused on supervising and validating agent-generated work.
