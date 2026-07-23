@@ -87,12 +87,6 @@
   width: 10px;
 }
 
-.tooltipTitle {
-  display: block;
-  font-weight: 700;
-  margin-bottom: 8px;
-}
-
 .tooltipList {
   display: grid;
   gap: 6px 10px;

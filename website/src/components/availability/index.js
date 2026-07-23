@@ -200,7 +200,6 @@ export default function Availability({ availability }) {
       </button>
       {isOpen && (
         <span id={tooltipId} role="tooltip" className={styles.tooltip}>
-          <span className={styles.tooltipTitle}>Applies to</span>
           <dl className={styles.tooltipList}>
             {normalized.rows.map((row, index) => (
               <React.Fragment key={`${row.label}-${row.value}-${index}`}>
