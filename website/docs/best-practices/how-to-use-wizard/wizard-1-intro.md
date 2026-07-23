@@ -17,4 +17,11 @@ This guide collects the workflows we recommend once Wizard is running on a real 
 
 ## Before you begin
 
-These workflows assume <Constant name="wizard" /> CLI is already installed and connected to a dbt project with a current `target/manifest.json`. Refer to [Use Wizard locally](/docs/dbt-ai/wizard-quickstart) for setup, and [Wizard CLI config reference](/docs/dbt-ai/wizard-config) for configuration options like deferral and approval policy.
+These workflows apply to the <Constant name="wizard" /> CLI, as well as <Constant name="dbt_platform"/>. Each page will reference whether it applies to the CLI or <Constant name="dbt_platform"/>. 
+
+For local workflows, make sure the <Constant name="wizard" /> CLI is installed, configured, and connected to a dbt project with an up-to-date `target/manifest.json`. 
+
+- To set up the CLI, chekc out [Use Wizard locally](/docs/dbt-ai/wizard-quickstart)
+- For options such as deferral and approval policies, check out the [Wizard CLI config reference](/docs/dbt-ai/wizard-config) 
+- To use Wizard in the <Constant name="dbt_platform" />, check out [Use Wizard in dbt platform](/docs/platform/wizard-platform)
+
