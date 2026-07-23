@@ -66,6 +66,10 @@ wizard system uninstall
 
 For details about what is collected, what is not collected, and how to opt out of client telemetry, refer to [<Constant name="wizard" /> CLI data use and telemetry](/docs/dbt-ai/wizard-telemetry).
 
+:::tip Best practices for using dbt Wizard
+Once you're set up, refer to [How to use dbt Wizard in your dbt project](/best-practices/how-to-use-wizard/wizard-1-intro) for recommended workflows on real project tasks.
+:::
+
 ## Related docs
 
 - [Use <Constant name="wizard" /> locally](/docs/dbt-ai/wizard-quickstart): Install <Constant name="wizard" /> and start a local terminal session
@@ -74,5 +78,6 @@ For details about what is collected, what is not collected, and how to opt out o
 - [Use cases and examples](/docs/dbt-ai/wizard-use-cases): Realistic analytics engineering scenarios
 - [Migrate from another AI agent](/docs/dbt-ai/wizard-migrate): Migrate from another AI agent to <Constant name="wizard" />
 - [CLI data use and telemetry](/docs/dbt-ai/wizard-telemetry): What <Constant name="wizard" /> CLI collects and how to opt out
+- [How to use dbt Wizard in your dbt project](/best-practices/how-to-use-wizard/wizard-1-intro) for recommended workflows
 
 <WizardFeedbackCallout />

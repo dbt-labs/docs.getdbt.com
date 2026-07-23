@@ -85,6 +85,10 @@ For refactor or change requests, <Constant name="wizard" /> automatically assess
 
 When <Constant name="wizard" /> manages deferral, you point it at a target in your `profiles.yml` and it compiles and defers to that target automatically, so it can validate against already-built upstream models without rebuilding everything. Refer to [Deferral and state](/docs/dbt-ai/wizard-how-it-works#deferral-and-state) and [About dbt State](/docs/deploy/dbt-state-about) for details.
 
+:::tip Best practices for using dbt Wizard
+Once you're set up, refer to [How to use dbt Wizard in your dbt project](/best-practices/how-to-use-wizard/wizard-1-intro) for recommended workflows on real project tasks.
+:::
+
 ## Useful terminal commands
 
 Use the following commands to get started:
@@ -114,7 +118,7 @@ If you want to re-run onboarding — re-authenticate, reset project config, or r
 - [Use cases and examples](/docs/dbt-ai/wizard-use-cases) for realistic analytics engineering scenarios
 - [Install and update reference](/docs/dbt-ai/wizard-cli) for full install, update, and uninstall details
 - [Configure BYOK](/docs/dbt-ai/wizard-byok) for managing your API key and choosing an AI model
-- [Configuration reference](/docs/dbt-ai/wizard-config) for setting persistent defaults in `config.toml` and per-project dbt settings in `wizard_config.toml`
+- [How to use dbt Wizard in your dbt project](/best-practices/how-to-use-wizard/wizard-1-intro) for recommended workflows
 - [Use skills locally](/docs/dbt-ai/wizard-skills) for giving Wizard reusable instructions for your project
 - [Use MCP servers](/docs/dbt-ai/wizard-mcp) to connect <Constant name="wizard" /> CLI to more tools and context
 - [Migrate from Claude Code](/docs/dbt-ai/wizard-migrate) for bringing existing Claude Code project context into <Constant name="wizard" />

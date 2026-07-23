@@ -175,10 +175,23 @@ Per-project settings Wizard writes during onboarding, including dbt path and def
 |-----|-------------|
 | `version` | Schema version for this file (currently `1`). Don't change this manually. |
 | `global.terms_of_use_accepted_at` | Timestamp of when you accepted the <Constant name="wizard"/> Terms of Use. Written once under the `[global]` section and applies across all projects. |
+| `global.dbt_compile_on_startup` | Whether to compile the development project at startup. Defaults to `true`. |
+| `global.prod_parse_on_startup` | Whether to parse the production environment and refresh deferral state at startup. Defaults to `true`. |
+| `global.prod_parse_args` | Arguments for the production parse. Defaults to `["parse", "--target", "prod"]`. |
+| `global.prod_state_ttl_hours` | Number of hours a production state snapshot remains fresh. Defaults to `24`. |
+| `global.prod_state_dir` | Directory for production state snapshots. Defaults to `target/prod-state` in the project. |
+| `global.compile_extra_args` | Extra arguments to append when <Constant name="wizard" /> compiles any project without a project-specific override. |
 | `onboarded_at` | Timestamp of when you onboarded this project in <Constant name="wizard"/>. |
 | `path` | Path to the dbt binary <Constant name="wizard"/> should use for this project. |
-| `deferral.mode` | Who handles [deferral](/reference/node-selection/defer) for this project. `"wizard"` means <Constant name="wizard"/> handles it &mdash; you tell it which `profiles.yml` target to defer to, and it reuses that target's models instead of rebuilding everything. `"fusion_cloud"` means the <Constant name="dbt_platform" /> handles deferral against your connected environment. Refer to [Deferral](#deferral) below. |
-| `deferral.target` | The [target](/docs/local/profiles.yml) from your `profiles.yml` that <Constant name="wizard"/> compiles and defers to when `deferral.mode` is `"wizard"` (for example, `"dev"`). |
+| `compile_extra_args` | Extra arguments to append when <Constant name="wizard" /> compiles this project. |
+| `prod_parse_args` | Project-specific arguments for the production parse command. |
+| `deferral.mode` | Who handles [deferral](/reference/node-selection/defer) for this project. Refer to [Deferral](#deferral) below. |
+| `deferral.target` | The [target](/docs/local/profiles.yml) from your `profiles.yml` that <Constant name="wizard"/> compiles and defers to when `deferral.mode` is `"wizard"` (for example, `"prod"`). |
+| `deferral.state` | Path to a state directory when `deferral.mode` is `"manual"`. |
+| `deferral.favor_state` | Whether deferred relations take precedence. Defaults to `true`. |
+| `profile_override.path` | Path to an alternative `profiles.yml` file for this project. |
+| `profile_override.profile` | Profile name to use from the selected profiles file. |
+| `profile_override.target` | Target to use from the selected profile. |
 
 </SimpleTable>
 
@@ -190,6 +203,9 @@ version = 1
 
 [global]
 terms_of_use_accepted_at = "2026-05-28T15:06:54Z"
+dbt_compile_on_startup = true
+prod_parse_on_startup = true
+prod_state_ttl_hours = 24
 
 [projects."/Users/you/jaffle-shop"]
 onboarded_at = "2026-05-20T11:09:01.410346"
@@ -197,7 +213,8 @@ path = "/Users/you/jaffle-shop/.venv/bin/dbt"
 
 [projects."/Users/you/jaffle-shop".deferral]
 mode = "wizard"
-target = "dev"
+target = "prod"
+favor_state = true
 ```
 </File>
 
@@ -205,25 +222,35 @@ target = "dev"
 
 [Deferral](/reference/node-selection/defer) lets <Constant name="wizard"/> reuse models that are already built elsewhere (for example, in production) instead of rebuilding everything when you're only working on part of a project, saving you time and warehouse cost.
 
-The `deferral.mode` setting in `wizard_config.toml` controls who handles deferral. It accepts five values, and <Constant name="wizard"/> usually sets it for you during onboarding:
+The `deferral.mode` setting in `wizard_config.toml` controls who handles deferral. It accepts six values, and <Constant name="wizard"/> usually sets it for you during onboarding:
 
 <SimpleTable>
 | `deferral.mode` value | What it means |
 |---|---|
 | `"wizard"` | <Constant name="wizard"/> handles deferral for you. You tell <Constant name="wizard"/> which [target](/docs/local/profiles.yml) from your `profiles.yml` to defer to (it tries to detect one automatically when you first set up the project). <Constant name="wizard"/> then compiles that target and reuses its models for any upstream models you haven't built yourself. |
 | `"fusion_cloud"` | The <Constant name="dbt_platform" /> handles deferral against your connected environment, so <Constant name="wizard"/> doesn't manage any local state. Set automatically when you're connected to the platform. |
-| `"dbt-state"` | dbt state handles deferral, so <Constant name="wizard"/> skips its own production compile. |
-| `"manual"` | You maintain the deferral manifest path manually. |
+| `"cloud_cli"` | The <Constant name="platform_cli" /> manages credentials and deferral through the <Constant name="dbt_platform" />, so <Constant name="wizard" /> skips its production compile and deferral flag injection. |
+| `"dbt_state"` | dbt State or run cache handles deferral, so <Constant name="wizard"/> skips its own production compile. |
+| `"manual"` | You provide the deferral manifest directory with `state`. |
 | `"disabled"` | Deferral is disabled for the project. |
 </SimpleTable>
 
 For more about dbt State, refer to [About dbt State](/docs/deploy/dbt-state-about).
 
-**About [favor-state](/reference/node-selection/defer?version=2.0#favor-state):** favor-state is a built-in dbt deferral option, not something you need to configure here &mdash; <Constant name="wizard"/> handles it for you during deferral compiles. You don't need to add `favor_state` to `wizard_config.toml`. What matters instead is that <Constant name="wizard"/> uses a valid deferral mode and state path.
+Set `state` to a directory containing a compatible `manifest.json` when `mode = "manual"`:
 
-In practice, when <Constant name="wizard"/> handles deferral it uses your own dev version of a model when you've already built one, and only falls back to the version from the deferred target for models you haven't built yet.
+```toml
+[projects."/Users/you/jaffle-shop".deferral]
+mode = "manual"
+state = "/Users/you/dbt-state/production"
+favor_state = true
+```
 
-For how this behaves during a session, refer to [Deferral and state](/docs/dbt-ai/wizard-how-it-works#deferral-and-state).
+**About [favor-state](/reference/node-selection/defer?version=2.0#favor-state):** `favor_state` is configurable and defaults to `true`. When it is `true`, <Constant name="wizard" /> passes `--favor-state` so deferred relations take precedence. Set it to `false` to use a relation that already exists in development and fall back to deferred state when it doesn't.
+
+You can also configure production snapshot and compile behavior with global `prod_parse_on_startup`, `prod_parse_args`, `prod_state_ttl_hours`, `prod_state_dir`, and `compile_extra_args` settings. Per-project `compile_extra_args` and `prod_parse_args` values let you override the global behavior for one project. Use a `profile_override` block to select a different profiles file, profile, or target for compilation.
+
+For configuration examples and a verification workflow, refer to [Developing with production deferral](/best-practices/how-to-use-wizard/wizard-6-production-deferral).
 
 ## Troubleshooting
 

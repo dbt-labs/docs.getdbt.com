@@ -104,3 +104,4 @@ And if your conventions aren't applied, check:
 - [Skills](/docs/dbt-ai/wizard-skills)
 - [Configure BYOK](/docs/dbt-ai/wizard-byok)
 - [Use cases and examples](/docs/dbt-ai/wizard-use-cases)
+- [How to use dbt Wizard in your dbt project](/best-practices/how-to-use-wizard/wizard-1-intro) for recommended workflows
