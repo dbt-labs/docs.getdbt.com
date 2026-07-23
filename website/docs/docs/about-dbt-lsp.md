@@ -5,6 +5,9 @@ description: "Learn about the dbt language server protocol (LSP) features, inclu
 sidebar_label: "About dbt LSP"
 pagination_next: null
 pagination_prev: null
+availability:
+  engine: v2
+  access: free
 ---
 
 The <Constant name="fusion_engine" /> offers benefits beyond the speed and power of the framework. The dbt VS Code extension, <Constant name="studio_ide" />, and <Constant name="insights" /> all contain a powerful set of features backed by our Language Server Protocol (LSP) that enable fast, efficient development workflows. The following features are supported across these tools:

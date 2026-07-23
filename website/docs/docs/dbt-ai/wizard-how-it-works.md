@@ -4,6 +4,7 @@ id: "wizard-how-it-works"
 description: "Understand the dbt Wizard agent loop, tools, project context, and approval workflow."
 sidebar_label: "How dbt Wizard works"
 tags: [AI, Wizard]
+availability: all_users
 ---
 
 <Constant name="wizard" /> helps teams develop, troubleshoot, harden, and ship trusted dbt projects faster and with less risk.

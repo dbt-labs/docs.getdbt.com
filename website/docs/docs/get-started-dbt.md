@@ -4,6 +4,7 @@ id: get-started-dbt
 hide_table_of_contents: true
 pagination_next: null
 pagination_prev: null
+availability: all_users
 ---
 
 Begin your dbt journey by choosing how you want to develop:

@@ -4,6 +4,7 @@ id: "dbt-versions"
 description: "Learn about semantic versioning for dbt engines, and how long those versions are supported."
 pagination_next: "docs/dbt-versions/upgrade-dbt-platform-version"
 pagination_prev: null
+availability: all_users
 ---
 
 v2 is the current generation of dbt &mdash; installing or upgrading gives you <Constant name="fusion_engine"/>, the default experience. <Constant name="core_v2"/> is the Apache 2.0 foundation underneath Fusion. <Constant name="core_v1"/> (Python-based, open-source) remains on the 1.x series and follows semantic versioning; v2 uses the 2.x series. This page covers versioning for local dbt installations.

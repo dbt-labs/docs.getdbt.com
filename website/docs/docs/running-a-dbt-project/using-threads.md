@@ -4,6 +4,7 @@ id: "using-threads"
 sidebar_label: "Use threads"
 description: "Understand what threads mean and how to use them."
 pagination_next: null
+availability: all_users
 ---
 import FusionThreads from '/snippets/_fusion-threads.md';
  

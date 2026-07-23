@@ -5,6 +5,7 @@ description: "Bring all the speed and power of the self-hosted dbt Fusion engine
 sidebar_label: "dbt VS Code extension"
 image: /img/docs/extension/extension-marketplace.png
 pagination_next: "docs/dbt-extension-features"
+availability: local_all
 ---
 
 # About the dbt VS Code extension <Lifecycle status="preview" />
@@ -50,9 +51,9 @@ Check out the following video to see the features and functionality of the dbt V
 
 ### Sign in and feature access
 
-After you install the dbt VS Code extension, all [features](/docs/dbt-extension-features) are available for 14 days with no registration! After that, [register](/docs/sign-in-dbt-extension) for a free <Constant name="dbt_platform" /> account to keep using advanced features. Previously only registered users had access to the dbt VS Code extension.
+After you install the dbt VS Code extension, all [features](/docs/dbt-extension-features) are available for 14 days with no registration. After that, most features continue to work without registration. To keep using advanced features, [register](/docs/sign-in-dbt-extension) for a free <Constant name="dbt_platform" /> account. Previously only registered users had access to the dbt VS Code extension.
 
-Without registration, the vast majority of features continue to work. Only advanced features prompt you to register or sign-in to an existing account after the trial period ends.
+Without registration, the vast majority of features continue to work. Only advanced features prompt you to register or sign in to an existing account after the trial period ends.
 
 :::note Strict static analysis requires registration
 If your project uses `static_analysis: strict` in `dbt_project.yml` or you pass `--static-analysis strict` at runtime, registration for a <Constant name="dbt_platform" /> account is required regardless of the trial status.
@@ -60,7 +61,7 @@ If your project uses `static_analysis: strict` in `dbt_project.yml` or you pass 
 
 Refer to [VS Code extension features](/docs/dbt-extension-features#feature-availability) for the full list of features and their availability.
 
-Authentication is handled by [`dbt login`](/reference/commands/login), so your login state is shared across the CLI, dbt VS Code extension, dbt State (if you log in using <Constant name="dbt_platform" />). Go through the [get started wizard](/docs/install-dbt-extension#getting-started) or run `dbt login` from your terminal, then restart or reload VS Code. The extension detects your login automatically.
+When you register or sign in for advanced features, authentication is handled by [`dbt login`](/reference/commands/login). Your login state is shared across the CLI, dbt VS Code extension, and dbt State (if you log in using <Constant name="dbt_platform" />). You can use the [get started wizard](/docs/install-dbt-extension#getting-started) or run `dbt login` from your terminal, then restart or reload VS Code. The extension detects your login automatically.
 
 ### The dbt extension menu
 

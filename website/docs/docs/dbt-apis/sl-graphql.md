@@ -3,9 +3,13 @@ title: "GraphQL"
 id: sl-graphql
 description: "Integrate and use the GraphQL API to query your metrics."
 tags: [Semantic Layer, APIs]
+availability:
+  surface: platform
+  access: paid_plan
+  minPlan: starter
 ---
 
-# GraphQL <Lifecycle status="self_service,managed,managed_plus" />
+# GraphQL
 
 [GraphQL](https://graphql.org/) (GQL) is an open-source query language for APIs. It offers a more efficient and flexible approach compared to traditional RESTful APIs. 
 

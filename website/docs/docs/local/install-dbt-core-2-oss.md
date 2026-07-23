@@ -5,6 +5,7 @@ description: "Install dbt Core 2.0, the open-source foundation behind Fusion."
 sidebar_label: "Install dbt Core 2.0"
 pagination_next: null
 pagination_prev: null
+availability: local_free
 ---
 
 

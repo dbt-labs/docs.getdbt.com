@@ -3,6 +3,7 @@ title: "MCP environment variables reference"
 sidebar_label: "Environment variables"
 description: "Condensed reference for all dbt MCP environment variables."
 id: "mcp-environment-variables"
+availability: local_free
 ---
 
 This page is a condensed reference for all environment variables used by the self-hosted dbt MCP server. For full detail on each variable (including examples), see [Set up self-hosted MCP](/docs/dbt-ai/setup-local-mcp).

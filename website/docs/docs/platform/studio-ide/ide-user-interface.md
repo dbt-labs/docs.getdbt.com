@@ -4,6 +4,9 @@ id: ide-user-interface
 description: "Develop, test, run, and build in the Studio IDE. With the Studio IDE, you can compile dbt code into SQL and run it against your database directly"
 sidebar_label: User interface
 tags: [IDE]
+availability:
+  surface: platform
+  access: login_required
 ---
 
 The [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio) is a tool for developers to effortlessly build, test, run, and version-control their dbt projects, and enhance data governance — all from the convenience of your browser. Use the <Constant name="studio_ide" /> to compile dbt code into SQL and run it against your database directly — no command line required!

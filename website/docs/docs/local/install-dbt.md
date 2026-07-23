@@ -3,6 +3,7 @@ title: Install dbt
 id: install-dbt
 description: "Learn how to install the dbt CLI and other tools in your Windows, macOS, or Linux environment"
 sidebar_label: "Install dbt"
+availability: local_free
 ---
 
 import AboutFusion from '/snippets/_about-fusion.md';

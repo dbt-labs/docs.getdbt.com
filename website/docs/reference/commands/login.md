@@ -4,6 +4,8 @@ sidebar_label: "login"
 id: "login"
 description: "Use dbt login to authenticate and unlock advanced features across dbt tools."
 intro_text: "Use dbt login to authenticate once and unlock advanced features across dbt tools."
+availability:
+  engine: v2
 ---
 
 :::info
@@ -263,7 +265,7 @@ Status: unauthenticated
 
 ### dbt license info
 
-<Constant name="fusion" /> uses local licenses to cache your logged-in state and give you access to advanced features. Run `dbt license info` as an additional check to verify the status of the license used by <Constant name="fusion" />. This is useful when an advanced feature isn't working and `dbt login status` tells you you're authenticated:
+dbt uses local licenses to cache your logged-in state and give you access to advanced features. Run `dbt license info` as an additional check to verify the status of the license used by <Constant name="fusion" />. This is useful when an advanced feature isn't working and `dbt login status` tells you you're authenticated:
 
 ```shell
 dbt license info

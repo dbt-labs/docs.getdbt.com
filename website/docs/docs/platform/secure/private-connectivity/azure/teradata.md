@@ -3,8 +3,12 @@ title: "Configuring Teradata VantageCloud and Azure Private Link"
 id: azure-teradata
 description: "Configuring Azure Private Link for Teradata VantageCloud."
 sidebar_label: "Teradata VantageCloud"
+availability:
+  surface: platform
+  access: paid_plan
+  minPlan: enterprise_plus
 ---
-# Configuring Azure Private Link for Teradata VantageCloud <Lifecycle status="managed_plus" />
+# Configuring Azure Private Link for Teradata VantageCloud
 import SetUpPages from '/snippets/_available-tiers-enterprise-plus.md';
 import PrivateLinkCreateConnection from '/snippets/_privatelink-create-connection.md';
 import PrivateLinkSLA from '/snippets/_private-connection-SLA.md';

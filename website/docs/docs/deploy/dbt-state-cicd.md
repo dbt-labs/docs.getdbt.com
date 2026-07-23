@@ -4,6 +4,7 @@ sidebar_label: "Non-interactive environment setup"
 description: "Learn how to configure dbt State authentication for CI/CD and other non-interactive environments using OAuth client credentials."
 id: "dbt-state-cicd"
 tags: ['dbt State']
+availability: everywhere_usage
 ---
 
 # Setting up dbt State for non-interactive environments <Lifecycle status="preview" />

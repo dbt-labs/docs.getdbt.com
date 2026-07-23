@@ -5,6 +5,7 @@ description: "dbt tools and resources that can be installed on your local machin
 sidebar_label: "About self-hosted installation"
 pagination_next: "docs/local/install-dbt"
 pagination_prev: null
+availability: local_free
 ---
 
 <!-- TODO: sidebar location may change in Phase 3 -->

@@ -6,6 +6,9 @@ sidebar: "dbt single-tenant release notes"
 pagination_next: null
 pagination_prev: null
 unlisted: true
+availability:
+  surface: platform
+  access: free
 ---
 
 <Constant name="dbt" /> Single-tenant release notes for weekly updates. Release notes fall into one of these categories:

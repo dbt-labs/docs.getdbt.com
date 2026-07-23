@@ -3,6 +3,7 @@ title: "Product lifecycles"
 id: "product-lifecycles"
 hide_table_of_contents: true
 description: "Learn about dbt Labs' product lifecycles."
+availability: all_users
 ---
 
 import Tabs from '@theme/Tabs';

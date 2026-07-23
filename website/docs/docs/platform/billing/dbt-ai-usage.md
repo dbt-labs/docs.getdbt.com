@@ -3,9 +3,11 @@ title: "dbt AI: Usage metering and limiting"
 id: dbt-ai-usage
 description: "Learn how dbt AI usage is metered and limited by plan."
 sidebar_label: "dbt AI usage"
+availability:
+  surface: platform
+  access: paid_plan
+  minPlan: starter
 ---
-
-<Lifecycle status="Starter, Enterprise, Enterprise+" />
 
 dbt AI usage is measured based on the number of completed AI requests, known as dbt Copilot actions. Usage limits are enforced to ensure fair access and system performance.
 

@@ -3,6 +3,8 @@ title: "Set up self-hosted MCP"
 sidebar_label: "Set up self-hosted MCP"
 description: "Learn how to set up the self-hosted dbt-mcp server"
 id: "setup-local-mcp"
+availability:
+  surface: local
 ---
 
 import MCPExample from '/snippets/_mcp-config-files.md';

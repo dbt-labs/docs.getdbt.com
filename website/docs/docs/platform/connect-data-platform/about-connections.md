@@ -5,6 +5,7 @@ description: "Information about data platform connections"
 sidebar_label: "About data platform connections"
 pagination_next: "docs/platform/connect-data-platform/connect-apache-spark"
 pagination_prev: null
+availability: platform_login
 ---
 
 The <Constant name="dbt_platform" /> can connect with a variety of data platform providers. 

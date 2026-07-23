@@ -3,6 +3,7 @@ title: "Fusion networking requirements"
 id: "fusion-networking-requirements"
 sidebar_label: "Fusion networking requirements"
 description: "Outbound network access requirements for the dbt Fusion engine, including adapter drivers, telemetry, and manifest downloads."
+
 ---
 
 # Fusion networking requirements <Lifecycle status="preview" />

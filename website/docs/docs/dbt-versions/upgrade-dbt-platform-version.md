@@ -1,6 +1,7 @@
 ---
 title: "Upgrade versions in dbt platform"
 id: "upgrade-dbt-platform-version"
+availability: platform_login
 ---
 
 import FusionDWH from '/snippets/_fusion-dwh-platform.md';
