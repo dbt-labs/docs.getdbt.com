@@ -12,6 +12,8 @@ Use <Constant name="wizard" /> CLI to turn a business question or an existing db
 
 This CLI workflow uses your project files and available dbt metadata to guide the work. You can also add the `building-dbt-semantic-layer` skill from the [dbt Agent Skills repository](https://github.com/dbt-labs/dbt-agent-skills) for reusable Semantic Layer guidance.
 
+The prompts on this page work the same way in <Constant name="dbt_platform" />.
+
 ## Before you begin
 
 Identify the following information before you ask <Constant name="wizard" /> to edit files:

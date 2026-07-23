@@ -19,6 +19,8 @@ Start <Constant name="wizard" /> from the dbt project root, and make sure the pr
 
 If you want <Constant name="wizard" /> to inspect warehouse results, you also need a working development connection and permission to query the relevant relations.
 
+The prompts on this page work the same way in <Constant name="dbt_platform" />.
+
 ## Start with a project map
 
 Ask for a read-only inventory before narrowing the investigation:

@@ -13,6 +13,8 @@ Use <Constant name="wizard" /> CLI to investigate a failed <Constant name="dbt_p
 
 Use this workflow for scheduled or deployment job failures. For errors that occur only in local development, ask <Constant name="wizard" /> to debug the local command instead.
 
+Investigating a failed <Constant name="dbt_platform" /> job is a platform-native scenario, so the same evidence-gathering approach applies whether you're prompting from <Constant name="wizard" /> CLI, <Constant name="studio_ide" />, or the <Constant name="wizard" /> home tab.
+
 ## Provide a specific failed run
 
 Start with a run ID whenever possible. Otherwise, provide the job name and approximate failure time so <Constant name="wizard" /> can distinguish the run from retries or other failures.
