@@ -1,6 +1,6 @@
 ---
 title: "Understanding a dbt project with dbt Wizard CLI"
-id: "wizard-understand-project"
+id: "wizard-2-understand-project"
 description: "Use dbt Wizard CLI to map an unfamiliar dbt project, investigate model behavior, and identify downstream impact."
 sidebar_label: "Understand a dbt project"
 tags: [AI, Wizard]
@@ -119,7 +119,7 @@ Use model owners, pull request history, and business documentation to fill these
 
 ## Related docs
 
-- [Validate dbt changes with <Constant name="wizard" />](/docs/dbt-ai/wizard-validate-changes)
+- [Validate dbt changes with <Constant name="wizard" />](/best-practices/how-to-use-wizard/wizard-3-validate-changes)
 - [<Constant name="wizard" /> use cases](/docs/dbt-ai/wizard-use-cases)
 - [How <Constant name="wizard" /> works](/docs/dbt-ai/wizard-how-it-works)
 - [About model governance](/docs/mesh/govern/about-model-governance)

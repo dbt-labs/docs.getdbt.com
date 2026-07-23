@@ -1,6 +1,6 @@
 ---
 title: "Developing with production deferral in dbt Wizard"
-id: "wizard-production-deferral"
+id: "wizard-6-production-deferral"
 description: "Configure dbt Wizard CLI to reuse production state while developing and validating a subset of a dbt project."
 sidebar_label: "Develop with production deferral"
 tags: [AI, Wizard]
@@ -139,4 +139,4 @@ Deferral changes where dbt resolves unbuilt relations. It doesn't make productio
 - [About dbt State](/docs/deploy/dbt-state-about)
 - [<Constant name="wizard" /> configuration](/docs/dbt-ai/wizard-config#deferral)
 - [How <Constant name="wizard" /> works](/docs/dbt-ai/wizard-how-it-works#deferral-and-state)
-- [Validating dbt changes with <Constant name="wizard" />](/docs/dbt-ai/wizard-validate-changes)
+- [Validating dbt changes with <Constant name="wizard" />](/best-practices/how-to-use-wizard/wizard-3-validate-changes)

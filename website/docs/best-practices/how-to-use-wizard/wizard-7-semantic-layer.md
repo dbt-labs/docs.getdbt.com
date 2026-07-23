@@ -1,6 +1,6 @@
 ---
 title: "Building Semantic Layer definitions with dbt Wizard CLI"
-id: "wizard-semantic-layer"
+id: "wizard-7-semantic-layer"
 description: "Use dbt Wizard CLI to plan, write, and validate Semantic Layer entities, dimensions, metrics, and saved queries."
 sidebar_label: "Build Semantic Layer definitions"
 tags: [AI, Wizard, Semantic Layer]
@@ -151,7 +151,7 @@ At minimum, validation should confirm that:
 - The selected metric aggregation matches the model grain.
 - Semantic Layer validation passes when the project's dbt runtime supports it.
 
-When a validation command isn't available in the current environment, <Constant name="wizard" /> should report that limitation instead of treating the work as fully validated. For a broader validation procedure, refer to [Validating dbt changes with <Constant name="wizard" />](/docs/dbt-ai/wizard-validate-changes).
+When a validation command isn't available in the current environment, <Constant name="wizard" /> should report that limitation instead of treating the work as fully validated. For a broader validation procedure, refer to [Validating dbt changes with <Constant name="wizard" />](/best-practices/how-to-use-wizard/wizard-3-validate-changes).
 
 ## Extend the first definitions
 
@@ -174,4 +174,4 @@ segment. Reuse existing entities and dimensions, and validate every reference.
 - [Metrics overview](/docs/build/metrics-overview)
 - [Use cases and examples](/docs/dbt-ai/wizard-use-cases)
 - [Use skills with <Constant name="wizard" /> CLI](/docs/dbt-ai/wizard-skills)
-- [Validating dbt changes with <Constant name="wizard" />](/docs/dbt-ai/wizard-validate-changes)
+- [Validating dbt changes with <Constant name="wizard" />](/best-practices/how-to-use-wizard/wizard-3-validate-changes)

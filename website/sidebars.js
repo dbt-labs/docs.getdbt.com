@@ -410,20 +410,6 @@ const sidebarSettings = {
               items: [
                 "docs/dbt-ai/about-dbt-wizard-cli",
                 "docs/dbt-ai/wizard-cli",
-                {
-                  type: "category",
-                  label: "Workflows",
-                  collapsed: true,
-                  items: [
-                    "docs/dbt-ai/wizard-understand-project",
-                    "docs/dbt-ai/wizard-validate-changes",
-                    "docs/dbt-ai/wizard-data-informed-tests",
-                    "docs/dbt-ai/wizard-debug-failed-job",
-                    "docs/dbt-ai/wizard-production-deferral",
-                    "docs/dbt-ai/wizard-semantic-layer",
-                    "docs/dbt-ai/wizard-plugins-hooks",
-                  ],
-                },
                 "docs/dbt-ai/wizard-byok",
                 "docs/dbt-ai/wizard-skills",
                 "docs/dbt-ai/wizard-subagents",
@@ -1872,6 +1858,23 @@ const sidebarSettings = {
             "best-practices/how-we-build-our-metrics/semantic-layer-7-semantic-structure",
             "best-practices/how-we-build-our-metrics/semantic-layer-8-refactor-a-rollup",
             "best-practices/how-we-build-our-metrics/semantic-layer-9-conclusion",
+          ],
+        },
+        {
+          type: "category",
+          label: "How to use Wizard in your dbt project",
+          link: {
+            type: "doc",
+            id: "best-practices/how-to-use-wizard/wizard-1-intro",
+          },
+          items: [
+            "best-practices/how-to-use-wizard/wizard-2-understand-project",
+            "best-practices/how-to-use-wizard/wizard-3-validate-changes",
+            "best-practices/how-to-use-wizard/wizard-4-data-informed-tests",
+            "best-practices/how-to-use-wizard/wizard-5-debug-failed-job",
+            "best-practices/how-to-use-wizard/wizard-6-production-deferral",
+            "best-practices/how-to-use-wizard/wizard-7-semantic-layer",
+            "best-practices/how-to-use-wizard/wizard-8-plugins-hooks",
           ],
         },
         {

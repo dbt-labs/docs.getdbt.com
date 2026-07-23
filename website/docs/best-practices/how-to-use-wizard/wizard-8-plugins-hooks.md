@@ -1,6 +1,6 @@
 ---
 title: "Extending dbt Wizard with plugins and hooks"
-id: "wizard-plugins-hooks"
+id: "wizard-8-plugins-hooks"
 description: "Install dbt Wizard CLI plugins from marketplaces and review lifecycle hooks before allowing them to run."
 sidebar_label: "Extend with plugins and hooks"
 tags: [AI, Wizard]
