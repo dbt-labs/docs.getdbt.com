@@ -42,6 +42,10 @@ Use <Constant name="wizard" /> in the <Constant name="dbt_platform" /> to:
 
 For more examples, visit [Use cases and examples](/docs/dbt-ai/wizard-use-cases).
 
+:::tip Best practices for using dbt Wizard
+Most of the workflows in [How to use dbt Wizard in your dbt project](/best-practices/how-to-use-wizard/wizard-1-intro) apply here too &mdash; the prompts work the same in Studio IDE and the Wizard home tab.
+:::
+
 :::tip
 Always review AI-generated content, as it may be incorrect. For prompt best practices, refer to the [Prompt cookbook](/guides/prompt-cookbook).
 :::

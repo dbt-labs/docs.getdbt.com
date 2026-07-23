@@ -43,6 +43,10 @@ Use <Constant name="wizard" /> in the home tab to:
 - **Generate and refine transformation logic**: Build or rewrite models, tests, documentation, and semantic definitions from plain-language prompts.
 - **Run validation workflows**: Execute compile and build checks to validate proposed changes before they're persisted.
 
+:::tip Best practices for using dbt Wizard
+Refer to [How to use dbt Wizard in your dbt project](/best-practices/how-to-use-wizard/wizard-1-intro) for recommended workflows &mdash; including [debugging a failed job](/best-practices/how-to-use-wizard/wizard-5-debug-failed-job), which applies directly to the home tab.
+:::
+
 :::tip
 Always review AI-generated content before applying it. For prompt best practices, refer to the [Prompt cookbook](/guides/prompt-cookbook).
 :::

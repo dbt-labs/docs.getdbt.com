@@ -55,6 +55,10 @@ Use <Constant name="wizard" /> CLI to:
 
 For more examples, visit [Use cases and examples](/docs/dbt-ai/wizard-use-cases).
 
+:::tip Best practices for using dbt Wizard
+For recommended workflows on real project tasks, refer to [How to use dbt Wizard in your dbt project](/best-practices/how-to-use-wizard/wizard-1-intro).
+:::
+
 <WizardSupportedProviders />
 
 Looking for the in-platform experience? Visit [About <Constant name="wizard" /> in the dbt platform](/docs/platform/wizard-platform).
