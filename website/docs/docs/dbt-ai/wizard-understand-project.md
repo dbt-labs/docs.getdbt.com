@@ -6,7 +6,6 @@ sidebar_label: "Understand a dbt project"
 tags: [AI, Wizard]
 ---
 
-# Understanding a dbt project with <Constant name="wizard" /> CLI
 
 <IntroText>
 Use <Constant name="wizard" /> CLI to move from a broad project map to evidence-backed answers about model logic, lineage, tests, and data.
