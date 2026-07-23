@@ -51,6 +51,7 @@ wizard plugin marketplace list
 
 Before installing a plugin, inspect the marketplace snapshot and the plugin's `.dbt-wizard-plugin/plugin.json`. Review any referenced skills, MCP server configuration, apps, hook files, and executable scripts.
 
+Use ` wizard plugin --help` to view the rest of the plugin commands in the <Constant name="wizard"/> CLI.
 ## Install and inspect a plugin
 
 List the available plugins and their installation state:
