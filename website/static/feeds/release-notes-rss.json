@@ -1,7 +1,7 @@
 {
   "version": "https://jsonfeed.org/version/1",
   "title": "dbt platform release notes",
-  "home_page_url": "https://docs.getdbt.com/docs/dbt-versions/dbt-cloud-release-notes",
+  "home_page_url": "https://docs.getdbt.com/docs/dbt-versions/release-notes",
   "description": "dbt provides release notes for the dbt platform so you can see recent and historical changes.",
   "items": []
 }

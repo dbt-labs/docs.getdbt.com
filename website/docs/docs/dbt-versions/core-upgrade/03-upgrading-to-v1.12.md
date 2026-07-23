@@ -155,6 +155,7 @@ You can read more about each of these behavior changes in the following links:
 
 ### BigQuery
 
+- BigQuery now supports [parallel microbatch execution](/docs/build/parallel-batch-execution), in addition to Snowflake.
 - Added the [`bigquery_use_standard_sql_for_partitions`](/reference/global-configs/bigquery-changes#the-bigquery_use_standard_sql_for_partitions-flag) flag, which controls whether `get_partitions_metadata()` uses standard SQL (`INFORMATION_SCHEMA.PARTITIONS`) or legacy SQL (`$__PARTITIONS_SUMMARY__`). The flag defaulted to `false` when first introduced in this release, but has been flipped to `true` by default ahead of BigQuery's [legacy SQL deprecation on June 1, 2026](https://docs.cloud.google.com/bigquery/docs/release-notes#February_25_2026). To revert to legacy SQL, set the flag to `false` in `dbt_project.yml`.
 - Added the [`bigquery_reject_wildcard_metadata_source_freshness`](/reference/global-configs/bigquery-changes#the-bigquery_reject_wildcard_metadata_source_freshness-flag) flag. When you set this flag to `true`, dbt raises a `DbtRuntimeError` if you run metadata-based source freshness checks with wildcard table identifiers (for example, `events_*`), preventing incorrect freshness results.
 - You can configure BigQuery job link logging with `job_link_info_level_log`. By default, dbt logs job links at the debug level. To log job links at the info level, set `job_link_info_level_log: true` in your BigQuery profile. This makes job links visible in dbt logs for easier access to the BigQuery console. For more information, see [BigQuery setup](/docs/local/connect-data-platform/bigquery-setup#job_link_info_level_log).
@@ -175,7 +176,7 @@ You can read more about each of these behavior changes in the following links:
 
 ## Quick hits
 
-- dbt now surfaces occasional, non-blocking CLI hints that suggest ways to optimize your project. Hints are enabled by default. Disable them with `--no-hints-enabled` or `hints_enabled: false` in `dbt_project.yml`.
+- dbt now surfaces occasional, non-blocking hints that suggest ways to optimize your project. Hints are enabled by default. Disable them with the [`hints_enabled` flag](/reference/global-configs/about-global-configs).
 - <Constant name="core" /> v1.12 now tolerates Fusion-specific names in [`warn_error_options`](/reference/global-configs/warnings) instead of raising an error. If your config includes a Fusion-specific name (for example, `StaticAnalysis`, `PackageParsingCompatibility`), <Constant name="core" /> ignores it and emits a note: `<name> is not being used because it's specific to the dbt Fusion engine.` This lets you share `warn_error_options` configs across <Constant name="core" /> and <Constant name="fusion" />.
 - Macros invoked with the [`dbt run-operation`](/reference/commands/run-operation) command can now `ref()` models with `private` or `protected` [access](/reference/resource-configs/access) without raising a `DbtReferenceError`. Because macros are not part of the group and access control system, dbt doesn't enforce group membership when a macro called by `run-operation` references a model.
 - `dbt seed` now supports the [`--empty`](/reference/commands/seed#the---empty-flag) flag. Use it to create seed tables with the correct schema but without loading any data.

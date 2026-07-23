@@ -1,7 +1,7 @@
 ---
 title: "dbt release notes"
 description: "dbt release notes"
-id: "dbt-cloud-release-notes"
+id: "release-notes"
 sidebar: "dbt release notes"
 pagination_next: null
 pagination_prev: null
@@ -14,13 +14,24 @@ pagination_prev: null
 - **Fix:** Bug and security fixes
 - **Behavior change:** A change to existing behavior that doesn't fit into the other categories, such as feature deprecations or changes to default settings
 
-Release notes are grouped by month for both multi-tenant and virtual private cloud (VPC) environments.
+Release notes are grouped by month for both multi-tenant and virtual private cloud (VPC) environments. <span><img src="/img/fontawesome/rss.svg" alt="RSS" className="rss-icon" />Subscribe to release note updates via [RSS](/feeds/release-notes-rss.xml), [Atom](/feeds/release-notes-atom.xml), or [JSON Feed](/feeds/release-notes-rss.json).</span>
 
 For <Constant name="fusion_engine" /> updates, refer to the [dbt-fusion changelog](https://github.com/dbt-labs/dbt-core/blob/main/CHANGELOG-fusion.md).
 
-
 ## July 2026
 
+- **Enhancement:** <Constant name="catalog" /> now supports a **Warn** last-run status. Resources whose last run completed with warnings show a distinct status and tooltip, and you can filter by **Warn** alongside other run statuses.
+- **New:** You can now create hybrid jobs to track runs triggered by an external orchestrator. Hybrid jobs have a simplified setup that omits execution steps, triggers, advanced settings, and cost-optimization controls. They display **Externally triggered** as their next-run schedule and are available only for projects configured as [Hybrid projects](/docs/deploy/hybrid-projects).
+- **Enhancement:** Runs using a <Constant name="fusion" /> dbt version now invoke the built-in [`dbt lint`](/reference/commands/lint) command instead of SQLFluff. <Constant name="fusion" /> virtual environments do not include SQLFluff, so linting now works for all Fusion-version runs and runs faster.
+- **Enhancement:** When the agent compresses conversation context in the background, a spinner labeled **Optimizing conversation context…** now appears in the chat area. Submitting new messages and stopping the agent are disabled while compaction is in progress to prevent conflicts.
+- **Enhancement:** When [<Constant name="wizard" />](/docs/platform/wizard-platform) is unavailable (not activated, trial expired, or spend limit reached), <Constant name="studio_ide" /> now shows a dedicated screen with the specific reason and an appropriate action instead of a generic message.
+- **Enhancement:** The users table, group member lists, and user edit drawer now search, filter, sort, and paginate server-side. On large accounts, all users are findable by name, email, or license type, group member search no longer misses results beyond the first page, and users beyond the first page can be opened and edited in the user edit drawer.
+- **Enhancement:** The **Enable global account discovery** setting on the **Account settings** page is now visible to all entitled accounts without requiring a feature flag. You can allow or restrict account discovery from [Account settings](/docs/platform/account-settings#enable-global-account-discovery).
+- **Enhancement:** Credential-level [connection overrides](/docs/dbt-platform-environments#extended-attributes) (such as Databricks catalog, Snowflake warehouse, role, and database) are now surfaced as a read-only **Connection overrides** section in the profile details view, without requiring you to open the edit form.
+- **Fix:** When a run pod is Out of Memory (OOM)-killed and restarted, the platform now passes the correct status code and message to the config API so the run transitions to a failed state in the <Constant name="dbt_platform" /> UI instead of remaining **running** indefinitely.
+- **Fix:** The Secure Shell (SSH) connection and authentication timeouts for <Constant name="semantic_layer" /> data platform connections are now 30 seconds (previously 1 second). If your bastion host or network path has higher latency, you will no longer experience deterministic connection failures. Refer to [Set up the <Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/setup-sl) for more information.
+- **Fix:** Some types of Compile SQL queries are now rejected if they are too complex. If a request fails with a validation error, try reducing the number of metrics or group-by dimensions in the query.
+- **Behavior change:** You can no longer create a [service token](/docs/dbt-apis/service-tokens) using an account-scoped [personal access token](/docs/dbt-apis/user-tokens) (PAT). Requests to the service tokens endpoint authenticated with a PAT now return a `400` error. Use a service token to create new ones instead.
 - **New:** You can now access dbt State settings from **Account settings** > **Billing & Usage**, previously found under **State**. You can manage your trial, enable dbt State on environments and jobs, and set spend alerts &mdash; all in one place. For details, refer to [dbt State trial and billing](/docs/deploy/dbt-state-trial).
 
 ## June 2026
