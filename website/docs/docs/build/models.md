@@ -4,6 +4,7 @@ description: "Understand the role of dbt models transforming your data into anal
 id: "models"
 pagination_next: "docs/build/sql-models"
 pagination_prev: null
+availability: all_users
 ---
 
 dbt Core and Cloud are composed of different moving parts working harmoniously. All of them are important to what dbt does — transforming data—the 'T' in ELT. When you execute `dbt run`, you are running a model that will transform your data without that data ever leaving your warehouse.

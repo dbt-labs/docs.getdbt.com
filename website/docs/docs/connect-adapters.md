@@ -1,6 +1,7 @@
 ---
 title: "Connect to adapters"
 id: "connect-adapters"
+availability: all_users
 ---
 
 Adapters are an essential component of dbt. At their most basic level, they are how dbt connects with the various supported data platforms. At a higher-level, adapters strive to give analytics engineers more transferrable skills as well as standardize how analytics projects are structured. Gone are the days where you have to learn a new language or flavor of SQL when you move to a new job that has a different data platform. That is the power of adapters in dbt &mdash; for more detail, refer to the [Build, test, document, and promote adapters](/guides/adapter-creation) guide.

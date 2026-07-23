@@ -15,6 +15,7 @@ meta:
   slack_channel_link: 'https://getdbt.slack.com/archives/C027B6BHMT3'
   platform_name: 'Teradata'
   config_page: '/reference/resource-configs/teradata-configs'
+availability: local_free
 ---
 
 

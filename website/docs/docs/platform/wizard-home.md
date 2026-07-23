@@ -4,13 +4,17 @@ id: "wizard-home"
 description: "Use the dbt Wizard home tab in the dbt platform for an agent-native development workflow — iterate in natural language, review inline diffs and DAG previews, and validate changes without leaving the agent."
 sidebar_label: "Wizard home tab"
 tags: [AI, Wizard, Platform]
+availability:
+  surface: platform
+  access: paid_plan
+  minPlan: starter
 image: /img/docs/dbt-platform/wizard-home-empty.png
 ---
 
 import WizardPlatformPreviewDisclaimer from '/snippets/_wizard-platform-preview-disclaimer.md';
 import WizardFeedbackCallout from '/snippets/_wizard-feedback-callout.md';
 
-# dbt Wizard home tab <Lifecycle status="beta,self_service,managed,managed_plus" />
+# dbt Wizard home tab <Lifecycle status="beta" />
 
 <IntroText>
 The <Constant name="wizard" /> home tab is an agent-native development experience in the <Constant name="dbt_platform" />. It centers your workflow around collaborating with the agent itself &mdash; iterating through natural language, reviewing generated changes, and validating outcomes &mdash; without the overhead of a traditional IDE environment.

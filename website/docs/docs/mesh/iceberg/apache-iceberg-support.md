@@ -4,6 +4,7 @@ id: apache-iceberg-support
 sidebar_label: "Apache Iceberg support"
 pagination_next: "docs/mesh/iceberg/about-catalogs"
 description: Understand dbt platform support for Iceberg catalogs.
+availability: all_users
 ---
 
 Apache Iceberg is an open standard table format that brings greater portability and interoperability to the data ecosystem. By standardizing how data is stored and accessed, Iceberg enables teams to work across different engines and platforms with confidence. It has many components to it but the main ones that dbt interacts with are:

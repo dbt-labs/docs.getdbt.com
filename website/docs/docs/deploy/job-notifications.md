@@ -2,6 +2,7 @@
 title: "Job notifications"
 id: "job-notifications"
 description: "Set up notifications in dbt to receive email or Slack alerts about job run status."
+availability: platform_login
 ---
 
 Set up notifications in <Constant name="dbt_platform" /> to receive alerts about the outcome of a job run. You can choose to be notified by one or more of the following job run outcomes:

@@ -4,6 +4,7 @@ sidebar_label: "Enable in Studio"
 description: "Enable dbt State in the dbt Studio IDE for faster development runs, either at the environment level or per user."
 id: "dbt-state-enable-studio"
 tags: ['dbt State']
+availability: everywhere_usage
 ---
 
 # Enabling dbt State in Studio <Lifecycle status="preview" />

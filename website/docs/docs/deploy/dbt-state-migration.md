@@ -4,6 +4,7 @@ sidebar_label: "Migrate from state-aware orchestration"
 description: "Step-by-step guide for migrating from state-aware orchestration to dbt State."
 id: "dbt-state-migration"
 tags: ['dbt State'] 
+availability: everywhere_usage
 ---
 
 import DbtStateVsSao from '/snippets/_dbt-state-vs-sao.md';

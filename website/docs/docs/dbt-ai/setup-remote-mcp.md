@@ -3,6 +3,9 @@ title: "Set up remote MCP"
 sidebar_label: "Set up remote MCP"
 description: "Learn how to set up the remote dbt-mcp server"
 id: "setup-remote-mcp"
+availability:
+  surface: platform
+  access: login_required
 ---
 
 import MCPCreditUsage from '/snippets/_mcp-credit-usage.md';

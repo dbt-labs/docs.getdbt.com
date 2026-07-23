@@ -15,6 +15,7 @@ meta:
   slack_channel_link: 'https://www.getdbt.com/community'
   platform_name: 'Yellowbrick Data'
   config_page: '/reference/resource-configs/yellowbrick-configs'
+availability: local_free
 ---
 
 

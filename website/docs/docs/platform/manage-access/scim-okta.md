@@ -3,11 +3,13 @@ title: "Set up SCIM with Okta"
 description: "Configure SCIM for Okta to automate user and group provisioning and license assignment."
 id: "scim-okta"
 sidebar_label: "Set up SCIM with Okta"
+availability:
+  surface: platform
+  access: paid_plan
+  minPlan: enterprise
 ---
 
 import ScimAssignGroupPermissions from '/snippets/_scim-assign-group-permissions.md';
-
-# Set up SCIM with Okta <Lifecycle status="managed, managed_plus" />
 
 
 :::info SCIM available for Okta

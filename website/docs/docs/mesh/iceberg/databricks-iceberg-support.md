@@ -3,6 +3,7 @@ title: "Databricks and Apache Iceberg"
 id: databricks-iceberg-support
 sidebar_label: "Databricks Iceberg support"
 description: Understand Databricks support for Apache Iceberg.
+availability: all_users
 ---
 
 import BaseLocationEnvIsolation from '/snippets/_base-location-env-isolation-warning.md';

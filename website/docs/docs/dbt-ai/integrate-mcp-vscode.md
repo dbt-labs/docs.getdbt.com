@@ -3,6 +3,7 @@ title: "Integrate VS Code with MCP"
 sidebar_label: "Integrate VS Code with MCP"
 description: "Guide to set up VS Code with dbt-mcp"
 id: "integrate-mcp-vscode"
+availability: all_users
 ---
 
 import MCPExample from '/snippets/_mcp-config-files.md';

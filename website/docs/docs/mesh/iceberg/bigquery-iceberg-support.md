@@ -3,6 +3,7 @@ title: "BigQuery and Apache Iceberg"
 id: bigquery-iceberg-support
 sidebar_label: "BigQuery Iceberg support"
 description: Understand BigQuery support for Apache Iceberg.
+availability: all_users
 ---
 
 import BaseLocationEnvIsolation from '/snippets/_base-location-env-isolation-warning.md';

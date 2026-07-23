@@ -4,6 +4,7 @@ sidebar_label: "About dbt State"
 description: "Learn about dbt State, its benefits, and key concepts for running only what has changed in your dbt project."
 id: "dbt-state-about"
 tags: ['dbt State']
+availability: everywhere_usage
 ---
 
 # About dbt State <Lifecycle status="preview" />
