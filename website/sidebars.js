@@ -761,6 +761,7 @@ const sidebarSettings = {
       link: { type: "doc", id: "docs/mesh/about-mesh" },
       items: [
         "docs/mesh/about-mesh",
+        "docs/mesh/cross-platform-mesh",
         {
           type: "category",
           label: "Model governance",
