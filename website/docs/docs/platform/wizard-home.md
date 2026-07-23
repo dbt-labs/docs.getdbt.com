@@ -8,6 +8,7 @@ availability:
   surface: platform
   access: paid_plan
   minPlan: starter
+image: /img/docs/dbt-platform/wizard-home-empty.png
 ---
 
 import WizardPlatformPreviewDisclaimer from '/snippets/_wizard-platform-preview-disclaimer.md';
@@ -22,8 +23,8 @@ The <Constant name="wizard" /> home tab is an agent-native development experienc
 <WizardFeedbackCallout />
 
 <DocCarousel slidesPerView={1}>
-<Lightbox src="/img/docs/dbt-platform/wizard-home-agent.png" width="95%" title="dbt Wizard home tab — agent refactoring a model with an inline SQL diff" />
 <Lightbox src="/img/docs/dbt-platform/wizard-home-empty.png" width="95%" title="dbt Wizard home tab — empty state with quick-start prompts" />
+<Lightbox src="/img/docs/dbt-platform/wizard-home-agent.png" width="95%" title="dbt Wizard agent refactoring a docs github model for tech writers :) " />
 </DocCarousel>
 
 The <Constant name="wizard" /> home tab is complementary to the [<Constant name="wizard" /> experience in <Constant name="studio_ide" />](/docs/dbt-ai/wizard-ide). Where the <Constant name="studio_ide" /> supports users working directly within a traditional IDE environment, the home tab is purpose-built for agent-native development &mdash; it reduces overhead and keeps you focused on supervising and validating agent-generated work.
@@ -46,6 +47,10 @@ Use <Constant name="wizard" /> in the home tab to:
 - **Make model and project changes**: Refactor SQL, update YAML, and modify project configuration through natural language.
 - **Generate and refine transformation logic**: Build or rewrite models, tests, documentation, and semantic definitions from plain-language prompts.
 - **Run validation workflows**: Execute compile and build checks to validate proposed changes before they're persisted.
+
+:::tip Best practices for using dbt Wizard
+Refer to [How to use dbt Wizard in your dbt project](/best-practices/how-to-use-wizard/wizard-1-intro) for recommended workflows &mdash; including [debugging a failed job](/best-practices/how-to-use-wizard/wizard-5-debug-failed-job), which applies directly to the home tab.
+:::
 
 :::tip
 Always review AI-generated content before applying it. For prompt best practices, refer to the [Prompt cookbook](/guides/prompt-cookbook).

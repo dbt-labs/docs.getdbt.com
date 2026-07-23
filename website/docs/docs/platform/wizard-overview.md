@@ -32,6 +32,10 @@ Think of it like a map of your city: <Constant name="wizard" /> knows how everyt
 - **Complete workflow:** Investigate, change, validate, and review in one place
 - **Setup and governance:** Works out of the box with dbt governance built in
 
+:::tip Best practices for using dbt Wizard
+For recommended workflows on real project tasks &mdash; understanding a project, validating changes, debugging a failed job, and more &mdash; refer to [How to use dbt Wizard in your dbt project](/best-practices/how-to-use-wizard/wizard-1-intro).
+:::
+
 ## Use dbt Wizard
 
 <Constant name="wizard" /> is for anyone doing dbt development — from analytics engineers working in a self-hosted setup in the terminal to teams building in the <Constant name="dbt_platform" />. You can use it in the platform with managed or bring-your-own-key (BYOK) credentials, or in the terminal with your own key, with or without a <Constant name="dbt_platform" /> account.
