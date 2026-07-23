@@ -25,6 +25,11 @@ Common use cases for <Constant name="wizard" />, with example prompts and what t
 
 This page assumes you're using <Constant name="wizard" /> in the terminal with an active session or in <Constant name="dbt_platform" />. For examples of using <Constant name="wizard" /> in the Studio IDE, refer to the [Prompt cookbook](/guides/prompt-cookbook). To use <Constant name="wizard" /> in the CLI, use the `wizard` [command reference](/docs/dbt-ai/wizard-cli-reference).
 
+
+:::tip Best practices for using dbt Wizard
+Once you're set up, refer to [How to use dbt Wizard in your dbt project](/best-practices/how-to-use-wizard/wizard-1-intro) for recommended workflows on real project tasks.
+:::
+
 ## Build a new model
 
 You have clean source data and want a new mart model without writing all the SQL by hand.
