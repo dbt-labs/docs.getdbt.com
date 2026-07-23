@@ -8,7 +8,7 @@ image: /img/docs/platform-integrations/auto-exposures/explorer-lineage.png
 availability:
   surface: platform
   access: paid_plan
-  plans: [enterprise, enterprise_plus]
+  minPlan: enterprise
 ---
 
 # Visualize downstream exposures

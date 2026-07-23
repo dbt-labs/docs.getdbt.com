@@ -6,7 +6,7 @@ description: "Required actions for migrating to Auth0 for SSO services on dbt."
 availability:
   surface: platform
   access: paid_plan
-  plans: [enterprise, enterprise_plus]
+  minPlan: enterprise
 ---
 
 # Migrating to Auth0 for SSO

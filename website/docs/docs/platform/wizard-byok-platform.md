@@ -5,7 +5,7 @@ description: "Bring your own API key to use dbt Wizard and dbt Copilot in dbt pl
 availability:
   surface: platform
   access: paid_plan
-  plans: [starter, enterprise, enterprise_plus]
+  minPlan: starter
 ---
 
 import WizardSupportedProviders from '/snippets/_wizard-supported-providers.md';

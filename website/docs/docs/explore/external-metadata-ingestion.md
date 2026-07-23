@@ -5,7 +5,7 @@ description: "Connect directly to your data warehouse, giving you visibility int
 availability:
   surface: platform
   access: paid_plan
-  plans: [enterprise, enterprise_plus]
+  minPlan: enterprise
 ---
 
 # External metadata ingestion <Lifecycle status="preview" />

@@ -7,7 +7,7 @@ tags: [AI, Wizard, Platform]
 availability:
   surface: platform
   access: paid_plan
-  plans: [starter, enterprise, enterprise_plus]
+  minPlan: starter
 ---
 
 import WizardPlatformPreviewDisclaimer from '/snippets/_wizard-platform-preview-disclaimer.md';

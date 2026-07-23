@@ -6,7 +6,7 @@ sidebar: "SCIM FAQ and troubleshooting"
 availability:
   surface: platform
   access: paid_plan
-  plans: [enterprise, enterprise_plus]
+  minPlan: enterprise
 ---
 
 # SCIM FAQs and troubleshooting

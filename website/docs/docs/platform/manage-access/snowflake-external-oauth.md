@@ -8,7 +8,7 @@ pagination_prev: null
 availability:
   surface: platform
   access: paid_plan
-  plans: [enterprise, enterprise_plus]
+  minPlan: enterprise
 ---
 
 # Set up external OAuth with Snowflake

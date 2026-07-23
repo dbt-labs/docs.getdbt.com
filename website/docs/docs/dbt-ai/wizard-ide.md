@@ -7,7 +7,7 @@ tags: [AI, Agents, Studio]
 availability:
   surface: platform
   access: paid_plan
-  plans: [starter, enterprise, enterprise_plus]
+  minPlan: starter
 ---
 
 import CopilotResources from '/snippets/_use-copilot-resources.md';

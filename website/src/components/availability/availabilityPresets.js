@@ -1,25 +1,24 @@
-// Availability answers three independent questions for the reader:
+// Availability answers two independent questions for the reader:
 //   engine:  which dbt version line does this apply to? (v1 | v2 | all/omitted)
-//   surface: where does this feature live? (local/self-hosted | local_development | platform | everywhere/omitted)
-//   compatibility: what can it connect to? (platform | omitted)
+//   surface: where does this feature live? (local | local_development | platform | everywhere/omitted)
 //   access:  what do I need to use it? (free | login_required | paid_plan | usage_based)
 //
 // These facets are independent — any can render without the others.
 //
 // Example frontmatter:
-//   availability: platform_starter
-//   availability: platform // available to all dbt platform users
-// or, for multi-plan features:
+//   availability: platform_login
+// or, for paid-plan features (minPlan is a tier and everything above it — "starter" means starter+):
 //   availability:
 //     engine: v2
 //     surface: platform
 //     access: paid_plan
-//     plans: [starter, enterprise, enterprise_plus]
+//     minPlan: starter
+// plans: [...] is still supported as an explicit list, for the rare feature that
+// doesn't follow the tier ladder (e.g. Starter-only, with no Enterprise equivalent).
 
 export const FIELD_LABELS = {
   engine: 'Version',
   surface: 'Where',
-  compatibility: 'Works with',
   access: 'Access',
 };
 
@@ -44,45 +43,36 @@ export function getEngineFacet(engine) {
   return { facet: label, tooltip: ENGINE_TOOLTIPS[engine] };
 }
 
+// local and local_development render the same "Local development" badge — the
+// distinction (CLI-only vs platform-compatible) lives in the tooltip, not the chip.
 export const SURFACE_LABELS = {
-  local: 'Self-hosted',
+  local: 'Local development',
   local_development: 'Local development',
   platform: 'dbt platform',
 };
 
 export const SURFACE_TOOLTIPS = {
-  local: 'Runs on your own infrastructure.',
-  local_development: 'Runs locally.',
+  local: 'Runs locally.',
+  local_development: 'Runs locally. Works with dbt platform or local dbt projects.',
   platform: 'Available in the dbt platform.',
 };
 
-export const COMPATIBILITY_LABELS = {
-  platform: 'dbt platform',
-  platform_all_versions: 'dbt platform',
-};
-
-export const COMPATIBILITY_TOOLTIPS = {
-  platform: 'Works with dbt platform or open source dbt Core 2.0 projects.',
-  platform_all_versions: 'Works with dbt platform or open source dbt Core projects.',
-};
-
-export const COMPATIBILITY_TOOLTIP_LINKS = {
-  platform: {
-    href: '/docs/platform/dbt-cli-installation',
-    text: 'dbt platform',
-  },
-  platform_all_versions: {
+// Link text within a SURFACE_TOOLTIPS entry, keyed by surface.
+export const SURFACE_TOOLTIP_LINKS = {
+  local_development: {
     href: '/docs/platform/dbt-cli-installation',
     text: 'dbt platform',
   },
 };
 
 export const PLAN_LABELS = {
-  developer: 'Developer',
   starter: 'Starter',
   enterprise: 'Enterprise',
   enterprise_plus: 'Enterprise+',
 };
+
+// Order matters: minPlan expands to this tier and everything after it ("and up").
+const PLAN_TIER_ORDER = ['starter', 'enterprise', 'enterprise_plus'];
 
 const ACCESS_TOOLTIPS = {
   Free: 'No account needed.',
@@ -99,23 +89,30 @@ function planListLabel(plans) {
 }
 
 function planTooltip(plans) {
-  if (plans.length === 1 && plans[0] === 'developer') {
-    return 'Free plan and up.';
-  }
   return `Requires ${planListLabel(plans)}.`;
 }
 
+// minPlan is the common case: a tier and everything above it ("starter" -> starter+enterprise+enterprise_plus).
+// plans is an explicit list, for the rare feature that doesn't follow the tier ladder.
+function resolvePlans(minPlan, plans) {
+  if (minPlan) {
+    const index = PLAN_TIER_ORDER.indexOf(minPlan);
+    return index === -1 ? [] : PLAN_TIER_ORDER.slice(index);
+  }
+  return plans && plans.length ? plans : [];
+}
+
 // Returns an ordered list of { facet, tooltip } for the access badge/tooltip rows.
-export function getAccessFacets(access, plans, surface) {
+export function getAccessFacets(access, { minPlan, plans } = {}, surface) {
   switch (access) {
     case 'free':
       // Free is only rendered paired with the platform surface (rule: bare "dbt platform"
-      // badge could read as paid). Self-hosted/everywhere default to free implicitly.
+      // badge could read as paid). Local development/everywhere default to free implicitly.
       return surface === 'platform' ? [{ facet: 'Free', tooltip: ACCESS_TOOLTIPS.Free }] : [];
     case 'login_required':
       // On the platform surface, "Login required" is redundant — you can't use dbt
       // platform without an account, so it's collapsed away (same pattern as "free" above).
-      // Self-hosted/everywhere still show it since login isn't implied there.
+      // Local development/everywhere still show it since login isn't implied there.
       return surface === 'platform' ? [] : [{ facet: 'Login required', tooltip: ACCESS_TOOLTIPS['Login required'] }];
     case 'usage_based':
       return [
@@ -123,7 +120,7 @@ export function getAccessFacets(access, plans, surface) {
         { facet: 'Usage-based', tooltip: ACCESS_TOOLTIPS['Usage-based'] },
       ];
     case 'paid_plan': {
-      const planList = plans && plans.length ? plans : [];
+      const planList = resolvePlans(minPlan, plans);
       if (!planList.length) {
         return [];
       }
@@ -139,63 +136,19 @@ export const availabilityPresets = {
     description: 'Applies to every dbt user, regardless of surface. No badge is rendered.',
     access: 'free',
   },
-  platform_free: {
-    description: 'dbt platform features with no login or plan requirement.',
-    surface: 'platform',
-    access: 'free',
-  },
   platform_login: {
     description: 'dbt platform features available to all signed-in users.',
     surface: 'platform',
     access: 'login_required',
   },
-  platform_developer: {
-    description: 'dbt platform features available on the free Developer plan and up.',
-    surface: 'platform',
-    access: 'paid_plan',
-    plans: ['developer'],
-  },
-  platform_starter: {
-    description: 'dbt platform features gated to the Starter plan and up.',
-    surface: 'platform',
-    access: 'paid_plan',
-    plans: ['starter'],
-  },
-  platform_enterprise: {
-    description: 'dbt platform features gated to the Enterprise plan.',
-    surface: 'platform',
-    access: 'paid_plan',
-    plans: ['enterprise'],
-  },
-  platform_enterprise_plus: {
-    description: 'dbt platform features gated to the Enterprise+ plan.',
-    surface: 'platform',
-    access: 'paid_plan',
-    plans: ['enterprise_plus'],
-  },
   local_free: {
-    description: 'Self-hosted tools with no login required.',
+    description: 'Local CLI tools with no login required.',
     surface: 'local',
     access: 'free',
   },
   local_all: {
-    description: 'Local tools for open-source dbt Core v2.0 and dbt platform-connected projects.',
+    description: 'Local tools for open-source dbt Core and dbt platform-connected projects, any version.',
     surface: 'local_development',
-    compatibility: 'platform',
-  },
-  local_all_versions: {
-    description: 'Local tools for open-source dbt Core and dbt platform-connected projects.',
-    surface: 'local_development',
-    compatibility: 'platform_all_versions',
-  },
-  local_login: {
-    description: 'Self-hosted tools that need a free dbt account.',
-    surface: 'local',
-    access: 'login_required',
-  },
-  everywhere_login: {
-    description: 'Cross-surface features that need a free dbt account, but no paid plan.',
-    access: 'login_required',
   },
   everywhere_usage: {
     description: 'Cross-surface features that need a dbt account and are billed on usage.',

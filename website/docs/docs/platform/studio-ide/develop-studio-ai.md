@@ -5,7 +5,7 @@ description: "Leverage AI to develop dbt projects in the Studio IDE"
 availability:
   surface: platform
   access: paid_plan
-  plans: [starter, enterprise, enterprise_plus]
+  minPlan: starter
 ---
 
 import CopilotWizardDifferences from '/snippets/_copilot-wizard-diff.md';

@@ -7,7 +7,7 @@ sidebar_label: "Cache common queries"
 availability:
   surface: platform
   access: paid_plan
-  plans: [enterprise, enterprise_plus]
+  minPlan: enterprise
 ---
 
 # Cache common queries

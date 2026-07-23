@@ -8,7 +8,7 @@ keyword: dbt mesh, project dependencies, ref, cross project ref, project depende
 availability:
   surface: platform
   access: paid_plan
-  plans: [enterprise, enterprise_plus]
+  minPlan: enterprise
 ---
 
 # Project dependencies

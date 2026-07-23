@@ -6,7 +6,7 @@ sidebar_label: "Set up SCIM with Okta"
 availability:
   surface: platform
   access: paid_plan
-  plans: [enterprise, enterprise_plus]
+  minPlan: enterprise
 ---
 
 import ScimAssignGroupPermissions from '/snippets/_scim-assign-group-permissions.md';

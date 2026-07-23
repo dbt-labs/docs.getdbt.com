@@ -7,7 +7,7 @@ tags: ['SAO', 'cost savings', 'models built', 'cost insights', 'cost reductions'
 availability:
   surface: platform
   access: paid_plan
-  plans: [enterprise, enterprise_plus]
+  minPlan: enterprise
 ---
 
 import SaoDeprecated from '/snippets/_sao-deprecated.md';

@@ -6,7 +6,7 @@ sidebar_label: "Set up service user"
 availability:
   surface: platform
   access: paid_plan
-  plans: [enterprise, enterprise_plus]
+  minPlan: enterprise
 ---
 
 ## Service user overview

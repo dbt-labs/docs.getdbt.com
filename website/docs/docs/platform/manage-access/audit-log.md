@@ -8,7 +8,7 @@ pagination_prev: "docs/platform/manage-access/about-user-access"
 availability:
   surface: platform
   access: paid_plan
-  plans: [enterprise, enterprise_plus]
+  minPlan: enterprise
 ---
 
 # dbt audit log

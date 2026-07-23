@@ -7,7 +7,7 @@ image: /img/docs/dbt-insights/insights-chart.jpg
 availability:
   surface: platform
   access: paid_plan
-  plans: [enterprise, enterprise_plus]
+  minPlan: enterprise
 ---
 
 # Access the dbt Insights interface

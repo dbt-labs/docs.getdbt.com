@@ -7,7 +7,7 @@ pagination_next: "docs/dbt-apis/service-tokens"
 availability:
   surface: platform
   access: paid_plan
-  plans: [starter, enterprise, enterprise_plus]
+  minPlan: starter
 ---
 
 # Account-scoped personal access tokens

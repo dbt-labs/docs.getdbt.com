@@ -7,7 +7,7 @@ tags: ['scheduler','SAO', 'cost savings', 'models built', 'cost insights']
 availability:
   surface: platform
   access: paid_plan
-  plans: [enterprise, enterprise_plus]
+  minPlan: enterprise
 ---
 
 # Explore cost data <Lifecycle status="beta" />

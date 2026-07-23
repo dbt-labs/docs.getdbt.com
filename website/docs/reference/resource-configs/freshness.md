@@ -6,7 +6,7 @@ availability:
   engine: v2
   surface: platform
   access: paid_plan
-  plans: [enterprise, enterprise_plus]
+  minPlan: enterprise
 ---
 # freshness <Lifecycle status="private_preview" />
  

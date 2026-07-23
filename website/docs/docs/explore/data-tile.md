@@ -7,7 +7,7 @@ image: /img/docs/collaborate/dbt-explorer/data-tile-pass.jpg
 availability:
   surface: platform
   access: paid_plan
-  plans: [enterprise, enterprise_plus]
+  minPlan: enterprise
 ---
 
 # Data health tile

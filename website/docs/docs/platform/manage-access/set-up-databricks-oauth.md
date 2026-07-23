@@ -5,7 +5,7 @@ id: "set-up-databricks-oauth"
 availability:
   surface: platform
   access: paid_plan
-  plans: [enterprise, enterprise_plus]
+  minPlan: enterprise
 ---
 
 # Set up Databricks OAuth

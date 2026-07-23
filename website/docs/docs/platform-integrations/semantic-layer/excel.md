@@ -7,7 +7,7 @@ sidebar_label: "Microsoft Excel"
 availability:
   surface: platform
   access: paid_plan
-  plans: [starter, enterprise, enterprise_plus]
+  minPlan: starter
 ---
 
 # Microsoft Excel

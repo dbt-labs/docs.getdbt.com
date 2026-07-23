@@ -6,7 +6,7 @@ sidebar: "Invite users"
 availability:
   surface: platform
   access: paid_plan
-  plans: [starter, enterprise, enterprise_plus]
+  minPlan: starter
 ---
 
 <Constant name="dbt" /> makes it easy to invite new users to your environment out of the box. This feature is available to all <Constant name="dbt" /> customers on Starter, Enterprise, and Enterprise+ plans.

@@ -8,7 +8,7 @@ pagination_next: "docs/use-dbt-semantic-layer/exports"
 availability:
   surface: platform
   access: paid_plan
-  plans: [starter, enterprise, enterprise_plus]
+  minPlan: starter
 ---
 
 # Deploy your metrics

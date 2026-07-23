@@ -7,7 +7,7 @@ image: /img/docs/dbt-platform/example-ci-compare-changes-tab.png
 availability:
   surface: platform
   access: paid_plan
-  plans: [enterprise, enterprise_plus]
+  minPlan: enterprise
 ---
 
 import CompareChangesTable from '/snippets/_compare-changes-table.md';

@@ -1,11 +1,9 @@
 import React, { useCallback, useEffect, useId, useMemo, useRef, useState } from 'react';
 import styles from './styles.module.css';
 import {
-  COMPATIBILITY_LABELS,
-  COMPATIBILITY_TOOLTIP_LINKS,
-  COMPATIBILITY_TOOLTIPS,
   FIELD_LABELS,
   SURFACE_LABELS,
+  SURFACE_TOOLTIP_LINKS,
   SURFACE_TOOLTIPS,
   availabilityPresets,
   getAccessFacets,
@@ -26,15 +24,14 @@ function normalizeAvailability(availability) {
   const {
     engine,
     surface,
-    compatibility,
     access,
+    minPlan,
     plans,
   } = merged;
 
   const engineFacet = getEngineFacet(engine);
-  const accessFacets = getAccessFacets(access, plans, surface);
+  const accessFacets = getAccessFacets(access, { minPlan, plans }, surface);
   const surfaceLabel = SURFACE_LABELS[surface];
-  const compatibilityLabel = COMPATIBILITY_LABELS[compatibility];
 
   const rows = [];
   if (engineFacet) {
@@ -45,14 +42,7 @@ function normalizeAvailability(availability) {
       label: FIELD_LABELS.surface,
       value: surfaceLabel,
       tooltip: SURFACE_TOOLTIPS[surface],
-    });
-  }
-  if (compatibilityLabel) {
-    rows.push({
-      label: FIELD_LABELS.compatibility,
-      value: compatibilityLabel,
-      tooltip: COMPATIBILITY_TOOLTIPS[compatibility],
-      tooltipLink: COMPATIBILITY_TOOLTIP_LINKS[compatibility],
+      tooltipLink: SURFACE_TOOLTIP_LINKS[surface],
     });
   }
   accessFacets.forEach(({ facet, tooltip }) => {
@@ -64,7 +54,6 @@ function normalizeAvailability(availability) {
   const badgeFacets = [
     engineFacet?.facet,
     surfaceLabel,
-    compatibilityLabel,
     ...accessFacets.map(({ facet }) => facet),
   ].filter(Boolean);
 

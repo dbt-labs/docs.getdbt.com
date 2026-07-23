@@ -6,7 +6,7 @@ sidebar_label: "Teradata VantageCloud"
 availability:
   surface: platform
   access: paid_plan
-  plans: [enterprise_plus]
+  minPlan: enterprise_plus
 ---
 
 # Configuring AWS PrivateLink for Teradata VantageCloud

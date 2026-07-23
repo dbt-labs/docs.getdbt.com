@@ -5,7 +5,7 @@ description: "Enable AI features in the dbt platform, including dbt Wizard and d
 availability:
   surface: platform
   access: paid_plan
-  plans: [starter, enterprise, enterprise_plus]
+  minPlan: starter
 ---
 
 import WizardSupportedProviders from '/snippets/_wizard-supported-providers.md';

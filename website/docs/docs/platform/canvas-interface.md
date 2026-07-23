@@ -9,7 +9,7 @@ image: /img/docs/dbt-platform/canvas/canvas.png
 availability:
   surface: platform
   access: paid_plan
-  plans: [enterprise, enterprise_plus]
+  minPlan: enterprise
 ---
 
 # Navigate the interface

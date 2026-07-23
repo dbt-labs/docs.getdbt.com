@@ -4,7 +4,7 @@ id: "set-up-sso-saml-2.0"
 availability:
   surface: platform
   access: paid_plan
-  plans: [enterprise, enterprise_plus]
+  minPlan: enterprise
 ---
 
 import LoginSlug from '/snippets/_login-slug.md';

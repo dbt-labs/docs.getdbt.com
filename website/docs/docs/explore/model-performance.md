@@ -5,7 +5,7 @@ description: "Learn about the performance of your models so you can make improve
 availability:
   surface: platform
   access: paid_plan
-  plans: [enterprise, enterprise_plus]
+  minPlan: enterprise
 ---
 
 # Model performance

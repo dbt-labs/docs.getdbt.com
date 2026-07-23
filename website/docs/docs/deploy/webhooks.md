@@ -5,7 +5,7 @@ description: "Get real-time notifications about your dbt jobs with webhooks."
 availability:
   surface: platform
   access: paid_plan
-  plans: [starter, enterprise, enterprise_plus]
+  minPlan: starter
 ---
 
 # Webhooks for your jobs

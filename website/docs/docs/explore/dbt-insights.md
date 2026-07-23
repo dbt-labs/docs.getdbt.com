@@ -9,7 +9,7 @@ pagination_next: "docs/explore/navigate-dbt-insights"
 availability:
   surface: platform
   access: paid_plan
-  plans: [enterprise, enterprise_plus]
+  minPlan: enterprise
 ---
 
 # About dbt Insights <Lifecycle status="beta" />

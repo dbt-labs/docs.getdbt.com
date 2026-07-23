@@ -6,7 +6,7 @@ pagination_prev: null
 availability:
   surface: platform
   access: paid_plan
-  plans: [enterprise, enterprise_plus]
+  minPlan: enterprise
 ---
 
 import UniversalLogin from '/snippets/_universal-login.md';

@@ -6,7 +6,7 @@ description: "Learn how to enable and use global navigation to search, explore, 
 availability:
   surface: platform
   access: paid_plan
-  plans: [starter, enterprise, enterprise_plus]
+  minPlan: starter
 ---
 
 # Global navigation <Lifecycle status="preview" />

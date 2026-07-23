@@ -8,7 +8,7 @@ pagination_next: "docs/dbt-apis/sl-jdbc"
 availability:
   surface: platform
   access: paid_plan
-  plans: [starter, enterprise, enterprise_plus]
+  minPlan: starter
 ---
 
 # Semantic Layer APIs

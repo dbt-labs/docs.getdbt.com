@@ -5,7 +5,7 @@ description: "dbt Catalog provides recommendations that you can take to improve 
 availability:
   surface: platform
   access: paid_plan
-  plans: [enterprise, enterprise_plus]
+  minPlan: enterprise
 ---
 
 # Project recommendations

@@ -6,7 +6,7 @@ sidebar_label: "About Azure Private Link"
 availability:
   surface: platform
   access: paid_plan
-  plans: [enterprise_plus]
+  minPlan: enterprise_plus
 ---
 
 import SetUpPages from '/snippets/_available-tiers-enterprise-plus.md';

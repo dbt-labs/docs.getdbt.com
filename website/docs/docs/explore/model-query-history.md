@@ -6,7 +6,7 @@ image: /img/docs/collaborate/dbt-explorer/model-query-queried-models.jpg
 availability:
   surface: platform
   access: paid_plan
-  plans: [enterprise, enterprise_plus]
+  minPlan: enterprise
 ---
 
 # Model query history

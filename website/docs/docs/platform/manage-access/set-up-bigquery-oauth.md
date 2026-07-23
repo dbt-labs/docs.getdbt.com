@@ -6,7 +6,7 @@ pagination_next: null
 availability:
   surface: platform
   access: paid_plan
-  plans: [enterprise, enterprise_plus]
+  minPlan: enterprise
 ---
 
 import EntraIdGetToken from '/snippets/_entra-id-get-token.md';

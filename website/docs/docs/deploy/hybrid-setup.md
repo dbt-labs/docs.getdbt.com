@@ -7,7 +7,7 @@ pagination_prev: "docs/deploy/hybrid-projects"
 availability:
   surface: platform
   access: paid_plan
-  plans: [enterprise_plus]
+  minPlan: enterprise_plus
 ---
 
 # Hybrid setup

@@ -5,7 +5,7 @@ description: "Learn about project-level lineage in dbt Catalog and its uses."
 availability:
   surface: platform
   access: paid_plan
-  plans: [enterprise, enterprise_plus]
+  minPlan: enterprise
 ---
 
 # Explore multiple projects

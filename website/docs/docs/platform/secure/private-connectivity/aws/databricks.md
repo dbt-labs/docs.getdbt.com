@@ -7,7 +7,7 @@ pagination_next: null
 availability:
   surface: platform
   access: paid_plan
-  plans: [enterprise_plus]
+  minPlan: enterprise_plus
 ---
 
 # Configuring Databricks PrivateLink

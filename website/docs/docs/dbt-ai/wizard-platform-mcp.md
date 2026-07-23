@@ -9,7 +9,7 @@ pagination_next: "docs/dbt-ai/wizard-platform-privacy-data"
 availability:
   surface: platform
   access: paid_plan
-  plans: [starter, enterprise, enterprise_plus]
+  minPlan: starter
 ---
 
 # Use MCP servers with <Constant name="wizard" /> in the <Constant name="dbt_platform" />

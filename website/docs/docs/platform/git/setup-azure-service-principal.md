@@ -6,7 +6,7 @@ sidebar_label: "Set up service principal"
 availability:
   surface: platform
   access: paid_plan
-  plans: [enterprise, enterprise_plus]
+  minPlan: enterprise
 ---
 
 # Set up Azure DevOps

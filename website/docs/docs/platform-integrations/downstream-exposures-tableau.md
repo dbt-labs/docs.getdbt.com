@@ -6,7 +6,7 @@ image: /img/docs/platform-integrations/auto-exposures/explorer-lineage2.png
 availability:
   surface: platform
   access: paid_plan
-  plans: [enterprise, enterprise_plus]
+  minPlan: enterprise
 ---
 
 # Set up automatic exposures in Tableau

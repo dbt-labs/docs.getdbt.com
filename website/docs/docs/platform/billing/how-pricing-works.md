@@ -3,7 +3,7 @@ title: "How does dbt pricing work?"
 id: how-pricing-works
 description: "Learn how dbt pricing works, including seats, usage, and successful models built."
 sidebar_label: "How pricing works"
-availability: platform_free
+availability: platform
 ---
 
 As a customer, you pay for the number of seats you have and the amount of usage consumed each month.  Seats are billed primarily on the amount of Developer and Read licenses purchased. 

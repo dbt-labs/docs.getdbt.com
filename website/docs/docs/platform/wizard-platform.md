@@ -9,7 +9,7 @@ keywords: ["dbt Wizard", "dbt platform", "AI", "agent", "dbt"]
 availability:
   surface: platform
   access: paid_plan
-  plans: [starter, enterprise, enterprise_plus]
+  minPlan: starter
 ---
 
 import WizardSupportedProviders from '/snippets/_wizard-supported-providers.md';

@@ -4,7 +4,7 @@ id: "wizard-slash-commands"
 description: "Full reference for Wizard interactive TUI slash commands."
 sidebar_label: "Slash command reference"
 tags: [AI, Wizard, Reference]
-availability: local_all_versions
+availability: local_all
 ---
 
 

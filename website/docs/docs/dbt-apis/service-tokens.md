@@ -5,7 +5,7 @@ description: "Service account tokens help you define permissions for securing ac
 availability:
   surface: platform
   access: paid_plan
-  plans: [starter, enterprise, enterprise_plus]
+  minPlan: starter
 ---
 
 # Service account tokens

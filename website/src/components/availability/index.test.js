@@ -9,9 +9,9 @@ describe('Availability', () => {
     expect(container).toBeEmptyDOMElement();
   });
 
-  it('renders "dbt platform | Free" for platform_free without repeating badge values in the tooltip', async () => {
+  it('renders "dbt platform | Free" for an explicit free platform access without repeating badge values in the tooltip', async () => {
     const user = userEvent.setup();
-    render(<Availability availability="platform_free" />);
+    render(<Availability availability={{ surface: 'platform', access: 'free' }} />);
 
     const badge = screen.getByRole('button', { name: /dbt platform \| free/i });
     expect(badge).toHaveTextContent('dbt platform | Free');
@@ -33,24 +33,14 @@ describe('Availability', () => {
     expect(badge).not.toHaveTextContent('Login required');
   });
 
-  it('renders "dbt platform | Developer" for platform_developer', async () => {
-    const user = userEvent.setup();
-    render(<Availability availability="platform_developer" />);
-
-    const badge = screen.getByRole('button', { name: /dbt platform \| developer/i });
-    await user.click(badge);
-
-    expect(screen.getByRole('tooltip')).toHaveTextContent('Free plan and up.');
-  });
-
-  it('joins multiple plans on the badge', async () => {
+  it('expands minPlan to the tier and everything above it', async () => {
     const user = userEvent.setup();
     render(
       <Availability
         availability={{
           surface: 'platform',
           access: 'paid_plan',
-          plans: ['starter', 'enterprise', 'enterprise_plus'],
+          minPlan: 'starter',
         }}
       />
     );
@@ -63,6 +53,20 @@ describe('Availability', () => {
     const tooltip = screen.getByRole('tooltip');
     expect(tooltip).toHaveTextContent('Requires Starter, Enterprise, Enterprise+.');
     expect(tooltip).not.toHaveTextContent('Starter, Enterprise, Enterprise+ —');
+  });
+
+  it('still supports an explicit plans list for the rare non-ladder feature', async () => {
+    const user = userEvent.setup();
+    render(
+      <Availability
+        availability={{ surface: 'platform', access: 'paid_plan', plans: ['starter'] }}
+      />
+    );
+
+    const badge = screen.getByRole('button', { name: /dbt platform \| starter/i });
+    await user.click(badge);
+
+    expect(screen.getByRole('tooltip')).toHaveTextContent('Requires Starter.');
   });
 
   it('labels the v2 engine facet and renders its tooltip row', async () => {
@@ -94,70 +98,48 @@ describe('Availability', () => {
     expect(container).toBeEmptyDOMElement();
   });
 
-  it('renders "Self-hosted" alone for local_free (free is implicit for self-hosted)', () => {
+  it('renders "Local development" alone for local_free (free is implicit for local CLI)', () => {
     render(<Availability availability="local_free" />);
-    const badge = screen.getByRole('button', { name: /^self-hosted\./i });
-    expect(badge).toHaveTextContent('Self-hosted');
+    const badge = screen.getByRole('button', { name: /^local development\./i });
+    expect(badge).toHaveTextContent('Local development');
     expect(badge).not.toHaveTextContent('Free');
   });
 
-  it('renders linked local development guidance for local_all', async () => {
+  it('renders linked local development guidance for local_all as a single badge chip', async () => {
     const user = userEvent.setup();
     render(<Availability availability="local_all" />);
 
     const badge = screen.getByRole('button', {
-      name: /^local development \| dbt platform\./i,
+      name: /^local development\./i,
     });
-    expect(badge).toHaveTextContent('Local development | dbt platform');
+    expect(badge).toHaveTextContent('Local development');
+    expect(badge).not.toHaveTextContent('dbt platform');
 
     await user.click(badge);
 
     const tooltip = screen.getByRole('tooltip');
     expect(tooltip).toHaveTextContent('Where');
-    expect(tooltip).toHaveTextContent('Runs locally.');
-    expect(tooltip).toHaveTextContent('Works with');
     expect(tooltip).toHaveTextContent(
-      'Works with dbt platform or open source dbt Core 2.0 projects.'
+      'Runs locally. Works with dbt platform or local dbt projects.'
     );
     expect(
       screen.getByRole('link', { name: 'dbt platform' })
     ).toHaveAttribute('href', '/docs/platform/dbt-cli-installation');
   });
 
-  it('renders all-version local development guidance for local_all_versions', async () => {
-    const user = userEvent.setup();
-    render(<Availability availability="local_all_versions" />);
-
-    const badge = screen.getByRole('button', {
-      name: /^local development \| dbt platform\./i,
-    });
-    expect(badge).toHaveTextContent('Local development | dbt platform');
-
-    await user.click(badge);
-
-    const tooltip = screen.getByRole('tooltip');
-    expect(tooltip).toHaveTextContent(
-      'Works with dbt platform or open source dbt Core projects.'
-    );
-    expect(tooltip).not.toHaveTextContent('Core 2.0');
+  it('renders "Local development | Login required" for a local surface with login required', () => {
+    render(<Availability availability={{ surface: 'local', access: 'login_required' }} />);
     expect(
-      screen.getByRole('link', { name: 'dbt platform' })
-    ).toHaveAttribute('href', '/docs/platform/dbt-cli-installation');
-  });
-
-  it('renders "Self-hosted | Login required" for local_login', () => {
-    render(<Availability availability="local_login" />);
-    expect(
-      screen.getByRole('button', { name: /self-hosted \| login required/i })
+      screen.getByRole('button', { name: /local development \| login required/i })
     ).toBeInTheDocument();
   });
 
-  it('renders access alone with no surface badge (everywhere_login)', () => {
-    render(<Availability availability="everywhere_login" />);
+  it('renders access alone with no surface badge (login required, no surface)', () => {
+    render(<Availability availability={{ access: 'login_required' }} />);
     const badge = screen.getByRole('button', { name: /^login required\./i });
     expect(badge).toHaveTextContent('Login required');
     expect(badge).not.toHaveTextContent('dbt platform');
-    expect(badge).not.toHaveTextContent('Self-hosted');
+    expect(badge).not.toHaveTextContent('Local development');
   });
 
   it('drops the redundant "Login required" chip but keeps "Usage-based" when surface is platform', async () => {
@@ -223,11 +205,11 @@ describe('Availability', () => {
 
   it('opens on focus and closes on Escape', async () => {
     const user = userEvent.setup();
-    render(<Availability availability="local_login" />);
+    render(<Availability availability={{ surface: 'local', access: 'login_required' }} />);
 
     await user.tab();
 
-    expect(screen.getByRole('button', { name: /self-hosted \| login required/i })).toHaveFocus();
+    expect(screen.getByRole('button', { name: /local development \| login required/i })).toHaveFocus();
     expect(screen.getByRole('tooltip')).toBeInTheDocument();
 
     await user.keyboard('{Escape}');
@@ -239,12 +221,12 @@ describe('Availability', () => {
     const user = userEvent.setup();
     render(
       <>
-        <Availability availability="local_login" />
+        <Availability availability={{ surface: 'local', access: 'login_required' }} />
         <button type="button">Outside</button>
       </>
     );
 
-    await user.click(screen.getByRole('button', { name: /self-hosted \| login required/i }));
+    await user.click(screen.getByRole('button', { name: /local development \| login required/i }));
     expect(screen.getByRole('tooltip')).toBeInTheDocument();
 
     await user.click(screen.getByRole('button', { name: 'Outside' }));
@@ -254,7 +236,11 @@ describe('Availability', () => {
 
   it('keeps a clicked tooltip open after mouse leave', async () => {
     const user = userEvent.setup();
-    render(<Availability availability="platform_starter" />);
+    render(
+      <Availability
+        availability={{ surface: 'platform', access: 'paid_plan', minPlan: 'starter' }}
+      />
+    );
 
     const badge = screen.getByRole('button', { name: /dbt platform \| starter/i });
     await user.click(badge);

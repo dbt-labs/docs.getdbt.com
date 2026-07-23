@@ -6,7 +6,7 @@ sidebar_label: "Redshift"
 availability:
   surface: platform
   access: paid_plan
-  plans: [enterprise_plus]
+  minPlan: enterprise_plus
 ---
 
 # Configure AWS PrivateLink for Redshift

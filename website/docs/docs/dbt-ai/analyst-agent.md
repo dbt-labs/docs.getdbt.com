@@ -7,7 +7,7 @@ tags: [AI, Agents, Semantic Layer]
 availability:
   surface: platform
   access: paid_plan
-  plans: [enterprise, enterprise_plus]
+  minPlan: enterprise
 ---
 
 # dbt Copilot in Insights  <Lifecycle status="beta"/>

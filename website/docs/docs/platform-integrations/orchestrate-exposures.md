@@ -6,7 +6,7 @@ image: /img/docs/platform-integrations/auto-exposures/explorer-lineage2.png
 availability:
   surface: platform
   access: paid_plan
-  plans: [enterprise, enterprise_plus]
+  minPlan: enterprise
 ---
 
 # Orchestrate downstream exposures <Lifecycle status="beta" />

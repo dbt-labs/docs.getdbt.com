@@ -7,7 +7,7 @@ pagination_next: "docs/use-dbt-semantic-layer/sl-faqs"
 availability:
   surface: platform
   access: paid_plan
-  plans: [starter, enterprise, enterprise_plus]
+  minPlan: starter
 ---
 
 # Consume metrics from your Semantic Layer

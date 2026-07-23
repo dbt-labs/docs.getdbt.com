@@ -6,7 +6,7 @@ sidebar_label: "Self-hosted services"
 availability:
   surface: platform
   access: paid_plan
-  plans: [enterprise_plus]
+  minPlan: enterprise_plus
 ---
 
 # Configuring GCP Private Service Connect for a self-hosted service

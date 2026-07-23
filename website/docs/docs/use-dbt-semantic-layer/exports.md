@@ -6,7 +6,7 @@ keywords: [DBT_ENGINE_INCLUDE_SAVED_QUERY, DBT_ENGINE_EXPORT_SAVED_QUERIES, expo
 availability:
   surface: platform
   access: paid_plan
-  plans: [starter, enterprise, enterprise_plus]
+  minPlan: starter
 ---
 
 # Write queries with exports

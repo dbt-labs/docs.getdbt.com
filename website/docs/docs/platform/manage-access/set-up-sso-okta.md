@@ -4,7 +4,7 @@ id: "set-up-sso-okta"
 availability:
   surface: platform
   access: paid_plan
-  plans: [enterprise, enterprise_plus]
+  minPlan: enterprise
 ---
 
 # Set up SSO with Okta

@@ -5,7 +5,7 @@ pagination_next: "docs/dbt-apis/discovery-api"
 availability:
   surface: platform
   access: paid_plan
-  plans: [starter, enterprise, enterprise_plus]
+  minPlan: starter
 ---
 
 import ApiRateLimitsCallout from '/snippets/_api-rate-limits-callout.md';

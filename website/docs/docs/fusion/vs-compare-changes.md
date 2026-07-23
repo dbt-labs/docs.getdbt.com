@@ -5,7 +5,8 @@ description: "Compare how code edits will change your data while you develop you
 sidebar_label: "Compare changes"
 image: /img/docs/extension/vs-compare-changes-tab.png
 availability:
-  preset: local_login
+  surface: local
+  access: login_required
   engine: v2
 ---
 

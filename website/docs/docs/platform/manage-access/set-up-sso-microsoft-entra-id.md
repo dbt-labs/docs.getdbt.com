@@ -6,7 +6,7 @@ sidebar_label: "Set up SSO with Microsoft Entra ID"
 availability:
   surface: platform
   access: paid_plan
-  plans: [enterprise, enterprise_plus]
+  minPlan: enterprise
 ---
 
 import LoginSlug from '/snippets/_login-slug.md';

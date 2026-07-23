@@ -9,7 +9,7 @@ pagination_next: "docs/dbt-ai/wizard-platform-mcp"
 availability:
   surface: platform
   access: paid_plan
-  plans: [starter, enterprise, enterprise_plus]
+  minPlan: starter
 ---
 
 # Use skills with <Constant name="wizard" /> in the <Constant name="dbt_platform" /> <Lifecycle status="beta"/>

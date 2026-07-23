@@ -5,7 +5,7 @@ description: "Use dbt Copilot to build visual models in Canvas with natural lang
 availability:
   surface: platform
   access: paid_plan
-  plans: [enterprise, enterprise_plus]
+  minPlan: enterprise
 ---
 
 # Build with dbt Copilot

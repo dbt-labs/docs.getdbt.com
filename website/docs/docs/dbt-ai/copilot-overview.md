@@ -7,7 +7,7 @@ tags: [AI, Copilot]
 availability:
   surface: platform
   access: paid_plan
-  plans: [starter, enterprise, enterprise_plus]
+  minPlan: starter
 ---
 
 import CopilotWizardDifferences from '/snippets/_copilot-wizard-diff.md';

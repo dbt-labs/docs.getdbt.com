@@ -6,7 +6,7 @@ sidebar_label: "Connect apps with OAuth"
 availability:
   surface: platform
   access: paid_plan
-  plans: [starter, enterprise, enterprise_plus]
+  minPlan: starter
 ---
 
 import MCPCustomConnectorOauth from '/snippets/_mcp-custom-connector-oauth.md';

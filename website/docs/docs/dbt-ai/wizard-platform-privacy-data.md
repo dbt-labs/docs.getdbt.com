@@ -8,7 +8,7 @@ pagination_prev: "docs/dbt-ai/wizard-platform-mcp"
 availability:
   surface: platform
   access: paid_plan
-  plans: [starter, enterprise, enterprise_plus]
+  minPlan: starter
 ---
 
 # <Constant name="wizard" /> in the <Constant name="dbt_platform" /> privacy and data <Lifecycle status="beta"/>

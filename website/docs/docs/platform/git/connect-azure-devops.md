@@ -5,7 +5,7 @@ pagination_next: "docs/platform/git/setup-service-principal"
 availability:
   surface: platform
   access: paid_plan
-  plans: [enterprise, enterprise_plus]
+  minPlan: enterprise
 ---
 
 # Connect to Azure DevOps

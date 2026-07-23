@@ -7,7 +7,7 @@ pagination_prev: null
 availability:
   surface: platform
   access: paid_plan
-  plans: [starter, enterprise, enterprise_plus]
+  minPlan: starter
 ---
 
 import ApiRateLimitsCallout from '/snippets/_api-rate-limits-callout.md';

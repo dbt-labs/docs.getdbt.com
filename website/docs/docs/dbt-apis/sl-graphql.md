@@ -6,7 +6,7 @@ tags: [Semantic Layer, APIs]
 availability:
   surface: platform
   access: paid_plan
-  plans: [starter, enterprise, enterprise_plus]
+  minPlan: starter
 ---
 
 # GraphQL

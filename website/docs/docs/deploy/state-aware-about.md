@@ -7,7 +7,7 @@ unlisted: true
 availability:
   surface: platform
   access: paid_plan
-  plans: [enterprise, enterprise_plus]
+  minPlan: enterprise
 ---
 
 # About state-aware orchestration <Lifecycle status="private_preview" />

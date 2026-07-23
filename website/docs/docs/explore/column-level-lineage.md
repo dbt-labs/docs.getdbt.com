@@ -4,7 +4,7 @@ description: "Use dbt Catalog's column-level lineage to gain insights about your
 availability:
   surface: platform
   access: paid_plan
-  plans: [enterprise, enterprise_plus]
+  minPlan: enterprise
 ---
 
 # Column-level lineage

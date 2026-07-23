@@ -7,7 +7,7 @@ image: /img/docs/collaborate/dbt-explorer/data-health-signal.jpg
 availability:
   surface: platform
   access: paid_plan
-  plans: [starter, enterprise, enterprise_plus]
+  minPlan: starter
 ---
 
 # Data health signals <Lifecycle status="preview" />

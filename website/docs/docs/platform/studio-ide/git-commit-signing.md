@@ -5,7 +5,7 @@ sidebar_label: Git commit signing
 availability:
   surface: platform
   access: paid_plan
-  plans: [enterprise, enterprise_plus]
+  minPlan: enterprise
 ---
 
 # Git commit signing

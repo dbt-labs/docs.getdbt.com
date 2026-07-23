@@ -9,7 +9,7 @@ pagination_prev: "guides/sl-snowflake-qs"
 availability:
   surface: platform
   access: paid_plan
-  plans: [starter, enterprise, enterprise_plus]
+  minPlan: starter
 ---
 
 # Administer the Semantic Layer

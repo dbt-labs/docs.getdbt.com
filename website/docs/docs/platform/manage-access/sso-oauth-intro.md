@@ -5,7 +5,7 @@ id: "sso-oauth-intro"
 availability:
   surface: platform
   access: paid_plan
-  plans: [enterprise, enterprise_plus]
+  minPlan: enterprise
 ---
 
 # Single sign-on and OAuth 

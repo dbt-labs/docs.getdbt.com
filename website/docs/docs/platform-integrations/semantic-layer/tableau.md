@@ -6,7 +6,7 @@ sidebar_label: "Tableau"
 availability:
   surface: platform
   access: paid_plan
-  plans: [starter, enterprise, enterprise_plus]
+  minPlan: starter
 ---
 
 # Tableau
