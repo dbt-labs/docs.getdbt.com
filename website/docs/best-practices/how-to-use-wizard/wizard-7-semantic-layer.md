@@ -1,5 +1,5 @@
 ---
-title: "Building Semantic Layer definitions with dbt Wizard CLI"
+title: "Building Semantic Layer definitions with dbt Wizard"
 id: "wizard-7-semantic-layer"
 description: "Use dbt Wizard CLI to plan, write, and validate Semantic Layer entities, dimensions, metrics, and saved queries."
 sidebar_label: "Build Semantic Layer definitions"

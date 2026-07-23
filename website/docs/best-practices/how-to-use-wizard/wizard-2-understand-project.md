@@ -1,5 +1,5 @@
 ---
-title: "Understanding a dbt project with dbt Wizard CLI"
+title: "Understanding a dbt project with dbt Wizard"
 id: "wizard-2-understand-project"
 description: "Use dbt Wizard CLI to map an unfamiliar dbt project, investigate model behavior, and identify downstream impact."
 sidebar_label: "Understand a dbt project"
