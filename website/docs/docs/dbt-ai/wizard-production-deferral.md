@@ -6,8 +6,6 @@ sidebar_label: "Develop with production deferral"
 tags: [AI, Wizard]
 ---
 
-# Developing with production deferral in <Constant name="wizard" />
-
 <IntroText>
 Configure production deferral in <Constant name="wizard" /> CLI so local development can reuse unchanged relations from another environment. Deferral reduces the number of upstream models you need to build while you investigate, edit, and validate a focused change.
 </IntroText>
