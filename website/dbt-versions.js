@@ -14,29 +14,22 @@
 
 const products = [
   {
-    name: "Fusion",
+    name: "v2",
+    displayName: "",
     subProducts: [
       {
-        name: "dbt platform (stable)",
-        version: "2.0",
-      },
-      {
-        name: "dbt Fusion engine",
+        name: "v2",
         version: "2.0",
       },
     ],
   },
   {
-    name: "Core",
+    name: "v1",
+    displayName: "",
+    // List newest first; the first entry is treated as the current/latest track.
+    // `stage` drives the lifecycle tag shown in the menu: "alpha" | "rc" | "beta" | "Preview"
+    // (omit for a stable/GA release). Update as a version moves through its cycle.
     subProducts: [
-      {
-        name: "dbt platform (latest)",
-        version: "1.12",
-      },
-      {
-        name: "dbt Core v2.0 (alpha)",
-        version: "2.0",
-      },
       {
         name: "dbt Core v1.12",
         EOLDate: "2027-07-15",
@@ -54,6 +47,19 @@ const products = [
 exports.products = products;
 
 /**
+ * Single source of truth for "is this sub-product a prerelease?".
+ * Derived from `stage` (alpha/rc/beta) so the menu label and version behavior
+ * can never disagree. Legacy `isBeta` is still honored as a fallback.
+ */
+const PRERELEASE_STAGES = new Set(["alpha", "rc", "beta"]);
+function isPrerelease(subProduct) {
+  if (!subProduct) return false;
+  if (subProduct.isBeta) return true;
+  return Boolean(subProduct.stage && PRERELEASE_STAGES.has(subProduct.stage));
+}
+exports.isPrerelease = isPrerelease;
+
+/**
  * Backward-compatible versions array derived from products.
  * When the same version appears in multiple sub-products, the first occurrence wins.
  * Used by versionedPages/versionedCategories utilities and VersionContext internals.
@@ -69,7 +75,7 @@ exports.versions = products.flatMap((product) =>
     .map((sp) => ({
       version: sp.version,
       customDisplay: sp.name,
-      isPrerelease: sp.isBeta || false,
+      isPrerelease: isPrerelease(sp),
       EOLDate: sp.EOLDate,
     }))
 );
@@ -88,9 +94,25 @@ exports.versions = products.flatMap((product) =>
  * lastVersion to further restrict by version within that product.
  */
 exports.versionedPages = [
+  // v2/Fusion-only pages — hidden from the v1 sidebar. `about-fusion` and
+  // `about-dbt-extension` stay open as v1 discovery + upgrade on-ramps.
+  { page: "docs/fusion/fusion", firstVersion: "2.0" },
+  { page: "docs/fusion/get-started-fusion", firstVersion: "2.0" },
+  { page: "docs/fusion/fusion-availability", firstVersion: "2.0" },
+  { page: "docs/fusion/fusion-readiness", firstVersion: "2.0" },
+  { page: "docs/fusion/new-concepts", firstVersion: "2.0" },
+  { page: "docs/fusion/supported-features", firstVersion: "2.0" },
+  { page: "docs/fusion/fusion-networking", firstVersion: "2.0" },
+  { page: "docs/fusion/fusion-releases", firstVersion: "2.0" },
+  { page: "docs/fusion/telemetry", firstVersion: "2.0" },
+  { page: "docs/dbt-extension-features", firstVersion: "2.0" },
+  { page: "docs/install-dbt-extension", firstVersion: "2.0" },
+  { page: "docs/sign-in-dbt-extension", firstVersion: "2.0" },
+  { page: "docs/configure-dbt-extension", firstVersion: "2.0" },
+  { page: "docs/reference/commands/login", firstVersion: "2.0" },
   {
     page: "docs/reference/commands/lint",
-    firstVersion: "2.0",  
+    firstVersion: "2.0",
   },
   {
     page: "docs/local/connect-data-platform/salesforce-data-cloud-setup",
