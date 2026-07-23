@@ -91,7 +91,7 @@ active, churned, and prospect. Write a column description for each.
 - You can ask <Constant name="wizard" /> to write descriptions in a specific voice or format: "Write the descriptions in plain language, one sentence each"
 - To document a whole layer at once: "Generate documentation for all models in `models/staging/` that don't have a YAML file yet"
 
-For a workflow that finds coverage gaps and checks candidate assertions against warehouse data, refer to [Add data-informed tests with <Constant name="wizard" />](/docs/dbt-ai/wizard-data-informed-tests).
+For a workflow that finds coverage gaps and checks candidate assertions against warehouse data, refer to [Add data-informed tests with <Constant name="wizard" />](/best-practices/how-to-use-wizard/wizard-4-data-informed-tests).
 
 
 ## Debug a job failure
@@ -114,7 +114,7 @@ The nightly job failed. What's the root cause and how do I fix it?
 - You can be more specific: "What caused the failure in `fct_orders` in the last run of the Production job?"
 - Wizard won't apply a fix without your approval, which is especially useful when the failure is in a production model
 
-For the evidence-gathering, diagnosis, and validation procedure, refer to [Debug a failed dbt job with <Constant name="wizard" />](/docs/dbt-ai/wizard-debug-failed-job).
+For the evidence-gathering, diagnosis, and validation procedure, refer to [Debug a failed dbt job with <Constant name="wizard" />](/best-practices/how-to-use-wizard/wizard-5-debug-failed-job).
 
 
 ## Assess source impact
@@ -201,7 +201,7 @@ validation, investigate any failures, and summarize skipped checks.
 4. Reports failures, differences, unresolved risks, and skipped checks
 5. Shows the proposed changes for you to review
 
-In <Constant name="wizard" /> CLI, choose light, medium, heavy, or skipped validation based on the risk and cost of the change. Follow the [validation workflow](/docs/dbt-ai/wizard-validate-changes) for the checks included at each level.
+In <Constant name="wizard" /> CLI, choose light, medium, heavy, or skipped validation based on the risk and cost of the change. Follow the [validation workflow](/best-practices/how-to-use-wizard/wizard-3-validate-changes) for the checks included at each level.
 
 **Tips:**
 - State the business behavior that must remain true, not only the commands to run
@@ -228,16 +228,16 @@ week, and month granularity.
 - If you're unsure what entities to use, ask first: "What would be good entities for a semantic model on fct_orders?"
 - <Constant name="wizard" /> follows the [dbt Semantic Layer documentation](/docs/build/semantic-models): you can ask it to explain any generated field
 
-For version-specific examples and validation steps, refer to [Build Semantic Layer definitions with <Constant name="wizard" />](/docs/dbt-ai/wizard-semantic-layer).
+For version-specific examples and validation steps, refer to [Build Semantic Layer definitions with <Constant name="wizard" />](/best-practices/how-to-use-wizard/wizard-7-semantic-layer).
 
 ## Related docs
 
 - [Use dbt Wizard locally](/docs/dbt-ai/wizard-quickstart)
-- [Understand a dbt project](/docs/dbt-ai/wizard-understand-project)
-- [Validate dbt changes](/docs/dbt-ai/wizard-validate-changes)
-- [Add data-informed tests](/docs/dbt-ai/wizard-data-informed-tests)
-- [Debug a failed job](/docs/dbt-ai/wizard-debug-failed-job)
-- [Build Semantic Layer definitions](/docs/dbt-ai/wizard-semantic-layer)
+- [Understand a dbt project](/best-practices/how-to-use-wizard/wizard-2-understand-project)
+- [Validate dbt changes](/best-practices/how-to-use-wizard/wizard-3-validate-changes)
+- [Add data-informed tests](/best-practices/how-to-use-wizard/wizard-4-data-informed-tests)
+- [Debug a failed job](/best-practices/how-to-use-wizard/wizard-5-debug-failed-job)
+- [Build Semantic Layer definitions](/best-practices/how-to-use-wizard/wizard-7-semantic-layer)
 - [dbt Wizard overview](/docs/dbt-ai/about-dbt-wizard-cli)
 - [Configure BYOK](/docs/dbt-ai/wizard-byok)
 - [dbt Wizard in Studio IDE](/docs/dbt-ai/wizard-ide): same agent, in the dbt platform

@@ -1,6 +1,6 @@
 ---
 title: "Debugging a failed dbt job with dbt Wizard CLI"
-id: "wizard-debug-failed-job"
+id: "wizard-5-debug-failed-job"
 description: "Use dbt Wizard CLI to gather job evidence, classify a failure, identify its root cause, and validate a proposed fix."
 sidebar_label: "Debug a failed job"
 tags: [AI, Wizard]
@@ -104,5 +104,5 @@ Ask <Constant name="wizard" /> to produce an investigation summary with the run 
 - [Jobs](/docs/deploy/jobs)
 - [Job commands](/docs/deploy/job-commands)
 - [Use MCP servers with <Constant name="wizard" /> CLI](/docs/dbt-ai/wizard-mcp)
-- [Validating dbt changes with <Constant name="wizard" />](/docs/dbt-ai/wizard-validate-changes)
+- [Validating dbt changes with <Constant name="wizard" />](/best-practices/how-to-use-wizard/wizard-3-validate-changes)
 - [Use cases and examples](/docs/dbt-ai/wizard-use-cases#debug-a-job-failure)

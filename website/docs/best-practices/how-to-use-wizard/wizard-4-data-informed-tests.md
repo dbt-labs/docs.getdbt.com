@@ -1,6 +1,6 @@
 ---
 title: "Adding data-informed tests with dbt Wizard"
-id: "wizard-data-informed-tests"
+id: "wizard-4-data-informed-tests"
 description: "Use dbt Wizard CLI to find test coverage gaps, check assumptions against warehouse data, and add focused dbt data tests."
 sidebar_label: "Add data-informed tests"
 tags: [AI, Wizard]
@@ -101,7 +101,7 @@ For each proposed YAML change, confirm that:
 - Test names, arguments, configuration, and severity follow project conventions.
 - The diff doesn't include unrelated documentation or model changes.
 
-The `test_writer` agent writes the tests. The normal <Constant name="wizard" /> validation flow is responsible for running them. Select an appropriate [validation level](/docs/dbt-ai/wizard-validate-changes#choose-a-validation-level) and review any failing rows before accepting the final change.
+The `test_writer` agent writes the tests. The normal <Constant name="wizard" /> validation flow is responsible for running them. Select an appropriate [validation level](/best-practices/how-to-use-wizard/wizard-3-validate-changes#choose-a-validation-level) and review any failing rows before accepting the final change.
 
 ## Investigate a failed candidate
 
@@ -129,7 +129,7 @@ Data-informed test generation still requires engineering judgment:
 
 ## Related docs
 
-- [Validate dbt changes with <Constant name="wizard" />](/docs/dbt-ai/wizard-validate-changes)
+- [Validate dbt changes with <Constant name="wizard" />](/best-practices/how-to-use-wizard/wizard-3-validate-changes)
 - [Use subagents with <Constant name="wizard" /> CLI](/docs/dbt-ai/wizard-subagents)
 - [Data tests](/docs/build/data-tests)
 - [Test best practices](/best-practices/writing-custom-generic-tests)

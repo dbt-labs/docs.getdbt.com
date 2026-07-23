@@ -50,7 +50,7 @@ In <Constant name="wizard" /> CLI, choose light, medium, heavy, or skipped valid
 - Medium validation adds development materialization and downstream checks. 
 - Heavy validation adds explicit expectations and development-to-production comparisons when the required relations are available.
 
-<Constant name="wizard" /> reports failures and checks it couldn't complete. A passing check doesn't remove the need to review business logic, and a skipped check should remain visible in your review. For a complete procedure and the approval points for warehouse commands, refer to [Validate dbt changes with <Constant name="wizard" />](/docs/dbt-ai/wizard-validate-changes).
+<Constant name="wizard" /> reports failures and checks it couldn't complete. A passing check doesn't remove the need to review business logic, and a skipped check should remain visible in your review. For a complete procedure and the approval points for warehouse commands, refer to [Validate dbt changes with <Constant name="wizard" />](/best-practices/how-to-use-wizard/wizard-3-validate-changes).
 
 ## Tools and capabilities
 
@@ -168,7 +168,7 @@ For more about dbt State, refer to [About dbt State](/docs/deploy/dbt-state-abou
 
 The per-project `favor_state` setting defaults to `true`. With favor-state on, deferred relations take precedence. Set `favor_state = false` when you want dbt to use relations you have already built in development and fall back to the deferred environment for relations that aren't available there.
 
-<Constant name="wizard" /> stores the deferral mode for each project in `wizard_config.toml` under `deferral.mode`. For a complete setup and verification procedure, refer to [Developing with production deferral](/docs/dbt-ai/wizard-production-deferral).
+<Constant name="wizard" /> stores the deferral mode for each project in `wizard_config.toml` under `deferral.mode`. For a complete setup and verification procedure, refer to [Developing with production deferral](/best-practices/how-to-use-wizard/wizard-6-production-deferral).
 
 
 ### Approval and sandboxing

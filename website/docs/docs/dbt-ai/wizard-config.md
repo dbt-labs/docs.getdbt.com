@@ -250,7 +250,7 @@ favor_state = true
 
 You can also configure production snapshot and compile behavior with global `prod_parse_on_startup`, `prod_parse_args`, `prod_state_ttl_hours`, `prod_state_dir`, and `compile_extra_args` settings. Per-project `compile_extra_args` and `prod_parse_args` values let you override the global behavior for one project. Use a `profile_override` block to select a different profiles file, profile, or target for compilation.
 
-For configuration examples and a verification workflow, refer to [Developing with production deferral](/docs/dbt-ai/wizard-production-deferral).
+For configuration examples and a verification workflow, refer to [Developing with production deferral](/best-practices/how-to-use-wizard/wizard-6-production-deferral).
 
 ## Troubleshooting
 

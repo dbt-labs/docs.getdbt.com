@@ -1,6 +1,6 @@
 ---
 title: "Validating dbt changes with dbt Wizard"
-id: "wizard-validate-changes"
+id: "wizard-3-validate-changes"
 description: "Use dbt Wizard CLI to assess impact, run the right level of validation, and review a dbt change before merging it."
 sidebar_label: "Validate dbt changes"
 tags: [AI, Wizard]
@@ -114,7 +114,7 @@ Validation is evidence, not a guarantee that a change is correct. Keep these lim
 
 ## Related docs
 
-- [Understanding a dbt project with <Constant name="wizard" />](/docs/dbt-ai/wizard-understand-project)
+- [Understanding a dbt project with <Constant name="wizard" />](/best-practices/how-to-use-wizard/wizard-2-understand-project)
 - [How <Constant name="wizard" /> works](/docs/dbt-ai/wizard-how-it-works)
 - [Use subagents with <Constant name="wizard" /> CLI](/docs/dbt-ai/wizard-subagents)
 - [About dbt state](/docs/deploy/dbt-state-about)
