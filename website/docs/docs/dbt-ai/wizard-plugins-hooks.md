@@ -6,7 +6,6 @@ sidebar_label: "Extend with plugins and hooks"
 tags: [AI, Wizard]
 ---
 
-# Extending <Constant name="wizard" /> with plugins and hooks
 
 <IntroText>
 Use plugins to install a coordinated set of <Constant name="wizard" /> CLI extensions from a marketplace. A plugin can bundle skills, Model Context Protocol (MCP) servers, apps, and lifecycle hooks so a team can distribute a complete workflow together.
