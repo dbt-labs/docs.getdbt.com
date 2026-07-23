@@ -14,13 +14,13 @@ Get dbt running on your machine in a few minutes. Choose your path:
 
 <Tabs>
 
-<TabItem value="Fusion" label="Fusion + dbt extension (recommended)" default>
+<TabItem default label="Fusion + dbt extension (recommended)" value="Fusion">
 
-## Install the Fusion CLI <Lifecycle status="preview" />
+## Install the Fusion CLI <Lifecycle status="preview"/>
 
-The <Constant name="fusion"/> CLI delivers <Constant name="fusion_engine" /> performance benefits (faster parsing, compilation, and execution) but doesn't include <Term id="lsp" /> features. For the best <Constant name="fusion_engine" /> experience, install the dbt VS Code extension in VS Code or a compatible IDE.
+The <Constant name="fusion"/> CLI delivers <Constant name="fusion_engine"/> performance benefits (faster parsing, compilation, and execution) but doesn't include <Term id="lsp"/> features. For the best <Constant name="fusion_engine"/> experience, install the dbt VS Code extension in VS Code or a compatible IDE.
 
-<FusionManualInstall />
+<FusionManualInstall/>
 
 ## Install the extension
 
@@ -29,15 +29,15 @@ Install the dbt VS Code extension from the marketplace for [VS Code and Cursor](
 1. In your editor, open the **Extensions** tab and search for `dbt`.
 2. Locate the extension from the publisher `dbtLabsInc` or `dbt Labs Inc`, then click **Install**.
 
-    <Lightbox src="/img/docs/extension/extension-marketplace.png" width="90%" title="Search for the extension"/>
+    <Lightbox src="/img/docs/extension/extension-marketplace.png" title="Search for the extension" width="90%"/>
 
 3. Confirm that the extension is active by checking for the **dbt Extension** label in the status bar. Hover over the label to view diagnostic information.
 
-    <Lightbox src="/img/docs/extension/dbt-extension-statusbar.png" width="60%" title="If you see the 'dbt Extension' label, the extension is activated"/>
+    <Lightbox src="/img/docs/extension/dbt-extension-statusbar.png" title="If you see the 'dbt Extension' label, the extension is activated" width="60%"/>
 
 4. After the extension activates, it automatically downloads the correct dbt Language Server (<Term id="lsp"/>) for your operating system.
 
-    <Lightbox src="/img/docs/extension/extension-lsp-download.png" width="60%" title="The dbt Language Server will be installed automatically"/>
+    <Lightbox src="/img/docs/extension/extension-lsp-download.png" title="The dbt Language Server will be installed automatically" width="60%"/>
 
 Refer to the [dbt VS Code extension docs](/docs/about-dbt-extension) for more information.
 
@@ -46,7 +46,7 @@ Refer to the [dbt VS Code extension docs](/docs/about-dbt-extension) for more in
 Common issues and resolutions:
 
 - **dbt command not found:** Add the installation location to your `$PATH`.
-- **Version conflicts:** Check that no other <Constant name="core" /> or <Constant name="platform_cli" /> versions are installed or active on your machine.
+- **Version conflicts:** Check that no other <Constant name="core"/> or <Constant name="platform_cli"/> versions are installed or active on your machine.
 - **Installation permissions:** Make sure your user account can install software locally.
 
 ## Frequently asked questions
@@ -55,19 +55,50 @@ Common issues and resolutions:
 
     Yes. To test Fusion without affecting your existing workflows, use a separate environment or virtual machine.
 
-<AboutFusion />
+## Uninstall dbt Fusion
+
+If you installed dbt Fusion using the curl installation script (`install.sh`), follow these steps to clean up your environment and remove all installed binaries:
+
+### 1. Remove the binary
+The installation script places the executable in your local binaries directory (`~/.local/bin/dbt`). Run:
+
+```shell
+rm -f ~/.local/bin/dbt
+```
+
+### 2. Clean up shell configurations
+The installer automatically appends environment configurations and aliases to your shell profile (`~/.zshrc` or `~/.bashrc`).
+
+Open your shell configuration file in a text editor and delete the following lines:
+```shell
+# Remove PATH export
+export PATH="$HOME/.local/bin:$PATH"
+
+# Remove dbtf alias
+alias dbtf=...
+```
+
+After editing, reload your shell profile to apply the changes:
+```shell
+source ~/.zshrc   # or source ~/.bashrc
+```
+
+### 3. Built-in system cleanup
+If you still have the `dbt` binary installed and wish to manage or clear internal cached files and states, use the [`dbt system`](/reference/commands/system) command suite before deleting the binary.
+
+<AboutFusion/>
 
 </TabItem>
 
-<TabItem value="CoreV2" label="dbt Core v2">
+<TabItem label="dbt Core v2" value="CoreV2">
 
-## Install dbt Core v2 CLI <Lifecycle status="Alpha" />
+## Install dbt Core v2 CLI <Lifecycle status="Alpha"/>
 
 :::caution dbt Core v2 is in alpha
-<Constant name="core" /> v2 is under active development and not recommended for production use. Features and APIs may change before the stable release. For stable development, use <Constant name="fusion" />.
+<Constant name="core"/> v2 is under active development and not recommended for production use. Features and APIs may change before the stable release. For stable development, use <Constant name="fusion"/>.
 :::
 
-<Constant name="core" /> v2 is the next major version of <Constant name="core" />, built on the <Constant name="fusion_engine" /> runtime. Install it with `pip`, same as v1, but target the v2 prerelease package.
+<Constant name="core"/> v2 is the next major version of <Constant name="core"/>, built on the <Constant name="fusion_engine"/> runtime. Install it with `pip`, same as v1, but target the v2 prerelease package.
 
 <Expandable alt_header="Pip installation">
 
@@ -83,30 +114,30 @@ Confirm that the installed version begins with `2.`.
 
 </Expandable>
 
-<AboutFusion />
+<AboutFusion/>
 
 </TabItem>
 
-<TabItem value="Core" label="dbt Core v1">
+<TabItem label="dbt Core v1" value="Core">
 
 ## Install dbt Core v1 CLI
 
-<Constant name="core" /> v1 is the original open-source dbt engine. Install it with `pip`, Docker, or from source.
+<Constant name="core"/> v1 is the original open-source dbt engine. Install it with `pip`, Docker, or from source.
 
-<Expandable alt_header="Pip installation" >
+<Expandable alt_header="Pip installation">
 
 ### Prerequisites
 
 - [Python](https://www.python.org/downloads/) (`python --version` or `python3 --version`)
 - [pip](https://pip.pypa.io/en/stable/installation/) (`pip --version` or `pip3 --version`)
 
-<FAQ path="Core/install-pip-os-prereqs" />
-<FAQ path="Core/install-python-compatibility" />
+<FAQ path="Core/install-pip-os-prereqs"/>
+<FAQ path="Core/install-python-compatibility"/>
 
 ### Create a virtual environment
 
 <Tabs>
-  <TabItem value="Unix/macOS" label="Unix/macOS">
+  <TabItem label="Unix/macOS" value="Unix/macOS">
 
   ```shell
   python3 -m venv .venv
@@ -114,7 +145,7 @@ Confirm that the installed version begins with `2.`.
   ```
 
   </TabItem>
-  <TabItem value="Windows" label="Windows">
+  <TabItem label="Windows" value="Windows">
 
   ```shell
   py -m venv .venv
@@ -166,7 +197,7 @@ python3 -m pip install --pre dbt-ADAPTER_NAME
 
 <Expandable alt_header="Docker">
 
-<Constant name="core" /> images are distributed via [GitHub Packages](https://github.com/dbt-labs/dbt-core/pkgs/container/dbt-core) and include pinned versions of dbt-core, one or more adapters, and all dependencies.
+<Constant name="core"/> images are distributed via [GitHub Packages](https://github.com/dbt-labs/dbt-core/pkgs/container/dbt-core) and include pinned versions of dbt-core, one or more adapters, and all dependencies.
 
 ### Prerequisites
 
@@ -256,4 +287,3 @@ Most command-line tools, including dbt, support a `--help` flag that shows avail
 - Configure your [profiles.yml](/docs/local/profiles.yml#location-of-profilesyml) file.
 - Configure your [data platform connection](/docs/local/connect-data-platform/about-dbt-connections).
 - Create your first [dbt project](/docs/build/projects) using the [`dbt init`](/reference/commands/init) command.
-
