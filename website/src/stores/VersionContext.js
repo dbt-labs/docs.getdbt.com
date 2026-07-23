@@ -1,5 +1,5 @@
 import React, { useState, useEffect, createContext, useCallback, useRef } from "react"
-import { products, versions } from '../../dbt-versions'
+import { products, versions, isPrerelease } from '../../dbt-versions'
 import sanitizeHtml from "sanitize-html";
 import { useLocation } from '@docusaurus/router';
 
@@ -42,7 +42,7 @@ function resolveSubProductFromProductAndVersion(productName, versionString) {
 
   if (matches.length === 0) return null;
 
-  return (matches.find((sp) => !sp.isBeta) || matches[0]).name;
+  return (matches.find((sp) => !isPrerelease(sp)) || matches[0]).name;
 }
 
 // Resolve a subProduct name from a version string (backward compat for ?version= URLs)
@@ -57,7 +57,7 @@ function resolveSubProductFromVersion(versionString) {
 // Default subProduct: first non-beta subProduct across all products
 function getDefaultSubProductName() {
   for (const product of products) {
-    const sp = product.subProducts.find((s) => !s.isBeta);
+    const sp = product.subProducts.find((s) => !isPrerelease(s));
     if (sp) return sp.name;
   }
   return products[0]?.subProducts[0]?.name;
@@ -71,7 +71,7 @@ const VersionContext = createContext({
   subProduct: defaultSubProductName,
   product: findProductForSubProduct(defaultSubProductName),
   EOLDate: defaultSubProduct?.EOLDate,
-  isPrerelease: defaultSubProduct?.isBeta || false,
+  isPrerelease: isPrerelease(defaultSubProduct),
   customDisplay: defaultSubProductName,
   latestStableRelease: defaultSubProduct?.version,
   updateVersion: () => Object,
@@ -270,7 +270,7 @@ export const VersionContextProvider = ({ value = "", children }) => {
     subProduct: subProductName,
     product: currentProductName,
     EOLDate: currentSubProduct?.EOLDate,
-    isPrerelease: currentSubProduct?.isBeta || false,
+    isPrerelease: isPrerelease(currentSubProduct),
     customDisplay: subProductName,
     latestStableRelease: latestStableRelease?.version,
     updateVersion,
