@@ -17,7 +17,7 @@ This guide collects the workflows we recommend once Wizard is running on a real 
 
 ## Before you begin
 
-These workflows apply to the <Constant name="wizard" /> CLI, as well as <Constant name="dbt_platform"/>. Each page will reference whether it applies to the CLI or <Constant name="dbt_platform"/>. 
+These workflows apply to the <Constant name="wizard" /> CLI and <Constant name="dbt_platform"/>. Each page will reference whether it applies to the CLI or <Constant name="dbt_platform"/>. 
 
 For local workflows, make sure the <Constant name="wizard" /> CLI is installed, configured, and connected to a dbt project with an up-to-date `target/manifest.json`. 
 
