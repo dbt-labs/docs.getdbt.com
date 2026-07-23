@@ -4,6 +4,7 @@ id: "wizard-home"
 description: "Use the dbt Wizard home tab in the dbt platform for an agent-native development workflow — iterate in natural language, review inline diffs and DAG previews, and validate changes without leaving the agent."
 sidebar_label: "Wizard home tab"
 tags: [AI, Wizard, Platform]
+image: /img/docs/dbt-platform/wizard-home-empty.png
 ---
 
 import WizardPlatformPreviewDisclaimer from '/snippets/_wizard-platform-preview-disclaimer.md';
@@ -18,8 +19,8 @@ The <Constant name="wizard" /> home tab is an agent-native development experienc
 <WizardFeedbackCallout />
 
 <DocCarousel slidesPerView={1}>
-<Lightbox src="/img/docs/dbt-platform/wizard-home-agent.png" width="95%" title="dbt Wizard home tab — agent refactoring a model with an inline SQL diff" />
 <Lightbox src="/img/docs/dbt-platform/wizard-home-empty.png" width="95%" title="dbt Wizard home tab — empty state with quick-start prompts" />
+<Lightbox src="/img/docs/dbt-platform/wizard-home-agent.png" width="95%" title="dbt Wizard home tab — agent refactoring a model with an inline SQL diff" />
 </DocCarousel>
 
 The <Constant name="wizard" /> home tab is complementary to the [<Constant name="wizard" /> experience in <Constant name="studio_ide" />](/docs/dbt-ai/wizard-ide). Where the <Constant name="studio_ide" /> supports users working directly within a traditional IDE environment, the home tab is purpose-built for agent-native development &mdash; it reduces overhead and keeps you focused on supervising and validating agent-generated work.
