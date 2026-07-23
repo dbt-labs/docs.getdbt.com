@@ -45,7 +45,10 @@ Validation can combine static checks, dbt commands, development builds, downstre
 
 {/* DIAGRAM: proposed change → validation → diff */}
 
-In <Constant name="wizard" /> CLI, choose light, medium, heavy, or skipped validation. Medium validation is the default. Light validation focuses on syntax, linting where supported, tests, and code review without materializing the changed models. Medium validation adds development materialization and downstream checks. Heavy validation adds explicit expectations and development-to-production comparisons when the required relations are available.
+In <Constant name="wizard" /> CLI, choose light, medium, heavy, or skipped validation. Medium validation is the default: 
+- Light validation focuses on syntax, linting where supported, tests, and code review without materializing the changed models. 
+- Medium validation adds development materialization and downstream checks. 
+- Heavy validation adds explicit expectations and development-to-production comparisons when the required relations are available.
 
 <Constant name="wizard" /> reports failures and checks it couldn't complete. A passing check doesn't remove the need to review business logic, and a skipped check should remain visible in your review. For a complete procedure and the approval points for warehouse commands, refer to [Validate dbt changes with <Constant name="wizard" />](/docs/dbt-ai/wizard-validate-changes).
 
