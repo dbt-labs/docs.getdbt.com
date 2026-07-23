@@ -62,7 +62,7 @@ Choose **Fusion Fallback** as an emergency measure only. This is a temporary rol
 
 Account admins can set the org-wide default release track for new projects via a toggle in **Account Settings**. Individual project owners can then override that default per environment.
 
-### Mantle (dbt Core–based) release tracks
+### dbt release tracks
 
 Choose the **Latest** release track to continuously receive new features, fixes, performance improvements — latest & greatest dbt. This is the default for all customers on <Constant name="dbt" />.
 
@@ -70,7 +70,7 @@ Choose the **Compatible** and **Extended** release tracks if you need a less-fre
 
 ### Using the Fallback release track
 
-The **Fallback** release track (for both Fusion and Mantle) provides an emergency rollback option for account admins if you suspect a regression in the "Extended" track. This is available only for <Constant name="fusion_engine" /> in Enterprise+ accounts.
+The **Fallback** release track (for both Fusion and dbt) provides an emergency rollback option for account admins if you suspect a regression in the "Extended" track. This is available only for <Constant name="fusion_engine" /> in Enterprise+ accounts.
 
 1. Go to **Account settings**
 2. Click the **Fallback** release track button in the <Constant name="dbt_platform" /> interface. This is not accessible through environment settings.
