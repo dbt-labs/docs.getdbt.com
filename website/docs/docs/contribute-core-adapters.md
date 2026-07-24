@@ -17,7 +17,7 @@ Community-supported plugins are works in progress, and you can contribute by tes
 - Join both the dedicated channel, [#adapter-ecosystem](https://getdbt.slack.com/archives/C030A0UF5LM), in [dbt Slack](https://community.getdbt.com/) and the channel for your adapter's data store. See the **Slack Channel** link in the [<Constant name="core_v1" /> platform](/docs/local/profiles.yml) pages.
 - Review open issues in the plugin's source repository. Use the relevant **GitHub repo** link in the [<Constant name="core_v1" /> platform](/docs/local/profiles.yml) pages.
 
-<VersionBlock lastVersion="1.99"/>
+<VersionBlock lastVersion="1.99">
 
 ### Create a new dbt Core v1.x adapter
 
