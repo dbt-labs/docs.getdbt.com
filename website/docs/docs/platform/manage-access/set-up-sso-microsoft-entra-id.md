@@ -52,7 +52,7 @@ Choose the **Supported account types** value based on which tenants you want to 
 <SimpleTable>
 | Customer need | Supported account types (Azure) | Value to enter in dbt's Microsoft Entra ID Domain field |
 | ----- | ----- | ----- |
-| One tenant only _(default, recommended for most enterprise use-cases)_ | Accounts in this organizational directory only | Your **Directory (tenant) ID** |
+| One tenant only _(default, recommended for most enterprise use-cases)_ | Accounts in this organizational directory only | The primary domain name for your Azure directory |
 | Multiple specific Entra ID tenants | Accounts in organizational directories set by Entra admin | `organizations` |
 | Any org tenant plus personal Microsoft accounts | Accounts in any organizational directory and personal Microsoft accounts | `common` |
 | Personal Microsoft accounts only | Personal Microsoft accounts only | `consumers` |
@@ -61,7 +61,7 @@ Choose the **Supported account types** value based on which tenants you want to 
 :::note Multi-tenant setup
 To ensure your multi-tenant setup works correctly, you’ll need to make two key adjustments beyond just selecting “Multi-tenant” in your Azure account settings:
 
-- Update the Microsoft Entra ID Domain: In the dbt “Microsoft Entra ID Domain:” field, enter the specific authority string (`organizations`, `common`, or `consumers`) rather than your Directory (tenant) ID. For more details, see the [Supplying credentials](#supplying-credentials)
+- Update the Microsoft Entra ID Domain: In the dbt “Microsoft Entra ID Domain:” field, enter the specific authority string (`organizations`, `common`, or `consumers`) rather than the domain name for your Azure directory. For more details, see the [Supplying credentials](#supplying-credentials)
 - Grant Admin Consent for Each Tenant: Because this is an Entra (formerly Azure AD) requirement, each separate tenant will need its own administrator to grant consent. If users from other tenants attempt to log in before this is done, they will see an “admin approval required” screen. An admin can resolve this by visiting the specific consent URL provided by Microsoft for their tenant (for example,`https://login.microsoftonline.com/{TENANT_ID}/adminconsent?client_id={CLIENT_ID}`)
 :::
 
@@ -187,8 +187,8 @@ To complete setup, follow the steps below in the <Constant name="dbt" /> applica
 | **Log&nbsp;in&nbsp;with** | Microsoft Entra ID Single Tenant, or Microsoft Entra ID Multi Tenant if you configured a multi-tenant **Supported account types** value |
 | **Client&nbsp;ID** | Paste the **Application (client) ID** recorded in the steps above |
 | **Client&nbsp;Secret** | Paste the **Client Secret** (remember to use the Secret Value instead of the Secret ID) from the steps above; <br />**Note:** When the client secret expires, an Entra ID admin will have to generate a new one to be pasted into <Constant name="dbt" /> for uninterrupted application access. |
-| **Microsoft&nbsp;Entra&nbsp;ID&nbsp;Domain** | For single tenant, paste the **Directory (tenant ID)** recorded in the steps above. For multi-tenant, enter the matching authority string (`organizations`, `common`, or `consumers`) instead. Refer to [Supported account types table](#creating-an-application). |
-| **Domain** | Enter the domain name for your Azure directory (such as `fishtownanalytics.com`). Only use the primary domain; this won't block access for other domains. |
+| **Tenant&nbsp;ID** | Paste the **Directory (tenant) ID** recorded in the steps above. (This field only appears when you select **Microsoft Entra ID Single Tenant**; it is not needed for multi-tenant). |
+| **Microsoft&nbsp;Entra&nbsp;ID&nbsp;Domain** | For single tenant, enter the domain name for your Azure directory (such as `fishtownanalytics.com`). Only use the primary domain; this won't block access for other domains. For multi-tenant, enter the matching authority string (`organizations`, `common`, or `consumers`) instead. Refer to [Supported account types table](#creating-an-application). |
 </SimpleTable>
   
 <Lightbox src="/img/docs/dbt-platform/dbt-platform-enterprise/azure/azure-cloud-sso.png" title="Configuring Entra ID AD SSO in dbt" />
