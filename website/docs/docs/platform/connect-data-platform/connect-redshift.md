@@ -3,6 +3,9 @@ title: "Connect Redshift"
 id: connect-redshift
 description: "Setup instructions for connecting Redshift to dbt"
 sidebar_label: "Connect Redshift"
+availability:
+  surface: platform
+  access: login_required
 ---
 
 # Connect Redshift <ProductCard text="Fusion compatible" />

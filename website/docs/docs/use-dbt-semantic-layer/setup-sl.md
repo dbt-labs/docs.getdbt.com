@@ -6,9 +6,13 @@ sidebar_label: "Administer the Semantic Layer"
 tags: [Semantic Layer]
 pagination_next: "docs/use-dbt-semantic-layer/sl-architecture"
 pagination_prev: "guides/sl-snowflake-qs"
+availability:
+  surface: platform
+  access: paid_plan
+  minPlan: starter
 ---
 
-# Administer the Semantic Layer <Lifecycle status="self_service,managed,managed_plus" />
+# Administer the Semantic Layer
 
 With the dbt <Constant name="semantic_layer" />, you can centrally define business metrics, reduce code duplication and inconsistency, create self-service in downstream tools, and more. This topic shows you how to set up credentials and tokens so that other tools can query the <Constant name="semantic_layer" />.
 

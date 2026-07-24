@@ -4,11 +4,15 @@ sidebar_label: "About Cost Insights"
 description: "Track warehouse compute costs and understand the impact of optimizations across your dbt projects and models." 
 id: "cost-insights"
 tags: ['SAO', 'cost savings', 'models built', 'cost insights', 'cost reductions', 'cost optimizations']
+availability:
+  surface: platform
+  access: paid_plan
+  minPlan: enterprise
 ---
 
 import SaoDeprecated from '/snippets/_sao-deprecated.md';
 
-# Cost Insights <Lifecycle status="beta,managed,managed_plus" />
+# Cost Insights <Lifecycle status="beta" />
 
 Cost Insights shows estimated costs and compute time for your dbt projects and models directly in the <Constant name="dbt_platform" />, so you can measure and share the impact of optimizations like [dbt State](/docs/deploy/dbt-state-about) and [state-aware orchestration](/docs/deploy/state-aware-about).
 

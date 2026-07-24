@@ -12,6 +12,7 @@ meta:
   cloud_support: Supported
   platform_name: 'Microsoft Fabric'
   config_page: '/reference/resource-configs/fabric-configs'
+availability: local_free
 ---
 
 <Snippet path="warehouse-setups-cloud-callout" />

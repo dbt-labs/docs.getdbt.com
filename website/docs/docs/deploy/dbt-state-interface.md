@@ -4,6 +4,7 @@ sidebar_label: "Monitor dbt State activity"
 description: "Learn how to monitor dbt State activity in dbt platform for better visibility into model builds and cost savings."
 id: "dbt-state-interface"
 tags: ['dbt State']
+availability: everywhere_usage
 ---
 # Monitor dbt State activity <Lifecycle status="preview" />
 

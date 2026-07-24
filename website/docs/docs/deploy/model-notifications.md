@@ -2,6 +2,7 @@
 title: "Model notifications"
 description: "While a job is running, receive email notifications in real time about any issues with your models and tests. "
 intro_text: "Set up dbt to notify model owners through email about issues in your deployment environments."
+availability: platform_login
 ---
 
 Configure dbt to send email notifications to model owners about issues in deployment [environments](/docs/dbt-platform-environments#types-of-environments) as soon as they happen &mdash; while the job is still running. Model owners can specify which statuses to receive notifications about:

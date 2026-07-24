@@ -20,6 +20,9 @@ All of the following features are available in dbt Core and the <Constant name="
 - [**Model namespaces**](/reference/dbt-jinja-functions/ref#ref-project-specific-models) &mdash; Organize models into [groups](/docs/build/groups) and [packages](/docs/build/packages) to delineate ownership boundaries. Models in different packages can share the same name, and the `ref` function can take the project/package namespace as its first argument. 
 - [**Project dependencies**](/docs/mesh/govern/project-dependencies) &mdash; Resolve references to public models in other projects ("cross-project ref") using an always-on stateful metadata service, instead of importing all models from those projects as packages. Each project serves data products (public model references) while managing its own implementation details, enabling an [enterprise data mesh](/best-practices/how-we-mesh/mesh-1-intro). <Lifecycle status="managed,managed_plus"/>
 
+import DataFreshnessSLATip from '/snippets/_data-freshness-sla-tip.md';
 import ModelGovernanceRollback from '/snippets/_model-governance-rollback.md';
+
+<DataFreshnessSLATip />
 
 <ModelGovernanceRollback />

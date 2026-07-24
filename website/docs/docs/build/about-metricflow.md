@@ -6,6 +6,7 @@ sidebar_label: About MetricFlow
 tags: [Metrics, Semantic Layer]
 pagination_next: "docs/build/join-logic"
 pagination_prev: null
+availability: all_users
 ---
 
 This guide introduces MetricFlow's fundamental ideas for people new to this feature. MetricFlow, which powers the <Constant name="semantic_layer" />, helps you define and manage the logic for your company's metrics. It's an opinionated set of abstractions and helps data consumers retrieve metric datasets from a data platform quickly and efficiently.

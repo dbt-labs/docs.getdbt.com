@@ -7,6 +7,14 @@ description: "Fusion is the next-generation engine for dbt."
 
 # About the dbt Fusion engine
 
+<VersionBlock lastVersion="1.99">
+:::tip Available only on v2
+v2 is the free, faster way to develop dbt that uses the Rust-based engine. For richer [Upgrade to v2](/docs/dbt-versions/core-upgrade/upgrading-to-v2) to get it. 
+
+Get started right away with many dbt features, free forever! You can also try advanced features by running `dbt login` to create a free dbt platform account for the best v2 experience.
+:::
+</VersionBlock>
+
 <IntroText>
 
 dbt is the industry standard for data transformation. The <Constant name="fusion_engine" /> enables dbt to operate at speed and scale like never before.
@@ -20,29 +28,27 @@ import FusionLifecycle from '/snippets/_fusion-lifecycle-callout.md';
 
 </VersionBlock>
 
-The <Constant name="fusion_engine" /> shares the same familiar framework for authoring data transformations as <Constant name="core" />, while enabling data developers to work faster and deploy transformation workloads more efficiently.
+The <Constant name="fusion_engine" /> shares the same dbt framework you already know &mdash; the same dbt language and project structure &mdash; while enabling you to work faster and deploy transformation workloads more efficiently.
 
 ### What is Fusion
 
-Fusion is written in Rust and has a native understanding of SQL across multiple engine dialects. Fusion will eventually support the full dbt Core framework, a superset of dbt Core capabilities, and the vast majority of existing dbt projects.
+Fusion is written in Rust and has a native understanding of SQL across multiple engine dialects &mdash; catching errors before they reach your warehouse and powering editor features like autocomplete and inline errors as you type.
 
-[<Constant name="core_v2" />](/docs/dbt-versions/core-upgrade/upgrading-to-v2) is the open-source Apache 2.0 foundation that <Constant name="fusion" /> builds on. <Constant name="core_v2" /> delivers a faster, Rust-based runtime for dbt projects; <Constant name="fusion" /> extends it with SQL comprehension, column-level lineage, and richer development capabilities. It is currently in alpha.
-
-<Constant name="core_v2" /> is published as Apache 2.0 open source in the [`dbt-core` repository](https://github.com/dbt-labs/dbt-core), the single canonical home for issues and contributions. Fusion, which includes the <Constant name="fusion_engine" />’s richer capabilities, is proprietary.
+Fusion is the default experience when you [install dbt](/docs/local/install-dbt). It gives you the recommended v2 experience from the command line and builds on the Apache 2.0 runtime available as dbt Core 2.0. It's free to use, with some capabilities unlocked when you sign in with any <Constant name="dbt_platform" /> account &mdash; free, no paid plan required. 
 
 ## Why use Fusion
 
 As a developer, Fusion can:
-- Immediately catch incorrect SQL in your dbt models
+- Immediately catch incorrect SQL in your dbt models, before they ever hit the warehouse
+- Give you autocomplete, hover info, and inline errors as you type
 - Preview inline <Term id="cte">CTEs</Term> for faster debugging
-- Trace model and column definitions across your dbt project
+- Trace model and column definitions across your entire project
 
-All of that and more is available in the [dbt extension for VSCode](/docs/about-dbt-extension), with Fusion at the foundation.
-
+Get all of this, free, in the [dbt extension for VSCode](/docs/about-dbt-extension) &mdash; built on Fusion.
 
 ### Thread management
 
-The <Constant name="fusion_engine" /> manages parallelism differently than <Constant name="core" />. Rather than treating the `threads` setting as a strict limit on concurrent operations, Fusion optimizes parallelism based on each adapter's characteristics.
+The <Constant name="fusion_engine" /> manages parallelism differently than dbt Core v1.x. Rather than treating the `threads` setting as a strict limit on concurrent operations, Fusion optimizes parallelism based on each adapter's characteristics.
 
 - **Snowflake and Databricks**: Fusion ignores user-set threads and automatically optimizes parallelism for maximum performance.
 - **BigQuery and Redshift**: Fusion respects user-set threads to manage rate limits and concurrency constraints.
@@ -53,17 +59,15 @@ For more information, refer to [Using threads](/docs/running-a-dbt-project/using
 
 ### How to use Fusion
  
-You can:
-- Select Fusion from the [dropdown/toggle in the dbt platform](/docs/dbt-versions/upgrade-dbt-platform-version#dbt-fusion-engine)
-- [Install the dbt extension for VSCode](/docs/install-dbt-extension) <Lifecycle status="preview" />
-- [Install the <Constant name="fusion" /> CLI](/docs/local/install-dbt?version=2) <Lifecycle status="preview" />
+You can use Fusion in three ways:
 
+- Select Fusion from the version dropdown in the [dbt platform](/docs/dbt-versions/upgrade-dbt-platform-version#dbt-fusion-engine)
+- [Install the dbt extension for VS Code](/docs/install-dbt-extension)
+- [Install dbt](/docs/local/install-dbt) to get Fusion from the command line
 
-Go straight to the [Quickstart](/guides/fusion) to _feel the Fusion_ as fast as possible. If you're a <Constant name="dbt_platform"/> user and want to keep your local environment in sync with the platform, see the [Hybrid development with <Constant name="dbt_platform"/> and <Constant name="fusion"/>](/guides/fusion-platform-local-workflow) guide.
+To get started quickly, try the [Fusion quickstart](/guides/fusion). If you use the <Constant name="dbt_platform"/> and want to keep local development in sync, refer to [Hybrid development with the <Constant name="dbt_platform"/> and Fusion](/guides/fusion-platform-local-workflow).
 
-## What's next?
-
-dbt Labs launched the dbt Fusion engine as a public beta on May 28, 2025, with plans to reach full feature parity with <Constant name="core" /> ahead of [Fusion's general availability](/blog/dbt-fusion-engine-path-to-ga).
+_Need Apache 2.0 only? [Install dbt Core 2.0](/docs/local/install-dbt-core-v2), the open-source project behind Fusion._
 
 import AboutFusion from '/snippets/_about-fusion.md';
 

@@ -4,6 +4,7 @@ sidebar_label: "Enable on individual jobs"
 description: "Enable dbt State on specific jobs in dbt platform, whether existing or newly created."
 id: "dbt-state-enable-jobs"
 tags: ['dbt State']
+availability: everywhere_usage
 ---
 
 # Enabling dbt State on individual jobs <Lifecycle status="preview" />

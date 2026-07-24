@@ -3,6 +3,8 @@ title: "About dbt lint command"
 sidebar_label: "lint"
 description: "Use dbt lint to check your SQL files for style, correctness, and convention violations using SQLFluff-compatible rules."
 id: "lint"
+availability:
+  engine: v2
 ---
 
 # About dbt lint command <Lifecycle status="beta" />
