@@ -2,6 +2,7 @@
 title: Environment variables
 id: "environment-variables"
 description: "Use environment variables to customize the behavior of your dbt project."
+availability: all_users
 ---
 
 Environment variables can be used to customize the behavior of a dbt project depending on where the project is running. Refer to the docs on

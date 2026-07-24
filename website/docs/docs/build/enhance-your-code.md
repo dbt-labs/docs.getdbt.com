@@ -3,6 +3,7 @@ title: "Enhance your code"
 description: "Learn how you can enhance your code"
 pagination_next: "docs/build/project-variables"
 pagination_prev: null
+availability: all_users
 ---
 
 <div className="grid--2-col">

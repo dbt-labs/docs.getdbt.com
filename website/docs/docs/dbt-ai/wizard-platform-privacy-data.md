@@ -5,6 +5,10 @@ description: "Understand how dbt Wizard in the dbt platform handles your privacy
 sidebar_label: "Data & privacy"
 tags: [AI, Wizard, Privacy]
 pagination_prev: "docs/dbt-ai/wizard-platform-mcp"
+availability:
+  surface: platform
+  access: paid_plan
+  minPlan: starter
 ---
 
 # <Constant name="wizard" /> in the <Constant name="dbt_platform" /> privacy and data <Lifecycle status="beta"/>

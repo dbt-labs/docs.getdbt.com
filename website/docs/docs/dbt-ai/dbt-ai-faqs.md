@@ -2,6 +2,7 @@
 title: "dbt AI FAQs"
 sidebar_label: "dbt AI FAQs"
 description: "Answers to common questions about dbt AI features, including dbt Wizard and dbt Copilot."
+availability: all_users
 ---
 
 import WizardPlatformPreviewDisclaimer from '/snippets/_wizard-platform-preview-disclaimer.md';

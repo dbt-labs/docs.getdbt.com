@@ -4,6 +4,7 @@ id: "using-threads"
 sidebar_label: "Use threads"
 description: "Understand what threads mean and how to use them."
 pagination_next: null
+availability: all_users
 ---
 import FusionThreads from '/snippets/_fusion-threads.md';
  
@@ -38,7 +39,7 @@ Project parsing runs separately and automatically uses all available CPUs. To di
 
 <FusionThreads />
 
-For more information about <Constant name="fusion"/>'s approach to parallelism, refer to [the <Constant name="fusion_engine"/>](/docs/fusion) page.
+For more information about <Constant name="fusion"/>'s approach to parallelism, refer to [the <Constant name="fusion_engine"/>](/docs/fusion/about-fusion) page.
 
 ## Related docs
 - [About profiles.yml](/docs/local/profiles.yml)

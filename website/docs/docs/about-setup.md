@@ -5,6 +5,7 @@ description: "About setup and installation of self-hosted dbt and the dbt platfo
 sidebar_label: "dbt setup and installation"
 pagination_next: "docs/environments-in-dbt"
 pagination_prev: null
+availability: all_users
 ---
 
 dbt compiles and runs your analytics code against your data platform, enabling you and your team to collaborate on a single source of truth for metrics, insights, and business definitions. There are two options for deploying dbt:

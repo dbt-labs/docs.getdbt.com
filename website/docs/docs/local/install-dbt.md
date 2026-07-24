@@ -89,16 +89,50 @@ To upgrade later, run `dbt system update`.
 Refer to the [dbt VS Code extension docs](/docs/about-dbt-extension) for more info.
 
 If you or your org has a strict requirement to use the open-source runtime, install it [here](/docs/local/install-dbt-core-v2).
+=======
 
-## Troubleshooting
+## Install dbt <Lifecycle status="preview" />
 
-Common issues and resolutions:
+<Tabs groupId="install-method" queryString>
 
-- **dbt command not found:** Add the installation location to your `$PATH`.
-- **Version conflicts:** Check that no other <Constant name="core" /> or <Constant name="platform_cli" /> versions are installed or active on your machine.
-- **Installation permissions:** Make sure your user account can install software locally.
+<TabItem value="pip" label="pip">
 
-## Frequently asked questions
+```shell
+python -m pip install --pre dbt
+```
+
+To upgrade later, run `python -m pip install --upgrade --pre dbt`.
+
+</TabItem>
+
+<TabItem value="homebrew" label="Homebrew (macOS)">
+
+```shell
+brew install dbt
+```
+
+To upgrade later, run `brew upgrade dbt`.
+
+</TabItem>
+
+<TabItem value="curl" label="curl (macOS/Linux)">
+
+```shell
+curl -fsSL https://public.cdn.getdbt.com/fs/install/install.sh | sh -s -- --update
+```
+
+Close and reopen your terminal (or run `exec $SHELL`) so the new `$PATH` is recognized. 
+ current
+
+To upgrade later, run `dbt system update`.
+
+</TabItem>
+
+<TabItem value="winget" label="winget (Windows)">
+
+```shell
+winget install --id dbtLabs.dbt --exact
+```
 
 - <Expandable alt_header="Can I revert to my previous dbt installation?">
     Yes. To test a new install without affecting your existing workflows, use a separate environment or virtual machine.
@@ -140,8 +174,66 @@ If you still have the `dbt` binary installed and wish to manage or clear interna
 
 <AboutFusion/>
 
+To install a specific version, run `winget install --id dbtLabs.dbt --exact --version <version>`.
+
+</TabItem>
+
+<TabItem value="windows" label="Windows (PowerShell)">
+
+```powershell
+irm https://public.cdn.getdbt.com/fs/install/install.ps1 | iex
+```
+
+Close and reopen your shell (or run `Start-Process powershell`) so the new `Path` is recognized. 
+
+To upgrade later, run `dbt system update`.
+
+</TabItem>
+
+</Tabs>
+
+- Verify your installation:
+
+  ```shell
+  dbt --version
+  ```
+
+- With <Constant name="dbt" /> v2, you can start using the <Constant name="fusion" /> experience right away. For the best v2 editor experience, install the dbt VS Code extension to use features like autocomplete, inline errors, and lineage.
+
+  For full <Term id="lsp" /> features and other richer <Constant name="fusion" /> capabilities, run `dbt login` to sign in with a free <Constant name="dbt_platform" /> account:
+
+  ```shell
+  dbt login
+  ```
+
+Refer to the [dbt VS Code extension docs](/docs/about-dbt-extension) for more info.
+
+If you or your org has a strict requirement to use the open-source runtime, install it [here](/docs/local/install-dbt-core-v2).
+
+## Troubleshooting
+
+Common issues and resolutions:
+
+- **dbt command not found:** Add the installation location to your `$PATH`.
+- **Version conflicts:** Check that no other <Constant name="core" /> or <Constant name="platform_cli" /> versions are installed or active on your machine.
+- **Installation permissions:** Make sure your user account can install software locally.
+
+## Frequently asked questions
+
+- <Expandable alt_header="Can I revert to my previous dbt installation?">
+    Yes. To test a new install without affecting your existing workflows, use a separate environment or virtual machine.
+  </Expandable>
+- <Expandable alt_header="Can I download the Apache 2.0 runtime only?">
+    Yes if you need to use the Apache 2.0 runtime, you can [install dbt Core 2.0](/docs/local/install-dbt-core-v2), the open-source project behind Fusion.
+  </Expandable>
+ current
+
 </VersionBlock>
 
+
+</VersionBlock>
+
+ current
 <VersionBlock lastVersion="1.99">
 
 :::tip Want faster dbt?

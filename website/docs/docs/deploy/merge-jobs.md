@@ -2,9 +2,13 @@
 title: "Merge jobs in dbt"
 sidebar_label: "Merge jobs"
 description: "Learn how to trigger a dbt job run when a Git pull request merges."
+availability:
+  surface: platform
+  access: paid_plan
+  plans: [starter, enterprise]
 ---
 
-# Merge jobs in dbt <Lifecycle status="self_service,managed" />
+# Merge jobs in dbt
 
 You can set up a merge job to implement a continuous deployment (CD) workflow in <Constant name="dbt" />. The merge job triggers a dbt job to run when someone merges Git pull requests into production. This workflow creates a seamless development experience where changes made in code will automatically update production data.
 

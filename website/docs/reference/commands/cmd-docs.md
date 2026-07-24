@@ -176,7 +176,7 @@ dbt compile --write-index
 dbt build --write-index
 ```
 
-Add [`--static-analysis strict`](/docs/fusion/new-concepts) to for column lineage and richer column metadata from your warehouse:
+Add [`--static-analysis strict`](/docs/build/about-static-analysis) to for column lineage and richer column metadata from your warehouse:
 
 ```shell
 dbt build --write-index --static-analysis strict

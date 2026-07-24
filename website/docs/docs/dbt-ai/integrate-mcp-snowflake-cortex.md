@@ -3,6 +3,7 @@ title: "Integrate Snowflake Cortex agents with dbt MCP"
 sidebar_label: "Integrate Snowflake Cortex with MCP"
 description: "Connect a Snowflake Cortex agent to the remote dbt MCP server so it can query your dbt Semantic Layer."
 id: "integrate-mcp-snowflake-cortex"
+availability: platform_login
 ---
 
 import MCPRemoteServerUrl from '/snippets/_mcp-remote-server-url.md';

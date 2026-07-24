@@ -3,6 +3,7 @@ title: "Packages"
 id: "packages"
 description:  "dbt packages help modularize code and transform data efficiently."
 keywords: [dbt package, private package, dbt private package, dbt data transformation, dbt clone, add dbt package]
+availability: all_users
 ---
 
 
