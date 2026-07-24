@@ -10,9 +10,9 @@ Refer to the following available community adapter(s):
 
 <VersionBlock firstVersion="2.0">
 
-In dbt Core 2.0, [DuckDB](/docs/local/connect-data-platform/duckdb-setup) is available as a community adapter. There are also several trusted adapters available: Apache Spark, BigQuery, Databricks, DuckDB, Redshift, Snowflake. For the full list, refer to [trusted adapters](/docs/trusted-adapters?version=2.0).
+In v2, [DuckDB](/docs/local/connect-data-platform/duckdb-setup) is available as a community adapter. There are also several trusted adapters available: Apache Spark, BigQuery, Databricks, DuckDB, Redshift, Snowflake. For the full list, refer to [trusted adapters](/docs/trusted-adapters?version=2.0).
 
-If you'd like to contribute a community adapter for dbt Core 2.0, refer to [creating a Fusion adapter](/guides/adapter-creation-v2?step=1).
+If you'd like to contribute a community adapter for v2, refer to [creating a Fusion adapter](/guides/adapter-creation-v2?step=1).
 
 
 </VersionBlock>
