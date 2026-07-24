@@ -5,7 +5,7 @@
 
 <Card
     title="Apache Spark"
-    body="<ul><li><br /></li><li><a href='/docs/local/connect-data-platform/spark-setup'>Install with dbt Core </a> </li><li><a href='/docs/local/connect-data-platform/spark-setup'>Install with dbt Fusion </a> </li></ul> <br /> <a href=https://badge.fury.io/py/dbt-spark><img src=https://badge.fury.io/py/dbt-spark.svg/></a>"
+    body="<ul><li><a href='/docs/local/connect-data-platform/spark-setup'>Install with dbt Core </a> </li><li><a href='/docs/local/connect-data-platform/spark-setup'>Install with dbt Fusion </a> </li></ul> <br /> <a href=https://badge.fury.io/py/dbt-spark><img src=https://badge.fury.io/py/dbt-spark.svg/></a>"
     pills='[ "dbt Core", "Fusion"]'
     icon="apache-spark"/>
 
