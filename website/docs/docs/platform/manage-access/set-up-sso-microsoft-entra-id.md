@@ -47,10 +47,10 @@ Log into the Azure portal for your organization. Using the [**Microsoft Entra ID
 | **Supported account types** | See table in the next section |
 </SimpleTable>
   
-Choose the **Supported account types** value based on which tenants you want to allow, and note the matching **Tenant ID** value you'll need later when [supplying credentials](#supplying-credentials) in <Constant name="dbt" />:
+Choose the **Supported account types** value based on which tenants you want to allow, and note the matching **Microsoft Entra ID Domain** value you'll need later when [supplying credentials](#supplying-credentials) in <Constant name="dbt" />:
 
 <SimpleTable>
-| Customer need | Supported account types (Azure) | Value to enter in dbt's Tenant ID field |
+| Customer need | Supported account types (Azure) | Value to enter in dbt's Microsoft Entra ID Domain field |
 | ----- | ----- | ----- |
 | One tenant only _(default, recommended for most enterprise use-cases)_ | Accounts in this organizational directory only | Your **Directory (tenant) ID** |
 | Multiple specific Entra ID tenants | Accounts in organizational directories set by Entra admin | `organizations` |
@@ -59,10 +59,10 @@ Choose the **Supported account types** value based on which tenants you want to 
 </SimpleTable>
 
 :::note Multi-tenant setup
-Selecting a multi-tenant **Supported account types** value in Azure is not enough on its own. You must also enter the matching authority string (`organizations`, `common`, or `consumers`) in dbt's **Tenant ID** field instead of your Directory (tenant) ID — see [Supplying credentials](#supplying-credentials).
+To ensure your multi-tenant setup works correctly, you’ll need to make two key adjustments beyond just selecting “Multi-tenant” in your Azure account settings:
 
-Each additional tenant needs its own admin consent. Users from other tenants will see a "needs admin approval" screen on first login until an admin in *that* tenant grants consent (for example, by visiting `https://login.microsoftonline.com/{TENANT_ID}/adminconsent?client_id={CLIENT_ID}`). This is an Entra requirement, independent of dbt.
-:::
+- Update the Microsoft Entra ID Domain: In the dbt “Microsoft Entra ID Domain:” field, enter the specific authority string (`organizations`, `common`, or `consumers`) rather than your Directory (tenant) ID. For more details, see the [Supplying credentials](#supplying-credentials)
+- Grant Admin Consent for Each Tenant: Because this is an Entra (formerly Azure AD) requirement, each separate tenant will need its own administrator to grant consent. If users from other tenants attempt to log in before this is done, they will see an “admin approval required” screen. An admin can resolve this by visiting the specific consent URL provided by Microsoft for their tenant (for example,`https://login.microsoftonline.com/{TENANT_ID}/adminconsent?client_id={CLIENT_ID}`)
 
 4. Configure the **Redirect URI**. The table below shows the appropriate Redirect URI values for single-tenant and multi-tenant Entra ID app deployments. For most enterprise use-cases, you will want to use the single-tenant Redirect URI. Replace `YOUR_AUTH0_URI` with the [appropriate Auth0 URI](/docs/platform/manage-access/sso-overview#auth0-uris) for your region and plan.
 
@@ -186,7 +186,7 @@ To complete setup, follow the steps below in the <Constant name="dbt" /> applica
 | **Log&nbsp;in&nbsp;with** | Microsoft Entra ID Single Tenant, or Microsoft Entra ID Multi Tenant if you configured a multi-tenant **Supported account types** value |
 | **Client&nbsp;ID** | Paste the **Application (client) ID** recorded in the steps above |
 | **Client&nbsp;Secret** | Paste the **Client Secret** (remember to use the Secret Value instead of the Secret ID) from the steps above; <br />**Note:** When the client secret expires, an Entra ID admin will have to generate a new one to be pasted into <Constant name="dbt" /> for uninterrupted application access. |
-| **Tenant&nbsp;ID** | For single tenant, paste the **Directory (tenant ID)** recorded in the steps above. For multi-tenant, enter the matching authority string (`organizations`, `common`, or `consumers`) instead. Refer to [Supported account types table](#creating-an-application). |
+| **Microsoft&nbsp;Entra&nbsp;ID&nbsp;Domain** | For single tenant, paste the **Directory (tenant ID)** recorded in the steps above. For multi-tenant, enter the matching authority string (`organizations`, `common`, or `consumers`) instead. Refer to [Supported account types table](#creating-an-application). |
 | **Domain** | Enter the domain name for your Azure directory (such as `fishtownanalytics.com`). Only use the primary domain; this won't block access for other domains. |
 </SimpleTable>
   
