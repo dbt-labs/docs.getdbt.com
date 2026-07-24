@@ -33,7 +33,7 @@ The <Constant name="studio_ide" /> streamlines your workflow, and features a pop
 4. **File explorer:** The File explorer shows the filetree of your repository. You can:
     - Click on any file in the filetree to open the file in the file editor. 
     - Click and drag files between directories to move files. 
-    - Right-click a file to access the sub-menu options like duplicate file, copy file name, copy as `ref`, rename, delete.
+    - Right-click a file to access the sub-menu options like duplicate file, copy file name, copy as `ref`, rename, download, delete.
     - Use file indicators, located to the right of your files or folder name, to see when changes or actions were made:
       * Unsaved (•) — The <Constant name="studio_ide" /> detects unsaved changes to your file/folder
       * Modification (M) — The <Constant name="studio_ide" /> detects a modification of existing files/folders
