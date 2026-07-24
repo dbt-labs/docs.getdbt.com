@@ -43,7 +43,22 @@ Log into the Azure portal for your organization. Using the [**Microsoft Entra ID
 | Field | Value |
 | ----- | ----- |
 | **Name** | <Constant name="dbt" /> |
-| **Supported account types** | Accounts in this organizational directory only _(single tenant)_ |
+| **Supported account types** | See table in the next section |
+
+Choose the **Supported account types** value based on which tenants you want to allow, and note the matching **Tenant ID** value you'll need later when [supplying credentials](#supplying-credentials) in <Constant name="dbt" />:
+
+| Customer need | Supported account types (Azure) | Value to enter in dbt's Tenant ID field |
+| ----- | ----- | ----- |
+| One tenant only _(default, recommended for most enterprise use-cases)_ | Accounts in this organizational directory only | Your **Directory (tenant) ID** |
+| Multiple specific Entra ID tenants | Accounts in organizational directories set by Entra admin | `organizations` |
+| Any org tenant plus personal Microsoft accounts | Accounts in any organizational directory and personal Microsoft accounts | `common` |
+| Personal Microsoft accounts only | Personal Microsoft accounts only | `consumers` |
+
+:::note Multi-tenant setup
+Selecting a multi-tenant **Supported account types** value in Azure is not enough on its own. You must also enter the matching authority string (`organizations`, `common`, or `consumers`) in dbt's **Tenant ID** field instead of your Directory (tenant) ID — see [Supplying credentials](#supplying-credentials).
+
+Each additional tenant needs its own admin consent. Users from other tenants will see a "needs admin approval" screen on first login until an admin in *that* tenant grants consent (for example, by visiting `https://login.microsoftonline.com/{TENANT_ID}/adminconsent?client_id={CLIENT_ID}`). This is an Entra requirement, independent of dbt.
+:::
 
 4. Configure the **Redirect URI**. The table below shows the appropriate Redirect URI values for single-tenant and multi-tenant Entra ID app deployments. For most enterprise use-cases, you will want to use the single-tenant Redirect URI. Replace `YOUR_AUTH0_URI` with the [appropriate Auth0 URI](/docs/platform/manage-access/sso-overview#auth0-uris) for your region and plan.
 
@@ -160,10 +175,10 @@ To complete setup, follow the steps below in the <Constant name="dbt" /> applica
 
 | Field | Value |
 | ----- | ----- |
-| **Log&nbsp;in&nbsp;with** | Microsoft Entra ID Single Tenant |
+| **Log&nbsp;in&nbsp;with** | Microsoft Entra ID Single Tenant, or Microsoft Entra ID Multi Tenant if you configured a multi-tenant **Supported account types** value |
 | **Client&nbsp;ID** | Paste the **Application (client) ID** recorded in the steps above |
 | **Client&nbsp;Secret** | Paste the **Client Secret** (remember to use the Secret Value instead of the Secret ID) from the steps above; <br />**Note:** When the client secret expires, an Entra ID admin will have to generate a new one to be pasted into <Constant name="dbt" /> for uninterrupted application access. |
-| **Tenant&nbsp;ID** | Paste the **Directory (tenant ID)** recorded in the steps above |
+| **Tenant&nbsp;ID** | For single tenant, paste the **Directory (tenant ID)** recorded in the steps above. For multi-tenant, enter the matching authority string (`organizations`, `common`, or `consumers`) instead. Refer to [Supported account types table](#creating-an-application). |
 | **Domain** | Enter the domain name for your Azure directory (such as `fishtownanalytics.com`). Only use the primary domain; this won't block access for other domains. |
 
 <Lightbox src="/img/docs/dbt-platform/dbt-platform-enterprise/azure/azure-cloud-sso.png" title="Configuring Entra ID AD SSO in dbt" />
