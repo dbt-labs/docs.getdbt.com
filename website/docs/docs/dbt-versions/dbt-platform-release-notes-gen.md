@@ -226,6 +226,7 @@ Release notes are grouped by date for single-tenant environments.
 
 ### dbt AI and agents
 
+- **Live streaming for Wizard dbt command output**: [dbt Wizard](/docs/platform/wizard-platform) tool calls for dbt command invocations now stream their output live in chat, in both the Studio IDE and [Wizard home](/docs/platform/wizard-home).
 - **OAuth scopes declared in Model Context Protocol resource metadata**: The Model Context Protocol (MCP) protected resource metadata endpoint now advertises the OAuth scopes it supports (`offline_access`, `account:read`, `projects:query`, `catalog:read`, `projects:develop`, and `jobs:run`). MCP clients that perform dynamic capability discovery can now request the correct scopes automatically.
 
 ### dbt platform
