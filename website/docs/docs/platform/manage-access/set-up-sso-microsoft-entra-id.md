@@ -63,6 +63,7 @@ To ensure your multi-tenant setup works correctly, you’ll need to make two key
 
 - Update the Microsoft Entra ID Domain: In the dbt “Microsoft Entra ID Domain:” field, enter the specific authority string (`organizations`, `common`, or `consumers`) rather than your Directory (tenant) ID. For more details, see the [Supplying credentials](#supplying-credentials)
 - Grant Admin Consent for Each Tenant: Because this is an Entra (formerly Azure AD) requirement, each separate tenant will need its own administrator to grant consent. If users from other tenants attempt to log in before this is done, they will see an “admin approval required” screen. An admin can resolve this by visiting the specific consent URL provided by Microsoft for their tenant (for example,`https://login.microsoftonline.com/{TENANT_ID}/adminconsent?client_id={CLIENT_ID}`)
+:::
 
 4. Configure the **Redirect URI**. The table below shows the appropriate Redirect URI values for single-tenant and multi-tenant Entra ID app deployments. For most enterprise use-cases, you will want to use the single-tenant Redirect URI. Replace `YOUR_AUTH0_URI` with the [appropriate Auth0 URI](/docs/platform/manage-access/sso-overview#auth0-uris) for your region and plan.
 
@@ -95,7 +96,7 @@ Depending on your Microsoft Entra ID settings, your App Registration page might 
 
 ### Azure &lt;-&gt; dbt User and Group mapping
 
-:::important
+:::info
 
 There is a [limitation](https://learn.microsoft.com/en-us/entra/identity/hybrid/connect/how-to-connect-fed-group-claims#important-caveats-for-this-functionality) on the number of groups Azure will emit (capped at 150) via the SSO token, meaning if a user belongs to more than 150 groups, it will appear as though they belong to none. To prevent this, configure [group assignments](https://learn.microsoft.com/en-us/entra/identity/enterprise-apps/assign-user-or-group-access-portal?pivots=portal) with the <Constant name="dbt" /> app in Azure and set a [group claim](https://learn.microsoft.com/en-us/entra/identity/hybrid/connect/how-to-connect-fed-group-claims#add-group-claims-to-tokens-for-saml-applications-using-sso-configuration) so Azure emits only the relevant groups.
 
