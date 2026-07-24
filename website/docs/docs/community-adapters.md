@@ -8,7 +8,20 @@ Community adapters are adapter plugins contributed and maintained by members of 
 
 Refer to the following table for the available community adapters and their respective adapter setup guide:
 
-| Data platforms |||
+<VersionBlock firstVersion="2.0">
+
+In dbt Core 2.0, [DuckDB](/docs/local/connect-data-platform/duckdb-setup) is available as a community adapter. There are also several trusted adapters available: Apache Spark, BigQuery, Databricks, DuckDB, Redshift, Snowflake. For the full list, refer to [trusted adapters](/docs/trusted-adapters?version=2.0).
+
+If you'd like to contribute a community adapter for dbt Core 2.0, refer to [creating a Fusion adapter](/guides/adapter-creation-v2?step=1).
+
+
+</VersionBlock>
+
+<VersionBlock lastVersion="1.99">
+
+<SimpleTable>
+
+| Data platform | | |
 | ------------------------------------------ | -------------------------------- | ------------------------------------- |
 | [Confluent Cloud](/docs/local/connect-data-platform/confluent-setup) | [CrateDB](/docs/local/connect-data-platform/cratedb-setup) | [Databend Cloud](/docs/local/connect-data-platform/databend-setup) |
 | [DeltaStream](/docs/local/connect-data-platform/deltastream-setup) | [Doris & SelectDB](/docs/local/connect-data-platform/doris-setup) | [DuckDB](/docs/local/connect-data-platform/duckdb-setup) |
@@ -20,3 +33,6 @@ Refer to the following table for the available community adapters and their resp
 | [Starrocks](/docs/local/connect-data-platform/starrocks-setup) | [TiDB](/docs/local/connect-data-platform/tidb-setup) | [TimescaleDB](https://dbt-timescaledb.debruyn.dev/) |
 | [Upsolver](/docs/local/connect-data-platform/upsolver-setup) | [Vertica](/docs/local/connect-data-platform/vertica-setup) | [Watsonx-Presto](/docs/local/connect-data-platform/watsonx-presto-setup) |
 | [Yellowbrick](/docs/local/connect-data-platform/yellowbrick-setup) | | |
+</SimpleTable>
+
+</VersionBlock>

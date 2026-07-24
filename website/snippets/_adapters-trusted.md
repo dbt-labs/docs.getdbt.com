@@ -1,3 +1,52 @@
+
+<VersionBlock firstVersion="2.0">
+
+<div className="grid--4-col">
+
+<Card
+    title="Apache Spark"
+    body="<ul><li><a href='/docs/platform/connect-data-platform/connect-apache-spark'>Set up in the dbt platform </a> <br /></li><li><a href='/docs/local/connect-data-platform/spark-setup'>Install with dbt Core </a> </li><li><a href='/docs/local/connect-data-platform/spark-setup'>Install with dbt Fusion </a> </li></ul> <br /> <a href=https://badge.fury.io/py/dbt-spark><img src=https://badge.fury.io/py/dbt-spark.svg/></a>"
+    pills='["dbt platform", "dbt Core", "Fusion"]'
+    icon="apache-spark"/>
+
+<Card
+    title="BigQuery"
+    body="<ul><li><a href='/docs/platform/connect-data-platform/connect-bigquery'>Set up in the dbt platform </a> <br /></li><li><a href='/docs/local/connect-data-platform/bigquery-setup'>Install with dbt Core </a> <br /></li><li><a href='/docs/local/connect-data-platform/bigquery-setup'>Install with dbt Fusion </a> </li></ul><br /> <a href=https://badge.fury.io/py/dbt-bigquery><img src=https://badge.fury.io/py/dbt-bigquery.svg/></a>"
+    pills='["dbt platform", "dbt Core", "Fusion"]'
+    icon="bigquery"/>
+
+<Card
+    title="Databricks"
+    body="<ul><li><a href='/docs/platform/connect-data-platform/connect-databricks'>Set up in the dbt platform </a> <br /></li><li><a href='/docs/local/connect-data-platform/databricks-setup'>Install with dbt Core  </a> <br /></li><li><a href='/docs/local/connect-data-platform/databricks-setup'>Install with dbt Fusion </a> </li></ul><br /> <a href=https://badge.fury.io/py/dbt-databricks><img src=https://badge.fury.io/py/dbt-databricks.svg/></a>"
+    pills='["dbt platform", "dbt Core", "Fusion"]'
+    icon="databricks"/>
+
+<Card
+    title="DuckDB"
+    body="<ul><li><a href='/docs/local/connect-data-platform/duckdb-setup?version=1'>Install with dbt Core </a> <br /></li><li><a href='/docs/local/connect-data-platform/duckdb-setup?version=2'>Install with dbt Fusion </a> </li></ul><br /><a href=https://badge.fury.io/py/dbt-duckdb><img src=https://badge.fury.io/py/dbt-duckdb.svg/></a>"
+    pills='["dbt Core", "Fusion"]'
+    icon="duckdb-seeklogo"/>
+
+
+<Card
+    title="Redshift"
+    body="<ul><li><a href='/docs/platform/connect-data-platform/connect-redshift'>Set up in the dbt platform </a> <br /></li><li><a href='/docs/local/connect-data-platform/redshift-setup'>Install with dbt Core </a> <br /></li><li><a href='/docs/local/connect-data-platform/redshift-setup'>Install with dbt Fusion </a> </li></ul><br /> <a href=https://badge.fury.io/py/dbt-redshift><img src=https://badge.fury.io/py/dbt-redshift.svg/></a>"
+    pills='["dbt platform", "dbt Core", "Fusion"]'
+    icon="redshift"/>
+
+
+<Card
+    title="Snowflake"
+    body="<ul><li><a href='/docs/platform/connect-data-platform/connect-snowflake'>Set up in the dbt platform </a> <br /></li><li><a href='/docs/local/connect-data-platform/snowflake-setup'>Install with dbt Core  </a> <br /></li><li><a href='/docs/local/connect-data-platform/snowflake-setup'>Install with dbt Fusion </a> </li></ul><br /> <a href=https://badge.fury.io/py/dbt-snowflake><img src=https://badge.fury.io/py/dbt-snowflake.svg/></a>"
+    pills='["dbt platform", "dbt Core", "Fusion"]'
+    icon="snowflake"/>
+
+</div>
+
+</VersionBlock>
+
+<VersionBlock lastVersion="1.99">
+
 <div className="grid--4-col">
 
 <Card
@@ -165,3 +214,5 @@
     icon="teradata"/>
 
 </div>
+
+</VersionBlock>
