@@ -3,57 +3,109 @@ title: Install dbt
 id: install-dbt
 description: "Learn how to install the dbt CLI and other tools in your Windows, macOS, or Linux environment"
 sidebar_label: "Install dbt"
-pagination_next: "docs/local/configure-environment-variables"
-pagination_prev: null
+availability: local_free
 ---
 
-import FusionManualInstall from '/snippets/_fusion-manual-install.md';
 import AboutFusion from '/snippets/_about-fusion.md';
 
-Get dbt running on your machine in a few minutes. Choose your path:
+<VersionBlock firstVersion="2.0">
 
-<Tabs>
+Get <Constant name="dbt" /> running on your machine in a few minutes. Installing dbt gives you <Constant name="fusion" /> by default: the current, free-to-use experience for v2. Choose your preferred installation method:
 
-<TabItem default label="Fusion + dbt extension (recommended)" value="Fusion">
+## Install dbt <Lifecycle status="preview" />
 
-## Install the Fusion CLI <Lifecycle status="preview"/>
+<Tabs groupId="install-method" queryString>
 
-The <Constant name="fusion"/> CLI delivers <Constant name="fusion_engine"/> performance benefits (faster parsing, compilation, and execution) but doesn't include <Term id="lsp"/> features. For the best <Constant name="fusion_engine"/> experience, install the dbt VS Code extension in VS Code or a compatible IDE.
+<TabItem value="pip" label="pip">
 
-<FusionManualInstall/>
+```shell
+python -m pip install --pre dbt
+```
 
-## Install the extension
+To upgrade later, run `python -m pip install --upgrade --pre dbt`.
 
-Install the dbt VS Code extension from the marketplace for [VS Code and Cursor](https://marketplace.visualstudio.com/items?itemName=dbtLabsInc.dbt&ssr=false#overview) or [Windsurf](https://open-vsx.org/extension/dbtLabsInc/dbt).
+</TabItem>
 
-1. In your editor, open the **Extensions** tab and search for `dbt`.
-2. Locate the extension from the publisher `dbtLabsInc` or `dbt Labs Inc`, then click **Install**.
+<TabItem value="homebrew" label="Homebrew (macOS)">
 
-    <Lightbox src="/img/docs/extension/extension-marketplace.png" title="Search for the extension" width="90%"/>
+```shell
+brew install dbt
+```
 
-3. Confirm that the extension is active by checking for the **dbt Extension** label in the status bar. Hover over the label to view diagnostic information.
+To upgrade later, run `brew upgrade dbt`.
 
-    <Lightbox src="/img/docs/extension/dbt-extension-statusbar.png" title="If you see the 'dbt Extension' label, the extension is activated" width="60%"/>
+</TabItem>
 
-4. After the extension activates, it automatically downloads the correct dbt Language Server (<Term id="lsp"/>) for your operating system.
+<TabItem value="curl" label="curl (macOS/Linux)">
 
-    <Lightbox src="/img/docs/extension/extension-lsp-download.png" title="The dbt Language Server will be installed automatically" width="60%"/>
+```shell
+curl -fsSL https://public.cdn.getdbt.com/fs/install/install.sh | sh -s -- --update
+```
 
-Refer to the [dbt VS Code extension docs](/docs/about-dbt-extension) for more information.
+Close and reopen your terminal (or run `exec $SHELL`) so the new `$PATH` is recognized. 
+
+To upgrade later, run `dbt system update`.
+
+</TabItem>
+
+<TabItem value="winget" label="winget (Windows)">
+
+```shell
+winget install --id dbtLabs.dbt --exact
+```
+
+To install a specific version, run `winget install --id dbtLabs.dbt --exact --version <version>`.
+
+</TabItem>
+
+<TabItem value="windows" label="Windows (PowerShell)">
+
+```powershell
+irm https://public.cdn.getdbt.com/fs/install/install.ps1 | iex
+```
+
+Close and reopen your shell (or run `Start-Process powershell`) so the new `Path` is recognized. 
+
+To upgrade later, run `dbt system update`.
+
+</TabItem>
+
+</Tabs>
+
+- Verify your installation:
+
+  ```shell
+  dbt --version
+  ```
+
+- With <Constant name="dbt" /> v2, you can start using the <Constant name="fusion" /> experience right away. For the best v2 editor experience, install the dbt VS Code extension to use features like autocomplete, inline errors, and lineage.
+
+  For full <Term id="lsp" /> features and other richer <Constant name="fusion" /> capabilities, run `dbt login` to sign in with a free <Constant name="dbt_platform" /> account:
+
+  ```shell
+  dbt login
+  ```
+
+Refer to the [dbt VS Code extension docs](/docs/about-dbt-extension) for more info.
+
+If you or your org has a strict requirement to use the open-source runtime, install it [here](/docs/local/install-dbt-core-v2).
 
 ## Troubleshooting
 
 Common issues and resolutions:
 
 - **dbt command not found:** Add the installation location to your `$PATH`.
-- **Version conflicts:** Check that no other <Constant name="core"/> or <Constant name="platform_cli"/> versions are installed or active on your machine.
+- **Version conflicts:** Check that no other <Constant name="core" /> or <Constant name="platform_cli" /> versions are installed or active on your machine.
 - **Installation permissions:** Make sure your user account can install software locally.
 
 ## Frequently asked questions
 
-- Can I revert to my previous dbt installation?
-
-    Yes. To test Fusion without affecting your existing workflows, use a separate environment or virtual machine.
+- <Expandable alt_header="Can I revert to my previous dbt installation?">
+    Yes. To test a new install without affecting your existing workflows, use a separate environment or virtual machine.
+  </Expandable>
+- <Expandable alt_header="Can I download the Apache 2.0 runtime only?">
+    Yes if you need to use the Apache 2.0 runtime, you can [install dbt Core 2.0](/docs/local/install-dbt-core-v2), the open-source project behind Fusion.
+  </Expandable>
 
 ## Uninstall dbt Fusion
 
@@ -88,56 +140,32 @@ If you still have the `dbt` binary installed and wish to manage or clear interna
 
 <AboutFusion/>
 
-</TabItem>
+</VersionBlock>
 
-<TabItem label="dbt Core v2" value="CoreV2">
+<VersionBlock lastVersion="1.99">
 
-## Install dbt Core v2 CLI <Lifecycle status="Alpha"/>
-
-:::caution dbt Core v2 is in alpha
-<Constant name="core"/> v2 is under active development and not recommended for production use. Features and APIs may change before the stable release. For stable development, use <Constant name="fusion"/>.
+:::tip Want faster dbt?
+Upgrade to v2 to get <Constant name="fusion" /> &mdash; up to 30x faster performance, <Term id="lsp" /> features like autocomplete and inline errors, and more. [Upgrade to v2](/docs/dbt-versions/core-upgrade/upgrading-to-v2).
 :::
 
-<Constant name="core"/> v2 is the next major version of <Constant name="core"/>, built on the <Constant name="fusion_engine"/> runtime. Install it with `pip`, same as v1, but target the v2 prerelease package.
+## Install dbt Core v1.x CLI
 
-<Expandable alt_header="Pip installation">
+dbt Core v1.x is the original open-source dbt engine. Install it with `pip`, Docker, or from source.
 
-```shell
-python -m pip install --pre dbt-core
-```
-
-```shell
-dbt --version
-```
-
-Confirm that the installed version begins with `2.`.
-
-</Expandable>
-
-<AboutFusion/>
-
-</TabItem>
-
-<TabItem label="dbt Core v1" value="Core">
-
-## Install dbt Core v1 CLI
-
-<Constant name="core"/> v1 is the original open-source dbt engine. Install it with `pip`, Docker, or from source.
-
-<Expandable alt_header="Pip installation">
+<Expandable alt_header="Pip installation" >
 
 ### Prerequisites
 
 - [Python](https://www.python.org/downloads/) (`python --version` or `python3 --version`)
 - [pip](https://pip.pypa.io/en/stable/installation/) (`pip --version` or `pip3 --version`)
 
-<FAQ path="Core/install-pip-os-prereqs"/>
-<FAQ path="Core/install-python-compatibility"/>
+<FAQ path="Core/install-pip-os-prereqs" />
+<FAQ path="Core/install-python-compatibility" />
 
 ### Create a virtual environment
 
 <Tabs>
-  <TabItem label="Unix/macOS" value="Unix/macOS">
+  <TabItem value="Unix/macOS" label="Unix/macOS">
 
   ```shell
   python3 -m venv .venv
@@ -145,7 +173,7 @@ Confirm that the installed version begins with `2.`.
   ```
 
   </TabItem>
-  <TabItem label="Windows" value="Windows">
+  <TabItem value="Windows" label="Windows">
 
   ```shell
   py -m venv .venv
@@ -197,7 +225,7 @@ python3 -m pip install --pre dbt-ADAPTER_NAME
 
 <Expandable alt_header="Docker">
 
-<Constant name="core"/> images are distributed via [GitHub Packages](https://github.com/dbt-labs/dbt-core/pkgs/container/dbt-core) and include pinned versions of dbt-core, one or more adapters, and all dependencies.
+<Constant name="core" /> images are distributed via [GitHub Packages](https://github.com/dbt-labs/dbt-core/pkgs/container/dbt-core) and include pinned versions of dbt-core, one or more adapters, and all dependencies.
 
 ### Prerequisites
 
@@ -207,8 +235,8 @@ python3 -m pip install --pre dbt-ADAPTER_NAME
 ### Pull an image
 
 Images follow the pattern `ghcr.io/dbt-labs/<db_adapter_name>:<version_tag>`. Available tags:
-- `latest` — latest overall release
-- `<Major>.<Minor>.latest` — latest patch for a version family (for example, `1.9.latest`)
+- `latest` ΓÇö latest overall release
+- `<Major>.<Minor>.latest` ΓÇö latest patch for a version family (for example, `1.9.latest`)
 
 ```shell
 docker pull ghcr.io/dbt-labs/<db_adapter_name>:<version_tag>
@@ -231,7 +259,7 @@ Note: bind-mount sources must be absolute paths. You may need to adjust `--netwo
 
 ### Build a custom image
 
-If the pre-made images don't fit your use case, use the [`Dockerfile`](https://github.com/dbt-labs/dbt-core/blob/1.latest/docker/Dockerfile) and [`README`](https://github.com/dbt-labs/dbt-core/blob/1.latest/docker/README.md) to build images with multiple adapters, third-party adapters, or different system architectures. Custom image builds are community-supported — [open an issue](https://github.com/dbt-labs/dbt-core/issues) or [ask the community](/community/resources/getting-help) if you run into trouble.
+If the pre-made images don't fit your use case, use the [`Dockerfile`](https://github.com/dbt-labs/dbt-core/blob/1.latest/docker/Dockerfile) and [`README`](https://github.com/dbt-labs/dbt-core/blob/1.latest/docker/README.md) to build images with multiple adapters, third-party adapters, or different system architectures. Custom image builds are community-supported ΓÇö [open an issue](https://github.com/dbt-labs/dbt-core/issues) or [ask the community](/community/resources/getting-help) if you run into trouble.
 
 </Expandable>
 
@@ -265,12 +293,7 @@ For editable mode: `python -m pip install -e .`
 
 For more details, read the [contributing guidelines](https://github.com/dbt-labs/dbt-core/blob/HEAD/CONTRIBUTING.md).
 
-
 </Expandable>
-
-</TabItem>
-</Tabs>
-
 
 :::tip Pro tip: Using the --help flag
 
@@ -280,6 +303,7 @@ Most command-line tools, including dbt, support a `--help` flag that shows avail
 
 :::
 
+</VersionBlock>
 
 ## Next steps
 
