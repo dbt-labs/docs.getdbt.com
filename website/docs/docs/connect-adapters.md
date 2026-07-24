@@ -16,6 +16,8 @@ Explore the fastest and most reliable way to deploy dbt using <Constant name="db
 
 Install <Constant name="core" />, an open-source tool, locally using the command line. dbt communicates with a number of different data platforms by using a dedicated adapter plugin for each. When you install <Constant name="core" />, you'll also need to install the specific adapter for your database, [connect the <Constant name="fusion_engine" /> to <Constant name="core" />](/docs/local/install-dbt), and set up a `profiles.yml` file.
 
+<VersionBlock lastVersion="1.99">
+
 With a few exceptions [^1], you can install all [adapters](/docs/supported-data-platforms) from PyPI using `python -m pip install adapter-name`. For example to install Snowflake, use the command `python -m pip install dbt-snowflake`. The installation will include `dbt-core` and any other required dependencies, which may include both other dependencies and even other adapter plugins. Read more about [installing dbt](/docs/local/install-dbt).
 
 [^1]: Use the PyPI package name when installing with `pip`
@@ -23,3 +25,13 @@ With a few exceptions [^1], you can install all [adapters](/docs/supported-data-
     | Adapter repo name | PyPI package name    |
     | ----------------- | -------------------- |
     | `dbt-layer`       | `dbt-layer-bigquery` |
+
+</VersionBlock>
+
+<VersionBlock firstVersion="2.0">
+
+Trusted adapters ship with <Constant name="fusion" /> &mdash; when you [install dbt](/docs/local/install-dbt), the supported data platforms are available out of the box, with no separate `pip install` per adapter needed.
+
+Refer to [adapter creation](/guides/adapter-creation-v2?step=1) for more info.
+
+</VersionBlock>

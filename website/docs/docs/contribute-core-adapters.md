@@ -17,15 +17,19 @@ Community-supported plugins are works in progress, and you can contribute by tes
 - Join both the dedicated channel, [#adapter-ecosystem](https://getdbt.slack.com/archives/C030A0UF5LM), in [dbt Slack](https://community.getdbt.com/) and the channel for your adapter's data store. See the **Slack Channel** link in the [<Constant name="core_v1" /> platform](/docs/local/profiles.yml) pages.
 - Review open issues in the plugin's source repository. Use the relevant **GitHub repo** link in the [<Constant name="core_v1" /> platform](/docs/local/profiles.yml) pages.
 
+<VersionBlock lastVersion="1.99">
+
 ### Create a new dbt Core v1.x adapter
 
 If you see something missing from the lists above and you're interested in developing an integration, read more about adapters and how they're developed in [Build, test, document, and promote adapters](/guides/adapter-creation).
 
 If you have a new adapter, add it to this list using a pull request. See [Build, test, document, and promote adapters](/guides/adapter-creation) for more information on documenting your adapter.
 
+</VersionBlock>
+
 ### Create a new dbt Core v2.0 adapter
 
-dbt Core v2.0 is a Rust-based rewrite of the dbt engine built around a single monorepo. Instead of maintaining a separate Python package per warehouse, all adapters live together, organized by feature area rather than warehouse, inside `dbt-labs/dbt-core`. A bug fix in authentication or relation logic benefits every adapter at once, and your contribution makes the entire ecosystem stronger.
+v2 is a Rust-based rewrite of the dbt engine built around a single monorepo. Instead of maintaining a separate Python package per warehouse, all adapters live together, organized by feature area rather than warehouse, inside `dbt-labs/dbt-core`. A bug fix in authentication or relation logic benefits every adapter at once, and your contribution makes the entire ecosystem stronger.
 
 ADBC drivers handle connection management—pre-compiled binaries you register, not write. You build the warehouse-specific logic: credentials, relation naming, SQL macros, and catalog queries across roughly 13 files in total.
 
