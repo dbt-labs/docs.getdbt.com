@@ -6,7 +6,7 @@ availability: all_users
 
 Community adapters are adapter plugins contributed and maintained by members of the community. We welcome and encourage [adapter plugins contributions](/docs/contribute-core-adapters#contribute-to-a-pre-existing-adapter) from the dbt community.  Please be mindful that these [community maintainers](/docs/connect-adapters#maintainers) are intrepid volunteers who donate their time and effort — so be kind, understanding, and help out where you can!
 
-Refer to the following table for the available community adapters and their respective adapter setup guide:
+Refer to the following available community adapter(s):
 
 <VersionBlock firstVersion="2.0">
 
@@ -18,6 +18,7 @@ If you'd like to contribute a community adapter for dbt Core 2.0, refer to [crea
 </VersionBlock>
 
 <VersionBlock lastVersion="1.99">
+
 
 <SimpleTable>
 
