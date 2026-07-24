@@ -84,7 +84,7 @@ Release notes are grouped by date for single-tenant environments.
 
 ### Orchestration and run status
 
--**Reduced out-of-memory rates in Fusion**: Memory-tuning optimizations are now applied automatically to all Fusion runs, reducing out-of-memory kill rates and improving overall uptime.
+- **Reduced out-of-memory rates in Fusion**: Memory-tuning optimizations are now applied automatically to all Fusion runs, reducing out-of-memory kill rates and improving overall uptime.
 
 ## Fixes
 
