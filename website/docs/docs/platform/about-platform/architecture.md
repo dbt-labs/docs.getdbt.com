@@ -2,6 +2,9 @@
 title: "dbt Architecture"
 id: "architecture"
 description: "Information about the architecture, communication, and security of dbt"
+availability:
+  surface: platform
+  access: login_required
 ---
 
 This page helps practitioners and those interested in <Constant name="dbt" />'s architecture and data flow.

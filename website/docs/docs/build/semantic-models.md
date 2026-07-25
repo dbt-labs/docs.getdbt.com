@@ -7,6 +7,7 @@ keywords:
 sidebar_label: Semantic models
 tags: [Metrics, Semantic Layer]
 pagination_next: "docs/build/dimensions"
+availability: all_users
 ---
 
 import CopilotBeta from '/snippets/_dbt-copilot-avail.md';

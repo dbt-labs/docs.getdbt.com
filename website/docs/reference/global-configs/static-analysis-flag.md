@@ -19,7 +19,7 @@ The `on` and `unsafe` values are deprecated and will be removed in May 2026. Use
 
 :::
 
-If not set, <Constant name="fusion" /> defaults to `baseline` mode, which provides a smooth transition from <Constant name="core" /> while still catching most SQL errors. See [Configuring `static_analysis`](/docs/fusion/new-concepts#configuring-static_analysis) for more information on incrementally opting in to stricter analysis.
+If not set, <Constant name="fusion" /> defaults to `baseline` mode, which provides a smooth transition from <Constant name="core" /> while still catching most SQL errors. See [Configuring `static_analysis`](/docs/build/about-static-analysis#configuring-static_analysis) for more information on incrementally opting in to stricter analysis.
 
 <File name='Usage'>
 

@@ -4,6 +4,7 @@ id: "wizard-byok"
 description: "Bring your own API key to use dbt Wizard CLI. Supports OpenAI, Anthropic, AWS Bedrock, Google Gemini, Snowflake Cortex (preview), and Databricks."
 sidebar_label: "BYOK configuration"
 tags: [AI, Wizard, Configuration]
+availability: local_all
 ---
 
 import WizardSupportedProviders from '/snippets/_wizard-supported-providers.md';

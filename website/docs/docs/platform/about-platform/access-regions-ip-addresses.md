@@ -3,6 +3,9 @@ title: "Access, Regions, & IP addresses"
 sidebar: "Access, Regions, & IP Addresses"
 id: "access-regions-ip-addresses"
 description: "Available regions and ip addresses"
+availability:
+  surface: platform
+  access: login_required
 ---
 
 <Constant name="dbt" /> is [hosted](/docs/platform/about-platform/architecture) in multiple regions across the following service providers:

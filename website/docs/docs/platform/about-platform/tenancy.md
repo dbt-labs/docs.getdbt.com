@@ -2,6 +2,9 @@
 title: Tenancy
 id: tenancy
 description: "Single tenant, multi-tenant, and cell-based (multi-cell) dbt platform hosting"
+availability:
+  surface: platform
+  access: login_required
 ---
 
 import AboutCloud from '/snippets/_test-tenancy.md';

@@ -3,6 +3,7 @@ title: "How to find your dbt MCP IDs"
 sidebar_label: "Finding your IDs"
 description: "Step-by-step instructions for finding the numeric IDs needed for dbt MCP configuration."
 id: "mcp-find-ids"
+availability: all_users
 ---
 
 Several dbt MCP environment variables and headers require numeric IDs from your <Constant name="dbt_platform"/> account. This guide shows exactly where to find each one.
