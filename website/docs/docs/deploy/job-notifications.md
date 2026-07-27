@@ -237,12 +237,10 @@ The <Constant name="dbt_platform" /> Slack app sends job notifications to _publi
     - Your notification toggles (for example, **Succeeds**, **Warns**, **Fails**, and **Is canceled**)
 
 2. Click **Dismiss** to hide the banner for your current session &mdash; it reappears on reload until migration completes.
-3. After migration, if needed, dbt shows an informational message listing private Slack channels that still need setup.
-    - If any of your channels are private, invite the <Constant name="dbt_platform" /> app to each one after migrating so notifications can be delivered.
 
 When migration succeeds, dbt hides the banner and refreshes your Slack notification settings. If migration fails, the banner remains so you can try again.
 
-<Lightbox src="/img/docs/deploy/dbt-platform-slack-invite.png" width="100%" title="Example of private channel invite guidance for the dbt platform app"/>
+<Lightbox src="/img/docs/deploy/dbt-platform-slack-invite.png" width="100%" title="Example of invite guidance for the dbt platform app"/>
 
 ### Disable the Slack integration
 In this step, you'll disable the Slack integration and remove the account-level Slack credentials. You can always re-enable the integration by following the [Set up the Slack integration](#set-up-the-slack-integration-1) steps.
