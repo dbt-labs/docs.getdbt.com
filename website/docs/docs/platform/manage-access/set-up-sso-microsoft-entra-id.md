@@ -38,7 +38,7 @@ Log into the Azure portal for your organization. Using the [**Microsoft Entra ID
 
 <Lightbox src="/img/docs/dbt-platform/dbt-platform-enterprise/azure/azure-app-registration-empty.png" width="80%" title="Creating a new app registration"/>
 
-3. Supply configurations for the **Name** and **Supported account types** fields as shown in the following table:
+3. Supply configurations for the **Name** and **Supported account types** fields as shown in the table.
 
 <SimpleTable>
 | Field | Value |
