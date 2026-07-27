@@ -177,7 +177,7 @@ When a user belongs to multiple IdP groups, the Developer license takes preceden
 If a user's IdP groups do not match _any_ license type mappings, <Constant name="dbt" /> assigns a Developer license by default.
 :::
 
-## Granular permissioning <Lifecycle status="managed,managed_plus"/>
+## Granular permissioning <Lifecycle status="managed,managed_plus" />
 
 <Constant name="dbt" /> Enterprise-tier plans support role-based access controls for configuring granular in-app permissions. See [access control](/docs/platform/manage-access/about-user-access) for more information on Enterprise permissioning.
 
