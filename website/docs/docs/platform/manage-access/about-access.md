@@ -151,9 +151,12 @@ import LicenseOverrideNote from '/snippets/_license-override-note.md';
 
 #### Enable granular permissions for Read-Only users
 
-Granular permissions are off by default and control _which projects_ Read-Only users can access &mdash; by group and project, instead of uniformly across the whole account. They don't change _what_ a Read-Only user can do; the license override rule above still applies, so Read-Only users keep read-only access regardless of group. Enabling this setting is a one-time, permanent change and can't be reversed from **Account settings**.
+Granular permissions let you restrict which projects Read-Only users can access, allowing you to set permissions by group rather than applying them to the entire account.
 
-Before enabling granular permissions, make sure all Read-Only users are added to their groups. This ensures they continue to have access once the setting is enabled.
+Key things to know before enabling:
+- Access stays Read-Only: This setting controls access to projects, not permissions (users remain Read-Only).
+- It’s permanent: Enabling this setting is a one-time, irreversible change.
+- Prepare first: Ensure all Read-Only users are assigned to their respective groups before enabling, or they may lose access to their projects.
 
 To turn on granular permissions:
 
