@@ -177,12 +177,15 @@ When a user belongs to multiple IdP groups, the Developer license takes preceden
 If a user's IdP groups do not match _any_ license type mappings, <Constant name="dbt" /> assigns a Developer license by default.
 :::
 
-## Granular permissioning
+## Granular permissioning <Lifecycle status="manage,manage_plus"/>
 
 <Constant name="dbt" /> Enterprise-tier plans support role-based access controls for configuring granular in-app permissions. See [access control](/docs/platform/manage-access/about-user-access) for more information on Enterprise permissioning.
 
-#### Read Only granular permissions 
+### Read Only granular permissions 
 
-If you have Read-Only users, enabling granular permissions with the **Enable granular permissions** button is a one-time opt-in that can't be reversed. Add all Read-Only users to their groups before you enable it, or they might lose access. Refer to [Set up read-only user access](/docs/platform/manage-access/about-user-access#set-up-read-only-user-access) for the full setup steps.
+Granular permissions allow you to control which projects your Read-Only users can access by assigning them to specific groups, rather than granting access to the entire account.
 
-:::
+Enabling granular permissions is a one-time, permanent change. Before you enable this, make sure all your Read-Only users are added to their groups. If you don't do this first, those users may lose access to their projects.
+
+For complete setup instructions, refer to [Set up read-only user access](/docs/platform/manage-access/about-access#enable-granular-permissions-for-read-only-users) for the full setup steps.
+
