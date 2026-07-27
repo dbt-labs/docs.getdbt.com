@@ -187,5 +187,5 @@ Granular permissions allow you to control which projects your Read-Only users ca
 
 Enabling granular permissions is a one-time, permanent change. Before you enable this, make sure all your Read-Only users are added to their groups. If you don't do this first, those users may lose access to their projects.
 
-For complete setup instructions, refer to [Set up read-only user access](/docs/platform/manage-access/about-user-access#set-up-read-only-user-access) for the full setup steps.
+For complete setup instructions, refer to [Set up read-only user access](/docs/platform/manage-access/about-access#enable-granular-permissions-for-read-only-users) for the full setup steps.
 
