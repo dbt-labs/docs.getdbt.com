@@ -219,7 +219,7 @@ These configs can be supplied and nested under `config.duckdb` for `horizon`, `u
 | `endpoint_type` | One of `endpoint`/`endpoint_type` | `GLUE` or `S3_TABLES`, for well-known AWS-managed endpoints. |
 | `warehouse` | Required for `horizon`; required when `endpoint_type` is `S3_TABLES` | Warehouse identifier passed as the `ATTACH` source. |
 | `secret` | Optional | Name of a DuckDB secret from `profiles.yml` to use for authentication. |
-| `attach_as` | Optional | Overrides the DuckDB attach alias. Defaults to the catalog's `name`. |
+| `catalog_database` | Optional | Name of the DuckDB database this catalog's models land in. Also used as the DuckDB attach alias. Defaults to the catalog's `name`. |
 | `default_region` | Optional | AWS region, when applicable. |
 | `default_schema` | Optional | Default schema/namespace within the catalog. |
 | `max_table_staleness` | Optional | How long DuckDB may serve cached metadata before refreshing. |
@@ -240,7 +240,7 @@ For `ducklake` catalogs, `config.duckdb` accepts:
 | --- | --- | --- |
 | `metadata_path` | Required | Path to the DuckLake metadata store, for example `metadata.ducklake` or a database connection string. |
 | `data_path` | Optional | Where DuckLake writes data files. |
-| `attach_as` | Optional | Overrides the DuckDB attach alias. Defaults to the catalog's `name`. |
+| `catalog_database` | Optional | Name of the DuckDB database this catalog's models land in. Also used as the DuckDB attach alias. Defaults to the catalog's `name`. |
 | `metadata_schema` | Optional | Schema within the metadata store to use. |
 | `metadata_catalog` | Optional | Catalog/database name within the metadata store. |
 | `data_inlining_row_limit` | Optional | Inline row groups smaller than this many rows into the metadata catalog instead of writing a Parquet file. |
