@@ -818,6 +818,12 @@ To append a target name to the schema:
 
 Snowflake supports the creation of [transient tables](https://docs.snowflake.net/manuals/user-guide/tables-temp-transient.html). Snowflake does not preserve a history for these tables, which can result in a measurable reduction of your Snowflake storage costs. Transient tables participate in time travel to a limited degree with a retention period of 1 day by default with no fail-safe period. Weigh these tradeoffs when deciding whether or not to configure your dbt models as `transient`. **By default, all Snowflake tables created by dbt are `transient`.**
 
+:::note `transient` does not apply to seeds
+
+On Snowflake, the `transient` config applies to models, not seeds. If you set `+transient: true` or `+transient: false` on a seed, dbt still creates a _permanent_ table, and `dbt parse` might not warn you. This behavior applies to dbt Core and the dbt Fusion engine. For related discussion, refer to [dbt-snowflake#396](https://github.com/dbt-labs/dbt-snowflake/issues/396).
+
+:::
+
 ### Configuring transient tables in dbt_project.yml
 
 A whole folder (or package) can be configured to be transient (or not) by adding a line to the `dbt_project.yml` file. This config works just like all of the [model configs](/reference/model-configs) defined in `dbt_project.yml`.

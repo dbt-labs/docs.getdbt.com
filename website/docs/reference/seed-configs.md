@@ -10,6 +10,9 @@ import ConfigGeneral from '/snippets/_config-description-general.md';
 
 
 ## Available configurations
+
+Configure seeds in your `dbt_project.yml` file or in each seed's [YAML properties](/reference/seed-properties). The subsections below list seed-specific configurations, general configurations shared with other resource types, and Snowflake adapter configurations.
+
 ### Seed-specific configurations
 
 <ConfigResource meta={frontMatter.meta} />
@@ -134,6 +137,10 @@ seeds:
 
 </TabItem>
 </Tabs>
+
+### Snowflake configurations
+
+Seeds do not support warehouse-specific Snowflake configs such as `transient`. If you set those configs on a seed, they have no effect on the relation dbt creates in Snowflake. Refer to [Transient tables on Snowflake](/reference/resource-configs/snowflake-configs#transient-tables) in the Snowflake configurations reference.
 
 ## Configuring seeds
 Seeds can only be configured from YAML files, either in `dbt_project.yml` or within an individual seed's YAML properties. It is not possible to configure a seed from within its CSV file.
