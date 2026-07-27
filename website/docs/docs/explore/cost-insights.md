@@ -148,6 +148,8 @@ dbt sums this across all overlapping windows to get `usage_per_query`.
 
 Cost Insights supports both Amazon Redshift Serverless and provisioned cluster deployments. dbt detects your deployment type automatically when testing the connection.
 
+Note: On Redshift, we attribute cost using the query comments dbt injects into each query. If another process overrides or strips those comments, we cannot tie the query back to its dbt model, and its cost won't be attributed. Ensure nothing in your setup removes or replaces dbt's query comments.
+
 - **Redshift Serverless**
 
     dbt estimates cost by identifying which Redshift Processing Unit (RPU) billing periods overlap with each query's execution time and attributing the proportional share of RPU-hours to the query.
