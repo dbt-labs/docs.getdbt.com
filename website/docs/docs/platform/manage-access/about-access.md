@@ -151,7 +151,7 @@ import LicenseOverrideNote from '/snippets/_license-override-note.md';
 
 :::caution Enabling granular permissions for read-only users is irreversible
 
-Granular permissions are off by default. Once enabled, users with Read-Only licenses can be granted project-level access instead of account-wide access. This is a one-time, permanent setting and can't be reversed from **Account settings**.
+Granular permissions are off by default and control _which projects_ Read-Only users can access &mdash; by group and project, instead of uniformly across the whole account. They don't change _what_ a Read-Only user can do; the license override rule above still applies, so Read-Only users keep read-only access regardless of group. Enabling this setting is a one-time, permanent change and can't be reversed from **Account settings**.
 
 Before enabling granular permissions, make sure all Read-Only users are added to their groups. This ensures they continue to have access once the setting is enabled.
 
