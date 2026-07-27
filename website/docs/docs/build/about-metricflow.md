@@ -40,7 +40,7 @@ Before you start, consider the following guidelines:
 
 MetricFlow is a SQL query generation tool designed to streamline metric creation across different data dimensions for diverse business needs. 
 - It operates through YAML files, where a semantic graph links language to data. This graph comprises [semantic models](/docs/build/semantic-models) (data entry points) and [metrics](/docs/build/metrics-overview) (functions for creating quantitative indicators).
-- MetricFlow is developed and maintained by dbt Labs and works with the [Apache Ossie](https://github.com/apache/ossie) format. Starting in <Constant name="core" /> v1.12, you can also define semantic models using [Ossie documents](/docs/build/osi-semantic-models) as an alternative to dbt's native YAML configuration.
+- MetricFlow is developed and maintained by dbt Labs and works with the [Apache Ossie](https://github.com/apache/ossie) format. Starting in <Constant name="core" /> v1.12, you can also define semantic models using [Ossie documents](/docs/build/ossie-semantic-models) as an alternative to dbt's native YAML configuration.
 - MetricFlow is compatible with dbt version 1.6 and higher.
 - MetricFlow is distributed under the [Apache 2.0 license](https://github.com/dbt-labs/metricflow/blob/main/LICENSE). Data practitioners and enthusiasts are highly encouraged to contribute. Read more about [MetricFlow's license history](https://github.com/dbt-labs/metricflow?tab=readme-ov-file#license-history). 
 - As a part of the <Constant name="semantic_layer" />, MetricFlow empowers organizations to define metrics using YAML abstractions.
