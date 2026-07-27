@@ -79,6 +79,7 @@ The project dashboard includes the following tabs that help you analyze cost and
 
 Access the table view by clicking **Show table**, which provides detailed optimization data such as models reused, usage reduction, and cost reduction.
 
+
 import TableView from '/snippets/_table-view.md';
 
 <TableView />
