@@ -149,6 +149,21 @@ import LicenseOverrideNote from '/snippets/_license-override-note.md';
 
 <LicenseOverrideNote />
 
+:::caution Enable granular permissions before you begin
+
+Granular permissions are off by default. Once enabled, users with Read-Only licenses can be granted project-level access. This is a one-time, irreversible change &mdash; once enabled, it can't be turned back off.
+
+Before enabling granular permissions, make sure all Read-Only users are added to their groups. This ensures they continue to have access once the setting is enabled.
+
+To turn on granular permissions:
+
+1. Go to **Account settings**.
+2. Click **Enable granular permissions**.
+3. Check the box acknowledging that this setting can't be reversed once enabled.
+4. Click **Enable** to confirm, or **Cancel** to go back without making changes.
+
+:::
+
 ### Permissions
 
 Permissions determine what users can do in your <Constant name="dbt" /> account. By default, members of the `Owner` and `Member` groups have full access to all areas and features. When you want to restrict access to features, assign users to groups with stricter permission sets. Keep in mind that if a user belongs to multiple groups, the most permissive group will take precedence.
@@ -170,21 +185,6 @@ To give users read-only access to analyze dbt models and project resources, assi
 :::info Availability
 
 The OAuth integration that lets read-only users connect to analysis features (such as the [dbt MCP server](/docs/dbt-ai/about-mcp)) is available to use. The **Analyst read** permission set and the read-only permission changes described here are in **private beta**. To enable it, contact your account manager.
-
-:::
-
-:::caution Enable granular permissions before you begin
-
-Granular permissions are off by default. You must turn them on before you can assign the **Analyst read** permission set to any group, and this is a one-time, irreversible change &mdash; once enabled, it can't be turned back off.
-
-Add all read-only users to their groups _before_ you enable granular permissions. Read-only users who aren't in a group yet might lose access once the setting is enabled.
-
-To turn on granular permissions:
-
-1. Go to **Account settings**.
-2. Click **Enable granular permissions**.
-3. Check the box acknowledging that this setting can't be reversed once enabled.
-4. Click **Enable** to confirm, or **Cancel** to go back without making changes.
 
 :::
 
