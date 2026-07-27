@@ -12,6 +12,7 @@ meta:
   cloud_support: 'Not Supported'
   min_supported_version: 'n/a'
   platform_name: 'Extrica'
+availability: local_free
 ---
 
 <h2> Overview of {frontMatter.meta.pypi_package} </h2>

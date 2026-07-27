@@ -2,6 +2,7 @@
 title: "Deploy jobs"
 description: "Learn how to create and schedule deploy jobs in dbt for the scheduler to run. When you run with dbt, you get built-in observability, logging, and alerting." 
 tags: [scheduler]
+availability: platform_login
 ---
 
 You can use deploy jobs to build production data assets. Deploy jobs make it easy to run dbt commands against a project in your cloud data platform, triggered either by schedule or events. Each job run in <Constant name="dbt" /> will have an entry in the job's run history and a detailed run overview, which provides you with:

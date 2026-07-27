@@ -5,6 +5,9 @@ id: "seats-and-users"
 sidebar: "Users and licenses"
 pagination_next: "docs/platform/manage-access/enterprise-permissions"
 pagination_prev: null
+availability:
+  surface: platform
+  access: login_required
 ---
 
 

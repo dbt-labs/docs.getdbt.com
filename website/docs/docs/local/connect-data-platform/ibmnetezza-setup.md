@@ -15,6 +15,7 @@ meta:
   slack_channel_link: 
   platform_name: IBM Netezza
   config_page: /reference/resource-configs/ibm-netezza-config
+availability: local_free
 ---
 
 

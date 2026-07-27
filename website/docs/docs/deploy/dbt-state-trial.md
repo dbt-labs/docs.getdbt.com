@@ -4,6 +4,7 @@ sidebar_label: "Trial and billing"
 description: "Learn about dbt State trial and billing."
 id: "dbt-state-trial"
 tags: ['dbt State']
+availability: everywhere_usage
 ---
 
 import DbtStatePricing from '/snippets/_dbt-state-pricing.md';

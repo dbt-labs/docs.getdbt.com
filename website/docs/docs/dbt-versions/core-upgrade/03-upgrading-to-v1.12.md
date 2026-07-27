@@ -3,6 +3,9 @@ title: "Upgrading to v1.12"
 id: upgrading-to-v1.12
 description: New features and changes in dbt Core v1.12
 displayed_sidebar: "docs"
+availability:
+  engine: v1
+  access: free
 ---
 
 # Upgrading to v1.12
@@ -21,9 +24,9 @@ dbt Labs is committed to providing backward compatibility for all versions 1.x. 
 ## New and changed features and functionality
 
 ### Opt-in v2 parser
-<Constant name="core" /> v1.12 introduces the `--use-v2-parser` flag that delegates parsing to Fusion's Rust parser instead of dbt Core's own Python parser. The Rust parser is significantly faster than the Python parser — especially on larger projects, where it can be 5–10× quicker. If you're looking to speed up your development workflow or cut down on job startup times. Using the Rust parser is a natural first step toward Fusion compatibility, so you can catch and fix any project issues gradually rather than all at once.
+<Constant name="core" /> v1.12 introduces the `--use-v2-parser` flag that delegates parsing to the new v2 Rust parser instead of the v1 Python parser. The Rust parser is significantly faster than the Python parser — especially on larger projects, where it can be 5–10× quicker. If you're looking to speed up your development workflow or cut down on job startup times. Using the Rust parser is a natural first step toward v2 compatibility, so you can catch and fix any project issues gradually rather than all at once.
 
-This is an opt-in flag that changes no behavior unless explicitly set, making it a low-risk way to test Fusion parser compatibility from within <Constant name="core" /> v1.12.
+This is an opt-in flag that changes no behavior unless explicitly set, making it a low-risk way to test v2 parser compatibility from within <Constant name="core" /> v1.12.
 
 :::note
 The Rust parser is beta. Its output manifest may differ from the Python parser's in edge cases, which can affect downstream behavior. Fall back by removing `--use-v2-parser`, and [report issues](https://github.com/dbt-labs/dbt-core/issues) to help us close the gap.
@@ -31,9 +34,9 @@ The Rust parser is beta. Its output manifest may differ from the Python parser's
 
 For more information on how to enable the flag, related behaviors, and parser error types, refer to [Opt-in v2 parser](/reference/global-configs/parsing#opt-in-v2-parser).
 
-### Native private packages in dbt Core
+### Native private packages
 
-<Constant name="core" /> now supports [native private packages](/docs/build/packages#native-private-packages) in `packages.yml` and `dependencies.yml`, at parity with the <Constant name="fusion_engine" />. You can install packages from private GitHub, GitLab, or Azure DevOps repos using the `private` key without configuring a token or full Git URL. dbt uses your system's SSH configuration for authentication. Use the [`provider` key](/docs/build/packages#using-the-provider-key) to specify your Git provider and tell dbt which SSH URL format to construct. For example:
+<Constant name="core" /> now supports [native private packages](/docs/build/packages#native-private-packages) in `packages.yml` and `dependencies.yml`. You can install packages from private GitHub, GitLab, or Azure DevOps repos using the `private` key without configuring a token or full Git URL. dbt uses your system's SSH configuration for authentication. Use the [`provider` key](/docs/build/packages#using-the-provider-key) to specify your Git provider and tell dbt which SSH URL format to construct. For example:
 
 ```yaml
 packages:
@@ -148,6 +151,7 @@ You can read more about each of these behavior changes in the following links:
 
 ### BigQuery
 
+- BigQuery now supports [parallel microbatch execution](/docs/build/parallel-batch-execution), in addition to Snowflake.
 - Added the [`bigquery_use_standard_sql_for_partitions`](/reference/global-configs/bigquery-changes#the-bigquery_use_standard_sql_for_partitions-flag) flag, which controls whether `get_partitions_metadata()` uses standard SQL (`INFORMATION_SCHEMA.PARTITIONS`) or legacy SQL (`$__PARTITIONS_SUMMARY__`). The flag defaulted to `false` when first introduced in this release, but has been flipped to `true` by default ahead of BigQuery's [legacy SQL deprecation on June 1, 2026](https://docs.cloud.google.com/bigquery/docs/release-notes#February_25_2026). To revert to legacy SQL, set the flag to `false` in `dbt_project.yml`.
 - Added the [`bigquery_reject_wildcard_metadata_source_freshness`](/reference/global-configs/bigquery-changes#the-bigquery_reject_wildcard_metadata_source_freshness-flag) flag. When you set this flag to `true`, dbt raises a `DbtRuntimeError` if you run metadata-based source freshness checks with wildcard table identifiers (for example, `events_*`), preventing incorrect freshness results.
 - You can configure BigQuery job link logging with `job_link_info_level_log`. By default, dbt logs job links at the debug level. To log job links at the info level, set `job_link_info_level_log: true` in your BigQuery profile. This makes job links visible in dbt logs for easier access to the BigQuery console. For more information, see [BigQuery setup](/docs/local/connect-data-platform/bigquery-setup#job_link_info_level_log).
@@ -168,7 +172,7 @@ You can read more about each of these behavior changes in the following links:
 
 ## Quick hits
 
-- dbt now surfaces occasional, non-blocking [CLI hints](/reference/global-configs/hints) that suggest ways to optimize your project. Hints are enabled by default. Disable them with `--no-hints-enabled` or `hints_enabled: false` in `dbt_project.yml`.
+- dbt now surfaces occasional, non-blocking hints that suggest ways to optimize your project. Hints are enabled by default. Disable them with the [`hints_enabled` flag](/reference/global-configs/about-global-configs).
 - <Constant name="core" /> v1.12 now tolerates Fusion-specific names in [`warn_error_options`](/reference/global-configs/warnings) instead of raising an error. If your config includes a Fusion-specific name (for example, `StaticAnalysis`, `PackageParsingCompatibility`), <Constant name="core" /> ignores it and emits a note: `<name> is not being used because it's specific to the dbt Fusion engine.` This lets you share `warn_error_options` configs across <Constant name="core" /> and <Constant name="fusion" />.
 - Macros invoked with the [`dbt run-operation`](/reference/commands/run-operation) command can now `ref()` models with `private` or `protected` [access](/reference/resource-configs/access) without raising a `DbtReferenceError`. Because macros are not part of the group and access control system, dbt doesn't enforce group membership when a macro called by `run-operation` references a model.
 - `dbt seed` now supports the [`--empty`](/reference/commands/seed#the---empty-flag) flag. Use it to create seed tables with the correct schema but without loading any data.

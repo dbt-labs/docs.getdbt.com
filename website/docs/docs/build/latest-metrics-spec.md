@@ -4,6 +4,7 @@ id: "latest-metrics-spec"
 description: "Learn how to migrate from the legacy metrics spec to the latest metrics spec."
 sidebar_label: Migrate to the latest YAML spec 
 tags: [Metrics, Semantic Layer, Fusion]
+availability: all_users
 ---
 
 

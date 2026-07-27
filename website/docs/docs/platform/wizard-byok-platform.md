@@ -2,6 +2,10 @@
 title: "Configure BYOK for dbt Wizard in dbt platform"
 sidebar_label: "BYOK configuration"
 description: "Bring your own API key to use dbt Wizard and dbt Copilot in dbt platform. Supports OpenAI, Azure AI Foundry, and Anthropic."
+availability:
+  surface: platform
+  access: paid_plan
+  minPlan: starter
 ---
 
 import WizardSupportedProviders from '/snippets/_wizard-supported-providers.md';

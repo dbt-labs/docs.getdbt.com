@@ -15,6 +15,7 @@ meta:
   slack_channel_link: 'https://getdbt.slack.com/archives/CNNPBQ24R'
   platform_name: 'Starburst/Trino'
   config_page: '/reference/resource-configs/trino-configs'
+availability: local_free
 ---
 
 

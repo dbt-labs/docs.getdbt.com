@@ -3,11 +3,15 @@ title: "Set up SSO with Microsoft Entra ID (formerly Azure AD)"
 description: "Learn how dbt administrators can use Microsoft Entra ID to control access in a dbt account."
 id: "set-up-sso-microsoft-entra-id"
 sidebar_label: "Set up SSO with Microsoft Entra ID"
+availability:
+  surface: platform
+  access: paid_plan
+  minPlan: enterprise
 ---
 
 import LoginSlug from '/snippets/_login-slug.md';
 
-# Set up SSO with Microsoft Entra ID <Lifecycle status="managed, managed_plus" />
+# Set up SSO with Microsoft Entra ID
 
 <Constant name="dbt" /> Enterprise-tier plans support single-sign on via Microsoft Entra ID (formerly Azure AD). 
 

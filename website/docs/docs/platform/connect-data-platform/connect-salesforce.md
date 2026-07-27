@@ -4,6 +4,9 @@ id: connect-salesforce
 description: "Configure Salesforce Data 360 connection."
 sidebar_label: "Connect Salesforce Data 360"
 unlisted: true
+availability:
+  surface: platform
+  access: login_required
 ---
 
 # Connect Salesforce Data 360 <Lifecycle status="beta"/> <ProductCard text="Fusion compatible" />
