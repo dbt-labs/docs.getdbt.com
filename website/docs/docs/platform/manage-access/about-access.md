@@ -173,6 +173,21 @@ The OAuth integration that lets read-only users connect to analysis features (su
 
 :::
 
+:::caution Enable granular permissions before you begin
+
+Granular permissions are off by default. You must turn them on before you can assign the **Analyst read** permission set to any group, and this is a one-time, irreversible change &mdash; once enabled, it can't be turned back off.
+
+Add all read-only users to their groups _before_ you enable granular permissions. Read-only users who aren't in a group yet might lose access once the setting is enabled.
+
+To turn on granular permissions:
+
+1. Go to **Account settings**.
+2. Click **Enable granular permissions**.
+3. Check the box acknowledging that this setting can't be reversed once enabled.
+4. Click **Enable** to confirm, or **Cancel** to go back without making changes.
+
+:::
+
 **1. Create a group with the Analyst read permission set**
 
 You can also add the Analyst read permission set to an existing group.

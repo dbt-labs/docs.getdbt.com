@@ -180,3 +180,9 @@ If a user's IdP groups do not match _any_ license type mappings, <Constant name=
 ## Granular permissioning
 
 <Constant name="dbt" /> Enterprise-tier plans support role-based access controls for configuring granular in-app permissions. See [access control](/docs/platform/manage-access/about-user-access) for more information on Enterprise permissioning.
+
+:::caution Enabling granular permissions is irreversible
+
+If you have Read-Only users, enabling granular permissions with the **Enable granular permissions** button is a one-time opt-in that can't be reversed. Add all Read-Only users to their groups before you enable it, or they might lose access. Refer to [Set up read-only user access](/docs/platform/manage-access/about-user-access#set-up-read-only-user-access) for the full setup steps.
+
+:::
