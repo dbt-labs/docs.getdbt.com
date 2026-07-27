@@ -22,4 +22,4 @@ All functionality in dbt Core since the v1.7 release is available in [<Constant 
 
 <sup>1</sup> Release tracks are required for the Developer and Starter plans on <Constant name="dbt" />. Accounts using older dbt versions will be migrated to the **Latest** release track.
 
-For customers of <Constant name="dbt" />: dbt Labs strongly recommends migrating environments on older and unsupported versions to [release tracks](/docs/dbt-versions/dbt-release-tracks) or a supported version. In 2025, dbt Labs will remove the oldest dbt Core versions from availability in <Constant name="dbt_platform" />, starting with v1.0 -- v1.2.
+For customers of <Constant name="dbt" />: dbt Labs strongly recommends migrating environments on older and unsupported versions to [release tracks](/docs/dbt-versions/dbt-release-tracks) or a supported version.
