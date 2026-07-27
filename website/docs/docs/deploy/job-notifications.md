@@ -101,7 +101,7 @@ If there has been a change in user roles or Slack permissions where you no longe
 - You have a Slack workspace that you want to receive job notifications from.
 - You must be a Slack Workspace Owner. 
 - You must be an account admin to configure Slack notifications in <Constant name="dbt" />. For more details, refer to [Users and licenses](/docs/platform/manage-access/seats-and-users).
-- The **Notification channel** dropdown in the UI only lists _public_ channels. To send notifications to a private channel, configure it through the [Admin API](/docs/dbt-apis/admin-api) or the [dbt platform Terraform provider](https://registry.terraform.io/providers/dbt-labs/dbtcloud/latest/docs) instead of the UI.
+The integration only supports _public_ channels in the Slack workspace at this moment.
 
 Once an account admin links the Slack app, licensed users can configure job notifications if they have one of the following:
 - The **Account Admin**, **Owner**, or **Member** default [group](/docs/platform/manage-access/about-user-access#groups)
@@ -160,7 +160,7 @@ A single <Constant name="dbt_platform" /> account can integrate with one Slack w
 - A <Constant name="dbt_platform"/> account admin must link the Slack app at the account level.
 - Install the official <Constant name="dbt_platform"/> Slack app using the [steps outlined in the next section](#set-up-the-slack-integration-1).
 - To install the Slack app to a workspace, your Slack org must permit app installations. In some orgs this requires a Slack admin approval.
-- The **Notification channel** dropdown in the UI only lists _public_ channels. To send notifications to a private channel, configure it through the [Admin API](https://docs.getdbt.com/dbt-cloud/api-v2?version=2.0&name=Fusion#/operations/List%20Notifications) or the [dbt platform Terraform provider](https://registry.terraform.io/providers/dbt-labs/dbtcloud/latest/docs) instead of the UI.
+- The integration only supports _public_ channels in the Slack workspace at this moment.
 
 Once an account admin links the Slack app, licensed users can configure job notifications if they have one of the following:
 - The **Account Admin**, **Owner**, or **Member** default [group](/docs/platform/manage-access/about-user-access#groups)
