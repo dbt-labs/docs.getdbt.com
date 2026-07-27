@@ -228,7 +228,7 @@ The banner appears when all of the following are true:
 
 Before migrating, you must unlink the legacy Slack integration and link the <Constant name="dbt_platform" /> app. Unlinking the legacy integration is a manual step, and only one Slack app can be linked at a time.
 
-The <Constant name="dbt_platform" /> Slack app delivers notifications to any channel &mdash; public or private &mdash; configured in your notification settings, including channels that were set up through the [Admin API](https://docs.getdbt.com/dbt-cloud/api-v2?version=2.0&name=Fusion#/operations/List%20Notifications) or Terraform rather than the UI. For a private channel, notifications aren't delivered until you invite the <Constant name="dbt_platform" /> app to that channel; you can invite the app before or after migrating, and delivery picks up as soon as the invite is accepted.
+The <Constant name="dbt_platform" /> Slack app sends job notifications to _public_ only channels in your workspace. Private channels aren't supported.
 
 1. Click **Migrate settings** to copy your existing settings to the <Constant name="dbt_platform" /> app, including:
 
