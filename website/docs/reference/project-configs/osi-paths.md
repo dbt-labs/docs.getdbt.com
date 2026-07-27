@@ -15,7 +15,7 @@ osi-paths: [directorypath]
 
 ## Definition
 
-Optionally specify a custom list of directories where [Apache Ossie semantic layer documents](/docs/build/osi-semantic-models) are located.
+Optionally specify a custom list of directories where [Apache Ossie semantic layer documents](/docs/build/ossie-semantic-models) are located.
 
 ## Default
 

@@ -1,6 +1,6 @@
 ---
 title: "Apache Ossie semantic layer documents"
-id: "osi-semantic-models"
+id: "ossie-semantic-models"
 description: "Use Apache Ossie JSON documents to define semantic models and metrics in your dbt project."
 sidebar_label: "Apache Ossie semantic layer documents"
 tags: [Metrics, Semantic Layer]
