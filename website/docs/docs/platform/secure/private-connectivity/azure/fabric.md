@@ -156,7 +156,7 @@ Once dbt Support confirms the endpoint is available, configure the connection in
    | **Database** | Your Fabric warehouse name |
   </SimpleTable>
   
-5. Test your connection and save it.
+5. Save it and proceed to the next step.
 
 ### Configure authentication
 
