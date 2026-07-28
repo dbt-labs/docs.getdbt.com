@@ -38,42 +38,54 @@ Log into the Azure portal for your organization. Using the [**Microsoft Entra ID
 
 <Lightbox src="/img/docs/dbt-platform/dbt-platform-enterprise/azure/azure-app-registration-empty.png" width="80%" title="Creating a new app registration"/>
 
-3. Supply configurations for the **Name** and **Supported account types** fields as shown in the following table:
+3. Supply configurations for the **Name** and **Supported account types** fields. Choose the **Supported account types** value based on which tenants you want to allow, and note the matching **Microsoft Entra ID Domain** value you'll need later when [supplying credentials](#supplying-credentials) in <Constant name="dbt" />:
 
-| Field | Value |
-| ----- | ----- |
-| **Name** | <Constant name="dbt" /> |
-| **Supported account types** | Accounts in this organizational directory only _(single tenant)_ |
+<SimpleTable>
+| Customer need | Supported account types (Azure) | Value to enter in dbt's Microsoft Entra ID Domain field |
+| ----- | ----- | ----- |
+| One tenant only _(default, recommended for most enterprise use-cases)_ | Accounts in this organizational directory only | The primary domain name for your Azure directory |
+| Multiple specific Entra ID tenants | Accounts in organizational directories set by Entra admin | `organizations` |
+| Any org tenant plus personal Microsoft accounts | Accounts in any organizational directory and personal Microsoft accounts | `common` |
+| Personal Microsoft accounts only | Personal Microsoft accounts only | `consumers` |
+</SimpleTable>
 
-4. Configure the **Redirect URI**. The table below shows the appropriate Redirect URI values for single-tenant and multi-tenant Entra ID app deployments. For most enterprise use-cases, you will want to use the single-tenant Redirect URI. Replace `YOUR_AUTH0_URI` with the [appropriate Auth0 URI](/docs/platform/manage-access/sso-overview#auth0-uris) for your region and plan.
+4. (Optional) To ensure your multi-tenant setup works correctly, you’ll need to make two key adjustments beyond just selecting “Multi-tenant” in your Azure account settings:
+
+   - Update the Microsoft Entra ID Domain: In the dbt “Microsoft Entra ID Domain:” field, enter the specific authority string (`organizations`, `common`, or `consumers`) rather than the domain name for your Azure directory. For more details, see the [Supplying credentials](#supplying-credentials)
+   - Grant Admin Consent for Each Tenant: Because this is an Entra (formerly Azure AD) requirement, each separate tenant will need its own administrator to grant consent. If users from other tenants attempt to log in before this is done, they will see an “admin approval required” screen. An admin can resolve this by visiting the specific consent URL provided by Microsoft for their tenant (for example,`https://login.microsoftonline.com/{TENANT_ID}/adminconsent?client_id={CLIENT_ID}`)
+
+5. Configure the **Redirect URI**. The table below shows the appropriate Redirect URI values for single-tenant and multi-tenant Entra ID app deployments. For most enterprise use-cases, you will want to use the single-tenant Redirect URI. Replace `YOUR_AUTH0_URI` with the [appropriate Auth0 URI](/docs/platform/manage-access/sso-overview#auth0-uris) for your region and plan.
 
 **Note:** Your dbt platform tenancy has no bearing on this setting. This Entra ID app setting controls app access:
      - **Single-tenant:** Only users from your Entra ID tenant can access the app.
      - **Multi-tenant:** Users from _any_ Entra ID tenant can access the app.
 
+
+<SimpleTable>
 | Application Type | Redirect URI |
 | ----- | ----- |
 | Single-tenant _(recommended)_ | `https://YOUR_AUTH0_URI/login/callback` |
 | Multi-tenant | `https://YOUR_AUTH0_URI/login/callback` |
+</SimpleTable>
 
 <Lightbox src="/img/docs/dbt-platform/dbt-platform-enterprise/azure/azure-new-application-alternative.png" width="70%" title="Configuring a new app registration"/>
 
-5. Save the App registration to continue setting up Microsoft Entra ID SSO.
+6. Save the App registration to continue setting up Microsoft Entra ID SSO.
 
 :::info Configuration with the new Microsoft Entra ID interface (optional)
 
 Depending on your Microsoft Entra ID settings, your App Registration page might look different than the screenshots shown earlier. If you are _not_ prompted to configure a Redirect URI on the **New Registration** page, then follow steps 6 - 7 below after creating your App Registration. If you were able to set up the Redirect URI in the steps above, then skip ahead to [step 8](#adding-users-to-an-enterprise-application).
 :::
 
-6. After registering the new application without specifying a Redirect URI, click on **App registration** and then navigate to the **Authentication** tab for the new application.
+7. After registering the new application without specifying a Redirect URI, click on **App registration** and then navigate to the **Authentication** tab for the new application.
 
-7. Click **+ Add platform** and enter a Redirect URI for your application. See step 4 above for more information on the correct Redirect URI value for your <Constant name="dbt" /> application.
+8. Click **+ Add platform** and enter a Redirect URI for your application. See step 4 above for more information on the correct Redirect URI value for your <Constant name="dbt" /> application.
 
 <Lightbox src="/img/docs/dbt-platform/dbt-platform-enterprise/azure/azure-redirect-uri.png" title="Configuring a Redirect URI"/>
 
 ### Azure &lt;-&gt; dbt User and Group mapping
 
-:::important
+:::info
 
 There is a [limitation](https://learn.microsoft.com/en-us/entra/identity/hybrid/connect/how-to-connect-fed-group-claims#important-caveats-for-this-functionality) on the number of groups Azure will emit (capped at 150) via the SSO token, meaning if a user belongs to more than 150 groups, it will appear as though they belong to none. To prevent this, configure [group assignments](https://learn.microsoft.com/en-us/entra/identity/enterprise-apps/assign-user-or-group-access-portal?pivots=portal) with the <Constant name="dbt" /> app in Azure and set a [group claim](https://learn.microsoft.com/en-us/entra/identity/hybrid/connect/how-to-connect-fed-group-claims#add-group-claims-to-tokens-for-saml-applications-using-sso-configuration) so Azure emits only the relevant groups.
 
@@ -158,14 +170,16 @@ To complete setup, follow the steps below in the <Constant name="dbt" /> applica
 27. Click **Get started** if SSO has not been configured, or **Edit** if it has already been set up.
 28. Supply the following SSO details:
 
+<SimpleTable>
 | Field | Value |
 | ----- | ----- |
-| **Log&nbsp;in&nbsp;with** | Microsoft Entra ID Single Tenant |
+| **Log&nbsp;in&nbsp;with** | Microsoft Entra ID Single Tenant, or Microsoft Entra ID Multi Tenant if you configured a multi-tenant **Supported account types** value |
 | **Client&nbsp;ID** | Paste the **Application (client) ID** recorded in the steps above |
 | **Client&nbsp;Secret** | Paste the **Client Secret** (remember to use the Secret Value instead of the Secret ID) from the steps above; <br />**Note:** When the client secret expires, an Entra ID admin will have to generate a new one to be pasted into <Constant name="dbt" /> for uninterrupted application access. |
-| **Tenant&nbsp;ID** | Paste the **Directory (tenant ID)** recorded in the steps above |
-| **Domain** | Enter the domain name for your Azure directory (such as `fishtownanalytics.com`). Only use the primary domain; this won't block access for other domains. |
-
+| **Tenant&nbsp;ID** | Paste the **Directory (tenant) ID** recorded in the steps above. (This field only appears when you select **Microsoft Entra ID Single Tenant**; it is not needed for multi-tenant). |
+| **Microsoft&nbsp;Entra&nbsp;ID&nbsp;Domain** | For single tenant, enter the domain name for your Azure directory (such as `fishtownanalytics.com`). Only use the primary domain; this won't block access for other domains. For multi-tenant, enter the matching authority string (`organizations`, `common`, or `consumers`) instead. Refer to [Supported account types table](#creating-an-application). |
+</SimpleTable>
+  
 <Lightbox src="/img/docs/dbt-platform/dbt-platform-enterprise/azure/azure-cloud-sso.png" title="Configuring Entra ID AD SSO in dbt" />
 
 29.  Click **Save** to complete setup for the Microsoft Entra ID SSO integration. From here, you can navigate to the login URL generated for your account's _slug_ to test logging in with Entra ID.
