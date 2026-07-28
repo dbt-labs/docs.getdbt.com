@@ -697,6 +697,23 @@ const sidebarSettings = {
                 "docs/build/parallel-batch-execution",
               ],
             },
+            {
+              type: "category",
+              label: "Apache Iceberg",
+              collapsed: true,
+              link: {
+                type: "doc",
+                id: "docs/build/iceberg/apache-iceberg-support",
+              },
+              items: [
+                "docs/build/iceberg/apache-iceberg-support",
+                "docs/build/iceberg/about-catalogs",
+                "docs/build/iceberg/catalogs-yml",
+                "docs/build/iceberg/adapters/snowflake-iceberg-support",
+                "docs/build/iceberg/adapters/databricks-iceberg-support",
+                "docs/build/iceberg/adapters/bigquery-iceberg-support",
+              ],
+            },
           ],
         },
         {
@@ -742,6 +759,7 @@ const sidebarSettings = {
       link: { type: "doc", id: "docs/mesh/about-mesh" },
       items: [
         "docs/mesh/about-mesh",
+        "docs/mesh/cross-platform-mesh",
         {
           type: "category",
           label: "Model governance",
@@ -756,22 +774,6 @@ const sidebarSettings = {
             "docs/mesh/govern/model-contracts",
             "docs/mesh/govern/model-versions",
             "docs/mesh/govern/project-dependencies",
-          ],
-        },
-        {
-          type: "category",
-          label: "Apache Iceberg",
-          collapsed: true,
-          link: {
-            type: "doc",
-            id: "docs/mesh/iceberg/apache-iceberg-support",
-          },
-          items: [
-            "docs/mesh/iceberg/apache-iceberg-support",
-            "docs/mesh/iceberg/about-catalogs",
-            "docs/mesh/iceberg/snowflake-iceberg-support",
-            "docs/mesh/iceberg/databricks-iceberg-support",
-            "docs/mesh/iceberg/bigquery-iceberg-support",
           ],
         },
       ],
