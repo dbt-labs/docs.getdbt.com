@@ -158,7 +158,7 @@ Once dbt Support confirms the endpoint is available, configure the connection in
 
 </ SimpleTable>
   
-6. Save it and proceed to the next step.
+5. Save it and proceed to the next step.
 
 ### Configure authentication
 
