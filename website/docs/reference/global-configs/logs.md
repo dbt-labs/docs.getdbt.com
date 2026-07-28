@@ -8,7 +8,27 @@ sidebar: "logs"
 
 dbt outputs logs to two different locations: CLI console and the log file.
 
+<VersionBlock lastVersion="1.99">
+
 The `LOG_FORMAT` and `LOG_FORMAT_FILE` configs specify how dbt's logs should be formatted, and they each have the same options: `json`, `text`, and `debug`.
+
+</VersionBlock>
+
+<VersionBlock firstVersion="2.0">
+
+The `LOG_FORMAT` and `LOG_FORMAT_FILE` configs specify how dbt's logs should be formatted, and they each have the same options: `text`, `json`, `default`, and `otel`.
+
+The `otel` format streams [OpenTelemetry](https://opentelemetry.io/)-style structured telemetry to the console. It uses a different schema than <Constant name="core" />'s `json` logs. For JSONL files, Parquet export, OTLP, and how this maps to <Constant name="core" /> structured logging, refer to [<Constant name="fusion" /> telemetry and observability](/reference/telemetry-observability).
+
+<File name='Usage'>
+
+```text
+dbtf build --log-format otel
+```
+
+</File>
+
+</VersionBlock>
 
 <File name='Usage'>
 
@@ -25,6 +45,8 @@ The `text` format is the default for console logs and has plain text messages pr
 23:30:17  Registered adapter: postgres=1.8.0
 ```
 
+<VersionBlock lastVersion="1.99">
+
 The `debug` format is the default for the log file and is the same as the `text` format but with a more detailed timestamp and also includes the [`invocation_id`](/reference/dbt-jinja-functions/invocation_id), [`thread_id`](/reference/dbt-jinja-functions/thread_id), and [log level](/reference/global-configs/logs#log-level) of each message:
 
 ```
@@ -32,6 +54,8 @@ The `debug` format is the default for the log file and is the same as the `text`
 16:12:08.555032 [info ] [MainThread]: Running with dbt=1.8.0
 16:12:08.751069 [info ] [MainThread]: Registered adapter: postgres=1.8.0
 ```
+
+</VersionBlock>
 
 The `json` format outputs fully structured logs in the <Term id="json" /> format:
 
@@ -50,6 +74,8 @@ dbt run --log-format-file json
 
 </File>
 
+<VersionBlock lastVersion="1.99">
+
 :::tip Tip: verbose structured logs
 
 Use `json` formatting value in conjunction with the `DEBUG` config to produce rich log information which can be piped into monitoring tools for analysis:
@@ -58,9 +84,27 @@ Use `json` formatting value in conjunction with the `DEBUG` config to produce ri
 dbt run --debug --log-format json
 ```
 
-See [structured logging](/reference/events-logging#structured-logging) for more details.
+Refer to [structured logging](/reference/events-logging#structured-logging) for more details.
 
 :::
+
+</VersionBlock>
+
+<VersionBlock firstVersion="2.0">
+
+:::tip Tip: structured observability
+
+Use `--log-format otel` to stream OpenTelemetry-style telemetry to the console, or use `--otel-file-name` and related flags for file and platform integrations. Refer to [<Constant name="fusion" /> telemetry and observability](/reference/telemetry-observability).
+
+For legacy-compatible JSON lines (similar to <Constant name="core" />), use `--log-format json` with the `DEBUG` config:
+
+```text
+dbtf build --debug --log-format json
+```
+
+:::
+
+</VersionBlock>
 
 ### Log Level
 
