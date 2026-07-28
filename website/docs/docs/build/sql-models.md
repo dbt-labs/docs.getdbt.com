@@ -2,6 +2,7 @@
 title: "SQL models"
 description: "SQL models are the building blocks of your dbt project."
 id: "sql-models"
+availability: all_users
 ---
 
 ## Related reference docs

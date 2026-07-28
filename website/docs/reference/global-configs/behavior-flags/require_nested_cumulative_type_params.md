@@ -9,10 +9,12 @@ sidebar_label: "require nested cumulative type params"
 | require_nested_cumulative_type_params | <Constant name="dbt" /> **Latest** | <Constant name="core" /> |
 |---|---|---|
 | Introduced | 2024.11 | 1.9.0 |
-| Matured (default → `true`) | Sep 1, 2026 | — |
+| Matured (default → `true`) | Sep 1, 2026 | 1.12.0 |
 | Removed | — | — |
 
-[Cumulative-type metrics](/docs/build/cumulative#parameters) are nested under the `cumulative_type_params` field in [the <Constant name="dbt" /> **Latest** release track](/docs/dbt-versions/dbt-release-tracks), dbt Core v1.9 and newer. Currently, dbt will warn users if they have cumulative metrics improperly nested. To enforce the new format (resulting in an error instead of a warning), set the `require_nested_cumulative_type_params` to `true`.
+<br />
+
+[Cumulative-type metrics](/docs/build/cumulative#parameters) are nested under the `cumulative_type_params` field in [the <Constant name="dbt" /> **Latest** release track](/docs/dbt-versions/dbt-release-tracks), <Constant name="core" /> v1.9 and newer. Starting in <Constant name="core" /> v1.12, this flag defaults to `true`, which causes dbt to raise an error instead of a warning when cumulative metrics use the un-nested syntax.
 
 Use the following metric configured with the syntax before v1.9 as an example:
 
@@ -51,7 +53,7 @@ Once the metric is updated, it will work as expected:
         window: 7 days
 ```
 
-## Impact when the flag matures
+## Impact
 
 Any project with a cumulative metric still using the un-nested syntax stops parsing entirely on the first command. Because parsing fails, the error affects every dbt command: `run`, `build`, `test`, `compile`, `docs generate`, the <Constant name="semantic_layer" />, and more.
 

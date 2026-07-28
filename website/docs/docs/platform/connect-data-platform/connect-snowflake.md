@@ -3,6 +3,9 @@ title: "Connect Snowflake"
 id: connect-snowflake
 description: "Configure Snowflake connection."
 sidebar_label: "Connect Snowflake"
+availability:
+  surface: platform
+  access: login_required
 ---
 
 # Connect Snowflake <ProductCard text="Fusion compatible" />

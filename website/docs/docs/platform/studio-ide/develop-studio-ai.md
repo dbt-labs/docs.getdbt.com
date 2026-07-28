@@ -2,13 +2,17 @@
 title: "Develop with AI"
 sidebar_label: "Develop with AI"
 description: "Leverage AI to develop dbt projects in the Studio IDE"
+availability:
+  surface: platform
+  access: paid_plan
+  minPlan: starter
 ---
 
 import CopilotWizardDifferences from '/snippets/_copilot-wizard-diff.md';
 import CopilotResources from '/snippets/_use-copilot-resources.md';
 import WizardIde from '/snippets/_wizard-ide.md';
 
-# Develop with AI in the Studio IDE <Lifecycle status="self_service,managed,managed_plus" />
+# Develop with AI in the Studio IDE
 
 <IntroText>
 Leverage AI to develop dbt projects in the <Constant name="studio_ide" />.

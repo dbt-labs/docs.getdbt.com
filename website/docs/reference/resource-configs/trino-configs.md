@@ -1,5 +1,6 @@
 ---
 title: "Starburst/Trino configurations"
+description: "Configure Starburst/Trino-specific settings for dbt models, including cluster requirements and catalog permissions."
 id: "trino-configs"
 ---
 

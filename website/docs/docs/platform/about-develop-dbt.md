@@ -5,6 +5,7 @@ description: "Learn how to develop your dbt projects using dbt."
 sidebar_label: "Develop with dbt" 
 pagination_next: "docs/platform/about-defer"
 intro_text: "Develop dbt projects using the dbt platform, a faster and more reliable way to deploy dbt and manage your project in a single, web-based UI."
+hide_table_of_contents: true
 ---
 
 You can develop in your browser using a <Constant name="dbt" />-powered command line interface (CLI), an integrated development environment (<Constant name="studio_ide" />), or <Constant name="canvas" />.
@@ -25,7 +26,7 @@ Choose the option that best fits your needs:
 
   <Card
     title="dbt VS Code extension"
-    body="Bring the speed and intelligence of the dbt Fusion engine to VS Code for a seamless local development experience."
+    body="Bring the speed and intelligence of the dbt Fusion engine to VS Code for a seamless development experience."
     link="/docs/about-dbt-extension"
     icon="vsce"
     showBorderBeam

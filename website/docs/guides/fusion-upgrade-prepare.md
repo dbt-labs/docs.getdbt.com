@@ -11,13 +11,13 @@ intro_text: This guide helps you prepare for an in-place upgrade from dbt Core t
 
 <div style={{maxWidth: '900px'}}>
 
-import FusionAdapters from '/snippets/_fusion-dwh.md';
+import FusionAdapters from '/snippets/_fusion-dwh-platform.md';
 
 ## Introduction
 
 The <Constant name="fusion_engine" /> represents the next evolution of data transformation. dbt has been rebuilt from the ground up but at its most basic, <Constant name="fusion" /> is a new version, and like any new version you should take steps to prepare to upgrade. This guide will take you through those preparations. 
 
-If <Constant name="fusion" /> is brand new to you, take a look at our [comprehensive documentation](/docs/fusion) on what it is, how it behaves, and what's different from <Constant name="core" /> before getting started with this guide. Once you're caught up, it's time to begin preparing your projects for the speed and power that <Constant name="fusion" /> has to offer.
+If <Constant name="fusion" /> is brand new to you, take a look at our [comprehensive documentation](/docs/fusion/about-fusion) on what it is, how it behaves, and what's different from <Constant name="core" /> before getting started with this guide. Once you're caught up, it's time to begin preparing your projects for the speed and power that <Constant name="fusion" /> has to offer.
 
 ## Prerequisites
 
@@ -28,7 +28,7 @@ To follow the steps in this guide, you must meet the following prerequisites:
 - You're using a <Constant name="dbt_platform" /> account on any tier.
 - You have a developer license.
 - You have [proper permissions](/docs/platform/manage-access/enterprise-permissions) to edit projects.
-- Your project is using a <Constant name="fusion" /> supported adapter:
+- Your project is using a [supported adapter](/docs/platform/connect-data-platform/about-connections?version=2.0)
     <FusionAdapters/>
 
 :::tip Upgrading your first project

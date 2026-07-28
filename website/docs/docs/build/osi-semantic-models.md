@@ -4,9 +4,10 @@ id: "osi-semantic-models"
 description: "Use Open Semantic Interchange (OSI) JSON documents to define semantic models and metrics in your dbt project."
 sidebar_label: "OSI semantic layer documents"
 tags: [Metrics, Semantic Layer]
+availability: all_users
 ---
 
-# OSI semantic layer documents <Lifecycle status="beta" />
+# OSI semantic layer documents
 
 <VersionCallout version="1.12" />
 

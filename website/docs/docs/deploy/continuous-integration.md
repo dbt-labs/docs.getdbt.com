@@ -3,6 +3,7 @@ title: "Continuous integration in dbt"
 sidebar_label: "Continuous integration"
 description: "Learn how CI checks validate changes before you deploy code to production."
 pagination_next: "docs/deploy/advanced-ci"
+availability: platform_login
 ---
 
 To implement a continuous integration (CI) workflow in <Constant name="dbt" />, you can set up automation that tests code changes by running [CI jobs](/docs/deploy/ci-jobs) before merging to production. <Constant name="dbt" /> tracks the state of what’s running in your production environment. When you run a CI job, only the modified data assets in your pull request (PR) and their downstream dependencies are built and tested in a staging schema.

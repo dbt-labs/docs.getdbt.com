@@ -4,6 +4,9 @@ sidebar_label: "Installation"
 id: dbt-cli-installation
 description: "Instructions for installing and configuring dbt platform's CLI tool."
 pagination_next: "docs/platform/configure-dbt-cli"
+availability:
+  surface: platform
+  access: login_required
 ---
 
 import LongSession from '/snippets/_long-sessions-cli.md';
@@ -12,7 +15,7 @@ The <Constant name="dbt_platform" /> natively supports developing using a comman
 
 :::note CLI compatibility
 
-The <Constant name="platform_cli" /> is a <Constant name="dbt_platform" /> tool available to users on any [plan](https://www.getdbt.com/pricing). It is intended for use only with the <Constant name="dbt_platform" /> and may conflict with local installations of the <Constant name="core" /> or <Constant name="fusion_engine" /> CLIs. Refer to the [FAQs](#faqs) for more information.
+The <Constant name="platform_cli" /> is a <Constant name="dbt_platform" /> tool available to users on any [plan](https://www.getdbt.com/pricing). It is intended for use only with the <Constant name="dbt_platform" /> and may conflict with self-hosted installations of the <Constant name="core" /> or <Constant name="fusion_engine" /> CLIs. Refer to the [FAQs](#faqs) for more information.
 
 :::
 
@@ -28,14 +31,12 @@ dbt commands run against the platform's infrastructure and benefit from:
 ## Prerequisites
 
 The <Constant name="platform_cli" /> is available in all [deployment regions](/docs/platform/about-platform/access-regions-ip-addresses) and for both multi-tenant and single-tenant accounts.
-
-- For the best <Constant name="platform_cli" /> experience, install the platform CLI on a machine that doesn't already have the <Constant name="core" /> or <Constant name="fusion" /> CLI installed.
 - If you installed the <Constant name="core" /> CLI in a virtual environment, deactivate that environment or create an alias for the platform CLI before you run platform CLI commands.
-- If you installed the <Constant name="fusion" /> CLI locally, create an alias for the platform CLI before you run platform CLI commands.
+- If you installed dbt locally, create an alias for the platform CLI before you run platform CLI commands.
 
 Refer to the [FAQs](#faqs) for more information about managing multiple <Constant name="platform_cli" /> tools and creating an alias.
 
-:::tip Using the <Constant name="dbt_platform"/> CLI for local development with <Constant name="fusion"/>?
+:::tip Using the <Constant name="dbt_platform"/> CLI for hybrid development with <Constant name="fusion"/>?
 See the [Hybrid development with <Constant name="dbt_platform"/>  and <Constant name="fusion"/>](/guides/fusion-platform-local-workflow) guide to keep credentials, environment variables, and <Constant name="fusion"/> versions in sync across your local CLI and <Constant name="dbt_platform"/>.
 :::
 
@@ -287,7 +288,7 @@ import CloudCliRelativePath from '/snippets/_cloud-cli-relative-path.md';
 - **Validate in a tight loop**: Every proposed change compiles and runs against your warehouse, catching issues before they reach production.
 - **Navigate with full project context**: Traverse the [DAG](/docs/explore/explore-projects), surface downstream impact, and flag affected models, tests, and metrics before acting.
 
-For data practitioners working locally, this means AI assistance grounded in your actual project state &dash; not a generic code assistant. Bring your own key to experience the full agentic analytics engineering loop. Refer to the [dbt Wizard quickstart](/docs/dbt-ai/wizard-quickstart) to get started.
+For data practitioners working with a self-hosted installation, this means AI assistance grounded in your actual project state &dash; not a generic code assistant. Bring your own key to experience the full agentic analytics engineering loop. Refer to the [dbt Wizard quickstart](/docs/dbt-ai/wizard-quickstart) to get started.
 
 ## FAQs
 

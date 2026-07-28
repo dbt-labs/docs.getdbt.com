@@ -472,6 +472,10 @@ ul.table-of-contents .hash-link::before {
   display: none;
 }
 
+.table-of-contents .plan-pill {
+  display: none;
+}
+
 pre {
   font-size: 14px !important;
 }
@@ -536,7 +540,7 @@ a.code-link:hover {
 
 .navbar__link.nav-versioning {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   justify-content: center;
 }
 
@@ -618,6 +622,390 @@ html[data-theme="dark"] .nav-versioning-filter__btn:hover {
 html[data-theme="dark"] .nav-versioning-filter__btn--active {
   background: var(--color-terminal-black-800);
   color: #fff;
+}
+
+/* Transition note mapping platform tracks to versions — remove at unified-versioning GA */
+.nav-versioning-filter__note {
+  margin: 8px 2px 0;
+  font-size: 0.78rem;
+  font-weight: 500;
+  line-height: 1.35;
+  color: #4b5563;
+}
+
+html[data-theme="dark"] .nav-versioning-filter__note {
+  color: #c3cad6;
+}
+
+.nav-versioning-filter__note a {
+  font-weight: 600;
+}
+
+/* Version selector dropdown in the navbar */
+.version-dropdown {
+  display: flex;
+  align-items: center;
+}
+
+.version-toggle__icon {
+  display: inline-flex;
+  align-items: center;
+  color: #999;
+}
+
+.version-toggle__icon svg {
+  display: block;
+}
+
+html[data-theme="dark"] .version-toggle__icon {
+  color: #777;
+}
+
+.version-dropdown__trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 5px 8px;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+html[data-theme="dark"] .version-dropdown__trigger {
+  color: #e0e0e0;
+}
+
+.version-dropdown__trigger:hover {
+  color: #000;
+}
+
+html[data-theme="dark"] .version-dropdown__trigger:hover {
+  color: #fff;
+}
+
+.version-dropdown__trigger:focus {
+  outline: none;
+}
+
+.version-dropdown__trigger:focus-visible {
+  outline: 2px solid rgba(123, 97, 255, 0.4);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.version-dropdown__branch {
+  display: inline-flex;
+  align-items: center;
+  color: #999;
+}
+
+.version-dropdown__current {
+  font-weight: 600;
+}
+
+.version-dropdown__caret {
+  font-size: 0.75rem;
+  color: #999;
+}
+
+.version-dropdown__menu {
+  min-width: 220px;
+  max-width: 260px;
+  padding: 6px;
+}
+
+.version-dropdown__menu .version-dropdown__note {
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+.version-dropdown__group {
+  padding: 8px 12px 3px;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #4b5563;
+  list-style: none;
+}
+
+html[data-theme="dark"] .version-dropdown__group {
+  color: #c3cad6;
+}
+
+/* Clickable era header (selects the latest version in that era) */
+.version-dropdown__group-link {
+  cursor: pointer;
+}
+
+.version-dropdown__group-link .version-dropdown__text {
+  font-weight: 700;
+  color: #4b5563;
+}
+
+html[data-theme="dark"] .version-dropdown__group-link .version-dropdown__text {
+  color: #c3cad6;
+}
+
+.version-dropdown__group-link::after {
+  content: "\203A";
+  margin-left: 4px;
+  color: var(--ifm-color-primary, #7b61ff);
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+.version-dropdown__group-link:hover .version-dropdown__text,
+.version-dropdown__group-link:focus-visible .version-dropdown__text {
+  color: rgba(123, 97, 255, 1);
+  text-decoration: underline;
+}
+
+.version-dropdown__group-link:hover::after,
+.version-dropdown__group-link:focus-visible::after {
+  opacity: 0.6;
+}
+
+html[data-theme="dark"] .version-dropdown__group-link:hover .version-dropdown__text,
+html[data-theme="dark"] .version-dropdown__group-link:focus-visible .version-dropdown__text {
+  color: rgba(154, 137, 255, 1);
+}
+
+.version-menu-mobile__grouplink {
+  cursor: pointer;
+  font-weight: 700;
+  color: #4b5563;
+  transition: color 0.15s ease;
+}
+
+html[data-theme="dark"] .version-menu-mobile__grouplink {
+  color: #c3cad6;
+}
+
+.version-menu-mobile__grouplink::after {
+  content: "\203A";
+  margin-left: 4px;
+  color: var(--ifm-color-primary, #7b61ff);
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+.version-menu-mobile__grouplink:hover,
+.version-menu-mobile__grouplink:focus-visible {
+  color: rgba(123, 97, 255, 1);
+  text-decoration: underline;
+}
+
+.version-menu-mobile__grouplink:hover::after,
+.version-menu-mobile__grouplink:focus-visible::after {
+  opacity: 0.6;
+}
+
+html[data-theme="dark"] .version-menu-mobile__grouplink:hover,
+html[data-theme="dark"] .version-menu-mobile__grouplink:focus-visible {
+  color: rgba(154, 137, 255, 1);
+}
+
+.version-dropdown__link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.version-dropdown__text {
+  flex: 1;
+}
+
+.version-dropdown__link:hover .version-dropdown__text,
+.version-dropdown__link:focus-visible .version-dropdown__text {
+  text-decoration: underline;
+}
+
+.version-dropdown__stage {
+  color: #6b7280;
+  font-weight: 500;
+  font-size: 0.85em;
+  text-transform: capitalize;
+}
+
+html[data-theme="dark"] .version-dropdown__stage {
+  color: #c3cad6;
+}
+
+.version-dropdown__check {
+  flex: 0 0 auto;
+  font-size: 0.8rem;
+  color: var(--ifm-color-primary, #7b61ff);
+}
+
+.version-dropdown__link--indented {
+  padding-left: 24px;
+}
+
+.version-dropdown__link--active {
+  background: rgba(123, 97, 255, 0.08);
+  font-weight: 600;
+}
+
+html[data-theme="dark"] .version-dropdown__link--active {
+  background: rgba(123, 97, 255, 0.18);
+}
+
+.version-dropdown__note {
+  margin-top: 6px;
+  padding: 8px 12px 2px;
+  border-top: 1px solid #E0E0E0;
+  font-size: 0.78rem;
+  font-weight: 500;
+  line-height: 1.3;
+  color: #4b5563;
+  list-style: none;
+}
+
+html[data-theme="dark"] .version-dropdown__note {
+  border-top-color: #242B37;
+  color: #c3cad6;
+}
+
+.version-dropdown__note a {
+  font-weight: 600;
+}
+
+/* Mobile version menu */
+.version-menu-mobile__header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #4b5563;
+}
+
+html[data-theme="dark"] .version-menu-mobile__header {
+  color: #c3cad6;
+}
+
+.version-menu-mobile__group {
+  padding: 4px 12px 0;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #4b5563;
+}
+
+html[data-theme="dark"] .version-menu-mobile__group {
+  color: #c3cad6;
+}
+
+.version-menu-mobile__indented {
+  padding-left: 24px;
+}
+
+/* Compact v1.x picker beside the toggle */
+.version-subpicker {
+  position: relative;
+}
+
+.version-subpicker__button {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  border: none;
+  background: transparent;
+  padding: 2px 4px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #262A38;
+  cursor: pointer;
+}
+
+html[data-theme="dark"] .version-subpicker__button {
+  color: #fff;
+}
+
+.version-subpicker__button:focus {
+  outline: none;
+}
+
+.version-subpicker__button:focus-visible {
+  outline: 2px solid rgba(123, 97, 255, 0.4);
+  outline-offset: 2px;
+  border-radius: 3px;
+}
+
+.version-subpicker__caret {
+  font-size: 0.7rem;
+}
+
+.version-subpicker__menu {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  min-width: 120px;
+  list-style: none;
+  margin: 0;
+  padding: 4px;
+  background: #fff;
+  border: 1px solid #E0E0E0;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  z-index: 100;
+}
+
+html[data-theme="dark"] .version-subpicker__menu {
+  background: var(--color-terminal-black-800);
+  border-color: #242B37;
+}
+
+.version-subpicker__option {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  border: none;
+  background: transparent;
+  border-radius: 4px;
+  padding: 6px 10px;
+  font-size: 0.8rem;
+  text-align: left;
+  cursor: pointer;
+  color: #333;
+}
+
+html[data-theme="dark"] .version-subpicker__option {
+  color: #ddd;
+}
+
+.version-subpicker__option:hover {
+  background: #f0f0f0;
+}
+
+html[data-theme="dark"] .version-subpicker__option:hover {
+  background: var(--color-terminal-black-700);
+}
+
+.version-subpicker__option--active {
+  font-weight: 700;
+}
+
+/* Mobile: segmented toggle + transition note */
+.version-toggle-mobile {
+  padding: 8px 12px;
+}
+
+.version-toggle-mobile .version-toggle__segments {
+  width: 100%;
+}
+
+.version-toggle-mobile .version-toggle__segment {
+  flex: 1;
+  text-align: center;
+}
+
+.version-toggle-mobile__sublist {
+  margin-top: 6px;
 }
 
 
@@ -1004,6 +1392,16 @@ i.theme-doc-sidebar-item-category.theme-doc-sidebar-item-category-level-2.menu__
 .admonition h5 {
   text-transform: none;
   font-size: 1.5rem;
+}
+
+/* Note/admonition headers use sentence case, not all caps.
+   Docusaurus v3 renders the title in a hashed CSS-module class
+   (e.g. admonitionHeading_Gvgb) with text-transform: uppercase,
+   so target it via an attribute selector rather than the hash.
+   Default single-word labels (Note, Tip, ...) are capitalized via
+   i18n/en/code.json; custom titles keep their author-written casing. */
+.theme-admonition [class*="admonitionHeading"] {
+  text-transform: none;
 }
 
 .admonition-icon svg {
@@ -3142,6 +3540,18 @@ html[data-theme='dark'] .sidebar-title {
 /* Hide reCaptcha badge */
 .grecaptcha-badge {
   display: none;
+}
+
+/* RSS feed icon */
+.rss-icon {
+  width: 14px;
+  height: 14px;
+  margin-right: 6px;
+  vertical-align: middle;
+  opacity: 0.8;
+}
+html[data-theme='dark'] .rss-icon {
+  filter: invert(1);
 }
 
 /* Footnote references rendered in blog list excerpts (see

@@ -6,13 +6,14 @@ id: "dbt-state-examples"
 tags: ['dbt State']
 pagination_prev: "docs/deploy/dbt-state-deferral"
 pagination_next: "docs/deploy/dbt-state-migration"
+availability: everywhere_usage
 ---
 
 # Example usage for dbt State <Lifecycle status="preview" />
 
 <IntroText>
 
-These examples use the Jaffle Shop project to show side-by-side comparisons of CLI output with and without dbt State enabled.
+These examples use the Jaffle Shop project to show side-by-side comparisons of CLI output with and without dbt State enabled. To enable dbt State, follow the steps in [Setting up dbt State](/docs/deploy/dbt-state-setup).
 
 </IntroText>
 
@@ -28,6 +29,9 @@ Each of the following scenarios shows how a run differs between <Constant name="
 | [Second run](#second-run) | `dbt run --target prod` | Reuses unchanged table models; rebuilds views with `select *` |
 | [Selecting a model in a fresh dev environment after changing the customers model](#selecting-a-model-in-a-fresh-dev-environment-after-changing-the-customers-model) | `dbt run --target dev --select "customers"` | Defers to prod for upstream models |
 | [Selecting a model in a new dev schema with no model changes](#selecting-a-model-in-a-new-dev-schema-with-no-model-changes) | `dbt run --target dev --select "customers"` | Defers and clones unchanged models |
+<br></br>
+
+Every skipped model is a model you didn't pay to rebuild. dbt State tracks what's changed and skips the rest &mdash; reducing run time and warehouse costs.
 
 ## Initial run in empty schema
 
@@ -35,7 +39,7 @@ Each of the following scenarios shows how a run differs between <Constant name="
 dbt run --target prod
 ```
 
-You get the same result with and without dbt State.
+With no prior state to compare against, dbt builds every model from scratch. dbt State captures metadata from this run for future comparisons.
 
 <Tabs queryString="initial-run">
 <TabItem value="without" label="Without dbt State">
@@ -133,6 +137,8 @@ Done. PASS=12 WARN=0 ERROR=0 SKIP=0 NO-OP=0 REUSED=0 TOTAL=12
 ```shell
 dbt run --target prod
 ```
+
+For each model, dbt State compares the current logic and upstream data against the previous run. If nothing has changed, dbt State skips the build or clones the result from another environment.
 
 With dbt State enabled, the six table models are reused — nothing changed, so there's nothing to rebuild. The six staging views still rebuild because they use `select *`. [Learn why views with `select *` are always rebuilt.](/faqs/State/views-rebuilt)
 
