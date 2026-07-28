@@ -158,6 +158,11 @@ Once dbt Support confirms the endpoint is available, configure the connection in
 
 #### Configure authentication
 
-The **Connection** page only includes **Server**, **Port**, and **Database**. You configure **Authentication**, **Tenant ID**, **Client ID**, and **Client secret** later, when you set up your development credentials or create a deploy environment profile.
+The **Connection** page only includes **Server**, **Port**, and **Database**. You configure the following later when you set up your development credentials or create a deploy environment profile:
+
+- **Authentication**: This is your Service Principal
+- **Tenant ID**: This is your Microsoft Entra Directory (tenant) ID
+- **Client ID**: This is your service principal's application (client) ID
+- **Client secret**: This is your service principal's client secret
 
 The service principal you use for authentication must be added as a **Member** or **Contributor** on the Fabric workspace. In the Fabric Admin portal, **Service principals can use Fabric APIs** must also be enabled under **Tenant settings** → **Developer settings**.
