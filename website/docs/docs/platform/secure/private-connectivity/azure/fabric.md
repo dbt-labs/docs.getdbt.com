@@ -162,7 +162,7 @@ Once dbt Support confirms the endpoint is available, configure the connection in
 
 ### Configure authentication
 
-The **Connection** page only includes **Server**, **Port**, and **Database**. Configure the following later when you set up your development credentials or create a deploy environment profile:
+The **Connection** page only includes **Server**, **Port**, and **Database**. Configure the following later when you [set up your development credentials](/docs/dbt-platform-environments#set-user-credentials) or [create a deployment environment](/docs/deploy/deploy-environments):
     <SimpleTable> 
     | Field | Value |
     |-------|-------|
