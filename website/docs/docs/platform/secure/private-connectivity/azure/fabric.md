@@ -149,14 +149,14 @@ Once dbt Support confirms the endpoint is available, configure the connection in
 3. Select the private endpoint from the dropdown. This populates the **Server** field with the private SQL hostname provided by dbt Support.
 4. Configure the remaining connection details:
 
-   <SimpleTable> 
+<SimpleTable> 
    
-   | Field | Value |
-   |-------|-------|
-   | **Port** | Auto-populated with `1433` |
-   | **Database** | Your Fabric warehouse name |
+| Field | Value |
+|-------|-------|
+| **Port** | Auto-populated with `1433` |
+| **Database** | Your Fabric warehouse name |
 
-  </ SimpleTable>
+</ SimpleTable>
   
 6. Save it and proceed to the next step.
 
