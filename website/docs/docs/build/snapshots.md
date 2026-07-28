@@ -3,6 +3,7 @@ title: "Add snapshots to your DAG"
 sidebar_label: "Snapshots"
 description: "Configure snapshots in dbt to track changes to your data over time."
 id: "snapshots"
+availability: all_users
 ---
 
 ## Related documentation

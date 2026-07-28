@@ -3,6 +3,7 @@ title: Upgrade to Fusion
 id: upgrade-to-fusion-extension
 description: "Upgrade your dbt project to the Fusion engine from the VS Code extension."
 sidebar_label: "Upgrade to Fusion"
+availability: local_all
 ---
 
 # Upgrade to Fusion <Lifecycle status="preview" />

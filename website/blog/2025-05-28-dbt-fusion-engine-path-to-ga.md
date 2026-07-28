@@ -154,7 +154,7 @@ Invocations powered by the dbt Fusion engine are already significantly faster th
 If you do some benchmarking, we're particularly interested in any situations where Fusion "pauses" on a single file for a couple of seconds. Some other things to keep in mind:
 
 - Writing very large manifests is pretty slow, no matter what. Try including `--no-write-json`. We're wondering whether it makes sense to have a trimmed-down manifest by default. What do you think?
-- The `dbt compile` command involves more work in Fusion than in dbt Core, because it's doing full SQL validation. To compare *just* the SQL rendering step (the equivalent of dbt Core's `compile` command), you can try [turning off static analysis](/docs/fusion/new-concepts) with the CLI flag `--static-analysis off`.
+- The `dbt compile` command involves more work in Fusion than in dbt Core, because it's doing full SQL validation. To compare *just* the SQL rendering step (the equivalent of dbt Core's `compile` command), you can try [turning off static analysis](/docs/build/about-static-analysis) with the CLI flag `--static-analysis off`.
 
 As a sign of what's possible, take note of the incremental recompilation used to provide real-time feedback in the VS Code extension.
 

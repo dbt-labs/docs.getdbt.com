@@ -4,11 +4,15 @@ sidebar_label: "About Cost Insights"
 description: "Track warehouse compute costs and understand the impact of optimizations across your dbt projects and models." 
 id: "cost-insights"
 tags: ['SAO', 'cost savings', 'models built', 'cost insights', 'cost reductions', 'cost optimizations']
+availability:
+  surface: platform
+  access: paid_plan
+  minPlan: enterprise
 ---
 
 import SaoDeprecated from '/snippets/_sao-deprecated.md';
 
-# Cost Insights <Lifecycle status="beta,managed,managed_plus" />
+# Cost Insights <Lifecycle status="beta" />
 
 Cost Insights shows estimated costs and compute time for your dbt projects and models directly in the <Constant name="dbt_platform" />, so you can measure and share the impact of optimizations like [dbt State](/docs/deploy/dbt-state-about) and [state-aware orchestration](/docs/deploy/state-aware-about).
 
@@ -21,7 +25,8 @@ With Cost Insights, you can see:
 - **How much your dbt models cost to run**: See the compute cost and times for each model and job in your warehouse's native units.
 - **The cost reductions from using dbt State or state-aware orchestration**: Understand the cost reduction when dbt State or state-aware orchestration reuses unchanged models.
 - **Cost trends over time**: Track your warehouse spend and optimization impact across your dbt projects.
-- **Filter by asset type**: On Cost Insights charts (**Cost**, **Usage**, **Query run time**, **Builds**), use the **Assets** dropdown menu to filter data by **Models**, **Tests**, or **All**. Each tab keeps its own selection.
+- **Asset type filtering**: On Cost Insights charts (**Cost**, **Usage**, **Query run time**, **Builds**), use the **Assets** dropdown menu to filter data by **Models**, **Tests**, or **All**. Each tab keeps its own selection.
+- **Per-job cost breakdown**: In the Cost Insights table view, use the **All** and **Jobs** buttons to switch between an aggregated view and a per-job cost breakdown.
 
 The Cost Insights section is available in different <Constant name="dbt_platform" /> areas and lets you view your cost data and the impact of dbt State and state-aware orchestration optimizations across various dimensions:
 

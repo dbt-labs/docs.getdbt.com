@@ -3,6 +3,7 @@ title: "dbt support"
 id: "dbt-support"
 pagination_next: null
 pagination_prev: null
+availability: all_users
 ---
 
 Support for dbt is available to all users through the following channels:

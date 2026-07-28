@@ -1,6 +1,7 @@
 ---
-title: "Telemetry and observability"
-id: "telemetry"
+title: "Fusion telemetry and observability"
+id: "telemetry-observability"
+sidebar_label: "Fusion telemetry and observability"
 description: "Fusion support for telemetry and observability"
 pagination_next: null
 pagination_prev: null
@@ -8,7 +9,9 @@ pagination_prev: null
 
 import SaoDeprecated from '/snippets/_sao-deprecated.md';
 
-The <Constant name="fusion_engine" /> provides a comprehensive telemetry system that replaces [<Constant name="core" />'s structured logging](/reference/events-logging#structured-logging). Built on [OpenTelemetry](https://opentelemetry.io/) conventions and backed by a stable protobuf schema, it enables deep integration with orchestrators, observability platforms, and custom tooling.
+The <Constant name="fusion_engine" /> provides a comprehensive observability system that replaces [<Constant name="core" />'s structured logging](/reference/events-logging#structured-logging). Built on [OpenTelemetry](https://opentelemetry.io/) conventions and backed by a stable protobuf schema, it enables deep integration with orchestrators, observability platforms, and custom tooling.
+
+This system is separate from the anonymous usage statistics that dbt sends to dbt Labs. To configure anonymous usage statistics, refer to [Anonymous usage stats](/reference/global-configs/usage-stats).
 
 This uses the same integration that <Constant name="dbt_platform" /> relies on for orchestration and monitoring, providing proven and production-ready features that work at scale.
 

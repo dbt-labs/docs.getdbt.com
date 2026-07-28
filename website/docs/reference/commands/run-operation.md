@@ -11,7 +11,7 @@ The `dbt run-operation` command is used to invoke a macro or execute a SQL or Ji
 
 <VersionBlock firstVersion="1.12">
 
-When a macro is invoked with `dbt run-operation`, dbt doesn't enforce model [access](/reference/resource-configs/access) or [group](/reference/resource-configs/group) controls, so it can use `ref()` to reference `private` or `protected` models without raising a `DbtReferenceError`.
+When a macro is invoked with `dbt run-operation`, dbt doesn't enforce model [access](/reference/resource-configs/access) or [group](/reference/resource-configs/group) controls, so it can use `ref()` to reference all models (including `private` and `protected` ones).
 
 For example, a macro can reference a private model:
 

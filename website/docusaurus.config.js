@@ -172,6 +172,10 @@ var siteSettings = {
               to: "/docs/dbt-support",
             },
             {
+              label: "Licensing",
+              to: "/docs/dbt-licensing",
+            },
+            {
               label: "Fusion Diaries",
               href: "https://github.com/dbt-labs/dbt-core/discussions/categories/announcements?discussions_q=is:open+diaries+category:Announcements",
             },
@@ -533,6 +537,7 @@ var siteSettings = {
     "/css/search.css",
     "/css/api.css",
     "https://use.typekit.net/kvb8avc.css",
+    "https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css",
     {
       href: "https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css",
       type: "text/css",

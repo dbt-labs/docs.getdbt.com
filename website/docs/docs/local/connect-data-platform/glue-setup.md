@@ -15,6 +15,7 @@ meta:
   slack_channel_link: 'https://getdbt.slack.com/archives/C02R4HSMBAT'
   platform_name: 'AWS Glue'
   config_page: '/reference/resource-configs/glue-configs'
+availability: local_free
 ---
 
 :::info Community plugin

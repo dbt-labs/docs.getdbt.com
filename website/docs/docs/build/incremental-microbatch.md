@@ -4,6 +4,7 @@ sidebar_label: "Microbatch incremental models"
 description: "Learn about the 'microbatch' strategy for incremental models."
 id: "incremental-microbatch"
 intro_text: "Use microbatch incremental models to process large time-series datasets efficiently."
+availability: all_users
 ---
 
 import EventTimeRequired from '/snippets/_event_time_required.md';
