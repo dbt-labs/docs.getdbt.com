@@ -73,7 +73,7 @@ Where:
 - `price_per_credit` - Your Snowflake credit price (from Snowflake system tables when available, otherwise from your configured input or the default rate).
 
 :::info Snowflake attribution limitations
-dbt attributes Snowflake costs at the query level using the `QUERY_ATTRIBUTION_HISTORY` view. Because of how Snowflake populates that view, some warehouse spend can't be attributed to a dbt model and won't appear in Cost Insights:
+dbt attributes Snowflake costs at the query level using the [`QUERY_ATTRIBUTION_HISTORY`](https://docs.snowflake.com/en/sql-reference/account-usage/query_attribution_history). Because of how Snowflake populates that view, some warehouse spend can't be attributed to a dbt model and won't appear in Cost Insights:
 
 - **Short-running queries**: Snowflake doesn't attribute per-query cost to queries that run in roughly 100 milliseconds or less.
 - **Adaptive Warehouses**: Queries run on Snowflake Adaptive Warehouses aren't included in `QUERY_ATTRIBUTION_HISTORY`.
