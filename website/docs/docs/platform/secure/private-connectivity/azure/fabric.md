@@ -144,22 +144,20 @@ Navigate to the **Private Link Center** service to approve the connection. The F
 
 Once dbt Support confirms the endpoint is available, configure the connection in <Constant name="dbt" />:
 
-1. Navigate to **Settings** → **Create new project** → select **Microsoft Fabric**.
+1. Navigate to **Settings** → **Create new connection** → select **Microsoft Fabric**.
 2. You will see two radio buttons: **Default Endpoint** and **PrivateLink Endpoint**. Select **PrivateLink Endpoint**.
 3. Select the private endpoint from the dropdown. This populates the **Server** field with the private SQL hostname provided by dbt Support.
 4. Configure the remaining connection details:
 
    | Field | Value |
    |-------|-------|
-   | **Port** | `1433` |
+   | **Port** | Auto-populated with `1433` |
    | **Database** | Your Fabric warehouse name |
-   | **Authentication** | Service Principal |
-   | **Tenant ID** | Your Microsoft Entra Directory (tenant) ID |
-   | **Client ID** | Your service principal's application (client) ID |
-   | **Client secret** | Your service principal's client secret |
-
-   :::note Service principal requirements
-   The service principal must be added as a **Member** or **Contributor** on the Fabric workspace. In the Fabric Admin portal, **Service principals can use Fabric APIs** must also be enabled under **Tenant settings** → **Developer settings**.
-   :::
 
 5. Test your connection and save it.
+
+#### Configure authentication
+
+The **Connection** page only includes **Server**, **Port**, and **Database**. You configure **Authentication**, **Tenant ID**, **Client ID**, and **Client secret** later, when you set up your development credentials or create a deploy environment profile.
+
+The service principal you use for authentication must be added as a **Member** or **Contributor** on the Fabric workspace. In the Fabric Admin portal, **Service principals can use Fabric APIs** must also be enabled under **Tenant settings** → **Developer settings**.
