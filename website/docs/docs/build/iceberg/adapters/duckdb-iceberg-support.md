@@ -7,7 +7,7 @@ description: Understand DuckDB support for Apache Iceberg.
 
 :::info Fusion only
 
-DuckDB support for `catalogs.yml` requires [dbt Fusion](/docs/fusion/about-fusion) (dbt Core v2) with the `use_catalogs_v2` behavior flag enabled. It isn't available in the legacy Python `dbt-duckdb` adapter (dbt Core v1).
+DuckDB support for `catalogs.yml` requires the [dbt Fusion engine](/docs/fusion/about-fusion) (dbt v2) with the `use_catalogs_v2` behavior flag enabled. It isn't available in the legacy Python `dbt-duckdb` adapter for dbt Core v1.
 
 <File name='dbt_project.yml'>
 
@@ -147,7 +147,7 @@ By default, dbt attaches Horizon and Unity catalogs read-write (`read_only: fals
 
 ## DuckLake
 
-[DuckLake](https://ducklake.select/) is a separate open table format (not Apache Iceberg) built for DuckDB, but it's configured the same way, through `catalogs.yml`. Because DuckLake isn't Iceberg, its catalog entries use `table_format: default`.
+[DuckLake](https://ducklake.select/) is a separate open table format (not Apache Iceberg) built for DuckDB, but you configure it the same way, through `catalogs.yml`. Because DuckLake isn't Iceberg, its catalog entries use `table_format: default`.
 
 <File name='catalogs.yml'>
 
@@ -211,7 +211,7 @@ my_profile:
 
 ## DuckDB-specific configs for Iceberg catalogs
 
-These configs can be supplied and nested under `config.duckdb` for `horizon`, `unity`, and `iceberg_rest` catalogs:
+You can supply these configs, nested under `config.duckdb`, for `horizon`, `unity`, and `iceberg_rest` catalogs:
 
 | Field | Required | Description |
 | --- | --- | --- |
