@@ -94,7 +94,7 @@ Notable features:
 
 To access the capabilities of this permission set, you _must_ add users to a group that's assigned the Analyst read permission set. Users won't have access until they're added to the group. For the setup steps, refer to [Set up read-only user access](/docs/platform/manage-access/about-user-access#set-up-read-only-user-access). 
 
-If you have Read-Only users, note that [you can enable granular permissions](/docs/platform/manage-access/about-user-access#enable-granular-permissions-for-read-only-users) for your account as a one-time, irreversible setting.
+If you have Read-Only users, you can also [enable granular permissions](/docs/platform/manage-access/about-user-access#enable-granular-permissions-for-read-only-users) for your account. Enabling it is a one-time, irreversible setting.
 
 </Expandable>
 <Expandable alt_header="Billing admin">
