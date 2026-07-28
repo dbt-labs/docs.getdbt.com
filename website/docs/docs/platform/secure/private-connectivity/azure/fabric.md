@@ -169,4 +169,4 @@ The **Connection** page only includes **Server**, **Port**, and **Database**. Co
 - **Client ID**: This is your service principal's application (client) ID
 - **Client secret**: This is your service principal's client secret
 
-The service principal you use for authentication must be added as a **Member** or **Contributor** on the Fabric workspace. In the Fabric Admin portal, **Service principals can use Fabric APIs** must also be enabled under **Tenant settings** → **Developer settings**.
+Add the service principal you use for authentication as a **Member** or **Contributor** on the Fabric workspace. In the Fabric Admin portal, you must also enable **Service principals can use Fabric APIs** under **Tenant settings** → **Developer settings**.
