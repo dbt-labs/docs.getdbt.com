@@ -156,7 +156,7 @@ Once dbt Support confirms the endpoint is available, configure the connection in
 
 5. Test your connection and save it.
 
-#### Configure authentication
+### Configure authentication
 
 The **Connection** page only includes **Server**, **Port**, and **Database**. You configure the following later when you set up your development credentials or create a deploy environment profile:
 
