@@ -181,7 +181,7 @@ If a user's IdP groups do not match _any_ license type mappings, <Constant name=
 
 <Constant name="dbt" /> Enterprise-tier plans support role-based access controls for configuring granular in-app permissions. See [access control](/docs/platform/manage-access/about-user-access) for more information on Enterprise permissioning.
 
-### Read-only granular permissions
+### Read-Only granular permissions
 
 Granular permissions allow you to control which projects your Read-Only users can access by assigning them to specific groups, rather than granting access to the entire account.
 

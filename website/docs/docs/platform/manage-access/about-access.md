@@ -157,7 +157,7 @@ Note that new accounts don't need this setting as Read-Only users on new account
 
 Key things to know before enabling:
 - Access stays Read-Only: This setting controls access to projects, not permissions (users remain Read-Only).
-- It’s permanent: Enabling this setting is a one-time, irreversible change.
+- It's permanent: Enabling this setting is a one-time, irreversible change.
 - Prepare first: Ensure all Read-Only users are assigned to their respective groups before enabling, or they may lose access to their projects.
 
 To turn on granular permissions:
