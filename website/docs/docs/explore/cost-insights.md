@@ -75,10 +75,10 @@ Where:
 :::info Snowflake attribution limitations
 dbt attributes Snowflake costs at the query level using the [`QUERY_ATTRIBUTION_HISTORY`](https://docs.snowflake.com/en/sql-reference/account-usage/query_attribution_history). Because of how Snowflake populates that view, some warehouse spend can't be attributed to a dbt model and won't appear in Cost Insights:
 
-- **Short-running queries**: Snowflake doesn't attribute per-query cost to queries that run in roughly 100 milliseconds or less.
-- **Adaptive Warehouses**: Queries run on Snowflake Adaptive Warehouses aren't included in `QUERY_ATTRIBUTION_HISTORY`.
+- **Short-running queries**: Snowflake doesn't attribute cost to queries that run in roughly 100 milliseconds or less.
+- **Adaptive Warehouses**: Queries on [Snowflake Adaptive Warehouses](https://docs.snowflake.com/en/user-guide/warehouses-adaptive) are not included in `QUERY_ATTRIBUTION_HISTORY`.
 
-As a result, Cost Insights totals can be _lower_ than the compute spend shown in your Snowflake billing dashboards. For more information, see the [Snowflake documentation](https://docs.snowflake.com/en/sql-reference/account-usage/query_attribution_history#usage-notes).
+As a result, Cost Insights totals may be _lower_ than the compute spend shown in your Snowflake billing dashboards. For more information, see the [Snowflake documentation](https://docs.snowflake.com/en/sql-reference/account-usage/query_attribution_history#usage-notes).
 :::
 </Expandable>
 
