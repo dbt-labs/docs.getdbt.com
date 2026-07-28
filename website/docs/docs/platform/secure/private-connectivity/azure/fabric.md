@@ -150,13 +150,15 @@ Once dbt Support confirms the endpoint is available, configure the connection in
 4. Configure the remaining connection details:
 
    <SimpleTable> 
+   
    | Field | Value |
    |-------|-------|
    | **Port** | Auto-populated with `1433` |
    | **Database** | Your Fabric warehouse name |
+
   </SimpleTable>
   
-5. Save it and proceed to the next step.
+6. Save it and proceed to the next step.
 
 ### Configure authentication
 
