@@ -153,7 +153,7 @@ import LicenseOverrideNote from '/snippets/_license-override-note.md';
 
 Granular permissions let you restrict which projects Read-Only users can access, allowing you to set permissions by group rather than applying the default permissions for Read-Only licenses.
 
-New accounts don't need this setting — Read-Only users on new accounts get granular permissions by default.
+Note that new accounts don't need this setting as Read-Only users on new accounts get granular permissions by default.
 
 Key things to know before enabling:
 - Access stays Read-Only: This setting controls access to projects, not permissions (users remain Read-Only).
