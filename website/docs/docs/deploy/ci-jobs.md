@@ -72,7 +72,7 @@ To make CI job creation easier, many options on the **CI job** page are set to d
       :::
 
     - **Run timeout** &mdash; Cancel the CI job if the run time exceeds the timeout value. You can use this option to help ensure that a CI check doesn't consume too much of your warehouse resources. If you enable the **dbt compare** option, the timeout value defaults to `3600` (one hour) to prevent long-running comparisons.
-    - **Enable dbt State**<Lifecycle status="preview" /> &mdash; [dbt State](/docs/deploy/dbt-state-about) reduces unnecessary model rebuilds by reusing nodes when neither the logic nor the data has changed. For more details, refer to [Setting up dbt State](/docs/deploy/dbt-state-setup) and [Enabling dbt State on individual jobs](/docs/deploy/dbt-state-enable-jobs).
+    - **Enable dbt State** <Lifecycle status="preview" /> &mdash; [dbt State](/docs/deploy/dbt-state-about) reduces unnecessary model rebuilds by reusing nodes when neither the logic nor the data has changed. For more details, refer to [Setting up dbt State](/docs/deploy/dbt-state-setup) and [Enabling dbt State on individual jobs](/docs/deploy/dbt-state-enable-jobs).
 
 5. (optional) Options in the **Advanced settings** section: 
     - **Environment variables** &mdash; Define [environment variables](/docs/build/environment-variables) to customize the behavior of your project when this CI job runs. You can specify that a CI job is running in a _Staging_ or _CI_ environment by setting an environment variable and modifying your project code to behave differently, depending on the context. It's common for teams to process only a subset of data for CI runs, using environment variables to branch logic in their dbt project code.
