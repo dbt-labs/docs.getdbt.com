@@ -26,6 +26,10 @@ The following permission sets are available for assignment in all <Constant name
 
 Access to <Constant name="dbt" /> features and functionality is split into `account-level` and `project-level` permission sets. Account-level permissions are primarily for account administration (inviting users, configuring SSO, and creating groups). Project-level permissions are for the configuration and maintenance of the projects themselves (configuring environments, accessing IDE, and running jobs). Account permission sets may have access to project features, and project permission sets may have access to account features. Check out the [permissions tables](/docs/platform/manage-access/enterprise-permissions#account-permissions) to compare sets and their access. 
 
+:::tip Read-Only users
+If you have users with a Read-Only license, you can [enable granular permissions](/docs/platform/manage-access/about-user-access#enable-granular-permissions-for-read-only-users) for your account. This is a one-time, irreversible setting and applies regardless of which permission set your Read-Only users are assigned.
+:::
+
 <Expandable alt_header="Account admin">
 
 The Account admin permission set is the highest level of access and control over your <Constant name="dbt" /> account and projects. We recommend limiting the number of users and groups assigned the account admin permission set.
@@ -93,8 +97,6 @@ Notable features:
 - No write access and no access to develop in the <Constant name="studio_ide" /> or <Constant name="platform_cli" />.
 
 To access the capabilities of this permission set, you _must_ add users to a group that's assigned the Analyst read permission set. Users won't have access until they're added to the group. For the setup steps, refer to [Set up read-only user access](/docs/platform/manage-access/about-user-access#set-up-read-only-user-access).
-
-If you have Read-Only users, you can also [enable granular permissions](/docs/platform/manage-access/about-user-access#enable-granular-permissions-for-read-only-users) for your account. Enabling it is a one-time, irreversible setting.
 
 </Expandable>
 <Expandable alt_header="Billing admin">
