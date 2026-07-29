@@ -97,7 +97,12 @@ Be careful. Snapshots do not follow this behavior if target_schema is set. To ha
 
 ## Prefixed schema names
 
-When your profile `schema` is `public` and a model sets `+schema: silver`, dbt's default macro may build `{target.schema}_{custom_schema_name}` — producing relations such as `public_silver.stg_events` instead of `silver.stg_events`.
+By default, dbt combines `target.schema` and `custom_schema`name` using the following pattern:
+`{target.schema}_{custom_schema_name}`.
+
+For example, when `target.schema` is `public` and a model sets `+schema: silver`, dbt builds the model in `public_silver`, not `silver`.
+
+This behavior is intentional. Including `target.schema` helps prevent developers and continuous integration (CI) jobs from building into the same schema and overwriting one another’s relations.
 
 If you intend to land models in dedicated schemas (`silver`, `gold`), override `generate_schema_name` to return the custom schema directly when one is provided:
 
