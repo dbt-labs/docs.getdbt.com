@@ -43,7 +43,7 @@ dbt platform features adhere to the following lifecycle path:
     <strong style={{color: 'var(--color-green-700)', fontSize: '1rem'}}>Generally available (GA)</strong>
   </div>
   <div style={{padding: '1.25rem 1.5rem', background: 'var(--ifm-background-color)'}}>
-    Stable features available to all qualified dbt accounts. SLOs, documentation, and technical support apply. Feature availability may depend on your environment's dbt version. Use a supported [release track](/docs/dbt-versions/dbt-release-tracks) to receive the latest GA features.
+    Stable features available to all qualified dbt accounts. SLOs, documentation, and technical support apply. Pricing changes may change or apply. Feature availability may depend on your environment's dbt version. Use a supported [release track](/docs/dbt-versions/dbt-release-tracks) to receive the latest GA features.
   </div>
 </div>
 
