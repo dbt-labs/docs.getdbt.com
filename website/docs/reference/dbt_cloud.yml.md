@@ -192,7 +192,7 @@ In v2, the `dbt-cloud` block also supports:
 dbt-cloud:
   project-id: your_project_id
   defer-env-id: '123456'           # optional
-  account-id: your_account_id      # optional
+  account_id: your_account_id      # optional
   account-host: your_account_host  # optional, for example "abc123.us1.dbt.com"
 ```
 
@@ -202,7 +202,7 @@ dbt-cloud:
 
 | Field | Required | Description |
 |-------|----------|-------------|
-| `account-id` | No | The <Constant name="dbt_platform" /> account ID this local project belongs to. |
+| `account_id` | No | The <Constant name="dbt_platform" /> account ID this local project belongs to. |
 | `account-host` | No | The host for your account, for example `cloud.getdbt.com`, `emea.dbt.com`, or your single-tenant access URL. |
 
 </SimpleTable>
