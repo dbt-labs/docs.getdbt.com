@@ -192,7 +192,9 @@ Insert `<!-- truncate -->` after intro paragraphs (before first `##`). Authors: 
 
 ### Versioning
 
-**Version definitions** — managed in `website/dbt-versions.js`. First entry = latest/default.
+#### Version definitions
+
+Managed in `website/dbt-versions.js`. First entry = latest/default.
 
 | Version | Display | Status |
 | --- | --- | --- |
@@ -200,7 +202,9 @@ Insert `<!-- truncate -->` after intro paragraphs (before first `##`). Authors: 
 | 1.12 | dbt Core v1.12 | EOL 2027-07-15 |
 | 1.11 | dbt Core v1.11 | EOL 2026-12-18 |
 
-**Version content blocks** — show/hide content based on selected version:
+#### Version content blocks
+
+Show/hide content based on selected version:
 
 ```jsx
 <VersionBlock firstVersion="1.5" lastVersion="1.9">
@@ -212,7 +216,9 @@ Content only visible for version 2.0+
 </VersionBlock>
 ```
 
-**Version entire pages** — add to `versionedPages` in `website/dbt-versions.js`:
+#### Version entire pages
+
+Add to `versionedPages` in `website/dbt-versions.js`:
 
 ```js
 { page: "docs/path/to/page", firstVersion: "2.0" }   // 2.0+ only
@@ -221,9 +227,13 @@ Content only visible for version 2.0+
 
 This hides the page from the sidebar and shows a banner when the version doesn't match.
 
-**Version sidebar categories** — add to `versionedCategories` in `website/dbt-versions.js` (same `firstVersion`/`lastVersion` pattern).
+#### Version sidebar categories
 
-**URL version param** — `?version=2.0` sets the active version, managed by `VersionContext` (React context), synced to localStorage + URL via `replaceState`.
+Add to `versionedCategories` in `website/dbt-versions.js` (same `firstVersion`/`lastVersion` pattern).
+
+#### URL version param
+
+`?version=2.0` sets the active version, managed by `VersionContext` (React context), synced to localStorage + URL via `replaceState`.
 
 Full guide: `contributing/single-sourcing-content.md`
 
