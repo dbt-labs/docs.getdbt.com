@@ -378,17 +378,17 @@ SVG icons live in two locations (for light + dark mode):
 
 ### Common tasks
 
-**Add a new docs page:**
+#### Add a new docs page:
 1. Create `website/docs/section/page-name.md` with frontmatter (including `availability`)
 2. Add the page ID to `website/sidebars.js`
 3. If version-specific, add to `versionedPages` in `dbt-versions.js`
 
-**Add a blog post:**
+#### Add a blog post:
 1. Create `website/blog/YYYY-MM-DD-slug.md` with blog frontmatter
 2. Add author to `website/blog/authors.yml` if new
 3. Add images to `website/static/img/blog/YYYY-MM-DD-slug/`
 
-**Add a reusable partial:**
+#### Add a reusable partial:
 1. Create `website/snippets/_descriptive-name.md`
 2. Import in target doc: `import Name from '/snippets/_descriptive-name.md';`
 3. Use: `<Name />`
