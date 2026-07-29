@@ -20,7 +20,7 @@ You can run <Constant name="dbt" /> locally from your terminal with the dbt CLI,
 Install <Constant name="dbt" /> locally to run dbt commands from your terminal. You can install it with `pip`:
 
 ```shell
-python -m pip install --pre dbt-<adapter>
+python -m pip install --pre dbt
 ```
 
 Or with `curl`:

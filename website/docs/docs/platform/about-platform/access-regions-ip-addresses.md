@@ -41,7 +41,8 @@ Your <Constant name="dbt" /> account will always connect to your data platform o
 |--------|----------|------------|--------------|-------| --------- |
 | North America  | us-central1 | <small>ACCOUNT_PREFIX.us3.dbt.com</small> | 34.33.2.0/26 | All Enterprise plans | [US Cell 1 GCP](https://status.getdbt.com/us-cell-1-gcp) | 
 | EMEA  | London  |  <small>ACCOUNT_PREFIX.eu3.dbt.com</small> |  34.39.41.0/26  | All Enterprise plans | [EU Cell 1 GCP](https://status.getdbt.com/eu-cell-1-gcp) |
-| EMEA  | Frankfurt | <small>ACCOUNT_PREFIX.eu4.dbt.com</small> | 34.185.244.128/26 | All Enteprise plans | [EU4 Cell 1 GCP](https://status.getdbt.com/eu-4-cell-1-gcp) |
+| EMEA  | Frankfurt | <small>ACCOUNT_PREFIX.eu4.dbt.com</small> | 34.185.244.128/26 | All Enterprise plans | [EU4 Cell 1 GCP](https://status.getdbt.com/eu-4-cell-1-gcp) |
+| Virtual Private dbt or Single tenant | Customized |  Customized | Ask [Support](/community/resources/getting-help#dbt-cloud-support) for your IPs | All Enterprise plans | Customized |
 
 </FilterableTable>
 
