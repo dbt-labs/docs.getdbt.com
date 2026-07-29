@@ -104,7 +104,7 @@ For example, when `target.schema` is `public` and a model sets `+schema: silver`
 
 This behavior is intentional. Including `target.schema` helps prevent developers and continuous integration (CI) jobs from building into the same schema and overwriting one another’s relations.
 
-If you intend to land models in dedicated schemas (`silver`, `gold`), override `generate_schema_name` to return the custom schema directly when one is provided:
+If you want to use dedicated schema names such as `silver` and `gold` in production, use the environment-aware `generate_schema_name_for_env` pattern described above. This pattern uses the custom schema name when `target.name` is `prod`, while retaining the target schema in development and CI environments.
 
 ```sql
 {% macro generate_schema_name(custom_schema_name, node) -%}
