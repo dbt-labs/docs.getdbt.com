@@ -703,7 +703,11 @@ html[data-theme="dark"] .version-dropdown__trigger:hover {
 
 .version-dropdown__label {
   font-size: 0.8rem;
-  color: #999;
+  color: #57534e;
+}
+
+html[data-theme="dark"] .version-dropdown__label {
+  color: #ccc;
 }
 
 .version-dropdown__current {
