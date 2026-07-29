@@ -39,6 +39,8 @@ To simplify the docs experience, clarify availability, and make it easier to fin
 
 #### Additional dbt platform changes
 
+- **New:** [Cost Insights](/docs/explore/cost-insights) is now generally available (GA) for Snowflake, BigQuery, and Databricks.
+- **Preview:** [Cost Insights](/docs/explore/cost-insights) for Amazon Redshift is now in preview.
 - **Enhancement:** Users with `user_credential_write` access can now view and manage their credentials without needing `credentials_read` privileges. This update reduces the need for additional, broader permissions when performing credential updates.
 - **Enhancement:** The [<Constant name="wizard" />](/docs/platform/wizard-platform) in <Constant name="dbt_platform"/> has a redesigned empty state with updated suggested prompts to help you discover different ways to get started. A new wayfinder bar keeps your current project and branch visible and highlights the next step as you move from asking questions to changing code and opening a pull request.
 - **Enhancement:** <Constant name="catalog" /> now supports a **Warn** last-run status. Resources whose last run completed with warnings show a distinct status and tooltip, and you can filter by **Warn** alongside other run statuses.
