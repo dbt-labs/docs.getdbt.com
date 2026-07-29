@@ -19,7 +19,7 @@ Fetch `https://docs.getdbt.com/llms.txt` first. It's a categorized index of ever
 
 Every docs page is available as clean Markdown by appending `.md` to its URL path:
 
-```
+```text
 https://docs.getdbt.com/docs/build/incremental-models-overview.md
 ```
 
@@ -31,8 +31,6 @@ Fall back to full-text search rather than guessing:
 
 - `https://docs.getdbt.com/llms-full.txt` contains the complete content of every page in one file, for direct full-text search.
 - The `fetching-dbt-docs` skill (from the separate [`dbt-labs/dbt-agent-skills`](https://github.com/dbt-labs/dbt-agent-skills) repo — **not bundled in this repo**, install separately via the Claude Code plugin marketplace or Vercel Skills CLI) ships a local search script with a 24-hour cache, with a flag to force a fresh fetch if the docs may have changed recently.
-
-> **Open question for this repo**: `docs.getdbt.com`'s own `.claude/skills` currently only ships the authoring skills (`create-docs-skeleton`, `add-availability-badge`). Someone working in this repo may reasonably want both — for example, "check how existing pages describe X before I draft a new page about Y" is a retrieval task and an authoring task at once. Worth deciding whether `fetching-dbt-docs` should be vendored in here too, or left as a separate install.
 
 ### If you're connected to the dbt MCP server
 
@@ -63,7 +61,7 @@ Use this section if you're drafting, editing, or reviewing content in this repo.
 
 ### Key directories
 
-```
+```text
 website/
   docs/           # Product documentation
   blog/           # Developer blog posts
@@ -112,10 +110,11 @@ These rules are **mandatory** — incorrect branding is the most common docs err
 | **dbt platform** | Not "dbt Cloud" | The cloud-based platform (formerly dbt Cloud) |
 | **dbt Labs** | The company | When docs say "we," this is who "we" is |
 
-**Feature proper nouns (capitalize these)**: Studio IDE, Canvas, Insights, Catalog, Mesh, Orchestrator, Semantic Layer, Copilot. All other features (models, environments, configs, settings) are common nouns.
+**Feature proper nouns (capitalize these)**: Studio IDE, Canvas, Insights, Catalog, Mesh, Orchestrator, Semantic Layer, Copilot, dbt Wizard. All other features (models, environments, configs, settings) are common nouns.
 
 **Use `<Constant>` for product names when available:**
 
+```jsx
 <Constant name="dbt_platform" />   // → "dbt platform"
 <Constant name="fusion_engine" />  // → "dbt Fusion engine"
 <Constant name="studio_ide" />     // → "Studio IDE"
@@ -198,13 +197,12 @@ Insert `<!-- truncate -->` after intro paragraphs (before first `##`). Authors: 
 | Version | Display | Status |
 | --- | --- | --- |
 | 2.0 | dbt Fusion engine (Latest) | Prerelease |
-| 1.12 | dbt platform (Latest Core) | Stable |
-| 1.11 | Core v1.11 | EOL 2026-12-18 |
-| 1.10 | Core v1.10 (Compatible/Extended) | EOL 2026-06-15 |
+| 1.12 | dbt Core v1.12 | EOL 2027-07-15 |
+| 1.11 | dbt Core v1.11 | EOL 2026-12-18 |
 
 **Version content blocks** — show/hide content based on selected version:
 
-```
+```jsx
 <VersionBlock firstVersion="1.5" lastVersion="1.9">
 Content only visible for versions 1.5 through 1.9
 </VersionBlock>
@@ -216,7 +214,7 @@ Content only visible for version 2.0+
 
 **Version entire pages** — add to `versionedPages` in `website/dbt-versions.js`:
 
-```
+```js
 { page: "docs/path/to/page", firstVersion: "2.0" }   // 2.0+ only
 { page: "docs/path/to/page", lastVersion: "1.99" }   // 1.x only
 ```
@@ -232,13 +230,13 @@ Full guide: `contributing/single-sourcing-content.md`
 ### Components for MDX
 
 **Images:**
-```
+```jsx
 <Lightbox src="/img/docs/example.jpg" title="Description" width="80%" />
 ```
 Store in `website/static/img/`. Always include `title` for accessibility.
 
 **File blocks:**
-```
+```mdx
 <File name="models/my_model.sql">
 
 ​```sql
@@ -249,7 +247,7 @@ select * from {{ ref('stg_customers') }}
 ```
 
 **Callouts:**
-```
+```md
 :::note Optional title
 Note content here.
 :::
@@ -257,7 +255,7 @@ Note content here.
 Types: `note`, `info`, `tip`, `caution`
 
 **Tabs:**
-```
+```jsx
 <Tabs defaultValue="snowflake" values={[
   { label: 'Snowflake', value: 'snowflake' },
   { label: 'BigQuery', value: 'bigquery' }
@@ -274,28 +272,28 @@ BigQuery content
 **Warehouse-specific code:** use `<WHCode>` with per-warehouse `<div warehouse="...">` blocks.
 
 **Glossary terms:**
-```
+```jsx
 <Term id="cte" />                              <!-- Renders hover tooltip -->
 <Term id="cte">Common Table Expression</Term>  <!-- Custom display text -->
 ```
 Terms defined in `website/docs/terms/hover-terms.md`.
 
 **Lifecycle badges:**
-```
+```jsx
 <Lifecycle status="preview" />
-<Lifecycle status="deprecated" />
+<Lifecycle status="private_preview" />
 <Lifecycle status="beta" />
 ```
 Source for statuses: `website/src/components/lifeCycle/index.js`. GA is not used as a status — when a feature graduates to general availability, **remove the `<Lifecycle>` tag entirely** rather than looking for a "GA" value. If you're reviewing or updating an existing page, check whether a lingering Preview/Beta tag is actually still accurate.
 
 **FAQ:**
-```
+```jsx
 <FAQ path="Warehouse/bq-copy-grants" />
 ```
 Loads from `website/docs/faqs/` directory.
 
 **Cards:**
-```
+```jsx
 <div className="grid--3-col">
 <Card
   title="Studio IDE"
@@ -308,7 +306,7 @@ Loads from `website/docs/faqs/` directory.
 Grid options: `grid--2-col`, `grid--3-col`, `grid--4-col` (sparingly), `grid--5-col` (sparingly). Do not use constants in Cards.
 
 **Intro text:**
-```
+```jsx
 <IntroText>
 Brief overview paragraph at the top of the page.
 </IntroText>
@@ -326,7 +324,7 @@ Every docs page should declare an `availability` frontmatter field so it renders
 **Partials (preferred):**
 1. Create `website/snippets/_my-partial.md`
 2. Import and use in any doc:
-```
+```jsx
 import MyPartial from '/snippets/_my-partial.md';
 
 <MyPartial />
@@ -334,7 +332,7 @@ import MyPartial from '/snippets/_my-partial.md';
 Supports props: `<MyPartial feature="Fusion" />` → access as `{props.feature}` in the partial.
 
 **Snippets (legacy):**
-```
+```jsx
 <Snippet path="my-snippet" />
 ```
 Source file: `website/snippets/my-snippet.md` (no underscore prefix).
@@ -343,7 +341,7 @@ Source file: `website/snippets/my-snippet.md` (no underscore prefix).
 
 Config: `website/sidebars.js`. Only edit when adding or removing pages.
 
-```
+```js
 {
   type: "category",
   label: "Section name",
