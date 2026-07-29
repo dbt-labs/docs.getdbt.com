@@ -244,7 +244,7 @@ Full guide: `contributing/single-sourcing-content.md`
 ```jsx
 <Lightbox src="/img/docs/example.jpg" title="Description" width="80%" />
 ```
-Store in `website/static/img/`. Always include `title` for accessibility.
+Store images in `website/static/img/`. Always include `title` for accessibility.
 
 #### File blocks
 
