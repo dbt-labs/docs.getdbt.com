@@ -168,7 +168,9 @@ version:
 
 dbt-cloud:
   project-id: your_project_id
-  defer-env-id: '123456'  # optional
+  defer-env-id: '123456'    # optional
+  account-id: your_account_id      # optional
+  account-host: your_account_host  # optional, for example "abc123.us1.dbt.com"
 ```
 
 </File>
@@ -179,6 +181,8 @@ dbt-cloud:
 |-------|----------|-------------|
 | `project-id` | Yes | The <Constant name="dbt_platform" /> project ID this local project maps to. Find it in the URL when viewing your project (for example, `https://YOUR_ACCESS_URL/develop/26228/projects/123456` → `123456`). |
 | `defer-env-id` | No | The environment ID to defer to for build artifacts. Used for <Constant name="fusion" /> [auto-deferral](/docs/platform/about-defer) and <Constant name="platform_cli" /> deferral overrides. |
+| `account-id` | No | The <Constant name="dbt_platform" /> account ID this local project belongs to. |
+| `account-host` | No | The host for your account, for example `cloud.getdbt.com`, `emea.dbt.com`, or your single-tenant access URL. |
 </SimpleTable>
 
 ## Related docs
