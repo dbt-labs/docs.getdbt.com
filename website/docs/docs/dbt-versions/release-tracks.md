@@ -3,6 +3,7 @@ title: "Release tracks in dbt platform"
 sidebar_label: "About release tracks"
 id: "dbt-release-tracks"
 description: "Learn how to get automatic upgrades to dbt in the dbt platform. Access new features and enhancements as soon as they become available."
+availability: platform_login
 ---
 
 Since May 2024, new capabilities in the dbt framework are delivered continuously to <Constant name="dbt" />. Your projects and environments are upgraded automatically on a cadence that you choose, depending on your <Constant name="dbt" /> plan.
@@ -61,7 +62,7 @@ Choose **Fusion Fallback** as an emergency measure only. This is a temporary rol
 
 Account admins can set the org-wide default release track for new projects via a toggle in **Account Settings**. Individual project owners can then override that default per environment.
 
-### Mantle (dbt Core–based) release tracks
+### dbt release tracks
 
 Choose the **Latest** release track to continuously receive new features, fixes, performance improvements — latest & greatest dbt. This is the default for all customers on <Constant name="dbt" />.
 
@@ -69,7 +70,7 @@ Choose the **Compatible** and **Extended** release tracks if you need a less-fre
 
 ### Using the Fallback release track
 
-The **Fallback** release track (for both Fusion and Mantle) provides an emergency rollback option for account admins if you suspect a regression in the "Extended" track. This is available only for <Constant name="fusion_engine" /> in Enterprise+ accounts.
+The **Fallback** release track provides an emergency rollback option for account admins if you suspect a regression in the "Extended" track. This is available only for <Constant name="fusion_engine" /> in Enterprise+ accounts.
 
 1. Go to **Account settings**
 2. Click the **Fallback** release track button in the <Constant name="dbt_platform" /> interface. This is not accessible through environment settings.
@@ -102,7 +103,7 @@ Switching to **Fallback** alerts the dbt Support team, who may reach out to help
 - Configure production environments to use **Fusion Extended** (one month behind Stable)
 - Configure development environments to use **Fusion Stable** so developers get access to upcoming changes before they reach production
 
-#### Mantle (dbt Core–based) release tracks
+#### dbt release tracks
 
 **Default** &mdash; Majority of customers on all plans
 - Prioritize immediate access to fixes and features

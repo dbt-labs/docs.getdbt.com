@@ -6,6 +6,7 @@ search_weight: "heavy"
 id: "unit-tests"
 keywords:
   - unit test, unit tests, unit testing, dag
+availability: all_users
 ---
 
 <VersionCallout version="1.8" />

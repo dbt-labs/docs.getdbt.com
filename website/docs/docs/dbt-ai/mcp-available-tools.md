@@ -3,6 +3,7 @@ title: "Available tools"
 sidebar_label: "Available tools"
 description: "Complete list of tools available in the dbt MCP server."
 id: "mcp-available-tools"
+availability: all_users
 ---
 import McpToolsFromReadme from '/snippets/_mcp-tools-from-readme.md';
 

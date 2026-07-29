@@ -8,7 +8,7 @@ import MCPFaqUrlsVsIds from '/snippets/_mcp-faq-urls-vs-ids.md';
 import MCPFaqMulticell from '/snippets/_mcp-faq-multicell.md';
 
 
-This quickstart uses the self-hosted MCP server: it runs on your machine using `uvx dbt-mcp`, connects to your <Constant name="dbt_platform"/> for <Constant name="semantic_layer"/>, Discovery, and SQL, and optionally runs self-hosted <Constant name="core" /> or <Constant name="fusion" /> CLI. 
+This quickstart uses the local MCP server: it runs on your machine using `uvx dbt-mcp`, connects to your <Constant name="dbt_platform"/> for <Constant name="semantic_layer"/>, Discovery, and SQL, and optionally runs local dbt. 
 
 For self-hosted CLI only (with or without a <Constant name="dbt_platform"/> account), see [Run self-hosted dbt](/docs/dbt-ai/mcp-quickstart-cli) or [Run self-hosted dbt Wizard](/docs/dbt-ai/wizard-quickstart).
 

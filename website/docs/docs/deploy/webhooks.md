@@ -2,9 +2,13 @@
 title: "Webhooks for your jobs" 
 sidebar_label: "Webhooks"
 description: "Get real-time notifications about your dbt jobs with webhooks."
+availability:
+  surface: platform
+  access: paid_plan
+  minPlan: starter
 ---
 
-# Webhooks for your jobs <Lifecycle status="self_service,managed,managed_plus" />
+# Webhooks for your jobs
 
 With <Constant name="dbt" />, you can create outbound webhooks to send events (notifications) about your dbt jobs to your other systems. Your other systems can listen for (subscribe to) these events to further automate your workflows or to help trigger automation flows you have set up.
 

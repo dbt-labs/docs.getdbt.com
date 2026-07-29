@@ -49,7 +49,7 @@ require-dbt-version: ">= 1.0.0" # Don't put whitespace after the equality signs
 We recommend [defining both lower and upper bounds](#pin-to-a-range), such as `">=1.0.0,<3.0.0"`, to ensure stability across releases.  We don't recommend having an unbounded `require-dbt-version` (for example, `">=1.0.0"`). Without an upper limit, a project may break when dbt releases a new major version. 
 
 ## Fusion compatibility
-The `require-dbt-version` also signals whether a project or package supports the [<Constant name="fusion_engine"/>](/docs/fusion) (`2.0.0` and higher).
+The `require-dbt-version` also signals whether a project or package supports the [<Constant name="fusion_engine"/>](/docs/fusion/about-fusion) (`2.0.0` and higher).
 
 - If it excludes `2.0.0`, <Constant name="fusion"/> will warn today and error in a future release, matching <Constant name="core"/> behavior.
 - You can [bypass version checks](#disabling-version-checks) with `--no-version-check`. 

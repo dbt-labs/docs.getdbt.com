@@ -15,6 +15,7 @@ meta:
   slack_channel_link: 'https://getdbt.slack.com/archives/CMRMDDQ9W'
   platform_name: 'SQL Server'
   config_page: '/reference/resource-configs/mssql-configs'
+availability: local_free
 ---
 
 

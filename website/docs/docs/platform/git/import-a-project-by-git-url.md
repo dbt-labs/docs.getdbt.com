@@ -1,6 +1,9 @@
 ---
 title: "Connect with Git clone"
 description: "Learn how to connect to a git repository using a git URL."
+availability:
+  surface: platform
+  access: login_required
 ---
 
 In <Constant name="dbt" />, you can import a git repository from any valid git URL that points to a dbt project. There are some important considerations to keep in mind when doing this.

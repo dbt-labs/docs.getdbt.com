@@ -4,6 +4,7 @@ id: "wizard-headless"
 description: "Run dbt Wizard in headless mode for scripts, CI pipelines, and automation."
 sidebar_label: "Headless mode"
 tags: [AI, Wizard]
+availability: local_all
 ---
 
 import WizardFeedbackCallout from '/snippets/_wizard-feedback-callout.md';

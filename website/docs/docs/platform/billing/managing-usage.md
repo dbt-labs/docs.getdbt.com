@@ -3,6 +3,7 @@ title: "Managing usage"
 id: managing-usage
 description: "Learn how to view, monitor, and manage your dbt usage."
 sidebar_label: "Managing usage"
+availability: everywhere_usage
 ---
 
 From <Constant name="dbt" />, click on your account name in the left side menu and select **Account settings**. The **Billing** option will be on the left side menu under the **Settings** heading. Here, you can view individual available plans and the features provided for each. 

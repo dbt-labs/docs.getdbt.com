@@ -3,6 +3,10 @@ title: "Authentication tokens"
 description: "Learn how to authenticate with user tokens and service account tokens "
 pagination_next: "docs/dbt-apis/user-tokens"
 pagination_prev: null
+availability:
+  surface: platform
+  access: paid_plan
+  minPlan: starter
 ---
 
 <div className="grid--2-col">
