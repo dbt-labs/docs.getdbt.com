@@ -12,7 +12,7 @@ availability:
 
 import SaoDeprecated from '/snippets/_sao-deprecated.md';
 
-# Cost Insights <Lifecycle status="beta" />
+# Cost Insights
 
 Cost Insights shows estimated costs and compute time for your dbt projects and models directly in the <Constant name="dbt_platform" />, so you can measure and share the impact of optimizations like [dbt State](/docs/deploy/dbt-state-about) and [state-aware orchestration](/docs/deploy/state-aware-about).
 
@@ -154,9 +154,13 @@ DBUs_in_window * (query_runtime / total_query_runtime_in_window)
 dbt sums this across all overlapping windows to get `usage_per_query`.
 </Expandable>
 
-<Expandable alt_header="Amazon Redshift">
+<Expandable alt_header="Amazon Redshift" lifecycle="preview" lifecycle_size="75">
 
 Cost Insights supports both Amazon Redshift Serverless and provisioned cluster deployments. dbt detects your deployment type automatically when testing the connection.
+
+:::note
+On Redshift, dbt attributes query costs using the comments it automatically injects into each query. If another process removes or replaces these comments, dbt can't tie the query back to its model, and its cost won't be attributed. Make sure nothing in your Redshift environment removes or replaces dbt's query comments.
+:::
 
 - **Redshift Serverless**
 
