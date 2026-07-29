@@ -90,11 +90,11 @@ website/
 
 cd website
 npm start          # Local dev server (port 3000)
-npm i               # Install dependencies
-npm run build       # Production build
-npm test            # Jest tests (watch mode)
-npm run lint        # ESLint with cache
-npm run lintAll     # ESLint auto-fix
+npm i              # Install dependencies
+npm run build      # Production build
+npm test           # Jest tests (watch mode)
+npm run lint       # ESLint with cache
+npm run lintAll    # ESLint auto-fix
 ```
 
 ### Branding & terminology
