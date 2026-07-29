@@ -287,6 +287,18 @@ BigQuery content
 </Tabs>
 ```
 
+#### Collapsible / Expandable sections
+
+```jsx
+<Collapsible header="Click to expand">
+Hidden content here.
+</Collapsible>
+
+<Expandable alt_header="Section title">
+Content with anchor link support.
+</Expandable>
+```
+
 #### Warehouse-specific code
 
 Use `<WHCode>` with per-warehouse `<div warehouse="...">` blocks.
