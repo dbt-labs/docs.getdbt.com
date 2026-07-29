@@ -156,6 +156,29 @@ Clients who signed with terms after January 2024 don't need additional terms pri
 
 </Expandable>
 
+<Expandable alt_header="What are the security and privacy differences between dbt Copilot and dbt Wizard?">
+
+    
+dbt Copilot is a collection of one-time AI actions you trigger yourself, while <Constant name="wizard" /> is a continuous, project-aware agent. That difference in scope drives the difference in data access.
+    
+**dbt Copilot (one-time actions)**
+    
+- Each action (e.g., generating SQL, docs, a test, or a semantic model) is a user-initiated request. Copilot has no ongoing or autonomous access to your project.
+- Only the metadata needed for that action — column names, model SQL, the model's name, and model documentation — is sent to the AI provider.
+- Row-level warehouse data is never sent to a third-party provider through dbt Copilot.
+- Aside from usage data, the data used in a Copilot action doesn't persist on dbt Labs systems.
+    
+**<Constant name="wizard" /> (continuous, project-wide)**
+    
+- <Constant name="wizard" /> uses your project's lineage, tests, contracts, and metric definitions to investigate, build, and validate changes across your whole project, and can run dbt commands and warehouse queries on your behalf.
+- Every query needs your explicit permission first.
+- When a query runs, <Constant name="wizard" /> sends the results — which may include row-level data — to the LLM provider so it can respond in your session. The provider doesn't keep this data or use it for training, under a zero data retention (ZDR) agreement.
+- <Constant name="wizard" /> doesn't export or store your raw warehouse data outside the <Constant name="dbt_platform" />.
+    
+Always review AI-generated output for accuracy, regardless of which tool produced it.
+
+</Expandable>
+
 ## Considerations
 
 <Expandable alt_header="What are the considerations for using dbt Wizard?">
