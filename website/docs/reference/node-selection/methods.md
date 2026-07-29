@@ -369,13 +369,15 @@ dbt ls --select "state:modified" --state path/to/artifacts   # list all modified
 
 Because state comparison is complex, and everyone's project is different, dbt supports subselectors that include a subset of the full `modified` criteria:
 - `state:modified.body`: Changes to node body (e.g. model SQL, seed values)
-- `state:modified.configs`: Changes to any node configs, excluding `database`/`schema`/`alias`/`tags`
+- `state:modified.configs`: Changes to any node configs, excluding `database`/`schema`/`alias`/`tags`/`meta`
 - `state:modified.relation`: Changes to `database`/`schema`/`alias` (the database representation of this node), irrespective of `target` values or `generate_x_name` macros
 - `state:modified.persisted_descriptions`: Changes to relation- or column-level `description`, _if and only if_ `persist_docs` is enabled at each level
 - `state:modified.macros`: Changes to upstream macros (whether called directly or indirectly by another macro)
 - `state:modified.contract`: Changes to a model's [contract](/reference/resource-configs/contract), which currently include the `name` and `data_type` of `columns`. Removing or changing the type of an existing column is considered a breaking change, and will raise an error.
 
 Remember that `state:modified` includes _all_ of the criteria above, as well as some extra resource-specific criteria, such as modifying a source's `freshness` or `quoting` rules or an exposure's `maturity` property. (View the source code for the full set of checks used when comparing [sources](https://github.com/dbt-labs/dbt-core/blob/9e796671dd55d4781284d36c035d1db19641cd80/core/dbt/contracts/graph/parsed.py#L660-L681), [exposures](https://github.com/dbt-labs/dbt-core/blob/9e796671dd55d4781284d36c035d1db19641cd80/core/dbt/contracts/graph/parsed.py#L768-L783), and [executable nodes](https://github.com/dbt-labs/dbt-core/blob/9e796671dd55d4781284d36c035d1db19641cd80/core/dbt/contracts/graph/parsed.py#L319-L330).)
+
+`tags` and `meta` are treated as metadata-only fields, not modifications — this applies at both the resource level and the column level. Changing a `tags` or `meta` value (including on individual columns in a YAML file) doesn't trigger `state:modified`, because these fields don't affect how dbt materializes the resource. This differs from `description`, which _does_ count as a modification when `persist_docs` is enabled (see `state:modified.persisted_descriptions` above). Any other config change is treated as a modification, since that config could affect materialization.
 
 There are two additional `state` selectors that complement `state:new` and `state:modified` by representing the inverse of those functions:
 - `state:old` &mdash; A node with the same `unique_id` exists in the comparison manifest

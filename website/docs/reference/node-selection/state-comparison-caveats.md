@@ -14,6 +14,12 @@ dbt stores a file hash of seed files that are &lt;1 MiB in size. If the contents
 
 If a seed file is >1 MiB in size, dbt cannot compare its contents and will raise a warning as such. Instead, dbt will use only the seed's file path to detect changes. If the file path has changed, the seed will be included in `state:modified`; if it hasn't, it won't.
 
+### `tags` and `meta`
+
+Changes to `tags` and `meta` — whether set at the resource level or on individual columns in a YAML file — don't count as modifications and won't trigger `state:modified`. dbt treats these fields as metadata only, since they don't affect how a resource is materialized. This is intentional, not a bug.
+
+This is different from `description`, which _is_ treated as a modification, but only when [`persist_docs`](/reference/resource-configs/persist_docs) is enabled. Any other config change counts as a modification, because that config could affect materialization.
+
 ### Macros
 
 dbt will mark modified any resource that depends on a changed macro, or on a macro that depends on a changed macro.
