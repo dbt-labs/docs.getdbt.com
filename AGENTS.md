@@ -9,7 +9,7 @@ This file serves two different kinds of agents. Read the section that matches yo
 
 ## Fetching these docs
 
-Use this section if you're answering a user's question about dbt and need to ground your answer in the current, canonical documentation — you do not have this repository checked out locally.
+Use this section if you're answering a user's question about dbt and need to ground your answer in the current, canonical documentation — especially if you don't have this repository checked out locally.
 
 ### Fast path: the page index
 
@@ -32,7 +32,7 @@ Fall back to full-text search rather than guessing:
 - `https://docs.getdbt.com/llms-full.txt` contains the complete content of every page in one file, for direct full-text search.
 - The `fetching-dbt-docs` skill (from the separate [`dbt-labs/dbt-agent-skills`](https://github.com/dbt-labs/dbt-agent-skills) repo — **not bundled in this repo**, install separately via the Claude Code plugin marketplace or Vercel Skills CLI) ships a local search script with a 24-hour cache, with a flag to force a fresh fetch if the docs may have changed recently.
 
-> **Open question for this repo**: `docs.getdbt.com`'s own `.claude/skills` currently only ships the authoring skills (`create-docs-skeleton`, `add-availability-badge`). Someone working in this repo may reasonably want both — e.g. "check how existing pages describe X before I draft a new page about Y" is a retrieval task and an authoring task at once. Worth deciding whether `fetching-dbt-docs` should be vendored in here too, or left as a separate install.
+> **Open question for this repo**: `docs.getdbt.com`'s own `.claude/skills` currently only ships the authoring skills (`create-docs-skeleton`, `add-availability-badge`). Someone working in this repo may reasonably want both — for example, "check how existing pages describe X before I draft a new page about Y" is a retrieval task and an authoring task at once. Worth deciding whether `fetching-dbt-docs` should be vendored in here too, or left as a separate install.
 
 ### If you're connected to the dbt MCP server
 
