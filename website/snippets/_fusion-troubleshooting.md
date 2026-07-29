@@ -70,7 +70,7 @@ This command downloads the LSP and re-activates the extension to resolve the err
 If you see an error message indicating that your version of dbt is unsupported, then there is likely a problem with your environment.
 
 Check the dbt Path setting in your VS Code settings. If this path is set, ensure that it is pointing to a valid dbt Fusion Engine executable.
-If necessary, you can also install the <Constant name="fusion_engine" /> directly using these instructions: [Install the <Constant name="fusion" /> CLI](/docs/local/install-dbt?version=2)
+If necessary, you can also install dbt directly using these instructions: [Install dbt](/docs/local/install-dbt)
 </Expandable>
 
 <Expandable alt_header="Addressing the 'dbt language server is not running in this workspace' error">

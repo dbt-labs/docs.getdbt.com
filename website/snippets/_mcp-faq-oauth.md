@@ -7,7 +7,7 @@
 **Solution:**
 
 1. Close your MCP client (Claude Desktop, Cursor, VS Code, etc.).
-2. Delete the local dbt MCP config files:
+2. Delete the self-hosted dbt MCP config files:
    - macOS/Linux: `rm -f ~/.dbt/mcp.yml ~/.dbt/mcp.lock`
    - Windows: `Remove-Item -Force $env:USERPROFILE\.dbt\mcp.yml, $env:USERPROFILE\.dbt\mcp.lock`
 3. Restart your client and try connecting again.

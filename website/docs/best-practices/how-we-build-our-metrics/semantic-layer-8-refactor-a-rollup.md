@@ -42,8 +42,8 @@ So far we've been working in new pointing at a staging model to simplify things 
    - 📏 Does this semantic model **contain measures**?
    - 🕥 Does this semantic model have a **primary timestamp**?
    - 🫂 If a semantic model **has measures but no timestamp** (for example, supplies in the example project, which has static costs of supplies), you'll likely want to **sacrifice some normalization and join it on to another model** that has a primary timestamp to allow for metric aggregation.
-4. 🔄 If we _don't_ need any joins, we'll just go straight to the staging model for our semantic model's `ref`. Locations does have a `tax_rate` measure, but it also has an `ordered_at` timestamp, so we can go **straight to the staging model** here.
-5. 🥇 We specify our **primary entity** (based on `location_id`), dimensions (one categorical, `location_name`, and one **primary time dimension** `opened_at`), and lastly our measures, in this case just `average_tax_rate`.
+4. 🔄 If we _don't_ need any joins, we'll point our semantic model at the mart. Locations has a `tax_rate` measure and an `opened_date` time dimension, so we can reference the `locations` mart directly here.
+5. 🥇 We specify our **primary entity** (based on `location_id`), dimensions (one categorical, `location_name`, and one **primary time dimension** `opened_date`), and lastly our measures, in this case just `average_tax_rate`.
 
 <File name="models/marts/locations.yml" />
 
@@ -52,7 +52,9 @@ semantic_models:
   - name: locations
     description: |
       Location dimension table. The grain of the table is one row per location.
-    model: ref('stg_locations')
+    model: ref('locations')
+    defaults:
+      agg_time_dimension: opened_date
     entities:
       - name: location
         type: primary
@@ -60,7 +62,8 @@ semantic_models:
     dimensions:
       - name: location_name
         type: categorical
-      - name: date_trunc('day', opened_at)
+      - name: opened_date
+        expr: opened_date
         type: time
         type_params:
           time_granularity: day
@@ -68,7 +71,7 @@ semantic_models:
       - name: average_tax_rate
         description: Average tax rate.
         expr: tax_rate
-        agg: avg
+        agg: average
 ```
 
 ## Semantic and logical interaction
@@ -88,12 +91,6 @@ So to calculate, for instance, the cost of ingredients and supplies for a given 
 <File name="models/marts/order_items.sql" />
 
 ```sql
-{{
-   config(
-      materialized = 'table',
-   )
-}}
-
 with
 
 order_items as (
@@ -135,11 +132,15 @@ joined as (
 
    select
       order_items.*,
+
+      orders.ordered_at,
+
+      products.product_name,
       products.product_price,
-      order_supplies_summary.supply_cost,
       products.is_food_item,
       products.is_drink_item,
-      orders.ordered_at
+
+      order_supplies_summary.supply_cost
 
    from order_items
 
@@ -160,8 +161,7 @@ select * from joined
 
 ```yml
 semantic_models:
-   #The name of the semantic model.
-   - name: order_items
+   - name: order_item
       defaults:
          agg_time_dimension: ordered_at
       description: |
@@ -179,7 +179,7 @@ semantic_models:
            expr: product_id
       dimensions:
          - name: ordered_at
-           expr: date_trunc('day', ordered_at)
+           expr: ordered_at
            type: time
            type_params:
              time_granularity: day
@@ -195,11 +195,11 @@ semantic_models:
          - name: food_revenue
            description: The revenue generated for each order item. Revenue is calculated as a sum of revenue associated with each product in an order.
            agg: sum
-           expr: case when is_food_item = 1 then product_price else 0 end
+           expr: case when is_food_item then product_price else 0 end
          - name: drink_revenue
            description: The revenue generated for each order item. Revenue is calculated as a sum of revenue associated with each product in an order.
            agg: sum
-           expr: case when is_drink_item = 1 then product_price else 0 end
+           expr: case when is_drink_item then product_price else 0 end
          - name: median_revenue
            description: The median revenue generated for each order item.
            agg: median

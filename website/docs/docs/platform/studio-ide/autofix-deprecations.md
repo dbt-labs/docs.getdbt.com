@@ -2,6 +2,9 @@
 title: "Fix deprecation warnings"
 description: "Learn how you can use the autofix tool in the Studio IDE to update project code."
 sidebar_label: "Fix deprecations"
+availability:
+  surface: platform
+  access: login_required
 ---
 
 

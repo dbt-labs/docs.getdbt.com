@@ -4,6 +4,7 @@ id: "wizard-byok"
 description: "Bring your own API key to use dbt Wizard CLI. Supports OpenAI, Anthropic, AWS Bedrock, Google Gemini, Snowflake Cortex (preview), and Databricks."
 sidebar_label: "BYOK configuration"
 tags: [AI, Wizard, Configuration]
+availability: local_all
 ---
 
 import WizardSupportedProviders from '/snippets/_wizard-supported-providers.md';
@@ -17,7 +18,7 @@ You can use the <Constant name="wizard" /> CLI with bring-your-own-key (BYOK), w
 
 <WizardFeedbackCallout />
 
-The following BYOK instructions on this page apply to the CLI only. <Constant name="dbt_platform" /> uses a separate [account-level integration](/docs/platform/enable-dbt-ai).
+The following BYOK instructions on this page apply to the CLI only. For <Constant name="dbt_platform" /> BYOK setup, refer to [Configure BYOK for dbt Wizard in dbt platform](/docs/platform/wizard-byok-platform).
 
 The "key" in BYOK is whatever credential your chosen provider uses to authenticate API requests &mdash; an API key for OpenAI or Anthropic, a bearer token for AWS Bedrock, or a token/PAT for Snowflake Cortex. When you configure a provider with that credential, <Constant name="wizard" /> calls the provider's API directly using it, so:
 

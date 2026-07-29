@@ -3,6 +3,9 @@ title: "Upgrading to v1.11"
 id: upgrading-to-v1.11
 description: New features and changes in dbt Core v1.11
 displayed_sidebar: "docs"
+availability:
+  engine: v1
+  access: free
 ---
 
 # Upgrading to v1.11
@@ -47,9 +50,9 @@ Engine configuration environment variables use the `DBT_ENGINE_` prefix. For exa
 
 You can read more about each of these behavior changes in the following links:
 
-- (Introduced, disabled by default) [`require_unique_project_resource_names`](/reference/global-configs/behavior-flag-introduction#unique-project-resource-names). This flag is set to `false` by default. With this setting, if two unversioned resources in the same package share the same name, dbt continues to run and raises a [`DuplicateNameDistinctNodeTypesDeprecation`](/reference/deprecations#duplicatenamedistinctnodetypesdeprecation) warning. When set to `true`, dbt raises a `DuplicateResourceNameError` error.
+- (Introduced, disabled by default) [`require_unique_project_resource_names`](/reference/global-configs/behavior-flags/require_unique_project_resource_names). This flag is set to `false` by default. With this setting, if two unversioned resources in the same package share the same name, dbt continues to run and raises a [`DuplicateNameDistinctNodeTypesDeprecation`](/reference/deprecations#duplicatenamedistinctnodetypesdeprecation) warning. When set to `true`, dbt raises a `DuplicateResourceNameError` error.
 
-- (Introduced, disabled by default) [`require_ref_searches_node_package_before_root`](/reference/global-configs/behavior-flag-introduction#package-ref-search-order). This flag is set to `false` by default. With this setting, when dbt resolves a `ref()` in a package model, it searches for the referenced model in the root project _first_, then in the package where the model is defined. When set to `true`, dbt searches the package where the model is defined _before_ searching the root project.
+- (Introduced, disabled by default) [`require_ref_searches_node_package_before_root`](/reference/global-configs/behavior-flags/require_ref_searches_node_package_before_root). This flag is set to `false` by default. With this setting, when dbt resolves a `ref()` in a package model, it searches for the referenced model in the root project _first_, then in the package where the model is defined. When set to `true`, dbt searches the package where the model is defined _before_ searching the root project.
 
 ### Deprecation warnings enabled by default
 
@@ -108,7 +111,7 @@ dbt parse --warn-error-options '{"silence": ["Deprecations"]}'
 
 ### Snowflake
 
-- The Snowflake adapter supports basic table materialization on Iceberg tables registered in a Glue catalog through a [catalog-linked database](https://docs.snowflake.com/en/user-guide/tables-iceberg-catalog-linked-database#label-catalog-linked-db-create). For more information, see [Glue Data Catalog](/docs/mesh/iceberg/snowflake-iceberg-support#external-catalogs).
+- The Snowflake adapter supports basic table materialization on Iceberg tables registered in a Glue catalog through a [catalog-linked database](https://docs.snowflake.com/en/user-guide/tables-iceberg-catalog-linked-database#label-catalog-linked-db-create). For more information, see [Glue Data Catalog](/docs/build/iceberg/adapters/snowflake-iceberg-support#external-catalogs).
 - The `cluster_by` configuration is supported in dynamic tables. For more information, see [Dynamic table clustering](/reference/resource-configs/snowflake-configs#dynamic-table-clustering).
 - The `immutable_where` configuration is supported in dynamic tables. For more information, see [Snowflake configurations](/reference/resource-configs/snowflake-configs#immutable-where).
 - You can set [`copy_grants: true`](/reference/resource-configs/snowflake-configs#copy-grants-dynamic-tables) on a dynamic table to preserve existing object-level privileges when the table is recreated during a `--full-refresh`. When set to `false` (default), all previously granted permissions are dropped on recreation, requiring manual re-grants.

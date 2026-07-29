@@ -21,5 +21,5 @@
 <sup>†</sup> *Anthropic enterprise and subscription licenses (such as Claude Enterprise) aren't supported per Anthropic's [terms of service](https://www.anthropic.com/legal/consumer-terms). BYOK requires an Anthropic API key.*
 
 Refer to the following pages for more information:
-- [Configure <Constant name="dbt_platform" />](/docs/platform/enable-dbt-ai#enable-ai-features) integrations in account settings.
+- [Configure <Constant name="dbt_platform" />](/docs/platform/wizard-byok-platform) integrations in account settings.
 - [Configure BYOK for the CLI](/docs/dbt-ai/wizard-byok) by running `wizard providers configure PROVIDER_NAME` and follow the prompts.

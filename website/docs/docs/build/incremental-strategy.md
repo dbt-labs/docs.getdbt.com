@@ -4,6 +4,7 @@ sidebar_label: "Incremental strategy"
 description: "Incremental strategies for materializations optimize performance by defining how to handle new and changed data."
 id: "incremental-strategy"
 intro_text: "Incremental strategies for materializations optimize performance by defining how to handle new and changed data."
+availability: all_users
 ---
 
 There are various strategies to implement the concept of incremental materializations. The value of each strategy depends on:
@@ -37,7 +38,7 @@ Click the name of the adapter in the following table for more information about 
 | [dbt-databricks](/reference/resource-configs/databricks-configs#incremental-models)                 |     ✅    |    ✅   | ✅ |          ✅         |          ✅         |
 | [dbt-snowflake](/reference/resource-configs/snowflake-configs#merge-behavior-incremental-models)    |     ✅    |    ✅   | ✅  | ✅ | ✅  |
 | [dbt-trino](/reference/resource-configs/trino-configs#incremental)                                  |     ✅    |    ✅   | ✅  |    |  ✅  |
-| [dbt-fabric](/reference/resource-configs/fabric-configs#incremental)                                |     ✅    |    ✅   | ✅  |    |    |
+| [dbt-fabric](/reference/resource-configs/fabric-configs#incremental)                                |     ✅    |    ✅   | ✅  |    |  ✅  |
 | [dbt-athena](/reference/resource-configs/athena-configs#incremental-models)                         |     ✅    |    ✅   |     | ✅ | ✅  |
 | [dbt-teradata](/reference/resource-configs/teradata-configs#valid_history-incremental-materialization-strategy)  | ✅    |  ✅   |   ✅   |    |         ✅    |
 | [dbt-duckdb](/reference/resource-configs/duckdb-configs#incremental)  | ✅    |  ✅   |   ✅   |    |         ✅    |
@@ -275,7 +276,7 @@ For example, a user-defined strategy named `insert_only` can be defined and used
 
 </File>
 
-If you use a custom microbatch macro, use the [`require_batched_execution_for_custom_microbatch_strategy` behavior flag](/reference/global-configs/behavior-flag-introduction#custom-microbatch-strategy) in your `dbt_project.yml` to control batched execution. Set it to `true` to opt in before the flag matures. After the flag matures (default: `true`), set it to `false` to revert to single-invocation behavior.
+If you use a custom microbatch macro, use the [`require_batched_execution_for_custom_microbatch_strategy` behavior flag](/reference/global-configs/behavior-flags/require_batched_execution_for_custom_microbatch_strategy) in your `dbt_project.yml` to control batched execution. Set it to `true` to opt in before the flag matures. After the flag matures (default: `true`), set it to `false` to revert to single-invocation behavior.
 
 ### Custom strategies from a package
 

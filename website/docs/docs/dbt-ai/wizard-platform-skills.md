@@ -4,6 +4,12 @@ id: "wizard-platform-skills"
 description: "Create and use skills to give dbt Wizard in the dbt platform reusable, project-specific instructions."
 sidebar_label: "Use skills"
 tags: [AI, Wizard]
+pagination_prev: "docs/platform/wizard-home"
+pagination_next: "docs/dbt-ai/wizard-platform-mcp"
+availability:
+  surface: platform
+  access: paid_plan
+  minPlan: starter
 ---
 
 # Use skills with <Constant name="wizard" /> in the <Constant name="dbt_platform" /> <Lifecycle status="beta"/>

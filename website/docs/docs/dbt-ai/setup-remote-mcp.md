@@ -3,15 +3,15 @@ title: "Set up remote MCP"
 sidebar_label: "Set up remote MCP"
 description: "Learn how to set up the remote dbt-mcp server"
 id: "setup-remote-mcp"
+availability:
+  surface: platform
+  access: login_required
 ---
 
 import MCPCreditUsage from '/snippets/_mcp-credit-usage.md';
 import MCPRemoteServerUrl from '/snippets/_mcp-remote-server-url.md';
-import MCPRemoteOauthBetaCallout from '/snippets/_mcp-remote-oauth-beta-callout.md';
 
-# Set up the remote MCP server <Lifecycle status="self_service,managed,managed_plus"/>
-
-The remote MCP server uses an HTTP connection and makes calls to dbt-mcp hosted on the cloud-based <Constant name="dbt_platform" />. This setup requires no local installation and is ideal for data consumption use cases.
+The remote MCP server uses an HTTP connection and makes calls to dbt-mcp hosted on the cloud-based <Constant name="dbt_platform" />. The self-hosted installation is not required for remote MCP use and is ideal for data consumption use cases.
 
 <Lightbox src="/img/mcp/remote-dbt-mcp.jpg" title="Remote dbt MCP server architecture" />
 
@@ -21,7 +21,7 @@ The remote MCP server is the ideal choice when:
 - You don't want to or are restricted from installing additional software (`uvx`, `dbt-mcp`) on your system.
 - Your primary use case is _consumption-based_: querying metrics, exploring metadata, viewing lineage.
 - You need access to <Constant name="semantic_layer"/>, Administrative, and Discovery APIs without maintaining a local dbt project.
-- You don't need to execute CLI commands. Remote MCP does not support local CLI commands (`dbt run`, `dbt build`, `dbt test`, and more). If you need to execute dbt commands, use the [local MCP server](/docs/dbt-ai/setup-local-mcp) instead.
+- You don't need to execute CLI commands. Remote MCP does not support self-hosted dbt CLI commands (`dbt run`, `dbt build`, `dbt test`, and more). If you need to execute dbt commands, use the [self-hosted MCP server](/docs/dbt-ai/setup-local-mcp) instead.
 
 <MCPCreditUsage />
 
@@ -29,8 +29,8 @@ The remote MCP server is the ideal choice when:
 
 | If you need... | Use... |
 | --- | --- |
-| Fastest first-time setup and your MCP client supports OAuth for HTTP servers | **OAuth (remote)** <br /> Available in beta for Enterprise and Enterprise+ accounts |
-| `execute_sql` with a PAT, automation, or clients without OAuth | **Token-based** (PAT or service token) |
+| Fastest first-time setup and your MCP client supports OAuth for HTTP servers | **OAuth (remote)** <br /> Available in public beta for Starter, Enterprise, and Enterprise+ accounts |
+| `execute_sql` with a PAT, automation, shared setup, or clients without OAuth | **Token-based** (PAT or service token) |
 | Shared or team setup | **Service token** (token-based) |
 | CI or automation | **Service token** (token-based) |
 
@@ -38,16 +38,14 @@ The remote MCP server is the ideal choice when:
 The `execute_sql` tool does **not** work with service tokens. You must use a [Personal Access Token (PAT)](/docs/dbt-apis/user-tokens) in the `Authorization` header when using this tool.
 :::
 
-## OAuth (remote MCP) <Lifecycle status="beta,managed,managed_plus" /> {#oauth-remote-mcp}
+## OAuth (remote MCP) <Lifecycle status="beta,self_service,managed,managed_plus" /> {#oauth-remote-mcp}
 
 OAuth lets you connect to the remote MCP server without copying API tokens into your MCP client, when your client supports OAuth for HTTP-based MCP servers.
-
-<MCPRemoteOauthBetaCallout />
 
 ### Prerequisites
 
 - [AI features](https://docs.getdbt.com/docs/cloud/enable-dbt-copilot) enabled for your account.
-- Enterprise or Enterprise+ account
+- Starter, Enterprise, or Enterprise+ account
 - An MCP client that supports OAuth for remote (HTTP) MCP servers.
 - Your **MCP URL** from **Account settings** &rarr; **Access URLs** &rarr; **MCP Endpoint URL** in <Constant name="dbt_platform"/>. Check out the next section [MCP URL](#mcp-url) for more information.
 
@@ -81,13 +79,13 @@ For the full list of scopes and what each one allows, see [Scopes and consent](/
 
 ### Limitations
 
-- Remote MCP doesn't support local dbt CLI commands (like `dbt run`, `dbt build`, `dbt test`, and more) or local project access; use the [local MCP server](/docs/dbt-ai/setup-local-mcp) for those workflows.
+- Remote MCP doesn't support self-hosted dbt CLI commands (like `dbt run`, `dbt build`, `dbt test`, and more) or local project access; use the [self-hosted MCP server](/docs/dbt-ai/setup-local-mcp) for those workflows.
 
-For client-specific steps, see [Integrate Claude with MCP](/docs/dbt-ai/integrate-mcp-claude), [Integrate Cursor with MCP](/docs/dbt-ai/integrate-mcp-cursor), or [Integrate VS Code with MCP](/docs/dbt-ai/integrate-mcp-vscode).
+For client-specific steps, see [Integrate Claude with MCP](/docs/dbt-ai/integrate-mcp-claude), [Integrate Cursor with MCP](/docs/dbt-ai/integrate-mcp-cursor), [INtegrate Snowflake Cortex with MCP](/docs/dbt-ai/integrate-mcp-snowflake-cortex), or [Integrate VS Code with MCP](/docs/dbt-ai/integrate-mcp-vscode).
 
 ## Token-based authentication {#token-based-authentication}
 
-Token-based authentication lets you connect to the remote MCP server without OAuth, when your client doesn't support OAuth for HTTP-based MCP servers.
+Token-based authentication lets you connect to the remote MCP server without OAuth by passing a PAT or service token in your MCP client config. Use it when your client doesn't support OAuth for HTTP-based MCP servers, when you need a shared or CI setup, or when you need `execute_sql`, which requires a PAT.
 
 ### Setup instructions
 
@@ -217,7 +215,7 @@ Header values like `x-dbt-prod-environment-id` and `x-dbt-user-id` expect numeri
 
 For other MCP clients (Codex, Windsurf, and so on), refer to your client's MCP configuration docs for the correct key format.
 
-For local MCP, configuration is done via environment variables; see the [Environment variables reference](/docs/dbt-ai/mcp-environment-variables).
+For self-hosted MCP, configuration is done via environment variables; see the [Environment variables reference](/docs/dbt-ai/mcp-environment-variables).
 
 ## Related docs
 
@@ -226,3 +224,4 @@ Step-by-step client setup (including Cursor, VS Code, and Claude) is in:
 - [Integrate Cursor with MCP](/docs/dbt-ai/integrate-mcp-cursor)
 - [Integrate VS Code with MCP](/docs/dbt-ai/integrate-mcp-vscode)
 - [Integrate Claude with MCP](/docs/dbt-ai/integrate-mcp-claude)
+- [Integrate Snowflake Cortex with MCP](/docs/dbt-ai/integrate-mcp-snowflake-cortex)

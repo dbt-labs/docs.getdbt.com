@@ -2,9 +2,13 @@
 title: "Set up SSO with Google Workspace"
 description: "Learn how dbt administrators can use Single-Sign On (SSO) via Google GSuite to control access in a dbt account."
 id: "set-up-sso-google-workspace"
+availability:
+  surface: platform
+  access: paid_plan
+  minPlan: enterprise
 ---
 
-# Set up SSO with Google Workspace <Lifecycle status="managed, managed_plus" />
+# Set up SSO with Google Workspace
 
 <Constant name="dbt" /> Enterprise-tier plans support Single-Sign On (SSO) via Google GSuite. You will need permissions to create and manage a new Google OAuth2 application, as well as access to enable the Google Admin SDK. Gsuite is a component within Google Cloud Platform (GCP), so you will also need access to a login with permissions to manage the GSuite application within a GCP account.
 
@@ -75,8 +79,9 @@ To complete setup, follow the steps below in the <Constant name="dbt" /> applica
 
 ### Supply your OAuth Client ID and Client Secret
 
-1. Navigate to the **Enterprise &gt; Single Sign On** page under **Account settings**.
-2. Click the **Edit** button and supply the following SSO details:
+1. Navigate to **Account settings** > **SSO & SCIM**.
+2. Click **Get started** if SSO has not been configured, or **Edit** if it has already been set up.
+3. Supply the following SSO details:
     - **Log in with**: GSuite
     - **Client ID**: Paste the Client ID generated in the steps above
     - **Client Secret**: Paste the Client Secret generated in the steps above
@@ -86,11 +91,11 @@ To complete setup, follow the steps below in the <Constant name="dbt" /> applica
       which are _all_ authorized to access your <Constant name="dbt" /> account (eg. `dbtlabs.com, fishtowndata.com`)
       
     <Lightbox src="/img/docs/dbt-platform/dbt-platform-enterprise/gsuite/gsuite-sso-cloud-config.png" title="GSuite SSO Configuration"/>
-3. Click **Save &amp; Authorize** to authorize your credentials. You should be
+4. Click **Save &amp; Authorize** to authorize your credentials. You should be
    dropped into the GSuite OAuth flow and prompted to log into <Constant name="dbt" /> with
    your work email address. If authentication is successful, you will be
    redirected back to the <Constant name="dbt" /> application.
-4. On the **Credentials** page, verify that a `groups` entry is
+5. On the **Credentials** page, verify that a `groups` entry is
    present, and that it reflects the groups you are a member of in GSuite. If
    you do not see a `groups` entry in the IdP attribute list, consult the following
    Troubleshooting steps.

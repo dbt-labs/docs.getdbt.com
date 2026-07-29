@@ -6,9 +6,13 @@ tags: [Semantic Layer]
 image: /img/docs/dbt-insights/insights-chart.jpg
 pagination_prev: "docs/explore/model-query-history"
 pagination_next: "docs/explore/navigate-dbt-insights"
+availability:
+  surface: platform
+  access: paid_plan
+  minPlan: enterprise
 ---
 
-# About dbt Insights <Lifecycle status="beta,managed,managed_plus" />
+# About dbt Insights <Lifecycle status="beta" />
 
 <IntroText>
 Learn how to query data with <Constant name="insights" /> and view documentation in <Constant name="catalog" />.

@@ -3,6 +3,7 @@ title: "About documentation"
 description: "Learn how good documentation for your dbt models helps stakeholders discover and understand your datasets."
 id: "documentation"
 pagination_next: "docs/build/view-documentation"
+availability: all_users
 ---
 
 import CopilotBeta from '/snippets/_dbt-copilot-avail.md';
@@ -144,7 +145,7 @@ Docs blocks should be placed in files with a `.md` file extension. By default, d
 
 <VersionBlock firstVersion="1.12">
 
-Place docs blocks in `.md` files. You can also use Jinja-style extensions (`.md.j2`, `.md.jinja`, `.md.jinja2`), however these require setting [`allow_jinja_file_extensions: true`](/reference/global-configs/behavior-flag-introduction#jinja-file-extensions) in your `dbt_project.yml`. This enables Jinja-aware syntax highlighting in IDEs that associate these suffixes with Jinja templating.
+Place docs blocks in `.md` files. You can also use Jinja-style extensions (`.md.j2`, `.md.jinja`, `.md.jinja2`), however these require setting [`allow_jinja_file_extensions: true`](/reference/global-configs/behavior-flags/allow_jinja_file_extensions) in your `dbt_project.yml`. This enables Jinja-aware syntax highlighting in IDEs that associate these suffixes with Jinja templating.
 
 By default, dbt searches in all resource paths for docs blocks (for example, the combined list of [model-paths](/reference/project-configs/model-paths), [seed-paths](/reference/project-configs/seed-paths), [analysis-paths](/reference/project-configs/analysis-paths), [test-paths](/reference/project-configs/test-paths), [macro-paths](/reference/project-configs/macro-paths), and [snapshot-paths](/reference/project-configs/snapshot-paths)). You can adjust this behavior using the [docs-paths](/reference/project-configs/docs-paths) config.
 

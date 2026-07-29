@@ -3,6 +3,9 @@ title: "Connect Teradata"
 id: connect-teradata
 description: "Configure the Teradata platform connection in dbt."
 sidebar_label: "Connect Teradata"
+availability:
+  surface: platform
+  access: login_required
 ---
 
 # Connect Teradata <Lifecycle status="preview" />

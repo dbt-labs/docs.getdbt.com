@@ -4,6 +4,7 @@ description: "Use the empty flag to test your code and build your tables without
 sidebar_label: "The empty flag"
 pagination_next: "docs/build/sample-flag"
 pagination_prev: null
+availability: all_users
 ---
 
 # About the `--empty` flag

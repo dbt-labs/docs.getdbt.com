@@ -13,6 +13,9 @@ meta:
   slack_channel_link: 'https://getdbt.slack.com/archives/C01DRQ178LQ'
   platform_name: 'Snowflake'
   config_page: '/reference/resource-configs/snowflake-configs'
+availability:
+  preset: local_free
+  engine: v2
 ---
 
 import SnowflakeAuth from '/snippets/_snowflake-auth.md';
