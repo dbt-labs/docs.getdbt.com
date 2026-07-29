@@ -88,6 +88,7 @@ website/
 
 ### Dev commands
 
+```bash
 cd website
 npm start          # Local dev server (port 3000)
 npm i              # Install dependencies
@@ -158,7 +159,7 @@ Full guide: `contributing/content-types.md`
 
 **Docs pages:**
 
-```
+```yaml
 ---
 title: "Page title"
 id: "unique-identifier"
@@ -175,7 +176,7 @@ Do not use constants in frontmatter.
 
 **Blog posts** (filename: `website/blog/YYYY-MM-DD-slug.md`):
 
-```
+```yaml
 ---
 title: "Post title"
 description: "Compelling sentence from the article"
