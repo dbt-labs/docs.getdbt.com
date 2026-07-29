@@ -110,7 +110,11 @@ These rules are **mandatory** — incorrect branding is the most common docs err
 | **dbt platform** | Not "dbt Cloud" | The cloud-based platform (formerly dbt Cloud) |
 | **dbt Labs** | The company | When docs say "we," this is who "we" is |
 
-**Feature proper nouns (capitalize these)**: Studio IDE, Canvas, Insights, Catalog, Mesh, Orchestrator, Semantic Layer, Copilot, dbt Wizard. All other features (models, environments, configs, settings) are common nouns.
+#### Feature proper nouns (capitalize these)
+
+Studio IDE, Canvas, Insights, Catalog, Mesh, Orchestrator, Semantic Layer, Copilot, dbt Wizard. 
+
+All other features (models, environments, configs, settings) are common nouns.
 
 #### Use `<Constant>` for product names when available
 
