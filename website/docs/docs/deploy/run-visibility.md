@@ -78,7 +78,7 @@ For more information about each status, refer to [Telemetry and observability](/
 
 To download it, go to the **Run summary** tab in the job, select a step and click **Download** > **Download OTel log** to export a Parquet file
 
-This option only appears when the step emitted an OTel log artifact.  Some steps, such as `dbt deps`, don't produce one. For analysis examples, refer to [Querying telemetry data](/reference/telemetry-observability#querying-telemetry-data).
+This option only appears when the step emitted an OTel log artifact. Some steps, such as `dbt deps`, don't produce one. For analysis examples, refer to [Querying telemetry data](/reference/telemetry-observability#querying-telemetry-data).
 
 
 <Lightbox src="/img/docs/dbt-platform/deployment/download-logs.png" width="85%" title="Download logs" />
