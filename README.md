@@ -59,8 +59,6 @@ This repo includes [Claude Code](https://claude.com/product/claude-code) skills 
 In `.claude/skills`:
 - **converting-notion-to-docusaurus-blog**: Converts a Notion markdown export into a properly formatted Docusaurus blog post for this site.
 - **docs-issue-triage**: Triages, scores, and labels open GitHub issues in this repo by priority and size.
-
-In `website/.claude/skills`:
 - **create-docs-skeleton**: Scaffolds a new doc page (guide, reference, feature/product page, or release note entry) with correct frontmatter and section structure.
 - **add-availability-badge**: Adds or resolves the `availability` frontmatter field so a page renders the correct applicability badge.
 
