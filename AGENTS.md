@@ -88,7 +88,6 @@ website/
 
 ### Dev commands
 
-```
 cd website
 npm start          # Local dev server (port 3000)
 npm i               # Install dependencies
@@ -116,7 +115,6 @@ These rules are **mandatory** — incorrect branding is the most common docs err
 
 **Use `<Constant>` for product names when available:**
 
-```
 <Constant name="dbt_platform" />   // → "dbt platform"
 <Constant name="fusion_engine" />  // → "dbt Fusion engine"
 <Constant name="studio_ide" />     // → "Studio IDE"
@@ -139,7 +137,7 @@ Refer to `website/constants.js` for constant names.
 - **Placeholder text**: `SCREAMING_SNAKE_CASE` (no brackets, no angular brackets)
 - **Avoid**: Latin abbreviations (i.e., e.g., etc.) — use "that is," "for example," "and more"
 - **UI elements**: Bold the element name — "Click **Submit**" (not "Click the **Submit** button")
-- **Links**: Never "Click here" — use descriptive text
+- **Links**: Never "Click here" — use descriptive text, for example use "refer to the [dbt Labs, Inc. product documentation](https://docs.getdbt.com/)"
 
 Full guide: `contributing/content-style-guide.md`
 
