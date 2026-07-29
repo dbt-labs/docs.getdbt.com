@@ -16,7 +16,7 @@ If a seed file is >1 MiB in size, dbt cannot compare its contents and will raise
 
 ### `tags` and `meta`
 
-Changes to `tags` and `meta` — whether set at the resource level or on individual columns in a YAML file — don't count as modifications and won't trigger `state:modified`. dbt treats these fields as metadata only, since they don't affect how a resource is materialized. This is intentional, not a bug.
+Changes to `tags` and `meta`, whether set at the resource level or on individual columns in a YAML file, don't count as modifications and will not trigger `state:modified`. dbt treats these fields as metadata only, since they don't affect how a resource is materialized. This is intentional behavior.
 
 This is different from `description`, which _is_ treated as a modification, but only when [`persist_docs`](/reference/resource-configs/persist_docs) is enabled. Any other config change counts as a modification, because that config could affect materialization.
 

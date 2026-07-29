@@ -317,7 +317,7 @@ These tags can be used as part of the [resource selection syntax](/reference/nod
 - `dbt test --select tag:my_tag` &mdash; Indirectly runs all tests associated with the models that are tagged.
 
 :::note Effect on state comparison
-Changes to `tags` — including at the column level — don't trigger [`state:modified`](/reference/node-selection/methods#state). dbt treats `tags` as metadata only, since they don't affect how a resource is materialized. See [caveats to state comparison](/reference/node-selection/state-comparison-caveats#tags-and-meta) for more detail.
+Changes to `tags`, including at the column level, don't trigger [`state:modified`](/reference/node-selection/methods#state). dbt treats `tags` (and `meta`) as metadata only, since they don't affect how a resource is materialized. Refer to [caveats to state comparison](/reference/node-selection/state-comparison-caveats#tags-and-meta) for more detail.
 :::
 
 #### Using tags with the `+` operator

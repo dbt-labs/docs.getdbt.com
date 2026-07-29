@@ -548,7 +548,7 @@ The `meta` config sets metadata for a resource and accepts any key-value pairs. 
 Depending on the resource you're configuring, `meta` may be available within the `config` property, and/or as a top-level key. (For backwards compatibility, `meta` is often (but not always) supported as a top-level key, though without the capabilities of config inheritance.)
 
 :::note Effect on state comparison
-Changes to `meta` — including at the column level — don't trigger [`state:modified`](/reference/node-selection/methods#state). dbt treats `meta` as metadata only, since it doesn't affect how a resource is materialized. See [caveats to state comparison](/reference/node-selection/state-comparison-caveats#tags-and-meta) for more detail.
+Changes to `meta`, including at the column level, don't trigger [`state:modified`](/reference/node-selection/methods#state). dbt treats `meta` (and `tags`) as metadata only, since it doesn't affect how a resource is materialized. Refer to [caveats to state comparison](/reference/node-selection/state-comparison-caveats#tags-and-meta) for more detail.
 :::
 
 
