@@ -54,10 +54,15 @@ You can add code snippets and other content in a tabbed view. To learn more abou
 
 # Claude Code skills
 
-This repo includes [Claude Code](https://claude.com/product/claude-code) skills in `.claude/skills` that automate common docs workflows:
+This repo includes [Claude Code](https://claude.com/product/claude-code) skills that automate common docs workflows.
 
+In `.claude/skills`:
 - **converting-notion-to-docusaurus-blog**: Converts a Notion markdown export into a properly formatted Docusaurus blog post for this site.
 - **docs-issue-triage**: Triages, scores, and labels open GitHub issues in this repo by priority and size.
+
+In `website/.claude/skills`:
+- **create-docs-skeleton**: Scaffolds a new doc page (guide, reference, feature/product page, or release note entry) with correct frontmatter and section structure.
+- **add-availability-badge**: Adds or resolves the `availability` frontmatter field so a page renders the correct applicability badge.
 
 If you fork this repo with Claude Code, these skills are available automatically.
 
