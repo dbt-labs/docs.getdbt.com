@@ -96,7 +96,7 @@ Refer to [structured logging](/reference/events-logging#structured-logging) for 
 
 Use `--log-format otel` to stream OpenTelemetry-style telemetry to the console, or use `--otel-file-name` and related flags for file and platform integrations. Refer to [<Constant name="fusion" /> telemetry and observability](/reference/telemetry-observability).
 
-For legacy-compatible JSON lines (similar to <Constant name="core" />), use `--log-format json` with the `DEBUG` config:
+For JSON-formatted log lines, use `--log-format json` with the `DEBUG` config:
 
 ```text
 dbtf build --debug --log-format json

@@ -131,6 +131,12 @@ Many events are fired while compiling or running a specific DAG node (model, see
 
 ## Python interface
 
+<VersionBlock firstVersion="2.0">
+
+<Constant name="fusion_engine" /> does not use the same Python event interface as <Constant name="core" />. A Python API with Rust bindings for programmatic invocations is [in development](https://github.com/dbt-labs/dbt-core/issues/13102).
+
+</VersionBlock>
+
 <VersionBlock lastVersion="1.99">
 
 Older versions of `dbt-core` made available a full history of events fired during an invocation, in the form of an `EVENT_HISTORY` object.
