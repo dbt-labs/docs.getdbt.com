@@ -65,7 +65,6 @@ A standalone account makes sense if you:
 - Don't have admin permissions to enable dbt State in your <Constant name="dbt_platform" /> account
 - Want to test dbt State without connecting it to your <Constant name="dbt_platform" /> account yet
 
-
 ## FAQs
 
 <FAQ path="Runs/what-happened-to-sao" />
