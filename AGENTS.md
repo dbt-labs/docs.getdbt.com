@@ -100,7 +100,7 @@ npm run lintAll    # ESLint auto-fix
 
 These rules are **mandatory** — incorrect branding is the most common docs error.
 
-**Product names (all case-sensitive):**
+#### Product names (all case-sensitive)
 
 | Name | Usage | Notes |
 | --- | --- | --- |
@@ -112,7 +112,7 @@ These rules are **mandatory** — incorrect branding is the most common docs err
 
 **Feature proper nouns (capitalize these)**: Studio IDE, Canvas, Insights, Catalog, Mesh, Orchestrator, Semantic Layer, Copilot, dbt Wizard. All other features (models, environments, configs, settings) are common nouns.
 
-**Use `<Constant>` for product names when available:**
+#### Use `<Constant>` for product names when available
 
 ```jsx
 <Constant name="dbt_platform" />   // → "dbt platform"
@@ -156,7 +156,7 @@ Full guide: `contributing/content-types.md`
 
 ### Frontmatter
 
-**Docs pages:**
+#### Docs pages
 
 ```yaml
 ---
@@ -173,7 +173,7 @@ hide_table_of_contents: false
 
 Do not use constants in frontmatter.
 
-**Blog posts** (filename: `website/blog/YYYY-MM-DD-slug.md`):
+#### Blog posts (filename: `website/blog/YYYY-MM-DD-slug.md`)
 
 ```yaml
 ---
@@ -229,13 +229,15 @@ Full guide: `contributing/single-sourcing-content.md`
 
 ### Components for MDX
 
-**Images:**
+#### Images
+
 ```jsx
 <Lightbox src="/img/docs/example.jpg" title="Description" width="80%" />
 ```
 Store in `website/static/img/`. Always include `title` for accessibility.
 
-**File blocks:**
+#### File blocks
+
 ```mdx
 <File name="models/my_model.sql">
 
@@ -246,7 +248,8 @@ select * from {{ ref('stg_customers') }}
 </File>
 ```
 
-**Callouts:**
+#### Callouts
+
 ```md
 :::note Optional title
 Note content here.
@@ -254,7 +257,8 @@ Note content here.
 ```
 Types: `note`, `info`, `tip`, `caution`
 
-**Tabs:**
+#### Tabs
+
 ```jsx
 <Tabs defaultValue="snowflake" values={[
   { label: 'Snowflake', value: 'snowflake' },
@@ -269,16 +273,20 @@ BigQuery content
 </Tabs>
 ```
 
-**Warehouse-specific code:** use `<WHCode>` with per-warehouse `<div warehouse="...">` blocks.
+#### Warehouse-specific code
 
-**Glossary terms:**
+Use `<WHCode>` with per-warehouse `<div warehouse="...">` blocks.
+
+#### Glossary terms
+
 ```jsx
 <Term id="cte" />                              <!-- Renders hover tooltip -->
 <Term id="cte">Common Table Expression</Term>  <!-- Custom display text -->
 ```
 Terms defined in `website/docs/terms/hover-terms.md`.
 
-**Lifecycle badges:**
+#### Lifecycle badges
+
 ```jsx
 <Lifecycle status="preview" />
 <Lifecycle status="private_preview" />
@@ -286,13 +294,15 @@ Terms defined in `website/docs/terms/hover-terms.md`.
 ```
 Source for statuses: `website/src/components/lifeCycle/index.js`. GA is not used as a status — when a feature graduates to general availability, **remove the `<Lifecycle>` tag entirely** rather than looking for a "GA" value. If you're reviewing or updating an existing page, check whether a lingering Preview/Beta tag is actually still accurate.
 
-**FAQ:**
+#### FAQ
+
 ```jsx
 <FAQ path="Warehouse/bq-copy-grants" />
 ```
 Loads from `website/docs/faqs/` directory.
 
-**Cards:**
+#### Cards
+
 ```jsx
 <div className="grid--3-col">
 <Card
@@ -305,7 +315,8 @@ Loads from `website/docs/faqs/` directory.
 ```
 Grid options: `grid--2-col`, `grid--3-col`, `grid--4-col` (sparingly), `grid--5-col` (sparingly). Do not use constants in Cards.
 
-**Intro text:**
+#### Intro text
+
 ```jsx
 <IntroText>
 Brief overview paragraph at the top of the page.
@@ -321,7 +332,8 @@ Every docs page should declare an `availability` frontmatter field so it renders
 
 ### Reusable content
 
-**Partials (preferred):**
+#### Partials (preferred)
+
 1. Create `website/snippets/_my-partial.md`
 2. Import and use in any doc:
 ```jsx
@@ -331,7 +343,8 @@ import MyPartial from '/snippets/_my-partial.md';
 ```
 Supports props: `<MyPartial feature="Fusion" />` → access as `{props.feature}` in the partial.
 
-**Snippets (legacy):**
+#### Snippets (legacy)
+
 ```jsx
 <Snippet path="my-snippet" />
 ```
