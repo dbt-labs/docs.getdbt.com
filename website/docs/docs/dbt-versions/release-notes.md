@@ -39,6 +39,9 @@ To simplify the docs experience, clarify availability, and make it easier to fin
 
 #### Additional dbt platform changes
 
+- **New:** [Cost Insights](/docs/explore/cost-insights) is now generally available (GA) for Snowflake, BigQuery, and Databricks.
+- **Preview:** [Cost Insights](/docs/explore/cost-insights) for Amazon Redshift is now in preview.
+- **Enhancement:** Users with `user_credential_write` access can now view and manage their credentials without needing `credentials_read` privileges. This update reduces the need for additional, broader permissions when performing credential updates.
 - **Enhancement:** The [<Constant name="wizard" />](/docs/platform/wizard-platform) in <Constant name="dbt_platform"/> has a redesigned empty state with updated suggested prompts to help you discover different ways to get started. A new wayfinder bar keeps your current project and branch visible and highlights the next step as you move from asking questions to changing code and opening a pull request.
 - **Enhancement:** <Constant name="catalog" /> now supports a **Warn** last-run status. Resources whose last run completed with warnings show a distinct status and tooltip, and you can filter by **Warn** alongside other run statuses.
 - **New:** You can now create hybrid jobs to track runs triggered by an external orchestrator. Hybrid jobs have a simplified setup that omits execution steps, triggers, advanced settings, and cost-optimization controls. They display **Externally triggered** as their next-run schedule and are available only for projects configured as [Hybrid projects](/docs/deploy/hybrid-projects).
@@ -57,6 +60,8 @@ To simplify the docs experience, clarify availability, and make it easier to fin
 
 ## June 2026
 
+- **Enhancement:** You can now enable [dbt State](/docs/deploy/dbt-state-about) on continuous integration and merge job types, in addition to deploy jobs. For more information, refer to [Enabling dbt State on individual jobs](/docs/deploy/dbt-state-enable-jobs).
+- **Enhancement**: The [Cost Insights](/docs/explore/cost-insights) table view now includes **All** and **Jobs** buttons to switch between an aggregated cost view and a per-job cost breakdown. Available in the project dashboard and the **Model performance** section in <Constant name="catalog" />. When **Jobs** is selected, the CSV export includes job-level data. For more information, refer to [Explore cost data](/docs/explore/explore-cost-data).
 - **Enhancement:** [<Constant name="wizard" />](/docs/platform/wizard-platform) tool calls for dbt command invocations now stream their output live in chat, in both the <Constant name="studio_ide" /> and [Wizard home](/docs/platform/wizard-home).
 - **Enhancement:** You can now download files from the <Constant name="studio_ide" /> File explorer. Right-click a file and select **Download** to save it to your computer. For more information, refer to the [<Constant name="studio_ide" /> user interface](/docs/platform/studio-ide/ide-user-interface#basic-layout).
 - **Fix:** If you use the Administrator API to manage [SCIM](/docs/platform/manage-access/scim) to sync users from your identity provider, the `/api/v3/accounts/{account_id}/scim/v2/Users` response now returns `value` and `display` on each embedded group reference. `id` and `displayName` are retained so existing integrations keep working — this is a non-breaking change.
