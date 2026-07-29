@@ -97,21 +97,24 @@ Be careful. Snapshots do not follow this behavior if target_schema is set. To ha
 
 ## Prefixed schema names
 
-By default, dbt combines `target.schema` and `custom_schema`name` using the following pattern:
+By default, dbt combines `target.schema` and `custom_schema_name` using the following pattern:
 `{target.schema}_{custom_schema_name}`.
 
 For example, when `target.schema` is `public` and a model sets `+schema: silver`, dbt builds the model in `public_silver`, not `silver`.
 
 This behavior is intentional. Including `target.schema` helps prevent developers and continuous integration (CI) jobs from building into the same schema and overwriting one another’s relations.
 
-If you want to use dedicated schema names such as `silver` and `gold` in production, use the environment-aware `generate_schema_name_for_env` pattern described above. This pattern uses the custom schema name when `target.name` is `prod`, while retaining the target schema in development and CI environments.
+If you want to use dedicated schema names such as `silver` and `gold` in production, use the environment-aware [`generate_schema_name_for_env` pattern](#you-have-a-generate_schema_name-macro-in-a-project-that-calls-another-macro) shown earlier. This pattern uses the custom schema name when `target.name` is `prod`, while retaining the target schema in development and CI environments.
+
+The macro looks like this:
 
 ```sql
-{% macro generate_schema_name(custom_schema_name, node) -%}
-    {%- if custom_schema_name is none -%}
-        {{ target.schema }}
-    {%- else -%}
+{% macro generate_schema_name_for_env(custom_schema_name, node) -%}
+    {%- set default_schema = target.schema -%}
+    {%- if target.name == 'prod' and custom_schema_name is not none -%}
         {{ custom_schema_name | trim }}
+    {%- else -%}
+        {{ default_schema }}
     {%- endif -%}
 {%- endmacro %}
 ```
