@@ -20,7 +20,7 @@ Claude is an AI assistant from Anthropic with two primary interfaces:
 
 Both interfaces can connect to either:
 - Self-hosted dbt MCP server (runs on your machine, supports CLI commands like `dbt run`) 
-- Remote dbt MCP server (HTTP, no install, consumption-focused). 
+- Remote dbt MCP server (HTTP, consumption-focused). OAuth needs no local install. Token-based auth on Claude Desktop uses the `mcp-remote` proxy and requires Node.js.
 
 ## Prerequisites
 
@@ -68,11 +68,11 @@ For more configuration options (env vars, service tokens, tool-access controls),
 
 ### Set up with remote dbt MCP server {#desktop-remote}
 
-The remote dbt MCP server runs in <Constant name="dbt_platform" /> &mdash; no `uvx` or other installations needed. Claude Desktop connects to it over HTTP.
+The remote dbt MCP server runs in <Constant name="dbt_platform" />. For OAuth, Claude Desktop connects over HTTP with a custom connector. For token-based auth, use the `mcp-remote` proxy described in the token tab (Claude Desktop does not accept `"type": "http"` in `claude_desktop_config.json`).
 
 <MCPRemoteOauthBetaCallout />
 
-Get your MCP URL first &mdash; you'll need it for both auth methods:
+Get your MCP URL first. You'll need it for both auth methods:
 
 <MCPRemoteServerUrl />
 
@@ -85,45 +85,58 @@ _Remote MCP OAuth is available in public beta for Starter, Enterprise, and Enter
 
 <MCPOauthPreflight />
 
-For OAuth, add dbt as a custom connector through Claude Desktop's settings &mdash; you don't need to edit `claude_desktop_config.json`.
+For OAuth, add dbt as a custom connector through Claude Desktop's settings. You don't need to edit `claude_desktop_config.json`.
 
 <MCPCustomConnectorOauth />
 
 </TabItem>
 <TabItem value="token" label="Token-based">
 
-Use token-based auth when your client doesn't yet support OAuth for HTTP MCP servers, or when you need a shared/CI setup.
+Use token-based auth when your client doesn't yet support OAuth for HTTP MCP servers, or when you need a shared or CI-style setup.
+
+:::caution `"type": "http"` is not valid in Claude Desktop
+Claude Desktop's `claude_desktop_config.json` only supports stdio-style MCP servers (`command`, `args`, and `env`). If you paste a `"type": "http"` block (the format used in Claude Code's `.mcp.json`), Claude Desktop skips the server with a message like _"some MCP servers could not be loaded … were skipped: dbt"_. Use the `mcp-remote` proxy config below instead. `"type": "http"` is supported in [Claude Code](#code-remote).
+:::
+
+Token-based remote MCP on Claude Desktop requires [Node.js](https://nodejs.org/) so `npx` can run `mcp-remote`.
 
 1. From Claude Desktop, go to **Settings &rarr; Developer &rarr; Edit Config** to open `claude_desktop_config.json`.
-2. Add a `dbt` entry under `mcpServers`:
+2. Add a `dbt-remote` entry under `mcpServers`:
 
     ```json
     {
       "mcpServers": {
-        "dbt": {
-          "type": "http",
-          "url": "https://YOUR_DBT_HOST_URL/api/ai/v1/mcp/",
-          "headers": {
-            "Authorization": "Token YOUR_DBT_ACCESS_TOKEN",
-            "x-dbt-prod-environment-id": "DBT_PROD_ENV_ID",
-            "x-dbt-user-id": "DBT_USER_ID",
-            "x-dbt-dev-environment-id": "DBT_DEV_ENV_ID"
-          }
+        "dbt-remote": {
+          "command": "npx",
+          "args": [
+            "mcp-remote",
+            "https://YOUR_DBT_HOST_URL/api/ai/v1/mcp/",
+            "--header",
+            "Authorization: Token YOUR_DBT_ACCESS_TOKEN",
+            "--header",
+            "x-dbt-prod-environment-id: DBT_PROD_ENV_ID"
+          ]
         }
       }
     }
     ```
 
+    Replace `YOUR_DBT_HOST_URL` with your hostname (for example, `abc123.us1.dbt.com`), and replace the token and environment ID placeholders with your values. To pass optional headers such as `x-dbt-user-id` or `x-dbt-dev-environment-id`, add more `"--header"` and `"Header-Name: value"` pairs to the `args` array.
+
     <MCPRemoteTokenHeaders />
 
-3. Save the file and restart Claude Desktop. Ask Claude a data question to confirm the server is connected.
+    :::tip Full path to `npx`
+    If Claude Desktop shows `Server disconnected` or can't find `npx`, set `"command"` to the full path from `which npx` (macOS or Linux) or `where npx` (Windows), for example `"command": "/opt/homebrew/bin/npx"`.
+    :::
+
+3. Save the file and restart Claude Desktop. In **Settings &rarr; Developer**, confirm `dbt-remote` is running. Ask Claude a data question to confirm the server is connected.
 
 </TabItem>
 </Tabs>
 
 ## Claude Code
 
-[Claude Code](https://www.anthropic.com/claude-code) reads MCP servers from `.mcp.json` at the root of your project (the repository root for your workspace). If you already configured the dbt MCP server for another client, you can reuse the same JSON shape here &mdash; you don't need a second, separate registration.
+[Claude Code](https://www.anthropic.com/claude-code) reads MCP servers from `.mcp.json` at the root of your project (the repository root for your workspace). For self-hosted setups, you can reuse the same `command` / `args` / `env` shape you use in other clients. For remote token-based auth, Claude Code supports `"type": "http"` in `.mcp.json`, which Claude Desktop does not.
 
 ### Set up with self-hosted dbt MCP server {#code-local}
 
@@ -145,7 +158,7 @@ The Claude Code CLI can register MCP servers with `claude mcp add`, but it typic
 
 ### Set up with remote dbt MCP server {#code-remote}
 
-Claude Code can connect to the remote dbt MCP server over HTTP &mdash; same JSON shape as Claude Desktop, lives in `.mcp.json` instead of `claude_desktop_config.json`.
+Claude Code can connect to the remote dbt MCP server over HTTP using `"type": "http"` in `.mcp.json`. That HTTP config shape is for Claude Code (and similar clients), not for Claude Desktop's `claude_desktop_config.json`.
 
 <MCPRemoteOauthBetaCallout />
 
@@ -214,7 +227,11 @@ Claude Code can connect to the remote dbt MCP server over HTTP &mdash; same JSON
 ## Troubleshooting
 <Expandable alt_header="Claude Desktop errors">
 
-Claude Desktop may return errors such as `Error: spawn uvx ENOENT` or `Could not connect to MCP server dbt-mcp`. For self-hosted installations, replace the `command` with the full path to `uvx`: run `which uvx` on Unix systems or `where uvx` on Windows and paste the full path into your JSON (for example, `"command": "/the/full/path/to/uvx"`). For remote setups, double-check that `url` ends in `/api/ai/v1/mcp/` and that your `Authorization` header is `Token YOUR_DBT_ACCESS_TOKEN` or `Bearer YOUR_DBT_ACCESS_TOKEN`.
+Claude Desktop may return errors such as `Error: spawn uvx ENOENT`, `Error: spawn npx ENOENT`, `Could not connect to MCP server dbt-mcp`, or `Server disconnected`. For self-hosted installations, replace the `command` with the full path to `uvx`: run `which uvx` on Unix systems or `where uvx` on Windows and paste the full path into your JSON (for example, `"command": "/the/full/path/to/uvx"`). For token-based remote setups with `mcp-remote`, apply the same full-path fix for `npx`.
+
+If Claude reports that entries in `claude_desktop_config.json` are not valid and were skipped, check that you are not using `"type": "http"` in that file. Use the [token-based `mcp-remote` config](#desktop-remote) instead.
+
+For remote setups, double-check that the MCP URL ends in `/api/ai/v1/mcp/` (including the trailing slash) and that your `Authorization` header value is `Token YOUR_DBT_ACCESS_TOKEN` or `Bearer YOUR_DBT_ACCESS_TOKEN`.
 
 Logs are at `~/Library/Logs/Claude` (macOS) or `%APPDATA%\Claude\logs` (Windows).
 </Expandable>
