@@ -34,7 +34,7 @@ dbt platform features adhere to the following lifecycle path:
     <strong style={{color: 'var(--color-coalesce-purple-800)', fontSize: '1rem'}}>Preview</strong>
   </div>
   <div style={{padding: '1.25rem 1.5rem', background: 'var(--ifm-background-color)'}}>
-    Stable and functionally ready for production. Planned additions or non-backward-compatible changes may still occur before GA. Includes documentation, technical support, and SLOs. Available at no extra cost, though may become paid at GA. If marked `Private`, access must be enabled by dbt Labs.
+    Stable and functionally ready for production. Planned additions or non-backward-compatible changes may still occur before GA. Includes documentation, technical support, and SLOs. If marked `Private`, access must be enabled by dbt Labs.
   </div>
 </div>
 
