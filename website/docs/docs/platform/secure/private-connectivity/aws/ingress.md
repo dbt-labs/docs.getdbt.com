@@ -28,8 +28,8 @@ dbt Labs provisions it for your instance. To scope it and receive your endpoint 
 
 This guide uses two roles, matching the AWS PrivateLink model:
 
-- **Provider** — <Constant name="dbt" />, which hosts the VPC endpoint service in front of your single-tenant instance.
-- **Customer** — you, who create the interface VPC endpoint in your own AWS account.
+- **Provider**: (<Constant name="dbt" />) Hosts the VPC endpoint service in front of your single-tenant instance.
+- **Customer**: (You) Creates the interface VPC endpoint in your own AWS account.
 
 ## Access URL naming convention
 
