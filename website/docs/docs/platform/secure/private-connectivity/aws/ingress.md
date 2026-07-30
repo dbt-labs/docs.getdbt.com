@@ -88,6 +88,14 @@ The endpoint is created in a **Pending** state while dbt accepts the connection,
 
 <Lightbox src="/img/docs/dbt-platform/aws-ingress-privatelink/endpoint-available.png" title="Endpoint details page showing status Available, private DNS names enabled, and the private.dbt.com record"/>
 
+### Step 6: (Optional) Configure DNS for on-premises access
+
+Workloads inside the associated VPC resolve the access URL automatically. Clients connecting from **on-premises** networks over **AWS VPN** or **AWS Direct Connect** need additional DNS configuration so they resolve the access URL to the endpoint's private IPs.
+
+To forward DNS queries from your on-premises network into the VPC, refer to the AWS documentation on [Route 53 Resolver inbound endpoints](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resolver-forwarding-inbound-queries.html).
+
+If all your users access the instance from inside the VPC, you can skip this step.
+
 ## Validate connectivity
 
 From an instance inside the selected VPC, confirm that:
@@ -98,7 +106,3 @@ From an instance inside the selected VPC, confirm that:
 :::warning Clients must send the correct TLS SNI
 The endpoint selects its certificate by TLS **Server Name Indication (SNI)**. Clients must send your access URL as the SNI. Some PrivateLink clients and libraries do not set SNI by default — without it, the endpoint returns a default certificate that will not match your access URL and the handshake fails.
 :::
-
-## Connecting from on-premises networks
-
-Workloads inside the associated VPC resolve the access URL automatically. For clients connecting from on-premises over **AWS VPN** or **AWS Direct Connect**, additional DNS configuration is required so those clients resolve the access URL to the endpoint's private IPs. Refer to the AWS documentation on [Route 53 Resolver inbound endpoints](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resolver-forwarding-inbound-queries.html) to forward DNS queries from your on-premises network into the VPC.
