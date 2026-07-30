@@ -117,7 +117,7 @@ export function getAccessFacets(access, { minPlan, plans } = {}, surface) {
       return surface === 'platform' ? [] : [{ facet: 'Login required', tooltip: ACCESS_TOOLTIPS['Login required'] }];
     case 'usage_based':
       return [
-        ...(surface === 'platform' ? [] : [{ facet: 'Login required', tooltip: 'Sign in with a dbt account. Available on all plan types.', tooltipLink: { href: 'https://www.getdbt.com/pricing', text: 'all plan types' } }]),
+        ...(surface === 'platform' ? [] : [{ facet: 'Login required', tooltip: 'Sign in with a dbt account. No paid dbt seat required.', tooltipLink: { href: 'https://www.getdbt.com/pricing', text: 'dbt seat' } }]),
         { facet: 'Usage-based', tooltip: ACCESS_TOOLTIPS['Usage-based'], label: FIELD_LABELS.usage },
       ];
     case 'paid_plan': {
