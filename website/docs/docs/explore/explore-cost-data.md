@@ -10,7 +10,7 @@ availability:
   minPlan: enterprise
 ---
 
-# Explore cost data <Lifecycle status="beta" />
+# Explore cost data
 
 
 You can access Cost Insights in these different <Constant name="dbt_platform" /> areas:

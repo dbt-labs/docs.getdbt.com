@@ -646,7 +646,7 @@ const sidebarSettings = {
                 "docs/build/dimensions",
                 "docs/build/entities",
                 "docs/build/measures",
-                "docs/build/osi-semantic-models",
+                "docs/build/ossie-semantic-models",
               ],
             },
             {
@@ -712,6 +712,7 @@ const sidebarSettings = {
                 "docs/build/iceberg/adapters/snowflake-iceberg-support",
                 "docs/build/iceberg/adapters/databricks-iceberg-support",
                 "docs/build/iceberg/adapters/bigquery-iceberg-support",
+                "docs/build/iceberg/adapters/duckdb-iceberg-support",
               ],
             },
           ],
@@ -1031,6 +1032,7 @@ const sidebarSettings = {
       link: { type: "doc", id: "docs/dbt-versions/about-versions" },
       items: [
         "docs/dbt-versions/about-versions",
+        "docs/dbt-versions/fusion-version-compatibility",
         "docs/dbt-versions/dbt-versions",
         "docs/dbt-versions/dbt-release-tracks",
         "docs/dbt-versions/upgrade-dbt-platform-version",
