@@ -36,7 +36,7 @@ This guide uses two roles, matching the AWS PrivateLink model:
 Single-tenant ingress uses the domain convention `<customer_name>.private.dbt.com` for your access URL. When you enable private DNS on the endpoint (see [Step 3](#step-3-select-your-vpc-and-enable-private-dns)), AWS provisions a private hosted zone containing a wildcard record for this domain. The wildcard covers the product subdomains served by your instance, such as the semantic layer and metadata (Discovery) endpoints, so a single endpoint serves all of them.
 
 :::info The provider must verify your custom domain first
-Private DNS on the endpoint only works once <Constant name="dbt" /> (the provider) has verified the custom domain on the endpoint service. Confirm with dbt that your instance is ready for ingress PrivateLink before you begin.
+Private DNS on the endpoint only works once <Constant name="dbt" /> (the provider) has verified the custom domain on the endpoint service. Confirm with your dbt Labs account team or Solutions Architect that your instance is ready for ingress PrivateLink before you begin.
 :::
 
 ## Prerequisites
