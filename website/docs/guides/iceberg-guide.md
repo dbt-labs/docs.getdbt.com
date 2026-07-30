@@ -67,7 +67,6 @@ Throughout this guide, replace these placeholders with your own values:
 This guide will use a heavily augmented copy of the traditional Jaffle Shop project. The project itself contains more information than required to simply setup an Iceberg workflow, so you can use it to run more trials and observe results. 
 
 You can find the project [here](https://github.com/matthewshaver/fusion-jaffle-shop)
-_Run the entire project from the branch `dbt-iceberg`_
 
 Run `dbt init` and configure the project to connect to your Snowflake account using the following:
 - **Warehouse:** COMPUTE_WH
