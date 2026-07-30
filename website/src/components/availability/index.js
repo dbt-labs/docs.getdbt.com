@@ -45,8 +45,8 @@ function normalizeAvailability(availability) {
       tooltipLink: SURFACE_TOOLTIP_LINKS[surface],
     });
   }
-  accessFacets.forEach(({ facet, tooltip, label }) => {
-    rows.push({ label: label ?? FIELD_LABELS.access, value: facet, tooltip });
+  accessFacets.forEach(({ facet, tooltip, tooltipLink, label }) => {
+    rows.push({ label: label ?? FIELD_LABELS.access, value: facet, tooltip, tooltipLink });
   });
 
   // Engine leads the badge — it's the axis readers get stuck on first ("does this apply
