@@ -20,7 +20,7 @@ export const FIELD_LABELS = {
   engine: 'Version',
   surface: 'Where',
   access: 'Access',
-  usage: 'Usage',
+  usage: 'Billing',
 };
 
 // v1 = dbt Core 1.x (1.99 and earlier). v2 = dbt Fusion engine 2.0 and later.
