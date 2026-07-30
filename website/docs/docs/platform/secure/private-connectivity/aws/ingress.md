@@ -3,6 +3,10 @@ title: "AWS PrivateLink for single-tenant ingress"
 id: aws-ingress
 description: "Configure inbound AWS PrivateLink so your services reach a single-tenant dbt platform instance over a private access URL."
 sidebar_label: "Ingress (access URL)"
+availability:
+  surface: platform
+  access: paid_plan
+  minPlan: enterprise_plus
 ---
 
 import SetUpPages from '/snippets/_available-tiers-enterprise-plus.md';
