@@ -2,9 +2,13 @@
 title: "Single sign-on, SCIM, and OAuth"
 description: "Overview of SSO, SCIM, and OAuth options for authentication and access in the dbt platform."
 id: "sso-oauth-intro"
+availability:
+  surface: platform
+  access: paid_plan
+  minPlan: enterprise
 ---
 
-# Single sign-on and OAuth <Lifecycle status="managed, managed_plus" />
+# Single sign-on and OAuth 
 
 This section covers how to authenticate users and connect data platforms in <Constant name="dbt_platform" /> using:
 

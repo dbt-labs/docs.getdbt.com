@@ -4,6 +4,7 @@ id: dbt_cloud.yml
 sidebar_label: "dbt_cloud.yml"
 description: "Reference for the dbt_cloud.yml credentials file used by the dbt CLI and dbt VS Code extension to connect to the dbt platform."
 pagination_next: null
+availability: platform_login
 ---
 
 The `dbt_cloud.yml` file stores the credentials that dbt tools &mdash; like the [<Constant name="platform_cli" />](/docs/platform/dbt-cli-installation), the [dbt VS Code extension](/docs/about-dbt-extension), and more &mdash; use to authenticate with <Constant name="dbt_platform" />. You can download it from <Constant name="dbt_platform" /> and save it locally to your `.dbt` directory.

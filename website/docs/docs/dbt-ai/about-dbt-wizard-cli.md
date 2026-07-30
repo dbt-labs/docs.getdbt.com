@@ -5,6 +5,7 @@ description: "The dbt Wizard CLI helps teams ship higher-quality dbt changes fas
 sidebar_label: "About dbt Wizard CLI"
 tags: [AI, Wizard]
 image: /img/docs/wizard-cli-intro.png
+availability: local_all
 ---
 
 import WizardSupportedProviders from '/snippets/_wizard-supported-providers.md';
@@ -54,6 +55,10 @@ Use <Constant name="wizard" /> CLI to:
 - Run non-interactively in CI with `exec` and `review`
 
 For more examples, visit [Use cases and examples](/docs/dbt-ai/wizard-use-cases).
+
+:::tip Best practices for using dbt Wizard
+For recommended workflows on real project tasks, refer to [How to use dbt Wizard in your dbt project](/best-practices/how-to-use-wizard/wizard-1-intro).
+:::
 
 <WizardSupportedProviders />
 

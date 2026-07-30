@@ -72,7 +72,7 @@ models:
 
 | Config | Default | Scope | Description |
 |--------|---------|-------|-------------|
-| [`lag_tolerance`](/reference/resource-configs/lag-tolerance) | `45m` | Node, folder, or project-level via model config | How much time must pass since the last upstream data change before a node is eligible for a rebuild. Applies to data freshness only; if an upstream model's compiled SQL has changed, the node rebuilds regardless of the `lag_tolerance` setting. |
+| [`lag_tolerance`](/reference/resource-configs/lag-tolerance) | `45m` | Node, folder, or project-level via model config | How much time must pass since the last upstream data change before a node is eligible for a rebuild. Acts as a compute-saving buffer that helps align builds with freshness SLAs. Applies to data freshness only; SQL changes always trigger a rebuild regardless of this setting. |
 | [`require_fresh_data_from`](/reference/resource-configs/require-fresh-data-from) | `any` | Node, folder, or project-level via model config | Whether `any` or `all` direct parents need fresh data before a node is eligible for a rebuild. |
 | [`pre_clone`](/reference/resource-configs/pre-clone) | `if_missing` | Node, folder, or project-level via model config | Whether dbt State pre-populates incremental models and snapshots by cloning production before a run. |
 | [`execute_hooks_on_any_reuse`](/reference/resource-configs/execute-hooks-on-any-reuse) | `false` | Node, folder, or project-level via model config | Whether pre- and post-hooks run when a node is reused without rebuilding. |

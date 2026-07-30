@@ -3,6 +3,7 @@ title: "Custom schemas"
 description: "Configure custom schemas for your dbt model's tables and views in the database."
 id: "custom-schemas"
 pagination_next: "docs/build/custom-databases"
+availability: all_users
 ---
 
 By default, all dbt models are built in the schema specified in your [environment](/docs/dbt-platform-environments) (<Constant name="dbt_platform" />) or [profile's target](/docs/local/dbt-core-environments) (<Constant name="core" />). This default schema is called your _target schema_.

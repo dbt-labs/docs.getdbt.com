@@ -4,9 +4,13 @@ sidebar_label: "Explore cost data"
 description: "View warehouse costs, optimization impact, and model performance data across your project dashboard, model pages, and job details." 
 id: "explore-cost-data"
 tags: ['scheduler','SAO', 'cost savings', 'models built', 'cost insights']
+availability:
+  surface: platform
+  access: paid_plan
+  minPlan: enterprise
 ---
 
-# Explore cost data <Lifecycle status="beta,managed,managed_plus" />
+# Explore cost data
 
 
 You can access Cost Insights in these different <Constant name="dbt_platform" /> areas:
@@ -74,6 +78,7 @@ The project dashboard includes the following tabs that help you analyze cost and
 ### Table view
 
 Access the table view by clicking **Show table**, which provides detailed optimization data such as models reused, usage reduction, and cost reduction.
+
 
 import TableView from '/snippets/_table-view.md';
 

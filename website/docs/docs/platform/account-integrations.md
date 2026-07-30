@@ -2,6 +2,9 @@
 title: "Account integrations in dbt"
 sidebar_label: "Account integrations" 
 description: "Learn how to configure account integrations for your dbt account."
+availability:
+  surface: platform
+  access: login_required
 ---
 
 The following sections describe the different **Account integrations** available from your <Constant name="dbt" /> account under the account **Settings** section.

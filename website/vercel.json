@@ -39,6 +39,36 @@
   ],
   "redirects": [
     {
+      "source": "/docs/build/osi-semantic-models",
+      "destination": "/docs/build/ossie-semantic-models",
+      "permanent": true
+    },
+    {
+      "source": "/docs/fusion/telemetry",
+      "destination": "/reference/telemetry-observability",
+      "permanent": true
+    },
+    {
+      "source": "/docs/fusion/fusion-networking",
+      "destination": "/docs/local/fusion-networking-requirements",
+      "permanent": true
+    },
+    {
+      "source": "/docs/fusion/new-concepts",
+      "destination": "/docs/build/about-static-analysis",
+      "permanent": true
+    },
+    {
+      "source": "/docs/fusion/fusion",
+      "destination": "/docs/fusion/about-fusion",
+      "permanent": true
+    },
+    {
+      "source": "/docs/fusion",
+      "destination": "/docs/fusion/about-fusion",
+      "permanent": true
+    },
+    {
       "source": "/reference/global-configs/hints",
       "destination": "/reference/global-configs/about-global-configs",
       "permanent": true
@@ -1688,6 +1718,31 @@
     {
       "source": "/docs/build/metrics",
       "destination": "/docs/build/build-metrics-intro",
+      "permanent": true
+    },
+    {
+      "source": "/docs/mesh/iceberg/about-catalogs",
+      "destination": "/docs/build/iceberg/about-catalogs",
+      "permanent": true
+    },
+    {
+      "source": "/docs/mesh/iceberg/bigquery-iceberg-support",
+      "destination": "/docs/build/iceberg/adapters/bigquery-iceberg-support",
+      "permanent": true
+    },
+    {
+      "source": "/docs/mesh/iceberg/databricks-iceberg-support",
+      "destination": "/docs/build/iceberg/adapters/databricks-iceberg-support",
+      "permanent": true
+    },
+    {
+      "source": "/docs/mesh/iceberg/snowflake-iceberg-support",
+      "destination": "/docs/build/iceberg/adapters/snowflake-iceberg-support",
+      "permanent": true
+    },
+    {
+      "source": "/docs/mesh/iceberg/apache-iceberg-support",
+      "destination": "/docs/build/iceberg/apache-iceberg-support",
       "permanent": true
     },
     {

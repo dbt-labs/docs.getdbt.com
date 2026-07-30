@@ -3,6 +3,9 @@ title: "Upgrading to v1.5"
 description: New features and changes in dbt Core v1.5
 id: "upgrading-to-v1.5"
 displayed_sidebar: "docs"
+availability:
+  engine: v1
+  access: free
 ---
 
 <Constant name="core" /> v1.5 is a feature release, with two significant additions:

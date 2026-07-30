@@ -15,6 +15,7 @@ meta:
   slack_channel_link: 'https://getdbt.slack.com/archives/C02V2QHFF7U'
   platform_name: 'SingleStore'
   config_page: '/reference/resource-configs/singlestore-configs'
+availability: local_free
 ---
 
 

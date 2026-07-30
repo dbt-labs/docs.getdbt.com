@@ -15,6 +15,7 @@ meta:
   platform_name: 'Infer'
   config_page: '/reference/resource-configs/infer-configs'
   min_supported_version: n/a
+availability: local_free
 ---
 
 

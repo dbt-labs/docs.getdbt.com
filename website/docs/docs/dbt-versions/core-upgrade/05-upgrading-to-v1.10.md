@@ -3,6 +3,9 @@ title: "Upgrading to v1.10"
 id: upgrading-to-v1.10
 description: New features and changes in dbt Core v1.10
 displayed_sidebar: "docs"
+availability:
+  engine: v1
+  access: free
 ---
  
 ## Resources 
@@ -118,7 +121,7 @@ models:
 
 </File>
 
-Check out our [docs on external catalog support](/docs/mesh/iceberg/about-catalogs) today! We'll have more information about this in the coming weeks, but this is an exciting step in journey to cross-platform support. 
+Check out our [docs on external catalog support](/docs/build/iceberg/about-catalogs) today! We'll have more information about this in the coming weeks, but this is an exciting step in journey to cross-platform support. 
 
 ### Integrating dbt Core artifacts with dbt projects
 

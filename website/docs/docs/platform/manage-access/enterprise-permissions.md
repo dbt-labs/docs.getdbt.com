@@ -4,9 +4,13 @@ id: "enterprise-permissions"
 description: "Permission sets for Enterprise plans."
 hide_table_of_contents: true #For the sake of the tables on this page
 pagination_next: null
+availability:
+  surface: platform
+  access: paid_plan
+  minPlan: enterprise
 ---
 
-# Enterprise permissions <Lifecycle status="managed,managed_plus" />
+# Enterprise permissions
 
 import Permissions from '/snippets/_enterprise-permissions-table.md';
 import SetUpPages from '/snippets/_available-enterprise-only.md';
