@@ -39,6 +39,7 @@ To simplify the docs experience, clarify availability, and make it easier to fin
 
 #### Additional dbt platform changes
 
+- **Enhancement**: [The <Constant name="wizard"/> home tab in <Constant name="dbt_platform"/>](/docs/platform/wizard-home) is now available in Public Preview. You can build and change dbt projects through natural language, with inline diffs, DAG previews, and validation built in.
 - **New:** [Cost Insights](/docs/explore/cost-insights) is now generally available (GA) for Snowflake, BigQuery, and Databricks.
 - **Preview:** [Cost Insights](/docs/explore/cost-insights) for Amazon Redshift is now in preview.
 - **Enhancement:** Users with `user_credential_write` access can now view and manage their credentials without needing `credentials_read` privileges. This update reduces the need for additional, broader permissions when performing credential updates.
