@@ -5,6 +5,8 @@ sidebar_label: "About Iceberg catalogs"
 description: Understand technical data catalogs, and how they support dbt + Iceberg workflows
 ---
 
+# About Iceberg catalogs <Lifecycle status="preview" />
+
 A technical data catalog is a metadata management layer that enables users and tools to programmatically discover, understand, and govern data assets that are available across multiple data platforms and query engines.
 
 ## Background

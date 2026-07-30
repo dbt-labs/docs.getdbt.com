@@ -5,6 +5,8 @@ sidebar_label: "BigQuery Iceberg support"
 description: Understand BigQuery support for Apache Iceberg.
 ---
 
+# BigQuery and Apache Iceberg <Lifecycle status="preview" />
+
 import BaseLocationEnvIsolation from '/snippets/_base-location-env-isolation-warning.md';
 
 dbt supports materializing models in the Iceberg table format in two ways:

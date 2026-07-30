@@ -5,6 +5,8 @@ sidebar_label: "Databricks Iceberg support"
 description: Understand Databricks support for Apache Iceberg.
 ---
 
+# Databricks and Apache Iceberg <Lifecycle status="preview" />
+
 import BaseLocationEnvIsolation from '/snippets/_base-location-env-isolation-warning.md';
 
 dbt supports materializing Iceberg tables in Unity Catalog in two ways:
