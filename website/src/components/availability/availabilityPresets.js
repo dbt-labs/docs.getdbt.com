@@ -20,6 +20,7 @@ export const FIELD_LABELS = {
   engine: 'Version',
   surface: 'Where',
   access: 'Access',
+  usage: 'Usage',
 };
 
 // v1 = dbt Core 1.x (1.99 and earlier). v2 = dbt Fusion engine 2.0 and later.
@@ -116,8 +117,8 @@ export function getAccessFacets(access, { minPlan, plans } = {}, surface) {
       return surface === 'platform' ? [] : [{ facet: 'Login required', tooltip: ACCESS_TOOLTIPS['Login required'] }];
     case 'usage_based':
       return [
-        ...(surface === 'platform' ? [] : [{ facet: 'Login required', tooltip: ACCESS_TOOLTIPS['Login required'] }]),
-        { facet: 'Usage-based', tooltip: ACCESS_TOOLTIPS['Usage-based'] },
+        ...(surface === 'platform' ? [] : [{ facet: 'Login required', tooltip: 'Sign in with a dbt account. Available on all plan types.' }]),
+        { facet: 'Usage-based', tooltip: ACCESS_TOOLTIPS['Usage-based'], label: FIELD_LABELS.usage },
       ];
     case 'paid_plan': {
       const planList = resolvePlans(minPlan, plans);
