@@ -92,7 +92,7 @@ The endpoint is created in a **Pending** state while dbt accepts the connection,
 
 From an instance inside the selected VPC, confirm that:
 
-1. Your access URL resolves to a **private** IP address from the endpoint (not a public address).
+1. Your access URL resolves to a _private_ IP address from the endpoint (not a public address).
 2. The TLS handshake succeeds and the returned certificate matches your access URL.
 
 :::warning Clients must send the correct TLS SNI
