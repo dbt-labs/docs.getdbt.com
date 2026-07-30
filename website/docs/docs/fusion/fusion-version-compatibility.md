@@ -78,7 +78,7 @@ If you install <Constant name="fusion" /> manually in an air-gapped or firewall-
 
 4. Point the dbt VS Code extension at the verified binary using the `dbt.fusionPath` setting. Refer to [dbt extension settings](/docs/configure-dbt-extension#dbt-extension-settings).
 
-For network and proxy requirements, and how to pre-build an offline bundle, refer to [Networking requirements](/docs/fusion/fusion-networking#restricted-network-installation).
+For network and proxy requirements, and how to pre-build an offline bundle, refer to [Networking requirements](/docs/local/fusion-networking#restricted-network-installation).
 
 ## Known-bad releases
 
