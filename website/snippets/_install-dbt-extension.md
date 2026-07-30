@@ -55,7 +55,7 @@ To use the extension, you need the following:
 
 :::note The language server ships with the Fusion engine
 
-The dbt language server is part of the <Constant name="fusion_engine" /> binary rather than a separate download &mdash; the extension runs it through <Constant name="fusion" />. If you install <Constant name="fusion" /> manually (for example, in an air-gapped environment) instead of letting the extension manage it, use the [version compatibility matrix](/docs/fusion/fusion-version-compatibility) to pick a binary that matches your extension version.
+The dbt language server is part of the <Constant name="fusion_engine" /> binary rather than a separate download &mdash; the extension runs it through <Constant name="fusion" />. If you install <Constant name="fusion" /> manually (for example, in an air-gapped environment) instead of letting the extension manage it, use the [version compatibility matrix](/docs/dbt-versions/fusion-version-compatibility) to pick a binary that matches your extension version.
 
 :::
 
