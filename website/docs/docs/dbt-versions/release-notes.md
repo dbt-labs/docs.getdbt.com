@@ -5,6 +5,8 @@ id: "release-notes"
 sidebar: "dbt release notes"
 pagination_next: null
 pagination_prev: null
+availability:
+  surface: platform
 ---
 
 <Constant name="dbt" /> release notes for recent and historical changes. Release notes fall into one of the following categories:
@@ -20,11 +22,48 @@ For <Constant name="fusion_engine" /> updates, refer to the [dbt-fusion changelo
 
 ## July 2026
 
+#### Docs changes
+
+To simplify the docs experience, clarify availability, and make it easier to find what applies to you, we made the following changes to the docs site:
+
+*tl;dr:* The docs are now organized around v1 and v2 for simplified docs versioning and navigation. We've clarified dbt Core and licensing, reorganized v2 content, and refreshed adapter and Fusion availability guidance. If you notice anything off or have any feedback, we'd love to hear it! Open up a [docs issue here](https://github.com/dbt-labs/docs.getdbt.com/issues)
+
+- **Enhancement**: We've updated the version switcher on the docs site. The version switcher now just shows v1 and v2. v2 is the current generation of dbt, built on Rust for a faster, richer dev experience; v1 is the Python-based generation of dbt. Refer to [dbt versions](/docs/introduction#dbt-versions) for what's different between v1 and v2.
+- **New:** We've added a dedicated page explaining dbt Core and its distributions. dbt Core 2.0 is the Rust-based open-source runtime. dbt Core v1.x is the Python-based runtime. Refer to [About dbt Core](/docs/fusion/about-core) for more info.
+- **New:** Licensing across dbt Core now has its own page, so you can see what applies to your setup in one place. Refer to [dbt licensing](/docs/dbt-licensing).
+- **Enhancement:** [Static analysis](/docs/build/about-static-analysis) now lives with the rest of your build docs and available in v2.
+- **Enhancement:** The Fusion upgrade readiness checklist now sits right next to the [v2 upgrade guide](/docs/dbt-versions/core-upgrade/upgrading-to-v2), and the networking and telemetry references moved in [local install](/docs/local/fusion-networking-requirements) and [Reference](/reference/telemetry-observability).
+- **Enhancement:** More adapters are closer to general availability &mdash; Snowflake, BigQuery, Databricks, and Redshift are now in **Preview**, and Spark and DuckDB are in **Beta**. Refer to [Adapter lifecycles](/docs/fusion/fusion-availability?version=2.0#adapter-lifecycle) for the current status of each adapter.
+- **Enhancement:** Simplified and clarified the [Fusion feature tables](/docs/fusion/fusion-availability?version=2.0#what-you-get-with-fusion) to make it easier to see what's available and how to get it.
+- **New:** Added availability badges to pages and sections so you can quickly see what applies to your setup at a glance.
+
+#### Additional dbt platform changes
+
+- **New:** [Cost Insights](/docs/explore/cost-insights) is now generally available (GA) for Snowflake, BigQuery, and Databricks.
+- **Preview:** [Cost Insights](/docs/explore/cost-insights) for Amazon Redshift is now in preview.
+- **Enhancement:** Users with `user_credential_write` access can now view and manage their credentials without needing `credentials_read` privileges. This update reduces the need for additional, broader permissions when performing credential updates.
+- **Enhancement:** The [<Constant name="wizard" />](/docs/platform/wizard-platform) in <Constant name="dbt_platform"/> has a redesigned empty state with updated suggested prompts to help you discover different ways to get started. A new wayfinder bar keeps your current project and branch visible and highlights the next step as you move from asking questions to changing code and opening a pull request.
+- **Enhancement:** <Constant name="catalog" /> now supports a **Warn** last-run status. Resources whose last run completed with warnings show a distinct status and tooltip, and you can filter by **Warn** alongside other run statuses.
+- **New:** You can now create hybrid jobs to track runs triggered by an external orchestrator. Hybrid jobs have a simplified setup that omits execution steps, triggers, advanced settings, and cost-optimization controls. They display **Externally triggered** as their next-run schedule and are available only for projects configured as [Hybrid projects](/docs/deploy/hybrid-projects).
+- **Enhancement:** Runs using a <Constant name="fusion" /> dbt version now invoke the built-in [`dbt lint`](/reference/commands/lint) command instead of SQLFluff. <Constant name="fusion" /> virtual environments do not include SQLFluff, so linting now works for all Fusion-version runs and runs faster.
+- **Enhancement:** When the agent compresses conversation context in the background, a spinner labeled **Optimizing conversation context…** now appears in the chat area. Submitting new messages and stopping the agent are disabled while compaction is in progress to prevent conflicts.
+- **Enhancement:** When [<Constant name="wizard" />](/docs/platform/wizard-platform) is unavailable (not activated, trial expired, or spend limit reached), <Constant name="studio_ide" /> now shows a dedicated screen with the specific reason and an appropriate action instead of a generic message.
+- **Enhancement:** The users table, group member lists, and user edit drawer now search, filter, sort, and paginate server-side. On large accounts, all users are findable by name, email, or license type, group member search no longer misses results beyond the first page, and users beyond the first page can be opened and edited in the user edit drawer.
+- **Enhancement:** The **Enable global account discovery** setting on the **Account settings** page is now visible to all entitled accounts without requiring a feature flag. You can allow or restrict account discovery from [Account settings](/docs/platform/account-settings#enable-global-account-discovery).
+- **Enhancement:** Credential-level [connection overrides](/docs/dbt-platform-environments#extended-attributes) (such as Databricks catalog, Snowflake warehouse, role, and database) are now surfaced as a read-only **Connection overrides** section in the profile details view, without requiring you to open the edit form.
+- **Fix:** When a run pod is Out of Memory (OOM)-killed and restarted, the platform now passes the correct status code and message to the config API so the run transitions to a failed state in the <Constant name="dbt_platform" /> UI instead of remaining **running** indefinitely.
+- **Fix:** The Secure Shell (SSH) connection and authentication timeouts for <Constant name="semantic_layer" /> data platform connections are now 30 seconds (previously 1 second). If your bastion host or network path has higher latency, you will no longer experience deterministic connection failures. Refer to [Set up the <Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/setup-sl) for more information.
+- **Fix:** Some types of Compile SQL queries are now rejected if they are too complex. If a request fails with a validation error, try reducing the number of metrics or group-by dimensions in the query.
 - **Behavior change:** You can no longer create a [service token](/docs/dbt-apis/service-tokens) using an account-scoped [personal access token](/docs/dbt-apis/user-tokens) (PAT). Requests to the service tokens endpoint authenticated with a PAT now return a `400` error. Use a service token to create new ones instead.
 - **New:** You can now access dbt State settings from **Account settings** > **Billing & Usage**, previously found under **State**. You can manage your trial, enable dbt State on environments and jobs, and set spend alerts &mdash; all in one place. For details, refer to [dbt State trial and billing](/docs/deploy/dbt-state-trial).
+- **New:** Redshift development connections now support [external OAuth](/docs/platform/manage-access/redshift-external-oauth) (Okta or Entra ID) through AWS IAM Identity Center.
 
 ## June 2026
 
+- **Enhancement:** You can now enable [dbt State](/docs/deploy/dbt-state-about) on continuous integration and merge job types, in addition to deploy jobs. For more information, refer to [Enabling dbt State on individual jobs](/docs/deploy/dbt-state-enable-jobs).
+- **Enhancement**: The [Cost Insights](/docs/explore/cost-insights) table view now includes **All** and **Jobs** buttons to switch between an aggregated cost view and a per-job cost breakdown. Available in the project dashboard and the **Model performance** section in <Constant name="catalog" />. When **Jobs** is selected, the CSV export includes job-level data. For more information, refer to [Explore cost data](/docs/explore/explore-cost-data).
+- **Enhancement:** [<Constant name="wizard" />](/docs/platform/wizard-platform) tool calls for dbt command invocations now stream their output live in chat, in both the <Constant name="studio_ide" /> and [Wizard home](/docs/platform/wizard-home).
+- **Enhancement:** You can now download files from the <Constant name="studio_ide" /> File explorer. Right-click a file and select **Download** to save it to your computer. For more information, refer to the [<Constant name="studio_ide" /> user interface](/docs/platform/studio-ide/ide-user-interface#basic-layout).
 - **Fix:** If you use the Administrator API to manage [SCIM](/docs/platform/manage-access/scim) to sync users from your identity provider, the `/api/v3/accounts/{account_id}/scim/v2/Users` response now returns `value` and `display` on each embedded group reference. `id` and `displayName` are retained so existing integrations keep working — this is a non-breaking change.
 - **Enhancement**: The [Administrative API v3](/dbt-cloud/api-v3) now supports private endpoint operations &mdash; [`list`](https://docs.getdbt.com/dbt-cloud/api-v3?version=2.0&name=Fusion#/operations/List%20Private%20Endpoints), [`create`](https://docs.getdbt.com/dbt-cloud/api-v3?version=2.0&name=Fusion#/operations/Create%20Private%20Endpoint), [`retrieve`](https://docs.getdbt.com/dbt-cloud/api-v3?version=2.0&name=Fusion#/operations/Retrieve%20Private%20Endpoint), [`update`](https://docs.getdbt.com/dbt-cloud/api-v3?version=2.0&name=Fusion#/operations/Update%20Private%20Endpoint), and [`delete`](https://docs.getdbt.com/dbt-cloud/api-v3?version=2.0&name=Fusion#/operations/Delete%20Private%20Endpoint). Use these endpoints to manage private connectivity programmatically.
 - **Enhancement**: You can [download OpenTelemetry (OTel) logs](/docs/deploy/run-visibility#access-logs) for individual dbt command steps in Fusion job runs.
@@ -41,14 +80,14 @@ For <Constant name="fusion_engine" /> updates, refer to the [dbt-fusion changelo
 
 The following features are new or enhanced as part of dbt Labs announcements at [Snowflake Summit 2026](https://www.getdbt.com/events/snowflake-summit-2026) in San Francisco from June 1–4, 2026:
 
-- **Alpha**: [<Constant name="core" /> v2.0](/docs/dbt-versions/core-upgrade/upgrading-to-v2) is now available in alpha!
-  - **New**: <Constant name="core" /> v2.0 is the open-source Apache 2.0 foundation that the <Constant name="fusion_engine" /> builds on, delivering a faster, Rust-based runtime. It ships as two distributions: `dbt-core` (OSS, Apache 2.0) and `dbt` (<Constant name="fusion" /> distribution, proprietary).
+- **Alpha**: [dbt Core 2.0](/docs/dbt-versions/core-upgrade/upgrading-to-v2) is now available in alpha!
+  - **New**: dbt Core 2.0 is the open-source Apache 2.0 foundation that the <Constant name="fusion_engine" /> builds on, delivering a faster, Rust-based runtime. It ships as two distributions: `dbt-core` (OSS, Apache 2.0) and `dbt` (<Constant name="fusion" /> distribution, proprietary).
 - **Beta**: [`dbt lint`](/reference/commands/lint) is now available in beta!
   - **New**: `dbt lint` is a high-performance SQL linter built into the <Constant name="dbt_platform" />, available on projects running the <Constant name="fusion_engine" />. It is SQLFluff-compatible; it reads your existing `.sqlfluff` config, uses the same rule codes, and respects `-- noqa` suppression comments. In benchmarks, it runs roughly 50× faster than single-threaded SQLFluff..
 - **Preview**: [dbt Docs v2](/docs/build/view-documentation#dbt-docs-v2) is now available in preview!
-  - **New**: dbt Docs v2 is a next-generation open-source catalog experience available with the <Constant name="fusion_engine" /> and <Constant name="core" /> v2. It uses a compact binary index instead of loading the full `manifest.json` in the browser, making it significantly faster for large projects.
+  - **New**: dbt Docs v2 is a next-generation open-source catalog experience available with the <Constant name="fusion_engine" /> and dbt Core 2.0. It uses a compact binary index instead of loading the full `manifest.json` in the browser, making it significantly faster for large projects.
   - **New**: dbt Docs v2 includes a redesigned UI, <Constant name="semantic_layer" /> metadata, column-level lineage (<Constant name="fusion" /> only), and a REST API at `/api/v1/` so AI agents and MCP servers can query your dbt project metadata without a browser.
-  - **New**: Generate and serve [dbt Docs v2](/docs/build/view-documentation#dbt-docs-v2) with the <Constant name="fusion_engine" /> or <Constant name="core" /> v2 by running a dbt command with `--use-index`, then `dbt docs serve`. Add [`--write-catalog`](/reference/commands/cmd-docs#--write-catalog-flag) for richer column type metadata.
+  - **New**: Generate and serve [dbt Docs v2](/docs/build/view-documentation#dbt-docs-v2) with the <Constant name="fusion_engine" /> or dbt Core 2.0 by running a dbt command with `--use-index`, then `dbt docs serve`. Add [`--write-catalog`](/reference/commands/cmd-docs#--write-catalog-flag) for richer column type metadata.
 - **Preview**: [dbt State](/docs/deploy/dbt-state-about) is now available in preview!
   - **New**: dbt State skips or clones nodes when the logic and data haven't changed, rather than rebuilding everything on every run. Available natively in <Constant name="dbt" /> v2.0, the <Constant name="dbt_platform" />, and the <Constant name="fusion_engine" />, and as a plugin for <Constant name="core" /> v1.7-1.12. To get started, refer to [Set up dbt State](/docs/deploy/dbt-state-setup).
   - **New**: [dbt State pricing](/docs/platform/billing/dbt-state-usage) is usage-based at $0.094 per daily unique reuse. New organizations receive a 30-day free trial with no usage limit.
@@ -56,7 +95,7 @@ The following features are new or enhanced as part of dbt Labs announcements at 
 
 - **New**: dbt Wizard is available in dbt platform as a public preview. Introducing dbt Wizard CLI as a public beta. Purpose-built for agentic governed data development in dbt, dbt Wizard understands your project through a  [native metadata engine](/docs/dbt-ai/wizard-how-it-works#native-metadata-engine), unlike general-purpose coding agents.
   - **New**: [Support for Anthropic as a BYOK provider for dbt AI](/docs/platform/enable-dbt-ai#configure-your-ai-provider). 
-  - **New**: [`dbt login`](/reference/commands/login) is a new CLI command available in <Constant name="core" /> v2.0 and later. It opens browser-based authentication and shares your login state across the CLI, dbt VS Code extension, dbt State, and dbt Wizard CLI with no separate sign-in flows needed.
+  - **New**: [`dbt login`](/reference/commands/login) is a new CLI command available in dbt Core 2.0 and later. It opens browser-based authentication and shares your login state across the CLI, dbt VS Code extension, dbt State, and dbt Wizard CLI with no separate sign-in flows needed.
 - **New:** OAuth client registrations now accept custom-scheme redirect URIs (for example, `cursor://` or `vscode://`), so you can build native app OAuth integrations with Cursor and VS Code.
 - **New:** Public REST API endpoints at `/api/ide/v3/{environment_id}/files/` support <Constant name="studio_ide" /> workspace file operations, including stat, read, write, list, delete, mkdir, and rename. Pass file paths as query parameters.
 - **New:** The `GET /api/ide/v3/{environment_id}/status` endpoint returns the `dbt_version` and `is_fusion` status for a given environment.
@@ -155,7 +194,7 @@ The Invites endpoints of the dbt platform Admin v2 API now include these additio
 
   State-aware orchestration is in private preview. refer to the [prerequisites for using the feature](/docs/deploy/state-aware-setup#prerequisites).
 - **Enhancement:** [dbt <Constant name="wizard" />](/docs/platform/wizard-platform) correctly detects column names across various `schema.yml` files, adds only missing descriptions, and preserves existing ones.
-- **Enhancement**: The <Constant name="fusion"/> CLI now automatically reads environment variables from a `.env` file in your current working directory (the folder you `cd` into and run dbt commands from in your terminal), if one exists. This provides a simple way to manage credentials and configuration without hardcoding them in your `profiles.yml`. The [dbt VS Code extension](/docs/about-dbt-extension) also supports `.env` files and <Term id="lsp" />-powered features. For more information, refer to [Configure environment variables](/docs/local/configure-environment-variables).
+- **Enhancement**: v2 now automatically reads environment variables from a `.env` file in your current working directory (the folder you `cd` into and run dbt commands from in your terminal), if one exists. This provides a simple way to manage credentials and configuration without hardcoding them in your `profiles.yml`. The [dbt VS Code extension](/docs/about-dbt-extension) also supports `.env` files and <Term id="lsp" />-powered features. For more information, refer to [Configure environment variables](/docs/local/configure-environment-variables).
 - **New**: The new <Constant name="semantic_layer"/>  YAML specification creates an open standard for defining metrics and dimensions that works across multiple platforms. The new spec is now live in the <Constant name="fusion_engine" />.
   
   Key changes:

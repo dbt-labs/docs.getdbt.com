@@ -5,6 +5,9 @@ description: "Answers to common questions about dbt plans, billing, usage, and t
 id: billing-faqs
 pagination_next: null
 pagination_prev: null
+availability:
+  surface: platform
+  access: login_required
 ---
 
 import DevToStarterUpgradeBody from '/snippets/_dev-to-starter-upgrade-body.md';

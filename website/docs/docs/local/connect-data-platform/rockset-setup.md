@@ -15,6 +15,7 @@ meta:
   slack_channel_link: 'https://getdbt.slack.com/archives/C02J7AZUAMN'
   platform_name: 'Rockset'
   config_page: '/reference/resource-configs/no-configs'
+availability: local_free
 ---
 
 

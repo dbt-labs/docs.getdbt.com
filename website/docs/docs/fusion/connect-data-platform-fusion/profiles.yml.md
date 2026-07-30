@@ -3,6 +3,9 @@ title: "About profiles.yml"
 description: "The dbt profiles.yml file contains the connection details for your data warehouse."
 id: profiles.yml
 pagination_next: "docs/local/connection-profiles"
+availability:
+  preset: local_free
+  engine: v2
 ---
 import ProfilesYml from '/snippets/_profiles.yml.md';
 

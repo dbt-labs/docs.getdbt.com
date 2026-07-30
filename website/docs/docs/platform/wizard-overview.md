@@ -5,6 +5,7 @@ description: "dbt Wizard is an AI agent purpose-built for governed data developm
 sidebar_label: "Overview"
 pagination_next: null
 keywords: ["dbt Wizard", "dbt Agents", "AI", "analytics", "dbt"]
+availability: all_users
 ---
 
 import WizardSupportedProviders from '/snippets/_wizard-supported-providers.md';
@@ -31,11 +32,15 @@ Think of it like a map of your city: <Constant name="wizard" /> knows how everyt
 - **Complete workflow:** Investigate, change, validate, and review in one place
 - **Setup and governance:** Works out of the box with dbt governance built in
 
+:::tip Best practices for using dbt Wizard
+For recommended workflows on real project tasks &mdash; understanding a project, validating changes, debugging a failed job, and more &mdash; refer to [How to use dbt Wizard in your dbt project](/best-practices/how-to-use-wizard/wizard-1-intro).
+:::
+
 ## Use dbt Wizard
 
 <Constant name="wizard" /> is for anyone doing dbt development — from analytics engineers working in a self-hosted setup in the terminal to teams building in the <Constant name="dbt_platform" />. You can use it in the platform with managed or bring-your-own-key (BYOK) credentials, or in the terminal with your own key, with or without a <Constant name="dbt_platform" /> account.
 
-<Constant name="wizard" /> is data warehouse agnostic and works with both the [<Constant name="fusion_engine" />](/docs/fusion) and [<Constant name="core" />](/docs/local/install-dbt) &mdash; no specific engine is required.
+<Constant name="wizard" /> is data warehouse agnostic and works with both the [<Constant name="fusion_engine" />](/docs/fusion/about-fusion) and [<Constant name="core" />](/docs/local/install-dbt) &mdash; no specific engine is required.
 
 The following table shows where <Constant name="wizard" /> is available, the AI keys each surface uses, and how usage is billed:
 

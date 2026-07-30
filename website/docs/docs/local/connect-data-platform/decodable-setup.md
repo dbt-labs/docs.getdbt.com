@@ -15,6 +15,7 @@ meta:
   slack_channel_link: 'https://decodablecommunity.slack.com'
   platform_name: 'Decodable'
   config_page: '/reference/resource-configs/no-configs'
+availability: local_free
 ---
 
 :::info Community plugin

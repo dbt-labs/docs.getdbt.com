@@ -3,6 +3,7 @@ title: "Integrate Cursor with dbt MCP"
 sidebar_label: "Integrate Cursor with MCP"
 description: "Guide to set up Cursor with dbt-mcp"
 id: "integrate-mcp-cursor"
+availability: all_users
 ---
 
 import MCPOauthPreflight from '/snippets/_mcp-oauth-preflight.md';

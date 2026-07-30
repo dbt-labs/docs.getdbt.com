@@ -14,6 +14,7 @@ meta:
   slack_channel_link: 'https://www.getdbt.com/community/'
   platform_name: 'Vertica'
   config_page: '/reference/resource-configs/vertica-configs'
+availability: local_free
 ---
 
 

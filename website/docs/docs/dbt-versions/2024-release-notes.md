@@ -5,6 +5,9 @@ id: "2024-release-notes"
 sidebar_label: "2024 release notes"
 pagination_next: null
 pagination_prev: null
+availability:
+  surface: platform
+  access: free
 ---
 
 <Constant name="dbt" /> release notes for recent and historical changes. Release notes fall into one of the following categories:

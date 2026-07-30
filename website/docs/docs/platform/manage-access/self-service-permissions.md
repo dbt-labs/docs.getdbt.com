@@ -3,6 +3,10 @@ title: "Self-service Starter account permissions"
 description: "Learn how dbt administrators can use self-service permissions to control access in a dbt Starter account."
 sidebar_label: "Starter permissions"
 id: "self-service-permissions"
+availability:
+  surface: platform
+  access: paid_plan
+  plans: [starter]
 ---
 
 Self-service Starter accounts are a quick and easy way to get <Constant name="dbt" /> up and running for a small team. 

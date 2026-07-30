@@ -5,6 +5,7 @@ description: "Learn about AI-powered features and agents in dbt that help you bu
 sidebar_label: "About AI and dbt"
 hide_table_of_contents: true
 tags: [AI, Intelligence]
+availability: all_users
 ---
 
 <IntroText>

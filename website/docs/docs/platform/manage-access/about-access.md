@@ -4,6 +4,9 @@ description: "Learn how dbt administrators can use dbt's permissioning model to 
 id: "about-user-access"
 pagination_next: "docs/platform/manage-access/seats-and-users"
 pagination_prev: null
+availability:
+  surface: platform
+  access: login_required
 ---
 
 import LicenseTypes from '/snippets/_cloud-license-types.md';
