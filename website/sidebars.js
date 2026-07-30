@@ -1032,8 +1032,8 @@ const sidebarSettings = {
       link: { type: "doc", id: "docs/dbt-versions/about-versions" },
       items: [
         "docs/dbt-versions/about-versions",
-        "docs/dbt-versions/fusion-version-compatibility",
         "docs/dbt-versions/dbt-versions",
+        "docs/dbt-versions/fusion-version-compatibility",
         "docs/dbt-versions/dbt-release-tracks",
         "docs/dbt-versions/upgrade-dbt-platform-version",
         "docs/dbt-versions/product-lifecycles",
