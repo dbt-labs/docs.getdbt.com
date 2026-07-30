@@ -15,6 +15,7 @@ _We use [docusaurus](https://v2.docusaurus.io/) to power [docs.getdbt.com](https
   - [SME and editorial reviews](#sme-and-editorial-reviews)
   - [Versioning and single-sourcing content](#versioning-and-single-sourcing-content)
   - [Adding tabbed components to a page](#adding-tabbed-components-to-a-page)
+- [Claude Code skills](#claude-code-skills)
 - [Running the Docs site locally](#running-the-docs-site-locally)
   - [Prerequisites](#prerequisites)
 
@@ -50,6 +51,18 @@ We now enable you to reuse content between different docs pages, version pages, 
 ## Adding tabbed components to a page
 
 You can add code snippets and other content in a tabbed view. To learn more about adding tabbed components, see [Adding page components](/contributing/adding-page-components.md).
+
+# Claude Code skills
+
+This repo includes [Claude Code](https://claude.com/product/claude-code) skills that automate common docs workflows.
+
+In `.claude/skills`:
+- **converting-notion-to-docusaurus-blog**: Converts a Notion markdown export into a properly formatted Docusaurus blog post for this site.
+- **docs-issue-triage**: Triages, scores, and labels open GitHub issues in this repo by priority and size.
+- **create-docs-skeleton**: Scaffolds a new doc page (guide, reference, feature/product page, or release note entry) with correct frontmatter and section structure.
+- **add-availability-badge**: Adds or resolves the `availability` frontmatter field so a page renders the correct applicability badge.
+
+If you fork this repo with Claude Code, these skills are available automatically.
 
 # Running the Docs site locally
 
