@@ -20,7 +20,7 @@ export const FIELD_LABELS = {
   engine: 'Version',
   surface: 'Where',
   access: 'Access',
-  usage: 'Billing',
+  usage: 'Pricing',
 };
 
 // v1 = dbt Core 1.x (1.99 and earlier). v2 = dbt Fusion engine 2.0 and later.
@@ -78,7 +78,7 @@ const PLAN_TIER_ORDER = ['starter', 'enterprise', 'enterprise_plus'];
 const ACCESS_TOOLTIPS = {
   Free: 'No account needed.',
   'Login required': 'Requires a free dbt account.',
-  'Usage-based': 'Billed on usage.',
+  'Usage-based': 'Billed based on usage.',
 };
 
 function planListLabel(plans) {
