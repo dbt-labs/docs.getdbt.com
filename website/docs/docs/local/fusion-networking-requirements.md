@@ -49,8 +49,8 @@ If your environment cannot access `public.cdn.getdbt.com` for adapter driver dow
 
 When you assemble a bundle for air-gapped or firewall-restricted machines:
 
-1. Use the [version compatibility matrix](/docs/fusion/fusion-version-compatibility#compatibility-matrix) to choose a <Constant name="fusion" /> version that matches the dbt VS Code extension your users run.
-2. Verify the binary against its published SHA-256 checksum before distributing it. Refer to [Verify binaries for manual and air-gapped installs](/docs/fusion/fusion-version-compatibility#verify-binaries-for-manual-and-air-gapped-installs).
+1. Use the [version compatibility matrix](/docs/dbt-versions/fusion-version-compatibility#compatibility-matrix) to choose a <Constant name="fusion" /> version that matches the dbt VS Code extension your users run.
+2. Verify the binary against its published SHA-256 checksum before distributing it. Refer to [Verify binaries for manual and air-gapped installs](/docs/dbt-versions/fusion-version-compatibility#verify-binaries-for-manual-and-air-gapped-installs).
 3. Point the dbt VS Code extension at the bundled binary with the `dbt.fusionPath` setting. Refer to [dbt extension settings](/docs/configure-dbt-extension#dbt-extension-settings).
 
 For supported adapters, refer to [Fusion requirements](/docs/fusion/supported-features#requirements).

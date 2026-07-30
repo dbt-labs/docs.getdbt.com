@@ -32,7 +32,7 @@ The <Constant name="fusion_engine" /> is distributed through three release chann
 
 ## Known-bad releases
 
-If a shipped <Constant name="fusion" /> release is later found to contain a regression, dbt Labs flags it as a known-bad release. If you have a flagged version installed, the dbt VS Code extension shows a warning notification telling you which version to update to. To move off a flagged version, update it using your installation method (for example, pip or Homebrew). For details, including how air-gapped users receive these notifications, refer to [Known-bad releases](/docs/fusion/fusion-version-compatibility#known-bad-releases).
+If a shipped <Constant name="fusion" /> release is later found to contain a regression, dbt Labs flags it as a known-bad release. If you have a flagged version installed, the dbt VS Code extension shows a warning notification telling you which version to update to. To move off a flagged version, update it using your installation method (for example, pip or Homebrew). For details, including how air-gapped users receive these notifications, refer to [Known-bad releases](/docs/dbt-versions/fusion-version-compatibility#known-bad-releases).
 
 ## dbt platform Fusion release tracks
 

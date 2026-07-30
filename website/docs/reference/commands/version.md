@@ -8,7 +8,7 @@ The `--version` command-line flag returns information about the currently instal
 
 - **<Constant name="core" />** &mdash; Returns the installed version of <Constant name="core" /> and the versions of all installed adapters.
 - **<Constant name="platform_cli" />** &mdash; Returns the installed version of the [<Constant name="platform_cli" />](/docs/platform/dbt-cli-installation) and, for the other `dbt_version` values, the _latest_ version of the dbt runtime in <Constant name="dbt" />.
-- **<Constant name="fusion_engine" />** &mdash; Returns the installed <Constant name="fusion" /> version. Because the CLI and language server ship in a single binary, they always report the same version. Refer to [Version compatibility](/docs/fusion/fusion-version-compatibility) for how this maps to the dbt VS Code extension.
+- **<Constant name="fusion_engine" />** &mdash; Returns the installed <Constant name="fusion" /> version. Because the CLI and language server ship in a single binary, they always report the same version. Refer to [Version compatibility](/docs/dbt-versions/fusion-version-compatibility) for how this maps to the dbt VS Code extension.
 
 
 ## Versioning

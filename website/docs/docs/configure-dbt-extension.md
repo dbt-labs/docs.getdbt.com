@@ -250,13 +250,13 @@ The following settings are the most relevant when you install or manage the <Con
 
 | Setting                       | Description |
 | ----------------------------- | ----------- |
-| `dbt.fusionPath`              | Path to the <Constant name="fusion_engine" /> binary. The extension invokes the language server through this binary (`dbt-fusion lsp`). Set this when you install <Constant name="fusion" /> manually &mdash; for example, in an [air-gapped environment](/docs/fusion/fusion-version-compatibility#verify-binaries-for-manual-and-air-gapped-installs) &mdash; instead of letting the extension download it. |
-| `dbt.badReleasesManifestPath` | Path to a local copy of the [known-bad-releases manifest](/docs/fusion/fusion-version-compatibility#known-bad-releases). Use this if you don't have outbound network access and distribute the manifest alongside your binary bundle (for example, air-gapped installations). |
+| `dbt.fusionPath`              | Path to the <Constant name="fusion_engine" /> binary. The extension invokes the language server through this binary (`dbt-fusion lsp`). Set this when you install <Constant name="fusion" /> manually &mdash; for example, in an [air-gapped environment](/docs/dbt-versions/fusion-version-compatibility#verify-binaries-for-manual-and-air-gapped-installs) &mdash; instead of letting the extension download it. |
+| `dbt.badReleasesManifestPath` | Path to a local copy of the [known-bad-releases manifest](/docs/dbt-versions/fusion-version-compatibility#known-bad-releases). Use this if you don't have outbound network access and distribute the manifest alongside your binary bundle (for example, air-gapped installations). |
 | `dbt.environmentVariables`    | Environment variables the extension passes to dbt. Refer to [Configure in the VS Code extension settings](#configure-in-the-vs-code-extension-settings). |
 
 :::note Upgrading from a separate language server binary
 
-Earlier extension versions used separate `dbt.cliPath` and `dbt.lspPath` settings for two distinct binaries. Current versions use a single `dbt.fusionPath` because the CLI and language server ship as one <Constant name="fusion" /> binary. If you previously configured `dbt.lspPath`, migrate that path to `dbt.fusionPath`. Refer to [Version compatibility](/docs/fusion/fusion-version-compatibility) for details.
+Earlier extension versions used separate `dbt.cliPath` and `dbt.lspPath` settings for two distinct binaries. Current versions use a single `dbt.fusionPath` because the CLI and language server ship as one <Constant name="fusion" /> binary. If you previously configured `dbt.lspPath`, migrate that path to `dbt.fusionPath`. Refer to [Version compatibility](/docs/dbt-versions/fusion-version-compatibility) for details.
 
 :::
 
