@@ -95,7 +95,9 @@ For OAuth, add dbt as a custom connector through Claude Desktop's settings. You 
 Use token-based auth when your client doesn't yet support OAuth for HTTP MCP servers, or when you need a shared or CI-style setup.
 
 :::caution `"type": "http"` is not valid in Claude Desktop
-Claude Desktop's `claude_desktop_config.json` only supports stdio-style MCP servers (`command`, `args`, and `env`). If you paste a `"type": "http"` block (the format used in Claude Code's `.mcp.json`), Claude Desktop skips the server with a message like _"some MCP servers could not be loaded … were skipped: dbt"_. Use the `mcp-remote` proxy config below instead. `"type": "http"` is supported in [Claude Code](#code-remote).
+Claude Desktop doesn't accept `"type": "http"` in `claude_desktop_config.json`. If you paste that block (the format that works in [Claude Code](#code-remote)'s `.mcp.json`), Claude Desktop skips the server and shows a message like "some MCP servers could not be loaded."
+
+Use the `mcp-remote` proxy config in step 2 instead. 
 :::
 
 Token-based remote MCP on Claude Desktop requires [Node.js](https://nodejs.org/) so `npx` can run `mcp-remote`.
