@@ -50,7 +50,7 @@ Your role determines which tabs you can access.
 <SimpleTable>
 | Role | Access | Notes |
 |------|-----------|-------|
-| **Owner** | Usage, Users, Billing, Clients | The user who created the organization is the Owner by default. |
+| **Owner** | Usage, Users, Billing, Clients | The user who created the organization is the Owner by default. An Owner can transfer their role to another user, which demotes the original Owner to Admin. |
 | **Admin** | Usage, Users, Billing, Clients | — |
 | **Developer** | Usage | Default role when users are added. |
 </SimpleTable>
