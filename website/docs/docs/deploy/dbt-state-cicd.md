@@ -40,7 +40,7 @@ The dbt State web app has four tabs under **Organization**:
 | Tab | Description |
 |-----|-------------|
 | **Usage** | View your project reuses and compute time saved once dbt State is enabled. |
-| **Users** | Invite team members and grant or revoke admin access. |
+| **Users** | Invite team members and grant or revoke access. |
 | **Billing** | View daily active target tables (DATTs) for the current billing period. |
 | **Clients** | Create and manage OAuth clients for CI/CD and other non-interactive environments. |
 </SimpleTable>
