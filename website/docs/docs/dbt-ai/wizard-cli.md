@@ -50,24 +50,22 @@ Run the following command to update <Constant name="wizard" /> to the latest ver
 wizard update
 ```
 
-## Uninstalling dbt Wizard
+## Uninstall dbt Wizard
 
-If you installed dbt Wizard via the `install-wizard.sh` script, the binaries were installed into system-wide executable directories requiring administrative access.
+1. Run the built-in uninstall command — it removes the binaries (`dbt-wizard`, `wizard`, `dbt-index`, `dbt-wizard-app-server`) and the `~/.dbt/wizard/` config/data directory:
 
-### 1. Remove Global Binaries
-Run the following command to delete `dbt-wizard` along with its helper binaries (such as `dbt-index`):
+  ```shell
+  wizard system uninstall
+  ```
 
-```bash
-sudo rm -f /usr/local/bin/dbt-wizard /usr/local/bin/dbt-index
-```
+2. Confirm when prompted, or skip the prompt with `--force`.
+3. You can then confirm that the binary has been completely removed by checking your system path:
 
-### 2. Verify Cleanup
-Confirm that the binary has been completely removed by checking your system path:
+  ```bash
+  which dbt-wizard
+  ```
 
-```bash
-which dbt-wizard
-```
-If no output path is returned, dbt Wizard is successfully uninstalled.
+  If no output path is returned, dbt Wizard is successfully uninstalled.
 
 
 ## Telemetry
