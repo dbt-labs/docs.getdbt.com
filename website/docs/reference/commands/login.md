@@ -38,7 +38,7 @@ A free <Constant name="dbt_platform" /> account keeps advanced features working 
 
 Run `dbt login` to create a free account, or log in to an existing one. Logging in is simply how dbt confirms your access to advanced features in your local development environment.
 
-Note that this is separate from [<Constant name="dbt_platform"/> user license types](/docs/platform/manage-access/seats-and-users?version=2.0&name=Fusion) (such as Developer or Analyst), which controls what you can do _inside_ <Constant name="dbt_platform" />.
+Note that this is separate from [<Constant name="dbt_platform"/> user license types](/docs/platform/manage-access/seats-and-users?version=2.0) (such as Developer or Analyst), which controls what you can do _inside_ <Constant name="dbt_platform" />.
 
 Refer to [VS Code extension features](/docs/dbt-extension-features#feature-availability) for the full list of features and their availability.
 
