@@ -257,6 +257,7 @@ function DropdownNavbarItemDesktop({
           className="version-dropdown__trigger"
           aria-haspopup="listbox"
           aria-expanded={showDropdown}
+          aria-label={`dbt version: ${currentLabel}`}
           onClick={() => setShowDropdown((v) => !v)}
         >
           <span className="version-dropdown__branch" aria-hidden="true">
@@ -267,6 +268,7 @@ function DropdownNavbarItemDesktop({
               />
             </svg>
           </span>
+          <span className="version-dropdown__label" aria-hidden="true">dbt version</span>
           <span className="version-dropdown__current">{currentLabel}</span>
           <span className="version-dropdown__caret" aria-hidden="true">▾</span>
         </button>
@@ -417,7 +419,7 @@ function DropdownNavbarItemMobile({
               />
             </svg>
           </span>
-          <span>Version</span>
+          <span>dbt version</span>
         </div>
         <ul className="menu__list">
           {products.map((product) => {
