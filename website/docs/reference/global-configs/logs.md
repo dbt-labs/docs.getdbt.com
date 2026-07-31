@@ -42,13 +42,24 @@ dbt run --log-format json
 
 </VersionBlock>
 
-The `text` format is the default for console logs and has plain text messages prefixed with a simple timestamp:
-
 <VersionBlock lastVersion="1.99">
+
+The `text` format is the default for console logs and has plain text messages prefixed with a simple timestamp:
 
 ```
 23:30:16  Running with dbt=1.8.0
 23:30:17  Registered adapter: postgres=1.8.0
+```
+
+</VersionBlock>
+
+<VersionBlock firstVersion="2.0">
+
+The `text` format is the default for console logs and prints plain text progress messages:
+
+```
+dbt-fusion 2.0.0-preview.181
+   Loading ~/.dbt/profiles.yml
 ```
 
 </VersionBlock>
