@@ -62,7 +62,7 @@ Refer to [dbt docs commands](/reference/commands/cmd-docs) for full usage.
 
 Because dbt Docs v2 ships as a single self-contained binary (the API and the embedded UI in one executable) that serves from the parquet index files rather than a live warehouse connection, you can self-host it in a container. This is useful when you want a persistent, shared docs site instead of running `dbt docs serve` locally.
 
-The server is read-only and stateless: it loads the parquet artifacts from `<target>/index/` into an in-memory engine at boot. To refresh the docs, rebuild your project with `--write-index` and restart the server.
+The server is read-only and stateless: it loads the parquet artifacts from `target/index/` into an in-memory engine at boot. To refresh the docs, rebuild your project with `--write-index` and restart the server.
 
 Before you start, generate the artifacts by building your project with `--write-index` (for example, `dbt compile --write-index`), which writes the parquet files to `./target/index/`.
 
@@ -70,7 +70,7 @@ Before you start, generate the artifacts by building your project with `--write-
 
 <TabItem value="compose" label="Docker Compose">
 
-Use the included `docker-compose.yml`, which wires up the build, the artifact mount, the port, and a persistent driver-cache volume. Point `DBT_TARGET_PATH` at your project's `target/` directory (use an absolute path) and bring it up:
+Use the included `docker-compose.yml`, which wires up the build, the artifact mount, the port, and a persistent driver-cache volume. Point `DBT_TARGET_PATH` at your project's `target/` directory (use an absolute path) and start it:
 
 ```bash
 DBT_TARGET_PATH=/abs/path/to/project/target docker compose up --build
@@ -104,7 +104,7 @@ Then, open `http://localhost:8580`.
 
 :::note First-run network access
 
-The parquet index is queried through an ADBC DuckDB driver that isn't bundled in the image. On first boot, the driver is downloaded from `public.cdn.getdbt.com` into the cache directory (`/var/cache/dbt`), so the container needs outbound HTTPS access the first time it runs. To avoid re-downloading it on every run (and to run fully offline once warmed), persist the cache with a named volume:
+dbt Docs v2 queries the parquet index through an ADBC DuckDB driver that isn't bundled in the image. On first boot, the server downloads the driver from `public.cdn.getdbt.com` into the cache directory (`/var/cache/dbt`), so the container needs outbound HTTPS access the first time it runs. To avoid re-downloading it on every run (and to run fully offline once warmed), persist the cache with a named volume:
 
 ```bash
 docker run --rm -p 8580:8580 \
