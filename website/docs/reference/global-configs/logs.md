@@ -16,19 +16,21 @@ The `LOG_FORMAT` and `LOG_FORMAT_FILE` configs specify how dbt's logs should be 
 
 <VersionBlock firstVersion="2.0">
 
-The `LOG_FORMAT` and `LOG_FORMAT_FILE` configs specify how dbt's logs should be formatted, and they each have the same options: `text`, `json`, `default`, and `otel`.
+The `LOG_FORMAT` and `LOG_FORMAT_FILE` configs specify how dbt's logs should be formatted. Shared options are `text`, `json`, and `default`. The `otel` option is available for `LOG_FORMAT` only (console output). Setting `--log-format-file otel` has no effect.
 
 The `otel` format streams [OpenTelemetry](https://opentelemetry.io/)-style structured telemetry to the console. It uses a different schema than <Constant name="core" />'s `json` logs. For JSONL files, Parquet export, OTLP, and how this maps to <Constant name="core" /> structured logging, refer to [<Constant name="fusion" /> telemetry and observability](/reference/telemetry-observability).
 
 <File name='Usage'>
 
 ```text
-dbtf build --log-format otel
+dbt build --log-format otel
 ```
 
 </File>
 
 </VersionBlock>
+
+<VersionBlock lastVersion="1.99">
 
 <File name='Usage'>
 
@@ -38,12 +40,18 @@ dbt run --log-format json
 
 </File>
 
+</VersionBlock>
+
 The `text` format is the default for console logs and has plain text messages prefixed with a simple timestamp:
+
+<VersionBlock lastVersion="1.99">
 
 ```
 23:30:16  Running with dbt=1.8.0
 23:30:17  Registered adapter: postgres=1.8.0
 ```
+
+</VersionBlock>
 
 <VersionBlock lastVersion="1.99">
 
@@ -59,12 +67,26 @@ The `debug` format is the default for the log file and is the same as the `text`
 
 The `json` format outputs fully structured logs in the <Term id="json" /> format:
 
+<VersionBlock lastVersion="1.99">
+
 ```json
 {"data": {"log_version": 3, "version": "=1.8.0"}, "info": {"category": "", "code": "A001", "extra": {}, "invocation_id": "82131fa0-d2b4-4a77-9436-019834e22746", "level": "info", "msg": "Running with dbt=1.8.0", "name": "MainReportVersion", "pid": 7875, "thread": "MainThread", "ts": "2024-05-29T23:32:54.993336Z"}}
 {"data": {"adapter_name": "postgres", "adapter_version": "=1.8.0"}, "info": {"category": "", "code": "E034", "extra": {}, "invocation_id": "82131fa0-d2b4-4a77-9436-019834e22746", "level": "info", "msg": "Registered adapter: postgres=1.8.0", "name": "AdapterRegistered", "pid": 7875, "thread": "MainThread", "ts": "2024-05-29T23:32:56.437986Z"}}
 ```
 
+</VersionBlock>
+
+<VersionBlock lastVersion="1.99">
+
 When the `LOG_FORMAT` is set explicitly, it will take effect in both the console and log files, whereas the `LOG_FORMAT_FILE` only affects the log file.
+
+</VersionBlock>
+
+<VersionBlock firstVersion="2.0">
+
+When the `LOG_FORMAT` is set explicitly to `text`, `json`, or `default`, it takes effect in both the console and log files. The `otel` value applies to console output only. Use `LOG_FORMAT_FILE` to set a different format for the log file (`text`, `json`, or `default`).
+
+</VersionBlock>
 
 <File name='Usage'>
 
@@ -99,7 +121,7 @@ Use `--log-format otel` to stream OpenTelemetry-style telemetry to the console, 
 For JSON-formatted log lines, use `--log-format json` with the `DEBUG` config:
 
 ```text
-dbtf build --debug --log-format json
+dbt build --debug --log-format json
 ```
 
 :::

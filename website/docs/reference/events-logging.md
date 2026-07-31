@@ -32,7 +32,9 @@ As dbt runs, it generates events. The most common way to see those events is as 
 
 <VersionBlock firstVersion="2.0">
 
-The <Constant name="fusion_engine" /> emits structured run telemetry using [OpenTelemetry](https://opentelemetry.io/) conventions instead of <Constant name="core" />'s JSON event logs. Use `--log-format otel` or the options in [<Constant name="fusion" /> telemetry and observability](/reference/telemetry-observability) to consume it locally. On the <Constant name="dbt_platform" />, you can [download OTel logs](/docs/deploy/run-visibility#access-logs) from Fusion job runs.
+The <Constant name="fusion_engine" /> emits structured run telemetry using [OpenTelemetry](https://opentelemetry.io/) conventions instead of <Constant name="core" />'s JSON event logs. To view it locally, use `--log-format otel` or the options in [<Constant name="fusion" /> telemetry and observability](/reference/telemetry-observability#available-output-formats).
+
+In <Constant name="dbt_platform" />, you can [download OTel logs](/docs/deploy/run-visibility#access-logs) from <Constant name="fusion" /> job runs.
 
 For `--log-format`, `--log-level`, and related CLI configs, refer to [Logs](/reference/global-configs/logs).
 
@@ -133,7 +135,9 @@ Many events are fired while compiling or running a specific DAG node (model, see
 
 <VersionBlock firstVersion="2.0">
 
-<Constant name="fusion_engine" /> does not use the same Python event interface as <Constant name="core" />. A Python API with Rust bindings for programmatic invocations is [in development](https://github.com/dbt-labs/dbt-core/issues/13102).
+The <Constant name="fusion_engine" /> doesn't share <Constant name="core" />'s Python event interface.
+
+We are currently [developing](https://github.com/dbt-labs/dbt-core/issues/13102) a Python API with Rust bindings for programmatic invocations.
 
 </VersionBlock>
 
