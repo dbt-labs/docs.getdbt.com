@@ -32,7 +32,7 @@ Before you begin, make sure you have:
 
 ### Creating a service token
 
-To create a service account token in <Constant name="dbt_platform" />, refer to [Generate service account tokens](/docs/dbt-apis/service-tokens#generate-service-account-tokens). When adding permissions for the token, assign at least one of the following permissions:
+To create a service account token in <Constant name="dbt_platform" />, refer to [Generate service account tokens](/docs/dbt-apis/service-tokens#generate-service-account-tokens). When adding permissions for the token, assign at least one of the following:
 
 - **Owner**
 - **Account Admin**
