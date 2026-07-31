@@ -193,14 +193,12 @@ Refer to the Fusion concepts page for deeper discussion and visuals: [New concep
 
 ## CLI override
 
-You can override model-level configuration for a run using the following CLI flags. For example, to disable static analysis for a run:
+You can override model-level configuration for a run using the [`--static-analysis`](/reference/global-configs/static-analysis-flag) flag. For example, to disable static analysis for a run:
 
 ```bash
 dbt run --static-analysis off # disable static analysis for all models
 dbt run --static-analysis baseline # use baseline analysis for all models
 ```
-
-See [static analysis CLI flag](/reference/global-configs/static-analysis-flag).
 
 ## Examples
 
@@ -386,3 +384,9 @@ snapshots:
 
 - For models, disabling static analysis means that features of the VS Code extension that depend on SQL comprehension will be unavailable.
 - For models, static analysis can fail in some cases (for example, dynamic SQL constructs or unrecognized UDFs) and you might need to set `static_analysis: off`. For more examples, refer to [When should I turn static analysis off?](/docs/build/about-static-analysis#when-should-i-turn-static-analysis-off).
+
+## Related docs
+
+- [About static analysis](/docs/build/about-static-analysis)
+- [`--static-analysis` flag](/reference/global-configs/static-analysis-flag)
+- [Using strict mode in development and baseline in deployment](/best-practices/using-strict-and-baseline-static-analysis)

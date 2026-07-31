@@ -13,16 +13,16 @@ import FusionLifecycle from '/snippets/_fusion-lifecycle-callout.md';
 
 <IntroText>
 
-Use `strict` static analysis while you develop so the <Constant name="fusion_engine" /> validates SQL as thoroughly as possible. Use `baseline` in deployment so jobs stay faster and are less likely to stop on analysis findings.
+Use `strict` static analysis while you develop so the <Constant name="fusion_engine" /> validates SQL as thoroughly as possible. Use `baseline` (the default, lighter static analysis mode) in deployment so jobs stay faster and are less likely to stop on analysis findings.
 
 </IntroText>
 
-This pattern is valid and recommended for projects that use the <Constant name="fusion_engine" />. For an overview of modes and features, refer to [About static analysis](/docs/build/about-static-analysis).
+This pattern is valid and recommended for projects that use the <Constant name="fusion_engine" />. For more information about modes and features, refer to [About static analysis](/docs/build/about-static-analysis).
 
 ## Why this pattern
 
 - **Development:** `strict` gives you the strongest SQL checks before you promote changes, including richer column-level features in the VS Code extension.
-- **Deployment:** `baseline` (the default) skips remote warehouse schema downloads and surfaces findings as warnings, so jobs are less likely to block.
+- **Deployment:** `baseline` skips remote warehouse schema downloads and surfaces findings as warnings, so jobs are less likely to block.
 
 `strict` can increase compile time, especially in projects with many sources, because the <Constant name="fusion_engine" /> downloads schemas for all sources (including sources your models do not reference). Teams with thousands of sources have seen large compile-time differences between `baseline` and `strict`.
 
@@ -61,7 +61,7 @@ Then set the variable per environment:
 
 `DBT_ENV_STATIC_ANALYSIS` is a custom variable name you choose. It is separate from the built-in `DBT_STATIC_ANALYSIS` override used with the CLI flag.
 
-For more on `env_var`, refer to [About env_var](/reference/dbt-jinja-functions/env_var) and [Environment variables](/docs/build/environment-variables).
+For more information about `env_var`, refer to [About env_var](/reference/dbt-jinja-functions/env_var) and [Environment variables](/docs/build/environment-variables).
 
 ## Tradeoffs to keep in mind
 
