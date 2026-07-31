@@ -264,6 +264,7 @@ const sidebarSettings = {
                         "docs/platform/secure/private-connectivity/aws/aws-postgres",
                         "docs/platform/secure/private-connectivity/aws/aws-teradata",
                         "docs/platform/secure/private-connectivity/aws/aws-self-hosted",
+                        "docs/platform/secure/private-connectivity/aws/aws-ingress",
                       ],
                     },
                     {
