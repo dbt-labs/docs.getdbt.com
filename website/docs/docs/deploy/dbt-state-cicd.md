@@ -15,8 +15,8 @@ dbt State automatically detects when it's running in a non-interactive environme
 
 There are two authentication methods depending on your setup:
 
-- [**Service account token**](#service-token-dbt-platform) &mdash; for <Constant name="dbt_platform" /> users
-- [**OAuth client credentials**](#oauth-client-credentials) &mdash; for standalone dbt State app users
+- [**Service account token**](#service-token-dbt-platform) for <Constant name="dbt_platform" /> users
+- [**OAuth client credentials**](#oauth-client-credentials) for standalone dbt State app users
 
 ## Service account token
 
