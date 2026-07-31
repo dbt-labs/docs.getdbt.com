@@ -318,28 +318,9 @@ from {{ ref('my_model') }}
 
 ### Can I use strict mode in development and baseline in deployment?
 
-Yes. This pattern is valid and recommended when you want stronger validation while you develop, and faster runs in deployment that are less likely to stop on analysis findings.
+Yes. This pattern is valid and recommended: use `strict` while you develop for stronger validation, and keep `baseline` in deployment for faster runs that are less likely to stop on analysis findings.
 
-In development, use `strict` so the <Constant name="fusion_engine" /> validates SQL as thoroughly as possible before you promote changes. In deployment, keep the default `baseline` mode so jobs skip the extra warehouse schema download work that `strict` can require.
-
-You can set the mode for a single run with the [`--static-analysis`](/reference/global-configs/static-analysis-flag) flag:
-
-```bash
-# Development
-dbt compile --static-analysis strict
-
-# Deployment
-dbt compile --static-analysis baseline
-```
-
-You can also set [`static_analysis`](/reference/resource-configs/static-analysis) in `dbt_project.yml`, in model YAML, or in a config block. For more examples, refer to [Configuring `static_analysis`](#configuring-static_analysis).
-
-Consider these tradeoffs:
-
-- `strict` can increase compile time, especially in projects with many sources, because the <Constant name="fusion_engine" /> downloads schemas for all sources (including sources your models do not reference).
-- `baseline` does not download remote schemas. Findings are warnings rather than errors, so deployment jobs can continue while still surfacing issues.
-
-For how the modes differ, refer to [Principles of static analysis](#principles-of-static-analysis).
+For CLI examples, an optional environment variable pattern, and tradeoffs (including compile time with many sources), refer to [Using strict mode in development and baseline in deployment](/best-practices/using-strict-and-baseline-static-analysis).
 
 ### When should I turn static analysis `off`?
 

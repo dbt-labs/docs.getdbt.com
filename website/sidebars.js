@@ -1932,6 +1932,7 @@ const sidebarSettings = {
         "best-practices/idempotence",
         "best-practices/dont-nest-your-curlies",
         "best-practices/clone-incremental-models",
+        "best-practices/using-strict-and-baseline-static-analysis",
         "best-practices/writing-custom-generic-tests",
         "best-practices/best-practice-workflows",
         "best-practices/dbt-unity-catalog-best-practices",
