@@ -89,126 +89,6 @@ To upgrade later, run `dbt system update`.
 Refer to the [dbt VS Code extension docs](/docs/about-dbt-extension) for more info.
 
 If you or your org has a strict requirement to use the open-source runtime, install it [here](/docs/local/install-dbt-core-v2).
-=======
-
-## Install dbt <Lifecycle status="preview" />
-
-<Tabs groupId="install-method" queryString>
-
-<TabItem value="pip" label="pip">
-
-```shell
-python -m pip install --pre dbt
-```
-
-To upgrade later, run `python -m pip install --upgrade --pre dbt`.
-
-</TabItem>
-
-<TabItem value="homebrew" label="Homebrew (macOS)">
-
-```shell
-brew install dbt
-```
-
-To upgrade later, run `brew upgrade dbt`.
-
-</TabItem>
-
-<TabItem value="curl" label="curl (macOS/Linux)">
-
-```shell
-curl -fsSL https://public.cdn.getdbt.com/fs/install/install.sh | sh -s -- --update
-```
-
-Close and reopen your terminal (or run `exec $SHELL`) so the new `$PATH` is recognized. 
- current
-
-To upgrade later, run `dbt system update`.
-
-</TabItem>
-
-<TabItem value="winget" label="winget (Windows)">
-
-```shell
-winget install --id dbtLabs.dbt --exact
-```
-
-- <Expandable alt_header="Can I revert to my previous dbt installation?">
-    Yes. To test a new install without affecting your existing workflows, use a separate environment or virtual machine.
-  </Expandable>
-- <Expandable alt_header="Can I download the Apache 2.0 runtime only?">
-    Yes if you need to use the Apache 2.0 runtime, you can [install dbt Core 2.0](/docs/local/install-dbt-core-v2), the open-source project behind Fusion.
-  </Expandable>
-
-## Uninstall dbt Fusion
-
-If you installed dbt Fusion using the curl installation script (`install.sh`), follow these steps to clean up your environment and remove all installed binaries:
-
-### 1. Remove the binary
-The installation script places the executable in your local binaries directory (`~/.local/bin/dbt`). Run:
-
-```shell
-rm -f ~/.local/bin/dbt
-```
-
-### 2. Clean up shell configurations
-The installer automatically appends environment configurations and aliases to your shell profile (`~/.zshrc` or `~/.bashrc`).
-
-Open your shell configuration file in a text editor and delete the following lines:
-```shell
-# Remove PATH export
-export PATH="$HOME/.local/bin:$PATH"
-
-# Remove dbtf alias
-alias dbtf=...
-```
-
-After editing, reload your shell profile to apply the changes:
-```shell
-source ~/.zshrc   # or source ~/.bashrc
-```
-
-### 3. Built-in system cleanup
-If you still have the `dbt` binary installed and wish to manage or clear internal cached files and states, use the [`dbt system`](/reference/commands/system) command suite before deleting the binary.
-
-<AboutFusion/>
-
-To install a specific version, run `winget install --id dbtLabs.dbt --exact --version <version>`.
-
-</TabItem>
-
-<TabItem value="windows" label="Windows (PowerShell)">
-
-```powershell
-irm https://public.cdn.getdbt.com/fs/install/install.ps1 | iex
-```
-
-Close and reopen your shell (or run `Start-Process powershell`) so the new `Path` is recognized. 
-
-To upgrade later, run `dbt system update`.
-
-</TabItem>
-
-</Tabs>
-
-- Verify your installation:
-
-  ```shell
-  dbt --version
-  ```
-
-- With <Constant name="dbt" /> v2, you can start using the <Constant name="fusion" /> experience right away. For the best v2 editor experience, install the dbt VS Code extension to use features like autocomplete, inline errors, and lineage.
-
-  For full <Term id="lsp" /> features and other richer <Constant name="fusion" /> capabilities, run `dbt login` to sign in with a free <Constant name="dbt_platform" /> account:
-
-  ```shell
-  dbt login
-  ```
-
-Refer to the [dbt VS Code extension docs](/docs/about-dbt-extension) for more info.
-
-If you or your org has a strict requirement to use the open-source runtime, install it [here](/docs/local/install-dbt-core-v2).
 
 ## Troubleshooting
 
@@ -226,14 +106,37 @@ Common issues and resolutions:
 - <Expandable alt_header="Can I download the Apache 2.0 runtime only?">
     Yes if you need to use the Apache 2.0 runtime, you can [install dbt Core 2.0](/docs/local/install-dbt-core-v2), the open-source project behind Fusion.
   </Expandable>
- current
+- <Expandable alt_header="How do I uninstall a curl (install.sh) install?">
+
+  These steps apply only if you installed <Constant name="fusion" /> with the curl (`install.sh`) script. If you used pip, Homebrew, or winget, remove <Constant name="dbt" /> with that tool instead (for example, `pip uninstall dbt` or `brew uninstall dbt`).
+
+  1. **Uninstall dbt.** Run the built-in uninstall command to clear cached files and state. This also removes the binary for you:
+
+     ```shell
+     dbt system uninstall
+     ```
+
+  2. **Clean up your shell profile.** The installer adds a `$PATH` export and a `dbtf` alias to `~/.zshrc` or `~/.bashrc`, each under its own comment. Open that file and delete these lines:
+
+     ```shell
+     # Added by dbt installer
+     export PATH="$PATH:$HOME/.local/bin"
+
+     # dbt aliases
+     alias dbtf=$HOME/.local/bin/dbt
+     ```
+
+     Then reload your profile:
+
+     ```shell
+     source ~/.zshrc   # or source ~/.bashrc
+     ```
+  </Expandable>
+
+<AboutFusion />
 
 </VersionBlock>
 
-
-</VersionBlock>
-
- current
 <VersionBlock lastVersion="1.99">
 
 :::tip Want faster dbt?
@@ -327,8 +230,8 @@ python3 -m pip install --pre dbt-ADAPTER_NAME
 ### Pull an image
 
 Images follow the pattern `ghcr.io/dbt-labs/<db_adapter_name>:<version_tag>`. Available tags:
-- `latest` ΓÇö latest overall release
-- `<Major>.<Minor>.latest` ΓÇö latest patch for a version family (for example, `1.9.latest`)
+- `latest` — latest overall release
+- `<Major>.<Minor>.latest` — latest patch for a version family (for example, `1.9.latest`)
 
 ```shell
 docker pull ghcr.io/dbt-labs/<db_adapter_name>:<version_tag>
@@ -351,7 +254,7 @@ Note: bind-mount sources must be absolute paths. You may need to adjust `--netwo
 
 ### Build a custom image
 
-If the pre-made images don't fit your use case, use the [`Dockerfile`](https://github.com/dbt-labs/dbt-core/blob/1.latest/docker/Dockerfile) and [`README`](https://github.com/dbt-labs/dbt-core/blob/1.latest/docker/README.md) to build images with multiple adapters, third-party adapters, or different system architectures. Custom image builds are community-supported ΓÇö [open an issue](https://github.com/dbt-labs/dbt-core/issues) or [ask the community](/community/resources/getting-help) if you run into trouble.
+If the pre-made images don't fit your use case, use the [`Dockerfile`](https://github.com/dbt-labs/dbt-core/blob/1.latest/docker/Dockerfile) and [`README`](https://github.com/dbt-labs/dbt-core/blob/1.latest/docker/README.md) to build images with multiple adapters, third-party adapters, or different system architectures. Custom image builds are community-supported — [open an issue](https://github.com/dbt-labs/dbt-core/issues) or [ask the community](/community/resources/getting-help) if you run into trouble.
 
 </Expandable>
 
@@ -394,6 +297,21 @@ Most command-line tools, including dbt, support a `--help` flag that shows avail
 &mdash; `dbt run --help`: Shows available flags for the `run` command
 
 :::
+
+## FAQs
+- <Expandable alt_header="How do I uninstall dbt Core v1.x?">
+    Uninstall with the same tool you used to install:
+
+    ```shell
+    python -m pip uninstall dbt-core dbt-ADAPTER_NAME
+    ```
+    ```shell
+    brew uninstall dbt
+    ```
+
+    If `dbt --version` still finds a version after uninstalling, another install of <Constant name="core" /> or <Constant name="platform_cli" /> may exist elsewhere on your `$PATH` (for example, a global or pipx install alongside a virtual environment). Check `which dbt` to confirm which install is being used, then uninstall that one too.
+  
+  </Expandable>
 
 </VersionBlock>
 
