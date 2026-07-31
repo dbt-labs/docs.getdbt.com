@@ -77,7 +77,7 @@ const PLAN_TIER_ORDER = ['starter', 'enterprise', 'enterprise_plus'];
 
 const ACCESS_TOOLTIPS = {
   Free: 'No account needed.',
-  'Login required': 'Requires a free dbt account.',
+  'Login required': 'Sign in with a dbt account. No paid dbt seat required.',
   'Usage-based': 'Billed based on usage.',
 };
 
