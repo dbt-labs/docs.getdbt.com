@@ -22,6 +22,26 @@ Release notes are grouped by date for single-tenant environments.
 
 <span><img src="/img/fontawesome/rss.svg" alt="RSS" className="rss-icon" />Subscribe to release note updates via [RSS](/feeds/release-notes-st-rss.xml), [Atom](/feeds/release-notes-st-atom.xml), or [JSON Feed](/feeds/release-notes-st-rss.json).</span>
 
+## July 29, 2026
+
+## New
+
+### Semantic Layer
+
+- **External OAuth for Redshift with AWS IAM Identity Center**: Semantic Layer development connections to Redshift now support external OAuth using Okta or Microsoft Entra with AWS IAM Identity Center, in addition to username and password.
+
+## Enhancements
+
+### APIs, Identity, and Administration
+
+- **Clearer SCIM error messages**: System for Cross-domain Identity Management (SCIM) API errors now include the user email addresses that caused seat or license failures, so you can identify which users blocked provisioning.
+
+## Behavior Changes
+
+### APIs, Identity, and Administration
+
+- **GraphQL complexity limit now enforced**: Semantic Layer GraphQL queries that exceed the complexity limit of 200,000 now return an error instead of completing with a warning. If you hit this error, request fewer fields, use pagination, narrow your filters, or split the query into smaller ones.
+
 ## July 22, 2026
 
 ## New
