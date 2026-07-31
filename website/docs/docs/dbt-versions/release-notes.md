@@ -29,6 +29,10 @@ To simplify the docs experience, clarify availability, and make it easier to fin
 *tl;dr:* The docs are now organized around v1 and v2 for simplified docs versioning and navigation. We've clarified dbt Core and licensing, reorganized v2 content, and refreshed adapter and Fusion availability guidance. If you notice anything off or have any feedback, we'd love to hear it! Open up a [docs issue here](https://github.com/dbt-labs/docs.getdbt.com/issues).
 
 
+- **New:** <Constant name="semantic_layer" /> development connections to Redshift now support external OAuth using Okta or Microsoft Entra with AWS IAM Identity Center, in addition to username and password.
+- **Enhancement:** System for Cross-domain Identity Management (SCIM) API errors now include the user email addresses that caused seat or license failures, so you can identify which users blocked provisioning.
+- **Behavior change:** <Constant name="semantic_layer" /> GraphQL queries that exceed the complexity limit of 200,000 now return an error instead of completing with a warning. If you hit this error, request fewer fields, use pagination, narrow your filters, or split the query into smaller ones.
+
 - **New**: [Apache Ossie](https://github.com/apache/ossie) semantic layer support:
 
     - Open Semantic Interchange (OSI) has been renamed to Apache Ossie. For more information, refer to [OSI is now Apache Ossie (Incubating)](https://www.getdbt.com/blog/osi-is-now-apache-ossie).
