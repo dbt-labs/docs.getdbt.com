@@ -21,7 +21,7 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 For <Constant name="fusion_engine" /> updates, refer to the [dbt-fusion changelog](https://github.com/dbt-labs/dbt-core/blob/main/CHANGELOG-fusion.md).
 
 ## July 2026
-- **Enhancement**: [The <Constant name="wizard"/> home tab in <Constant name="dbt_platform"/>](/docs/platform/wizard-home) is now available in Public Preview. You can build and change dbt projects through natural language, with inline diffs, DAG previews, and validation built in.
+- **Preview**: [The <Constant name="wizard"/> home tab in <Constant name="dbt_platform"/>](/docs/platform/wizard-home) is now available in public preview. You can build and change dbt projects through natural language, with inline diffs, DAG previews, and validation built in.
 - **New**: [Apache Ossie](https://github.com/apache/ossie) semantic layer support:
 
     - Open Semantic Interchange (OSI) has been renamed to Apache Ossie. For more information, refer to [OSI is now Apache Ossie (Incubating)](https://www.getdbt.com/blog/osi-is-now-apache-ossie).
