@@ -78,6 +78,15 @@ The `debug` format is the default for the log file and is the same as the `text`
 
 The `json` format outputs fully structured logs in the <Term id="json" /> format:
 
+<VersionBlock firstVersion="2.0">
+
+```json
+{"data": {"log_version": 3, "version": "=2.0.0-preview.181"}, "info": {"category": "", "code": "A001", "extra": {}, "invocation_id": "019fb7d4-ce89-7712-8d06-5ad013a23be9", "level": "info", "msg": "Running with dbt-fusion=2.0.0-preview.181", "name": "MainReportVersion", "pid": 92554, "thread": "tokio-rt-worker", "ts": "2026-07-31T11:00:04.877509Z"}}
+{"data": {"msg": "Loading ~/.dbt/profiles.yml"}, "info": {"category": "", "code": "", "extra": {}, "invocation_id": "019fb7d4-ce89-7712-8d06-5ad013a23be9", "level": "info", "msg": "Loading ~/.dbt/profiles.yml", "name": "Generic", "pid": 92554, "thread": "tokio-rt-worker", "ts": "2026-07-31T11:00:04.882928Z"}}
+```
+
+</VersionBlock>
+
 <VersionBlock lastVersion="1.99">
 
 ```json
