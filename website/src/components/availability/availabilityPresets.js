@@ -114,7 +114,7 @@ export function getAccessFacets(access, { minPlan, plans } = {}, surface) {
       // On the platform surface, "Login required" is redundant — you can't use dbt
       // platform without an account, so it's collapsed away (same pattern as "free" above).
       // Local development/everywhere still show it since login isn't implied there.
-      return surface === 'platform' ? [] : [{ facet: 'Login required', tooltip: ACCESS_TOOLTIPS['Login required'] }];
+      return surface === 'platform' ? [] : [{ facet: 'Login required', tooltip: ACCESS_TOOLTIPS['Login required'], tooltipLink: { href: 'https://www.getdbt.com/pricing', text: 'dbt seat' } }];
     case 'usage_based':
       return [
         ...(surface === 'platform' ? [] : [{ facet: 'Login required', tooltip: 'Sign in with a dbt account. No paid dbt seat required.', tooltipLink: { href: 'https://www.getdbt.com/pricing', text: 'dbt seat' } }]),
