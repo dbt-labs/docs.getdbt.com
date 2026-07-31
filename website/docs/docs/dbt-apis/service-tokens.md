@@ -28,7 +28,7 @@ You can generate service tokens if you have a Developer [license](/docs/platform
 2. On the left sidebar, click **Service Tokens**.
 3. Click the **+ Create service token** button to generate a new token.
     1. Enter a name for your token. 
-    2. Add the necessary permissions.
+    2. Add the necessary [permissions](/docs/dbt-apis/service-tokens#permissions-for-service-account-tokens).
 4. Once the token is generated, you won't be able to view this token again so make sure to save it somewhere safe.
 
 ## Permissions for service account tokens
