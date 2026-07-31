@@ -39,6 +39,11 @@
   ],
   "redirects": [
     {
+      "source": "/docs/build/osi-semantic-models",
+      "destination": "/docs/build/ossie-semantic-models",
+      "permanent": true
+    },
+    {
       "source": "/docs/fusion/telemetry",
       "destination": "/reference/telemetry-observability",
       "permanent": true

@@ -12,7 +12,7 @@ availability:
 
 import SaoDeprecated from '/snippets/_sao-deprecated.md';
 
-# Cost Insights <Lifecycle status="beta" />
+# Cost Insights
 
 Cost Insights shows estimated costs and compute time for your dbt projects and models directly in the <Constant name="dbt_platform" />, so you can measure and share the impact of optimizations like [dbt State](/docs/deploy/dbt-state-about) and [state-aware orchestration](/docs/deploy/state-aware-about).
 
@@ -66,7 +66,7 @@ The following sections explain how costs are calculated for each supported wareh
 
 <Expandable alt_header="Snowflake">
 
-dbt computes Snowflake query costs using Snowflake's query attribution data and your credit price (`price_per_credit`). Query attribution data is always available for Snowflake. dbt pulls the `per_credit` price directly from Snowflake when available; otherwise, dbt uses the configured or default value in the <Constant name="dbt_platform" />. For more information about configuring or viewing these values, see [Configure Cost Insights settings](/docs/explore/set-up-cost-insights#configure-cost-insights-settings-optional).
+dbt computes Snowflake query costs using Snowflake's query attribution data and your credit price (`price_per_credit`). dbt pulls the `price_per_credit` value directly from Snowflake when available; otherwise, dbt uses the configured or default value in the <Constant name="dbt_platform" />. For more information about configuring or viewing these values, see [Configure Cost Insights settings](/docs/explore/set-up-cost-insights#configure-cost-insights-settings-optional).
 
 Formula:
 ```
@@ -76,6 +76,15 @@ credits_per_query * price_per_credit
 Where:
 - `credits_per_query` - Cloud services, compute, and query acceleration credits attributed to the query. dbt sources this value from `QUERY_ATTRIBUTION_HISTORY`. For more information, see the [Snowflake documentation](https://docs.snowflake.com/en/sql-reference/account-usage/query_attribution_history).      
 - `price_per_credit` - Your Snowflake credit price (from Snowflake system tables when available, otherwise from your configured input or the default rate).
+
+:::info Snowflake attribution limitations
+dbt attributes Snowflake costs at the query level using the [`QUERY_ATTRIBUTION_HISTORY`](https://docs.snowflake.com/en/sql-reference/account-usage/query_attribution_history). Because of how Snowflake populates that view, some warehouse spend can't be attributed to a dbt model and won't appear in Cost Insights:
+
+- **Short-running queries**: Snowflake doesn't attribute cost to queries that run in roughly 100 milliseconds or less.
+- **Adaptive Warehouses**: Queries on [Snowflake Adaptive Warehouses](https://docs.snowflake.com/en/user-guide/warehouses-adaptive) are not included in `QUERY_ATTRIBUTION_HISTORY`.
+
+As a result, Cost Insights totals may be _lower_ than the compute spend shown in your Snowflake billing dashboards. For more information, see the [Snowflake documentation](https://docs.snowflake.com/en/sql-reference/account-usage/query_attribution_history#usage-notes).
+:::
 </Expandable>
 
 <Expandable alt_header="BigQuery">
@@ -145,9 +154,13 @@ DBUs_in_window * (query_runtime / total_query_runtime_in_window)
 dbt sums this across all overlapping windows to get `usage_per_query`.
 </Expandable>
 
-<Expandable alt_header="Amazon Redshift">
+<Expandable alt_header="Amazon Redshift" lifecycle="preview" lifecycle_size="75">
 
 Cost Insights supports both Amazon Redshift Serverless and provisioned cluster deployments. dbt detects your deployment type automatically when testing the connection.
+
+:::note
+On Redshift, dbt attributes query costs using the comments it automatically injects into each query. If another process removes or replaces these comments, dbt can't tie the query back to its model, and its cost won't be attributed. Make sure nothing in your Redshift environment removes or replaces dbt's query comments.
+:::
 
 - **Redshift Serverless**
 
