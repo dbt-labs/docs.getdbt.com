@@ -32,13 +32,13 @@ Before you begin, make sure you have:
 
 ### Creating a service token
 
-To create a service account token in <Constant name="dbt_platform" />, refer to [Generate service account tokens](/docs/dbt-apis/service-tokens#generate-service-account-tokens). When adding permissions for the token, assign at least one of the following:
+To create a service account token in <Constant name="dbt_platform" />, refer to [Generate service account tokens](/docs/dbt-apis/service-tokens#generate-service-account-tokens). When adding permissions for the token, assign at least one of the following permissions:
 
 - **Owner**
 - **Account Admin**
 - **Job Admin**
 - **Job Creator**
-- **Job Runner**
+- **Job Runner** (recommended; provides the minimum access required for dbt State)
 - **Developer**
 
 ### Configuring authentication
@@ -51,7 +51,7 @@ DBT_CLOUD_ACCOUNT_HOST=YOUR_ACCOUNT_HOST
 DBT_CLOUD_ACCOUNT_ID=YOUR_ACCOUNT_ID
 ```
 
-Replace `YOUR_SERVICE_TOKEN` with your service token, `YOUR_ACCOUNT_HOST` with your account host (for example, `yc225.us1.dbt.com`), and `YOUR_ACCOUNT_ID` with your numeric account ID.
+Replace `YOUR_SERVICE_TOKEN` with your service token, `YOUR_ACCOUNT_HOST` with your [account host](/docs/platform/about-platform/access-regions-ip-addresses) (for example, `abc123.us1.dbt.com`), and `YOUR_ACCOUNT_ID` with your numeric account ID. Go to **Account settings** > **Account** to find your account ID and account host (the hostname from the **Access URL** field).
 
 ## OAuth client credentials
 
