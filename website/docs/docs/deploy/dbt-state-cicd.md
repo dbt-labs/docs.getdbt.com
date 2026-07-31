@@ -30,7 +30,32 @@ Before you begin, make sure you have:
 
 - dbt State installed and configured. Refer to [Set up dbt State](/docs/deploy/dbt-state-setup) for more information.
 - A standalone dbt State account at [app.state.dbt.com](https://app.state.dbt.com/).
-- Admin permissions in your dbt State organization.
+- An **Admin** or **Owner** role in your dbt State organization. Refer to [Roles and tab access](#roles-and-tab-access) for details.
+
+## Roles and tab access
+
+The dbt State web app has four tabs under **Organization**:
+
+<SimpleTable>
+| Tab | Description |
+|-----|-------------|
+| **Usage** | View your project reuses and compute time saved once dbt State is enabled. |
+| **Users** | Invite team members and grant or revoke access. |
+| **Billing** | View daily active target tables (DATTs) for the current billing period. |
+| **Clients** | Create and manage OAuth clients for CI/CD and other non-interactive environments. |
+</SimpleTable>
+<br />
+Your role determines which tabs you can access.
+
+<SimpleTable>
+| Role | Access | Notes |
+|------|-----------|-------|
+| **Owner** | Usage, Users, Billing, Clients | The user who created the organization is the Owner by default. An Owner can transfer their role to another user, which demotes the original Owner to Admin. |
+| **Admin** | Usage, Users, Billing, Clients | — |
+| **Developer** | Usage | Default role when users are added. |
+</SimpleTable>
+
+An existing **Owner** or **Admin** can grant or revoke admin access from the **Users** tab.
 
 ## Creating an OAuth client
 
