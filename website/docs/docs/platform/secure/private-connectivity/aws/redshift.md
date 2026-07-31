@@ -3,9 +3,13 @@ title: "Configure AWS PrivateLink for Redshift"
 id: aws-redshift
 description: "Configuring PrivateLink for Redshift."
 sidebar_label: "Redshift"
+availability:
+  surface: platform
+  access: paid_plan
+  minPlan: enterprise_plus
 ---
 
-# Configure AWS PrivateLink for Redshift <Lifecycle status="managed_plus" />
+# Configure AWS PrivateLink for Redshift
 
 import SetUpPages from '/snippets/_available-tiers-enterprise-plus.md';
 import PrivateLinkCreateConnection from '/snippets/_privatelink-create-connection.md';

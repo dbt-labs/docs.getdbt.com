@@ -5,6 +5,9 @@ description: "Set up environment-level permissions to protect your information"
 sidebar_label: "Set up environment-level permissions"
 pagination_next: null
 pagination_prev: null
+availability:
+  surface: platform
+  access: login_required
 ---
 
 To set up and configure environment-level permissions, you must have write permissions to the **Groups & Licenses** settings of your <Constant name="dbt" /> account. For more information about roles and permissions, check out [User permissions and licenses](/docs/platform/manage-access/seats-and-users).

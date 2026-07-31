@@ -4,6 +4,7 @@ sidebar_label: "Set up dbt State"
 description: "Learn how to install and configure dbt State across dbt Core, dbt platform, and Fusion."
 id: "dbt-state-setup"
 tags: ['dbt State']
+availability: everywhere_usage
 ---
 
 # Setting up dbt State <Lifecycle status="preview" />
@@ -51,7 +52,7 @@ To enable dbt State:
 
 7. Select the jobs to enable dbt State for. You can either enable:
 
-   - **By environment**: Enables dbt State on all existing jobs within the selected environment at once. New deploy jobs created in that environment will have dbt State enabled automatically.
+   - **By environment**: Enables dbt State on all existing jobs within the selected environment at once. New jobs created in that environment will have dbt State enabled automatically.
    - **By specific jobs**: Enables dbt State on individual jobs. To enable it on additional jobs later, refer to [Enabling dbt State on individual jobs](/docs/deploy/dbt-state-enable-jobs).
 
 8. Click **Enable dbt State**.
@@ -126,7 +127,7 @@ To see how dbt State optimizes your runs, refer to [dbt State usage examples](/d
 
 ## Configuring lag tolerance
 
-Lag tolerance allows you to set a tolerance level for older data at the project, environment, or model level. We recommend starting with the following Jinja expression:
+Lag tolerance allows you to set a tolerance level for older data at the project, environment, or model level. If not configured, `lag_tolerance` defaults to `45m`. We recommend starting with the following Jinja expression:
 
 <File name="dbt_project.yml">
 

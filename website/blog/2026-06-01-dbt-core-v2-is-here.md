@@ -12,9 +12,9 @@ date: 2026-06-01
 is_featured: true
 ---
 
-Today, we published the **first alpha release of dbt Core version 2.0**, raising the baseline for what dbt users can expect from their transformation tool. As always, dbt Core's code is completely open source under the Apache 2.0 license. What makes this release significant is that dbt Core v2.0 is now built on the same foundations as the [dbt Fusion engine](https://www.getdbt.com/product/fusion) – we've open-sourced a lot of Fusion code for the first time.
+Today, we published the **first alpha release of dbt Core version 2.0**, raising the baseline for what dbt users can expect from their transformation tool. As always, dbt Core's code is completely open source under the Apache 2.0 license. What makes this release significant is that dbt Core 2.0 is now built on the same foundations as the [dbt Fusion engine](https://www.getdbt.com/product/fusion) – we've open-sourced a lot of Fusion code for the first time.
 
-The launch of dbt Core v2.0 comes with key feature developments:
+The launch of dbt Core 2.0 comes with key feature developments:
 
 - **Significant parse time improvements**, especially on the largest dbt projects
 - **A tightly-defined language spec** which makes it impossible to accidentally configure a `desciptin` instead of a `description`, and gives anyone integrating with the dbt ecosystem (including dbt's own development team!) a stable interface to build against.

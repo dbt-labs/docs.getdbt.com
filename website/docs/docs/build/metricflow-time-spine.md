@@ -4,6 +4,7 @@ id: metricflow-time-spine
 description: "MetricFlow expects a default time spine table called metricflow_time_spine"
 sidebar_label: "MetricFlow time spine"
 tags: [Metrics, Semantic Layer]
+availability: all_users
 ---
 <VersionBlock firstVersion="1.9">
 

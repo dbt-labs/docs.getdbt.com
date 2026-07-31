@@ -1,5 +1,6 @@
 ---
 title: runtime_version
+description: "Specify the Python runtime version used to run a Python user-defined function (UDF) on Snowflake and BigQuery."
 sidebar_label: "runtime_version"
 id: runtime-version
 ---

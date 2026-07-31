@@ -4,6 +4,9 @@ id: "managed-repository"
 description: "Learn how to set up a project with a managed repository."
 pagination_next: "docs/platform/git/import-a-project-by-git-url"
 pagination_prev: "docs/platform/git/configure-git"
+availability:
+  surface: platform
+  access: login_required
 ---
 
 Managed repositories are a great way to trial dbt without needing to create a new repository. If you don't already have a <Constant name="git" /> repository for your dbt project, you can let <Constant name="dbt" /> host and manage a repository for you. 

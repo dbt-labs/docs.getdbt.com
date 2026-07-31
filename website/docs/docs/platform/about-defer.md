@@ -4,6 +4,9 @@ id: about-defer
 description: "Learn how to leverage defer to prod when developing with dbt."
 sidebar_label: "Defer in dbt"
 pagination_next: "docs/about-dbt-extension"
+availability:
+  surface: platform
+  access: login_required
 ---
 
 

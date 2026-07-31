@@ -15,6 +15,9 @@ meta:
   platform_name: 'Salesforce Data 360'
   config_page: '/reference/resource-configs/data-cloud-configs'
 unlisted: true
+availability:
+  preset: local_free
+  engine: v2
 ---
 
 # Salesforce Data 360 setup <Lifecycle status="beta"/>

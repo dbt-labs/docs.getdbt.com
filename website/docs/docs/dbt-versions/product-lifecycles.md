@@ -3,6 +3,7 @@ title: "Product lifecycles"
 id: "product-lifecycles"
 hide_table_of_contents: true
 description: "Learn about dbt Labs' product lifecycles."
+availability: all_users
 ---
 
 import Tabs from '@theme/Tabs';
@@ -33,7 +34,7 @@ dbt platform features adhere to the following lifecycle path:
     <strong style={{color: 'var(--color-coalesce-purple-800)', fontSize: '1rem'}}>Preview</strong>
   </div>
   <div style={{padding: '1.25rem 1.5rem', background: 'var(--ifm-background-color)'}}>
-    Stable and functionally ready for production. Planned additions or non-backward-compatible changes may still occur before GA. Includes documentation, technical support, and SLOs. Available at no extra cost, though may become paid at GA. If marked `Private`, access must be enabled by dbt Labs.
+    Stable and functionally ready for production. Planned additions or non-backward-compatible changes may still occur before GA. Includes documentation, technical support, and SLOs. If marked `Private`, access must be enabled by dbt Labs.
   </div>
 </div>
 
@@ -42,7 +43,7 @@ dbt platform features adhere to the following lifecycle path:
     <strong style={{color: 'var(--color-green-700)', fontSize: '1rem'}}>Generally available (GA)</strong>
   </div>
   <div style={{padding: '1.25rem 1.5rem', background: 'var(--ifm-background-color)'}}>
-    Stable features available to all qualified dbt accounts. SLOs, documentation, and technical support apply. Feature availability may depend on your environment's dbt version. Use a supported [release track](/docs/dbt-versions/dbt-release-tracks) to receive the latest GA features.
+    Stable features available to all qualified dbt accounts. SLOs, documentation, and technical support apply. Pricing changes may change or apply. Feature availability may depend on your environment's dbt version. Use a supported [release track](/docs/dbt-versions/dbt-release-tracks) to receive the latest GA features.
   </div>
 </div>
 
@@ -67,9 +68,9 @@ dbt platform features adhere to the following lifecycle path:
 </div>
 
 </TabItem>
-<TabItem value="core" label="dbt Core v1 and v2">
+<TabItem value="core" label="dbt Core v1.x and v2">
 
-dbt Core releases follow semantic versioning. Read more in [About dbt versions](/docs/dbt-versions). dbt Core v1 and v2 releases both adhere to the following lifecycle path:
+dbt Core releases follow semantic versioning. Read more in [About dbt versions](/docs/dbt-versions). dbt Core v1.x and v2 releases both adhere to the following lifecycle path:
 
 <div className="grid--3-col" style={{gap: '1.5rem', marginTop: '1rem'}}>
 

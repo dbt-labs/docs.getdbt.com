@@ -1,5 +1,5 @@
 import React, { useState, useEffect, createContext, useCallback, useRef } from "react"
-import { products, versions } from '../../dbt-versions'
+import { products, versions, isPrerelease } from '../../dbt-versions'
 import sanitizeHtml from "sanitize-html";
 import { useLocation } from '@docusaurus/router';
 
@@ -22,30 +22,7 @@ function findProductForSubProduct(subProductName) {
   return null;
 }
 
-// Find a product by its top-level name field
-function findProduct(productName) {
-  return products.find((product) => product.name === productName) || null;
-}
-
-// Resolve a subProduct from product name + version URL params
-function resolveSubProductFromProductAndVersion(productName, versionString) {
-  const product = findProduct(productName);
-  if (!product) return null;
-
-  let matches = product.subProducts.filter((sp) => sp.version === versionString);
-
-  if (matches.length === 0 && /^\d+$/.test(versionString)) {
-    matches = product.subProducts.filter((sp) =>
-      sp.version.startsWith(`${versionString}.`)
-    );
-  }
-
-  if (matches.length === 0) return null;
-
-  return (matches.find((sp) => !sp.isBeta) || matches[0]).name;
-}
-
-// Resolve a subProduct name from a version string (backward compat for ?version= URLs)
+// Resolve a subProduct name from a version string (?version= URLs)
 function resolveSubProductFromVersion(versionString) {
   for (const product of products) {
     const sp = product.subProducts.find((s) => s.version === versionString);
@@ -57,7 +34,7 @@ function resolveSubProductFromVersion(versionString) {
 // Default subProduct: first non-beta subProduct across all products
 function getDefaultSubProductName() {
   for (const product of products) {
-    const sp = product.subProducts.find((s) => !s.isBeta);
+    const sp = product.subProducts.find((s) => !isPrerelease(s));
     if (sp) return sp.name;
   }
   return products[0]?.subProducts[0]?.name;
@@ -71,7 +48,7 @@ const VersionContext = createContext({
   subProduct: defaultSubProductName,
   product: findProductForSubProduct(defaultSubProductName),
   EOLDate: defaultSubProduct?.EOLDate,
-  isPrerelease: defaultSubProduct?.isBeta || false,
+  isPrerelease: isPrerelease(defaultSubProduct),
   customDisplay: defaultSubProductName,
   latestStableRelease: defaultSubProduct?.version,
   updateVersion: () => Object,
@@ -83,19 +60,14 @@ export const VersionContextProvider = ({ value = "", children }) => {
   const location = useLocation()
   const pendingSubProductRef = useRef(null)
 
-  // Helper to update URL with product name + version parameters
+  // Helper to update URL with the version parameter
   const updateUrlParams = useCallback((newSubProductName) => {
     const url = new URL(window.location.href)
     const sp = findSubProduct(newSubProductName);
-    const productName = findProductForSubProduct(newSubProductName);
 
+    // Strip legacy params that are no longer written to the URL
     url.searchParams.delete('subProduct')
-
-    if (productName) {
-      url.searchParams.set('name', productName)
-    } else {
-      url.searchParams.delete('name')
-    }
+    url.searchParams.delete('name')
 
     if (sp?.version) {
       url.searchParams.set('version', sp.version)
@@ -111,24 +83,17 @@ export const VersionContextProvider = ({ value = "", children }) => {
     const storageSubProduct = window.localStorage.getItem('dbtSubProduct')
     const urlParams = new URLSearchParams(search);
 
-    // Try product name + version params first
-    const rawNameParam = urlParams.get('name')
-    const nameParam = rawNameParam ? sanitizeHtml(rawNameParam) : null
     const rawVersionParam = urlParams.get('version')
     const versionParam = rawVersionParam ? sanitizeHtml(rawVersionParam) : null
-    if (nameParam && versionParam) {
-      const fromProductAndVersion = resolveSubProductFromProductAndVersion(nameParam, versionParam)
-      if (fromProductAndVersion) return fromProductAndVersion
-    }
 
-    // Fall back to legacy subProduct param
+    // Legacy subProduct param (still read for backward compat)
     const rawSubProductParam = urlParams.get('subProduct')
     const subProductParam = rawSubProductParam ? sanitizeHtml(rawSubProductParam) : null
     if (subProductParam && findSubProduct(subProductParam)) {
       return subProductParam
     }
 
-    // Fall back to legacy version-only param
+    // Resolve from the version param
     if (versionParam) {
       // Exact version match
       const fromVersion = resolveSubProductFromVersion(versionParam)
@@ -174,7 +139,7 @@ export const VersionContextProvider = ({ value = "", children }) => {
 
   // Listen for route changes via Docusaurus router
   useEffect(() => {
-    if (location.search.includes('name=') || location.search.includes('subProduct=') || location.search.includes('version=')) {
+    if (location.search.includes('subProduct=') || location.search.includes('version=')) {
       const resolved = resolveSubProductFromSearch(location.search)
       setSubProductName(resolved)
       window.localStorage.setItem('dbtSubProduct', resolved)
@@ -190,18 +155,12 @@ export const VersionContextProvider = ({ value = "", children }) => {
       const href = anchor.getAttribute('href')
       if (!href) return
 
-      if (href.includes('name=') || href.includes('subProduct=') || href.includes('version=')) {
+      if (href.includes('subProduct=') || href.includes('version=')) {
         try {
           const url = new URL(href, window.location.origin)
-          const nameFromLink = url.searchParams.get('name')
           const subProductFromLink = url.searchParams.get('subProduct')
           const versionFromLink = url.searchParams.get('version')
-          if (nameFromLink && versionFromLink) {
-            pendingSubProductRef.current = {
-              type: 'nameAndVersion',
-              value: { name: nameFromLink, version: versionFromLink },
-            }
-          } else if (subProductFromLink) {
+          if (subProductFromLink) {
             pendingSubProductRef.current = { type: 'subProduct', value: subProductFromLink }
           } else if (versionFromLink) {
             pendingSubProductRef.current = { type: 'version', value: versionFromLink }
@@ -223,12 +182,7 @@ export const VersionContextProvider = ({ value = "", children }) => {
       pendingSubProductRef.current = null
 
       let resolved;
-      if (pending.type === 'nameAndVersion') {
-        resolved = resolveSubProductFromProductAndVersion(
-          sanitizeHtml(pending.value.name),
-          sanitizeHtml(pending.value.version)
-        )
-      } else if (pending.type === 'subProduct') {
+      if (pending.type === 'subProduct') {
         const sanitized = sanitizeHtml(pending.value)
         if (findSubProduct(sanitized)) resolved = sanitized
       } else if (pending.type === 'version') {
@@ -270,7 +224,7 @@ export const VersionContextProvider = ({ value = "", children }) => {
     subProduct: subProductName,
     product: currentProductName,
     EOLDate: currentSubProduct?.EOLDate,
-    isPrerelease: currentSubProduct?.isBeta || false,
+    isPrerelease: isPrerelease(currentSubProduct),
     customDisplay: subProductName,
     latestStableRelease: latestStableRelease?.version,
     updateVersion,

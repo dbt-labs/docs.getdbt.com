@@ -14,6 +14,7 @@ meta:
   slack_channel_link: 'https://www.getdbt.com/community'
   platform_name: 'MindsDB'
   config_page: '/reference/resource-configs/mindsdb-configs'
+availability: local_free
 ---
 
 :::info Vendor-supported plugin

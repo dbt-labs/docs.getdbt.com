@@ -2,6 +2,9 @@
 title: "Account settings in dbt"
 sidebar_label: "Account settings" 
 description: "Learn how to enable account settings for your dbt users."
+availability:
+  surface: platform
+  access: login_required
 ---
 
 The following sections describe the different **Account settings** available from your <Constant name="dbt" /> account in the sidebar (under your account name on the lower left-hand side). 

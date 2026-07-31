@@ -3,6 +3,7 @@ title: "Optimize costs in dbt"
 id: optimize-costs
 description: "Best practices to optimize model build usage and warehouse costs in dbt."
 sidebar_label: "Optimize costs"
+availability: everywhere_usage
 ---
 
 <Constant name="dbt" /> offers ways to optimize your model’s built usage and warehouse costs. 
