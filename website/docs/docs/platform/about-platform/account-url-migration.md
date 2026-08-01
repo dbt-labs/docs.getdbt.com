@@ -22,7 +22,7 @@ If your account has been assigned a new access URL, please review the [migration
 If your account has not been assigned a new access URL, you will receive an email and in-app notification with a scheduled enablement date. When the change takes effect, you'll be automatically redirected to your **dbt.com** account-specific access URL. Account sign-in remains the same. Both the new **dbt.com** and **getdbt.com** region URLs will support integrations according to the dates on the [migration timeline](#migration-timeline).
 
 :::info
-Before assignment, if your organization uses network allowlisting, add the **dbt.com** domain to your allowlists. For single-tenant accounts, there will be no change to IP addresses. For multi-tenant accounts, refer to [Access, Regions, & IP Addresses](/docs/platform/about-platform/access-regions-ip-addresses) for updated IPs. If your account has [IP restrictions](/docs/platform/secure/ip-restrictions) enabled, review [Validate IP restrictions after migration](#validate-ip-restrictions-after-migration) before your assignment date.
+Before assignment, if your organization uses network allowlisting, add the **dbt.com** domain to your allowlists. For single-tenant accounts, there will be no change to IP addresses. For multi-tenant accounts, refer to [Access, Regions, & IP Addresses](/docs/platform/about-platform/access-regions-ip-addresses) for updated IPs. If your account has [IP restrictions](/docs/platform/secure/ip-restrictions) enabled, review [Validating IP restrictions](#validating-ip-restrictions) before your assignment date.
 :::
 
 ## Migration timeline
@@ -81,11 +81,11 @@ Data platform connections will continue to use your legacy **getdbt.com** URL fo
 | [Terraform provider](https://registry.terraform.io/providers/dbt-labs/dbtcloud/latest/docs) | Update access URLs in your Terraform configuration |
 | Browser Bookmarks | Update personal and shared bookmarks |
 
-## Validate IP restrictions after migration
+## Validating IP restrictions
 
-If your account has [IP restrictions](/docs/platform/secure/ip-restrictions) enabled, check for any network rules that point specifically at your **getdbt.com** domain. This includes VPN split-tunneling rules, proxy (PAC) rules, and firewall egress rules. Update these rules for your new **dbt.com** access URL before your account's scheduled assignment date so access isn't disrupted.
+If you have received notification of new access URL assignment, and you have IP restrictions enabled, we recommend reviewing network rules that point specifically at your ***.getdbt.com** domain. This includes VPN split-tunneling rules, proxy (PAC) rules, and firewall egress rules. Update these rules for your new ***.dbt.com** access URL before your account's scheduled assignment date so access isn't disrupted.
 
-To confirm your new access URL is allowed, send a test request from the same network you'd normally use to reach your **getdbt.com** URL. Replace NEW_ACCESS_URL with your account's new access URL and ACCOUNT_ID with your account ID:
+To confirm your new access URL is accessible, send a test request from the same network you'd normally use to reach your ***.getdbt.com** URL. Replace NEW_ACCESS_URL with your account's new access URL and ACCOUNT_ID with your account ID:
 
 - **Browser:** Go to `https://NEW_ACCESS_URL/api/v2/accounts/ACCOUNT_ID/`
 - **Terminal:** Run `curl -s https://NEW_ACCESS_URL/api/v2/accounts/ACCOUNT_ID/`
