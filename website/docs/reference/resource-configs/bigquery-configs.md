@@ -1288,7 +1288,142 @@ The BigQuery Python models also have the following additional configuration para
 - [PySpark DataFrame syntax](https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.html)
 
 
-## Unit test limitations
+## Unit tests in BigQuery
+
+<VersionBlock firstVersion="1.12">
+
+### Pseudocolumns
+
+BigQuery [external tables](https://docs.cloud.google.com/bigquery/docs/external-tables) expose a [`_FILE_NAME` pseudocolumn](https://docs.cloud.google.com/bigquery/docs/query-cloud-storage-data#query_the_file_name_pseudo-column) that identifies the source file for each row. You can query pseudocolumns but they don't appear in the information schema.
+
+dbt automatically includes `_FILE_NAME` when retrieving columns for unit tests on BigQuery external tables. This means you can provide `_FILE_NAME` values in `dict` or `csv` fixture formats without needing to use `format: sql`. For example:
+
+<Tabs
+  defaultValue="dict"
+  values={[
+    { label: 'dict', value: 'dict', },
+    { label: 'csv', value: 'csv', },
+  ]
+}>
+<TabItem value="dict">
+
+```yaml
+unit_tests:
+  - name: test_external_model
+    model: my_external_model
+    given:
+      - input: source('my_source', 'external_table')
+        rows:
+          - {id: 1, value: "foo", _FILE_NAME: "gs://my-bucket/file1.csv"}
+          - {id: 2, value: "bar", _FILE_NAME: "gs://my-bucket/file2.csv"}
+    expect:
+      rows:
+        - {id: 1, source_file: "gs://my-bucket/file1.csv"}
+        - {id: 2, source_file: "gs://my-bucket/file2.csv"}
+```
+
+</TabItem>
+<TabItem value="csv">
+
+```yaml
+unit_tests:
+  - name: test_external_model
+    model: my_external_model
+    given:
+      - input: source('my_source', 'external_table')
+        format: csv
+        rows: |
+          id,value,_FILE_NAME
+          1,foo,gs://my-bucket/file1.csv
+          2,bar,gs://my-bucket/file2.csv
+    expect:
+      rows:
+        - {id: 1, source_file: "gs://my-bucket/file1.csv"}
+        - {id: 2, source_file: "gs://my-bucket/file2.csv"}
+```
+
+</TabItem>
+</Tabs>
+
+Note the following behaviors:
+
+- If you omit `_FILE_NAME` from a fixture row, dbt defaults the value to `null`. Include it only in rows where the value is relevant to your test.
+- If your model outputs `_FILE_NAME`, you can use it in `expect` rows like any other column &mdash; use the name as it appears in the model output. Pseudocolumn handling only applies to `given` fixtures.
+
+    <Tabs
+      defaultValue="aliased"
+      values={[
+        { label: 'With alias', value: 'aliased', },
+        { label: 'Without alias', value: 'passthrough', },
+      ]
+    }>
+    <TabItem value="aliased">
+
+    If your model selects `_FILE_NAME` with an alias:
+
+    <File name='my_model.sql'>
+
+    ```sql
+    select
+        id,
+        _FILE_NAME as source_file
+    from {{ source('my_source', 'external_table') }}
+    ```
+
+    </File>
+
+    Use the alias name in `expect`:
+
+    ```yaml
+    unit_tests:
+      - name: test_file_name_aliased
+        model: my_model
+        given:
+          - input: source('my_source', 'external_table')
+            rows:
+              - {id: 1, _FILE_NAME: "gs://my-bucket/file1.csv"}
+        expect:
+          rows:
+            - {id: 1, source_file: "gs://my-bucket/file1.csv"}
+    ```
+
+    </TabItem>
+    <TabItem value="passthrough">
+
+    If your model selects `_FILE_NAME` without an alias:
+
+    <File name='my_model.sql'>
+
+    ```sql
+    select
+        id,
+        _FILE_NAME
+    from {{ source('my_source', 'external_table') }}
+    ```
+
+    </File>
+
+    Use `_FILE_NAME` in `expect`:
+
+    ```yaml
+    unit_tests:
+      - name: test_file_name_passthrough
+        model: my_model
+        given:
+          - input: source('my_source', 'external_table')
+            rows:
+              - {id: 1, _FILE_NAME: "gs://my-bucket/file1.csv"}
+        expect:
+          rows:
+            - {id: 1, _FILE_NAME: "gs://my-bucket/file1.csv"}
+    ```
+
+    </TabItem>
+    </Tabs>
+
+</VersionBlock>
+
+### Limitations
 
 You must specify all fields in a BigQuery `STRUCT` for [unit tests](/docs/build/unit-tests). You cannot use only a subset of fields in a `STRUCT`.
 
