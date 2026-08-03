@@ -176,7 +176,7 @@ The <Constant name="studio_ide" /> formatting integrations take care of manual t
 
 To format your SQL code, <Constant name="dbt" /> integrates with [sqlfmt](http://sqlfmt.com/), which is an uncompromising SQL query formatter that provides one way to format the SQL query and Jinja.
 
-By default, the <Constant name="studio_ide" /> uses sqlfmt rules to format your code, making the **Format** button available and convenient to use immediately. However, if you have a file named `.sqlfluff` in the root directory of your dbt project, the <Constant name="studio_ide" /> will default to SQLFluff rules instead.
+By default, the <Constant name="studio_ide" /> uses sqlfmt rules to format your code, making the **Format** button available and convenient to use immediately. However, if you have a file named `.sqlfluff` in the root directory of your dbt project, the <Constant name="studio_ide" /> defaults to SQLFluff rules instead.
 
 Formatting is available on all branches, including your protected primary git branch. Since the <Constant name="studio_ide" /> prevents commits to the protected branch, it prompts you to commit those changes to a new branch.
 
