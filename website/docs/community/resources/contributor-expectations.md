@@ -100,10 +100,9 @@ Many labels follow a namespaced `facet:value` model, where each facet answers on
 | `engine:` | `engine:v1`, `engine:v2` | Which dbt engine the issue concerns: `engine:v1` is the Python engine (<Constant name="core_v1" />); `engine:v2` is the v2 Rust rewrite that powers <Constant name="core_v2" /> and the <Constant name="fusion_engine" />. |
 | `priority:` | `priority:p0`, `priority:p1`, `priority:p2` | Maintainer triage urgency. |
 | `status:` | `status:triage`, `status:needs-repro`, `status:has-repro`, `status:ready-for-review` | Where the issue sits in the workflow. |
-| `resolution:` | `resolution:wontfix` | An issue was closed without a code change. |
+| `resolution:` | `resolution:wontfix` | Why an issue was closed without a code change. |
 
-
-New issues are automatically labeled for triage — currently with both the faceted `status:triage` and the legacy `triage` label while automation migrates to the faceted set — to mark them as awaiting a maintainer's first response. Older issues may also carry other previous, un-namespaced labels such as `bug`, `enhancement`, `good_first_issue`, `help_wanted`, `duplicate`, `stale`, and `wontfix`. These map onto the faceted labels above (`bug` → `type:bug`, `enhancement` → `type:feature`, `good_first_issue` → `type:good-first-issue`, `wontfix` → `resolution:wontfix`, and so on) and remain in place for continuity. You may see either set while the transition settles.
+Automation labels new issues for triage — currently with both the faceted `status:triage` and the legacy `triage` label while it migrates to the faceted set — to mark them as awaiting a maintainer's first response. Older issues may also carry previous, un-namespaced labels such as `bug`, `enhancement`, `good_first_issue`, `help_wanted`, `duplicate`, `stale`, and `wontfix`. These map onto the faceted labels above (`bug` → `type:bug`, `enhancement` → `type:feature`, `good_first_issue` → `type:good-first-issue`, `wontfix` → `resolution:wontfix`, and so on) and remain in place for continuity. You may see either set while the transition settles.
 
 ### Pull requests
 
