@@ -184,7 +184,7 @@ Formatting is available on all branches, including your protected primary git br
 2. Click the **`</> Config`** button on the right side of the console.
 3. In the **Code quality tool configuration** dialog, select **sqlfmt (formatting only)**.
 4. Click **Save**.
-5. After you save your selection, use the toolbar above the console (below the **File editor**) to select the **Format** button.
+5. After saving, use the toolbar above the console (below the **File editor**) to select the **Format** button.
 6. The **Format** button auto-formats your code in the **File editor**. Once you've auto-formatted, you'll see a message confirming the outcome. 
 
 <Lightbox src="/img/docs/dbt-platform/platform-ide/sqlfmt.gif" width="90%" title="Use sqlfmt to format your SQL code."/>
