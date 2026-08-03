@@ -157,7 +157,7 @@ group_by_and_order_by_style = implicit
 ```
 </details>
 
-For more info on styling best practices, refer to [How we style our SQL](/best-practices/how-we-style/2-how-we-style-our-sql).
+For more information on styling best practices, refer to [How we style our SQL](/best-practices/how-we-style/2-how-we-style-our-sql).
 
 <Lightbox src="/img/docs/dbt-platform/platform-ide/ide-sqlfluff-config.png" width="90%" title="Customize linting by configuring your own linting code rules, including dbtonic linting/styling."/>
 
@@ -201,7 +201,7 @@ To format your YAML, Markdown, or JSON code, <Constant name="dbt" /> integrates 
 
 You can add a configuration file to customize formatting rules for YAML, Markdown, or JSON files using Prettier. The IDE looks for the configuration file based on an order of precedence. For example, it first checks for a "prettier" key in your `package.json` file.
 
-For more info on the order of precedence and how to configure files, refer to [Prettier's documentation](https://prettier.io/docs/en/configuration.html). Please note, `.prettierrc.json5`, `.prettierrc.js`, and `.prettierrc.toml` files aren't currently supported.
+For more information on the order of precedence and how to configure files, refer to [Prettier's documentation](https://prettier.io/docs/en/configuration.html). Please note, `.prettierrc.json5`, `.prettierrc.js`, and `.prettierrc.toml` files aren't currently supported.
 
 ### Format Python
 
