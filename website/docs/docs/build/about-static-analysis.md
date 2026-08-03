@@ -320,7 +320,7 @@ from {{ ref('my_model') }}
 
 Yes. This pattern is valid and recommended: use `strict` while you develop for stronger validation, and keep `baseline` in deployment for faster runs that are less likely to stop on analysis findings.
 
-For more information, including CLI examples, an optional environment variable pattern, and tradeoffs (including compile time with many sources), refer to [Using strict mode in development and baseline in deployment](/best-practices/using-strict-and-baseline-static-analysis).
+For more information, including CLI examples and an optional environment variable pattern, refer to [Optimize static analysis for development and deployment](/best-practices/optimize-static-analysis-for-development-and-deployment).
 
 ### When should I turn static analysis `off`?
 

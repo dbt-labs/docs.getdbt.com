@@ -389,4 +389,4 @@ snapshots:
 
 - [About static analysis](/docs/build/about-static-analysis)
 - [`--static-analysis` flag](/reference/global-configs/static-analysis-flag)
-- [Using strict mode in development and baseline in deployment](/best-practices/using-strict-and-baseline-static-analysis)
+- [Optimize static analysis for development and deployment](/best-practices/optimize-static-analysis-for-development-and-deployment)

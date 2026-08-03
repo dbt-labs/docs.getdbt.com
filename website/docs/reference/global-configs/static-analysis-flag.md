@@ -35,4 +35,4 @@ dbt run --static-analysis off
 
 - [`static_analysis` (resource config)](/reference/resource-configs/static-analysis)
 - [About flags](/reference/global-configs/about-global-configs)
-- [Using strict mode in development and baseline in deployment](/best-practices/using-strict-and-baseline-static-analysis)
+- [Optimize static analysis for development and deployment](/best-practices/optimize-static-analysis-for-development-and-deployment)

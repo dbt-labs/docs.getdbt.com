@@ -117,5 +117,5 @@ Once you've upgraded your project to <Constant name="fusion" />, you can:
 - [Sign in or register](/docs/sign-in-dbt-extension) for a <Constant name="dbt_platform" /> account to keep using advanced features after the 14-day trial.
 - [Configure your local environment](/docs/configure-dbt-extension) to mirror your <Constant name="dbt_platform" /> environment and [set environment variables](/docs/configure-dbt-extension#configure-environment-variables) required by your project.
 - [Compare changes locally](/docs/fusion/vs-compare-changes) to preview data changes caused by your local edits.
-- Use [`strict` static analysis in development and `baseline` in deployment](/best-practices/using-strict-and-baseline-static-analysis) for stronger local validation without slowing deployment jobs.
+- [Optimize static analysis for development and deployment](/best-practices/optimize-static-analysis-for-development-and-deployment) for stronger local validation without slowing deployment jobs.
 - Review the [limitations and unsupported features](/docs/fusion/supported-features#limitations).
