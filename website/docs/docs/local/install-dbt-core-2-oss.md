@@ -11,7 +11,7 @@ availability: local_free
 
 <VersionBlock lastVersion="1.99">
 
-This page is for installing dbt Core 2.0, the Apache 2.0 open-source distribution of v2. To view the installation instructions, select **v2** from the version picker in the docs navigation. To install dbt Core v1.x, refer to [Install dbt Core v1.x](/docs/local/install-dbt?version=1.12&name=Core).
+This page is for installing dbt Core 2.0, the Apache 2.0 open-source distribution of v2. To view the installation instructions, select **v2** from the version picker in the docs navigation. To install dbt Core v1.x, refer to [Install dbt Core v1.x](/docs/local/install-dbt?version=1.12).
 
 To upgrade an existing v1 project to v2, refer to [Upgrade to v2](/docs/dbt-versions/core-upgrade/upgrading-to-v2?version=2.0).
 
