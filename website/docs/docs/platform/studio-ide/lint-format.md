@@ -61,7 +61,7 @@ Linting is available on all branches, including your protected primary git branc
 
 1. To enable linting, open a `.sql` file and click the **Code quality** tab.
 2. Click the **`</> Config`** button on the right side of the [console section](/docs/platform/studio-ide/ide-user-interface#console-section), below the **File editor**. 
-3. In the **Code quality tool configuration** dialog, select **SQLFluff (linting & formatting)** or **sqlfmt (formatting only)**. 
+3. In the **Code quality tool configuration** dialog, select **SQLFluff (linting & formatting)**.
 4. To lint your code, select **SQLFluff (linting & formatting)**. (Use sqlfmt to [format](#format) your code.)
 5. After you save your selection, use the toolbar above the console (below the **File editor**) to select **Lint** or **Fix**:
     - **Lint**: Displays linting issues in the <Constant name="studio_ide" /> as wavy underlines in the **File editor**. You can hover over an underlined issue to display the details and actions, including a **Quick Fix** option to fix all or specific issues. After linting, you'll see a message confirming the outcome. Linting doesn't rerun after saving. Click **Lint** again to rerun linting.
