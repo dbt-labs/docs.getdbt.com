@@ -1290,10 +1290,6 @@ The BigQuery Python models also have the following additional configuration para
 
 ## Unit tests in BigQuery
 
-### Limitations
-
-You must specify all fields in a BigQuery `STRUCT` for [unit tests](/docs/build/unit-tests). You cannot use only a subset of fields in a `STRUCT`.
-
 <VersionBlock firstVersion="1.12">
 
 ### Pseudocolumns
@@ -1318,4 +1314,8 @@ unit_tests:
 ```
 
 </VersionBlock>
+
+### Limitations
+
+You must specify all fields in a BigQuery `STRUCT` for [unit tests](/docs/build/unit-tests). You cannot use only a subset of fields in a `STRUCT`.
 

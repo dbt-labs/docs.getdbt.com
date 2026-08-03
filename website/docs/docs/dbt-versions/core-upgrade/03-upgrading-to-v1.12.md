@@ -112,6 +112,12 @@ Key improvements:
 - When a model with custom contract constraints is evaluated during `state:modified` selection, dbt returns `None` for unknown constraint types instead of raising a `KeyError`.
 </Expandable>
 
+### Pseudocolumn support in unit tests
+
+<Constant name="core" /> v1.12 adds a framework for adapters to declare pseudocolumns &mdash; columns that are queryable but don't appear in the information schema. When dbt builds unit test fixtures, it calls `get_columns_for_unit_tests`, which combines a relation's regular columns with any pseudocolumns the adapter reports. This means you can include pseudocolumns directly in `dict` or `csv` format fixture rows without needing `format: sql`.
+
+This is currently supported in BigQuery only, exposing `_FILE_NAME` for external tables. For more information, refer to [Unit testing models with pseudocolumns](/docs/build/unit-tests#unit-testing-models-with-pseudocolumns).
+
 ### Managing changes to legacy behaviors
 
 <Constant name="core" /> v1.12 introduces new flags for [managing changes to legacy behaviors](/reference/global-configs/behavior-changes). You may opt into recently introduced changes (disabled by default), or opt out of mature changes (enabled by default), by setting `true` / `false` values, respectively, for `flags` in `dbt_project.yml`.
@@ -148,7 +154,7 @@ You can read more about each of these behavior changes in the following links:
 
 ### BigQuery
 
-- dbt now automatically includes the `_FILE_NAME` pseudocolumn when building unit test fixtures for BigQuery external tables. You can reference `_FILE_NAME` in `dict` or `csv` fixture rows without needing `format: sql`. For more information, refer to [Pseudocolumns](/reference/resource-configs/bigquery-configs#pseudocolumns).
+- For BigQuery external tables, dbt now automatically includes the `_FILE_NAME` pseudocolumn when building unit test fixtures, so you can reference it in `dict` or `csv` fixture rows without needing `format: sql`. For more information, refer to [Pseudocolumns](/reference/resource-configs/bigquery-configs#pseudocolumns).
 - Added the [`bigquery_use_standard_sql_for_partitions`](/reference/global-configs/bigquery-changes#the-bigquery_use_standard_sql_for_partitions-flag) flag, which controls whether `get_partitions_metadata()` uses standard SQL (`INFORMATION_SCHEMA.PARTITIONS`) or legacy SQL (`$__PARTITIONS_SUMMARY__`). The flag defaulted to `false` when first introduced in this release, but has been flipped to `true` by default ahead of BigQuery's [legacy SQL deprecation on June 1, 2026](https://docs.cloud.google.com/bigquery/docs/release-notes#February_25_2026). To revert to legacy SQL, set the flag to `false` in `dbt_project.yml`.
 - Added the [`bigquery_reject_wildcard_metadata_source_freshness`](/reference/global-configs/bigquery-changes#the-bigquery_reject_wildcard_metadata_source_freshness-flag) flag. When you set this flag to `true`, dbt raises a `DbtRuntimeError` if you run metadata-based source freshness checks with wildcard table identifiers (for example, `events_*`), preventing incorrect freshness results.
 - You can configure BigQuery job link logging with `job_link_info_level_log`. By default, dbt logs job links at the debug level. To log job links at the info level, set `job_link_info_level_log: true` in your BigQuery profile. This makes job links visible in dbt logs for easier access to the BigQuery console. For more information, see [BigQuery setup](/docs/local/connect-data-platform/bigquery-setup#job_link_info_level_log).

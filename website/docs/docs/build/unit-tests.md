@@ -363,9 +363,46 @@ There is currently no way to unit test whether the dbt framework inserted/merged
 
 ## Unit testing models with pseudocolumns
 
-Pseudocolumns are columns that are queryable but don't appear in the information schema. By default, dbt retrieves columns as usual when building unit test fixtures. 
+Pseudocolumns are columns that are queryable but don't appear in the information schema. They're injected by the warehouse engine at query time rather than stored as part of the table schema. A common example is BigQuery's `_FILE_NAME` column on external tables, which exposes the source file path for each row.
 
-Support for pseudocolumns in unit tests is currently implemented for BigQuery only. For BigQuery external tables, dbt automatically includes the `_FILE_NAME` pseudocolumn, so you can reference it in your `dict` or `csv` fixture rows without needing `format: sql`. Refer to [BigQuery configurations](/reference/resource-configs/bigquery-configs#pseudocolumns) for details.
+Previously, the only way to include a pseudocolumn in a unit test fixture was to use `format: sql`, which required writing raw SQL for the entire input and specifying every column. For example:
+
+```yaml
+unit_tests:
+  - name: test_external_table_filter
+    model: stg_events
+    given:
+      - input: source('raw', 'events')
+        format: sql
+        rows: |
+          select 1 as id, 'click' as event_type, 'gs://bucket/2024/jan.csv' as _FILE_NAME
+```
+
+Starting in <Constant name="core" /> v1.12, dbt includes pseudocolumns when building unit test fixtures. This means you can include pseudocolumns directly in `dict` or `csv` format fixtures alongside your other columns:
+
+```yaml
+unit_tests:
+  - name: test_external_table_filter
+    model: stg_events
+    given:
+      - input: source('raw', 'events')
+        rows:
+          - {id: 1, event_type: click, _FILE_NAME: "gs://bucket/2024/jan.csv"}
+          - {id: 2, event_type: click, _FILE_NAME: "gs://bucket/2024/feb.csv"}
+          - {id: 3, event_type: pageview, _FILE_NAME: "gs://bucket/corrupted.csv"}
+    expect:
+      rows:
+        - {id: 1, event_type: click, source_file: "gs://bucket/2024/jan.csv"}
+        - {id: 2, event_type: click, source_file: "gs://bucket/2024/feb.csv"}
+```
+
+Pseudocolumn support for unit tests is adapter-specific. Currently, BigQuery is the only supported adapter.
+
+| Adapter | Pseudocolumn | Applies to |
+|---|---|---|
+| BigQuery | `_FILE_NAME` | External tables |
+
+Refer to [BigQuery configurations](/reference/resource-configs/bigquery-configs#pseudocolumns) for BigQuery-specific details.
 
 </VersionBlock>
 
