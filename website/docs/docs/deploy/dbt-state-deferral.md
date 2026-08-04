@@ -4,6 +4,7 @@ sidebar_label: "Configure deferral"
 description: "Configure which environment dbt State defers to, including project and org disambiguation and deferral target customization."
 id: "dbt-state-deferral"
 tags: ['dbt State'] 
+availability: everywhere_usage
 ---
 
 # Configuring deferral in dbt State <Lifecycle status="preview" />

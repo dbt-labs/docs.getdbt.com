@@ -1,10 +1,12 @@
 ---
-title: "Networking requirements"
-id: "fusion-networking"
+title: "Fusion networking requirements"
+id: "fusion-networking-requirements"
+sidebar_label: "Fusion networking requirements"
 description: "Outbound network access requirements for the dbt Fusion engine, including adapter drivers, telemetry, and manifest downloads."
+
 ---
 
-# Networking requirements <Lifecycle status="preview" />
+# Fusion networking requirements <Lifecycle status="preview" />
 
 <Constant name="fusion" /> requires outbound HTTPS access to several endpoints depending on your usage. This page describes each requirement and provides guidance for enterprise environments that restrict outbound traffic.
 
@@ -45,29 +47,23 @@ If you cannot change your proxy configuration, see [Restricted network installat
 
 If your environment cannot access `public.cdn.getdbt.com` for adapter driver downloads, you can pre-build a bundle of the <Constant name="fusion" /> binary and the adapter drivers into a single `.tar.gz` or Docker image and host it on an internally approved fileshare.
 
+When you assemble a bundle for air-gapped or firewall-restricted machines:
+
+1. Use the [version compatibility matrix](/docs/dbt-versions/fusion-version-compatibility#compatibility-matrix) to choose a <Constant name="fusion" /> version that matches the dbt VS Code extension your users run.
+2. Verify the binary against its published SHA-256 checksum before distributing it. Refer to [Verify binaries for manual and air-gapped installs](/docs/dbt-versions/fusion-version-compatibility#verify-binaries-for-manual-and-air-gapped-installs).
+3. Point the dbt VS Code extension at the bundled binary with the `dbt.fusionPath` setting. Refer to [dbt extension settings](/docs/configure-dbt-extension#dbt-extension-settings).
+
 For supported adapters, refer to [Fusion requirements](/docs/fusion/supported-features#requirements).
 
 ## Telemetry {#telemetry}
 
-<Constant name="fusion" /> sends anonymous usage [telemetry](/docs/fusion/telemetry) to help improve the product. If the telemetry endpoint is unreachable (for example, blocked by a firewall or proxy), <Constant name="fusion" /> logs errors on each invocation.
+<Constant name="fusion" /> sends anonymous usage statistics to help improve the product. If the telemetry endpoint is unreachable (for example, blocked by a firewall or proxy), <Constant name="fusion" /> logs errors on each invocation.
 
 | Resource | URL | Purpose |
 | --- | --- | --- |
 | **Telemetry** | `https://p.vx.dbt.com` | Sends anonymous usage statistics |
 
-To suppress these errors without allowlisting the URL, disable anonymous telemetry by setting the environment variable:
-
-```shell
-export DBT_SEND_ANONYMOUS_USAGE_STATS=false
-```
-
-You can also add this to your `.env` file in your project root:
-
-```env
-DBT_SEND_ANONYMOUS_USAGE_STATS=false
-```
-
-For more details on `.env` file usage, refer to [Environment variables](/docs/local/configure-environment-variables).
+To suppress these errors without allowlisting the URL, disable telemetry using the options described in [Anonymous usage stats](/reference/global-configs/usage-stats).
 
 ## Manifest downloads (dbt platform only) <Lifecycle status="enterprise" /> {#manifest-downloads} 
 

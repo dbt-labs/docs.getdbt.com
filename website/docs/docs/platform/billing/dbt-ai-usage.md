@@ -3,9 +3,11 @@ title: "dbt AI: Usage metering and limiting"
 id: dbt-ai-usage
 description: "Learn how dbt AI usage is metered and limited by plan."
 sidebar_label: "dbt AI usage"
+availability:
+  surface: platform
+  access: paid_plan
+  minPlan: starter
 ---
-
-<Lifecycle status="Starter, Enterprise, Enterprise+" />
 
 dbt AI usage is measured based on the number of completed AI requests, known as dbt Copilot actions. Usage limits are enforced to ensure fair access and system performance.
 
@@ -47,12 +49,15 @@ The following table outlines the limits of dbt Copilot actions by plan per month
 |Plan                       |Limit |
 |---------------------------|------|
 |Developer                  | ❌   |
-|Starter*                   |100   |
+|Starter<sup>*</sup>        |100   |
+|Legacy Enterprise<sup>**</sup>|1,000 |
 |Enterprise                 |5,000 |
-|Enterpise+                 |10,000|
+|Enterprise+                |10,000|
 </SimpleTable>
 
-*Team plan customers who enrolled in dbt Copilot Beta prior to March 19, 2025 have access to dbt Copilot. All other legacy Team plan customers must move to the [Starter plan or above](https://www.getdbt.com/pricing) to get access. 
+<sup>*</sup>Team plan customers who enrolled in dbt Copilot Beta prior to March 19, 2025 have access to dbt Copilot. All other legacy Team plan customers must move to the [Starter plan or above](https://www.getdbt.com/pricing) to get access. 
+
+<sup>**</sup>Enterprise-tier customers on plans enrolled prior to May 1, 2025 (including legacy Business Critical) have a limit of 1,000 dbt Copilot actions per month. To get a higher allotment, move to the current [Enterprise or Enterprise+ plan](https://www.getdbt.com/pricing).
 
 </Expandable>
 

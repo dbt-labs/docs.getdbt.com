@@ -15,6 +15,7 @@ meta:
   slack_channel_link: 'https://getdbt.slack.com/archives/C01PWAH41A5'
   platform_name: 'Impala'
   config_page: '/reference/resource-configs/impala-configs'
+availability: local_free
 ---
 
 

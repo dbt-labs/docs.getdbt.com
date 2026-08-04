@@ -4,12 +4,17 @@ id: "wizard-home"
 description: "Use the dbt Wizard home tab in the dbt platform for an agent-native development workflow — iterate in natural language, review inline diffs and DAG previews, and validate changes without leaving the agent."
 sidebar_label: "Wizard home tab"
 tags: [AI, Wizard, Platform]
+availability:
+  surface: platform
+  access: paid_plan
+  minPlan: starter
+image: /img/docs/dbt-platform/wizard-home-empty.png
 ---
 
 import WizardPlatformPreviewDisclaimer from '/snippets/_wizard-platform-preview-disclaimer.md';
 import WizardFeedbackCallout from '/snippets/_wizard-feedback-callout.md';
 
-# dbt Wizard home tab <Lifecycle status="beta,self_service,managed,managed_plus" />
+# dbt Wizard home tab <Lifecycle status="preview" />
 
 <IntroText>
 The <Constant name="wizard" /> home tab is an agent-native development experience in the <Constant name="dbt_platform" />. It centers your workflow around collaborating with the agent itself &mdash; iterating through natural language, reviewing generated changes, and validating outcomes &mdash; without the overhead of a traditional IDE environment.
@@ -18,8 +23,8 @@ The <Constant name="wizard" /> home tab is an agent-native development experienc
 <WizardFeedbackCallout />
 
 <DocCarousel slidesPerView={1}>
-<Lightbox src="/img/docs/dbt-platform/wizard-home-agent.png" width="95%" title="dbt Wizard home tab — agent refactoring a model with an inline SQL diff" />
 <Lightbox src="/img/docs/dbt-platform/wizard-home-empty.png" width="95%" title="dbt Wizard home tab — empty state with quick-start prompts" />
+<Lightbox src="/img/docs/dbt-platform/wizard-home-agent.png" width="95%" title="dbt Wizard agent refactoring a docs github model for tech writers :) " />
 </DocCarousel>
 
 The <Constant name="wizard" /> home tab is complementary to the [<Constant name="wizard" /> experience in <Constant name="studio_ide" />](/docs/dbt-ai/wizard-ide). Where the <Constant name="studio_ide" /> supports users working directly within a traditional IDE environment, the home tab is purpose-built for agent-native development &mdash; it reduces overhead and keeps you focused on supervising and validating agent-generated work.

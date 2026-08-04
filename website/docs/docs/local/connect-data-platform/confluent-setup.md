@@ -15,6 +15,7 @@ meta:
   slack_channel_link: "n/a"
   platform_name: "Confluent Cloud"
   config_page: "/reference/resource-configs/confluent-configs"
+availability: local_free
 ---
 
 :::info Community plugin

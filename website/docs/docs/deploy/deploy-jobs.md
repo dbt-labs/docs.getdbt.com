@@ -10,7 +10,7 @@ You can use deploy jobs to build production data assets. Deploy jobs make it eas
 - Commit SHA
 - Environment name
 - Sources and documentation info, if applicable
-- Job run details, including run timing, [model timing data](/docs/deploy/run-visibility#model-timing), and [artifacts](/docs/deploy/artifacts)
+- Job run details, including run timing, [model timing data](/docs/deploy/run-visibility#model-timing-tab), and [artifacts](/docs/deploy/artifacts)
 - Detailed run steps with logs and their run step statuses. For <Constant name="fusion"/> runs, you can also download OpenTelemetry logs from individual steps. Refer to [Downloading logs](/docs/deploy/run-visibility#access-logs).
 
 You can create a deploy job and configure it to run on [scheduled days and times](#schedule-days), enter a [custom cron schedule](#cron-schedule), or [trigger the job after another job completes](#trigger-on-job-completion).

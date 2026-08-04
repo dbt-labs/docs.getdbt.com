@@ -15,6 +15,7 @@ meta:
   slack_channel_link: https://getdbt.slack.com/archives/C08C7D53R40
   platform_name: IBM watsonx.data
   config_page: /reference/resource-configs/watsonx-presto-config
+availability: local_free
 ---
 
 The dbt-watsonx-presto adapter allows you to use dbt to transform and manage data on IBM watsonx.data Presto(Java), leveraging its distributed SQL query engine capabilities. Before proceeding, ensure you have the following:

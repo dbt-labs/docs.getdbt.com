@@ -4,9 +4,13 @@ description: "Learn about how state-aware orchestration automatically determines
 id: "state-aware-about"
 tags: ['scheduler','SAO']
 unlisted: true
+availability:
+  surface: platform
+  access: paid_plan
+  minPlan: enterprise
 ---
 
-# About state-aware orchestration <Lifecycle status="private_preview,managed,managed_plus" />
+# About state-aware orchestration <Lifecycle status="private_preview" />
 
 <IntroText>
 
@@ -34,7 +38,7 @@ We built <Constant name="dbt" />'s state-aware orchestration on these four core 
 - **Sensible defaults:** State-aware orchestration works out-of-the-box (natively), with an optional configuration setting for more advanced controls. For more information, refer to [state-aware advanced configurations](/docs/deploy/state-aware-setup#advanced-configurations).
 
 :::note
-State-aware orchestration does not depend on [static analysis](/docs/fusion/new-concepts#principles-of-static-analysis) and works even when `static_analysis` is disabled.
+State-aware orchestration does not depend on [static analysis](/docs/build/about-static-analysis#principles-of-static-analysis) and works even when `static_analysis` is disabled.
 :::
 
 ## Optimizing builds with state-aware orchestration
@@ -74,7 +78,7 @@ This behavior ensures consistency between the dbt state and the actual warehouse
 ## Efficient testing in state-aware orchestration <Lifecycle status="private_beta" />
 
 :::info Private beta feature
-State-aware orchestration features in the <Constant name="dbt_platform" /> are only available in Fusion, which is in private preview. Contact your account manager to enable Fusion in your account. 
+State-aware orchestration features in the <Constant name="dbt_platform" /> are only available in Fusion. Contact your account manager to enable Fusion in your account. 
 :::
 
 Data quality can get degraded in two ways: 
@@ -102,7 +106,7 @@ The following tests can be reused when Efficient testing is enabled:
 
 ### Enabling Efficient testing
 
-Before enabling Efficient testing, make sure you have configured [`static_analysis`](/docs/fusion/new-concepts#configuring-static_analysis).
+Before enabling Efficient testing, make sure you have configured [`static_analysis`](/docs/build/about-static-analysis#configuring-static_analysis).
 
 To enable Efficient testing:
 

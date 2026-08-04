@@ -3,9 +3,13 @@ title: "Configuring Azure Private Link to your self-hosted service"
 id: azure-self-hosted
 description: "Setting up an Azure Private Link connection between dbt and your self-hosted service."
 sidebar_label: "Self-hosted services"
+availability:
+  surface: platform
+  access: paid_plan
+  minPlan: enterprise_plus
 ---
 
-# Configuring Azure Private Link for a self-hosted service <Lifecycle status="managed_plus" />
+# Configuring Azure Private Link for a self-hosted service
 
 import SetUpPages from '/snippets/_available-tiers-enterprise-plus.md';
 

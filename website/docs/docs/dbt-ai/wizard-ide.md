@@ -4,12 +4,16 @@ id: "wizard-ide"
 description: "Use dbt Wizard in the Studio IDE to write or refactor dbt models from natural language, validate with your dbt engine, and run against your warehouse with full project context."
 sidebar_label: "Wizard in Studio IDE"
 tags: [AI, Agents, Studio]
+availability:
+  surface: platform
+  access: paid_plan
+  minPlan: starter
 ---
 
 import CopilotResources from '/snippets/_use-copilot-resources.md';
 import WizardIde from '/snippets/_wizard-ide.md';
 
-# dbt Wizard in Studio IDE <Lifecycle status="preview,self_service,managed,managed_plus"/>
+# dbt Wizard in Studio IDE <Lifecycle status="preview"/>
 
 <IntroText>
 Use <Constant name="wizard" /> in the <Constant name="studio_ide" /> to ship trusted dbt changes faster. It understands your project, answers context-grounded questions, generates models, tests, docs, and <Constant name="semantic_layer" /> definitions, and shows file diffs before changes are persisted.

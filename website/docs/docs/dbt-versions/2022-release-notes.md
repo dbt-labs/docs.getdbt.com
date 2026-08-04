@@ -5,6 +5,9 @@ id: "2022-release-notes"
 sidebar_label: "2022 release notes"
 pagination_next: null
 pagination_prev: null
+availability:
+  surface: platform
+  access: free
 ---
 
 Archived release notes for <Constant name="dbt" /> from 2022
