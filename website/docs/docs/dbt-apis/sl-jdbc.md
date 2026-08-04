@@ -3,9 +3,13 @@ title: "JDBC"
 id: sl-jdbc
 description: "Integrate and use the JDBC API to query your metrics."
 tags: [Semantic Layer, API]
+availability:
+  surface: platform
+  access: paid_plan
+  minPlan: starter
 ---
 
-# JDBC API <Lifecycle status="self_service,managed,managed_plus" />
+# JDBC API
 
 The <Constant name="semantic_layer" /> Java Database Connectivity (JDBC) API enables users to query metrics and dimensions using the JDBC protocol, while also providing standard metadata functionality. 
 

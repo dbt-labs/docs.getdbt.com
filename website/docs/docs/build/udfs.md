@@ -2,6 +2,7 @@
 title: "User-defined functions"
 description: "Learn how to add user-defined functions (UDFs) to your dbt projects."
 id: "udfs"
+availability: all_users
 ---
 
 # User-defined functions

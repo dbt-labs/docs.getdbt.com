@@ -15,8 +15,8 @@ level: 'Advanced'
 
 Thank you for being part of the [dbt's package hub community](https://hub.getdbt.com/) and maintaining [packages](/docs/build/packages)! Your work makes dbt’s ecosystem possible and helps thousands of teams reuse trusted models and macros to build faster, more reliable analytics.
 
-This guide helps you upgrade your dbt packages to be [<Constant name="fusion" />](/docs/fusion)-compatible. A <Constant name="fusion" />-compatible package:
-- Supports [<Constant name="fusion_engine" />](/docs/fusion) version `2.0.0`
+This guide helps you upgrade your dbt packages to be [<Constant name="fusion" />](/docs/fusion/about-fusion)-compatible. A <Constant name="fusion" />-compatible package:
+- Supports [<Constant name="fusion_engine" />](/docs/fusion/about-fusion) version `2.0.0`
 - Uses the [`require-dbt-version` config](/reference/project-configs/require-dbt-version) to signal compatibility in the dbt package hub
 - Aligns with the latest JSON schema introduced in <Constant name="core"/> v1.10.0
 

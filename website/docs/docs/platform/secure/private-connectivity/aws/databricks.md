@@ -4,9 +4,13 @@ id: aws-databricks
 description: "Configuring AWS PrivateLink for Databricks."
 sidebar_label: "Databricks"
 pagination_next: null
+availability:
+  surface: platform
+  access: paid_plan
+  minPlan: enterprise_plus
 ---
 
-# Configuring Databricks PrivateLink <Lifecycle status="managed_plus" />
+# Configuring Databricks PrivateLink
 
 import SetUpPages from '/snippets/_available-tiers-enterprise-plus.md';
 import PrivateLinkCreateConnection from '/snippets/_privatelink-create-connection.md';

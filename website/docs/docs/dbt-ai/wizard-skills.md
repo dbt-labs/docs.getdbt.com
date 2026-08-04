@@ -4,6 +4,7 @@ id: "wizard-skills"
 description: "Create and use skills to give dbt Wizard CLI reusable, project-specific instructions."
 sidebar_label: "Use skills"
 tags: [AI, Wizard]
+availability: local_all
 ---
 
 # Use skills with <Constant name="wizard" /> CLI <Lifecycle status="beta"/>

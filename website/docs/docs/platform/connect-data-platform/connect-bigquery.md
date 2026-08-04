@@ -3,6 +3,9 @@ title: "Connect BigQuery"
 id: connect-bigquery
 description: "Configure BigQuery connection."
 sidebar_label: "Connect BigQuery"
+availability:
+  surface: platform
+  access: login_required
 ---
 
 # Connect BigQuery <ProductCard text="Fusion compatible" />

@@ -14,6 +14,7 @@ meta:
   slack_channel_link: 'https://www.getdbt.com/community'
   platform_name: 'Apache Doris / SelectDB'
   config_page: '/reference/resource-configs/doris-configs'
+availability: local_free
 ---
 
 

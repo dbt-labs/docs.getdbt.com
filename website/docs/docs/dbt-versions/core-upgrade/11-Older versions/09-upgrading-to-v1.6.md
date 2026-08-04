@@ -3,6 +3,9 @@ title: "Upgrading to v1.6"
 description: New features and changes in dbt Core v1.6
 id: "upgrading-to-v1.6"
 displayed_sidebar: "docs"
+availability:
+  engine: v1
+  access: free
 ---
 
 <Constant name="core" /> v1.6 has three significant areas of focus:

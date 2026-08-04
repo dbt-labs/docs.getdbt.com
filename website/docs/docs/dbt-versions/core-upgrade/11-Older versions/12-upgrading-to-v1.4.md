@@ -3,6 +3,9 @@ title: "Upgrading to v1.4"
 description: New features and changes in dbt Core v1.4
 id: "upgrading-to-v1.4"
 displayed_sidebar: "docs"
+availability:
+  engine: v1
+  access: free
 ---
 
 ### Resources

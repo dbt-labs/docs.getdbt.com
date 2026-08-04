@@ -16,6 +16,7 @@ meta:
   platform_name: 'Upsolver'
   config_page: '/reference/resource-configs/upsolver-configs'
 pagination_next: null
+availability: local_free
 ---
 
 

@@ -2,6 +2,7 @@
 title: "About dbt environment command"
 sidebar_label: "environment"
 id: dbt-environment
+availability: platform_login
 ---
 
 :::info 

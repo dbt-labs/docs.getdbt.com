@@ -10,7 +10,7 @@ recently_updated: true
 intro_text: This guide helps you implement an in-place upgrade from the latest version of dbt Core to the dbt Fusion engine in the dbt platform.
 ---
 
-import FusionAdapters from '/snippets/_fusion-dwh.md';
+import FusionAdapters from '/snippets/_fusion-dwh-platform.md';
 import SaoDeprecated from '/snippets/_sao-deprecated.md';
 
 ## Introduction 
