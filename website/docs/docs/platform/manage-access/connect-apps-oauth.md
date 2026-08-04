@@ -106,7 +106,7 @@ When a user unchecks one or more scopes on the consent screen, the access token 
 - Handle `403` responses gracefully and surface a clear message if a required scope was not granted.
 - Avoid assuming the full set of requested scopes was approved; always check the `scope` field in the token response.
 
-To select the scopes your client should request, choose from the list above. For clients registered via [Dynamic Client Registration](#dynamic-registration), scopes are declared in the registration request. For [manually registered clients](#manual-registration), scopes are configured as part of the registration form.
+To select the scopes your client should request, choose from the list above. For clients registered via [Dynamic Client Registration](#dynamic-registration), scopes are declared in the registration request.
 
 ## Sessions and refresh tokens
 
