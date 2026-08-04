@@ -68,7 +68,11 @@ jobs:
                 if (data.mergeable !== null) return data
                 await new Promise(resolve => setTimeout(resolve, 5000))
               }
-              throw new Error(`Timed out waiting for GitHub to compute mergeability of PR ${prNumber}`)
+              // Never settled. Fall through and let the merge call decide, which
+              // is what this workflow did before it polled at all. Failing here
+              // would block syncs that would otherwise have gone through.
+              console.log('Mergeability did not settle in time; attempting the merge anyway')
+              return null
             }
 
             // Reuse a sync PR left open by an earlier run. Without this, one
@@ -83,8 +87,17 @@ jobs:
               state: 'open',
             })
 
-            if (openPulls.length) {
-              pull = openPulls[0]
+            // Re-check head and base locally rather than trusting the server-side
+            // filter. Everything below merges `pull` into `base`, so picking up
+            // the wrong PR here would merge unrelated work into the docs.
+            const existing = openPulls.find(p =>
+              p.head.ref === head &&
+              p.base.ref === base &&
+              p.head.repo && p.head.repo.full_name === `${owner}/${repo}`
+            )
+
+            if (existing) {
+              pull = existing
               console.log('Reusing existing PR', pull.html_url)
             } else {
               console.log('Creating new PR')
@@ -123,7 +136,7 @@ jobs:
 
             console.log('Checking for merge conflicts')
             const mergeablePull = await waitForMergeability(pull_number)
-            if (!mergeablePull.mergeable || mergeablePull.mergeable_state === 'dirty') {
+            if (mergeablePull && (!mergeablePull.mergeable || mergeablePull.mergeable_state === 'dirty')) {
               // Leave the PR open so the conflict can be resolved on it. The
               // reuse branch above lets later runs pick it back up.
               throw new Error(`PR has a conflict, please resolve manually: ${pull.html_url}`)
