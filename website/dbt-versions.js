@@ -109,7 +109,7 @@ exports.versionedPages = [
   { page: "docs/install-dbt-extension", firstVersion: "2.0" },
   { page: "docs/sign-in-dbt-extension", firstVersion: "2.0" },
   { page: "docs/configure-dbt-extension", firstVersion: "2.0" },
-  { page: "docs/reference/commands/login", firstVersion: "2.0" },
+  { page: "reference/commands/login", firstVersion: "2.0" },
   {
     page: "docs/dbt-extension-features",
     firstVersion: "2.0",
@@ -174,9 +174,33 @@ exports.versionedPages = [
     page: "docs/build/about-static-analysis",
     firstVersion: "2.0",
   },
+  // Commands that don't exist in dbt Core -- hidden from the v1 sidebar.
+  // Page paths must match the docId (relative to the docs/ content root), so
+  // reference/* pages take NO "docs/" prefix (unlike pages under docs/docs/).
   {
-    page: "docs/reference/commands/lint",
+    // Fusion engine SQL linter.
+    page: "reference/commands/lint",
     firstVersion: "2.0",
+  },
+  {
+    // dbt CLI (platform) command.
+    page: "reference/commands/dbt-environment",
+    firstVersion: "2.0",
+  },
+  {
+    // dbt CLI (platform) command.
+    page: "reference/commands/invocation",
+    firstVersion: "2.0",
+  },
+  {
+    // Manages the Fusion CLI install; no dbt Core equivalent.
+    page: "reference/commands/system",
+    firstVersion: "2.0",
+  },
+  {
+    // Legacy dbt-rpc: maintained through dbt-core v1.5, unsupported from v1.6+.
+    page: "reference/commands/rpc",
+    lastVersion: "1.5",
   },
   {
     page: "docs/local/connect-data-platform/salesforce-data-cloud-setup",
