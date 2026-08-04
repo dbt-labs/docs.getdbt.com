@@ -1655,6 +1655,7 @@ const sidebarSettings = {
                     "reference/global-configs/behavior-flags/require_generic_test_arguments_property",
                     "reference/global-configs/behavior-flags/require_nested_cumulative_type_params",
                     "reference/global-configs/behavior-flags/require_ref_searches_node_package_before_root",
+                    "reference/global-configs/behavior-flags/require_resource_names_without_plus_prefix",
                     "reference/global-configs/behavior-flags/require_resource_names_without_spaces",
                     "reference/global-configs/behavior-flags/require_source_and_semantic_model_names_without_spaces",
                     "reference/global-configs/behavior-flags/require_sql_header_in_test_configs",

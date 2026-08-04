@@ -78,6 +78,7 @@ The following flags are specific to <Constant name="fusion" /> and have no equiv
 
 | Flag | Adapter | Default | Introduced | Becomes default |
 |---|---|---|---|---|
+| [require_resource_names_without_plus_prefix](/reference/global-configs/behavior-flags/require_resource_names_without_plus_prefix) | All | `false` | Fusion preview.203 (Jul 30, 2026) | Not yet set |
 | use_catalogs_v2 | All | `false` | Fusion preview.174 (Apr 22, 2026) | Not yet set |
 | bigquery_noop_alter_relation_comment | BigQuery | `false` | Fusion preview.124 (Feb 19, 2026) | Not yet set |
 
