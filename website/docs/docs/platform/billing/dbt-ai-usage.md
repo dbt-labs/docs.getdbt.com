@@ -49,15 +49,15 @@ The following table outlines the limits of dbt Copilot actions by plan per month
 |Plan                       |Limit |
 |---------------------------|------|
 |Developer                  | ❌   |
-|Starter*                   |100   |
-|Legacy Enterprise**        |1,000 |
+|Starter<sup>*</sup>        |100   |
+|Legacy Enterprise<sup>**</sup>|1,000 |
 |Enterprise                 |5,000 |
 |Enterprise+                |10,000|
 </SimpleTable>
 
-*Team plan customers who enrolled in dbt Copilot Beta prior to March 19, 2025 have access to dbt Copilot. All other legacy Team plan customers must move to the [Starter plan or above](https://www.getdbt.com/pricing) to get access. 
+<sup>*</sup>Team plan customers who enrolled in dbt Copilot Beta prior to March 19, 2025 have access to dbt Copilot. All other legacy Team plan customers must move to the [Starter plan or above](https://www.getdbt.com/pricing) to get access. 
 
-**Enterprise-tier customers on plans enrolled prior to May 1, 2025 (including legacy Business Critical) have a limit of 1,000 dbt Copilot actions per month. To get a higher allotment, move to the current [Enterprise or Enterprise+ plan](https://www.getdbt.com/pricing).
+<sup>**</sup>Enterprise-tier customers on plans enrolled prior to May 1, 2025 (including legacy Business Critical) have a limit of 1,000 dbt Copilot actions per month. To get a higher allotment, move to the current [Enterprise or Enterprise+ plan](https://www.getdbt.com/pricing).
 
 </Expandable>
 
