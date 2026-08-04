@@ -15,6 +15,7 @@ meta:
   slack_channel_link:
   platform_name: 'Exasol'
   config_page: '/reference/resource-configs/exasol-configs'
+availability: local_free
 ---
 import SetUpPages from '/snippets/_setup-pages-intro.md';
 

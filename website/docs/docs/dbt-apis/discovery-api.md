@@ -1,11 +1,15 @@
 ---
 title: "About the Discovery API"
 pagination_next: "docs/dbt-apis/discovery-use-cases-and-examples"
+availability:
+  surface: platform
+  access: paid_plan
+  minPlan: starter
 ---
 
 import ApiRateLimitsCallout from '/snippets/_api-rate-limits-callout.md';
 
-# About the Discovery API <Lifecycle status="self_service,managed,managed_plus" />
+# About the Discovery API
 
 Every time <Constant name="dbt" /> runs a project, it generates and stores information about the project. The metadata includes details about your project’s models, sources, and other nodes along with their execution results. With the <Constant name="dbt" /> Discovery API, you can query this comprehensive information to gain a better understanding of your <Term id="dag">DAG</Term> and the data it produces.
 

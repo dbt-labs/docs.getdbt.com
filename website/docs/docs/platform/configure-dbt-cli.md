@@ -4,6 +4,9 @@ id: configure-dbt-cli
 description: "Instructions on how to configure the dbt CLI"
 sidebar_label: "Configuration and usage"
 pagination_next: null
+availability:
+  surface: platform
+  access: login_required
 ---
 
 import LongSession from '/snippets/_long-sessions-cli.md';

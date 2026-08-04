@@ -3,11 +3,15 @@ title: "Connect apps with OAuth"
 description: "Manage OAuth 2.0 client registrations to connect AI tools and third-party apps to dbt."
 id: "connect-apps-oauth"
 sidebar_label: "Connect apps with OAuth"
+availability:
+  surface: platform
+  access: paid_plan
+  minPlan: starter
 ---
 
 import MCPCustomConnectorOauth from '/snippets/_mcp-custom-connector-oauth.md';
 
-# Connect apps with OAuth <Lifecycle status="beta,self_service,managed,managed_plus" />
+# Connect apps with OAuth <Lifecycle status="beta" />
 
 The **App integrations** section in <Constant name="dbt_platform" /> lets admins manage OAuth 2.0 client registrations &mdash; a standard that lets external apps connect to dbt securely without sharing API tokens. Use it for:
 

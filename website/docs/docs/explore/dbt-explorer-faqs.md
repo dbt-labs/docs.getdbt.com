@@ -2,6 +2,7 @@
 title: "dbt Catalog FAQs"
 sidebar_label: "dbt Catalog FAQs"
 description: "Learn more with the FAQs about dbt Catalog, how it works, how to interact with it, and more."
+availability: platform_login
 ---
 
 [<Constant name="catalog" />](/docs/explore/explore-projects) is <Constant name="dbt" />’s new knowledge base and lineage visualization experience. It offers an interactive and high-level view of your company’s entire data estate, where you can dive deep into the context you need to understand and improve lineage so your teams can trust the data they’re using to make decisions.

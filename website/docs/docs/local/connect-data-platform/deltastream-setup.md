@@ -13,6 +13,7 @@ meta:
   slack_channel_name: '#db-deltastream'
   platform_name: 'DeltaStream'
   config_page: '/reference/resource-configs/deltastream-configs'
+availability: local_free
 ---
 
 

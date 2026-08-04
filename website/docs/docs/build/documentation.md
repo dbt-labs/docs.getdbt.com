@@ -3,6 +3,7 @@ title: "About documentation"
 description: "Learn how good documentation for your dbt models helps stakeholders discover and understand your datasets."
 id: "documentation"
 pagination_next: "docs/build/view-documentation"
+availability: all_users
 ---
 
 import CopilotBeta from '/snippets/_dbt-copilot-avail.md';
