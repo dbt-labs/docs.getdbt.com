@@ -5,8 +5,6 @@ sidebar_label: "Databricks Iceberg support"
 description: Understand Databricks support for Apache Iceberg.
 ---
 
-# Databricks and Apache Iceberg <Lifecycle status="preview" />
-
 import BaseLocationEnvIsolation from '/snippets/_base-location-env-isolation-warning.md';
 
 dbt supports materializing Iceberg tables in Unity Catalog in two ways:
@@ -59,7 +57,7 @@ Notes:
 1. Create a `catalogs.yml` at the top level of your dbt project. An example of Unity Catalog as the catalog:
 
 <Tabs defaultValue="new" values={[
-  { label: 'New spec', value: 'new' },
+  { label: 'New spec (beta)', value: 'new' },
   { label: 'Old spec', value: 'old' }
 ]}>
 <TabItem value="new">

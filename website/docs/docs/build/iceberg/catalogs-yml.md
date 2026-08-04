@@ -5,8 +5,6 @@ sidebar_label: "Using catalogs.yml"
 description: Understand how Iceberg catalogs fit into your dbt Mesh configurations.
 ---
 
-# Using catalogs.yml <Lifecycle status="preview" />
-
 Now that you understand [what an Iceberg catalog is](/docs/build/iceberg/about-catalogs), let's talk about how to use them within dbt.
 
 ## Getting started: Managed catalogs
@@ -45,7 +43,7 @@ You should start using `catalogs` when:
 
 dbt defines `catalogs` in a single top-level file, `catalogs.yml`, that lives in the root of your project directory. We first introduced `catalogs.yml` in dbt Core v1.10; starting in dbt Core v1.12, we've introduced a new simpler spec (recommended) behind an opt-in behavior flag.
 
-### New spec (recommended)
+### New spec (recommended) <Lifecycle status="beta" />
 
 _Available in dbt Core v1.12+ (including dbt Core v2 and Fusion). See GitHub discussion [dbt-core#12723](https://github.com/dbt-labs/dbt-core/discussions/12723) for an explanation of the motivations behind the new spec, and an overview of what's changed._
 

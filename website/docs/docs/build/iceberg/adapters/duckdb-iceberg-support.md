@@ -5,7 +5,7 @@ sidebar_label: "DuckDB Iceberg support"
 description: Understand DuckDB support for Apache Iceberg.
 ---
 
-# DuckDB and Apache Iceberg <Lifecycle status="preview" />
+# DuckDB and Apache Iceberg <Lifecycle status="beta" />
 
 :::info Fusion only
 

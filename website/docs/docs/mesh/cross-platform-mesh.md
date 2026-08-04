@@ -5,7 +5,7 @@ sidebar_label: "Cross-platform Mesh"
 description: Understand how Iceberg catalogs and dbt Mesh can combine to enable collaboration across multiple data platforms.
 ---
 
-# Cross-platform Mesh using Iceberg catalogs <Lifecycle status="preview" />
+# Cross-platform Mesh using Iceberg catalogs <Lifecycle status="beta" />
 
 If a model is configured with `catalog_name`, dbt uses the current project's [catalog definition](/docs/build/iceberg/about-catalogs) (in `catalogs.yml`), for the current active adapter, to resolve the top-level namespace of that model.
 
