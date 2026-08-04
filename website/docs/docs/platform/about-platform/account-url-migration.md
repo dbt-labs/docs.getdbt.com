@@ -33,7 +33,7 @@ Accounts across all regions and service providers are being assigned new access 
 |---|---|---|
 | Multi-tenant **dbt.com** access URL assignment | ✅ Completed | January 2026 |
 | Single tenant **dbt.com** access URL assignment | In Progress | April - September 2026 |
-| **getdbt.com** region URL deprecation | Scheduled | February 3, 2027 (Previously November 1, 2026) |
+| **getdbt.com** region URL deprecation | Scheduled | February 3, 2027 (previously November 1, 2026) |
 
 ## Integration checklist
 
@@ -50,7 +50,7 @@ All dbt Labs managed integrations will be updated automatically, which consists 
 
 ### Git providers
 
-GitLab and Azure DevOps repositories will continue to use your legacy **getdbt.com** URL for OAuth flows. The ability to update an existing repository to use your new account access URL is not yet available. Alternatively, you may recreate a repository to generate a Redirect URI based on your new account access URL.
+GitLab and Azure DevOps repositories will continue to use your legacy **getdbt.com** URL for OAuth flows. You can't yet update an existing repository to use your new account access URL. Instead, you can recreate a repository to generate a Redirect URI based on your new account access URL.
 
 | Integration | Action required |
 |---|---|
@@ -61,7 +61,7 @@ GitLab and Azure DevOps repositories will continue to use your legacy **getdbt.c
 
 ### Data platform connections
 
-Data platform connections will continue to use your legacy **getdbt.com** URL for OAuth flows. The ability to update an existing connection to use your new account access URL is not yet available. Alternatively, you may recreate a connection to generate a Redirect URI based on your new account access URL.
+Data platform connections will continue to use your legacy **getdbt.com** URL for OAuth flows. You can't yet update an existing connection to use your new account access URL. Instead, you can recreate a connection to generate a Redirect URI based on your new account access URL.
 
 | Integration | Action required |
 |---|---|
@@ -83,9 +83,9 @@ Data platform connections will continue to use your legacy **getdbt.com** URL fo
 
 ## Validating IP restrictions
 
-If you have received notification of new access URL assignment, and you have IP restrictions enabled, we recommend reviewing network rules that point specifically at your ***.getdbt.com** domain. This includes VPN split-tunneling rules, proxy (PAC) rules, and firewall egress rules. Update these rules for your new ***.dbt.com** access URL before your account's scheduled assignment date so access isn't disrupted.
+If you've received notification of a new access URL assignment and have IP restrictions enabled, review the network rules that point specifically at your **\*.getdbt.com** domain. These include VPN split-tunneling rules, proxy (PAC) rules, and firewall egress rules. Update these rules for your new **\*.dbt.com** access URL before your account's scheduled assignment date so access isn't disrupted.
 
-To confirm your new access URL is accessible, send a test request from the same network you'd normally use to reach your ***.getdbt.com** URL. Replace NEW_ACCESS_URL with your account's new access URL and ACCOUNT_ID with your account ID:
+To confirm your new access URL is accessible, send a test request from the same network you'd normally use to reach your **\*.getdbt.com** URL. Replace `NEW_ACCESS_URL` with your account's new access URL and `ACCOUNT_ID` with your account ID:
 
 - **Browser:** Go to `https://NEW_ACCESS_URL/api/v2/accounts/ACCOUNT_ID/`
 - **Terminal:** Run `curl -s https://NEW_ACCESS_URL/api/v2/accounts/ACCOUNT_ID/`
