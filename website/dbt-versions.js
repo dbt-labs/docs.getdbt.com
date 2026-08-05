@@ -198,11 +198,6 @@ exports.versionedPages = [
     firstVersion: "2.0",
   },
   {
-    // Legacy dbt-rpc: maintained through dbt-core v1.5, unsupported from v1.6+.
-    page: "reference/commands/rpc",
-    lastVersion: "1.5",
-  },
-  {
     page: "docs/local/connect-data-platform/salesforce-data-cloud-setup",
     firstVersion: "2.0",
   },
