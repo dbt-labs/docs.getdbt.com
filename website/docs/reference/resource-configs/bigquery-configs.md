@@ -1290,7 +1290,7 @@ The BigQuery Python models also have the following additional configuration para
 
 ## Unit tests in BigQuery
 
-<VersionBlock firstVersion="1.13">
+<VersionBlock firstVersion="1.12">
 
 ### Pseudocolumns
 
