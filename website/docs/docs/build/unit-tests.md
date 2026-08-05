@@ -21,7 +21,7 @@ import UnitTestsPrereqs from '/snippets/_unit-tests-prereqs.md';
 
 #### Adapter-specific caveats
 - You must specify all fields in a BigQuery `STRUCT` in a unit test. You cannot use only a subset of fields in a `STRUCT`.
-- Starting in <Constant name="core" /> v1.12, the `_FILE_NAME` pseudocolumn on BigQuery external tables is supported directly in `dict` or `csv` fixture rows. See [Unit testing with pseudocolumns](#unit-testing-with-pseudocolumns).
+- Starting in dbt-bigquery v1.13.0, the `_FILE_NAME` pseudocolumn on BigQuery external tables is supported directly in `dict` or `csv` fixture rows. See [Unit testing with pseudocolumns](#unit-testing-with-pseudocolumns).
 - Redshift customers need to be aware of a [limitation when building unit tests](/reference/resource-configs/redshift-configs#unit-test-limitations) that requires a workaround.
 - Redshift sources need to be in the same database as the models.
 
@@ -379,7 +379,7 @@ unit_tests:
         - {id: 1, first_name: emily}
 ```
 
-<VersionBlock firstVersion="1.12">
+<VersionBlock firstVersion="1.13">
 
 ## Unit testing with pseudocolumns
 
@@ -398,7 +398,7 @@ unit_tests:
           select 1 as id, 'click' as event_type, 'gs://bucket/2024/jan.csv' as _FILE_NAME
 ```
 
-Starting in <Constant name="core" /> v1.12, dbt includes pseudocolumns when building unit test fixtures. This means you can include pseudocolumns directly in `dict` or `csv` format fixtures alongside your other columns:
+Starting in dbt-bigquery v1.13.0, dbt includes pseudocolumns when building unit test fixtures for BigQuery external tables. This means you can include pseudocolumns directly in `dict` or `csv` format fixtures alongside your other columns:
 
 ```yaml
 unit_tests:
