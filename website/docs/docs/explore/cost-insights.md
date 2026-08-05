@@ -74,16 +74,13 @@ credits_per_query * price_per_credit
 ```
 
 Where:
-- `credits_per_query` - Cloud services, compute, and query acceleration credits attributed to the query. dbt sources this value from `QUERY_ATTRIBUTION_HISTORY`. For more information, see the [Snowflake documentation](https://docs.snowflake.com/en/sql-reference/account-usage/query_attribution_history).      
+- `credits_per_query` - Cloud services, compute, and query acceleration credits attributed to the query. 
+    - For standard and Generation 2 warehouses, dbt sources this value from [`QUERY_ATTRIBUTION_HISTORY`](https://docs.snowflake.com/en/sql-reference/account-usage/query_attribution_history). 
+    - For [Adaptive Warehouses](https://docs.snowflake.com/en/user-guide/warehouses-adaptive), dbt sources this value from [`QUERY_METERING_HISTORY`](https://docs.snowflake.com/en/sql-reference/account-usage/query_metering_history) &mdash; refer to [Configure platform metadata credentials](/docs/explore/set-up-cost-insights#snowflake) for required permissions.
 - `price_per_credit` - Your Snowflake credit price (from Snowflake system tables when available, otherwise from your configured input or the default rate).
 
-:::info Snowflake attribution limitations
-dbt attributes Snowflake costs at the query level using the [`QUERY_ATTRIBUTION_HISTORY`](https://docs.snowflake.com/en/sql-reference/account-usage/query_attribution_history). Because of how Snowflake populates that view, some warehouse spend can't be attributed to a dbt model and won't appear in Cost Insights:
-
-- **Short-running queries**: Snowflake doesn't attribute cost to queries that run in roughly 100 milliseconds or less.
-- **Adaptive Warehouses**: Queries on [Snowflake Adaptive Warehouses](https://docs.snowflake.com/en/user-guide/warehouses-adaptive) are not included in `QUERY_ATTRIBUTION_HISTORY`.
-
-As a result, Cost Insights totals may be _lower_ than the compute spend shown in your Snowflake billing dashboards. For more information, see the [Snowflake documentation](https://docs.snowflake.com/en/sql-reference/account-usage/query_attribution_history#usage-notes).
+:::info Snowflake attribution limitation
+Snowflake doesn't attribute cost to queries that run in roughly 100 milliseconds or less. As a result, Cost Insights totals may be _lower_ than the compute spend shown in your Snowflake billing dashboards. For more information, see the [Snowflake documentation](https://docs.snowflake.com/en/sql-reference/account-usage/query_attribution_history#usage-notes).
 :::
 </Expandable>
 
