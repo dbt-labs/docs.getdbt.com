@@ -1290,13 +1290,27 @@ The BigQuery Python models also have the following additional configuration para
 
 ## Unit tests in BigQuery
 
-<VersionBlock firstVersion="1.12">
+<VersionBlock firstVersion="1.13">
 
 ### Pseudocolumns
 
-BigQuery [external tables](https://docs.cloud.google.com/bigquery/docs/external-tables) expose a [`_FILE_NAME` pseudocolumn](https://docs.cloud.google.com/bigquery/docs/query-cloud-storage-data#query_the_file_name_pseudo-column) that identifies the source file for each row. You can query pseudocolumns but they don't appear in the information schema.
 
-dbt automatically includes `_FILE_NAME` when retrieving columns for unit tests on BigQuery external tables. This means you can provide `_FILE_NAME` values in `dict` or `csv` fixture formats without needing to use `format: sql`. For example:
+Pseudocolumns are queryable columns that don't appear in the information schema. BigQuery [external tables](https://docs.cloud.google.com/bigquery/docs/external-tables) expose a [`_FILE_NAME` pseudocolumn](https://docs.cloud.google.com/bigquery/docs/query-cloud-storage-data#query_the_file_name_pseudo-column) that identifies the source file for each row.
+
+Previously, the only way to include a pseudocolumn in a unit test was to use `format: sql`, which required writing raw SQL for the entire input and specifying every column. For example:
+
+```yaml
+unit_tests:
+  - name: test_external_table_filter
+    model: stg_events
+    given:
+      - input: source('raw', 'events')
+        format: sql
+        rows: |
+          select 1 as id, 'click' as event_type, 'gs://bucket/2024/jan.csv' as _FILE_NAME
+```
+
+Starting in `dbt-bigquery` v1.13, dbt automatically includes `_FILE_NAME` when retrieving columns for unit tests on BigQuery external tables. This means you can provide `_FILE_NAME` values in `dict` or `csv` fixture formats without needing to use `format: sql`. For example:
 
 <Tabs
   defaultValue="dict"
@@ -1344,6 +1358,8 @@ unit_tests:
 
 </TabItem>
 </Tabs>
+
+Other BigQuery pseudocolumns (such as `_PARTITIONTIME` or `_TABLE_SUFFIX`) are not supported in unit tests.
 
 Note the following behaviors:
 

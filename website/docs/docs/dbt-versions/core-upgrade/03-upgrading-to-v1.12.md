@@ -34,12 +34,6 @@ The Rust parser is beta. Its output manifest may differ from the Python parser's
 
 For more information on how to enable the flag, related behaviors, and parser error types, refer to [Opt-in v2 parser](/reference/global-configs/parsing#opt-in-v2-parser).
 
-### Pseudocolumn support in unit tests
-
-Pseudocolumns are columns that you can query but don't appear in the information schema. <Constant name="core" /> v1.12 adds a framework for adapters to declare pseudocolumns, so you can include them directly in `dict` or `csv` format fixture rows without needing `format: sql`.
-
-Currently, BigQuery is the only supported adapter. For more information, refer to [Unit testing with pseudocolumns](/docs/build/unit-tests#unit-testing-with-pseudocolumns).
-
 ### New Iceberg `catalogs` spec
 
 We reworked the [`catalogs.yml` spec](/docs/build/iceberg/catalogs-yml) to make it simpler to use, and to bring it up to speed with latest developments in Iceberg support among ecosystem vendors.
@@ -164,7 +158,6 @@ You can read more about each of these behavior changes in the following links:
 
 ### BigQuery
 
-- dbt now supports the `_FILE_NAME` pseudocolumn in unit test fixtures for BigQuery external tables. You can include it directly in `dict` or `csv` fixture rows without using `format: sql`. For more information, refer to [Pseudocolumns](/reference/resource-configs/bigquery-configs#pseudocolumns).
 - BigQuery now supports [parallel microbatch execution](/docs/build/parallel-batch-execution), in addition to Snowflake.
 - Added the [`bigquery_use_standard_sql_for_partitions`](/reference/global-configs/bigquery-changes#the-bigquery_use_standard_sql_for_partitions-flag) flag, which controls whether `get_partitions_metadata()` uses standard SQL (`INFORMATION_SCHEMA.PARTITIONS`) or legacy SQL (`$__PARTITIONS_SUMMARY__`). The flag defaulted to `false` when first introduced in this release, but has been flipped to `true` by default ahead of BigQuery's [legacy SQL deprecation on June 1, 2026](https://docs.cloud.google.com/bigquery/docs/release-notes#February_25_2026). To revert to legacy SQL, set the flag to `false` in `dbt_project.yml`.
 - Added the [`bigquery_reject_wildcard_metadata_source_freshness`](/reference/global-configs/bigquery-changes#the-bigquery_reject_wildcard_metadata_source_freshness-flag) flag. When you set this flag to `true`, dbt raises a `DbtRuntimeError` if you run metadata-based source freshness checks with wildcard table identifiers (for example, `events_*`), preventing incorrect freshness results.

@@ -21,7 +21,7 @@ import UnitTestsPrereqs from '/snippets/_unit-tests-prereqs.md';
 
 #### Adapter-specific caveats
 - You must specify all fields in a BigQuery `STRUCT` in a unit test. You cannot use only a subset of fields in a `STRUCT`.
-- Starting in <Constant name="core" /> v1.12, the `_FILE_NAME` pseudocolumn on BigQuery external tables is supported directly in `dict` or `csv` fixture rows. See [Unit testing with pseudocolumns](#unit-testing-with-pseudocolumns).
+- Starting in `dbt-bigquery` v1.13, the `_FILE_NAME` pseudocolumn on BigQuery external tables is supported directly in `dict` or `csv` fixture rows. See [Unit testing with pseudocolumns](#unit-testing-with-pseudocolumns).
 - Redshift customers need to be aware of a [limitation when building unit tests](/reference/resource-configs/redshift-configs#unit-test-limitations) that requires a workaround.
 - Redshift sources need to be in the same database as the models.
 
@@ -379,44 +379,15 @@ unit_tests:
         - {id: 1, first_name: emily}
 ```
 
-<VersionBlock firstVersion="1.12">
+<VersionBlock firstVersion="1.13">
 
 ## Unit testing with pseudocolumns
 
-Pseudocolumns are columns that you can query but don't appear in the information schema. They're injected by the warehouse engine at query time rather than stored as part of the table schema. A common example is BigQuery's `_FILE_NAME` column on external tables, which exposes the source file path for each row.
+:::note Only supported in BigQuery
+Pseudocolumn support in unit tests is currently only available in `dbt-bigquery` v1.13 and later.
+:::
 
-Previously, the only way to include a pseudocolumn in a unit test fixture was to use `format: sql`, which required writing raw SQL for the entire input and specifying every column. For example:
-
-```yaml
-unit_tests:
-  - name: test_external_table_filter
-    model: stg_events
-    given:
-      - input: source('raw', 'events')
-        format: sql
-        rows: |
-          select 1 as id, 'click' as event_type, 'gs://bucket/2024/jan.csv' as _FILE_NAME
-```
-
-Starting in <Constant name="core" /> v1.12, dbt includes pseudocolumns when building unit test fixtures. This means you can include pseudocolumns directly in `dict` or `csv` format fixtures alongside your other columns:
-
-```yaml
-unit_tests:
-  - name: test_external_table_filter
-    model: stg_events
-    given:
-      - input: source('raw', 'events')
-        rows:
-          - {id: 1, event_type: click, _FILE_NAME: "gs://bucket/2024/jan.csv"}
-          - {id: 2, event_type: click, _FILE_NAME: "gs://bucket/2024/feb.csv"}
-          - {id: 3, event_type: pageview, _FILE_NAME: "gs://bucket/corrupted.csv"}
-    expect:
-      rows:
-        - {id: 1, event_type: click, source_file: "gs://bucket/2024/jan.csv"}
-        - {id: 2, event_type: click, source_file: "gs://bucket/2024/feb.csv"}
-```
-
-Pseudocolumn support for unit tests is adapter-specific. Currently, BigQuery is the only supported adapter, and only the `_FILE_NAME` pseudocolumn on [external tables](https://docs.cloud.google.com/bigquery/docs/external-tables) is supported. Refer to [BigQuery configurations](/reference/resource-configs/bigquery-configs#pseudocolumns) for details.
+Pseudocolumns are columns that you can query but don't appear in the information schema (for example, BigQuery's [`_FILE_NAME` column](https://docs.cloud.google.com/bigquery/docs/query-cloud-storage-data#query_the_file_name_pseudo-column) on external tables). Starting in `dbt-bigquery` v1.13, you can include pseudocolumns directly in `dict` or `csv` fixture rows without using `format: sql`. Refer to [BigQuery configurations](/reference/resource-configs/bigquery-configs#pseudocolumns) for examples and details.
 
 </VersionBlock>
 
