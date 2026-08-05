@@ -3,7 +3,7 @@ Advanced capabilities are available to all users for 14 days. After the 14-day t
 
 <VersionBlock firstVersion="2.0">
 
-Authentication is handled by [`dbt login`](/reference/commands/login), so your login state is shared across the CLI, dbt VS Code extension, and <Constant name="copilot"/>.
+Authentication is handled by [`dbt login`](/reference/commands/login?version=2.0), so your login state is shared across the CLI, dbt VS Code extension, and <Constant name="copilot"/>.
 
 </VersionBlock>
 :::

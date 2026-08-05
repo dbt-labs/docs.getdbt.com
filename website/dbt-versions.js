@@ -175,7 +175,7 @@ exports.versionedPages = [
     firstVersion: "2.0",
   },
   {
-    page: "docs/reference/commands/lint",
+    page: "reference/commands/lint",
     firstVersion: "2.0",
   },
   {
