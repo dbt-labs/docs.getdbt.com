@@ -820,7 +820,7 @@ Snowflake supports the creation of [transient tables](https://docs.snowflake.net
 
 :::note `transient` is a model configuration
 
-On Snowflake, `transient` is a [model configuration](/reference/model-configs). It is also applied when a [snapshot](/docs/build/snapshots) creates its target table for the first time.
+On Snowflake, `transient` is a configuration for [models](/reference/model-configs) and [snapshots](/docs/build/snapshots).
 
 `transient` does not apply to [seeds](/docs/build/seeds). If you set `+transient: true` or `+transient: false` on a seed, dbt still creates a _permanent_ table, and `dbt parse` might not warn you. This behavior applies to <Constant name="core" /> and the <Constant name="fusion_engine" />.
 
