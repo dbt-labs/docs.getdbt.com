@@ -818,9 +818,11 @@ To append a target name to the schema:
 
 Snowflake supports the creation of [transient tables](https://docs.snowflake.net/manuals/user-guide/tables-temp-transient.html). Snowflake does not preserve a history for these tables, which can result in a measurable reduction of your Snowflake storage costs. Transient tables participate in time travel to a limited degree with a retention period of 1 day by default with no fail-safe period. Weigh these tradeoffs when deciding whether or not to configure your dbt models as `transient`. **By default, all Snowflake tables created by dbt are `transient`.**
 
-:::note `transient` does not apply to seeds
+:::note `transient` is a model configuration
 
-On Snowflake, the `transient` config applies to models, not seeds. If you set `+transient: true` or `+transient: false` on a seed, dbt still creates a _permanent_ table, and `dbt parse` might not warn you. This behavior applies to dbt Core and the dbt Fusion engine. For related discussion, refer to [dbt-snowflake#396](https://github.com/dbt-labs/dbt-snowflake/issues/396).
+On Snowflake, `transient` is a [model configuration](/reference/model-configs). It is also applied when a [snapshot](/docs/build/snapshots) creates its target table for the first time.
+
+`transient` does not apply to [seeds](/docs/build/seeds). If you set `+transient: true` or `+transient: false` on a seed, dbt still creates a _permanent_ table, and `dbt parse` might not warn you. This behavior applies to <Constant name="core" /> and the <Constant name="fusion_engine" />.
 
 :::
 

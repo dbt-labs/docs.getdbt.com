@@ -11,7 +11,7 @@ import ConfigGeneral from '/snippets/_config-description-general.md';
 
 ## Available configurations
 
-Configure seeds in your `dbt_project.yml` file or in each seed's [YAML properties](/reference/seed-properties). The subsections below list seed-specific configurations, general configurations shared with other resource types, and Snowflake adapter configurations.
+Configure seeds in your `dbt_project.yml` file or in each seed's [YAML properties](/reference/seed-properties). The subsections below list seed-specific configurations.
 
 ### Seed-specific configurations
 
@@ -138,16 +138,15 @@ seeds:
 </TabItem>
 </Tabs>
 
-### Snowflake configurations
-
-Seeds do not support warehouse-specific Snowflake configs such as `transient`. If you set those configs on a seed, they have no effect on the relation dbt creates in Snowflake. Refer to [Transient tables on Snowflake](/reference/resource-configs/snowflake-configs#transient-tables) in the Snowflake configurations reference.
-
 ## Configuring seeds
 Seeds can only be configured from YAML files, either in `dbt_project.yml` or within an individual seed's YAML properties. It is not possible to configure a seed from within its CSV file.
 
 Seed configurations, like model configurations, are applied hierarchically — configurations applied to a `marketing` subdirectory will take precedence over configurations applied to the entire `jaffle_shop` project, and configurations defined in a specific seed's properties will override configurations defined in `dbt_project.yml`.
 
 ### Examples
+
+These examples show how to apply the `schema` configuration at different scopes: all seeds, seeds in your project only, or a single seed.
+
 #### Apply the `schema` configuration to all seeds
 To apply a configuration to all seeds, including those in any installed [packages](/docs/build/packages), nest the configuration directly under the `seeds` key:
 
