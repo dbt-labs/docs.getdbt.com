@@ -22,6 +22,28 @@ Release notes are grouped by date for single-tenant environments.
 
 <span><img src="/img/fontawesome/rss.svg" alt="RSS" className="rss-icon" />Subscribe to release note updates via [RSS](/feeds/release-notes-st-rss.xml), [Atom](/feeds/release-notes-st-atom.xml), or [JSON Feed](/feeds/release-notes-st-rss.json).</span>
 
+## August 5, 2026
+
+## Enhancements
+
+### dbt AI and agents
+
+- **Auto-open diff preview in edit-automatically mode**: When dbt Wizard edits files automatically, the diff preview side pane now opens immediately so you can review changes without an extra click. When the side pane is not available, for example in non-fullscreen Studio IDE, the diff falls back to an inline card.
+
+### Orchestration and run status
+
+- **Run history refreshes automatically after a trigger**: After you trigger a run or rerun, the run history list now polls every 2.5 seconds until the new run appears, eliminating the need for a manual page reload. Polling stops automatically once the run is visible or after 45 seconds.
+
+## Behavior Changes
+
+### Catalog
+
+- **30-day model staleness removed from health criteria**: Models are no longer flagged as unhealthy solely because they have not been rebuilt in the past 30 days. The "Stale state" warning banner no longer appears on resource detail pages, and models whose only health issue was staleness now show as healthy in the Trust Signals badge. Source staleness is unchanged and continues to surface as a health issue for sources.
+
+### dbt AI and agents
+
+- **Global Wizard navigation generally available (GA)**: The global dbt Wizard navigation item is now generally available.
+
 ## July 29, 2026
 
 ## New
