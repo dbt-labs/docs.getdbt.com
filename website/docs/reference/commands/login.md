@@ -46,7 +46,7 @@ Refer to [VS Code extension features](/docs/dbt-extension-features#feature-avail
 
 ## `dbt login` with dbt State
 
-When [dbt State](/docs/deploy/dbt-state-about) is enabled, [`dbt login`](/reference/commands/login?version=2.0?#dbt-login---help) is used for dbt State authentication. Running this command opens a browser window with two options:
+When [dbt State](/docs/deploy/dbt-state-about) is enabled, [`dbt login`](/reference/commands/login?version=2.0#dbt-login---help) is used for dbt State authentication. Running this command opens a browser window with two options:
 
 - **Log in with your <Constant name="dbt_platform" /> account**: Enter your email address. If you don't have a <Constant name="dbt_platform" /> account, dbt Labs will create a standalone [Developer account](https://www.getdbt.com/pricing) for you. After that, you'll authorize access between the CLI and <Constant name="dbt_platform" />.
 - **Log in without a <Constant name="dbt_platform" /> account**: Redirects you to the dbt State standalone app at [app.state.dbt.com](https://app.state.dbt.com), where a token is created and stored locally at `~/.dbt/auth_state.json`. dbt State is automatically enabled locally after account creation.
