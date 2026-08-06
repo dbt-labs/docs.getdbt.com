@@ -42,7 +42,7 @@ Release notes are grouped by date for single-tenant environments.
 
 ### dbt AI and agents
 
-- **Global Wizard navigation generally available (GA)**: The global dbt Wizard navigation item is now generally available.
+- **Global dbt Wizard navigation generally available (GA)**: The global dbt Wizard navigation item is now generally available.
 
 ## July 29, 2026
 
