@@ -144,7 +144,7 @@ Release notes are grouped by date for single-tenant environments.
 
 ### Orchestration and run status
 
-- **Faster linting for Fusion-version runs**: Runs using a Fusion dbt version now invoke the built-in [`dbt lint`](/reference/commands/lint) command instead of SQLFluff. Fusion virtual environments do not include SQLFluff, so linting now works for all Fusion-version runs and runs faster.
+- **Faster linting for Fusion-version runs**: Runs using a Fusion dbt version now invoke the built-in [`dbt lint`](/reference/commands/lint?version=2.0) command instead of SQLFluff. Fusion virtual environments do not include SQLFluff, so linting now works for all Fusion-version runs and runs faster.
 
 ### dbt AI and agents
 
