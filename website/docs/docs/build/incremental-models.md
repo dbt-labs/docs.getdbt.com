@@ -213,6 +213,15 @@ The possible values for `on_schema_change` are:
 - `append_new_columns`: Append new columns to the existing table. Note that this setting does *not* remove columns from the existing table that are not present in the new data.
 - `sync_all_columns`: Adds any new columns to the existing table, and removes any columns that are now missing. Note that this is *inclusive* of data type changes. On BigQuery, changing column types requires a full <Term id="table" /> scan; be mindful of the trade-offs when implementing.
 
+The following table summarizes what each value does when you add a column to your model, remove a column from your model, or change a column's data type:
+
+| `on_schema_change` | Column added to the model | Column removed from the model | Column data type changed |
+|--------------------|---------------------------|-------------------------------|--------------------------|
+| `ignore` (default) | The column isn't added to the target table and isn't populated. | The run fails, because the insert statement still references the removed column. | Not detected. The target table keeps its original data type, and your data platform decides whether the incoming values can be cast into it. |
+| `fail` | The run fails. | The run fails. | The run fails. |
+| `append_new_columns` | The column is added to the target table. Existing rows hold `null` for it. | The column stays in the target table and new rows hold `null` for it. Existing values are kept. | Not applied. The target table keeps its original data type. |
+| `sync_all_columns` | The column is added to the target table. Existing rows hold `null` for it. | The column is dropped from the target table, along with the data it held. | The data type is altered on the target table. |
+
 **Note**: None of the `on_schema_change` behaviors backfill values in old records for newly added columns. If you need to populate those values, we recommend running manual updates, or triggering a `--full-refresh`.
 
 :::caution `on_schema_change` tracks top-level changes
