@@ -27,8 +27,8 @@ When you go to **Account settings** > **Billing & Usage** > **Usage-based featur
 
 The **State** tab also displays the following charts:
 
-- **DATT** — Shows the target tables processed by dbt State, split into **Billable** and **Free**. Daily active target tables (DATTs) are the billable units for dbt State. During a trial, all DATTs are counted as free.
-- **Asset builds** — Shows all model builds for the month, including models reused and cloned.
+- **DATT** &mdash; Shows the target tables processed by dbt State, split into **Billable** and **Free**. Daily active target tables (DATTs) are the [billable units](/docs/platform/billing/dbt-state-usage#daily-active-target-tables) for dbt State. During a trial, all DATTs are counted as free.
+- **Asset builds** &mdash; Shows all model builds for the month, including models reused and cloned.
 
 ## Models built and reused chart
 
