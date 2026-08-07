@@ -12,18 +12,31 @@ hoverSnippet: Read this guide to understand how to examine your builds in dbt.
 - ⌚ dbt keeps track of how **long each model took to build**, when it started, when it finished, its completion status (error, warn, or success), its materialization type, and _much_ more.
 - 🖼️ This information is stored in a couple files which dbt calls **artifacts**.
 - 📊 Artifacts contain a ton of information in JSON format, so aren’t easy to read, but **<Constant name="dbt" />** packages the most useful bits of information into a tidy **visualization** for you.
-- ☁️ If you’re not using Cloud, we can still use the output of the **<Constant name="core" /> CLI to understand our runs**.
+- ☁️ If you’re not using <Constant name="dbt_platform" />, we can still use the output of the **<Constant name="core" /> CLI to understand our runs**.
 
 ### Model timing
 
-That’s where <Constant name="dbt" />’s Model Timing visualization comes in extremely handy. If we’ve set up a [Job](/guides/bigquery) in <Constant name="dbt" /> to run our models, we can use the Model Timing tab to pinpoint our longest-running models.
+That’s where <Constant name="dbt" />’s Model Timing visualization comes in extremely handy. If we’ve set up a [Job](/guides/bigquery) in <Constant name="dbt" /> to run our models, we can use the [**Model Timing** tab](/docs/deploy/run-visibility#model-timing-tab) to pinpoint our longest-running models.
 
-![<Constant name="dbt" />'s Model Timing diagram](/img/best-practices/materializations/model-timing-diagram.png)
+- 📊 At the top of the tab, the **metric tiles** surface the metrics that matter most: estimated critical path, peak concurrency, average active models, longest model, wall clock time, and latest start.
+- ⌛ The **Execution timeline** shows all resources as a Gantt-style chart. You can **group by** resource type, folder, execution phase, thread, or no grouping, and **highlight** by estimated critical path, duration, or all equal &mdash; making it easy to spot your bottlenecks at a glance.
+- 🔎 Use the **search** box to filter the timeline by resource name, and hover over any bar to see full details.
+- 📈 The **Concurrency over time** chart shows model activity over the run duration. Each bar is split into **Active models** and **Queued / ready**, so you can see how many models were running versus waiting at any point in time. It also displays the peak concurrency reached during the run.
+- 📋 The **Resource details** table lists every resource with its name, start time, end time, duration, execution phase, estimated critical path status, resource type, and folder.
+- :one: If a job has a single dbt invocation (for example `dbt build`), the model timing tab reflects the timing of all models.
+- :1234: If a job includes multiple dbt commands (for example, `dbt build` followed by `dbt compile`), the model timing tab reflects only the models from the final command (`dbt compile`). For models executed in both commands, the chart displays the timing from the last invocation. Models that were not re-invoked in the final command retain their timing from the earlier command (`dbt build`).
 
-- 🧵 This view lets us see our **mapped out in threads** (up to 64 threads, we’re currently running with 4, so we get 4 tracks) over time. You can think of **each thread as a lane on a highway**.
-- ⌛ We can see above that `stg_order_items` and `order_items` are **taking the most time**, so we may want to go ahead and **make that incremental**.
-- :one: If a job has a single dbt invocation (for example `dbt build`), the model timing chart reflects the timing of all models.
-- :1234: If a job includes multiple dbt commands (for example, `dbt build` followed by `dbt compile`), the model timing chart reflects only the models from the final command (`dbt compile`). For models executed in both commands, the chart displays the timing from the last invocation. Models that were not re-invoked in the final command retain their timing from the earlier command (`dbt build`).
+<DocCarousel slidesPerView={1}>
+
+<Lightbox src="/img/docs/dbt-platform/deployment/model-timing-metric-tiles.png" width="100%" title="Metric tiles showing key run statistics including estimated critical path, peak concurrency, and longest model" />
+
+<Lightbox src="/img/docs/dbt-platform/deployment/model-timing-timeline.png" width="100%" title="Execution timeline showing a Gantt-style view of all resources in the run" />
+
+<Lightbox src="/img/docs/dbt-platform/deployment/model-timing-concurrency.png" width="100%" title="Concurrency over time chart showing active models and queued/ready models throughout the run" />
+
+<Lightbox src="/img/docs/dbt-platform/deployment/model-timing-resource-details.png" width="100%" title="Resource details table showing each model’s start time, end time, duration, execution phase, critical path status, type, and folder" />
+
+</DocCarousel>
 
 If you aren’t using <Constant name="dbt" />, that’s okay! We don’t get a fancy visualization out of the box, but we can use the output from the <Constant name="core" /> CLI to check our model times, and it’s a great opportunity to become familiar with that output.
 

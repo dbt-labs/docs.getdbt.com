@@ -39,18 +39,6 @@ on-run-start:
 
 Because the values of `flags` can differ across invocations, we strongly advise against using `flags` as an input to configurations or dependencies (`ref` + `source`) that dbt resolves [during parsing](/reference/parsing#known-limitations).
 
-### Common flag examples
-
-Use the `--target` flag to specify which target (environment) to use when running dbt commands. For example:
-
-```bash
-dbt run --target dev
-dbt run --target prod
-dbt build --target staging
-```
-
-The `--target` flag allows you to run the same dbt project against different environments without modifying your configuration files. Define the target in your `profiles.yml` file. Learn more about [connection profiles and targets](/docs/local/profiles.yml#understanding-targets-in-profiles).
-
 Use this table to compare all available flags and how to configure them across interfaces:
 
 - **<Constant name="dbt" /> CLI**: Indicates whether the flag is supported in the [<Constant name="dbt_platform" />-supported CLI](/docs/platform/dbt-cli-installation).
@@ -165,3 +153,15 @@ Use this table to compare all available flags and how to configure them across i
 | [write_json](/reference/global-configs/json-artifacts) | ✅ | boolean <br /> default: True | ✅ | `DBT_ENGINE_WRITE_JSON` | `--write-json` <br /> `--no-write-json` |
 
 </VersionBlock>
+
+### Common flag examples
+
+Use the `--target` flag to specify which target (environment) to use when running dbt commands. For example:
+
+```bash
+dbt run --target dev
+dbt run --target prod
+dbt build --target staging
+```
+
+The `--target` flag allows you to run the same dbt project against different environments without modifying your configuration files. Define the target in your `profiles.yml` file. Learn more about [connection profiles and targets](/docs/local/profiles.yml#understanding-targets-in-profiles).
