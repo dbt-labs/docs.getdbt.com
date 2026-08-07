@@ -49,13 +49,13 @@ Some commands are not yet supported in the <Constant name="fusion_engine" /> or 
 | [debug](/reference/commands/debug) | Debugs dbt connections and projects | ✅ | All tools <br /> All [supported versions](/docs/dbt-versions) |
 | [deps](/reference/commands/deps) | Downloads dependencies for a project |  ✅ |  All tools <br /> All [supported versions](/docs/dbt-versions) |
 | [docs](/reference/commands/cmd-docs) | Generates documentation for a project |   ✅ | All tools <br /> All [supported versions](/docs/dbt-versions) |
-| [environment](/reference/commands/dbt-environment) | Enables you to interact with your <Constant name="dbt_platform" /> environment. |   N/A | <Constant name="platform_cli" /> <br /> Requires [dbt v1.5 or higher](/docs/dbt-versions) |
+| [environment](/reference/commands/dbt-environment?version=2.0) | Enables you to interact with your <Constant name="dbt_platform" /> environment. |   N/A | <Constant name="platform_cli" /> <br /> Requires [dbt v1.5 or higher](/docs/dbt-versions) |
 | help | Displays help information for any command | N/A | <Constant name="core" />, <Constant name="platform_cli" /> <br /> All [supported versions](/docs/dbt-versions) |
 | [init](/reference/commands/init) | Initializes a new dbt project |   ✅ | <Constant name="fusion" /> <br /> <Constant name="core" /><br /> All [supported versions](/docs/dbt-versions) |
-| [invocation](/reference/commands/invocation) | Enables users to debug long-running sessions by interacting with active invocations.|  N/A | <Constant name="platform_cli" /> <br /> Requires [dbt v1.5 or higher](/docs/dbt-versions) |
-| [lint](/reference/commands/lint) | Lints SQL files in a project for style, correctness, and convention violations | ✅ | Requires <Constant name="dbt_platform" /> project on <Constant name="fusion" /> |
+| [invocation](/reference/commands/invocation?version=2.0) | Enables users to debug long-running sessions by interacting with active invocations.|  N/A | <Constant name="platform_cli" /> <br /> Requires [dbt v1.5 or higher](/docs/dbt-versions) |
+| [lint](/reference/commands/lint?version=2.0) | Lints SQL files in a project for style, correctness, and convention violations | ✅ | Requires <Constant name="dbt_platform" /> project on <Constant name="fusion" /> |
 | [list](/reference/commands/list) | Lists resources defined in a dbt project |  ✅ | All tools <br /> All [supported versions](/docs/dbt-versions) |
-| [login](/reference/commands/login) | Logs in to your <Constant name="dbt_platform" /> account | N/A | v2 and later <br /> <Constant name="platform_cli" /> |
+| [login](/reference/commands/login?version=2.0) | Logs in to your <Constant name="dbt_platform" /> account | N/A | v2 and later <br /> <Constant name="platform_cli" /> |
 | [parse](/reference/commands/parse) | Parses a project and writes detailed timing info |  ✅ | All tools <br /> All [supported versions](/docs/dbt-versions) |
 | reattach | Reattaches to the most recent invocation to retrieve logs and artifacts. |   N/A | <Constant name="platform_cli" /> <br /> Requires [dbt v1.6 or higher](/docs/dbt-versions) |
 | [retry](/reference/commands/retry) | Retry the last run `dbt` command from the point of failure |  ✅ | All tools <br /> Requires [dbt v1.6 or higher](/docs/dbt-versions) |
@@ -65,7 +65,7 @@ Some commands are not yet supported in the <Constant name="fusion_engine" /> or 
 | [show](/reference/commands/show) | Previews table rows post-transformation | ✅ |  All tools <br /> All [supported versions](/docs/dbt-versions) |
 | [snapshot](/reference/commands/snapshot) | Executes "snapshot" jobs defined in a project |  ❌ | All tools <br /> All [supported versions](/docs/dbt-versions) |
 | [source](/reference/commands/source) | Provides tools for working with source data (including validating that sources are "fresh") | ✅ | All tools<br /> All [supported versions](/docs/dbt-versions) |
-| [system](/reference/commands/system) | Manages the CLI installation: update to a new version, uninstall, or pre-install ADBC adapter drivers | N/A | <Constant name="fusion" /> only |
+| [system](/reference/commands/system?version=2.0) | Manages the CLI installation: update to a new version, uninstall, or pre-install ADBC adapter drivers | N/A | <Constant name="fusion" /> only |
 | [test](/reference/commands/test) | Executes tests defined in a project  |  ✅ | All tools <br /> All [supported versions](/docs/dbt-versions) <br /> <Constant name="fusion" /> flag `--warn-error` not yet supported  |
 | [wizard](/docs/dbt-ai/wizard-cli-reference) | Starts an agentic dbt development session with <Constant name="wizard"/> from the command line | N/A | Local development <br />  [All supported versions](/docs/dbt-versions) |
 
