@@ -5,6 +5,8 @@ id: "release-notes"
 sidebar: "dbt release notes"
 pagination_next: null
 pagination_prev: null
+availability:
+  surface: platform
 ---
 
 <Constant name="dbt" /> release notes for recent and historical changes. Release notes fall into one of the following categories:
@@ -51,6 +53,7 @@ For <Constant name="fusion_engine" /> updates, refer to the [dbt-fusion changelo
 - **Fix:** Some types of Compile SQL queries are now rejected if they are too complex. If a request fails with a validation error, try reducing the number of metrics or group-by dimensions in the query.
 - **Behavior change:** You can no longer create a [service token](/docs/dbt-apis/service-tokens) using an account-scoped [personal access token](/docs/dbt-apis/user-tokens) (PAT). Requests to the service tokens endpoint authenticated with a PAT now return a `400` error. Use a service token to create new ones instead.
 - **New:** You can now access dbt State settings from **Account settings** > **Billing & Usage**, previously found under **State**. You can manage your trial, enable dbt State on environments and jobs, and set spend alerts &mdash; all in one place. For details, refer to [dbt State trial and billing](/docs/deploy/dbt-state-trial).
+- **New:** Redshift development connections now support [external OAuth](/docs/platform/manage-access/redshift-external-oauth) (Okta or Entra ID) through AWS IAM Identity Center.
 
   
 #### Docs changes
@@ -70,6 +73,10 @@ To simplify the docs experience, clarify availability, and make it easier to fin
 
 ## June 2026
 
+- **Enhancement:** You can now enable [dbt State](/docs/deploy/dbt-state-about) on continuous integration and merge job types, in addition to deploy jobs. For more information, refer to [Enabling dbt State on individual jobs](/docs/deploy/dbt-state-enable-jobs).
+- **Enhancement**: The [Cost Insights](/docs/explore/cost-insights) table view now includes **All** and **Jobs** buttons to switch between an aggregated cost view and a per-job cost breakdown. Available in the project dashboard and the **Model performance** section in <Constant name="catalog" />. When **Jobs** is selected, the CSV export includes job-level data. For more information, refer to [Explore cost data](/docs/explore/explore-cost-data).
+- **Enhancement:** [<Constant name="wizard" />](/docs/platform/wizard-platform) tool calls for dbt command invocations now stream their output live in chat, in both the <Constant name="studio_ide" /> and [Wizard home](/docs/platform/wizard-home).
+- **Enhancement:** You can now download files from the <Constant name="studio_ide" /> File explorer. Right-click a file and select **Download** to save it to your computer. For more information, refer to the [<Constant name="studio_ide" /> user interface](/docs/platform/studio-ide/ide-user-interface#basic-layout).
 - **Fix:** If you use the Administrator API to manage [SCIM](/docs/platform/manage-access/scim) to sync users from your identity provider, the `/api/v3/accounts/{account_id}/scim/v2/Users` response now returns `value` and `display` on each embedded group reference. `id` and `displayName` are retained so existing integrations keep working — this is a non-breaking change.
 - **Enhancement**: The [Administrative API v3](/dbt-cloud/api-v3) now supports private endpoint operations &mdash; [`list`](https://docs.getdbt.com/dbt-cloud/api-v3?version=2.0#/operations/List%20Private%20Endpoints), [`create`](https://docs.getdbt.com/dbt-cloud/api-v3?version=2.0#/operations/Create%20Private%20Endpoint), [`retrieve`](https://docs.getdbt.com/dbt-cloud/api-v3?version=2.0#/operations/Retrieve%20Private%20Endpoint), [`update`](https://docs.getdbt.com/dbt-cloud/api-v3?version=2.0#/operations/Update%20Private%20Endpoint), and [`delete`](https://docs.getdbt.com/dbt-cloud/api-v3?version=2.0#/operations/Delete%20Private%20Endpoint). Use these endpoints to manage private connectivity programmatically.
 - **Enhancement**: You can [download OpenTelemetry (OTel) logs](/docs/deploy/run-visibility#access-logs) for individual dbt command steps in Fusion job runs.
