@@ -2,6 +2,7 @@
 title: "Run visibility"
 description: "Monitor your jobs to make performance improvements."
 tags: ["scheduler"]
+availability: platform_login
 ---
 
 You can view the history of your runs and the model timing dashboard to help identify where improvements can be made to jobs.
@@ -62,7 +63,7 @@ When a job on the <Constant name="fusion_engine" /> finishes, selecting a step d
 - **Skipped**
 - **No-op**
 
-For more information about each status, refer to [Telemetry and observability](/reference/telemetry-observability#node-outcome).
+For more information about each status, refer to [Fusion telemetry and observability](/reference/telemetry-observability#node-outcome).
 
 <Lightbox src="/img/docs/dbt-platform/deployment/fusion-logs.png" width="80%" title="Structured logs in Fusion" />
 
