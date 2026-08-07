@@ -15,7 +15,7 @@
         },
         {
           "key": "Content-Security-Policy",
-          "value": "img-src 'self' data: blob: https:; style-src 'self' 'unsafe-inline' https:; connect-src 'self' https:; worker-src 'self' blob:; frame-ancestors 'self' https://*.getdbt.com; report-uri https://web-csp-reports-getdbt-com.vercel.app/api/csp-report?site=docs&d=enforce; report-to csp-enforce"
+          "value": "img-src 'self' data: blob: https:; style-src 'self' 'unsafe-inline' https:; connect-src 'self' https:; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; frame-ancestors 'self' https://*.getdbt.com; report-uri https://web-csp-reports-getdbt-com.vercel.app/api/csp-report?site=docs&d=enforce; report-to csp-enforce"
         },
         {
           "key": "Strict-Transport-Security",
