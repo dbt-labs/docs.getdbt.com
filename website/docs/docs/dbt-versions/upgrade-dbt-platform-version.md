@@ -73,7 +73,7 @@ To take advantage of the upgrade assistant and other upgrade tools, you'll need 
 - You must have a `developer` license.
 - You must have the proper [permissions set](/docs/platform/manage-access/enterprise-permissions) to access all of the upgrade features:
 
-| Feature | Required permission(s) | Permission sets with access |
+| Upgrade task | Required permission(s) | Permission sets with access |
 |---------|------------------------|-----------------------------|
 | View Fusion readiness and job eligibility | Fusion readiness: `read` | Developer, Admin, Member, Account Admin, Fusion admin |
 | "Run once on Fusion" | Runs: `write` | Job Admin, Job Runner, Admin, Member, Project Creator, Account Admin |
