@@ -12,6 +12,8 @@ Common use cases include:
 
 Refer to the [<Constant name="core" /> package on PyPI](https://pypi.org/project/dbt-core/) to install the official Python package for <Constant name="core" /> if you haven't done so already.
 
+<VersionBlock lastVersion="1.99">
+
 ```python
 from dbt.cli.main import dbtRunner, dbtRunnerResult
 
@@ -30,6 +32,31 @@ for r in res.result:
 ```
 
 For implementation details, refer to the source definitions of `dbtRunner` and `dbtRunnerResult` in the [<Constant name="core" /> repository](https://github.com/dbt-labs/dbt-core/blob/1.latest/core/dbt/cli/main.py).
+
+</VersionBlock>
+
+<VersionBlock firstVersion="2.0">
+
+```python
+from dbt.cli.main import dbtRunner, dbtRunnerResult
+
+# initialize
+dbt = dbtRunner()
+
+# create CLI args as a list of strings
+cli_args = ["run", "--select", "tag:my_tag"]
+
+# run the command
+res: dbtRunnerResult = dbt.invoke(cli_args)
+
+# inspect the results
+for r in res.result:
+    print(f"{r.unique_id}: {r.status}")
+```
+
+For implementation details, refer to the [`dbt-python` crate](https://github.com/dbt-labs/dbt-core/tree/main/crates/dbt-python) in the <Constant name="core" /> repository.
+
+</VersionBlock>
 
 ## Supported arguments
 
@@ -54,6 +81,12 @@ dbt.invoke(["run"], select="tag:my_tag")
 
 For [safe parallel execution](/reference/dbt-commands#available-commands), you can use the [<Constant name="platform_cli" />](/docs/platform/dbt-cli-installation) or [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio), both of which do that additional work to manage concurrency (multiple processes) on your behalf.
 
+<VersionBlock firstVersion="2.0">
+
+In v2, invocations are serialized through thread-level locks, so multiple invocations can't run concurrently within the same process. (In v1, parallel execution was unsupported but there was no locking, so invocations could still run in multithreaded mode.) As in v1, you can still parallelize by using multiprocessing to run each invocation in a separate process.
+
+</VersionBlock>
+
 ## `dbtRunnerResult`
 
 Each command returns a `dbtRunnerResult` object with three attributes:
@@ -61,6 +94,19 @@ Each command returns a `dbtRunnerResult` object with three attributes:
 - `success` (bool): Whether the command succeeded.
 - `result`: When the command completes (successfully or with handled errors), it returns the command's result(s). The return type varies by command.
 - `exception`: When the dbt invocation encounters an unhandled error and does not complete, the exception that was raised.
+
+<VersionBlock firstVersion="2.0">
+
+The v2 engine is implemented in Rust, so `exception` no longer contains the exact Python exception object raised by dbt. Instead, the caught error message is forwarded under an exception type:
+
+- If the invocation fails at a foreign function interface (FFI) boundary before the engine picks up the invocation, `exception` contains an unwrapped exception type, such as `ValueError` or `RuntimeError`.
+- If the invocation fails inside the engine, `exception` is a `DbtRunnerError`.
+
+V2 also adds a top-level `catalog` attribute to `dbtRunnerResult` when catalog generation is requested.
+
+In v1, `catalog.json` was only created when you ran `dbt docs generate`. In v2, you can generate the catalog as part of any command by passing the [`--write-catalog` flag](/reference/commands/cmd-docs?version=2.0#--write-catalog-flag). For example, `dbt run --write-catalog` populates both `dbtRunnerResult.result` and `dbtRunnerResult.catalog`.
+
+</VersionBlock>
 
 There is a one-to-one correspondence between [CLI exit codes](/reference/exit-codes) and the `dbtRunnerResult` returned by a programmatic invocation:
 
@@ -83,6 +129,20 @@ The syntax and support for these patterns are liable to change in future version
 :::
 
 The goal of `dbtRunner` is to offer parity with CLI workflows within a programmatic environment. There are a few advanced usage patterns that extend what's possible with the CLI.
+
+<VersionBlock firstVersion="2.0">
+
+### Reusing objects
+
+Manifest injection isn't supported in v2. You can't pass a pre-constructed `Manifest` into `dbtRunner`.
+
+### Registering callbacks
+
+Registering callbacks on dbt's `EventManager` isn't supported in v2.
+
+</VersionBlock>
+
+<VersionBlock lastVersion="1.99">
 
 ### Reusing objects
 
@@ -125,6 +185,7 @@ dbt = dbtRunner(callbacks=[print_version_callback])
 dbt.invoke(["list"])
 ```
 
+</VersionBlock>
 
 ### Overriding parameters
 
