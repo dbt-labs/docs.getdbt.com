@@ -5,6 +5,7 @@ pagination_prev: "reference/node-selection/configure-state"
 ---
 
 import StateModified from '/snippets/_state-modified-compare.md';
+import StateModifiedScheduledJobs from '/snippets/_state-modified-scheduled-jobs.md';
 
 The [`state:` selection method](/reference/node-selection/methods#state) is a powerful feature, with a lot of underlying complexity. Below are a handful of considerations when setting up automated jobs that leverage state comparison.
 
@@ -66,6 +67,10 @@ To reduce false positives during `state:modified` selection due to env-aware log
 <StateModified features={'/snippets/_state-modified-compare.md'}/>
 
 </VersionBlock>
+
+### Scheduled jobs
+
+<StateModifiedScheduledJobs />
 
 ### Final note
 

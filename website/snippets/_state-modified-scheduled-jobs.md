@@ -1,0 +1,3 @@
+[`state:modified`](/reference/node-selection/methods#state) and `state:modified+` only detect changes to your project's code, configuration, or manifest-relevant metadata &mdash; not changes to underlying data. When no code or configuration changes are detected since the deferred manifest was last produced, the job succeeds without building any models. This is expected behavior.
+
+If your job needs to build models on every scheduled run regardless of code changes, remove the `state:modified` selector from that job. Reserve `state:modified` for [CI](/docs/deploy/ci-jobs) or [merge jobs](/docs/deploy/merge-jobs), where the intent is to build only what changed in a given pull request or merge.
