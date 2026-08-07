@@ -71,7 +71,7 @@ When you're ready to upgrade your project(s) to <Constant name="fusion_engine" /
 To take advantage of the upgrade assistant and other upgrade tools, you'll need to meet the following prerequisites:
 - Your dbt project must be updated to use the **Latest** release track.
 - You must have a `developer` license.
-- You must have the proper [permissions set](/docs/platform/manage-access/enterprise-permissions) to access all of the upgrade features:
+- You must have the proper [permissions set](/docs/platform/manage-access/enterprise-permissions) to execute individual upgrade tasks. Migrating to Fusion is a multi-step process and some of these steps may be repeated across projects by different users:
 
 | Upgrade task | Required permission(s) | Permission sets with access |
 |---------|------------------------|-----------------------------|
