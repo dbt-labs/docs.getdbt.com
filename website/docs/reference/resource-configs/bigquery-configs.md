@@ -1290,10 +1290,11 @@ The BigQuery Python models also have the following additional configuration para
 
 ## Unit tests in BigQuery
 
-<VersionBlock firstVersion="1.13">
+### Pseudocolumns <Lifecycle status="beta" />
 
-### Pseudocolumns
-
+:::tip Did you know...
+Available with the [dbt "Latest" release track](/docs/dbt-versions/dbt-release-tracks).
+:::
 
 Pseudocolumns are queryable columns that don't appear in the information schema. BigQuery [external tables](https://docs.cloud.google.com/bigquery/docs/external-tables) expose a [`_FILE_NAME` pseudocolumn](https://docs.cloud.google.com/bigquery/docs/query-cloud-storage-data#query_the_file_name_pseudo-column) that identifies the source file for each row.
 
@@ -1436,8 +1437,6 @@ Note the following behaviors:
 
     </TabItem>
     </Tabs>
-
-</VersionBlock>
 
 ### Limitations
 

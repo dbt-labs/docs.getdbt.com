@@ -379,17 +379,13 @@ unit_tests:
         - {id: 1, first_name: emily}
 ```
 
-<VersionBlock firstVersion="1.13">
-
-## Unit testing with pseudocolumns
+## Unit testing with pseudocolumns <Lifecycle status="beta" />
 
 :::note Only supported in BigQuery
 Pseudocolumn support in unit tests is currently only available in `dbt-bigquery` v1.13 and later.
 :::
 
 Pseudocolumns are columns that you can query but don't appear in the information schema (for example, BigQuery's [`_FILE_NAME` column](https://docs.cloud.google.com/bigquery/docs/query-cloud-storage-data#query_the_file_name_pseudo-column) on external tables). Starting in `dbt-bigquery` v1.13, you can include pseudocolumns directly in `dict` or `csv` fixture rows without using `format: sql`. Refer to [BigQuery configurations](/reference/resource-configs/bigquery-configs#pseudocolumns) for examples and details.
-
-</VersionBlock>
 
 
 ## Unit test exit codes
