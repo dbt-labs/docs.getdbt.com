@@ -13,6 +13,10 @@
  *    content worth keeping in markdown -- e.g. the availability pill's tooltip
  *    icon rendered a stray U+24D8 after "Available in v2".
  *
+ * 3. HTML comment nodes. React SSR emits `<!-- -->` markers between adjacent
+ *    JSX expressions, and they survive into the markdown as literal comments,
+ *    e.g. every generated category-index card: `## [<icon><!-- --> <!-- -->Title](...)`.
+ *
  * Runs in the conversion pipeline only (beforeDefaultRehypePlugins); the
  * rendered site is unaffected.
  */
@@ -20,6 +24,14 @@ import { visit, SKIP } from "unist-util-visit";
 
 export default function rehypeCleanMarkdown() {
   return (tree) => {
+    visit(tree, "comment", (node, index, parent) => {
+      if (parent === undefined) {
+        return;
+      }
+      parent.children.splice(index, 1);
+      return [SKIP, index];
+    });
+
     visit(tree, "element", (node, index, parent) => {
       if (parent === undefined) {
         return;
