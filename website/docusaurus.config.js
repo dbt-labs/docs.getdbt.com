@@ -2,6 +2,7 @@ import path from "path";
 import math from "remark-math";
 import katex from "rehype-katex";
 import rehypeCodeLanguage from "./plugins/rehypeCodeLanguage.js";
+import rehypeCleanMarkdown from "./plugins/rehypeCleanMarkdown.js";
 import remarkBlogFootnoteLinks from "./plugins/remarkBlogFootnoteLinks.js";
 const { themes } = require('prism-react-renderer')
 
@@ -392,7 +393,7 @@ var siteSettings = {
           relativePaths: false,
         },
         processing: {
-          beforeDefaultRehypePlugins: [rehypeCodeLanguage],
+          beforeDefaultRehypePlugins: [rehypeCodeLanguage, rehypeCleanMarkdown],
         },
         include: {
           includeBlog: false,
