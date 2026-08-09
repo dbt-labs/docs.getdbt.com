@@ -10,6 +10,8 @@
     "test": "npx jest --watch",
     "lint": "eslint --cache",
     "lintAll": "eslint . --fix",
+    "lint:docs": "node scripts/lint-docs.js",
+    "lint:constants": "node scripts/lint-docs.js",
     "prepare": "cd .. && husky install",
     "cleanup-duplicates": "node scripts/cleanup_duplicate_constants.js"
   },
