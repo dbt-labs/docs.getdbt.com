@@ -1,7 +1,7 @@
 ---
 title: "About dbt lint command"
 sidebar_label: "lint"
-description: "Use dbt lint to check your SQL files for style, correctness, and convention issues using your `.sqlfluff` config and SQLFluff rule codes."
+description: "Use dbt lint to check your SQL files for style, correctness, and convention violations using your `.sqlfluff` config and SQLFluff rule codes."
 id: "lint"
 availability:
   engine: v2
