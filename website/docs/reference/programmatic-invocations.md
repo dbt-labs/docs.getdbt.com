@@ -89,11 +89,12 @@ In v2, invocations are serialized through thread-level locks, so multiple invoca
 
 ## `dbtRunnerResult`
 
-Each command returns a `dbtRunnerResult` object with three attributes:
+Each command returns a `dbtRunnerResult` object with the following attributes:
 
 - `success` (bool): Whether the command succeeded.
 - `result`: When the command completes (successfully or with handled errors), it returns the command's result(s). The return type varies by command.
 - `exception`: When the dbt invocation encounters an unhandled error and does not complete, the exception that was raised.
+- `catalog`(v2 only): The catalog that the command produces when you request catalog generation. 
 
 <VersionBlock firstVersion="2.0">
 
