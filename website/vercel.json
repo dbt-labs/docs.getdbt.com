@@ -11,15 +11,15 @@
         },
         {
           "key": "Reporting-Endpoints",
-          "value": "csp-enforce=\"https://web-csp-reports-getdbt-com.vercel.app/api/csp-report?site=docs&d=enforce\", csp-report-only=\"https://web-csp-reports-getdbt-com.vercel.app/api/csp-report?site=docs&d=report\""
+          "value": "csp-enforce=\"https://web-csp-collector.vercel.app/api/csp-report?site=docs&d=enforce\", csp-report-only=\"https://web-csp-collector.vercel.app/api/csp-report?site=docs&d=report\""
         },
         {
           "key": "Content-Security-Policy",
-          "value": "img-src 'self' data: blob: https:; style-src 'self' 'unsafe-inline' https:; script-src 'self' 'unsafe-inline' 'unsafe-eval' blob: https:; connect-src 'self' https:; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; frame-ancestors 'self' https://*.getdbt.com; report-uri https://web-csp-reports-getdbt-com.vercel.app/api/csp-report?site=docs&d=enforce; report-to csp-enforce"
+          "value": "img-src 'self' data: blob: https:; style-src 'self' 'unsafe-inline' https:; script-src 'self' 'unsafe-inline' 'unsafe-eval' blob: https:; connect-src 'self' https:; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; frame-ancestors 'self' https://*.getdbt.com; report-uri https://web-csp-collector.vercel.app/api/csp-report?site=docs&d=enforce; report-to csp-enforce"
         },
         {
           "key": "Content-Security-Policy-Report-Only",
-          "value": "script-src 'self' 'unsafe-inline' 'unsafe-eval' 'report-sample' blob: https://cdn.optimizely.com https://*.optimizely.com https://code.jquery.com https://cdn.jsdelivr.net https://www.google.com https://www.gstatic.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://solve-widget.forethought.ai https://*.forethought.ai https://js.hsforms.net https://js.hs-scripts.com https://js.hscollectedforms.net https://js.hs-analytics.net https://js.hs-banner.com https://fast.wistia.net https://fast.wistia.com https://cdn.cookielaw.org https://*.onetrust.com https://js.qualified.com https://*.qualified.com; report-uri https://web-csp-reports-getdbt-com.vercel.app/api/csp-report?site=docs&d=report; report-to csp-report-only"
+          "value": "script-src 'self' 'unsafe-inline' 'unsafe-eval' 'report-sample' blob: https://cdn.optimizely.com https://*.optimizely.com https://code.jquery.com https://cdn.jsdelivr.net https://www.google.com https://www.gstatic.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://solve-widget.forethought.ai https://*.forethought.ai https://js.hsforms.net https://js.hs-scripts.com https://js.hscollectedforms.net https://js.hs-analytics.net https://js.hs-banner.com https://fast.wistia.net https://fast.wistia.com https://cdn.cookielaw.org https://*.onetrust.com https://js.qualified.com https://*.qualified.com; report-uri https://web-csp-collector.vercel.app/api/csp-report?site=docs&d=report; report-to csp-report-only"
         },
         {
           "key": "Strict-Transport-Security",
