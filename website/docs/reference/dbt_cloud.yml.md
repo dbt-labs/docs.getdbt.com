@@ -159,8 +159,6 @@ projects:
 
 The `dbt-cloud` block is a companion config that lives in your project's `dbt_project.yml` file (not in `dbt_cloud.yml`). It tells the <Constant name="platform_cli" />, the <Constant name="studio_ide" />, and <Constant name="fusion" /> which <Constant name="dbt_platform" /> project your local project corresponds to.
 
-<VersionBlock lastVersion="1.99">
-
 <File name="dbt_project.yml">
 
 ```yaml
@@ -181,41 +179,7 @@ dbt-cloud:
 |-------|----------|-------------|
 | `project-id` | Yes | The <Constant name="dbt_platform" /> project ID this local project maps to. Find it in the URL when viewing your project (for example, `https://YOUR_ACCESS_URL/develop/26228/projects/123456` → `123456`). |
 | `defer-env-id` | No | The environment ID to defer to for build artifacts. Used for <Constant name="fusion" /> [auto-deferral](/docs/platform/about-defer) and <Constant name="platform_cli" /> deferral overrides. |
-
 </SimpleTable>
-
-</VersionBlock>
-
-<VersionBlock firstVersion="2.0">
-
-<File name="dbt_project.yml">
-
-```yaml
-name:
-version:
-# Your project configs...
-
-dbt-cloud:
-  project-id: your_project_id
-  defer-env-id: '123456'           # optional
-  account_id: your_account_id      # optional
-  account-host: your_account_host  # optional, for example "abc123.us1.dbt.com"
-```
-
-</File>
-
-<SimpleTable>
-
-| Field | Required | Description |
-|-------|----------|-------------|
-| `project-id` | Yes | The <Constant name="dbt_platform" /> project ID this local project maps to. Find it in the URL when viewing your project (for example, `https://YOUR_ACCESS_URL/develop/26228/projects/123456` → `123456`). |
-| `defer-env-id` | No | The environment ID to defer to for build artifacts. Used for <Constant name="fusion" /> [auto-deferral](/docs/platform/about-defer) and <Constant name="platform_cli" /> deferral overrides. |
-| `account_id` | No | The <Constant name="dbt_platform" /> account ID this local project belongs to. Note the underscore &mdash; unlike the other fields in this block, this one isn't hyphenated. |
-| `account-host` | No | The host for your account, for example `cloud.getdbt.com`, `emea.dbt.com`, or your single-tenant access URL. |
-
-</SimpleTable>
-
-</VersionBlock>
 
 ## Related docs
 - [<Constant name="platform_cli" />](/docs/platform/dbt-cli-installation)

@@ -51,6 +51,7 @@ The following example is a list of all available configurations in the `dbt_proj
 [dbt-cloud](/reference/dbt_cloud.yml#the-dbt-cloud-block-in-dbt_projectyml):
   [project-id](/docs/platform/configure-dbt-cli#configure-the-dbt-cli): project_id # Required
   [defer-env-id](/docs/platform/about-defer#defer-in-dbt-cli): environment_id # Optional
+  [account_id](/reference/dbt_cloud.yml#the-dbt-cloud-block-in-dbt_projectyml): account_id # Optional, dbt Core v2 (Fusion) only; note the underscore, unlike the other dbt-cloud fields
   [account-host](/docs/platform/about-platform/access-regions-ip-addresses): account-host # Defaults to 'cloud.getdbt.com'; Required if use a different Access URL
 
 [analyses](/docs/build/analyses): # Requires the require_corrected_analysis_fqns flag; available starting v1.12
