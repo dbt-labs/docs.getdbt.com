@@ -310,7 +310,7 @@ The `reservation` config routes dbt-submitted BigQuery jobs to a specific [reser
 
 You can set `reservation` at three levels, from lowest to highest precedence:
 
-1. **Target level** (`profiles.yml`) — applies to all jobs for the target. See [Connect BigQuery](/docs/local/connect-data-platform/bigquery-setup?version=1.12&name=Core#reservation).
+1. **Target level** (`profiles.yml`) — applies to all jobs for the target. See [Connect BigQuery](/docs/local/connect-data-platform/bigquery-setup?version=1.12#reservation).
 
 2. **Project level** (`dbt_project.yml`) — applies to all matching models.
 

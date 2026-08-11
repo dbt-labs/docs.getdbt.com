@@ -11,7 +11,7 @@ You can use deploy jobs to build production data assets. Deploy jobs make it eas
 - Commit SHA
 - Environment name
 - Sources and documentation info, if applicable
-- Job run details, including run timing, [model timing data](/docs/deploy/run-visibility#model-timing), and [artifacts](/docs/deploy/artifacts)
+- Job run details, including run timing, [model timing data](/docs/deploy/run-visibility#model-timing-tab), and [artifacts](/docs/deploy/artifacts)
 - Detailed run steps with logs and their run step statuses. For <Constant name="fusion"/> runs, you can also download OpenTelemetry logs from individual steps. Refer to [Downloading logs](/docs/deploy/run-visibility#access-logs).
 
 You can create a deploy job and configure it to run on [scheduled days and times](#schedule-days), enter a [custom cron schedule](#cron-schedule), or [trigger the job after another job completes](#trigger-on-job-completion).
@@ -55,7 +55,6 @@ You can create a deploy job and configure it to run on [scheduled days and times
         - **Project** &mdash; Specify the parent project that has that upstream deploy job. 
         - **Job** &mdash; Specify the upstream deploy job. 
         - **Completes on** &mdash; Select the job run status(es) that will [enqueue](/docs/deploy/job-scheduler#scheduler-queue) the deploy job.  
-
 
 5. (Optional) Options in the **Advanced settings** section: 
     - **Environment variables** &mdash; Define [environment variables](/docs/build/environment-variables) to customize the behavior of your project when the deploy job runs.

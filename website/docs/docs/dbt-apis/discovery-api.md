@@ -15,7 +15,7 @@ Every time <Constant name="dbt" /> runs a project, it generates and stores infor
 
 By leveraging the metadata in <Constant name="dbt" />, you can create systems for data monitoring and alerting, lineage exploration, and automated reporting. This can help you improve data discovery, data quality, and pipeline operations within your organization.
 
-You can access the Discovery API through [ad hoc queries](/docs/dbt-apis/discovery-querying), custom applications, a wide range of [partner ecosystem integrations](https://www.getdbt.com/product/integrations/) (like BI/analytics, catalog and governance, and quality and observability), and by using <Constant name="dbt" /> features like [model timing](/docs/deploy/run-visibility#model-timing) and [data health tiles](/docs/explore/data-tile).
+You can access the Discovery API through [ad hoc queries](/docs/dbt-apis/discovery-querying), custom applications, a wide range of [partner ecosystem integrations](https://www.getdbt.com/product/integrations/) (like BI/analytics, catalog and governance, and quality and observability), and by using <Constant name="dbt" /> features like [model timing](/docs/deploy/run-visibility#model-timing-tab) and [data health tiles](/docs/explore/data-tile).
 
 <ApiRateLimitsCallout />
 
@@ -40,7 +40,7 @@ To use the API directly or integrate your tool with it, refer to [Uses case and 
 
 Use the API to look at historical information like model build time to determine the health of your dbt projects. Finding inefficiencies in orchestration configurations can help decrease infrastructure costs and improve timeliness. To learn more about how to do this, refer to [Performance](/docs/dbt-apis/discovery-use-cases-and-examples#performance).
 
-You can use, for example, the [model timing](/docs/deploy/run-visibility#model-timing) tab to help identify and optimize bottlenecks in model builds:
+You can use, for example, the [model timing](/docs/deploy/run-visibility#model-timing-tab) tab to help identify and optimize bottlenecks in model builds:
 
 <Lightbox src="/img/docs/dbt-platform/discovery-api/model-timing.png" width="200%" title="Model timing visualization in dbt"/>
 
