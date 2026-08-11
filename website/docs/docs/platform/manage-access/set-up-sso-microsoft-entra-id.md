@@ -83,7 +83,7 @@ Depending on your Microsoft Entra ID settings, your App Registration page might 
     
     :::info Platform type
 
-    When selecting the platform type, choose **Web**, not **Single-page application (SPA)**. The <Constant name="dbt" /> SSO integration is a confidential client that redeems the authorization code from the server using a client secret. If you add the **Redirect URI** under **SPA**, Entra ID enforces PKCE and rejects the server-side token exchange, causing sign-in to fail with the error `AADSTS9002325: Proof Key for Code Exchange is required for cross-origin authorization code redemption.`
+    When selecting the platform type, choose **Web**, not **Single-page application (SPA)**. The <Constant name="dbt" /> SSO integration redeems the authorization code from the server using a client secret. So, if you add the **Redirect URI** under **SPA**, Entra ID enforces PKCE and rejects the server-side token exchange, causing sign-in to fail with the error `AADSTS9002325: Proof Key for Code Exchange is required for cross-origin authorization code redemption.`
 
     :::
 
