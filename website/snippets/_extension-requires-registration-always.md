@@ -3,7 +3,7 @@ This capability requires a [free dbt platform account](/docs/sign-in-dbt-extensi
 
 <VersionBlock firstVersion="2.0">
 
-Authentication is handled by [`dbt login`](/reference/commands/login), so your login state is shared across dbt features like dbt VS Code extension and dbt State.
+Authentication is handled by [`dbt login`](/reference/commands/login?version=2.0), so your login state is shared across dbt features like dbt VS Code extension and dbt State.
 
 </VersionBlock>
 :::

@@ -34,7 +34,7 @@ Use dbt Core v1.x if you have an older project that isn't ready to move to v2, o
 
 Over time, new capabilities will land in v2 only, so most people will eventually want to upgrade. When you're ready, we recommend checking out the [Upgrade to v2](/docs/dbt-versions/core-upgrade/upgrading-to-v2) guide.
 
-To install or continue using v1.x, see [Install dbt Core v1.x](https://docs.getdbt.com/docs/local/install-dbt?version=1.12&name=Core).
+To install or continue using v1.x, see [Install dbt Core v1.x](https://docs.getdbt.com/docs/local/install-dbt?version=1.12).
 
 </VersionBlock>
 

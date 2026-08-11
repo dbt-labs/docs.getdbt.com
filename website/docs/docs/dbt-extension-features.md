@@ -25,7 +25,7 @@ See the [feature availability](#feature-availability) table for the full list of
 
 <VersionBlock firstVersion="1.13">
 
-In <Constant name="dbt" /> v2.0 and later, authentication for registration and features that require sign-in is handled by [`dbt login`](/reference/commands/login), so your login state is shared across dbt tools like the dbt VS Code extension and, in supported versions, dbt State.
+In <Constant name="dbt" /> v2.0 and later, authentication for registration and features that require sign-in is handled by [`dbt login`](/reference/commands/login?version=2.0), so your login state is shared across dbt tools like the dbt VS Code extension and, in supported versions, dbt State.
 
 </VersionBlock>
 
