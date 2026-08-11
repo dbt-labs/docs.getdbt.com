@@ -179,6 +179,7 @@ dbt-cloud:
 |-------|----------|-------------|
 | `project-id` | Yes | The <Constant name="dbt_platform" /> project ID this local project maps to. Find it in the URL when viewing your project (for example, `https://YOUR_ACCESS_URL/develop/26228/projects/123456` → `123456`). |
 | `defer-env-id` | No | The environment ID to defer to for build artifacts. Used for <Constant name="fusion" /> [auto-deferral](/docs/platform/about-defer) and <Constant name="platform_cli" /> deferral overrides. |
+| `account_id` | No | dbt Core v2 (Fusion) only. The <Constant name="dbt_platform" /> account ID this local project belongs to. Note the underscore &mdash; unlike the other fields in this block, this one isn't hyphenated. |
 </SimpleTable>
 
 ## Related docs
