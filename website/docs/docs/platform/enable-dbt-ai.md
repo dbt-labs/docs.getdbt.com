@@ -2,6 +2,10 @@
 title: "Enable AI in dbt platform"
 sidebar_label: "Enable AI in dbt platform"
 description: "Enable AI features in the dbt platform, including dbt Wizard and dbt Copilot, to speed up your development."
+availability:
+  surface: platform
+  access: paid_plan
+  minPlan: starter
 ---
 
 import WizardSupportedProviders from '/snippets/_wizard-supported-providers.md';
@@ -9,7 +13,7 @@ import WizardConfigureAiProvider from '/snippets/_wizard-configure-ai-provider.m
 import WizardPlatformPreviewDisclaimer from '/snippets/_wizard-platform-preview-disclaimer.md';
 import CopilotWizardDifferences from '/snippets/_copilot-wizard-diff.md';
 
-# Enable AI features in <Constant name="dbt_platform" /> <Lifecycle status="self_service,managed,managed_plus" />
+# Enable AI features in <Constant name="dbt_platform" />
 
 <IntroText>
 Enable AI features in <Constant name="dbt_platform" /> to speed up your development and focus on delivering quality data.
@@ -30,7 +34,7 @@ Both experiences are controlled by a single AI toggle in **Account settings**.
 
 ## Prerequisites
 
-- Must have a [<Constant name="dbt_platform account" /> on Starter, Enterprise, or Enterprise+ plans](https://www.getdbt.com/pricing).
+- Must have a [<Constant name="dbt_platform" /> account on Starter, Enterprise, or Enterprise+ plans](https://www.getdbt.com/pricing).
   - Certain features like [natural prompts in Canvas](/docs/platform/build-canvas-copilot) are only available on Enterprise and Enterprise+ plans.
 - Development environment is on a supported [release track](/docs/dbt-versions/dbt-release-tracks) to receive ongoing updates.
 - Opt-in to AI features by following the steps in the next section in your **Account settings**.

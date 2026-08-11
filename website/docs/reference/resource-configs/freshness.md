@@ -2,8 +2,13 @@
 title: freshness
 description: "Read this guide to understand the `freshness` configuration in dbt."
 id: "freshness"
+availability:
+  engine: v2
+  surface: platform
+  access: paid_plan
+  minPlan: enterprise
 ---
-# freshness <Lifecycle status="private_preview,managed,managed_plus" />
+# freshness <Lifecycle status="private_preview" />
  
 <VersionBlock lastVersion="1.99">
 

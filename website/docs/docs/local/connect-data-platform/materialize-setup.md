@@ -15,6 +15,7 @@ meta:
   slack_channel_link: 'https://getdbt.slack.com/archives/C01PWAH41A5'
   platform_name: 'Materialize'
   config_page: '/reference/resource-configs/materialize-configs'
+availability: local_free
 ---
 
 

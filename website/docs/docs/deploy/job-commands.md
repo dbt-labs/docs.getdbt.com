@@ -2,6 +2,7 @@
 title: "Job commands"
 id: "job-commands"
 description: "How to use dbt commands to set tasks for your dbt jobs."
+availability: platform_login
 ---
 
 A <Constant name="dbt" /> production job allows you to set up a system to run a dbt job and job commands on a schedule, rather than running dbt commands manually from the command line or [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio). A job consists of commands that are "chained" together and executed as run steps. Each run step can succeed or fail, which may determine the job's run status (Success, Cancel, or Error). 

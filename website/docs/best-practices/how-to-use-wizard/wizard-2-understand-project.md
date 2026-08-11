@@ -1,5 +1,5 @@
 ---
-title: "Understanding a dbt project with dbt Wizard CLI"
+title: "Understanding a dbt project with dbt Wizard"
 id: "wizard-2-understand-project"
 description: "Use dbt Wizard CLI to map an unfamiliar dbt project, investigate model behavior, and identify downstream impact."
 sidebar_label: "Understand a dbt project"
@@ -8,7 +8,8 @@ tags: [AI, Wizard]
 
 
 <IntroText>
-Use <Constant name="wizard" /> CLI to move from a broad project map to evidence-backed answers about model logic, lineage, tests, and data.
+
+Use <Constant name="wizard" / > to move from a broad project map to evidence-backed answers about model logic, lineage, tests, and data.
 </IntroText>
 
 This workflow helps when you join a project, review an unfamiliar area of the DAG, prepare a refactor, or investigate why a model exists.

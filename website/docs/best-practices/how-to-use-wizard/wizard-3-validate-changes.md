@@ -1,7 +1,7 @@
 ---
 title: "Validating dbt changes with dbt Wizard"
 id: "wizard-3-validate-changes"
-description: "Use dbt Wizard CLI to assess impact, run the right level of validation, and review a dbt change before merging it."
+description: "Use dbt Wizard to assess impact, run the right level of validation, and review a dbt change before merging it."
 sidebar_label: "Validate dbt changes"
 tags: [AI, Wizard]
 ---
@@ -9,7 +9,7 @@ tags: [AI, Wizard]
 # Validating dbt changes with <Constant name="wizard" />
 
 <IntroText>
-Use <Constant name="wizard" /> CLI to assess the impact of a change, choose a validation depth, and review evidence before you merge.
+Use <Constant name="wizard" /> to assess the impact of a change, choose a validation depth, and review evidence before you merge.
 </IntroText>
 
 This workflow is useful after you edit a model, test, macro, or YAML file and want more than a code-only review. <Constant name="wizard" /> can combine project metadata, dbt commands, development builds, and production comparisons based on the validation level you select.

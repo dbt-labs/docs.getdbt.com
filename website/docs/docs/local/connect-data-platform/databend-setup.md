@@ -14,6 +14,7 @@ meta:
   min_supported_version: 'n/a'
   platform_name: 'Databend Cloud'
   config_page: '/reference/resource-configs/no-configs'
+availability: local_free
 ---
 
 

@@ -5,9 +5,17 @@ description: "Bring all the speed and power of the self-hosted dbt Fusion engine
 sidebar_label: "dbt VS Code extension"
 image: /img/docs/extension/extension-marketplace.png
 pagination_next: "docs/dbt-extension-features"
+availability: local_all
 ---
 
 # About the dbt VS Code extension <Lifecycle status="preview" />
+
+<VersionBlock lastVersion="1.99">
+
+:::tip About the dbt VS Code extension
+The dbt VS Code extension is available with v2 and brings editor features like autocomplete, inline errors, preview CTE, <Term id="lsp"/>, and more! [Upgrade to v2](/docs/dbt-versions/core-upgrade/upgrading-to-v2) to use it.
+:::
+</VersionBlock>
 
 The dbt VS Code extension brings a hyper-fast, intelligent, and cost-efficient dbt development experience to VS Code.
 This is the only way to enjoy all the power of the <Constant name="fusion_engine" /> while developing with a self-hosted installation.
@@ -17,7 +25,7 @@ This is the only way to enjoy all the power of the <Constant name="fusion_engine
 
 The dbt VS Code extension is available in the [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=dbtLabsInc.dbt). _Note, this is a public preview release. Behavior may change ahead of the broader generally available (GA) release._
 
-The dbt VS Code extension is only compatible with the <Constant name="fusion_engine" />, but not with <Constant name="core" />.
+The dbt VS Code extension works with <Constant name="fusion" />, the default free-to-use product you get when you install dbt. 
 
 
 :::tip Try out the Fusion quickstart guide
@@ -43,17 +51,17 @@ Check out the following video to see the features and functionality of the dbt V
 
 ### Sign in and feature access
 
-After you install the dbt VS Code extension, all [features](/docs/dbt-extension-features) are available for 14 days with no registration! After that, [register](/docs/sign-in-dbt-extension) for a free <Constant name="dbt_platform" /> account to keep using advanced features. Previously only registered users had access to the dbt VS Code extension.
+After you install the dbt VS Code extension, all [features](/docs/dbt-extension-features) are available for 14 days with no registration. After that, most features continue to work without registration. To keep using advanced features, [register](/docs/sign-in-dbt-extension) for a free <Constant name="dbt_platform" /> account. Previously only registered users had access to the dbt VS Code extension.
 
-Without registration, the vast majority of features continue to work. Only advanced features prompt you to register or sign-in to an existing account after the trial period ends.
+Without registration, the vast majority of features continue to work. Only advanced features prompt you to register or sign in to an existing account after the trial period ends.
 
 :::note Strict static analysis requires registration
 If your project uses `static_analysis: strict` in `dbt_project.yml` or you pass `--static-analysis strict` at runtime, registration for a <Constant name="dbt_platform" /> account is required regardless of the trial status.
 :::
 
-Refer to [VS Code extension features](/docs/fusion/fusion-availability?version=1.13#dbt-vs-code-extension-features) for the full list of features and their availability.
+Refer to [VS Code extension features](/docs/dbt-extension-features#feature-availability) for the full list of features and their availability.
 
-Authentication is handled by [`dbt login`](/reference/commands/login), so your login state is shared across the CLI, dbt VS Code extension, dbt State (if you log in using <Constant name="dbt_platform" />). Go through the [get started wizard](/docs/install-dbt-extension#getting-started) or run `dbt login` from your terminal, then restart or reload VS Code. The extension detects your login automatically.
+When you register or sign in for advanced features, authentication is handled by [`dbt login`](/reference/commands/login?version=2.0). Your login state is shared across the CLI, dbt VS Code extension, and dbt State (if you log in using <Constant name="dbt_platform" />). You can use the [get started wizard](/docs/install-dbt-extension#getting-started) or run `dbt login` from your terminal, then restart or reload VS Code. The extension detects your login automatically.
 
 ### The dbt extension menu
 
@@ -74,7 +82,7 @@ The dbt extension caches important schema information from your data warehouse t
 
 ## Using the extension
 
-Your dbt environment must be using the dbt Fusion engine in order to use this extension. See [the Fusion documentation](/docs/fusion) for more on eligibility and upgrading.
+Your dbt environment must be using the dbt Fusion engine in order to use this extension. See [the Fusion documentation](/docs/fusion/about-fusion) for more on eligibility and upgrading.
 
 Once installed, the dbt extension automatically activates when you open any `.sql` or `.yml` file inside of a dbt project directory. 
 

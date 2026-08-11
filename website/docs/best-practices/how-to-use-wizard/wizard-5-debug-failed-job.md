@@ -1,5 +1,5 @@
 ---
-title: "Debugging a failed dbt job with dbt Wizard CLI"
+title: "Debugging a failed dbt job with dbt Wizard"
 id: "wizard-5-debug-failed-job"
 description: "Use dbt Wizard CLI to gather job evidence, classify a failure, identify its root cause, and validate a proposed fix."
 sidebar_label: "Debug a failed job"

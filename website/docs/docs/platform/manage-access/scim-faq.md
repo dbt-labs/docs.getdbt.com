@@ -3,9 +3,13 @@ title: "SCIM FAQs and troubleshooting"
 description: "Common questions and troubleshooting for SCIM provisioning in dbt platform"
 id: "scim-faq"
 sidebar: "SCIM FAQ and troubleshooting"
+availability:
+  surface: platform
+  access: paid_plan
+  minPlan: enterprise
 ---
 
-# SCIM FAQs and troubleshooting <Lifecycle status="managed, managed_plus" />
+# SCIM FAQs and troubleshooting
 
 Find answers to common questions about configuring and using SCIM provisioning in <Constant name="dbt_platform" />, plus guidance for resolving common issues.
 

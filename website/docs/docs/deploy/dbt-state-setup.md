@@ -4,6 +4,7 @@ sidebar_label: "Set up dbt State"
 description: "Learn how to install and configure dbt State across dbt Core, dbt platform, and Fusion."
 id: "dbt-state-setup"
 tags: ['dbt State']
+availability: everywhere_usage
 ---
 
 # Setting up dbt State <Lifecycle status="preview" />
@@ -51,7 +52,7 @@ To enable dbt State:
 
 7. Select the jobs to enable dbt State for. You can either enable:
 
-   - **By environment**: Enables dbt State on all existing jobs within the selected environment at once. New deploy jobs created in that environment will have dbt State enabled automatically.
+   - **By environment**: Enables dbt State on all existing jobs within the selected environment at once. New jobs created in that environment will have dbt State enabled automatically.
    - **By specific jobs**: Enables dbt State on individual jobs. To enable it on additional jobs later, refer to [Enabling dbt State on individual jobs](/docs/deploy/dbt-state-enable-jobs).
 
 8. Click **Enable dbt State**.
@@ -75,7 +76,7 @@ For next steps, see:
    dbt login
    ```
 
-   This opens a browser window where you can log in with your <Constant name="dbt_platform" /> account or the [standalone dbt State app](https://app.state.dbt.com). For details on authentication behavior and how it affects [`user_settings.yml`](/reference/global-configs/user-settings), refer to [`dbt login` with dbt State](/reference/commands/login#dbt-login-with-dbt-state).
+   This opens a browser window where you can log in with your <Constant name="dbt_platform" /> account or the [standalone dbt State app](https://app.state.dbt.com). For details on authentication behavior and how it affects [`user_settings.yml`](/reference/global-configs/user-settings), refer to [`dbt login` with dbt State](/reference/commands/login?version=2.0#dbt-login-with-dbt-state).
 
 dbt State is now enabled and will run automatically on every `dbt run` or `dbt build`. 
 
@@ -126,7 +127,7 @@ To see how dbt State optimizes your runs, refer to [dbt State usage examples](/d
 
 ## Configuring lag tolerance
 
-Lag tolerance allows you to set a tolerance level for older data at the project, environment, or model level. We recommend starting with the following Jinja expression:
+Lag tolerance allows you to set a tolerance level for older data at the project, environment, or model level. If not configured, `lag_tolerance` defaults to `45m`. We recommend starting with the following Jinja expression:
 
 <File name="dbt_project.yml">
 
@@ -147,7 +148,7 @@ For more details, refer to the [`lag_tolerance` config reference](/reference/res
 The more team members you have using dbt State, the better it gets; more team members means more opportunities to clone existing nodes rather than rebuilding them.
 
 - **For [standalone app](https://app.state.dbt.com) users**: Click the invite link in the upper-right corner of the **Users** page.
-- **For <Constant name="dbt_platform" /> users**: Have your colleagues run [`dbt login`](/reference/commands/login) after dbt State is enabled on the account.
+- **For <Constant name="dbt_platform" /> users**: Have your colleagues run [`dbt login`](/reference/commands/login?version=2.0) after dbt State is enabled on the account.
 
 ## Debugging dbt State
 
@@ -160,7 +161,7 @@ DBT_ENGINE_MANAGE_STATE=0 dbt run --target dev --select "customers"
 ## Next steps
 
 - [Migrate from state-aware orchestration](/docs/deploy/dbt-state-migration)
-- [`dbt login` with dbt State](/reference/commands/login#dbt-login-with-dbt-state)
+- [`dbt login` with dbt State](/reference/commands/login?version=2.0#dbt-login-with-dbt-state)
 - [Configure deferral](/docs/deploy/dbt-state-deferral)
 - [Non-interactive environment setup](/docs/deploy/dbt-state-cicd)
 - [dbt State configs](/reference/resource-configs/dbt-state-configs)

@@ -4,6 +4,7 @@ id: metricflow-time-spine
 description: "MetricFlow expects a default time spine table called metricflow_time_spine"
 sidebar_label: "MetricFlow time spine"
 tags: [Metrics, Semantic Layer]
+availability: all_users
 ---
 <VersionBlock firstVersion="1.9">
 
@@ -314,7 +315,7 @@ and date_hour < dateadd(day, 30, current_timestamp())
 </VersionBlock>
 
 
-## Custom calendar <Lifecycle status="Preview"/>
+## Custom calendar <Lifecycle status="preview"/>
 
 :::tip
 Check out our mini guide on [how to create a time spine table](/guides/mf-time-spine) to get started!

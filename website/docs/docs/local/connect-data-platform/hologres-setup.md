@@ -11,6 +11,7 @@ meta:
   cloud_support: Not Supported
   platform_name: "Hologres"
   config_page: "/reference/resource-configs/no-configs"
+availability: local_free
 ---
 
 
