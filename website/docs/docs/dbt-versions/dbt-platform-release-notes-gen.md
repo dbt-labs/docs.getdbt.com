@@ -24,6 +24,12 @@ Release notes are grouped by date for single-tenant environments.
 
 ## August 5, 2026
 
+## New
+
+### dbt AI and agents
+
+- **dbt Wizard home tab**: The [<Constant name="wizard" /> home](/docs/platform/wizard-home) tab in the <Constant name="dbt_platform" /> is now available. You can build and change dbt projects through natural language, with inline diffs, DAG previews, and validation built in.
+
 ## Enhancements
 
 ### dbt AI and agents
