@@ -43,7 +43,7 @@ To upgrade later, run `brew upgrade dbt`.
 curl -fsSL https://public.cdn.getdbt.com/fs/install/install.sh | sh -s -- --update
 ```
 
-This installs the dbt binary to a local user directory and adds it to your `$PATH`. See [uninstalling a curl install](#frequently-asked-questions) if you ever need to remove it.
+This installs the dbt binary to `~/.local/bin/dbt` and adds that directory to your `$PATH`. See [uninstalling a curl install](#frequently-asked-questions) if you ever need to remove it.
 
 Close and reopen your terminal (or run `exec $SHELL`) so the new `$PATH` is recognized. 
 
