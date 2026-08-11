@@ -52,28 +52,28 @@ wizard update
 
 ## Uninstall
 
-Run `wizard uninstall` and follow the prompts. <Constant name="wizard" /> checks what's installed on your machine, tells you what it's about to remove, and asks for your approval before touching anything:
+1. Run `wizard uninstall` and follow the prompts. <Constant name="wizard" /> checks what's installed on your machine, tells you what it's about to remove, and asks for your approval before touching anything:
 
-```shell
-wizard uninstall
-```
+    ```shell
+    wizard uninstall
+    ```
 
-If you'd rather remove things yourself (or don't have `sudo` access), run the same two commands directly:
+    - If you'd rather remove things yourself (or don't have `sudo` access), run the same two commands directly:
 
-```shell
-sudo rm -f /usr/local/bin/wizard   # remove the binary
-rm -rf ~/.dbt/wizard                # remove local config, logs, and cache
-```
+    ```shell
+    sudo rm -f /usr/local/bin/wizard   # remove the binary
+    rm -rf ~/.dbt/wizard                # remove local config, logs, and cache
+    ```
 
 :::caution
 Removing `~/.dbt/wizard` deletes your local config, logs, and cache, and can't be undone. Your dbt profiles (`~/.dbt/`) and dbt projects aren't part of <Constant name="wizard" /> and won't be touched. For how conversation history is stored and deleted, refer to [dbt AI FAQs](/docs/dbt-ai/dbt-ai-faqs).
 :::
 
-Confirm the binary is gone by checking your system path:
+2. Confirm the binary is gone by checking your system path:
 
-```bash
-which wizard
-```
+    ```bash
+    which wizard
+    ```
 
 If no output path is returned, <Constant name="wizard" /> is successfully uninstalled.
 
