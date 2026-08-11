@@ -65,7 +65,7 @@ wizard update
     rm -rf ~/.dbt/wizard                # remove local config, logs, and cache
     ```
 
-:::caution
+:::info
 Removing `~/.dbt/wizard` deletes your local config, logs, and cache, and can't be undone. Your dbt profiles (`~/.dbt/`) and dbt projects aren't part of <Constant name="wizard" /> and won't be touched.
 :::
 
