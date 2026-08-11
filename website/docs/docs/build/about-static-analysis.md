@@ -183,7 +183,7 @@ The [`static_analysis`](/reference/resource-configs/static-analysis) config opti
 
 <VersionBlock firstVersion="2.0">
 
-Any run that uses `strict` mode requires authentication using [`dbt login`](/reference/commands/login), whether `strict` is set with the `--static-analysis strict` CLI flag or in `dbt_project.yml`. Unauthenticated runs fall back to `baseline`.
+Any run that uses `strict` mode requires authentication using [`dbt login`](/reference/commands/login?version=2.0), whether `strict` is set with the `--static-analysis strict` CLI flag or in `dbt_project.yml`. Unauthenticated runs fall back to `baseline`.
 
 </VersionBlock>
 

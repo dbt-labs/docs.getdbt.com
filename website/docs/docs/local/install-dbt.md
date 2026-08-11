@@ -29,7 +29,8 @@ To upgrade later, run `python -m pip install --upgrade --pre dbt`.
 <TabItem value="homebrew" label="Homebrew (macOS)">
 
 ```shell
-brew install dbt
+brew tap dbt-labs/dbt
+brew install dbt-labs/dbt/dbt
 ```
 
 To upgrade later, run `brew upgrade dbt`.

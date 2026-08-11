@@ -93,7 +93,7 @@ pip uninstall dbt
 
 4. Clone your repository to your local computer using `git clone`. For example, to clone a GitHub repo using HTTPS format, run `git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY`.
 
-5. After cloning your repo, [configure](/docs/platform/configure-dbt-cli) the <Constant name="platform_cli" /> for your <Constant name="dbt" /> project. This lets you run dbt commands like [`dbt environment show`](/reference/commands/dbt-environment) to view your <Constant name="dbt" /> configuration or `dbt compile` to compile your project and validate models and tests. You can also add, edit, and synchronize files with your repo.
+5. After cloning your repo, [configure](/docs/platform/configure-dbt-cli) the <Constant name="platform_cli" /> for your <Constant name="dbt" /> project. This lets you run dbt commands like [`dbt environment show`](/reference/commands/dbt-environment?version=2.0) to view your <Constant name="dbt" /> configuration or `dbt compile` to compile your project and validate models and tests. You can also add, edit, and synchronize files with your repo.
 
 </TabItem>
 
@@ -127,7 +127,7 @@ Note that if you're using VS Code, you must restart it to pick up modified envir
 
 5. Clone your repository to your local computer using `git clone`. For example, to clone a GitHub repo using HTTPS format, run `git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY`.
 
-6. After cloning your repo, [configure](/docs/platform/configure-dbt-cli) the <Constant name="platform_cli" /> for your <Constant name="dbt" /> project. This lets you run dbt commands like [`dbt environment show`](/reference/commands/dbt-environment) to view your <Constant name="dbt" /> configuration or `dbt compile` to compile your project and validate models and tests. You can also add, edit, and synchronize files with your repo.
+6. After cloning your repo, [configure](/docs/platform/configure-dbt-cli) the <Constant name="platform_cli" /> for your <Constant name="dbt" /> project. This lets you run dbt commands like [`dbt environment show`](/reference/commands/dbt-environment?version=2.0) to view your <Constant name="dbt" /> configuration or `dbt compile` to compile your project and validate models and tests. You can also add, edit, and synchronize files with your repo.
 
 </TabItem>
 
@@ -161,7 +161,7 @@ Advanced users can configure multiple projects to use the same dbt CLI executabl
 
 4. Clone your repository to your local computer using `git clone`. For example, to clone a GitHub repo using HTTPS format, run `git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY`.
 
-5. After cloning your repo, [configure](/docs/platform/configure-dbt-cli) the <Constant name="platform_cli" /> for your <Constant name="dbt" /> project. This lets you run dbt commands like [`dbt environment show`](/reference/commands/dbt-environment) to view your <Constant name="dbt" /> configuration or `dbt compile` to compile your project and validate models and tests. You can also add, edit, and synchronize files with your repo.
+5. After cloning your repo, [configure](/docs/platform/configure-dbt-cli) the <Constant name="platform_cli" /> for your <Constant name="dbt" /> project. This lets you run dbt commands like [`dbt environment show`](/reference/commands/dbt-environment?version=2.0) to view your <Constant name="dbt" /> configuration or `dbt compile` to compile your project and validate models and tests. You can also add, edit, and synchronize files with your repo.
 
 </TabItem>
 
@@ -231,7 +231,7 @@ We recommend using virtual environments (venv) to isolate the `dbt-cli` environm
 
 4. Clone your repository to your local computer using `git clone`. For example, to clone a GitHub repo using HTTPS format, run `git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY`.
 
-5. After cloning your repo, [configure](/docs/platform/configure-dbt-cli) the <Constant name="platform_cli" /> for your <Constant name="dbt" /> project. This lets you run dbt commands like [`dbt environment show`](/reference/commands/dbt-environment) to view your <Constant name="dbt" /> configuration or `dbt compile` to compile your project and validate models and tests. You can also add, edit, and synchronize files with your repo.
+5. After cloning your repo, [configure](/docs/platform/configure-dbt-cli) the <Constant name="platform_cli" /> for your <Constant name="dbt" /> project. This lets you run dbt commands like [`dbt environment show`](/reference/commands/dbt-environment?version=2.0) to view your <Constant name="dbt" /> configuration or `dbt compile` to compile your project and validate models and tests. You can also add, edit, and synchronize files with your repo.
 
 </TabItem>
 

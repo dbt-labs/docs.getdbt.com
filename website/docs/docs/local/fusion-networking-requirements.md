@@ -65,7 +65,7 @@ For supported adapters, refer to [Fusion requirements](/docs/fusion/supported-fe
 
 To suppress these errors without allowlisting the URL, disable telemetry using the options described in [Anonymous usage stats](/reference/global-configs/usage-stats).
 
-## Manifest downloads (dbt platform only) <Lifecycle status="enterprise" /> {#manifest-downloads} 
+## Manifest downloads (dbt platform only) <Lifecycle status="managed" /> {#manifest-downloads} 
 
 For [<Constant name="dbt_platform" />](/docs/platform/about-platform/dbt-platform-features) customers using <Constant name="fusion" /> locally, <Constant name="fusion" /> downloads production manifests from <Constant name="dbt_platform" /> to enable features like [deferral](/reference/node-selection/defer) and [cross-project references](/docs/mesh/govern/project-dependencies). The [cloud storage provider](/docs/platform/about-platform/access-regions-ip-addresses) hosting your <Constant name="dbt_platform" /> cell serves these manifests via **pre-signed URLs**.
 
