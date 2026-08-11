@@ -80,6 +80,12 @@ Depending on your Microsoft Entra ID settings, your App Registration page might 
 7. After registering the new application without specifying a Redirect URI, click on **App registration** and then navigate to the **Authentication** tab for the new application.
 
 8. Click **+ Add platform** and enter a Redirect URI for your application. See step 4 above for more information on the correct Redirect URI value for your <Constant name="dbt" /> application.
+    
+    :::info Platform type
+
+    When selecting the platform type, choose **Web**, not **Single-page application (SPA)**. The <Constant name="dbt" /> SSO integration is a confidential client that redeems the authorization code from the server using a client secret. If you add the **Redirect URI** under **SPA**, Entra ID enforces PKCE and rejects the server-side token exchange, causing sign-in to fail with the error `AADSTS9002325: Proof Key for Code Exchange is required for cross-origin authorization code redemption.`
+
+    :::
 
 <Lightbox src="/img/docs/dbt-platform/dbt-platform-enterprise/azure/azure-redirect-uri.png" title="Configuring a Redirect URI"/>
 
