@@ -50,7 +50,7 @@ Run the following command to update <Constant name="wizard" /> to the latest ver
 wizard update
 ```
 
-## Uninstall dbt Wizard
+## Uninstall
 
 1. Run the built-in uninstall command — it removes the binaries (`dbt-wizard`, `wizard`, `dbt-index`, `dbt-wizard-app-server`) and the `~/.dbt/wizard/` config/data directory:
 
