@@ -377,7 +377,7 @@ Because state comparison is complex, and everyone's project is different, dbt su
 
 Remember that `state:modified` includes _all_ of the criteria above, as well as some extra resource-specific criteria, such as modifying a source's `freshness` or `quoting` rules or an exposure's `maturity` property. (View the source code for the full set of checks used when comparing [sources](https://github.com/dbt-labs/dbt-core/blob/9e796671dd55d4781284d36c035d1db19641cd80/core/dbt/contracts/graph/parsed.py#L660-L681), [exposures](https://github.com/dbt-labs/dbt-core/blob/9e796671dd55d4781284d36c035d1db19641cd80/core/dbt/contracts/graph/parsed.py#L768-L783), and [executable nodes](https://github.com/dbt-labs/dbt-core/blob/9e796671dd55d4781284d36c035d1db19641cd80/core/dbt/contracts/graph/parsed.py#L319-L330).)
 
-`tags` and `meta` are treated as metadata-only fields, not modifications. This applies at both the resource level and the column level. Changing a `tags` or `meta` value (including on individual columns in a yaml file) doesn't trigger `state:modified`, because these fields don't affect how dbt materializes the resource. 
+dbt treats `tags` and `meta` as metadata-only fields, not modifications, at both the resource and column level. Changing a tags or meta value (including on individual columns in a YAML file) doesn't trigger `state:modified`, because these fields don't affect how dbt materializes the resource.
 
 This is different from `description` (for example), which _does_ count as a modification when `persist_docs` is enabled. dbt treats any other config change as a modification, since that config could affect materialization.
 
