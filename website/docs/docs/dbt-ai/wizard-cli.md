@@ -52,22 +52,10 @@ wizard update
 
 ## Uninstall
 
-1. Run the built-in uninstall command. It lists everything it's about to remove and asks you to confirm before deleting anything:
+1. Run the built-in uninstall command. It lists every binary, config, and data directory it's about to remove, then asks you to confirm (`Proceed? [y/N]`) before deleting anything:
 
     ```shell
     wizard system uninstall
-    ```
-
-    ```shell
-    This will remove:
-      /usr/local/bin/dbt-wizard
-      /usr/local/bin/wizard
-      /usr/local/bin/dbt-wizard-app-server
-      /usr/local/bin/dbt-index
-      ~/.dbt/wizard (config directory)
-      ~/Library/Application Support/dbt-wizard (data directory, macOS)
-
-    Proceed? [y/N]:
     ```
 
 :::info Uninstalling Wizard
