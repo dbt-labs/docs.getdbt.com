@@ -312,7 +312,7 @@ The self-hosted dbt-mcp supports all flavors of dbt, including <Constant name="c
 | Environment variable | Required | Description | Example |
 | --- | --- | --- | --- |
 | `DBT_PROJECT_DIR` | Required | The full path to where the repository of your dbt project is hosted locally. This is the folder containing your `dbt_project.yml` file. | macOS/Linux: `/Users/myname/reponame`<br/>Windows: `C:/Users/myname/reponame` |
-| `DBT_PATH` | Required | The full path to your dbt executable (<Constant name="core" />/<Constant name="fusion" />/<Constant name="cloud_cli" />). See the next section for how to find this. | macOS/Linux: `/opt/homebrew/bin/dbt`<br/>Windows: `C:/Python39/Scripts/dbt.exe` |
+| `DBT_PATH` | Required | The full path to your dbt executable (<Constant name="core" />/<Constant name="fusion" />/<Constant name="platform_cli" />). See the next section for how to find this. | macOS/Linux: `/opt/homebrew/bin/dbt`<br/>Windows: `C:/Python39/Scripts/dbt.exe` |
 | `DBT_CLI_TIMEOUT` | Optional | Configure the number of seconds before your agent will timeout dbt commands. | Defaults to 60 seconds. |
 
 ### Locating your `DBT_PATH`
@@ -367,7 +367,7 @@ All tools are available by default. Set any of these to `true` to turn off a too
 
 | Name | Default | Description |
 | --- | --- | --- |
-| `DISABLE_DBT_CLI` | `false` | Disable <Constant name="core" />, <Constant name="cloud_cli" />, and dbt <Constant name="fusion" /> MCP tools. |
+| `DISABLE_DBT_CLI` | `false` | Disable <Constant name="core" />, <Constant name="platform_cli" />, and dbt <Constant name="fusion" /> MCP tools. |
 | `DISABLE_SEMANTIC_LAYER` | `false` | Disable dbt Semantic Layer MCP tools. |
 | `DISABLE_DISCOVERY` | `false` | Disable dbt Discovery API MCP tools. |
 | `DISABLE_ADMIN_API` | `false` | Disable dbt Administrative API MCP tools. |
