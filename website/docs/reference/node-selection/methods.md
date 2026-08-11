@@ -379,7 +379,7 @@ Remember that `state:modified` includes _all_ of the criteria above, as well as 
 
 `tags` and `meta` are treated as metadata-only fields, not modifications. This applies at both the resource level and the column level. Changing a `tags` or `meta` value (including on individual columns in a yaml file) doesn't trigger `state:modified`, because these fields don't affect how dbt materializes the resource. 
 
-This is different from `description` (for example), which _does_ count as a modification when `persist_docs` is enabled (refer to `state:modified.persisted_descriptions` above). Any other config change is treated as a modification, since that config could affect materialization.
+This is different from `description` (for example), which _does_ count as a modification when `persist_docs` is enabled. dbt treats any other config change as a modification, since that config could affect materialization.
 
 There are two additional `state` selectors that complement `state:new` and `state:modified` by representing the inverse of those functions:
 - `state:old` &mdash; A node with the same `unique_id` exists in the comparison manifest
