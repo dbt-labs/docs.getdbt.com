@@ -58,12 +58,12 @@ wizard update
   wizard uninstall
   ```
 
-  - If you'd rather remove things yourself (or don't have `sudo` access), run the same two commands directly:
-  
-  ```shell
-  sudo rm -f /usr/local/bin/wizard   # remove the binary
-  rm -rf ~/.dbt/wizard                # remove config, chat history, logs, and cache
-  ```
+    - If you'd rather remove things yourself (or don't have `sudo` access), run the same two commands directly:
+    
+    ```shell
+    sudo rm -f /usr/local/bin/wizard   # remove the binary
+    rm -rf ~/.dbt/wizard                # remove config, chat history, logs, and cache
+    ```
 
 :::caution
 Removing `~/.dbt/wizard` is irreversible. Your dbt profiles (`~/.dbt/`) and dbt projects aren't part of <Constant name="wizard" /> and won't be touched.
