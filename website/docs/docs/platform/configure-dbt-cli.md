@@ -46,7 +46,7 @@ Once you install the <Constant name="platform_cli" />, you need to configure it 
         project-id: PROJECT_ID
     ```
 
-5. You should now be able to [use the <Constant name="dbt_cli"/>](#use-the-dbt-cli) and run [dbt commands](/reference/dbt-commands) like [`dbt environment show`](/reference/commands/dbt-environment?version=2.0) to view your <Constant name="dbt" /> configuration details or `dbt compile` to compile models in your dbt project.
+5. You should now be able to [use the <Constant name="platform_cli"/>](#use-the-dbt-cli) and run [dbt commands](/reference/dbt-commands) like [`dbt environment show`](/reference/commands/dbt-environment?version=2.0) to view your <Constant name="dbt" /> configuration details or `dbt compile` to compile models in your dbt project.
 
 With your repo recloned, you can add, edit, and sync files with your repo.
 
