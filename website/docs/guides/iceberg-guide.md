@@ -185,7 +185,7 @@ In the AWS console:
 
 1. Navigate to **IAM → Roles → Create role**.
 2. **Trusted entity type**: choose **AWS account**.
-3. Select **This account (`<AWS_ACCOUNT_ID>`)**. Leave "Require external ID" **unchecked**. (This is a throwaway trust; you'll replace it in Part 3.)
+3. Select **This account (`<AWS_ACCOUNT_ID>`)**. Leave both **"Require external ID"** and **"Require MFA"** **unchecked**. (This is a throwaway trust; you'll replace it in Part 3.)
 4. Click **Next**. On the permissions page, search for and check **`snowflake-iceberg-policy`**.
 5. Click **Next**, name the role **`snowflake-iceberg-role`**, and **Create role**.
 6. Open the new role and copy its **ARN** (`arn:aws:iam::<AWS_ACCOUNT_ID>:role/snowflake-iceberg-role`) — you'll need it next.
@@ -274,7 +274,7 @@ curl -s "https://<ACCOUNT_IDENTIFIER>.snowflakecomputing.com/polaris/api/catalog
 --data-urlencode 'scope=session:role:TRANSFORMER'
 ```
 
- A JSON response containing `"access_token"` means you're good. If you see `Programmatic access token is invalid`, re-copy the token. If you see an error mentioning a network policy, see the [FAQ](#FAQ).
+ A JSON response containing `"access_token"` means you're good. If you see `Programmatic access token is invalid`, re-copy the token. **If you see an error mentioning a network policy, see the [FAQ](#FAQ)**. Some Snowflake accounts require a network policy before a PAT can be created or used.
 
 ## Part 5: Load the seed data {#load-seed-data}
 
@@ -287,6 +287,17 @@ dbt deps
 dbt seed --target prod
 ```
 
+:::info First seed only
+The project's `on-run-start` hook (`insert_freshness_heartbeat()`) queries a raw source table that doesn't exist until the seeds load, so the **first** `dbt seed` fails with `Object 'DBT_ICEBERG.RAW.RAW_STORES' does not exist`. Before your first seed, comment out the `on-run-start` block in `dbt_project.yml`:
+
+```yaml
+# on-run-start:
+#   - "{{ insert_freshness_heartbeat() }}"
+```
+
+Uncomment it once the seeds exist.
+:::
+
 This loads `raw_customers`, `raw_orders`, `raw_items`, `raw_products`, `raw_stores`, `raw_supplies`, and `raw_tweets` into `DBT_ICEBERG.RAW` as regular Snowflake tables. (We use the `prod` target — you'll define it in the next section. If you haven't set up `profiles.yml` yet, do Part 6 first, then come back and run this.)
 
 **Why `prod` and not `dev`?** This project's `stg_orders` model applies a `limit_in_dev` macro that filters orders to the last year **whenever the target is named `dev`**. The seed data is historical, so building on `dev` yields an **empty** `stg_orders` (and therefore empty `orders`). Building on any non-`dev` target skips that filter and gives you the full dataset. See the [FAQ](#FAQ) for more information.
@@ -298,6 +309,8 @@ This loads `raw_customers`, `raw_orders`, `raw_items`, `raw_products`, `raw_stor
 Create/edit `~/.dbt/profiles.yml`. Define three targets: `dev` and `prod` (both Snowflake) and `duckdb` (the offload). Paste your PAT into `client_secret`.
 
 _You can, optionally, run `dbt init` to generate the `profiles.yml` in the proper location and configure the Snowflake profile._
+
+If you already have a `~/.dbt/profiles.yml`, add the `jaffle_shop` profile below **before** running any commands. On an existing config, `dbt init` may not surface a `prod` target and later steps will fail to find it.
 
 ```yaml
 jaffle_shop:
@@ -342,6 +355,17 @@ jaffle_shop:
 ```
 
 The Fusion project's `dbt_project.yml` sets `profile: default`. Either rename the profile key above to `default`, or set `profile: jaffle_shop`. Keep it consistent.
+
+:::note If `externalbrowser` fails** 
+
+For example `390190 (08004) ... SAML Identity Provider account parameter`, swap it for password auth on the `dev` and `prod` targets and keep the secret out of the file with an environment variable:
+
+```yaml
+# authenticator: externalbrowser
+password: "{{ env_var('SNOWFLAKE_PASSWORD') }}"
+```
+
+:::
 
 ### 6.2 `catalogs.yml`
 
