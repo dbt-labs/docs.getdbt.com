@@ -52,21 +52,26 @@ wizard update
 
 ## Uninstall
 
-1. Run `wizard uninstall` and follow the prompts. <Constant name="wizard" /> checks what's installed on your machine, tells you what it's about to remove, and asks for your approval before touching anything:
+1. Run the built-in uninstall command. It lists everything it's about to remove and asks you to confirm before deleting anything:
 
     ```shell
-    wizard uninstall
+    wizard system uninstall
     ```
 
-    - If you'd rather remove things yourself (or don't have `sudo` access), run the same two commands directly:
-
     ```shell
-    sudo rm -f /usr/local/bin/wizard   # remove the binary
-    rm -rf ~/.dbt/wizard                # remove local config, logs, and cache
+    This will remove:
+      /usr/local/bin/dbt-wizard
+      /usr/local/bin/wizard
+      /usr/local/bin/dbt-wizard-app-server
+      /usr/local/bin/dbt-index
+      ~/.dbt/wizard (config directory)
+      ~/Library/Application Support/dbt-wizard (data directory, macOS)
+
+    Proceed? [y/N]:
     ```
 
 :::caution
-Removing `~/.dbt/wizard` deletes your local config, logs, and cache, and can't be undone. Your dbt profiles (`~/.dbt/`) and dbt projects aren't part of <Constant name="wizard" /> and won't be touched. For how conversation history is stored and deleted, refer to [dbt AI FAQs](/docs/dbt-ai/dbt-ai-faqs).
+This can't be undone. Your dbt profiles (`~/.dbt/`) and dbt projects aren't part of <Constant name="wizard" /> and won't be touched. For how conversation history is stored and deleted, refer to [dbt AI FAQs](/docs/dbt-ai/dbt-ai-faqs).
 :::
 
 2. Confirm the binary is gone by checking your system path:
