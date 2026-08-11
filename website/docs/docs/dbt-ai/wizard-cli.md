@@ -52,7 +52,7 @@ wizard update
 
 ## Uninstall
 
-1. Run the built-in uninstall command. It lists every binary, config, and data directory it's about to remove, then asks you to confirm (`Proceed? [y/N]`) before deleting anything:
+1. Run the built-in uninstall command. It lists every binary, config, and data directory it's about to remove, then asks you to confirm (`Proceed? [Y/N]`) before deleting anything:
 
     ```shell
     wizard system uninstall
