@@ -4,7 +4,7 @@ id: "require_resource_names_without_plus_prefix"
 sidebar_label: "require resource names without plus prefix"
 ---
 
-:::info Fusion-only flag
+:::info <Constant name="fusion" />-only flag
 
 This behavior change flag is specific to <Constant name="fusion" /> and has no equivalent in <Constant name="core" />.
 
@@ -32,7 +32,7 @@ When the flag is set to `true`, dbt treats a `+`-prefixed key as an unrecognized
 
 ```shell
 
-[error] [SerializationError (dbt1013)]: Invalid model definition `snapshot_contract.+path_1`: unrecognized key `snapshot_contract.+path_1`. Custom keys must go under `+meta`.
+[error] [SerializationError (dbt1013)]: Invalid model definition `snapshot_contract.+path_1`: Unrecognized key `snapshot_contract.+path_1`. Custom keys must go under `+meta`.
 
 ```
 
