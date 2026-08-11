@@ -12,7 +12,7 @@ The <Constant name="dbt_platform" /> can connect with a variety of data platform
 
 <VersionBlock firstVersion="2.0">
 
-For most supported data platforms, we recommend the v2 experience with <Constant name="fusion"/> which supports the following data platforms:
+For most supported data platforms, we recommend the v2 experience with <Constant name="fusion"/>, which supports the following data platforms:
 
 <SimpleTable>
 
