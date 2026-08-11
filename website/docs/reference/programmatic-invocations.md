@@ -94,7 +94,7 @@ Each command returns a `dbtRunnerResult` object with the following attributes:
 - `success` (bool): Whether the command succeeded.
 - `result`: When the command completes (successfully or with handled errors), it returns the command's result(s). The return type varies by command.
 - `exception`: When the dbt invocation encounters an unhandled error and does not complete, the exception that was raised.
-- `catalog`(v2 only): The catalog that the command produces when you request catalog generation. 
+- `catalog` (v2 only): The catalog that the command produces when you request catalog generation. 
 
 <VersionBlock firstVersion="2.0">
 
@@ -103,7 +103,7 @@ The v2 engine is implemented in Rust, so `exception` no longer contains the exac
 - If the invocation fails at a foreign function interface (FFI) boundary before the engine picks up the invocation, `exception` contains an unwrapped exception type, such as `ValueError` or `RuntimeError`.
 - If the invocation fails inside the engine, `exception` is a `DbtRunnerError`.
 
-V2 also adds a top-level `catalog` attribute to `dbtRunnerResult` when catalog generation is requested.
+v2 also adds a top-level `catalog` attribute to `dbtRunnerResult` when catalog generation is requested.
 
 In v1, `catalog.json` was only created when you ran `dbt docs generate`. In v2, you can generate the catalog as part of any command by passing the [`--write-catalog` flag](/reference/commands/cmd-docs?version=2.0#--write-catalog-flag). For example, `dbt run --write-catalog` populates both `dbtRunnerResult.result` and `dbtRunnerResult.catalog`.
 
