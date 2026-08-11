@@ -54,9 +54,9 @@ wizard update
 
 1. Run `wizard uninstall` and follow the prompts. <Constant name="wizard" /> checks what's installed on your machine, tells you what it's about to remove, and asks for your approval before touching anything:
 
-  ```shell
-  wizard uninstall
-  ```
+    ```shell
+    wizard uninstall
+    ```
 
     - If you'd rather remove things yourself (or don't have `sudo` access), run the same two commands directly:
     
@@ -71,9 +71,9 @@ Removing `~/.dbt/wizard` is irreversible. Your dbt profiles (`~/.dbt/`) and dbt 
 
 2. Confirm the binary is gone by checking your system path:
 
-  ```bash
-  which wizard
-  ```
+    ```bash
+    which wizard
+    ```
 
 If no output path is returned, <Constant name="wizard" /> is successfully uninstalled.
 
