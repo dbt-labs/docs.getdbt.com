@@ -38,7 +38,7 @@ When the flag is set to `true`, dbt treats a `+`-prefixed key as an unrecognized
 
 To resolve the warning or error, remove the `+` prefix from any folder or file name in `dbt_project.yml`. If you intended the key to set a config, add the `+` prefix to the config name instead. For custom keys, nest them under [`+meta`](/reference/resource-configs/meta).
 
-For example, rename the resource path so it doesn't start with `+`:
+For example, name the resource path so it doesn't start with `+`:
 
 <File name="dbt_project.yml">
 
