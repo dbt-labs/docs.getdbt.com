@@ -1,22 +1,24 @@
 ---
-title: "Iceberg setup guide"
+title: "Get started with Iceberg and local compute"
 id: "iceberg"
 time_to_complete: '60 minutes' 
 level: 'Advanced'
 icon: 'zap'
 hide_table_of_contents: true
-tags: ['dbt Fusion engine', 'Snowflake','Iceberg']
+tags: ['dbt Fusion engine','Snowflake','Iceberg','DuckDB']
 recently_updated: true
 ---
 
-## Offloading dbt compute to DuckDB with Snowflake-managed Apache Iceberg
+# Offloading dbt compute to DuckDB with Snowflake-managed Apache Iceberg
 
 By the end of this guide, your `fusion-jaffle-shop` project will transform data in two different engines against one shared set of tables:
 
 - **Snowflake:** Builds your raw and staging layers as Snowflake-managed Apache Iceberg tables, registered in Snowflake's built-in Horizon catalog.
 - **DuckDB:** Reads those exact same Iceberg tables through Horizon's open Iceberg REST catalog, builds a downstream model (`orders`), and writes the result *back* as an Iceberg table in the same catalog.
 
-The DuckDB step is the interesting part. Because Iceberg is an open table format and Horizon speaks the open Iceberg REST protocol, an external engine like DuckDB can operate on your governed Snowflake tables _without spinning up a Snowflake virtual warehouse_. The transformation runs in a local DuckDB process (embedded in the dbt Fusion engine); Snowflake only serves catalog metadata and vends short-lived storage credentials. The data itself lives in your own S3 bucket the whole time.
+The DuckDB step is the interesting part. Because Iceberg is an open table format and Horizon speaks the open Iceberg REST protocol, an external engine like DuckDB can operate on your governed Snowflake tables _without spinning up a Snowflake virtual warehouse_. 
+
+The transformation runs in a local DuckDB process (embedded in the dbt Fusion engine); Snowflake only serves catalog metadata and vends short-lived storage credentials. The data itself lives in your own S3 bucket the whole time.
 
 Why that's a big deal:
 
@@ -25,6 +27,15 @@ Why that's a big deal:
 - **Governance stays put**: The tables are still first-class Snowflake objects. They show up in the catalog, honor grants, and can carry masking/row policies and lineage — even the ones DuckDB wrote.
 
 This is the foundation of cross-platform [dbt Mesh](https://docs.getdbt.com/docs/mesh/cross-platform-mesh): one project, one catalog, many engines.
+
+## Notes about this guide
+
+Before you begin, there are a few considerations:
+
+- This is an advanced guide and assumes that you have fundamental knowledge of dbt, Snowflake, DuckDB, related tools, and how to install them.
+- While dbt handles SQL transformations with grace, some of the tools used in this guide are very specific about the language they can accept. We highly recommend you remove code comments from examples in this guide before using them in a live environment.
+- The demo project used is a feature rich example of the existing Jaffle Shop project. This is to demonstrate some of the considerations you'll need to make in your own projects as you implement these workflows. To ensure a smooth outcome, we recommend you use the project link in this guide and not any other existing Jaffle Shop projects. 
+- If you are using a Snowflake account that has not been configured for Python (for example, a brand new trial account), you may run into errors with the Python models in the dbt project. Deleting them for the duration of this guide will remove those errors (thought there will be some non-blocking warnings).
 
 ## Prerequisites
 
@@ -60,20 +71,24 @@ Throughout this guide, replace these placeholders with your own values:
 - `<YOUR_USER>`: Your Snowflake login username.
 - `<REGION>`: The AWS region for your bucket. This guide uses `us-east-2`; use whatever is closest to your Snowflake account's region.
 
-**Terminology:** throughout, "the platform" refers to the dbt platform running the dbt Fusion engine. This guide is Fusion / dbt Core v2 only. The `catalogs.yml` mechanism it relies on is not available in the legacy Python `dbt-duckdb` adapter.
+This guide is for v2 only. The `catalogs.yml` mechanism it relies on is not available in the legacy Python `dbt-duckdb` adapter.
 
 ## The project
 
 This guide will use a heavily augmented copy of the traditional Jaffle Shop project. The project itself contains more information than required to simply setup an Iceberg workflow, so you can use it to run more trials and observe results. 
 
-You can find the project [here](https://github.com/matthewshaver/fusion-jaffle-shop)
+Clone the [`fusion-jaffle-shop` project](https://github.com/matthewshaver/fusion-jaffle-shop) from GitHub:
 
-Run `dbt init` and configure the project to connect to your Snowflake account using the following:
-- **Warehouse:** COMPUTE_WH
-- **Database:** DBT_ICEBERG
-- **Schema:** RAW
+```bash
+git clone https://github.com/matthewshaver/fusion-jaffle-shop.git
+```
 
-This guide assumes you have fundamental knowledge of how to install and run the dbt Fusion engine from a local CLI, create objects in Snowflake, and install DuckDB, but some sections will provide copy and paste instructions for portions of the setup.
+Then navigate into the project directory:
+
+```bash
+cd fusion-jaffle-shop
+```
+
 
 ## Part 1: Set up the Snowflake account {#set-up-snowflake}
 
