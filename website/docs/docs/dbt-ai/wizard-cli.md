@@ -70,8 +70,8 @@ wizard update
     Proceed? [y/N]:
     ```
 
-:::caution
-This can't be undone. Your dbt profiles (`~/.dbt/`) and dbt projects aren't part of <Constant name="wizard" /> and won't be touched. For how conversation history is stored and deleted, refer to [dbt AI FAQs](/docs/dbt-ai/dbt-ai-faqs).
+:::info Uninstalling Wizard
+Removing `~/.dbt/wizard` deletes your local config, logs, and cache, and can't be undone. Your dbt profiles (`~/.dbt/`) and dbt projects aren't part of <Constant name="wizard" /> and won't be touched.
 :::
 
 2. Confirm the binary is gone by checking your system path:
