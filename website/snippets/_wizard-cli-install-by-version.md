@@ -9,6 +9,8 @@ Install <Constant name="wizard"/> as `wizard` on your `PATH` using the curl scri
 curl -fsSL https://public.cdn.getdbt.com/dbt-wizard/install/install-wizard.sh | sh
 ```
 
+This installs <Constant name="wizard"/> and its supporting binaries to your local `$PATH`. See [Uninstall](/docs/dbt-ai/wizard-cli#uninstall) if you ever need to remove them.
+
 </TabItem>
 <TabItem value="windows" label="Windows">
 

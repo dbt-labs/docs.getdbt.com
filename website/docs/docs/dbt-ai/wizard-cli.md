@@ -55,7 +55,7 @@ wizard update
 1. Run the built-in uninstall command — it removes the binaries (`dbt-wizard`, `wizard`, `dbt-index`, `dbt-wizard-app-server`) and the `~/.dbt/wizard/` config/data directory:
 
   ```shell
-  wizard system uninstall
+  wizard uninstall
   ```
 
 2. Confirm when prompted, or skip the prompt with `--force`.
