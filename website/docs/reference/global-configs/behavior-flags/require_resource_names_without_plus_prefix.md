@@ -12,7 +12,7 @@ This behavior change flag is specific to <Constant name="fusion" /> and has no e
 
 | require_resource_names_without_plus_prefix | <Constant name="fusion" /> |
 |-----------------|------------------|
-| Introduced | 2.0.0-preview.203 |
+| Introduced | 2.0.0-preview.208 |
 | Matured (default → `true`) | — |
 | Removed | — |
 
