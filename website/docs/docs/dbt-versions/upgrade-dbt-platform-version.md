@@ -71,7 +71,7 @@ When you're ready to upgrade your project(s) to <Constant name="fusion_engine" /
 To take advantage of the upgrade assistant, you'll need to meet the following prerequisites:
 - Your dbt project must be updated to use the **Latest** release track.
 - You must have a `developer` license.
-- You must have the <Constant name="Fusion" /> beta enabled for your account. For more information, please contact your account manager. 
+- You must have the <Constant name="fusion" /> beta enabled for your account. For more information, please contact your account manager. 
 
 #### Assign access to upgrade
 
@@ -120,7 +120,7 @@ To begin the process of upgrading to <Constant name="fusion" /> with the assista
 
   <Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/choosing-dbt-version/autofix-success.png" width="60%" title="You're now ready to upgrade to Fusion in your development environment!"/>
 
-Now that you've upgraded your development environment to <Constant name="Fusion" />, you're ready to start the process of upgrading your Production, Staging, and General environments. Follow your organization's standard procedures and use the [release tracks](#release-tracks) to upgrade.
+Now that you've upgraded your development environment to <Constant name="fusion" />, you're ready to start the process of upgrading your Production, Staging, and General environments. Follow your organization's standard procedures and use the [release tracks](#release-tracks) to upgrade.
 
 import FusionReadinessPanel from '/snippets/_fusion-migration-readiness-panel.md';
 
