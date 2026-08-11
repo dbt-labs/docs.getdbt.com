@@ -7,7 +7,7 @@ description: "Configure user-scoped dbt settings in ~/.dbt/user_settings.yml."
 
 `~/.dbt/user_settings.yml` is a user-scoped configuration file for personal dbt preferences. Because it always lives at `~/.dbt/`, it applies globally across all projects on your machine, regardless of which project you're running or where your `profiles.yml` is located.
 
-Today, `user_settings.yml` is primarily written by [`dbt login`](/reference/commands/login#dbt-login-with-dbt-state) to configure [dbt State](/docs/deploy/dbt-state-about) locally (`manage_state`). dbt may add other user-scoped flags to this file over time.
+Today, `user_settings.yml` is primarily written by [`dbt login`](/reference/commands/login?version=2.0#dbt-login-with-dbt-state) to configure [dbt State](/docs/deploy/dbt-state-about) locally (`manage_state`). dbt may add other user-scoped flags to this file over time.
 
 Settings in this file are separate from project-level configuration ([`dbt_project.yml`](/reference/dbt_project.yml)) and connection configuration ([`profiles.yml`](/docs/local/profiles.yml)). Use this file for preferences that belong to you, not the project, as an alternative to setting environment variables or populating an `.env` file.
 
@@ -22,7 +22,7 @@ flags:
 
 Some dbt commands write to this file automatically. You can also edit it manually.
 
-When you run [`dbt login`](/reference/commands/login#dbt-login-with-dbt-state), both authentication paths write to `user_settings.yml`:
+When you run [`dbt login`](/reference/commands/login?version=2.0#dbt-login-with-dbt-state), both authentication paths write to `user_settings.yml`:
 
 - **Log in with your <Constant name="dbt_platform" /> account**
   - In the <Constant name="fusion_engine" />, the CLI prompts you before writing to `user_settings.yml`.
@@ -30,7 +30,7 @@ When you run [`dbt login`](/reference/commands/login#dbt-login-with-dbt-state), 
   - Setting `manage_state: true` enables dbt State locally on every `dbt run` or `dbt build`.
 - **Log in with the standalone dbt State app**: After you create an account, dbt automatically enables dbt State locally in `user_settings.yml`.
 
-If `user_settings.yml` already contains a value, [`dbt login`](/reference/commands/login#dbt-login-with-dbt-state) prompts you before overwriting it.
+If `user_settings.yml` already contains a value, [`dbt login`](/reference/commands/login?version=2.0#dbt-login-with-dbt-state) prompts you before overwriting it.
 
 ## Config precedence
 
