@@ -34,7 +34,7 @@ Both experiences are controlled by a single AI toggle in **Account settings**.
 
 ## Prerequisites
 
-- Must have a [<Constant name="dbt_platform account" /> on Starter, Enterprise, or Enterprise+ plans](https://www.getdbt.com/pricing).
+- Must have a [<Constant name="dbt_platform" /> account on Starter, Enterprise, or Enterprise+ plans](https://www.getdbt.com/pricing).
   - Certain features like [natural prompts in Canvas](/docs/platform/build-canvas-copilot) are only available on Enterprise and Enterprise+ plans.
 - Development environment is on a supported [release track](/docs/dbt-versions/dbt-release-tracks) to receive ongoing updates.
 - Opt-in to AI features by following the steps in the next section in your **Account settings**.
