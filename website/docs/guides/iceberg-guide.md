@@ -1,5 +1,5 @@
 ---
-title: "Get started with Iceberg and local compute"
+title: "Get hands-on with Apache Iceberg and local compute"
 id: "iceberg"
 time_to_complete: '60 minutes' 
 level: 'Advanced'
@@ -9,7 +9,7 @@ tags: ['dbt Fusion engine','Snowflake','Iceberg','DuckDB']
 recently_updated: true
 ---
 
-# Offloading dbt compute to DuckDB with Snowflake-managed Apache Iceberg
+## Offloading dbt compute to DuckDB with Snowflake-managed Apache Iceberg
 
 By the end of this guide, your `fusion-jaffle-shop` project will transform data in two different engines against one shared set of tables:
 
@@ -33,7 +33,7 @@ This is the foundation of cross-platform [dbt Mesh](https://docs.getdbt.com/docs
 Before you begin, there are a few considerations:
 
 - This is an advanced guide and assumes that you have fundamental knowledge of dbt, Snowflake, DuckDB, related tools, and how to install them.
-- While dbt handles SQL transformations with grace, some of the tools used in this guide are very specific about the language they can accept. We highly recommend you remove code comments from examples in this guide before using them in a live environment.
+- While dbt handles SQL transformations with grace, some of the tools used in this guide are very specific about the syntax they accept. We highly recommend you remove code comments from examples in this guide before using them in a live environment.
 - The demo project used is a feature rich example of the existing Jaffle Shop project. This is to demonstrate some of the considerations you'll need to make in your own projects as you implement these workflows. To ensure a smooth outcome, we recommend you use the project link in this guide and not any other existing Jaffle Shop projects. 
 - If you are using a Snowflake account that has not been configured for Python (for example, a brand new trial account), you may run into errors with the Python models in the dbt project. Deleting them for the duration of this guide will remove those errors (thought there will be some non-blocking warnings).
 
