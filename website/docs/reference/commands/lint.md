@@ -1,7 +1,7 @@
 ---
 title: "About dbt lint command"
 sidebar_label: "lint"
-description: "Use dbt lint to check your SQL files for style, correctness, and convention violations using your `.sqlfluff` config and SQLFluff rule codes."
+description: "Use dbt lint to check your SQL files for style, correctness, and convention violations using your .sqlfluff config and SQLFluff rule codes."
 id: "lint"
 availability:
   engine: v2
@@ -9,12 +9,12 @@ availability:
 
 # About dbt lint command <Lifecycle status="beta" />
 
-`dbt lint` is a high-performance SQL linter built into the dbt platform. It is SQLFluff-compatible: it reads your `.sqlfluff` config, uses the same rule codes (for example, `CP01`, `RF03`), and respects `-- noqa` suppression comments. Compatible does not mean identical. `dbt lint` and SQLFluff can still return different results for the same file and config.
+`dbt lint` is a high-performance SQL linter built into the dbt platform. It is SQLFluff-compatible: it reads your `.sqlfluff` config, uses the same rule codes (for example, `CP01`, `RF03`), and respects `-- noqa` suppression comments. Compatible does not mean identical: `dbt lint` and SQLFluff can return different results for the same file and config. Refer to [Rule parity with SQLFluff](#rule-parity-with-sqlfluff).
 
 You can use your existing SQLFluff config with minimal changes. dbt Labs intends to track the latest SQLFluff rule spec going forward.
 
 :::note
-`dbt lint` is part of the <Constant name="fusion_engine" />. It is not the same as `dbt sqlfluff lint` on the <Constant name="platform_cli" />. For SQLFluff on the platform CLI, see [Configure the dbt CLI](/docs/platform/configure-dbt-cli). [Linting in Studio IDE](/docs/platform/studio-ide/lint-format) continues to use SQLFluff at this time.
+`dbt lint` is part of the <Constant name="fusion_engine" />. It is not the same as `dbt sqlfluff lint` on the <Constant name="platform_cli" />. For SQLFluff on the platform CLI, see [Configure the dbt CLI](/docs/platform/configure-dbt-cli). [Linting in Studio IDE](/docs/platform/studio-ide/lint-format) continues to use SQLFluff.
 :::
 
 ## Benchmarks
@@ -99,13 +99,17 @@ dbt fmt [FILE] [flags]
 
 `[FILE]` is optional. When omitted, `dbt format` formats all SQL files in your project.
 
+## Rule parity with SQLFluff
+
+`dbt lint` aims for high overlap with SQLFluff, but it doesn't guarantee rule-for-rule parity, and small differences will always exist. Layout and indentation rules, such as `LT02`, are one known area of difference.
+
+Because [linting in the <Constant name="studio_ide" />](/docs/platform/studio-ide/lint-format) still uses SQLFluff, <Constant name="studio_ide" /> **Lint file** and `dbt lint` can report different violations for the same project code. Similarly, CI jobs on a <Constant name="fusion" /> version invoke `dbt lint` instead of SQLFluff, so results from [CI jobs](/docs/deploy/continuous-integration#sql-linting) can differ from your SQLFluff results.
+
+If you need SQLFluff behavior, you can either lint in the <Constant name="studio_ide" />, which continues to run SQLFluff, or run SQLFluff locally using the standalone <Constant name="core" /> engine templater. Refer to [<Constant name="fusion" /> limitations](/docs/fusion/supported-features#limitations) for more information.
+
 ## Beta limitations
 
 Keep these limitations in mind:
-
-### Rule parity with SQLFluff
-
-`dbt lint` aims for high overlap with SQLFluff, but it does not guarantee rule-for-rule parity. Small differences can still appear, including layout and indentation rules such as `LT02`. Because [linting in the <Constant name="studio_ide" />](/docs/platform/studio-ide/lint-format) still uses SQLFluff, <Constant name="studio_ide" /> **Lint** and `dbt lint` can disagree on the same project code. If you need exact SQLFluff behavior today, continue using SQLFluff in the <Constant name="studio_ide" /> or with the <Constant name="platform_cli" /> alongside <Constant name="fusion" />.
 
 ### Rules without autofix
 
