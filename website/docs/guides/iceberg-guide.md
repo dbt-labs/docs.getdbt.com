@@ -9,7 +9,7 @@ tags: ['dbt Fusion engine','Snowflake','Iceberg','DuckDB']
 recently_updated: true
 ---
 
-## Offloading dbt compute to DuckDB with Snowflake-managed Apache Iceberg
+## Offload dbt compute to DuckDB with Iceberg
 
 By the end of this guide, your `fusion-jaffle-shop` project will transform data in two different engines against one shared set of tables:
 
