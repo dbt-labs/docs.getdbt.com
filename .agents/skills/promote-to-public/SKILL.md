@@ -31,7 +31,7 @@ Before doing anything, check:
 
 3. Capture the current branch name: `git branch --show-current`. This is `PRIVATE_BRANCH`.
 
-4. Look up the docs-internal PR number for this branch — the public PR will reference it so the docs-internal PR can close automatically once the public PR merges:
+4. Look up the docs-internal PR number for this branch as the public PR will reference it so the docs-internal PR can close automatically once the public PR merges:
    ```bash
    gh pr view PRIVATE_BRANCH --repo dbt-labs/docs-internal --json number --jq .number
    ```
