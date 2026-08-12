@@ -24,6 +24,12 @@ Release notes are grouped by date for single-tenant environments.
 
 ## August 5, 2026
 
+## New
+
+### dbt AI and agents
+
+- **dbt Wizard home tab**: [The <Constant name="wizard"/> home tab in <Constant name="dbt_platform"/>](/docs/platform/wizard-home) is now available in public preview. You can build and change dbt projects through natural language, with inline diffs, DAG previews, and validation built in.
+
 ## Enhancements
 
 ### dbt AI and agents
@@ -39,10 +45,6 @@ Release notes are grouped by date for single-tenant environments.
 ### Catalog
 
 - **30-day model staleness removed from health criteria**: Models are no longer flagged as unhealthy solely because they have not been rebuilt in the past 30 days. The "Stale state" warning banner no longer appears on resource detail pages, and models whose only health issue was staleness now show as healthy in the Trust Signals badge. Source staleness is unchanged and continues to surface as a health issue for sources.
-
-### dbt AI and agents
-
-- **Global dbt Wizard navigation generally available (GA)**: The global dbt Wizard navigation item is now generally available.
 
 ## July 29, 2026
 

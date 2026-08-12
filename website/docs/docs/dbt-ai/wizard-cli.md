@@ -50,16 +50,23 @@ Run the following command to update <Constant name="wizard" /> to the latest ver
 wizard update
 ```
 
-<!--
-incorrect command and commenting out until correct command provided
 ## Uninstall
 
-Run the following command to uninstall <Constant name="wizard" />:
+1. Run the built-in uninstall command — it removes the binaries (`dbt-wizard`, `wizard`, `dbt-index`, `dbt-wizard-app-server`) and the `~/.dbt/wizard/` config/data directory:
 
-```bash
-wizard system uninstall
-```
--->
+  ```shell
+  wizard system uninstall
+  ```
+
+2. Confirm when prompted, or skip the prompt with `--force`.
+3. You can then confirm that the binary has been completely removed by checking your system path:
+
+  ```bash
+  which dbt-wizard
+  ```
+
+  If no output path is returned, dbt Wizard is successfully uninstalled.
+
 
 ## Telemetry
 
