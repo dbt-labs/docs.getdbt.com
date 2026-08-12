@@ -1,0 +1,57 @@
+name: Close linked docs-internal PR
+
+# What it does: When a PR merges here that was promoted from a docs-internal
+# PR (identified by a "Promoted from dbt-labs/docs-internal#<number>" line in
+# the PR body, added by the promote-to-public skill), comment on and close
+# that docs-internal PR automatically.
+# Why we have it: replaces the manual "close with comment" step writers
+# previously had to remember after promoting a private doc to public. See
+# the docs-internal/private-docs-repo-sync process doc for the full workflow.
+#
+# Requires a repo secret INTERNAL_REPO_TOKEN with write access to
+# dbt-labs/docs-internal (the default GITHUB_TOKEN can't write cross-repo).
+
+on:
+  pull_request:
+    types: [closed]
+
+jobs:
+  close-internal-pr:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: read
+    steps:
+      - name: Find and close linked docs-internal PR
+        uses: actions/github-script@d7906e4ad0b1822421a7e6a35d5ca353c962f410 # actions/github-script@v6
+        with:
+          github-token: ${{ secrets.INTERNAL_REPO_TOKEN }}
+          script: |
+            const body = context.payload.pull_request.body || '';
+            const match = body.match(/dbt-labs\/docs-internal#(\d+)/i);
+
+            if (!match) {
+              console.log('No linked docs-internal PR reference found in PR body, skipping.');
+              return;
+            }
+
+            const internalPrNumber = parseInt(match[1], 10);
+            const publicPrUrl = context.payload.pull_request.html_url;
+
+            console.log(`Found linked docs-internal PR #${internalPrNumber}`);
+
+            await github.rest.issues.createComment({
+              owner: 'dbt-labs',
+              repo: 'docs-internal',
+              issue_number: internalPrNumber,
+              body: `Closing automatically — this was promoted to the public repo and merged here: ${publicPrUrl}`,
+            });
+
+            await github.rest.pulls.update({
+              owner: 'dbt-labs',
+              repo: 'docs-internal',
+              pull_number: internalPrNumber,
+              state: 'closed',
+            });
+
+            console.log(`Closed docs-internal#${internalPrNumber}`);
