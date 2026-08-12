@@ -52,20 +52,23 @@ wizard update
 
 ## Uninstall
 
-1. Run the built-in uninstall command — it removes the binaries (`dbt-wizard`, `wizard`, `dbt-index`, `dbt-wizard-app-server`) and the `~/.dbt/wizard/` config/data directory:
+1. Run the built-in uninstall command. It lists every binary, config, and data directory it's about to remove, then asks you to confirm (`Proceed? [Y/N]`) before deleting anything:
 
-  ```shell
-  wizard system uninstall
-  ```
+    ```shell
+    wizard system uninstall
+    ```
 
-2. Confirm when prompted, or skip the prompt with `--force`.
-3. You can then confirm that the binary has been completely removed by checking your system path:
+:::info Uninstalling Wizard
+Removing `~/.dbt/wizard` deletes your local config, logs, and cache, and can't be undone. Your dbt profiles (`~/.dbt/`) and dbt projects aren't part of <Constant name="wizard" /> and won't be touched.
+:::
 
-  ```bash
-  which dbt-wizard
-  ```
+2. Confirm the binary is deleted by checking your system path:
 
-  If no output path is returned, dbt Wizard is successfully uninstalled.
+    ```bash
+    which wizard
+    ```
+
+If no output path is returned, <Constant name="wizard" /> is successfully uninstalled.
 
 
 ## Telemetry
