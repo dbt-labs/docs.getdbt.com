@@ -21,7 +21,6 @@ Your <Constant name="dbt" /> account will always connect to your data platform o
 
 ## Amazon Web Services (AWS) {#AWS}
 
-<FilterableTable>
 
 | Region | Location | <div style={{width:'110px'}}>Access URL</div> | <div style={{width:'100px'}}>IP addresses</div> | Available plans | <div style={{width:'200px'}}>Status page link</div> |
 |--------|----------|------------|--------------|-------| --------- |
@@ -31,11 +30,9 @@ Your <Constant name="dbt" /> account will always connect to your data platform o
 | Japan | ap-northeast-1 (Tokyo) | <small>ACCOUNT_PREFIX.jp1.dbt.com</small> | 35.76.76.152 <br />  54.238.211.79 <br /> 13.115.236.233 <br /> | All Enterprise plans | [JP Cell 1 AWS](https://status.getdbt.com/jp-cell-1-aws) | 
 | Virtual Private dbt or Single tenant | Customized |  Customized | Ask [Support](/community/resources/getting-help#dbt-cloud-support) for your IPs | All Enterprise plans | Customized |
 
-</FilterableTable>
 
 ## Google Cloud Platform (GCP) {#GCP}
 
-<FilterableTable>
 
 | Region | Location | <div style={{width:'110px'}}>Access URL</div> | <div style={{width:'100px'}}>IP addresses</div> | Available plans | <div style={{width:'200px'}}>Status page link</div> |
 |--------|----------|------------|--------------|-------| --------- |
@@ -44,11 +41,9 @@ Your <Constant name="dbt" /> account will always connect to your data platform o
 | EMEA  | Frankfurt | <small>ACCOUNT_PREFIX.eu4.dbt.com</small> | 34.185.244.128/26 | All Enterprise plans | [EU4 Cell 1 GCP](https://status.getdbt.com/eu-4-cell-1-gcp) |
 | Virtual Private dbt or Single tenant | Customized |  Customized | Ask [Support](/community/resources/getting-help#dbt-cloud-support) for your IPs | All Enterprise plans | Customized |
 
-</FilterableTable>
 
 ## Microsoft Azure {#Azure}
 
-<FilterableTable>
 | Region | Location | <div style={{width:'110px'}}>Access URL</div> | <div style={{width:'100px'}}>IP addresses</div> | Available plans | <div style={{width:'200px'}}>Status page link</div> |
 |--------|----------|------------|--------------|-------| --------- |
 | North America  | East US 2 (Virginia) | <small>ACCOUNT_PREFIX.us2.dbt.com</small> | 20.10.67.192/26 | All Enterprise plans | [US Cell 1 AZURE](https://status.getdbt.com/us-cell-1-azure) |
@@ -56,7 +51,6 @@ Your <Constant name="dbt" /> account will always connect to your data platform o
 | APAC | Australia East | <small>ACCOUNT_PREFIX.au2.dbt.com</small> | 20.11.97.208/28 | All Enterprise plans | [AUS Cell 1 AZURE](https://status.getdbt.com/au-2-cell-1-azure) |
 | Virtual Private dbt or Single tenant | Customized |  Customized | Ask [Support](/community/resources/getting-help#dbt-cloud-support) for your IPs | All Enterprise plans | Customized |
 
-</FilterableTable>
 
 ## Accessing your account
 

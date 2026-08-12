@@ -2,7 +2,7 @@
   "_meta": {
     "platform": "trino",
     "platform_name": "Trino",
-    "count": 411
+    "count": 439
   },
   "functions": [
     {
@@ -685,6 +685,13 @@
       "fusion_typecheck": true
     },
     {
+      "name": "ENDS_WITH",
+      "category": "E#",
+      "docs_url": "https://trino.io/docs/current/functions/string.html#ends_with",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "EVERY",
       "category": "E#",
       "docs_url": "https://trino.io/docs/current/functions/aggregate.html#every",
@@ -879,6 +886,13 @@
       "docs_url": "https://trino.io/docs/current/functions/aggregate.html#geometric_mean",
       "preview_status": "GA",
       "fusion_typecheck": true
+    },
+    {
+      "name": "GEOMETRY_COLLECT_AGG",
+      "category": "G#",
+      "docs_url": "https://trino.io/docs/current/functions/geospatial.html#geometry_collect_agg",
+      "preview_status": "GA",
+      "fusion_typecheck": false
     },
     {
       "name": "GEOMETRY_FROM_HADOOP_SHAPE",
@@ -1917,6 +1931,20 @@
       "fusion_typecheck": true
     },
     {
+      "name": "SPATIAL_PARTITIONING",
+      "category": "S#",
+      "docs_url": "https://trino.io/docs/current/functions/geospatial.html#spatial_partitioning",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "SPATIAL_PARTITIONS",
+      "category": "S#",
+      "docs_url": "https://trino.io/docs/current/functions/geospatial.html#spatial_partitions",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
       "name": "SPLIT",
       "category": "S#",
       "docs_url": "https://trino.io/docs/current/functions/string.html#split",
@@ -1980,6 +2008,20 @@
       "fusion_typecheck": true
     },
     {
+      "name": "ST_ASEWKB",
+      "category": "S#",
+      "docs_url": "https://trino.io/docs/current/functions/geospatial.html#ST_AsEWKB",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "ST_ASEWKT",
+      "category": "S#",
+      "docs_url": "https://trino.io/docs/current/functions/geospatial.html#ST_AsEWKT",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "ST_ASTEXT",
       "category": "S#",
       "docs_url": "https://trino.io/docs/current/functions/geospatial.html#ST_AsText",
@@ -2006,6 +2048,13 @@
       "docs_url": "https://trino.io/docs/current/functions/geospatial.html#ST_Centroid",
       "preview_status": "GA",
       "fusion_typecheck": true
+    },
+    {
+      "name": "ST_COLLECT",
+      "category": "S#",
+      "docs_url": "https://trino.io/docs/current/functions/geospatial.html#ST_Collect",
+      "preview_status": "GA",
+      "fusion_typecheck": false
     },
     {
       "name": "ST_CONTAINS",
@@ -2099,6 +2148,20 @@
       "fusion_typecheck": true
     },
     {
+      "name": "ST_FORCE2D",
+      "category": "S#",
+      "docs_url": "https://trino.io/docs/current/functions/geospatial.html#ST_Force2D",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "ST_FORCE3D",
+      "category": "S#",
+      "docs_url": "https://trino.io/docs/current/functions/geospatial.html#ST_Force3D",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "ST_GEOMETRIES",
       "category": "S#",
       "docs_url": "https://trino.io/docs/current/functions/geospatial.html#ST_Geometries",
@@ -2132,6 +2195,20 @@
       "docs_url": "https://trino.io/docs/current/functions/geospatial.html#ST_GeomFromBinary",
       "preview_status": "GA",
       "fusion_typecheck": true
+    },
+    {
+      "name": "ST_GEOMFROMEWKT",
+      "category": "S#",
+      "docs_url": "https://trino.io/docs/current/functions/geospatial.html#ST_GeomFromEWKT",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "ST_GEOMFROMKML",
+      "category": "S#",
+      "docs_url": "https://trino.io/docs/current/functions/geospatial.html#ST_GeomFromKML",
+      "preview_status": "GA",
+      "fusion_typecheck": false
     },
     {
       "name": "ST_INTERIORRINGN",
@@ -2211,11 +2288,46 @@
       "fusion_typecheck": true
     },
     {
+      "name": "ST_LINEMERGE",
+      "category": "S#",
+      "docs_url": "https://trino.io/docs/current/functions/geospatial.html#ST_LineMerge",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "ST_LINESTRING",
       "category": "S#",
       "docs_url": "https://trino.io/docs/current/functions/geospatial.html#ST_LineString",
       "preview_status": "GA",
       "fusion_typecheck": true
+    },
+    {
+      "name": "ST_MAKELINE",
+      "category": "S#",
+      "docs_url": "https://trino.io/docs/current/functions/geospatial.html#ST_MakeLine",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "ST_MAKEPOLYGON",
+      "category": "S#",
+      "docs_url": "https://trino.io/docs/current/functions/geospatial.html#ST_MakePolygon",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "ST_MINIMUMBOUNDINGCIRCLE",
+      "category": "S#",
+      "docs_url": "https://trino.io/docs/current/functions/geospatial.html#ST_MinimumBoundingCircle",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "ST_MULTI",
+      "category": "S#",
+      "docs_url": "https://trino.io/docs/current/functions/geospatial.html#ST_Multi",
+      "preview_status": "GA",
+      "fusion_typecheck": false
     },
     {
       "name": "ST_MULTIPOINT",
@@ -2225,9 +2337,23 @@
       "fusion_typecheck": true
     },
     {
+      "name": "ST_NORMALIZE",
+      "category": "S#",
+      "docs_url": "https://trino.io/docs/current/functions/geospatial.html#ST_Normalize",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "ST_NUMGEOMETRIES",
       "category": "S#",
       "docs_url": "https://trino.io/docs/current/functions/geospatial.html#ST_NumGeometries",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_NUMINTERIORRING",
+      "category": "S#",
+      "docs_url": "https://trino.io/docs/current/functions/geospatial.html#ST_NumInteriorRing",
       "preview_status": "GA",
       "fusion_typecheck": true
     },
@@ -2237,6 +2363,13 @@
       "docs_url": "https://trino.io/docs/current/functions/geospatial.html#ST_NumPoints",
       "preview_status": "GA",
       "fusion_typecheck": true
+    },
+    {
+      "name": "ST_ORIENTEDENVELOPE",
+      "category": "S#",
+      "docs_url": "https://trino.io/docs/current/functions/geospatial.html#ST_OrientedEnvelope",
+      "preview_status": "GA",
+      "fusion_typecheck": false
     },
     {
       "name": "ST_OVERLAPS",
@@ -2260,6 +2393,13 @@
       "fusion_typecheck": true
     },
     {
+      "name": "ST_POINTONSURFACE",
+      "category": "S#",
+      "docs_url": "https://trino.io/docs/current/functions/geospatial.html#ST_PointOnSurface",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "ST_POINTS",
       "category": "S#",
       "docs_url": "https://trino.io/docs/current/functions/geospatial.html#ST_Points",
@@ -2274,11 +2414,39 @@
       "fusion_typecheck": true
     },
     {
+      "name": "ST_POLYGONIZE",
+      "category": "S#",
+      "docs_url": "https://trino.io/docs/current/functions/geospatial.html#ST_Polygonize",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "ST_REDUCEPRECISION",
+      "category": "S#",
+      "docs_url": "https://trino.io/docs/current/functions/geospatial.html#ST_ReducePrecision",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "ST_RELATE",
       "category": "S#",
       "docs_url": "https://trino.io/docs/current/functions/geospatial.html#ST_Relate",
       "preview_status": "GA",
       "fusion_typecheck": true
+    },
+    {
+      "name": "ST_SETSRID",
+      "category": "S#",
+      "docs_url": "https://trino.io/docs/current/functions/geospatial.html#ST_SetSRID",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "ST_SRID",
+      "category": "S#",
+      "docs_url": "https://trino.io/docs/current/functions/geospatial.html#ST_SRID",
+      "preview_status": "GA",
+      "fusion_typecheck": false
     },
     {
       "name": "ST_STARTPOINT",
@@ -2302,11 +2470,25 @@
       "fusion_typecheck": true
     },
     {
+      "name": "ST_TRANSFORM",
+      "category": "S#",
+      "docs_url": "https://trino.io/docs/current/functions/geospatial.html#ST_Transform",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "ST_UNION",
       "category": "S#",
       "docs_url": "https://trino.io/docs/current/functions/geospatial.html#ST_Union",
       "preview_status": "GA",
       "fusion_typecheck": true
+    },
+    {
+      "name": "ST_VORONOIPOLYGONS",
+      "category": "S#",
+      "docs_url": "https://trino.io/docs/current/functions/geospatial.html#ST_VoronoiPolygons",
+      "preview_status": "GA",
+      "fusion_typecheck": false
     },
     {
       "name": "ST_WITHIN",
@@ -2356,6 +2538,13 @@
       "docs_url": "https://trino.io/docs/current/functions/geospatial.html#ST_YMin",
       "preview_status": "GA",
       "fusion_typecheck": true
+    },
+    {
+      "name": "ST_Z",
+      "category": "S#",
+      "docs_url": "https://trino.io/docs/current/functions/geospatial.html#ST_Z",
+      "preview_status": "GA",
+      "fusion_typecheck": false
     },
     {
       "name": "STARTS_WITH",
@@ -2475,6 +2664,13 @@
       "docs_url": "https://trino.io/docs/current/functions/datetime.html#timezone_minute",
       "preview_status": "GA",
       "fusion_typecheck": true
+    },
+    {
+      "name": "TITLE_CASE",
+      "category": "T#",
+      "docs_url": "https://trino.io/docs/current/functions/string.html#title_case",
+      "preview_status": "GA",
+      "fusion_typecheck": false
     },
     {
       "name": "TO_BASE",

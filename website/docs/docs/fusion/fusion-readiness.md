@@ -59,7 +59,9 @@ Check that <Constant name="fusion" /> supports all user-defined functions (UDFs)
 If you see the error `dbt0209: No function <function name>`, you can resolve it depending on whether the function is a UDF or a built-in function:
 
 - [ ] **For custom UDFs:** Recreate it as a [native dbt UDF](/docs/build/udfs#defining-udfs-in-dbt) to get the full <Constant name="fusion" /> experience. With `static_analysis: baseline` (the default), most UDFs will work out of the box.
-- [ ] **For Warehouse-native functions:** Submit a [GitHub issue](https://github.com/dbt-labs/dbt-fusion). <Constant name="fusion" />'s `baseline` mode handles most cases, but will throw warnings and not errors. You can set `static_analysis: off` for specific models if needed. 
+- [ ] **For Warehouse-native functions:** Submit a [GitHub issue](https://github.com/dbt-labs/dbt-fusion). <Constant name="fusion" />'s `baseline` mode handles most cases, but will throw warnings and not errors. You can set `static_analysis: off` for specific models if needed.
+
+For more information about using `strict` in development and `baseline` in deployment, refer to [Optimize static analysis for development and deployment](/best-practices/optimize-static-analysis-for-development-and-deployment).
 
 ### Check for known Fusion limitations
 
