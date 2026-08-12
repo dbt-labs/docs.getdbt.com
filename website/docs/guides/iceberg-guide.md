@@ -9,6 +9,8 @@ tags: ['dbt Fusion engine','Snowflake','Iceberg','DuckDB']
 recently_updated: true
 ---
 
+This guide shows you how to run dbt transformations across two engines (Snowflake and DuckDB) against a single, shared set of Apache Iceberg tables. You'll build your raw and staging layers as Snowflake-managed Iceberg tables, then use DuckDB to read and write those exact same tables through Snowflake's open Horizon catalog, without ever spinning up a Snowflake warehouse for that step. The result is a warehouse-free, no-copy workflow where you pick the cheapest engine for each job while your governance and lineage stay intact.
+
 ## Offload dbt compute to DuckDB with Iceberg
 
 By the end of this guide, your `fusion-jaffle-shop` project will transform data in two different engines against one shared set of tables:
