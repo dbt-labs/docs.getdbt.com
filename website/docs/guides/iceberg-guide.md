@@ -35,7 +35,7 @@ Before you begin, there are a few considerations:
 - This is an advanced guide and assumes that you have fundamental knowledge of dbt, Snowflake, DuckDB, related tools, and how to install them.
 - While dbt handles SQL transformations with grace, some of the tools used in this guide are very specific about the syntax they accept. We highly recommend you remove code comments from examples in this guide before using them in a live environment.
 - The demo project used is a feature rich example of the existing Jaffle Shop project. This is to demonstrate some of the considerations you'll need to make in your own projects as you implement these workflows. To ensure a smooth outcome, we recommend you use the project link in this guide and not any other existing Jaffle Shop projects. 
-- If you are using a Snowflake account that has not been configured for Python (for example, a brand new trial account), you may run into errors with the Python models in the dbt project. Deleting them for the duration of this guide will remove those errors (thought there will be some non-blocking warnings).
+- If you are using a Snowflake account that has not been configured for Python (for example, a brand new trial account), you may run into errors with the Python models in the dbt project. Deleting them for the duration of this guide will remove those errors (though there will be some non-blocking warnings).
 
 ## Prerequisites
 
@@ -47,7 +47,7 @@ To complete the required setup steps, you'll need:
 
 - A **Snowflake account** where you can act as `ACCOUNTADMIN`. This guide builds everything from scratch, so a brand-new account (a trial works) is exactly the assumed starting point.
 - An **AWS account** where you can create an S3 bucket and an IAM role + policy.
-- A local clone of the **`fusion-jaffle-shop`** project, with the seed CSVs present in `seeds/`.
+- A local clone of the [**`fusion-jaffle-shop`** project](https://github.com/matthewshaver/fusion-jaffle-shop), with the seed CSVs present in `seeds/`.
 - Comfort running SQL in Snowsight and basic commands in a terminal.
 
 ### Tools to install and verify
@@ -62,11 +62,12 @@ Install and verify these before you start:
 | **A new Snowflake account** | Where Horizon + the managed Iceberg tables live | — |
 | **The `fusion-jaffle-shop` project** | Cloned locally, with the seed CSVs present in `seeds/` | `ls seeds/` shows `raw_*.csv` |
 
-You'll also need the AWS CLI or console access, and the ability to run SQL as `ACCOUNTADMIN` in Snowflake.
+
+### Placeholders used in this guide
 
 Throughout this guide, replace these placeholders with your own values:
 
-- `<ACCOUNT_IDENTIFIER>`: Your Snowflake account identifier in `ORG-ACCOUNT` form (e.g. `ABCDEFG-HI12345`). Find it in Snowsight under your account menu → **Account** → **View account details**, or in the account URL `https://<ORG>-<ACCOUNT>.snowflakecomputing.com`.
+- `<ACCOUNT_IDENTIFIER>`: Your Snowflake account identifier in `ORG-ACCOUNT` form (for example, `ABCDEFG-HI12345`). Find it in Snowsight under your account menu → **Account** → **View account details**, or in the account URL `https://<ORG>-<ACCOUNT>.snowflakecomputing.com`.
 - `<AWS_ACCOUNT_ID>`: Your 12-digit AWS account number.
 - `<YOUR_USER>`: Your Snowflake login username.
 - `<REGION>`: The AWS region for your bucket. This guide uses `us-east-2`; use whatever is closest to your Snowflake account's region.
