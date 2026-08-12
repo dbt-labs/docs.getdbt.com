@@ -4,6 +4,7 @@ id: "iceberg"
 time_to_complete: '60 minutes' 
 level: 'Advanced'
 icon: 'zap'
+description: "Run dbt transformations across Snowflake and DuckDB against one shared set of Apache Iceberg tables, warehouse-free and with no data copies."
 hide_table_of_contents: true
 tags: ['dbt Fusion engine','Snowflake','Iceberg','DuckDB']
 recently_updated: true
@@ -18,7 +19,7 @@ By the end of this guide, your `fusion-jaffle-shop` project will transform data 
 - **Snowflake:** Builds your raw and staging layers as Snowflake-managed Apache Iceberg tables, registered in Snowflake's built-in Horizon catalog.
 - **DuckDB:** Reads those exact same Iceberg tables through Horizon's open Iceberg REST catalog, builds a downstream model (`orders`), and writes the result *back* as an Iceberg table in the same catalog.
 
-The DuckDB step is the interesting part. Because Iceberg is an open table format and Horizon speaks the open Iceberg REST protocol, an external engine like DuckDB can operate on your governed Snowflake tables _without spinning up a Snowflake virtual warehouse_. 
+The DuckDB step is the interesting part. Because Iceberg is an open table format and Horizon speaks to the open Iceberg REST protocol, an external engine like DuckDB can operate on your governed Snowflake tables _without spinning up a Snowflake virtual warehouse_. 
 
 The transformation runs in a local DuckDB process (embedded in the dbt Fusion engine); Snowflake only serves catalog metadata and vends short-lived storage credentials. The data itself lives in your own S3 bucket the whole time.
 
@@ -259,7 +260,7 @@ ALTER DATABASE DBT_ICEBERG SET CATALOG = 'SNOWFLAKE';
 
 ## Part 4: Create a Programmatic Access Token for DuckDB {#create-pat-duckdb}
 
-DuckDB authenticates to Horizon's REST catalog over OAuth2, using a Programmatic Access Token (PAT) as its credential.
+DuckDB authenticates to Horizon's REST catalog over OAuth2, using a Programmatic Access Token (PAT) as its credential. To add the PAT in Snowsight:
 
 ```sql
 USE ROLE ACCOUNTADMIN;
@@ -280,11 +281,15 @@ curl -s "https://<ACCOUNT_IDENTIFIER>.snowflakecomputing.com/polaris/api/catalog
 --data-urlencode 'scope=session:role:TRANSFORMER'
 ```
 
- A JSON response containing `"access_token"` means you're good. If you see `Programmatic access token is invalid`, re-copy the token. **If you see an error mentioning a network policy, see the [FAQ](#FAQ)**. Some Snowflake accounts require a network policy before a PAT can be created or used.
+A JSON response containing `"access_token"` means you're good. If you see `Programmatic access token is invalid`, re-copy the token. **If you see an error mentioning a network policy, see the [FAQ](/guides/iceberg?step=12#faq)**. Some Snowflake accounts require a network policy before a PAT can be created or used.
 
 ## Part 5: Load the seed data {#load-seed-data}
 
-From the project root, install packages and seed the raw tables into Snowflake. (Make sure the seed CSVs are present in `seeds/` first.)
+In this part, you'll load the dbt project's raw CSV seed data into Snowflake as regular tables. You'll run the seed against the prod target so you get the full historical dataset, rather than dev, which filters orders to the last year.
+
+### 5.1 Seed commands
+
+From the project root in your dbt CLI, install packages and seed the raw tables into Snowflake. (Make sure the seed CSVs are present in `seeds/` first.)
 
 ```bash
 dbt deps
@@ -293,8 +298,9 @@ dbt deps
 dbt seed --target prod
 ```
 
-:::info First seed only
-The project's `on-run-start` hook (`insert_freshness_heartbeat()`) queries a raw source table that doesn't exist until the seeds load, so the **first** `dbt seed` fails with `Object 'DBT_ICEBERG.RAW.RAW_STORES' does not exist`. Before your first seed, comment out the `on-run-start` block in `dbt_project.yml`:
+### 5.2 First seed
+
+The project's `on-run-start` hook (`insert_freshness_heartbeat()`) queries a raw source table that doesn't exist until the seeds load, so if the _first_ `dbt seed` fails with `Object 'DBT_ICEBERG.RAW.RAW_STORES' does not exist`. Before your first seed, comment out the `on-run-start` block in `dbt_project.yml`:
 
 ```yaml
 # on-run-start:
@@ -302,11 +308,23 @@ The project's `on-run-start` hook (`insert_freshness_heartbeat()`) queries a raw
 ```
 
 Uncomment it once the seeds exist.
+
+This loads the following into `DBT_ICEBERG.RAW` as regular Snowflake tables:
+- `raw_customers`
+- `raw_orders`
+- `raw_items`
+- `raw_products`
+- `raw_stores`
+- `raw_supplies`
+- `raw_tweets`
+
+We use the `prod` target — you'll define it in the next section.
+
+:::info Why `prod` and not `dev`?
+
+This project's `stg_orders` model applies a `limit_in_dev` macro that filters orders to the last year **whenever the target is named `dev`**. The seed data is historical, so building on `dev` yields an **empty** `stg_orders` (and therefore empty `orders`). Building on any non-`dev` target skips that filter and gives you the full dataset. See the [FAQ](/guides/iceberg?step=12#faq) for more information.
+
 :::
-
-This loads `raw_customers`, `raw_orders`, `raw_items`, `raw_products`, `raw_stores`, `raw_supplies`, and `raw_tweets` into `DBT_ICEBERG.RAW` as regular Snowflake tables. (We use the `prod` target — you'll define it in the next section. If you haven't set up `profiles.yml` yet, do Part 6 first, then come back and run this.)
-
-**Why `prod` and not `dev`?** This project's `stg_orders` model applies a `limit_in_dev` macro that filters orders to the last year **whenever the target is named `dev`**. The seed data is historical, so building on `dev` yields an **empty** `stg_orders` (and therefore empty `orders`). Building on any non-`dev` target skips that filter and gives you the full dataset. See the [FAQ](#FAQ) for more information.
 
 ## Part 6: Configure the project {#configure-the-project}
 
@@ -362,7 +380,7 @@ jaffle_shop:
 
 The Fusion project's `dbt_project.yml` sets `profile: default`. Either rename the profile key above to `default`, or set `profile: jaffle_shop`. Keep it consistent.
 
-:::note If `externalbrowser` fails** 
+:::note If `externalbrowser` fails
 
 For example `390190 (08004) ... SAML Identity Provider account parameter`, swap it for password auth on the `dev` and `prod` targets and keep the secret out of the file with an environment variable:
 
@@ -412,53 +430,55 @@ Then, under `models: jaffle_shop: marts:`, **delete** the `+grants` block:
 
 ### 6.4 Model changes
 
-These edits make the three POC models materialize as Iceberg and behave on both engines.
+These edits make the three models materialize as Iceberg and behave on both engines.
 
-**`models/staging/stg_orders.sql`**: Add the config header and cast the timestamp to microsecond precision (Iceberg rejects Snowflake's default nanosecond scale):
+- **`models/staging/stg_orders.sql`**: Add the config header and cast the timestamp to microsecond precision (Iceberg rejects Snowflake's default nanosecond scale):
 
-```sql
-{{ config(materialized='table', catalog_name='horizon_catalog', alias='STG_ORDERS') }}
-```
-...and change the timestamp line to:
+    ```sql  
+    {{ config(materialized='table', catalog_name='horizon_catalog', alias='STG_ORDERS') }}
+    ```
+    ...and change the timestamp line to:
 
-```sql
-cast({{ dbt.date_trunc('day','ordered_at') }} as timestamp_ntz(6)) as ordered_at
-```
+    ```sql
+    cast({{ dbt.date_trunc('day','ordered_at') }} as timestamp_ntz(6)) as ordered_at
+    ```
 
-**`models/marts/order_items.sql`**: add at the very top:
+- **`models/marts/order_items.sql`**: add at the very top:
 
-```sql
-{{ config(materialized='table', catalog_name='horizon_catalog', alias='ORDER_ITEMS') }}
-```
+    ```sql
+    {{ config(materialized='table', catalog_name='horizon_catalog', alias='ORDER_ITEMS') }}
+    ```
 
-**`models/marts/orders.sql`** — replace its config header with:
+- **`models/marts/orders.sql`**: replace its config header with:
 
-```sql
-{{ config(
-    materialized='table',
-    catalog_name='horizon_catalog',
-    alias='ORDERS',
-    grants={} if target.name == 'duckdb' else {'select': ['ACCOUNTADMIN']},
-    persist_docs={'relation': false, 'columns': false} if target.name == 'duckdb' else {'relation': true, 'columns': true}
-) }}
-```
+    ```sql
+    {{ config(
+        materialized='table',
+        catalog_name='horizon_catalog',
+        alias='ORDERS',
+        grants={} if target.name == 'duckdb' else {'select': ['ACCOUNTADMIN']},
+        persist_docs={'relation': false, 'columns': false} if target.name == 'duckdb' else {'relation': true, 'columns': true}
+    ) }}
+    ```
 
-**`models/marts/orders.yml`**: Turn off the enforced contract (a single contract can't hold both Snowflake and DuckDB type names):
+- **`models/marts/orders.yml`**: Turn off the enforced contract (a single contract can't hold both Snowflake and DuckDB type names):
 
-```yaml
-      contract:
-        enforced: false
-```
+    ```yaml
+          contract:
+            enforced: false
+    ```
 
-**`macros/insert_freshness_heartbeat.sql`**: Exclude the `duckdb` target (the heartbeat writes to the raw Snowflake source, which isn't attached in a DuckDB session):
+- **`macros/insert_freshness_heartbeat.sql`**: Exclude the `duckdb` target (the heartbeat writes to the raw Snowflake source, which isn't attached in a DuckDB session):
 
-```jinja
-{% if target.name not in ('ci', 'dev', 'duckdb') %}
-```
+    ```jinja
+    {% if target.name not in ('ci', 'dev', 'duckdb') %}
+    ```
 
-**Why uppercase `alias`?** Snowflake stores unquoted identifiers in UPPERCASE, and Iceberg catalogs are case-sensitive. DuckDB quotes model names in lowercase, so without the uppercase alias it would look for `"stg_orders"` and miss `STG_ORDERS`.
+- **Why uppercase `alias`?** Snowflake stores unquoted identifiers in UPPERCASE, and Iceberg catalogs are case-sensitive. DuckDB quotes model names in lowercase, so without the uppercase alias it would look for `"stg_orders"` and miss `STG_ORDERS`.
 
 ## Part 7: Build it {#build-it}
+
+This is where it all comes together! You'll build your Iceberg tables across both engines and confirm the DuckDB step ran without any Snowflake compute. Snowflake builds the raw and staging Iceberg parents, then DuckDB reads those same tables to build and write back the final orders model. All of this against the one shared catalog.
 
 ### 7.1 Snowflake pass: Build the Iceberg parents (uses Snowflake compute) {#snowflake-pass}
 
@@ -486,7 +506,11 @@ You should get a real row count (tens of thousands). You'll also see `ORDERS` li
 
 **Prove it was compute-free:** in Snowsight, open **Admin → Cost Management** (or query `snowflake.account_usage.warehouse_metering_history`). You'll see credits for the `prod` build in 7.1, and **none** for the DuckDB run in 7.2.
 
-## FAQ / Troubleshooting (everything we learned the hard way) {#FAQ}
+## Congratulations!
+
+You've just built a single set of Apache Iceberg tables and transformed them with two different engines! Snowflake for the raw and staging layers, DuckDB for the final orders model, and all against one shared Horizon catalog. The DuckDB step read and wrote governed Snowflake tables without spinning up a warehouse, which means real cost savings, no data copies or lock-in, and governance and lineage that stay intact no matter which engine does the work. This is the foundation of cross-platform dbt Mesh: one project, one catalog, and the freedom to pick the cheapest, fastest engine for every job.
+
+## FAQ
 
 <Expandable alt_header="OAuth token exchange returns `invalid_scope` for every role, even `PUBLIC`.">
 
