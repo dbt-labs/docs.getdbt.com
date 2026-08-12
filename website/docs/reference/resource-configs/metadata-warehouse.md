@@ -37,7 +37,7 @@ If omitted, dbt State falls back to the `warehouse` setting in `profiles.yml`.
 You can also use `metadata_warehouse` on the <Constant name="dbt_platform" /> by adding it as an [extended attribute](/docs/dbt-platform-environments#extended-attributes) in your environment settings.
 
 :::note
-This configuration currently applies only to dbt State metadata queries.
+This configuration currently applies only to dbt State metadata queries. It might be used more broadly in the future, see [dbt-core#12122](https://github.com/dbt-labs/dbt-core/issues/12122) for the feature request.
 :::
 
 ## Default
