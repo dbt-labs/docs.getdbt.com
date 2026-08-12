@@ -3,6 +3,7 @@ import math from "remark-math";
 import katex from "rehype-katex";
 import rehypeCodeLanguage from "./plugins/rehypeCodeLanguage.js";
 import rehypeCleanMarkdown from "./plugins/rehypeCleanMarkdown.js";
+import rehypeTabsToHeadings from "./plugins/rehypeTabsToHeadings.js";
 import remarkBlogFootnoteLinks from "./plugins/remarkBlogFootnoteLinks.js";
 const { themes } = require('prism-react-renderer')
 
@@ -393,7 +394,7 @@ var siteSettings = {
           relativePaths: false,
         },
         processing: {
-          beforeDefaultRehypePlugins: [rehypeCodeLanguage, rehypeCleanMarkdown],
+          beforeDefaultRehypePlugins: [rehypeCodeLanguage, rehypeCleanMarkdown, rehypeTabsToHeadings],
         },
         include: {
           includeBlog: false,
