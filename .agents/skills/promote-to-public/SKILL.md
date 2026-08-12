@@ -31,6 +31,12 @@ Before doing anything, check:
 
 3. Capture the current branch name: `git branch --show-current`. This is `PRIVATE_BRANCH`.
 
+4. Look up the docs-internal PR number for this branch as the public PR will reference it so the docs-internal PR can close automatically once the public PR merges:
+   ```bash
+   gh pr view PRIVATE_BRANCH --repo dbt-labs/docs-internal --json number --jq .number
+   ```
+   If `gh` isn't available or this returns nothing (no open PR yet on docs-internal), ask the user for the docs-internal PR number or URL. Call it `INTERNAL_PR_NUMBER`. If there truly is no docs-internal PR for this branch, skip the reference in Step 4 — there's nothing to auto-close.
+
 ---
 
 ## Step 2: Ask about commit history
@@ -54,6 +60,7 @@ Before running any commands, substitute the placeholders below with real branch 
 |-------------|--------------|
 | `PRIVATE_BRANCH` | The actual branch name captured in Step 1 (for example, `st-release-notes-2026-06-24`) |
 | `PUBLIC_BRANCH` | A new branch name for `docs.getdbt.com` — must differ from `PRIVATE_BRANCH` (for example, `st-release-notes-2026-06-24-public`) |
+| `INTERNAL_PR_NUMBER` | The docs-internal PR number captured in Step 1 (for example, `606`) |
 
 ---
 
@@ -127,6 +134,12 @@ The public branch name will be the same as `PRIVATE_BRANCH`.
 
 After pushing, open a PR on the public repo. Try `gh` first; fall back to a compare URL if it's not available.
 
+If `INTERNAL_PR_NUMBER` was found in Step 1, add a line to the PR body in this exact form &mdash; a workflow on the public repo matches this pattern to auto-close the linked docs-internal PR once this one merges:
+
+```
+Woohoo, promoted from dbt-labs/docs-internal#INTERNAL_PR_NUMBER
+```
+
 **With `gh`:**
 ```bash
 gh pr create \
@@ -135,12 +148,14 @@ gh pr create \
   --head PUBLIC_BRANCH \
   --title "<PR title>" \
   --draft \
-  --body "<brief description of the change>"
+  --body "<brief description of the change>
+
+Woohoo promoted from dbt-labs/docs-internal#INTERNAL_PR_NUMBER"
 ```
 
 Ask the user for a PR title and description if they haven't provided one. Keep the title sentence-case and action-oriented.
 
-**Without `gh` (fallback):** Print this URL for the user to open in their browser:
+**Without `gh` (fallback):** Print this URL for the user to open in their browser, and remind them to paste the `Woohoo promoted from dbt-labs/docs-internal#INTERNAL_PR_NUMBER` line into the PR body themselves:
 ```
 https://github.com/dbt-labs/docs.getdbt.com/compare/current...PUBLIC_BRANCH
 ```
@@ -149,7 +164,9 @@ https://github.com/dbt-labs/docs.getdbt.com/compare/current...PUBLIC_BRANCH
 
 ## Step 5: Clean up docs-internal
 
-Remind the user to close (not merge) their private branch PR in `docs-internal` once the public PR is merged:
+If the PR body included or contained the `Woohoo promoted from dbt-labs/docs-internal#INTERNAL_PR_NUMBER` line, the docs-internal PR closes automatically (with a comment linking back to the public PR) once this public PR merges — no manual step needed.
+
+If there was no docs-internal PR to link (or the reference couldn't be added), remind the user to close it manually:
 
 > Once your public PR merges, go back to your `docs-internal` PR, add a comment with a link to the public PR, and click **Close with comment**. Don't merge it — the `current` branch in `docs-internal` stays in sync automatically.
 
@@ -164,3 +181,4 @@ Remind the user to close (not merge) their private branch PR in `docs-internal` 
 | Merge conflict during `git merge origin/current` | Tell the user to resolve conflicts, then re-run from Step 3b step 3 |
 | `gh` not installed | Fall back to the compare URL |
 | Push rejected | Check if the branch already exists on `origin`; suggest `--force` only if the user confirms it's their own branch |
+| No docs-internal PR found for the branch | Ask the user for the PR number/URL directly, or skip the auto-close reference and fall back to the manual close-with-comment step |
