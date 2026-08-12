@@ -193,6 +193,9 @@ In the AWS console:
 
 ## Part 3: Connect Snowflake to S3 with an external volume
 
+An external volume is Snowflake's secure link to the S3 bucket where your Iceberg data and metadata live. In this part, you'll create the volume, complete the trust handshake between Snowflake and your IAM role, and set the volume as your database default so every Iceberg table knows where to store its files.
+
+
 ### 3.1 Create the external volume
 
 Back in Snowsight (as `ACCOUNTADMIN`), copy and paste the following (replace `<PLACEHOLDERS>` with your info):
