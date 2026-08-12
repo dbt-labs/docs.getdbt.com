@@ -134,10 +134,10 @@ The public branch name will be the same as `PRIVATE_BRANCH`.
 
 After pushing, open a PR on the public repo. Try `gh` first; fall back to a compare URL if it's not available.
 
-If `INTERNAL_PR_NUMBER` was found in Step 1, add a line to the PR body in this exact form — a workflow on the public repo matches this pattern to auto-close the linked docs-internal PR once this one merges:
+If `INTERNAL_PR_NUMBER` was found in Step 1, add a line to the PR body in this exact form &mdash; a workflow on the public repo matches this pattern to auto-close the linked docs-internal PR once this one merges:
 
 ```
-Promoted from dbt-labs/docs-internal#INTERNAL_PR_NUMBER
+Woohoo, promoted from dbt-labs/docs-internal#INTERNAL_PR_NUMBER
 ```
 
 **With `gh`:**
@@ -150,12 +150,12 @@ gh pr create \
   --draft \
   --body "<brief description of the change>
 
-Promoted from dbt-labs/docs-internal#INTERNAL_PR_NUMBER"
+Woohoo promoted from dbt-labs/docs-internal#INTERNAL_PR_NUMBER"
 ```
 
 Ask the user for a PR title and description if they haven't provided one. Keep the title sentence-case and action-oriented.
 
-**Without `gh` (fallback):** Print this URL for the user to open in their browser, and remind them to paste the `Promoted from dbt-labs/docs-internal#INTERNAL_PR_NUMBER` line into the PR body themselves:
+**Without `gh` (fallback):** Print this URL for the user to open in their browser, and remind them to paste the `Woohoo promoted from dbt-labs/docs-internal#INTERNAL_PR_NUMBER` line into the PR body themselves:
 ```
 https://github.com/dbt-labs/docs.getdbt.com/compare/current...PUBLIC_BRANCH
 ```
@@ -164,7 +164,7 @@ https://github.com/dbt-labs/docs.getdbt.com/compare/current...PUBLIC_BRANCH
 
 ## Step 5: Clean up docs-internal
 
-If the PR body included the `Promoted from dbt-labs/docs-internal#INTERNAL_PR_NUMBER` line, the docs-internal PR closes automatically (with a comment linking back to the public PR) once this public PR merges — no manual step needed.
+If the PR body included or contained the `Woohoo promoted from dbt-labs/docs-internal#INTERNAL_PR_NUMBER` line, the docs-internal PR closes automatically (with a comment linking back to the public PR) once this public PR merges — no manual step needed.
 
 If there was no docs-internal PR to link (or the reference couldn't be added), remind the user to close it manually:
 
