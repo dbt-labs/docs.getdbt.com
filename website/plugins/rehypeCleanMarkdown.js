@@ -1,6 +1,6 @@
 /**
  * Rehype plugin that removes page chrome from the HTML before it is converted
- * to markdown by @signalwire/docusaurus-plugin-llms-txt. Two rules:
+ * to markdown by @signalwire/docusaurus-plugin-llms-txt. Here are the following rules:
  *
  * 1. Heading anchor links (a.hash-link). Docusaurus appends a "Direct link to"
  *    anchor to every heading; converted to markdown it becomes an empty link
