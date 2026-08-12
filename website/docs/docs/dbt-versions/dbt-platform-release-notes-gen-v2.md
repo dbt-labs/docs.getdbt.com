@@ -38,7 +38,7 @@ Release notes are grouped by date for single-tenant environments.
 
 ### dbt AI and agents
 
-- **Global Wizard navigation generally available (GA)**: The global dbt Wizard navigation item is now generally available.
+- **dbt Wizard home tab**: [The <Constant name="wizard"/> home tab in <Constant name="dbt_platform"/>](/docs/platform/wizard-home) is now available in public preview. You can build and change dbt projects through natural language, with inline diffs, DAG previews, and validation built in.
 
 ## July 29, 2026
 
