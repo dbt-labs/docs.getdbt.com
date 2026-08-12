@@ -12,7 +12,7 @@ When dbt runs, it creates a directed acyclic graph (DAG) of links between models
 
 For example, if you specify `threads: 1`, dbt will start building only one model, and finish it, before moving onto the next. Specifying `threads: 8` means that dbt will work on _up to_ 8 models at once without violating dependencies – the actual number of models it can work on will likely be constrained by the available paths through the dependency graph.
 
-Here's the difference between running a project with 1 thread and 4 threads:
+Here's the difference between running a project with 1 thread and 4 threads &mdash; gray is waiting, orange is building, green is done.
 
 <Lightbox src="/img/docs/running-a-dbt-project/threads-1-vs-4-animated.gif" title="With 1 thread, dbt builds one model at a time in dependency order. With 4 threads, dbt builds as many ready models in parallel as the graph allows, finishing sooner." />
 
