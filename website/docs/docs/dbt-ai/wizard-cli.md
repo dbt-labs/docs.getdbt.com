@@ -62,7 +62,7 @@ wizard update
 Removing `~/.dbt/wizard` deletes your local config, logs, and cache, and can't be undone. Your dbt profiles (`~/.dbt/`) and dbt projects aren't part of <Constant name="wizard" /> and won't be touched.
 :::
 
-2. Confirm the binary is gone by checking your system path:
+2. Confirm the binary is deleted by checking your system path:
 
     ```bash
     which wizard
