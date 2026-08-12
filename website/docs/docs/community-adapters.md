@@ -22,18 +22,18 @@ If you'd like to contribute a community adapter for v2, refer to [creating a Fus
 
 <SimpleTable>
 
-| Data platform | | |
-| ------------------------------------------ | -------------------------------- | ------------------------------------- |
+| Data platform |   |   |
+| --- | --- | --- |
 | [Confluent Cloud](/docs/local/connect-data-platform/confluent-setup) | [CrateDB](/docs/local/connect-data-platform/cratedb-setup) | [Databend Cloud](/docs/local/connect-data-platform/databend-setup) |
 | [DeltaStream](/docs/local/connect-data-platform/deltastream-setup) | [Doris & SelectDB](/docs/local/connect-data-platform/doris-setup) | [DuckDB](/docs/local/connect-data-platform/duckdb-setup) |
 | [Extrica](/docs/local/connect-data-platform/extrica-setup) | [Hive](/docs/local/connect-data-platform/hive-setup) | [Hologres](/docs/local/connect-data-platform/hologres-setup) |
 | [IBM watsonx.data - Spark](/docs/local/connect-data-platform/watsonx-spark-setup) | [Impala](/docs/local/connect-data-platform/impala-setup) | [Infer](/docs/local/connect-data-platform/infer-setup) |
 | [iomete](/docs/local/connect-data-platform/iomete-setup) | [MaxCompute](/docs/local/connect-data-platform/maxcompute-setup) | [MindsDB](/docs/local/connect-data-platform/mindsdb-setup) |
-| [MySQL](/docs/local/connect-data-platform/mysql-setup) | [RisingWave](/docs/local/connect-data-platform/risingwave-setup) | [Rockset](/docs/local/connect-data-platform/rockset-setup) | [Sail](/docs/local/connect-data-platform/sail-setup) |
-| [SingleStore](/docs/local/connect-data-platform/singlestore-setup) | [SQL Server & Azure SQL](/docs/local/connect-data-platform/mssql-setup) | [SQLite](/docs/local/connect-data-platform/sqlite-setup) |
-| [Starrocks](/docs/local/connect-data-platform/starrocks-setup) | [TiDB](/docs/local/connect-data-platform/tidb-setup) | [TimescaleDB](https://dbt-timescaledb.debruyn.dev/) |
-| [Upsolver](/docs/local/connect-data-platform/upsolver-setup) | [Vertica](/docs/local/connect-data-platform/vertica-setup) | [Watsonx-Presto](/docs/local/connect-data-platform/watsonx-presto-setup) |
-| [Yellowbrick](/docs/local/connect-data-platform/yellowbrick-setup) | | |
+| [MySQL](/docs/local/connect-data-platform/mysql-setup) | [RisingWave](/docs/local/connect-data-platform/risingwave-setup) | [Rockset](/docs/local/connect-data-platform/rockset-setup) |
+| [Sail](/docs/local/connect-data-platform/sail-setup) | [SingleStore](/docs/local/connect-data-platform/singlestore-setup) | [SQL Server & Azure SQL](/docs/local/connect-data-platform/mssql-setup) |
+| [SQLite](/docs/local/connect-data-platform/sqlite-setup) | [Starrocks](/docs/local/connect-data-platform/starrocks-setup) | [TiDB](/docs/local/connect-data-platform/tidb-setup) |
+| [TimescaleDB](https://dbt-timescaledb.debruyn.dev/) | [Upsolver](/docs/local/connect-data-platform/upsolver-setup) | [Vertica](/docs/local/connect-data-platform/vertica-setup) |
+| [Watsonx-Presto](/docs/local/connect-data-platform/watsonx-presto-setup) | [Yellowbrick](/docs/local/connect-data-platform/yellowbrick-setup) | |
 </SimpleTable>
 
 </VersionBlock>
