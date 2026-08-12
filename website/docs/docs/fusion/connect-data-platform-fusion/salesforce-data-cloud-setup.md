@@ -14,11 +14,15 @@ meta:
   slack_channel_link: N/A
   platform_name: 'Salesforce Data 360'
   config_page: '/reference/resource-configs/data-cloud-configs'
+unlisted: true
+availability:
+  preset: local_free
+  engine: v2
 ---
 
 # Salesforce Data 360 setup <Lifecycle status="beta"/>
 
-This `dbt-salesforce` adapter is available via the <Constant name="fusion_engine" /> CLI. To access the adapter, [install dbt Fusion](/docs/fusion/about-fusion-install). We recommend using the [VS Code Extension](/docs/local/install-dbt?version=2#get-started) as the development interface. <Constant name="dbt_platform" /> support coming soon. 
+This `dbt-salesforce` adapter is available through the <Constant name="fusion_engine" /> CLI. To access the adapter, [install dbt <Constant name="fusion" />](/docs/fusion/about-fusion-install). We recommend using the [VS Code Extension](/docs/local/install-dbt?version=2) as the development interface. <Constant name="dbt_platform" /> support is coming soon.
 
 ## Prerequisites
 

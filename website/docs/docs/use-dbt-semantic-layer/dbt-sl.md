@@ -7,9 +7,13 @@ tags: [Semantic Layer]
 hide_table_of_contents: false
 pagination_next: "guides/sl-snowflake-qs"
 pagination_prev: null
+availability:
+  surface: platform
+  access: paid_plan
+  minPlan: starter
 ---
 
-# dbt Semantic Layer <Lifecycle status="self_service,managed,managed_plus" />
+# dbt Semantic Layer
 
 <IntroText>
 
@@ -61,6 +65,6 @@ This section provides information on how to deploy the <Constant name="semantic_
 ## Consume metrics and integrate
 Consume metrics and integrate the <Constant name="semantic_layer" /> with downstream tools and applications:
 - [Consume metrics](/docs/use-dbt-semantic-layer/consume-metrics) &mdash; Query and consume metrics in downstream tools and applications using the <Constant name="semantic_layer" />.
-- [Available integrations](/docs/cloud-integrations/avail-sl-integrations) &mdash; Review a wide range of partners you can integrate and query with the <Constant name="semantic_layer" />.
-- [<Constant name="semantic_layer" /> APIs](/docs/dbt-cloud-apis/sl-api-overview) &mdash; Use the <Constant name="semantic_layer" /> APIs to query metrics in downstream tools for consistent, reliable data metrics.
+- [Available integrations](/docs/platform-integrations/avail-sl-integrations) &mdash; Review a wide range of partners you can integrate and query with the <Constant name="semantic_layer" />.
+- [<Constant name="semantic_layer" /> APIs](/docs/dbt-apis/sl-api-overview) &mdash; Use the <Constant name="semantic_layer" /> APIs to query metrics in downstream tools for consistent, reliable data metrics.
 

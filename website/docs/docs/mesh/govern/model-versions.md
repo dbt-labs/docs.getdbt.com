@@ -4,10 +4,12 @@ id: model-versions
 sidebar_label: "Model versions"
 description: "Version models to help with lifecycle management"
 keyword: governance, model version, model versioning, dbt model versioning
+availability: all_users
 ---
 
 import VersionsCallout from '/snippets/_model-version-callout.md';
 import ModelGovernanceRollback from '/snippets/_model-governance-rollback.md';
+import LatestVersionPointerCollision from '/snippets/_latest-version-pointer-collision.md';
 
 <VersionsCallout />
 
@@ -58,7 +60,7 @@ Rather than constantly adding a new version for each small change, you should op
 
 ## How is this different from "version control"?
 
-[Version control](/docs/cloud/git/git-version-control) allows your team to collaborate simultaneously on a single code repository, manage conflicts between changes, and review changes before deploying into production. In that sense, version control is an essential tool for versioning the deployment of an entire dbt project—always the latest state of the `main` branch. In general, only one version of your project code is deployed into an environment at a time. If something goes wrong, you have the ability to roll back changes by reverting a commit or pull request, or by leveraging data platform capabilities around "time travel." 
+[Version control](/docs/platform/git/git-version-control) allows your team to collaborate simultaneously on a single code repository, manage conflicts between changes, and review changes before deploying into production. In that sense, version control is an essential tool for versioning the deployment of an entire dbt project—always the latest state of the `main` branch. In general, only one version of your project code is deployed into an environment at a time. If something goes wrong, you have the ability to roll back changes by reverting a commit or pull request, or by leveraging data platform capabilities around "time travel." 
 
 When you make updates to a model's source code &mdash; its logical definition, in SQL or Python, or related configuration &mdash; dbt can [compare your project to the previous state](/reference/node-selection/syntax#about-node-selection), enabling you to rebuild only models that have changed, and models downstream of a change. In this way, it's possible to develop changes to a model, quickly test in CI, and efficiently deploy into production &mdash; all coordinated via your version control system.
 
@@ -318,9 +320,11 @@ You could use the `alias` configuration:
 
 </File>
 
+<VersionBlock lastVersion="1.11">
+
 **The pattern we recommend:** Create a view or table clone with the model's canonical name that always points to the latest version. By following this pattern, you can offer the same flexibility as `ref`, even if someone is querying outside of dbt. Want a specific version? Pin to version X by adding the `_vX` suffix. Want the latest version? No suffix, and the view will redirect you.
 
-We intend to build this into `dbt-core` as out-of-the-box functionality. (Upvote or comment on [dbt-core#7442](https://github.com/dbt-labs/dbt-core/issues/7442).) In the meantime, you can implement this pattern yourself with a custom macro and post-hook:
+You can implement this pattern yourself with a custom macro and post-hook:
 
 <File name="macros/create_latest_version_view.sql">
 
@@ -361,7 +365,6 @@ We intend to build this into `dbt-core` as out-of-the-box functionality. (Upvote
 
 </File>
 
-
 <File name="dbt_project.yml">
 
 ```yml
@@ -389,6 +392,61 @@ dbt.exceptions.AmbiguousAliasError: Compilation Error
 
 We opted to use `generate_alias_name` for this functionality so that the logic remains accessible to end users, and could be reimplemented with custom logic.
 :::
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.12">
+
+If you want a view that always tracks the latest model version instead of pinning to a specific one, see [Pointing to the latest version](#pointing-to-the-latest-version).
+
+### Pointing to the latest version
+
+
+The [`latest_version_pointer`](/reference/resource-configs/latest_version_pointer) config automatically creates a view named after the model's base name (for example, `dim_customers`) that always points to the latest versioned relation (for example, `dim_customers_v2`). When you enable it, querying outside of dbt always returns the current version. This config only applies to versioned models.
+
+Enable this feature in your project by setting the [`latest_version_pointer_enabled_by_default`](/reference/global-configs/behavior-flags/latest_version_pointer_enabled_by_default) flag to `true` in `dbt_project.yml`, or enable it per model with the `latest_version_pointer.enabled` config:
+
+<Tabs>
+<TabItem value="global" label="Enable globally">
+
+<File name="dbt_project.yml">
+
+```yaml
+flags:
+  latest_version_pointer_enabled_by_default: true
+```
+
+</File>
+
+</TabItem>
+<TabItem value="per-model" label="Enable per model">
+
+<File name="models/schema.yml">
+
+```yaml
+models:
+  - name: dim_customers
+    versions:
+      - v: 1
+      - v: 2
+    config:
+      latest_version_pointer:
+        enabled: true  # overrides the project flag when set
+        alias: dim_customers_current  # optional custom name
+```
+
+</File>
+
+</TabItem>
+</Tabs>
+
+The pointer view uses the model's base name by default (for example, `dim_customers`). You can override the alias per model with `latest_version_pointer.alias`, or globally by overriding the [`generate_latest_version_pointer_alias`](/docs/build/custom-aliases#generate_latest_version_pointer_alias) macro in your project.
+
+#### Naming collisions 
+
+<LatestVersionPointerCollision />
+
+</VersionBlock>
 
 ### Run a model with multiple versions
 

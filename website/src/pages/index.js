@@ -73,7 +73,7 @@ function Home() {
                   <Link
                     id="hero-vs-code-cta"
                     className="hero-border-beam-cta"
-                    to="/docs/local/install-dbt?version=2#installation">
+                    to="/docs/local/install-dbt">
                       <span>Install dbt VS Code extension + Fusion</span>
                       </Link>
                 </div>
@@ -88,23 +88,30 @@ function Home() {
               </div>
               <div className="home-card-grid">
                 <Card
-                  title="dbt Fusion engine"
+                  title="dbt Wizard"
+                  tag="Beta"
+                  body="Build, refactor, and validate dbt projects with an AI agent purpose-built for analytics engineering — in the dbt platform or from your terminal."
+                  link="/docs/platform/wizard-overview"
+                  icon="dbt-copilot"
+                />
+                <Card
+                  title="dbt Core"
                   tag="Article"
-                  body="Learn about the dbt Fusion engine and see how it enables dbt to operate at speed and scale like never before."
-                  link="/docs/fusion"
+                  body="Explore dbt Core and discover how its shared Rust runtime delivers faster, more scalable performance."
+                  link="/docs/fusion/about-core"
                   icon="zap"
                 />
                 <Card
                   title="Get started with dbt"
                   tag="Guide"
-                  body="Build fast with our quickstart guides."
+                  body="Get up and running quickly with our dbt quickstart guides."
                   link="/docs/get-started-dbt"
                   icon="settings"
                 />
                 <Card
                   title="Move to the dbt platform"
                   tag="Guide"
-                  body="Migrate from dbt Core to the powerful, lightning fast dbt platform today!"
+                  body="Move from self-hosted dbt Core to the dbt platform and follow recommended best practices for building scalable data pipelines."
                   link="/guides/core-migration-1?step=1"
                   icon="tool"
                 />
@@ -120,9 +127,9 @@ function Home() {
               </div>
               <div className="home-card-grid">
                 <Card
-                  title="dbt Copilot"
-                  body="AI-powered assistant that automates code, tests, and documentation in your workflow."
-                  link="/docs/cloud/dbt-copilot"
+                  title="dbt Wizard"
+                  body="AI agent purpose-built for analytics engineering — available in the dbt platform and from your terminal."
+                  link="/docs/platform/wizard-overview"
                   icon="dbt-copilot"
                 />
                 <Card
@@ -131,6 +138,13 @@ function Home() {
                   link="/docs/about-dbt-extension"
                   icon="vsce"
                   showBorderBeam
+                />
+                <Card
+                  title="dbt State"
+                  tag="Preview"
+                  body="dbt State makes dbt smarter about what to build — skipping unnecessary rebuilds by reusing nodes when logic and data haven't changed. Works with dbt Core, dbt platform, and the dbt Fusion engine."
+                  link="/docs/deploy/dbt-state-about"
+                  icon="forward"
                 />
                 <Card
                   title="dbt Orchestrator"
@@ -147,7 +161,7 @@ function Home() {
                 <Card
                   title="dbt Canvas"
                   body="dbt Canvas helps you quickly access and transform data through a visual, drag-and-drop experience and with a built-in AI for custom code generation."
-                  link="/docs/cloud/canvas"
+                  link="/docs/platform/canvas"
                   icon="canvas"
                 />
                 <Card
@@ -165,7 +179,7 @@ function Home() {
                 <Card
                   title="Studio IDE"
                   body="The dbt integrated development environment (Studio IDE) is a single web-based interface for building, testing, running, and version-controlling dbt projects."
-                  link="/docs/cloud/studio-ide/develop-in-studio#get-started-with-the-cloud-ide"
+                  link="/docs/platform/studio-ide/develop-in-studio#get-started-with-the-studio-ide"
                   icon="dashboard"
                 />
                 <Card
@@ -188,10 +202,10 @@ function Home() {
               <div className="home-link-grid">
                 <div className="home-link-grid-item">
                   <h4 className="heading-4">Documentation</h4>
-                  <Link to="/docs/dbt-cloud-apis/overview">API Docs</Link>
+                  <Link to="/docs/dbt-apis/overview">API Docs</Link>
                   <Link to="/docs/introduction">Product Docs</Link>
                   <Link to="/best-practices">Best Practices</Link>
-                  <Link to="/docs/cloud/dbt-copilot">Copilot</Link>
+                  <Link to="/docs/platform/wizard-overview">dbt Wizard</Link>
                 </div>
                 <div className="home-link-grid-item">
                   <h4 className="heading-4">Guides</h4>
@@ -208,7 +222,7 @@ function Home() {
                 </div>
                 <div className="home-link-grid-item">
                   <h4 className="heading-4">Other Resources</h4>
-                  <Link to="/docs/dbt-versions/dbt-cloud-release-notes">Release Notes</Link>
+                  <Link to="/docs/dbt-versions/release-notes">Release Notes</Link>
                   <Link to="/blog">Developer Blog</Link>
                   <Link to="/community/join">Join the Community</Link>
                 </div>

@@ -3,11 +3,12 @@ title: "Configure your local environment"
 sidebar_label: "Configure your local environment"
 id: "configure-dbt-extension"
 description: "Optimize your VS Code extension environment (files, env vars, connectivity)."
+availability: local_all
 ---
 
 import EnvFileConsiderations from '/snippets/_env-file-considerations.md';
 
-Whether you currently use <Constant name="dbt_platform" /> or self-host with <Constant name="fusion" />, or you’re a <Constant name="core" /> user upgrading to <Constant name="fusion" />, follow the instructions on this page to:
+Whether you currently use <Constant name="dbt_platform" /> or self-host with <Constant name="fusion" />, or you're a <Constant name="core" /> user upgrading to <Constant name="fusion" />, follow the instructions on this page to:
 
 <!-- no toc -->
 - [Prepare your local setup](#prepare-your-local-setup)
@@ -18,15 +19,15 @@ If you're new to dbt or getting started with a new project, you can skip this pa
 
 The steps differ slightly depending on whether you use <Constant name="dbt_platform" /> or self host with <Constant name="fusion" />.
 
-- <Constant name="dbt_platform" /> &mdash; You’ll mirror your <Constant name="dbt_platform" /> environment locally to unlock <Constant name="fusion" />-powered features like <Constant name="mesh" />, deferral, and so on. If your project has environment variables, you'll also set them locally to leverage the VS Code extension's features.
-- Self-hosted &mdash; When you self-host with <Constant name="fusion" /> or are upgrading from <Constant name="core" /> to <Constant name="fusion" />, you’ll most likely already have a local setup and environment variables. Use this page to confirm that your existing local setup and environment variables work seamlessly with the <Constant name="fusion_engine" /> and VS Code extension.
+- <Constant name="dbt_platform" /> &mdash; You'll mirror your <Constant name="dbt_platform" /> environment locally to unlock <Constant name="fusion" />-powered features like <Constant name="mesh" />, deferral, and so on. If your project has environment variables, you'll also set them locally to leverage the VS Code extension's features.
+- Self-hosted &mdash; When you self-host with <Constant name="fusion" /> or are upgrading from <Constant name="core" /> to <Constant name="fusion" />, you'll most likely already have a local setup and environment variables. Use this page to confirm that your existing local setup and environment variables work seamlessly with the <Constant name="fusion_engine" /> and VS Code extension.
 
 ## Prerequisites
 
 - <Constant name="fusion_engine" /> installed
 - Downloaded and installed the dbt VS Code extension
-- Basic understanding of [Git workflows](/docs/cloud/git/version-control-basics) and [dbt project structure](/best-practices/how-we-structure/1-guide-overview)
-- [Developer or analyst license](https://www.getdbt.com/pricing)\* if you're using <Constant name="dbt_platform" />. Note, the [Analyst license type](/docs/cloud/manage-access/about-user-access?version=1.12#licenses) is not available for new purchase.
+- Basic understanding of [Git workflows](/docs/platform/git/version-control-basics) and [dbt project structure](/best-practices/how-we-structure/1-guide-overview)
+- [Developer or analyst license](https://www.getdbt.com/pricing)\* if you're using <Constant name="dbt_platform" />. Note, the [Analyst license type](/docs/platform/manage-access/about-user-access?version=1.12#licenses) is not available for new purchase.
 
 ## Prepare your local setup 
 
@@ -37,20 +38,20 @@ In this section, we'll walk you through the steps to prepare your local setup fo
 3. Validate your `profiles.yml` and project configuration by running `dbt debug`.
 4. Add a `dbt_cloud.yml` file from the <Constant name="dbt_platform" /> Account settings:
    - Navigate to **Your profile** -> **VS Code Extension** -> **Download credentials**.
-   - Download the `dbt_cloud.yml` file with your [**Personal access Token (PAT)**](/docs/dbt-cloud-apis/user-tokens) included and place it in the `~/.dbt/` directory. This then registers and connects the extension to <Constant name="dbt_platform" /> and enables platform features such as <Constant name="mesh" /> and deferral.
-   - Check the `project_id` in your `dbt_project.yml` file matching the project you're working on.
+   - Place the downloaded file in your `~/.dbt/` directory. This registers and connects the extension to <Constant name="dbt_platform" /> and enables platform features such as <Constant name="mesh" /> and deferral. Refer to [`dbt_cloud.yml`](/reference/dbt_cloud.yml) for the file's structure and required fields.
+   - Check the `project-id` in your [`dbt_project.yml` `dbt-cloud` block](/reference/dbt_cloud.yml#the-dbt-cloud-block-in-dbt_projectyml) matches the project you're working on.
 5. Confirm connection from your workstation (like running `dbt debug` in the terminal). Your local computer connects directly to your data warehouse and Git.  
    - <Constant name="dbt_platform" /> users: Ensure your laptop/VPN is allowed; <Constant name="dbt_platform" /> IPs no longer apply. Check with your admin if you have any issues.
    - <Constant name="core" /> users: This has likely already been configured.
 6. (Optional) If your project uses environment variables, [find them](/docs/build/environment-variables#setting-and-overriding-environment-variables) in the <Constant name="dbt_platform" /> and [set them](#set-environment-variables-locally) in VS Code or Cursor.
    - <Constant name="dbt_platform" /> users: Copy any environment variables from **Deploy → Environments → Environment variables** tab in <Constant name="dbt_platform" />.  Masked secrets are hidden.  Work with your admin to get those values.  
-    <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/Environment Variables/navigate-to-env-vars.png" title="Environment variables tab"/>
+    <Lightbox src="/img/docs/dbt-platform/using-dbt-platform/Environment Variables/navigate-to-env-vars.png" title="Environment variables tab"/>
 
 ## Set environment variables locally
 
 Environment variables are used for authentication and configuration.
 
-This section is most relevant for [dbt VS Code extension](/docs/about-dbt-extension) and <Constant name="dbt_platform"/> users who have environment variables configured as part of their workspace setup. If you’re using <Constant name="fusion"/> locally, you can also install the VS Code extension and use its features and actions &mdash; you just may not need to configure these variables unless your setup specifically requires them.
+This section is most relevant for [dbt VS Code extension](/docs/about-dbt-extension) and <Constant name="dbt_platform"/> users who have environment variables configured as part of their workspace setup. If you're using <Constant name="fusion"/> locally, you can also install the VS Code extension and use its features and actions &mdash; you just may not need to configure these variables unless your setup specifically requires them.
 
 The following table shows the different options and when to use them:
 
@@ -127,7 +128,7 @@ The following steps will explain how to configure environment variables using Po
 
 #### About `.env` file support
 
-The [<Constant name="fusion"/> CLI](/docs/local/install-dbt?version=2#get-started) and the dbt VS Code extension can automatically read environment variables from a `.env` file in your current working directory (the folder you `cd` into and run dbt commands from in your terminal), if one exists. The environment variables you define in the `.env` file are available both when running dbt commands in the terminal as well as when using the extension's menu actions. 
+[dbt](/docs/local/install-dbt) and the dbt VS Code extension can automatically read environment variables from a `.env` file in your current working directory (the folder you `cd` into and run dbt commands from in your terminal), if one exists. The environment variables you define in the `.env` file are available when running dbt commands in the terminal and when using the extension's menu actions.
 
 <EnvFileConsiderations />
 
@@ -235,21 +236,54 @@ To configure environment variables in the terminal session:
     </Tabs>
 2. Verify the changes by running a dbt command and checking the output.
 
-
-
 ## dbt extension settings
-<!-- moved content from website/docs/docs/local/install-dbt?version=2#get-started.md to here -->
+<!-- moved content from website/docs/docs/local/install-dbt?version=2.md to here -->
 
 After installing the dbt extension and configuring your local setup, you may want to configure it to better fit your development workflow:
 
 1. Open the VS Code settings by pressing `Ctrl+,` (Windows/Linux) or `Cmd+,` (Mac).
-2. Search for `dbt`. On this page, you can adjust the extension’s configuration options to fit your needs.
+2. Search for `dbt`. On this page, you can adjust the extension's configuration options to fit your needs.
 
 <Lightbox src="/img/docs/extension/dbt-extension-settings.png" width="70%" title="dbt extension settings within the VS Code settings."/>
+
+The following settings are the most relevant when you install or manage the <Constant name="fusion_engine" /> binary yourself. Most users never need to set these because the extension downloads and manages <Constant name="fusion" /> automatically.
+
+| Setting                       | Description |
+| ----------------------------- | ----------- |
+| `dbt.fusionPath`              | Path to the <Constant name="fusion_engine" /> binary. The extension invokes the language server through this binary (`dbt-fusion lsp`). Set this when you install <Constant name="fusion" /> manually &mdash; for example, in an [air-gapped environment](/docs/dbt-versions/fusion-version-compatibility#verify-binaries-for-manual-and-air-gapped-installs) &mdash; instead of letting the extension download it. |
+| `dbt.badReleasesManifestPath` | Path to a local copy of the [known-bad-releases manifest](/docs/dbt-versions/fusion-version-compatibility#known-bad-releases). Use this if you don't have outbound network access and distribute the manifest alongside your binary bundle (for example, air-gapped installations). |
+| `dbt.environmentVariables`    | Environment variables the extension passes to dbt. Refer to [Configure in the VS Code extension settings](#configure-in-the-vs-code-extension-settings). |
+
+:::note Upgrading from a separate language server binary
+
+Earlier extension versions used separate `dbt.cliPath` and `dbt.lspPath` settings for two distinct binaries. Current versions use a single `dbt.fusionPath` because the CLI and language server ship as one <Constant name="fusion" /> binary. If you previously configured `dbt.lspPath`, migrate that path to `dbt.fusionPath`. Refer to [Version compatibility](/docs/dbt-versions/fusion-version-compatibility) for details.
+
+:::
+
+## File associations and other extensions
+
+The dbt extension doesn't depend on your `.sql` [file associations](https://code.visualstudio.com/docs/languages/identifiers). It activates on your `dbt_project.yml`, so <Term id="lsp" /> features &mdash; like autocomplete, go-to-definition, and database-aware IntelliSense &mdash; work whether your files are set to `sql` or `jinja-sql`. The only difference between those two is syntax highlighting and the file icon.
+
+Where the association does matter is for *other* extensions. Any extension that claims the `sql` file type &mdash; whether that's Snowflake, SQL Server, or another database tool &mdash; can intercept your dbt files and override the IntelliSense you'd otherwise get from the dbt extension. For example, the Snowflake extension only picks up files associated with `snowflake-sql`. That makes `snowflake-sql` the wrong association for your dbt files &mdash; it hands them to the Snowflake extension instead of treating them as dbt files. If you have multiple SQL-aware extensions installed, it's worth checking which one is handling your `.sql` files to avoid unexpected behavior.
+
+If you want to use both extensions, keep your ad hoc query files in a separate, gitignored directory and scope the Snowflake association to just that path:
+
+```json
+{
+  "files.associations": {
+    "**/snowflake_sandbox/*.sql": "snowflake-sql",
+    "*.sql": "sql"
+  }
+}
+```
+
+:::tip Autocomplete not working?
+If column autocomplete isn't working, it's probably not your file associations. Make sure [strict static analysis](/docs/build/about-static-analysis?version=2.0#configuring-static_analysis) is enabled &mdash; that's what powers column-level suggestions from your warehouse.
+:::
 
 ## Next steps
 Now that you've configured your local environment, you can start using the dbt extension to streamline your dbt development workflows. Check out the following resources to get started:
 
 - [About the dbt extension](/docs/about-dbt-extension)
 - [dbt extension features](/docs/dbt-extension-features)
-- [Register the extension](/docs/install-dbt-extension#register-the-extension)
+- [Sign in or register](/docs/sign-in-dbt-extension)

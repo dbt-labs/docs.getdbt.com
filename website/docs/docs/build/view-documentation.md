@@ -6,11 +6,12 @@ id: "view-documentation"
 
 dbt provides intuitive and scalable tools for viewing your dbt documentation. Detailed documentation is essential for your developers and other stakeholders to gain shared context for your dbt project.
 
-You can view documentation in two complementary ways, depending on your needs:
+You can view documentation in three complementary ways, depending on your needs:
 
 | Option | Description | Availability |
 |------|-------------|--------------|
-| [**dbt Docs**](#dbt-docs) | Generates a static website with model lineage, metadata, and documentation that can be hosted on your web server (like S3 or Netlify). | <Constant name="core" /> or <Constant name="dbt" /> Developer plans |
+| [**dbt Docs (Legacy)**](#dbt-docs) | Generates a static website with model lineage, metadata, and documentation that can be hosted on your web server (like S3 or Netlify). | <Constant name="core" /> or <Constant name="dbt" /> Developer plans |
+| [**dbt Docs v2**](#dbt-docs-v2) <Lifecycle status="alpha" size="70" /> | A modern, performant open-source catalog built for data consumers. Includes a redesigned UI, large-project performance, Semantic Layer metadata, column-level lineage (Fusion), and a REST API for AI agents. | <Constant name="fusion_engine" /> and <Constant name="core_v2" /> |
 | [**<Constant name="catalog" />**](/docs/explore/explore-projects) | The premier documentation experience in <Constant name="dbt" />. Builds on dbt Docs to provide a dynamic, real-time interface with rich [metadata](/docs/explore/explore-projects#generate-metadata), customizable views, deep insight into your project and resources, and collaborative tools. | <Constant name="dbt" /> Starter, Enterprise, or Enterprise+ plans |
 
 ## Navigating your documentation
@@ -25,7 +26,7 @@ To access <Constant name="catalog" />, navigate to the **Catalog** option in the
 
 <Lightbox src="/img/docs/collaborate/dbt-explorer/example-model-details.png" width="95%" title="Example of Catalog's resource details page and its lineage." />
 
-<Lightbox src="/img/docs/collaborate/dbt-explorer/explorer-main-page.gif" width="95%" title="Navigate Catalog to discover your project's resources and lineage."/>
+<Lightbox src="/img/docs/collaborate/dbt-explorer/explorer-main-page.gif" width="95%" title="Access Catalog from the lineage tab in a job by double-clicking a lineage node."/>
 
 </DocCarousel>
 
@@ -41,7 +42,81 @@ To access <Constant name="catalog" />, navigate to the **Catalog** option in the
 
 For additional details and instructions on how to explore your lineage, navigate your resources, view model query history and data health signals, feature availability, and more &mdash; refer to [Discover data with <Constant name="catalog" />](/docs/explore/explore-projects).
 
-### dbt Docs
+### dbt Docs v2 <Lifecycle status="alpha"/>
+
+dbt Docs v2 is the next-generation open-source catalog experience, available when using the <Constant name="fusion_engine" /> and <Constant name="core_v2" />. It is designed for data consumers (analysts, BI users, data scientists, and stakeholders) who need to understand what data exists, how it was built, and whether they can trust it.
+
+Key improvements over dbt Docs:
+
+- **Performance:** Better handling for large dbt projects. The server reads from compact, pre-built index files rather than loading the full `manifest.json` in the browser.
+- **Modernized UI:** Visually aligned with the dbt platform, with better navigation and resource discovery.
+- **Semantic Layer metadata:** Surfaces compiled SQL logic, queryable dimensions, and metric definitions from your dbt Semantic Layer.
+- **Column-level lineage:** Available when using the <Constant name="fusion_engine" />.
+- **REST API:** Exposes a `/api/v1/` interface so AI agents and external tooling can query metadata without a browser. This makes dbt Docs v2 a context source for MCP servers and coding agents.
+
+To generate and serve dbt Docs v2, use the <Constant name="fusion_engine" /> or <Constant name="core_v2" /> to build your project with `--write-index` (for example, `dbt compile --write-index`). Then, run `dbt docs serve`. Add [`--static-analysis strict`](https://docs.getdbt.com/docs/build/about-static-analysis?version=1.13) to also pull column lineage and richer column type metadata from your warehouse.
+
+Refer to [dbt docs commands](/reference/commands/cmd-docs) for full usage.
+
+#### Self-hosting dbt Docs v2
+
+Because dbt Docs v2 ships as a single self-contained binary (the API and the embedded UI in one executable) that serves from the Parquet index files rather than a live warehouse connection, you can self-host it in a container. This is useful when you want a persistent, shared docs site instead of running `dbt docs serve` locally.
+
+The server is read-only and stateless: it loads the Parquet artifacts from `target/index/` into an in-memory engine at boot. To refresh the docs, rebuild your project with `--write-index` and restart the server.
+
+Before you start, generate the artifacts by building your project with `--write-index` (for example, `dbt compile --write-index`), which writes the Parquet files to `./target/index/`.
+
+<Tabs>
+
+<TabItem value="compose" label="Docker Compose">
+
+Use the included `docker-compose.yml`, which wires up the build, the artifact mount, the port, and a persistent driver-cache volume. Point `DBT_TARGET_PATH` at your project's `target/` directory (use an absolute path) and start it:
+
+```bash
+DBT_TARGET_PATH=/abs/path/to/project/target docker compose up --build
+```
+
+Then, open `http://localhost:8580`.
+
+</TabItem>
+
+<TabItem value="docker" label="Docker">
+
+Use the included `Dockerfile`, which installs the released dbt binary (it doesn't build from source), so the build is quick and needs no cargo toolchain:
+
+```bash
+docker build -f crates/dbt-docs-server/Dockerfile -t dbt-docs-server .
+```
+
+Run it, mounting a project `target/` directory that already contains `target/index/*.parquet`:
+
+```bash
+docker run --rm -p 8580:8580 \
+  -v "$PWD/target:/data/target:ro" \
+  dbt-docs-server
+```
+
+Then, open `http://localhost:8580`.
+
+</TabItem>
+
+</Tabs>
+
+:::note First-run network access
+
+dbt Docs v2 queries the Parquet index through an ADBC DuckDB driver that isn't bundled in the image. On first boot, the server downloads the driver from `public.cdn.getdbt.com` into the cache directory (`/var/cache/dbt`), so the container needs outbound HTTPS access the first time it runs. To avoid re-downloading it on every run (and to run fully offline once warmed), persist the cache with a named volume:
+
+```bash
+docker run --rm -p 8580:8580 \
+  -v "$PWD/target:/data/target:ro" \
+  -v dbt-adbc-cache:/var/cache/dbt \
+  dbt-docs-server
+```
+
+:::
+
+
+### dbt Docs (Legacy)
 
 dbt Docs provides valuable insights into your <Constant name="core" /> or <Constant name="dbt" /> Developer plan projects. The interface enables you to navigate to the documentation for specific models. That might look something like this:
 
@@ -73,7 +148,7 @@ The `dbt docs serve` command is only intended for local/development hosting of t
 
 To learn how to deploy your documentation site, see [Build and view your docs with <Constant name="dbt" />](/docs/explore/build-and-view-your-docs).
 
-### dbt Docs
+### dbt Docs (Legacy)
 dbt Docs was built to make it easy to host on the web. The site is "static," meaning you don't need any "dynamic" servers to serve the docs. You can host your documentation in several ways:
 
 * Host on [Amazon S3](https://docs.aws.amazon.com/AmazonS3/latest/dev/WebsiteHosting.html) (optionally [with IP access restrictions](https://docs.aws.amazon.com/AmazonS3/latest/dev/example-bucket-policies.html#example-bucket-policies-use-case-3))

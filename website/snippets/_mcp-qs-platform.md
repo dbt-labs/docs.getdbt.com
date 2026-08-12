@@ -8,12 +8,19 @@ import MCPFaqUrlsVsIds from '/snippets/_mcp-faq-urls-vs-ids.md';
 import MCPFaqMulticell from '/snippets/_mcp-faq-multicell.md';
 
 
-This quickstart uses the local MCP server: it runs on your machine using `uvx dbt-mcp`, connects to your <Constant name="dbt_platform"/> for <Constant name="semantic_layer"/>, Discovery, and SQL, and optionally runs local dbt CLI. For local CLI only (with or without a <Constant name="dbt_platform"/> account), see [Run dbt locally](/docs/dbt-ai/mcp-quickstart-cli). To configure or disable specific tools, see the [Environment variables reference](/docs/dbt-ai/mcp-environment-variables). Choose _OAuth_ (available for Enterprise and Enterprise+ accounts) or _Tokens_ (more control, better for shared setups).
+This quickstart uses the local MCP server: it runs on your machine using `uvx dbt-mcp`, connects to your <Constant name="dbt_platform"/> for <Constant name="semantic_layer"/>, Discovery, and SQL, and optionally runs local dbt. 
+
+For self-hosted CLI only (with or without a <Constant name="dbt_platform"/> account), see [Run self-hosted dbt](/docs/dbt-ai/mcp-quickstart-cli) or [Run self-hosted dbt Wizard](/docs/dbt-ai/wizard-quickstart).
+
+ To configure or disable specific tools, see the [Environment variables reference](/docs/dbt-ai/mcp-environment-variables). 
 
 ## Prerequisites
 
 - [Install uv](https://docs.astral.sh/uv/getting-started/installation/)
 - A [<Constant name="dbt_platform"/> account](https://www.getdbt.com/signup)
+- For OAuth connections:
+  - MCP OAuth is available for Starter, Enterprise, and Enterprise+ plans.
+  - An account admin has to enable AI features on your <Constant name="dbt_platform"/> account. Refer to [Enable AI features](/docs/platform/enable-dbt-ai) for more info.
 
 ## Step 1: Choose your auth method and configure
 
@@ -21,9 +28,11 @@ This quickstart uses the local MCP server: it runs on your machine using `uvx db
 
 <TabItem value="oauth" label="OAuth">
 
-OAuth is the fastest setup for <Constant name="dbt_platform"/> Enterprise and Enterprise+ accounts &mdash; no tokens to copy or manage. A browser window opens to authenticate the first time you connect. 
+_MCP OAuth is available in public beta for Starter, Enterprise, and Enterprise+ accounts._
 
-OAuth is currently available with the local MCP server only. For [remote MCP server](/docs/dbt-ai/setup-remote-mcp) setups, use [token-based authentication](/docs/dbt-ai/setup-remote-mcp#setup-instructions).
+OAuth is the fastest setup for <Constant name="dbt_platform"/> accounts, no tokens to copy or manage. A browser window opens to authenticate the first time you connect. 
+
+For OAuth _without_ a self-hosted installation, use the [remote MCP server](/docs/dbt-ai/mcp-quickstart-remote). If your client does not support OAuth or you need token-based access, use [token-based authentication](/docs/dbt-ai/setup-remote-mcp#token-based-authentication).
 
 <StaticSubdomainRequired />
 
@@ -106,7 +115,7 @@ claude mcp add dbt \
 Click a link below with Cursor open to auto-configure, then replace the placeholder with your Access URL:
 
 - [<Constant name="dbt_platform"/> only (OAuth)](cursor://anysphere.cursor-deeplink/mcp/install?name=dbt&config=eyJlbnYiOnsiREJUX0hPU1QiOiJZT1VSLUFDQ0VTUy1VUkwiLCJESVNBQkxFX0RCVF9DTEkiOiJ0cnVlIn0sImNvbW1hbmQiOiJ1dngiLCJhcmdzIjpbImRidC1tY3AiXX0%3D) — platform features only, no CLI
-- [<Constant name="dbt_platform"/> + CLI (OAuth)](cursor://anysphere.cursor-deeplink/mcp/install?name=dbt&config=eyJlbnYiOnsiREJUX0hPU1QiOiJZT1VSLUFDQ0VTUy1VUkwiLCJEQlRfUFJPSkVDVF9ESVIiOiIvcGF0aC90by9wcm9qZWN0IiwiREJUX1BBVEgiOiJwYXRoL3RvL2RidC9leGVjdXRhYmxlIn0sImNvbW1hbmQiOiJ1dngiLCJhcmdzIjpbImRidC1tY3AiXX0%3D) — platform features + local CLI commands
+- [<Constant name="dbt_platform"/> + CLI (OAuth)](cursor://anysphere.cursor-deeplink/mcp/install?name=dbt&config=eyJlbnYiOnsiREJUX0hPU1QiOiJZT1VSLUFDQ0VTUy1VUkwiLCJEQlRfUFJPSkVDVF9ESVIiOiIvcGF0aC90by9wcm9qZWN0IiwiREJUX1BBVEgiOiJwYXRoL3RvL2RidC9leGVjdXRhYmxlIn0sImNvbW1hbmQiOiJ1dngiLCJhcmdzIjpbImRidC1tY3AiXX0%3D) — platform features + self-hosted dbt CLI commands
 
 After clicking, replace `YOUR-ACCESS-URL` with your actual Access URL (for example, `abc123.us1.dbt.com`) and save.
 
@@ -141,7 +150,7 @@ Replace `YOUR-ACCESS-URL` with your Access URL (for example, `abc123.us1.dbt.com
 
 </Tabs>
 
-#### Optional: Add local CLI commands
+#### Optional: Add self-hosted dbt CLI commands
 
 To also run <Constant name="platform_cli"/> commands (`dbt run`, `dbt build`, `dbt test`, and more), add these two variables to your `env` block:
 
@@ -319,9 +328,9 @@ Add `-e DBT_DEV_ENV_ID=...` and `-e DBT_USER_ID=...` if you use `execute_sql`; a
 
 </Tabs>
 
-<Expandable alt_header="Optional: add local CLI commands">
+<Expandable alt_header="Optional: add self-hosted dbt CLI commands">
 
-To also run dbt CLI commands (`dbt run`, `dbt build`, `dbt test`, and more), add these two variables to your `env` block:
+To also run dbt commands (`dbt run`, `dbt build`, `dbt test`, and more), add these two variables to your `env` block:
 
 ```json
 "DBT_PROJECT_DIR": "/path/to/your/dbt/project",
@@ -370,13 +379,13 @@ With the platform setup, your AI assistant can use:
 - Semantic Layer queries
 - Metadata Discovery (model lineage, test results, source freshness)
 - Admin API (trigger jobs, list runs, get artifacts)
-- SQL execution and text-to-SQL (requires a [PAT](/docs/dbt-cloud-apis/user-tokens))
-- All dbt CLI commands if you added `DBT_PROJECT_DIR` and `DBT_PATH`
+- SQL execution and text-to-SQL (requires a [PAT](/docs/dbt-apis/user-tokens))
+- All dbt commands if you added `DBT_PROJECT_DIR` and `DBT_PATH`
 
 For the complete tool list, see [Available tools](/docs/dbt-ai/mcp-available-tools).
 
-:::tip Looking for local CLI only?
-If you only need to run dbt commands locally (with or without a <Constant name="dbt_platform"/> account), see [Run dbt locally](/docs/dbt-ai/mcp-quickstart-cli).
+:::tip Looking for self-hosted dbt CLI only?
+If you only need to run dbt commands locally (with or without a <Constant name="dbt_platform"/> account), see [Run self-hosted dbt](/docs/dbt-ai/mcp-quickstart-cli).
 :::
 
 ## Troubleshooting
@@ -427,6 +436,6 @@ For all troubleshooting topics, see [MCP troubleshooting](/docs/dbt-ai/mcp-troub
 
 ## Next steps
 
-- Run dbt commands locally: see [Run dbt locally](/docs/dbt-ai/mcp-quickstart-cli)
+- Run dbt commands locally: see [Run self-hosted dbt](/docs/dbt-ai/mcp-quickstart-cli)
 - Configure specific toolsets: see the [Environment variables reference](/docs/dbt-ai/mcp-environment-variables)
-- Understand toolset requirements: see [Set up local MCP](/docs/dbt-ai/setup-local-mcp#tool-requirements-at-a-glance)
+- Understand toolset requirements: see [Set up self-hosted MCP](/docs/dbt-ai/setup-local-mcp#tool-requirements-at-a-glance)

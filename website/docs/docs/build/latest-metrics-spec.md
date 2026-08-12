@@ -4,6 +4,7 @@ id: "latest-metrics-spec"
 description: "Learn how to migrate from the legacy metrics spec to the latest metrics spec."
 sidebar_label: Migrate to the latest YAML spec 
 tags: [Metrics, Semantic Layer, Fusion]
+availability: all_users
 ---
 
 
@@ -584,7 +585,7 @@ metrics:
 ## Migrating to the latest spec
 
 :::note Studio IDE YAML validation
-The <Constant name="studio_ide" /> validates dbt YAML using JSON Schema from the [dbt-jsonschema](https://github.com/dbt-labs/dbt-jsonschema) project. These definitions are aligned with the <Constant name="fusion_engine" /> and apply across all [<Constant name="dbt_platform" /> release tracks](/docs/dbt-versions/cloud-release-tracks), including when your development environment is still running <Constant name="core" />.
+The <Constant name="studio_ide" /> validates dbt YAML using JSON Schema from the [dbt-jsonschema](https://github.com/dbt-labs/dbt-jsonschema) project. These definitions are aligned with the <Constant name="fusion_engine" /> and apply across all [<Constant name="dbt_platform" /> release tracks](/docs/dbt-versions/dbt-release-tracks), including when your development environment is still running <Constant name="core" />.
 
 If the <Constant name="studio_ide" /> flags your YAML as invalid but <Constant name="dbt" /> commands succeed, trust your run results. Share examples with [dbt Support](mailto:support@getdbt.com) or your account team so the schema can be updated.
 :::
@@ -607,7 +608,7 @@ To update packages, a package maintainer should:
 
 2. Validate the changes by running:
 
-  - For Fusion and dbt users in the dbt platform CLI or locally with a valid `dbt_cloud.yml`:
+  - For <Constant name="fusion" /> and dbt users in the <Constant name="platform_cli" /> or locally with a valid [`dbt_cloud.yml`](/reference/dbt_cloud.yml):
 
     ```bash
     dbt parse

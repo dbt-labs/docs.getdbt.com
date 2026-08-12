@@ -4,11 +4,11 @@ Looking for a good place to get involved contributing code? dbt Labs supports th
 
 ## Rust
 
-- [<Constant name="fusion_engine" />](https://github.com/dbt-labs/dbt-fusion) - the next-generation engine powering dbt
+- [<Constant name="core_v2" />](https://github.com/dbt-labs/dbt-core) - the next major version of dbt Core, powered by the <Constant name="fusion_engine" /> (previously located at in [`dbt-fusion`](https://github.com/dbt-labs/dbt-fusion))
 
 ## Python
 
-- [<Constant name="core" />](https://github.com/dbt-labs/dbt-core) - the original engine powering dbt
+- [<Constant name="core" />](https://github.com/dbt-labs/dbt-core/tree/1.latest) - the original engine powering dbt
 - [hubcap](https://github.com/dbt-labs/hubcap) - the code powering the dbt Package hub
 
 ## dbt

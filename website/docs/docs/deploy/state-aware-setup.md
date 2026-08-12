@@ -4,15 +4,24 @@ sidebar_label: "Setting up state-aware"
 description: "Set up state-aware orchestration to automatically determine which models to build by detecting changes in code or data every time a job runs." 
 id: "state-aware-setup"
 tags: ['scheduler']
+unlisted: true
+availability:
+  surface: platform
+  access: paid_plan
+  minPlan: enterprise
 ---
 
-# Setting up state-aware orchestration <Lifecycle status="private_preview,managed,managed_plus" />
+# Setting up state-aware orchestration <Lifecycle status="private_preview" />
 
 <IntroText>
 
 Set up state-aware orchestration to automatically determine which models to build by detecting changes in code or data and only building the changed models each time a job is run.
 
 </IntroText>
+
+import SaoDeprecated from '/snippets/_sao-deprecated.md';
+
+<SaoDeprecated />
 
 import FusionLifecycle from '/snippets/_fusion-lifecycle-callout.md';
 
@@ -22,10 +31,11 @@ import FusionLifecycle from '/snippets/_fusion-lifecycle-callout.md';
 
 To use state-aware orchestration, make sure you meet these prerequisites:
 
-- You must have a <Constant name="dbt" /> [Enterprise and Enterprise+ accounts](https://www.getdbt.com/signup/) and a [Developer seat license](/docs/cloud/manage-access/seats-and-users).
-- You have updated the environment that will run state-aware orchestration to the dbt Fusion engine. For more information, refer to [Upgrading to dbt Fusion engine](/docs/dbt-versions/core-upgrade/upgrading-to-fusion).
-- You must have a dbt project connected to a [data platform](/docs/cloud/connect-data-platform/about-connections).
-- You must have [access permission](/docs/cloud/manage-access/about-user-access) to view, create, modify, or run jobs.
+- You must have a <Constant name="dbt" /> [Enterprise and Enterprise+ accounts](https://www.getdbt.com/signup/) and a [Developer seat license](/docs/platform/manage-access/seats-and-users).
+- You have updated the environment that will run state-aware orchestration to the <Constant name="fusion_engine" />. For more information, refer to [Upgrading to dbt Fusion engine](/docs/dbt-versions/core-upgrade/upgrading-to-v2).
+- Your account must have access to state-aware orchestration. Contact your account manager to request access.
+- You must have a dbt project connected to a [data platform](/docs/platform/connect-data-platform/about-connections).
+- You must have [access permission](/docs/platform/manage-access/about-user-access) to view, create, modify, or run jobs.
 - You must set up a [deployment environment](/docs/deploy/deploy-environments) that is production or staging only.
 - You must use a deploy job. Continuous integration (CI) and merge jobs currently do not support state-aware orchestration.
 - (Optional) To customize behavior, you have configured your model or source data with [advanced configurations](#advanced-configurations).
@@ -38,12 +48,12 @@ State-aware orchestration is available for SQL models only. Python models are no
 
 ## Default settings
 
-By default, for an Enterprise-tier account upgraded to the dbt Fusion engine, any newly created job will automatically be state-aware. Out of the box, without custom configurations, when you run a job, the job will only build models when either the code has changed, or there’s any new data in a source.
+Once your account has access to state-aware orchestration, any new deploy job you create in a <Constant name="fusion" /> environment is automatically state-aware. Without additional configuration, the job only builds models when code has changed or new data exists in a source.
 
 ## Create a job
 
 :::info New jobs are state-aware by default
-For existing jobs, make them state-aware by selecting **Enable Fusion cost optimization features** in the **Job settings** page.
+For existing jobs, select **Enable Fusion cost optimization features** in the **Job settings** page to enable state-aware orchestration.
 :::
 
 To create a state-aware job:
@@ -55,7 +65,7 @@ To create a state-aware job:
     - **Environment**: By default, it’s set to the deployment environment you created the state-aware job from.
 3. Options in the **Execution settings** and **Triggers** sections:
 
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/example-triggers-section.png" width="90%" title="Example of Triggers on the Deploy Job page"/>
+<Lightbox src="/img/docs/dbt-platform/using-dbt-platform/example-triggers-section.png" width="90%" title="Example of Triggers on the Deploy Job page"/>
 
 - **Execution settings** section:
      - **Commands**: By default, it includes the `dbt build` command. Click **Add command** to add more [commands](/docs/deploy/job-commands) that you want to be invoked when the job runs.
@@ -81,7 +91,7 @@ To create a state-aware job:
 You can see which models dbt builds in the run summary logs. Models that weren't rebuilt during the run are tagged as **Reused** with context about why dbt skipped rebuilding them (and saving you unnecessary compute!). You can also see the reused models under the **Reused** tab.
 
 
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/SAO_logs_view.png" width="90%" title="Example logs for state-aware orchestration"/>
+<Lightbox src="/img/docs/dbt-platform/using-dbt-platform/SAO_logs_view.png" width="90%" title="Example logs for state-aware orchestration"/>
 
 ## Delete a job
 
@@ -382,3 +392,8 @@ This way, if either `dim_wizards` or `dim_worlds` has fresh upstream data and en
 - [Artifacts](/docs/deploy/artifacts)
 - [Continuous integration (CI) jobs](/docs/deploy/ci-jobs)
 - [`freshness`](/reference/resource-configs/freshness)
+- [About dbt State](/docs/deploy/dbt-state-about)
+- [Setting up dbt State](/docs/deploy/dbt-state-setup)
+- [Set up dbt State](/docs/deploy/dbt-state-setup)
+- [dbt State configs](/reference/resource-configs/dbt-state-configs)
+- [Migrate to dbt State](/docs/deploy/dbt-state-migration)

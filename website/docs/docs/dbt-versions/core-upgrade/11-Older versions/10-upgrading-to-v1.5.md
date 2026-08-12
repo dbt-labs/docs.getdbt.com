@@ -3,6 +3,9 @@ title: "Upgrading to v1.5"
 description: New features and changes in dbt Core v1.5
 id: "upgrading-to-v1.5"
 displayed_sidebar: "docs"
+availability:
+  engine: v1
+  access: free
 ---
 
 <Constant name="core" /> v1.5 is a feature release, with two significant additions:
@@ -13,7 +16,7 @@ displayed_sidebar: "docs"
 
 - [Changelog](https://github.com/dbt-labs/dbt-core/blob/1.5.latest/CHANGELOG.md)
 - [<Constant name="core" /> CLI Installation guide](/docs/local/install-dbt)
-- [Cloud upgrade guide](/docs/dbt-versions/upgrade-dbt-version-in-cloud)
+- [Cloud upgrade guide](/docs/dbt-versions/upgrade-dbt-platform-version)
 - [Release schedule](https://github.com/dbt-labs/dbt-core/issues/6715)
 
 ## What to know before upgrading

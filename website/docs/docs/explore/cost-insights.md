@@ -4,26 +4,31 @@ sidebar_label: "About Cost Insights"
 description: "Track warehouse compute costs and understand the impact of optimizations across your dbt projects and models." 
 id: "cost-insights"
 tags: ['SAO', 'cost savings', 'models built', 'cost insights', 'cost reductions', 'cost optimizations']
+availability:
+  surface: platform
+  access: paid_plan
+  minPlan: enterprise
 ---
 
-# Cost Insights <Lifecycle status="private_beta,managed,managed_plus" />
+import SaoDeprecated from '/snippets/_sao-deprecated.md';
 
-:::info Private beta feature
-Cost Insights is a private beta feature. To request access, contact your account manager.
-:::
+# Cost Insights
 
-Cost Insights shows estimated costs and compute time for your dbt projects and models directly in the <Constant name="dbt_platform" />, so you can measure and share the impact of optimizations like [state-aware orchestration](/docs/deploy/state-aware-about).
+Cost Insights shows estimated costs and compute time for your dbt projects and models directly in the <Constant name="dbt_platform" />, so you can measure and share the impact of optimizations like [dbt State](/docs/deploy/dbt-state-about) and [state-aware orchestration](/docs/deploy/state-aware-about).
 
-[State-aware orchestration](/docs/deploy/state-aware-about) makes your dbt workflows more efficient by reusing models and tests instead of running full rebuilds. When this is enabled, Cost Insights helps you demonstrate the resulting cost reductions and efficiency gains. These cost and cost reduction estimates are based on a retroactive analysis of runs after you enable <Constant name="fusion" /> and state-aware orchestration. They reflect actual historical usage, _not_ forecasts of future costs or cost reductions.
+<SaoDeprecated />
+
+[dbt State](/docs/deploy/dbt-state-about) and [state-aware orchestration](/docs/deploy/state-aware-about) make your dbt workflows more efficient by reusing models and tests instead of running full rebuilds. When either is enabled, Cost Insights helps you demonstrate the resulting cost reductions and efficiency gains. These cost and cost reduction estimates are based on a retroactive analysis of runs after you enable <Constant name="fusion" /> and dbt State or state-aware orchestration. They reflect actual historical usage, _not_ forecasts of future costs or cost reductions.
 
 With Cost Insights, you can see:
 
 - **How much your dbt models cost to run**: See the compute cost and times for each model and job in your warehouse's native units.
-- **The cost reductions from using state-aware orchestration**: Understand the cost reduction when state-aware orchestration reuses unchanged models.
+- **The cost reductions from using dbt State or state-aware orchestration**: Understand the cost reduction when dbt State or state-aware orchestration reuses unchanged models.
 - **Cost trends over time**: Track your warehouse spend and optimization impact across your dbt projects.
-- **Filter by asset type**: On Cost Insights charts (**Cost**, **Usage**, **Query run time**, **Builds**), use the **Assets** dropdown menu to filter data by **Models**, **Tests**, or **All**. Each tab keeps its own selection.
+- **Asset type filtering**: On Cost Insights charts (**Cost**, **Usage**, **Query run time**, **Builds**), use the **Assets** dropdown menu to filter data by **Models**, **Tests**, or **All**. Each tab keeps its own selection.
+- **Per-job cost breakdown**: In the Cost Insights table view, use the **All** and **Jobs** buttons to switch between an aggregated view and a per-job cost breakdown.
 
-The Cost Insights section is available in different <Constant name="dbt_platform" /> areas and lets you view your cost data and the impact of state-aware optimizations across various dimensions:
+The Cost Insights section is available in different <Constant name="dbt_platform" /> areas and lets you view your cost data and the impact of dbt State and state-aware orchestration optimizations across various dimensions:
 
 - [Project dashboard](/docs/explore/explore-cost-data#project-dashboard)
 - [Catalog on Model page](/docs/explore/explore-cost-data#model-performance-in-catalog)
@@ -31,11 +36,11 @@ The Cost Insights section is available in different <Constant name="dbt_platform
 
 <DocCarousel slidesPerView={1}>
 
-<Lightbox src="/img/docs/dbt-cloud/cost-insights/cost-insights-project.png" title="Cost Insights in the project dashboard"/>
+<Lightbox src="/img/docs/dbt-platform/cost-insights/cost-insights-project.png" title="Cost Insights in the project dashboard"/>
 
-<Lightbox src="/img/docs/dbt-cloud/cost-insights/cost-insights-model.png" title="Cost Insights in Catalog"/>
+<Lightbox src="/img/docs/dbt-platform/cost-insights/cost-insights-model.png" title="Cost Insights in Catalog"/>
 
-<Lightbox src="/img/docs/dbt-cloud/cost-insights/cost-insights-job.png" title="Cost Insights in job details"/>
+<Lightbox src="/img/docs/dbt-platform/cost-insights/cost-insights-job.png" title="Cost Insights in job details"/>
 
 </DocCarousel>
 
@@ -61,7 +66,7 @@ The following sections explain how costs are calculated for each supported wareh
 
 <Expandable alt_header="Snowflake">
 
-dbt computes Snowflake query costs using Snowflake's query attribution data and your credit price (`price_per_credit`). Query attribution data is always available for Snowflake. dbt pulls the `per_credit` price directly from Snowflake when available; otherwise, dbt uses the configured or default value in the <Constant name="dbt_platform" />. For more information about configuring or viewing these values, see [Configure Cost Insights settings](/docs/explore/set-up-cost-insights#configure-cost-insights-settings-optional).
+dbt computes Snowflake query costs using Snowflake's query attribution data and your credit price (`price_per_credit`). dbt pulls the `price_per_credit` value directly from Snowflake when available; otherwise, dbt uses the configured or default value in the <Constant name="dbt_platform" />. For more information about configuring or viewing these values, see [Configure Cost Insights settings](/docs/explore/set-up-cost-insights#configure-cost-insights-settings-optional).
 
 Formula:
 ```
@@ -69,8 +74,14 @@ credits_per_query * price_per_credit
 ```
 
 Where:
-- `credits_per_query` - Cloud services, compute, and query acceleration credits attributed to the query. dbt sources this value from `QUERY_ATTRIBUTION_HISTORY`. For more information, see the [Snowflake documentation](https://docs.snowflake.com/en/sql-reference/account-usage/query_attribution_history).      
-- `price_per_credit` - Your Snowflake credit price (from Snowflake system tables when available, otherwise from your configured input or the default rate).
+- `credits_per_query` &mdash; Cloud services, compute, and query acceleration credits attributed to the query. 
+    - For standard and Generation 2 warehouses, dbt sources this value from [`QUERY_ATTRIBUTION_HISTORY`](https://docs.snowflake.com/en/sql-reference/account-usage/query_attribution_history). 
+    - For [Adaptive Warehouses](https://docs.snowflake.com/en/user-guide/warehouses-adaptive), dbt sources this value from [`QUERY_METERING_HISTORY`](https://docs.snowflake.com/en/sql-reference/account-usage/query_metering_history) &mdash; refer to [Configure platform metadata credentials](/docs/explore/set-up-cost-insights#snowflake) for required permissions.
+- `price_per_credit` &mdash; Your Snowflake credit price (from Snowflake system tables when available, otherwise from your configured input or the default rate).
+
+:::info Snowflake attribution limitation
+Snowflake doesn't attribute cost to queries that run in roughly 100 milliseconds or less. As a result, Cost Insights totals may be _lower_ than the compute spend shown in your Snowflake billing dashboards. For more information, see the [Snowflake documentation](https://docs.snowflake.com/en/sql-reference/account-usage/query_attribution_history#usage-notes).
+:::
 </Expandable>
 
 <Expandable alt_header="BigQuery">
@@ -140,6 +151,51 @@ DBUs_in_window * (query_runtime / total_query_runtime_in_window)
 dbt sums this across all overlapping windows to get `usage_per_query`.
 </Expandable>
 
+<Expandable alt_header="Amazon Redshift" lifecycle="preview" lifecycle_size="75">
+
+Cost Insights supports both Amazon Redshift Serverless and provisioned cluster deployments. dbt detects your deployment type automatically when testing the connection.
+
+:::note
+On Redshift, dbt attributes query costs using the comments it automatically injects into each query. If another process removes or replaces these comments, dbt can't tie the query back to its model, and its cost won't be attributed. Make sure nothing in your Redshift environment removes or replaces dbt's query comments.
+:::
+
+- **Redshift Serverless**
+
+    dbt estimates cost by identifying which Redshift Processing Unit (RPU) billing periods overlap with each query's execution time and attributing the proportional share of RPU-hours to the query.
+
+    Formula:
+    ```
+    rpu_hours_per_query * rpu_price_per_hour
+    ```
+
+    Where:
+    - `rpu_hours_per_query` - RPU-hours attributed to the query based on its proportional overlap with each billing period. dbt sources billing period data from `SYS_SERVERLESS_USAGE`. For more information, see the [Amazon Redshift documentation](https://docs.aws.amazon.com/redshift/latest/mgmt/serverless-billing.html).
+    - `rpu_price_per_hour` - Your RPU price per hour (from your configured value in [Cost Insights settings](/docs/explore/set-up-cost-insights#configure-cost-insights-settings-optional)).
+
+- **Redshift Provisioned**
+
+    dbt estimates cost based on how long each query ran and how many nodes your cluster has.
+
+    Formula:
+    ```
+    elapsed_time_hours * node_count * node_price_per_hour
+    ```
+
+    Where:
+    - `elapsed_time_hours` - Query execution time in hours. dbt sources this from `SYS_QUERY_HISTORY`.
+    - `node_count` - Number of nodes in your cluster. dbt sources this from `STV_SLICES`.
+    - `node_price_per_hour` - Your price per node per hour (from your configured value in [Cost Insights settings](/docs/explore/set-up-cost-insights#configure-cost-insights-settings-optional)).
+
+**Additional considerations:**
+- **Data retention**: Redshift system tables (`SYS_QUERY_HISTORY`, `SYS_SERVERLESS_USAGE`) retain only seven days of history. Cost data for Redshift may cover a shorter window than other warehouses. dbt calculates costs for whatever data is available within that window.
+- **Pricing required**: There are no default price values for Redshift. Costs will appear as $0 until you configure `rpu_price_per_hour` (serverless) or `node_price_per_hour` (provisioned) in [Cost Insights settings](/docs/explore/set-up-cost-insights#configure-cost-insights-settings-optional).
+
+:::info Concurrent query costs
+Redshift attributes cost to each query as if it ran alone on the cluster. If queries run concurrently, the sum of individual query costs may exceed your actual bill.
+:::
+
+</Expandable>
+
 ### Cost reduction calculation
 
 dbt calculates cost reductions by comparing actual costs to what costs would have been _without model reuse_. To do this, dbt uses data from the last seven days (where available) and performs the following steps:
@@ -194,8 +250,8 @@ Keep the following in mind when using Cost Insights:
 - Changes to cost variables only apply to future calculations &mdash; historical cost data remains unchanged.
 
 **Optimization data**
-- Optimization and usage reduction data is available once state-aware orchestration is enabled and begins reusing models across runs.
-- For accounts already using state-aware orchestration, run at least one full model build within the last 10 days before enabling Cost Insights to establish a baseline for cost reduction calculations. If you don't see cost reduction data, run a full build to establish the baseline.
+- Optimization and usage reduction data is available once dbt State or state-aware orchestration is enabled and begins reusing models across runs.
+- For accounts already using dbt State or state-aware orchestration, run at least one full model build within the last 10 days before enabling Cost Insights to establish a baseline for cost reduction calculations. If you don't see cost reduction data, run a full build to establish the baseline.
 - Cost Insights currently calculates estimated reductions in warehouse compute usage at the model level and will expand to include tests and seeds in the future.
 
 **Exporting data**
@@ -208,5 +264,6 @@ Keep the following in mind when using Cost Insights:
 <FAQ path="Cost optimizations/troubleshooting-cost-data" />
 <FAQ path="Cost optimizations/metadata-warehouse-costs" />
 <FAQ path="Cost optimizations/job-frequency" />
+<FAQ path="Runs/what-happened-to-sao" />
 
 

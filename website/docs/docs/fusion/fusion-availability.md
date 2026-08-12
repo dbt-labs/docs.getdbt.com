@@ -1,14 +1,20 @@
 ---
 title: "Fusion availability"
 id: "fusion-availability"
-description: "Learn where the dbt Fusion engine is available."
+description: "Learn where Fusion is available and what you get with dbt."
 hide_table_of_contents: true
 ---
 
-import FusionAvailability from '/snippets/_fusion_availability.md';
+import FusionFeatures from '/snippets/_fusion-features.md';
+import FusionLifecycle from '/snippets/_fusion-lifecycle.md';
 
-<FusionAvailability/>
+Use the following tables to see where <Constant name="fusion" /> is available for your adapter. You can get started with many dbt features right away, and some more are available when you sign in with any <Constant name="dbt_platform" /> account, free or paid.
 
-- Like <Constant name="core" />, you can install <Constant name="fusion" /> locally from the [CLI](/docs/local/install-dbt?version=2#get-started) to power local workflows. For ergonomic and LSP-based intelligent development (powered by <Constant name="fusion" />), [install the VS Code extension](/docs/local/install-dbt?version=2#get-started).
--  <Constant name="fusion"/> in the <Constant name="dbt_platform" /> is available in private preview. To use <Constant name="fusion" /> in the <Constant name="dbt_platform" />, contact your account team for access and then [upgrade environments to the <Constant name="fusion_engine" />](/docs/dbt-versions/upgrade-dbt-version-in-cloud#dbt-fusion-engine) to power your projects.
-   - If your account isn't on the <Constant name="fusion_engine" />, you use the <Constant name="dbt_platform"/> with the traditional Python-based <Constant name="core" /> engine. However, it doesn't come with the <Constant name="fusion" /> [features](/docs/fusion/supported-features#features-and-capabilities), such as 30x faster compilation/parsing, autocomplete, hover info, inline error highlights, and more. To use <Constant name="fusion" />, contact your account team for access.
+<FusionLifecycle/>
+<FusionFeatures/>
+
+## Related docs
+
+- [Install dbt](/docs/local/install-dbt) locally
+- Install the [dbt VS Code extension](/docs/about-dbt-extension)
+- Upgrade environments in the [dbt platform](/docs/dbt-versions/upgrade-dbt-platform-version#dbt-fusion-engine)

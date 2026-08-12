@@ -2,10 +2,11 @@
 title: "About dbt environment command"
 sidebar_label: "environment"
 id: dbt-environment
+availability: platform_login
 ---
 
 :::info 
-The dbt platform CLI provides the `dbt environment` command for environment and connection details. If you're using <Constant name="fusion" /> or <Constant name="core" />, use `dbt debug` to inspect profile, target, and connection &mdash; or use `dbtf debug` if you have more than one dbt CLI and want to inspect <Constant name="fusion" />.
+The dbt platform CLI provides the `dbt environment` command for environment and connection details. If you're using <Constant name="fusion" /> or <Constant name="core" />, use `dbt debug` to inspect profile, target, and connection &mdash; or use `dbtf debug` if you have both Core/Fusion and platform CLIs and want to inspect <Constant name="fusion" />.
 
 :::
 
@@ -14,7 +15,7 @@ The `dbt environment` command enables you to interact with your <Constant name="
 - Viewing your local configuration details (account ID, active project ID, deployment environment, and more).
 - Viewing your <Constant name="dbt" /> configuration details (environment ID, environment name, connection type, and more).
 
-This guide lists all the commands and options you can use with `dbt environment` in the [<Constant name="platform_cli" />](/docs/cloud/cloud-cli-installation). To use them, add a command or option like this: `dbt environment [command]` or use the shorthand `dbt env [command]`.
+This guide lists all the commands and options you can use with `dbt environment` in the [<Constant name="platform_cli" />](/docs/platform/dbt-cli-installation). To use them, add a command or option like this: `dbt environment [command]` or use the shorthand `dbt env [command]`.
 
 ### dbt environment show
 

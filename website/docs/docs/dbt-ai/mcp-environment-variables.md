@@ -3,13 +3,14 @@ title: "MCP environment variables reference"
 sidebar_label: "Environment variables"
 description: "Condensed reference for all dbt MCP environment variables."
 id: "mcp-environment-variables"
+availability: local_free
 ---
 
-This page is a condensed reference for all environment variables used by the local dbt MCP server. For full detail on each variable (including examples), see [Set up local MCP](/docs/dbt-ai/setup-local-mcp).
+This page is a condensed reference for all environment variables used by the self-hosted dbt MCP server. For full detail on each variable (including examples), see [Set up self-hosted MCP](/docs/dbt-ai/setup-local-mcp).
 
-## Local CLI
+## Self-hosted CLI
 
-These variables are required to use dbt CLI commands through MCP.
+These variables are required to use dbt commands through MCP.
 
 <SimpleTable>
 | Variable | Required | Description |
@@ -17,7 +18,7 @@ These variables are required to use dbt CLI commands through MCP.
 | `DBT_PROJECT_DIR` | Required | Full path to your dbt project folder (the folder containing `dbt_project.yml`). |
 | `DBT_PATH` | Required | Full path to your dbt executable. Find it by running `which dbt` (macOS/Linux) or `where dbt` (Windows). |
 | `DBT_PROFILES_DIR` | Optional | Path to a custom `profiles.yml` directory. Defaults to `~/.dbt/`. |
-| `DBT_CLI_TIMEOUT` | Optional | Seconds before dbt CLI commands time out. Defaults to `60`. Compile runs the whole project, so large projects may need a higher limit to avoid timeouts. |
+| `DBT_CLI_TIMEOUT` | Optional | Seconds before dbt commands time out. Defaults to `60`. Compile runs the whole project, so large projects may need a higher limit to avoid timeouts. |
 </SimpleTable>
 
 ## dbt platform
@@ -27,7 +28,7 @@ These variables are required for <Constant name="dbt_platform"/> features (Seman
 <SimpleTable>
 | Variable | Required | Description |
 | --- | --- | --- |
-| `DBT_HOST` | Required | Your <Constant name="dbt_platform"/> [hostname](/docs/cloud/about-cloud/access-regions-ip-addresses). Accepts both `cloud.getdbt.com` (default) and `https://cloud.getdbt.com`. <br /> <br />Include the full hostname with subdomain — for example, `DBT_HOST=abc123.us1.dbt.com`. You no longer need to separate the prefix using `MULTICELL_ACCOUNT_PREFIX` or `DBT_HOST_PREFIX`. |
+| `DBT_HOST` | Required | Your <Constant name="dbt_platform"/> [hostname](/docs/platform/about-platform/access-regions-ip-addresses). Accepts both `cloud.getdbt.com` (default) and `https://cloud.getdbt.com`. <br /> <br />Include the full hostname with subdomain — for example, `DBT_HOST=abc123.us1.dbt.com`. You no longer need to separate the prefix using `MULTICELL_ACCOUNT_PREFIX` or `DBT_HOST_PREFIX`. |
 | `DBT_TOKEN` | Required | A service token or Personal Access Token (PAT). <br /> <br />The `execute_sql` tool requires a PAT — service tokens _do not_ work for that tool. |
 | `DBT_PROD_ENV_ID` | Required | Your production environment ID (numeric integer). |
 | `DBT_DEV_ENV_ID` | Required for `execute_sql` | Your development environment ID (numeric integer). |
@@ -68,7 +69,7 @@ All tools are available by default. To disable a toolset, set any of the followi
 <SimpleTable>
 | Variable | Default | Description |
 | --- | --- | --- |
-| `DISABLE_DBT_CLI` | `false` | Disable dbt CLI tools. |
+| `DISABLE_DBT_CLI` | `false` | Disable local dbt CLI tools (dbt Core v1.x and v2). |
 | `DISABLE_SEMANTIC_LAYER` | `false` | Disable Semantic Layer tools. |
 | `DISABLE_DISCOVERY` | `false` | Disable Discovery API tools. |
 | `DISABLE_ADMIN_API` | `false` | Disable Admin API tools. |
@@ -86,7 +87,7 @@ If any `DBT_MCP_ENABLE_*` variable is set, only the explicitly enabled toolsets 
 <SimpleTable>
 | Variable | Description |
 | --- | --- |
-| `DBT_MCP_ENABLE_DBT_CLI` | Set to `true` to enable dbt CLI tools. |
+| `DBT_MCP_ENABLE_DBT_CLI` | Set to `true` to enable local dbt CLI tools (dbt Core v1.x and v2). |
 | `DBT_MCP_ENABLE_SEMANTIC_LAYER` | Set to `true` to enable Semantic Layer tools. |
 | `DBT_MCP_ENABLE_DISCOVERY` | Set to `true` to enable Discovery API tools. |
 | `DBT_MCP_ENABLE_ADMIN_API` | Set to `true` to enable Admin API tools. |
@@ -114,6 +115,7 @@ These variables control the behavior of Semantic Layer tools.
 | Variable | Default | Description |
 | --- | --- | --- |
 | `DBT_MCP_SL_METRICS_RELATED_MAX` | `10` | Maximum number of metrics for which `list_metrics` also returns dimension and entity names inline, reducing the number of tool calls needed to answer data questions. When the metric count is at or below this value, dimensions and entities are embedded directly in the `list_metrics` response. When above this value, only metric names are returned and the LLM calls `get_dimensions`/`get_entities` separately. Set to `0` to always return metrics only and never inline dimension or entity data. |
+| `DBT_MCP_SL_MAX_RESPONSE_CHARS` | `16000` | Maximum character length of the CSV returned by `list_metrics`. Must be an integer `>= 0`. When the response would exceed this length _and_ the metric count is above `DBT_MCP_SL_METRICS_RELATED_MAX`, the `description` and `metadata` columns are dropped from the response to save tokens. Set to `0` to disable trimming and always return the full response. |
 </SimpleTable>
 
 ## Logging and debugging

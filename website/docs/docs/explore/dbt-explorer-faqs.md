@@ -2,6 +2,7 @@
 title: "dbt Catalog FAQs"
 sidebar_label: "dbt Catalog FAQs"
 description: "Learn more with the FAQs about dbt Catalog, how it works, how to interact with it, and more."
+availability: platform_login
 ---
 
 [<Constant name="catalog" />](/docs/explore/explore-projects) is <Constant name="dbt" />’s new knowledge base and lineage visualization experience. It offers an interactive and high-level view of your company’s entire data estate, where you can dive deep into the context you need to understand and improve lineage so your teams can trust the data they’re using to make decisions.
@@ -178,8 +179,8 @@ The ability to embed and share views is being evaluated as a potential future ca
 
 <Expandable alt_header=" Is dbt Catalog accessible from other areas inside dbt?" >
 
-Yes, you can [access <Constant name="catalog" /> from various <Constant name="dbt" /> features](/docs/explore/access-from-dbt-cloud), ensuring you have a seamless experience navigating between resources and lineage in your project.
+Yes, you can [access <Constant name="catalog" /> from various <Constant name="dbt" /> features](/docs/explore/access-from-dbt-platform), ensuring you have a seamless experience navigating between resources and lineage in your project.
 
-While the primary way to access <Constant name="catalog" /> is through the **Catalog** link in the navigation, you can also access it from the [<Constant name="studio_ide" />](/docs/explore/access-from-dbt-cloud#dbt-cloud-ide), [the lineage tab in jobs](/docs/explore/access-from-dbt-cloud#lineage-tab-in-jobs), and the [model timing tab in jobs](/docs/explore/access-from-dbt-cloud#model-timing-tab-in-jobs).
+While the primary way to access <Constant name="catalog" /> is through the **Catalog** link in the navigation, you can also access it from the [<Constant name="studio_ide" />](/docs/explore/access-from-dbt-platform#studio-ide), [the lineage tab in jobs](/docs/explore/access-from-dbt-platform#lineage-tab-in-jobs), and the [model timing tab in jobs](/docs/explore/access-from-dbt-platform#model-timing-tab-in-jobs).
 
 </Expandable>

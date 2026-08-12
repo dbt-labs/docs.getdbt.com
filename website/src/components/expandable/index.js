@@ -15,7 +15,7 @@ function slugify(text) {
     .replace(/-+$/, ''); // Trim - from end
 }
 
-function Expandable({ children, alt_header = null, lifecycle, is_open = false }) {
+function Expandable({ children, alt_header = null, lifecycle, lifecycle_size, is_open = false }) {
   if (!alt_header) return null;
 
   const [isOpen, setIsOpen] = useState(is_open);
@@ -107,7 +107,7 @@ function Expandable({ children, alt_header = null, lifecycle, is_open = false })
         <span className={styles.headerText}>
           {alt_header}
           <span onClick={(e) => e.stopPropagation()}>
-            <Lifecycle status={lifecycle} />
+            <Lifecycle status={lifecycle} size={lifecycle_size} />
           </span>
         </span>
         <span onClick={handleCopyClick} className={styles.copyIcon}></span>

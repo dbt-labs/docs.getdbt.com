@@ -15,6 +15,7 @@ meta:
   slack_channel_link: 'https://getdbt.slack.com/archives/C027B6BHMT3'
   platform_name: 'Teradata'
   config_page: '/reference/resource-configs/teradata-configs'
+availability: local_free
 ---
 
 
@@ -275,5 +276,5 @@ The adapter was originally created by [Doug Beatty](https://github.com/dbeatty10
 
 ## License
 
-The adapter is published using Apache-2.0 License. Refer to the [terms and conditions](https://github.com/dbt-labs/dbt-core/blob/main/License.md) to understand items such as creating derivative work and the support model.  
+The adapter is published using Apache-2.0 License. Refer to the [terms and conditions](https://github.com/dbt-labs/dbt-core/blob/main/LICENSE) to understand items such as creating derivative work and the support model.  
 

@@ -3,6 +3,9 @@ title: "Upgrading to v1.0"
 description: New features and changes in dbt Core v1.0
 id: "upgrading-to-v1.0"
 displayed_sidebar: "docs"
+availability:
+  engine: v1
+  access: free
 ---
 
 
@@ -11,7 +14,7 @@ displayed_sidebar: "docs"
 - [Discourse](https://discourse.getdbt.com/t/3180)
 - [Changelog](https://github.com/dbt-labs/dbt-core/blob/1.0.latest/CHANGELOG.md)
 - [<Constant name="core" /> CLI Installation guide](/docs/local/install-dbt)
-- [Cloud upgrade guide](/docs/dbt-versions/upgrade-dbt-version-in-cloud)
+- [Cloud upgrade guide](/docs/dbt-versions/upgrade-dbt-platform-version)
 
 ## What to know before upgrading
 

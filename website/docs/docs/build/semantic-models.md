@@ -7,6 +7,7 @@ keywords:
 sidebar_label: Semantic models
 tags: [Metrics, Semantic Layer]
 pagination_next: "docs/build/dimensions"
+availability: all_users
 ---
 
 import CopilotBeta from '/snippets/_dbt-copilot-avail.md';
@@ -24,7 +25,7 @@ Semantic models are the foundation for data definition in MetricFlow, which powe
 - Configure semantic models in a YAML file within your dbt project directory. Refer to the [best practices guide](/best-practices/how-we-build-our-metrics/semantic-layer-1-intro) for more info on project structuring.
 - Organize them under a `metrics:` folder or within project sources as needed.
 
-<Lightbox src="/img/docs/dbt-cloud/semantic-layer/semantic_foundation.jpg" width="70%" title="A semantic model is made up of different components: Entities, Measures, and Dimensions."/>
+<Lightbox src="/img/docs/dbt-platform/semantic-layer/semantic_foundation.jpg" width="70%" title="A semantic model is made up of different components: Entities, Measures, and Dimensions."/>
 </VersionBlock>
 
 <VersionBlock firstVersion="1.12">
@@ -34,6 +35,7 @@ Semantic models are the foundation for data definition in MetricFlow, which powe
 - Each semantic model corresponds to a dbt model in your DAG, requiring a unique YAML configuration for each semantic model.
 - Each dbt model can define one semantic model via a `semantic_model` block. Use the optional `name` field if you need a different display name.
 - Configure semantic models in a YAML file within your dbt project directory, embedded within your model definitions rather than as separate configurations.
+- You can also define semantic models using [Apache Ossie](https://github.com/apache/ossie) documents, an alternative to <Constant name="core" />'s native YAML configuration. For more information, refer to [Ossie semantic layer documents](/docs/build/ossie-semantic-models).
 
 </VersionBlock>
 

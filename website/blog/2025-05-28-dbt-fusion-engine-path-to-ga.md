@@ -143,7 +143,7 @@ So far, we've released the code necessary to self-compile a dbt binary that can 
 
 Beyond just the code necessary to produce a complete dbt binary, we've also committed to open-sourcing several of the underlying library components (such as dbt-jinja, dbt-serde-yaml, and the grammars necessary to produce a high-performance SQL parser). Again, check out the [Components of the dbt Fusion engine](/blog/dbt-fusion-engine-components) post for the details.
 
-Some behaviours that worked in dbt Core won't have an equivalent in this new codebase. The most obvious examples are those which depended on the vagaries of Python: arbitrary callbacks on the EventManager (there's no longer an EventManager on which to register a callback!), the experimental [plugins system](https://github.com/dbt-labs/dbt-core/blob/main/core/dbt/plugins/manager.py) (dynamic loading of binaries works completely differently in Rust and would require signing), or the dbt templater in SQLFluff (which hooked into dbt Core beyond the exposed interfaces - although we plan to build a [fast linter ourselves](https://github.com/dbt-labs/dbt-fusion/issues/11)).
+Some behaviours that worked in dbt Core won't have an equivalent in this new codebase. The most obvious examples are those which depended on the vagaries of Python: arbitrary callbacks on the EventManager (there's no longer an EventManager on which to register a callback!), the experimental [plugins system](https://github.com/dbt-labs/dbt-core/blob/1.latest/core/dbt/plugins/manager.py) (dynamic loading of binaries works completely differently in Rust and would require signing), or the dbt templater in SQLFluff (which hooked into dbt Core beyond the exposed interfaces - although we plan to build a [fast linter ourselves](https://github.com/dbt-labs/dbt-fusion/issues/11)).
 
 ## Requirement for GA: The DX rocks
 
@@ -154,7 +154,7 @@ Invocations powered by the dbt Fusion engine are already significantly faster th
 If you do some benchmarking, we're particularly interested in any situations where Fusion "pauses" on a single file for a couple of seconds. Some other things to keep in mind:
 
 - Writing very large manifests is pretty slow, no matter what. Try including `--no-write-json`. We're wondering whether it makes sense to have a trimmed-down manifest by default. What do you think?
-- The `dbt compile` command involves more work in Fusion than in dbt Core, because it's doing full SQL validation. To compare *just* the SQL rendering step (the equivalent of dbt Core's `compile` command), you can try [turning off static analysis](/docs/fusion/new-concepts) with the CLI flag `--static-analysis off`.
+- The `dbt compile` command involves more work in Fusion than in dbt Core, because it's doing full SQL validation. To compare *just* the SQL rendering step (the equivalent of dbt Core's `compile` command), you can try [turning off static analysis](/docs/build/about-static-analysis) with the CLI flag `--static-analysis off`.
 
 As a sign of what's possible, take note of the incremental recompilation used to provide real-time feedback in the VS Code extension.
 

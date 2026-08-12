@@ -3,9 +3,14 @@ title: "About state-aware orchestration"
 description: "Learn about how state-aware orchestration automatically determines which models to build by detecting changes in code or data every time a job runs." 
 id: "state-aware-about"
 tags: ['scheduler','SAO']
+unlisted: true
+availability:
+  surface: platform
+  access: paid_plan
+  minPlan: enterprise
 ---
 
-# About state-aware orchestration <Lifecycle status="private_preview,managed,managed_plus" />
+# About state-aware orchestration <Lifecycle status="private_preview" />
 
 <IntroText>
 
@@ -14,10 +19,14 @@ Every time a job runs, state-aware orchestration automatically determines which 
 </IntroText>
 
 import FusionLifecycle from '/snippets/_fusion-lifecycle-callout.md';
+import SaoDeprecated from '/snippets/_sao-deprecated.md';
+
+<SaoDeprecated />
 
 <FusionLifecycle />
 
 State-aware orchestration saves you compute costs and reduces runtime because when a job runs, it checks for new records and only builds the models that will change.
+
 
 <Lightbox src="/img/docs/deploy/sao.gif" title="Fusion powered state-aware orchestration" />
 
@@ -29,7 +38,7 @@ We built <Constant name="dbt" />'s state-aware orchestration on these four core 
 - **Sensible defaults:** State-aware orchestration works out-of-the-box (natively), with an optional configuration setting for more advanced controls. For more information, refer to [state-aware advanced configurations](/docs/deploy/state-aware-setup#advanced-configurations).
 
 :::note
-State-aware orchestration does not depend on [static analysis](/docs/fusion/new-concepts#principles-of-static-analysis) and works even when `static_analysis` is disabled.
+State-aware orchestration does not depend on [static analysis](/docs/build/about-static-analysis#principles-of-static-analysis) and works even when `static_analysis` is disabled.
 :::
 
 ## Optimizing builds with state-aware orchestration
@@ -69,7 +78,7 @@ This behavior ensures consistency between the dbt state and the actual warehouse
 ## Efficient testing in state-aware orchestration <Lifecycle status="private_beta" />
 
 :::info Private beta feature
-State-aware orchestration features in the <Constant name="dbt_platform" /> are only available in Fusion, which is in private preview. Contact your account manager to enable Fusion in your account. 
+State-aware orchestration features in the <Constant name="dbt_platform" /> are only available in Fusion. Contact your account manager to enable Fusion in your account. 
 :::
 
 Data quality can get degraded in two ways: 
@@ -97,7 +106,7 @@ The following tests can be reused when Efficient testing is enabled:
 
 ### Enabling Efficient testing
 
-Before enabling Efficient testing, make sure you have configured [`static_analysis`](/docs/fusion/new-concepts#configuring-static_analysis).
+Before enabling Efficient testing, make sure you have configured [`static_analysis`](/docs/build/about-static-analysis#configuring-static_analysis).
 
 To enable Efficient testing:
 
@@ -165,6 +174,7 @@ The following section lists some considerations when using Efficient testing in 
 
 ## Related FAQs
 
+<FAQ path="Runs/what-happened-to-sao" />
 <FAQ path="Runs/sao-difference-core" />
 
 ## Related docs
@@ -173,3 +183,7 @@ The following section lists some considerations when using Efficient testing in 
 - [Artifacts](/docs/deploy/artifacts)
 - [Continuous integration (CI) jobs](/docs/deploy/ci-jobs)
 - [`freshness`](/reference/resource-configs/freshness)
+- [About dbt State](/docs/deploy/dbt-state-about)
+- [Set up dbt State](/docs/deploy/dbt-state-setup)
+- [dbt State configs](/reference/resource-configs/dbt-state-configs)
+- [Migrate to dbt State](/docs/deploy/dbt-state-migration)

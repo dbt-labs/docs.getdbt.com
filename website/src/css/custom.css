@@ -191,6 +191,15 @@ html[data-theme="dark"] main .row .col:first-of-type a article * {
   color: white;
 }
 
+/* Restore inline code colors inside linked cards in dark mode.
+   The rule above sets color: white on all children of linked cards,
+   which makes <code> chips unreadable (white text on white background).
+   This rule has the same specificity but targets code specifically, so it wins. */
+html[data-theme="dark"] main .row .col:first-of-type a article code {
+  background-color: rgba(246, 245, 255, 1);
+  color: rgba(61, 24, 154, 1);
+}
+
 html[data-theme="dark"] table td {
   color: white;
 }
@@ -463,6 +472,10 @@ ul.table-of-contents .hash-link::before {
   display: none;
 }
 
+.table-of-contents .plan-pill {
+  display: none;
+}
+
 pre {
   font-size: 14px !important;
 }
@@ -527,7 +540,7 @@ a.code-link:hover {
 
 .navbar__link.nav-versioning {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   justify-content: center;
 }
 
@@ -609,6 +622,400 @@ html[data-theme="dark"] .nav-versioning-filter__btn:hover {
 html[data-theme="dark"] .nav-versioning-filter__btn--active {
   background: var(--color-terminal-black-800);
   color: #fff;
+}
+
+/* Transition note mapping platform tracks to versions — remove at unified-versioning GA */
+.nav-versioning-filter__note {
+  margin: 8px 2px 0;
+  font-size: 0.78rem;
+  font-weight: 500;
+  line-height: 1.35;
+  color: #4b5563;
+}
+
+html[data-theme="dark"] .nav-versioning-filter__note {
+  color: #c3cad6;
+}
+
+.nav-versioning-filter__note a {
+  font-weight: 600;
+}
+
+/* Version selector dropdown in the navbar */
+.version-dropdown {
+  display: flex;
+  align-items: center;
+}
+
+.version-toggle__icon {
+  display: inline-flex;
+  align-items: center;
+  color: #999;
+}
+
+.version-toggle__icon svg {
+  display: block;
+}
+
+html[data-theme="dark"] .version-toggle__icon {
+  color: #777;
+}
+
+.version-dropdown__trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 5px 8px;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+html[data-theme="dark"] .version-dropdown__trigger {
+  color: #e0e0e0;
+}
+
+.version-dropdown__trigger:hover {
+  color: #000;
+}
+
+html[data-theme="dark"] .version-dropdown__trigger:hover {
+  color: #fff;
+}
+
+.version-dropdown__trigger:focus {
+  outline: none;
+}
+
+.version-dropdown__trigger:focus-visible {
+  outline: 2px solid rgba(123, 97, 255, 0.4);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.version-dropdown__branch {
+  display: inline-flex;
+  align-items: center;
+  color: #999;
+}
+
+.version-dropdown__label {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #57534e;
+}
+
+html[data-theme="dark"] .version-dropdown__label {
+  color: #e0e0e0;
+}
+
+.version-dropdown__current {
+  font-weight: 600;
+}
+
+.version-dropdown__caret {
+  font-size: 0.75rem;
+  color: #999;
+}
+
+.version-dropdown__menu {
+  min-width: 220px;
+  max-width: 260px;
+  padding: 6px;
+}
+
+.version-dropdown__menu .version-dropdown__note {
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+.version-dropdown__group {
+  padding: 8px 12px 3px;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #4b5563;
+  list-style: none;
+}
+
+html[data-theme="dark"] .version-dropdown__group {
+  color: #c3cad6;
+}
+
+/* Clickable era header (selects the latest version in that era) */
+.version-dropdown__group-link {
+  cursor: pointer;
+}
+
+.version-dropdown__group-link .version-dropdown__text {
+  font-weight: 700;
+  color: #4b5563;
+}
+
+html[data-theme="dark"] .version-dropdown__group-link .version-dropdown__text {
+  color: #c3cad6;
+}
+
+.version-dropdown__group-link::after {
+  content: "\203A";
+  margin-left: 4px;
+  color: var(--ifm-color-primary, #7b61ff);
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+.version-dropdown__group-link:hover .version-dropdown__text,
+.version-dropdown__group-link:focus-visible .version-dropdown__text {
+  color: rgba(123, 97, 255, 1);
+  text-decoration: underline;
+}
+
+.version-dropdown__group-link:hover::after,
+.version-dropdown__group-link:focus-visible::after {
+  opacity: 0.6;
+}
+
+html[data-theme="dark"] .version-dropdown__group-link:hover .version-dropdown__text,
+html[data-theme="dark"] .version-dropdown__group-link:focus-visible .version-dropdown__text {
+  color: rgba(154, 137, 255, 1);
+}
+
+.version-menu-mobile__grouplink {
+  cursor: pointer;
+  font-weight: 700;
+  color: #4b5563;
+  transition: color 0.15s ease;
+}
+
+html[data-theme="dark"] .version-menu-mobile__grouplink {
+  color: #c3cad6;
+}
+
+.version-menu-mobile__grouplink::after {
+  content: "\203A";
+  margin-left: 4px;
+  color: var(--ifm-color-primary, #7b61ff);
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+.version-menu-mobile__grouplink:hover,
+.version-menu-mobile__grouplink:focus-visible {
+  color: rgba(123, 97, 255, 1);
+  text-decoration: underline;
+}
+
+.version-menu-mobile__grouplink:hover::after,
+.version-menu-mobile__grouplink:focus-visible::after {
+  opacity: 0.6;
+}
+
+html[data-theme="dark"] .version-menu-mobile__grouplink:hover,
+html[data-theme="dark"] .version-menu-mobile__grouplink:focus-visible {
+  color: rgba(154, 137, 255, 1);
+}
+
+.version-dropdown__link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.version-dropdown__text {
+  flex: 1;
+}
+
+.version-dropdown__link:hover .version-dropdown__text,
+.version-dropdown__link:focus-visible .version-dropdown__text {
+  text-decoration: underline;
+}
+
+.version-dropdown__stage {
+  color: #6b7280;
+  font-weight: 500;
+  font-size: 0.85em;
+  text-transform: capitalize;
+}
+
+html[data-theme="dark"] .version-dropdown__stage {
+  color: #c3cad6;
+}
+
+.version-dropdown__check {
+  flex: 0 0 auto;
+  font-size: 0.8rem;
+  color: var(--ifm-color-primary, #7b61ff);
+}
+
+.version-dropdown__link--indented {
+  padding-left: 24px;
+}
+
+.version-dropdown__link--active {
+  background: rgba(123, 97, 255, 0.08);
+  font-weight: 600;
+}
+
+html[data-theme="dark"] .version-dropdown__link--active {
+  background: rgba(123, 97, 255, 0.18);
+}
+
+.version-dropdown__note {
+  margin-top: 6px;
+  padding: 8px 12px 2px;
+  border-top: 1px solid #E0E0E0;
+  font-size: 0.78rem;
+  font-weight: 500;
+  line-height: 1.3;
+  color: #4b5563;
+  list-style: none;
+}
+
+html[data-theme="dark"] .version-dropdown__note {
+  border-top-color: #242B37;
+  color: #c3cad6;
+}
+
+.version-dropdown__note a {
+  font-weight: 600;
+}
+
+/* Mobile version menu */
+.version-menu-mobile__header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #4b5563;
+}
+
+html[data-theme="dark"] .version-menu-mobile__header {
+  color: #c3cad6;
+}
+
+.version-menu-mobile__group {
+  padding: 4px 12px 0;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #4b5563;
+}
+
+html[data-theme="dark"] .version-menu-mobile__group {
+  color: #c3cad6;
+}
+
+.version-menu-mobile__indented {
+  padding-left: 24px;
+}
+
+/* Compact v1.x picker beside the toggle */
+.version-subpicker {
+  position: relative;
+}
+
+.version-subpicker__button {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  border: none;
+  background: transparent;
+  padding: 2px 4px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #262A38;
+  cursor: pointer;
+}
+
+html[data-theme="dark"] .version-subpicker__button {
+  color: #fff;
+}
+
+.version-subpicker__button:focus {
+  outline: none;
+}
+
+.version-subpicker__button:focus-visible {
+  outline: 2px solid rgba(123, 97, 255, 0.4);
+  outline-offset: 2px;
+  border-radius: 3px;
+}
+
+.version-subpicker__caret {
+  font-size: 0.7rem;
+}
+
+.version-subpicker__menu {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  min-width: 120px;
+  list-style: none;
+  margin: 0;
+  padding: 4px;
+  background: #fff;
+  border: 1px solid #E0E0E0;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  z-index: 100;
+}
+
+html[data-theme="dark"] .version-subpicker__menu {
+  background: var(--color-terminal-black-800);
+  border-color: #242B37;
+}
+
+.version-subpicker__option {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  border: none;
+  background: transparent;
+  border-radius: 4px;
+  padding: 6px 10px;
+  font-size: 0.8rem;
+  text-align: left;
+  cursor: pointer;
+  color: #333;
+}
+
+html[data-theme="dark"] .version-subpicker__option {
+  color: #ddd;
+}
+
+.version-subpicker__option:hover {
+  background: #f0f0f0;
+}
+
+html[data-theme="dark"] .version-subpicker__option:hover {
+  background: var(--color-terminal-black-700);
+}
+
+.version-subpicker__option--active {
+  font-weight: 700;
+}
+
+/* Mobile: segmented toggle + transition note */
+.version-toggle-mobile {
+  padding: 8px 12px;
+}
+
+.version-toggle-mobile .version-toggle__segments {
+  width: 100%;
+}
+
+.version-toggle-mobile .version-toggle__segment {
+  flex: 1;
+  text-align: center;
+}
+
+.version-toggle-mobile__sublist {
+  margin-top: 6px;
 }
 
 
@@ -997,6 +1404,16 @@ i.theme-doc-sidebar-item-category.theme-doc-sidebar-item-category-level-2.menu__
   font-size: 1.5rem;
 }
 
+/* Note/admonition headers use sentence case, not all caps.
+   Docusaurus v3 renders the title in a hashed CSS-module class
+   (e.g. admonitionHeading_Gvgb) with text-transform: uppercase,
+   so target it via an attribute selector rather than the hash.
+   Default single-word labels (Note, Tip, ...) are capitalized via
+   i18n/en/code.json; custom titles keep their author-written casing. */
+.theme-admonition [class*="admonitionHeading"] {
+  text-transform: none;
+}
+
 .admonition-icon svg {
   fill: var(--ifm-color-gray-900);
 }
@@ -1100,7 +1517,7 @@ html[data-theme="dark"] main .row .col:first-of-type .alert--warning a:hover {
 }
 
 .linkout {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 18 22.5' version='1.1' x='0px' y='0px'%3E%3Ctitle%3Elink%3C/title%3E%3Cdesc%3ECreated with Sketch.%3C/desc%3E%3Cg stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'%3E%3Cpath d='M9.24264069,6.41438508 C8.8521164,6.80490937 8.21895142,6.80490937 7.82842712,6.41438508 C7.43790283,6.02386078 7.43790283,5.39069581 7.82842712,5.00017151 L10.6570258,2.17157288 C12.2191229,0.609475708 14.7517828,0.609475708 16.31388,2.17157288 C17.8759772,3.73367004 17.8759772,6.26632996 16.31388,7.82842712 L13.4854529,10.6568542 C13.0949286,11.0473785 12.4617636,11.0473785 12.0712393,10.6568542 C11.680715,10.26633 11.680715,9.63316498 12.0712393,9.24264069 L14.8996664,6.41421356 C15.680715,5.63316498 15.680715,4.36683502 14.8996664,3.58578644 C14.1186179,2.80473785 12.8522879,2.80473785 12.0712393,3.58578644 L9.24264069,6.41438508 Z M9.2428122,12.0710678 C9.63333649,11.6805435 10.2665015,11.6805435 10.6570258,12.0710678 C11.0475501,12.4615921 11.0475501,13.0947571 10.6570258,13.4852814 L7.82842712,16.31388 C6.26632996,17.8759772 3.73367004,17.8759772 2.17157288,16.31388 C0.609475708,14.7517828 0.609475708,12.2191229 2.17157288,10.6570258 L5,7.82859864 C5.39052429,7.43807435 6.02368927,7.43807435 6.41421356,7.82859864 C6.80473785,8.21912293 6.80473785,8.85228791 6.41421356,9.2428122 L3.58578644,12.0712393 C2.80473785,12.8522879 2.80473785,14.1186179 3.58578644,14.8996664 C4.36683502,15.680715 5.63316498,15.680715 6.41421356,14.8996664 L9.2428122,12.0710678 Z M12.0712393,6.41421356 C12.4617636,6.80473785 12.4617636,7.43790283 12.0712393,7.82842712 L7.82859864,12.0710678 C7.43807435,12.4615921 6.80490937,12.4615921 6.41438508,12.0710678 C6.02386078,11.6805435 6.02386078,11.0473785 6.41438508,10.6568542 L10.6570258,6.41421356 C11.0475501,6.02368927 11.680715,6.02368927 12.0712393,6.41421356 Z' fill='%23000000' fill-rule='nonzero'/%3E%3C/g%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 18 22.5' version='1.1' x='0px' y='0px'%3E%3Ctitle%3Elink%3C/title%3E%3Cdesc%3ECreated with Sketch.%3C/desc%3E%3Cg stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'%3E%3Cpath d='M9.24264069,6.41438508 C8.8521164,6.80490937 8.21895142,6.80490937 7.82842712,6.41438508 C7.43790283,6.02386078 7.43790283,5.39069581 7.82842712,5.00017151 L10.6570258,2.17157288 C12.2191229,0.609475708 14.7517828,0.609475708 16.31388,2.17157288 C17.8759772,3.73367004 17.8759772,6.26632996 16.31388,7.82842712 L13.4854529,10.6568542 C13.0949286,11.0473785 12.4617636,11.0473785 12.0712393,10.6568542 C11.680715,10.26633 11.680715,9.63316498 12.0712393,9.24264069 L14.8996664,6.41421356 C15.680715,5.63316498 15.680715,4.36683502 14.8996664,3.58578644 C14.1186179,2.80473785 12.8522879,2.80473785 12.0712393,3.58578644 L9.24264069,6.41438508 Z M9.2428122,12.0710678 C9.63333649,11.6805435 10.2665015,11.6805435 10.6570258,12.0710678 C11.0475501,12.4615921 11.0475501,13.0947571 10.6570258,13.4852814 L7.82842712,16.31388 C6.26632996,17.8759772 3.73367004,17.8759772 2.17157288,16.31388 C0.609475708,14.7517828 0.609475708,12.2191229 2.17157288,10.6570258 L5,7.82859864 C5.39052429,7.43807435 6.02368927,7.43807435 6.41421356,7.82859864 C6.80473785,8.21912293 6.80473785,8.85228791 6.41421356,9.2428122 L3.58578644,12.0712393 C2.80473785,12.8522879 2.80473785,14.1186179 3.58578644,14.8996664C4.36683502,15.680715 5.63316498,15.680715 6.41421356,14.8996664 L9.2428122,12.0710678 Z M12.0712393,6.41421356 C12.4617636,6.80473785 12.4617636,7.43790283 12.0712393,7.82842712 L7.82859864,12.0710678 C7.43807435,12.4615921 6.80490937,12.4615921 6.41438508,12.0710678 C6.02386078,11.6805435 6.02386078,11.0473785 6.41438508,10.6568542 L10.6570258,6.41421356 C11.0475501,6.02368927 11.680715,6.02368927 12.0712393,6.41421356 Z' fill='%23000000' fill-rule='nonzero'/%3E%3C/g%3E%3C/svg%3E");
   background-size: 2rem 2rem;
   background-position: center;
   content: " ";
@@ -2756,6 +3173,22 @@ h2.anchor.clicked a.hash-link:before {
   padding: 10px;
 }
 
+/* Lifecycle pills in tab labels — smaller and aligned with tab text */
+.tabs-lifecycle-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.tabs__item .lifecycle {
+  margin-left: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 2px 8px;
+  line-height: 1.2;
+  vertical-align: middle;
+}
+
 /* Default color and border for tabs */
 .tabs__item {
   background-color: var(--text-inverse-primary); /* Sets the tab color the same as the file borders */
@@ -3119,3 +3552,23 @@ html[data-theme='dark'] .sidebar-title {
   display: none;
 }
 
+/* RSS feed icon */
+.rss-icon {
+  width: 14px;
+  height: 14px;
+  margin-right: 6px;
+  vertical-align: middle;
+  opacity: 0.8;
+}
+html[data-theme='dark'] .rss-icon {
+  filter: invert(1);
+}
+
+/* Footnote references rendered in blog list excerpts (see
+   plugins/remarkBlogFootnoteLinks.js) — style the deep link like a real
+   footnote marker. */
+.blog-excerpt-footnote-ref {
+  vertical-align: super;
+  font-size: 0.75em;
+  line-height: 0;
+}

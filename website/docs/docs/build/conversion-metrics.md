@@ -4,6 +4,7 @@ id: conversion
 description: "Use Conversion metrics to measure conversion events."
 sidebar_label: Conversion
 tags: [Metrics, Semantic Layer]
+availability: all_users
 ---
 
 Conversion metrics let you measure how often one event leads to another for a specific entity within a defined time window.
@@ -414,7 +415,7 @@ metrics:
 
 This will return the following results:
 
-<Lightbox src="/img/docs/dbt-cloud/semantic-layer/conversion-metrics-fill-null.png" width="75%" title="Conversion metric with fill nulls with parameter"/>
+<Lightbox src="/img/docs/dbt-platform/semantic-layer/conversion-metrics-fill-null.png" width="75%" title="Conversion metric with fill nulls with parameter"/>
 
 Refer to [Fill null values for metrics](/docs/build/fill-nulls-advanced) for more info.
 

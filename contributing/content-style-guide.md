@@ -114,7 +114,7 @@ Use all caps unless another standard exists (such as in code blocks):
 
 | ❌ Avoid | ✅ Use |
 |----------|--------|
-| `/docs/deploy/how-we-think-about-architecture` | `/docs/cloud/about-cloud/architecture` |
+| `/docs/deploy/how-we-think-about-architecture` | `/docs/platform/about-platform/architecture` |
 | `getting-started-with-dbt-setup.md` | `dbt-setup.md` |
 
 ### Sidebar configuration
@@ -315,7 +315,7 @@ Use the `<Card` component to display content and actions on a single topic. Thes
 <Card
     title="Studio IDE"
     body="The IDE is the easiest way to develop dbt models."
-    link="/docs/cloud/studio-ide/develop-in-studio"
+    link="/docs/platform/studio-ide/develop-in-studio"
     icon="pencil-paper"/>
 
 <Card
@@ -404,7 +404,7 @@ Explain placeholders in the preceding paragraph. For example, you'd explain CLUS
 
 **Example:**
 ```markdown
-[Regions & IP Addresses](/docs/cloud/about-cloud/access-regions-ip-addresses)
+[Regions & IP Addresses](/docs/platform/about-platform/access-regions-ip-addresses)
 ```
 
 **Section links:**

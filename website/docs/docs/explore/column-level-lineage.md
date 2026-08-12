@@ -1,9 +1,13 @@
 ---
 title: "Column-level lineage"
 description: "Use dbt Catalog's column-level lineage to gain insights about your data at a granular level."
+availability:
+  surface: platform
+  access: paid_plan
+  minPlan: enterprise
 ---
 
-# Column-level lineage <Lifecycle status="managed,managed_plus" />
+# Column-level lineage
 
 <Constant name="catalog" /> now offers column-level lineage (CLL) for the resources in your dbt project. Analytics engineers can quickly and easily gain insight into the provenance of their data products at a more granular level. For each column in a resource (model, source, or snapshot) in a dbt project, <Constant name="catalog" /> provides end-to-end lineage for the data in that column given how it's used.
 
@@ -39,7 +43,7 @@ Passthrough and rename columns are clearly labeled and color-coded in the lineag
 
 In the following `dim_salesforce_accounts` model example (located at the end of the lineage), the description for a column inherited from the `stg_salesforce__accounts` model (located second to the left) indicates its origin. This helps developers quickly identify the original source of the column, making it easier to know where to make documentation changes.
 
-<Lightbox src="/img/docs/collaborate/dbt-explorer/example-prop-inherit.jpg" width="100%" title="Example of lineage with propagated and inherited column descriptions."/>
+<Lightbox src="/img/docs/collaborate/dbt-explorer/example-prop-inherit.png" width="100%" title="Example of lineage with propagated and inherited column descriptions."/>
 
 ## Column-level lineage use cases {#use-cases}
 

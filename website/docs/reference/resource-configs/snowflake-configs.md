@@ -11,7 +11,7 @@ import SnowflakeColumn from '/snippets/_snowflake-column-size.md';
 
 ## Iceberg table format
 
-Our Snowflake Iceberg table content has moved to a [new page](/docs/mesh/iceberg/snowflake-iceberg-support)!
+Our Snowflake Iceberg table content has moved to a [new page](/docs/build/iceberg/adapters/snowflake-iceberg-support)!
 
 ## Dynamic tables
 
@@ -57,7 +57,7 @@ models:
     [+](/reference/resource-configs/plus-prefix)[target_lag](#target-lag): downstream | <time-delta>
     [+](/reference/resource-configs/plus-prefix)[snowflake_warehouse](#configuring-virtual-warehouses): <warehouse-name>
     [+](/reference/resource-configs/plus-prefix)[refresh_mode](#refresh-mode): AUTO | FULL | INCREMENTAL
-    [+](/reference/resource-configs/plus-prefix)[initialize](#initialize): ON_CREATE | ON_SCHEDULE
+    [+](/reference/resource-configs/plus-prefix)[initialize](#initialize): ON_CREATE | ON_SCHEDULE 
 
 ```
 
@@ -121,10 +121,12 @@ models:
 | [`on_configuration_change`](/reference/resource-configs/on_configuration_change) | `<string>` | no       | `apply`     | n/a                       |
 | [`target_lag`](#target-lag)      | `<string>` | yes      |        | alter          |
 | [`snowflake_warehouse`](#configuring-virtual-warehouses)   | `<string>` | yes      |       | alter  |
+| [`refresh_warehouse`](#refresh-warehouse)   | `<string>` | no       | `None`      | alter  |
 | [`refresh_mode`](#refresh-mode)       | `<string>` | no       | `AUTO`      | refresh        |
 | [`initialize`](#initialize)     | `<string>` | no       | `ON_CREATE` | n/a   |
 | [`cluster_by`](#dynamic-table-clustering)     | `<string>` or `<list>` | no       | `None` | alter   |
 | [`immutable_where`](#immutable-where)     | `<string>` | no       | `None` | alter   |
+| [`copy_grants`](#copy-grants-dynamic-tables)     | `<boolean>` | no       | `false` | full refresh   |
 
 
 <Tabs
@@ -148,10 +150,12 @@ models:
     [+](/reference/resource-configs/plus-prefix)[on_configuration_change](/reference/resource-configs/on_configuration_change): apply | continue | fail
     [+](/reference/resource-configs/plus-prefix)[target_lag](#target-lag): downstream | <time-delta>
     [+](/reference/resource-configs/plus-prefix)[snowflake_warehouse](#configuring-virtual-warehouses): <warehouse-name>
+    [+](/reference/resource-configs/plus-prefix)[refresh_warehouse](#refresh-warehouse): <warehouse-name>
     [+](/reference/resource-configs/plus-prefix)[refresh_mode](#refresh-mode): AUTO | FULL | INCREMENTAL
     [+](/reference/resource-configs/plus-prefix)[initialize](#initialize): ON_CREATE | ON_SCHEDULE 
     [+](/reference/resource-configs/plus-prefix)[cluster_by](#dynamic-table-clustering): <column-name> | [<column-name>, <column-name>, ...]
     [+](/reference/resource-configs/plus-prefix)[immutable_where](#immutable-where): <condition>
+    [+](/reference/resource-configs/plus-prefix)[copy_grants](#copy-grants-dynamic-tables): true | false
 
 ```
 
@@ -173,10 +177,12 @@ models:
       [on_configuration_change](/reference/resource-configs/on_configuration_change): apply | continue | fail
       [target_lag](#target-lag): downstream | <time-delta>
       [snowflake_warehouse](#configuring-virtual-warehouses): <warehouse-name>
-      [refresh_mode](#refresh-mode): AUTO | FULL | INCREMENTAL 
+      [refresh_warehouse](#refresh-warehouse): <warehouse-name>
+      [refresh_mode](#refresh-mode): AUTO | FULL | INCREMENTAL
       [initialize](#initialize): ON_CREATE | ON_SCHEDULE 
       [cluster_by](#dynamic-table-clustering): <column-name> | [<column-name>, <column-name>, ...]
       [immutable_where](#immutable-where): <condition>
+      [copy_grants](#copy-grants-dynamic-tables): true | false
 
 ```
 
@@ -196,10 +202,12 @@ models:
     [on_configuration_change](/reference/resource-configs/on_configuration_change)="apply" | "continue" | "fail",
     [target_lag](#target-lag)="downstream" | "<integer> seconds | minutes | hours | days",
     [snowflake_warehouse](#configuring-virtual-warehouses)="<warehouse-name>",
+    [refresh_warehouse](#refresh-warehouse)="<warehouse-name>",
     [refresh_mode](#refresh-mode)="AUTO" | "FULL" | "INCREMENTAL",
     [initialize](#initialize)="ON_CREATE" | "ON_SCHEDULE", 
     [cluster_by](#dynamic-table-clustering)="<column-name>" | ["<column-name>", "<column-name>", ...],
     [immutable_where](#immutable-where)="<condition>",
+    [copy_grants](#copy-grants-dynamic-tables)=true | false,
 
 ) }}
 
@@ -222,11 +230,13 @@ models:
 | [`scheduler`](#scheduler)       | `<string>` | no       | `DISABLE`   | alter          |
 | [`snowflake_warehouse`](#configuring-virtual-warehouses)   | `<string>` | yes      |       | alter  |
 | [`snowflake_initialization_warehouse`](#initialization-warehouse)   | `<string>` | no       | `None`      | alter  |
+| [`refresh_warehouse`](#refresh-warehouse)   | `<string>` | no       | `None`      | alter  |
 | [`refresh_mode`](#refresh-mode)       | `<string>` | no       | `AUTO`      | refresh        |
 | [`initialize`](#initialize)     | `<string>` | no       | `ON_CREATE` | n/a   |
 | [`cluster_by`](#dynamic-table-clustering)     | `<string>` or `<list>` | no       | `None` | alter   |
 | [`immutable_where`](#immutable-where)     | `<string>` | no       | `None` | alter   |
-| [`transient`](#transient-dynamic-tables)     | `<boolean>` | no       | `False` | full refresh   |
+| [`copy_grants`](#copy-grants-dynamic-tables)     | `<boolean>` | no       | `false` | full refresh   |
+| [`transient`](#transient-dynamic-tables)     | `<boolean>` | no       | `false` | full refresh   |
 
 
 <Tabs
@@ -252,10 +262,12 @@ models:
     [+](/reference/resource-configs/plus-prefix)[scheduler](#scheduler): ENABLE | DISABLE
     [+](/reference/resource-configs/plus-prefix)[snowflake_warehouse](#configuring-virtual-warehouses): <warehouse-name>
     [+](/reference/resource-configs/plus-prefix)[snowflake_initialization_warehouse](#initialization-warehouse): <warehouse-name>
+    [+](/reference/resource-configs/plus-prefix)[refresh_warehouse](#refresh-warehouse): <warehouse-name>
     [+](/reference/resource-configs/plus-prefix)[refresh_mode](#refresh-mode): AUTO | FULL | INCREMENTAL
     [+](/reference/resource-configs/plus-prefix)[initialize](#initialize): ON_CREATE | ON_SCHEDULE 
     [+](/reference/resource-configs/plus-prefix)[cluster_by](#dynamic-table-clustering): <column-name> | [<column-name>, <column-name>, ...]
     [+](/reference/resource-configs/plus-prefix)[immutable_where](#immutable-where): <condition>
+    [+](/reference/resource-configs/plus-prefix)[copy_grants](#copy-grants-dynamic-tables): true | false
     [+](/reference/resource-configs/plus-prefix)[transient](#transient-dynamic-tables): true | false
 
 ```
@@ -280,10 +292,12 @@ models:
       [scheduler](#scheduler): ENABLE | DISABLE
       [snowflake_warehouse](#configuring-virtual-warehouses): <warehouse-name>
       [snowflake_initialization_warehouse](#initialization-warehouse): <warehouse-name>
+      [refresh_warehouse](#refresh-warehouse): <warehouse-name>
       [refresh_mode](#refresh-mode): AUTO | FULL | INCREMENTAL
-      [initialize](#initialize): ON_CREATE | ON_SCHEDULE
+      [initialize](#initialize): ON_CREATE | ON_SCHEDULE 
       [cluster_by](#dynamic-table-clustering): <column-name> | [<column-name>, <column-name>, ...]
       [immutable_where](#immutable-where): <condition>
+      [copy_grants](#copy-grants-dynamic-tables): true | false
       [transient](#transient-dynamic-tables): true | false
 
 ```
@@ -306,10 +320,12 @@ models:
     [scheduler](#scheduler)="ENABLE" | "DISABLE",
     [snowflake_warehouse](#configuring-virtual-warehouses)="<warehouse-name>",
     [snowflake_initialization_warehouse](#initialization-warehouse)="<warehouse-name>",
+    [refresh_warehouse](#refresh-warehouse)="<warehouse-name>",
     [refresh_mode](#refresh-mode)="AUTO" | "FULL" | "INCREMENTAL",
     [initialize](#initialize)="ON_CREATE" | "ON_SCHEDULE", 
     [cluster_by](#dynamic-table-clustering)="<column-name>" | ["<column-name>", "<column-name>", ...],
     [immutable_where](#immutable-where)="<condition>",
+    [copy_grants](#copy-grants-dynamic-tables)=true | false,
     [transient](#transient-dynamic-tables)=true | false,
 
 ) }}
@@ -401,6 +417,38 @@ Learn more about `scheduler` in [Snowflake's docs](https://docs.snowflake.com/en
 
 </VersionBlock>
 
+<VersionBlock firstVersion="1.11">
+
+### Refresh warehouse
+
+Starting `dbt-snowflake` v1.11, you can use the `refresh_warehouse` parameter in your model configuration to specify a separate warehouse for the dynamic table's self-refresh operations. This is separate from [`snowflake_warehouse`](#configuring-virtual-warehouses), which controls <Term id="ddl" /> execution. By setting `refresh_warehouse`, you can use a smaller warehouse for automatic refreshes while keeping a larger `snowflake_warehouse` for DDL operations.
+
+To configure the `refresh_warehouse` parameter in your model, refer to the following example:
+
+<File name='models/<model_name>.sql'>
+
+```sql
+{{ config(
+    materialized='dynamic_table',
+    snowflake_warehouse='LARGE_EXECUTION_WH',
+    refresh_warehouse='SMALL_REFRESH_WH',
+    target_lag='1 hour'
+) }}
+
+select * from {{ source('raw', 'events') }}
+```
+
+</File>
+
+**Key points:**
+- If `refresh_warehouse` is not set, `snowflake_warehouse` is used for both DDL execution and self-refresh operations.
+- You can change `refresh_warehouse` on an existing dynamic table without a full refresh.
+- To revert to the default behavior after setting a refresh warehouse, remove the `refresh_warehouse` parameter from your model configuration or explicitly set it to `None`.
+
+Learn more about the `WAREHOUSE` parameter in [Snowflake's docs](https://docs.snowflake.com/en/user-guide/dynamic-tables-warehouses).
+
+</VersionBlock>
+
 <VersionBlock firstVersion="1.9">
 
 ### Refresh mode
@@ -454,6 +502,27 @@ from {{ source('raw', 'events') }}
 
 Learn more about `IMMUTABLE WHERE` in [Snowflake's docs](https://docs.snowflake.com/en/user-guide/dynamic-tables-immutability-constraints).
 
+### Copy grants (dynamic tables)
+
+Starting `dbt-snowflake` v1.11, you can use `copy_grants` to preserve existing object-level privileges when dbt generates a `CREATE OR REPLACE DYNAMIC TABLE` statement. When disabled, all previously granted permissions are dropped when the table is recreated, and downstream users or roles lose access until grants are manually re-applied.
+
+When you set `copy_grants: true` on a dynamic table, dbt adds the `COPY GRANTS` clause to the `CREATE OR REPLACE DYNAMIC TABLE` statement. This preserves existing object-level privileges on the table during `--full-refresh` runs, so you don't need to re-grant access after the table is recreated.
+
+To configure the `copy_grants` parameter, refer to the following example:
+
+```sql
+{{ config(
+    materialized='dynamic_table',
+    snowflake_warehouse='MY_WH',
+    target_lag='1 hour',
+    copy_grants=true
+) }}
+
+select * from {{ source('raw', 'events') }}
+```
+
+Learn more about `COPY GRANTS` in [Snowflake's docs](https://docs.snowflake.com/en/sql-reference/sql/create-dynamic-table).
+
 </VersionBlock>
 
 <VersionBlock firstVersion="1.12">
@@ -462,7 +531,7 @@ Learn more about `IMMUTABLE WHERE` in [Snowflake's docs](https://docs.snowflake.
 
 You can create dynamic tables as transient to reduce storage costs. Transient dynamic tables do not use Snowflake's [Fail-safe](https://docs.snowflake.com/en/user-guide/data-failsafe) period, so they consume less storage than permanent dynamic tables. To create a dynamic table as transient, set `transient: true` in the model configuration.
 
-If you want all dynamic tables to be transient by default (without setting `transient: true` on each one), enable the [`snowflake_default_transient_dynamic_tables`](/reference/global-configs/snowflake-changes#the-snowflake_default_transient_dynamic_tables-flag) flag in your `dbt_project.yml`. This flag defaults to `False`, meaning dynamic tables are created as permanent by default.
+If you want all dynamic tables to be transient by default (without setting `transient: true` on each one), enable the [`snowflake_default_transient_dynamic_tables`](/reference/global-configs/snowflake-changes#the-snowflake_default_transient_dynamic_tables-flag) flag in your `dbt_project.yml`. This flag defaults to `false`, meaning dynamic tables are created as permanent by default.
 
 **Key points:**
 - Setting `transient: true` creates the dynamic table with the `TRANSIENT` keyword in the `CREATE DYNAMIC TABLE` statement.
@@ -521,9 +590,7 @@ As with materialized views on most data platforms, there are limitations associa
 
 Find more information about dynamic table limitations in Snowflake's [docs](https://docs.snowflake.com/en/user-guide/dynamic-tables-tasks-create#dynamic-table-limitations-and-supported-functions).
 
-For dbt limitations, these dbt features are not supported:
-- [Model contracts](/docs/mesh/govern/model-contracts)
-- [Copy grants configuration](/reference/resource-configs/snowflake-configs#copying-grants)
+For dbt limitations, [Model contracts](/docs/mesh/govern/model-contracts) are not supported.
 
 ### Troubleshooting dynamic tables
 
@@ -664,11 +731,18 @@ select * from semantic_view(
 
 ## Temporary tables
 
-Incremental table merges for Snowflake prefer to utilize a `view` rather than a `temporary table`. The reasoning is to avoid the database write step that a temporary table would initiate and save compile time. 
+To save compile time and avoid the database write step initiated by a temporary table, incremental table merges for Snowflake prefer to utilize a `view` rather than a `temporary table` .
 
-However, some situations remain where a temporary table would achieve results faster or more safely. The `tmp_relation_type` configuration enables you to opt in to temporary tables for incremental builds. This is defined as part of the model configuration. 
+Sometimes a temporary table achieves results faster or more safely. You can opt in to temporary or transient tables for incremental builds by using the `tmp_relation_type` configuration  This is defined as part of the model configuration.
 
 To guarantee accuracy, an incremental model using the `delete+insert` strategy with a `unique_key` defined requires a temporary table; trying to change this to a view will result in an error.
+
+`tmp_relation_type` accepts these values:
+
+- `view` (default): Skips intermediate step of creating a temporary physical table for the tmp relation; fastest but not suitable for all strategies.
+- `table`: A session-scoped temporary table; not visible in the Snowflake catalog and isolated per session.
+- `transient`: A transient table; persists in the catalog, enabling [Snowflake native lineage tracking](https://docs.snowflake.com/en/user-guide/ui-snowsight-lineage), while avoiding the 7-day fail-safe storage costs of permanent tables.
+  **Note:** This value is distinct from the separate model-level `transient` config described later, which controls the final model relation. 
 
 Defined in the project YAML:
 
@@ -681,7 +755,7 @@ name: my_project
 
 models:
   <resource-path>:
-    +tmp_relation_type: table | view ## If not defined, view is the default.
+    +tmp_relation_type: table | view | transient ## If not defined, view is the default.
   
 ```
 
@@ -691,12 +765,50 @@ In the configuration format for the model SQL file:
 
 <File name='dbt_model.sql'>
 
-```yaml
+```sql
 
 {{ config(
-    tmp_relation_type="table | view", ## If not defined, view is the default.
+    tmp_relation_type="table | view | transient", 
+    -- If not defined, view is the default.
 ) }}
 
+```
+
+</File>
+
+:::warning Concurrent run conflicts with `transient`
+
+When `tmp_relation_type` is set to `transient`, the tmp relation becomes a real table that persists in the target schema under a deterministic name. If multiple runs of the same incremental model execute concurrently in the same schema, they can overwrite each other's tmp relation, causing data duplication or incorrect results. For example, this might happen when developers share a target schema or when CI and production runs overlap.
+
+This risk depends on how you configure schemas and databases for your dbt models. To prevent conflicts, use `snowflake__resolve_incremental_tmp_relation` to route tmp relations to a schema that is unique per run or environment. For more information, refer to [Avoiding tmp relation conflicts](#avoiding-tmp-relation-conflicts).
+
+:::
+
+### Avoiding tmp relation conflicts
+
+To prevent name collisions across concurrent runs, override the `snowflake__resolve_incremental_tmp_relation` dispatch macro to redirect the tmp relation to a dedicated schema:
+
+<File name='macros/snowflake_incremental.sql'>
+
+```sql
+{% macro snowflake__resolve_incremental_tmp_relation(tmp_relation) %}
+  {{ return(tmp_relation.incorporate(schema='scratch')) }}
+{% endmacro %}
+```
+
+</File>
+
+This macro receives the default tmp relation object and returns a modified version. Common overrides include appending a developer username, a CI job ID, or a target name to the schema to ensure isolation across concurrent runs. 
+
+To append a target name to the schema:
+
+<File name='macros/snowflake_incremental.sql'>
+
+```sql
+{% macro snowflake__resolve_incremental_tmp_relation(tmp_relation) %}
+  {%- set scratch_schema = target.schema ~ '_scratch_' ~ env_var('DBT_JOB_ID', target.name) -%}
+  {{ return(tmp_relation.incorporate(schema=scratch_schema)) }}
+{% endmacro %}
 ```
 
 </File>
@@ -1150,7 +1262,7 @@ select * from index_sessions
 
 ## Copying grants
 
-When the `copy_grants` config is set to `true`, dbt will add the `copy grants` <Term id="ddl" /> qualifier when rebuilding tables and <Term id="view">views</Term>. The default value is `false`.
+When the `copy_grants` config is set to `true`, dbt will add the `copy grants` <Term id="ddl" /> qualifier when rebuilding tables, <Term id="view">views</Term>, and [dynamic tables](#copy-grants-dynamic-tables) (`dbt-snowflake` v1.11 and later). The default value is `false`.
 
 <File name='dbt_project.yml'>
 

@@ -4,7 +4,12 @@ id: "job-scheduler"
 sidebar_label: "Job scheduler"
 description: "The dbt job scheduler queues scheduled or API-triggered runs, before preparing the job to enter cloud data platform. Build observability into transformation workflows with the in-app scheduling, logging, and alerting." 
 tags: [scheduler]
+availability: platform_login
 ---
+
+:::info
+Use the [<Constant name="wizard"/>](/docs/dbt-ai/wizard-ide) to investigate and troubleshoot dbt job and run failures by asking the agent about recent failures, root causes, and fixes  &mdash;  powered by the `troubleshooting-dbt-job-errors` skill in dbt Agent Skills.
+:::
 
 The job scheduler is the backbone of running jobs in <Constant name="dbt" />, bringing power and simplicity to building data pipelines in both continuous integration and production contexts. The scheduler frees teams from having to build and maintain their own infrastructure, and ensures the timeliness and reliability of data transformations.
 
@@ -23,10 +28,10 @@ The scheduler handles various tasks including:
 - Storing dbt artifacts for direct consumption/ingestion by the Discovery API
 
 The scheduler also:
-- Uses [<Constant name="dbt" />'s Git repository caching](/docs/cloud/account-settings#git-repository-caching) to protect against third-party outages and improve job run reliability. <Lifecycle status="managed,managed_plus" />
+- Uses [<Constant name="dbt" />'s Git repository caching](/docs/platform/account-settings#git-repository-caching) to protect against third-party outages and improve job run reliability. <Lifecycle status="managed,managed_plus" />
 - Powers running dbt in staging and production environments, bringing ease and confidence to CI/CD workflows and enabling observability and governance in deploying dbt at scale. 
 - Uses [Hybrid projects](/docs/deploy/hybrid-projects) to upload <Constant name="core" /> artifacts into dbt for central visibility, cross-project referencing, and easier collaboration. <Lifecycle status="beta,managed_plus" />
-- Uses [state-aware orchestration](/docs/deploy/state-aware-about) to decide what needs to be rebuilt based on source freshness, model staleness, and code changes. <Lifecycle status="beta,managed,managed_plus" />
+- Uses [dbt State](/docs/deploy/dbt-state-about) to decide what needs to be rebuilt based on upstream data freshness and code changes. <Lifecycle status="preview" />
 
 ## Scheduler terms
 
@@ -38,7 +43,7 @@ Familiarize yourself with these useful terms to help you understand how the job 
 | Job | A collection of run steps, settings, and a trigger to invoke dbt commands against a project in the user's cloud data platform. |
 | Job queue | The job queue acts as a waiting area for job runs when they are scheduled or triggered to run; runs remain in queue until execution begins. More specifically, the Scheduler checks the queue for runs that are due to execute, ensures the run is eligible to start, and then prepares an environment with appropriate settings, credentials, and commands to begin execution. Once execution begins, the run leaves the queue. |
 | Over-scheduled job | A situation when a cron-scheduled job's run duration becomes longer than the frequency of the job’s schedule, resulting in a job queue that will grow faster than the scheduler can process the job’s runs. |
-| Deactivated job | A situation where a job has reached 100 consecutive failing runs. |
+| Deactivated job | A situation where a job has reached 100 consecutive failing runs or belongs to an inactive account. |
 | Prep time | The time <Constant name="dbt" /> takes to create a short-lived environment to execute the job commands in the user's cloud data platform. Prep time varies most significantly at the top of the hour when the <Constant name="dbt" /> Scheduler experiences a lot of run traffic. |
 | Run | A single, unique execution of a dbt job. |
 | Run slot | Run slots control the number of jobs that can run concurrently. Each running job occupies a run slot for the duration of the run. To view the number of run slots available in your plan, check out the [dbt pricing page](https://www.getdbt.com/pricing). <br /><br />Starter and Developer plans are limited to one project each. For additional projects or more run slots, consider upgrading to an [Enterprise-tier plan](https://www.getdbt.com/pricing/).| 
@@ -58,7 +63,7 @@ Before the job starts executing, the scheduler checks these conditions to determ
 
 If there is an available run slot and there isn't an actively running instance of the job, the scheduler will prepare the job to run in your cloud data platform. This prep involves readying a Kubernetes pod with the right version of dbt installed, setting environment variables, loading data platform credentials, and <Constant name="git" /> provider authorization, amongst other environment-setting tasks. The time it takes to prepare the job is displayed as **Prep time** in the UI.
 
-<Lightbox src="/img/docs/dbt-cloud/deployment/deploy-scheduler.png" width="85%" title="An overview of a dbt job run"/>
+<Lightbox src="/img/docs/dbt-platform/deployment/deploy-scheduler.png" width="85%" title="An overview of a dbt job run"/>
 
 ### Treatment of CI jobs
 When compared to deployment jobs, the scheduler behaves differently when handling [continuous integration (CI) jobs](/docs/deploy/continuous-integration). It queues a CI job to be processed when it's triggered to run by a <Constant name="git" /> pull request, and the conditions the scheduler checks to determine if the run can start executing are also different: 
@@ -82,36 +87,40 @@ Jobs consume a lot of memory in the following situations:
 - Having a job that generates dbt project documentation for a large and complex dbt project. 
   * To prevent problems with the job running out of memory, we recommend generating documentation in a separate job that is set aside for that task and removing `dbt docs generate` from all other jobs. This is especially important for large and complex projects.
 
-Refer to [<Constant name="dbt" /> architecture](/docs/cloud/about-cloud/architecture) for an architecture diagram and to learn how the data flows.
+Refer to [<Constant name="dbt" /> architecture](/docs/platform/about-platform/architecture) for an architecture diagram and to learn how the data flows.
 
 ## Run cancellation for over-scheduled jobs
 
 :::info Scheduler won't cancel API-triggered jobs 
-The scheduler will not cancel over-scheduled jobs triggered by the [API](/docs/dbt-cloud-apis/overview).
+The scheduler will not cancel over-scheduled jobs triggered by the [API](/docs/dbt-apis/overview).
 :::
 
 The <Constant name="dbt" /> scheduler prevents too many job runs from clogging the queue by canceling unnecessary ones. If a job takes longer to run than its scheduled frequency, the queue will grow faster than the scheduler can process the runs, leading to an ever-expanding queue with runs that don’t need to be processed (called _over-scheduled jobs_). 
 
 The scheduler prevents queue clog by canceling runs that aren't needed, ensuring there is only one run of the job in the queue at any given time. If a newer run is queued, the scheduler cancels any previously queued run for that job and displays an error message.
 
-<Lightbox src="/img/docs/dbt-cloud/deployment/run-error-message.png" width="85%" title="The cancelled runs display an error message explaining why the run was cancelled and recommendations"/>
+<Lightbox src="/img/docs/dbt-platform/deployment/run-error-message.png" width="85%" title="The cancelled runs display an error message explaining why the run was cancelled and recommendations"/>
 
 To prevent over-scheduling, users will need to take action by either refactoring the job so it runs faster or modifying its [schedule](/docs/deploy/deploy-jobs#schedule-days).
 
-## Deactivation of jobs <Lifecycle status='beta' />
+## Deactivation of jobs
 
 To reduce unnecessary resource consumption and reduce contention for run slots in your account, <Constant name="dbt" /> will deactivate a [deploy job](/docs/deploy/deploy-jobs) or a [CI job](/docs/deploy/ci-jobs) if it reaches 100 consecutive failing runs. A banner containing this message is displayed when a job is deactivated: "Job has been deactivated due to repeated run failures. To reactivate, verify the job is configured properly and run manually or reenable any trigger". When this happens, scheduled and triggered-to-run jobs will no longer be enqueued. 
 
-To reactivate a deactivated job, you can either:
+Jobs can also be deactivated when a <Constant name="dbt" /> account is inactive. Account owners receive a warning after 90 days without account activity. If there is no activity for another 7 days, <Constant name="dbt" /> deactivates jobs in the account. A banner containing this message is displayed when a job is deactivated because the account is inactive: "Job has been deactivated because the account is inactive. To reactivate, either log out and log back in to dbt, then wait up to 30 minutes for the system to reactivate the job, or manually edit and save the job."
+
+To reactivate a job deactivated due to repeated run failures, you can either:
 - Update the job's settings to fix the issue and save the job (recommended)
 - Perform a manual run by clicking **Run now** on the job's page
+
+To reactivate jobs deactivated because the account is inactive, either log out and log back in to <Constant name="dbt" />, then wait up to 30 minutes for the system to reactivate the job, or manually edit and save the job.
 
 ## FAQs
 
 <FAQ path="Troubleshooting/job-memory-limits" />
 
 ## Related docs
-- [<Constant name="dbt" /> architecture](/docs/cloud/about-cloud/architecture#dbt-cloud-features-architecture)
+- [<Constant name="dbt" /> architecture](/docs/platform/about-platform/architecture#dbt-cloud-features-architecture)
 - [Job commands](/docs/deploy/job-commands)
 - [Job notifications](/docs/deploy/job-notifications)
 - [Webhooks](/docs/deploy/webhooks)

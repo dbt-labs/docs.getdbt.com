@@ -13,9 +13,12 @@ meta:
   slack_channel_link: 'https://getdbt.slack.com/archives/CNGCW8HKL'
   platform_name: 'Databricks'
   config_page: '/reference/resource-configs/databricks-configs'
---- 
+availability:
+  preset: local_free
+  engine: v2
+---
 
-# Databricks setup <Lifecycle status='preview' />
+# Databricks setup <Lifecycle status='private_preview' />
 
 You can configure the Databricks adapter by running `dbt init` in your CLI or manually providing the `profiles.yml` file with the fields configured for your authentication type.
 

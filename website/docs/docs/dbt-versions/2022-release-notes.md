@@ -5,6 +5,9 @@ id: "2022-release-notes"
 sidebar_label: "2022 release notes"
 pagination_next: null
 pagination_prev: null
+availability:
+  surface: platform
+  access: free
 ---
 
 Archived release notes for <Constant name="dbt" /> from 2022
@@ -74,11 +77,11 @@ The new features are:
     - Use `env var` to autocomplete env var
 - **Dark mode**	&mdash;  Use dark mode in the <Constant name="studio_ide" /> for low-light environments.
 
-Read more about all the [Cloud <Constant name="studio_ide" /> features](/docs/cloud/studio-ide/develop-in-studio#cloud-ide-features).
+Read more about all the [Cloud <Constant name="studio_ide" /> features](/docs/platform/studio-ide/develop-in-studio#studio-ide-features).
 
 ### Classic IDE deprecation notice
 
-In December 2022, dbt Labs will deprecate the classic <Constant name="studio_ide" />. The [new and refreshed <Constant name="studio_ide" />](/docs/cloud/studio-ide/develop-in-studio) will be available for _all_ <Constant name="dbt" /> users. You will no longer be able to access the classic <Constant name="studio_ide" /> and dbt Labs might introduce changes that break the classic <Constant name="studio_ide" />.
+In December 2022, dbt Labs will deprecate the classic <Constant name="studio_ide" />. The [new and refreshed <Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio) will be available for _all_ <Constant name="dbt" /> users. You will no longer be able to access the classic <Constant name="studio_ide" /> and dbt Labs might introduce changes that break the classic <Constant name="studio_ide" />.
 
 With deprecation, dbt Labs will only support the refreshed version of the <Constant name="studio_ide" />.
 
@@ -89,7 +92,7 @@ Virtual Private Cloud (VPC) customers with questions about when this change will
 
 ### Announcing dbt Cloud’s native integration with Azure DevOps
 
-<Constant name="dbt" /> now offers a native integration with Azure DevOps for <Constant name="dbt" /> customers on the enterprise plan.  We built this integration to remove friction, increase security, and unlock net new product experiences for our customers. [Setting up the Azure DevOps integration](/docs/cloud/git/connect-azure-devops) in <Constant name="dbt" /> provides:
+<Constant name="dbt" /> now offers a native integration with Azure DevOps for <Constant name="dbt" /> customers on the enterprise plan.  We built this integration to remove friction, increase security, and unlock net new product experiences for our customers. [Setting up the Azure DevOps integration](/docs/platform/git/connect-azure-devops) in <Constant name="dbt" /> provides:
   - easy dbt project set up,
   - an improved security posture,
   - repo permissions enforcement in <Constant name="studio_ide" />, and
@@ -109,7 +112,7 @@ Some of the improvements include:
 - Better organization and navigation with features like drag and drop of files, breadcrumb, build button drop-down, and more.
 - You can use new features like auto-format your file, auto-complete model names, and git diff view to see your changes before making a pull request.
 
-Read more about the new [Cloud <Constant name="studio_ide" /> features](/docs/cloud/studio-ide/develop-in-studio#cloud-ide-features) and check out [New and improved Cloud <Constant name="studio_ide" />](https://www.getdbt.com/blog/new-improved-cloud-ide/) blog for more info!
+Read more about the new [Cloud <Constant name="studio_ide" /> features](/docs/platform/studio-ide/develop-in-studio#studio-ide-features) and check out [New and improved Cloud <Constant name="studio_ide" />](https://www.getdbt.com/blog/new-improved-cloud-ide/) blog for more info!
 
 ## September 2022
 
@@ -119,7 +122,7 @@ On October 14th, 2022 dbt Labs is deprecating the List Steps API endpoint. From 
 
 dbt Labs will continue to maintain the [Retrieve Run](/dbt-cloud/api-v2#/operations/Retrieve%20Run) endpoint, which is a viable alternative depending on the use case. 
 
-You can fetch run steps for an individual run with a GET request to the following URL,  replacing `YOUR_ACCESS_URL` with the [appropriate Access URL](/docs/cloud/about-cloud/access-regions-ip-addresses) for your region and plan:
+You can fetch run steps for an individual run with a GET request to the following URL,  replacing `YOUR_ACCESS_URL` with the [appropriate Access URL](/docs/platform/about-platform/access-regions-ip-addresses) for your region and plan:
 
 `https://YOUR_ACCESS_URL/api/v2/accounts/{accountId}/runs/{runId}/?include_related=["run_steps"]`
 
@@ -127,7 +130,7 @@ You can fetch run steps for an individual run with a GET request to the followin
 
 In order to make the metadata API more scalable and improve its latency, we’ve implemented data retention limits. The metadata API can now query data from the previous three months. For example, if today was March 1, you could query data back to January 1st.
 
-For more information, see [Metadata API](/docs/dbt-cloud-apis/discovery-api)
+For more information, see [Metadata API](/docs/dbt-apis/discovery-api)
 
 ## August 2022
 
@@ -152,7 +155,7 @@ Large DAGs can take a long time (10 or more seconds, if not minutes) to render a
 
 The new button prevents large DAGs from rendering automatically. Instead, you can select **Render Lineage** to load the visualization. This should affect about 15% of the DAGs.
 
-<Lightbox src="/img/docs/dbt-cloud/dag v1.1.56 release.png" title="Render Lineage"/>
+<Lightbox src="/img/docs/dbt-platform/dag v1.1.56 release.png" title="Render Lineage"/>
 
 ## May 2022
 
@@ -168,7 +171,7 @@ This additional security layer in the <Constant name="studio_ide" /> is availabl
 
 To review actions performed by people in your organization, dbt provides logs of audited user and system events. The <Constant name="dbt" /> audit log lists events triggered in your organization within the last 90 days. 
 
-The audit log includes details such as who performed the action, what the action was, and when it was performed. For more details, review [the audit log for <Constant name="dbt" /> Enterprise](/docs/cloud/manage-access/audit-log) documentation.
+The audit log includes details such as who performed the action, what the action was, and when it was performed. For more details, review [the audit log for <Constant name="dbt" /> Enterprise](/docs/platform/manage-access/audit-log) documentation.
 
 
 ### Credentials no longer accidentally wiped when editing an environment
@@ -191,13 +194,13 @@ We fixed an issue where a spotty internet connection could cause the “<Constan
 
 We updated the health check logic so it now excludes client-side connectivity issues from the <Constant name="studio_ide" /> session check. If you lose your internet connection, we no longer update the health-check state. Now, losing internet connectivity will no longer cause this unexpected message.
 
-<Lightbox src="/img/docs/dbt-cloud/Fix Session Timeout.png" title="Fix Session Timeout"/>
+<Lightbox src="/img/docs/dbt-platform/Fix Session Timeout.png" title="Fix Session Timeout"/>
 
 ### Dividing queue time into waiting and prep time
 
 <Constant name="dbt" /> now shows "waiting time" and "prep time" for a run, which used to be expressed in aggregate as "queue time". Waiting time captures the time <Constant name="dbt" /> waits to run your job if there isn't an available run slot or if a previous run of the same job is still running. Prep time represents the time it takes <Constant name="dbt" /> to ready your job to run in your cloud data warehouse.
 
-<Lightbox src="/img/docs/dbt-cloud/v1.1.46releasenotes_img1.png" title="New prep time and waiting time"/>
+<Lightbox src="/img/docs/dbt-platform/v1.1.46releasenotes_img1.png" title="New prep time and waiting time"/>
 
 ## February 2022
 
@@ -211,7 +214,7 @@ Love the DAG in the <Constant name="studio_ide" /> as much as we do? Now when yo
 
 ### Service tokens and bug fixes
 
-Service tokens can now be assigned granular permissions to enforce least privilege access. If you're on Enterprise, you can assign any enterprise permission set to newly issued service tokens. If you're on Teams, you can assign the Job Admin permission set to newly issued service tokens. We highly recommend you re-issue service tokens with these new permissions to increase your security posture! See docs [here](/docs/dbt-cloud-apis/service-tokens#permissions-for-service-account-tokens).
+Service tokens can now be assigned granular permissions to enforce least privilege access. If you're on Enterprise, you can assign any enterprise permission set to newly issued service tokens. If you're on Teams, you can assign the Job Admin permission set to newly issued service tokens. We highly recommend you re-issue service tokens with these new permissions to increase your security posture! See docs [here](/docs/dbt-apis/service-tokens#permissions-for-service-account-tokens).
 
 #### New products and features
 

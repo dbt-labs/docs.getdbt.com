@@ -6,11 +6,12 @@ hide_table_of_contents: true
 tags: ["scheduler"]
 pagination_next: "docs/deploy/job-scheduler"
 pagination_prev: null
+availability: platform_login
 ---
 
 <IntroText>
 
-Use <Constant name="dbt" />'s capabilities to seamlessly run a dbt job in production or staging environments. Rather than run dbt commands manually from the command line, you can leverage the [<Constant name="dbt" />'s in-app scheduling](/docs/deploy/job-scheduler) to automate how and when you execute dbt. 
+Use the <Constant name="dbt_platform" />'s capabilities to seamlessly run a dbt job in production or staging environments. Rather than run dbt commands manually from the command line, you can leverage the [<Constant name="dbt_platform" />'s in-app scheduling](/docs/deploy/job-scheduler) to automate how and when you execute dbt. 
 
 </IntroText>
 
@@ -21,9 +22,9 @@ The <Constant name="dbt_platform" /> offers the easiest and most reliable way to
 - Maintain high-quality code and data in production
 - Gain visibility into the [health](/docs/explore/data-tile) of deployment jobs, models, and tests
 - Uses [exports](/docs/use-dbt-semantic-layer/exports) to write [saved queries](/docs/build/saved-queries) in your data platform for reliable and fast metric reporting
-- [Visualize](/docs/cloud-integrations/downstream-exposures-tableau) and [orchestrate](/docs/cloud-integrations/orchestrate-exposures) downstream exposures to understand how models are used in downstream tools and proactively refresh the underlying data sources during scheduled dbt jobs. <Lifecycle status="managed,managed_plus" />
-- Use [<Constant name="dbt" />'s Git repository caching](/docs/cloud/account-settings#git-repository-caching) to protect against third-party outages and improve job run reliability. <Lifecycle status="managed,managed_plus" />
-- Use [Hybrid projects](/docs/deploy/hybrid-projects) to upload <Constant name="dbt" /> artifacts into the <Constant name="dbt_platform" /> for central visibility, cross-project referencing, and easier collaboration. <Lifecycle status="managed_plus" /> <Lifecycle status="Preview"/>
+- [Visualize](/docs/platform-integrations/downstream-exposures-tableau) and [orchestrate](/docs/platform-integrations/orchestrate-exposures) downstream exposures to understand how models are used in downstream tools and proactively refresh the underlying data sources during scheduled dbt jobs. <Lifecycle status="managed,managed_plus" />
+- Use [<Constant name="dbt" />'s Git repository caching](/docs/platform/account-settings#git-repository-caching) to protect against third-party outages and improve job run reliability. <Lifecycle status="managed,managed_plus" />
+- Use [Hybrid projects](/docs/deploy/hybrid-projects) to upload <Constant name="dbt" /> artifacts into the <Constant name="dbt_platform" /> for central visibility, cross-project referencing, and easier collaboration. <Lifecycle status="managed_plus" /> <Lifecycle status="preview"/>
 
 Before continuing, make sure you understand dbt's approach to [deployment environments](/docs/deploy/deploy-environments). 
 
@@ -45,9 +46,9 @@ Learn how to use <Constant name="dbt" />'s features to help your team ship timel
     icon="dbt-bit"/>
 
 <Card
-    title="State-aware orchestration"
+    title="dbt State"
     body="Intelligently determines which models to build by detecting changes in code or data at each job run."
-    link="/docs/deploy/state-aware-about"
+    link="/docs/deploy/dbt-state-about"
     icon="dbt-bit"/>
 
 <Card
@@ -125,7 +126,7 @@ Learn how to use <Constant name="dbt" />'s features to help your team ship timel
 </div> <br />
 
 
-## Hybrid projects <Lifecycle status="managed" /> <Lifecycle status="Preview"/>
+## Hybrid projects <Lifecycle status="managed" /> <Lifecycle status="preview"/>
 
 <div className="grid--3-col">
 
@@ -142,14 +143,14 @@ Learn how to use <Constant name="dbt" />'s features to help your team ship timel
 
 <DocCarousel slidesPerView={1}>
 
-<Lightbox src="/img/docs/dbt-cloud/deployment/deploy-scheduler.jpg" width="98%" title="An overview of a dbt job run which contains Run Summary, Job Trigger, Run Duration, and more."/>
+<Lightbox src="/img/docs/dbt-platform/deployment/deploy-scheduler.jpg" width="98%" title="An overview of a dbt job run which contains Run Summary, Job Trigger, Run Duration, and more."/>
 
-<Lightbox src="/img/docs/dbt-cloud/deployment/run-history.jpg" width="95%" title="Run History dashboard allows you to monitor the health of your dbt project and displays jobs, job status, environment, timing, and more."/>
+<Lightbox src="/img/docs/dbt-platform/deployment/run-history.jpg" width="95%" title="Run History dashboard allows you to monitor the health of your dbt project and displays jobs, job status, environment, timing, and more."/>
 
 
-<Lightbox src="/img/docs/dbt-cloud/deployment/access-logs.gif" width="85%" title="Access logs for run steps" />
+<Lightbox src="/img/docs/dbt-platform/deployment/access-logs.gif" width="85%" title="Access logs for run steps" />
 
-<Lightbox src ="/img/docs/dbt-cloud/using-dbt-cloud/job-commands.gif" width="95%" title="Setting up a job and configuring checkbox and dbt commands"/>
+<Lightbox src ="/img/docs/dbt-platform/using-dbt-platform/job-commands.gif" width="95%" title="Setting up a job and configuring checkbox and dbt commands"/>
 
 </DocCarousel>
 

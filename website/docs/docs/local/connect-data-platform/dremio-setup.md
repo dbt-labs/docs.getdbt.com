@@ -14,6 +14,7 @@ meta:
   slack_channel_link: '[https://www.getdbt.com/community](https://getdbt.slack.com/archives/C049G61TKBK)'
   platform_name: 'Dremio'
   config_page: '/reference/resource-configs/no-configs'
+availability: local_free
 ---
 
 import SetUpPages from '/snippets/_setup-pages-intro.md';

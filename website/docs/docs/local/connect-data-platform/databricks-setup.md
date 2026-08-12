@@ -16,11 +16,13 @@ meta:
   platform_name: 'Databricks'
   config_page: '/reference/resource-configs/databricks-configs'
   product_badge: "Fusion compatible"
+availability: local_free
 --- 
 
 <VersionBlock firstVersion="2.0">
 
 # Connect Databricks to Fusion <Lifecycle status='preview' />
+
 
 You can configure the Databricks adapter by running `dbt init` in your CLI or manually providing the `profiles.yml` file with the fields configured for your authentication type.
 

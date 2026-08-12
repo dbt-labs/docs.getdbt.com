@@ -3,6 +3,7 @@ title: "About documentation"
 description: "Learn how good documentation for your dbt models helps stakeholders discover and understand your datasets."
 id: "documentation"
 pagination_next: "docs/build/view-documentation"
+availability: all_users
 ---
 
 import CopilotBeta from '/snippets/_dbt-copilot-avail.md';
@@ -73,15 +74,32 @@ models:
 
 ## Generating documentation
 
+<VersionBlock lastVersion="1.99">
+
 Generate documentation for your project by following these steps:
 
 1. Run the `dbt docs generate` [command](/reference/commands/cmd-docs#dbt-docs-generate) to compile relevant information about your dbt project and warehouse into `manifest.json` and `catalog.json` files, respectively. 
+Before generating docs, save your YAML description updates for models, sources, and columns. Use the same project context you use for development, including any selectors or exclusions, so `manifest.json` and `catalog.json` match the resources dbt parses for that run.
 2. Ensure you've created the models with `dbt run` or `dbt build` to view the documentation for all columns, not just those described in your project.
 3. Run the `dbt docs serve` [command](/reference/commands/cmd-docs#dbt-docs-serve) if you're developing locally to use these `.json` files to populate a local website.
 
-dbt provides two complementary ways to [view documentation](/docs/build/view-documentation), and your descriptions, after they're generated:
+</VersionBlock>
 
-- [**dbt Docs**](/docs/build/view-documentation#dbt-docs): A static documentation site with model lineage, metadata, and documentation that can be hosted on your web server (like S3 or Netlify). Available for <Constant name="core" /> or <Constant name="dbt" /> Developer plans.
+<VersionBlock firstVersion="2.0">
+
+Using the <Constant name="fusion_engine" />, dbt Docs v2 replaces the v1 static site with a modern, performant catalog served through a local REST API. To generate and serve documentation:
+
+1. Run any dbt command with `--write-index` to build the index (for example, `dbt compile --write-index` or `dbt build --write-index`). This writes index files to `target/index/`, which is what `dbt docs serve` reads from.
+2. Run `dbt docs serve` to start the local documentation server.
+
+Refer to [dbt docs commands](/reference/commands/cmd-docs) for full usage details.
+
+</VersionBlock>
+
+dbt provides three complementary ways to [view documentation](/docs/build/view-documentation) after descriptions are generated:
+
+- [**dbt Docs (Legacy)**](/docs/build/view-documentation#dbt-docs): A static documentation site with model lineage, metadata, and documentation that can be hosted on your web server (like S3 or Netlify). Available for <Constant name="core_v1" /> or <Constant name="dbt" /> Developer plans.
+- [**dbt Docs v2**](/docs/build/view-documentation#dbt-docs-v2) <Lifecycle status="alpha"/>: A modern, performant open-source catalog with a redesigned UI, Semantic Layer metadata, column-level lineage, and a REST API. Available with the <Constant name="fusion_engine" /> and <Constant name="core_v2" />.
 - [**<Constant name="catalog" />**](/docs/explore/explore-projects): Builds upon dbt Docs to provide a dynamic, real-time interface with enhanced metadata, customizable views, deeper project insights, and collaboration tools. Available on <Constant name="dbt" /> [Starter, Enterprise, or Enterprise+ plans](https://www.getdbt.com/pricing).
 
 Refer to [View documentation](/docs/build/view-documentation) to get the most out of your dbt project's documentation.
@@ -119,9 +137,17 @@ In this example, a docs block named `table_events` is defined with some descript
 
 ### Placement
 
-<VersionBlock firstVersion="1.9">
+<VersionBlock lastVersion="1.11">
 
 Docs blocks should be placed in files with a `.md` file extension. By default, dbt will search in all resource paths for docs blocks (for example, the combined list of [model-paths](/reference/project-configs/model-paths), [seed-paths](/reference/project-configs/seed-paths), [analysis-paths](/reference/project-configs/analysis-paths), [test-paths](/reference/project-configs/test-paths), [macro-paths](/reference/project-configs/macro-paths), and [snapshot-paths](/reference/project-configs/snapshot-paths)) &mdash; you can adjust this behavior using the [docs-paths](/reference/project-configs/docs-paths) config.
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.12">
+
+Place docs blocks in `.md` files. You can also use Jinja-style extensions (`.md.j2`, `.md.jinja`, `.md.jinja2`), however these require setting [`allow_jinja_file_extensions: true`](/reference/global-configs/behavior-flags/allow_jinja_file_extensions) in your `dbt_project.yml`. This enables Jinja-aware syntax highlighting in IDEs that associate these suffixes with Jinja templating.
+
+By default, dbt searches in all resource paths for docs blocks (for example, the combined list of [model-paths](/reference/project-configs/model-paths), [seed-paths](/reference/project-configs/seed-paths), [analysis-paths](/reference/project-configs/analysis-paths), [test-paths](/reference/project-configs/test-paths), [macro-paths](/reference/project-configs/macro-paths), and [snapshot-paths](/reference/project-configs/snapshot-paths)). You can adjust this behavior using the [docs-paths](/reference/project-configs/docs-paths) config.
 
 </VersionBlock>
 

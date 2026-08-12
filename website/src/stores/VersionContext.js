@@ -1,113 +1,169 @@
 import React, { useState, useEffect, createContext, useCallback, useRef } from "react"
-import { versions } from '../../dbt-versions'
+import { products, versions, isPrerelease } from '../../dbt-versions'
 import sanitizeHtml from "sanitize-html";
 import { useLocation } from '@docusaurus/router';
 
-const lastReleasedVersion = versions && versions.find(ver => ver.version && ver.version != "" && !ver.isPrerelease);
-
-/**
- * Get the latest version for a given major version number
- * e.g., "1" returns "1.12", "2" returns "2.1"
- * @param {string} majorVersion - The major version number (e.g., "1" or "2")
- * @returns {string|null} - The latest full version string or null if not found
- */
-function getLatestVersionForMajor(majorVersion) {
-  const matchingVersions = versions.filter(ver => 
-    ver?.version && ver.version.startsWith(majorVersion + '.')
-  );
-  // Versions array is ordered newest first, so return the first match
-  return matchingVersions.length > 0 ? matchingVersions[0].version : null;
+// Find a subProduct object by name across all products
+function findSubProduct(name) {
+  for (const product of products) {
+    const sp = product.subProducts.find((s) => s.name === name);
+    if (sp) return sp;
+  }
+  return null;
 }
 
+// Find the product name that owns a given subProduct name
+function findProductForSubProduct(subProductName) {
+  for (const product of products) {
+    if (product.subProducts.find((s) => s.name === subProductName)) {
+      return product.name;
+    }
+  }
+  return null;
+}
+
+// Resolve a subProduct name from a version string (?version= URLs)
+function resolveSubProductFromVersion(versionString) {
+  for (const product of products) {
+    const sp = product.subProducts.find((s) => s.version === versionString);
+    if (sp) return sp.name;
+  }
+  return null;
+}
+
+// Default subProduct: first non-beta subProduct across all products
+function getDefaultSubProductName() {
+  for (const product of products) {
+    const sp = product.subProducts.find((s) => !isPrerelease(s));
+    if (sp) return sp.name;
+  }
+  return products[0]?.subProducts[0]?.name;
+}
+
+const defaultSubProductName = getDefaultSubProductName();
+const defaultSubProduct = findSubProduct(defaultSubProductName);
+
 const VersionContext = createContext({
-  version: lastReleasedVersion.version,
-  EOLDate: lastReleasedVersion.EOLDate || undefined, 
-  isPrerelease: lastReleasedVersion.isPrerelease || false,
-  latestStableRelease: lastReleasedVersion.version,
+  version: defaultSubProduct?.version,
+  subProduct: defaultSubProductName,
+  product: findProductForSubProduct(defaultSubProductName),
+  EOLDate: defaultSubProduct?.EOLDate,
+  isPrerelease: isPrerelease(defaultSubProduct),
+  customDisplay: defaultSubProductName,
+  latestStableRelease: defaultSubProduct?.version,
   updateVersion: () => Object,
 })
 
 export const VersionContextProvider = ({ value = "", children }) => {
 
-  const [version, setVersion] = useState(value)
+  const [subProductName, setSubProductName] = useState(value)
   const location = useLocation()
-  const pendingVersionRef = useRef(null)
+  const pendingSubProductRef = useRef(null)
 
-  // Helper to update URL with version parameter
-  const updateUrlVersion = useCallback((newVersion) => {
+  // Helper to update URL with the version parameter
+  const updateUrlParams = useCallback((newSubProductName) => {
     const url = new URL(window.location.href)
-    url.searchParams.set('version', newVersion)
+    const sp = findSubProduct(newSubProductName);
+
+    // Strip legacy params that are no longer written to the URL
+    url.searchParams.delete('subProduct')
+    url.searchParams.delete('name')
+
+    if (sp?.version) {
+      url.searchParams.set('version', sp.version)
+    } else {
+      url.searchParams.delete('version')
+    }
+
     window.history.replaceState({}, '', url.toString())
   }, [])
 
-  // Function to resolve version from a URL search string
-  const resolveVersionFromSearch = useCallback((search) => {
-    const storageVersion = window.localStorage.getItem('dbtVersion')
+  // Resolve a subProduct name from URL search params
+  const resolveSubProductFromSearch = useCallback((search) => {
+    const storageSubProduct = window.localStorage.getItem('dbtSubProduct')
     const urlParams = new URLSearchParams(search);
-    const originalVersionParam = urlParams.get('version')
 
-    // Sanitize version param
-    const versionParam = sanitizeHtml(originalVersionParam);
+    const rawVersionParam = urlParams.get('version')
+    const versionParam = rawVersionParam ? sanitizeHtml(rawVersionParam) : null
 
-    // Check for exact version match first
-    if(versionParam && versions.find(ver => ver?.version && ver.version === versionParam)) {
-      return versionParam
-    } else if (versionParam && /^\d+$/.test(versionParam)) {
-      // Check if version param is a major version only (e.g., "1" or "2")
-      const latestForMajor = getLatestVersionForMajor(versionParam);
-      if (latestForMajor) {
-        return latestForMajor
+    // Legacy subProduct param (still read for backward compat)
+    const rawSubProductParam = urlParams.get('subProduct')
+    const subProductParam = rawSubProductParam ? sanitizeHtml(rawSubProductParam) : null
+    if (subProductParam && findSubProduct(subProductParam)) {
+      return subProductParam
+    }
+
+    // Resolve from the version param
+    if (versionParam) {
+      // Exact version match
+      const fromVersion = resolveSubProductFromVersion(versionParam)
+      if (fromVersion) return fromVersion
+
+      // Major version shortcut (e.g., "1" or "2")
+      if (/^\d+$/.test(versionParam)) {
+        const matchingVersion = versions.find((ver) => ver.version.startsWith(versionParam + '.'))
+        if (matchingVersion) {
+          const fromMajor = resolveSubProductFromVersion(matchingVersion.version)
+          if (fromMajor) return fromMajor
+        }
       }
     }
-    
-    // Fall back to localStorage or latest version
-    if(storageVersion && versions.find(ver => ver?.version && ver.version === storageVersion)) {
-      return storageVersion
+
+    // Check localStorage (new key)
+    if (storageSubProduct && findSubProduct(storageSubProduct)) {
+      return storageSubProduct
     }
-    return lastReleasedVersion.version
+
+    // Check legacy localStorage version key
+    const storageVersion = window.localStorage.getItem('dbtVersion')
+    if (storageVersion) {
+      const fromStoredVersion = resolveSubProductFromVersion(storageVersion)
+      if (fromStoredVersion) return fromStoredVersion
+    }
+
+    return defaultSubProductName
   }, [])
 
-  // Sync version from current URL
-  const syncVersionFromUrl = useCallback(() => {
-    const resolvedVersion = resolveVersionFromSearch(window.location.search)
-    setVersion(resolvedVersion)
-    window.localStorage.setItem('dbtVersion', resolvedVersion)
-    updateUrlVersion(resolvedVersion)
-  }, [resolveVersionFromSearch, updateUrlVersion])
+  // Sync subProduct from current URL
+  const syncSubProductFromUrl = useCallback(() => {
+    const resolved = resolveSubProductFromSearch(window.location.search)
+    setSubProductName(resolved)
+    window.localStorage.setItem('dbtSubProduct', resolved)
+    updateUrlParams(resolved)
+  }, [resolveSubProductFromSearch, updateUrlParams])
 
   // Initial sync on mount
   useEffect(() => {
-    syncVersionFromUrl()
-  }, [syncVersionFromUrl])
+    syncSubProductFromUrl()
+  }, [syncSubProductFromUrl])
 
   // Listen for route changes via Docusaurus router
   useEffect(() => {
-    if (location.search.includes('version=')) {
-      const resolvedVersion = resolveVersionFromSearch(location.search)
-      setVersion(resolvedVersion)
-      window.localStorage.setItem('dbtVersion', resolvedVersion)
-      // Update URL to show resolved version (in case of major version shortcut)
-      updateUrlVersion(resolvedVersion)
+    if (location.search.includes('subProduct=') || location.search.includes('version=')) {
+      const resolved = resolveSubProductFromSearch(location.search)
+      setSubProductName(resolved)
+      window.localStorage.setItem('dbtSubProduct', resolved)
+      updateUrlParams(resolved)
     }
-  }, [location.search, resolveVersionFromSearch, updateUrlVersion])
+  }, [location.search, resolveSubProductFromSearch, updateUrlParams])
 
-  // Listen for click events on links to capture version before navigation
+  // Capture version from link hrefs before navigation
   useEffect(() => {
     const handleClick = (e) => {
       const anchor = e.target.closest('a')
       if (!anchor) return
-
       const href = anchor.getAttribute('href')
       if (!href) return
 
-      // Check if the link has a version parameter
-      if (href.includes('version=')) {
-        // Extract and store the version from the href for after navigation
+      if (href.includes('subProduct=') || href.includes('version=')) {
         try {
           const url = new URL(href, window.location.origin)
+          const subProductFromLink = url.searchParams.get('subProduct')
           const versionFromLink = url.searchParams.get('version')
-          if (versionFromLink) {
-            pendingVersionRef.current = versionFromLink
+          if (subProductFromLink) {
+            pendingSubProductRef.current = { type: 'subProduct', value: subProductFromLink }
+          } else if (versionFromLink) {
+            pendingSubProductRef.current = { type: 'version', value: versionFromLink }
           }
         } catch (e) {
           // Invalid URL, ignore
@@ -119,66 +175,64 @@ export const VersionContextProvider = ({ value = "", children }) => {
     return () => document.removeEventListener('click', handleClick, true)
   }, [])
 
-  // Process pending version after navigation completes
+  // Process pending subProduct after navigation completes
   useEffect(() => {
-    if (pendingVersionRef.current) {
-      const pendingVersion = sanitizeHtml(pendingVersionRef.current)
-      pendingVersionRef.current = null
-      
-      let resolvedVersion;
-      // Check for exact match
-      if (versions.find(ver => ver?.version && ver.version === pendingVersion)) {
-        resolvedVersion = pendingVersion
-      } else if (/^\d+$/.test(pendingVersion)) {
-        // Major version shortcut
-        const latestForMajor = getLatestVersionForMajor(pendingVersion)
-        if (latestForMajor) {
-          resolvedVersion = latestForMajor
+    if (pendingSubProductRef.current) {
+      const pending = pendingSubProductRef.current
+      pendingSubProductRef.current = null
+
+      let resolved;
+      if (pending.type === 'subProduct') {
+        const sanitized = sanitizeHtml(pending.value)
+        if (findSubProduct(sanitized)) resolved = sanitized
+      } else if (pending.type === 'version') {
+        const sanitized = sanitizeHtml(pending.value)
+        if (/^\d+$/.test(sanitized)) {
+          const matchingVersion = versions.find((ver) => ver.version.startsWith(sanitized + '.'))
+          if (matchingVersion) resolved = resolveSubProductFromVersion(matchingVersion.version)
+        } else {
+          resolved = resolveSubProductFromVersion(sanitized)
         }
       }
-      
-      if (resolvedVersion) {
-        setVersion(resolvedVersion)
-        window.localStorage.setItem('dbtVersion', resolvedVersion)
-        updateUrlVersion(resolvedVersion)
+
+      if (resolved) {
+        setSubProductName(resolved)
+        window.localStorage.setItem('dbtSubProduct', resolved)
+        updateUrlParams(resolved)
       }
     }
-  }, [location.pathname, updateUrlVersion])
+  }, [location.pathname, updateUrlParams])
 
+  // Called when user clicks a version menu item (reads data-dbt-subproduct attribute)
   const updateVersion = (e) => {
-    if(!e.target)
-      return
-
-    // Get selected version value from `dbt-version` data attribute
-    const versionValue = e.target?.dataset?.dbtVersion
-    
-    if (versionValue) {
-      setVersion(versionValue)
-      window.localStorage.setItem('dbtVersion', versionValue)
-      updateUrlVersion(versionValue)
+    if (!e.target) return
+    const newSubProductName = e.target?.dataset?.dbtSubproduct
+    if (newSubProductName && findSubProduct(newSubProductName)) {
+      setSubProductName(newSubProductName)
+      window.localStorage.setItem('dbtSubProduct', newSubProductName)
+      updateUrlParams(newSubProductName)
     }
   }
 
-  let context = {
-    version, 
-    updateVersion
-  }
+  // Derive all context values from current subProductName
+  const currentSubProduct = findSubProduct(subProductName)
+  const currentProductName = findProductForSubProduct(subProductName)
+  const latestStableRelease = versions.find((ver) => !ver?.isPrerelease)
 
-  // Determine isPrerelease status + End of Life date for current version
-  const currentVersion = versions.find(ver => ver.version === version)
-  if(currentVersion) {
-    context.EOLDate = currentVersion.EOLDate
-    context.isPrerelease = currentVersion?.isPrerelease
-    context.customDisplay = currentVersion?.customDisplay;
+  const context = {
+    version: currentSubProduct?.version || defaultSubProduct?.version,
+    subProduct: subProductName,
+    product: currentProductName,
+    EOLDate: currentSubProduct?.EOLDate,
+    isPrerelease: isPrerelease(currentSubProduct),
+    customDisplay: subProductName,
+    latestStableRelease: latestStableRelease?.version,
+    updateVersion,
   }
-  
-  // Get latest stable release
-  const latestStableRelease = versions.find(ver => !ver?.isPrerelease)
-    context.latestStableRelease = latestStableRelease.version
 
   return (
     <VersionContext.Provider value={context}>
-      { children }
+      {children}
     </VersionContext.Provider>
   )
 }

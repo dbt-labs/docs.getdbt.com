@@ -5,7 +5,7 @@ id: "fusion"
 level: 'Beginner'
 icon: 'zap'
 hide_table_of_contents: true
-tags: ['dbt Fusion engine', 'dbt Cloud','Quickstart']
+tags: ['dbt Fusion engine', 'dbt platform','Quickstart']
 recently_updated: true
 ---
 
@@ -31,8 +31,8 @@ This quickstart guide will get you from zero to running your first dbt project w
 
 | Environment | How to use <Constant name="fusion" /> |
 |--------------|-------------------|
-| **<Constant name="studio_ide" />** | <Constant name="fusion" /> is automatically enabled; just [upgrade your environment(s)](/docs/dbt-versions/upgrade-dbt-version-in-cloud#dbt-fusion-engine). |
-| **dbt CLI (local)** | [Install <Constant name="fusion_engine" />](/docs/local/install-dbt?version=2#get-started) locally following this guide. |
+| **<Constant name="studio_ide" />** | <Constant name="fusion" /> is automatically enabled; just [upgrade your environment(s)](/docs/dbt-versions/upgrade-dbt-platform-version#dbt-fusion-engine). |
+| **Local CLI** | [Install <Constant name="fusion_engine" />](/docs/local/install-dbt?version=2) locally following this guide. |
 | **VS Code / Cursor IDE** | [Install the dbt extension](/docs/install-dbt-extension) to unlock <Constant name="fusion" />'s interactive power in your editor. |
 
 To learn more about which tool is best for you, see the [Fusion availability](/docs/fusion/fusion-availability) page. To learn about the <Constant name="fusion_engine" /> and how it works, read more [about the dbt Fusion engine](/docs/fusion/about-fusion).
@@ -42,7 +42,7 @@ To learn more about which tool is best for you, see the [Fusion availability](/d
 
 To take full advantage of this guide, you'll need to meet the following prerequisites:
 
-- You should have a basic understanding of [dbt projects](/docs/build/projects), [git workflows](/docs/cloud/git/git-version-control), and [data warehouse requirements](/docs/supported-data-platforms).
+- You should have a basic understanding of [dbt projects](/docs/build/projects), [git workflows](/docs/platform/git/git-version-control), and [data warehouse requirements](/docs/supported-data-platforms).
 - Make sure you're using a supported adapter and authentication method:
     <FusionDWH /> 
 - You need a macOS (Terminal), Linux, or Windows (Powershell) machine to run the <Constant name="fusion_engine" />. 
@@ -69,34 +69,12 @@ It's easy to think of the <Constant name="fusion_engine" /> and the dbt extensio
 - Use `dbt` as your default command. If you already have another dbt command-line tool installed (such as the <Constant name="platform_cli" /> or <Constant name="core" />), you can use `dbtf` as an unambiguous alias for <Constant name="fusion" />.
 :::
 
-The following are the essential steps from the [<Constant name="fusion_engine" />](/docs/local/install-dbt?version=2#get-started) and [extension](/docs/install-dbt-extension) installation guides:
+The following are the essential steps from the [<Constant name="fusion_engine" />](/docs/local/install-dbt?version=2) and [extension](/docs/install-dbt-extension) installation guides:
 
-<Tabs queryString="installation">
-<TabItem value="mac-linux" label="macOS & Linux">
-
-1. Run the following command in the terminal to install the <Constant name="fusion_engine" /> CLI.
+1. Run the following commands to install the <Constant name="fusion_engine" /> CLI:
     ```shell
-    curl -fsSL https://public.cdn.getdbt.com/fs/install/install.sh | sh -s -- --update
+    python -m pip install --pre dbt
     ```
-2. To use `dbt` immediately after installation, reload your shell so that the new `$PATH` is recognized:
-    ```shell
-    exec $SHELL
-    ```
-    Or you can close and reopen your terminal window. This will load the updated environment settings into the new session.
-</TabItem>
-<TabItem value="windows" label="Windows (PowerShell)">
-
-1. Run the following command in PowerShell to install the <Constant name="fusion_engine" /> CLI:
-    ```powershell
-    irm https://public.cdn.getdbt.com/fs/install/install.ps1 | iex
-    ```
-2. To use `dbt` immediately after installation, reload your shell so that the new `Path` is recognized:
-    ```powershell
-    Start-Process powershell
-    ```
-    Or you can close and reopen your terminal window. This will load the updated environment settings into the new session.
-</TabItem>
-</Tabs>
 
 ### Verify the <Constant name="fusion_engine" /> installation
 
@@ -106,7 +84,7 @@ The following are the essential steps from the [<Constant name="fusion_engine" /
     ```
 2. You should see output similar to the following:
     ```bash
-    dbt-fusion 2.0.0-preview.45
+    dbt 2.0.0-preview.178
     ```
 
 ### Install the dbt VS Code extension
@@ -114,10 +92,10 @@ The following are the essential steps from the [<Constant name="fusion_engine" /
 The dbt VS Code extension is available in the [Visual Studio extension marketplace](https://marketplace.visualstudio.com/items?itemName=dbtLabsInc.dbt). Download it directly from your VS Code editor:
 
 1. Navigate to the **Extensions** tab of VS Code (or Cursor).
-2. Search for `dbt` and choose the one from the publisher `dbt Labs Inc`.
+2. Search for `dbt` and choose the one from the publisher `dbt Labs, LLC`.
     <Lightbox src="/img/docs/extension/extension-marketplace.png" width="60%" title="Search for the extension"/>
 3. Click **Install**.
-4. When the prompt appears, you can register the extension now or skip it (you can register later). You can also check out our [installation instructions](/docs/install-dbt-extension) to come back to it later.
+4. When the prompt appears, you can register the extension or skip it. Check out the [registration](/docs/sign-in-dbt-extension) or [installation](/docs/install-dbt-extension) instructions to come back to it later.
 5. Confirm you've installed the extension by looking for the **dbt Extension** label in the status bar. If you see it, the extension was installed successfully!
     <Lightbox src="/img/docs/extension/extension-lsp-download.png" width="60%" title="Verify installation in the status bar."/>
 
@@ -144,14 +122,18 @@ Now let's create your first dbt project powered by <Constant name="fusion" />!
     dbt build
     ```
 
-This will:
-- Load example data into your warehouse
-- Create, build, and test models
-- Verify your dbt environment is fully operational
+    #### Viewing metadata in Catalog
+
+    Run `dbt build --write-catalog` locally to generate docs metadata (`dbt build` alone does not generate docs metadata). To view that metadata in <Constant name="catalog" />, run a job in <Constant name="dbt_platform" /> so the metadata is uploaded. For details, refer to [Platform behavior](/reference/commands/cmd-docs?version=2.0#platform-behavior).
+
+    This will:
+    - Load example data into your warehouse
+    - Create, build, and test models
+    - Verify your dbt environment is fully operational
 
 ## Explore with the dbt VS Code extension
 
-The dbt VS Code extension compiles and builds your project with the <Constant name="fusion_engine" />, a powerful and blazing fast rebuild of dbt from the ground up. 
+The dbt VS Code extension (available for VS Code and Cursor) compiles and builds your project with the <Constant name="fusion_engine" />, a powerful and blazing fast rebuild of dbt from the ground up. 
 
 Want to see <Constant name="fusion" /> in action? Check out the following video to get a sense of how it works:
 
@@ -164,11 +146,12 @@ Want to see <Constant name="fusion" /> in action? Check out the following video 
   />
 </div>
 
-Now that your project works, open it in VS Code and see <Constant name="fusion" /> in action:
+Now that your project works, open it in VS Code or Cursor and see <Constant name="fusion" /> in action:
 
-1. In VS Code, open the **View** menu and click **Command Palette**. Enter **Workspaces: Add Folder to Workspace**.
+1. Open the **View** menu and click **Command Palette**. Enter **Workspaces: Add Folder to Workspace**.
 2. Select your `jaffle_shop` folder.
         If you don't add the root folder of the dbt project to the workspace, the [dbt language server](https://docs.getdbt.com/blog/dbt-fusion-engine-components#the-dbt-vs-code-extension-and-language-server) (LSP) will not run. The LSP enables features like autocomplete, hover info, and inline error highlights.
+3. Click the **dbt logo** in the sidebar to open the **Get started** panel. The panel detects your environment and surfaces the next setup step, including installing the <Constant name="fusion" /> binary, confirming your project is open, checking <Constant name="fusion" /> compatibility, and registering. If you haven't already upgraded your project to <Constant name="fusion" />, you can choose **Start with an agent** (Copilot or Cursor) or **Start manually in CLI** directly from the panel. For full details, see [Getting started](/docs/install-dbt-extension#getting-started).
 4. Open a model file to see the definition for the `orders` model. This is the model we'll use in all of the examples below.
     ```bash
         models/marts/orders.sql

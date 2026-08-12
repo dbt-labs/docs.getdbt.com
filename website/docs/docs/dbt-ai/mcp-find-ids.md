@@ -3,6 +3,7 @@ title: "How to find your dbt MCP IDs"
 sidebar_label: "Finding your IDs"
 description: "Step-by-step instructions for finding the numeric IDs needed for dbt MCP configuration."
 id: "mcp-find-ids"
+availability: all_users
 ---
 
 Several dbt MCP environment variables and headers require numeric IDs from your <Constant name="dbt_platform"/> account. This guide shows exactly where to find each one.
@@ -36,7 +37,7 @@ Your hostname is the domain you use to access <Constant name="dbt_platform"/>. B
 | Accounts with a subdomain prefix | `abc123.us1.dbt.com` | `abc123.us1.dbt.com` |
 | Single-tenant | `your-company.getdbt.com` | `your-company.getdbt.com` |
 
-For more information on regions and hosting, refer to [Access, Regions, & IP addresses](/docs/cloud/about-cloud/access-regions-ip-addresses).
+For more information on regions and hosting, refer to [Access, Regions, & IP addresses](/docs/platform/about-platform/access-regions-ip-addresses).
 
 ## DBT_ACCOUNT_ID (account ID) {#dbt-account-id}
 
@@ -91,4 +92,4 @@ Used for shared or team setups. Better for CI/automation.
 2. Click **+ New token**, assign the required permissions, and copy the token value.
 3. For full MCP access, the service token needs at least `Semantic Layer Only`, `Metadata Only`, and `Developer` permissions.
 
-For more information, see [User tokens (PAT)](/docs/dbt-cloud-apis/user-tokens) and [Service tokens](/docs/dbt-cloud-apis/service-tokens).
+For more information, see [User tokens (PAT)](/docs/dbt-apis/user-tokens) and [Service tokens](/docs/dbt-apis/service-tokens).

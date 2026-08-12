@@ -3,6 +3,7 @@ title: "dbt tips and tricks"
 description: "Check out any dbt-related tips and tricks to help you work faster and be more productive."
 sidebar_label: "dbt tips and tricks"
 pagination_next: null
+availability: all_users
 ---
 
 Use this page for valuable insights and practical advice to enhance your dbt experience. Whether you're new to dbt or an experienced user, these tips are designed to help you work more efficiently and effectively.
@@ -12,7 +13,7 @@ The following tips are organized into the following categories:
 - [Package tips](#package-tips) to help you streamline your workflow.
 - [Advanced tips and techniques](#advanced-tips-and-techniques) to help you get the most out of dbt.
 
-If you're developing with the <Constant name="studio_ide" />, you can refer to the [keyboard shortcuts](/docs/cloud/studio-ide/keyboard-shortcuts) page to help make development more productive and easier for everyone.
+If you're developing with the <Constant name="studio_ide" />, you can refer to the [keyboard shortcuts](/docs/platform/studio-ide/keyboard-shortcuts) page to help make development more productive and easier for everyone.
 
 ## YAML tips
 
@@ -23,7 +24,7 @@ This section clarifies where you can use [Jinja](/docs/build/jinja-macros), nest
   - In `dbt_project.yml`, `packages.yml`, and `profiles.yml` files, you must pass `vars` through the CLI using `--vars`, not defined inside the `vars:` block in the YAML file. This is because these files are parsed before Jinja is rendered.
 - You can use `env_var()` in all YAML files that support Jinja. Only `profiles.yml` and `packages.yml` support environment variables for secure values (using the `DBT_ENV_SECRET_` prefix). These are masked in logs and intended for credentials or secrets.
 
-For additional information, check out [<Constant name="core" />'s context docs](https://github.com/dbt-labs/dbt-core/blob/main/core/dbt/context/README.md).
+For additional information, check out [<Constant name="core" />'s context docs](https://github.com/dbt-labs/dbt-core/blob/1.latest/core/dbt/context/README.md).
 
 ## Package tips
 
@@ -62,5 +63,5 @@ Leverage these dbt packages to streamline your workflow:
 ## Related docs
 
 - [Quickstart guide](/guides)
-- [About <Constant name="dbt" />](/docs/cloud/about-cloud/dbt-cloud-features)
-- [Develop in the Cloud](/docs/cloud/about-develop-dbt)
+- [About <Constant name="dbt" />](/docs/platform/about-platform/dbt-platform-features)
+- [Develop in the Cloud](/docs/platform/about-develop-dbt)

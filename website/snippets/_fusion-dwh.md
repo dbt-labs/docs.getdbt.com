@@ -1,41 +1,9 @@
-   <Expandable alt_header="BigQuery">  
-    - Service Account / User Token
-    - Native OAuth
-    - External OAuth 
-      - [Workload Identity Federation](/docs/cloud/manage-access/set-up-bigquery-oauth?version=1.12#set-up-bigquery-workload-identity-federation) isn't currently supported in <Constant name="fusion"/>. Use a [Native OAuth connection](/docs/cloud/manage-access/set-up-bigquery-oauth#set-up-bigquery-native-oauth) or service account instead. Support coming soon.
-    - [Required permissions](/docs/local/connect-data-platform/bigquery-setup#required-permissions)
-  </Expandable>
+import FusionDWHPlatform from '/snippets/_fusion-dwh-platform.md';
+import FusionDWHLocal from '/snippets/_fusion-dwh-local.md';
 
-  <Expandable alt_header="Databricks">
-    - Service Account / User Token
-    - Native OAuth
-  </Expandable>
+<FusionDWHPlatform />
 
-  <Expandable alt_header="Redshift">
-    - Username / Password
-    - IAM profile
-  </Expandable>
-  
-  <Expandable alt_header="Snowflake">
-    - Username / Password
-    - Native OAuth
-    - External OAuth
-    - Key pair using a modern PKCS#8 method
-    - MFA
-  </Expandable>
+<FusionDWHLocal />
 
-  <Expandable alt_header="Apache Spark (Fusion CLI only)">
-    - Thrift
-      - Simple Authentication and Security Layer (SASL) PLAIN
-      - No SASL (NOSASL) 
-    - Livy
-      - Basic authentication (username and password)
-      - When deployed on Amazon Web Services (AWS): AWS Signature Version 4
-        - Supports authentication using single sign-on, service accounts, or user tokens
-  </Expandable>
-
-  <Expandable alt_header="DuckDB (Fusion CLI only)">
-    DuckDB does not require authentication &mdash; it runs locally on your machine.
-  </Expandable>
-
+<small> _Note that adapter lifecycle may differ between the <Constant name="dbt_platform"/> and local development. An adapter can reach GA in the dbt platform before it reaches GA for local use._ </small>
 <!-- <Expandable alt_header="Supported data platforms"> -->

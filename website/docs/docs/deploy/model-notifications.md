@@ -2,9 +2,10 @@
 title: "Model notifications"
 description: "While a job is running, receive email notifications in real time about any issues with your models and tests. "
 intro_text: "Set up dbt to notify model owners through email about issues in your deployment environments."
+availability: platform_login
 ---
 
-Configure dbt to send email notifications to model owners about issues in deployment [environments](/docs/dbt-cloud-environments#types-of-environments) as soon as they happen &mdash; while the job is still running. Model owners can specify which statuses to receive notifications about:
+Configure dbt to send email notifications to model owners about issues in deployment [environments](/docs/dbt-platform-environments#types-of-environments) as soon as they happen &mdash; while the job is still running. Model owners can specify which statuses to receive notifications about:
 
 - **Success** and **Fails** for models
 - **Warning**, **Success**, and **Fails** for tests
@@ -22,7 +23,7 @@ Create configuration YAML files in your project for dbt to send notifications ab
 
 ## Prerequisites
 - Your <Constant name="dbt" /> administrator has [enabled the appropriate account setting](#enable-access-to-model-notifications) for you.
-- Your deployment environment(s) must be on a [release track](/docs/dbt-versions/cloud-release-tracks) instead of a legacy <Constant name="core" /> version.
+- Your deployment environment(s) must be on a [release track](/docs/dbt-versions/dbt-release-tracks) instead of a legacy <Constant name="core" /> version.
 
 ## Configure groups
 
@@ -134,6 +135,6 @@ To use model-level notifications, your <Constant name="dbt" /> account must have
 2. From **Email notifications**, enable the setting **Enable group/owner notifications on models** under the **Model notifications** section. Then, specify which statuses to receive notifications about (Success, Warning, and/or Fails). 
 3. Click **Save**.
 
-  <Lightbox src="/img/docs/dbt-cloud/example-enable-model-notifications.png" title="Example of the setting Enable group/owner notifications on models" /> 
+  <Lightbox src="/img/docs/dbt-platform/example-enable-model-notifications.png" title="Example of the setting Enable group/owner notifications on models" /> 
 
 

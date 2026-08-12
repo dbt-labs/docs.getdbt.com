@@ -6,7 +6,7 @@ Permissions:
 
 :::note
 
-Some permissions sets have read-only access to environment settings that can be overriden with more privileged access if the user is assigned to a group with [Environment write access](/docs/cloud/manage-access/about-user-access#environment-write-access) configured.
+Some permissions sets have read-only access to environment settings that can be overriden with more privileged access if the user is assigned to a group with [Environment write access](/docs/platform/manage-access/about-user-access#environment-write-access) configured.
 
 :::
 
@@ -21,52 +21,55 @@ Key:
 
 #### Account access for account permissions
 
-<FilterableTable>
 
-| Account-level permission | Account Admin | Billing admin | Cost Insights Admin | Cost Insights Viewer | Manage marketplace apps | Project creator | Security admin | Viewer |
-|:-------------------------|:-------------:|:-------------:|:-------------------:|:--------------------:|:-----------------------:|:---------------:|:--------------:|:------:|
-| Account settings<sup>*</sup>        | W             | -             | -                   | -                    | -                       | R               | R              | R      |
-| Audit logs               | R             | -             | -                   | -                    | -                       | -               | R              | R      |
-| Auth provider            | W             | -             | -                   | -                    | -                       | -               | W              | R      |
-| Billing                  | W             | W             | -                   | -                    | -                       | -               | -              | R      |
-| Connections              | W             | -             | R<sup>**</sup>       | R                    | -                       | W               | -              | -      |
-| Cost Insights            | R             | -             | R                   | R                    | -                       | R               | -              | R      |
-| Groups                   | W             | -             | -                   | -                    | -                       | R               | W              | R      |
-| Invitations              | W             | -             | -                   | -                    | -                       | W               | W              | R      |
-| IP restrictions          | W             | -             | -                   | -                    | -                       | -               | W              | R      |
-| Licenses                 | W             | -             | -                   | -                    | -                       | W               | W              | R      |
-| Marketplace app          | -             | -             | -                   | -                    | W                       | -               | -              | -      |
-| Members                  | W             | -             | -                   | -                    | -                       | W               | W              | R      |
-| Project (create)         | W             | -             | -                   | -                    | -                       | W               | -              | -      |
-| Public models            | R             | R             | -                   | -                    | -                       | R               | R              | R      |
-| Service tokens           | W             | -             | -                   | -                    | -                       | -               | R              | R      |
-| Webhooks                 | W             | -             | -                   | -                    | -                       | -               | -              | -      |
-</FilterableTable>
+| Account-level permission | Account Admin | Billing admin | Cost Insights Admin | Cost Insights Viewer | Manage marketplace apps | Notification Manager | Project creator | Security admin | Account Viewer |
+|:-------------------------|:-------------:|:-------------:|:-------------------:|:--------------------:|:-----------------------:|:--------------------:|:---------------:|:--------------:|:------:|
+| Account settings<sup>*</sup>        | W             | -             | -                   | -                    | -                       | -                    | R               | R              | R      |
+| Audit logs               | R             | -             | -                   | -                    | -                       | -                    | -               | R              | R      |
+| Auth provider            | W             | -             | -                   | -                    | -                       | -                    | -               | W              | R      |
+| Billing                  | W             | W             | -                   | -                    | -                       | -                    | -               | -              | R      |
+| Connections              | W             | -             | R<sup>**</sup>       | R                    | -                       | R                    | W               | -              | -      |
+| Cost Insights            | R             | -             | R                   | R                    | -                       | -                    | R               | -              | R      |
+| Groups                   | W             | -             | -                   | -                    | -                       | -                    | R               | W              | R      |
+| Invitations              | W             | -             | -                   | -                    | -                       | -                    | W               | W              | R      |
+| IP restrictions          | W             | -             | -                   | -                    | -                       | -                    | -               | W              | R      |
+| Job notifications        | W             | -             | -                   | -                    | -                       | W                    | -               | -              | R      |
+| Licenses                 | W             | -             | -                   | -                    | -                       | -                    | W               | W              | R      |
+| Marketplace app          | -             | -             | -                   | -                    | W                       | -                    | -               | -              | -      |
+| Members                  | W             | -             | -                   | -                    | -                       | R                    | W               | W              | R      |
+| Project (create)         | W             | -             | -                   | -                    | -                       | -                    | W               | -              | -      |
+| Public models            | R             | R             | -                   | -                    | -                       | -                    | R               | R              | R      |
+| Service tokens           | W             | -             | -                   | -                    | -                       | -                    | -               | R              | R      |
+| Webhooks                 | W             | -             | -                   | -                    | -                       | -                    | -               | -              | -      |
 
-<sup>*</sup>Permission sets with write (**W**) access to Account settings can modify account-level settings, including [setting up Slack notifications](/docs/deploy/job-notifications#slack-notifications).
+<sup>*</sup>Permission sets with write (**W**) access to Account settings can modify account-level settings. The **Notification Manager** permission set has dedicated write access to **Job notifications** (Slack, Microsoft Teams, and email) without requiring full Account settings access.
 
 <sup>**</sup>**Cost Insights Admin** can edit [platform metadata credentials](/docs/explore/set-up-cost-insights#configure-platform-metadata-credentials) and [Cost Insights](/docs/explore/set-up-cost-insights) settings in **Connection settings**, even though **Connections** is read-only (**R**) for this permission set.
+
+::::note Credentials access
+Users can access the **Credentials** page under **Your profile** when they have `develop_access` or `user_credential_write` on at least one project.
+
+An admin can grant `user_credential_write` to any group, regardless of which permission set the group is assigned. Users with only `user_credential_write` can configure warehouse and Git credentials on that page; environment variable and dbt version overrides still require `develop_access`.
+::::
 
 
 #### Project access for account permissions
 
-<FilterableTable>
-| Project-level permission     | Account Admin | Billing admin | Cost Insights Admin | Cost Insights Viewer | Project creator | Security admin | Viewer |
-|:-----------------------------|:-------------:|:-------------:|:-------------------:|:--------------------:|:---------------:|:--------------:|:------:|
-| Environment credentials      | W             | -             | -                   | -                    | W               | -              | R      |
-| Custom env. variables        | W             | -             | -                   | -                    | W               | -              | R      |
-| Cost Insights                | R             | -             | R                   | R                    | R               | -              | R      |
-| Data platform configurations | W             | -             | -                   | -                    | W               | -              | R      |
-| Develop (IDE or CLI)         | W             | -             | -                   | -                    | W               | -              | -      |
-| Environments                 | W             | -             | -                   | -                    | W               | -              | R      |
-| Jobs                         | W             | -             | R                   | R                    | W               | -              | R      |
-| Metadata GraphQL API access  | R             | -             | R                   | R                    | R               | -              | R      |
-| Permissions                  | W             | -             | -                   | -                    | W               | W              | R      |
-| Projects                     | W             | -             | R                   | R                    | W               | R              | R      |
-| Repositories                 | W             | -             | -                   | -                    | W               | -              | R      |
-| Runs                         | W             | -             | -                   | -                    | W               | -              | R      |
-| Semantic Layer config        | W             | -             | -                   | -                    | W               | -              | R      |
-</FilterableTable>
+| Project-level permission     | Account Admin | Billing admin | Cost Insights Admin | Cost Insights Viewer | Notification Manager | Project creator | Security admin | Account Viewer |
+|:-----------------------------|:-------------:|:-------------:|:-------------------:|:--------------------:|:--------------------:|:---------------:|:--------------:|:------:|
+| Environment credentials      | W             | -             | -                   | -                    | -                    | W               | -              | R      |
+| Custom env. variables        | W             | -             | -                   | -                    | -                    | W               | -              | R      |
+| Cost Insights                | R             | -             | R                   | R                    | -                    | R               | -              | R      |
+| Data platform configurations | W             | -             | -                   | -                    | -                    | W               | -              | R      |
+| Develop (IDE or CLI)         | W             | -             | -                   | -                    | -                    | W               | -              | -      |
+| Environments                 | W             | -             | -                   | -                    | -                    | W               | -              | R      |
+| Jobs                         | W             | -             | R                   | R                    | -                    | W               | -              | R      |
+| Metadata GraphQL API access  | R             | -             | R                   | R                    | -                    | R               | -              | R      |
+| Permissions                  | W             | -             | -                   | -                    | -                    | W               | W              | R      |
+| Projects                     | W             | -             | R                   | R                    | -                    | W               | R              | R      |
+| Repositories                 | W             | -             | -                   | -                    | -                    | W               | -              | R      |
+| Runs                         | W             | -             | -                   | -                    | -                    | W               | -              | R      |
+| Semantic Layer config        | W             | -             | -                   | -                    | -                    | W               | -              | R      |
 
 ### Project permissions
 
@@ -79,48 +82,46 @@ Key:
 
 #### Account access for project permissions
 
-<FilterableTable>
-| Account-level permission | Admin | Analyst | Cost Insights Admin | Cost Insights Viewer | Database admin | Developer | Git Admin | Job admin | Job runner  | Job viewer  | Metadata (Discovery API only) | Semantic Layer | Stakeholder/Read-Only | Team admin |
-|--------------------------|:-----:|:-------:|:-------------------:|:--------------------:|:--------------:|:---------:|:---------:|:---------:|:-----------:|:-----------:|:--------:|:--------------:|:-----------:|:----------:|
-| Account settings         |   R   |    -    |         -           |          -           |       R        |     -     |     R     |     -     |     -       |      -      |    -     |        -       |      -      |     R      |
-| Auth provider            |   -   |    -    |         -           |          -           |       -        |     -     |     -     |     -     |     -       |      -      |    -     |        -       |      -      |     -      |
-| Billing                  |   -   |    -    |         -           |          -           |       -        |     -     |     -     |     -     |     -       |      -      |    -     |        -       |      -      |     -      |
-| Connections              |   R   |    R    |        R<sup>*</sup>|          R           |       R        |     R     |     R     |     R     |     -       |      -      |    -     |        -       |      R      |     R      |
-| Cost Insights            |   -   |    -    |         R           |          R           |       R        |     -     |     R     |     R     |     -       |      -      |    -     |        -       |      -      |     R      |
-| Groups                   |   R   |    -    |         -           |          -           |       R        |     R     |     R     |     -     |     -       |      -      |    -     |        -       |      R      |     R      |
-| Invitations              |   W   |    R    |         -           |          -           |       R        |     R     |     R     |     R     |     -       |      R      |    -     |        -       |      R      |     R      |
-| Licenses                 |   W   |    R    |         -           |          -           |       R        |     R     |     R     |     R     |     -       |      R      |    -     |        -       |      -      |     R      |
-| Members                  |   W   |    -    |         -           |          -           |       R        |     R     |     R     |     -     |     -       |      -      |    -     |        -       |      R      |     R      |
-| Project (create)         |   -   |    -    |         -           |          -           |       -        |     -     |     -     |     -     |     -       |      -      |    -     |        -       |      -      |     -      |
-| Public models            |   R   |    R    |         -           |          -           |       R        |     R     |     R     |     R     |     -       |      R      |     R    |        R       |      R      |     R      |
-| Service tokens           |   -   |    -    |         -           |          -           |       -        |     -     |     -     |     -     |     -       |      -      |    -     |        -       |      -      |     -      |
-| Webhooks                 |   W   |    -    |         -           |          -           |       -        |     W     |     -     |     -     |     -       |      -      |    -     |        -       |      -      |     -      |
-</FilterableTable>
+| Account-level permission | Admin | Analyst | Analyst read | Cost Insights Admin | Cost Insights Viewer | Database admin | Developer | Git Admin | Job admin | Job creator | Job runner | Job viewer | Metadata (Discovery API only) | Semantic Layer | Stakeholder/Read-Only | Team admin |
+|--------------------------|:-----:|:-------:|:------------:|:-------------------:|:--------------------:|:--------------:|:---------:|:---------:|:---------:|:-----------:|:----------:|:----------:|:-----------------------------:|:--------------:|:---------------------:|:----------:|
+| Account settings         |   R   |    -    |      R       |          -          |          -           |       R        |     -     |     R     |     -     |      -      |     -      |     -      |               -               |       -        |           R           |     R      |
+| Auth provider            |   -   |    -    |      -       |          -          |          -           |       -        |     -     |     -     |     -     |      -      |     -      |     -      |               -               |       -        |           -           |     -      |
+| Billing                  |   -   |    -    |      -       |          -          |          -           |       -        |     -     |     -     |     -     |      -      |     -      |     -      |               -               |       -        |           -           |     -      |
+| Connections              |   R   |    R    |      R       |    R<sup>*</sup>    |          R           |       R        |     R     |     R     |     R     |      R      |     -      |     -      |               -               |       R        |           R           |     R      |
+| Cost Insights            |   -   |    -    |      R       |          R          |          R           |       R        |     -     |     R     |     R     |      -      |     -      |     -      |               -               |       -        |           R           |     R      |
+| Groups                   |   R   |    -    |      R       |          -          |          -           |       R        |     R     |     R     |     -     |      -      |     -      |     -      |               -               |       R        |           R           |     R      |
+| Invitations              |   W   |    R    |      R       |          -          |          -           |       R        |     R     |     R     |     R     |      -      |     R      |     -      |               -               |       R        |           R           |     R      |
+| Licenses                 |   W   |    R    |      R       |          -          |          -           |       R        |     R     |     R     |     R     |      -      |     R      |     -      |               -               |       -        |           R           |     R      |
+| Members                  |   W   |    -    |      R       |          -          |          -           |       R        |     R     |     R     |     -     |      -      |     -      |     -      |               -               |       R        |           R           |     R      |
+| Project (create)         |   -   |    -    |      -       |          -          |          -           |       -        |     -     |     -     |     -     |      -      |     -      |     -      |               -               |       -        |           -           |     -      |
+| Public models            |   R   |    R    |      R       |          -          |          -           |       R        |     R     |     R     |     R     |      R      |     R      |     R      |               R               |       R        |           R           |     R      |
+| Service tokens           |   -   |    -    |      -       |          -          |          -           |       -        |     -     |     -     |     -     |      -      |     -      |     -      |               -               |       -        |           -           |     -      |
+| Webhooks                 |   W   |    -    |      -       |          -          |          -           |       -        |     W     |     -     |     -     |      -      |     -      |     -      |               -               |       -        |           -           |     -      |
 
 <sup>*</sup>**Cost Insights Admin** can edit [platform metadata credentials](/docs/explore/set-up-cost-insights#configure-platform-metadata-credentials) and [Cost Insights](/docs/explore/set-up-cost-insights) settings in **Connection settings**, even though **Connections** is read-only (**R**) for this permission set.
 
 #### Project access for project permissions
 
-<FilterableTable>
-|Project-level permission  | Admin | Analyst | Cost Insights Admin | Cost Insights Viewer | Database admin | Developer | Fusion admin | Git Admin | Job admin | Job runner  | Job viewer  | Metadata (Discovery API only) | Semantic Layer | Stakeholder/Read-Only | Team admin |
-|--------------------------|:-----:|:-------:|:-------------------:|:--------------------:|:--------------:|:---------:|:------------:|:---------:|:---------:|:-----------:|:-----------:|:---------------------------------------:|:--------------:|:-----------:|:----------:|
-| Environment credentials  |   W   |    R    |         -           |          -           |       W        |     R     |      -       |     R     |     W     |    -        |      -      |                  -                      |        -       |     R       |     R      |
-| Custom env. variables    |   W   |    W<sup>**</sup>  |         -           |          -           |       W        |     W<sup>**</sup>    |      -       |     W     |     W     |     -       |      R      |                  -                      |        -       |     R       |     W      |
-| Cost Insights            |   -   |    -    |         R           |          R           |       R        |     -     |      -       |     R     |     R     |      -      |      -      |                  -                      |       -        |     -       |     R      |
-| Data platform configs    |   W   |    W    |         -           |          -           |       W        |     W     |      -       |     R     |     W     |     -       |      -      |                  -                      |       -        |     R       |     R      |
-| Develop (IDE or CLI)     |   W   |    W    |         -           |          -           |       -        |     W     |      -       |     -     |     -     |     -       |      -      |                  -                      |       -        |     -       |      -     |
-| Environments             |   W   |    R    |         -           |          -           |       R        |     R     |      -       |     R     |     W     |      -      |      R      |                  -                      |       -        |     R       |     R      |
-| Fusion upgrade           |   -   |    -    |         -           |          -           |       -        |     -     |      W       |     -     |     -     |     -       |      -      |                  -                      |        -       |      -      |     -      |
-| Jobs                     |   W   |    R<sup>*</sup>   |         R           |          R           |       R<sup>*</sup>       |     R<sup>*</sup>    |      -       |     R<sup>*</sup>    |     W     |      R      |      R      |                  -                      |       -        |     R       |     R<sup>*</sup>     |
-| Metadata GraphQL API access| R   |    R    |         R           |          R           |       R        |     R     |      -       |     R     |     R     |      -      |      R      |                  R                      |       -        |     R       |     R      |
-| Permissions              |   W   |    -    |         -           |          -           |       R        |     R     |      -       |     R     |     -     |      -      |      -      |                  -                      |       -        |     -       |     R      |
-| Projects                 |   W   |    R    |         R           |          R           |       W        |     R     |      -       |     W     |     R     |      -      |      R      |                  -                      |       -        |     R       |     W      |
-| Repositories             |   W   |    R    |         -           |          -           |       R        |     R     |      -       |     W     |     -     |      -      |      -      |                  -                      |       -        |     R       |     R      |
-| Runs                     |   W   |    R<sup>*</sup>   |         -           |          -           |       R<sup>*</sup>       |     R<sup>*</sup>    |      -       |     R<sup>*</sup>    |     W     |      W      |      R      |                  -                      |       -        |     R       |     R<sup>*</sup>     |
-| Semantic Layer config    |   W   |    R    |         -           |          -           |       W        |     R     |      -       |     R     |     R     |      -      |      -      |                  -                      |        W       |     R       |     R      |
+|Project-level permission  | Admin | Analyst | Analyst read<sup>***</sup> | Cost Insights Admin | Cost Insights Viewer | Database admin | Developer | Fusion admin | Git Admin | Job admin | Job creator | Job runner  | Job viewer  | Metadata (Discovery API only) | Semantic Layer | Stakeholder/Read-Only | Team admin |
+|--------------------------|:-----:|:-------:|:------------:|:-------------------:|:--------------------:|:--------------:|:---------:|:------------:|:---------:|:---------:|:-----------:|:-----------:|:-----------:|:---------------------------------------:|:--------------:|:-----------:|:----------:|
+| Environment credentials  |   W   |    R    |      R       |         -           |          -           |       W        |     R     |      -       |     R     |     W     |      R      |    -        |      -      |                  -                      |        -       |     R       |     R      |
+| Custom env. variables    |   W   |    W<sup>**</sup>  |      R       |         -           |          -           |       W        |     W<sup>**</sup>    |      -       |     W     |     W     |      R      |     -       |      R      |                  -                      |        -       |     R       |     W      |
+| Cost Insights            |   -   |    -    |      -       |         R           |          R           |       R        |     -     |      -       |     R     |     R     |      -      |      -      |      -      |                  -                      |       -        |     -       |     R      |
+| Data platform configs    |   W   |    W    |      R       |         -           |          -           |       W        |     W     |      -       |     R     |     W     |      R      |     -       |      -      |                  -                      |       -        |     R       |     R      |
+| Develop (IDE or CLI)     |   W   |    W    |      -       |         -           |          -           |       -        |     W     |      -       |     -     |     -     |      -      |     -       |      -      |                  -                      |       -        |     -       |      -     |
+| Environments             |   W   |    R    |      R       |         -           |          -           |       R        |     R     |      -       |     R     |     W     |      R      |      -      |      R      |                  -                      |       -        |     R       |     R      |
+| Fusion upgrade           |   -   |    -    |      -       |         -           |          -           |       -        |     -     |      W       |     -     |     -     |      -      |     -       |      -      |                  -                      |        -       |      -      |     -      |
+| Jobs                     |   W   |    R<sup>*</sup>   |      R       |         R           |          R           |       R<sup>*</sup>       |     R<sup>*</sup>    |      -       |     R<sup>*</sup>    |     W     |      W      |      R      |      R      |                  -                      |       -        |     R       |     R<sup>*</sup>     |
+| Metadata GraphQL API access| R   |    R    |      R       |         R           |          R           |       R        |     R     |      -       |     R     |     R     |      R      |      -      |      R      |                  R                      |       -        |     R       |     R      |
+| Permissions              |   W   |    -    |      -       |         -           |          -           |       R        |     R     |      -       |     R     |     -     |      -      |      -      |      -      |                  -                      |       -        |     -       |     R      |
+| Projects                 |   W   |    R    |      R       |         R           |          R           |       W        |     R     |      -       |     W     |     R     |      R      |      -      |      R      |                  -                      |       -        |     R       |     W      |
+| Repositories             |   W   |    R    |      R       |         -           |          -           |       R        |     R     |      -       |     W     |     -     |      R      |      -      |      -      |                  -                      |       -        |     R       |     R      |
+| Runs                     |   W   |    R<sup>*</sup>   |      R       |         -           |          -           |       R<sup>*</sup>       |     R<sup>*</sup>    |      -       |     R<sup>*</sup>    |     W     |      W      |      W      |      R      |                  -                      |       -        |     R       |     R<sup>*</sup>     |
+| Semantic Layer config    |   W   |    R    |      R       |         -           |          -           |       W        |     R     |      -       |     R     |     R     |      R      |      -      |      -      |                  -                      |        W       |     R       |     R      |
 
-</FilterableTable>
 
-<sup>*</sup>These permissions are `R`ead-only by default, but may be changed to `W`rite with [environment permissions](/docs/cloud/manage-access/environment-permissions#environments-and-roles).
+<sup>*</sup>These permissions are `R`ead-only by default, but may be changed to `W`rite with [environment permissions](/docs/platform/manage-access/environment-permissions#environments-and-roles).
 
 <sup>**</sup>Custom env. variables for the `Developer` and `Analyst` roles are set in the **Credentials** section of **Account settings**.
+
+<sup>***</sup>The **Analyst read** permission set also includes `user_credential_write`, letting users manage their own credentials on the **Credentials** page (under **Your profile**).

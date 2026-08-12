@@ -3,9 +3,10 @@ title: "Custom schemas"
 description: "Configure custom schemas for your dbt model's tables and views in the database."
 id: "custom-schemas"
 pagination_next: "docs/build/custom-databases"
+availability: all_users
 ---
 
-By default, all dbt models are built in the schema specified in your [environment](/docs/dbt-cloud-environments) (<Constant name="dbt_platform" />) or [profile's target](/docs/local/dbt-core-environments) (<Constant name="core" />). This default schema is called your _target schema_.
+By default, all dbt models are built in the schema specified in your [environment](/docs/dbt-platform-environments) (<Constant name="dbt_platform" />) or [profile's target](/docs/local/dbt-core-environments) (<Constant name="core" />). This default schema is called your _target schema_.
 
 For projects with many models, it's common to organize them across multiple schemas. For example, you might want to:
 
@@ -202,7 +203,7 @@ When using this macro, you'll need to set the target name in your production job
 In the `generate_schema_name` macro examples shown in the [built-in alternative pattern](#a-built-in-alternative-pattern-for-generating-schema-names) section, the `target.name` context variable is used to change the schema name that dbt generates for models. If the `generate_schema_name` macro in your project uses the `target.name` context variable, you must ensure that your different dbt environments are configured accordingly. While you can use any naming scheme you'd like, we typically recommend:
 
 * **dev** &mdash; Your local development environment; configured in a `profiles.yml` file on your computer.
-* **ci** &mdash; A [continuous integration](/docs/cloud/git/connect-github) environment running on pull requests in GitHub, GitLab, and so on.
+* **ci** &mdash; A [continuous integration](/docs/platform/git/connect-github) environment running on pull requests in GitHub, GitLab, and so on.
 * **prod** &mdash; The production deployment of your dbt project, like in <Constant name="dbt" />, Airflow, or [similar](/docs/deploy/deployments).
 
 If your schema names are being generated incorrectly, double-check your target name in the relevant environment.

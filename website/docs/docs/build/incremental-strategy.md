@@ -4,6 +4,7 @@ sidebar_label: "Incremental strategy"
 description: "Incremental strategies for materializations optimize performance by defining how to handle new and changed data."
 id: "incremental-strategy"
 intro_text: "Incremental strategies for materializations optimize performance by defining how to handle new and changed data."
+availability: all_users
 ---
 
 There are various strategies to implement the concept of incremental materializations. The value of each strategy depends on:
@@ -22,9 +23,9 @@ The [`microbatch` incremental strategy](/docs/build/incremental-microbatch) is i
 
 ### Supported incremental strategies by adapter
 
-This table shows the support of each incremental strategy across adapters available on <Constant name="dbt" />'s [Latest release track](/docs/dbt-versions/cloud-release-tracks). Some strategies may be unavailable if you're not on **Latest** and the feature hasn't been released to the **Compatible** track.  
+This table shows the support of each incremental strategy across adapters available on Fusion or dbt's [Latest release track](/docs/dbt-versions/dbt-release-tracks). Some strategies may be unavailable if you're not on Latest and the feature hasn't been released to the Compatible track.
 
-If you're interested in an adapter available in <Constant name="core" /> only, check out the [adapter's individual configuration page](/reference/resource-configs) for more details.
+If you're interested in incremental strategies for additional adapters, check out the [adapter's individual configuration page](/reference/resource-configs) for more details.
 
 Click the name of the adapter in the following table for more information about supported incremental strategies:
 
@@ -37,9 +38,10 @@ Click the name of the adapter in the following table for more information about 
 | [dbt-databricks](/reference/resource-configs/databricks-configs#incremental-models)                 |     ✅    |    ✅   | ✅ |          ✅         |          ✅         |
 | [dbt-snowflake](/reference/resource-configs/snowflake-configs#merge-behavior-incremental-models)    |     ✅    |    ✅   | ✅  | ✅ | ✅  |
 | [dbt-trino](/reference/resource-configs/trino-configs#incremental)                                  |     ✅    |    ✅   | ✅  |    |  ✅  |
-| [dbt-fabric](/reference/resource-configs/fabric-configs#incremental)                                |     ✅    |    ✅   | ✅  |    |    |
+| [dbt-fabric](/reference/resource-configs/fabric-configs#incremental)                                |     ✅    |    ✅   | ✅  |    |  ✅  |
 | [dbt-athena](/reference/resource-configs/athena-configs#incremental-models)                         |     ✅    |    ✅   |     | ✅ | ✅  |
 | [dbt-teradata](/reference/resource-configs/teradata-configs#valid_history-incremental-materialization-strategy)  | ✅    |  ✅   |   ✅   |    |         ✅    |
+| [dbt-duckdb](/reference/resource-configs/duckdb-configs#incremental)  | ✅    |  ✅   |   ✅   |    |         ✅    |
 
 ### Configuring incremental strategy
 
@@ -188,7 +190,7 @@ Importantly, `append` doesn't check for duplicates or verify whether a record al
 
 The `delete+insert` strategy deletes the data for the `unique_key` from the target table and then inserts the data for those with a `unique_key`, which may be less efficient for larger datasets. It ensures updated records are fully replaced, avoiding partial updates and can be useful when a `unique_key` isn't truly unique or when `merge` is unsupported.
 
-`delete+insert` doesn't map directly to SCD logic (type 1 or 2) because it overwrites data and tracks history.
+`delete+insert` doesn't map directly to SCD logic (type 1 or 2) because it overwrites data at the row level and while it can add new rows, it does not track history.
 
 For SCD2, use [dbt snapshots](/docs/build/snapshots#what-are-snapshots), not `delete+insert`.
 
@@ -274,7 +276,7 @@ For example, a user-defined strategy named `insert_only` can be defined and used
 
 </File>
 
-If you use a custom microbatch macro, set a [`require_batched_execution_for_custom_microbatch_strategy` behavior flag](/reference/global-configs/behavior-changes#custom-microbatch-strategy) in your `dbt_project.yml` to enable batched execution of your custom strategy. 
+If you use a custom microbatch macro, use the [`require_batched_execution_for_custom_microbatch_strategy` behavior flag](/reference/global-configs/behavior-flags/require_batched_execution_for_custom_microbatch_strategy) in your `dbt_project.yml` to control batched execution. Set it to `true` to opt in before the flag matures. After the flag matures (default: `true`), set it to `false` to revert to single-invocation behavior.
 
 ### Custom strategies from a package
 

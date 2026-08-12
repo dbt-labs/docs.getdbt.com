@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Head from "@docusaurus/Head";
 import MDXCode from '@theme/MDXComponents/Code';
 import MDXPre from '@theme/MDXComponents/Pre';
@@ -43,9 +43,28 @@ import ProductCard from '@site/src/components/productCard';
 import DetailsToggle from '@site/src/components/detailsToggle';
 import Expandable from '@site/src/components/expandable';
 import ConfettiTrigger from '@site/src/components/confetti/';
+import WizardPopcorn from '@site/src/components/wizardPopcorn/';
 import VersionCallout from '@site/src/components/versionCallout';
 import IntroText from '@site/src/components/IntroText';
 import Constant from '@site/src/components/constant';
+import Availability from '@site/src/components/availability';
+import AvailabilityContext from '@site/src/components/availabilityContext';
+import AvailabilityMatrix from '@site/src/components/availabilityMatrix';
+
+function H1WithAvailability(props) {
+  const { availability, renderAfterH1 } = useContext(AvailabilityContext);
+
+  return (
+    <>
+      <MDXHeading as="h1" {...props} />
+      {renderAfterH1 && availability && (
+        <Availability
+          availability={availability}
+        />
+      )}
+    </>
+  );
+}
 
 const MDXComponents = {
   Head,
@@ -57,7 +76,7 @@ const MDXComponents = {
   ul: MDXUl,
   img: MDXImg,
   table: FilterableTable, // All tables automatically get filtering functionality
-  h1: (props) => <MDXHeading as="h1" {...props} />,
+  h1: H1WithAvailability,
   h2: (props) => <MDXHeading as="h2" {...props} />,
   h3: (props) => <MDXHeading as="h3" {...props} />,
   h4: (props) => <MDXHeading as="h4" {...props} />,
@@ -93,11 +112,13 @@ const MDXComponents = {
   DetailsToggle: DetailsToggle,
   Expandable: Expandable,
   ConfettiTrigger: ConfettiTrigger,
+  WizardPopcorn: WizardPopcorn,
   SortableTable: SortableTable,
   FilterableTable: FilterableTable,
   SimpleTable: SimpleTable,
   VersionCallout: VersionCallout,
   IntroText: IntroText,
   Constant: Constant,
+  AvailabilityMatrix: AvailabilityMatrix,
 };
 export default MDXComponents;

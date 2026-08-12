@@ -6,7 +6,7 @@ The **Model performance** section displays the following metrics that summarize 
 - **Total cost reduction**
 - **Total % reduction**
 - **Total query run time deduction**
-- **Reused assets** (when state-aware orchestration is enabled)
+- **Reused assets** (when dbt State or state-aware orchestration is enabled)
 
 ### Filters
 
@@ -16,12 +16,14 @@ For **Cost insights**, **Usage**, and **Query run time** tabs, you can set the v
 
 ### Visualization tabs
 
-- **Cost insights**: Shows the estimated warehouse costs incurred by this model and cost reduction from state-aware orchestration.
+- **Cost insights**: Shows the estimated warehouse costs incurred by this model and cost reduction from dbt State or state-aware orchestration.
 - **Usage**: Shows the estimated warehouse usage consumed by this model over time. The **Usage** tab represents generic usage for your warehouse. The specific unit depends on your data warehouse:
     - Snowflake: Credits
     - BigQuery: Slot hours or bytes scanned (currently combined into one generic usage number)
     - Databricks: Databricks Units (DBUs)
-- **Query run time**: Shows the estimated query execution time and the reduction in run duration from state-aware orchestration.
+    - Amazon Redshift Serverless: Redshift Processing Unit hours (RPU-hours)
+    - Amazon Redshift Provisioned: Node-hours
+- **Query run time**: Shows the estimated query execution time and the reduction in run duration from dbt State or state-aware orchestration.
 - **Build time**: Shows average execution time for the model and how it trends over the selected period.
 - **Build count**: Tracks how many times the model was built or reused, including any failures or errors.
 - **Test results**: Displays test execution outcomes and pass/fail rates for tests on this model.
