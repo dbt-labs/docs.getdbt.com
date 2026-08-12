@@ -43,7 +43,7 @@ To upgrade later, run `brew upgrade dbt`.
 curl -fsSL https://public.cdn.getdbt.com/fs/install/install.sh | sh -s -- --update
 ```
 
-This installs the dbt binary to `~/.local/bin/dbt` and adds that directory to your `$PATH`. See [uninstalling a curl install](#frequently-asked-questions) if you ever need to remove it.
+This installs the dbt binary to `~/.local/bin/dbt` and adds that directory to your `$PATH`. See [uninstalling a curl install](#faqs) if you ever need to remove it.
 
 Close and reopen your terminal (or run `exec $SHELL`) so the new `$PATH` is recognized. 
 
@@ -101,7 +101,7 @@ Common issues and resolutions:
 - **Version conflicts:** Check that no other <Constant name="core" /> or <Constant name="platform_cli" /> versions are installed or active on your machine.
 - **Installation permissions:** Make sure your user account can install software locally.
 
-## Frequently asked questions
+## FAQs
 
 - <Expandable alt_header="Can I revert to my previous dbt installation?">
     Yes. To test a new install without affecting your existing workflows, use a separate environment or virtual machine.
