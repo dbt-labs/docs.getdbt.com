@@ -46,7 +46,7 @@ Once you install the <Constant name="platform_cli" />, you need to configure it 
         project-id: PROJECT_ID
     ```
 
-5. You should now be able to [use the <Constant name="dbt_cli"/>](#use-the-dbt-cli) and run [dbt commands](/reference/dbt-commands) like [`dbt environment show`](/reference/commands/dbt-environment) to view your <Constant name="dbt" /> configuration details or `dbt compile` to compile models in your dbt project.
+5. You should now be able to [use the <Constant name="platform_cli"/>](#use-the-dbt-cli) and run [dbt commands](/reference/dbt-commands) like [`dbt environment show`](/reference/commands/dbt-environment?version=2.0) to view your <Constant name="dbt" /> configuration details or `dbt compile` to compile models in your dbt project.
 
 With your repo recloned, you can add, edit, and sync files with your repo.
 
@@ -61,7 +61,7 @@ To set environment variables in the <Constant name="platform_cli" /> for your db
 
 ## Use the dbt CLI
 
-The <Constant name="platform_cli" /> uses the same set of [dbt commands](/reference/dbt-commands) and [MetricFlow commands](/docs/build/metricflow-commands) as dbt Core to execute the commands you provide. For example, use the [`dbt environment`](/reference/commands/dbt-environment) command to view your <Constant name="dbt" /> configuration details. With the <Constant name="platform_cli" />, you can:
+The <Constant name="platform_cli" /> uses the same set of [dbt commands](/reference/dbt-commands) and [MetricFlow commands](/docs/build/metricflow-commands) as dbt Core to execute the commands you provide. For example, use the [`dbt environment`](/reference/commands/dbt-environment?version=2.0) command to view your <Constant name="dbt" /> configuration details. With the <Constant name="platform_cli" />, you can:
 
 - Run [multiple invocations in parallel](/reference/dbt-commands) and ensure [safe parallelism](/reference/dbt-commands#parallel-execution), which `dbt-core` doesn't currently guarantee.
 - Automatically defer build artifacts to your project's production environment.

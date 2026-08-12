@@ -43,6 +43,6 @@ dbt uses [Iceberg catalogs defined in `catalogs.yml`](/docs/build/iceberg/catalo
 
 Many data platforms, query engines, and data catalogs have added substantially more support for Iceberg standards over the past few years — but it's still not a guarantee that any given data warehouse can interoperate with any given data catalog.
 
-When it does exist, that support can be limited. For example, most Iceberg catalogs only support tables (`table` + `incremental` materialization in dbt), not views. They may not support atomic `create table as` statements, meaning that dbt must update tables using multiple statements without <Term id="ACID" /> guarantees.
+When it does exist, that support can be limited. For example, most Iceberg catalogs only support tables (`table` + `incremental` materialization in dbt), not views. They may not support atomic `create table as` statements, meaning that dbt must update tables using multiple statements without <Term id="acid" /> guarantees.
 
 Benoit (DX advocate at dbt Labs) created a [useful visualization](https://b-per.github.io/iceberg-roulette/#matrix) (also available as a [fun interactive game](https://b-per.github.io/iceberg-roulette/)) to show the current state of warehouse / catalog interoperability. (See something that looks wrong or out-of-date? Open an issue or PR in [the repo](https://github.com/b-per/iceberg-roulette).)
