@@ -52,7 +52,7 @@ You can create a deploy job and configure it to run on [scheduled days and times
         - **Timing** &mdash; Specify whether to [schedule](#schedule-days) the deploy job using **Intervals** that run the job every specified number of hours, **Specific hours** that run the job at specific times of day, or **Cron schedule** that run the job specified using [cron syntax](#cron-schedule).
         - **Days of the week** &mdash; By default, it’s set to every day when **Intervals** or **Specific hours** is chosen for **Timing**.
 
-        :::note
+        :::note Using `state:modified` on a scheduled job 
         Using a [`state:modified`](/reference/node-selection/methods#state) selector on a scheduled job can result in the job completing successfully with zero models built when no changes are detected since the last deferred run. Refer to [Scheduled jobs and state:modified](#scheduled-jobs-and-statemodified) for details and recommendations.
         :::
 
