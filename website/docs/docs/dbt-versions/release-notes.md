@@ -22,12 +22,12 @@ For <Constant name="fusion_engine" /> updates, refer to the [dbt-fusion changelo
 
 ## August 2026
 
+- **New:** The [Analyst read](/docs/platform/manage-access/enterprise-permissions#analyst-read) permission set is now generally available (GA) for Enterprise plans. Analyst read is a project-level permission set that provides read-only access to analyze dbt models and project resources, and read-only users can connect to analysis features such as the [dbt MCP server](/docs/dbt-ai/about-mcp).
 - **Enhancement:** [Cost Insights](/docs/explore/cost-insights) now supports cost attribution for [Snowflake Adaptive Warehouses](https://docs.snowflake.com/en/user-guide/warehouses-adaptive). For setup details, refer to [Assign required permissions](/docs/explore/set-up-cost-insights#assign-required-permissions).
 - **New:** The [Model timing tab](/docs/deploy/run-visibility#model-timing-tab) in job run details has been redesigned with a richer, scalable view that includes metric tiles, an execution timeline with grouping and highlight controls, a concurrency-over-time chart, and a searchable resource details table.
 - **New:** <Constant name="semantic_layer" /> development connections to Redshift now support external OAuth using Okta or Microsoft Entra with AWS IAM Identity Center.
 - **Enhancement:** System for Cross-domain Identity Management (SCIM) API errors for seat or licensing failures now include email addresses so you can identify which users are blocking provisioning.
 - **Behavior change:** <Constant name="semantic_layer" /> GraphQL queries that exceed the complexity limit of 200,000 now return an error instead of completing with a warning. If you hit this error, request fewer fields, use pagination, narrow your filters, or split the query into smaller ones.
-- **New:** The [Analyst read](/docs/platform/manage-access/enterprise-permissions#analyst-read) permission set is now generally available (GA) for Enterprise plans. Analyst read is a project-level permission set that provides read-only access to analyze dbt models and project resources, and read-only users can connect to analysis features such as the [dbt MCP server](/docs/dbt-ai/about-mcp).
 - **Enhancement:** The [Analyst read](/docs/platform/manage-access/enterprise-permissions#analyst-read) permission set now includes read access to **Connections** (account and project), **Projects**, Git repository settings, <Constant name="semantic_layer" /> configuration, **Environments**, custom environment variables, and <Constant name="catalog" /> metadata. Analysts can view that configuration without assigning additional permission sets, once added to a group with Analyst read.
 
 ## July 2026
