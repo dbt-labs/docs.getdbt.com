@@ -121,7 +121,7 @@ The `dbt-fabric` adapter supports [model contracts](/docs/mesh/govern/model-cont
 
 <br />
 
-Only `not_null` is checked when the model builds. Other supported constraint types are recorded on the table for reference, but Microsoft Fabric does not check them when new data is added. Use [data tests](/docs/build/data-tests) if you need to verify those rules.
+Only `not_null` is checked when the model builds. Other supported constraint types are recorded on the table for reference, but Microsoft Fabric does not check them when new data is added. Use [data tests](/docs/build/data-tests) if you need to verify those rules. Define `primary_key`, `foreign_key`, and `unique` at the model level. The adapter ignores those constraint types at the column level.
 
 Microsoft Fabric does not include all constraints in the initial `create table` statement. dbt creates the table first, then runs separate statements to add model-level constraints. You must provide a `name` for each model-level constraint.
 

@@ -557,7 +557,7 @@ Microsoft Fabric allows you to define:
 
 Be aware of the following limitations and requirements:
 
-- That `check` constraints are not supported on Microsoft Fabric. Use [data tests](/docs/build/data-tests) such as `dbt_utils.expression_is_true` to validate custom rules instead.
+- `check` constraints are not supported on Microsoft Fabric. Use [data tests](/docs/build/data-tests) such as `dbt_utils.expression_is_true` to validate custom rules instead.
 - Microsoft Fabric does not include all constraints in the initial `create table` statement. dbt creates the table first, then runs separate statements to add model-level constraints.
 - You must provide a `name` for each model-level constraint.
 - Columns in [snapshot](/docs/build/snapshots) source tables cannot have constraints. If a source column has a `not_null` constraint or similar rule, the snapshot may fail.
@@ -614,14 +614,14 @@ Expected SQL to enforce constraints:
 <File name='target/run/.../constraints_example.sql'>
 
 ```sql
-create table schema_name.dim_customers
+create table schema_name.constraints_example
 (
     id int not null,
     customer_name varchar(100),
     first_transaction_date date
 );
 
-alter table schema_name.dim_customers add constraint pk_dim_customers primary key nonclustered(id) not enforced;
+alter table schema_name.constraints_example add constraint pk_dim_customers primary key nonclustered(id) not enforced;
 ```
 
 </File>
