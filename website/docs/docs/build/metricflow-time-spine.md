@@ -315,7 +315,7 @@ and date_hour < dateadd(day, 30, current_timestamp())
 </VersionBlock>
 
 
-## Custom calendar <Lifecycle status="Preview"/>
+## Custom calendar <Lifecycle status="preview"/>
 
 :::tip
 Check out our mini guide on [how to create a time spine table](/guides/mf-time-spine) to get started!

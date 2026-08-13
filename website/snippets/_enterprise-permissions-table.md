@@ -21,7 +21,6 @@ Key:
 
 #### Account access for account permissions
 
-<FilterableTable>
 
 | Account-level permission | Account Admin | Billing admin | Cost Insights Admin | Cost Insights Viewer | Manage marketplace apps | Notification Manager | Project creator | Security admin | Account Viewer |
 |:-------------------------|:-------------:|:-------------:|:-------------------:|:--------------------:|:-----------------------:|:--------------------:|:---------------:|:--------------:|:------:|
@@ -42,7 +41,6 @@ Key:
 | Public models            | R             | R             | -                   | -                    | -                       | -                    | R               | R              | R      |
 | Service tokens           | W             | -             | -                   | -                    | -                       | -                    | -               | R              | R      |
 | Webhooks                 | W             | -             | -                   | -                    | -                       | -                    | -               | -              | -      |
-</FilterableTable>
 
 <sup>*</sup>Permission sets with write (**W**) access to Account settings can modify account-level settings. The **Notification Manager** permission set has dedicated write access to **Job notifications** (Slack, Microsoft Teams, and email) without requiring full Account settings access.
 
@@ -57,7 +55,6 @@ An admin can grant `user_credential_write` to any group, regardless of which per
 
 #### Project access for account permissions
 
-<FilterableTable>
 | Project-level permission     | Account Admin | Billing admin | Cost Insights Admin | Cost Insights Viewer | Notification Manager | Project creator | Security admin | Account Viewer |
 |:-----------------------------|:-------------:|:-------------:|:-------------------:|:--------------------:|:--------------------:|:---------------:|:--------------:|:------:|
 | Environment credentials      | W             | -             | -                   | -                    | -                    | W               | -              | R      |
@@ -73,7 +70,6 @@ An admin can grant `user_credential_write` to any group, regardless of which per
 | Repositories                 | W             | -             | -                   | -                    | -                    | W               | -              | R      |
 | Runs                         | W             | -             | -                   | -                    | -                    | W               | -              | R      |
 | Semantic Layer config        | W             | -             | -                   | -                    | -                    | W               | -              | R      |
-</FilterableTable>
 
 ### Project permissions
 
@@ -86,7 +82,6 @@ Key:
 
 #### Account access for project permissions
 
-<FilterableTable>
 | Account-level permission | Admin | Analyst | Analyst read | Cost Insights Admin | Cost Insights Viewer | Database admin | Developer | Git Admin | Job admin | Job creator | Job runner | Job viewer | Metadata (Discovery API only) | Semantic Layer | Stakeholder/Read-Only | Team admin |
 |--------------------------|:-----:|:-------:|:------------:|:-------------------:|:--------------------:|:--------------:|:---------:|:---------:|:---------:|:-----------:|:----------:|:----------:|:-----------------------------:|:--------------:|:---------------------:|:----------:|
 | Account settings         |   R   |    -    |      R       |          -          |          -           |       R        |     -     |     R     |     -     |      -      |     -      |     -      |               -               |       -        |           R           |     R      |
@@ -102,13 +97,11 @@ Key:
 | Public models            |   R   |    R    |      R       |          -          |          -           |       R        |     R     |     R     |     R     |      R      |     R      |     R      |               R               |       R        |           R           |     R      |
 | Service tokens           |   -   |    -    |      -       |          -          |          -           |       -        |     -     |     -     |     -     |      -      |     -      |     -      |               -               |       -        |           -           |     -      |
 | Webhooks                 |   W   |    -    |      -       |          -          |          -           |       -        |     W     |     -     |     -     |      -      |     -      |     -      |               -               |       -        |           -           |     -      |
-</FilterableTable>
 
 <sup>*</sup>**Cost Insights Admin** can edit [platform metadata credentials](/docs/explore/set-up-cost-insights#configure-platform-metadata-credentials) and [Cost Insights](/docs/explore/set-up-cost-insights) settings in **Connection settings**, even though **Connections** is read-only (**R**) for this permission set.
 
 #### Project access for project permissions
 
-<FilterableTable>
 |Project-level permission  | Admin | Analyst | Analyst read<sup>***</sup> | Cost Insights Admin | Cost Insights Viewer | Database admin | Developer | Fusion admin | Git Admin | Job admin | Job creator | Job runner  | Job viewer  | Metadata (Discovery API only) | Semantic Layer | Stakeholder/Read-Only | Team admin |
 |--------------------------|:-----:|:-------:|:------------:|:-------------------:|:--------------------:|:--------------:|:---------:|:------------:|:---------:|:---------:|:-----------:|:-----------:|:-----------:|:---------------------------------------:|:--------------:|:-----------:|:----------:|
 | Environment credentials  |   W   |    R    |      R       |         -           |          -           |       W        |     R     |      -       |     R     |     W     |      R      |    -        |      -      |                  -                      |        -       |     R       |     R      |
@@ -126,7 +119,6 @@ Key:
 | Runs                     |   W   |    R<sup>*</sup>   |      -       |         -           |          -           |       R<sup>*</sup>       |     R<sup>*</sup>    |      -       |     R<sup>*</sup>    |     W     |      W      |      W      |      R      |                  -                      |       -        |     R       |     R<sup>*</sup>     |
 | Semantic Layer config    |   W   |    R    |      R       |         -           |          -           |       W        |     R     |      -       |     R     |     R     |      R      |      -      |      -      |                  -                      |        W       |     R       |     R      |
 
-</FilterableTable>
 
 <sup>*</sup>These permissions are `R`ead-only by default, but may be changed to `W`rite with [environment permissions](/docs/platform/manage-access/environment-permissions#environments-and-roles).
 
