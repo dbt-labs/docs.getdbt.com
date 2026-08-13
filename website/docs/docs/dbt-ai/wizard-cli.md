@@ -50,16 +50,26 @@ Run the following command to update <Constant name="wizard" /> to the latest ver
 wizard update
 ```
 
-<!--
-incorrect command and commenting out until correct command provided
 ## Uninstall
 
-Run the following command to uninstall <Constant name="wizard" />:
+1. Run the built-in uninstall command. It lists every binary, config, and data directory it's about to remove, then asks you to confirm (`Proceed? [Y/N]`) before deleting anything:
 
-```bash
-wizard system uninstall
-```
--->
+    ```shell
+    wizard system uninstall
+    ```
+
+:::info Uninstalling Wizard
+Removing `~/.dbt/wizard` deletes your local config, logs, and cache, and can't be undone. Your dbt profiles (`~/.dbt/`) and dbt projects aren't part of <Constant name="wizard" /> and won't be touched.
+:::
+
+2. Confirm the binary is deleted by checking your system path:
+
+    ```bash
+    which wizard
+    ```
+
+If no output path is returned, <Constant name="wizard" /> is successfully uninstalled.
+
 
 ## Telemetry
 
