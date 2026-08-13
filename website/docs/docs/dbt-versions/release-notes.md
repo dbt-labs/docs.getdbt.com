@@ -77,6 +77,7 @@ To simplify the docs experience, clarify availability, and make it easier to fin
 
 ## June 2026
 
+- **Enhancement:** [Column-level tags](/reference/resource-configs/tags) defined in your dbt project now appear on the **Columns** tab of resource details pages in <Constant name="catalog" />. You can click any tag badge to filter the lineage view, or search for columns directly by tag name. Refer to [View resource details](/docs/explore/explore-projects#view-resource-details).
 - **Enhancement:** You can now enable [dbt State](/docs/deploy/dbt-state-about) on continuous integration and merge job types, in addition to deploy jobs. For more information, refer to [Enabling dbt State on individual jobs](/docs/deploy/dbt-state-enable-jobs).
 - **Enhancement**: The [Cost Insights](/docs/explore/cost-insights) table view now includes **All** and **Jobs** buttons to switch between an aggregated cost view and a per-job cost breakdown. Available in the project dashboard and the **Model performance** section in <Constant name="catalog" />. When **Jobs** is selected, the CSV export includes job-level data. For more information, refer to [Explore cost data](/docs/explore/explore-cost-data).
 - **Enhancement:** [<Constant name="wizard" />](/docs/platform/wizard-platform) tool calls for dbt command invocations now stream their output live in chat, in both the <Constant name="studio_ide" /> and [Wizard home](/docs/platform/wizard-home).
