@@ -77,7 +77,11 @@ To silence all deprecation warnings in <Constant name="core" />:
 dbt test --warn-error-options '{"silence": ["Deprecations"]}'
 ```
 
+<VersionBlock lastVersion="1.99">
+
 You can also silence specific deprecation types by name (for example, `ConfigLogPathDeprecation`).
+
+</VersionBlock>
 
 <VersionBlock firstVersion="2.0">
 
