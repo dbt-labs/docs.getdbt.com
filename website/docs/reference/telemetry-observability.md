@@ -64,7 +64,7 @@ On the <Constant name="dbt_platform" />, <Constant name="fusion"/> job runs stor
 
 #### Retrieve telemetry using the API
 
-You can also retrieve the OTel Parquet artifact for a run step through the [dbt Administrative API v2](/docs/dbt-apis/admin-api), which lets you download artifacts after a job completes. Use this to automate ingestion of node outcomes and test outcomes into a downstream system, such as a data quality framework in your warehouse.
+You can also retrieve the OTel Parquet artifact for a run step through the [dbt Administrative API v2](/dbt-cloud/api-v2#/operations/Retrieve%20Run%20Artifact), which lets you download artifacts after a job completes. Use this to automate ingestion of node outcomes and test outcomes into a downstream system, such as a data quality framework in your warehouse.
 
 Each <Constant name="fusion"/> command step that produces telemetry writes a `telemetry-STEP_NUMBER-otel.parquet` artifact. Retrieve it with:
 
