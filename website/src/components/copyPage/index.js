@@ -24,6 +24,7 @@ function CopyPage({ dropdownRight = false, pageUrl }) {
     copySuccess,
     error,
     llmServices,
+    markdownUrl,
     dropdownRef,
     handleCopyPage,
     toggleDropdown,
@@ -64,6 +65,23 @@ function CopyPage({ dropdownRight = false, pageUrl }) {
           </div>
         </button>
 
+        <Link
+          id="view_as_markdown"
+          className={styles.dropdownItem}
+          href={markdownUrl}
+          target="_blank"
+          role="menuitem"
+          tabIndex={isDropdownOpen ? "0" : "-1"}
+        >
+          {getSvgIcon("file-text", {})}
+          <div className={styles.dropdownItemContent}>
+            <div className={styles.dropdownItemTitle}>View as Markdown</div>
+            <div className={styles.dropdownItemSubtitle}>
+              View this page as plain Markdown
+            </div>
+          </div>
+        </Link>
+
         {Object.entries(llmServices).map(([serviceKey, service]) => (
           <Link
             key={serviceKey}
@@ -85,6 +103,24 @@ function CopyPage({ dropdownRight = false, pageUrl }) {
             </div>
           </Link>
         ))}
+
+        <Link
+          id="connect_dbt_mcp"
+          className={styles.dropdownItem}
+          href="/docs/dbt-ai/about-mcp"
+          role="menuitem"
+          tabIndex={isDropdownOpen ? "0" : "-1"}
+        >
+          {getSvgIcon("server", {})}
+          <div className={styles.dropdownItemContent}>
+            <div className={styles.dropdownItemTitle}>
+              Connect to dbt MCP server
+            </div>
+            <div className={styles.dropdownItemSubtitle}>
+              Give your AI tools access to your dbt project
+            </div>
+          </div>
+        </Link>
       </div>
 
       {copySuccess && (
