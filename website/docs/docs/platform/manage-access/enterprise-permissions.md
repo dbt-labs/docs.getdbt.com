@@ -91,8 +91,8 @@ The OAuth integration that lets read-only users connect to analysis features (su
 
 Notable features:
 - Analyst read is a project-level set.
-- Read-only access to project resources, jobs, runs, and environment configs.
-- Can access <Constant name="catalog" />.
+- Read-only access to **Connections** (account and project), **Projects**, repositories (Git repository settings), <Constant name="semantic_layer" /> configuration, **Environments**, custom environment variables, and <Constant name="catalog" /> metadata (Metadata GraphQL API).
+- No read access to jobs or runs.
 - Includes `user_credential_write`, so users can view and edit their own user credentials on **Your profile** > **Credentials** without access to the <Constant name="studio_ide" /> or <Constant name="platform_cli" />. Read-only users still need personal user credentials on this page to run warehouse queries in analysis features such as <Constant name="insights" /> and the <Constant name="semantic_layer" />.
 - No write access and no access to develop in the <Constant name="studio_ide" /> or <Constant name="platform_cli" />.
 
