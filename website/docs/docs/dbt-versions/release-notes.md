@@ -22,6 +22,7 @@ For <Constant name="fusion_engine" /> updates, refer to the [dbt-fusion changelo
 
 ## August 2026
 
+- **Behavior change**: The standalone dbt State app (`app.state.dbt.com`) is closed to new sign-ups. Existing users must migrate to a <Constant name="dbt_platform" /> account to continue using dbt State. For more information, refer to [Migrating from the standalone app](/docs/deploy/dbt-state-migrate-standalone).
 - **Enhancement:** [Cost Insights](/docs/explore/cost-insights) now supports cost attribution for [Snowflake Adaptive Warehouses](https://docs.snowflake.com/en/user-guide/warehouses-adaptive). For setup details, refer to [Assign required permissions](/docs/explore/set-up-cost-insights#assign-required-permissions).
 - **New:** The [Model timing tab](/docs/deploy/run-visibility#model-timing-tab) in job run details has been redesigned with a richer, scalable view that includes metric tiles, an execution timeline with grouping and highlight controls, a concurrency-over-time chart, and a searchable resource details table.
 - **New:** <Constant name="semantic_layer" /> development connections to Redshift now support external OAuth using Okta or Microsoft Entra with AWS IAM Identity Center.

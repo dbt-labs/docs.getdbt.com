@@ -19,7 +19,7 @@ With dbt State, dbt first compares the logic and data of each node to previous b
 
 dbt State can reuse all node types that create relations in the database (such as models, snapshots, seeds) and data tests.
 
-dbt State works with <Constant name="core" />, the <Constant name="dbt_platform" />, and <Constant name="fusion_engine" />, across all environments and orchestrators, making it a flexible approach regardless of how you run dbt. It requires authentication either through a <Constant name="dbt_platform" /> account or a [standalone dbt State account](https://app.state.dbt.com). For pricing details, refer to [dbt State usage and pricing](/docs/platform/billing/dbt-state-usage).
+dbt State works with <Constant name="core" />, the <Constant name="dbt_platform" />, and <Constant name="fusion_engine" />, across all environments and orchestrators, making it a flexible approach regardless of how you run dbt. It requires authentication through a <Constant name="dbt_platform" /> account. For pricing details, refer to [dbt State usage and pricing](/docs/platform/billing#dbt-state-usage).
 
 ## Benefits
 
@@ -54,17 +54,9 @@ The key idea is that dbt State only skips work when it can prove the existing ob
 
 ## Signing up for dbt State
 
-When you sign up for dbt State, you'll choose one of two paths:
+dbt State is connected to your <Constant name="dbt_platform" /> account. Your dbt State credentials are the same as your platform credentials, and dbt State has access to your platform environments and jobs.
 
-- **<Constant name="dbt_platform" /> account** — dbt State is connected to your existing <Constant name="dbt_platform" /> account. Your dbt State credentials are the same as your platform credentials, and dbt State has access to your platform environments and jobs.
-- **Standalone account ([app.state.dbt.com](https://app.state.dbt.com))** — A standalone dbt State account is independent of any <Constant name="dbt_platform" /> account. You manage dbt State credentials separately, and dbt State has no visibility into your platform environments or jobs.
-
-A standalone account makes sense if you:
-
-- Don't have a <Constant name="dbt_platform" /> account
-- Don't have admin permissions to enable dbt State in your <Constant name="dbt_platform" /> account
-- Want to test dbt State without connecting it to your <Constant name="dbt_platform" /> account yet
-
+If you're using the standalone dbt State app, you must migrate to a <Constant name="dbt_platform" /> account &mdash; the standalone app is closed to new sign-ups. Refer to [Migrating from the standalone app](/docs/deploy/dbt-state-migrate-standalone) for instructions.
 
 ## FAQs
 

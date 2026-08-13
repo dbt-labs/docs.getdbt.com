@@ -58,22 +58,61 @@ jobs:
               });
               console.log('closed PR', prNumber)
             }
-          
-            console.log('Creating new PR')
-            let pull, pull_number
-            try {
-              const response = await github.rest.pulls.create({
-                owner,
-                repo,
-                head,
-                base,
-                title: 'REPO SYNC - Public to Private',
-                body: 'This is an automated pull request to sync changes between the public and private repos.',
-              });
-              pull = response.data
-              pull_number = pull.number
-              console.log('Created pull request successfully', pull.html_url)
-          
+
+            // GitHub computes mergeability asynchronously, so a freshly created
+            // PR reports `mergeable: null` / `mergeable_state: 'unknown'`. Poll
+            // until it settles instead of trusting the create response.
+            async function waitForMergeability(prNumber) {
+              for (let attempt = 0; attempt < 10; attempt++) {
+                const { data } = await github.rest.pulls.get({ owner, repo, pull_number: prNumber })
+                if (data.mergeable !== null) return data
+                await new Promise(resolve => setTimeout(resolve, 5000))
+              }
+              // Never settled. Fall through and let the merge call decide, which
+              // is what this workflow did before it polled at all. Failing here
+              // would block syncs that would otherwise have gone through.
+              console.log('Mergeability did not settle in time; attempting the merge anyway')
+              return null
+            }
+
+            // Reuse a sync PR left open by an earlier run. Without this, one
+            // conflicted PR wedges every later run with a misleading 422
+            // "A pull request already exists" from pulls.create.
+            let pull
+            const { data: openPulls } = await github.rest.pulls.list({
+              owner,
+              repo,
+              base,
+              head: `${owner}:${head}`,
+              state: 'open',
+            })
+
+            // Re-check head and base locally rather than trusting the server-side
+            // filter. Everything below merges `pull` into `base`, so picking up
+            // the wrong PR here would merge unrelated work into the docs.
+            const existing = openPulls.find(p =>
+              p.head.ref === head &&
+              p.base.ref === base &&
+              p.head.repo && p.head.repo.full_name === `${owner}/${repo}`
+            )
+
+            if (existing) {
+              pull = existing
+              console.log('Reusing existing PR', pull.html_url)
+            } else {
+              console.log('Creating new PR')
+              try {
+                const response = await github.rest.pulls.create({
+                  owner,
+                  repo,
+                  head,
+                  base,
+                  title: 'REPO SYNC - Public to Private',
+                  body: 'This is an automated pull request to sync changes between the public and private repos.',
+                });
+                pull = response.data
+                console.log('Created pull request successfully', pull.html_url)
+
               } catch (err) {
                 // Don't error/alert if there's no commits to sync
                 if (err.message?.includes('No commits')) {
@@ -82,30 +121,33 @@ jobs:
                 }
                 throw err
               }
+            }
 
-              const { data: prFiles } = await github.rest.pulls.listFiles({ owner, repo, pull_number })
-              if (prFiles.length) {
-                console.log(prFiles.length, 'files have changed')
-              } else {
-                console.log('No files changed, closing')
-                await closePullRequest(pull_number)
-                return
-              }
-  
-              console.log('Checking for merge conflicts')
-              if (pull.mergeable_state === 'dirty') {
-                console.log('Pull request has a conflict', pull.html_url)
-                await closePullRequest(pull_number)
-                throw new Error('PR has a conflict, please resolve manually')
-              }
-              console.log('No detected merge conflicts')
-  
-              
-              console.log('Merging the PR')
-              await github.rest.pulls.merge({
-                owner,
-                repo,
-                pull_number,
-                merge_method: 'merge',
-              })
-              console.log('Merged the PR successfully')
+            const pull_number = pull.number
+
+            const { data: prFiles } = await github.rest.pulls.listFiles({ owner, repo, pull_number })
+            if (prFiles.length) {
+              console.log(prFiles.length, 'files have changed')
+            } else {
+              console.log('No files changed, closing')
+              await closePullRequest(pull_number)
+              return
+            }
+
+            console.log('Checking for merge conflicts')
+            const mergeablePull = await waitForMergeability(pull_number)
+            if (mergeablePull && (!mergeablePull.mergeable || mergeablePull.mergeable_state === 'dirty')) {
+              // Leave the PR open so the conflict can be resolved on it. The
+              // reuse branch above lets later runs pick it back up.
+              throw new Error(`PR has a conflict, please resolve manually: ${pull.html_url}`)
+            }
+            console.log('No detected merge conflicts')
+
+            console.log('Merging the PR')
+            await github.rest.pulls.merge({
+              owner,
+              repo,
+              pull_number,
+              merge_method: 'merge',
+            })
+            console.log('Merged the PR successfully')
