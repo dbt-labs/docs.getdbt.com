@@ -264,6 +264,7 @@ const sidebarSettings = {
                         "docs/platform/secure/private-connectivity/aws/aws-postgres",
                         "docs/platform/secure/private-connectivity/aws/aws-teradata",
                         "docs/platform/secure/private-connectivity/aws/aws-self-hosted",
+                        "docs/platform/secure/private-connectivity/aws/aws-ingress",
                       ],
                     },
                     {
@@ -361,6 +362,7 @@ const sidebarSettings = {
                 "docs/local/connect-data-platform/oracle-setup",
                 "docs/local/connect-data-platform/risingwave-setup",
                 "docs/local/connect-data-platform/rockset-setup",
+                "docs/local/connect-data-platform/sail-setup",
                 "docs/local/connect-data-platform/singlestore-setup",
                 "docs/local/connect-data-platform/sqlite-setup",
                 "docs/local/connect-data-platform/starrocks-setup",
@@ -646,7 +648,7 @@ const sidebarSettings = {
                 "docs/build/dimensions",
                 "docs/build/entities",
                 "docs/build/measures",
-                "docs/build/osi-semantic-models",
+                "docs/build/ossie-semantic-models",
               ],
             },
             {
@@ -712,6 +714,7 @@ const sidebarSettings = {
                 "docs/build/iceberg/adapters/snowflake-iceberg-support",
                 "docs/build/iceberg/adapters/databricks-iceberg-support",
                 "docs/build/iceberg/adapters/bigquery-iceberg-support",
+                "docs/build/iceberg/adapters/duckdb-iceberg-support",
               ],
             },
           ],
@@ -1032,6 +1035,7 @@ const sidebarSettings = {
       items: [
         "docs/dbt-versions/about-versions",
         "docs/dbt-versions/dbt-versions",
+        "docs/dbt-versions/fusion-version-compatibility",
         "docs/dbt-versions/dbt-release-tracks",
         "docs/dbt-versions/upgrade-dbt-platform-version",
         "docs/dbt-versions/product-lifecycles",
@@ -1929,6 +1933,7 @@ const sidebarSettings = {
         "best-practices/idempotence",
         "best-practices/dont-nest-your-curlies",
         "best-practices/clone-incremental-models",
+        "best-practices/optimize-static-analysis-for-development-and-deployment",
         "best-practices/writing-custom-generic-tests",
         "best-practices/best-practice-workflows",
         "best-practices/dbt-unity-catalog-best-practices",
