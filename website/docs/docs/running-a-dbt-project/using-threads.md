@@ -10,7 +10,7 @@ import FusionThreads from '/snippets/_fusion-threads.md';
  
 When dbt runs, it creates a directed acyclic graph (DAG) of links between models. The number of threads represents the maximum number of paths through the graph dbt may work on at once – increasing the number of threads can minimize the run time of your project.
 
-For example, if you specify `threads: 1`, dbt will start building only one model, and finish it, before moving onto the next. Specifying `threads: 4` means that dbt will work on _up to_ 4 models at once without violating dependencies – the actual number of models it can work on will likely be constrained by the available paths through the dependency graph.
+For example, if you specify `threads: 1`, dbt will start building only one model, and finish it, before moving on to the next. Specifying `threads: 4` means that dbt will work on _up to_ 4 models at once without violating dependencies; the actual number of models it can work on will likely be constrained by the available paths through the dependency graph.
 
 Here's the difference between running a project with 1 thread and 4 threads. With 1 thread, dbt builds one model at a time in dependency order. With 4 threads, dbt builds as many ready models in parallel as the graph allows, finishing much sooner. 
 
