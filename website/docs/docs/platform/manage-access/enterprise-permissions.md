@@ -26,6 +26,10 @@ The following permission sets are available for assignment in all <Constant name
 
 Access to <Constant name="dbt" /> features and functionality is split into `account-level` and `project-level` permission sets. Account-level permissions are primarily for account administration (inviting users, configuring SSO, and creating groups). Project-level permissions are for the configuration and maintenance of the projects themselves (configuring environments, accessing IDE, and running jobs). Account permission sets may have access to project features, and project permission sets may have access to account features. Check out the [permissions tables](/docs/platform/manage-access/enterprise-permissions#account-permissions) to compare sets and their access. 
 
+:::tip Read-Only users
+If you have users with a Read-Only license, you can [enable granular permissions](/docs/platform/manage-access/about-user-access#enable-granular-permissions-for-read-only-users) for your account. This is a one-time, irreversible setting. After you enable it, Read-Only users keep their project access only if they're in a group with a Read-Only permission set that covers all projects.
+:::
+
 <Expandable alt_header="Account admin">
 
 The Account admin permission set is the highest level of access and control over your <Constant name="dbt" /> account and projects. We recommend limiting the number of users and groups assigned the account admin permission set.
