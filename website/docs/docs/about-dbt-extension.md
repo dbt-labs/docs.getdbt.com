@@ -61,7 +61,7 @@ If your project uses `static_analysis: strict` in `dbt_project.yml` or you pass 
 
 Refer to [VS Code extension features](/docs/dbt-extension-features#feature-availability) for the full list of features and their availability.
 
-When you register or sign in for advanced features, authentication is handled by [`dbt login`](/reference/commands/login). Your login state is shared across the CLI, dbt VS Code extension, and dbt State (if you log in using <Constant name="dbt_platform" />). You can use the [get started wizard](/docs/install-dbt-extension#getting-started) or run `dbt login` from your terminal, then restart or reload VS Code. The extension detects your login automatically.
+When you register or sign in for advanced features, authentication is handled by [`dbt login`](/reference/commands/login?version=2.0). Your login state is shared across the CLI, dbt VS Code extension, and dbt State (if you log in using <Constant name="dbt_platform" />). You can use the [get started wizard](/docs/install-dbt-extension#getting-started) or run `dbt login` from your terminal, then restart or reload VS Code. The extension detects your login automatically.
 
 ### The dbt extension menu
 

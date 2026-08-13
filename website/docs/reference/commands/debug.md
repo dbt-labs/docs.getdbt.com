@@ -24,7 +24,7 @@ Most of the `dbt debug` flags apply to the <Constant name="core" /> CLI. Some fl
 
 - <Constant name="core" /> CLI: Supports all flags.
 - <Constant name="studio_ide" />: Only supports dbt `debug` and `dbt debug --connection`.
-- <Constant name="platform_cli" />: Only supports dbt `debug` and `dbt debug --connection`. You can also use the [`dbt environment`](/reference/commands/dbt-environment) command to interact with your <Constant name="dbt" /> environment. 
+- <Constant name="platform_cli" />: Only supports dbt `debug` and `dbt debug --connection`. You can also use the [`dbt environment`](/reference/commands/dbt-environment?version=2.0) command to interact with your <Constant name="dbt" /> environment. 
 
 `dbt debug` supports the following flags in your terminal when using the command line interface (CLI):
 
