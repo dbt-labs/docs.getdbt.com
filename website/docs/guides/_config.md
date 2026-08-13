@@ -31,6 +31,7 @@ categories:
 
   - title: Advanced use cases
     guides:
+      - iceberg
       - fusion-package-compat
       - qs-mcp-oauth
       - qs-mcp-local 
