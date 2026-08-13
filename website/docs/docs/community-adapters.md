@@ -6,19 +6,11 @@ availability: all_users
 
 Community adapters are adapter plugins contributed and maintained by members of the community. We welcome and encourage [adapter plugins contributions](/docs/contribute-core-adapters#contribute-to-a-pre-existing-adapter) from the dbt community.  Please be mindful that these [community maintainers](/docs/connect-adapters#maintainers) are intrepid volunteers who donate their time and effort — so be kind, understanding, and help out where you can!
 
-Refer to the following available community adapter(s):
-
-<VersionBlock firstVersion="2.0">
-
 In v2, [DuckDB](/docs/local/connect-data-platform/duckdb-setup) is available as a community adapter. There are also several trusted adapters available: Apache Spark, BigQuery, Databricks, DuckDB, Redshift, Snowflake. For the full list, refer to [trusted adapters](/docs/trusted-adapters?version=2.0).
 
 If you'd like to contribute a community adapter for v2, refer to [creating a Fusion adapter](/guides/adapter-creation-v2?step=1).
 
-
-</VersionBlock>
-
-<VersionBlock lastVersion="1.99">
-
+Refer to the following available community adapter(s):
 
 <SimpleTable>
 
@@ -36,4 +28,3 @@ If you'd like to contribute a community adapter for v2, refer to [creating a Fus
 | [Watsonx-Presto](/docs/local/connect-data-platform/watsonx-presto-setup) | [Yellowbrick](/docs/local/connect-data-platform/yellowbrick-setup) | |
 </SimpleTable>
 
-</VersionBlock>
