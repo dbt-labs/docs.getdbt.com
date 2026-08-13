@@ -118,7 +118,7 @@ import PlusPrefix from '/snippets/_plus-prefix.md';
 
 It's important to follow the correct YAML naming conventions for the configs in your `dbt_project.yml` file to ensure dbt can process them properly. This is especially true for resource types with more than one word.
 
-- - For the multi-word resource types `saved-queries` and `semantic-models`, use dashes (`-`) in `dbt_project.yml`. For example:
+- For the multi-word resource types `saved-queries` and `semantic-models`, use dashes (`-`) in `dbt_project.yml`. Here's an example for [saved queries](/docs/build/saved-queries#configure-saved-query):
 
     <File name="dbt_project.yml">
 
@@ -156,5 +156,3 @@ It's important to follow the correct YAML naming conventions for the configs in 
             enabled: true
     ```
     </File>
-
-For more information, refer to [Configure saved query](/docs/build/saved-queries#configure-saved-query).
