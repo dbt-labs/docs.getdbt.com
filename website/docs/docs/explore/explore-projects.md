@@ -268,7 +268,7 @@ In the upper right corner of the resource details page, you can:
     - **Details** section &mdash; Key properties like the model's relation name (for example, how it's represented and how you can query it in the data platform: `database.schema.identifier`); model governance attributes like access, group, and if contracted; and more.
     - **Relationships** section &mdash; The nodes the model **Depends On**, is **Referenced by**, and (if applicable) is **Used by** for projects that have declared the models' project as a dependency.
 - **Code** tab &mdash; The source code and compiled code for the model.
-- **Columns** tab &mdash; The available columns in the model. This tab also shows tests results (if any) that you can select to view the test's details page. A :white_check_mark: denotes a passing test. To filter the columns in the resource, you can use the search bar that's located at the top of the columns view.
+- **Columns** tab &mdash; The available columns in the model, including [tags](/reference/resource-configs/tags) defined on columns in your <Constant name="dbt" /> YAML. Column tags appear as clickable badges that filter the lineage view by that tag. This tab also shows test results (if any) that you can select to view the test's details page. A :white_check_mark: denotes a passing test. To filter the columns in the resource (including by tag name), use the search bar at the top of the columns view.
 
 </Expandable>
 
@@ -314,7 +314,7 @@ Example of the Tests view:
     - **Source freshness** section &mdash; Information on whether refreshing the data was successful, the last time the source was loaded, the timestamp of when a run generated data, and the run ID.
     - **Details** section &mdash; Details like database, schema, and more.
     - **Relationships** section &mdash; A table that lists all the sources used with their freshness status, the timestamp of when freshness was last checked, and the timestamp of when the source was last loaded.
-- **Columns** tab &mdash; The available columns in the source. This tab also shows tests results (if any) that you can select to view the test's details page. A :white_check_mark: denotes a passing test.
+- **Columns** tab &mdash; The available columns in the source, including [tags](/reference/resource-configs/tags) defined on columns in your <Constant name="dbt" /> YAML. Column tags appear as clickable badges that filter the lineage view by that tag. This tab also shows test results (if any) that you can select to view the test's details page. A :white_check_mark: denotes a passing test.
 
 </Expandable>
 
