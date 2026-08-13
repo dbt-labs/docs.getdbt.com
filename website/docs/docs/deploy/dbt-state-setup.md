@@ -17,7 +17,7 @@ Before you set up dbt State, make sure you have:
 
 - **A supported dbt version**: dbt State is natively available in <Constant name="dbt_platform" /> and the <Constant name="fusion_engine" />. It's also available as a plugin for <Constant name="core" /> v1.7–1.12.
 - **A supported data platform**: Snowflake, Databricks, BigQuery, or Redshift. More warehouses are on the roadmap.
-- **A dbt State account**: Authenticate through a <Constant name="dbt_platform" /> account. Refer to [dbt State usage and pricing](/docs/platform/billing#dbt-state-usage) for pricing details. Note that dbt State isn't available on [legacy Starter](/docs/platform/billing#legacy-plans) plan. Please [contact dbt Labs](https://www.getdbt.com/contact) if that applies to you.
+- **A dbt State account**: Authenticate through a <Constant name="dbt_platform" /> account or a [standalone dbt State account](https://app.state.dbt.com). Refer to [About dbt State](/docs/deploy/dbt-state-about#signing-up-for-dbt-state) to choose the right option, and [dbt State usage and pricing](/docs/platform/billing/dbt-state-usage) for pricing details. Note that dbt State isn't available on [legacy Starter](/docs/platform/billing/plans-and-billing#legacy-plans) plan. Please [contact dbt Labs](https://www.getdbt.com/contact) if that applies to you.
 
 ## Setting up dbt State
 
@@ -76,7 +76,7 @@ For next steps, see:
    dbt login
    ```
 
-   This opens a browser window where you can log in with your <Constant name="dbt_platform" /> account. For details on authentication behavior and how it affects [`user_settings.yml`](/reference/global-configs/user-settings), refer to [`dbt login` with dbt State](/reference/commands/login?version=2.0#dbt-login-with-dbt-state).
+   This opens a browser window where you can log in with your <Constant name="dbt_platform" /> account or the [standalone dbt State app](https://app.state.dbt.com). For details on authentication behavior and how it affects [`user_settings.yml`](/reference/global-configs/user-settings), refer to [`dbt login` with dbt State](/reference/commands/login?version=2.0#dbt-login-with-dbt-state).
 
 dbt State is now enabled and will run automatically on every `dbt run` or `dbt build`. 
 
@@ -116,7 +116,7 @@ To install the plugin:
    pip install dbt-state
    ```
 
-dbt State is now enabled. The first time you execute `dbt run` or `dbt build`, a browser window opens where you can log in with your <Constant name="dbt_platform" /> account. After authenticating, dbt State runs automatically on every `dbt run` or `dbt build`.
+dbt State is now enabled. The first time you execute `dbt run` or `dbt build`, a browser window opens where you can log in with your <Constant name="dbt_platform" /> account or the [standalone dbt State app](https://app.state.dbt.com). After authenticating, dbt State runs automatically on every `dbt run` or `dbt build`.
 
 The CLI flags `--manage-state` and `--no-manage-state` are not available in older <Constant name="core" /> versions. Use the environment variable (`DBT_ENGINE_ENABLE_STATE`) or project flag (`enable_state`) to enable or disable dbt State.
 
@@ -147,7 +147,8 @@ For more details, refer to the [`lag_tolerance` config reference](/reference/res
 
 The more team members you have using dbt State, the better it gets; more team members means more opportunities to clone existing nodes rather than rebuilding them.
 
-Have your colleagues run [`dbt login`](/reference/commands/login?version=2.0) after dbt State is enabled on the account. <!--what is the option for those not in v2?-->
+- **For [standalone app](https://app.state.dbt.com) users**: Click the invite link in the upper-right corner of the **Users** page.
+- **For <Constant name="dbt_platform" /> users**: Have your colleagues run [`dbt login`](/reference/commands/login?version=2.0) after dbt State is enabled on the account.
 
 ## Debugging dbt State
 

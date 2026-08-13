@@ -867,7 +867,6 @@ const sidebarSettings = {
         "docs/deploy/dbt-state-examples",
         "docs/deploy/dbt-state-interface",
         "docs/deploy/dbt-state-migration",
-        "docs/deploy/dbt-state-migrate-standalone",
       ],
     },
     {
