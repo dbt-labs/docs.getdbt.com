@@ -4,7 +4,11 @@ sidebar_label: "snapshot"
 id: "snapshot"
 ---
 
+import SnapshotRunIntervalLimitations from '/snippets/_snapshot-run-interval-limitations.md';
+
 The `dbt snapshot` command executes the [Snapshots](/docs/build/snapshots) defined in your project. Snapshots record changes to your source data over time by implementing [type-2 Slowly Changing Dimensions](https://en.wikipedia.org/wiki/Slowly_changing_dimension#Type_2:_add_new_row). Run `dbt snapshot` on a schedule (for example, daily) to capture changes in your source tables.
+
+<SnapshotRunIntervalLimitations />
 
 Define snapshots in YAML with a strategy and `unique_key`; refer to [Snapshot configurations](/reference/snapshot-configs) for details on how to set them up. You can also run snapshots as part of [dbt build](/reference/commands/build).
 
