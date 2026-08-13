@@ -362,6 +362,7 @@ const sidebarSettings = {
                 "docs/local/connect-data-platform/oracle-setup",
                 "docs/local/connect-data-platform/risingwave-setup",
                 "docs/local/connect-data-platform/rockset-setup",
+                "docs/local/connect-data-platform/sail-setup",
                 "docs/local/connect-data-platform/singlestore-setup",
                 "docs/local/connect-data-platform/sqlite-setup",
                 "docs/local/connect-data-platform/starrocks-setup",
