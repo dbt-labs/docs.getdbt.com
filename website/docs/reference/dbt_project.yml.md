@@ -145,7 +145,7 @@ It's important to follow the correct YAML naming conventions for the configs in 
 
 - For YAML files other than `dbt_project.yml`, use underscores (`_`) for multi-word resource types. For example, the same saved queries resource in a properties file:
 
-    <File name="models/semantic_models.yml">
+    <File name="models/saved_queries.yml">
 
     ```yml
     saved_queries:  # Use underscores outside of dbt_project.yml.
