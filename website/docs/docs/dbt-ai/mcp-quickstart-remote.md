@@ -46,7 +46,7 @@ Obtain the following information from <Constant name="dbt_platform"/>:
 
 ### 3. Choose authentication: OAuth or tokens
 
-- **[OAuth (remote)](/docs/dbt-ai/setup-remote-mcp#oauth-remote-mcp)** &mdash; No API tokens in your client config. Requires an OAuth-capable MCP client. Supports `execute_sql`. Available in private beta for Enterprise and Enterprise+ accounts.
+- **[OAuth (remote)](/docs/dbt-ai/setup-remote-mcp#oauth-remote-mcp)** &mdash; No API tokens in your client config. Requires an OAuth-capable MCP client. Supports `execute_sql`. Available in public beta for Starter, Enterprise, and Enterprise+ accounts.
 - **Token-based** &mdash; PAT or service token in the `Authorization` header. Works with any client and is required for shared/CI setups. For `execute_sql`, you must use a PAT (service tokens do not work).
 
 <MCPRemoteOauthBetaCallout />

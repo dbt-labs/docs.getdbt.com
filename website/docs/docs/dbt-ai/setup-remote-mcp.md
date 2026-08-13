@@ -29,7 +29,7 @@ The remote MCP server is the ideal choice when:
 
 | If you need... | Use... |
 | --- | --- |
-| Fastest first-time setup and your MCP client supports OAuth for HTTP servers (including `execute_sql`) | **[OAuth (remote)](#oauth-remote-mcp)** <br /> Available in beta for Enterprise and Enterprise+ accounts |
+| Fastest first-time setup and your MCP client supports OAuth for HTTP servers (including `execute_sql`) | **[OAuth (remote)](#oauth-remote-mcp)** <br /> Available in public beta for Starter, Enterprise, and Enterprise+ accounts |
 | `execute_sql` with token-based auth, automation, or clients without OAuth | **Token-based** with a [personal access token (PAT)](/docs/dbt-apis/user-tokens) |
 | Shared or team setup | **Service token** (token-based) |
 | CI or automation | **Service token** (token-based) |
@@ -38,7 +38,7 @@ The remote MCP server is the ideal choice when:
 If you connect with a token instead of OAuth, `execute_sql` only works with a [personal access token (PAT)](/docs/dbt-apis/user-tokens). Service tokens won't work. To run SQL without creating a PAT, use [OAuth (remote MCP)](#oauth-remote-mcp) instead.
 :::
 
-## OAuth (remote MCP) <Lifecycle status="beta,managed,managed_plus" /> {#oauth-remote-mcp}
+## OAuth (remote MCP) <Lifecycle status="beta,self_service,managed,managed_plus" /> {#oauth-remote-mcp}
 
 OAuth lets you connect to the remote MCP server without copying API tokens into your MCP client, when your client supports OAuth for HTTP-based MCP servers.
 
@@ -47,7 +47,7 @@ OAuth lets you connect to the remote MCP server without copying API tokens into 
 ### Prerequisites
 
 - [AI features](https://docs.getdbt.com/docs/cloud/enable-dbt-copilot) enabled for your account.
-- Enterprise or Enterprise+ account
+- Starter, Enterprise, or Enterprise+ account
 - An MCP client that supports OAuth for remote (HTTP) MCP servers.
 - Your **MCP URL** from **Account settings** &rarr; **Access URLs** &rarr; **MCP Endpoint URL** in <Constant name="dbt_platform"/>. Check out the next section [MCP URL](#mcp-url) for more information.
 

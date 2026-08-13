@@ -81,7 +81,7 @@ Then update `env-file-path` with the absolute path to your `.env` file (for exam
 
 Remote MCP supports **OAuth** or **token-based** headers.
 
-- _OAuth is in private beta for Enterprise and Enterprise+ accounts._
+- _Remote MCP OAuth is available in public beta for Starter, Enterprise, and Enterprise+ accounts._
 - For either method, the MCP URL is `https://<Access URL>/api/ai/v1/mcp`. You can find the URL in <Constant name="dbt_platform"/> under **Account settings** &rarr; **Access URLs** &rarr; **MCP Endpoint URL**.
 
 <MCPOauthPreflight />
