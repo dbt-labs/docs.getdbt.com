@@ -43,7 +43,7 @@ This is the same search-then-fetch workflow as above, but happens natively insid
 
 ### Things to watch for
 
-- **Version ambiguity**: some page titles/paths are shared between dbt Core (v1.x) and the dbt Fusion engine (v2.x) — e.g. connection profile and `profiles.yml` pages exist under both `docs/local/` and `docs/fusion/connect-data-platform-fusion/`. Check the URL path, not just the title, before citing one as authoritative for a user's version.
+- **Version ambiguity**: some page titles/paths are shared between dbt Core (v1.x) and the dbt Fusion engine (v2.x) — e.g. connection profile and `profiles.yml` pages exist under both `docs/local/` and `docs/fusion/connect-data-platform-fusion/`. Check the URL path, not just the title, before citing one as authoritative for a user's version. Anything that contains "version=1." is mapped to dbt Core version 1.x and anything that contains "version=2." is mapped to dbt Core version 2.x.
 - **Plan/lifecycle tags**: page titles in `llms.txt` may carry plan-gating suffixes (Starter/Enterprise/Enterprise+) and lifecycle tags (Preview/Beta). These can run together without clear delimiters in the flat index — read them carefully, and don't assume the absence of a lifecycle tag means a feature is GA (some pages simply haven't had a stale tag removed). You can also refer to the `availability` frontmatter fields for plan availability.
 - **Don't cite the marketing site as a technical source.** `getdbt.com` (no `docs.` prefix) contains promotional copy and customer testimonials, not the canonical reference — use `docs.getdbt.com` for anything you're stating as fact.
 
