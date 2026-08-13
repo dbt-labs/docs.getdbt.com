@@ -701,6 +701,16 @@ html[data-theme="dark"] .version-dropdown__trigger:hover {
   color: #999;
 }
 
+.version-dropdown__label {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #57534e;
+}
+
+html[data-theme="dark"] .version-dropdown__label {
+  color: #e0e0e0;
+}
+
 .version-dropdown__current {
   font-weight: 600;
 }
