@@ -66,13 +66,14 @@ On the <Constant name="dbt_platform" />, <Constant name="fusion"/> job runs stor
 
 You can also retrieve the OTel Parquet artifact for a run step through the [dbt Administrative API v2](/dbt-cloud/api-v2#/operations/Retrieve%20Run%20Artifact), which lets you download artifacts after a job completes. Use this to automate ingestion of node outcomes and test outcomes into a downstream system, such as a data quality framework in your warehouse.
 
-Each <Constant name="fusion"/> command step that produces telemetry writes a `telemetry-STEP_NUMBER-otel.parquet` artifact. Retrieve it with:
+Each <Constant name="fusion"/> command step that produces telemetry writes a `telemetry-STEP_NUMBER-otel.parquet` artifact. Some steps like `dbt deps` don't produce one. 
 
-```bash
+1. Find the step number: by listing the run's step:
+
 GET https://YOUR_ACCESS_URL/api/v2/accounts/ACCOUNT_ID/runs/RUN_ID/artifacts/metadata/telemetry-STEP_NUMBER-otel.parquet?step=STEP_NUMBER
 ```
 
-Replace `YOUR_ACCESS_URL` with the [Access URL](/docs/platform/about-platform/access-regions-ip-addresses) for your region and plan, `ACCOUNT_ID` and `RUN_ID` with your account and run IDs, and `STEP_NUMBER` with the step you want. Authenticate with a [service account token](/docs/dbt-apis/service-tokens) or [personal access token](/docs/dbt-apis/user-tokens). For example:
+Replace `YOUR_ACCESS_URL` with the [Access URL](/docs/platform/about-platform/access-regions-ip-addresses) for your region and plan, and `ACCOUNT_ID`, `RUN_ID`, `STEP_NUMBER` with your values. Authenticate with a [service account token](/docs/dbt-apis/service-tokens) or [personal access token](/docs/dbt-apis/user-tokens). For example:
 
 ```bash
 curl --request GET \
@@ -87,7 +88,7 @@ To find which step produced the telemetry artifact you want, list the run's step
 GET https://YOUR_ACCESS_URL/api/v2/accounts/ACCOUNT_ID/runs/RUN_ID/?include_related=["run_steps"]
 ```
 
-You can only retrieve this artifact for <Constant name="fusion"/> steps that emitted an OTel log. Some steps, such as `dbt deps`, don't produce one.
+You can only retrieve this artifact for <Constant name="fusion"/> steps that emitted an OTel log.
 
 ## Telemetry data
 
