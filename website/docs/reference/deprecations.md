@@ -65,6 +65,34 @@ Some deprecations can be automatically fixed with a script. Read more about it i
 
 **Coming soon**: The IDE will soon have an interface for running this same script to remediate deprecation warnings in <Constant name="dbt" />.
 
+### Silence deprecation warnings
+
+dbt Labs recommends fixing deprecation warnings rather than silencing them. If you need to temporarily reduce noise in logs, use `--warn-error-options` with the `silence` parameter. This works with any dbt command, including `dbt test` and `dbt parse`.
+
+For full configuration options (CLI flag, environment variable, and `dbt_project.yml`), refer to [Warnings](/reference/global-configs/warnings).
+
+To silence all deprecation warnings in <Constant name="core" />:
+
+```bash
+dbt test --warn-error-options '{"silence": ["Deprecations"]}'
+```
+
+<VersionBlock lastVersion="1.99">
+
+You can also silence specific deprecation types by name (for example, `ConfigLogPathDeprecation`).
+
+</VersionBlock>
+
+<VersionBlock firstVersion="2.0">
+
+In <Constant name="fusion" />, behavior differs from <Constant name="core" />:
+
+- The `Deprecations` group may not silence all deprecation-style warnings. Prefer the specific event name from your logs (for example, `SemanticModelDeprecated`).
+- Some deprecated configs are hard errors in <Constant name="fusion" /> and cannot be silenced. You must fix them.
+
+For more information about how <Constant name="fusion" /> handles `warn_error_options`, supported names, and hard-error cases, refer to [<Constant name="fusion" /> behavior and warning codes](/reference/global-configs/warnings#fusion-behavior-and-warning-codes).
+
+</VersionBlock>
 
 ## List of Deprecation Warnings
 

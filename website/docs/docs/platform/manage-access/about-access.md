@@ -149,6 +149,25 @@ import LicenseOverrideNote from '/snippets/_license-override-note.md';
 
 <LicenseOverrideNote />
 
+#### Enable granular permissions for Read-Only users <Lifecycle status="managed,managed_plus"/>
+
+Granular permissions let you restrict which projects Read-Only users can access, allowing you to set permissions by group rather than applying the default permissions for Read-Only licenses.
+
+Note that new accounts don't need this setting as Read-Only users on new accounts get granular permissions by default.
+
+Key things to know before enabling:
+- This setting is only available on Enterprise and Enterprise+ plans.
+- Access stays Read-Only: This setting controls access to projects, not permissions (users remain Read-Only).
+- It's permanent: Enabling this setting is a one-time, irreversible change.
+- Prepare first: Read-Only users keep their project access only if they're in a group with a Read-Only permission set that covers all projects. If a user isn't in a group, or their group's permission set only covers some projects, they'll lose access to the projects that aren't covered.
+
+To turn on granular permissions:
+
+1. Go to **Account settings**.
+2. Click **Enable granular permissions**.
+3. Select the checkbox acknowledging that this setting can't be reversed once enabled.
+4. Click **Enable** to confirm, or **Cancel** to go back without making changes.
+
 ### Permissions
 
 Permissions determine what users can do in your <Constant name="dbt" /> account. By default, members of the `Owner` and `Member` groups have full access to all areas and features. When you want to restrict access to features, assign users to groups with stricter permission sets. Keep in mind that if a user belongs to multiple groups, the most permissive group will take precedence.
