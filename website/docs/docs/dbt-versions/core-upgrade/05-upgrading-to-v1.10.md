@@ -326,6 +326,8 @@ import SnowflakeColumn from '/snippets/_snowflake-column-size.md';
 
 ## Quick hits
 
+- Use the [`--use-fast-test-edges`](/reference/global-configs/fast-test-edges) flag with `dbt build` to reduce the number of test edges dbt adds to the execution graph. In large projects, this can significantly reduce run times and memory usage.
+
 - Provide the [`loaded_at_query`](/reference/resource-properties/freshness#loaded_at_query) property for source freshness to specify custom SQL to generate the `maxLoadedAt` time stamp on the source (versus the [built-in query](https://github.com/dbt-labs/dbt-adapters/blob/6c41bedf27063eda64375845db6ce5f7535ef6aa/dbt/include/global_project/macros/adapters/freshness.sql#L4-L16), which uses the `loaded_at_field`). You cannot define `loaded_at_query` if the `loaded_at_field` config is also provided.
 
 - Provide validation for macro arguments using the [`validate_macro_args`](/reference/global-configs/behavior-flags/validate_macro_args) flag, which is disabled by default. When enabled, this flag checks that documented macro argument names match those in the macro definition and validates their types against a supported format. Previously, dbt did not enforce standard argument types, treating the type field as documentation-only. If no arguments are documented, dbt infers them from the macro and includes them in the manifest.json file. Learn more about [supported types](/reference/resource-properties/arguments#supported-types). 
