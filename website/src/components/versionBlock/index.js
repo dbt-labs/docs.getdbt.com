@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useContext } from 'react'
 import VersionContext from '../../stores/VersionContext';
 import { availableInCurrentVersion } from '../../utils/available-in-current-version';
 
@@ -15,13 +15,12 @@ import { availableInCurrentVersion } from '../../utils/available-in-current-vers
 export default function VersionBlock({ firstVersion = "0", lastVersion = undefined, product = undefined, children }) {
   const { version, product: currentProduct } = useContext(VersionContext);
 
-  const [loading, setLoading] = useState(true);
-
-  // Hide until version is resolved from context (prevents hydration mismatch)
-  useEffect(() => {
-    version && setLoading(false);
-  }, [version]);
-
+  // `version` falls back to the default version in VersionContext, so these
+  // checks resolve during SSR. Rendering the default version's content at build
+  // time (rather than null until a client-side effect runs) is what lets the
+  // generated per-page `.md` include versioned tables and code blocks. The
+  // client still swaps to the selected version after mount, since the first
+  // client render uses the same default and matches the server output.
   if (version) {
     // Product filter: hide if a specific product is required but doesn't match
     if (product && currentProduct && product !== currentProduct) return null;
@@ -30,5 +29,5 @@ export default function VersionBlock({ firstVersion = "0", lastVersion = undefin
     if (!availableInCurrentVersion(version, firstVersion, lastVersion)) return null;
   }
 
-  return loading ? null : <>{children}</>;
+  return <>{children}</>;
 }
