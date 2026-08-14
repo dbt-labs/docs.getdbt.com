@@ -22,6 +22,9 @@ For <Constant name="fusion_engine" /> updates, refer to the [dbt-fusion changelo
 
 ## August 2026
 
+- **Enhancement:** The Wizard chat input grows vertically as you type or paste text, and shrinks back when content is removed.
+- **Enhancement:** Applications authorized with `account:read` can now read job data without also requesting the `jobs:run` scope.
+
 - **New:** The [Analyst read](/docs/platform/manage-access/enterprise-permissions#analyst-read) permission set is now generally available (GA) for Enterprise plans. Analyst read is a project-level permission set that provides read-only access to analyze dbt models and project resources, and read-only users can connect to analysis features such as the [dbt MCP server](/docs/dbt-ai/about-mcp).
 - **Enhancement:** [Cost Insights](/docs/explore/cost-insights) now supports cost attribution for [Snowflake Adaptive Warehouses](https://docs.snowflake.com/en/user-guide/warehouses-adaptive). For setup details, refer to [Assign required permissions](/docs/explore/set-up-cost-insights#assign-required-permissions).
 - **New:** The [Model timing tab](/docs/deploy/run-visibility#model-timing-tab) in job run details has been redesigned with a richer, scalable view that includes metric tiles, an execution timeline with grouping and highlight controls, a concurrency-over-time chart, and a searchable resource details table.
