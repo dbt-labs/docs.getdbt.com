@@ -70,10 +70,11 @@ Each <Constant name="fusion"/> command step that produces telemetry writes a `te
 
 1. Find the step number: by listing the run's step:
 
+```bash
 GET https://YOUR_ACCESS_URL/api/v2/accounts/ACCOUNT_ID/runs/RUN_ID/artifacts/metadata/telemetry-STEP_NUMBER-otel.parquet?step=STEP_NUMBER
 ```
 
-Replace `YOUR_ACCESS_URL` with the [Access URL](/docs/platform/about-platform/access-regions-ip-addresses) for your region and plan, and `ACCOUNT_ID`, `RUN_ID`, `STEP_NUMBER` with your values. Authenticate with a [service account token](/docs/dbt-apis/service-tokens) or [personal access token](/docs/dbt-apis/user-tokens). For example:
+2. Replace `YOUR_ACCESS_URL` with the [Access URL](/docs/platform/about-platform/access-regions-ip-addresses) for your region and plan, and `ACCOUNT_ID`, `RUN_ID`, `STEP_NUMBER` with your values. Authenticate with a [service account token](/docs/dbt-apis/service-tokens) or [personal access token](/docs/dbt-apis/user-tokens). For example:
 
 ```bash
 curl --request GET \
@@ -82,7 +83,7 @@ curl --request GET \
   --output telemetry-4-otel.parquet
 ```
 
-To find which step produced the telemetry artifact you want, list the run's steps by including `run_steps` in the run details request:
+3. To find which step produced the telemetry artifact you want, list the run's steps by including `run_steps` in the run details request:
 
 ```bash
 GET https://YOUR_ACCESS_URL/api/v2/accounts/ACCOUNT_ID/runs/RUN_ID/?include_related=["run_steps"]
