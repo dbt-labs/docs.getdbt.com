@@ -48,15 +48,18 @@ export default function VersionBlock({ firstVersion = "0", lastVersion = undefin
   }
 
   // A version note tags the block with the dbt version its content applies to.
-  // It's hidden from readers on the page (the version switcher is their signal)
-  // via `.version-md-note`, but it stays in the DOM, so it flows into the
-  // generated per-page `.md` and tells AI agents which version they're reading.
+  // `.version-md-note` visually hides it from sighted readers on the page (the
+  // version switcher is their signal), but it stays in the DOM as real content,
+  // so it flows into the generated per-page `.md` and tells AI agents which
+  // version they're reading. It is deliberately NOT `aria-hidden`: the repo's
+  // rehypeCleanMarkdown plugin strips aria-hidden nodes from the markdown, and
+  // exposing the note to screen readers gives them the same version cue.
   const note = versionNote(firstVersion, lastVersion, product);
 
   return (
     <>
       {note && (
-        <span className="version-md-note" aria-hidden="true">{note} </span>
+        <span className="version-md-note">{note} </span>
       )}
       {children}
     </>
