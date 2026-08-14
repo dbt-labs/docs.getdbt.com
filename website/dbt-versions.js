@@ -29,18 +29,25 @@ const products = [
     // List newest first; the first entry is treated as the current/latest track.
     // `stage` drives the lifecycle tag shown in the menu: "alpha" | "rc" | "beta" | "Preview"
     // (omit for a stable/GA release). Update as a version moves through its cycle.
-    subProducts: [
-      {
-        name: "dbt Core v1.12",
-        EOLDate: "2027-07-15",
-        version: "1.12",
-      },
-      {
-        name: "dbt Core v1.11",
-        EOLDate: "2026-12-18",
-        version: "1.11",
-      },
-    ],
+    get subProducts() {
+      const specific = [
+        {
+          name: "dbt Core v1.12",
+          EOLDate: "2027-07-15",
+          version: "1.12",
+        },
+        {
+          name: "dbt Core v1.11",
+          EOLDate: "2026-12-18",
+          version: "1.11",
+        },
+      ];
+      return [
+        // Group-level selection — always mirrors the latest specific entry above
+        { name: "v1", EOLDate: specific[0].EOLDate, version: specific[0].version },
+        ...specific,
+      ];
+    },
   },
 ];
 
