@@ -47,3 +47,9 @@
   subheader: Meet us in Las Vegas, September 15–18, to learn from other dbt practitioners, swap ideas, and come together to shape the future of data and AI.
   button_text: Learn more
   url: https://www.getdbt.com/dbt-summit/?utm_medium=internal&utm_source=docs&utm_campaign=q3-2027_dbt-summit-2026_aw&utm_content=dbt-summit____&utm_term=all_all__
+
+- name: dbt_core_v1_12_live
+  header: "dbt Core v1.12 Live"
+  subheader: Release updates, the road to dbt Core v2.0, and Q&A. Join a global-friendly session on August 26 or 27.
+  button_text: Register here
+  url: https://www.getdbt.com/resources/webinars/dbt-core-v1-12-live/?utm_medium=internal&utm_source=www&utm_campaign=q3-2027_dbt-core-v1.12-live_aw&utm_content=themed-webinar____&utm_term=all_all__
