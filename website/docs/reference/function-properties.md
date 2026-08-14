@@ -6,7 +6,7 @@ title: Function properties
 
 Function properties are the YAML properties you define for a [user-defined function (UDF)](/docs/build/udfs) in your project. In a properties YAML file (for example, `functions/is_positive_int.yml`), you name the function and specify information such as its description, configuration, arguments, and return type.
 
-The properties YAML file works with the function body you define in a corresponding SQL or Python file under `functions/`. When you run `dbt build`, dbt uses both files together to generate the `CREATE FUNCTION` statement.
+The properties YAML file works with the function body you define in a corresponding SQL, Python, or JavaScript file under `functions/`. When you run `dbt build`, dbt uses both files together to generate the `CREATE FUNCTION` statement.
 
 Declare function properties in a properties YAML file under the `functions:` key, with one list entry per function.
 
@@ -43,7 +43,7 @@ functions:
       data_type: <string> # required, warehouse-specific
       description: <markdown_string> # optional
     [overloads](/reference/resource-properties/overloads): # optional, SQL UDFs (Snowflake and Postgres) and Python UDFs (Snowflake), available in v1.12+
-      - defined_in: <string> # required, name of the SQL or Python file containing this overload's body
+      - defined_in: <string> # required, name of the SQL, Python, or JavaScript file containing this overload's body
         arguments: # optional
           - name: <string> # required if arguments is specified
             data_type: <string> # required if arguments is specified, warehouse-specific

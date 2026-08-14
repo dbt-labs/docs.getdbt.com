@@ -135,7 +135,7 @@ functions:
 
 ## Configuring functions
 
-Functions are configured in YAML files, either in `dbt_project.yml` or within an individual function's properties YAML file. The function body is defined in a SQL or Python file in the `functions/` directory.
+Functions are configured in YAML files, either in `dbt_project.yml` or within an individual function's properties YAML file. The function body is defined in a SQL, Python, or JavaScript file in the `functions/` directory.
 
 In a properties YAML file (for example, `functions/properties.yml`), declare function configurations in each function's `config` block under `functions:`. If you define multiple functions, repeat the relevant `config` values for each function, because you can't declare a shared `config` block at the `functions:` level. If multiple functions share the same `config` values, you can use YAML anchors and aliases to reduce duplication.
 
