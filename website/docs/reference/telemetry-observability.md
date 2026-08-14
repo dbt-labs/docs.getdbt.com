@@ -68,7 +68,7 @@ You can also retrieve the OTel Parquet artifact for a run step through the [dbt 
 
 Each <Constant name="fusion"/> command step that produces telemetry writes a `telemetry-STEP_NUMBER-otel.parquet` artifact. Some steps like `dbt deps` don't produce a parquet artifact. 
 
-To retrieve the artifact:
+You can use the Retrieve Run Artifact endpoint to fetch this artifact:
 
   ```bash
   GET https://YOUR_ACCESS_URL/api/v2/accounts/ACCOUNT_ID/runs/RUN_ID/artifacts/metadata/telemetry-STEP_NUMBER-otel.parquet?step=STEP_NUMBER
