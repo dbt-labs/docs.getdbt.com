@@ -73,7 +73,7 @@ function CopyPage({ dropdownRight = false, pageUrl }) {
           role="menuitem"
           tabIndex={isDropdownOpen ? "0" : "-1"}
         >
-          {getSvgIcon("file-text", {})}
+          {getSvgIcon("external-link", {})}
           <div className={styles.dropdownItemContent}>
             <div className={styles.dropdownItemTitle}>View as Markdown</div>
             <div className={styles.dropdownItemSubtitle}>
