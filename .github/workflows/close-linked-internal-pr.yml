@@ -45,7 +45,9 @@ jobs:
             let internalPrNumber = null;
 
             // 1. Explicit reference added by the promote-to-public skill.
-            const explicitMatch = body.match(/dbt-labs\/docs-internal#(\d+)/i);
+            // Anchored to the "Promoted from" line so an unrelated
+            // docs-internal#N mention elsewhere in the body can't be picked up.
+            const explicitMatch = body.match(/Promoted from\s+dbt-labs\/docs-internal#(\d+)/i);
             if (explicitMatch) {
               internalPrNumber = parseInt(explicitMatch[1], 10);
               console.log(`Found explicit reference to docs-internal#${internalPrNumber}`);
@@ -107,6 +109,18 @@ jobs:
 
             if (!internalPrNumber) {
               console.log('Could not determine a linked docs-internal PR. No action taken.');
+              return;
+            }
+
+            // Skip if the internal PR is already closed — no need to post a
+            // redundant comment or re-close it.
+            const { data: internalPr } = await github.rest.pulls.get({
+              owner,
+              repo: 'docs-internal',
+              pull_number: internalPrNumber,
+            });
+            if (internalPr.state !== 'open') {
+              console.log(`docs-internal#${internalPrNumber} is already ${internalPr.state}, nothing to do.`);
               return;
             }
 
