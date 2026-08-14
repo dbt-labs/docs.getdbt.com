@@ -18,8 +18,8 @@ Refer to the following available community adapter(s):
 | --- | --- | --- |
 | [Confluent Cloud](/docs/local/connect-data-platform/confluent-setup) | [CrateDB](/docs/local/connect-data-platform/cratedb-setup) | [Databend Cloud](/docs/local/connect-data-platform/databend-setup) |
 | [DeltaStream](/docs/local/connect-data-platform/deltastream-setup) | [Doris & SelectDB](/docs/local/connect-data-platform/doris-setup) | [DuckDB](/docs/local/connect-data-platform/duckdb-setup) |
-| [Extrica](/docs/local/connect-data-platform/extrica-setup) | [Hive](/docs/local/connect-data-platform/hive-setup) | [Hologres](/docs/local/connect-data-platform/hologres-setup) |
-| [IBM watsonx.data - Spark](/docs/local/connect-data-platform/watsonx-spark-setup) | [Impala](/docs/local/connect-data-platform/impala-setup) | [Infer](/docs/local/connect-data-platform/infer-setup) |
+| [Extrica](/docs/local/connect-data-platform/extrica-setup) | [Hologres](/docs/local/connect-data-platform/hologres-setup) |
+| [IBM watsonx.data - Spark](/docs/local/connect-data-platform/watsonx-spark-setup) | [Infer](/docs/local/connect-data-platform/infer-setup) |
 | [iomete](/docs/local/connect-data-platform/iomete-setup) | [MaxCompute](/docs/local/connect-data-platform/maxcompute-setup) | [MindsDB](/docs/local/connect-data-platform/mindsdb-setup) |
 | [MySQL](/docs/local/connect-data-platform/mysql-setup) | [RisingWave](/docs/local/connect-data-platform/risingwave-setup) | [Rockset](/docs/local/connect-data-platform/rockset-setup) |
 | [Sail](/docs/local/connect-data-platform/sail-setup) | [SingleStore](/docs/local/connect-data-platform/singlestore-setup) | [SQL Server & Azure SQL](/docs/local/connect-data-platform/mssql-setup) |
