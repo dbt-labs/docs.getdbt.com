@@ -213,7 +213,7 @@ The possible values for `on_schema_change` are:
 - `append_new_columns`: Append new columns to the existing table. Note that this setting does *not* remove columns from the existing table that are not present in the new data.
 - `sync_all_columns`: Adds any new columns to the existing table, and removes any columns that are now missing. Note that this is *inclusive* of data type changes. On BigQuery, changing column types requires a full <Term id="table" /> scan; be mindful of the trade-offs when implementing.
 
-The following table summarizes what each value does when you add a column to your model, remove a column from your model, or change a column's data type:
+The following table summarizes what each value does when you add a column, remove a column, or change a column's data type:
 
 | `on_schema_change` | Column added to the model | Column removed from the model | Column data type changed |
 |--------------------|---------------------------|-------------------------------|--------------------------|
