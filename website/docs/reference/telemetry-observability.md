@@ -76,7 +76,7 @@ You can use the Retrieve Run Artifact endpoint to fetch this artifact:
 
 Replace `YOUR_ACCESS_URL` with the [Access URL](/docs/platform/about-platform/access-regions-ip-addresses) for your region and plan, and `ACCOUNT_ID`, `RUN_ID`, `STEP_NUMBER` with your values. Authenticate with a [service account token](/docs/dbt-apis/service-tokens) or [personal access token](/docs/dbt-apis/user-tokens). 
 
-For example, you can do this with cURL:
+For example, you can do this with `curl`:
 
 ```bash
 curl --request GET \
