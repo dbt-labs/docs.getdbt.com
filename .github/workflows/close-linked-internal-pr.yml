@@ -1,0 +1,143 @@
+name: Close linked docs-internal PR
+
+# What it does: When a PR merges here, tries to find the docs-internal PR it
+# was promoted from and comments on + closes that docs-internal PR.
+#
+# Two ways it finds the link, in order:
+#   1. An explicit "Promoted from dbt-labs/docs-internal#<number>" line in the
+#      PR body. Added automatically by the promote-to-public skill.
+#   2. If there's no explicit reference (e.g. the writer promoted manually
+#      without the skill), it falls back to matching on changed files: it
+#      looks for an open docs-internal PR that changed the exact same set of
+#      files. If exactly one match is found, it's treated as the linked PR.
+#      If there's no match, or more than one candidate, it does nothing and
+#      logs why — the writer still closes it manually, same as before this
+#      workflow existed. It never guesses when it isn't sure.
+#
+# Why we have it: replaces the manual "close with comment" step writers
+# previously had to remember after promoting a private doc to public. See
+# the docs-internal/private-docs-repo-sync process doc for the full workflow.
+#
+# Requires a repo secret INTERNAL_REPO_TOKEN: a PAT with write access to
+# dbt-labs/docs-internal (issues + PRs) and read access to this repo's PRs.
+# The default GITHUB_TOKEN can't write cross-repo.
+
+on:
+  pull_request:
+    types: [closed]
+
+jobs:
+  close-internal-pr:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: read
+    steps:
+      - name: Find and close linked docs-internal PR
+        uses: actions/github-script@d7906e4ad0b1822421a7e6a35d5ca353c962f410 # actions/github-script@v6
+        with:
+          github-token: ${{ secrets.INTERNAL_REPO_TOKEN }}
+          script: |
+            const owner = 'dbt-labs';
+            const publicPr = context.payload.pull_request;
+            const body = publicPr.body || '';
+
+            let internalPrNumber = null;
+
+            // 1. Explicit reference added by the promote-to-public skill.
+            // Anchored to the "Promoted from" line so an unrelated
+            // docs-internal#N mention elsewhere in the body can't be picked up.
+            const explicitMatch = body.match(/Promoted from\s+dbt-labs\/docs-internal#(\d+)/i);
+            if (explicitMatch) {
+              internalPrNumber = parseInt(explicitMatch[1], 10);
+              console.log(`Found explicit reference to docs-internal#${internalPrNumber}`);
+            }
+
+            // 2. Fallback for promotions done without the skill: match by
+            // the exact set of changed files against open docs-internal PRs.
+            if (!internalPrNumber) {
+              console.log('No explicit reference in PR body, trying to match by changed files');
+
+              const { data: publicFiles } = await github.rest.pulls.listFiles({
+                owner,
+                repo: 'docs.getdbt.com',
+                pull_number: publicPr.number,
+                per_page: 100,
+              });
+              const publicPaths = new Set(publicFiles.map(f => f.filename));
+
+              if (publicPaths.size === 0) {
+                console.log('Merged PR has no changed files, nothing to match on, skipping');
+              } else {
+                const { data: openInternalPrs } = await github.rest.pulls.list({
+                  owner,
+                  repo: 'docs-internal',
+                  base: 'current',
+                  state: 'open',
+                  per_page: 100,
+                });
+
+                const candidates = [];
+                for (const pr of openInternalPrs) {
+                  const { data: internalFiles } = await github.rest.pulls.listFiles({
+                    owner,
+                    repo: 'docs-internal',
+                    pull_number: pr.number,
+                    per_page: 100,
+                  });
+                  const internalPaths = new Set(internalFiles.map(f => f.filename));
+
+                  const sameFiles =
+                    internalPaths.size === publicPaths.size &&
+                    [...publicPaths].every(p => internalPaths.has(p));
+
+                  if (sameFiles) {
+                    candidates.push(pr.number);
+                  }
+                }
+
+                if (candidates.length === 1) {
+                  internalPrNumber = candidates[0];
+                  console.log(`Matched docs-internal#${internalPrNumber} by exact changed-file overlap`);
+                } else if (candidates.length > 1) {
+                  console.log(`Found ${candidates.length} docs-internal PRs with the same changed files (${candidates.join(', ')}) — too ambiguous to auto-close, leaving for manual cleanup`);
+                } else {
+                  console.log('No open docs-internal PR found with matching changed files, leaving for manual cleanup');
+                }
+              }
+            }
+
+            if (!internalPrNumber) {
+              console.log('Could not determine a linked docs-internal PR. No action taken.');
+              return;
+            }
+
+            // Skip if the internal PR is already closed — no need to post a
+            // redundant comment or re-close it.
+            const { data: internalPr } = await github.rest.pulls.get({
+              owner,
+              repo: 'docs-internal',
+              pull_number: internalPrNumber,
+            });
+            if (internalPr.state !== 'open') {
+              console.log(`docs-internal#${internalPrNumber} is already ${internalPr.state}, nothing to do.`);
+              return;
+            }
+
+            const publicPrUrl = publicPr.html_url;
+
+            await github.rest.issues.createComment({
+              owner,
+              repo: 'docs-internal',
+              issue_number: internalPrNumber,
+              body: `Closing automatically — this was promoted to the public repo and merged here: ${publicPrUrl}`,
+            });
+
+            await github.rest.pulls.update({
+              owner,
+              repo: 'docs-internal',
+              pull_number: internalPrNumber,
+              state: 'closed',
+            });
+
+            console.log(`Closed docs-internal#${internalPrNumber}`);

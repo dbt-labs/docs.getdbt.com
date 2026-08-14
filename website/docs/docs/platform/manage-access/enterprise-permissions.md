@@ -26,6 +26,10 @@ The following permission sets are available for assignment in all <Constant name
 
 Access to <Constant name="dbt" /> features and functionality is split into `account-level` and `project-level` permission sets. Account-level permissions are primarily for account administration (inviting users, configuring SSO, and creating groups). Project-level permissions are for the configuration and maintenance of the projects themselves (configuring environments, accessing IDE, and running jobs). Account permission sets may have access to project features, and project permission sets may have access to account features. Check out the [permissions tables](/docs/platform/manage-access/enterprise-permissions#account-permissions) to compare sets and their access. 
 
+:::tip Read-Only users
+If you have users with a Read-Only license, you can [enable granular permissions](/docs/platform/manage-access/about-user-access#enable-granular-permissions-for-read-only-users) for your account. This is a one-time, irreversible setting. After you enable it, Read-Only users keep their project access only if they're in a group with a Read-Only permission set that covers all projects.
+:::
+
 <Expandable alt_header="Account admin">
 
 The Account admin permission set is the highest level of access and control over your <Constant name="dbt" /> account and projects. We recommend limiting the number of users and groups assigned the account admin permission set.
@@ -75,20 +79,20 @@ Notable features:
 - Can access <Constant name="catalog" />.
 
 </Expandable>
-<Expandable alt_header="Analyst read" lifecycle="private_beta">
+<Expandable alt_header="Analyst read">
 
 The Analyst read permission set is a project-level set designed for users who need read-only access to analyze dbt models and project resources without the ability to develop or make changes.
 
 :::info Availability
 
-The OAuth integration that lets read-only users connect to analysis features (such as the [dbt MCP server](/docs/dbt-ai/about-mcp)) is available to use. The **Analyst read** permission set and the read-only permission changes described here are in **private beta**. To enable them, contact your account manager.
+The OAuth integration that lets read-only users connect to analysis features (such as the [dbt MCP server](/docs/dbt-ai/about-mcp)) is available to use.
 
 :::
 
 Notable features:
 - Analyst read is a project-level set.
-- Read-only access to project resources, jobs, runs, and environment configs.
-- Can access <Constant name="catalog" />.
+- Read-only access to **Connections** (account and project), **Projects**, repositories (Git repository settings), <Constant name="semantic_layer" /> configuration, **Environments**, custom environment variables, and <Constant name="catalog" /> metadata (Metadata GraphQL API).
+- No read access to jobs or runs.
 - Includes `user_credential_write`, so users can view and edit their own user credentials on **Your profile** > **Credentials** without access to the <Constant name="studio_ide" /> or <Constant name="platform_cli" />. Read-only users still need personal user credentials on this page to run warehouse queries in analysis features such as <Constant name="insights" /> and the <Constant name="semantic_layer" />.
 - No write access and no access to develop in the <Constant name="studio_ide" /> or <Constant name="platform_cli" />.
 

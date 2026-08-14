@@ -12,11 +12,11 @@ The <Constant name="dbt_platform" /> can connect with a variety of data platform
 
 <VersionBlock firstVersion="2.0">
 
-For most supported data platforms, we recommend the v2 experience. v2 supports the following data platforms:
+For most supported data platforms, we recommend the v2 experience with <Constant name="fusion"/>, which supports the following data platforms:
 
 <SimpleTable>
 
-| Connection | Available on v2 |
+| Connection | Available on v2 with <Constant name="fusion"/>  |
 |------------|:---------------------:|
 | [Snowflake](/docs/platform/connect-data-platform/connect-snowflake) | ✅ |
 | [Amazon Redshift](/docs/platform/connect-data-platform/connect-redshift) | Preview |
@@ -25,7 +25,6 @@ For most supported data platforms, we recommend the v2 experience. v2 supports t
 </SimpleTable>
 
 <small> _Adapter lifecycle can differ between the <Constant name="dbt_platform" /> and local development &mdash; an adapter can reach GA in the dbt platform before it reaches GA for local use._ </small> <br /><br />
-
 
 If your data platform isn’t listed yet, support for more data platforms will roll out over time. You can continue using v1 for that project in the meantime.
 
