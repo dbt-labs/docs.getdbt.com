@@ -87,6 +87,12 @@ For client-specific steps, see [Integrate Claude with MCP](/docs/dbt-ai/integrat
 
 Token-based authentication lets you connect to the remote MCP server without OAuth by passing a PAT or service token in your MCP client config. Use it when your client doesn't support OAuth for HTTP-based MCP servers, when you need a shared or CI setup, or when you need `execute_sql`, which requires a PAT.
 
+Currently, token-based access is all-or-nothing: a token that passes the permission check gets every tool. If you want individual tools filtered to a narrower set of permissions, use [OAuth](#oauth-remote-mcp) instead. This also differs from the [self-hosted server](/docs/dbt-ai/setup-local-mcp), which authorizes each toolset independently as tools are called.
+
+:::note Service tokens need Developer access, which is available only on Enterprise plans
+Token-based connections currently require Developer access, and the `Developer` permission set can only be assigned to a service token on Enterprise and Enterprise+ plans. Starter plans can assign only the <Constant name="semantic_layer" /> permission set, and legacy Team plans can't assign `Developer` either &mdash; so service tokens can't connect to remote MCP on those plans. Use [OAuth](#oauth-remote-mcp) instead. For the permission sets available on each plan, refer to [Service tokens](/docs/dbt-apis/service-tokens#permissions-for-service-account-tokens).
+:::
+
 ### Setup instructions
 
 1. Ensure that you have [AI features](https://docs.getdbt.com/docs/platform/enable-dbt-ai) turned on.
@@ -94,7 +100,7 @@ Token-based authentication lets you connect to the remote MCP server without OAu
 
   - **<Constant name="dbt_platform"/> host**: Use this to form the full URL. For example, replace `YOUR_DBT_HOST_URL` here: `https://YOUR_DBT_HOST_URL/api/ai/v1/mcp/`. It may look like: `https://cloud.getdbt.com/api/ai/v1/mcp/`. If you have a multi-cell account, the host URL will be in the `ACCOUNT_PREFIX.us1.dbt.com` format. For more information, refer to [Access, Regions, & IP addresses](/docs/platform/about-platform/access-regions-ip-addresses).
   - **Production environment ID**: You can find this on the **Orchestration** page in the <Constant name="dbt_platform"/>. Use this to set an `x-dbt-prod-environment-id` header.
-  - **Token**: Generate either a personal access token or a service token. To fully utilize remote MCP, the token must have Semantic Layer and Developer permissions. 
+  - **Token**: Generate either a personal access token (PAT) or a service token. The token must have Developer access on the project that owns the environment you set in `x-dbt-prod-environment-id`. A token without it is rejected with a `401` when the MCP client connects, rather than connecting with reduced functionality. For a service token, assign the `Developer` permission set, scoped either to that project or to all projects &mdash; `Developer` on its own is sufficient. For a PAT, create the token as a user who has Developer access on that project; PATs don't take permission sets, they inherit the permissions of the user who created them.
   - If you plan to use `execute_sql`, you must use a [Personal Access Token (PAT)](/docs/dbt-apis/user-tokens). Service tokens _do not_ work for this tool. For other tools that require `x-dbt-user-id`, a PAT is also required.
 
 3. For the remote MCP, you will pass on headers through the JSON blob to configure required fields:
@@ -103,7 +109,7 @@ Token-based authentication lets you connect to the remote MCP server without OAu
 
   | Header | Required | Description |
   | --- | --- | --- |
-  | Authorization | Required | Your [personal access token (PAT)](/docs/dbt-apis/user-tokens) or [service token](/docs/dbt-apis/service-tokens) from the <Constant name="dbt_platform"/>. <br/> **Note**: When using the Semantic Layer, we recommended to use a PAT. If you're using a service token, make sure that it has at least `Semantic Layer Only`, `Metadata Only`, and `Developer` permissions. <br /><br /> The value must be in the format `Token YOUR_DBT_ACCESS_TOKEN` or `Bearer YOUR_DBT_ACCESS_TOKEN`, replacing `YOUR_DBT_ACCESS_TOKEN` with your actual token.  |
+  | Authorization | Required | Your [personal access token (PAT)](/docs/dbt-apis/user-tokens) or [service token](/docs/dbt-apis/service-tokens) from the <Constant name="dbt_platform"/>. <br/> **Note**: The token must have Developer access on the project that owns the environment in `x-dbt-prod-environment-id`, or it's rejected with a `401` at connection. Service tokens need the `Developer` permission set, which is sufficient on its own; PATs inherit the permissions of the user who created them, so create the PAT as a user with Developer access on that project. When using the <Constant name="semantic_layer" />, we recommend using a PAT. <br /><br /> The value must be in the format `Token YOUR_DBT_ACCESS_TOKEN` or `Bearer YOUR_DBT_ACCESS_TOKEN`, replacing `YOUR_DBT_ACCESS_TOKEN` with your actual token.  |
   | x-dbt-prod-environment-id | Required | Your <Constant name="dbt_platform"/> production environment ID |
 
   #### Additional configuration for SQL tools
