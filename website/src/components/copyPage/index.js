@@ -104,23 +104,6 @@ function CopyPage({ dropdownRight = false, pageUrl }) {
           </Link>
         ))}
 
-        <Link
-          id="connect_dbt_mcp"
-          className={styles.dropdownItem}
-          href="/docs/dbt-ai/about-mcp"
-          role="menuitem"
-          tabIndex={isDropdownOpen ? "0" : "-1"}
-        >
-          {getSvgIcon("server", {})}
-          <div className={styles.dropdownItemContent}>
-            <div className={styles.dropdownItemTitle}>
-              Connect to dbt MCP server
-            </div>
-            <div className={styles.dropdownItemSubtitle}>
-              Give your AI tools access to your dbt project
-            </div>
-          </div>
-        </Link>
       </div>
 
       {copySuccess && (
