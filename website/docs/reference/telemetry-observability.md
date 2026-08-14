@@ -62,6 +62,34 @@ OTEL_EXPORTER_OTLP_ENDPOINT="http://localhost:4318" dbtf build --export-to-otlp
 
 On the <Constant name="dbt_platform" />, <Constant name="fusion"/> job runs store OTel telemetry as Parquet artifacts for dbt command steps. From a completed run, open the **Run summary** tab, select a step, and click **Download** > **Download OTel log**. The option appears only for <Constant name="fusion"/> runs where the step produced an OTel file. For step-by-step instructions, refer to [Downloading logs](/docs/deploy/run-visibility#access-logs).
 
+#### Retrieve telemetry using the API
+
+You can also retrieve the OTel Parquet artifact for a run step through the [dbt Administrative API v2](/dbt-cloud/api-v2#/operations/Retrieve%20Run%20Artifact), which lets you download artifacts after a job completes. Use this to automate ingestion of node outcomes and test outcomes into a downstream system, such as a data quality framework in your warehouse.
+
+Each <Constant name="fusion"/> command step that produces telemetry writes a `telemetry-STEP_NUMBER-otel.parquet` artifact. Some steps like `dbt deps` don't produce one. 
+
+1. Find the step number: by listing the run's step:
+
+GET https://YOUR_ACCESS_URL/api/v2/accounts/ACCOUNT_ID/runs/RUN_ID/artifacts/metadata/telemetry-STEP_NUMBER-otel.parquet?step=STEP_NUMBER
+```
+
+Replace `YOUR_ACCESS_URL` with the [Access URL](/docs/platform/about-platform/access-regions-ip-addresses) for your region and plan, and `ACCOUNT_ID`, `RUN_ID`, `STEP_NUMBER` with your values. Authenticate with a [service account token](/docs/dbt-apis/service-tokens) or [personal access token](/docs/dbt-apis/user-tokens). For example:
+
+```bash
+curl --request GET \
+  --url 'https://YOUR_ACCESS_URL/api/v2/accounts/12345/runs/67890/artifacts/metadata/telemetry-4-otel.parquet?step=4' \
+  --header 'Authorization: Token YOUR_TOKEN' \
+  --output telemetry-4-otel.parquet
+```
+
+To find which step produced the telemetry artifact you want, list the run's steps by including `run_steps` in the run details request:
+
+```bash
+GET https://YOUR_ACCESS_URL/api/v2/accounts/ACCOUNT_ID/runs/RUN_ID/?include_related=["run_steps"]
+```
+
+You can only retrieve this artifact for <Constant name="fusion"/> steps that emitted an OTel log.
+
 ## Telemetry data
 
 <Constant name="fusion" /> telemetry contains two types of records:
