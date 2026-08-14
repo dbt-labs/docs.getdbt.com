@@ -3572,3 +3572,21 @@ html[data-theme='dark'] .rss-icon {
   font-size: 0.75em;
   line-height: 0;
 }
+
+/*
+ * Version tags rendered by VersionBlock. Hidden on the page (the version
+ * switcher is the reader-facing signal), but present in the DOM so they flow
+ * into the generated per-page `.md`, telling AI agents which dbt version the
+ * block's content applies to.
+ */
+.version-md-note {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
