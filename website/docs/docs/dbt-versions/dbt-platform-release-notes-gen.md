@@ -26,7 +26,7 @@ Release notes are grouped by date for single-tenant environments.
 
 ## Enhancements
 
-### dbt Copilot and agents
+### dbt AI and agents
 
 - **Auto-expanding Wizard chat input**: The Wizard chat input grows vertically as you type or paste text, and shrinks back when content is removed.
 
