@@ -33,4 +33,6 @@ dbt run --static-analysis off
 
 ## Related docs
 
-Also check out the model-level [`static_analysis` (resource config)](/reference/resource-configs/static-analysis) and [About flags](/reference/global-configs/about-global-configs) pages for more details.
+- [`static_analysis` (resource config)](/reference/resource-configs/static-analysis)
+- [About flags](/reference/global-configs/about-global-configs)
+- [Optimize static analysis for development and deployment](/best-practices/optimize-static-analysis-for-development-and-deployment)
