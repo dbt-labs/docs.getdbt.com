@@ -14,7 +14,6 @@ When you run `dbt build`, dbt adds edges to the execution graph so that downstre
 
 Using the `--use-fast-test-edges` flag with `dbt build` produces the same execution order with significantly fewer edges. If you experience slow run times or high memory usage during `dbt build`, use this flag.
 
-## Usage
 
 You can set this flag using the CLI or an environment variable:
 
