@@ -66,14 +66,17 @@ On the <Constant name="dbt_platform" />, <Constant name="fusion"/> job runs stor
 
 You can also retrieve the OTel Parquet artifact for a run step through the [dbt Administrative API v2](/dbt-cloud/api-v2#/operations/Retrieve%20Run%20Artifact), which lets you download artifacts after a job completes. Use this to automate ingestion of node outcomes and test outcomes into a downstream system, such as a data quality framework in your warehouse.
 
-Each <Constant name="fusion"/> command step that produces telemetry writes a `telemetry-STEP_NUMBER-otel.parquet` artifact. Some steps like `dbt deps` don't produce one. 
+Each <Constant name="fusion"/> command step that produces telemetry writes a `telemetry-STEP_NUMBER-otel.parquet` artifact. Some steps like `dbt deps` don't produce a parquet artifact. 
 
-1. Find the step number: by listing the run's step:
+To retrieve the artifact:
 
-GET https://YOUR_ACCESS_URL/api/v2/accounts/ACCOUNT_ID/runs/RUN_ID/artifacts/metadata/telemetry-STEP_NUMBER-otel.parquet?step=STEP_NUMBER
-```
+  ```bash
+  GET https://YOUR_ACCESS_URL/api/v2/accounts/ACCOUNT_ID/runs/RUN_ID/artifacts/metadata/telemetry-STEP_NUMBER-otel.parquet?step=STEP_NUMBER
+  ```
 
-Replace `YOUR_ACCESS_URL` with the [Access URL](/docs/platform/about-platform/access-regions-ip-addresses) for your region and plan, and `ACCOUNT_ID`, `RUN_ID`, `STEP_NUMBER` with your values. Authenticate with a [service account token](/docs/dbt-apis/service-tokens) or [personal access token](/docs/dbt-apis/user-tokens). For example:
+Replace `YOUR_ACCESS_URL` with the [Access URL](/docs/platform/about-platform/access-regions-ip-addresses) for your region and plan, and `ACCOUNT_ID`, `RUN_ID`, `STEP_NUMBER` with your values. Authenticate with a [service account token](/docs/dbt-apis/service-tokens) or [personal access token](/docs/dbt-apis/user-tokens). 
+
+For example, you can do this with cURL:
 
 ```bash
 curl --request GET \
