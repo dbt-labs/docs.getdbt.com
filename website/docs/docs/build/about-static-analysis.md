@@ -316,6 +316,12 @@ from {{ ref('my_model') }}
 
 </File>
 
+### Can I use strict mode in development and baseline in deployment?
+
+Yes. This pattern is valid and recommended: use `strict` while you develop for stronger validation, and keep `baseline` in deployment for faster runs that are less likely to stop on analysis findings.
+
+For more information, including CLI examples and an optional environment variable pattern, refer to [Optimize static analysis for development and deployment](/best-practices/optimize-static-analysis-for-development-and-deployment).
+
 ### When should I turn static analysis `off`?
 
 With baseline mode enabled by default, static analysis is less likely to block your runs. You should only disable it if the <Constant name="fusion_engine" /> cannot parse SQL that is valid for your database of choice.
