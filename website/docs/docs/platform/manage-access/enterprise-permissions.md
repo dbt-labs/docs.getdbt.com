@@ -79,13 +79,13 @@ Notable features:
 - Can access <Constant name="catalog" />.
 
 </Expandable>
-<Expandable alt_header="Analyst read" lifecycle="private_beta">
+<Expandable alt_header="Analyst read">
 
 The Analyst read permission set is a project-level set designed for users who need read-only access to analyze dbt models and project resources without the ability to develop or make changes.
 
 :::info Availability
 
-The OAuth integration that lets read-only users connect to analysis features (such as the [dbt MCP server](/docs/dbt-ai/about-mcp)) is available to use. The **Analyst read** permission set and the read-only permission changes described here are in **private beta**. To enable them, contact your account manager.
+The OAuth integration that lets read-only users connect to analysis features (such as the [dbt MCP server](/docs/dbt-ai/about-mcp)) is available to use.
 
 :::
 
