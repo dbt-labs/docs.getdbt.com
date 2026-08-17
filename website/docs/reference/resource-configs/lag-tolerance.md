@@ -71,7 +71,7 @@ When dbt State evaluates whether to rebuild a node, it compares:
 If the difference exceeds the configured `lag_tolerance`, dbt State rebuilds the node. Otherwise, it reuses the existing node rather than cloning or rebuilding it.
 
 
-This config accepts two value types:
+The `lag_tolerance` config accepts two value types:
 
 - **Duration strings** in the format `<number><unit>`:
 
