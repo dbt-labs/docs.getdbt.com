@@ -146,7 +146,7 @@ Notable features:
 - Can set up and maintain environment variables and <Constant name="semantic_layer" /> configs.
 - Write access to data platform configurations within environments (credentials, warehouse, schema per environment) they have access to, including:
   - Editing profile configs for environments with write access (profile name, deployment credentials, schema, role, database, warehouse, and extended attributes)
-  - Creating new profiles for projects they have access to, including setting which connection the profile is assocaited with
+  - Creating new profiles for projects they have access to, including setting which connection the profile is associated with
 - Helpful for scenarios where your data warehouse admins only need access to <Constant name="dbt" /> to configure data platform settings within environments.
 - Read-only access to account-level connections, Git repo, job, and run settings. 
 - Can access <Constant name="catalog" />.
