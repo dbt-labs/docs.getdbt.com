@@ -182,13 +182,13 @@ Some permissions (those that don't grant full access, like admins) allow groups 
 
 <Lightbox src="/img/docs/dbt-platform/dbt-platform-enterprise/access-control/environment-access-control.png" width="60%" title="Example environment access control for a group with Git admin assigned." />
 
-### Set up read-only user access <Lifecycle status="private_beta" />
+### Set up read-only user access
 
 To give users read-only access to analyze dbt models and project resources, assign them the [Analyst read](/docs/platform/manage-access/enterprise-permissions#analyst-read) permission set through a group. Users won't have access until they're added to a group that's assigned the permission set.
 
 :::info Availability
 
-The OAuth integration that lets read-only users connect to analysis features (such as the [dbt MCP server](/docs/dbt-ai/about-mcp)) is available to use. The **Analyst read** permission set and the read-only permission changes described here are in **private beta**. To enable it, contact your account manager.
+The OAuth integration that lets read-only users connect to analysis features (such as the [dbt MCP server](/docs/dbt-ai/about-mcp)) is available to use.
 
 :::
 
