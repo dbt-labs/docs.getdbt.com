@@ -39,6 +39,20 @@ export function useCopyPage({ pageUrl } = {}) {
     canonicalUrl = `https://docs.getdbt.com${window.location.pathname}${window.location.search}${window.location.hash}`;
   }
 
+  // Compute the stable `.md` URL for this page. The per-page .md files are
+  // generated at build time by @signalwire/docusaurus-plugin-llms-txt, served
+  // as a sibling of each doc route (e.g. /docs/foo -> /docs/foo.md).
+  let markdownUrl = '';
+  if (canonicalUrl) {
+    try {
+      const parsed = new URL(canonicalUrl);
+      const cleanPath = parsed.pathname.replace(/\/$/, '');
+      markdownUrl = `${parsed.origin}${cleanPath}.md`;
+    } catch (e) {
+      markdownUrl = '';
+    }
+  }
+
   // Compute LLM service URLs with the current page URL
   const llmServicesWithUrls = Object.entries(LLM_SERVICES).reduce((acc, [key, service]) => {
     const encodedUrl = encodeURIComponent(canonicalUrl);
@@ -167,6 +181,7 @@ export function useCopyPage({ pageUrl } = {}) {
     copySuccess,
     error,
     rawMarkdownContent,
+    markdownUrl,
     llmServices: llmServicesWithUrls,
 
     // Refs
