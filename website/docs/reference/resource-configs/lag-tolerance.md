@@ -140,7 +140,7 @@ To rebuild a node whenever its upstream data changes, set:
 state:
   lag_tolerance: 0s
 ```
-
+The following diagram shows how dbt State compares these timestamps to decide whether to reuse or rebuild a node:
 <Lightbox src="/img/reference/lag-tolerance-diagram.png" title="How dbt State compares parent and model data dates against lag_tolerance" width="100%" />
 
 dbt State compares the upstream timestamp recorded when the node was last built with the latest upstream timestamp. The time at which dbt State performs the check doesn't affect the calculation.
