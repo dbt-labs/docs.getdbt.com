@@ -4,7 +4,7 @@ Looking for a good place to get involved contributing code? dbt Labs supports th
 
 ## Rust
 
-- [<Constant name="core_v2" />](https://github.com/dbt-labs/dbt-core) - the next major version of dbt Core, powered by the <Constant name="fusion_engine" /> (previously located at in [`dbt-fusion`](https://github.com/dbt-labs/dbt-fusion))
+- [<Constant name="core_v2" />](https://github.com/dbt-labs/dbt-core) - the next major version of dbt Core, powered by the <Constant name="fusion_engine" /> (previously in [`dbt-fusion`](https://github.com/dbt-labs/dbt-fusion))
 
 ## Python
 
@@ -13,7 +13,7 @@ Looking for a good place to get involved contributing code? dbt Labs supports th
 
 ## dbt
 
-- [dbt Labs' packages](https://hub.getdbt.com/dbt-labs/) - the dbt pacakges created and supported by dbt Labs. Packages are just dbt projects, so if you know the SQL, Jinja, and YAML necessary to work in dbt, you can contribute to packages.
+- [dbt Labs' packages](https://hub.getdbt.com/dbt-labs/) - the dbt packages created and supported by dbt Labs. Packages are just dbt projects, so if you know the SQL, Jinja, and YAML necessary to work in dbt, you can contribute to packages.
 
 ## YAML and JSON Config
 

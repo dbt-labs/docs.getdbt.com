@@ -72,7 +72,7 @@ dbt Core 2.0 is developed in the open. To contribute, refer to the [`dbt-core` r
 
 ## License
 
-dbt Core 2.0 is licensed under Apache 2.0. Refer to the [LICENSE file](https://github.com/dbt-labs/dbt-core/blob/HEAD/License.md) in the repository. Refer to [dbt licensing](/docs/dbt-licensing?version=2.0) for more info.
+dbt Core 2.0 is licensed under Apache 2.0. Refer to the [LICENSE file](https://github.com/dbt-labs/dbt-core/blob/HEAD/LICENSE) in the repository. Refer to [dbt licensing](/docs/dbt-licensing?version=2.0) for more info.
 
 ## Related
 

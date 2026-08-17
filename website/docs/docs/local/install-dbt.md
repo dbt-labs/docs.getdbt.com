@@ -266,7 +266,7 @@ If the pre-made images don't fit your use case, use the [`Dockerfile`](https://g
 Install from source to get unreleased code or a specific commit. Clone the repo and install with `pip`:
 
 ```shell
-git clone https://github.com/dbt-labs/dbt-core.git
+git clone -b 1.latest https://github.com/dbt-labs/dbt-core.git
 cd dbt-core
 python -m pip install -r requirements.txt
 ```
@@ -289,7 +289,7 @@ python -m pip install .
 
 For editable mode: `python -m pip install -e .`
 
-For more details, read the [contributing guidelines](https://github.com/dbt-labs/dbt-core/blob/HEAD/CONTRIBUTING.md).
+For more details, read the [contributing guidelines](https://github.com/dbt-labs/dbt-core/blob/1.latest/CONTRIBUTING.md).
 
 </Expandable>
 

@@ -22,6 +22,18 @@ Release notes are grouped by date for single-tenant environments.
 
 <span><img src="/img/fontawesome/rss.svg" alt="RSS" className="rss-icon" />Subscribe to release note updates via [RSS](/feeds/release-notes-st-rss.xml), [Atom](/feeds/release-notes-st-atom.xml), or [JSON Feed](/feeds/release-notes-st-rss.json).</span>
 
+## August 12, 2026
+
+## Enhancements
+
+### dbt AI and agents
+
+- **Auto-expanding Wizard chat input**: The Wizard chat input grows vertically as you type or paste text, and shrinks back when content is removed.
+
+### APIs, Identity, and Administration
+
+- **Job read access is now included in the `account:read` OAuth scope**: Applications authorized with `account:read` can now read job data without also requesting the `jobs:run` scope.
+
 ## August 5, 2026
 
 ## New
