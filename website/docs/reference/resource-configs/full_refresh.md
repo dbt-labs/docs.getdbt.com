@@ -72,7 +72,7 @@ You can set the `full_refresh` config in the `dbt_project.yml` file or in a reso
 
 :::info Snapshots are excluded from full refresh
 
-The `full_refresh` config and the `--full-refresh` flag only apply to models and seeds. [Snapshots](/docs/build/snapshots) are ignored completely: running a command such as `dbt build --full-refresh` that includes a snapshot node will _not_ drop, wipe, or delete snapshot history. Snapshot data is always preserved.
+The `full_refresh` config and the `--full-refresh` flag only apply to incremental models and seeds. [Snapshots](/docs/build/snapshots) still run as normal, but they ignore `--full-refresh`: running a command such as `dbt build --full-refresh` that includes a snapshot node will not drop or recreate the snapshot table, so existing snapshot history is preserved.
 
 :::
 
