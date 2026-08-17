@@ -49,13 +49,13 @@ The following configurations are supported.
 
 For more information, check out the Snowflake reference for [`CREATE ICEBERG TABLE` (Snowflake as the catalog)](https://docs.snowflake.com/en/sql-reference/sql/create-iceberg-table-snowflake).
 
-| Parameter | Type   | Required | Description   | Sample input | Note   |
-| ------ | ----- | -------- | ------------- | ------------ | ------ |
-| `table_format` | String | Yes     | Configures the objects table format.  | `iceberg`  | `iceberg` is the only accepted value.    |
-| `external_volume` | String | Yes(*)   | Specifies the identifier (name) of the external volume where Snowflake writes the Iceberg table's metadata and data files. | `my_s3_bucket`            | *You don't need to specify this if the account, database, or schema already has an associated external volume. [More info](https://docs.snowflake.com/user-guide/tables-iceberg-configure-external-volume#set-a-default-external-volume-at-the-account-database-or-schema-level) |
-| `base_location_root` | String  | No  | If provided, the input overrides the default dbt base_location value of `_dbt` |
-| `base_location_subpath` | String | No       | An optional suffix to add to the `base_location` path that dbt automatically specifies.     | `jaffle_marketing_folder` | We recommend that you don't specify this. Modifying this parameter results in a new Iceberg table. See [Base Location](#base-location) for more info.                                                                                              |
-| `iceberg_version` | Integer | No | Specifies the Iceberg format version for the table. Defaults to `2`. Cannot be changed after table creation. | `3` | Set to `3` for improved `VARIANT` type support and better incremental/snapshot performance through deletion vectors. |
+| Parameter | Type   | Required | Description                                                                                                                                                         | Sample input                                       | Note |
+| ------ | ----- |----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------| ---- |
+| `table_format` | String | Yes      | Configures the objects table format.                                                                                                                                | `iceberg`                                          | `iceberg` is the only accepted value.  |
+| `external_volume` | String | No       | Specifies the identifier (name) of the external volume where Snowflake writes the Iceberg table's metadata and data files. Defaults to `SNOWFLAKE_MANAGED_STORAGE`. | `my_s3_bucket`<br>`SNOWFLAKE_MANAGED_STORAGE` |  |
+| `base_location_root` | String  | No       | If provided, the input overrides the default dbt base_location value of `_dbt`                                                                                      |
+| `base_location_subpath` | String | No       | An optional suffix to add to the `base_location` path that dbt automatically specifies.                                                                             | `jaffle_marketing_folder`                          | We recommend that you don't specify this. Modifying this parameter results in a new Iceberg table. See [Base Location](#base-location) for more info.                                                                                            |
+| `iceberg_version` | Integer | No       | Specifies the Iceberg format version for the table. Defaults to `2`. Cannot be changed after table creation.                                                        | `3`                                                | Set to `3` for improved `VARIANT` type support and better incremental/snapshot performance through deletion vectors. |
 
 #### Extensible: Configure `horizon` catalog
 
@@ -272,7 +272,7 @@ These are the additional configurations, specific to Snowflake, that can be supp
 
 ### Base location 
 
-Snowflake's `CREATE ICEBERG TABLE` DDL requires that a `base_location` be provided. dbt defines this parameter on the user's behalf to streamline usage and enforce basic isolation of table data within the `EXTERNAL VOLUME`. The default behavior in dbt is to provide a `base_location` string of the form: `_dbt/{SCHEMA_NAME}/{MODEL_NAME}`. 
+Snowflake's `CREATE ICEBERG TABLE` DDL requires that a `base_location` be provided when using a custom external volume. dbt defines this parameter on the user's behalf to streamline usage and enforce basic isolation of table data within the `EXTERNAL VOLUME`. The default behavior in dbt is to provide a `base_location` string of the form: `_dbt/{SCHEMA_NAME}/{MODEL_NAME}`. When no external volume is provided or when `external_volume` is set to `SNOWFLAKE_MANAGED_STORAGE`, no `base_location` is required.
 
 We recommend using the default behavior, but if you need to customize the resulting `base_location`, you can configure the `base_location` with the model configuration fields `base_location_root` and `base_location_subpath`. <VersionBlock firstVersion="2.0"> `base_location_subpath` is only accepted in model configurations. </VersionBlock>
 
