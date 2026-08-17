@@ -19,8 +19,9 @@
 import { visit } from "unist-util-visit";
 import { CONSTANTS } from "../constants.js";
 
-// Matches <Constant name="x" /> or <Constant name='x'>, self-closing or not.
-const CONSTANT_IN_CODE_RE = /<Constant\s+name\s*=\s*["']([^"']+)["']\s*\/?>/g;
+// Matches <Constant name="x" /> and <Constant name="x"></Constant> (empty paired tag).
+const CONSTANT_IN_CODE_RE =
+  /<Constant\s+name\s*=\s*["']([^"']+)["']\s*(?:\/\s*>|>\s*<\/Constant\s*>)/g;
 
 export default function remarkConstantsInCode() {
   return (tree) => {
