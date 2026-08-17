@@ -49,7 +49,7 @@ There are three primary ways to contribute to the dbt projects. We’ll use <Con
 #### Get started
 
 - Read the <Constant name="core" /> [contribution guide](https://github.com/dbt-labs/dbt-core/blob/main/CONTRIBUTING.md) and the [Contributor Expectations](/community/resources/contributor-expectations).
-- If contributing to `dbt-core`, find an issue labeled “[good first issue](https://github.com/dbt-labs/dbt-fusion/issues?q=is%3Aopen+is%3Aissue+label%3Agood_first_issue)”, or look for similar labels on other repositories. If in doubt, also feel free to ask the maintainers for a good first issue, they’ll be excited to welcome you!
+- If contributing to `dbt-core`, find an issue labeled “[good first issue](https://github.com/dbt-labs/dbt-core/issues?q=is%3Aopen+is%3Aissue+label%3A%22type%3Agood-first-issue%22)”, or look for similar labels on other repositories. If in doubt, also feel free to ask the maintainers for a good first issue, they’ll be excited to welcome you!
 
 #### Need help?
 
