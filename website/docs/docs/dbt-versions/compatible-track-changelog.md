@@ -28,6 +28,7 @@ dbt-common==1.38.0
 dbt-extractor==0.6.0
 dbt-semantic-interfaces==0.9.0
 dbt-sl-sdk[sync]==0.13.4
+dbt-state==2.42.0
 
 # adapters
 dbt-athena==1.11.0
@@ -47,6 +48,7 @@ Changelogs:
 - [dbt-core 1.12.0](https://github.com/dbt-labs/dbt-core/blob/1.12.latest/CHANGELOG.md)
 - [dbt-adapters 1.24.5](https://github.com/dbt-labs/dbt-adapters/blob/main/dbt-adapters/CHANGELOG.md)
 - [dbt-common 1.38.0](https://github.com/dbt-labs/dbt-common/blob/main/CHANGELOG.md)
+- [dbt-state 2.42.0](https://github.com/dbt-labs/dbt-state)
 - [dbt-athena 1.11.0](https://github.com/dbt-labs/dbt-adapters/blob/stable/dbt-athena/CHANGELOG.md)
 - [dbt-bigquery 1.12.0](https://github.com/dbt-labs/dbt-adapters/blob/stable/dbt-bigquery/CHANGELOG.md)
 - [dbt-databricks 1.12.4](https://github.com/databricks/dbt-databricks/blob/main/CHANGELOG.md)
