@@ -57,12 +57,19 @@ models:
 
 Source systems may update more frequently than downstream models need to rebuild. For example, a model used for daily reporting doesn't need to refresh more than once per day, even if new upstream data is available hourly.
 
-`lag_tolerance` lets you define how much time must pass since the last upstream data change before dbt triggers a rebuild. This acts as a compute-saving buffer that helps you stay aligned with data freshness [Service Level Agreements (SLAs)](https://www.getdbt.com/blog/data-slas-best-practices) without unnecessary rebuilds. It supports two key scenarios:
+`lag_tolerance` defines how far upstream data can advance beyond the data already incorporated into a node before dbt State triggers a rebuild. This acts as a compute-saving buffer that helps you stay aligned with data freshness [Service Level Agreements (SLAs)](https://www.getdbt.com/blog/data-slas-best-practices) without unnecessary rebuilds. It supports two key scenarios:
 
 - **Aligning builds with SLA requirements**: `lag_tolerance` allows you to align model execution directly with data freshness SLA requirements, decoupling high-frequency upstream changes from downstream models that operate under wider, less demanding freshness requirements.
 - **Protecting compute during upstream SLA breaches**: `lag_tolerance` protects your compute budget during freshness SLA breaches, preventing costly downstream rebuilds on static data when an upstream dependency fails its freshness SLA.
 
-When dbt State evaluates whether to rebuild a node, it checks whether upstream parents have fresh data that exceeds the `lag_tolerance` threshold. If they haven't, dbt reuses the existing node rather than cloning or rebuilding it.
+When dbt State evaluates whether to rebuild a node, it compares:
+
+1. The latest upstream modification timestamp recorded when the node was last built.
+2. The current latest upstream modification timestamp.
+3. The difference between those two timestamps.
+
+If the difference exceeds the configured `lag_tolerance`, dbt State rebuilds the node. Otherwise, it reuses the existing node rather than cloning or rebuilding it.
+
 
 This config accepts two value types:
 
@@ -85,6 +92,58 @@ This config accepts two value types:
   ```yaml
   lag_tolerance: "{{ '4h' if target.name == 'prod' else '7d' }}"
   ```
+
+### How `lag_tolerance` is calculated
+dbt State calculates lag by comparing two upstream data timestamps:
+
+1. The upstream timestamp recorded when the node was last built.
+2. The latest upstream timestamp available during the current invocation.
+
+The calculation is:
+
+```text
+latest upstream timestamp - upstream timestamp recorded at the last build
+```
+
+If the difference exceeds `lag_tolerance`, dbt State rebuilds the node. Otherwise, it reuses the existing node.
+
+:::important
+
+`lag_tolerance` measures the difference between upstream data timestamps. It doesm't measure how long unprocessed data has been waiting or how much time has passed since the last dbt invocation.
+
+Waiting longer without receiving additional upstream data doesn't increase the calculated lag.
+
+:::
+
+#### Example
+
+Let's suppose you have a node that has a `lag_tolerance` of `45m`. The node was last built at `08:08`, when the source's latest timestamp was also `08:08`.
+
+<SimpleTable>
+
+| Time | What happens | Lag calculation | dbt State result |
+| --- | --- | --- | --- |
+| `08:08` | The node is built. The source timestamp recorded for this build is `08:08`. | Starting point | Build |
+| `08:33` | New data arrives in the source. | `08:33 - 08:08 = 25m` | No decision until the next dbt invocation |
+| `09:08` | dbt State checks the source. Its latest timestamp is still `08:33`. | `08:33 - 08:08 = 25m` | Reuse: 25 minutes doesn't exceed `45m` |
+| `10:08` | dbt State checks again. No additional source data has arrived. | `08:33 - 08:08 = 25m` | Reuse: the calculated lag is still 25 minutes |
+| `10:30` | More data arrives in the source. | `10:30 - 08:08 = 2h 22m` | No decision until the next dbt invocation |
+| `11:08` | dbt State checks the source. Its latest timestamp is now `10:30`. | `10:30 - 08:08 = 2h 22m` | Rebuild: the difference exceeds `45m` |
+
+</SimpleTable>
+
+Even though more than 45 minutes passed between the source update at `08:33` and the checks at `09:08` and `10:08`, the calculated lag remained 25 minutes. The node became eligible to rebuild only after the source timestamp advanced far enough beyond the `08:08` timestamp recorded during the last build.
+
+To rebuild a node whenever its upstream data changes, set:
+
+```yaml
+state:
+  lag_tolerance: 0s
+```
+
+<Lightbox src="/img/reference/lag-tolerance-diagram.png" title="How dbt State compares parent and model data dates against lag_tolerance" width="100%" />
+
+dbt State compares the upstream timestamp recorded when the node was last built with the latest upstream timestamp. The time at which dbt State performs the check doesn't affect the calculation.
 
 ### When does `lag_tolerance` apply
 
@@ -142,6 +201,7 @@ models:
 </File>
 
 In this example, models in the `prod` target rebuild only when upstream data is more than 4 hours old. In all other environments, models wait 7 days before rebuilding.
+In this example, models in the `prod` target rebuild after their upstream data has advanced by more than 4 hours relative to the data incorporated during their last build. In all other environments, models rebuild after their upstream data has advanced by more than 7 days.
 
 ### Apply different tolerances per folder
 
