@@ -4,6 +4,8 @@ description: "Set the full_refresh config for models and other resources in dbt.
 datatype: boolean
 ---
 
+import SnapshotFullRefresh from '/snippets/_snapshot-full-refresh.md';
+
 The `full_refresh` config allows you to control whether a resource will always or never perform a full-refresh. This config overrides the `--full-refresh` command-line flag.
 
 <Tabs
@@ -70,11 +72,7 @@ You can set the `full_refresh` config in the `dbt_project.yml` file or in a reso
 | If set to `false` | The resource _never_ performs a full refresh, regardless of whether you pass the `--full-refresh` flag in the dbt command. |
 | If set to `none` or omitted | The resource follows the behavior of the `--full-refresh` flag. If the flag is used, the resource will perform a full refresh; otherwise, it will not. |
 
-:::info Snapshots are excluded from full refresh
-
-The `full_refresh` config and the `--full-refresh` flag only apply to incremental models and seeds. [Snapshots](/docs/build/snapshots) still run as normal, but they ignore `--full-refresh`: running a command such as `dbt build --full-refresh` that includes a snapshot node will not drop or recreate the snapshot table, so existing snapshot history is preserved.
-
-:::
+<SnapshotFullRefresh />
 
 #### Note
 - The `--full-refresh` flag also supports a short name, `-f`.
