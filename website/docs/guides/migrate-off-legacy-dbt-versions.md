@@ -11,7 +11,7 @@ level: 'Beginner'
 unlisted: true
 ---
 
-Legacy <Constant name="core" /> versions v1.3–v1.7 are being deprecated. To keep your work running and supported, move your environments and jobs to a [<Constant name="core" /> release track](/docs/dbt-versions/dbt-release-tracks) now. A release track keeps you on a supported version automatically and prepares your project for [<Constant name="fusion_engine" />](/docs/fusion/about-fusion) later.
+Legacy <Constant name="core" /> versions v1.3–v1.7 are being deprecated on January 31, 2027. To keep your work running and supported, move your environments and jobs to a [<Constant name="core" /> release track](/docs/dbt-versions/dbt-release-tracks) now. A release track keeps you on a supported version automatically and prepares your project for [<Constant name="fusion_engine" />](/docs/fusion/about-fusion) later.
 
 :::info The single-hop path
 
@@ -43,6 +43,8 @@ If you don't migrate a legacy environment or clear a legacy job, it's cleaned up
 
 ## Migrate an environment to a release track
 
+To update your environment to a release track:
+
 1. Navigate to the settings page of the environment, then click **Edit**.
 2. Click the **dbt version** dropdown and select a [release track](/docs/dbt-versions/dbt-release-tracks) (**Latest** is recommended).
 3. Save your changes.
@@ -59,7 +61,7 @@ If a job on a supported environment is pinned to a legacy version, clear or chan
 
 ## Delete a dormant environment
 
-If a legacy environment has been dormant for 12+ months and you no longer need it, delete it. (If you still need it, [migrate it to a release track](#migrate-an-environment-to-a-release-track) instead.)
+If a legacy environment has been dormant for a year or more, and you no longer need it, delete it. (If you still need it, [migrate it to a release track](#migrate-an-environment-to-a-release-track) instead.)
 
 import DeleteEnvironment from '/snippets/_delete-environment.md';
 
