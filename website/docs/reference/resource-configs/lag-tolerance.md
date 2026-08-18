@@ -99,7 +99,7 @@ dbt State calculates lag by comparing two upstream data timestamps:
 1. The upstream timestamp recorded when the node was last built.
 2. The latest upstream timestamp available during the current invocation.
 
-The calculation is:
+The best way to think about it is using the calculation:
 
 ```text
 latest upstream timestamp - upstream timestamp recorded at the last build
