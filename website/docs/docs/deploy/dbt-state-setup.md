@@ -127,7 +127,7 @@ To see how dbt State optimizes your runs, refer to [dbt State usage examples](/d
 
 ## Configuring lag tolerance
 
-Lag tolerance allows you to set a tolerance level for older data at the project, environment, or model level. If not configured, `lag_tolerance` defaults to `45m`. We recommend starting with the following Jinja expression:
+Lag tolerance sets how far upstream data can advance beyond the data from a node's last build before it's eligible for a rebuild. It compares source freshness now against source freshness at the last build — not wall-clock time. You can set it at the project, environment, or model level. If not configured, `lag_tolerance` defaults to `45m`. We recommend starting with the following Jinja expression:
 
 <File name="dbt_project.yml">
 
@@ -139,7 +139,7 @@ models:
 
 </File>
 
-In this example, models in the `prod` target rebuild only when upstream data is more than 4 hours old. In all other environments, models wait 7 days before rebuilding.
+In this example, models in the `prod` target rebuild after their upstream data has advanced by more than 4 hours relative to the data from their last build. In all other environments, models rebuild after their upstream data has advanced by more than 7 days.
 
 For more details, refer to the [`lag_tolerance` config reference](/reference/resource-configs/lag-tolerance).
 
