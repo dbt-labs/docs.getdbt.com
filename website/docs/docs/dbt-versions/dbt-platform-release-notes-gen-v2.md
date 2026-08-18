@@ -27,9 +27,6 @@ Release notes are grouped by date for single-tenant environments.
 - **Persistent console tab across sessions**: The console now defaults to the Wizard tab on fresh sessions (when available) and remembers your last-used console tab per project across sessions, so you return to the right context without manual switching.
   <!-- PRs: `https://github.com/dbt-labs/dbt-ui/pull/952` -->
 
-- **Configurable IDE linter preference**: A new `ide_linter` user preference lets you choose your preferred linter—sqlfmt, SQLFluff, or Fusion—replacing the previous on/off sqlfmt toggle.
-  <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pull/18676` -->
-
 ### Catalog
 
 - **Exact model relation name in the Discovery API**: A new `relationName` field on the `ModelAppliedStateNode` and `ModelAppliedStateNestedNode` GraphQL types exposes the fully-qualified, adapter-rendered relation name (for example, `"database"."schema"."model_name"`) from the last successful model build.
