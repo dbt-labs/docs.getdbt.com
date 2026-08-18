@@ -3,6 +3,7 @@ title: "Upgrading to v2"
 id: upgrading-to-v2
 description: New features and changes in v2
 displayed_sidebar: "docs"
+cta: dbt_core_v1_12_live
 availability:
   engine: v2
   access: free
