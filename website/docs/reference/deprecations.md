@@ -65,6 +65,8 @@ Some deprecations can be automatically fixed with a script. Read more about it i
 
 You can also run this same script directly from [<Constant name="studio_ide"/>](/docs/platform/studio-ide/autofix-deprecations) to resolve deprecation warnings in <Constant name="dbt_platform" />.
 
+<Lightbox src="/img/docs/dbt-platform/platform-ide/autofix-button.png" width="90%" title="Use autofix in the Studio IDE to address deprecation warnings in dbt platform."/>
+
 ### Silence deprecation warnings
 
 dbt Labs recommends fixing deprecation warnings rather than silencing them. If you need to temporarily reduce noise in logs, use `--warn-error-options` with the `silence` parameter. This works with any dbt command, including `dbt test` and `dbt parse`.
