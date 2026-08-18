@@ -48,6 +48,18 @@ Release notes are grouped by date for single-tenant environments.
   <!-- PRs: `https://github.com/dbt-labs/dbt-ui/pull/1100` -->
 
 
+## August 12, 2026
+
+## Enhancements
+
+### dbt Copilot and agents
+
+- **Auto-expanding Wizard chat input**: The Wizard chat input grows vertically as you type or paste text, and shrinks back when content is removed.
+
+### APIs, Identity, and Administration
+
+- **Job read access is now included in the `account:read` OAuth scope**: Applications authorized with `account:read` can now read job data without also requesting the `jobs:run` scope.
+
 ## August 5, 2026
 
 ## Enhancements
