@@ -29,7 +29,8 @@ To upgrade later, run `python -m pip install --upgrade --pre dbt`.
 <TabItem value="homebrew" label="Homebrew (macOS)">
 
 ```shell
-brew install dbt
+brew tap dbt-labs/dbt
+brew install dbt-labs/dbt/dbt
 ```
 
 To upgrade later, run `brew upgrade dbt`.
@@ -41,6 +42,8 @@ To upgrade later, run `brew upgrade dbt`.
 ```shell
 curl -fsSL https://public.cdn.getdbt.com/fs/install/install.sh | sh -s -- --update
 ```
+
+This installs the dbt binary to `~/.local/bin/dbt` and adds that directory to your `$PATH`. See [uninstalling a curl install](#faqs) if you ever need to remove it.
 
 Close and reopen your terminal (or run `exec $SHELL`) so the new `$PATH` is recognized. 
 
@@ -98,13 +101,39 @@ Common issues and resolutions:
 - **Version conflicts:** Check that no other <Constant name="core" /> or <Constant name="platform_cli" /> versions are installed or active on your machine.
 - **Installation permissions:** Make sure your user account can install software locally.
 
-## Frequently asked questions
+## FAQs
 
 - <Expandable alt_header="Can I revert to my previous dbt installation?">
     Yes. To test a new install without affecting your existing workflows, use a separate environment or virtual machine.
   </Expandable>
 - <Expandable alt_header="Can I download the Apache 2.0 runtime only?">
     Yes if you need to use the Apache 2.0 runtime, you can [install dbt Core 2.0](/docs/local/install-dbt-core-v2), the open-source project behind Fusion.
+  </Expandable>
+- <Expandable alt_header="How do I uninstall a curl (install.sh) install?">
+
+  These steps apply only if you installed <Constant name="fusion" /> with the curl (`install.sh`) script. If you used pip, Homebrew, or winget, remove <Constant name="dbt" /> with that tool instead (for example, `pip uninstall dbt` or `brew uninstall dbt`).
+
+  1. **Uninstall dbt.** Run the built-in uninstall command to clear cached files and state. This also removes the binary for you:
+
+     ```shell
+     dbt system uninstall
+     ```
+
+  2. **Clean up your shell profile.** The installer adds a `$PATH` export and a `dbtf` alias to `~/.zshrc` or `~/.bashrc`, each under its own comment. Open that file and delete these lines:
+
+     ```shell
+     # Added by dbt installer
+     export PATH="$PATH:$HOME/.local/bin"
+
+     # dbt aliases
+     alias dbtf=$HOME/.local/bin/dbt
+     ```
+
+     Then reload your profile:
+
+     ```shell
+     source ~/.zshrc   # or source ~/.bashrc
+     ```
   </Expandable>
 
 <AboutFusion />
@@ -237,7 +266,7 @@ If the pre-made images don't fit your use case, use the [`Dockerfile`](https://g
 Install from source to get unreleased code or a specific commit. Clone the repo and install with `pip`:
 
 ```shell
-git clone https://github.com/dbt-labs/dbt-core.git
+git clone -b 1.latest https://github.com/dbt-labs/dbt-core.git
 cd dbt-core
 python -m pip install -r requirements.txt
 ```
@@ -260,7 +289,7 @@ python -m pip install .
 
 For editable mode: `python -m pip install -e .`
 
-For more details, read the [contributing guidelines](https://github.com/dbt-labs/dbt-core/blob/HEAD/CONTRIBUTING.md).
+For more details, read the [contributing guidelines](https://github.com/dbt-labs/dbt-core/blob/1.latest/CONTRIBUTING.md).
 
 </Expandable>
 
@@ -271,6 +300,21 @@ Most command-line tools, including dbt, support a `--help` flag that shows avail
 &mdash; `dbt run --help`: Shows available flags for the `run` command
 
 :::
+
+## FAQs
+- <Expandable alt_header="How do I uninstall dbt Core v1.x?">
+    Uninstall with the same tool you used to install:
+
+    ```shell
+    python -m pip uninstall dbt-core dbt-ADAPTER_NAME
+    ```
+    ```shell
+    brew uninstall dbt
+    ```
+
+    If `dbt --version` still finds a version after uninstalling, another install of <Constant name="core" /> or <Constant name="platform_cli" /> may exist elsewhere on your `$PATH` (for example, a global or pipx install alongside a virtual environment). Check `which dbt` to confirm which install is being used, then uninstall that one too.
+  
+  </Expandable>
 
 </VersionBlock>
 

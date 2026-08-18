@@ -57,7 +57,7 @@ Notes:
 1. Create a `catalogs.yml` at the top level of your dbt project. An example of Unity Catalog as the catalog:
 
 <Tabs defaultValue="new" values={[
-  { label: 'New spec', value: 'new' },
+  { label: 'New spec (beta)', value: 'new' },
   { label: 'Old spec', value: 'old' }
 ]}>
 <TabItem value="new">

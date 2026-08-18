@@ -3,6 +3,7 @@ title: "Upgrading to v2"
 id: upgrading-to-v2
 description: New features and changes in v2
 displayed_sidebar: "docs"
+cta: dbt_core_v1_12_live
 availability:
   engine: v2
   access: free
@@ -69,11 +70,11 @@ The most popular `dbt-labs` packages (`dbt_utils`, `audit_helper`, `dbt_external
 
 ### `dbt login`
 
-In <Constant name="dbt" /> v2, [`dbt login`](/reference/commands/login) enables browser-based authentication. It opens a browser window prompting you to sign in to your <Constant name="dbt_platform" /> account or create a free account.
+In <Constant name="dbt" /> v2, [`dbt login`](/reference/commands/login?version=2.0) enables browser-based authentication. It opens a browser window prompting you to sign in to your <Constant name="dbt_platform" /> account or create a free account.
 
-Run [`dbt login status`](/reference/commands/login#dbt-login-status) to view your current authentication status.
+Run [`dbt login status`](/reference/commands/login?version=2.0#dbt-login-status) to view your current authentication status.
 
-`dbt login` unlocks a broader set of features, such as advanced features in the [dbt VS Code extension](/docs/about-dbt-extension). For details, refer to [`dbt login`](/reference/commands/login).
+`dbt login` unlocks a broader set of features, such as advanced features in the [dbt VS Code extension](/docs/about-dbt-extension). For details, refer to [`dbt login`](/reference/commands/login?version=2.0).
 
 ### Changed functionality
 

@@ -39,18 +39,6 @@ on-run-start:
 
 Because the values of `flags` can differ across invocations, we strongly advise against using `flags` as an input to configurations or dependencies (`ref` + `source`) that dbt resolves [during parsing](/reference/parsing#known-limitations).
 
-### Common flag examples
-
-Use the `--target` flag to specify which target (environment) to use when running dbt commands. For example:
-
-```bash
-dbt run --target dev
-dbt run --target prod
-dbt build --target staging
-```
-
-The `--target` flag allows you to run the same dbt project against different environments without modifying your configuration files. Define the target in your `profiles.yml` file. Learn more about [connection profiles and targets](/docs/local/profiles.yml#understanding-targets-in-profiles).
-
 Use this table to compare all available flags and how to configure them across interfaces:
 
 - **<Constant name="dbt" /> CLI**: Indicates whether the flag is supported in the [<Constant name="dbt_platform" />-supported CLI](/docs/platform/dbt-cli-installation).
@@ -141,8 +129,8 @@ Use this table to compare all available flags and how to configure them across i
 | [populate_cache](/reference/global-configs/cache) | ✅ | boolean <br /> default: True | ✅ | `DBT_ENGINE_POPULATE_CACHE` | `--populate-cache` <br /> `--no-populate-cache` |
 | [print](/reference/global-configs/print-output#suppress-print-messages-in-stdout) | ❌ | boolean <br /> default: True | ❌ | `DBT_ENGINE_PRINT` | `--print` <br /> `--no-print` |
 | [printer_width](/reference/global-configs/print-output#printer-width) | ❌ | int <br /> default: 80 | ✅ | `DBT_ENGINE_PRINTER_WIDTH` | `--printer-width` |
-| [profile](/docs/core/connect-data-platform/connection-profiles#about-profiles) | ❌ | string <br /> default: None | ✅ (as top-level key) | `DBT_ENGINE_PROFILE`  | [`--profile`](/docs/core/connect-data-platform/connection-profiles#overriding-profiles-and-targets) |
-| [profiles_dir](/docs/core/connect-data-platform/connection-profiles#about-profiles) | ❌ | path <br /> default: None (current dir, then HOME dir) | ❌ | `DBT_ENGINE_PROFILES_DIR` | `--profiles-dir` |
+| [profile](/docs/local/connection-profiles#about-profiles) | ❌ | string <br /> default: None | ✅ (as top-level key) | `DBT_ENGINE_PROFILE`  | [`--profile`](/docs/local/connection-profiles#overriding-profiles-and-targets) |
+| [profiles_dir](/docs/local/connection-profiles#about-profiles) | ❌ | path <br /> default: None (current dir, then HOME dir) | ❌ | `DBT_ENGINE_PROFILES_DIR` | `--profiles-dir` |
 | [project_dir](/reference/dbt_project.yml) | ❌ | path <br /> default: (empty) | ❌ | `DBT_ENGINE_PROJECT_DIR` | `--project-dir` |
 | [quiet](/reference/global-configs/logs#suppress-non-error-logs-in-output) | ✅ | boolean <br /> default: False | ❌ | `DBT_ENGINE_QUIET` | `--quiet` |
 | [resource-type](/reference/global-configs/resource-type) (v1.8+) | ✅ | string <br /> default: None | ❌ | `DBT_ENGINE_RESOURCE_TYPES` <br></br> `DBT_ENGINE_EXCLUDE_RESOURCE_TYPES` | `--resource-type` <br></br> `--exclude-resource-type` |
@@ -154,7 +142,7 @@ Use this table to compare all available flags and how to configure them across i
 | [static_parser](/reference/global-configs/parsing#static-parser) | ❌ | boolean <br /> default: True | ✅ | `DBT_ENGINE_STATIC_PARSER` | `--static-parser` <br /> `--no-static-parser` |
 | [store_failures](/reference/resource-configs/store_failures) | ✅ | boolean <br /> default: False | ✅ (as resource config) | `DBT_ENGINE_STORE_FAILURES` | `--store-failures` <br /> `--no-store-failures` |
 | [target_path](/reference/global-configs/json-artifacts) | ❌ | path <br /> default: None (uses `target/`) | ❌ | `DBT_ENGINE_TARGET_PATH` | `--target-path` |
-| [target](/docs/core/connect-data-platform/connection-profiles#about-profiles) | ❌ | string <br /> default: None | ❌ | `DBT_ENGINE_TARGET` | [`--target`](/docs/core/connect-data-platform/connection-profiles#overriding-profiles-and-targets) |
+| [target](/docs/local/connection-profiles#about-profiles) | ❌ | string <br /> default: None | ❌ | `DBT_ENGINE_TARGET` | [`--target`](/docs/local/connection-profiles#overriding-profiles-and-targets) |
 | [use_colors_file](/reference/global-configs/logs#color) | ❌ | boolean <br /> default: True | ✅ | `DBT_ENGINE_USE_COLORS_FILE` | `--use-colors-file` <br /> `--no-use-colors-file` |
 | [use_colors](/reference/global-configs/print-output#print-color) | ❌ | boolean <br /> default: True | ✅ | `DBT_ENGINE_USE_COLORS` | `--use-colors` <br /> `--no-use-colors` |
 | [use_experimental_parser](/reference/global-configs/parsing#experimental-parser) | ❌ | boolean <br /> default: False | ✅ | `DBT_ENGINE_USE_EXPERIMENTAL_PARSER` | `--use-experimental-parser` <br /> `--no-use-experimental-parser` |
@@ -165,3 +153,15 @@ Use this table to compare all available flags and how to configure them across i
 | [write_json](/reference/global-configs/json-artifacts) | ✅ | boolean <br /> default: True | ✅ | `DBT_ENGINE_WRITE_JSON` | `--write-json` <br /> `--no-write-json` |
 
 </VersionBlock>
+
+### Common flag examples
+
+Use the `--target` flag to specify which target (environment) to use when running dbt commands. For example:
+
+```bash
+dbt run --target dev
+dbt run --target prod
+dbt build --target staging
+```
+
+The `--target` flag allows you to run the same dbt project against different environments without modifying your configuration files. Define the target in your `profiles.yml` file. Learn more about [connection profiles and targets](/docs/local/profiles.yml#understanding-targets-in-profiles).

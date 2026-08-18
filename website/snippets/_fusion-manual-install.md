@@ -62,7 +62,7 @@ dbt system update
 
 ```shell
 brew tap dbt-labs/dbt
-brew install dbt
+brew install dbt-labs/dbt/dbt
 ```
 
 To upgrade to a newer version:
