@@ -122,47 +122,13 @@ As of 1.8.1, the default host is `127.0.0.1`. For versions 1.8.0 and prior, the 
 
 <VersionBlock firstVersion="2.0">
 
-The <Constant name="fusion_engine" /> uses the `--write-catalog` flag instead of the `dbt docs generate` command for generating your [`catalog.json`](/reference/artifacts/catalog-json) file and hydrating metadata. When you use `dbt build --write-catalog`, you're using a flag that performs better because it's built for the Fusion engine. To see the latest metadata in <Constant name="catalog" />, run a job in <Constant name="dbt_platform" /> which uploads the metadata.
+With the <Constant name="fusion_engine" /> and <Constant name="core_v2" />, [dbt Docs v2](/docs/build/view-documentation#dbt-docs-v2) is the recommended way to generate and view your project's documentation. Use `dbt docs generate` to build the documentation site and `dbt docs serve` to preview it locally.
 
-## --write-catalog flag
-
-The `--write-catalog` flag generates the [`catalog.json`](/reference/artifacts/catalog-json) artifact, which contains metadata about the tables and <Term id="view">views</Term> produced by the models in your project. <Constant name="fusion" /> jobs running in <Constant name="dbt_platform" />, dbt automatically runs `write-catalog`, `build`, and `run`, and hydrates your Catalog, so you don't need to manually include it. You can use this flag with the following commands:
-
-- `dbt build`
-- `dbt run`
-- `dbt parse`
-- `dbt compile`
-
-**Examples**:
-
-```shell
-dbt build --write-catalog
-```
-
-
-### Platform behavior
-
-In <Constant name="dbt_platform" /> jobs running on <Constant name="fusion" />, you don't need to change anything. When `dbt docs generate` is called (either as a job step or separate command), the platform automatically uses `--write-catalog` instead. Additionally, for <Constant name="fusion" /> jobs running in the platform, dbt will run `write-catalog` automatically with `build` or `run`, so you don't need to run a separate command to hydrate your metadata. In the platform, you can optionally choose to include it when running `dbt parse` or `dbt compile`.
-
-Note:
-
-### Local usage
-
-When running <Constant name="fusion" /> locally, add the `--write-catalog` flag to your command to generate the catalog:
-
-```shell
-dbt build --write-catalog
-```
-
-### What's different from docs generate
-
-The `--write-catalog` flag focuses solely on metadata hydration, generating the `catalog.json` file that powers [Catalog](/docs/explore/build-and-view-your-docs) and metadata APIs. It does not generate the static documentation website files (`index.html`).
+If you only need to hydrate catalog metadata (`catalog.json`) for <Constant name="catalog" /> in <Constant name="dbt_platform" />, without building the documentation site, use the [`--write-catalog` flag](#--write-catalog-flag) instead.
 
 ## dbt Docs v2 <Lifecycle status="beta"/>
 
-The <Constant name="fusion_engine" /> and <Constant name="core_v2" /> deliver a new version of `dbt docs` that powers [dbt Docs v2](/docs/build/view-documentation#dbt-docs-v2).
-
-Instead of loading a static `manifest.json` in the browser, v2 builds a compact binary index of your project. `dbt docs generate` exports a documentation site made of plain static files — a single-page app plus the index artifacts — that any file host can serve. The browser reads those artifacts directly using DuckDB-WASM, so you don't need to run a stateful server to view your docs. This keeps the experience fast even for large projects.
+Instead of loading a static `manifest.json` in the browser, v2 builds a compact binary index of your project. `dbt docs generate` exports a documentation site made of plain static files (a single-page app plus the index artifacts) that any file host can serve. The browser reads those artifacts directly using DuckDB-WASM, so you don't need to run a stateful server to view your docs. This keeps the experience fast even for large projects.
 
 ### Generate the site
 
@@ -222,5 +188,38 @@ Because the generated site is a set of static files, you can also host it on any
 ### Project overview page
 
 dbt Docs v2 renders your project's `__overview__` doc block as the landing page, the same as dbt Docs v1. dbt discovers overview content by scanning your `docs-paths` for `{% docs %}` blocks, so a block in `models/overview.md` is found by default. A file at `docs/overview.md` is only picked up when your project sets `docs-paths: ["docs"]`. If your project defines no overview, dbt renders its default overview content.
+
+## --write-catalog flag
+
+The `--write-catalog` flag generates the [`catalog.json`](/reference/artifacts/catalog-json) artifact, which contains metadata about the tables and <Term id="view">views</Term> produced by the models in your project. It focuses solely on metadata hydration and does not build the documentation site — use [dbt Docs v2](#dbt-docs-v2) for that.
+
+For <Constant name="fusion" /> jobs running in <Constant name="dbt_platform" />, dbt automatically runs `write-catalog` with `build` and `run` and hydrates your Catalog, so you don't need to include it manually. You can use this flag with the following commands:
+
+- `dbt build`
+- `dbt run`
+- `dbt parse`
+- `dbt compile`
+
+**Example**:
+
+```shell
+dbt build --write-catalog
+```
+
+### Platform behavior
+
+In <Constant name="dbt_platform" /> jobs running on <Constant name="fusion" />, you don't need to change anything. When `dbt docs generate` is called (either as a job step or separate command), the platform automatically uses `--write-catalog` instead. Additionally, for <Constant name="fusion" /> jobs running in the platform, dbt runs `write-catalog` automatically with `build` or `run`, so you don't need to run a separate command to hydrate your metadata. In the platform, you can optionally choose to include it when running `dbt parse` or `dbt compile`.
+
+### Local usage
+
+When running <Constant name="fusion" /> locally, add the `--write-catalog` flag to your command to generate the catalog:
+
+```shell
+dbt build --write-catalog
+```
+
+### What's different from docs generate
+
+The `--write-catalog` flag focuses solely on metadata hydration, generating the `catalog.json` file that powers [Catalog](/docs/explore/build-and-view-your-docs) and metadata APIs. It does not generate the static documentation website files (`index.html`).
 
 </VersionBlock>
