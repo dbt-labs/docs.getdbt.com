@@ -9,6 +9,8 @@ availability:
   access: free
 ---
 
+# Upgrading to v2 <Lifecycle status="beta" />
+
 import FusionAdapters from '/snippets/_fusion-dwh.md';
 import FusionUpgradeSteps from '/snippets/_fusion-upgrade-steps.md';
 import FusionLifecycle from '/snippets/_fusion-lifecycle-callout.md';
