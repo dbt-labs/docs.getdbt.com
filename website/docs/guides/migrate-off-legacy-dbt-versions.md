@@ -8,7 +8,6 @@ hide_table_of_contents: true
 tags: ['Migration', 'dbt Core', 'dbt platform', 'Upgrade']
 keywords: ['legacy dbt version', 'release track', 'migrate dbt version', 'upgrade dbt version']
 level: 'Beginner'
-unlisted: true
 ---
 
 Legacy <Constant name="core" /> versions v1.3–v1.7 are being deprecated on January 31, 2027. To keep your work running and supported, move your environments and jobs to a [<Constant name="core" /> release track](/docs/dbt-versions/dbt-release-tracks) now. A release track keeps you on a supported version automatically and prepares your project for [<Constant name="fusion_engine" />](/docs/fusion/about-fusion) later.

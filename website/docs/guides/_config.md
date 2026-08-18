@@ -13,6 +13,7 @@ categories:
 
   - title: Foundations
     guides:
+      - migrate-off-legacy-dbt-versions
       - terminal-guide
       - clone-jaffle-shop
 
