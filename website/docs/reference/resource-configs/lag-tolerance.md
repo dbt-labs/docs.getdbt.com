@@ -62,7 +62,7 @@ Source systems may update more frequently than downstream models need to rebuild
 - **Aligning builds with SLA requirements**: `lag_tolerance` allows you to align model execution directly with data freshness SLA requirements, decoupling high-frequency upstream changes from downstream models that operate under wider, less demanding freshness requirements.
 - **Protecting compute during upstream SLA breaches**: `lag_tolerance` protects your compute budget during freshness SLA breaches, preventing costly downstream rebuilds on static data when an upstream dependency fails its freshness SLA.
 
-When dbt State decides whether to rebuild a node, it doesn't watch the clock — it watches how far the source data has moved on. It compares the source's freshness timestamp from the last time the node was actually built against the source's freshness timestamp right now. If that gap is bigger than your `lag_tolerance`, dbt rebuilds the node. If not, it reuses the node. See [How `lag_tolerance` is calculated](#how-lag_tolerance-is-calculated) for details.
+When dbt State decides whether to rebuild a node, it doesn't watch the clock &mdash; instead it watches how far the source data has moved on. It compares the source's freshness timestamp from the last time the node was actually built against the source's freshness timestamp right now. If that gap is bigger than your `lag_tolerance`, dbt rebuilds the node. If not, it reuses the node. See [How `lag_tolerance` is calculated](#how-lag_tolerance-is-calculated) for details.
 
 The `lag_tolerance` config accepts two value types:
 
@@ -87,7 +87,7 @@ The `lag_tolerance` config accepts two value types:
   ```
 
 ### How `lag_tolerance` is calculated
-dbt State compares two source data timestamps — not clock times:
+dbt State compares two source data timestamps, not clock times:
 
 <SimpleTable>
 
@@ -110,8 +110,8 @@ Only a rebuild writes the baseline (source freshness at last build). A run that 
 
 ```text
 run → check lag (source now − baseline)
-   ├─ ≤ lag_tolerance → reuse   → baseline unchanged
-   └─ > lag_tolerance → rebuild → baseline = source now
+   ├─ if lag is less than lag_tolerance → reuse   → baseline unchanged
+   └─ if lag is greater than lag_tolerance → rebuild → baseline = source now
 ```
 
 :::info `lag_tolerance` measures timestamp differences 
