@@ -137,7 +137,7 @@ The `persist_docs` config is supported on the most widely used dbt adapters:
 - BigQuery
 - Databricks 
 - Apache Spark
-- Starburst Galaxy (via `dbt-trino`)
+- Starburst Galaxy (`dbt-trino`)
 
 However, some databases limit where and how descriptions can be added to database objects. Those database adapters might not support `persist_docs`, or might offer only partial support.
 
