@@ -8,7 +8,7 @@ availability:
   access: login_required
 ---
 
-# Connect Snowflake <ProductCard text="Fusion compatible" />
+# Connect Snowflake <Lifecycle status="ga" /> <ProductCard text="Fusion compatible" />
 
 import SnowflakeColumn from '/snippets/_snowflake-column-size.md';
 
