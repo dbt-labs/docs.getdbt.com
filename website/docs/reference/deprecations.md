@@ -65,7 +65,7 @@ Some deprecations can be automatically fixed with a script. Read more about it i
 
 You can also run this same script directly from [<Constant name="studio_ide"/>](/docs/platform/studio-ide/autofix-deprecations) using the **Autofix warnings** button to resolve deprecation warnings in <Constant name="dbt_platform" />.
 
-<Lightbox src="/img/docs/dbt-platform/platform-ide/autofix-button.png" width="90%" title="Use autofix in the Studio IDE to address deprecation warnings in dbt platform."/>
+<Lightbox src="/img/docs/dbt-platform/platform-ide/autofix-button.png" width="90%" title="Use the Autofix warnings button in the Studio IDE to address deprecation warnings in dbt platform."/>
 
 ### Silence deprecation warnings
 
