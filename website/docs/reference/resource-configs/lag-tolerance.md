@@ -132,12 +132,12 @@ Each run, dbt reads the source's current freshness and compares it to the timest
 
 | Time | What happens | Lag (source now − source at last build) | dbt State result |
 | --- | --- | --- | --- |
-| `08:00` | The hourly job runs and builds the model. dbt records a source timestamp of `08:00`. | Starting point | Build |
+| `08:00` | The hourly job runs and builds the model. dbt records a source timestamp of `08:00`. | Starting point | Build: baseline set to `08:00` |
 | `08:30` | New data lands in the source. No job is running, so nothing is evaluated. | — | No run, no decision |
-| `09:00` | The job runs. The source's latest timestamp is `08:30`. | `08:30 − 08:00 = 30m` | Reuse: 30m doesn't exceed `45m` |
-| `10:00` | The job runs again. No new source data since `08:30`. | `08:30 − 08:00 = 30m` | Reuse: lag is still 30m |
+| `09:00` | The job runs. The source's latest timestamp is `08:30`. | `08:30 − 08:00 = 30m` | Reuse: 30m doesn't exceed `45m`, so baseline stays `08:00` |
+| `10:00` | The job runs again. No new source data since `08:30`. | `08:30 − 08:00 = 30m` | Reuse: lag still 30m, baseline stays `08:00` |
 | `10:30` | More data lands in the source. Still no job running. | — | No run, no decision |
-| `11:00` | The job runs. The source's latest timestamp is now `10:30`. | `10:30 − 08:00 = 2h 30m` | Rebuild: lag exceeds `45m` |
+| `11:00` | The job runs. The source's latest timestamp is now `10:30`. | `10:30 − 08:00 = 2h 30m` | Rebuild: lag exceeds `45m`, so baseline resets to `10:30` |
 
 </SimpleTable>
 
