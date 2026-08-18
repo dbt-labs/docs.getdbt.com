@@ -144,7 +144,9 @@ Database admins manage configurations between <Constant name="dbt" /> and the un
 Notable features: 
 - Database admin is a project-level set. 
 - Can set up and maintain environment variables and <Constant name="semantic_layer" /> configs.
-- Write access to data platform configurations within environments (credentials, warehouse, schema per environment).
+- Write access to data platform configurations within environments (credentials, warehouse, schema per environment), including:
+  - Editing [profile](/docs/platform/about-profiles) configs like profile name, deployment credentials, extended attributes, and connection overrides such as `schema`, `role`, `database`, and so on (fields vary by data platform).
+  - Creating new profiles for projects they have access to, including setting which connection the profile is associated with
 - Helpful for scenarios where your data warehouse admins only need access to <Constant name="dbt" /> to configure data platform settings within environments.
 - Read-only access to account-level connections, Git repo, job, and run settings. 
 - Can access <Constant name="catalog" />.

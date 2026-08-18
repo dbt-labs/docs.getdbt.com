@@ -2,7 +2,7 @@
   "_meta": {
     "platform": "duckdb",
     "platform_name": "DuckDB",
-    "count": 511
+    "count": 513
   },
   "functions": [
     {
@@ -261,6 +261,13 @@
       "name": "PRODUCT",
       "category": "aggregates",
       "docs_url": "https://duckdb.org/docs/current/sql/functions/aggregates#productarg",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "QUANTILE",
+      "category": "aggregates",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/aggregates#quantilex-pos",
       "preview_status": "GA",
       "fusion_typecheck": true
     },
@@ -3327,6 +3334,13 @@
       "name": "GETENV",
       "category": "utility",
       "docs_url": "https://duckdb.org/docs/current/sql/functions/utility#getenvvar",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "GETVARIABLE",
+      "category": "utility",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/utility#getvariablevariable_name",
       "preview_status": "GA",
       "fusion_typecheck": false
     },
