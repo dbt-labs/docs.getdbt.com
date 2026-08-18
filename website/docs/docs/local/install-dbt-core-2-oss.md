@@ -45,7 +45,7 @@ During beta, you must target either the pre-release version or an explicit pin. 
 
 Explicit pin:
 
-`python -m pip install dbt-core==2.0.0-beta.1`
+`python -m pip install dbt-core==2.0.0-b2`
 
 For adapter install details, refer to the [`dbt-core` repository](https://github.com/dbt-labs/dbt-core).
 
