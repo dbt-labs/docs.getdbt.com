@@ -107,9 +107,9 @@ latest upstream timestamp - upstream timestamp recorded at the last build
 
 If the difference exceeds `lag_tolerance`, dbt State rebuilds the node. Otherwise, it reuses the existing node.
 
-:::info `lag_tolerance measures timestamp differences 
+:::info `lag_tolerance` measures timestamp differences 
 
-`lag_tolerance` measures the difference between upstream data timestamps. It doesm't measure how long unprocessed data has been waiting or how much time has passed since the last dbt invocation.
+`lag_tolerance` measures the difference between upstream data timestamps. It doesn't measure how long unprocessed data has been waiting or how much time has passed since the last dbt invocation.
 
 Waiting longer without receiving additional upstream data doesn't increase the calculated lag.
 
