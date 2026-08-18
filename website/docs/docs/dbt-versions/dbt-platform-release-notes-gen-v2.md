@@ -18,6 +18,36 @@ unlisted: true
 Release notes are grouped by date for single-tenant environments.
 
 
+## August 19, 2026
+
+## Enhancements
+
+### Studio IDE
+
+- **Persistent console tab across sessions**: The console now defaults to the Wizard tab on fresh sessions (when available) and remembers your last-used console tab per project across sessions, so you return to the right context without manual switching.
+  <!-- PRs: `https://github.com/dbt-labs/dbt-ui/pull/952` -->
+
+- **Configurable IDE linter preference**: A new `ide_linter` user preference lets you choose your preferred linter—sqlfmt, SQLFluff, or Fusion—replacing the previous on/off sqlfmt toggle.
+  <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pull/18676` -->
+
+### dbt Copilot and agents
+
+- **More reliable Model Context Protocol app rendering**: Model Context Protocol (MCP) app panels now render reliably in enterprise environments where browser security extensions block cross-frame messages. Tool results are delivered via a same-origin registry, eliminating dropped results and timeout errors you may have seen previously.
+  <!-- PRs: `https://github.com/dbt-labs/dbt-ui/pull/1111`, `https://github.com/dbt-labs/dbt-ui/pull/1156` -->
+
+### Catalog
+
+- **Exact model relation name in the Discovery API**: A new `relationName` field on the `ModelAppliedStateNode` and `ModelAppliedStateNestedNode` GraphQL types exposes the fully-qualified, adapter-rendered relation name (for example, `"database"."schema"."model_name"`) from the last successful model build.
+  <!-- PRs: `https://github.com/dbt-labs/codex-api/pull/1490` -->
+
+## Behavior Changes
+
+### dbt platform
+
+- **Deprecated charting components removed**: The legacy viz package—including Chart, Plot, Legend, Axis, and related components—has been permanently removed from the shared component library. If any internal integrations relied on these components, they will need to migrate to supported alternatives.
+  <!-- PRs: `https://github.com/dbt-labs/dbt-ui/pull/1100` -->
+
+
 ## August 5, 2026
 
 ## Enhancements
