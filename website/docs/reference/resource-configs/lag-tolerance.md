@@ -106,6 +106,14 @@ lag = source freshness now − source freshness at last build
 
 If the lag exceeds `lag_tolerance`, dbt State rebuilds the node. Otherwise, it reuses the existing node.
 
+Only a rebuild writes the baseline (source freshness at last build). A run that reuses the node leaves it untouched, so the next run subtracts against the same baseline:
+
+```text
+run → check lag (source now − baseline)
+   ├─ ≤ lag_tolerance → reuse   → baseline unchanged
+   └─ > lag_tolerance → rebuild → baseline = source now
+```
+
 :::info `lag_tolerance` measures timestamp differences 
 
 `lag_tolerance` measures the difference between source data timestamps. It doesn't measure how long unprocessed data has been waiting or how much time has passed since the last dbt invocation.
