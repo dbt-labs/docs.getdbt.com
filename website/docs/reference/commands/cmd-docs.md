@@ -148,7 +148,7 @@ dbt docs generate --output-dir site
 
 This writes a `site/` directory (the app, hashed assets, and a copy of the index) that you can host on S3, GitHub Pages, Netlify, GitLab Pages, or any similar static file host.
 
-To skip compilation and export whatever index is already on disk, use `--no-compile`. This errors if no index exists:
+To skip compilation and export whatever index is already on disk, use `--no-compile`, which fails with an error if no index exists:
 
 ```shell
 dbt docs generate --no-compile
