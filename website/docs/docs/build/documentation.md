@@ -87,7 +87,7 @@ Before generating docs, save your YAML description updates for models, sources, 
 
 <VersionBlock firstVersion="2.0">
 
-Using the <Constant name="fusion_engine" />, dbt Docs v2 replaces the v1 static site with a modern, performant catalog. `dbt docs generate` writes a static site — a single-page app plus a compact binary index — that the browser queries directly with DuckDB-WASM, so you don't need a server to view it. To generate and serve documentation:
+Using the <Constant name="fusion_engine" />, dbt Docs v2 replaces the v1 static site with a modern, performant catalog. `dbt docs generate` compiles your project, produces the v2 Parquet artifacts, and writes a static site that the browser queries directly with DuckDB-WASM (WebAssembly), so you don't need a server to view it. To generate and serve documentation:
 
 1. Run `dbt docs generate` to compile your project, write the index, and export the documentation site in a single command.
 2. Run `dbt docs serve` to preview the site locally.

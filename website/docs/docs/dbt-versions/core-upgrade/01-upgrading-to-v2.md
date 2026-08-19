@@ -78,7 +78,7 @@ Run [`dbt login status`](/reference/commands/login?version=2.0#dbt-login-status)
 
 ### dbt Docs v2
 
-v2 introduces [dbt Docs v2](/docs/build/view-documentation#dbt-docs-v2), a faster, statically hostable documentation experience that replaces the v1 static site. `dbt docs generate` now compiles your project, writes a compact binary index, and exports a static site in a single command &mdash; you no longer run `--write-index` separately. `dbt docs serve` previews that site locally, and because the browser queries the index directly with DuckDB-WASM, you can also host the generated files on any static file host.
+v2 introduces [dbt Docs v2](/docs/build/view-documentation#dbt-docs-v2), a faster, statically hostable documentation experience that replaces the v1 static site. `dbt docs generate` compiles your project, produces the v2 Parquet artifacts, and exports a static site in a single command. `dbt docs serve` previews that site locally, and because the browser queries those artifacts directly with DuckDB-WASM (WebAssembly), you can also host the generated files on any static file host. You only need `--write-index` if you want to produce the artifacts from a separate `dbt compile` or `dbt build` command.
 
 To hydrate catalog metadata (`catalog.json`) for <Constant name="catalog" /> without building the site, use the [`--write-catalog` flag](/reference/commands/cmd-docs#--write-catalog-flag) instead.
 

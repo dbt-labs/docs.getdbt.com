@@ -56,10 +56,10 @@ Key improvements over dbt Docs:
 
 To generate and serve dbt Docs v2 with the <Constant name="fusion_engine" /> or <Constant name="core_v2" />, run `dbt docs generate` to build the site, then `dbt docs serve` to preview it locally. `dbt docs generate` compiles your project and writes the index for you in a single command.
 
-To include column-level lineage and richer column metadata, first build the index with [`--static-analysis strict`](https://docs.getdbt.com/docs/build/about-static-analysis?version=1.13), then export it:
+To include column-level lineage and richer column metadata, first produce the artifacts with [`--static-analysis strict`](https://docs.getdbt.com/docs/build/about-static-analysis?version=1.13) using `dbt compile` or `dbt build`, then export the site:
 
 ```shell
-dbt build --write-index --static-analysis strict
+dbt compile --write-index --static-analysis strict   # or: dbt build --write-index --static-analysis strict
 dbt docs generate --no-compile
 ```
 

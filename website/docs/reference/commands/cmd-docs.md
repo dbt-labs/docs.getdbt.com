@@ -128,7 +128,7 @@ If you only need to hydrate catalog metadata (`catalog.json`) for <Constant name
 
 ## dbt Docs v2 <Lifecycle status="beta"/>
 
-Instead of loading a static `manifest.json` in the browser, v2 builds a compact binary index of your project. `dbt docs generate` exports a documentation site made of plain static files (a single-page app plus the index artifacts) that any file host can serve. The browser reads those artifacts directly using DuckDB-WASM, so you don't need to run a stateful server to view your docs. This keeps the experience fast even for large projects.
+Instead of loading a static `manifest.json` in the browser, v2 produces Parquet artifacts when you compile or build your project. `dbt docs generate` exports a documentation site made of plain static files (a single-page app plus those artifacts) that any file host can serve. The browser reads the Parquet directly using DuckDB-WASM (WebAssembly), so you don't need to run a stateful server to view your docs. This keeps the experience fast even for large projects.
 
 ### Generate the site
 
@@ -210,7 +210,9 @@ dbt build --write-catalog
 
 ### Platform behavior
 
-In <Constant name="dbt_platform" /> jobs running on <Constant name="fusion" />, you don't need to change anything. When `dbt docs generate` is called (either as a job step or separate command), the platform automatically uses `--write-catalog` instead. Additionally, for <Constant name="fusion" /> jobs running in the platform, dbt runs `write-catalog` automatically with `build` or `run`, so you don't need to run a separate command to hydrate your metadata. In the platform, you can optionally choose to include it when running `dbt parse` or `dbt compile`.
+In <Constant name="dbt_platform" /> jobs running on <Constant name="fusion" />, you don't need to change anything to hydrate catalog metadata. dbt runs `write-catalog` automatically with `build` and `run`, so you don't need to run a separate command. You can optionally include it when running `dbt parse` or `dbt compile`.
+
+To produce the [dbt Docs v2](#dbt-docs-v2) static site in a job, run `dbt docs generate` as a job step or enable documentation generation in your job settings. Otherwise, the job hydrates catalog metadata but doesn't produce the static site.
 
 ### Local usage
 
