@@ -25,7 +25,7 @@ Release notes are grouped by date for single-tenant environments.
 ### Studio IDE
 
 - **Persistent console tab across sessions**: The console now defaults to the Wizard tab on fresh sessions (when available) and remembers your last-used console tab per project across sessions, so you return to the right context without manual switching.
-  <!-- PRs: `https://github.com/dbt-labs/dbt-ui/pull/952` -->
+  <!-- PRs: `https://github.com/dbt-labs/dbt-ui/pull/952` ✅-->
 
 ### Catalog
 
