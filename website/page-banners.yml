@@ -12,26 +12,6 @@
 #   open_in_new_tab (optional): open the link in a new tab.
 
 - paths:
-    - /docs/platform/wizard-overview
-    - /docs/dbt-ai/about-dbt-wizard-cli
-    - /docs/platform/wizard-platform
-    - /docs/dbt-ai/wizard-quickstart
-    - /docs/dbt-ai/wizard-how-it-works
-    - /docs/dbt-ai/about-dbt-ai
-    - /docs/dbt-ai/copilot-overview
-    - /docs/platform/enable-dbt-ai
-    - /guides/prompt-cookbook
-    - /docs/dbt-ai/about-mcp
-    - /docs/dbt-ai/integrate-mcp-claude
-    - /docs/dbt-ai/mcp-troubleshooting
-    - /docs/dbt-ai/wizard-skills
-    - /docs/dbt-ai/wizard-platform-skills
-    - /docs/dbt-ai/wizard-ide
-  text: "dbt Wizard: An agent purpose-built for analytics engineering. Join us virtually on July 22nd to see real demos in the CLI and dbt platform!"
-  link: "https://www.getdbt.com/resources/webinars/dbt-wizard-an-agent-purpose-built-for-analytics-engineering"
-  open_in_new_tab: true
-
-- paths:
     - /docs/deploy/dbt-state-about
     - /docs/deploy/dbt-state-setup
     - /docs/deploy/dbt-state-enable-jobs
