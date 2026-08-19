@@ -29,18 +29,25 @@ const products = [
     // List newest first; the first entry is treated as the current/latest track.
     // `stage` drives the lifecycle tag shown in the menu: "alpha" | "rc" | "beta" | "Preview"
     // (omit for a stable/GA release). Update as a version moves through its cycle.
-    subProducts: [
-      {
-        name: "dbt Core v1.12",
-        EOLDate: "2027-07-15",
-        version: "1.12",
-      },
-      {
-        name: "dbt Core v1.11",
-        EOLDate: "2026-12-18",
-        version: "1.11",
-      },
-    ],
+    get subProducts() {
+      const specific = [
+        {
+          name: "dbt Core v1.12",
+          EOLDate: "2027-07-15",
+          version: "1.12",
+        },
+        {
+          name: "dbt Core v1.11",
+          EOLDate: "2026-12-18",
+          version: "1.11",
+        },
+      ];
+      return [
+        // Group-level selection — always mirrors the latest specific entry above
+        { name: "v1", EOLDate: specific[0].EOLDate, version: specific[0].version },
+        ...specific,
+      ];
+    },
   },
 ];
 
@@ -108,19 +115,11 @@ exports.versionedPages = [
   { page: "docs/sign-in-dbt-extension", firstVersion: "2.0" },
   { page: "docs/configure-dbt-extension", firstVersion: "2.0" },
   { page: "reference/commands/login", firstVersion: "2.0" },
-  { page: "docs/dbt-extension-features", firstVersion: "2.0" },
-  { page: "docs/install-dbt-extension", firstVersion: "2.0" },
   { page: "docs/upgrade-to-fusion-extension", firstVersion: "2.0" },
-  { page: "docs/sign-in-dbt-extension", firstVersion: "2.0" },
-  { page: "docs/configure-dbt-extension", firstVersion: "2.0" },
   { page: "docs/fusion/about-fusion", firstVersion: "2.0" },
   { page: "docs/fusion/about-fusion-install", firstVersion: "2.0" },
   { page: "docs/fusion/adbc", firstVersion: "2.0" },
   { page: "docs/fusion/vs-compare-changes", firstVersion: "2.0" },
-  { page: "docs/fusion/get-started-fusion", firstVersion: "2.0" },
-  { page: "docs/fusion/fusion-availability", firstVersion: "2.0" },
-  { page: "docs/fusion/supported-features", firstVersion: "2.0" },
-  { page: "docs/fusion/fusion-releases", firstVersion: "2.0" },
   { page: "reference/telemetry-observability", firstVersion: "2.0" },
   { page: "docs/local/fusion-networking-requirements", firstVersion: "2.0" },
   { page: "docs/build/about-static-analysis", firstVersion: "2.0" },

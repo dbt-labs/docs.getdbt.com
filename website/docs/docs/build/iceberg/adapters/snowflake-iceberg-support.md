@@ -54,7 +54,7 @@ For more information, check out the Snowflake reference for [`CREATE ICEBERG TAB
 | `table_format` | String | Yes     | Configures the objects table format.  | `iceberg`  | `iceberg` is the only accepted value.    |
 | `external_volume` | String | Yes(*)   | Specifies the identifier (name) of the external volume where Snowflake writes the Iceberg table's metadata and data files. | `my_s3_bucket`            | *You don't need to specify this if the account, database, or schema already has an associated external volume. [More info](https://docs.snowflake.com/user-guide/tables-iceberg-configure-external-volume#set-a-default-external-volume-at-the-account-database-or-schema-level) |
 | `base_location_root` | String  | No  | If provided, the input overrides the default dbt base_location value of `_dbt` |
-| `base_location_subpath` | String | No       | An optional suffix to add to the `base_location` path that dbt automatically specifies.     | `jaffle_marketing_folder` | We recommend that you don't specify this. Modifying this parameter results in a new Iceberg table. See [Base Location](#base-location) for more info.                                                                                                  |
+| `base_location_subpath` | String | No       | An optional suffix to add to the `base_location` path that dbt automatically specifies.     | `jaffle_marketing_folder` | We recommend that you don't specify this. Modifying this parameter results in a new Iceberg table. See [Base Location](#base-location) for more info.                                                                                              |
 | `iceberg_version` | Integer | No | Specifies the Iceberg format version for the table. Defaults to `2`. Cannot be changed after table creation. | `3` | Set to `3` for improved `VARIANT` type support and better incremental/snapshot performance through deletion vectors. |
 
 #### Extensible: Configure `horizon` catalog
@@ -62,7 +62,7 @@ For more information, check out the Snowflake reference for [`CREATE ICEBERG TAB
 First, configure a catalog with `type: horizon` in `catalogs.yml`:
 
 <Tabs defaultValue="new" values={[
-  { label: 'New spec', value: 'new' },
+  { label: 'New spec (beta)', value: 'new' },
   { label: 'Old spec', value: 'old' }
 ]}>
 <TabItem value="new">
@@ -151,7 +151,7 @@ After you create the external catalog integration, you can do two things:
 Now, we can configure that external catalog in `catalogs.yml`. Here is an example for an AWS Glue catalog:
 
 <Tabs defaultValue="new" values={[
-  { label: 'New spec', value: 'new' },
+  { label: 'New spec (beta)', value: 'new' },
   { label: 'Old spec', value: 'old' }
 ]}>
 <TabItem value="new">
@@ -202,6 +202,8 @@ These are the additional configurations, specific to Snowflake, that can be supp
 
 #### Snowflake-managed (Horizon)
 
+<VersionBlock lastVersion="1.11">
+
 | Field | Required | Accepted values |
 | --- | --- | --- |
 | `change_tracking` | Optional | `True` or `False`    |
@@ -210,11 +212,26 @@ These are the additional configurations, specific to Snowflake, that can be supp
 | `storage_serialization_policy` | Optional | `COMPATIBLE` or `OPTIMIZED`     |
 | `base_location_root` | Optional | Relative path segment (for example, `'subpath1/subpath2'`) |
 | `base_location_subpath` | Optional | Relative path segment (for example, `'subpath1/subpath2'`), only configurable per-model |
+
+</VersionBlock>
+
 <VersionBlock firstVersion="1.12">
+
+| Field | Required | Accepted values |
+| --- | --- | --- |
+| `change_tracking` | Optional | `True` or `False`    |
+| `data_retention_time_in_days` | Optional | Standard Account: `1`, Enterprise or higher: `0` to `90`, default `1`  |
+| `max_data_extension_time_in_days` | Optional |  `0` to `90` with a default of `14`  |
+| `storage_serialization_policy` | Optional | `COMPATIBLE` or `OPTIMIZED`     |
+| `base_location_root` | Optional | Relative path segment (for example, `'subpath1/subpath2'`) |
+| `base_location_subpath` | Optional | Relative path segment (for example, `'subpath1/subpath2'`), only configurable per-model |
 | `iceberg_version` (v1.12+) | Optional | `2` (default) or `3` |
+
 </VersionBlock>
 
 #### External catalogs
+
+<VersionBlock lastVersion="1.11">
 
 | Field | Required | Accepted values |
 | --- | --- | --- |
@@ -223,8 +240,20 @@ These are the additional configurations, specific to Snowflake, that can be supp
 | `catalog_linked_database_type` | Optional | Catalog-linked database type. For example, `glue`  |
 | `max_data_extension_time_in_days` | Optional |  `0` to `90` (default: `14`)  |
 | `target_file_size` | Optional | Values like `'AUTO'`, `'16MB'`, `'32MB'`, `'64MB'`, `'128MB'`. Case-insensitive  |
+
+</VersionBlock>
+
 <VersionBlock firstVersion="1.12">
+
+| Field | Required | Accepted values |
+| --- | --- | --- |
+| `auto_refresh` | Optional | `True` or `False`    |
+| `catalog_linked_database` | Required for `catalog type: iceberg_rest` | Catalog-linked database name   |
+| `catalog_linked_database_type` | Optional | Catalog-linked database type. For example, `glue`  |
+| `max_data_extension_time_in_days` | Optional |  `0` to `90` (default: `14`)  |
+| `target_file_size` | Optional | Values like `'AUTO'`, `'16MB'`, `'32MB'`, `'64MB'`, `'128MB'`. Case-insensitive  |
 | `iceberg_version` (v1.12+) | Optional | `2` (default) or `3` |
+
 </VersionBlock>
 
 -  **storage_serialization_policy:** The serialization policy tells Snowflake what kind of encoding and compression to perform on the table data files. If not specified at table creation, the table inherits the value set at the schema, database, or account level. If the value isn’t specified at any level, the table uses the default value. You can’t change the value of this parameter after table creation.
