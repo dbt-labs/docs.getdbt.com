@@ -234,7 +234,7 @@ Server error! There was a server error. Please try again, or contact support@get
 
 This typically happens when Microsoft Entra ID can't find a SAML signing certificate configured for the application. The underlying error (`AADSTS500031: Cannot find signing certificate configured`) isn't surfaced to the user.
 
-To confirm this is the cause, check your Entra ID **Enterprise Application → Sign-in logs** and filter by "Failure" status. If you see the AADSTS500031 error there, resolve it by going to **Enterprise Application → Single sign-on → SAML Signing Certificate**, and add the missing certificate. If a certificate exists but is corrupted, create a new certificate, set an expiration date, mark it **Active** to override the existing one, and then remove the unused certificate.
+To confirm this is the cause, check your Entra ID **Enterprise Applications → YOUR_APP → Sign-in logs** and filter by **Failure** status. If you see the AADSTS500031 error there, resolve it by going to **Enterprise Applications → YOUR_APP → Single sign-on → SAML Signing Certificate**, and add the missing certificate. If a certificate exists but is corrupted, create a new certificate, set an expiration date, mark it **Active** to override the existing one, and then remove the unused certificate.
 
 </Expandable>
 
