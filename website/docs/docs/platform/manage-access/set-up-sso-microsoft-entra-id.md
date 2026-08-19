@@ -225,6 +225,20 @@ Ensure that the domain name under which user accounts exist in Azure matches the
 
 </Expandable>
 
+<Expandable alt_header="Receiving a 'Server error' message after signing in">
+
+After completing the Entra ID login flow, users are redirected back to the dbt platform login page and see the following message:
+
+```
+Server error! There was a server error. Please try again, or contact support@getdbt.com if this persists.
+```
+
+This typically happens when Microsoft Entra ID can't find a SAML signing certificate configured for the application. The underlying error (`AADSTS500031: Cannot find signing certificate configured`) isn't surfaced to the user — it only appears in identity provider logs.
+
+To resolve this, go to your Entra ID **Enterprise Application → Single sign-on → SAML Signing Certificate**, and add the missing certificate. If a certificate exists but is corrupted, create a new certificate, set an expiration date, mark it **Active** to override the existing one, and then remove the unused certificate.
+
+</Expandable>
+
 For additional troubleshooting &mdash; including "Admin consent required" prompts for new users, "Access Denied" after SAML authentication, and issues with Entity ID or ACS URL changes &mdash; refer to [SSO FAQs and troubleshooting](/docs/platform/manage-access/sso-faq).
 
 ## Learn more by video
