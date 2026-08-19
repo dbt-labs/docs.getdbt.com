@@ -227,8 +227,7 @@ Ensure that the domain name under which user accounts exist in Azure matches the
 
 <Expandable alt_header="Receiving a 'Server error' message after signing in">
 
-After completing the Entra ID login flow, users are redirected back to the dbt platform login page and see the following message:
-
+After completing the Entra ID login flow, you're redirected back to the <Constant name="dbt_platform" /> login page and see the following message:
 ```
 Server error! There was a server error. Please try again, or contact support@getdbt.com if this persists.
 ```
