@@ -33,7 +33,7 @@ Most dbt commands (and corresponding RPC methods) produce artifacts:
 - [semantic manifest](/reference/artifacts/sl-manifest): produced whenever your dbt project is parsed
 <VersionBlock firstVersion="1.12">
 
-- [OSI document](/reference/artifacts/sl-manifest#osi-document): produced whenever your dbt project is parsed
+- [Apache Ossie document](/reference/artifacts/sl-manifest#apache-ossie-document): produced whenever your dbt project is parsed
 
 </VersionBlock>
 - [manifest](/reference/artifacts/manifest-json): produced by commands that read and understand your project

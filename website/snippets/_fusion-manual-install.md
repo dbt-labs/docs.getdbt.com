@@ -14,7 +14,7 @@ python -m pip install --upgrade --pre dbt
 
 </Expandable>
 
-<Expandable alt_header="CDN installation for macOS and Linux">
+<Expandable alt_header="Standalone installation for macOS and Linux">
 
 ```shell
 curl -fsSL https://public.cdn.getdbt.com/fs/install/install.sh | sh -s -- --update
@@ -38,7 +38,7 @@ dbt system update
 
 </Expandable>
 
-<Expandable alt_header="CDN installation for Windows">
+<Expandable alt_header="Standalone installation for Windows">
 
 ```powershell
 irm https://public.cdn.getdbt.com/fs/install/install.ps1 | iex
@@ -61,12 +61,14 @@ dbt system update
 <Expandable alt_header="Homebrew installation for macOS">
 
 ```shell
-brew install dbt
+brew tap dbt-labs/dbt
+brew install dbt-labs/dbt/dbt
 ```
 
 To upgrade to a newer version:
 
 ```shell
+brew tap dbt-labs/dbt
 brew upgrade dbt
 ```
 

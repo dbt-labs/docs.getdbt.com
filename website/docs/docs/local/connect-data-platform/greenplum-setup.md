@@ -15,6 +15,7 @@ meta:
   slack_channel_link: 'https://www.getdbt.com/community'
   platform_name: 'Greenplum'
   config_page: '/reference/resource-configs/greenplum-configs'
+availability: local_free
 ---
 
 

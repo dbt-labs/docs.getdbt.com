@@ -2,7 +2,7 @@
   "_meta": {
     "platform": "snowflake",
     "platform_name": "Snowflake",
-    "count": 941
+    "count": 945
   },
   "functions": [
     {
@@ -3401,6 +3401,13 @@
       "fusion_typecheck": true
     },
     {
+      "name": "ARRAY_CONSTRUCT_STRUCTURED",
+      "category": "Semi-structured and structured data",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/array_construct_structured",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "ARRAY_CONTAINS",
       "category": "Semi-structured and structured data",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/array_contains",
@@ -3772,6 +3779,13 @@
       "fusion_typecheck": true
     },
     {
+      "name": "MAP_CONSTRUCT",
+      "category": "Semi-structured and structured data",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/map_construct",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "MAP_CONTAINS_KEY",
       "category": "Semi-structured and structured data",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/map_contains_key",
@@ -3833,6 +3847,13 @@
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/object_construct_keep_null",
       "preview_status": "GA",
       "fusion_typecheck": true
+    },
+    {
+      "name": "OBJECT_CONSTRUCT_KEEP_NULL_STRUCTURED",
+      "category": "Semi-structured and structured data",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/object_construct_keep_null_structured",
+      "preview_status": "GA",
+      "fusion_typecheck": false
     },
     {
       "name": "OBJECT_DELETE",
@@ -5814,6 +5835,13 @@
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/system_query_reference",
       "preview_status": "GA",
       "fusion_typecheck": true
+    },
+    {
+      "name": "SYSTEM$READ_OSI_YAML_FROM_SEMANTIC_VIEW",
+      "category": "System",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/system_read_osi_yaml_from_semantic_view",
+      "preview_status": "GA",
+      "fusion_typecheck": false
     },
     {
       "name": "SYSTEM$READ_YAML_FROM_SEMANTIC_VIEW",

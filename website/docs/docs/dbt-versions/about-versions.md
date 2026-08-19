@@ -6,6 +6,7 @@ sidebar: "Available dbt versions"
 pagination_next: null
 pagination_prev: null
 hide_table_of_contents: true
+availability: all_users
 ---
 
 Whether you're using the CLI or working within the <Constant name="dbt_platform" />, your environments are aligned with a versioned release of dbt.
@@ -17,7 +18,11 @@ Whether you're using the CLI or working within the <Constant name="dbt_platform"
     body="Learn about semantic versioning for dbt engines, and how long those versions are supported."
     link="/docs/dbt-versions"
     icon="dbt-bit"/>
-
+<Card
+    title="Fusion version compatibility"
+    body="Learn about version compatibility between the dbt Fusion engine, LSP, and VS Code extension."
+    link="/docs/dbt-versions/fusion-version-compatibility"
+    icon="dbt-bit"/>
 <Card
     title="About release tracks"
     body="Learn about how versions of dbt align with the release tracks available on the dbt platform."

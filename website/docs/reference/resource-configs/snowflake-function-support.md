@@ -9,7 +9,7 @@ tags: ['Snowflake', 'dbt Fusion', 'static_analysis']
 import SnowflakeFunctionsTable from '/snippets/_functions-table-snowflake.md';
 
 
-<Constant name="fusion"/> can validate that your Snowflake function arguments match expected types directly in <Constant name="dbt_platform"/>, the CLI, or using dbt VS Code extension. To enable this, run `dbt login` and set [`static_analysis: strict`](/docs/fusion/new-concepts?version=2.0) in your project configuration.
+<Constant name="fusion"/> can validate that your Snowflake function arguments match expected types directly in <Constant name="dbt_platform"/>, the CLI, or using dbt VS Code extension. To enable this, run `dbt login` and set [`static_analysis: strict`](/docs/build/about-static-analysis?version=2.0) in your project configuration.
 
 The following table lists _every_ Snowflake built-in function and its typechecking support status. Use the table's search and filters to find specific functions.
 

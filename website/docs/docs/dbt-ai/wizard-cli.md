@@ -5,6 +5,7 @@ description: "Install, verify, update, and uninstall the dbt Wizard CLI on your 
 sidebar_label: "Install and update"
 tags: [AI, Wizard]
 image: /img/docs/wizard-cli-intro.png
+availability: local_all
 ---
 
 import WizardSupportedProviders from '/snippets/_wizard-supported-providers.md';
@@ -49,16 +50,26 @@ Run the following command to update <Constant name="wizard" /> to the latest ver
 wizard update
 ```
 
-<!--
-incorrect command and commenting out until correct command provided
 ## Uninstall
 
-Run the following command to uninstall <Constant name="wizard" />:
+1. Run the built-in uninstall command. It lists every binary, config, and data directory it's about to remove, then asks you to confirm (`Proceed? [Y/N]`) before deleting anything:
 
-```bash
-wizard system uninstall
-```
--->
+    ```shell
+    wizard system uninstall
+    ```
+
+:::info Uninstalling Wizard
+Removing `~/.dbt/wizard` deletes your local config, logs, and cache, and can't be undone. Your dbt profiles (`~/.dbt/`) and dbt projects aren't part of <Constant name="wizard" /> and won't be touched.
+:::
+
+2. Confirm the binary is deleted by checking your system path:
+
+    ```bash
+    which wizard
+    ```
+
+If no output path is returned, <Constant name="wizard" /> is successfully uninstalled.
+
 
 ## Telemetry
 
@@ -66,13 +77,18 @@ wizard system uninstall
 
 For details about what is collected, what is not collected, and how to opt out of client telemetry, refer to [<Constant name="wizard" /> CLI data use and telemetry](/docs/dbt-ai/wizard-telemetry).
 
+:::tip Best practices for using dbt Wizard
+Once you're set up, refer to [How to use dbt Wizard in your dbt project](/best-practices/how-to-use-wizard/wizard-1-intro) for recommended workflows on real project tasks.
+:::
+
 ## Related docs
 
-- [Get started with the local CLI](/docs/dbt-ai/wizard-quickstart): Install <Constant name="wizard" /> and start a local terminal session
+- [Use <Constant name="wizard" /> locally](/docs/dbt-ai/wizard-quickstart): Install <Constant name="wizard" /> and start a local terminal session
 - [Configure BYOK](/docs/dbt-ai/wizard-byok): Manage your API key and choose an AI model
 - [Command reference](/docs/dbt-ai/wizard-cli-reference): Full reference for all `wizard` subcommands and global flags
 - [Use cases and examples](/docs/dbt-ai/wizard-use-cases): Realistic analytics engineering scenarios
 - [Migrate from another AI agent](/docs/dbt-ai/wizard-migrate): Migrate from another AI agent to <Constant name="wizard" />
 - [CLI data use and telemetry](/docs/dbt-ai/wizard-telemetry): What <Constant name="wizard" /> CLI collects and how to opt out
+- [How to use dbt Wizard in your dbt project](/best-practices/how-to-use-wizard/wizard-1-intro) for recommended workflows
 
 <WizardFeedbackCallout />

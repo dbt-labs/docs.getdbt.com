@@ -4,13 +4,14 @@ id: "wizard-migrate"
 description: "Move project context and skills from Claude Code to dbt Wizard."
 sidebar_label: "Migrate to dbt Wizard"
 tags: [AI, Wizard]
+availability: local_all
 ---
 
 <IntroText>
 Move from Claude Code to <Constant name="wizard" /> while keeping your project conventions.
 </IntroText>
 
-<Constant name="wizard" /> automatically imports Claude Code instructions, skills, and settings from your repo. Use this page if you already use Claude Code on dbt projects and want to bring over project context, skills, or model settings. If you're new to AI agents, start with the [Quickstart](/docs/dbt-ai/wizard-quickstart).
+<Constant name="wizard" /> automatically imports Claude Code instructions, skills, and settings from your repo. Use this page if you already use Claude Code on dbt projects and want to bring over project context, skills, or model settings. If you're new to AI agents, start with [Use dbt Wizard locally](/docs/dbt-ai/wizard-quickstart).
 
 ## Prerequisites
 
@@ -100,7 +101,8 @@ And if your conventions aren't applied, check:
 
 ## Related docs
 
-- [Quickstart](/docs/dbt-ai/wizard-quickstart)
+- [Use dbt Wizard locally](/docs/dbt-ai/wizard-quickstart)
 - [Skills](/docs/dbt-ai/wizard-skills)
 - [Configure BYOK](/docs/dbt-ai/wizard-byok)
 - [Use cases and examples](/docs/dbt-ai/wizard-use-cases)
+- [How to use dbt Wizard in your dbt project](/best-practices/how-to-use-wizard/wizard-1-intro) for recommended workflows

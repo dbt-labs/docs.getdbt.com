@@ -15,6 +15,7 @@ meta:
   slack_channel_link: 'https://www.getdbt.com/community'
   platform_name: 'SQLite'
   config_page: '/reference/resource-configs/no-configs'
+availability: local_free
 ---
 
 

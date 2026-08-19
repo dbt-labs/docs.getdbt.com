@@ -48,6 +48,8 @@ The <Constant name="wizard" /> panel contains:
 
 <Lightbox src="/img/docs/dbt-platform/dev-agent-copilot-panel.png" width="95%" title="The Wizard panel in the Studio IDE showing quick-action buttons, text input field, and agent mode controls." />
 
+<Constant name="wizard"/> also has a simplified wayfinder bar above the text input field. The wayfinder bar shows your current project and branch and guides you through Git tasks, such as committing files or creating a branch.
+
 </Expandable>
 
 <Expandable alt_header="Agent modes">

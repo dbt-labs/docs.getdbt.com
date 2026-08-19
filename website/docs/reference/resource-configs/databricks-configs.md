@@ -1,5 +1,6 @@
 ---
 title: "Databricks configurations"
+description: "Configure Databricks-specific settings for models in dbt, including file formats, table properties, and materializations."
 id: "databricks-configs"
 tags: ['Databricks', 'dbt Fusion', 'dbt Core']
 ---
@@ -25,6 +26,7 @@ dbt-databricks v1.9 adds support for the `table_format: iceberg` config. Try it 
 | tblproperties   | [Tblproperties](https://docs.databricks.com/en/sql/language-manual/sql-ref-syntax-ddl-tblproperties.html) to be set on the created table   | Optional     | SQL, Python*    | `{'this.is.my.key': 12}` |
 | databricks_tags     | [Tags](https://docs.databricks.com/en/data-governance/unity-catalog/tags.html) to be set on the created table     | Optional    | SQL <sup>‡</sup> , Python <sup>‡</sup> | `{'my_tag': 'my_value'}` |
 | compression   | Set the compression algorithm.   | Optional    | SQL, Python     | `zstd`    |
+| skip_optimize<sup>§</sup>   | Skip the post-materialization `OPTIMIZE` operation for this model while keeping `zorder` / `liquid_clustered_by` / `auto_liquid_cluster` in the table definition. Available since dbt-databricks 1.12.2. | Optional    | SQL, Python     | `skip_optimize: true`    |
 
 \* We do not yet have a PySpark API to set tblproperties at table creation, so this feature is primarily to allow users to anotate their python-derived tables with tblproperties.
 
@@ -35,6 +37,8 @@ dbt-databricks v1.9 adds support for the `table_format: iceberg` config. Try it 
 <sup>^</sup> When `liquid_clustered_by` is enabled, dbt-databricks issues an `OPTIMIZE` (Liquid Clustering) operation after each run. To disable this behavior, set the variable `DATABRICKS_SKIP_OPTIMIZE=true`, which can be passed into the dbt run command (`dbt run --vars "{'databricks_skip_optimize': true}"`) or set as an environment variable. See [issue #802](https://github.com/databricks/dbt-databricks/issues/802).
 
 \+ Do not use `liquid_clustered_by` and `auto_liquid_cluster` on the same model.
+
+<sup>§</sup> `skip_optimize` gives you per-model control over the post-materialization `OPTIMIZE` call. Because it's a standard dbt model config, you can also set it at the folder or project level through config inheritance. The run-wide `DATABRICKS_SKIP_OPTIMIZE` variable takes precedence over `skip_optimize`; if you set `DATABRICKS_SKIP_OPTIMIZE=true` (or `databricks_skip_optimize: true`), the variable skips `OPTIMIZE` for every model, and you can't re-enable it for an individual model with `skip_optimize: false`. Use `skip_optimize` when you want to keep `OPTIMIZE` on for most models but opt specific ones out &mdash; for example, if you delegate `OPTIMIZE` to [Predictive Optimization](https://docs.databricks.com/en/optimizations/predictive-optimization.html) or schedule it out of band. Refer to [issue #703](https://github.com/databricks/dbt-databricks/issues/703).
 
 In dbt-databricks v1.10, there are several new model configurations options gated behind the `use_materialization_v2` flag.
 For details, see the [documentation of Databricks behavior flags](/reference/global-configs/databricks-changes).
@@ -1447,6 +1451,55 @@ Note on streaming table query changes: there's currently no way for the adapter 
  
 To reprocess available source data with an updated query, run with `--full-refresh`.
  
+<VersionBlock firstVersion="1.12">
+
+## Metric views
+
+Set `materialized='metric_view'` to manage a [Unity Catalog metric view](https://docs.databricks.com/aws/en/metric-views/) with dbt. Instead of SQL, the body of the model is the metric view's YAML definition: a `version`, a `source`, `dimensions`, `measures`, and an optional `filter`. dbt creates the metric view with `CREATE OR REPLACE VIEW ... WITH METRICS LANGUAGE YAML`.
+
+<File name='order_metrics.sql'>
+
+```sql
+{{ config(materialized='metric_view') }}
+
+version: 1.1
+source: "{{ ref('source_orders') }}"
+filter: status = 'completed'
+dimensions:
+  - name: order_date
+    expr: order_date
+  - name: status
+    expr: status
+    synonyms: [state, order_state]
+measures:
+  - name: total_orders
+    expr: count(1)
+  - name: total_revenue
+    expr: sum(revenue)
+    synonyms: [revenue, sales]
+```
+
+</File>
+
+Reference the source relation in `source` with `ref()` so dbt resolves dependencies. Query the resulting metric view with the `MEASURE()` function.
+
+dbt passes the YAML body through to Databricks unchanged, so a metric view supports the **entire** [Unity Catalog metric view YAML specification](https://docs.databricks.com/aws/en/business-semantics/metric-views/yaml-reference), not only the keys shown above. Any field Databricks accepts server-side works through dbt, including [`synonyms`](https://docs.databricks.com/aws/en/metric-views/semantic-metadata) and `display_name` on dimensions and measures, and `format` and `window` on measures.
+
+You can also set `databricks_tags` and [`grants`](/reference/resource-configs/grants) on a metric view. `tblproperties` are applied only when the view is updated in place (with `view_update_via_alter`) or replaced, not on first creation.
+
+### Updating a metric view
+
+By default, dbt rebuilds the metric view with `CREATE OR REPLACE VIEW` on every run.
+
+When you set [`view_update_via_alter`](/reference/global-configs/databricks-changes#changes-to-the-view-materialization) to `true`, dbt applies incremental changes in place instead of replacing the view:
+
+- Changes to the YAML definition are applied with `ALTER VIEW ... AS`.
+- Changes to `databricks_tags` or `tblproperties` are applied with `ALTER VIEW ... SET`.
+
+If neither the definition nor the tags or properties have changed, dbt skips the update.
+
+</VersionBlock>
+
 ## Setting table properties
 [Table properties](https://docs.databricks.com/en/sql/language-manual/sql-ref-syntax-ddl-tblproperties.html) can be set with your configuration for tables or views using `tblproperties`:
  

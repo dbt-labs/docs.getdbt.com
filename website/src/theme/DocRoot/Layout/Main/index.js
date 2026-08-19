@@ -74,7 +74,7 @@ export default function DocRootLayoutMain({
       if (parseFloat(dbtVersion) >= 2) {
         setPreData({
           showisPrereleaseBanner: true,
-          isPrereleaseBannerText: `You're viewing the preview docs for the <a href="https://docs.getdbt.com/docs/fusion">dbt Fusion engine</a>.`,
+          isPrereleaseBannerText: `You're viewing the preview docs for the <a href="https://docs.getdbt.com/docs/fusion/about-fusion">dbt Fusion engine</a>.`,
         });
       } else {
         // For other prerelease versions (like 1.11 beta)

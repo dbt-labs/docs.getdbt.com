@@ -1,7 +1,7 @@
 
 | dbt version | Manifest version                                              |
 |------------------|---------------------------------------------------------------|
-| <Constant name="fusion_engine" /> v2.0| v20 (Identical to [v12](https://schemas.getdbt.com/dbt/manifest/v12/index.html)) |
+| <Constant name="fusion_engine" /> v2.0| [v12](https://schemas.getdbt.com/dbt/manifest/v12/index.html) |
 | Core v1.11            | [v12](https://schemas.getdbt.com/dbt/manifest/v12/index.html)  |
 | Core v1.10            | [v12](https://schemas.getdbt.com/dbt/manifest/v12/index.html)  |
 | Core v1.9             | [v12](https://schemas.getdbt.com/dbt/manifest/v12/index.html)  |

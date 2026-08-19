@@ -1,8 +1,10 @@
 ---
-title: "Set up local MCP"
-sidebar_label: "Set up local MCP"
-description: "Learn how to set up the local dbt-mcp server"
+title: "Set up self-hosted MCP"
+sidebar_label: "Set up self-hosted MCP"
+description: "Learn how to set up the self-hosted dbt-mcp server"
 id: "setup-local-mcp"
+availability:
+  surface: local
 ---
 
 import MCPExample from '/snippets/_mcp-config-files.md';
@@ -10,10 +12,10 @@ import StaticSubdomainRequired from '/snippets/_static-subdomain-required.md';
 import MCPFaqUvx from '/snippets/_mcp-faq-uvx.md';
 import MCPFaqOauth from '/snippets/_mcp-faq-oauth.md';
 
-[The local dbt MCP server](https://github.com/dbt-labs/dbt-mcp) runs locally on your machine and supports <Constant name="core" />, <Constant name="fusion_engine" />, and <Constant name="platform_cli" />. You can use it with or without a <Constant name="dbt_platform" /> account.
+[The self-hosted dbt MCP server](https://github.com/dbt-labs/dbt-mcp) runs on your machine and supports <Constant name="core" />, <Constant name="fusion_engine" />, and <Constant name="platform_cli" />. You can use it with or without a <Constant name="dbt_platform" /> account.
 
 :::note No clone required
-You don't need to clone the dbt-mcp repository to use local MCP. [Install uv](https://docs.astral.sh/uv/getting-started/installation/) and run `uvx dbt-mcp`, which fetches and runs dbt-mcp for you. 
+You don't need to clone the dbt-mcp repository to use self-hosted MCP. [Install uv](https://docs.astral.sh/uv/getting-started/installation/) and run `uvx dbt-mcp`, which fetches and runs dbt-mcp for you. 
 
 If you'd like to contribute to dbt MCP, clone the [dbt-mcp repo](https://github.com/dbt-labs/dbt-mcp) and contribute away!
 :::
@@ -61,7 +63,7 @@ The `execute_sql` tool does _not_ work with service tokens. You must use a [Pers
 
 Choose the setup method that best fits your workflow:
 
-### OAuth authentication with dbt platform <Lifecycle status="managed, managed_plus" />
+### OAuth authentication with dbt platform <Lifecycle status="self_service, managed, managed_plus" />
 
 This method uses OAuth to authenticate with your <Constant name="dbt_platform" /> account. It's the simplest setup and doesn't require managing tokens or environment variables manually.
 
@@ -81,7 +83,7 @@ After completing OAuth setup, skip to [Test your configuration](#optional-test-y
 
 This option runs the MCP server locally and connects it to your local dbt project using `DBT_PROJECT_DIR` and `DBT_PATH`.
 
-If you're using the <Constant name="core" /> or <Constant name="fusion" /> CLI and don't need access to <Constant name="dbt_platform" /> features (Discovery API, Semantic Layer, Administrative API), you can set up local MCP with just your dbt project information.
+If you're using dbt Core v1.x or <Constant name="fusion" /> and don't need access to <Constant name="dbt_platform" /> features (Discovery API, Semantic Layer, Administrative API), you can set up local MCP with just your dbt project information.
 
 Add this configuration to your MCP client (refer to the specific [integration guides](#set-up-your-mcp-client) for exact file locations):
 
@@ -305,12 +307,12 @@ You don't need to set `MULTICELL_ACCOUNT_PREFIX` or `DBT_HOST_PREFIX`.
 
 ## Environment variables
 
-The local dbt-mcp supports all flavors of dbt, including <Constant name="core" /> and <Constant name="fusion_engine" />.
+The self-hosted dbt-mcp supports all flavors of dbt, including <Constant name="core" /> and <Constant name="fusion_engine" />.
 
 | Environment variable | Required | Description | Example |
 | --- | --- | --- | --- |
 | `DBT_PROJECT_DIR` | Required | The full path to where the repository of your dbt project is hosted locally. This is the folder containing your `dbt_project.yml` file. | macOS/Linux: `/Users/myname/reponame`<br/>Windows: `C:/Users/myname/reponame` |
-| `DBT_PATH` | Required | The full path to your dbt executable (<Constant name="core" />/<Constant name="fusion" />/<Constant name="cloud_cli" />). See the next section for how to find this. | macOS/Linux: `/opt/homebrew/bin/dbt`<br/>Windows: `C:/Python39/Scripts/dbt.exe` |
+| `DBT_PATH` | Required | The full path to your dbt executable (<Constant name="core" />/<Constant name="fusion" />/<Constant name="platform_cli" />). See the next section for how to find this. | macOS/Linux: `/opt/homebrew/bin/dbt`<br/>Windows: `C:/Python39/Scripts/dbt.exe` |
 | `DBT_CLI_TIMEOUT` | Optional | Configure the number of seconds before your agent will timeout dbt commands. | Defaults to 60 seconds. |
 
 ### Locating your `DBT_PATH`
@@ -365,7 +367,7 @@ All tools are available by default. Set any of these to `true` to turn off a too
 
 | Name | Default | Description |
 | --- | --- | --- |
-| `DISABLE_DBT_CLI` | `false` | Disable <Constant name="core" />, <Constant name="cloud_cli" />, and dbt <Constant name="fusion" /> MCP tools. |
+| `DISABLE_DBT_CLI` | `false` | Disable <Constant name="core" />, <Constant name="platform_cli" />, and dbt <Constant name="fusion" /> MCP tools. |
 | `DISABLE_SEMANTIC_LAYER` | `false` | Disable dbt Semantic Layer MCP tools. |
 | `DISABLE_DISCOVERY` | `false` | Disable dbt Discovery API MCP tools. |
 | `DISABLE_ADMIN_API` | `false` | Disable dbt Administrative API MCP tools. |

@@ -4,6 +4,7 @@ id: derived
 description: "Derived metrics is defined as an expression of other metrics"
 sidebar_label: Derived
 tags: [Metrics, Semantic Layer]
+availability: all_users
 ---
 
 In MetricFlow, derived metrics are metrics created by defining an expression using other metrics. They enable you to perform calculations with existing metrics. This is helpful for combining metrics and doing math functions on aggregated columns, like creating a profit metric. 

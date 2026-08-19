@@ -15,6 +15,7 @@ meta:
   slack_channel_link: 'https://getdbt.slack.com/archives/C01PWH4TXLY'
   platform_name: 'Oracle'
   config_page: '/reference/resource-configs/oracle-configs'
+availability: local_free
 ---
 
 import SetUpPages from '/snippets/_setup-pages-intro.md';

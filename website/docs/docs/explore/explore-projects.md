@@ -5,10 +5,14 @@ description: "Learn about Catalog and how to interact with it to understand, imp
 image: /img/docs/collaborate/dbt-explorer/example-project-lineage-graph.png
 pagination_next: "docs/explore/data-health-signals"
 pagination_prev: null
+availability:
+  surface: platform
+  access: paid_plan
+  minPlan: starter
 ---
  
 
-# Discover data with Catalog <Lifecycle status="self_service,managed,managed_plus" />
+# Discover data with Catalog
 
 <IntroText>
 
@@ -53,7 +57,6 @@ Navigate the <Constant name="catalog" /> overview page to access your project's 
 - **Sidebar** &mdash; Use the left sidebar to browse your project's [resources, file tree, and database](#browse-with-the-sidebar) in the lower section of the sidebar. You can also browse model [performance](/docs/explore/model-performance) and [project recommendations](/docs/explore/project-recommendations) depending on your plan. Refer to [Availability by plan](#availability-by-plan) for more info.
     - Find your project recommendations within your project's landing page.*
 - **Lineage graph** &mdash; Explore your project's or account's [lineage graph](#project-lineage) to visualize the relationships between resources.
-- **ERD view** &mdash; Explore structural relationships between models to understand potential join paths and connecting keys for analysis. <Lifecycle status="Alpha" />
 - **Latest updates** &mdash; View the latest changes or issues related to your project's resources, including the most recent job runs, changed properties, lineage, and issues.
 - **Marts and public models** &mdash; View the [marts](/best-practices/how-we-structure/1-guide-overview#guide-structure-overview) and [public models](/docs/mesh/govern/model-access#access-modifiers) in your project. You can also navigate to all public models in your account through this view.
 - **Model query history** &mdash; Use [model query history](/docs/explore/model-query-history) to track consumption queries on your models for deeper insights.
@@ -77,7 +80,6 @@ When using global navigation and searching across your projects, the following p
 | Core lineage & resource browsing | ✅ | ✅ | ✅ |
 | [Global navigation](/docs/explore/global-navigation) | ✅ | ✅ | ✅ |
 | [Data health signals](/docs/explore/data-health-signals) | ✅ | ✅ | ✅ |
-| [ERD view](#explore-your-projects-erd-view) <Lifecycle status="Alpha" /> | ✅ | ✅ | ✅ |
 | [Model performance](/docs/explore/model-performance) | ❌ | ✅ | ✅ |
 | [Project recommendations](/docs/explore/project-recommendations) | ❌ | ✅ | ✅ |
 | [Column-level lineage](/docs/explore/column-level-lineage) | ❌ | ✅ | ✅ |
@@ -140,91 +142,6 @@ To explore a model in your project's lineage graph in <Constant name="catalog" /
 3. Click a model to view the description.
 
 <Lightbox src="/img/docs/collaborate/dbt-explorer/example-project-lineage-graph.png" width="100%" title="Example of full lineage graph" />
-
-## Explore your project's ERD view <Lifecycle status="Alpha" />
-
-[Entity relationship diagrams (ERD)](https://en.wikipedia.org/wiki/Entity%E2%80%93relationship_model) in <Constant name="catalog" /> help you understand how models relate structurally. This includes which models can be joined and which keys connect them. ERD complements lineage by showing relationship paths for analysis, not only transformation dependencies.
-
-:::info
-ERD is currently in alpha and is enabled for selected customer accounts. To request access for your account, contact your account manager.
-:::
-
-To access ERD in <Constant name="catalog" />:
-
-1. Navigate to **<Constant name="catalog"/>** in the top-level navigation.
-2. Select a model.
-3. Open the **Relationships** tab (marked **alpha**) on the model's resource details page to access ERD.
-
-<Lightbox src="/img/docs/collaborate/dbt-explorer/erd-in-catalog.png" width="100%" title="Open the Relationships tab in Catalog to access ERD." />
-
-### Why ERD is useful
-
-When you explore an unfamiliar part of your business data (for example, `orders`, `customers`, or `subscriptions`), you often need to answer questions like which dimensions you can access when you join models.
-
-Without ERD, you may need to inspect schema files manually, run local tooling, or ask teammates. ERD brings this context into <Constant name="catalog" /> so you can investigate faster in <Constant name="dbt_platform" />.
-
-### ERD versus lineage
-
-ERD and lineage answer different questions:
-
-- **Lineage (DAG)** shows how data is built, that is, the transformation dependencies between resources.
-- **ERD** shows how data is related for analysis, that is, which models can be joined and which keys connect them.
-
-Use lineage to understand build flow. Use ERD to understand join paths.
-
-### How ERD determines relationships
-
-In <Constant name="catalog" />, ERD builds model connections using metadata from your dbt project. This includes relationship tests, model contracts, and <Constant name="semantic_layer" /> entities.
-
-If ERD cannot find enough explicit relationship metadata, it can also suggest likely model connections based on available dbt context.
-
-Because ERD relies on dbt metadata, relationships defined only in your warehouse might not appear unless that relationship metadata is also represented in data that <Constant name="catalog" /> uses.
-
-ERD supports multiple overlays so you can compare explicit and suggested connections:
-
-- **Relationship tests**: Relationships defined in `schema.yml` tests.
-- **<Constant name="semantic_layer" /> entities**: Relationships inferred from MetricFlow entity definitions, such as primary and foreign entity matches.
-- **Foreign key (FK) constraints**: Relationships derived from foreign key constraints in model contracts.
-- **Heuristic inferred**: Candidate relationships inferred from `_id` naming patterns and scored by confidence.
-
-### Understanding summary and overlay state
-
-Each overlay uses a distinct visual style and color in the ERD canvas so you can quickly identify relationship sources.
-
-The relationships summary panel shows relationship totals, model count, and a per-type breakdown for the current graph scope.
-
-Overlay controls reflect availability:
-
-- If a relationship type exists in the current scope, you can toggle it on or off.
-- If no connections of that type exist, the toggle is disabled and marked as unavailable in the current view.
-
-<Lightbox src="/img/docs/collaborate/dbt-explorer/erd-overlay-toggle.png" width="100%" title="Toggle ERD relationship types based on availability in the current scope." />
-
-### Confidence and review for inferred relationships
-
-Relationship tests and FK constraints are stronger signals because they are defined directly in your project.
-
-When explicit relationship metadata is limited, ERD suggests additional relationships to support discovery. For heuristic suggestions, you can:
-
-- Inspect confidence and supporting evidence.
-- Review a generated YAML snippet.
-- Approve or dismiss individual suggestions.
-- Approve all high-confidence suggestions in bulk.
-
-### What you can do in ERD
-
-In an ERD, you can:
-
-- Navigate with zoom, pan, and minimap.
-- Filter by schema or domain scope.
-- Search and highlight matching models.
-- Click any edge type to inspect relationship details.
-- Open a model details panel for metadata, columns, and relationships.
-- Set a model as focus to recenter the graph on that model and its one-hop neighbors.
-
-### Consideration
-
-Use ERD for testing and exploration only. Because the feature is still maturing, behavior and interfaces may change, including potentially breaking changes.
 
 ## Lenses
 
@@ -351,7 +268,7 @@ In the upper right corner of the resource details page, you can:
     - **Details** section &mdash; Key properties like the model's relation name (for example, how it's represented and how you can query it in the data platform: `database.schema.identifier`); model governance attributes like access, group, and if contracted; and more.
     - **Relationships** section &mdash; The nodes the model **Depends On**, is **Referenced by**, and (if applicable) is **Used by** for projects that have declared the models' project as a dependency.
 - **Code** tab &mdash; The source code and compiled code for the model.
-- **Columns** tab &mdash; The available columns in the model. This tab also shows tests results (if any) that you can select to view the test's details page. A :white_check_mark: denotes a passing test. To filter the columns in the resource, you can use the search bar that's located at the top of the columns view.
+- **Columns** tab &mdash; The available columns in the model, including [tags](/reference/resource-configs/tags) defined on columns in your <Constant name="dbt" /> YAML. Column tags appear as clickable badges that filter the lineage view by that tag. This tab also shows test results (if any) that you can select to view the test's details page. A :white_check_mark: denotes a passing test. To filter the columns in the resource (including by tag name), use the search bar at the top of the columns view.
 
 </Expandable>
 
@@ -397,7 +314,7 @@ Example of the Tests view:
     - **Source freshness** section &mdash; Information on whether refreshing the data was successful, the last time the source was loaded, the timestamp of when a run generated data, and the run ID.
     - **Details** section &mdash; Details like database, schema, and more.
     - **Relationships** section &mdash; A table that lists all the sources used with their freshness status, the timestamp of when freshness was last checked, and the timestamp of when the source was last loaded.
-- **Columns** tab &mdash; The available columns in the source. This tab also shows tests results (if any) that you can select to view the test's details page. A :white_check_mark: denotes a passing test.
+- **Columns** tab &mdash; The available columns in the source, including [tags](/reference/resource-configs/tags) defined on columns in your <Constant name="dbt" /> YAML. Column tags appear as clickable badges that filter the lineage view by that tag. This tab also shows test results (if any) that you can select to view the test's details page. A :white_check_mark: denotes a passing test.
 
 </Expandable>
 

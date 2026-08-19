@@ -4,11 +4,11 @@ id: model-versions
 sidebar_label: "Model versions"
 description: "Version models to help with lifecycle management"
 keyword: governance, model version, model versioning, dbt model versioning
+availability: all_users
 ---
 
 import VersionsCallout from '/snippets/_model-version-callout.md';
 import ModelGovernanceRollback from '/snippets/_model-governance-rollback.md';
-import LatestVersionPointerBeta from '/snippets/_latest-version-pointer-beta.md';
 import LatestVersionPointerCollision from '/snippets/_latest-version-pointer-collision.md';
 
 <VersionsCallout />
@@ -399,13 +399,12 @@ We opted to use `generate_alias_name` for this functionality so that the logic r
 
 If you want a view that always tracks the latest model version instead of pinning to a specific one, see [Pointing to the latest version](#pointing-to-the-latest-version).
 
-### Pointing to the latest version <Lifecycle status="beta" />
+### Pointing to the latest version
 
-<LatestVersionPointerBeta />
 
 The [`latest_version_pointer`](/reference/resource-configs/latest_version_pointer) config automatically creates a view named after the model's base name (for example, `dim_customers`) that always points to the latest versioned relation (for example, `dim_customers_v2`). When you enable it, querying outside of dbt always returns the current version. This config only applies to versioned models.
 
-Enable this feature in your project by setting the [`latest_version_pointer_enabled_by_default`](/reference/global-configs/behavior-flag-introduction#latest-version-pointer-for-versioned-models) flag to `true` in `dbt_project.yml`, or enable it per model with the `latest_version_pointer.enabled` config:
+Enable this feature in your project by setting the [`latest_version_pointer_enabled_by_default`](/reference/global-configs/behavior-flags/latest_version_pointer_enabled_by_default) flag to `true` in `dbt_project.yml`, or enable it per model with the `latest_version_pointer.enabled` config:
 
 <Tabs>
 <TabItem value="global" label="Enable globally">
