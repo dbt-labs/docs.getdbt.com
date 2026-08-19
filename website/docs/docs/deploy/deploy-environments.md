@@ -9,6 +9,7 @@ Deployment environments in <Constant name="dbt" /> are crucial for deploying dbt
 
 - The version of <Constant name="core" /> that will be used to run your project
 - The warehouse connection information (including the target database/schema settings)
+- The [connection profile](/docs/platform/about-profiles) (the credentials dbt uses to connect)
 - The version of your code to execute
 
 A <Constant name="dbt" /> project can have multiple deployment environments, providing you the flexibility and customization to tailor the execution of dbt jobs. You can use deployment environments to [create and schedule jobs](/docs/deploy/deploy-jobs#create-and-schedule-jobs), [enable continuous integration](/docs/deploy/continuous-integration), or more based on your specific needs or requirements.
@@ -100,6 +101,13 @@ We recommend that the data warehouse credentials be for a dedicated user or serv
 
 ## Deployment connection
 
+A deployment environment needs two settings to run jobs:
+
+- **Deployment connection:** This setting controls where dbt builds objects in your warehouse, such as the database, schema, and warehouse.
+- **Connection profile:** This setting stores the credentials dbt uses to connect. You can [configure a connection profile](#connection-profiles) in the following section.
+
+You need to complete both settings. A deployment connection on its own is not enough for jobs to run.
+
 :::info Warehouse Connections
 
 Warehouse connections are created and managed at the account-level for <Constant name="dbt" /> accounts and assigned to an environment. To change warehouse type, we recommend creating a new environment.
@@ -163,11 +171,13 @@ This section will not appear if you are using Spark, as all values are inferred 
 </WHCode>
 
 
-### Connection profiles
+## Connection profiles
+
+The deployment connection sets _where_ dbt builds. The connection profile sets _how_ dbt authenticates.
 
 Deployment credentials are managed through connection profiles, which are created at the project level and assigned to deployment environments. Profiles define the credentials and attributes dbt uses to connect to your warehouse.
 
-To configure credentials for this environment, refer to [About dbt platform profiles](/docs/platform/about-profiles).
+To configure credentials for this environment, refer to [About dbt platform profiles](/docs/platform/about-profiles). Jobs need a profile assigned to the environment, not only a deployment connection.
 
 ## Delete an environment
 
@@ -178,6 +188,7 @@ import DeleteEnvironment from '/snippets/_delete-environment.md';
 ## Related docs
 
 - [<Constant name="dbt" /> environment best practices](/guides/set-up-ci)
+- [About dbt platform profiles](/docs/platform/about-profiles)
 - [Deploy jobs](/docs/deploy/deploy-jobs)
 - [CI jobs](/docs/deploy/continuous-integration)
 - [Delete a job or environment in <Constant name="dbt" />](/faqs/Environments/delete-environment-job)
