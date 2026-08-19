@@ -132,7 +132,7 @@ Instead of loading a static `manifest.json` in the browser, v2 produces Parquet 
 
 ### Generate the site
 
-`dbt docs generate` compiles your project, writes the index, and exports the documentation site in a single command. You no longer need to run a separate `--write-index` command first:
+`dbt docs generate` compiles your project, writes the index, and exports the documentation site in a single command:
 
 ```shell
 dbt docs generate
