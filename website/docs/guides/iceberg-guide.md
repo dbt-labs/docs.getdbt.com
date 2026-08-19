@@ -19,11 +19,11 @@ By the end of this guide, your `fusion-jaffle-shop` project will transform data 
 - **Snowflake:** Builds your raw and staging layers as Snowflake-managed Apache Iceberg tables, registered in Snowflake's built-in Horizon catalog.
 - **DuckDB:** Reads those exact same Iceberg tables through Horizon's open Iceberg REST catalog, builds a downstream model (`orders`), and writes the result *back* as an Iceberg table in the same catalog.
 
-The DuckDB step is the interesting part. Because Iceberg is an open table format and Horizon speaks the open Iceberg REST protocol, an external engine like DuckDB can operate directly on your governed Snowflake tables — reading and writing the same files, through the same catalog, without a separate copy of the data.
+The DuckDB step is the interesting part. Because Iceberg is an open table format and Horizon speaks the open Iceberg REST protocol, an external engine like DuckDB can operate directly on your governed Snowflake tables. Both solutions are reading and writing the same files, through the same catalog, without a separate copy of the data.
 
 Concretely, the transformation runs in a local DuckDB process (embedded in the dbt Fusion engine); Horizon serves catalog metadata and vends short-lived storage credentials so DuckDB can access the underlying files, which live in your own S3 bucket the whole time.
 
-To be clear, Snowflake warehouses are highly performant — even a single-node XSMALL handles most production transformations well, and for the majority of your workloads, running them in Snowflake is still the right call. But there are times when it's useful to reach the same governed tables from somewhere else: a quick exploratory query from a laptop, a step that fits naturally into a pipeline already running on another engine, or a workload where you'd rather not spin up a warehouse at all. Horizon's Iceberg REST catalog is what makes that possible without duplicating data or losing governance.
+Snowflake warehouses are highly performant. Even a single-node XSMALL handles most production transformations well, and for the majority of your workloads, running them in Snowflake is still the right call. But there are times when it's useful to reach the same governed tables from somewhere else: a quick exploratory query from a laptop, a step that fits naturally into a pipeline already running on another engine, or a workload where you'd rather not spin up a warehouse at all. Horizon's Iceberg REST catalog is what makes that possible without duplicating data or losing governance.
 
 Why that's a big deal:
 
@@ -496,7 +496,7 @@ This builds `stg_orders` and `order_items` as Snowflake-managed Iceberg tables i
 dbt run --target duckdb -s orders
 ```
 
-DuckDB attaches Horizon, reads `STG_ORDERS` + `ORDER_ITEMS` (fetching temp S3 credentials from Horizon), builds `orders` locally, and commits it back as an Iceberg table through Horizon's REST catalog — no Snowflake warehouse involved in this step.
+DuckDB attaches Horizon, reads `STG_ORDERS` + `ORDER_ITEMS` (fetching temp S3 credentials from Horizon), builds `orders` locally, and commits it back as an Iceberg table through Horizon's REST catalog without involving a Snowflake warehouse.
 
 ### 7.3 Verify
 
@@ -510,7 +510,7 @@ You should get a real row count (tens of thousands). You'll also see `ORDERS` li
 
 ## Congratulations!
 
-You've just built a single set of Apache Iceberg tables and transformed them with two different engines! Snowflake for the raw and staging layers, DuckDB for the final orders model, and all against one shared Horizon catalog. Because Horizon speaks the open Iceberg REST protocol, DuckDB was able to read and write those governed Snowflake tables directly — no data copies, no lock-in, and governance and lineage that stay intact no matter which engine does the work. This is the foundation of cross-platform dbt Mesh: one project, one catalog, and the freedom to route every job to whichever engine fits it best.
+You've just built a single set of Apache Iceberg tables and transformed them with two different engines! Snowflake for the raw and staging layers, DuckDB for the final orders model, and all against one shared Horizon catalog. Because Horizon speaks the open Iceberg REST protocol, DuckDB was able to read and write those governed Snowflake tables directly. No data copies, no lock-in, and governance and lineage that stay intact no matter which engine does the work. This is the foundation of cross-platform dbt Mesh: one project, one catalog, and the freedom to route every job to whichever engine fits it best.
 
 ## FAQ
 
