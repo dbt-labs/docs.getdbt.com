@@ -30,3 +30,20 @@
   text: "dbt Wizard: An agent purpose-built for analytics engineering. Join us virtually on July 22nd to see real demos in the CLI and dbt platform!"
   link: "https://www.getdbt.com/resources/webinars/dbt-wizard-an-agent-purpose-built-for-analytics-engineering"
   open_in_new_tab: true
+
+- paths:
+    - /docs/deploy/dbt-state-about
+    - /docs/deploy/dbt-state-setup
+    - /docs/deploy/dbt-state-enable-jobs
+    - /docs/deploy/dbt-state-enable-studio
+    - /docs/deploy/dbt-state-cicd
+    - /docs/deploy/dbt-state-deferral
+    - /docs/deploy/dbt-state-trial
+    - /docs/deploy/dbt-state-examples
+    - /docs/deploy/dbt-state-interface
+    - /docs/deploy/dbt-state-migration
+    - /docs/platform/billing/dbt-state-usage
+    - /reference/resource-configs/dbt-state-configs
+  text: "dbt State: See volatile SQL, Jinja macros, freshness checks, time travel, and more in action. Join our technical deep dive on Sept 1 &amp; 2!"
+  link: "https://www.getdbt.com/resources/webinars/dbt-state-in-practice/?utm_medium=internal&utm_source=docs&utm_campaign=q3-2027_dbt-state-in-practice_aw&utm_content=themed-webinar____&utm_term=all_all__"
+  open_in_new_tab: true
