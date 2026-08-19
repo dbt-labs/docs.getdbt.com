@@ -73,7 +73,7 @@ To take advantage of the upgrade assistant and other upgrade tools, you'll need 
 - You must have a `developer` license.
 - You must have the proper [permissions set](/docs/platform/manage-access/enterprise-permissions) to execute individual upgrade tasks. Migrating to Fusion is a multi-step process and some of these steps may be repeated across projects by different users:
 
-| Upgrade task | Required permission(s) | Permission sets with access |
+| Upgrade task | Required permission(s) | Supported permission sets |
 |---------|------------------------|-----------------------------|
 | Enable Fusion access (triggers migration flows) | Fusion readiness: `write` <br></br> Projects: `write` | Admin, Account Admin and anyone assigned the Fusion admin set, provided their base role also has `write` access to projects |
 | View Fusion readiness and job eligibility | Fusion readiness: `read` | Developer, Admin, Member, Account Admin, Fusion admin |
