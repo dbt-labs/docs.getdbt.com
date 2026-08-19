@@ -138,7 +138,7 @@ Instead of loading a static `manifest.json` in the browser, v2 builds a compact 
 dbt docs generate
 ```
 
-By default, dbt writes the site into your `target/` directory (`target/index.html`, `target/assets/`, and the index under `target/index/`), matching the layout of <Constant name="core_v1" />. You can serve `index.html` from `target/` the same way you did in v1, so existing CI such as `dbt docs generate && mv target public` continues to work.
+By default, dbt writes the site into your `target/` directory (`target/index.html`, `target/assets/`, and the index under `target/index/`), matching the layout of <Constant name="core_v1" />. You can serve `index.html` from `target/` the same way you did in v1, so an existing pipeline that runs `dbt docs generate && mv target public` keeps working.
 
 Use `--output-dir` to write a self-contained copy of the site to a different directory:
 
@@ -161,7 +161,7 @@ dbt build --write-index --static-analysis strict
 dbt docs generate --no-compile
 ```
 
-If the site was generated without column lineage, dbt Docs v2 hides those features instead of showing empty data.
+If you generate the site without column lineage, dbt Docs v2 hides those features instead of showing empty data.
 
 ### Serve dbt Docs v2
 

@@ -48,7 +48,7 @@ dbt Docs v2 is the next-generation open-source catalog experience, available whe
 
 Key improvements over dbt Docs:
 
-- **Performance:** Better handling for large dbt projects. The browser queries compact, pre-built index files with DuckDB-WASM instead of loading the full `manifest.json`.
+- **Performance:** Better handling for large dbt projects. The browser queries compact, pre-built index files with DuckDB-WASM (WebAssembly) instead of loading the full `manifest.json`.
 - **Modernized UI:** Visually aligned with the dbt platform, with better navigation and resource discovery.
 - **Semantic Layer metadata:** Surfaces compiled SQL logic, queryable dimensions, and metric definitions from your dbt Semantic Layer.
 - **Column-level lineage:** Available when using the <Constant name="fusion_engine" />.
@@ -67,7 +67,7 @@ Refer to [dbt docs commands](/reference/commands/cmd-docs) for full usage.
 
 #### Self-hosting dbt Docs v2
 
-Because `dbt docs generate` writes a self-contained static site — the single-page app plus the Parquet index files, with no server-side query engine — you can host it on any static file host instead of running `dbt docs serve` locally. The browser loads DuckDB-WASM from a CDN at runtime and queries the Parquet directly, so viewers only need a static file server and outbound HTTPS access to the CDN.
+Because `dbt docs generate` writes a self-contained static site — the single-page app plus the Parquet index files, with no server-side query engine — you can host it on any static file host instead of running `dbt docs serve` locally. The browser loads DuckDB-WASM from a content delivery network (CDN) at runtime and queries the Parquet directly, so viewers only need a static file server and outbound internet access to reach the CDN.
 
 Generate a self-contained directory and publish it to your host of choice:
 
