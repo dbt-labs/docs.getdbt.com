@@ -233,9 +233,9 @@ After completing the Entra ID login flow, users are redirected back to the dbt p
 Server error! There was a server error. Please try again, or contact support@getdbt.com if this persists.
 ```
 
-This typically happens when Microsoft Entra ID can't find a SAML signing certificate configured for the application. The underlying error (`AADSTS500031: Cannot find signing certificate configured`) isn't surfaced to the user — it only appears in identity provider logs.
+This typically happens when Microsoft Entra ID can't find a SAML signing certificate configured for the application. The underlying error (`AADSTS500031: Cannot find signing certificate configured`) isn't surfaced to the user.
 
-To resolve this, go to your Entra ID **Enterprise Application → Single sign-on → SAML Signing Certificate**, and add the missing certificate. If a certificate exists but is corrupted, create a new certificate, set an expiration date, mark it **Active** to override the existing one, and then remove the unused certificate.
+To confirm this is the cause, check your Entra ID **Enterprise Application → Sign-in logs** and filter by "Failure" status. If you see the AADSTS500031 error there, resolve it by going to **Enterprise Application → Single sign-on → SAML Signing Certificate**, and add the missing certificate. If a certificate exists but is corrupted, create a new certificate, set an expiration date, mark it **Active** to override the existing one, and then remove the unused certificate.
 
 </Expandable>
 
