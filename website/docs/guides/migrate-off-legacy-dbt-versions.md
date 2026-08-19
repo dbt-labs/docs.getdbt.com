@@ -44,7 +44,7 @@ If you don't migrate a legacy environment or clear a legacy job, it's cleaned up
 
 To update your environment to a release track:
 
-1. Navigate to the settings page of the environment, then click **Edit**.
+1. Navigate to the Settings page of the environment, then click **Edit**.
 2. Click the **dbt version** dropdown and select a [release track](/docs/dbt-versions/dbt-release-tracks) (**Latest** is recommended).
 3. Save your changes.
 
