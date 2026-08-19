@@ -10,7 +10,7 @@ keywords: ['legacy dbt version', 'release track', 'migrate dbt version', 'upgrad
 level: 'Beginner'
 ---
 
-Legacy <Constant name="core" /> versions v1.3–v1.7 are being deprecated on January 31, 2027. To keep your work running and supported, move your environments and jobs to a [<Constant name="core" /> release track](/docs/dbt-versions/dbt-release-tracks) now. A release track keeps you on a supported version automatically and prepares your project for [<Constant name="fusion_engine" />](/docs/fusion/about-fusion) later.
+Legacy <Constant name="core" /> versions v1.3–v1.7 are being deprecated on <Constant name="legacy_deprecation_date" />. To keep your work running and supported, move your environments and jobs to a [<Constant name="core" /> release track](/docs/dbt-versions/dbt-release-tracks) now. A release track keeps you on a supported version automatically and prepares your project for [<Constant name="fusion_engine" />](/docs/fusion/about-fusion) later.
 
 :::info The single-hop path
 
@@ -18,7 +18,7 @@ Move to a <Constant name="core" /> release track now; move to <Constant name="fu
 
 :::
 
-Your project code, connections, and history stay accessible throughout. Nothing is permanently removed as part of this migration.
+Your project code, connections, and history stay accessible throughout.
 
 ## Identify projects using legacy versions
 
@@ -72,7 +72,7 @@ Moving from a pinned legacy version to a release track can surface behavior chan
 
 - Test in a development environment before upgrading your production and default development environments.
 - Review your compile, build, and job run results after the change.
-- Keep a fallback path available in case you need to roll back.
+- Establish a fallback path in case you need to roll back.
 
 ## Get help
 

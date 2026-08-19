@@ -111,7 +111,7 @@ Refer to [Supported data platforms](/docs/supported-data-platforms) for the full
 
 :::info
 
-On January 31, 2027, dbt Core versions v1.3-v1.7 will be deprecated and removed from availability in <Constant name="dbt_platform" />. Upgrade any environments still on these versions to a supported version or a [release track](/docs/dbt-versions/dbt-release-tracks) before then.
+On <Constant name="legacy_deprecation_date" />, dbt Core versions v1.3-v1.7 will be deprecated and removed from availability in <Constant name="dbt_platform" />. Upgrade any environments still on these versions to a supported version or a [release track](/docs/dbt-versions/dbt-release-tracks) before then.
 
 :::
 
