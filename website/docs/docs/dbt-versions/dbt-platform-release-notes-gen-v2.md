@@ -17,6 +17,29 @@ unlisted: true
 
 Release notes are grouped by date for single-tenant environments.
 
+## August 19, 2026
+
+## Enhancements
+
+### Studio IDE
+
+- **Console tab persists across sessions**: New sessions open on the Wizard tab when available, and the Studio IDE remember your last-used tab for each project so you can pick up where you left off.
+
+### Catalog
+
+- **Exact model relation name in the Discovery API**: A new `relationName` field on the `ModelAppliedStateNode` and `ModelAppliedStateNestedNode` GraphQL types exposes the fully-qualified, adapter-rendered relation name (for example, `"database"."schema"."model_name"`) from the last successful model build.
+
+## August 12, 2026
+
+## Enhancements
+
+### dbt AI
+
+- **Auto-expanding Wizard chat input**: The Wizard chat input grows vertically as you type or paste text, and shrinks back when content is removed.
+
+### APIs, Identity, and Administration
+
+- **Job read access is now included in the `account:read` OAuth scope**: Applications authorized with `account:read` can now read job data without also requesting the `jobs:run` scope.
 
 ## August 5, 2026
 
