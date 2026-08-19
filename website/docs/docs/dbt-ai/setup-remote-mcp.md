@@ -135,7 +135,7 @@ By default, <Constant name="fusion"/> tools use the environment you set in `x-db
 
 ## Examples
 
-The MCP protocol is programming language and framework agnostic, so use whatever helps you build agents. If you use [OAuth (remote MCP)](#oauth-remote-mcp), you only need your MCP URL. If you use token-based authentication, add the headers in the examples below. Configuration varies by client — select your tool in the following tabs and replace the placeholder values with your own:
+The MCP protocol is programming language and framework agnostic, so use whatever helps you build agents. If you use [OAuth (remote MCP)](#oauth-remote-mcp) in Beta, you only need your MCP URL. If you use token-based authentication, add the headers in the examples below. Configuration varies by client — select your tool in the following tabs and replace the placeholder values with your own:
 
 
 <Tabs groupId="auth-method">
