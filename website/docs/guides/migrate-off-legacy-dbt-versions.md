@@ -22,7 +22,7 @@ Your project code, connections, and history stay accessible throughout. Nothing 
 
 ## Identify projects using legacy versions
 
-What you migrate is driven by a job's or environments effective version. The version pinned on the job if one is set, otherwise the version its environment defaults to.
+What you migrate is driven by a job's effective version: the version pinned on the job if one is set, otherwise the version its environment inherits.
 
 1. Navigate to **Orchestration** > **Environments** and note any environment whose **dbt version** is v1.3–v1.7.
 2. Open the jobs in your supported environments and check for any job with a **version override** pinned to v1.3–v1.7.
