@@ -45,20 +45,13 @@ export function initDatadogRum(config) {
 }
 
 /**
- * Second CSP detection channel, independent of the report endpoint.
+ * Second CSP detection channel, alongside the report-uri/report-to directives
+ * in website/vercel.json.
  *
- * Violations are also POSTed to the collector via the report-uri/report-to
- * directives in website/vercel.json. This listener is deliberate redundancy: it
- * still fires when report delivery is blocked in transit -- by an ad blocker, a
- * corporate proxy, or a filter list targeting the collector's host -- and it
- * correlates each violation with the RUM session and replay we already collect.
- *
- * It is what distinguishes "there were no violations" from "the reports never
- * arrived", which are otherwise indistinguishable, and the reassuring reading is
- * the one people tend to believe.
- *
- * Subject to RUM session sampling, so treat it as a cross-check on whether
- * reports are flowing rather than a substitute for the collector.
+ * POSITIVE SIGNAL ONLY. It is consent-gated (see DatadogInitializer), attaches
+ * after hydration so it misses load-time violations, and is session-sampled.
+ * Violations here prove browsers are violating; an absence proves nothing, so
+ * never diagnose collector silence from this channel.
  */
 function trackCspViolations() {
   document.addEventListener('securitypolicyviolation', (event) => {
