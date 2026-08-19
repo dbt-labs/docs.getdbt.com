@@ -28,7 +28,7 @@ Release notes are grouped by date for single-tenant environments.
 
 ### Studio IDE
 
-- **Console tab persists across sessions**: New sessions open on the Wizard tab when available, and the Studio IDE remember your last-used tab for each project so you can pick up where you left off.
+- **Console tab persists across sessions**: New sessions open on the Wizard tab when available, and the Studio IDE remembers your last-used tab for each project so you can pick up where you left off.
 
 ### Catalog
 
