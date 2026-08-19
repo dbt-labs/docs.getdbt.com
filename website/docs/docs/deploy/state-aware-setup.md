@@ -122,9 +122,7 @@ Some notes when using `loaded_at_field` or `loaded_at_query`:
     from {{ this }}
     where ingested_at >= current_timestamp - interval '3 days'
   ```
-- If a source is a view in the data warehouse, the available metadata is usually insufficient to discern freshness and dbt will emit a warning during freshness checks.
-
-To determine fresheness for sources that are views, add a `loaded_at_field` or `loaded_at_query` to your configuration.
+- If a source is a view in the data warehouse, the available metadata is usually insufficient to discern freshness, and dbt will emit a warning during freshness checks. To determine freshness for sources that are views, add a `loaded_at_field` or `loaded_at_query` to your configuration.
 
 To learn more about model freshness and `build_after`, refer to [model `freshness` config](/reference/resource-configs/freshness). To learn more about source and upstream model freshness configs, refer to [resource `freshness` config](/reference/resource-properties/freshness).
 
