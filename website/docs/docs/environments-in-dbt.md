@@ -8,11 +8,21 @@ availability: all_users
 
 In software engineering, environments are used to enable engineers to develop and test code without impacting the users of their software. Typically, there are two types of environments in dbt:
 
-- **Deployment or Production** (or _prod_) &mdash; Refers to the environment that end users interact with. 
+- **Deployment or Production** (or _prod_) &mdash; Refers to the environment that end users interact with.
 
 - **Development** (or _dev_) &mdash; Refers to the environment that engineers work in. This means that engineers can work iteratively when writing and testing new code in _development_. Once they are confident in these changes, they can deploy their code to _production_.
 
 In traditional software engineering, different environments often use completely separate architecture. For example, the dev and prod versions of a website may use different servers and databases. <Term id="data-warehouse">Data warehouses</Term> can also be designed to have separate environments &mdash; the _production_ environment refers to the relations (for example, schemas, tables, and <Term id="view">views</Term>) that your end users query (often through a BI tool).
+
+### Environment separation
+
+There are several common approaches to isolating environments in a data warehouse:
+
+import EnvironmentSeparation from '/snippets/_environment-separation.md';
+
+<EnvironmentSeparation />
+
+We recommend using separate schemas per developer as the default approach. The pattern `dbt_<username>` for dev schemas ensures each developer has an isolated space without overwriting each other's work.
 
 Configure environments to tell <Constant name="dbt" /> or <Constant name="core" /> how to build and execute your project in development and production:
 
