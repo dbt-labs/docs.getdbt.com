@@ -21,7 +21,7 @@ To understand the differences between dbt Core v1.x, dbt Core 2.0, and Fusion, r
 
 <VersionBlock firstVersion="2.0">
 
-:::caution dbt Core 2.0 is in alpha
+:::caution dbt Core 2.0 is in beta
 dbt Core 2.0 is under active development and not recommended for production use. Features and APIs may change before the stable release.
 :::
 
@@ -41,11 +41,11 @@ Confirm the installed version begins with `2.`:
 dbt --version
 ```
 
-During alpha, you must target either the pre-release version or an explicit pin. After install, immediately update to the most recent version:
+During beta, you must target either the pre-release version or an explicit pin. After install, immediately update to the most recent version:
 
 Explicit pin:
 
-`python -m pip install dbt-core==2.0.0-alpha.1`
+`python -m pip install dbt-core==2.0.0-b2`
 
 For adapter install details, refer to the [`dbt-core` repository](https://github.com/dbt-labs/dbt-core).
 
