@@ -76,6 +76,14 @@ Run [`dbt login status`](/reference/commands/login?version=2.0#dbt-login-status)
 
 `dbt login` unlocks a broader set of features, such as advanced features in the [dbt VS Code extension](/docs/about-dbt-extension). For details, refer to [`dbt login`](/reference/commands/login?version=2.0).
 
+### dbt Docs v2
+
+v2 introduces [dbt Docs v2](/docs/build/view-documentation#dbt-docs-v2), a faster, statically hostable documentation experience that replaces the v1 static site. `dbt docs generate` now compiles your project, writes a compact binary index, and exports a static site in a single command &mdash; you no longer run `--write-index` separately. `dbt docs serve` previews that site locally, and because the browser queries the index directly with DuckDB-WASM, you can also host the generated files on any static file host.
+
+To hydrate catalog metadata (`catalog.json`) for <Constant name="catalog" /> without building the site, use the [`--write-catalog` flag](/reference/commands/cmd-docs#--write-catalog-flag) instead.
+
+For full usage, refer to [About dbt docs commands](/reference/commands/cmd-docs).
+
 ### Changed functionality
 
 When developing v2, there were opportunities to improve the dbt framework — failing earlier (when possible), fixing bugs, optimizing run order, and deprecating flags that are no longer relevant. The result is a handful of specific and nuanced changes to existing behavior.
