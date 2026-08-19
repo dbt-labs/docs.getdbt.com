@@ -1,7 +1,7 @@
 ---
-title: Configure and use the dbt CLI
+title: Configure and use the dbt platform CLI
 id: configure-dbt-cli
-description: "Instructions on how to configure the dbt CLI"
+description: "Instructions on how to configure the dbt platform CLI"
 sidebar_label: "Configuration and usage"
 pagination_next: null
 availability:
@@ -25,7 +25,7 @@ Learn how to configure the <Constant name="platform_cli" /> for your <Constant n
 - You must have your [personal user credentials](/docs/dbt-platform-environments#set-developer-credentials) configured in **Account settings** assigned to that project. The <Constant name="platform_cli" /> will use these credentials, stored securely in <Constant name="dbt" />, to communicate with your data platform.
 - You must be on dbt version 1.5 or higher. Refer to [<Constant name="dbt" /> versions](/docs/dbt-versions/upgrade-dbt-platform-version) to upgrade.
 
-## Configure the dbt CLI
+## Configure the dbt platform CLI
 
 Once you install the <Constant name="platform_cli" />, you need to configure it to connect to a <Constant name="dbt" /> project.
 
@@ -59,7 +59,7 @@ To set environment variables in the <Constant name="platform_cli" /> for your db
 3. Click on your project and scroll to the **Environment variables** section.
 4. Click **Edit** on the lower right and then set the user-level environment variables.  
 
-## Use the dbt CLI
+## Use the dbt platform CLI
 
 The <Constant name="platform_cli" /> uses the same set of [dbt commands](/reference/dbt-commands) and [MetricFlow commands](/docs/build/metricflow-commands) as dbt Core to execute the commands you provide. For example, use the [`dbt environment`](/reference/commands/dbt-environment?version=2.0) command to view your <Constant name="dbt" /> configuration details. With the <Constant name="platform_cli" />, you can:
 

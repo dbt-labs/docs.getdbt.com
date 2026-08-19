@@ -524,7 +524,7 @@ const sidebarSettings = {
         },
         {
           type: "category",
-          label: "dbt CLI",
+          label: "dbt platform CLI",
           collapsed: true,
           link: { type: "doc", id: "docs/platform/dbt-cli-installation" },
           items: [
