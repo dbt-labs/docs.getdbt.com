@@ -23,6 +23,7 @@ export const CONSTANTS = {
   mesh: 'Mesh',
   orchestrator: 'Orchestrator',
   wizard: 'dbt Wizard',
-  semantic_layer: 'Semantic Layer'
+  semantic_layer: 'Semantic Layer',
+  legacy_deprecation_date: 'January 31, 2027'
 
 }
