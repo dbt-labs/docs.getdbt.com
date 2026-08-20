@@ -24,7 +24,7 @@ Your project code, connections, and history stay accessible throughout.
 
 What you migrate is driven by a job's effective version: the version pinned on the job if one is set, otherwise the version its environment inherits.
 
-1. Navigate to **Orchestration** > **Environments** and note any environment whose **dbt version** is v1.3–v1.7.
+1. Navigate to **Orchestration** > **Environments** and note any environment whose **dbt version** is v1.3–v1.7. The current version is displayed below the environment name. 
 2. Open the jobs in your supported environments and check for any job with a **version override** pinned to v1.3–v1.7.
 
 ## Select your path
