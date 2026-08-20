@@ -93,15 +93,15 @@ dbt State compares two source data timestamps, not clock times:
 
 | Timestamp | What it is |
 | --- | --- |
-| Source freshness at last build | How fresh the source was the last time dbt actually rebuilt this node |
-| Source freshness now | How fresh the source is during this run |
+| Previous freshness timestamp | The source's last-modified timestamp captured the last time dbt rebuilt this node |
+| Current freshness timestamp | The source's last-modified timestamp as of this run |
 
 </SimpleTable>
 
 The best way to think about it is using the calculation:
 
 ```text
-lag = source freshness now − source freshness at last build
+lag = current freshness timestamp − previous freshness timestamp
 ```
 
 If the lag exceeds `lag_tolerance`, dbt State rebuilds the node. Otherwise, it reuses the existing node.

@@ -127,7 +127,7 @@ To see how dbt State optimizes your runs, refer to [dbt State usage examples](/d
 
 ## Configuring lag tolerance
 
-Lag tolerance controls how much the source data can change before dbt rebuilds a node. dbt measures this by how much the source data has moved on since the node's last build, not by how much time has _passed_ on the clock. You can set it at the project, environment, or model level. If not configured, `lag_tolerance` defaults to `45m`. We recommend starting with the following Jinja expression:
+Lag tolerance controls the length of time required between source update detection timestamps before dbt rebuilds a node. You can set it at the project, environment, or model level. If not configured, `lag_tolerance` defaults to `45m`. We recommend starting with the following Jinja expression:
 
 <File name="dbt_project.yml">
 
@@ -139,7 +139,7 @@ models:
 
 </File>
 
-In this example, models in the `prod` target rebuild after their upstream data has advanced by more than 4 hours relative to the data from their last build. In all other environments, models rebuild after their upstream data has advanced by more than 7 days.
+In this example, models in the `prod` target rebuild when an upstream source change is detected 4 hours or more after the last model build. In all other environments, models rebuild after their upstream source change is detected more than 7 days after the last model build.
 
 For more details, refer to the [`lag_tolerance` config reference](/reference/resource-configs/lag-tolerance).
 
