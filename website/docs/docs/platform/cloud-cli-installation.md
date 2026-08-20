@@ -11,7 +11,7 @@ availability:
 
 import LongSession from '/snippets/_long-sessions-cli.md';
 
-The <Constant name="dbt_platform" /> natively supports developing using a command line interface (CLI), empowering team members to contribute with enhanced flexibility and collaboration. The dbt platform CLI allows you to run dbt commands against your <Constant name="dbt_platform" /> development environment from your local command line.
+The <Constant name="dbt_platform" /> natively supports developing using a command line interface (CLI), empowering team members to contribute with enhanced flexibility and collaboration. The <Constant name="platform_cli" /> allows you to run dbt commands against your <Constant name="dbt_platform" /> development environment from your local command line.
 
 :::note CLI compatibility
 
@@ -146,7 +146,7 @@ Refer to the [FAQs](#faqs) if your operating system runs into path conflicts.
 
 :::info
 
-Advanced users can configure multiple projects to use the same dbt CLI executable by adding it to their PATH environment variable in their shell profile.
+Advanced users can configure multiple projects to use the same <Constant name="platform_cli" /> executable by adding it to their PATH environment variable in their shell profile.
 
 :::
 
@@ -262,7 +262,7 @@ The <Constant name="platform_cli" /> allows only one command that writes to the 
 
 </DetailsToggle>
 
-<DetailsToggle alt_header="I'm getting a `Session occupied` error in dbt CLI?">
+<DetailsToggle alt_header="I'm getting a `Session occupied` error in dbt platform CLI?">
 
 <LongSession />
 

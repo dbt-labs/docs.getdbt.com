@@ -125,7 +125,7 @@ By default, the <Constant name="platform_cli" /> downloads [all artifacts](/refe
 
 </DetailsToggle>
 
-<DetailsToggle alt_header="I'm getting a `Session occupied` error in dbt CLI?">
+<DetailsToggle alt_header="I'm getting a `Session occupied` error in dbt platform CLI?">
 
 <LongSession />
 

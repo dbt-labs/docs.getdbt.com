@@ -25,14 +25,14 @@ This guide walks through credentials, environment variables, <Constant name="fus
 ## 1. Managing credentials
 
 How you authenticate to your data warehouse locally depends on which self-hosted tool you use:
-- [dbt platform CLI](/guides/fusion-platform-local-workflow?step=3#dbt-platform-cli): For a CLI-only development experience (without the dbt VS Code extension), use the dbt platform CLI with <Constant name="fusion"/> set as your platform release track. Warehouse credentials are managed centrally in <Constant name="dbt_platform" /> and passed through automatically &mdash; no `profiles.yml` required.
+- [dbt platform CLI](/guides/fusion-platform-local-workflow?step=3#dbt-platform-cli): For a CLI-only development experience (without the dbt VS Code extension), use the <Constant name="platform_cli" /> with <Constant name="fusion"/> set as your platform release track. Warehouse credentials are managed centrally in <Constant name="dbt_platform" /> and passed through automatically &mdash; no `profiles.yml` required.
 - [dbt VS Code extension](/guides/fusion-platform-local-workflow?step=3#dbt-vs-code-extension-profilesyml-required): For IDE-based local development, the dbt VS Code extension runs the <Constant name="fusion_engine" /> and its <Term id="lsp" /> features in a local process. This path requires a `profiles.yml` to connect directly to your warehouse.
 
 ### dbt platform CLI
 
 The [<Constant name="platform_cli" />](/docs/platform/dbt-cli-installation) is the lowest-friction path for <Constant name="dbt_platform" /> users who want a self-hosted CLI-only workflow without VS Code. It authenticates using your <Constant name="dbt_platform" /> session, and your warehouse credentials are managed centrally in <Constant name="dbt_platform" /> and passed through automatically.
 
-For detailed installation instructions, refer to [Install the dbt platform CLI](/docs/platform/dbt-cli-installation?version=1.10). The dbt platform CLI is installed from your local command prompt.
+For detailed installation instructions, refer to [Install the dbt platform CLI](/docs/platform/dbt-cli-installation?version=1.10). The <Constant name="platform_cli" /> is installed from your local command prompt.
 
 The configuration file downloaded from your <Constant name="dbt_platform" /> **Account settings** will facilitate the connection and authentication with your existing credentials. 
 
@@ -69,7 +69,7 @@ Environment variables you set in <Constant name="dbt_platform" /> apply to produ
 
 ### dbt platform CLI
 
-When you use the dbt platform CLI, <Constant name="dbt_platform" /> injects the same environment variables you use in production into your dbt platform CLI session. You don't need extra setup.
+When you use the <Constant name="platform_cli" />, <Constant name="dbt_platform" /> injects the same environment variables you use in production into your <Constant name="platform_cli" /> session. You don't need extra setup.
 
 ### VS Code extension (.env file)
 

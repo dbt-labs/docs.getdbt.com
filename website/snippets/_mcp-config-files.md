@@ -2,7 +2,7 @@
 
 <TabItem value="platform-only" label="dbt platform only">
 
-This option is for users who only want dbt platform features (Discovery API, Semantic Layer, job management) without self-hosted dbt platform CLI commands.
+This option is for users who only want dbt platform features (Discovery API, Semantic Layer, job management) without self-hosted <Constant name="platform_cli" /> commands.
 
 When you use only the dbt platform, the CLI tools are automatically disabled. You can find the `DBT_HOST` field value in your dbt platform account information under **Access URLs**.
 
@@ -27,7 +27,7 @@ When you use only the dbt platform, the CLI tools are automatically disabled. Yo
 
 <TabItem value="platform-cli" label="dbt platform + CLI">
 
-This option is for users who want both dbt platform CLI commands and dbt platform features (Discovery API, Semantic Layer, job management).
+This option is for users who want both <Constant name="platform_cli" /> commands and dbt platform features (Discovery API, Semantic Layer, job management).
 
 The `DBT_PROJECT_DIR` and `DBT_PATH` fields are required for CLI access. You can find the `DBT_HOST` field value in your dbt platform account information under **Access URLs**.
 
