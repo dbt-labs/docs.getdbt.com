@@ -112,7 +112,7 @@ A deployment environment needs two settings to run jobs:
 </SimpleTable>
 <br />
 
-You need to complete both settings. A deployment connection on its own is not enough for jobs to run. You also need a [connection profile](#connection-profiles) assigned to the environment.
+You need to complete both settings as a deployment connection on its own isn't enough for jobs to run. You also need a [connection profile](#connection-profiles) assigned to the environment.
 
 :::info Deployment connections
 
