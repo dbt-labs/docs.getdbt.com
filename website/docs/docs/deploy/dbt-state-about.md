@@ -38,6 +38,8 @@ When you run a command like `dbt build --select +my_model`, dbt State evaluates 
 - **Reuse node from different schema (clone)** — dbt State looks across all environments and jobs for a matching object with identical logic and fresh data. This includes schemas where a model was built before it ever ran in production. When multiple candidates exist, dbt State clones from the one with the freshest data, regardless of which environment it came from. For example, if a CI schema has fresher data than production and identical logic, dbt State clones from there. The node is marked as **Reused** at a fraction of the compute cost.
 - **Normal build** — If reuse is not possible, dbt builds the node as normal, automatically deferring any unselected upstream nodes.
 
+dbt State fetches dependency metadata in the background at the start of each run. Any node that is ready to skip or clone proceeds immediately, without waiting for the full prefetch to complete. Only nodes that need more information wait for the result before proceeding.
+
 Without dbt State, every selected node rebuilds on every run regardless of whether anything has changed.
 
 For the full list of available configs, see [dbt State configs](/reference/resource-configs/dbt-state-configs).

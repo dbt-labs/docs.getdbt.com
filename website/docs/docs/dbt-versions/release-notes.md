@@ -22,6 +22,8 @@ For <Constant name="fusion_engine" /> updates, refer to the [dbt-fusion changelo
 
 ## August 2026
 
+- **Enhancement:** dbt State now fetches dependency metadata in the background at the start of each run, so execution doesn't stall. Any node that is ready to skip or clone proceeds immediately, without waiting for the fetch to complete. Previously, dbt waited for the entire metadata fetch to complete before any node could execute. For more details, refer to [About dbt State](/docs/deploy/dbt-state-about).
+- **Enhancement:** On Snowflake, when [`metadata_warehouse`](/reference/resource-configs/metadata-warehouse) is configured, dbt State now runs metadata queries concurrently &mdash; one per schema, up to your profile's thread count &mdash; instead of sequentially. Previously, these queries ran one at a time even on a dedicated warehouse. Without a dedicated warehouse, dbt now emits a warning if the metadata fetch takes longer than 15 seconds.
 - **Beta**: [dbt Core 2.0](/docs/dbt-versions/core-upgrade/upgrading-to-v2) is now available in beta!
 - **New:** The [Analyst read](/docs/platform/manage-access/enterprise-permissions#analyst-read) permission set is now generally available (GA) for Enterprise plans. Analyst read is a project-level permission set that provides read-only access to analyze dbt models and project resources, and read-only users can connect to analysis features such as the [dbt MCP server](/docs/dbt-ai/about-mcp).
 - **Enhancement:** [Cost Insights](/docs/explore/cost-insights) now supports cost attribution for [Snowflake Adaptive Warehouses](https://docs.snowflake.com/en/user-guide/warehouses-adaptive). For setup details, refer to [Assign required permissions](/docs/explore/set-up-cost-insights#assign-required-permissions).

@@ -30,9 +30,9 @@ my_project:
 
 dbt State performs metadata introspection queries to determine whether models need to be rebuilt. On Snowflake, these queries run against your configured `warehouse` by default, which can cause queuing when your primary warehouse is under heavy load.
 
-`metadata_warehouse` lets you route dbt State metadata lookups to a separate, smaller warehouse &mdash; keeping introspection overhead off your main compute resource.
+`metadata_warehouse` lets you route these queries to a separate, smaller warehouse to keep introspection overhead off your main compute resource. When set, dbt issues metadata queries concurrently &mdash; one per schema, up to your profile's thread count &mdash; so they run in parallel without competing with model execution.
 
-If omitted, dbt State falls back to the `warehouse` setting in `profiles.yml`.
+Without `metadata_warehouse`, metadata queries run on your main warehouse. If they take longer than 15 seconds, dbt emits a warning suggesting you configure a dedicated warehouse.
 
 You can also use `metadata_warehouse` on the <Constant name="dbt_platform" /> by adding it as an [extended attribute](/docs/dbt-platform-environments#extended-attributes) in your environment settings.
 

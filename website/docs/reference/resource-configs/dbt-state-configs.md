@@ -78,7 +78,7 @@ models:
 | [`execute_hooks_on_any_reuse`](/reference/resource-configs/execute-hooks-on-any-reuse) | `false` | Node, folder, or project-level via model config | Whether pre- and post-hooks run when a node is reused without rebuilding. |
 | [`evaluate_volatile_sql`](/reference/resource-configs/evaluate-volatile-sql) | `false` | Node, folder, or project-level via model config | Whether dbt State stores and compares the runtime output of volatile SQL functions when deciding whether to rebuild. |
 | [`defer_to_target`](/reference/resource-configs/defer-to-target) | `prod` | Profile | (Self-managed only) Which profile target dbt State defers to. |
-| [`metadata_warehouse`](/reference/resource-configs/metadata-warehouse) | Profile `warehouse` | Profile | (Snowflake only) A separate warehouse for dbt State metadata lookups. |
+| [`metadata_warehouse`](/reference/resource-configs/metadata-warehouse) | Profile `warehouse` | Profile | (Snowflake only) A separate warehouse for dbt State metadata lookups. When set, lookups run concurrently per schema instead of sequentially. |
 
 
 ## Related docs
