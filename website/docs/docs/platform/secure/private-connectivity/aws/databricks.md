@@ -64,7 +64,7 @@ With self-serve, you request a Databricks PrivateLink endpoint in <Constant name
    <Lightbox src="/img/docs/dbt-platform/databricks-private-endpoint-request.png" title="Databricks endpoint request form showing Provider type, workspace name, and AWS region fields"/>
 
    :::warning Workspace name and region can't be changed
-   The workspace name and AWS region are fixed once the endpoint is created &mdash; you can't edit them afterward. If either value is entered incorrectly, provisioning fails. To fix it, delete the failed request and submit a new one with the correct details. No support ticket is needed.
+   The workspace name and AWS region are fixed once you create an endpoint. This means you can't edit them afterward. If either value is entered incorrectly, provisioning will fail. To fix it, delete the failed request and create a new one with the correct details. No support ticket is needed.
    :::
 
 8. After submission, a confirmation popup appears. From the popup, you can request another endpoint or return to **Private endpoints** to track request status.
