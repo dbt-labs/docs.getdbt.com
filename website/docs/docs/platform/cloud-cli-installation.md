@@ -1,5 +1,5 @@
 ---
-title: Install dbt platform CLI 
+title: Install the dbt platform CLI 
 sidebar_label: "Installation"
 id: dbt-cli-installation
 description: "Instructions for installing and configuring dbt platform's CLI tool."
