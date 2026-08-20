@@ -5,6 +5,7 @@ import rehypeCodeLanguage from "./plugins/rehypeCodeLanguage.js";
 import rehypeCleanMarkdown from "./plugins/rehypeCleanMarkdown.js";
 import rehypeTabsToHeadings from "./plugins/rehypeTabsToHeadings.js";
 import remarkBlogFootnoteLinks from "./plugins/remarkBlogFootnoteLinks.js";
+import remarkConstantsInCode from "./plugins/remarkConstantsInCode.js";
 const { themes } = require('prism-react-renderer')
 
 const { products, versions, versionedPages, versionedCategories } = require("./dbt-versions");
@@ -333,7 +334,7 @@ var siteSettings = {
           path: "docs",
           routeBasePath: "/",
           sidebarPath: require.resolve("./sidebars.js"),
-          remarkPlugins: [math],
+          remarkPlugins: [math, remarkConstantsInCode],
           rehypePlugins: [katex],
 
           editUrl:
@@ -353,7 +354,7 @@ var siteSettings = {
           postsPerPage: 20,
           blogSidebarTitle: "Recent posts",
           blogSidebarCount: 5,
-          remarkPlugins: [math, remarkBlogFootnoteLinks],
+          remarkPlugins: [math, remarkBlogFootnoteLinks, remarkConstantsInCode],
           rehypePlugins: [katex],
           // Un-truncated blog posts will throw an error
           // https://docusaurus.io/blog/releases/3.5#onuntruncatedblogposts
