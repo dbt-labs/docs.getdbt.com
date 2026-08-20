@@ -103,14 +103,18 @@ We recommend that the data warehouse credentials be for a dedicated user or serv
 
 A deployment environment needs two settings to run jobs:
 
-- **Deployment connection:** This setting controls where dbt builds objects in your warehouse, such as the database, schema, and warehouse.
-- **Connection profile:** This setting stores the credentials dbt uses to connect. You can [configure a connection profile](#connection-profiles) in the following section.
+| Setting | Scope | Controls |
+| --- | --- | --- |
+| **Deployment connection** | Environment-level | Where dbt builds objects in your warehouse (database, schema, and warehouse) |
+| **Connection profile** | Project-level (assigned to the environment) | How dbt authenticates, and the credentials it uses to connect |
 
-You need to complete both settings. A deployment connection on its own is not enough for jobs to run.
+<br />
 
-:::info Warehouse Connections
+You need to complete both settings. A deployment connection on its own is not enough for jobs to run. You also need a [connection profile](#connection-profiles) assigned to the environment.
 
-Warehouse connections are created and managed at the account-level for <Constant name="dbt" /> accounts and assigned to an environment. To change warehouse type, we recommend creating a new environment.
+:::info Deployment connections
+
+Deployment connections are created and managed at the account-level for <Constant name="dbt" /> accounts and assigned to an environment. To change warehouse type, we recommend creating a new environment.
 
 Each project can have multiple connections (Snowflake account, Redshift host, Bigquery project, Databricks host, and so on.) of the same warehouse type. Some details of that connection (databases/schemas/and so on.) can be overridden within this section of the <Constant name="dbt" /> environment settings.
 :::
