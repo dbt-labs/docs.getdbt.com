@@ -12,5 +12,5 @@ Generate documentation, tests, metrics, and semantic models [resources](/docs/bu
    - Once defined, click **dbt Copilot** and select **Generate Metrics**.
    - Write a prompt describing the metrics you want to generate and press enter.
    - **Accept** or **Reject** the generated code.
-4. Verify the AI-generated code. You can update or fix the code as needed.
-5. Click **Save As**. You should see the file changes under the **Version control** section.
+3. Verify the AI-generated code. You can update or fix the code as needed.
+4. Click **Save As**. You should see the file changes under the **Version control** section.
