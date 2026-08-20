@@ -104,10 +104,12 @@ We recommend that the data warehouse credentials be for a dedicated user or serv
 A deployment environment needs two settings to run jobs:
 
 | Setting | Scope | Controls |
+<SimpleTable>
+
 | --- | --- | --- |
 | **Deployment connection** | Environment-level | Where dbt builds objects in your warehouse (database, schema, and warehouse) |
 | **Connection profile** | Project-level (assigned to the environment) | How dbt authenticates, and the credentials it uses to connect |
-
+</SimpleTable>
 <br />
 
 You need to complete both settings. A deployment connection on its own is not enough for jobs to run. You also need a [connection profile](#connection-profiles) assigned to the environment.
