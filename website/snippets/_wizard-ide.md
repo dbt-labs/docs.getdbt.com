@@ -16,7 +16,7 @@ To use the <Constant name="wizard" />, follow these steps:
 
 1. Open your dbt project in the [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio), then click **<Constant name="wizard" />** in the command palette.
 2. Start a prompt in several ways in the [<Constant name="wizard" /> panel](/docs/dbt-ai/wizard-ide):
-   - **Quick actions**: Use [quick-action resource generation](/docs/dbt-ai/wizard-ide#quick-action-resource-generation) at the top of the panel to generate documentation, tests, semantic models, and metrics.
+   - **Quick actions**: Use [quick-action resource generation](/docs/dbt-ai/wizard-ide#quick-action-resource-generation) at the top of the panel for quick action prompts.
    - **Plain text**: Type directly into the text field to describe what you want to build or change.
    - **Model context**: Type `@` to select a model as context. This scopes the agent's changes to that resource.
 3. Select the [**Agent mode** button](/docs/dbt-ai/wizard-ide) to specify the mode for the <Constant name="wizard" />. Available modes are **Ask for approval** (default) and **Edit files automatically**.
@@ -41,7 +41,7 @@ For more details on the <Constant name="wizard" /> and how it works, expand the 
 
 The <Constant name="wizard" /> panel contains:
 
-1. **Quick actions** (center): Buttons at the top of the panel for common tasks like generating documentation, tests, semantic models, and metrics. When selected, the text field is pre-filled with a prompt.
+1. **Quick actions** (center): Buttons at the top of the panel for quick action prompts. When selected, the text field is pre-filled with a prompt.
 2. **Agent mode button** (bottom left): Switch between **Ask for approval** and **Edit files automatically** mode. Click the button to change modes.
 3. **dbt model context** (bottom left): Shows the currently open file. Use `@` in the text field to reference a different dbt model. Click **x** to remove the dbt model context.
 4. **Text input field** (bottom left): Type your prompt in the text field to describe what you want to build or change. Type `@` to select a dbt model as context. This scopes the agent's changes to that resource.
