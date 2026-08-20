@@ -8,6 +8,10 @@ availability:
   access: free
 ---
 
+import CoreVersionDeprecation from '/snippets/_core-version-deprecation-callout.md';
+
+<CoreVersionDeprecation />
+
 <Constant name="core" /> v1.6 has three significant areas of focus:
 1. Next milestone of [multi-project deployments](https://github.com/dbt-labs/dbt-core/discussions/6725): improvements to contracts, groups/access, versions; and building blocks for cross-project `ref`
 1. Semantic layer re-launch: <Constant name="core" /> and [MetricFlow](/docs/build/about-metricflow) integration
