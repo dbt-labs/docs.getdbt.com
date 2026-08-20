@@ -165,77 +165,6 @@ Advanced users can configure multiple projects to use the same dbt CLI executabl
 
 </TabItem>
 
-<TabItem value="pip" label="Existing dbt Core users (pip)">
-
-If you already have dbt Core installed, the <Constant name="platform_cli" /> may conflict. Here are some considerations:
-
-- **Prevent conflicts** <br /> Use both the <Constant name="platform_cli" /> and <Constant name="core" /> with `pip` and create a new virtual environment.<br /><br />
-- **Use both <Constant name="platform_cli" /> and <Constant name="core" /> with brew or native installs** <br /> If you use Homebrew, consider aliasing the <Constant name="platform_cli" /> as "dbt-cli" to avoid conflict. For more details, check the [FAQs](#faqs) if your operating system experiences path conflicts.<br /><br />
-- **Reverting to dbt Core from the <Constant name="platform_cli" />** <br />
-  If you've already installed the <Constant name="platform_cli" /> and need to switch back to dbt Core:<br />
-  - Uninstall the <Constant name="platform_cli" /> using the command: `pip uninstall dbt`
-  - Reinstall <Constant name="core" /> using the following command, replacing "adapter_name" with the appropriate adapter name:
-    ```shell
-    python -m pip install dbt-adapter_name --force-reinstall
-    ```
-    For example, if you use Snowflake as an adapter, run: `python -m pip install dbt-snowflake --force-reinstall`
-
---------
-
-Before installing the <Constant name="platform_cli" />, make sure you have Python installed and your virtual environment (venv or pyenv) configured. If you already have a Python environment configured, you can skip to the [pip installation step](#install-dbt-cloud-cli-in-pip).
-
-### Install a virtual environment
-
-We recommend using virtual environments (venv) to isolate the `dbt-cli` environment.
-
-1. Create a new virtual environment named "dbt-cli" with this command:
-   ```shell
-   python3 -m venv dbt-cli
-    ```
-
-2. Activate the virtual environment each time you create a shell window or session, depending on your operating system:
-
-   - For Mac and Linux, use: `source dbt-cli/bin/activate`<br/>
-   - For Windows, use: `dbt-cli\Scripts\activate`
-
-3. (Mac and Linux only) Create an alias to activate your dbt environment with every new shell window or session. You can add the following to your shell's configuration file (for example, `$HOME/.bashrc, $HOME/.zshrc`) while replacing `<PATH_TO_VIRTUAL_ENV_CONFIG>` with the path to your virtual environment configuration:
-   ```shell
-   alias env_dbt='source <PATH_TO_VIRTUAL_ENV_CONFIG>/bin/activate'
-   ```
-
-### Install dbt CLI in pip
-
-1. (Optional) If you already have <Constant name="core" /> installed, this installation will override that package. Check your <Constant name="core" /> version in case you need to reinstall it later by running the following command:
-
-  ```bash
-  dbt --version
-  ```
-
-2. Make sure you're in your virtual environment and run the following command to install the <Constant name="platform_cli" />:
-
-  ```bash
-  pip install dbt --no-cache-dir
-  ```
-
-  If there are installation issues, running the command with the `--force-reinstall` argument might help:
-   ```bash
-   pip install dbt --no-cache-dir --force-reinstall
-   ``` 
-
-3. (Optional) To revert to <Constant name="core" />, first uninstall both the <Constant name="platform_cli" /> and <Constant name="core" />. Then reinstall <Constant name="core" />.
-
-  ```bash
-  pip uninstall dbt-core dbt
-  pip install dbt-adapter_name --force-reinstall
-  ```
-
-4. Clone your repository to your local computer using `git clone`. For example, to clone a GitHub repo using HTTPS format, run `git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY`.
-
-5. After cloning your repo, [configure](/docs/platform/configure-dbt-cli) the <Constant name="platform_cli" /> for your <Constant name="dbt" /> project. This lets you run dbt commands like [`dbt environment show`](/reference/commands/dbt-environment?version=2.0) to view your <Constant name="dbt" /> configuration or `dbt compile` to compile your project and validate models and tests. You can also add, edit, and synchronize files with your repo.
-
-</TabItem>
-
-
 </Tabs>
 
 ## Update dbt CLI
@@ -261,14 +190,6 @@ To update, follow the [Windows installation instructions](/docs/platform/dbt-cli
 
 To update, follow the [Linux installation instructions](/docs/platform/dbt-cli-installation?install=linux#install-dbt-cloud-cli) and replace the existing `dbt` executable with the new one.
 
-</TabItem>
-
-<TabItem value="existing" label="Existing dbt Core users (pip)">
-
-To update:
-- Make sure you're in your virtual environment
-- Run `python -m pip install --upgrade dbt`.
-	
 </TabItem>
 
 </Tabs>
@@ -306,9 +227,8 @@ For compatibility, both the <Constant name="platform_cli" /> and <Constant name=
 
 If you have <Constant name="core" /> installed locally, either:
 
-1. Install using the <code>pip3 install dbt</code> [pip](/docs/platform/dbt-cli-installation?install=pip#install-dbt-cloud-cli) command.
-2. Install natively, ensuring you either deactivate the virtual environment containing <Constant name="core" /> or create an alias for the <Constant name="platform_cli" />. 
-3. (Advanced users) Install natively, but modify the $PATH environment variable to correctly point to the <Constant name="platform_cli" /> binary to use both <Constant name="platform_cli" /> and <Constant name="core" /> together.
+1. Install natively, ensuring you either deactivate the virtual environment containing <Constant name="core" /> or create an alias for the <Constant name="platform_cli" />. 
+2. (Advanced users) Install natively, but modify the $PATH environment variable to correctly point to the <Constant name="platform_cli" /> binary to use both <Constant name="platform_cli" /> and <Constant name="core" /> together.
 
 You can always uninstall the <Constant name="platform_cli" /> to return to using <Constant name="core" />.
 
