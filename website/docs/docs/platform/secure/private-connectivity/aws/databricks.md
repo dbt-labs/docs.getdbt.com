@@ -34,7 +34,7 @@ You can set up a Databricks AWS PrivateLink endpoint in two ways:
 
 _Self-serve private endpoints are currently in beta for Databricks on AWS, and available to all eligible customers. This feature isn't available for Azure or GCP. If you don't see **Private endpoints** in your account settings, use the [Support-led setup](#support-led-setup) instead._
 
-With self-serve, you request a Databricks PrivateLink endpoint in <Constant name="dbt_platform" /> without opening a support ticket. If a request fails, you can delete it and retry on your own.
+With self-serve, you request a Databricks PrivateLink endpoint in <Constant name="dbt_platform" /> without opening a support ticket. If a request fails, you can delete the endpoint in <Constant name="dbt_platform" /> and retry on your own.
 
 #### Prerequisites
 
