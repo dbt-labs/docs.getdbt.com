@@ -9,7 +9,7 @@ Generate documentation, tests, metrics, and semantic models [resources](/docs/bu
    <CopilotLimitation />
 
    - To generate metrics, you need to first have semantic models defined. 
-   - Once defined, click **dbt Copilot** and select **Generate Metrics**.
+   - Once defined, click **dbt Copilot** and select **Generate metrics**.
    - Write a prompt describing the metrics you want to generate and press enter.
    - **Accept** or **Reject** the generated code.
 3. Verify the AI-generated code. You can update or fix the code as needed.
