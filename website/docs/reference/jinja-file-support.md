@@ -13,7 +13,7 @@ This reference maps common file types to three categories of Jinja support:
 - **Built-in dbt functions**: Context methods like [`env_var()`](/reference/dbt-jinja-functions/env_var), [`ref()`](/reference/dbt-jinja-functions/ref), and [`target`](/reference/dbt-jinja-functions/target)
 - **Custom macros**: Calling project-defined macros like `{{ my_macro() }}`
 
-For most file types, behavior is the same across engines. For examples and caveats on YAML edge cases, refer to [Examples and caveats](#examples-and-caveats). For guidance on writing Jinja in dbt, refer to [Jinja and macros](/docs/build/jinja-macros). For the full list of built-in functions available in a specific YAML file, refer to the per-file [dbt Jinja context](/reference/dbt-jinja-functions-context-variables) pages.
+For most file types, behavior is the same across versions. For examples and caveats on YAML edge cases, refer to [Examples and caveats](#examples-and-caveats). For guidance on writing Jinja in dbt, refer to [Jinja and macros](/docs/build/jinja-macros). For the full list of built-in functions available in a specific YAML file, refer to the per-file [dbt Jinja context](/reference/dbt-jinja-functions-context-variables) pages.
 
 ## Summary table
 

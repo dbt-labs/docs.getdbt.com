@@ -26,7 +26,7 @@ This section clarifies where you can use [Jinja](/docs/build/jinja-macros), nest
 
 <VersionBlock firstVersion="2.0">
 
-- You can use Jinja in almost every YAML file in dbt, including `dependencies.yml` on the <Constant name="fusion_engine" />. If the project must also run on <Constant name="core" />, prefer `packages.yml` for Jinja-based package specs.
+- You can use Jinja in almost every YAML file in dbt, including `dependencies.yml` on the <Constant name="fusion_engine" />. If your project must also run on <Constant name="core" />, this will not work. Prefer `packages.yml` for Jinja-based package specs so the project stays backwards compatible.
 
 </VersionBlock>
 
