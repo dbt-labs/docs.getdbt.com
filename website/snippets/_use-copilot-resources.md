@@ -4,8 +4,7 @@ import CopilotLimitation from '/snippets/_copilot-limitation.md';
 Generate documentation, tests, metrics, and semantic models [resources](/docs/build/projects) with the click-of-a-button in the [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio) using dbt Copilot, saving you time. To access and use this AI feature:
 
 1. Navigate to the <Constant name="studio_ide" /> and select a SQL model file under the **File Explorer**.
-2. In the **Console** section (under the **File Editor**), click **dbt Copilot** to view the available AI actions.
-3. Select the available options to generate the YAML config: **Generate Documentation**, **Generate Tests**, **Generate Semantic Model**, or **Generate Metrics**. To generate multiple YAML configs for the same model, click each option separately. dbt Copilot intelligently saves the YAML config in the same file.
+2. In the **Console** section (under the **File Editor**), click the dbt Copilot button and choose what you want to generate, such as documentation, tests, metrics, SQL, or semantic models. To generate multiple YAML configs for the same model, select each option separately. dbt Copilot saves them to the same YAML file.
 
    <CopilotLimitation />
 
