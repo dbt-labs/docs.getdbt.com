@@ -37,12 +37,6 @@ import Generatemetadata from '/snippets/_generate-metadata.md';
 If your organization works in both dbt Core and Cloud, you can unify these workflows by automatically uploading dbt Core artifacts into dbt Cloud and viewing them in <Constant name="catalog" /> for a more connected dbt experience. To learn more, visit [hybrid projects](/docs/deploy/hybrid-projects).
 :::
 
-### External metadata ingestion <Lifecycle status="preview" />
-
-Connect directly to your data warehouse with [external metadata ingestion](/docs/explore/external-metadata-ingestion), giving you visibility into tables, views, and other resources that aren't defined in dbt with <Constant name="catalog" />.
-
-We create dbt metadata and pull external metadata. <Constant name="catalog" /> uses the metadata provided by the [Discovery API](/docs/dbt-apis/discovery-api) to display details about the state of your project. The available metadata depends on which [deployment environment](/docs/deploy/deploy-environments) you’ve designated as production or staging in your dbt project.
-
 ## Catalog overview 
 
 :::info [Global navigation](/docs/explore/global-navigation) <Lifecycle status='self_service,managed,managed_plus' />
@@ -69,7 +63,6 @@ When using global navigation and searching across your projects, the following p
 
 - Your project access permissions determine which dbt projects appear in the left-hand menu of the global navigation.
 - In <Constant name="catalog" /> searches, we use soft access controls, you'll see all matching resources in search results, with clear indicators for items you don't have access to.
-- For external metadata, the global platform credential controls which resources metadata users can discover. See [External metadata ingestion](/docs/explore/external-metadata-ingestion) for more details.
 
 ### Availability by plan
 
@@ -87,7 +80,6 @@ When using global navigation and searching across your projects, the following p
 | [Model query history](/docs/explore/model-query-history) | ❌ | ✅ | ✅ |
 | [Downstream exposures](/docs/explore/view-downstream-exposures) | ❌ | ✅ | ✅ |
 | [Data health tile](/docs/explore/data-tile) | ❌ | ✅ | ✅ |
-| [External metadata ingestion](/docs/explore/external-metadata-ingestion) | ❌ | ✅ | ✅ |
 
 import ExplorerCourse from '/snippets/_explorer-course-link.md';
 

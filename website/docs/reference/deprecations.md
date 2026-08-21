@@ -61,9 +61,11 @@ Click into a job to view more details and locate the deprecation warnings in the
 
 ### Automatic remediation
 
-Some deprecations can be automatically fixed with a script. Read more about it in [this dbt blog post](https://www.getdbt.com/blog/how-to-get-ready-for-the-new-dbt-engine#:~:text=2.%20Resolve%20deprecation%20warnings). [Download the script](https://github.com/dbt-labs/dbt-autofix) and follow the installation instructions to get started. 
+Some deprecations can be automatically fixed with a script. Read more about it in [this dbt blog post](https://www.getdbt.com/blog/how-to-get-ready-for-the-new-dbt-engine#:~:text=2.%20Resolve%20deprecation%20warnings). [Download the script](https://github.com/dbt-labs/dbt-autofix) and follow the installation instructions to get started.
 
-**Coming soon**: The IDE will soon have an interface for running this same script to remediate deprecation warnings in <Constant name="dbt" />.
+You can run this script directly from [<Constant name="studio_ide"/>](/docs/platform/studio-ide/autofix-deprecations) using the **Autofix warnings** button to resolve deprecation warnings in <Constant name="dbt_platform" />.
+
+<Lightbox src="/img/docs/dbt-platform/platform-ide/autofix-button.png" width="90%" title="Use the Autofix warnings button in the Studio IDE to address deprecation warnings in dbt platform."/>
 
 ### Silence deprecation warnings
 
