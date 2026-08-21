@@ -104,7 +104,7 @@ sources:
 
 This is not supported in <Constant name="core_v1" />, because the two engines use different Jinja contexts when rendering YAML:
 - <Constant name="core_v2" /> registers project macros before rendering, so they're available to Jinja in the YAML. 
-- In <Constant name="core_v1" />, YAML files are rendered using a more limited context that includes only built-in Jinja functions and `doc()`. Project macros aren't registered as part of it, even though they're registered before the YAML is rendered.
+- In <Constant name="core_v1" />, YAML files are rendered using a separate, restricted context that doesn't include project macros &mdash; only built-in Jinja functions like `env_var()` and `doc()`.
 
 For more information, refer to [Using macros in YAML files](/docs/build/jinja-macros#using-macros-in-yaml-files).
 
