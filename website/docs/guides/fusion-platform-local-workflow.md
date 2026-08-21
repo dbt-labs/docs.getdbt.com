@@ -28,7 +28,7 @@ How you authenticate to your data warehouse locally depends on which self-hosted
 - [dbt platform CLI](/guides/fusion-platform-local-workflow?step=3#dbt-platform-cli): For a CLI-only development experience (without the dbt VS Code extension), use the <Constant name="platform_cli" /> with <Constant name="fusion"/> set as your platform release track. Warehouse credentials are managed centrally in <Constant name="dbt_platform" /> and passed through automatically &mdash; no `profiles.yml` required.
 - [dbt VS Code extension](/guides/fusion-platform-local-workflow?step=3#dbt-vs-code-extension-profilesyml-required): For IDE-based local development, the dbt VS Code extension runs the <Constant name="fusion_engine" /> and its <Term id="lsp" /> features in a local process. This path requires a `profiles.yml` to connect directly to your warehouse.
 
-### dbt platform CLI
+### <Constant name="platform_cli" />
 
 The [<Constant name="platform_cli" />](/docs/platform/dbt-cli-installation) is the lowest-friction path for <Constant name="dbt_platform" /> users who want a self-hosted CLI-only workflow without VS Code. It authenticates using your <Constant name="dbt_platform" /> session, and your warehouse credentials are managed centrally in <Constant name="dbt_platform" /> and passed through automatically.
 
@@ -67,7 +67,7 @@ We're working on a solution that lets you develop locally in the dbt VS Code ext
 
 Environment variables you set in <Constant name="dbt_platform" /> apply to production runs and the <Constant name="studio_ide" /> sessions. For local development, you manage environment variables separately.
 
-### dbt platform CLI
+### <Constant name="platform_cli" />
 
 When you use the <Constant name="platform_cli" />, <Constant name="dbt_platform" /> injects the same environment variables you use in production into your <Constant name="platform_cli" /> session. You don't need extra setup.
 

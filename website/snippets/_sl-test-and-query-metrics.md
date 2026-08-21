@@ -14,7 +14,7 @@ The <Constant name="studio_ide" /> **Status button** (located in the bottom righ
 
 Once viewed, make sure you commit and merge your changes in your project.
 
-### dbt platform CLI users
+### <Constant name="platform_cli" /> users
 
 This section is for <Constant name="platform_cli" /> users. MetricFlow commands are integrated with <Constant name="dbt" />, which means you can run MetricFlow commands as soon as you install the <Constant name="platform_cli" />. Your account will automatically manage version control for you.
 
