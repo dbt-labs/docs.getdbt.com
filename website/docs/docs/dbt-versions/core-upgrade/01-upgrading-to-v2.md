@@ -92,6 +92,22 @@ When developing v2, there were opportunities to improve the dbt framework — fa
 
 When upgrading to v2, you should expect the following changes in functionality:
 
+### Calling project macros in YAML files
+
+You can call project macros directly in YAML files such as `sources.yml` and `schema.yml`:
+
+```yaml
+sources:
+  - name: raw_orders
+    database: "{{ get_environment() }}"
+```
+
+This is not supported in <Constant name="core_v1" />, because the two engines use different Jinja contexts when rendering YAML:
+- <Constant name="core_v2" /> registers project macros before rendering, so they're available to Jinja in the YAML. 
+- In <Constant name="core_v1" />, YAML files are rendered using a more limited context that includes only built-in Jinja functions and `doc()`. Project macros aren't registered as part of it, even though they're registered before the YAML is rendered.
+
+For more information, refer to [Using macros in YAML files](/docs/build/jinja-macros#using-macros-in-yaml-files).
+
 #### Parse time printing of relations will print out the full qualified name, instead of an empty string
 
 In dbt Core v1.x, when printing the result of `get_relation()`, the parse time output for that Jinja would print `None` (the undefined object coerces to the string "None").
@@ -419,12 +435,23 @@ or config.meta_require('my_key') instead.
 
 Behavior when a key exists only in meta:
 
+<SimpleTable>
 | Method | Behavior |
 |--------|----------|
 | `config.get('my_key')` | Returns the default value and emits a warning. |
 | `config.require('my_key')` | Raises an error and emits a warning. |
+</SimpleTable>
 
-To access custom configurations stored under meta, use the explicit methods:
+In addition, accessing the `meta` dictionary itself (rather than a specific key) behaves differently across engines:
+
+<SimpleTable>
+| Engine | `config.get('meta', default={})` |
+|--------|-----------------------------------|
+| <Constant name="core_v1" /> | Does not work. |
+| <Constant name="core_v2" /> | Returns the full `meta` dictionary. |
+</SimpleTable>
+
+To access custom configurations stored under `meta`, use the explicit methods:
 
 ```jinja
 {% set owner = config.meta_get('owner') %}
