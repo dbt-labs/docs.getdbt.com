@@ -22,7 +22,7 @@ For <Constant name="fusion_engine" /> updates, refer to the [dbt-fusion changelo
 
 ## August 2026
 
-- **New:** The [`allow_clones`](/reference/resource-configs/allow-clones) profile-level setting lets you control whether dbt State can clone tables into a target environment. Previously, there was no way to disable cloning &mdash; dbt State always cloned from any environment when a matching table was found.
+- **New:** The [`allow_clones`](/reference/resource-configs/allow-clones) profile-level setting lets you control whether dbt State can clone tables into a target environment. Previously, there was no way to disable cloning &mdash; dbt State always cloned into any environment when a matching table was found.
 - **Beta**: [dbt Core 2.0](/docs/dbt-versions/core-upgrade/upgrading-to-v2) is now available in beta!
 - **New:** The [Analyst read](/docs/platform/manage-access/enterprise-permissions#analyst-read) permission set is now generally available (GA) for Enterprise plans. Analyst read is a project-level permission set that provides read-only access to analyze dbt models and project resources, and read-only users can connect to analysis features such as the [dbt MCP server](/docs/dbt-ai/about-mcp).
 - **Enhancement:** [Cost Insights](/docs/explore/cost-insights) now supports cost attribution for [Snowflake Adaptive Warehouses](https://docs.snowflake.com/en/user-guide/warehouses-adaptive). For setup details, refer to [Assign required permissions](/docs/explore/set-up-cost-insights#assign-required-permissions).
