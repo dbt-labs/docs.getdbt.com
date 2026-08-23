@@ -60,7 +60,12 @@ function CardLayout({href, icon, title, description, hoverSnippet}) {
         )}
         title={title}
       >
-        {icon} {title}
+        {/* The icon is a decorative theme glyph (📄️/🗃️/🔗). data-md-hide keeps
+            it on the rendered site but strips it (via rehypeMdHide) from the
+            generated per-page markdown, where it was leaking into card-list
+            headings as `## [📄️ Title](...)`. */}
+        <span data-md-hide="true">{icon} </span>
+        {title}
       </Heading>
       {description && (
         <p
