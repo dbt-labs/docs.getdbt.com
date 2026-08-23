@@ -1298,29 +1298,7 @@ Available with the [dbt "Latest" release track](/docs/dbt-versions/dbt-release-t
 
 Pseudocolumns are queryable columns that don't appear in the information schema. BigQuery [external tables](https://docs.cloud.google.com/bigquery/docs/external-tables) expose a [`_FILE_NAME` pseudocolumn](https://docs.cloud.google.com/bigquery/docs/query-cloud-storage-data#query_the_file_name_pseudo-column) that identifies the source file for each row.
 
-Previously, the only way to include a pseudocolumn in a unit test was to use `format: sql`, which required writing raw SQL for the entire input and specifying every column. For example:
-
-```yaml
-unit_tests:
-  - name: test_external_table_filter
-    model: stg_events
-    given:
-      - input: source('raw', 'events')
-        format: sql
-        rows: |
-          select 1 as id, 'click' as event_type, 'gs://bucket/2024/jan.csv' as _FILE_NAME
-```
-
-Starting in `dbt-bigquery` v1.13, dbt automatically includes `_FILE_NAME` when retrieving columns for unit tests on BigQuery external tables. This means you can provide `_FILE_NAME` values in `dict` or `csv` fixture formats without needing to use `format: sql`. For example:
-
-<Tabs
-  defaultValue="dict"
-  values={[
-    { label: 'dict', value: 'dict', },
-    { label: 'csv', value: 'csv', },
-  ]
-}>
-<TabItem value="dict">
+Starting in `dbt-bigquery` v1.13, you can include `_FILE_NAME` directly in `dict` or `csv` fixture rows without using `format: sql`. For example:
 
 ```yaml
 unit_tests:
@@ -1337,106 +1315,11 @@ unit_tests:
         - {id: 2, source_file: "gs://my-bucket/file2.csv"}
 ```
 
-</TabItem>
-<TabItem value="csv">
-
-```yaml
-unit_tests:
-  - name: test_external_model
-    model: my_external_model
-    given:
-      - input: source('my_source', 'external_table')
-        format: csv
-        rows: |
-          id,value,_FILE_NAME
-          1,foo,gs://my-bucket/file1.csv
-          2,bar,gs://my-bucket/file2.csv
-    expect:
-      rows:
-        - {id: 1, source_file: "gs://my-bucket/file1.csv"}
-        - {id: 2, source_file: "gs://my-bucket/file2.csv"}
-```
-
-</TabItem>
-</Tabs>
-
-Other BigQuery pseudocolumns (such as `_PARTITIONTIME` or `_TABLE_SUFFIX`) are not supported in unit tests.
-
 Note the following behaviors:
 
-- If you omit `_FILE_NAME` from a fixture row, dbt defaults the value to `null`. Include it only in rows where the value is relevant to your test.
-- If your model outputs `_FILE_NAME`, you can use it in `expect` rows like any other column &mdash; use the name as it appears in the model output. Pseudocolumn handling only applies to `given` fixtures.
-
-    <Tabs
-      defaultValue="aliased"
-      values={[
-        { label: 'With alias', value: 'aliased', },
-        { label: 'Without alias', value: 'passthrough', },
-      ]
-    }>
-    <TabItem value="aliased">
-
-    If your model selects `_FILE_NAME` with an alias:
-
-    <File name='my_model.sql'>
-
-    ```sql
-    select
-        id,
-        _FILE_NAME as source_file
-    from {{ source('my_source', 'external_table') }}
-    ```
-
-    </File>
-
-    Use the alias name in `expect`:
-
-    ```yaml
-    unit_tests:
-      - name: test_file_name_aliased
-        model: my_model
-        given:
-          - input: source('my_source', 'external_table')
-            rows:
-              - {id: 1, _FILE_NAME: "gs://my-bucket/file1.csv"}
-        expect:
-          rows:
-            - {id: 1, source_file: "gs://my-bucket/file1.csv"}
-    ```
-
-    </TabItem>
-    <TabItem value="passthrough">
-
-    If your model selects `_FILE_NAME` without an alias:
-
-    <File name='my_model.sql'>
-
-    ```sql
-    select
-        id,
-        _FILE_NAME
-    from {{ source('my_source', 'external_table') }}
-    ```
-
-    </File>
-
-    Use `_FILE_NAME` in `expect`:
-
-    ```yaml
-    unit_tests:
-      - name: test_file_name_passthrough
-        model: my_model
-        given:
-          - input: source('my_source', 'external_table')
-            rows:
-              - {id: 1, _FILE_NAME: "gs://my-bucket/file1.csv"}
-        expect:
-          rows:
-            - {id: 1, _FILE_NAME: "gs://my-bucket/file1.csv"}
-    ```
-
-    </TabItem>
-    </Tabs>
+- Only `_FILE_NAME` is supported. Other BigQuery pseudocolumns (such as `_PARTITIONTIME` or `_TABLE_SUFFIX`) are not supported in unit tests.
+- If you omit `_FILE_NAME` from a fixture row, dbt defaults the value to `null`.
+- In `expect` rows, use the column name as it appears in the model output (the alias, if one is defined).
 
 ### Limitations
 
