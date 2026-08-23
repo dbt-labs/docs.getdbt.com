@@ -1292,13 +1292,13 @@ The BigQuery Python models also have the following additional configuration para
 
 ### Pseudocolumns <Lifecycle status="beta" />
 
-:::tip Did you know...
-Available with the [dbt "Latest" release track](/docs/dbt-versions/dbt-release-tracks).
+:::note
+Available with a BigQuery connection in the <Constant name="dbt_platform" /> ["Latest" release track](/docs/dbt-versions/dbt-release-tracks), or `dbt-bigquery` v1.13 and later.
 :::
 
 Pseudocolumns are queryable columns that don't appear in the information schema. BigQuery [external tables](https://docs.cloud.google.com/bigquery/docs/external-tables) expose a [`_FILE_NAME` pseudocolumn](https://docs.cloud.google.com/bigquery/docs/query-cloud-storage-data#query_the_file_name_pseudo-column) that identifies the source file for each row.
 
-Starting in `dbt-bigquery` v1.13, you can include `_FILE_NAME` directly in `dict` or `csv` fixture rows without using `format: sql`. For example:
+You can include `_FILE_NAME` directly in `dict` or `csv` fixture rows without using `format: sql`. For example:
 
 ```yaml
 unit_tests:
