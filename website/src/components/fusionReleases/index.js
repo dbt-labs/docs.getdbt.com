@@ -234,7 +234,10 @@ export default function FusionReleases() {
 
       <h3>All releases</h3>
 
-      <div className={styles.controls}>
+      {/* Client-side search/filter controls -- interactive chrome with no place
+          in a static Markdown export; data-md-hide drops it from the generated
+          Markdown while the rendered page keeps it. */}
+      <div className={styles.controls} data-md-hide="true">
         <input
           type="text"
           className={styles.searchInput}
@@ -273,7 +276,7 @@ export default function FusionReleases() {
         </div>
       </div>
 
-      <div className={styles.resultCount}>
+      <div className={styles.resultCount} data-md-hide="true">
         Showing {filteredReleases.length} of {sortedReleases.length} releases
       </div>
 
