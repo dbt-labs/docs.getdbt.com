@@ -32,17 +32,7 @@ How you authenticate to your data warehouse locally depends on which self-hosted
 
 The [<Constant name="platform_cli" />](/docs/platform/dbt-cli-installation) is the lowest-friction path for <Constant name="dbt_platform" /> users who want a self-hosted CLI-only workflow without VS Code. It authenticates using your <Constant name="dbt_platform" /> session, and your warehouse credentials are managed centrally in <Constant name="dbt_platform" /> and passed through automatically.
 
-For detailed installation instructions, refer to [Install the dbt CLI](/docs/platform/dbt-cli-installation?version=1.10).
-
-The dbt platform CLI is installed from your local command prompt. For example:
-
-```shell
-# Install the dbt platform CLI (if not already installed)
-pip3 install dbt
-
-# Verify your connection
-dbt debug
-```
+For detailed installation instructions, refer to [Install the dbt CLI](/docs/platform/dbt-cli-installation?version=1.10). The dbt platform CLI is installed from your local command prompt.
 
 The configuration file downloaded from your <Constant name="dbt_platform" /> **Account settings** will facilitate the connection and authentication with your existing credentials. 
 

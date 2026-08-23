@@ -68,10 +68,17 @@ When you're ready to upgrade your project(s) to <Constant name="fusion_engine" /
 
 #### Prerequisites
 
-To take advantage of the upgrade assistant, you'll need to meet the following prerequisites:
+To take advantage of the upgrade assistant and other upgrade tools, you'll need to meet the following prerequisites:
 - Your dbt project must be updated to use the **Latest** release track.
 - You must have a `developer` license.
-- You must have the <Constant name="Fusion" /> beta enabled for your account. For more information, please contact your account manager. 
+- You must have the proper [permissions set](/docs/platform/manage-access/enterprise-permissions) to execute individual upgrade tasks. Migrating to Fusion is a multi-step process and some of these steps may be repeated across projects by different users:
+
+| Upgrade task | Required permission(s) | Supported permission sets |
+|---------|------------------------|-----------------------------|
+| Enable Fusion access (triggers migration flows) | Fusion readiness: `write` <br></br> Projects: `write` | Admin, Account Admin and anyone assigned the Fusion admin set, provided their base role also has `write` access to projects |
+| View Fusion readiness and job eligibility | Fusion readiness: `read` | Developer, Admin, Member, Account Admin, Fusion admin |
+| **Run once on Fusion** job action | Runs: `write` | Job Admin, Job Runner, Admin, Member, Project Creator, Account Admin |
+| Enable Fusion-latest for an environment | Environments: `write` | Job Admin, Admin, Member, Project Creator, Account Admin |
 
 #### Assign access to upgrade
 
@@ -120,7 +127,7 @@ To begin the process of upgrading to <Constant name="fusion" /> with the assista
 
   <Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/choosing-dbt-version/autofix-success.png" width="60%" title="You're now ready to upgrade to Fusion in your development environment!"/>
 
-Now that you've upgraded your development environment to <Constant name="Fusion" />, you're ready to start the process of upgrading your Production, Staging, and General environments. Follow your organization's standard procedures and use the [release tracks](#release-tracks) to upgrade.
+Now that you've upgraded your development environment to <Constant name="fusion" />, you're ready to start the process of upgrading your Production, Staging, and General environments. Follow your organization's standard procedures and use the [release tracks](#release-tracks) to upgrade.
 
 import FusionReadinessPanel from '/snippets/_fusion-migration-readiness-panel.md';
 

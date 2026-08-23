@@ -41,7 +41,7 @@ To enable dbt State:
    Once started, you cannot pause the trial. After 30 days, you must add a credit card or enterprise contract to continue. For information about how the trial period and billing work, refer to [dbt State trial and billing](/docs/deploy/dbt-state-trial).
 
    :::info Extended trial for state-aware orchestration users
-   If you're using state-aware orchestration prior to June 1, 2026, your dbt State trial will be extended until the billing period begins on September 1, 2026. If the extension isn’t applied to your account, contact your account team.
+   If you were using state-aware orchestration prior to June 1, 2026, your dbt State trial will be extended beyond 30 days. If the extension isn’t applied to your account, contact your account team.
    :::
 
 4. Review and agree to the terms of service.
@@ -76,7 +76,7 @@ For next steps, see:
    dbt login
    ```
 
-   This opens a browser window where you can log in with your <Constant name="dbt_platform" /> account or the [standalone dbt State app](https://app.state.dbt.com). For details on authentication behavior and how it affects [`user_settings.yml`](/reference/global-configs/user-settings), refer to [`dbt login` with dbt State](/reference/commands/login#dbt-login-with-dbt-state).
+   This opens a browser window where you can log in with your <Constant name="dbt_platform" /> account or the [standalone dbt State app](https://app.state.dbt.com). For details on authentication behavior and how it affects [`user_settings.yml`](/reference/global-configs/user-settings), refer to [`dbt login` with dbt State](/reference/commands/login?version=2.0#dbt-login-with-dbt-state).
 
 dbt State is now enabled and will run automatically on every `dbt run` or `dbt build`. 
 
@@ -148,7 +148,7 @@ For more details, refer to the [`lag_tolerance` config reference](/reference/res
 The more team members you have using dbt State, the better it gets; more team members means more opportunities to clone existing nodes rather than rebuilding them.
 
 - **For [standalone app](https://app.state.dbt.com) users**: Click the invite link in the upper-right corner of the **Users** page.
-- **For <Constant name="dbt_platform" /> users**: Have your colleagues run [`dbt login`](/reference/commands/login) after dbt State is enabled on the account.
+- **For <Constant name="dbt_platform" /> users**: Have your colleagues run [`dbt login`](/reference/commands/login?version=2.0) after dbt State is enabled on the account.
 
 ## Debugging dbt State
 
@@ -161,7 +161,7 @@ DBT_ENGINE_MANAGE_STATE=0 dbt run --target dev --select "customers"
 ## Next steps
 
 - [Migrate from state-aware orchestration](/docs/deploy/dbt-state-migration)
-- [`dbt login` with dbt State](/reference/commands/login#dbt-login-with-dbt-state)
+- [`dbt login` with dbt State](/reference/commands/login?version=2.0#dbt-login-with-dbt-state)
 - [Configure deferral](/docs/deploy/dbt-state-deferral)
 - [Non-interactive environment setup](/docs/deploy/dbt-state-cicd)
 - [dbt State configs](/reference/resource-configs/dbt-state-configs)

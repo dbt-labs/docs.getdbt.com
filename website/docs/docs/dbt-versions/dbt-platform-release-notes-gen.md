@@ -22,6 +22,54 @@ Release notes are grouped by date for single-tenant environments.
 
 <span><img src="/img/fontawesome/rss.svg" alt="RSS" className="rss-icon" />Subscribe to release note updates via [RSS](/feeds/release-notes-st-rss.xml), [Atom](/feeds/release-notes-st-atom.xml), or [JSON Feed](/feeds/release-notes-st-rss.json).</span>
 
+## August 19, 2026
+
+## Enhancements
+
+### Studio IDE
+
+- **Console tab persists across sessions**: New sessions open on the Wizard tab when available, and the Studio IDE remembers your last-used tab for each project so you can pick up where you left off.
+
+### Catalog
+
+- **Exact model relation name in the Discovery API**: A new `relationName` field on the `ModelAppliedStateNode` and `ModelAppliedStateNestedNode` GraphQL types exposes the fully-qualified, adapter-rendered relation name (for example, `"database"."schema"."model_name"`) from the last successful model build.
+
+## August 12, 2026
+
+## Enhancements
+
+### dbt AI and agents
+
+- **Auto-expanding Wizard chat input**: The Wizard chat input grows vertically as you type or paste text, and shrinks back when content is removed.
+
+### APIs, Identity, and Administration
+
+- **Job read access is now included in the `account:read` OAuth scope**: Applications authorized with `account:read` can now read job data without also requesting the `jobs:run` scope.
+
+## August 5, 2026
+
+## New
+
+### dbt AI and agents
+
+- **dbt Wizard home tab**: [The <Constant name="wizard"/> home tab in <Constant name="dbt_platform"/>](/docs/platform/wizard-home) is now available in public preview. You can build and change dbt projects through natural language, with inline diffs, DAG previews, and validation built in.
+
+## Enhancements
+
+### dbt AI and agents
+
+- **Auto-open diff preview in edit-automatically mode**: When dbt Wizard edits files automatically, the diff preview side pane now opens immediately so you can review changes without an extra click. When the side pane is not available, for example in non-fullscreen Studio IDE, the diff falls back to an inline card.
+
+### Orchestration and run status
+
+- **Run history refreshes automatically after a trigger**: After you trigger a run or rerun, the run history list now polls every 2.5 seconds until the new run appears, eliminating the need for a manual page reload. Polling stops automatically once the run is visible or after 45 seconds.
+
+## Behavior Changes
+
+### Catalog
+
+- **30-day model staleness removed from health criteria**: Models are no longer flagged as unhealthy solely because they have not been rebuilt in the past 30 days. The "Stale state" warning banner no longer appears on resource detail pages, and models whose only health issue was staleness now show as healthy in the Trust Signals badge. Source staleness is unchanged and continues to surface as a health issue for sources.
+
 ## July 29, 2026
 
 ## New
@@ -122,7 +170,7 @@ Release notes are grouped by date for single-tenant environments.
 
 ### Orchestration and run status
 
-- **Faster linting for Fusion-version runs**: Runs using a Fusion dbt version now invoke the built-in [`dbt lint`](/reference/commands/lint) command instead of SQLFluff. Fusion virtual environments do not include SQLFluff, so linting now works for all Fusion-version runs and runs faster.
+- **Faster linting for Fusion-version runs**: Runs using a Fusion dbt version now invoke the built-in [`dbt lint`](/reference/commands/lint?version=2.0) command instead of SQLFluff. Fusion virtual environments do not include SQLFluff, so linting now works for all Fusion-version runs and runs faster.
 
 ### dbt AI and agents
 

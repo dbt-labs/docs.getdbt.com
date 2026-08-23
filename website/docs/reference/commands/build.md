@@ -4,6 +4,8 @@ sidebar_label: "build"
 id: "build"
 ---
 
+import SnapshotFullRefresh from '/snippets/_snapshot-full-refresh.md';
+
 The `dbt build` command will:
 - run [models](/docs/build/models)
 - test [tests](/docs/build/data-tests)
@@ -40,7 +42,9 @@ In DAG order, for selected resources or an entire project.
 
 - Remember that tests support indirect selection, so `dbt build -s model_a` will both run _and_ test `model_a`. What does that mean? Any tests that directly depend on `model_a` will be included, so long as those tests don't also depend on other unselected parents. See [test selection](/reference/node-selection/test-selection-examples) for details and examples.
 
-**Flags:** The `build` task supports all the same flags as `run`, `test`, `snapshot`, and `seed`. For flags that are shared between multiple tasks (e.g. `--full-refresh`), `build` will use the same value for all selected resource types (e.g. both models and seeds will be full refreshed).
+**Flags:** The `build` task supports all the same flags as `run`, `test`, `snapshot`, and `seed`. For flags that are shared between multiple tasks (e.g. `--full-refresh`), `build` will use the same value for all selected resource types that support it (e.g. both models and seeds will be full refreshed).
+
+<SnapshotFullRefresh />
 
 
 ### The `--empty` flag

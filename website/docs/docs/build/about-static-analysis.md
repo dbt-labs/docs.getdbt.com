@@ -154,7 +154,7 @@ Setting `static_analysis` to `baseline` mode lets you start using <Constant name
 
 ## Recapping the differences between engines
 
-<Constant name="core_v1" /> and [<Constant name="core_v2" />](/docs/dbt-versions/core-upgrade/upgrading-to-v2) (currently in alpha):
+<Constant name="core_v1" /> and [<Constant name="core_v2" />](/docs/dbt-versions/core-upgrade/upgrading-to-v2) (currently in beta):
 
 - Renders and runs models one at a time.
 - Never runs static analysis.
@@ -183,7 +183,7 @@ The [`static_analysis`](/reference/resource-configs/static-analysis) config opti
 
 <VersionBlock firstVersion="2.0">
 
-Any run that uses `strict` mode requires authentication using [`dbt login`](/reference/commands/login), whether `strict` is set with the `--static-analysis strict` CLI flag or in `dbt_project.yml`. Unauthenticated runs fall back to `baseline`.
+Any run that uses `strict` mode requires authentication using [`dbt login`](/reference/commands/login?version=2.0), whether `strict` is set with the `--static-analysis strict` CLI flag or in `dbt_project.yml`. Unauthenticated runs fall back to `baseline`.
 
 </VersionBlock>
 
@@ -315,6 +315,12 @@ from {{ ref('my_model') }}
 ```
 
 </File>
+
+### Can I use strict mode in development and baseline in deployment?
+
+Yes. This pattern is valid and recommended: use `strict` while you develop for stronger validation, and keep `baseline` in deployment for faster runs that are less likely to stop on analysis findings.
+
+For more information, including CLI examples and an optional environment variable pattern, refer to [Optimize static analysis for development and deployment](/best-practices/optimize-static-analysis-for-development-and-deployment).
 
 ### When should I turn static analysis `off`?
 

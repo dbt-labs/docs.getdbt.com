@@ -14,6 +14,7 @@ availability: all_users
 
 import CourseCallout from '/snippets/_materialization-video-callout.md';
 import SnapshotCompiledSql from '/snippets/_snapshot-compiled-sql.md';
+import SnapshotFullRefresh from '/snippets/_snapshot-full-refresh.md';
 
 <CourseCallout resource="Snapshots" 
 url="https://learn.getdbt.com/courses/snapshots"
@@ -232,6 +233,8 @@ When you run the [`dbt snapshot` command](/reference/commands/snapshot):
 - **On subsequent runs:** dbt will check which records have changed or if any new records have been created:
   - The `dbt_valid_to` column will be updated for any existing records that have changed.
   - The updated record and any new records will be inserted into the snapshot table. These records will now have `dbt_valid_to = null` or the value configured in `dbt_valid_to_current` (available in dbt Core v1.9+).
+
+<SnapshotFullRefresh />
 
 <VersionBlock firstVersion="1.9">
 
