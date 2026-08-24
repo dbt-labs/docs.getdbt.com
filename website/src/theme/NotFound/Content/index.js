@@ -26,7 +26,7 @@ export default function NotFoundContent({className}) {
             <Translate
               id="theme.NotFound.title"
               description="The title of the 404 page">
-              Page not found
+              DAG! Page not found
             </Translate>
           </Heading>
           <p>
