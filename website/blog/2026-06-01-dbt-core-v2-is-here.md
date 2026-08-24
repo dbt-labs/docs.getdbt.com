@@ -25,7 +25,7 @@ The launch of dbt Core 2.0 comes with key feature developments:
 
 <!-- truncate -->
 
-If you've been an early adopter of the dbt Fusion engine, these features might sound familiar. That's because the two-engine era is drawing to a close: from now on, dbt Core and Fusion will be built on a shared foundation. The subset of code (we're calling it the runtime) which we [previously committed to releasing publicly under the ELv2 license](/blog/dbt-fusion-engine-components#source-available-dbt-fusion-engine) is now under the Apache 2.0 license as dbt Core. Fusion will continue to extend that baseline by adding advanced capabilities - some are totally free to use, and other premium features are unlocked with a free login or payment method.
+If you've been an early adopter of the dbt Fusion engine, these features might sound familiar. That's because the two-engine era is drawing to a close: from now on, dbt Core and <Constant name="fusion" /> will be built on a shared foundation. The subset of code (we're calling it the runtime) which we [previously committed to releasing publicly under the ELv2 license](/blog/dbt-fusion-engine-components#source-available-dbt-fusion-engine) is now under the Apache 2.0 license as dbt Core. <Constant name="fusion" /> will continue to extend that baseline by adding advanced capabilities - some are totally free to use, and other premium features are unlocked with a free login or payment method.
 
 We think that this is the best way to continue to meet our commitments as stewards of the dbt framework, the best way to enable [our _One dbt_ vision](https://roundup.getdbt.com/p/one-dbt), and the best way to maintain dbt's position as the standard for data transformation in the agentic era.
 
@@ -35,9 +35,9 @@ If you want to learn more about the new capabilities in dbt Core and where we're
 
 When deciding how to release the dbt Fusion engine last year, we were faced with a set of strict requirements. Tristan [described them in detail](https://www.getdbt.com/blog/new-code-new-license-understanding-the-new-license-for-the-dbt-fusion-engine) at the time, and you'll see them in the table below. The result was that we chose to build the new Fusion engine separately from Core, and under a different license (ELv2).
 
-This worked well enough during Fusion's development period: new language features like Iceberg catalog support, `--sample`, and UDF definitions got equivalent OSS implementations in dbt Core v1.10 and v1.11.
+This worked well enough during <Constant name="fusion" />'s development period: new language features like Iceberg catalog support, `--sample`, and UDF definitions got equivalent OSS implementations in dbt Core v1.10 and v1.11.
 
-But as Fusion's GA approaches, it's clear that its underlying technologies (like Rust, ADBC, and Parquet) are much better suited for future innovation. We want those technologies to be the foundation we can build on for **everyone**.
+But as <Constant name="fusion" />'s GA approaches, it's clear that its underlying technologies (like Rust, ADBC, and Parquet) are much better suited for future innovation. We want those technologies to be the foundation we can build on for **everyone**.
 
 Revisit the same list of goals with one extra requirement – no bifurcated engine – and it comes out looking like this:
 
@@ -49,9 +49,9 @@ As we introduced the different variants of the dbt Fusion engine last year, we [
 
 Historically, this has caused dbt Core to also be conflated with "_the one you can use for free_," or "_the one you can use on your laptop_," because the only way to provide a free, locally-installable version of dbt was for its Python code to be 100% open source. This meant the majority of dbt users missed out on useful capabilities whose implementation details we couldn't share.
 
-By contrast, Rust projects can be distributed as binaries without disclosing any proprietary source code. This is why we're able to put out multiple free distributions of the v2 engine: one called Fusion providing the best experience in a binary containing some proprietary code, and another made up entirely of the Apache 2 open source code in the `dbt-core` repo.
+By contrast, Rust projects can be distributed as binaries without disclosing any proprietary source code. This is why we're able to put out multiple free distributions of the v2 engine: one called <Constant name="fusion" /> providing the best experience in a binary containing some proprietary code, and another made up entirely of the Apache 2 open source code in the `dbt-core` repo.
 
-Which v2 distribution should you choose for your use case? Almost certainly Fusion. Put another way: **For the best free dbt CLI you can use locally and in production environments, install Fusion**. It can do more than dbt Core out of the box and you can seamlessly enable other premium features over time if you choose to. Changes contributed to the dbt-core repository will be applied to Fusion. We also know that there is a small subset of teams who are required to use dbt Core today because of its license, or who are building custom things on top of the OSS code. If you find yourself in one of those camps (you'll know), we see you, and dbt Core v2.0 is here for you.
+Which v2 distribution should you choose for your use case? Almost certainly <Constant name="fusion" />. Put another way: **For the best free dbt CLI you can use locally and in production environments, install <Constant name="fusion" />**. It can do more than dbt Core out of the box and you can seamlessly enable other premium features over time if you choose to. Changes contributed to the dbt-core repository will be applied to <Constant name="fusion" />. We also know that there is a small subset of teams who are required to use dbt Core today because of its license, or who are building custom things on top of the OSS code. If you find yourself in one of those camps (you'll know), we see you, and dbt Core v2.0 is here for you.
 
 Regardless of the distribution you choose, it's still a single framework with a single language specification. Your critical business logic is portable in both directions.
 
@@ -72,7 +72,7 @@ We think this is great for everyone in the dbt ecosystem, and a significant impr
 
 - **We've open-sourced all the code required for a Rust implementation of v2.0 of the dbt framework.** Some of the code was already in the dbt-fusion repository under the ELv2 license. Other parts hadn't made it across yet because we were still rapidly iterating. It's all now in the dbt-core repository, and it's all Apache 2.0 licensed.
 - **That code is the new dbt Core v2.0.** Having the high-performance Rust implementation of dbt as the baseline for all users reduces complexity and makes it easier to keep moving the dbt framework forward. It's in alpha today, and we want your help to make sure it works for everyone as it moves towards GA. Give it a try!
-- **The enhanced, precompiled Fusion binary can now be provided as a managed service by others.** We have relicensed the Fusion binary to be more permissive than ELv2. As before, some features will only work if you've authenticated, either with a free login or a paid dbt platform account. Companies offering Fusion as a managed service must allow end users to enable these premium features.
+- **The enhanced, precompiled Fusion binary can now be provided as a managed service by others.** We have relicensed the Fusion binary to be more permissive than ELv2. As before, some features will only work if you've authenticated, either with a free login or a paid dbt platform account. Companies offering <Constant name="fusion" /> as a managed service must allow end users to enable these premium features.
 
 **What's not changing:**
 

@@ -75,8 +75,8 @@ This was Wizard’s first attempt, pretty simple. It failed during the validatio
 
 For validation Wizard had to work within the following constraints:
 
-\- Fusion needed to discover metrics colocated with model YAML.  
-\- dbt Core/Dagster needed to parse the project without choking on newer semantic syntax. (I ended up fixing this [later](https://github.com/C00ldudeNoonan/economic-data-project/pull/100) to be Fusion across the board but it was a fun challenge to see Wizard deal with)  
+\- <Constant name="fusion" /> needed to discover metrics colocated with model YAML.  
+\- dbt Core/Dagster needed to parse the project without choking on newer semantic syntax. (I ended up fixing this [later](https://github.com/C00ldudeNoonan/economic-data-project/pull/100) to be <Constant name="fusion" /> across the board but it was a fun challenge to see Wizard deal with)  
 \- CI needed a stable project parse/build path.  
 \- dbt Platform needed deployed artifacts that the hosted Semantic Layer could actually expose.
 
@@ -96,7 +96,7 @@ The version that shipped is the least clever of the three but it worked.
 
 ```
 
-The ratio logic moved into the expr, the nullif kills the divide-by-zero, and it parses under Fusion, parses under dbt Core, and passes the project CI. Having Wizard do the validation loop to understand the finer points in the differences between dbt Core and Fusion saved me a ton of time. 
+The ratio logic moved into the expr, the nullif kills the divide-by-zero, and it parses under <Constant name="fusion" />, parses under dbt Core, and passes the project CI. Having Wizard do the validation loop to understand the finer points in the differences between dbt Core and <Constant name="fusion" /> saved me a ton of time. 
 
 For this process, I didn't have to look up any documentation and only had to go back and forth with Wizard a few times, mostly for my understanding. This was a success for me since I now have a simple metric, that matches the expected formula, and has both parser compatibility and a hosted semantic layer deployment path. I also only had to see on diff, which was the final one, the dead ends and iterations happened off screen so I only needed to be tapped in when necessary. 
 
@@ -129,7 +129,7 @@ A few shorter wins from the same stretch of work:
 
 ## Try it
 
-The [repo](https://github.com/C00ldudeNoonan/economic-data-project) is public if you are curious about the actual metrics and the merged PRs:. Install the Wizard CLI and point it at a project that runs Fusion or dbt Core:
+The [repo](https://github.com/C00ldudeNoonan/economic-data-project) is public if you are curious about the actual metrics and the merged PRs:. Install the Wizard CLI and point it at a project that runs <Constant name="fusion" /> or dbt Core:
 
 ```shell
 curl -fsSL https://public.cdn.getdbt.com/dbt-wizard/install/install-wizard.sh | sh

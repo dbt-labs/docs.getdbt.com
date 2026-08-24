@@ -67,7 +67,7 @@ When you register or sign in for advanced features, authentication is handled by
 
 The dbt logo on the sidebar (or the **dbt Extension** text on the bottom tray) launches the main menu for the extension. This menu contains helpful information and actions you can take:
 - **Get started button:** Launches the [Fusion upgrade](/docs/upgrade-to-fusion-extension) workflow.
-- **Extension info:** Information about the extension, Fusion, and your dbt project. Includes configuration options and actions.
+- **Extension info:** Information about the extension, <Constant name="fusion" />, and your dbt project. Includes configuration options and actions.
 - **Help:** Quick links to support, bug submissions, and documentation.
 
 <Lightbox src="/img/docs/extension/sidebar-menu.png" width="30%" title="dbt VS Code extension welcome screen."/>

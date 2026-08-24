@@ -45,7 +45,7 @@ That’s why this new release is such a big deal. It solves all the problems abo
 
 ## The new era of dbt development
 
-With the acquisition of SDF Labs and a renewed focus on developer experience, dbt Labs announced its new engine, [Fusion](/docs/fusion/about-fusion). This engine was built from zero with Rust, and its intelligence will power up dbt, no matter where you run it. There are different ways you can use the Fusion engine, and the best one is with the also announced VS Code extension.
+With the acquisition of SDF Labs and a renewed focus on developer experience, dbt Labs announced its new engine, [<Constant name="fusion" />](/docs/fusion/about-fusion). This engine was built from zero with Rust, and its intelligence will power up dbt, no matter where you run it. There are different ways you can use the Fusion engine, and the best one is with the also announced VS Code extension.
 
 The Fusion engine with the VS Code extension is how folks will want to develop with dbt moving forward. I can say this feels like the experience we’ve all been waiting for.
 
@@ -57,7 +57,7 @@ It comes with a lot of features to streamline your work and make you more effici
 
 There was no question what I was picking first. No more waiting for your platform to debug your code for you. If you misspell a column name or goof up a function's order of parameters, you catch those errors before you run anything.
 
-This is because Fusion doesn't treat SQL code as just a string anymore; it really understands it. It also shows you some helpful information about the error.
+This is because <Constant name="fusion" /> doesn't treat SQL code as just a string anymore; it really understands it. It also shows you some helpful information about the error.
 
 <Lightbox src="/img/blog/2025-06-16-the-new-dbt-vscode-extension/vs_code_extension_function_error.png" title="Showing function errors." />
 

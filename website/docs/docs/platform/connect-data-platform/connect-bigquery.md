@@ -18,7 +18,7 @@ import BigQueryPerms from '/snippets/_bigquery-permissions.md';
 
 <BigQueryPerms />
 
-## Warehouse permissions for Fusion
+## Warehouse permissions for <Constant name="fusion" />
 
 import FusionBigQueryWarehousePerms from '/snippets/_fusion-warehouse-permissions-bigquery.md';
 

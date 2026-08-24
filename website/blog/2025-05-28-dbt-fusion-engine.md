@@ -17,7 +17,7 @@ is_featured: true
 - dbt’s familiar authoring layer remains unchanged, but the execution engine beneath it is completely new.
 - The new engine is called the dbt Fusion engine — rewritten from the ground up in Rust based on technology [from SDF](https://www.getdbt.com/blog/dbt-labs-acquires-sdf-labs).  The dbt Fusion engine is substantially faster than dbt Core and has built in [SQL comprehension technology](/blog/the-levels-of-sql-comprehension) to power the next generation of analytics engineering workflows.
 - The dbt Fusion engine is currently in beta. You can try it today if you use Snowflake — with additional adapters coming starting in early June. Review our [path to general availability](/blog/dbt-fusion-engine-path-to-ga) (GA) and [try the quickstart](/guides/fusion).
-- **You do not need to be a dbt Labs customer to use Fusion - dbt Core users can adopt the dbt Fusion engine today for free in your local environment.**
+- **You do not need to be a dbt Labs customer to use <Constant name="fusion" /> - dbt Core users can adopt the dbt Fusion engine today for free in your local environment.**
 - You can use <Constant name="fusion" /> with the [new dbt VS Code extension](https://marketplace.visualstudio.com/items?itemName=dbtLabsInc.dbt), [directly with the CLI](/docs/local/install-dbt?version=2), or [with dbt Studio](/docs/dbt-versions/upgrade-dbt-platform-version#dbt-fusion-engine).
 - This is the beginning of a new era for analytics engineering. For a glimpse into what the Fusion engine is going to enable over the next 1 to 2 years, [read this post](https://getdbt.com/blog/where-we-re-headed-with-the-dbt-fusion-engine).
 
@@ -46,11 +46,11 @@ And so it became clear that for us to power the analytics workloads of tomorrow,
 - An engine that *knows about your code.*
 - An engine that powers the next generation of developer experience.
 
-And that engine is Fusion.
+And that engine is <Constant name="fusion" />.
 
-## What exactly is Fusion?
+## What exactly is <Constant name="fusion" />?
 
-Fusion is the new engine for dbt.
+<Constant name="fusion" /> is the new engine for dbt.
 
 If the authoring layer is "what" your dbt project is supposed to do, then the engine is the "how." That includes:
 
@@ -59,32 +59,32 @@ If the authoring layer is "what" your dbt project is supposed to do, then the en
 - Creating artifact files
 - Communicating with databases
 
-At first glance, Fusion looks a lot like dbt Core. Your projects are built using the familiar dbt authoring layer. You still write SQL and Jinja. You still type `dbt run`. (To make it easier to try Fusion, we're also shipping with an optional `dbtf` alias, as many users have the `dbt` namespace already specified).
+At first glance, <Constant name="fusion" /> looks a lot like dbt Core. Your projects are built using the familiar dbt authoring layer. You still write SQL and Jinja. You still type `dbt run`. (To make it easier to try <Constant name="fusion" />, we're also shipping with an optional `dbtf` alias, as many users have the `dbt` namespace already specified).
 
 But underneath that is a layer of technical depth and rigor that is entirely new to dbt, happening at the engine layer.
 
-Fusion:
+<Constant name="fusion" />:
 
-- Is fully rewritten in Rust, enabling a [dramatically faster dbt experience](/blog/faster-project-parsing-with-rust). Fusion does not depend on Python at all. In fact, besides the adapter macros, not a single line of code is shared between dbt Core and the dbt Fusion engine. (For long-time dbt spelunkers, we've described the new structure in a [separate post](/blog/dbt-fusion-engine-components).)
+- Is fully rewritten in Rust, enabling a [dramatically faster dbt experience](/blog/faster-project-parsing-with-rust). <Constant name="fusion" /> does not depend on Python at all. In fact, besides the adapter macros, not a single line of code is shared between dbt Core and the dbt Fusion engine. (For long-time dbt spelunkers, we've described the new structure in a [separate post](/blog/dbt-fusion-engine-components).)
 - [Understands your SQL code.](/blog/the-levels-of-sql-comprehension) It’s a true SQL *compiler* and gives dbt a full view on what the code in your dbt project means and how it will propagate across your entire data lineage.
 
-Based on the technology from [SDF](https://www.getdbt.com/blog/dbt-labs-acquires-sdf-labs), Fusion represents a step change increase in the technical capabilities of dbt.
+Based on the technology from [SDF](https://www.getdbt.com/blog/dbt-labs-acquires-sdf-labs), <Constant name="fusion" /> represents a step change increase in the technical capabilities of dbt.
 
 <Lightbox src="/img/blog/2025-05-28-dbt-fusion-engine/familiar-authoring-powerful-new-engine.png" title="Familiar Authoring Layer, Powerful New Engine." />
 
-As a result of these capabilities, Fusion can deliver new experiences. Some of these we’re releasing today, like real-time error detection in VS Code and significant cost savings in project execution.  dbt now knows about your code!
+As a result of these capabilities, <Constant name="fusion" /> can deliver new experiences. Some of these we’re releasing today, like real-time error detection in VS Code and significant cost savings in project execution.  dbt now knows about your code!
 
-**You probably now know enough now to head on over to the quickstart and get going**, but if you want to know little more about what Fusion delivers today, keep reading.
+**You probably now know enough now to head on over to the quickstart and get going**, but if you want to know little more about what <Constant name="fusion" /> delivers today, keep reading.
 
 ---
 
-## Near-term benefits of adopting Fusion
+## Near-term benefits of adopting <Constant name="fusion" />
 
-You can think of Fusion as the same dbt you know and love, but better and faster, and you're going to see it show up in a lot of places!
+You can think of <Constant name="fusion" /> as the same dbt you know and love, but better and faster, and you're going to see it show up in a lot of places!
 
 <Lightbox src="/img/blog/2025-05-28-dbt-fusion-engine/next-gen-star.png" title="Functionality powered by the dbt Fusion Engine and its components" />
 
-So how and why should you adopt Fusion for your dbt project?
+So how and why should you adopt <Constant name="fusion" /> for your dbt project?
 
 ### Just the new Fusion-powered dbt CLI
 
@@ -92,7 +92,7 @@ So how and why should you adopt Fusion for your dbt project?
 
 ### The new Fusion-powered dbt Fusion CLI + VS Code extension
 
-But the real benefit of Fusion is not just going to be in the CLI itself — it’s in the ability to build net new product experiences that leverage Fusion’s capabilities. The first of these, unveiled today, is the VS Code extension, powered by [dbt Fusion’s SQL Comprehension](/blog/the-levels-of-sql-comprehension). This extension could *only* be built on Fusion:
+But the real benefit of <Constant name="fusion" /> is not just going to be in the CLI itself — it’s in the ability to build net new product experiences that leverage <Constant name="fusion" />’s capabilities. The first of these, unveiled today, is the VS Code extension, powered by [dbt Fusion’s SQL Comprehension](/blog/the-levels-of-sql-comprehension). This extension could *only* be built on <Constant name="fusion" />:
 
 - It’s fast — the VS Code extension recompiles your entire dbt project in the background every time you save *any* file, as well as identifying errors instantly for the active file. For that to be workable, it needs to happen fast.
 - It understand SQL and functions as a compiler — it knows what columns exist in your project, what functions you are using and the type signature and output of those functions.
@@ -123,23 +123,23 @@ Taken separately, these range from quality of life improvements to significant c
 
 But taken together, it actually fundamentally changes the experience of writing your dbt code. There were just *so many things* that you had to constantly be juggling in the back of your head that are now offloaded to the extension. The sum change to the experience of writing dbt code... is exceptional. I already can’t imagine working without this.
 
-Of course — there’s another technology changing the experience of writing dbt (and all) code — AI. The functionality that Fusion enables dovetails perfectly with AI-assisted coding by allowing you to vet, validate, and comprehend AI-generated code more easily. Moving forward, expect even tighter coupling between Fusion and AI-based coding assistants as the speed and rigor of Fusion will help produce higher quality AI-generated code.
+Of course — there’s another technology changing the experience of writing dbt (and all) code — AI. The functionality that <Constant name="fusion" /> enables dovetails perfectly with AI-assisted coding by allowing you to vet, validate, and comprehend AI-generated code more easily. Moving forward, expect even tighter coupling between <Constant name="fusion" /> and AI-based coding assistants as the speed and rigor of <Constant name="fusion" /> will help produce higher quality AI-generated code.
 
-The VS Code extension is one of our first product experiences exclusively powered by the dbt Fusion engine. The extension depends on the Language Server, and the Language Server depends on Fusion's SQL comprehension capabilities. We made the decision not to support dbt Core for the VS Code Extension because existing community-built extensions have already built as much as is possible on top of dbt Core's foundation.  To get to this next level of experience, we needed Fusion.
+The VS Code extension is one of our first product experiences exclusively powered by the dbt Fusion engine. The extension depends on the Language Server, and the Language Server depends on <Constant name="fusion" />'s SQL comprehension capabilities. We made the decision not to support dbt Core for the VS Code Extension because existing community-built extensions have already built as much as is possible on top of dbt Core's foundation.  To get to this next level of experience, we needed <Constant name="fusion" />.
 
 ---
 
-### How to get started with Fusion
+### How to get started with <Constant name="fusion" />
 
-The dbt Fusion engine is currently in beta. We've written [a separate post](/blog/dbt-fusion-engine-path-to-ga) describing the path to Fusion's final release, and how you can see if your project is compatible today.
+The dbt Fusion engine is currently in beta. We've written [a separate post](/blog/dbt-fusion-engine-path-to-ga) describing the path to <Constant name="fusion" />'s final release, and how you can see if your project is compatible today.
 
-Whether or not you can move your existing project to Fusion today, you can jump into the VS Code extension [using our quickstart](/guides/fusion) to try get a feeling for what's ahead.
+Whether or not you can move your existing project to <Constant name="fusion" /> today, you can jump into the VS Code extension [using our quickstart](/guides/fusion) to try get a feeling for what's ahead.
 
-- **dbt customers:** Over the coming weeks, in projects eligible to start using Fusion, you’ll see a toggle in your account or receive a message from your account team. From there, [you can activate Fusion for your environments](/docs/dbt-versions/upgrade-dbt-platform-version#dbt-fusion-engine).
+- **dbt customers:** Over the coming weeks, in projects eligible to start using <Constant name="fusion" />, you’ll see a toggle in your account or receive a message from your account team. From there, [you can activate <Constant name="fusion" /> for your environments](/docs/dbt-versions/upgrade-dbt-platform-version#dbt-fusion-engine).
 - **To use the VS Code extension:** [Install the "dbt" extension](/docs/install-dbt-extension) directly from the marketplace for automated setup and head to the quickstart. This will also automatically install the Fusion-powered CLI for you.
-- **To use the <Constant name="platform_cli" /> powered by <Constant name="fusion" />:** Simply [install Fusion](/docs/local/install-dbt?version=2)
+- **To use the <Constant name="platform_cli" /> powered by <Constant name="fusion" />:** Simply [install <Constant name="fusion" />](/docs/local/install-dbt?version=2)
 
-*If you are looking to migrate an existing project to Fusion, see the [migration guide](/docs/dbt-versions/core-upgrade/upgrading-to-v2) — as well as the [`dbt-autofix`](https://github.com/dbt-labs/dbt-autofix) helper, which automatically addresses many of the changes needed to migrate to Fusion.*
+*If you are looking to migrate an existing project to <Constant name="fusion" />, see the [migration guide](/docs/dbt-versions/core-upgrade/upgrading-to-v2) — as well as the [`dbt-autofix`](https://github.com/dbt-labs/dbt-autofix) helper, which automatically addresses many of the changes needed to migrate to <Constant name="fusion" />.*
 
 ---
 
@@ -149,11 +149,11 @@ Today’s launch is the start. There is much left to do over the short term and 
 
 Moving forward we’re building many net new products and evolutions of our current products that simply wouldn’t have been possible in a pre-Fusion world. This will be particularly impactful for powering AI workflows, both to assist in the creation of high quality dbt projects and serving as the trusted interface to structured data for AI agents.
 
-We’re excited to work with the Community on the evolution of Fusion. If you’ve heard talk about the early days of the dbt Community and wished you could have been around for it, you now have the opportunity to make the deep, foundational impact that is often only possible at the start of a new technical innovation cycle.
+We’re excited to work with the Community on the evolution of <Constant name="fusion" />. If you’ve heard talk about the early days of the dbt Community and wished you could have been around for it, you now have the opportunity to make the deep, foundational impact that is often only possible at the start of a new technical innovation cycle.
 
 So get involved!
 
 - Try out [the Fusion quickstart](/guides/fusion)
 - [Open up a GitHub issue in `dbt-fusion`](https://github.com/dbt-labs/dbt-fusion/issues) to report a bug or participate in the path to GA
 - Join us [on Slack](https://www.getdbt.com/community/join-the-community) in #dbt-fusion-engine and share your thoughts or questions
-- Head to an [in-person dbt Meetup](https://www.meetup.com/pro/dbt/) — we’re hosting the dbt World Circuit 🏎️ around the world where you can and come talk to one of us about Fusion!
+- Head to an [in-person dbt Meetup](https://www.meetup.com/pro/dbt/) — we’re hosting the dbt World Circuit 🏎️ around the world where you can and come talk to one of us about <Constant name="fusion" />!

@@ -22,11 +22,11 @@ availability:
 
 You can configure the Redshift adapter by running `dbt init` in your CLI or manually providing the `profiles.yml` file with the fields configured for your authentication type.
 
-The Redshift adapter for Fusion supports the following [authentication methods](#supported-authentication-types):
+The Redshift adapter for <Constant name="fusion" /> supports the following [authentication methods](#supported-authentication-types):
 - Password
 - IAM profile
 
-## Configure Fusion
+## Configure <Constant name="fusion" />
 
 Executing `dbt init` in your CLI will prompt for the following fields:
 - **Host:** The hostname of your Redshift cluster

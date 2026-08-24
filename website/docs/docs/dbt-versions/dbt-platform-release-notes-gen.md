@@ -136,9 +136,9 @@ Release notes are grouped by date for single-tenant environments.
 
 ### Studio IDE
 
-- **Fusion Stable is now the default track**: The `latest-fusion` release track is now Fusion Stable across all settings. Existing configurations have been updated automatically. No action is needed.
+- **<Constant name="fusion" /> Stable is now the default track**: The `latest-fusion` release track is now <Constant name="fusion" /> Stable across all settings. Existing configurations have been updated automatically. No action is needed.
 
-- **Environments already on Fusion no longer see upgrade checkbox**: On the Enable Fusion Environments page, environments already running Fusion now show a disabled checkbox, preventing unnecessary saves.
+- **Environments already on <Constant name="fusion" /> no longer see upgrade checkbox**: On the Enable Fusion Environments page, environments already running <Constant name="fusion" /> now show a disabled checkbox, preventing unnecessary saves.
 
 - **More specific error messages on failed Fusion environment upgrades**: When saving a Fusion upgrade fails, the platform now displays the top-level user message from the API instead of internal field-level error details.
 
@@ -152,7 +152,7 @@ Release notes are grouped by date for single-tenant environments.
 
 ### Orchestration and run status
 
-- **Reduced out-of-memory rates in Fusion**: Memory-tuning optimizations are now applied automatically to all Fusion runs, reducing out-of-memory kill rates and improving overall uptime.
+- **Reduced out-of-memory rates in <Constant name="fusion" />**: Memory-tuning optimizations are now applied automatically to all Fusion runs, reducing out-of-memory kill rates and improving overall uptime.
 
 ## Fixes
 
@@ -505,7 +505,7 @@ Release notes are grouped by date for single-tenant environments.
 
 ### Orchestration and run status
 
-- **Clearer Fusion eligibility message for migrated jobs**: The Fusion eligibility surface now maps the `job_on_fusion` reason code to "This job is already running on Fusion." with no call-to-action, giving clearer feedback for jobs that are already migrated.
+- **Clearer Fusion eligibility message for migrated jobs**: The Fusion eligibility surface now maps the `job_on_fusion` reason code to "This job is already running on <Constant name="fusion" />." with no call-to-action, giving clearer feedback for jobs that are already migrated.
 
 - **Fusion job warning notifications enabled by default**: Warning notifications for Fusion runs are now always active and no longer require a feature flag, so you will see run-level warning statuses without any additional configuration.
 
@@ -549,7 +549,7 @@ Release notes are grouped by date for single-tenant environments.
 
 ### Orchestration and run status
 
-- **Fusion upgrade available banner on environment settings**: A new banner appears on the environment settings page when Fusion is available for a project but not yet enabled. Admins can click **Enable Fusion access** directly from the banner to open the upgrade confirmation modal. Users without the required permissions see a read-only message directing them to contact an admin.
+- **Fusion upgrade available banner on environment settings**: A new banner appears on the environment settings page when <Constant name="fusion" /> is available for a project but not yet enabled. Admins can click **Enable Fusion access** directly from the banner to open the upgrade confirmation modal. Users without the required permissions see a read-only message directing them to contact an admin.
 
 ### Deployment and configuration
 
@@ -659,13 +659,13 @@ Release notes are grouped by date for single-tenant environments.
 
 ### Orchestration and run status
 
-- **Finer-grained permissions on the Debug on Fusion menu**: The "Debug in Studio" and "Run once on Fusion" menu items are now independently disabled based on your permissions. If you lack the required permission for an action, that item shows a tooltip explaining why, while the other item remains available.
+- **Finer-grained permissions on the Debug on Fusion menu**: The "Debug in Studio" and "Run once on <Constant name="fusion" />" menu items are now independently disabled based on your permissions. If you lack the required permission for an action, that item shows a tooltip explaining why, while the other item remains available.
 
 - **Automatic dbt version override before "Debug in Studio"**: When you click "Debug in Studio," dbt platform now automatically sets your user-level `DBT_DEVELOP_CORE_VERSION` environment variable to `latest-fusion` before opening the Studio IDE, so you no longer need to configure this manually.
 
 - **Clearer failure state for "Debug in Studio"**: If the preparation step before opening the Studio IDE fails, the button temporarily shows "Debug failed" in a red state for 5 seconds before resetting, so you know to try again rather than seeing a silent failure.
 
-- **Fusion upgrade eligibility for projects with no jobs**: Projects with no jobs configured are now treated as eligible for Fusion. The upgrade card no longer requires a successful job run for such projects and instead shows "No jobs configured yet" under job eligibility.
+- **Fusion upgrade eligibility for projects with no jobs**: Projects with no jobs configured are now treated as eligible for <Constant name="fusion" />. The upgrade card no longer requires a successful job run for such projects and instead shows "No jobs configured yet" under job eligibility.
 
 - **Confirmation pop-up before overriding Fusion eligibility**: Clicking "Override eligibility status" on the run details page now opens a confirmation pop-up before applying the override, preventing accidental changes.
 
@@ -709,15 +709,15 @@ Release notes are grouped by date for single-tenant environments.
 
 - **Deep-linking to console tabs**: You can now navigate directly to a specific Studio IDE console tab (for example, Commands or Lineage) using a `consoleTab` URL query parameter. Invalid tab identifiers are removed from the URL automatically.
 
-- **Compile button after deprecation autofix in Fusion**: After the deprecation autofix workflow completes in Fusion environments, a **Compile** button now appears in the autofix results panel so you can immediately verify the updated project without manually triggering a compile.
+- **Compile button after deprecation autofix in <Constant name="fusion" />**: After the deprecation autofix workflow completes in Fusion environments, a **Compile** button now appears in the autofix results panel so you can immediately verify the updated project without manually triggering a compile.
 
 ### Orchestration and run status
 
 - **Fusion eligibility toggle replaces dropdown filter**: The jobs list Fusion eligibility dropdown filter has been replaced with a toggle and help icon. When enabled, each job displays its current Fusion eligibility badge, and a persistent info banner explains how eligibility is recalculated. The toggle state is saved per-project in your browser.
 
-- **Debug on Fusion menu**: The single "Run once on Fusion" button on the job details page and job list has been replaced with a "Debug on Fusion" menu that offers "Debug in Studio," "Run once on Fusion," and (when dbt Copilot is enabled) "Debug in Studio with Copilot" options.
+- **Debug on Fusion menu**: The single "Run once on <Constant name="fusion" />" button on the job details page and job list has been replaced with a "Debug on <Constant name="fusion" />" menu that offers "Debug in Studio," "Run once on <Constant name="fusion" />," and (when dbt Copilot is enabled) "Debug in Studio with Copilot" options.
 
-- **Simplified Fusion run error banner**: The Fusion run error banner on run details now uses the same "Debug on Fusion" menu as the jobs page. The banner no longer requires setting a personal dbt version override before navigating to Studio.
+- **Simplified Fusion run error banner**: The Fusion run error banner on run details now uses the same "Debug on <Constant name="fusion" />" menu as the jobs page. The banner no longer requires setting a personal dbt version override before navigating to Studio.
 
 ### Webhooks
 
@@ -765,7 +765,7 @@ Release notes are grouped by date for single-tenant environments.
 
 - **Clearer Fusion job eligibility messages**: Fusion eligibility reason messages are rewritten to be shorter and more actionable. For example, unsupported adapters now read "This job uses an adapter that's not currently available on the Fusion engine" and jobs not on Latest now read "This job uses a dbt version that's not tested for Fusion eligibility."
 
-- **Fusion eligibility confirmation modal**: Clicking "Run once on Fusion" on a job now opens a confirmation modal before triggering the run, showing the environment name and a warning that job commands will execute in that environment.
+- **Fusion eligibility confirmation modal**: Clicking "Run once on <Constant name="fusion" />" on a job now opens a confirmation modal before triggering the run, showing the environment name and a warning that job commands will execute in that environment.
 
 - **Improved `dbt ls` and `dbt list` run log status (dbt Fusion engine only):**: Run steps that execute `dbt ls` or `dbt list` now show node results with a no-op status instead of "unknown," reducing confusion in run logs for list operations.
 
@@ -773,7 +773,7 @@ Release notes are grouped by date for single-tenant environments.
 
 - **More descriptive Fusion readiness toggle**: The account-level setting to enable Fusion readiness and upgrade features now has an updated label ("Enable Fusion readiness & upgrade features") and a more detailed description explaining what the setting allows administrators and developers to do.
 
-- **Debug on Fusion navigates with version override**: The "Debug on Fusion" button (previously "Debug manually") on failed Fusion run banners now sets your personal `DBT_DEVELOP_CORE_VERSION` override to `latest-fusion` before opening Studio IDE, ensuring you open the IDE on the Fusion engine. A loading state is shown while the override saves, and an inline error is displayed if the save fails.
+- **Debug on <Constant name="fusion" /> navigates with version override**: The "Debug on <Constant name="fusion" />" button (previously "Debug manually") on failed Fusion run banners now sets your personal `DBT_DEVELOP_CORE_VERSION` override to `latest-fusion` before opening Studio IDE, ensuring you open the IDE on the Fusion engine. A loading state is shown while the override saves, and an inline error is displayed if the save fails.
 
 ### Deployment and configuration
 
@@ -836,7 +836,7 @@ Release notes are grouped by date for single-tenant environments.
 
 ### Insights
 
-- **Fusion status column in account insights table**: Look for a "Fusion status" column in your account insights table when the Fusion readiness flow is available for your account. You'll see one of four states: On Fusion, Start upgrade, Partial-Fusion, or Non-Fusion — based on each project's readiness and migration progress. Projects that are ready to upgrade show a "Start upgrade" button that navigates directly to the project home page. Contact your account manager to enable.
+- **Fusion status column in account insights table**: Look for a "Fusion status" column in your account insights table when the Fusion readiness flow is available for your account. You'll see one of four states: On <Constant name="fusion" />, Start upgrade, Partial-Fusion, or Non-Fusion — based on each project's readiness and migration progress. Projects that are ready to upgrade show a "Start upgrade" button that navigates directly to the project home page. Contact your account manager to enable.
 
 ## Fixes
 
@@ -902,7 +902,7 @@ Release notes are grouped by date for single-tenant environments.
 
 ### APIs, Identity, and Administration
 
-- **Fusion migration gated by API availability**: The Fusion migration checklist, the Enable Fusion Environments page, and the "Enable Fusion" button in Studio IDE now use the `is_migration_available` field from the Fusion status API instead of the legacy `orc2609ShowFusionToggle` feature flag. Fusion migration UI is shown only when the backend has marked the project as ready for migration.
+- **Fusion migration gated by API availability**: The Fusion migration checklist, the Enable Fusion Environments page, and the "Enable <Constant name="fusion" />" button in Studio IDE now use the `is_migration_available` field from the Fusion status API instead of the legacy `orc2609ShowFusionToggle` feature flag. Fusion migration UI is shown only when the backend has marked the project as ready for migration.
 
 ## March 25, 2026
 
@@ -1767,13 +1767,13 @@ No changes of note this week.
 
 - **Studio**
   - **Git sidebar & file refresh parity**: The file tree now mirrors Cloud VCS statuses (including conflicts) and automatically invalidates caches after `dbt deps`/`dbt clean`, so new or removed files appear without a reload.
-  - **Log viewers & Autofix UX**: Command and interactive query logs adopt the new accordion-based viewer, and Autofix sessions in Fusion treat plain `parse` commands as the trigger for deprecation summaries, keeping remediation flows consistent.
+  - **Log viewers & Autofix UX**: Command and interactive query logs adopt the new accordion-based viewer, and Autofix sessions in <Constant name="fusion" /> treat plain `parse` commands as the trigger for deprecation summaries, keeping remediation flows consistent.
 
 ### Fixes
 
 - **dbt platform**
   - **Environment variable editor stability**: Editing one variable no longer backfills blank cells with previously edited values, preventing accidental overrides.
-  - **Cost optimization indicator accuracy**: Job pages once again display "Cost optimization features" whenever Fusion actually runs (and gating conditions are met), so users see the right coverage status regardless of feature-flag permutations.
+  - **Cost optimization indicator accuracy**: Job pages once again display "Cost optimization features" whenever <Constant name="fusion" /> actually runs (and gating conditions are met), so users see the right coverage status regardless of feature-flag permutations.
 
 ### Behavior changes
 
