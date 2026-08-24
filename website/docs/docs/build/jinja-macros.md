@@ -154,33 +154,6 @@ from my_table
 
 You can also qualify a macro in your own project by prefixing it with your [package name](/reference/dbt-jinja-functions/project_name) (this is mainly useful for package authors).
 
-## Using macros in YAML files
-
-<VersionBlock firstVersion="2.0">
-
-In <Constant name="core_v2" />, project macros are registered before YAML files are rendered, so you can call any project macro directly in a YAML file. For example, in a source or model definition:
-
-```yaml
-sources:
-  - name: raw_orders
-    database: "{{ get_environment() }}"
-```
-
-This is useful for injecting dynamic values (such as environment-specific identifiers) without duplicating logic across your project.
-
-</VersionBlock>
-
-<VersionBlock lastVersion="1.99">
-
-In <Constant name="core_v1" />, YAML files are rendered with a restricted Jinja context that only includes built-in dbt functions like `env_var()` and `doc()`. Project macros are not available in this context. You can use built-in Jinja functions in your YAML files instead:
-
-```yaml
-sources:
-  - name: raw_orders
-    database: "{{ env_var('DBT_DATABASE') }}"
-```
-
-</VersionBlock>
 
 ## FAQs
 

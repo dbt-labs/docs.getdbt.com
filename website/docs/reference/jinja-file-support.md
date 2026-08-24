@@ -32,8 +32,8 @@ Only `profiles.yml` and `packages.yml` support the `DBT_ENV_SECRET_` prefix for 
 | `.md` docs blocks (`{% docs %}`) | ✅ | ❌ | ❌ | Pure Jinja only; use [`doc()`](/reference/dbt-jinja-functions/doc) to reference blocks |
 | `dbt_project.yml` | ✅ | Limited | ❌ | For available functions and variables, refer to [dbt_project.yml context](/reference/dbt-jinja-functions/dbt-project-yml-context) |
 | `profiles.yml` | ✅ | Limited | ❌ | For available functions and variables, refer to [profiles.yml context](/reference/dbt-jinja-functions/profiles-yml-context) |
-| `packages.yml` | ✅ | Limited | ❌ | For available functions and variables, refer to [packages.yml context](/reference/dbt-jinja-functions/packages.yml) |
-| `properties.yml` / `schema.yml` | ✅ | Limited | ❌ | For available functions and variables, refer to [properties.yml context](/reference/dbt-jinja-functions/properties-yml-context). `ref()` and `source()` are not available. |
+| `packages.yml` | ✅ | Limited | ❌ | For available functions and variables, refer to [packages.yml context](/reference/dbt-jinja-functions/packages.yml%20context) |
+| `properties.yml` / `schema.yml` | ✅ | Limited | ❌ | For available functions and variables, refer to [properties.yml context](/reference/dbt-jinja-functions/dbt-properties-yml-context). `ref()` and `source()` are not available. |
 | `selectors.yml` | ✅ | Limited | ❌ | Supports `env_var()`, `target`, `as_bool()`, and related context. Refer to [YAML selectors](/reference/node-selection/yaml-selectors) for selector syntax. |
 | `dependencies.yml` | ❌ | ❌ | ❌ | Not Jinja-rendered. Use `packages.yml` for conditional logic. Refer to [Examples and caveats](#examples-and-caveats). |
 | `.py` Python models | ❌ | ❌ | ❌ | Use the Python `dbt` class API instead |
@@ -54,8 +54,8 @@ Only `profiles.yml` and `packages.yml` support the `DBT_ENV_SECRET_` prefix for 
 | `.md` docs blocks (`{% docs %}`) | ✅ | ❌ | ❌ | Pure Jinja only; use [`doc()`](/reference/dbt-jinja-functions/doc) to reference blocks |
 | `dbt_project.yml` | ✅ | Limited | ✅ | Custom macros are supported in hooks. For available functions and variables, refer to [dbt_project.yml context](/reference/dbt-jinja-functions/dbt-project-yml-context). Refer to [Examples and caveats](#examples-and-caveats). |
 | `profiles.yml` | ✅ | Limited | ❌ | For available functions and variables, refer to [profiles.yml context](/reference/dbt-jinja-functions/profiles-yml-context) |
-| `packages.yml` | ✅ | Limited | ❌ | For available functions and variables, refer to [packages.yml context](/reference/dbt-jinja-functions/packages.yml) |
-| `properties.yml` / `schema.yml` | ✅ | Limited | ✅ | Custom macros are supported in YAML values. For available functions and variables, refer to [properties.yml context](/reference/dbt-jinja-functions/properties-yml-context). `ref()` and `source()` are not available. Refer to [Examples and caveats](#examples-and-caveats). |
+| `packages.yml` | ✅ | Limited | ❌ | For available functions and variables, refer to [packages.yml context](/reference/dbt-jinja-functions/packages.yml%20context) |
+| `properties.yml` / `schema.yml` | ✅ | Limited | ✅ | Custom macros are supported in YAML values. For available functions and variables, refer to [properties.yml context](/reference/dbt-jinja-functions/dbt-properties-yml-context). `ref()` and `source()` are not available. Refer to [Examples and caveats](#examples-and-caveats). |
 | `selectors.yml` | ✅ | Limited | ✅ | Custom macros are supported. Also supports `env_var()`, `target`, `as_bool()`, and related context. Refer to [YAML selectors](/reference/node-selection/yaml-selectors) and [Examples and caveats](#examples-and-caveats). |
 | `dependencies.yml` | ✅ | Limited | ❌ | Jinja is supported (for example `env_var()` in a git URL). Prefer `packages.yml` if the project must also run on <Constant name="core" />. Refer to [Examples and caveats](#examples-and-caveats). |
 | `.py` Python models | ❌ | ❌ | ❌ | Use the Python `dbt` class API instead |
@@ -116,7 +116,7 @@ models:
 
 **Caveat:** If this project must also run on <Constant name="core" />, don't rely on custom macros in these YAML files. Prefer static text or built-in context functions for portable projects.
 
-**Learn more:** [properties.yml context](/reference/dbt-jinja-functions/properties-yml-context)
+**Learn more:** [properties.yml context](/reference/dbt-jinja-functions/dbt-properties-yml-context)
 
 </Expandable>
 
@@ -194,7 +194,7 @@ models:
 
 **Caveat:** Custom macros in these YAML contexts aren't available on <Constant name="core" />.
 
-**Learn more:** [properties.yml context](/reference/dbt-jinja-functions/properties-yml-context)
+**Learn more:** [properties.yml context](/reference/dbt-jinja-functions/dbt-properties-yml-context)
 
 </Expandable>
 
@@ -222,7 +222,7 @@ packages:
 - [Jinja and macros](/docs/build/jinja-macros)
 - [YAML tips](/docs/build/dbt-tips#yaml-tips)
 - [dbt Jinja functions and context variables](/reference/dbt-jinja-functions-context-variables)
-- [properties.yml context](/reference/dbt-jinja-functions/properties-yml-context)
+- [properties.yml context](/reference/dbt-jinja-functions/dbt-properties-yml-context)
 - [dbt_project.yml context](/reference/dbt-jinja-functions/dbt-project-yml-context)
 - [profiles.yml context](/reference/dbt-jinja-functions/profiles-yml-context)
-- [packages.yml context](/reference/dbt-jinja-functions/packages.yml)
+- [packages.yml context](/reference/dbt-jinja-functions/packages.yml%20context)
