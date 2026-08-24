@@ -19,7 +19,6 @@ import UnitTestsPrereqs from '/snippets/_unit-tests-prereqs.md';
 
 #### Adapter-specific caveats
 - You must specify all fields in a BigQuery `STRUCT` in a unit test. You cannot use only a subset of fields in a `STRUCT`.
-- Starting in `dbt-bigquery` v1.13, the `_FILE_NAME` pseudocolumn on BigQuery external tables is supported directly in `dict` or `csv` fixture rows. Refer to [Unit testing with pseudocolumns](#unit-testing-with-pseudocolumns) for more information.
 - Redshift customers need to be aware of a [limitation when building unit tests](/reference/resource-configs/redshift-configs#unit-test-limitations) that requires a workaround.
 - Redshift sources need to be in the same database as the models.
 
