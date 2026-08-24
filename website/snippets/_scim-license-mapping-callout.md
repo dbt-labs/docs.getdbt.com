@@ -6,7 +6,7 @@
 <Expandable alt_header="Toggle options per identity provider">
 
 - **Okta:** Enable the **Ignore dbt license mapping** toggle in **Account settings > SSO & SCIM** and follow the [Okta license management doc](/docs/platform/manage-access/scim-manage-user-licenses).
-- **Entra ID:** Use [SSO-based Active Directory group → license mapping](/docs/platform/manage-access/seats-and-users#mapped-configuration). It works alongside an active Entra ID SCIM setup. Keep the **Ignore dbt license mapping** toggle _disabled_ as enabling it removes license mapping for Entra ID users.
+- **Entra ID:** Use [SSO-based Active Directory group → license mapping](/docs/platform/manage-access/seats-and-users#mapped-configuration). It works alongside an active Entra ID SCIM setup. Keep the **Ignore dbt license mapping** toggle _disabled_ as enabling it removes license mapping for Entra ID users. SCIM license mapping with custom attributes may be possible depending on your Entra ID configuration, but it's not a supported setup &mdash; **do it at your own risk**.
 
 </Expandable>
 
