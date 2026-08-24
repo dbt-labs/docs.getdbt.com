@@ -22,7 +22,7 @@ For <Constant name="fusion_engine" /> updates, refer to the [dbt-fusion changelo
 
 ## August 2026
 
-- **Beta**: [dbt Core 2.0](/docs/dbt-versions/core-upgrade/upgrading-to-v2) is now available in beta!
+- **Beta**: [dbt Core 2.0](/docs/dbt-versions/dbt-upgrade/upgrading-to-v2) is now available in beta!
 - **New:** The [Analyst read](/docs/platform/manage-access/enterprise-permissions#analyst-read) permission set is now generally available (GA) for Enterprise plans. Analyst read is a project-level permission set that provides read-only access to analyze dbt models and project resources, and read-only users can connect to analysis features such as the [dbt MCP server](/docs/dbt-ai/about-mcp).
 - **Enhancement:** [Cost Insights](/docs/explore/cost-insights) now supports cost attribution for [Snowflake Adaptive Warehouses](https://docs.snowflake.com/en/user-guide/warehouses-adaptive). For setup details, refer to [Assign required permissions](/docs/explore/set-up-cost-insights#assign-required-permissions).
 - **New:** The [Model timing tab](/docs/deploy/run-visibility#model-timing-tab) in job run details has been redesigned with a richer, scalable view that includes metric tiles, an execution timeline with grouping and highlight controls, a concurrency-over-time chart, and a searchable resource details table.
@@ -86,12 +86,12 @@ To simplify the docs experience, clarify availability, and make it easier to fin
 *tl;dr:* The docs are now organized around v1 and v2 for simplified docs versioning and navigation. We've clarified dbt Core and licensing, reorganized v2 content, and refreshed adapter and Fusion availability guidance. If you notice anything off or have any feedback, we'd love to hear it! Open up a [docs issue here](https://github.com/dbt-labs/docs.getdbt.com/issues).
 
 - **Enhancement**: We've updated the version switcher on the docs site. The version switcher now just shows v1 and v2. v2 is the current generation of dbt, built on Rust for a faster, richer dev experience; v1 is the Python-based generation of dbt. Refer to [dbt versions](/docs/introduction#dbt-versions) for what's different between v1 and v2.
-- **New:** We've added a dedicated page explaining dbt Core and its distributions. dbt Core 2.0 is the Rust-based open-source runtime. dbt Core v1.x is the Python-based runtime. Refer to [About dbt Core](/docs/fusion/about-core) for more info.
+- **New:** We've added a dedicated page explaining dbt Core and its distributions. dbt Core 2.0 is the Rust-based open-source runtime. dbt Core v1.x is the Python-based runtime. Refer to [About dbt Core](/docs/dbt/about-core) for more info.
 - **New:** Licensing across dbt Core now has its own page, so you can see what applies to your setup in one place. Refer to [dbt licensing](/docs/dbt-licensing).
 - **Enhancement:** [Static analysis](/docs/build/about-static-analysis) now lives with the rest of your build docs and available in v2.
-- **Enhancement:** The Fusion upgrade readiness checklist now sits right next to the [v2 upgrade guide](/docs/dbt-versions/core-upgrade/upgrading-to-v2), and the networking and telemetry references moved in [local install](/docs/local/fusion-networking-requirements) and [Reference](/reference/telemetry-observability).
-- **Enhancement:** More adapters are closer to general availability &mdash; Snowflake, BigQuery, Databricks, and Redshift are now in **Preview**, and Spark and DuckDB are in **Beta**. Refer to [Adapter lifecycles](/docs/fusion/fusion-availability?version=2.0#adapter-lifecycle) for the current status of each adapter.
-- **Enhancement:** Simplified and clarified the [Fusion feature tables](/docs/fusion/fusion-availability?version=2.0#what-you-get-with-fusion) to make it easier to see what's available and how to get it.
+- **Enhancement:** The Fusion upgrade readiness checklist now sits right next to the [v2 upgrade guide](/docs/dbt-versions/dbt-upgrade/upgrading-to-v2), and the networking and telemetry references moved in [local install](/docs/local/fusion-networking-requirements) and [Reference](/reference/telemetry-observability).
+- **Enhancement:** More adapters are closer to general availability &mdash; Snowflake, BigQuery, Databricks, and Redshift are now in **Preview**, and Spark and DuckDB are in **Beta**. Refer to [Adapter lifecycles](/docs/dbt/fusion-availability?version=2.0#adapter-lifecycle) for the current status of each adapter.
+- **Enhancement:** Simplified and clarified the [Fusion feature tables](/docs/dbt/fusion-availability?version=2.0#what-you-get-with-fusion) to make it easier to see what's available and how to get it.
 - **New:** Added availability badges to pages and sections so you can quickly see what applies to your setup at a glance.
 
 ## June 2026
@@ -117,7 +117,7 @@ To simplify the docs experience, clarify availability, and make it easier to fin
 
 The following features are new or enhanced as part of dbt Labs announcements at [Snowflake Summit 2026](https://www.getdbt.com/events/snowflake-summit-2026) in San Francisco from June 1–4, 2026:
 
-- **Alpha**: [dbt Core 2.0](/docs/dbt-versions/core-upgrade/upgrading-to-v2) is now available in alpha!
+- **Alpha**: [dbt Core 2.0](/docs/dbt-versions/dbt-upgrade/upgrading-to-v2) is now available in alpha!
   - **New**: dbt Core 2.0 is the open-source Apache 2.0 foundation that the <Constant name="fusion_engine" /> builds on, delivering a faster, Rust-based runtime. It ships as two distributions: `dbt-core` (OSS, Apache 2.0) and `dbt` (<Constant name="fusion" /> distribution, proprietary).
 - **Beta**: [`dbt lint`](/reference/commands/lint?version=2.0) is now available in beta!
   - **New**: `dbt lint` is a high-performance SQL linter built into the <Constant name="dbt_platform" />, available on projects running the <Constant name="fusion_engine" />. It is SQLFluff-compatible; it reads your existing `.sqlfluff` config, uses the same rule codes, and respects `-- noqa` suppression comments. In benchmarks, it runs roughly 50× faster than single-threaded SQLFluff..
@@ -202,7 +202,7 @@ The following features are new or enhanced as part of dbt Labs announcements at 
 ## February 2026
 
 - **New**: Advanced CI (dbt compare in orchestration) is now supported in the <Constant name="fusion_engine" />. For more information, review [Advanced CI](/docs/deploy/advanced-ci).
-- **Beta**: The `dbt-salesforce` adapter available in the <Constant name="fusion_engine" /> CLI is now in beta. For more information, refer to [Salesforce Data 360 setup](/docs/fusion/connect-data-platform-fusion/salesforce-data-cloud-setup).
+- **Beta**: The `dbt-salesforce` adapter available in the <Constant name="fusion_engine" /> CLI is now in beta. For more information, refer to [Salesforce Data 360 setup](/docs/local/connect-data-platform/salesforce-data-cloud-setup).
 - **Enhancement:** The Analyst permission now has the project-level access to read repositories. Review [Project access for project permissions](/docs/platform/manage-access/enterprise-permissions#project-access-for-project-permissions) for more information.
 - **Enhancement:** After a user accepts an email [invite](/docs/platform/manage-access/invite-users) to access an [SSO-protected](/docs/platform/manage-access/sso-overview) <Constant name="dbt_platform"/> account, the UI now prompts them to log in with SSO to complete the process. This replaces the previous "Joined successfully" message, helping avoid confusion when users accept an invite but do not complete the SSO login flow.
 - **New:** [Profiles](/docs/platform/about-profiles) let you define and manage connections, credentials, and attributes for deployment environments at the project level. dbt automatically creates profiles for existing projects and environments based on the current configurations, so you don't need to take any action. This is being rolled out in phases during the coming weeks.

@@ -39,6 +39,131 @@
   ],
   "redirects": [
     {
+      "source": "/docs/fusion/about-fusion",
+      "destination": "/docs/dbt/about-fusion",
+      "permanent": true
+    },
+    {
+      "source": "/docs/fusion/about-core",
+      "destination": "/docs/dbt/about-core",
+      "permanent": true
+    },
+    {
+      "source": "/docs/fusion/get-started-fusion",
+      "destination": "/docs/dbt/get-started-fusion",
+      "permanent": true
+    },
+    {
+      "source": "/docs/fusion/fusion-availability",
+      "destination": "/docs/dbt/fusion-availability",
+      "permanent": true
+    },
+    {
+      "source": "/docs/fusion/supported-features",
+      "destination": "/docs/dbt/supported-features",
+      "permanent": true
+    },
+    {
+      "source": "/docs/fusion/fusion-releases",
+      "destination": "/docs/dbt/fusion-releases",
+      "permanent": true
+    },
+    {
+      "source": "/docs/fusion/fusion-readiness",
+      "destination": "/docs/dbt/fusion-readiness",
+      "permanent": true
+    },
+    {
+      "source": "/docs/fusion/vs-compare-changes",
+      "destination": "/docs/dbt/vs-compare-changes",
+      "permanent": true
+    },
+    {
+      "source": "/docs/fusion/adbc",
+      "destination": "/docs/dbt/adbc",
+      "permanent": true
+    },
+    {
+      "source": "/docs/dbt-versions/core-upgrade",
+      "destination": "/docs/dbt-versions/dbt-upgrade",
+      "permanent": true
+    },
+    {
+      "source": "/docs/dbt-versions/core-upgrade/upgrading-to-v2",
+      "destination": "/docs/dbt-versions/dbt-upgrade/upgrading-to-v2",
+      "permanent": true
+    },
+    {
+      "source": "/docs/dbt-versions/core-upgrade/upgrading-to-v1.12",
+      "destination": "/docs/dbt-versions/dbt-upgrade/upgrading-to-v1.12",
+      "permanent": true
+    },
+    {
+      "source": "/docs/dbt-versions/core-upgrade/upgrading-to-v1.11",
+      "destination": "/docs/dbt-versions/dbt-upgrade/upgrading-to-v1.11",
+      "permanent": true
+    },
+    {
+      "source": "/docs/dbt-versions/core-upgrade/upgrading-to-v1.10",
+      "destination": "/docs/dbt-versions/dbt-upgrade/upgrading-to-v1.10",
+      "permanent": true
+    },
+    {
+      "source": "/docs/dbt-versions/core-upgrade/upgrading-to-v1.9",
+      "destination": "/docs/dbt-versions/dbt-upgrade/upgrading-to-v1.9",
+      "permanent": true
+    },
+    {
+      "source": "/docs/dbt-versions/core-upgrade/upgrading-to-v1.8",
+      "destination": "/docs/dbt-versions/dbt-upgrade/upgrading-to-v1.8",
+      "permanent": true
+    },
+    {
+      "source": "/docs/dbt-versions/core-upgrade/upgrading-to-v1.7",
+      "destination": "/docs/dbt-versions/dbt-upgrade/upgrading-to-v1.7",
+      "permanent": true
+    },
+    {
+      "source": "/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-to-v1.6",
+      "destination": "/docs/dbt-versions/dbt-upgrade/Older%20versions/upgrading-to-v1.6",
+      "permanent": true
+    },
+    {
+      "source": "/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-to-v1.5",
+      "destination": "/docs/dbt-versions/dbt-upgrade/Older%20versions/upgrading-to-v1.5",
+      "permanent": true
+    },
+    {
+      "source": "/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-to-v1.4",
+      "destination": "/docs/dbt-versions/dbt-upgrade/Older%20versions/upgrading-to-v1.4",
+      "permanent": true
+    },
+    {
+      "source": "/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-to-v1.3",
+      "destination": "/docs/dbt-versions/dbt-upgrade/Older%20versions/upgrading-to-v1.3",
+      "permanent": true
+    },
+    {
+      "source": "/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-to-v1.2",
+      "destination": "/docs/dbt-versions/dbt-upgrade/Older%20versions/upgrading-to-v1.2",
+      "permanent": true
+    },
+    {
+      "source": "/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-to-v1.1",
+      "destination": "/docs/dbt-versions/dbt-upgrade/Older%20versions/upgrading-to-v1.1",
+      "permanent": true
+    },
+    {
+      "source": "/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-to-v1.0",
+      "destination": "/docs/dbt-versions/dbt-upgrade/Older%20versions/upgrading-to-v1.0",
+      "permanent": true
+    },
+    {
+      "source": "/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-to-dbt-utils-v1.0",
+      "destination": "/docs/dbt-versions/dbt-upgrade/Older%20versions/upgrading-to-dbt-utils-v1.0",
+      "permanent": true
+    },
+    {
       "source": "/docs/build/osi-semantic-models",
       "destination": "/docs/build/ossie-semantic-models",
       "permanent": true
@@ -60,12 +185,12 @@
     },
     {
       "source": "/docs/fusion/fusion",
-      "destination": "/docs/fusion/about-fusion",
+      "destination": "/docs/dbt/about-fusion",
       "permanent": true
     },
     {
       "source": "/docs/fusion",
-      "destination": "/docs/fusion/about-fusion",
+      "destination": "/docs/dbt/about-fusion",
       "permanent": true
     },
     {
@@ -95,7 +220,7 @@
     },
     {
       "source": "/docs/dbt-versions/core-upgrade/upgrading-to-fusion",
-      "destination": "/docs/dbt-versions/core-upgrade/upgrading-to-v2",
+      "destination": "/docs/dbt-versions/dbt-upgrade/upgrading-to-v2",
       "permanent": true
     },
     {
@@ -194,8 +319,6 @@
       "permanent": true
     },
     {
-      "source": "/community/events",
-      "destination": "https://www.getdbt.com/events",
       "source": "/community/spotlight",
       "destination": "/community/join",
       "permanent": true
@@ -210,7 +333,7 @@
       "destination": "https://discourse.getdbt.com/",
       "permanent": true
     },
-    { 
+    {
       "source": "/guides/sl-migration",
       "destination": "/docs/build/latest-metrics-spec",
       "permanent": true
@@ -382,7 +505,7 @@
     },
     {
       "source": "/docs/fusion/install-fusion",
-      "destination": "/docs/fusion/get-started-fusion",
+      "destination": "/docs/dbt/get-started-fusion",
       "permanent": true
     },
     {
@@ -437,7 +560,7 @@
     },
     {
       "source": "/docs/fusion/about-fusion-install",
-      "destination": "/docs/local/install-dbt",
+      "destination": "/docs/dbt/about-fusion-install",
       "permanent": true
     },
     {
@@ -977,72 +1100,72 @@
     },
     {
       "source": "/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-to-0-11-0",
-      "destination": "/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-to-v1.0",
+      "destination": "/docs/dbt-versions/dbt-upgrade/Older%20versions/upgrading-to-v1.0",
       "permanent": true
     },
     {
       "source": "/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-to-0-12-0",
-      "destination": "/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-to-v1.0",
+      "destination": "/docs/dbt-versions/dbt-upgrade/Older%20versions/upgrading-to-v1.0",
       "permanent": true
     },
     {
       "source": "/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-to-0-13-0",
-      "destination": "/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-to-v1.0",
+      "destination": "/docs/dbt-versions/dbt-upgrade/Older%20versions/upgrading-to-v1.0",
       "permanent": true
     },
     {
       "source": "/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-to-0-14-0",
-      "destination": "/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-to-v1.0",
+      "destination": "/docs/dbt-versions/dbt-upgrade/Older%20versions/upgrading-to-v1.0",
       "permanent": true
     },
     {
       "source": "/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-to-0-14-1",
-      "destination": "/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-to-v1.0",
+      "destination": "/docs/dbt-versions/dbt-upgrade/Older%20versions/upgrading-to-v1.0",
       "permanent": true
     },
     {
       "source": "/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-to-0-15-0",
-      "destination": "/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-to-v1.0",
+      "destination": "/docs/dbt-versions/dbt-upgrade/Older%20versions/upgrading-to-v1.0",
       "permanent": true
     },
     {
       "source": "/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-to-0-16-0",
-      "destination": "/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-to-v1.0",
+      "destination": "/docs/dbt-versions/dbt-upgrade/Older%20versions/upgrading-to-v1.0",
       "permanent": true
     },
     {
       "source": "/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-to-0-17-0",
-      "destination": "/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-to-v1.0",
+      "destination": "/docs/dbt-versions/dbt-upgrade/Older%20versions/upgrading-to-v1.0",
       "permanent": true
     },
     {
       "source": "/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-to-0-18-0",
-      "destination": "/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-to-v1.0",
+      "destination": "/docs/dbt-versions/dbt-upgrade/Older%20versions/upgrading-to-v1.0",
       "permanent": true
     },
     {
       "source": "/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-to-0-19-0",
-      "destination": "/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-to-v1.0",
+      "destination": "/docs/dbt-versions/dbt-upgrade/Older%20versions/upgrading-to-v1.0",
       "permanent": true
     },
     {
       "source": "/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-to-v0.20",
-      "destination": "/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-to-v1.0",
+      "destination": "/docs/dbt-versions/dbt-upgrade/Older%20versions/upgrading-to-v1.0",
       "permanent": true
     },
     {
       "source": "/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-to-v0.21",
-      "destination": "/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-to-v1.0",
+      "destination": "/docs/dbt-versions/dbt-upgrade/Older%20versions/upgrading-to-v1.0",
       "permanent": true
     },
     {
       "source": "/docs/dbt-versions/core-upgrade/upgrading-to-v1.5",
-      "destination": "/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-to-v1.5",
+      "destination": "/docs/dbt-versions/dbt-upgrade/Older%20versions/upgrading-to-v1.5",
       "permanent": true
     },
     {
       "source": "/docs/dbt-versions/core-upgrade/upgrading-to-v1.6",
-      "destination": "/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-to-v1.6",
+      "destination": "/docs/dbt-versions/dbt-upgrade/Older%20versions/upgrading-to-v1.6",
       "permanent": true
     },
     {
@@ -1064,7 +1187,7 @@
       "source": "/docs/collaborate/auto-exposures",
       "destination": "/docs/explore/view-downstream-exposures",
       "permanent": true
-    },  
+    },
     {
       "source": "/guides/dbt-cloud-cli",
       "destination": "/docs/cloud/cloud-cli-installation",
@@ -1509,7 +1632,7 @@
       "source": "/docs/cloud/enable-dbt-assist",
       "destination": "/docs/cloud/enable-dbt-copilot",
       "permanent": true
-    },    
+    },
     {
       "source": "/docs/cloud/dbt-assist",
       "destination": "/docs/cloud/dbt-copilot",
@@ -1531,8 +1654,8 @@
       "permanent": true
     },
     {
-      "source":  "/docs/deploy/dashboard-status-tiles",
-      "destination":  "/docs/explore/data-tile",
+      "source": "/docs/deploy/dashboard-status-tiles",
+      "destination": "/docs/explore/data-tile",
       "permanent": true
     },
     {
@@ -1546,43 +1669,43 @@
       "permanent": true
     },
     {
-      "source":  "docs/cloud/secure/environment-permissions",
-      "destination":  "docs/cloud/manage-access/environment-permissions",
+      "source": "docs/cloud/secure/environment-permissions",
+      "destination": "docs/cloud/manage-access/environment-permissions",
       "permanent": true
     },
     {
-      "source":  "docs/cloud/secure/environment-permissions-setup",
+      "source": "docs/cloud/secure/environment-permissions-setup",
       "destination": "docs/cloud/manage-access/environment-permissions-setup",
       "permanent": true
     },
     {
       "source": "/docs/dbt-versions/core-upgrade/upgrading-to-dbt-utils-v1.0.md",
-      "destination": "/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-to-dbt-utils-v1.0.md",
+      "destination": "/docs/dbt-versions/dbt-upgrade/Older%20versions/upgrading-to-dbt-utils-v1.0.md",
       "permanent": true
     },
     {
       "source": "/docs/dbt-versions/core-upgrade/upgrading-to-v1.0",
-      "destination": "/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-to-v1.0",
+      "destination": "/docs/dbt-versions/dbt-upgrade/Older%20versions/upgrading-to-v1.0",
       "permanent": true
     },
     {
       "source": "/docs/dbt-versions/core-upgrade/upgrading-to-v1.1",
-      "destination": "/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-to-v1.1",
+      "destination": "/docs/dbt-versions/dbt-upgrade/Older%20versions/upgrading-to-v1.1",
       "permanent": true
     },
     {
       "source": "/docs/dbt-versions/core-upgrade/upgrading-to-v1.2",
-      "destination": "/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-to-v1.2",
+      "destination": "/docs/dbt-versions/dbt-upgrade/Older%20versions/upgrading-to-v1.2",
       "permanent": true
     },
     {
       "source": "/docs/dbt-versions/core-upgrade/upgrading-to-v1.3",
-      "destination": "/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-to-v1.3",
+      "destination": "/docs/dbt-versions/dbt-upgrade/Older%20versions/upgrading-to-v1.3",
       "permanent": true
     },
     {
       "source": "/docs/dbt-versions/core-upgrade/upgrading-to-v1.4",
-      "destination": "/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-to-v1.4",
+      "destination": "/docs/dbt-versions/dbt-upgrade/Older%20versions/upgrading-to-v1.4",
       "permanent": true
     },
     {
@@ -1850,7 +1973,6 @@
       "destination": "/guides/dbt-python-snowpark",
       "permanent": true
     },
-
     {
       "source": "/guides/dbt-ecosystem/sl-partner-integration-guide",
       "destination": "/guides/sl-partner-integration-guide",
@@ -1901,7 +2023,6 @@
       "destination": "/guides/migrate-from-stored-procedures",
       "permanent": true
     },
-
     {
       "source": "/guides/migration/tools/refactoring-legacy-sql",
       "destination": "/guides/refactoring-legacy-sql",
@@ -1994,27 +2115,27 @@
     },
     {
       "source": "/guides/migration/versions",
-      "destination": "/docs/dbt-versions/core-upgrade",
+      "destination": "/docs/dbt-versions/dbt-upgrade",
       "permanent": true
     },
     {
       "source": "/guides/migration/versions/:path((?!upgrading-to-v0.21|upgrading-to-v0.20).*)",
-      "destination": "/docs/dbt-versions/core-upgrade/:path*",
+      "destination": "/docs/dbt-versions/dbt-upgrade/:path*",
       "permanent": true
     },
     {
       "source": "/guides/migration/versions/upgrading-to-v0.21",
-      "destination": "/docs/dbt-versions/core-upgrade",
+      "destination": "/docs/dbt-versions/dbt-upgrade",
       "permanent": true
     },
     {
       "source": "/guides/migration/versions/upgrading-to-v0.20",
-      "destination": "/docs/dbt-versions/core-upgrade",
+      "destination": "/docs/dbt-versions/dbt-upgrade",
       "permanent": true
     },
     {
       "source": "/guides/migration/versions/Older%20versions/:path*",
-      "destination": "/docs/dbt-versions/core-upgrade/Older%20versions/:path*",
+      "destination": "/docs/dbt-versions/dbt-upgrade/Older%20versions/:path*",
       "permanent": true
     },
     {
@@ -2637,7 +2758,6 @@
       "destination": "/docs/get-started/develop-in-the-cloud",
       "permanent": true
     },
-
     {
       "source": "/docs/dbt-cloud/using-dbt-cloud/cloud-model-timing-tab",
       "destination": "/docs/get-started/dbt-cloud-features#model-timing-dashboard",
@@ -4058,7 +4178,6 @@
       "destination": "/reference/commands/:path*",
       "permanent": true
     },
-
     {
       "source": "/docs/running-a-dbt-project/using-the-command-line-interface",
       "destination": "/docs/running-a-dbt-project/using-the-cli",

@@ -37,13 +37,13 @@ To use Fusion in your project you must:
 
 Fusion supports nearly all of dbt Core v1.x's capabilities today. Refer to [Limitations](#limitations) below for the small number of gaps that remain.
 
-Fusion has also removed some deprecated features and introduced more rigorous validation of erroneous project code compared to dbt Core v1.x. Refer to the [Upgrade guide](/docs/dbt-versions/core-upgrade/upgrading-to-v2) for details.
+Fusion has also removed some deprecated features and introduced more rigorous validation of erroneous project code compared to dbt Core v1.x. Refer to the [Upgrade guide](/docs/dbt-versions/dbt-upgrade/upgrading-to-v2) for details.
 
 ## Features and capabilities
 
 Fusion gives your team faster development workflows with semantic and syntax error detection, a faster linter, column-level lineage, language server and VS Code integration, docs v2 (full), and data diff. The dbt VS Code extension adds editor features like IntelliSense, hover info, and inline errors on top, powered by the <Term id="lsp"/>.
 
-Most Fusion features work right away, with no login required. A few more unlock once you sign in with a <Constant name="dbt_platform" /> account &mdash; free to create, no paid plan needed. For the full free-vs-login breakdown, refer to [Fusion availability](/docs/fusion/fusion-availability). For <Term id="lsp"/> features specifically, refer to [About dbt LSP](/docs/about-dbt-lsp). To stay up-to-date on the latest features, check out the [Fusion diaries](https://github.com/dbt-labs/dbt-fusion/discussions).
+Most Fusion features work right away, with no login required. A few more unlock once you sign in with a <Constant name="dbt_platform" /> account &mdash; free to create, no paid plan needed. For the full free-vs-login breakdown, refer to [Fusion availability](/docs/dbt/fusion-availability). For <Term id="lsp"/> features specifically, refer to [About dbt LSP](/docs/about-dbt-lsp). To stay up-to-date on the latest features, check out the [Fusion diaries](https://github.com/dbt-labs/dbt-fusion/discussions).
 
 :::tip 
 <Constant name="dbt_platform" /> [features](/docs/platform/about-platform/dbt-platform-features) (like [Advanced CI](/docs/deploy/advanced-ci), [dbt <Constant name="mesh" />](/docs/mesh/about-mesh), and more) are the enterprise layer on top of Fusion &mdash; available no matter how you run dbt, depending on your [dbt plan](https://www.getdbt.com/pricing).

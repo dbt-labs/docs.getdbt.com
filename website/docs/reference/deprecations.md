@@ -7,9 +7,9 @@ intro_text: "Deprecations are about features in your project code (models, confi
 
 Deprecated functionality still works in the v1.10 release but is no longer supported and will be removed in a future version. Deprecations currently show as warnings but don't prevent runs and other commands (unless you've configured [warnings as errors](/reference/global-configs/warnings)), but will cause errors after upgrading if not addressed. 
 
-Not the same as [behavior change flags](/reference/global-configs/behavior-changes) (which are opt-in/out flags in your `dbt_project.yml` file) or [deprecated CLI flags](/docs/dbt-versions/core-upgrade/upgrading-to-v2#deprecated-flags) (which are command-line flags being removed in <Constant name="fusion" />). See the [Changes overview](/reference/changes-overview) for a quick comparison.
+Not the same as [behavior change flags](/reference/global-configs/behavior-changes) (which are opt-in/out flags in your `dbt_project.yml` file) or [deprecated CLI flags](/docs/dbt-versions/dbt-upgrade/upgrading-to-v2#deprecated-flags) (which are command-line flags being removed in <Constant name="fusion" />). See the [Changes overview](/reference/changes-overview) for a quick comparison.
 
-Upgrading to [<Constant name="fusion" />](/docs/dbt-versions/core-upgrade/upgrading-to-v2)? You must resolve all deprecations listed on this page before upgrading.
+Upgrading to [<Constant name="fusion" />](/docs/dbt-versions/dbt-upgrade/upgrading-to-v2)? You must resolve all deprecations listed on this page before upgrading.
 
 :::
 
@@ -35,7 +35,7 @@ The `--no-partial-parse` flag ensures that even deprecations only picked up duri
 
 When you use the <Constant name="fusion_engine" />, omit `--no-partial-parse` from the command above. That flag is deprecated in <Constant name="fusion" /> and may log deprecation warning `dbt1700`. Run `dbt parse --show-all-deprecations` without `--no-partial-parse`.
 
-For more information, refer to [Deprecated flags](/docs/dbt-versions/core-upgrade/upgrading-to-v2#deprecated-flags) in the guide to upgrading to the <Constant name="fusion_engine" />.
+For more information, refer to [Deprecated flags](/docs/dbt-versions/dbt-upgrade/upgrading-to-v2#deprecated-flags) in the guide to upgrading to the <Constant name="fusion_engine" />.
 
 :::
 
@@ -156,7 +156,7 @@ models:
 
 ### ConfigDataPathDeprecation
 
-In [dbt v1.0](/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-to-v1.0) `data-paths` has been renamed to [seed-paths](/reference/project-configs/model-paths). If you receive this deprecation warning, it means that `data-paths` is still being used in your project's `dbt_project.yml`.
+In [dbt v1.0](/docs/dbt-versions/dbt-upgrade/Older%20versions/upgrading-to-v1.0) `data-paths` has been renamed to [seed-paths](/reference/project-configs/model-paths). If you receive this deprecation warning, it means that `data-paths` is still being used in your project's `dbt_project.yml`.
 
 Example warning:
 
@@ -174,7 +174,7 @@ Change `data-paths` to `seed-paths` in your `dbt_project.yml`.
 
 ### ConfigLogPathDeprecation
 
-[dbt v1.5](/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-to-v1.5) specifying `log-path` in `dbt_project.yml` was deprecated. Receiving this deprecation warning means that `log-path` is still specified in your `dbt_project.yml` and it's not set to the default value `logs`.
+[dbt v1.5](/docs/dbt-versions/dbt-upgrade/Older%20versions/upgrading-to-v1.5) specifying `log-path` in `dbt_project.yml` was deprecated. Receiving this deprecation warning means that `log-path` is still specified in your `dbt_project.yml` and it's not set to the default value `logs`.
 
 Example:
 
@@ -213,7 +213,7 @@ Remove `log-path` from your `dbt_project.yml` and specify it via either the CLI 
 
 ### ConfigSourcePathDeprecation
 
-In [dbt v1.0](/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-to-v1.0) `source-paths` has been renamed to [model-paths](/reference/project-configs/model-paths). Receiving this deprecation warning means that `source-paths` is still being used in your project's `dbt_project.yml`.
+In [dbt v1.0](/docs/dbt-versions/dbt-upgrade/Older%20versions/upgrading-to-v1.0) `source-paths` has been renamed to [model-paths](/reference/project-configs/model-paths). Receiving this deprecation warning means that `source-paths` is still being used in your project's `dbt_project.yml`.
 
 Example: 
 
@@ -232,7 +232,7 @@ Change `source-paths` to `model-paths` in your `dbt_project.yml`.
 
 ### ConfigTargetPathDeprecation
 
-In [dbt 1.5](/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-to-v1.5) specifying  `target-path` in `dbt_project.yml` was deprecated. Receiving this deprecation warning means that `target-path` is still specified in your `dbt_project.yml` and it's not set to the default value, `target`.
+In [dbt 1.5](/docs/dbt-versions/dbt-upgrade/Older%20versions/upgrading-to-v1.5) specifying  `target-path` in `dbt_project.yml` was deprecated. Receiving this deprecation warning means that `target-path` is still specified in your `dbt_project.yml` and it's not set to the default value, `target`.
 
 Example:
 
@@ -509,7 +509,7 @@ Review your custom environment variables and ensure they don't conflict with dbt
 
 ### ExposureNameDeprecation
 
-In [dbt 1.3](/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-to-v1.3#new-and-changed-documentation), dbt began allowing only letters, numbers, and underscores in the `name` property of [exposures](/reference/exposure-properties).
+In [dbt 1.3](/docs/dbt-versions/dbt-upgrade/Older%20versions/upgrading-to-v1.3#new-and-changed-documentation), dbt began allowing only letters, numbers, and underscores in the `name` property of [exposures](/reference/exposure-properties).
 
 Example:
 
@@ -564,7 +564,7 @@ If you are seeing this warning, unfortunately, there isn't much you can do at th
 
 ### MFCumulativeTypeParamsDeprecation
 
-In dbt [v1.9](/docs/dbt-versions/core-upgrade/upgrading-to-v1.9) implementing `window` and `time_to_grain` directly on the `type_params` of a [metric](/reference/global-configs/behavior-flags/require_nested_cumulative_type_params) was deprecated.
+In dbt [v1.9](/docs/dbt-versions/dbt-upgrade/upgrading-to-v1.9) implementing `window` and `time_to_grain` directly on the `type_params` of a [metric](/reference/global-configs/behavior-flags/require_nested_cumulative_type_params) was deprecated.
 
 Example:
 
@@ -585,7 +585,7 @@ Nest your `window` and `time_to_grain` under the `cumulative_type_params` proper
 
 ### MFTimespineWithoutYamlConfigurationDeprecation
 
-Before dbt v1.9, the MetricFlow time spine configuration was stored in a `metricflow_time_spine.sql` file. In [v1.9](/docs/dbt-versions/core-upgrade/upgrading-to-v1.9) dbt introduced the [YAML timespine defintion](/docs/build/metricflow-time-spine#configuring-time-spine-in-yaml) for MetricFlow. It was then decided that it would be the standard going forward. If you see this deprecation warning, you don't have a YAML timespine definition for Metricflow.
+Before dbt v1.9, the MetricFlow time spine configuration was stored in a `metricflow_time_spine.sql` file. In [v1.9](/docs/dbt-versions/dbt-upgrade/upgrading-to-v1.9) dbt introduced the [YAML timespine defintion](/docs/build/metricflow-time-spine#configuring-time-spine-in-yaml) for MetricFlow. It was then decided that it would be the standard going forward. If you see this deprecation warning, you don't have a YAML timespine definition for Metricflow.
 
 Example:
 
@@ -918,7 +918,7 @@ sources:
 
 ### ResourceNamesWithSpacesDeprecation
 
-In [dbt 1.8](/docs/dbt-versions/core-upgrade/upgrading-to-v1.8#managing-changes-to-legacy-behaviors), allowing resource names to have spaces in them was deprecated. If you get this deprecation warning, dbt detected a resource name with a space in it.
+In [dbt 1.8](/docs/dbt-versions/dbt-upgrade/upgrading-to-v1.8#managing-changes-to-legacy-behaviors), allowing resource names to have spaces in them was deprecated. If you get this deprecation warning, dbt detected a resource name with a space in it.
 
 Example: 
 

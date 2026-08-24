@@ -470,7 +470,7 @@ var siteSettings = {
                     {
                       id: "about-fusion-install",
                       name: "Install dbt Fusion engine",
-                      routes: [{ route: "/docs/fusion/about-fusion-install" }],
+                      routes: [{ route: "/docs/dbt/about-fusion-install" }],
                     },
                     {
                       id: "core-connect-data-platform",
@@ -486,7 +486,7 @@ var siteSettings = {
             {
               id: "fusion",
               name: "Fusion",
-              routes: [{ route: "/docs/fusion/**" }],
+              routes: [{ route: "/docs/dbt/**" }],
             },
             {
               id: "platform",

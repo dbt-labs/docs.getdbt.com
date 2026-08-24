@@ -143,7 +143,7 @@ Common issues and resolutions:
 <VersionBlock lastVersion="1.99">
 
 :::tip Want faster dbt?
-Upgrade to v2 to get <Constant name="fusion" /> &mdash; up to 30x faster performance, <Term id="lsp" /> features like autocomplete and inline errors, and more. [Upgrade to v2](/docs/dbt-versions/core-upgrade/upgrading-to-v2).
+Upgrade to v2 to get <Constant name="fusion" /> &mdash; up to 30x faster performance, <Term id="lsp" /> features like autocomplete and inline errors, and more. [Upgrade to v2](/docs/dbt-versions/dbt-upgrade/upgrading-to-v2).
 :::
 
 ## Install dbt Core v1.x CLI

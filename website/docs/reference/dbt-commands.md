@@ -35,7 +35,7 @@ For information about selecting models on the command line, refer to [Model sele
 Commands marked ❌ indicate write commands, commands marked ✅ indicate read commands, and commands marked N/A indicate that parallel execution isn't relevant for that command.
 
 :::info
-Some commands are not yet supported in the <Constant name="fusion_engine" /> or have limited functionality. Refer to the [Fusion supported features](/docs/fusion/supported-features) page for details.
+Some commands are not yet supported in the <Constant name="fusion_engine" /> or have limited functionality. Refer to the [Fusion supported features](/docs/dbt/supported-features) page for details.
 :::
 
 

@@ -9,7 +9,7 @@ description: "Fusion is the next-generation engine for dbt."
 
 <VersionBlock lastVersion="1.99">
 :::tip Available only on v2
-v2 is the free, faster way to develop dbt that uses the Rust-based engine. For richer [Upgrade to v2](/docs/dbt-versions/core-upgrade/upgrading-to-v2) to get it. 
+v2 is the free, faster way to develop dbt that uses the Rust-based engine. For richer [Upgrade to v2](/docs/dbt-versions/dbt-upgrade/upgrading-to-v2) to get it. 
 
 Get started right away with many dbt features, free forever! You can also try advanced features by running `dbt login` to create a free dbt platform account for the best v2 experience.
 :::

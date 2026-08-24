@@ -35,7 +35,7 @@ The <Constant name="fusion_engine"/> uses semantic versioning starting with vers
 
 Run `dbt system update` to get the latest stable release, or specify a channel with `dbt system update --version canary`.
 
-For current versions and release history, see [<Constant name="fusion"/> releases](/docs/fusion/fusion-releases).
+For current versions and release history, see [<Constant name="fusion"/> releases](/docs/dbt/fusion-releases).
 
 ### Checking your version
 
@@ -49,8 +49,8 @@ dbt Fusion 2.0.0-preview.126
 ### Further reading
 
 - [Install <Constant name="fusion"/>](/docs/local/install-dbt?version=2): Install or update the <Constant name="fusion_engine" />.
-- [<Constant name="fusion"/> releases](/docs/fusion/fusion-releases): View current versions and release history.
-- [Get started with <Constant name="fusion"/>](/docs/fusion/get-started-fusion): Learn about <Constant name="fusion" /> features and migration.
+- [<Constant name="fusion"/> releases](/docs/dbt/fusion-releases): View current versions and release history.
+- [Get started with <Constant name="fusion"/>](/docs/dbt/get-started-fusion): Learn about <Constant name="fusion" /> features and migration.
 
 ## dbt Core versioning
 

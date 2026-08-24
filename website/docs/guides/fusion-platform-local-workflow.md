@@ -265,7 +265,7 @@ The following table summarizes the key differences between the two development p
 
 - [Install <Constant name="fusion" />](/docs/local/install-dbt)
 - [dbt platform CLI installation](/docs/platform/dbt-cli-installation)
-- [<Constant name="fusion" /> releases and release channels](/docs/fusion/fusion-releases)
+- [<Constant name="fusion" /> releases and release channels](/docs/dbt/fusion-releases)
 - [About profiles.yml](/docs/local/profiles.yml)
 - [Environment variables (local)](/docs/local/configure-environment-variables)
 - [VS Code dev containers](https://code.visualstudio.com/docs/devcontainers/containers)

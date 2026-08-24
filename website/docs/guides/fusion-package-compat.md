@@ -15,8 +15,8 @@ level: 'Advanced'
 
 Thank you for being part of the [dbt's package hub community](https://hub.getdbt.com/) and maintaining [packages](/docs/build/packages)! Your work makes dbt’s ecosystem possible and helps thousands of teams reuse trusted models and macros to build faster, more reliable analytics.
 
-This guide helps you upgrade your dbt packages to be [<Constant name="fusion" />](/docs/fusion/about-fusion)-compatible. A <Constant name="fusion" />-compatible package:
-- Supports [<Constant name="fusion_engine" />](/docs/fusion/about-fusion) version `2.0.0`
+This guide helps you upgrade your dbt packages to be [<Constant name="fusion" />](/docs/dbt/about-fusion)-compatible. A <Constant name="fusion" />-compatible package:
+- Supports [<Constant name="fusion_engine" />](/docs/dbt/about-fusion) version `2.0.0`
 - Uses the [`require-dbt-version` config](/reference/project-configs/require-dbt-version) to signal compatibility in the dbt package hub
 - Aligns with the latest JSON schema introduced in <Constant name="core"/> v1.10.0
 
@@ -77,7 +77,7 @@ If you're ready to get started, let's begin!
 
 ## Test package with Fusion
 
-Now that you've run `dbt-autofix`, let's test your package with <Constant name="fusion"/> to ensure it's compatible before [updating](https://docs.getdbt.com/guides/fusion-package-compat?step=6) your `require-dbt-version` config. Refer to the [<Constant name="fusion"/> limitations documentation](/docs/fusion/supported-features#limitations) for more information on what to look out for. You can test your package two ways:
+Now that you've run `dbt-autofix`, let's test your package with <Constant name="fusion"/> to ensure it's compatible before [updating](https://docs.getdbt.com/guides/fusion-package-compat?step=6) your `require-dbt-version` config. Refer to the [<Constant name="fusion"/> limitations documentation](/docs/dbt/supported-features#limitations) for more information on what to look out for. You can test your package two ways:
 
 <!-- no toc -->
 - [Running your integration tests with Fusion](#running-your-integration-tests-with-fusion) &mdash; Use if your package has [integration tests](https://docs.getdbt.com/guides/building-packages?step=4) using an `integration_tests/` folder.

@@ -23,7 +23,7 @@ If you have a older project that isn’t ready to move to v2, continue using `db
 
 ## Which one should I use?
 
-For most people: Fusion. It has more [capabilities](/docs/fusion/fusion-availability?version=2.0#what-you-get-with-fusion) out of the box than dbt Core 2.0 &mdash; including a built-in high-performance SQL linter &mdash; even if you never create a dbt account.
+For most people: Fusion. It has more [capabilities](/docs/dbt/fusion-availability?version=2.0#what-you-get-with-fusion) out of the box than dbt Core 2.0 &mdash; including a built-in high-performance SQL linter &mdash; even if you never create a dbt account.
 
 We recommend everyone to just [install dbt](/docs/local/install-dbt) and get Fusion by default.
 
@@ -58,7 +58,7 @@ Typically, you'd use dbt Core v1.x if you're managing older projects and aren't 
 
 v2 introduces a shared Rust runtime available through two free distributions: dbt Core 2.0, the Apache 2.0 open-source distribution, and Fusion, which builds on Core 2.0 with more capabilities out of the box. Over time, new capabilities will land in v2 only, so most people will eventually want to upgrade when possible.
 
-When you're ready to upgrade to v2, check out the [Upgrade to v2](/docs/dbt-versions/core-upgrade/upgrading-to-v2) for guidance.
+When you're ready to upgrade to v2, check out the [Upgrade to v2](/docs/dbt-versions/dbt-upgrade/upgrading-to-v2) for guidance.
 
 </VersionBlock>
 
