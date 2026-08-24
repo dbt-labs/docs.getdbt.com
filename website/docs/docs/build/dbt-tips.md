@@ -34,13 +34,6 @@ This section clarifies where you can use [Jinja](/docs/build/jinja-macros), nest
 - Use `vars` in any YAML file that supports Jinja (like `schema.yml`, `snapshots.yml`). However, note that:
   - In `dbt_project.yml`, `packages.yml`, and `profiles.yml` files, you must pass `vars` through the CLI using `--vars`, not defined inside the `vars:` block in the YAML file. This is because these files are parsed before Jinja is rendered.
 - You can use `env_var()` in all YAML files that support Jinja. Only `profiles.yml` and `packages.yml` support environment variables for secure values (using the `DBT_ENV_SECRET_` prefix). These are masked in logs and intended for credentials or secrets.
-- In <Constant name="core_v2" />, you can call project macros directly in YAML files (such as `sources.yml`, `schema.yml`). For example: 
-
-  ```yaml
-  sources:
-    - name: raw_orders
-      database: "{{ get_environment() }}"
-  ```
 
 For additional information, check out [<Constant name="core" />'s context docs](https://github.com/dbt-labs/dbt-core/blob/1.latest/core/dbt/context/README.md).
 
