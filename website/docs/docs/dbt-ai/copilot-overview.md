@@ -4,11 +4,15 @@ id: "copilot-overview"
 description: "dbt Copilot is dbt's inline AI assistance experience, providing single-click generation of SQL, documentation, tests, and semantic models."
 sidebar_label: "dbt Copilot overview"
 tags: [AI, Copilot]
+availability:
+  surface: platform
+  access: paid_plan
+  minPlan: starter
 ---
 
 import CopilotWizardDifferences from '/snippets/_copilot-wizard-diff.md';
 
-# dbt Copilot <Lifecycle status="self_service,managed,managed_plus" />
+# dbt Copilot
 
 <IntroText>
 dbt Copilot helps you generate SQL, documentation, tests, and semantic models in the <Constant name="dbt_platform" />.

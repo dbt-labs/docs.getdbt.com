@@ -2,6 +2,7 @@
 title: "Jinja and macros"
 description: "Enhance your SQL with Jinja and macros when developing in dbt to create reusable, modular logic."
 id: "jinja-macros"
+availability: all_users
 ---
 
 ## Related reference docs

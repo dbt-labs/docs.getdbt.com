@@ -30,6 +30,10 @@ The <Constant name="fusion_engine" /> is distributed through three release chann
 | `canary` | The latest version to be officially released | ⚠️ Most recent stable version but still undergoing thorough testing |
 | `dev` | The latest development build | ❌ May be unstable; may not have passed all internal tests |
 
+## Known-bad releases
+
+If a shipped <Constant name="fusion" /> release is later found to contain a regression, dbt Labs flags it as a known-bad release. If you have a flagged version installed, the dbt VS Code extension shows a warning notification telling you which version to update to. To move off a flagged version, update it using your installation method (for example, pip or Homebrew). For details, including how air-gapped users receive these notifications, refer to [Known-bad releases](/docs/dbt-versions/fusion-version-compatibility#known-bad-releases).
+
 ## dbt platform Fusion release tracks
 
 On <Constant name="dbt_platform" />, each [environment](/docs/deploy/deploy-environments) uses the account default or your chosen **Fusion release track**. Release tracks control how often that environment receives new Fusion builds. They're separate from the local CLI release channels in the previous section.
@@ -43,7 +47,7 @@ The **Current versions** cards and full release list below pull the public <Cons
 :::
 
 <details>
-    <summary>Updating local Fusion</summary>
+    <summary>Updating your self-hosted Fusion installation</summary>
 <p>
 
 The following commands apply only to _local_ installations of <Constant name="fusion" />. They don't affect which <Constant name="fusion" /> build your <Constant name="dbt_platform" /> environments use. Instead, you can set a [Fusion release track](https://github.com/docs/dbt-versions/dbt-release-tracks#fusion-release-tracks) per environment in <Constant name="dbt_platform" />.

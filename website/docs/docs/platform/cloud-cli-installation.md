@@ -4,6 +4,9 @@ sidebar_label: "Installation"
 id: dbt-cli-installation
 description: "Instructions for installing and configuring dbt platform's CLI tool."
 pagination_next: "docs/platform/configure-dbt-cli"
+availability:
+  surface: platform
+  access: login_required
 ---
 
 import LongSession from '/snippets/_long-sessions-cli.md';
@@ -12,7 +15,7 @@ The <Constant name="dbt_platform" /> natively supports developing using a comman
 
 :::note CLI compatibility
 
-The <Constant name="platform_cli" /> is a <Constant name="dbt_platform" /> tool available to users on any [plan](https://www.getdbt.com/pricing). It is intended for use only with the <Constant name="dbt_platform" /> and may conflict with local installations of the <Constant name="core" /> or <Constant name="fusion_engine" /> CLIs. Refer to the [FAQs](#faqs) for more information.
+The <Constant name="platform_cli" /> is a <Constant name="dbt_platform" /> tool available to users on any [plan](https://www.getdbt.com/pricing). It is intended for use only with the <Constant name="dbt_platform" /> and may conflict with self-hosted installations of the <Constant name="core" /> or <Constant name="fusion_engine" /> CLIs. Refer to the [FAQs](#faqs) for more information.
 
 :::
 
@@ -28,14 +31,12 @@ dbt commands run against the platform's infrastructure and benefit from:
 ## Prerequisites
 
 The <Constant name="platform_cli" /> is available in all [deployment regions](/docs/platform/about-platform/access-regions-ip-addresses) and for both multi-tenant and single-tenant accounts.
-
-- For the best <Constant name="platform_cli" /> experience, install the platform CLI on a machine that doesn't already have the <Constant name="core" /> or <Constant name="fusion" /> CLI installed.
 - If you installed the <Constant name="core" /> CLI in a virtual environment, deactivate that environment or create an alias for the platform CLI before you run platform CLI commands.
-- If you installed the <Constant name="fusion" /> CLI locally, create an alias for the platform CLI before you run platform CLI commands.
+- If you installed dbt locally, create an alias for the platform CLI before you run platform CLI commands.
 
 Refer to the [FAQs](#faqs) for more information about managing multiple <Constant name="platform_cli" /> tools and creating an alias.
 
-:::tip Using the <Constant name="dbt_platform"/> CLI for local development with <Constant name="fusion"/>?
+:::tip Using the <Constant name="dbt_platform"/> CLI for hybrid development with <Constant name="fusion"/>?
 See the [Hybrid development with <Constant name="dbt_platform"/>  and <Constant name="fusion"/>](/guides/fusion-platform-local-workflow) guide to keep credentials, environment variables, and <Constant name="fusion"/> versions in sync across your local CLI and <Constant name="dbt_platform"/>.
 :::
 
@@ -92,7 +93,7 @@ pip uninstall dbt
 
 4. Clone your repository to your local computer using `git clone`. For example, to clone a GitHub repo using HTTPS format, run `git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY`.
 
-5. After cloning your repo, [configure](/docs/platform/configure-dbt-cli) the <Constant name="platform_cli" /> for your <Constant name="dbt" /> project. This lets you run dbt commands like [`dbt environment show`](/reference/commands/dbt-environment) to view your <Constant name="dbt" /> configuration or `dbt compile` to compile your project and validate models and tests. You can also add, edit, and synchronize files with your repo.
+5. After cloning your repo, [configure](/docs/platform/configure-dbt-cli) the <Constant name="platform_cli" /> for your <Constant name="dbt" /> project. This lets you run dbt commands like [`dbt environment show`](/reference/commands/dbt-environment?version=2.0) to view your <Constant name="dbt" /> configuration or `dbt compile` to compile your project and validate models and tests. You can also add, edit, and synchronize files with your repo.
 
 </TabItem>
 
@@ -126,7 +127,7 @@ Note that if you're using VS Code, you must restart it to pick up modified envir
 
 5. Clone your repository to your local computer using `git clone`. For example, to clone a GitHub repo using HTTPS format, run `git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY`.
 
-6. After cloning your repo, [configure](/docs/platform/configure-dbt-cli) the <Constant name="platform_cli" /> for your <Constant name="dbt" /> project. This lets you run dbt commands like [`dbt environment show`](/reference/commands/dbt-environment) to view your <Constant name="dbt" /> configuration or `dbt compile` to compile your project and validate models and tests. You can also add, edit, and synchronize files with your repo.
+6. After cloning your repo, [configure](/docs/platform/configure-dbt-cli) the <Constant name="platform_cli" /> for your <Constant name="dbt" /> project. This lets you run dbt commands like [`dbt environment show`](/reference/commands/dbt-environment?version=2.0) to view your <Constant name="dbt" /> configuration or `dbt compile` to compile your project and validate models and tests. You can also add, edit, and synchronize files with your repo.
 
 </TabItem>
 
@@ -160,80 +161,9 @@ Advanced users can configure multiple projects to use the same dbt CLI executabl
 
 4. Clone your repository to your local computer using `git clone`. For example, to clone a GitHub repo using HTTPS format, run `git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY`.
 
-5. After cloning your repo, [configure](/docs/platform/configure-dbt-cli) the <Constant name="platform_cli" /> for your <Constant name="dbt" /> project. This lets you run dbt commands like [`dbt environment show`](/reference/commands/dbt-environment) to view your <Constant name="dbt" /> configuration or `dbt compile` to compile your project and validate models and tests. You can also add, edit, and synchronize files with your repo.
+5. After cloning your repo, [configure](/docs/platform/configure-dbt-cli) the <Constant name="platform_cli" /> for your <Constant name="dbt" /> project. This lets you run dbt commands like [`dbt environment show`](/reference/commands/dbt-environment?version=2.0) to view your <Constant name="dbt" /> configuration or `dbt compile` to compile your project and validate models and tests. You can also add, edit, and synchronize files with your repo.
 
 </TabItem>
-
-<TabItem value="pip" label="Existing dbt Core users (pip)">
-
-If you already have dbt Core installed, the <Constant name="platform_cli" /> may conflict. Here are some considerations:
-
-- **Prevent conflicts** <br /> Use both the <Constant name="platform_cli" /> and <Constant name="core" /> with `pip` and create a new virtual environment.<br /><br />
-- **Use both <Constant name="platform_cli" /> and <Constant name="core" /> with brew or native installs** <br /> If you use Homebrew, consider aliasing the <Constant name="platform_cli" /> as "dbt-cli" to avoid conflict. For more details, check the [FAQs](#faqs) if your operating system experiences path conflicts.<br /><br />
-- **Reverting to dbt Core from the <Constant name="platform_cli" />** <br />
-  If you've already installed the <Constant name="platform_cli" /> and need to switch back to dbt Core:<br />
-  - Uninstall the <Constant name="platform_cli" /> using the command: `pip uninstall dbt`
-  - Reinstall <Constant name="core" /> using the following command, replacing "adapter_name" with the appropriate adapter name:
-    ```shell
-    python -m pip install dbt-adapter_name --force-reinstall
-    ```
-    For example, if you use Snowflake as an adapter, run: `python -m pip install dbt-snowflake --force-reinstall`
-
---------
-
-Before installing the <Constant name="platform_cli" />, make sure you have Python installed and your virtual environment (venv or pyenv) configured. If you already have a Python environment configured, you can skip to the [pip installation step](#install-dbt-cloud-cli-in-pip).
-
-### Install a virtual environment
-
-We recommend using virtual environments (venv) to isolate the `dbt-cli` environment.
-
-1. Create a new virtual environment named "dbt-cli" with this command:
-   ```shell
-   python3 -m venv dbt-cli
-    ```
-
-2. Activate the virtual environment each time you create a shell window or session, depending on your operating system:
-
-   - For Mac and Linux, use: `source dbt-cli/bin/activate`<br/>
-   - For Windows, use: `dbt-cli\Scripts\activate`
-
-3. (Mac and Linux only) Create an alias to activate your dbt environment with every new shell window or session. You can add the following to your shell's configuration file (for example, `$HOME/.bashrc, $HOME/.zshrc`) while replacing `<PATH_TO_VIRTUAL_ENV_CONFIG>` with the path to your virtual environment configuration:
-   ```shell
-   alias env_dbt='source <PATH_TO_VIRTUAL_ENV_CONFIG>/bin/activate'
-   ```
-
-### Install dbt CLI in pip
-
-1. (Optional) If you already have <Constant name="core" /> installed, this installation will override that package. Check your <Constant name="core" /> version in case you need to reinstall it later by running the following command:
-
-  ```bash
-  dbt --version
-  ```
-
-2. Make sure you're in your virtual environment and run the following command to install the <Constant name="platform_cli" />:
-
-  ```bash
-  pip install dbt --no-cache-dir
-  ```
-
-  If there are installation issues, running the command with the `--force-reinstall` argument might help:
-   ```bash
-   pip install dbt --no-cache-dir --force-reinstall
-   ``` 
-
-3. (Optional) To revert to <Constant name="core" />, first uninstall both the <Constant name="platform_cli" /> and <Constant name="core" />. Then reinstall <Constant name="core" />.
-
-  ```bash
-  pip uninstall dbt-core dbt
-  pip install dbt-adapter_name --force-reinstall
-  ```
-
-4. Clone your repository to your local computer using `git clone`. For example, to clone a GitHub repo using HTTPS format, run `git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY`.
-
-5. After cloning your repo, [configure](/docs/platform/configure-dbt-cli) the <Constant name="platform_cli" /> for your <Constant name="dbt" /> project. This lets you run dbt commands like [`dbt environment show`](/reference/commands/dbt-environment) to view your <Constant name="dbt" /> configuration or `dbt compile` to compile your project and validate models and tests. You can also add, edit, and synchronize files with your repo.
-
-</TabItem>
-
 
 </Tabs>
 
@@ -262,14 +192,6 @@ To update, follow the [Linux installation instructions](/docs/platform/dbt-cli-i
 
 </TabItem>
 
-<TabItem value="existing" label="Existing dbt Core users (pip)">
-
-To update:
-- Make sure you're in your virtual environment
-- Run `python -m pip install --upgrade dbt`.
-	
-</TabItem>
-
 </Tabs>
   
   
@@ -287,7 +209,7 @@ import CloudCliRelativePath from '/snippets/_cloud-cli-relative-path.md';
 - **Validate in a tight loop**: Every proposed change compiles and runs against your warehouse, catching issues before they reach production.
 - **Navigate with full project context**: Traverse the [DAG](/docs/explore/explore-projects), surface downstream impact, and flag affected models, tests, and metrics before acting.
 
-For data practitioners working locally, this means AI assistance grounded in your actual project state &dash; not a generic code assistant. Bring your own key to experience the full agentic analytics engineering loop. Refer to the [dbt Wizard quickstart](/docs/dbt-ai/wizard-quickstart) to get started.
+For data practitioners working with a self-hosted installation, this means AI assistance grounded in your actual project state &dash; not a generic code assistant. Bring your own key to experience the full agentic analytics engineering loop. Refer to the [dbt Wizard quickstart](/docs/dbt-ai/wizard-quickstart) to get started.
 
 ## FAQs
 
@@ -305,9 +227,8 @@ For compatibility, both the <Constant name="platform_cli" /> and <Constant name=
 
 If you have <Constant name="core" /> installed locally, either:
 
-1. Install using the <code>pip3 install dbt</code> [pip](/docs/platform/dbt-cli-installation?install=pip#install-dbt-cloud-cli) command.
-2. Install natively, ensuring you either deactivate the virtual environment containing <Constant name="core" /> or create an alias for the <Constant name="platform_cli" />. 
-3. (Advanced users) Install natively, but modify the $PATH environment variable to correctly point to the <Constant name="platform_cli" /> binary to use both <Constant name="platform_cli" /> and <Constant name="core" /> together.
+1. Install natively, ensuring you either deactivate the virtual environment containing <Constant name="core" /> or create an alias for the <Constant name="platform_cli" />. 
+2. (Advanced users) Install natively, but modify the $PATH environment variable to correctly point to the <Constant name="platform_cli" /> binary to use both <Constant name="platform_cli" /> and <Constant name="core" /> together.
 
 You can always uninstall the <Constant name="platform_cli" /> to return to using <Constant name="core" />.
 

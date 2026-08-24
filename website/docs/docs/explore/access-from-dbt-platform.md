@@ -2,6 +2,7 @@
 title: "Access Catalog from dbt platform features"
 sidebar_label: "Access from dbt platform"
 description: "Learn where and how to directly access and interact with Catalog from dbt platform features and products."
+availability: platform_login
 ---
 
 Access <Constant name="catalog" /> from jobs, <Constant name="insights" />, and other areas of <Constant name="dbt" /> to move quickly between run context, lineage, and resource metadata in your project.

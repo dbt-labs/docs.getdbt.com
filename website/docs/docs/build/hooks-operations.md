@@ -2,6 +2,7 @@
 title: "Hooks and operations"
 description: "Customize dbt workflows using hooks and operations."
 id: "hooks-operations"
+availability: all_users
 ---
 
 import OnRunCommands from '/snippets/_onrunstart-onrunend-commands.md';

@@ -14,20 +14,43 @@ Usage statistics are fired when dbt is invoked and when models are run. These ev
 - An anonymized hash key representing the raw model content.
 - Number of nodes that were run.
 
-For full transparency, you can see all the event definitions in [`tracking.py`](https://github.com/dbt-labs/dbt-core/blob/1.latest/core/dbt/tracking.py) (dbt Core v1) or [event_functions.rs](https://github.com/dbt-labs/dbt-core/blob/main/crates/vortex-events/src/event_functions.rs) (dbt Core v2).
+<VersionBlock lastVersion="1.99">
 
-- <Constant name="dbt" /> has telemetry enabled by default to help us enhance the user experience and improve the product by using real user feedback and usage patterns. While it cannot be disabled, we ensure the data is [secure](https://www.getdbt.com/security) and used responsibly. Collecting this data enables us to provide a better product experience, including improvements to the performance of dbt. 
+## dbt Core telemetry
 
-- <Constant name="core" /> users have telemetry enabled by default to help us understand usage patterns and improve the product. You can opt out of event tracking at any time by adding the following to your `dbt_project.yml` file:
+<Constant name="core" /> has telemetry enabled by default. For full transparency, you can see all the event definitions in [`tracking.py`](https://github.com/dbt-labs/dbt-core/blob/1.latest/core/dbt/tracking.py).
 
-  <File name="dbt_project.yml">
+You can opt out of event tracking at any time by adding the following configuration to your `dbt_project.yml` file:
 
-  ```yaml
-  flags:
-    send_anonymous_usage_stats: false
-  ```
-  </File>
+<File name="dbt_project.yml">
 
-  dbt Core users can also use the `DO_NOT_TRACK` environment variable to enable or disable sending anonymous data. For more information, see [Environment variables](/docs/build/environment-variables).
+```yaml
+flags:
+  send_anonymous_usage_stats: false
+```
 
-  `DO_NOT_TRACK=1` is the same as <VersionBlock lastVersion="1.10">`DBT_SEND_ANONYMOUS_USAGE_STATS=False`</VersionBlock><VersionBlock firstVersion="1.11">`DBT_ENGINE_SEND_ANONYMOUS_USAGE_STATS=False`</VersionBlock>.
+</File>
+
+You can also set the `DO_NOT_TRACK` environment variable. For more information, refer to [Environment variables](/docs/build/environment-variables).
+
+`DO_NOT_TRACK=1` is equivalent to <VersionBlock lastVersion="1.10">`DBT_SEND_ANONYMOUS_USAGE_STATS=False`</VersionBlock><VersionBlock firstVersion="1.11">`DBT_ENGINE_SEND_ANONYMOUS_USAGE_STATS=False`</VersionBlock>.
+
+</VersionBlock>
+
+<VersionBlock firstVersion="2.0">
+
+## dbt Fusion engine telemetry
+
+<Constant name="fusion" /> has telemetry enabled by default. For full transparency, you can see the event definitions in [`event_functions.rs`](https://github.com/dbt-labs/dbt-core/blob/main/crates/vortex-events/src/event_functions.rs).
+
+Telemetry requires outbound HTTPS access to `https://p.vx.dbt.com`. If the endpoint is unreachable, <Constant name="fusion" /> logs errors on each invocation. For the complete list of outbound endpoints, refer to [Fusion networking requirements](/docs/local/fusion-networking-requirements).
+
+To disable anonymous usage statistics, set the following environment variable:
+
+```shell
+export DBT_ENGINE_SEND_ANONYMOUS_USAGE_STATS=false
+```
+
+You can also set `DO_NOT_TRACK=1`.
+
+</VersionBlock>

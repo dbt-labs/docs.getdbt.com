@@ -13,6 +13,9 @@ meta:
   slack_channel_link: 'https://getdbt.slack.com/archives/C01DRQ178LQ'
   platform_name: 'Redshift'
   config_page: '/reference/resource-configs-fusion/redshift-configs'
+availability:
+  preset: local_free
+  engine: v2
 ---
 
 # Redshift setup <Lifecycle status='preview' />

@@ -15,6 +15,7 @@ meta:
   slack_channel_link: 'https://www.getdbt.com/community'
   platform_name: 'Starrocks'
   config_page: '/reference/resource-configs/starrocks-configs'
+availability: local_free
 ---
 
 

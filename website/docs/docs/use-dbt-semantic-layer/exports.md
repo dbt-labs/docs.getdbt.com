@@ -3,16 +3,20 @@ title: "Write queries with exports"
 description: "Use exports to write tables to the data platform on a schedule."
 sidebar_label: "Write queries with exports"
 keywords: [DBT_ENGINE_INCLUDE_SAVED_QUERY, DBT_ENGINE_EXPORT_SAVED_QUERIES, exports, dbt, Semantic Layer]
+availability:
+  surface: platform
+  access: paid_plan
+  minPlan: starter
 ---
 
-# Write queries with exports <Lifecycle status="self_service,managed,managed_plus" />
+# Write queries with exports
 
 Exports enhance [saved queries](/docs/build/saved-queries) by running your saved queries and writing the output to a table or view within your data platform. Saved queries are a way to save and reuse commonly used queries in MetricFlow, exports take this functionality a step further by:
 
 - Enabling you to write these queries within your data platform using the <Constant name="dbt" /> job scheduler.
 - Providing an integration path for tools that don't natively support the <Constant name="semantic_layer" /> by exposing tables of metrics and dimensions.
 
-Essentially, exports are like any other table in your data platform &mdash; they enable you to query metric definitions through any SQL interface or connect to downstream tools without a first-class [<Constant name="semantic_layer" /> integration](/docs/platform-integrations/avail-sl-integrations). Running an export counts towards [queried metrics](/docs/platform/billing#what-counts-as-a-queried-metric) usage. Querying the resulting table or view from the export does not count toward queried metric usage.
+Essentially, exports are like any other table in your data platform &mdash; they enable you to query metric definitions through any SQL interface or connect to downstream tools without a first-class [<Constant name="semantic_layer" /> integration](/docs/platform-integrations/avail-sl-integrations). Running an export counts towards [queried metrics](/docs/platform/billing/how-pricing-works#what-counts-as-a-queried-metric) usage. Querying the resulting table or view from the export does not count toward queried metric usage.
 
 ## Prerequisites
 

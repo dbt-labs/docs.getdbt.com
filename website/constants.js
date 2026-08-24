@@ -10,8 +10,8 @@ export const CONSTANTS = {
   git: 'Git',
   dbt_platform: 'dbt platform',
   core: 'dbt Core',
-  core_v1: 'dbt Core v1',
-  core_v2: 'dbt Core v2',
+  core_v1: 'dbt Core v1.x',
+  core_v2: 'dbt Core 2.0',
   fusion: 'Fusion',
   fusion_engine: 'dbt Fusion engine',
   dbt: 'dbt',
@@ -23,6 +23,7 @@ export const CONSTANTS = {
   mesh: 'Mesh',
   orchestrator: 'Orchestrator',
   wizard: 'dbt Wizard',
-  semantic_layer: 'Semantic Layer'
+  semantic_layer: 'Semantic Layer',
+  legacy_deprecation_date: 'January 31, 2027'
 
 }

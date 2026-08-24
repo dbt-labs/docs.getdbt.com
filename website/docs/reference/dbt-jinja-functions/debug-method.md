@@ -8,7 +8,7 @@ description: "The `{{ debug() }}` macro will open an iPython debugger."
 
 :::warning Requires Core CLI
 
-The `debug()` macro is only available when using <Constant name="core" /> CLI in a local development environment. It's _not available_ in <Constant name="dbt_platform" />. 
+The `debug()` macro is only available when using the self-hosted <Constant name="core" /> CLI in a development environment. It's _not available_ in <Constant name="dbt_platform" />. 
 
 Do not deploy code to production that uses the `debug` macro.
 
@@ -23,7 +23,7 @@ The `{{ debug() }}` macro will open an iPython debugger in the context of a comp
 
 This function requires:
 - Interactive terminal access with iPython debugger (`ipdb`) installed. <Constant name="fusion"/> doesn't provide a iPython (ipdb) debugger since its built on Rust. It instead outputs a non-interactive snapshot of the MiniJinja render context in the compiled code.
-- Local development environment running <Constant name="core" /> CLI
+- Development environment running the self-hosted <Constant name="core" /> CLI
 - <VersionBlock lastVersion="1.10">`DBT_MACRO_DEBUGGING`</VersionBlock><VersionBlock firstVersion="1.11">`DBT_ENGINE_MACRO_DEBUGGING`</VersionBlock> environment variable set
 
 ## Usage

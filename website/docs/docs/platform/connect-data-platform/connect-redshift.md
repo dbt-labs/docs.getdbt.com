@@ -3,6 +3,9 @@ title: "Connect Redshift"
 id: connect-redshift
 description: "Setup instructions for connecting Redshift to dbt"
 sidebar_label: "Connect Redshift"
+availability:
+  surface: platform
+  access: login_required
 ---
 
 # Connect Redshift <ProductCard text="Fusion compatible" />
@@ -38,7 +41,7 @@ See the following supported authentication methods for Redshift:
 
 - Username and password
 - SSH tunneling
-- Identity Center via [external Oauth](/docs/platform/manage-access/redshift-external-oauth)
+- AWS IAM Identity Center via [external OAuth](/docs/platform/manage-access/redshift-external-oauth) (Okta or Entra ID) for development connections
 - IAM User authentication via [extended attributes](/docs/dbt-platform-environments#extended-attributes)
 
 On the <Constant name="dbt_platform" />, the IAM user authentication is currently only supported via [extended attributes](/docs/dbt-platform-environments#extended-attributes). Once the project is created, development and deployment environments can be updated to use extended attributes to pass the fields described below, as some are not supported via textbox.
