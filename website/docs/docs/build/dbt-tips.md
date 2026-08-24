@@ -17,9 +17,20 @@ If you're developing with the <Constant name="studio_ide" />, you can refer to t
 
 ## YAML tips
 
-This section clarifies where you can use [Jinja](/docs/build/jinja-macros), nest [vars](/reference/dbt-jinja-functions/var) and [`env_var`](/reference/dbt-jinja-functions/env_var) in your YAML files.
+This section clarifies where you can use [Jinja](/docs/build/jinja-macros), nest [vars](/reference/dbt-jinja-functions/var) and [`env_var`](/reference/dbt-jinja-functions/env_var) in your YAML files. For a full file-by-file reference, refer to [Jinja support by file type](/reference/jinja-file-support).
 
-- You can use Jinja in almost every YAML file in dbt _except_ the [`dependencies.yml` file](/docs/build/packages#use-cases). This is because the `dependencies.yml` file doesn't support Jinja.
+<VersionBlock lastVersion="1.12">
+
+- You can use Jinja in almost every YAML file in dbt. The [`dependencies.yml` file](/docs/build/packages#use-cases) is the main exception: <Constant name="core" /> does not support Jinja there.
+
+</VersionBlock>
+
+<VersionBlock firstVersion="2.0">
+
+- You can use Jinja in almost every YAML file in dbt, including `dependencies.yml` on the <Constant name="fusion_engine" />. If your project must also run on <Constant name="core" />, this will not work. Prefer `packages.yml` for Jinja-based package specs so the project stays backwards compatible.
+
+</VersionBlock>
+
 - Use `vars` in any YAML file that supports Jinja (like `schema.yml`, `snapshots.yml`). However, note that:
   - In `dbt_project.yml`, `packages.yml`, and `profiles.yml` files, you must pass `vars` through the CLI using `--vars`, not defined inside the `vars:` block in the YAML file. This is because these files are parsed before Jinja is rendered.
 - You can use `env_var()` in all YAML files that support Jinja. Only `profiles.yml` and `packages.yml` support environment variables for secure values (using the `DBT_ENV_SECRET_` prefix). These are masked in logs and intended for credentials or secrets.
