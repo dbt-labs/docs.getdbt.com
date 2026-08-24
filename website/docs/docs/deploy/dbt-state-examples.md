@@ -90,7 +90,7 @@ Done. PASS=12 WARN=0 ERROR=0 SKIP=0 NO-OP=0 TOTAL=12
 
 ```shell
 Running with dbt=1.12.0-b2
-State adapter: dbt-state v2.22.7 is enabled
+State adapter: dbt-state v2.43.1 is enabled
 Registered adapter: snowflake=1.11.5
 Found 12 models, 6 seeds, 27 data tests, 6 sources, 644 macros, 3 unit tests
 
@@ -140,9 +140,9 @@ dbt run --target prod
 
 For each model, dbt State compares the current logic and upstream data against the previous run. If nothing has changed, dbt State skips the build or clones the result from another environment.
 
-With dbt State enabled, the six table models are reused — nothing changed, so there's nothing to rebuild. The six staging views still rebuild because they use `select *`. [Learn why views with `select *` are always rebuilt.](/faqs/State/views-rebuilt)
+With dbt State enabled, the all twelve models are reused &mdash; nothing changed, so there's nothing to rebuild.
 
-For views that don't use `select *`, dbt State rebuilds views when their definition (SQL logic) changes, not when new data arrives upstream. This is because views don't store data; they are stored `SELECT` statements that always read directly from the underlying tables when queried, so new upstream data is automatically reflected even without a rebuild.
+dbt State rebuilds views when their definition (SQL logic) changes, not when new data arrives upstream. This is because views don't store data; they are stored `SELECT` statements that always read directly from the underlying tables when queried, so new upstream data is automatically reflected even without a rebuild.
 
 <Tabs queryString="second-run">
 <TabItem value="without" label="Without dbt State">
@@ -191,7 +191,7 @@ Done. PASS=12 WARN=0 ERROR=0 SKIP=0 NO-OP=0 TOTAL=12
 
 ```shell
 Running with dbt=1.12.0-b2
-State adapter: dbt-state v2.22.7 is enabled
+State adapter: dbt-state v2.43.1 is enabled
 Registered adapter: snowflake=1.11.5
 Unable to do partial parsing because of a version mismatch
 Found 12 models, 6 seeds, 27 data tests, 6 sources, 658 macros, 3 unit tests
@@ -200,17 +200,17 @@ Concurrency: 1 threads (target='prod')
 
 1 of 12 START sql view model jaffle_analytics.stg_customers .................... [RUN]
 State adapter: Fetching freshness metadata
-1 of 12 OK created sql view model jaffle_analytics.stg_customers ............... [SUCCESS 1 in 47.73s]
+1 of 12 OK created sql view model jaffle_analytics.stg_customers ............... [No new changes in 2.73s]
 2 of 12 START sql view model jaffle_analytics.stg_locations .................... [RUN]
-2 of 12 OK created sql view model jaffle_analytics.stg_locations ............... [SUCCESS 1 in 0.87s]
+2 of 12 OK created sql view model jaffle_analytics.stg_locations ............... [No new changes in 0.87s]
 3 of 12 START sql view model jaffle_analytics.stg_order_items .................. [RUN]
-3 of 12 OK created sql view model jaffle_analytics.stg_order_items ............. [SUCCESS 1 in 1.04s]
+3 of 12 OK created sql view model jaffle_analytics.stg_order_items ............. [No new changes in 1.04s]
 4 of 12 START sql view model jaffle_analytics.stg_orders ....................... [RUN]
-4 of 12 OK created sql view model jaffle_analytics.stg_orders .................. [SUCCESS 1 in 0.74s]
+4 of 12 OK created sql view model jaffle_analytics.stg_orders .................. [No new changes in 0.74s]
 5 of 12 START sql view model jaffle_analytics.stg_products ..................... [RUN]
-5 of 12 OK created sql view model jaffle_analytics.stg_products ................ [SUCCESS 1 in 1.47s]
+5 of 12 OK created sql view model jaffle_analytics.stg_products ................ [No new changes in 1.47s]
 6 of 12 START sql view model jaffle_analytics.stg_supplies ..................... [RUN]
-6 of 12 OK created sql view model jaffle_analytics.stg_supplies ................ [SUCCESS 1 in 0.92s]
+6 of 12 OK created sql view model jaffle_analytics.stg_supplies ................ [No new changes in 0.92s]
 7 of 12 START sql table model jaffle_analytics.locations ....................... [RUN]
 7 of 12 OK created sql table model jaffle_analytics.locations .................. [No new changes in 1.84s]
 8 of 12 START sql table model jaffle_analytics.products ........................ [RUN]
@@ -224,11 +224,11 @@ State adapter: Fetching freshness metadata
 12 of 12 START sql table model jaffle_analytics.customers ...................... [RUN]
 12 of 12 OK created sql table model jaffle_analytics.customers ................. [No new changes in 2.19s]
 
-Finished running 6 table models, 6 view models in 0 hours 1 minutes and 9.79 seconds (69.79s).
+Finished running 6 table models, 6 view models in 0 hours 0 minutes and 19.79 seconds (19.79s).
 
-Completed successfully. Total cache hits: 6. Estimated time saved: 12.32s. Freshness tolerance: 45m.
+Completed successfully. Total cache hits: 12. Estimated time saved: 17.77s. Freshness tolerance: 45m.
 
-Done. PASS=6 WARN=0 ERROR=0 SKIP=0 NO-OP=0 REUSED=6 TOTAL=12
+Done. PASS=0 WARN=0 ERROR=0 SKIP=0 NO-OP=0 REUSED=12 TOTAL=12
 ```
 
 </TabItem>
@@ -275,7 +275,7 @@ Done. PASS=0 WARN=0 ERROR=1 SKIP=0 NO-OP=0 REUSED=0 TOTAL=1
 
 ```shell
 Running with dbt=1.12.0-b2
-State adapter: dbt-state v2.22.7 is enabled
+State adapter: dbt-state v2.43.1 is enabled
 Registered adapter: snowflake=1.11.5
 Found 12 models, 6 seeds, 27 data tests, 6 sources, 658 macros, 3 unit tests
 
@@ -338,7 +338,7 @@ Done. PASS=0 WARN=0 ERROR=1 SKIP=0 NO-OP=0 REUSED=0 TOTAL=1
 
 ```shell
 Running with dbt=1.12.0-b2
-State adapter: dbt-state v2.22.7 is enabled
+State adapter: dbt-state v2.43.1 is enabled
 Registered adapter: snowflake=1.11.5
 Found 12 models, 6 seeds, 27 data tests, 6 sources, 658 macros, 3 unit tests
 

@@ -11,43 +11,8 @@ dbt State prioritizes safety and precision; if it can't guarantee skipping a nod
 
 The following patterns commonly cause unexpected rebuilds:
 
-- [Views with `select *`](#views-with-select-)
 - [Non-deterministic Jinja templating](#non-deterministic-jinja-templating)
 - [Models with external sources in BigQuery](#models-with-external-sources-in-bigquery)
-
-## Views with `select *`
-
-dbt State always rebuilds views that use `select *` anywhere in their SQL, including inside CTEs. A common staging pattern like the following triggers this behavior:
-
-```sql
-with source as (
-    select * from {{ source("my_source", "my_table") }}
-),
-
-renamed as (
-    select
-        id as order_id,
-        ...
-    from source
-)
-
-select * from renamed
-```
-
-dbt State reuses a model when its compiled SQL matches the stored hash. For views with `select *`, dbt State can't determine which columns the query selects without querying the upstream schema, so it can't confirm the SQL is unchanged. It always rebuilds these views to avoid errors &mdash; if the upstream table gains a column, querying the view can fail. When dbt State rebuilds a view, it also re-runs any tests defined on the model.
-
-:::tip
-To make this view eligible for reuse, remove the imported CTE and reference the source directly with explicit column names:
-
-```sql
-select
-    id as order_id,
-    ...
-from {{ source("my_source", "my_table") }}
-```
-
-If you can't remove `select *`, you can exclude views from running with `--exclude config.materialized:view`.
-:::
 
 ## Non-deterministic Jinja templating
 
