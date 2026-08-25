@@ -21,7 +21,7 @@ import CloudProviders from '/snippets/_private-connection-across-providers.md';
 
 AWS provides two different ways to create a PrivateLink VPC endpoint for a Redshift cluster that is running in another VPC: 
 - [Redshift-managed PrivateLink Endpoints](https://docs.aws.amazon.com/redshift/latest/mgmt/managing-cluster-cross-vpc.html)
-- [Redshift Interface-type PrivateLink Endpoints](https://docs.aws.amazon.com/redshift/latest/mgmt/security-private-link.html)
+- [Redshift Interface-type PrivateLink Endpoints](https://docs.aws.amazon.com/vpc/latest/privatelink/create-endpoint-service.html)
 
 <Constant name="dbt" /> supports both types of endpoints, but there are several [considerations](https://docs.aws.amazon.com/redshift/latest/mgmt/managing-cluster-cross-vpc.html#managing-cluster-cross-vpc-considerations) to take into account when deciding which endpoint type to use. Redshift-managed provides a simpler setup with no additional cost, which might make it the preferred option for many, but may not be an option in all environments. Based on these criteria, determine which type is right for your system. Follow the instructions from the section below that corresponds to your chosen endpoint type.
 
