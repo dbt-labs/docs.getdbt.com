@@ -26,7 +26,7 @@ import SnowflakeAuth from '/snippets/_snowflake-auth.md';
 
 You can configure the Snowflake adapter by running `dbt init` in your CLI or manually providing the `profiles.yml` file with the fields configured for your authentication type. To check out which Snowflake functions are supported in <Constant name="fusion"/> in `strict` mode, refer to [Snowflake function support](/reference/resource-configs/snowflake-function-support).
 
-The Snowflake adapter for Fusion supports the following [authentication methods](#supported-authentication-types):
+The Snowflake adapter for <Constant name="fusion" /> supports the following [authentication methods](#supported-authentication-types):
 - Password 
 - Key pair
 - Single sign-on (SSO)
@@ -46,7 +46,7 @@ The information required for configuring the Snowflake adapter can be found conv
 
 <Lightbox src="/img/fusion/connect-adapters/snowflake-account-details.png" width="60%" title="Sample config file in Snowflake." />
 
-## Configure Fusion
+## Configure <Constant name="fusion" />
 
 Executing `dbt init` in your CLI will prompt for the following fields:
 

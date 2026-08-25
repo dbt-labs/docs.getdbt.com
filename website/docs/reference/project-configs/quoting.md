@@ -114,7 +114,7 @@ If you're using Snowflake, we recommend:
 
 - Setting all quoting configs to `False` in your [`dbt_project.yml`](/reference/dbt_project.yml) to avoid quoting model and column names unnecessarily and to help prevent case sensitivity issues.
   - Setting all quoting configs to `False` also means you cannot use reserved words as identifiers, such as model or table names. We recommend you avoid using these reserved words anyway.  
-- If you're using Fusion and your Snowflake environment sets the session parameter `QUOTED_IDENTIFIERS_IGNORE_CASE = true` (for example, in an orchestrator or pre-hook), you should also enable quoting and `snowflake_ignore_case` in your `dbt_project.yml` to preserve the exact case of database, schema, and identifier:
+- If you're using <Constant name="fusion" /> and your Snowflake environment sets the session parameter `QUOTED_IDENTIFIERS_IGNORE_CASE = true` (for example, in an orchestrator or pre-hook), you should also enable quoting and `snowflake_ignore_case` in your `dbt_project.yml` to preserve the exact case of database, schema, and identifier:
 
   ```yml
   quoting:
