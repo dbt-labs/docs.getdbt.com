@@ -22,7 +22,7 @@ For <Constant name="fusion_engine" /> updates, refer to the [dbt-fusion changelo
 
 ## August 2026
 
-- **Enhancement:** [dbt State](/docs/deploy/about-state) now reuses views that use `select *` on a CTE when the SQL logic has not changed. Previously, any `select *` anywhere in a view caused a rebuild. Views that use `select *` directly on a `ref()` or `source()` still force a rebuild, because dbt cannot safely determine the output columns at parse time. For more information, refer to [Views with `select *`](/faqs/State/views-rebuilt#views-with-select).
+- **Enhancement:** [dbt State](/docs/deploy/dbt-state-about) now reuses views that use `select *` on a CTE when the SQL logic has not changed. Previously, any `select *` anywhere in a view caused a rebuild. Views that use `select *` directly on a `ref()` or `source()` still force a rebuild, because dbt cannot safely determine the output columns at parse time. For more information, refer to [Views with `select *`](/faqs/State/views-rebuilt#views-with-select).
 - **Enhancement:** New sessions open on the Wizard tab when available, and the <Constant name="studio_ide" /> remembers your last-used tab for each project so you can pick up where you left off.
 - **Enhancement:** A new `relationName` field on the `ModelAppliedStateNode` and `ModelAppliedStateNestedNode` GraphQL types exposes the fully-qualified, adapter-rendered relation name (for example, `"database"."schema"."model_name"`) from the last successful model build.
 
