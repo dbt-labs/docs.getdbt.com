@@ -4,6 +4,9 @@ description: "Learn how dbt administrators can use dbt's permissioning model to 
 id: "about-user-access"
 pagination_next: "docs/platform/manage-access/seats-and-users"
 pagination_prev: null
+availability:
+  surface: platform
+  access: login_required
 ---
 
 import LicenseTypes from '/snippets/_cloud-license-types.md';
@@ -146,6 +149,25 @@ import LicenseOverrideNote from '/snippets/_license-override-note.md';
 
 <LicenseOverrideNote />
 
+#### Enable granular permissions for Read-Only users <Lifecycle status="managed,managed_plus"/>
+
+Granular permissions let you restrict which projects Read-Only users can access, allowing you to set permissions by group rather than applying the default permissions for Read-Only licenses.
+
+Note that new accounts don't need this setting as Read-Only users on new accounts get granular permissions by default.
+
+Key things to know before enabling:
+- This setting is only available on Enterprise and Enterprise+ plans.
+- Access stays Read-Only: This setting controls access to projects, not permissions (users remain Read-Only).
+- It's permanent: Enabling this setting is a one-time, irreversible change.
+- Prepare first: Read-Only users keep their project access only if they're in a group with a Read-Only permission set that covers all projects. If a user isn't in a group, or their group's permission set only covers some projects, they'll lose access to the projects that aren't covered.
+
+To turn on granular permissions:
+
+1. Go to **Account settings**.
+2. Click **Enable granular permissions**.
+3. Select the checkbox acknowledging that this setting can't be reversed once enabled.
+4. Click **Enable** to confirm, or **Cancel** to go back without making changes.
+
 ### Permissions
 
 Permissions determine what users can do in your <Constant name="dbt" /> account. By default, members of the `Owner` and `Member` groups have full access to all areas and features. When you want to restrict access to features, assign users to groups with stricter permission sets. Keep in mind that if a user belongs to multiple groups, the most permissive group will take precedence.
@@ -160,13 +182,13 @@ Some permissions (those that don't grant full access, like admins) allow groups 
 
 <Lightbox src="/img/docs/dbt-platform/dbt-platform-enterprise/access-control/environment-access-control.png" width="60%" title="Example environment access control for a group with Git admin assigned." />
 
-### Set up read-only user access <Lifecycle status="private_beta" />
+### Set up read-only user access
 
 To give users read-only access to analyze dbt models and project resources, assign them the [Analyst read](/docs/platform/manage-access/enterprise-permissions#analyst-read) permission set through a group. Users won't have access until they're added to a group that's assigned the permission set.
 
 :::info Availability
 
-The OAuth integration that lets read-only users connect to analysis features (such as the [dbt MCP server](/docs/dbt-ai/about-mcp)) is available to use. The **Analyst read** permission set and the read-only permission changes described here are in **private beta**. To enable it, contact your account manager.
+The OAuth integration that lets read-only users connect to analysis features (such as the [dbt MCP server](/docs/dbt-ai/about-mcp)) is available to use.
 
 :::
 

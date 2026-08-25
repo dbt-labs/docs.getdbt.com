@@ -4,9 +4,13 @@ id: "data-tile"
 sidebar_label: "Data health tile"
 description: "Embed data health tiles in your dashboards to distill data health signals for data consumers."
 image: /img/docs/collaborate/dbt-explorer/data-tile-pass.jpg
+availability:
+  surface: platform
+  access: paid_plan
+  minPlan: enterprise
 ---
 
-# Data health tile <Lifecycle status="managed,managed_plus" />
+# Data health tile
 
 With data health tiles, stakeholders will get an at-a-glance confirmation on whether the data they’re looking at is stale or degraded. It allows teams to immediately go back into <Constant name="catalog" /> to see more details and investigate issues.
 
@@ -147,15 +151,16 @@ Follow these steps to embed the data health tile in Tableau:
 <Lightbox src="/img/docs/collaborate/dbt-explorer/tableau-example.png" width="80%" title="Embed data health tile iFrame in Tableau"/>
 
 1. Create a dashboard in Tableau and connect to your database to pull in the data.
-2. Ensure you've copied the URL or iFrame snippet available in <Constant name="catalog" />'s **Data health** section, under the **Embed data health into your dashboard** toggle.
+2. Copy the URL or iFrame snippet available in <Constant name="catalog" />'s **Data health** section, under the **Embed data health into your dashboard** toggle.
 3. Insert a **Web Page** object.
-4. Insert the URL and click **Ok**.
+4. Paste the copied URL and click **Ok**.
+
+   The URL you copy from <Constant name="catalog" /> looks similar to the following but may include additional Tableau-specific parameters (such as `biResourceId` and `autoBiProvider=tableau`) that are required to resolve the exposure:
 
     ```text/html
     https://metadata.ACCESS_URL/exposure-tile?uniqueId=exposure.EXPOSURE_NAME&environmentType=production&environmentId=220370&token=<YOUR_METADATA_TOKEN>
     ```
 
-    *Note, replace the placeholders with your actual values.*
 5. You should now see the data health tile embedded in your Tableau dashboard.
 
 </TabItem>

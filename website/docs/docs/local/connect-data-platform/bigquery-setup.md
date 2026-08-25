@@ -13,15 +13,16 @@ meta:
   slack_channel_link: 'https://getdbt.slack.com/archives/C99SNSRTK'
   platform_name: 'BigQuery'
   config_page: '/reference/resource-configs/bigquery-configs'
+availability: local_free
 ---
 
 <VersionBlock firstVersion="2.0">
 
-# Connect BigQuery to Fusion <Lifecycle status='preview' />
+# Connect BigQuery to <Constant name="fusion" /> <Lifecycle status='preview' />
 
 You can configure the BigQuery adapter by running `dbt init` in your CLI or manually providing the `profiles.yml` file with the fields configured for your authentication type.
 
-The BigQuery adapter for Fusion supports the following [authentication methods](#supported-authentication-types):
+The BigQuery adapter for <Constant name="fusion" /> supports the following [authentication methods](#supported-authentication-types):
 - Service account (JSON file)
 - gcloud OAuth
 - Workload Identity Federation (Microsoft Entra)
@@ -32,7 +33,7 @@ import FusionBigQueryWarehousePerms from '/snippets/_fusion-warehouse-permission
 
 <FusionBigQueryWarehousePerms />
 
-## Configure Fusion
+## Configure <Constant name="fusion" />
 
 Executing `dbt init` in your CLI will prompt for the following fields:
 - **Project ID:** The GCP BigQuery project ID
@@ -216,7 +217,7 @@ BigQuery targets can be specified using one of four methods:
 For self-hosted dbt installations, we recommend using the OAuth method. If you're scheduling dbt on a server, you should use the service account auth method instead.
 
 :::tip Workload Identity Federation
-WIF authentication (`external-oauth-wif`) is available in [<Constant name="fusion" />](/docs/local/connect-data-platform/bigquery-setup?version=2.0&name=Fusion#supported-authentication-types). It's not supported in <Constant name="core" /> v1.12 and earlier.
+WIF authentication (`external-oauth-wif`) is available in [<Constant name="fusion" />](/docs/local/connect-data-platform/bigquery-setup?version=2.0#supported-authentication-types). It's not supported in <Constant name="core" /> v1.12 and earlier.
 :::
 
 BigQuery targets should be set up using the following configuration in your `profiles.yml` file. There are a number of [optional configurations](#optional-configurations) you may specify as well.

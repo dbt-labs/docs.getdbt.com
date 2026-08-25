@@ -3,6 +3,10 @@ title: "Upgrading to v1.10"
 id: upgrading-to-v1.10
 description: New features and changes in dbt Core v1.10
 displayed_sidebar: "docs"
+cta: dbt_core_v1_12_live
+availability:
+  engine: v1
+  access: free
 ---
  
 ## Resources 
@@ -118,7 +122,7 @@ models:
 
 </File>
 
-Check out our [docs on external catalog support](/docs/mesh/iceberg/about-catalogs) today! We'll have more information about this in the coming weeks, but this is an exciting step in journey to cross-platform support. 
+Check out our [docs on external catalog support](/docs/build/iceberg/about-catalogs) today! We'll have more information about this in the coming weeks, but this is an exciting step in journey to cross-platform support. 
 
 ### Integrating dbt Core artifacts with dbt projects
 
@@ -157,7 +161,7 @@ What does this mean for you?
 1. If your project (or dbt package) encounters a new deprecation warning in `v1.10`, plan to update your invalid code soon. Although it’s just a warning for now, in a future version, dbt will enforce stricter validation of the inputs in your project. Check out the [`dbt-autofix` tool](https://github.com/dbt-labs/dbt-autofix) to autofix many of these!
 2. In the future, the [`meta` config](/reference/resource-configs/meta) will be the only place to put custom user-defined attributes. Everything else will be strongly typed and strictly validated. If you have an extra attribute you want to include in your project, or a model config you want to access in a custom materialization, you must nest it under `meta` moving forward.
 3. If you are using the [`—-warn-error` flag](/reference/global-configs/warnings) (or `--warn-error-options '{"error": "all"}'`) to promote all warnings to errors, this will include new deprecation warnings coming to dbt Core. If you don’t want these to be promoted to errors, the `--warn-error-options` flag gives you more granular control over exactly which types of warnings are treated as errors. You can set `"warn": ["Deprecations"]` (new as of `v1.10`) to continue treating the deprecation warnings as warnings.
-4. The `--models` / `--model` / `-m` flag was renamed to `--select` / `--s` way back in dbt Core v0.21 (Oct 2021). Silently skipping this flag means ignoring your command's selection criteria, which could mean building your entire DAG when you only meant to select a small subset. For this reason, the `--models` / `--model` / `-m` flag **will raise a warning** in dbt Core v1.10, and an error in Fusion. Please update your job definitions accordingly.
+4. The `--models` / `--model` / `-m` flag was renamed to `--select` / `--s` way back in dbt Core v0.21 (Oct 2021). Silently skipping this flag means ignoring your command's selection criteria, which could mean building your entire DAG when you only meant to select a small subset. For this reason, the `--models` / `--model` / `-m` flag **will raise a warning** in dbt Core v1.10, and an error in <Constant name="fusion" />. Please update your job definitions accordingly.
 
 #### Custom inputs
   
@@ -322,6 +326,8 @@ import SnowflakeColumn from '/snippets/_snowflake-column-size.md';
 
 
 ## Quick hits
+
+- Use the [`--use-fast-test-edges`](/reference/global-configs/fast-test-edges) flag with `dbt build` to reduce the number of test edges dbt adds to the execution graph. In large projects, this can significantly reduce run times and memory usage.
 
 - Provide the [`loaded_at_query`](/reference/resource-properties/freshness#loaded_at_query) property for source freshness to specify custom SQL to generate the `maxLoadedAt` time stamp on the source (versus the [built-in query](https://github.com/dbt-labs/dbt-adapters/blob/6c41bedf27063eda64375845db6ce5f7535ef6aa/dbt/include/global_project/macros/adapters/freshness.sql#L4-L16), which uses the `loaded_at_field`). You cannot define `loaded_at_query` if the `loaded_at_field` config is also provided.
 

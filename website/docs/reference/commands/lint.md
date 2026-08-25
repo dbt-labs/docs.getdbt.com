@@ -3,6 +3,8 @@ title: "About dbt lint command"
 sidebar_label: "lint"
 description: "Use dbt lint to check your SQL files for style, correctness, and convention violations using SQLFluff-compatible rules."
 id: "lint"
+availability:
+  engine: v2
 ---
 
 # About dbt lint command <Lifecycle status="beta" />
@@ -12,7 +14,7 @@ id: "lint"
 You can use your existing SQLFluff config with minimal changes. dbt Labs intends to track the latest SQLFluff rule spec going forward.
 
 :::note
-`dbt lint` is part of the <Constant name="fusion_engine" />. It is not the same as `dbt sqlfluff lint` on the <Constant name="platform_cli" />. For SQLFluff on the platform CLI, see [Configure the dbt CLI](/docs/platform/configure-dbt-cli). [Linting in Studio IDE](/docs/platform/studio-ide/lint-format) continues to use SQLFluff at this time.
+`dbt lint` is part of the <Constant name="fusion_engine" />. It is not the same as `dbt sqlfluff lint` on the <Constant name="platform_cli" />. For SQLFluff on the platform CLI, see [Configure the dbt platform CLI](/docs/platform/configure-dbt-cli). [Linting in Studio IDE](/docs/platform/studio-ide/lint-format) continues to use SQLFluff at this time.
 :::
 
 ## Benchmarks

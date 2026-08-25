@@ -5,12 +5,12 @@ description: "dbt Wizard is an AI agent purpose-built for governed data developm
 sidebar_label: "Overview"
 pagination_next: null
 keywords: ["dbt Wizard", "dbt Agents", "AI", "analytics", "dbt"]
+availability: all_users
 ---
 
 import WizardSupportedProviders from '/snippets/_wizard-supported-providers.md';
 import WizardCliInstall from '/snippets/_wizard-cli-install-by-version.md';
 import NewToTerminal from '/snippets/_new-to-terminal.md';
-import WizardPlatformPreviewDisclaimer from '/snippets/_wizard-platform-preview-disclaimer.md';
 import WizardFeedbackCallout from '/snippets/_wizard-feedback-callout.md';
 
 # About dbt Wizard
@@ -31,11 +31,15 @@ Think of it like a map of your city: <Constant name="wizard" /> knows how everyt
 - **Complete workflow:** Investigate, change, validate, and review in one place
 - **Setup and governance:** Works out of the box with dbt governance built in
 
+:::tip Best practices for using dbt Wizard
+For recommended workflows on real project tasks &mdash; understanding a project, validating changes, debugging a failed job, and more &mdash; refer to [How to use dbt Wizard in your dbt project](/best-practices/how-to-use-wizard/wizard-1-intro).
+:::
+
 ## Use dbt Wizard
 
 <Constant name="wizard" /> is for anyone doing dbt development — from analytics engineers working in a self-hosted setup in the terminal to teams building in the <Constant name="dbt_platform" />. You can use it in the platform with managed or bring-your-own-key (BYOK) credentials, or in the terminal with your own key, with or without a <Constant name="dbt_platform" /> account.
 
-<Constant name="wizard" /> is data warehouse agnostic and works with both the [<Constant name="fusion_engine" />](/docs/fusion) and [<Constant name="core" />](/docs/local/install-dbt) &mdash; no specific engine is required.
+<Constant name="wizard" /> is data warehouse agnostic and works with both the [<Constant name="fusion_engine" />](/docs/fusion/about-fusion) and [<Constant name="core" />](/docs/local/install-dbt) &mdash; no specific engine is required.
 
 The following table shows where <Constant name="wizard" /> is available, the AI keys each surface uses, and how usage is billed:
 
@@ -111,8 +115,6 @@ Now that you know where to start, continue with **[Use self-hosted dbt Wizard](/
 - [Use skills in the dbt platform](/docs/dbt-ai/wizard-platform-skills) — give dbt Wizard reusable instructions for your project
 - [Use MCP servers with dbt Wizard CLI](/docs/dbt-ai/wizard-mcp) — connect the dbt Wizard CLI to more tools and context
 - [Migrate to dbt Wizard](/docs/dbt-ai/wizard-migrate) — switch from Claude Code, Cursor, or another AI agent to dbt Wizard
-- [Data & Privacy in the dbt platform](/docs/dbt-ai/wizard-platform-privacy-data) — understand how dbt Wizard in the dbt platform handles privacy and data
+- [Privacy and data FAQs](/docs/dbt-ai/dbt-ai-faqs#privacy-and-data) — understand how dbt Wizard handles privacy and data
 
 <WizardFeedbackCallout />
-
-<WizardPlatformPreviewDisclaimer />

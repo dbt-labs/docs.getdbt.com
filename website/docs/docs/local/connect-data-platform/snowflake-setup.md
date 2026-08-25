@@ -15,19 +15,20 @@ meta:
   slack_channel_link: 'https://getdbt.slack.com/archives/C01DRQ178LQ'
   platform_name: 'Snowflake'
   config_page: '/reference/resource-configs/snowflake-configs'
+availability: local_free
 ---
 
 import SnowflakeAuth from '/snippets/_snowflake-auth.md';
 
 <VersionBlock firstVersion="2.0">
 
-# Connect Snowflake to Fusion <Lifecycle status='preview' />
+# Connect Snowflake to <Constant name="fusion" /> <Lifecycle status='preview' />
 
 <SnowflakeAuth />
 
 You can configure the Snowflake adapter by running `dbt init` in your CLI or manually providing the `profiles.yml` file with the fields configured for your authentication type. To check out which Snowflake functions are supported in <Constant name="fusion"/> in `strict` mode, refer to [Snowflake function support](/reference/resource-configs/snowflake-function-support).
 
-The Snowflake adapter for Fusion supports the following [authentication methods](#supported-authentication-types):
+The Snowflake adapter for <Constant name="fusion" /> supports the following [authentication methods](#supported-authentication-types):
 - Password 
 - Key pair
 - Single sign-on (SSO)
@@ -55,7 +56,7 @@ The information required for configuring the Snowflake adapter can be found conv
 
 <Lightbox src="/img/fusion/connect-adapters/snowflake-account-details.png" width="60%" title="Sample config file in Snowflake." />
 
-## Configure Fusion
+## Configure <Constant name="fusion" />
 
 Executing `dbt init` in your CLI will prompt for the following fields:
 
@@ -335,9 +336,9 @@ my-snowflake-db:
 
 </File>
 
-#### dbt Fusion engine key formats
+#### <Constant name="fusion_engine" /> key formats
 
-Fusion requires modern key formats and doesn't support legacy 3DES encryption or headerless keys.  We recommend using PKCS#8 format with AES-256 encryption for key pair authentication with Fusion. Using older key formats may cause authentication failures.
+<Constant name="fusion" /> requires modern key formats and doesn't support legacy 3DES encryption or headerless keys.  We recommend using PKCS#8 format with AES-256 encryption for key pair authentication with <Constant name="fusion" />. Using older key formats may cause authentication failures.
 
 If you encounter the `Key is PKCS#1 (RSA private key). Snowflake requires PKCS#8` error, then your private key is in the wrong format. You have two options:
 

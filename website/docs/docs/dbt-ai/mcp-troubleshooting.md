@@ -3,6 +3,7 @@ title: "MCP troubleshooting"
 sidebar_label: "Troubleshooting"
 description: "Solutions for common issues when setting up and using dbt MCP."
 id: "mcp-troubleshooting"
+availability: all_users
 ---
 
 import MCPFaqUvx from '/snippets/_mcp-faq-uvx.md';

@@ -2,11 +2,14 @@
 title: "Configure BYOK for dbt Wizard in dbt platform"
 sidebar_label: "BYOK configuration"
 description: "Bring your own API key to use dbt Wizard and dbt Copilot in dbt platform. Supports OpenAI, Azure AI Foundry, and Anthropic."
+availability:
+  surface: platform
+  access: paid_plan
+  minPlan: starter
 ---
 
 import WizardSupportedProviders from '/snippets/_wizard-supported-providers.md';
 import WizardConfigureAiProvider from '/snippets/_wizard-configure-ai-provider.md';
-import WizardPlatformPreviewDisclaimer from '/snippets/_wizard-platform-preview-disclaimer.md';
 
 <IntroText>
 Use bring-your-own-key (BYOK) to connect <Constant name="wizard" /> or dbt Copilot in <Constant name="dbt_platform" /> to your own AI provider account instead of using dbt Labs' managed infrastructure.
@@ -42,4 +45,3 @@ Snowflake Cortex, AWS Bedrock, Azure AI Foundry, and Anthropic aren't supported 
 
 <WizardConfigureAiProvider />
 
-<WizardPlatformPreviewDisclaimer />

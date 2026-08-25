@@ -5,9 +5,12 @@ description: "Your to-do list for setting up your dbt platform account"
 sidebar_label: "dbt platform configuration checklist"
 pagination_next: null
 pagination_prev: null
+availability:
+  surface: platform
+  access: all_users
 ---
 
-# dbt platform configuration checklist <Lifecycle status="self_service,managed,managed_plus" />
+# dbt platform configuration checklist
 
 So, you've created a new cloud-hosted dbt platform account, and you're ready to explore its lightning-fast and intuitive features. Welcome! Before you begin, let’s ensure your account is properly configured so that you can easily onboard new users and take advantage of all the integrations dbt has to offer. 
 

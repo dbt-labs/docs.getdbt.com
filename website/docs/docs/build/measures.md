@@ -4,6 +4,7 @@ id: measures
 description: "Measures are aggregations performed on columns in your model."
 sidebar_label: "Measures"
 tags: [Metrics, Semantic Layer]
+availability: all_users
 ---
 
 :::tip Measures are deprecated in the new spec

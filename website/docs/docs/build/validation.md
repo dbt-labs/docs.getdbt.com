@@ -4,6 +4,7 @@ id: validation
 description: "The Semantic Layer, powered by MetricFlow, has three types of built-in validations, including Parsing Validation, Semantic Validation, and Data Warehouse validation, which are performed in a sequential and blocking manner."
 sidebar_label: "Validations"
 tags: [Metrics, Semantic Layer]
+availability: all_users
 ---
 
 Validations refer to the process of checking whether a system or configuration meets the expected requirements or constraints. In the case of the <Constant name="semantic_layer" />, powered by MetricFlow, there are three built-in validations &mdash; [parsing](#parsing), [semantic](#semantic), and [data platform](#data-platform).
@@ -16,7 +17,7 @@ The code that handles validation [can be found here](https://github.com/dbt-labs
 
 You can run validations from the <Constant name="dbt_platform" /> or the command line with the following [MetricFlow commands](/docs/build/metricflow-commands). In <Constant name="dbt" />, you need user credentials configured in your account settings to run `dbt sl validate` in the IDE or CLI, and deployment credentials to run it in CI.
 
-- For Fusion and dbt users in the dbt platform CLI or locally with a valid [`dbt_cloud.yml`](/reference/dbt_cloud.yml):
+- For <Constant name="fusion" /> and dbt users in the <Constant name="platform_cli" /> or locally with a valid [`dbt_cloud.yml`](/reference/dbt_cloud.yml):
 
   ```bash
   dbt sl validate

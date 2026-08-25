@@ -2,6 +2,7 @@
 title: "User-defined functions"
 description: "Learn how to add user-defined functions (UDFs) to your dbt projects."
 id: "udfs"
+availability: all_users
 ---
 
 # User-defined functions
@@ -16,7 +17,7 @@ Refer to [Function properties](/reference/function-properties) or [Function conf
 
 ## Prerequisites
 
-* Make sure you're using dbt platform's **Fusion Stable** or **Latest** [release track](/docs/dbt-versions/dbt-release-tracks) or <Constant name="core" /> v1.11+.
+* Make sure you're using dbt platform's **<Constant name="fusion" /> Stable** or **Latest** [release track](/docs/dbt-versions/dbt-release-tracks) or <Constant name="core" /> v1.11+.
 * Use one of the following adapters:
 
 	<Tabs>

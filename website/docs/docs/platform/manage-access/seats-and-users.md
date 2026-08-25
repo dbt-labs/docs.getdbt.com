@@ -5,6 +5,9 @@ id: "seats-and-users"
 sidebar: "Users and licenses"
 pagination_next: "docs/platform/manage-access/enterprise-permissions"
 pagination_prev: null
+availability:
+  surface: platform
+  access: login_required
 ---
 
 
@@ -174,6 +177,15 @@ When a user belongs to multiple IdP groups, the Developer license takes preceden
 If a user's IdP groups do not match _any_ license type mappings, <Constant name="dbt" /> assigns a Developer license by default.
 :::
 
-## Granular permissioning
+## Granular permissioning <Lifecycle status="managed,managed_plus" />
 
 <Constant name="dbt" /> Enterprise-tier plans support role-based access controls for configuring granular in-app permissions. See [access control](/docs/platform/manage-access/about-user-access) for more information on Enterprise permissioning.
+
+#### Read-Only granular permissions
+
+<Constant name="dbt" /> Enterprise-tier plans support granular permissions to help you control which projects your Read-Only users can access by assigning them to specific groups, rather than granting access to the entire account.
+
+Enabling granular permissions is a one-time, permanent change. Before you enable this, make sure your Read-Only users are in a group with a Read-Only permission set that covers all projects. If a user isn't in a group, or their group's permission set only covers some projects, they'll lose access to the projects that aren't covered.
+
+For complete setup instructions, refer to [How to enable granular permissions for read-only users](/docs/platform/manage-access/about-user-access#enable-granular-permissions-for-read-only-users) for the full setup steps.
+

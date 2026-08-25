@@ -5,6 +5,9 @@ id: "2024-release-notes"
 sidebar_label: "2024 release notes"
 pagination_next: null
 pagination_prev: null
+availability:
+  surface: platform
+  access: free
 ---
 
 <Constant name="dbt" /> release notes for recent and historical changes. Release notes fall into one of the following categories:
@@ -407,7 +410,7 @@ The following features are new or enhanced as part of our [<Constant name="dbt" 
     - From the community: [Serverless, free-tier data stack with dlt + dbt core](/blog/serverless-dlt-dbt-stack)
   - The Extrica team added docs for the [dbt-extrica community adapter](/docs/local/connect-data-platform/extrica-setup)
   - Semantic Layer: New [conversion metrics docs](/docs/build/conversion) and added the parameter `fill_nulls_with` to all metric types (launched the week of January 12, 2024)
-  - New [dbt environment command](/reference/commands/dbt-environment) and its flags for the dbt CLI
+  - New [dbt environment command](/reference/commands/dbt-environment?version=2.0) and its flags for the dbt CLI
 
   January also saw some refreshed content, either aligning with new product features or requests from the community:
 

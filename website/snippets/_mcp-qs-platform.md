@@ -8,7 +8,7 @@ import MCPFaqUrlsVsIds from '/snippets/_mcp-faq-urls-vs-ids.md';
 import MCPFaqMulticell from '/snippets/_mcp-faq-multicell.md';
 
 
-This quickstart uses the self-hosted MCP server: it runs on your machine using `uvx dbt-mcp`, connects to your <Constant name="dbt_platform"/> for <Constant name="semantic_layer"/>, Discovery, and SQL, and optionally runs self-hosted <Constant name="core" /> or <Constant name="fusion" /> CLI. 
+This quickstart uses the local MCP server: it runs on your machine using `uvx dbt-mcp`, connects to your <Constant name="dbt_platform"/> for <Constant name="semantic_layer"/>, Discovery, and SQL, and optionally runs local dbt. 
 
 For self-hosted CLI only (with or without a <Constant name="dbt_platform"/> account), see [Run self-hosted dbt](/docs/dbt-ai/mcp-quickstart-cli) or [Run self-hosted dbt Wizard](/docs/dbt-ai/wizard-quickstart).
 
@@ -32,7 +32,7 @@ _MCP OAuth is available in public beta for Starter, Enterprise, and Enterprise+ 
 
 OAuth is the fastest setup for <Constant name="dbt_platform"/> accounts, no tokens to copy or manage. A browser window opens to authenticate the first time you connect. 
 
-For OAuth _without_ a self-hosted installation, use the [remote MCP server](/docs/dbt-ai/mcp-quickstart-remote). If your client does not support OAuth or you need token-based access, use [token-based authentication](/docs/dbt-ai/setup-remote-mcp#token-based-authentication).
+For OAuth _without_ a self-hosted installation, use the [remote MCP server](/docs/dbt-ai/mcp-quickstart-remote). Remote MCP OAuth is available in public beta for Starter, Enterprise, and Enterprise+ accounts. If your client does not support OAuth or you need token-based access, use [token-based authentication](/docs/dbt-ai/setup-remote-mcp#token-based-authentication).
 
 <StaticSubdomainRequired />
 

@@ -16,6 +16,7 @@ meta:
   slack_channel_link: 'https://getdbt.slack.com/archives/C03CC86R1NY'
   platform_name: 'TiDB'
   config_page: '/reference/resource-configs/no-configs'
+availability: local_free
 ---
 
 

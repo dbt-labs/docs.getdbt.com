@@ -4,6 +4,7 @@ id: model-versions
 sidebar_label: "Model versions"
 description: "Version models to help with lifecycle management"
 keyword: governance, model version, model versioning, dbt model versioning
+availability: all_users
 ---
 
 import VersionsCallout from '/snippets/_model-version-callout.md';

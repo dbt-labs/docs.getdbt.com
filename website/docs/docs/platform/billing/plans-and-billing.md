@@ -3,6 +3,7 @@ title: "Plans and billing"
 id: plans-and-billing
 description: "Learn how billing works for each dbt plan."
 sidebar_label: "Plans"
+availability: platform
 ---
 
 <Constant name="dbt" /> offers several [plans](https://www.getdbt.com/pricing) with different features that meet your needs. We may make changes to our plan details from time to time. We'll always let you know in advance, so you can be prepared. The following section explains how billing works in each plan.

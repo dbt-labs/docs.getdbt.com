@@ -10,7 +10,7 @@ recently_updated: true
 intro_text: This guide helps you implement an in-place upgrade from the latest version of dbt Core to the dbt Fusion engine in the dbt platform.
 ---
 
-import FusionAdapters from '/snippets/_fusion-dwh.md';
+import FusionAdapters from '/snippets/_fusion-dwh-platform.md';
 import SaoDeprecated from '/snippets/_sao-deprecated.md';
 
 ## Introduction 
@@ -132,11 +132,11 @@ If the autofix tool can't resolve all deprecations automatically, you'll need to
 
 :::
 
-### Step 4: Enable Fusion
+### Step 4: Enable <Constant name="fusion" />
 
 After you resolve all deprecations, upgrade your development environment:
 
-1. Click the **Enable Fusion** button at the top of the <Constant name="studio_ide" />.
+1. Click the **Enable <Constant name="fusion" />** button at the top of the <Constant name="studio_ide" />.
 2. Confirm the upgrade when prompted.
 3. Wait for the environment to update (this typically takes just a few seconds).
 
@@ -229,7 +229,7 @@ Change your staging environment to use the <Constant name="fusion" /> release tr
 
 1. In the environment settings, scroll to the **dbt version** section.
 2. Click the **dbt version** dropdown menu.
-3. Select **Fusion Stable** from the list.
+3. Select **<Constant name="fusion" /> Stable** from the list.
 4. Scroll to the top and click **Save**.
 
 <Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/platform-upgrading-dbt-versions/upgrade-fusion.png" width="90%" title="Select Fusion Stable from the dbt version dropdown"/>
@@ -325,13 +325,13 @@ Access your production environment configuration:
 
 <Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/choosing-dbt-version/example-environment-settings.png" width="90%" title="Access production environment settings"/>
 
-### Step 3: Upgrade to Fusion Stable
+### Step 3: Upgrade to <Constant name="fusion" /> Stable
 
 Update your production environment to use <Constant name="fusion" />:
 
 1. In the environment settings, scroll to the **dbt version** section.
 2. Click the **dbt version** dropdown menu.
-3. Select **Fusion Stable** from the list.
+3. Select **<Constant name="fusion" /> Stable** from the list.
 4. Review your settings one final time to ensure everything is correct.
 5. Scroll to the top and click **Save**.
 
@@ -399,7 +399,7 @@ If you encounter critical issues in production, you can revert your dbt version:
 
 1. Navigate to **Orchestration** → **Environments** → **Production**.
 2. Click **Edit**.
-3. Change **dbt version** from **Fusion Stable** back to **Latest**.
+3. Change **dbt version** from **<Constant name="fusion" /> Stable** back to **Latest**.
 4. Click **Save**.
 5. Jobs will use <Constant name="core" /> on their next run.
 
@@ -429,7 +429,7 @@ dbt lint --fix
 dbt lint --changed
 ```
 
-See the [`dbt lint` reference](/reference/commands/lint) for the full list of flags, supported dialects, and suppression syntax.
+See the [`dbt lint` reference](/reference/commands/lint?version=2.0) for the full list of flags, supported dialects, and suppression syntax.
 
 ## Next steps
 
