@@ -30,8 +30,8 @@ export default function NotFoundContent({className}) {
             </Translate>
           </Heading>
           <p>
-            We could not find that page. It may have moved, been renamed, or
-            never existed. Nothing is broken on your end — the URL just doesn't
+            We couldn't find that page. It may have moved, been renamed, or
+            never existed. No worries, nothing is broken on your end -- the URL just doesn't
             match a page in the dbt Developer Hub.
           </p>
           <p>Here's where to look next:</p>
@@ -54,7 +54,7 @@ export default function NotFoundContent({className}) {
           </p>
           <p>
             Building an agent or script? Every docs page also has a plain
-            markdown version — append <code>.md</code> to any docs URL (for
+            markdown version — just add <code>.md</code> at the end of any docs URL (for
             example <a href="/docs/introduction.md">/docs/introduction.md</a>) to
             fetch the raw markdown instead of the rendered HTML page.
           </p>
