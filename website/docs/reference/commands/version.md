@@ -34,7 +34,7 @@ Plugins:
 
 <Constant name="dbt" /> CLI example:
 
-<File name='dbt CLI'>
+<File name='dbt platform CLI'>
 
 ```text
 $ dbt --version

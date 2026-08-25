@@ -19,7 +19,7 @@ availability: local_free
 
 <VersionBlock firstVersion="2.0">
 
-# Connect DuckDB to Fusion <Lifecycle status="beta" />
+# Connect DuckDB to <Constant name="fusion" /> <Lifecycle status="beta" />
 
 DuckDB with <Constant name="fusion_engine" /> is the easiest way to get a dbt project running locally &mdash; no warehouse account or credentials required. [DuckDB](https://duckdb.org) is an embedded database that runs entirely in-process, so dbt connects directly to a local `.duckdb` file with no additional setup.
 

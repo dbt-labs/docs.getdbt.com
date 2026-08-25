@@ -60,7 +60,7 @@ Use MetricFlow commands to retrieve metadata and query metrics. The following ta
 
 | Development setup | Engine | Hosted on | <div style={{width:'100px'}}>Prefix</div>  | Notes |
 |------------|------------|----------------|-------------|-----------|
-|<Constant name="studio_ide" />/<Constant name="platform_cli" /> or VS Code extension <small>Fusion only</small>| <Constant name="fusion_engine" /> or <Constant name="core" /> engine| <Constant name="dbt_platform" /> | `dbt sl` | Remote execution; Platform manages versions.<br />VS Code extension users must have a [`dbt_cloud.yml`](/reference/dbt_cloud.yml) file with a valid token to connect to dbt platform |
+|<Constant name="studio_ide" />/<Constant name="platform_cli" /> or VS Code extension <small><Constant name="fusion" /> only</small>| <Constant name="fusion_engine" /> or <Constant name="core" /> engine| <Constant name="dbt_platform" /> | `dbt sl` | Remote execution; Platform manages versions.<br />VS Code extension users must have a [`dbt_cloud.yml`](/reference/dbt_cloud.yml) file with a valid token to connect to dbt platform |
 | Open-source <br /> (no <Constant name="dbt_platform" /> project) | <Constant name="fusion" /> (source available) or <br />  <Constant name="core" /> engine | Local machine | `mf` | Install and manage MetricFlow locally. |
 
 - If you’re using <Constant name="fusion" /> with <Constant name="dbt_platform" /> and have a [`dbt_cloud.yml`](/reference/dbt_cloud.yml) file with a valid token to connect to <Constant name="dbt_platform" />, run MetricFlow commands using the `dbt sl` prefix. 
@@ -219,7 +219,7 @@ The list of available saved queries:
 
 The following command performs validations against the defined semantic model configurations.
 
-- For Fusion and dbt users in the dbt platform CLI or locally with a valid [`dbt_cloud.yml`](/reference/dbt_cloud.yml):
+- For <Constant name="fusion" /> and dbt users in the <Constant name="platform_cli" /> or locally with a valid [`dbt_cloud.yml`](/reference/dbt_cloud.yml):
 
   ```bash
   dbt sl validate
