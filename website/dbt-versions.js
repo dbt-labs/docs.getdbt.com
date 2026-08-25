@@ -190,6 +190,7 @@ exports.versionedPages = [
   { page: "docs/local/connect-data-platform/ydb-setup", lastVersion: "1.99" },
   { page: "docs/local/connect-data-platform/yellowbrick-setup", lastVersion: "1.99" },
   { page: "reference/global-configs/cache", lastVersion: "1.99" },
+  { page: "reference/global-configs/fast-test-edges", lastVersion: "1.99" },
   { page: "reference/global-configs/sqlparse", firstVersion: "1.11" },
   { page: "reference/global-configs/user-settings", firstVersion: "1.13" },
 ];

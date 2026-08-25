@@ -109,6 +109,12 @@ Refer to [Supported data platforms](/docs/supported-data-platforms) for the full
 
 ## End-of-life versions
 
+:::info
+
+On <Constant name="legacy_deprecation_date" />, dbt Core versions v1.3-v1.7 will be deprecated and removed from availability in <Constant name="dbt_platform" />. Upgrade any environments still on these versions to a supported version or a [release track](/docs/dbt-versions/dbt-release-tracks) before then.
+
+:::
+
 Once a dbt version reaches end-of-life (EOL), it no longer receives patches, including for known bugs. We recommend upgrading to a newer version in [<Constant name="dbt" />](/docs/dbt-versions/upgrade-dbt-platform-version), [<Constant name="fusion" />](/docs/local/install-dbt?version=2), or [<Constant name="core" />](/docs/local/install-dbt). All versions prior to v1.0 have been deprecated.
 
 ## Current version support
