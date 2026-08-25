@@ -1569,7 +1569,9 @@ This section will guide you on how to use the Hex integration to query your metr
 </Tabs>
 
 ### Connect and query with Sigma
-This section will guide you on how to use the Sigma integration to query your metrics using Sigma. If you already have a Sigma account, log in and skip to step 6. Steps 1 through 5 create a Sigma account from Snowflake Partner Connect. Use those steps only if you are on Snowflake. Databricks has a separate [Sigma Partner Connect](https://docs.databricks.com/aws/en/partners/bi/sigma) flow. If you are on another data platform, log in to an existing Sigma account and continue from step 6. 
+This section will guide you on how to use the Sigma integration to query your metrics using Sigma. If you already have a Sigma account, log in and skip to step 6. Steps 1 through 5 create a Sigma account from Snowflake Partner Connect.
+
+Use steps 1 through 5 only if you are on Snowflake. Databricks has a separate [Sigma Partner Connect](https://docs.databricks.com/aws/en/partners/bi/sigma) flow. If you are on another data platform, log in to an existing Sigma account and continue from step 6, or refer to Sigma's [Query a dbt Semantic Layer integration](https://help.sigmacomputing.com/docs/query-a-dbt-semantic-layer-integration) guide. 
 
 1. Go back to your Snowflake account. In the Snowflake UI, click on the home icon in the upper left corner. In the left sidebar, select **Data Products**. Then, select **Partner Connect**. Find the Sigma tile by scrolling or by searching for Sigma in the search bar. Click the tile to connect to Sigma.
 <Lightbox src="/img/docs/dbt-platform/semantic-layer/sl-sigma-partner-connect.png" width="25%" title="Click the '+ New project' button on the top right"/>
