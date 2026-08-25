@@ -3,6 +3,7 @@ title: "Continuous integration in dbt"
 sidebar_label: "Continuous integration"
 description: "Learn how CI checks validate changes before you deploy code to production."
 pagination_next: "docs/deploy/advanced-ci"
+availability: platform_login
 ---
 
 To implement a continuous integration (CI) workflow in <Constant name="dbt" />, you can set up automation that tests code changes by running [CI jobs](/docs/deploy/ci-jobs) before merging to production. <Constant name="dbt" /> tracks the state of what’s running in your production environment. When you run a CI job, only the modified data assets in your pull request (PR) and their downstream dependencies are built and tested in a staging schema.
@@ -74,7 +75,7 @@ Available on [<Constant name="dbt" /> release tracks](/docs/dbt-versions/dbt-rel
 
 When [enabled for your CI job](/docs/deploy/ci-jobs#set-up-ci-jobs), dbt invokes [SQLFluff](https://sqlfluff.com/). SQLFluff is a modular, configurable SQL linter. It warns you about complex functions, syntax, formatting, and compilation errors.
 
-:::note SQLFluff and the Fusion engine
+:::note SQLFluff and the <Constant name="fusion_engine" />
 SQLFluff linting is not yet supported for <Constant name="dbt_platform" /> jobs that run on the <Constant name="fusion_engine" />. For more information, refer to [<Constant name="fusion" /> limitations](/docs/fusion/supported-features#limitations).
 :::
 

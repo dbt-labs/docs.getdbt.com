@@ -4,6 +4,7 @@ sidebar_label: "About continuous integration"
 pagination_prev: null
 pagination_next: "docs/deploy/continuous-integration"
 hide_table_of_contents: true
+availability: platform_login
 ---
 
 Use [CI jobs](/docs/deploy/ci-jobs) in <Constant name="dbt" /> to set up automation for testing code changes before merging to production. Additionally, [enable Advanced CI features](/docs/platform/account-settings#account-access-to-advanced-ci-features) for these jobs to evaluate whether the code changes are producing the appropriate data changes you want by reviewing the comparison differences dbt provides.

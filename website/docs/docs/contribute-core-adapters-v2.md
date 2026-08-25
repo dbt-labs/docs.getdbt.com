@@ -1,7 +1,10 @@
 ---
-title: "Contribute a dbt Core v2 adapter"
+title: "Contribute a dbt Core v2.0 adapter"
 id: "contribute-core-adapters-v2"
 pagination_next: null
+availability:
+  engine: v2
+  preset: local_free
 ---
 
 :::caution Work in progress
@@ -12,23 +15,23 @@ This guide is a work in progress — synthesized from internal Fusion v2 adapter
 
 ## Step 1: Introduction
 
-dbt Core v2 adapters work very differently from dbt Core v1 adapters. In v1, each adapter was a standalone Python package that implemented a fragmented Python interface. In dbt Core v2, adapters live **inside a monorepo written in Rust**, connected to warehouses via ADBC (Arrow Database Connectivity) drivers — and the community contribution model has changed accordingly.
+dbt Core v2.0 adapters work very differently from dbt Core v1.x adapters. In v1, each adapter was a standalone Python package that implemented a fragmented Python interface. In dbt Core v2.0, adapters live **inside a monorepo written in Rust**, connected to warehouses via ADBC (Arrow Database Connectivity) drivers — and the community contribution model has changed accordingly.
 
-This guide walks you through contributing a new dbt Core v2 adapter to dbt-core as a community member. The file breakdown in the [reference section](#reference-file-by-file-implementation-guide) shows the ~13 files a complete community dbt Core v2 adapter touches. Exasol, a community contributed dbt Core v2 adapter, is the example used throughout this guide.
+This guide walks you through contributing a new dbt Core v2.0 adapter to dbt-core as a community member. The file breakdown in the [reference section](#reference-file-by-file-implementation-guide) shows the ~13 files a complete community dbt Core v2.0 adapter touches. Exasol, a community contributed dbt Core v2.0 adapter, is the example used throughout this guide.
 
-:::info What is dbt Core v2?
-dbt Core v2 is the new Rust-based dbt engine. Adapters in Core v2 are written in Rust and live inside the `dbt-core` monorepo, rather than as standalone Python packages.
+:::info What is dbt Core v2.0?
+dbt Core v2.0 is the new Rust-based dbt engine. Adapters in Core v2 are written in Rust and live inside the `dbt-core` monorepo, rather than as standalone Python packages.
 :::
 
 ### How adapters are different now
 
-In dbt Core v1, every adapter is:
+In dbt Core v1.x, every adapter is:
 - A **separate Python package** (e.g. `dbt-snowflake`, `dbt-bigquery`)
 - **Community-owned** and maintained independently
 - **Dynamically loaded** at runtime via Python's plugin system
 - Built upon vendor-maintained Python SDK connectors/drivers
 
-In dbt Core v2, adapters are:
+In dbt Core v2.0, adapters are:
 - **Part of the `dbt-core` monorepo**, contributed as PRs
 - **Written in Rust** (with Jinja SQL macros still used for SQL logic)
 - Connected to warehouses via **ADBC drivers** — a unified driver interface that abstracts away connection management
@@ -66,9 +69,9 @@ dbt Labs does not write drivers. If your warehouse doesn't have an ADBC driver y
 
 **What "having an ADBC driver" actually means**
 
-For certain adapters (Snowflake, BigQuery, Databricks, Redshift, DuckDB, ClickHouse, Salesforce, Spark, SQL Server), dbt Core v2 automatically downloads the correct driver binary from the dbt Labs CDN on first use. Users never have to think about it.
+For certain adapters (Snowflake, BigQuery, Databricks, Redshift, DuckDB, ClickHouse, Salesforce, Spark, SQL Server), dbt Core v2.0 automatically downloads the correct driver binary from the dbt Labs CDN on first use. Users never have to think about it.
 
-Community adapters don't have CDN support. Instead, Fusion looks for a shared library by name on the user's system — e.g. `libadbc_driver_exasol.dylib` on macOS, `libadbc_driver_exasol.so` on Linux. If the file isn't present, the connection fails at runtime.
+Community adapters don't have CDN support. Instead, <Constant name="fusion" /> looks for a shared library by name on the user's system — e.g. `libadbc_driver_exasol.dylib` on macOS, `libadbc_driver_exasol.so` on Linux. If the file isn't present, the connection fails at runtime.
 
 This means two things for you as a contributor:
 1. **The driver binary must exist somewhere.** It's a compiled shared library (`.dylib`/`.so`/`.dll`) that implements the ADBC C ABI for your warehouse. Exasol's driver is `exarrow-rs`, a separate Rust crate maintained by Exasol — not part of `dbt-core` and not in `apache/arrow-adbc`. Your warehouse's driver will likely live in a similar separate repo.
@@ -81,7 +84,7 @@ Check whether a driver already exists for your warehouse:
 - The warehouse vendor's own GitHub org (many vendors publish ADBC drivers independently)
 
 :::note Driver source is flexible — with a security caveat
-Fusion loads drivers by shared library name from the system path (e.g. `libadbc_driver_exasol.dylib` on macOS) — the source repository is flexible, as long as the binary implements the ADBC C ABI. dbt Labs is working on a driver signing and verification mechanism. Until that ships, users are responsible for trusting the driver binary they install.
+<Constant name="fusion" /> loads drivers by shared library name from the system path (e.g. `libadbc_driver_exasol.dylib` on macOS) — the source repository is flexible, as long as the binary implements the ADBC C ABI. dbt Labs is working on a driver signing and verification mechanism. Until that ships, users are responsible for trusting the driver binary they install.
 :::
 
 If no driver exists yet, building one is a separate project that comes before the adapter contribution. This is outside the scope of what dbt Labs can help with. [Columnar](https://columnar.tech/) specializes in building ADBC drivers and may be a useful resource if you need help getting a driver built.
@@ -120,15 +123,15 @@ For warehouses not yet in `AdapterType` at all (MySQL, Hive, Vertica, SQL Server
 |---|---|---|
 | `macros/adapters.sql` | `dbt-loader/.../dbt-<wh>/macros/adapters.sql` | Mostly a direct port — same `<wh>__` dispatch prefix, same macro names, same Jinja patterns |
 | `macros/catalog.sql` | Same location | The catalog SQL (`list_relations_without_caching`, `get_catalog`) transfers almost verbatim |
-| Custom materializations and adapter-overrides | Same location | Look out for Jinja that might not yet be supported in dbt Core v2; that will need to be addressed separately |
+| Custom materializations and adapter-overrides | Same location | Look out for Jinja that might not yet be supported in dbt Core v2.0; that will need to be addressed separately |
 | Profile fields in `credentials.py` / `profile_template.yml` | `DbConfig` struct in `dbt-schemas` | Each profile field becomes a struct field — optional fields use `Option<T>` |
 | Connection URI / DSN construction in `connections.py` | `dbt-auth/src/<wh>/mod.rs` | The URI building logic maps cleanly to the auth module pattern |
-| `BaseRelation.quote_policy` / identifier casing behavior | `Policy::new(...)` in `relation_object.rs` | The 3-part vs. 2-part name structure and quote flags map 1:1 to the dbt Core v2 `Policy` struct |
+| `BaseRelation.quote_policy` / identifier casing behavior | `Policy::new(...)` in `relation_object.rs` | The 3-part vs. 2-part name structure and quote flags map 1:1 to the dbt Core v2.0 `Policy` struct |
 | Catalog introspection SQL in macros and `adapter.py` | `get_relation.rs` and Jinja macros | The system catalog table names and queries you already know transfer directly |
 
 **What doesn't transfer by design**
 
-A few components won't transfer 1:1 from v1 to dbt Core v2 — meaning less code and maintenance for you:
+A few components won't transfer 1:1 from v1 to dbt Core v2.0 — meaning less code and maintenance for you:
 - `ConnectionManager` methods (`open`, `cancel`, `get_response`, `execute`) — In v1, these were your responsibility to implement against the Python DB API 2.0 spec. In v2, connection management is owned entirely by the ADBC driver.
 - Python adapter class hierarchy and execution-wrapping methods — now handled by `match adapter_type()` expressions in the shared `adapter_impl.rs` (Step 4.5 explains how these work).
 - `setup.py` / package dependencies on `dbt-core` — dbt Labs handles packaging and distribution once your PR is merged. No `setup.py`, no PyPI release, and no version pinning required.
@@ -191,7 +194,7 @@ Every missing case is a compile error, so the AI always has a precise specificat
 **Watch out for:**
 - **Hallucinated file paths** — AI often invents Fusion paths. Use the file breakdown below as ground truth.
 - **Always verify with the type checker** — run `cargo check -p <crate>` after any AI-generated changes.
-- **SQL macro patterns from v1** may not apply cleanly in Fusion. Compare against the reference `adapters.sql` in `crates/dbt-loader/src/dbt_macro_assets/dbt-exasol/macros/adapters.sql` in [dbt-labs/dbt-fusion](https://github.com/dbt-labs/dbt-fusion).
+- **SQL macro patterns from v1** may not apply cleanly in <Constant name="fusion" />. Compare against the reference `adapters.sql` in `crates/dbt-loader/src/dbt_macro_assets/dbt-exasol/macros/adapters.sql` in [dbt-labs/dbt-fusion](https://github.com/dbt-labs/dbt-fusion).
 
 ---
 
@@ -203,9 +206,9 @@ Before writing code, it helps to understand the layers you'll be working in.
 
 A key architectural decision in Core v2 is the use of **ADBC (Arrow Database Connectivity)** as the unified driver interface.
 
-In dbt Core v1, adapters connected via Python drivers — often wrapping `pyodbc` or proprietary connection mechanisms. Each adapter owned its connection logic entirely.
+In dbt Core v1.x, adapters connected via Python drivers — often wrapping `pyodbc` or proprietary connection mechanisms. Each adapter owned its connection logic entirely.
 
-In v2, each warehouse connects through an **ADBC driver** — a pre-compiled binary that handles the wire protocol, authentication handshakes, and connection pooling. Your adapter code never touches any of that. For CDN-supported first-party adapters, Fusion downloads this driver automatically on first use. For community adapters, users install it manually — which is why Step 2 covers finding or building a driver.
+In v2, each warehouse connects through an **ADBC driver** — a pre-compiled binary that handles the wire protocol, authentication handshakes, and connection pooling. Your adapter code never touches any of that. For CDN-supported first-party adapters, <Constant name="fusion" /> downloads this driver automatically on first use. For community adapters, users install it manually — which is why Step 2 covers finding or building a driver.
 
 ADBC is column-native end-to-end — if your warehouse supports columnar output (e.g. Arrow IPC or Arrow Flight SQL), data flows through with zero conversion. This means **you do not need to write connection management code** — that lives in the driver. What you write is the warehouse-specific configuration, authentication, relation naming, macro logic, and catalog introspection that sits above the driver.
 
@@ -636,7 +639,7 @@ Once your adapter is merged and available in a release, document it so users can
 Document the `profiles.yml` configuration for your warehouse — what fields are required, what's optional, and example values. Follow the format of existing adapter setup guides on [docs.getdbt.com](http://docs.getdbt.com).
 
 :::caution Driver installation is critical to document
-Unlike first-party adapters, your users won't get the driver automatically — Fusion won't download it for them. Your setup guide must explain where to get the driver binary and how to install it so Fusion can find it at runtime. Without this, users will configure a valid profile and still get a connection error. Include the exact library name Fusion looks for (e.g. `libadbc_driver_<yourwarehouse>.dylib`) and where to put it.
+Unlike first-party adapters, your users won't get the driver automatically — <Constant name="fusion" /> won't download it for them. Your setup guide must explain where to get the driver binary and how to install it so <Constant name="fusion" /> can find it at runtime. Without this, users will configure a valid profile and still get a connection error. Include the exact library name <Constant name="fusion" /> looks for (e.g. `libadbc_driver_<yourwarehouse>.dylib`) and where to put it.
 :::
 
 ### General documentation guidelines

@@ -5,6 +5,7 @@ description: "Read the FAQs to learn more about the dbt Semantic Layer, how it w
 sidebar_label: "Semantic Layer FAQs"
 tags: [Semantic Layer]
 pagination_next: null
+availability: platform_login
 ---
 
 The [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl) is a <Constant name="dbt" /> offering that allows users to centrally define their metrics within their dbt project using [MetricFlow](/docs/build/about-metricflow).
@@ -161,7 +162,7 @@ MetricFlow is hosted in <Constant name="dbt" />. Requests from the [Semantic Lay
 2. Then you build your metrics on top of these semantic models. This is all done in `.yml` configurations alongside your dbt models in your projects.
 3. Once you've defined your metrics and semantic models, you can [configure the dbt Semantic Layer](/docs/use-dbt-semantic-layer/setup-sl) in <Constant name="dbt" />.
 
-Read our [dbt Semantic Layer quickstart](/guides/sl-snowflake-qs) guide for more information.
+Read our [dbt Semantic Layer quickstart](/guides/sl-qs) guide for more information.
 
 </Expandable>
 

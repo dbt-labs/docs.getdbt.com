@@ -4,11 +4,15 @@ sidebar_label: "Set up Cost Insights"
 description: "Learn how to set up Cost Insights to track warehouse compute costs and view realized savings from state-aware orchestration across your dbt projects and models."
 id: "set-up-cost-insights"
 tags: ['SAO', 'cost savings', 'models built', 'cost insights', 'cost reduction', 'cost optimization']
+availability:
+  surface: platform
+  access: paid_plan
+  minPlan: enterprise
 ---
 
 import SaoDeprecated from '/snippets/_sao-deprecated.md';
 
-# Set up Cost Insights <Lifecycle status="beta,managed,managed_plus" />
+# Set up Cost Insights
 
 This guide walks you through setting up Cost Insights to track warehouse compute costs and cost reductions from dbt State and state-aware orchestration across your dbt projects and models.
 
@@ -17,7 +21,11 @@ This guide walks you through setting up Cost Insights to track warehouse compute
 Before setting up Cost Insights, ensure you have:
 
 - An administrator role.
-- A supported data warehouse: Snowflake, BigQuery, Databricks, or Amazon Redshift.
+- A supported data warehouse: 
+    - Snowflake
+    - BigQuery
+    - Databricks
+    - Amazon Redshift <Lifecycle status="preview" />
 
 To set up Cost Insights, follow these steps:
 
@@ -64,6 +72,9 @@ For more information on how to assign permissions to users, refer to [About user
             - `ACCOUNT_USAGE.ACCESS_HISTORY`
             - `ACCOUNT_USAGE.WAREHOUSE_METERING_HISTORY`
             - `ORGANIZATION_USAGE.USAGE_IN_CURRENCY_DAILY` (Optional)
+            - `ACCOUNT_USAGE.QUERY_METERING_HISTORY` (Optional; required for [Adaptive Warehouse](https://docs.snowflake.com/en/user-guide/warehouses-adaptive) cost attribution)
+
+                If `QUERY_METERING_HISTORY` access is not granted, Adaptive Warehouse queries appear as $0 in Cost Insights and a warning is shown in the connection test. For more information, refer to the [Snowflake documentation](https://docs.snowflake.com/en/sql-reference/account-usage/query_metering_history).
         </Expandable>
 
         <Expandable alt_header="BigQuery">
@@ -83,7 +94,7 @@ For more information on how to assign permissions to users, refer to [About user
         For more information, refer to the Databricks documentation on [granting access to system tables](https://docs.databricks.com/aws/en/admin/system-tables/#grant-access-to-system-tables).
         </Expandable>
 
-        <Expandable alt_header="Amazon Redshift">
+        <Expandable alt_header="Amazon Redshift" lifecycle="preview" lifecycle_size="75">
         By default, Redshift users can only view their own queries. dbt must be able to query all users' queries in `SYS_QUERY_HISTORY` to attribute costs across your dbt runs. Grant one of the following permissions to the platform metadata credentials user:
 
         - **`sys:monitor` role** (recommended):

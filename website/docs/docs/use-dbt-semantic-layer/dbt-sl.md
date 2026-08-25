@@ -5,11 +5,15 @@ description: "Learn how the dbt Semantic Layer enables data teams to centrally d
 sidebar_label: "About the dbt Semantic Layer"
 tags: [Semantic Layer]
 hide_table_of_contents: false
-pagination_next: "guides/sl-snowflake-qs"
+pagination_next: "guides/sl-qs"
 pagination_prev: null
+availability:
+  surface: platform
+  access: paid_plan
+  minPlan: starter
 ---
 
-# dbt Semantic Layer <Lifecycle status="self_service,managed,managed_plus" />
+# dbt Semantic Layer
 
 <IntroText>
 
@@ -42,7 +46,7 @@ This page points to various resources available to help you understand, configur
 
 
 Refer to the following resources to get started with the <Constant name="semantic_layer" />:
-- [Quickstart with the <Constant name="semantic_layer" />](/guides/sl-snowflake-qs) &mdash; Build and define metrics, set up the <Constant name="semantic_layer" />, and query them using our first-class integrations.
+- [Quickstart with the <Constant name="semantic_layer" />](/guides/sl-qs): Build and define metrics, set up the <Constant name="semantic_layer" />, and query them in Google Sheets and other tools.
 - [Build your metrics](/docs/build/build-metrics-intro) &mdash; Use MetricFlow in <Constant name="dbt" /> to centrally define your metrics.
 - [<Constant name="semantic_layer" /> FAQs](/docs/use-dbt-semantic-layer/sl-faqs) &mdash; Discover answers to frequently asked questions about the <Constant name="semantic_layer" />, such as availability, integrations, and more.
 

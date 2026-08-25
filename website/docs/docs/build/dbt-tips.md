@@ -3,6 +3,7 @@ title: "dbt tips and tricks"
 description: "Check out any dbt-related tips and tricks to help you work faster and be more productive."
 sidebar_label: "dbt tips and tricks"
 pagination_next: null
+availability: all_users
 ---
 
 Use this page for valuable insights and practical advice to enhance your dbt experience. Whether you're new to dbt or an experienced user, these tips are designed to help you work more efficiently and effectively.

@@ -15,6 +15,7 @@ meta:
   slack_channel_link: 
   platform_name: IBM watsonx.data
   config_page: /reference/resource-configs/watsonx-Spark-config
+availability: local_free
 ---
 
 

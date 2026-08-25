@@ -2,6 +2,10 @@
 title: "About the Discovery API schema"
 sidebar_label: "About the schema"
 id: "discovery-schema-about"
+availability:
+  surface: platform
+  access: paid_plan
+  minPlan: starter
 ---
 
 With the Discovery API, you can query the metadata in dbt to learn more about your dbt deployments and the data they generate. You can analyze the data to make improvements. If you are new to the API, refer to [About the Discovery API](/docs/dbt-apis/discovery-api) for an introduction. You might also find the [use cases and examples](/docs/dbt-apis/discovery-use-cases-and-examples) helpful.

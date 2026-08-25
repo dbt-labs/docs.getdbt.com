@@ -6,11 +6,12 @@ hide_table_of_contents: true
 tags: ["scheduler"]
 pagination_next: "docs/deploy/job-scheduler"
 pagination_prev: null
+availability: platform_login
 ---
 
 <IntroText>
 
-Use <Constant name="dbt" />'s capabilities to seamlessly run a dbt job in production or staging environments. Rather than run dbt commands manually from the command line, you can leverage the [<Constant name="dbt" />'s in-app scheduling](/docs/deploy/job-scheduler) to automate how and when you execute dbt. 
+Use the <Constant name="dbt_platform" />'s capabilities to seamlessly run a dbt job in production or staging environments. Rather than run dbt commands manually from the command line, you can leverage the [<Constant name="dbt_platform" />'s in-app scheduling](/docs/deploy/job-scheduler) to automate how and when you execute dbt. 
 
 </IntroText>
 
@@ -23,7 +24,7 @@ The <Constant name="dbt_platform" /> offers the easiest and most reliable way to
 - Uses [exports](/docs/use-dbt-semantic-layer/exports) to write [saved queries](/docs/build/saved-queries) in your data platform for reliable and fast metric reporting
 - [Visualize](/docs/platform-integrations/downstream-exposures-tableau) and [orchestrate](/docs/platform-integrations/orchestrate-exposures) downstream exposures to understand how models are used in downstream tools and proactively refresh the underlying data sources during scheduled dbt jobs. <Lifecycle status="managed,managed_plus" />
 - Use [<Constant name="dbt" />'s Git repository caching](/docs/platform/account-settings#git-repository-caching) to protect against third-party outages and improve job run reliability. <Lifecycle status="managed,managed_plus" />
-- Use [Hybrid projects](/docs/deploy/hybrid-projects) to upload <Constant name="dbt" /> artifacts into the <Constant name="dbt_platform" /> for central visibility, cross-project referencing, and easier collaboration. <Lifecycle status="managed_plus" /> <Lifecycle status="Preview"/>
+- Use [Hybrid projects](/docs/deploy/hybrid-projects) to upload <Constant name="dbt" /> artifacts into the <Constant name="dbt_platform" /> for central visibility, cross-project referencing, and easier collaboration. <Lifecycle status="managed_plus" /> <Lifecycle status="preview"/>
 
 Before continuing, make sure you understand dbt's approach to [deployment environments](/docs/deploy/deploy-environments). 
 
@@ -125,7 +126,7 @@ Learn how to use <Constant name="dbt" />'s features to help your team ship timel
 </div> <br />
 
 
-## Hybrid projects <Lifecycle status="managed" /> <Lifecycle status="Preview"/>
+## Hybrid projects <Lifecycle status="managed" /> <Lifecycle status="preview"/>
 
 <div className="grid--3-col">
 

@@ -3,7 +3,14 @@ title: "Upgrading to v1.6"
 description: New features and changes in dbt Core v1.6
 id: "upgrading-to-v1.6"
 displayed_sidebar: "docs"
+availability:
+  engine: v1
+  access: free
 ---
+
+import CoreVersionDeprecation from '/snippets/_core-version-deprecation-callout.md';
+
+<CoreVersionDeprecation />
 
 <Constant name="core" /> v1.6 has three significant areas of focus:
 1. Next milestone of [multi-project deployments](https://github.com/dbt-labs/dbt-core/discussions/6725): improvements to contracts, groups/access, versions; and building blocks for cross-project `ref`

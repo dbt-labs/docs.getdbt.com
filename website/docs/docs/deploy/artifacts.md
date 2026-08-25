@@ -2,6 +2,7 @@
 title: "Artifacts"
 id: "artifacts"
 description: "Use artifacts to power your automated docs site and source freshness data." 
+availability: platform_login
 ---
 
 When running dbt jobs, dbt generates and saves *artifacts*. You can use these artifacts, like `manifest.json`, `catalog.json`, and `sources.json` to power different aspects of the <Constant name="dbt_platform" />, namely: [<Constant name="catalog" />](/docs/explore/explore-projects), [dbt Docs](/docs/explore/build-and-view-your-docs#dbt-docs), and [source freshness reporting](/docs/build/sources#source-data-freshness).

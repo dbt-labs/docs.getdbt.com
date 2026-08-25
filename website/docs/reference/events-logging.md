@@ -30,6 +30,18 @@ As dbt runs, it generates events. The most common way to see those events is as 
 
 ## Structured logging
 
+<VersionBlock firstVersion="2.0">
+
+The <Constant name="fusion_engine" /> emits structured run telemetry using [OpenTelemetry](https://opentelemetry.io/) conventions instead of <Constant name="core" />'s JSON event logs. To view it locally, use `--log-format otel` or the options in [<Constant name="fusion" /> telemetry and observability](/reference/telemetry-observability#available-output-formats).
+
+In <Constant name="dbt_platform" />, you can [download OTel logs](/docs/deploy/run-visibility#access-logs) from <Constant name="fusion" /> job runs.
+
+For `--log-format`, `--log-level`, and related CLI configs, refer to [Logs](/reference/global-configs/logs).
+
+</VersionBlock>
+
+<VersionBlock lastVersion="1.99">
+
 _For more details about how the eventing system has been implemented in dbt-core, see the [`events` module README](https://github.com/dbt-labs/dbt-core/blob/HEAD/core/dbt/events/README.md)._
 
 The structure of each event in `dbt-core` is backed by a schema defined using [protocol buffers](https://developers.google.com/protocol-buffers). All schemas are defined in the [`types.proto`](https://github.com/dbt-labs/dbt-core/blob/3bf148c443e6b1da394b62e88a08f1d7f1d8ccaa/core/dbt/events/core_types.proto) file within the `dbt-core` codebase.
@@ -117,7 +129,19 @@ Many events are fired while compiling or running a specific DAG node (model, see
 }
 ```
 
+</VersionBlock>
+
 ## Python interface
+
+<VersionBlock firstVersion="2.0">
+
+The <Constant name="fusion_engine" /> doesn't share <Constant name="core" />'s Python event interface.
+
+We are currently [developing](https://github.com/dbt-labs/dbt-core/issues/13102) a Python API with Rust bindings for programmatic invocations.
+
+</VersionBlock>
+
+<VersionBlock lastVersion="1.99">
 
 Older versions of `dbt-core` made available a full history of events fired during an invocation, in the form of an `EVENT_HISTORY` object.
 
@@ -125,3 +149,5 @@ When [invoking dbt programmatically](programmatic-invocations#registering-callba
 
 
 The Python interface into events is significantly less mature than the structured logging interface. For all standard use cases, we recommend parsing JSON-formatted logs.
+
+</VersionBlock>

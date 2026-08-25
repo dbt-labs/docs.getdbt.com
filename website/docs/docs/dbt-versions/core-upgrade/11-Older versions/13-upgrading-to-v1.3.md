@@ -3,7 +3,14 @@ title: "Upgrading to v1.3"
 description: New features and changes in dbt Core v1.3
 id: "upgrading-to-v1.3"
 displayed_sidebar: "docs"
+availability:
+  engine: v1
+  access: free
 ---
+
+import CoreVersionDeprecation from '/snippets/_core-version-deprecation-callout.md';
+
+<CoreVersionDeprecation />
 
 ### Resources
 

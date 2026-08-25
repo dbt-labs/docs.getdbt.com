@@ -4,9 +4,13 @@ id: "enterprise-permissions"
 description: "Permission sets for Enterprise plans."
 hide_table_of_contents: true #For the sake of the tables on this page
 pagination_next: null
+availability:
+  surface: platform
+  access: paid_plan
+  minPlan: enterprise
 ---
 
-# Enterprise permissions <Lifecycle status="managed,managed_plus" />
+# Enterprise permissions
 
 import Permissions from '/snippets/_enterprise-permissions-table.md';
 import SetUpPages from '/snippets/_available-enterprise-only.md';
@@ -21,6 +25,10 @@ The <Constant name="dbt" /> Enterprise and Enterprise+ plans support a number of
 The following permission sets are available for assignment in all <Constant name="dbt" /> Enterprise-tier accounts. They can be granted to <Constant name="dbt" /> groups and then to users. A <Constant name="dbt" /> group can be associated with more than one permission set. Permission assignments with more access take precedence. 
 
 Access to <Constant name="dbt" /> features and functionality is split into `account-level` and `project-level` permission sets. Account-level permissions are primarily for account administration (inviting users, configuring SSO, and creating groups). Project-level permissions are for the configuration and maintenance of the projects themselves (configuring environments, accessing IDE, and running jobs). Account permission sets may have access to project features, and project permission sets may have access to account features. Check out the [permissions tables](/docs/platform/manage-access/enterprise-permissions#account-permissions) to compare sets and their access. 
+
+:::tip Read-Only users
+If you have users with a Read-Only license, you can [enable granular permissions](/docs/platform/manage-access/about-user-access#enable-granular-permissions-for-read-only-users) for your account. This is a one-time, irreversible setting. After you enable it, Read-Only users keep their project access only if they're in a group with a Read-Only permission set that covers all projects.
+:::
 
 <Expandable alt_header="Account admin">
 
@@ -71,21 +79,21 @@ Notable features:
 - Can access <Constant name="catalog" />.
 
 </Expandable>
-<Expandable alt_header="Analyst read" lifecycle="private_beta">
+<Expandable alt_header="Analyst read">
 
 The Analyst read permission set is a project-level set designed for users who need read-only access to analyze dbt models and project resources without the ability to develop or make changes.
 
 :::info Availability
 
-The OAuth integration that lets read-only users connect to analysis features (such as the [dbt MCP server](/docs/dbt-ai/about-mcp)) is available to use. The **Analyst read** permission set and the read-only permission changes described here are in **private beta**. To enable them, contact your account manager.
+The OAuth integration that lets read-only users connect to analysis features (such as the [dbt MCP server](/docs/dbt-ai/about-mcp)) is available to use.
 
 :::
 
 Notable features:
 - Analyst read is a project-level set.
-- Read-only access to project resources, jobs, runs, and environment configs.
-- Can access <Constant name="catalog" />.
-- Includes `user_credential_write`, so users can view and edit their own user credentials on **Your profile** > **Credentials** without access to the <Constant name="studio_ide" /> or <Constant name="platform_cli" />. Read-only users still need personal user credentials on this page to run warehouse queries in analysis features such as <Constant name="insights" /> and the <Constant name="semantic_layer" />.
+- Read-only access to **Connections** (account and project), **Projects**, repositories (Git repository settings), <Constant name="semantic_layer" /> configuration, **Environments**, custom environment variables, and <Constant name="catalog" /> metadata (Metadata GraphQL API).
+- No read access to jobs or runs.
+- Includes `user_credential_write`, so users can view and edit their own user credentials on **Your profile** > **Credentials** without access to the <Constant name="studio_ide" /> or <Constant name="platform_cli" />. Read-only users still need personal user credentials on this page to run warehouse queries in analysis features such as the <Constant name="semantic_layer" />.
 - No write access and no access to develop in the <Constant name="studio_ide" /> or <Constant name="platform_cli" />.
 
 To access the capabilities of this permission set, you _must_ add users to a group that's assigned the Analyst read permission set. Users won't have access until they're added to the group. For the setup steps, refer to [Set up read-only user access](/docs/platform/manage-access/about-user-access#set-up-read-only-user-access).
@@ -136,7 +144,9 @@ Database admins manage configurations between <Constant name="dbt" /> and the un
 Notable features: 
 - Database admin is a project-level set. 
 - Can set up and maintain environment variables and <Constant name="semantic_layer" /> configs.
-- Write access to data platform configurations within environments (credentials, warehouse, schema per environment).
+- Write access to data platform configurations within environments (credentials, warehouse, schema per environment), including:
+  - Editing [profile](/docs/platform/about-profiles) configs like profile name, deployment credentials, extended attributes, and connection overrides such as `schema`, `role`, `database`, and so on (fields vary by data platform).
+  - Creating new profiles for projects they have access to, including setting which connection the profile is associated with
 - Helpful for scenarios where your data warehouse admins only need access to <Constant name="dbt" /> to configure data platform settings within environments.
 - Read-only access to account-level connections, Git repo, job, and run settings. 
 - Can access <Constant name="catalog" />.

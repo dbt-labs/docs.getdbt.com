@@ -138,9 +138,9 @@ snapshots:
 
 You can configure `static_analysis` for [models](/docs/build/sql-models), [data tests](/docs/build/data-tests), [seeds](/docs/build/seeds), and [snapshots](/docs/build/snapshots).
 
-You can configure if and when the <Constant name="fusion_engine" /> performs static SQL analysis for a model. Configure the `static_analysis` config in your project YAML file (`dbt_project.yml`), model properties YAML file, or in a SQL config block in your model file. Refer to [Principles of static analysis](/docs/fusion/new-concepts?version=1.12#principles-of-static-analysis) for more information on the different modes of static analysis.
+You can configure if and when the <Constant name="fusion_engine" /> performs static SQL analysis for a model. Configure the `static_analysis` config in your project YAML file (`dbt_project.yml`), model properties YAML file, or in a SQL config block in your model file. Refer to [Principles of static analysis](/docs/build/about-static-analysis?version=1.12#principles-of-static-analysis) for more information on the different modes of static analysis.
 
-Setting a model to `strict` does not automatically set `strict` for downstream models; they keep the project default unless you configure them explicitly. For more information and examples, refer to [strict mode inheritance](/docs/fusion/new-concepts#strict-mode-inheritance).
+Setting a model to `strict` does not automatically set `strict` for downstream models; they keep the project default unless you configure them explicitly. For more information and examples, refer to [strict mode inheritance](/docs/build/about-static-analysis#strict-mode-inheritance).
 
 The following values are available for `static_analysis`:
 
@@ -189,18 +189,16 @@ For example, for the lineage Model A → Model B → Model C:
 
 This makes sure that stricter validation requirements don't apply downstream when parent models haven't met those requirements.
 
-Refer to the Fusion concepts page for deeper discussion and visuals: [New concepts](/docs/fusion/new-concepts). For more info on the JSON schema, refer to the [dbt-jsonschema file](https://github.com/dbt-labs/dbt-jsonschema/blob/1e2c1536fbdd421e49c8b65c51de619e3cd313ff/schemas/latest_fusion/dbt_project-latest-fusion.json#L4689).
+Refer to the Fusion concepts page for deeper discussion and visuals: [New concepts](/docs/build/about-static-analysis). For more info on the JSON schema, refer to the [dbt-jsonschema file](https://github.com/dbt-labs/dbt-jsonschema/blob/1e2c1536fbdd421e49c8b65c51de619e3cd313ff/schemas/latest_fusion/dbt_project-latest-fusion.json#L4689).
 
 ## CLI override
 
-You can override model-level configuration for a run using the following CLI flags. For example, to disable static analysis for a run:
+You can override model-level configuration for a run using the [`--static-analysis`](/reference/global-configs/static-analysis-flag) flag. For example, to disable static analysis for a run:
 
 ```bash
 dbt run --static-analysis off # disable static analysis for all models
 dbt run --static-analysis baseline # use baseline analysis for all models
 ```
-
-See [static analysis CLI flag](/reference/global-configs/static-analysis-flag).
 
 ## Examples
 
@@ -385,4 +383,10 @@ snapshots:
 ## Considerations
 
 - For models, disabling static analysis means that features of the VS Code extension that depend on SQL comprehension will be unavailable.
-- For models, static analysis can fail in some cases (for example, dynamic SQL constructs or unrecognized UDFs) and you might need to set `static_analysis: off`. For more examples, refer to [When should I turn static analysis off?](/docs/fusion/new-concepts#when-should-i-turn-static-analysis-off).
+- For models, static analysis can fail in some cases (for example, dynamic SQL constructs or unrecognized UDFs) and you might need to set `static_analysis: off`. For more examples, refer to [When should I turn static analysis off?](/docs/build/about-static-analysis#when-should-i-turn-static-analysis-off).
+
+## Related docs
+
+- [About static analysis](/docs/build/about-static-analysis)
+- [`--static-analysis` flag](/reference/global-configs/static-analysis-flag)
+- [Optimize static analysis for development and deployment](/best-practices/optimize-static-analysis-for-development-and-deployment)

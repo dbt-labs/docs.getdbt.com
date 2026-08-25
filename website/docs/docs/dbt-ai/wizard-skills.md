@@ -4,6 +4,7 @@ id: "wizard-skills"
 description: "Create and use skills to give dbt Wizard CLI reusable, project-specific instructions."
 sidebar_label: "Use skills"
 tags: [AI, Wizard]
+availability: local_all
 ---
 
 # Use skills with <Constant name="wizard" /> CLI <Lifecycle status="beta"/>
@@ -178,7 +179,7 @@ These skills are for migration projects rather than everyday sessions:
 
 | Skill | What it does |
 |-------|-------------|
-| `migrating-dbt-core-to-fusion` | Migrate dbt projects from dbt Core to the dbt Fusion engine |
+| `migrating-dbt-core-to-fusion` | Migrate dbt projects from dbt Core to the <Constant name="fusion_engine" /> |
 | `migrating-dbt-project-across-platforms` | Migrate dbt projects across data platforms |
 </SimpleTable>
 

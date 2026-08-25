@@ -9,6 +9,8 @@ Install <Constant name="wizard"/> as `wizard` on your `PATH` using the curl scri
 curl -fsSL https://public.cdn.getdbt.com/dbt-wizard/install/install-wizard.sh | sh
 ```
 
+This installs <Constant name="wizard"/> to `/usr/local/bin/wizard`, along with `dbt-index`, the [metadata engine](/docs/dbt-ai/wizard-how-it-works#native-metadata-engine) that powers <Constant name="wizard"/>'s project-aware answers. See [Uninstall](/docs/dbt-ai/wizard-cli#uninstall) if you ever need to remove them.
+
 </TabItem>
 <TabItem value="windows" label="Windows">
 
@@ -33,7 +35,7 @@ After running `wizard --version`, you should see something like `dbt-wizard VERS
 <VersionBlock lastVersion="1.99">
 
 :::tip Upgrade for automatic updates
-Upgrade to <Constant name="fusion_engine"/> or <Constant name="core" /> v2.0 or later to run <Constant name="wizard"/> as `wizard` and get automatic updates.
+Upgrade to [v2](/docs/dbt-versions/core-upgrade/upgrading-to-v2) to run <Constant name="wizard"/> as `wizard` and get automatic updates.
 :::
 
 </VersionBlock>
