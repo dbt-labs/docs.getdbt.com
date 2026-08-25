@@ -45,7 +45,7 @@ dbt Copilot usage is metered in actions &mdash; one completed AI request counts 
 
 Enterprise and Enterprise+ limits don't apply if you [bring your own key (BYOK)](/docs/platform/wizard-byok-platform), since your AI provider bills that usage directly. Legacy Enterprise-tier plans enrolled before May 1, 2025 have a 1,000 action limit.
 
-Refer to [dbt AI usage](/docs/platform/billing/dbt-ai-usage) for what counts as an action, what happens when you hit the limit, and how to check your usage.
+Refer to [dbt AI usage](/docs/platform/billing/dbt-ai-usage) for what counts as an action, what happens when you hit the limit, and how to check your usage. 
 
 ## Considerations
 
