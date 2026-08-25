@@ -108,6 +108,11 @@
       "permanent": true
     },
     {
+      "source": "/docs/dbt-ai/wizard-platform-privacy-data",
+      "destination": "/docs/dbt-ai/dbt-ai-faqs#privacy-and-data",
+      "permanent": true
+    },
+    {
       "source": "/docs/dbt-ai/developer-agent",
       "destination": "/docs/dbt-ai/wizard-ide",
       "permanent": true
