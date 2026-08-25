@@ -20,6 +20,8 @@ From September 1st, 2026, there are a couple of changes coming to dbt AI feature
 - AI features will turn on by default for all new and existing accounts. If your organization has requested they remain off through an Enterprise agreement or through support, AI features will remain off. You can also disable AI features at any time after this transition.
 - <Constant name="wizard" /> will move to usage-based billing for [dbt-<Term id="managed"/> AI](#dbt-managed-inference). Usage is metered per token against your consumption pool, and an admin can set a monthly spend limit in <Constant name="dbt_platform"/>.
 
+Detailed product docs for both changes are on the way. Check back closer to September 1st for setup steps and billing details.
+
 :::
 
 ## AI enabled by default
