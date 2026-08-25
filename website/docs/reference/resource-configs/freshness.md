@@ -13,7 +13,7 @@ availability:
 <VersionBlock lastVersion="1.99">
 
 :::note Fusion only
-Freshness model configurations are only available for the dbt Fusion engine. Refer to [Source data freshness](/docs/build/sources#source-data-freshness) when using dbt Core.
+Freshness model configurations are only available for the <Constant name="fusion_engine" />. Refer to [Source data freshness](/docs/build/sources#source-data-freshness) when using dbt Core.
 :::
 
 </VersionBlock>

@@ -13,7 +13,7 @@ is_featured: true
 
 ## New engine, who dis?
 
-It’s unlikely that anyone reading this blog has not heard about the new dbt Fusion engine — it’s been the talk of the data town since last January, culminating in Elias’s legendary live Coalesce 2025 demo of the incredible capabilities that native SQL comprehension in dbt can unlock. If you attended Coalesce, or have upgraded your project to Fusion already, you’ve likely also heard about the changes we’ve made to the authoring layer of dbt (the literal code you write in your project). As part of the major version upgrade, we took the opportunity to simplify + standardize the configuration language of dbt to be built to scale as we enter the next era of analytics engineering.
+It’s unlikely that anyone reading this blog has not heard about the new <Constant name="fusion_engine" /> — it’s been the talk of the data town since last January, culminating in Elias’s legendary live Coalesce 2025 demo of the incredible capabilities that native SQL comprehension in dbt can unlock. If you attended Coalesce, or have upgraded your project to Fusion already, you’ve likely also heard about the changes we’ve made to the authoring layer of dbt (the literal code you write in your project). As part of the major version upgrade, we took the opportunity to simplify + standardize the configuration language of dbt to be built to scale as we enter the next era of analytics engineering.
 
 In particular, we wanted to reevaluate how metrics are defined in the dbt Semantic Layer. We’ve heard from numerous community members over the years that defining metrics was *just plain hard*. In conversation with internal + external users and our newest pals from SDF, we’ve come up with a redesigned YAML spec that is simpler, more integrated to the dbt configuration experience we’ve come to know and love, and built for the future. 
 
@@ -135,7 +135,7 @@ You may have heard some buzz that dbt joined the industry initiative called the 
 
 ### Get started today
 
-This new spec is **live on the Fusion engine today.** If you’ve [migrated](/guides/upgrade-to-fusion?step=1) onto the engine, and are curious about getting started with the dbt Semantic Layer, [check out our docs](/docs/build/latest-metrics-spec) and get started defining your metrics! This new spec will also be released to dbt Core in version 1.12, coming in the near future. dbt platform users on the dbt Core engine will be able to migrate to the new spec as soon as they upgrade to the Latest dbt version!
+This new spec is **live on the <Constant name="fusion_engine" /> today.** If you’ve [migrated](/guides/upgrade-to-fusion?step=1) onto the engine, and are curious about getting started with the dbt Semantic Layer, [check out our docs](/docs/build/latest-metrics-spec) and get started defining your metrics! This new spec will also be released to dbt Core in version 1.12, coming in the near future. dbt platform users on the dbt Core engine will be able to migrate to the new spec as soon as they upgrade to the Latest dbt version!
 
 Additionally, if you’re an existing user of the semantic layer, our [`dbt-autofix` script](https://github.com/dbt-labs/dbt-autofix) now has support for migrating from the legacy metrics implementation to the new one! Simply run `dbt-autofix deprecations --semantic-layer`, locally or in dbt Studio on the platform, and the vast majority of the code will be migrated automatically!
 

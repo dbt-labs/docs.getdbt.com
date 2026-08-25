@@ -53,7 +53,7 @@ To use the extension, you need the following:
 7. Run the VS Code extension [upgrade tool](/docs/upgrade-to-fusion-extension) to check whether your project is ready for <Constant name="fusion" /> and fix any errors or deprecations.
 8. Optional: [Configure your local environment](/docs/configure-dbt-extension) to mirror your <Constant name="dbt_platform" /> environment and [set environment variables](/docs/configure-dbt-extension#configure-environment-variables) required by your project.
 
-:::note The language server ships with the Fusion engine
+:::note The language server ships with the <Constant name="fusion_engine" />
 
 The dbt language server is part of the <Constant name="fusion_engine" /> binary rather than a separate download &mdash; the extension runs it through <Constant name="fusion" />. If you install <Constant name="fusion" /> manually (for example, in an air-gapped environment) instead of letting the extension manage it, use the [version compatibility matrix](/docs/dbt-versions/fusion-version-compatibility) to pick a binary that matches your extension version.
 

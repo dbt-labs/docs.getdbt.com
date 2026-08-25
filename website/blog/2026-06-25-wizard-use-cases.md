@@ -37,7 +37,7 @@ The repo is public, so you can read the prs that Wizard authored:
 
 ## Project background
 
-The project is an economic data platform. The Federal Reserve, Bureau of Labor Statistics, Historical stock, ETF commodity prices, and Treasury data come in through Dagster assets, get transformed by dbt, and feed a set of analysis agents. DuckDB and MotherDuck worked fantastically, but I wanted to test out the developer ergonomics and cost of Iceberg, and the [dbt Fusion engine](/docs/fusion/about-fusion).
+The project is an economic data platform. The Federal Reserve, Bureau of Labor Statistics, Historical stock, ETF commodity prices, and Treasury data come in through Dagster assets, get transformed by dbt, and feed a set of analysis agents. DuckDB and MotherDuck worked fantastically, but I wanted to test out the developer ergonomics and cost of Iceberg, and the [<Constant name="fusion_engine" />](/docs/fusion/about-fusion).
 
 The primary interface that I use to consume this data is via a Claude plugin where I ask questions about market state, where we are in the economic cycle, running backtests, that type of thing. It helps me test new investment and trade ideas and going back and forth with an AI is pretty ergonomic for this type of thing. I had some issues with data quality in the [past](https://noonanlabs.substack.com/p/so-i-looked-at-the-data) so improving accuracy and repeatability is important. I also had Wizard build out the initial [Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) and metrics. 
 

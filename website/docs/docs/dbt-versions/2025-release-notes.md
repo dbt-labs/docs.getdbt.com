@@ -110,14 +110,14 @@ The following features are new or enhanced as part of [dbt's Coalesce analytics 
 
 - **New**: [System for Cross-Domain Identity Management](/docs/platform/manage-access/scim#scim-configuration-for-entra-id) (SCIM) through Microsoft Entra ID is now GA. Also available on legacy Enterprise plans. 
 - **Enhancement:** You can now set the [compilation environment](/docs/explore/access-dbt-insights#set-jinja-environment) to control how Jinja functions are rendered in dbt Insights.
-- **Beta**: The dbt Fusion engine supports the BigQuery adapter in beta.
+- **Beta**: The <Constant name="fusion_engine" /> supports the BigQuery adapter in beta.
 - **New:** You can now view the history of settings changes for [projects](/docs/platform/account-settings), [environments](/docs/dbt-platform-environments), and [jobs](/docs/deploy/deploy-jobs).
 - **New:** Added support for the latest version of BigQuery credentials in Semantic Layer and MetricFlow.
 - **New:**  Snowflake External OAuth is now supported for Semantic Layer queries.
 Snowflake connections that use External OAuth for user credentials can now emit queries for <Constant name="insights" />, <Constant name="platform_cli" />, and <Constant name="studio_ide" /> through the Semantic Layer Gateway. This enables secure, identity-aware access via providers like Okta or Microsoft Entra ID.
 - **New:** You can now [download your managed Git repo](/docs/platform/git/managed-repository#download-managed-repository) from the dbt platform.
 - **New**: The <Constant name="semantic_layer" /> now supports Trino as a data platform. For more details, see [Set up the <Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/setup-sl).
-- **New**: The dbt Fusion engine supports Databricks in beta.
+- **New**: The <Constant name="fusion_engine" /> supports Databricks in beta.
 - **Enhancement**: Group owners can now specify multiple email addresses for model-level notifications, enabling broader team alerts. Previously, only a single email address was supported. Check out the [Configure groups](/docs/deploy/model-notifications#configure-groups) section to learn more.
 - **New**: The Semantic Layer GraphQL API now has a [`List a saved query`](/docs/dbt-apis/sl-graphql#list-a-saved-query) endpoint.
 
@@ -126,12 +126,12 @@ Snowflake connections that use External OAuth for user credentials can now emit 
 ### 2025 dbt Launch Showcase
 The following features are new or enhanced as part of our [dbt Launch Showcase](https://www.getdbt.com/resources/webinars/2025-dbt-cloud-launch-showcase) on May 28th, 2025:
 
-- **New**: The dbt Fusion engine is the brand new dbt engine re-written from the ground up to provide incredible speed, cost-savings tools, and comprehensive SQL language tools. The dbt Fusion engine is now available in beta for Snowflake users.
+- **New**: The <Constant name="fusion_engine" /> is the brand new dbt engine re-written from the ground up to provide incredible speed, cost-savings tools, and comprehensive SQL language tools. The <Constant name="fusion_engine" /> is now available in beta for Snowflake users.
   - Read more [about Fusion](/docs/fusion/about-fusion).
   - Understand what actions you need to take to get your projects Fusion-ready with the [upgrade guide](/docs/dbt-versions/core-upgrade/upgrading-to-v2).
   - Begin testing today with the [quickstart guide](/guides/fusion).
-  - Know [where we're headed with the dbt Fusion engine](https://getdbt.com/blog/where-we-re-headed-with-the-dbt-fusion-engine). 
-- **New**: The dbt VS Code extension is a powerful new tool that brings the speed and productivity of the dbt Fusion engine into your Visual Studio Code editor. This is a free download that will forever change your dbt development workflows. The dbt VS Code extension is now available as beta [alongside Fusion](https://getdbt.com/blog/get-to-know-the-new-dbt-fusion-engine-and-vs-code-extension). Check out the [installation instructions](/docs/install-dbt-extension) and read more [about the features](/docs/about-dbt-extension) to get started enhancing your dbt workflows today! 
+  - Know [where we're headed with the <Constant name="fusion_engine" />](https://getdbt.com/blog/where-we-re-headed-with-the-dbt-fusion-engine). 
+- **New**: The dbt VS Code extension is a powerful new tool that brings the speed and productivity of the <Constant name="fusion_engine" /> into your Visual Studio Code editor. This is a free download that will forever change your dbt development workflows. The dbt VS Code extension is now available as beta [alongside Fusion](https://getdbt.com/blog/get-to-know-the-new-dbt-fusion-engine-and-vs-code-extension). Check out the [installation instructions](/docs/install-dbt-extension) and read more [about the features](/docs/about-dbt-extension) to get started enhancing your dbt workflows today! 
 - **New**: dbt Explorer is now <Constant name="catalog" />! Learn more about the change [here](https://getdbt.com/blog/updated-names-for-dbt-platform-and-features).
 	- dbt's Catalog, global navigation provides a search experience that lets you find dbt resources across all your projects, as well as non-dbt resources in Snowflake.
 	- External metadata ingestion allows you to connect directly to your data warehouse, giving you visibility into tables, views, and other resources that aren't defined in dbt. 
@@ -153,7 +153,7 @@ The following features are new or enhanced as part of our [dbt Launch Showcase](
   * Catalog (previously Explorer)
   * Copilot
   * Cost Management
-  * dbt Fusion engine
+  * <Constant name="fusion_engine" />
   * Insights
   * Mesh
   * Orchestrator

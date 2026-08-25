@@ -10,16 +10,16 @@ date: 2025-05-28
 is_featured: true
 ---
 
-Today, we announced that the dbt Fusion engine is [available in beta](https://getdbt.com/blog/get-to-know-the-new-dbt-fusion-engine-and-vs-code-extension).
+Today, we announced that the <Constant name="fusion_engine" /> is [available in beta](https://getdbt.com/blog/get-to-know-the-new-dbt-fusion-engine-and-vs-code-extension).
 - If Fusion works with your project today, great! You're in for a treat 😄
 - If it's your first day using dbt, welcome! You should start on Fusion — you're in for a treat too.
 
-Today is Launch Day — the first day of a new era: the Age of Fusion. We expect many teams with existing projects will encounter at least one issue that will prevent them from adopting the dbt Fusion engine in production environments. That's ok!
+Today is Launch Day — the first day of a new era: the Age of Fusion. We expect many teams with existing projects will encounter at least one issue that will prevent them from adopting the <Constant name="fusion_engine" /> in production environments. That's ok!
 
 We're moving quickly to unblock more teams, and we are committing that by the time Fusion reaches General Availability:
 
 - We will support Snowflake, Databricks, BigQuery, Redshift — and likely also Athena, Postgres, Spark, and Trino — with the new [Fusion Adapter pattern](/blog/dbt-fusion-engine-components#dbt-fusion-engine-adapters).
-- We will have coverage for (basically) all dbt Core functionality. Some things are impractical to replicate outside of Python, or so seldom-used that we'll be more reactive than proactive. On the other hand, many existing dbt Core behaviours will be improved by the unique capabilities of the dbt Fusion engine, such as speed and SQL comprehension. You'll see us talk about this in relevant GitHub issues, many of which we've linked below.
+- We will have coverage for (basically) all dbt Core functionality. Some things are impractical to replicate outside of Python, or so seldom-used that we'll be more reactive than proactive. On the other hand, many existing dbt Core behaviours will be improved by the unique capabilities of the <Constant name="fusion_engine" />, such as speed and SQL comprehension. You'll see us talk about this in relevant GitHub issues, many of which we've linked below.
 - The source-available `dbt-fusion` repository will contain more total functionality than what is available in dbt Core today. ([Read more about this here](/blog/dbt-fusion-engine-components#ways-to-access).)
 - The developer experience will be even speedier and more intuitive.
 
@@ -43,7 +43,7 @@ You may be able to start using Fusion immediately, may need to make (mostly auto
 
 | State | Description | Workaround | Resolvable by |
 | --- | --- | --- | --- |
-| Unblocked | You can adopt the dbt Fusion engine with no changes to your project |  |  |
+| Unblocked | You can adopt the <Constant name="fusion_engine" /> with no changes to your project |  |  |
 | Soft blocked | Your project parses successfully but relies on not-yet-implemented functionality | Don't invoke unsupported functions or build unsupported models | dbt Labs |
 | Hard blocked by deprecations | Your project contains [functionality deprecated in dbt Core v1.10](https://www.getdbt.com/blog/how-to-get-ready-for-the-new-dbt-engine) | Resolve deprecations with the [dbt-autofix script](https://github.com/dbt-labs/dbt-autofix) or workflow in dbt Studio | You |
 | Hard blocked by known parse issues | Your project contains Python models or uses a not-yet-supported adapter | Temporarily remove Python models  | dbt Labs |
@@ -78,7 +78,7 @@ The short answer: Fusion's new adapter format could be extended to support commu
 
 The longer answer: Fusion now downloads necessary drivers (part of the adapter stack) on-demand. This dynamic linking requires the drivers to be signed by dbt Labs, meaning that we need to have a system in place to review contributions of new drivers and ensure their security.
 
-In the meantime, if you want to migrate a supported project to the dbt Fusion engine but have a dependency on another project using a custom adapter, you can use a [Hybrid project](/docs/deploy/hybrid-setup) to have <Constant name="core" /> execute the unsupported part of the pipeline and then publish artifacts for downstream projects to consume.
+In the meantime, if you want to migrate a supported project to the <Constant name="fusion_engine" /> but have a dependency on another project using a custom adapter, you can use a [Hybrid project](/docs/deploy/hybrid-setup) to have <Constant name="core" /> execute the unsupported part of the pipeline and then publish artifacts for downstream projects to consume.
 
 ## Requirement for GA: Feature coverage
 
@@ -90,13 +90,13 @@ Most of the time, even if your project uses an unimplemented feature, you can st
 
 #### Python models
 
-Python models are the one exception to that "just skip them" advice. The dbt Fusion engine does not currently support parsing Python models, which means it can not extract refs or configs inside the files. Instead of potentially building models out of DAG order, **we've chosen to not support Python models at all for now**. They're coming back though - [check out the issue](https://github.com/dbt-labs/dbt-fusion/issues/3) for details.
+Python models are the one exception to that "just skip them" advice. The <Constant name="fusion_engine" /> does not currently support parsing Python models, which means it can not extract refs or configs inside the files. Instead of potentially building models out of DAG order, **we've chosen to not support Python models at all for now**. They're coming back though - [check out the issue](https://github.com/dbt-labs/dbt-fusion/issues/3) for details.
 
 #### Breadth of Materialization Support
 
 As of today we support the most common materializations: `table`, `view`, `incremental`, `ephemeral` for models — plus the materializations underlying snapshots, seeds, and tests. Other native strategies (like [microbatch incremental models](https://github.com/dbt-labs/dbt-fusion/issues/12), [iceberg tables](https://github.com/dbt-labs/dbt-fusion/issues/28), [materialized views/dynamic tables](https://github.com/dbt-labs/dbt-fusion/issues/27), or [stored test failures](https://github.com/dbt-labs/dbt-fusion/issues/15)) as well as [custom materializations](https://github.com/dbt-labs/dbt-fusion/issues/17) are on the roadmap — check their respective issues to see when.
 
-It's worth reiterating here: Even if you have models that rely on not-yet-supported materialization strategies, you can still try the dbt Fusion engine in the rest of your project. The rest of your DAG will build as normal, but unsupported strategies will raise an error if they are included in scope of `dbt build` or `dbt run`.
+It's worth reiterating here: Even if you have models that rely on not-yet-supported materialization strategies, you can still try the <Constant name="fusion_engine" /> in the rest of your project. The rest of your DAG will build as normal, but unsupported strategies will raise an error if they are included in scope of `dbt build` or `dbt run`.
 
 To exclude those nodes, use a command like
 
@@ -120,7 +120,7 @@ Some of the most relevant ones include:
 
 It's worth noting that *resolution* doesn't necessarily mean identical behaviours. As a couple of examples:
 
-- Many of these behaviours have not been implemented yet because the Fusion engine introduces new capabilities, above all SQL comprehension, that we will leverage to provide a superior experience. A direct port-over of the feature would miss the point.
+- Many of these behaviours have not been implemented yet because the <Constant name="fusion_engine" /> introduces new capabilities, above all SQL comprehension, that we will leverage to provide a superior experience. A direct port-over of the feature would miss the point.
 - Others (like the events and logging system) are tightly coupled to dbt Core's Python roots — they're worth a rethink, and not worth shooting for exact 100% conformance
 
 Here's a point-in-time snapshot of how we expect to tackle the known remaining work. Please refer to the [repository's issues page](https://github.com/dbt-labs/dbt-fusion/issues) as the source of truth:
@@ -133,15 +133,15 @@ Did you know that there are also over a bajillion *undocumented* features of dbt
 
 But we also know there is a long tail of behaviours that will only arise in the wild, and that the easiest way to get to the bottom of them will be to work with users.
 
-This work will be ongoing, alongside feature support. When you start using the Fusion engine, please [open an issue](https://github.com/dbt-labs/dbt-fusion/issues) if you hit an unexpected error — and please include a basic project that reproduces the error, so we can fix it!
+This work will be ongoing, alongside feature support. When you start using the <Constant name="fusion_engine" />, please [open an issue](https://github.com/dbt-labs/dbt-fusion/issues) if you hit an unexpected error — and please include a basic project that reproduces the error, so we can fix it!
 
 ## Requirement for GA: The Source-available `dbt-fusion` codebase is better than `dbt-core` for most use cases
 
-By GA, the [`dbt-fusion` repository](https://github.com/dbt-labs/dbt-fusion) will have the necessary (and fully source-available) components to compile a functional engine for the vast majority of dbt Core projects — and a faster one at that. That means that you will always have the ability to compile, use, and modify this code itself, without requiring access to the dbt Labs provided binary (although we think you'll probably just want to use the binary, for reasons detailed in the [Components of the dbt Fusion engine](/blog/dbt-fusion-engine-components) post).
+By GA, the [`dbt-fusion` repository](https://github.com/dbt-labs/dbt-fusion) will have the necessary (and fully source-available) components to compile a functional engine for the vast majority of dbt Core projects — and a faster one at that. That means that you will always have the ability to compile, use, and modify this code itself, without requiring access to the dbt Labs provided binary (although we think you'll probably just want to use the binary, for reasons detailed in the [Components of the <Constant name="fusion_engine" />](/blog/dbt-fusion-engine-components) post).
 
 So far, we've released the code necessary to self-compile a dbt binary that can run `dbt deps` and `dbt parse`. Throughout the beta period we will continue to prepare more code for use by those who want to view, contribute to, or modify the code for their own purposes, including what's necessary for the rest of the commands to work.
 
-Beyond just the code necessary to produce a complete dbt binary, we've also committed to open-sourcing several of the underlying library components (such as dbt-jinja, dbt-serde-yaml, and the grammars necessary to produce a high-performance SQL parser). Again, check out the [Components of the dbt Fusion engine](/blog/dbt-fusion-engine-components) post for the details.
+Beyond just the code necessary to produce a complete dbt binary, we've also committed to open-sourcing several of the underlying library components (such as dbt-jinja, dbt-serde-yaml, and the grammars necessary to produce a high-performance SQL parser). Again, check out the [Components of the <Constant name="fusion_engine" />](/blog/dbt-fusion-engine-components) post for the details.
 
 Some behaviours that worked in dbt Core won't have an equivalent in this new codebase. The most obvious examples are those which depended on the vagaries of Python: arbitrary callbacks on the EventManager (there's no longer an EventManager on which to register a callback!), the experimental [plugins system](https://github.com/dbt-labs/dbt-core/blob/1.latest/core/dbt/plugins/manager.py) (dynamic loading of binaries works completely differently in Rust and would require signing), or the dbt templater in SQLFluff (which hooked into dbt Core beyond the exposed interfaces - although we plan to build a [fast linter ourselves](https://github.com/dbt-labs/dbt-fusion/issues/11)).
 
@@ -149,7 +149,7 @@ Some behaviours that worked in dbt Core won't have an equivalent in this new cod
 
 ### More speed
 
-Invocations powered by the dbt Fusion engine are already significantly faster than the same invocation in dbt Core, but there's more to do here! We know that there is still a lot of low-hanging fruit, and by GA we expect to see tasks like full project compilation complete at least twice as fast for many projects.
+Invocations powered by the <Constant name="fusion_engine" /> are already significantly faster than the same invocation in dbt Core, but there's more to do here! We know that there is still a lot of low-hanging fruit, and by GA we expect to see tasks like full project compilation complete at least twice as fast for many projects.
 
 If you do some benchmarking, we're particularly interested in any situations where Fusion "pauses" on a single file for a couple of seconds. Some other things to keep in mind:
 

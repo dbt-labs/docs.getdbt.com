@@ -48,7 +48,7 @@ Configure your project to use a different dbt version than what's configured in 
 5. (Optional) Verify that <Constant name="dbt" /> will use your override setting to build the project by invoking a `dbt build` command in the <Constant name="studio_ide" />'s command bar. Expand the **System Logs** section and find the output's first line. It should begin with `Running with dbt=` and list the version <Constant name="dbt" /> is using. <br /><br />
    For users on Release tracks, the output will display `Running dbt...` instead of a specific version, reflecting the flexibility and continuous automatic updates provided by the release track functionality.
 
-## dbt Fusion engine 
+## <Constant name="fusion_engine" /> 
 
 dbt Labs has introduced the new [<Constant name="fusion_engine" />](/docs/fusion/about-fusion), a ground-up rebuild of dbt. This is currently generally available for Snowflake projects and in preview for other supported adapters on the <Constant name="dbt_platform" />. Eligible customers can update environments to <Constant name="fusion" /> using the same workflows as v1.x, but remember:
 - If you don't see the `Fusion Stable` release track as an option, you should check with your dbt Labs account team about eligibility.

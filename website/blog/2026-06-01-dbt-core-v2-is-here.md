@@ -12,7 +12,7 @@ date: 2026-06-01
 is_featured: true
 ---
 
-Today, we published the **first alpha release of dbt Core version 2.0**, raising the baseline for what dbt users can expect from their transformation tool. As always, dbt Core's code is completely open source under the Apache 2.0 license. What makes this release significant is that dbt Core 2.0 is now built on the same foundations as the [dbt Fusion engine](https://www.getdbt.com/product/fusion) – we've open-sourced a lot of Fusion code for the first time.
+Today, we published the **first alpha release of dbt Core version 2.0**, raising the baseline for what dbt users can expect from their transformation tool. As always, dbt Core's code is completely open source under the Apache 2.0 license. What makes this release significant is that dbt Core 2.0 is now built on the same foundations as the [<Constant name="fusion_engine" />](https://www.getdbt.com/product/fusion) – we've open-sourced a lot of Fusion code for the first time.
 
 The launch of dbt Core 2.0 comes with key feature developments:
 
@@ -25,7 +25,7 @@ The launch of dbt Core 2.0 comes with key feature developments:
 
 <!-- truncate -->
 
-If you've been an early adopter of the dbt Fusion engine, these features might sound familiar. That's because the two-engine era is drawing to a close: from now on, dbt Core and Fusion will be built on a shared foundation. The subset of code (we're calling it the runtime) which we [previously committed to releasing publicly under the ELv2 license](/blog/dbt-fusion-engine-components#source-available-dbt-fusion-engine) is now under the Apache 2.0 license as dbt Core. Fusion will continue to extend that baseline by adding advanced capabilities - some are totally free to use, and other premium features are unlocked with a free login or payment method.
+If you've been an early adopter of the <Constant name="fusion_engine" />, these features might sound familiar. That's because the two-engine era is drawing to a close: from now on, dbt Core and Fusion will be built on a shared foundation. The subset of code (we're calling it the runtime) which we [previously committed to releasing publicly under the ELv2 license](/blog/dbt-fusion-engine-components#source-available-dbt-fusion-engine) is now under the Apache 2.0 license as dbt Core. Fusion will continue to extend that baseline by adding advanced capabilities - some are totally free to use, and other premium features are unlocked with a free login or payment method.
 
 We think that this is the best way to continue to meet our commitments as stewards of the dbt framework, the best way to enable [our _One dbt_ vision](https://roundup.getdbt.com/p/one-dbt), and the best way to maintain dbt's position as the standard for data transformation in the agentic era.
 
@@ -33,7 +33,7 @@ If you want to learn more about the new capabilities in dbt Core and where we're
 
 ## Putting all our efforts behind a single engine
 
-When deciding how to release the dbt Fusion engine last year, we were faced with a set of strict requirements. Tristan [described them in detail](https://www.getdbt.com/blog/new-code-new-license-understanding-the-new-license-for-the-dbt-fusion-engine) at the time, and you'll see them in the table below. The result was that we chose to build the new Fusion engine separately from Core, and under a different license (ELv2).
+When deciding how to release the <Constant name="fusion_engine" /> last year, we were faced with a set of strict requirements. Tristan [described them in detail](https://www.getdbt.com/blog/new-code-new-license-understanding-the-new-license-for-the-dbt-fusion-engine) at the time, and you'll see them in the table below. The result was that we chose to build the new <Constant name="fusion_engine" /> separately from Core, and under a different license (ELv2).
 
 This worked well enough during Fusion's development period: new language features like Iceberg catalog support, `--sample`, and UDF definitions got equivalent OSS implementations in dbt Core v1.10 and v1.11.
 
@@ -45,7 +45,7 @@ Revisit the same list of goals with one extra requirement – no bifurcated engi
 
 ## Better defining dbt Core's role in the ecosystem
 
-As we introduced the different variants of the dbt Fusion engine last year, we [explained](/blog/dbt-fusion-engine-components#ways-to-access) that to distribute a Python program you have to distribute its underlying source code.
+As we introduced the different variants of the <Constant name="fusion_engine" /> last year, we [explained](/blog/dbt-fusion-engine-components#ways-to-access) that to distribute a Python program you have to distribute its underlying source code.
 
 Historically, this has caused dbt Core to also be conflated with "_the one you can use for free_," or "_the one you can use on your laptop_," because the only way to provide a free, locally-installable version of dbt was for its Python code to be 100% open source. This meant the majority of dbt users missed out on useful capabilities whose implementation details we couldn't share.
 
