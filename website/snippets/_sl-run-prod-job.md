@@ -1,10 +1,10 @@
 This section explains how you can perform a job run in your deployment environment in <Constant name="dbt" /> to materialize and deploy your metrics. Currently, the deployment environment is only supported.
 
-1. Once you’ve [defined your semantic models and metrics](/guides/sl-snowflake-qs?step=10), commit and merge your metric changes in your dbt project. 
+1. Once you’ve [defined your semantic models and metrics](/guides/sl-qs?step=6), commit and merge your metric changes in your dbt project. 
 2. In <Constant name="dbt" />, create a new [deployment environment](/docs/deploy/deploy-environments#create-a-deployment-environment) or use an existing environment on dbt 1.6 or higher.
-    * Note &mdash; Deployment environment is currently supported (_development experience coming soon_)
+    * Note: Deployment environment is currently supported (_development experience coming soon_)
 3. To create a new environment, navigate to **Orchestration** in the navigation menu, select **Environments**, and then select **Create new environment**.
-4. Fill in your deployment credentials with your Snowflake username and password. You can name the schema anything you want. Click **Save** to create your new production environment.
+4. Fill in your deployment credentials with the username and password for your data platform. You can name the schema anything you want. Click **Save** to create your new production environment.
 5. [Create a new deploy job](/docs/deploy/deploy-jobs#create-and-schedule-jobs) that runs in the environment you just created. Go back to the **Orchestration** menu, select **Jobs**, select **Create job**, and click **Deploy job**.
 6. Set the job to run a `dbt parse` job to parse your projects and generate a [`semantic_manifest.json` artifact](/reference/artifacts/sl-manifest) file<VersionBlock firstVersion="1.12"> and an [`osi_document.json` artifact](/reference/artifacts/sl-manifest#apache-ossie-document)</VersionBlock>. Although running `dbt build` isn't required, you can choose to do so if needed.
 
