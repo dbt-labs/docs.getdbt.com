@@ -8,7 +8,8 @@ id: anchors
 
 Anchors are a [YAML feature](https://yaml.org/spec/1.2.2/#692-node-anchors) that let you reuse configuration blocks inside a single YAML file. In dbt Core v1.10, the `anchors:` key was introduced to enclose configuration fragments that aren't valid on their own or that only exist as template data. Using the `anchors:` key ensures these fragments won't be rejected during file validation.
 
-In dbt Core v1.10 and higher, invalid anchors trigger a warning. In the <Constant name="fusion_engine" />, these invalid anchors will result in errors when Fusion leaves beta.
+
+In dbt Core v1.10 and higher, invalid anchors trigger a warning. In the <Constant name="fusion_engine" />, these invalid anchors will result in errors when <Constant name="fusion" /> leaves beta.
 
 :::note
 You can define anchors in dbt Core v1.9 and earlier, but there is no dedicated location for anchors in these versions. If you need to define a standalone anchor, you can put it at the top level of your YAML file.
