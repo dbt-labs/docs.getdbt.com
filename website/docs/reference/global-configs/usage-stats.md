@@ -39,7 +39,7 @@ You can also set the `DO_NOT_TRACK` environment variable. For more information, 
 
 <VersionBlock firstVersion="2.0">
 
-## dbt Fusion engine telemetry
+## <Constant name="fusion_engine" /> telemetry
 
 <Constant name="fusion" /> has telemetry enabled by default. For full transparency, you can see the event definitions in [`event_functions.rs`](https://github.com/dbt-labs/dbt-core/blob/main/crates/vortex-events/src/event_functions.rs).
 

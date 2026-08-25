@@ -36,7 +36,7 @@ Before you can connect dbt to the Salesforce Data 360, you need the following:
 - [A private key and the `server.key` file](https://developer.salesforce.com/docs/atlas.en-us.252.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_auth_key_and_cert.htm)
 - User with `Data Cloud Architect` permission
 
-## Configure Fusion
+## Configure <Constant name="fusion" />
 
 To connect dbt to Salesforce Data 360, set up your `profiles.yml`. Refer to the following configuration:
 
