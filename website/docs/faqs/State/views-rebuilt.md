@@ -11,8 +11,34 @@ dbt State prioritizes safety and precision; if it can't guarantee skipping a nod
 
 The following patterns commonly cause unexpected rebuilds:
 
+- [Views with `select *`](#views-with-select)
 - [Non-deterministic Jinja templating](#non-deterministic-jinja-templating)
 - [Models with external sources in BigQuery](#models-with-external-sources-in-bigquery)
+
+## Views with `select *` {#views-with-select}
+
+dbt State reuses a model when its compiled SQL matches the stored hash. When a view uses `select *` directly on a `ref()` or `source()`, dbt can't determine the column list at parse time &mdash; the upstream model or source table might have gained or lost columns since the last run. To be safe, dbt State forces a rebuild.
+
+For example, this view will be rebuilt even if `stg_orders` hasn't changed because dbt can't know at parse time whether `stg_orders` has the same columns as before:
+
+```sql
+-- stg_orders_view.sql (materialized: view)
+select * from {{ ref('stg_orders') }}
+```
+
+However, if you use `select *` on a CTE, dbt can resolve the columns from the CTE definition and safely reuse the view:
+
+```sql
+with renamed as (
+    select order_id, customer_id, order_total from {{ ref('stg_orders') }}
+)
+
+select * from renamed
+```
+
+:::tip
+To avoid forced rebuilds, use explicit column names when selecting directly from a `ref()` or `source()`. You can also exclude views from execution using `--exclude config.materialized:view`.
+:::
 
 ## Non-deterministic Jinja templating
 
