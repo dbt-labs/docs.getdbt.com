@@ -624,7 +624,7 @@ const sidebarSettings = {
             {
               type: "link",
               label: "Quickstart with the dbt Semantic Layer",
-              href: `/guides/sl-snowflake-qs`,
+              href: `/guides/sl-qs`,
             },
             "reference/semantic-layer-reference",
             {
@@ -948,7 +948,7 @@ const sidebarSettings = {
         {
           type: "link",
           label: "Quickstart with the dbt Semantic Layer",
-          href: `/guides/sl-snowflake-qs`,
+          href: `/guides/sl-qs`,
         },
         {
           type: "category",
