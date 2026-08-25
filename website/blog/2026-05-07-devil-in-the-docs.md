@@ -35,7 +35,7 @@ That is a little similar to the relationship between the [dbt MCP server](/docs/
   - We have an `AGENTS.md` file that lists how to access the docs via web requests.
   - The source was solid and accessible.
 - The dbt MCP server is a powerful feature that dbt users interact with dbt through AI tools. It also had a connection to the docs via web searching and training data.
-  - It has eight toolset categories: CLI, Semantic Layer, Discovery, Admin API, SQL, Codegen, <Constant name="fusion" />, Server Metadata.
+  - It has eight toolset categories: CLI, Semantic Layer, Discovery, Admin API, SQL, Codegen, Fusion, Server Metadata.
   - But none of them connected directly to the live docs _by default_. It didn't have our docs as its main source.
 
 So when an agent was asked *"how do I configure incremental models?"*, it could absolutely in theory reach the docs with its own browsing tools, but the experience was inconsistent. Sometimes it fetched a page via web search, sometimes it leaned on training data, or pieced an answer together; and when it _did_ fetch, it usually pulled rendered HTML rather than the Markdown source &mdash; heavier, noisier, and less token-efficient. There was no direct, native path inside the server that pointed agents at the canonical docs in their cleanest form by default.
@@ -55,7 +55,7 @@ So we chatted about this and toyed with the idea of either:
 
 But that still left us with the question of how to get the docs closer to users in a way that is easy to use and maintain.
 
-We ran some SQL queries in our internal analytics project in dbt platform using <Constant name="fusion" /> in the [dbt VS Code extension](/docs/install-dbt-extension) and also used [Insights](/docs/explore/dbt-insights) for exploratory analysis.
+We ran some SQL queries in our internal analytics project in dbt platform using Fusion in the [dbt VS Code extension](/docs/install-dbt-extension) and also used [Insights](/docs/explore/dbt-insights) for exploratory analysis.
 
 We saw that the dbt MCP server had these benefits:
 - Great adoption already, with a ton of infrastructure in place. Adding the docs tools would be a natural extension of that, bringing docs directly to users where they already work.

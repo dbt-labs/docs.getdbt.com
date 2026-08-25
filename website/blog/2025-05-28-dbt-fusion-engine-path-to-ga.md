@@ -11,12 +11,12 @@ is_featured: true
 ---
 
 Today, we announced that the dbt Fusion engine is [available in beta](https://getdbt.com/blog/get-to-know-the-new-dbt-fusion-engine-and-vs-code-extension).
-- If <Constant name="fusion" /> works with your project today, great! You're in for a treat 😄
-- If it's your first day using dbt, welcome! You should start on <Constant name="fusion" /> — you're in for a treat too.
+- If Fusion works with your project today, great! You're in for a treat 😄
+- If it's your first day using dbt, welcome! You should start on Fusion — you're in for a treat too.
 
-Today is Launch Day — the first day of a new era: the Age of <Constant name="fusion" />. We expect many teams with existing projects will encounter at least one issue that will prevent them from adopting the dbt Fusion engine in production environments. That's ok!
+Today is Launch Day — the first day of a new era: the Age of Fusion. We expect many teams with existing projects will encounter at least one issue that will prevent them from adopting the dbt Fusion engine in production environments. That's ok!
 
-We're moving quickly to unblock more teams, and we are committing that by the time <Constant name="fusion" /> reaches General Availability:
+We're moving quickly to unblock more teams, and we are committing that by the time Fusion reaches General Availability:
 
 - We will support Snowflake, Databricks, BigQuery, Redshift — and likely also Athena, Postgres, Spark, and Trino — with the new [Fusion Adapter pattern](/blog/dbt-fusion-engine-components#dbt-fusion-engine-adapters).
 - We will have coverage for (basically) all dbt Core functionality. Some things are impractical to replicate outside of Python, or so seldom-used that we'll be more reactive than proactive. On the other hand, many existing dbt Core behaviours will be improved by the unique capabilities of the dbt Fusion engine, such as speed and SQL comprehension. You'll see us talk about this in relevant GitHub issues, many of which we've linked below.
@@ -29,17 +29,17 @@ These statements aren't true yet — but you can see where we're headed. That's
 
 **We will be adding functionality rapidly over the coming weeks.** In particular, keep an eye out for Databricks, BigQuery and Redshift support (in that order) in the coming weeks. 
 
-The most popular dbt Labs packages (`dbt_utils`, `audit_helper`, `dbt_external_tables`, `dbt_project_evaluator`) are already compatible with <Constant name="fusion" />. Some external packages may not work out of the box, but we plan to work with package maintainers to get them ready & working on <Constant name="fusion" />. 
+The most popular dbt Labs packages (`dbt_utils`, `audit_helper`, `dbt_external_tables`, `dbt_project_evaluator`) are already compatible with Fusion. Some external packages may not work out of the box, but we plan to work with package maintainers to get them ready & working on Fusion. 
 
-So when is <Constant name="fusion" /> going to be GA? We're targeting later this year for full feature parity, but we're also hoping to approach it asymptotically — meaning that many existing dbt users ca start adopting <Constant name="fusion" /> much sooner.
+So when is Fusion going to be GA? We're targeting later this year for full feature parity, but we're also hoping to approach it asymptotically — meaning that many existing dbt users ca start adopting Fusion much sooner.
 
-During the beta period, you may run into unanticipated (and anticipated) issues when trying to run your project on <Constant name="fusion" />. Please share any issues in the [dbt-fusion](https://github.com/dbt-labs/dbt-fusion) repository or on Slack in [#dbt-fusion-engine](https://getdbt.slack.com/archives/C088YCAB6GH), and we'll do our best to to unblock you.
+During the beta period, you may run into unanticipated (and anticipated) issues when trying to run your project on Fusion. Please share any issues in the [dbt-fusion](https://github.com/dbt-labs/dbt-fusion) repository or on Slack in [#dbt-fusion-engine](https://getdbt.slack.com/archives/C088YCAB6GH), and we'll do our best to to unblock you.
 
-## Can I use <Constant name="fusion" /> for my dbt project today?
+## Can I use Fusion for my dbt project today?
 
 Maybe! The biggest first question: "Is your adapter supported yet?" (If not, sit tight, we're working fast!) If so, then it depends on the exact matrix of features you currently use in your dbt project.
 
-You may be able to start using <Constant name="fusion" /> immediately, may need to make (mostly automatic) modifications to your project to resolve deprecations, or your project may not *yet* be parsable at all:
+You may be able to start using Fusion immediately, may need to make (mostly automatic) modifications to your project to resolve deprecations, or your project may not *yet* be parsable at all:
 
 | State | Description | Workaround | Resolvable by |
 | --- | --- | --- | --- |
@@ -74,9 +74,9 @@ We're aiming to support these adapters later in the year, prior to GA. Check eac
 
 ### Custom adapters
 
-The short answer: <Constant name="fusion" />'s new adapter format could be extended to support community development of third-party adapters, but it's not on the near-term roadmap before GA ([tracking issue](https://github.com/dbt-labs/dbt-fusion/issues/46)).
+The short answer: Fusion's new adapter format could be extended to support community development of third-party adapters, but it's not on the near-term roadmap before GA ([tracking issue](https://github.com/dbt-labs/dbt-fusion/issues/46)).
 
-The longer answer: <Constant name="fusion" /> now downloads necessary drivers (part of the adapter stack) on-demand. This dynamic linking requires the drivers to be signed by dbt Labs, meaning that we need to have a system in place to review contributions of new drivers and ensure their security.
+The longer answer: Fusion now downloads necessary drivers (part of the adapter stack) on-demand. This dynamic linking requires the drivers to be signed by dbt Labs, meaning that we need to have a system in place to review contributions of new drivers and ensure their security.
 
 In the meantime, if you want to migrate a supported project to the dbt Fusion engine but have a dependency on another project using a custom adapter, you can use a [Hybrid project](/docs/deploy/hybrid-setup) to have <Constant name="core" /> execute the unsupported part of the pipeline and then publish artifacts for downstream projects to consume.
 
@@ -84,7 +84,7 @@ In the meantime, if you want to migrate a supported project to the dbt Fusion en
 
 Feature coverage includes ensuring documented features work as expected, as well as (where possible) supporting undocumented "accidental" features.
 
-Most of the time, even if your project uses an unimplemented feature, you can still take <Constant name="fusion" /> for a spin. This is because as long as your project parses, you can just skip unsupported models.
+Most of the time, even if your project uses an unimplemented feature, you can still take Fusion for a spin. This is because as long as your project parses, you can just skip unsupported models.
 
 ### Known unimplemented features
 
@@ -107,7 +107,7 @@ To exclude those nodes, use a command like
 
 Did you know that there are over 400 documented features of dbt? [Doug](https://github.com/dbeatty10) does, because he had to put them all into a Notion database.
 
-<Constant name="fusion" /> already supports two-thirds of them, and we have a plan for the rest. You can follow along at [the `dbt-fusion` repo](https://github.com/dbt-labs/dbt-fusion/issues), where there are issues to track the outstanding behaviours. There's also a rough set of milestones attached, but those are subject to reordering as more teams start using <Constant name="fusion" /> and giving feedback.
+Fusion already supports two-thirds of them, and we have a plan for the rest. You can follow along at [the `dbt-fusion` repo](https://github.com/dbt-labs/dbt-fusion/issues), where there are issues to track the outstanding behaviours. There's also a rough set of milestones attached, but those are subject to reordering as more teams start using Fusion and giving feedback.
 
 Some of the most relevant ones include:
 
@@ -151,10 +151,10 @@ Some behaviours that worked in dbt Core won't have an equivalent in this new cod
 
 Invocations powered by the dbt Fusion engine are already significantly faster than the same invocation in dbt Core, but there's more to do here! We know that there is still a lot of low-hanging fruit, and by GA we expect to see tasks like full project compilation complete at least twice as fast for many projects.
 
-If you do some benchmarking, we're particularly interested in any situations where <Constant name="fusion" /> "pauses" on a single file for a couple of seconds. Some other things to keep in mind:
+If you do some benchmarking, we're particularly interested in any situations where Fusion "pauses" on a single file for a couple of seconds. Some other things to keep in mind:
 
 - Writing very large manifests is pretty slow, no matter what. Try including `--no-write-json`. We're wondering whether it makes sense to have a trimmed-down manifest by default. What do you think?
-- The `dbt compile` command involves more work in <Constant name="fusion" /> than in dbt Core, because it's doing full SQL validation. To compare *just* the SQL rendering step (the equivalent of dbt Core's `compile` command), you can try [turning off static analysis](/docs/build/about-static-analysis) with the CLI flag `--static-analysis off`.
+- The `dbt compile` command involves more work in Fusion than in dbt Core, because it's doing full SQL validation. To compare *just* the SQL rendering step (the equivalent of dbt Core's `compile` command), you can try [turning off static analysis](/docs/build/about-static-analysis) with the CLI flag `--static-analysis off`.
 
 As a sign of what's possible, take note of the incremental recompilation used to provide real-time feedback in the VS Code extension.
 
@@ -168,11 +168,11 @@ What feels *off* when you're using dbt Fusion? Tell us all about it — if you'v
 
 If you need to kick an idea around before opening an issue, we'll also be actively checking in on #dbt-fusion-engine (for high-level discussions) and #dbt-fusion-engine-migration (to get into the weeds of a specific bug) on Slack.
 
-From now until <Constant name="fusion" /> is GA, we will be prioritizing parity with existing framework features, *not adding new ones.* Once we hit GA, we'll think about whether to transfer existing feature requests from the `dbt-core` repo to `dbt-fusion` — or maybe a third place? — stay tuned.
+From now until Fusion is GA, we will be prioritizing parity with existing framework features, *not adding new ones.* Once we hit GA, we'll think about whether to transfer existing feature requests from the `dbt-core` repo to `dbt-fusion` — or maybe a third place? — stay tuned.
 
 ## Following along
 
-The path to GA for <Constant name="fusion" /> is a Community-wide effort. We want to hear from you, work with you, get your ideas and feedback. Whether it is sharing a bug report, an idea for a feature or more high level thoughts and feedback, we're looking to engage with you.
+The path to GA for Fusion is a Community-wide effort. We want to hear from you, work with you, get your ideas and feedback. Whether it is sharing a bug report, an idea for a feature or more high level thoughts and feedback, we're looking to engage with you.
 
 - In Slack, we're on [#dbt-fusion-engine](https://getdbt.slack.com/archives/C088YCAB6GH) and #dbt-fusion-engine-migration
 - The GitHub repo is [https://github.com/dbt-labs/dbt-fusion](https://github.com/dbt-labs/dbt-fusion)

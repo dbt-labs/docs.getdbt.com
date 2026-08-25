@@ -12,7 +12,7 @@ is_featured: true
 
 Today, we announced the [dbt Fusion engine](/blog/dbt-fusion-engine).
 
-<Constant name="fusion" /> isn't just one thing — it's a set of interconnected components working together to power the next generation of analytics engineering.
+Fusion isn't just one thing — it's a set of interconnected components working together to power the next generation of analytics engineering.
 
 This post maps out each piece of the Fusion architecture, explains how they fit together, and clarifies what's available to you whether you're compiling from source, using our pre-built binaries, or developing within a dbt Fusion powered product experience.
 
@@ -20,11 +20,11 @@ From the Rust engine to the VS Code extension, through to new Arrow-based adapte
 
 <!--truncate-->
 
-*This post describes the state of the world as it will be when <Constant name="fusion" /> reaches General Availability. For a look at the path to GA, read [this post](/blog/dbt-fusion-engine-path-to-ga).*
+*This post describes the state of the world as it will be when Fusion reaches General Availability. For a look at the path to GA, read [this post](/blog/dbt-fusion-engine-path-to-ga).*
 
 ## There are a number of different ways to access the dbt Fusion engine {#ways-to-access}
 
-A big change between the dbt Fusion engine and the dbt Core engine is their language. Core is Python; <Constant name="fusion" /> is Rust. This is meaningful not just because of the performance benefits, but because it creates a new way for us to distribute functionality to the community.
+A big change between the dbt Fusion engine and the dbt Core engine is their language. Core is Python; Fusion is Rust. This is meaningful not just because of the performance benefits, but because it creates a new way for us to distribute functionality to the community.
 
 To distribute a Python program, you also have to distribute its underlying source code. But Rust is a compiled language, meaning we can share either the source code or just the compiled binaries derived from that source code.
 
@@ -66,7 +66,7 @@ License: ELv2
 
 When you download the precompiled binary created by dbt Labs, it contains:
 
-- **All of the functionality in the Source Available <Constant name="fusion" />**
+- **All of the functionality in the Source Available Fusion**
 
 - Additional capabilities which are derived from proprietary code (such as the [Level 2 SQL Comprehension](/blog/the-levels-of-sql-comprehension#level-2-compiling) required to compile and type-check your SQL).
 
@@ -75,7 +75,7 @@ As long as you comply with the three restrictions in ELv2,
 - ✅ You can adopt the binary into your data workflows without dbt Labs' involvement
 - ❌ But you cannot see or modify the code itself
 
-**The vast majority of existing dbt Core users that adopt the freely distributed components of <Constant name="fusion" /> should use the binary to do so, rather than compiling it from source code.** The binary has the same permissions but more capabilities (and it saves you from having to compile it yourself). You can use it internally at your company for free, even if you are not a dbt Labs customer.
+**The vast majority of existing dbt Core users that adopt the freely distributed components of Fusion should use the binary to do so, rather than compiling it from source code.** The binary has the same permissions but more capabilities (and it saves you from having to compile it yourself). You can use it internally at your company for free, even if you are not a dbt Labs customer.
 
 ### Using the dbt Fusion engine with a commercial agreement
 
@@ -101,7 +101,7 @@ How to access: [Install on the VS Code marketplace](https://marketplace.visualst
 
 License: Proprietary
 
-The dbt VS Code extension is one of the first product experiences built on top of <Constant name="fusion" />. It is not *part* of <Constant name="fusion" />, it is *powered* by <Constant name="fusion" /> and is part of the wider dbt platform's offerings (with a generous free tier). Specifically, the VS Code extension interacts with another brand-new binary, the dbt [Language Server](https://microsoft.github.io/language-server-protocol/).
+The dbt VS Code extension is one of the first product experiences built on top of Fusion. It is not *part* of Fusion, it is *powered* by Fusion and is part of the wider dbt platform's offerings (with a generous free tier). Specifically, the VS Code extension interacts with another brand-new binary, the dbt [Language Server](https://microsoft.github.io/language-server-protocol/).
 
 The Language Server is built on top of a subset of the technology powering the extended Fusion engine: as an example, it can quickly compile SQL and interact with databases, but it defers to the dbt binary when it's time to actually run a model.
 
@@ -117,11 +117,11 @@ License: Apache 2.0
 
 When you think of dbt, you're probably thinking of a combination of the Engine (described above) and the Authoring Layer.
 
-The Authoring Layer is made up of everything necessary to define the *what* of a dbt project: things like the **YAML specs, Artifact specs, CLI commands and flags**, and **macro signatures**. As the user interface to dbt, the authoring layer is standard between Core and <Constant name="fusion" />, although the Fusion engine does not include support for various behaviours and functions deprecated in earlier releases of dbt Core.
+The Authoring Layer is made up of everything necessary to define the *what* of a dbt project: things like the **YAML specs, Artifact specs, CLI commands and flags**, and **macro signatures**. As the user interface to dbt, the authoring layer is standard between Core and Fusion, although the Fusion engine does not include support for various behaviours and functions deprecated in earlier releases of dbt Core.
 
 For the first time, we're releasing a series of definitive JSON schemas, _backed by the code in dbt Core and Fusion_, that encapsulate the acceptable content of dbt's various YAML files. These are Apache 2.0-licensed and will be particularly helpful for other tools integrating with dbt projects.
 
-This joins the existing JSON schemas defining the shape of dbt's output artifacts (e.g. `manifest.json`). As we stabilize <Constant name="fusion" />'s metadata output (logging and artifacts) on the path to GA, we will update the published schemas.
+This joins the existing JSON schemas defining the shape of dbt's output artifacts (e.g. `manifest.json`). As we stabilize Fusion's metadata output (logging and artifacts) on the path to GA, we will update the published schemas.
 
 ### dbt Fusion engine adapters
 
@@ -136,7 +136,7 @@ Adapters are responsible for two key tasks:
 - Knowing how to create the appropriate SQL commands (via macros and materializations) for a data platform
 - Connecting to that target data platform and sending it SQL commands
 
-Much like <Constant name="fusion" /> is the next generation engine for dbt, we also needed next-generation *adapters* for dbt. These adapters are written in Rust and built on the Apache Arrow standard.
+Much like Fusion is the next generation engine for dbt, we also needed next-generation *adapters* for dbt. These adapters are written in Rust and built on the Apache Arrow standard.
 
 The templating of SQL commands largely carries over from macros in the dbt Core adapters. Database connectivity is another story, the dbt Fusion engine cannot use the Python classes present in each adapter, for reasons both practical and performance-related.
 
@@ -162,7 +162,7 @@ Available at: (repo to come, in the meantime you can discuss this in #dbt-fusion
 
 License: Apache 2.0 (later this year)
 
-[ANTLR](https://www.antlr.org/) grammars are the formal language specifications that let <Constant name="fusion" /> [parse](/blog/sql-comprehension-technologies) every SQL statement across multiple dialects. Specifically, ANTLR takes in these declarative, high level grammars and uses them to generate a parser. The grammars have wide utility anywhere it's necessary to parse SQL – not just in <Constant name="fusion" /> – and we're releasing them as Apache 2 to enable the Community and others in the data ecosystem to build on top of them.
+[ANTLR](https://www.antlr.org/) grammars are the formal language specifications that let Fusion [parse](/blog/sql-comprehension-technologies) every SQL statement across multiple dialects. Specifically, ANTLR takes in these declarative, high level grammars and uses them to generate a parser. The grammars have wide utility anywhere it's necessary to parse SQL – not just in Fusion – and we're releasing them as Apache 2 to enable the Community and others in the data ecosystem to build on top of them.
 
 Most ANTLR grammars are only applicable to a single dialect, but the SDF team created a system which makes it possible to define a shared base grammar and generate each warehouse's g4 file from there. This halves the amount of work required to support a new dialect at the level of precision and robustness required.
 
@@ -174,7 +174,7 @@ Available at: [A subdirectory of the dbt-fusion repo](https://github.com/dbt-lab
 
 License: Apache 2.0
 
-Since <Constant name="fusion" /> is completely Rust-based, while Jinja is a Python project, we needed a completely new way to render all the Jinja spread through users' projects. We started by switching to [minijinja](https://github.com/mitsuhiko/minijinja): a Rust port of a subset of the original Jinja project, written by Jinja's original maintainer.
+Since Fusion is completely Rust-based, while Jinja is a Python project, we needed a completely new way to render all the Jinja spread through users' projects. We started by switching to [minijinja](https://github.com/mitsuhiko/minijinja): a Rust port of a subset of the original Jinja project, written by Jinja's original maintainer.
 
 This subset of coverage wasn't enough to support existing dbt projects, so we created Rust-native implementations of the majority of these missing features. This achieved the best of both worlds: significant performance improvements while maintaining compatibility with users' existing codebases.
 
