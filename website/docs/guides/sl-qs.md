@@ -1,26 +1,28 @@
 ---
-title: "Quickstart for the dbt Semantic Layer and Snowflake"
-id: sl-snowflake-qs
+title: "Quickstart for the dbt Semantic Layer"
+id: sl-qs
 description: "Use this guide to build and define metrics, set up the dbt Semantic Layer, and query them using Google Sheets."
-sidebar_label: "Quickstart with the dbt Semantic Layer and Snowflake"
+sidebar_label: "Quickstart with the dbt Semantic Layer"
 meta:
   api_name: dbt Semantic Layer APIs
 icon: 'guides'
 hide_table_of_contents: true
-tags: ['Semantic Layer', 'Snowflake', 'dbt platform', 'Quickstart']
-keywords: ['dbt Semantic Layer','Metrics','dbt platform', 'Snowflake', 'Google Sheets']
+tags: ['Semantic Layer', 'dbt platform', 'Quickstart']
+keywords: ['dbt Semantic Layer','Metrics','dbt platform', 'Google Sheets']
 level: 'Intermediate'
+availability:
+  surface: platform
+  access: paid_plan
+  minPlan: starter
 ---
 
 <!-- The below snippets (or reusables) can be found in the following file locations in the docs code repository) -->
-import CreateModel from '/snippets/_sl-create-semanticmodel.md';
-import DefineMetrics from '/snippets/_sl-define-metrics.md';
-import ConfigMetric from '/snippets/_sl-configure-metricflow.md';
 import TestQuery from '/snippets/_sl-test-and-query-metrics.md';
 import ConnectQueryAPI from '/snippets/_sl-connect-and-query-api.md';
 import RunProdJob from '/snippets/_sl-run-prod-job.md';
-import SlSetUp from '/snippets/_new-sl-setup.md'; 
+import SlSetUp from '/snippets/_new-sl-setup.md';
 import CreateSnowflakeSqlFile from '/snippets/_create-snowflake-sql-file.md';
+import LoadData from '/snippets/_load-data.md';
 
 ## Introduction
 
@@ -30,103 +32,53 @@ import SLCourses from '/snippets/_sl-course.md';
 
 <SLCourses/>
 
-This quickstart guide is designed for <Constant name="dbt" /> users using Snowflake as their data platform. It focuses on building and defining metrics, setting up the <Constant name="semantic_layer" /> in a <Constant name="dbt" /> project, and querying metrics in Google Sheets. 
+This quickstart is for <Constant name="dbt" /> users on the <Constant name="dbt_platform" />. You will build and define metrics, set up the <Constant name="semantic_layer" /> in a dbt project, and query those metrics in Google Sheets.
 
-If you're on different data platforms, you can also follow this guide and will need to modify the setup for the specific platform. See the [users on different platforms](#for-users-on-different-data-platforms) section for more information.
+The guide works on any supported data platform. Use the tabs in [Set up your warehouse](#set-up-your-warehouse) to create an account, load the sample data, and connect dbt. Later steps include a tab when the SQL or YAML is different for your platform.
 
 ### Prerequisites
 
-- You need a [<Constant name="dbt" />](https://www.getdbt.com/signup/) Trial, Starter, or Enterprise-tier account for all deployments. 
+- You need a [<Constant name="dbt" />](https://www.getdbt.com/signup/) Trial, Starter, or Enterprise-tier account for all deployments.
 - Have the correct [<Constant name="dbt" /> license](/docs/platform/manage-access/seats-and-users) and [permissions](/docs/platform/manage-access/enterprise-permissions) based on your plan:
-  <DetailsToggle alt_header="More info on license and permissions">  
-  
-  - Enterprise-tier &mdash; Developer license with Account Admin permissions. Or "Owner" with a Developer license, assigned Project Creator, Database Admin, or Admin permissions.
-  - Starter &mdash; "Owner" access with a Developer license.
-  - Trial &mdash; Automatic "Owner" access under a Starter plan trial.
-  
+  <DetailsToggle alt_header="More info on license and permissions">
+
+  - Enterprise-tier: Developer license with Account Admin permissions. Or "Owner" with a Developer license, assigned Project Creator, Database Admin, or Admin permissions.
+  - Starter: "Owner" access with a Developer license.
+  - Trial: Automatic "Owner" access under a Starter plan trial.
+
   </DetailsToggle>
 
-- Create a [trial Snowflake account](https://signup.snowflake.com/):
-  - Select the Enterprise Snowflake edition with ACCOUNTADMIN access. Consider organizational questions when choosing a cloud provider, and refer to Snowflake's [Introduction to Cloud Platforms](https://docs.snowflake.com/en/user-guide/intro-cloud-platforms).
-  - Select a cloud provider and region. All cloud providers and regions will work so choose whichever you prefer.
-- Complete the [Quickstart for <Constant name="dbt" /> and Snowflake](snowflake-qs.md) guide. 
+- A warehouse account and the Jaffle Shop sample data. Follow the tab for your platform in [Set up your warehouse](#set-up-your-warehouse).
 - Basic understanding of SQL and dbt. For example, you've used dbt before or have completed the [dbt Fundamentals](https://learn.getdbt.com/courses/dbt-fundamentals) course.
 
+## Set up your warehouse
 
-### For users on different data platforms
+Use the tab for your data platform to create an account, load the sample data, and connect dbt. Complete only the steps listed in the tab, then return here. Do not keep going into project setup or models on that other guide. This guide covers that next.
 
-If you're using a data platform other than Snowflake, this guide is also applicable to you. You can adapt the setup for your specific platform by following the account setup and data loading instructions detailed in the following tabs for each respective platform.
+The <Constant name="semantic_layer" /> currently supports Snowflake, BigQuery, Databricks, Redshift, Postgres, and Trino (including Starburst Galaxy). It does not support Microsoft Fabric. For the full list, refer to [What data platforms are supported](/docs/use-dbt-semantic-layer/sl-faqs#what-data-platforms-are-supported-by-the-dbt-semantic-layer).
 
-The rest of this guide applies universally across all supported platforms, ensuring you can fully leverage the <Constant name="semantic_layer" />.
+<Tabs groupId="warehouse">
 
-<Tabs>
+<TabItem value="snowflake" label="Snowflake" default>
 
-<TabItem value="bq" label="BigQuery">
+Create a [trial Snowflake account](https://signup.snowflake.com/):
 
-Open a new tab and follow these quick steps for account setup and data loading instructions:
+- Select the Enterprise Snowflake edition with ACCOUNTADMIN access. Consider organizational questions when choosing a cloud provider, and refer to Snowflake's [Introduction to Cloud Platforms](https://docs.snowflake.com/en/user-guide/intro-cloud-platforms).
+- Select a cloud provider and region. All cloud providers and regions will work so choose whichever you prefer.
 
-- [Step 2: Create a new GCP project](/guides/bigquery?step=2)
-- [Step 3: Create BigQuery dataset](/guides/bigquery?step=3)
-- [Step 4: Generate BigQuery credentials](/guides/bigquery?step=4)
-- [Step 5: Connect <Constant name="dbt" /> to BigQuery](/guides/bigquery?step=5)
+You can also complete the [Quickstart for <Constant name="dbt" /> and Snowflake](/guides/snowflake) first if you prefer a longer Snowflake-only walkthrough.
 
-</TabItem>
-
-<TabItem value="databricks" label="Databricks">
-
-Open a new tab and follow these quick steps for account setup and data loading instructions:
-
-- [Step 2: Create a Databricks workspace](/guides/databricks?step=2)
-- [Step 3: Load data](/guides/databricks?step=3)
-- [Step 4: Connect <Constant name="dbt" /> to Databricks](/guides/databricks?step=4)
-
-</TabItem>
-
-<TabItem value="msfabric" label="Microsoft Fabric">
-
-Open a new tab and follow these quick steps for account setup and data loading instructions:
-
-- [Step 2: Load data into your Microsoft Fabric warehouse](/guides/microsoft-fabric?step=2)
-- [Step 3: Connect <Constant name="dbt" /> to Microsoft Fabric](/guides/microsoft-fabric?step=3)
-
-</TabItem>
-
-<TabItem value="redshift" label="Redshift">
-
-Open a new tab and follow these quick steps for account setup and data loading instructions:
-
-- [Step 2: Create a Redshift cluster](/guides/redshift?step=2)
-- [Step 3: Load data](/guides/redshift?step=3)
-- [Step 4: Connect <Constant name="dbt" /> to Redshift](/guides/redshift?step=3)
-
-</TabItem>
-
-<TabItem value="starburst" label="Starburst Galaxy">
-
-Open a new tab and follow these quick steps for account setup and data loading instructions:
-
-- [Step 2: Load data to an Amazon S3 bucket](/guides/starburst-galaxy?step=2)
-- [Step 3: Connect Starburst Galaxy to Amazon S3 bucket data](/guides/starburst-galaxy?step=3)
-- [Step 4: Create tables with Starburst Galaxy](/guides/starburst-galaxy?step=4)
-- [Step 5: Connect <Constant name="dbt" /> to Starburst Galaxy](/guides/starburst-galaxy?step=5)
-
-</TabItem>
-
-</Tabs>
-
-## Create new Snowflake SQL file and set up environment
+### Create a Snowflake SQL file
 
 <CreateSnowflakeSqlFile />
 
 ### Set up and load data into Snowflake
 
-import LoadData from '/snippets/_load-data.md';
-
 <LoadData/>
 
   <Lightbox src="/img/docs/dbt-platform/semantic-layer/sl-snowflake-confirm.jpg" width="90%" title="The image displays Snowflake's confirmation output when data loaded correctly in the Editor." />
 
-## Connect dbt to Snowflake
+### Connect dbt to Snowflake
 
 There are two ways to connect <Constant name="dbt" /> to Snowflake. The first option is Partner Connect, which provides a streamlined setup to create your <Constant name="dbt" /> account from within your new Snowflake trial account. The second option is to create your <Constant name="dbt" /> account separately and build the Snowflake connection yourself (connect manually). If you want to get started quickly, dbt Labs recommends using Partner Connect. If you want to customize your setup from the very beginning and gain familiarity with the <Constant name="dbt" /> setup flow, dbt Labs recommends connecting manually.
 
@@ -177,13 +129,13 @@ Using Partner Connect allows you to create a complete dbt account with your [Sno
     <Lightbox src="/img/snowflake_tutorial/dbt_cloud_setup_snowflake_connection_start.png" title="dbt - Choose Snowflake Connection" />
 
 5. Enter your **Settings** for Snowflake with: 
-    * **Account** &mdash; Find your account by using the Snowflake trial account URL and removing `snowflakecomputing.com`. The order of your account information will vary by Snowflake version. For example, Snowflake's Classic console URL might look like: `oq65696.west-us-2.azure.snowflakecomputing.com`. The AppUI or Snowsight URL might look more like: `snowflakecomputing.com/west-us-2.azure/oq65696`. In both examples, your account will be: `oq65696.west-us-2.azure`. For more information, see [Account Identifiers](https://docs.snowflake.com/en/user-guide/admin-account-identifier.html) in the Snowflake docs.  
+    * **Account:** Find your account by using the Snowflake trial account URL and removing `snowflakecomputing.com`. The order of your account information will vary by Snowflake version. For example, Snowflake's Classic console URL might look like: `oq65696.west-us-2.azure.snowflakecomputing.com`. The AppUI or Snowsight URL might look more like: `snowflakecomputing.com/west-us-2.azure/oq65696`. In both examples, your account will be: `oq65696.west-us-2.azure`. For more information, refer to [Account Identifiers](https://docs.snowflake.com/en/user-guide/admin-account-identifier.html) in the Snowflake docs.  
 
         <Snippet path="snowflake-acct-name" />
     
-    * **Role** &mdash; Leave blank for now. You can update this to a default Snowflake role later.
-    * **Database** &mdash; `analytics`.  This tells dbt to create new models in the analytics database.
-    * **Warehouse** &mdash; `transforming`. This tells dbt to use the transforming warehouse that was created earlier.
+    * **Role:** Leave blank for now. You can update this to a default Snowflake role later.
+    * **Database:** `analytics`. This tells dbt to create new models in the analytics database.
+    * **Warehouse:** `transforming`. This tells dbt to use the transforming warehouse that was created earlier.
 
     <Lightbox src="/img/snowflake_tutorial/dbt_cloud_snowflake_account_settings.png" title="dbt - Snowflake Account Settings" />
 
@@ -192,11 +144,11 @@ Using Partner Connect allows you to create a complete dbt account with your [Sno
 8. Select your project that uses the Snowflake connection. 
 9. Click the **configure your development environment and add a connection** link. This directs you to a page where you can enter your personal user credentials.
 10. Enter your **User credentials** for Snowflake with: 
-    * **Username** &mdash; The username you created for Snowflake. The username is not your email address and is usually your first and last name together in one word. 
-    * **Password** &mdash; The password you set when creating your Snowflake account.
-    * **Schema** &mdash; You’ll notice that the schema name has been auto-created for you. By convention, this is `dbt_<first-initial><last-name>`. This is the schema connected directly to your development environment, and it's where your models will be built when running dbt within the <Constant name="studio_ide" />.
-    * **Target name** &mdash; Leave as the default.
-    * **Threads** &mdash; Leave as 4. This is the number of simultaneous connects that <Constant name="dbt" /> will make to build models concurrently.
+    * **Username:** The username you created for Snowflake. The username is not your email address and is usually your first and last name together in one word.
+    * **Password:** The password you set when creating your Snowflake account.
+    * **Schema:** You’ll notice that the schema name has been auto-created for you. By convention, this is `dbt_<first-initial><last-name>`. This is the schema connected directly to your development environment, and it's where your models will be built when running dbt within the <Constant name="studio_ide" />.
+    * **Target name:** Leave as the default.
+    * **Threads:** Leave as 4. This is the number of simultaneous connects that <Constant name="dbt" /> will make to build models concurrently.
 
     <Lightbox src="/img/snowflake_tutorial/dbt_cloud_snowflake_development_credentials.png" title="dbt - Snowflake User credentials" />
 
@@ -206,12 +158,63 @@ Using Partner Connect allows you to create a complete dbt account with your [Sno
 </TabItem>
 </Tabs>
 
+</TabItem>
+
+<TabItem value="bq" label="BigQuery">
+
+Open a new tab and follow these steps for account setup, sample data, and your dbt connection:
+
+- [Step 2: Create a new GCP project](/guides/bigquery?step=2)
+- [Step 3: Create BigQuery datasets](/guides/bigquery?step=3)
+- [Step 4: Generate BigQuery credentials](/guides/bigquery?step=4)
+- [Step 5: Connect <Constant name="dbt" /> to BigQuery](/guides/bigquery?step=5)
+
+In step 3, create both the `jaffle_shop` and `stripe` datasets in your project. The sample tables you query live in the public `dbt-tutorial` project.
+
+</TabItem>
+
+<TabItem value="databricks" label="Databricks">
+
+Open a new tab and follow these steps for account setup, sample data, and your dbt connection:
+
+- [Step 2: Create a Databricks workspace](/guides/databricks?step=2)
+- [Step 3: Load data](/guides/databricks?step=3)
+- [Step 4: Connect <Constant name="dbt" /> to Databricks](/guides/databricks?step=4)
+- [Step 5: Set up the integration from Partner Connect](/guides/databricks?step=5)
+
+Step 4 explains Partner Connect vs connecting manually. Step 5 is Partner Connect. If you connect manually, use the Databricks docs linked from that step.
+
+</TabItem>
+
+<TabItem value="redshift" label="Redshift">
+
+Open a new tab and follow these steps for account setup, sample data, and your dbt connection:
+
+- [Step 2: Create a Redshift cluster](/guides/redshift?step=2)
+- [Step 3: Load data](/guides/redshift?step=3)
+- [Step 4: Connect <Constant name="dbt" /> to Redshift](/guides/redshift?step=4)
+
+</TabItem>
+
+<TabItem value="starburst" label="Starburst Galaxy">
+
+Open a new tab and follow these steps for account setup, sample data, and your dbt connection:
+
+- [Step 2: Load data to an Amazon S3 bucket](/guides/starburst-galaxy?step=2)
+- [Step 3: Connect Starburst Galaxy to the Amazon S3 bucket](/guides/starburst-galaxy?step=3)
+- [Step 4: Create tables with Starburst Galaxy](/guides/starburst-galaxy?step=4)
+- [Step 5: Connect <Constant name="dbt" /> to Starburst Galaxy](/guides/starburst-galaxy?step=5)
+
+</TabItem>
+
+</Tabs>
+
 ## Set up dbt project
 
 In this section, you will set up a <Constant name="dbt" /> managed repository and initialize your dbt project to start developing.
 
 ### Set up a dbt managed repository 
-If you used Partner Connect, you can skip to [initializing your dbt project](#initialize-your-dbt-project-and-start-developing) as Partner Connect provides you with a [managed repository](/docs/platform/git/managed-repository). Otherwise, you will need to create your repository connection. 
+If you used Snowflake or Databricks Partner Connect, you can skip to [initializing your dbt project](#initialize-your-dbt-project-and-start-developing). Partner Connect provides a [managed repository](/docs/platform/git/managed-repository). Otherwise, you will need to create your repository connection. 
 
 <Snippet path="tutorial-managed-repo" />
 
@@ -225,10 +228,51 @@ Now that you have a repository configured, you can initialize your project and s
 3. Make your initial commit by clicking **Commit and sync**. Use the commit message `initial commit`. This creates the first commit to your managed repo and allows you to open a branch where you can add a new dbt code.
 4. You can now directly query data from your warehouse and execute `dbt run`. You can try this out now:
     - Delete the models/examples folder in the **File <Constant name="catalog" />**.
-    - Click **+ Create new file**, add this query to the new file, and click **Save as** to save the new file:
-      ```sql
-      select * from raw.jaffle_shop.customers
-      ```
+    - Click **+ Create new file**, add the query for your warehouse to the new file, and click **Save as** to save the new file:
+
+<Tabs groupId="warehouse">
+
+<TabItem value="snowflake" label="Snowflake" default>
+
+```sql
+select * from raw.jaffle_shop.customers
+```
+
+</TabItem>
+
+<TabItem value="bq" label="BigQuery">
+
+```sql
+select * from `dbt-tutorial.jaffle_shop.customers`
+```
+
+</TabItem>
+
+<TabItem value="databricks" label="Databricks">
+
+```sql
+select * from default.jaffle_shop_customers
+```
+
+</TabItem>
+
+<TabItem value="redshift" label="Redshift">
+
+```sql
+select * from jaffle_shop.customers
+```
+
+</TabItem>
+
+<TabItem value="starburst" label="Starburst Galaxy">
+
+```sql
+select * from dbt_quickstart.jaffle_shop.jaffle_shop_customers
+```
+
+</TabItem>
+
+</Tabs>
     - In the command line bar at the bottom, enter dbt run and click Enter. You should see a dbt run succeeded message.
 
 ## Build your dbt project
@@ -240,8 +284,8 @@ The next step is to build your project. This involves adding sources, staging mo
 
 You have two options for working with files in the <Constant name="studio_ide" />:
 
-- **Create a new branch (recommended)** &mdash; Create a new branch to edit and commit your changes. Navigate to **Version Control** on the left sidebar and click **Create branch**.
-- **Edit in the protected primary branch** &mdash; If you prefer to edit, format, or lint files and execute dbt commands directly in your primary git branch, use this option. The <Constant name="studio_ide" /> prevents commits to the protected branch so you'll be prompted to commit your changes to a new branch.
+- **Create a new branch (recommended):** Create a new branch to edit and commit your changes. Navigate to **Version Control** on the left sidebar and click **Create branch**.
+- **Edit in the protected primary branch:** If you prefer to edit, format, or lint files and execute dbt commands directly in your primary git branch, use this option. The <Constant name="studio_ide" /> prevents commits to the protected branch so you'll be prompted to commit your changes to a new branch.
 
 Name the new branch `build-project`.
 
@@ -249,20 +293,101 @@ Name the new branch `build-project`.
 2. Name the file `staging/jaffle_shop/src_jaffle_shop.yml` , then click **Create**.
 3. Copy the following text into the file and click **Save**.
 
+<Tabs groupId="warehouse">
+
+<TabItem value="snowflake" label="Snowflake" default>
+
 <File name='models/staging/jaffle_shop/src_jaffle_shop.yml'>
 
 ```yaml
-
 sources:
- - name: jaffle_shop
-   database: raw
-   schema: jaffle_shop
-   tables:
-     - name: customers
-     - name: orders
+  - name: jaffle_shop
+    database: raw
+    schema: jaffle_shop
+    tables:
+      - name: customers
+      - name: orders
 ```
 
 </File>
+
+</TabItem>
+
+<TabItem value="bq" label="BigQuery">
+
+<File name='models/staging/jaffle_shop/src_jaffle_shop.yml'>
+
+```yaml
+sources:
+  - name: jaffle_shop
+    database: dbt-tutorial
+    schema: jaffle_shop
+    tables:
+      - name: customers
+      - name: orders
+```
+
+</File>
+
+</TabItem>
+
+<TabItem value="redshift" label="Redshift">
+
+<File name='models/staging/jaffle_shop/src_jaffle_shop.yml'>
+
+```yaml
+sources:
+  - name: jaffle_shop
+    schema: jaffle_shop
+    tables:
+      - name: customers
+      - name: orders
+```
+
+</File>
+
+</TabItem>
+
+<TabItem value="databricks" label="Databricks">
+
+<File name='models/staging/jaffle_shop/src_jaffle_shop.yml'>
+
+```yaml
+sources:
+  - name: jaffle_shop
+    schema: default
+    tables:
+      - name: customers
+        identifier: jaffle_shop_customers
+      - name: orders
+        identifier: jaffle_shop_orders
+```
+
+</File>
+
+</TabItem>
+
+<TabItem value="starburst" label="Starburst Galaxy">
+
+<File name='models/staging/jaffle_shop/src_jaffle_shop.yml'>
+
+```yaml
+sources:
+  - name: jaffle_shop
+    database: dbt_quickstart
+    schema: jaffle_shop
+    tables:
+      - name: customers
+        identifier: jaffle_shop_customers
+      - name: orders
+        identifier: jaffle_shop_orders
+```
+
+</File>
+
+</TabItem>
+
+</Tabs>
 
 :::tip
 In your source file, you can also use the **Generate model** button to create a new model file for each source. This creates a new file in the `models` directory with the given source name and fill in the SQL code of the source definition.
@@ -272,21 +397,101 @@ In your source file, you can also use the **Generate model** button to create a 
 5. Name the file `staging/stripe/src_stripe.yml` , then click **Create**.
 6. Copy the following text into the file and click **Save**.
 
+<Tabs groupId="warehouse">
+
+<TabItem value="snowflake" label="Snowflake" default>
+
 <File name='models/staging/stripe/src_stripe.yml'>
 
 ```yaml
-
 sources:
- - name: stripe
-   database: raw
-   schema: stripe
-   tables:
-     - name: payment
+  - name: stripe
+    database: raw
+    schema: stripe
+    tables:
+      - name: payment
 ```
+
 </File>
 
+</TabItem>
+
+<TabItem value="bq" label="BigQuery">
+
+<File name='models/staging/stripe/src_stripe.yml'>
+
+```yaml
+sources:
+  - name: stripe
+    database: dbt-tutorial
+    schema: stripe
+    tables:
+      - name: payment
+```
+
+</File>
+
+</TabItem>
+
+<TabItem value="redshift" label="Redshift">
+
+<File name='models/staging/stripe/src_stripe.yml'>
+
+```yaml
+sources:
+  - name: stripe
+    schema: stripe
+    tables:
+      - name: payment
+```
+
+</File>
+
+</TabItem>
+
+<TabItem value="databricks" label="Databricks">
+
+<File name='models/staging/stripe/src_stripe.yml'>
+
+```yaml
+sources:
+  - name: stripe
+    schema: default
+    tables:
+      - name: payment
+        identifier: stripe_payments
+```
+
+</File>
+
+</TabItem>
+
+<TabItem value="starburst" label="Starburst Galaxy">
+
+<File name='models/staging/stripe/src_stripe.yml'>
+
+```yaml
+sources:
+  - name: stripe
+    database: dbt_quickstart
+    schema: jaffle_shop
+    tables:
+      - name: payment
+        identifier: stripe_payments
+```
+
+</File>
+
+</TabItem>
+
+</Tabs>
+
 ### Add staging models
-[Staging models](/best-practices/how-we-structure/2-staging) are the first transformation step in dbt. They clean and prepare your raw data, making it ready for more complex transformations and analyses. Follow these steps to add your staging models to your project.
+[Staging models](/best-practices/how-we-structure/2-staging) are the first transformation step in dbt. They clean and prepare your raw data, making it ready for more complex transformations and analyses.
+
+The staging SQL uses `source()`, so it uses the names from the YAML you just added. For example, on BigQuery this points to `dbt-tutorial.jaffle_shop.customers`. On Snowflake it points to `raw.jaffle_shop.customers`. If your platform uses a different table name, that name is already in the YAML.
+
+Follow these steps to add your staging models to your project.
 
 1. In the `jaffle_shop` sub-directory, create the file `stg_customers.sql`. Or, you can use the **Generate model** button to create a new model file for each source. 
 2. Copy the following query into the file and click **Save**.
@@ -322,6 +527,10 @@ sources:
 5. In the `stripe` sub-directory, create the file `stg_payments.sql`.
 6. Copy the following query into the file and click **Save**.
 
+<Tabs groupId="warehouse">
+
+<TabItem value="snowflake" label="Snowflake" default>
+
 <File name='models/staging/stripe/stg_payments.sql'>
 
 ```sql
@@ -333,12 +542,94 @@ select
    -- amount is stored in cents, convert it to dollars
    amount / 100 as amount,
    created as created_at
-
-
 from {{ source('stripe', 'payment') }}
 ```
 
 </File>
+
+</TabItem>
+
+<TabItem value="bq" label="BigQuery">
+
+<File name='models/staging/stripe/stg_payments.sql'>
+
+```sql
+select
+   id as payment_id,
+   orderid as order_id,
+   paymentmethod as payment_method,
+   status,
+   -- amount is stored in cents, convert it to dollars
+   amount / 100 as amount,
+   created as created_at
+from {{ source('stripe', 'payment') }}
+```
+
+</File>
+
+</TabItem>
+
+<TabItem value="redshift" label="Redshift">
+
+<File name='models/staging/stripe/stg_payments.sql'>
+
+```sql
+select
+   id as payment_id,
+   orderid as order_id,
+   paymentmethod as payment_method,
+   status,
+   -- amount is stored in cents, convert it to dollars
+   amount / 100 as amount,
+   created as created_at
+from {{ source('stripe', 'payment') }}
+```
+
+</File>
+
+</TabItem>
+
+<TabItem value="databricks" label="Databricks">
+
+<File name='models/staging/stripe/stg_payments.sql'>
+
+```sql
+select
+   id as payment_id,
+   orderid as order_id,
+   paymentmethod as payment_method,
+   status,
+   -- amount is stored in cents, convert it to dollars
+   amount / 100 as amount,
+   created as created_at
+from {{ source('stripe', 'payment') }}
+```
+
+</File>
+
+</TabItem>
+
+<TabItem value="starburst" label="Starburst Galaxy">
+
+<File name='models/staging/stripe/stg_payments.sql'>
+
+```sql
+select
+   id as payment_id,
+   order_id,
+   paymentmethod as payment_method,
+   status,
+   -- amount is stored in cents, convert it to dollars
+   amount / 100 as amount,
+   created as created_at
+from {{ source('stripe', 'payment') }}
+```
+
+</File>
+
+</TabItem>
+
+</Tabs>
 
 7. Enter `dbt run` in the command prompt at the bottom of the screen. You should get a successful run and see the three models.
 
@@ -441,7 +732,7 @@ select * from final
 
 ## Create semantic models
 
-In this section, you'll learn about [semantic model](/guides/sl-snowflake-qs?step=6#about-semantic-models), [their components](/guides/sl-snowflake-qs?step=6#semantic-model-components), and [how to configure a time spine](/guides/sl-snowflake-qs?step=6#configure-a-time-spine).
+In this section, you'll learn about [semantic model](/guides/sl-qs?step=5#about-semantic-models), [their components](/guides/sl-qs?step=5#semantic-model-components), and [how to configure a time spine](/guides/sl-qs?step=5#configure-a-time-spine).
 
 ### About semantic models
 
@@ -727,7 +1018,7 @@ semantic_models:
 
 ### Simple metrics
 
-[Simple metrics](/docs/build/simple) perform an aggregation (like `sum`, `count`, or `average`, and so on) on a single field in your model. They replace the concept of "measures" in previous versions. To define more advanced metrics, refer to [Define metrics and add a second semantic model](/guides/sl-snowflake-qs?step=10).
+[Simple metrics](/docs/build/simple) perform an aggregation (like `sum`, `count`, or `average`, and so on) on a single field in your model. They replace the concept of "measures" in previous versions. To define more advanced metrics, refer to [Define metrics and add a second semantic model](/guides/sl-qs?step=6).
 
 Add simple metrics to your `fct_orders.yml` model file:
 
@@ -1224,8 +1515,8 @@ This section will guide you on how to use the Hex integration to query your metr
 4. Then, click the **+ New project** button on the top right.
 <Lightbox src="/img/docs/dbt-platform/semantic-layer/hex_new.png" width="50%" title="Click the '+ New project' button on the top right"/>
 5. Go to the menu on the left side and select **Data browser**. Then select **Add a data connection**. 
-6. Click **Snowflake**. Provide your data connection a name and description. You don't need to your data warehouse credentials to use the <Constant name="semantic_layer" />.
-<Lightbox src="/img/docs/dbt-platform/semantic-layer/hex_new_data_connection.png" width="50%" title="Select 'Data browser' and then 'Add a data connection' to connect to Snowflake."/>
+6. Select the data platform that matches your dbt project (Snowflake, BigQuery, Redshift, or Databricks). Give the connection a name and description. You still turn on the dbt Semantic Layer for that connection. You query metrics through dbt, not with a database username and password. Hex currently supports the Semantic Layer on those four connection types. Refer to [Hex's dbt integration](https://learn.hex.tech/docs/connect-to-data/data-connections/dbt-integration).
+<Lightbox src="/img/docs/dbt-platform/semantic-layer/hex_new_data_connection.png" width="50%" title="Select 'Data browser' and then 'Add a data connection'. Choose the warehouse type that matches your dbt project."/>
 7. Under **Integrations**, toggle the dbt switch to the right to enable the dbt integration.
 <Lightbox src="/img/docs/dbt-platform/semantic-layer/hex_dbt_toggle.png" width="50%" title="Click on the dbt toggle to enable the integration. "/>
 
@@ -1278,7 +1569,9 @@ This section will guide you on how to use the Hex integration to query your metr
 </Tabs>
 
 ### Connect and query with Sigma
-This section will guide you on how to use the Sigma integration to query your metrics using Sigma. If you already have a Sigma account, simply log in and skip to step 6. Otherwise, you'll be using a Sigma account you'll create with Snowflake Partner Connect. 
+This section will guide you on how to use the Sigma integration to query your metrics using Sigma. If you already have a Sigma account, log in and skip to step 6. Steps 1 through 5 create a Sigma account from Snowflake Partner Connect.
+
+Use steps 1 through 5 only if you are on Snowflake. Databricks has a separate [Sigma Partner Connect](https://docs.databricks.com/aws/en/partners/bi/sigma) flow. If you are on another data platform, log in to an existing Sigma account and continue from step 6, or refer to Sigma's [Query a dbt Semantic Layer integration](https://help.sigmacomputing.com/docs/query-a-dbt-semantic-layer-integration) guide. 
 
 1. Go back to your Snowflake account. In the Snowflake UI, click on the home icon in the upper left corner. In the left sidebar, select **Data Products**. Then, select **Partner Connect**. Find the Sigma tile by scrolling or by searching for Sigma in the search bar. Click the tile to connect to Sigma.
 <Lightbox src="/img/docs/dbt-platform/semantic-layer/sl-sigma-partner-connect.png" width="25%" title="Click the '+ New project' button on the top right"/>
@@ -1311,7 +1604,7 @@ This section will guide you on how to use the Sigma integration to query your me
 9. Return to the Sigma home page. Create a new workbook.
 <Lightbox src="/img/docs/dbt-platform/semantic-layer/sl-sigma-make-workbook.png" width="50%" title="Click the '+ New project' button on the top right"/>
 
-10. Click on **Table**, then click on **SQL**. Select Snowflake `PC_SIGMA_WH` as your data connection.
+10. Click on **Table**, then click on **SQL**. Select the data connection that matches your dbt project (Snowflake, BigQuery, Redshift, or Databricks). If you created this Sigma account with Snowflake Partner Connect, that connection is named `PC_SIGMA_WH`.
 <Lightbox src="/img/docs/dbt-platform/semantic-layer/sl-sigma-make-table.png" width="50%" title="Click the '+ New project' button on the top right"/>
 
 11. Go ahead and query a working metric in your project! For example, let's say you had a metric that measures various order-related values. Here’s how you would query it:
@@ -1333,10 +1626,9 @@ Great job on completing the comprehensive <Constant name="semantic_layer" /> gui
 
 You've learned how to:
 
-- Set up your Snowflake environment and <Constant name="dbt" />, including creating SQL files and loading data.
-- Connect and configure <Constant name="dbt" /> with Snowflake.
-- Build, test, and manage <Constant name="dbt" /> projects, focusing on metrics and semantic layers.
-- Run production jobs and query metrics with our available integrations.
+- Set up your warehouse and <Constant name="dbt" />, including loading sample data and connecting your project.
+- Build, test, and manage dbt projects, focusing on metrics and semantic models.
+- Run production jobs and query metrics with Google Sheets and other available integrations.
 
 For next steps, you can start defining your own metrics and learn additional configuration options such as [exports](/docs/use-dbt-semantic-layer/exports), [fill null values](/docs/build/advanced-topics), [implementing <Constant name="mesh" /> with the <Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/sl-faqs#how-can-i-implement-dbt-mesh-with-the-dbt-semantic-layer), and more.
 

@@ -13,7 +13,7 @@ import FusionReadinessPanel from '/snippets/_fusion-migration-readiness-panel.md
 
 <FusionReadinessPanel />
 
-## Preparing for Fusion
+## Preparing for <Constant name="fusion" />
 
 Use the following checklist to prepare your projects for the <Constant name="fusion_engine" />
 
@@ -75,7 +75,7 @@ Your project may implement features that <Constant name="fusion" /> currently [l
 We determine <Constant name="fusion" /> eligibility using data from your job runs. 
 
 - [ ] Ensure you have at least one job running in each of your projects in the <Constant name="dbt_platform" />.
-  - [ ] Ensure each job has run within the last 7 days. Jobs that haven't run recently are considered inactive and are ineligible for Fusion. If you see a "no active jobs" ineligibility reason in the Fusion readiness UI, run the job manually or adjust its schedule.
+  - [ ] Ensure each job has run within the last 7 days. Jobs that haven't run recently are considered inactive and are ineligible for <Constant name="fusion" />. If you see a "no active jobs" ineligibility reason in the Fusion readiness UI, run the job manually or adjust its schedule.
 - [ ] Ensure all jobs are running on the [**Latest** release track](/docs/dbt-versions/dbt-release-tracks#which-release-tracks-are-available) for the smoothest upgrade experience.
 - [ ] Resolve any job failures &mdash; all jobs must run successfully for eligibility checks to work.
 - [ ] Delete any jobs that are no longer in use to ensure accurate eligibility reporting. 

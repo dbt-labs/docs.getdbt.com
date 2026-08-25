@@ -74,7 +74,7 @@ The dbt MCP server connects your local dbt project to AI assistants using the [M
 ## Licensing info
 dbt framework has two distributions which can both be installed locally for free, powered by a single engine:
 
-- dbt Core is completely open-source and the code behind Fusion. Its code and binary are subject to the Apache 2.0 license.
+- dbt Core is completely open-source and the code behind <Constant name="fusion" />. Its code and binary are subject to the Apache 2.0 license.
   - Includes dbt Core v1.x and dbt Core 2.0
 - dbt Fusion extends dbt Core with additional advanced capabilities &mdash; some are free to use, and other premium features (under proprietary code) are unlocked with a free login or payment method.
 
