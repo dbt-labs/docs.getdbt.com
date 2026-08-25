@@ -24,6 +24,10 @@
         {
           "key": "Cache-Control",
           "value": "max-age=0, s-maxage=86400 stale-while-revalidate"
+        },
+        {
+          "key": "Vary",
+          "value": "Accept, Accept-Encoding"
         }
       ]
     },
@@ -1662,12 +1666,17 @@
     },
     {
       "source": "/docs/build/sl-getting-started",
-      "destination": "/guides/sl-snowflake-qs",
+      "destination": "/guides/sl-qs",
       "permanent": true
     },
     {
       "source": "/docs/use-dbt-semantic-layer/quickstart-sl",
-      "destination": "/guides/sl-snowflake-qs",
+      "destination": "/guides/sl-qs",
+      "permanent": true
+    },
+    {
+      "source": "/guides/sl-snowflake-qs",
+      "destination": "/guides/sl-qs",
       "permanent": true
     },
     {
