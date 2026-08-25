@@ -3,6 +3,7 @@ title: "Available tools"
 sidebar_label: "Available tools"
 description: "Complete list of tools available in the dbt MCP server."
 id: "mcp-available-tools"
+availability: all_users
 ---
 import McpToolsFromReadme from '/snippets/_mcp-tools-from-readme.md';
 
@@ -21,6 +22,8 @@ The following sections list every tool by category, along with which server type
 | [Administrative API](#admin-api) | ✅ | ✅ |
 | [Codegen Tools](#dbt-codegen) | ✅ | ❌ |
 | [Fusion Tools](#dbt-lsp) | ✅ | ✅ |
+| [Product Docs Tools](#product-docs) |  ✅ | ✅ |
+| [MCP Server Metadata Tools](#mcp-server-metadata) | ✅ | ✅ |
 
 Note that access to the Discovery API and the Semantic Layer API is limited depending on your [plan type](https://www.getdbt.com/pricing).
 

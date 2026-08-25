@@ -1,0 +1,18 @@
+  dbt-core 2.0.0-alpha.1
+   Loading ~/.dbt/profiles.yml
+   Loading packages.yml
+dbt State is enabled (endpoint https://api.state.dbt.com:443, defer_to prod)
+    Passed [  3.14s] unit_test dev_tobym_dbt_test__audit.test_order_items_compute_to_bools_correctly
+    Reused [-------] model dev_tobym.orders (table - Cloned from cached relation)
+    Reused [-------] test  dbt_utils_expression_is_true_orders_order_items_subtotal_subtotal (No new changes on any upstreams)
+    Warned [  3.15s] test  accepted_values_orders_is_today_order__True (models/marts/orders.yml:37:13)
+    Reused [-------] test  unique_orders_order_id (No new changes on any upstreams)
+    Reused [-------] test  not_null_orders_order_id (No new changes on any upstreams)
+    Reused [-------] test  dbt_utils_expression_is_true_orders_order_total_subtotal_tax_paid (No new changes on any upstreams)
+    Reused [-------] test  relationships_orders_customer_id__customer_id__ref_stg_customers_ (No new changes on any upstreams)
+    Reused [-------] test  relationships_order_items_order_id__order_id__ref_orders_ (No new changes on any upstreams)
+
+==================== Execution Summary =====================
+Finished 'build' with 1 warning for target 'toby' [17.8s]
+Processed: 1 model | 7 tests | 1 unit test
+Summary: 9 total | 1 success | 7 reused | 1 warn

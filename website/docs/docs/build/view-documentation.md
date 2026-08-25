@@ -11,7 +11,7 @@ You can view documentation in three complementary ways, depending on your needs:
 | Option | Description | Availability |
 |------|-------------|--------------|
 | [**dbt Docs (Legacy)**](#dbt-docs) | Generates a static website with model lineage, metadata, and documentation that can be hosted on your web server (like S3 or Netlify). | <Constant name="core" /> or <Constant name="dbt" /> Developer plans |
-| [**dbt Docs v2**](#dbt-docs-v2) <Lifecycle status="alpha" size="70" /> | A modern, performant open-source catalog built for data consumers. Includes a redesigned UI, large-project performance, Semantic Layer metadata, column-level lineage (Fusion), and a REST API for AI agents. | <Constant name="fusion_engine" /> and <Constant name="core_v2" /> |
+| [**dbt Docs v2**](#dbt-docs-v2) <Lifecycle status="beta" size="70" /> | A modern, performant open-source catalog built for data consumers. Includes a redesigned UI, large-project performance, Semantic Layer metadata, and column-level lineage (<Constant name="fusion" />), served as a static site you can host anywhere. | <Constant name="fusion_engine" /> and <Constant name="core_v2" /> |
 | [**<Constant name="catalog" />**](/docs/explore/explore-projects) | The premier documentation experience in <Constant name="dbt" />. Builds on dbt Docs to provide a dynamic, real-time interface with rich [metadata](/docs/explore/explore-projects#generate-metadata), customizable views, deep insight into your project and resources, and collaborative tools. | <Constant name="dbt" /> Starter, Enterprise, or Enterprise+ plans |
 
 ## Navigating your documentation
@@ -42,21 +42,40 @@ To access <Constant name="catalog" />, navigate to the **Catalog** option in the
 
 For additional details and instructions on how to explore your lineage, navigate your resources, view model query history and data health signals, feature availability, and more &mdash; refer to [Discover data with <Constant name="catalog" />](/docs/explore/explore-projects).
 
-### dbt Docs v2 <Lifecycle status="alpha"/>
+### dbt Docs v2 <Lifecycle status="beta"/>
 
 dbt Docs v2 is the next-generation open-source catalog experience, available when using the <Constant name="fusion_engine" /> and <Constant name="core_v2" />. It is designed for data consumers (analysts, BI users, data scientists, and stakeholders) who need to understand what data exists, how it was built, and whether they can trust it.
 
 Key improvements over dbt Docs:
 
-- **Performance:** Better handling for large dbt projects. The server reads from compact, pre-built index files rather than loading the full `manifest.json` in the browser.
+- **Performance:** Better handling for large dbt projects. The browser queries compact, pre-built index files with DuckDB-WASM (WebAssembly) instead of loading the full `manifest.json`.
 - **Modernized UI:** Visually aligned with the dbt platform, with better navigation and resource discovery.
 - **Semantic Layer metadata:** Surfaces compiled SQL logic, queryable dimensions, and metric definitions from your dbt Semantic Layer.
 - **Column-level lineage:** Available when using the <Constant name="fusion_engine" />.
-- **REST API:** Exposes a `/api/v1/` interface so AI agents and external tooling can query metadata without a browser. This makes dbt Docs v2 a context source for MCP servers and coding agents.
+- **Statically hostable:** `dbt docs generate` writes a self-contained static site — no server or live warehouse connection — that you can host on any file host, such as S3, GitHub Pages, or Netlify.
 
-To generate and serve dbt Docs v2, use the <Constant name="fusion_engine" /> or <Constant name="core_v2" /> to build your project with `--write-index` (for example, `dbt compile --write-index`). Then, run `dbt docs serve`. Add [`--static-analysis strict`](https://docs.getdbt.com/docs/fusion/new-concepts?version=1.13) to also pull column lineage and richer column type metadata from your warehouse. 
+To generate and serve dbt Docs v2 with the <Constant name="fusion_engine" /> or <Constant name="core_v2" />, run `dbt docs generate` to build the site, then `dbt docs serve` to preview it locally. `dbt docs generate` compiles your project and writes the index for you in a single command.
+
+To include column-level lineage and richer column metadata, first produce the artifacts with [`--static-analysis strict`](https://docs.getdbt.com/docs/build/about-static-analysis?version=1.13) using `dbt compile` or `dbt build`, then export the site:
+
+```shell
+dbt compile --write-index --static-analysis strict   # or: dbt build --write-index --static-analysis strict
+dbt docs generate --no-compile
+```
 
 Refer to [dbt docs commands](/reference/commands/cmd-docs) for full usage.
+
+#### Self-hosting dbt Docs v2
+
+Because `dbt docs generate` writes a self-contained static site — the single-page app plus the Parquet index files, with no server-side query engine — you can host it on any static file host instead of running `dbt docs serve` locally. The browser loads DuckDB-WASM from a content delivery network (CDN) at runtime and queries the Parquet directly, so viewers only need a static file server and outbound internet access to reach the CDN.
+
+Generate a self-contained directory and publish it to your host of choice:
+
+```shell
+dbt docs generate --output-dir site
+```
+
+This writes a `site/` directory (the app, hashed assets, and a copy of the index) that you can host on S3, GitHub Pages, Netlify, GitLab Pages, or any similar static file host. To refresh the docs, regenerate the site and re-publish.
 
 
 ### dbt Docs (Legacy)

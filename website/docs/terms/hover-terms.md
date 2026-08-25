@@ -89,7 +89,7 @@ grain:
 
 idempotent:
   displayText: idempotent
-  hoverSnippet: Idempotent describes a process that gives you the same result no matter how many times you run it.
+  hoverSnippet: An idempotent operation produces the same results no matter how many times you run it. In dbt, this means your model runs will always produce consistent results.
 
 json:
   displayText: JSON
@@ -101,10 +101,7 @@ lsp:
 
 managed:
   displayText: managed
-  hoverSnippet: dbt Labs manages the AI provider connection; no user provider key is required. Refer to
-  hoverLink: /docs/platform/billing
-  hoverLinkText: Billing
-  hoverLinkSuffix: for more info.
+  hoverSnippet: dbt Labs manages the AI provider connection; no user provider key is required.
 
 
 materialization:

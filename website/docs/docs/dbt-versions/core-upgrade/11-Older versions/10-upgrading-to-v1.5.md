@@ -3,7 +3,14 @@ title: "Upgrading to v1.5"
 description: New features and changes in dbt Core v1.5
 id: "upgrading-to-v1.5"
 displayed_sidebar: "docs"
+availability:
+  engine: v1
+  access: free
 ---
+
+import CoreVersionDeprecation from '/snippets/_core-version-deprecation-callout.md';
+
+<CoreVersionDeprecation />
 
 <Constant name="core" /> v1.5 is a feature release, with two significant additions:
 1. [**Model governance**](/docs/mesh/govern/about-model-governance) — access, contracts, versions — the first phase of [multi-project deployments](https://github.com/dbt-labs/dbt-core/discussions/6725)

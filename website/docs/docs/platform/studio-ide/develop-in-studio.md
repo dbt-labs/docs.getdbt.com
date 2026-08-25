@@ -6,6 +6,7 @@ sidebar_label: About the IDE
 tags: [IDE]
 pagination_next: "docs/platform/studio-ide/keyboard-shortcuts"
 pagination_prev: null
+availability: platform_login
 ---
 
 The <Constant name="dbt" /> integrated development environment (<Constant name="studio_ide" />) is a single web-based interface for building, testing, running, and version-controlling dbt projects. It compiles dbt code into SQL and executes it directly on your database. 
@@ -42,7 +43,7 @@ To improve your experience using <Constant name="dbt" />, we suggest that you tu
 - A [<Constant name="dbt" /> account](https://www.getdbt.com/signup) and [Developer seat license](/docs/platform/manage-access/seats-and-users)
 - A git repository set up and git provider must have `write` access enabled. See [Connecting your GitHub Account](/docs/platform/git/connect-github) or [Importing a project by git URL](/docs/platform/git/import-a-project-by-git-url) for detailed setup instructions
 - A dbt project connected to a [data platform](/docs/platform/connect-data-platform/about-connections)
-- A [development environment and development credentials](#get-started-with-the-studio-ide) set up
+- A [development environment and user credentials](#get-started-with-the-studio-ide) set up
 - The environment must be on dbt version 1.0 or higher
 
 ## Studio IDE features
@@ -81,9 +82,6 @@ If a warning looks wrong but <Constant name="dbt" /> commands succeed, trust you
 
 ### dbt Wizard
 
-
-### dbt Wizard
-
 [<Constant name="wizard" />](/docs/dbt-ai/wizard-ide) helps you develop trusted dbt projects faster in the <Constant name="studio_ide" />. It understands more than the file you’re editing. It uses dbt's native metadata engine to understand your project’s lineage, model health, test coverage, and semantic definitions, so it can provide answers and suggestions based on your _full_ project context.
 
 With <Constant name="wizard" />, you can:
@@ -102,19 +100,19 @@ import CopilotWizardDifferences from '/snippets/_copilot-wizard-diff.md';
 <CopilotWizardDifferences/>
 ## Get started with the Studio IDE
 
-In order to start experiencing the great features of the <Constant name="studio_ide" />, you need to first set up a [<Constant name="dbt" /> development environment](/docs/dbt-platform-environments). In the following steps, we outline how to set up developer credentials and access the <Constant name="studio_ide" />. If you're creating a new project, you will automatically configure this during the project setup. 
+In order to start experiencing the great features of the <Constant name="studio_ide" />, you need to first set up a [<Constant name="dbt" /> development environment](/docs/dbt-platform-environments). In the following steps, we outline how to set up user credentials and access the <Constant name="studio_ide" />. If you're creating a new project, you will automatically configure this during the project setup. 
 
-The <Constant name="studio_ide" /> uses developer credentials to connect to your data platform. These developer credentials should be specific to your user and they should *not* be super user credentials or the same credentials that you use for your production deployment of dbt.
+The <Constant name="studio_ide" /> uses user credentials to connect to your data platform. These user credentials should be specific to your user and they should *not* be super user credentials or the same credentials that you use for your production deployment of dbt.
 
-Set up your developer credentials:
+Set up your user credentials:
 
 1. Navigate to your **Credentials** under **Your Profile** settings, which you can access at `https://YOUR_ACCESS_URL/settings/profile#credentials`, replacing `YOUR_ACCESS_URL` with the [appropriate Access URL](/docs/platform/about-platform/access-regions-ip-addresses) for your region and plan.
 2. Select the relevant project in the list.
 3. Click **Edit** on the bottom right of the page.
-4. Enter the details under **Development Credentials**.
+4. Enter the details under **User credentials**.
 5. Click **Save.**
 
-<Lightbox src="/img/docs/dbt-platform/refresh-ide/dev-credentials.png" width="85%" height="100" title="Configure developer credentials in your profile"/>
+<Lightbox src="/img/docs/dbt-platform/refresh-ide/dev-credentials.png" width="85%" height="100" title="Configure user credentials in your profile"/>
 
 6. Navigate to the <Constant name="studio_ide" /> by clicking **Studio** in the left menu.
 7. Initialize your project and familiarize yourself with the <Constant name="studio_ide" /> and its delightful [features](#studio-ide-features).
@@ -187,7 +185,7 @@ If the <Constant name="studio_ide" /> freezes with two or more models open and t
 As a proprietary product, <Constant name="dbt" />'s source code isn't available for community contributions. If you want to build something in the dbt ecosystem, we encourage you to review [this article](/community/contributing/contributing-coding) about contributing to a dbt package, a plugin, dbt-core, or this documentation site. Participation in open-source is a great way to level yourself up as a developer, and give back to the community.
 </DetailsToggle>
 
-<DetailsToggle alt_header="What is the difference between developing on the Studio IDE, the dbt CLI, and dbt Core?">
+<DetailsToggle alt_header="What is the difference between developing on the Studio IDE, the dbt platform CLI, and dbt Core?">
 You can develop dbt using the web-based IDE in <Constant name="dbt" /> or on the command line interface using the <Constant name="platform_cli" /> or open-source <Constant name="core" />, all of which enable you to execute dbt commands. The key distinction between the <Constant name="platform_cli" /> and <Constant name="core" /> is the <Constant name="platform_cli" /> is tailored for <Constant name="dbt" />'s infrastructure and integrates with all its features:
 
 - <Constant name="studio_ide" />: <a href="https://docs.getdbt.com/docs/platform/about-platform/dbt-platform-features"><Constant name="dbt" /></a> is a web-based application that allows you to develop dbt projects with the IDE, includes a purpose-built scheduler, and provides an easier way to share your dbt documentation with your team. The IDE is a faster and more reliable way to deploy your dbt models and provides a real-time editing and execution environment for your dbt project.

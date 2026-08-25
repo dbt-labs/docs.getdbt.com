@@ -35,7 +35,7 @@ Use this page to understand the different types of changes, what to do, and wher
 
 </div>
 
-## Preparing for Fusion
+## Preparing for <Constant name="fusion" />
 
 If you're upgrading to <Constant name="fusion" />, you should:
 

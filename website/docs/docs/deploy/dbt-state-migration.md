@@ -4,6 +4,7 @@ sidebar_label: "Migrate from state-aware orchestration"
 description: "Step-by-step guide for migrating from state-aware orchestration to dbt State."
 id: "dbt-state-migration"
 tags: ['dbt State'] 
+availability: everywhere_usage
 ---
 
 import DbtStateVsSao from '/snippets/_dbt-state-vs-sao.md';
@@ -23,7 +24,7 @@ To migrate to dbt State, move your configs from `freshness.build_after` to the n
 | `freshness.build_after.updates_on` | [`state.require_fresh_data_from`](/reference/resource-configs/require-fresh-data-from) | Same `any` and `all` options with the same behavior: <br/>- `any` (default): rebuilds when _any_ direct parent has fresh data <br/>- `all`: rebuilds only when _all_ direct parents have fresh data |
 | `freshness.build_after.count` + `freshness.build_after.period` | [`state.lag_tolerance`](/reference/resource-configs/lag-tolerance) | Combined into a single field with shorthand values (for example, `1800s`, `30m`, `12h`, `1d`, `2w`) or Jinja expressions |
 
-:::note Backward compatibility in Fusion
+:::note Backward compatibility in <Constant name="fusion" />
 In the <Constant name="fusion_engine" />, you can enable dbt State without updating your project configs first.
 
 - If `lag_tolerance` and `require_fresh_data_from` are not set, dbt State falls back to your existing `build_after` configs until `build_after` is deprecated.
@@ -151,6 +152,9 @@ State-aware orchestration and dbt State differ in a few ways:
 - **More models rebuilding than expected**: If you notice more rebuilds after you migrate, the most common causes are:
   - **Views with `select *`**: dbt State can't determine which columns `select *` resolves to without querying the upstream schema, so it always rebuilds these views rather than risk reusing a stale result.
   - **Non-determinism in Jinja-templated SQL**: Macros like `dbt_utils.get_relations_by_pattern` with `dbt_utils.union_relations` can return relations in a different order on each run, which produces different compiled SQL. dbt State detects a new hash and rebuilds the model. If that model has downstream dependencies, those models rebuild, too.
+  - **Models with external sources on BigQuery**: Models that use external sources (such as Google Sheets) always rebuild because BigQuery doesn't expose modification timestamps for external sources, so dbt State can't determine freshness. 
+  
+  To avoid this, configure [`loaded_at_field`](/reference/resource-properties/freshness#loaded_at_field) or [`loaded_at_query`](/reference/resource-properties/freshness#loaded_at_query) in your source definition to point to a timestamp field &mdash; this lets dbt State query a timestamp field directly to determine freshness, instead of relying on warehouse metadata.
 
   Refer to [Why is my model being rebuilt instead of reused?](/faqs/State/views-rebuilt) for details on each cause and how to diagnose them.
 

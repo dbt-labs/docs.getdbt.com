@@ -2,15 +2,16 @@
 title: "Arrow ADBC and Fusion"
 id: "adbc"
 unlisted: true
+
 ---
 
-# Arrow ADBC and Fusion
+# Arrow ADBC and <Constant name="fusion" />
 
 This document provides technical guidance for dbt partners and vendors on how to design, build, and maintain ADBC (Apache Arrow Database Connectivity) drivers for <Constant name="fusion" />, the new dbt engine.
 
 <Constant name="fusion" /> leverages ADBC as a unified driver layer for seamless, high-performance integration with data platforms. Building an ADBC driver is the first step to connecting <Constant name="fusion" /> with a new platform.
 
-## Why Fusion uses ADBC
+## Why <Constant name="fusion" /> uses ADBC
 
 The <Constant name="fusion_engine" /> represents a major evolution in the dbt engine with minimal changes to the authoring layer. Built in Rust, <Constant name="fusion" /> delivers speed, language understanding, and seamless integration with numerous data warehouses. A key aspect of the new engine is its adoption of ADBC &mdash; a modern, open standard from the Apache Arrow project that simplifies columnar data interchange across platforms.
 

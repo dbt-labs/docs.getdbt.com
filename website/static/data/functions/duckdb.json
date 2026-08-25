@@ -2,7 +2,7 @@
   "_meta": {
     "platform": "duckdb",
     "platform_name": "DuckDB",
-    "count": 510
+    "count": 513
   },
   "functions": [
     {
@@ -261,6 +261,13 @@
       "name": "PRODUCT",
       "category": "aggregates",
       "docs_url": "https://duckdb.org/docs/current/sql/functions/aggregates#productarg",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "QUANTILE",
+      "category": "aggregates",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/aggregates#quantilex-pos",
       "preview_status": "GA",
       "fusion_typecheck": true
     },
@@ -3331,6 +3338,13 @@
       "fusion_typecheck": false
     },
     {
+      "name": "GETVARIABLE",
+      "category": "utility",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/utility#getvariablevariable_name",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "GLOB",
       "category": "utility",
       "docs_url": "https://duckdb.org/docs/current/sql/functions/utility#globsearch_path",
@@ -3418,6 +3432,13 @@
       "name": "REPEAT_ROW",
       "category": "utility",
       "docs_url": "https://duckdb.org/docs/current/sql/functions/utility#repeat_rowvarargs-num_rows",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "REPLACE_TYPE",
+      "category": "utility",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/utility#replace_typevalue-source_type-target_type",
       "preview_status": "GA",
       "fusion_typecheck": false
     },

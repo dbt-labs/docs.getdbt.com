@@ -13,13 +13,16 @@ meta:
   slack_channel_link: 'https://getdbt.slack.com/archives/C99SNSRTK'
   platform_name: 'BigQuery'
   config_page: '/reference/resource-configs/bigquery-configs'
+availability:
+  preset: local_free
+  engine: v2
 ---
 
 # BigQuery setup <Lifecycle status='preview' />
 
 You can configure the BigQuery adapter by running `dbt init` in your CLI or manually providing the `profiles.yml` file with the fields configured for your authentication type.
 
-The BigQuery adapter for Fusion supports the following [authentication methods](#supported-authentication-types):
+The BigQuery adapter for <Constant name="fusion" /> supports the following [authentication methods](#supported-authentication-types):
 - Service account (JSON file)
 - gcloud OAuth
 
@@ -29,7 +32,7 @@ dbt user accounts need the following permissions to read from and create tables 
 
 - BigQuery Data Editor
 - BigQuery User
-- BigQuery Read Session User (New in Fusion. For Storage Read API access)
+- BigQuery Read Session User (New in <Constant name="fusion" />. For Storage Read API access)
 
 For BigQuery DataFrames, users need these additional permissions:
 - BigQuery Job User
@@ -38,7 +41,7 @@ For BigQuery DataFrames, users need these additional permissions:
 - Code Creator
 - colabEnterpriseUser
 
-## Configure Fusion
+## Configure <Constant name="fusion" />
 
 Executing `dbt init` in your CLI will prompt for the following fields:
 - **Project ID:** The GCP BigQuery project ID

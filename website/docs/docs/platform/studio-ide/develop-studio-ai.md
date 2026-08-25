@@ -2,13 +2,17 @@
 title: "Develop with AI"
 sidebar_label: "Develop with AI"
 description: "Leverage AI to develop dbt projects in the Studio IDE"
+availability:
+  surface: platform
+  access: paid_plan
+  minPlan: starter
 ---
 
 import CopilotWizardDifferences from '/snippets/_copilot-wizard-diff.md';
 import CopilotResources from '/snippets/_use-copilot-resources.md';
 import WizardIde from '/snippets/_wizard-ide.md';
 
-# Develop with AI in the Studio IDE <Lifecycle status="self_service,managed,managed_plus" />
+# Develop with AI in the Studio IDE
 
 <IntroText>
 Leverage AI to develop dbt projects in the <Constant name="studio_ide" />.
@@ -34,6 +38,8 @@ Use [<Constant name="wizard" />](/docs/dbt-ai/wizard-ide) for autonomous model g
 <WizardIde />
 
 ## dbt Copilot in Studio IDE
+
+_The earlier version of dbt Copilot in the Studio IDE is available only to a limited set of accounts. dbt Wizard is available to all accounts and is the recommended way to develop with AI in the Studio IDE &mdash; it covers everything dbt Copilot's quick actions did, plus multi-step changes with built-in validation._
 
 [dbt Copilot](/docs/dbt-ai/copilot-overview) provides single-click generation of SQL, documentation, tests, and semantic models in <Constant name="studio_ide" />, <Constant name="canvas" />, and <Constant name="insights" />.
 

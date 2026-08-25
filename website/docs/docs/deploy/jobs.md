@@ -5,6 +5,7 @@ description: "Learn about the different job types in dbt and what their differen
 tags: [scheduler]
 pagination_next: "docs/deploy/deploy-jobs"
 hide_table_of_contents: true
+availability: platform_login
 ---
 
 :::info

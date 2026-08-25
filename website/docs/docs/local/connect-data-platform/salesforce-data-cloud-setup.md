@@ -14,6 +14,8 @@ meta:
   slack_channel_link: N/A
   platform_name: 'Salesforce Data 360'
   config_page: '/reference/resource-configs/data-cloud-configs'
+unlisted: true
+availability: local_free
 ---
 
 # Salesforce Data 360 setup <Lifecycle status="beta"/>
@@ -24,7 +26,7 @@ import SalesforcePrereqs from '/snippets/_salesforce-data-cloud-prereqs.md';
 
 <SalesforcePrereqs />
 
-## Configure Fusion
+## Configure <Constant name="fusion" />
 
 To connect dbt to Salesforce Data 360, set up your `profiles.yml`. Refer to the following configuration:
 

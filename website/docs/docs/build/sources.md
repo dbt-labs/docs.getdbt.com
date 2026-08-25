@@ -4,6 +4,7 @@ sidebar_label: "Sources"
 description: "Define data source tables when developing in dbt."
 id: "sources"
 search_weight: "heavy"
+availability: all_users
 ---
 
 ## Related reference docs
@@ -132,7 +133,7 @@ You can find more details on the available properties for sources in the [refere
 ## Source data freshness
 With a couple of extra configs, dbt can optionally capture the "freshness" of the data in your source tables. This is useful for understanding if your data pipelines are in a healthy state, and is a critical component of defining Service Level Agreements (SLAs) for your warehouse.
 
-### Fusion and dbt State
+### <Constant name="fusion" /> and dbt State
 
 import SaoDeprecated from '/snippets/_sao-deprecated.md';
 
@@ -145,7 +146,7 @@ If you're using [dbt State](/docs/deploy/dbt-state-about), use [`lag_tolerance`]
 However, you should still configure source freshness if you want to:
 - Receive SLA alerts when sources don't update within expected timeframes.
 - Define custom freshness logic using `loaded_at_field` or `loaded_at_query` (for example, for streaming data or partial loads).
-- Track freshness for source views. Fusion treats views as "always fresh" since it can't determine freshness from view metadata.
+- Track freshness for source views. <Constant name="fusion" /> treats views as "always fresh" since it can't determine freshness from view metadata.
 
 
 ### Declaring source freshness
@@ -220,7 +221,7 @@ To build models based on source freshness in dbt:
 
 Using these commands in order makes sure models update with the latest data. This eliminates wasted compute cycles on unchanged data and builds models _only_ when necessary. 
 
-Set [source freshness snapshots](/docs/deploy/source-freshness#enabling-source-freshness-snapshots) to 30 minutes to check for source freshness, then run a job which rebuilds every hour to rebuild model. This setup retrieves all the models and rebuild them in one attempt if their source freshness has expired. For more information, refer to [Source freshness snapshot frequency](/docs/deploy/source-freshness#source-freshness-snapshot-frequency).
+Set [source freshness checks](/docs/deploy/source-freshness#enabling-source-freshness-checks) to 30 minutes, then run a job which rebuilds every hour. This setup retrieves all the models and rebuilds them in one attempt if their source freshness has expired. For more information, refer to [Source freshness check frequency](/docs/deploy/source-freshness#source-freshness-check-frequency).
 
 ### Filter
 

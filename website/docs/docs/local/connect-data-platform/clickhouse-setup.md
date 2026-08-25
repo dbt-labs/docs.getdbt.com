@@ -14,6 +14,7 @@ meta:
   slack_channel_link: 'https://getdbt.slack.com/archives/C01DRQ178LQ'
   platform_name: 'Clickhouse'
   config_page: '/reference/resource-configs/clickhouse-configs'
+availability: local_free
 ---
 
 Some core functionality may be limited. If you're interested in contributing, check out the source code for each

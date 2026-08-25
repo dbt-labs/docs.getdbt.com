@@ -2,12 +2,18 @@
 title: freshness
 description: "Read this guide to understand the `freshness` configuration in dbt."
 id: "freshness"
+availability:
+  engine: v2
+  surface: platform
+  access: paid_plan
+  minPlan: enterprise
 ---
-# freshness <Lifecycle status="private_preview,managed,managed_plus" />
+# freshness <Lifecycle status="private_preview" />
  
 <VersionBlock lastVersion="1.99">
 
-:::note Fusion only
+
+:::note <Constant name="fusion" /> only
 Freshness model configurations are only available for the dbt Fusion engine. Refer to [Source data freshness](/docs/build/sources#source-data-freshness) when using dbt Core.
 :::
 

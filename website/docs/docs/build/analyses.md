@@ -3,6 +3,7 @@ title: "Analyses"
 description: "Configure SQL files in dbt to create compiled code used for analyses."
 id: "analyses"
 pagination_next: null
+availability: all_users
 ---
 
 import AnalysesProjectLevelConfig from '/snippets/_analyses-project-level-config.md';
@@ -72,11 +73,7 @@ For more information, refer to [Analysis properties](/reference/analysis-propert
 
 <VersionBlock firstVersion="1.12">
 
-## Project-level configuration <Lifecycle status="beta" />
-
-:::info Beta feature
-The project-level configuration for analyses is a beta feature in <Constant name="core" /> v1.12.
-:::
+## Project-level configuration
 
 You can also configure analyses at the project level in `dbt_project.yml`.
 

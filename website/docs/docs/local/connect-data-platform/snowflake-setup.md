@@ -15,19 +15,20 @@ meta:
   slack_channel_link: 'https://getdbt.slack.com/archives/C01DRQ178LQ'
   platform_name: 'Snowflake'
   config_page: '/reference/resource-configs/snowflake-configs'
+availability: local_free
 ---
 
 import SnowflakeAuth from '/snippets/_snowflake-auth.md';
 
 <VersionBlock firstVersion="2.0">
 
-# Connect Snowflake to Fusion <Lifecycle status='preview' />
+# Connect Snowflake to <Constant name="fusion" /> <Lifecycle status='preview' />
 
 <SnowflakeAuth />
 
 You can configure the Snowflake adapter by running `dbt init` in your CLI or manually providing the `profiles.yml` file with the fields configured for your authentication type. To check out which Snowflake functions are supported in <Constant name="fusion"/> in `strict` mode, refer to [Snowflake function support](/reference/resource-configs/snowflake-function-support).
 
-The Snowflake adapter for Fusion supports the following [authentication methods](#supported-authentication-types):
+The Snowflake adapter for <Constant name="fusion" /> supports the following [authentication methods](#supported-authentication-types):
 - Password 
 - Key pair
 - Single sign-on (SSO)
@@ -55,7 +56,7 @@ The information required for configuring the Snowflake adapter can be found conv
 
 <Lightbox src="/img/fusion/connect-adapters/snowflake-account-details.png" width="60%" title="Sample config file in Snowflake." />
 
-## Configure Fusion
+## Configure <Constant name="fusion" />
 
 Executing `dbt init` in your CLI will prompt for the following fields:
 
@@ -335,9 +336,9 @@ my-snowflake-db:
 
 </File>
 
-#### dbt Fusion engine key formats
+#### <Constant name="fusion_engine" /> key formats
 
-Fusion requires modern key formats and doesn't support legacy 3DES encryption or headerless keys.  We recommend using PKCS#8 format with AES-256 encryption for key pair authentication with Fusion. Using older key formats may cause authentication failures.
+<Constant name="fusion" /> requires modern key formats and doesn't support legacy 3DES encryption or headerless keys.  We recommend using PKCS#8 format with AES-256 encryption for key pair authentication with <Constant name="fusion" />. Using older key formats may cause authentication failures.
 
 If you encounter the `Key is PKCS#1 (RSA private key). Snowflake requires PKCS#8` error, then your private key is in the wrong format. You have two options:
 
@@ -452,7 +453,7 @@ The "base" configs for Snowflake targets are shown below. Note that you should a
 ### account
 For AWS accounts in the US West default region, you can use `abc123` (without any other segments). For some AWS accounts you will have to append the region and/or cloud platform. For example, `abc123.eu-west-1` or `abc123.eu-west-2.aws`. 
 
-For GCP and Azure-based accounts, you have to append the region and cloud platform, such as `gcp` or `azure`, respectively. For example, `abc123.us-central1.gcp`. For details, see Snowflake's documentation: "[Specifying Region Information in Your Account Hostname](https://docs.snowflake.com/en/user-guide/intro-regions.html#specifying-region-information-in-your-account-hostname)". 
+For GCP and Azure-based accounts, you have to append the region and may have to add the cloud platform, such as `.gcp` or `.azure`, respectively. For example, `abc123.us-central1.gcp`. However, if you get a `404` error attempting to connect, try again without the appended platform (for example, drop the `.azure`). For details, see Snowflake's documentation: "[Specifying Region Information in Your Account Hostname](https://docs.snowflake.com/en/user-guide/intro-regions.html#specifying-region-information-in-your-account-hostname)". 
 
 Please also note that the Snowflake account name should only be the `account_name` without the prefixed `organization_name`.  To determine if the region and/or cloud platform needs to be appended to the account locator in the legacy format, see Snowflake's documentation on "[Non-VPS account locator formats by cloud platform and region](https://docs.snowflake.com/en/user-guide/admin-account-identifier#non-vps-account-locator-formats-by-cloud-platform-and-region)".
 

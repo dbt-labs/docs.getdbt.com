@@ -54,7 +54,8 @@ If your `generate_schema_name` macro looks like so:
     {{ generate_schema_name_for_env(custom_schema_name, node) }}
 {%- endmacro %}
 ```
-Your project is switching out the `generate_schema_name` macro for another macro, `generate_schema_name_for_env`. Similar to the above example, this is a macro which is defined in dbt's global project, [here](https://github.com/dbt-labs/dbt-adapters/blob/main/dbt/include/global_project/macros/get_custom_name/get_custom_schema.sql).
+Your project is switching out the `generate_schema_name` macro for another macro, `generate_schema_name_for_env`. Similar to the above example, this is a macro which is defined in dbt's global project, [here](https://github.com/dbt-labs/dbt-core/blob/main/crates/dbt-loader/src/dbt_macro_assets/dbt-adapters/macros/get_custom_name/get_custom_schema.sql).
+
 ```sql
 {% macro generate_schema_name_for_env(custom_schema_name, node) -%}
 
@@ -93,6 +94,32 @@ Now, re-read through the logic of your `generate_schema_name` macro, and mentall
 You should find that the schema dbt is constructing for your model matches the output of your `generate_schema_name` macro.
 
 Be careful. Snapshots do not follow this behavior if target_schema is set. To have environment-aware snapshots in v1.9+ or <Constant name="dbt" />, remove the [target_schema config](/reference/resource-configs/target_schema) from your snapshots. If you still want a custom schema for your snapshots, use the [`schema`](/reference/resource-configs/schema) config instead.
+
+## Prefixed schema names
+
+By default, dbt combines `target.schema` and `custom_schema_name` using the following pattern:
+`{target.schema}_{custom_schema_name}`.
+
+For example, when `target.schema` is `public` and a model sets `+schema: silver`, dbt builds the model in `public_silver`, not `silver`.
+
+This behavior is intentional. Including `target.schema` helps prevent developers and continuous integration (CI) jobs from building into the same schema and overwriting one another’s relations.
+
+If you want to use dedicated schema names such as `silver` and `gold` in production, use the environment-aware [`generate_schema_name_for_env` pattern](#you-have-a-generate_schema_name-macro-in-a-project-that-calls-another-macro) shown earlier. This pattern uses the custom schema name when `target.name` is `prod`, while retaining the target schema in development and CI environments.
+
+The macro looks like this:
+
+```sql
+{% macro generate_schema_name_for_env(custom_schema_name, node) -%}
+    {%- set default_schema = target.schema -%}
+    {%- if target.name == 'prod' and custom_schema_name is not none -%}
+        {{ custom_schema_name | trim }}
+    {%- else -%}
+        {{ default_schema }}
+    {%- endif -%}
+{%- endmacro %}
+```
+
+Verify actual relation locations with `dbt ls --output json` or by querying your warehouse catalog (`pg_views`, `information_schema.tables`, or equivalent).
 
 ## Adjust as necessary
 

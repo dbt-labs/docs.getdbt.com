@@ -24,7 +24,7 @@ Most of the `dbt debug` flags apply to the <Constant name="core" /> CLI. Some fl
 
 - <Constant name="core" /> CLI: Supports all flags.
 - <Constant name="studio_ide" />: Only supports dbt `debug` and `dbt debug --connection`.
-- <Constant name="platform_cli" />: Only supports dbt `debug` and `dbt debug --connection`. You can also use the [`dbt environment`](/reference/commands/dbt-environment) command to interact with your <Constant name="dbt" /> environment. 
+- <Constant name="platform_cli" />: Only supports dbt `debug` and `dbt debug --connection`. You can also use the [`dbt environment`](/reference/commands/dbt-environment?version=2.0) command to interact with your <Constant name="dbt" /> environment. 
 
 `dbt debug` supports the following flags in your terminal when using the command line interface (CLI):
 
@@ -164,9 +164,6 @@ Options:
                 by overriding the default value and the
                 general --use-colors/--no-use-colors
                 setting.
-
- --use-experimental-parser / --no-use-experimental-parser
-                Enable experimental parsing features.
 
  -V, -v, --version        
                 Show version information and exit

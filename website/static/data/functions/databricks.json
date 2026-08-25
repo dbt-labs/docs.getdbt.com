@@ -2,7 +2,7 @@
   "_meta": {
     "platform": "databricks",
     "platform_name": "Databricks",
-    "count": 757
+    "count": 773
   },
   "functions": [
     {
@@ -139,6 +139,13 @@
       "fusion_typecheck": true
     },
     {
+      "name": "AI_SEARCH",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/ai_search",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "AI_SIMILARITY",
       "category": "Built-in",
       "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/ai_similarity",
@@ -151,6 +158,13 @@
       "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/ai_summarize",
       "preview_status": "GA",
       "fusion_typecheck": true
+    },
+    {
+      "name": "AI_TOP_DRIVERS",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/ai_top_drivers",
+      "preview_status": "GA",
+      "fusion_typecheck": false
     },
     {
       "name": "AI_TRANSLATE",
@@ -706,6 +720,13 @@
       "fusion_typecheck": true
     },
     {
+      "name": "CLASSIFIER",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/classifier",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "CLOUD_FILES_STATE",
       "category": "Built-in",
       "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/cloud_files_state",
@@ -804,6 +825,13 @@
       "fusion_typecheck": true
     },
     {
+      "name": "COPY_FILE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/copy_file",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "CORR",
       "category": "Built-in",
       "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/corr",
@@ -872,6 +900,13 @@
       "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/crc32",
       "preview_status": "GA",
       "fusion_typecheck": true
+    },
+    {
+      "name": "CREATE_FILE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/create_file",
+      "preview_status": "GA",
+      "fusion_typecheck": false
     },
     {
       "name": "CSC",
@@ -1994,6 +2029,13 @@
       "fusion_typecheck": false
     },
     {
+      "name": "ISEARCH",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/isearch",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "ISFALSE",
       "category": "Built-in",
       "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/isfalse",
@@ -2302,6 +2344,13 @@
       "fusion_typecheck": true
     },
     {
+      "name": "LIST_FILES",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/list_files",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "LIST_SECRETS",
       "category": "Built-in",
       "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/list_secrets",
@@ -2538,6 +2587,41 @@
       "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/mask",
       "preview_status": "GA",
       "fusion_typecheck": true
+    },
+    {
+      "name": "MATCH_NUMBER",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/match_number",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "MATCH_RECOGNIZE_FIRST",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/match_recognize_first",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "MATCH_RECOGNIZE_LAST",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/match_recognize_last",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "MATCH_RECOGNIZE_NEXT",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/match_recognize_next",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "MATCH_RECOGNIZE_PREV",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/match_recognize_prev",
+      "preview_status": "GA",
+      "fusion_typecheck": false
     },
     {
       "name": "MAX",
@@ -3280,6 +3364,13 @@
       "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/schema_of_xml",
       "preview_status": "GA",
       "fusion_typecheck": true
+    },
+    {
+      "name": "SEARCH",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/search",
+      "preview_status": "GA",
+      "fusion_typecheck": false
     },
     {
       "name": "SEC",
@@ -4507,6 +4598,13 @@
       "fusion_typecheck": true
     },
     {
+      "name": "TO_FILE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/to_file",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "TO_GEOGRAPHY",
       "category": "Built-in",
       "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/to_geography",
@@ -4654,6 +4752,13 @@
       "fusion_typecheck": false
     },
     {
+      "name": "TRY_COPY_FILE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/try_copy_file",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "TRY_DIVIDE",
       "category": "Built-in",
       "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/try_divide",
@@ -4757,6 +4862,13 @@
       "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/try_to_binary",
       "preview_status": "GA",
       "fusion_typecheck": true
+    },
+    {
+      "name": "TRY_TO_FILE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/try_to_file",
+      "preview_status": "GA",
+      "fusion_typecheck": false
     },
     {
       "name": "TRY_TO_GEOGRAPHY",

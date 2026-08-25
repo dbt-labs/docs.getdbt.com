@@ -4,6 +4,9 @@ id: about-defer
 description: "Learn how to leverage defer to prod when developing with dbt."
 sidebar_label: "Defer in dbt"
 pagination_next: "docs/about-dbt-extension"
+availability:
+  surface: platform
+  access: login_required
 ---
 
 
@@ -48,9 +51,22 @@ For example, if you were to start developing on a new branch with [nothing in yo
 
 <Lightbox src="/img/docs/dbt-platform/defer-toggle.png" width="100%" title="Select the 'Defer to production' toggle on the bottom right of the command bar to enable defer in the Studio IDE."/>
 
-### Defer in dbt CLI
+### Defer in dbt platform CLI
 
 One key difference between using `--defer` in the <Constant name="platform_cli" /> and the <Constant name="studio_ide" /> is that `--defer` is *automatically* enabled in the <Constant name="platform_cli" /> for all invocations, compared with production artifacts. You can disable it with the `--no-defer` flag.
+
+<VersionBlock firstVersion="2.0">
+A <Constant name="dbt_platform"/> project id must be declared in your `dbt_project.yml` for automatic deferral to associate your project with what is declared in your `dbt_cloud.yml`.
+
+<File name="dbt_project.yml">
+
+```yml
+dbt-cloud:
+  project-id: '654321'
+```
+
+</File>
+</VersionBlock>
 
 ### Configure deferral environment ID
 
@@ -74,6 +90,7 @@ context:
 
 ```yml
 dbt-cloud:
+  project-id: '654321'
   defer-env-id: '123456'
 ```
 

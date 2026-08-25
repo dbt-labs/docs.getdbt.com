@@ -15,17 +15,18 @@ meta:
   slack_channel_link: 'https://getdbt.slack.com/archives/CNGCW8HKL'
   platform_name: 'Spark'
   config_page: '/reference/resource-configs/spark-configs'
+availability: local_free
 ---
 
 <VersionBlock firstVersion="2.0">
 
-# Connect Apache Spark to Fusion <Lifecycle status="beta" />
+# Connect Apache Spark to <Constant name="fusion" /> <Lifecycle status="beta" />
 
 The <Constant name="fusion_engine" /> supports Apache Spark, enabling faster compilation and execution for your Spark-based dbt projects. Currently, <Constant name="fusion" /> only supports Apache Spark 3.0.
 
-## Fusion and Spark
+## <Constant name="fusion" /> and Spark
 
-<Constant name="fusion" /> uses the Databricks SQL dialect for [static analysis](/docs/fusion/new-concepts#principles-of-static-analysis) when working with Spark. Databricks SQL is a superset of Spark SQL, so your SQL is validated with Databricks semantics. This provides comprehensive error checking and SQL comprehension features. A dedicated Spark SQL dialect for static analysis is planned for a future release.
+<Constant name="fusion" /> uses the Databricks SQL dialect for [static analysis](/docs/build/about-static-analysis#principles-of-static-analysis) when working with Spark. Databricks SQL is a superset of Spark SQL, so your SQL is validated with Databricks semantics. This provides comprehensive error checking and SQL comprehension features. A dedicated Spark SQL dialect for static analysis is planned for a future release.
 
 
 ## Authentication
@@ -40,7 +41,7 @@ The Spark adapter in <Constant name="fusion" /> supports:
   - When deployed on Amazon Web Services (AWS): AWS Signature Version 4
     - Supports authentication using single sign-on, service accounts, or user tokens
 
-## Configure Fusion
+## Configure <Constant name="fusion" />
 
 Configure your Spark connection in `profiles.yml`:
 

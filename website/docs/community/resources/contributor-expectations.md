@@ -73,7 +73,7 @@ Comment on it! Explain that you've run into the same bug, or had a similar idea 
 
 In our most critical repositories (such as `dbt-core`), our goal is to respond to new issues as soon as possible. This initial response will often be a short acknowledgement that the maintainers are aware of the issue, signalling our perception of its urgency. Depending on the nature of your issue, it might be well suited to an external contribution, from you or another community member.
 
-**What if you're opening an issue in a different repository?** We have engineering teams dedicated to active maintenance of [`dbt-core`](https://github.com/dbt-labs/dbt-core) (v1 and v2), as well as the component libraries of v1 ([`dbt-common`](https://github.com/dbt-labs/dbt-common) + [`dbt-adapters`](https://github.com/dbt-labs/dbt-adapters) (also includes the dbt Labs managed adapters)). The `dbt-core` repository is also the home of dbt Core v2, the open-source Rust-based foundation built on the Fusion runtime; this code previously lived in ([`dbt-fusion`](https://github.com/dbt-labs/dbt-fusion)). We've open-sourced a number of other software projects over the years, and the majority of them do not have the same activity or maintenance guarantees. Check to see if other recent issues have responses, or when the last commit was added to the `main` branch.
+**What if you're opening an issue in a different repository?** We have engineering teams dedicated to active maintenance of [`dbt-core`](https://github.com/dbt-labs/dbt-core) (v1 and v2), as well as the component libraries of v1 ([`dbt-common`](https://github.com/dbt-labs/dbt-common) + [`dbt-adapters`](https://github.com/dbt-labs/dbt-adapters) (also includes the dbt Labs managed adapters)). The `dbt-core` repository is also the home of dbt Core v2.0, the open-source Rust-based foundation built on the Fusion runtime; this code previously lived in ([`dbt-fusion`](https://github.com/dbt-labs/dbt-fusion)). We've open-sourced a number of other software projects over the years, and the majority of them do not have the same activity or maintenance guarantees. Check to see if other recent issues have responses, or when the last commit was added to the `main` branch.
 
 **You're not sure about the status of your issue.** If your issue is in an actively maintained repo and has a `triage` label attached, we're aware it's something that needs a response. If the issue has been triaged, but not prioritized, this could mean:
 
@@ -90,18 +90,19 @@ In all likelihood, the maintainer who responds will also add a number of labels.
 
 In some cases, the right resolution to an open issue might be tangential to the codebase. The right path forward might be in another codebase (we'll transfer it), a documentation update, or a change that you can make yourself in user-space code. In other cases, the issue might describe functionality that the maintainers are unwilling or unable to incorporate into the main codebase. In these cases, a maintainer will close the issue (perhaps using a `wontfix` label) and explain why.
 
-Some of the most common labels are explained below:
+Many labels follow a namespaced `facet:value` model, where each facet answers one question about an issue — the kind of work it is, which subsystem it touches, which dbt engine it targets, and so on. Some facets take exactly one value; others can take several. You don't need to apply these yourself, but knowing what they mean helps you follow an issue's status.
 
-| tag                | description                                                                                                                                                                                                                                                            |
-| ------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `triage`           | This is a new issue which has not yet been reviewed by a maintainer. This label is removed when a maintainer reviews and responds to the issue.                                                                                                                        |
-| `bug`              | This issue represents a defect or regression from the behavior that's documented                                                                                                                                                        |
-| `enhancement`      | This issue represents a narrow extension of an existing capability                                                                                                                                                                          |
-| `good_first_issue` | This issue does not require deep knowledge of the codebase to implement, and it is appropriate for a first-time contributor.                                                                                                                                       |
-| `help_wanted`      | This issue is trickier than a "good first issue." The required changes are scattered across the codebase, or more difficult to test. The maintainers are happy to help an experienced community contributor; they aren't planning to prioritize this issue themselves. |
-| `duplicate`        | This issue is functionally identical to another open issue. The maintainers will close this issue and encourage community members to focus conversation on the other one.                                                                                              |
-| `stale`            | This is an old issue which has not recently been updated. In repositories with a lot of activity, stale issues will periodically be closed.                                                                                                                            |
-| `wontfix`          | This issue does not require a code change in the repository, or the maintainers are unwilling to merge a change which implements the proposed behavior.                                                                                                                |
+| Facet | Example values | What it means |
+| --- | --- | --- |
+| `type:` | `type:bug`, `type:feature`, `type:docs`, `type:tech-debt`, `type:epic`, `type:good-first-issue` | The kind of work. Exactly one per issue. |
+| `area:` | `area:static-analysis`, `area:engine`, `area:compute`, `area:adapters`, `area:vscode`, `area:wizard`, `area:autofix`, `area:cicd` | Which subsystem the issue touches. |
+| `adapter:` | `adapter:bigquery`, `adapter:snowflake`, `adapter:databricks`, `adapter:postgres`, … | Which adapter or SQL dialect is involved. |
+| `engine:` | `engine:v1`, `engine:v2` | Which dbt engine the issue concerns: `engine:v1` is the Python engine (<Constant name="core_v1" />); `engine:v2` is the v2 Rust rewrite that powers <Constant name="core_v2" /> and the <Constant name="fusion_engine" />. |
+| `priority:` | `priority:p0`, `priority:p1`, `priority:p2` | Maintainer triage urgency. |
+| `status:` | `status:triage`, `status:needs-repro`, `status:has-repro`, `status:ready-for-review` | Where the issue sits in the workflow. |
+| `resolution:` | `resolution:wontfix` | Why an issue was closed without a code change. |
+
+Automation labels new issues for triage — currently with both the faceted `status:triage` and the legacy `triage` label while it migrates to the faceted set — to mark them as awaiting a maintainer's first response. Older issues may also carry previous, un-namespaced labels such as `bug`, `enhancement`, `good_first_issue`, `help_wanted`, `duplicate`, `stale`, and `wontfix`. These map onto the faceted labels above (`bug` → `type:bug`, `enhancement` → `type:feature`, `good_first_issue` → `type:good-first-issue`, `wontfix` → `resolution:wontfix`, and so on) and remain in place for continuity. You may see either set while the transition settles.
 
 ### Pull requests
 
@@ -121,6 +122,7 @@ Some of the most common labels are explained below:
 - **Tests, tests, tests.** When you open a PR, some tests and code checks will run. (For security reasons, some may need to be approved by a maintainer.) We will not merge any PRs with failing tests. If you're not sure why a test is failing, please say so, and we'll do our best to get to the bottom of it together.
 - **Contributor License Agreement** (CLA): This ensures that we can merge your code, without worrying about unexpected implications for the copyright or license of open source or source-available dbt software. For more details, read: ["Contributor License Agreements"](../resources/contributor-license-agreements.md)
 - **Changelog:** In projects that include a number of changes in each release, we need a reliable way to signal what's been included. The mechanism for this will vary by repository, so keep an eye out for notes about how to update the changelog.
+- **Semver label:** Some repositories require every pull request to carry exactly one `semver:patch` (bug fixes and other safe changes) or `semver:minor` (new, non-breaking features) label; `semver:major` isn't accepted. Where this applies, CI enforces it.
 
 ### Inclusion in release versions
 
@@ -130,8 +132,8 @@ Both bug fixes and backwards-compatible new features will be included in the [ne
 
 #### <Constant name="core_v2" />
 
-[<Constant name="core_v2" />](/docs/dbt-versions/core-upgrade/upgrading-to-v2) is the next major version of dbt Core, built on the Fusion runtime. Contributions to `dbt-core` targeting the v2.x series follow the same principles as v1.x: bug fixes and backwards-compatible features are included in the next available release. Because Core v2 is currently in alpha, we will be releasing new versions rapidly as we get closer to the final v2.0.0 release (General Availability).
+[<Constant name="core_v2" />](/docs/dbt-versions/core-upgrade/upgrading-to-v2) is the next major version of dbt Core, built on the Fusion runtime. Contributions to `dbt-core` targeting the v2.x series follow the same principles as v1.x: bug fixes and backwards-compatible features are included in the next available release. Because Core v2 is currently in beta, we will be releasing new versions rapidly as we get closer to the final v2.0.0 release (General Availability).
 
 #### <Constant name="fusion_engine" />
 
-The <Constant name="fusion_engine" /> is released continuously, and it contains a superset of the code and functionality available in <Constant name="core_v2" />. When Core v2.0.0 is released (General Availability), the version numbers for Core v2 and Fusion will converge.
+The <Constant name="fusion_engine" /> is released continuously, and it contains a superset of the code and functionality available in <Constant name="core_v2" />. When Core v2.0.0 is released (General Availability), the version numbers for Core v2 and <Constant name="fusion" /> will converge.

@@ -3,9 +3,12 @@ title: "Connect Snowflake"
 id: connect-snowflake
 description: "Configure Snowflake connection."
 sidebar_label: "Connect Snowflake"
+availability:
+  surface: platform
+  access: login_required
 ---
 
-# Connect Snowflake <ProductCard text="Fusion compatible" />
+# Connect Snowflake <Lifecycle status="ga" /> <ProductCard text="Fusion compatible" />
 
 import SnowflakeColumn from '/snippets/_snowflake-column-size.md';
 
@@ -16,7 +19,7 @@ import SnowflakeColumn from '/snippets/_snowflake-column-size.md';
 Refer to [Snowflake permissions](/reference/database-permissions/snowflake-permissions) for more information about customizing roles in Snowflake. To see which Snowflake functions are supported in <Constant name="fusion"/> in `strict` mode, refer to [Snowflake function support](/reference/resource-configs/snowflake-function-support).
 
 
-## Warehouse permissions for Fusion
+## Warehouse permissions for <Constant name="fusion" />
 
 import FusionSnowflakeWarehousePerms from '/snippets/_fusion-warehouse-permissions-snowflake.md';
 
@@ -37,11 +40,11 @@ The following fields are required when creating a Snowflake connection:
 
 ## Authentication methods
 
-This section describes the different authentication methods for connecting <Constant name="dbt" /> to Snowflake. Configure deployment environment (Production, Staging, General) credentials globally in the [**Connections**](/docs/deploy/deploy-environments#deployment-connection) area of **Account settings**. Individual users configure their development credentials in the [**Credentials**](/docs/platform/studio-ide/develop-in-studio#get-started-with-the-studio-ide) area of their user profile.
+This section describes the different authentication methods for connecting <Constant name="dbt" /> to Snowflake. Configure deployment environment (Production, Staging, General) credentials globally in the [**Connections**](/docs/deploy/deploy-environments#deployment-connection) area of **Account settings**. Individual users configure their user credentials in the [**Credentials**](/docs/platform/studio-ide/develop-in-studio#get-started-with-the-studio-ide) area of their user profile.
 
 :::note Snowflake authentication in the dbt platform
 
-You cannot create new Snowflake credentials with username and password in <Constant name="dbt_platform" />. New development and deployment credentials default to [key pair](#key-pair) authentication. For development credentials on Enterprise-tier plans, [Snowflake OAuth](#snowflake-oauth) is also available when configured on the connection. To update existing password credentials, refer to [Username and password with MFA](#username-and-password-with-mfa).
+You cannot create new Snowflake credentials with username and password in <Constant name="dbt_platform" />. New development and deployment credentials default to [key pair](#key-pair) authentication. For user credentials on Enterprise-tier plans, [Snowflake OAuth](#snowflake-oauth) is also available when configured on the connection. To update existing password credentials, refer to [Username and password with MFA](#username-and-password-with-mfa).
 
 :::
 

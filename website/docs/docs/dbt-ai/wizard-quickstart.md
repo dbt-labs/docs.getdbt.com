@@ -1,10 +1,10 @@
 ---
-title: "Get started with the dbt Wizard local CLI"
+title: "Use dbt Wizard locally"
 id: "wizard-quickstart"
 description: "Install the dbt Wizard local CLI, complete first-run onboarding, and send your first prompt from the terminal."
-sidebar_label: "Get started with the local CLI"
+sidebar_label: "Use dbt Wizard locally"
 tags: [AI, CLI, dbt Wizard]
-hide_table_of_contents: true
+availability: local_all
 ---
 
 import WizardPrompts from '/snippets/wizard-prompts.md';
@@ -15,17 +15,19 @@ import NewToTerminal from '/snippets/_new-to-terminal.md';
 import WizardFeedbackCallout from '/snippets/_wizard-feedback-callout.md';
 import WizardCliDbtCliSupport from '/snippets/_wizard-cli-dbt-cli-support.md';
 
-# Get started with the <Constant name="wizard" /> local CLI
+# Use <Constant name="wizard" /> locally
 
 <IntroText>
 Install <Constant name="wizard" /> locally and start an agentic dbt development session from your terminal.
 </IntroText>
 
+<WizardCliDbtCliSupport />
+
 <WizardCliInstall />
 
 By the end of this guide, you can install <Constant name="wizard" /> locally, authenticate with your <Constant name="dbt_platform" /> credentials if applicable, complete first-run onboarding, and send your first prompt from the terminal.
 
-<Constant name="wizard" /> is data warehouse agnostic and works with both the [<Constant name="fusion_engine" />](/docs/fusion) and [<Constant name="core" />](/docs/local/install-dbt) &mdash; no specific engine is required.
+<Constant name="wizard" /> is data warehouse agnostic and works with both the [<Constant name="fusion_engine" />](/docs/fusion/about-fusion) and [<Constant name="core" />](/docs/local/install-dbt) &mdash; no specific engine is required.
 
 Be warned, the wizard has been known to <WizardPopcorn>cast spells</WizardPopcorn>.
 
@@ -43,10 +45,8 @@ On <Constant name="fusion_engine"/> (version 2.0 and later), start <Constant nam
 
 You'll need:
 
-- An OpenAI subscription, or your own API key or provider credentials for a supported provider using [BYOK](/docs/dbt-ai/wizard-byok): OpenAI, Anthropic, AWS Bedrock, Azure, or Snowflake Cortex (preview)
+- An OpenAI subscription, or your own API key or provider credentials for a supported provider using [BYOK](/docs/dbt-ai/wizard-byok): OpenAI, Anthropic, AWS Bedrock, Azure, Snowflake Cortex (preview), or Databricks
 - A dbt project with a built `target/` directory (run `dbt parse`, `dbt compile`, or `dbt build`)
-
-<WizardCliDbtCliSupport />
 
 <NewToTerminal />
 
@@ -86,6 +86,10 @@ For refactor or change requests, <Constant name="wizard" /> automatically assess
 
 When <Constant name="wizard" /> manages deferral, you point it at a target in your `profiles.yml` and it compiles and defers to that target automatically, so it can validate against already-built upstream models without rebuilding everything. Refer to [Deferral and state](/docs/dbt-ai/wizard-how-it-works#deferral-and-state) and [About dbt State](/docs/deploy/dbt-state-about) for details.
 
+:::tip Best practices for using dbt Wizard
+Once you're set up, refer to [How to use dbt Wizard in your dbt project](/best-practices/how-to-use-wizard/wizard-1-intro) for recommended workflows on real project tasks.
+:::
+
 ## Useful terminal commands
 
 Use the following commands to get started:
@@ -115,7 +119,7 @@ If you want to re-run onboarding — re-authenticate, reset project config, or r
 - [Use cases and examples](/docs/dbt-ai/wizard-use-cases) for realistic analytics engineering scenarios
 - [Install and update reference](/docs/dbt-ai/wizard-cli) for full install, update, and uninstall details
 - [Configure BYOK](/docs/dbt-ai/wizard-byok) for managing your API key and choosing an AI model
-- [Configuration reference](/docs/dbt-ai/wizard-config) for setting persistent defaults in `config.toml` and per-project dbt settings in `wizard_config.toml`
+- [How to use dbt Wizard in your dbt project](/best-practices/how-to-use-wizard/wizard-1-intro) for recommended workflows
 - [Use skills locally](/docs/dbt-ai/wizard-skills) for giving Wizard reusable instructions for your project
 - [Use MCP servers](/docs/dbt-ai/wizard-mcp) to connect <Constant name="wizard" /> CLI to more tools and context
 - [Migrate from Claude Code](/docs/dbt-ai/wizard-migrate) for bringing existing Claude Code project context into <Constant name="wizard" />

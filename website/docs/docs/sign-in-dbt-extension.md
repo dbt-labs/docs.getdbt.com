@@ -3,6 +3,7 @@ title: Sign in or register the dbt VS Code extension
 id: sign-in-dbt-extension
 description: "Sign in or register to unlock advanced features in the dbt VS Code extension."
 sidebar_label: "Sign in or register"
+availability: local_all
 ---
 
 import FusionTroubleshooting from '/snippets/_fusion-troubleshooting.md';
@@ -13,22 +14,22 @@ import AuthorizeAdditionalAccess from '/snippets/_vsce-authorize-additional-acce
 
 The dbt VS Code extension comes with a suite of features that are available to all users for 14 days. After the 14-day trial, sign in or register for a <Constant name="dbt_platform" /> account to keep using all features, including advanced features such as [live preview for models and CTEs](/docs/dbt-extension-features#live-preview-for-models-and-ctes), [column-level lineage](/docs/dbt-extension-features#rich-lineage-in-context), and more.
 
-Refer to [VS Code extension features](/docs/fusion/fusion-availability?version=1.13#dbt-vs-code-extension-features) for the full list of features and their availability.
+Refer to [VS Code extension features](/docs/dbt-extension-features#feature-availability) for the full list of features and their availability.
 
 Most features remain available without signing in &mdash; only advanced features prompt you to sign in after the trial ends.
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.13">
 
-To continue using all the features, register or login using [`dbt login`](/reference/commands/login), available from dbt Core v1.12 and later, from the command line. Your login state can be shared across dbt features, including the dbt VS Code extension and dbt State.
+To continue using all the features, register or log in from the command line using [`dbt login`](/reference/commands/login?version=2.0), available with v2 and later. Your login state can be shared across dbt features, including the dbt VS Code extension and, in supported versions, dbt State.
 
 </VersionBlock>
 
-Run [`dbt login status`](/reference/commands/login#dbt-login-status) to view your currently authenticated status.
+Run [`dbt login status`](/reference/commands/login?version=2.0#dbt-login-status) to view your currently authenticated status.
 
 ## Key points
 
 - The extension is free for organizations for up to 15 users. Refer to the [acceptable use policy](https://www.getdbt.com/dbt-assets/vscode-plugin-aup).
-- Registration links your editor to your registered <Constant name="dbt_platform" /> account so you can keep using gated features after the 14-day trial.
+- Registration links your editor to your registered <Constant name="dbt_platform" /> account so you can keep using advanced features after the 14-day trial.
 - You can authenticate with `dbt login` or register from inside the extension. If you don't have a <Constant name="dbt_platform" /> account, you can create a free account during authentication to unlock advanced features.
 - If a valid [`dbt_cloud.yml`](/reference/dbt_cloud.yml) file exists on your machine, the extension can use it automatically.
 
@@ -39,7 +40,7 @@ If you've registered before, you won't need to authenticate again unless your se
 Your sign-in session stays active across editor restarts. dbt automatically renews your session while you're using the extension or the CLI. You may need to re-authorize in a few specific cases:
 
 - **Session expired after 7 days of inactivity.** The extension shows the message: "Your dbt extension session expired. Sign in again to continue using the extension." Click the prompt or run **dbt: Register dbt extension** from the command palette to sign in again.
-- **A feature needs broader access than your initial sign-in granted.** [`dbt login`](/reference/commands/login) and the dbt VS Code extension may request different sets of permissions. If you signed in via `dbt login` and later use an extension feature that needs more access (for example, the catalog tab or running a job), the extension prompts you to re-authorize. You'll re-authorize with the same <Constant name="dbt_platform" /> account &mdash; you don't need a second account.
+- **A feature needs broader access than your initial sign-in granted.** [`dbt login`](/reference/commands/login?version=2.0) and the dbt VS Code extension may request different sets of permissions. If you signed in via `dbt login` and later use an extension feature that needs more access (for example, the catalog tab or running a job), the extension prompts you to re-authorize. You'll re-authorize with the same <Constant name="dbt_platform" /> account &mdash; you don't need a second account.
 - **You authenticated with `dbt_cloud.yml` instead of OAuth.** File-based credentials don't expire on the 7-day inactivity rule. You only re-authenticate if you regenerate the file or it's removed.
 
 When re-authorizing, the **Authorize dbt login** consent screen lists the access being requested. Click **Allow access** to continue.
@@ -65,7 +66,7 @@ There are a couple of different ways to sign in or register for a <Constant name
 
 <VersionBlock lastVersion="1.99">
 
-`dbt login` is available in <Constant name="core" /> v2.0 and later. To install the dbt VS Code extension, [upgrade your project to the <Constant name="fusion_engine" />](/docs/upgrade-to-fusion-extension).
+`dbt login` is available with v2 and later. To install the dbt VS Code extension, [upgrade your project to <Constant name="fusion" />](/docs/upgrade-to-fusion-extension).
 
 </VersionBlock>
 
@@ -93,7 +94,7 @@ Use this path if you prefer the terminal or want a single auth flow that works a
 
 <AuthorizeAdditionalAccess />
 
-You've now unlocked the full feature set of the dbt VS Code extension. For details on what `dbt login` unlocks across tools, refer to the [`dbt login` reference](/reference/commands/login).
+You've now unlocked the full feature set of the dbt VS Code extension. For details on what `dbt login` unlocks across tools, refer to the [`dbt login` reference](/reference/commands/login?version=2.0).
 
 </TabItem>
 

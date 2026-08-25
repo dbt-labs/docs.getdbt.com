@@ -4,6 +4,7 @@ sidebar_label: "Configure deferral"
 description: "Configure which environment dbt State defers to, including project and org disambiguation and deferral target customization."
 id: "dbt-state-deferral"
 tags: ['dbt State'] 
+availability: everywhere_usage
 ---
 
 # Configuring deferral in dbt State <Lifecycle status="preview" />
@@ -14,7 +15,7 @@ By default, dbt State defers to your production environment. Both sections on th
 
 By default, dbt State defers to your production environment. You only need to configure this if you want to change that behavior:
 
-- **<Constant name="dbt_platform" />**: To defer to an environment other than the default (for example, staging), add `defer-env-id` to the `dbt-cloud` block in `dbt_project.yml`. Refer to [Configure Cloud CLI](/docs/platform/dbt-cli-installation) for more information.
+- **<Constant name="dbt_platform" />**: To defer to an environment other than the default (for example, staging), add `defer-env-id` to the `dbt-cloud` block in `dbt_project.yml`. Refer to [Configure the <Constant name="platform_cli" />](/docs/platform/dbt-cli-installation) for more information.
 
   <File name="dbt_project.yml">
 

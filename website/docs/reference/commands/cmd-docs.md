@@ -122,29 +122,97 @@ As of 1.8.1, the default host is `127.0.0.1`. For versions 1.8.0 and prior, the 
 
 <VersionBlock firstVersion="2.0">
 
-The <Constant name="fusion_engine" /> uses the `--write-catalog` flag instead of the `dbt docs generate` command for generating your [`catalog.json`](/reference/artifacts/catalog-json) file and hydrating metadata. When you use `dbt build --write-catalog`, you're using a flag that performs better because it's built for the Fusion engine. To see the latest metadata in <Constant name="catalog" />, run a job in <Constant name="dbt_platform" /> which uploads the metadata.
+With the <Constant name="fusion_engine" /> and <Constant name="core_v2" />, [dbt Docs v2](/docs/build/view-documentation#dbt-docs-v2) is the recommended way to generate and view your project's documentation. Use `dbt docs generate` to build the documentation site and `dbt docs serve` to preview it locally.
+
+If you only need to hydrate catalog metadata (`catalog.json`) for <Constant name="catalog" /> in <Constant name="dbt_platform" />, without building the documentation site, use the [`--write-catalog` flag](#--write-catalog-flag) instead.
+
+## dbt Docs v2 <Lifecycle status="beta"/>
+
+Instead of loading a static `manifest.json` in the browser, v2 produces Parquet artifacts when you compile or build your project. `dbt docs generate` exports a documentation site made of plain static files (a single-page app plus those artifacts) that any file host can serve. The browser reads the Parquet directly using DuckDB-WASM (WebAssembly), so you don't need to run a stateful server to view your docs. This keeps the experience fast even for large projects.
+
+### Generate the site
+
+`dbt docs generate` compiles your project, writes the index, and exports the documentation site in a single command:
+
+```shell
+dbt docs generate
+```
+
+By default, dbt writes the site into your `target/` directory (`target/index.html`, `target/assets/`, and the index under `target/index/`), matching the layout of <Constant name="core_v1" />. You can serve `index.html` from `target/` the same way you did in v1, so an existing pipeline that runs `dbt docs generate && mv target public` keeps working.
+
+Use `--output-dir` to write a self-contained copy of the site to a different directory:
+
+```shell
+dbt docs generate --output-dir site
+```
+
+This writes a `site/` directory (the app, hashed assets, and a copy of the index) that you can host on S3, GitHub Pages, Netlify, GitLab Pages, or any similar static file host.
+
+To skip compilation and export whatever index is already on disk, use `--no-compile`, which fails with an error if no index exists:
+
+```shell
+dbt docs generate --no-compile
+```
+
+#### Column lineage and richer metadata
+
+Column-level lineage and richer column metadata require an index built with [`--static-analysis strict`](/docs/build/about-static-analysis). Because `dbt docs generate` runs a standard compile by default, build the index with strict static analysis first when you want column lineage, then export it:
+
+```shell
+dbt build --write-index --static-analysis strict
+dbt docs generate --no-compile
+```
+
+If you generate the site without column lineage, dbt Docs v2 hides those features instead of showing empty data.
+
+### Serve dbt Docs v2
+
+To preview the site locally, run:
+
+```shell
+dbt docs serve
+```
+
+`dbt docs serve` generates the site if it's missing or older than the index, then serves the static files. The server starts on port `8580` by default and opens in your browser. Use `--port` to change the port:
+
+```shell
+dbt docs serve --port 8081
+```
+
+Use the `--target-path` flag to change the path where dbt reads artifacts from:
+
+```shell
+dbt docs serve --target-path ~/Developer/internal-analytics/target
+```
+
+Because the generated site is a set of static files, you can also host it on any static file host — such as cloud object storage or a static site host — instead of serving it locally.
+
+### Project overview page
+
+dbt Docs v2 renders your project's `__overview__` doc block as the landing page, the same as dbt Docs v1. dbt discovers overview content by scanning your `docs-paths` for `{% docs %}` blocks, so a block in `models/overview.md` is found by default. A file at `docs/overview.md` is only picked up when your project sets `docs-paths: ["docs"]`. If your project defines no overview, dbt renders its default overview content.
 
 ## --write-catalog flag
 
-The `--write-catalog` flag generates the [`catalog.json`](/reference/artifacts/catalog-json) artifact, which contains metadata about the tables and <Term id="view">views</Term> produced by the models in your project. <Constant name="fusion" /> jobs running in <Constant name="dbt_platform" />, dbt automatically runs `write-catalog`, `build`, and `run`, and hydrates your Catalog, so you don't need to manually include it. You can use this flag with the following commands:
+The `--write-catalog` flag generates the [`catalog.json`](/reference/artifacts/catalog-json) artifact, which contains metadata about the tables and <Term id="view">views</Term> produced by the models in your project. It focuses solely on metadata hydration and does not build the documentation site — use [dbt Docs v2](#dbt-docs-v2) for that.
+
+For <Constant name="fusion" /> jobs running in <Constant name="dbt_platform" />, dbt automatically runs `write-catalog` with `build` and `run` and hydrates your Catalog, so you don't need to include it manually. You can use this flag with the following commands:
 
 - `dbt build`
 - `dbt run`
 - `dbt parse`
 - `dbt compile`
 
-**Examples**:
+**Example**:
 
 ```shell
 dbt build --write-catalog
 ```
 
-
 ### Platform behavior
 
-In <Constant name="dbt_platform" /> jobs running on <Constant name="fusion" />, you don't need to change anything. When `dbt docs generate` is called (either as a job step or separate command), the platform automatically uses `--write-catalog` instead. Additionally, for <Constant name="fusion" /> jobs running in the platform, dbt will run `write-catalog` automatically with `build` or `run`, so you don't need to run a separate command to hydrate your metadata. In the platform, you can optionally choose to include it when running `dbt parse` or `dbt compile`.
+In <Constant name="dbt_platform" /> jobs running on <Constant name="fusion" />, you don't need to change anything to hydrate catalog metadata. dbt runs `write-catalog` automatically with `build` and `run`, so you don't need to run a separate command. You can optionally include it when running `dbt parse` or `dbt compile`.
 
-Note:
+To produce the [dbt Docs v2](#dbt-docs-v2) static site in a job, run `dbt docs generate` as a job step or enable documentation generation in your job settings. Otherwise, the job hydrates catalog metadata but doesn't produce the static site.
 
 ### Local usage
 
@@ -157,76 +225,5 @@ dbt build --write-catalog
 ### What's different from docs generate
 
 The `--write-catalog` flag focuses solely on metadata hydration, generating the `catalog.json` file that powers [Catalog](/docs/explore/build-and-view-your-docs) and metadata APIs. It does not generate the static documentation website files (`index.html`).
-
-## dbt Docs v2 <Lifecycle status="alpha"/>
-
-The <Constant name="fusion_engine" /> and <Constant name="core_v2" /> deliver a new version of `dbt docs serve` that powers [dbt Docs v2](/docs/build/view-documentation#dbt-docs-v2).
-
-Instead of loading a static `manifest.json` in the browser, v2 builds a compact binary index of your project and serves it through a local HTTP server with a REST API. This makes the experience fast even for large projects, and makes metadata queryable by AI agents and external tooling.
-
-### Generate the index
-
-Before serving, build your project with the `--write-index` flag. You can add this flag to dbt `build`, `run`, `parse`, or `compile` commands. It writes index files to the `target/index/` directory which is what `dbt docs serve` reads from:
-
-```shell
-dbt compile --write-index
-```
-
-```shell
-dbt build --write-index
-```
-
-Add [`--static-analysis strict`](/docs/fusion/new-concepts) to for column lineage and richer column metadata from your warehouse:
-
-```shell
-dbt build --write-index --static-analysis strict
-```
-
-```shell
-dbt build --write-index --static-analysis strict
-```
-
-### Serve dbt Docs v2
-
-:::note Login for full capabilities
-When using <Constant name="fusion" />, run `dbt login` before serving to unlock all capabilities. Some features, such as column lineage, require authentication to display.
-:::
-
-Once the index is built, start the local documentation server:
-
-```shell
-dbt docs serve
-```
-
-You can pass the `--target-path` flag to change the path where dbt pulls artifacts from:
-
-```shell
-dbt docs serve --target-path ~/Developer/internal-analytics/target
-```
-
-The server starts on port `8580` by default and opens in your browser. Use `--port` to change the port:
-
-```shell
-dbt docs serve --port 8081
-```
-
-### REST API
-
-dbt Docs v2 exposes a REST API at `/api/v1/` that AI agents, MCP servers, and external tooling can query directly, all without a browser. Key endpoints include:
-
-| Endpoint | Description |
-|---|---|
-| `GET /api/v1/health` | Server status |
-| `GET /api/v1/capabilities` | Feature flags (for example, `has_column_lineage`) |
-| `GET /api/v1/models` | Paginated model list with filters |
-| `GET /api/v1/models/:id` | Model detail including catalog metadata |
-| `GET /api/v1/sources/:id` | Source detail |
-| `GET /api/v1/nodes/counts` | Resource type counts (models, sources, tests, etc.) |
-| `GET /api/v1/nodes/:id/lineage` | Model-level lineage graph |
-| `GET /api/v1/nodes/:id/column-lineage` | Column-level lineage (Fusion-only capability) |
-
-See the [dbt Docs v2 API contracts](https://github.com/dbt-labs/fs/blob/main/fs/sa/crates/dbt-docs-server/API-CONTRACTS.md#get-apiv1sources) for the full list of available endpoints.
-
-This makes dbt Docs v2 a natural context source for MCP servers. If you're using a coding agent like Claude Code, you can point it at a running dbt Docs v2 instance to give it rich, structured metadata about your dbt project without installing dbt locally.
 
 </VersionBlock>

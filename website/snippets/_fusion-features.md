@@ -1,21 +1,29 @@
-## Fusion and dbt Core v2 features
+## What you get with <Constant name="fusion" />
 
-<Constant name="core" /> v2 and <Constant name="fusion" /> represent the next evolution of the classic <Constant name="core" /> toolset, with performance enhancements and powerful new features. <Constant name="core" /> v2 includes everything available in <Constant name="core" /> v1.x, plus the speed and power of <Constant name="fusion" />. Level up your development by [installing the <Constant name="fusion_engine" />](/docs/local/install-dbt?version=2).
+:::note Feature availability
+Feature availability may change as the <Constant name="fusion_engine" /> moves toward general availability. 
+:::
 
-To access the full set of features, register with your email address or sign in to your <Constant name="dbt_platform" /> account using `dbt login`. The following table shows which features are available to all users and which require registration:
+v2 is totally free to use, including when paired with <Constant name="fusion" />, and you can get started right away with many dbt features, free forever! You can also try advanced features by running [`dbt login`](/reference/commands/login?version=2.0) to create a free <Constant name="dbt_platform" /> account for the best v2 experience:
 
-| Feature | <nobr> dbt Core v2</nobr> <br />(OSS) | Fusion <br /> <nobr>(all users)</nobr> | Fusion <br /> <nobr>(with registration)</nobr> |
-|---------|:-----------------:|:------------------:|:--------------------------:|
-| Everything in dbt Core today <br /> (except dbt docs v1) | ✅ | ✅ | ✅ |
-| dbt docs v2 (lite) | ✅ | ✅ | ✅ |
-| Syntax error detection | - | ✅ | ✅ |
-| LSP (lite) | - | ✅ | ✅ |
-| dbt lint   | - | ✅ | ✅ |
-| SQL Comprehension | - | - | ✅ |
-| Full LSP | - | - | ✅ |
-| Query cache | - | - | ✅ |
-| dbt docs v2 (full) | - | - | ✅ |
-| dbt Mesh | - | - | ✅ |
-| Auto-deferral | - | - | ✅ |
-| Compare changes | - | - | ✅ |
-| Precise column-level lineage artifact generation | - | - | ✅ |
+```shell
+dbt login
+```
+
+Creating an account also unlocks additional free-tier access to dbt services. 
+
+| Feature | Free forever <small>(for real!)</small>  | Requires login <br /> <small>to any <Constant name="dbt_platform" /> account, free or paid</small> |
+|---------|:-----------------:|:----------------------:|
+| dbt Core v1.x workflows, except dbt docs v1 | ✅ | ✅ |
+| Syntax error detection (Jinja, YAML, SQL) | ✅ | ✅ |
+| dbt lint | ✅ | ✅ |
+| dbt docs v2 (lite) | ✅ | ✅ |
+| <Term id="lsp" /> (lite): go-to ref, source, and macro | ✅ | ✅ |
+| Full <Term id="lsp" />: CTE, hover to see schema, and more | - | ✅ |
+| SQL comprehension, type checking, and impact analysis | - | ✅ |
+| Precise column-level lineage | - | ✅ |
+| dbt docs v2 (full), including column-level lineage | - | ✅ |
+
+For the best v2 experience, use the dbt VS Code extension. You can get started for free, and when you create a free <Constant name="dbt_platform" /> account, you’ll unlock additional access to advanced dbt features in your editor and beyond, including those shown in the table above.
+
+To learn more about VS Code-specific capabilities, refer to [dbt VS Code extension features](/docs/dbt-extension-features).

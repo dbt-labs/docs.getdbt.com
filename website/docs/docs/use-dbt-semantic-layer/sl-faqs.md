@@ -5,6 +5,7 @@ description: "Read the FAQs to learn more about the dbt Semantic Layer, how it w
 sidebar_label: "Semantic Layer FAQs"
 tags: [Semantic Layer]
 pagination_next: null
+availability: platform_login
 ---
 
 The [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl) is a <Constant name="dbt" /> offering that allows users to centrally define their metrics within their dbt project using [MetricFlow](/docs/build/about-metricflow).
@@ -63,7 +64,7 @@ While the dbt Semantic Layer will work for both cases, it's best to allow Metric
 
 <Expandable alt_header="How is the dbt Semantic Layer priced?">
 
-The dbt Semantic Layer measures usage in distinct 'Queried Metrics'. Refer to the [Billing](/docs/platform/billing#what-counts-as-a-queried-metric) to learn more about pricing.
+The dbt Semantic Layer measures usage in distinct 'Queried Metrics'. Refer to the [Billing](/docs/platform/billing/how-pricing-works#what-counts-as-a-queried-metric) to learn more about pricing.
 </Expandable>
 
 ## Availability
@@ -161,7 +162,7 @@ MetricFlow is hosted in <Constant name="dbt" />. Requests from the [Semantic Lay
 2. Then you build your metrics on top of these semantic models. This is all done in `.yml` configurations alongside your dbt models in your projects.
 3. Once you've defined your metrics and semantic models, you can [configure the dbt Semantic Layer](/docs/use-dbt-semantic-layer/setup-sl) in <Constant name="dbt" />.
 
-Read our [dbt Semantic Layer quickstart](/guides/sl-snowflake-qs) guide for more information.
+Read our [dbt Semantic Layer quickstart](/guides/sl-qs) guide for more information.
 
 </Expandable>
 
@@ -280,7 +281,7 @@ The dbt Semantic Layer uses service or personal tokens for authentication.
 
 [Service tokens](/docs/dbt-apis/service-tokens) are mapped to underlying data platform credentials. These credentials control physical access to the raw data. The credential configuration allows admins to create a credential and map it to service tokens, which can then be shared to relevant teams for BI connection setup. You can configure credentials and service tokens to reflect your teams and their roles.
 
-Personal access tokens [(PATs)](/docs/dbt-apis/user-tokens) enable user-level authentication. When you use PATs to authenticate, your personal development credentials are used when running queries against the Semantic Layer.
+Personal access tokens [(PATs)](/docs/dbt-apis/user-tokens) enable user-level authentication. When you use PATs to authenticate, your personal user credentials are used when running queries against the Semantic Layer.
 
 Currently, the credentials you configure when setting up the dbt Semantic Layer are used for every request. Any physical access policies you have tied to your credentials will be respected.
 

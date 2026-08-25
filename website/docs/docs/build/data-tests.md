@@ -8,6 +8,7 @@ search_weight: "heavy"
 id: "data-tests"
 keywords:
   - test, tests, testing, dag
+availability: all_users
 ---
 
 import CopilotBeta from '/snippets/_dbt-copilot-avail.md';

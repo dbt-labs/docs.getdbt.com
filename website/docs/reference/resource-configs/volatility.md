@@ -1,5 +1,6 @@
 ---
 title: volatility
+description: "Declare the volatility (deterministic, stable, or non-deterministic) of a user-defined function (UDF) so the warehouse can optimize how it runs."
 sidebar_label: "volatility"
 id: volatility
 ---

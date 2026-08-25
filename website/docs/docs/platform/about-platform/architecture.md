@@ -2,6 +2,9 @@
 title: "dbt Architecture"
 id: "architecture"
 description: "Information about the architecture, communication, and security of dbt"
+availability:
+  surface: platform
+  access: login_required
 ---
 
 This page helps practitioners and those interested in <Constant name="dbt" />'s architecture and data flow.
@@ -10,15 +13,13 @@ This page helps practitioners and those interested in <Constant name="dbt" />'s 
 
 The <Constant name="dbt" /> application has two types of components: static and dynamic. The static components are always running to serve highly available <Constant name="dbt" /> functions, like the <Constant name="dbt" /> web application. On the other hand, the dynamic components are created ad-hoc to handle tasks such as background jobs or requests to use the <Constant name="studio_ide" />.
 
-<Constant name="dbt" /> is available in most regions around the world in both [single tenant](/docs/platform/about-platform/tenancy#single-tenant) (AWS and Azure) and [multi-tenant](/docs/platform/about-platform/tenancy#multi-tenant) configurations.  
+<Constant name="dbt" /> is available in most regions around the world in both [single tenant](/docs/platform/about-platform/tenancy#single-tenant) (AWS, Azure, and GCP) and [multi-tenant](/docs/platform/about-platform/tenancy#multi-tenant) configurations.  
 
 <Constant name="dbt" /> uses PostgreSQL for its backend, S3-compatible Object Storage systems for logs and artifacts, and a Kubernetes storage solution for creating dynamic, persistent volumes. 
 
 All data at rest on <Constant name="dbt" /> servers is protected using AES-256 encryption. 
 
 <img src="/img/docs/dbt-platform/on-premises/data-flows.png" />
-
-For a more detailed breakdown of the <Constant name="dbt" /> apps, [download the advanced architecture guide PDF](https://drive.google.com/uc?export=download&id=1lktNuMZybXfqFtr24J8zAssEfoL9r51S).
 
 ## Communication
 
