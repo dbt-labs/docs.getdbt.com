@@ -1,5 +1,5 @@
 ---
-title: Install dbt CLI 
+title: Install the dbt platform CLI 
 sidebar_label: "Installation"
 id: dbt-cli-installation
 description: "Instructions for installing and configuring dbt platform's CLI tool."
@@ -11,7 +11,7 @@ availability:
 
 import LongSession from '/snippets/_long-sessions-cli.md';
 
-The <Constant name="dbt_platform" /> natively supports developing using a command line interface (CLI), empowering team members to contribute with enhanced flexibility and collaboration. The dbt CLI allows you to run dbt commands against your <Constant name="dbt_platform" /> development environment from your local command line.
+The <Constant name="dbt_platform" /> natively supports developing using a command line interface (CLI), empowering team members to contribute with enhanced flexibility and collaboration. The <Constant name="platform_cli" /> allows you to run dbt commands against your <Constant name="dbt_platform" /> development environment from your local command line.
 
 :::note CLI compatibility
 
@@ -26,7 +26,7 @@ dbt commands run against the platform's infrastructure and benefit from:
 * Speedier, lower-cost builds
 * Support for dbt Mesh ([cross-project `ref`](/docs/mesh/govern/project-dependencies))
 
-<Lightbox src="/img/docs/dbt-platform/dbt-cli-overview.png" title="Diagram of how the dbt CLI works with dbt's infrastructure to run dbt commands from your local command line." />
+<Lightbox src="/img/docs/dbt-platform/dbt-cli-overview.png" title="Diagram of how the dbt platform CLI works with dbt's infrastructure to run dbt commands from your local command line." />
 
 ## Prerequisites
 
@@ -41,7 +41,7 @@ See the [Hybrid development with <Constant name="dbt_platform"/>  and <Constant 
 :::
 
 
-## Install dbt CLI
+## Install dbt platform CLI
 
 You can install the <Constant name="platform_cli" /> via the command line by using one of the following methods: 
 
@@ -146,7 +146,7 @@ Refer to the [FAQs](#faqs) if your operating system runs into path conflicts.
 
 :::info
 
-Advanced users can configure multiple projects to use the same dbt CLI executable by adding it to their PATH environment variable in their shell profile.
+Advanced users can configure multiple projects to use the same <Constant name="platform_cli" /> executable by adding it to their PATH environment variable in their shell profile.
 
 :::
 
@@ -167,7 +167,7 @@ Advanced users can configure multiple projects to use the same dbt CLI executabl
 
 </Tabs>
 
-## Update dbt CLI
+## Update dbt platform CLI
 
 The following instructions explain how to update the <Constant name="platform_cli" /> to the latest version depending on your operating system.
 
@@ -213,7 +213,7 @@ For data practitioners working with a self-hosted installation, this means AI as
 
 ## FAQs
 
-<DetailsToggle alt_header="What's the difference between the dbt CLI and dbt Core?">
+<DetailsToggle alt_header="What's the difference between the dbt platform CLI and dbt Core?">
 
 The <Constant name="platform_cli" /> and <a href="https://github.com/dbt-labs/dbt-core">dbt Core</a>, an open-source project, are both command line tools that enable you to run dbt commands. 
 
@@ -221,7 +221,7 @@ The key distinction is that the <Constant name="platform_cli" /> is tailored for
 
 </DetailsToggle>
 
-<DetailsToggle alt_header="How do I run both the dbt CLI and dbt Core?">
+<DetailsToggle alt_header="How do I run both the dbt platform CLI and dbt Core?">
 
 For compatibility, both the <Constant name="platform_cli" /> and <Constant name="core" /> are invoked by running `dbt`. This can create path conflicts if your operating system selects one over the other based on your $PATH environment variable (settings).
 
@@ -262,7 +262,7 @@ The <Constant name="platform_cli" /> allows only one command that writes to the 
 
 </DetailsToggle>
 
-<DetailsToggle alt_header="I'm getting a `Session occupied` error in dbt CLI?">
+<DetailsToggle alt_header="I'm getting a `Session occupied` error in dbt platform CLI?">
 
 <LongSession />
 

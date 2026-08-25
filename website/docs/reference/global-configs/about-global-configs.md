@@ -91,6 +91,7 @@ Use this table to compare all available flags and how to configure them across i
 | [use_colors_file](/reference/global-configs/logs#color) | ❌ | boolean <br /> default: True | ✅ | `DBT_USE_COLORS_FILE` | `--use-colors-file` <br /> `--no-use-colors-file` |
 | [use_colors](/reference/global-configs/print-output#print-color) | ❌ | boolean <br /> default: True | ✅ | `DBT_USE_COLORS` | `--use-colors` <br /> `--no-use-colors` |
 | [use_experimental_parser](/reference/global-configs/parsing#experimental-parser) | ❌ | boolean <br /> default: False | ✅ | `DBT_USE_EXPERIMENTAL_PARSER` | `--use-experimental-parser` <br /> `--no-use-experimental-parser` |
+| [use_fast_test_edges](/reference/global-configs/fast-test-edges) | ✅ | boolean <br /> default: False | ❌ | `DBT_USE_FAST_TEST_EDGES` | `--use-fast-test-edges` <br /> `--no-use-fast-test-edges` |
 | [version_check](/reference/global-configs/version-compatibility) | ❌ | boolean <br /> default: varies | ✅ | `DBT_VERSION_CHECK` | `--version-check` <br /> `--no-version-check` |
 | [warn_error_options](/reference/global-configs/warnings) | ✅ | dict <br /> default: {} | ✅ | `DBT_WARN_ERROR_OPTIONS` | `--warn-error-options` |
 | [warn_error](/reference/global-configs/warnings) | ✅ | boolean <br /> default: False | ✅ | `DBT_WARN_ERROR` | `--warn-error` |
@@ -146,6 +147,7 @@ Use this table to compare all available flags and how to configure them across i
 | [use_colors_file](/reference/global-configs/logs#color) | ❌ | boolean <br /> default: True | ✅ | `DBT_ENGINE_USE_COLORS_FILE` | `--use-colors-file` <br /> `--no-use-colors-file` |
 | [use_colors](/reference/global-configs/print-output#print-color) | ❌ | boolean <br /> default: True | ✅ | `DBT_ENGINE_USE_COLORS` | `--use-colors` <br /> `--no-use-colors` |
 | [use_experimental_parser](/reference/global-configs/parsing#experimental-parser) | ❌ | boolean <br /> default: False | ✅ | `DBT_ENGINE_USE_EXPERIMENTAL_PARSER` | `--use-experimental-parser` <br /> `--no-use-experimental-parser` |
+| [use_fast_test_edges](/reference/global-configs/fast-test-edges) | ✅ | boolean <br /> default: False | ❌ | `DBT_ENGINE_USE_FAST_TEST_EDGES` | `--use-fast-test-edges` <br /> `--no-use-fast-test-edges` |
 | [use_v2_parser](/reference/global-configs/parsing#opt-in-v2-parser) | ✅ | boolean <br /> default: False | ✅ | `DBT_ENGINE_USE_V2_PARSER` | `--use-v2-parser` |
 | [version_check](/reference/global-configs/version-compatibility) | ❌ | boolean <br /> default: varies | ✅ | `DBT_ENGINE_VERSION_CHECK` | `--version-check` <br /> `--no-version-check` |
 | [warn_error_options](/reference/global-configs/warnings) | ✅ | dict <br /> default: {} | ✅ | `DBT_ENGINE_WARN_ERROR_OPTIONS` | `--warn-error-options` |

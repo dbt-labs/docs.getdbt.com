@@ -24,6 +24,10 @@
         {
           "key": "Cache-Control",
           "value": "max-age=0, s-maxage=86400 stale-while-revalidate"
+        },
+        {
+          "key": "Vary",
+          "value": "Accept, Accept-Encoding"
         }
       ]
     },

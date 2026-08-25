@@ -4,6 +4,7 @@ import katex from "rehype-katex";
 import rehypeCodeLanguage from "./plugins/rehypeCodeLanguage.js";
 import rehypeCleanMarkdown from "./plugins/rehypeCleanMarkdown.js";
 import rehypeTabsToHeadings from "./plugins/rehypeTabsToHeadings.js";
+import rehypeMdHide from "./plugins/rehypeMdHide.js";
 import remarkBlogFootnoteLinks from "./plugins/remarkBlogFootnoteLinks.js";
 import remarkConstantsInCode from "./plugins/remarkConstantsInCode.js";
 const { themes } = require('prism-react-renderer')
@@ -395,7 +396,7 @@ var siteSettings = {
           relativePaths: false,
         },
         processing: {
-          beforeDefaultRehypePlugins: [rehypeCodeLanguage, rehypeCleanMarkdown, rehypeTabsToHeadings],
+          beforeDefaultRehypePlugins: [rehypeCodeLanguage, rehypeCleanMarkdown, rehypeTabsToHeadings, rehypeMdHide],
         },
         include: {
           includeBlog: false,
