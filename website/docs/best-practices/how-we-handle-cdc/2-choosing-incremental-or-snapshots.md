@@ -35,7 +35,16 @@ Typical sources:
 
 Configure `unique_key` and an incremental strategy such as `merge` so running the model twice with the same data does not create duplicates. Filter to new changes with `is_incremental()`. For configuration details, refer to [Configure incremental models](/docs/build/incremental-models) and [About incremental strategy](/docs/build/incremental-strategy).
 
-After two runs where Alice moves from `pending` to `shipped`, the incremental table has one row per person. The old `pending` row is gone:
+After the first run, Alice and Bob are both `pending`:
+
+| id | name | status | updated_at |
+| -- | ---- | ------ | ---------- |
+| 1 | Alice | pending | 2026-01-01 00:00:00 |
+| 2 | Bob | pending | 2026-01-01 00:00:00 |
+
+<br />
+
+After a second run where Alice moves from `pending` to `shipped`, the incremental table has one row per person. The old `pending` row is gone:
 
 | id | name | status | updated_at |
 | -- | ---- | ------ | ---------- |
@@ -72,8 +81,6 @@ The open row (`dbt_valid_to` is null) is the current version.
 ## Using incremental models and snapshots together
 
 Use incremental models and snapshots together when you need cheap, current staging _and_ a history of each change.
-
-A shape that works on <Constant name="core" /> and the <Constant name="fusion_engine" />:
 
 ```text
 source (table that overwrites rows, or a list of changes)
@@ -159,9 +166,9 @@ These come up often with CDC. They are not a third approach. Use the linked page
 
 - Hard deletes: Loading tools often mark a row as deleted. Snapshots can close the old row or add a deletion record with [`hard_deletes`](/reference/resource-configs/hard-deletes). Incremental models must handle deletes in your merge (or a separate delete statement).
 - Late-arriving changes: Widen the incremental filter so you look a bit further back than the last run, and know when a `--full-refresh` is the safe fix. For information on those options, refer to [Configure incremental models](/docs/build/incremental-models).
-- Several changes in one run: Keep only the latest change per id before you merge.
-- Source columns change: Use [`on_schema_change`](/docs/build/incremental-models#what-if-the-columns-of-my-incremental-model-change) on incremental models. Snapshots can add new columns as they appear.
-- Tests: Unique on `(unique_key, dbt_valid_from)` for snapshots, no overlapping `dbt_valid_from` / `dbt_valid_to` ranges, and exactly one current row per id (`dbt_valid_to` is null). Freshness tests belong on the raw source.
+- Several changes in one run: On incremental models, keep only the latest change per id before you merge.
+- Source columns change: On incremental models, use [`on_schema_change`](/docs/build/incremental-models#what-if-the-columns-of-my-incremental-model-change). Snapshots can add new columns as they appear.
+- Tests: For snapshots, unique on `(unique_key, dbt_valid_from)`, no overlapping `dbt_valid_from` / `dbt_valid_to` ranges, and exactly one current row per id (`dbt_valid_to` is null). Freshness tests belong on the raw source.
 - Cost: Organize the table on the change timestamp. Add extra filters so you do not scan full history on every run. For information on those filters, refer to [About incremental strategy](/docs/build/incremental-strategy).
 
 ## Related docs
