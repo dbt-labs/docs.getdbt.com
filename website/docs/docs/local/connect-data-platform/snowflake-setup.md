@@ -336,7 +336,7 @@ my-snowflake-db:
 
 </File>
 
-#### dbt Fusion engine key formats
+#### <Constant name="fusion_engine" /> key formats
 
 <Constant name="fusion" /> requires modern key formats and doesn't support legacy 3DES encryption or headerless keys.  We recommend using PKCS#8 format with AES-256 encryption for key pair authentication with <Constant name="fusion" />. Using older key formats may cause authentication failures.
 

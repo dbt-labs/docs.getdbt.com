@@ -1,7 +1,7 @@
 ## What you get with <Constant name="fusion" />
 
 :::note Feature availability
-Feature availability may change as the Fusion engine moves toward general availability. 
+Feature availability may change as the <Constant name="fusion_engine" /> moves toward general availability. 
 :::
 
 v2 is totally free to use, including when paired with <Constant name="fusion" />, and you can get started right away with many dbt features, free forever! You can also try advanced features by running [`dbt login`](/reference/commands/login?version=2.0) to create a free <Constant name="dbt_platform" /> account for the best v2 experience:

@@ -11,7 +11,7 @@ v2 is the current generation of dbt &mdash; installing or upgrading gives you <C
 
 If you're using the <Constant name="dbt_platform" /> (including the <Constant name="platform_cli"/>), you don't need to manage dbt versions yourself. [Release tracks](/docs/dbt-versions/dbt-release-tracks) automatically keep you up to date and provide early access to new features.
 
-## dbt Fusion engine versioning
+## <Constant name="fusion_engine" /> versioning
 
 The <Constant name="fusion_engine"/> uses semantic versioning starting with version 2.0. To install or update <Constant name="fusion"/>, see [Install dbt](/docs/local/install-dbt?version=2).
 

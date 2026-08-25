@@ -5,7 +5,7 @@ id: "about-fusion"
 description: "Fusion is the next-generation engine for dbt."
 ---
 
-# About the dbt Fusion engine
+# About the <Constant name="fusion_engine" />
 
 <VersionBlock lastVersion="1.99">
 :::tip Available only on v2
