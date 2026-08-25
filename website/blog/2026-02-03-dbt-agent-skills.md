@@ -37,7 +37,7 @@ Our [agent skills repo](https://github.com/dbt-labs/dbt-agent-skills) contains s
 - **Analytics engineering**: Build and modify dbt models, write tests, explore data sources
 - **Semantic layer**: Create metrics, dimensions, and semantic models with MetricFlow
 - **Platform operations**: Troubleshoot job failures, configure the dbt MCP server
-- **Migration**: Move projects from dbt Core to the <Constant name="fusion_engine" />
+- **Migration**: Move projects from dbt Core to the dbt Fusion engine
 
 You’ll notice these skills vary in size of task and complexity. The primary [_using dbt for analytics engineering_ skill](https://github.com/dbt-labs/dbt-agent-skills/tree/main/skills/dbt/skills/using-dbt-for-analytics-engineering) contains information about the entire workflow loop for analytics engineering. Other skills are more focused and task dependent.
 
@@ -131,7 +131,7 @@ Any experienced dbt practitioner will have a number of intuitions when working w
 The current generation of coding agents tends to not do these things by default. Skills fix that by including broad dbt best practices like the ones above, but they can also provide very in-depth and nuanced guidance through supplemental reference materials, such as:
 
 - Warehouse-specific configurations, like avoiding full table scans on BigQuery when discovering data
-- Variations based on the specific dbt version or engine you’re using; `dbt compile` can [detect many SQL errors](/blog/the-levels-of-sql-comprehension) when invoked from the <Constant name="fusion_engine" />, but dbt Core needs to run `dbt build` for the same result.
+- Variations based on the specific dbt version or engine you’re using; `dbt compile` can [detect many SQL errors](/blog/the-levels-of-sql-comprehension) when invoked from the dbt Fusion engine, but dbt Core needs to run `dbt build` for the same result.
 
 Skills can also evolve at a faster pace than frontier AI model releases, making it easier to update guidance and adapt to changes in the dbt authoring layer. We recently [revamped the authoring experience for semantic models](/blog/modernizing-the-semantic-layer-spec); by including a skill that knows about the new syntax, we can stop your agent from using the old syntax even though that’s the majority of training data online.
 

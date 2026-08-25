@@ -15,11 +15,11 @@ is_featured: true
 ## TL;DR: What You Need to Know
 
 - dbt’s familiar authoring layer remains unchanged, but the execution engine beneath it is completely new.
-- The new engine is called the <Constant name="fusion_engine" /> — rewritten from the ground up in Rust based on technology [from SDF](https://www.getdbt.com/blog/dbt-labs-acquires-sdf-labs).  The <Constant name="fusion_engine" /> is substantially faster than dbt Core and has built in [SQL comprehension technology](/blog/the-levels-of-sql-comprehension) to power the next generation of analytics engineering workflows.
-- The <Constant name="fusion_engine" /> is currently in beta. You can try it today if you use Snowflake — with additional adapters coming starting in early June. Review our [path to general availability](/blog/dbt-fusion-engine-path-to-ga) (GA) and [try the quickstart](/guides/fusion).
-- **You do not need to be a dbt Labs customer to use Fusion - dbt Core users can adopt the <Constant name="fusion_engine" /> today for free in your local environment.**
+- The new engine is called the dbt Fusion engine — rewritten from the ground up in Rust based on technology [from SDF](https://www.getdbt.com/blog/dbt-labs-acquires-sdf-labs).  The dbt Fusion engine is substantially faster than dbt Core and has built in [SQL comprehension technology](/blog/the-levels-of-sql-comprehension) to power the next generation of analytics engineering workflows.
+- The dbt Fusion engine is currently in beta. You can try it today if you use Snowflake — with additional adapters coming starting in early June. Review our [path to general availability](/blog/dbt-fusion-engine-path-to-ga) (GA) and [try the quickstart](/guides/fusion).
+- **You do not need to be a dbt Labs customer to use Fusion - dbt Core users can adopt the dbt Fusion engine today for free in your local environment.**
 - You can use <Constant name="fusion" /> with the [new dbt VS Code extension](https://marketplace.visualstudio.com/items?itemName=dbtLabsInc.dbt), [directly with the CLI](/docs/local/install-dbt?version=2), or [with dbt Studio](/docs/dbt-versions/upgrade-dbt-platform-version#dbt-fusion-engine).
-- This is the beginning of a new era for analytics engineering. For a glimpse into what the <Constant name="fusion_engine" /> is going to enable over the next 1 to 2 years, [read this post](https://getdbt.com/blog/where-we-re-headed-with-the-dbt-fusion-engine).
+- This is the beginning of a new era for analytics engineering. For a glimpse into what the Fusion engine is going to enable over the next 1 to 2 years, [read this post](https://getdbt.com/blog/where-we-re-headed-with-the-dbt-fusion-engine).
 
 <!--truncate-->
 
@@ -65,7 +65,7 @@ But underneath that is a layer of technical depth and rigor that is entirely new
 
 Fusion:
 
-- Is fully rewritten in Rust, enabling a [dramatically faster dbt experience](/blog/faster-project-parsing-with-rust). Fusion does not depend on Python at all. In fact, besides the adapter macros, not a single line of code is shared between dbt Core and the <Constant name="fusion_engine" />. (For long-time dbt spelunkers, we've described the new structure in a [separate post](/blog/dbt-fusion-engine-components).)
+- Is fully rewritten in Rust, enabling a [dramatically faster dbt experience](/blog/faster-project-parsing-with-rust). Fusion does not depend on Python at all. In fact, besides the adapter macros, not a single line of code is shared between dbt Core and the dbt Fusion engine. (For long-time dbt spelunkers, we've described the new structure in a [separate post](/blog/dbt-fusion-engine-components).)
 - [Understands your SQL code.](/blog/the-levels-of-sql-comprehension) It’s a true SQL *compiler* and gives dbt a full view on what the code in your dbt project means and how it will propagate across your entire data lineage.
 
 Based on the technology from [SDF](https://www.getdbt.com/blog/dbt-labs-acquires-sdf-labs), Fusion represents a step change increase in the technical capabilities of dbt.
@@ -125,13 +125,13 @@ But taken together, it actually fundamentally changes the experience of writing 
 
 Of course — there’s another technology changing the experience of writing dbt (and all) code — AI. The functionality that Fusion enables dovetails perfectly with AI-assisted coding by allowing you to vet, validate, and comprehend AI-generated code more easily. Moving forward, expect even tighter coupling between Fusion and AI-based coding assistants as the speed and rigor of Fusion will help produce higher quality AI-generated code.
 
-The VS Code extension is one of our first product experiences exclusively powered by the <Constant name="fusion_engine" />. The extension depends on the Language Server, and the Language Server depends on Fusion's SQL comprehension capabilities. We made the decision not to support dbt Core for the VS Code Extension because existing community-built extensions have already built as much as is possible on top of dbt Core's foundation.  To get to this next level of experience, we needed Fusion.
+The VS Code extension is one of our first product experiences exclusively powered by the dbt Fusion engine. The extension depends on the Language Server, and the Language Server depends on Fusion's SQL comprehension capabilities. We made the decision not to support dbt Core for the VS Code Extension because existing community-built extensions have already built as much as is possible on top of dbt Core's foundation.  To get to this next level of experience, we needed Fusion.
 
 ---
 
 ### How to get started with Fusion
 
-The <Constant name="fusion_engine" /> is currently in beta. We've written [a separate post](/blog/dbt-fusion-engine-path-to-ga) describing the path to Fusion's final release, and how you can see if your project is compatible today.
+The dbt Fusion engine is currently in beta. We've written [a separate post](/blog/dbt-fusion-engine-path-to-ga) describing the path to Fusion's final release, and how you can see if your project is compatible today.
 
 Whether or not you can move your existing project to Fusion today, you can jump into the VS Code extension [using our quickstart](/guides/fusion) to try get a feeling for what's ahead.
 

@@ -17,7 +17,7 @@ My name is Bruno, and you might have seen me posting dbt content on LinkedIn. If
 
 I went from this cheatsheet to creating all different kinds of content, contributing and engaging with the community, until I got the dbt community award two times, and I am very thankful and proud about that.
 
-Since the acquisition of SDF Labs by dbt Labs, I have been waiting for the day that we would see what the result of the fusion of these two companies would be. Spoiler alert: It’s the <Constant name="fusion_engine" /> and it's better than I could have expected.
+Since the acquisition of SDF Labs by dbt Labs, I have been waiting for the day that we would see what the result of the fusion of these two companies would be. Spoiler alert: It’s the dbt Fusion engine and it's better than I could have expected.
 
 <!--truncate-->
 
@@ -45,9 +45,9 @@ That’s why this new release is such a big deal. It solves all the problems abo
 
 ## The new era of dbt development
 
-With the acquisition of SDF Labs and a renewed focus on developer experience, dbt Labs announced its new engine, [Fusion](/docs/fusion/about-fusion). This engine was built from zero with Rust, and its intelligence will power up dbt, no matter where you run it. There are different ways you can use the <Constant name="fusion_engine" />, and the best one is with the also announced VS Code extension.
+With the acquisition of SDF Labs and a renewed focus on developer experience, dbt Labs announced its new engine, [Fusion](/docs/fusion/about-fusion). This engine was built from zero with Rust, and its intelligence will power up dbt, no matter where you run it. There are different ways you can use the Fusion engine, and the best one is with the also announced VS Code extension.
 
-The <Constant name="fusion_engine" /> with the VS Code extension is how folks will want to develop with dbt moving forward. I can say this feels like the experience we’ve all been waiting for.
+The Fusion engine with the VS Code extension is how folks will want to develop with dbt moving forward. I can say this feels like the experience we’ve all been waiting for.
 
 After using it, it’s hard to imagine going back. Working with dbt in VS Code without this extension just doesn’t make sense anymore.
 
@@ -95,7 +95,7 @@ There are a lot more other features this extension is bringing, like navigating 
 
 This extension changes what using dbt feels like. It brings together performance, context, and interactivity in a way that finally makes dbt feel at home inside a modern developer environment. And the best part? It’s just getting started.
 
-The <Constant name="fusion_engine" /> is already powering a faster, smarter dbt under the hood. And it opens the door to a more fluid, confident, and intuitive development experience. Fewer context switches. Fewer gotchas. More time spent thinking about your data, not your tooling.
+The Fusion engine is already powering a faster, smarter dbt under the hood. And it opens the door to a more fluid, confident, and intuitive development experience. Fewer context switches. Fewer gotchas. More time spent thinking about your data, not your tooling.
 
 If you’ve ever built models in a text editor and wished dbt “just knew more,” this is for you.
 

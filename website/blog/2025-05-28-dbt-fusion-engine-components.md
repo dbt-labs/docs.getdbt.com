@@ -10,7 +10,7 @@ date: 2025-05-28
 is_featured: true
 ---
 
-Today, we announced the [<Constant name="fusion_engine" />](/blog/dbt-fusion-engine).
+Today, we announced the [dbt Fusion engine](/blog/dbt-fusion-engine).
 
 Fusion isn't just one thing — it's a set of interconnected components working together to power the next generation of analytics engineering.
 
@@ -22,17 +22,17 @@ From the Rust engine to the VS Code extension, through to new Arrow-based adapte
 
 *This post describes the state of the world as it will be when Fusion reaches General Availability. For a look at the path to GA, read [this post](/blog/dbt-fusion-engine-path-to-ga).*
 
-## There are a number of different ways to access the <Constant name="fusion_engine" /> {#ways-to-access}
+## There are a number of different ways to access the dbt Fusion engine {#ways-to-access}
 
-A big change between the <Constant name="fusion_engine" /> and the dbt Core engine is their language. Core is Python; Fusion is Rust. This is meaningful not just because of the performance benefits, but because it creates a new way for us to distribute functionality to the community.
+A big change between the dbt Fusion engine and the dbt Core engine is their language. Core is Python; Fusion is Rust. This is meaningful not just because of the performance benefits, but because it creates a new way for us to distribute functionality to the community.
 
 To distribute a Python program, you also have to distribute its underlying source code. But Rust is a compiled language, meaning we can share either the source code or just the compiled binaries derived from that source code.
 
 This means that features which would have otherwise had to stay completely proprietary for IP reasons can instead be broadly distributed in binary form. There's also a completely source-available version of dbt Fusion which will exceed dbt Core's capabilities by the time we reach GA.
 
-## What variants of the <Constant name="fusion_engine" /> exist?
+## What variants of the dbt Fusion engine exist?
 
-### Source-available <Constant name="fusion_engine" />
+### Source-available dbt Fusion engine
 
 Artifact type: Code
 
@@ -40,7 +40,7 @@ Available at: [https://github.com/dbt-labs/dbt-fusion](https://github.com/dbt-la
 
 License: ELv2
 
-This will be the foundation of the <Constant name="fusion_engine" /> - the code that lets you:
+This will be the foundation of the Fusion engine - the code that lets you:
 
 - Execute your `dbt seed/run/test/build`
 - Render your Jinja and create your DAG
@@ -56,7 +56,7 @@ As long as you comply with the [three restrictions in ELv2](http://www.getdbt.co
 - ✅ You can adopt the binary into your data workflows without dbt Labs' involvement
 - ✅ You can see and modify the code
 
-### Precompiled <Constant name="fusion_engine" /> binary
+### Precompiled dbt Fusion engine binary
 
 Artifact type: Precompiled binary
 
@@ -77,7 +77,7 @@ As long as you comply with the three restrictions in ELv2,
 
 **The vast majority of existing dbt Core users that adopt the freely distributed components of Fusion should use the binary to do so, rather than compiling it from source code.** The binary has the same permissions but more capabilities (and it saves you from having to compile it yourself). You can use it internally at your company for free, even if you are not a dbt Labs customer.
 
-### Using the <Constant name="fusion_engine" /> with a commercial agreement
+### Using the dbt Fusion engine with a commercial agreement
 
 Artifact type: Precompiled binary and managed service
 
@@ -91,7 +91,7 @@ Obviously there's additional cloud-backed services necessary to deliver platform
 
 ## Other pieces of the puzzle
 
-The <Constant name="fusion_engine" /> is the headline act, but its underlying technologies can be mixed and matched in a variety of ways.
+The dbt Fusion engine is the headline act, but its underlying technologies can be mixed and matched in a variety of ways.
 
 ### The dbt VS Code Extension and Language Server
 
@@ -103,7 +103,7 @@ License: Proprietary
 
 The dbt VS Code extension is one of the first product experiences built on top of Fusion. It is not *part* of Fusion, it is *powered* by Fusion and is part of the wider dbt platform's offerings (with a generous free tier). Specifically, the VS Code extension interacts with another brand-new binary, the dbt [Language Server](https://microsoft.github.io/language-server-protocol/).
 
-The Language Server is built on top of a subset of the technology powering the extended <Constant name="fusion_engine" />: as an example, it can quickly compile SQL and interact with databases, but it defers to the dbt binary when it's time to actually run a model.
+The Language Server is built on top of a subset of the technology powering the extended Fusion engine: as an example, it can quickly compile SQL and interact with databases, but it defers to the dbt binary when it's time to actually run a model.
 
 <Lightbox src="/img/blog/2025-05-28-dbt-fusion-engine-components/vscode-ext-binary-roles.png" title="The VS Code extension interacts with the Language Server to understand your SQL, and the Fusion binary to execute your SQL." />
 
@@ -117,13 +117,13 @@ License: Apache 2.0
 
 When you think of dbt, you're probably thinking of a combination of the Engine (described above) and the Authoring Layer.
 
-The Authoring Layer is made up of everything necessary to define the *what* of a dbt project: things like the **YAML specs, Artifact specs, CLI commands and flags**, and **macro signatures**. As the user interface to dbt, the authoring layer is standard between Core and Fusion, although the <Constant name="fusion_engine" /> does not include support for various behaviours and functions deprecated in earlier releases of dbt Core.
+The Authoring Layer is made up of everything necessary to define the *what* of a dbt project: things like the **YAML specs, Artifact specs, CLI commands and flags**, and **macro signatures**. As the user interface to dbt, the authoring layer is standard between Core and Fusion, although the Fusion engine does not include support for various behaviours and functions deprecated in earlier releases of dbt Core.
 
 For the first time, we're releasing a series of definitive JSON schemas, _backed by the code in dbt Core and Fusion_, that encapsulate the acceptable content of dbt's various YAML files. These are Apache 2.0-licensed and will be particularly helpful for other tools integrating with dbt projects.
 
 This joins the existing JSON schemas defining the shape of dbt's output artifacts (e.g. `manifest.json`). As we stabilize Fusion's metadata output (logging and artifacts) on the path to GA, we will update the published schemas.
 
-### <Constant name="fusion_engine" /> adapters
+### dbt Fusion engine adapters
 
 Artifact type: Source code
 
@@ -138,7 +138,7 @@ Adapters are responsible for two key tasks:
 
 Much like Fusion is the next generation engine for dbt, we also needed next-generation *adapters* for dbt. These adapters are written in Rust and built on the Apache Arrow standard.
 
-The templating of SQL commands largely carries over from macros in the dbt Core adapters. Database connectivity is another story, the <Constant name="fusion_engine" /> cannot use the Python classes present in each adapter, for reasons both practical and performance-related.
+The templating of SQL commands largely carries over from macros in the dbt Core adapters. Database connectivity is another story, the dbt Fusion engine cannot use the Python classes present in each adapter, for reasons both practical and performance-related.
 
 Enter the Apache Arrow ecosystem at large, and the new [ADBC API](https://arrow.apache.org/adbc/current/index.html) in particular. ADBC is a future-looking platform for database connectivity, and we are leaning into it heavily with these Fusion adapters.
 
@@ -185,9 +185,9 @@ dbt-jinja is the most feature-complete implementation of Jinja in Rust, and is a
 Our [Contributors' Principles](/community/resources/contributor-expectations) remain: Building dbt is a team sport!
 
 - If you want to open a PR against publicly-viewable code, you can.
-- If you want to open issues describing bugs during the <Constant name="fusion_engine" />'s beta period, you can. (This is probably one of the highest-leverage things you can do!)
+- If you want to open issues describing bugs during the Fusion engine's beta period, you can. (This is probably one of the highest-leverage things you can do!)
 - If you want to open a discussion and pitch a new way to use dbt more effectively in our new SQL-aware world, you can.
-- If you want to move upstream, and contribute to the standards underlying the <Constant name="fusion_engine" /> like Arrow, ADBC, Iceberg, or DataFusion, you can. You might see some familiar faces while you're there!
+- If you want to move upstream, and contribute to the standards underlying the dbt Fusion engine like Arrow, ADBC, Iceberg, or DataFusion, you can. You might see some familiar faces while you're there!
 - If you just want to let dbt get better and better in the background, you can do that too.
 - Want to get involved in the team building this? If the components here are uniquely interesting to you, email careers.fusion@dbtlabs.com.
 
