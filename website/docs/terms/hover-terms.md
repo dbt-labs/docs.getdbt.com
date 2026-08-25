@@ -101,10 +101,7 @@ lsp:
 
 managed:
   displayText: managed
-  hoverSnippet: dbt Labs manages the AI provider connection; no user provider key is required. Refer to
-  hoverLink: /docs/dbt-ai/wizard-billing-faqs
-  hoverLinkText: Billing
-  hoverLinkSuffix: for more info.
+  hoverSnippet: dbt Labs manages the AI provider connection; no user provider key is required.
 
 
 materialization:
