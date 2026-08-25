@@ -19,7 +19,7 @@ In <Constant name="dbt" />, _licenses_ are used to allocate users to your accoun
 
 The user's assigned license determines the specific capabilities they can access in <Constant name="dbt" />.
 
-On Enterprise-tier plans, you can also assign the [Analyst read](/docs/platform/manage-access/enterprise-permissions#analyst-read) permission set to Read-Only users. That set does not change their license. It lets those users manage their own warehouse credentials and use the [dbt MCP server](/docs/dbt-ai/about-mcp). Assign it through a group. Refer to [Set up read-only user access](/docs/platform/manage-access/about-user-access#set-up-read-only-user-access).
+On Enterprise-tier plans, you can also assign the [Analyst read](/docs/platform/manage-access/enterprise-permissions#analyst-read) permission set to Read-Only users. That set does not change their license. It lets those users manage their own warehouse credentials and use the [dbt MCP server](/docs/dbt-ai/about-mcp). They can connect with OAuth or a personal access token. Assign Analyst read through a group. Refer to [Set up read-only user access](/docs/platform/manage-access/about-user-access#set-up-read-only-user-access).
 
 | Functionality | <div style={{width:'125px'}}>Developer or Analyst license** *</div> | <div style={{width:'125px'}}>Read-Only</div> | <div style={{width:'125px'}}>Read-Only with Analyst read ***</div> |<div style={{width:'125px'}}> IT license \*</div> |
 | ------------- | -------------- | --------------- | --------------- | -------- |
@@ -27,6 +27,7 @@ On Enterprise-tier plans, you can also assign the [Analyst read](/docs/platform/
 | Use the <Constant name="dbt" /> CLI | ✅ | ❌ | ❌ | ❌ |
 | Use [<Constant name="canvas" />](/docs/platform/canvas) | ✅ | ❌ | ❌ | ❌ |
 | Use [<Constant name="insights" />](/docs/explore/dbt-insights) | ✅ | ❌ | ❌ | ❌ |
+| Use [<Constant name="wizard" />](/docs/platform/wizard-overview) | ✅ | ❌ | ❌ | ❌ |
 | Use Jobs | ✅ | ❌ | ❌ | ❌ |
 | Manage Account | ✅ | ❌ | ❌ | ✅ |
 | API access <br />(create personal access tokens) | ✅ | ✅ | ✅ | ✅ |
@@ -37,6 +38,7 @@ On Enterprise-tier plans, you can also assign the [Analyst read](/docs/platform/
 | Receive [Job notifications](/docs/deploy/job-notifications) |  ✅ |  ✅  | ✅ |  ✅ |
 | Use the [dbt MCP server](/docs/dbt-ai/about-mcp) | ✅ | ❌ | ✅ | ❌ |
 | Manage own warehouse credentials | ✅ | ❌ | ✅ | ❌ |
+| Use [Cost Insights](/docs/explore/cost-insights) | ✅ | ❌ | ❌ | ❌ |
 
 <br />
 
@@ -44,7 +46,11 @@ On Enterprise-tier plans, you can also assign the [Analyst read](/docs/platform/
 
 **Available on Starter, Enterprise, and Enterprise+ plans only. IT seats are limited to 1 seat per Starter or Enterprise-tier account and don't count toward developer seat usage.
 
-***Analyst read is available on Enterprise and Enterprise+ plans. Assign it through a group. Refer to [Set up read-only user access](/docs/platform/manage-access/about-user-access#set-up-read-only-user-access). 
+***Analyst read is available on Enterprise and Enterprise+ plans. Assign it through a group. Refer to [Set up read-only user access](/docs/platform/manage-access/about-user-access#set-up-read-only-user-access).
+
+A Read-Only license is not enough to view Cost Insights. Assign the [Cost Insights Viewer](/docs/platform/manage-access/enterprise-permissions#cost-insights-viewer) permission set through a group.
+
+For MCP authentication options, refer to [Connect dbt MCP server to dbt platform](/docs/dbt-ai/mcp-quickstart-oauth). 
 
 ## Licenses
 
