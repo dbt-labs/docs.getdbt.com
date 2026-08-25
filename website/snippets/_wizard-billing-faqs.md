@@ -6,6 +6,8 @@ Wizard usage with the dbt-<Term id="managed"/> inference will be measured per to
 
 Cost will depend on the model used, prompt length and complexity, and response size.
 
+Refer to [Model Provider Rate table](https://www.getdbt.com/legal/dbt-wizard-token-costs-by-model) and [Service Consumption Table](https://www.getdbt.com/legal/service-consumption-table) for the currently available models.
+
 </Expandable>
 
 <Expandable alt_header="What is the dbt Wizard usage consumption pool?">
