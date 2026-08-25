@@ -30,7 +30,7 @@ import SnowflakeColumn from '/snippets/_snowflake-column-size.md';
 
 ### Behavior changes
 
-dbt Core v1.7 expands the amount of sources you can configure freshness for. Previously, freshness was limited to sources with a `loaded_at_field`; now, freshness can be generated from warehouse metadata tables when available. 
+<Constant name="core" /> v1.7 expands the amount of sources you can configure freshness for. Previously, freshness was limited to sources with a `loaded_at_field`; now, freshness can be generated from warehouse metadata tables when available. 
 
 As part of this change, the `loaded_at_field` is no longer required to generate source freshness. If a source has a `freshness:` block, dbt will attempt to calculate freshness for that source:
 - If a `loaded_at_field` is provided, dbt will calculate freshness via a select query (previous behavior).

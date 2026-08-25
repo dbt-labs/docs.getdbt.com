@@ -96,8 +96,8 @@ Develop with a self-hosted installation using the <Constant name="fusion_engine"
     link="/guides/fusion?step=2"
     icon="dbt-bit"/>
 <Card
-    title="dbt Core from a manual install"
-    body="Learn how to install dbt Core and set up a project."
+    title="<Constant name="core" /> from a manual install"
+    body="Learn how to install <Constant name="core" /> and set up a project."
     link="/guides/manual-install"
     icon="dbt-bit"/>
 

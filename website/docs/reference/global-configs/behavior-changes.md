@@ -31,7 +31,7 @@ Behavior change flags go through three phases of development:
 2. **Mature (enabled by default):** The default value of the flag is switched to the new behavior by default. You can still preserve the old behavior, but you may see deprecation warnings.
 3. **Removed (generally enabled):** The old behavior is removed from the dbt codebase(s). Most flags are supported indefinitely, but there is no committement to supporting them forever. If a flag is removed, there will be significant advanced warning.
 
-### Introduced in dbt Core v1.x
+### Introduced in <Constant name="core_v1" />
 
 This table outlines which month of the **Latest** release track in <Constant name="dbt" /> and which version of <Constant name="core" /> contains the behavior change's introduction (disabled by default) or maturity (enabled by default).
 
@@ -72,7 +72,7 @@ Several behavior change flags on the <Constant name="dbt_platform" /> `Latest` r
 | [require_yaml_configuration_for_mf_time_spines](/reference/global-configs/behavior-flags/require_yaml_configuration_for_mf_time_spines) | Suppresses a deprecation warning (no functional change) |
 | [validate_macro_args](/reference/global-configs/behavior-flags/validate_macro_args) | New warning for mismatched macro arguments; errors with `--warn-error` |
 
-### Introduced in <Constant name="fusion" /> and Core v2
+### Introduced in <Constant name="fusion" /> and <Constant name="core_v2" />
 
 The following flags are specific to <Constant name="fusion" /> and have no equivalent in <Constant name="core" />. They are configured the same way — in the `flags:` block of `dbt_project.yml`.
 

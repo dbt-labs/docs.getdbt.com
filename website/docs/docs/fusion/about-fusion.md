@@ -34,7 +34,7 @@ The <Constant name="fusion_engine" /> shares the same dbt framework you already 
 
 <Constant name="fusion" /> is written in Rust and has a native understanding of SQL across multiple engine dialects &mdash; catching errors before they reach your warehouse and powering editor features like autocomplete and inline errors as you type.
 
-<Constant name="fusion" /> is the default experience when you [install dbt](/docs/local/install-dbt). It gives you the recommended v2 experience from the command line and builds on the Apache 2.0 runtime available as dbt Core 2.0. It's free to use, with some capabilities unlocked when you sign in with any <Constant name="dbt_platform" /> account &mdash; free, no paid plan required. 
+<Constant name="fusion" /> is the default experience when you [install dbt](/docs/local/install-dbt). It gives you the recommended v2 experience from the command line and builds on the Apache 2.0 runtime available as <Constant name="core_v2" />. It's free to use, with some capabilities unlocked when you sign in with any <Constant name="dbt_platform" /> account &mdash; free, no paid plan required. 
 
 ## Why use <Constant name="fusion" />
 
@@ -48,7 +48,7 @@ Get all of this, free, in the [dbt extension for VSCode](/docs/about-dbt-extensi
 
 ### Thread management
 
-The <Constant name="fusion_engine" /> manages parallelism differently than dbt Core v1.x. Rather than treating the `threads` setting as a strict limit on concurrent operations, <Constant name="fusion" /> optimizes parallelism based on each adapter's characteristics.
+The <Constant name="fusion_engine" /> manages parallelism differently than <Constant name="core_v1" />. Rather than treating the `threads` setting as a strict limit on concurrent operations, <Constant name="fusion" /> optimizes parallelism based on each adapter's characteristics.
 
 - **Snowflake and Databricks**: <Constant name="fusion" /> ignores user-set threads and automatically optimizes parallelism for maximum performance.
 - **BigQuery and Redshift**: <Constant name="fusion" /> respects user-set threads to manage rate limits and concurrency constraints.
@@ -67,7 +67,7 @@ You can use <Constant name="fusion" /> in three ways:
 
 To get started quickly, try the [Fusion quickstart](/guides/fusion). If you use the <Constant name="dbt_platform"/> and want to keep local development in sync, refer to [Hybrid development with the <Constant name="dbt_platform"/> and <Constant name="fusion" />](/guides/fusion-platform-local-workflow).
 
-_Need Apache 2.0 only? [Install dbt Core 2.0](/docs/local/install-dbt-core-v2), the open-source project behind <Constant name="fusion" />._
+_Need Apache 2.0 only? [Install <Constant name="core_v2" />](/docs/local/install-dbt-core-v2), the open-source project behind <Constant name="fusion" />._
 
 import AboutFusion from '/snippets/_about-fusion.md';
 

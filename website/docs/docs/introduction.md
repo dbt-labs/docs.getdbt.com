@@ -50,8 +50,8 @@ Learn more about [dbt platform features](/docs/platform/about-platform/dbt-platf
 For the best development experience, we recommend pairing v2 with the [dbt VS Code extension](/docs/about-dbt-extension) for autocomplete, inline errors, and lineage as you work. You can also run [`dbt login`](/reference/commands/login?version=2.0) to unlock additional capabilities and create a free <Constant name="dbt_platform" /> account.
 
 Other ways to run self-hosted dbt:
-- [dbt Core v1.x](/docs/local/install-dbt?version=1.0): The original Python-based CLI. 
-- [dbt Core v2.x](/docs/local/install-dbt-core-v2): dbt Core 2.0, the free, fully open-source (Apache 2.0) distribution of the new Rust-based dbt engine. Typically for organizations with a strict requirement to use this OSS runtime.
+- [<Constant name="core_v1" />](/docs/local/install-dbt?version=1.0): The original Python-based CLI. 
+- [<Constant name="core_v2" />](/docs/local/install-dbt-core-v2): <Constant name="core_v2" />, the free, fully open-source (Apache 2.0) distribution of the new Rust-based dbt engine. Typically for organizations with a strict requirement to use this OSS runtime.
 
 ## Why use dbt
 

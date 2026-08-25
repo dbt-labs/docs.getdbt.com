@@ -83,7 +83,7 @@ Common ineligibility reasons include:
 
 As you complete the steps in this guide, check the readiness panel to see your eligibility improve.
 
-## Upgrade to the latest dbt Core version
+## Upgrade to the latest <Constant name="core" /> version
 
 Before upgrading to <Constant name="fusion" />, you need to move your environments to the **Latest** [<Constant name="core" /> release track](/docs/dbt-versions/dbt-release-tracks). The **Latest** track includes all the features and tooling to help you prepare for <Constant name="fusion" />. It ensures the smoothest upgrade experience by validating that your project doesn't rely on deprecated behaviors.
 

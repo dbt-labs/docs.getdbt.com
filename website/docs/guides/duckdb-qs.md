@@ -44,11 +44,11 @@ You can learn more through high-quality [dbt Learn courses and workshops](https:
 - It's important that you know some basics of the terminal. In particular, you should understand `cd`, `ls` , and `pwd` to navigate through the directory structure of your computer easily.
 - You have a [GitHub account](https://github.com/join).
 
-## Set up DuckDB for dbt Core
+## Set up DuckDB for <Constant name="core" />
 
 This section will provide a step-by-step guide for setting up DuckDB for use in local (Mac and Windows) environments and web browsers.
 
-In the repository, there's a [`requirements.txt`](https://github.com/dbt-labs/jaffle_shop_duckdb/blob/duckdb/requirements.txt) file which is used to install dbt Core, DuckDB, and all other necessary dependencies. You can check this file to see what will be installed on your machine. It's typically located in the root directory of your project alongside other key files like `dbt_project.yml`. Otherwise, we will show you how in later steps.
+In the repository, there's a [`requirements.txt`](https://github.com/dbt-labs/jaffle_shop_duckdb/blob/duckdb/requirements.txt) file which is used to install <Constant name="core" />, DuckDB, and all other necessary dependencies. You can check this file to see what will be installed on your machine. It's typically located in the root directory of your project alongside other key files like `dbt_project.yml`. Otherwise, we will show you how in later steps.
 
 Below is an example of the `requirements.txt` file alongside other key files like `dbt_project.yml`:
 
@@ -89,7 +89,7 @@ For more information, refer to the [DuckDB setup](/docs/local/connect-data-platf
     ```
 
 
-3. Install dbt Core and DuckDB in a virtual environment.
+3. Install <Constant name="core" /> and DuckDB in a virtual environment.
 
     <Expandable alt_header="Example for Mac" >
 

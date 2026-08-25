@@ -30,14 +30,14 @@ When you install dbt, you get <Constant name="fusion" /> by default. There's no 
 To use <Constant name="fusion" /> in your project you must:
 - Use a supported adapter and authentication method:
   <FusionDWH /> 
-- Be able to run your project on the latest version of dbt Core v1.x with no deprecation warnings or errors.
+- Be able to run your project on the latest version of <Constant name="core" /> v1.x with no deprecation warnings or errors.
 - Migrate your Semantic Layer configurations to the [latest YAML spec](/docs/build/latest-metrics-spec).
 
-## Parity with dbt Core v1.x
+## Parity with <Constant name="core" /> v1.x
 
-<Constant name="fusion" /> supports nearly all of dbt Core v1.x's capabilities today. Refer to [Limitations](#limitations) below for the small number of gaps that remain.
+<Constant name="fusion" /> supports nearly all of <Constant name="core" /> v1.x's capabilities today. Refer to [Limitations](#limitations) below for the small number of gaps that remain.
 
-<Constant name="fusion" /> has also removed some deprecated features and introduced more rigorous validation of erroneous project code compared to dbt Core v1.x. Refer to the [Upgrade guide](/docs/dbt-versions/core-upgrade/upgrading-to-v2) for details.
+<Constant name="fusion" /> has also removed some deprecated features and introduced more rigorous validation of erroneous project code compared to <Constant name="core" /> v1.x. Refer to the [Upgrade guide](/docs/dbt-versions/core-upgrade/upgrading-to-v2) for details.
 
 ## Features and capabilities
 
@@ -54,7 +54,7 @@ Most Fusion features work right away, with no login required. A few more unlock 
 If your project uses any of the following, you can still use <Constant name="fusion" />, but full migration may not be possible yet:
 
 - Models that rely on materialization features <Constant name="fusion" /> doesn't fully support, or that need configurations it's still missing
-- Tooling that depends on dbt Core v1.x's exact log output &mdash; <Constant name="fusion" />'s logging system is still unstable and incomplete
+- Tooling that depends on <Constant name="core" /> v1.x's exact log output &mdash; <Constant name="fusion" />'s logging system is still unstable and incomplete
 - Workflows built around dbt platform features <Constant name="fusion" /> doesn't yet support, like model-level notifications
 - Using the dbt VS Code extension in Cursor's Agent mode &mdash; lineage visualization only renders in Editor mode, so switch there if you need the full lineage tab
 

@@ -132,7 +132,7 @@ Learn how to use <Constant name="dbt" />'s features to help your team ship timel
 
 <Card
     title="Hybrid projects"
-    body="Use Hybrid projects to upload dbt Core artifacts into the dbt platform for central visibility, cross-project referencing, and easier collaboration."
+    body="Use Hybrid projects to upload <Constant name="core" /> artifacts into the dbt platform for central visibility, cross-project referencing, and easier collaboration."
     link="/docs/deploy/hybrid-projects"
     icon="dbt-bit"/>
 

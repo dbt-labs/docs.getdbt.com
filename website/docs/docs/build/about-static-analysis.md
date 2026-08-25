@@ -19,7 +19,7 @@ import FusionLifecycle from '/snippets/_fusion-lifecycle-callout.md';
 
 The <Constant name="fusion_engine" /> [fully comprehends your project's SQL](/blog/the-levels-of-sql-comprehension), enabling advanced capabilities like dialect-aware validation and precise column-level lineage.
 
-It can do this because its compilation step is more comprehensive than that of the dbt Core v1.x engine. When dbt Core v1.x referred to _compilation_, it only meant _rendering_ &mdash; converting Jinja-templated strings into a SQL query to send to a database.
+It can do this because its compilation step is more comprehensive than that of the <Constant name="core" /> v1.x engine. When <Constant name="core" /> v1.x referred to _compilation_, it only meant _rendering_ &mdash; converting Jinja-templated strings into a SQL query to send to a database.
 
 <Constant name="fusion_engine" /> can also render Jinja, but then it completes a second phase: _static analysis_, producing and validating a logical plan for every rendered query in the project. This step is the cornerstone of <Constant name="fusion" />'s new capabilities.
 
@@ -37,7 +37,7 @@ The <Constant name="fusion_engine" /> uses the [`static_analysis`](/reference/re
 
 The <Constant name="fusion_engine" /> is unique in that it can statically analyze not just a single model in isolation, but every query from one end of your DAG to the other. Even your database can only validate the query in front of it! Concepts like [information flow theory](https://roundup.getdbt.com/i/156064124/beyond-cll-information-flow-theory-and-metadata-propagation) &mdash; although not incorporated into the dbt platform [yet](https://www.getdbt.com/blog/where-we-re-headed-with-the-dbt-fusion-engine) &mdash; rely on stable inputs and the ability to trace columns DAG-wide.
 
-### Baseline mode: A smooth transition from dbt Core
+### Baseline mode: A smooth transition from <Constant name="core" />
 
 The <Constant name="fusion_engine" /> defaults to `static_analysis: baseline` mode, inspired by similar type-checking and linting tools like [TypeScript's migration approach](https://www.typescriptlang.org/docs/handbook/migrating-from-javascript.html), [basedpyright's baseline feature](https://docs.basedpyright.com/latest/benefits-over-pyright/baseline/), and [Pydantic's strict/lax modes](https://docs.pydantic.dev/latest/why/#strict-lax).
 

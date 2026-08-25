@@ -21,7 +21,7 @@ dbt Labs is committed to providing backward compatibility for all versions 1.x, 
 
 ## Release tracks 
 
-Starting in 2024, <Constant name="dbt" /> provides the functionality from new versions of dbt Core via [release tracks](/docs/dbt-versions/dbt-release-tracks) with automatic upgrades. Select a release track in your development, staging, and production [environments](/docs/deploy/deploy-environments) to access everything in dbt Core v1.8+ and more. To upgrade an environment in the [<Constant name="dbt" /> Admin API](/docs/dbt-apis/admin-api) or [Terraform](https://registry.terraform.io/providers/dbt-labs/dbtcloud/latest), set `dbt_version` to the string `latest`.
+Starting in 2024, <Constant name="dbt" /> provides the functionality from new versions of <Constant name="core" /> via [release tracks](/docs/dbt-versions/dbt-release-tracks) with automatic upgrades. Select a release track in your development, staging, and production [environments](/docs/deploy/deploy-environments) to access everything in <Constant name="core" /> v1.8+ and more. To upgrade an environment in the [<Constant name="dbt" /> Admin API](/docs/dbt-apis/admin-api) or [Terraform](https://registry.terraform.io/providers/dbt-labs/dbtcloud/latest), set `dbt_version` to the string `latest`.
 
 ## New and changed features and functionality
 
@@ -93,7 +93,7 @@ The ability for installed packages to override built-in materializations without
 
 ### Managing changes to legacy behaviors
 
-dbt Core v1.8 has introduced flags for [managing changes to legacy behaviors](/reference/global-configs/behavior-changes). You may opt into recently introduced changes (disabled by default), or opt out of mature changes (enabled by default), by setting `true` / `false` values, respectively, for `flags` in `dbt_project.yml`.
+<Constant name="core" /> v1.8 has introduced flags for [managing changes to legacy behaviors](/reference/global-configs/behavior-changes). You may opt into recently introduced changes (disabled by default), or opt out of mature changes (enabled by default), by setting `true` / `false` values, respectively, for `flags` in `dbt_project.yml`.
 
 You can read more about each of these behavior changes in the following links:
 

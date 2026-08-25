@@ -243,7 +243,7 @@ A user-defined description used to document:
 - macros, and macro arguments
 - data tests, and data test columns
 - unit tests for models
-- groups (dbt Core v1.10+)
+- groups (<Constant name="core" /> v1.10+)
 
 These descriptions are used in the documentation website rendered by dbt (refer to [the documentation guide](/docs/build/documentation) or [<Constant name="catalog" />](/docs/explore/explore-projects)). 
 

@@ -20,7 +20,7 @@ This flag was removed in <Constant name="core_v2" /> and in <Constant name="fusi
 
 <br />
 
-In previous versions (dbt Core 1.8 and earlier), the MetricFlow time spine configuration was stored in a `metricflow_time_spine.sql` file.
+In previous versions (<Constant name="core" /> 1.8 and earlier), the MetricFlow time spine configuration was stored in a `metricflow_time_spine.sql` file.
 
 Starting in <Constant name="core" /> v1.12, this flag defaults to `true`. When enabled, dbt suppresses the `MFTimespineWithoutYamlConfigurationDeprecation` deprecation warning. The legacy SQL file configuration continues to work in both cases.
 

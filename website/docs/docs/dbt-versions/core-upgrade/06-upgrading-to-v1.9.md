@@ -42,7 +42,7 @@ Historically, managing incremental models involved several manual steps and resp
 
 While this works for many use-cases, there’s a clear limitation with this approach: *Some datasets are just too big to fit into one query.*
 
-Starting in Core 1.9, you can use the new [microbatch strategy](/docs/build/incremental-microbatch#what-is-microbatch-in-dbt) to optimize your largest datasets  -- **process your event data in discrete periods with their own SQL queries, rather than all at once.** The benefits include:
+Starting in <Constant name="core" /> 1.9, you can use the new [microbatch strategy](/docs/build/incremental-microbatch#what-is-microbatch-in-dbt) to optimize your largest datasets  -- **process your event data in discrete periods with their own SQL queries, rather than all at once.** The benefits include:
 
 - Simplified query design: Write your model query for a single batch of data. dbt will use your `event_time`, `lookback`, and `batch_size` configurations to automatically generate the necessary filters for you, making the process more streamlined and reducing the need for you to manage these details.
 - Independent batch processing: dbt automatically breaks down the data to load into smaller batches based on the specified `batch_size` and processes each batch independently, improving efficiency and reducing the risk of query timeouts. If some of your batches fail, you can use `dbt retry` to load only the failed batches.
@@ -76,7 +76,7 @@ To learn how to safely migrate existing snapshots, refer to [Snapshot configurat
 
 ### Some `properties` moved to `configs`
 
-The following `properties` were moved to `configs` in [Core v1.10](/docs/dbt-versions/core-upgrade/upgrading-to-v1.10) and backported to Core v1.9:
+The following `properties` were moved to `configs` in [<Constant name="core" /> v1.10](/docs/dbt-versions/core-upgrade/upgrading-to-v1.10) and backported to <Constant name="core" /> v1.9:
 - [`freshness`](/reference/resource-properties/freshness) for sources
 - [`meta`](/reference/resource-configs/meta) under `columns`
 - [`tags`](/reference/resource-configs/tags) under `columns`
@@ -89,7 +89,7 @@ We’ve made improvements to `state:modified` behaviors to help reduce the risk 
 
 ### Managing changes to legacy behaviors
 
-dbt Core v1.9 has a handful of new flags for [managing changes to legacy behaviors](/reference/global-configs/behavior-changes). You may opt into recently introduced changes (disabled by default), or opt out of mature changes (enabled by default), by setting `true` / `false` values, respectively, for `flags` in `dbt_project.yml`.
+<Constant name="core" /> v1.9 has a handful of new flags for [managing changes to legacy behaviors](/reference/global-configs/behavior-changes). You may opt into recently introduced changes (disabled by default), or opt out of mature changes (enabled by default), by setting `true` / `false` values, respectively, for `flags` in `dbt_project.yml`.
 
 You can read more about each of these behavior changes in the following links:
 
@@ -126,7 +126,7 @@ import SnowflakeColumn from '/snippets/_snowflake-column-size.md';
 
 ## Quick hits
 
-We also made some quality-of-life improvements in Core 1.9, enabling you to:
+We also made some quality-of-life improvements in <Constant name="core" /> 1.9, enabling you to:
 
 - Maintain data quality now that dbt returns an error (versioned models) or warning (unversioned models) when someone [removes a contracted model by deleting, renaming, or disabling](/docs/mesh/govern/model-contracts#how-are-breaking-changes-handled) it.
 - Document [data tests](/reference/resource-properties/description).

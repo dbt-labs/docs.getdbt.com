@@ -243,7 +243,7 @@ export OTEL_EXPORTER_OTLP_ENDPOINT="http://localhost:4318"
 dbtf build --export-to-otlp
 ```
 
-## Mapping to dbt Core concepts
+## Mapping to <Constant name="core" /> concepts
 
 If you're familiar with <Constant name="core" />'s structured logging, here's how <Constant name="fusion" /> telemetry maps:
 

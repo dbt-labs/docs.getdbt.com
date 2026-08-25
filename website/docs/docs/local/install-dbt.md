@@ -107,7 +107,7 @@ Common issues and resolutions:
     Yes. To test a new install without affecting your existing workflows, use a separate environment or virtual machine.
   </Expandable>
 - <Expandable alt_header="Can I download the Apache 2.0 runtime only?">
-    Yes if you need to use the Apache 2.0 runtime, you can [install dbt Core 2.0](/docs/local/install-dbt-core-v2), the open-source project behind <Constant name="fusion" />.
+    Yes if you need to use the Apache 2.0 runtime, you can [install <Constant name="core_v2" />](/docs/local/install-dbt-core-v2), the open-source project behind <Constant name="fusion" />.
   </Expandable>
 - <Expandable alt_header="How do I uninstall a curl (install.sh) install?">
 
@@ -146,9 +146,9 @@ Common issues and resolutions:
 Upgrade to v2 to get <Constant name="fusion" /> &mdash; up to 30x faster performance, <Term id="lsp" /> features like autocomplete and inline errors, and more. [Upgrade to v2](/docs/dbt-versions/core-upgrade/upgrading-to-v2).
 :::
 
-## Install dbt Core v1.x CLI
+## Install <Constant name="core_v1" /> CLI
 
-dbt Core v1.x is the original open-source dbt engine. Install it with `pip`, Docker, or from source.
+<Constant name="core_v1" /> is the original open-source dbt engine. Install it with `pip`, Docker, or from source.
 
 <Expandable alt_header="Pip installation" >
 
@@ -228,7 +228,7 @@ python3 -m pip install --pre dbt-ADAPTER_NAME
 ### Prerequisites
 
 - [Docker](https://docs.docker.com/) installed
-- Familiarity with [adapters](/docs/supported-data-platforms) and [Core versioning](/docs/dbt-versions)
+- Familiarity with [adapters](/docs/supported-data-platforms) and [<Constant name="core" /> versioning](/docs/dbt-versions)
 
 ### Pull an image
 
