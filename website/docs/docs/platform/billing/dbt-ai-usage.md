@@ -18,6 +18,8 @@ From September 1st, 2026, there are a couple of changes coming to dbt AI feature
 - AI features will turn on by default for <Constant name="dbt_platform" /> accounts on Developer, Starter, Enterprise, and Enterprise+ plans. If your organization already opted out of AI features, they stay off.
 - <Constant name="wizard" /> will move to usage-based billing for dbt <Term id="managed" /> AI. An admin will be able to turn AI features off at any time.
 
+Detailed product docs for both changes are on the way. Check back closer to September 1st for setup steps and billing details.
+
 Refer to [dbt Wizard billing and access FAQs](/docs/dbt-ai/wizard-billing-faqs) for more info.
 
 :::
