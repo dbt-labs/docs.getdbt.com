@@ -18,7 +18,7 @@ If you're developing on the command line (CLI) and have questions or need some h
 
 ## dbt platform support
 
-The global dbt Support team is available to <Constant name="dbt" /> customers by [email](mailto:support@getdbt.com) or by clicking **Create a support ticket** through the <Constant name="dbt" /> navigation.
+The global dbt Support team is available to <Constant name="dbt" /> customers by [email](mailto:support@dbtlabs.com) or by clicking **Create a support ticket** through the <Constant name="dbt" /> navigation.
 
 ### Create a support ticket
 To create a support ticket in <Constant name="dbt" />:
