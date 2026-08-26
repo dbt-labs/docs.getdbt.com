@@ -22,7 +22,7 @@ For <Constant name="fusion_engine" /> updates, refer to the [dbt-fusion changelo
 
 ## August 2026
 
-- **New:** When dbt State is enabled, you can run `dbt state explain` (<Constant name="core_v2" />) or `dbt-state explain` (<Constant name="core" /> plugin) in the CLI after a job finishes to see why dbt State made each decision and whether each node was built, reused, or cloned. For a detailed breakdown, run the command with `--verbose -s my_node_name` to see the table analysis, query analysis, and data freshness steps for a specific node. For more information, refer to [`dbt state explain`](/reference/commands/state-explain).
+- **New:** When dbt State is enabled, you can run `dbt state explain` (<Constant name="core_v2" />) or `dbt-state explain` (<Constant name="core" /> plugin) in the CLI after a job finishes to see why dbt State made each decision and whether each node was built, reused, or cloned. For a detailed breakdown, run the command with `--verbose -s my_node_name` to see the table analysis, query analysis, and data freshness analysis for a specific node. For more information, refer to [`dbt state explain`](/reference/commands/state-explain).
 - **Enhancement:** New sessions open on the Wizard tab when available, and the <Constant name="studio_ide" /> remembers your last-used tab for each project so you can pick up where you left off.
 - **Enhancement:** A new `relationName` field on the `ModelAppliedStateNode` and `ModelAppliedStateNestedNode` GraphQL types exposes the fully-qualified, adapter-rendered relation name (for example, `"database"."schema"."model_name"`) from the last successful model build.
 
