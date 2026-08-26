@@ -91,13 +91,13 @@ Develop with a self-hosted installation using the <Constant name="fusion_engine"
 <div className="grid--3-col">
 
 <Card
-    title="dbt Fusion engine from a manual install"
-    body="Learn how to install dbt Fusion and set up a project."
+    title="Self-hosted dbt v2 from a manual install"
+    body="Learn how to install self-hosted v2 and set up a project."
     link="/guides/fusion?step=2"
     icon="dbt-bit"/>
 <Card
-    title="<Constant name="core" /> from a manual install"
-    body="Learn how to install <Constant name="core" /> and set up a project."
+    title="Self-hosted dbt v1 from a manual install"
+    body="Learn how to install self-hosted v1 and set up a project."
     link="/guides/manual-install"
     icon="dbt-bit"/>
 
