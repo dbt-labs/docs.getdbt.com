@@ -1,7 +1,7 @@
 ---
 title: "About installing Fusion"
 description: "Install the Fusion engine in a self-hosted setup to take data transformation to the next level."
-id: about-fusion-install
+id: about-dbt-install
 ---
 
 # About self-hosted Fusion installation <Lifecycle status="preview" />
@@ -15,7 +15,7 @@ import FusionPrereqs from '/snippets/_fusion-prereqs.md';
 
 ## Getting started
 
-If you're ready to get started, choose one of the following options. To learn more about which tool is best for you, see the [Fusion availability](/docs/dbt/fusion-availability) page.
+If you're ready to get started, choose one of the following options. To learn more about which tool is best for you, see the [Fusion availability](/docs/dbt/dbt-availability) page.
 
 <div className="grid--3-col">
 

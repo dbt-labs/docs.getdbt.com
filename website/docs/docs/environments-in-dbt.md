@@ -27,7 +27,7 @@ Configure environments to tell <Constant name="dbt" /> or <Constant name="core" 
 <Card
     title="Environments in dbt Core"
     body="Setup and maintain separate deployment and development environments through the use of targets within a profile file"
-    link="/docs/local/dbt-core-environments"
+    link="/docs/local/dbt-environments"
     icon="command-line"/>
 
 </div> <br />

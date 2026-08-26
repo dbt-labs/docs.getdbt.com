@@ -44,7 +44,7 @@
   "redirects": [
     {
       "source": "/docs/fusion/about-fusion",
-      "destination": "/docs/dbt/about-fusion",
+      "destination": "/docs/dbt/about-dbt",
       "permanent": true
     },
     {
@@ -54,12 +54,12 @@
     },
     {
       "source": "/docs/fusion/get-started-fusion",
-      "destination": "/docs/dbt/get-started-fusion",
+      "destination": "/docs/dbt/get-started-dbt",
       "permanent": true
     },
     {
       "source": "/docs/fusion/fusion-availability",
-      "destination": "/docs/dbt/fusion-availability",
+      "destination": "/docs/dbt/dbt-availability",
       "permanent": true
     },
     {
@@ -69,12 +69,12 @@
     },
     {
       "source": "/docs/fusion/fusion-releases",
-      "destination": "/docs/dbt/fusion-releases",
+      "destination": "/docs/dbt/dbt-releases",
       "permanent": true
     },
     {
       "source": "/docs/fusion/fusion-readiness",
-      "destination": "/docs/dbt/fusion-readiness",
+      "destination": "/docs/dbt/dbt-readiness",
       "permanent": true
     },
     {
@@ -168,6 +168,81 @@
       "permanent": true
     },
     {
+      "source": "/docs/contribute-core-adapters",
+      "destination": "/docs/contribute-dbt-adapters",
+      "permanent": true
+    },
+    {
+      "source": "/docs/contribute-core-adapters-v2",
+      "destination": "/docs/contribute-dbt-adapters-v2",
+      "permanent": true
+    },
+    {
+      "source": "/docs/upgrade-to-fusion-extension",
+      "destination": "/docs/upgrade-to-dbt-extension",
+      "permanent": true
+    },
+    {
+      "source": "/docs/dbt-versions/fusion-version-compatibility",
+      "destination": "/docs/dbt-versions/dbt-version-compatibility",
+      "permanent": true
+    },
+    {
+      "source": "/docs/local/dbt-core-environments",
+      "destination": "/docs/local/dbt-environments",
+      "permanent": true
+    },
+    {
+      "source": "/docs/local/fusion-networking-requirements",
+      "destination": "/docs/local/dbt-networking-requirements",
+      "permanent": true
+    },
+    {
+      "source": "/docs/local/install-dbt-core-v2",
+      "destination": "/docs/local/install-dbt-v2",
+      "permanent": true
+    },
+    {
+      "source": "/guides/core-migration-1",
+      "destination": "/guides/dbt-migration-1",
+      "permanent": true
+    },
+    {
+      "source": "/guides/core-migration-2",
+      "destination": "/guides/dbt-migration-2",
+      "permanent": true
+    },
+    {
+      "source": "/guides/core-migration-3",
+      "destination": "/guides/dbt-migration-3",
+      "permanent": true
+    },
+    {
+      "source": "/guides/fusion-package-compat",
+      "destination": "/guides/dbt-package-compat",
+      "permanent": true
+    },
+    {
+      "source": "/guides/fusion-platform-local-workflow",
+      "destination": "/guides/dbt-platform-local-workflow",
+      "permanent": true
+    },
+    {
+      "source": "/guides/fusion",
+      "destination": "/guides/dbt",
+      "permanent": true
+    },
+    {
+      "source": "/guides/prepare-fusion-upgrade",
+      "destination": "/guides/prepare-dbt-upgrade",
+      "permanent": true
+    },
+    {
+      "source": "/guides/upgrade-to-fusion",
+      "destination": "/guides/upgrade-to-dbt",
+      "permanent": true
+    },
+    {
       "source": "/docs/build/osi-semantic-models",
       "destination": "/docs/build/ossie-semantic-models",
       "permanent": true
@@ -179,7 +254,7 @@
     },
     {
       "source": "/docs/fusion/fusion-networking",
-      "destination": "/docs/local/fusion-networking-requirements",
+      "destination": "/docs/local/dbt-networking-requirements",
       "permanent": true
     },
     {
@@ -189,12 +264,12 @@
     },
     {
       "source": "/docs/fusion/fusion",
-      "destination": "/docs/dbt/about-fusion",
+      "destination": "/docs/dbt/about-dbt",
       "permanent": true
     },
     {
       "source": "/docs/fusion",
-      "destination": "/docs/dbt/about-fusion",
+      "destination": "/docs/dbt/about-dbt",
       "permanent": true
     },
     {
@@ -328,7 +403,7 @@
       "permanent": true
     },
     {
-      "source": "/community/events",  
+      "source": "/community/events",
       "destination": "https://www.getdbt.com/events",
       "permanent": true
     },
@@ -354,17 +429,17 @@
     },
     {
       "source": "/guides/core-cloud-2",
-      "destination": "/guides/core-migration-2",
+      "destination": "/guides/dbt-migration-2",
       "permanent": true
     },
     {
       "source": "/guides/core-to-cloud-1",
-      "destination": "/guides/core-migration-1",
+      "destination": "/guides/dbt-migration-1",
       "permanent": true
     },
     {
       "source": "/guides/core-to-cloud-3",
-      "destination": "/guides/core-migration-3",
+      "destination": "/guides/dbt-migration-3",
       "permanent": true
     },
     {
@@ -464,7 +539,7 @@
     },
     {
       "source": "/guides/coalesce-fusion-platform-qs",
-      "destination": "/guides/fusion",
+      "destination": "/guides/dbt",
       "permanent": true
     },
     {
@@ -519,7 +594,7 @@
     },
     {
       "source": "/docs/fusion/install-fusion",
-      "destination": "/docs/dbt/get-started-fusion",
+      "destination": "/docs/dbt/get-started-dbt",
       "permanent": true
     },
     {
@@ -574,7 +649,7 @@
     },
     {
       "source": "/docs/fusion/about-fusion-install",
-      "destination": "/docs/dbt/about-fusion-install",
+      "destination": "/docs/dbt/about-dbt-install",
       "permanent": true
     },
     {
@@ -614,7 +689,7 @@
     },
     {
       "source": "/docs/core/dbt-core-environments",
-      "destination": "/docs/local/dbt-core-environments",
+      "destination": "/docs/local/dbt-environments",
       "permanent": true
     },
     {
@@ -2249,7 +2324,7 @@
     },
     {
       "source": "/docs/collaborate/environments/dbt-core-environments",
-      "destination": "/docs/local/dbt-core-environments",
+      "destination": "/docs/local/dbt-environments",
       "permanent": true
     },
     {
@@ -2349,17 +2424,17 @@
     },
     {
       "source": "/docs/supported-data-platforms#contributing-to-dbt-core-adapters",
-      "destination": "/docs/contribute-core-adapters",
+      "destination": "/docs/contribute-dbt-adapters",
       "permanent": true
     },
     {
       "source": "/docs/supported-data-platforms#contributing-to-a-pre-existing-adapter",
-      "destination": "/docs/contribute-core-adapters#contribute-to-a-pre-existing-adapter",
+      "destination": "/docs/contribute-dbt-adapters#contribute-to-a-pre-existing-adapter",
       "permanent": true
     },
     {
       "source": "/docs/supported-data-platforms#creating-a-new-adapter",
-      "destination": "/docs/contribute-core-adapters#create-a-new-adapter",
+      "destination": "/docs/contribute-dbt-adapters#create-a-new-adapter",
       "permanent": true
     },
     {

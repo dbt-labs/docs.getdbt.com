@@ -23,7 +23,7 @@ If you have a older project that isn’t ready to move to v2, continue using `db
 
 ## Which one should I use?
 
-For most people: <Constant name="fusion" />. It has more [capabilities](/docs/dbt/fusion-availability?version=2.0#what-you-get-with-fusion) out of the box than dbt Core 2.0 &mdash; including a built-in high-performance SQL linter &mdash; even if you never create a dbt account.
+For most people: <Constant name="fusion" />. It has more [capabilities](/docs/dbt/dbt-availability?version=2.0#what-you-get-with-fusion) out of the box than dbt Core 2.0 &mdash; including a built-in high-performance SQL linter &mdash; even if you never create a dbt account.
 
 We recommend everyone to just [install dbt](/docs/local/install-dbt) and get <Constant name="fusion" /> by default.
 

@@ -48,5 +48,5 @@ If you're upgrading to <Constant name="fusion" />, you should:
 - [Full deprecations list](/reference/deprecations)
 - [Behavior change flags](/reference/global-configs/behavior-changes)
 - [Upgrading to <Constant name="fusion" />](/docs/dbt-versions/dbt-upgrade/upgrading-to-v2)
-- [<Constant name="fusion" /> readiness checklist](/docs/dbt/fusion-readiness)
+- [<Constant name="fusion" /> readiness checklist](/docs/dbt/dbt-readiness)
 - [Events and logging](/reference/events-logging)

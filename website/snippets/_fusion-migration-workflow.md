@@ -1,7 +1,7 @@
 If you have access to [<Constant name="wizard"/>](/docs/dbt-ai/wizard-ide) with [AI features](/docs/platform/enable-dbt-ai?version=2.0#enable-dbt-wizard) enabled, you can use the [<Constant name="fusion"/> migration workflow](/docs/dbt-ai/wizard-ide#fusion-migration-workflow) skill. This skill can help you fix compatibility errors directly from the <Constant name="studio_ide" /> using <Constant name="wizard" /> &mdash; no manual log investigation needed. It classifies every error, applies validated fixes automatically, and surfaces what's blocked.
 
 :::info
-The <Constant name="fusion" /> migration workflow is accessible through the <Constant name="wizard" /> in the <Constant name="studio_ide" />. If you're using VS Code or the <Constant name="platform_cli" />, use the [autofix tool](https://docs.getdbt.com/guides/fusion-package-compat?step=4) instead.
+The <Constant name="fusion" /> migration workflow is accessible through the <Constant name="wizard" /> in the <Constant name="studio_ide" />. If you're using VS Code or the <Constant name="platform_cli" />, use the [autofix tool](https://docs.getdbt.com/guides/dbt-package-compat?step=4) instead.
 :::
 
 1. From the job list, click the **Review job** button for a job with a successful run.

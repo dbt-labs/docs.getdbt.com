@@ -39,7 +39,7 @@ For recommended workflows on real project tasks &mdash; understanding a project,
 
 <Constant name="wizard" /> is for anyone doing dbt development — from analytics engineers working in a self-hosted setup in the terminal to teams building in the <Constant name="dbt_platform" />. You can use it in the platform with managed or bring-your-own-key (BYOK) credentials, or in the terminal with your own key, with or without a <Constant name="dbt_platform" /> account.
 
-<Constant name="wizard" /> is data warehouse agnostic and works with both the [<Constant name="fusion_engine" />](/docs/dbt/about-fusion) and [<Constant name="core" />](/docs/local/install-dbt) &mdash; no specific engine is required.
+<Constant name="wizard" /> is data warehouse agnostic and works with both the [<Constant name="fusion_engine" />](/docs/dbt/about-dbt) and [<Constant name="core" />](/docs/local/install-dbt) &mdash; no specific engine is required.
 
 The following table shows where <Constant name="wizard" /> is available, the AI keys each surface uses, and how usage is billed:
 

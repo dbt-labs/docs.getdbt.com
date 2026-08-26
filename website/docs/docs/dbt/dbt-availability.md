@@ -1,6 +1,6 @@
 ---
 title: "Fusion availability"
-id: "fusion-availability"
+id: "dbt-availability"
 description: "Learn where Fusion is available and what you get with dbt."
 hide_table_of_contents: true
 ---

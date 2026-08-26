@@ -1,14 +1,14 @@
 ---
 title: "Get started with Fusion"
 description: "Start using the Fusion engine locally to take data transformation to the next level."
-id: get-started-fusion
+id: get-started-dbt
 hide_table_of_contents: true
 hide_title: true
 ---
 
 ### New to dbt? Start here
 
-Once you've caught up on everything [<Constant name="fusion" /> has to offer](/docs/dbt/about-fusion), start with the path that matches how you want to use dbt.
+Once you've caught up on everything [<Constant name="fusion" /> has to offer](/docs/dbt/about-dbt), start with the path that matches how you want to use dbt.
 
 <div className="grid--3-col">
 
@@ -43,19 +43,19 @@ Upgrade your existing projects to v2 and learn about the tools available to you 
 <Card
     title="Guide: Prepare to upgrade to v2"
     body="Step-by-step guide to prepare your dbt platform projects for upgrading to v2."
-    link="/guides/prepare-fusion-upgrade"
+    link="/guides/prepare-dbt-upgrade"
     icon="dbt-bit" />
 
 <Card
     title="Guide: Upgrade to v2"
     body="Learn how to upgrade your eligible projects on the dbt platform to v2, powered by Fusion."
-    link="/guides/upgrade-to-fusion"
+    link="/guides/upgrade-to-dbt"
     icon="dbt-bit" />
 
 <Card
     title="Guide: dbt platform and local workflows"
     body="Learn how to keep credentials, environment variables, and Fusion versions in sync between dbt platform and local development."
-    link="/guides/fusion-platform-local-workflow"
+    link="/guides/dbt-platform-local-workflow"
     icon="dbt-bit" />
 
 </div>

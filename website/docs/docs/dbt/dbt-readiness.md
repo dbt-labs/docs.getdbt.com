@@ -1,13 +1,13 @@
 ---
 title: Fusion readiness checklist
-id: fusion-readiness
+id: dbt-readiness
 description: "Your to-do list for preparing for Fusion"
 sidebar_label: "Fusion readiness checklist"
 pagination_next: null
 pagination_prev: null
 ---
 
-The <Constant name="fusion_engine" /> is here and is now generally available for <Constant name="dbt_platform" /> projects on Snowflake! We currently offer it as a [preview](/docs/dbt-versions/product-lifecycles) for all other supported adapters. Even if we haven't enabled it for your account, you can still start preparing your projects for upgrade. Use this checklist to ensure a smooth upgrade once <Constant name="fusion" /> becomes available. If this is all new to you, first [learn about <Constant name="fusion" />](/docs/dbt/about-fusion), its current state, and the features available. 
+The <Constant name="fusion_engine" /> is here and is now generally available for <Constant name="dbt_platform" /> projects on Snowflake! We currently offer it as a [preview](/docs/dbt-versions/product-lifecycles) for all other supported adapters. Even if we haven't enabled it for your account, you can still start preparing your projects for upgrade. Use this checklist to ensure a smooth upgrade once <Constant name="fusion" /> becomes available. If this is all new to you, first [learn about <Constant name="fusion" />](/docs/dbt/about-dbt), its current state, and the features available. 
 
 import FusionReadinessPanel from '/snippets/_fusion-migration-readiness-panel.md';
 
@@ -18,8 +18,8 @@ import FusionReadinessPanel from '/snippets/_fusion-migration-readiness-panel.md
 Use the following checklist to prepare your projects for the <Constant name="fusion_engine" />
 
 For walkthroughs of both the preparation and upgrade processes, check out our detailed guides:
-- [ ] [Upgrade to Fusion Pt. 1: Preparing to upgrade](/guides/prepare-fusion-upgrade?step=1)
-- [ ] [Upgrade to Fusion Pt. 2: Making the move](/guides/upgrade-to-fusion?step=1)
+- [ ] [Upgrade to Fusion Pt. 1: Preparing to upgrade](/guides/prepare-dbt-upgrade?step=1)
+- [ ] [Upgrade to Fusion Pt. 2: Making the move](/guides/upgrade-to-dbt?step=1)
 
 
 ### Upgrade to the latest dbt version (recommended)
@@ -80,7 +80,7 @@ We determine <Constant name="fusion" /> eligibility using data from your job run
 - [ ] Resolve any job failures &mdash; all jobs must run successfully for eligibility checks to work.
 - [ ] Delete any jobs that are no longer in use to ensure accurate eligibility reporting. 
 - [ ] Make sure you've promoted the changes for deprecation resolution and package upgrades to your git branches that map to your deployment environments.
-- [ ] For eligible jobs, use **Debug on <Constant name="fusion" />** to debug in <Constant name="studio_ide" /> or run once on <Constant name="fusion" />. Refer to [Update your jobs](/guides/prepare-fusion-upgrade?step=7).
+- [ ] For eligible jobs, use **Debug on <Constant name="fusion" />** to debug in <Constant name="studio_ide" /> or run once on <Constant name="fusion" />. Refer to [Update your jobs](/guides/prepare-dbt-upgrade?step=7).
 
 ### Stay informed about Fusion progress
 

@@ -1,6 +1,6 @@
 ---
 title: "Hybrid development with dbt platform and Fusion"
-id: "fusion-platform-local-workflow"
+id: "dbt-platform-local-workflow"
 level: 'Beginner'
 icon: 'zap'
 hide_table_of_contents: true
@@ -25,8 +25,8 @@ This guide walks through credentials, environment variables, <Constant name="fus
 ## 1. Managing credentials
 
 How you authenticate to your data warehouse locally depends on which self-hosted tool you use:
-- [dbt platform CLI](/guides/fusion-platform-local-workflow?step=3#dbt-platform-cli): For a CLI-only development experience (without the dbt VS Code extension), use the <Constant name="platform_cli" /> with <Constant name="fusion"/> set as your platform release track. Warehouse credentials are managed centrally in <Constant name="dbt_platform" /> and passed through automatically &mdash; no `profiles.yml` required.
-- [dbt VS Code extension](/guides/fusion-platform-local-workflow?step=3#dbt-vs-code-extension-profilesyml-required): For IDE-based local development, the dbt VS Code extension runs the <Constant name="fusion_engine" /> and its <Term id="lsp" /> features in a local process. This path requires a `profiles.yml` to connect directly to your warehouse.
+- [dbt platform CLI](/guides/dbt-platform-local-workflow?step=3#dbt-platform-cli): For a CLI-only development experience (without the dbt VS Code extension), use the <Constant name="platform_cli" /> with <Constant name="fusion"/> set as your platform release track. Warehouse credentials are managed centrally in <Constant name="dbt_platform" /> and passed through automatically &mdash; no `profiles.yml` required.
+- [dbt VS Code extension](/guides/dbt-platform-local-workflow?step=3#dbt-vs-code-extension-profilesyml-required): For IDE-based local development, the dbt VS Code extension runs the <Constant name="fusion_engine" /> and its <Term id="lsp" /> features in a local process. This path requires a `profiles.yml` to connect directly to your warehouse.
 
 ### <Constant name="platform_cli" />
 
@@ -265,7 +265,7 @@ The following table summarizes the key differences between the two development p
 
 - [Install <Constant name="fusion" />](/docs/local/install-dbt)
 - [dbt platform CLI installation](/docs/platform/dbt-cli-installation)
-- [<Constant name="fusion" /> releases and release channels](/docs/dbt/fusion-releases)
+- [<Constant name="fusion" /> releases and release channels](/docs/dbt/dbt-releases)
 - [About profiles.yml](/docs/local/profiles.yml)
 - [Environment variables (local)](/docs/local/configure-environment-variables)
 - [VS Code dev containers](https://code.visualstudio.com/docs/devcontainers/containers)

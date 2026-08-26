@@ -43,7 +43,7 @@ Project parsing runs separately and automatically uses all available CPUs. To di
 
 <FusionThreads />
 
-For more information about <Constant name="fusion"/>'s approach to parallelism, refer to [the <Constant name="fusion_engine"/>](/docs/dbt/about-fusion) page.
+For more information about <Constant name="fusion"/>'s approach to parallelism, refer to [the <Constant name="fusion_engine"/>](/docs/dbt/about-dbt) page.
 
 ## Related docs
 - [About profiles.yml](/docs/local/profiles.yml)

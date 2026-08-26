@@ -464,13 +464,13 @@ var siteSettings = {
                   name: "dbt local installation",
                   routes: [
                     { route: "/docs/local/install-dbt" },
-                    { route: "/docs/local/dbt-core-environments" },
+                    { route: "/docs/local/dbt-environments" },
                   ],
                   subsections: [
                     {
                       id: "about-fusion-install",
                       name: "Install dbt Fusion engine",
-                      routes: [{ route: "/docs/dbt/about-fusion-install" }],
+                      routes: [{ route: "/docs/dbt/about-dbt-install" }],
                     },
                     {
                       id: "core-connect-data-platform",

@@ -91,10 +91,10 @@ dbt system install-drivers
 This command takes no additional flags.
 
 :::tip Networking note
-`dbt system install-drivers` downloads files from `https://public.cdn.getdbt.com`. If your environment restricts outbound network access, make sure this endpoint is allowlisted. See [Fusion networking requirements](/docs/local/fusion-networking-requirements) for the full list of endpoints.
+`dbt system install-drivers` downloads files from `https://public.cdn.getdbt.com`. If your environment restricts outbound network access, make sure this endpoint is allowlisted. See [Fusion networking requirements](/docs/local/dbt-networking-requirements) for the full list of endpoints.
 :::
 
 ## Related commands
 
 - [`dbt debug`](/reference/commands/debug) &mdash; Test your dbt project and connection configuration.
-- [Fusion networking requirements](/docs/local/fusion-networking-requirements) &mdash; Review outbound endpoints required by the <Constant name="fusion_engine" />.
+- [Fusion networking requirements](/docs/local/dbt-networking-requirements) &mdash; Review outbound endpoints required by the <Constant name="fusion_engine" />.

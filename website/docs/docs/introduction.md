@@ -51,7 +51,7 @@ For the best development experience, we recommend pairing v2 with the [dbt VS Co
 
 Other ways to run self-hosted dbt:
 - [dbt Core v1.x](/docs/local/install-dbt?version=1.0): The original Python-based CLI. 
-- [dbt Core v2.x](/docs/local/install-dbt-core-v2): dbt Core 2.0, the free, fully open-source (Apache 2.0) distribution of the new Rust-based dbt engine. Typically for organizations with a strict requirement to use this OSS runtime.
+- [dbt Core v2.x](/docs/local/install-dbt-v2): dbt Core 2.0, the free, fully open-source (Apache 2.0) distribution of the new Rust-based dbt engine. Typically for organizations with a strict requirement to use this OSS runtime.
 
 ## Why use dbt
 

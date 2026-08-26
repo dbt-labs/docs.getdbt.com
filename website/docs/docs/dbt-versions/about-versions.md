@@ -21,7 +21,7 @@ Whether you're using the CLI or working within the <Constant name="dbt_platform"
 <Card
     title="Fusion version compatibility"
     body="Learn about version compatibility between the dbt Fusion engine, LSP, and VS Code extension."
-    link="/docs/dbt-versions/fusion-version-compatibility"
+    link="/docs/dbt-versions/dbt-version-compatibility"
     icon="dbt-bit"/>
 <Card
     title="About release tracks"
