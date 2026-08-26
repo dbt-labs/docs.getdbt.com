@@ -361,7 +361,7 @@ models:
       - name: status
         data_tests:
           - accepted_values:
-              arguments: # available in v1.10.5 and higher. Older versions can set the <argument_name> as the top-level property.
+              arguments: # available in v1.10.5 and higher. 
                 values: ['placed', 'shipped', 'completed', 'returned']
       - name: customer_id
         data_tests:
