@@ -45,4 +45,4 @@ This keeps working indefinitely, but won't receive further <Constant name="platf
 
 - **Will my pinned <Constant name="platform_cli" /> version stop working?** No. Pinned installs keep working. They just won't get new <Constant name="platform_cli" /> releases through pip after September 14. For that, move to Homebrew.
 
-- **How do I tell which one I have installed?** `dbt --version`. The <Constant name="platform_cli" /> prints a version like `1.0.0.40.18`. <Constant name="fusion" />'s version string needs reconfirming post-rebrand — as of this writing the binary still internally identifies as `dbt-fusion X.Y.Z`, which may or may not change along with the public name.
+- **How do I tell which one I have installed?** `dbt --version`. The <Constant name="platform_cli" /> prints a version like `1.0.0.40.18`. <Constant name="fusion" />'s version string needs reconfirming post-update. At the time this article was published, the binary still internally identifies as `dbt-fusion X.Y.Z`, which may change.
