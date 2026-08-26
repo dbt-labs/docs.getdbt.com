@@ -158,6 +158,8 @@ If dbt State is behaving unexpectedly, you can prepend your run command with the
 DBT_ENGINE_MANAGE_STATE=0 dbt run --target dev --select "customers"
 ```
 
+To see which decision dbt State made for each node after a run and why, you can run the <VersionBlock firstVersion="2.0">[`dbt state explain`](/reference/commands/state-explain)</VersionBlock><VersionBlock lastVersion="1.99">[`dbt-state explain`](/reference/commands/state-explain)</VersionBlock> command.
+
 ## Next steps
 
 - [Migrate from state-aware orchestration](/docs/deploy/dbt-state-migration)
