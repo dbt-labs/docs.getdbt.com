@@ -15,7 +15,6 @@ dbt state explain
 
 The output shows all nodes from the last run, with a summary of the State decision for each:
 
-<!--example not yet final, im still seeing the same thing with or without --verbose -->
 ```shell
 SKIP_EXECUTION model.jaffle_shop.customers - model was a no-op because its query is up to date and its upstream data is within freshness tolerance
 READY_TO_EXECUTE model.jaffle_shop.orders - model was executed because the view definition is newer than the cached execution
