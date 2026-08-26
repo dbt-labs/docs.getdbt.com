@@ -170,7 +170,7 @@ Use this path if the login flow says you have an account but you don't remember 
 7. If your email is linked to more than one account, select the account you want to use.
 8. On the **Authorize dbt login** screen, click **Allow access**. When authorization completes, the flow returns to your terminal and the dbt VS Code extension.
 
-If you still can't sign in, your account may be locked. Contact [dbt Support](mailto:support@getdbt.com) to unlock your account, then continue with the **Existing account sign-in** flow.
+If you still can't sign in, your account may be locked. Contact [dbt Support](mailto:support@dbtlabs.com) to unlock your account, then continue with the **Existing account sign-in** flow.
 
 <AuthorizeAdditionalAccess />
 

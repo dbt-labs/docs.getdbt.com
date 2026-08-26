@@ -144,7 +144,7 @@ For data practitioners, combining the extension's Fusion-powered editor experien
 
 ## Support
 
-dbt platform customers can contact dbt Labs support at [support@getdbt.com](mailto:support@getdbt.com). You can also get in touch with us by reaching out to your Account Manager directly.
+dbt platform customers can contact dbt Labs support at [support@dbtlabs.com](mailto:support@dbtlabs.com). You can also get in touch with us by reaching out to your Account Manager directly.
 
 For organizations that are not customers of the dbt platform, the best place for questions and discussion is the [dbt Community Slack](https://www.getdbt.com/community/join-the-community).
 

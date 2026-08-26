@@ -22,7 +22,7 @@ Your account will be automatically migrated on or after its scheduled date. Howe
 
 If you're on the <Constant name="dbt" /> Enterprise tier, you can postpone your account migration by up to 45 days. To reschedule your migration, navigate to **Account Settings** → **Migration guide**.
 
-For help, contact the dbt Support Team at [support@getdbt.com](mailto:support@getdbt.com).
+For help, contact the dbt Support Team at [support@dbtlabs.com](mailto:support@dbtlabs.com).
 :::
 
 We highly recommended you take these actions:

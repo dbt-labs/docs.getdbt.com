@@ -16,4 +16,4 @@ Your <Constant name="studio_ide" /> session experienced an unknown error and was
 You can try to resolve this by adding a repository like a [managed repository](/docs/platform/git/managed-repository) or your preferred <Constant name="git" /> account. To add your <Constant name="git" /> account, navigate to **Project** > **Repository** and select your repository.
 
 
-If you're still running into this error, please contact the Support team at support@getdbt.com for help. 
+If you're still running into this error, please contact the Support team at support@dbtlabs.com for help. 

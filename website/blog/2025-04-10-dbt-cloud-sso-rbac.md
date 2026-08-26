@@ -64,7 +64,7 @@ Once you've set up SSO successfully, you have additional ways to onboard your us
 
 <Lightbox src="/img/blog/2025-04-10-sso-and-rbac/2_sso_flows.png" title="SSO flows into dbt Cloud" width="85%" />
 
-Get stuck setting up SSO? [Open a support ticket](mailto:support@getdbt.com), and one of our Customer Solutions Engineers will be happy to help you!
+Get stuck setting up SSO? [Open a support ticket](mailto:support@dbtlabs.com), and one of our Customer Solutions Engineers will be happy to help you!
 
 ## Licenses and Groups
 
