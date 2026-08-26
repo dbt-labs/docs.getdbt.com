@@ -379,7 +379,7 @@ If you previously set test inputs as top-level properties next to the test name,
 
 ### Add context to failing rows
 
-Data tests return one row for each failure. The columns in your test `select` are the columns you see when you debug failures, including when you [store test failures](#storing-data-test-failures).
+Data tests return one row for each failure. The columns in your test's SQL select statement are the columns you see when you debug failures, including when you [store test failures](#storing-data-test-failures).
 
 Built-in tests often return only the failing value. To include more context per failing row, write a [singular data test](#singular-data-tests) (or a [custom generic data test](/best-practices/writing-custom-generic-tests)) that selects the extra columns you want:
 
