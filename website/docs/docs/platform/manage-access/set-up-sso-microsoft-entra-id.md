@@ -229,7 +229,7 @@ Ensure that the domain name under which user accounts exist in Azure matches the
 
 After completing the Entra ID login flow, you're redirected back to the <Constant name="dbt_platform" /> login page and see the following message:
 ```
-Server error! There was a server error. Please try again, or contact support@getdbt.com if this persists.
+Server error! There was a server error. Please try again, or contact support@dbtlabs.com if this persists.
 ```
 
 This typically happens when Microsoft Entra ID can't find a SAML signing certificate configured for the application. The underlying error (`AADSTS500031: Cannot find signing certificate configured`) isn't surfaced to the user.

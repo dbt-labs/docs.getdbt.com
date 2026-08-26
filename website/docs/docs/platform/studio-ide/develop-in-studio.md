@@ -122,7 +122,7 @@ Nice job, you're ready to start developing and building models 🎉!
 ### Considerations
 
 - To improve your experience using <Constant name="dbt" />, we suggest that you turn off ad blockers. This is because some project file names, such as `google_adwords.sql`, might resemble ad traffic and trigger ad blockers.
-- To preserve performance, there's a file size limitation for repositories over 6 GB. If you have a repo over 6 GB, please contact [dbt Support](mailto:support@getdbt.com) before running <Constant name="dbt" />.
+- To preserve performance, there's a file size limitation for repositories over 6 GB. If you have a repo over 6 GB, please contact [dbt Support](mailto:support@dbtlabs.com) before running <Constant name="dbt" />.
 - The <Constant name="studio_ide" />'s idle session timeout is one hour.
 - <Expandable alt_header="About the start up process and work retention">
   
