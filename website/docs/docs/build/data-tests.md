@@ -381,7 +381,7 @@ If you previously set test inputs as top-level properties next to the test name,
 
 Data tests return one row for each failure. The columns in your test's SQL select statement are the columns you see when you debug failures, including when you [store test failures](#storing-data-test-failures).
 
-Built-in tests often return only the failing value. To include more context per failing row, write a [singular data test](#singular-data-tests) (or a [custom generic data test](/best-practices/writing-custom-generic-tests)) that selects the extra columns you want:
+Built-in tests often return only the failing value. To include more context per failing row, write a [singular data test](#singular-data-tests) (or a [custom generic data test](/best-practices/writing-custom-generic-tests)) that selects the extra columns you want. Building on the `accepted_values` test above, here's a singular test that also captures `customer_id` for context. 
 
 <File name='tests/assert_unexpected_order_status.sql'>
 
