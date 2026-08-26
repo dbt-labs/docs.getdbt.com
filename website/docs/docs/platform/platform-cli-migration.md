@@ -8,9 +8,9 @@ The <Constant name="fusion_engine" /> is taking over the `pip install dbt` names
 
 ## What's changing
 
-Starting September 14, `pip install dbt` will install the <Constant name="fusion_engine" />, dbt's next-generation Rust-based engine, instead of the <Constant name="platform_cli" />. This is a one-time namespace change on PyPI, not a <Constant name="platform_cli" /> upgrade.
+Starting September 14, 2026 `pip install dbt` will install the <Constant name="fusion_engine" />, dbt's next-generation Rust-based engine, instead of the <Constant name="platform_cli" />. This is a one-time namespace change on PyPI, not a <Constant name="platform_cli" /> upgrade.
 
-If you install the <Constant name="platform_cli" /> via pip today and don't pin a version, your next `pip install dbt` or `pip install --upgrade dbt` installs <Constant name="fusion" /> instead. <Constant name="fusion" /> is a different engine: it runs locally against a warehouse connection you configure yourself, instead of proxying your project to the <Constant name="dbt_platform" /> for execution. Commands like `dbt cancel`, `dbt reattach`, `dbt environment`, `dbt sl export`, and `dbt sqlfluff` don't exist in <Constant name="fusion" />.
+If you install the <Constant name="platform_cli" /> using pip today and don't pin a version, your next `pip install dbt` or `pip install --upgrade dbt` installs <Constant name="fusion" /> instead. <Constant name="fusion" /> is a different engine: it runs locally against a warehouse connection you configure yourself, instead of running your commands against your <Constant name="dbt_platform" /> development environment. Commands like `dbt cancel`, `dbt reattach`, `dbt environment`, `dbt sl export`, and `dbt sqlfluff` don't exist in <Constant name="fusion" />.
 
 ## What to do
 
