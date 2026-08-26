@@ -36,7 +36,7 @@ This keeps working indefinitely, but won't receive further <Constant name="platf
 
 - **Dockerfiles / CI pipelines**: any unpinned `pip install dbt` step. Search your repos for `pip install dbt` without a `==` version pin.
 - **Airflow**: `BashOperator`/`KubernetesPodOperator` tasks that install the CLI into the worker image at build time.
-- **`requirements.txt` / `Pipfile` / `pyproject.toml`**: an unpinned `dbt` entry.
+- **`requirements.txt` / `Pipfile` / `pyproject.toml`**: any unpinned `dbt` entry.
 - **dbt Power User (VS Code extension)**: it shells out to the <Constant name="platform_cli" /> internally. Pin your version the same way; the extension itself doesn't need any separate action.
 
 ## FAQ
