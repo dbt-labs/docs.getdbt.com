@@ -10,7 +10,6 @@ availability:
 
 import WizardSupportedProviders from '/snippets/_wizard-supported-providers.md';
 import WizardConfigureAiProvider from '/snippets/_wizard-configure-ai-provider.md';
-import WizardPlatformPreviewDisclaimer from '/snippets/_wizard-platform-preview-disclaimer.md';
 import CopilotWizardDifferences from '/snippets/_copilot-wizard-diff.md';
 
 # Enable AI features in <Constant name="dbt_platform" />
@@ -93,4 +92,3 @@ Use the home tab to investigate, generate, review diffs, and run validations. Us
 - [<Constant name="wizard" /> in <Constant name="studio_ide" />](/docs/dbt-ai/wizard-ide)
 - [Prompt cookbook](/guides/prompt-cookbook)
 
-<WizardPlatformPreviewDisclaimer />

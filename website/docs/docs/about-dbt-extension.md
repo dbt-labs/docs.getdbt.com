@@ -67,7 +67,7 @@ When you register or sign in for advanced features, authentication is handled by
 
 The dbt logo on the sidebar (or the **dbt Extension** text on the bottom tray) launches the main menu for the extension. This menu contains helpful information and actions you can take:
 - **Get started button:** Launches the [Fusion upgrade](/docs/upgrade-to-fusion-extension) workflow.
-- **Extension info:** Information about the extension, Fusion, and your dbt project. Includes configuration options and actions.
+- **Extension info:** Information about the extension, <Constant name="fusion" />, and your dbt project. Includes configuration options and actions.
 - **Help:** Quick links to support, bug submissions, and documentation.
 
 <Lightbox src="/img/docs/extension/sidebar-menu.png" width="30%" title="dbt VS Code extension welcome screen."/>
@@ -82,7 +82,7 @@ The dbt extension caches important schema information from your data warehouse t
 
 ## Using the extension
 
-Your dbt environment must be using the dbt Fusion engine in order to use this extension. See [the Fusion documentation](/docs/fusion/about-fusion) for more on eligibility and upgrading.
+Your dbt environment must be using the <Constant name="fusion_engine" /> in order to use this extension. See [the Fusion documentation](/docs/fusion/about-fusion) for more on eligibility and upgrading.
 
 Once installed, the dbt extension automatically activates when you open any `.sql` or `.yml` file inside of a dbt project directory. 
 
@@ -144,7 +144,7 @@ For data practitioners, combining the extension's Fusion-powered editor experien
 
 ## Support
 
-dbt platform customers can contact dbt Labs support at [support@getdbt.com](mailto:support@getdbt.com). You can also get in touch with us by reaching out to your Account Manager directly.
+dbt platform customers can contact dbt Labs support at [support@dbtlabs.com](mailto:support@dbtlabs.com). You can also get in touch with us by reaching out to your Account Manager directly.
 
 For organizations that are not customers of the dbt platform, the best place for questions and discussion is the [dbt Community Slack](https://www.getdbt.com/community/join-the-community).
 

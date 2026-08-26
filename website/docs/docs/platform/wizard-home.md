@@ -11,7 +11,6 @@ availability:
 image: /img/docs/dbt-platform/wizard-home-empty.png
 ---
 
-import WizardPlatformPreviewDisclaimer from '/snippets/_wizard-platform-preview-disclaimer.md';
 import WizardFeedbackCallout from '/snippets/_wizard-feedback-callout.md';
 
 # dbt Wizard home tab <Lifecycle status="preview" />

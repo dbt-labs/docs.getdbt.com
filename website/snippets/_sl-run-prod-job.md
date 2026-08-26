@@ -9,7 +9,7 @@ This section explains how you can perform a job run in your deployment environme
 6. Set the job to run a `dbt parse` job to parse your projects and generate a [`semantic_manifest.json` artifact](/reference/artifacts/sl-manifest) file<VersionBlock firstVersion="1.12"> and an [`osi_document.json` artifact](/reference/artifacts/sl-manifest#apache-ossie-document)</VersionBlock>. Although running `dbt build` isn't required, you can choose to do so if needed.
 
     :::note
-    If you are on the dbt Fusion engine, add the `dbt docs generate` command to your job to successfully deploy your metrics. 
+    If you are on the <Constant name="fusion_engine" />, add the `dbt docs generate` command to your job to successfully deploy your metrics. 
     :::
 
 7. Run the job by clicking the **Run now** button. Monitor the job's progress in real-time through the **Run summary** tab. 

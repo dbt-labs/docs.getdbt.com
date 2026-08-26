@@ -27,7 +27,7 @@ You can also sign in directly with your account **Access URL** if you already kn
 5. Authenticate using the method configured for that account (password, SSO, or MFA).
 
 :::note
-If no accounts are found for your email, contact [dbt Support](mailto:support@getdbt.com) or your account admin. You can also sign in directly at your account [**Access URL**](/docs/platform/about-platform/access-regions-ip-addresses).
+If no accounts are found for your email, contact [dbt Support](mailto:support@dbtlabs.com) or your account admin. You can also sign in directly at your account [**Access URL**](/docs/platform/about-platform/access-regions-ip-addresses).
 :::
 
 <DocCarousel slidesPerView={1}>
