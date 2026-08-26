@@ -26,6 +26,9 @@ dbt snapshot --select my_snapshot --vars '{"cutoff_date": "2026-01-01"}'
 ```
 
 import SnapshotCompiledSql from '/snippets/_snapshot-compiled-sql.md';
+import SnapshotFullRefresh from '/snippets/_snapshot-full-refresh.md';
+
+<SnapshotFullRefresh />
 
 <SnapshotCompiledSql />
 

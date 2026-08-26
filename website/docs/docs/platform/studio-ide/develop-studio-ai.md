@@ -39,6 +39,8 @@ Use [<Constant name="wizard" />](/docs/dbt-ai/wizard-ide) for autonomous model g
 
 ## dbt Copilot in Studio IDE
 
+_The earlier version of dbt Copilot in the Studio IDE is available only to a limited set of accounts. dbt Wizard is available to all accounts and is the recommended way to develop with AI in the Studio IDE &mdash; it covers everything dbt Copilot's quick actions did, plus multi-step changes with built-in validation._
+
 [dbt Copilot](/docs/dbt-ai/copilot-overview) provides single-click generation of SQL, documentation, tests, and semantic models in <Constant name="studio_ide" />, <Constant name="canvas" />, and <Constant name="insights" />.
 
 1. Navigate to the <Constant name="studio_ide" /> and select a SQL model file under the **File Explorer**.

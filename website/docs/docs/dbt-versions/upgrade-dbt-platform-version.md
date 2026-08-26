@@ -48,7 +48,7 @@ Configure your project to use a different dbt version than what's configured in 
 5. (Optional) Verify that <Constant name="dbt" /> will use your override setting to build the project by invoking a `dbt build` command in the <Constant name="studio_ide" />'s command bar. Expand the **System Logs** section and find the output's first line. It should begin with `Running with dbt=` and list the version <Constant name="dbt" /> is using. <br /><br />
    For users on Release tracks, the output will display `Running dbt...` instead of a specific version, reflecting the flexibility and continuous automatic updates provided by the release track functionality.
 
-## dbt Fusion engine 
+## <Constant name="fusion_engine" /> 
 
 dbt Labs has introduced the new [<Constant name="fusion_engine" />](/docs/fusion/about-fusion), a ground-up rebuild of dbt. This is currently generally available for Snowflake projects and in preview for other supported adapters on the <Constant name="dbt_platform" />. Eligible customers can update environments to <Constant name="fusion" /> using the same workflows as v1.x, but remember:
 - If you don't see the `Fusion Stable` release track as an option, you should check with your dbt Labs account team about eligibility.
@@ -60,7 +60,7 @@ dbt Labs has introduced the new [<Constant name="fusion_engine" />](/docs/fusion
 
   <Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/platform-upgrading-dbt-versions/upgrade-fusion.png" width="90%" title="Upgrade to the Fusion engine in your environment settings." />
 
-### Upgrading environments to Fusion
+### Upgrading environments to <Constant name="fusion" />
 
 When you're ready to upgrade your project(s) to <Constant name="fusion_engine" />, there are some tools available to you in the dbt platform UI to help you get started. The <Constant name="fusion" /> upgrade assistant will step you through the process of preparing and upgrading your projects. 
 
@@ -68,10 +68,17 @@ When you're ready to upgrade your project(s) to <Constant name="fusion_engine" /
 
 #### Prerequisites
 
-To take advantage of the upgrade assistant, you'll need to meet the following prerequisites:
+To take advantage of the upgrade assistant and other upgrade tools, you'll need to meet the following prerequisites:
 - Your dbt project must be updated to use the **Latest** release track.
 - You must have a `developer` license.
-- You must have the <Constant name="fusion" /> beta enabled for your account. For more information, please contact your account manager. 
+- You must have the proper [permissions set](/docs/platform/manage-access/enterprise-permissions) to execute individual upgrade tasks. Migrating to <Constant name="fusion" /> is a multi-step process and some of these steps may be repeated across projects by different users:
+
+| Upgrade task | Required permission(s) | Supported permission sets |
+|---------|------------------------|-----------------------------|
+| Enable Fusion access (triggers migration flows) | Fusion readiness: `write` <br></br> Projects: `write` | Admin, Account Admin and anyone assigned the Fusion admin set, provided their base role also has `write` access to projects |
+| View Fusion readiness and job eligibility | Fusion readiness: `read` | Developer, Admin, Member, Account Admin, Fusion admin |
+| **Run once on <Constant name="fusion" />** job action | Runs: `write` | Job Admin, Job Runner, Admin, Member, Project Creator, Account Admin |
+| Enable Fusion-latest for an environment | Environments: `write` | Job Admin, Admin, Member, Project Creator, Account Admin |
 
 #### Assign access to upgrade
 
@@ -116,7 +123,7 @@ To begin the process of upgrading to <Constant name="fusion" /> with the assista
   <Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/choosing-dbt-version/check-deprecations.png" width="60%" title="Begin the process of parsing for deprecation warnings."/>
 3. dbt parses your project for the deprecations and presents a list of all deprecation warnings along with the option to **Autofix warnings**. Autofixing attempts to correct all syntax errors automatically. See [Fix deprecation warnings](/docs/platform/studio-ide/autofix-deprecations) for more information. 
   <Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/choosing-dbt-version/check-deprecations.png" width="60%" title="Begin the process of parsing for deprecation warnings."/>
-4. Once the deprecation warnings have been resolved, click the **Enable Fusion** button. This upgrades your development environment to Fusion!
+4. Once the deprecation warnings have been resolved, click the **Enable <Constant name="fusion" />** button. This upgrades your development environment to <Constant name="fusion" />!
 
   <Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/choosing-dbt-version/autofix-success.png" width="60%" title="You're now ready to upgrade to Fusion in your development environment!"/>
 

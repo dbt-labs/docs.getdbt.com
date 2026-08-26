@@ -22,7 +22,7 @@ This workflow applies to the <Constant name="wizard" /> CLI. The <Constant name=
 |---|---|
 | `wizard` | You want <Constant name="wizard" /> to create and refresh a production state snapshot from a target in `profiles.yml`. |
 | `manual` | You already have a directory containing the production `manifest.json` and want to provide its path. |
-| `fusion_cloud` | The dbt Fusion engine and the <Constant name="dbt_platform" /> manage deferral for the connected environment. |
+| `fusion_cloud` | The <Constant name="fusion_engine" /> and the <Constant name="dbt_platform" /> manage deferral for the connected environment. |
 | `cloud_cli` | The <Constant name="platform_cli" /> manages credentials and deferral through the <Constant name="dbt_platform" />. |
 | `dbt_state` | Your dbt State or run-cache workflow manages deferral, so <Constant name="wizard" /> shouldn't create its own production snapshot. |
 | `disabled` | You don't want deferral for this project. |

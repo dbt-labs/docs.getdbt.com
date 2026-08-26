@@ -47,7 +47,7 @@ Supply and nest these additional configurations, unique to BigQuery, under `conf
 1. Create a `catalogs.yml` at the top level of your dbt project.
 
 <Tabs defaultValue="new" values={[
-  { label: 'New spec', value: 'new' },
+  { label: 'New spec (beta)', value: 'new' },
   { label: 'Old spec', value: 'old' }
 ]}>
 <TabItem value="new">
@@ -153,7 +153,7 @@ select * from {{ ref('jaffle_shop_customers') }}
 </File>
 
 <Tabs defaultValue="new" values={[
-  { label: 'New spec', value: 'new' },
+  { label: 'New spec (beta)', value: 'new' },
   { label: 'Old spec', value: 'old' }
 ]}>
 <TabItem value="new">
