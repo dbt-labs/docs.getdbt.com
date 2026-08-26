@@ -140,7 +140,7 @@ The **Latest** release track on <Constant name="dbt_platform" /> updates continu
 
 ### Versions on the dbt platform
 
-On <Constant name="dbt_platform" />, <Constant name="fusion" /> follows a versionless release track model. The default release track is **Fusion Stable**, which always runs the most recent stable release. For details on release tracks and their stability levels, see [<Constant name="fusion" /> releases](/docs/dbt-versions/dbt-release-tracks?#fusion-release-tracks).
+On <Constant name="dbt_platform" />, <Constant name="fusion" /> follows a versionless release track model. The default release track is **<Constant name="fusion" /> Stable**, which always runs the most recent stable release. For details on release tracks and their stability levels, see [<Constant name="fusion" /> releases](/docs/dbt-versions/dbt-release-tracks?#fusion-release-tracks).
 
 ### Versions installed locally
 
@@ -182,7 +182,7 @@ curl -fsSL https://raw.githubusercontent.com/brooklyn-data/dbt-fusion-devcontain
 Then open your project in VS Code and select **Reopen in Container** when prompted. VS Code builds the image and installs the latest stable <Constant name="fusion" /> release automatically.
 
 :::info Coming soon
-We're introducing additional <Constant name="fusion" /> release tracks on <Constant name="dbt_platform" /> beyond **Fusion Stable**. When they're available, we'll update this guide with steps to pin your dev container to a specific track.
+We're introducing additional <Constant name="fusion" /> release tracks on <Constant name="dbt_platform" /> beyond **<Constant name="fusion" /> Stable**. When they're available, we'll update this guide with steps to pin your dev container to a specific track.
 :::
 
 ### Without dev containers: update at the start of each session

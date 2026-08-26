@@ -26,7 +26,7 @@ import SalesforcePrereqs from '/snippets/_salesforce-data-cloud-prereqs.md';
 
 <SalesforcePrereqs />
 
-## Configure Fusion
+## Configure <Constant name="fusion" />
 
 To connect dbt to Salesforce Data 360, set up your `profiles.yml`. Refer to the following configuration:
 

@@ -451,7 +451,7 @@ import FusionMigrationWorkflow from '/snippets/_fusion-migration-workflow.md';
 
 <FusionMigrationWorkflow />
 
-#### Run once on Fusion
+#### Run once on <Constant name="fusion" />
 
 When you are confident a job is ready for <Constant name="fusion" />, you can run it once on the engine without changing environment-wide settings. **Run once on <Constant name="fusion" />** can be temporarily unavailable while a <Constant name="fusion" /> run request is already pending.
 

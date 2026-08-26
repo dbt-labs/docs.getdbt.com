@@ -133,7 +133,7 @@ You can find more details on the available properties for sources in the [refere
 ## Source data freshness
 With a couple of extra configs, dbt can optionally capture the "freshness" of the data in your source tables. This is useful for understanding if your data pipelines are in a healthy state, and is a critical component of defining Service Level Agreements (SLAs) for your warehouse.
 
-### Fusion and dbt State
+### <Constant name="fusion" /> and dbt State
 
 import SaoDeprecated from '/snippets/_sao-deprecated.md';
 
@@ -146,7 +146,7 @@ If you're using [dbt State](/docs/deploy/dbt-state-about), use [`lag_tolerance`]
 However, you should still configure source freshness if you want to:
 - Receive SLA alerts when sources don't update within expected timeframes.
 - Define custom freshness logic using `loaded_at_field` or `loaded_at_query` (for example, for streaming data or partial loads).
-- Track freshness for source views. Fusion treats views as "always fresh" since it can't determine freshness from view metadata.
+- Track freshness for source views. <Constant name="fusion" /> treats views as "always fresh" since it can't determine freshness from view metadata.
 
 
 ### Declaring source freshness

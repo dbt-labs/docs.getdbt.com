@@ -24,10 +24,10 @@ _`Fusion Stable` is the default for all new <Constant name="fusion" />-powered p
 
 | Release track | Cadence | Description | [Plan availability](https://www.getdbt.com/pricing) | API value |
 | ------------- | ------- | ----------- | ----------------- | --------- |
-| **Fusion Nightly** | Nightly | The latest nightly build. Includes early access to new features. | All plans | `fusion-nightly` |
-| **Fusion Stable** (default) | Weekly | A weekly release that balances stability and feature access. <br /> | All plans | `fusion-stable` |
-| **Fusion Extended** | Monthly | The previous month's final Fusion Stable release. Designed for those who want maximum stability and additional testing time. | Enterprise, Enterprise+ | `fusion-extended` |
-| **Fusion Fallback** | Monthly | The previous month's Fusion Extended release. Emergency rollback option for account admins. | Enterprise+ | `fusion-fallback` |
+| **<Constant name="fusion" /> Nightly** | Nightly | The latest nightly build. Includes early access to new features. | All plans | `fusion-nightly` |
+| **<Constant name="fusion" /> Stable** (default) | Weekly | A weekly release that balances stability and feature access. <br /> | All plans | `fusion-stable` |
+| **<Constant name="fusion" /> Extended** | Monthly | The previous month's final <Constant name="fusion" /> Stable release. Designed for those who want maximum stability and additional testing time. | Enterprise, Enterprise+ | `fusion-extended` |
+| **<Constant name="fusion" /> Fallback** | Monthly | The previous month's <Constant name="fusion" /> Extended release. Emergency rollback option for account admins. | Enterprise+ | `fusion-fallback` |
 
 
 ### dbt Core release tracks
@@ -52,13 +52,13 @@ To configure an environment in the [dbt Admin API](/docs/dbt-apis/admin-api) or 
 
 ### Fusion release tracks
 
-Choose **Fusion Stable** (the default for new projects) for a weekly release cadence that balances stability and feature access. This is the recommended starting point for most customers migrating to <Constant name="fusion_engine" />.
+Choose **<Constant name="fusion" /> Stable** (the default for new projects) for a weekly release cadence that balances stability and feature access. This is the recommended starting point for most customers migrating to <Constant name="fusion_engine" />.
 
-Choose **Fusion Nightly** if you want the latest features and are comfortable with a daily release cadence. This track ideal for teams prioritizing the most recent features.
+Choose **<Constant name="fusion" /> Nightly** if you want the latest features and are comfortable with a daily release cadence. This track ideal for teams prioritizing the most recent features.
 
-Choose **Fusion Extended** if your team needs maximum stability and more time to test before updates roll out. This track generally lags Fusion Stable by one month and is available for Enterprise and Enterprise+ accounts.
+Choose **<Constant name="fusion" /> Extended** if your team needs maximum stability and more time to test before updates roll out. This track generally lags <Constant name="fusion" /> Stable by one month and is available for Enterprise and Enterprise+ accounts.
 
-Choose **Fusion Fallback** as an emergency measure only. This is a temporary rollback option for Enterprise+ accounts, not for ongoing use.
+Choose **<Constant name="fusion" /> Fallback** as an emergency measure only. This is a temporary rollback option for Enterprise+ accounts, not for ongoing use.
 
 Account admins can set the org-wide default release track for new projects via a toggle in **Account Settings**. Individual project owners can then override that default per environment.
 
@@ -92,16 +92,16 @@ Switching to **Fallback** alerts the dbt Support team, who may reach out to help
 
 **Default** &mdash; All plans
 - Prioritize a weekly release cadence that balances stability and new features
-- Leave all environments on the **Fusion Stable** release track (default for new projects at GA)
+- Leave all environments on the **<Constant name="fusion" /> Stable** release track (default for new projects at GA)
 
 **Velocity-focused** &mdash; All plans
 - Prioritize immediate access to the latest Fusion features and fixes
-- Configure all environments to use the **Fusion Nightly** release track
+- Configure all environments to use the **<Constant name="fusion" /> Nightly** release track
 
 **Cautious** &mdash; Enterprise, Enterprise+
 - Prioritize maximum stability and additional testing time
-- Configure production environments to use **Fusion Extended** (one month behind Stable)
-- Configure development environments to use **Fusion Stable** so developers get access to upcoming changes before they reach production
+- Configure production environments to use **<Constant name="fusion" /> Extended** (one month behind Stable)
+- Configure development environments to use **<Constant name="fusion" /> Stable** so developers get access to upcoming changes before they reach production
 
 #### dbt release tracks
 

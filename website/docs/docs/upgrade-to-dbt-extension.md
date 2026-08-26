@@ -6,7 +6,7 @@ sidebar_label: "Upgrade to Fusion"
 availability: local_all
 ---
 
-# Upgrade to Fusion <Lifecycle status="preview" />
+# Upgrade to <Constant name="fusion" /> <Lifecycle status="preview" />
 
 After [installing the dbt VS Code extension](/docs/install-dbt-extension), use the **Get started** panel to upgrade your project to the <Constant name="fusion_engine" /> if you haven't already done so.
 

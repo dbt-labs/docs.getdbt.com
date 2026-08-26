@@ -15,4 +15,4 @@ Although we don't officially support Google Cloud as a git repository, the below
 
 - After saving this SSH key, <Constant name="dbt" /> should be able to read and write to this repo.
 
-If you've tried the workaround above and are still having issues connecting - reach out to the Support team at support@getdbt.com and we'll be happy to help!
+If you've tried the workaround above and are still having issues connecting - reach out to the Support team at support@dbtlabs.com and we'll be happy to help!

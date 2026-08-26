@@ -465,7 +465,7 @@ v2 is available in two distributions. For more information, refer to [dbt licens
 <SimpleTable>
 | Distribution | Package | Use it when |
 | --- | --- | --- |
-| <Constant name="fusion" /> | `dbt` | You want the recommended v2 experience, with Fusion installed by default. |
+| <Constant name="fusion" /> | `dbt` | You want the recommended v2 experience, with <Constant name="fusion" /> installed by default. |
 | dbt Core 2.0 | `dbt-core` | Your organization has a strict requirement to use the Apache 2.0 [open-source runtime](/docs/local/install-dbt-core-v2). |
 </SimpleTable>
 

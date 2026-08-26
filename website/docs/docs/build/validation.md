@@ -17,7 +17,7 @@ The code that handles validation [can be found here](https://github.com/dbt-labs
 
 You can run validations from the <Constant name="dbt_platform" /> or the command line with the following [MetricFlow commands](/docs/build/metricflow-commands). In <Constant name="dbt" />, you need user credentials configured in your account settings to run `dbt sl validate` in the IDE or CLI, and deployment credentials to run it in CI.
 
-- For Fusion and dbt users in the <Constant name="platform_cli" /> or locally with a valid [`dbt_cloud.yml`](/reference/dbt_cloud.yml):
+- For <Constant name="fusion" /> and dbt users in the <Constant name="platform_cli" /> or locally with a valid [`dbt_cloud.yml`](/reference/dbt_cloud.yml):
 
   ```bash
   dbt sl validate

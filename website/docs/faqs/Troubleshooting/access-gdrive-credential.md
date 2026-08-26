@@ -29,4 +29,4 @@ gcloud auth login --enable-gdrive-access --update-adc
 
 For more info, refer to [gcloud auth login documentation](https://cloud.google.com/sdk/gcloud/reference/auth/login#--enable-gdrive-access).
 
-If you've tried the steps above and are still experiencing this behavior - reach out to the Support team at support@getdbt.com and we'll be happy to help!
+If you've tried the steps above and are still experiencing this behavior - reach out to the Support team at support@dbtlabs.com and we'll be happy to help!

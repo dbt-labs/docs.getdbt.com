@@ -345,7 +345,7 @@ Archived release notes for <Constant name="dbt" /> from 2023
 
     All these changes will be in effect on _September 7, 2023_. 
 
-    We understand that these changes might require adjustments to your existing integration with the Discovery API. Please [contact us](mailto:support@getdbt.com) with any questions. We're here to help you during this transition period.
+    We understand that these changes might require adjustments to your existing integration with the Discovery API. Please [contact us](mailto:support@dbtlabs.com) with any questions. We're here to help you during this transition period.
 
     ## Job-based queries
 
@@ -689,7 +689,7 @@ Archived release notes for <Constant name="dbt" /> from 2023
 
     <Lightbox src="/img/docs/dbt-platform/rn-run-history.jpg" width="100%" title="The dbt Cloud UI displaying a Run History"/>
 
-    We will retain older run history in cold storage and can make it available to customers who reach out to our Support team. To request older run history info, contact the Support team at [support@getdbt.com](mailto:support@getdbt.com) or use the dbt Cloud application chat by clicking the `?` icon in the dbt Cloud UI. 
+    We will retain older run history in cold storage and can make it available to customers who reach out to our Support team. To request older run history info, contact the Support team at [support@dbtlabs.com](mailto:support@dbtlabs.com) or use the dbt Cloud application chat by clicking the `?` icon in the dbt Cloud UI. 
 
   </Expandable>
  

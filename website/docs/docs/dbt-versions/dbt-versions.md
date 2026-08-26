@@ -7,11 +7,11 @@ pagination_prev: null
 availability: all_users
 ---
 
-v2 is the current generation of dbt &mdash; installing or upgrading gives you <Constant name="fusion_engine"/>, the default experience. <Constant name="core_v2"/> is the Apache 2.0 foundation underneath Fusion. <Constant name="core_v1"/> (Python-based, open-source) remains on the 1.x series and follows semantic versioning; v2 uses the 2.x series. This page covers versioning for local dbt installations.
+v2 is the current generation of dbt &mdash; installing or upgrading gives you <Constant name="fusion_engine"/>, the default experience. <Constant name="core_v2"/> is the Apache 2.0 foundation underneath <Constant name="fusion" />. <Constant name="core_v1"/> (Python-based, open-source) remains on the 1.x series and follows semantic versioning; v2 uses the 2.x series. This page covers versioning for local dbt installations.
 
 If you're using the <Constant name="dbt_platform" /> (including the <Constant name="platform_cli"/>), you don't need to manage dbt versions yourself. [Release tracks](/docs/dbt-versions/dbt-release-tracks) automatically keep you up to date and provide early access to new features.
 
-## dbt Fusion engine versioning
+## <Constant name="fusion_engine" /> versioning
 
 The <Constant name="fusion_engine"/> uses semantic versioning starting with version 2.0. To install or update <Constant name="fusion"/>, see [Install dbt](/docs/local/install-dbt?version=2).
 
