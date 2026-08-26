@@ -93,7 +93,7 @@ Notable features:
 - Analyst read is a project-level set.
 - Read-only access to **Connections** (account and project), **Projects**, repositories (Git repository settings), <Constant name="semantic_layer" /> configuration, **Environments**, custom environment variables, and <Constant name="catalog" /> metadata (Metadata GraphQL API).
 - No read access to jobs or runs.
-- Includes `user_credential_write`, so users can view and edit their own user credentials on **Your profile** > **Credentials** without access to the <Constant name="studio_ide" /> or <Constant name="platform_cli" />. Read-only users still need personal user credentials on this page to run warehouse queries in analysis features such as <Constant name="insights" /> and the <Constant name="semantic_layer" />.
+- Includes `user_credential_write`, so users can view and edit their own user credentials on **Your profile** > **Credentials** without access to the <Constant name="studio_ide" /> or <Constant name="platform_cli" />. Read-only users still need personal user credentials on this page to run warehouse queries in analysis features such as the <Constant name="semantic_layer" />.
 - No write access and no access to develop in the <Constant name="studio_ide" /> or <Constant name="platform_cli" />.
 
 To access the capabilities of this permission set, you _must_ add users to a group that's assigned the Analyst read permission set. Users won't have access until they're added to the group. For the setup steps, refer to [Set up read-only user access](/docs/platform/manage-access/about-user-access#set-up-read-only-user-access).
@@ -144,7 +144,9 @@ Database admins manage configurations between <Constant name="dbt" /> and the un
 Notable features: 
 - Database admin is a project-level set. 
 - Can set up and maintain environment variables and <Constant name="semantic_layer" /> configs.
-- Write access to data platform configurations within environments (credentials, warehouse, schema per environment).
+- Write access to data platform configurations within environments (credentials, warehouse, schema per environment), including:
+  - Editing [profile](/docs/platform/about-profiles) configs like profile name, deployment credentials, extended attributes, and connection overrides such as `schema`, `role`, `database`, and so on (fields vary by data platform).
+  - Creating new profiles for projects they have access to, including setting which connection the profile is associated with
 - Helpful for scenarios where your data warehouse admins only need access to <Constant name="dbt" /> to configure data platform settings within environments.
 - Read-only access to account-level connections, Git repo, job, and run settings. 
 - Can access <Constant name="catalog" />.

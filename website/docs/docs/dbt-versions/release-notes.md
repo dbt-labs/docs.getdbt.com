@@ -22,6 +22,10 @@ For <Constant name="fusion_engine" /> updates, refer to the [dbt-fusion changelo
 
 ## August 2026
 
+- **Enhancement:** New sessions open on the Wizard tab when available, and the <Constant name="studio_ide" /> remembers your last-used tab for each project so you can pick up where you left off.
+- **Enhancement:** A new `relationName` field on the `ModelAppliedStateNode` and `ModelAppliedStateNestedNode` GraphQL types exposes the fully-qualified, adapter-rendered relation name (for example, `"database"."schema"."model_name"`) from the last successful model build.
+
+- **Beta**: [dbt Core 2.0](/docs/dbt-versions/core-upgrade/upgrading-to-v2) is now available in beta!
 - **New:** The [Analyst read](/docs/platform/manage-access/enterprise-permissions#analyst-read) permission set is now generally available (GA) for Enterprise plans. Analyst read is a project-level permission set that provides read-only access to analyze dbt models and project resources, and read-only users can connect to analysis features such as the [dbt MCP server](/docs/dbt-ai/about-mcp).
 - **Enhancement:** [Cost Insights](/docs/explore/cost-insights) now supports cost attribution for [Snowflake Adaptive Warehouses](https://docs.snowflake.com/en/user-guide/warehouses-adaptive). For setup details, refer to [Assign required permissions](/docs/explore/set-up-cost-insights#assign-required-permissions).
 - **New:** The [Model timing tab](/docs/deploy/run-visibility#model-timing-tab) in job run details has been redesigned with a richer, scalable view that includes metric tiles, an execution timeline with grouping and highlight controls, a concurrency-over-time chart, and a searchable resource details table.
@@ -33,6 +37,26 @@ For <Constant name="fusion_engine" /> updates, refer to the [dbt-fusion changelo
 ## July 2026
 - **Enhancement:** The [dbt State usage page](/docs/deploy/dbt-state-interface) now shows daily active target tables (DATTs) split into **Billable** and **Free**. During a trial, all DATTs are counted as free.
 - **Preview**: [The <Constant name="wizard"/> home tab in <Constant name="dbt_platform"/>](/docs/platform/wizard-home) is now available in public preview. You can build and change dbt projects through natural language, with inline diffs, DAG previews, and validation built in.
+- **New:** The [dbt MCP server](/docs/dbt-ai/mcp-available-tools#discovery) now uses one `get_node_details` tool for all resource types. The older type-specific tools are deprecated and will be removed in a future release.
+- **New:** When a job is deactivated, the banner now shows a specific reason (repeated run failures, account inactivity, or a generic fallback) with tailored reactivation instructions for each case.
+- **Enhancement:** The agent now automatically retries transient LLM provider failures (network timeouts, rate limits, and server errors) with exponential backoff, so brief provider blips are less likely to surface as errors during your session.
+- **Enhancement:** Client tool loops now run until the agent finishes rather than stopping after 50 iterations, eliminating premature termination of long-running agentic workflows.
+- **Enhancement:** Code blocks in <Constant name="wizard" /> responses now include a Copy button on hover, so you can reuse generated SQL or YAML more easily.
+- **Enhancement:** When a Bring-Your-Own-Key (BYOK) OpenAI model is configured with a deployment that does not support embeddings (for example, a `gpt-4o` Azure deployment), the similar models feature now returns an actionable error message prompting you to use a text-embedding model instead of a generic internal error.
+- **Enhancement:** The `get_lineage` tool now accepts a `direction` parameter (`upstream`, `downstream`, or `both`) to narrow results to only ancestors or only descendants of a target node, reducing response size for large graphs. The response also now includes a `description` field on each returned node.
+- **Enhancement:** The `list_metrics` tool now accepts a `meta_filter` parameter to restrict results to metrics whose `config.meta` contains specified key-value pairs (for example, `{"agent_accessible": true}`), keeping result sets small enough to preserve description and metadata in the response.
+- **Enhancement:** The `ModelAppliedFilter` input type now includes a `health` field, letting you filter applied models by health status (`unknown`, `degraded`, `caution`, or `healthy`) directly in the Discovery API.
+- **Enhancement:** The `RunStatus` enum and the `lastRunStatus` field on model execution information now include `warn`, so models whose last run completed with warnings correctly reflect that status.
+- **Enhancement:** When searching from within a project environment route (for example, a Staging page), the <Constant name="catalog" /> search now defaults the environment filter to that environment type rather than always defaulting to Production.
+- **Enhancement:** A redesigned search result card replaces tooltip-based match pills with inline expandable snippets for columns, tags, descriptions, and code matches. Please contact your account manager to enable.
+- **Enhancement:** The `latest-fusion` release track is now <Constant name="fusion" /> Stable across all settings. Existing configurations have been updated automatically. No action is needed.
+- **Enhancement:** On the Enable <Constant name="fusion" /> Environments page, environments already running <Constant name="fusion" /> now show a disabled checkbox, preventing unnecessary saves.
+- **Enhancement:** When saving a <Constant name="fusion" /> upgrade fails, the platform now displays the top-level user message from the API instead of internal field-level error details.
+- **Enhancement:** The command panel now shows live status updates as commands run, so you see progress sooner without waiting for a refresh.
+- **Enhancement:** The "Committed spend" card is now labeled "Consumption pool" with copy explaining that usage-based features like dbt State draw from it. The card now appears between the current plan metric tiles and the product-specific sections on billing Overview and usage tab pages.
+- **Enhancement:** The Daily Active Target Tables (DATTs) chart now stacks billable and free series, so trial users whose usage is entirely free see real bars instead of an empty chart.
+- **Enhancement:** Memory-tuning optimizations are now applied automatically to all <Constant name="fusion" /> runs, reducing out-of-memory kill rates and improving overall uptime.
+- **Fix:** Claude-backed agents can return longer answers and handle some previously broken interactions more reliably.
 - **New**: [Apache Ossie](https://github.com/apache/ossie) semantic layer support:
 
     - Open Semantic Interchange (OSI) has been renamed to Apache Ossie. For more information, refer to [OSI is now Apache Ossie (Incubating)](https://www.getdbt.com/blog/osi-is-now-apache-ossie).

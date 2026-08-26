@@ -2,7 +2,7 @@
   "_meta": {
     "platform": "snowflake",
     "platform_name": "Snowflake",
-    "count": 942
+    "count": 945
   },
   "functions": [
     {
@@ -3401,6 +3401,13 @@
       "fusion_typecheck": true
     },
     {
+      "name": "ARRAY_CONSTRUCT_STRUCTURED",
+      "category": "Semi-structured and structured data",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/array_construct_structured",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "ARRAY_CONTAINS",
       "category": "Semi-structured and structured data",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/array_contains",
@@ -3772,6 +3779,13 @@
       "fusion_typecheck": true
     },
     {
+      "name": "MAP_CONSTRUCT",
+      "category": "Semi-structured and structured data",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/map_construct",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "MAP_CONTAINS_KEY",
       "category": "Semi-structured and structured data",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/map_contains_key",
@@ -3833,6 +3847,13 @@
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/object_construct_keep_null",
       "preview_status": "GA",
       "fusion_typecheck": true
+    },
+    {
+      "name": "OBJECT_CONSTRUCT_KEEP_NULL_STRUCTURED",
+      "category": "Semi-structured and structured data",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/object_construct_keep_null_structured",
+      "preview_status": "GA",
+      "fusion_typecheck": false
     },
     {
       "name": "OBJECT_DELETE",
