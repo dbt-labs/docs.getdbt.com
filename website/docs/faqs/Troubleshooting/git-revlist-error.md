@@ -28,4 +28,4 @@ Take a look at your Environment Settings - If you **do** have a custom branch fi
 1. Disconnecting and reconnecting your repository [connection](/docs/platform/git/import-a-project-by-git-url) on your Project Settings page. This should then allow <Constant name="dbt" /> to pick up that the "main" branch is now called `main`.
 2. In the Environment Settings, remove the custom branch and refresh the <Constant name="studio_ide" />.
 
-If you've tried the workarounds above and are still experiencing this behavior - reach out to the Support team at support@getdbt.com and we'll be happy to help!
+If you've tried the workarounds above and are still experiencing this behavior - reach out to the Support team at support@dbtlabs.com and we'll be happy to help!

@@ -116,7 +116,7 @@ An endpoint with associated connections can't be deleted. Remove those connectio
 
 If an endpoint request fails, <Constant name="dbt_platform"/> displays error details that are safe to share externally. Because the workspace name and region are locked after creation, a failed request usually means one of those values was incorrect &mdash; delete the request and submit a new one with the correct details.
 
-If you see a failure state without clear next steps, collect the request details (endpoint name, creation time, and status) and contact [dbt Support](mailto:support@getdbt.com).
+If you see a failure state without clear next steps, collect the request details (endpoint name, creation time, and status) and contact [dbt Support](mailto:support@dbtlabs.com).
 
 ### Support-led setup {#support-led-setup}
 
@@ -125,7 +125,7 @@ If **Private endpoints** isn't available in your account settings, configure Dat
 1. Locate your [Databricks instance name](https://docs.databricks.com/en/workspace/workspace-details.html#workspace-instance-names-urls-and-ids).
    - Example: `cust-success.cloud.databricks.com`
 
-2. Add the required information to the following template and submit your AWS PrivateLink request to [dbt Support](mailto:support@getdbt.com):
+2. Add the required information to the following template and submit your AWS PrivateLink request to [dbt Support](mailto:support@dbtlabs.com):
 
    <Expandable alt_header="Support request email template" is_open={true}>
 

@@ -42,5 +42,5 @@ Configuring automatic downstream exposures with Tableau have the following consi
     <Lightbox src="/img/docs/platform-integrations/auto-exposures/manifest-json-example.png" width="80%" title="manifest.json example with lowercase FQNs."/>
     <Lightbox src="/img/docs/platform-integrations/auto-exposures/graphiql-example.png" width="80%" title="GraphiQl response example with uppercase FQNs."/>
   4. If the FQNs don't match, update your Tableau FQNs to match the dbt FQNs.
-  5. If you're still experiencing issues, please contact [dbt Support](mailto:support@getdbt.com) and share the results with them.
+  5. If you're still experiencing issues, please contact [dbt Support](mailto:support@dbtlabs.com) and share the results with them.
   </Expandable>

@@ -10,7 +10,6 @@ availability:
 
 import WizardSupportedProviders from '/snippets/_wizard-supported-providers.md';
 import WizardConfigureAiProvider from '/snippets/_wizard-configure-ai-provider.md';
-import WizardPlatformPreviewDisclaimer from '/snippets/_wizard-platform-preview-disclaimer.md';
 
 <IntroText>
 Use bring-your-own-key (BYOK) to connect <Constant name="wizard" /> or dbt Copilot in <Constant name="dbt_platform" /> to your own AI provider account instead of using dbt Labs' managed infrastructure.
@@ -46,4 +45,3 @@ Snowflake Cortex, AWS Bedrock, Azure AI Foundry, and Anthropic aren't supported 
 
 <WizardConfigureAiProvider />
 
-<WizardPlatformPreviewDisclaimer />

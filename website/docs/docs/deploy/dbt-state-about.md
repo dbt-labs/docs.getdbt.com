@@ -42,6 +42,8 @@ dbt State fetches dependency metadata in the background at the start of each run
 
 Without dbt State, every selected node rebuilds on every run regardless of whether anything has changed.
 
+To see which decision dbt State made for each node after a run and why, you can run the <VersionBlock firstVersion="2.0">[`dbt state explain`](/reference/commands/state-explain)</VersionBlock><VersionBlock lastVersion="1.99">[`dbt-state explain`](/reference/commands/state-explain)</VersionBlock> command.
+
 For the full list of available configs, see [dbt State configs](/reference/resource-configs/dbt-state-configs).
 
 <Expandable alt_header="How dbt State decides whether to rebuild, clone, or reuse">

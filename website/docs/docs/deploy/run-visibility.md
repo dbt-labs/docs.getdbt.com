@@ -90,7 +90,7 @@ dbt enforces cumulative log size limits on run endpoints. If a single step's log
 
 When dbt omits logs due to size, it displays a **Run logs are too large** banner and shows a message where the logs would usually appear. The run step also displays an **Unknown**  status.
 
-You can still download omitted logs. If the log file is too large, the download may fail. If that happens, you can [reach out to support](mailto:support@getdbt.com).
+You can still download omitted logs. If the log file is too large, the download may fail. If that happens, you can [reach out to support](mailto:support@dbtlabs.com).
 
 ### Lineage tab
 
