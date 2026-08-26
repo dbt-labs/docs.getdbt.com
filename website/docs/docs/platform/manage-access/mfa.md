@@ -69,7 +69,7 @@ Choose the next steps based on your preferred enrollment selection:
 
 ## Account Recovery
 
-When setting up MFA, ensure that you store your recovery codes in a secure location, in case your MFA method fails. If you are unable to access your account, reach out to [support@getdbt.com](mailto:support@getdbt.com) for further support. You may need to create a new account if your account cannot be recovered. 
+When setting up MFA, ensure that you store your recovery codes in a secure location, in case your MFA method fails. If you are unable to access your account, reach out to [support@dbtlabs.com](mailto:support@dbtlabs.com) for further support. You may need to create a new account if your account cannot be recovered. 
 
 If possible, it's recommended to configure multiple MFA methods so that if one fails, there is a backup option.  
 
@@ -89,4 +89,4 @@ Any clients of dbt Labs that use <Constant name="dbt" /> Labs 2FA via SMS progra
 
 (5) To opt-out of future SMS messages, please reply STOP to the SMS number from which you receive the log-in authorization code(s). We encourage you to enable an alternate 2FA method before opting-out of SMS messages or you might not be able to log into your account.
 
-Further questions can be submitted to [support@getdbt.com](mailto:support@getdbt.com).
+Further questions can be submitted to [support@dbtlabs.com](mailto:support@dbtlabs.com).

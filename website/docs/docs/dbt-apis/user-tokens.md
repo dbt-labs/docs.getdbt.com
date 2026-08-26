@@ -62,7 +62,7 @@ The migration to PATs is critical if you are using user API keys today. The curr
 
 :::warning Undocumented APIs
 
-If you’re using any undocumented and unsupported API endpoints, please note that these can be deprecated without any notice. If you are using any undocumented endpoints and have use-cases that are not satisfied by the current API, please reach out to [support@getdbt.com](mailto:support@getdbt.com). 
+If you’re using any undocumented and unsupported API endpoints, please note that these can be deprecated without any notice. If you are using any undocumented endpoints and have use-cases that are not satisfied by the current API, please reach out to [support@dbtlabs.com](mailto:support@dbtlabs.com). 
 
 :::
 

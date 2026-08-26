@@ -83,7 +83,7 @@ import SlCustomGranularity from '/snippets/_sl-custom-granularity.md';
 - Certain Table calculations like "Totals" and "Percent Of" may not be accurate when using metrics aggregated in a non-additive way (such as count distinct)
 - In any of our <Constant name="semantic_layer" /> interfaces (not only Tableau), you must include a [time dimension](/docs/build/cumulative#limitations) when working with any cumulative metric that has a time window or granularity.
 - We can support calculated fields for creating parameter filters or dynamically selecting metrics and dimensions. However, other uses of calculated fields are not supported. 
-  - _Note: For calculated field use cases that are not currently covered, please reach out to <a href="mailto:support@getdbt.com?subject=dbt Semantic Layer feedback">dbt Support</a> and share them so we can further understand._
+  - _Note: For calculated field use cases that are not currently covered, please reach out to <a href="mailto:support@dbtlabs.com?subject=dbt Semantic Layer feedback">dbt Support</a> and share them so we can further understand._
 - When using saved queries that include filters, we will automatically apply any filters that the query has.
 
 ## Unsupported functionality

@@ -105,7 +105,7 @@ Fabric workspace-level Private Link uses a dedicated Azure resource (`Microsoft.
 
 ## Submit a Private Link request to dbt
 
-Add the required information to the following template and submit your Azure Private Link request to [dbt Support](mailto:support@getdbt.com):
+Add the required information to the following template and submit your Azure Private Link request to [dbt Support](mailto:support@dbtlabs.com):
 
 <Expandable alt_header="Support request email template" is_open={true}>
 

@@ -12,4 +12,4 @@ To delete a job or multiple jobs in <Constant name="dbt" />:
 5. Confirm your action in the pop-up by clicking **Confirm delete** in the bottom right to delete the job immediately. This action cannot be undone. However, you can create a new job with the same information if the deletion was made in error. 
 6. Refresh the page, and the deleted job should now be gone. If you want to delete multiple jobs, you'll need to perform these steps for each job.
 
-If you're having any issues, feel free to [contact us](mailto:support@getdbt.com) for additional help.
+If you're having any issues, feel free to [contact us](mailto:support@dbtlabs.com) for additional help.

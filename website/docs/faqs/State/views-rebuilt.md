@@ -56,9 +56,25 @@ To prevent external sources from always being considered stale, configure [`load
 
 ## How to diagnose
 
-In <Constant name="core" /> v1.7–v1.12, run the `dbt-state explain` command to see why dbt State rebuilt or reused a specific model.
+After a run, use <VersionBlock firstVersion="2.0">[`dbt state explain`](/reference/commands/state-explain)</VersionBlock><VersionBlock lastVersion="1.99">[`dbt-state explain`](/reference/commands/state-explain)</VersionBlock> to see why dbt State rebuilt, reused, or cloned a specific model. For a detailed breakdown, use the `--verbose` flag with `-s` to select your model:
 
-:::caution Experimental
-The `dbt-state explain` command is experimental. It isn't available in the <Constant name="fusion_engine" /> or <Constant name="dbt_platform" /> yet.
+:::note
+The command name differs by version: <Constant name="core_v2" /> uses `dbt state explain` (with a space), while <Constant name="core_v1" /> uses `dbt-state explain` (with a hyphen).
 :::
+
+<VersionBlock firstVersion="2.0">
+
+```bash
+dbt state explain --verbose -s my_model_name
+```
+
+</VersionBlock>
+
+<VersionBlock lastVersion="1.99">
+
+```bash
+dbt-state explain --verbose -s my_model_name
+```
+
+</VersionBlock>
 

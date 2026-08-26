@@ -11,7 +11,6 @@ availability: all_users
 import WizardSupportedProviders from '/snippets/_wizard-supported-providers.md';
 import WizardCliInstall from '/snippets/_wizard-cli-install-by-version.md';
 import NewToTerminal from '/snippets/_new-to-terminal.md';
-import WizardPlatformPreviewDisclaimer from '/snippets/_wizard-platform-preview-disclaimer.md';
 import WizardFeedbackCallout from '/snippets/_wizard-feedback-callout.md';
 
 # About dbt Wizard
@@ -116,8 +115,6 @@ Now that you know where to start, continue with **[Use self-hosted dbt Wizard](/
 - [Use skills in the dbt platform](/docs/dbt-ai/wizard-platform-skills) — give dbt Wizard reusable instructions for your project
 - [Use MCP servers with dbt Wizard CLI](/docs/dbt-ai/wizard-mcp) — connect the dbt Wizard CLI to more tools and context
 - [Migrate to dbt Wizard](/docs/dbt-ai/wizard-migrate) — switch from Claude Code, Cursor, or another AI agent to dbt Wizard
-- [Data & Privacy in the dbt platform](/docs/dbt-ai/wizard-platform-privacy-data) — understand how dbt Wizard in the dbt platform handles privacy and data
+- [Privacy and data FAQs](/docs/dbt-ai/dbt-ai-faqs#privacy-and-data) — understand how dbt Wizard handles privacy and data
 
 <WizardFeedbackCallout />
-
-<WizardPlatformPreviewDisclaimer />

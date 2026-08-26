@@ -33,10 +33,10 @@ The following steps walk you through the setup of a Teradata VantageCloud Azure 
    ```
 
    :::note dbt Azure subscription ID
-   If granting access to your Teradata endpoint service requires the <Constant name="dbt" /> Azure subscription ID, [contact dbt Support](mailto:support@getdbt.com) to request it.
+   If granting access to your Teradata endpoint service requires the <Constant name="dbt" /> Azure subscription ID, [contact dbt Support](mailto:support@dbtlabs.com) to request it.
    :::
 
-2. Add the required information to the following template and submit your Azure Private Link request to [dbt Support](mailto:support@getdbt.com):
+2. Add the required information to the following template and submit your Azure Private Link request to [dbt Support](mailto:support@dbtlabs.com):
 
    <Expandable alt_header="Support request email template" is_open={true}>
 
