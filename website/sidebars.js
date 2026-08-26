@@ -401,6 +401,7 @@ const sidebarSettings = {
             "docs/platform/enable-dbt-ai",
             "docs/dbt-ai/wizard-use-cases",
             "docs/dbt-ai/wizard-how-it-works",
+            "docs/dbt-ai/wizard-billing-faqs",
             {
               type: "category",
               label: "Wizard CLI",
@@ -433,7 +434,6 @@ const sidebarSettings = {
                 "docs/platform/wizard-byok-platform",
                 "docs/dbt-ai/wizard-platform-skills",
                 "docs/dbt-ai/wizard-platform-mcp",
-                "docs/dbt-ai/wizard-platform-privacy-data",
               ],
             },
           ],
