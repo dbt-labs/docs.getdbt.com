@@ -154,6 +154,7 @@ from my_table
 
 You can also qualify a macro in your own project by prefixing it with your [package name](/reference/dbt-jinja-functions/project_name) (this is mainly useful for package authors).
 
+
 ## FAQs
 
 <FAQ path="Accounts/dbt-specific-jinja" />
