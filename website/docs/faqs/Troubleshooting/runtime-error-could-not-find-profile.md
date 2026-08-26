@@ -25,4 +25,4 @@ Click your account name in the bottom left, select **Your profile**, then go to 
 **In a job:**
 This can happen if you changed the deployment environment and didn't re-enter your deployment credentials when saving. Go back to the deployment environment settings, re-enter your credentials (private key/passphrase or username and password), and kick off a new job run.
 
-If you've tried the step above and are still experiencing this behavior - reach out to the Support team at support@getdbt.com and we'll be happy to help!
+If you've tried the step above and are still experiencing this behavior - reach out to the Support team at support@dbtlabs.com and we'll be happy to help!

@@ -35,7 +35,7 @@ To configure Snowflake instances hosted on GCP for [Private Service Connect](htt
 
 1. Run the Snowflake system function [SYSTEM$GET_PRIVATELINK_CONFIG](https://docs.snowflake.com/en/sql-reference/functions/system_get_privatelink_config.html) and copy the output.
 
-2. Add the required information to the following template and submit your request to  [dbt Support](mailto:support@getdbt.com):
+2. Add the required information to the following template and submit your request to  [dbt Support](mailto:support@dbtlabs.com):
 
 <Expandable alt_header="Support request email template" is_open={true}>
 
@@ -67,7 +67,7 @@ Once <Constant name="dbt" /> Support completes the configuration, you can start 
 
 If your organization uses [Snowflake Network Policies](https://docs.snowflake.com/en/user-guide/network-policies) to restrict access to your Snowflake account, you need to add a network rule for <Constant name="dbt" />. 
 
-Request the **PSC connection ID** from [<Constant name="dbt" /> Support](mailto:support@getdbt.com) to use in a network rule. Snowflake supports [`GCPPSCID` as a network rule identifier type](https://docs.snowflake.com/en/sql-reference/sql/create-network-rule), and this is the recommended approach. A PSC connection ID uniquely identifies your organization's connection endpoint, whereas IP-based rules rely on CIDR ranges that may be shared across multiple dbt customers.
+Request the **PSC connection ID** from [<Constant name="dbt" /> Support](mailto:support@dbtlabs.com) to use in a network rule. Snowflake supports [`GCPPSCID` as a network rule identifier type](https://docs.snowflake.com/en/sql-reference/sql/create-network-rule), and this is the recommended approach. A PSC connection ID uniquely identifies your organization's connection endpoint, whereas IP-based rules rely on CIDR ranges that may be shared across multiple dbt customers.
 
 ### Using the UI
 
