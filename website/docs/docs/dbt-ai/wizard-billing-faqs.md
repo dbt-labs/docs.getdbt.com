@@ -74,7 +74,7 @@ The overview and the <Constant name="wizard" /> usage-based feature page will sh
 
 <Expandable alt_header="Who do I contact about AI access or usage limits?">
 
-Contact your dbt Labs account team for questions about enabling or disabling AI features, purchasing additional usage credits, or contract-specific billing questions. If you're on Developer or Starter plan, [reach out to dbt Support](mailto:support@getdbt.com) for help.
+Contact your dbt Labs account team for questions about enabling or disabling AI features, purchasing additional usage credits, or contract-specific billing questions. If you're on Developer or Starter plan, [reach out to dbt Support](mailto:support@dbtlabs.com) for help.
 
 </Expandable>
 

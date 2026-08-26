@@ -57,7 +57,7 @@ Before you begin, make sure to review the following requirements:
 
 3. **dbt Azure Subscription ID**
 
-    - Contact [dbt Support](mailto:support@getdbt.com) to obtain the dbt Azure subscription ID. You will need this in order to allow dbt to connect to your Private Link Service.
+    - Contact [dbt Support](mailto:support@dbtlabs.com) to obtain the dbt Azure subscription ID. You will need this in order to allow dbt to connect to your Private Link Service.
 
 
 ## Instructions
@@ -138,7 +138,7 @@ Before you begin, make sure to review the following requirements:
 
 ### Providing dbt Support with connection details
 
-11. Add the required information to the template below, and submit your request to [dbt Support](mailto:support@getdbt.com):
+11. Add the required information to the template below, and submit your request to [dbt Support](mailto:support@dbtlabs.com):
 
 <Expandable alt_header="Support request email template" is_open={true}>
 
