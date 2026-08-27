@@ -41,13 +41,13 @@ AWS provides two different ways to create a PrivateLink VPC endpoint for a Redsh
 
 <Lightbox src="/img/docs/dbt-platform/redshiftprivatelink2.png" title="Redshift granted accounts"/>
 
-3. Enter the AWS account ID: `346425330055` - _NOTE: This account ID only applies to <Constant name="dbt" /> Multi-Tenant environments. For Virtual Private/Single-Tenant account IDs please contact [Support](mailto:support@dbtlabs.com)._
+3. Enter the AWS account ID: `346425330055` - _NOTE: This account ID only applies to <Constant name="dbt" /> Multi-Tenant environments. For Virtual Private/Single-Tenant account IDs please contact [Support](mailto:support@getdbt.com)._
 
-4. Choose **Grant access to all VPCs** &mdash;or&mdash; (optional) contact [Support](mailto:support@dbtlabs.com) for the appropriate regional VPC ID to designate in the **Grant access to specific VPCs** field.
+4. Choose **Grant access to all VPCs** &mdash;or&mdash; (optional) contact [Support](mailto:support@getdbt.com) for the appropriate regional VPC ID to designate in the **Grant access to specific VPCs** field.
 
 <Lightbox src="/img/docs/dbt-platform/redshiftprivatelink3.png" title="Redshift grant access"/>
 
-5. Add the required information to the following template, and submit your request to [dbt Support](mailto:support@dbtlabs.com):
+5. Add the required information to the following template, and submit your request to [dbt Support](mailto:support@getdbt.com):
 
    - **Standard Redshift**
 
@@ -140,7 +140,7 @@ Once the VPC Endpoint Service is provisioned, you can find the service name in t
 <Lightbox src="/img/docs/dbt-platform/privatelink-endpoint-service-name.png" title="Get service name field value"/>
 
 ### 4. Submit your request to dbt Support
-Add the required information to the template below and submit your request to [dbt Support](mailto:support@dbtlabs.com):
+Add the required information to the template below and submit your request to [dbt Support](mailto:support@getdbt.com):
 
 <Expandable alt_header="Support request email template" is_open={true}>
 

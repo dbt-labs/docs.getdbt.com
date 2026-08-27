@@ -38,7 +38,11 @@ When you run a command like `dbt build --select +my_model`, dbt State evaluates 
 
   For views, if the view's logic is unchanged, dbt State reuses it even if new data has arrived upstream. Because views don't store data, new upstream data is automatically reflected when the view is queried, even without a rebuild. Note that views using `select *` on an upstream node may behave differently &mdash; refer to [Views with `select *`](/faqs/State/views-rebuilt#views-with-select) for more information.
 - **Reuse node from different schema (clone)** — dbt State looks across all environments and jobs for a matching object with identical logic and fresh data. This includes schemas where a model was built before it ever ran in production. When multiple candidates exist, dbt State clones from the one with the freshest data, regardless of which environment it came from. For example, if a CI schema has fresher data than production and identical logic, dbt State clones from there. The node is marked as **Reused** at a fraction of the compute cost.
+
+    If you want to prevent cloning into a specific target (for example, in regulated environments), set [`allow_clones: false`](/reference/resource-configs/allow-clones) on that target in `profiles.yml` or as an [extended attribute](/docs/dbt-platform-environments#extended-attributes) in the <Constant name="dbt_platform" />.
 - **Normal build** — If reuse is not possible, dbt builds the node as normal, automatically deferring any unselected upstream nodes.
+
+dbt State fetches table metadata (for example, last-modified timestamps) in the background at the start of each run. Any node ready to skip, clone, or execute proceeds immediately; nodes with an undetermined action wait for the fetch to complete.
 
 Without dbt State, every selected node rebuilds on every run regardless of whether anything has changed.
 

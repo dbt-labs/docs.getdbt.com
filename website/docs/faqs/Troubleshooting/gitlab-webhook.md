@@ -16,4 +16,4 @@ Some things to check:
 - The webhook registration is enabled in GitLab. 
 - The webhook registration is configured with the correct URL and secret.
 
-If you're still experiencing this issue, reach out to the Support team at support@dbtlabs.com and we'll be happy to help!
+If you're still experiencing this issue, reach out to the Support team at support@getdbt.com and we'll be happy to help!

@@ -1,5 +1,6 @@
 ---
 title: "About config property"
+description: "Use the config property to set configs for a resource directly in its YAML file, instead of in dbt_project.yml."
 sidebar_label: "config"
 resource_types: [models, seeds, snapshots, tests, sources, metrics, exposures]
 datatype: "{dictionary}"
