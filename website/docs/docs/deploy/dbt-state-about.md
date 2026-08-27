@@ -40,6 +40,8 @@ When you run a command like `dbt build --select +my_model`, dbt State evaluates 
     If you want to prevent cloning into a specific target (for example, in regulated environments), set [`allow_clones: false`](/reference/resource-configs/allow-clones) on that target in `profiles.yml` or as an [extended attribute](/docs/dbt-platform-environments#extended-attributes) in the <Constant name="dbt_platform" />.
 - **Normal build** — If reuse is not possible, dbt builds the node as normal, automatically deferring any unselected upstream nodes.
 
+dbt State fetches table metadata (for example, last-modified timestamps) in the background at the start of each run. Any node ready to skip, clone, or execute proceeds immediately; nodes with an undetermined action wait for the fetch to complete.
+
 Without dbt State, every selected node rebuilds on every run regardless of whether anything has changed.
 
 To see which decision dbt State made for each node after a run and why, you can run the <VersionBlock firstVersion="2.0">[`dbt state explain`](/reference/commands/state-explain)</VersionBlock><VersionBlock lastVersion="1.99">[`dbt-state explain`](/reference/commands/state-explain)</VersionBlock> command.
