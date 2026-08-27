@@ -54,7 +54,6 @@ dbt doesn't yet support enabling [Iceberg v3](https://docs.databricks.com/aws/en
 
 ### Choose between managed Iceberg and UniForm
 
-<!-- TODO: confirm the dbt Fusion release that ships per-model `table_format: 'iceberg'` without a catalog. -->
 Setting `table_format: 'iceberg'` on a model is enough to create a Unity Catalog managed Iceberg table. You don't need a `catalogs.yml` or a `catalog_name`.
 
 | Config | Type | Required | Description | Default |
