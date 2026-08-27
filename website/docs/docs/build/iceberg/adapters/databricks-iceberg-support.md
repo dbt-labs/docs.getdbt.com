@@ -26,11 +26,80 @@ Databricks supports two methods for creating Iceberg tables in its data catalog,
 - Creating [Unity Catalog managed Iceberg tables](https://docs.databricks.com/aws/en/tables/managed). Databricks Runtime 16.4 LTS and later support this feature.
 - Enabling [Iceberg reads](https://docs.databricks.com/aws/en/delta/uniform) on Delta tables. These tables still use the Delta file format, but generate both Delta and Iceberg-compatible metadata. Databricks Runtime 14.3 LTS and later support this feature.
 
-dbt supports both creating managed Iceberg tables and Iceberg-enabled Delta tables (formerly [UniForm](https://www.databricks.com/blog/delta-uniform-universal-format-lakehouse-interoperability)). The behavior flag [`use_managed_iceberg`](/reference/global-configs/databricks-changes#use-managed-iceberg) determines whether dbt creates a managed Iceberg table or a Delta table.
+dbt supports both creating managed Iceberg tables and Iceberg-enabled Delta tables (formerly [UniForm](https://www.databricks.com/blog/delta-uniform-universal-format-lakehouse-interoperability)).
+
+<VersionBlock lastVersion="1.12">
+
+The behavior flag [`use_managed_iceberg`](/reference/global-configs/databricks-changes#use-managed-iceberg) determines whether dbt creates a managed Iceberg table or a Delta table.
+
+:::caution `use_uniform` has no effect in dbt Core
+
+`dbt-databricks` doesn't support the `use_uniform` catalog property yet. If you set it, the adapter logs a warning and ignores it &mdash; use the `use_managed_iceberg` behavior flag instead. `use_uniform` takes effect in <Constant name="fusion" /> only.
+
+:::
+
+</VersionBlock>
+
+<VersionBlock firstVersion="2.0">
+
+The [`use_uniform`](#choose-between-managed-iceberg-and-uniform) config determines whether dbt creates a managed Iceberg table or a Delta table. It defaults to `false`, so `table_format: 'iceberg'` creates a managed Iceberg table.
+
+</VersionBlock>
 
 External Iceberg compute engines can read from and write to these Iceberg tables using Unity Catalog's [Iceberg REST API endpoint](https://docs.databricks.com/aws/en/external-access/iceberg). However, Databricks only has limited support for reading from external Iceberg catalogs (and externally managed Iceberg tables) through [Databricks catalog federation](https://docs.databricks.com/aws/en/query-federation/catalog-federation) (configured outside of dbt).
 
 dbt doesn't yet support enabling [Iceberg v3](https://docs.databricks.com/aws/en/iceberg/iceberg-v3) on managed Iceberg tables.
+
+<VersionBlock firstVersion="2.0">
+
+### Choose between managed Iceberg and UniForm
+
+<!-- TODO: confirm the dbt Fusion release that ships per-model `table_format: 'iceberg'` without a catalog. -->
+Setting `table_format: 'iceberg'` on a model is enough to create a Unity Catalog managed Iceberg table. You don't need a `catalogs.yml` or a `catalog_name`.
+
+| Config | Type | Required | Description | Default |
+| ------ | ---- | -------- | ----------- | ------- |
+| `table_format` | String | Yes | Set to `iceberg` to materialize the model as an Iceberg table. | `default` |
+| `use_uniform` | Boolean | No | When `false`, dbt creates a Unity Catalog managed Iceberg table (`create table ... using iceberg`). When `true`, dbt creates a Delta table with Iceberg reads enabled (`create table ... using delta tblproperties (...)`). | `false` |
+
+This model creates a managed Iceberg table:
+
+<File name='models/my_iceberg_model.sql'>
+
+```sql
+{{
+    config(
+        materialized='table',
+        table_format='iceberg'
+    )
+}}
+
+select * from {{ ref('raw_orders') }}
+```
+
+</File>
+
+To get an Iceberg-enabled Delta table instead, opt in with `use_uniform`:
+
+<File name='models/my_uniform_model.sql'>
+
+```sql
+{{
+    config(
+        materialized='table',
+        table_format='iceberg',
+        use_uniform=true
+    )
+}}
+
+select * from {{ ref('raw_orders') }}
+```
+
+</File>
+
+You can also set `use_uniform` in a catalog definition in `catalogs.yml` &mdash; under `config.databricks` in the new spec, or under `adapter_properties` in the old spec. When a model sets `catalog_name`, dbt resolves `table_format`, `file_format`, and `use_uniform` from that catalog instead of from the model config.
+
+</VersionBlock>
 
 ### External tables
 
