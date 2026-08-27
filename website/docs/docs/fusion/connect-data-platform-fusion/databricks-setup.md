@@ -22,7 +22,7 @@ availability:
 
 You can configure the Databricks adapter by running `dbt init` in your CLI or manually providing the `profiles.yml` file with the fields configured for your authentication type.
 
-The Databricks adapter for Fusion supports the following [authentication methods](#supported-authentication-types):
+The Databricks adapter for <Constant name="fusion" /> supports the following [authentication methods](#supported-authentication-types):
 - Personal access token (for individual users)
 - Service Principal token (for service users)
 - OAuth
@@ -35,7 +35,7 @@ The <Constant name="fusion_engine" /> `dbt-databricks` adapter is the only suppo
 
 Refer to the [Databricks docs](https://docs.databricks.com/dev-tools/dbt.html#) for more info on how to obtain the credentials for configuring your profile.
 
-## Configure Fusion
+## Configure <Constant name="fusion" />
 
 Executing `dbt init` in your CLI will prompt for the following fields:
 

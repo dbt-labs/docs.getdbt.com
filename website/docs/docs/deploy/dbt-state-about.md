@@ -35,10 +35,16 @@ dbt State delivers efficiency gains across both production and development envir
 When you run a command like `dbt build --select +my_model`, dbt State evaluates each selected node and applies the most efficient approach it can:
 
 - **Reuse node from same schema (skip)** — dbt checks whether the object already exists in the target schema, its logic hasn't changed, and its upstream parents haven't received fresh data beyond the configured [`lag_tolerance`](/reference/resource-configs/lag-tolerance). If all conditions are met, dbt skips the node entirely, as if it was never selected. For data tests, if the nodes being tested haven't changed since the last run, the previous test result is reused without re-executing the test query.
-- **Reuse node from different schema (clone)** — dbt State looks across all environments and jobs for a matching object with identical logic and fresh data. This includes schemas where a model was built before it ever ran in production. When multiple candidates exist, dbt State clones from the one with the freshest data, regardless of which environment it came from. For example, if a CI schema has fresher data than production and identical logic, dbt State clones from there. The node is marked as **Reused** at a fraction of the compute cost.
+- **Reuse node from different schema (clone)** — dbt State looks across all environments and jobs for a matching object with identical logic and fresh data. This includes schemas where a model was built before it ever ran in production. When multiple candidates exist, dbt State clones from the one with the freshest data, regardless of which environment it came from. For example, if a CI schema has fresher data than production and identical logic, dbt State clones from there. The node is marked as **Reused** at a fraction of the compute cost. 
+
+    If you want to prevent cloning into a specific target (for example, in regulated environments), set [`allow_clones: false`](/reference/resource-configs/allow-clones) on that target in `profiles.yml` or as an [extended attribute](/docs/dbt-platform-environments#extended-attributes) in the <Constant name="dbt_platform" />.
 - **Normal build** — If reuse is not possible, dbt builds the node as normal, automatically deferring any unselected upstream nodes.
 
+dbt State fetches table metadata (for example, last-modified timestamps) in the background at the start of each run. Any node ready to skip, clone, or execute proceeds immediately; nodes with an undetermined action wait for the fetch to complete.
+
 Without dbt State, every selected node rebuilds on every run regardless of whether anything has changed.
+
+To see which decision dbt State made for each node after a run and why, you can run the <VersionBlock firstVersion="2.0">[`dbt state explain`](/reference/commands/state-explain)</VersionBlock><VersionBlock lastVersion="1.99">[`dbt-state explain`](/reference/commands/state-explain)</VersionBlock> command.
 
 For the full list of available configs, see [dbt State configs](/reference/resource-configs/dbt-state-configs).
 

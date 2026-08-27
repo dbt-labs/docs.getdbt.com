@@ -8,6 +8,10 @@ availability:
   access: free
 ---
 
+import CoreVersionDeprecation from '/snippets/_core-version-deprecation-callout.md';
+
+<CoreVersionDeprecation />
+
 <Constant name="core" /> v1.5 is a feature release, with two significant additions:
 1. [**Model governance**](/docs/mesh/govern/about-model-governance) — access, contracts, versions — the first phase of [multi-project deployments](https://github.com/dbt-labs/dbt-core/discussions/6725)
 2. A Python entry point for [**programmatic invocations**](/reference/programmatic-invocations), at parity with the CLI

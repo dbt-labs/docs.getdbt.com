@@ -401,6 +401,7 @@ const sidebarSettings = {
             "docs/platform/enable-dbt-ai",
             "docs/dbt-ai/wizard-use-cases",
             "docs/dbt-ai/wizard-how-it-works",
+            "docs/dbt-ai/wizard-billing-faqs",
             {
               type: "category",
               label: "Wizard CLI",
@@ -433,7 +434,6 @@ const sidebarSettings = {
                 "docs/platform/wizard-byok-platform",
                 "docs/dbt-ai/wizard-platform-skills",
                 "docs/dbt-ai/wizard-platform-mcp",
-                "docs/dbt-ai/wizard-platform-privacy-data",
               ],
             },
           ],
@@ -524,7 +524,7 @@ const sidebarSettings = {
         },
         {
           type: "category",
-          label: "dbt CLI",
+          label: "dbt platform CLI",
           collapsed: true,
           link: { type: "doc", id: "docs/platform/dbt-cli-installation" },
           items: [
@@ -624,7 +624,7 @@ const sidebarSettings = {
             {
               type: "link",
               label: "Quickstart with the dbt Semantic Layer",
-              href: `/guides/sl-snowflake-qs`,
+              href: `/guides/sl-qs`,
             },
             "reference/semantic-layer-reference",
             {
@@ -898,7 +898,6 @@ const sidebarSettings = {
             "docs/explore/column-level-lineage",
             "docs/explore/data-health-signals",
             "docs/explore/explore-multiple-projects",
-            "docs/explore/external-metadata-ingestion",
             "docs/explore/global-navigation",
             "docs/explore/model-performance",
             "docs/explore/project-recommendations",
@@ -949,7 +948,7 @@ const sidebarSettings = {
         {
           type: "link",
           label: "Quickstart with the dbt Semantic Layer",
-          href: `/guides/sl-snowflake-qs`,
+          href: `/guides/sl-qs`,
         },
         {
           type: "category",
@@ -1405,12 +1404,14 @@ const sidebarSettings = {
           items: [
             "reference/resource-configs/dbt-state-configs",
             "reference/resource-configs/lag-tolerance",
+            "reference/resource-configs/compare-unrendered-code",
             "reference/resource-configs/require-fresh-data-from",
             "reference/resource-configs/evaluate-volatile-sql",
             "reference/resource-configs/pre-clone",
             "reference/resource-configs/execute-hooks-on-any-reuse",
-            "reference/resource-configs/metadata-warehouse",
             "reference/resource-configs/defer-to-target",
+            "reference/resource-configs/allow-clones",
+            "reference/resource-configs/metadata-warehouse",
           ],
         },
         {
@@ -1585,6 +1586,7 @@ const sidebarSettings = {
             "reference/commands/show",
             "reference/commands/snapshot",
             "reference/commands/source",
+            "reference/commands/state-explain",
             "reference/commands/system",
             "reference/commands/test",
             "reference/commands/version",

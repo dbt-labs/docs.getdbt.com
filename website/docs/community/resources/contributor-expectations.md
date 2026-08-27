@@ -136,4 +136,4 @@ Both bug fixes and backwards-compatible new features will be included in the [ne
 
 #### <Constant name="fusion_engine" />
 
-The <Constant name="fusion_engine" /> is released continuously, and it contains a superset of the code and functionality available in <Constant name="core_v2" />. When Core v2.0.0 is released (General Availability), the version numbers for Core v2 and Fusion will converge.
+The <Constant name="fusion_engine" /> is released continuously, and it contains a superset of the code and functionality available in <Constant name="core_v2" />. When Core v2.0.0 is released (General Availability), the version numbers for Core v2 and <Constant name="fusion" /> will converge.

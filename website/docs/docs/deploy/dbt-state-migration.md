@@ -24,7 +24,7 @@ To migrate to dbt State, move your configs from `freshness.build_after` to the n
 | `freshness.build_after.updates_on` | [`state.require_fresh_data_from`](/reference/resource-configs/require-fresh-data-from) | Same `any` and `all` options with the same behavior: <br/>- `any` (default): rebuilds when _any_ direct parent has fresh data <br/>- `all`: rebuilds only when _all_ direct parents have fresh data |
 | `freshness.build_after.count` + `freshness.build_after.period` | [`state.lag_tolerance`](/reference/resource-configs/lag-tolerance) | Combined into a single field with shorthand values (for example, `1800s`, `30m`, `12h`, `1d`, `2w`) or Jinja expressions |
 
-:::note Backward compatibility in Fusion
+:::note Backward compatibility in <Constant name="fusion" />
 In the <Constant name="fusion_engine" />, you can enable dbt State without updating your project configs first.
 
 - If `lag_tolerance` and `require_fresh_data_from` are not set, dbt State falls back to your existing `build_after` configs until `build_after` is deprecated.
@@ -161,6 +161,9 @@ State-aware orchestration and dbt State differ in a few ways:
 - **`build_after` vs `lag_tolerance`**: Both configs reduce how often a model runs when upstream data is frequently fresh, but they work differently:
   - `freshness.build_after` (for example, `{count: 4, period: hour}`) skips the model unless the configured interval has elapsed _and_ upstream sources have new data since the last run. A SQL change alone does not trigger a rebuild; both conditions must be met.
   - `state.lag_tolerance` (for example, `4h`) skips the model unless upstream data is newer than the model's last run by at least the configured interval. Unlike `build_after`, a detected SQL change triggers a rebuild.
+- **No concurrent build detection**: In most cases, dbt State handles overlapping nodes the same way as state-aware orchestration: if a node is built by Job 1 before Job 2 starts, Job 2 sees the model as already built and reuses it. If Job 1 finishes building a node after Job 2 starts &mdash; but before Job 2 builds that node &mdash; Job 2 still builds it and uses compute to re-determine there's no new data. However, if Job 2 starts building the same snapshot or incremental model before Job 1 executing the same node, both jobs can detect the same changes in their separate transactions and commit them, which can lead to duplicate records or other data corruption.
+
+  To prevent duplicate builds, ensure jobs that share the same nodes don't run at the same time &mdash; whether by configuring job schedules through the [<Constant name="dbt_platform" /> job scheduler](/docs/deploy/job-scheduler) or an external orchestration tool (for example, Airflow or Dagster), or by avoiding manually triggered runs that overlap.
 - **Efficient Testing not yet available**: State-aware orchestration offers Efficient Testing (private beta); dbt State doesn't support it yet.
 
 ## Related docs

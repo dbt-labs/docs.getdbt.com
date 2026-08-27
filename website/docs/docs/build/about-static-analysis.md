@@ -21,7 +21,7 @@ The <Constant name="fusion_engine" /> [fully comprehends your project's SQL](/bl
 
 It can do this because its compilation step is more comprehensive than that of the dbt Core v1.x engine. When dbt Core v1.x referred to _compilation_, it only meant _rendering_ &mdash; converting Jinja-templated strings into a SQL query to send to a database.
 
-<Constant name="fusion_engine" /> can also render Jinja, but then it completes a second phase: _static analysis_, producing and validating a logical plan for every rendered query in the project. This step is the cornerstone of Fusion's new capabilities.
+<Constant name="fusion_engine" /> can also render Jinja, but then it completes a second phase: _static analysis_, producing and validating a logical plan for every rendered query in the project. This step is the cornerstone of <Constant name="fusion" />'s new capabilities.
 
 </IntroText>
 
