@@ -1,4 +1,4 @@
-## What you get with <Constant name="fusion" />
+## What you get with v2
 
 :::note Feature availability
 Feature availability may change as the <Constant name="fusion_engine" /> moves toward general availability. 

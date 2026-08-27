@@ -1,20 +1,17 @@
 ---
-title: "Fusion releases"
+title: "dbt-releases"
 id: "dbt-releases"
-description: "Track current versions and release history for the dbt Fusion engine."
+sidebar_label: "dbt releases"
+description: "Track current versions and release history for v2."
 pagination_next: null
 pagination_prev: null
 ---
 
 import FusionReleases from '/src/components/fusionReleases';
 
-# Fusion releases <Lifecycle status="preview" />
-
-:::note Fusion availability
+# Self-hosted dbt releases <Lifecycle status="preview" />
 
 This page shows release information for local builds of <Constant name="fusion" /> only. <Constant name="fusion" /> releases on the <Constant name="dbt_platform" /> adhere to the [release tracks](/docs/dbt-versions/dbt-release-tracks) categories, giving you control over release cadence and stability.
-
-:::
 
 Track current versions and full release history for the <Constant name="fusion_engine" />. This data updates live from dbt release channels.
 

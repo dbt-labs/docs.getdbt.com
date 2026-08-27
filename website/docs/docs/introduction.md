@@ -1,6 +1,7 @@
 ---
 title: "What is dbt?"
 id: "introduction"
+sidebar_label: "About dbt"
 description: "dbt transforms raw warehouse data into trusted data products and brings purpose-built AI to every stage of the analytics development lifecycle."
 pagination_next: null
 pagination_prev: null
@@ -27,6 +28,24 @@ import DbtVersionOverview from '/snippets/_dbt-version-overview.md';
 
 Refer to the [Licensing FAQs](https://www.getdbt.com/licenses-faq) for more info.
 
+## The dbt engine
+
+The current generation of the dbt is <Constant name="fusion" />, written in Rust with a native understanding of SQL across multiple engine dialects. That comprehension lets dbt catch errors before they reach your warehouse and powers editor features like autocomplete and inline errors as you type.
+
+<Constant name="fusion" /> is the default experience when you [install dbt](/docs/local/install-dbt). It builds on the Apache 2.0 open-source runtime CLI foundation for the dbt framework. <Constant name="fusion" /> is free to use, with some capabilities unlocked when you sign in with any <Constant name="dbt_platform" /> account.
+
+### Enhance your development workflows
+
+As a developer, <Constant name="fusion" /> can:
+
+- Immediately catch incorrect SQL in your dbt models, before they ever hit the warehouse
+- Give you autocomplete, hover info, and inline errors as you type
+- Preview inline <Term id="cte">CTEs</Term> for faster debugging
+- Trace model and column definitions across your entire project
+
+Get all of this, free, in the [dbt extension for VS Code](/docs/about-dbt-extension), built on <Constant name="fusion" />.
+
+
 ## How to use dbt
 
 You can use dbt in different ways depending on your needs:
@@ -38,7 +57,7 @@ You can use dbt in different ways depending on your needs:
 
 The <Constant name="dbt_platform" /> is the fastest way to run dbt: scheduling, CI/CD, documentation hosting, monitoring, and alerting, all in one place. It works with both v1 and v2, on every plan from Developer (free) through Enterprise+.
 
-Develop directly in the platform with the [Studio IDE](/docs/platform/studio-ide/develop-in-studio) or connect from your local machine with the dbt VS Code extension or <Constant name="platform_cli" />.
+Develop directly in the platform with the [Studio IDE](/docs/platform/studio-ide/develop-in-studio) or connect from your local machine with the dbt VS Code extension or <Constant name="platform_cli" />. 
 
 Learn more about [dbt platform features](/docs/platform/about-platform/dbt-platform-features), explore [plans and pricing](https://www.getdbt.com/pricing/), or try a [quickstart](/guides).
 
@@ -49,9 +68,13 @@ Learn more about [dbt platform features](/docs/platform/about-platform/dbt-platf
 
 For the best development experience, we recommend pairing v2 with the [dbt VS Code extension](/docs/about-dbt-extension) for autocomplete, inline errors, and lineage as you work. You can also run [`dbt login`](/reference/commands/login?version=2.0) to unlock additional capabilities and create a free <Constant name="dbt_platform" /> account.
 
+To get started quickly, try the [<Constant name="fusion" /> quickstart](/guides/fusion).
+
 Other ways to run self-hosted dbt:
 - [dbt Core v1.x](/docs/local/install-dbt?version=1.0): The original Python-based CLI. 
 - [dbt Core v2.x](/docs/local/install-dbt-v2): dbt Core 2.0, the free, fully open-source (Apache 2.0) distribution of the new Rust-based dbt engine. Typically for organizations with a strict requirement to use this OSS runtime.
+
+To contribute to the open-source project, refer to the [GitHub repo](https://github.com/dbt-labs/dbt-core).
 
 ## Why use dbt
 
@@ -69,5 +92,7 @@ As a dbt user, your main focus will be on writing models (select queries) that r
 - [Quickstarts for dbt](/guides)
 - [Best practice guides](/best-practices)
 - [What is a dbt project?](/docs/build/projects)
+- [Supported features matrix](/docs/fusion/supported-features)
 - [AI and agents](/docs/dbt-ai/about-dbt-ai)
 - [Licensing](/docs/dbt-licensing)
+- [<Constant name="fusion" /> license agreement](https://www.getdbt.com/dbt-fusion-engine-license-agreement)
