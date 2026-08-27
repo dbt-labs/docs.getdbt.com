@@ -140,7 +140,7 @@ dbt run --target prod
 
 For each model, dbt State compares the current logic and upstream data against the previous run. If nothing has changed, dbt State skips the build or clones the result from another environment.
 
-With dbt State enabled, the all twelve models are reused &mdash; nothing changed, so there's nothing to rebuild.
+With dbt State enabled, all twelve models are reused &mdash; nothing changed, so there's nothing to rebuild.
 
 dbt State reuses views when their SQL logic is unchanged, even if new data has arrived upstream. Because views don't store data, they always read directly from the underlying tables when queried. The staging views shown here use `select *` on a CTE, which dbt State can reuse. For details on `select *` patterns that can force a rebuild, refer to [Views with `select *`](/faqs/State/views-rebuilt#views-with-select).
 
