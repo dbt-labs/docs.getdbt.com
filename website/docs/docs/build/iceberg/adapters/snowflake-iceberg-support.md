@@ -272,7 +272,7 @@ These are the additional configurations, specific to Snowflake, that can be supp
 
 ### Base location 
 
-Snowflake's `CREATE ICEBERG TABLE` DDL requires that a `base_location` be provided when using a custom external volume. dbt defines this parameter on the user's behalf to streamline usage and enforce basic isolation of table data within the `EXTERNAL VOLUME`. The default behavior in dbt is to provide a `base_location` string of the form: `_dbt/{SCHEMA_NAME}/{MODEL_NAME}`. When no external volume is provided or when `external_volume` is set to `SNOWFLAKE_MANAGED_STORAGE`, no `base_location` is required.
+Snowflake's `CREATE ICEBERG TABLE` DDL requires that a `base_location` be provided when using a custom external volume. dbt defines this parameter on the user's behalf to streamline usage and enforce basic isolation of table data within the `EXTERNAL VOLUME`. The default behavior in dbt is to provide a `base_location` string of the form: `_dbt/{SCHEMA_NAME}/{MODEL_NAME}`. No `base_location` is required when no external volume is provided or when `external_volume` is set to `SNOWFLAKE_MANAGED_STORAGE`.
 
 We recommend using the default behavior, but if you need to customize the resulting `base_location`, you can configure the `base_location` with the model configuration fields `base_location_root` and `base_location_subpath`. <VersionBlock firstVersion="2.0"> `base_location_subpath` is only accepted in model configurations. </VersionBlock>
 
