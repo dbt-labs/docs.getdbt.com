@@ -63,11 +63,11 @@ With self-serve, you request a Redshift PrivateLink endpoint in <Constant name="
    <TabItem value="managed" label="Redshift Managed / Serverless">
 
    Select **Redshift Managed** for both provisioned Redshift clusters and Redshift Serverless.
-
-   1. In **Step 1: Choose your deployment type**, select **Provisioned** or **Serverless**.
-   2. In **Step 2: Enter your cluster details**, enter your **Cluster identifier** and **Resource owner AWS account ID**.
-   3. In **Step 3: Select your AWS region**, choose the AWS region where your Redshift cluster or workgroup is hosted.
-   4. Click **Submit request**.
+   
+        1. In **Step 1: Choose your deployment type**, select **Provisioned** or **Serverless**.
+        2. In **Step 2: Enter your cluster details**, enter your **Cluster identifier** and **Resource owner AWS account ID**.
+        3. In **Step 3: Select your AWS region**, choose the AWS region where your Redshift cluster or workgroup is hosted.
+        4. Click **Submit request**.
 
    <Lightbox src="/img/docs/dbt-platform/redshift-managed-private-endpoint-request.png" title="Redshift Managed endpoint request form showing deployment type, cluster details, and AWS region fields"/>
 
