@@ -19,7 +19,7 @@ If your organization uses GitHub Enterprise Cloud hosted on a `ghe.com` domain, 
 
 To connect a ghe.com-hosted repository, use [importing a project by git URL](/docs/platform/git/import-a-project-by-git-url) with SSH/deploy keys instead. Note that your organization's SSH URL configuration may require additional steps.
 
-Some native integration features are unavailable when using the git URL method. For additional help with your specific setup, contact [dbt Support](mailto:support@dbtlabs.com) or your <Constant name="dbt" /> account team.
+Some native integration features are unavailable when using the git URL method. For additional help with your specific setup, contact [dbt Support](mailto:support@getdbt.com) or your <Constant name="dbt" /> account team.
 :::
 
 ## Prerequisites

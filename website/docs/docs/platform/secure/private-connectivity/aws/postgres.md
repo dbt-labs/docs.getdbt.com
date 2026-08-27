@@ -78,7 +78,7 @@ Once the VPC Endpoint Service is provisioned, you can find the service name in t
 <Lightbox src="/img/docs/dbt-platform/privatelink-endpoint-service-name.png" width="70%" title="Get service name field value"/>
 
 ### 4. Submit your request to dbt Support
-Add the required information to the template below and submit your request to [dbt Support](mailto:support@dbtlabs.com):
+Add the required information to the template below and submit your request to [dbt Support](mailto:support@getdbt.com):
 
 <Expandable alt_header="Support request email template" is_open={true}>
 
