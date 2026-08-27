@@ -9,7 +9,7 @@ availability: all_users
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-dbt Labs manages the lifecycle of features across the dbt platform, dbt Core, and the dbt Fusion engine. Each feature is assigned a lifecycle status that describes its stability, support level, and availability. Use the tabs below to find the lifecycle stages for the product you're using.
+dbt Labs manages the lifecycle of features across the dbt platform, dbt Core, and the <Constant name="fusion_engine" />. Each feature is assigned a lifecycle status that describes its stability, support level, and availability. Use the tabs below to find the lifecycle stages for the product you're using.
 
 Service level objective (SLO) support varies between products and lifecycles.
 
@@ -141,7 +141,7 @@ dbt Core releases follow semantic versioning. Read more in [About dbt versions](
 </TabItem>
 <TabItem value="fusion" label="dbt Fusion engine">
 
-The dbt Fusion engine and [VS Code extension](/docs/about-dbt-extension) are in various stages of development depending on deployment type. See the [Fusion Diaries](https://github.com/dbt-labs/dbt-core/discussions/categories/announcements?discussions_q=is:open+diaries+category:Announcements) for the latest updates, and our [Path to GA](/blog/dbt-fusion-engine-path-to-ga) blog post for what's required to reach GA.
+The <Constant name="fusion_engine" /> and [VS Code extension](/docs/about-dbt-extension) are in various stages of development depending on deployment type. See the [Fusion Diaries](https://github.com/dbt-labs/dbt-core/discussions/categories/announcements?discussions_q=is:open+diaries+category:Announcements) for the latest updates, and our [Path to GA](/blog/dbt-fusion-engine-path-to-ga) blog post for what's required to reach GA.
 
 <div className="grid--3-col" style={{gap: '1.5rem', marginTop: '1rem'}}>
 
@@ -168,7 +168,7 @@ The dbt Fusion engine and [VS Code extension](/docs/about-dbt-extension) are in 
     <strong style={{color: 'var(--color-green-700)', fontSize: '1rem'}}>Generally available (GA)</strong>
   </div>
   <div style={{padding: '1.25rem 1.5rem', background: 'var(--ifm-background-color)'}}>
-    Learn what's required for the dbt Fusion engine to reach GA in our [Path to GA](/blog/dbt-fusion-engine-path-to-ga) blog post.
+    Learn what's required for the <Constant name="fusion_engine" /> to reach GA in our [Path to GA](/blog/dbt-fusion-engine-path-to-ga) blog post.
   </div>
 </div>
 

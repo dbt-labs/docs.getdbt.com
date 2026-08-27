@@ -21,7 +21,7 @@ The <Constant name="fusion_engine" /> [fully comprehends your project's SQL](/bl
 
 It can do this because its compilation step is more comprehensive than that of the dbt Core v1.x engine. When dbt Core v1.x referred to _compilation_, it only meant _rendering_ &mdash; converting Jinja-templated strings into a SQL query to send to a database.
 
-<Constant name="fusion_engine" /> can also render Jinja, but then it completes a second phase: _static analysis_, producing and validating a logical plan for every rendered query in the project. This step is the cornerstone of Fusion's new capabilities.
+<Constant name="fusion_engine" /> can also render Jinja, but then it completes a second phase: _static analysis_, producing and validating a logical plan for every rendered query in the project. This step is the cornerstone of <Constant name="fusion" />'s new capabilities.
 
 </IntroText>
 
@@ -154,7 +154,7 @@ Setting `static_analysis` to `baseline` mode lets you start using <Constant name
 
 ## Recapping the differences between engines
 
-<Constant name="core_v1" /> and [<Constant name="core_v2" />](/docs/dbt-versions/core-upgrade/upgrading-to-v2) (currently in alpha):
+<Constant name="core_v1" /> and [<Constant name="core_v2" />](/docs/dbt-versions/core-upgrade/upgrading-to-v2) (currently in beta):
 
 - Renders and runs models one at a time.
 - Never runs static analysis.
@@ -315,6 +315,12 @@ from {{ ref('my_model') }}
 ```
 
 </File>
+
+### Can I use strict mode in development and baseline in deployment?
+
+Yes. This pattern is valid and recommended: use `strict` while you develop for stronger validation, and keep `baseline` in deployment for faster runs that are less likely to stop on analysis findings.
+
+For more information, including CLI examples and an optional environment variable pattern, refer to [Optimize static analysis for development and deployment](/best-practices/optimize-static-analysis-for-development-and-deployment).
 
 ### When should I turn static analysis `off`?
 

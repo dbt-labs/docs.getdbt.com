@@ -3,10 +3,13 @@ title: "Upgrading to v2"
 id: upgrading-to-v2
 description: New features and changes in v2
 displayed_sidebar: "docs"
+cta: dbt_core_v1_12_live
 availability:
   engine: v2
   access: free
 ---
+
+# Upgrading to v2 <Lifecycle status="beta" />
 
 import FusionAdapters from '/snippets/_fusion-dwh.md';
 import FusionUpgradeSteps from '/snippets/_fusion-upgrade-steps.md';
@@ -74,6 +77,14 @@ In <Constant name="dbt" /> v2, [`dbt login`](/reference/commands/login?version=2
 Run [`dbt login status`](/reference/commands/login?version=2.0#dbt-login-status) to view your current authentication status.
 
 `dbt login` unlocks a broader set of features, such as advanced features in the [dbt VS Code extension](/docs/about-dbt-extension). For details, refer to [`dbt login`](/reference/commands/login?version=2.0).
+
+### dbt Docs v2
+
+v2 introduces [dbt Docs v2](/docs/build/view-documentation#dbt-docs-v2), a faster, statically hostable documentation experience that replaces the v1 static site. `dbt docs generate` compiles your project, produces the v2 Parquet artifacts, and exports a static site in a single command. `dbt docs serve` previews that site locally, and because the browser queries those artifacts directly with DuckDB-WASM (WebAssembly), you can also host the generated files on any static file host. You only need `--write-index` if you want to produce the artifacts from a separate `dbt compile` or `dbt build` command.
+
+To hydrate catalog metadata (`catalog.json`) for <Constant name="catalog" /> without building the site, use the [`--write-catalog` flag](/reference/commands/cmd-docs#--write-catalog-flag) instead.
+
+For full usage, refer to [About dbt docs commands](/reference/commands/cmd-docs).
 
 ### Changed functionality
 
@@ -454,7 +465,7 @@ v2 is available in two distributions. For more information, refer to [dbt licens
 <SimpleTable>
 | Distribution | Package | Use it when |
 | --- | --- | --- |
-| <Constant name="fusion" /> | `dbt` | You want the recommended v2 experience, with Fusion installed by default. |
+| <Constant name="fusion" /> | `dbt` | You want the recommended v2 experience, with <Constant name="fusion" /> installed by default. |
 | dbt Core 2.0 | `dbt-core` | Your organization has a strict requirement to use the Apache 2.0 [open-source runtime](/docs/local/install-dbt-core-v2). |
 </SimpleTable>
 

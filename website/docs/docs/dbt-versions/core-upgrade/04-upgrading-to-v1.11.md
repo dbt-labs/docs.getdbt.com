@@ -3,6 +3,7 @@ title: "Upgrading to v1.11"
 id: upgrading-to-v1.11
 description: New features and changes in dbt Core v1.11
 displayed_sidebar: "docs"
+cta: dbt_core_v1_12_live
 availability:
   engine: v1
   access: free

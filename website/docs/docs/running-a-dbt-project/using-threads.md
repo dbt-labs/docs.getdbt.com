@@ -10,7 +10,11 @@ import FusionThreads from '/snippets/_fusion-threads.md';
  
 When dbt runs, it creates a directed acyclic graph (DAG) of links between models. The number of threads represents the maximum number of paths through the graph dbt may work on at once – increasing the number of threads can minimize the run time of your project.
 
-For example, if you specify `threads: 1`, dbt will start building only one model, and finish it, before moving onto the next. Specifying `threads: 8` means that dbt will work on _up to_ 8 models at once without violating dependencies – the actual number of models it can work on will likely be constrained by the available paths through the dependency graph.
+For example, if you specify `threads: 1`, dbt will start building only one model, and finish it, before moving on to the next. Specifying `threads: 4` means that dbt will work on _up to_ 4 models at once without violating dependencies; the actual number of models it can work on will likely be constrained by the available paths through the dependency graph.
+
+Here's the difference between running a project with 1 thread and 4 threads. With 1 thread, dbt builds one model at a time in dependency order. With 4 threads, dbt builds as many ready models in parallel as the graph allows, finishing much sooner. 
+
+<Lightbox src="/img/docs/running-a-dbt-project/threads-1-vs-4-animated.gif" title="Increase threads to parallelize builds and finish faster. The colors have different meanings: gray means waiting, orange means building, and green means done." />
 
 There's no set limit of the maximum number of threads you can set – while increasing the number of threads generally decreases execution time, there are a number of things to consider:
 - Increasing the number of threads increases the load on your warehouse, which may impact other tools in your data stack. For example, if your BI tool uses the same compute resources as dbt, their queries may get queued during a dbt run.
@@ -20,10 +24,10 @@ Generally the optimal number of threads depends on your data warehouse and its c
 
 You can use a different number of threads than the value defined in your target by using the `--threads` option when executing a dbt command.
 
-You will define the number of threads in your `profiles.yml` file (when developing locally with dbt Core and the dbt Fusion engine), <Constant name="dbt" /> job definition, and <Constant name="dbt" /> development credentials under your profile.
+You will define the number of threads in your `profiles.yml` file (when developing locally with dbt Core and the <Constant name="fusion_engine" />), <Constant name="dbt" /> job definition, and <Constant name="dbt" /> development credentials under your profile.
 
 
-## Fusion engine thread optimization
+## <Constant name="fusion_engine" /> thread optimization
 
 In the context of <Constant name="fusion"/>, a thread is an open connection to your data warehouse, not the number of parallel threads on your local machine's CPU. Data platforms vary in how many concurrent connections they allow; exceeding those limits causes the platform to reject new connections.
 

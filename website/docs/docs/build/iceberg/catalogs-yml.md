@@ -43,9 +43,9 @@ You should start using `catalogs` when:
 
 dbt defines `catalogs` in a single top-level file, `catalogs.yml`, that lives in the root of your project directory. We first introduced `catalogs.yml` in dbt Core v1.10; starting in dbt Core v1.12, we've introduced a new simpler spec (recommended) behind an opt-in behavior flag.
 
-### New spec (recommended)
+### New spec (recommended) <Lifecycle status="beta" />
 
-_Available in dbt Core v1.12+ (including dbt Core v2 and Fusion). See GitHub discussion [dbt-core#12723](https://github.com/dbt-labs/dbt-core/discussions/12723) for an explanation of the motivations behind the new spec, and an overview of what's changed._
+_Available in dbt Core v1.12+ (including dbt Core v2 and <Constant name="fusion" />). See GitHub discussion [dbt-core#12723](https://github.com/dbt-labs/dbt-core/discussions/12723) for an explanation of the motivations behind the new spec, and an overview of what's changed._
 
 To use the new spec, first set this behavior flag:
 

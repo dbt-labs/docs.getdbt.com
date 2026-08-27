@@ -5,7 +5,7 @@ description: "Seamlessly set up the credentials and tokens to start querying the
 sidebar_label: "Administer the Semantic Layer"
 tags: [Semantic Layer]
 pagination_next: "docs/use-dbt-semantic-layer/sl-architecture"
-pagination_prev: "guides/sl-snowflake-qs"
+pagination_prev: "guides/sl-qs"
 availability:
   surface: platform
   access: paid_plan
@@ -45,6 +45,7 @@ import SlSetUp from '/snippets/_new-sl-setup.md';
 
 ## Next steps
 
+- If you haven't created metrics yet, follow the [Quickstart for the <Constant name="semantic_layer" />](/guides/sl-qs).
 - Now that you've set up your credentials and tokens, start querying your metrics with the [available integrations](/docs/platform-integrations/avail-sl-integrations).
 - [Optimize querying performance](/docs/use-dbt-semantic-layer/sl-cache) using declarative caching.
 - [Validate semantic nodes in CI](/docs/deploy/ci-jobs#semantic-validations-in-ci) to ensure code changes made to dbt models don't break these metrics.

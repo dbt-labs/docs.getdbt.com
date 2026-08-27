@@ -72,14 +72,15 @@ Several behavior change flags on the <Constant name="dbt_platform" /> `Latest` r
 | [require_yaml_configuration_for_mf_time_spines](/reference/global-configs/behavior-flags/require_yaml_configuration_for_mf_time_spines) | Suppresses a deprecation warning (no functional change) |
 | [validate_macro_args](/reference/global-configs/behavior-flags/validate_macro_args) | New warning for mismatched macro arguments; errors with `--warn-error` |
 
-### Introduced in Fusion and Core v2
+### Introduced in <Constant name="fusion" /> and Core v2
 
 The following flags are specific to <Constant name="fusion" /> and have no equivalent in <Constant name="core" />. They are configured the same way — in the `flags:` block of `dbt_project.yml`.
 
 | Flag | Adapter | Default | Introduced | Becomes default |
 |---|---|---|---|---|
-| use_catalogs_v2 | All | `false` | Fusion preview.174 (Apr 22, 2026) | Not yet set |
-| bigquery_noop_alter_relation_comment | BigQuery | `false` | Fusion preview.124 (Feb 19, 2026) | Not yet set |
+| [require_resource_names_without_plus_prefix](/reference/global-configs/behavior-flags/require_resource_names_without_plus_prefix) | All | `false` | 2.0.0-preview.208 | Not yet set |
+| use_catalogs_v2 | All | `false` | 2.0.0-preview.174 | Not yet set |
+| bigquery_noop_alter_relation_comment | BigQuery | `false` | 2.0.0-preview.124 | Not yet set |
 
 
 ### Adapter-specific behavior change flags

@@ -18,6 +18,7 @@ categories:
 
   - title: Popular
     guides:
+      - migrate-off-legacy-dbt-versions
       - snowflake
       - databricks
       - bigquery
@@ -31,6 +32,7 @@ categories:
 
   - title: Advanced use cases
     guides:
+      - iceberg
       - fusion-package-compat
       - qs-mcp-oauth
       - qs-mcp-local 

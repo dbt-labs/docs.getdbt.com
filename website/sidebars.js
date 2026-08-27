@@ -362,6 +362,7 @@ const sidebarSettings = {
                 "docs/local/connect-data-platform/oracle-setup",
                 "docs/local/connect-data-platform/risingwave-setup",
                 "docs/local/connect-data-platform/rockset-setup",
+                "docs/local/connect-data-platform/sail-setup",
                 "docs/local/connect-data-platform/singlestore-setup",
                 "docs/local/connect-data-platform/sqlite-setup",
                 "docs/local/connect-data-platform/starrocks-setup",
@@ -400,6 +401,7 @@ const sidebarSettings = {
             "docs/platform/enable-dbt-ai",
             "docs/dbt-ai/wizard-use-cases",
             "docs/dbt-ai/wizard-how-it-works",
+            "docs/dbt-ai/wizard-billing-faqs",
             {
               type: "category",
               label: "Wizard CLI",
@@ -432,7 +434,6 @@ const sidebarSettings = {
                 "docs/platform/wizard-byok-platform",
                 "docs/dbt-ai/wizard-platform-skills",
                 "docs/dbt-ai/wizard-platform-mcp",
-                "docs/dbt-ai/wizard-platform-privacy-data",
               ],
             },
           ],
@@ -523,7 +524,7 @@ const sidebarSettings = {
         },
         {
           type: "category",
-          label: "dbt CLI",
+          label: "dbt platform CLI",
           collapsed: true,
           link: { type: "doc", id: "docs/platform/dbt-cli-installation" },
           items: [
@@ -623,7 +624,7 @@ const sidebarSettings = {
             {
               type: "link",
               label: "Quickstart with the dbt Semantic Layer",
-              href: `/guides/sl-snowflake-qs`,
+              href: `/guides/sl-qs`,
             },
             "reference/semantic-layer-reference",
             {
@@ -897,7 +898,6 @@ const sidebarSettings = {
             "docs/explore/column-level-lineage",
             "docs/explore/data-health-signals",
             "docs/explore/explore-multiple-projects",
-            "docs/explore/external-metadata-ingestion",
             "docs/explore/global-navigation",
             "docs/explore/model-performance",
             "docs/explore/project-recommendations",
@@ -948,7 +948,7 @@ const sidebarSettings = {
         {
           type: "link",
           label: "Quickstart with the dbt Semantic Layer",
-          href: `/guides/sl-snowflake-qs`,
+          href: `/guides/sl-qs`,
         },
         {
           type: "category",
@@ -1584,6 +1584,7 @@ const sidebarSettings = {
             "reference/commands/show",
             "reference/commands/snapshot",
             "reference/commands/source",
+            "reference/commands/state-explain",
             "reference/commands/system",
             "reference/commands/test",
             "reference/commands/version",
@@ -1655,6 +1656,7 @@ const sidebarSettings = {
                     "reference/global-configs/behavior-flags/require_generic_test_arguments_property",
                     "reference/global-configs/behavior-flags/require_nested_cumulative_type_params",
                     "reference/global-configs/behavior-flags/require_ref_searches_node_package_before_root",
+                    "reference/global-configs/behavior-flags/require_resource_names_without_plus_prefix",
                     "reference/global-configs/behavior-flags/require_resource_names_without_spaces",
                     "reference/global-configs/behavior-flags/require_source_and_semantic_model_names_without_spaces",
                     "reference/global-configs/behavior-flags/require_sql_header_in_test_configs",
@@ -1932,6 +1934,7 @@ const sidebarSettings = {
         "best-practices/idempotence",
         "best-practices/dont-nest-your-curlies",
         "best-practices/clone-incremental-models",
+        "best-practices/optimize-static-analysis-for-development-and-deployment",
         "best-practices/writing-custom-generic-tests",
         "best-practices/best-practice-workflows",
         "best-practices/dbt-unity-catalog-best-practices",
