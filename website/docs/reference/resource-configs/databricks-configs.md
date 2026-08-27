@@ -33,7 +33,7 @@ dbt-databricks v1.9 adds support for the `table_format: iceberg` config. Try it 
 
 † When `table_format` is `iceberg`, `file_format` must be `delta`. This applies to `dbt-databricks`; in <Constant name="fusion" />, a managed Iceberg table uses `parquet`.
 
-<sup>‖</sup> `use_uniform` takes effect in <Constant name="fusion" /> only. `dbt-databricks` doesn't support it yet &mdash; it logs a warning and ignores the value. In `dbt-databricks`, use the [`use_managed_iceberg`](/reference/global-configs/databricks-changes#use-managed-iceberg) behavior flag instead. You can also set `use_uniform` on a catalog in `catalogs.yml`, under `config.databricks` (new spec) or `adapter_properties` (old spec).
+<sup>‖</sup> `use_uniform` takes effect in <Constant name="fusion" /> only. `dbt-databricks` doesn't support it yet &mdash; it logs a warning and ignores the value. In `dbt-databricks`, use the [`use_managed_iceberg`](/reference/global-configs/databricks-changes#use-managed-iceberg) behavior flag instead.
 
 ‡ `databricks_tags` are applied via `ALTER` statements. Tags cannot be removed via dbt-databricks once applied. To remove tags, use Databricks directly or a post-hook. Starting in `dbt-databricks` v1.12, `databricks_tags` set at multiple config hierarchy levels [merge additively](#databricks_tags) instead of the lower (more specific) level fully replacing the higher one.
 

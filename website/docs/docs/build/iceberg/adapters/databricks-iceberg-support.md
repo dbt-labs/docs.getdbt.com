@@ -96,8 +96,6 @@ select * from {{ ref('raw_orders') }}
 
 </File>
 
-You can also set `use_uniform` in a catalog definition in `catalogs.yml` &mdash; under `config.databricks` in the new spec, or under `adapter_properties` in the old spec. When a model sets `catalog_name`, dbt resolves `table_format`, `file_format`, and `use_uniform` from that catalog instead of from the model config.
-
 </VersionBlock>
 
 ### External tables
