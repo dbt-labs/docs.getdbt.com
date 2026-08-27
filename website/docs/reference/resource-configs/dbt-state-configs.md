@@ -73,6 +73,26 @@ models:
 </TabItem>
 </Tabs>
 
+Profile-level settings are configured in `profiles.yml` and apply to a specific target environment:
+
+<File name="profiles.yml">
+
+```yaml
+my_project:
+  outputs:
+    dev:
+      type: snowflake
+      # ... dev connection settings
+      defer_to_target: prod  # self-managed only
+    prod:
+      type: snowflake
+      # ... prod connection settings
+      allow_clones: true | false
+      metadata_warehouse: <warehouse_name>  # Snowflake only
+  target: dev
+```
+</File>
+
 | Config | Default | Scope | Description |
 |--------|---------|-------|-------------|
 | [`lag_tolerance`](/reference/resource-configs/lag-tolerance) | `45m` | Node, folder, or project-level via model config | How much time must pass since the last upstream data change before a node is eligible for a rebuild. Acts as a compute-saving buffer that helps align builds with freshness SLAs. Applies to data freshness only; SQL changes always trigger a rebuild regardless of this setting. |
@@ -82,8 +102,8 @@ models:
 | [`execute_hooks_on_any_reuse`](/reference/resource-configs/execute-hooks-on-any-reuse) | `false` | Node, folder, or project-level via model config | Whether pre- and post-hooks run when a node is reused without rebuilding. |
 | [`evaluate_volatile_sql`](/reference/resource-configs/evaluate-volatile-sql) | `false` | Node, folder, or project-level via model config | Whether dbt State stores and compares the runtime output of volatile SQL functions when deciding whether to rebuild. |
 | [`defer_to_target`](/reference/resource-configs/defer-to-target) | `prod` | Profile | (Self-managed only) Which profile target dbt State defers to. |
+| [`allow_clones`](/reference/resource-configs/allow-clones) | `true` | Profile | Whether dbt State can clone tables into a target. For example, set to `false` on `prod` to prevent dbt State from cloning dev tables into production. |
 | [`metadata_warehouse`](/reference/resource-configs/metadata-warehouse) | Profile `warehouse` | Profile | (Snowflake only) A separate warehouse for dbt State metadata lookups. |
-
 
 ## Related docs
 
