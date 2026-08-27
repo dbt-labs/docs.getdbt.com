@@ -1409,8 +1409,9 @@ const sidebarSettings = {
             "reference/resource-configs/evaluate-volatile-sql",
             "reference/resource-configs/pre-clone",
             "reference/resource-configs/execute-hooks-on-any-reuse",
-            "reference/resource-configs/metadata-warehouse",
             "reference/resource-configs/defer-to-target",
+            "reference/resource-configs/allow-clones",
+            "reference/resource-configs/metadata-warehouse",
           ],
         },
         {
