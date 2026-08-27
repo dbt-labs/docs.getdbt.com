@@ -35,10 +35,10 @@ The following steps walk you through the setup of a Teradata VantageCloud AWS Pr
    ```
 
    :::note dbt AWS account
-   If granting access to your Teradata endpoint service requires the <Constant name="dbt" /> AWS account ID, use **AWS account ID**: `346425330055` &mdash; _Note: This account ID only applies to AWS <Constant name="dbt" /> multi-tenant environments. For AWS Virtual Private/Single-Tenant account IDs, contact [dbt Support](mailto:support@dbtlabs.com)._
+   If granting access to your Teradata endpoint service requires the <Constant name="dbt" /> AWS account ID, use **AWS account ID**: `346425330055` &mdash; _Note: This account ID only applies to AWS <Constant name="dbt" /> multi-tenant environments. For AWS Virtual Private/Single-Tenant account IDs, contact [dbt Support](mailto:support@getdbt.com)._
    :::
 
-2. Add the required information to the following template and submit your AWS PrivateLink request to [dbt Support](mailto:support@dbtlabs.com):
+2. Add the required information to the following template and submit your AWS PrivateLink request to [dbt Support](mailto:support@getdbt.com):
 
    <Expandable alt_header="Support request email template" is_open={true}>
 

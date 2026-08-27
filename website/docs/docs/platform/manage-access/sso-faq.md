@@ -40,7 +40,7 @@ The Auth0 URI is not the same as your SCIM Base URL, though they share a similar
 When SSO is configured, it enforces SSO-only logins for the account. However, if [**Allow password logins for account administrators**](/docs/platform/manage-access/sso-overview?version=1.12#sso-enforcement) is enabled, account admins and IT-licensed users can still sign in with email and password.
 
 :::caution
-Before enabling SSO enforcement, ensure that at least one account admin can successfully sign in through SSO. If SSO is misconfigured and enforcement is enabled, admins may be locked out of the account. Contact [support@dbtlabs.com](mailto:support@dbtlabs.com) if this occurs.
+Before enabling SSO enforcement, ensure that at least one account admin can successfully sign in through SSO. If SSO is misconfigured and enforcement is enabled, admins may be locked out of the account. Contact [support@getdbt.com](mailto:support@getdbt.com) if this occurs.
 :::
 
 </Expandable>
@@ -68,7 +68,7 @@ If your organization uses separate IdPs for authentication and directory managem
 When a user signs in to a <Constant name="dbt_platform" /> account through SSO for the first time, a verification email is sent to confirm their identity. If the email is not received, it's usually caused by one of the following:
 
 - **Email security tools (for example, Proofpoint and Outlook Safe Links)** may follow the verification link automatically before the user clicks it, consuming the one-time token and causing it to expire. Contact your IT or email security team to allowlist dbt verification link domains.
-- **The email is being suppressed** in our email delivery provider. Contact [support@dbtlabs.com](mailto:support@dbtlabs.com) to check delivery logs for the affected address.
+- **The email is being suppressed** in our email delivery provider. Contact [support@getdbt.com](mailto:support@getdbt.com) to check delivery logs for the affected address.
 
 </Expandable>
 

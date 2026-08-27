@@ -46,7 +46,7 @@ Some data warehouse providers offer advanced security features that can be lever
 
 <Constant name="dbt" /> can sync with a variety of git providers, including [Github](/docs/platform/git/connect-github), [Gitlab](/docs/platform/git/connect-gitlab), and [Azure DevOps](/docs/platform/git/connect-azure-devops) within its integrated development environment ([<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio)). Communication takes place over HTTPS rather than SSH and is protected using the TLS 1.2 protocol for data in transit.
 
-The git repo information is stored on <Constant name="dbt" /> servers to make it accessible during the <Constant name="studio_ide" /> sessions. When the git sync is disabled, you must [contact support](mailto:support@dbtlabs.com) to request the deletion of the synced data. 
+The git repo information is stored on <Constant name="dbt" /> servers to make it accessible during the <Constant name="studio_ide" /> sessions. When the git sync is disabled, you must [contact support](mailto:support@getdbt.com) to request the deletion of the synced data. 
 
 ### Authentication services
 
