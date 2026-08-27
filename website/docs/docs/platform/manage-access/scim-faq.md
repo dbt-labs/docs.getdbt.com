@@ -161,6 +161,6 @@ If your <Constant name="dbt_platform" /> account has **IP restrictions** enabled
 1. Filter to the `AzureActiveDirectory` service tag in [Azure's published IP ranges JSON](https://www.microsoft.com/en-us/download/details.aspx?id=56519) rather than allowlisting all Azure IPs.
 2. Use the <Constant name="dbt_platform" /> Admin API with a service token to update your IP allowlist on a schedule &mdash; for example, a weekly script that pulls the current `AzureActiveDirectory` ranges and updates your allowlist through the API.
 
-Contact [support@dbtlabs.com](mailto:support@dbtlabs.com) for guidance on using the Admin API for allowlist management.
+Contact [support@getdbt.com](mailto:support@getdbt.com) for guidance on using the Admin API for allowlist management.
 
 </Expandable>

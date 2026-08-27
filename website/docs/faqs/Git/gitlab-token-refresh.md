@@ -13,4 +13,4 @@ If you're receiving a "Refresh token" message, don't worry &mdash; <Constant nam
 
 If you still experience any token refresh errors, please try disconnecting and reconnecting the repository in your <Constant name="dbt" /> project to refresh the token. 
 
-For any issues, please reach out to the Support team at support@dbtlabs.com and we'll be happy to help!
+For any issues, please reach out to the Support team at support@getdbt.com and we'll be happy to help!
