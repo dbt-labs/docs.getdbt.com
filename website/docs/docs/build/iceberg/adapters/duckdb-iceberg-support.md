@@ -5,11 +5,11 @@ sidebar_label: "DuckDB Iceberg support"
 description: Understand DuckDB support for Apache Iceberg.
 ---
 
-# DuckDB and Apache Iceberg <Lifecycle status="beta" />
+<Lifecycle status="beta" />
 
-:::info <Constant name="fusion" /> only
+:::info Fusion only
 
-DuckDB support for `catalogs.yml` requires the [<Constant name="fusion_engine" />](/docs/fusion/about-fusion) (v2) with the `use_catalogs_v2` behavior flag enabled. It isn't available in the legacy Python `dbt-duckdb` adapter for dbt Core v1.
+DuckDB support for `catalogs.yml` requires the [dbt Fusion engine](/docs/fusion/about-fusion) (v2) with the `use_catalogs_v2` behavior flag enabled. It isn't available in the legacy Python `dbt-duckdb` adapter for dbt Core v1.
 
 <File name='dbt_project.yml'>
 
@@ -85,6 +85,102 @@ catalogs:
 </File>
 
 `endpoint` and `endpoint_type` are mutually exclusive.
+
+:::caution Writing to S3 Tables: use the explicit `endpoint` form, not `endpoint_type`
+
+The `endpoint_type: S3_TABLES` shortcut shown above works for *reading* from S3 Tables, but as of the current Fusion preview builds, it incorrectly defaults the REST catalog authentication to OAuth2 instead of SigV4 when **writing**. This surfaces as either:
+
+```
+Invalid Configuration Error: AUTHORIZATION_TYPE is 'oauth2', yet no 'secret' was provided...
+```
+or, if a secret is attached to the catalog directly:
+```
+InvalidArguments: HTTP Error: Failed to retrieve OAuth2 token from  (sqlstate: ...)
+```
+
+S3 Tables authenticates with SigV4, not OAuth2. Until this is fixed, use the explicit `endpoint` + `authorization_type: SIGV4` form for any S3 Tables catalog you plan to write to. See [Amazon S3 Tables (write path)](#amazon-s3-tables-write-path) below for the full, verified configuration.
+:::
+
+## Amazon S3 Tables (write path)
+
+To materialize Iceberg models into an S3 Tables bucket, attach it as an `iceberg_rest` catalog using the explicit `endpoint` form together with SigV4 authentication, and set the S3 Tables write-compatibility options:
+
+<File name='catalogs.yml'>
+
+```yaml
+catalogs:
+  - name: s3_tables_catalog
+    type: iceberg_rest
+    table_format: iceberg
+    config:
+      duckdb:
+        endpoint: "https://s3tables.<region>.amazonaws.com/iceberg"
+        warehouse: "arn:aws:s3tables:<region>:<account-id>:bucket/<bucket-name>"
+        authorization_type: SIGV4
+        secret: s3_tables_secret
+        default_schema: <namespace>
+        stage_create_tables: false        # S3 Tables rejects staged CREATE TABLE AS SELECT
+        disable_multi_table_commit: true  # S3 Tables has no multi-table transaction commit endpoint
+        purge_requested: true             # S3 Tables only allows DROP TABLE with purge enabled
+```
+
+</File>
+
+`secret` references an `s3` credential-chain secret defined in `profiles.yml` (see [Secrets](#secrets) below) &mdash; this supplies the SigV4 credentials, not an OAuth2 token.
+
+<File name='profiles.yml'>
+
+```yaml
+my_profile:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: ':memory:'
+      extensions:
+        - iceberg
+        - aws
+        - httpfs
+      secrets:
+        - type: s3
+          name: s3_tables_secret
+          provider: credential_chain
+          region: <region>
+```
+
+</File>
+
+<File name='models/my_s3_tables_model.sql'>
+
+```sql
+{{
+    config(
+        materialized = 'table',
+        catalog_name = 's3_tables_catalog',
+        schema = '<namespace>'
+    )
+}}
+
+select * from {{ ref('jaffle_shop_customers') }}
+```
+
+</File>
+
+Because DuckDB's default schema is `main`, dbt's default schema-naming logic concatenates it with your model's custom schema (for example, `main_my_namespace`), which won't match an existing S3 Tables namespace. Add a project-level override so the schema resolves to your namespace exactly:
+
+<File name='macros/generate_schema_name.sql'>
+
+```sql
+{% macro generate_schema_name(custom_schema_name, node) -%}
+    {%- if custom_schema_name is none -%}
+        {{ target.schema }}
+    {%- else -%}
+        {{ custom_schema_name | trim }}
+    {%- endif -%}
+{%- endmacro %}
+```
+
+</File>
 
 ## Cross-platform Mesh: reading catalogs managed by other platforms
 
@@ -211,6 +307,8 @@ my_profile:
 
 </File>
 
+For Amazon S3 Tables specifically, use a `type: s3` / `provider: credential_chain` secret instead (SigV4, not OAuth2/token-based) &mdash; see [Amazon S3 Tables (write path)](#amazon-s3-tables-write-path) above.
+
 ## DuckDB-specific configs for Iceberg catalogs
 
 You can supply these configs, nested under `config.duckdb`, for `horizon`, `unity`, and `iceberg_rest` catalogs:
@@ -218,22 +316,22 @@ You can supply these configs, nested under `config.duckdb`, for `horizon`, `unit
 | Field | Required | Description |
 | --- | --- | --- |
 | `endpoint` | One of `endpoint`/`endpoint_type` | Full Iceberg REST catalog URL. |
-| `endpoint_type` | One of `endpoint`/`endpoint_type` | `GLUE` or `S3_TABLES`, for well-known AWS-managed endpoints. |
-| `warehouse` | Required for `horizon`; required when `endpoint_type` is `S3_TABLES` | Warehouse identifier passed as the `ATTACH` source. |
+| `endpoint_type` | One of `endpoint`/`endpoint_type` | `GLUE` or `S3_TABLES`, for well-known AWS-managed endpoints. For writing to S3 Tables, prefer the explicit `endpoint` form (see caution above). |
+| `warehouse` | Required for `horizon`; required for any Amazon S3 Tables catalog (both the `endpoint_type: S3_TABLES` and the explicit `endpoint` write path) | Warehouse identifier passed as the `ATTACH` source. |
 | `secret` | Optional | Name of a DuckDB secret from `profiles.yml` to use for authentication. |
 | `attach_as` | Optional | Overrides the DuckDB attach alias. Defaults to the catalog's `name`. |
 | `default_region` | Optional | AWS region, when applicable. |
 | `default_schema` | Optional | Default schema/namespace within the catalog. |
 | `max_table_staleness` | Optional | How long DuckDB may serve cached metadata before refreshing. |
-| `authorization_type` | Optional | `OAUTH2`, `SIGV4`, or `NONE`. Can't be combined with `endpoint_type`. |
+| `authorization_type` | Optional | `OAUTH2`, `SIGV4`, or `NONE`. Can't be combined with `endpoint_type`. Required as `SIGV4` when writing to S3 Tables. |
 | `access_delegation_mode` | Optional | `VENDED_CREDENTIALS` or `NONE`. |
 | `read_only` | Optional | Attach the catalog read-only. Defaults to `false` (read-write). |
 | `support_nested_namespaces` | Optional | Whether the catalog supports nested namespaces. |
-| `stage_create_tables` | Optional | Write-compat: stage `CREATE TABLE AS SELECT` writes. Requires DuckDB 1.5.4+. |
-| `disable_multi_table_commit` | Optional | Write-compat: disable multi-table commits. Requires DuckDB 1.5.4+. |
+| `stage_create_tables` | Optional | Write-compat: stage `CREATE TABLE AS SELECT` writes. Requires DuckDB 1.5.4+. Set to `false` for Amazon S3 Tables. |
+| `disable_multi_table_commit` | Optional | Write-compat: disable multi-table commits. Requires DuckDB 1.5.4+. Set to `true` for Amazon S3 Tables. |
 | `skip_create_table_metadata_updates` | Optional | Write-compat: skip metadata updates on `CREATE TABLE`. Requires DuckDB 1.5.4+. |
 | `remove_files_on_delete` | Optional | Write-compat: remove underlying data files when a table is dropped. Requires DuckDB 1.5.4+. |
-| `purge_requested` | Optional | Purge underlying files when supported by the catalog. |
+| `purge_requested` | Optional | Purge underlying files when supported by the catalog. Set to `true` for Amazon S3 Tables, which only allows `DROP TABLE` with purge enabled. |
 | `encode_entire_prefix` | Optional | Percent-encode the entire object key prefix. |
 
 For `ducklake` catalogs, `config.duckdb` accepts:
