@@ -80,7 +80,7 @@ The following features are new or enhanced as part of [dbt's Coalesce analytics 
     
   All OAuth, Git, and public API integrations will continue to work with the previous domain. View the updated access URL in <Constant name="dbt_platform" />'s **Account settings** page.
 
-  For questions, contact [support@dbtlabs.com](mailto:support@dbtlabs.com).
+  For questions, contact [support@getdbt.com](mailto:support@getdbt.com).
 
 - **Enhancement**:
   - **<Constant name="fusion" /> MCP tools** &mdash; Added <Constant name="fusion" /> tools that support `compile_sql` and `get_column_lineage` (Fusion-exclusive) for both [Remote](/docs/dbt-ai/mcp-available-tools#fusion-tools-remote) and [Local](/docs/dbt-ai/mcp-available-tools#fusion-tools-local) usage. Remote <Constant name="fusion" /> tools defer to your prod environment by default (set with `x-dbt-prod-environment-id`); you can disable deferral with `x-dbt-fusion-disable-defer=true`. Refer to [set up remote MCP](/docs/dbt-ai/setup-remote-mcp) for more info.

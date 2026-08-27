@@ -25,4 +25,4 @@ packages:
 version: xxx
 ```
 
-If you've tried the workaround above and are still experiencing this behavior - reach out to the Support team at support@dbtlabs.com and we'll be happy to help!
+If you've tried the workaround above and are still experiencing this behavior - reach out to the Support team at support@getdbt.com and we'll be happy to help!

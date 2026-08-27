@@ -35,7 +35,7 @@ Confirm your workspace uses VNet injection before you submit the request. If it 
     The path format is: `/subscriptions/<subscription_uuid>/resourceGroups/<resource_group_name>/providers/Microsoft.Databricks/workspaces/<workspace_name>`.
 2. From the workspace overview, click **JSON view**. 
 3. Copy the value in the `resource_id` field.  
-4. Add the required information to the following template and submit your Azure Private Link request to [dbt Support](mailto:support@dbtlabs.com):
+4. Add the required information to the following template and submit your Azure Private Link request to [dbt Support](mailto:support@getdbt.com):
 
    <Expandable alt_header="Support request email template" is_open={true}>
 

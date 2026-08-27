@@ -18,7 +18,7 @@ If you're developing on the command line (CLI) and have questions or need some h
 
 ## dbt platform support
 
-The global dbt Support team is available to <Constant name="dbt" /> customers by [email](mailto:support@dbtlabs.com) or by clicking **Create a support ticket** through the <Constant name="dbt" /> navigation.
+The global dbt Support team is available to <Constant name="dbt" /> customers by [email](mailto:support@getdbt.com) or by clicking **Create a support ticket** through the <Constant name="dbt" /> navigation.
 
 ### Create a support ticket
 To create a support ticket in <Constant name="dbt" />:
@@ -33,7 +33,7 @@ dbt Support Assistant is an AI widget that provides instant, AI-generated respon
 The dbt Support Assistant AI widget is separate from [<Constant name="wizard" />](/docs/platform/wizard-platform), a powerful AI engine that helps with code generation to accelerate your analytics workflows. The dbt Support Assistant focuses on answering documentation and troubleshooting-related questions. Enabling or disabling AI features in <Constant name="dbt" /> won't affect the dbt Support Assistant's availability.
 
 :::info
-We recommend validating information received in AI responses for any scenario using our documentation. Please [contact support](mailto:support@dbtlabs.com) to report incorrect information provided by the Support Assistant.
+We recommend validating information received in AI responses for any scenario using our documentation. Please [contact support](mailto:support@getdbt.com) to report incorrect information provided by the Support Assistant.
 :::
 
 ### Support plans and resources

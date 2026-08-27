@@ -74,7 +74,7 @@ If you want to receive dbt training, check out our [dbt Learn](https://learn.get
 
 ## dbt support
 
-**Note:** If you are a **<Constant name="dbt" /> user** and need help with one of the following issues, please reach out to us by clicking [**Create a support ticket**](/docs/dbt-support#create-a-support-ticket) through the <Constant name="dbt" /> navigation or [emailing support@dbtlabs.com](mailto:support@dbtlabs.com):
+**Note:** If you are a **<Constant name="dbt" /> user** and need help with one of the following issues, please reach out to us by clicking [**Create a support ticket**](/docs/dbt-support#create-a-support-ticket) through the <Constant name="dbt" /> navigation or [emailing support@getdbt.com](mailto:support@getdbt.com):
 
 - Account setup (e.g. connection issues, repo connections)
 - Billing
