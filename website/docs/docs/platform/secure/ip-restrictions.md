@@ -75,7 +75,7 @@ You can put an IP range on one list and then a sub-range or IP address that is p
 
 ## Enabling restrictions
 
-Once you finish adding all your ranges, you can enable IP restrictions by selecting **Enable IP restrictions** and clicking **Save**. If your IP address is in any of the blocklist ranges, you can't save or enable IP restrictions &mdash; this prevents accidental account lockouts. If you get locked out due to IP changes on your end, reach out to support@getdbt.com.
+Once you finish adding all your ranges, you can enable IP restrictions by selecting **Enable IP restrictions** and clicking **Save**. If your IP address is in any of the blocklist ranges, you can't save or enable IP restrictions &mdash; this prevents accidental account lockouts. If you get locked out due to IP changes on your end, reach out to support@dbtlabs.com.
 
 Once enabled, when someone attempts to access <Constant name="dbt" /> from a restricted IP, they encounter one of the following messages depending on whether they use email and password or SSO login:
 

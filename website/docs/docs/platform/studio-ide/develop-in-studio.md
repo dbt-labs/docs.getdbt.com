@@ -122,7 +122,7 @@ Nice job, you're ready to start developing and building models 🎉!
 ### Considerations
 
 - To improve your experience using <Constant name="dbt" />, we suggest that you turn off ad blockers. This is because some project file names, such as `google_adwords.sql`, might resemble ad traffic and trigger ad blockers.
-- To preserve performance, there's a file size limitation for repositories over 6 GB. If you have a repo over 6 GB, please contact [dbt Support](mailto:support@getdbt.com) before running <Constant name="dbt" />.
+- To preserve performance, there's a file size limitation for repositories over 6 GB. If you have a repo over 6 GB, please contact [dbt Support](mailto:support@dbtlabs.com) before running <Constant name="dbt" />.
 - The <Constant name="studio_ide" />'s idle session timeout is one hour.
 - <Expandable alt_header="About the start up process and work retention">
   
@@ -185,7 +185,7 @@ If the <Constant name="studio_ide" /> freezes with two or more models open and t
 As a proprietary product, <Constant name="dbt" />'s source code isn't available for community contributions. If you want to build something in the dbt ecosystem, we encourage you to review [this article](/community/contributing/contributing-coding) about contributing to a dbt package, a plugin, dbt-core, or this documentation site. Participation in open-source is a great way to level yourself up as a developer, and give back to the community.
 </DetailsToggle>
 
-<DetailsToggle alt_header="What is the difference between developing on the Studio IDE, the dbt CLI, and dbt Core?">
+<DetailsToggle alt_header="What is the difference between developing on the Studio IDE, the dbt platform CLI, and dbt Core?">
 You can develop dbt using the web-based IDE in <Constant name="dbt" /> or on the command line interface using the <Constant name="platform_cli" /> or open-source <Constant name="core" />, all of which enable you to execute dbt commands. The key distinction between the <Constant name="platform_cli" /> and <Constant name="core" /> is the <Constant name="platform_cli" /> is tailored for <Constant name="dbt" />'s infrastructure and integrates with all its features:
 
 - <Constant name="studio_ide" />: <a href="https://docs.getdbt.com/docs/platform/about-platform/dbt-platform-features"><Constant name="dbt" /></a> is a web-based application that allows you to develop dbt projects with the IDE, includes a purpose-built scheduler, and provides an easier way to share your dbt documentation with your team. The IDE is a faster and more reliable way to deploy your dbt models and provides a real-time editing and execution environment for your dbt project.

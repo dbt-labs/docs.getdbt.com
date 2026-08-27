@@ -15,17 +15,17 @@ This page is for installing dbt Core 2.0, the Apache 2.0 open-source distributio
 
 To upgrade an existing v1 project to v2, refer to [Upgrade to v2](/docs/dbt-versions/core-upgrade/upgrading-to-v2?version=2.0).
 
-To understand the differences between dbt Core v1.x, dbt Core 2.0, and Fusion, refer to [dbt licensing](/docs/dbt-licensing?version=2.0).
+To understand the differences between dbt Core v1.x, dbt Core 2.0, and <Constant name="fusion" />, refer to [dbt licensing](/docs/dbt-licensing?version=2.0).
 
 </VersionBlock>
 
 <VersionBlock firstVersion="2.0">
 
-:::caution dbt Core 2.0 is in alpha
+:::caution dbt Core 2.0 is in beta
 dbt Core 2.0 is under active development and not recommended for production use. Features and APIs may change before the stable release.
 :::
 
-dbt Core 2.0 is the open-source foundation behind Fusion, licensed under Apache 2.0. Most users don't need this page &mdash; [install dbt normally](/docs/local/install-dbt) with the standard instructions. This page is for organizations that require the Apache 2.0 codebase specifically.
+dbt Core 2.0 is the open-source foundation behind <Constant name="fusion" />, licensed under Apache 2.0. Most users don't need this page &mdash; [install dbt normally](/docs/local/install-dbt) with the standard instructions. This page is for organizations that require the Apache 2.0 codebase specifically.
 
 ## Install
 
@@ -41,11 +41,11 @@ Confirm the installed version begins with `2.`:
 dbt --version
 ```
 
-During alpha, you must target either the pre-release version or an explicit pin. After install, immediately update to the most recent version:
+During beta, you must target either the pre-release version or an explicit pin. After install, immediately update to the most recent version:
 
 Explicit pin:
 
-`python -m pip install dbt-core==2.0.0-alpha.1`
+`python -m pip install dbt-core==2.0.0-b2`
 
 For adapter install details, refer to the [`dbt-core` repository](https://github.com/dbt-labs/dbt-core).
 
@@ -57,7 +57,7 @@ For adapter install details, refer to the [`dbt-core` repository](https://github
 
 ## What's not included
 
-The [standard <Constant name="dbt" /> install](/docs/local/install-dbt) gives you Fusion, which adds the following to dbt Core 2.0:
+The [standard <Constant name="dbt" /> install](/docs/local/install-dbt) gives you <Constant name="fusion" />, which adds the following to dbt Core 2.0:
 
 - SQL comprehension and static analysis
 - <Term id="lsp" /> features (autocomplete, hover info, inline errors)
@@ -72,7 +72,7 @@ dbt Core 2.0 is developed in the open. To contribute, refer to the [`dbt-core` r
 
 ## License
 
-dbt Core 2.0 is licensed under Apache 2.0. Refer to the [LICENSE file](https://github.com/dbt-labs/dbt-core/blob/HEAD/License.md) in the repository. Refer to [dbt licensing](/docs/dbt-licensing?version=2.0) for more info.
+dbt Core 2.0 is licensed under Apache 2.0. Refer to the [LICENSE file](https://github.com/dbt-labs/dbt-core/blob/HEAD/LICENSE) in the repository. Refer to [dbt licensing](/docs/dbt-licensing?version=2.0) for more info.
 
 ## Related
 

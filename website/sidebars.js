@@ -401,6 +401,7 @@ const sidebarSettings = {
             "docs/platform/enable-dbt-ai",
             "docs/dbt-ai/wizard-use-cases",
             "docs/dbt-ai/wizard-how-it-works",
+            "docs/dbt-ai/wizard-billing-faqs",
             {
               type: "category",
               label: "Wizard CLI",
@@ -433,7 +434,6 @@ const sidebarSettings = {
                 "docs/platform/wizard-byok-platform",
                 "docs/dbt-ai/wizard-platform-skills",
                 "docs/dbt-ai/wizard-platform-mcp",
-                "docs/dbt-ai/wizard-platform-privacy-data",
               ],
             },
           ],
@@ -524,7 +524,7 @@ const sidebarSettings = {
         },
         {
           type: "category",
-          label: "dbt CLI",
+          label: "dbt platform CLI",
           collapsed: true,
           link: { type: "doc", id: "docs/platform/dbt-cli-installation" },
           items: [
@@ -624,7 +624,7 @@ const sidebarSettings = {
             {
               type: "link",
               label: "Quickstart with the dbt Semantic Layer",
-              href: `/guides/sl-snowflake-qs`,
+              href: `/guides/sl-qs`,
             },
             "reference/semantic-layer-reference",
             {
@@ -898,7 +898,6 @@ const sidebarSettings = {
             "docs/explore/column-level-lineage",
             "docs/explore/data-health-signals",
             "docs/explore/explore-multiple-projects",
-            "docs/explore/external-metadata-ingestion",
             "docs/explore/global-navigation",
             "docs/explore/model-performance",
             "docs/explore/project-recommendations",
@@ -949,7 +948,7 @@ const sidebarSettings = {
         {
           type: "link",
           label: "Quickstart with the dbt Semantic Layer",
-          href: `/guides/sl-snowflake-qs`,
+          href: `/guides/sl-qs`,
         },
         {
           type: "category",
@@ -1585,6 +1584,7 @@ const sidebarSettings = {
             "reference/commands/show",
             "reference/commands/snapshot",
             "reference/commands/source",
+            "reference/commands/state-explain",
             "reference/commands/system",
             "reference/commands/test",
             "reference/commands/version",
@@ -2108,7 +2108,7 @@ const sidebarSettings = {
         type: "generated-index",
         title: "Frequently asked questions",
         description:
-          "Our Frequently Asked Questions (FAQs) section is a space where you can find an answer to some questions we get asked a lot (but that we’re happy to answer!). If you have a question or are still stuck on something, just reach out to us by emailing support@getdbt.com or clicking on the chat widget, and we’ll do our best to help out.",
+          "Our Frequently Asked Questions (FAQs) section is a space where you can find an answer to some questions we get asked a lot (but that we’re happy to answer!). If you have a question or are still stuck on something, just reach out to us by emailing support@dbtlabs.com or clicking on the chat widget, and we’ll do our best to help out.",
         slug: "/docs/faqs",
       },
       items: [

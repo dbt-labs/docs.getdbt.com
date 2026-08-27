@@ -57,7 +57,7 @@ GitLab and Azure DevOps repositories will continue to use your legacy **getdbt.c
 | [GitLab (dbt Labs app)](/docs/platform/git/connect-gitlab#setting-up-a-gitlab-oauth-application) | Update or add GL Group Application with new Redirect URI |
 | [GitLab (bring-your-own app)](/docs/platform/git/connect-gitlab#setting-up-a-gitlab-oauth-application) | Update or add GL Group Application with new Redirect URI |
 | [Azure DevOps (service principal)](/docs/platform/git/setup-service-principal) | Update or add App Registration |
-| GitHub On-premises | Contact [dbt Labs Support](mailto:support@getdbt.com) |
+| GitHub On-premises | Contact [dbt Labs Support](mailto:support@dbtlabs.com) |
 
 ### Data platform connections
 
@@ -117,7 +117,7 @@ Refer to [API Access URLs](/docs/platform/about-platform/access-regions-ip-addre
 
 <Expandable alt_header="What happens if my integrations are not updated by the getdbt.com deprecation date?">
 
-You may not be able to access your account through your Identity Provider, and <Constant name="dbt_platform" /> may be degraded or inoperable. For assistance, contact [dbt Labs Support](mailto:support@getdbt.com).
+You may not be able to access your account through your Identity Provider, and <Constant name="dbt_platform" /> may be degraded or inoperable. For assistance, contact [dbt Labs Support](mailto:support@dbtlabs.com).
 
 </Expandable>
 
@@ -133,4 +133,4 @@ The following are unaffected:
 
 </Expandable>
 
-For questions or assistance, contact [dbt Labs Support](mailto:support@getdbt.com).
+For questions or assistance, contact [dbt Labs Support](mailto:support@dbtlabs.com).

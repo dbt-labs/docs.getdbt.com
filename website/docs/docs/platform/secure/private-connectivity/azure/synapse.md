@@ -28,7 +28,7 @@ From your Azure portal:
 2. From the workspace overview, click **JSON view**. 
 3. Copy the value in the **Resource ID** field at the top of the pane.  
     The path format is: `/subscriptions/<subscription_uuid>/resourceGroups/<resource_group_name>/providers/Microsoft.Synapse/workspaces/<workspace_name>`.
-4. Add the required information to the following template and submit your Azure Private Link request to [dbt Support](mailto:support@getdbt.com):
+4. Add the required information to the following template and submit your Azure Private Link request to [dbt Support](mailto:support@dbtlabs.com):
 
    <Expandable alt_header="Support request email template" is_open={true}>
 

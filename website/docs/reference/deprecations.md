@@ -61,9 +61,11 @@ Click into a job to view more details and locate the deprecation warnings in the
 
 ### Automatic remediation
 
-Some deprecations can be automatically fixed with a script. Read more about it in [this dbt blog post](https://www.getdbt.com/blog/how-to-get-ready-for-the-new-dbt-engine#:~:text=2.%20Resolve%20deprecation%20warnings). [Download the script](https://github.com/dbt-labs/dbt-autofix) and follow the installation instructions to get started. 
+Some deprecations can be automatically fixed with a script. Read more about it in [this dbt blog post](https://www.getdbt.com/blog/how-to-get-ready-for-the-new-dbt-engine#:~:text=2.%20Resolve%20deprecation%20warnings). [Download the script](https://github.com/dbt-labs/dbt-autofix) and follow the installation instructions to get started.
 
-**Coming soon**: The IDE will soon have an interface for running this same script to remediate deprecation warnings in <Constant name="dbt" />.
+You can run this script directly from [<Constant name="studio_ide"/>](/docs/platform/studio-ide/autofix-deprecations) using the **Autofix warnings** button to resolve deprecation warnings in <Constant name="dbt_platform" />.
+
+<Lightbox src="/img/docs/dbt-platform/platform-ide/autofix-button.png" width="90%" title="Use the Autofix warnings button in the Studio IDE to address deprecation warnings in dbt platform."/>
 
 ### Silence deprecation warnings
 
@@ -558,7 +560,7 @@ This deprecation type is a catch-all/fallback. dbt attempts to handle all JSON s
 
 #### GenericJSONSchemaValidationDeprecation warning resolution
 
-If you are seeing this warning, unfortunately, there isn't much you can do at this time, but we are continuing to work on reducing instances of this deprecation. If you would like guidance on a specific instance you are seeing, please [contact support](mailto:support@getdbt.com) (available for cloud-based dbt platform customers) or the [community Slack](https://www.getdbt.com/community) (for dbt Core users).
+If you are seeing this warning, unfortunately, there isn't much you can do at this time, but we are continuing to work on reducing instances of this deprecation. If you would like guidance on a specific instance you are seeing, please [contact support](mailto:support@dbtlabs.com) (available for cloud-based dbt platform customers) or the [community Slack](https://www.getdbt.com/community) (for dbt Core users).
 
 ### MFCumulativeTypeParamsDeprecation
 
@@ -723,7 +725,7 @@ models:
 
 ### ModelParamUsageDeprecation
 
-The `--models` / `--model` / `-m` flag was renamed to `--select` / `--s` way back in dbt Core v0.21 (Oct 2021). Silently skipping this flag means ignoring your command's selection criteria, which could mean building your entire DAG when you only meant to select a small subset. For this reason, the `--models` / `--model` / `-m` flag will raise a warning in dbt Core v1.10, and an error in Fusion. Please update your job definitions accordingly.
+The `--models` / `--model` / `-m` flag was renamed to `--select` / `--s` way back in dbt Core v0.21 (Oct 2021). Silently skipping this flag means ignoring your command's selection criteria, which could mean building your entire DAG when you only meant to select a small subset. For this reason, the `--models` / `--model` / `-m` flag will raise a warning in dbt Core v1.10, and an error in <Constant name="fusion" />. Please update your job definitions accordingly.
 
 #### ModelParamUsageDeprecation warning resolution
 

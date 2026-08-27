@@ -8,7 +8,7 @@ availability:
   access: login_required
 ---
 
-# Connect Snowflake <ProductCard text="Fusion compatible" />
+# Connect Snowflake <Lifecycle status="ga" /> <ProductCard text="Fusion compatible" />
 
 import SnowflakeColumn from '/snippets/_snowflake-column-size.md';
 
@@ -19,7 +19,7 @@ import SnowflakeColumn from '/snippets/_snowflake-column-size.md';
 Refer to [Snowflake permissions](/reference/database-permissions/snowflake-permissions) for more information about customizing roles in Snowflake. To see which Snowflake functions are supported in <Constant name="fusion"/> in `strict` mode, refer to [Snowflake function support](/reference/resource-configs/snowflake-function-support).
 
 
-## Warehouse permissions for Fusion
+## Warehouse permissions for <Constant name="fusion" />
 
 import FusionSnowflakeWarehousePerms from '/snippets/_fusion-warehouse-permissions-snowflake.md';
 
@@ -135,7 +135,7 @@ To connect to Snowflake through a custom domain (vanity URL) instead of the acco
 host: https://custom_domain_to_snowflake.com
 ```
 
-This configuration may conflict with Snowflake OAuth when used with PrivateLink. IF users can't reach Snowflake authentication servers from a networking standpoint, please [contact dbt Support](mailto:support@getdbt.com) to find a workaround with this architecture.
+This configuration may conflict with Snowflake OAuth when used with PrivateLink. IF users can't reach Snowflake authentication servers from a networking standpoint, please [contact dbt Support](mailto:support@dbtlabs.com) to find a workaround with this architecture.
 
 ## Troubleshooting
 <!--might need to turn this into details toggle if more troubleshooting items arise -->

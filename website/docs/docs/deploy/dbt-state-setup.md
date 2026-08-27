@@ -41,7 +41,7 @@ To enable dbt State:
    Once started, you cannot pause the trial. After 30 days, you must add a credit card or enterprise contract to continue. For information about how the trial period and billing work, refer to [dbt State trial and billing](/docs/deploy/dbt-state-trial).
 
    :::info Extended trial for state-aware orchestration users
-   If you're using state-aware orchestration prior to June 1, 2026, your dbt State trial will be extended until the billing period begins on September 1, 2026. If the extension isn’t applied to your account, contact your account team.
+   If you were using state-aware orchestration prior to June 1, 2026, your dbt State trial will be extended beyond 30 days. If the extension isn’t applied to your account, contact your account team.
    :::
 
 4. Review and agree to the terms of service.
@@ -157,6 +157,8 @@ If dbt State is behaving unexpectedly, you can prepend your run command with the
 ```bash
 DBT_ENGINE_MANAGE_STATE=0 dbt run --target dev --select "customers"
 ```
+
+To see which decision dbt State made for each node after a run and why, you can run the <VersionBlock firstVersion="2.0">[`dbt state explain`](/reference/commands/state-explain)</VersionBlock><VersionBlock lastVersion="1.99">[`dbt-state explain`](/reference/commands/state-explain)</VersionBlock> command.
 
 ## Next steps
 

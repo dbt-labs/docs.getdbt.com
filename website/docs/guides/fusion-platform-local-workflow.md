@@ -25,24 +25,14 @@ This guide walks through credentials, environment variables, <Constant name="fus
 ## 1. Managing credentials
 
 How you authenticate to your data warehouse locally depends on which self-hosted tool you use:
-- [dbt platform CLI](/guides/fusion-platform-local-workflow?step=3#dbt-platform-cli): For a CLI-only development experience (without the dbt VS Code extension), use the dbt platform CLI with <Constant name="fusion"/> set as your platform release track. Warehouse credentials are managed centrally in <Constant name="dbt_platform" /> and passed through automatically &mdash; no `profiles.yml` required.
+- [dbt platform CLI](/guides/fusion-platform-local-workflow?step=3#dbt-platform-cli): For a CLI-only development experience (without the dbt VS Code extension), use the <Constant name="platform_cli" /> with <Constant name="fusion"/> set as your platform release track. Warehouse credentials are managed centrally in <Constant name="dbt_platform" /> and passed through automatically &mdash; no `profiles.yml` required.
 - [dbt VS Code extension](/guides/fusion-platform-local-workflow?step=3#dbt-vs-code-extension-profilesyml-required): For IDE-based local development, the dbt VS Code extension runs the <Constant name="fusion_engine" /> and its <Term id="lsp" /> features in a local process. This path requires a `profiles.yml` to connect directly to your warehouse.
 
-### dbt platform CLI
+### <Constant name="platform_cli" />
 
 The [<Constant name="platform_cli" />](/docs/platform/dbt-cli-installation) is the lowest-friction path for <Constant name="dbt_platform" /> users who want a self-hosted CLI-only workflow without VS Code. It authenticates using your <Constant name="dbt_platform" /> session, and your warehouse credentials are managed centrally in <Constant name="dbt_platform" /> and passed through automatically.
 
-For detailed installation instructions, refer to [Install the dbt CLI](/docs/platform/dbt-cli-installation?version=1.10).
-
-The dbt platform CLI is installed from your local command prompt. For example:
-
-```shell
-# Install the dbt platform CLI (if not already installed)
-pip3 install dbt
-
-# Verify your connection
-dbt debug
-```
+For detailed installation instructions, refer to [Install the dbt platform CLI](/docs/platform/dbt-cli-installation?version=1.10). The <Constant name="platform_cli" /> is installed from your local command prompt.
 
 The configuration file downloaded from your <Constant name="dbt_platform" /> **Account settings** will facilitate the connection and authentication with your existing credentials. 
 
@@ -77,9 +67,9 @@ We're working on a solution that lets you develop locally in the dbt VS Code ext
 
 Environment variables you set in <Constant name="dbt_platform" /> apply to production runs and the <Constant name="studio_ide" /> sessions. For local development, you manage environment variables separately.
 
-### dbt platform CLI
+### <Constant name="platform_cli" />
 
-When you use the dbt platform CLI, <Constant name="dbt_platform" /> injects the same environment variables you use in production into your dbt CLI session. You don't need extra setup.
+When you use the <Constant name="platform_cli" />, <Constant name="dbt_platform" /> injects the same environment variables you use in production into your <Constant name="platform_cli" /> session. You don't need extra setup.
 
 ### VS Code extension (.env file)
 
@@ -150,7 +140,7 @@ The **Latest** release track on <Constant name="dbt_platform" /> updates continu
 
 ### Versions on the dbt platform
 
-On <Constant name="dbt_platform" />, <Constant name="fusion" /> follows a versionless release track model. The default release track is **Fusion Stable**, which always runs the most recent stable release. For details on release tracks and their stability levels, see [<Constant name="fusion" /> releases](/docs/dbt-versions/dbt-release-tracks?#fusion-release-tracks).
+On <Constant name="dbt_platform" />, <Constant name="fusion" /> follows a versionless release track model. The default release track is **<Constant name="fusion" /> Stable**, which always runs the most recent stable release. For details on release tracks and their stability levels, see [<Constant name="fusion" /> releases](/docs/dbt-versions/dbt-release-tracks?#fusion-release-tracks).
 
 ### Versions installed locally
 
@@ -192,7 +182,7 @@ curl -fsSL https://raw.githubusercontent.com/brooklyn-data/dbt-fusion-devcontain
 Then open your project in VS Code and select **Reopen in Container** when prompted. VS Code builds the image and installs the latest stable <Constant name="fusion" /> release automatically.
 
 :::info Coming soon
-We're introducing additional <Constant name="fusion" /> release tracks on <Constant name="dbt_platform" /> beyond **Fusion Stable**. When they're available, we'll update this guide with steps to pin your dev container to a specific track.
+We're introducing additional <Constant name="fusion" /> release tracks on <Constant name="dbt_platform" /> beyond **<Constant name="fusion" /> Stable**. When they're available, we'll update this guide with steps to pin your dev container to a specific track.
 :::
 
 ### Without dev containers: update at the start of each session

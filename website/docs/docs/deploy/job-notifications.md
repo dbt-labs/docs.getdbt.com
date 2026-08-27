@@ -92,9 +92,9 @@ You can receive Slack alerts about jobs by setting up the Slack integration and 
 This is the current Slack integration available for all users and set at the user level, not to be confused with the [Slack notifications at the account level](#slack-notifications-account) feature.
 
 :::note 
-Virtual Private Cloud (VPC) admins must [contact support](mailto:support@getdbt.com) to complete the Slack integration.
+Virtual Private Cloud (VPC) admins must [contact support](mailto:support@dbtlabs.com) to complete the Slack integration.
 
-If there has been a change in user roles or Slack permissions where you no longer have access to edit a configured Slack channel, please [contact support](mailto:support@getdbt.com) for assistance. 
+If there has been a change in user roles or Slack permissions where you no longer have access to edit a configured Slack channel, please [contact support](mailto:support@dbtlabs.com) for assistance. 
 :::
 
 ### Prerequisites 

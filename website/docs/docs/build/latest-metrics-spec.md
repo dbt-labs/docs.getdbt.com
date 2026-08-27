@@ -587,7 +587,7 @@ metrics:
 :::note Studio IDE YAML validation
 The <Constant name="studio_ide" /> validates dbt YAML using JSON Schema from the [dbt-jsonschema](https://github.com/dbt-labs/dbt-jsonschema) project. These definitions are aligned with the <Constant name="fusion_engine" /> and apply across all [<Constant name="dbt_platform" /> release tracks](/docs/dbt-versions/dbt-release-tracks), including when your development environment is still running <Constant name="core" />.
 
-If the <Constant name="studio_ide" /> flags your YAML as invalid but <Constant name="dbt" /> commands succeed, trust your run results. Share examples with [dbt Support](mailto:support@getdbt.com) or your account team so the schema can be updated.
+If the <Constant name="studio_ide" /> flags your YAML as invalid but <Constant name="dbt" /> commands succeed, trust your run results. Share examples with [dbt Support](mailto:support@dbtlabs.com) or your account team so the schema can be updated.
 :::
 
 Migrate your legacy metrics to the latest YAML spec using the dbt-autofix tool in your CLI, the [dbt VS Code extension](/docs/about-dbt-extension), or <Constant name="dbt_platform"/>'s <Constant name="studio_ide" />.
