@@ -201,12 +201,14 @@ duckdb.sql("""
 """).show()
 ```
 
-:::note Duration vs lifetime vs warehouse time
+:::note Choose the right timing metric
 
-- **`attributes.duration_ms`** on `NodeProcessed` spans reflects time spent processing the node (nested `NodeEvaluated` work), **excluding** idle time waiting on upstream nodes or internal backpressure. Use this attribute when ranking which nodes cost the most to process.
-- The span timestamp delta `(end_time_unix_nano - start_time_unix_nano)` measures **node lifetime**, including time parked at the connection-limit gate. On thread-saturated builds it can rank nodes by queue time rather than cost.
-- **`attributes.idle_time_ms`** shows contention explicitly if you want to diagnose backpressure.
-- Summing **`QueryExecuted`** span durations grouped by `unique_id` gives **warehouse execution time** (excluding Fusion-side compile and static analysis) — a different metric, useful when reconciling against warehouse query history.
+Telemetry provides several ways to measure node performance:
+
+- **Processing time (`attributes.duration_ms`)** measures the time Fusion spent actively processing the node, including nested `NodeEvaluated` work. It excludes time spent waiting for upstream nodes or internal backpressure. Use this metric to identify the nodes that take the longest to process.
+- **Node lifetime (`end_time_unix_nano - start_time_unix_nano`)** measures the full time from the start to the end of the span, including time spent waiting at the connection-limit gate. In builds with saturated threads, this metric might surface nodes with the longest queue time rather than the most processing work.
+- **Idle time (`attributes.idle_time_ms`)** measures how long the node spent waiting instead of being actively processed, such as while waiting for an upstream node or available processing capacity. Use it to identify where resource constraints are causing delays.
+- **Warehouse execution time** is the sum of `QueryExecuted` span durations for each `unique_id`. It excludes Fusion-side work such as compilation and static analysis. Use this metric to compare telemetry with your warehouse query history.
 
 :::
 
