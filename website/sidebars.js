@@ -1404,6 +1404,7 @@ const sidebarSettings = {
           items: [
             "reference/resource-configs/dbt-state-configs",
             "reference/resource-configs/lag-tolerance",
+            "reference/resource-configs/compare-unrendered-code",
             "reference/resource-configs/require-fresh-data-from",
             "reference/resource-configs/evaluate-volatile-sql",
             "reference/resource-configs/pre-clone",

@@ -34,7 +34,7 @@ renamed as (
 select * from renamed
 ```
 
-dbt State reuses a model when its compiled SQL matches the stored hash. For views with `select *`, dbt State can't determine which columns the query selects without querying the upstream schema, so it can't confirm the SQL is unchanged. It always rebuilds these views to avoid errors &mdash; if the upstream table gains a column, querying the view can fail. When dbt State rebuilds a view, it also re-runs any tests defined on the model.
+dbt State reuses a model when its rendered SQL matches the stored hash. For views with `select *`, dbt State can't determine which columns the query selects without querying the upstream schema, so it can't confirm the SQL is unchanged. It always rebuilds these views to avoid errors &mdash; if the upstream table gains a column, querying the view can fail. When dbt State rebuilds a view, it also re-runs any tests defined on the model.
 
 :::tip
 To make this view eligible for reuse, remove the imported CTE and reference the source directly with explicit column names:
@@ -51,9 +51,21 @@ If you can't remove `select *`, you can exclude views from running with `--exclu
 
 ## Non-deterministic Jinja templating
 
-Some macros, such as `dbt_utils.get_relations_by_pattern` (an introspective macro) combined with `dbt_utils.union_relations`, can return relations in a different order on each run. That produces different compiled SQL even when your project logic hasn't changed. dbt State detects a new hash and rebuilds the model.
+Some macros and environment variables can cause unexpected rebuilds. For example, `dbt_utils.get_relations_by_pattern` (an introspective macro) combined with `dbt_utils.union_relations` can return relations in a different order on each run, producing different rendered SQL even when your project logic hasn't changed. Similarly, environment variables that change between runs produce different rendered SQL on every run:
 
-This pattern can affect any model type, not just views. If a base or staging model rebuilds on every run, all of its downstream models rebuild, too.
+```sql
+select '{{ env_var("AIRFLOW_RUN_ID") }}' as airflow_run_id, ...
+```
+
+Because the query result order or the environment variable's value changes, the rendered SQL differs from the stored hash on every run. dbt State treats this as a code change and rebuilds the model, even though the underlying project logic hasn't changed. This pattern can affect any model type, not just views; if a base or staging model rebuilds on every run, all of its downstream models rebuild, too.
+
+To avoid these unnecessary rebuilds, enable [`compare_unrendered_code`](/reference/resource-configs/compare-unrendered-code). When enabled, dbt State checks both the Jinja template and rendered SQL; non-deterministic values that don't change the template don't trigger a rebuild. For example:
+
+```sql
+{{ config(state={"compare_unrendered_code": true}) }}
+
+select '{{ env_var("AIRFLOW_RUN_ID") }}' as airflow_run_id, ...
+```
 
 ## Models with external sources on BigQuery
 
