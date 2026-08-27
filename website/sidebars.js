@@ -1404,12 +1404,14 @@ const sidebarSettings = {
           items: [
             "reference/resource-configs/dbt-state-configs",
             "reference/resource-configs/lag-tolerance",
+            "reference/resource-configs/compare-unrendered-code",
             "reference/resource-configs/require-fresh-data-from",
             "reference/resource-configs/evaluate-volatile-sql",
             "reference/resource-configs/pre-clone",
             "reference/resource-configs/execute-hooks-on-any-reuse",
-            "reference/resource-configs/metadata-warehouse",
             "reference/resource-configs/defer-to-target",
+            "reference/resource-configs/allow-clones",
+            "reference/resource-configs/metadata-warehouse",
           ],
         },
         {
