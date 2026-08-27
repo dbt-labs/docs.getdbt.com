@@ -150,6 +150,7 @@ models:
 State-aware orchestration and dbt State differ in a few ways:
 
 - **More models rebuilding than expected**: If you notice more rebuilds after you migrate, the most common causes are:
+  - **Views with `select *` on a `ref()` or `source()`**: dbt State can't determine which columns `select *` resolves to without querying the upstream schema, so it rebuilds these views rather than risk reusing a stale result. Views that use `select *` on a CTE are reused, because dbt can resolve the columns from the CTE definition. For more information, refer to [Views with `select *`](/faqs/State/views-rebuilt#views-with-select).
   - **Non-determinism in Jinja-templated SQL**: Macros like `dbt_utils.get_relations_by_pattern` with `dbt_utils.union_relations` can return relations in a different order on each run, which produces different compiled SQL. dbt State detects a new hash and rebuilds the model. If that model has downstream dependencies, those models rebuild, too.
   - **Models with external sources on BigQuery**: Models that use external sources (such as Google Sheets) always rebuild because BigQuery doesn't expose modification timestamps for external sources, so dbt State can't determine freshness. 
   
