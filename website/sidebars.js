@@ -1404,6 +1404,7 @@ const sidebarSettings = {
           items: [
             "reference/resource-configs/dbt-state-configs",
             "reference/resource-configs/lag-tolerance",
+            "reference/resource-configs/compare-unrendered-code",
             "reference/resource-configs/require-fresh-data-from",
             "reference/resource-configs/evaluate-volatile-sql",
             "reference/resource-configs/pre-clone",
@@ -2108,7 +2109,7 @@ const sidebarSettings = {
         type: "generated-index",
         title: "Frequently asked questions",
         description:
-          "Our Frequently Asked Questions (FAQs) section is a space where you can find an answer to some questions we get asked a lot (but that we’re happy to answer!). If you have a question or are still stuck on something, just reach out to us by emailing support@dbtlabs.com or clicking on the chat widget, and we’ll do our best to help out.",
+          "Our Frequently Asked Questions (FAQs) section is a space where you can find an answer to some questions we get asked a lot (but that we’re happy to answer!). If you have a question or are still stuck on something, just reach out to us by emailing support@getdbt.com or clicking on the chat widget, and we’ll do our best to help out.",
         slug: "/docs/faqs",
       },
       items: [

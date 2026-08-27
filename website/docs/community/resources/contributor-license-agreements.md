@@ -25,4 +25,4 @@ Our individual and corporate CLAs are based on the Contributor License Agreement
 - [Licenses FAQ](http://www.getdbt.com/licenses-faq)
 
 
-If you have questions about these CLAs, please contact us at support@dbtlabs.com.
+If you have questions about these CLAs, please contact us at support@getdbt.com.
