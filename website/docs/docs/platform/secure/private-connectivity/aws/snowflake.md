@@ -49,7 +49,7 @@ Before requesting a private endpoint, allowlist <Constant name="dbt" /> Labs' AW
 1. Open a support case with Snowflake to allow access from the <Constant name="dbt" /> AWS account.
    - Snowflake prefers that the account owner opens the support case directly rather than dbt Labs acting on their behalf. For more information, refer to [Snowflake's knowledge base article](https://community.snowflake.com/s/article/HowtosetupPrivatelinktoSnowflakefromCloudServiceVendors).
    - Provide your <Constant name="dbt" /> account ID along with any other information requested in the article.
-     - **AWS account ID**: `346425330055` &mdash; _Note: This account ID only applies to AWS <Constant name="dbt" /> multi-tenant environments. For AWS Virtual Private/Single-Tenant account IDs, contact [dbt Support](mailto:support@dbtlabs.com)._
+     - **AWS account ID**: `346425330055` &mdash; _Note: This account ID only applies to AWS <Constant name="dbt" /> multi-tenant environments. For AWS Virtual Private/Single-Tenant account IDs, contact [dbt Support](mailto:support@getdbt.com)._
 2. Wait for Snowflake to confirm access has been granted before proceeding.
 
    <Lightbox src="/img/docs/dbt-platform/snowflakeprivatelink1.png" title="Open snowflake case"/>
@@ -71,7 +71,7 @@ After Snowflake confirms they've allowlisted <Constant name="dbt" /> Labs' AWS a
     <Lightbox src="/img/docs/dbt-platform/private-endpoint-page.png" title="Private endpoints table showing existing endpoints, connectivity status, and the Request new button"/>
 
 3. To request a new endpoint, click **Request new**.
-4. Under **Provider type**, confirm **Snowflake** is selected. Currently other endpoint providers aren't supported, contact [dbt Support](mailto:support@dbtlabs.com) if you need to connect to a different service.
+4. Under **Provider type**, confirm **Snowflake** is selected. Currently other endpoint providers aren't supported, contact [dbt Support](mailto:support@getdbt.com) if you need to connect to a different service.
 5. Copy the SQL command in the **SQL command snippet** section.
 6. Go to Snowflake and run the SQL command snippet you copied from <Constant name="dbt_platform" />: `SELECT SYSTEM$GET_PRIVATELINK_CONFIG();`
 7. Copy the output from Snowflake and return to <Constant name="dbt_platform" /> to paste it into the **Snowflake output** field. If the output is correct, you'll see an inline **Output looks good** type message below the text box. If there's an error, review the message and make any updates as necessary.
@@ -129,7 +129,7 @@ Select your preferred option and click **Confirm & Submit**.
 
 If an endpoint request fails, <Constant name="dbt_platform"/> displays error details that are safe to share externally.
 
-If you see a failure state without clear next steps, collect the request details (endpoint name, creation time, status, and the Snowflake output you provided) and contact [dbt Support](mailto:support@dbtlabs.com).
+If you see a failure state without clear next steps, collect the request details (endpoint name, creation time, status, and the Snowflake output you provided) and contact [dbt Support](mailto:support@getdbt.com).
 
 ### Support-led setup {#support-led-setup}
 
@@ -140,14 +140,14 @@ To configure Snowflake instances hosted on AWS for [PrivateLink](https://aws.ama
 1. Open a support case with Snowflake to allow access from the <Constant name="dbt" /> AWS account.
    - Snowflake prefers that the account owner opens the support case directly rather than dbt Labs acting on their behalf. For more information, refer to [Snowflake's knowledge base article](https://community.snowflake.com/s/article/HowtosetupPrivatelinktoSnowflakefromCloudServiceVendors).
    - Provide them with your <Constant name="dbt" /> account ID along with any other information requested in the article.
-     - **AWS account ID**: `346425330055` &mdash; _Note: This account ID only applies to AWS <Constant name="dbt" /> multi-tenant environments. For AWS Virtual Private/Single-Tenant account IDs, contact [dbt Support](mailto:support@dbtlabs.com)._
+     - **AWS account ID**: `346425330055` &mdash; _Note: This account ID only applies to AWS <Constant name="dbt" /> multi-tenant environments. For AWS Virtual Private/Single-Tenant account IDs, contact [dbt Support](mailto:support@getdbt.com)._
    - You need [Snowflake's `ACCOUNTADMIN` permissions](https://docs.snowflake.com/en/user-guide/security-access-control-overview#system-defined-roles).
 
 <Lightbox src="/img/docs/dbt-platform/snowflakeprivatelink1.png" title="Open snowflake case"/>
 
 2. After Snowflake has granted the requested access, run the Snowflake system function [SYSTEM$GET_PRIVATELINK_CONFIG](https://docs.snowflake.com/en/sql-reference/functions/system_get_privatelink_config.html) and copy the output.
 
-3. Add the required information to the following template and submit your request to [dbt Support](mailto:support@dbtlabs.com):
+3. Add the required information to the following template and submit your request to [dbt Support](mailto:support@getdbt.com):
 
 <Expandable alt_header="Support request email template" is_open={true}>
 
@@ -193,12 +193,12 @@ s3_stage_vpce_dns_name: '*.vpce-012345678abcdefgh-4321dcba.s3.us-west-2.vpce.ama
 <Lightbox src="/img/docs/dbt-platform/snowflake-internal-stage-dns.png" title="Internal Stage DNS"/>
 
 ## Configuring network policies
-If your organization uses [Snowflake Network Policies](https://docs.snowflake.com/en/user-guide/network-policies) to restrict access to your Snowflake account, you need to add a network rule for <Constant name="dbt" />. Snowflake supports two network rule types: VPCE ID-based (recommended) and IP/CIDR-based. The following steps use VPCE ID. If your organization requires an IP-based network policy instead, the CIDR range isn't available in the <Constant name="dbt_platform" /> UI. Please contact [dbt Support](mailto:support@dbtlabs.com) to get it.
+If your organization uses [Snowflake Network Policies](https://docs.snowflake.com/en/user-guide/network-policies) to restrict access to your Snowflake account, you need to add a network rule for <Constant name="dbt" />. Snowflake supports two network rule types: VPCE ID-based (recommended) and IP/CIDR-based. The following steps use VPCE ID. If your organization requires an IP-based network policy instead, the CIDR range isn't available in the <Constant name="dbt_platform" /> UI. Please contact [dbt Support](mailto:support@getdbt.com) to get it.
 
 You need a VPCE ID to create a network policy in Snowflake:
 1. In <Constant name="dbt_platform" />, go to **Account settings → Private endpoints** 
 2. Click the endpoint in the table, then locate its **Endpoint identifier** field on the endpoint details page. 
-3. If you configured PrivateLink through [Support-led setup](#support-led-setup), or **Private endpoints** is not available in your account settings, contact [<Constant name="dbt" /> Support](mailto:support@dbtlabs.com) to obtain the VPCE ID. 
+3. If you configured PrivateLink through [Support-led setup](#support-led-setup), or **Private endpoints** is not available in your account settings, contact [<Constant name="dbt" /> Support](mailto:support@getdbt.com) to obtain the VPCE ID. 
 4. If you're creating an endpoint for Internal Stage, the VPCE ID is different from the VPCE ID for the main service endpoint.
 
 :::note Network Policy for Snowflake Internal Stage PrivateLink

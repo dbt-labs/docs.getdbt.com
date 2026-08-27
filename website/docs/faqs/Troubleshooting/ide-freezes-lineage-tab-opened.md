@@ -61,7 +61,7 @@ This workaround is browser-dependent. In DevTools, select the Local Storage orig
 
 ## Need more help?
 
-If freezing continues after trying these workarounds, [contact dbt Support](mailto:support@dbtlabs.com) and include:
+If freezing continues after trying these workarounds, [contact dbt Support](mailto:support@getdbt.com) and include:
 - A HAR file (refer to [How to generate HAR files](/faqs/Troubleshooting/generate-har-file))
 - Your account URL
 - Browser and version
