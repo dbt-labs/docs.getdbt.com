@@ -22,6 +22,7 @@ Use the following configs to control how dbt State makes these decisions.
 models:
   +state:
     lag_tolerance: <duration>
+    compare_unrendered_code: true | false
     require_fresh_data_from: any | all
     evaluate_volatile_sql: true | false
     pre_clone: never | if_missing | always
@@ -41,6 +42,7 @@ models:
     config:
       state:
         lag_tolerance: <duration>
+        compare_unrendered_code: true | false
         require_fresh_data_from: any | all
         evaluate_volatile_sql: true | false
         pre_clone: never | if_missing | always
@@ -58,6 +60,7 @@ models:
 {{ config(
     state={
         "lag_tolerance": "<duration>",
+        "compare_unrendered_code": true | false,
         "require_fresh_data_from": "any" | "all",
         "evaluate_volatile_sql": true | false,
         "pre_clone": "never" | "if_missing" | "always",
@@ -73,6 +76,7 @@ models:
 | Config | Default | Scope | Description |
 |--------|---------|-------|-------------|
 | [`lag_tolerance`](/reference/resource-configs/lag-tolerance) | `45m` | Node, folder, or project-level via model config | How much time must pass since the last upstream data change before a node is eligible for a rebuild. Acts as a compute-saving buffer that helps align builds with freshness SLAs. Applies to data freshness only; SQL changes always trigger a rebuild regardless of this setting. |
+| [`compare_unrendered_code`](/reference/resource-configs/compare-unrendered-code) | `false` | Node, folder, or project-level via model config | Controls whether dbt State checks both the Jinja template (unrendered code) and rendered SQL when detecting code changes. Useful for models with non-deterministic macros or environment variables that produce different rendered SQL on every run. |
 | [`require_fresh_data_from`](/reference/resource-configs/require-fresh-data-from) | `any` | Node, folder, or project-level via model config | Whether `any` or `all` direct parents need fresh data before a node is eligible for a rebuild. |
 | [`pre_clone`](/reference/resource-configs/pre-clone) | `if_missing` | Node, folder, or project-level via model config | Whether dbt State pre-populates incremental models and snapshots by cloning production before a run. |
 | [`execute_hooks_on_any_reuse`](/reference/resource-configs/execute-hooks-on-any-reuse) | `false` | Node, folder, or project-level via model config | Whether pre- and post-hooks run when a node is reused without rebuilding. |
