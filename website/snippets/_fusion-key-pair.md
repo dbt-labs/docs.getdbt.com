@@ -1,4 +1,4 @@
-We recommend using PKCS#8 format with AES-256 encryption for key pair authentication with Fusion. Fusion doesn't support legacy 3DES encryption or headerless key formats. Using older key formats may cause authentication failures.
+We recommend using PKCS#8 format with AES-256 encryption for key pair authentication with <Constant name="fusion" />. <Constant name="fusion" /> doesn't support legacy 3DES encryption or headerless key formats. Using older key formats may cause authentication failures.
 
 If you encounter the `Key is PKCS#1 (RSA private key). Snowflake requires PKCS#8` error, then your private key is in the wrong format. You have two options:
 
