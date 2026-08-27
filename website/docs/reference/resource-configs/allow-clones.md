@@ -30,7 +30,11 @@ Setting `allow_clones: false` on a target tells dbt State to skip clone candidat
 
 This setting affects only the target it is set on. Other targets in the same profile are unaffected.
 
-For <Constant name="dbt_platform" /> users, you can set `allow_clones` by adding it as an [extended attribute](/docs/dbt-platform-environments#extended-attributes) in your environment settings.
+For <Constant name="dbt_platform" /> users, you can set `allow_clones` by adding it as an [extended attribute](/docs/dbt-platform-environments#extended-attributes) in your environment settings:
+
+```yaml
+allow_clones: true | false
+```
 
 ## Default
 
