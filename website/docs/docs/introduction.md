@@ -68,7 +68,7 @@ Learn more about [dbt platform features](/docs/platform/about-platform/dbt-platf
 
 For the best development experience, we recommend pairing v2 with the [dbt VS Code extension](/docs/about-dbt-extension) for autocomplete, inline errors, and lineage as you work. You can also run [`dbt login`](/reference/commands/login?version=2.0) to unlock additional capabilities and create a free <Constant name="dbt_platform" /> account.
 
-To get started quickly, try the [<Constant name="fusion" /> quickstart](/guides/fusion).
+To get started quickly, try the [<Constant name="fusion" /> quickstart](/guides/dbt).
 
 Other ways to run self-hosted dbt:
 - [dbt Core v1.x](/docs/local/install-dbt?version=1.0): The original Python-based CLI. 
@@ -92,7 +92,7 @@ As a dbt user, your main focus will be on writing models (select queries) that r
 - [Quickstarts for dbt](/guides)
 - [Best practice guides](/best-practices)
 - [What is a dbt project?](/docs/build/projects)
-- [Supported features matrix](/docs/fusion/supported-features)
+- [Supported features matrix](/docs/dbt/supported-features)
 - [AI and agents](/docs/dbt-ai/about-dbt-ai)
 - [Licensing](/docs/dbt-licensing)
 - [<Constant name="fusion" /> license agreement](https://www.getdbt.com/dbt-fusion-engine-license-agreement)
