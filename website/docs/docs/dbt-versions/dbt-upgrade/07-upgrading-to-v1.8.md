@@ -72,7 +72,7 @@ The [`run`](/reference/commands/run#the-`--empty`-flag) and [`build`](/reference
 
 Before v1.8, dbt adapters directly depended on components of `dbt-core`, and `dbt-core` depended on the adapter for execution. This bidirectional dependency made it difficult to develop adapters independently. Starting in <Constant name="core" /> v1.8, [`dbt-core` and adapters are decoupled](https://github.com/dbt-labs/dbt-adapters/discussions/87), making it easier to maintain and evolve them independent of each other.
 
-For backward compatibility, adapter packages continue to depend on `dbt-core` at install time. Running a dbt project still requires both `dbt-core` and an adapter, and since v1.0, many users have installed both together using [`pip install dbt-<adapter>`](/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-to-v1.0#installation).
+For backward compatibility, adapter packages continue to depend on `dbt-core` at install time. Running a dbt project still requires both `dbt-core` and an adapter, and since v1.0, many users have installed both together using [`pip install dbt-<adapter>`](/docs/dbt-versions/dbt-upgrade/Older%20versions/upgrading-to-v1.0#installation).
 
 This behavior remains unchanged. For example, `pip install dbt-snowflake` installs the latest versions of both `dbt-core` and `dbt-snowflake`.
 

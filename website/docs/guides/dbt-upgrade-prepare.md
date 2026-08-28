@@ -1,6 +1,6 @@
 ---
 title: "Upgrade to Fusion part 1: Preparing to upgrade"
-id: "prepare-fusion-upgrade"
+id: "prepare-dbt-upgrade"
 level: 'Intermediate'
 icon: 'zap'
 hide_table_of_contents: true
@@ -17,7 +17,7 @@ import FusionAdapters from '/snippets/_fusion-dwh-platform.md';
 
 The <Constant name="fusion_engine" /> represents the next evolution of data transformation. dbt has been rebuilt from the ground up but at its most basic, <Constant name="fusion" /> is a new version, and like any new version you should take steps to prepare to upgrade. This guide will take you through those preparations. 
 
-If <Constant name="fusion" /> is brand new to you, take a look at our [comprehensive documentation](/docs/fusion/about-fusion) on what it is, how it behaves, and what's different from <Constant name="core" /> before getting started with this guide. Once you're caught up, it's time to begin preparing your projects for the speed and power that <Constant name="fusion" /> has to offer.
+If <Constant name="fusion" /> is brand new to you, take a look at our [comprehensive documentation](/docs/introduction) on what it is, how it behaves, and what's different from <Constant name="core" /> before getting started with this guide. Once you're caught up, it's time to begin preparing your projects for the speed and power that <Constant name="fusion" /> has to offer.
 
 ## Prerequisites
 
@@ -67,17 +67,17 @@ The **Enable restricted Fusion upgrade permissions** toggle is only available to
 1. In the same **Account** settings screen, select the checkbox next to **Enable restricted Fusion upgrade permissions**.
 2. Click **Save**.
 
-When enabled, only users assigned the [`Fusion admin`](/docs/platform/manage-access/enterprise-permissions#fusion-admin) permission set (scoped to specific projects) can execute the upgrade. For instructions on assigning this permission, refer to [Assign upgrade access](/guides/upgrade-to-fusion?step=3#assign-upgrade-access-optional) in Part 2 of this guide.
+When enabled, only users assigned the [`Fusion admin`](/docs/platform/manage-access/enterprise-permissions#fusion-admin) permission set (scoped to specific projects) can execute the upgrade. For instructions on assigning this permission, refer to [Assign upgrade access](/guides/upgrade-to-dbt?step=3#assign-upgrade-access-optional) in Part 2 of this guide.
 
 ### The Fusion readiness panel
 
 With the readiness experience enabled, you can monitor your project's eligibility as you work through the preparation steps below. The panel shows which jobs are eligible or ineligible for <Constant name="fusion" /> and why.
 
-<Lightbox src="/img/fusion/fusion-readiness.png" width="60%" title="The Fusion readiness checklist"/>
+<Lightbox src="/img/fusion/fusion-readiness.png" width="60%" title="The dbt v2 readiness checklist"/>
 
 Common ineligibility reasons include:
 - Environment(s) not on the **Latest** [release track](/docs/dbt-versions/dbt-release-tracks#which-release-tracks-are-available]
-- Not using a [supported data platform](/docs/fusion/supported-features?version=2.0#requirements)
+- Not using a [supported data platform](/docs/dbt/supported-features?version=2.0#requirements)
 - Project doesn't have at least one successful job run
 - Jobs that haven't run in the last 7 days or have recent failures
 
@@ -107,7 +107,7 @@ Test the **Latest** release track for your individual account without changing t
 5. Launch the <Constant name="studio_ide" /> or <Constant name="platform_cli" /> and test your normal development workflows.
 6. Verify the override is active by running any dbt command and checking the **System Logs**. The first line should show `Running with dbt=` and your selected version. If the version number is `v1.11` or higher, you're on the right path to <Constant name="fusion" /> readiness.
 
-If everything works as expected, proceed to the next step to start upgrading your environments. If you encounter deprecation warnings, don't fear! We'll address those [later in this guide](/guides/prepare-fusion-upgrade?step=4). If you encounter errors, revert to your previous version and refer to the [version upgrade guides](/docs/dbt-versions/core-upgrade) to resolve any differences between your current version and the latest available <Constant name="core" /> version.
+If everything works as expected, proceed to the next step to start upgrading your environments. If you encounter deprecation warnings, don't fear! We'll address those [later in this guide](/guides/prepare-dbt-upgrade?step=4). If you encounter errors, revert to your previous version and refer to the [version upgrade guides](/docs/dbt-versions/dbt-upgrade) to resolve any differences between your current version and the latest available <Constant name="core" /> version.
 
 ### Step 2: Upgrade your development environment
 
@@ -174,7 +174,7 @@ Check out the [autofix readme](https://github.com/dbt-labs/dbt-autofix/) for a c
 
 :::note Fusion package compatibility
 
-In addition to deprecations, the autofix tool attempts to upgrade packages to the lowest supported <Constant name="fusion" />-compatible version. Check out [package support](/docs/fusion/supported-features#package-support) for more information about <Constant name="fusion" /> compatibility.
+In addition to deprecations, the autofix tool attempts to upgrade packages to the lowest supported <Constant name="fusion" />-compatible version. Check out [package support](/docs/dbt/supported-features#package-support) for more information about <Constant name="fusion" /> compatibility.
 
 :::
 
@@ -251,7 +251,7 @@ If the autofix tool reports remaining deprecation warnings that couldn't be auto
 2. Manually update the code based on the deprecation guidance:
    - Custom inputs should be moved to the `meta` config.
    - Deprecated properties should be updated to their new equivalents.
-   - Refer to specific [version upgrade guides](/docs/dbt-versions/core-upgrade) for detailed migration instructions.
+   - Refer to specific [version upgrade guides](/docs/dbt-versions/dbt-upgrade) for detailed migration instructions.
 3. After making manual fixes, run **Check & fix deprecations** again to verify all warnings are resolved.
 4. Commit your changes.
 
@@ -270,11 +270,11 @@ Once all deprecations are resolved:
 
 This section contains instructions for manual package upgrades. We recommend running the autofix tool before taking these steps.
 
-The autofix tool finds packages incompatible with <Constant name="fusion" /> and upgrades them to the lowest compatible version. For more information, check out [package support](/docs/fusion/supported-features#package-support).
+The autofix tool finds packages incompatible with <Constant name="fusion" /> and upgrades them to the lowest compatible version. For more information, check out [package support](/docs/dbt/supported-features#package-support).
 
 :::
 
-dbt packages extend your project's functionality, but they must be compatible with <Constant name="fusion" />. Most commonly used packages from dbt Labs (like `dbt_utils` and `dbt_project_evaluator`) and many community packages [already support <Constant name="fusion" />](/docs/fusion/supported-features#package-support). Before upgrading, verify your packages are compatible and upgrade them to the latest versions. Check for packages that support version 2.0.0, or ask the maintainer if you're unsure.
+dbt packages extend your project's functionality, but they must be compatible with <Constant name="fusion" />. Most commonly used packages from dbt Labs (like `dbt_utils` and `dbt_project_evaluator`) and many community packages [already support <Constant name="fusion" />](/docs/dbt/supported-features#package-support). Before upgrading, verify your packages are compatible and upgrade them to the latest versions. Check for packages that support version 2.0.0, or ask the maintainer if you're unsure.
 
 What if a package isn't compatible?
 
@@ -308,7 +308,7 @@ packages:
 
 ### Step 2: Check compatibility and find the latest package versions
 
-Review [the dbt package hub](https://hub.getdbt.com) to see verified <Constant name="fusion" />-compatible packages by checking that the `require-dbt-version` configuration includes `2.0.0` or higher. Refer to [package support](/docs/fusion/supported-features#package-support) for more information.
+Review [the dbt package hub](https://hub.getdbt.com) to see verified <Constant name="fusion" />-compatible packages by checking that the `require-dbt-version` configuration includes `2.0.0` or higher. Refer to [package support](/docs/dbt/supported-features#package-support) for more information.
 
 For packages that aren't <Constant name="fusion" />-compatible:
    - Visit the package's GitHub repository.
@@ -413,7 +413,7 @@ For jobs that are eligible for <Constant name="fusion" /> in the readiness exper
 
 ### Review your jobs
 
-The readiness panel shows how many jobs are ineligible for <Constant name="fusion" /> or have an unknown eligibility status. If you don't see eligibility messaging, ask an account admin to enable **Fusion readiness & upgrade features** in [Account settings](/docs/platform/account-settings). For setup steps, refer to [Enable Fusion readiness features](/guides/prepare-fusion-upgrade?step=3).
+The readiness panel shows how many jobs are ineligible for <Constant name="fusion" /> or have an unknown eligibility status. If you don't see eligibility messaging, ask an account admin to enable **Fusion readiness & upgrade features** in [Account settings](/docs/platform/account-settings). For setup steps, refer to [Enable Fusion readiness features](/guides/prepare-dbt-upgrade?step=3).
 
 :::note
 If a job has not run in the last 7 days, you must run it once for the debugging options to be available.
@@ -468,6 +468,6 @@ Congratulations! You have validated <Constant name="fusion" /> eligibility for y
 
 With limitations identified and addressed, you've completed all the preparation steps. Your project is now ready to upgrade to <Constant name="fusion" />!
 
-Check out [Part 2: Making the move](/guides/upgrade-to-fusion)
+Check out [Part 2: Making the move](/guides/upgrade-to-dbt)
 
 </div>

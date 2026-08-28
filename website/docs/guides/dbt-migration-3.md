@@ -1,6 +1,6 @@
 ---
 title: 'Move from dbt Core to the dbt platform: Optimization tips'
-id: core-migration-3
+id: dbt-migration-3
 description: "Use this guide to learn how to optimize your dbt experience and get answers to common questions."
 hoverSnippet: "Use this guide to learn how to optimize your dbt experience and get answers to common questions."
 icon: 'guides'
@@ -23,12 +23,12 @@ import CoreMigrationTable from '/snippets/_core-migration-table.md';
 ## What you'll learn
 You may have already started your move to <Constant name="dbt" /> and are looking for tips to help you optimize your <Constant name="dbt" /> experience. This guide includes tips and caveats for the following areas:
 
-- [Adapters and connections](/guides/core-migration-3?step=3) 
-- [Development tools](/guides/core-migration-3?step=4) 
-- [Orchestration](/guides/core-migration-3?step=5)
-- [<Constant name="mesh" />](/guides/core-migration-3?step=6)
-- [<Constant name="semantic_layer" />](/guides/core-migration-3?step=7)
-- [<Constant name="catalog" />](/guides/core-migration-3?step=8)
+- [Adapters and connections](/guides/dbt-migration-3?step=3) 
+- [Development tools](/guides/dbt-migration-3?step=4) 
+- [Orchestration](/guides/dbt-migration-3?step=5)
+- [<Constant name="mesh" />](/guides/dbt-migration-3?step=6)
+- [<Constant name="semantic_layer" />](/guides/dbt-migration-3?step=7)
+- [<Constant name="catalog" />](/guides/dbt-migration-3?step=8)
 
 ## Adapters and connections
 

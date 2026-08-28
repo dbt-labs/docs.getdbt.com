@@ -1,6 +1,6 @@
 ---
 title: "dbt environments"
-id: "dbt-core-environments"
+id: "dbt-environments"
 pagination_next: "docs/running-a-dbt-project/run-your-dbt-projects"
 availability: local_free
 ---

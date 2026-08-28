@@ -1,8 +1,8 @@
 ---
-title: Upgrade to Fusion
-id: upgrade-to-fusion-extension
-description: "Upgrade your dbt project to the Fusion engine from the VS Code extension."
-sidebar_label: "Upgrade to Fusion"
+title: Upgrade to dbt v2
+id: upgrade-to-dbt-extension
+description: "Upgrade your dbt project to dbt v2 from the VS Code extension."
+sidebar_label: "Upgrade to dbt v2"
 availability: local_all
 ---
 
@@ -116,6 +116,6 @@ Once you've upgraded your project to <Constant name="fusion" />, you can:
 
 - [Sign in or register](/docs/sign-in-dbt-extension) for a <Constant name="dbt_platform" /> account to keep using advanced features after the 14-day trial.
 - [Configure your local environment](/docs/configure-dbt-extension) to mirror your <Constant name="dbt_platform" /> environment and [set environment variables](/docs/configure-dbt-extension#configure-environment-variables) required by your project.
-- [Compare changes locally](/docs/fusion/vs-compare-changes) to preview data changes caused by your local edits.
+- [Compare changes locally](/docs/dbt/vs-compare-changes) to preview data changes caused by your local edits.
 - [Optimize static analysis for development and deployment](/best-practices/optimize-static-analysis-for-development-and-deployment) for stronger local validation without slowing deployment jobs.
-- Review the [limitations and unsupported features](/docs/fusion/supported-features#limitations).
+- Review the [limitations and unsupported features](/docs/dbt/supported-features#limitations).

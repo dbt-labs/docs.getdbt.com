@@ -1,8 +1,8 @@
 ---
-title: Install dbt Core 2.0
-id: install-dbt-core-v2
-description: "Install dbt Core 2.0, the open-source foundation behind Fusion."
-sidebar_label: "Install dbt Core 2.0"
+title: Install dbt open source v2
+id: install-dbt-v2
+description: "Install open source dbt v2, the open-source foundation behind Fusion."
+sidebar_label: "Install open source dbt v2"
 pagination_next: null
 pagination_prev: null
 availability: local_free
@@ -13,7 +13,7 @@ availability: local_free
 
 This page is for installing dbt Core 2.0, the Apache 2.0 open-source distribution of v2. To view the installation instructions, select **v2** from the version picker in the docs navigation. To install dbt Core v1.x, refer to [Install dbt Core v1.x](/docs/local/install-dbt?version=1.12).
 
-To upgrade an existing v1 project to v2, refer to [Upgrade to v2](/docs/dbt-versions/core-upgrade/upgrading-to-v2?version=2.0).
+To upgrade an existing v1 project to v2, refer to [Upgrade to v2](/docs/dbt-versions/dbt-upgrade/upgrading-to-v2?version=2.0).
 
 To understand the differences between dbt Core v1.x, dbt Core 2.0, and <Constant name="fusion" />, refer to [dbt licensing](/docs/dbt-licensing?version=2.0).
 
@@ -64,7 +64,7 @@ The [standard <Constant name="dbt" /> install](/docs/local/install-dbt) gives yo
 - `dbt lint` and error diagnostics
 - dbt VS Code extension integration
 
-For the full picture of what you get with dbt, refer to [Fusion availability](/docs/fusion/fusion-availability).
+For the full picture of what you get with dbt, refer to [Fusion availability](/docs/dbt/dbt-availability).
 
 ## Contributing
 
@@ -77,7 +77,7 @@ dbt Core 2.0 is licensed under Apache 2.0. Refer to the [LICENSE file](https://g
 ## Related
 
 - [Install dbt](/docs/local/install-dbt) (standard install)
-- [Upgrade to v2](/docs/dbt-versions/core-upgrade/upgrading-to-v2)
+- [Upgrade to v2](/docs/dbt-versions/dbt-upgrade/upgrading-to-v2)
 - [`dbt-core` repository on GitHub](https://github.com/dbt-labs/dbt-core)
 
 </VersionBlock>

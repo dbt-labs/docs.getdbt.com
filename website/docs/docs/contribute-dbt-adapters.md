@@ -1,6 +1,6 @@
 ---
 title: "Contribute to dbt Core adapters"
-id: "contribute-core-adapters"
+id: "contribute-dbt-adapters"
 description: "Contribute to existing dbt Core adapters or open a pull request for a new v1 or v2 adapter."
 pagination_next: null
 availability: all_users

@@ -154,7 +154,7 @@ Setting `static_analysis` to `baseline` mode lets you start using <Constant name
 
 ## Recapping the differences between engines
 
-<Constant name="core_v1" /> and [<Constant name="core_v2" />](/docs/dbt-versions/core-upgrade/upgrading-to-v2) (currently in beta):
+<Constant name="core_v1" /> and [<Constant name="core_v2" />](/docs/dbt-versions/dbt-upgrade/upgrading-to-v2) (currently in beta):
 
 - Renders and runs models one at a time.
 - Never runs static analysis.

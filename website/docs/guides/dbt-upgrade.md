@@ -1,6 +1,6 @@
 ---
 title: "Upgrade to Fusion part 2: Making the move"
-id: "upgrade-to-fusion"
+id: "upgrade-to-dbt"
 # time_to_complete: '30 minutes' commenting out until we test
 level: 'Intermediate'
 icon: 'zap'
@@ -28,12 +28,12 @@ Once you complete the <Constant name="fusion" /> migration, your team will benef
 
 Before upgrading your development environment, confirm:
 
-- Your project is on the **Latest** release track (completed in [Part 1: Preparing to upgrade](/guides/prepare-fusion-upgrade))
+- Your project is on the **Latest** release track (completed in [Part 1: Preparing to upgrade](/guides/prepare-dbt-upgrade))
 - Your project must be using a supported adapter and auth method.    
     <FusionAdapters/>
 - You have a developer license in <Constant name="dbt_platform" />
 - <Constant name="fusion" /> has been enabled for your account
-- You have appropriate permissions to modify environments (see [Assign upgrade access](https://docs.getdbt.com/guides/upgrade-to-fusion?step=3#assign-upgrade-access-optional) if restricted)
+- You have appropriate permissions to modify environments (see [Assign upgrade access](https://docs.getdbt.com/guides/upgrade-to-dbt?step=3#assign-upgrade-access-optional) if restricted)
 
 
 ## Upgrade your development environment
@@ -154,7 +154,7 @@ After upgrading, all users need to restart their IDE to connect to the new <Cons
 Confirm your development environment is running <Constant name="fusion" />:
 
 1. Open or create a dbt model file in the <Constant name="studio_ide" />.
-2. Look for <Constant name="fusion" />-powered [features](/docs/fusion/supported-features#features-and-capabilities):
+2. Look for <Constant name="fusion" />-powered [features](/docs/dbt/supported-features#features-and-capabilities):
    - Faster parsing and compilation times
    - Enhanced SQL validation and error messages
    - Improved autocomplete functionality
@@ -268,7 +268,7 @@ Repeat for other intermediate environments
 :::caution Found an issue?
 
 If you encounter problems in staging:
-- Review the [Fusion limitations](/docs/fusion/supported-features#limitations) to see if it's a known issue.
+- Review the [Fusion limitations](/docs/dbt/supported-features#limitations) to see if it's a known issue.
 - Check job logs for specific error messages.
 - Test the same models in your development environment to isolate the problem.
 - Contact [dbt Support](/docs/dbt-support) or your account team for assistance.

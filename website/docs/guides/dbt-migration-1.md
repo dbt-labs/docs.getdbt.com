@@ -1,6 +1,6 @@
 ---
 title: 'Move from dbt Core to the dbt platform: Get started'
-id: core-migration-1
+id: dbt-migration-1
 description: "Learn how to move from dbt Core to the dbt platform and what you need to get started."
 hoverSnippet: "Learn how to move from dbt Core to the dbt platform."
 icon: 'guides'
@@ -44,14 +44,14 @@ You absorb the cost of every upgrade, every broken CI run, and every request tha
 
 This guide outlines the steps you need to take to move from <Constant name="core" /> to <Constant name="dbt" /> and highlights the necessary technical changes:
 
-- [Account setup](/guides/core-migration-1?step=4): Learn how to create a <Constant name="dbt" /> account, invite team members, and configure it for your team.
-- [Data platform setup](/guides/core-migration-1?step=5): Find out about connecting your data platform to <Constant name="dbt" />.
-- [<Constant name="git" /> setup](/guides/core-migration-1?step=6): Learn to link your dbt project's <Constant name="git" /> repository with <Constant name="dbt" />.
-- [Developer setup:](/guides/core-migration-1?step=7) Understand the setup needed for developing in <Constant name="dbt" />.
-- [Environment variables](/guides/core-migration-1?step=8): Discover how to manage environment variables in <Constant name="dbt" />, including their priority.
-- [Orchestration setup](/guides/core-migration-1?step=9): Learn how to prepare your <Constant name="dbt" /> environment and jobs for orchestration.
-- [Models configuration](/guides/core-migration-1?step=10): Get insights on validating and running your models in <Constant name="dbt" />, using either the <Constant name="studio_ide" /> or <Constant name="dbt" /> CLI.
-- [What's next?](/guides/core-migration-1?step=11): Summarizes key takeaways and introduces what to expect in the following guides.
+- [Account setup](/guides/dbt-migration-1?step=4): Learn how to create a <Constant name="dbt" /> account, invite team members, and configure it for your team.
+- [Data platform setup](/guides/dbt-migration-1?step=5): Find out about connecting your data platform to <Constant name="dbt" />.
+- [<Constant name="git" /> setup](/guides/dbt-migration-1?step=6): Learn to link your dbt project's <Constant name="git" /> repository with <Constant name="dbt" />.
+- [Developer setup:](/guides/dbt-migration-1?step=7) Understand the setup needed for developing in <Constant name="dbt" />.
+- [Environment variables](/guides/dbt-migration-1?step=8): Discover how to manage environment variables in <Constant name="dbt" />, including their priority.
+- [Orchestration setup](/guides/dbt-migration-1?step=9): Learn how to prepare your <Constant name="dbt" /> environment and jobs for orchestration.
+- [Models configuration](/guides/dbt-migration-1?step=10): Get insights on validating and running your models in <Constant name="dbt" />, using either the <Constant name="studio_ide" /> or <Constant name="dbt" /> CLI.
+- [What's next?](/guides/dbt-migration-1?step=11): Summarizes key takeaways and introduces what to expect in the following guides.
 
 ### Related docs
 - [Learn <Constant name="dbt" />](https://learn.getdbt.com) on-demand video learning.
@@ -123,10 +123,10 @@ Your existing dbt project source code should live in a <Constant name="git" /> r
 
 This section highlights the development configurations you'll need for your <Constant name="dbt" /> project. The following categories are covered in this section:
 
-- [<Constant name="dbt" /> environments](/guides/core-migration-1?step=7#dbt-cloud-environments)
-- [Initial setup steps](/guides/core-migration-1?step=7#initial-setup-steps)
-- [Additional configuration](/guides/core-migration-1?step=7#additional-configuration-2)
-- [<Constant name="dbt" /> commands](/guides/core-migration-1?step=7#dbt-cloud-commands)
+- [<Constant name="dbt" /> environments](/guides/dbt-migration-1?step=7#dbt-cloud-environments)
+- [Initial setup steps](/guides/dbt-migration-1?step=7#initial-setup-steps)
+- [Additional configuration](/guides/dbt-migration-1?step=7#additional-configuration-2)
+- [<Constant name="dbt" /> commands](/guides/dbt-migration-1?step=7#dbt-cloud-commands)
 
 ### dbt environments
 
@@ -161,9 +161,9 @@ Explore these additional configurations to optimize your developer setup further
 
 ## Environment variables
 This section will help you understand how to set up and manage <Constant name="dbt" /> environment variables for your project. The following categories are covered:
-- [Environment variables in <Constant name="dbt" />](/guides/core-migration-1?step=7#environment-variables-in-dbt-cloud)
-- [<Constant name="dbt" /> environment variables order of precedence](/guides/core-migration-1?step=7#dbt-cloud-environment-variables-order-of-precedence)
-- [Set environment variables in <Constant name="dbt" />](/guides/core-migration-1?step=7#set-environment-variables-in-dbt-cloud)
+- [Environment variables in <Constant name="dbt" />](/guides/dbt-migration-1?step=7#environment-variables-in-dbt-cloud)
+- [<Constant name="dbt" /> environment variables order of precedence](/guides/dbt-migration-1?step=7#dbt-cloud-environment-variables-order-of-precedence)
+- [Set environment variables in <Constant name="dbt" />](/guides/dbt-migration-1?step=7#set-environment-variables-in-dbt-cloud)
 
 In <Constant name="dbt" />, you can set [environment variables](/docs/build/environment-variables) in the <Constant name="dbt" /> user interface (UI). Read [Set up environment variables](#set-environment-variables-in-dbt-cloud) for more info.
 
@@ -195,10 +195,10 @@ Environment variables in <Constant name="dbt" /> are managed with a clear [order
 
 This section outlines the considerations and methods to set up your <Constant name="dbt" /> environments and jobs for orchestration. The following categories are covered in this section:
 
-- [<Constant name="dbt" /> environments](/guides/core-migration-1?step=8#dbt-cloud-environments-1)
-- [Initial setup steps](/guides/core-migration-1?step=8#initial-setup-steps-1)
-- [Additional configuration](/guides/core-migration-1?step=8#additional-configuration-3)
-- [CI/CD setup](/guides/core-migration-1?step=8#cicd-setup)
+- [<Constant name="dbt" /> environments](/guides/dbt-migration-1?step=8#dbt-cloud-environments-1)
+- [Initial setup steps](/guides/dbt-migration-1?step=8#initial-setup-steps-1)
+- [Additional configuration](/guides/dbt-migration-1?step=8#additional-configuration-3)
+- [CI/CD setup](/guides/dbt-migration-1?step=8#cicd-setup)
 
 ### dbt environments
 To use the [<Constant name="dbt" />'s job scheduler](/docs/deploy/job-scheduler), set up one environment as the production environment. This is the [deployment](/docs/deploy/deploy-environments) environment. You can set up multiple environments for different stages of your deployment pipeline, such as development, staging/QA, and production.

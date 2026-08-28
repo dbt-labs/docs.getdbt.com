@@ -1,6 +1,6 @@
 ---
 title: "Contribute a dbt Core v2.0 adapter"
-id: "contribute-core-adapters-v2"
+id: "contribute-dbt-adapters-v2"
 pagination_next: null
 availability:
   engine: v2
