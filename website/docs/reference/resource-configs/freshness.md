@@ -91,7 +91,7 @@ For public models in a [dbt Mesh](/docs/mesh/about-mesh), dbt stores the freshne
 | `warn_after` | Duration after which `dbt freshness` reports a warning if the most recent available data is older than this threshold. Requires both `count` (positive integer) and `period` (`minute`, `hour`, or `day`). One or both of `warn_after` and `error_after` can be provided. If neither is set, dbt will not check freshness for that model. |
 | `error_after` | Duration after which `dbt freshness` reports an error if the most recent available data is older than this threshold. Same format as `warn_after`. |
 | `loaded_at_field` | Column dbt queries to determine the most recent loaded timestamp. Required for `view` and `external` materializations; optional for `table`, `incremental`, `materialized_view`, and `dynamic_table`. Can be set nested inside `freshness:` or as a sibling config &mdash; nested wins if both are set. |
-| `loaded_at_query` | A SQL expression that returns the most recent loaded timestamp. Alternative to `loaded_at_field`. Same placement rules apply. If both are set, `loaded_at_field` takes precedence. |
+| `loaded_at_query` | A SQL expression that returns the most recent loaded timestamp. Alternative to `loaded_at_field`. Same placement rules apply. If both are set, `loaded_at_query` takes precedence. |
 
 ### Materialization rules
 

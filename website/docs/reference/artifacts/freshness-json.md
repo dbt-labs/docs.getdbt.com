@@ -31,3 +31,5 @@ Each entry in `results` is a dictionary with the following keys:
 - `criteria`: The freshness thresholds (`warn_after`, `error_after`) configured for this node.
 - `execution_time`: Total time spent checking freshness for this node. <!-- TODO: verify — currently hardcoded to 0.0 in implementation -->
 - `timing`: Array of timing steps (e.g., `compile`, `execute`). <!-- TODO: verify — currently always empty ([]) in implementation -->
+- `adapter_response`: Adapter-level response metadata.
+- `thread_id`: Identifier for the thread that ran this check.
