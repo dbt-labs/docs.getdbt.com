@@ -122,7 +122,7 @@ models:
 </File>
 </VersionBlock>
 
-<VersionBlock firstVersion="1.12">
+<VersionBlock firstVersion="1.12" lastVersion="1.99">
 
 Note, most model configurations are defined under `config`, while `build_after` is set under `freshness`.
 
@@ -140,6 +140,33 @@ models:
       [freshness](/reference/resource-configs/freshness):
         # build_after is nested under freshness. Available on dbt platform Enterprise tiers only.
         build_after: <dict>
+      [on_error](/reference/resource-configs/on_error): skip_children | continue
+      [latest_version_pointer](/reference/resource-configs/latest_version_pointer): <dict>
+```
+
+</File>
+</VersionBlock>
+
+<VersionBlock firstVersion="2.0">
+
+Note, most model configurations are defined under `config`, while freshness settings go under `freshness`.
+
+<File name='models/properties.yml'>
+
+```yaml
+
+models:
+  - name: [<model-name>]
+    config:
+      [materialized](/reference/resource-configs/materialized): <materialization_name>
+      [sql_header](/reference/resource-configs/sql_header): <string>
+      [on_configuration_change](/reference/resource-configs/on_configuration_change): apply | continue | fail # only for materialized views on supported adapters
+      [unique_key](/reference/resource-configs/unique_key): <column_name_or_expression>
+      [freshness](/reference/resource-configs/freshness):
+        warn_after: {count: 24, period: hour}
+        error_after: {count: 48, period: hour}
+        loaded_at_field: updated_at  # required for view/external; optional for table/incremental
+        build_after: <dict>          # build scheduling — Enterprise only
       [on_error](/reference/resource-configs/on_error): skip_children | continue
       [latest_version_pointer](/reference/resource-configs/latest_version_pointer): <dict>
 ```
@@ -408,7 +435,7 @@ models:
 
 </File>
 
-<VersionBlock firstVersion="1.10">
+<VersionBlock firstVersion="1.10" lastVersion="1.99">
 
 ### Configuring source freshness
 
@@ -419,7 +446,7 @@ Note that for every `freshness` config, you're required to either set values for
 See the following example of a `my_model.yml` file using the `freshness` config:
 
 <File name="models/my_model.yml">
-  
+
 ```yml
 models:
   - name: stg_orders
@@ -430,7 +457,41 @@ models:
           period: minute | hour | day
           updates_on: any | all # optional config
 ```
-  
+
+</File>
+
+</VersionBlock>
+
+<VersionBlock firstVersion="2.0">
+
+### Configuring model freshness <Lifecycle status="beta" />
+
+You can use the `freshness` config in the following ways:
+
+- **Freshness SLA** (`warn_after`, `error_after`): To declare how stale this model's data is allowed to be. dbt checks these thresholds when you run [`dbt freshness`](/reference/commands/freshness) and reports `pass`, `warn`, or `error`. This works on any materialization that exposes a timestamp either through a `loaded_at_field` column or adapter metadata. For more information, refer to [Freshness](/reference/resource-configs/freshness).
+
+- **Build scheduling** (`build_after`): To skip rebuilding a model when upstream data hasn't changed since the last build. Available on dbt platform Enterprise tiers only.
+
+Note that for every `freshness` sub-key, you must either set both `count` and `period`, or omit the sub-key entirely.
+
+<File name="models/my_model.yml">
+
+```yml
+models:
+  - name: stg_orders
+    config:
+      freshness:
+        # Freshness SLA — report warn/error when data is stale
+        warn_after: {count: 24, period: hour}
+        error_after: {count: 48, period: hour}
+        loaded_at_field: updated_at  # required for view/external; optional for table/incremental
+        # Build scheduling — Enterprise only
+        build_after:
+          count: 6
+          period: hour
+          updates_on: any  # optional
+```
+
 </File>
 
 </VersionBlock>

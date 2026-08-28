@@ -5,9 +5,25 @@ sidebar_label: "Sources"
 
 **Current schema:** [`v3`](https://schemas.getdbt.com/dbt/sources/v3/index.html)
 
-**Produced by:** [`source freshness`](/reference/commands/source)
+<VersionBlock lastVersion="1.99">
 
-This file contains information about [sources with freshness checks](/docs/build/sources#checking-source-freshness). Today, <Constant name="dbt" /> uses this file to power its [Source Freshness visualization](/docs/build/sources#source-data-freshness).
+**Produced by:** [`dbt source freshness`](/reference/commands/source)
+
+</VersionBlock>
+
+<VersionBlock firstVersion="2.0">
+
+**Produced by:** [`dbt source freshness`](/reference/commands/source) and [`dbt freshness`](/reference/commands/freshness) (when sources are included in the run)
+
+</VersionBlock>
+
+This file contains information about [sources with freshness checks](/docs/build/sources#checking-source-freshness). dbt uses this file to power its [Source Freshness visualization](/docs/build/sources#source-data-freshness).
+
+<VersionBlock firstVersion="2.0">
+
+The schema is unchanged. `sources.json` contains sources only, unlike [`freshness.json`](/reference/artifacts/freshness-json), which covers both sources and models in a single file. If a `dbt freshness` run checks only models and no sources are included, dbt does not overwrite `sources.json`.
+
+</VersionBlock>
 
 ### Top-level keys
 

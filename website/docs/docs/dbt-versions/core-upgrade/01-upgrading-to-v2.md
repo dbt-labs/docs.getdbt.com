@@ -70,6 +70,42 @@ The most popular `dbt-labs` packages (`dbt_utils`, `audit_helper`, `dbt_external
 
 ## New and changed features and functionality
 
+### Model freshness and the `dbt freshness` command <Lifecycle status="beta" />
+
+v2 lets you declare freshness thresholds on models using the same `warn_after` / `error_after` syntax as [source freshness](/docs/build/sources#source-data-freshness), and adds a new [`dbt freshness`](/reference/commands/freshness) command to check them.
+
+#### Model freshness
+
+You can declare freshness thresholds directly on any model:
+
+```yaml
+models:
+  - name: stg_orders
+    config:
+      freshness:
+        warn_after: {count: 24, period: hour}
+        error_after: {count: 48, period: hour}
+        loaded_at_field: updated_at  # required for view/external; optional for table/incremental
+```
+
+How dbt measures freshness depends on the materialization:
+
+- `table`, `incremental`, `materialized_view`, `dynamic_table`: Uses `loaded_at_field` or `loaded_at_query` if set, otherwise falls back to adapter metadata (such as the table's last-modified time).
+- `view`, `external`: `loaded_at_field` or `loaded_at_query` is required &mdash; there is no adapter metadata fallback.
+- `ephemeral`: Not supported. Freshness requires a physical table to query.
+
+For full configuration options and materialization rules, refer to [freshness](/reference/resource-configs/freshness).
+
+#### `dbt freshness` command
+
+Run [`dbt freshness`](/reference/commands/freshness) to check both sources and models with freshness configured in a single invocation. `dbt source freshness` still works and checks sources only, so existing usage and `sources.json` output are unchanged.
+
+dbt also writes a new `target/freshness.json` artifact after every `dbt freshness` run. Unlike `sources.json`, which only contains sources, `freshness.json` contains results for both sources and models. Each entry includes a `resource_type` field (`"source"` or `"model"`) so tooling can tell them apart. For the full schema, refer to [`freshness.json`](/reference/artifacts/freshness-json).
+
+#### Cross-project freshness
+
+dbt stores a public model's freshness config in `publication.json` in a [dbt Mesh](/docs/mesh/about-mesh) project. Downstream projects can check upstream model freshness without running the upstream project.
+
 ### `dbt login`
 
 In <Constant name="dbt" /> v2, [`dbt login`](/reference/commands/login?version=2.0) enables browser-based authentication. It opens a browser window prompting you to sign in to your <Constant name="dbt_platform" /> account or create a free account.
