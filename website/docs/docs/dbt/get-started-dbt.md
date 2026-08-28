@@ -1,6 +1,6 @@
 ---
-title: "Get started with Fusion"
-description: "Start using the Fusion engine locally to take data transformation to the next level."
+title: "Get started with dbt"
+description: "Start using dbt locally to take data transformation to the next level."
 sidebar_label: "Get started"
 id: get-started-dbt
 hide_table_of_contents: true
