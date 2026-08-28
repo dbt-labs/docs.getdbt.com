@@ -43,11 +43,6 @@
   ],
   "redirects": [
     {
-      "source": "/docs/dbt/about-dbt",
-      "destination": "/docs/introduction",
-      "permanent": true
-    },
-    {
       "source": "/docs/fusion/about-core",
       "destination": "/docs/introduction",
       "permanent": true
