@@ -81,13 +81,9 @@ Notable features:
 </Expandable>
 <Expandable alt_header="Analyst read">
 
-The Analyst read permission set is a project-level set designed for users who need read-only access to analyze dbt models and project resources without the ability to develop or make changes.
+The Analyst read permission set is a project-level set designed for users who need read-only access to analyze dbt models and project resources without the ability to develop or make changes. It does not change the user's license.
 
-:::info Availability
-
-The OAuth integration that lets read-only users connect to analysis features (such as the [dbt MCP server](/docs/dbt-ai/about-mcp)) is available to use.
-
-:::
+On Enterprise-tier plans, you can assign Analyst read to Read-Only users. That lets those users manage their own warehouse credentials and use the [dbt MCP server](/docs/dbt-ai/about-mcp). They can connect with OAuth or a personal access token. For MCP authentication options, refer to [Connect dbt MCP server to dbt platform](/docs/dbt-ai/mcp-quickstart-oauth).
 
 Notable features:
 - Analyst read is a project-level set.
@@ -127,6 +123,8 @@ Notable features:
 <Expandable alt_header="Cost Insights Viewer">
 
 The Cost Insights Viewer permission set provides read-only access to [Cost Insights](/docs/explore/cost-insights) data with the minimum permissions needed to view estimated cost and reduction information.
+
+A Read-Only license is not enough to view Cost Insights. Assign this permission set through a group.
 
 Notable features:
 - Cost Insights Viewer is both an account-level and project-level set.
