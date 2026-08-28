@@ -67,7 +67,7 @@ You can use <Constant name="fusion" /> in three ways:
 
 To get started quickly, try the [Fusion quickstart](/guides/dbt). If you use the <Constant name="dbt_platform"/> and want to keep local development in sync, refer to [Hybrid development with the <Constant name="dbt_platform"/> and <Constant name="fusion" />](/guides/dbt-platform-local-workflow).
 
-_Need Apache 2.0 only? [Install dbt Core 2.0](/docs/local/install-dbt-v2), the open-source project behind <Constant name="fusion" />._
+_Need Apache 2.0 only? [Install open source dbt v2](/docs/local/install-dbt-v2), the open-source project behind <Constant name="fusion" />._
 
 import AboutFusion from '/snippets/_about-fusion.md';
 

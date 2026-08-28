@@ -12,7 +12,11 @@ import FusionLifecycle from '/snippets/_fusion-lifecycle.md';
 
 dbt connects to and runs SQL against your database, warehouse, lake, or query engine. These SQL-speaking platforms are collectively referred to as _data platforms_. dbt connects with data platforms by using a dedicated adapter plugin for each. Plugins are built as Python modules that <Constant name="core" /> discovers if they are installed on your system. Refer to the [Build, test, document, and promote adapters](/guides/adapter-creation) guide for details.
 
+<VersionBlock firstVersion="2.0" >
+
 <FusionLifecycle/>
+
+</VersionBlock>
 
 ## Types of Adapters
 

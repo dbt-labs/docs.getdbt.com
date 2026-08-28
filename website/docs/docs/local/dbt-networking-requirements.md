@@ -1,12 +1,12 @@
 ---
-title: "Fusion networking requirements"
+title: "dbt v2 networking requirements"
 id: "dbt-networking-requirements"
-sidebar_label: "Fusion networking requirements"
+sidebar_label: "v2 networking requirements"
 description: "Outbound network access requirements for the dbt Fusion engine, including adapter drivers, telemetry, and manifest downloads."
 
 ---
 
-# Fusion networking requirements <Lifecycle status="preview" />
+# dbt v2 networking requirements <Lifecycle status="preview" />
 
 <Constant name="fusion" /> requires outbound HTTPS access to several endpoints depending on your usage. This page describes each requirement and provides guidance for enterprise environments that restrict outbound traffic.
 

@@ -9,7 +9,7 @@ hide_title: true
 
 ### New to dbt? Start here
 
-Once you've caught up on everything [<Constant name="fusion" /> has to offer](/docs/dbt/about-dbt), start with the path that matches how you want to use dbt.
+Once you've caught up on everything [dbt has to offer](/docs/dbt/about-dbt), start with the path that matches how you want to use dbt.
 
 <div className="grid--3-col">
 

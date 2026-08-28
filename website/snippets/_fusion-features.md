@@ -1,7 +1,7 @@
 ## What you get with v2
 
 :::note Feature availability
-Feature availability may change as the <Constant name="fusion_engine" /> moves toward general availability. 
+Feature availability may change as the dbt v2 moves toward general availability. 
 :::
 
 You can get started right away with many dbt features, free forever! You can also try advanced features by running [`dbt login`](/reference/commands/login?version=2.0) to create a free <Constant name="dbt_platform" /> account for the best experience:
