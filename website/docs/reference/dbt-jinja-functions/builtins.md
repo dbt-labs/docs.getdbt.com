@@ -14,12 +14,14 @@ The `builtins` variable is a dictionary containing the following keys:
 - [source](/reference/dbt-jinja-functions/source)
 - [config](/reference/dbt-jinja-functions/config)
 
-## Usage
+## Examples
 
 :::important
 
 Using the `builtins` variable in this way is an advanced development workflow. Users should be ready to maintain and update these overrides when upgrading in the future.
 :::
+
+### Overriding `ref`
 
 From dbt v1.5 and higher, use the following macro to override the `ref` method available in the model compilation context to return a [Relation](/reference/dbt-classes#relation) with the database name overriden to `dev`.
 
@@ -57,6 +59,8 @@ Note that the `ref`, `source`, and `config` functions can't be overridden with a
 
 {% endmacro %}
 ```
+
+### Render identifiers without a database
 
 Logic within the ref macro can also be used to control which elements of the model path are rendered when run, for example the following logic renders only the schema and object identifier, but not the database reference i.e. `my_schema.my_model` rather than `my_database.my_schema.my_model`. This is especially useful when using snowflake as a warehouse, if you intend to change the name of the database post-build and wish the references to remain accurate.
 

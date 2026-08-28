@@ -41,4 +41,4 @@ Disconnect the GitHub and <Constant name="dbt" /> integration in <Constant name=
 8. Click **GitHub** and select your repository.
 
 ## Support
-If you've tried these workarounds and are still experiencing this behavior &mdash; reach out to the [dbt Support](mailto:support@dbtlabs.com) team and we'll be happy to help!
+If you've tried these workarounds and are still experiencing this behavior &mdash; reach out to the [dbt Support](mailto:support@getdbt.com) team and we'll be happy to help!

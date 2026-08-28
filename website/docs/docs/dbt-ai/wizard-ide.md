@@ -20,7 +20,7 @@ Use <Constant name="wizard" /> in the <Constant name="studio_ide" /> to ship tru
 </IntroText>
 
 :::info
-<Constant name="wizard" /> is in preview as of May 6, 2026 for Starter, Enterprise, and Enterprise+ plans. Enterprise and Enterprise+ customers can contact their account manager for access. Starter customers can contact [dbt Labs Support](mailto:support@dbtlabs.com).
+<Constant name="wizard" /> is in preview as of May 6, 2026 for Starter, Enterprise, and Enterprise+ plans. Enterprise and Enterprise+ customers can contact their account manager for access. Starter customers can contact [dbt Labs Support](mailto:support@getdbt.com).
 :::
 
 <Constant name="wizard" /> supports the dbt development lifecycle from investigation to review. Use it to:

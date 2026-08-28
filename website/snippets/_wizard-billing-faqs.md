@@ -26,7 +26,7 @@ Yes. The consumption pool and usage credits will be shared across all users with
 
 <Expandable alt_header="Which AI models are available for use through dbt managed inference?">
 
-Refer to [Model Provider Rate table](https://www.getdbt.com/legal/dbt-wizard-token-costs-by-model) and [Service Consumption Table](https://www.getdbt.com/legal/service-consumption-table) for the currently available models. dbt Labs bills usage of these models through your <Constant name="dbt" /> account.
+Refer to the [Model Provider Rate table](https://www.getdbt.com/legal/dbt-wizard-token-costs-by-model) and [Service Consumption Table](https://www.getdbt.com/legal/service-consumption-table) for the models available as of September 1, 2026. dbt Labs bills usage of these models through your <Constant name="dbt" /> account.
 
 </Expandable>
 
