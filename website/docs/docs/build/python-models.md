@@ -7,7 +7,7 @@ availability: all_users
 
 Note that only specific data platforms support `dbt-py` models. Check the [platform configuration pages](/reference/resource-configs) to confirm if Python models are supported. 
 
-Python models for Snowflake, BigQuery, and Databricks are supported in [<Constant name="fusion" />](/docs/dbt/about-dbt). Please refer to the [supported features](/docs/dbt/supported-features) page to learn more about <Constant name="fusion" />.
+Python models for Snowflake, BigQuery, and Databricks are supported in [<Constant name="fusion" />](/docs/introduction). Please refer to the [supported features](/docs/dbt/supported-features) page to learn more about <Constant name="fusion" />.
 
 We encourage you to:
 - Read [the original discussion](https://github.com/dbt-labs/dbt-core/discussions/5261) that proposed this feature.

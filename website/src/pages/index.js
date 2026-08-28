@@ -74,7 +74,7 @@ function Home() {
                     id="hero-vs-code-cta"
                     className="hero-border-beam-cta"
                     to="/docs/local/install-dbt">
-                      <span>Install dbt VS Code extension + Fusion</span>
+                      <span>Install dbt + VS Code extension</span>
                       </Link>
                 </div>
               </div>
@@ -95,10 +95,10 @@ function Home() {
                   icon="dbt-copilot"
                 />
                 <Card
-                  title="dbt Core"
+                  title="dbt"
                   tag="Article"
-                  body="Explore dbt Core and discover how its shared Rust runtime delivers faster, more scalable performance."
-                  link="/docs/dbt/about-core"
+                  body="Explore dbt and discover how its shared Rust runtime delivers faster, more scalable performance."
+                  link="/docs/dbt/introduction"
                   icon="zap"
                 />
                 <Card
@@ -134,7 +134,7 @@ function Home() {
                 />
                 <Card
                   title="VS Code Extension"
-                  body="This free tool brings the full power of the dbt Fusion engine into your local environment with features like live error detection, lightning-fast parse times, insights and rich lineage all in VS Code or Cursor."
+                  body="This free tool brings the full power of the dbt into your local environment with features like live error detection, lightning-fast parse times, insights and rich lineage all in VS Code or Cursor."
                   link="/docs/about-dbt-extension"
                   icon="vsce"
                   showBorderBeam
@@ -142,7 +142,7 @@ function Home() {
                 <Card
                   title="dbt State"
                   tag="Preview"
-                  body="dbt State makes dbt smarter about what to build — skipping unnecessary rebuilds by reusing nodes when logic and data haven't changed. Works with dbt Core, dbt platform, and the dbt Fusion engine."
+                  body="dbt State makes dbt smarter about what to build — skipping unnecessary rebuilds by reusing nodes when logic and data haven't changed. Works with self-hosted dbt and the dbt platform."
                   link="/docs/deploy/dbt-state-about"
                   icon="forward"
                 />

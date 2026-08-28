@@ -10,7 +10,7 @@ keywords: ['legacy dbt version', 'release track', 'migrate dbt version', 'upgrad
 level: 'Beginner'
 ---
 
-Legacy <Constant name="core" /> versions v1.3–v1.7 are being deprecated on <Constant name="legacy_deprecation_date" />. To keep your work running and supported, move your environments and jobs to a [<Constant name="core" /> release track](/docs/dbt-versions/dbt-release-tracks) now. A release track keeps you on a supported version automatically and prepares your project for [<Constant name="fusion_engine" />](/docs/dbt/about-dbt) later.
+Legacy <Constant name="core" /> versions v1.3–v1.7 are being deprecated on <Constant name="legacy_deprecation_date" />. To keep your work running and supported, move your environments and jobs to a [<Constant name="core" /> release track](/docs/dbt-versions/dbt-release-tracks) now. A release track keeps you on a supported version automatically and prepares your project for [<Constant name="fusion_engine" />](/docs/introduction) later.
 
 :::info The single-hop path
 
