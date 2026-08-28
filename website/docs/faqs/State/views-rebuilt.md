@@ -36,6 +36,25 @@ with renamed as (
 select * from renamed
 ```
 
+If a CTE explicitly names its columns, a `select *` that reads from that CTE won't force a rebuild even if an earlier CTE used `select *` on a `ref()` or `source()`. The typical staging pattern is reused:
+
+```sql
+with source as (
+    select * from {{ source('jaffle_shop', 'orders') }}
+),
+
+renamed as (
+    select
+        id as order_id,
+        user_id as customer_id,
+        amount as order_total
+    from source
+)
+
+select * from renamed
+```
+
+
 :::tip
 To avoid forced rebuilds, use explicit column names when selecting directly from a `ref()` or `source()`. You can also exclude views from execution using `--exclude config.materialized:view`.
 :::
