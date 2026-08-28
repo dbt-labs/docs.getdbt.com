@@ -48,7 +48,7 @@
       "permanent": true
     },
     {
-      "source": "/docs/dbt/about-core",
+      "source": "/docs/fusion/about-core",
       "destination": "/docs/introduction",
       "permanent": true
     },
