@@ -53,6 +53,10 @@ Without configuring anything, <Constant name="dbt" />'s state-aware orchestratio
 
 ### Handling concurrent jobs
 
+:::caution Not supported in dbt State
+Concurrent job handling works differently in dbt State. For a full list of behavioral differences, refer to [Known differences from state-aware orchestration](/docs/deploy/dbt-state-migration#known-differences-from-state-aware-orchestration).
+:::
+
 If two separate jobs both depend on the same downstream model (for example, `model_ab`) and both detect upstream changes (`updates_on = any`), `model_ab` could run twice &mdash; once for each job. However, if `model_ab` was already built and nothing has changed since that build, neither job will rebuild it. Instead, both jobs will reuse the existing version instead of rebuilding.
 
 Under state-aware orchestration, all jobs read and write from the same shared state and build a model only when either the code or data state has changed. This means that each job individually evaulates whether a model needs rebuilding based on the model’s compiled code and upstream data state.

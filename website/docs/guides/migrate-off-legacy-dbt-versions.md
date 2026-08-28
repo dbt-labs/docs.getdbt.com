@@ -76,4 +76,4 @@ Moving from a pinned legacy version to a release track can surface behavior chan
 
 ## Get help
 
-If you hit a blocker you can't resolve, [contact Support](mailto:support@dbtlabs.com) with your project ID, environment ID, affected job run IDs and logs, your current version, and your target release track.
+If you hit a blocker you can't resolve, [contact Support](mailto:support@getdbt.com) with your project ID, environment ID, affected job run IDs and logs, your current version, and your target release track.

@@ -27,12 +27,10 @@ sources:
     [schema](/reference/resource-properties/schema): <schema_name>
     [loader](/reference/resource-properties/loader): <string>
 
-    # requires v1.1+
-    [config](/reference/resource-properties/config):
-      [<source_config>](source-configs): <config_value>
-      [freshness](/reference/resource-properties/freshness):
-      # changed to config in v1.10
-      [loaded_at_field](/reference/resource-properties/freshness#loaded_at_field): <column_name>
+    [config](/reference/resource-properties/config): # requires v1.1+
+      [<source_config>](/reference/source-configs): <config_value>
+      [loaded_at_field](/reference/resource-properties/freshness#loaded_at_field): <column_name> # moved under config in v1.10
+      [freshness](/reference/resource-properties/freshness): # moved under config in v1.10
         warn_after:
           [count](/reference/resource-properties/freshness#count): <positive_integer>
           [period](/reference/resource-properties/freshness#period): minute | hour | day
@@ -40,11 +38,10 @@ sources:
           [count](/reference/resource-properties/freshness#count): <positive_integer>
           [period](/reference/resource-properties/freshness#period): minute | hour | day
         [filter](/reference/resource-properties/freshness#filter): <where-condition>
-      [meta](/reference/resource-configs/meta): {<dictionary>} # changed to config in v1.10
-      [tags](/reference/resource-configs/tags): [<string>] # changed to config in v1.10
+      [meta](/reference/resource-configs/meta): {<dictionary>} # moved under config in v1.10
+      [tags](/reference/resource-configs/tags): [<string>] # moved under config in v1.10
 
-    # deprecated in v1.10
-    [overrides](/reference/resource-properties/overrides): <string>
+    [overrides](/reference/resource-properties/overrides): <string> # deprecated in v1.10
 
     [quoting](/reference/resource-properties/quoting):
       database: true | false
