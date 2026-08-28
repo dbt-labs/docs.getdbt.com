@@ -1,7 +1,7 @@
 ---
 title: "About Fusion"
 sidebar_label: "About Fusion"
-id: "about-fusion"
+id: "about-dbt"
 description: "Fusion is the next-generation engine for dbt."
 ---
 
@@ -65,9 +65,9 @@ You can use <Constant name="fusion" /> in three ways:
 - [Install the dbt extension for VS Code](/docs/install-dbt-extension)
 - [Install dbt](/docs/local/install-dbt) to get <Constant name="fusion" /> from the command line
 
-To get started quickly, try the [Fusion quickstart](/guides/fusion). If you use the <Constant name="dbt_platform"/> and want to keep local development in sync, refer to [Hybrid development with the <Constant name="dbt_platform"/> and <Constant name="fusion" />](/guides/fusion-platform-local-workflow).
+To get started quickly, try the [Fusion quickstart](/guides/dbt). If you use the <Constant name="dbt_platform"/> and want to keep local development in sync, refer to [Hybrid development with the <Constant name="dbt_platform"/> and <Constant name="fusion" />](/guides/dbt-platform-local-workflow).
 
-_Need Apache 2.0 only? [Install dbt Core 2.0](/docs/local/install-dbt-core-v2), the open-source project behind <Constant name="fusion" />._
+_Need Apache 2.0 only? [Install open source dbt v2](/docs/local/install-dbt-v2), the open-source project behind <Constant name="fusion" />._
 
 import AboutFusion from '/snippets/_about-fusion.md';
 

@@ -112,7 +112,7 @@ function Home() {
                   title="Move to the dbt platform"
                   tag="Guide"
                   body="Move from self-hosted dbt Core to the dbt platform and follow recommended best practices for building scalable data pipelines."
-                  link="/guides/core-migration-1?step=1"
+                  link="/guides/dbt-migration-1?step=1"
                   icon="tool"
                 />
               </div>

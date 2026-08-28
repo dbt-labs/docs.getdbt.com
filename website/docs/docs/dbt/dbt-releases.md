@@ -1,28 +1,25 @@
 ---
-title: "Fusion releases"
-id: "fusion-releases"
-description: "Track current versions and release history for the dbt Fusion engine."
+title: "dbt-releases"
+id: "dbt-releases"
+sidebar_label: "dbt releases"
+description: "Track current versions and release history for v2."
 pagination_next: null
 pagination_prev: null
 ---
 
 import FusionReleases from '/src/components/fusionReleases';
 
-# Fusion releases <Lifecycle status="preview" />
+# Self-hosted dbt releases <Lifecycle status="preview" />
 
-:::note Fusion availability
+This page shows release information for local builds of dbt v2 only. v2 releases on the <Constant name="dbt_platform" /> adhere to the [release tracks](/docs/dbt-versions/dbt-release-tracks) categories, giving you control over release cadence and stability.
 
-This page shows release information for local builds of <Constant name="fusion" /> only. <Constant name="fusion" /> releases on the <Constant name="dbt_platform" /> adhere to the [release tracks](/docs/dbt-versions/dbt-release-tracks) categories, giving you control over release cadence and stability.
+Track current versions and full release history for dbt v2. This data updates live from dbt release channels.
 
-:::
-
-Track current versions and full release history for the <Constant name="fusion_engine" />. This data updates live from dbt release channels.
-
-Each of the versions on this page links to the matching section in the [dbt Fusion changelog](https://github.com/dbt-labs/dbt-core/blob/main/CHANGELOG-fusion.md) on GitHub.
+Each of the versions on this page links to the matching section in the [dbt v2 changelog](https://github.com/dbt-labs/dbt-core/blob/main/CHANGELOG-fusion.md) on GitHub.
 
 ## Release channels
 
-The <Constant name="fusion_engine" /> is distributed through three release channels:
+dbt v2 is distributed through three release channels:
 
 | Channel | Description | Stability |
 |---------|-------------|-----------|
@@ -32,25 +29,25 @@ The <Constant name="fusion_engine" /> is distributed through three release chann
 
 ## Known-bad releases
 
-If a shipped <Constant name="fusion" /> release is later found to contain a regression, dbt Labs flags it as a known-bad release. If you have a flagged version installed, the dbt VS Code extension shows a warning notification telling you which version to update to. To move off a flagged version, update it using your installation method (for example, pip or Homebrew). For details, including how air-gapped users receive these notifications, refer to [Known-bad releases](/docs/dbt-versions/fusion-version-compatibility#known-bad-releases).
+If a shipped v2 release is later found to contain a regression, dbt Labs flags it as a known-bad release. If you have a flagged version installed, the dbt VS Code extension shows a warning notification telling you which version to update to. To move off a flagged version, update it using your installation method (for example, pip or Homebrew). For details, including how air-gapped users receive these notifications, refer to [Known-bad releases](/docs/dbt-versions/dbt-version-compatibility#known-bad-releases).
 
-## dbt platform Fusion release tracks
+## dbt platform release tracks
 
-On <Constant name="dbt_platform" />, each [environment](/docs/deploy/deploy-environments) uses the account default or your chosen **Fusion release track**. Release tracks control how often that environment receives new Fusion builds. They're separate from the local CLI release channels in the previous section.
+On <Constant name="dbt_platform" />, each [environment](/docs/deploy/deploy-environments) uses the account default or your chosen **release track**. Release tracks control how often that environment receives new v2 builds. They're separate from the local CLI release channels in the previous section.
 
-For cadence, plan availability, and API values (`fusion-nightly`, `fusion-stable`, and more), refer to [Fusion release tracks](/docs/dbt-versions/dbt-release-tracks#fusion-release-tracks). To change the release track for an environment, follow [Upgrade dbt in dbt platform](/docs/dbt-versions/upgrade-dbt-platform-version).
+For cadence, plan availability, and API values (`nightly`, `stable`, and more), refer to [release tracks](/docs/dbt-versions/dbt-release-tracks#fusion-release-tracks). To change the release track for an environment, follow [Upgrade dbt in dbt platform](/docs/dbt-versions/upgrade-dbt-platform-version).
 
 :::tip Live data below is for local CLI channels
 
-The **Current versions** cards and full release list below pull the public <Constant name="fusion" /> manifest used for _local_ installs (`dev`, `canary`, `latest`). You should use [release tracks](/docs/dbt-versions/dbt-release-tracks) for <Constant name="dbt_platform" /> planning.
+The **Current versions** cards and full release list below pull the public v2 manifest used for _local_ installs (`dev`, `canary`, `latest`). You should use [release tracks](/docs/dbt-versions/dbt-release-tracks) for <Constant name="dbt_platform" /> planning.
 
 :::
 
 <details>
-    <summary>Updating your self-hosted Fusion installation</summary>
+    <summary>Updating your self-hosted installation</summary>
 <p>
 
-The following commands apply only to _local_ installations of <Constant name="fusion" />. They don't affect which <Constant name="fusion" /> build your <Constant name="dbt_platform" /> environments use. Instead, you can set a [Fusion release track](https://github.com/docs/dbt-versions/dbt-release-tracks#fusion-release-tracks) per environment in <Constant name="dbt_platform" />.
+The following commands apply only to _local_ installations of dbt. They don't affect which v2 build your <Constant name="dbt_platform" /> environments use. Instead, you can set a [release track](https://github.com/docs/dbt-versions/dbt-release-tracks#fusion-release-tracks) per environment in <Constant name="dbt_platform" />.
 
 Running the system update command without a version flag installs the `latest` stable release:
 

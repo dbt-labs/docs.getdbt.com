@@ -1,6 +1,6 @@
 ---
 title: "Upgrade to Fusion part 2: Making the move"
-id: "upgrade-to-fusion"
+id: "upgrade-to-dbt"
 # time_to_complete: '30 minutes' commenting out until we test
 level: 'Intermediate'
 icon: 'zap'
@@ -28,12 +28,12 @@ Once you complete the <Constant name="fusion" /> migration, your team will benef
 
 Before upgrading your development environment, confirm:
 
-- Your project is on the **Latest** release track (completed in [Part 1: Preparing to upgrade](/guides/prepare-fusion-upgrade))
+- Your project is on the **Latest** release track (completed in [Part 1: Preparing to upgrade](/guides/prepare-dbt-upgrade))
 - Your project must be using a supported adapter and auth method.    
     <FusionAdapters/>
 - You have a developer license in <Constant name="dbt_platform" />
 - <Constant name="fusion" /> has been enabled for your account
-- You have appropriate permissions to modify environments (see [Assign upgrade access](https://docs.getdbt.com/guides/upgrade-to-fusion?step=3#assign-upgrade-access-optional) if restricted)
+- You have appropriate permissions to modify environments (see [Assign upgrade access](https://docs.getdbt.com/guides/upgrade-to-dbt?step=3#assign-upgrade-access-optional) if restricted)
 
 
 ## Upgrade your development environment

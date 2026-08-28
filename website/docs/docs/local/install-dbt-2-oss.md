@@ -1,8 +1,8 @@
 ---
-title: Install dbt Core 2.0
-id: install-dbt-core-v2
-description: "Install dbt Core 2.0, the open-source foundation behind Fusion."
-sidebar_label: "Install dbt Core 2.0"
+title: Install dbt open source v2
+id: install-dbt-v2
+description: "Install open source dbt v2, the open-source foundation behind Fusion."
+sidebar_label: "Install open source dbt v2"
 pagination_next: null
 pagination_prev: null
 availability: local_free
@@ -64,7 +64,7 @@ The [standard <Constant name="dbt" /> install](/docs/local/install-dbt) gives yo
 - `dbt lint` and error diagnostics
 - dbt VS Code extension integration
 
-For the full picture of what you get with dbt, refer to [Fusion availability](/docs/dbt/fusion-availability).
+For the full picture of what you get with dbt, refer to [Fusion availability](/docs/dbt/dbt-availability).
 
 ## Contributing
 

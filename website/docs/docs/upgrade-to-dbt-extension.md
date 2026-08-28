@@ -1,8 +1,8 @@
 ---
-title: Upgrade to Fusion
-id: upgrade-to-fusion-extension
-description: "Upgrade your dbt project to the Fusion engine from the VS Code extension."
-sidebar_label: "Upgrade to Fusion"
+title: Upgrade to dbt v2
+id: upgrade-to-dbt-extension
+description: "Upgrade your dbt project to dbt v2 from the VS Code extension."
+sidebar_label: "Upgrade to dbt v2"
 availability: local_all
 ---
 

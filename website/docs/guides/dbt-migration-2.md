@@ -1,6 +1,6 @@
 ---
 title: 'Move from dbt Core to the dbt platform: What you need to know'
-id: core-migration-2
+id: dbt-migration-2
 description: "Use this guide to understand the considerations and methods you need to move from dbt Core to the dbt platform."
 hoverSnippet: "Use this guide to understand the considerations and methods you need to move from dbt Core to the dbt platform."
 icon: 'guides'
@@ -39,13 +39,13 @@ Today thousands of companies, with data teams ranging in size from 2 to 2,000, r
 
 The guide outlines the following steps:
 
-- [Considerations](/guides/core-migration-2?step=3): Learn about the most important things you need to think about when moving from Core to Cloud.
-- [Plan your move](/guides/core-migration-2?step=4): Considerations you need to make, such as user roles and permissions, onboarding order, current workflows, and more.
-- [Move to <Constant name="dbt" />](/guides/core-migration-2?step=5): Review the steps to move your <Constant name="core" /> project to <Constant name="dbt" />, including setting up your account, data platform, and <Constant name="git" /> repository.
-- [Test and validate](/guides/core-migration-2?step=6): Discover how to ensure model accuracy and performance post-move.
-- [Transition and training](/guides/core-migration-2?step=7): Learn how to fully transition to <Constant name="dbt" /> and what training and support you may need. 
-- [Summary](/guides/core-migration-2?step=8): Summarizes key takeaways and what you've learned in this guide.
-- [What's next?](/guides/core-migration-2?step=9): Introduces what to expect in the following guides.
+- [Considerations](/guides/dbt-migration-2?step=3): Learn about the most important things you need to think about when moving from Core to Cloud.
+- [Plan your move](/guides/dbt-migration-2?step=4): Considerations you need to make, such as user roles and permissions, onboarding order, current workflows, and more.
+- [Move to <Constant name="dbt" />](/guides/dbt-migration-2?step=5): Review the steps to move your <Constant name="core" /> project to <Constant name="dbt" />, including setting up your account, data platform, and <Constant name="git" /> repository.
+- [Test and validate](/guides/dbt-migration-2?step=6): Discover how to ensure model accuracy and performance post-move.
+- [Transition and training](/guides/dbt-migration-2?step=7): Learn how to fully transition to <Constant name="dbt" /> and what training and support you may need. 
+- [Summary](/guides/dbt-migration-2?step=8): Summarizes key takeaways and what you've learned in this guide.
+- [What's next?](/guides/dbt-migration-2?step=9): Introduces what to expect in the following guides.
 
 ## Considerations
 
@@ -137,13 +137,13 @@ This provides developers with the benefits of an enhanced workflow while ensurin
 This guide is your roadmap to help you think about migration strategies and what moving from <Constant name="core" /> to <Constant name="dbt" /> could look like.
 
 After reviewing the considerations and planning your move, you may want to start moving your <Constant name="core" /> project to <Constant name="dbt" />:
-- Check out the detailed [Move to <Constant name="dbt" />: Get started](/guides/core-migration-1?step=1) guide for useful tasks and insights for a smooth transition from <Constant name="core" /> to <Constant name="dbt" />.
+- Check out the detailed [Move to <Constant name="dbt" />: Get started](/guides/dbt-migration-1?step=1) guide for useful tasks and insights for a smooth transition from <Constant name="core" /> to <Constant name="dbt" />.
 
 For a more detailed comparison of <Constant name="core" /> and <Constant name="dbt" />, check out [How <Constant name="dbt" /> compares with <Constant name="core" />](https://www.getdbt.com/product/dbt-core-vs-dbt-cloud).
 
 ## Test and validate
 
-After [setting the foundations of <Constant name="dbt" />](/guides/core-migration-1?step=1), it's important to validate your migration to ensure seamless functionality and data integrity:
+After [setting the foundations of <Constant name="dbt" />](/guides/dbt-migration-1?step=1), it's important to validate your migration to ensure seamless functionality and data integrity:
 
 - **Review your dbt project:** Ensure your project compiles correctly and that you can run commands. Make sure your models are accurate and monitor performance post-move.
 - **Start cutover:** You can start the cutover to <Constant name="dbt" /> by creating a <Constant name="dbt" /> job with commands that only run a small subset of the DAG. Validate the tables are being populated in the proper database/schemas as expected. Then continue to expand the scope of the job to include more sections of the DAG as you gain confidence in the results.
@@ -186,7 +186,7 @@ This guide should now have given you some insight and equipped you with a framew
 
 - **Plan you move**: Highlighting the importance of workflow redesign, role-specific responsibilities, and the adoption of new processes to harness <Constant name="dbt" />'s collaborative and efficient environment.
 
-- **Move to <Constant name="dbt" />**: Linking to [the guide](/guides/core-migration-1?step=1) that outlines technical steps required to transition your <Constant name="core" /> project to <Constant name="dbt" />, including setting up your account, data platform, and <Constant name="git" /> repository.
+- **Move to <Constant name="dbt" />**: Linking to [the guide](/guides/dbt-migration-1?step=1) that outlines technical steps required to transition your <Constant name="core" /> project to <Constant name="dbt" />, including setting up your account, data platform, and <Constant name="git" /> repository.
 
 - **Test and validate**: Emphasizing technical transitions, including testing and validating your dbt projects within the <Constant name="dbt" /> ecosystem to ensure data integrity and performance.
 
