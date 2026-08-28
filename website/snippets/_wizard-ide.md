@@ -137,7 +137,7 @@ import FusionMigrationWorkflow from '/snippets/_fusion-migration-workflow.md';
 
 <FusionMigrationWorkflow />
 
-For more on how to prepare your project for <Constant name="fusion" /> and what to do when you hit compatibility errors, see the [Fusion readiness checklist](/docs/dbt/dbt-readiness) and the [Upgrade to Fusion guides](/guides/prepare-dbt-upgrade).
+For more on how to prepare your project for <Constant name="fusion" /> and what to do when you hit compatibility errors, see the [dbt v2 readiness checklist](/docs/dbt/dbt-readiness) and the [Upgrade to Fusion guides](/guides/prepare-dbt-upgrade).
 
 ### Writing effective prompts
 

@@ -102,7 +102,6 @@ exports.versions = products.flatMap((product) =>
  */
 exports.versionedPages = [
   { page: "docs/dbt/fusion", firstVersion: "2.0" },
-  { page: "docs/dbt/get-started-dbt", firstVersion: "2.0" },
   { page: "docs/dbt/dbt-availability", firstVersion: "2.0" },
   { page: "docs/dbt/dbt-readiness", firstVersion: "2.0" },
   { page: "docs/dbt/new-concepts", firstVersion: "2.0" },

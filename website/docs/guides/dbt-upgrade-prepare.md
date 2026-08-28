@@ -73,7 +73,7 @@ When enabled, only users assigned the [`Fusion admin`](/docs/platform/manage-acc
 
 With the readiness experience enabled, you can monitor your project's eligibility as you work through the preparation steps below. The panel shows which jobs are eligible or ineligible for <Constant name="fusion" /> and why.
 
-<Lightbox src="/img/fusion/fusion-readiness.png" width="60%" title="The Fusion readiness checklist"/>
+<Lightbox src="/img/fusion/fusion-readiness.png" width="60%" title="The dbt v2 readiness checklist"/>
 
 Common ineligibility reasons include:
 - Environment(s) not on the **Latest** [release track](/docs/dbt-versions/dbt-release-tracks#which-release-tracks-are-available]

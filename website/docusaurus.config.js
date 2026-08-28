@@ -251,7 +251,7 @@ var siteSettings = {
               <div class='cta-section-text'>
                 <span class="eyebrow">Get started</span>
                 <h2 class="heading-2">Start building with dbt.</h2>
-                <p>The free dbt VS Code extension is the best way to develop locally with the dbt Fusion Engine.</p>
+                <p>The free dbt VS Code extension is the best way to develop locally with dbt.</p>
               </div>
               <div class="cta-section">
                 <a href="https://marketplace.visualstudio.com/items?itemName=dbtLabsInc.dbt" target="_blank" class="primary-cta">Install free extension</a>

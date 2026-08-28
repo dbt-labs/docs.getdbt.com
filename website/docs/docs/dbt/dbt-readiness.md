@@ -1,8 +1,8 @@
 ---
-title: Fusion readiness checklist
+title: dbt v2 readiness checklist
 id: dbt-readiness
 description: "Your to-do list for preparing for Fusion"
-sidebar_label: "Fusion readiness checklist"
+sidebar_label: "v2 readiness checklist"
 pagination_next: null
 pagination_prev: null
 ---

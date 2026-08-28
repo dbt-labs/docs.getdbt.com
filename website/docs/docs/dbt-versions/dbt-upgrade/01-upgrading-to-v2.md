@@ -40,6 +40,8 @@ For full instructions, including Homebrew, winget, and additional options, refer
 
 ## What to know before upgrading
 
+If you have an older project that isn't ready to move to v2, or you need compatibility with existing tooling, packages, or workflows that haven't moved to v2 yet, you can stay on dbt v1.x, which remains fully supported. Over time, new capabilities will land in v2 only, so most people will eventually want to upgrade. To install or continue using v1.x, refer to [Install dbt v1.x](/docs/local/install-dbt?version=1.12).
+
 This new major version is an opportunity to _strengthen the framework_ by removing deprecated functionality, rationalizing confusing behavior, and providing more rigorous validation on erroneous inputs. This means that there is some work involved in preparing an existing dbt project for v2.
 
 That work is documented below — it should be simple, straightforward, and in many cases, auto-fixable with the [`dbt-autofix`](https://github.com/dbt-labs/dbt-autofix) helper or the [agent skill](https://github.com/dbt-labs/dbt-agent-skills/tree/main/skills/dbt-migration/skills/migrating-dbt-core-to-fusion).

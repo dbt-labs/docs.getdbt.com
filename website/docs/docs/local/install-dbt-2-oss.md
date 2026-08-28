@@ -1,8 +1,8 @@
 ---
-title: Install dbt Core 2.0
+title: Install dbt open source v2
 id: install-dbt-v2
-description: "Install dbt Core 2.0, the open-source foundation behind Fusion."
-sidebar_label: "Install dbt Core 2.0"
+description: "Install open source dbt v2, the open-source foundation behind Fusion."
+sidebar_label: "Install open source dbt v2"
 pagination_next: null
 pagination_prev: null
 availability: local_free
