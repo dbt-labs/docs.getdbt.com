@@ -98,7 +98,7 @@ function Home() {
                   title="dbt"
                   tag="Article"
                   body="Explore dbt and discover how its shared Rust runtime delivers faster, more scalable performance."
-                  link="/docs/dbt/introduction"
+                  link="/docs/introduction"
                   icon="zap"
                 />
                 <Card
