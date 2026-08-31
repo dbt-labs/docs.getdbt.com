@@ -16,7 +16,7 @@ As we refine MetricFlow’s API layers, some users may find it easier to set up 
 
 </DetailsToggle>
 
-<DetailsToggle alt_header="Why is my query limited to 100 rows in the Cloud CLI?">
+<DetailsToggle alt_header="Why is my query limited to 100 rows in the dbt platform CLI?">
 
 The default `limit` for query issues from the <Constant name="platform_cli" /> is 100 rows. We set this default to prevent returning unnecessarily large data sets as the <Constant name="platform_cli" /> is typically used to query the dbt Semantic Layer during the development process, not for production reporting or to access large data sets. For most workflows, you only need to return a subset of the data.
   

@@ -162,7 +162,7 @@ MetricFlow is hosted in <Constant name="dbt" />. Requests from the [Semantic Lay
 2. Then you build your metrics on top of these semantic models. This is all done in `.yml` configurations alongside your dbt models in your projects.
 3. Once you've defined your metrics and semantic models, you can [configure the dbt Semantic Layer](/docs/use-dbt-semantic-layer/setup-sl) in <Constant name="dbt" />.
 
-Read our [dbt Semantic Layer quickstart](/guides/sl-snowflake-qs) guide for more information.
+Read our [dbt Semantic Layer quickstart](/guides/sl-qs) guide for more information.
 
 </Expandable>
 

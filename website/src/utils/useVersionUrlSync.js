@@ -8,20 +8,20 @@ import VersionContext from '../stores/VersionContext';
  */
 export function useVersionUrlSync() {
   const location = useLocation();
-  const { version } = useContext(VersionContext);
+  const { urlVersion } = useContext(VersionContext);
 
   useEffect(() => {
     // Only run on client side and when we have a version
-    if (typeof window === 'undefined' || !version) return;
+    if (typeof window === 'undefined' || !urlVersion) return;
 
     const url = new URL(window.location.href);
     const currentVersionParam = url.searchParams.get('version');
 
     // Only update if the version param is missing or different
-    if (currentVersionParam !== version) {
-      url.searchParams.set('version', version);
+    if (currentVersionParam !== urlVersion) {
+      url.searchParams.set('version', urlVersion);
       window.history.replaceState({}, '', url.toString());
     }
-  }, [location.pathname, version]);
+  }, [location.pathname, urlVersion]);
 }
 

@@ -135,7 +135,7 @@ You may have heard some buzz that dbt joined the industry initiative called the 
 
 ### Get started today
 
-This new spec is **live on the Fusion engine today.** If you’ve [migrated](/guides/upgrade-to-fusion?step=1) onto the engine, and are curious about getting started with the dbt Semantic Layer, [check out our docs](/docs/build/latest-metrics-spec) and get started defining your metrics! This new spec will also be released to dbt Core in version 1.12, coming in the near future. dbt platform users on the dbt Core engine will be able to migrate to the new spec as soon as they upgrade to the Latest dbt version!
+This new spec is **live on the Fusion engine today.** If you’ve [migrated](/guides/upgrade-to-dbt?step=1) onto the engine, and are curious about getting started with the dbt Semantic Layer, [check out our docs](/docs/build/latest-metrics-spec) and get started defining your metrics! This new spec will also be released to dbt Core in version 1.12, coming in the near future. dbt platform users on the dbt Core engine will be able to migrate to the new spec as soon as they upgrade to the Latest dbt version!
 
 Additionally, if you’re an existing user of the semantic layer, our [`dbt-autofix` script](https://github.com/dbt-labs/dbt-autofix) now has support for migrating from the legacy metrics implementation to the new one! Simply run `dbt-autofix deprecations --semantic-layer`, locally or in dbt Studio on the platform, and the vast majority of the code will be migrated automatically!
 

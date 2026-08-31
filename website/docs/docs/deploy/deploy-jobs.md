@@ -51,6 +51,11 @@ You can create a deploy job and configure it to run on [scheduled days and times
     - **Run on schedule** &mdash; Run the deploy job on a set schedule.
         - **Timing** &mdash; Specify whether to [schedule](#schedule-days) the deploy job using **Intervals** that run the job every specified number of hours, **Specific hours** that run the job at specific times of day, or **Cron schedule** that run the job specified using [cron syntax](#cron-schedule).
         - **Days of the week** &mdash; By default, it’s set to every day when **Intervals** or **Specific hours** is chosen for **Timing**.
+
+        :::note Using `state:modified` on a scheduled job 
+        Using a [`state:modified`](/reference/node-selection/methods#state) selector on a scheduled job can result in the job completing successfully with zero models built when no changes are detected since the last deferred run. Refer to [Scheduled jobs and state:modified](#scheduled-jobs-and-statemodified) for details and recommendations.
+        :::
+
     - **Run when another job finishes** &mdash; Run the deploy job when another _upstream_ deploy [job completes](#trigger-on-job-completion).  
         - **Project** &mdash; Specify the parent project that has that upstream deploy job. 
         - **Job** &mdash; Specify the upstream deploy job. 
@@ -114,6 +119,12 @@ Examples of cron job schedules:
 - `0 7 L * 5`: At 07:00 AM, on the last day of the month, and on Friday.
 - `30 14 L * *`: At 02:30 PM, on the last day of the month.
 - `0 4 * * MON#1`: At 4:00 AM on the first Monday of every month.
+
+### Scheduled jobs and `state:modified`
+
+import StateModifiedScheduledJobs from '/snippets/_state-modified-scheduled-jobs.md';
+
+<StateModifiedScheduledJobs />
 
 ### Trigger on job completion  <Lifecycle status="self_service,managed,managed_plus" />
 To _chain_ deploy jobs together:

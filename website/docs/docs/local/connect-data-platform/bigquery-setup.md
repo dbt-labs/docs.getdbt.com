@@ -18,11 +18,11 @@ availability: local_free
 
 <VersionBlock firstVersion="2.0">
 
-# Connect BigQuery to Fusion <Lifecycle status='preview' />
+# Connect BigQuery to <Constant name="fusion" /> <Lifecycle status='preview' />
 
 You can configure the BigQuery adapter by running `dbt init` in your CLI or manually providing the `profiles.yml` file with the fields configured for your authentication type.
 
-The BigQuery adapter for Fusion supports the following [authentication methods](#supported-authentication-types):
+The BigQuery adapter for <Constant name="fusion" /> supports the following [authentication methods](#supported-authentication-types):
 - Service account (JSON file)
 - gcloud OAuth
 - Workload Identity Federation (Microsoft Entra)
@@ -33,7 +33,7 @@ import FusionBigQueryWarehousePerms from '/snippets/_fusion-warehouse-permission
 
 <FusionBigQueryWarehousePerms />
 
-## Configure Fusion
+## Configure <Constant name="fusion" />
 
 Executing `dbt init` in your CLI will prompt for the following fields:
 - **Project ID:** The GCP BigQuery project ID

@@ -62,7 +62,7 @@ For more information, check out the Snowflake reference for [`CREATE ICEBERG TAB
 First, configure a catalog with `type: horizon` in `catalogs.yml`:
 
 <Tabs defaultValue="new" values={[
-  { label: 'New spec', value: 'new' },
+  { label: 'New spec (beta)', value: 'new' },
   { label: 'Old spec', value: 'old' }
 ]}>
 <TabItem value="new">
@@ -151,7 +151,7 @@ After you create the external catalog integration, you can do two things:
 Now, we can configure that external catalog in `catalogs.yml`. Here is an example for an AWS Glue catalog:
 
 <Tabs defaultValue="new" values={[
-  { label: 'New spec', value: 'new' },
+  { label: 'New spec (beta)', value: 'new' },
   { label: 'Old spec', value: 'old' }
 ]}>
 <TabItem value="new">

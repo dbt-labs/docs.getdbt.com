@@ -14,7 +14,6 @@ availability:
 ---
 
 import WizardSupportedProviders from '/snippets/_wizard-supported-providers.md';
-import WizardPlatformPreviewDisclaimer from '/snippets/_wizard-platform-preview-disclaimer.md';
 import WizardFeedbackCallout from '/snippets/_wizard-feedback-callout.md';
 
 # About dbt Wizard in the dbt platform <Lifecycle status="preview" />
@@ -59,7 +58,6 @@ Most of the workflows in [How to use dbt Wizard in your dbt project](/best-pract
 Always review AI-generated content, as it may be incorrect. For prompt best practices, refer to the [Prompt cookbook](/guides/prompt-cookbook).
 :::
 
-<WizardPlatformPreviewDisclaimer />
 
 ## Get started in the dbt platform
 
@@ -99,12 +97,6 @@ Always review AI-generated content, as it may be incorrect. For prompt best prac
     title="Use MCP servers"
     body="Understand MCP server support in the dbt platform experience."
     link="/docs/dbt-ai/wizard-platform-mcp"
-    icon="wizard"/>
-
-<Card
-    title="Data & Privacy"
-    body="Understand how dbt Wizard in the dbt platform handles privacy and data."
-    link="/docs/dbt-ai/wizard-platform-privacy-data"
     icon="wizard"/>
 
 </div>

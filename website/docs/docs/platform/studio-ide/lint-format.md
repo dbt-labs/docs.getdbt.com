@@ -51,7 +51,7 @@ With the <Constant name="studio_ide" />, you can seamlessly use [SQLFluff](https
 - Displays a **Code quality** tab to view lint and format results. Some editor diagnostics also appear in the **Problems** tab.
 
 :::info Linting considerations
-- The <Constant name="studio_ide" /> runs linting using the <Constant name="core" /> engine, even when your development environment uses the **<Constant name="fusion" /> Stable** release track. For more information, refer to [<Constant name="fusion" /> limitations](/docs/fusion/supported-features#limitations).
+- The <Constant name="studio_ide" /> runs linting using the <Constant name="core" /> engine, even when your development environment uses the **<Constant name="fusion" /> Stable** release track. For more information, refer to [<Constant name="fusion" /> limitations](/docs/dbt/supported-features#limitations).
 - Linting doesn't support ephemeral models in dbt v1.5 and lower. Refer to the [FAQs](#faqs) for more info.
 :::
 

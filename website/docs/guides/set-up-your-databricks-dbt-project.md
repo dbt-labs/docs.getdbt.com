@@ -46,9 +46,9 @@ Service principals are used to remove humans from deploying to production for co
 
 [Let’s create a service principal](https://docs.databricks.com/administration-guide/users-groups/service-principals.html#add-a-service-principal-to-your-databricks-account) in Databricks:
 
-1. Have your Databricks Account admin [add a service principal](https://docs.databricks.com/administration-guide/users-groups/service-principals.html#add-a-service-principal-to-your-databricks-account) to your account. The service principal’s name should differentiate itself from a user ID and make its purpose clear (eg dbt_prod_sp).
+1. Have your Databricks Account admin [add a service principal](https://docs.databricks.com/aws/en/admin/users-groups/manage-service-principals#-add-service-principals-to-your-account) to your account. The service principal’s name should differentiate itself from a user ID and make its purpose clear (eg dbt_prod_sp).
 2. Add the service principal added to any groups it needs to be a member of at this time. There are more details on permissions in our ["Unity Catalog best practices" guide](/best-practices/dbt-unity-catalog-best-practices).
-3. [Add the service principal to your workspace](https://docs.databricks.com/administration-guide/users-groups/service-principals.html#add-a-service-principal-to-a-workspace) and apply any [necessary entitlements](https://docs.databricks.com/administration-guide/users-groups/service-principals.html#add-a-service-principal-to-a-workspace-using-the-admin-console), such as Databricks SQL access and Workspace access.
+3. [Add the service principal to your workspace](https://docs.databricks.com/aws/en/admin/users-groups/manage-service-principals#assign-a-service-principal-to-a-workspace) and apply any [necessary entitlements](https://docs.databricks.com/aws/en/security/auth/entitlements), such as Databricks SQL access and Workspace access.
 
 ## Setting up Databricks Compute
 

@@ -32,7 +32,7 @@ Use this table to understand what each toolset needs and whether it works with o
 | Admin API | `DBT_HOST`, `DBT_TOKEN`, `DBT_ACCOUNT_ID` | Yes | No |
 | SQL execution (`execute_sql`) | Personal access token, `DBT_DEV_ENV_ID`, `DBT_USER_ID` | Yes | No |
 | Codegen | `DBT_PROJECT_DIR`, `DBT_PATH`, and `DISABLE_DBT_CODEGEN=false` | Yes | Yes |
-| LSP / Fusion | `DBT_PROJECT_DIR`, `DBT_PATH`, and the dbt VS Code extension | Yes | Yes |
+| LSP / <Constant name="fusion" /> | `DBT_PROJECT_DIR`, `DBT_PATH`, and the dbt VS Code extension | Yes | Yes |
 
 :::note Toolsets auto-disable when required variables are missing
 If a required variable is not set, dbt-mcp will automatically disable that toolset rather than error. For example, if `DBT_HOST` is not configured, the Semantic Layer, Discovery, and Admin API toolsets won't be available. To confirm which toolsets are active, set `DBT_MCP_LOG_LEVEL=DEBUG` in your environment and check the [server logs](#debug-configurations).

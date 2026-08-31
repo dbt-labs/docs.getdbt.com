@@ -31,7 +31,7 @@ id: "contributing-coding"
 
 #### Overview
 
-<Constant name="core" /> (including v1, v2 / Fusion, and adapters), as well as the sites powering the Package Hub and Developer Hub, are all vibrant community projects. Unlike dbt Packages, contributing code to these projects typically requires some working knowledge of programming languages outside of SQL and Jinja, but the supportive community around these repositories can help you advance those skills. Even without contributing code, there are many ways to be part of communal development in these projects, detailed below. You can find a curated list of the most active OSS/SA projects that dbt Labs supports [here](/community/resources/oss-sa-projects).
+<Constant name="core" /> (including v1, v2 / <Constant name="fusion" />, and adapters), as well as the sites powering the Package Hub and Developer Hub, are all vibrant community projects. Unlike dbt Packages, contributing code to these projects typically requires some working knowledge of programming languages outside of SQL and Jinja, but the supportive community around these repositories can help you advance those skills. Even without contributing code, there are many ways to be part of communal development in these projects, detailed below. You can find a curated list of the most active OSS/SA projects that dbt Labs supports [here](/community/resources/oss-sa-projects).
 
 #### Contribution opportunities
 
@@ -49,7 +49,7 @@ There are three primary ways to contribute to the dbt projects. We’ll use <Con
 #### Get started
 
 - Read the <Constant name="core" /> [contribution guide](https://github.com/dbt-labs/dbt-core/blob/main/CONTRIBUTING.md) and the [Contributor Expectations](/community/resources/contributor-expectations).
-- If contributing to `dbt-core`, find an issue labeled “[good first issue](https://github.com/dbt-labs/dbt-fusion/issues?q=is%3Aopen+is%3Aissue+label%3Agood_first_issue)”, or look for similar labels on other repositories. If in doubt, also feel free to ask the maintainers for a good first issue, they’ll be excited to welcome you!
+- If contributing to `dbt-core`, find an issue labeled “[good first issue](https://github.com/dbt-labs/dbt-core/issues?q=is%3Aopen+is%3Aissue+label%3A%22type%3Agood-first-issue%22)”, or look for similar labels on other repositories. If in doubt, also feel free to ask the maintainers for a good first issue, they’ll be excited to welcome you!
 
 #### Need help?
 

@@ -66,7 +66,7 @@ There are a couple of different ways to sign in or register for a <Constant name
 
 <VersionBlock lastVersion="1.99">
 
-`dbt login` is available with v2 and later. To install the dbt VS Code extension, [upgrade your project to <Constant name="fusion" />](/docs/upgrade-to-fusion-extension).
+`dbt login` is available with v2 and later. To install the dbt VS Code extension, [upgrade your project to <Constant name="fusion" />](/docs/upgrade-to-dbt-extension).
 
 </VersionBlock>
 

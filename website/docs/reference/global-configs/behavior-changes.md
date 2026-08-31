@@ -72,14 +72,15 @@ Several behavior change flags on the <Constant name="dbt_platform" /> `Latest` r
 | [require_yaml_configuration_for_mf_time_spines](/reference/global-configs/behavior-flags/require_yaml_configuration_for_mf_time_spines) | Suppresses a deprecation warning (no functional change) |
 | [validate_macro_args](/reference/global-configs/behavior-flags/validate_macro_args) | New warning for mismatched macro arguments; errors with `--warn-error` |
 
-### Introduced in Fusion and Core v2
+### Introduced in <Constant name="fusion" /> and Core v2
 
 The following flags are specific to <Constant name="fusion" /> and have no equivalent in <Constant name="core" />. They are configured the same way — in the `flags:` block of `dbt_project.yml`.
 
 | Flag | Adapter | Default | Introduced | Becomes default |
 |---|---|---|---|---|
-| use_catalogs_v2 | All | `false` | Fusion preview.174 (Apr 22, 2026) | Not yet set |
-| bigquery_noop_alter_relation_comment | BigQuery | `false` | Fusion preview.124 (Feb 19, 2026) | Not yet set |
+| [require_resource_names_without_plus_prefix](/reference/global-configs/behavior-flags/require_resource_names_without_plus_prefix) | All | `false` | 2.0.0-preview.208 | Not yet set |
+| use_catalogs_v2 | All | `false` | 2.0.0-preview.174 | Not yet set |
+| bigquery_noop_alter_relation_comment | BigQuery | `false` | 2.0.0-preview.124 | Not yet set |
 
 
 ### Adapter-specific behavior change flags
@@ -152,10 +153,10 @@ When a maturity date has not yet been set (shown as -), we have not yet determin
 
 Since behavior change flags are different from other dbt changes, it's important to understand the difference:
 - [Deprecation warnings](/reference/deprecations) &mdash; Features in your project code that will stop working (behavior flags often control when these become errors)
-- [Deprecated CLI flags](/docs/dbt-versions/core-upgrade/upgrading-to-v2#deprecated-flags) &mdash; Command-line flags being removed in dbt Fusion
+- [Deprecated CLI flags](/docs/dbt-versions/dbt-upgrade/upgrading-to-v2#deprecated-flags) &mdash; Command-line flags being removed in dbt Fusion
 
 See the [Changes overview](/reference/changes-overview) for a quick comparison.
 
-If you're upgrading to [dbt Fusion](/docs/dbt-versions/core-upgrade/upgrading-to-v2) or [<Constant name="core_v2" />](/docs/dbt-versions/core-upgrade/upgrading-to-v2), a subset of behavior change flags are removed and their new behavior is always enabled.
+If you're upgrading to [dbt Fusion](/docs/dbt-versions/dbt-upgrade/upgrading-to-v2) or [<Constant name="core_v2" />](/docs/dbt-versions/dbt-upgrade/upgrading-to-v2), a subset of behavior change flags are removed and their new behavior is always enabled.
 
 </Expandable>

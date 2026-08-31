@@ -1,8 +1,8 @@
 | <div style={{width:'240px'}}>Guide</div> | <div style={{width:'250px'}}>Information</div> | <div style={{width:'200px'}}>Audience</div> |
 |------------|-------------|----------|
-| [Move from dbt Core to <Constant name="dbt_platform" />: What you need to know](/guides/core-migration-2) | Understand the considerations and methods needed in your move from dbt Core to <Constant name="dbt_platform" />. | Team leads <br /> Admins |
-| [Move from dbt Core to <Constant name="dbt_platform" />: Get started](/guides/core-migration-1?step=1) | Learn the steps needed to move from dbt Core to <Constant name="dbt_platform" />. | Developers <br /> Data engineers <br /> Data analysts |
-| [Move from dbt Core to <Constant name="dbt_platform" />: Optimization tips](/guides/core-migration-3) | Learn how to optimize your <Constant name="dbt" /> experience with common scenarios and useful tips. | Everyone |
+| [Move from dbt Core to <Constant name="dbt_platform" />: What you need to know](/guides/dbt-migration-2) | Understand the considerations and methods needed in your move from dbt Core to <Constant name="dbt_platform" />. | Team leads <br /> Admins |
+| [Move from dbt Core to <Constant name="dbt_platform" />: Get started](/guides/dbt-migration-1?step=1) | Learn the steps needed to move from dbt Core to <Constant name="dbt_platform" />. | Developers <br /> Data engineers <br /> Data analysts |
+| [Move from dbt Core to <Constant name="dbt_platform" />: Optimization tips](/guides/dbt-migration-3) | Learn how to optimize your <Constant name="dbt" /> experience with common scenarios and useful tips. | Everyone |
 
 ### Why move to the dbt platform?
 
@@ -18,7 +18,7 @@ Self-hosting hides its true cost in engineer hours and wasted compute. dbt platf
 :::caution State-aware orchestration is now dbt State
 [dbt State](/docs/deploy/dbt-state-about) works with all engines and environments: <Constant name="core" />, the <Constant name="dbt_platform" />, and <Constant name="fusion_engine" />.
 
-If you're using state-aware orchestration prior to June 1, 2026, you can continue using it. Existing state-aware orchestration customers automatically receive a 90-day trial of dbt State. To get started, refer to [Migrate from state-aware orchestration](/docs/deploy/dbt-state-migration).
+If you were using state-aware orchestration prior to June 1, 2026, you can continue using it. Once you start your free dbt State trial, it will be extended beyond the standard 30-day period. If the extension isn't applied to your account, contact your account team. To get started, refer to [Migrate from state-aware orchestration](/docs/deploy/dbt-state-migration).
 ::: 
 
 The data layer is the AI layer—make sure it's tested, defined, and trusted end to end.

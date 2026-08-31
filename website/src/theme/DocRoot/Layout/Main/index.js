@@ -74,13 +74,13 @@ export default function DocRootLayoutMain({
       if (parseFloat(dbtVersion) >= 2) {
         setPreData({
           showisPrereleaseBanner: true,
-          isPrereleaseBannerText: `You're viewing the preview docs for the <a href="https://docs.getdbt.com/docs/fusion/about-fusion">dbt Fusion engine</a>.`,
+          isPrereleaseBannerText: `You're viewing the preview docs for the <a href="https://docs.getdbt.com/docs/dbt/about-dbt">dbt Fusion engine</a>.`,
         });
       } else {
         // For other prerelease versions (like 1.11 beta)
         setPreData({
           showisPrereleaseBanner: true,
-          isPrereleaseBannerText: `You're viewing the docs for the beta version of dbt Core. Features may change before final release. Read more in the <a href="/docs/dbt-versions/core-upgrade/upgrading-to-v1.12">Upgrade guide</a>.`,
+          isPrereleaseBannerText: `You're viewing the docs for the beta version of dbt Core. Features may change before final release. Read more in the <a href="/docs/dbt-versions/dbt-upgrade/upgrading-to-v1.12">Upgrade guide</a>.`,
         });
       }
     }

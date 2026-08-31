@@ -13,6 +13,54 @@ Each monthly **Compatible** release includes functionality matching up-to-date o
 
 For more information, see [release tracks](/docs/dbt-versions/dbt-release-tracks).
 
+## August 2026
+
+Release date: August 18, 2026
+
+This compatible release includes functionality from the following versions of dbt Core OSS:
+
+```
+dbt-core==1.12.0
+
+# shared interfaces
+dbt-adapters==1.24.5
+dbt-common==1.38.0
+dbt-extractor==0.6.0
+dbt-semantic-interfaces==0.9.0
+dbt-sl-sdk[sync]==0.13.4
+dbt-state==2.42.0
+
+# adapters
+dbt-athena==1.11.0
+dbt-bigquery==1.12.0
+dbt-databricks==1.12.4
+dbt-fabric==1.9.4
+dbt-postgres==1.11.0
+dbt-redshift==1.11.0
+dbt-snowflake==1.12.0
+dbt-spark==1.10.3
+dbt-synapse==1.8.5
+dbt-teradata==1.11.0
+dbt-trino==1.10.3
+```
+
+Changelogs:
+- [dbt-core 1.12.0](https://github.com/dbt-labs/dbt-core/blob/1.12.latest/CHANGELOG.md)
+- [dbt-adapters 1.24.5](https://github.com/dbt-labs/dbt-adapters/blob/main/dbt-adapters/CHANGELOG.md)
+- [dbt-common 1.38.0](https://github.com/dbt-labs/dbt-common/blob/main/CHANGELOG.md)
+- [dbt-state 2.42.0](https://github.com/dbt-labs/dbt-state)
+- [dbt-athena 1.11.0](https://github.com/dbt-labs/dbt-adapters/blob/stable/dbt-athena/CHANGELOG.md)
+- [dbt-bigquery 1.12.0](https://github.com/dbt-labs/dbt-adapters/blob/stable/dbt-bigquery/CHANGELOG.md)
+- [dbt-databricks 1.12.4](https://github.com/databricks/dbt-databricks/blob/main/CHANGELOG.md)
+- [dbt-fabric 1.9.4](https://github.com/microsoft/dbt-fabric/releases/tag/v1.9.4)
+- [dbt-postgres 1.11.0](https://github.com/dbt-labs/dbt-adapters/blob/stable/dbt-postgres/CHANGELOG.md)
+- [dbt-redshift 1.11.0](https://github.com/dbt-labs/dbt-adapters/blob/stable/dbt-redshift/CHANGELOG.md)
+- [dbt-snowflake 1.12.0](https://github.com/dbt-labs/dbt-adapters/blob/stable/dbt-snowflake/CHANGELOG.md)
+- [dbt-spark 1.10.3](https://github.com/dbt-labs/dbt-adapters/blob/stable/dbt-spark/CHANGELOG.md)
+- [dbt-synapse 1.8.5](https://github.com/microsoft/dbt-synapse/blob/v1.8.latest/CHANGELOG.md)
+- [dbt-teradata 1.11.0](https://github.com/Teradata/dbt-teradata/releases/tag/v1.11.0)
+- [dbt-trino 1.10.3](https://github.com/starburstdata/dbt-trino/blob/master/CHANGELOG.md)
+
 ## July 2026
 
 Release date: July 21, 2026
@@ -707,7 +755,7 @@ Changelogs:
 - [dbt-bigquery 1.9.1](https://github.com/dbt-labs/dbt-bigquery/blob/1.9.latest/CHANGELOG.md#dbt-bigquery-191---january-10-2025)
 - [dbt-databricks 1.9.7](https://github.com/databricks/dbt-databricks/blob/main/CHANGELOG.md#dbt-databricks-197-feb-25-2025)
 - [dbt-fabric 1.9.4](https://github.com/microsoft/dbt-fabric/releases/tag/v1.9.4)
-- [dbt-postgres 1.9.0](https://github.com/dbt-labs/dbt-postgres/blob/main/CHANGELOG.md#dbt-postgres-190---december-09-2024)
+- [dbt-postgres 1.9.0](https://github.com/dbt-labs/dbt-adapters/blob/main/dbt-postgres/CHANGELOG.md#dbt-postgres-190---december-09-2024)
 - [dbt-redshift 1.9.3](https://github.com/dbt-labs/dbt-adapters/blob/main/dbt-redshift/CHANGELOG.md#dbt-redshift-193---april-01-2025)
 - [dbt-snowflake 1.9.2](https://github.com/dbt-labs/dbt-adapters/blob/main/dbt-snowflake/CHANGELOG.md#dbt-snowflake-192---march-07-2025)
 - [dbt-spark 1.9.2](https://github.com/dbt-labs/dbt-adapters/blob/main/dbt-spark/CHANGELOG.md#dbt-spark-192---march-07-2025)
@@ -902,7 +950,7 @@ Changelogs:
 - [dbt-bigquery 1.9.0](https://github.com/dbt-labs/dbt-bigquery/blob/1.9.latest/CHANGELOG.md#dbt-bigquery-190---december-09-2024)
 - [dbt-databricks 1.9.0](https://github.com/databricks/dbt-databricks/blob/main/CHANGELOG.md#dbt-databricks-190-december-9-2024)
 - [dbt-fabric 1.8.8](https://github.com/microsoft/dbt-fabric/blob/v1.8.latest/CHANGELOG.md)
-- [dbt-postgres 1.9.0](https://github.com/dbt-labs/dbt-postgres/blob/main/CHANGELOG.md#dbt-postgres-190---december-09-2024)
+- [dbt-postgres 1.9.0](https://github.com/dbt-labs/dbt-adapters/blob/main/dbt-postgres/CHANGELOG.md#dbt-postgres-190---december-09-2024)
 - [dbt-redshift 1.9.0](https://github.com/dbt-labs/dbt-redshift/blob/1.9.latest/CHANGELOG.md#dbt-redshift-190---december-09-2024)
 - [dbt-snowflake 1.9.0](https://github.com/dbt-labs/dbt-snowflake/blob/1.9.latest/CHANGELOG.md#dbt-snowflake-190---december-09-2024)
 - [dbt-spark 1.9.0](https://github.com/dbt-labs/dbt-spark/blob/1.9.latest/CHANGELOG.md#dbt-spark-190---december-10-2024)

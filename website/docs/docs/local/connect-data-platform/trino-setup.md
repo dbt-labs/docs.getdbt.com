@@ -64,6 +64,11 @@ The following profile fields are optional to set up. They let you configure your
 | `timezone`                    | `Europe/Brussels`                | The time zone for the Trino session (default: client-side local timezone)                                   |
 | `http_headers`                | `X-Trino-Client-Info: dbt-trino` | HTTP Headers to send alongside requests to Trino, specified as a YAML dictionary of (header, value) pairs.  |
 | `http_scheme`                 | `https` or `http`                | The HTTP scheme to use for requests to Trino   (default: `http`, or `https` if `kerberos`, `ldap` or `jwt`) |
+| `starburst_url`               | `https://my-tenant.galaxy.starburst.io` | The base URL of your Starburst Data Discovery REST API. Must use `https`. Setting this opts in to syncing the model and column descriptions written by [`persist_docs`](/reference/resource-configs/trino-configs#persist_docs) to Starburst's Data Discovery catalog. Available in `dbt-trino` v1.10.3 and later. |
+| `starburst_client_id`         | `{{ env_var('DBT_ENV_SECRET_STARBURST_CLIENT_ID') }}` | The client ID used to authenticate with the Starburst Data Discovery API. Required when `starburst_url` is set. Available in `dbt-trino` v1.10.3 and later. |
+| `starburst_secret_key`        | `{{ env_var('DBT_ENV_SECRET_STARBURST_SECRET_KEY') }}` | The secret key used to authenticate with the Starburst Data Discovery API. Required when `starburst_url` is set. To avoid storing this secret in `profiles.yml`, source it from an environment variable. Available in `dbt-trino` v1.10.3 and later. |
+| `starburst_metadata_failure_strategy` | `continue_on_error` (default) or `fail_fast` | The approach for handling errors from the Data Discovery API when syncing `persist_docs` metadata: `continue_on_error` logs a warning and continues, while `fail_fast` aborts the run. Available in `dbt-trino` v1.10.3 and later. |
+| `starburst_max_column_batch_size` | `100` (default)              | The maximum number of column descriptions sent per batch request when syncing `persist_docs` metadata to Data Discovery. Available in `dbt-trino` v1.10.3 and later. |
 
 ## Authentication parameters
 
