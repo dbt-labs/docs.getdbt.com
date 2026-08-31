@@ -62,6 +62,20 @@ For more information, see the [Model Selection Syntax Documentation](/reference/
 
 For more information on running parents or children of specific models, see the [Graph Operators Documentation](/reference/node-selection/graph-operators).
 
+<VersionBlock firstVersion="2.0">
+
+## dbt information schema
+
+`dbt run` writes the [dbt information schema](/reference/artifacts/info-schema) to `target/info_schema/` by default. The information schema exposes your project's metadata as queryable SQL tables (similar to a database's `INFORMATION_SCHEMA`) so you can query models, sources, run results, and more without parsing `manifest.json`.
+
+To opt out, use `--no-generate-info-schema`:
+
+```shell
+dbt run --no-generate-info-schema
+```
+
+</VersionBlock>
+
 ## Treat warnings as errors
 
 See [global configs](/reference/global-configs/warnings)
@@ -78,6 +92,7 @@ See [global configs](/reference/global-configs/print-output#print-color)
 ## The `--empty` flag
 
 The `run` command supports the `--empty` flag for building schema-only dry runs. The `--empty` flag limits the refs and sources to zero rows. dbt will still execute the model SQL against the target data warehouse but will avoid expensive reads of input data. This validates dependencies and ensures your models will build properly.
+
 
 ## Status codes
 

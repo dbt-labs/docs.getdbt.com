@@ -71,6 +71,26 @@ The most popular `dbt-labs` packages (`dbt_utils`, `audit_helper`, `dbt_external
 
 ## New and changed features and functionality
 
+### dbt information schema
+
+Similar to a database's `INFORMATION_SCHEMA`, the [dbt information schema](/reference/artifacts/info-schema) is a set of standard tables that provide information about all of the resources in your dbt project. Instead of parsing `manifest.json`, you can query your project metadata using SQL across three namespaces: `dbt`, `dbt_rt`, and `dbt_internal`.
+
+`dbt build` and `dbt run` write the information schema by default. The files use the standard Parquet format; you can query them with any Parquet-compatible tool.
+
+To opt out, use `--no-generate-info-schema`:
+
+```shell
+dbt build --no-generate-info-schema
+```
+
+For `dbt compile` and `dbt parse`, use `--generate-info-schema`:
+
+```shell
+dbt compile --generate-info-schema
+```
+
+For more information, refer to [dbt information schema](/reference/artifacts/info-schema).
+
 ### `dbt login`
 
 In <Constant name="dbt" /> v2, [`dbt login`](/reference/commands/login?version=2.0) enables browser-based authentication. It opens a browser window prompting you to sign in to your <Constant name="dbt_platform" /> account or create a free account.
@@ -86,6 +106,7 @@ v2 introduces [dbt Docs v2](/docs/build/view-documentation#dbt-docs-v2), a faste
 To hydrate catalog metadata (`catalog.json`) for <Constant name="catalog" /> without building the site, use the [`--write-catalog` flag](/reference/commands/cmd-docs#--write-catalog-flag) instead.
 
 For full usage, refer to [About dbt docs commands](/reference/commands/cmd-docs).
+
 
 ### Changed functionality
 

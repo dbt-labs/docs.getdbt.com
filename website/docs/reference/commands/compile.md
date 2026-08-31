@@ -149,5 +149,25 @@ FULL_TEST_NODE_NAME
 
 For more selector patterns, refer to [Test selection examples](/reference/node-selection/test-selection-examples).
 
+<VersionBlock firstVersion="2.0">
+
+### dbt information schema
+
+You can use `--generate-info-schema` with `dbt compile` to write the [dbt information schema](/reference/artifacts/info-schema) to `target/info_schema/`. The information schema exposes your project's metadata as queryable SQL tables (similar to a database's `INFORMATION_SCHEMA`) so you can query models, sources, and more without parsing `manifest.json`:
+
+```shell
+dbt compile --generate-info-schema
+```
+
+To populate column types and column-level lineage, combine with `--static-analysis strict`:
+
+```shell
+dbt compile --generate-info-schema --static-analysis strict
+```
+
+Without `--static-analysis strict`, `dbt.node_columns` and `dbt.column_lineage` are structural-only.
+
+</VersionBlock>
+
 ### FAQs
 <FAQ path="Warehouse/db-connection-dbt-compile" />
