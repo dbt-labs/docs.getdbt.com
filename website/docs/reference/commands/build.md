@@ -24,6 +24,12 @@ In DAG order, for selected resources or an entire project.
 - In the case of a test with multiple parents, where one parent depends on the other (e.g. a `relationships` test between `model_a` + `model_b`), that test will block-and-skip children of the most-downstream parent only (`model_b`).
 - If you have a test with multiple parents that are independent of each other, dbt [skips](https://github.com/dbt-labs/dbt-core/blob/d5071fa13502be273596a0b7c8b13d14b6c68655/core/dbt/compilation.py#L224-L257) the downstream node only if that node depends on all of those parents.
 
+<VersionBlock firstVersion="2.0">
+
+**Project quality checks:** Before models compile, `dbt build` runs [project quality checks](/docs/build/project-checks). These checks are SQL rules that assert properties of your project (for example, every model must have a description). A failing error-severity check stops the run before any model is compiled or executed. Use `dbt build --skip-checks` to bypass this gate.
+
+</VersionBlock>
+
 <VersionBlock firstVersion="1.12">
 
 **Skipping on model errors:** By default, if a model fails, all downstream models are skipped. Set [`on_error: continue`](/reference/resource-configs/on_error) on a model to allow its downstream models to run even when that model fails.
@@ -46,6 +52,26 @@ In DAG order, for selected resources or an entire project.
 
 <SnapshotFullRefresh />
 
+<VersionBlock firstVersion="2.0">
+
+### The `--skip-checks` flag
+
+The `build` command supports `--skip-checks` to bypass the [project quality checks](/docs/build/project-checks) gate. Models still compile and run; checks are not evaluated and no warning is issued.
+
+```shell
+dbt build --skip-checks
+```
+
+To disable a single check rather than the entire gate, set `enabled: false` on that check's config:
+
+```yaml
+checks:
+  - name: all_models_have_descriptions
+    config:
+      enabled: false
+```
+
+</VersionBlock>
 
 ### The `--empty` flag
 

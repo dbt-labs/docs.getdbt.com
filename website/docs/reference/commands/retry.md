@@ -76,6 +76,7 @@ dbt retry --exclude package:analytics --selector nightly_models
 Retry works with the following commands:
 
 - [`build`](/reference/commands/build)
+- [`check`](/reference/commands/check)
 - [`compile`](/reference/commands/compile)
 - [`clone`](/reference/commands/clone)
 - [`docs generate`](/reference/commands/cmd-docs#dbt-docs-generate)
@@ -86,6 +87,14 @@ Retry works with the following commands:
 - [`run-operation`](/reference/commands/run-operation)
 
 Retry references [run_results.json](/reference/artifacts/run-results-json) to determine where to start. Executing retry without correcting the previous failures yields <Term id="idempotent" /> results.
+
+<VersionBlock firstVersion="2.0">
+
+### Retrying after a check-blocked build
+
+When `dbt build` fails because a [project quality check](/docs/build/project-checks) fails, retry re-runs _only the checks that failed_ (not all checks). If those checks pass, `dbt retry` then builds the models that were skipped.
+
+</VersionBlock>
 
 <VersionBlock lastVersion="1.99">
 
