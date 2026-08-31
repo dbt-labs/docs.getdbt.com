@@ -678,7 +678,8 @@ You can optionally use `incremental_predicates` to further filter which records 
     materialized='incremental',
     file_format='delta',
     incremental_strategy='delete+insert',
-    unique_key='user_id'
+    unique_key='user_id',
+    incremental_predicates='user_id >= 10000' # Never delete/insert users with ids < 10000
 ) }}
 
 with new_events as (
@@ -728,7 +729,7 @@ create temporary view delete_insert_incremental__dbt_tmp as
 insert into table analytics.delete_insert_incremental as target
 replace on (target.user_id <=> temp.user_id)
 (select `user_id`, `last_seen`
-   from delete_insert_incremental__dbt_tmp where date_day >= date_add(current_date, -1)) as temp
+   from delete_insert_incremental__dbt_tmp where user_id >= 10000) as temp
 ```
 
 </File>
@@ -761,13 +762,13 @@ create temporary view delete_insert_incremental__dbt_tmp as
 -- Step 1: Delete matching rows
 delete from analytics.delete_insert_incremental
 where analytics.delete_insert_incremental.user_id IN (SELECT user_id FROM delete_insert_incremental__dbt_tmp)
-  and date_day >= date_add(current_date, -1);
+  and user_id >= 10000;
 
 -- Step 2: Insert new rows
 insert into analytics.delete_insert_incremental by name
 select `user_id`, `last_seen`
 from delete_insert_incremental__dbt_tmp
-where date_day >= date_add(current_date, -1)
+where user_id >= 10000
 ```
 
 </File>
