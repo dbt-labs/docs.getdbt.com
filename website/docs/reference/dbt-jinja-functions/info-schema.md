@@ -47,3 +47,140 @@ The following views are not available. dbt errors if you pass them to `info_sche
 - `generation`: Contains internal bookkeeping data, not project metadata. There is no parse-time equivalent.
 - Run artifact views (`dbt_rt.*`): Only exist after models execute. Use `run_results.json` to access post-run data.
 
+## Column reference
+
+The following lists columns available per view. <!--column names need updating as some should be renamed-->
+
+<Expandable alt_header="graph_nodes (columns also available in per-resource-type views)">
+
+- `unique_id`
+- `name`
+- `resource_type`
+- `package_name`
+- `file_path`
+- `original_file_path`
+- `fqn`
+- `alias`
+- `checksum`
+- `description`
+- `raw_code`
+- `database_name`
+- `schema_name`
+- `relation_name`
+- `identifier`
+- `enabled`
+- `materialized`
+- `config`
+- `access_level`
+- `group_name`
+- `contract_enforced`
+- `version`
+- `latest_version`
+- `deprecation_date`
+- `primary_key`
+- `patch_path`
+- `tags`
+- `meta`
+- `source_name`
+- `source_description`
+- `loader`
+- `loaded_at_field`
+- `ingested_at`
+
+</Expandable>
+
+<Expandable alt_header="columns">
+
+- `unique_id`
+- `column_name`
+- `declared_type`
+- `description`
+- `tags`
+- `ingested_at`
+
+</Expandable>
+
+<Expandable alt_header="docs">
+
+- `unique_id`
+- `name`
+- `package_name`
+- `file_path`
+- `original_file_path`
+- `block_contents`
+- `ingested_at`
+
+</Expandable>
+
+<Expandable alt_header="edges">
+
+- `parent_unique_id`
+- `child_unique_id`
+- `edge_type`
+- `ingested_at`
+
+</Expandable>
+
+<Expandable alt_header="macros">
+
+- `unique_id`
+- `name`
+- `package_name`
+- `file_path`
+- `original_file_path`
+- `macro_sql`
+- `description`
+- `depends_on_macros`
+- `arguments`
+- `docs_show`
+- `patch_path`
+- `supported_languages`
+- `meta`
+- `created_at`
+- `ingested_at`
+
+</Expandable>
+
+<Expandable alt_header="project">
+
+- `project_name`
+- `project_id`
+- `description`
+- `dbt_version`
+- `adapter_type`
+- `quoting`
+- `ai_context`
+- `git_sha`
+- `git_branch`
+- `git_is_dirty`
+- `ingested_at`
+
+</Expandable>
+
+<Expandable alt_header="project_vars">
+
+- `var_name`
+- `var_value`
+- `ingested_at`
+
+</Expandable>
+
+<Expandable alt_header="test_metadata">
+
+- `unique_id`
+- `test_name`
+- `test_namespace`
+- `kwargs`
+- `column_name`
+- `attached_node`
+- `severity`
+- `warn_if`
+- `error_if`
+- `fail_calc`
+- `store_failures`
+- `store_failures_as`
+- `test_where`
+- `test_limit`
+- `ingested_at`
+
+</Expandable>

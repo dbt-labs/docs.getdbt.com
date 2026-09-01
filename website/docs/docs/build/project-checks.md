@@ -134,17 +134,16 @@ Checks run with `dbt check` and `dbt build`. Other commands do not run checks. T
 
 ## Skipping checks on build
 
-There are several ways you can skip checks during `dbt build`:
+There are two ways to skip checks during `dbt build`:
 
 | Method | Checks skipped | Models still build? | Warning issued? |
 |--------|---------------|---------------------|-----------------|
 | `dbt build --skip-checks` | All checks | Yes | No |
-| `dbt build --no-write-index` | All checks | Yes | Yes (`dbt1655`) |
 | `enabled: false` on a check | That check only | Yes | No |
 
-- `--warn-error` has no effect on `--skip-checks`; skipping checks never fails the build regardless.
-- When you use `--no-write-index`, dbt issues a `CheckIndexDisabled` warning (`dbt1655`) to indicate that checks did not run. To enforce that checks always run, promote this warning to an error using `warn_error_options`.
-- If dbt cannot prepare project metadata (for example, due to a write error), it skips all checks and `dbt build` continues with a `CheckIndexUnavailable` warning. To fail the build when the metadata index is unavailable, promote this warning to an error using `warn_error_options`.
+`--warn-error` has no effect on `--skip-checks`. When checks are skipped, there is nothing to promote to an error, so the build always continues.
+
+If dbt cannot prepare project metadata (for example, due to a write error), it skips all checks and `dbt build` continues with a `CheckIndexUnavailable` warning (`dbt1654`). To fail the build when this happens, promote that warning to an error using `warn_error_options`.
 
 ## Using selectors with checks
 
