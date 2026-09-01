@@ -66,12 +66,10 @@ For more information on running parents or children of specific models, see the 
 
 ## dbt information schema
 
-`dbt run` writes the [dbt information schema](/reference/artifacts/info-schema) to `target/info_schema/` by default. The information schema exposes your project's metadata as queryable SQL tables (similar to a database's `INFORMATION_SCHEMA`) so you can query models, sources, run results, and more without parsing `manifest.json`.
-
-To opt out, use `--no-generate-info-schema`:
+Use `--generate-info-schema` with `dbt run` to write the [dbt information schema](/reference/artifacts/info-schema) to `target/info_schema/`. The information schema exposes your project's metadata as queryable SQL tables (similar to a database's `INFORMATION_SCHEMA`) so you can query models, sources, run results, and more without parsing `manifest.json`.
 
 ```shell
-dbt run --no-generate-info-schema
+dbt run --generate-info-schema
 ```
 
 </VersionBlock>

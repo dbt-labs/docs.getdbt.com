@@ -14,31 +14,22 @@ dbt writes the information schema to `target/info_schema/` as standard [Parquet]
 
 ## Generating the information schema
 
-- By default, [`dbt build`](/reference/commands/build) and [`dbt run`](/reference/commands/run) write the information schema to `target/info_schema/`. To opt out, use `--no-generate-info-schema`:
+Use `--generate-info-schema` with `dbt build`, `dbt run`, `dbt compile`, or `dbt parse`:
 
-  ```shell
-  dbt build --no-generate-info-schema
-  ```
-
-- For [`dbt compile`](/reference/commands/compile), use `--generate-info-schema`:
-
-  ```shell
-  dbt compile --generate-info-schema
-  ```
-
-  To populate column types and column-level lineage in `dbt.node_columns` and `dbt.column_lineage`, combine with [`--static-analysis strict`](/docs/build/about-static-analysis):
-
-  ```shell
-  dbt compile --generate-info-schema --static-analysis strict
+```shell
+dbt build --generate-info-schema
+dbt run --generate-info-schema
+dbt compile --generate-info-schema
+dbt parse --generate-info-schema
 ```
 
-- For [`dbt parse`](/reference/commands/parse), use `--generate-info-schema`:
+For [`dbt compile`](/reference/commands/compile), combine with [`--static-analysis strict`](/docs/build/about-static-analysis) to also populate column types and column-level lineage in `dbt.node_columns` and `dbt.column_lineage`:
 
-  ```shell
-  dbt parse --generate-info-schema
-  ```
+```shell
+dbt compile --generate-info-schema --static-analysis strict
+```
 
-  Because `dbt parse` doesn't connect to your warehouse, the information schema it produces is structural only &mdash; no column types, no lineage, and no runtime results.
+For [`dbt parse`](/reference/commands/parse), the information schema is structural only &mdash; no column types, no lineage, and no runtime results, because `dbt parse` doesn't connect to your warehouse.
 
 ## Querying the information schema
 
@@ -112,13 +103,6 @@ The `dbt_internal` namespace contains internal implementation tables that are no
 | Table | Description |
 |-------|-------------|
 | `dbt_internal.node_input_files` | Internal record of input files per node |
-
-## Flags
-
-| Flag | Available on | Description |
-|------|-------------|-------------|
-| `--generate-info-schema` | `compile`, `parse` | Write the information schema to `target/info_schema/`. |
-| `--no-generate-info-schema` | `build`, `run` | Opt out of the default information schema write. |
 
 
 ## Related

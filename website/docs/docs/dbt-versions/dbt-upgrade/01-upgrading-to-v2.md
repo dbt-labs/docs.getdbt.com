@@ -75,18 +75,12 @@ The most popular `dbt-labs` packages (`dbt_utils`, `audit_helper`, `dbt_external
 
 Similar to a database's `INFORMATION_SCHEMA`, the [dbt information schema](/reference/artifacts/info-schema) is a set of standard tables that provide information about all of the resources in your dbt project. Instead of parsing `manifest.json`, you can query your project metadata using SQL across three namespaces: `dbt`, `dbt_rt`, and `dbt_internal`.
 
-`dbt build` and `dbt run` write the information schema by default. The files use the standard Parquet format; you can query them with any Parquet-compatible tool.
-
-To opt out, use `--no-generate-info-schema`:
+Use `--generate-info-schema` with `dbt build`, `dbt run`, `dbt compile`, or `dbt parse` to write the information schema to `target/info_schema/`. The files use the standard Parquet format; you can query them with any Parquet-compatible tool.
 
 ```shell
-dbt build --no-generate-info-schema
-```
-
-For `dbt compile` and `dbt parse`, use `--generate-info-schema`:
-
-```shell
+dbt build --generate-info-schema
 dbt compile --generate-info-schema
+dbt parse --generate-info-schema
 ```
 
 For more information, refer to [dbt information schema](/reference/artifacts/info-schema).

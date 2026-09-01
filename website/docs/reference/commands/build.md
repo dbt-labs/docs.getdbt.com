@@ -21,7 +21,7 @@ In DAG order, for selected resources or an entire project.
 
 <VersionBlock firstVersion="2.0">
 
-**dbt information schema:** `dbt build` also writes the [dbt information schema](/reference/artifacts/info-schema) to `target/info_schema/` by default. The information schema exposes your project's metadata as queryable SQL tables (similar to a database's `INFORMATION_SCHEMA`) so you can query models, sources, run results, and more without parsing `manifest.json`. To opt out, use `--no-generate-info-schema`.
+**dbt information schema:** Use `--generate-info-schema` with `dbt build` to write the [dbt information schema](/reference/artifacts/info-schema) to `target/info_schema/`. The information schema exposes your project's metadata as queryable SQL tables (similar to a database's `INFORMATION_SCHEMA`) so you can query models, sources, run results, and more without parsing `manifest.json`.
 
 </VersionBlock>
 

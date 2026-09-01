@@ -43,7 +43,7 @@ Most dbt commands (and corresponding RPC methods) produce artifacts:
 
 <VersionBlock firstVersion="2.0">
 
-- [information schema](/reference/artifacts/info-schema): produced by `dbt build` and `dbt run` by default, and by `dbt compile` and `dbt parse` with `--generate-info-schema`
+- [information schema](/reference/artifacts/info-schema): produced by `dbt build`, `dbt run`, `dbt compile`, and `dbt parse` with `--generate-info-schema`
 
 </VersionBlock>
 
