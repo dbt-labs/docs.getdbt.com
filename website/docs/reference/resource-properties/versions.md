@@ -1,4 +1,5 @@
 ---
+description: "Use the versions property to define multiple versions of a model and how each one differs."
 resource_types: [models]
 datatype: list
 required: no

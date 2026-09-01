@@ -37,7 +37,7 @@ The <Constant name="platform_cli" /> is available in all [deployment regions](/d
 Refer to the [FAQs](#faqs) for more information about managing multiple <Constant name="platform_cli" /> tools and creating an alias.
 
 :::tip Using the <Constant name="dbt_platform"/> CLI for hybrid development with <Constant name="fusion"/>?
-See the [Hybrid development with <Constant name="dbt_platform"/>  and <Constant name="fusion"/>](/guides/fusion-platform-local-workflow) guide to keep credentials, environment variables, and <Constant name="fusion"/> versions in sync across your local CLI and <Constant name="dbt_platform"/>.
+See the [Hybrid development with <Constant name="dbt_platform"/>  and <Constant name="fusion"/>](/guides/dbt-platform-local-workflow) guide to keep credentials, environment variables, and <Constant name="fusion"/> versions in sync across your local CLI and <Constant name="dbt_platform"/>.
 :::
 
 

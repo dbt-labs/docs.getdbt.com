@@ -91,7 +91,7 @@ To upgrade later, run `dbt system update`.
 
 Refer to the [dbt VS Code extension docs](/docs/about-dbt-extension) for more info.
 
-If you or your org has a strict requirement to use the open-source runtime, install it [here](/docs/local/install-dbt-core-v2).
+If you or your org has a strict requirement to use the open-source runtime, install it [here](/docs/local/install-dbt-v2).
 
 ## Troubleshooting
 
@@ -107,7 +107,7 @@ Common issues and resolutions:
     Yes. To test a new install without affecting your existing workflows, use a separate environment or virtual machine.
   </Expandable>
 - <Expandable alt_header="Can I download the Apache 2.0 runtime only?">
-    Yes if you need to use the Apache 2.0 runtime, you can [install dbt Core 2.0](/docs/local/install-dbt-core-v2), the open-source project behind <Constant name="fusion" />.
+    Yes if you need to use the Apache 2.0 runtime, you can [install open source dbt v2](/docs/local/install-dbt-v2), the open-source project behind <Constant name="fusion" />.
   </Expandable>
 - <Expandable alt_header="How do I uninstall a curl (install.sh) install?">
 
@@ -143,7 +143,7 @@ Common issues and resolutions:
 <VersionBlock lastVersion="1.99">
 
 :::tip Want faster dbt?
-Upgrade to v2 to get <Constant name="fusion" /> &mdash; up to 30x faster performance, <Term id="lsp" /> features like autocomplete and inline errors, and more. [Upgrade to v2](/docs/dbt-versions/core-upgrade/upgrading-to-v2).
+Upgrade to v2 to get <Constant name="fusion" /> &mdash; up to 30x faster performance, <Term id="lsp" /> features like autocomplete and inline errors, and more. [Upgrade to v2](/docs/dbt-versions/dbt-upgrade/upgrading-to-v2).
 :::
 
 ## Install dbt Core v1.x CLI
