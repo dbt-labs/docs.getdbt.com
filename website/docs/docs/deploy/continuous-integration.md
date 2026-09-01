@@ -73,11 +73,11 @@ CI runs don't consume run slots. This guarantees a CI check will never block a p
 
 Available on [<Constant name="dbt" /> release tracks](/docs/dbt-versions/dbt-release-tracks) and <Constant name="dbt" /> Starter or Enterprise-tier accounts.
 
-When [enabled for your CI job](/docs/deploy/ci-jobs#set-up-ci-jobs), dbt invokes [SQLFluff](https://sqlfluff.com/). SQLFluff is a modular, configurable SQL linter. It warns you about complex functions, syntax, formatting, and compilation errors.
+When [enabled for your CI job](/docs/deploy/ci-jobs#set-up-ci-jobs), dbt lints the changed SQL files in your project. On v1 runs, dbt invokes [SQLFluff](https://sqlfluff.com/), a modular, configurable SQL linter. On v2 runs, dbt uses the built-in `dbt lint` command instead (see below). Linting warns you about complex functions, syntax, formatting, and compilation errors.
 
-:::note SQLFluff and the <Constant name="fusion_engine" />
-SQLFluff linting is not yet supported for <Constant name="dbt_platform" /> jobs that run on the <Constant name="fusion_engine" />. For more information, refer to [<Constant name="fusion" /> limitations](/docs/dbt/supported-features#limitations).
-:::
+import V2CILintingNote from '/snippets/_v2-ci-linting-note.md';
+
+<V2CILintingNote />
 
 By default, SQL linting lints all the changed SQL files in your project, compared to the last deferred production state.
 

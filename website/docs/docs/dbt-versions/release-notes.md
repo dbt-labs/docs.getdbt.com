@@ -22,6 +22,14 @@ For <Constant name="fusion_engine" /> updates, refer to the [dbt-fusion changelo
 
 ## September 2026
 
+- **Behavior change:** The following behavior change flags on the dbt platform **Latest** release track have reached maturity, switching their default values from `false` to `true`. To preserve the previous behavior for any of these flags, set them to `false` in your `dbt_project.yml`.
+  - [`skip_nodes_if_on_run_start_fails`](/reference/global-configs/behavior-flags/skip_nodes_if_on_run_start_fails)
+  - [`state_modified_compare_more_unrendered_values`](/reference/global-configs/behavior-flags/state_modified_compare_more_unrendered_values)
+  - [`require_yaml_configuration_for_mf_time_spines`](/reference/global-configs/behavior-flags/require_yaml_configuration_for_mf_time_spines)
+  - [`require_batched_execution_for_custom_microbatch_strategy`](/reference/global-configs/behavior-flags/require_batched_execution_for_custom_microbatch_strategy)
+  - [`require_nested_cumulative_type_params`](/reference/global-configs/behavior-flags/require_nested_cumulative_type_params)
+  - [`validate_macro_args`](/reference/global-configs/behavior-flags/validate_macro_args)
+  - [`require_all_warnings_handled_by_warn_error`](/reference/global-configs/behavior-flags/require_all_warnings_handled_by_warn_error)
 - **Behavior change:** AI features in the <Constant name="dbt_platform" /> are being enabled by default. They're already on for new accounts and are rolling out soon to existing accounts. Organizations that opted out stay off, and admins can turn AI features on or off anytime in **Account settings**. Refer to [AI features in dbt platform](/docs/platform/manage-dbt-ai).
 - **New:** <Constant name="wizard" /> now uses usage-based billing for dbt-<Term id="managed" /> AI. Usage is metered per token against your consumption pool, with monthly included usage or a trial to start and admin-set spend limits. Refer to [Trial and billing](/docs/dbt-ai/pricing-billing/trial-and-billing) and the [Billing and access FAQs](/docs/dbt-ai/wizard-billing-faqs).
 - **New:** [dbt State](/docs/deploy/dbt-state-about) onboarding and billing updates:
@@ -127,7 +135,7 @@ To simplify the docs experience, clarify availability, and make it easier to fin
 - **Enhancement**: You can [download OpenTelemetry (OTel) logs](/docs/deploy/run-visibility#access-logs) for individual dbt command steps in Fusion job runs.
 - **Enhancement**: You can now configure [dbt State](/docs/deploy/dbt-state-about) for the <Constant name="studio_ide" /> directly in the <Constant name="dbt_platform" /> UI &mdash; either as a team-wide default on your development environment, or as a personal override. For more information, refer to [Enabling dbt State in Studio](/docs/deploy/dbt-state-enable-studio).
 - **New:** [Model query history](/docs/explore/model-query-history) for Redshift and Databricks is now generally available (GA). 
-- **Behavior change:** On September 1, 2026, several behavior change flags on the <Constant name="dbt_platform" /> **Latest** release track will reach maturity (enabled by default). Refer to [Flags reaching maturity](/reference/global-configs/behavior-changes#flags-reaching-maturity) to see which flags may affect your project and how to opt out before then.
+- **Behavior change:** On September 1, 2026, several behavior change flags on the <Constant name="dbt_platform" /> **Latest** release track will reach maturity (enabled by default). Refer to [About behavior changes](/reference/global-configs/behavior-changes) to see which flags may affect your project and how to opt out before then.
 - **Beta:** The <Constant name="fusion_engine" /> now supports the Salesforce Data 360 connection in the <Constant name="dbt_platform" />. For more information, refer to [Connect Salesforce Data 360](/docs/platform/connect-data-platform/connect-salesforce).
 - **Private beta**: The [Analyst read](/docs/platform/manage-access/enterprise-permissions#analyst-read) permission set is available for Enterprise plans. 
   - Analyst read is a project-level permission set that provides read-only access to analyze dbt models and project resources. The OAuth integration that lets read-only users connect to analysis features (such as the [dbt MCP server](/docs/dbt-ai/about-mcp)) is available to use, while the Analyst read permission set and read-only permission changes are in private beta. To enable them, contact your account manager.
