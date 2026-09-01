@@ -89,7 +89,7 @@ catalogs:
 |-------------------|-------------|-------------------------------|-----------------------------------------------------------------------------------------------|
 | horizon           | snowflake   | snowflake, duckdb             |                                                                                               |
 | glue              | athena      | athena, snowflake, duckdb     |                                                                                               |
-| biglake_metastore | bigquery    | bigquery, snowflake           |                                                                                               |
+| biglake_metastore | bigquery    | bigquery, snowflake           | Supports BigQuery Lakehouse Runtime Catalog (LRC) tables through [`lakehouse_catalog`](/docs/build/iceberg/adapters/bigquery-iceberg-support#lakehouse-runtime-catalog-lrc) |
 | unity             | databricks  | databricks, snowflake, duckdb | Supports Iceberg (native), Delta, "Uniform" formats                                           |
 | hive_metastore    |             | databricks                    | Supports Hudi format, in addition to Iceberg + Delta                                          |
 | ducklake          |             | duckdb                        |                                                                                               |
