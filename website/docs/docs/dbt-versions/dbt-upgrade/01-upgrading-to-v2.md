@@ -174,7 +174,6 @@ Some historic CLI flags from v1 will no longer do anything in v2. If you pass th
 | `--populate-cache` / `--no-populate-cache` | No action required |
 | `--static-parser` / `--no-static-parser` | No action required |
 | `--use-fast-test-edges` / `--no-use-fast-test-edges` | No action required |
-| [`--introspect` / `--no-introspect`](/reference/commands/compile#introspective-queries) | No action required |
 | `--inject-ephemeral-ctes` / `--no-inject-ephemeral-ctes` | | 
 | [`--partial-parse` / `--no-partial-parse`](/reference/parsing#partial-parsing)  | Refer to [CLI flags that need changes](#cli-flags-that-need-changes). |
 
