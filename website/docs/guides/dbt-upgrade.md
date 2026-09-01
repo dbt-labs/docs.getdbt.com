@@ -411,7 +411,7 @@ Rolling back to **Latest** will disable <Constant name="fusion" />-specific feat
 
 ## dbt lint <Lifecycle status="beta" />
 
-Now that your project is running on dbt v2, you have access to `dbt lint`. The `lint` command is a high-performance SQL linter built into <Constant name="fusion" />. It is SQLFluff-compatible: it reads your existing `.sqlfluff` config file, uses the same rule codes (for example, `CP01`, `RF03`), and respects `-- noqa` suppression comments. Compatible does not mean identical. For parity expectations, refer to [Rule parity with SQLFluff](/reference/commands/lint?version=2.0#rule-parity-with-sqlfluff).
+Now that your project is running on <Constant name="fusion" />, you have access to `dbt lint`. The `lint` command is a high-performance SQL linter built into <Constant name="fusion" />. It is SQLFluff-compatible: it reads your existing `.sqlfluff` config file, uses the same rule codes (for example, `CP01`, `RF03`), and respects `-- noqa` suppression comments. Compatible does not mean identical. For parity expectations, refer to [Rule parity with SQLFluff](/reference/commands/lint?version=2.0#rule-parity-with-sqlfluff).
 
 ### Basic usage
 
