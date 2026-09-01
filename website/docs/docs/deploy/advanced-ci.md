@@ -40,7 +40,13 @@ dbt reports the comparison differences in:
 - **<Constant name="dbt" />** &mdash; Shows the changes (if any) to the data's primary keys, rows, and columns in the [Compare tab](/docs/deploy/run-visibility#compare-tab) from the [Job run details](/docs/deploy/run-visibility#job-run-details) page. 
 - **The pull request from your <Constant name="git" /> provider** &mdash; Shows a summary of the changes as a <Constant name="git" /> comment.
 
+<DocCarousel slidesPerView={1}>
+
 <Lightbox src="/img/docs/dbt-platform/example-ci-compare-changes-tab.png" width="55%" title="Example of the Compare tab" />
+
+<Lightbox src="/img/docs/dbt-platform/advanced-ci-modified-rows.png" width="80%" title="Example of Modified rows tab which shows you details of the modified rows." />
+
+</DocCarousel>
 
 #### Compare changes in development
 
