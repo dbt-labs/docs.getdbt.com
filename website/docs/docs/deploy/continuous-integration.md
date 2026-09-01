@@ -22,7 +22,7 @@ Using CI helps:
 
 ## How CI works
 
-When you [set up CI jobs](/docs/deploy/ci-jobs#set-up-ci-jobs), <Constant name="dbt" /> listens for a notification from your <Constant name="git" /> provider indicating that a new PR has been opened or updated with new commits. When <Constant name="dbt" /> receives one of these notifications, it enqueues a new run of the CI job.
+When you [set up CI jobs](/docs/deploy/ci-jobs#set-up-ci-jobs), <Constant name="dbt" /> listens for a notification from your <Constant name="git" /> provider indicating that a new PR has been opened or updated with new commits. When <Constant name="dbt" /> receives one of these notifications, it enqueues a new run of the CI job.
 
 <Constant name="dbt" /> builds and tests models, semantic models, metrics, and saved queries affected by the code change in a temporary schema, unique to the PR. This process ensures that the code builds without error and that it matches the expectations as defined by the project's dbt tests. The unique schema name follows the naming convention `dbt_cloud_pr_<job_id>_<pr_id>` (for example, `dbt_cloud_pr_1862_1704`) and can be found in the run details for the given run, as shown in the following image:
 
@@ -30,7 +30,7 @@ When you [set up CI jobs](/docs/deploy/ci-jobs#set-up-ci-jobs), <Constant name=
 
 When the CI run completes, you can view the run status directly from within the pull request. <Constant name="dbt" /> updates the pull request in GitHub, GitLab, or Azure DevOps with a status message indicating the results of the run. The status message states whether the models and tests ran successfully or not.
 
-<Constant name="dbt" /> deletes the temporary schema from your <Term id="data-warehouse" /> when you close or merge the pull request. If your project has schema customization using the [generate_schema_name](/docs/build/custom-schemas#how-does-dbt-generate-a-models-schema-name) macro, <Constant name="dbt" /> might not drop the temporary schema from your data warehouse. For more information, refer to [Troubleshooting](/docs/deploy/ci-jobs#troubleshooting).
+<Constant name="dbt" /> deletes the temporary schema from your <Term id="data-warehouse" /> when you close or merge the pull request. If your project has schema customization using the [generate_schema_name](/docs/build/custom-schemas#how-does-dbt-generate-a-models-schema-name) macro, <Constant name="dbt" /> might not drop the temporary schema from your data warehouse. For more information, refer to [Troubleshooting](/docs/deploy/ci-jobs#troubleshooting).
 
 import GitProvidersCI from '/snippets/_git-providers-supporting-ci.md';
 
@@ -73,9 +73,13 @@ CI runs don't consume run slots. This guarantees a CI check will never block a p
 
 Available on [<Constant name="dbt" /> release tracks](/docs/dbt-versions/dbt-release-tracks) and <Constant name="dbt" /> Starter or Enterprise-tier accounts.
 
-When [enabled for your CI job](/docs/deploy/ci-jobs#set-up-ci-jobs), dbt lints the SQL files in your project. This warns you about complex functions, syntax, formatting, and compilation errors.
+When [enabled for your CI job](/docs/deploy/ci-jobs#set-up-ci-jobs), dbt lints the changed SQL files in your project. On v1 runs, dbt invokes [SQLFluff](https://sqlfluff.com/), a modular, configurable SQL linter. On v2 runs, dbt uses the built-in `dbt lint` command instead (see below). Linting warns you about complex functions, syntax, formatting, and compilation errors.
 
-Jobs that run on <Constant name="core" /> invoke [SQLFluff](https://sqlfluff.com/). Jobs that run on a <Constant name="fusion" /> version invoke [`dbt lint`](/reference/commands/lint?version=2.0) instead of SQLFluff, so results can differ. For parity expectations, refer to [Rule parity with SQLFluff](/reference/commands/lint?version=2.0#rule-parity-with-sqlfluff).
+import V2CILintingNote from '/snippets/_v2-ci-linting-note.md';
+
+<V2CILintingNote />
+
+For parity expectations between `dbt lint` and SQLFluff, refer to [Rule parity with SQLFluff](/reference/commands/lint?version=2.0#rule-parity-with-sqlfluff).
 
 By default, SQL linting lints all the changed SQL files in your project, compared to the last deferred production state.
 
@@ -89,8 +93,8 @@ If the linter runs into errors, you can specify whether dbt should stop running 
 
 You can optionally configure SQLFluff linting rules to override default linting behavior.
 
-- Use [SQLFluff Configuration Files](https://docs.sqlfluff.com/en/stable/configuration/setting_configuration.html#configuration-files) to override the default linting behavior in dbt.
-- Create a `.sqlfluff` configuration file in your project, add your linting rules to it, and <Constant name="dbt" /> will use them when linting.
+- Use [SQLFluff Configuration Files](https://docs.sqlfluff.com/en/stable/configuration/setting_configuration.html#configuration-files) to override the default linting behavior in dbt.
+- Create a `.sqlfluff` configuration file in your project, add your linting rules to it, and <Constant name="dbt" /> will use them when linting.
     - When configuring, you can use `dbt` as the templater (for example, `templater = dbt`)
     - If you’re using the <Constant name="studio_ide" />, <Constant name="dbt" /> CLI, or any other editor, refer to [Customize linting](/docs/platform/studio-ide/lint-format#customize-linting) for guidance on how to add the dbt-specific (or dbtonic) linting rules we use for our own project.
-- For complete details, refer to [Custom Usage](https://docs.sqlfluff.com/en/stable/gettingstarted.html#custom-usage) in the SQLFluff documentation.
+- For complete details, refer to [Custom Usage](https://docs.sqlfluff.com/en/stable/gettingstarted.html#custom-usage) in the SQLFluff documentation.
