@@ -2,10 +2,7 @@
 title: "Develop with AI"
 sidebar_label: "Develop with AI"
 description: "Leverage AI to develop dbt projects in the Studio IDE"
-availability:
-  surface: platform
-  access: paid_plan
-  minPlan: starter
+availability: platform_usage
 ---
 
 import CopilotWizardDifferences from '/snippets/_copilot-wizard-diff.md';
@@ -29,7 +26,7 @@ dbt also supports dbt Copilot, a separate inline AI assistance experience for si
 
 AI features are enabled by default. Admins can [turn them off or back on anytime](/docs/platform/manage-dbt-ai).
 
-## dbt Wizard in Studio IDE <Lifecycle status="preview,self_service,managed,managed_plus" />
+## dbt Wizard in Studio IDE <Lifecycle status="preview" />
 
 Use [<Constant name="wizard" />](/docs/dbt-ai/wizard-ide) for autonomous model generation, refactoring, and multi-step workflows in the <Constant name="studio_ide" />. It's grounded in dbt's native metadata engine &mdash; a structured index of your project's lineage, tests, model health, and semantic definitions &mdash; so it knows your data, not just your code.
 
