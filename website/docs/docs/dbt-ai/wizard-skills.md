@@ -154,7 +154,7 @@ If a project skill and a global skill use the same name, the project skill takes
 
 <Constant name="wizard"/> ships with skills from [dbt Agent Skills](https://github.com/dbt-labs/dbt-agent-skills), maintained by dbt Labs and the community. These capture analytics engineering knowledge for common workflows and are always available. The agent loads the relevant skill automatically when your prompt matches its use case.
 
-The following skills all ship bundled with <Constant name="wizard"/>. You don't call them directly &mdash; the agent loads whichever one matches your prompt. Refer to the [dbt Agent Skills repository](https://github.com/dbt-labs/dbt-agent-skills) for installation in other AI clients, contributing new skills, and the latest catalog.
+The following skills all ship bundled with <Constant name="wizard"/>. You don't call them directly as the agent loads whichever one best matches your prompt. Refer to the [dbt Agent Skills repository](https://github.com/dbt-labs/dbt-agent-skills) for installation in other AI clients, contributing new skills, and the latest catalog.
 
 <SimpleTable>
 
