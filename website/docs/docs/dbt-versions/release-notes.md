@@ -30,6 +30,8 @@ For <Constant name="fusion_engine" /> updates, refer to the [dbt-fusion changelo
   - [`require_nested_cumulative_type_params`](/reference/global-configs/behavior-flags/require_nested_cumulative_type_params)
   - [`validate_macro_args`](/reference/global-configs/behavior-flags/validate_macro_args)
   - [`require_all_warnings_handled_by_warn_error`](/reference/global-configs/behavior-flags/require_all_warnings_handled_by_warn_error)
+- **Behavior change:** AI features in the <Constant name="dbt_platform" /> are being enabled by default. They're already on for new accounts and are rolling out soon to existing accounts. Organizations that opted out stay off, and admins can turn AI features on or off anytime in **Account settings**. Refer to [AI features in dbt platform](/docs/platform/manage-dbt-ai).
+- **New:** <Constant name="wizard" /> now uses usage-based billing for dbt-<Term id="managed" /> AI. Usage is metered per token against your consumption pool, with monthly included usage or a trial to start and admin-set spend limits. Refer to [Trial and billing](/docs/dbt-ai/pricing-billing/trial-and-billing) and the [Billing and access FAQs](/docs/dbt-ai/wizard-billing-faqs).
 - **New:** [dbt State](/docs/deploy/dbt-state-about) onboarding and billing updates:
   - **New:** New users can now sign up for a free <Constant name="dbt_platform" /> account and start a 30-day dbt State trial through a guided onboarding flow. For details, refer to [Setting up dbt State](/docs/deploy/dbt-state-setup?type=platform-signup).
   - **New:** dbt v1.7-1.12 users who are using the dbt State plugin can now create a free <Constant name="dbt_platform" /> account to start a 30-day dbt State trial. For details, refer to [Setting up dbt State](/docs/deploy/dbt-state-setup).
@@ -158,7 +160,7 @@ The following features are new or enhanced as part of dbt Labs announcements at 
   - **Behavior change**: State-aware orchestration is no longer being enabled for new customers. Refer to [Migrate to dbt State](/docs/deploy/dbt-state-migration) for more information.
 
 - **New**: dbt Wizard is available in dbt platform as a public preview. Introducing dbt Wizard CLI as a public beta. Purpose-built for agentic governed data development in dbt, dbt Wizard understands your project through a  [native metadata engine](/docs/dbt-ai/wizard-how-it-works#native-metadata-engine), unlike general-purpose coding agents.
-  - **New**: [Support for Anthropic as a BYOK provider for dbt AI](/docs/platform/enable-dbt-ai#configure-your-ai-provider). 
+  - **New**: [Support for Anthropic as a BYOK provider for dbt AI](/docs/platform/manage-dbt-ai#configure-ai-provider). 
   - **New**: [`dbt login`](/reference/commands/login?version=2.0) is a new CLI command available in dbt Core 2.0 and later. It opens browser-based authentication and shares your login state across the CLI, dbt VS Code extension, dbt State, and dbt Wizard CLI with no separate sign-in flows needed.
 - **New:** OAuth client registrations now accept custom-scheme redirect URIs (for example, `cursor://` or `vscode://`), so you can build native app OAuth integrations with Cursor and VS Code.
 - **New:** Public REST API endpoints at `/api/ide/v3/{environment_id}/files/` support <Constant name="studio_ide" /> workspace file operations, including stat, read, write, list, delete, mkdir, and rename. Pass file paths as query parameters.
