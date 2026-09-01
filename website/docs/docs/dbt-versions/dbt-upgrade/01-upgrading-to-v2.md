@@ -73,7 +73,7 @@ The most popular `dbt-labs` packages (`dbt_utils`, `audit_helper`, `dbt_external
 
 ### Model freshness and the `dbt freshness` command <Lifecycle status="beta" />
 
-v2 lets you declare freshness thresholds on models and adds a new [`dbt freshness`](/reference/commands/freshness) command to check both sources and models with freshness configured in a single invocation.
+v2 lets you declare freshness thresholds on models and sources, and adds a new [`dbt freshness`](/reference/commands/freshness) command to check both resources with freshness configured in a single invocation.
 
 #### Model freshness
 
