@@ -2,6 +2,8 @@
 
 <Constant name="catalog" /> uses the metadata provided by the [Discovery API](/docs/dbt-apis/discovery-api) to display the details about [the state of your dbt project](/docs/dbt-apis/project-state). The metadata that's available depends on the [deployment environment](/docs/deploy/deploy-environments) you've designated as _production_ or _staging_ in your <Constant name="dbt" /> project.
 
+<Constant name="catalog" /> also allows you to ingest metadata from your data warehouse, giving you visibility into external resources in <Constant name="catalog" />. For information on supported warehouses, refer to [External metadata ingestion](/docs/explore/external-metadata-ingestion#prerequisites).
+
 ## dbt metadata
 
 If you're using a [hybrid project setup](/docs/deploy/hybrid-setup) and uploading artifacts from dbt Core, make sure to follow the [setup instructions](/docs/deploy/hybrid-setup#connect-project-in-dbt-cloud) to connect your project in <Constant name="dbt" />. This enables <Constant name="catalog" /> to access and display your metadata correctly.

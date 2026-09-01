@@ -18,7 +18,7 @@ availability:
 
 Global navigation search varies depending on your [<Constant name="dbt_platform" />](https://www.getdbt.com/pricing) plan:
 - Enterprise plans &mdash; <Constant name="catalog" /> lets you search across all [dbt resources](/docs/build/projects)
- (models, seeds, snapshots, sources, exposures, and more) in your account.
+ (models, seeds, snapshots, sources, exposures, and more) in your account, plus discover external metadata.
  - Starter plans (single project) &mdash; Use global navigation to search and navigate resources within your project 
 
 <LoomVideo id="ae93b3d241cd439fbe5f98f5e6872113" />
@@ -28,6 +28,7 @@ Global navigation search varies depending on your [<Constant name="dbt_platform"
 Global navigation in <Constant name="catalog" /> lets you search, explore, and analyze data assets across all your dbt projects and connected metadata sources—giving you a unified, account-wide view of your analytics ecosystem. With global navigation, you can:
 
 - Search data assets &mdash; expand your search by including dbt resources (models, seeds, snapshots, sources, exposures, and more) across your entire account. This broadens the results returned and gives you greater insight into all the assets across your dbt projects.
+    - External metadata ingestion &mdash; connect directly to your data warehouse, giving you visibility into tables, views, and other resources that aren't defined in dbt with <Constant name="catalog" />.
 - Explore lineage &mdash; explore an interactive map of data relationships across all your dbt projects. It lets you:
     - View upstream/downstream dependencies for models, sources, and more.
     - Drill into project and column-level lineage, including multi-project (Mesh) links.
