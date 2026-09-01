@@ -13,7 +13,7 @@ This is the only official dbt Labs VS Code extension. Other extensions _can_ wor
 
 ## Prerequisites
 
-Before installing, review the [limitations](/docs/fusion/supported-features#limitations) page because some features don't support <Constant name="fusion" /> yet.
+Before installing, review the [limitations](/docs/dbt/supported-features#limitations) page because some features don't support <Constant name="fusion" /> yet.
 
 To use the extension, you need the following:
 
@@ -26,7 +26,7 @@ To use the extension, you need the following:
 | **Editor** | [VS Code](https://code.visualstudio.com/), [Cursor](https://www.cursor.com/en), or [Windsurf](https://windsurf.com/editor). |
 | **Operating system** | macOS, Windows, or Linux. |
 | **Local configuration** (optional) | [Configure the extension](/docs/configure-dbt-extension) to mirror your dbt environment locally and set any environment variables required by your project. |
-| **Project migration support** (optional) | Use the **Migrate <Constant name="core" /> to <Constant name="fusion" />** agent skill or [run dbt-autofix](/guides/prepare-fusion-upgrade?step=5#what-the-autofix-tool-handles) to help resolve errors and deprecations before using <Constant name="fusion" />. |
+| **Project migration support** (optional) | Use the **Migrate <Constant name="core" /> to <Constant name="fusion" />** agent skill or [run dbt-autofix](/guides/prepare-dbt-upgrade?step=5#what-the-autofix-tool-handles) to help resolve errors and deprecations before using <Constant name="fusion" />. |
 
 </SimpleTable>
 
@@ -50,21 +50,21 @@ To use the extension, you need the following:
 
     <Lightbox src="/img/docs/extension/install-dbt-fusion-engine.png" width="60%" title="Follow the prompt to install the dbt Fusion engine"/>
 
-7. Run the VS Code extension [upgrade tool](/docs/upgrade-to-fusion-extension) to check whether your project is ready for <Constant name="fusion" /> and fix any errors or deprecations.
+7. Run the VS Code extension [upgrade tool](/docs/upgrade-to-dbt-extension) to check whether your project is ready for <Constant name="fusion" /> and fix any errors or deprecations.
 8. Optional: [Configure your local environment](/docs/configure-dbt-extension) to mirror your <Constant name="dbt_platform" /> environment and [set environment variables](/docs/configure-dbt-extension#configure-environment-variables) required by your project.
 
 :::note The language server ships with the <Constant name="fusion_engine" />
 
-The dbt language server is part of the <Constant name="fusion_engine" /> binary rather than a separate download &mdash; the extension runs it through <Constant name="fusion" />. If you install <Constant name="fusion" /> manually (for example, in an air-gapped environment) instead of letting the extension manage it, use the [version compatibility matrix](/docs/dbt-versions/fusion-version-compatibility) to pick a binary that matches your extension version.
+The dbt language server is part of the <Constant name="fusion_engine" /> binary rather than a separate download &mdash; the extension runs it through <Constant name="fusion" />. If you install <Constant name="fusion" /> manually (for example, in an air-gapped environment) instead of letting the extension manage it, use the [version compatibility matrix](/docs/dbt-versions/dbt-version-compatibility) to pick a binary that matches your extension version.
 
 :::
 
 You're ready to use the dbt extension. Next, you can:
 
 - Follow the [getting started](#getting-started) workflow to finish setup.
-- [Upgrade your project to <Constant name="fusion" />](/docs/upgrade-to-fusion-extension) if you're migrating from <Constant name="core" />.
+- [Upgrade your project to <Constant name="fusion" />](/docs/upgrade-to-dbt-extension) if you're migrating from <Constant name="core" />.
 - [Sign in or register](/docs/sign-in-dbt-extension) for a <Constant name="dbt_platform" /> account to keep using advanced features after the 14-day trial.
-- Review the [limitations and unsupported features](/docs/fusion/supported-features#limitations).
+- Review the [limitations and unsupported features](/docs/dbt/supported-features#limitations).
 
 <Expandable alt_header="Install the dbt Fusion engine from the command line, if you haven't already.">
 
@@ -82,7 +82,7 @@ After installation, follow the [getting started](#getting-started) workflow. You
 
 After the <Constant name="fusion_engine" /> and dbt VS Code extension are installed, the dbt logo appears in the sidebar. Click it to open the **Get started** panel.
 
-The **Get started** panel is a persistent setup companion available in VS Code and Cursor. It monitors your environment and shows the most important next action. As new <Constant name="fusion" /> releases ship or your project changes, the panel resurfaces relevant steps automatically. For more details refer to [Upgrade to <Constant name="fusion" />](/docs/upgrade-to-fusion-extension).
+The **Get started** panel is a persistent setup companion available in VS Code and Cursor. It monitors your environment and shows the most important next action. As new <Constant name="fusion" /> releases ship or your project changes, the panel resurfaces relevant steps automatically. For more details refer to [Upgrade to <Constant name="fusion" />](/docs/upgrade-to-dbt-extension).
 
 <Lightbox src="/img/docs/extension/vsce-get-started.png" width="100%" title="The Get started panel in VS Code showing the setup steps, with the active step highlighted."/>
 
@@ -90,7 +90,7 @@ The panel guides you through:
 
 1. **Install or update <Constant name="fusion_engine" />**: Detects whether the <Constant name="fusion_engine" /> binary is missing or outdated and installs or updates it with a single click.
 2. **Open project**: Checks for a `dbt_project.yml` file in your workspace to confirm a valid dbt project is open before proceeding.
-3. **Check Fusion compatibility**: Guides you through upgrading your project to <Constant name="fusion" />. You can choose between an agentic migration or manual CLI onboarding &mdash; refer to [Upgrade to <Constant name="fusion" />](/docs/upgrade-to-fusion-extension).
+3. **Check Fusion compatibility**: Guides you through upgrading your project to <Constant name="fusion" />. You can choose between an agentic migration or manual CLI onboarding &mdash; refer to [Upgrade to <Constant name="fusion" />](/docs/upgrade-to-dbt-extension).
 4. **Register**: Confirms you've registered your email to use the extension beyond the 14-day trial period &mdash; refer to [Sign in or register](/docs/sign-in-dbt-extension).
 
 When all setup steps are complete, the panel shows a green **Extension setup complete** button.

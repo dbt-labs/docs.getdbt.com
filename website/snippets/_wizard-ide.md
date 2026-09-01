@@ -1,4 +1,4 @@
-#### Availability and considerations
+<Expandable alt_header="Availability and considerations">
 
 - **Where it runs:** Supported in the [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio) only, all [deployment types](/docs/platform/about-platform/tenancy?version=2.0). Not supported in VS Code or the <Constant name="platform_cli" />.
 - **Engines:** Works with <Constant name="fusion_engine" /> and <Constant name="core" />.
@@ -7,6 +7,7 @@
 - **Chat history:** Retained for 90 days only. Chat history isn't supported yet on single-tenant deployments, so save anything important before closing.
 - **Plan mode:** Not supported yet. The agent doesn't show a separate plan before applying changes, however you can use the **Ask for approval** mode to approve each file.
 - **New chat:** Click **Start new dbt Wizard chat** (top right of the dbt Wizard panel) to begin a new session.
+</Expandable>
 
 ### Using dbt Wizard
 
@@ -20,10 +21,11 @@ To use the <Constant name="wizard" />, follow these steps:
    - **Plain text**: Type directly into the text field to describe what you want to build or change.
    - **Model context**: Type `@` to select a model as context. This scopes the agent's changes to that resource.
 3. Select the [**Agent mode** button](/docs/dbt-ai/wizard-ide) to specify the mode for the <Constant name="wizard" />. Available modes are **Ask for approval** (default) and **Edit files automatically**.
-4. [Review the agent's suggestions](/docs/dbt-ai/wizard-ide) and approve or reject the changes. You can also use the **Start new dbt Wizard chat** button to start a new chat session.
-5. [Approve dbt commands](/docs/dbt-ai/wizard-ide) when the <Constant name="wizard" /> requests to run commands like `dbt compile` or `dbt build`.
-6. Repeat the process to build or change more models.
-7. Commit the changes to your dbt project and open a pull request.
+4. Select the dbt <Term id="managed" /> model you'd like to work with from the [model picker](/docs/dbt-ai/pricing-billing/overview#choose-a-model) next to the **Agent mode** button.
+5. [Review the agent's suggestions](/docs/dbt-ai/wizard-ide) and approve or reject the changes. You can also use the **Start new dbt Wizard chat** button to start a new chat session.
+6. [Approve dbt commands](/docs/dbt-ai/wizard-ide) when the <Constant name="wizard" /> requests to run commands like `dbt compile` or `dbt build`.
+7. Repeat the process to build or change more models.
+8. Commit the changes to your dbt project and open a pull request.
 
 The following images show how <Constant name="wizard"/> displays its work and outcome:
 
@@ -43,12 +45,13 @@ The <Constant name="wizard" /> panel contains:
 
 1. **Quick actions** (center): Buttons at the top of the panel for quick action prompts. When selected, the text field is pre-filled with a prompt.
 2. **Agent mode button** (bottom left): Switch between **Ask for approval** and **Edit files automatically** mode. Click the button to change modes.
-3. **dbt model context** (bottom left): Shows the currently open file. Use `@` in the text field to reference a different dbt model. Click **x** to remove the dbt model context.
-4. **Text input field** (bottom left): Type your prompt in the text field to describe what you want to build or change. Type `@` to select a dbt model as context. This scopes the agent's changes to that resource.
-5. **Start new dbt Wizard chat** (top right): Starts a new chat session.
-6. **Stop** or **Enter** (bottom right): Press **Enter** to submit your prompt. Press **Stop** to stop the current session and agent processing. You cannot undo this action. 
+3. **Model picker** (bottom left): Select the dbt <Term id="managed" /> model to use for the session. Refer to [Choose a model](#choose-a-model) for the available models.
+4. **dbt model context** (bottom left): Shows the currently open file. Use `@` in the text field to reference a different dbt model. Click **x** to remove the dbt model context.
+5. **Text input field** (bottom left): Type your prompt in the text field to describe what you want to build or change. Type `@` to select a dbt model as context. This scopes the agent's changes to that resource.
+6. **Start new dbt Wizard chat** (top right): Starts a new chat session.
+7. **Stop** or **Enter** (bottom right): Press **Enter** to submit your prompt. Press **Stop** to stop the current session and agent processing. You cannot undo this action. 
 
-<Lightbox src="/img/docs/dbt-platform/dbt-wizard-panel-controls-annotated.png" width="95%" title="The Wizard panel in the Studio IDE showing quick-action buttons, text input field, and agent mode controls." />
+<Lightbox src="/img/docs/dbt-platform/wizard-panel.png" width="95%" title="The Wizard panel in the Studio IDE showing quick-action buttons, the agent mode button, the model picker, and the text input field." />
 
 <Constant name="wizard"/> also has a simplified wayfinder bar above the text input field. The wayfinder bar shows your current project and branch and guides you through Git tasks, such as committing files or creating a branch.
 
@@ -56,7 +59,7 @@ The <Constant name="wizard" /> panel contains:
 
 <Expandable alt_header="Agent modes">
 
-The <Constant name="wizard" /> operates in two modes:
+The <Constant name="wizard" /> operates in three modes:
 
 <SimpleTable>
 
@@ -66,8 +69,7 @@ The <Constant name="wizard" /> operates in two modes:
 | **Edit files automatically** | The agent drafts and automatically saves file edits without per-file approval. Best for faster iteration when you're confident in the prompt. |
 </SimpleTable>
 
-You can switch between modes at any time by clicking the **Agent mode** button in the <Constant name="wizard" /> panel.
-
+You can switch between modes at any time by clicking the **Agent mode** button in the <Constant name="wizard" /> panel. 
 
 </Expandable>
 
@@ -137,7 +139,7 @@ import FusionMigrationWorkflow from '/snippets/_fusion-migration-workflow.md';
 
 <FusionMigrationWorkflow />
 
-For more on how to prepare your project for <Constant name="fusion" /> and what to do when you hit compatibility errors, see the [Fusion readiness checklist](/docs/fusion/fusion-readiness) and the [Upgrade to Fusion guides](/guides/prepare-fusion-upgrade).
+For more on how to prepare your project for <Constant name="fusion" /> and what to do when you hit compatibility errors, see the [dbt v2 readiness checklist](/docs/dbt/dbt-readiness) and the [Upgrade to Fusion guides](/guides/prepare-dbt-upgrade).
 
 ### Writing effective prompts
 

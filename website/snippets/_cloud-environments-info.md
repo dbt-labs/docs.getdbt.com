@@ -16,7 +16,7 @@ Each <Constant name="dbt" /> project can only have a single development environm
 | **How many can I have in my project?** | 1 | Any number | 1 | 1 |
 
 :::note 
-For users familiar with development on <Constant name="core" />, each environment is roughly analogous to an entry in your `profiles.yml` file, with some additional information about your repository to ensure the proper version of code is executed. More info on dbt core environments [here](/docs/local/dbt-core-environments).
+For users familiar with development on <Constant name="core" />, each environment is roughly analogous to an entry in your `profiles.yml` file, with some additional information about your repository to ensure the proper version of code is executed. More info on dbt core environments [here](/docs/local/dbt-environments).
 :::
 
 ## Common environment settings
