@@ -81,9 +81,9 @@ This section covers the rules and constraints for writing check SQL files and co
 
 Each package that ships checks must declare `info_schema.version` in its own `dbt_project.yml` (it is not inherited from the root project). Only `version: 1` is accepted today. A package with checks and no version declaration fails to parse with a message naming the file and the value to set.
 
-### The `info_schema()` helper
+### The `info_schema()` function
 
-`{{ info_schema() }}` is the supported way to read project metadata in a check. Pass the name of the view you want to query (for example, `{{ info_schema('models') }}` to query models, or `{{ info_schema('edges') }}` to query DAG edges). dbt writes your project metadata to a local index at parse time, and checks query that index through this helper. For the full list of available views and columns, refer to [`info_schema`](/reference/dbt-jinja-functions/info-schema/).
+`{{ info_schema() }}` is the supported way to read project metadata in a check. Pass the name of the view you want to query (for example, `{{ info_schema('models') }}` to query models, or `{{ info_schema('edges') }}` to query DAG edges). dbt writes your project metadata to a local index at parse time, and checks query that index through this function. For the full list of available views and columns, refer to [`info_schema`](/reference/dbt-jinja-functions/info-schema/).
 
 ### Example checks
 
@@ -128,10 +128,23 @@ Checks run with `dbt check` and `dbt build`. Other commands do not run checks. T
 | `dbt check` | Yes | Parses the project, runs all enabled checks, and exits. Does not compile or materialize models. |
 | `dbt check <name> …` | Yes, named checks only | Runs only the named checks. An unknown check name is an error. A disabled check name is accepted and skipped. |
 | `dbt build` | Yes, before models compile | Error-severity failures stop the run before any model is compiled or built. Warn-severity failures are reported and the build continues. |
-| `dbt build --skip-checks` | No | Skips all checks. Models still compile and run. `dbt check` does not support this flag. |
-| `dbt build --no-write-index` | No | Skips writing the metadata index, which skips all checks. Models still build. Issues a `CheckIndexDisabled` warning (`dbt1655`). |
-| `dbt run` / `test` / `compile` / `seed` / … | No | Checks only run with `dbt check` and `dbt build`. |
+| `dbt build --skip-checks` | No | Skips all checks. Models still compile and run. `dbt check` does not support the `--skip-checks` flag. For more information, refer to [Skipping checks on build](#skipping-checks-on-build). |
+| `dbt run` / `test` / `compile` / `seed` | No | Checks only run with `dbt check` and `dbt build`. |
 | `dbt retry` after a failed `dbt check` or `dbt build` | Yes, failed checks only | Re-runs only the checks that failed. If they pass and a build was blocked, builds the skipped models. |
+
+## Skipping checks on build
+
+There are several ways you can skip checks during `dbt build`:
+
+| Method | Checks skipped | Models still build? | Warning issued? |
+|--------|---------------|---------------------|-----------------|
+| `dbt build --skip-checks` | All checks | Yes | No |
+| `dbt build --no-write-index` | All checks | Yes | Yes (`dbt1655`) |
+| `enabled: false` on a check | That check only | Yes | No |
+
+- `--warn-error` has no effect on `--skip-checks`; skipping checks never fails the build regardless.
+- When you use `--no-write-index`, dbt issues a `CheckIndexDisabled` warning (`dbt1655`) to indicate that checks did not run. To enforce that checks always run, promote this warning to an error using `warn_error_options`.
+- If dbt cannot prepare project metadata (for example, due to a write error), it skips all checks and `dbt build` continues with a `CheckIndexUnavailable` warning. To fail the build when the metadata index is unavailable, promote this warning to an error using `warn_error_options`.
 
 ## Using selectors with checks
 
@@ -164,20 +177,6 @@ Each check produces one of the following statuses:
 | `error` | Check could not be evaluated (bad SQL, or `selection_filter_on` names a missing column) | Yes, even if `severity` is `warn` | `dbt1653` |
 
 A failing check prints a short preview of the result rows. Each check result is recorded in `run_results.json` as `check.<project>.<name>`. When a `dbt build` is blocked by a failing check, the models that did not run are recorded as `skipped` with the reason `skipped because a parse-time check failed`.
-
-## Skipping checks on build
-
-There are several ways you can skip checks during `dbt build`:
-
-| Method | Checks skipped | Models still build? | Warning issued? |
-|--------|---------------|---------------------|-----------------|
-| `dbt build --skip-checks` | All checks | Yes | No |
-| `dbt build --no-write-index` | All checks | Yes | Yes (`dbt1655`) |
-| `enabled: false` on a check | That check only | Yes | No |
-
-- `--warn-error` has no effect on `--skip-checks`; skipping checks never fails the build regardless.
-- When you use `--no-write-index`, dbt issues a `CheckIndexDisabled` warning (`dbt1655`) to indicate that checks did not run. To enforce that checks always run, promote this warning to an error using `warn_error_options`.
-- If dbt cannot prepare project metadata (for example, due to a write error), it skips all checks and `dbt build` continues with a `CheckIndexUnavailable` warning. To fail the build when the metadata index is unavailable, promote this warning to an error using `warn_error_options`.
 
 ## Retry
 
