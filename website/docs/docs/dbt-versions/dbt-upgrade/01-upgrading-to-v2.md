@@ -79,6 +79,7 @@ Use `--generate-info-schema` with `dbt build`, `dbt run`, `dbt compile`, or `dbt
 
 ```shell
 dbt build --generate-info-schema
+dbt run --generate-info-schema
 dbt compile --generate-info-schema
 dbt parse --generate-info-schema
 ```
@@ -100,7 +101,6 @@ v2 introduces [dbt Docs v2](/docs/build/view-documentation#dbt-docs-v2), a faste
 To hydrate catalog metadata (`catalog.json`) for <Constant name="catalog" /> without building the site, use the [`--write-catalog` flag](/reference/commands/cmd-docs#--write-catalog-flag) instead.
 
 For full usage, refer to [About dbt docs commands](/reference/commands/cmd-docs).
-
 
 ### Changed functionality
 

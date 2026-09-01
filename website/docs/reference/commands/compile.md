@@ -33,7 +33,7 @@ Some common misconceptions:
 - `dbt compile` is _not_ a pre-requisite of `dbt run`, or other building commands. Those commands will handle compilation themselves.
 - If you just want dbt to read and validate your project code, without connecting to the data warehouse, use `dbt parse` instead.
 
-### Interactive compile
+## Interactive compile
 
 Starting in dbt v1.5, `compile` can be "interactive" in the CLI, by displaying the compiled code of a node or arbitrary dbt-SQL query:
 - `--select` a specific node _by name_
@@ -101,7 +101,7 @@ The command accesses the data platform to cache-related metadata, and to run int
 Compiled SQL for resources that use introspective queries may depend on metadata from your warehouse. Compilation may be incomplete or may differ depending on the state of that metadata.
 :::
 
-### Compiling tests with `--select`
+## Compiling tests with `--select`
 
 You can use `dbt compile` to compile tests, as long as your selector matches a test node in the project.
 
@@ -151,7 +151,7 @@ For more selector patterns, refer to [Test selection examples](/reference/node-s
 
 <VersionBlock firstVersion="2.0">
 
-### dbt information schema
+## dbt information schema
 
 You can use `--generate-info-schema` with `dbt compile` to write the [dbt information schema](/reference/artifacts/info-schema) to `target/info_schema/` in a versioned subdirectory (currently `v1/`). The information schema exposes your project's metadata as queryable SQL tables (similar to a database's `INFORMATION_SCHEMA`) so you can query models, sources, and more without parsing `manifest.json`:
 
@@ -169,5 +169,5 @@ Without `--static-analysis strict`, `dbt.node_columns` and `dbt.column_lineage` 
 
 </VersionBlock>
 
-### FAQs
+## FAQs
 <FAQ path="Warehouse/db-connection-dbt-compile" />
