@@ -10,7 +10,9 @@ availability:
 
 The dbt information schema is a set of standard tables that provide information about all of the resources in your dbt project. Instead of parsing `manifest.json` programmatically, you can query your project metadata using SQL &mdash; the same way you'd query a database's system tables.
 
-dbt writes the information schema to `target/info_schema/` as standard [Parquet](https://parquet.apache.org/) files organized across three SQL namespaces: `dbt`, `dbt_rt`, and `dbt_internal`. You can query them with any Parquet-compatible tool. dbt also generates a `views.sql` file alongside the Parquet files for convenient querying with [DuckDB](https://duckdb.org/).
+dbt writes the information schema to `target/info_schema/` in a versioned subdirectory (currently `v1/`) as standard [Parquet](https://parquet.apache.org/) files organized across three SQL namespaces: `dbt`, `dbt_rt`, and `dbt_internal`. The versioned subdirectory only increments on breaking schema changes (for example, when a column is removed or retyped). 
+
+You can query the files with any Parquet-compatible tool. dbt also generates a `views.sql` file alongside the Parquet files for convenient querying with [DuckDB](https://duckdb.org/).
 
 ## Generating the information schema
 
@@ -38,8 +40,9 @@ The information schema uses standard Parquet files; you can query them with any 
 dbt generates a `views.sql` file alongside the Parquet files. Load it into DuckDB to register all tables as named views, then query them directly:
 
 ```shell
-# Register the Parquet files as views, then query one
-duckdb -cmd ".read target/info_schema/views.sql" -c "select * from dbt.models limit 5"
+# views.sql uses relative paths — run from within the versioned directory
+cd target/info_schema/v1
+duckdb -cmd ".read views.sql" -c "select * from dbt.models limit 5"
 ```
 
 ## Tables

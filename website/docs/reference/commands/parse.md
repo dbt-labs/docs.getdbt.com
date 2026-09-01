@@ -93,7 +93,7 @@ $ dbt parse
 
 ## dbt information schema
 
-You can use `--generate-info-schema` with `dbt parse` to write the [dbt information schema](/reference/artifacts/info-schema) to `target/info_schema/`. The information schema exposes your project's metadata as queryable SQL tables (similar to a database's `INFORMATION_SCHEMA`) so you can query models, sources, and more without parsing `manifest.json`:
+You can use `--generate-info-schema` with `dbt parse` to write the [dbt information schema](/reference/artifacts/info-schema) to `target/info_schema/` in a versioned subdirectory (currently `v1/`). The information schema exposes your project's metadata as queryable SQL tables (similar to a database's `INFORMATION_SCHEMA`) so you can query models, sources, and more without parsing `manifest.json`:
 
 ```shell
 dbt parse --generate-info-schema
