@@ -93,7 +93,7 @@ How dbt measures freshness depends on the materialization:
 
 - `table`, `incremental`, `materialized_view`, `dynamic_table`: Uses `loaded_at_field` or `loaded_at_query` if set, otherwise falls back to adapter metadata (such as the table's last-modified time).
 - `view`, `external`: `loaded_at_field` or `loaded_at_query` is required &mdash; there is no adapter metadata fallback.
-- `ephemeral`: Not supported. Freshness requires a physical table to query.
+- `ephemeral`: Not supported. Setting freshness on an ephemeral model raises a parse error.
 
 For full configuration options and materialization rules, refer to [freshness](/reference/resource-configs/freshness).
 
