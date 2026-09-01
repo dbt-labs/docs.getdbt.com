@@ -52,7 +52,7 @@ For recommended workflows on real project tasks &mdash; understanding a project,
 ## Related docs
 
 - [About dbt Wizard in the dbt platform](/docs/platform/wizard-platform)
-- [Fusion readiness checklist](/docs/fusion/fusion-readiness)
+- [dbt v2 readiness checklist](/docs/dbt/dbt-readiness)
 - [Develop with dbt Wizard](/docs/platform/studio-ide/develop-studio-ai)
 - [Prompt cookbook](/guides/prompt-cookbook)
 - [Semantic models](/docs/build/semantic-models)

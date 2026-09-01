@@ -35,7 +35,7 @@ After running `wizard --version`, you should see something like `dbt-wizard VERS
 <VersionBlock lastVersion="1.99">
 
 :::tip Upgrade for automatic updates
-Upgrade to [v2](/docs/dbt-versions/core-upgrade/upgrading-to-v2) to run <Constant name="wizard"/> as `wizard` and get automatic updates.
+Upgrade to [v2](/docs/dbt-versions/dbt-upgrade/upgrading-to-v2) to run <Constant name="wizard"/> as `wizard` and get automatic updates.
 :::
 
 </VersionBlock>
