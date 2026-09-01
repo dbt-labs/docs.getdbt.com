@@ -25,25 +25,44 @@ dbt compile --generate-info-schema
 dbt parse --generate-info-schema
 ```
 
-For [`dbt compile`](/reference/commands/compile), combine with [`--static-analysis strict`](/docs/build/about-static-analysis) to also populate column types and column-level lineage in `dbt.node_columns` and `dbt.column_lineage`:
+- For [`dbt compile`](/reference/commands/compile), combine with [`--static-analysis strict`](/docs/build/about-static-analysis) to also populate column types and column-level lineage in `dbt.node_columns` and `dbt.column_lineage`:
 
-```shell
-dbt compile --generate-info-schema --static-analysis strict
-```
+  ```shell
+  dbt compile --generate-info-schema --static-analysis strict
+  ```
 
-For [`dbt parse`](/reference/commands/parse), the information schema is structural only &mdash; no column types, no lineage, and no runtime results, because `dbt parse` doesn't connect to your warehouse.
+  Without `--static-analysis strict`, dbt emits warnings that column types and column-level lineage won't be populated. Under [`--warn-error`](/reference/global-configs/warnings), those warnings become errors.
+
+- For [`dbt parse`](/reference/commands/parse), the information schema is structural only &mdash; no column types, no lineage, and no runtime results, because `dbt parse` doesn't connect to your warehouse.
+
+`--generate-info-schema` also automatically enables `--write-metadata` and partial parse; the information schema is built from the metadata dbt writes during the invocation.
 
 ## Querying the information schema
 
-The information schema uses standard Parquet files; you can query them with any Parquet-compatible tool.
+You can query the Parquet files with any Parquet-compatible tool. The following example uses DuckDB with the generated `views.sql` file &mdash; this is a DuckDB-specific file that registers all tables as named views.
 
-dbt also generates a `views.sql` file alongside the Parquet files. This file is DuckDB-specific; it registers all tables as named views so you can query them directly:
+1. Navigate to the versioned directory and start a DuckDB session with the views loaded:
 
-```shell
-# views.sql uses relative paths — run from within the versioned directory
-cd target/info_schema/v1
-duckdb -cmd ".read views.sql" -c "select * from dbt.models limit 5"
-```
+   ```shell
+   cd target/info_schema/v1
+   duckdb -cmd ".read views.sql"
+   ```
+
+  If you're not using DuckDB, point your tool directly at the Parquet files in `target/info_schema/v1/`. No `views.sql` needed. For example, with pandas:
+
+   ```python
+   import pandas as pd
+   models = pd.read_parquet("target/info_schema/v1/dbt.models.parquet")
+   ```
+
+2. Query any table by namespace and table name:
+
+   ```sql
+   select * from dbt.models limit 5;
+   select * from dbt_rt.run_results where status = 'error';
+   ```
+
+To check which schema version you're on, query `dbt.project.schema_version`. The version is also embedded in each Parquet file's metadata under the key `dbt:info-schema-version`.
 
 ## Tables
 
@@ -111,6 +130,14 @@ The `dbt_internal` namespace contains internal implementation tables that are no
 |-------|-------------|
 | `dbt_internal.node_input_files` | Internal record of input files per node |
 
+## Flags
+
+Use CLI flags or environment variables to configure the information schema output.
+
+| Flag | Env var | Description |
+|------|---------|-------------|
+| `--generate-info-schema` | `DBT_GENERATE_INFO_SCHEMA` | Write the information schema to `target/info_schema/`. |
+| `--info-schema-dir` | `DBT_INFO_SCHEMA_DIR` | Override the output directory. The versioned subdirectory (`v1/`) is still appended under whatever directory you set. Defaults to `<target>/info_schema/`. |
 
 ## Related
 
