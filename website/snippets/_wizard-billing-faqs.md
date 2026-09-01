@@ -107,9 +107,9 @@ Unlike free Wizard usage credits, purchased committed spend isn't limited to <Co
 
 <Expandable alt_header="Do I pay the full consumption pool or only for what I use?">
 
-It depends on how you buy:
+It depends on how you purchase <Constant name="wizard" />:
 
-- **Pay-as-you-go (self-service):** You pay only for actual dbt-managed Wizard usage, up to the limit you selected. The spend limit is a cap, not a prepaid charge. Typically for Developer, Starter, and self-hosted plans. 
+- **Pay-as-you-go (self-service):** You pay only for actual dbt-managed Wizard usage, up to your selected spend limit. The spend limit is a cap, not a prepaid charge. Typically for Developer, Starter, and self-hosted plans. 
 - **Pre-committed spend:** If you commit to an amount up front (through your account team), you're billed for that commit and draw down against it as you use <Constant name="wizard" />. Typically for Enterprise-tiered plans.
 
 Talk to your account team to set up a pre-committed spend.
