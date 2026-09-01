@@ -74,7 +74,7 @@ This section covers the rules and constraints for writing check SQL files and co
 
 - Put SQL files under `checks/`. To use a different directory, set [`check-paths`](/reference/project-configs/check-paths) in `dbt_project.yml`.
 - The filename without the `.sql` extension becomes the check name (for example, `all_models_have_descriptions` is the check name for `checks/all_models_have_descriptions.sql`).
-- Jinja in check files renders at parse time. You can use Jinja, but the result must be valid SQL at parse since there is no later compile step.
+- Jinja in check files renders at parse time. You can use Jinja, but the result must be valid SQL at that point; checks do not go through a separate compile step the way models do.
 - Checks cannot use `ref()` and do not appear in the model DAG. They read project metadata only through `{{ info_schema() }}`.
 
 #### Metadata contract versioning
@@ -129,6 +129,7 @@ Checks run with `dbt check` and `dbt build`. Other commands do not run checks. T
 | `dbt check <name> …` | Yes, named checks only | Runs only the named checks. An unknown check name is an error. A disabled check name is accepted and skipped. |
 | `dbt build` | Yes, before models compile | Error-severity failures stop the run before any model is compiled or built. Warn-severity failures are reported and the build continues. |
 | `dbt build --skip-checks` | No | Skips all checks. Models still compile and run. `dbt check` does not support this flag. |
+| `dbt build --no-write-index` | No | Skips writing the metadata index, which skips all checks. Models still build. Issues a `CheckIndexDisabled` warning (`dbt1655`). |
 | `dbt run` / `test` / `compile` / `seed` / … | No | Checks only run with `dbt check` and `dbt build`. |
 | `dbt retry` after a failed `dbt check` or `dbt build` | Yes, failed checks only | Re-runs only the checks that failed. If they pass and a build was blocked, builds the skipped models. |
 
@@ -166,22 +167,23 @@ A failing check prints a short preview of the result rows. Each check result is 
 
 ## Skipping checks on build
 
-There are two ways to skip checks during `dbt build`:
+There are several ways you can skip checks during `dbt build`:
 
-| Method | Checks skipped | Models still build? |
-|--------|---------------|---------------------|
-| `dbt build --skip-checks` | All checks | Yes |
-| `enabled: false` on a check | That check only | Yes |
+| Method | Checks skipped | Models still build? | Warning issued? |
+|--------|---------------|---------------------|-----------------|
+| `dbt build --skip-checks` | All checks | Yes | No |
+| `dbt build --no-write-index` | All checks | Yes | Yes (`dbt1655`) |
+| `enabled: false` on a check | That check only | Yes | No |
 
-`--warn-error` has no effect on `--skip-checks` — skipping checks never fails the build regardless.
-
-If dbt cannot prepare project metadata, it skips all checks and `dbt build` continues with a warning. To make checks mandatory so that a metadata failure also fails the build, promote the warning with `warn_error_options`.
+- `--warn-error` has no effect on `--skip-checks`; skipping checks never fails the build regardless.
+- When you use `--no-write-index`, dbt issues a `CheckIndexDisabled` warning (`dbt1655`) to indicate that checks did not run. To enforce that checks always run, promote this warning to an error using `warn_error_options`.
+- If dbt cannot prepare project metadata (for example, due to a write error), it skips all checks and `dbt build` continues with a `CheckIndexUnavailable` warning. To fail the build when the metadata index is unavailable, promote this warning to an error using `warn_error_options`.
 
 ## Retry
 
 Use `dbt retry` to resume after a failed `dbt check` or a check-blocked `dbt build`. dbt will:
 
-1. Re-parse the project from scratch.
+1. Re-parse the project ([partial parse](/reference/global-configs/parsing) still applies).
 2. Re-run only the checks that previously failed. Checks that already passed are not re-run.
 3. Build the models that were skipped, if the previously failing checks now pass and the original command was a `dbt build`.
 
