@@ -244,7 +244,7 @@ For version-specific examples and validation steps, refer to [Build Semantic Lay
 - [Add data-informed tests](/best-practices/how-to-use-wizard/wizard-4-data-informed-tests)
 - [Debug a failed job](/best-practices/how-to-use-wizard/wizard-5-debug-failed-job)
 - [Build Semantic Layer definitions](/best-practices/how-to-use-wizard/wizard-7-semantic-layer)
-- [dbt Wizard overview](/docs/dbt-ai/about-dbt-wizard-cli)
+- [dbt Wizard overview](/docs/dbt-ai/wizard-cli)
 - [Configure BYOK](/docs/dbt-ai/wizard-byok)
 - [dbt Wizard in Studio IDE](/docs/dbt-ai/wizard-ide): same agent, in the dbt platform
 - [Prompt cookbook](/guides/prompt-cookbook): more prompt patterns for the dbt Wizard in Studio IDE (many apply to the CLI too)
