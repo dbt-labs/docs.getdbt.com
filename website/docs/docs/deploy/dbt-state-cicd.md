@@ -7,6 +7,8 @@ tags: ['dbt State']
 availability: everywhere_usage
 ---
 
+import DbtStateAppRetirement from '/snippets/_dbt-state-app-retirement.md';
+
 # Setting up dbt State for non-interactive environments <Lifecycle status="preview" />
 
 In a non-interactive environment, dbt runs without a person available to complete authentication manually &mdash; for example, CI/CD pipelines (such as GitHub Actions, GitLab CI, and Jenkins) and production orchestration tools (such as Airflow and Prefect). Browser-based authentication isn't possible in these environments. Instead, dbt State authenticates using credentials provided through environment variables, allowing it to continue caching state and optimizing your builds.
@@ -54,6 +56,8 @@ DBT_CLOUD_ACCOUNT_ID=YOUR_ACCOUNT_ID
 Replace `YOUR_SERVICE_TOKEN` with your service token, `YOUR_ACCOUNT_HOST` with your [account host](/docs/platform/about-platform/access-regions-ip-addresses) (for example, `abc123.us1.dbt.com`), and `YOUR_ACCOUNT_ID` with your numeric account ID. Go to **Account settings** > **Account** to find your account ID and account host (the hostname from the **Access URL** field).
 
 ## OAuth client credentials
+
+<DbtStateAppRetirement />
 
 If you're using the standalone [dbt State web app](https://app.state.dbt.com/), authenticate with OAuth client credentials.
 
