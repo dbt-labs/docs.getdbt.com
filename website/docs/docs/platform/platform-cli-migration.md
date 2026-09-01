@@ -1,11 +1,11 @@
 ---
 title: dbt platform CLI migration
 id: platform-cli-migration
-description: "On September 14, 2026, pip install dbt installs dbt v2 instead of the dbt platform CLI. Learn what to change to keep using the dbt platform CLI without interruption."
+description: "Starting September 14, 2026, pip install dbt will install dbt v2 instead of the dbt platform CLI. Learn what to change to keep using the dbt platform CLI without interruption."
 unlisted: true
 ---
 
-On September 14, 2026, `pip install dbt` installs dbt v2 instead of the <Constant name="platform_cli" />. If you install the <Constant name="platform_cli" /> with pip, you need to take action to keep using it without interruption.
+Starting September 14, 2026, `pip install dbt` will install dbt v2 instead of the <Constant name="platform_cli" />. If you install the <Constant name="platform_cli" /> with pip, you need to take action to keep using it without interruption.
 
 ## What's changing
 
@@ -15,7 +15,7 @@ If you install the <Constant name="platform_cli" /> using pip today and don't pi
 
 ## What to do
 
-If you use the <Constant name="platform_cli" /> and want to keep using it, reinstall it using the current method for your operating system &mdash; Homebrew on macOS, or the native executable on Windows or Linux. Refer to [Install the dbt platform CLI](/docs/platform/dbt-cli-installation) for full instructions.
+If you use the <Constant name="platform_cli" /> and want to keep using it, reinstall it using the current method for your operating system &mdash; Homebrew on macOS, or the native executable on Windows or Linux. Refer to [Install the <Constant name="platform_cli" />](/docs/platform/dbt-cli-installation) for full instructions.
 
 If you can't reinstall right now (for example, a Docker image that only has pip available), pin your version instead:
 
@@ -38,4 +38,4 @@ This keeps working indefinitely, but won't receive further <Constant name="platf
 
 - **Will my pinned <Constant name="platform_cli" /> version stop working?** No. Pinned installs keep working. They just won't get new <Constant name="platform_cli" /> releases through pip after September 14. For that, reinstall using a currently supported method.
 
-- **How do I tell which one I have installed?** `dbt --version`. The <Constant name="platform_cli" /> prints a version like `0.40.20`; the corresponding version on PyPI is `1.0.0.40.20`. dbt v2's version string needs reconfirming post-update. At the time this article was published, the binary still internally identifies as `dbt-fusion X.Y.Z`, which may change.
+- **How do I tell which one I have installed?** `dbt --version`. The <Constant name="platform_cli" /> prints a version like `0.40.20`; the corresponding version on PyPI is `1.0.0.40.20`. dbt v2's version string needs reconfirming post-update. At the time this article was published, dbt v2's binary still internally identifies as `dbt-fusion X.Y.Z`, which may change.
