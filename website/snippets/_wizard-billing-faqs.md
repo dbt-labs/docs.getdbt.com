@@ -12,7 +12,7 @@ Refer to [Model Provider Rate table](https://www.getdbt.com/legal/dbt-wizard-tok
 
 <Expandable alt_header="What is the dbt Wizard usage consumption pool?">
 
-The <Constant name="wizard"/> consumption pool is the usage balance available when using dbt-<Term id="managed"/> inference for <Constant name="wizard"/> &mdash; this includes Developer and Starter plan trial Wizard usage credits and the monthly Enterprise/Enterprise+ included usage credits. 
+The <Constant name="wizard"/> consumption pool is the usage balance available when using dbt-<Term id="managed"/> inference for <Constant name="wizard"/> &mdash; this includes Developer and Starter plan trial Wizard usage credits and the monthly Enterprise/Enterprise+ included usage credits.
 
 As you use <Constant name="wizard" />, your token usage will automatically convert into a dollar amount and deducted from your active usage credit. Once your usage credit is depleted, additional usage must draw from a newly purchased consumption pool, if one exists. If your pool is depleted, use of Wizard will be disabled until it is refreshed.
 
@@ -56,7 +56,7 @@ Unused trial usage credits don't roll over. Your trial ends when you deplete the
 
 <Expandable alt_header="What happens if I deplete my trial usage credit before the 30-day trial ends?">
 
-Your trial ends when you reach 30 days or deplete the full $100 credits, whichever comes first. To continue using dbt <Term id="managed"/> providers, you will need to add a payment method and set a monthly spend limit. 
+Your trial ends when you reach 30 days or deplete the full $100 credits, whichever comes first. To continue using dbt <Term id="managed"/> providers, you will need to add a payment method and set a monthly spend limit.
 
 You can also continue with your own AI provider ("Bring Your Own Key (BYOK)") if you configure credentials for a supported AI provider.
 
@@ -64,9 +64,9 @@ You can also continue with your own AI provider ("Bring Your Own Key (BYOK)") if
 
 <Expandable alt_header="What happens when my dbt Wizard trial ends?">
 
-dbt-managed Wizard usage pauses unless paid access is configured by purchasing additional consumption pools. 
+dbt-managed Wizard usage pauses unless paid access is configured by purchasing additional consumption pools.
 
-Self-serve accounts will be able to add a payment method and choose a monthly spend limit. 
+Self-serve accounts will be able to add a payment method and choose a monthly spend limit.
 
 Enterprise and Enterprise+ accounts should contact their dbt Labs account team. BYOK usage remains separate and is billed by your provider.
 
@@ -118,7 +118,7 @@ Talk to your account team to set up a pre-committed spend.
 
 <Expandable alt_header="Who can set or change the dbt Wizard consumption pool limit?">
 
-An account admin or billing admin can manage Wizard billing and spend controls. 
+An account admin or billing admin can manage Wizard billing and spend controls.
 
 In the <Constant name="dbt_platform" />, go to **Billing & Usage** > **Usage-based features** > **Wizard** to view or update the limit.
 
@@ -127,8 +127,8 @@ In the <Constant name="dbt_platform" />, go to **Billing & Usage** > **Usage-bas
 <Expandable alt_header="Is the consumption pool for dbt Wizard also shared with dbt State or dbt Copilot?">
 
 It depends on which credits you're using:
-- Free <Constant name="wizard" /> usage credits (The Developer and Starter trial pool, and the Enterprise and Enterprise+ monthly included usage credits) are scoped to <Constant name="wizard"/> only. 
-- Consumption pool add-on that you purchase covers both <Constant name="wizard"/> and dbt State, so usage from either eature draws down the same account-level pool.  
+- Free <Constant name="wizard" /> usage credits (The Developer and Starter trial pool, and the Enterprise and Enterprise+ monthly included usage credits) are scoped to <Constant name="wizard"/> only.
+- Consumption pool add-on that you purchase covers both <Constant name="wizard"/> and dbt State, so usage from either feature draws down the same account-level pool.
 
 Either way, Copilot Actions are metered separately on an actions-based model and never touch your dbt Wizard consumption pool. dbt Wizard also has its own feature-level spend limit, configured separately from dbt State.
 
@@ -144,7 +144,7 @@ No. You need a free <Constant name="dbt" /> account to manage usage, billing, an
 
 <Expandable alt_header="How can I track my dbt Wizard usage and remaining trial credit?">
 
-From September 1st, 2026, you'll be able to track in <Constant name="dbt_platform" /> by going to **Account settings** > **Billing & Usage**. 
+From September 1st, 2026, you'll be able to track in <Constant name="dbt_platform" /> by going to **Account settings** > **Billing & Usage**.
 
 The overview and Wizard usage-based feature pages will show your current consumption pool/usage, trial balance, and spend controls across the platform and CLI.
 
@@ -173,7 +173,7 @@ No. With BYOK, your AI provider bills you directly. BYOK usage doesn't draw from
 
 <Expandable alt_header="How does BYOK work?">
 
-With BYOK, you connect your own AI provider credentials and pay the provider directly. BYOK usage doesn't consume your dbt Wizard consumption pool. Refer to the [BYOK setup guide](/docs/platform/wizard-byok-platform) for configuration details. 
+With BYOK, you connect your own AI provider credentials and pay the provider directly. BYOK usage doesn't consume your dbt Wizard consumption pool. Refer to the [BYOK setup guide](/docs/platform/wizard-byok-platform) for configuration details.
 
 Refer to [Model Provider Rate table](https://www.getdbt.com/legal/dbt-wizard-token-costs-by-model) and [Service Consumption Table](https://www.getdbt.com/legal/service-consumption-table) for more information.
 
@@ -183,7 +183,7 @@ Refer to [Model Provider Rate table](https://www.getdbt.com/legal/dbt-wizard-tok
 
 <Expandable alt_header="Why use dbt-managed inference instead of bringing my own key?">
 
-With dbt-<Term id="managed"/> inference, there's nothing to configure or maintain. dbt Labs selects and maintains the underlying models for cost, speed, and accuracy, so your team focuses on data work, not agent upkeep. 
+With dbt-<Term id="managed"/> inference, there's nothing to configure or maintain. dbt Labs selects and maintains the underlying models for cost, speed, and accuracy, so your team focuses on data work, not agent upkeep.
 
 Usage is billed through your existing dbt account and covered by your consumption pool, so there's one bill instead of a second vendor relationship to manage.
 

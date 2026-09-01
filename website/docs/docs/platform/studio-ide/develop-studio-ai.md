@@ -24,10 +24,10 @@ dbt also supports dbt Copilot, a separate inline AI assistance experience for si
 
 ## Prerequisites
 
-- A Starter, Enterprise, or Enterprise+ plan
-- A [<Constant name="dbt" /> account](https://www.getdbt.com/signup) and [Developer seat license](/docs/platform/manage-access/seats-and-users).
+- A [<Constant name="dbt" /> account](https://www.getdbt.com/signup) on any plan and [Developer seat license](/docs/platform/manage-access/seats-and-users).
 - A [development environment](/docs/platform/studio-ide/develop-in-studio#get-started-with-the-studio-ide) and credentials set up in the <Constant name="studio_ide" />.
-- [Enabled AI features](/docs/platform/enable-dbt-ai#enable-ai-features) for your account.
+
+AI features are enabled by default. Admins can [turn them off or back on anytime](/docs/platform/manage-dbt-ai).
 
 ## dbt Wizard in Studio IDE <Lifecycle status="preview,self_service,managed,managed_plus" />
 

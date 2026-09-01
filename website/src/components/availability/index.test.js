@@ -33,6 +33,18 @@ describe('Availability', () => {
     expect(badge).not.toHaveTextContent('Login required');
   });
 
+  it('renders both surfaces for a multi-surface feature', async () => {
+    const user = userEvent.setup();
+    render(<Availability availability={{ surface: ['local', 'platform'] }} />);
+    const badge = screen.getByRole('button', { name: /local development \| dbt platform/i });
+    expect(badge).toHaveTextContent('Local development | dbt platform');
+
+    await user.click(badge);
+    const tooltip = screen.getByRole('tooltip');
+    expect(tooltip).toHaveTextContent('Runs locally.');
+    expect(tooltip).toHaveTextContent('Available in the dbt platform.');
+  });
+
   it('expands minPlan to the tier and everything above it', async () => {
     const user = userEvent.setup();
     render(
