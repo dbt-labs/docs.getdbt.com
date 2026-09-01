@@ -105,7 +105,7 @@ dbt fmt [FILE] [flags]
 
 Because [linting in the <Constant name="studio_ide" />](/docs/platform/studio-ide/lint-format) still uses SQLFluff, <Constant name="studio_ide" /> **Lint file** and `dbt lint` can report different violations for the same project code. Similarly, CI jobs on a <Constant name="fusion" /> version invoke `dbt lint` instead of SQLFluff, so results from [CI jobs](/docs/deploy/continuous-integration#sql-linting) can differ from your SQLFluff results.
 
-If you need SQLFluff behavior, you can either lint in the <Constant name="studio_ide" />, which continues to run SQLFluff, or run SQLFluff locally using the standalone <Constant name="core" /> engine templater. Refer to [<Constant name="fusion" /> limitations](/docs/fusion/supported-features#limitations) for more information.
+If you need SQLFluff behavior, you can either lint in the <Constant name="studio_ide" />, which continues to run SQLFluff, or run SQLFluff locally using the standalone <Constant name="core" /> engine templater. Refer to [<Constant name="fusion" /> limitations](/docs/dbt/supported-features#limitations) for more information.
 
 ## Beta limitations
 
