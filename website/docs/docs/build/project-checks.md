@@ -20,7 +20,7 @@ A check is a SQL file in your `checks/` directory paired with a config entry in 
 
 1. Declare the `info_schema` version in `dbt_project.yml`:
 
-  The `info_schema.version` key tells dbt which version of the metadata index schema your checks are written against. See [`info_schema`](/reference/dbt-jinja-functions/info-schema/) for more detail.
+  The `info_schema.version` key tells dbt which version of the metadata index schema your checks are written against. See [`info_schema`](/reference/dbt-jinja-functions/info-schema/) for more detail. <!-- TODO: add a link to info schema docs once PR 9906 is merged-->
 
   <File name='dbt_project.yml'>
 
