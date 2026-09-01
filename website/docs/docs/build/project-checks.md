@@ -152,7 +152,7 @@ Use `dbt check <name>` to choose which check to run. The `--select` flag serves 
 
 For example, passing `--select some_check_name` does not tell dbt to run only `some_check_name`. If the check being run queries `info_schema('checks')`, the selector limits its results to the row representing `some_check_name`.
 
-When you pass a selector, dbt uses the `selection_filter_on` config to determine how to filter the results:
+When you pass a selector, dbt uses the [`selection_filter_on`](/reference/resource-configs/selection-filter-on) config to determine how to filter the results:
 
 - **Default (not set)**: If the query returns a `unique_id` column, dbt keeps rows whose `unique_id` is included in the selection. If the query does not return `unique_id`, dbt does not filter the results. This allows aggregate checks (for example, "the project has at least one model") to apply to the whole project.
 - **`selection_filter_on: none`**: Does not filter the results; always applies the check to the whole project. Use this option to make whole-project behavior explicit.
@@ -161,7 +161,7 @@ When you pass a selector, dbt uses the `selection_filter_on` config to determine
 `state:modified` behaves like any other selector. If it produces an empty selection, checks are `skipped` with exit code `0` rather than fail because of issues elsewhere in the project. If it selects one model, the check reports only applicable result rows for that model.
 
 :::note
-`state:modified.configs` does not yet fully detect config changes because `unrendered_config` is not populated for checks. Use this selector with caution in CI pipelines.
+`state:modified.configs` does not yet fully detect config changes for checks. Config comparison falls back to the rendered config rather than `unrendered_config` (which is not yet populated for checks), so changes involving environment-aware Jinja values may not be detected. Use this selector with caution in CI pipelines.
 :::
 
 ## Results
