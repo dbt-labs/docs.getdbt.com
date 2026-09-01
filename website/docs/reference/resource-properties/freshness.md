@@ -1,3 +1,5 @@
+import FreshnessFields from '/snippets/_freshness-fields.md';
+
 <Tabs>
 <TabItem value="yml" label="Project file">
 
@@ -62,21 +64,11 @@ sources:
 ## Definition
 A freshness block is used to define the acceptable amount of time between the most recent record, and now, for a <Term id="table" /> to be considered "fresh".
 
-In the `freshness` block, one or both of `warn_after` and `error_after` can be provided. If neither is provided, then dbt will not calculate freshness for the tables in this source.
-
-- `warn_after`: Duration (for example, 12 hours) after which dbt raises a warning if the most recent available data is older than this threshold.
-- `error_after`: Duration (for example, 24 hours) after which dbt fails the freshness check if the most recent available data is older than this threshold.
-
-In most cases, the `loaded_at_field` is required. Some adapters support calculating source freshness from the warehouse metadata tables and can exclude the `loaded_at_field`. <VersionBlock firstVersion="1.10">Alternatively, you can define `loaded_at_query` to use custom SQL expression to calculate the timestamp.</VersionBlock>
+<FreshnessFields />
 
 If a source has a `freshness:` block, dbt will attempt to calculate freshness for that source:
 - If `loaded_at_field` is provided, dbt will calculate freshness via a select query.
-- If `loaded_at_field` is _not_ provided, dbt will calculate freshness via warehouse metadata tables when possible. 
-<VersionBlock firstVersion="1.10"> 
-- If `loaded_at_query` is provided, dbt will calculate freshness via the provided custom SQL query.
-- If `loaded_at_query` is provided, `loaded_at_field` should not be configured.
-</VersionBlock>
-
+- If `loaded_at_field` is _not_ provided, dbt will calculate freshness via warehouse metadata tables when possible.
 
 Currently, calculating freshness from warehouse metadata tables is supported on the following adapters:
 - [Snowflake](/reference/resource-configs/snowflake-configs)

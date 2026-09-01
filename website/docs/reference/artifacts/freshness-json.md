@@ -10,7 +10,7 @@ availability:
 
 **Produced by:** [`dbt freshness`](/reference/commands/freshness)
 
-This file contains freshness-check results for all sources and models with [freshness](/reference/resource-configs/freshness) configured. dbt writes it to `target/freshness.json` after every `dbt freshness` invocation.
+This file contains freshness results for all sources and models with [freshness](/reference/resource-configs/freshness) configured. dbt writes it to `target/freshness.json` after every `dbt freshness` invocation.
 
 Unlike [`sources.json`](/reference/artifacts/sources-json), which covers sources only, `freshness.json` covers both sources and models. Each entry includes a `resource_type` field to distinguish them.
 
@@ -18,7 +18,7 @@ Unlike [`sources.json`](/reference/artifacts/sources-json), which covers sources
 
 - [`metadata`](/reference/artifacts/dbt-artifacts#common-metadata)
 - `elapsed_time`: Total invocation time in seconds.
-- `results`: Array of freshness-check results.
+- `results`: Array of freshness results.
 
 Each entry in `results` is a dictionary with the following keys:
 

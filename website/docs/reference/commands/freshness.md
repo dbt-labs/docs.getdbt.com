@@ -11,8 +11,6 @@ availability:
 
 The `dbt freshness` command checks whether sources and models with [freshness](/reference/resource-configs/freshness) configured meet your `warn_after` and `error_after` thresholds, reporting warnings and errors accordingly.
 
-[`dbt source freshness`](/reference/commands/source) still works &mdash; it checks sources only and produces the `sources.json` output.
-
 ## Usage
 
 ```bash
@@ -49,7 +47,7 @@ dbt freshness --select "source:jaffle_shop.orders"
 `dbt freshness` selects nodes where freshness is configured:
 
 - **Sources**: Any source with `warn_after` or `error_after` set.
-- **Models**: Any model with `warn_after` or `error_after` set in its `freshness` config. dbt excludes models with only `build_after` configured.
+- **Models**: Any model with `warn_after` or `error_after` set in its `freshness` config.
 
 Freshness is measured using one of three methods, in order of precedence:
 
@@ -102,7 +100,9 @@ After `dbt freshness` completes, dbt writes `target/freshness.json` covering all
 
 ### sources.json
 
-Whenever sources are included in a `dbt freshness` run, dbt also writes `target/sources.json`. It contains sources only, with no `resource_type` field. For the full schema, refer to [`sources.json`](/reference/artifacts/sources-json).
+For backward compatibility, whenever sources are included in a `dbt freshness` run, dbt also writes `target/sources.json`. It contains sources only, with no `resource_type` field. For the full schema, refer to [`sources.json`](/reference/artifacts/sources-json).
+
+[`dbt source freshness`](/reference/commands/source) also still works and produces only `sources.json`, checking sources only.
 
 dbt does not overwrite `sources.json` if the run measured no sources.
 

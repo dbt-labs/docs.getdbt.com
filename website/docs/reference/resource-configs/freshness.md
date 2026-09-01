@@ -8,20 +8,21 @@ availability:
 ---
 
 import SaoDeprecated from '/snippets/_sao-deprecated.md';
+import FreshnessFields from '/snippets/_freshness-fields.md';
 
 # freshness <Lifecycle status="beta" />
 
 <VersionBlock lastVersion="1.99">
 
-:::note <Constant name="fusion" /> only
-Freshness model configurations are only available for the dbt Fusion engine. Refer to [Source data freshness](/docs/build/sources#source-data-freshness) when using dbt Core.
+:::note dbt v2 only
+Freshness model configurations are only available for the dbt Fusion engine. Refer to [Source data freshness](/docs/build/sources#source-data-freshness) when using dbt v1.
 :::
 
 </VersionBlock>
 
 Use the `freshness` config on a model to:
 
-- **Set a freshness threshold**: You can set `warn_after` and `error_after` thresholds so `dbt freshness` reports whether a model’s data is stale. This mirrors the source freshness you may already use on sources.
+- **Set a freshness threshold**: You can set `warn_after` and `error_after` thresholds so `dbt freshness` reports whether a model’s data is stale.
 - **Schedule builds** (`build_after`): You can control how often a model rebuilds when new upstream data is available. Available on dbt platform Enterprise tiers only. `build_after` is part of state-aware orchestration, which has been deprecated and is now dbt State.
 
 ## Setting model freshness
@@ -34,11 +35,11 @@ Use the `freshness` config on a model to:
 ```yml
 models:
   [<resource-path>](/reference/resource-configs/resource-path):
+    [+](/reference/resource-configs/plus-prefix)loaded_at_field: <column_name>    # required for view/external; optional for table/incremental
+    [+](/reference/resource-configs/plus-prefix)loaded_at_query: <sql_expression> # alternative to loaded_at_field
     [+](/reference/resource-configs/plus-prefix)[freshness](/reference/resource-configs/freshness):
       warn_after: {count: <positive_integer>, period: minute | hour | day}
       error_after: {count: <positive_integer>, period: minute | hour | day}
-      loaded_at_field: <column_name>    # required for view/external materializations
-      loaded_at_query: <sql_expression> # alternative to loaded_at_field
 ```
 
 </File>
@@ -52,10 +53,10 @@ models:
 models:
   - name: stg_orders
     config:
+      loaded_at_field: updated_at    # or loaded_at_query; required for view/external, optional for table/incremental
       freshness:
         warn_after: {count: 24, period: hour}
         error_after: {count: 48, period: hour}
-        loaded_at_field: updated_at    # required for view/external; optional for table/incremental
 ```
 
 </File>
@@ -67,10 +68,10 @@ models:
 ```sql
 {{
     config(
+      loaded_at_field="updated_at",
       freshness={
         "warn_after": {"count": 24, "period": "hour"},
-        "error_after": {"count": 48, "period": "hour"},
-        "loaded_at_field": "updated_at"
+        "error_after": {"count": 48, "period": "hour"}
       }
     )
 }}
@@ -82,16 +83,11 @@ models:
 
 ### Definition
 
-Model freshness lets you declare how recent a model’s data must be, using the same `warn_after` / `error_after` syntax as [source freshness](/docs/build/sources#source-data-freshness). Run [`dbt freshness`](/reference/commands/freshness) to check all sources and models in a single invocation.
+Model freshness lets you declare how recent a model’s data must be. Run [`dbt freshness`](/reference/commands/freshness) to check all sources and models with freshness configured in a single invocation.
 
 For public models in a [dbt Mesh](/docs/mesh/about-mesh), dbt stores the freshness config in `publication.json` so downstream projects can check upstream model freshness without running the upstream project.
 
-| Field | Description |
-|---|---|
-| `warn_after` | Duration after which `dbt freshness` reports a warning if the most recent available data is older than this threshold. Requires both `count` (positive integer) and `period` (`minute`, `hour`, or `day`). One or both of `warn_after` and `error_after` can be provided. If neither is set, dbt will not check freshness for that model. |
-| `error_after` | Duration after which `dbt freshness` reports an error if the most recent available data is older than this threshold. Same format as `warn_after`. |
-| `loaded_at_field` | Column dbt queries to determine the most recent loaded timestamp. Required for `view` and `external` materializations; optional for `table`, `incremental`, `materialized_view`, and `dynamic_table`. Can be set nested inside `freshness:` or as a sibling config &mdash; nested wins if both are set. |
-| `loaded_at_query` | A SQL expression that returns the most recent loaded timestamp. Alternative to `loaded_at_field`. Same placement rules apply. If both are set, `loaded_at_query` takes precedence. |
+<FreshnessFields />
 
 ### Materialization rules
 

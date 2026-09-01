@@ -46,7 +46,7 @@ Most dbt commands (and corresponding RPC methods) produce artifacts:
 </VersionBlock>
 <VersionBlock firstVersion="2.0">
 
-- [sources](/reference/artifacts/sources-json): produced by `dbt source freshness` and `dbt freshness` (sources only, for backward compatibility)
+- [sources](/reference/artifacts/sources-json): produced by `dbt freshness` when sources are included
 - [freshness](/reference/artifacts/freshness-json): produced by [`dbt freshness`](/reference/commands/freshness); covers both sources and models with freshness configured, with a `resource_type` field on each entry to distinguish them
 
 </VersionBlock>

@@ -73,7 +73,7 @@ The most popular `dbt-labs` packages (`dbt_utils`, `audit_helper`, `dbt_external
 
 ### Model freshness and the `dbt freshness` command <Lifecycle status="beta" />
 
-v2 lets you declare freshness thresholds on models using the same `warn_after` / `error_after` syntax as [source freshness](/docs/build/sources#source-data-freshness), and adds a new [`dbt freshness`](/reference/commands/freshness) command to check them.
+v2 lets you declare freshness thresholds on models and adds a new [`dbt freshness`](/reference/commands/freshness) command to check both sources and models with freshness configured in a single invocation.
 
 #### Model freshness
 
@@ -83,10 +83,10 @@ You can declare freshness thresholds directly on any model:
 models:
   - name: stg_orders
     config:
+      loaded_at_field: updated_at  # or loaded_at_query; required for view/external, optional for table/incremental
       freshness:
         warn_after: {count: 24, period: hour}
         error_after: {count: 48, period: hour}
-        loaded_at_field: updated_at  # required for view/external; optional for table/incremental
 ```
 
 How dbt measures freshness depends on the materialization:
