@@ -11,6 +11,7 @@ availability:
 ---
 
 import CopilotWizardDifferences from '/snippets/_copilot-wizard-diff.md';
+import CopilotConfigureAiProvider from '/snippets/_copilot-configure-ai-provider.md';
 
 # dbt Copilot
 
@@ -47,9 +48,15 @@ Enterprise and Enterprise+ limits don't apply if you [bring your own key (BYOK)]
 
 Refer to [dbt AI usage](/docs/platform/billing/dbt-ai-usage) for what counts as an action, what happens when you hit the limit, and how to check your usage. 
 
+## Configure AI provider for dbt Copilot
+
+You need <Constant name="dbt" /> admin permissions to change account settings and configure providers. dbt Copilot is configured separately from <Constant name="wizard" /> &mdash; for <Constant name="wizard" /> providers, refer to [Manage AI features](/docs/platform/manage-dbt-ai#configure-ai-provider).
+
+<CopilotConfigureAiProvider />
+
 ## Considerations
 
 - dbt Copilot is a separate experience from <Constant name="wizard" />. For agentic, full-lifecycle AI development, use [<Constant name="wizard" />](/docs/platform/wizard-overview).
+- AI features are enabled by default. Admins can [turn them off or back on anytime](/docs/platform/manage-dbt-ai).
 - Certain features are only available on Enterprise and Enterprise+ plans. Refer to [Billing](/docs/platform/billing) for details.
 - dbt Copilot doesn't yet support generating semantic models with the latest YAML spec.
-- dbt Copilot requires AI features to be [enabled](/docs/platform/enable-dbt-ai) for your account.

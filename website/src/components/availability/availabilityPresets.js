@@ -67,13 +67,14 @@ export const SURFACE_TOOLTIP_LINKS = {
 };
 
 export const PLAN_LABELS = {
+  developer: 'Developer',
   starter: 'Starter',
   enterprise: 'Enterprise',
   enterprise_plus: 'Enterprise+',
 };
 
 // Order matters: minPlan expands to this tier and everything after it ("and up").
-const PLAN_TIER_ORDER = ['starter', 'enterprise', 'enterprise_plus'];
+const PLAN_TIER_ORDER = ['developer', 'starter', 'enterprise', 'enterprise_plus'];
 
 const ACCESS_TOOLTIPS = {
   Free: 'No account needed.',
@@ -141,6 +142,11 @@ export const availabilityPresets = {
     description: 'dbt platform features available to all signed-in users.',
     surface: 'platform',
     access: 'login_required',
+  },
+  platform_usage: {
+    description: 'dbt platform features available to all signed-in users and billed on usage.',
+    surface: 'platform',
+    access: 'usage_based',
   },
   local_free: {
     description: 'Local CLI tools with no login required.',

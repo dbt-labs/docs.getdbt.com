@@ -329,7 +329,12 @@
     },
     {
       "source": "/docs/dbt-ai/about-dbt-wizard",
-      "destination": "/docs/dbt-ai/about-dbt-wizard-cli",
+      "destination": "/docs/dbt-ai/wizard-cli",
+      "permanent": true
+    },
+    {
+      "source": "/docs/dbt-ai/about-dbt-wizard-cli",
+      "destination": "/docs/dbt-ai/wizard-cli",
       "permanent": true
     },
     {
@@ -354,7 +359,12 @@
     },
     {
       "source": "/docs/platform/enable-dbt-copilot",
-      "destination": "/docs/platform/enable-dbt-ai",
+      "destination": "/docs/platform/manage-dbt-ai",
+      "permanent": true
+    },
+    {
+      "source": "/docs/platform/enable-dbt-ai",
+      "destination": "/docs/platform/manage-dbt-ai",
       "permanent": true
     },
     {

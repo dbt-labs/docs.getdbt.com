@@ -388,17 +388,26 @@ const sidebarSettings = {
           items: [
             "docs/platform/wizard-overview",
             "docs/dbt-ai/wizard-quickstart",
-            "docs/platform/enable-dbt-ai",
+            "docs/platform/manage-dbt-ai",
             "docs/dbt-ai/wizard-use-cases",
             "docs/dbt-ai/wizard-how-it-works",
             "docs/dbt-ai/wizard-billing-faqs",
             {
               type: "category",
+              label: "Pricing and billing",
+              collapsed: true,
+              link: { type: "doc", id: "docs/dbt-ai/pricing-billing/overview" },
+              items: [
+                "docs/dbt-ai/pricing-billing/overview",
+                "docs/dbt-ai/pricing-billing/trial-and-billing",
+              ],
+            },
+            {
+              type: "category",
               label: "Wizard CLI",
               collapsed: true,
-              link: { type: "doc", id: "docs/dbt-ai/about-dbt-wizard-cli" },
+              link: { type: "doc", id: "docs/dbt-ai/wizard-cli" },
               items: [
-                "docs/dbt-ai/about-dbt-wizard-cli",
                 "docs/dbt-ai/wizard-cli",
                 "docs/dbt-ai/wizard-byok",
                 "docs/dbt-ai/wizard-skills",

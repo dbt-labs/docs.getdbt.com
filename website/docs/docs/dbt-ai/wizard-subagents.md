@@ -44,7 +44,7 @@ If two custom agents use the same name, <Constant name="wizard" /> uses the high
 
 ## Where you can use subagents
 
-Subagents work in the [<Constant name="wizard" /> CLI](/docs/dbt-ai/about-dbt-wizard-cli).
+Subagents work in the [<Constant name="wizard" /> CLI](/docs/dbt-ai/wizard-cli).
 
 You can define custom agent roles, set display nicknames, and configure global limits through the `config.toml` file.
 

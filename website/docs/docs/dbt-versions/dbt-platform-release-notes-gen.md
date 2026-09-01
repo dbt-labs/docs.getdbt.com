@@ -22,6 +22,42 @@ Release notes are grouped by date for single-tenant environments.
 
 <span><img src="/img/fontawesome/rss.svg" alt="RSS" className="rss-icon" />Subscribe to release note updates via [RSS](/feeds/release-notes-st-rss.xml), [Atom](/feeds/release-notes-st-atom.xml), or [JSON Feed](/feeds/release-notes-st-rss.json).</span>
 
+## August 26, 2026
+
+## New
+
+### Orchestration and run status
+
+- **dbt State explain tab on run details**: A new "State explain" tab on the run details page shows dbt State's decision for each model in a run (rebuilt, reused, or cloned), with expandable details, search, and Comma-Separated Values (CSV) download. You can use this tab to investigate why each model was rebuilt or reused. Contact your account manager to enable.
+
+## Enhancements
+
+### dbt platform
+
+- **Clearer billing admin guidance for non-admins**: Non-admin users now see an "Ask an admin to enable" message on the dbt Wizard and dbt State cards in Billing & Usage when a trial is available but they lack permission to start it, instead of a blank space. The same message appears if a non-admin tries to start a trial from a dbt State or dbt Wizard link.
+
+### Orchestration and run status
+
+- **dbt State available on more release tracks**: dbt State is now available for jobs running on the Compatible, Fusion Extended, and Fusion Fallback release tracks, in addition to previously supported tracks.
+
+- **Corrected Fusion release track names**: The display names for dbt Fusion release tracks are now "Fusion Stable" and "Fusion Nightly" instead of the previous reversed labels "Stable Fusion" and "Nightly Fusion".
+
+- **Large compare results in pull request comments**: When compare results are larger than 50 MB, pull request comments now show a "too large to summarize" notice with a link to the full compare report, instead of failing with no message.
+
+### Studio IDE
+
+- **Correct browser tab title**: The Studio IDE browser tab now displays "dbt Studio" instead of a generic editor title.
+
+### Integrations
+
+- **More reliable MCP OAuth sign-in**: When you connect an MCP client with OAuth, more clients can now complete sign-in successfully.
+
+## Fixes
+
+### dbt platform
+
+- **Visible add-on cancellation errors**: Failed dbt State and dbt Wizard subscription cancellations now surface an error message in the confirmation pop-up instead of silently doing nothing. A loading state is shown while cancellation is in progress, and permission errors direct you to contact a billing admin.
+
 ## August 19, 2026
 
 ## Enhancements

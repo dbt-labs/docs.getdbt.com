@@ -9,11 +9,11 @@ availability: local_all
 ---
 
 import WizardSupportedProviders from '/snippets/_wizard-supported-providers.md';
-import WizardCliInstall from '/snippets/_wizard-cli-install-by-version.md';
 import WizardCliOnboarding from '/snippets/_wizard-cli-onboarding.md';
 import NewToTerminal from '/snippets/_new-to-terminal.md';
 import WizardFeedbackCallout from '/snippets/_wizard-feedback-callout.md';
 import WizardCliDbtCliSupport from '/snippets/_wizard-cli-dbt-cli-support.md';
+import WizardTrialBilling from '/snippets/_wizard-trial-billing.md';
 
 # Install <Constant name="wizard" /> CLI <Lifecycle status="beta"/>
 
@@ -21,24 +21,25 @@ import WizardCliDbtCliSupport from '/snippets/_wizard-cli-dbt-cli-support.md';
 Install the <Constant name="wizard" /> CLI from your terminal for agentic and governed data development in dbt.
 </IntroText>
 
-This guide explains how to install, verify, update, and uninstall the <Constant name="wizard" /> CLI on your local machine. (Be warned, the wizard has been known to <WizardPopcorn>cast spells</WizardPopcorn>)
+This guide explains how to install, verify, update, and uninstall the <Constant name="wizard" /> CLI on your local machine.
+
+<WizardTrialBilling />
 
 <WizardCliDbtCliSupport />
-<WizardCliInstall />
-
-Next up, check out the [Prerequisites](#prerequisites) and [First-run setup and onboarding](#first-run-setup-and-onboarding) sections for more details.
 
 ## Prerequisites
 
 - macOS, Windows, or Linux
 - A dbt project with a built `target/` directory (`dbt parse`, `dbt compile`, or `dbt build`)
-- Credentials for a supported CLI provider. Refer to [Supported AI providers](/docs/dbt-ai/wizard-byok#supported-ai-providers) in the next section.
+- Access to a supported AI provider. You can use a managed provider in dbt, or configure [BYOK](/docs/dbt-ai/wizard-byok) with your own provider credentials.
 
-<WizardSupportedProviders />
+### Supported AI models
+
+<WizardSupportedProviders defaultSurface="local" />
 
 <NewToTerminal />
 
-## First-run setup and onboarding
+## Install and set up dbt Wizard CLI
 
 <WizardCliOnboarding />
 

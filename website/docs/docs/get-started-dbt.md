@@ -122,7 +122,7 @@ Develop with a self-hosted installation using the <Constant name="fusion_engine"
 
 <Card
     title="dbt Wizard from your terminal"
-    body="Install the dbt Wizard CLI to run the agent locally against any dbt project — with or without a dbt platform account. Requires an OpenAI API key (BYOK)."
+    body="Install the dbt Wizard CLI to run the agent locally against any dbt project — with or without a dbt platform plan. Start with a free trial using dbt managed AI, or bring your own provider key."
     link="/docs/dbt-ai/wizard-quickstart"
     icon="dbt-copilot"/>
 
