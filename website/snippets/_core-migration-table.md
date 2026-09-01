@@ -1,8 +1,8 @@
 | <div style={{width:'240px'}}>Guide</div> | <div style={{width:'250px'}}>Information</div> | <div style={{width:'200px'}}>Audience</div> |
 |------------|-------------|----------|
-| [Move from dbt Core to <Constant name="dbt_platform" />: What you need to know](/guides/core-migration-2) | Understand the considerations and methods needed in your move from dbt Core to <Constant name="dbt_platform" />. | Team leads <br /> Admins |
-| [Move from dbt Core to <Constant name="dbt_platform" />: Get started](/guides/core-migration-1?step=1) | Learn the steps needed to move from dbt Core to <Constant name="dbt_platform" />. | Developers <br /> Data engineers <br /> Data analysts |
-| [Move from dbt Core to <Constant name="dbt_platform" />: Optimization tips](/guides/core-migration-3) | Learn how to optimize your <Constant name="dbt" /> experience with common scenarios and useful tips. | Everyone |
+| [Move from dbt Core to <Constant name="dbt_platform" />: What you need to know](/guides/dbt-migration-2) | Understand the considerations and methods needed in your move from dbt Core to <Constant name="dbt_platform" />. | Team leads <br /> Admins |
+| [Move from dbt Core to <Constant name="dbt_platform" />: Get started](/guides/dbt-migration-1?step=1) | Learn the steps needed to move from dbt Core to <Constant name="dbt_platform" />. | Developers <br /> Data engineers <br /> Data analysts |
+| [Move from dbt Core to <Constant name="dbt_platform" />: Optimization tips](/guides/dbt-migration-3) | Learn how to optimize your <Constant name="dbt" /> experience with common scenarios and useful tips. | Everyone |
 
 ### Why move to the dbt platform?
 

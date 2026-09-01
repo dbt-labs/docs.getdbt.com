@@ -103,7 +103,7 @@ my_project:
 | [`evaluate_volatile_sql`](/reference/resource-configs/evaluate-volatile-sql) | `false` | Node, folder, or project-level via model config | Whether dbt State stores and compares the runtime output of volatile SQL functions when deciding whether to rebuild. |
 | [`defer_to_target`](/reference/resource-configs/defer-to-target) | `prod` | Profile | (Self-managed only) Which profile target dbt State defers to. |
 | [`allow_clones`](/reference/resource-configs/allow-clones) | `true` | Profile | Whether dbt State can clone tables into a target. For example, set to `false` on `prod` to prevent dbt State from cloning dev tables into production. |
-| [`metadata_warehouse`](/reference/resource-configs/metadata-warehouse) | Profile `warehouse` | Profile | (Snowflake only) A separate warehouse for dbt State metadata lookups. |
+| [`metadata_warehouse`](/reference/resource-configs/metadata-warehouse) | Profile `warehouse` | Profile | (Snowflake only) A separate warehouse for dbt State metadata lookups. When set, dbt issues multiple, individual queries (one per schema) instead of a single, consolidated query. |
 
 ## Related docs
 
