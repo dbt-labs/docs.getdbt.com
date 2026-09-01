@@ -183,8 +183,8 @@ To view the dependencies and relationships of the resources in your project more
 
 <DocCarousel slidesPerView={1}>
 
-<Lightbox src="/img/docs/dbt-platform/example-ci-compare-changes-tab.png" width="55%" title="Example of the Compare tab" />
+<Lightbox src="/img/docs/dbt-platform/example-ci-compare-changes-tab.png" width="95%" title="Example of the Compare tab" />
 
-<Lightbox src="/img/docs/dbt-platform/advanced-ci-modified-rows.png" width="80%" title="Example of Modified rows tab which shows you details of the modified rows." />
+<Lightbox src="/img/docs/dbt-platform/advanced-ci-modified-rows.png" width="95%" title="Example of Modified rows tab which shows you details of the modified rows." />
 
 </DocCarousel>
