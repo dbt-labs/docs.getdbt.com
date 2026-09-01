@@ -18,7 +18,7 @@ If you have a monorepo with several dbt projects, opening a single pull request 
    - [SQL linting](/docs/deploy/continuous-integration#sql-linting) is available on [<Constant name="dbt" /> release tracks](/docs/dbt-versions/dbt-release-tracks) and to <Constant name="dbt" /> [Starter, Enterprise, or Enterprise+](https://www.getdbt.com/pricing/) accounts. Refer to [Configure SQLFluff linting](/docs/deploy/continuous-integration#to-configure-sqlfluff-linting) when you add SQLFluff to your project.
 
 :::note SQLFluff and the <Constant name="fusion_engine" />
-SQLFluff linting is not yet supported for <Constant name="dbt_platform" /> jobs that run on the <Constant name="fusion_engine" />. For more information, refer to [<Constant name="fusion" /> limitations](/docs/fusion/supported-features#limitations).
+SQLFluff linting is not yet supported for <Constant name="dbt_platform" /> jobs that run on the <Constant name="fusion_engine" />. For more information, refer to [<Constant name="fusion" /> limitations](/docs/dbt/supported-features#limitations).
 :::
 
 - [Advanced CI](/docs/deploy/advanced-ci) features:

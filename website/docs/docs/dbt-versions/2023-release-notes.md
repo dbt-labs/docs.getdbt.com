@@ -74,7 +74,7 @@ Archived release notes for <Constant name="dbt" /> from 2023
     - Feedback and community support &mdash; Engage and share feedback with the dbt Labs team and dbt Community slack using channels like [#dbt-cloud-semantic-layer](https://getdbt.slack.com/archives/C046L0VTVR6) and [#dbt-metricflow](https://getdbt.slack.com/archives/C02CCBBBR1D). Or reach out to your dbt Cloud account representative.
     - Resources for upgrading &mdash; Refer to some additional info and resources to help you upgrade your dbt version:
     - [Upgrade version in dbt Cloud](/docs/dbt-versions/upgrade-dbt-platform-version)
-    - [Version migration guides](/docs/dbt-versions/core-upgrade)
+    - [Version migration guides](/docs/dbt-versions/dbt-upgrade)
 
   </Expandable>
 
@@ -319,7 +319,7 @@ Archived release notes for <Constant name="dbt" /> from 2023
     * Added a section to introduce a new beta feature [**Extended Attributes**](/docs/dbt-platform-environments#extended-attributes-beta), which allows users to set a flexible `profiles.yml` snippet in their dbt Cloud Environment settings.
     ## 🎯 Core projects
 
-    * We released [dbt 1.6](/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-to-v1.6)! We added docs for the new commands `dbt retry` and `dbt clone`
+    * We released [dbt 1.6](/docs/dbt-versions/dbt-upgrade/Older%20versions/upgrading-to-v1.6)! We added docs for the new commands `dbt retry` and `dbt clone`
 
     ## New 📚 Guides, ✏️ blog posts, and FAQs
 
@@ -843,7 +843,7 @@ Archived release notes for <Constant name="dbt" /> from 2023
     ## 🎯 Core projects 
 
     - Clearer descriptions in the [Jinja functions page](/reference/dbt-jinja-functions-context-variables), that improve content for each card. 
-    - [1.5 Docs](/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-to-v1.5) have been released as a Release Candidate (RC)! 
+    - [1.5 Docs](/docs/dbt-versions/dbt-upgrade/Older%20versions/upgrading-to-v1.5) have been released as a Release Candidate (RC)! 
     - See the beautiful [work captured in Core v 1.5](https://github.com/dbt-labs/docs.getdbt.com/issues?q=is%3Aissue+label%3A%22dbt-core+v1.5%22+is%3Aclosed).
 
     ## New 📚 Guides and ✏️ blog posts
@@ -872,7 +872,7 @@ Archived release notes for <Constant name="dbt" /> from 2023
 
     - [How to upgrade dbt without fear](/blog/upgrade-dbt-without-fear) 
     - [Upgrade Q&A on breaking changes](/docs/dbt-versions/upgrade-dbt-platform-version#upgrading-legacy-versions-under-10)
-    - [Version migration guides](/docs/dbt-versions/core-upgrade)
+    - [Version migration guides](/docs/dbt-versions/dbt-upgrade)
 
   </Expandable>
 

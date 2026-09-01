@@ -7,31 +7,33 @@ tags: [AI, CLI, dbt Wizard]
 availability: local_all
 ---
 
-import WizardPrompts from '/snippets/wizard-prompts.md';
 import WizardSupportedProviders from '/snippets/_wizard-supported-providers.md';
-import WizardCliInstall from '/snippets/_wizard-cli-install-by-version.md';
 import WizardCliOnboarding from '/snippets/_wizard-cli-onboarding.md';
-import NewToTerminal from '/snippets/_new-to-terminal.md';
 import WizardFeedbackCallout from '/snippets/_wizard-feedback-callout.md';
 import WizardCliDbtCliSupport from '/snippets/_wizard-cli-dbt-cli-support.md';
+import WizardTrialBilling from '/snippets/_wizard-trial-billing.md';
 
-# Use <Constant name="wizard" /> locally
+# Use <Constant name="wizard" /> locally <Lifecycle status="beta"/>
 
 <IntroText>
-Install <Constant name="wizard" /> locally and start an agentic dbt development session from your terminal.
+Install <Constant name="wizard" /> locally and start an agentic dbt development session from your terminal. 
+
 </IntroText>
 
 <WizardCliDbtCliSupport />
 
-<WizardCliInstall />
+<WizardTrialBilling />
 
-By the end of this guide, you can install <Constant name="wizard" /> locally, authenticate with your <Constant name="dbt_platform" /> credentials if applicable, complete first-run onboarding, and send your first prompt from the terminal.
+## Prerequisites
 
-<Constant name="wizard" /> is data warehouse agnostic and works with both the [<Constant name="fusion_engine" />](/docs/fusion/about-fusion) and [<Constant name="core" />](/docs/local/install-dbt) &mdash; no specific engine is required.
+- Access to a [supported AI provider](#supported-ai-providers). Use a dbt managed provider or configure [BYOK](/docs/dbt-ai/wizard-byok) with your own provider credentials.
+- A dbt project with a built `target/` directory (run `dbt parse`, `dbt compile`, or `dbt build`)
 
-Be warned, the wizard has been known to <WizardPopcorn>cast spells</WizardPopcorn>.
+<Constant name="wizard" /> is data warehouse agnostic and works with both the [<Constant name="fusion_engine" />](/docs/introduction) and [<Constant name="core" />](/docs/local/install-dbt) &mdash; no specific engine is required.
 
-<WizardSupportedProviders />
+## Supported AI providers
+
+<WizardSupportedProviders defaultSurface="local" />
 
 <VersionBlock lastVersion="1.99">
 
@@ -41,50 +43,10 @@ On <Constant name="fusion_engine"/> (version 2.0 and later), start <Constant nam
 
 </VersionBlock>
 
-## Prerequisites
 
-You'll need:
-
-- An OpenAI subscription, or your own API key or provider credentials for a supported provider using [BYOK](/docs/dbt-ai/wizard-byok): OpenAI, Anthropic, AWS Bedrock, Azure, Snowflake Cortex (preview), or Databricks
-- A dbt project with a built `target/` directory (run `dbt parse`, `dbt compile`, or `dbt build`)
-
-<NewToTerminal />
-
-## Complete first-run onboarding
+## Install and set up dbt Wizard
 
 <WizardCliOnboarding />
-
-Once you're set up, ask your first question in your terminal. Try some [prompts](/docs/dbt-ai/wizard-use-cases) to see how <Constant name="wizard" /> works:
-
-<WizardPrompts />
-
-<Constant name="wizard" /> will read your project's lineage, tests, and metadata and propose changes as a diff. You approve, reject, or redirect before anything is written.
-
-<div style={{maxWidth: '100%', margin: '20px 0'}}>
-<video
-  width="100%"
-  controls
-  autoPlay
-  muted
-  loop
-  playsInline
-  onLoadedMetadata={(event) => {
-    event.currentTarget.defaultPlaybackRate = 2.0;
-    event.currentTarget.playbackRate = 2.0;
-  }}
-  onPlay={(event) => {
-    event.currentTarget.playbackRate = 2.0;
-  }}
->
-  <source src="/img/wizard.mp4" type="video/mp4" />
-  Your browser does not support the video tag.
-</video>
-<span style={{display: 'block', textAlign: 'center', fontSize: '0.9em', color: 'var(--ifm-color-emphasis-600)', marginTop: '8px'}}>dbt Wizard CLI in your terminal</span>
-</div>
-
-For refactor or change requests, <Constant name="wizard" /> automatically assesses downstream impact first by reporting affected models, metrics, and tests with a severity rating before proposing any changes.
-
-When <Constant name="wizard" /> manages deferral, you point it at a target in your `profiles.yml` and it compiles and defers to that target automatically, so it can validate against already-built upstream models without rebuilding everything. Refer to [Deferral and state](/docs/dbt-ai/wizard-how-it-works#deferral-and-state) and [About dbt State](/docs/deploy/dbt-state-about) for details.
 
 :::tip Best practices for using dbt Wizard
 Once you're set up, refer to [How to use dbt Wizard in your dbt project](/best-practices/how-to-use-wizard/wizard-1-intro) for recommended workflows on real project tasks.
@@ -104,7 +66,7 @@ Use the following commands to get started:
 | `wizard review --base BRANCH` | Review diff against a base branch | `wizard review --base main` |
 | `wizard resume` | Resume a previous session | `wizard resume --last` |
 | `wizard apply` | Apply the latest Wizard diff to your working directory | `wizard apply TASK_ID` |
-| `wizard login` / `logout` | Authenticate with your dbt platform account | `wizard login` |
+| `wizard login` / `logout` | Authenticate with your dbt account | `wizard login` |
 | `wizard mcp` | Manage MCP server connections | `wizard mcp add dbt` |
 | `wizard update` | Update Wizard to the latest version | `wizard update` |
 
