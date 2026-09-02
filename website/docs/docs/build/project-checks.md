@@ -82,9 +82,9 @@ This section covers the rules and constraints for writing check SQL files and co
 
 Each package that ships checks must declare `info_schema.version` in its own `dbt_project.yml` (it is not inherited from the root project). Only `version: 1` is accepted today. A package with checks and no version declaration fails to parse with a message naming the file and the value to set.
 
-### The `info_schema()` function
+### The `info_schema()` macro
 
-`{{ info_schema() }}` is the supported way to read project metadata in a check. Pass the name of the view you want to query (for example, `{{ info_schema('models') }}` to query models, or `{{ info_schema('edges') }}` to query DAG edges). dbt writes your project metadata to a local index at parse time, and checks query that index through this function. For the full list of available views and columns, refer to [`info_schema`](/reference/dbt-jinja-functions/info-schema/).
+`{{ info_schema() }}` is the supported way to read project metadata in a check. Pass the name of the view you want to query (for example, `{{ info_schema('models') }}` to query models, or `{{ info_schema('edges') }}` to query DAG edges). dbt writes your project metadata to a local index at parse time, and checks query that index through this macro. For the full list of available views and columns, refer to [`info_schema`](/reference/dbt-jinja-functions/info-schema/).
 
 ### Example checks
 

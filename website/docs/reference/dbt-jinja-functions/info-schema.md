@@ -1,8 +1,8 @@
 ---
-title: "About the info_schema function"
+title: "About the info_schema macro"
 sidebar_label: "info_schema"
 id: "info-schema"
-description: "Use `info_schema()` in check SQL files to query project metadata at parse time."
+description: "Use the `info_schema()` macro in check SQL files to query project metadata at parse time."
 availability:
   engine: v2
 ---
