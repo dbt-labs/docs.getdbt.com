@@ -15,7 +15,7 @@ Only views whose columns are fully populated at parse time are available. Passin
 
 ## Views and columns reference
 
-The following lists the columns available in each view when querying with `{{ info_schema() }}`.
+Each view mirrors a table of the same name in the dbt Information Schema, showing only the columns that are final at parse time. The following sections list the columns available in each view when querying with `{{ info_schema() }}`.
 
 ### DAG node views
 
@@ -54,7 +54,7 @@ The `models`, `seeds`, `snapshots`, `functions`, `analyses`, `hooks`, and `check
 
 </Expandable>
 
-`sources` includes the shared node columns above, plus these additional columns:
+`sources` includes the shared columns above, plus these additional columns:
 
 <Expandable alt_header="sources (additional columns)">
 
@@ -65,7 +65,9 @@ The `models`, `seeds`, `snapshots`, `functions`, `analyses`, `hooks`, and `check
 
 </Expandable>
 
-### Additional views
+### Test views
+
+`data_tests` and `unit_tests` each have their own column set. Some `data_tests` columns match names used in the DAG node views above, but not all of them do, and `data_tests` also has several columns of its own:
 
 <Expandable alt_header="data_tests">
 
@@ -117,6 +119,8 @@ The `models`, `seeds`, `snapshots`, `functions`, `analyses`, `hooks`, and `check
 
 </Expandable>
 
+### Column and DAG structure views
+
 <Expandable alt_header="node_columns">
 
 - `node_unique_id`
@@ -129,6 +133,8 @@ The `models`, `seeds`, `snapshots`, `functions`, `analyses`, `hooks`, and `check
 </Expandable>
 
 <Expandable alt_header="dag_nodes">
+
+`dag_nodes` has one row per enabled resource that participates in the DAG (including exposures, metrics, and unit tests), with the following columns:
 
 - `unique_id`
 - `resource_type`
@@ -143,6 +149,8 @@ The `models`, `seeds`, `snapshots`, `functions`, `analyses`, `hooks`, and `check
 - `ingested_at`
 
 </Expandable>
+
+### Code and docs views
 
 <Expandable alt_header="macros">
 
@@ -172,6 +180,8 @@ The `models`, `seeds`, `snapshots`, `functions`, `analyses`, `hooks`, and `check
 - `ingested_at`
 
 </Expandable>
+
+### Governance and lineage views
 
 <Expandable alt_header="groups">
 
@@ -204,6 +214,8 @@ The `models`, `seeds`, `snapshots`, `functions`, `analyses`, `hooks`, and `check
 - `ingested_at`
 
 </Expandable>
+
+### Semantic Layer views
 
 <Expandable alt_header="metrics">
 
@@ -318,6 +330,8 @@ The `models`, `seeds`, `snapshots`, `functions`, `analyses`, `hooks`, and `check
 - `ingested_at`
 
 </Expandable>
+
+### Project views
 
 <Expandable alt_header="project">
 
