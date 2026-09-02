@@ -88,14 +88,6 @@ Retry works with the following commands:
 
 Retry references [run_results.json](/reference/artifacts/run-results-json) to determine where to start. Executing retry without correcting the previous failures yields <Term id="idempotent" /> results.
 
-<VersionBlock firstVersion="2.0">
-
-### Retrying after a check-blocked build
-
-When `dbt build` fails because a [project quality check](/docs/build/project-checks) fails, retry re-runs _only the checks that failed_ (not all checks). If those checks pass, `dbt retry` then builds the models that were skipped.
-
-</VersionBlock>
-
 <VersionBlock lastVersion="1.99">
 
 `dbt retry` reuses the prior command’s selection, including any [`--select`](/reference/node-selection/syntax), [`--exclude`](/reference/node-selection/syntax), or [`--selector`](/reference/node-selection/yaml-selectors) arguments. You cannot override those selectors on retry with <Constant name="core" /> or the <Constant name="dbt_platform" /> CLI.

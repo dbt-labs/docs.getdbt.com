@@ -1,39 +1,36 @@
 ---
 title: selection_filter_on
 id: "selection-filter-on"
-description: "Configure which output column `--select` uses to filter check result rows."
+description: "Configure which output column selector methods use to filter check result rows."
 resource_types: [checks]
 datatype: string | [string] | none
 availability:
   engine: v2
 ---
 
-When you pass `--select` or `--exclude` to `dbt check` or `dbt build`, dbt filters the _rows_ a check reports. It does not control which checks run. `selection_filter_on` tells dbt which output column to use when deciding whether to keep or drop a row.
+When you pass a selector (`--select`, `--exclude`, `--selector`) to `dbt check` or `dbt build`, dbt uses it to scope which project resources each check evaluates. `selection_filter_on` tells dbt which column in the check's output contains the resource IDs to match against the selection.
+
+By default, dbt scopes check results to selected resources by matching the `unique_id` column in the output. If the check returns no `unique_id` column, it runs against the whole project. Use `selection_filter_on` to change this default. For example, to specify `[parent_unique_id, child_unique_id]` for an edge check, or `none` to always run the check against the whole project.
 
 ## Values
 
-| Value | Behavior |
-|-------|----------|
-| Default (not set) | If the query returns `unique_id`, dbt keeps only rows whose `unique_id` is in the selection. If the query does not return `unique_id`, the check runs against the whole project. |
-| `none` | The check always runs against the whole project, ignoring any selector. |
-| A column name or list of column names | dbt keeps a row if the ID in any of the named columns is in the selection. Each named column must exist in the result, or the check errors. |
+- **Default (not set):** If the query returns `unique_id`, dbt keeps only rows whose `unique_id` is in the selection. If the query does not return `unique_id`, the check runs against the whole project.
+- **`none`:** The check always runs against the whole project, ignoring any selector. Use this to make whole-project behavior explicit.
+- **A column name or list of column names:** dbt keeps a row if the ID in any of the named columns is in the selection. Each named column must exist in the result, or the check raises an error.
 
 ## When to set this config
 
 For most checks that return a single `unique_id` column, the default behavior is correct and no configuration is needed.
 
-Set `selection_filter_on` explicitly when:
-
-- Your check returns edge rows (parent/child pairs): Set `selection_filter_on` to the columns your check returns (for example, `[parent_unique_id, child_unique_id]`) so `--select` scopes rows by either column.
-- Your check is an aggregate (for example, "the project has at least one model"): Set `selection_filter_on: none` to prevent the selector from scoping the check down to nothing.
+Use `selection_filter_on` when your check returns edge rows (parent/child pairs). Set it to the columns that contain resource IDs (for example, `[parent_unique_id, child_unique_id]`) so selectors can scope rows by either column.
 
 <Tabs
   groupId="config-languages"
   defaultValue="property-yaml"
   values={[
-    { label: 'Project file', value: 'project-yaml', },
-    { label: 'Property file', value: 'property-yaml', },
-    { label: 'SQL config', value: 'config', },
+    { label: 'Project YAML file', value: 'project-yaml', },
+    { label: 'Properties YAML file', value: 'property-yaml', },
+    { label: 'SQL file config', value: 'config', },
   ]
 }>
 
@@ -55,10 +52,8 @@ checks:
 <File name='checks/_checks.yml'>
 
 ```yaml
-version: 2
-
 checks:
-  - name: no_forbidden_source_access
+  - name: no_staging_to_mart_dependency
     config:
       selection_filter_on: [parent_unique_id, child_unique_id]
 ```
@@ -78,7 +73,7 @@ checks:
 
 select parent_unique_id, child_unique_id
 from {{ info_schema('edges') }}
-where parent_unique_id like 'source.%forbidden%'
+where ...
 ```
 
 </File>

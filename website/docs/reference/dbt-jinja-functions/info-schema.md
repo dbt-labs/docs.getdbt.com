@@ -7,25 +7,21 @@ availability:
   engine: v2
 ---
 
-`{{ info_schema('<view_name>') }}` is the supported way to read project metadata inside [project quality checks](/docs/build/project-checks). Pass the name of the view you want to query (for example, `{{ info_schema('models') }}` to query models, or `{{ info_schema('edges') }}` to query DAG edges). dbt writes your project metadata to a local index at parse time, and checks query that index through `info_schema()`.
+`{{ info_schema('<view_name>') }}` is the supported way to reference the dbt Information Schema inside [project quality checks](/docs/build/project-checks). Pass the name of the view you want to query (for example, `{{ info_schema('models') }}` to query models, or `{{ info_schema('edges') }}` to query DAG edges). dbt writes the dbt Information Schema to a local index at parse time, and checks query that index through `info_schema()`. <!-- TODO: add a link to Information Schema once 9906 is merged-->
 
-Each view exposes a set of columns you can select and filter on in your check SQL. For example, to find models without a description, query the `models` view and filter on the `description` column. To find models that depend on a forbidden source, query `edges` and filter on `parent_unique_id`. The [Views and columns reference](#views-and-columns-reference) below lists the columns available for each view.
+Each view exposes a set of columns you can select and filter on in your check SQL. For example, to find models without a description, query the `models` view and filter on the `description` column. The [Views and columns reference](#views-and-columns-reference) below lists the columns available for each view.
 
-Only views whose columns are fully populated at parse time are available. Passing a view name that doesn't exist or isn't available at parse time causes the check to fail with a message listing what is available. This is intentional &mdash; if dbt silently returned an empty table, the check would pass despite having checked nothing.
+Only views whose columns are fully populated at parse time are available. Passing a view name that doesn't exist or isn't available at parse time causes the check to fail with a message listing what is available.
 
 ## Views and columns reference
 
 The following lists the columns available in each view when querying with `{{ info_schema() }}`.
 
-:::note
-`group` is a SQL keyword. When querying any view that has a `group` column, write `"group"` (quoted) to avoid a parse error.
-:::
-
-### Node views
+### DAG node views
 
 The `models`, `seeds`, `snapshots`, `functions`, `analyses`, `hooks`, and `checks` views share the following columns:
 
-<Expandable alt_header="Shared node columns">
+<Expandable alt_header="Shared columns">
 
 - `unique_id`
 - `name`
@@ -58,7 +54,7 @@ The `models`, `seeds`, `snapshots`, `functions`, `analyses`, `hooks`, and `check
 
 </Expandable>
 
-`sources` includes the shared node columns above, plus:
+`sources` includes the shared node columns above, plus these additional columns:
 
 <Expandable alt_header="sources (additional columns)">
 
@@ -69,7 +65,7 @@ The `models`, `seeds`, `snapshots`, `functions`, `analyses`, `hooks`, and `check
 
 </Expandable>
 
-### Other views
+### Additional views
 
 <Expandable alt_header="data_tests">
 
@@ -357,11 +353,6 @@ The `models`, `seeds`, `snapshots`, `functions`, `analyses`, `hooks`, and `check
 
 </Expandable>
 
-## Unavailable views
-
-The following views are not available. dbt raises an error if you pass them to `info_schema()`, and reports the list of available views:
-
-- `nodes`: An internal index table. Use the per-resource-type views instead (for example, `models`, `sources`).
-- `column_lineage`: Requires static analysis, so it is not available at parse time.
-- `classifiers`, `semantic_relationships`: Not yet populated.
-- Run results and other post-run data: Project checks run _before_ models execute, so post-run views are not available.
+:::note
+Run results and other post-run data are not available in checks. Project checks run _before_ models execute, so post-run views do not exist at check time.
+:::

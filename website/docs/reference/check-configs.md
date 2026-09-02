@@ -91,24 +91,9 @@ where ...
 
 The following examples show common ways to configure checks.
 
-### Error-severity check
-
-Use `severity: error` to enforce a hard rule &mdash; a violation stops `dbt build` before any model compiles. This is the default, so you only need to set it explicitly if overriding a project-level `warn` default.
-
-<File name='checks/_checks.yml'>
-
-```yaml
-checks:
-  - name: all_models_have_descriptions
-    config:
-      severity: error
-```
-
-</File>
-
 ### Warn-severity check
 
-Use `severity: warn` for checks you want to surface as advisories without blocking the build (for example, a new rule you're rolling out gradually). Use `--warn-error` or `warn_error_options` to promote warnings to errors when you're ready to enforce them.
+You can use `severity: warn` when rolling out a new rule gradually. Issues are logged but the build does not fail.
 
 <File name='checks/_checks.yml'>
 
@@ -116,22 +101,7 @@ Use `severity: warn` for checks you want to surface as advisories without blocki
 checks:
   - name: public_models_have_owners
     config:
-      severity: warn
-```
-
-</File>
-
-### Disabled check
-
-Use `enabled: false` to turn off a check without deleting it (for example, to temporarily skip a check during a migration without losing the rule). The check still appears in the manifest.
-
-<File name='checks/_checks.yml'>
-
-```yaml
-checks:
-  - name: public_models_have_owners
-    config:
-      enabled: false
+      severity: warn  # default is error
 ```
 
 </File>
@@ -144,7 +114,7 @@ Edge checks return parent/child pairs rather than a single `unique_id` column. W
 
 ```yaml
 checks:
-  - name: no_forbidden_source_access
+  - name: no_staging_to_mart_dependency
     config:
       severity: error
       selection_filter_on: [parent_unique_id, child_unique_id]
@@ -152,20 +122,3 @@ checks:
 
 </File>
 
-### Tags and meta
-
-Use `tags` to group checks so you can run or filter them by tag (for example, `dbt check --select tag:governance`). Use `meta` to attach ownership or other metadata that tools or dashboards can read.
-
-<File name='checks/_checks.yml'>
-
-```yaml
-checks:
-  - name: all_models_have_descriptions
-    config:
-      severity: error
-      tags: ["governance"]
-      meta:
-        owner: "data-platform-team"
-```
-
-</File>

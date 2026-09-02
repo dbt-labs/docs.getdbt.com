@@ -26,7 +26,7 @@ In DAG order, for selected resources or an entire project.
 
 <VersionBlock firstVersion="2.0">
 
-**Project quality checks:** Before models compile, `dbt build` runs [project quality checks](/docs/build/project-checks). These checks are SQL rules that assert properties of your project (for example, every model must have a description). A failing error-severity check stops the run before any model is compiled or executed. Use `dbt build --skip-checks` to bypass this gate.
+**Project quality checks:** `dbt build` runs [project quality checks](/docs/build/project-checks) before any model compiles. Checks are SQL rules that enforce standards in your dbt project; they query the dbt Information Schema, which you generate with `--generate-info-schema`. A failing check stops the build before any model compiles or executes. Use the `--skip-checks` flag to bypass checks.
 
 </VersionBlock>
 

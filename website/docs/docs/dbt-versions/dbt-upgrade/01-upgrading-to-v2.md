@@ -87,11 +87,11 @@ To hydrate catalog metadata (`catalog.json`) for <Constant name="catalog" /> wit
 
 For full usage, refer to [About dbt docs commands](/reference/commands/cmd-docs).
 
-### Project quality checks
+### Project quality checks <Lifecycle status="beta" />
 
-As dbt projects grow and more contributors add models, quality silently degrades: a model ships without a description, a `public` model gets no `owner`, a staging model reaches directly into a mart layer. 
+As dbt projects grow and more contributors add models, quality silently degrades: a model ships without a description, a `public` model gets no `owner`, a model doesn't follow your org's naming convention.
 
-v2 introduces [project quality checks](/docs/build/project-checks) to enforce project standards before any warehouse work runs. You can write a SQL rule that enforces a standard for your project under the `checks/` directory. Checks run automatically on every `dbt build` before any model compiles, and on demand with `dbt check`.
+v2 introduces [project quality checks](/docs/build/project-checks) to enforce project standards before any warehouse work runs. You can write a SQL rule that enforces a standard for your project under the `checks/` directory. To run checks, first generate the dbt Information Schema. Once generated, you can run checks on demand with `dbt check`, or they run automatically with every subsequent `dbt build`. Use `--skip-checks` to bypass checks on a build.<!-- TODO: add a link to info schema docs once 9906 is merged-->
 
 For more information, refer to [Project quality checks](/docs/build/project-checks), and [Check properties](/reference/check-properties).
 
