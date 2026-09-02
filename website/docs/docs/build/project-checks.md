@@ -12,7 +12,7 @@ As dbt projects grow and more contributors add models, quality silently degrades
 
 Project quality checks in <Constant name="core_v2" /> help you enforce project standards in dbt. Write a rule in SQL (for example, every model has a description, no model selects from a forbidden source, required tags are set) and dbt enforces it before any warehouse work runs. If the project violates a rule, `dbt build` stops before compiling or materializing a single model.
 
-Checks are similar to data tests, but earlier and cheaper: they run at parse time, locally, and with no warehouse connection. Checks are first-class dbt resources &mdash; they appear in the manifest and participate in `state:modified`, so you can scope them to only the parts of the project that changed in a PR and dbt can detect when a check file itself changes. Note that checks are not nodes in the DAG and do not appear in lineage.
+Checks are similar to data tests, but earlier and cheaper: they run at parse time, locally, and with no warehouse connection. 
 
 ## Writing your first check
 
