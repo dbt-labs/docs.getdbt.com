@@ -6,6 +6,9 @@ id: "dbt-state-interface"
 tags: ['dbt State']
 availability: everywhere_usage
 ---
+
+import DbtStateExplainTab from '/snippets/_dbt-state-explain-tab.md';
+
 # Monitor dbt State activity <Lifecycle status="preview" />
 
 <IntroText>
@@ -59,6 +62,12 @@ To view your lineage with the **Latest status** lens:
 2. Select your run.
 3. Go to the **Lineage** tab. You'll see your project's lineage.
 4. In the **Lenses** field, select **Latest status**.
+
+## Explain tab
+
+To see why dbt State rebuilt or reused a specific node, go to **Orchestration** > **Runs**. Select a run and go to the **Explain** tab.
+
+<DbtStateExplainTab />
 
 ## Related docs
 

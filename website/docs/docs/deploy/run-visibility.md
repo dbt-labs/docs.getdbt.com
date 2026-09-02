@@ -5,6 +5,8 @@ tags: ["scheduler"]
 availability: platform_login
 ---
 
+import DbtStateExplainTab from '/snippets/_dbt-state-explain-tab.md';
+
 You can view the history of your runs and the model timing dashboard to help identify where improvements can be made to jobs.
 
 
@@ -160,6 +162,10 @@ A paginated, searchable table listing all resources in the run. It includes the 
 - **Folder**: The folder path of the resource.
 
 <Lightbox src="/img/docs/dbt-platform/deployment/model-timing-resource-details.png" width="100%" title="Resource details table showing each model's start time, end time, duration, execution phase, critical path status, type, and folder" />
+
+### Explain tab
+
+<DbtStateExplainTab />
 
 ### Artifacts tab
 
