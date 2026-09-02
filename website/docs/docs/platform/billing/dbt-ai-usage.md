@@ -51,7 +51,6 @@ Your spend limit caps how much dbt <Term id="managed" /> <Constant name="wizard"
 
 - If you deplete your consumption pool on a Developer, Starter, or self-hosted plan, usage pauses until you add paid usage or the next billing cycle starts.
 - On Enterprise and Enterprise+, usage continues past your included credits without interruption. If you don't have a committed spend amount, you'll be prompted to connect with your account rep about adding one. Any optional monthly <Constant name="wizard" /> spend limit you've set still applies and pauses usage once reached.
-- If you reach your spend limit, usage pauses until an admin raises it or the next billing cycle starts. This applies on every plan, including Enterprise-tiered plans that set the optional limit.
 - Limits are set separately for <Constant name="wizard" /> and [dbt State](/docs/deploy/dbt-state-about), but both draw from your account's overall usage-based spend.
 
 ### View Wizard usage
