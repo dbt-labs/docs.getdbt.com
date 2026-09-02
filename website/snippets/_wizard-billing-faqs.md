@@ -19,7 +19,7 @@ As you use <Constant name="wizard" />, your token usage will automatically conve
 What happens next depends on your plan:
 
 - **Developer, Starter, and self-hosted:** <Constant name="wizard" /> usage pauses until you add paid usage or your pool refreshes.
-- **Enterprise and Enterprise+:** usage continues without interruption. If you don't have a committed spend amount, you'll be prompted to connect with your account rep about adding one. Any optional monthly <Constant name="wizard" /> spend limit you've set still applies and pauses usage once reached.
+- **Enterprise and Enterprise+:** accounts without a committed spend amount can keep using <Constant name="wizard" /> past included usage credits without interruption &mdash; you'll be prompted to connect with your account rep about adding a spend amount. If you've set an optional monthly <Constant name="wizard" /> spend limit, that still applies and pauses usage once reached.
 
 </Expandable>
 
