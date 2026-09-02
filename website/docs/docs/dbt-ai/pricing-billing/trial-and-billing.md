@@ -114,6 +114,14 @@ To view or update your limit, go to **Billing & Usage > Usage-based features > W
 
 <Lightbox src="/img/docs/dbt-platform/wizard-manage-spend.png" width="85%" title="The Manage your dbt Wizard spend limit page, showing pre-set monthly options and a Custom option." />
 
+## View your usage and costs
+
+To see what you've spent, go to **Account settings > Billing & Usage > Usage-based features** and open the **Wizard** tab. From there you can check:
+
+- How much of your included monthly usage you've used, what's left, and when it resets.
+- Your current <Constant name="wizard" /> spend limit, with an **Edit** button to change it.
+- **<Constant name="wizard" /> usage by model**, which breaks down your usage (in UTC) so you can see which models are driving your costs.
+
 ## How usage is measured
 
 <Constant name="wizard" /> usage is measured in tokens, then converted into dollar-based usage based on the model and the token type, such as input, cached read, cache write, or output. Refer to [Key terms](/docs/dbt-ai/pricing-billing/overview#key-terms) for what a token is, and the [Model Provider Rate Table](https://www.getdbt.com/legal/dbt-wizard-token-costs-by-model) for current rates.
