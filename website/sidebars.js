@@ -1761,6 +1761,7 @@ const sidebarSettings = {
         "reference/programmatic-invocations",
       ],
     },
+    "reference/info-schema",
     {
       type: "category",
       label: "Jinja reference",
@@ -1796,7 +1797,6 @@ const sidebarSettings = {
       link: { type: "doc", id: "reference/artifacts/dbt-artifacts" },
       items: [
         "reference/artifacts/dbt-artifacts",
-        "reference/artifacts/info-schema",
         "reference/artifacts/catalog-json",
         "reference/artifacts/manifest-json",
         "reference/artifacts/run-results-json",
