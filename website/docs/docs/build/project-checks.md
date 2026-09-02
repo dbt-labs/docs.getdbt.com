@@ -14,7 +14,7 @@ Project quality checks in <Constant name="core_v2" /> let you enforce project st
 
 Checks are similar to data tests, but earlier and cheaper: they run at parse time, locally, and with no warehouse connection.
 
-Checks are SQL queries that run against the dbt Information Schema, a set of Parquet files that dbt generates to describe the resources in your project. Checks use the `{{ info_schema() }}` macro to query this information and enforce rules about your project's structure and metadata. <!-- TODO: add a link to info schema docs once 9906 is merged-->
+Checks are SQL queries that run against the [dbt Information Schema](/reference/dbt-jinja-functions/info-schema/), a set of Parquet files that dbt generates to describe the resources in your project. Checks use the `{{ info_schema() }}` macro to query this information and enforce rules about your project's structure and metadata.
 
 Before running checks, you must generate the dbt Information Schema. Once generated, checks run automatically with every `dbt build`. You can also run them on demand with `dbt check` or skip them during a build with `--skip-checks`.
 
@@ -24,7 +24,7 @@ A check is a SQL file in your `checks/` directory paired with a properties YAML 
 
 1. Declare the `info_schema` version in `dbt_project.yml`:
 
-    The `info_schema.version` tells dbt which version of the Information Schema your checks are written against. Refer to dbt Information Schema versioning for more information. <!-- TODO: add a link to info schema docs once 9906 is merged-->
+    The `info_schema.version` tells dbt which version of the [dbt Information Schema](/reference/dbt-jinja-functions/info-schema/) your checks are written against. Refer to dbt Information Schema versioning for more information.
 
     <File name='dbt_project.yml'>
 
