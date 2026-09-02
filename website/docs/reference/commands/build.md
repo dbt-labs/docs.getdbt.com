@@ -21,7 +21,7 @@ In DAG order, for selected resources or an entire project.
 
 <VersionBlock firstVersion="2.0">
 
-**dbt information schema:** Use `--generate-info-schema` with `dbt build` to write the [dbt information schema](/reference/artifacts/info-schema) to `target/info_schema/` in a versioned subdirectory (currently `v1/`). The information schema exposes your project's metadata as queryable SQL tables (similar to a database's `INFORMATION_SCHEMA`) so you can query models, sources, run results, and more without parsing `manifest.json`.
+**dbt Information Schema:** Use `--generate-info-schema` with `dbt build` to write the [dbt Information Schema](/reference/artifacts/info-schema) to `target/info_schema/` in a versioned subdirectory (currently `v1/`). The Information Schema exposes your project's metadata as queryable SQL tables (similar to a database's `INFORMATION_SCHEMA`) so you can query models, sources, run results, and more without parsing `manifest.json`.
 
 </VersionBlock>
 
