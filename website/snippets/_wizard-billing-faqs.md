@@ -14,7 +14,7 @@ Refer to [Model Provider Rate table](https://www.getdbt.com/legal/dbt-wizard-tok
 
 The <Constant name="wizard"/> consumption pool is the usage balance available when using dbt-<Term id="managed"/> inference for <Constant name="wizard"/> &mdash; this includes Developer and Starter plan trial Wizard usage credits and the monthly Enterprise/Enterprise+ included usage credits.
 
-As you use <Constant name="wizard" />, your token usage will automatically convert into a dollar amount and deducted from your active usage credit. Once your usage credit is depleted, additional usage draws from a purchased consumption pool, if one exists.
+As you use <Constant name="wizard" />, your token usage will automatically convert into a dollar amount and deducted from your active usage credit. Once your usage credit is used up, additional usage draws from a purchased consumption pool, if one exists.
 
 What happens next depends on your plan:
 
@@ -55,13 +55,13 @@ Developer or Starter plan accounts are eligible for the 30-day, $100/account fre
 
 <Expandable alt_header="Do unused trial consumption pools roll over or expire?">
 
-Unused trial usage credits don't roll over. Your trial ends when you deplete the entire $100 usage credit or 30 days pass, whichever happens first.
+Unused trial usage credits don't roll over. Your trial ends when you use up the entire $100 usage credit or 30 days pass, whichever happens first.
 
 </Expandable>
 
 <Expandable alt_header="What happens if I deplete my trial usage credit before the 30-day trial ends?">
 
-Your trial ends when you reach 30 days or deplete the full $100 credits, whichever comes first. To continue using dbt <Term id="managed"/> providers, you will need to add a payment method and set a monthly spend limit.
+Your trial ends when you reach 30 days or use up the full $100 credits, whichever comes first. To continue using dbt <Term id="managed"/> providers, you will need to add a payment method and set a monthly spend limit.
 
 You can also continue with your own AI provider ("Bring Your Own Key (BYOK)") if you configure credentials for a supported AI provider.
 
@@ -109,7 +109,7 @@ BYOK usage is unaffected because your AI provider bills it separately.
 
 <Expandable alt_header="How does the consumption pool work?">
 
-It's the balance that covers dbt-<Term id="managed"/> inference usage (which must be purchased once you have depleted any freely available monthly or trial usage credits that may be available), metered per token at cost. Pool dollars don't roll over at the end of a committed term.
+It's the balance that covers dbt-<Term id="managed"/> inference usage (which must be purchased once you've used up any freely available monthly or trial usage credits that may be available), metered per token at cost. Pool dollars don't roll over at the end of a committed term.
 
 Unlike free Wizard usage credits, purchased committed spend isn't limited to <Constant name="wizard" /> &mdash; it covers both <Constant name="wizard" /> and dbt State.
 </Expandable>

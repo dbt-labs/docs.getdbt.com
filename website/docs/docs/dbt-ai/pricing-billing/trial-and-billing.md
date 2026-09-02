@@ -102,7 +102,7 @@ What you do next depends on your plan.
 
 There's no trial to start and no self-serve credit card flow. Your monthly usage credits are granted automatically &mdash; [contact your account team](https://www.getdbt.com/contact) to set up or adjust committed spend.
 
-Depleting your included monthly credits doesn't cut you off. <Constant name="wizard" /> usage continues without interruption, and if you don't have a committed spend amount you'll be prompted to connect with your account rep about adding one. If you've set the optional monthly <Constant name="wizard" /> spend limit, that limit still applies and pauses usage once reached.
+Using up your included monthly credits doesn't cut you off. <Constant name="wizard" /> usage continues without interruption, and if you don't have a committed spend amount you'll be prompted to connect with your account rep about adding one. If you've set the optional monthly <Constant name="wizard" /> spend limit, that limit still applies and pauses usage once reached.
 
 ## Manage your spend limit
 
