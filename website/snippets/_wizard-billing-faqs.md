@@ -14,7 +14,12 @@ Refer to [Model Provider Rate table](https://www.getdbt.com/legal/dbt-wizard-tok
 
 The <Constant name="wizard"/> consumption pool is the usage balance available when using dbt-<Term id="managed"/> inference for <Constant name="wizard"/> &mdash; this includes Developer and Starter plan trial Wizard usage credits and the monthly Enterprise/Enterprise+ included usage credits.
 
-As you use <Constant name="wizard" />, your token usage will automatically convert into a dollar amount and deducted from your active usage credit. Once your usage credit is depleted, additional usage must draw from a newly purchased consumption pool, if one exists. If your pool is depleted, use of Wizard will be disabled until it is refreshed.
+As you use <Constant name="wizard" />, your token usage will automatically convert into a dollar amount and deducted from your active usage credit. Once your usage credit is depleted, additional usage draws from a purchased consumption pool, if one exists.
+
+What happens next depends on your plan:
+
+- **Developer, Starter, and self-hosted:** <Constant name="wizard" /> usage pauses until you add paid usage or your pool refreshes.
+- **Enterprise and Enterprise+:** usage continues without interruption. If you don't have a committed spend amount, you'll be prompted to connect with your account rep about adding one. Any optional monthly <Constant name="wizard" /> spend limit you've set still applies and pauses usage once reached.
 
 </Expandable>
 
@@ -92,7 +97,11 @@ These included monthly credits can only be spent on <Constant name="wizard" />. 
 
 <Expandable alt_header="What happens when your account depletes its monthly usage credits limit?">
 
-dbt Managed Wizard usage pauses until an authorized admin purchases additional usage credits through your account team or the next billing cycle begins. BYOK usage is unaffected because your AI provider bills it separately.
+Enterprise and Enterprise+ accounts without a committed spend amount can keep using <Constant name="wizard" /> past included usage credits without interruption &mdash; you'll be prompted to connect with your account rep about adding a spend amount. If you've set an optional monthly <Constant name="wizard" /> spend limit, that still applies and pauses usage once reached.
+
+If you have a committed spend amount, usage beyond your included credits draws from that commitment and appears on your invoice.
+
+BYOK usage is unaffected because your AI provider bills it separately.
 
 </Expandable>
 
