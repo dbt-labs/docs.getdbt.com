@@ -66,7 +66,7 @@ For more information on running parents or children of specific models, see the 
 
 ## dbt Information Schema
 
-Use `--generate-info-schema` with `dbt run` to write the [dbt Information Schema](/reference/artifacts/info-schema) to `target/info_schema/` in a versioned subdirectory (currently `v1/`). The Information Schema exposes your project's metadata as queryable SQL tables (similar to a database's `INFORMATION_SCHEMA`) so you can query models, sources, run results, and more without parsing `manifest.json`.
+Use `--generate-info-schema` with `dbt run` to write the [dbt Information Schema](/reference/info-schema) to `target/info_schema/` in a versioned subdirectory (currently `v1/`). The Information Schema exposes your project's metadata as queryable SQL tables (similar to a database's `INFORMATION_SCHEMA`) so you can query models, sources, run results, and more without parsing `manifest.json`.
 
 ```shell
 dbt run --generate-info-schema
