@@ -12,7 +12,7 @@ Set up notifications in <Constant name="dbt_platform" /> to receive alerts about
   - This notification is triggered by warning-level log lines from those steps, not the job's overall run status. A job that shows "success" in the user interface can still trigger a warn notification if test or freshness steps logged warnings.
 - **Fails** option &mdash; A job run failed to complete. 
 - **Is canceled** option &mdash; A job run is canceled.
-  - You may not see Slack notifications for runs canceled by <Constant name="dbt_platform" />'s  inactivity-timeout cleanup process (which cancels runs that have been inactive for 10 minutes). To receive notifications for inactivity-timeout cancellations, you can use email notifications or webhooks.
+  - You may not see Slack notifications for runs canceled by <Constant name="dbt_platform" />'s inactivity-timeout cleanup process (which cancels runs that have been inactive for 10 minutes). To receive notifications for inactivity-timeout cancellations, you can use email notifications or webhooks.
 
 ### Notification options
 
@@ -192,7 +192,7 @@ If you're already logged in to Slack, the integration only requires allowing the
 
 If you're logged out or the Slack app/website is closed, you must authenticate before completing the integration.
 
-1. Complete the field defining the Slack workspace you want to integrate with dbt. 
+1. Complete the field defining the Slack workspace you want to integrate with dbt.
     <Lightbox src="/img/docs/dbt-platform/define-workspace.png" width="60%" title="Define the workspace"/>
 
 2. Sign in with an existing identity or use the email address and password.
@@ -202,15 +202,15 @@ If you're logged out or the Slack app/website is closed, you must authenticate b
 ### Configure Slack notifications
 Configure the Slack channel you want to receive job notifications from.
 
-1. Select your profile icon and then click on **Notification settings**. 
-2. Select **Slack notifications** in the left sidebar. 
-3. From the first dropdown, select the **Notification channel** you want to receive the job run notifications. 
+1. Select your profile icon and then click on **Notification settings**.
+2. Select **Slack notifications** in the left sidebar.
+3. From the first dropdown, select the **Notification channel** you want to receive the job run notifications.
     <Lightbox src="/img/docs/deploy/example-notification-slack-channels.png" width="100%" title="Example of the Notification channel dropdown"/>
-4. From the second dropdown, select the **Environment** for the jobs you want to receive notifications about. 
-5. Click **Edit** to configure the Slack notification settings. Choose one or more of the run statuses for each job you want to receive notifications about. 
-6. When you're done with the settings, click **Save**. 
-   - To send alerts to another Slack channel, select another **Notification channel** from the dropdown, **Edit** those job notification settings, and **Save** the changes. 
-   - To set up alerts on jobs from a different environment, select another **Environment** from the dropdown, **Edit** those job notification settings, and **Save** the changes. 
+4. From the second dropdown, select the **Environment** for the jobs you want to receive notifications about.
+5. Click **Edit** to configure the Slack notification settings. Choose one or more of the run statuses for each job you want to receive notifications about.
+6. When you're done with the settings, click **Save**.
+   - To send alerts to another Slack channel, select another **Notification channel** from the dropdown, **Edit** those job notification settings, and **Save** the changes.
+   - To set up alerts on jobs from a different environment, select another **Environment** from the dropdown, **Edit** those job notification settings, and **Save** the changes.
     <Lightbox src="/img/docs/deploy/example-slack-notification-settings-page.png" width="100%" title="Example of the Slack notifications page"/>
 
 That's it! Your Slack channel is now set up to receive dbt job notifications at the account level. This integration is now available throughout the account for all licensed users.
