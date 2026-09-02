@@ -34,9 +34,9 @@ Refer to the [Model Provider Rate table](https://www.getdbt.com/legal/dbt-wizard
 
 <Expandable alt_header="What does the dbt Wizard Developer and Starter plan free trial include?">
 
-Developer and Starter plans get a $100/account usage credit for dbt-<Term id="managed"/> Wizard inference, free for 30 days. The credit covers Wizard usage across both the <Constant name="dbt_platform"/> and the CLI, and the trial ends when you hit $100 in usage or 30 days, whichever comes first.
+Developer and Starter plans get $100 in usage credits for dbt-<Term id="managed"/> Wizard inference, free for 30 days. The $100 is **per account, not per user** &mdash; everyone on the account shares the same credits. On Developer, that's a single user, since it's a single-user plan.
 
-On Starter, the $100 is per account, not per user. Everyone on the account shares the same credits. Since the Developer plan is a single-user plan, the pool covers that one user.
+The credit covers Wizard usage across both the <Constant name="dbt_platform"/> and the CLI, and the trial ends when your account hits $100 in usage or 30 days, whichever comes first.
 
 The trial credits can only be spent on <Constant name="wizard" />, not on dbt State or other consumption-based features.
 
@@ -50,13 +50,13 @@ Developer or Starter plan accounts are eligible for the 30-day, $100/account fre
 
 <Expandable alt_header="Do unused trial consumption pools roll over or expire?">
 
-Unused trial usage credits don't roll over. Your trial ends when you deplete the entire $100 usage credit or 30 days pass, whichever happens first.
+Unused trial usage credits don't roll over. Your trial ends when your account depletes the entire $100 usage credit or 30 days pass, whichever happens first.
 
 </Expandable>
 
 <Expandable alt_header="What happens if I deplete my trial usage credit before the 30-day trial ends?">
 
-Your trial ends when you reach 30 days or deplete the full $100 credits, whichever comes first. To continue using dbt <Term id="managed"/> providers, you will need to add a payment method and set a monthly spend limit.
+Your trial ends when you reach 30 days or your account depletes the full $100 credit, whichever comes first. Because the credit is shared across the account, usage from any user on it counts toward the same $100. To continue using dbt <Term id="managed"/> providers, you will need to add a payment method and set a monthly spend limit.
 
 You can also continue with your own AI provider ("Bring Your Own Key (BYOK)") if you configure credentials for a supported AI provider.
 
@@ -82,9 +82,9 @@ No. Starting a trial doesn't automatically create paid usage. For self-serve acc
 
 <Expandable alt_header="What does the dbt Wizard Enterprise plan monthly usage credits include?">
 
-Enterprise plans automatically include a $100/month usage credits at no cost, and Enterprise+ includes a $200/month usage credits.
+Enterprise plans automatically include $100/month in usage credits at no cost, and Enterprise+ includes $200/month.
 
-These amounts are per account, not per user. Everyone on the account draws from the same shared credits. No billing setup or opt-in is required to receive the monthly included consumption usage credits as it renews each billing period and doesn't roll over.
+These amounts are **per account, not per user** &mdash; a 5-person account and a 500-person account both get the same monthly credit, and everyone on the account draws from the same shared balance. No billing setup or opt-in is required to receive the monthly included consumption usage credits as it renews each billing period and doesn't roll over.
 
 These included monthly credits can only be spent on <Constant name="wizard" />. They can't be used for dbt State or any other consumption-based feature.
 
