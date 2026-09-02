@@ -109,7 +109,7 @@ Depleting your included monthly credits doesn't cut you off. <Constant name="wiz
 Your spend limit caps how much dbt <Term id="managed" /> <Constant name="wizard" /> usage your account can consume in a billing period, across both the <Constant name="dbt_platform" /> and local development.
 
 - You only pay for actual usage, up to the limit you choose. The limit is a cap, not a prepaid charge.
-- If you reach your limit, <Constant name="wizard" /> usage pauses until you raise it or the next billing cycle starts. This applies on every plan, including Enterprise-tiered plans that set the optional limit.
+- If you reach your limit, <Constant name="wizard" /> usage pauses until you raise it or the next billing cycle starts. This applies on every plan, including Enterprise-tiered plans that set the optional limit. Enterprise-tiered accounts that don't have a committed spend amount will be prompted to connect with their account rep about adding one.
 - Limits are set separately for <Constant name="wizard" /> and [dbt State](/docs/deploy/dbt-state-about), but both draw from your account's overall usage-based spend.
 
 To view or update your limit, go to **Billing & Usage > Usage-based features > Wizard**. Enterprise-tiered plans can [contact their account team](https://www.getdbt.com/contact) to adjust their limit.
