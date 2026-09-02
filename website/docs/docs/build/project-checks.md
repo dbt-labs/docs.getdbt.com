@@ -76,6 +76,7 @@ This section covers the rules and constraints for writing check SQL files and co
 - The filename without the `.sql` extension becomes the check name (for example, `all_models_have_descriptions` is the check name for `checks/all_models_have_descriptions.sql`).
 - Jinja in check files renders at parse time. You can use Jinja, but the result must be valid SQL at that point; checks do not go through a separate compile step the way models do.
 - Checks cannot use `ref()` and do not appear in the model DAG. They read project metadata only through `{{ info_schema() }}`.
+- `group` is a SQL keyword. When querying any view that has a `group` column, write `"group"` (quoted) to avoid a parse error.
 
 #### Metadata contract versioning
 
