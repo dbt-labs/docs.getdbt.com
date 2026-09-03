@@ -1761,7 +1761,15 @@ const sidebarSettings = {
         "reference/programmatic-invocations",
       ],
     },
-    "reference/info-schema",
+    {
+      type: "category",
+      label: "dbt Information Schema",
+      link: { type: "doc", id: "reference/info-schema" },
+      items: [
+        "reference/info-schema",
+        "reference/dbt-jinja-functions/info-schema-views",
+      ],
+    },
     {
       type: "category",
       label: "Jinja reference",

@@ -1,6 +1,6 @@
 ---
 title: "dbt Information Schema"
-sidebar_label: "Information Schema"
+sidebar_label: "About the dbt Information Schema"
 description: "The dbt Information Schema is a queryable artifact set at target/info_schema/ that exposes your project's metadata as relational tables."
 id: "info-schema"
 availability:
