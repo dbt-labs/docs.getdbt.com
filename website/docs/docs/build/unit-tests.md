@@ -58,6 +58,63 @@ To run only unit tests on demand, use the `test_type` selector — this works ac
 dbt test --select "test_type:unit"
 ```
 
+<VersionBlock firstVersion="2.0">
+
+## Run unit tests locally <Lifecycle status="beta" />
+
+Unit tests run against your data platform by default, which means every run costs warehouse compute — even though the inputs are a handful of static rows. Set `compute: local` and dbt runs the test on your own machine instead, using DuckDB, so the test doesn't touch your warehouse at all.
+
+Set it on a single unit test:
+
+<File name='models/schema.yml'>
+
+```yaml
+unit_tests:
+  - name: test_is_valid_email_address
+    model: dim_customers
+    config:
+      compute: local
+```
+
+</File>
+
+Or on every unit test in your project:
+
+<File name='dbt_project.yml'>
+
+```yaml
+unit_tests:
+  my_project:
+    +compute: local
+```
+
+</File>
+
+`compute` accepts two values:
+
+| Value | What it does |
+|-------|--------------|
+| `remote` | Runs the test against your data platform. This is the default and matches previous behavior. |
+| `local` | Runs the test on your machine using DuckDB. |
+
+You might also see `sidecar` in error messages — it means the same thing as `local`.
+
+### What to know before you use it
+
+- Local execution is available for Snowflake.
+- To translate your SQL, dbt fetches the schemas of your model's direct upstream models from your data platform the first time you run the test, then caches them. Later runs reuse the cache, so they don't re-fetch.
+- Those upstream models must already exist in your data platform. If they don't, the test fails with an error about fetching the upstream relation schema.
+- Your SQL has to be translatable to DuckDB. Platform-specific functions with no DuckDB equivalent fail — for example, `haversine` returns `Catalog Error: Scalar Function with name haversine does not exist!`
+- `local` doesn't fall back to your data platform. If dbt can't compile or translate the SQL, the test fails and dbt exits with a non-zero code.
+- Setting `compute: local` also sets [static analysis](/reference/resource-configs/static-analysis) to `strict` for that test.
+- The run output doesn't say which mode a test used, so a test with no `compute` set runs remotely without telling you.
+
+:::caution Local results can differ from your data platform
+DuckDB and your data platform won't always agree on things like rounding or date handling, so a test can pass locally even when the logic would misbehave in production. For unit tests that assert business-critical logic, set `compute: remote` so CI validates them against the real engine.
+:::
+
+</VersionBlock>
+
 ## Unit testing a model
 
 This example creates a new `dim_customers` model with a field `is_valid_email_address` that calculates whether or not the customer’s email is valid: 
