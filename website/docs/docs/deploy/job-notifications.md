@@ -312,6 +312,21 @@ dbt will now add the **dbt-cloud-integration app** to your Microsoft Entra tenan
   - `ChannelMessage.Read.All`
   - `Channel.ReadBasic.All`
 
+:::info
+The `dbt-cloud-integration` app is a multi-tenant Microsoft Entra app that dbt Labs already owns. You don't need to pre-register anything in your tenant. Approving the consent prompt during **Link** registers the app as an Enterprise Application in your tenant. This follows the same pattern as other multi-tenant SaaS apps, for example Slack or Zoom.
+:::
+
+### Troubleshooting the Teams link
+
+If the **Link** flow fails with `AADSTS90094: Admin consent is required`, your Microsoft Entra tenant restricts user consent for third-party apps.
+
+To resolve this, have an Entra admin (Cloud Application Administrator or Global Administrator) do one of the following:
+
+- Complete the **Link** step themselves and approve the consent prompt.
+- Grant admin consent for the `dbt-cloud-integration` app from **Enterprise applications** in the Entra admin center.
+
+After admin consent is granted, retry the **Link** flow in <Constant name="dbt_platform" />.
+
 ### Configure Teams notifications
 
 Once you’ve connected <Constant name="dbt_platform" /> and Teams, you can configure which Teams channels receive job notifications. The **Teams notifications** menu requires that you have an active integration with Teams on the account.
