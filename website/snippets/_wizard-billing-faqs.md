@@ -14,12 +14,7 @@ Refer to [Model Provider Rate table](https://www.getdbt.com/legal/dbt-wizard-tok
 
 The <Constant name="wizard"/> consumption pool is the usage balance available when using dbt-<Term id="managed"/> inference for <Constant name="wizard"/> &mdash; this includes Developer and Starter plan trial Wizard usage credits and the monthly Enterprise/Enterprise+ included usage credits.
 
-As you use <Constant name="wizard" />, your token usage will automatically convert into a dollar amount and deducted from your active usage credit. Once your usage credit is used up, additional usage draws from a purchased consumption pool, if one exists.
-
-What happens next depends on your plan:
-
-- **Developer, Starter, and self-hosted:** <Constant name="wizard" /> usage pauses until you add paid usage or your pool refreshes.
-- **Enterprise and Enterprise+:** usage continues without interruption. If you don't have a committed spend amount, you'll be prompted to connect with your account rep about adding one. Any optional monthly <Constant name="wizard" /> spend limit you've set still applies and pauses usage once reached.
+As you use <Constant name="wizard" />, your token usage will automatically convert into a dollar amount and deducted from your active usage credit. Once your usage credit is depleted, additional usage must draw from a newly purchased consumption pool, if one exists. If your pool is depleted, use of Wizard will be disabled until it is refreshed.
 
 </Expandable>
 
@@ -55,7 +50,7 @@ Developer or Starter plan accounts are eligible for the 30-day, $100/account fre
 
 <Expandable alt_header="Do unused trial consumption pools roll over or expire?">
 
-Unused trial usage credits don't roll over. Your trial ends when you use up the entire $100 usage credit or 30 days pass, whichever happens first.
+Unused trial usage credits don't roll over. Your trial ends when you deplete the entire $100 usage credit or 30 days pass, whichever happens first.
 
 </Expandable>
 
@@ -97,11 +92,7 @@ These included monthly credits can only be spent on <Constant name="wizard" />. 
 
 <Expandable alt_header="What happens when your account depletes its monthly usage credits limit?">
 
-Enterprise and Enterprise+ accounts without a committed spend amount can keep using <Constant name="wizard" /> past included usage credits without interruption &mdash; you'll be prompted to connect with your account rep about adding a spend amount. If you've set an optional monthly <Constant name="wizard" /> spend limit, that still applies and pauses usage once reached.
-
-If you have a committed spend amount, usage beyond your included credits draws from that commitment and appears on your invoice.
-
-BYOK usage is unaffected because your AI provider bills it separately.
+dbt Managed Wizard usage pauses until an authorized admin purchases additional usage credits through your account team or the next billing cycle begins. BYOK usage is unaffected because your AI provider bills it separately.
 
 </Expandable>
 
@@ -109,7 +100,7 @@ BYOK usage is unaffected because your AI provider bills it separately.
 
 <Expandable alt_header="How does the consumption pool work?">
 
-It's the balance that covers dbt-<Term id="managed"/> inference usage (which must be purchased once you've used up any freely available monthly or trial usage credits that may be available), metered per token at cost. Pool dollars don't roll over at the end of a committed term.
+It's the balance that covers dbt-<Term id="managed"/> inference usage (which must be purchased once you have depleted any freely available monthly or trial usage credits that may be available), metered per token at cost. Pool dollars don't roll over at the end of a committed term.
 
 Unlike free Wizard usage credits, purchased committed spend isn't limited to <Constant name="wizard" /> &mdash; it covers both <Constant name="wizard" /> and dbt State.
 </Expandable>
