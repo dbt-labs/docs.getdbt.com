@@ -151,6 +151,8 @@ _Recommended_
 
 </TabItem>
 
+{/* Username and password auth is labeled "(deprecated)" in the platform UI, so we're not publicizing it. Uncomment if PM confirms it should be documented.
+
 <TabItem value="userpass" label="Username and password">
 
 1. Enter the **Username** and **Password** for the warehouse user <Constant name="wizard" /> queries as.
@@ -159,6 +161,8 @@ _Recommended_
 <Lightbox src="/img/docs/dbt-platform/analytics-credential-username-password.png" width="95%" title="Analytics credentials with Username and password selected as the auth method" />
 
 </TabItem>
+
+*/}
 
 </Tabs>
 
