@@ -156,8 +156,6 @@ You can read more about each of these behavior changes in the following links:
 
     When `transient` is not set on a model, the [`snowflake_default_transient_dynamic_tables`](/reference/global-configs/snowflake-changes#the-snowflake_default_transient_dynamic_tables-flag) flag controls the default. Set this flag to `true` to make all dynamic tables transient by default.
 - You can materialize a model as a Snowflake [interactive table](/reference/resource-configs/snowflake-configs#interactive-tables) by setting `materialized: interactive_table`. Interactive tables are optimized for low-latency queries and support both static and dynamic (auto-refreshing) forms, depending on whether you set [`target_lag`](/reference/resource-configs/snowflake-configs#target-lag-interactive-tables). Unlike dynamic tables, [`cluster_by`](/reference/resource-configs/snowflake-configs#cluster-by-interactive-tables) is required. dbt's support for this materialization is in beta.
-- **Fix:** dbt no longer emits a no-op `ALTER` statement on every run for dynamic tables that set `cluster_by`, `target_lag`, or `snowflake_initialization_warehouse`. These values were previously compared without normalizing for the `LINEAR` prefix and casing on `cluster_by`, the unit on `target_lag`, and casing on the warehouse name, so dbt saw a change where none existed.
-- **Fix:** The catalog now populates the `stats:last_modified` value for Snowflake interactive tables. It previously only did so for relations reported as `BASE TABLE`.
 
 ### BigQuery
 
