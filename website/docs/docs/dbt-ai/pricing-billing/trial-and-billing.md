@@ -102,7 +102,7 @@ What you do next depends on your plan.
 
 There's no trial to start and no self-serve credit card flow. Your monthly usage credits &mdash; $100/month on Enterprise and $200/month on Enterprise+ &mdash; are granted automatically per account, not per user, and shared by everyone on the account. [Contact your account team](https://www.getdbt.com/contact) to set up or adjust committed spend.
 
-Enterprise and Enterprise+ accounts without a committed spend amount can keep using <Constant name="wizard" /> past included usage credits without interruption &mdash; you'll be prompted to connect with your account rep about adding a spend amount. If you've set an optional monthly <Constant name="wizard" /> spend limit, that still applies and pauses usage once reached.
+Enterprise and Enterprise+ account should add a committed spend amount to their contract to keep using <Constant name="wizard" />. You may lose access to <Constant name="wizard" /> without this commit in place. If you've set an optional monthly <Constant name="wizard" /> spend limit, that still applies and pauses usage once reached.
 
 ## Manage your spend limit
 

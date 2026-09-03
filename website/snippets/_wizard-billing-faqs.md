@@ -19,7 +19,7 @@ As you use <Constant name="wizard" />, your token usage will automatically conve
 What happens next depends on your plan:
 
 - **Developer, Starter, and self-hosted:** <Constant name="wizard" /> usage pauses until you add paid usage or your pool refreshes.
-- **Enterprise and Enterprise+:** accounts without a committed spend amount can keep using <Constant name="wizard" /> past included usage credits without interruption &mdash; you'll be prompted to connect with your account rep about adding a spend amount. If you've set an optional monthly <Constant name="wizard" /> spend limit, that still applies and pauses usage once reached.
+- **Enterprise and Enterprise+**: Accounts should add a committed spend amount to their contract to keep using <Constant name="wizard" />. You may lose access to <Constant name="wizard" /> without this commit in place. If you've set an optional monthly <Constant name="wizard" /> spend limit, that still applies and pauses usage once reached.
 
 </Expandable>
 
@@ -97,7 +97,7 @@ These included monthly credits can only be spent on <Constant name="wizard" />. 
 
 <Expandable alt_header="What happens when your account depletes its monthly usage credits limit?">
 
-Enterprise and Enterprise+ accounts without a committed spend amount can keep using <Constant name="wizard" /> past included usage credits without interruption &mdash; you'll be prompted to connect with your account rep about adding a spend amount. If you've set an optional monthly <Constant name="wizard" /> spend limit, that still applies and pauses usage once reached.
+Enterprise and Enterprise+ account should add a committed spend amount to their contract to keep using <Constant name="wizard" />. You may lose access to <Constant name="wizard" /> without this commit in place. If you've set an optional monthly <Constant name="wizard" /> spend limit, that still applies and pauses usage once reached.
 
 If you have a committed spend amount, usage beyond your included credits draws from that commitment and appears on your invoice.
 
