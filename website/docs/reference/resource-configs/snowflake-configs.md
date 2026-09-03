@@ -623,7 +623,6 @@ Like dynamic tables, interactive tables have access to the [`on_configuration_ch
 | [`snowflake_warehouse`](#configuring-virtual-warehouses)   | `<string>` | no      | `None`      | alter  |
 | [`refresh_warehouse`](#refresh-warehouse-interactive-tables)   | `<string>` | no       | `None`      | alter  |
 | [`snowflake_initialization_warehouse`](#initialization-warehouse-interactive-tables)   | `<string>` | no       | `None`      | alter  |
-| [`snowflake_interactive_warehouses`](#interactive-warehouse-association) <br /> _v2 only_  | `<list>` | no       | `None`      | n/a  |
 
 <Tabs
   groupId="config-languages"
@@ -649,7 +648,6 @@ models:
     [+](/reference/resource-configs/plus-prefix)[snowflake_warehouse](#configuring-virtual-warehouses): <warehouse-name>
     [+](/reference/resource-configs/plus-prefix)[refresh_warehouse](#refresh-warehouse-interactive-tables): <warehouse-name>
     [+](/reference/resource-configs/plus-prefix)[snowflake_initialization_warehouse](#initialization-warehouse-interactive-tables): <warehouse-name>
-    [+](/reference/resource-configs/plus-prefix)[snowflake_interactive_warehouses](#interactive-warehouse-association): [<warehouse-name>, ...] # v2 only
 
 ```
 
@@ -674,7 +672,6 @@ models:
       [snowflake_warehouse](#configuring-virtual-warehouses): <warehouse-name>
       [refresh_warehouse](#refresh-warehouse-interactive-tables): <warehouse-name>
       [snowflake_initialization_warehouse](#initialization-warehouse-interactive-tables): <warehouse-name>
-      [snowflake_interactive_warehouses](#interactive-warehouse-association): [<warehouse-name>, ...] # v2 only
 ```
 
 </File>
@@ -696,7 +693,6 @@ models:
     [snowflake_warehouse](#configuring-virtual-warehouses)="<warehouse-name>",
     [refresh_warehouse](#refresh-warehouse-interactive-tables)="<warehouse-name>",
     [snowflake_initialization_warehouse](#initialization-warehouse-interactive-tables)="<warehouse-name>",
-    [snowflake_interactive_warehouses](#interactive-warehouse-association)=["<warehouse-name>", ...], # v2 only
 
 ) }}
 
@@ -791,28 +787,6 @@ select * from {{ ref('stg_orders') }}
 - This parameter only applies to dynamic interactive tables. Setting it on a static interactive table (one without `target_lag`) has no effect, and dbt warns you.
 - You can change `snowflake_initialization_warehouse` on an existing interactive table without a full refresh.
 - To revert to the default behavior, remove the parameter from your model configuration or explicitly set it to `None`.
-
-### Interactive warehouse association
-
-This config is only available in v2. Use `snowflake_interactive_warehouses` to list the [interactive warehouses](https://docs.snowflake.com/en/sql-reference/sql/create-interactive-warehouse) that dbt should associate the table with. dbt issues an `ALTER WAREHOUSE <warehouse> ADD TABLES (<table>)` statement for each warehouse in the list.
-
-```sql
-{{ config(
-    materialized='interactive_table',
-    cluster_by=['order_id'],
-    snowflake_interactive_warehouses=['MY_INTERACTIVE_WH'],
-) }}
-
-select * from {{ ref('stg_orders') }}
-```
-
-**Key points:**
-- This config takes a _list_, and the warehouses must already exist. dbt does not create them.
-- Do not confuse this with `snowflake_initialization_warehouse`, which is the table's own DDL option rather than an association.
-- dbt runs the association statement on every build that isn't a no-op. It's idempotent, so re-running it has no additional effect.
-- The association survives dbt's in-place `ALTER ... SET` statements and `ALTER TABLE ... RENAME TO`.
-
-Learn more about `ADD TABLES`, and the limits on which warehouses accept it, in [ALTER WAREHOUSE](https://docs.snowflake.com/en/sql-reference/sql/alter-warehouse) in Snowflake's docs.
 
 ### Change monitoring for interactive tables
 
