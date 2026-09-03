@@ -10,7 +10,7 @@ availability:
 
 The dbt Information Schema is a set of standard tables that provide information about all of the resources in your dbt project. Instead of parsing `manifest.json`, you can query your project metadata using SQL &mdash; the same way you'd query a database's system tables.
 
-dbt writes the Information Schema to `target/info_schema/` in a versioned subdirectory (currently `v1/`) as standard [Parquet](https://parquet.apache.org/) files. The versioned subdirectory only increments on breaking schema changes (for example, when a column is removed or retyped). The Parquet files are organized across three SQL namespaces: `dbt`, `dbt_rt`, and `dbt_internal`.
+dbt writes the Information Schema to `target/info_schema/` in a versioned subdirectory (currently `v1/`) as standard [Parquet](https://parquet.apache.org/) files. The versioned subdirectory only increments on breaking schema changes (for example, when a column is removed or retyped). The Parquet files are organized across three SQL namespaces: `dbt`, `dbt_rt`, and `dbt_internal`. 
 
 You can query the files with any Parquet-compatible tool. dbt also generates a `views.sql` file alongside the Parquet files for convenient querying with [DuckDB](https://duckdb.org/).
 
@@ -25,19 +25,21 @@ dbt compile --generate-info-schema
 dbt parse --generate-info-schema
 ```
 
-- For [`dbt compile`](/reference/commands/compile), combine with [`--static-analysis strict`](/docs/build/about-static-analysis) to also populate column types and column-level lineage in `dbt.node_columns` and `dbt.column_lineage`:
+- To populate column types and column-level lineage in `dbt.node_columns` and `dbt.column_lineage`, combine [`dbt build`](/reference/commands/build), [`dbt run`](/reference/commands/run), or [`dbt compile`](/reference/commands/compile) with [`--static-analysis strict`](/docs/build/about-static-analysis). Without it, `dbt.node_columns` and `dbt.column_lineage` are structural only and dbt emits a warning.
 
   ```shell
-  dbt compile --generate-info-schema --static-analysis strict
+  dbt build --generate-info-schema --static-analysis strict
   ```
-
-  Without `--static-analysis strict`, dbt emits warnings that column types and column-level lineage won't be populated. Under [`--warn-error`](/reference/global-configs/warnings), those warnings become errors.
 
 - For [`dbt parse`](/reference/commands/parse), the Information Schema is structural only &mdash; no column types, no lineage, and no runtime results, because `dbt parse` doesn't connect to your warehouse.
 
-`--generate-info-schema` also automatically enables `--write-metadata` and partial parse; the Information Schema is built from the metadata dbt writes during the invocation.
+`--generate-info-schema` also automatically enables partial parse; the Information Schema is built from the metadata dbt writes during the invocation.
 
-## Checking the schema version
+### Overriding the output directory
+
+Use `--info-schema-dir` (env var: `DBT_INFO_SCHEMA_DIR`) to write the Information Schema to a custom directory. The versioned subdirectory (`v1/`) is still appended under whatever directory you set.
+
+### Checking the schema version
 
 To check which schema version you're on, query `dbt.project.schema_version`. The version is also embedded in each Parquet file's metadata under `dbt:info-schema-version`.
 
@@ -145,20 +147,14 @@ The `dbt_rt` namespace contains tables and views with runtime execution data.
 
 ### `dbt_internal` namespace
 
-The `dbt_internal` namespace contains internal implementation tables that are not part of the public contract. Their schema may change without notice.
+The `dbt_internal` namespace contains internal implementation tables. Unlike `dbt` and `dbt_rt`, the tables' schema may change without notice.
 
 | Table | Description |
 |-------|-------------|
 | `dbt_internal.node_input_files` | Internal record of input files per node |
 
-## Flags
+Note that `dbt_internal` tables are not accessible using `dbt show --info` or `{{ info_schema() }}`. You can query them by pointing a Parquet-compatible tool directly at the files in `target/info_schema/v1`.
 
-Use CLI flags or environment variables to configure the Information Schema output.
-
-| Flag | Env var | Description |
-|------|---------|-------------|
-| `--generate-info-schema` | `DBT_GENERATE_INFO_SCHEMA` | Write the Information Schema to `target/info_schema/`. |
-| `--info-schema-dir` | `DBT_INFO_SCHEMA_DIR` | Override the output directory. The versioned subdirectory (`v1/`) is still appended under whatever directory you set. Defaults to `<target>/info_schema/`. |
 
 ## Related
 

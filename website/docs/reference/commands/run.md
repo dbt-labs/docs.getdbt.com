@@ -5,6 +5,8 @@ description: "The dbt run command executes your compiled SQL models against a ta
 id: "run"
 ---
 
+import InfoSchemaStaticAnalysis from '/snippets/_info-schema-static-analysis.md';
+
 ## Overview
 
 The `dbt run` command only applies to models. It doesn't run tests, snapshots, seeds, or other resource types. To run those commands, use the appropriate dbt commands found in the [dbt commands](/reference/dbt-commands) section — such as `dbt test`, `dbt snapshot`, or `dbt seed`. Alternatively, use `dbt build` with a [resource type selector](/reference/node-selection/methods#resource_type).
@@ -70,6 +72,12 @@ Use `--generate-info-schema` with `dbt run` to write the [dbt Information Schema
 
 ```shell
 dbt run --generate-info-schema
+```
+
+<InfoSchemaStaticAnalysis />
+
+```shell
+dbt run --generate-info-schema --static-analysis strict
 ```
 
 </VersionBlock>

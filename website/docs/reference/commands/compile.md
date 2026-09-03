@@ -5,6 +5,8 @@ sidebar_label: "compile"
 id: "compile"
 ---
 
+import InfoSchemaStaticAnalysis from '/snippets/_info-schema-static-analysis.md';
+
 `dbt compile` generates executable SQL from source files for:
 
 <VersionBlock lastVersion="1.11">
@@ -159,13 +161,11 @@ You can use `--generate-info-schema` with `dbt compile` to write the [dbt Inform
 dbt compile --generate-info-schema
 ```
 
-To populate column types and column-level lineage, combine with `--static-analysis strict`:
+<InfoSchemaStaticAnalysis />
 
 ```shell
 dbt compile --generate-info-schema --static-analysis strict
 ```
-
-Without `--static-analysis strict`, `dbt.node_columns` and `dbt.column_lineage` are structural-only.
 
 </VersionBlock>
 
