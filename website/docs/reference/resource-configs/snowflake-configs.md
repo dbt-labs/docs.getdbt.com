@@ -816,7 +816,7 @@ The following configurations are not supported on interactive tables. dbt reject
 
 Limitations worth noting when you build interactive tables with dbt:
 
-- Dropping a column from an interactive table is not supported. This is reachable if you have an `incremental` model with [`on_schema_change: sync_all_columns`](/reference/resource-configs/on_schema_change) running against a relation that was previously an interactive table.
+- Dropping a column from an interactive table is not supported. This is reachable if you have an `incremental` model with [`on_schema_change: sync_all_columns`](/docs/build/incremental-models#what-if-the-columns-of-my-incremental-model-change) running against a relation that was previously an interactive table.
 - Converting an interactive table to an `incremental` model requires a `--full-refresh`.
 - Interactive tables cannot be cloned or created in a personal database.
 - [Model contracts](/docs/mesh/govern/model-contracts) are not supported.
