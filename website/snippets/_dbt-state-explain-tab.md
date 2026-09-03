@@ -10,7 +10,7 @@ Expand a row to see the full decision details. Not all analyses apply to every r
 |---|---|
 | **Resource name** | The name of the resource. |
 | **Resource type** | The resource type: model, seed, snapshot, test, and so on. |
-| **Decision** | The reason dbt State rebuilt or reused this resource. |
+| **Decision** | The reason dbt State rebuilt, reused, or cloned this resource. |
 | **Run step** | The job command that ran this resource (for example, `dbt build --exclude tag:ml_pipeline`). |
 | **Table analysis** | Whether the target table already exists in the schema. |
 | **Query analysis** | Whether the resource query or its upstream queries have changed. |
