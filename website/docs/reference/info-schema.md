@@ -149,11 +149,11 @@ The `dbt_rt` namespace contains tables and views with runtime execution data.
 
 The `dbt_internal` namespace contains internal implementation tables. Unlike `dbt` and `dbt_rt`, the tables' schema may change without notice.
 
-Note that `dbt_internal` tables are not accessible using `dbt show --info` or `{{ info_schema() }}`. You can query them by pointing a Parquet-compatible tool directly at the files in `target/info_schema/v1`.
-
 | Table | Description |
 |-------|-------------|
 | `dbt_internal.node_input_files` | Internal record of input files per node |
+
+Note that `dbt_internal` tables are not accessible using `dbt show --info` or `{{ info_schema() }}`. You can query them by pointing a Parquet-compatible tool directly at the files in `target/info_schema/v1`.
 
 
 ## Related
