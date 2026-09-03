@@ -35,6 +35,10 @@ Usage from the <Constant name="dbt_platform" /> and the local CLI both draw from
 
 ### Usage credits by plan
 
+:::note All credits are account-level
+Usage credits are granted per account, not per user or per seat. Everyone on your account draws from the same balance, whether they use <Constant name="wizard" /> in the <Constant name="dbt_platform" /> or the local CLI.
+:::
+
 <SimpleTable>
 | Plan | What you get |
 |---|---|
