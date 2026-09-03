@@ -240,21 +240,21 @@ html[data-theme="dark"] input.sc-avest {
 }
 
 /* IDE Extension nav item */
-.navbar__item.nav-install-dbt-extension {
+.navbar__item.nav-install-dbt {
   order: 5;
   background: var(--ifm-color-primary);
   transition: all 0.3s ease-in-out;
   color: var(--color-neutral-primary);
 }
-.navbar__item.nav-install-dbt-extension:hover {
+.navbar__item.nav-install-dbt:hover {
   background-color: var(--ifm-color-primary) !important;
   background-image: linear-gradient(oklab(0.865972 0.00164044 0.169914 / 0.5) 0%, rgba(0, 0, 0, 0) 50%) !important;
   transition: transform 0.2s ease-in-out;
 }
-html[data-theme="dark"] .navbar__item.nav-install-dbt-extension {
+html[data-theme="dark"] .navbar__item.nav-install-dbt {
   color: var(--color-neutral-primary);
 }
-html[data-theme="dark"] .navbar__item.nav-install-dbt-extension:hover {
+html[data-theme="dark"] .navbar__item.nav-install-dbt:hover {
   color: var(--color-neutral-primary) !important;
   background-color: var(--ifm-color-primary) !important;
   background-image: linear-gradient(oklab(0.865972 0.00164044 0.169914 / 0.5) 0%, rgba(0, 0, 0, 0) 50%) !important;
