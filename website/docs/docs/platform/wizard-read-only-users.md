@@ -135,13 +135,11 @@ At query time, <Constant name="wizard" /> resolves credentials in this order:
 2. Scroll to the **Analytics credential** card and click **Edit**. A connection can have one analytics credential.
 3. Pick an **Auth method** and enter the warehouse credentials <Constant name="wizard" /> should query with, then click **Save**.
 
-The fields you see depend on the connection's warehouse and the auth method you pick. The following example we'll use Snowflake, which supports these fields and authentication methods:
+The fields you see depend on the connection's warehouse and the auth method you pick. The following example uses Snowflake with key pair authentication:
 
 <Tabs>
 
 <TabItem value="keypair" label="Key pair">
-
-_Recommended_
 
 1. Enter the **Username** and **Private key** for the warehouse user <Constant name="wizard" /> queries as. 
 2. Add the **Private key passphrase** if your key is encrypted.
