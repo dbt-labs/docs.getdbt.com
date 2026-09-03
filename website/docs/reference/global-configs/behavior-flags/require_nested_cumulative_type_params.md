@@ -9,7 +9,7 @@ sidebar_label: "require nested cumulative type params"
 | require_nested_cumulative_type_params | <Constant name="dbt" /> **Latest** | <Constant name="core" /> |
 |---|---|---|
 | Introduced | 2024.11 | 1.9.0 |
-| Matured (default → `true`) | Sep 1, 2026 | 1.12.0 |
+| Matured (default → `true`) | 2026.09 | 1.12.0 |
 | Removed | — | — |
 
 <br />
@@ -36,7 +36,7 @@ behavior changes:
 https://docs.getdbt.com/reference/global-configs/behavior-changes
 ```
 
-If you set `require_nested_cumulative_type_params` to `true` and re-run `dbt parse` you will now receive an error like:
+Because `require_nested_cumulative_type_params` defaults to `true`, running `dbt parse` produces an error like:
 
 ```bash
 21:39:18  Cumulative fields `type_params.window` and `type_params.grain_to_date` should be nested under `type_params.cumulative_type_params.window` and `type_params.cumulative_type_params.grain_to_date`. Invalid metrics: orders_last_7_days. See documentation on behavior changes: https://docs.getdbt.com/reference/global-configs/behavior-changes.

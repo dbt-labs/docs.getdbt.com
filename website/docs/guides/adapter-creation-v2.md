@@ -23,7 +23,7 @@ In dbt Core v1.x, every adapter was a **standalone Python package**, independent
 
 dbt Core v2.0 flips this entirely. Adapters now live **inside a single Rust monorepo**, organized by feature area rather than by warehouse. A fix in the auth module benefits every adapter at once. When you contribute a new adapter, you're extending shared code, not building a whole new package from scratch. In Rust terms: adding arms to *existing* match expressions. The more adapters that exist, the easier each new adapter becomes. Your contribution makes the whole ecosystem better.
 
-Another advantage of dbt Core v2.0: connection management lives in its own lane outside of the adapter. In v1, each adapter had to own its connection logic, wrapping vendor SDKs or implementing the Python DB API spec. **In v2, ADBC drivers handle that responsibility**: pre-compiled binaries that you register but don't write. For a full explanation of ADBC and how dbt Core v2.0 uses it, see [ADBC in dbt Core v2.0](/docs/fusion/adbc?version=2.0).
+Another advantage of dbt Core v2.0: connection management lives in its own lane outside of the adapter. In v1, each adapter had to own its connection logic, wrapping vendor SDKs or implementing the Python DB API spec. **In v2, ADBC drivers handle that responsibility**: pre-compiled binaries that you register but don't write. For a full explanation of ADBC and how dbt Core v2.0 uses it, see [ADBC in dbt Core v2.0](/docs/dbt/adbc?version=2.0).
 
 What you need to contribute is the exact logic that varies by warehouse: credentials, relation naming, macros, and catalog queries. A complete community adapter touches ~13 files; that's the bar we're aiming for.
 

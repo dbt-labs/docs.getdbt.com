@@ -15,7 +15,7 @@ Whether you currently use <Constant name="dbt_platform" /> or self-host with <Co
 - [Set environment variables locally](#set-environment-variables-locally)
 - [Configure the dbt extension](#configure-the-dbt-extension)
 
-If you're new to dbt or getting started with a new project, you can skip this page and check out our [Quickstart for the <Constant name="fusion_engine"/>](/guides/fusion?step=1) to get started with the dbt extension.
+If you're new to dbt or getting started with a new project, you can skip this page and check out our [Quickstart for the <Constant name="fusion_engine"/>](/guides/dbt?step=1) to get started with the dbt extension.
 
 The steps differ slightly depending on whether you use <Constant name="dbt_platform" /> or self host with <Constant name="fusion" />.
 
@@ -250,13 +250,13 @@ The following settings are the most relevant when you install or manage the <Con
 
 | Setting                       | Description |
 | ----------------------------- | ----------- |
-| `dbt.fusionPath`              | Path to the <Constant name="fusion_engine" /> binary. The extension invokes the language server through this binary (`dbt-fusion lsp`). Set this when you install <Constant name="fusion" /> manually &mdash; for example, in an [air-gapped environment](/docs/dbt-versions/fusion-version-compatibility#verify-binaries-for-manual-and-air-gapped-installs) &mdash; instead of letting the extension download it. |
-| `dbt.badReleasesManifestPath` | Path to a local copy of the [known-bad-releases manifest](/docs/dbt-versions/fusion-version-compatibility#known-bad-releases). Use this if you don't have outbound network access and distribute the manifest alongside your binary bundle (for example, air-gapped installations). |
+| `dbt.fusionPath`              | Path to the <Constant name="fusion_engine" /> binary. The extension invokes the language server through this binary (`dbt-fusion lsp`). Set this when you install <Constant name="fusion" /> manually &mdash; for example, in an [air-gapped environment](/docs/dbt-versions/dbt-version-compatibility#verify-binaries-for-manual-and-air-gapped-installs) &mdash; instead of letting the extension download it. |
+| `dbt.badReleasesManifestPath` | Path to a local copy of the [known-bad-releases manifest](/docs/dbt-versions/dbt-version-compatibility#known-bad-releases). Use this if you don't have outbound network access and distribute the manifest alongside your binary bundle (for example, air-gapped installations). |
 | `dbt.environmentVariables`    | Environment variables the extension passes to dbt. Refer to [Configure in the VS Code extension settings](#configure-in-the-vs-code-extension-settings). |
 
 :::note Upgrading from a separate language server binary
 
-Earlier extension versions used separate `dbt.cliPath` and `dbt.lspPath` settings for two distinct binaries. Current versions use a single `dbt.fusionPath` because the CLI and language server ship as one <Constant name="fusion" /> binary. If you previously configured `dbt.lspPath`, migrate that path to `dbt.fusionPath`. Refer to [Version compatibility](/docs/dbt-versions/fusion-version-compatibility) for details.
+Earlier extension versions used separate `dbt.cliPath` and `dbt.lspPath` settings for two distinct binaries. Current versions use a single `dbt.fusionPath` because the CLI and language server ship as one <Constant name="fusion" /> binary. If you previously configured `dbt.lspPath`, migrate that path to `dbt.fusionPath`. Refer to [Version compatibility](/docs/dbt-versions/dbt-version-compatibility) for details.
 
 :::
 
@@ -276,10 +276,6 @@ If you want to use both extensions, keep your ad hoc query files in a separate, 
   }
 }
 ```
-
-:::tip Autocomplete not working?
-If column autocomplete isn't working, it's probably not your file associations. Make sure [strict static analysis](/docs/build/about-static-analysis?version=2.0#configuring-static_analysis) is enabled &mdash; that's what powers column-level suggestions from your warehouse.
-:::
 
 ## Next steps
 Now that you've configured your local environment, you can start using the dbt extension to streamline your dbt development workflows. Check out the following resources to get started:

@@ -2,20 +2,20 @@
 
 | dbt Core | Initial release | Support level and end date |
 |:---:|:---:|:---:|
-| [**v2.0**](/docs/dbt-versions/core-upgrade/upgrading-to-v2) | Currently in [beta](/docs/dbt-versions/product-lifecycles) | TBD | - |
-| [**v1.12**](/docs/dbt-versions/core-upgrade/upgrading-to-v1.12) | Jul 16, 2026 | **Active support &mdash; July 15, 2027** |
-| [**v1.11**](/docs/dbt-versions/core-upgrade/upgrading-to-v1.11) | Dec 19, 2025 | **Critical support &mdash; Dec 18, 2026** |
-| [**v1.10**](/docs/dbt-versions/core-upgrade/upgrading-to-v1.10) | Jun 16, 2025 | Deprecated ⛔️ |
-| [**v1.9**](/docs/dbt-versions/core-upgrade/upgrading-to-v1.9) | Dec 9, 2024 | Deprecated ⛔️ |
-| [**v1.8**](/docs/dbt-versions/core-upgrade/upgrading-to-v1.8) | May 9, 2024 | Deprecated ⛔️ |
-| [**v1.7**](/docs/dbt-versions/core-upgrade/upgrading-to-v1.7) | Nov 2, 2023 | End of Life ⚠️ <br /> Deprecation date: <Constant name="legacy_deprecation_date" /> |
-| [**v1.6**](/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-to-v1.6) | Jul 31, 2023 | End of Life ⚠️ <br /> Deprecation date: <Constant name="legacy_deprecation_date" /> |
-| [**v1.5**](/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-to-v1.5) | Apr 27, 2023 | End of Life ⚠️ <br /> Deprecation date: <Constant name="legacy_deprecation_date" /> |
-| [**v1.4**](/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-to-v1.4) | Jan 25, 2023 | End of Life ⚠️ <br /> Deprecation date: <Constant name="legacy_deprecation_date" /> |
-| [**v1.3**](/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-to-v1.3) | Oct 12, 2022 | End of Life ⚠️ <br /> Deprecation date: <Constant name="legacy_deprecation_date" /> |
-| [**v1.2**](/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-to-v1.2) | Jul 26, 2022 | Deprecated ⛔️ |
-| [**v1.1**](/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-to-v1.1) | Apr 28, 2022 | Deprecated ⛔️ |
-| [**v1.0**](/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-to-v1.0) | Dec 3, 2021  | Deprecated ⛔️ |
+| [**v2.0**](/docs/dbt-versions/dbt-upgrade/upgrading-to-v2) | Currently in [beta](/docs/dbt-versions/product-lifecycles) | TBD | - |
+| [**v1.12**](/docs/dbt-versions/dbt-upgrade/upgrading-to-v1.12) | Jul 16, 2026 | **Active support &mdash; July 15, 2027** |
+| [**v1.11**](/docs/dbt-versions/dbt-upgrade/upgrading-to-v1.11) | Dec 19, 2025 | **Critical support &mdash; Dec 18, 2026** |
+| [**v1.10**](/docs/dbt-versions/dbt-upgrade/upgrading-to-v1.10) | Jun 16, 2025 | Deprecated ⛔️ |
+| [**v1.9**](/docs/dbt-versions/dbt-upgrade/upgrading-to-v1.9) | Dec 9, 2024 | Deprecated ⛔️ |
+| [**v1.8**](/docs/dbt-versions/dbt-upgrade/upgrading-to-v1.8) | May 9, 2024 | Deprecated ⛔️ |
+| [**v1.7**](/docs/dbt-versions/dbt-upgrade/upgrading-to-v1.7) | Nov 2, 2023 | End of Life ⚠️ <br /> Deprecation date: <Constant name="legacy_deprecation_date" /> |
+| [**v1.6**](/docs/dbt-versions/dbt-upgrade/Older%20versions/upgrading-to-v1.6) | Jul 31, 2023 | End of Life ⚠️ <br /> Deprecation date: <Constant name="legacy_deprecation_date" /> |
+| [**v1.5**](/docs/dbt-versions/dbt-upgrade/Older%20versions/upgrading-to-v1.5) | Apr 27, 2023 | End of Life ⚠️ <br /> Deprecation date: <Constant name="legacy_deprecation_date" /> |
+| [**v1.4**](/docs/dbt-versions/dbt-upgrade/Older%20versions/upgrading-to-v1.4) | Jan 25, 2023 | End of Life ⚠️ <br /> Deprecation date: <Constant name="legacy_deprecation_date" /> |
+| [**v1.3**](/docs/dbt-versions/dbt-upgrade/Older%20versions/upgrading-to-v1.3) | Oct 12, 2022 | End of Life ⚠️ <br /> Deprecation date: <Constant name="legacy_deprecation_date" /> |
+| [**v1.2**](/docs/dbt-versions/dbt-upgrade/Older%20versions/upgrading-to-v1.2) | Jul 26, 2022 | Deprecated ⛔️ |
+| [**v1.1**](/docs/dbt-versions/dbt-upgrade/Older%20versions/upgrading-to-v1.1) | Apr 28, 2022 | Deprecated ⛔️ |
+| [**v1.0**](/docs/dbt-versions/dbt-upgrade/Older%20versions/upgrading-to-v1.0) | Dec 3, 2021  | Deprecated ⛔️ |
 | **v0.X** ⛔️ | (Various dates) | Deprecated ⛔️ |
 
 All functionality in dbt Core since the v1.7 release is available in [<Constant name="dbt" /> release tracks](/docs/dbt-versions/dbt-release-tracks), which provide automated upgrades at a cadence appropriate for your team.
