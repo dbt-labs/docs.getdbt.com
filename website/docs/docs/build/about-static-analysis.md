@@ -266,7 +266,7 @@ v2 can't know whether a custom materialization changes the schema of the persist
 What this means in practice:
 
 - Models using a custom materialization don't fail because of static analysis.
-- Setting `static_analysis: strict` (or `baseline`) on those models has no effect as the downgrade to `off` overrides other settigs.
+- Setting `static_analysis: strict` (or `baseline`) on those models has no effect as the downgrade to `off` overrides other settings.
 - Because `off` cascades downstream, every model downstream of a model using a custom materialization is also ineligible for static analysis. In a project where most models use a custom materialization, this can disable static analysis, and the [features that depend on it](#lsp-feature-comparison), for the majority of the DAG.
 
 If your project depends heavily on custom materializations and you want static analysis coverage, your options today are to convert those models to built-in materializations where practical, or to isolate custom materializations so fewer downstream models are affected.
@@ -277,9 +277,9 @@ We're reevaluating this automatic downgrade. The intent is for `baseline` analys
 
 :::
 
-### Identify a models mode
+### Identify a model's mode
 
-Because a model's effective mode depends on its parents (and on [custom materializations](#custom-materializations-and-static-analysis)), the mode you configured isn't always the mode in effect. The [dbt VS Code extension](/docs/about-dbt-extension) and the <Constant name="studio_ide" /> show CodeLens above your models even when static analysis is off, indicating which models have static analysis disabled and why.
+Because a model's effective mode depends on its parents (and on [custom materializations](#custom-materializations)), the mode you configured isn't always the mode in effect. The [dbt VS Code extension](/docs/about-dbt-extension) and the <Constant name="studio_ide" /> show CodeLens above your models even when static analysis is off, indicating which models have static analysis disabled and why.
 
 Keep in mind that `dbt ls --output json --output-keys config.static_analysis` reports the mode you _configured_ for each model, not the mode dbt v2 resolves after applying the cascading rules and automatic downgrades.
 
