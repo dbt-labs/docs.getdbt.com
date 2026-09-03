@@ -31,7 +31,7 @@ Note that access to the Discovery API and the Semantic Layer API is limited depe
 
 `text_to_sql` is the only tool that depends on [AI features](/docs/platform/manage-dbt-ai) being enabled for your account.
 
-If an admin turns AI features off, `text_to_sql` doesn't appear in the tool list for your MCP server. Every other tool keeps working as turning off AI features doesn't disable the MCP server itself.
+If an admin turns AI features off, `text_to_sql` doesn't appear in the tool list for the remote MCP server. Every other tool keeps working. Turning off AI features doesn't disable remote MCP.
 
 ## dbt MCP server tool list
 
