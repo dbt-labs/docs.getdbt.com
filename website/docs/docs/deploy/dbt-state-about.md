@@ -19,7 +19,10 @@ dbt State makes dbt smarter about what to build. Instead of rebuilding every nod
 
 With dbt State, dbt first compares the logic and data of each node to previous builds across multiple environments on every run &mdash; whether orchestrated in the <Constant name="dbt_platform" />, through your own orchestrator, or in development. If the logic is the same and the data is still fresh, dbt reuses an existing object. It will either clone an existing node from elsewhere, or skip executing a model that already exists, rather than building it anew. Additionally, it will automatically defer to production state without the need to manually set the `--defer` or `--state` flags.
 
-dbt State can reuse all node types that create relations in the database (such as models, snapshots, seeds) and data tests.
+dbt State can reuse all node types that create relations in the database (such as SQL models, snapshots, seeds) and data tests. Note that the following models are not eligible for reuse:
+
+- **Python models**: dbt State builds Python models on every run, even if their code and upstream data have not changed.
+- **Models with custom materializations**: dbt State builds these models on every run because custom materializations may have side effects (for example, modifying table properties or writing to other schemas), and dbt State cannot safely determine whether skipping the run would produce the same result.
 
 dbt State works with dbt (v1 and v2) and the <Constant name="dbt_platform" />, across all environments and orchestrators, making it a flexible approach regardless of how you run dbt. It requires authentication through a <Constant name="dbt_platform" /> account. For pricing details, refer to [dbt State usage and pricing](/docs/platform/billing/dbt-state-usage).
 
@@ -48,7 +51,7 @@ dbt State fetches table metadata (for example, last-modified timestamps) in the 
 
 Without dbt State, every selected node rebuilds on every run regardless of whether anything has changed.
 
-To see which decision dbt State made for each node after a run and why, you can run the <VersionBlock firstVersion="2.0">[`dbt state explain`](/reference/commands/state-explain)</VersionBlock><VersionBlock lastVersion="1.99">[`dbt-state explain`](/reference/commands/state-explain)</VersionBlock> command.
+To see which decision dbt State made for each node after a run and why, you can run the <VersionBlock firstVersion="2.0">[`dbt state explain`](/reference/commands/state-explain)</VersionBlock><VersionBlock lastVersion="1.99">[`dbt-state explain`](/reference/commands/state-explain)</VersionBlock> command. If you use the <Constant name="dbt_platform" />, the same information is available without running a command &mdash; go to the [**Explain** tab](/docs/deploy/dbt-state-interface#explain-tab) on the job run details page to see the full decision breakdown for each node.
 
 For the full list of available configs, see [dbt State configs](/reference/resource-configs/dbt-state-configs).
 
@@ -74,6 +77,7 @@ dbt State is connected to your existing <Constant name="dbt_platform" /> account
 <FAQ path="Runs/what-happened-to-sao" />
 <FAQ path="State/state-modified-difference" />
 <FAQ path="State/incremental-models" />
+<FAQ path="State/python-models" />
 <FAQ path="State/data-storage" />
 <FAQ path="State/last-updated-timestamp" />
 <FAQ path="State/model-change-calculation" />
