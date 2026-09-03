@@ -7,7 +7,7 @@ availability:
   engine: v2
 ---
 
-Each view mirrors a table of the same name in the [dbt Information Schema](/reference/info-schema), showing only the columns that are final at parse time. Use these views in [`{{ info_schema() }}`](/reference/dbt-jinja-functions/info-schema) when writing [project quality checks](/docs/build/project-checks).
+Each view mirrors a table of the same name in the [dbt Information Schema](/reference/info-schema), showing only the columns that are final at parse time. Use these views in [`{{ info_schema() }}`](/reference/dbt-jinja-functions/info-schema-macro) when writing [project quality checks](/docs/build/project-checks).
 
 | View | Columns |
 |------|---------|
@@ -37,7 +37,7 @@ Each view mirrors a table of the same name in the [dbt Information Schema](/refe
 | `time_spines` | `unique_id`, `primary_column`, `primary_granularity`, `custom_granularities`, `node_relation`, `ingested_at` |
 | `project` | `project_name`, `dbt_version`, `adapter_type`, `git_sha`, `git_branch`, `git_uncommitted_changes`, `ingested_at` |
 | `packages` | `package_name`, `ingested_at` |
-| `project_vars` | `var_name`, `var_value`, `ingested_at` |
+| `project_vars` | `project_name`, `var_name`, `var_value`, `ingested_at` — a package-scoped var appears on that package's `project_name` |
 | `project_env_vars` | `env_var_name`, `ingested_at` |
 
 :::note

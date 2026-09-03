@@ -95,7 +95,7 @@ The following examples show common ways to configure checks.
 
 You can use `severity: warn` when rolling out a new rule gradually. Issues are logged but the build does not fail.
 
-<File name='checks/_checks.yml'>
+<File name='checks/_public_models_have_owners.yml'>
 
 ```yaml
 checks:
@@ -110,7 +110,7 @@ checks:
 
 Edge checks return parent/child pairs rather than a single `unique_id` column. Without `selection_filter_on`, dbt looks for a `unique_id` column to scope rows by `--select` and finds none, so the check always runs against the whole project. Set `selection_filter_on` to list both columns so `--select` scopes rows by either endpoint:
 
-<File name='checks/_checks.yml'>
+<File name='checks/_no_staging_to_mart_dependency.yml'>
 
 ```yaml
 checks:

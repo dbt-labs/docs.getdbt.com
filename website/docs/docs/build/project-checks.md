@@ -14,17 +14,32 @@ Project quality checks in <Constant name="core_v2" /> let you enforce project st
 
 Checks are similar to data tests, but earlier and cheaper: they run at parse time, locally, and with no warehouse connection.
 
-Checks are SQL queries that run against the [dbt Information Schema](/reference/info-schema/), a set of Parquet files that dbt generates to describe the resources in your project. Checks use the `{{ info_schema() }}` macro to query this information and enforce rules about your project's structure and metadata.
+Checks are SQL queries that run against the [dbt Information Schema](/reference/info-schema/), a set of Parquet files that dbt generates to describe the resources in your project. Checks use the [`{{ info_schema() }}` macro](/reference/dbt-jinja-functions/info-schema-macro) to query this information and enforce rules about your project's structure and metadata.
 
 Before running checks, you must generate the dbt Information Schema. Once generated, checks run automatically with every `dbt build`. You can also run them on demand with `dbt check` or skip them during a build with `--skip-checks`.
 
+## Guidelines for writing SQL check files
+
+This section covers the rules and constraints for writing check SQL files and configuring check behavior.
+
+- A check is a SQL file in your `checks/` directory paired with a properties YAML file in the same directory. To use a different directory, set [`check-paths`](/reference/project-configs/check-paths) in `dbt_project.yml`.
+- The filename without the `.sql` extension becomes the check name (for example, `all_models_have_descriptions` is the check name for `checks/all_models_have_descriptions.sql`).
+- Jinja in check files renders at parse time. You can use Jinja, but the result must be valid SQL at that point; checks do not go through a separate compile step the way models do.
+- Checks cannot use `ref()` and do not appear in the model DAG. They access the dbt Information Schema only through `{{ info_schema() }}`.
+
+### The `info_schema()` macro
+
+`{{ info_schema() }}` is the supported way to reference the dbt Information Schema in a check. Pass the name of the table you want to query (for example, `{{ info_schema('models') }}` to query models, or `{{ info_schema('edges') }}` to query DAG edges). For the full list of available tables and columns, refer to [Views and columns reference](/reference/info-schema-views/).
+
 ## Writing your first check
 
-A check is a SQL file in your `checks/` directory paired with a properties YAML file in the same directory. The following steps walk you through creating your first check.
+**Prerequisite:** Checks run against the [dbt Information Schema](/reference/info-schema/). Make sure it is available before you run your checks. Generate the schema by passing `--generate-info-schema` to `dbt build`, `dbt run`, `dbt compile`, or `dbt parse`.
+
+The following steps walk you through creating your first check.
 
 1. Declare the `info_schema` version in `dbt_project.yml`:
 
-    The `info_schema.version` tells dbt which version of the [dbt Information Schema](/reference/info-schema/) your checks are written against. Refer to dbt Information Schema versioning for more information.
+    The `info_schema.version` tells dbt which version of the [dbt Information Schema](/reference/info-schema/) your checks are written against.
 
     <File name='dbt_project.yml'>
 
@@ -51,7 +66,7 @@ A check is a SQL file in your `checks/` directory paired with a properties YAML 
 
 3. Configure the check in a properties YAML file in your `checks/` directory:
 
-    <File name='checks/_checks.yml'>
+    <File name='checks/_all_models_have_descriptions.yml'>
 
     ```yaml
     version: 2
@@ -69,21 +84,6 @@ A check is a SQL file in your `checks/` directory paired with a properties YAML 
     ```shell
     dbt check
     ```
-
-    Checks also run automatically before models compile when you run `dbt build`. For more information, refer to [Commands](#commands).
-
-## Guidelines for writing SQL check files
-
-This section covers the rules and constraints for writing check SQL files and configuring check behavior.
-
-- Put SQL files under `checks/`. To use a different directory, set [`check-paths`](/reference/project-configs/check-paths) in `dbt_project.yml`.
-- The filename without the `.sql` extension becomes the check name (for example, `all_models_have_descriptions` is the check name for `checks/all_models_have_descriptions.sql`).
-- Jinja in check files renders at parse time. You can use Jinja, but the result must be valid SQL at that point; checks do not go through a separate compile step the way models do.
-- Checks cannot use `ref()` and do not appear in the model DAG. They access the dbt Information Schema only through `{{ info_schema() }}`.
-
-## The `info_schema()` macro
-
-`{{ info_schema() }}` is the supported way to reference the dbt Information Schema in a check. Pass the name of the table you want to query (for example, `{{ info_schema('models') }}` to query models, or `{{ info_schema('edges') }}` to query DAG edges). For the full list of available tables and columns, refer to [`info_schema`](/reference/dbt-jinja-functions/info-schema/).
 
 ## Example checks
 
@@ -110,6 +110,18 @@ The following examples show common project quality rules.
   from {{ info_schema('models') }}
   where access = 'public'
     and (description is null or description = '')
+  ```
+
+  </File>
+
+- Enforce that all models declare a primary key:
+
+  <File name='checks/all_models_have_primary_key.sql'>
+
+  ```sql
+  select unique_id
+  from {{ info_schema('models') }}
+  where primary_key is null
   ```
 
   </File>
@@ -194,5 +206,5 @@ Use `dbt retry` to resume after a failed `dbt check` or a check-blocked `dbt bui
 - [Check properties](/reference/check-properties)
 - [Check configurations](/reference/check-configs)
 - [`dbt check` command](/reference/commands/check)
-- [`info_schema`](/reference/dbt-jinja-functions/info-schema/)
+- [`info_schema`](/reference/dbt-jinja-functions/info-schema-macro/)
 - [`check-paths` project config](/reference/project-configs/check-paths)

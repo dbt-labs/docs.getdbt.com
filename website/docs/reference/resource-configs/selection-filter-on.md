@@ -49,7 +49,7 @@ checks:
 
 <TabItem value="property-yaml">
 
-<File name='checks/_checks.yml'>
+<File name='checks/_no_staging_to_mart_dependency.yml'>
 
 ```yaml
 checks:
