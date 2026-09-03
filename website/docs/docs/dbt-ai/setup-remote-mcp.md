@@ -48,6 +48,8 @@ OAuth lets you connect to the remote MCP server without copying API tokens into 
 - An MCP client that supports OAuth for remote (HTTP) MCP servers.
 - Your **MCP URL** from **Account settings** &rarr; **Access URLs** &rarr; **MCP Endpoint URL** in <Constant name="dbt_platform"/>. Check out the next section [MCP URL](#mcp-url) for more information.
 
+AI features are enabled by default. Admins can [turn them off or back on anytime](/docs/platform/manage-dbt-ai). Turning them off doesn't disable remote MCP &mdash; it only hides the [`text_to_sql` tool](/docs/dbt-ai/mcp-available-tools#tools-that-require-ai-features).
+
 ### MCP URL {#mcp-url}
 
 <MCPRemoteServerUrl />
