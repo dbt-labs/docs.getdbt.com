@@ -187,9 +187,21 @@ For example, for the lineage Model A → Model B → Model C:
 - If Model A is `baseline`, you _cannot_ set Model B to `strict`
 - If Model A is `strict`, you _can_ set Model B to `baseline`
 
-This makes sure that stricter validation requirements don't apply downstream when parent models haven't met those requirements.
+This makes sure that stricter validation requirements don't apply downstream when parent models haven't met those requirements. `baseline` doesn't produce the full analyzed schema that `strict` needs from its upstream models, so a downstream model of a `baseline` model can't run strict-level type checking.
 
 Refer to the Fusion concepts page for deeper discussion and visuals: [New concepts](/docs/build/about-static-analysis). For more info on the JSON schema, refer to the [dbt-jsonschema file](https://github.com/dbt-labs/dbt-jsonschema/blob/1e2c1536fbdd421e49c8b65c51de619e3cd313ff/schemas/latest_fusion/dbt_project-latest-fusion.json#L4689).
+
+### Custom materializations
+
+The <Constant name="fusion_engine" /> automatically sets `static_analysis: off` for models built with a [custom materialization](/guides/create-new-materializations), whether the materialization has a novel name or shadows a built-in name (such as a custom `table` or `incremental`). Because a custom materialization can change the schema of the persisted model, <Constant name="fusion" /> can't rely on the model's declared columns for analysis, so it skips analysis the same way it does for introspective queries.
+
+This means:
+
+- Setting `strict` or `baseline` on a model that uses a custom materialization has no effect &mdash; the automatic downgrade to `off` takes precedence. The model doesn't error because of static analysis.
+- Because `off` cascades, all models downstream of that model are also ineligible for static analysis, and features that depend on SQL comprehension (such as column-level lineage and type checking) aren't available for them.
+
+To keep static analysis coverage across most of your DAG, use built-in materializations where practical, or keep custom materializations near the leaves of your lineage.
+
 
 ## CLI override
 
@@ -384,6 +396,7 @@ snapshots:
 
 - For models, disabling static analysis means that features of the VS Code extension that depend on SQL comprehension will be unavailable.
 - For models, static analysis can fail in some cases (for example, dynamic SQL constructs or unrecognized UDFs) and you might need to set `static_analysis: off`. For more examples, refer to [When should I turn static analysis off?](/docs/build/about-static-analysis#when-should-i-turn-static-analysis-off).
+- Models that use a [custom materialization](#custom-materializations) are automatically set to `off`, so the mode you configure isn't always the mode in effect. To check the effective mode for a model, use the CodeLens in the dbt VS Code extension or the <Constant name="studio_ide" />, which shows which models have static analysis disabled and why.
 
 ## Related docs
 

@@ -2,7 +2,7 @@
 title: "About static analysis"
 id: "about-static-analysis"
 sidebar_label: "About static analysis"
-description: "New concepts and configurations you will encounter when you install the dbt Fusion engine."
+description: "New concepts and configurations you will encounter when you install the dbt v2."
 pagination_next: null
 pagination_prev: null
 ---
@@ -173,7 +173,9 @@ The <Constant name="fusion_engine" /> (strict mode):
 
 You can modify the way static analysis is applied for specific models in your project. The static analysis configuration cascades from most strict to least strict. Going downstream in your lineage, a model can keep the same mode or relax it &mdash; it can't be stricter than its parent.
 
-Setting `static_analysis: strict` on a model does not automatically set `strict` for downstream models; they keep the project default unless you set them explicitly. For rules and examples, refer to [strict mode inheritance](#strict-mode-inheritance) and [How static analysis modes cascade](/reference/resource-configs/static-analysis#how-static-analysis-modes-cascade).
+Setting `static_analysis: strict` on a model does not automatically set `strict` for downstream models; they keep the project default unless you set them explicitly. For rules and examples, refer to [How modes cascade in your lineage](#how-modes-cascade-in-your-lineage) and [strict mode inheritance](#strict-mode-inheritance).
+
+Some models are also downgraded automatically, regardless of what you configure. Refer to [Custom materializations and static analysis](#custom-materializations).
 
 The [`static_analysis`](/reference/resource-configs/static-analysis) config options are:
 
@@ -218,6 +220,33 @@ models:
 
 </File>
 
+#### How modes cascade in your lineage
+
+Two rules determine which mode a model can use:
+
+- **Eligibility rule:** A model is eligible for static analysis only if all of its upstream dependencies are eligible.
+- **Strictness rule:** A model can't be stricter than its parents. The strictness hierarchy is `strict` → `baseline` → `off`.
+
+Going downstream, a model can keep its parent's mode or relax it, but it can't tighten it:
+
+<SimpleTable>
+
+| Upstream model | Downstream can be |
+|-------------|--------------|
+| `strict`    | `strict`, `baseline`, or `off` |
+| `baseline`  | `baseline` or `off` (not `strict`) |
+| `off`       | `off` only |
+
+</SimpleTable>
+
+For example, in A → B → C:
+
+- If A is `baseline`, you _can't_ set B to `strict`. B can only be `baseline` or `off`.
+- If A is `strict`, you _can_ set B to `baseline`, but once B is `baseline`, C can't go back to `strict`.
+- If A is `off`, B and C are `off` too.
+
+`baseline` doesn't produce the full analyzed schema that `strict` needs from its upstream models, so a downstream model can't run strict-level type checking without that information. For the complete reference, refer to [How static analysis modes cascade](/reference/resource-configs/static-analysis#how-static-analysis-modes-cascade).
+
 #### strict mode inheritance
 
 Unlike `baseline` or `off`, `strict` mode doesn't propagate to downstream models. If you configure a model as `strict`, its downstream models won't inherit `strict` mode unless you set them explicitly. To make all models `strict`, you must set `+static_analysis: strict` on root models first, or use the project-wide config in the next section at the project level.
@@ -227,6 +256,32 @@ For example, in A → B → C with a default of `baseline`, configuring A (a roo
 This approach lets you gain the benefits of strict validation where possible while keeping the flexibility of baseline analysis for models that aren't yet compatible.
 
 Refer to [CLI options](/reference/global-configs/command-line-options) and [Configurations and properties](/reference/configs-and-properties) to learn more about configs.
+
+### Custom materializations
+
+dbt v2 skips static analysis for models built with a [custom materialization](/guides/create-new-materializations). This applies both to materializations with novel names and to custom materializations that shadow a built-in name (such as your own `table` or `incremental`).
+
+v2 can't know whether a custom materialization changes the schema of the persisted model in the database (for example, adding, renaming, or retyping columns), so it treats these models the way it treats [introspective queries](#introspection-handling-in-baseline-mode) and automatically downgrades them to `static_analysis: off`.
+
+What this means in practice:
+
+- Models using a custom materialization don't fail because of static analysis.
+- Setting `static_analysis: strict` (or `baseline`) on those models has no effect as the downgrade to `off` overrides other settigs.
+- Because `off` cascades downstream, every model downstream of a model using a custom materialization is also ineligible for static analysis. In a project where most models use a custom materialization, this can disable static analysis, and the [features that depend on it](#lsp-feature-comparison), for the majority of the DAG.
+
+If your project depends heavily on custom materializations and you want static analysis coverage, your options today are to convert those models to built-in materializations where practical, or to isolate custom materializations so fewer downstream models are affected.
+
+:::note
+
+We're reevaluating this automatic downgrade. The intent is for `baseline` analysis to keep working for models with custom materializations, and for you to account for schema-modifying materializations yourself when using `strict`. This page will be updated when that behavior changes.
+
+:::
+
+### Identify a models mode
+
+Because a model's effective mode depends on its parents (and on [custom materializations](#custom-materializations-and-static-analysis)), the mode you configured isn't always the mode in effect. The [dbt VS Code extension](/docs/about-dbt-extension) and the <Constant name="studio_ide" /> show CodeLens above your models even when static analysis is off, indicating which models have static analysis disabled and why.
+
+Keep in mind that `dbt ls --output json --output-keys config.static_analysis` reports the mode you _configured_ for each model, not the mode dbt v2 resolves after applying the cascading rules and automatic downgrades.
 
 ### Example configurations
 
