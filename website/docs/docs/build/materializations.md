@@ -190,6 +190,8 @@ This assumes, of course, that auto refresh is turned on and configured in the mo
 
 :::info
 `dbt-snowflake` _does not_ support materialized views, it uses Dynamic Tables instead. For details, refer to [Snowflake specific configurations](/reference/resource-configs/snowflake-configs#dynamic-tables).
+
+`dbt-snowflake` also supports Interactive Tables, which are optimized for low-latency queries and can refresh automatically like Dynamic Tables. For details, refer to [Interactive tables](/reference/resource-configs/snowflake-configs#interactive-tables).
 :::
 
 ## Python materializations

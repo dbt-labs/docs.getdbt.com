@@ -601,6 +601,275 @@ SnowflakeDynamicTableConfig.__init__() missing 6 required positional arguments: 
 ```
 Ensure that `QUOTED_IDENTIFIERS_IGNORE_CASE` on your account is set to `FALSE`. 
 
+<VersionBlock firstVersion="1.12">
+
+## Interactive tables <Lifecycle status="beta" />
+
+The Snowflake adapter supports [interactive tables](https://docs.snowflake.com/en/user-guide/interactive), which are optimized for low-latency queries. This materialization is specific to Snowflake, which means that any model configuration that would normally come along for the ride from `dbt-core` (for example, as with a `view`) may not be available for interactive tables.
+
+:::info dbt's support for interactive tables is in beta
+Interactive tables are generally available in Snowflake, but dbt's support for the `interactive_table` materialization is in beta. Behavior and configuration options may change.
+:::
+
+Setting [`target_lag`](#target-lag-interactive-tables) makes the table a _dynamic_ interactive table that Snowflake refreshes automatically. Without it, the table is _static_ and only rebuilds when you run dbt. Several configurations below behave differently depending on which form you're using.
+
+Like dynamic tables, interactive tables have access to the [`on_configuration_change`](/reference/resource-configs/on_configuration_change) setting. Interactive tables are supported with the following configuration parameters:
+
+| Parameter          | Type       | Required | Default     | Change Monitoring Support |
+|--------------------|------------|----------|-------------|---------------------------|
+| [`on_configuration_change`](/reference/resource-configs/on_configuration_change) | `<string>` | no       | `apply`     | n/a                       |
+| [`cluster_by`](#cluster-by-interactive-tables)     | `<string>` or `<list>` | yes       |  | full refresh   |
+| [`target_lag`](#target-lag-interactive-tables)      | `<string>` | no      | `None`       | alter          |
+| [`snowflake_warehouse`](#configuring-virtual-warehouses)   | `<string>` | no      | `None`      | alter  |
+| [`refresh_warehouse`](#refresh-warehouse-interactive-tables)   | `<string>` | no       | `None`      | alter  |
+| [`snowflake_initialization_warehouse`](#initialization-warehouse-interactive-tables)   | `<string>` | no       | `None`      | alter  |
+| [`snowflake_interactive_warehouses`](#interactive-warehouse-association) <br /> _v2 only_  | `<list>` | no       | `None`      | n/a  |
+
+<Tabs
+  groupId="config-languages"
+  defaultValue="project-yaml"
+  values={[
+    { label: 'Project YAML file', value: 'project-yaml', },
+    { label: 'Properties YAML file', value: 'property-yaml', },
+    { label: 'SQL file config', value: 'config', },
+  ]
+}>
+
+<TabItem value="project-yaml">
+
+<File name='dbt_project.yml'>
+
+```yaml
+models:
+  [<resource-path>](/reference/resource-configs/resource-path):
+    [+](/reference/resource-configs/plus-prefix)[materialized](/reference/resource-configs/materialized): interactive_table
+    [+](/reference/resource-configs/plus-prefix)[on_configuration_change](/reference/resource-configs/on_configuration_change): apply | continue | fail
+    [+](/reference/resource-configs/plus-prefix)[cluster_by](#cluster-by-interactive-tables): <column-name> | [<column-name>, <column-name>, ...]
+    [+](/reference/resource-configs/plus-prefix)[target_lag](#target-lag-interactive-tables): <time-delta>
+    [+](/reference/resource-configs/plus-prefix)[snowflake_warehouse](#configuring-virtual-warehouses): <warehouse-name>
+    [+](/reference/resource-configs/plus-prefix)[refresh_warehouse](#refresh-warehouse-interactive-tables): <warehouse-name>
+    [+](/reference/resource-configs/plus-prefix)[snowflake_initialization_warehouse](#initialization-warehouse-interactive-tables): <warehouse-name>
+    [+](/reference/resource-configs/plus-prefix)[snowflake_interactive_warehouses](#interactive-warehouse-association): [<warehouse-name>, ...] # v2 only
+
+```
+
+</File>
+
+</TabItem>
+
+
+<TabItem value="property-yaml">
+
+<File name='models/properties.yml'>
+
+```yaml
+
+models:
+  - name: [<model-name>]
+    config:
+      [materialized](/reference/resource-configs/materialized): interactive_table
+      [on_configuration_change](/reference/resource-configs/on_configuration_change): apply | continue | fail
+      [cluster_by](#cluster-by-interactive-tables): <column-name> | [<column-name>, <column-name>, ...]
+      [target_lag](#target-lag-interactive-tables): <time-delta>
+      [snowflake_warehouse](#configuring-virtual-warehouses): <warehouse-name>
+      [refresh_warehouse](#refresh-warehouse-interactive-tables): <warehouse-name>
+      [snowflake_initialization_warehouse](#initialization-warehouse-interactive-tables): <warehouse-name>
+      [snowflake_interactive_warehouses](#interactive-warehouse-association): [<warehouse-name>, ...] # v2 only
+```
+
+</File>
+
+</TabItem>
+
+
+<TabItem value="config">
+
+<File name='models/<model_name>.sql'>
+
+```jinja
+
+{{ config(
+    [materialized](/reference/resource-configs/materialized)="interactive_table",
+    [on_configuration_change](/reference/resource-configs/on_configuration_change)="apply" | "continue" | "fail",
+    [cluster_by](#cluster-by-interactive-tables)="<column-name>" | ["<column-name>", "<column-name>", ...],
+    [target_lag](#target-lag-interactive-tables)="<integer> seconds | minutes | hours | days",
+    [snowflake_warehouse](#configuring-virtual-warehouses)="<warehouse-name>",
+    [refresh_warehouse](#refresh-warehouse-interactive-tables)="<warehouse-name>",
+    [snowflake_initialization_warehouse](#initialization-warehouse-interactive-tables)="<warehouse-name>",
+    [snowflake_interactive_warehouses](#interactive-warehouse-association)=["<warehouse-name>", ...], # v2 only
+
+) }}
+
+```
+
+</File>
+
+</TabItem>
+
+</Tabs>
+
+Learn more about these parameters in Snowflake's [docs](https://docs.snowflake.com/en/sql-reference/sql/create-interactive-table).
+
+### Cluster by (interactive tables)
+
+Unlike dynamic tables, where [`cluster_by`](#dynamic-table-clustering) is optional, interactive tables _require_ it:
+
+```sql
+{{ config(
+    materialized='interactive_table',
+    cluster_by=['order_id'],
+) }}
+
+select * from {{ ref('stg_orders') }}
+```
+
+**Key points:**
+- dbt validates `cluster_by` when it parses your project, so an omitted value, an empty list, or a blank entry within a list (such as `["id", "  "]`) fails at parse time instead of at execution.
+- Changing `cluster_by` on an existing interactive table triggers a full refresh.
+
+For guidance on choosing clustering columns, refer to [CREATE INTERACTIVE TABLE](https://docs.snowflake.com/en/sql-reference/sql/create-interactive-table) in Snowflake's docs.
+
+### Target lag (interactive tables)
+
+Set `target_lag` to make the table dynamic (auto-refreshing). Snowflake also requires a warehouse for those refreshes, so dbt raises an error at parse time if you set `target_lag` without either [`refresh_warehouse`](#refresh-warehouse-interactive-tables) or [`snowflake_warehouse`](#configuring-virtual-warehouses).
+
+```sql
+{{ config(
+    materialized='interactive_table',
+    cluster_by=['order_id'],
+    target_lag='30 minutes',
+    snowflake_warehouse='MY_WH',
+) }}
+
+select * from {{ ref('stg_orders') }}
+```
+
+**Key points:**
+- Changing `target_lag` from one value to another alters the table in place.
+- Adding `target_lag` to a static table, or removing it from a dynamic one, triggers a full refresh. Snowflake rejects both transitions in place.
+
+Learn more about `TARGET_LAG` in [CREATE INTERACTIVE TABLE](https://docs.snowflake.com/en/sql-reference/sql/create-interactive-table) in Snowflake's docs.
+
+### Refresh warehouse (interactive tables)
+
+Use `refresh_warehouse` to run a dynamic interactive table's automatic refreshes on a different warehouse than the one dbt uses for <Term id="ddl" /> execution ([`snowflake_warehouse`](#configuring-virtual-warehouses)). This lets you keep a smaller warehouse for refreshes and a larger one for DDL.
+
+```sql
+{{ config(
+    materialized='interactive_table',
+    cluster_by=['order_id'],
+    target_lag='1 hour',
+    snowflake_warehouse='LARGE_EXECUTION_WH',
+    refresh_warehouse='SMALL_REFRESH_WH',
+) }}
+
+select * from {{ ref('stg_orders') }}
+```
+
+**Key points:**
+- If `refresh_warehouse` is not set, `snowflake_warehouse` is used for both DDL execution and self-refresh operations.
+- You can change `refresh_warehouse` on an existing interactive table without a full refresh.
+- To revert to the default behavior, remove the `refresh_warehouse` parameter from your model configuration or explicitly set it to `None`.
+
+### Initialization warehouse (interactive tables)
+
+Use `snowflake_initialization_warehouse` to specify which virtual warehouse Snowflake uses when initializing or reinitializing a dynamic interactive table. This lets you use a larger warehouse for the initial build while keeping `snowflake_warehouse` smaller for regular refreshes.
+
+```sql
+{{ config(
+    materialized='interactive_table',
+    cluster_by=['order_id'],
+    target_lag='1 hour',
+    snowflake_warehouse='COMPUTE_WH',
+    snowflake_initialization_warehouse='LARGE_WH',
+) }}
+
+select * from {{ ref('stg_orders') }}
+```
+
+**Key points:**
+- This parameter only applies to dynamic interactive tables. Setting it on a static interactive table (one without `target_lag`) has no effect, and dbt warns you.
+- You can change `snowflake_initialization_warehouse` on an existing interactive table without a full refresh.
+- To revert to the default behavior, remove the parameter from your model configuration or explicitly set it to `None`.
+
+### Interactive warehouse association
+
+This config is only available in v2. Use `snowflake_interactive_warehouses` to list the [interactive warehouses](https://docs.snowflake.com/en/sql-reference/sql/create-interactive-warehouse) that dbt should associate the table with. dbt issues an `ALTER WAREHOUSE <warehouse> ADD TABLES (<table>)` statement for each warehouse in the list.
+
+```sql
+{{ config(
+    materialized='interactive_table',
+    cluster_by=['order_id'],
+    snowflake_interactive_warehouses=['MY_INTERACTIVE_WH'],
+) }}
+
+select * from {{ ref('stg_orders') }}
+```
+
+**Key points:**
+- This config takes a _list_, and the warehouses must already exist. dbt does not create them.
+- Do not confuse this with `snowflake_initialization_warehouse`, which is the table's own DDL option rather than an association.
+- dbt runs the association statement on every build that isn't a no-op. It's idempotent, so re-running it has no additional effect.
+- The association survives dbt's in-place `ALTER ... SET` statements and `ALTER TABLE ... RENAME TO`.
+
+Learn more about `ADD TABLES`, and the limits on which warehouses accept it, in [ALTER WAREHOUSE](https://docs.snowflake.com/en/sql-reference/sql/alter-warehouse) in Snowflake's docs.
+
+### Change monitoring for interactive tables
+
+Interactive tables support [`on_configuration_change`](/reference/resource-configs/on_configuration_change). Which configuration changes dbt can apply in place, and which force a full rebuild, depends on what Snowflake allows:
+
+<SimpleTable>
+
+| Changed configuration | dbt behavior |
+|---|---|
+| `target_lag` value to value | Alters the table in place |
+| `refresh_warehouse` | Alters the table in place |
+| `snowflake_initialization_warehouse` | Alters the table in place |
+| `cluster_by` | Rebuilds the table with `CREATE OR REPLACE` |
+| Adding or removing `target_lag` (static to dynamic, or dynamic to static) | Rebuilds the table with `CREATE OR REPLACE` |
+
+</SimpleTable>
+
+### Unsupported configurations for interactive tables
+
+The following configurations are not supported on interactive tables. dbt rejects the first two at parse time with a compilation error rather than letting Snowflake fail the run:
+
+- `table_format: iceberg` &mdash; Interactive tables have no Iceberg variant.
+- `transient: true` &mdash; Snowflake does not accept a transient interactive table.
+- `change_tracking` &mdash; Accepted but inert. `CREATE INTERACTIVE TABLE` does not take a change tracking option.
+
+### Limitations of interactive tables
+
+Limitations worth noting when you build interactive tables with dbt:
+
+- Dropping a column from an interactive table is not supported. This is reachable if you have an `incremental` model with [`on_schema_change: sync_all_columns`](/reference/resource-configs/on_schema_change) running against a relation that was previously an interactive table.
+- Converting an interactive table to an `incremental` model requires a `--full-refresh`.
+- Interactive tables cannot be cloned or created in a personal database.
+- [Model contracts](/docs/mesh/govern/model-contracts) are not supported.
+
+Find more information about interactive table and interactive warehouse limitations, including per-warehouse table limits, in [Snowflake interactive analytics](https://docs.snowflake.com/en/user-guide/interactive) in Snowflake's docs.
+
+### Troubleshooting interactive tables
+
+:::warning A dynamic interactive table downstream of a `table` model can serve stale data
+When a dynamic interactive table is downstream of a dbt-managed `table` model, dbt's `create or replace` statement on the upstream model destroys Snowflake's change tracking history. The interactive table's scheduled refresh then fails on its own, but Snowflake still reports `scheduling_state` as `ACTIVE`, so the table looks healthy while serving stale rows &mdash; and the dbt run reports success.
+
+To recover, run the interactive table with `--full-refresh`. To prevent it, add a post-hook to the upstream model that re-enables change tracking:
+
+```sql
+{{ config(
+    materialized='table',
+    post_hook="alter table {{ this }} set change_tracking = true",
+) }}
+```
+
+Note that a `change_tracking` model config is _not_ a substitute here, since that config does not reach the SQL for plain tables. Plain dynamic tables have the same exposure.
+:::
+
+If your interactive table model fails to rerun after the initial execution with an error about missing positional arguments, ensure that `QUOTED_IDENTIFIERS_IGNORE_CASE` on your account is set to `FALSE`.
+
+</VersionBlock>
+
 ## Semantic Views
 [Snowflake Semantic Views](https://docs.snowflake.com/en/user-guide/views-semantic/overview) provide a native schema-level object for centralizing metric definitions and reducing fragmented metric logic across BI and analytics tools.
 

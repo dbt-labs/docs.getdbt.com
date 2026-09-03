@@ -22,6 +22,7 @@ For <Constant name="fusion_engine" /> updates, refer to the [dbt-fusion changelo
 
 ## September 2026
 
+- **New:** The Snowflake adapter now supports the `interactive_table` materialization in beta, covering both static and dynamic (auto-refreshing) interactive tables. For more information, see [Interactive tables](/reference/resource-configs/snowflake-configs#interactive-tables).
 - **Behavior change:** The following behavior change flags on the dbt platform **Latest** release track have reached maturity, switching their default values from `false` to `true`. To preserve the previous behavior for any of these flags, set them to `false` in your `dbt_project.yml`.
   - [`skip_nodes_if_on_run_start_fails`](/reference/global-configs/behavior-flags/skip_nodes_if_on_run_start_fails)
   - [`state_modified_compare_more_unrendered_values`](/reference/global-configs/behavior-flags/state_modified_compare_more_unrendered_values)
