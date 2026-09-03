@@ -165,8 +165,8 @@ models:
       [freshness](/reference/resource-configs/freshness):
         warn_after: {count: 24, period: hour}
         error_after: {count: 48, period: hour}
-        loaded_at_field: updated_at  # required for view/external; optional for table/incremental
-        build_after: <dict>          # build scheduling — Enterprise only
+        build_after: <dict>        # build scheduling — Enterprise only
+      loaded_at_field: updated_at  # required for view/external; optional for table/incremental
       [on_error](/reference/resource-configs/on_error): skip_children | continue
       [latest_version_pointer](/reference/resource-configs/latest_version_pointer): <dict>
 ```
@@ -484,12 +484,12 @@ models:
         # Freshness SLA — report warn/error when data is stale
         warn_after: {count: 24, period: hour}
         error_after: {count: 48, period: hour}
-        loaded_at_field: updated_at  # required for view/external; optional for table/incremental
         # Build scheduling — Enterprise only
         build_after:
           count: 6
           period: hour
           updates_on: any  # optional
+      loaded_at_field: updated_at  # required for view/external; optional for table/incremental
 ```
 
 </File>

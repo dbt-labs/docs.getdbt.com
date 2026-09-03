@@ -63,10 +63,7 @@ dbt freshness --select "source:jaffle_shop.orders"
 
 ## What gets checked
 
-`dbt freshness` selects nodes where freshness is configured:
-
-- **Sources**: Any source with `warn_after` or `error_after` set in its `freshness` config.
-- **Models**: Any model with `warn_after` or `error_after` set in its `freshness` config.
+`dbt freshness` selects any source or model with `warn_after` or `error_after` set in its `freshness` config.
 
 Freshness is measured using one of three methods, in order of precedence:
 

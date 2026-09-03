@@ -101,7 +101,7 @@ For full configuration options and materialization rules, refer to [freshness](/
 
 [`dbt freshness`](/reference/commands/freshness) replaces `dbt source freshness` and checks both sources and models in a single invocation. `dbt source freshness` is still supported for backward compatibility and continues to produce `sources.json`.
 
-After every `dbt freshness` run, dbt writes `target/freshness.json` — a new artifact that covers both sources and models. Each entry includes a `resource_type` field (`"source"` or `"model"`) to distinguish them. For the full schema, refer to [`freshness.json`](/reference/artifacts/freshness-json).
+After every `dbt freshness` run, dbt writes `target/freshness.json` &mdash; a new artifact that covers both sources and models. Each entry includes a `resource_type` field (`"source"` or `"model"`) to distinguish them. For the full schema, refer to [`freshness.json`](/reference/artifacts/freshness-json).
 
 #### Cross-project freshness
 

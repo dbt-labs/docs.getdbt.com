@@ -231,7 +231,7 @@ Our best practice recommendation is to use [data source freshness](/docs/build/s
 
 To build models based on source freshness in dbt:
 
-1. <VersionBlock firstVersion="2.0">Run [`dbt freshness`](/reference/commands/freshness) to check the freshness of your sources and models.</VersionBlock><VersionBlock lastVersion="1.12">Run `dbt source freshness` to check the freshness of your sources.</VersionBlock>
+1. <VersionBlock firstVersion="2.0">Run [`dbt freshness --resource-type source`](/reference/commands/freshness) to check the freshness of your sources.</VersionBlock><VersionBlock lastVersion="1.12">Run `dbt source freshness` to check the freshness of your sources.</VersionBlock>
 2. Use the `dbt build --select source_status:fresher+` command to build and test models downstream of fresher sources.
 
 Using these commands in order makes sure models update with the latest data. This eliminates wasted compute cycles on unchanged data and builds models _only_ when necessary. 

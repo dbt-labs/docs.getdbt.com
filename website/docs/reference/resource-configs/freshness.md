@@ -128,7 +128,7 @@ models:
       freshness:
         warn_after: {count: 6, period: hour}
         error_after: {count: 12, period: hour}
-        loaded_at_query: "select max(_loaded_at) from {{ this }} where _batch_complete = true"
+      loaded_at_query: "select max(_loaded_at) from {{ this }} where _batch_complete = true"
 ```
 
 ---
