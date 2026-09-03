@@ -32,9 +32,9 @@ dbt supports both creating managed Iceberg tables and Iceberg-enabled Delta tabl
 
 The behavior flag [`use_managed_iceberg`](/reference/global-configs/databricks-changes#use-managed-iceberg) determines whether dbt creates a managed Iceberg table or a Delta table.
 
-:::caution `use_uniform` has no effect in dbt Core
+:::caution `use_uniform` has no effect in dbt v1
 
-`dbt-databricks` doesn't support the `use_uniform` catalog property yet. If you set it, the adapter logs a warning and ignores it &mdash; use the `use_managed_iceberg` behavior flag instead. `use_uniform` takes effect in <Constant name="fusion" /> only.
+`dbt-databricks` doesn't support the `use_uniform` catalog property yet. If you set it, the adapter logs a warning and ignores the value. Use the `use_managed_iceberg` behavior flag instead.
 
 :::
 
@@ -42,7 +42,7 @@ The behavior flag [`use_managed_iceberg`](/reference/global-configs/databricks-c
 
 <VersionBlock firstVersion="2.0">
 
-The [`use_uniform`](#choose-between-managed-iceberg-and-uniform) config determines whether dbt creates a managed Iceberg table or a Delta table. It defaults to `false`, so `table_format: 'iceberg'` creates a managed Iceberg table.
+The [`use_uniform`](#choose-between-managed-iceberg-and-uniform) config determines whether dbt creates a managed Iceberg table or a Delta table. Because `use_uniform` defaults to `false`, setting `table_format: 'iceberg'` creates a managed Iceberg table.
 
 </VersionBlock>
 
@@ -54,11 +54,13 @@ dbt doesn't yet support enabling [Iceberg v3](https://docs.databricks.com/aws/en
 
 ### Choose between managed Iceberg and UniForm
 
-Setting `table_format: 'iceberg'` on a model is enough to create a Unity Catalog managed Iceberg table. You don't need a `catalogs.yml` or a `catalog_name`.
+Set `table_format: 'iceberg'` on a model to create a Unity Catalog managed Iceberg table. You don't need a `catalogs.yml` file or a `catalog_name` config.
+
+Two model configs control which kind of Iceberg table dbt creates:
 
 | Config | Type | Required | Description | Default |
 | ------ | ---- | -------- | ----------- | ------- |
-| `table_format` | String | Yes | Set to `iceberg` to materialize the model as an Iceberg table. | `default` |
+| `table_format` | String | Yes, to create an Iceberg table | Set to `iceberg` to materialize the model as an Iceberg table. | `default` |
 | `use_uniform` | Boolean | No | When `false`, dbt creates a Unity Catalog managed Iceberg table (`create table ... using iceberg`). When `true`, dbt creates a Delta table with Iceberg reads enabled (`create table ... using delta tblproperties (...)`). | `false` |
 
 This model creates a managed Iceberg table:
@@ -78,7 +80,7 @@ select * from {{ ref('raw_orders') }}
 
 </File>
 
-To get an Iceberg-enabled Delta table instead, opt in with `use_uniform`:
+To create an Iceberg-enabled Delta table instead, set `use_uniform` to `true`:
 
 <File name='models/my_uniform_model.sql'>
 
