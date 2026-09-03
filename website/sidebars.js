@@ -1767,7 +1767,7 @@ const sidebarSettings = {
       link: { type: "doc", id: "reference/info-schema" },
       items: [
         "reference/info-schema",
-        "reference/dbt-jinja-functions/info-schema-views",
+        "reference/info-schema-views",
       ],
     },
     {

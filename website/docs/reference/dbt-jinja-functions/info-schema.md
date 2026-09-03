@@ -9,7 +9,7 @@ availability:
 
 `{{ info_schema('<view_name>') }}` is the supported way to reference the [dbt Information Schema](/reference/info-schema) inside [project quality checks](/docs/build/project-checks). Pass the name of the view you want to query (for example, `{{ info_schema('models') }}` to query models, or `{{ info_schema('edges') }}` to query DAG edges).
 
-Each view exposes a set of columns you can select and filter on in your check SQL. For example, to find models without a description, query the `models` view and filter on the `description` column. For the full list of columns available for each view, refer to the [views and columns reference](/reference/dbt-jinja-functions/info-schema-views).
+Each view exposes a set of columns you can select and filter on in your check SQL. For example, to find models without a description, query the `models` view and filter on the `description` column. For the full list of columns available for each view, refer to the [views and columns reference](/reference/info-schema-views).
 
 Only views whose columns are fully populated at parse time are available. Passing a view name that doesn't exist or isn't available at parse time causes the check to fail with a message listing what is available.
 
