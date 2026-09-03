@@ -35,7 +35,7 @@ dbt parse --generate-info-schema
 
 - For [`dbt parse`](/reference/commands/parse), the Information Schema is structural only &mdash; no column types, no lineage, and no runtime results, because `dbt parse` doesn't connect to your warehouse.
 
-`--generate-info-schema` also automatically enables `--write-metadata` and partial parse; the Information Schema is built from the metadata dbt writes during the invocation.
+`--generate-info-schema` also automatically enables partial parse; the Information Schema is built from the metadata dbt writes during the invocation.
 
 ## Checking the schema version
 
@@ -145,7 +145,9 @@ The `dbt_rt` namespace contains tables and views with runtime execution data.
 
 ### `dbt_internal` namespace
 
-The `dbt_internal` namespace contains internal implementation tables that are not part of the public contract. Their schema may change without notice.
+The `dbt_internal` namespace contains internal implementation tables. Unlike `dbt` and `dbt_rt`, the tables' schema may change without notice.
+
+Note that `dbt_internal` tables are not accessible using `dbt show --info` or `{{ info_schema() }}`. You can query them by pointing a Parquet-compatible tool directly at the files in `target/info_schema/v1`.
 
 | Table | Description |
 |-------|-------------|
