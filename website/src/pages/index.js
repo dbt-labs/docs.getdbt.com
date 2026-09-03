@@ -74,7 +74,7 @@ function Home() {
                     id="hero-vs-code-cta"
                     className="hero-border-beam-cta"
                     to="/docs/local/install-dbt">
-                      <span>Install dbt + VS Code extension</span>
+                      <span>Install dbt</span>
                       </Link>
                 </div>
               </div>
@@ -95,7 +95,7 @@ function Home() {
                   icon="dbt-copilot"
                 />
                 <Card
-                  title="dbt"
+                  title="About dbt"
                   tag="Article"
                   body="Explore dbt and discover how its shared Rust runtime delivers faster, more scalable performance."
                   link="/docs/introduction"
@@ -157,12 +157,6 @@ function Home() {
                   body="dbt Insights in dbt empowers users to seamlessly explore and query data with an intuitive, context-rich interface."
                   link="/docs/explore/dbt-insights"
                   icon="insights"
-                />
-                <Card
-                  title="dbt Canvas"
-                  body="dbt Canvas helps you quickly access and transform data through a visual, drag-and-drop experience and with a built-in AI for custom code generation."
-                  link="/docs/platform/canvas"
-                  icon="canvas"
                 />
                 <Card
                   title="dbt Semantic Layer"
