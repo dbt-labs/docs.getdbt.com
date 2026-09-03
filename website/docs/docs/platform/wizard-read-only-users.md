@@ -137,19 +137,14 @@ At query time, <Constant name="wizard" /> resolves credentials in this order:
 
 The fields you see depend on the connection's warehouse and the auth method you pick. The following example uses Snowflake with key pair authentication:
 
-<Tabs>
-
-<TabItem value="keypair" label="Key pair">
-
 1. Enter the **Username** and **Private key** for the warehouse user <Constant name="wizard" /> queries as. 
 2. Add the **Private key passphrase** if your key is encrypted.
 3. Optionally add a **Role** and **Warehouse** to pin which ones queries run with.
 
 <Lightbox src="/img/docs/dbt-platform/analytics-credential-keypair.png" width="95%" title="Analytics credentials with Key pair selected as the auth method" />
 
-</TabItem>
 
-{/* Username and password auth is labeled "(deprecated)" in the platform UI, so we're not publicizing it. Uncomment if PM confirms it should be documented.
+<!-- Username and password auth is labeled "(deprecated)" in the platform UI, so we're not publicizing it. Uncomment if PM confirms it should be documented.
 
 <TabItem value="userpass" label="Username and password">
 
@@ -158,11 +153,7 @@ The fields you see depend on the connection's warehouse and the auth method you 
 
 <Lightbox src="/img/docs/dbt-platform/analytics-credential-username-password.png" width="95%" title="Analytics credentials with Username and password selected as the auth method" />
 
-</TabItem>
-
-*/}
-
-</Tabs>
+-->
 
 
 Give the credential the _least privilege_ it needs to answer questions &mdash; read-only access to the data read-only users should see, and nothing more. It's a shared credential, so anyone querying through it sees whatever it can see, without a per-user trail. If you need per-user access control or auditing at the warehouse, have users configure personal credentials instead &mdash; that requires the [Analyst read](/docs/platform/manage-access/enterprise-permissions#analyst-read) permission set.
