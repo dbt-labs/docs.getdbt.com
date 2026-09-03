@@ -155,6 +155,7 @@ You can read more about each of these behavior changes in the following links:
 - You can create Snowflake dynamic tables as transient (no [Fail-safe period](https://docs.snowflake.com/en/user-guide/data-failsafe)) by setting the [`transient`](/reference/resource-configs/snowflake-configs#transient-dynamic-tables) config on models. 
 
     When `transient` is not set on a model, the [`snowflake_default_transient_dynamic_tables`](/reference/global-configs/snowflake-changes#the-snowflake_default_transient_dynamic_tables-flag) flag controls the default. Set this flag to `true` to make all dynamic tables transient by default.
+- You can materialize a model as a Snowflake [interactive table](/reference/resource-configs/snowflake-configs#interactive-tables) by setting `materialized: interactive_table`. Interactive tables are optimized for low-latency queries and support both static and dynamic (auto-refreshing) forms, depending on whether you set [`target_lag`](/reference/resource-configs/snowflake-configs#target-lag-interactive-tables). Unlike dynamic tables, [`cluster_by`](/reference/resource-configs/snowflake-configs#cluster-by-interactive-tables) is required. dbt's support for this materialization is in beta.
 
 ### BigQuery
 
