@@ -34,7 +34,7 @@ Refer to the [Model Provider Rate table](https://www.getdbt.com/legal/dbt-wizard
 
 <Expandable alt_header="What does the dbt Wizard Developer and Starter plan free trial include?">
 
-Developer and Starter plans get $100 in usage credits for dbt-<Term id="managed"/> Wizard inference, free for 30 days. The $100 is **per account, not per user** &mdash; everyone on the account shares the same credits. On Developer, that's a single user, since it's a single-user plan.
+Developer and Starter plans get $100 in usage credits for dbt-<Term id="managed"/> Wizard inference, free for 30 days. The $100 is _per account, not per user_, which means everyone on the account shares the same credits. On Developer, that's a single user, since it's a single-user plan.
 
 The credit covers Wizard usage across both the <Constant name="dbt_platform"/> and the CLI, and the trial ends when your account hits $100 in usage or 30 days, whichever comes first.
 
@@ -84,7 +84,7 @@ No. Starting a trial doesn't automatically create paid usage. For self-serve acc
 
 Enterprise plans automatically include $100/month in usage credits at no cost, and Enterprise+ includes $200/month.
 
-These amounts are **per account, not per user** &mdash; a 5-person account and a 500-person account both get the same monthly credit, and everyone on the account draws from the same shared balance. No billing setup or opt-in is required to receive the monthly included consumption usage credits as it renews each billing period and doesn't roll over.
+These amounts are _per account, not per user_, which means a 5-person account and a 500-person account both get the same monthly credit, and everyone on the account draws from the same shared balance. No billing setup or opt-in is required to receive the monthly included consumption usage credits as it renews each billing period and doesn't roll over.
 
 These included monthly credits can only be spent on <Constant name="wizard" />. They can't be used for dbt State or any other consumption-based feature.
 
