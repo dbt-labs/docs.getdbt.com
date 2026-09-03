@@ -65,7 +65,7 @@ To view your lineage with the **Latest status** lens:
 
 ## Explain tab
 
-To see why dbt State rebuilt or reused a specific node, go to **Orchestration** > **Runs**. Select a run and go to the **Explain** tab.
+To see why dbt State rebuilt, reused, or cloned a specific node, go to **Orchestration** > **Runs**. Select a run and go to the **Explain** tab.
 
 <DbtStateExplainTab />
 
