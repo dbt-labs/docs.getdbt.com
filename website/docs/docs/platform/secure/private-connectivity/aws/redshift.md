@@ -126,6 +126,12 @@ If **Private endpoints** isn't available in your account settings, configure Red
 
 <Lightbox src="/img/docs/dbt-platform/redshiftprivatelink3.png" title="Redshift grant access"/>
 
+:::caution Per-workgroup authorization required
+
+For Redshift Serverless, **Granted accounts** is scoped to a single workgroup. If your environment has multiple workgroups, you must grant access separately for each workgroup you want to connect to <Constant name="dbt" />. Authorizing one workgroup (for example, `sales`) doesn't extend to any other workgroup (for example, `finance` or `product`) &mdash; repeat steps 1&ndash;4 for each workgroup individually.
+
+:::
+
 5. Add the required information to the following template, and submit your request to [dbt Support](mailto:support@getdbt.com):
 
    - **Standard Redshift**
