@@ -232,11 +232,11 @@ The following examples show how to disable or configure `static_analysis` for di
 
 <!-- no toc -->
 - [Enable strict analysis for all your models](#enable-strict-analysis-for-all-your-models)
-- [Enable strict analysis for your models, not packages](#enable-strict-analysis-for-your-models-not-packages)
 - [Disable static analysis for all models in a package](#disable-static-analysis-for-all-models-in-a-package)
 - [Disable static analysis in YAML for a single model](#disable-static-analysis-in-yaml-for-a-single-model)
 - [Disable static analysis in SQL for a model using a custom UDF](#disable-static-analysis-in-sql-for-a-model-using-a-custom-udf)
-- [Configure static analysis for tests](#configure-static-analysis-for-tests)
+- [Configure static analysis for data tests](#configure-static-analysis-for-data-tests)
+- [Configure static analysis for unit tests](#configure-static-analysis-for-unit-tests)
 - [Configure static analysis for seeds](#configure-static-analysis-for-seeds)
 - [Configure static analysis for snapshots](#configure-static-analysis-for-snapshots)
 
@@ -351,6 +351,8 @@ models:
 <VersionBlock firstVersion="2.0">
 
 ### Configure static analysis for unit tests
+
+You can set `static_analysis` on [unit tests](/docs/build/unit-tests), which validate your SQL logic against static fixtures before you build a model.
 
 This example shows how to set static analysis for all unit tests in a project using `dbt_project.yml`.
 
