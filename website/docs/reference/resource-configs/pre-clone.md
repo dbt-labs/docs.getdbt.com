@@ -17,6 +17,11 @@ models:
   [<resource-path>](/reference/resource-configs/resource-path):
     [+](/reference/resource-configs/plus-prefix)state:
       pre_clone: never | if_missing | always
+
+snapshots:
+  [<resource-path>](/reference/resource-configs/resource-path):
+    [+](/reference/resource-configs/plus-prefix)state:
+      pre_clone: never | if_missing | always
 ```
 
 </File>
@@ -29,6 +34,18 @@ models:
 ```yaml
 models:
   - name: my_model
+    config:
+      state:
+        pre_clone: never | if_missing | always
+```
+
+</File>
+<File name="snapshots/<filename>.yml">
+
+```yaml
+snapshots:
+  - name: my_snapshot
+    relation: source('my_source', 'my_table')
     config:
       state:
         pre_clone: never | if_missing | always
