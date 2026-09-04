@@ -261,8 +261,6 @@ Two kinds of custom materializations trigger the downgrade to `off`:
 - **A name you invented:** such as `materialized='my_custom_load'`. Find these in your model configs.
 - **A built-in name:** such as your own macro named `materialization table, default`. These are harder to spot, because models that say `materialized='table'` look standard but run your code instead of dbt's.
 
-
-
 What this means in practice:
 
 - Models using a custom materialization don't fail because of static analysis.
