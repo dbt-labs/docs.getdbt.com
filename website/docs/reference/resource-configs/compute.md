@@ -8,6 +8,8 @@ default_value: remote
 sidebar_label: "compute"
 ---
 
+# compute <Lifecycle status="beta" />
+
 :::info Available in v2
 
 The `compute` config is available in v2 only. It isn't available in v1 and will be ignored. To upgrade to v2, refer to [Upgrade to v2](/docs/dbt-versions/dbt-upgrade/upgrading-to-v2) upgrade guide.
