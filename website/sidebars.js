@@ -1358,6 +1358,7 @@ const sidebarSettings = {
             "reference/advanced-config-usage",
             "reference/resource-configs/access",
             "reference/resource-configs/alias",
+            "reference/resource-configs/compute",
             "reference/resource-configs/database",
             "reference/resource-configs/docs",
             "reference/resource-configs/enabled",

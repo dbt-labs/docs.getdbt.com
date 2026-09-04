@@ -135,7 +135,7 @@ snapshots:
 [unit_tests](/reference/resource-properties/unit-tests):
   - name: <test-name>
     config:
-      [compute](/docs/build/unit-tests#run-unit-tests-locally): local | remote
+      [compute](/reference/resource-configs/compute): local | remote
       [enabled](/reference/resource-configs/enabled): true | false
       [meta](/reference/resource-configs/meta): {dictionary}
       [static_analysis](/reference/resource-configs/static-analysis): strict | baseline | off
