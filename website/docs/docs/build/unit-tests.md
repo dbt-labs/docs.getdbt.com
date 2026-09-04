@@ -62,7 +62,7 @@ dbt test --select "test_type:unit"
 
 ## Run unit tests locally <Lifecycle status="beta" />
 
-Unit tests run against your data platform by default, which means every run costs warehouse compute — even though the inputs are a handful of static rows. Set `compute: local` and dbt runs the test on your own machine instead, using DuckDB, so the test doesn't touch your warehouse at all.
+Unit tests run against your data platform by default, which means every run costs warehouse compute — even though the inputs are a handful of static rows. Set `compute: local` and dbt runs the test with DuckDB instead, so the test doesn't touch your data platform at all.
 
 Set it on a single unit test:
 
@@ -95,16 +95,16 @@ unit_tests:
 | Value | What it does |
 |-------|--------------|
 | `remote` | Runs the test against your data platform. This is the default and matches previous behavior. |
-| `local` | Runs the test on your machine using DuckDB. |
+| `local` | Runs the test with DuckDB instead of your data platform. |
 
 You might also see `sidecar` in error messages — it means the same thing as `local`.
 
 ### What to know before you use it
 
-- Local execution is available for Snowflake.
+- Local execution is available for Snowflake and BigQuery, and only for unit tests. The `compute` config exists on other resources but accepts `remote` there.
 - To translate your SQL, dbt fetches the schemas of your model's direct upstream models from your data platform the first time you run the test, then caches them. Later runs reuse the cache, so they don't re-fetch.
 - Those upstream models must already exist in your data platform. If they don't, the test fails with an error about fetching the upstream relation schema.
-- Your SQL has to be translatable to DuckDB. Platform-specific functions with no DuckDB equivalent fail — for example, `haversine` returns `Catalog Error: Scalar Function with name haversine does not exist!`
+- Your SQL has to be translatable to DuckDB. Platform-specific functions with no DuckDB equivalent fail. For example, a model that calls Snowflake's `haversine` fails with `failed in db_runner: Internal: Catalog Error: Scalar Function with name haversine does not exist!`
 - `local` doesn't fall back to your data platform. If dbt can't compile or translate the SQL, the test fails and dbt exits with a non-zero code.
 - Setting `compute: local` also sets [static analysis](/reference/resource-configs/static-analysis) to `strict` for that test.
 - The run output doesn't say which mode a test used, so a test with no `compute` set runs remotely without telling you.
