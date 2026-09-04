@@ -76,12 +76,6 @@ Release notes are grouped by date for single-tenant environments.
 
 - **More reliable MCP OAuth sign-in**: When you connect an MCP client with OAuth, more clients can now complete sign-in successfully.
 
-## Fixes
-
-### dbt platform
-
-- **Visible add-on cancellation errors**: Failed dbt State and dbt Wizard subscription cancellations now surface an error message in the confirmation pop-up instead of silently doing nothing. A loading state is shown while cancellation is in progress, and permission errors direct you to contact a billing admin.
-
 ## August 19, 2026
 
 ## Enhancements
