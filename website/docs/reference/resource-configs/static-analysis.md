@@ -382,7 +382,7 @@ unit_tests:
 
 </File>
 
-Setting [`compute: local`](/reference/resource-configs/compute) on a unit test promotes its `static_analysis` to `strict`, because local execution needs strict analysis to translate your SQL to DuckDB. This applies even if you set `baseline` on the test yourself.
+Setting [`compute: local`](/reference/resource-configs/compute) on a unit test (which runs the test with DuckDB instead of your data platform) promotes its `static_analysis` to `strict`, because local execution needs strict analysis to translate your SQL to DuckDB. This applies even if you set `baseline` on the test yourself.
 
 If you set `static_analysis: off` on a unit test that's configured to run locally, the test can't run and fails with `ExecutorFailed (dbt1401)`. Use `compute: remote` for that test instead.
 
