@@ -32,13 +32,15 @@ Think of it like a map of your city: <Constant name="wizard" /> knows how everyt
 - **Safe validation:** Compiles and builds changes before review
 - **Complete workflow:** Investigate, change, validate, and review in one place
 - **Setup and governance:** Works out of the box with dbt governance built in
+- **Conversational analytics:** Answers questions about production data in plain language through [Explore mode](/docs/dbt-ai/wizard-ide#agent-modes), grounded in governed metric definitions
 
 <WizardTrialBilling/>
 
 ## Use dbt Wizard
 
+<Constant name="wizard" /> is for anyone doing dbt development. You can use it in the platform with managed or bring-your-own-key (BYOK) credentials, or in the terminal with your own key, with or without a <Constant name="dbt_platform" /> account. <Constant name="wizard" /> is data warehouse agnostic and works on any [dbt version](/docs/introduction#dbt-versions).
 
-<Constant name="wizard" /> is for anyone doing dbt development. You can use it in the platform with managed or bring-your-own-key (BYOK) credentials, or in the terminal with your own key, with or without a <Constant name="dbt_platform" /> account. <Constant name="wizard" /> is data warehouse agnostic and works on any [dbt version](/docs/introduction#dbt-versions)
+It's also for people who don't build data at all. In the <Constant name="dbt_platform" />, [Explore mode](/docs/dbt-ai/wizard-ide#agent-modes) lets [read-only users](/docs/platform/wizard-read-only-users) ask questions of production data in plain language, with no developer license and nothing to set up.
 
 The following table shows where <Constant name="wizard" /> is available, the AI keys each surface uses, and how usage is billed:
 
@@ -95,6 +97,7 @@ Refer to [Use cases and examples](/docs/dbt-ai/wizard-use-cases) for more prompt
 ## Related docs
 
 - [dbt Wizard in Studio IDE](/docs/dbt-ai/wizard-ide) — generate docs, tests, semantic models, SQL, and delegate end-to-end model work
+- [Invite read-only users to dbt Wizard](/docs/platform/wizard-read-only-users) — let business users ask questions of production data in Explore mode, without development access
 - [Use skills in the dbt platform](/docs/dbt-ai/wizard-platform-skills) — give dbt Wizard reusable instructions for your project
 - [Use MCP servers with dbt Wizard CLI](/docs/dbt-ai/wizard-mcp) — connect the dbt Wizard CLI to more tools and context
 - [Migrate to dbt Wizard](/docs/dbt-ai/wizard-migrate) — switch from Claude Code, Cursor, or another AI agent to dbt Wizard
