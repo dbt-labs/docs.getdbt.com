@@ -62,17 +62,17 @@ dbt test --select "test_type:unit"
 
 ## Run unit tests locally <Lifecycle status="beta" />
 
-When you're working through tricky SQL, you want to know whether your logic holds up right away. But by default every unit test run queues a query on your data platform and waits for the answer to come back, which is slow enough that testing often gets put off until the end.
+When you're working through tricky SQL, you want to know right away whether your logic works. By default, each unit test sends a query to your data platform and waits for the result. This can slow down testing and use warehouse compute.
 
-Unit tests don't actually need your data platform. They run against static fixtures you define yourself, not real data. Set `compute: local` and dbt runs the test with DuckDB, right where dbt is already running.
+Because unit tests use static fixtures instead of real data, they don’t need to necessarily run on your data platform. Use the `compute: local` config to run them locally with DuckDB for faster feedback _without_ the warehouse compute cost.
 
 That gives you:
 
 - A test loop that keeps up with you. Change your SQL, rerun the test, and repeat without waiting on a warehouse queue.
-- Room to test as you go, so you catch broken logic while you're still writing it instead of finding it in CI.
+- Room to test as you go, so you catch broken logic while you're still writing it instead of finding it in CI (or worse, after it reaches production)
 - Your data platform's compute left for building models.
 
-Set it on a single unit test:
+You can configure it on a single unit test:
 
 <File name='models/schema.yml'>
 
@@ -100,12 +100,16 @@ unit_tests:
 
 `compute` accepts two values:
 
+<SimpleTable>
+
 | Value | What it does |
 |-------|--------------|
-| `remote` | Runs the test against your data platform. This is the default and matches previous behavior. |
-| `local` | Runs the test with DuckDB, wherever dbt itself is running. |
+| `remote` | Sends the test to your data platform to run, using warehouse compute like any other query. This is the default, and how unit tests have always worked. |
+| `local` | Runs the test with DuckDB, wherever dbt itself is running. Nothing is sent to your data platform, so the test returns quickly and uses no warehouse compute. |
 
-You might also see `sidecar` in error messages — it means the same thing as `local`.
+</SimpleTable>
+
+You might also see `sidecar` in error messages but it means the same thing as `local`.
 
 ### What to know before you use it
 

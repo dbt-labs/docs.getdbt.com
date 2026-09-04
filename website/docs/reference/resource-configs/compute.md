@@ -2,7 +2,7 @@
 resource_types: [unit tests]
 title: "compute"
 description: "Use the compute config to run unit tests locally with DuckDB instead of against your data platform."
-intro_text: "compute controls whether a unit test runs against your data platform or locally with DuckDB."
+intro_text: "Compute controls whether a unit test runs against your data platform or locally with DuckDB."
 datatype: string
 default_value: remote
 sidebar_label: "compute"
@@ -16,7 +16,7 @@ The `compute` config is available in the <Constant name="fusion_engine"/> only. 
 
 The `compute` config sets where a [unit test](/docs/build/unit-tests) runs &mdash; against your data platform, or locally with DuckDB for faster feedback while you develop. Because unit tests run against static fixtures instead of real data, they don't necessarily need your data platform to execute.
 
-<File name='models/<filename>.yml'>
+<File name='models/filename.yml'>
 
 ```yml
 unit_tests:
@@ -61,7 +61,7 @@ unit_tests:
 
 </File>
 
-<File name='models/<filename>.yml'>
+<File name='models/filename.yml'>
 
 ```yml
 unit_tests:
