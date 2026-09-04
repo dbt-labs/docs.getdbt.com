@@ -44,10 +44,6 @@ dbt freshness --exclude-resource-type source
 # Check everything except models
 dbt freshness --exclude-resource-type model
 
-# Exclude both (nothing is checked)
-dbt freshness --exclude-resource-type source model
-```
-
 ### Check a specific model or source
 
 ```bash

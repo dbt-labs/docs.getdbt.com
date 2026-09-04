@@ -99,7 +99,7 @@ Not all materializations support freshness checks the same way. dbt validates yo
 | `view`, `external` | Required | Views don’t expose row-level metadata. Set `loaded_at_field` or `loaded_at_query` to measure freshness. An empty string (`loaded_at_field: ""`) is treated the same as unset and raises a parse error. |
 | `ephemeral` | Not supported | Nothing is materialized to measure. Raises a parse error. |
 
-If a freshness rule is incomplete (for example, `warn_after` with `count` but no `period`), dbt warns but still runs the command.
+If a freshness rule is incomplete (for example, `warn_after` with `count` but no `period`), `dbt freshness` returns an error. Other commands, such as `dbt run` and `dbt build`, report a warning but still succeed.
 
 ### Examples
 
@@ -146,7 +146,7 @@ models:
 models:
   [<resource-path>](/reference/resource-configs/resource-path):
     [+](/reference/resource-configs/plus-prefix)[freshness](/reference/resource-configs/freshness):
-      build_after: # Available only on dbt platform Enterprise tiers
+      [build_after](#scheduling-builds): # Available only on dbt platform Enterprise tiers
         count: <positive_integer>
         period: minute | hour | day
         updates_on: any | all # optional, default is `any`
@@ -164,7 +164,7 @@ models:
   - name: stg_orders
     config:
       freshness:
-        build_after:  # Available only on dbt platform Enterprise tiers.
+        [build_after](#scheduling-builds):  # Available only on dbt platform Enterprise tiers
           count: <positive_integer>
           period: minute | hour | day
           updates_on: any | all # optional, default is `any`

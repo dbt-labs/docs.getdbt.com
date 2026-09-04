@@ -209,11 +209,9 @@ Some historic CLI flags from v1 will no longer do anything in v2. If you pass th
 
 ##### CLI flags that need changes {#cli-flags-that-need-changes}
 
-The following deprecated flags require updates in your job definitions or scripts:
+The following deprecated flag requires updates in your job definitions or scripts:
 
 - **`--models` / `--model` / `-m`:** Use `--select` / `-s` instead (renamed in dbt Core v0.21). dbt raises an error in v2 if you use the old flags. Do not pass `--models` as the value to `-s` (for example, `dbt run -s --models`); v1 treated that as a model name, but v2 requires a valid selector.
-
-- **`--resource-type` / `--exclude-resource-type`:** Use `--resource-types` / `--exclude-resource-types`. For more information, see [Resource type flags](/reference/global-configs/resource-type).
 
 <FusionPartialParseCliFlags />
 
