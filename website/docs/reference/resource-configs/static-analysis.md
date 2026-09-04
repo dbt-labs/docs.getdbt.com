@@ -193,7 +193,9 @@ Refer to the Fusion concepts page for deeper discussion and visuals: [New concep
 
 ### Custom materializations
 
-The <Constant name="fusion_engine" /> automatically sets `static_analysis: off` for models built with a [custom materialization](/guides/create-new-materializations), whether the materialization has a novel name or shadows a built-in name (such as a custom `table` or `incremental`). Because a custom materialization can change the schema of the persisted model, <Constant name="fusion" /> can't rely on the model's declared columns for analysis, so it skips analysis the same way it does for introspective queries.
+The <Constant name="fusion_engine" /> automatically sets `static_analysis: off` for models built with a [custom materialization](/guides/create-new-materializations). This applies whether you gave the materialization a new name or reused a built-in one, such as your own `table` or `incremental`. 
+
+A custom materialization can add, rename, or change the type of columns in the table it builds, and <Constant name="fusion" /> can't predict those changes before the model runs. It skips analysis for the same reason it skips [introspective queries](/docs/build/about-static-analysis#introspection-handling-in-baseline-mode).
 
 This means:
 
