@@ -1,8 +1,8 @@
 ---
-resource_types: [models, tests, seeds, snapshots]
+resource_types: [models, tests, unit tests, seeds, snapshots]
 title: "static_analysis"
-description: "Use the static_analysis config to control how the Fusion engine performs static SQL analysis for models, tests, seeds, and snapshots."
-intro_text: "static_analysis controls how the Fusion engine analyzes SQL at compile time for models, tests, seeds, and snapshots."
+description: "Use the static_analysis config to control how the Fusion engine performs static SQL analysis for models, tests, unit tests, seeds, and snapshots."
+intro_text: "static_analysis controls how the Fusion engine analyzes SQL at compile time for models, tests, unit tests, seeds, and snapshots."
 datatype: string
 default_value: baseline
 sidebar_label: "static_analysis"
@@ -132,11 +132,37 @@ snapshots:
 
 </TabItem>
 
+<TabItem value="unit tests" label="Unit tests">
+
+<File name='dbt_project.yml'>
+
+```yml
+unit_tests:
+  [resource-path](/reference/resource-configs/resource-path):
+    +static_analysis: strict | baseline | off
+```
+
+</File>
+
+<File name='models/filename.yml'>
+
+```yml
+unit_tests:
+  - name: unit_test_name
+    model: model_name
+    [config](/reference/resource-properties/config):
+      static_analysis: strict | baseline | off
+```
+
+</File>
+
+</TabItem>
+
 </Tabs>
 
 ## Definition
 
-You can configure `static_analysis` for [models](/docs/build/sql-models), [data tests](/docs/build/data-tests), [seeds](/docs/build/seeds), and [snapshots](/docs/build/snapshots).
+You can configure `static_analysis` for [models](/docs/build/sql-models), [data tests](/docs/build/data-tests), [unit tests](/docs/build/unit-tests), [seeds](/docs/build/seeds), and [snapshots](/docs/build/snapshots).
 
 You can configure if and when the <Constant name="fusion_engine" /> performs static SQL analysis for a model. Configure the `static_analysis` config in your project YAML file (`dbt_project.yml`), model properties YAML file, or in a SQL config block in your model file. Refer to [Principles of static analysis](/docs/build/about-static-analysis?version=1.12#principles-of-static-analysis) for more information on the different modes of static analysis.
 
@@ -153,6 +179,16 @@ The following values are available for `static_analysis`:
 The `on` and `unsafe` values are deprecated and will be removed in May 2026. Use `strict` instead.
 
 :::
+
+<VersionBlock firstVersion="2.0">
+
+### Unit tests that run locally
+
+Setting [`compute: local`](/reference/resource-configs/compute) on a unit test promotes its `static_analysis` to `strict`, because local execution needs strict analysis to translate your SQL to DuckDB. This applies even if you set `baseline` on the test yourself.
+
+If you set `static_analysis: off` on a unit test that's configured to run locally, the test can't run and fails with `ExecutorFailed (dbt1401)`. Use `compute: remote` for that test instead.
+
+</VersionBlock>
 
 ### User-defined functions (UDFs) in `strict` mode
 
