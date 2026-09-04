@@ -41,6 +41,7 @@ You can teach <Constant name="wizard" /> your team's conventions with [skills](/
 - Build or refactor models from plain-language prompts
 - Review file changes as diffs before you save them
 - Run end-to-end tasks in [agent mode](/docs/dbt-ai/wizard-ide#agent-modes), either approving each file change or letting <Constant name="wizard" /> edit automatically
+- Ask questions of production data in [Explore mode](/docs/dbt-ai/wizard-ide#agent-modes), including [read-only users](/docs/platform/wizard-read-only-users) with no development access
 - Follow along in the wayfinder bar, which shows your current project and branch and guides you through Git tasks like committing files or creating a branch
 - Get consistent output from [dbt Agent Skills](https://github.com/dbt-labs/dbt-agent-skills), which encode dbt best practices out of the box
 

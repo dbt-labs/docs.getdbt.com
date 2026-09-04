@@ -430,6 +430,7 @@ const sidebarSettings = {
                 "docs/platform/wizard-platform",
                 "docs/dbt-ai/wizard-ide",
                 "docs/platform/wizard-home",
+                "docs/platform/wizard-read-only-users",
                 "docs/platform/wizard-byok-platform",
                 "docs/dbt-ai/wizard-platform-skills",
                 "docs/dbt-ai/wizard-platform-mcp",

@@ -9,6 +9,7 @@ availability: platform_usage
 
 import CopilotResources from '/snippets/_use-copilot-resources.md';
 import WizardIde from '/snippets/_wizard-ide.md';
+import WizardExploreUsage from '/snippets/_wizard-explore-usage.md';
 import WizardModelPicker from '/snippets/_wizard-model-picker.md';
 
 # dbt Wizard in Studio IDE <Lifecycle status="preview"/>
@@ -46,6 +47,18 @@ If <Constant name="wizard" /> stops responding, your account may have used up it
 :::tip Best practices for using dbt Wizard
 For recommended workflows on real project tasks &mdash; understanding a project, validating changes, building Semantic Layer definitions, and more &mdash; refer to [How to use dbt Wizard in your dbt project](/best-practices/how-to-use-wizard/wizard-1-intro). Most of these prompts work the same in Studio IDE.
 :::
+
+## Ask questions in Explore mode
+
+Explore mode in <Constant name="studio_ide"/> lets you ask questions of your production data in plain language. <Constant name="wizard" /> in Explore mode answers and explains but never changes your project. This option is great for exploratory data analysis and getting a quick understanding of your data.
+
+Explore mode queries with your personal warehouse credentials.
+
+<WizardExploreUsage />
+
+In the <Constant name="studio_ide" />, the answer and its visualization appear inline in the <Constant name="wizard" /> panel alongside your project.
+
+<Lightbox src="/img/docs/dbt-platform/wizard-ide-explore-viz.png" width="100%" title="Explore mode in the Studio IDE, showing a chart and Chart/Table/SQL toggles in the dbt Wizard panel." />
 
 ## Choose a model
 

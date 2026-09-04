@@ -2,7 +2,7 @@
 
 <Expandable alt_header="How is Wizard usage measured and priced?">
 
-Wizard usage with the dbt-<Term id="managed"/> inference will be measured per token. Every token is processed as input or output counts. Each model has its own unique per-token pricing.
+Wizard usage with the dbt-<Term id="managed"/> <Term id="inference"/> will be measured per token. Every token is processed as input or output counts. Each model has its own unique per-token pricing.
 
 Cost will depend on the model used, prompt length and complexity, and response size.
 
@@ -12,7 +12,7 @@ Refer to [Model Provider Rate table](https://www.getdbt.com/legal/dbt-wizard-tok
 
 <Expandable alt_header="What is the dbt Wizard usage consumption pool?">
 
-The <Constant name="wizard"/> consumption pool is the usage balance available when using dbt-<Term id="managed"/> inference for <Constant name="wizard"/> &mdash; this includes Developer and Starter plan trial Wizard usage credits and the monthly Enterprise/Enterprise+ included usage credits.
+The <Constant name="wizard"/> consumption pool is the usage balance available when using dbt-<Term id="managed"/> <Term id="inference"/> for <Constant name="wizard"/> &mdash; this includes Developer and Starter plan trial Wizard usage credits and the monthly Enterprise/Enterprise+ included usage credits.
 
 As you use <Constant name="wizard" />, your token usage will automatically convert into a dollar amount and deducted from your active usage credit. Once your usage credit is depleted, additional usage must draw from a newly purchased consumption pool, if one exists. If your pool is depleted, use of Wizard will be disabled until it is refreshed.
 
@@ -100,7 +100,7 @@ dbt Managed Wizard usage pauses until an authorized admin purchases additional u
 
 <Expandable alt_header="How does the consumption pool work?">
 
-It's the balance that covers dbt-<Term id="managed"/> inference usage (which must be purchased once you have depleted any freely available monthly or trial usage credits that may be available), metered per token at cost. Pool dollars don't roll over at the end of a committed term.
+It's the balance that covers dbt-<Term id="managed"/> <Term id="inference"/> usage (which must be purchased once you have depleted any freely available monthly or trial usage credits that may be available), metered per token at cost. Pool dollars don't roll over at the end of a committed term.
 
 Unlike free Wizard usage credits, purchased committed spend isn't limited to <Constant name="wizard" /> &mdash; it covers both <Constant name="wizard" /> and dbt State.
 </Expandable>
@@ -183,7 +183,7 @@ Refer to [Model Provider Rate table](https://www.getdbt.com/legal/dbt-wizard-tok
 
 <Expandable alt_header="Why use dbt-managed inference instead of bringing my own key?">
 
-With dbt-<Term id="managed"/> inference, there's nothing to configure or maintain. dbt Labs selects and maintains the underlying models for cost, speed, and accuracy, so your team focuses on data work, not agent upkeep.
+With dbt-<Term id="managed"/> <Term id="inference"/>, there's nothing to configure or maintain. dbt Labs selects and maintains the underlying models for cost, speed, and accuracy, so your team focuses on data work, not agent upkeep.
 
 Usage is billed through your existing dbt account and covered by your consumption pool, so there's one bill instead of a second vendor relationship to manage.
 
@@ -191,7 +191,7 @@ Usage is billed through your existing dbt account and covered by your consumptio
 
 <Expandable alt_header="Which models are available with dbt-managed inference, and who picks them?">
 
-dbt-<Term id="managed"/> inference includes several frontier models, including models from OpenAI and Anthropic, plus a set of open weight models. dbt Labs maintains and updates this list, so new models become available without you having to evaluate or configure a new provider yourself.
+dbt-<Term id="managed"/> <Term id="inference"/> includes several frontier models, including models from OpenAI and Anthropic, plus a set of open weight models. dbt Labs maintains and updates this list, so new models become available without you having to evaluate or configure a new provider yourself.
 
 Refer to [Model Provider Rate table](https://www.getdbt.com/legal/dbt-wizard-token-costs-by-model) and [Service Consumption Table](https://www.getdbt.com/legal/service-consumption-table) for more information.
 
@@ -199,19 +199,25 @@ Refer to [Model Provider Rate table](https://www.getdbt.com/legal/dbt-wizard-tok
 
 <Expandable alt_header="Do I need to worry about rate limits or provider outages with dbt-managed inference?">
 
-No &mdash; dbt manages the underlying provider relationships and infrastructure for dbt-<Term id="managed"/> inference. You interact with a single consumption pool and spend limit in <Constant name="dbt_platform"/>, regardless of which model is handling a given request.
+No &mdash; dbt manages the underlying provider relationships and infrastructure for dbt-<Term id="managed"/> <Term id="inference"/>. You interact with a single consumption pool and spend limit in <Constant name="dbt_platform"/>, regardless of which model is handling a given request.
 
 </Expandable>
 
 
 <Expandable alt_header="Can I mix dbt-managed inference and BYOK?">
 
-Yes. BYOK usage is billed by your provider and never draws from your dbt-<Term id="managed"/> consumption pool, so you can use dbt-managed inference for some work and BYOK for other work without either affecting the other's usage or billing.
+Yes. BYOK usage is billed by your provider and never draws from your dbt-<Term id="managed"/> consumption pool, so you can use dbt-<Term id="managed"/> <Term id="inference"/> for some work and BYOK for other work without either affecting the other's usage or billing.
 </Expandable>
 
 <Expandable alt_header="Is dbt-managed inference more expensive than using my own provider key?">
 
-Cost depends on the model and your usage pattern. dbt-<Term id="managed"/> inference is metered per token at the model's rate, while BYOK usage is billed directly by your provider at their own rates. Compare the two based on which models and volume you expect to use.
+Cost depends on the model and your usage pattern. dbt-<Term id="managed"/> <Term id="inference"/> is metered per token at the model's rate, while BYOK usage is billed directly by your provider at their own rates. Compare the two based on which models and volume you expect to use.
 
 Refer to [Model Provider Rate table](https://www.getdbt.com/legal/dbt-wizard-token-costs-by-model) and [Service Consumption Table](https://www.getdbt.com/legal/service-consumption-table) for more information.
+</Expandable>
+
+<Expandable alt_header="Does read-only user usage in Explore mode count against my consumption pool?">
+
+Yes. Questions asked in [Explore mode](/docs/dbt-ai/wizard-ide#agent-modes) &mdash; including by [read-only users](/docs/platform/wizard-read-only-users) &mdash; use dbt-<Term id="managed"/> <Term id="inference"/> and draw from your account's <Constant name="wizard" /> consumption pool, the same as any other <Constant name="wizard" /> usage.
+
 </Expandable>
