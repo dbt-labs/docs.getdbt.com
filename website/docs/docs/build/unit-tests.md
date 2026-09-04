@@ -116,13 +116,9 @@ You might also see `sidecar` in error messages but it means the same thing as `l
 - Local execution is available for Snowflake and BigQuery, and only for unit tests. 
 - To translate your SQL, dbt fetches the schemas of your model's direct upstream models from your data platform the first time you run the test, then caches them. Later runs reuse the cache, so they don't re-fetch.
 - Unit tests need the upstream models to already exist in your data platform. If they don't, the tests fails with an error about fetching the upstream relation schema.
-- Local execution only works if dbt can compile your model's SQL and translate it to DuckDB. Complex SQL and functions specific to your data platform might have no DuckDB equivalent &mdash; Snowflake's `AI_CLASSIFY` and `haversine` are two examples.
-- A translation failure is a test failure. `local` doesn't fall back to your data platform, so the test fails and dbt exits with a non-zero code. For example, a model that calls `haversine` fails with `failed in db_runner: Internal: Catalog Error: Scalar Function with name haversine does not exist!`
+- Local execution only works if dbt can compile your model's SQL and translate it to DuckDB. Complex SQL and functions specific to your data platform might have no DuckDB equivalent so Snowflake's `AI_CLASSIFY` and `haversine` are two examples. So for example, a model that calls `haversine` fails with `failed in db_runner: Internal: Catalog Error: Scalar Function with name haversine does not exist!`.
+- A translation failure is a test failure. `local` doesn't fall back to your data platform, so the test fails and dbt exits with a non-zero code. 
 - Setting `compute: local` also promotes [static analysis](/reference/resource-configs/static-analysis) to `strict` for that test, because local execution needs strict analysis to translate your SQL. If you set `static_analysis: off` on the test, the test can't run locally and fails with `ExecutorFailed (dbt1401)`.
-
-:::caution Local results can differ from your data platform
-DuckDB and your data platform won't always agree on things like rounding or date handling, so a test can pass locally even when the logic would behave differently in production. Use `compute: local` for fast iteration during development, and set `compute: remote` on unit tests that assert business-critical logic so CI validates them against your data platform before they ship.
-:::
 
 </VersionBlock>
 
