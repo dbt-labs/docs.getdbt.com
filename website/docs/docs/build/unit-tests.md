@@ -9,8 +9,6 @@ keywords:
 availability: all_users
 ---
 
-<VersionCallout version="1.8" />
-
 Historically, dbt's test coverage was confined to [“data” tests](/docs/build/data-tests), assessing the quality of input data or resulting datasets' structure. However, these tests could only be executed _after_ building a model. 
 
 There is an additional type of test in dbt: unit tests. In software programming, unit tests validate small portions of your functional code, and they work much the same way here. Unit tests allow you to validate your SQL modeling logic on a small set of static inputs _before_ you materialize your full model in production. Unit tests enable test-driven development, benefiting developer efficiency and code reliability. 
@@ -377,6 +375,14 @@ unit_tests:
       rows:
         - {id: 1, first_name: emily}
 ```
+
+## Unit testing with pseudocolumns <Lifecycle status="beta" />
+
+:::note Only supported in BigQuery
+Pseudocolumn support in unit tests is only available for BigQuery projects &mdash; using a BigQuery connection in the <Constant name="dbt_platform" /> ["Latest" release track](/docs/dbt-versions/dbt-release-tracks), or `dbt-bigquery` v1.13 and later.
+:::
+
+Pseudocolumns are columns that you can query but don't appear in the information schema (for example, BigQuery's [`_FILE_NAME` column](https://docs.cloud.google.com/bigquery/docs/query-cloud-storage-data#query_the_file_name_pseudo-column) on external tables). You can include pseudocolumns directly in `dict` or `csv` fixture rows without using `format: sql`. Refer to [BigQuery configurations](/reference/resource-configs/bigquery-configs#pseudocolumns) for examples and details.
 
 
 ## Unit test exit codes
