@@ -263,7 +263,9 @@ What this means in practice:
 - Setting `static_analysis: strict` (or `baseline`) on those models has no effect as the downgrade to `off` overrides other settings.
 - Because `off` cascades downstream, every model downstream of a model using a custom materialization is also ineligible for static analysis. In a project where most models use a custom materialization, this can disable static analysis, and the [features that depend on it](#lsp-feature-comparison), for the majority of the DAG.
 
-If your project depends heavily on custom materializations and you want static analysis coverage, your options today are to convert those models to built-in materializations where practical, or to isolate custom materializations so fewer downstream models are affected.
+If your project depends heavily on custom materializations and you want static analysis coverage, these are your options today:
+* Convert those models to built-in materializations where practical
+* Isolate custom materializations so fewer downstream models are affected
 
 :::note
 
