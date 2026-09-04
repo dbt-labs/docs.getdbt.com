@@ -56,7 +56,12 @@ Yes. An account admin can turn AI off at any time in **Account settings**. Refer
 
 <Expandable alt_header="If AI is enabled by default, will I be charged automatically?">
 
-No. Enabling AI doesn't authorize paid usage by itself. <Constant name="wizard" /> usage draws from your included consumption pool or trial pool, and dbt-managed <Constant name="wizard" /> pauses once that pool is depleted. Going beyond it requires explicit purchase.
+No. Enabling AI doesn't authorize paid usage by itself. <Constant name="wizard" /> usage draws from your included consumption pool or trial pool.
+
+On Developer, Starter, and self-hosted plans, dbt-managed <Constant name="wizard" /> pauses once that pool is used up, and going beyond it requires explicit purchase.
+
+Enterprise and Enterprise+ accounts should add a committed spend amount to their contract to keep using <Constant name="wizard" />. You may lose access to <Constant name="wizard" /> without this commit in place. If you've set an optional monthly <Constant name="wizard" /> spend limit, that still applies and pauses usage once reached.
+
 
 If you keep AI disabled, you incur no AI charges after September 1, 2026.
 

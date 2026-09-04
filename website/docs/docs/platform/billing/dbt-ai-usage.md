@@ -53,8 +53,8 @@ Pools don't roll over. For eligibility, how to start a trial, and how to set up 
 
 Your spend limit caps how much dbt <Term id="managed" /> <Constant name="wizard" /> usage your account can consume in a billing period. You only pay for actual usage, up to the limit you choose.
 
-- If you deplete your consumption pool, usage pauses until you add paid usage or the next billing cycle starts.
-- If you reach your spend limit, usage pauses until an admin raises it or the next billing cycle starts.
+- If you use up your consumption pool on a Developer, Starter, or self-hosted plan, usage pauses until you add paid usage or the next billing cycle starts.
+- Enterprise and Enterprise+ accounts should add a committed spend amount to their contract to keep using <Constant name="wizard" />. You may lose access to <Constant name="wizard" /> without this commit in place. If you've set an optional monthly <Constant name="wizard" /> spend limit, that still applies and pauses usage once reached.
 - Limits are set separately for <Constant name="wizard" /> and [dbt State](/docs/deploy/dbt-state-about), but both draw from your account's overall usage-based spend.
 
 ### View Wizard usage
