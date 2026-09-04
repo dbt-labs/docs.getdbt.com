@@ -195,9 +195,10 @@ Completed successfully
 Done. PASS=2 WARN=0 ERROR=0 SKIP=0 TOTAL=2
 
 ```
-3. Check out the SQL dbt is running by either:
-   * **<Constant name="dbt" />:** checking the Details tab.
-   * **dbt Core:** checking the `target/compiled` directory
+3. To review the SQL dbt ran for each test:
+
+   * **<Constant name="dbt_platform" />:** After `dbt test` completes, open **Invocation history** using the `^` control next to the command bar at the bottom of the screen. In the run list, select your `dbt test` command. In the resource list, select the test by name (for example, `unique_order_order_id`). Enable **Debug logs** to load the full log text. The compiled SQL appears in the log output below the test name. If a test failed, refer to [Debug failed tests](/faqs/Runs/failed-tests).
+   * **<Constant name="core" />:** Open the `target/compiled` directory in your project folder. Each test has a compiled SQL file at a path such as `target/compiled/<project>/models/<yaml_file>/<test_name>.sql`. If dbt reported an error, the terminal output also includes a `compiled code at` line with the file path.
 
 
 **Unique test**
