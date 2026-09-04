@@ -58,7 +58,7 @@ Yes. An account admin can turn AI off at any time in **Account settings**. Refer
 
 No. Enabling AI doesn't authorize paid usage by itself. <Constant name="wizard" /> usage draws from your included consumption pool or trial pool.
 
-On Developer, Starter, and self-hosted plans, dbt-managed <Constant name="wizard" /> pauses once that pool is used up, and going beyond it requires explicit purchase. 
+On Developer, Starter, and self-hosted plans, dbt-managed <Constant name="wizard" /> pauses once that pool is used up, and going beyond it requires explicit purchase.
 
 Enterprise and Enterprise+ account should add a committed spend amount to their contract to keep using <Constant name="wizard" />. You may lose access to <Constant name="wizard" /> without this commit in place. If you've set an optional monthly <Constant name="wizard" /> spend limit, that still applies and pauses usage once reached.
 
