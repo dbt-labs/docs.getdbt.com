@@ -122,6 +122,7 @@ exports.versionedPages = [
   { page: "reference/telemetry-observability", firstVersion: "2.0" },
   { page: "docs/local/dbt-networking-requirements", firstVersion: "2.0" },
   { page: "docs/build/about-static-analysis", firstVersion: "2.0" },
+  { page: "reference/resource-configs/compute", firstVersion: "2.0" },
   { page: "reference/commands/lint", firstVersion: "2.0" },
   { page: "reference/commands/dbt-environment", firstVersion: "2.0" },
   { page: "reference/commands/invocation", firstVersion: "2.0" },

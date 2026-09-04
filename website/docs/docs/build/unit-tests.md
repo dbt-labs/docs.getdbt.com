@@ -58,6 +58,70 @@ To run only unit tests on demand, use the `test_type` selector — this works ac
 dbt test --select "test_type:unit"
 ```
 
+<VersionBlock firstVersion="2.0">
+
+## Run unit tests locally <Lifecycle status="beta" />
+
+When you're working through tricky SQL, you want to know right away whether your logic works. By default, each unit test sends a query to your data platform and waits for the result. This can slow down testing and use warehouse compute.
+
+Because unit tests use static fixtures instead of real data, they don’t need to necessarily run on your data platform. Use the [`compute: local` config](/reference/resource-configs/compute) to run them locally with DuckDB for faster feedback _without_ the warehouse compute cost.
+
+That gives you:
+
+- A test loop that keeps up with you. Change your SQL, rerun the test, and repeat without waiting on a warehouse queue.
+- Room to test as you go, so you catch broken logic while you're still writing it instead of finding it in CI (or worse, after it reaches production)
+- Your data platform's compute left for building models.
+
+You can configure it on a single unit test:
+
+<File name='models/schema.yml'>
+
+```yaml
+unit_tests:
+  - name: test_is_valid_email_address
+    model: dim_customers
+    config:
+      compute: local
+```
+
+</File>
+
+Or on every unit test in your project:
+
+<File name='dbt_project.yml'>
+
+```yaml
+unit_tests:
+  my_project:
+    +compute: local
+```
+
+</File>
+
+[`compute`](/reference/resource-configs/compute) accepts two values:
+
+<SimpleTable>
+
+| Value | What it does |
+|-------|--------------|
+| `remote` | Sends the test to your data platform to run, using warehouse compute like any other query. This is the default, so you only need to set it explicitly to opt a test out of a project-level `+compute: local`. |
+| `local` | Runs the test with DuckDB, wherever dbt itself is running. Nothing is sent to your data platform, so the test returns quickly and uses no warehouse compute. |
+
+</SimpleTable>
+
+You might also see `sidecar` in error messages but it means the same thing as `local`.
+
+### What to know before you use it
+
+- Local execution is available for Snowflake and BigQuery, and only for unit tests. 
+- To translate your SQL, dbt fetches the schemas of your model's direct upstream models from your data platform the first time you run the test, then caches them. Later runs reuse the cache, so they don't re-fetch.
+- Unit tests need the upstream models to already exist in your data platform. If they don't, the tests fails with an error about fetching the upstream relation schema.
+- Local execution only works if dbt can compile your model's SQL and translate it to DuckDB. Complex SQL and functions specific to your data platform might have no DuckDB equivalent so Snowflake's `AI_CLASSIFY` and `haversine` are two examples. So for example, a model that calls `haversine` fails with `failed in db_runner: Internal: Catalog Error: Scalar Function with name haversine does not exist!`.
+- A translation failure is a test failure. `local` doesn't fall back to your data platform, so the test fails and dbt exits with a non-zero code. 
+- Setting `compute: local` also promotes [static analysis](/reference/resource-configs/static-analysis) to `strict` for that test, because local execution needs strict analysis to translate your SQL. If you set `static_analysis: off` on the test, the test can't run locally and fails with `ExecutorFailed (dbt1401)`.
+
+</VersionBlock>
+
 ## Unit testing a model
 
 This example creates a new `dim_customers` model with a field `is_valid_email_address` that calculates whether or not the customer’s email is valid: 
