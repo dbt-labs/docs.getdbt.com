@@ -12,7 +12,7 @@ Every new account gets free {props.product} usage credits to start. What you get
 - On Developer and Starter plans, the trial is opt-in, so it won't start automatically. It ends when you use up the $100 in credits or after 30 days, whichever comes first, and unused credits don't carry over.
 - Legacy Enterprise plans get the same {props.product} access and monthly usage credits as current Enterprise. Only legacy Team has no access.
 - Enterprise and Enterprise+ usage credits are granted automatically &mdash; there's no trial to start and no credit card required. Credits don't roll over or get prorated, and if you downgrade out of Enterprise or Enterprise+, any unused credits are removed at the plan change.
-- Enterprise and Enterprise+ account should add a committed spend amount to their contract to keep using <Constant name="wizard" />. You may lose access to <Constant name="wizard" /> without this commit in place. If you've set an optional monthly <Constant name="wizard" /> spend limit, that still applies and pauses usage once reached.
+- Enterprise and Enterprise+ accounts should add a committed spend amount to their contract to keep using <Constant name="wizard" />. You may lose access to <Constant name="wizard" /> without this commit in place. If you've set an optional monthly <Constant name="wizard" /> spend limit, that still applies and pauses usage once reached.
 
 :::info Running {props.product} from the CLI against a self-hosted dbt project?
 Run `dbt login` (or `wizard login`) to get the same 30-day trial. The command creates your free dbt account and provisions the trial together, and that account is where you manage usage and spend limits. 
