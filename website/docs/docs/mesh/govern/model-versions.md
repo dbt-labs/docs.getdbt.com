@@ -42,7 +42,7 @@ Instead, for mature models at larger organizations, powering queries inside & ou
 
 During that migration window, anywhere that model is being used downstream, it can continue to be referenced at a specific version.
 
-dbt Core 1.6 introduced first-class support for **deprecating models** by specifying a [`deprecation_date`](/reference/resource-properties/deprecation_date). Taken together, model versions and deprecation offer a pathway for model producers to _sunset_ old models, and consumers the time to _migrate_ across breaking changes. It's a way of managing change across an organization: develop a new version, bump the latest, slate the old version for deprecation, update downstream references, and then remove the old version.
+<Constant name="core" /> 1.6 introduced first-class support for **deprecating models** by specifying a [`deprecation_date`](/reference/resource-properties/deprecation_date). Taken together, model versions and deprecation offer a pathway for model producers to _sunset_ old models, and consumers the time to _migrate_ across breaking changes. It's a way of managing change across an organization: develop a new version, bump the latest, slate the old version for deprecation, update downstream references, and then remove the old version.
 
 There is a real trade-off that exists here—the cost to frequently migrate downstream code, and the cost (and clutter) of materializing multiple versions of a model in the data warehouse. Model versions do not make that problem go away, but by setting a deprecation date, and communicating a clear window for consumers to gracefully migrate off old versions, they put a known boundary on the cost of that migration.
 

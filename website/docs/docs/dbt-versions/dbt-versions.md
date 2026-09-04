@@ -52,7 +52,7 @@ dbt Fusion 2.0.0-preview.126
 - [<Constant name="fusion"/> releases](/docs/dbt/dbt-releases): View current versions and release history.
 - [Get started with <Constant name="fusion"/>](/docs/dbt/get-started-dbt): Learn about <Constant name="fusion" /> features and migration.
 
-## dbt Core versioning
+## <Constant name="core" /> versioning
 
 The <Constant name="core"/> engine uses semantic versioning for the 1.x release series. To install or update <Constant name="core"/>, see [Install dbt](/docs/local/install-dbt?version=1).
 
@@ -60,7 +60,7 @@ The <Constant name="core"/> engine uses semantic versioning for the 1.x release 
 
 <Snippet path="core-versions-table" />
 
-### How dbt Core uses semantic versioning
+### How <Constant name="core" /> uses semantic versioning
 
 dbt follows [semantic versioning](https://semver.org/):
 
@@ -111,7 +111,7 @@ Refer to [Supported data platforms](/docs/supported-data-platforms) for the full
 
 :::info
 
-On <Constant name="legacy_deprecation_date" />, dbt Core versions v1.3-v1.7 will be deprecated and removed from availability in <Constant name="dbt_platform" />. Upgrade any environments still on these versions to a supported version or a [release track](/docs/dbt-versions/dbt-release-tracks) before then.
+On <Constant name="legacy_deprecation_date" />, <Constant name="core" /> versions v1.3-v1.7 will be deprecated and removed from availability in <Constant name="dbt_platform" />. Upgrade any environments still on these versions to a supported version or a [release track](/docs/dbt-versions/dbt-release-tracks) before then.
 
 :::
 

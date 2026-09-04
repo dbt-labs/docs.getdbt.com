@@ -130,7 +130,7 @@ Every custom agent file must define:
 |-------|----------|-------------|
 | `name` | Yes | Agent name <Constant name="wizard"/> uses when spawning or referring to this agent. Must match the file name without `.toml`. For example, `name = "udf_helper"` must be in `udf_helper.toml`. |
 | `description` | Yes | Explains when to use the agent. <Constant name="wizard"/> reads this description to decide whether the agent fits a task. |
-| `developer_instructions` | Yes | Core instructions that define the agent's behavior. |
+| `developer_instructions` | Yes | <Constant name="core" /> instructions that define the agent's behavior. |
 | `nickname_candidates` | No | Display-only labels for spawned instances of this agent in the UI, such as `UDF helper` or `UDF queen`. The nickname does not identify the agent. |
 | `model` | No | Model this agent should use. Inherits from the parent session when omitted. |
 | `sandbox_mode` | No | Sandbox mode for this agent. Inherits from the parent session when omitted. |

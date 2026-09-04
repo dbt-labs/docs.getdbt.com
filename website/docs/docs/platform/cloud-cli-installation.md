@@ -51,7 +51,7 @@ You can install the <Constant name="platform_cli" /> via the command line by usi
 
 Before you begin, make sure you have [Homebrew installed](http://brew.sh/) in your code editor or command line terminal. Refer to the [FAQs](#faqs) if your operating system runs into path conflicts. 
 
-1. Verify that you don't already have dbt Core installed by running the following command:
+1. Verify that you don't already have <Constant name="core" /> installed by running the following command:
   
   ```bash
   which dbt
@@ -59,9 +59,9 @@ Before you begin, make sure you have [Homebrew installed](http://brew.sh/) in yo
   
   If the output is `dbt not found`, then that confirms you don't have it installed.
 
-:::tip Run `pip uninstall dbt` to uninstall dbt Core
+:::tip Run `pip uninstall dbt` to uninstall <Constant name="core" />
 
-If you've installed dbt Core globally in some other way, uninstall it first before proceeding:
+If you've installed <Constant name="core" /> globally in some other way, uninstall it first before proceeding:
 
 ```bash
 pip uninstall dbt
@@ -215,7 +215,7 @@ For data practitioners working with a self-hosted installation, this means AI as
 
 <DetailsToggle alt_header="What's the difference between the dbt platform CLI and dbt Core?">
 
-The <Constant name="platform_cli" /> and <a href="https://github.com/dbt-labs/dbt-core">dbt Core</a>, an open-source project, are both command line tools that enable you to run dbt commands. 
+The <Constant name="platform_cli" /> and <a href="https://github.com/dbt-labs/dbt-core"><Constant name="core" /></a>, an open-source project, are both command line tools that enable you to run dbt commands. 
 
 The key distinction is that the <Constant name="platform_cli" /> is tailored for the <Constant name="dbt_platform" />'s infrastructure and integrates with all its <a href="https://docs.getdbt.com/docs/platform/about-platform/dbt-platform-features">features</a>.
 
@@ -249,10 +249,10 @@ To create an alias for the <Constant name="platform_cli" />: <br />
 
 4. Test and use the alias to run commands:<br />
    - To run the <Constant name="platform_cli" />, use the <code>dbt-cli</code> command: <code>dbt-cli command_name</code>. Replace 'command_name' with the specific dbt command you want to execute.<br />
-   - To run dbt Core, use the <code>dbt</code> command: <code>dbt command_name</code>. Replace 'command_name' with the specific dbt command you want to execute.<br />
+   - To run <Constant name="core" />, use the <code>dbt</code> command: <code>dbt command_name</code>. Replace 'command_name' with the specific dbt command you want to execute.<br />
 
 
-You can then use the <code>dbt-cli</code> command to invoke the <Constant name="platform_cli" /> while you keep dbt Core installed natively.
+You can then use the <code>dbt-cli</code> command to invoke the <Constant name="platform_cli" /> while you keep <Constant name="core" /> installed natively.
 
 </DetailsToggle>
 
