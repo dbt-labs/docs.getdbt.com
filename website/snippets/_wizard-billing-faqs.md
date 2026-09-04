@@ -95,7 +95,7 @@ These included monthly credits can only be spent on <Constant name="wizard" />. 
 
 </Expandable>
 
-<Expandable alt_header="What happens when your account depletes its monthly usage credits limit?">
+<Expandable alt_header="What happens when your account uses up its monthly usage credits?">
 
 Enterprise and Enterprise+ account should add a committed spend amount to their contract to keep using <Constant name="wizard" />. You may lose access to <Constant name="wizard" /> without this commit in place. If you've set an optional monthly <Constant name="wizard" /> spend limit, that still applies and pauses usage once reached.
 
