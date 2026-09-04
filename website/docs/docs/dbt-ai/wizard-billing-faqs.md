@@ -60,7 +60,7 @@ No. Enabling AI doesn't authorize paid usage by itself. <Constant name="wizard" 
 
 On Developer, Starter, and self-hosted plans, dbt-managed <Constant name="wizard" /> pauses once that pool is used up, and going beyond it requires explicit purchase.
 
-Enterprise and Enterprise+ account should add a committed spend amount to their contract to keep using <Constant name="wizard" />. You may lose access to <Constant name="wizard" /> without this commit in place. If you've set an optional monthly <Constant name="wizard" /> spend limit, that still applies and pauses usage once reached.
+Enterprise and Enterprise+ accounts should add a committed spend amount to their contract to keep using <Constant name="wizard" />. You may lose access to <Constant name="wizard" /> without this commit in place. If you've set an optional monthly <Constant name="wizard" /> spend limit, that still applies and pauses usage once reached.
 
 
 If you keep AI disabled, you incur no AI charges after September 1, 2026.
