@@ -165,11 +165,11 @@ Why checks work this way:
 - You may want to limit which resources are checked. This lets you incrementally introduce checks in an existing project. In development, run `dbt build --select <the part of your DAG you're working on>` to check only those resources. In CI, your checks run only against modified resources.
 - When developing a new check, you can run one check at a time: `dbt check name_of_check`, or `dbt check name_of_check --select <resources to check>` to run it against a specific subset. You can also preview any `info_schema` query directly: `dbt show --inline "select * from {{ info_schema('...') }}"`.
 
-`state:modified` behaves like any other selector. If it produces an empty selection, checks are `skipped` with exit code `0`.
+`state:modified` behaves like any other selector. If it produces an empty selection, checks are `Skipped` and dbt emits a `NoNodesForSelectionCriteria` warning naming the selector:
 
-:::note
-`state:modified.configs` is not fully supported for checks. Changes to a check's `config` block may not be detected.
-:::
+```shell
+[warning] [NoNodesForSelectionCriteria (dbt1092)]: The selection criterion 'state:modified' does not match any enabled nodes
+```
 
 ### How `selection_filter_on` works
 
@@ -185,13 +185,13 @@ Each check produces one of the following statuses:
 
 | Status | When | Fails the command? | Error code |
 |--------|------|--------------------|------------|
-| `pass` | Zero rows returned | No | — |
-| `fail` | One or more rows returned, `severity: error` | Yes | `dbt1650` |
-| `warn` | One or more rows returned, `severity: warn` | No (`--warn-error` or `warn_error_options` can promote it) | `dbt1651` |
-| `skipped` | Selector matched nothing the check can report on | No | `dbt1652` |
-| `error` | Check could not be evaluated (bad SQL, or `selection_filter_on` names a missing column) | Yes, even if `severity` is `warn` | `dbt1653` |
+| `Passed` | Zero rows returned | No | — |
+| `Failed` | One or more rows returned, `severity: error` | Yes | `dbt1650` |
+| `Warned` | One or more rows returned, `severity: warn` | No (`--warn-error` or `warn_error_options` can promote it) | `dbt1651` |
+| `Skipped` | Selector matched nothing the check can report on | No | `dbt1652` |
+| `Error` | Check could not be evaluated (bad SQL, or `selection_filter_on` names a missing column) | Yes, even if `severity` is `warn` | `dbt1653` |
 
-A failing check prints a short preview of the result rows. Each check result is recorded in `run_results.json` as `check.<project>.<name>`. When a `dbt build` is blocked by a failing check, the models that did not run are recorded as `skipped` with the reason `skipped because a parse-time check failed`.
+A failing check prints a short preview of the result rows. Each check result is recorded in `run_results.json` as `check.<project>.<name>`. When a `dbt build` is blocked by a failing check, the models that did not run are recorded as `Skipped` with the reason `skipped because a parse-time check failed`.
 
 ## Retry
 
