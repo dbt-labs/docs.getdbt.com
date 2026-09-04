@@ -1749,6 +1749,7 @@ const sidebarSettings = {
         "reference/programmatic-invocations",
       ],
     },
+    "reference/info-schema",
     {
       type: "category",
       label: "Jinja reference",
