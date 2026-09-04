@@ -62,7 +62,9 @@ dbt test --select "test_type:unit"
 
 ## Run unit tests locally <Lifecycle status="beta" />
 
-Unit tests run against your data platform by default, which means every run costs warehouse compute — even though the inputs are a handful of static rows. Set `compute: local` and dbt runs the test with DuckDB instead, so the test doesn't touch your data platform at all.
+Unit tests check your SQL logic against a small set of static inputs that you define yourself, so they don't need your data platform to run. Set `compute: local` and dbt runs the test with DuckDB instead of sending it to your data platform.
+
+This is built for the inner development loop. You get feedback without a round trip to your data platform, so it's practical to run unit tests as often as you like while you iterate, and your data platform's compute stays focused on building models.
 
 Set it on a single unit test:
 
@@ -95,7 +97,7 @@ unit_tests:
 | Value | What it does |
 |-------|--------------|
 | `remote` | Runs the test against your data platform. This is the default and matches previous behavior. |
-| `local` | Runs the test with DuckDB instead of your data platform. |
+| `local` | Runs the test with DuckDB, wherever dbt itself is running. |
 
 You might also see `sidecar` in error messages — it means the same thing as `local`.
 
@@ -110,7 +112,7 @@ You might also see `sidecar` in error messages — it means the same thing as `l
 - The run output doesn't say which mode a test used, so a test with no `compute` set runs remotely without telling you.
 
 :::caution Local results can differ from your data platform
-DuckDB and your data platform won't always agree on things like rounding or date handling, so a test can pass locally even when the logic would misbehave in production. For unit tests that assert business-critical logic, set `compute: remote` so CI validates them against the real engine.
+DuckDB and your data platform won't always agree on things like rounding or date handling, so a test can pass locally even when the logic would behave differently in production. Use `compute: local` for fast iteration during development, and set `compute: remote` on unit tests that assert business-critical logic so CI validates them against your data platform before they ship.
 :::
 
 </VersionBlock>
