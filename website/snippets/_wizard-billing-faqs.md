@@ -14,7 +14,7 @@ Refer to [Model Provider Rate table](https://www.getdbt.com/legal/dbt-wizard-tok
 
 The <Constant name="wizard"/> consumption pool is the usage balance available when using dbt-<Term id="managed"/> <Term id="inference"/> for <Constant name="wizard"/> &mdash; this includes Developer and Starter plan trial Wizard usage credits and the monthly Enterprise/Enterprise+ included usage credits.
 
-As you use <Constant name="wizard" />, your token usage will automatically convert into a dollar amount and deducted from your active usage credit. Once your usage credit is used up, additional usage draws from a purchased consumption pool, if one exists.
+As you use <Constant name="wizard" />, your token usage will automatically convert into a dollar amount and is deducted from your active usage credit. Once your usage credit is used up, additional usage draws from a purchased consumption pool, if one exists.
 
 What happens next depends on your plan:
 
