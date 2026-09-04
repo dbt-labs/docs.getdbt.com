@@ -28,7 +28,7 @@ Release notes are grouped by date for single-tenant environments.
 
 ### APIs, Identity, and Administration
 
-- **Analyst Read permission set available to all accounts**: The [Analyst Read](/docs/platform/manage-access/enterprise-permissions#analyst-read) permission set is now available to all accounts without requiring a feature flag. You can assign it to groups so read-only users get the access they need to browse catalog and configuration.
+- **Analyst Read permission set available to all accounts**: The [Analyst Read](/docs/platform/manage-access/enterprise-permissions#analyst-read) permission set is now available to all accounts without requiring a feature flag. You can assign it to groups so read-only users can view Catalog and project configuration such as connections, environments, and Semantic Layer settings.
 
 ### Semantic Layer
 
