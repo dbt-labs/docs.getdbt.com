@@ -256,7 +256,9 @@ Refer to [CLI options](/reference/global-configs/command-line-options) and [Conf
 If a model uses a [custom materialization](/guides/create-new-materializations), dbt v2 turns static analysis `off` for that model and for every model downstream of it. It does this automatically, without an error or a warning, no matter what you set `static_analysis` to.
 
 Because custom materialization is code you wrote, and it can change the finished table in ways v2 can't predict (for example, adding, renaming, or retyping columns). Rather than check your SQL against a schema that might be wrong, dbt skips analysis. It's the same reason dbt skips [introspective queries](#introspection-handling-in-baseline-mode), whose results also aren't known until the model runs.
-
+Two kinds of custom materializations trigger the downgrade to `off`:
+- **A name you invented**, such as `materialized='my_custom_load'`. Find these in your model configs.
+- **A name that's already built in**, such as your own macro named `materialization table, default`. These are harder to spot, because models that say `materialized='table'` look standard but run your code instead of dbt's.
 What this means in practice:
 
 - Models using a custom materialization don't fail because of static analysis.
