@@ -202,7 +202,7 @@ This means:
 - Setting `strict` or `baseline` on a model that uses a custom materialization has no effect &mdash; the automatic downgrade to `off` takes precedence. The model doesn't error because of static analysis.
 - Because `off` cascades, all models downstream of that model are also ineligible for static analysis, and features that depend on SQL comprehension (such as column-level lineage and type checking) aren't available for them.
 
-To keep static analysis coverage across most of your DAG, use built-in materializations where practical, or keep custom materializations near the leaves of your lineage.
+To keep static analysis coverage across most of your DAG, use built-in materializations where practical, or keep custom materializations near the leaves (or ends) of your lineage. For example, on models that nothing else depends on so fewer downstream models lose static analysis coverage.
 
 
 ## CLI override

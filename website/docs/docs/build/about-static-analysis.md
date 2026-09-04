@@ -241,7 +241,7 @@ Going downstream, a model can keep its parent's mode or relax it, but it can't t
 
 The strictness rule exists because `baseline` doesn't produce the full analyzed schema that `strict` needs from its upstream models. Without that information, a downstream model can't run strict-level type checking. For the complete reference, refer to [How static analysis modes cascade](/reference/resource-configs/static-analysis#how-static-analysis-modes-cascade).
 
-#### strict mode inheritance
+#### Strict mode inheritance
 
 Unlike `baseline` or `off`, `strict` mode doesn't propagate to downstream models. If you configure a model as `strict`, its downstream models won't inherit `strict` mode unless you set them explicitly. To make all models `strict`, you must set `+static_analysis: strict` on root models first, or use the project-wide config in the next section at the project level.
 
@@ -280,7 +280,7 @@ We're reevaluating this automatic downgrade. The intent is for `baseline` analys
 
 ### Identify a model's mode
 
-Because a model's effective mode depends on its parents (and on [custom materializations](#custom-materializations)), the mode you configured isn't always the mode in effect. The [dbt VS Code extension](/docs/about-dbt-extension) and the <Constant name="studio_ide" /> show CodeLens above your models even when static analysis is off, indicating which models have static analysis disabled and why.
+The mode you configure for a model isn't always the mode in effect. This is because a model's effective mode depends on its parents, and on [custom materializations](#custom-materializations). You can see when a model has static analysis off in the [dbt VS Code extension](/docs/about-dbt-extension) and the <Constant name="studio_ide" /> both of which show a CodeLens above your models, indicating which models have static analysis disabled and why.
 
 Keep in mind that `dbt ls --output json --output-keys config.static_analysis` reports the mode you _configured_ for each model, not the mode dbt v2 resolves after applying the cascading rules and automatic downgrades.
 
