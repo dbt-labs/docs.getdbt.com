@@ -19,9 +19,9 @@ import urllib.request
 from dataclasses import asdict, dataclass, field
 from pathlib import Path
 
-RELEASE_NOTE_TITLE_RE = re.compile(r"Release Note", re.I)
+RELEASE_NOTE_TITLE_RE = re.compile(r"^Release Note:", re.I)
 DOTTY_JSON_RE = re.compile(r"```json\s*(\{.*?\})\s*```", re.S)
-DECISION_RE = re.compile(r"\*\*Decision:\*\*\s*\[?([^\\]\n]+)\]?")
+DECISION_RE = re.compile(r"\*\*Decision:\*\*\s*\[?([^\]\n]+)\]?")
 STOPWORDS = {
     "a",
     "an",
