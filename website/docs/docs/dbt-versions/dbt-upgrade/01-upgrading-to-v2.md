@@ -91,7 +91,7 @@ For full usage, refer to [About dbt docs commands](/reference/commands/cmd-docs)
 
 v2 introduces the [`compute`](/reference/resource-configs/compute) config for unit tests. Set your unit tests with `compute: local` and dbt runs the test with DuckDB instead of sending it to your data platform, which takes the warehouse round trip out of your development loop.
 
-This is opt-in. Unless you set `compute: local`, your unit tests continue to run against your data platform. For details, refer to [Run unit tests locally](/docs/build/unit-tests#run-unit-tests-locally).
+This config is opt-in. For details, refer to [Run unit tests locally](/docs/build/unit-tests#run-unit-tests-locally).
 
 ### Changed functionality
 
