@@ -44,8 +44,8 @@ You can configure `compute` for [unit tests](/docs/build/unit-tests), either on 
 
 The following values are available for `compute`:
 
-- `remote` (default): Run the unit test against your data platform. This matches the behavior of previous versions.
-- `local`: Run the unit test with DuckDB, wherever dbt is running, instead of sending it to your data platform.
+- `remote` (default): Send the unit test to your data platform to run, using warehouse compute like any other query. Because this is the default, you only need to set it explicitly to opt a test out of a project-level `+compute: local`.
+- `local`: Run the unit test with DuckDB, wherever dbt is running. Nothing is sent to your data platform, so the test returns quickly and uses no warehouse compute.
 
 Local execution is available for Snowflake and BigQuery. You might also see `sidecar` in error messages, which means the same thing as `local`.
 

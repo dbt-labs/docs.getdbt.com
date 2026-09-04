@@ -64,7 +64,7 @@ dbt test --select "test_type:unit"
 
 When you're working through tricky SQL, you want to know right away whether your logic works. By default, each unit test sends a query to your data platform and waits for the result. This can slow down testing and use warehouse compute.
 
-Because unit tests use static fixtures instead of real data, they don’t need to necessarily run on your data platform. Use the `compute: local` config to run them locally with DuckDB for faster feedback _without_ the warehouse compute cost.
+Because unit tests use static fixtures instead of real data, they don’t need to necessarily run on your data platform. Use the [`compute: local` config](/reference/resource-configs/compute) to run them locally with DuckDB for faster feedback _without_ the warehouse compute cost.
 
 That gives you:
 
@@ -98,13 +98,13 @@ unit_tests:
 
 </File>
 
-`compute` accepts two values:
+[`compute`](/reference/resource-configs/compute) accepts two values:
 
 <SimpleTable>
 
 | Value | What it does |
 |-------|--------------|
-| `remote` | Sends the test to your data platform to run, using warehouse compute like any other query. This is the default, and how unit tests have always worked. |
+| `remote` | Sends the test to your data platform to run, using warehouse compute like any other query. This is the default, so you only need to set it explicitly to opt a test out of a project-level `+compute: local`. |
 | `local` | Runs the test with DuckDB, wherever dbt itself is running. Nothing is sent to your data platform, so the test returns quickly and uses no warehouse compute. |
 
 </SimpleTable>
