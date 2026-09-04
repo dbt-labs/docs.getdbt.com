@@ -253,7 +253,7 @@ Refer to [CLI options](/reference/global-configs/command-line-options) and [Conf
 
 ### Custom materializations
 
-dbt v2 skips static analysis for models built with a [custom materialization](/guides/create-new-materializations). This applies both to materializations with novel names and to custom materializations that shadow a built-in name (such as your own `table` or `incremental`).
+If a model uses a [custom materialization](/guides/create-new-materializations), dbt v2 turns static analysis `off` for that model and for every model downstream of it. It does this automatically, without an error or a warning, no matter what you set `static_analysis` to.
 
 v2 can't know whether a custom materialization changes the schema of the persisted model in the database (for example, adding, renaming, or retyping columns), so it treats these models the way it treats [introspective queries](#introspection-handling-in-baseline-mode) and automatically downgrades them to `static_analysis: off`.
 
