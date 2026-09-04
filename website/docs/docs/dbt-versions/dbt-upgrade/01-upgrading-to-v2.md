@@ -71,6 +71,42 @@ The most popular `dbt-labs` packages (`dbt_utils`, `audit_helper`, `dbt_external
 
 ## New and changed features and functionality
 
+### Model freshness and the `dbt freshness` command <Lifecycle status="beta" />
+
+v2 lets you declare freshness thresholds on models and sources, and adds a new [`dbt freshness`](/reference/commands/freshness) command to check both resources with freshness configured in a single invocation.
+
+#### Model freshness
+
+You can declare freshness thresholds directly on any model:
+
+```yaml
+models:
+  - name: stg_orders
+    config:
+      loaded_at_field: updated_at  # or loaded_at_query; required for view/external, optional for table/incremental
+      freshness:
+        warn_after: {count: 24, period: hour}
+        error_after: {count: 48, period: hour}
+```
+
+How dbt measures freshness depends on the materialization:
+
+- `table`, `incremental`, `materialized_view`, `dynamic_table`: Uses `loaded_at_field` or `loaded_at_query` if set, otherwise falls back to adapter metadata (such as the table's last-modified time).
+- `view`, `external`: `loaded_at_field` or `loaded_at_query` is required &mdash; there is no adapter metadata fallback.
+- `ephemeral`: Not supported. Setting freshness on an ephemeral model raises a parse error.
+
+For full configuration options and materialization rules, refer to [freshness](/reference/resource-configs/freshness).
+
+#### `dbt freshness` command
+
+[`dbt freshness`](/reference/commands/freshness) replaces `dbt source freshness` and checks both sources and models in a single invocation. `dbt source freshness` is still supported for backward compatibility and continues to produce `sources.json`.
+
+After every `dbt freshness` run, dbt writes `target/freshness.json` &mdash; a new artifact that covers both sources and models. Each entry includes a `resource_type` field (`"source"` or `"model"`) to distinguish them. For the full schema, refer to [`freshness.json`](/reference/artifacts/freshness-json).
+
+#### Cross-project freshness
+
+dbt stores a public model's freshness config in `publication.json` in a [dbt Mesh](/docs/mesh/about-mesh) project. Downstream projects can check upstream model freshness without running the upstream project.
+
 ### `dbt login`
 
 In <Constant name="dbt" /> v2, [`dbt login`](/reference/commands/login?version=2.0) enables browser-based authentication. It opens a browser window prompting you to sign in to your <Constant name="dbt_platform" /> account or create a free account.
@@ -173,11 +209,9 @@ Some historic CLI flags from v1 will no longer do anything in v2. If you pass th
 
 ##### CLI flags that need changes {#cli-flags-that-need-changes}
 
-The following deprecated flags require updates in your job definitions or scripts:
+The following deprecated flag requires updates in your job definitions or scripts:
 
 - **`--models` / `--model` / `-m`:** Use `--select` / `-s` instead (renamed in <Constant name="core" /> v0.21). dbt raises an error in v2 if you use the old flags. Do not pass `--models` as the value to `-s` (for example, `dbt run -s --models`); v1 treated that as a model name, but v2 requires a valid selector.
-
-- **`--resource-type` / `--exclude-resource-type`:** Use `--resource-types` / `--exclude-resource-types`. For more information, see [Resource type flags](/reference/global-configs/resource-type).
 
 <FusionPartialParseCliFlags />
 

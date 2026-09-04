@@ -4,69 +4,74 @@ description: "Read this guide to understand the `freshness` configuration in dbt
 id: "freshness"
 availability:
   engine: v2
-  surface: platform
-  access: paid_plan
-  minPlan: enterprise
+  access: free
 ---
-# freshness <Lifecycle status="private_preview" />
- 
+
+import SaoDeprecated from '/snippets/_sao-deprecated.md';
+import FreshnessFields from '/snippets/_freshness-fields.md';
+
+# freshness <Lifecycle status="beta" />
+
 <VersionBlock lastVersion="1.99">
 
-
-:::note <Constant name="fusion" /> only
-Freshness model configurations are only available for the dbt Fusion engine. Refer to [Source data freshness](/docs/build/sources#source-data-freshness) when using <Constant name="core" />.
+:::note dbt v2 only
+Freshness model configurations are only available for the dbt Fusion engine. Refer to [Source data freshness](/docs/build/sources#source-data-freshness) when using dbt v1.
 :::
 
 </VersionBlock>
+
+Use the `freshness` config on a model to:
+
+- **Set a freshness threshold**: You can set `warn_after` and `error_after` thresholds to declare how stale a model's data can get, then run [`dbt freshness`](/reference/commands/freshness) to check each model against its thresholds and report a warning or an error.
+- **Schedule builds** (`build_after`): You can control how often a model rebuilds when new upstream data is available. Available on dbt platform Enterprise tiers only. `build_after` is part of state-aware orchestration, which has been deprecated and is now dbt State.
+
+## Setting model freshness
 
 <Tabs>
 <TabItem value="project" label="Project YAML file">
 
 <File name="dbt_project.yml">
-  
-```yaml
+
+```yml
 models:
   [<resource-path>](/reference/resource-configs/resource-path):
+    [+](/reference/resource-configs/plus-prefix)loaded_at_field: <column_name>    # required for view/external; optional for table/incremental
+    [+](/reference/resource-configs/plus-prefix)loaded_at_query: <sql_expression> # alternative to loaded_at_field
     [+](/reference/resource-configs/plus-prefix)[freshness](/reference/resource-configs/freshness):
-      build_after: # default build frequency for models in this project, as long as they have new data. Available only on dbt platform Enterprise tiers. 
-        count: <positive_integer>
-        period: minute | hour | day
-        updates_on: any | all # optional config, default is `any`
+      warn_after: {count: <positive_integer>, period: minute | hour | day}
+      error_after: {count: <positive_integer>, period: minute | hour | day}
 ```
-  
+
 </File>
 </TabItem>
 
 <TabItem value="property" label="Properties YAML file">
 
 <File name="models/<filename>.yml">
-  
+
 ```yml
 models:
   - name: stg_orders
     config:
+      loaded_at_field: updated_at    # or loaded_at_query; required for view/external, optional for table/incremental
       freshness:
-        build_after:  # build this model no more often than every X amount of time, as long as it has new data. Available only on dbt platform Enterprise tiers. 
-          count: <positive_integer>
-          period: minute | hour | day
-          updates_on: any | all # optional config, default is `any`
+        warn_after: {count: 24, period: hour}
+        error_after: {count: 48, period: hour}
 ```
-  
+
 </File>
 </TabItem>
 
 <TabItem value="sql" label="SQL file config">
 <File name="models/<filename>.sql">
-  
+
 ```sql
 {{
     config(
+      loaded_at_field="updated_at",
       freshness={
-        "build_after": {     # build this model no more often than every X amount of time, as long as as it has new data
-        "count": <positive_integer>,
-        "period": "minute" | "hour" | "day",
-        "updates_on": "any" | "all" # optional config, default is `any`
-        } 
+        "warn_after": {"count": 24, "period": "hour"},
+        "error_after": {"count": 48, "period": "hour"}
       }
     )
 }}
@@ -76,13 +81,120 @@ models:
 </TabItem>
 </Tabs>
 
-## Definition
+### Definition
 
-import SaoDeprecated from '/snippets/_sao-deprecated.md';
+Model freshness lets you say how recent a model’s data should be. Run `dbt freshness`](/reference/commands/freshness) to check every model and source you've configured and find out which ones are falling behind.
+
+For public models in a [dbt Mesh](/docs/mesh/about-mesh), dbt stores the freshness config in `publication.json` so downstream projects can check upstream model freshness without running the upstream project.
+
+<FreshnessFields />
+
+### Materialization rules
+
+Not all materializations support freshness checks the same way. dbt validates your config at parse time and raises an error for invalid combinations.
+
+| Materialization | `loaded_at_field` / `loaded_at_query` | Behavior |
+|---|---|---|
+| `table`, `incremental`, `materialized_view`, `dynamic_table` | Optional | If unset, dbt falls back to adapter metadata (for example, the table’s last modified time). |
+| `view`, `external` | Required | Views don’t expose row-level metadata. Set `loaded_at_field` or `loaded_at_query` to measure freshness. An empty string (`loaded_at_field: ""`) is treated the same as unset and raises a parse error. |
+| `ephemeral` | Not supported | Nothing is materialized to measure. Raises a parse error. |
+
+If a freshness rule is incomplete (for example, `warn_after` with `count` but no `period`), `dbt freshness` returns an error. Other commands, such as `dbt run` and `dbt build`, report a warning but still succeed.
+
+### Examples
+
+#### Using `warn_after`
+
+You can set `warn_after` on its own if you want dbt to flag stale data without failing the run. For example, if you want a warning when no new orders come in after 24 hours:
+
+```yaml
+models:
+  - name: stg_orders
+    config:
+      materialized: table
+      freshness:
+        warn_after: {count: 24, period: hour}
+```
+
+#### Using `loaded_at_query`
+
+Use `loaded_at_query` when you need custom SQL to determine the most recent timestamp (for example, to check only fully loaded records):
+
+```yaml
+models:
+  - name: stg_events
+    config:
+      materialized: table
+      freshness:
+        warn_after: {count: 6, period: hour}
+        error_after: {count: 12, period: hour}
+      loaded_at_query: "select max(_loaded_at) from {{ this }} where _batch_complete = true"
+```
+
+---
+
+## Scheduling builds
 
 <SaoDeprecated />
 
-The model `freshness` config powers state-aware orchestration by rebuilding models _only when new source or upstream data is available_, helping you reduce unnecessary rebuilds and optimize spend. This is useful for models that depend on other models but only need to be updated periodically.
+<Tabs>
+<TabItem value="project" label="Project YAML file">
+
+<File name="dbt_project.yml">
+
+```yaml
+models:
+  [<resource-path>](/reference/resource-configs/resource-path):
+    [+](/reference/resource-configs/plus-prefix)[freshness](/reference/resource-configs/freshness):
+      [build_after](#scheduling-builds): # Available only on dbt platform Enterprise tiers
+        count: <positive_integer>
+        period: minute | hour | day
+        updates_on: any | all # optional, default is `any`
+```
+
+</File>
+</TabItem>
+
+<TabItem value="property" label="Properties YAML file">
+
+<File name="models/<filename>.yml">
+
+```yml
+models:
+  - name: stg_orders
+    config:
+      freshness:
+        [build_after](#scheduling-builds):  # Available only on dbt platform Enterprise tiers
+          count: <positive_integer>
+          period: minute | hour | day
+          updates_on: any | all # optional, default is `any`
+```
+
+</File>
+</TabItem>
+
+<TabItem value="sql" label="SQL file config">
+<File name="models/<filename>.sql">
+
+```sql
+{{
+    config(
+      freshness={
+        "build_after": {
+          "count": <positive_integer>,
+          "period": "minute" | "hour" | "day",
+          "updates_on": "any" | "all"
+        }
+      }
+    )
+}}
+```
+
+</File>
+</TabItem>
+</Tabs>
+
+The `build_after` config powers state-aware orchestration by rebuilding models _only when new source or upstream data is available_. This is useful for models that depend on other models but only need to be updated periodically.
 
 `freshness` works alongside dbt job orchestration by helping you determine when models should be rebuilt in a scheduled job. When a job runs, dbt makes sure models run only when needed, which helps avoid overbuilding models unnecessarily. dbt does this by:
 
@@ -124,8 +236,6 @@ The default for `updates_on` is `any`. This means that by default, the model wil
 ## Examples
 
 The following examples show how to configure models to run less frequently, more frequently, or on a custom frequency.
-
-You can configure the `freshness` YAML to skip models during the build process *unless* new data is available *and* a specified time interval has passed.
 
 ### Less frequent
 
@@ -181,8 +291,7 @@ models:
         build_after: 
           count: 1
           period: hour
-          updates_on: any  
-
+          updates_on: any
 ```
 
 When the state-aware orchestration job runs, dbt checks two things:
@@ -192,7 +301,7 @@ When the state-aware orchestration job runs, dbt checks two things:
 
 If _both_ conditions are met, dbt rebuilds the model. This also means if either model (`stg_wizards` _or_ `stg_worlds`) has new data, dbt rebuilds the model. If neither model has new data, nothing will be built.
 
-In this example, because `updates_on: any` is set in, even if only the `raw.wizards` source has new data and only `stg_wizards` was built in the last hour (while `stg_worlds` hasn’t been updated), dbt will still build the model because it only needs one source update and one eligible (stale) model.
+In this example, because `updates_on: any` is set, even if only the `raw.wizards` source has new data and only `stg_wizards` was built in the last hour (while `stg_worlds` hasn’t been updated), dbt will still build the model because it only needs one source update and one eligible (stale) model.
 
 ### Custom frequency
 
@@ -220,16 +329,16 @@ If you want to build every hour on just weekdays (Monday to Friday), you can use
 
 <TabItem value="sql" label="SQL file config">
 <File name="models/<filename>.sql">
-  
+
 ```sql
 {{
     config(
       freshness={
         "build_after": {
-        "count": 48 if modules.datetime.datetime.today().weekday() in (5, 6) else 1,
-        "period": "hour",
-        "updates_on": "any"
-        } 
+          "count": 48 if modules.datetime.datetime.today().weekday() in (5, 6) else 1,
+          "period": "hour",
+          "updates_on": "any"
+        }
       }
     )
 }}
