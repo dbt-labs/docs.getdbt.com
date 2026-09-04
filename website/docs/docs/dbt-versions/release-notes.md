@@ -22,6 +22,8 @@ For <Constant name="fusion_engine" /> updates, refer to the [dbt-fusion changelo
 
 ## September 2026
 
+- **Preview:** Explore mode is now available in the <Constant name="wizard" /> [home tab](/docs/platform/wizard-home#ask-questions-in-explore-mode) and [Studio IDE](/docs/dbt-ai/wizard-ide#ask-questions-in-explore-mode). Explore mode lets users ask questions of governed production data in plain language, with the SQL or metric definition behind every answer. Read-only users can now be [invited](/docs/platform/wizard-read-only-users) to ask questions about your data without a developer license in the Wizard home tab.
+- **New:** Jobs with [dbt State](/docs/deploy/dbt-state-about) enabled now include an **Explain** tab on the run details page. This tab shows why dbt State rebuilt, reused, or cloned each resource in the run, so you can audit State behavior and debug unexpected decisions directly on the <Constant name="dbt_platform" />. Refer to [Monitor dbt State activity](/docs/deploy/dbt-state-interface#explain-tab) for more information.
 - **Behavior change:** The following behavior change flags on the dbt platform **Latest** release track have reached maturity, switching their default values from `false` to `true`. To preserve the previous behavior for any of these flags, set them to `false` in your `dbt_project.yml`.
   - [`skip_nodes_if_on_run_start_fails`](/reference/global-configs/behavior-flags/skip_nodes_if_on_run_start_fails)
   - [`state_modified_compare_more_unrendered_values`](/reference/global-configs/behavior-flags/state_modified_compare_more_unrendered_values)

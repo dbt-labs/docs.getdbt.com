@@ -14,6 +14,7 @@ The following patterns commonly cause unexpected rebuilds:
 - [Views with `select *`](#views-with-select)
 - [Non-deterministic Jinja templating](#non-deterministic-jinja-templating)
 - [Models with external sources in BigQuery](#models-with-external-sources-in-bigquery)
+- [Models with custom materializations](#models-with-custom-materializations)
 
 ## Views with `select *` {#views-with-select}
 
@@ -84,6 +85,10 @@ On BigQuery, models that use external sources (such as Google Sheets) always reb
 :::tip
 To prevent external sources from always being considered stale, configure [`loaded_at_field`](/reference/resource-properties/freshness#loaded_at_field) or [`loaded_at_query`](/reference/resource-properties/freshness#loaded_at_query) in your source definition to point to a timestamp field. This lets dbt State query a timestamp field directly to determine freshness, rather than relying on warehouse metadata.
 :::
+
+## Models with custom materializations
+
+Models using custom materializations are always built and are never reused. Custom materializations may have side effects (for example, modifying table properties or writing to other schemas), and dbt State cannot safely determine whether skipping the run would produce the same result.
 
 ## How to diagnose
 
