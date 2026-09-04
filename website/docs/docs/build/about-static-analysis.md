@@ -239,7 +239,7 @@ Going downstream, a model can keep its parent's mode or relax it, but it can't t
 
 </SimpleTable>
 
-`baseline` doesn't produce the full analyzed schema that `strict` needs from its upstream models, so a downstream model can't run strict-level type checking without that information. For the complete reference, refer to [How static analysis modes cascade](/reference/resource-configs/static-analysis#how-static-analysis-modes-cascade).
+The strictness rule exists because `baseline` doesn't produce the full analyzed schema that `strict` needs from its upstream models. Without that information, a downstream model can't run strict-level type checking. For the complete reference, refer to [How static analysis modes cascade](/reference/resource-configs/static-analysis#how-static-analysis-modes-cascade).
 
 #### strict mode inheritance
 
