@@ -606,6 +606,7 @@ const sidebarSettings = {
             "docs/build/seeds",
             "docs/build/jinja-macros",
             "docs/build/udfs",
+            "docs/build/project-checks",
             "docs/build/sources",
             "docs/build/exposures",
             "docs/build/groups",
@@ -1235,6 +1236,7 @@ const sidebarSettings = {
         "reference/dbtignore",
         "reference/project-configs/analysis-paths",
         "reference/project-configs/asset-paths",
+        "reference/project-configs/check-paths",
         "reference/project-configs/clean-targets",
         "reference/project-configs/config-version",
         "reference/project-configs/dispatch-config",
@@ -1530,6 +1532,16 @@ const sidebarSettings = {
         },
         {
           type: "category",
+          label: "For checks",
+          link: { type: "doc", id: "reference/check-properties" },
+          items: [
+            "reference/check-properties",
+            "reference/check-configs",
+            "reference/resource-configs/selection-filter-on",
+          ],
+        },
+        {
+          type: "category",
           label: "For functions",
           link: { type: "doc", id: "reference/function-properties" },
           items: [
@@ -1564,6 +1576,7 @@ const sidebarSettings = {
           },
           items: [
             "reference/commands/build",
+            "reference/commands/check",
             "reference/commands/clean",
             "reference/commands/clone",
             "reference/commands/cmd-docs",
@@ -1748,7 +1761,15 @@ const sidebarSettings = {
         "reference/programmatic-invocations",
       ],
     },
-    "reference/info-schema",
+    {
+      type: "category",
+      label: "dbt Information Schema",
+      link: { type: "doc", id: "reference/info-schema" },
+      items: [
+        "reference/info-schema",
+        "reference/info-schema-views",
+      ],
+    },
     {
       type: "category",
       label: "Jinja reference",
