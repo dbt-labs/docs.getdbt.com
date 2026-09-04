@@ -362,7 +362,7 @@ For additional examples, check out [this GitHub Gist](https://gist.github.com/je
 
 ## Using `selector:` with `--select`
 
-Starting in dbt Core v1.12, dbt raises `SelectExcludeIgnoredWithSelectorWarning` when the legacy `--selector` flag is combined with `--select` or `--exclude`. Use the [`selector:` method](/reference/node-selection/methods#selector) directly with `--select` to reference a predefined selector alongside other selection criteria.
+Starting in <Constant name="core" /> v1.12, dbt raises `SelectExcludeIgnoredWithSelectorWarning` when the legacy `--selector` flag is combined with `--select` or `--exclude`. Use the [`selector:` method](/reference/node-selection/methods#selector) directly with `--select` to reference a predefined selector alongside other selection criteria.
 
 For example: 
 

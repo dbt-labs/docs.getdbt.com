@@ -14,7 +14,7 @@ import SnowflakeFunctionsTable from '/snippets/_functions-table-snowflake.md';
 The following table lists _every_ Snowflake built-in function and its typechecking support status. Use the table's search and filters to find specific functions.
 
 :::info Refreshed weekly
-This table is updated weekly from the [Snowflake SQL function reference](https://docs.snowflake.com/en/sql-reference/functions-all) and cross-referenced with <Constant name="fusion"/>'s support list. If you spot a discrepancy, we'd love for you to contribute and [open an issue](https://github.com/dbt-labs/dbt-core/issues) in the dbt Core repository!
+This table is updated weekly from the [Snowflake SQL function reference](https://docs.snowflake.com/en/sql-reference/functions-all) and cross-referenced with <Constant name="fusion"/>'s support list. If you spot a discrepancy, we'd love for you to contribute and [open an issue](https://github.com/dbt-labs/dbt-core/issues) in the <Constant name="core" /> repository!
 :::
 
 <SnowflakeFunctionsTable />

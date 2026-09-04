@@ -181,7 +181,7 @@ Find BigQuery-specific configuration information in the [BigQuery adapter refere
 
 <VersionBlock lastVersion="1.99">
 
-# Connect BigQuery to dbt Core
+# Connect BigQuery to <Constant name="core" />
 
 <ProductCard text="Fusion compatible" url="/docs/local/connect-data-platform/bigquery-setup?version=2" /> connection also available.
 

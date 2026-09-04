@@ -21,7 +21,7 @@ Hybrid projects is available in public preview to [<Constant name="dbt" /> Enter
 
 <Constant name="core" /> users can seamlessly upload [artifacts](/reference/artifacts/dbt-artifacts) like [run results.json](/reference/artifacts/run-results-json), [manifest.json](/reference/artifacts/manifest-json), [catalog.json](/reference/artifacts/catalog-json), [sources.json](/reference/artifacts/sources-json), and so on &mdash; into <Constant name="dbt" /> after executing a run in the <Constant name="core" /> command line interface (CLI), which helps:
 
-- Collaborate with <Constant name="dbt" /> + <Constant name="core" /> users by enabling them to visualize and perform [cross-project references](/docs/mesh/govern/project-dependencies#how-to-write-cross-project-ref) to dbt models that live in Core projects.
+- Collaborate with <Constant name="dbt" /> + <Constant name="core" /> users by enabling them to visualize and perform [cross-project references](/docs/mesh/govern/project-dependencies#how-to-write-cross-project-ref) to dbt models that live in <Constant name="core" /> projects.
 - (Coming soon) New users interested in the [<Constant name="canvas" />](/docs/platform/canvas) can build off of dbt models already created by a central data team in <Constant name="core" /> rather than having to start from scratch.
 - <Constant name="core" /> and <Constant name="dbt" /> users can navigate to [<Constant name="catalog" />](/docs/explore/explore-projects) and view their models and assets. To view <Constant name="catalog" />, you must have a [read-only seat](/docs/platform/manage-access/seats-and-users).
 

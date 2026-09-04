@@ -146,9 +146,9 @@ Common issues and resolutions:
 Upgrade to v2 to get <Constant name="fusion" /> &mdash; up to 30x faster performance, <Term id="lsp" /> features like autocomplete and inline errors, and more. [Upgrade to v2](/docs/dbt-versions/dbt-upgrade/upgrading-to-v2).
 :::
 
-## Install dbt Core v1.x CLI
+## Install <Constant name="core_v1" /> CLI
 
-dbt Core v1.x is the original open-source dbt engine. Install it with `pip`, Docker, or from source.
+<Constant name="core_v1" /> is the original open-source dbt engine. Install it with `pip`, Docker, or from source.
 
 <Expandable alt_header="Pip installation" >
 
@@ -228,7 +228,7 @@ python3 -m pip install --pre dbt-ADAPTER_NAME
 ### Prerequisites
 
 - [Docker](https://docs.docker.com/) installed
-- Familiarity with [adapters](/docs/supported-data-platforms) and [Core versioning](/docs/dbt-versions)
+- Familiarity with [adapters](/docs/supported-data-platforms) and [<Constant name="core" /> versioning](/docs/dbt-versions)
 
 ### Pull an image
 

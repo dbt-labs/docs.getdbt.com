@@ -30,12 +30,12 @@ _`Fusion Stable` is the default for all new <Constant name="fusion" />-powered p
 | **<Constant name="fusion" /> Fallback** | Monthly | The previous month's <Constant name="fusion" /> Extended release. Emergency rollback option for account admins. | Enterprise+ | `fusion-fallback` |
 
 
-### dbt Core release tracks
+### <Constant name="core" /> release tracks
 
 | Release track | Description | Plan availability | API value |
 | ------------- | ----------- | ----------------- | --------- |
 | **Latest** | Provides a continuous release of the latest functionality in the <Constant name="dbt_platform" /> .<br /><br />Includes early access to new features of the dbt framework before they're available in <Constant name="core" />. | All plans | `latest` |
-| **Compatible** | Provides a monthly release aligned with the most recent open source versions of dbt Core and adapters, plus functionality exclusively available in the dbt platform.<br /><br />See [Compatible track changelog](/docs/dbt-versions/compatible-track-changelog) for more information. |  Starter, Enterprise, Enterprise+ | `compatible` |
+| **Compatible** | Provides a monthly release aligned with the most recent open source versions of <Constant name="core" /> and adapters, plus functionality exclusively available in the dbt platform.<br /><br />See [Compatible track changelog](/docs/dbt-versions/compatible-track-changelog) for more information. |  Starter, Enterprise, Enterprise+ | `compatible` |
 | **Extended** | The previous month's **Compatible** release. | Enterprise, Enterprise+ | `extended` |
 | **Fallback** | The previous month's **Extended** release. | Enterprise+ | `fallback` |
 
@@ -145,17 +145,17 @@ dbt Labs has extended the critical support period of <Constant name="core" /> v1
 
 <Expandable alt_header="I'm using an older version of dbt in the dbt platform. What should I do? What happens if I do nothing?" >
 
-If you're running dbt version v1.6 or older, please know that your version of dbt Core has reached [end-of-life (EOL)](/docs/dbt-versions#eol-version-support) and is no longer supported. We strongly recommend that you update to a newer version as soon as reasonably possible.
+If you're running dbt version v1.6 or older, please know that your version of <Constant name="core" /> has reached [end-of-life (EOL)](/docs/dbt-versions#eol-version-support) and is no longer supported. We strongly recommend that you update to a newer version as soon as reasonably possible.
 
-dbt Labs has extended the "Critical Support" period of dbt Core v1.7 for dbt Enterprise-tier customers while we work through the migration with those customers to Release Tracks. In the meantime, this means that v1.7 will continue to be accessible in dbt for Enterprise customers, jobs and environments on v1.7 for those customers will not be automatically migrated to "Latest," and dbt Labs will continue to fix critical bugs and security issues.
+dbt Labs has extended the "Critical Support" period of <Constant name="core" /> v1.7 for dbt Enterprise-tier customers while we work through the migration with those customers to Release Tracks. In the meantime, this means that v1.7 will continue to be accessible in dbt for Enterprise customers, jobs and environments on v1.7 for those customers will not be automatically migrated to "Latest," and dbt Labs will continue to fix critical bugs and security issues.
 
-Starting in October 2024, dbt accounts on the Developer and Starter (formerly Teams) plans have been migrated to release tracks from older dbt Core versions. If your account was migrated to the **Latest** release track and you notice new failures in scheduled jobs, please [contact dbt support](/docs/dbt-support#dbt-cloud-support) to report the problem or request an extension.
+Starting in October 2024, dbt accounts on the Developer and Starter (formerly Teams) plans have been migrated to release tracks from older <Constant name="core" /> versions. If your account was migrated to the **Latest** release track and you notice new failures in scheduled jobs, please [contact dbt support](/docs/dbt-support#dbt-cloud-support) to report the problem or request an extension.
 
 </Expandable>
 
 <Expandable alt_header="What are other known issues when upgrading from older dbt Core versions?" >
 
-If you are upgrading from a very old unsupported version of dbt Core, you may run into one of these edge cases after the upgrade to a newer version:
+If you are upgrading from a very old unsupported version of <Constant name="core" />, you may run into one of these edge cases after the upgrade to a newer version:
 - [v1.1] Customers on BigQuery should be aware that <Constant name="dbt" /> sets a default [per-model timeout](/docs/local/connect-data-platform/bigquery-setup#job_execution_timeout_seconds) of 5 minutes. You may override this config in your connection details. Older versions of dbt (including v1.0) did not appropriately respect this timeout configuration.
 - [v1.3] Customers with non-dbt `.py` files defined within their project directories, such as `models/`. Since v1.3, dbt expects these files be valid [Python models](/docs/build/python-models). The customer needs to move these files out of their `models/` directory, or ignore them via `.dbtignore`
 - [v1.5] Customers who have `--m` in their job definitions, instead of `-m` or `--models`. This autocompletion (`--m[odels]` for `--models`) has never been officially documented or supported. It was an implicit behavior of argparse (CLI library used in dbt-core v1.0-1.4) that is not supported by `click` (the CLI library used in dbt-core since v1.5+).
@@ -192,13 +192,13 @@ If the package you’ve installed relies on _undocumented_ functionality of db
 
 No. Going forward, customers will access new functionality and ongoing support in dbt by receiving automatic updates. We believe this is the best way for us to offer a reliable, stable, and secure runtime for dbt, and for you as dbt users to be able to consistently take advantage of new features.
 
-In 2023 (and earlier), customers were expected to manage their own upgrades by selecting dbt Core versions, up to and including dbt Core v1.7, which was released in October 2023. (Way back in 2021, <Constant name="dbt" /> customers would pick specific _patch releases_ of dbt Core, such as upgrading from `v0.21.0` to `v0.21.1`. We’ve come a long way since then!)
+In 2023 (and earlier), customers were expected to manage their own upgrades by selecting <Constant name="core" /> versions, up to and including <Constant name="core" /> v1.7, which was released in October 2023. (Way back in 2021, <Constant name="dbt" /> customers would pick specific _patch releases_ of <Constant name="core" />, such as upgrading from `v0.21.0` to `v0.21.1`. We’ve come a long way since then!)
 
 In 2024, we've changed the way that new dbt functionality is made available for <Constant name="dbt" /> customers. Behavior or breaking changes are gated behind opt-in flags. Users don't need to spend valuable time managing their own upgrades. Currently, it is possible to receive continuous (daily) updates. We are adding other release cadence options for managed customers of <Constant name="dbt" /> by the end of the year.
 
 Opting into a release cadence with automated upgrades is required for accessing any new functionality that we've released in 2024, and going forward.
 
-We continue to release new minor versions of dbt Core (OSS). We most recently released dbt Core v1.9 on December 9, 2024. These releases always include a subset of the functionality that's already available to the dbt platform customers, and always after the functionality has been available in the dbt platform.
+We continue to release new minor versions of <Constant name="core" /> (OSS). We most recently released <Constant name="core" /> v1.9 on December 9, 2024. These releases always include a subset of the functionality that's already available to the dbt platform customers, and always after the functionality has been available in the dbt platform.
 
 </Expandable>
 
