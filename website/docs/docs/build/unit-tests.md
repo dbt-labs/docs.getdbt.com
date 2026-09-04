@@ -106,7 +106,7 @@ You might also see `sidecar` in error messages — it means the same thing as `l
 - Those upstream models must already exist in your data platform. If they don't, the test fails with an error about fetching the upstream relation schema.
 - Your SQL has to be translatable to DuckDB. Platform-specific functions with no DuckDB equivalent fail. For example, a model that calls Snowflake's `haversine` fails with `failed in db_runner: Internal: Catalog Error: Scalar Function with name haversine does not exist!`
 - `local` doesn't fall back to your data platform. If dbt can't compile or translate the SQL, the test fails and dbt exits with a non-zero code.
-- Setting `compute: local` also sets [static analysis](/reference/resource-configs/static-analysis) to `strict` for that test.
+- Setting `compute: local` also promotes [static analysis](/reference/resource-configs/static-analysis) to `strict` for that test, because local execution needs strict analysis to translate your SQL. If you set `static_analysis: off` on the test, the test can't run locally and fails with `ExecutorFailed (dbt1401)`.
 - The run output doesn't say which mode a test used, so a test with no `compute` set runs remotely without telling you.
 
 :::caution Local results can differ from your data platform
