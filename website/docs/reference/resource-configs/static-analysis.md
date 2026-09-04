@@ -180,16 +180,6 @@ The `on` and `unsafe` values are deprecated and will be removed in May 2026. Use
 
 :::
 
-<VersionBlock firstVersion="2.0">
-
-### Unit tests that run locally
-
-Setting [`compute: local`](/reference/resource-configs/compute) on a unit test promotes its `static_analysis` to `strict`, because local execution needs strict analysis to translate your SQL to DuckDB. This applies even if you set `baseline` on the test yourself.
-
-If you set `static_analysis: off` on a unit test that's configured to run locally, the test can't run and fails with `ExecutorFailed (dbt1401)`. Use `compute: remote` for that test instead.
-
-</VersionBlock>
-
 ### User-defined functions (UDFs) in `strict` mode
 
 When `static_analysis: strict` is in effect, the <Constant name="fusion_engine" /> parses `CREATE FUNCTION` statements from [`sql_header`](/reference/resource-configs/sql_header) and from [`on-run-start`](/reference/project-configs/on-run-start-on-run-end) project hooks, registers those UDFs in the compiler registry, and makes them available during strict static compilation. The `baseline` and `off` modes don't perform this UDF registration for static analysis.
@@ -250,7 +240,7 @@ The following examples show how to disable or configure `static_analysis` for di
 - [Configure static analysis for seeds](#configure-static-analysis-for-seeds)
 - [Configure static analysis for snapshots](#configure-static-analysis-for-snapshots)
 
-#### Enable strict analysis for all your models
+### Enable strict analysis for all your models
 
 The recommended way to get maximum SQL validation for your entire project is to set `strict` in the top-level `models` configuration in your `dbt_project.yml`. This configuration applies strict analysis to every model in your project, so you don't need to configure each model individually:
 
@@ -274,7 +264,7 @@ You can set individual subdirectories or models to `baseline` or `off` where nee
 
 In this example, strict static analysis applies only to Jaffle Shop models. Installed packages keep the default `baseline` setting unless you explicitly configure them.
 
-#### Disable static analysis for all models in a package
+### Disable static analysis for all models in a package
 
 This example shows how to disable static analysis for all models in a package. The [`+` prefix](/reference/resource-configs/plus-prefix) applies the config to all models in the package.
 
@@ -294,7 +284,7 @@ models:
 
 </File>
 
-#### Disable static analysis in YAML for a single model
+### Disable static analysis in YAML for a single model
 
 This example shows how to disable static analysis for a single model in YAML.
 
@@ -309,7 +299,7 @@ models:
 
 </File>
 
-#### Disable static analysis in SQL for a model using a custom UDF
+### Disable static analysis in SQL for a model using a custom UDF
 
 This example shows how to disable static analysis for a model using a custom [user-defined function (UDF)](/docs/build/udfs) in a SQL file.
 
@@ -326,7 +316,7 @@ from {{ ref('my_model') }}
 
 </File>
 
-#### Configure static analysis for data tests
+### Configure static analysis for data tests
 
 This example shows how to set static analysis for all tests in a project using `dbt_project.yml`.
 
@@ -358,7 +348,45 @@ models:
 
 </File>
 
-#### Configure static analysis for seeds
+<VersionBlock firstVersion="2.0">
+
+### Configure static analysis for unit tests
+
+This example shows how to set static analysis for all unit tests in a project using `dbt_project.yml`.
+
+<File name='dbt_project.yml'>
+
+```yaml
+# dbt_project.yml
+unit_tests:
+  my_project:
+    +static_analysis: baseline
+```
+
+</File>
+
+To configure a single unit test in a properties file:
+
+<File name='models/filename.yml'>
+
+```yaml
+# models/filename.yml
+unit_tests:
+  - name: test_is_valid_email_address
+    model: dim_customers
+    config:
+      static_analysis: off
+```
+
+</File>
+
+Setting [`compute: local`](/reference/resource-configs/compute) on a unit test promotes its `static_analysis` to `strict`, because local execution needs strict analysis to translate your SQL to DuckDB. This applies even if you set `baseline` on the test yourself.
+
+If you set `static_analysis: off` on a unit test that's configured to run locally, the test can't run and fails with `ExecutorFailed (dbt1401)`. Use `compute: remote` for that test instead.
+
+</VersionBlock>
+
+### Configure static analysis for seeds
 
 This example shows how to set static analysis for all seeds in a project.
 
@@ -387,7 +415,7 @@ seeds:
 
 </File>
 
-#### Configure static analysis for snapshots
+### Configure static analysis for snapshots
 
 This example shows how to set static analysis for all snapshots in a project.
 
