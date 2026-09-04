@@ -30,8 +30,8 @@ import ConfigGeneral from '/snippets/_config-description-general.md';
 ```yml
 functions:
   [<resource-path>](/reference/resource-configs/resource-path):
-    # Function-specific configs are defined in the properties YAML file
-    # See functions/schema.yml examples below
+    # Function-specific configs are defined in a properties YAML file
+    # Refer to the properties YAML file examples below
 
 ```
 
@@ -42,7 +42,7 @@ functions:
 
 <TabItem value="property-yaml">
 
-<File name='functions/schema.yml'>
+<File name='functions/properties.yml'>
 
 ```yaml
 
@@ -111,7 +111,7 @@ functions:
 
 <TabItem value="property-yaml">
 
-<File name='functions/schema.yml'>
+<File name='functions/properties.yml'>
 
 ```yaml
 
@@ -134,7 +134,10 @@ functions:
 
 
 ## Configuring functions
-Functions are configured in YAML files, either in `dbt_project.yml` or within an individual function's YAML properties file. The function body is defined in a SQL file in the `functions/` directory.
+
+Functions are configured in YAML files, either in `dbt_project.yml` or within an individual function's properties YAML file. The function body is defined in a SQL, Python, or JavaScript file in the `functions/` directory.
+
+In a properties YAML file (for example, `functions/properties.yml`), declare function configurations in each function's `config` block under `functions:`. If you define multiple functions, repeat the relevant `config` values for each function, because you can't declare a shared `config` block at the `functions:` level. If multiple functions share the same `config` values, you can use YAML anchors and aliases to reduce duplication.
 
 Function configurations, like model configurations, are applied hierarchically. For more info, refer to [config inheritance](/reference/define-configs#config-inheritance). 
 
@@ -156,7 +159,7 @@ functions:
 
 
 #### Apply the `schema` configuration to all functions in your project
-To apply a configuration to all functions in your project only (i.e. _excluding_ any functions in installed packages), provide your [project name](/reference/project-configs/name.md) as part of the resource path.
+To apply a configuration to all functions in your project only (that is, _excluding_ any functions in installed packages), provide your [project name](/reference/project-configs/name.md) as part of the resource path.
 
 For a project named `jaffle_shop`:
 
@@ -175,9 +178,9 @@ Similarly, you can use the name of an installed package to configure functions i
 
 #### Apply the `schema` configuration to one function only
 
-To apply a configuration to one function only in a properties file, specify the configuration in the function's `config` block:
+To apply a configuration to one function only in a properties YAML file, specify the configuration in the function's `config` block:
 
-<File name='functions/schema.yml'>
+<File name='functions/is_positive_int.yml'>
 
 ```yml
 
@@ -228,7 +231,7 @@ functions:
 
 </File>
 
-<File name='functions/schema.yml'>
+<File name='functions/is_positive_int.yml'>
 
 ```yml
 
