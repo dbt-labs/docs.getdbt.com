@@ -1,5 +1,6 @@
 ---
 title: anchors
+description: "Use the anchors key to hold reusable YAML config fragments so they pass file validation."
 sidebar_label: "anchors"
 id: anchors
 ---

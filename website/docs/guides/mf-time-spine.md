@@ -31,7 +31,7 @@ Before you start, make sure you have:
 
 ## Add a time spine SQL model
 
-Let's get started by assuming you're creating a time spine from scratch. If you have a dbt project set up already and have your own time spine (like a `dim_date` type model), you can skip this step and go to [Use an existing dim_date model](/guides/mf-time-spine#using-an-existing-dim-date-model).
+Let's get started by assuming you're creating a time spine from scratch. If you have a dbt project set up already and have your own time spine (like a `dim_date` type model), you can skip this step and go to [Use an existing dim_date model](https://docs.getdbt.com/guides/mf-time-spine?step=3#using-an-existing-dim_date-model).
 
 The time spine is a dbt model that generates a series of dates (or timestamps) at a specific granularity. In this example, let's create a daily time spine &mdash; `time_spine_daily.sql`. 
 
@@ -258,7 +258,7 @@ For some extra practice, try one of the following exercises:
 
 ### Custom calendars
 
-To support custom calendars (like fiscal years, fiscal quarters, and so on), create an additional time spine and configure it in YAML. This feature is available in the <Constant name="dbt" />'s [Latest release track](/docs/dbt-versions/dbt-release-tracks) or [<Constant name="core" /> 1.9 and later](/docs/dbt-versions/core-upgrade/upgrading-to-v1.9).
+To support custom calendars (like fiscal years, fiscal quarters, and so on), create an additional time spine and configure it in YAML. This feature is available in the <Constant name="dbt" />'s [Latest release track](/docs/dbt-versions/dbt-release-tracks) or [<Constant name="core" /> 1.9 and later](/docs/dbt-versions/dbt-upgrade/upgrading-to-v1.9).
 
 1. Add a new SQL file named `fiscal_calendar.sql` with the following content (or use your own custom calendar and configure it in YAML):
     <File name='models/marts/fiscal_calendar.sql'>

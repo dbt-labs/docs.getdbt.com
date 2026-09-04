@@ -20,7 +20,6 @@ For self-hosted CLI only (with or without a <Constant name="dbt_platform"/> acco
 - A [<Constant name="dbt_platform"/> account](https://www.getdbt.com/signup)
 - For OAuth connections:
   - MCP OAuth is available for Starter, Enterprise, and Enterprise+ plans.
-  - An account admin has to enable AI features on your <Constant name="dbt_platform"/> account. Refer to [Enable AI features](/docs/platform/enable-dbt-ai) for more info.
 
 ## Step 1: Choose your auth method and configure
 

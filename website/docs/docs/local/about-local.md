@@ -36,7 +36,7 @@ For full installation instructions, including adapter-specific setup, refer to [
 <VersionBlock lastVersion="1.99">
 
 :::tip Ready for the current version?
-v2 is the current generation of dbt and the recommended choice for most users &mdash; it's faster, adds richer developer tooling, and is free to use with <Constant name="fusion" />. [Upgrade to v2](/docs/dbt-versions/core-upgrade/upgrading-to-v2).
+v2 is the current generation of dbt and the recommended choice for most users &mdash; it's faster, adds richer developer tooling, and is free to use with <Constant name="fusion" />. [Upgrade to v2](/docs/dbt-versions/dbt-upgrade/upgrading-to-v2).
 :::
 
 ## Install <Constant name="core_v1" />

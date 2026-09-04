@@ -184,16 +184,44 @@ If you ran a job in the <Constant name="dbt_platform" />, you can download the O
 
 Leverage DuckDB to better understand your telemetry data stored in Parquet files. 
 
-Find slowest nodes:
+Find slowest nodes by **processing cost** (not wall-clock lifetime at the connection gate):
+
 ```python
 import duckdb
 duckdb.sql("""
     SELECT
         attributes.unique_id,
-        (end_time_unix_nano - start_time_unix_nano) / 1e6 AS duration_ms
+        attributes.duration_ms,
+        attributes.idle_time_ms
     FROM 'telemetry.parquet'
     WHERE event_type LIKE '%NodeProcessed%'
-    ORDER BY duration_ms DESC
+      AND attributes.duration_ms IS NOT NULL
+    ORDER BY attributes.duration_ms DESC
+    LIMIT 10
+""").show()
+```
+
+:::note Choose the right timing metric
+
+Telemetry provides several ways to measure node performance:
+
+- **Processing time (`attributes.duration_ms`)** measures the time Fusion spent actively processing the node, including nested `NodeEvaluated` work. It excludes time spent waiting for upstream nodes or internal backpressure. Use this metric to identify the nodes that take the longest to process.
+- **Node lifetime (`end_time_unix_nano - start_time_unix_nano`)** measures the full time from the start to the end of the span, including time spent waiting at the connection-limit gate. In builds with saturated threads, this metric might surface nodes with the longest queue time rather than the most processing work.
+- **Idle time (`attributes.idle_time_ms`)** measures how long the node spent waiting instead of being actively processed, such as while waiting for an upstream node or available processing capacity. Use it to identify where resource constraints are causing delays.
+- **Warehouse execution time** is the sum of `QueryExecuted` span durations for each `unique_id`. It excludes Fusion-side work such as compilation and static analysis. Use this metric to compare telemetry with your warehouse query history.
+
+:::
+
+Find nodes with the highest warehouse time (optional):
+```python
+duckdb.sql("""
+    SELECT
+        attributes.unique_id,
+        SUM((end_time_unix_nano - start_time_unix_nano) / 1e6) AS warehouse_ms
+    FROM 'telemetry.parquet'
+    WHERE event_type LIKE '%QueryExecuted%'
+    GROUP BY attributes.unique_id
+    ORDER BY warehouse_ms DESC
     LIMIT 10
 """).show()
 ```

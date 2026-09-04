@@ -9,9 +9,7 @@ availability: all_users
 
 <Constant name="wizard" /> helps teams develop, troubleshoot, harden, and ship trusted dbt projects faster and with less risk.
 
-Built for governed data development in dbt, <Constant name="wizard" /> understands the full project, routes to the right dbt tools, and validates work with awareness of warehouse operations, including dev builds, compute costs, run time, and post-build inspection. Use <Constant name="wizard" /> to investigate failed runs, debug model issues, assess downstream impact, make changes, validate results, and ship trusted data work in one place.
-
-Unlike general coding agents, <Constant name="wizard" /> is aware of warehouse operations. It understands that validation can mean compiling code, building to a dev schema, considering compute and run time, and proposing what to inspect after the build completes.
+Built for governed data development in dbt, <Constant name="wizard" /> understands your project, routes to the right dbt tools, and validates work with awareness of warehouse operations. Use it to investigate failed runs, debug models, assess impact, make changes, and ship trusted data work in one place.
 
 Most of how <Constant name="wizard" /> works is the same in the [<Constant name="dbt_platform" />](/docs/platform/wizard-platform) and in the [terminal CLI](/docs/dbt-ai/wizard-cli). The following sections explain shared behavior first, then call out what differs in each environment.
 
@@ -87,7 +85,7 @@ Refer to the [Skills](/docs/dbt-ai/wizard-skills) page for more details.
 
 ## In the dbt platform
 
-Use <Constant name="wizard" /> in the [<Constant name="dbt_platform" />](/docs/platform/wizard-platform) from the home app or <Constant name="studio_ide" />. An admin must [enable <Constant name="wizard" />](/docs/platform/enable-dbt-ai) for your account first. 
+Use <Constant name="wizard" /> in the [<Constant name="dbt_platform" />](/docs/platform/wizard-platform) from the home app or <Constant name="studio_ide" />. 
 
 ### Approval and review
 

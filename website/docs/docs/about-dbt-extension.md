@@ -13,7 +13,7 @@ availability: local_all
 <VersionBlock lastVersion="1.99">
 
 :::tip About the dbt VS Code extension
-The dbt VS Code extension is available with v2 and brings editor features like autocomplete, inline errors, preview CTE, <Term id="lsp"/>, and more! [Upgrade to v2](/docs/dbt-versions/core-upgrade/upgrading-to-v2) to use it.
+The dbt VS Code extension is available with v2 and brings editor features like autocomplete, inline errors, preview CTE, <Term id="lsp"/>, and more! [Upgrade to v2](/docs/dbt-versions/dbt-upgrade/upgrading-to-v2) to use it.
 :::
 </VersionBlock>
 
@@ -30,7 +30,7 @@ The dbt VS Code extension works with <Constant name="fusion" />, the default fre
 
 :::tip Try out the Fusion quickstart guide
 
-Check out the [Fusion quickstart guide](/guides/fusion?step=1) to try the dbt VS Code extension in action.
+Check out the [Fusion quickstart guide](/guides/dbt?step=1) to try the dbt VS Code extension in action.
 
 :::
 
@@ -66,7 +66,7 @@ When you register or sign in for advanced features, authentication is handled by
 ### The dbt extension menu
 
 The dbt logo on the sidebar (or the **dbt Extension** text on the bottom tray) launches the main menu for the extension. This menu contains helpful information and actions you can take:
-- **Get started button:** Launches the [Fusion upgrade](/docs/upgrade-to-fusion-extension) workflow.
+- **Get started button:** Launches the [Fusion upgrade](/docs/upgrade-to-dbt-extension) workflow.
 - **Extension info:** Information about the extension, <Constant name="fusion" />, and your dbt project. Includes configuration options and actions.
 - **Help:** Quick links to support, bug submissions, and documentation.
 
@@ -82,7 +82,7 @@ The dbt extension caches important schema information from your data warehouse t
 
 ## Using the extension
 
-Your dbt environment must be using the <Constant name="fusion_engine" /> in order to use this extension. See [the Fusion documentation](/docs/fusion/about-fusion) for more on eligibility and upgrading.
+Your dbt environment must be using the <Constant name="fusion_engine" /> in order to use this extension. See [the Fusion documentation](/docs/introduction) for more on eligibility and upgrading.
 
 Once installed, the dbt extension automatically activates when you open any `.sql` or `.yml` file inside of a dbt project directory. 
 
@@ -153,7 +153,7 @@ We welcome feedback as we work to continuously improve the extension, and would 
 For more information regarding support and acceptable use of the dbt VS Code extension, refer to our [Acceptable Use Policy](https://www.getdbt.com/dbt-assets/vscode-plugin-aup).
 
 :::tip Developing locally as a <Constant name="dbt_platform"/> user?
-See the [Hybrid development with <Constant name="dbt_platform"/>  and <Constant name="fusion"/>](/guides/fusion-platform-local-workflow) guide for how to keep credentials, environment variables, and <Constant name="fusion"/> versions in sync between your local extension and <Constant name="dbt_platform"/>
+See the [Hybrid development with <Constant name="dbt_platform"/>  and <Constant name="fusion"/>](/guides/dbt-platform-local-workflow) guide for how to keep credentials, environment variables, and <Constant name="fusion"/> versions in sync between your local extension and <Constant name="dbt_platform"/>
 :::
 
 import AboutFusion from '/snippets/_about-fusion.md';

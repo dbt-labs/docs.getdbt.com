@@ -9,7 +9,7 @@ availability: all_users
 
 Begin your dbt journey by choosing how you want to develop:
 
-- [**<Constant name="dbt_platform" />** ](#the-dbt-platform) &mdash; Develop in your browser (<Constant name="studio_ide" /> or <Constant name="canvas" />) or use local tools (VS Code extension, <Constant name="platform_cli" />) that connect to your platform account. The platform provides hosted CI/CD, documentation, and more. Supports both the [<Constant name="fusion_engine" />](/docs/fusion/about-fusion) and [<Constant name="core" />](/docs/local/install-dbt) engines.
+- [**<Constant name="dbt_platform" />** ](#the-dbt-platform) &mdash; Develop in your browser (<Constant name="studio_ide" /> or <Constant name="canvas" />) or use local tools (VS Code extension, <Constant name="platform_cli" />) that connect to your platform account. The platform provides hosted CI/CD, documentation, and more. Supports both the [<Constant name="fusion_engine" />](/docs/introduction) and [<Constant name="core" />](/docs/local/install-dbt) engines.
 - [**Self-hosted only**](#self-hosted-dbt-installations) &mdash; Use local tools like the [dbt VS Code extension](/docs/about-dbt-extension) or [install dbt](/docs/local/install-dbt) locally, to develop and run dbt on your own infrastructure. You can use local tools with or without a <Constant name="dbt_platform" /> account.
 - **Local + <Constant name="dbt_platform" />** &mdash; Use the VS Code extension or <Constant name="platform_cli" /> with a <Constant name="dbt_platform" /> account to develop locally while leveraging platform features like CI/CD, documentation hosting, <Constant name="insights" />, <Constant name="canvas" />, and more.
 - [**<Constant name="wizard" />**](#dbt-wizard) &mdash; The AI agent for analytics engineering, available in the <Constant name="dbt_platform" /> and from your terminal. Grounded in your project's lineage, model health, and semantic definitions.
@@ -93,7 +93,7 @@ Develop with a self-hosted installation using the <Constant name="fusion_engine"
 <Card
     title="Self-hosted dbt v2 from a manual install"
     body="Learn how to install self-hosted v2 and set up a project."
-    link="/guides/fusion?step=2"
+    link="/guides/dbt?step=2"
     icon="dbt-bit"/>
 <Card
     title="Self-hosted dbt v1 from a manual install"
@@ -122,7 +122,7 @@ Develop with a self-hosted installation using the <Constant name="fusion_engine"
 
 <Card
     title="dbt Wizard from your terminal"
-    body="Install the dbt Wizard CLI to run the agent locally against any dbt project — with or without a dbt platform account. Requires an OpenAI API key (BYOK)."
+    body="Install the dbt Wizard CLI to run the agent locally against any dbt project — with or without a dbt platform plan. Start with a free trial using dbt managed AI, or bring your own provider key."
     link="/docs/dbt-ai/wizard-quickstart"
     icon="dbt-copilot"/>
 
