@@ -22,7 +22,7 @@ Freshness model configurations are only available for the dbt Fusion engine. Ref
 
 Use the `freshness` config on a model to:
 
-- **Set a freshness threshold**: You can set `warn_after` and `error_after` thresholds so `dbt freshness` reports whether a model’s data is stale.
+- **Set a freshness threshold**: You can set `warn_after` and `error_after` thresholds to declare how stale a model's data can get, then run [`dbt freshness`](/reference/commands/freshness) to check each model against its thresholds and report a warning or an error.
 - **Schedule builds** (`build_after`): You can control how often a model rebuilds when new upstream data is available. Available on dbt platform Enterprise tiers only. `build_after` is part of state-aware orchestration, which has been deprecated and is now dbt State.
 
 ## Setting model freshness
@@ -83,7 +83,7 @@ models:
 
 ### Definition
 
-Model freshness lets you declare how recent a model’s data must be. Run [`dbt freshness`](/reference/commands/freshness) to check all sources and models with freshness configured in a single invocation.
+Model freshness lets you say how recent a model’s data should be. Run `dbt freshness`](/reference/commands/freshness) to check every model and source you've configured and find out which ones are falling behind.
 
 For public models in a [dbt Mesh](/docs/mesh/about-mesh), dbt stores the freshness config in `publication.json` so downstream projects can check upstream model freshness without running the upstream project.
 
@@ -105,7 +105,7 @@ If a freshness rule is incomplete (for example, `warn_after` with `count` but no
 
 #### Using `warn_after`
 
-You can set `warn_after` only if you want dbt to flag stale data without failing the run:
+You can set `warn_after` on its own if you want dbt to flag stale data without failing the run. For example, if you want a warning when no new orders come in after 24 hours:
 
 ```yaml
 models:
