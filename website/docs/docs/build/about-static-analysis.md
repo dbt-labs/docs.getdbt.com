@@ -257,8 +257,8 @@ If a model uses a [custom materialization](/guides/create-new-materializations),
 
 Because custom materialization is code you wrote, and it can change the finished table in ways v2 can't predict (for example, adding, renaming, or retyping columns). Rather than check your SQL against a schema that might be wrong, dbt skips analysis. It's the same reason dbt skips [introspective queries](#introspection-handling-in-baseline-mode), whose results also aren't known until the model runs.
 Two kinds of custom materializations trigger the downgrade to `off`:
-- **A name you invented**, such as `materialized='my_custom_load'`. Find these in your model configs.
-- **A name that's already built in**, such as your own macro named `materialization table, default`. These are harder to spot, because models that say `materialized='table'` look standard but run your code instead of dbt's.
+- **A name you invented:** such as `materialized='my_custom_load'`. Find these in your model configs.
+- **A built-in name:** such as your own macro named `materialization table, default`. These are harder to spot, because models that say `materialized='table'` look standard but run your code instead of dbt's.
 What this means in practice:
 
 - Models using a custom materialization don't fail because of static analysis.
@@ -266,8 +266,8 @@ What this means in practice:
 - Because `off` cascades downstream, every model downstream of a model using a custom materialization is also ineligible for static analysis. In a project where most models use a custom materialization, this can disable static analysis, and the [features that depend on it](#lsp-feature-comparison), for the majority of the DAG.
 
 If your project depends heavily on custom materializations and you want static analysis coverage, these are your options today:
-* Convert those models to built-in materializations where practical
-* Isolate custom materializations so fewer downstream models are affected
+- Convert those models to built-in materializations where practical
+- Isolate custom materializations so fewer downstream models are affected
 
 :::note
 
