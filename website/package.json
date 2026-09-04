@@ -113,5 +113,8 @@
   "version": "0.0.0",
   "lint-staged": {
     "*.{js,ts,jsx,tsx,md}": "npm run lint"
+  },
+  "overrides": {
+    "sha.js": "2.4.12"
   }
 }
