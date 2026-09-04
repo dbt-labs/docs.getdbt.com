@@ -1,8 +1,8 @@
 {
   "scripts": {
-    "prestart": "npm run prepare && node scripts/fetch-mcp-readme-tools.js && node scripts/generate-functions-snippet.js",
+    "prestart": "npm run prepare && node scripts/fetch-mcp-readme-tools.js && node scripts/fetch-deployment-config-validator-readme.js && node scripts/fetch-platform-capabilities-snippet.js && node scripts/generate-functions-snippet.js",
     "start": "docusaurus start",
-    "prebuild": "node scripts/fetch-mcp-readme-tools.js && node scripts/generate-functions-snippet.js",
+    "prebuild": "node scripts/fetch-mcp-readme-tools.js && node scripts/fetch-deployment-config-validator-readme.js && node scripts/fetch-platform-capabilities-snippet.js && node scripts/generate-functions-snippet.js",
     "build": "docusaurus build",
     "postbuild": "node scripts/rewriteMarkdownLinks.js",
     "generate:wizard-cli": "node scripts/generate-wizard-cli-reference.js",
