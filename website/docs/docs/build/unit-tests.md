@@ -62,9 +62,9 @@ dbt test --select "test_type:unit"
 
 ## Run unit tests locally <Lifecycle status="beta" />
 
-Unit tests check your logic against rows you made up, so they don't need your data platform to run. Set `compute: local` and dbt runs the test with DuckDB instead of sending it to your data platform.
+Unit tests run against static fixtures instead of real data, so they don't need your data platform to execute. Set `compute: local` and dbt runs the test with DuckDB instead of dispatching it to your data platform.
 
-The result is a much tighter development loop. There's no round trip to your data platform, so you can test, tweak, and test again as often as you like — and save your platform's compute for building models on real data.
+This takes the warehouse round trip out of your test loop: change your SQL, rerun the test, repeat — without queueing a query each time. It also keeps your platform's compute for building models.
 
 Set it on a single unit test:
 
