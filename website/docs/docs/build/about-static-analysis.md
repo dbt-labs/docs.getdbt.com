@@ -239,12 +239,6 @@ Going downstream, a model can keep its parent's mode or relax it, but it can't t
 
 </SimpleTable>
 
-For example, in A → B → C:
-
-- If A is `baseline`, you _can't_ set B to `strict`. B can only be `baseline` or `off`.
-- If A is `strict`, you _can_ set B to `baseline`, but once B is `baseline`, C can't go back to `strict`.
-- If A is `off`, B and C are `off` too.
-
 `baseline` doesn't produce the full analyzed schema that `strict` needs from its upstream models, so a downstream model can't run strict-level type checking without that information. For the complete reference, refer to [How static analysis modes cascade](/reference/resource-configs/static-analysis#how-static-analysis-modes-cascade).
 
 #### strict mode inheritance
