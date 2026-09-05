@@ -17,7 +17,7 @@ For more information, see [release tracks](/docs/dbt-versions/dbt-release-tracks
 
 Release date: August 18, 2026
 
-This compatible release includes functionality from the following versions of dbt Core OSS:
+This compatible release includes functionality from the following versions of <Constant name="core" /> OSS:
 
 ```
 dbt-core==1.12.0
@@ -75,7 +75,7 @@ Release date: July 21, 2026
 
 - Pin `pyathena` to v3.35 and older
 
-This compatible release includes functionality from the following versions of dbt Core OSS:
+This compatible release includes functionality from the following versions of <Constant name="core" /> OSS:
 
 ```
 dbt-core==1.11.12
@@ -123,7 +123,7 @@ Release date: June 15, 2026
 
 ### dbt cloud-based platform
 
-This compatible release includes functionality from the following versions of dbt Core OSS:
+This compatible release includes functionality from the following versions of <Constant name="core" /> OSS:
 
 ```
 dbt-core==1.11.11
@@ -177,7 +177,7 @@ Release date: April 21, 2026
 
 ### dbt cloud-based platform
 
-This compatible release includes functionality from the following versions of dbt Core OSS:
+This compatible release includes functionality from the following versions of <Constant name="core" /> OSS:
 
 ```
 dbt-core==1.11.8
@@ -237,7 +237,7 @@ Release date: February 27, 2026
 ### Dependencies
 - Update dbt-databricks upper bound to 1.12
 
-This compatible release includes functionality from the following versions of dbt Core OSS:
+This compatible release includes functionality from the following versions of <Constant name="core" /> OSS:
 
 ```
 dbt-core==1.11.6
@@ -289,7 +289,7 @@ Release date: January 22, 2026
 - Add debug log for local md5 hash for fusion conformance
 - Resolve Click CLI UserWarning regarding --target and --profile usage in Advanced CI
 
-This compatible release includes functionality from the following versions of dbt Core OSS:
+This compatible release includes functionality from the following versions of <Constant name="core" /> OSS:
 
 ```
 dbt-core==1.10.19
@@ -337,7 +337,7 @@ Release date: December 9, 2025
 
 ### dbt cloud-based platform
 
-This compatible release includes functionality from the following versions of dbt Core OSS:
+This compatible release includes functionality from the following versions of <Constant name="core" /> OSS:
 
 ```
 dbt-core==1.10.15
@@ -392,7 +392,7 @@ Release date: November 11, 2025
 - Make source schema recording cache thread-safe
 - Record column schemas for deferred relations and unselected dependencies
 
-This compatible release includes functionality from the following versions of dbt Core OSS:
+This compatible release includes functionality from the following versions of <Constant name="core" /> OSS:
 
 ```
 dbt-core==1.10.15
@@ -444,7 +444,7 @@ Release date: October 23, 2025
 ### Under the Hood
 - Add instrumentation to adapter methods for reliable debugging traces at the adapter boundary
 
-This compatible release includes functionality from the following versions of dbt Core OSS:
+This compatible release includes functionality from the following versions of <Constant name="core" /> OSS:
 
 ```
 dbt-core==1.10.13
@@ -491,7 +491,7 @@ Changelogs:
 
 Release date: September 10, 2025
 
-This compatible release includes functionality from the following versions of dbt Core OSS:
+This compatible release includes functionality from the following versions of <Constant name="core" /> OSS:
 
 ```
 dbt-core==1.10.11
@@ -538,10 +538,10 @@ Changelogs:
 
 Release date: August 12, 2025
 
-### Notable dbt Core OSS changes
+### Notable <Constant name="core" /> OSS changes
 
 This compatible upgrade brings in a minor update to `dbt-core`, from `dbt-core==1.9.8` to `dbt-core==1.10.8`. Some noteworthy changes from this minor version include:
-- Introduction of several new [deprecations](/reference/deprecations) that warn about project incompatibilities between dbt Core and Fusion engines.
+- Introduction of several new [deprecations](/reference/deprecations) that warn about project incompatibilities between <Constant name="core" /> and Fusion engines.
 - Support for defining `meta` and `tags` within `config` of columns and exposures, as well as defining `freshness` within `config` of sources. These changes lead to manifest.json minor schema evolutions which may cause an intermittent increase in false positives during `state:modified` comparisons.
 
 ### dbt cloud-based platform 
@@ -560,7 +560,7 @@ This compatible upgrade brings in a minor update to `dbt-core`, from `dbt-core==
 - Disable telemetry client logger
 - Update semantic layer SDK to 0.11
 
-This release includes functionality from the following versions of dbt Core OSS:
+This release includes functionality from the following versions of <Constant name="core" /> OSS:
 
 ```
 dbt-core==1.10.8
@@ -613,7 +613,7 @@ Compatible releases will resume in August 2025.
 
 Release date: June 12, 2025
 
-This release includes functionality from the following versions of dbt Core OSS:
+This release includes functionality from the following versions of <Constant name="core" /> OSS:
 
 ```
 dbt-core==1.9.8
@@ -673,7 +673,7 @@ These changes reflect capabilities that are only available in the dbt platform.
 
 - Create JSON schemas for PublicationArtifact and ResolvedProjectsArtifact
 
-This release includes functionality from the following versions of dbt Core OSS:
+This release includes functionality from the following versions of <Constant name="core" /> OSS:
 ```
 dbt-core==1.9.4
 
@@ -724,7 +724,7 @@ These changes reflect capabilities that are only available in dbt Cloud.
 
 - Add secondary profiles to profile.py
 
-This release includes functionality from the following versions of dbt Core OSS:
+This release includes functionality from the following versions of <Constant name="core" /> OSS:
 ```
 dbt-core==1.9.4
 

@@ -946,7 +946,7 @@ By now, we are pretty good at creating new files in the correct directories so w
 
     That wraps up the intermediate models we need to create our core models!
 
-### Core models
+### <Constant name="core" /> models
 
 1. Create a file `fct_results.sql`. This is what I like to refer to as the “mega table” &mdash; a really large denormalized table with all our context added in at row level for human readability. Importantly, we have a table `circuits` that is linked through the table `races`. When we joined `races` to `results` in `int_results.sql` we allowed our tables to make the connection from `circuits` to `results` in `fct_results.sql`. We are only taking information about pit stops at the result level so our join would not cause a [fanout](https://community.looker.com/technical-tips-tricks-1021/what-is-a-fanout-23327).
 

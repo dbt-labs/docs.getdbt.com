@@ -61,7 +61,7 @@ To set environment variables in the <Constant name="platform_cli" /> for your db
 
 ## Use the dbt platform CLI
 
-The <Constant name="platform_cli" /> uses the same set of [dbt commands](/reference/dbt-commands) and [MetricFlow commands](/docs/build/metricflow-commands) as dbt Core to execute the commands you provide. For example, use the [`dbt environment`](/reference/commands/dbt-environment?version=2.0) command to view your <Constant name="dbt" /> configuration details. With the <Constant name="platform_cli" />, you can:
+The <Constant name="platform_cli" /> uses the same set of [dbt commands](/reference/dbt-commands) and [MetricFlow commands](/docs/build/metricflow-commands) as <Constant name="core" /> to execute the commands you provide. For example, use the [`dbt environment`](/reference/commands/dbt-environment?version=2.0) command to view your <Constant name="dbt" /> configuration details. With the <Constant name="platform_cli" />, you can:
 
 - Run [multiple invocations in parallel](/reference/dbt-commands) and ensure [safe parallelism](/reference/dbt-commands#parallel-execution), which `dbt-core` doesn't currently guarantee.
 - Automatically defer build artifacts to your project's production environment.

@@ -35,11 +35,11 @@ import CoreMigrationTable from '/snippets/_core-migration-table.md';
 </Expandable>
 
 ## What you'll learn
-Today thousands of companies, with data teams ranging in size from 2 to 2,000, rely on <Constant name="dbt" /> to accelerate data work, increase collaboration, and win the trust of the business. Understanding what you'll need to do in order to move between <Constant name="dbt" /> and your current Core deployment will help you strategize and plan for your move.
+Today thousands of companies, with data teams ranging in size from 2 to 2,000, rely on <Constant name="dbt" /> to accelerate data work, increase collaboration, and win the trust of the business. Understanding what you'll need to do in order to move between <Constant name="dbt" /> and your current <Constant name="core" /> deployment will help you strategize and plan for your move.
 
 The guide outlines the following steps:
 
-- [Considerations](/guides/dbt-migration-2?step=3): Learn about the most important things you need to think about when moving from Core to Cloud.
+- [Considerations](/guides/dbt-migration-2?step=3): Learn about the most important things you need to think about when moving from <Constant name="core" /> to Cloud.
 - [Plan your move](/guides/dbt-migration-2?step=4): Considerations you need to make, such as user roles and permissions, onboarding order, current workflows, and more.
 - [Move to <Constant name="dbt" />](/guides/dbt-migration-2?step=5): Review the steps to move your <Constant name="core" /> project to <Constant name="dbt" />, including setting up your account, data platform, and <Constant name="git" /> repository.
 - [Test and validate](/guides/dbt-migration-2?step=6): Discover how to ensure model accuracy and performance post-move.

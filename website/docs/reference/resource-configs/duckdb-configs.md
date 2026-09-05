@@ -163,7 +163,7 @@ DuckLake applies partitioning using `ALTER TABLE ... SET PARTITIONED BY (...)`, 
 
 `dbt-duckdb` has a [plugin system](https://github.com/duckdb/dbt-duckdb#configuring-dbt-duckdb-plugins) for extending the adapter with custom Python UDFs, loading source data from Excel/Google Sheets/SQLAlchemy, and more. For details on configuring and writing plugins, refer to the [dbt-duckdb documentation on plugins](https://github.com/duckdb/dbt-duckdb#configuring-dbt-duckdb-plugins).
 
-:::info dbt Core only
+:::info <Constant name="core" /> only
 Plugins are a `dbt-duckdb` feature and are not supported in <Constant name="fusion_engine" /> or <Constant name="dbt_platform" />.
 :::
 

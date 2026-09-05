@@ -123,7 +123,7 @@ Find Redshift-specific configuration information in the [Redshift adapter refere
 
 <VersionBlock lastVersion="1.99">
 
-# Connect Redshift to dbt Core
+# Connect Redshift to <Constant name="core" />
 
 <ProductCard text="Fusion compatible" url="/docs/local/connect-data-platform/redshift-setup?version=2" /> connection also available.
 
@@ -174,7 +174,7 @@ Click on one of these authentication methods for further details on how to confi
   defaultValue="database"
   values={[
     {label: 'Database', value: 'database'},
-    {label: 'IAM User via AWS Profile (Core)', value: 'iam-user-profile'}]
+    {label: 'IAM User via AWS Profile (<Constant name="core" />)', value: 'iam-user-profile'}]
 }>
 
 <TabItem value="database">

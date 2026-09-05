@@ -42,7 +42,7 @@ For more information on defaults, see [Caveats](/docs/local/connect-data-platfor
 
 ### Pure Python
 
-If you use dbt Core, you no longer have to download an independent driver to interact with Databricks. The connection information is all embedded in a pure-Python library called `databricks-sql-connector`.
+If you use <Constant name="core" />, you no longer have to download an independent driver to interact with Databricks. The connection information is all embedded in a pure-Python library called `databricks-sql-connector`.
 
 
 ## Migrate your dbt projects in dbt
@@ -76,9 +76,9 @@ These credentials will not get lost when there's a successful connection to Data
 - The personal access tokens your team added in their <Constant name="dbt" /> profile so they can develop in the <Constant name="studio_ide" /> for a given project.
 - The access token you added for each deployment environment so <Constant name="dbt" /> can connect to Databricks during production jobs.
 
-## Migrate dbt projects in dbt Core
+## Migrate dbt projects in <Constant name="core" />
 
-To migrate your dbt Core projects to the `dbt-databricks` adapter from `dbt-spark`, you:
+To migrate your <Constant name="core" /> projects to the `dbt-databricks` adapter from `dbt-spark`, you:
 1. Install the [dbt-databricks adapter](https://github.com/databricks/dbt-databricks) in your environment
 1. Update your Databricks connection by modifying your `target` in your `~/.dbt/profiles.yml` file
 

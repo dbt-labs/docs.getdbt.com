@@ -141,11 +141,11 @@ Each job in <Constant name="dbt" /> can be configured to inherit parameters from
 
 <Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/choosing-dbt-version/job-settings.png" width="200%" title="Settings of a dbt job"/>
 
-The example job seen in the screenshot above belongs to the environment "Prod". It inherits the dbt version of its environment as shown by the **Inherited from ENVIRONMENT_NAME (DBT_VERSION)** selection. You may also manually override the dbt version of a specific job to be any of the current Core releases supported by Cloud by selecting another option from the dropdown.
+The example job seen in the screenshot above belongs to the environment "Prod". It inherits the dbt version of its environment as shown by the **Inherited from ENVIRONMENT_NAME (DBT_VERSION)** selection. You may also manually override the dbt version of a specific job to be any of the current <Constant name="core" /> releases supported by Cloud by selecting another option from the dropdown.
 
 ## Supported versions
 
-dbt Labs has always encouraged users to upgrade dbt Core versions whenever a new minor version is released. We released our first major version of dbt - `dbt 1.0` - in December 2021. Alongside this release, we updated our policy on which versions of dbt Core we will support in the <Constant name="dbt_platform" />.
+dbt Labs has always encouraged users to upgrade <Constant name="core" /> versions whenever a new minor version is released. We released our first major version of dbt - `dbt 1.0` - in December 2021. Alongside this release, we updated our policy on which versions of <Constant name="core" /> we will support in the <Constant name="dbt_platform" />.
 
 > **Starting with v1.0, all subsequent minor versions are available in <Constant name="dbt" />. Versions are actively supported, with patches and bug fixes, for 1 year after their initial release. At the end of the 1-year window, we encourage all users to upgrade to a newer version for better ongoing maintenance and support.**
 
@@ -153,7 +153,7 @@ We provide different support levels for different versions, which may include ne
 
 <Snippet path="core-version-support" />
 
-We'll continue to update the following release table so that users know when we plan to stop supporting different versions of Core in <Constant name="dbt" />.
+We'll continue to update the following release table so that users know when we plan to stop supporting different versions of <Constant name="core" /> in <Constant name="dbt" />.
 
 <Snippet path="core-versions-table" />
 
@@ -180,7 +180,7 @@ Once you know what code changes you'll need to make, you can start implementing 
 - Check out a branch `dbt-version-upgrade`, make the appropriate updates to your project, and verify your dbt project compiles and runs with the new version in the <Constant name="studio_ide" />.
   - If upgrading directly to the latest version results in too many issues, try testing your project iteratively on successive minor versions. There are years of development and a few breaking changes between distant versions of <Constant name="core" /> (for example, 1.0 --> 1.10). The likelihood of experiencing problems upgrading between successive minor versions is much lower, which is why upgrading regularly is recommended.
 - Once you have your project compiling and running on the latest version of dbt in the development environment for your `dbt-version-upgrade` branch, try replicating one of your production jobs to run off your branch's code.
-- You can do this by creating a new deployment environment for testing, setting the custom branch to 'ON' and referencing your `dbt-version-upgrade` branch. You'll also need to set the dbt version in this environment to the latest dbt Core version.
+- You can do this by creating a new deployment environment for testing, setting the custom branch to 'ON' and referencing your `dbt-version-upgrade` branch. You'll also need to set the dbt version in this environment to the latest <Constant name="core" /> version.
 
 <Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/platform-upgrading-dbt-versions/upgrade-environment.png" width="90%" title="Setting your testing environment" />
 

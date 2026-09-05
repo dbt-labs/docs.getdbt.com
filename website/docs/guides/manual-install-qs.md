@@ -19,7 +19,7 @@ If you want to edit files and run projects using the web-based dbt Integrated De
 
 ### Prerequisites
 
-* To use dbt Core, it's important that you know some basics of the Terminal. In particular, you should understand `cd`, `ls` and `pwd` to navigate through the directory structure of your computer easily.
+* To use <Constant name="core" />, it's important that you know some basics of the Terminal. In particular, you should understand `cd`, `ls` and `pwd` to navigate through the directory structure of your computer easily.
 * Install <Constant name="core" /> using the [installation instructions](/docs/local/install-dbt) for your operating system.
 * Complete appropriate Setting up and Loading data steps in the Quickstart for <Constant name="dbt" /> series. For example, for BigQuery, complete [Setting up (in BigQuery)](/guides/bigquery?step=2) and [Loading data (BigQuery)](/guides/bigquery?step=3).
 * [Create a GitHub account](https://github.com/join) if you don't already have one.
@@ -43,11 +43,11 @@ The following steps use [GitHub](https://github.com/) as the <Constant name="git
 
 ## Create a project
 
-Learn how to use a series of commands using the command line of the Terminal to create your project. dbt Core includes an `init` command that helps scaffold a dbt project.
+Learn how to use a series of commands using the command line of the Terminal to create your project. <Constant name="core" /> includes an `init` command that helps scaffold a dbt project.
 
 To create your dbt project:
 
-1. Make sure you have dbt Core installed and check the version using the `dbt --version` command:
+1. Make sure you have <Constant name="core" /> installed and check the version using the `dbt --version` command:
 
 ```shell
 dbt --version
@@ -434,7 +434,7 @@ This time, when you performed a `dbt run`, separate views/tables were created fo
 You can also explore:
 
 * The `target` directory to see all of the compiled SQL. The `run` directory shows the create or replace table statements that are running, which are the select statements wrapped in the correct DDL.
-* The `logs` file to see how dbt Core logs all of the action happening within your project. It shows the select statements that are running and the python logging happening when dbt runs.
+* The `logs` file to see how <Constant name="core" /> logs all of the action happening within your project. It shows the select statements that are running and the python logging happening when dbt runs.
 
 ## Add tests to your models
 

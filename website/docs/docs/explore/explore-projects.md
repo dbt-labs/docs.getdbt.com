@@ -34,7 +34,7 @@ import Generatemetadata from '/snippets/_generate-metadata.md';
 <Generatemetadata /> 
 
 :::tip
-If your organization works in both dbt Core and Cloud, you can unify these workflows by automatically uploading dbt Core artifacts into dbt Cloud and viewing them in <Constant name="catalog" /> for a more connected dbt experience. To learn more, visit [hybrid projects](/docs/deploy/hybrid-projects).
+If your organization works in both <Constant name="core" /> and Cloud, you can unify these workflows by automatically uploading <Constant name="core" /> artifacts into dbt Cloud and viewing them in <Constant name="catalog" /> for a more connected dbt experience. To learn more, visit [hybrid projects](/docs/deploy/hybrid-projects).
 :::
 
 ## Catalog overview 
@@ -70,7 +70,7 @@ When using global navigation and searching across your projects, the following p
 
 | Feature | Starter | Enterprise | Enterprise+ |
 |---------|:-------:|:----------:|:-----------:|
-| Core lineage & resource browsing | ✅ | ✅ | ✅ |
+| <Constant name="core" /> lineage & resource browsing | ✅ | ✅ | ✅ |
 | [Global navigation](/docs/explore/global-navigation) | ✅ | ✅ | ✅ |
 | [Data health signals](/docs/explore/data-health-signals) | ✅ | ✅ | ✅ |
 | [Model performance](/docs/explore/model-performance) | ❌ | ✅ | ✅ |

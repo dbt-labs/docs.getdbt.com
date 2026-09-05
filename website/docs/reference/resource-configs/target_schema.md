@@ -6,7 +6,7 @@ datatype: string
 
 :::note
 
-Starting in dbt Core v1.9+, this functionality is no longer utilized. Use the [schema](/reference/resource-configs/schema) config as an alternative to define a custom schema while still respecting the `generate_schema_name` macro. 
+Starting in <Constant name="core" /> v1.9+, this functionality is no longer utilized. Use the [schema](/reference/resource-configs/schema) config as an alternative to define a custom schema while still respecting the `generate_schema_name` macro. 
 
 Try it now in the [<Constant name="dbt" /> **Latest** release track](/docs/dbt-versions/dbt-release-tracks).
 
@@ -41,7 +41,7 @@ On **BigQuery**, this is analogous to a `dataset`.
 
 ## Default
 
-<VersionBlock firstVersion="1.9">In dbt Core v1.9+ and <Constant name="dbt" /> **Latest** release track, this is not a required parameter. </VersionBlock>
+<VersionBlock firstVersion="1.9">In <Constant name="core" /> v1.9+ and <Constant name="dbt" /> **Latest** release track, this is not a required parameter. </VersionBlock>
 
 ## Examples
 ### Build all snapshots in a schema named `snapshots`

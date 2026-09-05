@@ -11,7 +11,7 @@ The `dbt build` command will:
 - test [tests](/docs/build/data-tests)
 - snapshot [snapshots](/docs/build/snapshots)
 - seed [seeds](/docs/build/seeds)
-- build [user-defined functions](/docs/build/udfs) (available from dbt Core v1.11 and in the <Constant name="fusion_engine" />)
+- build [user-defined functions](/docs/build/udfs) (available from <Constant name="core" /> v1.11 and in the <Constant name="fusion_engine" />)
 
 In DAG order, for selected resources or an entire project.
 
@@ -100,7 +100,7 @@ Done. PASS=7 WARN=0 ERROR=0 SKIP=0 TOTAL=7
 ```
 
 ## Functions
-_Available from dbt Core v1.11 and in the <Constant name="fusion_engine" />_
+_Available from <Constant name="core" /> v1.11 and in the <Constant name="fusion_engine" />_
 
 The `build` command builds [user-defined functions](/docs/build/udfs) as part of the DAG execution. To build or rebuild only `functions` in your project, run `dbt build --select "resource_type:function"`. For example:
 
