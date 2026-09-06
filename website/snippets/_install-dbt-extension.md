@@ -3,8 +3,6 @@ import FusionManualInstall from '/snippets/_fusion-manual-install.md';
 
 The dbt extension &mdash; available for [VS Code and Cursor](https://marketplace.visualstudio.com/items?itemName=dbtLabsInc.dbt&ssr=false#overview), and [Windsurf](https://open-vsx.org/extension/dbtLabsInc/dbt) &mdash; uses the <Constant name="fusion_engine" /> to make dbt development smoother and more efficient.
 
-The dbt VS Code extension is compatible with the <Constant name="fusion_engine" />. It isn't compatible with <Constant name="core" />.
-
 :::note
 
 This is the only official dbt Labs VS Code extension. Other extensions _can_ work alongside the dbt VS Code extension, but they aren't tested or supported by dbt Labs. Read the [Fusion Diaries](https://github.com/dbt-labs/dbt-core/discussions/categories/announcements?discussions_q=is:open+diaries+category:Announcements) for the latest updates.
@@ -21,7 +19,7 @@ To use the extension, you need the following:
 
 | Prerequisite | Details |
 | --- | --- |
-| **<Constant name="fusion_engine" />** | The dbt VS Code extension requires the <Constant name="fusion_engine" /> binary. The extension prompts you to install it, or you can [install it manually](#install-the-dbt-fusion-engine-from-the-command-line-if-you-havent-already). |
+| **<Constant name="fusion_engine" />** | The extension prompts you to install the <Constant name="fusion_engine" /> binary, or you can [install it manually](#install-the-dbt-fusion-engine-from-the-command-line-if-you-havent-already). |
 | **Project files** | You need a `profiles.yml` file. You may also need a [`dbt_cloud.yml`](/reference/dbt_cloud.yml) file for some <Constant name="dbt_platform" /> features or credential-based workflows. You don't need a <Constant name="dbt_platform" /> project to use the extension. |
 | **Editor** | [VS Code](https://code.visualstudio.com/), [Cursor](https://www.cursor.com/en), or [Windsurf](https://windsurf.com/editor). |
 | **Operating system** | macOS, Windows, or Linux. |

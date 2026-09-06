@@ -10,13 +10,6 @@ availability: local_all
 
 # About the dbt VS Code extension <Lifecycle status="preview" />
 
-<VersionBlock lastVersion="1.99">
-
-:::tip About the dbt VS Code extension
-The dbt VS Code extension is available with v2 and brings editor features like autocomplete, inline errors, preview CTE, <Term id="lsp"/>, and more! [Upgrade to v2](/docs/dbt-versions/dbt-upgrade/upgrading-to-v2) to use it.
-:::
-</VersionBlock>
-
 The dbt VS Code extension brings a hyper-fast, intelligent, and cost-efficient dbt development experience to VS Code.
 This is the only way to enjoy all the power of the <Constant name="fusion_engine" /> while developing with a self-hosted installation.
 
@@ -81,8 +74,6 @@ The dbt extension caches important schema information from your data warehouse t
 3. Click **Clear Cache** to update.
 
 ## Using the extension
-
-Your dbt environment must be using the <Constant name="fusion_engine" /> in order to use this extension. See [the Fusion documentation](/docs/introduction) for more on eligibility and upgrading.
 
 Once installed, the dbt extension automatically activates when you open any `.sql` or `.yml` file inside of a dbt project directory. 
 

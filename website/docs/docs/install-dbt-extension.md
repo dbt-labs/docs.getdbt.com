@@ -16,6 +16,6 @@ import InstallExtension from '/snippets/_install-dbt-extension.md';
 ## Next steps
 Once you've installed the dbt VS Code extension, go to the next pages to get started:
 
-1. Review the [Upgrade to <Constant name="fusion" />](/docs/upgrade-to-dbt-extension) page to ensure your dbt project is using <Constant name="fusion" />.
+1. Review the [Upgrade to <Constant name="fusion" />](/docs/upgrade-to-dbt-extension) page if you want to upgrade your dbt project to <Constant name="fusion" />.
 2. [Sign in or register](/docs/sign-in-dbt-extension) for a free <Constant name="dbt_platform" /> account to keep using advanced features after the 14-day trial.
 3. Review the [limitations and unsupported features](/docs/dbt/supported-features#limitations).

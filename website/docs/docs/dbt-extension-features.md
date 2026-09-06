@@ -11,7 +11,7 @@ availability: local_all
 # dbt VS Code extension features <Lifecycle status="preview" />
 
 <IntroText>
-The dbt VS Code extension requires the <Constant name="fusion_engine" /> and uses a dynamic Language Server Protocol (<Term id="lsp" />) to provide a fast, intelligent, and cost-efficient dbt development experience with enhanced workflows and easy navigation.
+The dbt VS Code extension uses a dynamic Language Server Protocol (<Term id="lsp" />) to provide a fast, intelligent, and cost-efficient dbt development experience with enhanced workflows and easy navigation.
 </IntroText>
 
 
