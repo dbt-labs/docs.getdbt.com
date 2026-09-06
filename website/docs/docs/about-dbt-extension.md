@@ -18,12 +18,29 @@ This is the only way to enjoy all the power of the <Constant name="fusion_engine
 
 The dbt VS Code extension is available in the [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=dbtLabsInc.dbt). _Note, this is a public preview release. Behavior may change ahead of the broader generally available (GA) release._
 
-The dbt VS Code extension works with <Constant name="fusion" />, the default free-to-use product you get when you install dbt. 
+The dbt VS Code extension works with dbt v2, the default free-to-use product you get when you install dbt, and with dbt v1.
 
+## Version compatibility
 
-:::tip Try out the Fusion quickstart guide
+You get editor features out of the box as long as your project complies with the v2 language spec, regardless of whether you execute with v1 or v2:
 
-Check out the [Fusion quickstart guide](/guides/dbt?step=1) to try the dbt VS Code extension in action.
+- Autocomplete for `ref`, sources, macros, and doc blocks
+- Go to definition and find references for models, sources, macros, and docs
+- Jinja syntax error detection
+- Model renames that update `ref` calls, and source or table reference renames
+- View compiled SQL, and preview a model, selected SQL, or an individual CTE
+- Run `dbt run`, `build`, `test`, and selectors
+- Table descriptions, metadata, and metadata on hover
+- Production column types, descriptions, and tests
+- Visual and textual table lineage in the extension pane
+
+If your project isn't compliant with the v2 language spec yet, the extension has [dbt-autofix](https://github.com/dbt-labs/dbt-autofix) built in. Opt in to fix deprecations across your project in a single pull request. Each issue in the **Problems** pane also has an autofix action, available from the lightbulb or right-click menu.
+
+To unlock the full language server, including column-level lineage, column go-to definition and find references, nonexistent-column and type detection, warehouse-specific syntax checks, column renames that propagate downstream, and `SELECT *` expansion, enable [`static_analysis: strict`](/reference/resource-configs/static-analysis?version=2) and resolve your parse errors. Refer to [About dbt LSP](/docs/about-dbt-lsp) for the full feature list.
+
+:::tip Try out the dbt v2 quickstart guide
+
+Check out the [v2 quickstart guide](/guides/dbt?step=1) to try the dbt VS Code extension in action.
 
 :::
 

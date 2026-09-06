@@ -6,7 +6,6 @@ sidebar_label: "About dbt LSP"
 pagination_next: null
 pagination_prev: null
 availability:
-  engine: v2
   access: free
 ---
 

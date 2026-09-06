@@ -1,7 +1,7 @@
 
 import FusionManualInstall from '/snippets/_fusion-manual-install.md';
 
-The dbt extension &mdash; available for [VS Code and Cursor](https://marketplace.visualstudio.com/items?itemName=dbtLabsInc.dbt&ssr=false#overview), and [Windsurf](https://open-vsx.org/extension/dbtLabsInc/dbt) &mdash; uses the <Constant name="fusion_engine" /> to make dbt development smoother and more efficient.
+The dbt extension &mdash; available for [VS Code and Cursor](https://marketplace.visualstudio.com/items?itemName=dbtLabsInc.dbt&ssr=false#overview), and [Windsurf](https://open-vsx.org/extension/dbtLabsInc/dbt) &mdash; uses the <Constant name="fusion_engine" /> to make dbt development smoother and more efficient. It works whether you execute with dbt v1 or v2 &mdash; refer to [Version compatibility](/docs/about-dbt-extension#version-compatibility) for which features need which setup.
 
 :::note
 
@@ -24,7 +24,7 @@ To use the extension, you need the following:
 | **Editor** | [VS Code](https://code.visualstudio.com/), [Cursor](https://www.cursor.com/en), or [Windsurf](https://windsurf.com/editor). |
 | **Operating system** | macOS, Windows, or Linux. |
 | **Local configuration** (optional) | [Configure the extension](/docs/configure-dbt-extension) to mirror your dbt environment locally and set any environment variables required by your project. |
-| **Project migration support** (optional) | Use the **Migrate <Constant name="core" /> to <Constant name="fusion" />** agent skill or [run dbt-autofix](/guides/prepare-dbt-upgrade?step=5#what-the-autofix-tool-handles) to help resolve errors and deprecations before using <Constant name="fusion" />. |
+| **Project migration support** (optional) | The extension has [dbt-autofix](https://github.com/dbt-labs/dbt-autofix) built in, so you can fix deprecations from the **Problems** pane or in a single pull request. You can also use the **Migrate <Constant name="core" /> to <Constant name="fusion" />** agent skill or [run dbt-autofix](/guides/prepare-dbt-upgrade?step=5#what-the-autofix-tool-handles) yourself. |
 
 </SimpleTable>
 
