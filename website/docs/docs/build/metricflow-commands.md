@@ -9,7 +9,7 @@ availability: all_users
 
 Once you define metrics in your dbt project, you can query metrics, dimensions, and dimension values, and validate your configs using the MetricFlow commands, available across [dbt v1 or v2](/docs/introduction). To upgrade to v2, see [Get started with dbt v2](/docs/dbt/get-started-dbt). 
  
-MetricFlow allows you to define and query metrics in your dbt project in [<Constant name="dbt_platform" />](/docs/platform/about-develop-dbt) or [dbt v1 or v2](/docs/local/install-dbt) locally. To experience the power of the universal [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl) and dynamically query those metrics in downstream tools, you'll need a <Constant name="dbt" /> [Starter, Enterprise, or Enterprise+](https://www.getdbt.com/pricing/) account. 
+MetricFlow allows you to define and query metrics in your dbt project in [<Constant name="dbt_platform" />](/docs/platform/about-develop-dbt) or [dbt v1 or v2](/docs/local/install-dbt?version=2) locally. To experience the power of the universal [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl) and dynamically query those metrics in downstream tools, you'll need a <Constant name="dbt" /> [Starter, Enterprise, or Enterprise+](https://www.getdbt.com/pricing/) account. 
 
 MetricFlow is compatible with Python versions 3.8, 3.9, 3.10, 3.11, and 3.12.
 
@@ -21,7 +21,7 @@ MetricFlow is a Python library that allows you to define and query metrics in yo
 
 <VersionBlock firstVersion="1.12">
 
-MetricFlow is a Python library that allows you to define and query metrics in your dbt project. You can use MetricFlow to query metrics in your dbt project two ways: in the <Constant name="dbt_platform" />, where the platform runs either the v1 or v2 engine for you, or locally with open-source dbt, where you install and manage the v1 or v2 engine yourself.
+MetricFlow is a Python library that allows you to define and query metrics in your dbt project. You can use MetricFlow to query metrics in your dbt project two ways: in the <Constant name="dbt_platform" /> or locally with slef-hosted dbt, where you install and manage the engine yourself.
 </VersionBlock>
 
 <Tabs>
