@@ -18,7 +18,7 @@ availability:
 
 Release notes are grouped by month for both multi-tenant and virtual private cloud (VPC) environments. <span><img src="/img/fontawesome/rss.svg" alt="RSS" className="rss-icon" />Subscribe to release note updates via [RSS](/feeds/release-notes-rss.xml), [Atom](/feeds/release-notes-atom.xml), or [JSON Feed](/feeds/release-notes-rss.json).</span>
 
-For <Constant name="fusion_engine" /> updates, refer to the [dbt-fusion changelog](https://github.com/dbt-labs/dbt-core/blob/main/CHANGELOG-fusion.md).
+For <Constant name="fusion_engine" /> updates, refer to the [dbt-fusion changelog](https://github.com/dbt-labs/dbt-oss/blob/main/CHANGELOG-fusion.md).
 
 ## September 2026
 
@@ -194,9 +194,9 @@ The following features are new or enhanced as part of dbt Labs announcements at 
 - **Behavior change:** When you set up single sign-on (SSO) in the <Constant name="dbt_platform" />, the SSO slug is now system-generated and read-only. Existing SSO configurations remain valid, but you can’t change the slug. If you delete and recreate your SSO configuration, the new configuration uses a new, system-generated slug. Refer to [Single sign-on overview](/docs/platform/manage-access/sso-overview) for more information.
 - **Enhancement:** The [dbt VS Code extension](/docs/install-dbt-extension?version=2.0) now supports account creation. If you sign in with an existing dbt user that doesn't have an associated <Constant name="dbt_platform"/> account, the registration flow prompts you to create one instead of requiring a separate workflow.
 - **Enhancement:** Delete individual [<Constant name="wizard" /> chat conversations](/docs/dbt-ai/wizard-ide#availability-and-considerations) from the conversation list (three dots → **Delete**). Deleting the open conversation clears the panel.
-- **New:** The Fusion + Snowflake connection experience is now generally available on the dbt platform. See our [Fusion upgrade guides](/guides/prepare-dbt-upgrade?step=1) for information on enabling the upgrade workflows for your environments today!
+- **New:** The Fusion + Snowflake connection experience is now generally available on the dbt platform. See our [Fusion upgrade guides](/guides/prepare-v2-upgrade?step=1) for information on enabling the upgrade workflows for your environments today!
 - **Enhancement:** In the Discovery API [Tests object schema](/docs/dbt-apis/discovery-schema-environment-applied-tests), you can now filter `environment.applied.tests` by multiple test result statuses in a single query using the new `lastKnownResults: [TestStatus]` filter field on `TestAppliedFilter`. The single-value `lastKnownResult` filter field is still supported but deprecated. Update your queries to use `lastKnownResults` going forward.
-- **Enhanced** <Constant name="fusion" /> eligibility job prompts now use a **Debug on <Constant name="fusion" />** dropdown instead of a standalone **Run once on <Constant name="fusion" />** button. For more information, refer to [Update your jobs](/guides/prepare-dbt-upgrade?step=7).
+- **Enhanced** <Constant name="fusion" /> eligibility job prompts now use a **Debug on <Constant name="fusion" />** dropdown instead of a standalone **Run once on <Constant name="fusion" />** button. For more information, refer to [Update your jobs](/guides/prepare-v2-upgrade?step=7).
 - **Enhancement:** The [<Constant name="dev_agent" />](/docs/dbt-ai/wizard-ide) input bar now supports arrow key history navigation. Press the up arrow at the start of the input to cycle through previous inputs, and the down arrow at the end to return to more recent ones. dbt stores up to 5 previous inputs per session.
 - **Enhancement:** Tool approval and file edit dialogs in the [<Constant name="dev_agent" />](/docs/dbt-ai/wizard-ide) now support number key shortcuts (1, 2, 3) to select options. The first option is auto-focused when a dialog appears, so you can act immediately without clicking.
 
