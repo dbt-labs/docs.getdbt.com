@@ -180,10 +180,6 @@ var siteSettings = {
               to: "/docs/dbt-licensing",
             },
             {
-              label: "Fusion Diaries",
-              href: "https://github.com/dbt-labs/dbt-oss/discussions/categories/announcements?discussions_q=is:open+diaries+category:Announcements",
-            },
-            {
               label: "Courses",
               href: "https://learn.getdbt.com",
             },

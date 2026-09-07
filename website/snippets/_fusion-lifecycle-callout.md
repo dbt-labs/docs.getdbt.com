@@ -7,6 +7,4 @@ The <Constant name="fusion_engine" /> is currently available for installation in
 
 Join the conversation in our Community Slack channel [`#dbt-fusion-engine`](https://getdbt.slack.com/archives/C088YCAB6GH).
 
-Read the [Fusion Diaries](https://github.com/dbt-labs/dbt-oss/discussions/categories/announcements?discussions_q=is:open+diaries+category:Announcements) for the latest updates.
-
 :::
