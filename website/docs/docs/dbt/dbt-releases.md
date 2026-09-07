@@ -15,7 +15,7 @@ This page shows release information for local builds of dbt v2 only. v2 releases
 
 Track current versions and full release history for dbt v2. This data updates live from dbt release channels.
 
-Each of the versions on this page links to the matching section in the [dbt v2 changelog](https://github.com/dbt-labs/dbt-core/blob/main/CHANGELOG-fusion.md) on GitHub.
+Each of the versions on this page links to the matching section in the [dbt v2 changelog](https://github.com/dbt-labs/dbt-oss/blob/main/CHANGELOG-fusion.md) on GitHub.
 
 ## Release channels
 

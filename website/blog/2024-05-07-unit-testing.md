@@ -236,6 +236,6 @@ dbt has multiple complementary features that support data quality including [uni
 
 ## Summary
 
-You're now ready to build your first unit tests with this new feature coming to dbt in v1.8! We're eager for you to try this out – let us know how it works for you by commenting in [this discussion](https://github.com/dbt-labs/dbt-core/discussions/8275) or [opening an issue](https://github.com/dbt-labs/dbt-core/issues/new/choose).
+You're now ready to build your first unit tests with this new feature coming to dbt in v1.8! We're eager for you to try this out – let us know how it works for you by commenting in [this discussion](https://github.com/dbt-labs/dbt-oss/discussions/8275) or [opening an issue](https://github.com/dbt-labs/dbt-oss/issues/new/choose).
 
 There's more details about the syntax which you can access in our [documentation](https://docs.getdbt.com/docs/build/unit-tests). We hope this gives you the tools to boost your confidence in your data pipelines and sleep easier at night 😴

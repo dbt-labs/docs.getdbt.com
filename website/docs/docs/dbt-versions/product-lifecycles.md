@@ -141,7 +141,7 @@ dbt platform features adhere to the following lifecycle path:
 </TabItem>
 <TabItem value="fusion" label="dbt Fusion engine">
 
-The <Constant name="fusion_engine" /> and [VS Code extension](/docs/about-dbt-extension) are in various stages of development depending on deployment type. See the [Fusion Diaries](https://github.com/dbt-labs/dbt-core/discussions/categories/announcements?discussions_q=is:open+diaries+category:Announcements) for the latest updates, and our [Path to GA](/blog/dbt-fusion-engine-path-to-ga) blog post for what's required to reach GA.
+The <Constant name="fusion_engine" /> and [VS Code extension](/docs/about-dbt-extension) are in various stages of development depending on deployment type. See the [Fusion Diaries](https://github.com/dbt-labs/dbt-oss/discussions/categories/announcements?discussions_q=is:open+diaries+category:Announcements) for the latest updates, and our [Path to GA](/blog/dbt-fusion-engine-path-to-ga) blog post for what's required to reach GA.
 
 <div className="grid--3-col" style={{gap: '1.5rem', marginTop: '1rem'}}>
 

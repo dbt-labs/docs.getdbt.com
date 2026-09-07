@@ -44,13 +44,13 @@ Upgrade your existing projects to v2 and learn about the tools available to you 
 <Card
     title="Preparing to upgrade from v1 to v2"
     body="Step-by-step guide to prepare your dbt platform projects for upgrading to v2."
-    link="/guides/prepare-dbt-upgrade"
+    link="/guides/prepare-v2-upgrade"
     icon="dbt-bit" />
 
 <Card
     title="Upgrade to v2"
     body="Learn how to upgrade your eligible projects on the dbt platform to v2."
-    link="/guides/upgrade-to-dbt"
+    link="/guides/upgrade-to-v2"
     icon="dbt-bit" />
 
 <Card

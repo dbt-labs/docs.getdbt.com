@@ -14,17 +14,17 @@ import CoreVersionDeprecation from '/snippets/_core-version-deprecation-callout.
 
 ### Resources
 
-- [Changelog](https://github.com/dbt-labs/dbt-core/blob/1.4.latest/CHANGELOG.md)
+- [Changelog](https://github.com/dbt-labs/dbt-oss/blob/1.4.latest/CHANGELOG.md)
 - [<Constant name="core" /> CLI Installation guide](/docs/local/install-dbt)
 - [Cloud upgrade guide](/docs/dbt-versions/upgrade-dbt-platform-version)
 
 **Final release:** January 25, 2023
 
-<Constant name="core" /> v1.4 is a "behind-the-scenes" release. We've been hard at work rebuilding `dbt-core` internals on top of more-solid foundations, to enable an exciting year of new feature development. Check out the [v1.5 milestone](https://github.com/dbt-labs/dbt-core/milestone/82) in GitHub for a preview of what's planned for April.
+<Constant name="core" /> v1.4 is a "behind-the-scenes" release. We've been hard at work rebuilding `dbt-core` internals on top of more-solid foundations, to enable an exciting year of new feature development. Check out the [v1.5 milestone](https://github.com/dbt-labs/dbt-oss/milestone/82) in GitHub for a preview of what's planned for April.
 
 ## What to know before upgrading
 
-dbt Labs is committed to providing backward compatibility for all versions 1.x. If you encounter an error upon upgrading, please let us know by [opening an issue](https://github.com/dbt-labs/dbt-core/issues/new).
+dbt Labs is committed to providing backward compatibility for all versions 1.x. If you encounter an error upon upgrading, please let us know by [opening an issue](https://github.com/dbt-labs/dbt-oss/issues/new).
 
 ### For consumers of dbt artifacts (metadata)
 
@@ -45,7 +45,7 @@ The high-level changes are:
 - Add support for Incremental Predicates (if applicable)
 - Make use of new adapter-zone tests
 
-For more detailed information and to ask any questions, please visit [<Constant name="core" />/discussions/6624](https://github.com/dbt-labs/dbt-core/discussions/6624).
+For more detailed information and to ask any questions, please visit [<Constant name="core" />/discussions/6624](https://github.com/dbt-labs/dbt-oss/discussions/6624).
 
 ## New and changed documentation
 

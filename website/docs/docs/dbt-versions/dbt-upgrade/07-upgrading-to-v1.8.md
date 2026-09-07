@@ -10,13 +10,13 @@ availability:
  
 ## Resources
 
-- [Changelog](https://github.com/dbt-labs/dbt-core/blob/1.8.latest/CHANGELOG.md)
+- [Changelog](https://github.com/dbt-labs/dbt-oss/blob/1.8.latest/CHANGELOG.md)
 - [<Constant name="core" /> CLI Installation guide](/docs/local/install-dbt)
 - [Cloud upgrade guide](/docs/dbt-versions/upgrade-dbt-platform-version)
 
 ## What to know before upgrading
 
-dbt Labs is committed to providing backward compatibility for all versions 1.x, except for any changes explicitly mentioned on this page. If you encounter an error upon upgrading, please let us know by [opening an issue](https://github.com/dbt-labs/dbt-core/issues/new).
+dbt Labs is committed to providing backward compatibility for all versions 1.x, except for any changes explicitly mentioned on this page. If you encounter an error upon upgrading, please let us know by [opening an issue](https://github.com/dbt-labs/dbt-oss/issues/new).
 
 ## Release tracks 
 

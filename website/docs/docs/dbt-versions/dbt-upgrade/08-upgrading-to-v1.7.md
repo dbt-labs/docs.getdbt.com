@@ -14,14 +14,14 @@ import CoreVersionDeprecation from '/snippets/_core-version-deprecation-callout.
 
 ## Resources
 
-- [Changelog](https://github.com/dbt-labs/dbt-core/blob/1.7.latest/CHANGELOG.md)
+- [Changelog](https://github.com/dbt-labs/dbt-oss/blob/1.7.latest/CHANGELOG.md)
 - [<Constant name="core" /> CLI Installation guide](/docs/local/install-dbt)
 - [Cloud upgrade guide](/docs/dbt-versions/upgrade-dbt-platform-version)
-- [Release schedule](https://github.com/dbt-labs/dbt-core/issues/8260)
+- [Release schedule](https://github.com/dbt-labs/dbt-oss/issues/8260)
 
 ## What to know before upgrading
 
-dbt Labs is committed to providing backward compatibility for all versions 1.x, with the exception of any changes explicitly mentioned below. If you encounter an error upon upgrading, please let us know by [opening an issue](https://github.com/dbt-labs/dbt-core/issues/new).
+dbt Labs is committed to providing backward compatibility for all versions 1.x, with the exception of any changes explicitly mentioned below. If you encounter an error upon upgrading, please let us know by [opening an issue](https://github.com/dbt-labs/dbt-oss/issues/new).
 
 import SnowflakeColumn from '/snippets/_snowflake-column-size.md';
 

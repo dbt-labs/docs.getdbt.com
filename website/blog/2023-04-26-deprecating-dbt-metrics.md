@@ -24,7 +24,7 @@ With the upcoming integration with MetricFlow, we're on the cusp of a new era fo
 
 We know that some of you have been using the package to help serve your organizations. **We will be providing migration scripts to help reduce the complexity of upgrading to the new specs.** 
 
-If you’re interested in getting ahead of the transition, we recommend that you start familiarizing yourself with the new spec in this [Github Discussion](https://github.com/dbt-labs/dbt-core/discussions/7456). If you’re even more curious, you can read the MetricFlow documentation, although some elements will change in the coming months as we work on the integration. I’m confident that, with a little time, you'll come to love MetricFlow far more than you did dbt_metrics.
+If you’re interested in getting ahead of the transition, we recommend that you start familiarizing yourself with the new spec in this [Github Discussion](https://github.com/dbt-labs/dbt-oss/discussions/7456). If you’re even more curious, you can read the MetricFlow documentation, although some elements will change in the coming months as we work on the integration. I’m confident that, with a little time, you'll come to love MetricFlow far more than you did dbt_metrics.
 
 Before we get into the technical details around why we’re deprecating the package, I want to give a big thank you to everyone from the community who used or contributed to the dbt_metrics package over the last year. From the bottom of my heart, I’ve loved hearing from all of you and discussing ways to help you solve your organization's data problems. It’s been a dream come true to work in this area and it wouldn’t have been possible without all of you lovely folks.
 

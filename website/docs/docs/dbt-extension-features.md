@@ -1,7 +1,7 @@
 ---
 title: dbt extension features
 id: dbt-extension-features
-description: "The dbt VS Code extension is backed by the dbt Fusion engine and a powerful LSP."
+description: "The dbt VS Code extension is backed by the dbt engine and a powerful LSP."
 sidebar_label: "dbt extension features"
 pagination_next: "docs/install-dbt-extension"
 image: /img/docs/extension/extension-features.png
@@ -11,7 +11,7 @@ availability: local_all
 # dbt VS Code extension features <Lifecycle status="preview" />
 
 <IntroText>
-The dbt VS Code extension requires the <Constant name="fusion_engine" /> and uses a dynamic Language Server Protocol (<Term id="lsp" />) to provide a fast, intelligent, and cost-efficient dbt development experience with enhanced workflows and easy navigation.
+The dbt VS Code extension uses a dynamic Language Server Protocol (<Term id="lsp" />) to provide a fast, intelligent, and cost-efficient dbt development experience with enhanced workflows and easy navigation.
 </IntroText>
 
 
@@ -35,7 +35,7 @@ import ExtensionFeatures from '/snippets/_extension-features.md';
 
 ## Lightning-fast parse times
 
-Parse even the largest projects up to 30x faster than with <Constant name="core" />.
+Parse even the largest projects up to 30x faster than with dbt v1.
 
 **Requires registration** — LSP query cache (for faster incremental compiles).
 
@@ -83,7 +83,7 @@ Syntax-tree diagnostics for Jinja, YAML, and SQL syntax errors (L1):
 
 **Requires registration:**
 
-L2 Fusion SQL comprehension diagnostics (depends on strict static analysis):
+L2 dbt v2 SQL comprehension diagnostics (depends on strict static analysis):
 
 - Missing `group by` clauses, or columns that are neither grouped nor aggregated
 - Invalid function names or arguments
