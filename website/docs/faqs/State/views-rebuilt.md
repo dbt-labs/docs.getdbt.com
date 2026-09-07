@@ -114,3 +114,5 @@ dbt-state explain --verbose -s my_model_name
 
 </VersionBlock>
 
+If you use the <Constant name="dbt_platform" />, the same information is available without running a command &mdash; go to the [**Explain** tab](/docs/deploy/dbt-state-interface#explain-tab) on the job run details page to see the full decision breakdown for each node.
+

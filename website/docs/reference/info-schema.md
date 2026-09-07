@@ -143,7 +143,7 @@ The `dbt_rt` namespace contains tables and views with runtime execution data.
 | `dbt_rt.invocations` | One row per dbt invocation |
 | `dbt_rt.run_results` | Results for each node in each invocation |
 | `dbt_rt.run_results_latest` | View of the most recent run result per node |
-| `dbt_rt.source_freshness` | Source freshness check results |
+| `dbt_rt.freshness` | Freshness check results for sources and models; `resource_type` indicates whether a row is a `source` or `model` |
 | `dbt_rt.diagnostics` | Diagnostic data from invocations |
 | `dbt_rt.adapter_queries` | Adapter queries issued during invocations |
 

@@ -1,3 +1,5 @@
+import WizardAgentModes from '/snippets/_wizard-agent-modes.md';
+
 <Expandable alt_header="Availability and considerations">
 
 - **Where it runs:** Supported in the [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio) only, all [deployment types](/docs/platform/about-platform/tenancy?version=2.0). Not supported in VS Code or the <Constant name="platform_cli" />.
@@ -16,14 +18,14 @@ Use the <Constant name="wizard" /> panel to generate resources with quick action
 To use the <Constant name="wizard" />, follow these steps:
 
 1. Open your dbt project in the [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio), then click **<Constant name="wizard" />** in the command palette.
-2. Start a prompt in several ways in the [<Constant name="wizard" /> panel](/docs/dbt-ai/wizard-ide):
+2. Start a prompt in several ways in the [<Constant name="wizard" /> panel](/docs/dbt-ai/wizard-ide?version=2#panel-controls):
    - **Quick actions**: Use [quick-action resource generation](/docs/dbt-ai/wizard-ide#quick-action-resource-generation) at the top of the panel for quick action prompts.
    - **Plain text**: Type directly into the text field to describe what you want to build or change.
    - **Model context**: Type `@` to select a model as context. This scopes the agent's changes to that resource.
-3. Select the [**Agent mode** button](/docs/dbt-ai/wizard-ide) to specify the mode for the <Constant name="wizard" />. Available modes are **Ask for approval** (default) and **Edit files automatically**.
+3. Select the [**Agent mode** button](/docs/dbt-ai/wizard-ide#agent-modes) to specify the mode for the <Constant name="wizard" />. Available modes are **Explore only**, **Ask for approval** (default), and **Edit files automatically**.
 4. Select the dbt <Term id="managed" /> model you'd like to work with from the [model picker](/docs/dbt-ai/pricing-billing/overview#choose-a-model) next to the **Agent mode** button.
-5. [Review the agent's suggestions](/docs/dbt-ai/wizard-ide) and approve or reject the changes. You can also use the **Start new dbt Wizard chat** button to start a new chat session.
-6. [Approve dbt commands](/docs/dbt-ai/wizard-ide) when the <Constant name="wizard" /> requests to run commands like `dbt compile` or `dbt build`.
+5. [Review the agent's suggestions](/docs/dbt-ai/wizard-ide#reviewing-agent-suggestions) and approve or reject the changes. You can also use the **Start new dbt Wizard chat** button to start a new chat session.
+6. [Approve dbt commands](/docs/dbt-ai/wizard-ide#granting-command-permissions) when the <Constant name="wizard" /> requests to run commands like `dbt compile` or `dbt build`.
 7. Repeat the process to build or change more models.
 8. Commit the changes to your dbt project and open a pull request.
 
@@ -43,8 +45,8 @@ For more details on the <Constant name="wizard" /> and how it works, expand the 
 
 The <Constant name="wizard" /> panel contains:
 
-1. **Quick actions** (center): Buttons at the top of the panel for quick action prompts. When selected, the text field is pre-filled with a prompt.
-2. **Agent mode button** (bottom left): Switch between **Ask for approval** and **Edit files automatically** mode. Click the button to change modes.
+1. **Quick actions** (center): Buttons at the top of the panel for common tasks like generating documentation, tests, semantic models, and metrics. When selected, the text field is pre-filled with a prompt.
+2. **Agent mode button** (bottom left): Switch between **Explore only**, **Ask for approval**, and **Edit files automatically** mode. Click the button to change modes.
 3. **Model picker** (bottom left): Select the dbt <Term id="managed" /> model to use for the session. Refer to [Choose a model](#choose-a-model) for the available models.
 4. **dbt model context** (bottom left): Shows the currently open file. Use `@` in the text field to reference a different dbt model. Click **x** to remove the dbt model context.
 5. **Text input field** (bottom left): Type your prompt in the text field to describe what you want to build or change. Type `@` to select a dbt model as context. This scopes the agent's changes to that resource.
@@ -57,19 +59,13 @@ The <Constant name="wizard" /> panel contains:
 
 </Expandable>
 
+<a id="agent-modes"></a>
+
 <Expandable alt_header="Agent modes">
 
-The <Constant name="wizard" /> operates in three modes:
+<WizardAgentModes />
 
-<SimpleTable>
-
-| Mode | Behavior |
-|------|----------|
-| **Ask for approval** (default) | The agent drafts edits to files. You approve each file change before it is persisted. Best when you want tight control over what gets saved to your branch. |
-| **Edit files automatically** | The agent drafts and automatically saves file edits without per-file approval. Best for faster iteration when you're confident in the prompt. |
-</SimpleTable>
-
-You can switch between modes at any time by clicking the **Agent mode** button in the <Constant name="wizard" /> panel. 
+<Lightbox src="/img/docs/dbt-platform/wizard-modes.png" width="95%" title="dbt Wizard in Explore only, Ask for approval, and Edit files automatically modes." />
 
 </Expandable>
 
