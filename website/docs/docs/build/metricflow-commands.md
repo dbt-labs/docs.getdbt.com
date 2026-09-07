@@ -7,7 +7,7 @@ tags: [Metrics, Semantic Layer]
 availability: all_users
 ---
 
-Once you define metrics in your dbt project, you can query metrics, dimensions, and dimension values, and validate your configs using the MetricFlow commands, available across [dbt v1 or v2](/docs/introduction). To upgrade to v2, see [Get started with dbt v2](/docs/dbt/get-started-dbt). 
+Once you define metrics in your dbt project, you can query metrics, dimensions, and dimension values, and validate your configs using the MetricFlow commands, available across [dbt versions](/docs/introduction). To upgrade to v2, see [Get started with dbt v2](/docs/dbt/get-started-dbt). 
  
 MetricFlow allows you to define and query metrics in your dbt project in [<Constant name="dbt_platform" />](/docs/platform/about-develop-dbt) or [dbt v1 or v2](/docs/local/install-dbt?version=2) locally. To experience the power of the universal [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl) and dynamically query those metrics in downstream tools, you'll need a <Constant name="dbt" /> [Starter, Enterprise, or Enterprise+](https://www.getdbt.com/pricing/) account. 
 
