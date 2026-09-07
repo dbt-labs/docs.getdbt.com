@@ -155,7 +155,7 @@ rustup show  # verify
 go version  # verify
 
 # Clone the repo
-git clone https://github.com/dbt-labs/dbt-oss
+git clone https://github.com/dbt-labs/dbt-core
 cd dbt-core
 
 # Verify you can build
@@ -672,7 +672,7 @@ Align with the adapters team on: which materializations you're targeting in the 
 
 ## Reference: File-by-file implementation guide
 
-A community contributed v2 adapter touches roughly 13 files, all in the public [dbt-labs/dbt-oss](https://github.com/dbt-labs/dbt-oss) repo. The "Exasol example" column shows what it looks like in practice — substitute your warehouse name and system catalog throughout.
+A community contributed v2 adapter touches roughly 13 files, all in the public [dbt-labs/dbt-core](https://github.com/dbt-labs/dbt-core) repo. The "Exasol example" column shows what it looks like in practice — substitute your warehouse name and system catalog throughout.
 
 | Generic path | What it does | Exasol example |
 |---|---|---|

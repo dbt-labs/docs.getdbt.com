@@ -213,7 +213,7 @@ We’ve highlighted several of the pain points of working with stored procedures
 
 Over time, this approach is much more extensible than continuing to stack code on top of an unwieldy process. It’s also automatically documented, and using tests ensures the pipeline is resilient to changes over time. We continue mapping the data flow from the existing stored procedure to the dbt data pipeline, iterating until we achieve the same outputs as before. 
 
-We’d love to hear your feedback! You can find us on [slack](https://www.getdbt.com/community/), [github](https://github.com/dbt-labs/dbt-oss), or [reach out](https://www.getdbt.com/contact/) to our sales team. 
+We’d love to hear your feedback! You can find us on [slack](https://www.getdbt.com/community/), [github](https://github.com/dbt-labs/dbt-core), or [reach out](https://www.getdbt.com/contact/) to our sales team. 
 
 ## Appendix
 
