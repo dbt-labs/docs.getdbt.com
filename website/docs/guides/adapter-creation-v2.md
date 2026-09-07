@@ -205,7 +205,7 @@ rustup show  # verify
 go version  # verify
 
 # Clone the repo
-git clone https://github.com/dbt-labs/dbt-oss
+git clone https://github.com/dbt-labs/dbt-core
 cd dbt-core
 
 # Verify you can build
@@ -246,7 +246,7 @@ What context helps for each arm:
 Watch out for:
 - **Hallucinated file paths**: AI often invents <Constant name="core_v2" /> paths. Use the file breakdown below as ground truth.
 - **Always verify with the type checker**: run `cargo build -p <crate>` after any AI-generated changes.
-- **SQL macro patterns from v1** may not apply cleanly in <Constant name="core_v2" />. Compare against the reference `adapters.sql` at `crates/dbt-loader/src/dbt_macro_assets/dbt-exasol/macros/adapters.sql` in [dbt-labs/dbt-oss](https://github.com/dbt-labs/dbt-oss).
+- **SQL macro patterns from v1** may not apply cleanly in <Constant name="core_v2" />. Compare against the reference `adapters.sql` at `crates/dbt-loader/src/dbt_macro_assets/dbt-exasol/macros/adapters.sql` in [dbt-labs/dbt-core](https://github.com/dbt-labs/dbt-core).
 
 ## Step 5: Build a new adapter
 
@@ -673,7 +673,7 @@ Align with the adapters team on: which materializations you're targeting in the 
 
 ## Reference: File-by-file implementation guide
 
-A community-contributed <Constant name="core_v2" /> adapter touches roughly 13 files, all in the public [dbt-labs/dbt-oss](https://github.com/dbt-labs/dbt-oss) repo. The "Exasol example" column shows what it looks like in practice. Substitute your warehouse name and system catalog throughout.
+A community-contributed <Constant name="core_v2" /> adapter touches roughly 13 files, all in the public [dbt-labs/dbt-core](https://github.com/dbt-labs/dbt-core) repo. The "Exasol example" column shows what it looks like in practice. Substitute your warehouse name and system catalog throughout.
 
 | Generic path | What it does | Exasol example |
 |--------------|--------------|----------------|

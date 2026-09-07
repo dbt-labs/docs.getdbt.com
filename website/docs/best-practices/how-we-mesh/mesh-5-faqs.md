@@ -222,7 +222,7 @@ First things first: access to underlying data is always defined and enforced by 
 * **Public:** Models with `public` access can be referenced everywhere. These are the “data products” of your organization.
 
 * **Protected:** Models with `protected` access can only be referenced within the same project. This is the default level of model access. 
-We are discussing a future extension to `protected` models to allow for their reference in _specific_ downstream projects. Please read [the GitHub issue](https://github.com/dbt-labs/dbt-oss/issues/9340), and upvote/comment if you’re interested in this use case.
+We are discussing a future extension to `protected` models to allow for their reference in _specific_ downstream projects. Please read [the GitHub issue](https://github.com/dbt-labs/dbt-core/issues/9340), and upvote/comment if you’re interested in this use case.
 
 * **Private:** Model `groups` enable more-granular control over where `private` models can be referenced. By defining a group, and configuring models to belong to that group, you can restrict other models (not in the same group) from referencing any `private` models the group contains. Groups also provide a standard mechanism for defining the `owner` of all resources it contains.
 
