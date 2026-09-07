@@ -39,7 +39,7 @@ This section applies to <Constant name="dbt_platform" /> users running either th
 
 <TabItem value="core" label="MetricFlow with local open-source dbt">  
 
-This section applies to local open-source users who aren't on <Constant name="dbt_platform" />, whether you execute with dbt v1 or with [source available](https://www.getdbt.com/dbt-fusion-engine-license-agreement) dbt v2.
+This section applies to local self-hosted dbt users who aren't on <Constant name="dbt_platform" />.
 
 You can install [MetricFlow](https://github.com/dbt-labs/metricflow#getting-started) from [PyPI](https://pypi.org/project/dbt-metricflow/). You need to use `pip` to install MetricFlow on Windows or Linux operating systems:
  
