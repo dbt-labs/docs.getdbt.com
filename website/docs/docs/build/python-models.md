@@ -85,7 +85,7 @@ dbt Python models have access to almost all of the same configuration options as
 ### Defining a Python model
 
 Each Python model lives in a `.py` file in your `models/` folder. It defines a function named **`model()`**, which takes two parameters:
-- **`dbt`**: A class compiled by dbt Core, unique to each model, enables you to run your Python code in the context of your dbt project and DAG.
+- **`dbt`**: A class compiled by <Constant name="core" />, unique to each model, enables you to run your Python code in the context of your dbt project and DAG.
 - **`session`**: A class representing your data platform’s connection to the Python backend. The session is needed to read in tables as DataFrames, and to write DataFrames back to tables. In PySpark, by convention, the `SparkSession` is named `spark`, and available globally. For consistency across platforms, we always pass it into the `model` function as an explicit argument called `session`.
 
 The `model()` function must return a single DataFrame. On Snowpark (Snowflake), this can be a Snowpark or pandas DataFrame. On BigQuery this can be BigFrames, pandas or Spark datafame. Via PySpark (Databricks), this can be a Spark, pandas, or pandas-on-Spark DataFrame. For more information about choosing between pandas and native DataFrames, see [DataFrame API + syntax](#dataframe-api-and-syntax).
