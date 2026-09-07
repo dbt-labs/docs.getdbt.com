@@ -184,6 +184,66 @@ select 'A'          as user_id,
        current_date as my_date
 ```
 
+#### AWS S3 Tables
+
+In `dbt-athena` 1.11.1 and later, you can write Iceberg models to [Amazon S3 Tables](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-tables.html) by defining a catalog with `type: s3_tables` in `catalogs.yml` and setting `catalog_name` on the model. Set `catalog_database` to the federated catalog name for your table bucket (`s3tablescatalog/YOUR_TABLE_BUCKET`). The model's `schema` is the S3 Tables namespace.
+
+For the recommended `catalogs.yml` format, enable the v2 flag. Refer to [Using catalogs.yml](/docs/build/iceberg/catalogs-yml).
+
+<File name='dbt_project.yml'>
+
+```yml
+flags:
+  use_catalogs_v2: true
+```
+
+</File>
+
+<File name='catalogs.yml'>
+
+```yml
+catalogs:
+  - name: my_s3_tables
+    type: s3_tables
+    table_format: iceberg
+    config:
+      athena:
+        catalog_database: s3tablescatalog/my-table-bucket
+        file_format: parquet
+```
+
+</File>
+
+If you use the older `catalogs.yml` spec (without `use_catalogs_v2`), configure the same catalog with `write_integrations`:
+
+<File name='catalogs.yml'>
+
+```yml
+catalogs:
+  - name: my_s3_tables
+    active_write_integration: s3_tables
+    write_integrations:
+      - name: s3_tables
+        catalog_type: s3_tables
+        table_format: iceberg
+        file_format: parquet
+        catalog_database: s3tablescatalog/my-table-bucket
+```
+
+</File>
+
+Then point the model at that catalog:
+
+```sql
+{{ config(
+    materialized='table',
+    catalog_name='my_s3_tables',
+    schema='my_namespace'
+) }}
+
+select 1 as id
+```
+
 Iceberg supports bucketing as hidden partitions. Use the `partitioned_by` config to add specific bucketing
 conditions.
 
