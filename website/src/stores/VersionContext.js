@@ -62,11 +62,10 @@ export const VersionContextProvider = ({ value = "", children }) => {
 
   // Helper to update URL with the version parameter
   const updateUrlParams = useCallback((newSubProductName) => {
+    // Blog posts aren't versioned content, so never add a version param there
+    if (location.pathname.startsWith('/blog')) return
+
     const url = new URL(window.location.href)
-
-    // Don't add a version param to blog pages that don't already have query params
-    if (location.pathname.startsWith('/blog') && !url.search) return
-
     const sp = findSubProduct(newSubProductName);
 
     // Strip legacy params that are no longer written to the URL
