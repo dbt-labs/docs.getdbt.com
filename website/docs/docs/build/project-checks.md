@@ -12,11 +12,11 @@ As dbt projects grow and more contributors add models, quality silently degrades
 
 Project quality checks in <Constant name="core_v2" /> let you enforce project standards with SQL. Write a rule (for example, every model has a description, required tags are set) and dbt enforces it before any warehouse work runs. If the project violates a rule, `dbt build` stops before compiling or materializing a single model.
 
-Checks are similar to data tests, but earlier and cheaper: they run at parse time, locally, and with no warehouse connection.
+Checks are SQL queries that use the [`{{ info_schema() }}` macro](/reference/dbt-jinja-functions/info-schema-macro) to query project metadata (models, sources, columns, edges, and more) and enforce rules about your project's structure.
 
-Checks are SQL queries that run against the [dbt Information Schema](/reference/info-schema/), a set of Parquet files that dbt generates to describe the resources in your project. Checks use the [`{{ info_schema() }}` macro](/reference/dbt-jinja-functions/info-schema-macro) to query this information and enforce rules about your project's structure and metadata.
+They are similar to [data tests](/docs/build/data-tests) &mdash; a check finds the "bad" rows and it passes if the query returns zero rows, and fails otherwise. However, checks are earlier and cheaper than data tests: they run at parse time, locally, and with no warehouse connection.
 
-Before running checks, you must generate the dbt Information Schema. Once generated, checks run automatically with every `dbt build`. You can also run them on demand with `dbt check` or skip them during a build with `--skip-checks`.
+Checks run automatically with every `dbt build`. You can also run them on demand with `dbt check` or skip them during a build with `--skip-checks`.
 
 ## Guidelines for writing SQL check files
 
@@ -25,21 +25,23 @@ This section covers the rules and constraints for writing check SQL files and co
 - A check is a SQL file in your `checks/` directory paired with a properties YAML file in the same directory. To use a different directory, set [`check-paths`](/reference/project-configs/check-paths) in `dbt_project.yml`.
 - The filename without the `.sql` extension becomes the check name (for example, `all_models_have_descriptions` is the check name for `checks/all_models_have_descriptions.sql`).
 - Jinja in check files renders at parse time. You can use Jinja, but the result must be valid SQL at that point; checks do not go through a separate compile step the way models do.
-- Checks cannot use `ref()` and do not appear in the model DAG. They access the dbt Information Schema only through `{{ info_schema() }}`.
+- Checks cannot use `ref()` and do not appear in the model DAG. However, checks are dbt resources; each check appears in `manifest.json`, supports `tags` and `meta`, and `dbt ls` lists them. Checks access the [dbt Information Schema](/reference/info-schema/) only through `{{ info_schema() }}`.
 
 ### The `info_schema()` macro
 
-`{{ info_schema() }}` is the supported way to reference the dbt Information Schema in a check. Pass the name of the table you want to query (for example, `{{ info_schema('models') }}` to query models, or `{{ info_schema('edges') }}` to query DAG edges). For the full list of available tables and columns, refer to [Views and columns reference](/reference/info-schema-views/).
+[`{{ info_schema() }}`](/reference/dbt-jinja-functions/info-schema-macro) is the supported way to reference the dbt Information Schema in a check. Pass the name of the table you want to query (for example, `{{ info_schema('models') }}` to query models, or `{{ info_schema('edges') }}` to query DAG edges). For the full list of available tables and columns, refer to [Views and columns reference](/reference/info-schema-views/).
 
 ## Writing your first check
 
+<!--
 **Prerequisite:** Checks run against the [dbt Information Schema](/reference/info-schema/). Make sure it is available before you run your checks. Generate the schema by passing `--generate-info-schema` to `dbt build`, `dbt run`, `dbt compile`, or `dbt parse`.
+-->
 
 The following steps walk you through creating your first check.
 
 1. Declare the `info_schema` version in `dbt_project.yml`:
 
-    The `info_schema.version` tells dbt which version of the [dbt Information Schema](/reference/info-schema/) your checks are written against.
+    The `info_schema.version` pins which version of the view schema the [`{{ info_schema() }}`](/reference/dbt-jinja-functions/info-schema-macro) macro resolves to.
 
     <File name='dbt_project.yml'>
 
@@ -52,7 +54,7 @@ The following steps walk you through creating your first check.
 
 2. Write a check under `checks/`:
 
-    Like data tests, a check is a query that finds the "bad" rows. It passes if the query returns zero rows, and fails otherwise.
+    Use [`{{ info_schema() }}`](/reference/dbt-jinja-functions/info-schema-macro) to query project metadata. A check passes if the query returns zero rows. For available views and columns, refer to the [Views and columns reference](/reference/info-schema-views/).
 
     <File name='checks/all_models_have_descriptions.sql'>
 
@@ -64,9 +66,10 @@ The following steps walk you through creating your first check.
 
     </File>
 
-3. Configure the check in a properties YAML file in your `checks/` directory:
 
-    <File name='checks/_all_models_have_descriptions.yml'>
+3. Configure the check in a properties YAML file in your `checks/` directory. You can use any file name; for this example, we're using `_checks.yml`.
+
+    <File name='checks/_checks.yml'>
 
     ```yaml
     version: 2
@@ -134,7 +137,7 @@ Checks run with `dbt check` and `dbt build`. Other commands (`dbt run`, `dbt tes
 |---------|----------|
 | `dbt check` | Runs all enabled checks. |
 | `dbt check <name1> <name2> …` | Runs only the named checks. An unknown check name is an error; a disabled check name is accepted and skipped. |
-| `dbt build` | Runs all enabled checks before models compile. A failing check stops the run before any model is compiled or executed. Warn-severity failures are reported and the build continues. Use `--skip-checks` to bypass. |
+| `dbt build` | Runs all enabled checks before models compile. A failing check stops the run before any model is compiled or executed. Warn failures are reported and the build continues. Use `--skip-checks` to bypass. |
 
 ## Skipping checks on build
 
@@ -153,7 +156,27 @@ checks:
       enabled: false
 ```
 
-If dbt cannot generate the dbt Information Schema, it skips all checks and `dbt build` continues with a `CheckIndexUnavailable` warning (`dbt1654`). To fail the build when this happens, promote that warning to an error using [`warn_error_options`](/reference/global-configs/warnings).
+To disable all checks at the project level, set `+enabled: false` under `checks:` in `dbt_project.yml`. You can also scope it to a specific package or check:
+
+```yaml
+checks:
+  +enabled: false  # disables all checks in the project
+
+  # or scope to a package:
+  my_package:
+    +enabled: false
+
+  # or scope to a single check:
+  my_package:
+    all_models_have_descriptions:
+      +enabled: false
+```
+
+:::note Disabling at the project level
+Unlike the `--skip-checks` flag, setting `+enabled: false` in `dbt_project.yml` is persistent and nothing in the output shows that checks were skipped. A successful `dbt build` in CI doesn't indicate whether the project has no checks or all checks are disabled. Running `dbt check <name>` for a disabled check also succeeds without running the check or returning an error.
+:::
+
+If dbt cannot prepare the project metadata needed to run checks, it skips all checks and `dbt build` continues with a `CheckIndexUnavailable` warning (`dbt1654`). To fail the build when this happens, promote that warning to an error using [`warn_error_options`](/reference/global-configs/warnings).
 
 ## Using selectors with checks
 
@@ -163,7 +186,7 @@ Why checks work this way:
 
 - You generally don't need to exclude checks or run only a subset of them. Checks are fast. Error-severity checks should block execution if violated; if a rule is informational, set it to `warn`. If a check is no longer relevant, disable or delete it.
 - You may want to limit which resources are checked. This lets you incrementally introduce checks in an existing project. In development, run `dbt build --select <the part of your DAG you're working on>` to check only those resources. In CI, your checks run only against modified resources.
-- When developing a new check, you can run one check at a time: `dbt check name_of_check`, or `dbt check name_of_check --select <resources to check>` to run it against a specific subset. You can also preview any `info_schema` query directly: `dbt show --inline "select * from {{ info_schema('...') }}"`.
+- When developing a new check, you can run one check at a time: `dbt check name_of_check`, or `dbt check name_of_check --select <resources to check>` to run it against a specific subset. You can also preview any `info_schema` query directly: `dbt show --inline "select * from {{ info_schema('...') }}"`. For example, to inspect your checks' own metadata, run `dbt show --inline "select * from {{ info_schema('checks') }}"`.
 
 `state:modified` behaves like any other selector. If it produces an empty selection, checks are `Skipped` and dbt emits a `NoNodesForSelectionCriteria` warning naming the selector:
 
@@ -191,9 +214,28 @@ Each check produces one of the following statuses:
 | `Skipped` | Selector matched nothing the check can report on | No | `dbt1652` |
 | `Error` | Check could not be evaluated (bad SQL, or `selection_filter_on` names a missing column) | Yes, even if `severity` is `warn` | `dbt1653` |
 
-A failing check prints a short preview of the result rows. Each check result is recorded in `run_results.json` as `check.<project>.<name>`. When a `dbt build` is blocked by a failing check, the models that did not run are recorded as `Skipped` with the reason `skipped because a parse-time check failed`.
+Each check prints one result line in the same format as data tests:
 
-## Retry
+```shell
+ Failed [  0.02s] check all_models_have_descriptions
+ Passed [  0.00s] check zz_pass
+Skipped [  0.00s] check documentation_coverage
+```
+
+A failing or warning check prints its violation rows as a table, the way `dbt show` prints query rows:
+
+```shell
+[error] [CheckFailed (dbt1650)]: check 'all_models_have_descriptions' failed with 1 violation(s)
+┌──────────────────────────────────┬──────────────┬──────────────────────────┐
+│ unique_id                        ┆ name         ┆ message                  │
+╞══════════════════════════════════╪══════════════╪══════════════════════════╡
+│ model.check_command.undocumented ┆ undocumented ┆ model has no description │
+└──────────────────────────────────┴──────────────┴──────────────────────────┘
+```
+
+Each check result is recorded in `run_results.json` as `check.<project>.<name>`. When a `dbt build` is blocked by a failing check, the models that did not run are recorded as `Skipped` with the reason `skipped because a parse-time check failed`.
+
+## `dbt retry` with checks
 
 Use `dbt retry` to resume after a failed `dbt check` or a check-blocked `dbt build`. dbt will:
 

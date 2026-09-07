@@ -106,7 +106,7 @@ For full usage, refer to [About dbt docs commands](/reference/commands/cmd-docs)
 
 As dbt projects grow and more contributors add models, quality silently degrades: a model ships without a description, a `public` model gets no `owner`, a model doesn't follow your org's naming convention.
 
-v2 introduces [project quality checks](/docs/build/project-checks) to enforce project standards before any warehouse work runs. You can write a SQL rule that enforces a standard for your project under the `checks/` directory. Before you can run checks, there must be an available [dbt Information Schema](/reference/info-schema/). Once generated, you can run checks on demand with `dbt check`. Checks also run automatically with every `dbt build`. Use `--skip-checks` to bypass checks on a build.
+In dbt v2, you can create [project quality checks](/docs/build/project-checks) to enforce project standards before any warehouse work runs. Write a SQL rule under the `checks/` directory, then run checks on demand with `dbt check`. Checks also run automatically with every `dbt build`. Use `--skip-checks` to bypass checks on a build.
 
 For more information, refer to [Project quality checks](/docs/build/project-checks).
 
