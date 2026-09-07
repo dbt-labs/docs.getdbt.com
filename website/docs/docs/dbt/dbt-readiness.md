@@ -18,8 +18,8 @@ import FusionReadinessPanel from '/snippets/_fusion-migration-readiness-panel.md
 Use the following checklist to prepare your projects for the <Constant name="fusion_engine" />
 
 For walkthroughs of both the preparation and upgrade processes, check out our detailed guides:
-- [ ] [Upgrade to Fusion Pt. 1: Preparing to upgrade](/guides/prepare-dbt-upgrade?step=1)
-- [ ] [Upgrade to Fusion Pt. 2: Making the move](/guides/upgrade-to-dbt?step=1)
+- [ ] [Upgrade to Fusion Pt. 1: Preparing to upgrade](/guides/prepare-v2-upgrade?step=1)
+- [ ] [Upgrade to Fusion Pt. 2: Making the move](/guides/upgrade-to-v2?step=1)
 
 
 ### Upgrade to the latest dbt version (recommended)
@@ -80,7 +80,7 @@ We determine <Constant name="fusion" /> eligibility using data from your job run
 - [ ] Resolve any job failures &mdash; all jobs must run successfully for eligibility checks to work.
 - [ ] Delete any jobs that are no longer in use to ensure accurate eligibility reporting. 
 - [ ] Make sure you've promoted the changes for deprecation resolution and package upgrades to your git branches that map to your deployment environments.
-- [ ] For eligible jobs, use **Debug on <Constant name="fusion" />** to debug in <Constant name="studio_ide" /> or run once on <Constant name="fusion" />. Refer to [Update your jobs](/guides/prepare-dbt-upgrade?step=7).
+- [ ] For eligible jobs, use **Debug on <Constant name="fusion" />** to debug in <Constant name="studio_ide" /> or run once on <Constant name="fusion" />. Refer to [Update your jobs](/guides/prepare-v2-upgrade?step=7).
 
 ### Stay informed about Fusion progress
 

@@ -6,7 +6,7 @@ categories:
   - title: Get started with dbt v2
     guides:
       - dbt
-      - prepare-dbt-upgrade
+      - prepare-v2-upgrade
       - upgrade-to-dbt
       - dbt-platform-local-workflow
       - adapter-creation-v2
