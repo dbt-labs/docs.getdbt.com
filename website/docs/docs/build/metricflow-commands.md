@@ -559,7 +559,7 @@ limit 10
 
 <TabItem value="eg7" label=" Export to CSV">
  
-Add the `--csv file_name.csv` flag to export the results of your query to a CSV. The `--csv` flag is available to local open-source users only (with the `mf` prefix) and isn't supported by `dbt sl` in <Constant name="dbt_platform" />.
+Add the `--csv file_name.csv` flag to export the results of your query to a CSV. The `--csv` flag is available to local self-hosted users only (with the `mf` prefix) and isn't supported by `dbt sl` in <Constant name="dbt_platform" />.
 
 **Query**
 
