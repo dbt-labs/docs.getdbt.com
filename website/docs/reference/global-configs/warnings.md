@@ -35,12 +35,12 @@ In some cases, you may want to convert _all_ warnings to errors. However, when y
 :::
 
 Warnings that should be treated as errors can be specified through the `error` parameter. Warning names can be found in:
-  - [dbt-core's types.py file](https://github.com/dbt-labs/dbt-core/blob/1.latest/core/dbt/events/types.py), where each class name that inherits from `WarnLevel` corresponds to a warning name (e.g. `AdapterDeprecationWarning`, `NoNodesForSelectionCriteria`).
+  - [dbt-core's types.py file](https://github.com/dbt-labs/dbt-oss/blob/1.latest/core/dbt/events/types.py), where each class name that inherits from `WarnLevel` corresponds to a warning name (e.g. `AdapterDeprecationWarning`, `NoNodesForSelectionCriteria`).
   - Using the `--log-format json` flag.
 
 <VersionBlock firstVersion="1.12">
 
-Starting in v1.12, <Constant name="core" /> ignores [Fusion-specific names](https://github.com/dbt-labs/dbt-core/blob/1.12.latest/core/dbt/events/fusion_warn_error_options.py) in `warn_error_options` (for example, `StaticAnalysis` and `PackageParsingCompatibility`) instead of raising an error, and emits a note: `<name> is not being used because it's specific to the dbt Fusion engine.` This lets you share `warn_error_options` configs across <Constant name="core" /> and <Constant name="fusion" />. Genuine typos still raise an error.
+Starting in v1.12, <Constant name="core" /> ignores [Fusion-specific names](https://github.com/dbt-labs/dbt-oss/blob/1.12.latest/core/dbt/events/fusion_warn_error_options.py) in `warn_error_options` (for example, `StaticAnalysis` and `PackageParsingCompatibility`) instead of raising an error, and emits a note: `<name> is not being used because it's specific to the dbt Fusion engine.` This lets you share `warn_error_options` configs across <Constant name="core" /> and <Constant name="fusion" />. Genuine typos still raise an error.
 
 </VersionBlock>
 
@@ -74,7 +74,7 @@ You can choose to:
 - Promote specific warnings to errors using `error` and optionally exclude others from being treated as errors with `--warn-error-options` flag. `warn` tells dbt to continue treating the warnings as warnings.
 - Ignore warnings using `silence` with `--warn-error-options` flag.
 
-In the following example, we're silencing the [`NoNodesForSelectionCriteria` warning](https://github.com/dbt-labs/dbt-core/blob/main/core/dbt/events/types.py#L1227) in the `dbt_project.yml` file by adding it to the `silence` parameter:
+In the following example, we're silencing the [`NoNodesForSelectionCriteria` warning](https://github.com/dbt-labs/dbt-oss/blob/main/core/dbt/events/types.py#L1227) in the `dbt_project.yml` file by adding it to the `silence` parameter:
 
   <File name='dbt_project.yml'>
 
