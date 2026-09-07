@@ -21,7 +21,7 @@ MetricFlow is a Python library that allows you to define and query metrics in yo
 
 <VersionBlock firstVersion="1.12">
 
-MetricFlow is a Python library that allows you to define and query metrics in your dbt project. You can use MetricFlow to query metrics in your dbt project two ways: in the <Constant name="dbt_platform" /> or locally with slef-hosted dbt, where you install and manage the engine yourself.
+MetricFlow is a Python library that allows you to define and query metrics in your dbt project. You can use MetricFlow to query metrics in your dbt project two ways: in the <Constant name="dbt_platform" /> or locally with self-hosted dbt, where you install and manage the engine yourself.
 </VersionBlock>
 
 <Tabs>
