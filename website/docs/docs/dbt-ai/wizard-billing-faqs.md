@@ -56,7 +56,12 @@ Yes. An account admin can turn AI off at any time in **Account settings**. Refer
 
 <Expandable alt_header="If AI is enabled by default, will I be charged automatically?">
 
-No. Enabling AI doesn't authorize paid usage by itself. <Constant name="wizard" /> usage draws from your included consumption pool or trial pool, and dbt-managed <Constant name="wizard" /> pauses once that pool is depleted. Going beyond it requires explicit purchase.
+No. Enabling AI doesn't authorize paid usage by itself. <Constant name="wizard" /> usage draws from your included consumption pool or trial pool.
+
+On Developer, Starter, and self-hosted plans, dbt-managed <Constant name="wizard" /> pauses once that pool is used up, and going beyond it requires explicit purchase.
+
+Enterprise and Enterprise+ accounts should add a committed spend amount to their contract to keep using <Constant name="wizard" />. You may lose access to <Constant name="wizard" /> without this commit in place. If you've set an optional monthly <Constant name="wizard" /> spend limit, that still applies and pauses usage once reached.
+
 
 If you keep AI disabled, you incur no AI charges after September 1, 2026.
 
@@ -64,7 +69,7 @@ If you keep AI disabled, you incur no AI charges after September 1, 2026.
 
 <Expandable alt_header="Which AI features use consumption-based billing?">
 
-Only <Constant name="wizard" /> with dbt-<Term id="managed" /> inference, across <Constant name="wizard" /> in <Constant name="dbt_platform" /> and the <Constant name="wizard" /> CLI. dbt Copilot stays on its existing actions-based model and isn't moving to consumption-based billing.
+Only <Constant name="wizard" /> with dbt-<Term id="managed" /> <Term id="inference"/>, across <Constant name="wizard" /> in <Constant name="dbt_platform" /> and the <Constant name="wizard" /> CLI. dbt Copilot stays on its existing actions-based model and isn't moving to consumption-based billing.
 
 </Expandable>
 
@@ -84,7 +89,7 @@ Contact your dbt Labs account team for questions about enabling or disabling AI 
 
 ## Billing FAQs
 
-The following questions cover how dbt-<Term id="managed" /> inference is metered for <Constant name="wizard" /> usage, what your plan's consumption pool will include, and how you can track and cap your spend once Wizard usage-based billing goes live on September 1st, 2026.
+The following questions cover how dbt-<Term id="managed" /> <Term id="inference"/> is metered for <Constant name="wizard" /> usage, what your plan's consumption pool will include, and how you can track and cap your spend once Wizard usage-based billing goes live on September 1st, 2026.
 
 <WizardBillingFaqs />
 

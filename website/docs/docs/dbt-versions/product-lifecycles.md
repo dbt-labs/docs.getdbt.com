@@ -9,7 +9,7 @@ availability: all_users
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-dbt Labs manages the lifecycle of features across the dbt platform, dbt Core, and the <Constant name="fusion_engine" />. Each feature is assigned a lifecycle status that describes its stability, support level, and availability. Use the tabs below to find the lifecycle stages for the product you're using.
+dbt Labs manages the lifecycle of features across the dbt platform, <Constant name="core" />, and the <Constant name="fusion_engine" />. Each feature is assigned a lifecycle status that describes its stability, support level, and availability. Use the tabs below to find the lifecycle stages for the product you're using.
 
 Service level objective (SLO) support varies between products and lifecycles.
 
@@ -70,7 +70,7 @@ dbt platform features adhere to the following lifecycle path:
 </TabItem>
 <TabItem value="core" label="dbt Core v1.x and v2">
 
-dbt Core releases follow semantic versioning. Read more in [About dbt versions](/docs/dbt-versions). dbt Core v1.x and v2 releases both adhere to the following lifecycle path:
+<Constant name="core" /> releases follow semantic versioning. Read more in [About dbt versions](/docs/dbt-versions). <Constant name="core" /> v1.x and v2 releases both adhere to the following lifecycle path:
 
 <div className="grid--3-col" style={{gap: '1.5rem', marginTop: '1rem'}}>
 
@@ -79,7 +79,7 @@ dbt Core releases follow semantic versioning. Read more in [About dbt versions](
     <strong style={{color: 'var(--color-terminal-black-600)', fontSize: '1rem'}}>Undocumented</strong>
   </div>
   <div style={{padding: '1.25rem 1.5rem', background: 'var(--ifm-background-color)'}}>
-    dbt Core is an open source product, and the codebase may have visibility into internal, non-contracted, or intentionally undocumented functionality. Not considered part of the release's product surface area.
+    <Constant name="core" /> is an open source product, and the codebase may have visibility into internal, non-contracted, or intentionally undocumented functionality. Not considered part of the release's product surface area.
   </div>
 </div>
 

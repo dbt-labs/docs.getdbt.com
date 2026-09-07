@@ -35,7 +35,7 @@ import ExtensionFeatures from '/snippets/_extension-features.md';
 
 ## Lightning-fast parse times
 
-Parse even the largest projects up to 30x faster than with dbt Core.
+Parse even the largest projects up to 30x faster than with <Constant name="core" />.
 
 **Requires registration** — LSP query cache (for faster incremental compiles).
 
