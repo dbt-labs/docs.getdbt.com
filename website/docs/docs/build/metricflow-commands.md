@@ -47,7 +47,7 @@ You can install [MetricFlow](https://github.com/dbt-labs/metricflow#getting-star
 2. Run `pip install dbt-metricflow`.
   * You can install MetricFlow using PyPI as an extension of your dbt adapter in the command line. To install the adapter, run `python -m pip install "dbt-metricflow[adapter_package_name]"` and add the adapter name at the end of the command. For example, for a Snowflake adapter, run `python -m pip install "dbt-metricflow[dbt-snowflake]"`.
 
-**Note**, you'll need to manage versioning yourself: between dbt v1, your adapter, and MetricFlow if you execute with v1, or between the dbt v2 binary and MetricFlow if you execute with v2.
+**Note**, you'll need to manage versioning yourself: between dbt, your adapter, and MetricFlow if you execute with v1, or between dbt and MetricFlow if you execute with v2.
 
 Something to note, MetricFlow `mf` commands return an error if you have a Metafont latex package installed. To run `mf` commands, uninstall the package.
 
