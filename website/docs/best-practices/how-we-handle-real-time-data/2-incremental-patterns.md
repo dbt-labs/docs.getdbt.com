@@ -18,7 +18,7 @@ Some patterns on this guide uses Snowflake-specific features. Other warehouses h
 
 ## Pattern 1: Incremental MERGE from append-only tables {#incremental-merge-from-append-only-tables}
 
-This pattern uses the `merge` incremental strategy to upsert (insert + update) new and updated rows into a target table. Most data platforms support the `merge` strategy. See the [supported incremental strategies by adapter](/docs/build/incremental-strategy#supported-incremental-strategies-by-adapter) for details.
+This pattern uses the `merge` incremental strategy to upsert (insert + update) new and updated rows into a target table. Most data platforms support the `merge` strategy. Refer to [supported incremental strategies by adapter](/docs/build/incremental-strategy#supported-incremental-strategies-by-adapter) for details.
 
 "Append-only tables" refers to a data pattern where source data continuously receives new rows without updates or deletes.
 
@@ -114,6 +114,8 @@ Use CDC when:
 - You need to capture both new records and changes to existing records.
 - You want to avoid full table scans on large source tables.
 
+This pattern is warehouse CDC plus an incremental model. It does not use snapshots. For guidance on choosing incremental models vs snapshots (and when to use both), refer to [Choosing incremental models or snapshots](/best-practices/how-we-handle-cdc/2-choosing-incremental-or-snapshots).
+
 ### Setup
 To use this pattern, set up the stream in your data warehouse and then create a model to consume the stream.
 
@@ -181,7 +183,7 @@ There are some key differences from [pattern 1](#incremental-merge-from-append-o
 
 ## Pattern 3: Microbatch for large time-series tables {#microbatch-for-large-time-series-tables}
 
-For large `fact` tables where backfills or long lookback windows are challenging, use `incremental_strategy='microbatch'` (available in <Constant name="core" /> v1.9 or higher and Latest release track in <Constant name="dbt_platform" />). Refer to [incremental microbatch](/docs/build/incremental-microbatch) for more details. Note that Microsoft Fabric doesn't support microbatch yet. See [incremental strategy by adapter](/docs/build/incremental-strategy#supported-incremental-strategies-by-adapter) for more details.
+For large `fact` tables where backfills or long lookback windows are challenging, use `incremental_strategy='microbatch'` (available in <Constant name="core" /> v1.9 or higher and Latest release track in <Constant name="dbt_platform" />). Refer to [incremental microbatch](/docs/build/incremental-microbatch) for more details. Note that Microsoft Fabric doesn't support microbatch yet. Refer to [incremental strategy by adapter](/docs/build/incremental-strategy#supported-incremental-strategies-by-adapter) for more details.
 
 :::info microbatch must have event_time
 

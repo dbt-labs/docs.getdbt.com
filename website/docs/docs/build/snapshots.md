@@ -11,6 +11,7 @@ availability: all_users
 - [Snapshot configurations](/reference/snapshot-configs)
 - [Snapshot properties](/reference/snapshot-properties)
 - [`snapshot` command](/reference/commands/snapshot)
+- [Choosing incremental models or snapshots](/best-practices/how-we-handle-cdc/2-choosing-incremental-or-snapshots) for guidance on using snapshots for CDC
 
 import CourseCallout from '/snippets/_materialization-video-callout.md';
 import SnapshotCompiledSql from '/snippets/_snapshot-compiled-sql.md';
