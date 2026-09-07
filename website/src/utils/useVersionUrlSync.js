@@ -15,6 +15,10 @@ export function useVersionUrlSync() {
     if (typeof window === 'undefined' || !urlVersion) return;
 
     const url = new URL(window.location.href);
+
+    // Don't add a version param to blog pages that don't already have query params
+    if (location.pathname.startsWith('/blog') && !url.search) return;
+
     const currentVersionParam = url.searchParams.get('version');
 
     // Only update if the version param is missing or different
