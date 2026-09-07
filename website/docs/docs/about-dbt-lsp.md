@@ -15,6 +15,8 @@ import LSPFeatures from '/snippets/_lsp-features.md';
 
 <LSPFeatures />
 
+dbt v1 and v2 both support the dbt VS Code extension. Features that depend on built-in SQL parsing, such as column-level lineage, column go-to definition and find references, and `SELECT *` expansion, require [`static_analysis: strict`](/reference/resource-configs/static-analysis?version=2).
+
 ## Lazy compilation
 
 The dbt language server uses on-demand compilation, also called lazy compilation. Lazy compilation starts automatically when you open a model file, you don't need to run `dbt compile` to trigger it. It compiles only the nodes it needs to answer questions about the file you are working in, instead of blocking on a full project compile first. That improves performance because you get editor features for your active file much sooner.

@@ -9,7 +9,7 @@ availability: all_users
 
 Once you define metrics in your dbt project, you can query metrics, dimensions, and dimension values, and validate your configs using the MetricFlow commands, available across [dbt v1 or v2](/docs/introduction). To upgrade to v2, see [Get started with dbt v2](/docs/dbt/get-started-dbt). 
  
-MetricFlow allows you to define and query metrics in your dbt project in [<Constant name="dbt_platform" />](/docs/platform/about-develop-dbt) or [dbt v1](/docs/local/install-dbt). To experience the power of the universal [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl) and dynamically query those metrics in downstream tools, you'll need a <Constant name="dbt" /> [Starter, Enterprise, or Enterprise+](https://www.getdbt.com/pricing/) account. 
+MetricFlow allows you to define and query metrics in your dbt project in [<Constant name="dbt_platform" />](/docs/platform/about-develop-dbt) or [dbt v1 or v2](/docs/local/install-dbt) locally. To experience the power of the universal [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl) and dynamically query those metrics in downstream tools, you'll need a <Constant name="dbt" /> [Starter, Enterprise, or Enterprise+](https://www.getdbt.com/pricing/) account. 
 
 MetricFlow is compatible with Python versions 3.8, 3.9, 3.10, 3.11, and 3.12.
 
@@ -21,14 +21,14 @@ MetricFlow is a Python library that allows you to define and query metrics in yo
 
 <VersionBlock firstVersion="1.12">
 
-MetricFlow is a Python library that allows you to define and query metrics in your dbt project. You can use MetricFlow to query metrics in your dbt project in the <Constant name="dbt_platform" /> or dbt v1 (open source), using either the v2 or v1 engine.
+MetricFlow is a Python library that allows you to define and query metrics in your dbt project. You can use MetricFlow to query metrics in your dbt project two ways: in the <Constant name="dbt_platform" />, where the platform runs either the v1 or v2 engine for you, or locally with open-source dbt, where you install and manage the v1 or v2 engine yourself.
 </VersionBlock>
 
 <Tabs>
 
-<TabItem value="cloud" label="MetricFlow in dbt v2 or dbt platform">
+<TabItem value="cloud" label="MetricFlow in dbt platform">
 
-This section applies to <Constant name="dbt_platform" /> users running the dbt v2, where commands and validations execute remotely in <Constant name="dbt_platform" />. 
+This section applies to <Constant name="dbt_platform" /> users running either the v1 or v2 engine, where commands and validations execute remotely in <Constant name="dbt_platform" />. 
 
 - Run MetricFlow commands using the `dbt sl` prefix in the [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio) or [<Constant name="platform_cli" />](/docs/platform/dbt-cli-installation) or using the [VS Code extension](/docs/install-dbt-extension).
 - For CLI or VS Code/Cursor users, MetricFlow commands are embedded, which means you can immediately run them once you install the [<Constant name="platform_cli" />](/docs/platform/dbt-cli-installation) or [VS Code extension](/docs/install-dbt-extension) and don't need to install MetricFlow separately. 
@@ -37,9 +37,9 @@ This section applies to <Constant name="dbt_platform" /> users running the dbt v
 
 </TabItem>
 
-<TabItem value="core" label="MetricFlow with dbt v1">  
+<TabItem value="core" label="MetricFlow with local open-source dbt">  
 
-This section applies to dbt v1 users, or users running [source available](https://www.getdbt.com/dbt-fusion-engine-license-agreement) dbt v2 locally and aren't on <Constant name="dbt_platform" />.
+This section applies to local open-source users who aren't on <Constant name="dbt_platform" />, whether you execute with dbt v1 or with [source available](https://www.getdbt.com/dbt-fusion-engine-license-agreement) dbt v2.
 
 You can install [MetricFlow](https://github.com/dbt-labs/metricflow#getting-started) from [PyPI](https://pypi.org/project/dbt-metricflow/). You need to use `pip` to install MetricFlow on Windows or Linux operating systems:
  
@@ -47,7 +47,7 @@ You can install [MetricFlow](https://github.com/dbt-labs/metricflow#getting-star
 2. Run `pip install dbt-metricflow`.
   * You can install MetricFlow using PyPI as an extension of your dbt adapter in the command line. To install the adapter, run `python -m pip install "dbt-metricflow[adapter_package_name]"` and add the adapter name at the end of the command. For example, for a Snowflake adapter, run `python -m pip install "dbt-metricflow[dbt-snowflake]"`.
 
-**Note**, you'll need to manage versioning between dbt v1, your adapter, and MetricFlow.
+**Note**, you'll need to manage versioning yourself: between dbt v1, your adapter, and MetricFlow if you execute with v1, or between the dbt v2 binary and MetricFlow if you execute with v2.
 
 Something to note, MetricFlow `mf` commands return an error if you have a Metafont latex package installed. To run `mf` commands, uninstall the package.
 
@@ -105,9 +105,9 @@ Check out the following video for a short video demo of how to query or preview 
 
 </TabItem>
 
-<TabItem value="corecommands" label="Commands for dbt v1">
+<TabItem value="corecommands" label="Commands for local open-source dbt">
 
-This section applies to dbt v1 users, or users running [source available](https://www.getdbt.com/dbt-fusion-engine-license-agreement) dbt v2 locally and not a <Constant name="dbt_platform" /> user. Commands and validations execute locally and use the `mf` prefix before the command name to execute them. For example, to list all metrics, run `mf list metrics`.
+This section applies to local open-source users who aren't on <Constant name="dbt_platform" />, whether you execute with dbt v1 or with [source available](https://www.getdbt.com/dbt-fusion-engine-license-agreement) dbt v2. Commands and validations execute locally and use the `mf` prefix before the command name to execute them. For example, to list all metrics, run `mf list metrics`.
 
 - [`list metrics`](#list-metrics) &mdash; Lists metrics with dimensions.
 - [`list dimensions`](#list) &mdash; Lists unique dimensions for metrics.
@@ -169,7 +169,7 @@ Options:
                       *Not available in the dbt platform/dbt v2 yet
   --start-time TEXT   Optional iso8601 timestamp to constraint the start time
                       of the data (inclusive)
-                      *Not available in in the dbt platform/dbt v2 yet
+                      *Not available in the dbt platform/dbt v2 yet
   --help              Show this message and exit.
 ```
 
@@ -559,7 +559,7 @@ limit 10
 
 <TabItem value="eg7" label=" Export to CSV">
  
-Add the `--csv file_name.csv` flag to export the results of your query to a CSV. The `--csv` flag is available in dbt v1 only and not supported in <Constant name="dbt" />.
+Add the `--csv file_name.csv` flag to export the results of your query to a CSV. The `--csv` flag is available to local open-source users only (with the `mf` prefix) and isn't supported by `dbt sl` in <Constant name="dbt_platform" />.
 
 **Query**
 

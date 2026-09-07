@@ -1,7 +1,7 @@
 
 import FusionManualInstall from '/snippets/_fusion-manual-install.md';
 
-The dbt extension &mdash; available for [VS Code and Cursor](https://marketplace.visualstudio.com/items?itemName=dbtLabsInc.dbt&ssr=false#overview), and [Windsurf](https://open-vsx.org/extension/dbtLabsInc/dbt) &mdash; makes dbt development smoother and more efficient. It works whether you execute with dbt v1 or v2 &mdash; refer to [Version compatibility](/docs/about-dbt-extension#version-compatibility) for which features need which setup.
+The dbt extension &mdash; available for [VS Code and Cursor](https://marketplace.visualstudio.com/items?itemName=dbtLabsInc.dbt&ssr=false#overview), and [Windsurf](https://open-vsx.org/extension/dbtLabsInc/dbt) &mdash; makes dbt development smoother and more efficient. dbt v1 and v2 both support the extension &mdash; refer to [Version compatibility](/docs/about-dbt-extension#version-compatibility) for which features need which setup.
 
 :::note
 
@@ -18,7 +18,6 @@ To use the extension, you need the following:
 
 | Prerequisite | Details |
 | --- | --- |
-| **dbt CLI** | The extension prompts you to install the dbt v2 binary, or you can [install v1 or v2 manually](#install-dbt-v2-from-the-command-line-if-you-havent-already). |
 | **Project files** | You need a `profiles.yml` file. You may also need a [`dbt_cloud.yml`](/reference/dbt_cloud.yml) file for some <Constant name="dbt_platform" /> features or credential-based workflows. You don't need a <Constant name="dbt_platform" /> project to use the extension. |
 | **Editor** | [VS Code](https://code.visualstudio.com/), [Cursor](https://www.cursor.com/en), or [Windsurf](https://windsurf.com/editor). |
 | **Operating system** | macOS, Windows, or Linux. |
@@ -45,7 +44,7 @@ To use the extension, you need the following:
 
 6. If dbt isn't installed, the extension prompts you to download and install it. Follow the notification steps, or [install it manually from the command line](#install-dbt-v2-from-the-command-line-if-you-havent-already).
 
-    <Lightbox src="/img/docs/extension/install-dbt-fusion-engine.png" width="60%" title="Follow the prompt to install the dbt Fusion engine"/>
+    <Lightbox src="/img/docs/extension/install-dbt-fusion-engine.png" width="60%" title="Follow the prompt to install v2"/>
 
 7. Run the VS Code extension [upgrade tool](/docs/upgrade-to-dbt-extension) to check whether your project is ready for dbt v2 and fix any errors or deprecations.
 8. Optional: [Configure your local environment](/docs/configure-dbt-extension) to mirror your <Constant name="dbt_platform" /> environment and [set environment variables](/docs/configure-dbt-extension#configure-environment-variables) required by your project.
