@@ -25,7 +25,7 @@ This section covers the rules and constraints for writing check SQL files and co
 - A check is a SQL file in your `checks/` directory paired with a properties YAML file in the same directory. To use a different directory, set [`check-paths`](/reference/project-configs/check-paths) in `dbt_project.yml`.
 - The filename without the `.sql` extension becomes the check name (for example, `all_models_have_descriptions` is the check name for `checks/all_models_have_descriptions.sql`).
 - Jinja in check files renders at parse time. You can use Jinja, but the result must be valid SQL at that point; checks do not go through a separate compile step the way models do.
-- Checks cannot use `ref()` and do not appear in the model DAG. However, checks are dbt resources; each check appears in `manifest.json`, supports `tags` and `meta`, and `dbt ls` lists them. Checks access the [dbt Information Schema](/reference/info-schema/) only through `{{ info_schema() }}`.
+- Checks cannot use `ref()` and do not appear in the model DAG. However, checks are dbt resources; each check appears in `manifest.json`, supports `tags` and `meta`, and `dbt ls` lists them. Checks access the [dbt Information Schema](/docs/build/dbt-information-schema) only through `{{ info_schema() }}`.
 
 ### The `info_schema()` macro
 

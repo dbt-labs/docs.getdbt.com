@@ -7,7 +7,7 @@ availability:
   engine: v2
 ---
 
-Each view mirrors a table of the same name in the [dbt Information Schema](/reference/info-schema), showing only the columns that are final at parse time. Use these views in [`{{ info_schema() }}`](/reference/dbt-jinja-functions/info-schema-macro) when writing [project quality checks](/docs/build/project-checks).
+Each view mirrors a table of the same name in the [dbt Information Schema](/docs/build/dbt-information-schema), showing only the columns that are final at parse time. Use these views in [`{{ info_schema() }}`](/reference/dbt-jinja-functions/info-schema-macro) when writing [project quality checks](/docs/build/project-checks).
 
 | View | Columns |
 |------|---------|
