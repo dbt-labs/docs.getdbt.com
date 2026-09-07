@@ -22,7 +22,7 @@ To use the extension, you need the following:
 | **Editor** | [VS Code](https://code.visualstudio.com/), [Cursor](https://www.cursor.com/en), or [Windsurf](https://windsurf.com/editor). |
 | **Operating system** | macOS, Windows, or Linux. |
 | **Local configuration** (optional) | [Configure the extension](/docs/configure-dbt-extension) to mirror your dbt environment locally and set any environment variables required by your project. |
-| **Project migration support** (optional) | The extension has [dbt-autofix](https://github.com/dbt-labs/dbt-autofix) built in, so you can fix deprecations from the **Problems** pane or in a single pull request. You can also use the **Migrate dbt v1 to dbt v2** agent skill or [run dbt-autofix](/guides/prepare-dbt-upgrade?step=5#what-the-autofix-tool-handles) yourself. |
+| **Project migration support** (optional) | The extension has [dbt-autofix](https://github.com/dbt-labs/dbt-autofix) built in, so you can fix deprecations from the **Problems** pane or in a single pull request. You can also use the **Migrate dbt v1 to dbt v2** agent skill or [run dbt-autofix](/guides/prepare-v2-upgrade?step=5#what-the-autofix-tool-handles) yourself. |
 
 </SimpleTable>
 
