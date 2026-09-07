@@ -3,7 +3,7 @@ import { usePluginData } from "@docusaurus/useGlobalData";
 import styles from "./styles.module.css";
 
 const CHANGELOG_BASE =
-  "https://github.com/dbt-labs/dbt-core/blob/main/CHANGELOG-fusion.md";
+  "https://github.com/dbt-labs/dbt-oss/blob/main/CHANGELOG-fusion.md";
 
 /**
  * Fragment for a Fusion release version, matching GitHub’s autolink for the

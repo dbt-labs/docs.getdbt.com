@@ -181,7 +181,7 @@ var siteSettings = {
             },
             {
               label: "Fusion Diaries",
-              href: "https://github.com/dbt-labs/dbt-core/discussions/categories/announcements?discussions_q=is:open+diaries+category:Announcements",
+              href: "https://github.com/dbt-labs/dbt-oss/discussions/categories/announcements?discussions_q=is:open+diaries+category:Announcements",
             },
             {
               label: "Courses",

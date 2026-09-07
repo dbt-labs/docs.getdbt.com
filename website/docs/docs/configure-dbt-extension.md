@@ -178,7 +178,7 @@ To configure environment variables in VS Code/Cursor:
 
 </TabItem>
 
-<!-- commenting out as this might not be the best way to configure environment variables and we're recommending the .env file instead https://github.com/dbt-labs/dbt-core/issues/12106
+<!-- commenting out as this might not be the best way to configure environment variables and we're recommending the .env file instead https://github.com/dbt-labs/dbt-oss/issues/12106
 <TabItem value="settings-json" label="Open Settings (JSON)">
 1. Open the [Command Palette](https://code.visualstudio.com/docs/configure/settings#_user-settings) (Cmd + Shift + P for Mac, Ctrl + Shift + P for Windows/Linux).
 2. Then select **Preferences: Open Settings (JSON)** in the dropdown menu. 

@@ -37,19 +37,19 @@ id: "contributing-coding"
 
 There are three primary ways to contribute to the dbt projects. We’ll use <Constant name="core" /> as an example, as the "front door" to the dbt ecosystem and a great place to start for newcomers:
 
-- [Open an issue](https://github.com/dbt-labs/dbt-core/issues/new/choose) to suggest an improvement or give feedback.
-- Comment on or engage with existing [issues](https://github.com/dbt-labs/dbt-core/issues) or [discussions](https://github.com/dbt-labs/dbt-core/discussions). For example, upvote issues that would help your organization, comment to add nuance to a feature request, or share how a feature would impact your use of dbt.
+- [Open an issue](https://github.com/dbt-labs/dbt-oss/issues/new/choose) to suggest an improvement or give feedback.
+- Comment on or engage with existing [issues](https://github.com/dbt-labs/dbt-oss/issues) or [discussions](https://github.com/dbt-labs/dbt-oss/discussions). For example, upvote issues that would help your organization, comment to add nuance to a feature request, or share how a feature would impact your use of dbt.
 - Create a pull request that resolves an open Issue. This involves writing the code and tests that add the feature/resolve the bug described in an Issue, and then going through the code review process asynchronously with a dbt Labs engineer. Note that signed commits are required when contributing to <Constant name="core" />. For steps on how to sign commits, see [Signing commits](https://docs.github.com/en/authentication/managing-commit-signature-verification/signing-commits).
 
 #### Sample contributions
 
-- Check out [this issue](https://github.com/dbt-labs/dbt-core/issues/3612) about improving error messages and [the PR that the community contributed to fix it](https://github.com/dbt-labs/dbt-core/pull/3703).
+- Check out [this issue](https://github.com/dbt-labs/dbt-oss/issues/3612) about improving error messages and [the PR that the community contributed to fix it](https://github.com/dbt-labs/dbt-oss/pull/3703).
 - From the above issue [another issue was generated](https://github.com/dbt-labs/dbt-bigquery/issues/202) to change not just the error message, but improve the behavior. This is the virtuous cycle of community-driven development! Bit by bit we, the community, craft the tool to better fit our needs.
 
 #### Get started
 
-- Read the <Constant name="core" /> [contribution guide](https://github.com/dbt-labs/dbt-core/blob/main/CONTRIBUTING.md) and the [Contributor Expectations](/community/resources/contributor-expectations).
-- If contributing to `dbt-core`, find an issue labeled “[good first issue](https://github.com/dbt-labs/dbt-core/issues?q=is%3Aopen+is%3Aissue+label%3A%22type%3Agood-first-issue%22)”, or look for similar labels on other repositories. If in doubt, also feel free to ask the maintainers for a good first issue, they’ll be excited to welcome you!
+- Read the <Constant name="core" /> [contribution guide](https://github.com/dbt-labs/dbt-oss/blob/main/CONTRIBUTING.md) and the [Contributor Expectations](/community/resources/contributor-expectations).
+- If contributing to `dbt-core`, find an issue labeled “[good first issue](https://github.com/dbt-labs/dbt-oss/issues?q=is%3Aopen+is%3Aissue+label%3A%22type%3Agood-first-issue%22)”, or look for similar labels on other repositories. If in doubt, also feel free to ask the maintainers for a good first issue, they’ll be excited to welcome you!
 
 #### Need help?
 

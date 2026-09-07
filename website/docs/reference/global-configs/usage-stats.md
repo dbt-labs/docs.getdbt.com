@@ -18,7 +18,7 @@ Usage statistics are fired when dbt is invoked and when models are run. These ev
 
 ## <Constant name="core" /> telemetry
 
-<Constant name="core" /> has telemetry enabled by default. For full transparency, you can see all the event definitions in [`tracking.py`](https://github.com/dbt-labs/dbt-core/blob/1.latest/core/dbt/tracking.py).
+<Constant name="core" /> has telemetry enabled by default. For full transparency, you can see all the event definitions in [`tracking.py`](https://github.com/dbt-labs/dbt-oss/blob/1.latest/core/dbt/tracking.py).
 
 You can opt out of event tracking at any time by adding the following configuration to your `dbt_project.yml` file:
 
@@ -41,7 +41,7 @@ You can also set the `DO_NOT_TRACK` environment variable. For more information, 
 
 ## <Constant name="fusion_engine" /> telemetry
 
-<Constant name="fusion" /> has telemetry enabled by default. For full transparency, you can see the event definitions in [`event_functions.rs`](https://github.com/dbt-labs/dbt-core/blob/main/crates/vortex-events/src/event_functions.rs).
+<Constant name="fusion" /> has telemetry enabled by default. For full transparency, you can see the event definitions in [`event_functions.rs`](https://github.com/dbt-labs/dbt-oss/blob/main/crates/vortex-events/src/event_functions.rs).
 
 Telemetry requires outbound HTTPS access to `https://p.vx.dbt.com`. If the endpoint is unreachable, <Constant name="fusion" /> logs errors on each invocation. For the complete list of outbound endpoints, refer to [dbt v2 networking requirements](/docs/local/dbt-networking-requirements).
 
