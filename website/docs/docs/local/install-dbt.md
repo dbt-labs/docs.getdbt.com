@@ -223,7 +223,7 @@ python3 -m pip install --pre dbt-ADAPTER_NAME
 
 <Expandable alt_header="Docker">
 
-<Constant name="core" /> images are distributed via [GitHub Packages](https://github.com/dbt-labs/dbt-oss/pkgs/container/dbt-core) and include pinned versions of dbt-core, one or more adapters, and all dependencies.
+<Constant name="core" /> images are distributed via [GitHub Packages](https://github.com/dbt-labs/dbt-core/pkgs/container/dbt-core) and include pinned versions of dbt-core, one or more adapters, and all dependencies.
 
 ### Prerequisites
 
@@ -257,7 +257,7 @@ Note: bind-mount sources must be absolute paths. You may need to adjust `--netwo
 
 ### Build a custom image
 
-If the pre-made images don't fit your use case, use the [`Dockerfile`](https://github.com/dbt-labs/dbt-oss/blob/1.latest/docker/Dockerfile) and [`README`](https://github.com/dbt-labs/dbt-oss/blob/1.latest/docker/README.md) to build images with multiple adapters, third-party adapters, or different system architectures. Custom image builds are community-supported — [open an issue](https://github.com/dbt-labs/dbt-oss/issues) or [ask the community](/community/resources/getting-help) if you run into trouble.
+If the pre-made images don't fit your use case, use the [`Dockerfile`](https://github.com/dbt-labs/dbt-core/blob/1.latest/docker/Dockerfile) and [`README`](https://github.com/dbt-labs/dbt-core/blob/1.latest/docker/README.md) to build images with multiple adapters, third-party adapters, or different system architectures. Custom image builds are community-supported — [open an issue](https://github.com/dbt-labs/dbt-core/issues) or [ask the community](/community/resources/getting-help) if you run into trouble.
 
 </Expandable>
 
@@ -266,7 +266,7 @@ If the pre-made images don't fit your use case, use the [`Dockerfile`](https://g
 Install from source to get unreleased code or a specific commit. Clone the repo and install with `pip`:
 
 ```shell
-git clone -b 1.latest https://github.com/dbt-labs/dbt-oss.git
+git clone -b 1.latest https://github.com/dbt-labs/dbt-core.git
 cd dbt-core
 python -m pip install -r requirements.txt
 ```
@@ -289,7 +289,7 @@ python -m pip install .
 
 For editable mode: `python -m pip install -e .`
 
-For more details, read the [contributing guidelines](https://github.com/dbt-labs/dbt-oss/blob/1.latest/CONTRIBUTING.md).
+For more details, read the [contributing guidelines](https://github.com/dbt-labs/dbt-core/blob/1.latest/CONTRIBUTING.md).
 
 </Expandable>
 

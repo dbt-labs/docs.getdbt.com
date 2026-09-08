@@ -358,7 +358,7 @@ unit_tests:
 
 ```
 
-There is currently no way to unit test whether the dbt framework inserted/merged the records into your existing model correctly, but [we're investigating support for this in the future](https://github.com/dbt-labs/dbt-oss/issues/8664).
+There is currently no way to unit test whether the dbt framework inserted/merged the records into your existing model correctly, but [we're investigating support for this in the future](https://github.com/dbt-labs/dbt-core/issues/8664).
 
 ## Unit testing a model that depends on ephemeral model(s)
 

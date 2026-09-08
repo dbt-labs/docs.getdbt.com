@@ -74,7 +74,7 @@ Often overlooked, this third pillar of process can be the key to success when sc
 
 ### Technology and people
 
-Our teams’ differing levels of technical maturity demanded different technical solutions. The core team was well versed with dbt Core (even [contributing](https://github.com/dbt-labs/dbt-oss/pull/3408) to the project!) and had been working on the same project for 3 years with software engineering best practices  (i.e. CI/CD, unit tests, linting, and pre-commit hooks). The affiliate teams had noticeably different exposure to these tools. Thus, we rolled out dbt Cloud to the country teams to avoid onboarding them to complex core workflows, which would have unnecessarily slowed them down.
+Our teams’ differing levels of technical maturity demanded different technical solutions. The core team was well versed with dbt Core (even [contributing](https://github.com/dbt-labs/dbt-core/pull/3408) to the project!) and had been working on the same project for 3 years with software engineering best practices  (i.e. CI/CD, unit tests, linting, and pre-commit hooks). The affiliate teams had noticeably different exposure to these tools. Thus, we rolled out dbt Cloud to the country teams to avoid onboarding them to complex core workflows, which would have unnecessarily slowed them down.
 
 dbt Cloud removed the need to set up local environments; no need to worry about library versions or about installing git clients. Instead, they were quickly building and testing dbt models. As SQL is second nature to all of the country teams (irrespective of the platform they were using prior to dbt), they picked up dbt in no time at all, and the need for support from the core team quickly became minimal.
 

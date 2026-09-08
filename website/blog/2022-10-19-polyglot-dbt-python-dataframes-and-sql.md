@@ -325,10 +325,10 @@ Based on our early experiences using dbt Python models and our ongoing conversat
 
 ### 🤷 We don’t know yet!
 There are several outstanding questions where you are invited to contribute to the discussion:
-- [Reusable Python logic](https://github.com/dbt-labs/dbt-oss/discussions/5741)
-- [Debugging output](https://github.com/dbt-labs/dbt-oss/discussions/5799)
+- [Reusable Python logic](https://github.com/dbt-labs/dbt-core/discussions/5741)
+- [Debugging output](https://github.com/dbt-labs/dbt-core/discussions/5799)
 - [Testing Python models](https://github.com/dbt-labs/docs.getdbt.com/discussions/1811)
-- [Abstractions over different dataframe APIs](https://github.com/dbt-labs/dbt-oss/discussions/5738)
+- [Abstractions over different dataframe APIs](https://github.com/dbt-labs/dbt-core/discussions/5738)
 
 ## Conclusion
 

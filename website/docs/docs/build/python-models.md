@@ -10,8 +10,8 @@ Note that only specific data platforms support `dbt-py` models. Check the [platf
 Python models for Snowflake, BigQuery, and Databricks are supported in [<Constant name="fusion" />](/docs/introduction). Please refer to the [supported features](/docs/dbt/supported-features) page to learn more about <Constant name="fusion" />.
 
 We encourage you to:
-- Read [the original discussion](https://github.com/dbt-labs/dbt-oss/discussions/5261) that proposed this feature.
-- Share your thoughts and ideas on [next steps for Python models](https://github.com/dbt-labs/dbt-oss/discussions/5742).
+- Read [the original discussion](https://github.com/dbt-labs/dbt-core/discussions/5261) that proposed this feature.
+- Share your thoughts and ideas on [next steps for Python models](https://github.com/dbt-labs/dbt-core/discussions/5742).
 - Join the **#<Constant name="core" />-python-models** channel in the [dbt Community Slack](https://www.getdbt.com/community/join-the-community/).
 
 
@@ -143,7 +143,7 @@ with upstream_python_model as (
 
 :::caution
 
-Referencing [ephemeral](/docs/build/materializations#ephemeral) models is currently not supported (see [feature request](https://github.com/dbt-labs/dbt-oss/issues/7288)) 
+Referencing [ephemeral](/docs/build/materializations#ephemeral) models is currently not supported (see [feature request](https://github.com/dbt-labs/dbt-core/issues/7288)) 
 :::
 
 From dbt version 1.8, Python models also support dynamic configurations within Python f-strings. This allows for more nuanced and dynamic model configurations directly within your Python code. For example:
@@ -688,7 +688,7 @@ In the future, we're considering also adding support for Private Python packages
 - How can dbt help users when uploading or initializing private Python assets? Is this a new form of `dbt deps`?
 - How can dbt support users who want to test custom functions? If defined as UDFs: "unit testing" in the database? If "pure" functions in packages: encourage adoption of `pytest`?
 
-💬 Discussion: ["Python models: package, artifact/object storage, and UDF management in dbt"](https://github.com/dbt-labs/dbt-oss/discussions/5741)
+💬 Discussion: ["Python models: package, artifact/object storage, and UDF management in dbt"](https://github.com/dbt-labs/dbt-core/discussions/5741)
 :::
 
 ### DataFrame API and syntax
@@ -710,7 +710,7 @@ When developing a Python model, you will find yourself asking these questions:
 - Which open source libraries provide compelling abstractions across different data engines and vendor-specific APIs?
 - Should dbt attempt to play a longer-term role in standardizing across them?
 
-💬 Discussion: ["Python models: the pandas problem (and a possible solution)"](https://github.com/dbt-labs/dbt-oss/discussions/5738)
+💬 Discussion: ["Python models: the pandas problem (and a possible solution)"](https://github.com/dbt-labs/dbt-core/discussions/5738)
 :::
 
 ## Limitations

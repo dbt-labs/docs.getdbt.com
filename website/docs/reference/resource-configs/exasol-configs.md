@@ -271,7 +271,7 @@ Exasol does not support certain aggregate functions (`LISTAGG`, `MEDIAN`, `PERCE
 
 **Workaround:** Create actual tables for test fixtures rather than using inline CTEs when testing models with these functions.
 
-If you are interested in supporting materialized test fixtures, we encourage you to participate in this issue in GitHub: [dbt-labs/dbt-oss#8499](https://github.com/dbt-labs/dbt-oss/issues/8499)
+If you are interested in supporting materialized test fixtures, we encourage you to participate in this issue in GitHub: [dbt-labs/dbt-core#8499](https://github.com/dbt-labs/dbt-core/issues/8499)
 
 ## Connection configuration
 

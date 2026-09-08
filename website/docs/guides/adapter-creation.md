@@ -119,7 +119,7 @@ Below is a flow diagram illustrating how a `dbt run` command works with the `dbt
 
 It is very important that you have the right skills, and understand the level of difficulty required to make an adapter for your data platform.
 
-The more you can answer Yes to the below questions, the easier your adapter development (and user-) experience will be. See the [New Adapter Information Sheet wiki](https://github.com/dbt-labs/dbt-oss/wiki/New-Adapter-Information-Sheet) for even more specific questions.
+The more you can answer Yes to the below questions, the easier your adapter development (and user-) experience will be. See the [New Adapter Information Sheet wiki](https://github.com/dbt-labs/dbt-core/wiki/New-Adapter-Information-Sheet) for even more specific questions.
 
 ### Training
 
@@ -479,17 +479,17 @@ dbt implements specific SQL operations using Jinja macros. While reasonable defa
 
 The following macros must be implemented, but you can override their behavior for your adapter using the "dispatch" pattern described below. Macros marked (required) do not have a valid default implementation, and are required for dbt to operate.
 
-- `alter_column_type` ([source](https://github.com/dbt-labs/dbt-oss/blob/f988f76fccc1878aaf8d8631c05be3e9104b3b9a/core/dbt/include/global_project/macros/adapters/columns.sql#L37-L55))
-- `check_schema_exists` ([source](https://github.com/dbt-labs/dbt-oss/blob/f988f76fccc1878aaf8d8631c05be3e9104b3b9a/core/dbt/include/global_project/macros/adapters/metadata.sql#L43-L55))
-- `create_schema` ([source](https://github.com/dbt-labs/dbt-oss/blob/f988f76fccc1878aaf8d8631c05be3e9104b3b9a/core/dbt/include/global_project/macros/adapters/schema.sql#L1-L9))
-- `drop_relation` ([source](https://github.com/dbt-labs/dbt-oss/blob/f988f76fccc1878aaf8d8631c05be3e9104b3b9a/core/dbt/include/global_project/macros/adapters/relation.sql#L34-L42))
-- `drop_schema` ([source](https://github.com/dbt-labs/dbt-oss/blob/f988f76fccc1878aaf8d8631c05be3e9104b3b9a/core/dbt/include/global_project/macros/adapters/schema.sql#L12-L20))
-- `get_columns_in_relation` ([source](https://github.com/dbt-labs/dbt-oss/blob/f988f76fccc1878aaf8d8631c05be3e9104b3b9a/core/dbt/include/global_project/macros/adapters/columns.sql#L1-L8)) (required)
-- `list_relations_without_caching` ([source](https://github.com/dbt-labs/dbt-oss/blob/f988f76fccc1878aaf8d8631c05be3e9104b3b9a/core/dbt/include/global_project/macros/adapters/metadata.sql#L58-L65)) (required)
-- `list_schemas` ([source](https://github.com/dbt-labs/dbt-oss/blob/f988f76fccc1878aaf8d8631c05be3e9104b3b9a/core/dbt/include/global_project/macros/adapters/metadata.sql#L29-L40))
-- `rename_relation` ([source](https://github.com/dbt-labs/dbt-oss/blob/f988f76fccc1878aaf8d8631c05be3e9104b3b9a/core/dbt/include/global_project/macros/adapters/relation.sql#L56-L65))
-- `truncate_relation` ([source](https://github.com/dbt-labs/dbt-oss/blob/f988f76fccc1878aaf8d8631c05be3e9104b3b9a/core/dbt/include/global_project/macros/adapters/relation.sql#L45-L53))
-- `current_timestamp` ([source](https://github.com/dbt-labs/dbt-oss/blob/f988f76fccc1878aaf8d8631c05be3e9104b3b9a/core/dbt/include/global_project/macros/adapters/freshness.sql#L1-L8)) (required)
+- `alter_column_type` ([source](https://github.com/dbt-labs/dbt-core/blob/f988f76fccc1878aaf8d8631c05be3e9104b3b9a/core/dbt/include/global_project/macros/adapters/columns.sql#L37-L55))
+- `check_schema_exists` ([source](https://github.com/dbt-labs/dbt-core/blob/f988f76fccc1878aaf8d8631c05be3e9104b3b9a/core/dbt/include/global_project/macros/adapters/metadata.sql#L43-L55))
+- `create_schema` ([source](https://github.com/dbt-labs/dbt-core/blob/f988f76fccc1878aaf8d8631c05be3e9104b3b9a/core/dbt/include/global_project/macros/adapters/schema.sql#L1-L9))
+- `drop_relation` ([source](https://github.com/dbt-labs/dbt-core/blob/f988f76fccc1878aaf8d8631c05be3e9104b3b9a/core/dbt/include/global_project/macros/adapters/relation.sql#L34-L42))
+- `drop_schema` ([source](https://github.com/dbt-labs/dbt-core/blob/f988f76fccc1878aaf8d8631c05be3e9104b3b9a/core/dbt/include/global_project/macros/adapters/schema.sql#L12-L20))
+- `get_columns_in_relation` ([source](https://github.com/dbt-labs/dbt-core/blob/f988f76fccc1878aaf8d8631c05be3e9104b3b9a/core/dbt/include/global_project/macros/adapters/columns.sql#L1-L8)) (required)
+- `list_relations_without_caching` ([source](https://github.com/dbt-labs/dbt-core/blob/f988f76fccc1878aaf8d8631c05be3e9104b3b9a/core/dbt/include/global_project/macros/adapters/metadata.sql#L58-L65)) (required)
+- `list_schemas` ([source](https://github.com/dbt-labs/dbt-core/blob/f988f76fccc1878aaf8d8631c05be3e9104b3b9a/core/dbt/include/global_project/macros/adapters/metadata.sql#L29-L40))
+- `rename_relation` ([source](https://github.com/dbt-labs/dbt-core/blob/f988f76fccc1878aaf8d8631c05be3e9104b3b9a/core/dbt/include/global_project/macros/adapters/relation.sql#L56-L65))
+- `truncate_relation` ([source](https://github.com/dbt-labs/dbt-core/blob/f988f76fccc1878aaf8d8631c05be3e9104b3b9a/core/dbt/include/global_project/macros/adapters/relation.sql#L45-L53))
+- `current_timestamp` ([source](https://github.com/dbt-labs/dbt-core/blob/f988f76fccc1878aaf8d8631c05be3e9104b3b9a/core/dbt/include/global_project/macros/adapters/freshness.sql#L1-L8)) (required)
 - `copy_grants`
 
 #### Adapter dispatch
@@ -559,7 +559,7 @@ While much of dbt's adapter-specific functionality can be modified in adapter ma
 
 #### Grants Macros
 
-See [this GitHub discussion](https://github.com/dbt-labs/dbt-oss/discussions/5468) for information on the macros required for `GRANT` statements:
+See [this GitHub discussion](https://github.com/dbt-labs/dbt-core/discussions/5468) for information on the macros required for `GRANT` statements:
 
 ### Behavior change flags
 
@@ -706,7 +706,7 @@ Those utilities allow you to do three basic things:
 2. **Define a sequence of dbt commands.** The most important utility  is `run_dbt()`, which returns the [results](/reference/dbt-classes#result-objects) of each dbt command. It takes a list of CLI specifiers (subcommand + flags), as well as an optional second argument, `expect_pass=False`, for cases where you expect the command to fail.
 3. **Validate the results of those dbt commands.** For example, `check_relations_equal()` asserts that two database objects have the same structure and content. You can also write your own `assert` statements, by inspecting the results of a dbt command, or querying arbitrary database objects with `project.run_sql()`.
 
-You can see the full suite of utilities, with arguments and annotations, in [`util.py`](https://github.com/dbt-labs/dbt-oss/blob/1.latest/core/dbt/tests/util.py). You'll also see them crop up across a number of test cases. While all utilities are intended to be reusable, you won't need all of them for every test. In the example below, we'll show a simple test case that uses only a few utilities.
+You can see the full suite of utilities, with arguments and annotations, in [`util.py`](https://github.com/dbt-labs/dbt-core/blob/1.latest/core/dbt/tests/util.py). You'll also see them crop up across a number of test cases. While all utilities are intended to be reusable, you won't need all of them for every test. In the example below, we'll show a simple test case that uses only a few utilities.
 
 #### Example: a simple test case
 
@@ -1357,7 +1357,7 @@ Breaking this down:
 
 The Trusted Adapter Program exists to allow adapter maintainers to demonstrate to the dbt community that your adapter is trusted to be used in production.
 
-The very first data platform dbt supported was Redshift followed quickly by Postgres ([dbt-core#174](https://github.com/dbt-labs/dbt-oss/pull/174)). In 2017, back when dbt Labs (née Fishtown Analytics) was still a data consultancy, we added support for Snowflake and BigQuery. We also turned dbt's database support into an adapter framework ([dbt-core#259](https://github.com/dbt-labs/dbt-oss/pull/259/)), and a plugin system a few years later. For years, dbt Labs specialized in those four data platforms and became experts in them. However, the surface area of all possible databases, their respective nuances, and keeping them up-to-date and bug-free is a Herculean and/or Sisyphean task that couldn't be done by a single person or even a single team! Enter the dbt community which enables <Constant name="core_v1" /> to work on more than 30 different databases (32 as of Sep '22)!
+The very first data platform dbt supported was Redshift followed quickly by Postgres ([dbt-core#174](https://github.com/dbt-labs/dbt-core/pull/174)). In 2017, back when dbt Labs (née Fishtown Analytics) was still a data consultancy, we added support for Snowflake and BigQuery. We also turned dbt's database support into an adapter framework ([dbt-core#259](https://github.com/dbt-labs/dbt-core/pull/259/)), and a plugin system a few years later. For years, dbt Labs specialized in those four data platforms and became experts in them. However, the surface area of all possible databases, their respective nuances, and keeping them up-to-date and bug-free is a Herculean and/or Sisyphean task that couldn't be done by a single person or even a single team! Enter the dbt community which enables <Constant name="core_v1" /> to work on more than 30 different databases (32 as of Sep '22)!
 
 Free and open-source tools for the data professional are increasingly abundant. This is by-and-large a _good thing_, however it requires due diligence that wasn't required in a paid-license, closed-source software world. Before taking a dependency on an open-source project is is important to determine the answer to the following questions:
 
