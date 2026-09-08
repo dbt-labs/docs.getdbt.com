@@ -36,7 +36,7 @@ The following section provides troubleshooting steps for common issues when auth
 
 If the <Constant name="studio_ide" /> fails to start and displays the following error, your personal Azure DevOps account isn't linked to <Constant name="dbt" />:
 
-`Missing Azure user; link your Azure Devops account in your personal profile`
+`Missing Azure user; link your Azure DevOps account in your personal profile`
 
 To resolve it, [link your dbt profile to Azure DevOps](#link-your-dbt-profile-to-azure-devops).
 
