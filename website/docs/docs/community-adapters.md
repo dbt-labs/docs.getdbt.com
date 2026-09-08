@@ -8,7 +8,7 @@ Community adapters are adapter plugins contributed and maintained by members of 
 
 In v2, [DuckDB](/docs/local/connect-data-platform/duckdb-setup) is available as a community adapter. There are also several trusted adapters available: Apache Spark, BigQuery, Databricks, DuckDB, Redshift, Snowflake. For the full list, refer to [trusted adapters](/docs/trusted-adapters?version=2.0).
 
-If you'd like to contribute a community adapter for v2, refer to [creating a Fusion adapter](/guides/adapter-creation-v2?step=1).
+If you'd like to contribute a community adapter for v2, refer to [creating a dbt v2 adapter](/guides/adapter-creation-v2?step=1).
 
 Refer to the following available community adapter(s):
 

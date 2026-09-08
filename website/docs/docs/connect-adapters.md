@@ -10,11 +10,11 @@ This section provides more details on different ways you can connect dbt to an a
 
 ### Set up in dbt
 
-Explore the fastest and most reliable way to deploy dbt using <Constant name="dbt" />, a hosted architecture that runs <Constant name="core" /> across your organization. <Constant name="dbt" /> lets you seamlessly [connect](/docs/platform/about-platform-setup) with a variety of [trusted](/docs/supported-data-platforms) data platform providers directly in the <Constant name="dbt" /> UI.
+Explore the fastest and most reliable way to deploy dbt using the <Constant name="dbt_platform" />, a hosted architecture that runs dbt across your organization. The <Constant name="dbt_platform" /> lets you seamlessly [connect](/docs/platform/about-platform-setup) with a variety of [trusted](/docs/supported-data-platforms) data platform providers directly in the <Constant name="dbt" /> UI.
 
-### Install with <Constant name="core" />
+### Install self-hosted dbt
 
-Install <Constant name="core" />, an open-source tool, locally using the command line. dbt communicates with a number of different data platforms by using a dedicated adapter plugin for each. When you install <Constant name="core" />, you'll also need to install the specific adapter for your database, [connect the <Constant name="fusion_engine" /> to <Constant name="core" />](/docs/local/install-dbt), and set up a `profiles.yml` file.
+Install self-hosted dbt locally using the command line. dbt communicates with a number of different data platforms by using a dedicated adapter plugin for each. When you install dbt locally, you'll also need to configure the specific adapter for your database, [connect <Constant name="fusion_engine" /> to <Constant name="core" />](/docs/local/install-dbt), and set up a `profiles.yml` file.
 
 <VersionBlock lastVersion="1.99">
 

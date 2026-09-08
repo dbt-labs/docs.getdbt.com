@@ -17,12 +17,12 @@ Refer to [Function properties](/reference/function-properties) or [Function conf
 
 ## Prerequisites
 
-* Make sure you're using dbt platform's **<Constant name="fusion" /> Stable** or **Latest** [release track](/docs/dbt-versions/dbt-release-tracks) or <Constant name="core" /> v1.11+.
+* Make sure you're using dbt platform's **<Constant name="fusion" /> Stable** or **Latest** [release track](/docs/dbt-versions/dbt-release-tracks) or <Constant name="dbt" /> v1.11+.
 * Use one of the following adapters:
 
 	<Tabs>
 	
-	<TabItem value="core" label="dbt Core">
+	<TabItem value="core" label="dbt v1">
 	
 	- BigQuery
 	- Snowflake
@@ -32,7 +32,7 @@ Refer to [Function properties](/reference/function-properties) or [Function conf
 	
 	</TabItem>
 	
-	<TabItem value ="fusion" label ="dbt Fusion engine">
+	<TabItem value ="fusion" label ="dbt v2">
 	
 	- BigQuery
 	- Snowflake
@@ -43,7 +43,7 @@ Refer to [Function properties](/reference/function-properties) or [Function conf
 	</Tabs>
 
 :::important UDF support
-JavaScript UDFs are supported in <Constant name="core" /> v1.12+ on Snowflake and BigQuery.
+JavaScript UDFs are supported in <Constant name="dbt" /> v1.12+ on Snowflake and BigQuery.
 
 Additional languages (for example, Java, Scala) aren't currently supported for UDFs.
 
@@ -52,7 +52,7 @@ See the [Limitations](#limitations) section below for the full list of currently
 
 ## Defining UDFs in dbt
 
-You can define SQL, Python, and JavaScript (available in <Constant name="core" /> v1.12+) UDFs in dbt. Python UDFs are supported in Snowflake, BigQuery, and Databricks ([Unity Catalog](https://docs.databricks.com/aws/en/data-governance/unity-catalog/) required). JavaScript UDFs are supported in Snowflake and BigQuery.
+You can define SQL, Python, and JavaScript (available in <Constant name="dbt" /> v1.12+) UDFs in dbt. Python UDFs are supported in Snowflake, BigQuery, and Databricks ([Unity Catalog](https://docs.databricks.com/aws/en/data-governance/unity-catalog/) required). JavaScript UDFs are supported in Snowflake and BigQuery.
 
 Follow these steps to define UDFs in dbt:
 
@@ -454,7 +454,7 @@ dbt detects all of these changes when using [`state:modified`](/reference/node-s
 
 ### Defining overloaded UDFs
 
-Use the [`overloads`](/reference/resource-properties/overloads) property (available in <Constant name="core" /> v1.12+) to define multiple argument signatures for the same function. This lets you call the same function name with different input types, without creating separate UDFs for each variant. `overloads` is supported for SQL UDFs in Snowflake and Postgres, and Python and JavaScript UDFs in Snowflake.
+Use the [`overloads`](/reference/resource-properties/overloads) property (available in <Constant name="dbt" /> v1.12+) to define multiple argument signatures for the same function. This lets you call the same function name with different input types, without creating separate UDFs for each variant. `overloads` is supported for SQL UDFs in Snowflake and Postgres, and Python and JavaScript UDFs in Snowflake.
 
 To define overloaded UDFs:
 

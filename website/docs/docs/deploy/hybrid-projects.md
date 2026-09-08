@@ -1,7 +1,7 @@
 ---
 title: "About Hybrid projects"
 sidebar_label: "About hybrid projects"
-description: "Learn how to upload dbt Core artifacts into the dbt platform to create and set up hybrid projects."
+description: "Learn how to upload dbt v1 artifacts into the dbt platform to create and set up hybrid projects."
 pagination_next: "docs/deploy/hybrid-setup"
 availability:
   surface: platform

@@ -60,13 +60,13 @@ config:
 
 :::note <Constant name="core" /> flag
 
-The v2 parser flag is only applies to <Constant name="core" /> v1.12 or higher. If you're already on v2, the flag has no impact.
+The v2 parser flag is only applies to <Constant name="dbt" /> v1.12 or higher. If you're already on v2, the flag has no impact.
 
 :::
 
 The `use_v2_parser` flag delegates parsing to the v2 parser. This is an opt-in flag.
 
-The v2 parser is the Rust-based parser from the <Constant name="fusion_engine" />. It's significantly faster than the v1 Python parser, especially on larger projects, where it can be 5–10× quicker. Enabling it can speed up your development workflow and cut down on job startup times. Because it delegates to the parser used in v2.0, it's also a low-risk way to test compatibility with v2 from within <Constant name="core" /> v1.12.
+The v2 parser is the Rust-based parser from <Constant name="fusion_engine" />. It's significantly faster than the v1 Python parser, especially on larger projects, where it can be 5–10× quicker. Enabling it can speed up your development workflow and cut down on job startup times. Because it delegates to the parser used in v2.0, it's also a low-risk way to test compatibility with v2 from within <Constant name="dbt" /> v1.12.
 
 You can enable the v2 parser in three ways:
 

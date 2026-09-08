@@ -12,7 +12,7 @@ sidebar_label: "require ref searches node package before root"
 
 The `require_ref_searches_node_package_before_root` flag controls the search order when dbt resolves `ref()` calls defined within a package.
 
-The flag is set to `false` by default in **Latest** and <Constant name="core" /> v1.11. When dbt resolves a `ref()` in a package model, it searches for the referenced model in the root project _first_, then in the package where the model is defined.
+The flag is set to `false` by default in **Latest** and <Constant name="dbt" /> v1.11. When dbt resolves a `ref()` in a package model, it searches for the referenced model in the root project _first_, then in the package where the model is defined.
 
 For example, the following model in the package `my_package` is imported by the project `my_project`:
 

@@ -286,7 +286,7 @@ Release date: January 22, 2026
 ### dbt cloud-based platform
 
 ### Under the Hood
-- Add debug log for local md5 hash for fusion conformance
+- Add debug log for local md5 hash for dbt v2 conformance
 - Resolve Click CLI UserWarning regarding --target and --profile usage in Advanced CI
 
 This compatible release includes functionality from the following versions of <Constant name="core" /> OSS:
@@ -541,7 +541,7 @@ Release date: August 12, 2025
 ### Notable <Constant name="core" /> OSS changes
 
 This compatible upgrade brings in a minor update to `dbt-core`, from `dbt-core==1.9.8` to `dbt-core==1.10.8`. Some noteworthy changes from this minor version include:
-- Introduction of several new [deprecations](/reference/deprecations) that warn about project incompatibilities between <Constant name="core" /> and Fusion engines.
+- Introduction of several new [deprecations](/reference/deprecations) that warn about project incompatibilities between <Constant name="core" /> and v2.
 - Support for defining `meta` and `tags` within `config` of columns and exposures, as well as defining `freshness` within `config` of sources. These changes lead to manifest.json minor schema evolutions which may cause an intermittent increase in false positives during `state:modified` comparisons.
 
 ### dbt cloud-based platform 
@@ -791,7 +791,7 @@ dbt-trino==1.9.0
 ```
 
 Changelogs:
-- [<Constant name="core" /> 1.9.3](https://github.com/dbt-labs/dbt-core/blob/1.9.latest/CHANGELOG.md#dbt-core-193---march-07-2025)
+- [dbt-core 1.9.3](https://github.com/dbt-labs/dbt-core/blob/1.9.latest/CHANGELOG.md#dbt-core-193---march-07-2025)
 - [dbt-adapters 1.14.1](https://github.com/dbt-labs/dbt-adapters/blob/main/dbt-adapters/CHANGELOG.md#dbt-adapters-1141---march-04-2025)
 - [dbt-common 1.15.0](https://github.com/dbt-labs/dbt-common/blob/main/CHANGELOG.md#dbt-common-1150---february-14-2025)
 - [dbt-bigquery 1.9.1](https://github.com/dbt-labs/dbt-bigquery/blob/1.9.latest/CHANGELOG.md#dbt-bigquery-191---january-10-2025)
@@ -848,7 +848,7 @@ dbt-trino==1.9.0
 ```
 
 Changelogs:
-- [<Constant name="core" /> 1.9.2](https://github.com/dbt-labs/dbt-core/blob/1.9.latest/CHANGELOG.md#dbt-core-192---january-29-2025)
+- [dbt-core 1.9.2](https://github.com/dbt-labs/dbt-core/blob/1.9.latest/CHANGELOG.md#dbt-core-192---january-29-2025)
 - [dbt-adapters 1.14.0](https://github.com/dbt-labs/dbt-adapters/blob/main/dbt-adapters/CHANGELOG.md#dbt-adapters-1140---february-07-2025)
 - [dbt-common 1.14.0](https://github.com/dbt-labs/dbt-common/blob/main/CHANGELOG.md)
 - [dbt-bigquery 1.9.1](https://github.com/dbt-labs/dbt-bigquery/blob/1.9.latest/CHANGELOG.md#dbt-bigquery-191---january-10-2025)
@@ -902,7 +902,7 @@ dbt-trino==1.9.0
 ```
 
 Changelogs:
-- [<Constant name="core" /> 1.9.1](https://github.com/dbt-labs/dbt-core/blob/1.9.latest/CHANGELOG.md#dbt-core-191---december-16-2024)
+- [dbt-core 1.9.1](https://github.com/dbt-labs/dbt-core/blob/1.9.latest/CHANGELOG.md#dbt-core-191---december-16-2024)
 - [dbt-adapters 1.13.1](https://github.com/dbt-labs/dbt-adapters/blob/main/dbt-adapters/CHANGELOG.md#dbt-adapters-1131---january-10-2025)
 - [dbt-common 1.14.0](https://github.com/dbt-labs/dbt-common/blob/main/CHANGELOG.md)
 - [dbt-bigquery 1.9.1](https://github.com/dbt-labs/dbt-bigquery/blob/1.9.latest/CHANGELOG.md#dbt-bigquery-191---january-10-2025)
@@ -944,7 +944,7 @@ dbt-trino==1.8.5
 ```
 
 Changelogs:
-- [<Constant name="core" /> 1.9.0](https://github.com/dbt-labs/dbt-core/blob/1.9.latest/CHANGELOG.md#dbt-core-190---december-09-2024)
+- [dbt-core 1.9.0](https://github.com/dbt-labs/dbt-core/blob/1.9.latest/CHANGELOG.md#dbt-core-190---december-09-2024)
 - [dbt-adapters 1.10.4](https://github.com/dbt-labs/dbt-adapters/blob/main/dbt-adapters/CHANGELOG.md#dbt-adapters-1104---november-11-2024)
 - [dbt-common 1.14.0](https://github.com/dbt-labs/dbt-common/blob/main/CHANGELOG.md)
 - [dbt-bigquery 1.9.0](https://github.com/dbt-labs/dbt-bigquery/blob/1.9.latest/CHANGELOG.md#dbt-bigquery-190---december-09-2024)

@@ -1,20 +1,20 @@
 ---
-title: 'Move from dbt Core to the dbt platform: Optimization tips'
+title: 'Move from dbt v1 to the dbt platform: Optimization tips'
 id: dbt-migration-3
 description: "Use this guide to learn how to optimize your dbt experience and get answers to common questions."
 hoverSnippet: "Use this guide to learn how to optimize your dbt experience and get answers to common questions."
 icon: 'guides'
 hide_table_of_contents: true
-tags: ['Migration','dbt Core','dbt platform']
-keywords: ['dbt Core','dbt platform','Migration', 'Move dbt', 'Migrate dbt']
+tags: ['Migration','dbt v1','dbt platform']
+keywords: ['dbt v1','dbt platform','Migration', 'Move dbt', 'Migrate dbt']
 level: 'Intermediate'
 ---
 
 ## Introduction
 
-Moving from <Constant name="core" /> to <Constant name="dbt" /> streamlines analytics engineering workflows by allowing teams to develop, test, deploy, and explore data products using a single, fully managed software service. It's not just better tooling &mdash; it's about lowering total cost of ownership, powering AI with trusted data, and scaling with governed self-service.
+Moving from self-hosted dbt to the <Constant name="dbt_platform" /> streamlines analytics engineering workflows by allowing teams to develop, test, deploy, and explore data products using a single, fully managed software service. It's not just better tooling &mdash; it's about lowering total cost of ownership, powering AI with trusted data, and scaling with governed self-service.
 
-Explore our 3-part-guide series on moving from <Constant name="core" /> to <Constant name="dbt" />. The series is ideal for users aiming for streamlined workflows and enhanced analytics:
+Explore our 3-part-guide series on moving from self-hosted dbt to the <Constant name="dbt_platform" />. The series is ideal for users aiming for streamlined workflows and enhanced analytics:
 
 import CoreMigrationTable from '/snippets/_core-migration-table.md';
 
@@ -78,7 +78,7 @@ The <Constant name="studio_ide" /> provides a simplified interface that's access
 
 The <Constant name="platform_cli" /> allows you to run dbt [commands](/reference/dbt-commands#available-commands) against your <Constant name="dbt_platform" /> development environment from your local command line. For users who seek full control over their development environment and ideal for those comfortable with the command line.
 
-When moving from <Constant name="core" /> to <Constant name="dbt" />, make sure you check the `.gitignore` file contains the [necessary folders](/docs/platform/git/version-control-basics#the-gitignore-file). <Constant name="core" /> doesn't interact with git so <Constant name="dbt" /> doesn't automatically add or verify entries in the `.gitignore` file. Additionally, if the repository already contains dbt code and doesn't require initialization, <Constant name="dbt" /> won't add any missing entries to the `.gitignore file`.
+When moving from self-hosted dbt to the <Constant name="dbt_platform" />, make sure you check the `.gitignore` file contains the [necessary folders](/docs/platform/git/version-control-basics#the-gitignore-file). <Constant name="core" /> doesn't interact with git so <Constant name="dbt" /> doesn't automatically add or verify entries in the `.gitignore` file. Additionally, if the repository already contains dbt code and doesn't require initialization, <Constant name="dbt" /> won't add any missing entries to the `.gitignore file`.
 
 **Who might prefer the <Constant name="dbt" /> CLI?**
 
@@ -176,9 +176,9 @@ Refer to the [<Constant name="catalog" /> FAQs](/docs/explore/dbt-explorer-faqs)
 
 Congratulations on making it through the guide 🎉!
 
-We hope you're equipped with useful insights and tips to help you with your move. Something to note is that moving from <Constant name="core" /> to <Constant name="dbt" /> isn't just about evolving your data projects, it's about exploring new levels of collaboration, governance, efficiency, and innovation within your team, and building a data layer that's ready for AI.
+We hope you're equipped with useful insights and tips to help you with your move. Something to note is that moving from self-hosted dbt to the <Constant name="dbt_platform" /> isn't just about evolving your data projects, it's about exploring new levels of collaboration, governance, efficiency, and innovation within your team, and building a data layer that's ready for AI.
 
-For the next steps, continue exploring our 3-part-guide series on moving from <Constant name="core" /> to <Constant name="dbt" />:
+For the next steps, continue exploring our 3-part-guide series on moving from self-hosted dbt to the <Constant name="dbt_platform" />:
 
 <CoreMigrationTable/>
 

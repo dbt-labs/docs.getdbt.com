@@ -213,7 +213,7 @@ For data practitioners working with a self-hosted installation, this means AI as
 
 ## FAQs
 
-<DetailsToggle alt_header="What's the difference between the dbt platform CLI and dbt Core?">
+<DetailsToggle alt_header="What's the difference between the dbt platform CLI and v1?">
 
 The <Constant name="platform_cli" /> and <a href="https://github.com/dbt-labs/dbt-core"><Constant name="core" /></a>, an open-source project, are both command line tools that enable you to run dbt commands. 
 
@@ -221,7 +221,7 @@ The key distinction is that the <Constant name="platform_cli" /> is tailored for
 
 </DetailsToggle>
 
-<DetailsToggle alt_header="How do I run both the dbt platform CLI and dbt Core?">
+<DetailsToggle alt_header="How do I run both the dbt platform CLI and v1?">
 
 For compatibility, both the <Constant name="platform_cli" /> and <Constant name="core" /> are invoked by running `dbt`. This can create path conflicts if your operating system selects one over the other based on your $PATH environment variable (settings).
 

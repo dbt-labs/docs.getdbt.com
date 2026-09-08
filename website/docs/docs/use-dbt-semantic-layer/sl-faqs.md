@@ -93,7 +93,7 @@ Yes, the dbt Semantic Layer is compatible with [dbt v1.6 or higher](/docs/dbt-ve
 Yes, <Constant name="dbt" /> [Starter, Enterprise, or Enterprise+](https://www.getdbt.com/pricing) plan customers can access the dbt Semantic Layer. Certain features like caching and using multiple credentials are available for Enterprise and Enterprise+ plans.
 </Expandable>
 
-<Expandable alt_header="Is there a way to leverage dbt Semantic Layer capabilities in dbt Core?">
+<Expandable alt_header="Is there a way to leverage dbt Semantic Layer capabilities in dbt v1?">
 
 The dbt Semantic Layer is proprietary to <Constant name="dbt" />, however some components of it are open-source. <Constant name="core" /> users can use MetricFlow features, like defining metrics in their projects, without a <Constant name="dbt" /> plan.
 

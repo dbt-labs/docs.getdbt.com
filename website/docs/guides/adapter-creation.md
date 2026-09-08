@@ -153,7 +153,7 @@ When your adapter becomes more popular, and people start using it, you may quick
 
 #### Keeping the code compatible with <Constant name="core_v1" />
 
-An adapter is compatible with <Constant name="core_v1" /> if it has correctly implemented the interface defined in [dbt-adapters](https://github.com/dbt-labs/dbt-adapters/) and is tested by [dbt-tests-adapters](https://github.com/dbt-labs/dbt-adapters/tree/main/dbt-tests-adapter). Prior to <Constant name="core_v1" /> version 1.8, this interface was contained in `dbt-core`. 
+An adapter is compatible with <Constant name="core_v1" /> if it has correctly implemented the interface defined in [dbt-adapters](https://github.com/dbt-labs/dbt-adapters/) and is tested by [dbt-tests-adapters](https://github.com/dbt-labs/dbt-adapters/tree/main/dbt-tests-adapter). Prior to <Constant name="dbt" /> version 1.8, this interface was contained in `dbt-core`. 
 
 New minor version releases of `dbt-adapters` may include changes to the Python interface for adapter plugins, as well as new or updated test cases. The maintainers of `dbt-adapters` will clearly communicate these changes in documentation and release notes, and they will aim for backwards compatibility whenever possible.
 
@@ -166,12 +166,12 @@ dbt Labs strongly recommends you to adopt the following approach when versioning
 - Declare major version compatibility with `dbt-adapters` and only set a boundary on the minor version if there is some known reason.
 - Do not import or rely on code from `dbt-core`. 
 - Aim to release a new minor version of your plugin as you add substantial new features. Typically, this will be triggered by adding support for new features released in `dbt-adapters` or by changes to the data platform itself.
-- While your plugin is new and you're iterating on features, aim to offer backwards compatibility and deprecation notices for at least one minor version. As your plugin matures, aim to leave backwards compatibility and deprecation notices in place until the next major version (<Constant name="core_v2" />).
+- While your plugin is new and you're iterating on features, aim to offer backwards compatibility and deprecation notices for at least one minor version. As your plugin matures, aim to leave backwards compatibility and deprecation notices in place until the next major version (v2).
 - Release patch versions of your plugins whenever needed. These patch releases should only contain fixes.
 
 :::note
 
-Prior to <Constant name="core_v1" /> version 1.8, we recommended that the minor version of your plugin should match the minor version in `dbt-core` (for example, 1.1.x).
+Prior to <Constant name="dbt" /> version 1.8, we recommended that the minor version of your plugin should match the minor version in `dbt-core` (for example, 1.1.x).
 
 :::
 
@@ -678,7 +678,7 @@ See examples:
 
 #### `__version__.py`
 
-To assure that `dbt --version` provides the latest dbt core version the adapter supports, be sure include a `__version__.py` file. The filepath will be `dbt/adapters/<adapter_name>/__version__.py`. We recommend using the latest dbt core version and as the adapter is made compatible with later versions, this file will need to be updated. For a sample file, check out this [example](https://github.com/dbt-labs/dbt-snowflake/blob/main/dbt/adapters/snowflake/__version__.py).
+To assure that `dbt --version` provides the latest dbt v1 version the adapter supports, be sure include a `__version__.py` file. The filepath will be `dbt/adapters/<adapter_name>/__version__.py`. We recommend using the latest dbt v1 version and as the adapter is made compatible with later versions, this file will need to be updated. For a sample file, check out this [example](https://github.com/dbt-labs/dbt-snowflake/blob/main/dbt/adapters/snowflake/__version__.py).
 
 It should be noted that both of these files are included in the bootstrapped output of the `dbt-database-adapter-scaffold` so when using the scaffolding, these files will be included.
 
@@ -691,7 +691,7 @@ This document has two sections:
 
 ### Testing prerequisites
 
-- Your adapter must be compatible with <Constant name="core_v1" /> **v1.1** or newer
+- Your adapter must be compatible with <Constant name="dbt" /> **v1.1** or newer
 - You should be familiar with **pytest**: [https://docs.pytest.org](https://docs.pytest.org)
 
 ### About the testing framework
@@ -1365,7 +1365,7 @@ Free and open-source tools for the data professional are increasingly abundant. 
 2. Does it meet my team's specific use case?
 3. Does anyone "own" the code, or is anyone liable for ensuring it works?
 4. Do bugs get fixed quickly?
-5. Does it stay up-to-date with new <Constant name="core" /> features?
+5. Does it stay up-to-date with new dbt features?
 6. Is the usage substantial enough to self-sustain?
 7. What risks do I take on by taking a dependency on this library?
 
@@ -1399,7 +1399,7 @@ Proceed to the "Document a new adapter" step for more information.
 
 Keeping an adapter up-to-date with the latest features of dbt, as defined in [dbt-adapters](https://github.com/dbt-labs/dbt-adapters), is an integral part of being a trusted adapter. We encourage adapter maintainers to keep track of new dbt-adapter releases and support new features relevant to their platform, ensuring users have the best version of dbt. 
 
-Before [<Constant name="core_v1" /> version 1.8](/docs/dbt-versions/dbt-upgrade/upgrading-to-v1.8#new-dbt-core-adapter-installation-procedure), adapter versions needed to match the semantic versioning of <Constant name="core_v1" />. After v1.8, this is no longer required. This means users can use an adapter on v1.8+ with a different version of <Constant name="core_v1" /> v1.8+. For example, a user could use dbt-core v1.9 with dbt-postgres v1.8. 
+Before [dbt v1.8](/docs/dbt-versions/dbt-upgrade/upgrading-to-v1.8#new-dbt-core-adapter-installation-procedure), adapter versions needed to match the semantic versioning of <Constant name="core_v1" />. After v1.8, this is no longer required. This means users can use an adapter on v1.8+ with a different version of dbt v1.8+. For example, a user could use dbt-core v1.9 with dbt-postgres v1.8. 
 
 ### Community responsiveness
 

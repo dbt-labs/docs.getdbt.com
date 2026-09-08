@@ -80,7 +80,7 @@ Example usage:
 
 ## config.meta_get
 
-This functionality is available starting in <Constant name="core" /> v1.10 and in the <Constant name="fusion_engine" />.
+This functionality is available starting in <Constant name="dbt" /> v1.10 and in <Constant name="fusion_engine" />.
 
 __Args__:
 
@@ -115,7 +115,7 @@ models:
 
 ## config.meta_require
 
-This functionality is available starting in <Constant name="core" /> v1.10 and in the <Constant name="fusion_engine" />.
+This functionality is available starting in <Constant name="dbt" /> v1.10 and in <Constant name="fusion_engine" />.
 
 __Args__:
 

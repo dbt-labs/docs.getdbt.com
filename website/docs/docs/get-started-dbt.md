@@ -86,8 +86,6 @@ When you install dbt into your Windows, macOS, or Linux environment, you get com
 
 You can use self-hosted tools with or without a <Constant name="dbt_platform" /> account. With an account, the VS Code extension and <Constant name="platform_cli" /> sync with your platform project for CI/CD, documentation, and more. Without an account, you run dbt entirely on your own infrastructure.
 
-Develop with a self-hosted installation using the <Constant name="fusion_engine" /> or <Constant name="core" /> engine.
-
 <div className="grid--3-col">
 
 <Card

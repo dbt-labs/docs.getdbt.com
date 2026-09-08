@@ -1,10 +1,10 @@
 ---
-title: "About installing Fusion"
-description: "Install the Fusion engine in a self-hosted setup to take data transformation to the next level."
+title: "About installing dbt v2"
+description: "Install dbt v2 in a self-hosted setup to take data transformation to the next level."
 id: about-dbt-install
 ---
 
-# About self-hosted Fusion installation <Lifecycle status="preview" />
+# About self-hosted dbt v2 installation <Lifecycle status="preview" />
 
 import FusionLifecycle from '/snippets/_fusion-lifecycle-callout.md'
 import FusionPrereqs from '/snippets/_fusion-prereqs.md';
@@ -15,7 +15,7 @@ import FusionPrereqs from '/snippets/_fusion-prereqs.md';
 
 ## Getting started
 
-If you're ready to get started, choose one of the following options. To learn more about which tool is best for you, see the [Fusion availability](/docs/dbt/dbt-availability) page.
+If you're ready to get started, choose one of the following options. To learn more about which tool is best for you, see the [dbt v2 availability](/docs/dbt/dbt-availability) page.
 
 <div className="grid--3-col">
 
@@ -26,14 +26,14 @@ If you're ready to get started, choose one of the following options. To learn mo
     icon="dbt-bit"/>
 
 <Card
-    title="dbt Fusion engine from the CLI"
-    body="Learn how to install the dbt Fusion engine on the command line interface (CLI)."
+    title="dbt v2 from the CLI"
+    body="Learn how to install dbt v2 on the command line interface (CLI)."
     link="/docs/local/install-dbt?version=2"
     icon="dbt-bit"/>
 
 <Card
-    title="dbt Fusion engine upgrade"
-    body="Learn how you can upgrade and leverage the speed and scale of the dbt Fusion engine"
+    title="dbt v2 upgrade"
+    body="Learn how you can upgrade and leverage the speed and scale of dbt v2"
     link="/docs/dbt-versions/upgrade-dbt-platform-version#dbt-fusion-engine"
     icon="dbt-bit"/>
 

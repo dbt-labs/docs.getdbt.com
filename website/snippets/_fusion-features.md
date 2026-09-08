@@ -14,7 +14,7 @@ Creating an account also unlocks additional free-tier access to dbt services.
 
 | Feature | Free forever <small>(for real!)</small>  | Requires login <br /> <small>to any <Constant name="dbt_platform" /> account, free or paid</small> |
 |---------|:-----------------:|:----------------------:|
-| dbt Core v1.x workflows, except dbt docs v1 | ✅ | ✅ |
+| dbt v1 workflows, except dbt docs v1 | ✅ | ✅ |
 | Syntax error detection (Jinja, YAML, SQL) | ✅ | ✅ |
 | dbt lint | ✅ | ✅ |
 | dbt docs v2 (lite) | ✅ | ✅ |

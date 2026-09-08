@@ -45,9 +45,9 @@ Always use these exact names (case-sensitive):
 | Product | Usage | Notes |
 |---------|-------|-------|
 | dbt Labs | The company | Always lowercase "dbt", capital "L" |
-| dbt | Generic reference | Use when content applies to all dbt offerings |
-| dbt Core | Versions ≤1.x | Lowercase "dbt", capital "C" |
-| dbt Fusion engine | Versions ≥2.x | Can shorten to "Fusion" in docs |
+| dbt | Generic reference — use deliberately | Only for statements that are product-agnostic (true of dbt regardless of version). Not the default for former "dbt Core"/"Fusion" references |
+| dbt v1 | Versions ≤1.x (formerly "dbt Core") | Always lowercase "dbt". Write "dbt v1" in a header or at the start of a sentence; use bare "v1" inline |
+| dbt v2 | Versions ≥2.x (formerly "Fusion" / "dbt Fusion engine" / "dbt Core 2.0") | Always lowercase "dbt". Write "dbt v2" in a header or at the start of a sentence; use bare "v2" inline |
 | dbt | Cloud-based offering | Formerly "dbt Cloud"; use "managed dbt" or "dbt platform" for clarity |
 
 Plan tiers (capitalize): Developer, Starter, Enterprise, Enterprise+
@@ -529,7 +529,7 @@ Avoid Latin abbreviations. Use plain language:
 
 | ❌ Avoid | ✅ Use |
 |----------|--------|
-| CLI (alone) | dbt CLI or dbt Core |
+| CLI (alone) | dbt CLI or dbt v1 |
 | dbt CLI | dbt platform CLI (full name) |
 | enter (in UI) | type |
 | type (in command line) | enter |

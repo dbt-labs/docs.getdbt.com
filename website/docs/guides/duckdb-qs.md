@@ -1,13 +1,13 @@
 ---
-title: Quickstart for dbt Core using DuckDB
+title: Quickstart for dbt v1 using DuckDB
 id: duckdb
-description: "Learn to use dbt Core using DuckDB."
-hoverSnippet: "Learn to use dbt Core using DuckDB."
+description: "Learn to use dbt v1 using DuckDB."
+hoverSnippet: "Learn to use dbt v1 using DuckDB."
 platform: 'dbt-core'
 icon: 'duckdb-seeklogo'
 level: 'Beginner'
 hide_table_of_contents: true
-tags: ['dbt Core','Quickstart']
+tags: ['dbt v1','Quickstart']
 ---
 
 <div style={{maxWidth: '900px'}}>
@@ -16,7 +16,7 @@ tags: ['dbt Core','Quickstart']
 
 In this quickstart guide, you'll learn how to use <Constant name="core" /> with DuckDB, enabling you to get set up quickly and efficiently. [DuckDB](https://duckdb.org/) is an open-source database management system which is designed for analytical workloads. It is designed to provide fast and easy access to large datasets, making it well-suited for data analytics tasks. 
 
-This guide covers DuckDB with <Constant name="core" /> command-line interface (CLI). For Fusion-specific DuckDB setup, refer to [DuckDB setup](/docs/local/connect-data-platform/duckdb-setup?version=2).
+This guide covers DuckDB with <Constant name="core" /> command-line interface (CLI). For dbt v2-specific DuckDB setup, refer to [DuckDB setup](/docs/local/connect-data-platform/duckdb-setup?version=2).
 
 This guide will demonstrate how to: 
 

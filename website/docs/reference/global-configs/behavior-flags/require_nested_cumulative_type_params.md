@@ -14,7 +14,7 @@ sidebar_label: "require nested cumulative type params"
 
 <br />
 
-[Cumulative-type metrics](/docs/build/cumulative#parameters) are nested under the `cumulative_type_params` field in [the <Constant name="dbt" /> **Latest** release track](/docs/dbt-versions/dbt-release-tracks), <Constant name="core" /> v1.9 and newer. Starting in <Constant name="core" /> v1.12, this flag defaults to `true`, which causes dbt to raise an error instead of a warning when cumulative metrics use the un-nested syntax.
+[Cumulative-type metrics](/docs/build/cumulative#parameters) are nested under the `cumulative_type_params` field in [the <Constant name="dbt" /> **Latest** release track](/docs/dbt-versions/dbt-release-tracks), <Constant name="dbt" /> v1.9 and newer. Starting in <Constant name="dbt" /> v1.12, this flag defaults to `true`, which causes dbt to raise an error instead of a warning when cumulative metrics use the un-nested syntax.
 
 Use the following metric configured with the syntax before v1.9 as an example:
 
@@ -25,7 +25,7 @@ Use the following metric configured with the syntax before v1.9 as an example:
       window: 7 days
 ```
 
-If you run `dbt parse` with that syntax on <Constant name="core" /> v1.9 or [the <Constant name="dbt" /> **Latest** release track](/docs/dbt-versions/dbt-release-tracks), you will receive a warning like:
+If you run `dbt parse` with that syntax on <Constant name="dbt" /> v1.9 or [the <Constant name="dbt" /> **Latest** release track](/docs/dbt-versions/dbt-release-tracks), you will receive a warning like:
 
 ```bash
 15:36:22  [WARNING]: Cumulative fields `type_params.window` and

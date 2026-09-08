@@ -48,7 +48,7 @@ require-dbt-version: ">= 1.0.0" # Don't put whitespace after the equality signs
 
 We recommend [defining both lower and upper bounds](#pin-to-a-range), such as `">=1.0.0,<3.0.0"`, to ensure stability across releases.  We don't recommend having an unbounded `require-dbt-version` (for example, `">=1.0.0"`). Without an upper limit, a project may break when dbt releases a new major version. 
 
-## Fusion compatibility
+## dbt v2 compatibility
 The `require-dbt-version` also signals whether a project or package supports the [<Constant name="fusion_engine"/>](/docs/introduction) (`2.0.0` and higher).
 
 - If it excludes `2.0.0`, <Constant name="fusion"/> will warn today and error in a future release, matching <Constant name="core"/> behavior.
@@ -76,7 +76,7 @@ The following examples showcase how to use the `require-dbt-version`:
 <!-- no toc -->
 - [Specify a minimum dbt version](#specify-a-minimum-dbt-version) &mdash; Use a <code>>=</code> operator for a minimum boundary.
 - [Pin to a range](#pin-to-a-range) &mdash; Use a comma separated list to specify an upper and lower bound.
-- [Require a specific dbt version](#require-a-specific-dbt-version) &mdash; Restrict your project to run only with an exact version of <Constant name="core" />.
+- [Require a specific dbt version](#require-a-specific-dbt-version) &mdash; Restrict your project to run only with an exact version of dbt.
 
 ### Specify a minimum dbt version
 Use a `>=` operator to specify a lower and an upper limit. For example:
@@ -85,7 +85,7 @@ Use a `>=` operator to specify a lower and an upper limit. For example:
 
 ```yml 
 require-dbt-version: ">=1.9.0" # project will only work with versions 1.9 and higher.
-require-dbt-version: ">=2.0.0" # project will only work with the dbt Fusion engine (v2.0.0 and higher).
+require-dbt-version: ">=2.0.0" # project will only work with dbt v2 (v2.0.0 and higher).
 ```
 
 </File>
@@ -95,7 +95,7 @@ Remember, having an unbounded upper limit isn't recommended. Instead, check out 
 ### Pin to a range
 Use a comma separated list for an upper and lower bound. You can define a version range either as a YAML list (using square brackets) or as a comma-delimited string &mdash; both forms are valid and work.
 
-To signal compatibility with the <Constant name="fusion_engine"/>, include `2.0.0` or higher in your version range. Both of the following formats are valid:
+To signal compatibility with <Constant name="fusion_engine"/>, include `2.0.0` or higher in your version range. Both of the following formats are valid:
 
 <File name='dbt_project.yml'>
 
@@ -115,7 +115,7 @@ If your range excludes 2.0.0 (for example, `>=1.6.0,<2.0.0`), <Constant name="fu
 :::info Not recommended
 Pinning to a specific dbt version is discouraged because it limits project flexibility and can cause compatibility issues, especially with dbt packages. It's recommended to [pin to a major release](#pin-to-a-range), using a version range (for example, `">=1.0.0", "<2.0.0"`) for broader compatibility and to benefit from updates.
 
-While you can restrict your project to run only with an exact version of <Constant name="core" />, we do not recommend this for <Constant name="core" /> v1.0.0 and higher. 
+While you can restrict your project to run only with an exact version of <Constant name="dbt" />, we do not recommend this for <Constant name="dbt" /> v1.0.0 and higher. 
 
 :::
 

@@ -8,7 +8,7 @@ hoverSnippet: Learn how to transform from a historical codebase of mixed DDL and
 platform: 'dbt-core'
 icon: 'guides'
 hide_table_of_contents: true
-tags: ['Migration', 'dbt Core']
+tags: ['Migration', 'dbt v1']
 level: 'Beginner'
 ---
 

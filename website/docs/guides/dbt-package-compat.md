@@ -1,13 +1,13 @@
 ---
-title: "Fusion package upgrade guide"
+title: "dbt v2 package upgrade guide"
 id: "dbt-package-compat"
-description: "Learn how to upgrade your packages to be compatible with the dbt Fusion engine."
-intro_text: "Learn how to upgrade your packages to be compatible with the dbt Fusion engine."
-hoverSnippet: "Learn how to upgrade your packages to be compatible with the dbt Fusion engine."
+description: "Learn how to upgrade your packages to be compatible with dbt v2."
+intro_text: "Learn how to upgrade your packages to be compatible with dbt v2."
+hoverSnippet: "Learn how to upgrade your packages to be compatible with dbt v2."
 # time_to_complete: '30 minutes' commenting out until we test
 icon: 'zap'
 hide_table_of_contents: true
-tags: ['dbt Fusion engine']
+tags: ['dbt v2']
 level: 'Advanced'
 ---
 
@@ -18,7 +18,7 @@ Thank you for being part of the [dbt's package hub community](https://hub.getdbt
 This guide helps you upgrade your dbt packages to be [<Constant name="fusion" />](/docs/introduction)-compatible. A <Constant name="fusion" />-compatible package:
 - Supports [<Constant name="fusion_engine" />](/docs/introduction) version `2.0.0`
 - Uses the [`require-dbt-version` config](/reference/project-configs/require-dbt-version) to signal compatibility in the dbt package hub
-- Aligns with the latest JSON schema introduced in <Constant name="core"/> v1.10.0
+- Aligns with the latest JSON schema introduced in <Constant name="dbt" /> v1.10.0
 
 In this guide, we'll go over:
 
@@ -119,13 +119,13 @@ Only update the [`require-dbt-version` config](/reference/project-configs/requir
 2. Update your `README` to note that the package is <Constant name="fusion"/>-compatible.
 3. (Optional) Announce it in [#package-ecosystem on dbt Slack](https://getdbt.slack.com/archives/CU4MRJ7QB) if you’d like.
 
-:::tip CI Fusion testing
+:::tip CI dbt v2 testing
 When possible, add a step to your CI pipeline that runs `dbtf build` or equivalent to ensure ongoing <Constant name="fusion"/> compatibility.
 :::
 
 Your package is now <Constant name="fusion"/>-compatible and the dbt package hub reflects these changes. To summarize, you've now:
 
-- Created a fusion compatible branch
+- Created a dbt v2 compatible branch
 - Run `dbt-autofix` deprecations
 - Reviewed, committed, and tested changes 
 - Updated `require-dbt-version: [">=1.10.0,<3.0.0"]` to include `2.0.0`
@@ -139,7 +139,7 @@ Your package is now <Constant name="fusion"/>-compatible and the dbt package hub
 
 Now that you've upgraded your package to be <Constant name="fusion"/>-compatible, users can use your package with <Constant name="fusion"/>! 🎉
 
-By upgrading now, you’re ensuring a smoother experience for users, paving the way for the next generation of dbt projects, and helping dbt <Constant name="fusion"/> reach full stability.
+By upgrading now, you’re ensuring a smoother experience for users, paving the way for the next generation of dbt projects, and helping <Constant name="fusion"/> reach full stability.
 
 If you have questions or run into issues:
 
@@ -155,22 +155,22 @@ The following are some frequently asked questions about upgrading your package t
 
 <Expandable alt_header="Why do we need to update our package?"> 
 
-<Constant name="fusion"/> and <Constant name="core"/> v1.10+ use the same new authoring layer. Ensuring your package supports `2.0.0` in your `require-dbt-version` config ensures your package is compatible with both.
+<Constant name="fusion"/> and <Constant name="dbt" /> v1.10+ use the same new authoring layer. Ensuring your package supports `2.0.0` in your `require-dbt-version` config ensures your package is compatible with both.
 
 Updating your package ensures users have the latest version of your package, your package stays trusted on dbt package hub, and users benefit from the latest features and bug fixes. <Constant name="fusion"/>-compatible packages display a badge in the dbt package hub.
 
-If a package excludes `2.0.0`, <Constant name="fusion"/> will warn today and error in a future release, matching dbt <Constant name="core"/> behavior. 
+If a package excludes `2.0.0`, <Constant name="fusion"/> will warn today and error in a future release, matching <Constant name="core"/> behavior. 
 
 </Expandable>
 
-<Expandable alt_header="How do I test Fusion in CI?">
+<Expandable alt_header="How do I test v2 in CI?">
 
 Add a separate job that installs <Constant name="fusion"/> (`dbtf`) and runs `dbtf build`. See this [PR](https://github.com/godatadriven/dbt-date/pull/31) for a working example.
 
 You want to do this to ensure any changes to your package remain compatible with <Constant name="fusion"/>.
 </Expandable>
 
-<Expandable alt_header="How will users know my package is Fusion-compatible?">
+<Expandable alt_header="How will users know my package is v2-compatible?">
 
 Users can identify your package as <Constant name="fusion"/>-compatible by checking for 2.0.0 or higher in the `require-dbt-version` range config.
 

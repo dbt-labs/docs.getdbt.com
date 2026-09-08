@@ -1,13 +1,13 @@
 ---
-title: 'Move from dbt Core to the dbt platform: Get started'
+title: 'Move from dbt v1 to the dbt platform: Get started'
 id: dbt-migration-1
-description: "Learn how to move from dbt Core to the dbt platform and what you need to get started."
-hoverSnippet: "Learn how to move from dbt Core to the dbt platform."
+description: "Learn how to move from dbt v1 to the dbt platform and what you need to get started."
+hoverSnippet: "Learn how to move from dbt v1 to the dbt platform."
 icon: 'guides'
 time_to_complete: 'Total estimated time: 3-4 hours'
 hide_table_of_contents: true
-tags: ['Migration','dbt Core','dbt platform']
-keywords: ['dbt Core','dbt platform','Migration', 'Move dbt', 'Migrate dbt']
+tags: ['Migration','dbt v1','dbt platform']
+keywords: ['dbt v1','dbt platform','Migration', 'Move dbt', 'Migrate dbt']
 level: 'Intermediate'
 ---
 
@@ -15,15 +15,15 @@ level: 'Intermediate'
 
 ## Introduction
 
-Moving from <Constant name="core" /> to <Constant name="dbt" /> streamlines analytics engineering workflows by allowing teams to develop, test, deploy, and explore data products using a single, fully managed software service. The data layer is the foundation for trusted analytics and AI; <Constant name="dbt_platform" /> gives you the governance, shared definitions, and reliability to scale both &mdash; without the hidden cost of self-hosting in engineer hours and wasted compute.
+Moving from self-hosted dbt to the <Constant name="dbt_platform" /> streamlines analytics engineering workflows by allowing teams to develop, test, deploy, and explore data products using a single, fully managed software service. The data layer is the foundation for trusted analytics and AI; <Constant name="dbt_platform" /> gives you the governance, shared definitions, and reliability to scale both &mdash; without the hidden cost of self-hosting in engineer hours and wasted compute.
 
-Explore our 3-part-guide series on moving from <Constant name="core" /> to <Constant name="dbt" />. This series is ideal for users aiming for streamlined workflows and enhanced analytics:
+Explore our 3-part-guide series on moving from self-hosted dbt to the <Constant name="dbt_platform" />. This series is ideal for users aiming for streamlined workflows and enhanced analytics:
 
 import CoreMigrationTable from '/snippets/_core-migration-table.md';
 
 <CoreMigrationTable/>
 
-<Expandable alt_header="What are dbt and dbt Core?">
+<Expandable alt_header="What is dbt?">
 
    - <Constant name="dbt" /> is the fastest and most reliable way to deploy dbt. It enables you to develop, test, deploy, and explore data products using a single, fully managed service. Infrastructure is managed for you &mdash; no custom scripts or fragile orchestration. State-aware orchestration only builds what's changed, so you waste less compute and time. Browser-based development and dbt Wizard open up development to analysts, so you're no longer the bottleneck for every change. With end-to-end lineage, shared metric definitions, and CI that catches regressions before production, you spend less time debugging and more time building. 
    <Constant name="dbt" /> also supports:
@@ -262,7 +262,7 @@ You have learned:
 - How to set up environment variables and validate your models
 
 
-For the next steps, you can continue exploring our 3-part-guide series on moving from <Constant name="core" /> to <Constant name="dbt" />:
+For the next steps, you can continue exploring our 3-part-guide series on moving from self-hosted dbt to the <Constant name="dbt_platform" />:
 
 
 <CoreMigrationTable/>

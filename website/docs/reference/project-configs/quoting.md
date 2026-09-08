@@ -12,8 +12,8 @@ quoting:
   database: true | false
   schema: true | false
   identifier: true | false
-  snowflake_ignore_case: true | false  # Fusion-only config. Aligns with Snowflake's session parameter QUOTED_IDENTIFIERS_IGNORE_CASE behavior. 
-                                       # Ignored by dbt Core and other adapters.
+  snowflake_ignore_case: true | false  # v2-only config. Aligns with Snowflake's session parameter QUOTED_IDENTIFIERS_IGNORE_CASE behavior. 
+                                       # Ignored by dbt v1 and other adapters.
 ```
 
 </File>
@@ -72,8 +72,8 @@ quoting:
   database: false
   schema: false
   identifier: false
-  snowflake_ignore_case: false  # Fusion-only config. Aligns with Snowflake's session parameter QUOTED_IDENTIFIERS_IGNORE_CASE behavior. 
-                                # Ignored by dbt Core and other adapters.
+  snowflake_ignore_case: false  # v2-only config. Aligns with Snowflake's session parameter QUOTED_IDENTIFIERS_IGNORE_CASE behavior. 
+                                # Ignored by dbt v1 and other adapters.
 ```
 
 </File>
@@ -93,8 +93,8 @@ quoting:
   database: false
   schema: false
   identifier: false      
-  snowflake_ignore_case: false  # Fusion-only config. Aligns with Snowflake's session parameter QUOTED_IDENTIFIERS_IGNORE_CASE behavior. 
-                                # Ignored by dbt Core and other adapters.
+  snowflake_ignore_case: false  # v2-only config. Aligns with Snowflake's session parameter QUOTED_IDENTIFIERS_IGNORE_CASE behavior. 
+                                # Ignored by dbt v1 and other adapters.
 ```
 
 dbt will then create relations without quotes:
@@ -121,8 +121,8 @@ If you're using Snowflake, we recommend:
     database: true
     schema: true
     identifier: true
-    snowflake_ignore_case: true  # Fusion-only config. Aligns with Snowflake's session parameter QUOTED_IDENTIFIERS_IGNORE_CASE behavior. 
-                                 # Ignored by dbt Core and other adapters.
+    snowflake_ignore_case: true  # dbt v2-only config. Aligns with Snowflake's session parameter QUOTED_IDENTIFIERS_IGNORE_CASE behavior. 
+                                 # Ignored by dbt v1 and other adapters.
   ```
 
   Setting `snowflake_ignore_case: true` ensures that dbt compiles column and identifier names match Snowflake’s behavior at runtime, preserving parity between compile-time and runtime logic. Without this, you may encounter "column not found" errors.

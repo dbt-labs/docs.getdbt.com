@@ -1,7 +1,7 @@
 ---
 title: "Upgrading to v1.9"
 id: upgrading-to-v1.9
-description: New features and changes in dbt Core v1.9
+description: New features and changes in dbt v1.9
 displayed_sidebar: "docs"
 availability:
   engine: v1
@@ -10,7 +10,7 @@ availability:
  
 ## Resources 
 
-- [<Constant name="core" /> 1.9 changelog](https://github.com/dbt-labs/dbt-core/blob/1.9.latest/CHANGELOG.md)
+- [<Constant name="dbt" /> 1.9 changelog](https://github.com/dbt-labs/dbt-core/blob/1.9.latest/CHANGELOG.md)
 - [<Constant name="core" /> CLI Installation guide](/docs/local/install-dbt)
 - [dbt platform upgrade guide](/docs/dbt-versions/upgrade-dbt-platform-version#fusion-release-tracks)
 
@@ -18,7 +18,7 @@ availability:
 
 dbt Labs is committed to providing backward compatibility for all versions 1.x. Any behavior changes will be accompanied by a [behavior change flag](/reference/global-configs/behavior-changes#behavior-change-flags) to provide a migration window for existing projects. If you encounter an error upon upgrading, please let us know by [opening an issue](https://github.com/dbt-labs/dbt-core/issues/new).
 
-Starting in 2024, <Constant name="dbt" /> provides the functionality from new versions of <Constant name="core" /> via [release tracks](/docs/dbt-versions/dbt-release-tracks) with automatic upgrades. If you have selected the **Latest** release track in <Constant name="dbt" />, you already have access to all the features, fixes, and other functionality that is included in <Constant name="core" /> v1.9! If you have selected the **Compatible** release track, you will have access in the next monthly **Compatible** release after the <Constant name="core" /> v1.9 final release.
+Starting in 2024, <Constant name="dbt" /> provides the functionality from new versions of <Constant name="core" /> via [release tracks](/docs/dbt-versions/dbt-release-tracks) with automatic upgrades. If you have selected the **Latest** release track in <Constant name="dbt" />, you already have access to all the features, fixes, and other functionality that is included in <Constant name="dbt" /> v1.9! If you have selected the **Compatible** release track, you will have access in the next monthly **Compatible** release after the <Constant name="dbt" /> v1.9 final release.
 
 ## New and changed features and functionality
 
@@ -41,7 +41,7 @@ Historically, managing incremental models involved several manual steps and resp
 
 While this works for many use-cases, there’s a clear limitation with this approach: *Some datasets are just too big to fit into one query.*
 
-Starting in <Constant name="core" /> 1.9, you can use the new [microbatch strategy](/docs/build/incremental-microbatch#what-is-microbatch-in-dbt) to optimize your largest datasets  -- **process your event data in discrete periods with their own SQL queries, rather than all at once.** The benefits include:
+Starting in <Constant name="dbt" /> 1.9, you can use the new [microbatch strategy](/docs/build/incremental-microbatch#what-is-microbatch-in-dbt) to optimize your largest datasets  -- **process your event data in discrete periods with their own SQL queries, rather than all at once.** The benefits include:
 
 - Simplified query design: Write your model query for a single batch of data. dbt will use your `event_time`, `lookback`, and `batch_size` configurations to automatically generate the necessary filters for you, making the process more streamlined and reducing the need for you to manage these details.
 - Independent batch processing: dbt automatically breaks down the data to load into smaller batches based on the specified `batch_size` and processes each batch independently, improving efficiency and reducing the risk of query timeouts. If some of your batches fail, you can use `dbt retry` to load only the failed batches.
@@ -59,7 +59,7 @@ Currently microbatch is supported on these adapters with more to come:
   
 ### Snapshots improvements
 
-Beginning in <Constant name="core" /> 1.9, we've streamlined snapshot configuration and added a handful of new configurations to make dbt **snapshots easier to configure, run, and customize.** These improvements include:
+Beginning in <Constant name="dbt" /> 1.9, we've streamlined snapshot configuration and added a handful of new configurations to make dbt **snapshots easier to configure, run, and customize.** These improvements include:
 
 - New snapshot specification: Snapshots can now be configured in a YAML file, which provides a cleaner and more consistent set up.
 - New `snapshot_meta_column_names` config: Allows you to customize the names of meta fields (for example, `dbt_valid_from`, `dbt_valid_to`, etc.) that dbt automatically adds to snapshots. This increases flexibility to tailor metadata to your needs.
@@ -75,7 +75,7 @@ To learn how to safely migrate existing snapshots, refer to [Snapshot configurat
 
 ### Some `properties` moved to `configs`
 
-The following `properties` were moved to `configs` in [<Constant name="core" /> v1.10](/docs/dbt-versions/dbt-upgrade/upgrading-to-v1.10) and backported to <Constant name="core" /> v1.9:
+The following `properties` were moved to `configs` in [<Constant name="dbt" /> v1.10](/docs/dbt-versions/dbt-upgrade/upgrading-to-v1.10) and backported to <Constant name="dbt" /> v1.9:
 - [`freshness`](/reference/resource-properties/freshness) for sources
 - [`meta`](/reference/resource-configs/meta) under `columns`
 - [`tags`](/reference/resource-configs/tags) under `columns`
@@ -88,7 +88,7 @@ We’ve made improvements to `state:modified` behaviors to help reduce the risk 
 
 ### Managing changes to legacy behaviors
 
-<Constant name="core" /> v1.9 has a handful of new flags for [managing changes to legacy behaviors](/reference/global-configs/behavior-changes). You may opt into recently introduced changes (disabled by default), or opt out of mature changes (enabled by default), by setting `true` / `false` values, respectively, for `flags` in `dbt_project.yml`.
+<Constant name="dbt" /> v1.9 has a handful of new flags for [managing changes to legacy behaviors](/reference/global-configs/behavior-changes). You may opt into recently introduced changes (disabled by default), or opt out of mature changes (enabled by default), by setting `true` / `false` values, respectively, for `flags` in `dbt_project.yml`.
 
 You can read more about each of these behavior changes in the following links:
 
@@ -125,7 +125,7 @@ import SnowflakeColumn from '/snippets/_snowflake-column-size.md';
 
 ## Quick hits
 
-We also made some quality-of-life improvements in <Constant name="core" /> 1.9, enabling you to:
+We also made some quality-of-life improvements in <Constant name="dbt" /> 1.9, enabling you to:
 
 - Maintain data quality now that dbt returns an error (versioned models) or warning (unversioned models) when someone [removes a contracted model by deleting, renaming, or disabling](/docs/mesh/govern/model-contracts#how-are-breaking-changes-handled) it.
 - Document [data tests](/reference/resource-properties/description).

@@ -30,10 +30,10 @@ When you install dbt, you get v2 by default. There's no separate feature set to 
 To use v2 in your project you must:
 - Use a supported adapter and authentication method:
   <FusionDWH /> 
-- Be able to run your project on the latest version of dbt Core v1.x with no deprecation warnings or errors.
+- Be able to run your project on the latest version of dbt v1 with no deprecation warnings or errors.
 - Migrate your Semantic Layer configurations to the [latest YAML spec](/docs/build/latest-metrics-spec).
 
-## Parity with dbt Core v1.x
+## Parity with dbt v1
 
 dbt v2 supports nearly all of v1.x's capabilities today. Refer to [Limitations](#limitations) below for the small number of gaps that remain.
 

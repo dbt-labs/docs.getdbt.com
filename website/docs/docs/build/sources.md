@@ -139,7 +139,7 @@ import SaoDeprecated from '/snippets/_sao-deprecated.md';
 
 <SaoDeprecated />
 
-If you're using the <Constant name="fusion_engine" /> with [state-aware orchestration](/docs/deploy/state-aware-about), dbt automatically tracks source freshness using warehouse metadata. You don't need to configure `warn_after` or `error_after` for dbt to detect when source data changes.
+If you're using <Constant name="fusion_engine" /> with [state-aware orchestration](/docs/deploy/state-aware-about), dbt automatically tracks source freshness using warehouse metadata. You don't need to configure `warn_after` or `error_after` for dbt to detect when source data changes.
 
 If you're using [dbt State](/docs/deploy/dbt-state-about), use [`lag_tolerance`](/reference/resource-configs/lag-tolerance) to control how frequently models rebuild based on upstream data changes. You can also configure `loaded_at_field` or `loaded_at_query` on your source for more accurate freshness detection (for example, for streaming data or late-arriving records).
 

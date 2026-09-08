@@ -7,7 +7,7 @@ hoverSnippet: Learn how to migrate from dbt-spark to dbt-databricks.
 # time_to_complete: '30 minutes' commenting out until we test
 icon: 'guides'
 hide_table_of_contents: true
-tags: ['Migration', 'dbt Core','dbt platform']
+tags: ['Migration', 'dbt v1','dbt platform']
 level: 'Intermediate'
 ---
 

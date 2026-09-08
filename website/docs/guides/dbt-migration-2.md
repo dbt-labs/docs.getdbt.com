@@ -1,26 +1,26 @@
 ---
-title: 'Move from dbt Core to the dbt platform: What you need to know'
+title: 'Move from dbt v1 to the dbt platform: What you need to know'
 id: dbt-migration-2
-description: "Use this guide to understand the considerations and methods you need to move from dbt Core to the dbt platform."
-hoverSnippet: "Use this guide to understand the considerations and methods you need to move from dbt Core to the dbt platform."
+description: "Use this guide to understand the considerations and methods you need to move from dbt v1 to the dbt platform."
+hoverSnippet: "Use this guide to understand the considerations and methods you need to move from dbt v1 to the dbt platform."
 icon: 'guides'
 hide_table_of_contents: true
-tags: ['Migration','dbt Core','dbt platform']
-keywords: ['dbt Core','dbt platform','Migration', 'Move dbt', 'Migrate dbt']
+tags: ['Migration','dbt v1','dbt platform']
+keywords: ['dbt v1','dbt platform','Migration', 'Move dbt', 'Migrate dbt']
 level: 'Intermediate'
 ---
 
 ## Introduction
 
-Moving from <Constant name="core" /> to <Constant name="dbt" /> streamlines analytics engineering workflows by allowing teams to develop, test, deploy, and explore data products using a single, fully managed software service. It's not just better tooling &mdash; it's about lowering total cost of ownership, powering AI with trusted data, and scaling with governed self-service.
+Moving from self-hosted dbt to the <Constant name="dbt_platform" /> streamlines analytics engineering workflows by allowing teams to develop, test, deploy, and explore data products using a single, fully managed software service. It's not just better tooling &mdash; it's about lowering total cost of ownership, powering AI with trusted data, and scaling with governed self-service.
 
-Explore our 3-part-guide series on moving from <Constant name="core" /> to <Constant name="dbt" />. The series is ideal for users aiming for streamlined workflows and enhanced analytics:
+Explore our 3-part-guide series on moving from self-hosted dbt to the <Constant name="dbt_platform" />. The series is ideal for users aiming for streamlined workflows and enhanced analytics:
 
 import CoreMigrationTable from '/snippets/_core-migration-table.md';
 
 <CoreMigrationTable/>
 
-<Expandable alt_header="What are dbt and dbt Core?">
+<Expandable alt_header="What are dbt and dbt v1?">
 
    - <Constant name="dbt" /> is the fastest and most reliable way to deploy dbt. It enables you to develop, test, deploy, and explore data products using a single, fully managed service. It also supports:
      - Development experiences tailored to multiple personas ([<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio) or [<Constant name="platform_cli" />](/docs/platform/dbt-cli-installation))
@@ -39,7 +39,7 @@ Today thousands of companies, with data teams ranging in size from 2 to 2,000, r
 
 The guide outlines the following steps:
 
-- [Considerations](/guides/dbt-migration-2?step=3): Learn about the most important things you need to think about when moving from <Constant name="core" /> to Cloud.
+- [Considerations](/guides/dbt-migration-2?step=3): Learn about the most important things you need to think about when moving from self-hosted dbt to the <Constant name="dbt_platform" />.
 - [Plan your move](/guides/dbt-migration-2?step=4): Considerations you need to make, such as user roles and permissions, onboarding order, current workflows, and more.
 - [Move to <Constant name="dbt" />](/guides/dbt-migration-2?step=5): Review the steps to move your <Constant name="core" /> project to <Constant name="dbt" />, including setting up your account, data platform, and <Constant name="git" /> repository.
 - [Test and validate](/guides/dbt-migration-2?step=6): Discover how to ensure model accuracy and performance post-move.
@@ -56,7 +56,7 @@ If your team is using <Constant name="core" /> today, you could be reading this 
 
 This guide shares the technical adjustments and team collaboration strategies you'll need to know to move your project from <Constant name="core" /> to <Constant name="dbt" />.  Each "build your own" deployment of <Constant name="core" /> will look a little different, but after seeing hundreds of teams make the migration, there are many things in common.
 
-The most important things you need to think about when moving from <Constant name="core" /> to <Constant name="dbt" />:
+The most important things you need to think about when moving from self-hosted dbt to the <Constant name="dbt_platform" />:
 
 - How is your team structured? Are there natural divisions of domain?
 - Should you have one project or multiple? Which dbt resources do you want to standardize & keep central?
@@ -134,7 +134,7 @@ This provides developers with the benefits of an enhanced workflow while ensurin
 
 ## Move to dbt
 
-This guide is your roadmap to help you think about migration strategies and what moving from <Constant name="core" /> to <Constant name="dbt" /> could look like.
+This guide is your roadmap to help you think about migration strategies and what moving from self-hosted dbt to the <Constant name="dbt_platform" /> could look like.
 
 After reviewing the considerations and planning your move, you may want to start moving your <Constant name="core" /> project to <Constant name="dbt" />:
 - Check out the detailed [Move to <Constant name="dbt" />: Get started](/guides/dbt-migration-1?step=1) guide for useful tasks and insights for a smooth transition from <Constant name="core" /> to <Constant name="dbt" />.
@@ -180,7 +180,7 @@ Now that you've chosen <Constant name="dbt" /> as your platform, you've unlocked
 
 ## Summary
 
-This guide should now have given you some insight and equipped you with a framework for moving from <Constant name="core" /> to <Constant name="dbt" />. This guide has covered the following key areas:
+This guide should now have given you some insight and equipped you with a framework for moving from self-hosted dbt to the <Constant name="dbt_platform" />. This guide has covered the following key areas:
 
 - **Considerations:** Understanding the foundational steps required for a successful migration, including evaluating your current setup and identifying key considerations unique to your team's structure and workflow needs.
 
@@ -199,7 +199,7 @@ This guide should now have given you some insight and equipped you with a framew
 
 Congratulations on finishing this guide, we hope it's given you insight into the considerations you need to take to best plan your move to <Constant name="dbt" />.
 
-For the next steps, you can continue exploring our 3-part-guide series on moving from <Constant name="core" /> to <Constant name="dbt" />:
+For the next steps, you can continue exploring our 3-part-guide series on moving from self-hosted dbt to the <Constant name="dbt_platform" />:
 
 <CoreMigrationTable/>
 

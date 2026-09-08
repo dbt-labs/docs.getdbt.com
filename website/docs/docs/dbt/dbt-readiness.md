@@ -1,13 +1,13 @@
 ---
 title: dbt v2 readiness checklist
 id: dbt-readiness
-description: "Your to-do list for preparing for Fusion"
+description: "Your to-do list for preparing for dbt v2"
 sidebar_label: "v2 readiness checklist"
 pagination_next: null
 pagination_prev: null
 ---
 
-The <Constant name="fusion_engine" /> is here and is now generally available for <Constant name="dbt_platform" /> projects on Snowflake! We currently offer it as a [preview](/docs/dbt-versions/product-lifecycles) for all other supported adapters. Even if we haven't enabled it for your account, you can still start preparing your projects for upgrade. Use this checklist to ensure a smooth upgrade once <Constant name="fusion" /> becomes available. If this is all new to you, first [learn about <Constant name="fusion" />](/docs/introduction), its current state, and the features available. 
+<Constant name="fusion_engine" /> is here and is now generally available for <Constant name="dbt_platform" /> projects on Snowflake! We currently offer it as a [preview](/docs/dbt-versions/product-lifecycles) for all other supported adapters. Even if we haven't enabled it for your account, you can still start preparing your projects for upgrade. Use this checklist to ensure a smooth upgrade once <Constant name="fusion" /> becomes available. If this is all new to you, first [learn about <Constant name="fusion" />](/docs/introduction), its current state, and the features available. 
 
 import FusionReadinessPanel from '/snippets/_fusion-migration-readiness-panel.md';
 
@@ -15,11 +15,11 @@ import FusionReadinessPanel from '/snippets/_fusion-migration-readiness-panel.md
 
 ## Preparing for <Constant name="fusion" />
 
-Use the following checklist to prepare your projects for the <Constant name="fusion_engine" />
+Use the following checklist to prepare your projects for <Constant name="fusion_engine" />
 
 For walkthroughs of both the preparation and upgrade processes, check out our detailed guides:
-- [ ] [Upgrade to Fusion Pt. 1: Preparing to upgrade](/guides/prepare-v2-upgrade?step=1)
-- [ ] [Upgrade to Fusion Pt. 2: Making the move](/guides/upgrade-to-v2?step=1)
+- [ ] [Upgrade to dbt v2 Pt. 1: Preparing to upgrade](/guides/prepare-v2-upgrade?step=1)
+- [ ] [Upgrade to dbt v2 Pt. 2: Making the move](/guides/upgrade-to-v2?step=1)
 
 
 ### Upgrade to the latest dbt version (recommended)
@@ -63,7 +63,7 @@ If you see the error `dbt0209: No function <function name>`, you can resolve it 
 
 For more information about using `strict` in development and `baseline` in deployment, refer to [Optimize static analysis for development and deployment](/best-practices/optimize-static-analysis-for-development-and-deployment).
 
-### Check for known Fusion limitations
+### Check for known dbt v2 limitations
 
 Your project may implement features that <Constant name="fusion" /> currently [limits](/docs/dbt/supported-features#limitations) or doesn't support. 
 
@@ -75,17 +75,17 @@ Your project may implement features that <Constant name="fusion" /> currently [l
 We determine <Constant name="fusion" /> eligibility using data from your job runs. 
 
 - [ ] Ensure you have at least one job running in each of your projects in the <Constant name="dbt_platform" />.
-  - [ ] Ensure each job has run within the last 7 days. Jobs that haven't run recently are considered inactive and are ineligible for <Constant name="fusion" />. If you see a "no active jobs" ineligibility reason in the Fusion readiness UI, run the job manually or adjust its schedule.
+  - [ ] Ensure each job has run within the last 7 days. Jobs that haven't run recently are considered inactive and are ineligible for <Constant name="fusion" />. If you see a "no active jobs" ineligibility reason in the dbt v2 readiness UI, run the job manually or adjust its schedule.
 - [ ] Ensure all jobs are running on the [**Latest** release track](/docs/dbt-versions/dbt-release-tracks#which-release-tracks-are-available) for the smoothest upgrade experience.
 - [ ] Resolve any job failures &mdash; all jobs must run successfully for eligibility checks to work.
 - [ ] Delete any jobs that are no longer in use to ensure accurate eligibility reporting. 
 - [ ] Make sure you've promoted the changes for deprecation resolution and package upgrades to your git branches that map to your deployment environments.
 - [ ] For eligible jobs, use **Debug on <Constant name="fusion" />** to debug in <Constant name="studio_ide" /> or run once on <Constant name="fusion" />. Refer to [Update your jobs](/guides/prepare-v2-upgrade?step=7).
 
-### Stay informed about Fusion progress
+### Stay informed about dbt v2 progress
 
-The <Constant name="fusion_engine" /> is generally available for <Constant name="dbt_platform" /> projects on Snowflake and in preview for all other eligible projects! Keep up-to-date with these resources: 
+<Constant name="fusion_engine" /> is generally available for <Constant name="dbt_platform" /> projects on Snowflake and in preview for all other eligible projects! Keep up-to-date with these resources: 
 
-- [ ] Check out the [Fusion homepage](https://www.getdbt.com/product/fusion) for available resources, including supported adapters, prerequisites, installation instructions, limitations, and deprecations.
+- [ ] Check out the [dbt v2 homepage](https://www.getdbt.com/product/fusion) for available resources, including supported adapters, prerequisites, installation instructions, limitations, and deprecations.
 - [ ] Read the [Upgrade guide](/docs/dbt-versions/dbt-upgrade/upgrading-to-v2) to learn about the new features and functionality that impact your dbt projects.
 - [ ] Learn how [dbt State](/docs/deploy/dbt-state-about) can reduce warehouse costs by 30%+ by rebuilding models only when data or code changes.

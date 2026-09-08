@@ -1,11 +1,11 @@
 ---
-title: "Quickstart for dbt Core from a manual install"
+title: "Quickstart for dbt v1 from a manual install"
 id: manual-install
-description: "Connecting your warehouse to dbt Core using the CLI."
+description: "Connecting your warehouse to dbt v1 using the CLI."
 level: 'Beginner'
 platform: 'dbt-core'
 icon: 'square-terminal'
-tags: ['dbt Core','Quickstart']
+tags: ['dbt v1','Quickstart']
 hide_table_of_contents: true
 ---
 
@@ -205,7 +205,7 @@ $ git checkout -b add-customers-model
 
 4. From the command line, enter `dbt run`.
 <div style={{maxWidth: '400px'}}>
-<Lightbox src="/img/first-model-dbt-cli.png" title="A successful run with the dbt Core CLI" />
+<Lightbox src="/img/first-model-dbt-cli.png" title="A successful run with the v1 CLI" />
 </div>
 
 When you return to the BigQuery console, you can `select` from this model.

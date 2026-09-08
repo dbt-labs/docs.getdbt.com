@@ -27,7 +27,7 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 - **New and enhancements:** The dbt [Studio IDE user interface](/docs/platform/studio-ide/ide-user-interface) has been enhanced to bring more powerful development features to your fingertips:
   -  A newly designed toolbar that groups all of your action and project insight tabs for easy access.
   - A dedicated inline **Commands** tab for history and logs.
-  - When you upgrade your development environment to the <Constant name="fusion_engine" />, the environment includes a new **Problems** tab that gives you live error detection on issues that could block your project from running successfully. 
+  - When you upgrade your development environment to <Constant name="fusion_engine" />, the environment includes a new **Problems** tab that gives you live error detection on issues that could block your project from running successfully. 
  
 ## November 2025
 
@@ -56,7 +56,7 @@ The following features are new or enhanced as part of [dbt's Coalesce analytics 
 - **Private preview**: The [dbt platform (powered by Fusion)](/docs/dbt-versions/upgrade-dbt-platform-version#dbt-fusion-engine) is now in private preview. If you have any questions, please reach out to your account manager.
   - [About data platform connections](/docs/platform/connect-data-platform/about-connections) lists all available <Constant name="dbt_platform" /> connections on Fusion and the supported authentication methods per connection. 
 - **New**: Fusion‑specific configuration is now available for BigQuery, Databricks, Redshift, and Snowflake. For more information, see [Connect Fusion to your data platform](/docs/local/profiles.yml).
-- **Alpha**: The `dbt-salesforce` adapter is available via the <Constant name="fusion_engine" /> CLI. Note that this connection is in the Alpha product stage and is not production-ready. For more information, see [Salesforce Data Cloud setup](/docs/local/connect-data-platform/salesforce-data-cloud-setup).
+- **Alpha**: The `dbt-salesforce` adapter is available via <Constant name="fusion_engine" /> CLI. Note that this connection is in the Alpha product stage and is not production-ready. For more information, see [Salesforce Data Cloud setup](/docs/local/connect-data-platform/salesforce-data-cloud-setup).
 - **Private preview**: [State-aware orchestration](/docs/deploy/state-aware-about) is now in private preview!
   - **New**: You can now [enable state-aware orchestration](/docs/deploy/state-aware-setup) by selecting **Enable Fusion cost optimization features** in your job settings. Previously, you had to disable **Force node selection** to enable state-aware orchestration.  
   - **Private beta**: The [Efficient Testing feature](/docs/deploy/state-aware-about#efficient-testing-in-state-aware-orchestration) is now available in private beta. This feature reduces warehouse costs by avoiding redundant data tests and combining multiple tests in a single query.

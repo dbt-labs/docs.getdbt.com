@@ -4,7 +4,7 @@ sidebar_label: "version"
 id: "version"
 ---
 
-The `--version` command-line flag returns information about the currently installed version of <Constant name="core" />, the <Constant name="platform_cli" />, or the <Constant name="fusion_engine" />. This flag is not supported when invoking dbt in other <Constant name="dbt" /> runtimes (for example, the IDE or scheduled runs).
+The `--version` command-line flag returns information about the currently installed version of <Constant name="core" />, the <Constant name="platform_cli" />, or <Constant name="fusion_engine" />. This flag is not supported when invoking dbt in other <Constant name="dbt" /> runtimes (for example, the IDE or scheduled runs).
 
 - **<Constant name="core" />** &mdash; Returns the installed version of <Constant name="core" /> and the versions of all installed adapters.
 - **<Constant name="platform_cli" />** &mdash; Returns the installed version of the [<Constant name="platform_cli" />](/docs/platform/dbt-cli-installation) and, for the other `dbt_version` values, the _latest_ version of the dbt runtime in <Constant name="dbt" />.
@@ -19,7 +19,7 @@ If using a [<Constant name="dbt" /> release track](/docs/dbt-versions/dbt-releas
 ## Example usages
 
 <Constant name="core" /> example: 
-<File name='dbt Core'>
+<File name='dbt v1'>
 
 ```text
 $ dbt --version

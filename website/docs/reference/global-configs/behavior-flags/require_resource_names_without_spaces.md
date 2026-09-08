@@ -4,9 +4,9 @@ id: "require_resource_names_without_spaces"
 sidebar_label: "require resource names without spaces"
 ---
 
-:::caution Removed in <Constant name="core_v2" />
+:::caution Removed in v2
 
-This flag was removed in <Constant name="core_v2" /> and in <Constant name="fusion" />. The new behavior is always enabled. If you're upgrading, remove this flag from your `dbt_project.yml`.
+This flag was removed in v2. The new behavior is always enabled. If you're upgrading, remove this flag from your `dbt_project.yml`.
 
 :::
 
@@ -18,7 +18,7 @@ This flag was removed in <Constant name="core_v2" /> and in <Constant name="fusi
 
 dbt raises an error if it detects a space in a resource name. Resource names should contain letters, numbers, and underscores only.
 
-dbt raises the [`ResourceNamesWithSpacesDeprecation`](/reference/deprecations#resourcenameswithspacesdeprecation) warning if it detects a space in a resource name. When this flag is set to `true` (now always-on in <Constant name="core_v2" />), dbt raises an error instead.
+dbt raises the [`ResourceNamesWithSpacesDeprecation`](/reference/deprecations#resourcenameswithspacesdeprecation) warning if it detects a space in a resource name. When this flag is set to `true` (now always-on in v2), dbt raises an error instead.
 
 <File name='models/model name with spaces.sql'>
 

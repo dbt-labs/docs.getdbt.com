@@ -4,7 +4,7 @@ Looking for a good place to get involved contributing code? dbt Labs supports th
 
 ## Rust
 
-- [<Constant name="core_v2" />](https://github.com/dbt-labs/dbt-core) - the next major version of dbt Core, powered by the <Constant name="fusion_engine" /> (previously in [`dbt-fusion`](https://github.com/dbt-labs/dbt-fusion))
+- [The open source layer of v2](https://github.com/dbt-labs/dbt-core) - the next major version of dbt v1, powered by <Constant name="fusion_engine" /> (previously in [`dbt-fusion`](https://github.com/dbt-labs/dbt-fusion))
 
 ## Python
 

@@ -148,7 +148,7 @@ Once you have the values from the previous step, you can prepare your <Constant 
    dbt-cloud:
      tenant_hostname: cloud.getdbt.com # Replace with your Tenant URL
    ```
-5. Once you set the environment variables using the `export` command in the same <Constant name="core" /> CLI session, you can execute a `dbt run` in the CLI. 
+5. Once you set the environment variables using the `export` command in the same dbt CLI session, you can execute a `dbt run` in the CLI. 
    ```bash
     dbt run
     ```

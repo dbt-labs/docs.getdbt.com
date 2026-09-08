@@ -58,13 +58,13 @@ dbt Labs has introduced the new [<Constant name="fusion_engine" />](/docs/introd
     <small> _Adapter lifecycle can differ between the <Constant name="dbt_platform" /> and local development &mdash; an adapter can reach GA in the dbt platform before it reaches GA for local use._ </small> <br />
 - Once you upgrade your development environment(s) to `Fusion Stable`, every user will have to restart the IDE.
 
-  <Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/platform-upgrading-dbt-versions/upgrade-fusion.png" width="90%" title="Upgrade to the Fusion engine in your environment settings." />
+  <Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/platform-upgrading-dbt-versions/upgrade-fusion.png" width="90%" title="Upgrade to v2 in your environment settings." />
 
 ### Upgrading environments to <Constant name="fusion" />
 
 When you're ready to upgrade your project(s) to <Constant name="fusion_engine" />, there are some tools available to you in the dbt platform UI to help you get started. The <Constant name="fusion" /> upgrade assistant will step you through the process of preparing and upgrading your projects. 
 
-  <Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/choosing-dbt-version/fusion-upgrade-gui.png" width="60%" title="The Fusion upgrade assistant."/>
+  <Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/choosing-dbt-version/fusion-upgrade-gui.png" width="60%" title="The v2 upgrade assistant."/>
 
 #### Prerequisites
 
@@ -75,25 +75,25 @@ To take advantage of the upgrade assistant and other upgrade tools, you'll need 
 
 | Upgrade task | Required permission(s) | Supported permission sets |
 |---------|------------------------|-----------------------------|
-| Enable Fusion access (triggers migration flows) | Fusion readiness: `write` <br></br> Projects: `write` | Admin, Account Admin and anyone assigned the Fusion admin set, provided their base role also has `write` access to projects |
-| View Fusion readiness and job eligibility | Fusion readiness: `read` | Developer, Admin, Member, Account Admin, Fusion admin |
+| Enable dbt v2 access (triggers migration flows) | dbt v2 readiness: `write` <br></br> Projects: `write` | Admin, Account Admin and anyone assigned the Fusion admin set, provided their base role also has `write` access to projects |
+| View dbt v2 readiness and job eligibility | dbt v2 readiness: `read` | Developer, Admin, Member, Account Admin, Fusion admin |
 | **Run once on <Constant name="fusion" />** job action | Runs: `write` | Job Admin, Job Runner, Admin, Member, Project Creator, Account Admin |
-| Enable Fusion-latest for an environment | Environments: `write` | Job Admin, Admin, Member, Project Creator, Account Admin |
+| Enable dbt v2-latest for an environment | Environments: `write` | Job Admin, Admin, Member, Project Creator, Account Admin |
 
 #### Assign access to upgrade
 
 The <Constant name="fusion" /> readiness & upgrade flow are controlled by two account-level settings that an admin must configure.
 
-Step 1: Enable Fusion readiness features (required)
+Step 1: Enable dbt v2 readiness features (required)
 
 The upgrade assistant and readiness panel only appear after enabling this setting. From your **Account settings**:
 
 1. Navigate to the **Account** screen.
 2. Click **Edit** and scroll to the **Settings** section.
-3. Click the box next to **Enable Fusion readiness & upgrade features**.
+3. Click the box next to **Enable dbt v2 readiness & upgrade features**.
 4. Click **Save**.
 
-Once enabled, all admins and developers can see each project's Fusion readiness status and which jobs are eligible or ineligible for <Constant name="fusion" />. Admins can also initiate the <Constant name="fusion" /> upgrade from development environments, environment settings, and job settings (subject to existing user permissions). Developer-licensed users will have access to debug tools to help make projects <Constant name="fusion" /> eligible in both development and production environments.
+Once enabled, all admins and developers can see each project's dbt v2 readiness status and which jobs are eligible or ineligible for <Constant name="fusion" />. Admins can also initiate the <Constant name="fusion" /> upgrade from development environments, environment settings, and job settings (subject to existing user permissions). Developer-licensed users will have access to debug tools to help make projects <Constant name="fusion" /> eligible in both development and production environments.
 
 Step 2: Restrict upgrade access (optional, Enterprise/Enterprise+ only)
 
@@ -101,7 +101,7 @@ By default, all admins and developer-licensed users can access the <Constant nam
 
 1. Navigate to the **Account** screen.
 2. Click **Edit** and scroll to the **Settings** section.
-3. Click the box next to **Enable restricted Fusion upgrade permissions**.
+3. Click the box next to **Enable restricted dbt v2 upgrade permissions**.
 4. Click **Save**.
 
 This hides the <Constant name="fusion" /> upgrade workflows from users who don't have the [`Fusion admin`](/docs/platform/manage-access/enterprise-permissions#fusion-admin) permission set. To grant access to the upgrade workflows to specific projects and/or specific users:
@@ -117,15 +117,15 @@ The <Constant name="fusion" /> upgrade workflows helps identify areas of the pro
 #### Upgrade your development environment
 
 To begin the process of upgrading to <Constant name="fusion" /> with the assistant:
-1. From the project homepage or sidebar menu, click the **Start Fusion upgrade** or **Get started** button. You will be redirected to the <Constant name="studio_ide" />.
-  <Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/choosing-dbt-version/start-upgrade.png" width="60%" title="Start the Fusion upgrade."/>
+1. From the project homepage or sidebar menu, click the **Start dbt v2 upgrade** or **Get started** button. You will be redirected to the <Constant name="studio_ide" />.
+  <Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/choosing-dbt-version/start-upgrade.png" width="60%" title="Start the v2 upgrade."/>
 2. At the top of the <Constant name="studio_ide" /> click **Check deprecation warnings**. 
   <Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/choosing-dbt-version/check-deprecations.png" width="60%" title="Begin the process of parsing for deprecation warnings."/>
 3. dbt parses your project for the deprecations and presents a list of all deprecation warnings along with the option to **Autofix warnings**. Autofixing attempts to correct all syntax errors automatically. See [Fix deprecation warnings](/docs/platform/studio-ide/autofix-deprecations) for more information. 
   <Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/choosing-dbt-version/check-deprecations.png" width="60%" title="Begin the process of parsing for deprecation warnings."/>
 4. Once the deprecation warnings have been resolved, click the **Enable <Constant name="fusion" />** button. This upgrades your development environment to <Constant name="fusion" />!
 
-  <Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/choosing-dbt-version/autofix-success.png" width="60%" title="You're now ready to upgrade to Fusion in your development environment!"/>
+  <Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/choosing-dbt-version/autofix-success.png" width="60%" title="You're now ready to upgrade to v2 in your development environment!"/>
 
 Now that you've upgraded your development environment to <Constant name="fusion" />, you're ready to start the process of upgrading your Production, Staging, and General environments. Follow your organization's standard procedures and use the [release tracks](#release-tracks) to upgrade.
 
