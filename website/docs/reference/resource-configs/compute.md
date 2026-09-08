@@ -86,7 +86,7 @@ unit_tests:
 
 - Your SQL has to be translatable to DuckDB. Platform-specific functions with no DuckDB equivalent fail, and `local` doesn't fall back to your data platform &mdash; a translation failure is a test failure.
 - To translate your SQL, dbt fetches the schemas of your model's direct upstream models from your data platform the first time you run the test, then caches them for later runs. Those upstream models must already exist in your data platform.
-- Setting `compute: local` also promotes [`static_analysis`](/reference/resource-configs/static-analysis) to `strict` for that test, because local execution needs strict analysis to translate your SQL. If you set `static_analysis: off` on the test, it can't run locally.
+- Setting `compute: local` also promotes [`static_analysis`](/reference/resource-configs/static-analysis) to `strict` for that test, because local execution needs strict analysis to translate your SQL. If you set `static_analysis: off` on the test, it can't run locally and produces an error.
 
 
 ## Related docs
