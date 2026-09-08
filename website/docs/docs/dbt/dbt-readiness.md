@@ -18,8 +18,8 @@ import FusionReadinessPanel from '/snippets/_fusion-migration-readiness-panel.md
 Use the following checklist to prepare your projects for the <Constant name="fusion_engine" />
 
 For walkthroughs of both the preparation and upgrade processes, check out our detailed guides:
-- [ ] [Upgrade to Fusion Pt. 1: Preparing to upgrade](/guides/prepare-dbt-upgrade?step=1)
-- [ ] [Upgrade to Fusion Pt. 2: Making the move](/guides/upgrade-to-dbt?step=1)
+- [ ] [Upgrade to Fusion Pt. 1: Preparing to upgrade](/guides/prepare-v2-upgrade?step=1)
+- [ ] [Upgrade to Fusion Pt. 2: Making the move](/guides/upgrade-to-v2?step=1)
 
 
 ### Upgrade to the latest dbt version (recommended)
@@ -80,7 +80,7 @@ We determine <Constant name="fusion" /> eligibility using data from your job run
 - [ ] Resolve any job failures &mdash; all jobs must run successfully for eligibility checks to work.
 - [ ] Delete any jobs that are no longer in use to ensure accurate eligibility reporting. 
 - [ ] Make sure you've promoted the changes for deprecation resolution and package upgrades to your git branches that map to your deployment environments.
-- [ ] For eligible jobs, use **Debug on <Constant name="fusion" />** to debug in <Constant name="studio_ide" /> or run once on <Constant name="fusion" />. Refer to [Update your jobs](/guides/prepare-dbt-upgrade?step=7).
+- [ ] For eligible jobs, use **Debug on <Constant name="fusion" />** to debug in <Constant name="studio_ide" /> or run once on <Constant name="fusion" />. Refer to [Update your jobs](/guides/prepare-v2-upgrade?step=7).
 
 ### Stay informed about Fusion progress
 
@@ -88,5 +88,4 @@ The <Constant name="fusion_engine" /> is generally available for <Constant name=
 
 - [ ] Check out the [Fusion homepage](https://www.getdbt.com/product/fusion) for available resources, including supported adapters, prerequisites, installation instructions, limitations, and deprecations.
 - [ ] Read the [Upgrade guide](/docs/dbt-versions/dbt-upgrade/upgrading-to-v2) to learn about the new features and functionality that impact your dbt projects.
-- [ ] Monitor progress and get insight into the development process by reading the [Fusion Diaries](https://github.com/dbt-labs/dbt-core/discussions/categories/announcements?discussions_q=is:open+diaries+category:Announcements).
 - [ ] Learn how [dbt State](/docs/deploy/dbt-state-about) can reduce warehouse costs by 30%+ by rebuilding models only when data or code changes.
