@@ -9,7 +9,7 @@ availability: all_users
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-dbt Labs manages the lifecycle of features across the dbt platform, dbt Core, and the <Constant name="fusion_engine" />. Each feature is assigned a lifecycle status that describes its stability, support level, and availability. Use the tabs below to find the lifecycle stages for the product you're using.
+dbt Labs manages the lifecycle of features across the cloud-hosted dbt platform and self-hosted dbt v1 and v2. Each feature is assigned a lifecycle status that describes its stability, support level, and availability. Use the tabs below to find the lifecycle stages for the product you're using.
 
 Service level objective (SLO) support varies between products and lifecycles.
 
@@ -68,9 +68,9 @@ dbt platform features adhere to the following lifecycle path:
 </div>
 
 </TabItem>
-<TabItem value="core" label="dbt Core v1.x and v2">
+<TabItem value="self-hosted" label="dbt v1 and v2">
 
-dbt Core releases follow semantic versioning. Read more in [About dbt versions](/docs/dbt-versions). dbt Core v1.x and v2 releases both adhere to the following lifecycle path:
+Self-hosted dbt releases follow semantic versioning. Read more in [About dbt versions](/docs/dbt-versions). Both v1 and v2 releases adhere to the following lifecycle path:
 
 <div className="grid--3-col" style={{gap: '1.5rem', marginTop: '1rem'}}>
 
@@ -79,7 +79,7 @@ dbt Core releases follow semantic versioning. Read more in [About dbt versions](
     <strong style={{color: 'var(--color-terminal-black-600)', fontSize: '1rem'}}>Undocumented</strong>
   </div>
   <div style={{padding: '1.25rem 1.5rem', background: 'var(--ifm-background-color)'}}>
-    dbt Core is an open source product, and the codebase may have visibility into internal, non-contracted, or intentionally undocumented functionality. Not considered part of the release's product surface area.
+    Open source dbt codebases may have visibility into internal, non-contracted, or intentionally undocumented functionality. Not considered part of the release's product surface area.
   </div>
 </div>
 
@@ -136,42 +136,6 @@ dbt Core releases follow semantic versioning. Read more in [About dbt versions](
     No longer actively developed or enhanced. Continues to function as-is until its removal date.
   </div>
 </div>
-</div>
-
-</TabItem>
-<TabItem value="fusion" label="dbt Fusion engine">
-
-The <Constant name="fusion_engine" /> and [VS Code extension](/docs/about-dbt-extension) are in various stages of development depending on deployment type. See the [Fusion Diaries](https://github.com/dbt-labs/dbt-core/discussions/categories/announcements?discussions_q=is:open+diaries+category:Announcements) for the latest updates, and our [Path to GA](/blog/dbt-fusion-engine-path-to-ga) blog post for what's required to reach GA.
-
-<div className="grid--3-col" style={{gap: '1.5rem', marginTop: '1rem'}}>
-
-<div style={{border: '1px solid var(--border-neutral-tertiary)', borderRadius: '16px', overflow: 'hidden'}}>
-  <div style={{background: 'var(--color-transform-orange-100)', padding: '0.75rem 1.5rem', borderBottom: '1px solid var(--border-neutral-tertiary)'}}>
-    <strong style={{color: 'var(--color-transform-orange-800)', fontSize: '1rem'}}>Beta</strong>
-  </div>
-  <div style={{padding: '1.25rem 1.5rem', background: 'var(--ifm-background-color)'}}>
-    Available to select customers only. Still in development, incomplete, and not fully stable. Breaking changes may occur, documentation may be limited, and SLOs may not apply. Download the [Beta Terms and Conditions](/assets/beta-tc.pdf) for details.
-  </div>
-</div>
-
-<div style={{border: '1px solid var(--border-neutral-tertiary)', borderRadius: '16px', overflow: 'hidden'}}>
-  <div style={{background: 'var(--color-coalesce-purple-100)', padding: '0.75rem 1.5rem', borderBottom: '1px solid var(--border-neutral-tertiary)'}}>
-    <strong style={{color: 'var(--color-coalesce-purple-800)', fontSize: '1rem'}}>Preview</strong>
-  </div>
-  <div style={{padding: '1.25rem 1.5rem', background: 'var(--ifm-background-color)'}}>
-    Stable and functionally ready for production deployments using supported features that don't depend on deprecated functionality.
-  </div>
-</div>
-
-<div style={{border: '1px solid var(--border-neutral-tertiary)', borderRadius: '16px', overflow: 'hidden'}}>
-  <div style={{background: 'var(--color-green-100)', padding: '0.75rem 1.5rem', borderBottom: '1px solid var(--border-neutral-tertiary)'}}>
-    <strong style={{color: 'var(--color-green-700)', fontSize: '1rem'}}>Generally available (GA)</strong>
-  </div>
-  <div style={{padding: '1.25rem 1.5rem', background: 'var(--ifm-background-color)'}}>
-    Learn what's required for the <Constant name="fusion_engine" /> to reach GA in our [Path to GA](/blog/dbt-fusion-engine-path-to-ga) blog post.
-  </div>
-</div>
-
 </div>
 
 </TabItem>

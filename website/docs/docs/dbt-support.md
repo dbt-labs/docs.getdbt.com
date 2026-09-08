@@ -12,7 +12,7 @@ Support for dbt is available to all users through the following channels:
 - [The Community Forum](https://discourse.getdbt.com/).
 - [dbt Community slack](https://www.getdbt.com/community/join-the-community/).
   
-## dbt Core support
+## <Constant name="core" /> support
 
 If you're developing on the command line (CLI) and have questions or need some help &mdash; reach out to the helpful dbt community through [the Community Forum](https://discourse.getdbt.com/) or [dbt Community slack](https://www.getdbt.com/community/join-the-community/).
 
@@ -125,7 +125,7 @@ Leave feedback or submit a feature request for <Constant name="dbt" /> or <Const
 
 <Lightbox src="/img/docs/leave-feedback.gif" title="Leave feedback in dbt" />
 
-#### Share feedback or feature request for dbt Core
+#### Share feedback or feature request for <Constant name="core" />
 - [Create a GitHub issue here](https://github.com/dbt-labs/dbt-core/issues).
 
 ## External help
