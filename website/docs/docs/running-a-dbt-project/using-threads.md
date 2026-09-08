@@ -24,7 +24,7 @@ Generally the optimal number of threads depends on your data warehouse and its c
 
 You can use a different number of threads than the value defined in your target by using the `--threads` option when executing a dbt command.
 
-You will define the number of threads in your `profiles.yml` file (when developing locally with dbt Core and the <Constant name="fusion_engine" />), <Constant name="dbt" /> job definition, and <Constant name="dbt" /> development credentials under your profile.
+You will define the number of threads in your `profiles.yml` file (when developing locally with <Constant name="core" /> and the <Constant name="fusion_engine" />), <Constant name="dbt" /> job definition, and <Constant name="dbt" /> development credentials under your profile.
 
 
 ## <Constant name="fusion_engine" /> thread optimization
