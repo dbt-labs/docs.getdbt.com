@@ -167,7 +167,7 @@ If **Private endpoints** isn't available in your account settings, configure Red
 For Redshift Serverless, **Granted accounts** is scoped to a single workgroup. If your environment has multiple workgroups, you must grant access separately for each workgroup you want to connect to <Constant name="dbt" />.
 
 - Authorizing one workgroup (for example, _sales_) doesn't extend to any other workgroup (for example, _finance_  or _product_).
-- Repeat steps 1 to 4 for each workgroup individually.
+- Repeat steps 1 to 4 in. [Configuring Redshift-managed](#configuring-redshift-managed-privatelink) section for each workgroup individually.
 
 This applies whether you set up the endpoint through [self-serve](#self-serve-private-endpoints) or support-led.
 
