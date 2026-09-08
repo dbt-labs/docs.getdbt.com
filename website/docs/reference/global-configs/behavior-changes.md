@@ -31,7 +31,7 @@ Behavior change flags go through three phases of development:
 2. **Mature (enabled by default):** The default value of the flag is switched to the new behavior by default. You can still preserve the old behavior, but you may see deprecation warnings.
 3. **Removed (generally enabled):** The old behavior is removed from the dbt codebase(s). Most flags are supported indefinitely, but there is no committement to supporting them forever. If a flag is removed, there will be significant advanced warning.
 
-### Introduced in dbt Core v1.x
+### Introduced in <Constant name="core_v1" />
 
 This table outlines which month of the **Latest** release track in <Constant name="dbt" /> and which version of <Constant name="core" /> contains the behavior change's introduction (disabled by default) or maturity (enabled by default).
 
@@ -58,7 +58,21 @@ This table outlines which month of the **Latest** release track in <Constant nam
 | [allow_jinja_file_extensions](/reference/global-configs/behavior-flags/allow_jinja_file_extensions) | 2026.5 | - | 1.12.0 | - | - |
 | [latest_version_pointer_enabled_by_default](/reference/global-configs/behavior-flags/latest_version_pointer_enabled_by_default) | 2026.5 | - | 1.12.0 | - | - |
 
-### Introduced in <Constant name="fusion" /> and Core v2
+### Flags reaching maturity
+
+Several behavior change flags on the <Constant name="dbt_platform" /> `Latest` release track are planned to reach maturity on September 1, 2026, switching their default values from `false` to `true`. The September 1 date applies only to the <Constant name="dbt_platform" /> release tracks. The flags have reached maturity in <Constant name="core" /> v1.12. For intro dates, refer to the <Constant name="core" /> behavior changes table.
+
+| Flag | Impact |
+|---|---|
+| [skip_nodes_if_on_run_start_fails](/reference/global-configs/behavior-flags/skip_nodes_if_on_run_start_fails) | Can stop build |
+| [require_nested_cumulative_type_params](/reference/global-configs/behavior-flags/require_nested_cumulative_type_params) | Can stop build (parse error) |
+| [require_all_warnings_handled_by_warn_error](/reference/global-configs/behavior-flags/require_all_warnings_handled_by_warn_error) | Can stop build (when `--warn-error` is set) |
+| [require_batched_execution_for_custom_microbatch_strategy](/reference/global-configs/behavior-flags/require_batched_execution_for_custom_microbatch_strategy) | Behavior change for custom microbatch macros |
+| [state_modified_compare_more_unrendered_values](/reference/global-configs/behavior-flags/state_modified_compare_more_unrendered_values) | Selection-set change with potential CI impact |
+| [require_yaml_configuration_for_mf_time_spines](/reference/global-configs/behavior-flags/require_yaml_configuration_for_mf_time_spines) | Suppresses a deprecation warning (no functional change) |
+| [validate_macro_args](/reference/global-configs/behavior-flags/validate_macro_args) | New warning for mismatched macro arguments; errors with `--warn-error` |
+
+### Introduced in <Constant name="fusion" /> and <Constant name="core_v2" />
 
 The following flags are specific to <Constant name="fusion" /> and have no equivalent in <Constant name="core" />. They are configured the same way — in the `flags:` block of `dbt_project.yml`.
 

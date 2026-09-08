@@ -45,7 +45,7 @@ This new major version is an opportunity to _strengthen the framework_ by removi
 
 That work is documented below — it should be simple, straightforward, and in many cases, auto-fixable with the [`dbt-autofix`](https://github.com/dbt-labs/dbt-autofix) helper or the [agent skill](https://github.com/dbt-labs/dbt-agent-skills/tree/main/skills/dbt-migration/skills/migrating-dbt-core-to-fusion).
 
-:::tip Test v2 parser compatibility from dbt Core v1.12
+:::tip Test v2 parser compatibility from <Constant name="core" /> v1.12
 
 If you're on <Constant name="core" /> v1.12, you can test the rust parser compatibility before fully migrating by using the opt-in [`--use-v2-parser`](/reference/global-configs/parsing#opt-in-v2-parser) flag. This delegates parsing to the v2 parser without changing any other behavior, making it a low-risk way to catch compatibility issues early.
 
@@ -62,7 +62,7 @@ The following adapters are supported in v2:
 ### A clean slate
 
 v2 will not support any deprecated functionality (see the [Changes overview](/reference/changes-overview) for details):
-- All [deprecation warnings](/reference/deprecations) must be resolved before upgrading to the new engine. This includes historic deprecations and [new ones as of dbt Core v1.10](/docs/dbt-versions/dbt-upgrade/upgrading-to-v1.10#deprecation-warnings).
+- All [deprecation warnings](/reference/deprecations) must be resolved before upgrading to the new engine. This includes historic deprecations and [new ones as of <Constant name="core" /> v1.10](/docs/dbt-versions/dbt-upgrade/upgrading-to-v1.10#deprecation-warnings).
 - Some [behavior change flags](/reference/global-configs/behavior-changes#behavior-change-flags) will be removed (generally enabled). You can no longer opt out of them using `flags:` in your `dbt_project.yml`.
 
 ### Ecosystem packages
@@ -95,7 +95,7 @@ When upgrading to v2, you should expect the following changes in functionality:
 
 #### Parse time printing of relations will print out the full qualified name, instead of an empty string
 
-In dbt Core v1.x, when printing the result of `get_relation()`, the parse time output for that Jinja would print `None` (the undefined object coerces to the string "None").
+In <Constant name="core_v1" />, when printing the result of `get_relation()`, the parse time output for that Jinja would print `None` (the undefined object coerces to the string "None").
 
 In v2, to help with intelligent batching of `get_relation()` calls (and significantly speed up `dbt compile`), dbt needs to construct a relation object with the fully qualified name resolved at parse time for the `get_relation()` adapter call.
 
@@ -119,7 +119,7 @@ identifier='a'
 {{ print('relation_via_api: ' ~ relation_via_api) }}
 ```
 
-The output after `dbt parse` in dbt Core v1.x:
+The output after `dbt parse` in <Constant name="core_v1" />:
 
 ```
 relation: None
@@ -175,7 +175,7 @@ Some historic CLI flags from v1 will no longer do anything in v2. If you pass th
 
 The following deprecated flags require updates in your job definitions or scripts:
 
-- **`--models` / `--model` / `-m`:** Use `--select` / `-s` instead (renamed in dbt Core v0.21). dbt raises an error in v2 if you use the old flags. Do not pass `--models` as the value to `-s` (for example, `dbt run -s --models`); v1 treated that as a model name, but v2 requires a valid selector.
+- **`--models` / `--model` / `-m`:** Use `--select` / `-s` instead (renamed in <Constant name="core" /> v0.21). dbt raises an error in v2 if you use the old flags. Do not pass `--models` as the value to `-s` (for example, `dbt run -s --models`); v1 treated that as a model name, but v2 requires a valid selector.
 
 - **`--resource-type` / `--exclude-resource-type`:** Use `--resource-types` / `--exclude-resource-types`. For more information, see [Resource type flags](/reference/global-configs/resource-type).
 
@@ -260,7 +260,7 @@ To resolve this error, rename any duplicate docs blocks.
 
 #### `dbt clean` will not delete any files in configured resource paths or files outside the project directory
 
-In dbt Core v1.x, `dbt clean` deletes:
+In <Constant name="core_v1" />, `dbt clean` deletes:
 - Any files outside the project directory if `clean-targets` is configured with an absolute path or relative path containing `../`, though there is an opt-in config to disable this (`--clean-project-files-only` / `--no-clean-project-files-only`).
 - Any files in the `asset-paths` or `doc-paths` (even though other resource paths, like `model-paths` and `seed-paths`, are restricted).
 
@@ -268,7 +268,7 @@ In v2, `dbt clean` will not delete any files in configured resource paths or fil
 
 #### All unit tests are run first in `dbt build`
 
-In dbt Core v1.x, the direct parents of the model being unit tested needed to exist in the warehouse to retrieve the needed column name and type information. `dbt build` runs the unit tests (and their dependent models) _in lineage order_.
+In <Constant name="core_v1" />, the direct parents of the model being unit tested needed to exist in the warehouse to retrieve the needed column name and type information. `dbt build` runs the unit tests (and their dependent models) _in lineage order_.
 
 In v2, `dbt build` runs _all_ of the unit tests _first_, and then builds the rest of the DAG, due to built-in column name and type awareness.
 
@@ -290,7 +290,7 @@ When v2's `compile` encounters an error, it will skip nodes downstream of the on
 
 #### Seeds with extra commas don't result in extra columns
 
-In dbt Core v1.x, if you have an additional comma on your seed, dbt creates a seed with an additional empty column.
+In <Constant name="core_v1" />, if you have an additional comma on your seed, dbt creates a seed with an additional empty column.
 
 For example, the following seed file (with an extra comma):
 
@@ -466,7 +466,7 @@ v2 is available in two distributions. For more information, refer to [dbt licens
 | Distribution | Package | Use it when |
 | --- | --- | --- |
 | <Constant name="fusion" /> | `dbt` | You want the recommended v2 experience, with <Constant name="fusion" /> installed by default. |
-| dbt Core 2.0 | `dbt-core` | Your organization has a strict requirement to use the Apache 2.0 [open-source runtime](/docs/local/install-dbt-v2). |
+| <Constant name="core_v2" /> | `dbt-core` | Your organization has a strict requirement to use the Apache 2.0 [open-source runtime](/docs/local/install-dbt-v2). |
 </SimpleTable>
 
 If you have a older project that isn’t ready to move to v2, continue using `dbt-core` v1.x for compatibility. For new or upgraded projects, we recommend v2.

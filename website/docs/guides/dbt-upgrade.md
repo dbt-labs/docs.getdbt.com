@@ -1,6 +1,6 @@
 ---
 title: "Upgrade to Fusion part 2: Making the move"
-id: "upgrade-to-dbt"
+id: "upgrade-to-v2"
 # time_to_complete: '30 minutes' commenting out until we test
 level: 'Intermediate'
 icon: 'zap'
@@ -28,12 +28,12 @@ Once you complete the <Constant name="fusion" /> migration, your team will benef
 
 Before upgrading your development environment, confirm:
 
-- Your project is on the **Latest** release track (completed in [Part 1: Preparing to upgrade](/guides/prepare-dbt-upgrade))
+- Your project is on the **Latest** release track (completed in [Part 1: Preparing to upgrade](/guides/prepare-v2-upgrade))
 - Your project must be using a supported adapter and auth method.    
     <FusionAdapters/>
 - You have a developer license in <Constant name="dbt_platform" />
 - <Constant name="fusion" /> has been enabled for your account
-- You have appropriate permissions to modify environments (see [Assign upgrade access](https://docs.getdbt.com/guides/upgrade-to-dbt?step=3#assign-upgrade-access-optional) if restricted)
+- You have appropriate permissions to modify environments (see [Assign upgrade access](https://docs.getdbt.com/guides/upgrade-to-v2?step=3#assign-upgrade-access-optional) if restricted)
 
 
 ## Upgrade your development environment
@@ -443,7 +443,6 @@ For your next steps:
 - **Monitor savings**: Use [Cost Insights](/docs/explore/cost-insights) to track models built vs. reused.
 - **Train your team**: Share <Constant name="fusion" /> features and best practices with your team.
 - **Explore new features**: Check out column-level lineage, live CTE previews, and other <Constant name="fusion" />-powered capabilities.
-- **Stay informed**: Follow the [Fusion Diaries](https://github.com/dbt-labs/dbt-core/discussions/categories/announcements?discussions_q=is:open+diaries+category:Announcements) for updates on new features.
 
 :::tip Share your success
 
