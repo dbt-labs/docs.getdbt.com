@@ -29,8 +29,10 @@ This section covers the rules and constraints for writing check SQL files and co
 
 ### The `info_schema()` macro
 
-[`{{ info_schema() }}`](/reference/dbt-jinja-functions/info-schema-macro) is the supported way to reference the dbt Information Schema in a check. Pass the name of the table you want to query (for example, `{{ info_schema('models') }}` to query models, or `{{ info_schema('edges') }}` to query DAG edges). For the full list of available tables and columns, refer to [Views and columns reference](/reference/info-schema-views/).
+[`{{ info_schema() }}`](/reference/dbt-jinja-functions/info-schema-macro) is the supported way to reference the dbt Information Schema in a check. Pass the name of the table you want to query (for example, `{{ info_schema('models') }}` to query models, or `{{ info_schema('edges') }}` to query DAG edges). Checks always run against an intermediate representation of the dbt Information Schema built at parse time. 
 
+For the full list of available tables and columns, refer to [Views and columns reference](/reference/info-schema-views/).
+The `info_schema()` macro reads from a logical view layer over your project metadata. Therefore, Information Schema files do not need to be materialized for checks to run on the latest metadata.
 ## Writing your first check
 
 <!--
