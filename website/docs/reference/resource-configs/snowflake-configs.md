@@ -605,10 +605,14 @@ Ensure that `QUOTED_IDENTIFIERS_IGNORE_CASE` on your account is set to `FALSE`.
 
 ## Interactive tables <Lifecycle status="beta" />
 
-The Snowflake adapter supports [interactive tables](https://docs.snowflake.com/en/user-guide/interactive), which are optimized for low-latency queries. This materialization is specific to Snowflake, which means that any model configuration that would normally come along for the ride from `dbt-core` (for example, as with a `view`) may not be available for interactive tables.
+Starting in `dbt-snowflake` v1.13, the Snowflake adapter supports [interactive tables](https://docs.snowflake.com/en/user-guide/interactive), which are optimized for low-latency queries. This materialization is specific to Snowflake, which means that any model configuration that would normally come along for the ride from `dbt-core` (for example, as with a `view`) may not be available for interactive tables.
 
 :::info dbt's support for interactive tables is in beta
-Interactive tables are generally available in Snowflake, but dbt's support for the `interactive_table` materialization is in beta. Behavior and configuration options may change.
+Interactive tables are generally available in Snowflake, but dbt's support for the `interactive_table` materialization is in beta in both the v1 and v2 engines. Behavior and configuration options may change.
+
+- **<Constant name="dbt_platform" />**: the **Latest** [release track](/docs/dbt-versions/dbt-release-tracks).
+- **dbt v2**: the latest version.
+- **dbt v1**: `dbt-snowflake` v1.13 or later.
 :::
 
 Setting [`target_lag`](#target-lag-interactive-tables) makes the table a _dynamic_ interactive table that Snowflake refreshes automatically. Without it, the table is _static_ and only rebuilds when you run dbt. Several configurations below behave differently depending on which form you're using.
@@ -704,7 +708,7 @@ models:
 
 </Tabs>
 
-Learn more about these parameters in Snowflake's [docs](https://docs.snowflake.com/en/sql-reference/sql/create-interactive-table).
+Learn more about these parameters in Snowflake's [docs](https://docs.snowflake.com/en/sql-reference/sql/create-interactive-table). The warehouse parameters above refer to ordinary virtual warehouses that run <Term id="ddl" /> and refreshes. They do not attach the table to an [interactive warehouse](https://docs.snowflake.com/en/user-guide/interactive) &mdash; refer to [Limitations of interactive tables](#limitations-of-interactive-tables).
 
 ### Cluster by (interactive tables)
 
@@ -816,6 +820,7 @@ The following configurations are not supported on interactive tables. dbt reject
 
 Limitations worth noting when you build interactive tables with dbt:
 
+- dbt does not attach or detach interactive tables to or from [interactive warehouses](https://docs.snowflake.com/en/user-guide/interactive) at this time. Manage that association in Snowflake. The two are independent objects (Snowflake can attach an interactive warehouse to [other relation types](https://docs.snowflake.com/en/user-guide/interactive#all-table-format-support-preview) as well.) 
 - Dropping a column from an interactive table is not supported. This is reachable if you have an `incremental` model with [`on_schema_change: sync_all_columns`](/docs/build/incremental-models#what-if-the-columns-of-my-incremental-model-change) running against a relation that was previously an interactive table.
 - Converting an interactive table to an `incremental` model requires a `--full-refresh`.
 - Interactive tables cannot be cloned or created in a personal database.
