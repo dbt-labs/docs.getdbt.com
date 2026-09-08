@@ -32,15 +32,23 @@ You will be directed back to <Constant name="dbt" />, and your profile should be
 
 The following section provides troubleshooting steps for common issues when authenticating with Azure DevOps.
 
-<Expandable alt_header="Studio fails to start with an Azure Service User not found error">
+<Expandable alt_header="Missing Azure user error when starting Studio">
 
 If the <Constant name="studio_ide" /> fails to start and displays the following error, your personal Azure DevOps account isn't linked to <Constant name="dbt" />:
 
+`Missing Azure user; link your Azure Devops account in your personal profile`
+
+To resolve it, [link your dbt profile to Azure DevOps](#link-your-dbt-profile-to-azure-devops).
+
+</Expandable>
+
+<Expandable alt_header="Azure Service User not found error when starting Studio">
+
+If the <Constant name="studio_ide" /> fails to start and displays the following error, the account-level service user isn't connected:
+
 `Failed to start server. The project is not fully set up: Azure Service User not found`
 
-The error refers to the account-level service user, but the cause is usually your own Azure DevOps account not being linked. To resolve it, [link your dbt profile to Azure DevOps](#link-your-dbt-profile-to-azure-devops).
-
-If your profile is already linked and you still see `Azure Service User not found`, ask an account admin to check the account-level service user. Refer to [Connect a service user](/docs/platform/git/setup-service-user#connect-a-service-user) for more details.
+This applies to accounts that use the legacy service user authentication. An account admin needs to reconnect the service user, which is also required when an account has had no scheduled, API, or CI runs for over 90 days. Refer to [Connect a service user](/docs/platform/git/setup-service-user#connect-a-service-user) for more details.
 
 </Expandable>
 
