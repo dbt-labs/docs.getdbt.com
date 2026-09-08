@@ -1040,6 +1040,11 @@ const sidebarSettings = {
         "docs/dbt-versions/product-lifecycles",
         "docs/dbt-versions/experimental-features",
         {
+          type: "link",
+          label: "Fusion changelog",
+          href: "https://github.com/dbt-labs/dbt-fusion/blob/main/CHANGELOG.md",
+        },
+        {
           type: "category",
           label: "dbt version upgrade guides",
           link: {
