@@ -43,7 +43,6 @@ Each view mirrors a table of the same name in the [dbt Information Schema](/docs
 :::note
 The following views are not available to checks. dbt raises an error if you pass them to `info_schema()`, and reports the list of available views.
 
-- `nodes`: An internal index table. Use the per-resource-type views instead (for example, `models`, `sources`).
 - `column_lineage`: Requires static analysis, so it is not available at parse time.
 - `classifiers`, `semantic_relationships`: Not yet populated.
 :::
