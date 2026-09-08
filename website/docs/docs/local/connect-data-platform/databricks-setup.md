@@ -21,17 +21,17 @@ availability: local_free
 
 <VersionBlock firstVersion="2.0">
 
-# Connect Databricks to Fusion <Lifecycle status='preview' />
+# Connect Databricks to <Constant name="fusion" /> <Lifecycle status='preview' />
 
 
 You can configure the Databricks adapter by running `dbt init` in your CLI or manually providing the `profiles.yml` file with the fields configured for your authentication type.
 
-The Databricks adapter for Fusion supports the following [authentication methods](#supported-authentication-types):
+The Databricks adapter for <Constant name="fusion" /> supports the following [authentication methods](#supported-authentication-types):
 - Personal access token (for individual users)
 - Service Principal token (for service users)
 - OAuth
 
-## Warehouse permissions for Fusion
+## Warehouse permissions for <Constant name="fusion" />
 
 import FusionDatabricksWarehousePerms from '/snippets/_fusion-warehouse-permissions-databricks.md';
 
@@ -45,7 +45,7 @@ The <Constant name="fusion_engine" /> `dbt-databricks` adapter is the only suppo
 
 Refer to the [Databricks docs](https://docs.databricks.com/dev-tools/dbt.html#) for more info on how to obtain the credentials for configuring your profile.
 
-## Configure Fusion
+## Configure <Constant name="fusion" />
 
 Executing `dbt init` in your CLI will prompt for the following fields:
 
@@ -152,7 +152,7 @@ Find Databricks-specific configuration information in the [Databricks adapter re
 
 <VersionBlock lastVersion="1.99">
 
-# Connect Databricks to dbt Core 
+# Connect Databricks to <Constant name="core" /> 
 
 <ProductCard text="Fusion compatible" url="/docs/local/connect-data-platform/databricks-setup?version=2" /> connection also available.
 
@@ -169,7 +169,7 @@ import SetUpPages from '/snippets/_setup-pages-intro.md';
 
 ## Connecting to Databricks
 
-To connect to a data platform with dbt Core, create the appropriate _profile_ and _target_ YAML keys/values in the `profiles.yml` configuration file for your Databricks SQL Warehouse/cluster. This dbt YAML file lives in the  `.dbt/` directory of your user/home directory. For more info, refer to [Connection profiles](/docs/local/profiles.yml) and [profiles.yml](/docs/local/profiles.yml).
+To connect to a data platform with <Constant name="core" />, create the appropriate _profile_ and _target_ YAML keys/values in the `profiles.yml` configuration file for your Databricks SQL Warehouse/cluster. This dbt YAML file lives in the  `.dbt/` directory of your user/home directory. For more info, refer to [Connection profiles](/docs/local/profiles.yml) and [profiles.yml](/docs/local/profiles.yml).
 
 `dbt-databricks` can connect to Databricks SQL Warehouses and all-purpose clusters. Databricks SQL Warehouses is the recommended way to get started with Databricks.
 

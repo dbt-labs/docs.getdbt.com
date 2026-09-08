@@ -31,7 +31,7 @@ id: "contributing-coding"
 
 #### Overview
 
-<Constant name="core" /> (including v1, v2 / Fusion, and adapters), as well as the sites powering the Package Hub and Developer Hub, are all vibrant community projects. Unlike dbt Packages, contributing code to these projects typically requires some working knowledge of programming languages outside of SQL and Jinja, but the supportive community around these repositories can help you advance those skills. Even without contributing code, there are many ways to be part of communal development in these projects, detailed below. You can find a curated list of the most active OSS/SA projects that dbt Labs supports [here](/community/resources/oss-sa-projects).
+<Constant name="core" /> (including v1, v2 / <Constant name="fusion" />, and adapters), as well as the sites powering the Package Hub and Developer Hub, are all vibrant community projects. Unlike dbt Packages, contributing code to these projects typically requires some working knowledge of programming languages outside of SQL and Jinja, but the supportive community around these repositories can help you advance those skills. Even without contributing code, there are many ways to be part of communal development in these projects, detailed below. You can find a curated list of the most active OSS/SA projects that dbt Labs supports [here](/community/resources/oss-sa-projects).
 
 #### Contribution opportunities
 

@@ -60,8 +60,8 @@ The correct YAML structure depends on the dbt version in your project. Review th
 
 | Project version | Expected structure |
 |---|---|
-| [<Constant name="core" /> 1.12 and later](/docs/dbt-versions/core-upgrade/upgrading-to-v1.12?version=2.0#new-semantic-layer-yaml-spec), and the [<Constant name="fusion_engine" />](/docs/dbt-versions/core-upgrade/upgrading-to-v2?version=2.0) | Configure `semantic_model` on a model, annotate entities and dimensions on columns, and define metrics on the model. Don't use a top-level `semantic_models:` block for new definitions. |
-| [<Constant name="core" /> 1.6 through 1.11](/docs/dbt-versions/core-upgrade/upgrading-to-v1.11?version=2.0) | Define semantic models in a top-level `semantic_models:` block and define metrics with `type_params` that reference measures. |
+| [<Constant name="core" /> 1.12 and later](/docs/dbt-versions/dbt-upgrade/upgrading-to-v1.12?version=2.0#new-semantic-layer-yaml-spec), and the [<Constant name="fusion_engine" />](/docs/dbt-versions/dbt-upgrade/upgrading-to-v2?version=2.0) | Configure `semantic_model` on a model, annotate entities and dimensions on columns, and define metrics on the model. Don't use a top-level `semantic_models:` block for new definitions. |
+| [<Constant name="core" /> 1.6 through 1.11](/docs/dbt-versions/dbt-upgrade/upgrading-to-v1.11?version=2.0) | Define semantic models in a top-level `semantic_models:` block and define metrics with `type_params` that reference measures. |
 
 </SimpleTable>
 

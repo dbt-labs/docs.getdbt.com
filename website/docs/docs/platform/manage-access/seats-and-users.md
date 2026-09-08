@@ -23,6 +23,9 @@ The user's assigned license determines the specific capabilities they can access
 | ------------- | -------------- | --------------- | -------- |
 | Use the <Constant name="studio_ide" /> | ✅ | ❌ | ❌ |
 | Use the <Constant name="dbt" /> CLI | ✅ | ❌ | ❌ |
+| Use [<Constant name="canvas" />](/docs/platform/canvas) | ✅ | ❌ | ❌ |
+| Use [<Constant name="insights" />](/docs/explore/dbt-insights) | ✅ | ❌ | ❌ |
+| Use [<Constant name="wizard" />](/docs/platform/wizard-overview) | ✅ | ✅ ([Explore mode](/docs/platform/wizard-home#ask-questions-in-explore-mode) in the home tab only) | ❌ |
 | Use Jobs | ✅ | ❌ | ❌ |
 | Manage Account | ✅ | ❌ | ✅ |
 | API access <br />(create personal access tokens) | ✅ | ✅ | ✅ |
@@ -30,7 +33,12 @@ The user's assigned license determines the specific capabilities they can access
 | Use [<Constant name="catalog" />](/docs/explore/explore-projects) | ✅  | ✅ | ❌  |
 | Use [Source Freshness](/docs/deploy/source-freshness) | ✅ | ✅ | ❌ |
 | Use [Docs](/docs/explore/build-and-view-your-docs) | ✅ | ✅ | ❌ |
-| Receive [Job notifications](/docs/deploy/job-notifications) |  ✅ |  ✅  |  ✅ | 
+| Receive [Job notifications](/docs/deploy/job-notifications) |  ✅ |  ✅  |  ✅ |
+| Use the [dbt MCP server](/docs/dbt-ai/about-mcp) | ✅ | ✅ (with [Analyst read](/docs/platform/manage-access/enterprise-permissions#analyst-read) permission set) | ❌ |
+| Manage own warehouse credentials | ✅ | ✅ (with [Analyst read](/docs/platform/manage-access/enterprise-permissions#analyst-read) permission set) | ❌ |
+| Use [Cost Insights](/docs/explore/cost-insights) | ✅ | ✅ (with [Cost Insights Viewer](/docs/platform/manage-access/enterprise-permissions#cost-insights-viewer) permission set) | ❌ |
+
+<br />
 
 *The [Analyst license type](/docs/platform/manage-access/about-user-access?version=1.12#licenses) is not available for new purchase.
 

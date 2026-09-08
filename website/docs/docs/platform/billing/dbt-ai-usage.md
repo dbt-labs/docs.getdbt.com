@@ -1,33 +1,94 @@
 ---
 title: "dbt AI: Usage metering and limiting"
 id: dbt-ai-usage
-description: "Learn how dbt AI usage is metered and limited by plan."
+description: "Learn how dbt Wizard and dbt Copilot usage is metered and limited."
 sidebar_label: "dbt AI usage"
-availability:
-  surface: platform
-  access: paid_plan
-  minPlan: starter
+availability: platform_login
 ---
 
-dbt AI usage is measured based on the number of completed AI requests, known as dbt Copilot actions. Usage limits are enforced to ensure fair access and system performance.
+dbt AI usage is metered differently depending on the feature you use:
 
-A defined number of dbt Copilot invocations is allocated monthly based on your [subscription plan](https://www.getdbt.com/pricing). Once the usage limit is reached, access to dbt AI will be temporarily disabled until the start of the next billing cycle.
+:::info What's changing on September 1, 2026
 
-As a temporary compatibility bridge, <Constant name="wizard" /> can draw from your existing dbt Copilot included action allotment through July 13, 2026 or longer (timeline subject to change). We may extend this timeline and will provide advance notice before any changes.
+From September 1, 2026, a couple of things are changing for dbt AI features:
+- **AI features are being enabled by default.** They're already on for new accounts and are rolling out soon to existing accounts. If your organization opted out, they'll remain off. Admins can turn AI features on or off anytime in **Account settings**.
+- **<Constant name="wizard" /> is moving to usage-based billing** for [dbt-<Term id="managed"/> AI](#dbt-managed-inference). Usage is metered per token against your consumption pool, and an admin can set a monthly spend limit in <Constant name="dbt_platform"/>.
 
-After the temporary bridge ends, <Constant name="wizard" /> usage will be metered separately. Pricing and usage are subject to change.
+Refer to [<Constant name="wizard" /> billing and access FAQs](/docs/dbt-ai/wizard-billing-faqs) for more info.
 
-### Usage and metering information 
+:::
 
-<Expandable alt_header="Temporary dbt Copilot Actions bridge (through July 13, 2026)">
+<SimpleTable>
+| Feature | How it's metered | What limits usage |
+|---|---|---|
+| [<Constant name="wizard" />](#dbt-wizard) | Dollar-based usage, converted from tokens | Your consumption pool, then your monthly spend limit |
+| [dbt Copilot](#dbt-copilot) | A count of completed AI requests, known as actions | A monthly action allotment set by your plan |
+</SimpleTable>
 
-As a temporary compatibility bridge, dbt Wizard can draw from your existing dbt Copilot included action allotment through July 13, 2026 or longer (timeline subject to change). After this temporary bridge ends, <Constant name="wizard" /> usage will be metered separately. 
+Bring your own key (BYOK) usage isn't metered by dbt. Your AI provider bills you directly and the usage doesn't draw from either limit.
 
-Users that bring their own key (BYOK) aren't affected by this bridge.
+## dbt Wizard
+
+<Constant name="wizard" /> is metered by dollar-based usage rather than a count of actions. Usage is measured in tokens &mdash; prompts, project context, cached content, and generated responses all consume them &mdash; and converted into a dollar amount based on the model and token type. That amount is deducted from your consumption pool.
+
+Usage from the <Constant name="dbt_platform" /> and the local CLI both draw from the same account-level pool.
+
+### Usage credits by plan
+
+:::note All credits are account-level
+Usage credits are granted per account, not per user or per seat. Everyone on your account draws from the same balance, whether they use <Constant name="wizard" /> in the <Constant name="dbt_platform" /> or the local CLI.
+:::
+
+<SimpleTable>
+| Plan | What you get |
+|---|---|
+| Enterprise | $100/month in usage credits per account, resets each billing month |
+| Enterprise+ | $200/month in usage credits per account, resets each billing month |
+| All other plans and self hosted dbt users| One-time 30-day trial with $100 in usage credits per account |
+</SimpleTable>
+
+Pools don't roll over. For eligibility, how to start a trial, and how to set up paid access afterward, refer to [Trial and billing](/docs/dbt-ai/pricing-billing/trial-and-billing).
+
+### When you reach your limit
+
+Your spend limit caps how much dbt <Term id="managed" /> <Constant name="wizard" /> usage your account can consume in a billing period. You only pay for actual usage, up to the limit you choose.
+
+- If you use up your consumption pool on a Developer, Starter, or self-hosted plan, usage pauses until you add paid usage or the next billing cycle starts.
+- Enterprise and Enterprise+ accounts should add a committed spend amount to their contract to keep using <Constant name="wizard" />. You may lose access to <Constant name="wizard" /> without this commit in place. If you've set an optional monthly <Constant name="wizard" /> spend limit, that still applies and pauses usage once reached.
+- Limits are set separately for <Constant name="wizard" /> and [dbt State](/docs/deploy/dbt-state-about), but both draw from your account's overall usage-based spend.
+
+### View Wizard usage
+
+1. Navigate to [**Account settings**](/docs/platform/account-settings).
+2. Select **Billing & Usage** under the Settings header.
+3. On the **Overview** tab, check the **Consumption pool** card, or open **Usage-based features > Wizard** for usage and spend controls.
+
+You need to be an account admin or billing admin to view or change spend limits.
+
+For trials, consumption pools, spend limits, and BYOK billing, refer to [<Constant name="wizard" /> billing and access FAQs](/docs/dbt-ai/wizard-billing-faqs).
+
+## dbt Copilot
+
+dbt Copilot usage is measured by the number of completed AI requests, known as dbt Copilot actions. A defined number of actions is allocated monthly based on your [subscription plan](https://www.getdbt.com/pricing). Once you reach the limit, dbt Copilot is temporarily disabled until the start of the next billing cycle.
+
+### View Copilot actions
+
+1. Navigate to [**Account settings**](/docs/platform/account-settings).
+2. Select **Billing** under the Settings header.
+3. On the billing page, click the **Copilot Actions** tab to view your usage.
+
+<Lightbox src="/img/docs/dbt-platform/view-usage-in-copilot.gif" title="View usage in dbt Copilot" />
+
+## FAQs
+<Expandable alt_header="Temporary dbt Copilot Actions bridge (ended September 1, 2026)">
+
+As a temporary compatibility bridge, <Constant name="wizard" /> drew from your existing dbt Copilot included action allotment. That bridge ended on September 1, 2026, and <Constant name="wizard" /> usage is now metered separately as dollar-based usage against your usage credits and consumption pool.
+
+Users who bring their own key (BYOK) were never affected by this bridge.
 
 </Expandable>
 
-<Expandable alt_header="AI usage tracking by dbt Copilot actions">
+<Expandable alt_header="What counts as a dbt Copilot action">
 
 dbt Copilot actions refer to requests made to the dbt Copilot assistant through the <Constant name="dbt" /> interface. These actions are recorded and displayed on the billing page alongside other usage metrics by accessing the **Copilot Actions** tab in the **Billing** page.
 
@@ -61,7 +122,7 @@ The following table outlines the limits of dbt Copilot actions by plan per month
 
 </Expandable>
 
-<Expandable alt_header="Notifications when limitations are reached ">
+<Expandable alt_header="Notifications when limits are reached">
 
 When usage limits are reached, a notification appears in the UI. Additionally, an email notification is sent to the designated recipient. 
 
@@ -75,13 +136,9 @@ Under Bring Your Own Key (BYOK), usage is not tracked by dbt AI and is subject t
 
 </Expandable>
 
-### Viewing usage in the product
+## Related docs
 
-To view the usage in your account:
-
-1. Navigate to [**Account settings**](/docs/platform/account-settings).
-
-2. Select **Billing** under the Settings header.
-3. On the billing page, click the **Copilot Actions** tab to view your usage.
-
-<Lightbox src="/img/docs/dbt-platform/view-usage-in-copilot.gif" title="View usage in dbt Copilot" />
+- [Trial and billing](/docs/dbt-ai/pricing-billing/trial-and-billing) to start a <Constant name="wizard" /> trial and set a spend limit
+- [<Constant name="wizard" /> billing and access FAQs](/docs/dbt-ai/wizard-billing-faqs) for common billing questions
+- [Models and pricing](/docs/dbt-ai/pricing-billing/overview) for model options and token pricing
+- [Billing](/docs/platform/billing) for general <Constant name="dbt_platform" /> billing

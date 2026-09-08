@@ -4,7 +4,6 @@ import MCPExample from '/snippets/_mcp-config-files.md';
 
 Configuration for users who want seamless OAuth authentication with the <Constant name="dbt_platform" />. 
 
-Before you begin, make sure your account admin enables AI features on your <Constant name="dbt_platform"/> account to use OAuth. Refer to [Enable dbt Wizard](/docs/platform/enable-dbt-ai) for more info.
 
 <MCPExample />
 

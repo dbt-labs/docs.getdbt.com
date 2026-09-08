@@ -7,11 +7,11 @@ pagination_prev: null
 availability: all_users
 ---
 
-v2 is the current generation of dbt &mdash; installing or upgrading gives you <Constant name="fusion_engine"/>, the default experience. <Constant name="core_v2"/> is the Apache 2.0 foundation underneath Fusion. <Constant name="core_v1"/> (Python-based, open-source) remains on the 1.x series and follows semantic versioning; v2 uses the 2.x series. This page covers versioning for local dbt installations.
+v2 is the current generation of dbt &mdash; installing or upgrading gives you <Constant name="fusion_engine"/>, the default experience. <Constant name="core_v2"/> is the Apache 2.0 foundation underneath <Constant name="fusion" />. <Constant name="core_v1"/> (Python-based, open-source) remains on the 1.x series and follows semantic versioning; v2 uses the 2.x series. This page covers versioning for local dbt installations.
 
 If you're using the <Constant name="dbt_platform" /> (including the <Constant name="platform_cli"/>), you don't need to manage dbt versions yourself. [Release tracks](/docs/dbt-versions/dbt-release-tracks) automatically keep you up to date and provide early access to new features.
 
-## dbt Fusion engine versioning
+## <Constant name="fusion_engine" /> versioning
 
 The <Constant name="fusion_engine"/> uses semantic versioning starting with version 2.0. To install or update <Constant name="fusion"/>, see [Install dbt](/docs/local/install-dbt?version=2).
 
@@ -35,7 +35,7 @@ The <Constant name="fusion_engine"/> uses semantic versioning starting with vers
 
 Run `dbt system update` to get the latest stable release, or specify a channel with `dbt system update --version canary`.
 
-For current versions and release history, see [<Constant name="fusion"/> releases](/docs/fusion/fusion-releases).
+For current versions and release history, see [<Constant name="fusion"/> releases](/docs/dbt/dbt-releases).
 
 ### Checking your version
 
@@ -49,10 +49,10 @@ dbt Fusion 2.0.0-preview.126
 ### Further reading
 
 - [Install <Constant name="fusion"/>](/docs/local/install-dbt?version=2): Install or update the <Constant name="fusion_engine" />.
-- [<Constant name="fusion"/> releases](/docs/fusion/fusion-releases): View current versions and release history.
-- [Get started with <Constant name="fusion"/>](/docs/fusion/get-started-fusion): Learn about <Constant name="fusion" /> features and migration.
+- [<Constant name="fusion"/> releases](/docs/dbt/dbt-releases): View current versions and release history.
+- [Get started with <Constant name="fusion"/>](/docs/dbt/get-started-dbt): Learn about <Constant name="fusion" /> features and migration.
 
-## dbt Core versioning
+## <Constant name="core" /> versioning
 
 The <Constant name="core"/> engine uses semantic versioning for the 1.x release series. To install or update <Constant name="core"/>, see [Install dbt](/docs/local/install-dbt?version=1).
 
@@ -60,7 +60,7 @@ The <Constant name="core"/> engine uses semantic versioning for the 1.x release 
 
 <Snippet path="core-versions-table" />
 
-### How dbt Core uses semantic versioning
+### How <Constant name="core" /> uses semantic versioning
 
 dbt follows [semantic versioning](https://semver.org/):
 
@@ -111,7 +111,7 @@ Refer to [Supported data platforms](/docs/supported-data-platforms) for the full
 
 :::info
 
-On <Constant name="legacy_deprecation_date" />, dbt Core versions v1.3-v1.7 will be deprecated and removed from availability in <Constant name="dbt_platform" />. Upgrade any environments still on these versions to a supported version or a [release track](/docs/dbt-versions/dbt-release-tracks) before then.
+On <Constant name="legacy_deprecation_date" />, <Constant name="core" /> versions v1.3-v1.7 will be deprecated and removed from availability in <Constant name="dbt_platform" />. Upgrade any environments still on these versions to a supported version or a [release track](/docs/dbt-versions/dbt-release-tracks) before then.
 
 :::
 

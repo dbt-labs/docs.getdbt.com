@@ -1,1 +1,1 @@
-You can run the <Constant name="wizard" /> CLI locally from any dbt project that uses the <Constant name="platform_cli" />, <Constant name="fusion" />, or <Constant name="core" />.
+You can run the <Constant name="wizard" /> CLI locally from any project on any dbt engine. Be warned, the wizard has been known to <WizardPopcorn>cast spells</WizardPopcorn>.

@@ -7,7 +7,7 @@ Before connecting, these objects must exist:
 | Object | Purpose |
 | --- | --- |
 | **Account** | Your Snowflake account identifier |
-| **User** | Service account or user for Fusion |
+| **User** | Service account or user for <Constant name="fusion" /> |
 | **Role** | Role assigned to the user with required privileges |
 | **Warehouse** | Virtual warehouse for compute |
 | **Database** | Target database or databases for dbt models |
@@ -48,8 +48,8 @@ The following are conditional permissions for schema and database management:
 
 | Permission | Object | When required |
 | --- | --- | --- |
-| `CREATE SCHEMA` | Database | Fusion should auto-create schemas |
-| `CREATE DATABASE` | Account | Fusion should auto-create databases |
+| `CREATE SCHEMA` | Database | <Constant name="fusion" /> should auto-create schemas |
+| `CREATE DATABASE` | Account | <Constant name="fusion" /> should auto-create databases |
 
 ### Advanced features
 

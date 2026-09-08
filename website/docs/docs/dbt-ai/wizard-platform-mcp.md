@@ -5,11 +5,8 @@ description: "Understand MCP server support for dbt Wizard in the dbt platform."
 sidebar_label: "Use MCP servers"
 tags: [AI, Wizard, MCP]
 pagination_prev: "docs/dbt-ai/wizard-platform-skills"
-pagination_next: "docs/dbt-ai/wizard-platform-privacy-data"
-availability:
-  surface: platform
-  access: paid_plan
-  minPlan: starter
+pagination_next: "docs/dbt-ai/dbt-ai-faqs"
+availability: platform_usage
 ---
 
 # Use MCP servers with <Constant name="wizard" /> in the <Constant name="dbt_platform" />

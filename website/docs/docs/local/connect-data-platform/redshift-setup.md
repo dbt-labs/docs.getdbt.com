@@ -20,11 +20,11 @@ availability: local_free
 
 <VersionBlock firstVersion="2.0">
 
-# Connect Redshift to Fusion <Lifecycle status='preview' />
+# Connect Redshift to <Constant name="fusion" /> <Lifecycle status='preview' />
 
 You can configure the Redshift adapter by running `dbt init` in your CLI or manually providing the `profiles.yml` file with the fields configured for your authentication type.
 
-The Redshift adapter for Fusion supports the following [authentication methods](#supported-authentication-types):
+The Redshift adapter for <Constant name="fusion" /> supports the following [authentication methods](#supported-authentication-types):
 - Password
 - IAM profile
 
@@ -36,7 +36,7 @@ import FusionRedshiftWarehousePerms from '/snippets/_fusion-warehouse-permission
 
 For example SQL grants in Redshift, refer to [Redshift permissions](/reference/database-permissions/redshift-permissions).
 
-## Configure Fusion
+## Configure <Constant name="fusion" />
 
 Executing `dbt init` in your CLI will prompt for the following fields:
 - **Host:** The hostname of your Redshift cluster
@@ -123,7 +123,7 @@ Find Redshift-specific configuration information in the [Redshift adapter refere
 
 <VersionBlock lastVersion="1.99">
 
-# Connect Redshift to dbt Core
+# Connect Redshift to <Constant name="core" />
 
 <ProductCard text="Fusion compatible" url="/docs/local/connect-data-platform/redshift-setup?version=2" /> connection also available.
 
@@ -174,7 +174,7 @@ Click on one of these authentication methods for further details on how to confi
   defaultValue="database"
   values={[
     {label: 'Database', value: 'database'},
-    {label: 'IAM User via AWS Profile (Core)', value: 'iam-user-profile'}]
+    {label: 'IAM User via AWS Profile (<Constant name="core" />)', value: 'iam-user-profile'}]
 }>
 
 <TabItem value="database">

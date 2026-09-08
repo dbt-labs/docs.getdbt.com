@@ -2,7 +2,7 @@
 title: "dbt Wizard CLI data use and telemetry"
 id: "wizard-telemetry"
 description: "Understand what dbt Wizard CLI telemetry collects, why it is collected, and how to opt out."
-sidebar_label: "Data & privacy"
+sidebar_label: "Data use and telemetry"
 tags: [AI, Wizard, Privacy]
 availability: local_all
 ---
@@ -61,5 +61,4 @@ Tool telemetry records the tool type, tool name, whether the call failed, and ex
 
 - [Install <Constant name="wizard" /> CLI](/docs/dbt-ai/wizard-cli)
 - [Configure BYOK for <Constant name="wizard" />](/docs/dbt-ai/wizard-byok)
-- [<Constant name="wizard" /> in the <Constant name="dbt_platform" /> Data & privacy](/docs/dbt-ai/wizard-platform-privacy-data)
-- [dbt AI FAQs](/docs/dbt-ai/dbt-ai-faqs)
+- [dbt AI FAQs](/docs/dbt-ai/dbt-ai-faqs) &mdash; including [privacy and data](/docs/dbt-ai/dbt-ai-faqs#privacy-and-data) for <Constant name="wizard" /> in the <Constant name="dbt_platform" />

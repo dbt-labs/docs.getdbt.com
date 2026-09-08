@@ -48,11 +48,11 @@ Configure your project to use a different dbt version than what's configured in 
 5. (Optional) Verify that <Constant name="dbt" /> will use your override setting to build the project by invoking a `dbt build` command in the <Constant name="studio_ide" />'s command bar. Expand the **System Logs** section and find the output's first line. It should begin with `Running with dbt=` and list the version <Constant name="dbt" /> is using. <br /><br />
    For users on Release tracks, the output will display `Running dbt...` instead of a specific version, reflecting the flexibility and continuous automatic updates provided by the release track functionality.
 
-## dbt Fusion engine 
+## <Constant name="fusion_engine" /> 
 
-dbt Labs has introduced the new [<Constant name="fusion_engine" />](/docs/fusion/about-fusion), a ground-up rebuild of dbt. This is currently generally available for Snowflake projects and in preview for other supported adapters on the <Constant name="dbt_platform" />. Eligible customers can update environments to <Constant name="fusion" /> using the same workflows as v1.x, but remember:
+dbt Labs has introduced the new [<Constant name="fusion_engine" />](/docs/introduction), a ground-up rebuild of dbt. This is currently generally available for Snowflake projects and in preview for other supported adapters on the <Constant name="dbt_platform" />. Eligible customers can update environments to <Constant name="fusion" /> using the same workflows as v1.x, but remember:
 - If you don't see the `Fusion Stable` release track as an option, you should check with your dbt Labs account team about eligibility.
-- To increase the compatibility of your project, update all jobs and environments to the **Latest** release track and read more about the changes in our [upgrade guide](/docs/dbt-versions/core-upgrade/upgrading-to-v2).
+- To increase the compatibility of your project, update all jobs and environments to the **Latest** release track and read more about the changes in our [upgrade guide](/docs/dbt-versions/dbt-upgrade/upgrading-to-v2).
 - Make sure you're using a [supported adapter](/docs/platform/connect-data-platform/about-connections?version=2.0) and authentication method:
   <FusionDWH /> 
     <small> _Adapter lifecycle can differ between the <Constant name="dbt_platform" /> and local development &mdash; an adapter can reach GA in the dbt platform before it reaches GA for local use._ </small> <br />
@@ -60,7 +60,7 @@ dbt Labs has introduced the new [<Constant name="fusion_engine" />](/docs/fusion
 
   <Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/platform-upgrading-dbt-versions/upgrade-fusion.png" width="90%" title="Upgrade to the Fusion engine in your environment settings." />
 
-### Upgrading environments to Fusion
+### Upgrading environments to <Constant name="fusion" />
 
 When you're ready to upgrade your project(s) to <Constant name="fusion_engine" />, there are some tools available to you in the dbt platform UI to help you get started. The <Constant name="fusion" /> upgrade assistant will step you through the process of preparing and upgrading your projects. 
 
@@ -71,13 +71,13 @@ When you're ready to upgrade your project(s) to <Constant name="fusion_engine" /
 To take advantage of the upgrade assistant and other upgrade tools, you'll need to meet the following prerequisites:
 - Your dbt project must be updated to use the **Latest** release track.
 - You must have a `developer` license.
-- You must have the proper [permissions set](/docs/platform/manage-access/enterprise-permissions) to execute individual upgrade tasks. Migrating to Fusion is a multi-step process and some of these steps may be repeated across projects by different users:
+- You must have the proper [permissions set](/docs/platform/manage-access/enterprise-permissions) to execute individual upgrade tasks. Migrating to <Constant name="fusion" /> is a multi-step process and some of these steps may be repeated across projects by different users:
 
 | Upgrade task | Required permission(s) | Supported permission sets |
 |---------|------------------------|-----------------------------|
 | Enable Fusion access (triggers migration flows) | Fusion readiness: `write` <br></br> Projects: `write` | Admin, Account Admin and anyone assigned the Fusion admin set, provided their base role also has `write` access to projects |
 | View Fusion readiness and job eligibility | Fusion readiness: `read` | Developer, Admin, Member, Account Admin, Fusion admin |
-| **Run once on Fusion** job action | Runs: `write` | Job Admin, Job Runner, Admin, Member, Project Creator, Account Admin |
+| **Run once on <Constant name="fusion" />** job action | Runs: `write` | Job Admin, Job Runner, Admin, Member, Project Creator, Account Admin |
 | Enable Fusion-latest for an environment | Environments: `write` | Job Admin, Admin, Member, Project Creator, Account Admin |
 
 #### Assign access to upgrade
@@ -123,7 +123,7 @@ To begin the process of upgrading to <Constant name="fusion" /> with the assista
   <Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/choosing-dbt-version/check-deprecations.png" width="60%" title="Begin the process of parsing for deprecation warnings."/>
 3. dbt parses your project for the deprecations and presents a list of all deprecation warnings along with the option to **Autofix warnings**. Autofixing attempts to correct all syntax errors automatically. See [Fix deprecation warnings](/docs/platform/studio-ide/autofix-deprecations) for more information. 
   <Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/choosing-dbt-version/check-deprecations.png" width="60%" title="Begin the process of parsing for deprecation warnings."/>
-4. Once the deprecation warnings have been resolved, click the **Enable Fusion** button. This upgrades your development environment to Fusion!
+4. Once the deprecation warnings have been resolved, click the **Enable <Constant name="fusion" />** button. This upgrades your development environment to <Constant name="fusion" />!
 
   <Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/choosing-dbt-version/autofix-success.png" width="60%" title="You're now ready to upgrade to Fusion in your development environment!"/>
 
@@ -141,11 +141,11 @@ Each job in <Constant name="dbt" /> can be configured to inherit parameters from
 
 <Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/choosing-dbt-version/job-settings.png" width="200%" title="Settings of a dbt job"/>
 
-The example job seen in the screenshot above belongs to the environment "Prod". It inherits the dbt version of its environment as shown by the **Inherited from ENVIRONMENT_NAME (DBT_VERSION)** selection. You may also manually override the dbt version of a specific job to be any of the current Core releases supported by Cloud by selecting another option from the dropdown.
+The example job seen in the screenshot above belongs to the environment "Prod". It inherits the dbt version of its environment as shown by the **Inherited from ENVIRONMENT_NAME (DBT_VERSION)** selection. You may also manually override the dbt version of a specific job to be any of the current <Constant name="core" /> releases supported by Cloud by selecting another option from the dropdown.
 
 ## Supported versions
 
-dbt Labs has always encouraged users to upgrade dbt Core versions whenever a new minor version is released. We released our first major version of dbt - `dbt 1.0` - in December 2021. Alongside this release, we updated our policy on which versions of dbt Core we will support in the <Constant name="dbt_platform" />.
+dbt Labs has always encouraged users to upgrade <Constant name="core" /> versions whenever a new minor version is released. We released our first major version of dbt - `dbt 1.0` - in December 2021. Alongside this release, we updated our policy on which versions of <Constant name="core" /> we will support in the <Constant name="dbt_platform" />.
 
 > **Starting with v1.0, all subsequent minor versions are available in <Constant name="dbt" />. Versions are actively supported, with patches and bug fixes, for 1 year after their initial release. At the end of the 1-year window, we encourage all users to upgrade to a newer version for better ongoing maintenance and support.**
 
@@ -153,7 +153,7 @@ We provide different support levels for different versions, which may include ne
 
 <Snippet path="core-version-support" />
 
-We'll continue to update the following release table so that users know when we plan to stop supporting different versions of Core in <Constant name="dbt" />.
+We'll continue to update the following release table so that users know when we plan to stop supporting different versions of <Constant name="core" /> in <Constant name="dbt" />.
 
 <Snippet path="core-versions-table" />
 
@@ -169,7 +169,7 @@ For more on version support and future releases, see [Understanding <Constant na
 
 ### Need help upgrading?
 
-If you want more advice on how to upgrade your dbt projects, check out our [migration guides](/docs/dbt-versions/core-upgrade/) and our [upgrading Q&A page](/docs/dbt-versions/upgrade-dbt-platform-version#upgrading-legacy-versions-under-10).
+If you want more advice on how to upgrade your dbt projects, check out our [migration guides](/docs/dbt-versions/dbt-upgrade/) and our [upgrading Q&A page](/docs/dbt-versions/upgrade-dbt-platform-version#upgrading-legacy-versions-under-10).
 
 ### Testing your changes before upgrading
 
@@ -180,7 +180,7 @@ Once you know what code changes you'll need to make, you can start implementing 
 - Check out a branch `dbt-version-upgrade`, make the appropriate updates to your project, and verify your dbt project compiles and runs with the new version in the <Constant name="studio_ide" />.
   - If upgrading directly to the latest version results in too many issues, try testing your project iteratively on successive minor versions. There are years of development and a few breaking changes between distant versions of <Constant name="core" /> (for example, 1.0 --> 1.10). The likelihood of experiencing problems upgrading between successive minor versions is much lower, which is why upgrading regularly is recommended.
 - Once you have your project compiling and running on the latest version of dbt in the development environment for your `dbt-version-upgrade` branch, try replicating one of your production jobs to run off your branch's code.
-- You can do this by creating a new deployment environment for testing, setting the custom branch to 'ON' and referencing your `dbt-version-upgrade` branch. You'll also need to set the dbt version in this environment to the latest dbt Core version.
+- You can do this by creating a new deployment environment for testing, setting the custom branch to 'ON' and referencing your `dbt-version-upgrade` branch. You'll also need to set the dbt version in this environment to the latest <Constant name="core" /> version.
 
 <Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/platform-upgrading-dbt-versions/upgrade-environment.png" width="90%" title="Setting your testing environment" />
 

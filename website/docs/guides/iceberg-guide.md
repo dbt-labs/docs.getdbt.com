@@ -21,7 +21,7 @@ By the end of this guide, your `fusion-jaffle-shop` project will transform data 
 
 The DuckDB step is the interesting part. Because Iceberg is an open table format and Horizon speaks the open Iceberg REST protocol, an external engine like DuckDB can operate directly on your governed Snowflake tables. Both solutions are reading and writing the same files, through the same catalog, without a separate copy of the data.
 
-Concretely, the transformation runs in a local DuckDB process (embedded in the dbt Fusion engine); Horizon serves catalog metadata and vends short-lived storage credentials so DuckDB can access the underlying files, which live in your own S3 bucket the whole time.
+Concretely, the transformation runs in a local DuckDB process (embedded in the <Constant name="fusion_engine" />); Horizon serves catalog metadata and vends short-lived storage credentials so DuckDB can access the underlying files, which live in your own S3 bucket the whole time.
 
 Snowflake warehouses are highly performant. Even a single-node XSMALL handles most production transformations well, and for the majority of your workloads, running them in Snowflake is still the right call. But there are times when it's useful to reach the same governed tables from somewhere else: a quick exploratory query from a laptop, a step that fits naturally into a pipeline already running on another engine, or a workload where you'd rather not spin up a warehouse at all. Horizon's Iceberg REST catalog is what makes that possible without duplicating data or losing governance.
 
@@ -61,7 +61,7 @@ Install and verify these before you start:
 
 | Requirement | Why | Check |
 |---|---|---|
-| **dbt Fusion engine** (v2, `preview.194`+) | `catalogs.yml` v2 + DuckDB attach support | `dbt --version` |
+| **<Constant name="fusion_engine" />** (v2, `preview.194`+) | `catalogs.yml` v2 + DuckDB attach support | `dbt --version` |
 | **DuckDB 1.5.4+** | Iceberg write-compat (`ATTACH`, credential vending) | `duckdb --version` |
 | **An AWS account** | Hosts the S3 bucket that stores the Iceberg data/metadata | — |
 | **A new Snowflake account** | Where Horizon + the managed Iceberg tables live | — |

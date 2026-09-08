@@ -117,10 +117,10 @@ The following commands are supported:
 | `"debug"`           | Test connections and validate configs.                                 |
 | `"deps"`            | Download package dependencies.                                          |
 | `"docs"`            | Generate and serve documentation.                                         |
-| `"environment"`     | Workspace environment commands (cloud CLI).                      |
+| `"environment"`     | Workspace environment commands (<Constant name="platform_cli" />).                      |
 | `"help"`            | Show help for commands and subcommands.                                    |
 | `"init"`            | Bootstrap a new project.                                                |
-| `"invocation"`      | For interacting with or inspecting current invocation (cloud CLI). |
+| `"invocation"`      | For interacting with or inspecting current invocation (<Constant name="platform_cli" />). |
 | `"list"`            | List resources.                                              |
 | `"parse"`           | Parse project and report errors, but don’t build/test.                 |
 | `"retry"`           | Retry the last invocation from the point of failure.                   |

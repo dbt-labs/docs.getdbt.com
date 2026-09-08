@@ -21,7 +21,7 @@ Whether you're using the CLI or working within the <Constant name="dbt_platform"
 <Card
     title="Fusion version compatibility"
     body="Learn about version compatibility between the dbt Fusion engine, LSP, and VS Code extension."
-    link="/docs/dbt-versions/fusion-version-compatibility"
+    link="/docs/dbt-versions/dbt-version-compatibility"
     icon="dbt-bit"/>
 <Card
     title="About release tracks"
@@ -50,7 +50,7 @@ Whether you're using the CLI or working within the <Constant name="dbt_platform"
 <Card
     title="dbt version upgrade guides"
     body="All the information you need to prepare your projects for the next version of dbt, including Fusion. Includes guidance on new features, behavior changes, deprecations, and much more."
-    link="/docs/dbt-versions/core-upgrade"
+    link="/docs/dbt-versions/dbt-upgrade"
     icon="dbt-bit"/>
 
 </div> <br />

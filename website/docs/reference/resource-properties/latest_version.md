@@ -1,4 +1,5 @@
 ---
+description: "Use latest_version to set which version of a versioned model unpinned ref() calls resolve to."
 resource_types: [models]
 datatype: latest_version
 required: no

@@ -53,6 +53,10 @@ Without configuring anything, <Constant name="dbt" />'s state-aware orchestratio
 
 ### Handling concurrent jobs
 
+:::caution Not supported in dbt State
+Concurrent job handling works differently in dbt State. For a full list of behavioral differences, refer to [Known differences from state-aware orchestration](/docs/deploy/dbt-state-migration#known-differences-from-state-aware-orchestration).
+:::
+
 If two separate jobs both depend on the same downstream model (for example, `model_ab`) and both detect upstream changes (`updates_on = any`), `model_ab` could run twice &mdash; once for each job. However, if `model_ab` was already built and nothing has changed since that build, neither job will rebuild it. Instead, both jobs will reuse the existing version instead of rebuilding.
 
 Under state-aware orchestration, all jobs read and write from the same shared state and build a model only when either the code or data state has changed. This means that each job individually evaulates whether a model needs rebuilding based on the model’s compiled code and upstream data state.
@@ -78,7 +82,7 @@ This behavior ensures consistency between the dbt state and the actual warehouse
 ## Efficient testing in state-aware orchestration <Lifecycle status="private_beta" />
 
 :::info Private beta feature
-State-aware orchestration features in the <Constant name="dbt_platform" /> are only available in Fusion. Contact your account manager to enable Fusion in your account. 
+State-aware orchestration features in the <Constant name="dbt_platform" /> are only available in <Constant name="fusion" />. Contact your account manager to enable <Constant name="fusion" /> in your account. 
 :::
 
 Data quality can get degraded in two ways: 
@@ -88,7 +92,7 @@ Data quality can get degraded in two ways:
 
 Running dbt’s out-of-the-box [data tests](/docs/build/data-tests) (`unique`, `not_null`, `accepted_values`, `relationships`) on every build helps catch data errors before they impact business decisions. Catching these errors often requires having multiple tests on every model and running tests even when not necessary. If nothing relevant has changed, repeated test executions don’t improve coverage and only increase cost.
 
-With Fusion, dbt gains an understanding of the SQL code based on the logical plan for the compiled code. dbt then can determine when a test must run again, or when a prior upstream test result can be reused.
+With <Constant name="fusion" />, dbt gains an understanding of the SQL code based on the logical plan for the compiled code. dbt then can determine when a test must run again, or when a prior upstream test result can be reused.
 
 Efficient testing in state-aware orchestration reduces warehouse costs by avoiding redundant data tests and combining multiple tests into one run. This feature includes two optimizations:
     

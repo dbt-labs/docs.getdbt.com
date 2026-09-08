@@ -48,7 +48,7 @@ Note that the <Constant name="semantic_layer" /> GraphQL API doesn't support `re
 
 If you're a dbt user or partner with access to <Constant name="dbt" /> and the [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl), you can [set up](/docs/use-dbt-semantic-layer/setup-sl) and test this API with data from your own instance by configuring the <Constant name="semantic_layer" /> and obtaining the right GQL connection parameters described in this document. 
 
-Refer to [Get started with the <Constant name="semantic_layer" />](/guides/sl-snowflake-qs) for more info.
+Refer to [Get started with the <Constant name="semantic_layer" />](/guides/sl-qs) for more info.
 
 
 Authentication uses either a <Constant name="dbt" /> [service account token](/docs/dbt-apis/service-tokens) or a [personal access token](/docs/dbt-apis/user-tokens) passed through a header as follows. To explore the schema, you can enter this information in the "header" section.

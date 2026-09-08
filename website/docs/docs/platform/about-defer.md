@@ -51,7 +51,7 @@ For example, if you were to start developing on a new branch with [nothing in yo
 
 <Lightbox src="/img/docs/dbt-platform/defer-toggle.png" width="100%" title="Select the 'Defer to production' toggle on the bottom right of the command bar to enable defer in the Studio IDE."/>
 
-### Defer in dbt CLI
+### Defer in dbt platform CLI
 
 One key difference between using `--defer` in the <Constant name="platform_cli" /> and the <Constant name="studio_ide" /> is that `--defer` is *automatically* enabled in the <Constant name="platform_cli" /> for all invocations, compared with production artifacts. You can disable it with the `--no-defer` flag.
 

@@ -20,7 +20,7 @@ In addition to providing a hosted architecture for running dbt across your organ
 <div className="grid--3-col">
 
 <Card
-    title="dbt CLI"
+    title="dbt platform CLI"
     body="Use the CLI for the dbt platform to develop, test, run, and version control dbt projects and commands, directly from the command line."
     link="/docs/platform/dbt-cli-installation"
     icon="dbt-bit"/>

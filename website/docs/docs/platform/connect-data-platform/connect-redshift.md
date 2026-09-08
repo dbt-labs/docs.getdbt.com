@@ -12,7 +12,7 @@ availability:
  
 <Constant name="dbt_platform" /> supports connecting to Redshift. 
 
-## Warehouse permissions for Fusion
+## Warehouse permissions for <Constant name="fusion" />
 
 import FusionRedshiftWarehousePerms from '/snippets/_fusion-warehouse-permissions-redshift.md';
 

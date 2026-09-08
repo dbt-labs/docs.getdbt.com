@@ -26,11 +26,79 @@ Databricks supports two methods for creating Iceberg tables in its data catalog,
 - Creating [Unity Catalog managed Iceberg tables](https://docs.databricks.com/aws/en/tables/managed). Databricks Runtime 16.4 LTS and later support this feature.
 - Enabling [Iceberg reads](https://docs.databricks.com/aws/en/delta/uniform) on Delta tables. These tables still use the Delta file format, but generate both Delta and Iceberg-compatible metadata. Databricks Runtime 14.3 LTS and later support this feature.
 
-dbt supports both creating managed Iceberg tables and Iceberg-enabled Delta tables (formerly [UniForm](https://www.databricks.com/blog/delta-uniform-universal-format-lakehouse-interoperability)). The behavior flag [`use_managed_iceberg`](/reference/global-configs/databricks-changes#use-managed-iceberg) determines whether dbt creates a managed Iceberg table or a Delta table.
+dbt supports both creating managed Iceberg tables and Iceberg-enabled Delta tables (formerly [UniForm](https://www.databricks.com/blog/delta-uniform-universal-format-lakehouse-interoperability)).
+
+<VersionBlock lastVersion="1.12">
+
+The behavior flag [`use_managed_iceberg`](/reference/global-configs/databricks-changes#use-managed-iceberg) determines whether dbt creates a managed Iceberg table or a Delta table.
+
+:::caution `use_uniform` has no effect in dbt v1
+
+`dbt-databricks` doesn't support the `use_uniform` catalog property yet. If you set it, the adapter logs a warning and ignores the value. Use the `use_managed_iceberg` behavior flag instead.
+
+:::
+
+</VersionBlock>
+
+<VersionBlock firstVersion="2.0">
+
+The [`use_uniform`](#choose-between-managed-iceberg-and-uniform) config determines whether dbt creates a managed Iceberg table or a Delta table. Because `use_uniform` defaults to `false`, setting `table_format: 'iceberg'` creates a managed Iceberg table.
+
+</VersionBlock>
 
 External Iceberg compute engines can read from and write to these Iceberg tables using Unity Catalog's [Iceberg REST API endpoint](https://docs.databricks.com/aws/en/external-access/iceberg). However, Databricks only has limited support for reading from external Iceberg catalogs (and externally managed Iceberg tables) through [Databricks catalog federation](https://docs.databricks.com/aws/en/query-federation/catalog-federation) (configured outside of dbt).
 
 dbt doesn't yet support enabling [Iceberg v3](https://docs.databricks.com/aws/en/iceberg/iceberg-v3) on managed Iceberg tables.
+
+<VersionBlock firstVersion="2.0">
+
+### Choose between managed Iceberg and UniForm
+
+Set `table_format: 'iceberg'` on a model to create a Unity Catalog managed Iceberg table. You don't need a `catalogs.yml` file or a `catalog_name` config.
+
+Two model configs control which kind of Iceberg table dbt creates:
+
+| Config | Type | Required | Description | Default |
+| ------ | ---- | -------- | ----------- | ------- |
+| `table_format` | String | Yes, to create an Iceberg table | Set to `iceberg` to materialize the model as an Iceberg table. | `default` |
+| `use_uniform` | Boolean | No | When `false`, dbt creates a Unity Catalog managed Iceberg table (`create table ... using iceberg`). When `true`, dbt creates a Delta table with Iceberg reads enabled (`create table ... using delta tblproperties (...)`). | `false` |
+
+This model creates a managed Iceberg table:
+
+<File name='models/my_iceberg_model.sql'>
+
+```sql
+{{
+    config(
+        materialized='table',
+        table_format='iceberg'
+    )
+}}
+
+select * from {{ ref('raw_orders') }}
+```
+
+</File>
+
+To create an Iceberg-enabled Delta table instead, set `use_uniform` to `true`:
+
+<File name='models/my_uniform_model.sql'>
+
+```sql
+{{
+    config(
+        materialized='table',
+        table_format='iceberg',
+        use_uniform=true
+    )
+}}
+
+select * from {{ ref('raw_orders') }}
+```
+
+</File>
+
+</VersionBlock>
 
 ### External tables
 

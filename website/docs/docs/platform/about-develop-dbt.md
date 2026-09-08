@@ -19,7 +19,7 @@ Choose the option that best fits your needs:
 <div className="grid--2-col" >
 
   <Card
-    title="dbt CLI"
+    title="dbt platform CLI"
     body="Allows you to develop and run dbt commands from your local command line or code editor against your dbt development environment."
     link="/docs/platform/dbt-cli-installation"
     icon="dbt-bit"/>
