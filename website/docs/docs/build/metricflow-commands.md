@@ -7,28 +7,28 @@ tags: [Metrics, Semantic Layer]
 availability: all_users
 ---
 
-Once you define metrics in your dbt project, you can query metrics, dimensions, and dimension values, and validate your configs using the MetricFlow commands, available across the <Constant name="core" /> or [<Constant name="fusion_engine" />](/docs/fusion/about-fusion). To upgrade to <Constant name="fusion"/>, see [Get started with <Constant name="fusion"/>](/docs/fusion/get-started-fusion). 
- 
-MetricFlow allows you to define and query metrics in your dbt project in [<Constant name="dbt_platform" />](/docs/platform/about-develop-dbt) or [<Constant name="core" />](/docs/local/install-dbt). To experience the power of the universal [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl) and dynamically query those metrics in downstream tools, you'll need a <Constant name="dbt" /> [Starter, Enterprise, or Enterprise+](https://www.getdbt.com/pricing/) account. 
+MetricFlow allows you to define and query metrics in your dbt project in [<Constant name="dbt_platform" />](/docs/platform/about-develop-dbt) or [self-hosted dbt](/docs/local/install-dbt) locally. To experience the power of the universal [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl) and dynamically query those metrics in downstream tools, you'll need a <Constant name="dbt" /> [Starter, Enterprise, or Enterprise+](https://www.getdbt.com/pricing/) account. 
+
+Once you define metrics in your dbt project, you can query metrics, dimensions, and dimension values, and validate your configs using the MetricFlow commands, available across [dbt versions](/docs/introduction).
 
 MetricFlow is compatible with Python versions 3.8, 3.9, 3.10, 3.11, and 3.12.
 
 ## MetricFlow
 
 <VersionBlock lastVersion="1.11">
-MetricFlow is a Python library that allows you to define and query metrics in your dbt project. You can use MetricFlow to query metrics in your dbt project in the <Constant name="dbt" /> CLI, <Constant name="studio_ide" />, or <Constant name="core" />  (open source).
+MetricFlow is a Python library that allows you to define and query metrics in your dbt project. You can use MetricFlow to query metrics in your dbt project in the <Constant name="dbt" /> CLI, <Constant name="studio_ide" />, or dbt v1 (open source).
 </VersionBlock>
 
 <VersionBlock firstVersion="1.12">
 
-MetricFlow is a Python library that allows you to define and query metrics in your dbt project. You can use MetricFlow to query metrics in your dbt project in the <Constant name="dbt_platform" /> or <Constant name="core" /> (open source), using either the <Constant name="fusion_engine"/> or <Constant name="core" /> engine.
+MetricFlow is a Python library that allows you to define and query metrics in your dbt project. You can use MetricFlow to query metrics in your dbt project two ways: in the <Constant name="dbt_platform" /> or locally with self-hosted dbt, where you install and manage the engine yourself.
 </VersionBlock>
 
 <Tabs>
 
-<TabItem value="cloud" label="MetricFlow in Fusion or dbt platform">
+<TabItem value="cloud" label="MetricFlow in dbt platform">
 
-This section applies to <Constant name="dbt_platform" /> users running the <Constant name="fusion_engine" />, where commands and validations execute remotely in <Constant name="dbt_platform" />. 
+This section applies to <Constant name="dbt_platform" /> users running either the v1 or v2 engine, where commands and validations execute remotely in <Constant name="dbt_platform" />. 
 
 - Run MetricFlow commands using the `dbt sl` prefix in the [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio) or [<Constant name="platform_cli" />](/docs/platform/dbt-cli-installation) or using the [VS Code extension](/docs/install-dbt-extension).
 - For CLI or VS Code/Cursor users, MetricFlow commands are embedded, which means you can immediately run them once you install the [<Constant name="platform_cli" />](/docs/platform/dbt-cli-installation) or [VS Code extension](/docs/install-dbt-extension) and don't need to install MetricFlow separately. 
@@ -37,9 +37,9 @@ This section applies to <Constant name="dbt_platform" /> users running the <Cons
 
 </TabItem>
 
-<TabItem value="core" label="MetricFlow with dbt Core">  
+<TabItem value="core" label="MetricFlow with self-hosted dbt">  
 
-This section applies to <Constant name="core" /> users running the <Constant name="core" /> engine or users running [source available](https://www.getdbt.com/dbt-fusion-engine-license-agreement) <Constant name="fusion" /> locally and aren't on <Constant name="dbt_platform" />.
+This section applies to local self-hosted dbt users who aren't on <Constant name="dbt_platform" />.
 
 You can install [MetricFlow](https://github.com/dbt-labs/metricflow#getting-started) from [PyPI](https://pypi.org/project/dbt-metricflow/). You need to use `pip` to install MetricFlow on Windows or Linux operating systems:
  
@@ -47,7 +47,7 @@ You can install [MetricFlow](https://github.com/dbt-labs/metricflow#getting-star
 2. Run `pip install dbt-metricflow`.
   * You can install MetricFlow using PyPI as an extension of your dbt adapter in the command line. To install the adapter, run `python -m pip install "dbt-metricflow[adapter_package_name]"` and add the adapter name at the end of the command. For example, for a Snowflake adapter, run `python -m pip install "dbt-metricflow[dbt-snowflake]"`.
 
-**Note**, you'll need to manage versioning between <Constant name="core" />, your adapter, and MetricFlow.
+**Note**, you'll need to manage versioning yourself: between dbt, your adapter, and MetricFlow if you execute with v1, or between dbt and MetricFlow if you execute with v2.
 
 Something to note, MetricFlow `mf` commands return an error if you have a Metafont latex package installed. To run `mf` commands, uninstall the package.
 
@@ -60,23 +60,23 @@ Use MetricFlow commands to retrieve metadata and query metrics. The following ta
 
 | Development setup | Engine | Hosted on | <div style={{width:'100px'}}>Prefix</div>  | Notes |
 |------------|------------|----------------|-------------|-----------|
-|<Constant name="studio_ide" />/<Constant name="platform_cli" /> or VS Code extension <small><Constant name="fusion" /> only</small>| <Constant name="fusion_engine" /> or <Constant name="core" /> engine| <Constant name="dbt_platform" /> | `dbt sl` | Remote execution; Platform manages versions.<br />VS Code extension users must have a [`dbt_cloud.yml`](/reference/dbt_cloud.yml) file with a valid token to connect to dbt platform |
-| Open-source <br /> (no <Constant name="dbt_platform" /> project) | <Constant name="fusion" /> (source available) or <br />  <Constant name="core" /> engine | Local machine | `mf` | Install and manage MetricFlow locally. |
+|<Constant name="studio_ide" />/<Constant name="platform_cli" /> or VS Code extension| dbt v2 or v1 | <Constant name="dbt_platform" /> | `dbt sl` | Remote execution; Platform manages versions.<br />VS Code extension users must have a [`dbt_cloud.yml`](/reference/dbt_cloud.yml) file with a valid token to connect to dbt platform |
+| Self-hosted <br /> (no <Constant name="dbt_platform" /> project) | dbt v2 or v1  | Local machine | `mf` | Install and manage MetricFlow locally. |
 
-- If you’re using <Constant name="fusion" /> with <Constant name="dbt_platform" /> and have a [`dbt_cloud.yml`](/reference/dbt_cloud.yml) file with a valid token to connect to <Constant name="dbt_platform" />, run MetricFlow commands using the `dbt sl` prefix. 
+- If you’re using dbt v2 with <Constant name="dbt_platform" /> and have a [`dbt_cloud.yml`](/reference/dbt_cloud.yml) file with a valid token to connect to <Constant name="dbt_platform" />, run MetricFlow commands using the `dbt sl` prefix. 
   - This allows you to interact with metrics that are executed remotely on <Constant name="dbt_platform" /> (for example, from the [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio) or [<Constant name="platform_cli" />](/docs/platform/dbt-cli-installation)).
-- If you’re using [<Constant name="fusion" /> CLI](/docs/local/install-dbt?version=2) ([source available](https://www.getdbt.com/dbt-fusion-engine-license-agreement)) and aren't connected to <Constant name="dbt_platform" />, install MetricFlow separately and use the `mf` prefix to run commands locally.
-- If you’re using <Constant name="core" /> locally without <Constant name="fusion" />, run MetricFlow commands using the `mf` prefix.
+- If you’re using [dbt v2 CLI](/docs/local/install-dbt?version=2) and aren't connected to <Constant name="dbt_platform" />, install MetricFlow separately and use the `mf` prefix to run commands locally.
+- If you’re using dbt v1 locally without v2, run MetricFlow commands using the `mf` prefix.
 
 
 <Tabs>
 <TabItem value="cloudcommands" label="Commands for dbt platform">
 
-This section applies to <Constant name="dbt_platform" /> users running the <Constant name="fusion_engine" /> or <Constant name="core" /> engine where commands and validations execute remotely in <Constant name="dbt_platform" />.
+This section applies to <Constant name="dbt_platform" /> users running the dbt v2 or v1 engine where commands and validations execute remotely in <Constant name="dbt_platform" />.
 
 - Use the `dbt sl` prefix before the command name to execute them in the <Constant name="dbt_platform"/> (<Constant name="studio_ide"/>, VS Code/Cursor, <Constant name="platform_cli" />) (like `dbt sl list metrics` to list all metrics). 
   - For <Constant name="dbt_platform"/> users developing with a CLI or an editor (like VS Code), run the `dbt sl --help` command in the terminal to view a complete list of the MetricFlow commands and flags.
-- The following table lists the commands compatible with <Constant name="dbt_platform"/> (<Constant name="studio_ide"/>, VS Code/Cursor, <Constant name="platform_cli" />) powered by the <Constant name="fusion_engine" /> or <Constant name="core" /> engine:
+- The following table lists the commands compatible with <Constant name="dbt_platform"/> (<Constant name="studio_ide"/>, VS Code/Cursor, <Constant name="platform_cli" />) powered by the dbt v2 or v1 engine:
 
 | <div style={{width:'250px'}}>Command</div>  | <div style={{width:'100px'}}>Description</div> | <Constant name="studio_ide" /> | <Constant name="platform_cli" /> | VS Code/Cursor |
 |---------|-------------|---------------|---------------| -----------|
@@ -105,9 +105,9 @@ Check out the following video for a short video demo of how to query or preview 
 
 </TabItem>
 
-<TabItem value="corecommands" label="Commands for dbt Core">
+<TabItem value="corecommands" label="Commands for local self-hosted dbt">
 
-This section applies to <Constant name="core" /> users running the <Constant name="core" /> engine or users running [source available](https://www.getdbt.com/dbt-fusion-engine-license-agreement) <Constant name="fusion" /> locally and not a <Constant name="dbt_platform" /> user. Commands and validations execute locally and use the `mf` prefix before the command name to execute them. For example, to list all metrics, run `mf list metrics`.
+This section applies to local self-hosted users who aren't on <Constant name="dbt_platform" />, whether you execute with dbt v1 or v2. Commands and validations execute locally and use the `mf` prefix before the command name to execute them. For example, to list all metrics, run `mf list metrics`.
 
 - [`list metrics`](#list-metrics) &mdash; Lists metrics with dimensions.
 - [`list dimensions`](#list) &mdash; Lists unique dimensions for metrics.
@@ -125,8 +125,8 @@ This section applies to <Constant name="core" /> users running the <Constant nam
 This command lists the metrics with their available dimensions:
 
 ```bash
-dbt sl list metrics <metric_name>  # For dbt platform users (Core or Fusion engine)
-mf list metrics <metric_name> # For open-source users (Core or Fusion source available)
+dbt sl list metrics <metric_name>  # For dbt platform users (dbt v1 or v2)
+mf list metrics <metric_name> # For self-hosted users (dbt v1 or v2)
 
 
 Options:
@@ -140,9 +140,9 @@ Options:
 This command lists all unique dimensions for a metric or multiple metrics. It displays only common dimensions when querying multiple metrics:
 
 ```bash
-dbt sl list dimensions --metrics <metric_name>  # For dbt platform users (Core or Fusion engine) 
+dbt sl list dimensions --metrics <metric_name>  # For dbt platform users (dbt v1 or v2) 
 
-mf list dimensions --metrics <metric_name> # For open-source users (Core or Fusion source available)
+mf list dimensions --metrics <metric_name> # For self-hosted users (dbt v1 or v2)
 
 
 Options:
@@ -155,9 +155,9 @@ Options:
 This command lists all dimension values with the corresponding metric:
 
 ```bash
-dbt sl list dimension-values --metrics <metric_name> --dimension <dimension_name>  # For dbt platform users (Core or Fusion engine) 
+dbt sl list dimension-values --metrics <metric_name> --dimension <dimension_name>  # For dbt platform users (dbt v1 or v2) 
 
-mf list dimension-values --metrics <metric_name> --dimension <dimension_name> # For open-source users (Core or Fusion source available)
+mf list dimension-values --metrics <metric_name> --dimension <dimension_name> # For self-hosted users (dbt v1 or v2)
 
 
 Options:
@@ -166,10 +166,10 @@ Options:
                       [required]
   --end-time TEXT     Optional iso8601 timestamp to constraint the end time of
                       the data (inclusive)
-                      *Not available in the dbt platform/Fusion yet
+                      *Not available in the dbt platform/dbt v2 yet
   --start-time TEXT   Optional iso8601 timestamp to constraint the start time
                       of the data (inclusive)
-                      *Not available in in the dbt platform/Fusion yet
+                      *Not available in the dbt platform/dbt v2 yet
   --help              Show this message and exit.
 ```
 
@@ -178,9 +178,9 @@ Options:
 This command lists all unique entities:
 
 ```bash
-dbt sl list entities --metrics <metric_name>  # For dbt platform users (Core or Fusion engine) 
+dbt sl list entities --metrics <metric_name>  # For dbt platform users (dbt v1 or v2) 
 
-mf list entities --metrics <metric_name> # For open-source users (Core or Fusion source available)
+mf list entities --metrics <metric_name> # For self-hosted users (dbt v1 or v2)
 
 
 Options:
@@ -193,13 +193,13 @@ Options:
 This command lists all available saved queries:
 
 ```bash
-dbt sl list saved-queries # For dbt platform users (Core or Fusion engine) 
+dbt sl list saved-queries # For dbt platform users (dbt v1 or v2) 
 ```
 
 You can also add the `--show-exports` flag (or option) to show each export listed under a saved query:
 
 ```bash
-dbt sl list saved-queries --show-exports # For dbt platform users (Core or Fusion engine) 
+dbt sl list saved-queries --show-exports # For dbt platform users (dbt v1 or v2) 
 ```
 
 **Output**
@@ -219,13 +219,13 @@ The list of available saved queries:
 
 The following command performs validations against the defined semantic model configurations.
 
-- For <Constant name="fusion" /> and dbt users in the <Constant name="platform_cli" /> or locally with a valid [`dbt_cloud.yml`](/reference/dbt_cloud.yml):
+- For dbt v2 and <Constant name="platform_cli" /> users with a valid [`dbt_cloud.yml`](/reference/dbt_cloud.yml):
 
   ```bash
   dbt sl validate
   ```
 
-- For open-source users (Core or Fusion source available):
+- For self-hosted users (dbt v1 or v2):
 
   ```bash
   mf validate-configs
@@ -236,16 +236,16 @@ Options:
 
   --timeout                       # dbt platform only
                                   Optional timeout for data warehouse validation in dbt platform.
-  --dw-timeout INTEGER            # dbt Core only
+  --dw-timeout INTEGER            # dbt v1 only
                                   Optional timeout for data warehouse
                                   validation steps. Default None.
-  --skip-dw                       # dbt Core only
+  --skip-dw                       # dbt v1 only
                                   Skips the data warehouse validations.
-  --show-all                      # dbt Core only
+  --show-all                      # dbt v1 only
                                   Prints warnings and future errors.
-  --verbose-issues                # dbt Core only
+  --verbose-issues                # dbt v1 only
                                   Prints extra details about issues.
-  --semantic-validation-workers INTEGER  # dbt Core only
+  --semantic-validation-workers INTEGER  # dbt v1 only
                                   Uses specified number of workers for large configs.
   --help                          Show this message and exit.
 ```
@@ -257,17 +257,17 @@ The following command performs a health check against the data platform you prov
 Note, in <Constant name="dbt" />, the `health-checks` command isn't required since it uses <Constant name="dbt" />'s credentials to perform the health check.
 
 ```bash
-mf health-checks # For open-source users (Core or Fusion source available)
+mf health-checks # For self-hosted users (dbt v1 or v2)
 
 ```
 
 ## Tutorial
 
 Follow the dedicated MetricFlow tutorial to help you get started:
-<!--dbt sl tutorial  # For dbt platform users (Core or Fusion engine) -->
+<!--dbt sl tutorial  # For dbt platform users (dbt v1 or v2) -->
 
 ```bash
-mf tutorial # For open-source users (Core or Fusion source available)
+mf tutorial # For self-hosted users (dbt v1 or v2)
 
 ```
 
@@ -276,10 +276,10 @@ mf tutorial # For open-source users (Core or Fusion source available)
 Create a new query with MetricFlow and execute it against your data platform. The query returns the following result:
 
 ```bash
-dbt sl query --metrics <metric_name> --group-by <dimension_name>  # For dbt platform users (Core or Fusion engine) 
-dbt sl query --saved-query <name> # For dbt platform users (Core or Fusion engine) 
+dbt sl query --metrics <metric_name> --group-by <dimension_name>  # For dbt platform users (dbt v1 or v2) 
+dbt sl query --saved-query <name> # For dbt platform users (dbt v1 or v2) 
 
-mf query --metrics <metric_name> --group-by <dimension_name> # For open-source users (Core or Fusion source available)
+mf query --metrics <metric_name> --group-by <dimension_name> # For self-hosted users (dbt v1 or v2)
 
 
 Options:
@@ -297,11 +297,11 @@ Options:
 
   --end-time TEXT          Optional iso8601 timestamp to constraint the end
                            time of the data (inclusive).
-                           *Not available in the dbt platform/Fusion yet 
+                           *Not available in the dbt platform/dbt v2 yet 
 
   --start-time TEXT        Optional iso8601 timestamp to constraint the start
                            time of the data (inclusive)
-                           *Not available in the dbt platform/Fusion yet
+                           *Not available in the dbt platform/dbt v2 yet
 
   --where TEXT             SQL-like where statement provided as a string and wrapped in quotes.
                            All filter items must explicitly reference fields or dimensions that are part of your model.
@@ -321,8 +321,8 @@ Options:
 
   --csv FILENAME           Provide filepath for data frame output to csv
 
- --compile (dbt platform/Fusion)          In the query output, show the query that was
- --explain (dbt Core)     executed against the data warehouse         
+ --compile (dbt platform/dbt v2)          In the query output, show the query that was
+ --explain (dbt v1)     executed against the data warehouse         
                            
 
   --show-dataflow-plan     Display dataflow plan in explain output
@@ -355,9 +355,9 @@ Use the example to query multiple metrics by dimension and return the `order_tot
 
 **Query**
 ```bash
-dbt sl query --metrics order_total,users_active --group-by metric_time # For dbt platform users (Core or Fusion engine) 
+dbt sl query --metrics order_total,users_active --group-by metric_time # For dbt platform users (dbt v1 or v2) 
 
-mf query --metrics order_total,users_active --group-by metric_time # For open-source users (Core or Fusion source available)
+mf query --metrics order_total,users_active --group-by metric_time # For self-hosted users (dbt v1 or v2)
 
 ```
 
@@ -380,9 +380,9 @@ You can include multiple dimensions in a query. For example, you can group by th
 
 **Query**
 ```bash
-dbt sl query --metrics order_total --group-by order_id__is_food_order # For dbt platform users (Core or Fusion engine) 
+dbt sl query --metrics order_total --group-by order_id__is_food_order # For dbt platform users (dbt v1 or v2) 
 
-mf query --metrics order_total --group-by order_id__is_food_order # For open-source users (Core or Fusion source available)
+mf query --metrics order_total --group-by order_id__is_food_order # For self-hosted users (dbt v1 or v2)
 
 ```
 
@@ -409,10 +409,10 @@ You can add order and limit functions to filter and present the data in a readab
 
 **Query**
 ```bash
-# For dbt platform users (Core or Fusion engine) 
+# For dbt platform users (dbt v1 or v2) 
 dbt sl query --metrics order_total --group-by order_id__is_food_order --limit 10 --order-by -metric_time 
 
-# For open-source users (Core or Fusion source available)
+# For self-hosted users (dbt v1 or v2)
 
 mf query --metrics order_total --group-by order_id__is_food_order --limit 10 --order-by -metric_time 
 ```
@@ -437,10 +437,10 @@ You can further filter the data set by adding a `where` clause to your query. Th
 
 **Query**
 ```bash
-# For dbt platform users (Core or Fusion engine) 
+# For dbt platform users (dbt v1 or v2) 
 dbt sl query --metrics order_total --group-by order_id__is_food_order --where "{{ Dimension('order_id__is_food_order') }} = True" --where "{{ TimeDimension('metric_time', 'week') }} >= '2024-02-01'"
 
-# For open-source users (Core or Fusion source available)
+# For self-hosted users (dbt v1 or v2)
 
 mf query --metrics order_total --group-by order_id__is_food_order --where "{{ Dimension('order_id__is_food_order') }} = True" --where "{{ TimeDimension('metric_time', 'week') }} >= '2024-02-01'"
 ```
@@ -474,7 +474,7 @@ To filter by time, there are dedicated start and end time options. Using these o
 
 **Query**
 ```bash
-# For open-source users (Core or Fusion source available)
+# For self-hosted users (dbt v1 or v2)
 
 mf query --metrics order_total --group-by order_id__is_food_order --limit 10 --order-by -metric_time --where "is_food_order = True" --start-time '2017-08-22' --end-time '2017-08-27' 
 ```
@@ -498,9 +498,9 @@ You can use this for frequently used queries. Replace `<name>` with the name of 
 
 **Query**
 ```bash
-dbt sl query --saved-query <name> # For dbt platform users (Core or Fusion engine) 
+dbt sl query --saved-query <name> # For dbt platform users (dbt v1 or v2) 
 
-mf query --saved-query <name> # For open-source users (Core or Fusion source available)
+mf query --saved-query <name> # For self-hosted users (dbt v1 or v2)
 
 ```
 
@@ -518,15 +518,15 @@ The following tabs present additional query examples, like exporting to a CSV. S
 
 <TabItem value="eg6" label="--compile/--explain flag">
 
-Add `--compile` (or `--explain` for dbt Core users) to your query to view the SQL generated by MetricFlow. 
+Add `--compile` (or `--explain` for dbt v1 users) to your query to view the SQL generated by MetricFlow. 
 
 **Query**
 
 ```bash
-# For dbt platform users (Core or Fusion engine) 
+# For dbt platform users (dbt v1 or v2) 
 dbt sl query --metrics order_total --group-by metric_time,is_food_order --limit 10 --order-by -metric_time --where "is_food_order = True" --start-time '2017-08-22' --end-time '2017-08-27' --compile
 
-# For open-source users (Core or Fusion source available)
+# For self-hosted users (dbt v1 or v2)
 
 mf query --metrics order_total --group-by metric_time,is_food_order --limit 10 --order-by -metric_time --where "is_food_order = True" --start-time '2017-08-22' --end-time '2017-08-27' --explain
 ```
@@ -559,13 +559,13 @@ limit 10
 
 <TabItem value="eg7" label=" Export to CSV">
  
-Add the `--csv file_name.csv` flag to export the results of your query to a CSV. The `--csv` flag is available in dbt Core only and not supported in <Constant name="dbt" />.
+Add the `--csv file_name.csv` flag to export the results of your query to a CSV. The `--csv` flag is available to local self-hosted users only (with the `mf` prefix) and isn't supported by `dbt sl` in <Constant name="dbt_platform" />.
 
 **Query**
 
 ```bash
 
-# For open-source users (Core or Fusion source available)
+# For self-hosted users (dbt v1 or v2)
 
 mf query --metrics order_total --group-by metric_time,is_food_order --limit 10 --order-by -metric_time --where "is_food_order = True" --start-time '2017-08-22' --end-time '2017-08-27' --csv query_example.csv
 ```
@@ -586,9 +586,9 @@ Optionally, you can specify the time granularity you want your data to be aggreg
 Below is an example for querying metric data at a monthly grain:
 
 ```bash
-dbt sl query --metrics revenue --group-by metric_time__month # For dbt platform users (Core or Fusion engine) 
+dbt sl query --metrics revenue --group-by metric_time__month # For dbt platform users (dbt v1 or v2) 
 
-mf query --metrics revenue --group-by metric_time__month # For open-source users (Core or Fusion source available)
+mf query --metrics revenue --group-by metric_time__month # For self-hosted users (dbt v1 or v2)
 
 ```
 
@@ -599,7 +599,7 @@ Run [exports for a specific saved query](/docs/use-dbt-semantic-layer/exports#ex
 Export is available in <Constant name="dbt" />.
 
 ```bash
-dbt sl export # For dbt platform users (Core or Fusion engine)
+dbt sl export # For dbt platform users (dbt v1 or v2)
 ```
 
 ## Export-all
@@ -609,7 +609,7 @@ Run [exports for multiple saved queries](/docs/use-dbt-semantic-layer/exports#ex
 Export is available in <Constant name="dbt" />.
 
 ```bash
-dbt sl export-all # For dbt platform users (Core or Fusion engine)
+dbt sl export-all # For dbt platform users (dbt v1 or v2)
 ```
 
 

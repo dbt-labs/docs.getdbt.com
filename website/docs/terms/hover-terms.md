@@ -101,8 +101,11 @@ lsp:
 
 managed:
   displayText: managed
-  hoverSnippet: dbt Labs manages the AI provider connection; no user provider key is required.
+  hoverSnippet: dbt Labs manages the AI provider connection. Usage is billed by dbt, so no provider key is required.
 
+inference:
+  displayText: inference
+  hoverSnippet: Running a trained AI model to get a response. Every agent turn is one or more inference calls. Usage is billed per inference call.
 
 materialization:
   displayText: materialization

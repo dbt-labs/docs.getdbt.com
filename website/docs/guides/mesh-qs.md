@@ -640,7 +640,7 @@ Here are some additional resources to help you continue your journey:
 - [Implement <Constant name="mesh" /> with the <Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/sl-faqs#how-can-i-implement-dbt-mesh-with-the-dbt-semantic-layer)
 - [Cross-project references](/docs/mesh/govern/project-dependencies#how-to-write-cross-project-ref)
 - [<Constant name="catalog" />](/docs/explore/explore-projects)
-- [Hybrid development with <Constant name="dbt_platform"/> and <Constant name="fusion"/>](/guides/fusion-platform-local-workflow) — keep your local and platform environments in sync across credentials, env vars, and <Constant name="fusion"/> versions
+- [Hybrid development with <Constant name="dbt_platform"/> and <Constant name="fusion"/>](/guides/dbt-platform-local-workflow) — keep your local and platform environments in sync across credentials, env vars, and <Constant name="fusion"/> versions
 
 </ConfettiTrigger>
 

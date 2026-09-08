@@ -188,7 +188,7 @@ For detailed configuration options, refer to the [Spark configuration](/referenc
 
 <VersionBlock lastVersion="1.99">
 
-# Connect Apache Spark to dbt Core
+# Connect Apache Spark to <Constant name="core" />
 
 <ProductCard text="Fusion compatible" url="/docs/local/connect-data-platform/spark-setup?version=2" /> connection also available.
 

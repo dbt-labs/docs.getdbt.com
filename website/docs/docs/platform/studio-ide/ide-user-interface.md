@@ -184,7 +184,7 @@ Starting from dbt v1.6 or higher, when you save changes to a model, you can comp
 
 4. **Lint button** &mdash; The **Lint** button runs the [linter](/docs/platform/studio-ide/lint-format) on the active file in the file editor. The linter checks for syntax errors and style issues in your code and displays the results in the **Code quality** tab.
 
-5. **dbt Wizard** &mdash; [dbt Wizard](/docs/dbt-ai/wizard-ide) is the new and recommended governed agentic experience integrated into the <Constant name="studio_ide" /> that uses your project context to help you develop governed dbt changes faster. It can generate or refactor models, semantic models, tests, and documentation from natural language prompts. <Lifecycle status="self_service,managed,managed_plus" />
+5. **dbt Wizard** &mdash; [dbt Wizard](/docs/dbt-ai/wizard-ide) is the new and recommended governed agentic experience integrated into the <Constant name="studio_ide" /> that uses your project context to help you develop governed dbt changes faster. It can generate or refactor models, semantic models, tests, and documentation from natural language prompts. 
 
     [dbt Copilot](/docs/platform/studio-ide/develop-studio-ai#dbt-copilot-in-studio-ide) is separate from <Constant name="wizard" /> and is dbt's inline AI assistance experience, providing single-click generation of SQL, documentation, tests, and semantic models in <Constant name="studio_ide" />, <Constant name="canvas" />, and <Constant name="insights" />. 
 

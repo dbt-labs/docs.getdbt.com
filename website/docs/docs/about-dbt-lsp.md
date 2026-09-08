@@ -6,15 +6,16 @@ sidebar_label: "About dbt LSP"
 pagination_next: null
 pagination_prev: null
 availability:
-  engine: v2
   access: free
 ---
 
-The <Constant name="fusion_engine" /> offers benefits beyond the speed and power of the framework. The dbt VS Code extension, <Constant name="studio_ide" />, and <Constant name="insights" /> all contain a powerful set of features backed by our Language Server Protocol (LSP) that enable fast, efficient development workflows. The following features are supported across these tools:
+dbt v2 offers benefits beyond the speed and power of the framework. The dbt VS Code extension, <Constant name="studio_ide" />, and <Constant name="insights" /> all contain a powerful set of features backed by our Language Server Protocol (LSP) that enable fast, efficient development workflows. The following features are supported across these tools:
 
 import LSPFeatures from '/snippets/_lsp-features.md';
 
 <LSPFeatures />
+
+dbt v1 and v2 both support the dbt VS Code extension. Features that depend on built-in SQL parsing, such as column-level lineage, column go-to definition and find references, and `SELECT *` expansion, require [`static_analysis: strict`](/reference/resource-configs/static-analysis?version=2).
 
 ## Lazy compilation
 
@@ -38,5 +39,5 @@ dbt and the language server run independently. Running a command like `dbt run` 
 
 ## Versioning
 
-The <Constant name="fusion" /> CLI and the language server ship in a single <Constant name="fusion_engine" /> binary, so they always share the same version and can't be mismatched. The dbt VS Code extension declares which <Constant name="fusion" /> versions it supports and checks the installed binary at startup. For the compatibility matrix and how to verify binaries for manual or air-gapped installs, refer to [Version compatibility](/docs/dbt-versions/fusion-version-compatibility).
+The dbt v2 CLI and the language server ship in a single binary, so they always share the same version and can't be mismatched. The dbt VS Code extension declares which dbt versions it supports and checks the installed binary at startup. For the compatibility matrix and how to verify binaries for manual or air-gapped installs, refer to [Version compatibility](/docs/dbt-versions/dbt-version-compatibility).
 

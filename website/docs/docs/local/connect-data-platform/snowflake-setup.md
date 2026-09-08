@@ -202,7 +202,7 @@ Find Snowflake-specific configuration information in the [Snowflake adapter refe
 
 <VersionBlock lastVersion="1.99">
 
-# Connect Snowflake to dbt Core
+# Connect Snowflake to <Constant name="core" />
 
 <SnowflakeAuth />
 

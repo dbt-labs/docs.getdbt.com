@@ -88,7 +88,7 @@ If the extension reports that the <Constant name="fusion_engine" /> binary can't
 If the extension reports that the installed <Constant name="fusion" /> version isn't compatible with your dbt VS Code extension version, the two are outside the supported range.
 
 1. Run `dbt --version` to check your installed <Constant name="fusion" /> version.
-2. Compare it against the [version compatibility matrix](/docs/dbt-versions/fusion-version-compatibility#compatibility-matrix) for your extension version.
+2. Compare it against the [version compatibility matrix](/docs/dbt-versions/dbt-version-compatibility#compatibility-matrix) for your extension version.
 3. Update <Constant name="fusion" /> or the extension so both fall within the supported range. Use the **Download compatible version** action in the notification if it appears.
 
 </Expandable>
@@ -103,14 +103,14 @@ If the extension reports that <Constant name="fusion" /> crashed on startup, con
 
 <Expandable alt_header="A known-bad dbt Fusion version is installed">
 
-If the extension warns that your installed <Constant name="fusion" /> version has a known regression, dbt Labs has flagged that release as [known-bad](/docs/dbt-versions/fusion-version-compatibility#known-bad-releases). Update to the version named in the notification.
+If the extension warns that your installed <Constant name="fusion" /> version has a known regression, dbt Labs has flagged that release as [known-bad](/docs/dbt-versions/dbt-version-compatibility#known-bad-releases). Update to the version named in the notification.
 
 For standalone installations:
 ```shell
 dbt system update
 ```
 
-The warning persists across restarts until you update. If you work in an air-gapped environment, refer to [known-bad releases](/docs/dbt-versions/fusion-version-compatibility#known-bad-releases) for how to distribute the manifest locally.
+The warning persists across restarts until you update. If you work in an air-gapped environment, refer to [known-bad releases](/docs/dbt-versions/dbt-version-compatibility#known-bad-releases) for how to distribute the manifest locally.
 
 </Expandable>
 
