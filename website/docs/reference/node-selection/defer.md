@@ -3,7 +3,7 @@ title: "Defer"
 ---
 
 :::tip
-[dbt State](/docs/deploy/dbt-state-about) automates deferral once enabled &mdash; no flag, toggle, or manifest download needed. It also goes further: dbt State rebuilds only what changed, deciding for each selected node whether to rebuild, clone, or skip.
+[dbt State](/docs/deploy/dbt-state-about) automates deferral once set up &mdash; no flag, toggle, or manifest download needed. It also goes further: dbt State rebuilds only what changed, deciding for each selected node whether to rebuild, clone, or skip.
 :::
 
 Defer is a powerful feature that makes it possible to run a subset of <VersionBlock lastVersion="1.10">models or tests</VersionBlock><VersionBlock firstVersion="1.11">models, tests, or functions</VersionBlock> in a [sandbox environment](/docs/environments-in-dbt) without having to first build their upstream parents. This can save time and computational resources when you want to test a small number of models in a large project.
