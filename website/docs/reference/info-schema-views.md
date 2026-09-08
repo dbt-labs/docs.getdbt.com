@@ -39,10 +39,3 @@ Each view mirrors a table of the same name in the [dbt Information Schema](/docs
 | `packages` | `package_name`, `ingested_at` |
 | `project_vars` | `project_name`, `var_name`, `var_value`, `ingested_at` — a package-scoped var appears on that package's `project_name` |
 | `project_env_vars` | `env_var_name`, `ingested_at` |
-
-:::note
-The following views are not available to checks. dbt raises an error if you pass them to `info_schema()`, and reports the list of available views.
-
-- `column_lineage`: Requires static analysis, so it is not available at parse time.
-- `classifiers`, `semantic_relationships`: Not yet populated.
-:::
