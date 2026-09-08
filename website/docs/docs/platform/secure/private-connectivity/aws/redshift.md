@@ -114,7 +114,7 @@ If **Private endpoints** isn't available in your account settings, configure Red
         <Lightbox src="/img/docs/dbt-platform/redshiftprivatelink1.png" title="Redshift Properties tab"/>
      
    - **Redshift Serverless**
-       - On the Redshift Serverless **Workgroup configuration** page.  
+       - On the Redshift Serverless **Workgroup configuration** page. If you have multiple workgroups, make sure you grant access under **Granted accounts** for each workgroup during the AWS-side setup. Refer to [Per-workgroup authorization required](#per-workgroup-authorization).  
 
 2. In the **Granted accounts** section, click **Grant access**.
 
