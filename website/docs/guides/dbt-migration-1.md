@@ -130,7 +130,7 @@ This section highlights the development configurations you'll need for your <Con
 
 ### dbt environments
 
-The most common data environments are production, staging, and development. The way dbt Core manages [environments](/docs/environments-in-dbt) is through `target`, which are different sets of connection details. 
+The most common data environments are production, staging, and development. The way <Constant name="core" /> manages [environments](/docs/environments-in-dbt) is through `target`, which are different sets of connection details. 
 
 [<Constant name="dbt" /> environments](/docs/dbt-platform-environments) go further by:
 - Integrating with features such as job scheduling or version control, making it easier to manage the full lifecycle of your dbt projects within a single platform.
@@ -142,7 +142,7 @@ The most common data environments are production, staging, and development. The 
 ### Initial setup steps
 1. **Set up development environment** &mdash; Set up your [development](/docs/dbt-platform-environments#create-a-development-environment) environment and [user credentials](/docs/platform/studio-ide/develop-in-studio#get-started-with-the-studio-ide). You'll need this to access your dbt project and start developing.
 
-2. **dbt Core version** &mdash; In your <Constant name="dbt" /> environment, select a [release track](/docs/dbt-versions/dbt-release-tracks) for ongoing dbt version upgrades. If your team plans to use both dbt Core and <Constant name="dbt" /> for developing or deploying your dbt project, you can run `dbt --version` in the command line to find out which version of dbt Core you're using.
+2. **<Constant name="core" /> version** &mdash; In your <Constant name="dbt" /> environment, select a [release track](/docs/dbt-versions/dbt-release-tracks) for ongoing dbt version upgrades. If your team plans to use both <Constant name="core" /> and <Constant name="dbt" /> for developing or deploying your dbt project, you can run `dbt --version` in the command line to find out which version of <Constant name="core" /> you're using.
    - When using <Constant name="core" />, you need to think about which version you're using and manage your own upgrades. When using <Constant name="dbt" />, leverage [release tracks](/docs/dbt-versions/dbt-release-tracks) so you don't have to.
 
 3. **Connect to your data platform** &mdash; When using <Constant name="dbt" />, you can [connect to your data platform](/docs/platform/connect-data-platform/about-connections) directly in the UI.
@@ -167,7 +167,7 @@ This section will help you understand how to set up and manage <Constant name="d
 
 In <Constant name="dbt" />, you can set [environment variables](/docs/build/environment-variables) in the <Constant name="dbt" /> user interface (UI). Read [Set up environment variables](#set-environment-variables-in-dbt-cloud) for more info.
 
-In dbt Core, environment variables, or the [`env_var` function](/reference/dbt-jinja-functions/env_var), are defined manually by the developer or within the external application running dbt.
+In <Constant name="core" />, environment variables, or the [`env_var` function](/reference/dbt-jinja-functions/env_var), are defined manually by the developer or within the external application running dbt.
 
 ### Environment variables in dbt
   - <Constant name="dbt" /> environment variables must be prefixed with `DBT_` (including `DBT_ENV_CUSTOM_ENV_` or `DBT_ENV_SECRET`).

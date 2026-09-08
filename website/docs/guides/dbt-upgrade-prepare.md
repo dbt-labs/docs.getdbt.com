@@ -1,6 +1,6 @@
 ---
 title: "Upgrade to Fusion part 1: Preparing to upgrade"
-id: "prepare-dbt-upgrade"
+id: "prepare-v2-upgrade"
 level: 'Intermediate'
 icon: 'zap'
 hide_table_of_contents: true
@@ -67,7 +67,7 @@ The **Enable restricted Fusion upgrade permissions** toggle is only available to
 1. In the same **Account** settings screen, select the checkbox next to **Enable restricted Fusion upgrade permissions**.
 2. Click **Save**.
 
-When enabled, only users assigned the [`Fusion admin`](/docs/platform/manage-access/enterprise-permissions#fusion-admin) permission set (scoped to specific projects) can execute the upgrade. For instructions on assigning this permission, refer to [Assign upgrade access](/guides/upgrade-to-dbt?step=3#assign-upgrade-access-optional) in Part 2 of this guide.
+When enabled, only users assigned the [`Fusion admin`](/docs/platform/manage-access/enterprise-permissions#fusion-admin) permission set (scoped to specific projects) can execute the upgrade. For instructions on assigning this permission, refer to [Assign upgrade access](/guides/upgrade-to-v2?step=3#assign-upgrade-access-optional) in Part 2 of this guide.
 
 ### The Fusion readiness panel
 
@@ -83,7 +83,7 @@ Common ineligibility reasons include:
 
 As you complete the steps in this guide, check the readiness panel to see your eligibility improve.
 
-## Upgrade to the latest dbt Core version
+## Upgrade to the latest <Constant name="core" /> version
 
 Before upgrading to <Constant name="fusion" />, you need to move your environments to the **Latest** [<Constant name="core" /> release track](/docs/dbt-versions/dbt-release-tracks). The **Latest** track includes all the features and tooling to help you prepare for <Constant name="fusion" />. It ensures the smoothest upgrade experience by validating that your project doesn't rely on deprecated behaviors.
 
@@ -107,7 +107,7 @@ Test the **Latest** release track for your individual account without changing t
 5. Launch the <Constant name="studio_ide" /> or <Constant name="platform_cli" /> and test your normal development workflows.
 6. Verify the override is active by running any dbt command and checking the **System Logs**. The first line should show `Running with dbt=` and your selected version. If the version number is `v1.11` or higher, you're on the right path to <Constant name="fusion" /> readiness.
 
-If everything works as expected, proceed to the next step to start upgrading your environments. If you encounter deprecation warnings, don't fear! We'll address those [later in this guide](/guides/prepare-dbt-upgrade?step=4). If you encounter errors, revert to your previous version and refer to the [version upgrade guides](/docs/dbt-versions/dbt-upgrade) to resolve any differences between your current version and the latest available <Constant name="core" /> version.
+If everything works as expected, proceed to the next step to start upgrading your environments. If you encounter deprecation warnings, don't fear! We'll address those [later in this guide](/guides/prepare-v2-upgrade?step=4). If you encounter errors, revert to your previous version and refer to the [version upgrade guides](/docs/dbt-versions/dbt-upgrade) to resolve any differences between your current version and the latest available <Constant name="core" /> version.
 
 ### Step 2: Upgrade your development environment
 
@@ -413,7 +413,7 @@ For jobs that are eligible for <Constant name="fusion" /> in the readiness exper
 
 ### Review your jobs
 
-The readiness panel shows how many jobs are ineligible for <Constant name="fusion" /> or have an unknown eligibility status. If you don't see eligibility messaging, ask an account admin to enable **Fusion readiness & upgrade features** in [Account settings](/docs/platform/account-settings). For setup steps, refer to [Enable Fusion readiness features](/guides/prepare-dbt-upgrade?step=3).
+The readiness panel shows how many jobs are ineligible for <Constant name="fusion" /> or have an unknown eligibility status. If you don't see eligibility messaging, ask an account admin to enable **Fusion readiness & upgrade features** in [Account settings](/docs/platform/account-settings). For setup steps, refer to [Enable Fusion readiness features](/guides/prepare-v2-upgrade?step=3).
 
 :::note
 If a job has not run in the last 7 days, you must run it once for the debugging options to be available.
@@ -468,6 +468,6 @@ Congratulations! You have validated <Constant name="fusion" /> eligibility for y
 
 With limitations identified and addressed, you've completed all the preparation steps. Your project is now ready to upgrade to <Constant name="fusion" />!
 
-Check out [Part 2: Making the move](/guides/upgrade-to-dbt)
+Check out [Part 2: Making the move](/guides/upgrade-to-v2)
 
 </div>
