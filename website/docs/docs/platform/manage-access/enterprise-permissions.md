@@ -89,7 +89,7 @@ Notable features:
 - Analyst read is a project-level set.
 - Read-only access to **Connections** (account and project), **Projects**, repositories (Git repository settings), <Constant name="semantic_layer" /> configuration, **Environments**, custom environment variables, and <Constant name="catalog" /> metadata (Metadata GraphQL API).
 - No read access to jobs or runs.
-- Includes `user_credential_write`, so users can view and edit their own user credentials on **Your profile** > **Credentials** without access to the <Constant name="studio_ide" /> or <Constant name="platform_cli" />. Read-only users still need personal user credentials on this page to run warehouse queries in analysis features such as the <Constant name="semantic_layer" />.
+- Includes `user_credential_write`, so users can view and edit their own user credentials on **Your profile** > **Credentials** without access to the <Constant name="studio_ide" /> or <Constant name="platform_cli" />. Read-only users need personal user credentials on this page to run warehouse queries in analysis features such as the <Constant name="semantic_layer" />. In <Constant name="wizard" /> [Explore mode](/docs/platform/wizard-home#ask-questions-in-explore-mode), users without personal credentials fall back to the project's [analytics credential](/docs/platform/wizard-read-only-users#set-up-analytics-credentials) instead.
 - No write access and no access to develop in the <Constant name="studio_ide" /> or <Constant name="platform_cli" />.
 
 To access the capabilities of this permission set, you _must_ add users to a group that's assigned the Analyst read permission set. Users won't have access until they're added to the group. For the setup steps, refer to [Set up read-only user access](/docs/platform/manage-access/about-user-access#set-up-read-only-user-access).
@@ -164,7 +164,7 @@ Notable features:
 </Expandable>
 <Expandable alt_header="Fusion admin">
 
-This permission set enables users to interact with <Constant name="fusion"/> upgrade workflows. We recommend limiting this permission to users who are actively [working on migrating](/guides/upgrade-to-dbt?step=1) a project to <Constant name="fusion"/>.
+This permission set enables users to interact with <Constant name="fusion"/> upgrade workflows. We recommend limiting this permission to users who are actively [working on migrating](/guides/upgrade-to-v2?step=1) a project to <Constant name="fusion"/>.
 
 By default, all users can access the <Constant name="fusion"/> upgrade experience. When the upgrade permissions setting is enabled, only users with the **Fusion admin** or **Account admin** permission set can perform upgrades. If the setting is disabled (no check mark), upgrades are not restricted.
 

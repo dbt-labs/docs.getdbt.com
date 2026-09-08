@@ -98,4 +98,4 @@ Here are some examples and commands that you might use. Replace the example prom
 - [Slash command reference](/docs/dbt-ai/wizard-slash-commands) for interactive TUI slash commands
 - [Headless mode](/docs/dbt-ai/wizard-headless)
 - [Configuration reference](/docs/dbt-ai/wizard-config)
-- [dbt command reference](/reference/dbt-commands) for `dbt run`, `dbt build`, and other dbt Core commands
+- [dbt command reference](/reference/dbt-commands) for `dbt run`, `dbt build`, and other <Constant name="core" /> commands

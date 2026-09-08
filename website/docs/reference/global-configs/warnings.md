@@ -251,7 +251,7 @@ When you see a warning code in your logs, use the following table to find the ma
 | _no code_ | `RunResultWarning` | A model or test run completed with `warn` status |
 | _no code_ | `RunResultWarningMessage` | The message accompanying a `warn`-status run result |
 
-### Unsupported Core event names
+### Unsupported <Constant name="core" /> event names
 
 Only the legacy names in [Supported legacy dbt-Core event name aliases](#supported-legacy-dbt-core-event-name-aliases) are valid string aliases in <Constant name="fusion" />. There are many other <Constant name="core" /> warning event names; if you put one of those in `warn_error_options`, <Constant name="fusion" /> will throw a warning at startup.
 
@@ -260,8 +260,8 @@ The table below is not a complete list of unsupported names. It only includes <C
 | dbt-core event name | Message |
 |---|---|
 | `MicrobatchMacroOutsideOfBatchesDeprecation` | <Constant name="fusion" /> only supports the newer behavior-change flag, where this case is a hard error. |
-| `SeedExceedsLimitSamePath` | This warning comes from partial parsing in dbt Core, which <Constant name="fusion" /> does not support. |
-| `SeedIncreased` | This warning comes from partial parsing in dbt Core, which <Constant name="fusion" /> does not support. |
+| `SeedExceedsLimitSamePath` | This warning comes from partial parsing in <Constant name="core" />, which <Constant name="fusion" /> does not support. |
+| `SeedIncreased` | This warning comes from partial parsing in <Constant name="core" />, which <Constant name="fusion" /> does not support. |
 | `GenerateSchemaNameNullValueDeprecation` | <Constant name="fusion" /> only supports the newer behavior-change flag, where this case is a hard error. |
 | `GenericSemanticLayerDeprecation` | <Constant name="fusion" /> already implements the new semantic layer spec, so this legacy warning no longer applies. |
 | `MFCumulativeTypeParamsDeprecation` | <Constant name="fusion" /> already implements the new semantic layer spec, so this legacy warning no longer applies. |
@@ -272,8 +272,8 @@ The table below is not a complete list of unsupported names. It only includes <C
 | `SemanticValidationFailure` | <Constant name="fusion" /> does not support semantic models, so this warning does not apply. |
 | `ValidationWarning` | <Constant name="fusion" /> already validates allowed YAML keys strictly, so this warning would be redundant. |
 | `PackageMaterializationOverrideDeprecation` | <Constant name="fusion" /> already enforces the latest behavior, which prevents packages from overriding built-in materializations. |
-| `TestsConfigDeprecation` | <Constant name="fusion" /> does not surface this warning by default, which matches current dbt Core behavior. |
-| `ProjectFlagsMovedDeprecation` | <Constant name="fusion" /> already errors on this configuration, which matches newer dbt Core behavior. |
+| `TestsConfigDeprecation` | <Constant name="fusion" /> does not surface this warning by default, which matches current <Constant name="core" /> behavior. |
+| `ProjectFlagsMovedDeprecation` | <Constant name="fusion" /> already errors on this configuration, which matches newer <Constant name="core" /> behavior. |
 | `ConfigSourcePathDeprecation` | This is now fully deprecated in <Constant name="fusion" />. |
 | `ConfigLogPathDeprecation` | This is now fully deprecated in <Constant name="fusion" />. |
 | `ConfigTargetPathDeprecation` | This is now fully deprecated in <Constant name="fusion" />. |
@@ -304,7 +304,7 @@ If your project emits static analysis warnings and you use `--warn-error` (which
 
 ### Deprecated `include` and `exclude` keys
 
-The legacy `include` and `exclude` fields for `warn_error_options` were deprecated in dbt Core v1.8 but are still supported in <Constant name="fusion" />. If you use them, <Constant name="fusion" /> emits a `WEOIncludeExcludeDeprecation` warning (code 1086) and ignores the deprecated keys. Migrate to `error`, `warn`, and `silence` instead:
+The legacy `include` and `exclude` fields for `warn_error_options` were deprecated in <Constant name="core" /> v1.8 but are still supported in <Constant name="fusion" />. If you use them, <Constant name="fusion" /> emits a `WEOIncludeExcludeDeprecation` warning (code 1086) and ignores the deprecated keys. Migrate to `error`, `warn`, and `silence` instead:
 
 ```yaml
 # Before (Core ≤1.7)

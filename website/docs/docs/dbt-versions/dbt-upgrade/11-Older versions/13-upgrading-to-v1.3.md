@@ -43,7 +43,7 @@ We have updated the manifest schema version to `v7`. This includes the changes t
 - Renamed `compiled_sql` to `compiled_code`
 - A new top-level node property, `language` (`'sql'` or `'python'`)
 
-For users of [state-based selection](/reference/node-selection/syntax#about-node-selection): This release includes logic providing backward and forward compatibility for older manifest versions. While running dbt Core v1.3, it should be possible to use `state:modified --state ...` selection against a manifest produced by dbt Core v1.0 and higher.
+For users of [state-based selection](/reference/node-selection/syntax#about-node-selection): This release includes logic providing backward and forward compatibility for older manifest versions. While running <Constant name="core" /> v1.3, it should be possible to use `state:modified --state ...` selection against a manifest produced by <Constant name="core" /> v1.0 and higher.
 
 ### For maintainers of adapter plugins
 

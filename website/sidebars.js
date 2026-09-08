@@ -430,6 +430,7 @@ const sidebarSettings = {
                 "docs/platform/wizard-platform",
                 "docs/dbt-ai/wizard-ide",
                 "docs/platform/wizard-home",
+                "docs/platform/wizard-read-only-users",
                 "docs/platform/wizard-byok-platform",
                 "docs/dbt-ai/wizard-platform-skills",
                 "docs/dbt-ai/wizard-platform-mcp",
@@ -1039,6 +1040,11 @@ const sidebarSettings = {
         "docs/dbt-versions/product-lifecycles",
         "docs/dbt-versions/experimental-features",
         {
+          type: "link",
+          label: "Fusion changelog",
+          href: "https://github.com/dbt-labs/dbt-core/blob/main/CHANGELOG-fusion.md",
+        },
+        {
           type: "category",
           label: "dbt version upgrade guides",
           link: {
@@ -1358,6 +1364,7 @@ const sidebarSettings = {
             "reference/advanced-config-usage",
             "reference/resource-configs/access",
             "reference/resource-configs/alias",
+            "reference/resource-configs/compute",
             "reference/resource-configs/database",
             "reference/resource-configs/docs",
             "reference/resource-configs/enabled",

@@ -25,7 +25,7 @@ The user's assigned license determines the specific capabilities they can access
 | Use the <Constant name="dbt" /> CLI | ✅ | ❌ | ❌ |
 | Use [<Constant name="canvas" />](/docs/platform/canvas) | ✅ | ❌ | ❌ |
 | Use [<Constant name="insights" />](/docs/explore/dbt-insights) | ✅ | ❌ | ❌ |
-| Use [<Constant name="wizard" />](/docs/platform/wizard-overview) | ✅ | ❌ | ❌ |
+| Use [<Constant name="wizard" />](/docs/platform/wizard-overview) | ✅ | ✅ ([Explore mode](/docs/platform/wizard-home#ask-questions-in-explore-mode) in the home tab only) | ❌ |
 | Use Jobs | ✅ | ❌ | ❌ |
 | Manage Account | ✅ | ❌ | ✅ |
 | API access <br />(create personal access tokens) | ✅ | ✅ | ✅ |
