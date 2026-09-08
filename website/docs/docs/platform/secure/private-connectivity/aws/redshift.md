@@ -64,7 +64,7 @@ With self-serve, you request a Redshift PrivateLink endpoint in <Constant name="
 
    Select **Redshift Managed** for both provisioned Redshift clusters and Redshift Serverless.
    
-        1. In **Step 1: Choose your deployment type**, select **Provisioned** or **Serverless**. If you choose **Serverless** and have multiple workgroups, make sure you granted **Granted accounts** access for each workgroup during the AWS-side setup. Refer to [Per-workgroup authorization required](#per-workgroup-authorization).
+        1. In **Step 1: Choose your deployment type**, select **Provisioned** or **Serverless**. If you choose **Serverless** and have multiple workgroups, make sure you grant access under  **Granted accounts** for each workgroup during the AWS-side setup. Refer to [Per-workgroup authorization required](#per-workgroup-authorization).
         2. In **Step 2: Enter your cluster details**, enter your **Cluster identifier** and **Resource owner AWS account ID**.
         3. In **Step 3: Select your AWS region**, choose the AWS region where your Redshift cluster or workgroup is hosted.
         4. Click **Submit request**.
