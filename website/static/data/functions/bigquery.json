@@ -2,7 +2,7 @@
   "_meta": {
     "platform": "bigquery",
     "platform_name": "BigQuery",
-    "count": 408
+    "count": 411
   },
   "functions": [
     {
@@ -937,6 +937,13 @@
       "fusion_typecheck": true
     },
     {
+      "name": "IS_ACYCLIC",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/graph-sql-functions#is_acyclic",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "IS_INF",
       "category": "Built-in",
       "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/mathematical_functions#is_inf",
@@ -949,6 +956,20 @@
       "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/mathematical_functions#is_nan",
       "preview_status": "GA",
       "fusion_typecheck": true
+    },
+    {
+      "name": "IS_SIMPLE",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/graph-sql-functions#is_simple",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "IS_TRAIL",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/graph-sql-functions#is_trail",
+      "preview_status": "GA",
+      "fusion_typecheck": false
     },
     {
       "name": "JSON_ARRAY",

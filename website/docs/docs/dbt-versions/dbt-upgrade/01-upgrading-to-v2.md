@@ -27,6 +27,10 @@ import AboutFusion from '/snippets/_about-fusion.md';
 
 <AboutFusion />
 
+## Resources
+
+- [<Constant name="fusion_engine" /> changelog](https://github.com/dbt-labs/dbt-core/blob/main/CHANGELOG-fusion.md)
+
 ## Install dbt
 
 Upgrading to v2 is an install step. Install dbt using `pip` to get <Constant name="fusion" /> for v2:
@@ -86,6 +90,12 @@ v2 introduces [dbt Docs v2](/docs/build/view-documentation#dbt-docs-v2), a faste
 To hydrate catalog metadata (`catalog.json`) for <Constant name="catalog" /> without building the site, use the [`--write-catalog` flag](/reference/commands/cmd-docs#--write-catalog-flag) instead.
 
 For full usage, refer to [About dbt docs commands](/reference/commands/cmd-docs).
+
+### Local execution of unit tests <Lifecycle status="beta" />
+
+v2 introduces the [`compute`](/reference/resource-configs/compute) config for unit tests. Set your unit tests with `compute: local` and dbt runs the test with DuckDB instead of sending it to your data platform, which takes the warehouse round trip out of your development loop.
+
+This config is opt-in. For details, refer to [Run unit tests locally](/docs/build/unit-tests#run-unit-tests-locally).
 
 ### Changed functionality
 

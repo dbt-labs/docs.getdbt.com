@@ -2,7 +2,7 @@
   "_meta": {
     "platform": "databricks",
     "platform_name": "Databricks",
-    "count": 773
+    "count": 775
   },
   "functions": [
     {
@@ -72,6 +72,13 @@
       "name": "AI_CLASSIFY",
       "category": "Built-in",
       "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/ai_classify",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "AI_ENRICH",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/ai_enrich",
       "preview_status": "GA",
       "fusion_typecheck": false
     },
@@ -4447,6 +4454,13 @@
       "name": "TILDESIGN",
       "category": "Built-in",
       "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/tildesign",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "TIME_BUCKET",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/time_bucket",
       "preview_status": "GA",
       "fusion_typecheck": false
     },
