@@ -70,6 +70,7 @@ That gives you:
 
 - A test loop that keeps up with you. Change your SQL, rerun the test, and repeat without waiting on a warehouse queue.
 - Room to test as you go, so you catch broken logic while you're still writing it instead of finding it in CI (or worse, after it reaches production)
+- Queries that execute with the same functions and runtime semantics as the remote warehouse
 - Your data platform's compute left for building models.
 
 You can configure it on a single unit test:
