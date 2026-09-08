@@ -41,9 +41,30 @@ dbt parse --generate-info-schema
 
 Use `--info-schema-dir` (env var: `DBT_INFO_SCHEMA_DIR`) to write the Information Schema to a custom directory. The versioned subdirectory (`v1/`) is still appended under whatever directory you set.
 
+```shell
+dbt build --generate-info-schema --info-schema-dir /tmp/my_schema
+# writes to /tmp/my_schema/v1/
+```
+
+Or with the environment variable:
+
+```shell
+DBT_INFO_SCHEMA_DIR=/tmp/my_schema dbt build --generate-info-schema
+```
+
 ### Checking the schema version
 
-To check which schema version you're on, query `dbt.project.schema_version`. The version is also embedded in each Parquet file's metadata under `dbt:info-schema-version`.
+To check which schema version you're on, query the `schema_version` column from the `dbt.project` table. The version is also embedded in each Parquet file's metadata under `dbt:info-schema-version`.
+
+```shell
+dbt show --info project
+```
+
+Or to query just the version:
+
+```shell
+dbt show --inline "select schema_version from {{ info_schema('project') }}"
+```
 
 ## Querying the Information Schema
 
