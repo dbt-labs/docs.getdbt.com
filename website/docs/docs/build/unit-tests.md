@@ -62,7 +62,7 @@ dbt test --select "test_type:unit"
 
 ## Run unit tests locally <Lifecycle status="beta" />
 
-When you're working through tricky SQL, you want to know right away whether your logic works. By default, each unit test sends a query to your data platform and waits for the result. This can slow down testing and use warehouse compute.
+You can run unit tests locally when you're working through tricky SQL and you want to know right away whether your logic works. By default, each unit test sends a query to your data platform and waits for the result. This can slow down testing and use warehouse compute.
 
 Because unit tests use static fixtures instead of real data, they don’t need to necessarily run on your data platform. Use the [`compute: local` config](/reference/resource-configs/compute) to run them locally with DuckDB for faster feedback _without_ the warehouse compute cost.
 
