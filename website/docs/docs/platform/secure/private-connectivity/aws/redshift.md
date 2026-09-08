@@ -64,7 +64,7 @@ With self-serve, you request a Redshift PrivateLink endpoint in <Constant name="
 
    Select **Redshift Managed** for both provisioned Redshift clusters and Redshift Serverless.
    
-        1. In **Step 1: Choose your deployment type**, select **Provisioned** or **Serverless**.
+        1. In **Step 1: Choose your deployment type**, select **Provisioned** or **Serverless**. If you choose **Serverless** and have multiple workgroups, make sure you granted **Granted accounts** access for each workgroup during the AWS-side setup &mdash; see [Per-workgroup authorization required](#configuring-redshift-managed-privatelink).
         2. In **Step 2: Enter your cluster details**, enter your **Cluster identifier** and **Resource owner AWS account ID**.
         3. In **Step 3: Select your AWS region**, choose the AWS region where your Redshift cluster or workgroup is hosted.
         4. Click **Submit request**.
@@ -125,6 +125,12 @@ If **Private endpoints** isn't available in your account settings, configure Red
 4. Choose **Grant access to all VPCs** &mdash;or&mdash; (optional) contact [Support](mailto:support@getdbt.com) for the appropriate regional VPC ID to designate in the **Grant access to specific VPCs** field.
 
 <Lightbox src="/img/docs/dbt-platform/redshiftprivatelink3.png" title="Redshift grant access"/>
+
+:::caution Per-workgroup authorization required
+
+For Redshift Serverless, **Granted accounts** is scoped to a single workgroup. If your environment has multiple workgroups, you must grant access separately for each workgroup you want to connect to <Constant name="dbt" />. Authorizing one workgroup (for example, `sales`) doesn't extend to any other workgroup (for example, `finance` or `product`) &mdash; repeat steps 1&ndash;4 for each workgroup individually. This applies whether you set up the endpoint through [self-serve](#self-serve-private-endpoints) or support-led.
+
+:::
 
 5. Add the required information to the following template, and submit your request to [dbt Support](mailto:support@getdbt.com):
 
