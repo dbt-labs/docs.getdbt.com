@@ -23,7 +23,7 @@ availability: local_free
 
 The ClickHouse adapter for the <Constant name="fusion_engine" /> connects to [ClickHouse](https://clickhouse.com) over HTTP or HTTPS. It supports self-managed single-node ClickHouse and [ClickHouse Cloud](https://clickhouse.com/cloud).
 
-## Installing dbt-clickhouse
+## Installing dbt
 
 The ClickHouse adapter is built into v2. To get started, [install dbt](/docs/local/install-dbt).
 
