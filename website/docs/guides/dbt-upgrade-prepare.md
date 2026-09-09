@@ -67,7 +67,7 @@ The **Enable restricted Fusion upgrade permissions** toggle is only available to
 1. In the same **Account** settings screen, select the checkbox next to **Enable restricted Fusion upgrade permissions**.
 2. Click **Save**.
 
-When enabled, only users assigned the [`Fusion admin`](/docs/platform/manage-access/enterprise-permissions#fusion-admin) permission set (scoped to specific projects) can execute the upgrade. For instructions on assigning this permission, refer to [Assign upgrade access](/guides/upgrade-to-v2?step=3#assign-upgrade-access-optional) in Part 2 of this guide.
+When enabled, only users assigned the [`v2 Migration admin`](/docs/platform/manage-access/enterprise-permissions#v2-migration-admin) permission set (scoped to specific projects) can execute the upgrade. For instructions on assigning this permission, refer to [Assign upgrade access](/guides/upgrade-to-v2?step=3#assign-upgrade-access-optional) in Part 2 of this guide.
 
 ### The Fusion readiness panel
 
