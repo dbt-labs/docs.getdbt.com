@@ -8,7 +8,7 @@ availability:
   access: free
 ---
 
-The dbt Information Schema is a set of standard tables that provide information about all of the resources in your dbt project. Instead of parsing `manifest.json`, you can query your project metadata using SQL &mdash; the same way you'd query a database's system tables. You can also use this as the data source for [project checks](/docs/build/project-checks), which let you enforce standards and quality rules across your project.
+The dbt Information Schema is a set of standard tables that provide information about all of the resources in your dbt project. Rather than parsing `manifest.json`, you can query your project metadata using SQL &mdash; the same way you'd query a database's system tables. You can also use this as the data source for [project checks](/docs/build/project-checks), which let you enforce standards and quality rules across your project.
 
 dbt writes the Information Schema to `target/info_schema/` in a versioned subdirectory (currently `v1/`) as standard [Parquet](https://parquet.apache.org/) files. The versioned subdirectory only increments on breaking schema changes (for example, when a column is removed or retyped).
 
@@ -18,7 +18,7 @@ You can query the files with any Parquet-compatible tool. dbt also generates a `
 
 ## Generating the Information Schema
 
-Use `--generate-info-schema` with `dbt build`, `dbt run`, `dbt compile`, or `dbt parse`:
+Use the `--generate-info-schema` flag with `dbt build`, `dbt run`, `dbt compile`, or `dbt parse`:
 
 ```shell
 dbt build --generate-info-schema
@@ -41,9 +41,30 @@ dbt parse --generate-info-schema
 
 Use `--info-schema-dir` (env var: `DBT_INFO_SCHEMA_DIR`) to write the Information Schema to a custom directory. The versioned subdirectory (`v1/`) is still appended under whatever directory you set.
 
+```shell
+dbt build --generate-info-schema --info-schema-dir /tmp/my_schema
+# writes to /tmp/my_schema/v1/
+```
+
+Or with the environment variable:
+
+```shell
+DBT_INFO_SCHEMA_DIR=/tmp/my_schema dbt build --generate-info-schema
+```
+
 ### Checking the schema version
 
-To check which schema version you're on, query `dbt.project.schema_version`. The version is also embedded in each Parquet file's metadata under `dbt:info-schema-version`.
+To check which schema version you're on, query the `schema_version` column from the `dbt.project` table. The version is also embedded in each Parquet file's metadata under `dbt:info-schema-version`.
+
+```shell
+dbt show --info project
+```
+
+Or to query just the version:
+
+```shell
+dbt show --inline "select schema_version from {{ info_schema('project') }}"
+```
 
 ## Querying the Information Schema
 
@@ -68,7 +89,14 @@ dbt show --inline "select name from {{ info_schema('models') }} order by name"
 
 You can query the Parquet files with any Parquet-compatible tool.
 
-**DuckDB:** dbt generates a `views.sql` file alongside the Parquet files that registers all tables as named views. Navigate to the versioned directory and start a DuckDB session with the views loaded:
+**Parquet-compatible tools:** Point your tool directly at the Parquet files in `target/info_schema/v1/`. For example, with pandas:
+
+```python
+import pandas as pd
+models = pd.read_parquet("target/info_schema/v1/dbt.models.parquet")
+```
+
+**DuckDB:** dbt generates a DuckDB-specific `views.sql` file alongside the Parquet files that registers all tables as named views. Navigate to the versioned directory and start a DuckDB session with the views loaded:
 
 ```shell
 cd target/info_schema/v1
@@ -80,13 +108,6 @@ Then query any table by namespace and table name:
 ```sql
 select * from dbt.models limit 5;
 select * from dbt_rt.run_results where status = 'error';
-```
-
-**Other Parquet-compatible tools:** Point your tool directly at the Parquet files in `target/info_schema/v1/`. For example, with pandas:
-
-```python
-import pandas as pd
-models = pd.read_parquet("target/info_schema/v1/dbt.models.parquet")
 ```
 
 
