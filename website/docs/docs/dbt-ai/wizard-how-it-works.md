@@ -38,8 +38,6 @@ That index gives <Constant name="wizard" /> four capabilities that aren't possib
 The dbt version <Constant name="wizard" /> displays comes from your project's manifest (`target/manifest.json`), not the `dbt` executable on your `PATH`. If you generated the manifest with a different binary, <Constant name="wizard" /> reports that version until you recompile. Run `dbt compile` (or `dbt parse`/`dbt build`) with your intended dbt to refresh the manifest and the displayed version.
 :::
 
-{/* DIAGRAM: dbt artifacts/manifests → metadata engine → Wizard context */}
-
 ## Validation mechanics {#validation-loop-mechanics}
 
 Validation can combine static checks, dbt commands, development builds, downstream impact analysis, and development-to-production comparisons. The checks that run depend on the surface, available tools, project state, permissions, and the validation depth you approve.
