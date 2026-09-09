@@ -12,7 +12,7 @@ For an overview of the dbt Information Schema, how to generate it, and how to qu
 
 ## Tables
 
-The Information Schema contains tables across three namespaces.
+The Information Schema generates tables across three namespaces.
 
 - [`dbt`](#dbt-namespace)
 - [`dbt_rt`](#dbt_rt-namespace)
@@ -20,7 +20,7 @@ The Information Schema contains tables across three namespaces.
 
 ### `dbt` namespace
 
-The `dbt` namespace contains tables describing your project's structure, resources, and configuration.
+The `dbt` namespace tables contain information about your project's structure, resources, and configuration.
 
 | Table | Description |
 |-------|-------------|
@@ -57,7 +57,7 @@ The `dbt` namespace contains tables describing your project's structure, resourc
 
 ### `dbt_rt` namespace
 
-The `dbt_rt` namespace contains tables and views with runtime execution data.
+The `dbt_rt` namespace tables and views contain runtime execution data.
 
 | Table | Description |
 |-------|-------------|

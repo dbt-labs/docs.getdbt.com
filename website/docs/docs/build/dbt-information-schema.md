@@ -8,7 +8,7 @@ availability:
   access: free
 ---
 
-The dbt Information Schema is a set of standard tables that provide information about all of the resources in your dbt project. Instead of parsing `manifest.json`, you can query your project metadata using SQL &mdash; the same way you'd query a database's system tables.
+The dbt Information Schema is a set of standard tables that provide information about all of the resources in your dbt project. Rather than parsing `manifest.json`, you can query your project metadata using SQL &mdash; the same way you'd query a database's system tables.
 
 dbt writes the Information Schema to `target/info_schema/` in a versioned subdirectory (currently `v1/`) as standard [Parquet](https://parquet.apache.org/) files. The versioned subdirectory only increments on breaking schema changes (for example, when a column is removed or retyped).
 
@@ -18,7 +18,7 @@ You can query the files with any Parquet-compatible tool. dbt also generates a `
 
 ## Generating the Information Schema
 
-Use `--generate-info-schema` with `dbt build`, `dbt run`, `dbt compile`, or `dbt parse`:
+Use the `--generate-info-schema` flag with `dbt build`, `dbt run`, `dbt compile`, or `dbt parse`:
 
 ```shell
 dbt build --generate-info-schema
