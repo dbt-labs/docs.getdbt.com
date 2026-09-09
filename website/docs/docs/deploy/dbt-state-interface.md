@@ -63,6 +63,25 @@ To view your lineage with the **Latest status** lens:
 3. Go to the **Lineage** tab. You'll see your project's lineage.
 4. In the **Lenses** field, select **Latest status**.
 
+## Lag tolerance recommendations
+
+In the <Constant name="dbt_platform" />, the **dbt State** page includes a **Lag tolerance recommendations** section that identifies models that could safely tolerate more lag, letting dbt State skip more runs and save additional compute.
+
+The recommendations table displays the following columns:
+
+| Column | Description |
+|--------|-------------|
+| **Model name** | The name of the model that could benefit from a higher lag tolerance. |
+| **Project** | The dbt project the model belongs to. |
+| **Current lag** | The model's current `lag_tolerance` setting. |
+| **Recommended lag** | The lag tolerance value dbt State recommends based on observed upstream data refresh patterns. |
+| **% time saved** | The estimated percentage of build time you'd save by applying the recommended lag tolerance. |
+| **Projected 30d time savings** | The estimated compute time saved over the next 30 days if you apply the recommended lag tolerance. |
+
+You can search for a specific model using the search bar, or filter recommendations by project using the **Project** dropdown.
+
+To apply a recommendation, update the model's `lag_tolerance` config in your `dbt_project.yml` or model YAML file. For configuration syntax and examples, refer to the [`lag_tolerance` config reference](/reference/resource-configs/lag-tolerance).
+
 ## Explain tab
 
 To see why dbt State rebuilt, reused, or cloned a specific resource, go to **Orchestration** > **Runs**. Select a run and go to the **Explain** tab.
@@ -75,4 +94,5 @@ To see why dbt State rebuilt, reused, or cloned a specific resource, go to **Orc
 - [Set up dbt State](/docs/deploy/dbt-state-setup)
 - [dbt State trial and billing](/docs/deploy/dbt-state-trial)
 - [dbt State configs](/reference/resource-configs/dbt-state-configs)
+- [`lag_tolerance` config reference](/reference/resource-configs/lag-tolerance)
 - [Migrate from state-aware orchestration](/docs/deploy/dbt-state-migration)
