@@ -69,18 +69,20 @@ In the <Constant name="dbt_platform" />, the **dbt State** page includes a **Lag
 
 The recommendations table displays the following columns:
 
+<SimpleTable>
 | Column | Description |
 |--------|-------------|
-| **Model name** | The name of the model that could benefit from a higher lag tolerance. |
+| **Model name** | The name of the model that could benefit from a higher `lag_tolerance` value. |
 | **Project** | The dbt project the model belongs to. |
 | **Current lag** | The model's current `lag_tolerance` setting. |
-| **Recommended lag** | The lag tolerance value dbt State recommends based on observed upstream data refresh patterns. |
-| **% time saved** | The estimated percentage of build time you'd save by applying the recommended lag tolerance. |
-| **Projected 30d time savings** | The estimated compute time saved over the next 30 days if you apply the recommended lag tolerance. |
+| **Recommended lag** | The `lag_tolerance` value dbt State recommends based on observed upstream data refresh patterns. |
+| **% time saved** | The estimated percentage of build time you'd save by applying the recommended `lag_tolerance`. |
+| **Projected 30d time savings** | The estimated compute time saved over the next 30 days if you apply the recommended `lag_tolerance`. |
+</SimpleTable>
 
-You can search for a specific model using the search bar, or filter recommendations by project using the **Project** dropdown.
+You can search for a specific model using the search bar, or filter recommendations by project using the **Project** dropdown menu.
 
-To apply a recommendation, update the model's `lag_tolerance` config in your `dbt_project.yml` or model YAML file. For configuration syntax and examples, refer to the [`lag_tolerance` config reference](/reference/resource-configs/lag-tolerance).
+To apply a recommendation, update the model's `lag_tolerance` config. For configuration syntax and examples, refer to the [`lag_tolerance` config page](/reference/resource-configs/lag-tolerance).
 
 ## Explain tab
 
