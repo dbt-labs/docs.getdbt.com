@@ -73,6 +73,20 @@ That gives you:
 - Queries that execute with the same functions and runtime semantics as the remote warehouse
 - Your data platform's compute left for building models.
 
+### Prerequisites
+
+- Snowflake or BigQuery. Local execution isn't available for other data platforms, and it only applies to unit tests.
+- The direct upstream models of the model you're testing already exist in your data platform. dbt fetches their schemas to translate your SQL, so if they don't exist, the test fails with an error about fetching the upstream relation schema.
+- `static_analysis` isn't set to `off` on the test. Local execution needs static analysis to translate your SQL, so `compute: local` promotes [static analysis](/reference/resource-configs/static-analysis) to `strict` for that test. If you set `static_analysis: off`, the test can't run locally and fails with `ExecutorFailed (dbt1401)`.
+
+### What to know before you use it
+
+- dbt fetches upstream schemas the first time you run the test, then caches them. Later runs reuse the cache, so they don't re-fetch.
+- Local execution only works if dbt can compile your model's SQL and translate it to DuckDB. Complex SQL and functions specific to your data platform might have no DuckDB equivalent so Snowflake's `AI_CLASSIFY` and `haversine` are two examples. So for example, a model that calls `haversine` fails with `failed in db_runner: Internal: Catalog Error: Scalar Function with name haversine does not exist!`.
+- A translation failure is a test failure. `local` doesn't fall back to your data platform, so the test fails and dbt exits with a non-zero code. 
+
+### How to configure
+
 You can configure it on a single unit test:
 
 <File name='models/schema.yml'>
@@ -111,18 +125,6 @@ unit_tests:
 </SimpleTable>
 
 You might also see `sidecar` in error messages but it means the same thing as `local`.
-
-### Prerequisites
-
-- Snowflake or BigQuery. Local execution isn't available for other data platforms, and it only applies to unit tests.
-- The direct upstream models of the model you're testing already exist in your data platform. dbt fetches their schemas to translate your SQL, so if they don't exist, the test fails with an error about fetching the upstream relation schema.
-- `static_analysis` isn't set to `off` on the test. Local execution needs static analysis to translate your SQL, so `compute: local` promotes [static analysis](/reference/resource-configs/static-analysis) to `strict` for that test. If you set `static_analysis: off`, the test can't run locally and fails with `ExecutorFailed (dbt1401)`.
-
-### What to know before you use it
-
-- dbt fetches upstream schemas the first time you run the test, then caches them. Later runs reuse the cache, so they don't re-fetch.
-- Local execution only works if dbt can compile your model's SQL and translate it to DuckDB. Complex SQL and functions specific to your data platform might have no DuckDB equivalent so Snowflake's `AI_CLASSIFY` and `haversine` are two examples. So for example, a model that calls `haversine` fails with `failed in db_runner: Internal: Catalog Error: Scalar Function with name haversine does not exist!`.
-- A translation failure is a test failure. `local` doesn't fall back to your data platform, so the test fails and dbt exits with a non-zero code. 
 
 </VersionBlock>
 

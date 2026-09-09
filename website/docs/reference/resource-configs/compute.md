@@ -2,13 +2,20 @@
 resource_types: [unit tests]
 title: "compute"
 description: "Use the compute config to run unit tests locally with DuckDB instead of against your data platform."
-intro_text: "Compute controls whether a unit test runs against your data platform or locally with DuckDB."
 datatype: string
 default_value: remote
 sidebar_label: "compute"
+availability:
+  engine: v2
 ---
 
 # compute <Lifecycle status="beta" />
+
+<IntroText>
+
+Compute controls whether a unit test runs against your data platform or locally with DuckDB.
+
+</IntroText>
 
 :::info Available in v2
 
