@@ -28,7 +28,7 @@ Once you complete the <Constant name="fusion" /> migration, your team will benef
 
 Before upgrading your development environment, confirm:
 
-- Your project is on the **Latest** release track (completed in [Part 1: Preparing to upgrade](/guides/prepare-v2-upgrade))
+- Your project is on the **v1 Latest** release track (completed in [Part 1: Preparing to upgrade](/guides/prepare-v2-upgrade))
 - Your project must be using a supported adapter and auth method.    
     <FusionAdapters/>
 - You have a developer license in <Constant name="dbt_platform" />
@@ -38,7 +38,7 @@ Before upgrading your development environment, confirm:
 
 ## Upgrade your development environment
 
-With your project prepared and tested on the **Latest** release track, you're ready to upgrade your development environment to <Constant name="fusion" />. The <Constant name="dbt_platform" /> provides a guided upgrade assistant that walks you through the process and helps validate your project is <Constant name="fusion" /> ready.
+With your project prepared and tested on the **v1 Latest** release track, you're ready to upgrade your development environment to <Constant name="fusion" />. The <Constant name="dbt_platform" /> provides a guided upgrade assistant that walks you through the process and helps validate your project is <Constant name="fusion" /> ready.
 
 :::tip Start with development
 
@@ -69,15 +69,13 @@ By default, any user who can see the upgrade assistant can use it. To restrict u
 2. Select the checkbox next to **Enable restricted Fusion upgrade permissions**.
 3. Click **Save**.
 
-When this is enabled, only users with the **Fusion admin** [permission set](/docs/platform/manage-access/enterprise-permissions#fusion-admin) can execute upgrades. To assign this permission:
+When this is enabled, only users with the **v2 Migration admin** [permission set](/docs/platform/manage-access/enterprise-permissions#v2-migration-admin) can execute upgrades. To assign this permission:
 
 1. Navigate to **Account settings** → **Groups** and choose the group to grant access.
 2. Click **Edit** and scroll to **Access and permissions**.
-3. Click **Add permission** and select **Fusion admin** from the dropdown.
+3. Click **Add permission** and select **v2 Migration admin** from the dropdown.
 4. Select the project(s) users should access.
 5. Click **Save**.
-
-<Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/choosing-dbt-version/assign-fusion-admin.png" width="60%" title="Assign Fusion admin permissions to groups"/>
 
 For more details on access control, see [Assign access to upgrade](/docs/dbt-versions/upgrade-dbt-platform-version#assign-access-to-upgrade).
 
@@ -189,7 +187,7 @@ Your development environment is now on <Constant name="fusion" />, but your prod
 - Identify and resolve any project-specific issues.
 - Train team members on any workflow changes.
 
-When you're ready to upgrade production, you'll update your deployment environments and jobs to use the `Fusion Stable` release track. We'll cover that in the next section.
+When you're ready to upgrade production, you'll update your deployment environments and jobs to use the `v2 Stable` release track. We'll cover that in the next section.
 
 ## Upgrade staging and intermediate environments
 
@@ -229,10 +227,10 @@ Change your staging environment to use the <Constant name="fusion" /> release tr
 
 1. In the environment settings, scroll to the **dbt version** section.
 2. Click the **dbt version** dropdown menu.
-3. Select **<Constant name="fusion" /> Stable** from the list.
+3. Select **v2 Stable** from the list.
 4. Scroll to the top and click **Save**.
 
-<Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/platform-upgrading-dbt-versions/upgrade-fusion.png" width="90%" title="Select Fusion Stable from the dbt version dropdown"/>
+<Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/platform-upgrading-dbt-versions/upgrade-fusion.png" width="90%" title="Select v2 Stable from the dbt version dropdown"/>
 
 Your staging environment is now configured to use <Constant name="fusion" />! Any jobs associated with this environment will use <Constant name="fusion" /> on their next run.
 
@@ -273,7 +271,7 @@ If you encounter problems in staging:
 - Test the same models in your development environment to isolate the problem.
 - Contact [dbt Support](/docs/dbt-support) or your account team for assistance.
 
-You can revert the staging environment to **Latest** release track while investigating.
+You can revert the staging environment to **v1 Latest** release track while investigating.
 
 :::
 
@@ -298,7 +296,7 @@ Congratulations! You've successfully upgraded development and staging environmen
 Upgrading production is a critical operation. While <Constant name="fusion" /> is production ready and has been thoroughly tested in your dev and staging environments, follow these best practices:
 - Plan the upgrade during a low-traffic window to minimize impact.
 - Notify stakeholders about the maintenance window.
-- Have a rollback plan ready (reverting to **Latest** release track).
+- Have a rollback plan ready (reverting to **v1 Latest** release track).
 - Monitor closely for the first few job runs after upgrading.
 
 :::
@@ -325,17 +323,17 @@ Access your production environment configuration:
 
 <Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/choosing-dbt-version/example-environment-settings.png" width="90%" title="Access production environment settings"/>
 
-### Step 3: Upgrade to <Constant name="fusion" /> Stable
+### Step 3: Upgrade to v2 Stable
 
 Update your production environment to use <Constant name="fusion" />:
 
 1. In the environment settings, scroll to the **dbt version** section.
 2. Click the **dbt version** dropdown menu.
-3. Select **<Constant name="fusion" /> Stable** from the list.
+3. Select **v2 Stable** from the list.
 4. Review your settings one final time to ensure everything is correct.
 5. Scroll to the top and click **Save**.
 
-<Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/platform-upgrading-dbt-versions/upgrade-fusion.png" width="90%" title="Select Fusion Stable for production"/>
+<Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/platform-upgrading-dbt-versions/upgrade-fusion.png" width="90%" title="Select v2 Stable for production"/>
 
 Your production environment is now running on <Constant name="fusion" />!
 
@@ -399,13 +397,13 @@ If you encounter critical issues in production, you can revert your dbt version:
 
 1. Navigate to **Orchestration** → **Environments** → **Production**.
 2. Click **Edit**.
-3. Change **dbt version** from **<Constant name="fusion" /> Stable** back to **Latest**.
+3. Change **dbt version** from **v2 Stable** back to **v1 Latest**.
 4. Click **Save**.
 5. Jobs will use <Constant name="core" /> on their next run.
 
 :::info Rollback impact
 
-Rolling back to **Latest** will disable <Constant name="fusion" />-specific features. Only rollback if you're experiencing production-critical issues.
+Rolling back to **v1 Latest** will disable <Constant name="fusion" />-specific features. Only rollback if you're experiencing production-critical issues.
 
 :::
 
