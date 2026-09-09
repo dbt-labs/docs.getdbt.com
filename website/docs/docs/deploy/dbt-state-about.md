@@ -28,11 +28,11 @@ dbt State works with dbt (v1 and v2) and the <Constant name="dbt_platform" />, a
 
 ## Benefits
 
-dbt State delivers efficiency gains across both production and development environments:
+dbt State reduces warehouse compute costs and simplifies how you develop, orchestrate, and execute dbt:
 
 - **Fresher data, lower costs**: Nodes only rebuild when the result would be different (new data or code changes), reducing warehouse compute while keeping production data fresh.
-- **Faster iteration cycles**: In development, dbt automatically clones selected nodes from production whenever possible, so you spend less time waiting for builds and more time writing code.
-- **Smarter than standard deferral**: Unlike standard deferral, which always builds selected nodes and only defers unselected upstream references, dbt State decides whether transformations need to run at all, or whether an existing table can simply be cloned.
+- **Faster iteration cycles**: Without dbt State, developing in a fresh schema typically means one of three things: building the entire upstream chain locally (slow and expensive), maintaining dev copies of upstream relations (ongoing overhead), or manually configuring `--defer` with a downloaded manifest. With dbt State, none of that is needed. dbt automatically finds the freshest available state across all environments, clones fresh upstream assets, and rebuilds only what changed. If a node itself hasn't changed, it gets cloned or skipped entirely.
+- **Simplified orchestration**: Orchestration decisions typically happen at the job level &mdash; which nodes belong in which job, and how often that job should run. dbt State shifts that question to the node level: how fresh does this data need to be? Unlike standard deferral, which always builds selected nodes and only defers unselected upstream dependencies, dbt State evaluates each node individually and decides whether to rebuild, clone, or skip.
 - **Model-level freshness threshold**: The [`lag_tolerance`](/reference/resource-configs/lag-tolerance) config sets how much time must pass since the last upstream data change before dbt triggers a rebuild. It decouples downstream models from high-frequency upstream changes, and prevents costly rebuilds on stagnant data when an upstream dependency misses its freshness [Service Level Agreement (SLA)](https://www.getdbt.com/blog/data-slas-best-practices).
 
 ## How dbt State works
