@@ -56,7 +56,7 @@ For a description of the ClickHouse profile fields that the connection maps to, 
 
 The ClickHouse connection is in private beta. On the <Constant name="dbt_platform" /> specifically:
 
-- The dbt <Constant name="semantic_layer" /> isn't supported for ClickHouse connections yet. Support is coming soon.
+- The dbt <Constant name="semantic_layer" /> isn't supported for ClickHouse connections yet.
 - Only username and password authentication is available. OAuth, key pair authentication, SSH tunneling, and private connectivity aren't supported for ClickHouse yet.
 
 The <Constant name="fusion" /> ClickHouse adapter limitations apply here too, including the gaps in clusters, grants, `dbt clone`, `dbt source freshness`, and SQL comprehension. For the complete picture, refer to [ClickHouse limitations](/docs/local/connect-data-platform/clickhouse-setup#limitations).
