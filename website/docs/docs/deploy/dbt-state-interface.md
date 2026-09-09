@@ -54,6 +54,8 @@ You can search for a specific model using the search bar, or filter recommendati
 
 To apply a recommendation, update the model's `lag_tolerance` config. For configuration syntax and examples, refer to the [`lag_tolerance` config page](/reference/resource-configs/lag-tolerance).
 
+<Lightbox src="/img/docs/dbt-platform/using-dbt-platform/lag-tolerance-recommendations.png" width="80%" title="Lag tolerance recommendations" />
+
 ## Models built and reused chart
 
 When you go to your **Account home**, you'll see a chart showing the number of models built and reused, giving you visibility into how dbt State is optimizing your data builds. You can also view the number of reused models per project on **Account home**.
