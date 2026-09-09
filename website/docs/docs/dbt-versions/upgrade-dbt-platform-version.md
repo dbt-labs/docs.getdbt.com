@@ -75,7 +75,7 @@ To take advantage of the upgrade assistant and other upgrade tools, you'll need 
 
 | Upgrade task | Required permission(s) | Supported permission sets |
 |---------|------------------------|-----------------------------|
-| Enable Fusion access (triggers migration flows) | Fusion readiness: `write` <br></br> Projects: `write` | Admin, Account Admin and anyone assigned the v2 Migration admin set, provided their base role also has `write` access to projects |
+| Enable Fusion access (triggers migration flows) | Fusion readiness: `write` <br></br> Projects: `write` | Admin, Account Admin, and anyone assigned the v2 Migration admin set, provided their base role also has `write` access to projects |
 | View Fusion readiness and job eligibility | Fusion readiness: `read` | Developer, Admin, Member, Account Admin, v2 Migration admin |
 | **Run once on <Constant name="fusion" />** job action | Runs: `write` | Job Admin, Job Runner, Admin, Member, Project Creator, Account Admin |
 | Enable Fusion-latest for an environment | Environments: `write` | Job Admin, Admin, Member, Project Creator, Account Admin |
