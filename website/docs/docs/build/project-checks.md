@@ -201,7 +201,6 @@ checks:
 Unlike the `--skip-checks` flag, setting `+enabled: false` in `dbt_project.yml` is persistent and nothing in the output shows that checks were skipped. A successful `dbt build` in CI doesn't indicate whether the project has no checks or all checks are disabled. Running `dbt check <name>` for a disabled check also succeeds without running the check or returning an error.
 :::
 
-If dbt cannot prepare the project metadata needed to run checks, it skips all checks and `dbt build` continues with a `CheckIndexUnavailable` warning (`dbt1654`). To fail the build when this happens, promote that warning to an error using [`warn_error_options`](/reference/global-configs/warnings).
 
 ## Using selectors with checks
 
@@ -234,10 +233,9 @@ Each check produces one of the following statuses:
 | Status | When | Fails the command? | Error code |
 |--------|------|--------------------|------------|
 | `Passed` | Zero rows returned | No | — |
-| `Failed` | One or more rows returned, `severity: error` | Yes | `dbt1650` |
+| `Failed` | One or more rows returned with `severity: error`, or the check could not be evaluated (bad SQL, or `selection_filter_on` names a missing column). The latter fails even if `severity` is `warn`. | Yes | `dbt1650` (violations), `dbt1653` (evaluation error) |
 | `Warned` | One or more rows returned, `severity: warn` | No (`--warn-error` or `warn_error_options` can promote it) | `dbt1651` |
 | `Skipped` | Selector matched nothing the check can report on | No | `dbt1652` |
-| `Error` | Check could not be evaluated (bad SQL, or `selection_filter_on` names a missing column) | Yes, even if `severity` is `warn` | `dbt1653` |
 
 Each check prints one result line in the same format as data tests:
 
