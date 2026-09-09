@@ -1,5 +1,5 @@
 ---
-title: "Connect ClickHouse to dbt Core"
+title: "ClickHouse setup"
 sidebar_label: "ClickHouse"
 description: "Read this guide to learn about the ClickHouse warehouse setup in dbt."
 meta:
@@ -17,12 +17,72 @@ meta:
 availability: local_free
 ---
 
-Some core functionality may be limited. If you're interested in contributing, check out the source code for each
-repository listed below.
+<VersionBlock firstVersion="2.0">
+
+# Connect ClickHouse to <Constant name="fusion" /> <Lifecycle status="beta" />
+
+The ClickHouse adapter for the <Constant name="fusion_engine" /> connects to [ClickHouse](https://clickhouse.com) over HTTP or HTTPS. It supports self-managed single-node ClickHouse and [ClickHouse Cloud](https://clickhouse.com/cloud).
+
+## Installing dbt-clickhouse
+
+The ClickHouse adapter is built into v2. To get started, [install dbt](/docs/local/install-dbt).
+
+For connection examples and profile settings, refer to [Connecting to ClickHouse](#connecting-to-clickhouse).
+
+## Authentication
+
+<Constant name="fusion" /> authenticates to ClickHouse with a username and password. Set `secure: true` in your profile to connect over HTTPS (default port 8443), or leave it unset to connect over plain HTTP (default port 8123). ClickHouse Cloud requires `secure: true`.
+
+## Warehouse permissions
+
+import FusionClickHouseWarehousePerms from '/snippets/_fusion-warehouse-permissions-clickhouse.md';
+
+<FusionClickHouseWarehousePerms />
+
+## Limitations
+
+The ClickHouse adapter for <Constant name="fusion" /> is in beta. Expect some minor bugs, and avoid using it in production environments for now. Some features available in the `dbt-clickhouse` adapter for <Constant name="core" /> are not yet supported.
+
+You can follow the latest updates on the ClickHouse adapter's development in these locations:
+- The ClickHouse v2 milestone epic in the dbt-core repository ([dbt-core#14585](https://github.com/dbt-labs/dbt-core/issues/14585))
+- The dbt Core 2.0 support issue in the dbt-clickhouse repository ([dbt-clickhouse#660](https://github.com/ClickHouse/dbt-clickhouse/issues/660))
+- The [ClickHouse documentation for dbt](https://clickhouse.com/docs/integrations/dbt)
+
+### What works today
+
+On single-node ClickHouse and on ClickHouse Cloud (compatible with multi-node clusters):
+
+- All materializations: table, view, incremental (all strategies and `on_schema_change`), materialized view (including refreshable), dictionary, snapshot, seed, and ephemeral
+- Contracts and constraints, model and query `settings`, projections and indexes
+- Data tests, unit tests, catalog generation, and the `s3` table function
+
+### Not yet supported
+
+- Self-managed clusters that set `cluster:` in the profile aren't supported yet. `ON CLUSTER` isn't emitted in the data definition language (DDL) instructions, so Replicated engines and the `distributed_table` and `distributed_incremental` materializations don't work.
+- The `grants` config, and the `dbt clone` and `dbt source freshness` commands, aren't supported yet.
+- Smaller gaps remain: `query-comment: null` isn't honored, run results don't include the ClickHouse `query_id`, and `persist_docs` descriptions that contain `;` fail.
+- SQL comprehension features (static analysis and the rest of dbt's SQL intelligence) aren't available yet. Support is coming soon.
+- Minor issues may still be present in general ClickHouse functionality.
+
+</VersionBlock>
+
+<VersionBlock lastVersion="1.99">
+
+# Connect ClickHouse to <Constant name="core" />
+
+<ProductCard text="Fusion compatible" url="/docs/local/connect-data-platform/clickhouse-setup?version=2" /> connection also available.
+
+:::info Community plugin
+
+Some core functionality may be limited. If you're interested in contributing, check out the source code for each repository listed below.
+
+:::
 
 import SetUpPages from '/snippets/_setup-pages-intro.md';
 
 <SetUpPages meta={frontMatter.meta} />
+
+</VersionBlock>
 
 ## Connecting to ClickHouse
 
@@ -67,6 +127,8 @@ profile: 'clickhouse-service'
 
 Execute `dbt debug` with the CLI tool to confirm whether dbt is able to connect to ClickHouse. Confirm the response includes `Connection test: [OK connection ok]`, indicating a successful connection.
 
+<VersionBlock lastVersion="1.99">
+
 ## Supported features
 
 ### dbt features
@@ -96,6 +158,8 @@ Distributed incremental materialization | YES, Experimental | Incremental model 
 Dictionary materialization | YES, Experimental | Creates a [dictionary](https://clickhouse.com/docs/en/engines/table-engines/special/dictionary).
 
 **Note**: Community-developed features are labeled as experimental. Despite this designation, many of these features, like materialized views, are widely adopted and successfully used in production environments.
+
+</VersionBlock>
 
 ## Documentation
 

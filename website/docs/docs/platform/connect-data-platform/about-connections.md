@@ -22,6 +22,7 @@ For most supported data platforms, we recommend the v2 experience with <Constant
 | [Amazon Redshift](/docs/platform/connect-data-platform/connect-redshift) | Preview |
 | [Databricks](/docs/platform/connect-data-platform/connect-databricks) | Preview |
 | [Google BigQuery](/docs/platform/connect-data-platform/connect-bigquery) | Preview |
+| [ClickHouse](/docs/platform/connect-data-platform/connect-clickhouse) | Private beta |
 </SimpleTable>
 
 <small> _Adapter lifecycle can differ between the <Constant name="dbt_platform" /> and local development &mdash; an adapter can reach GA in the dbt platform before it reaches GA for local use._ </small> <br /><br />

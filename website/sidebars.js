@@ -77,6 +77,7 @@ const sidebarSettings = {
                 "docs/platform/connect-data-platform/connect-amazon-athena",
                 "docs/platform/connect-data-platform/connect-azure-synapse-analytics",
                 "docs/platform/connect-data-platform/connect-bigquery",
+                "docs/platform/connect-data-platform/connect-clickhouse",
                 "docs/platform/connect-data-platform/connect-databricks",
                 "docs/platform/connect-data-platform/connect-microsoft-fabric",
                 "docs/platform/connect-data-platform/connect-onehouse",
