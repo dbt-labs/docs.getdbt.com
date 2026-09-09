@@ -86,6 +86,10 @@ This config accepts two value types:
   lag_tolerance: "{{ '4h' if target.name == 'prod' else '7d' }}"
   ```
 
+import LagToleranceRecommendationsTip from '/snippets/_lag-tolerance-recommendations-tip.md';
+
+<LagToleranceRecommendationsTip />
+
 ### When does `lag_tolerance` apply
 
 `lag_tolerance` only applies to data freshness checks. A downstream model still rebuilds within its tolerance window if an upstream model's compiled SQL has changed since the last run, regardless of the `lag_tolerance` setting.
@@ -120,10 +124,6 @@ group by 1
 </File>
 
 When `fct_orders` transitions from a full load to an incremental run, its compiled SQL changes. `agg_orders_daily` rebuilds on that run despite its 3-hour `lag_tolerance`.
-
-import LagToleranceRecommendationsTip from '/snippets/_lag-tolerance-recommendations-tip.md';
-
-<LagToleranceRecommendationsTip />
 
 ## Default
 
