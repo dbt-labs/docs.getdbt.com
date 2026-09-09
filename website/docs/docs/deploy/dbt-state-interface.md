@@ -33,6 +33,27 @@ The **State** tab also displays the following charts:
 - **DATT** &mdash; Shows the target tables processed by dbt State, split into **Billable** and **Free**. Daily active target tables (DATTs) are the [billable units](/docs/platform/billing/dbt-state-usage#daily-active-target-tables) for dbt State. During a trial, all DATTs are counted as free.
 - **Asset builds** &mdash; Shows all model builds for the month, including models reused and cloned.
 
+## Lag tolerance recommendations
+
+The **dbt State** page includes a **Lag tolerance recommendations** section that identifies models that could safely tolerate more lag, letting dbt State skip more runs and save additional compute.
+
+The recommendations table displays the following columns:
+
+<SimpleTable>
+| Column | Description |
+|--------|-------------|
+| **Model name** | The name of the model that could benefit from a higher `lag_tolerance` value. |
+| **Project** | The dbt project the model belongs to. |
+| **Current lag** | The model's current `lag_tolerance` setting. |
+| **Recommended lag** | The `lag_tolerance` value dbt State recommends based on observed upstream data refresh patterns. |
+| **% time saved** | The estimated percentage of build time you'd save by applying the recommended `lag_tolerance`. |
+| **Projected 30d time savings** | The estimated compute time saved over the next 30 days if you apply the recommended `lag_tolerance`. |
+</SimpleTable>
+
+You can search for a specific model using the search bar, or filter recommendations by project using the **Project** dropdown menu.
+
+To apply a recommendation, update the model's `lag_tolerance` config. For configuration syntax and examples, refer to the [`lag_tolerance` config page](/reference/resource-configs/lag-tolerance).
+
 ## Models built and reused chart
 
 When you go to your **Account home**, you'll see a chart showing the number of models built and reused, giving you visibility into how dbt State is optimizing your data builds. You can also view the number of reused models per project on **Account home**.
@@ -62,27 +83,6 @@ To view your lineage with the **Latest status** lens:
 2. Select your run.
 3. Go to the **Lineage** tab. You'll see your project's lineage.
 4. In the **Lenses** field, select **Latest status**.
-
-## Lag tolerance recommendations
-
-In the <Constant name="dbt_platform" />, the **dbt State** page includes a **Lag tolerance recommendations** section that identifies models that could safely tolerate more lag, letting dbt State skip more runs and save additional compute.
-
-The recommendations table displays the following columns:
-
-<SimpleTable>
-| Column | Description |
-|--------|-------------|
-| **Model name** | The name of the model that could benefit from a higher `lag_tolerance` value. |
-| **Project** | The dbt project the model belongs to. |
-| **Current lag** | The model's current `lag_tolerance` setting. |
-| **Recommended lag** | The `lag_tolerance` value dbt State recommends based on observed upstream data refresh patterns. |
-| **% time saved** | The estimated percentage of build time you'd save by applying the recommended `lag_tolerance`. |
-| **Projected 30d time savings** | The estimated compute time saved over the next 30 days if you apply the recommended `lag_tolerance`. |
-</SimpleTable>
-
-You can search for a specific model using the search bar, or filter recommendations by project using the **Project** dropdown menu.
-
-To apply a recommendation, update the model's `lag_tolerance` config. For configuration syntax and examples, refer to the [`lag_tolerance` config page](/reference/resource-configs/lag-tolerance).
 
 ## Explain tab
 
