@@ -535,7 +535,7 @@ If you want all dynamic tables to be transient by default (without setting `tran
 
 **Key points:**
 - Setting `transient: true` creates the dynamic table with the `TRANSIENT` keyword in the `CREATE DYNAMIC TABLE` statement.
-- Snowflake does not support changing the transient property on an existing dynamic table. Changing `transient` from `true` to `false` or vice versa triggers a full table recreation.
+- Snowflake does not accept a transient interactive table (error 001003). If you set `transient: true` at the project level in dbt_project.yml, your interactive table models inherit it and fail. Set `transient: false` on those models to override it.
 - To make all new dynamic tables transient by default when `transient` is not specified, enable the `snowflake_default_transient_dynamic_tables` flag in your `dbt_project.yml`.
 
 For example:
@@ -603,7 +603,7 @@ Ensure that `QUOTED_IDENTIFIERS_IGNORE_CASE` on your account is set to `FALSE`.
 
 <VersionBlock firstVersion="1.12">
 
-## Interactive tables <Lifecycle status="beta" />
+## Interactive tables <Lifecycle status="beta" /> {#interactive-tables}
 
 Starting in `dbt-snowflake` v1.13, the Snowflake adapter supports [interactive tables](https://docs.snowflake.com/en/user-guide/interactive), which are optimized for low-latency queries. This materialization is specific to Snowflake, which means that any model configuration that would normally come along for the ride from `dbt-core` (for example, as with a `view`) may not be available for interactive tables.
 
@@ -788,7 +788,7 @@ select * from {{ ref('stg_orders') }}
 ```
 
 **Key points:**
-- This parameter only applies to dynamic interactive tables. Setting it on a static interactive table (one without `target_lag`) has no effect, and dbt warns you.
+- This parameter only applies when the table refreshes itself. If you set it on a static interactive table (one without `target_lag`), dbt ignores it and warns you when you run the model.
 - You can change `snowflake_initialization_warehouse` on an existing interactive table without a full refresh.
 - To revert to the default behavior, remove the parameter from your model configuration or explicitly set it to `None`.
 
@@ -810,7 +810,7 @@ Interactive tables support [`on_configuration_change`](/reference/resource-confi
 
 ### Unsupported configurations for interactive tables
 
-The following configurations are not supported on interactive tables. dbt rejects the first two at parse time with a compilation error rather than letting Snowflake fail the run:
+The following configurations are not supported on interactive tables. dbt rejects the first two when it parses your project, rather than letting Snowflake fail the run:
 
 - `table_format: iceberg` &mdash; Interactive tables have no Iceberg variant.
 - `transient: true` &mdash; Snowflake does not accept a transient interactive table.
@@ -831,7 +831,7 @@ Find more information about interactive table and interactive warehouse limitati
 ### Troubleshooting interactive tables
 
 :::warning A dynamic interactive table downstream of a `table` model can serve stale data
-When a dynamic interactive table is downstream of a dbt-managed `table` model, dbt's `create or replace` statement on the upstream model destroys Snowflake's change tracking history. The interactive table's scheduled refresh then fails on its own, but Snowflake still reports `scheduling_state` as `ACTIVE`, so the table looks healthy while serving stale rows &mdash; and the dbt run reports success.
+When a dynamic interactive table reads from a dbt-managed table model, dbt's `create or replace` statement on that upstream model destroys Snowflake's change tracking history. The interactive table can then no longer refresh itself, but your `dbt run` still reports success, so a clean run can leave the table serving stale rows.
 
 To recover, run the interactive table with `--full-refresh`. To prevent it, add a post-hook to the upstream model that re-enables change tracking:
 
