@@ -110,8 +110,6 @@ This hides the <Constant name="fusion" /> upgrade workflows from users who don't
 3. Select the **v2 Migration admin** permission set from the dropdown, then select the project(s) you want the users to access. 
 4. Click **Save**.
 
-  <Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/choosing-dbt-version/assign-fusion-admin.png" width="60%" title="Assign v2 Migration admin to groups and projects."/>
-
 The <Constant name="fusion" /> upgrade workflows helps identify areas of the project that need to be updated and provides tools for manually resolving and autofixing any errors. 
 
 #### Upgrade your development environment

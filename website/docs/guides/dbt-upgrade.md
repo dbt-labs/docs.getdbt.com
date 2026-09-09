@@ -77,8 +77,6 @@ When this is enabled, only users with the **v2 Migration admin** [permission set
 4. Select the project(s) users should access.
 5. Click **Save**.
 
-<Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/choosing-dbt-version/assign-fusion-admin.png" width="60%" title="Assign v2 Migration admin permissions to groups"/>
-
 For more details on access control, see [Assign access to upgrade](/docs/dbt-versions/upgrade-dbt-platform-version#assign-access-to-upgrade).
 
 ### Step 1: Start the upgrade assistant
