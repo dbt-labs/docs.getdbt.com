@@ -202,7 +202,7 @@ as well as the repo for this project \[here](https://github.com/dbt-labs/mrr-pla
 
 </File>
 
-### Custom project-level overviews
+### Custom project-level overview
 
 You can set different overviews for each dbt project/package included in your documentation site
 by creating a docs block named `__[project_name]__`. 
