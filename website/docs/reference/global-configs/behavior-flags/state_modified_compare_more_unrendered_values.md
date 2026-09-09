@@ -13,7 +13,7 @@ This flag was removed in <Constant name="core_v2" /> and in <Constant name="fusi
 import StateModified from '/snippets/_state-modified-compare.md';
 
 
-| state_modified_compare_more_unrendered_values | <Constant name="dbt" /> **Latest** | <Constant name="core" /> |
+| state_modified_compare_more_unrendered_values | <Constant name="dbt" /> **v1 Latest** | <Constant name="core" /> |
 |---|---|---|
 | Introduced | 2024.10 | 1.9.0 |
 | Matured (default → `true`) | 2026.09 | 1.12.0 |
@@ -44,7 +44,7 @@ This flag silently changes the `state:modified` selection set that most CI, Slim
 
 On the first CI or Slim CI run with this flag enabled, any node whose YAML config uses Jinja (`env_var`, `var`, conditional materialization) may appear as `state:modified` even if nothing changed. This is because the baseline manifest stored rendered values while the new parse stores literal Jinja text — the two sides of the comparison differ on serialization, not on real changes.
 
-Once your production job runs once on the **Latest** release track and generates a new baseline manifest, both sides of the `state:modified` comparison use the same format and the extra diffs disappear.
+Once your production job runs once on the **v1 Latest** release track and generates a new baseline manifest, both sides of the `state:modified` comparison use the same format and the extra diffs disappear.
 
 No code change is required. The cost is one extra rebuild cycle for affected nodes.
 

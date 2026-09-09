@@ -19,7 +19,7 @@ Navigate to the settings page of an environment, then click **Edit**. Click the 
 
 Starting in 2024, your project gets upgraded automatically on a cadence that you choose:
 
-The **Latest** track ensures you have up-to-date <Constant name="dbt" /> functionality, and early access to new features of the dbt framework. The **Compatible** and **Extended** tracks are designed for customers who need a less-frequent release cadence, the ability to test new dbt releases before they go live in production, and/or ongoing compatibility with the latest open source releases of <Constant name="core" />.
+The **v1 Latest** track ensures you have up-to-date <Constant name="dbt" /> functionality, and early access to new features of the dbt framework. The **v1 Compatible** and **v1 Extended** tracks are designed for customers who need a less-frequent release cadence, the ability to test new dbt releases before they go live in production, and/or ongoing compatibility with the latest open source releases of <Constant name="core" />.
 
 As a best practice, dbt Labs recommends that you test the upgrade in development first; use the [Override dbt version](#override-dbt-version) setting to test _your_ project on the latest dbt version before upgrading your deployment environments and the default development environment for all your colleagues.
 
@@ -41,7 +41,7 @@ Configure your project to use a different dbt version than what's configured in 
 3. In the side panel, click **Edit** and scroll to the **User development settings** section. 
 4. Choose a version from the **dbt version** dropdown and click **Save**.
 
-  An example of overriding the configured version to [**Latest** release track](/docs/dbt-versions/dbt-release-tracks) for the selected project:
+  An example of overriding the configured version to [**v1 Latest** release track](/docs/dbt-versions/dbt-release-tracks) for the selected project:
 
   <Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/choosing-dbt-version/example-override-version.png" width="60%" title="Example of overriding the dbt version on your user account"/>
 
@@ -51,12 +51,12 @@ Configure your project to use a different dbt version than what's configured in 
 ## <Constant name="fusion_engine" /> 
 
 dbt Labs has introduced the new [<Constant name="fusion_engine" />](/docs/introduction), a ground-up rebuild of dbt. This is currently generally available for Snowflake projects and in preview for other supported adapters on the <Constant name="dbt_platform" />. Eligible customers can update environments to <Constant name="fusion" /> using the same workflows as v1.x, but remember:
-- If you don't see the `Fusion Stable` release track as an option, you should check with your dbt Labs account team about eligibility.
-- To increase the compatibility of your project, update all jobs and environments to the **Latest** release track and read more about the changes in our [upgrade guide](/docs/dbt-versions/dbt-upgrade/upgrading-to-v2).
+- If you don't see the **v2 Stable** release track as an option, you should check with your dbt Labs account team about eligibility.
+- To increase the compatibility of your project, update all jobs and environments to the **v1 Latest** release track and read more about the changes in our [upgrade guide](/docs/dbt-versions/dbt-upgrade/upgrading-to-v2).
 - Make sure you're using a [supported adapter](/docs/platform/connect-data-platform/about-connections?version=2.0) and authentication method:
   <FusionDWH /> 
     <small> _Adapter lifecycle can differ between the <Constant name="dbt_platform" /> and local development &mdash; an adapter can reach GA in the dbt platform before it reaches GA for local use._ </small> <br />
-- Once you upgrade your development environment(s) to `Fusion Stable`, every user will have to restart the IDE.
+- Once you upgrade your development environment(s) to `v2 Stable`, every user will have to restart the IDE.
 
   <Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/platform-upgrading-dbt-versions/upgrade-fusion.png" width="90%" title="Upgrade to the Fusion engine in your environment settings." />
 
@@ -69,7 +69,7 @@ When you're ready to upgrade your project(s) to <Constant name="fusion_engine" /
 #### Prerequisites
 
 To take advantage of the upgrade assistant and other upgrade tools, you'll need to meet the following prerequisites:
-- Your dbt project must be updated to use the **Latest** release track.
+- Your dbt project must be updated to use the **v1 Latest** release track.
 - You must have a `developer` license.
 - You must have the proper [permissions set](/docs/platform/manage-access/enterprise-permissions) to execute individual upgrade tasks. Migrating to <Constant name="fusion" /> is a multi-step process and some of these steps may be repeated across projects by different users:
 
@@ -78,7 +78,7 @@ To take advantage of the upgrade assistant and other upgrade tools, you'll need 
 | Enable Fusion access (triggers migration flows) | Fusion readiness: `write` <br></br> Projects: `write` | Admin, Account Admin, and anyone assigned the v2 Migration admin set, provided their base role also has `write` access to projects |
 | View Fusion readiness and job eligibility | Fusion readiness: `read` | Developer, Admin, Member, Account Admin, v2 Migration admin |
 | **Run once on <Constant name="fusion" />** job action | Runs: `write` | Job Admin, Job Runner, Admin, Member, Project Creator, Account Admin |
-| Enable Fusion-latest for an environment | Environments: `write` | Job Admin, Admin, Member, Project Creator, Account Admin |
+| Enable **v2 Stable** for an environment | Environments: `write` | Job Admin, Admin, Member, Project Creator, Account Admin |
 
 #### Assign access to upgrade
 
