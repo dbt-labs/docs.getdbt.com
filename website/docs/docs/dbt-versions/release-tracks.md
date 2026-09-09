@@ -73,7 +73,7 @@ Choose the **v1 Compatible** and **v1 Extended** release tracks if you need a le
 The **v2 Fallback** release track provides an emergency rollback option for account admins if you suspect a regression in the "v2 Extended" track. This is available only for <Constant name="fusion_engine" /> in Enterprise+ accounts.
 
 1. Go to **Account settings**
-2. Click the **v2 Fallback** release track button in the <Constant name="dbt_platform" /> interface. This is not accessible through environment settings.
+2. Click the **Revert to Fallback** release track button in the <Constant name="dbt_platform" /> interface. This is not accessible through environment settings.
 3. Fill in the details in the **Revert to Fallback** pop-up to confirm and share information with dbt Support.
 
 Switching to **v2 Fallback** alerts the dbt Support team, who may reach out to help resolve the issue. This track is meant only as a temporary safety option to unblock you and not for ongoing use. Return to "v2 Extended" or "v2 Stable" (<Constant name="fusion" />) / "v1 Compatible" (<Constant name="core" />) once the issue is resolved.
