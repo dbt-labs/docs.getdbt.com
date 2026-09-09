@@ -27,7 +27,7 @@ import SetUpPages from '/snippets/_setup-pages-intro.md';
 
 ## Connecting to Starburst/Trino
 
-To connect to a data platform with dbt Core, create appropriate _profile_ and _target_ YAML keys/values in the `profiles.yml` configuration file for your Starburst/Trino clusters. This dbt YAML file lives in the  `.dbt/` directory of your user/home directory. For more information, refer to [Connection profiles](/docs/local/profiles.yml) and [profiles.yml](/docs/local/profiles.yml). 
+To connect to a data platform with <Constant name="core" />, create appropriate _profile_ and _target_ YAML keys/values in the `profiles.yml` configuration file for your Starburst/Trino clusters. This dbt YAML file lives in the  `.dbt/` directory of your user/home directory. For more information, refer to [Connection profiles](/docs/local/profiles.yml) and [profiles.yml](/docs/local/profiles.yml). 
 
 The parameters for setting up a connection are for Starburst Enterprise, Starburst Galaxy, and Trino clusters. Unless specified, "cluster" will mean any of these products' clusters.
 

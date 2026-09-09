@@ -15,7 +15,7 @@ This flag was removed in <Constant name="core_v2" /> and in <Constant name="fusi
 | skip_nodes_if_on_run_start_fails | <Constant name="dbt" /> **Latest** | <Constant name="core" /> |
 |---|---|---|
 | Introduced | 2024.10 | 1.9.0 |
-| Matured (default → `true`) | Sep 1, 2026 | 1.12.0 |
+| Matured (default → `true`) | 2026.09 | 1.12.0 |
 | Removed | — | v2.0 |
 
 <br />
@@ -26,7 +26,7 @@ For more information, refer to [`on-run-start` / `on-run-end`](/reference/projec
 
 ## Impact
 
-If your project uses `on-run-start` hooks for non-critical work (for example, telemetry, notifications, audit inserts, attaching session settings), your build will stop producing output whenever a hook fails. Tables and views that previously refreshed daily will stop updating the next time the hook fails.
+If your project uses `on-run-start` hooks for non-critical work (for example, telemetry, notifications, audit inserts, attaching session settings), your build stops producing output whenever a hook fails. Tables and views that previously refreshed daily will stop updating the next time the hook fails.
 
 <Expandable alt_header="Recommended actions">
 
