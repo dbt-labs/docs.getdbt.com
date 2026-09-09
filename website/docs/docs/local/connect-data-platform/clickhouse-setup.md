@@ -43,9 +43,8 @@ import FusionClickHouseWarehousePerms from '/snippets/_fusion-warehouse-permissi
 
 The ClickHouse adapter for <Constant name="fusion" /> is in beta. Expect some minor bugs, and avoid using it in production environments for now. Some features available in the `dbt-clickhouse` adapter for <Constant name="core" /> are not yet supported.
 
-You can follow the latest updates on the ClickHouse adapter's development in these locations:
-- The ClickHouse v2 milestone epic in the dbt-core repository ([dbt-core#14585](https://github.com/dbt-labs/dbt-core/issues/14585))
-- The dbt Core 2.0 support issue in the dbt-clickhouse repository ([dbt-clickhouse#660](https://github.com/ClickHouse/dbt-clickhouse/issues/660))
+The ClickHouse adapter is under active development. If you encounter an issue, please [open it in dbt-core](https://github.com/dbt-labs/dbt-core/issues/new) and add the `adapter:clickhouse` label.
+
 - The [ClickHouse documentation for dbt](https://clickhouse.com/docs/integrations/dbt)
 
 ### What works today
@@ -103,7 +102,7 @@ clickhouse-service:
       port: [ 8123 ]  # Defaults to 8123, 8443, 9000, 9440 depending on the secure and driver settings 
       user: [ default ]  # User for all database operations
       password: [ <empty string> ]  # Password for the user
-      secure: [ False ]  # Use TLS (native protocol) or HTTPS (http protocol)
+      secure: [ False ]  # Use TLS (native protocol) or HTTPS (http protocol). Must be set to true for ClickHouse Cloud.
 
 ```
 

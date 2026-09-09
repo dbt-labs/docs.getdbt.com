@@ -18,10 +18,11 @@ The following permissions are required for fundamental dbt features:
 | --- | --- | --- |
 | `SELECT` | Tables and views | Read data |
 | `INSERT` | Tables | Load models, seeds, and snapshots |
-| `CREATE TABLE`, `CREATE VIEW`, `CREATE DICTIONARY` | Database | Create materializations, including the intermediate and backup relations used for atomic rebuilds (`EXCHANGE TABLES`, `RENAME TABLE`) |
-| `DROP TABLE`, `DROP VIEW`, `DROP DICTIONARY` | Database | Drop or replace objects |
 | `ALTER` | Tables | Schema changes (`on_schema_change`), indexes and projections, comments (`persist_docs`), `REPLACE PARTITION` (`insert_overwrite`), and lightweight deletes (`delete+insert`) |
 | `TRUNCATE` | Tables | Full-refresh seeds |
+| `CREATE TABLE`, `CREATE VIEW`, `CREATE DICTIONARY` | Database | Create materializations, including the intermediate and backup relations used for atomic rebuilds (`EXCHANGE TABLES`, `RENAME TABLE`) |
+| `DROP TABLE`, `DROP VIEW`, `DROP DICTIONARY` | Database | Drop or replace objects |
+
 
 ### Metadata operations
 

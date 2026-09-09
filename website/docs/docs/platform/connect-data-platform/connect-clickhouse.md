@@ -44,7 +44,7 @@ Enter your _development_ (not deployment) credentials with the following fields:
 | Password | `password` | The password for that user | String | Required | |
 | Schema | `schema` | The ClickHouse database to build your development models into. ClickHouse has no separate schema level, so this is a database and overrides the connection's Database for your development environment | String | Required | `dbt_dev_database` |
 | Target name | `target` | The [target name](/docs/build/custom-target-names) for your development environment | String | Optional | `dev` |
-| Threads | `threads` | Number of models dbt builds concurrently | Integer | Optional | `1` |
+| Threads | `threads` | Number of models dbt builds concurrently | Integer | Optional | `4` |
 
 ## Configuration
 
