@@ -76,7 +76,7 @@ With the readiness experience enabled, you can monitor your project's eligibilit
 <Lightbox src="/img/fusion/fusion-readiness.png" width="60%" title="The dbt v2 readiness checklist"/>
 
 Common ineligibility reasons include:
-- Environment(s) not on the **v1 Latest** [release track](/docs/dbt-versions/dbt-release-tracks#which-release-tracks-are-available]
+- Environment(s) not on the **v1 Latest** [release track](/docs/dbt-versions/dbt-release-tracks#which-release-tracks-are-available)
 - Not using a [supported data platform](/docs/dbt/supported-features?version=2.0#requirements)
 - Project doesn't have at least one successful job run
 - Jobs that haven't run in the last 7 days or have recent failures
