@@ -179,7 +179,11 @@ export function QuickstartGuideTitle({ frontMatter }) {
         </div>
       </div>
       {(tags || level) && (
-        <div className={styles.tag_container}>
+        // data-md-hide keeps the tags/level pills on the rendered guide but
+        // drops them (via rehypeMdHide) from the generated Markdown, where
+        // they came out as orphan lines ("dbt Fusion engine", "Quickstart",
+        // "Beginner") with no surrounding context.
+        <div className={styles.tag_container} data-md-hide="true">
           {tags &&
             tags.map((tag, i) => (
               <div className={`${styles.tag} tag`} key={i}>
