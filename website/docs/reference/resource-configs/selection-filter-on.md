@@ -24,6 +24,27 @@ For most checks that return a single `unique_id` column, the default behavior is
 
 Use `selection_filter_on` when your check returns edge rows (parent/child pairs). Set it to the columns that contain resource IDs (for example, `[parent_unique_id, child_unique_id]`) so selectors can scope rows by either column.
 
+For example, the following check returns edge rows and has no `unique_id` column, so you must set `selection_filter_on` to tell dbt which columns contain resource IDs to filter on:
+
+<File name='checks/no_direct_raw_dependency.sql'>
+
+```sql
+select
+    e.parent_unique_id,
+    e.child_unique_id,
+    c.name as consumer
+from {{ info_schema('edges') }} as e
+join {{ info_schema('models') }} as p
+    on p.unique_id = e.parent_unique_id
+join {{ info_schema('models') }} as c
+    on c.unique_id = e.child_unique_id
+where p.name like 'raw_%'
+  and c.name not like 'stg_%'
+```
+</File>
+
+Configure `selection_filter_on` for this check using one of the following methods:
+
 <Tabs
   groupId="config-languages"
   defaultValue="property-yaml"
@@ -49,11 +70,13 @@ checks:
 
 <TabItem value="property-yaml">
 
-<File name='checks/_no_staging_to_mart_dependency.yml'>
+<File name='checks/_checks.yml'>
 
 ```yaml
+version: 2
 checks:
-  - name: no_staging_to_mart_dependency
+  - name: no_direct_raw_dependency
+    description: "Fails if a non-staging model refs a raw_ model directly."
     config:
       selection_filter_on: [parent_unique_id, child_unique_id]
 ```
@@ -64,16 +87,12 @@ checks:
 
 <TabItem value="config">
 
-<File name='checks/<check_name>.sql'>
+<File name='checks/no_direct_raw_dependency.sql'>
 
 ```sql
 {{ config(
     selection_filter_on = ["parent_unique_id", "child_unique_id"]
 ) }}
-
-select parent_unique_id, child_unique_id
-from {{ info_schema('edges') }}
-where ...
 ```
 
 </File>

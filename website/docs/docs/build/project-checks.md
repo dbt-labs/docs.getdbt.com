@@ -104,27 +104,48 @@ The following examples show common project quality rules.
 
   </File>
 
-- Enforce that all `public` models have a description:
+- Flag sources that no model references. A source with no downstream models is either unused or missing a model that should reference it:
 
-  <File name='checks/public_models_have_descriptions.sql'>
+  <File name='checks/unused_sources.sql'>
 
   ```sql
-  select unique_id
-  from {{ info_schema('models') }}
-  where access = 'public'
-    and (description is null or description = '')
+  select s.unique_id, s.name
+  from {{ info_schema('sources') }} s
+  left join {{ info_schema('edges') }} e on e.parent_unique_id = s.unique_id
+  where e.child_unique_id is null
   ```
 
   </File>
 
-- Enforce that all models declare a primary key:
+- Prevent non-staging models from referencing `raw_` models directly. Because this check queries `edges`, use the [`selection_filter_on`](/reference/resource-configs/selection-filter-on) config so the selector filters on either endpoint:
 
-  <File name='checks/all_models_have_primary_key.sql'>
+  <File name='checks/no_direct_raw_dependency.sql'>
 
   ```sql
-  select unique_id
-  from {{ info_schema('models') }}
-  where primary_key is null
+  select
+      e.parent_unique_id,
+      e.child_unique_id,
+      c.name as consumer
+  from {{ info_schema('edges') }} as e
+  join {{ info_schema('models') }} as p
+      on p.unique_id = e.parent_unique_id
+  join {{ info_schema('models') }} as c
+      on c.unique_id = e.child_unique_id
+  where p.name like 'raw_%'
+    and c.name not like 'stg_%'
+  ```
+
+  </File>
+
+  <File name='checks/_checks.yml'>
+
+  ```yaml
+  version: 2
+  checks:
+    - name: no_direct_raw_dependency
+      description: "Fails if a non-staging model refs a raw_ model directly."
+      config:
+        selection_filter_on: [parent_unique_id, child_unique_id]
   ```
 
   </File>
