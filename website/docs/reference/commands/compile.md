@@ -6,6 +6,7 @@ id: "compile"
 ---
 
 import InfoSchemaStaticAnalysis from '/snippets/_info-schema-static-analysis.md';
+import InfoSchemaIntro from '/snippets/_info-schema-intro.md';
 
 `dbt compile` generates executable SQL from source files for:
 
@@ -155,7 +156,7 @@ For more selector patterns, refer to [Test selection examples](/reference/node-s
 
 ## dbt Information Schema
 
-You can use `--generate-info-schema` with `dbt compile` to write the [dbt Information Schema](/docs/build/dbt-information-schema) to `target/info_schema/` in a versioned subdirectory (currently `v1/`). The Information Schema exposes your project's metadata as queryable SQL tables (similar to a database's `INFORMATION_SCHEMA`) so you can query models, sources, and more without parsing `manifest.json`:
+<InfoSchemaIntro />
 
 ```shell
 dbt compile --generate-info-schema

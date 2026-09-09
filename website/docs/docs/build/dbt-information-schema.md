@@ -89,7 +89,14 @@ dbt show --inline "select name from {{ info_schema('models') }} order by name"
 
 You can query the Parquet files with any Parquet-compatible tool.
 
-**DuckDB:** dbt generates a `views.sql` file alongside the Parquet files that registers all tables as named views. Navigate to the versioned directory and start a DuckDB session with the views loaded:
+**Parquet-compatible tools:** Point your tool directly at the Parquet files in `target/info_schema/v1/`. For example, with pandas:
+
+```python
+import pandas as pd
+models = pd.read_parquet("target/info_schema/v1/dbt.models.parquet")
+```
+
+**DuckDB:** dbt generates a DuckDB-specific `views.sql` file alongside the Parquet files that registers all tables as named views. Navigate to the versioned directory and start a DuckDB session with the views loaded:
 
 ```shell
 cd target/info_schema/v1
@@ -101,13 +108,6 @@ Then query any table by namespace and table name:
 ```sql
 select * from dbt.models limit 5;
 select * from dbt_rt.run_results where status = 'error';
-```
-
-**Other Parquet-compatible tools:** Point your tool directly at the Parquet files in `target/info_schema/v1/`. For example, with pandas:
-
-```python
-import pandas as pd
-models = pd.read_parquet("target/info_schema/v1/dbt.models.parquet")
 ```
 
 

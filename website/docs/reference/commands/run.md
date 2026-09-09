@@ -6,6 +6,7 @@ id: "run"
 ---
 
 import InfoSchemaStaticAnalysis from '/snippets/_info-schema-static-analysis.md';
+import InfoSchemaIntro from '/snippets/_info-schema-intro.md';
 
 ## Overview
 
@@ -68,7 +69,7 @@ For more information on running parents or children of specific models, see the 
 
 ## dbt Information Schema
 
-Use `--generate-info-schema` with `dbt run` to write the [dbt Information Schema](/docs/build/dbt-information-schema) to `target/info_schema/` in a versioned subdirectory (currently `v1/`). The Information Schema exposes your project's metadata as queryable SQL tables (similar to a database's `INFORMATION_SCHEMA`) so you can query models, sources, run results, and more without parsing `manifest.json`.
+<InfoSchemaIntro />
 
 ```shell
 dbt run --generate-info-schema
