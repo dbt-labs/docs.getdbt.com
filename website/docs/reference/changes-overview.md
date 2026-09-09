@@ -40,7 +40,7 @@ Use this page to understand the different types of changes, what to do, and wher
 If you're upgrading to <Constant name="fusion" />, you should:
 
 - [ ] Resolve all [deprecations](/reference/deprecations) to avoid causing errors in <Constant name="fusion" />.
-- [ ] Review [behavior change flags](/reference/global-configs/behavior-changes) to understand how <Constant name="fusion" /> will behave (new behavior is always enabled).
+- [ ] Review [behavior change flags](/reference/global-configs/behavior-changes#behavior-change-flags) and the **Removed** column to see which flags are always-on in <Constant name="fusion" /> versus which remain configurable.
 - [ ] Update [deprecated CLI flags](/docs/dbt-versions/dbt-upgrade/upgrading-to-v2#deprecated-flags) to avoid errors in <Constant name="fusion" />.
 
 ## Related docs

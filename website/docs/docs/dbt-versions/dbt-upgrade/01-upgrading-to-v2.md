@@ -67,7 +67,7 @@ The following adapters are supported in v2:
 
 v2 will not support any deprecated functionality (see the [Changes overview](/reference/changes-overview) for details):
 - All [deprecation warnings](/reference/deprecations) must be resolved before upgrading to the new engine. This includes historic deprecations and [new ones as of <Constant name="core" /> v1.10](/docs/dbt-versions/dbt-upgrade/upgrading-to-v1.10#deprecation-warnings).
-- Some [behavior change flags](/reference/global-configs/behavior-changes#behavior-change-flags) will be removed (generally enabled). You can no longer opt out of them using `flags:` in your `dbt_project.yml`.
+- A subset of [behavior change flags](/reference/global-configs/behavior-changes#behavior-change-flags) are removed in v2 / <Constant name="fusion" /> (see the **Removed** column in that table). For those flags, the new behavior is always enabled and you can no longer opt out with `flags:` in your `dbt_project.yml`. Flags without a removal version remain configurable, including Fusion-specific flags listed later on that page.
 
 ### Ecosystem packages
 
