@@ -166,7 +166,7 @@ You should [contact dbt support](/docs/dbt-support#dbt-cloud-support) to request
 
 </Expandable>
 
-<Expandable alt_header="I see that my account was migrated to Latest. What should I do?" >
+<Expandable alt_header="I see that my account was migrated to v1 Latest. What should I do" >
 
 For the vast majority of customers, there is no further action needed.
 
