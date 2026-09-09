@@ -179,6 +179,8 @@ checks:
 
 To disable all checks at the project level, set `+enabled: false` under `checks:` in `dbt_project.yml`. You can also scope it to a specific package or check:
 
+<File name='dbt_project.yml'>
+
 ```yaml
 checks:
   +enabled: false  # disables all checks in the project
@@ -192,6 +194,8 @@ checks:
     all_models_have_descriptions:
       +enabled: false
 ```
+
+</File>
 
 :::note Disabling at the project level
 Unlike the `--skip-checks` flag, setting `+enabled: false` in `dbt_project.yml` is persistent and nothing in the output shows that checks were skipped. A successful `dbt build` in CI doesn't indicate whether the project has no checks or all checks are disabled. Running `dbt check <name>` for a disabled check also succeeds without running the check or returning an error.
