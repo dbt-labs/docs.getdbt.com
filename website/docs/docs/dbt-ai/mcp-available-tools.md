@@ -32,4 +32,8 @@ Note that access to the Discovery API and the Semantic Layer API is limited depe
 The following tool list is available for your MCP server and is auto-fetched from the [dbt MCP server README on GitHub](https://github.com/dbt-labs/dbt-mcp#tools) when the docs are built, so it stays in sync with each release.
 
 <McpToolsFromReadme />
+
+### Find jobs across project environments
+
+Use the `list_jobs` tool with a `project_id` to list jobs across every environment in a dbt project. This is useful when you need to inspect jobs outside the configured production environment. Without `project_id`, `list_jobs` continues to use the configured production environment, or lists jobs across the account when no production environment is configured.
  
