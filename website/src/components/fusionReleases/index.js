@@ -107,7 +107,7 @@ function VersionCards({ versions }) {
                 href={changelogUrlForVersion(info.tag)}
                 target="_blank"
                 rel="noopener noreferrer"
-                title="View this version in the dbt Fusion changelog"
+                title="View this version in the dbt v2 changelog"
               >
                 <code>{info.tag}</code>
               </a>
@@ -146,7 +146,7 @@ function ReleaseItem({ version, data }) {
           target="_blank"
           rel="noopener noreferrer"
           className={styles.versionTag}
-          title="View this release in the dbt Fusion changelog"
+          title="View this release in the dbt v2 changelog"
         >
           {version}
         </a>
