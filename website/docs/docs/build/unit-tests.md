@@ -62,6 +62,12 @@ dbt test --select "test_type:unit"
 
 ## Run unit tests locally <Lifecycle status="beta" />
 
+:::Note Opt in with an environment variable
+
+Running an individual unit test on local compute is currently in beta. Set `DBT_ENGINE_EXPERIMENTAL_LOCAL_UNIT_TESTS=true` in the environment where dbt runs before you use `compute: local`.
+
+:::
+
 You can run unit tests locally when you're working through tricky SQL and you want to know right away whether your logic works. By default, each unit test sends a query to your data platform and waits for the result. This can slow down testing and use warehouse compute.
 
 Because unit tests use static fixtures instead of real data, they don’t need to necessarily run on your data platform. Use the [`compute: local` config](/reference/resource-configs/compute) to run them locally with DuckDB for faster feedback _without_ the warehouse compute cost.
@@ -75,6 +81,7 @@ That gives you:
 
 ### Prerequisites
 
+- The `DBT_ENGINE_EXPERIMENTAL_LOCAL_UNIT_TESTS` environment variable set to `true`. This config is in beta and you need to opt in. Without it, dbt fails with an invalid configuration error that names the variable.
 - Snowflake or BigQuery. Local execution isn't available for other data platforms, and it only applies to unit tests.
 - The direct upstream models of the model you're testing already exist in your data platform. dbt fetches their schemas to translate your SQL, so if they don't exist, the test fails with an error about fetching the upstream relation schema.
 - `static_analysis` isn't set to `off` on the test. Local execution needs static analysis to translate your SQL, so `compute: local` promotes [static analysis](/reference/resource-configs/static-analysis) to `strict` for that test. If you set `static_analysis: off`, the test can't run locally and fails with `ExecutorFailed (dbt1401)`.
@@ -87,7 +94,13 @@ That gives you:
 
 ### How to configure
 
-You can configure it on a single unit test:
+First, opt in to the config in the environment where dbt runs:
+
+```bash
+export DBT_ENGINE_EXPERIMENTAL_LOCAL_UNIT_TESTS=true
+```
+
+Then you can configure it on a single unit test:
 
 <File name='models/schema.yml'>
 
