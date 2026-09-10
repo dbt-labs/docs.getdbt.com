@@ -21,7 +21,7 @@ The following examples use this [Jaffle Shop project](https://github.com/dbt-lab
 
 <Lightbox src="/img/docs/dbt-state/dbt_state_dag.png" title="The Jaffle Shop DAG" />
 
-Each of the following scenarios shows how a run differs between <Constant name="core" /> alone and <Constant name="core" /> with dbt State, using the same command and project.
+Each of the following scenarios shows how a run differs between <Constant name="dbt" /> alone and <Constant name="dbt" /> with dbt State, using the same command and project.
 
 | Scenario | Command | What dbt State changes |
 | --- | --- | --- |
