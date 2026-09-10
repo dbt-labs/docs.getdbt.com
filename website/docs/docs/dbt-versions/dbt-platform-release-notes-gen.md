@@ -137,6 +137,8 @@ Release notes are grouped by date for single-tenant environments.
 - **Cost Insights test counts now include unit tests**: Cost Insights aggregates now include unit tests when you filter by the Test resource type. Previously, unit tests were silently excluded, causing lower-than-expected execution counts.
   <!-- PRs: `https://github.com/dbt-labs/codex-api/pull/1528` ✅-->
 
+<span><img src="/img/fontawesome/rss.svg" alt="RSS" className="rss-icon" />Subscribe to release note updates via [RSS](/feeds/release-notes-st-rss.xml), [Atom](/feeds/release-notes-st-atom.xml), or [JSON Feed](/feeds/release-notes-st-rss.json).</span>
+
 ## September 2, 2026
 
 ## Enhancements
