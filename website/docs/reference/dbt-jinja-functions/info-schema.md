@@ -7,7 +7,7 @@ availability:
   engine: v2
 ---
 
-`{{ info_schema('<view_name>') }}` is the supported way to reference the [dbt Information Schema](/docs/build/dbt-information-schema) inside [project quality checks](/docs/build/project-checks). Pass the name of the view you want to query (for example, `{{ info_schema('models') }}` to query models, or `{{ info_schema('edges') }}` to query DAG edges).
+`{{ info_schema('<view_name>') }}` is the supported way to query project metadata inside [project quality checks](/docs/build/project-checks). Pass the name of the view you want to query (for example, `{{ info_schema('models') }}` to query models, or `{{ info_schema('edges') }}` to query DAG edges). The macro reads from a logical view layer over your project metadata built at parse time. Checks can access the latest project metadata without requiring materialized [Information Schema](/reference/info-schema) files.
 
 Each view exposes a set of columns you can select and filter on in your check SQL. For example, to find models without a description:
 

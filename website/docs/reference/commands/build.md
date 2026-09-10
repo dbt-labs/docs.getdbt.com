@@ -44,7 +44,7 @@ dbt build --generate-info-schema --static-analysis strict
 
 <VersionBlock firstVersion="2.0">
 
-**Project quality checks:** `dbt build` runs [project quality checks](/docs/build/project-checks) before compiling or executing any models. You write checks as SQL rules that query the [dbt Information Schema](/docs/build/dbt-information-schema) to enforce project standards. A failing check stops the build. You can use `--skip-checks` to bypass checks.
+**Project quality checks:** `dbt build` runs [project quality checks](/docs/build/project-checks) before compiling or executing any models. You write checks as SQL rules that query project metadata through the [`{{ info_schema() }}` macro](/reference/dbt-jinja-functions/info-schema-macro) to enforce project standards. A failing check stops the build. You can use `--skip-checks` to bypass checks.
 
 </VersionBlock>
 

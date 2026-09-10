@@ -31,13 +31,8 @@ Passing an unknown check name fails the command. Passing a disabled check name i
 
 ## Flags
 
-`--select`, `--exclude`, and `--selector` select which project resources the checks evaluate &mdash; not which checks run. For example, `dbt check --select tag:finance` runs all enabled checks, but each check only evaluates resources tagged `finance`. If the selector matches nothing a check can report on, the check is `skipped`.
+`--select`, `--exclude`, and `--selector` select which project resources the checks evaluate &mdash; not which checks run. For example, `dbt check --select tag:finance` runs all enabled checks, but each check only evaluates resources tagged `finance`. If the selector matches nothing a check can report on, the check is `Skipped`.
 
-To skip checks on a build, use:
-
-```
-dbt build --skip-checks
-```
 
 ## Related docs
 

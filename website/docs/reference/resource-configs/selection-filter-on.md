@@ -14,9 +14,9 @@ By default, dbt scopes check results to selected resources by matching the `uniq
 
 ## Values
 
-- **Default (not set):** If the query returns `unique_id`, dbt keeps only rows whose `unique_id` is in the selection. If the query does not return `unique_id`, the check runs against the whole project.
-- **`none`:** The check always runs against the whole project, ignoring any selector. Use this to make whole-project behavior explicit.
-- **A column name or list of column names:** dbt keeps a row if the ID in any of the named columns is in the selection. Each named column must exist in the result, or the check raises an error.
+import SelectionFilterOnValues from '/snippets/_selection-filter-on-values.md';
+
+<SelectionFilterOnValues />
 
 ## When to set this config
 
@@ -61,7 +61,7 @@ Configure `selection_filter_on` for this check using one of the following method
 
 ```yaml
 checks:
-  +selection_filter_on: none
+  +selection_filter_on: [parent_unique_id, child_unique_id]
 ```
 
 </File>

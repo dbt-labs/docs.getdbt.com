@@ -31,7 +31,7 @@ This section covers the rules and constraints for writing check SQL files and co
 
 [`{{ info_schema() }}`](/reference/dbt-jinja-functions/info-schema-macro) is the supported way to reference the dbt Information Schema in a check. Pass the name of the table you want to query (for example, `{{ info_schema('models') }}` to query models, or `{{ info_schema('edges') }}` to query DAG edges). Checks always run against an intermediate representation of the dbt Information Schema built at parse time.
 
-The `info_schema()` macro reads from a logical view layer over your project metadata. Therefore, Information Schema files do not need to be materialized for checks to run on the latest metadata.
+The `info_schema()` macro reads from a logical view layer over your project metadata. Checks can access the latest project metadata without requiring materialized [Information Schema](/reference/info-schema) files.
 
 For the full list of available tables and columns, refer to [Views and columns reference](/reference/info-schema-views/).
 
@@ -92,14 +92,15 @@ The following steps walk you through creating your first check.
 
 The following examples show common project quality rules.
 
-- Enforce descriptions on all models:
+- Enforce that all `public` models have a description:
 
-  <File name='checks/all_models_have_descriptions.sql'>
+  <File name='checks/public_models_have_descriptions.sql'>
 
   ```sql
   select unique_id
   from {{ info_schema('models') }}
-  where description is null or description = ''
+  where access = 'public'
+    and (description is null or description = '')
   ```
 
   </File>
@@ -222,9 +223,9 @@ Why checks work this way:
 
 When a selector is active, dbt uses the [`selection_filter_on`](/reference/resource-configs/selection-filter-on) config to determine which column in the check's output contains the resource IDs to filter on:
 
-- **Default (not set)**: If the check returns a `unique_id` column, dbt keeps only rows whose `unique_id` is in the selection. If there is no `unique_id` column, the check runs against the whole project (useful for aggregate checks like "the project has at least one model").
-- **`selection_filter_on: none`**: Always runs the check against the whole project, regardless of any selector.
-- **`selection_filter_on: [parent_unique_id, child_unique_id]`** (or another list of column names): Keeps a row if the ID in any of the named columns is in the selection. Use this for checks that return relationships between resources (edges). Each named column must exist in the results, or the check errors.
+import SelectionFilterOnValues from '/snippets/_selection-filter-on-values.md';
+
+<SelectionFilterOnValues />
 
 ## Results
 
