@@ -80,9 +80,6 @@ Release notes are grouped by date for single-tenant environments.
 - **Clearer spend limit error message**: When you try to set a dbt Wizard spend limit below your current-period spend, the error message now names the exact amount already spent and states when you can lower the limit.
   <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pull/18941` -->
 
-- **Legacy dbt State login link on registration page**: The sign-in page now shows a "Looking for the old State login page?" link on the email step, directing you to the legacy State login URL while preserving OAuth query parameters.
-  <!-- PRs: `https://github.com/dbt-labs/dbt-ui/pull/1578` -->
-
 ### APIs, Identity, and Administration
 
 - **Clearer GitLab unavailability errors**: When a GitLab host is unreachable, affected API endpoints now return HTTP 503 with the message "GitLab is unavailable, please try again." instead of an unclear failure, affecting repository creation and GitLab group listing flows.
