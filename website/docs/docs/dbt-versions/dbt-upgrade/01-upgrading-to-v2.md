@@ -402,11 +402,11 @@ sources:
         name: merged_item
 ```
 
-This parsed successfully in v1 only because PyYAML (the YAML library <Constant name="core_v1" /> depends on) incidentally allows self-referential anchors — a side effect of Python's own support for cyclic data structures, not an intentional YAML feature. No other major YAML implementation allows this pattern, and it's not part of the YAML spec.
+This parsed successfully in v1 only because PyYAML (the YAML library <Constant name="core_v1" /> depends on) incidentally allows self-referential anchors, a side effect of Python's own support for cyclic data structures, not an intentional YAML feature. No other major YAML implementation allows this pattern.
 
-In v2, parsing this pattern hits a recursion limit and raises a `SerializationError (dbt1013)`, so the entire properties file fails to parse. This is a deliberate limitation, not a bug — v2 does not plan to support self-referential anchors.
+In v2, parsing this pattern hits a recursion limit and raises a `SerializationError (dbt1013)`, so the entire properties file fails to parse. This is a deliberate limitation, not a bug. v2 does not plan to support self-referential anchors.
 
-To resolve this, remove the self-reference. Anchor only the parts of the document that don't merge back into themselves &mdash; for example, anchor a single table mapping instead of the whole sequence:
+To resolve this, remove the self-reference. Anchor only the parts of the document that don't merge back into themselves, for example, anchor a single table mapping instead of the whole sequence:
 
 ```yml
 sources:
