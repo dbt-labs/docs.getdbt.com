@@ -377,7 +377,7 @@ models:
 </File>
 
 :::info
-If your project has historically implemented [custom aliases](/docs/build/custom-aliases) by reimplementing the `generate_alias_name` macro, and you'd like to start using model versions, you should update your custom implementation to account for model versions. Specifically, we'd encourage you to add [a condition like this one](https://github.com/dbt-labs/dbt-core/blob/ada8860e48b32ac712d92e8b0977b2c3c9749981/core/dbt/include/global_project/macros/get_custom_name/get_custom_alias.sql#L26-L30).
+If your project has historically implemented [custom aliases](/docs/build/custom-aliases) by reimplementing the `generate_alias_name` macro, and you'd like to start using model versions, you should update your custom implementation to account for model versions. Specifically, we'd encourage you to add [a condition like this one](https://github.com/dbt-labs/dbt/blob/ada8860e48b32ac712d92e8b0977b2c3c9749981/core/dbt/include/global_project/macros/get_custom_name/get_custom_alias.sql#L26-L30).
 
 Your existing implementation of `generate_alias_name` should not encounter any errors upon first upgrading to v1.5. It's only when you create your first versioned model, that you may see an error like:
 

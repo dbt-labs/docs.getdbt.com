@@ -31,7 +31,7 @@ for r in res.result:
     print(f"{r.node.name}: {r.status}")
 ```
 
-For implementation details, refer to the source definitions of `dbtRunner` and `dbtRunnerResult` in the [<Constant name="core" /> repository](https://github.com/dbt-labs/dbt-core/blob/1.latest/core/dbt/cli/main.py).
+For implementation details, refer to the source definitions of `dbtRunner` and `dbtRunnerResult` in the [<Constant name="core" /> repository](https://github.com/dbt-labs/dbt/blob/1.latest/core/dbt/cli/main.py).
 
 </VersionBlock>
 
@@ -54,7 +54,7 @@ for r in res.result:
     print(f"{r.unique_id}: {r.status}")
 ```
 
-For implementation details, refer to the [`dbt-python` crate](https://github.com/dbt-labs/dbt-core/tree/main/crates/dbt-python) in the <Constant name="core" /> repository.
+For implementation details, refer to the [`dbt-python` crate](https://github.com/dbt-labs/dbt/tree/main/crates/dbt-python) in the <Constant name="core" /> repository.
 
 </VersionBlock>
 

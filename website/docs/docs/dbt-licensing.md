@@ -64,7 +64,7 @@ When you're ready to upgrade to v2, check out the [Upgrade to v2](/docs/dbt-vers
 
 ## Licensing details
 
-[<Constant name="core" />](https://github.com/dbt-labs/dbt-core) is released under the [Apache 2.0 license](http://www.apache.org/licenses/LICENSE-2.0). <Constant name="fusion" /> is proprietary to dbt Labs, made available under the [dbt Product Licensing Agreement](https://www.getdbt.com/dbt-fusion-engine-license-agreement).
+[<Constant name="core" />](https://github.com/dbt-labs/dbt) is released under the [Apache 2.0 license](http://www.apache.org/licenses/LICENSE-2.0). <Constant name="fusion" /> is proprietary to dbt Labs, made available under the [dbt Product Licensing Agreement](https://www.getdbt.com/dbt-fusion-engine-license-agreement).
 
 For the full breakdown of what's permitted under each license &mdash; source visibility, contributions, modifications, self-hosting, and redistribution &mdash; see the [dbt Licensing FAQ](https://www.getdbt.com/licenses-faq).
 

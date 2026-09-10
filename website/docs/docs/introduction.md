@@ -74,7 +74,7 @@ Other ways to run self-hosted dbt:
 - [<Constant name="core_v1" />](/docs/local/install-dbt?version=1.0): The original Python-based CLI. 
 - [<Constant name="core_v2" />](/docs/local/install-dbt-v2): <Constant name="core_v2" />, the free, fully open-source (Apache 2.0) distribution of the new Rust-based dbt engine. Typically for organizations with a strict requirement to use this OSS runtime.
 
-To contribute to the open-source project, refer to the [GitHub repo](https://github.com/dbt-labs/dbt-core).
+To contribute to the open-source project, refer to the [GitHub repo](https://github.com/dbt-labs/dbt).
 
 ## Why use dbt
 

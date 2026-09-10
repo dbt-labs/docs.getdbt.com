@@ -13,19 +13,19 @@ import CoreVersionDeprecation from '/snippets/_core-version-deprecation-callout.
 <CoreVersionDeprecation />
 
 <Constant name="core" /> v1.5 is a feature release, with two significant additions:
-1. [**Model governance**](/docs/mesh/govern/about-model-governance) — access, contracts, versions — the first phase of [multi-project deployments](https://github.com/dbt-labs/dbt-core/discussions/6725)
+1. [**Model governance**](/docs/mesh/govern/about-model-governance) — access, contracts, versions — the first phase of [multi-project deployments](https://github.com/dbt-labs/dbt/discussions/6725)
 2. A Python entry point for [**programmatic invocations**](/reference/programmatic-invocations), at parity with the CLI
 
 ## Resources
 
-- [Changelog](https://github.com/dbt-labs/dbt-core/blob/1.5.latest/CHANGELOG.md)
+- [Changelog](https://github.com/dbt-labs/dbt/blob/1.5.latest/CHANGELOG.md)
 - [<Constant name="core" /> CLI Installation guide](/docs/local/install-dbt)
 - [Cloud upgrade guide](/docs/dbt-versions/upgrade-dbt-platform-version)
-- [Release schedule](https://github.com/dbt-labs/dbt-core/issues/6715)
+- [Release schedule](https://github.com/dbt-labs/dbt/issues/6715)
 
 ## What to know before upgrading
 
-dbt Labs is committed to providing backward compatibility for all versions 1.x, with the exception of any changes explicitly mentioned below. If you encounter an error upon upgrading, please let us know by [opening an issue](https://github.com/dbt-labs/dbt-core/issues/new).
+dbt Labs is committed to providing backward compatibility for all versions 1.x, with the exception of any changes explicitly mentioned below. If you encounter an error upon upgrading, please let us know by [opening an issue](https://github.com/dbt-labs/dbt/issues/new).
 
 ### Behavior changes
 
@@ -37,7 +37,7 @@ This release includes significant new features, and rework to `dbt-core`'s CLI a
 
 :::
 
-Setting `log-path` and `target-path` in `dbt_project.yml` has been deprecated for consistency with other invocation-specific runtime configs ([dbt-core#6882](https://github.com/dbt-labs/dbt-core/issues/6882)). We recommend setting via env var or CLI flag instead.
+Setting `log-path` and `target-path` in `dbt_project.yml` has been deprecated for consistency with other invocation-specific runtime configs ([dbt-core#6882](https://github.com/dbt-labs/dbt/issues/6882)). We recommend setting via env var or CLI flag instead.
 
 The `dbt list` command will now include `INFO` level logs by default. Previously, the `list` command (and _only_ the `list` command) had `WARN`-level stdout logging, to support piping its results to [`jq`](https://jqlang.github.io/jq/manual/), a file, or another process. To achieve that goal, you can use either of the following parameters:
 - `dbt list --log-level warn` (recommended; equivalent to previous default)
@@ -49,7 +49,7 @@ The following env vars have been renamed, for consistency with the convention fo
 - `DBT_NO_PRINT` → `DBT_PRINT`
 - `DBT_ARTIFACT_STATE_PATH` → `DBT_STATE`
 
-As described in [dbt-core#7169](https://github.com/dbt-labs/dbt-core/pull/7169), command-line parameters that could be silent before will no longer be silent. See [dbt-labs/dbt-core#7158](https://github.com/dbt-labs/dbt-core/issues/7158) and [dbt-labs/dbt-core#6800](https://github.com/dbt-labs/dbt-core/issues/6800) for more examples of the behavior we are fixing.
+As described in [dbt-core#7169](https://github.com/dbt-labs/dbt/pull/7169), command-line parameters that could be silent before will no longer be silent. See [dbt-labs/dbt#7158](https://github.com/dbt-labs/dbt/issues/7158) and [dbt-labs/dbt#6800](https://github.com/dbt-labs/dbt/issues/6800) for more examples of the behavior we are fixing.
 
 An empty `tests:` key in a yaml file will now raise a validation error, instead of being silently skipped. You can resolve this by removing the empty `tests:` key, or by setting it to an empty list explicitly:
 ```yml
@@ -111,13 +111,13 @@ Some options that could previously be specified _after_ a subcommand can now onl
 Additionally, some options that could be previously specified _before_ a subcommand can now only be specified _after_. Any option _not_ in the above list must appear _after_ the subcommand from v1.5 and later. For example, `--profiles-dir`.
 
 
-The built-in [collect_freshness](https://github.com/dbt-labs/dbt-core/blob/1.5.latest/core/dbt/include/global_project/macros/adapters/freshness.sql) macro now returns the entire `response` object, instead of just the `table` result. If you're using a custom override for `collect_freshness`, make sure you're also returning the `response` object; otherwise, some of your dbt commands will never finish. For example:
+The built-in [collect_freshness](https://github.com/dbt-labs/dbt/blob/1.5.latest/core/dbt/include/global_project/macros/adapters/freshness.sql) macro now returns the entire `response` object, instead of just the `table` result. If you're using a custom override for `collect_freshness`, make sure you're also returning the `response` object; otherwise, some of your dbt commands will never finish. For example:
 
 ```sql
 {{ return(load_result('collect_freshness')) }}
 ```
 
-Finally: The [built-in `generate_alias_name` macro](https://github.com/dbt-labs/dbt-core/blob/1.5.latest/core/dbt/include/global_project/macros/get_custom_name/get_custom_alias.sql) now includes logic to handle versioned models. If your project has reimplemented the `generate_alias_name` macro with custom logic, and you want to start using [model versions](/docs/mesh/govern/model-versions), you will need to update the logic in your macro. Note that, while this is **not** a prerequisite for upgrading to v1.5—only for using the new feature—we recommend that you do this during your upgrade, whether you're planning to use model versions tomorrow or far in the future.
+Finally: The [built-in `generate_alias_name` macro](https://github.com/dbt-labs/dbt/blob/1.5.latest/core/dbt/include/global_project/macros/get_custom_name/get_custom_alias.sql) now includes logic to handle versioned models. If your project has reimplemented the `generate_alias_name` macro with custom logic, and you want to start using [model versions](/docs/mesh/govern/model-versions), you will need to update the logic in your macro. Note that, while this is **not** a prerequisite for upgrading to v1.5—only for using the new feature—we recommend that you do this during your upgrade, whether you're planning to use model versions tomorrow or far in the future.
 
 Likewise, if your project has reimplemented the `ref` macro with custom logic, you will need to update the logic in your macro as described [here](/reference/dbt-jinja-functions/builtins).
 
@@ -132,7 +132,7 @@ The [manifest](/reference/artifacts/manifest-json) schema version will be update
 
 ### For maintainers of adapter plugins
 
-For more detailed information and to ask questions, please read and comment on the GH discussion: [dbt-labs/dbt-core#7213](https://github.com/dbt-labs/dbt-core/discussions/7213).
+For more detailed information and to ask questions, please read and comment on the GH discussion: [dbt-labs/dbt#7213](https://github.com/dbt-labs/dbt/discussions/7213).
 
 ## New and changed documentation
 

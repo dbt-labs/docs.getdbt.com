@@ -47,7 +47,7 @@ Explicit pin:
 
 `python -m pip install dbt-core==2.0.0rc2`
 
-For adapter install details, refer to the [`dbt-core` repository](https://github.com/dbt-labs/dbt-core).
+For adapter install details, refer to the [`dbt-core` repository](https://github.com/dbt-labs/dbt).
 
 ## What's included
 
@@ -68,16 +68,16 @@ For the full picture of what you get with dbt, refer to [Fusion availability](/d
 
 ## Contributing
 
-<Constant name="core_v2" /> is developed in the open. To contribute, refer to the [`dbt-core` repository](https://github.com/dbt-labs/dbt-core) and its [CONTRIBUTING guide](https://github.com/dbt-labs/dbt-core/blob/HEAD/CONTRIBUTING.md), or ask in the [dbt Community](/community/resources/getting-help).
+<Constant name="core_v2" /> is developed in the open. To contribute, refer to the [`dbt-core` repository](https://github.com/dbt-labs/dbt) and its [CONTRIBUTING guide](https://github.com/dbt-labs/dbt/blob/HEAD/CONTRIBUTING.md), or ask in the [dbt Community](/community/resources/getting-help).
 
 ## License
 
-<Constant name="core_v2" /> is licensed under Apache 2.0. Refer to the [LICENSE file](https://github.com/dbt-labs/dbt-core/blob/HEAD/LICENSE) in the repository. Refer to [dbt licensing](/docs/dbt-licensing?version=2.0) for more info.
+<Constant name="core_v2" /> is licensed under Apache 2.0. Refer to the [LICENSE file](https://github.com/dbt-labs/dbt/blob/HEAD/LICENSE) in the repository. Refer to [dbt licensing](/docs/dbt-licensing?version=2.0) for more info.
 
 ## Related
 
 - [Install dbt](/docs/local/install-dbt) (standard install)
 - [Upgrade to v2](/docs/dbt-versions/dbt-upgrade/upgrading-to-v2)
-- [`dbt-core` repository on GitHub](https://github.com/dbt-labs/dbt-core)
+- [`dbt-core` repository on GitHub](https://github.com/dbt-labs/dbt)
 
 </VersionBlock>
