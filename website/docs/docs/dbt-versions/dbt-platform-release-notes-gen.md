@@ -35,13 +35,6 @@ Release notes are grouped by date for single-tenant environments.
 - **Column counts in the models table**: The models table in Catalog navigation now shows a column count for each model, sourced from catalog data.
   <!-- PRs: `https://github.com/dbt-labs/dbt-ui/pull/1491` ✅-->
 
-### Deployment and Configuration
-
-- **TLS support for argo-server connections**: Operators can now enable HTTPS and control Transport Layer Security (TLS) certificate verification for argo-server connections using the new `ARGO_TLS_VERIFY` environment variable (default: `false`). Helm chart deployments can configure this via the new `argo.tls.enabled` and `argo.tls.verify` values.
-  <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pull/19057`, `https://github.com/dbt-labs/dbt-cloud/pull/19058` -->
-
----
-
 ## Enhancements
 
 ### dbt Copilot and agents
@@ -68,7 +61,7 @@ Release notes are grouped by date for single-tenant environments.
 - **Upstream sources sorted by freshness severity**: The Upstream Sources table on model detail pages now sorts by freshness severity by default (Error first, Pass last). Name and Status column headers are clickable sort controls, and the Status column no longer overflows horizontally on wide viewports.
   <!-- PRs: `https://github.com/dbt-labs/dbt-ui/pull/1490` ✅-->
 
-### Orchestration and Run Status
+### Orchestration and run status
 
 - **Full model timing view for large runs**: The model timing Gantt chart no longer limits groups to 2,000 rows. You can now see all models in the timing view for large runs, with virtualized scrolling for performance.
   <!-- PRs: `https://github.com/dbt-labs/dbt-ui/pull/1515` ✅-->
@@ -95,8 +88,6 @@ Release notes are grouped by date for single-tenant environments.
 - **Clearer GitLab unavailability errors**: When a GitLab host is unreachable, affected API endpoints now return HTTP 503 with the message "GitLab is unavailable, please try again." instead of an unclear failure, affecting repository creation and GitLab group listing flows.
   <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pull/18876` ✅-->
 
----
-
 ## Fixes
 
 ### Catalog
@@ -115,7 +106,7 @@ Release notes are grouped by date for single-tenant environments.
   <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pull/18966` ✅-->
 
 - **Corrected Azure DevOps account linking error**: Fixes swapped exception handlers for missing Azure DevOps (ADO) account linking. The error message now reads "Missing Azure user; link your Azure DevOps account in your personal profile" to guide you to the correct remediation step.
-  <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pull/19047` -->
+  <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pull/19047` ✅-->
 
 - **Clearer invalid profile name error**: The error message for invalid profile names now reads "Profile name cannot contain spaces or special characters. Use dashes or underscores to separate words. For example, profile-name." This replaces the previous message that referenced "profile keys" and omitted underscores as a valid separator.
   <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pull/19063` -->
@@ -123,9 +114,7 @@ Release notes are grouped by date for single-tenant environments.
 - **Malformed OAuth client requests return 400**: Malformed OAuth server client creation requests (for example, sending a JSON array instead of an object) now return HTTP 400 Bad Request instead of HTTP 500 Internal Server Error.
   <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pull/19025` -->
 
----
-
-## Behavior Changes
+## Behavior change
 
 ### APIs, Identity, and Administration
 
