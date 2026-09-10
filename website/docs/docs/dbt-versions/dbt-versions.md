@@ -62,7 +62,7 @@ The <Constant name="core"/> engine uses semantic versioning for the 1.x release 
 
 <Snippet path="core-versions-table" />
 
-### How <Constant name="core" /> uses semantic versioning
+### How <Constant name="core" /> uses semantic versioning {#how-dbt-v1-uses-semantic-versioning}
 
 dbt follows [semantic versioning](https://semver.org/):
 
