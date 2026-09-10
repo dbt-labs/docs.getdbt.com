@@ -7,7 +7,7 @@ availability: platform_login
 import FusionDWH from '/snippets/_fusion-dwh-platform.md';
 import FusionUpgradeSteps from '/snippets/_fusion-upgrade-steps.md';
 
-In <Constant name="dbt" />, both [jobs](/docs/deploy/jobs) and [environments](/docs/dbt-platform-environments) are configured to use a specific version of <Constant name="core" />. The version can be upgraded at any time.
+In <Constant name="dbt" />, both [jobs](/docs/deploy/jobs) and [environments](/docs/dbt-platform-environments) are configured to use a specific version of dbt. The version can be upgraded at any time.
 
 ## Environments
 

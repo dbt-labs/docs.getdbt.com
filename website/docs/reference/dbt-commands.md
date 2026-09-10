@@ -34,10 +34,6 @@ For information about selecting models on the command line, refer to [Model sele
 
 Commands marked ❌ indicate write commands, commands marked ✅ indicate read commands, and commands marked N/A indicate that parallel execution isn't relevant for that command.
 
-:::info
-Some commands are not yet supported in <Constant name="fusion_engine" /> or have limited functionality. Refer to the [<Constant name="fusion" /> supported features](/docs/dbt/supported-features) page for details.
-:::
-
 
 | Command | Description | Parallel execution |  <div style={{width:'250px'}}>Caveats</div> |
 |---------|-------------| :-----------------:| ------------------------------------------ |

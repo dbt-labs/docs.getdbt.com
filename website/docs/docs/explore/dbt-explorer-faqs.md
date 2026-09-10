@@ -33,7 +33,7 @@ availability: platform_login
 
 <Expandable alt_header="Can I use dbt Catalog on-premises or with my self-hosted dbt deployment?" >
 
-No. <Constant name="catalog" /> and all of its features are only available as a <Constant name="dbt" /> user experience. <Constant name="catalog" /> reflects the metadata from your <Constant name="dbt" /> project(s) and their runs. 
+No. <Constant name="catalog" /> and all of its features are only available as a <Constant name="dbt_platform" /> user experience. <Constant name="catalog" /> reflects the metadata from your <Constant name="dbt_platform" /> project(s) and their runs. 
 
 </Expandable>
 

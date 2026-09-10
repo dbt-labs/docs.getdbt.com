@@ -7,7 +7,9 @@ pagination_prev: null
 availability: all_users
 ---
 
-v2 is the current generation of dbt &mdash; installing or upgrading gives you the full v2 experience, but dbt OSS provides the Apache 2.0 open-source foundation underneath. <Constant name="core_v1"/> (Python-based, open-source) remains on the 1.x series and follows semantic versioning; v2 uses the 2.x series. This page covers versioning for local dbt installations.
+dbt v2 is the current generation of dbt and uses the 2.x release series. dbt v1 is the Python-based generation and stays on the 1.x series. Both follow semantic versioning. This page covers versioning for local dbt installations.
+
+v2 ships in two distributions. Install dbt v2 for the full, recommended experience. If your organization has a strict requirement for an Apache 2.0 licensed runtime, install dbt OSS instead. For more information, refer to [dbt licensing](https://github.com/docs/dbt-licensing).
 
 If you're using the <Constant name="dbt_platform" /> (including the <Constant name="platform_cli"/>), you don't need to manage dbt versions yourself. [Release tracks](/docs/dbt-versions/dbt-release-tracks) automatically keep you up to date and provide early access to new features.
 
