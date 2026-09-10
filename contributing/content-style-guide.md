@@ -530,7 +530,7 @@ Avoid Latin abbreviations. Use plain language:
 
 | ❌ Avoid | ✅ Use |
 |----------|--------|
-| CLI (alone) | dbt CLI or dbt v1 |
+| CLI (alone) | dbt CLI or dbt v1/v2 |
 | dbt CLI | dbt platform CLI (full name) |
 | enter (in UI) | type |
 | type (in command line) | enter |
