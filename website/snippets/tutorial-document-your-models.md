@@ -78,7 +78,7 @@ Update your `models/schema.yml` file to include some descriptions, such as those
 
 <TabItem value="View in Studio IDE" >
 
-You can view docs directly from the IDE if you're on `Latest` or another version of <Constant name="core" />. Keep in mind that this is a legacy view and doesn't offer the same level of interactivity as <Constant name="catalog" />.
+You can view docs directly from the IDE if you're on **v1 Latest** or another version of <Constant name="core" />. Keep in mind that this is a legacy view and doesn't offer the same level of interactivity as <Constant name="catalog" />.
 
 1. In the IDE, run `dbt docs generate`.
 2. From the navigation bar, click the **View docs** icon located to the right of the **branch name**.
