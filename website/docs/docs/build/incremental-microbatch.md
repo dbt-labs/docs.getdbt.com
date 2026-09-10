@@ -11,7 +11,7 @@ import EventTimeRequired from '/snippets/_event_time_required.md';
 
 :::info
 
-Available for [<Constant name="dbt" /> **Latest**](/docs/dbt-versions/dbt-release-tracks) and <Constant name="core" /> v1.9 or higher.
+Available for [<Constant name="dbt" /> **v1 Latest**](/docs/dbt-versions/dbt-release-tracks) and <Constant name="core" /> v1.9 or higher.
 
 If you use a custom microbatch macro, set a [distinct behavior flag](/reference/global-configs/behavior-flags/require_batched_execution_for_custom_microbatch_strategy) in your `dbt_project.yml` to enable batched execution. If you don't have a custom microbatch macro, you don't need to set this flag as dbt will handle microbatching automatically for any model using the [microbatch strategy](#how-microbatch-compares-to-other-incremental-strategies).
 
