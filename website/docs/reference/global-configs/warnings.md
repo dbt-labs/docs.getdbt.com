@@ -22,7 +22,7 @@ Enabling `WARN_ERROR` config or setting the `--warn-error` flag will convert _al
 :::caution Proceed with caution in production environments
 Using the `--warn-error` flag or `--warn-error-options '{"error": "all"}'` will treat _all_ current and future warnings as errors.
 
-This means that if a new warning is introduced in a future version of <Constant name="core" />, your production job may start failing unexpectedly. We recommend proceeding with caution when doing this in production environments, and explicitly listing only the warnings you want to treat as errors in production.
+This means that if a new warning is introduced in a future version of dbt, your production job may start failing unexpectedly. We recommend proceeding with caution when doing this in production environments, and explicitly listing only the warnings you want to treat as errors in production.
 :::
 
 
@@ -40,15 +40,15 @@ Warnings that should be treated as errors can be specified through the `error` p
 
 <VersionBlock firstVersion="1.12">
 
-Starting in v1.12, <Constant name="core" /> ignores [Fusion-specific names](https://github.com/dbt-labs/dbt-core/blob/1.12.latest/core/dbt/events/fusion_warn_error_options.py) in `warn_error_options` (for example, `StaticAnalysis` and `PackageParsingCompatibility`) instead of raising an error, and emits a note: `<name> is not being used because it's specific to the dbt Fusion engine.` This lets you share `warn_error_options` configs across <Constant name="core" /> and <Constant name="fusion" />. Genuine typos still raise an error.
+Starting in v1.12, <Constant name="core" /> ignores [dbt v2-specific names](https://github.com/dbt-labs/dbt-core/blob/1.12.latest/core/dbt/events/fusion_warn_error_options.py) in `warn_error_options` (for example, `StaticAnalysis` and `PackageParsingCompatibility`) instead of raising an error, and emits a note: `<name> is not being used because it's specific to the dbt Fusion engine.` This lets you share `warn_error_options` configs across <Constant name="core" /> and <Constant name="fusion" />. Genuine typos still raise an error.
 
 </VersionBlock>
 
 <VersionBlock firstVersion="2.0">
 
-In the <Constant name="fusion_engine" />, every warning has both a numeric code (for example, `1092`) and an event name (for example, `NoNodesForSelectionCriteria`). 
+In <Constant name="fusion_engine" />, every warning has both a numeric code (for example, `1092`) and an event name (for example, `NoNodesForSelectionCriteria`). 
 
-Runtime messages show both, but `warn_error_options` only accepts the _name_. Use the event name, Fusion-native name, or a supported group (`all`, `*`). Numeric codes aren't accepted and will cause an error. 
+Runtime messages show both, but `warn_error_options` only accepts the _name_. Use the event name, v2-native name, or a supported group (`all`, `*`). Numeric codes aren't accepted and will cause an error. 
 
 To find the name for a code you see in your logs, check out [Supported legacy dbt-Core event name aliases](#supported-legacy-dbt-core-event-name-aliases).
 
@@ -185,14 +185,14 @@ DBT_ENGINE_WARN_ERROR_OPTIONS='{"error": "*"}' dbt run
 :::caution
 Note, using `warn_error_options: error: "all"` will treat all current and future warnings as errors.
 
-This means that if a new warning is introduced in a future version of <Constant name="core" />, your production job may start failing unexpectedly. We recommend proceeding with caution when doing this in production environments, and explicitly listing only the warnings you want to treat as errors in production.
+This means that if a new warning is introduced in a future version of dbt, your production job may start failing unexpectedly. We recommend proceeding with caution when doing this in production environments, and explicitly listing only the warnings you want to treat as errors in production.
 :::
 
 <VersionBlock firstVersion="2.0">
 
-## Fusion behavior and warning codes
+## dbt v2 behavior and warning codes
 
-The <Constant name="fusion_engine" /> fully supports `warn_error_options`. This section describes important differences from <Constant name="core" /> behavior.
+<Constant name="fusion_engine" /> fully supports `warn_error_options`. This section describes important differences from <Constant name="core" /> behavior.
 
 Existing dbt-core event names fall into three categories:
 
@@ -213,7 +213,7 @@ flags:
       - FreshnessConfigProblem   # by name
 ```
 
-Any value that isn't a supported legacy event name, Fusion-native name, or supported group (`all`, `*`) causes <Constant name="fusion" /> to exit with an error at startup, including numeric codes. For example, `{error: [1092]}` fails, but `{error: [NoNodesForSelectionCriteria]}` works.
+Any value that isn't a supported legacy event name, v2-native name, or supported group (`all`, `*`) causes <Constant name="fusion" /> to exit with an error at startup, including numeric codes. For example, `{error: [1092]}` fails, but `{error: [NoNodesForSelectionCriteria]}` works.
 
 Not every valid name appears in the tables on this page. <Constant name="fusion" /> also emits its own warnings (for example, `SemanticModelDeprecated`, code `dbt1157`) that aren't listed here. Use the name shown in the runtime message.
 
@@ -221,7 +221,7 @@ Not every valid name appears in the tables on this page. <Constant name="fusion"
 
 When you see a warning code in your logs, use the following table to find the matching event name to put in `warn_error_options`. The code column is only for looking up warnings you see at runtime &mdash; you can't use the code itself in your config:
 
-| Fusion code (runtime only) | dbt-core event name (use this in config) | Description |
+| dbt v2 code (runtime only) | dbt-core event name (use this in config) | Description |
 |---|---|---|
 | 1601 | `NoNodesSelected` | No nodes selected |
 | 1601 | `NothingToDo` | No nodes selected (alias) |
@@ -287,7 +287,7 @@ The table below is not a complete list of unsupported names. It only includes <C
 
 Some <Constant name="core" /> warning names correspond to behaviors that <Constant name="fusion" /> enforces unconditionally as parse errors. If you reference these names in `warn_error_options`, <Constant name="fusion" /> emits a startup warning explaining that the entry has no effect. You can carry over your `warn_error_options` config from <Constant name="core" /> without breaking, but these configs do nothing (They will throw a warning as `unsupported` and should be removed from the config):
 
-| dbt-Core event name | Fusion behavior | Fusion error code |
+| dbt-Core event name | dbt v2 behavior | dbt v2 error code |
 |---|---|---|
 | `DuplicateYAMLKeysDeprecation` | <Constant name="fusion" />'s YAML parser rejects duplicate keys as hard parse errors | `DuplicateConfigKey` (1059) |
 | `CustomKeyInConfigDeprecation` | Unknown config keys are rejected via strict schema validation | `UnusedConfigKey` (1060) |
@@ -304,17 +304,17 @@ If your project emits static analysis warnings and you use `--warn-error` (which
 
 ### Deprecated `include` and `exclude` keys
 
-The legacy `include` and `exclude` fields for `warn_error_options` were deprecated in <Constant name="core" /> v1.8 but are still supported in <Constant name="fusion" />. If you use them, <Constant name="fusion" /> emits a `WEOIncludeExcludeDeprecation` warning (code 1086) and ignores the deprecated keys. Migrate to `error`, `warn`, and `silence` instead:
+The legacy `include` and `exclude` fields for `warn_error_options` were deprecated in <Constant name="dbt" /> v1.8 but are still supported in <Constant name="fusion" />. If you use them, <Constant name="fusion" /> emits a `WEOIncludeExcludeDeprecation` warning (code 1086) and ignores the deprecated keys. Migrate to `error`, `warn`, and `silence` instead:
 
 ```yaml
-# Before (Core ≤1.7)
+# Before (dbt ≤1.7)
 flags:
   warn_error_options:
     include: all
     exclude:
       - NoNodesForSelectionCriteria
 
-# After (Core ≥1.8 and Fusion)
+# After (dbt ≥1.8 and v2)
 flags:
   warn_error_options:
     error: all

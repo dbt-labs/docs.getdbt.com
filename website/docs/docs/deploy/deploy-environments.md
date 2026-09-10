@@ -7,7 +7,7 @@ availability: platform_login
 
 Deployment environments in <Constant name="dbt" /> are crucial for deploying dbt jobs in production and using features or integrations that depend on dbt metadata or results. To execute dbt, environments determine the settings used during job runs, including:
 
-- The version of <Constant name="core" /> that will be used to run your project
+- The version of <Constant name="dbt" /> that will be used to run your project
 - The warehouse connection information (including the target database/schema settings)
 - The [connection profile](/docs/platform/about-profiles) (the credentials dbt uses to connect)
 - The version of your code to execute

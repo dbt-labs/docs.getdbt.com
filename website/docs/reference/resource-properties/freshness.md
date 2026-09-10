@@ -82,7 +82,7 @@ Currently, calculating freshness from warehouse metadata tables is supported on 
 - [Snowflake](/reference/resource-configs/snowflake-configs)
 - [Redshift](/reference/resource-configs/redshift-configs)
 - [BigQuery](/reference/resource-configs/bigquery-configs) (Supported in [`dbt-bigquery`](https://github.com/dbt-labs/dbt-bigquery) version 1.7.3 or higher)
-- [Databricks](/reference/resource-configs/databricks-configs) (Supported in the <Constant name="fusion_engine" />)
+- [Databricks](/reference/resource-configs/databricks-configs) (Supported in <Constant name="fusion_engine" />)
 
 <VersionBlock firstVersion="1.12">
 :::note Wildcard table identifiers
