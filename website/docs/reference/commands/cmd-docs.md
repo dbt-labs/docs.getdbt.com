@@ -126,7 +126,7 @@ With <Constant name="fusion_engine" />, [dbt Docs v2](/docs/build/view-documenta
 
 If you only need to hydrate catalog metadata (`catalog.json`) for <Constant name="catalog" /> in <Constant name="dbt_platform" />, without building the documentation site, use the [`--write-catalog` flag](#--write-catalog-flag) instead.
 
-## dbt Docs v2 <Lifecycle status="beta"/>
+## dbt Docs v2
 
 Instead of loading a static `manifest.json` in the browser, v2 produces Parquet artifacts when you compile or build your project. `dbt docs generate` exports a documentation site made of plain static files (a single-page app plus those artifacts) that any file host can serve. The browser reads the Parquet directly using DuckDB-WASM (WebAssembly), so you don't need to run a stateful server to view your docs. This keeps the experience fast even for large projects.
 
