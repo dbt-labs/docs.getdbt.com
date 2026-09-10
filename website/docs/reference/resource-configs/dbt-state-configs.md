@@ -7,7 +7,7 @@ tags: ['dbt State']
 
 When you run a dbt command with [dbt State](/docs/deploy/dbt-state-about) enabled, dbt compares a node's logic and data against previous builds and takes the most efficient path:
 
-- **Reuse** — if the object exists in the target schema, its logic hasn't changed, and its parents haven't received fresh data exceeding its `lag_tolerance`, the node is reused.
+- **Reuse** — if the object exists in the target schema, its logic hasn't changed, and it isn't yet due to rebuild under its `lag_tolerance` (its last build is still within the tolerance window, or its upstream data hasn't changed), the node is reused.
 - **Clone** — if reuse isn't possible but the object exists in the deferred environment with the same logic and sufficiently fresh data, dbt State clones it.
 - **Normal build** — if neither reuse nor clone is possible, the node builds as normal, using deferral for any unselected upstream nodes.
 
@@ -95,7 +95,7 @@ my_project:
 
 | Config | Default | Scope | Description |
 |--------|---------|-------|-------------|
-| [`lag_tolerance`](/reference/resource-configs/lag-tolerance) | `45m` | Node, folder, or project-level via model config | How much time must pass since the last upstream data change before a node is eligible for a rebuild. Acts as a compute-saving buffer that helps align builds with freshness SLAs. Applies to data freshness only; SQL changes always trigger a rebuild regardless of this setting. |
+| [`lag_tolerance`](/reference/resource-configs/lag-tolerance) | `45m` | Node, folder, or project-level via model config | Sets how long dbt State waits before rebuilding a node after its upstream data changes. A node rebuilds only when its last build is older than this window and its upstream data has changed. Acts as a compute-saving buffer that helps align builds with freshness SLAs. Applies to data freshness only; SQL changes always trigger a rebuild regardless of this setting. |
 | [`compare_unrendered_code`](/reference/resource-configs/compare-unrendered-code) | `false` | Node, folder, or project-level via model config | Controls whether dbt State checks both the Jinja template (unrendered code) and rendered SQL when detecting code changes. Useful for models with non-deterministic macros or environment variables that produce different rendered SQL on every run. |
 | [`require_fresh_data_from`](/reference/resource-configs/require-fresh-data-from) | `any` | Node, folder, or project-level via model config | Whether `any` or `all` direct parents need fresh data before a node is eligible for a rebuild. |
 | [`pre_clone`](/reference/resource-configs/pre-clone) | `if_missing` | Node, folder, or project-level via model config | Whether dbt State pre-populates incremental models and snapshots by cloning production before a run. |
