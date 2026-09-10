@@ -266,7 +266,7 @@ Repeat for other intermediate environments
 :::caution Found an issue?
 
 If you encounter problems in staging:
-- Review the [dbt v2 limitations](/docs/dbt/supported-features#limitations) to see if it's a known issue.
+- Review the [v2 limitations](/docs/dbt/supported-features#limitations) to see if it's a known issue.
 - Check job logs for specific error messages.
 - Test the same models in your development environment to isolate the problem.
 - Contact [dbt Support](/docs/dbt-support) or your account team for assistance.

@@ -30,7 +30,7 @@ When you install dbt, you get v2 by default. There's no separate feature set to 
 To use v2 in your project you must:
 - Use a supported adapter and authentication method:
   <FusionDWH /> 
-- Be able to run your project on the latest version of dbt v1 with no deprecation warnings or errors.
+- Be able to run your project on the latest version of v1 with no deprecation warnings or errors.
 - Migrate your Semantic Layer configurations to the [latest YAML spec](/docs/build/latest-metrics-spec).
 
 ## Parity with dbt v1
@@ -51,7 +51,7 @@ Most v2 features work right away, with no login required. A few more unlock once
 
 ## Limitations
 
-If your project uses any of the following, you can still use dbt v2, but full migration may not be possible yet:
+If your project uses any of the following, you can still use v2, but full migration may not be possible yet:
 
 - Models that rely on materialization features v2 doesn't fully support, or that need configurations it's still missing
 - Tooling that depends on v1.x's exact log output &mdash; v2's logging system is still unstable and incomplete

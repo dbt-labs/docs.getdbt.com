@@ -205,10 +205,10 @@ duckdb.sql("""
 
 Telemetry provides several ways to measure node performance:
 
-- **Processing time (`attributes.duration_ms`)** measures the time dbt v2 spent actively processing the node, including nested `NodeEvaluated` work. It excludes time spent waiting for upstream nodes or internal backpressure. Use this metric to identify the nodes that take the longest to process.
+- **Processing time (`attributes.duration_ms`)** measures the time v2 spent actively processing the node, including nested `NodeEvaluated` work. It excludes time spent waiting for upstream nodes or internal backpressure. Use this metric to identify the nodes that take the longest to process.
 - **Node lifetime (`end_time_unix_nano - start_time_unix_nano`)** measures the full time from the start to the end of the span, including time spent waiting at the connection-limit gate. In builds with saturated threads, this metric might surface nodes with the longest queue time rather than the most processing work.
 - **Idle time (`attributes.idle_time_ms`)** measures how long the node spent waiting instead of being actively processed, such as while waiting for an upstream node or available processing capacity. Use it to identify where resource constraints are causing delays.
-- **Warehouse execution time** is the sum of `QueryExecuted` span durations for each `unique_id`. It excludes dbt v2-side work such as compilation and static analysis. Use this metric to compare telemetry with your warehouse query history.
+- **Warehouse execution time** is the sum of `QueryExecuted` span durations for each `unique_id`. It excludes v2-side work such as compilation and static analysis. Use this metric to compare telemetry with your warehouse query history.
 
 :::
 

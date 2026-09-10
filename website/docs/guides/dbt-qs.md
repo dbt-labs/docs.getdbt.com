@@ -35,7 +35,7 @@ This quickstart guide will get you from zero to running your first dbt project w
 | **Local CLI** | [Install <Constant name="fusion_engine" />](/docs/local/install-dbt?version=2) locally following this guide. |
 | **VS Code / Cursor IDE** | [Install the dbt extension](/docs/install-dbt-extension) to unlock <Constant name="fusion" />'s interactive power in your editor. |
 
-To learn more about which tool is best for you, see the [dbt v2 availability](/docs/dbt/dbt-availability) page. To learn about <Constant name="fusion_engine" /> and how it works, read more [about <Constant name="fusion_engine" />](/docs/introduction).
+To learn more about which tool is best for you, see the [v2 availability](/docs/dbt/dbt-availability) page. To learn about <Constant name="fusion_engine" /> and how it works, read more [about <Constant name="fusion_engine" />](/docs/introduction).
 
 
 ## Prerequisites

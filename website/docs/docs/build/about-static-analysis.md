@@ -253,7 +253,7 @@ Refer to [CLI options](/reference/global-configs/command-line-options) and [Conf
 
 ### Custom materializations
 
-If a model uses a [custom materialization](/guides/create-new-materializations), dbt v2 turns static analysis `off` for that model and for every model downstream of it. It does this automatically, without an error or a warning, no matter what you set `static_analysis` to.
+If a model uses a [custom materialization](/guides/create-new-materializations), v2 turns static analysis `off` for that model and for every model downstream of it. It does this automatically, without an error or a warning, no matter what you set `static_analysis` to.
 
 Because custom materialization is code you wrote, and it can change the finished table in ways v2 can't predict (for example, adding, renaming, or retyping columns). Rather than check your SQL against a schema that might be wrong, dbt skips analysis. It's the same reason dbt skips [introspective queries](#introspection-handling-in-baseline-mode), whose results also aren't known until the model runs.
 
@@ -281,7 +281,7 @@ We're reevaluating this automatic downgrade. The intent is for `baseline` analys
 
 The mode you configure for a model isn't always the mode in effect. This is because a model's effective mode depends on its parents, and on [custom materializations](#custom-materializations). You can see when a model has static analysis off in the [dbt VS Code extension](/docs/about-dbt-extension) and the <Constant name="studio_ide" /> both of which show a CodeLens above your models, indicating which models have static analysis disabled and why.
 
-Keep in mind that `dbt ls --output json --output-keys config.static_analysis` reports the mode you _configured_ for each model, not the mode dbt v2 resolves after applying the cascading rules and automatic downgrades.
+Keep in mind that `dbt ls --output json --output-keys config.static_analysis` reports the mode you _configured_ for each model, not the mode v2 resolves after applying the cascading rules and automatic downgrades.
 
 ### Example configurations
 

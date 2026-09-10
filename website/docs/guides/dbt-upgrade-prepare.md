@@ -6,7 +6,7 @@ icon: 'zap'
 hide_table_of_contents: true
 tags: ['dbt v2', 'dbt platform', 'Upgrade']
 recently_updated: true
-intro_text: This guide helps you prepare for an in-place upgrade from dbt v1 to dbt v2 in the dbt platform.
+intro_text: This guide helps you prepare for an in-place upgrade from v1 to v2 in the dbt platform.
 ---
 
 <div style={{maxWidth: '900px'}}>

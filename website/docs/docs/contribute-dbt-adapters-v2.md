@@ -8,7 +8,7 @@ availability:
 ---
 
 :::caution Work in progress
-This guide is a work in progress — synthesized from internal dbt v2 adapter team docs, DuckDB/ClickHouse reference implementations, the Exasol community adapter, and the v1 adapter creation guide.
+This guide is a work in progress — synthesized from internal v2 adapter team docs, DuckDB/ClickHouse reference implementations, the Exasol community adapter, and the v1 adapter creation guide.
 
 **Community contribution scope:** You are responsible for **Phase 1 (foundation)** only — connecting, running macros, and basic materializations. Phase 2 (SQL static analysis) is led by dbt Labs after your Phase 1 PR is merged.
 :::
@@ -138,7 +138,7 @@ A few components won't transfer 1:1 from v1 to v2 — meaning less code and main
 
 **How to use the v1 adapter with AI**
 
-The Jinja macros are the biggest asset. Feed your LLM your v1 `macros/adapters.sql` alongside the reference `adapters.sql` (in the file breakdown at the bottom of this guide) and ask it to port the macros into the dbt v2 structure. The SQL logic is the same; you're confirming the dialect is right and the system catalog table names match.
+The Jinja macros are the biggest asset. Feed your LLM your v1 `macros/adapters.sql` alongside the reference `adapters.sql` (in the file breakdown at the bottom of this guide) and ask it to port the macros into the v2 structure. The SQL logic is the same; you're confirming the dialect is right and the system catalog table names match.
 
 For profile config and auth, feed your LLM your v1 `credentials.py` or `profile_template.yml` alongside the reference `DbConfig` struct and auth module (see the file breakdown below). Field names and connection parameters usually map directly.
 
@@ -192,7 +192,7 @@ Every missing case is a compile error, so the AI always has a precise specificat
 - **Your warehouse's specifics** — system catalog table names and the connection fields from your `profiles.yml`.
 
 **Watch out for:**
-- **Hallucinated file paths** — AI often invents dbt v2 paths. Use the file breakdown below as ground truth.
+- **Hallucinated file paths** — AI often invents v2 paths. Use the file breakdown below as ground truth.
 - **Always verify with the type checker** — run `cargo check -p <crate>` after any AI-generated changes.
 - **SQL macro patterns from v1** may not apply cleanly in <Constant name="fusion" />. Compare against the reference `adapters.sql` in `crates/dbt-loader/src/dbt_macro_assets/dbt-exasol/macros/adapters.sql` in [dbt-labs/dbt-fusion](https://github.com/dbt-labs/dbt-fusion).
 

@@ -82,7 +82,7 @@ default:
 
 <TabItem value="IAM profile">
 
-Specify the IAM profile to use to connect your dbt v2 sessions. You will need to provide the following information:
+Specify the IAM profile to use to connect your v2 sessions. You will need to provide the following information:
 - **IAM Profile:** The profile name
 - **Cluster ID:** The unique identifier for your AWS cluster
 - **Region:** Your AWS region (for example, us-east-1)

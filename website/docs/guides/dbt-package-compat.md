@@ -125,7 +125,7 @@ When possible, add a step to your CI pipeline that runs `dbtf build` or equivale
 
 Your package is now <Constant name="fusion"/>-compatible and the dbt package hub reflects these changes. To summarize, you've now:
 
-- Created a dbt v2 compatible branch
+- Created a v2 compatible branch
 - Run `dbt-autofix` deprecations
 - Reviewed, committed, and tested changes 
 - Updated `require-dbt-version: [">=1.10.0,<3.0.0"]` to include `2.0.0`

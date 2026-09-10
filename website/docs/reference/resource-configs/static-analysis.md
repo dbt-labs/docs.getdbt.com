@@ -215,7 +215,7 @@ For example, for the lineage Model A → Model B → Model C:
 
 This makes sure that stricter validation requirements don't apply downstream when parent models haven't met those requirements. `baseline` doesn't produce the full analyzed schema that `strict` needs from its upstream models, so a downstream model of a `baseline` model can't run strict-level type checking.
 
-Refer to the dbt v2 concepts page for deeper discussion and visuals: [New concepts](/docs/build/about-static-analysis). For more info on the JSON schema, refer to the [dbt-jsonschema file](https://github.com/dbt-labs/dbt-jsonschema/blob/1e2c1536fbdd421e49c8b65c51de619e3cd313ff/schemas/latest_fusion/dbt_project-latest-fusion.json#L4689).
+Refer to the v2 concepts page for deeper discussion and visuals: [New concepts](/docs/build/about-static-analysis). For more info on the JSON schema, refer to the [dbt-jsonschema file](https://github.com/dbt-labs/dbt-jsonschema/blob/1e2c1536fbdd421e49c8b65c51de619e3cd313ff/schemas/latest_fusion/dbt_project-latest-fusion.json#L4689).
 
 ### Custom materializations
 

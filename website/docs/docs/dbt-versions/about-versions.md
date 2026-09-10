@@ -20,7 +20,7 @@ Whether you're using the CLI or working within the <Constant name="dbt_platform"
     icon="dbt-bit"/>
 <Card
     title="dbt v2 version compatibility"
-    body="Learn about version compatibility between dbt v2, LSP, and VS Code extension."
+    body="Learn about version compatibility between v2, LSP, and VS Code extension."
     link="/docs/dbt-versions/dbt-version-compatibility"
     icon="dbt-bit"/>
 <Card

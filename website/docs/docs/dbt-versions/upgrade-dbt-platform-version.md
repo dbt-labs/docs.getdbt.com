@@ -93,7 +93,7 @@ The upgrade assistant and readiness panel only appear after enabling this settin
 3. Click the box next to **Enable dbt v2 readiness & upgrade features**.
 4. Click **Save**.
 
-Once enabled, all admins and developers can see each project's dbt v2 readiness status and which jobs are eligible or ineligible for <Constant name="fusion" />. Admins can also initiate the <Constant name="fusion" /> upgrade from development environments, environment settings, and job settings (subject to existing user permissions). Developer-licensed users will have access to debug tools to help make projects <Constant name="fusion" /> eligible in both development and production environments.
+Once enabled, all admins and developers can see each project's v2 readiness status and which jobs are eligible or ineligible for <Constant name="fusion" />. Admins can also initiate the <Constant name="fusion" /> upgrade from development environments, environment settings, and job settings (subject to existing user permissions). Developer-licensed users will have access to debug tools to help make projects <Constant name="fusion" /> eligible in both development and production environments.
 
 Step 2: Restrict upgrade access (optional, Enterprise/Enterprise+ only)
 

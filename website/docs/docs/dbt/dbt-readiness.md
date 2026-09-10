@@ -75,7 +75,7 @@ Your project may implement features that <Constant name="fusion" /> currently [l
 We determine <Constant name="fusion" /> eligibility using data from your job runs. 
 
 - [ ] Ensure you have at least one job running in each of your projects in the <Constant name="dbt_platform" />.
-  - [ ] Ensure each job has run within the last 7 days. Jobs that haven't run recently are considered inactive and are ineligible for <Constant name="fusion" />. If you see a "no active jobs" ineligibility reason in the dbt v2 readiness UI, run the job manually or adjust its schedule.
+  - [ ] Ensure each job has run within the last 7 days. Jobs that haven't run recently are considered inactive and are ineligible for <Constant name="fusion" />. If you see a "no active jobs" ineligibility reason in the v2 readiness UI, run the job manually or adjust its schedule.
 - [ ] Ensure all jobs are running on the [**v1 Latest** release track](/docs/dbt-versions/dbt-release-tracks#which-release-tracks-are-available) for the smoothest upgrade experience.
 - [ ] Resolve any job failures &mdash; all jobs must run successfully for eligibility checks to work.
 - [ ] Delete any jobs that are no longer in use to ensure accurate eligibility reporting. 
@@ -86,6 +86,6 @@ We determine <Constant name="fusion" /> eligibility using data from your job run
 
 <Constant name="fusion_engine" /> is generally available for <Constant name="dbt_platform" /> projects on Snowflake and in preview for all other eligible projects! Keep up-to-date with these resources: 
 
-- [ ] Check out the [dbt v2 homepage](https://www.getdbt.com/product/fusion) for available resources, including supported adapters, prerequisites, installation instructions, limitations, and deprecations.
+- [ ] Check out the [v2 homepage](https://www.getdbt.com/product/fusion) for available resources, including supported adapters, prerequisites, installation instructions, limitations, and deprecations.
 - [ ] Read the [Upgrade guide](/docs/dbt-versions/dbt-upgrade/upgrading-to-v2) to learn about the new features and functionality that impact your dbt projects.
 - [ ] Learn how [dbt State](/docs/deploy/dbt-state-about) can reduce warehouse costs by 30%+ by rebuilding models only when data or code changes.

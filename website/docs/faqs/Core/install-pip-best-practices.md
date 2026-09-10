@@ -16,7 +16,7 @@ Managing Python local environments can be challenging! You can use these best pr
 | Best practice | Recommendation | Why it matters |
 |---------------|----------------|----------------|
 | [Install <Constant name="core" /> with an adapter](/docs/local/install-dbt?version=1#installing-the-adapter) and keep versions in sync | Install with: `python -m pip install dbt-ADAPTER_NAME` <br /><br /> (For example, `python -m pip install dbt-snowflake`) <br /><br /> Match adapter versions to your <Constant name="core" /> version <br /><br /> | Provides a complete, compatible, and ready-to-run dbt setup <br /><br /> <br /><br /> Prevents runtime errors and adapter incompatibilities |
-| For tooling without a warehouse connection, install dbt v1 without an adapter | `python -m pip install` | Keeps your setup lean, predictable, and easier to maintain|
+| For tooling without a warehouse connection, install v1 without an adapter | `python -m pip install` | Keeps your setup lean, predictable, and easier to maintain|
 | Use [virtual environments](/faqs/Core/install-pip-best-practices.md#using-virtual-environments) | Install dbt in an isolated environment (for example, `venv`, `pipenv`, `poetry`) | Avoids dependency conflicts |
 | Reactivate your virtual environment for each session | Reactivate your virtual environment at the start of each new session before installing dependencies or running dbt commands | Keeps your dbt setup predictable, isolated, and reproducible |
 | [Create a project](/reference/commands/init) | Use the `dbt init` command to create and initialize your first project | Creates a standard dbt project and verifies your installation |

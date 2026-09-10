@@ -27,7 +27,7 @@ You can run validations from the <Constant name="dbt_platform" /> or the command
 
   When using `dbt sl validate` locally, the command validates your local semantic manifest, and not the platform's manifest. This means your uncommitted local changes are included in the validation.
 
-- For <Constant name="core" /> (open source) users or dbt v2 CLI users not connected to dbt platform and using local MetricFlow:
+- For <Constant name="core" /> (open source) users or v2 CLI users not connected to dbt platform and using local MetricFlow:
 
   ```bash
   mf validate-configs

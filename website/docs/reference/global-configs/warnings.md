@@ -48,7 +48,7 @@ Starting in v1.12, <Constant name="core" /> ignores [dbt v2-specific names](http
 
 In <Constant name="fusion_engine" />, every warning has both a numeric code (for example, `1092`) and an event name (for example, `NoNodesForSelectionCriteria`). 
 
-Runtime messages show both, but `warn_error_options` only accepts the _name_. Use the event name, dbt v2-native name, or a supported group (`all`, `*`). Numeric codes aren't accepted and will cause an error. 
+Runtime messages show both, but `warn_error_options` only accepts the _name_. Use the event name, v2-native name, or a supported group (`all`, `*`). Numeric codes aren't accepted and will cause an error. 
 
 To find the name for a code you see in your logs, check out [Supported legacy dbt-Core event name aliases](#supported-legacy-dbt-core-event-name-aliases).
 
@@ -213,7 +213,7 @@ flags:
       - FreshnessConfigProblem   # by name
 ```
 
-Any value that isn't a supported legacy event name, dbt v2-native name, or supported group (`all`, `*`) causes <Constant name="fusion" /> to exit with an error at startup, including numeric codes. For example, `{error: [1092]}` fails, but `{error: [NoNodesForSelectionCriteria]}` works.
+Any value that isn't a supported legacy event name, v2-native name, or supported group (`all`, `*`) causes <Constant name="fusion" /> to exit with an error at startup, including numeric codes. For example, `{error: [1092]}` fails, but `{error: [NoNodesForSelectionCriteria]}` works.
 
 Not every valid name appears in the tables on this page. <Constant name="fusion" /> also emits its own warnings (for example, `SemanticModelDeprecated`, code `dbt1157`) that aren't listed here. Use the name shown in the runtime message.
 

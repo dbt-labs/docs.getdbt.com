@@ -380,7 +380,7 @@ jaffle_shop:
           oauth2_scope: "session:role:TRANSFORMER"
 ```
 
-The dbt v2 project's `dbt_project.yml` sets `profile: default`. Either rename the profile key above to `default`, or set `profile: jaffle_shop`. Keep it consistent.
+The v2 project's `dbt_project.yml` sets `profile: default`. Either rename the profile key above to `default`, or set `profile: jaffle_shop`. Keep it consistent.
 
 :::note If `externalbrowser` fails
 
@@ -582,7 +582,7 @@ A regular (non-Iceberg) table of the same name already occupies that namespace (
 
 <Expandable alt_header="`unknown method: map has no method named warn_once` during grants.">
 
-The dbt-duckdb `apply_grants` macro hits a dbt v2 incompatibility. Grants are meaningless on DuckDB anyway — make `grant_config` empty on the DuckDB target (`grants={} if target.name == 'duckdb' else {...}`) and remove the project-level `marts` `+grants` so nothing gets merged back in.
+The dbt-duckdb `apply_grants` macro hits a v2 incompatibility. Grants are meaningless on DuckDB anyway — make `grant_config` empty on the DuckDB target (`grants={} if target.name == 'duckdb' else {...}`) and remove the project-level `marts` `+grants` so nothing gets merged back in.
 
 </Expandable>
 

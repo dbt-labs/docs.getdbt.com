@@ -678,7 +678,7 @@ See examples:
 
 #### `__version__.py`
 
-To assure that `dbt --version` provides the latest dbt v1 version the adapter supports, be sure include a `__version__.py` file. The filepath will be `dbt/adapters/<adapter_name>/__version__.py`. We recommend using the latest dbt v1 version and as the adapter is made compatible with later versions, this file will need to be updated. For a sample file, check out this [example](https://github.com/dbt-labs/dbt-snowflake/blob/main/dbt/adapters/snowflake/__version__.py).
+To assure that `dbt --version` provides the latest v1 version the adapter supports, be sure include a `__version__.py` file. The filepath will be `dbt/adapters/<adapter_name>/__version__.py`. We recommend using the latest v1 version and as the adapter is made compatible with later versions, this file will need to be updated. For a sample file, check out this [example](https://github.com/dbt-labs/dbt-snowflake/blob/main/dbt/adapters/snowflake/__version__.py).
 
 It should be noted that both of these files are included in the bootstrapped output of the `dbt-database-adapter-scaffold` so when using the scaffolding, these files will be included.
 

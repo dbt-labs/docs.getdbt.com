@@ -15,7 +15,7 @@ import FusionPrereqs from '/snippets/_fusion-prereqs.md';
 
 ## Getting started
 
-If you're ready to get started, choose one of the following options. To learn more about which tool is best for you, see the [dbt v2 availability](/docs/dbt/dbt-availability) page.
+If you're ready to get started, choose one of the following options. To learn more about which tool is best for you, see the [v2 availability](/docs/dbt/dbt-availability) page.
 
 <div className="grid--3-col">
 

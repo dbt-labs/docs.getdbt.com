@@ -13,9 +13,9 @@ import FusionReleases from '/src/components/fusionReleases';
 
 This page shows release information for local builds of dbt v2 only. v2 releases on the <Constant name="dbt_platform" /> adhere to the [release tracks](/docs/dbt-versions/dbt-release-tracks) categories, giving you control over release cadence and stability.
 
-Track current versions and full release history for dbt v2. This data updates live from dbt release channels.
+Track current versions and full release history for v2. This data updates live from dbt release channels.
 
-Each of the versions on this page links to the matching section in the [dbt v2 changelog](https://github.com/dbt-labs/dbt-core/blob/main/CHANGELOG-fusion.md) on GitHub.
+Each of the versions on this page links to the matching section in the [v2 changelog](https://github.com/dbt-labs/dbt-core/blob/main/CHANGELOG-fusion.md) on GitHub.
 
 ## Release channels
 

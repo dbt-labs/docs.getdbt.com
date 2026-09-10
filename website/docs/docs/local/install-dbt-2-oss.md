@@ -60,7 +60,7 @@ The [standard <Constant name="dbt" /> install](/docs/local/install-dbt) gives yo
 - `dbt lint` and error diagnostics
 - dbt VS Code extension integration
 
-For the full picture of what you get with dbt, refer to [dbt v2 availability](/docs/dbt/dbt-availability).
+For the full picture of what you get with dbt, refer to [v2 availability](/docs/dbt/dbt-availability).
 
 ## Contributing
 
