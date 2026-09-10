@@ -39,9 +39,6 @@ Release notes are grouped by date for single-tenant environments.
 
 ### dbt Copilot and agents
 
-- **Animated character on empty state**: dbt Copilot now displays an animated wizard character that peeks up from behind the input bar on the full-screen empty state. You can click the character to dismiss it or replay the animation. Light-mode theme variants are also supported.
-  <!-- PRs: `https://github.com/dbt-labs/dbt-ui/pull/1587`, `https://github.com/dbt-labs/dbt-ui/pull/1594` -->
-
 - **DeepSeek and Kimi logos in model picker**: The AI model picker now shows brand logos for DeepSeek and Kimi (Moonshot AI) models instead of a generic fallback icon, making it easier to identify the active model provider.
   <!-- PRs: `https://github.com/dbt-labs/dbt-ui/pull/1571` -->
 
