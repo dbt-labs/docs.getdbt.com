@@ -6,6 +6,10 @@
     - [Required permissions](/docs/local/connect-data-platform/bigquery-setup#required-permissions)
   </Expandable>
 
+  <Expandable alt_header="ClickHouse" lifecycle="private_beta">
+    - Username / Password
+  </Expandable>
+
   <Expandable alt_header="Databricks" lifecycle="preview">  
     - Service Account / User Token
     - Native OAuth

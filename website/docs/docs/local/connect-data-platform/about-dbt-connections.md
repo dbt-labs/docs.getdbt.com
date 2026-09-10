@@ -22,6 +22,7 @@ The <Constant name="fusion_engine" /> includes built-in support for:
 - [Google BigQuery](/docs/local/connect-data-platform/bigquery-setup) <Lifecycle status="preview" />
 - [DuckDB](/docs/local/connect-data-platform/duckdb-setup) <Lifecycle status="beta" />
 - [Apache Spark](/docs/local/connect-data-platform/spark-setup) <Lifecycle status="beta" />
+- [ClickHouse](/docs/local/connect-data-platform/clickhouse-setup) <Lifecycle status="beta" />
 
 <small> _Adapter lifecycle can differ between the <Constant name="dbt_platform" /> and local development. An adapter can reach GA in the dbt platform before it reaches GA for local use._ </small> <br /><br />
 
