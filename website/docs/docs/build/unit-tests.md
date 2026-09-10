@@ -62,7 +62,7 @@ dbt test --select "test_type:unit"
 
 ## Run unit tests locally <Lifecycle status="beta" />
 
-:::Note Opt in with an environment variable
+:::note Opt in with an environment variable
 
 Running an individual unit test on local compute is currently in beta. Set `DBT_ENGINE_EXPERIMENTAL_LOCAL_UNIT_TESTS=true` in the environment where dbt runs before you use `compute: local`.
 
