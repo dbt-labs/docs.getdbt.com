@@ -390,7 +390,7 @@ This move is only necessary for fragments defined outside of the main YAML struc
 
 #### Self-referential (recursive) YAML anchors are not supported
 
-<Constant name="core_v1" /> could parse a YAML anchor that merges into an element of the same sequence it's defined on, creating a self-referential (cyclic) anchor. For example, anchoring a full `tables:` sequence and then merging that anchor into one of the sequence's own elements:
+In <Constant name="core_v1" />, dbt could parse a YAML anchor that merges into an element of the same sequence it's defined on, creating a self-referential (cyclic) anchor. For example, anchoring a full `tables:` sequence and then merging that anchor into one of the sequence's own elements:
 
 ```yml
 sources:
