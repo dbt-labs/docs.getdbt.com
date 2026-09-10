@@ -2,7 +2,7 @@
 title: Install dbt OSS
 id: install-dbt-v2
 description: "Install dbt OSS, the open-source foundation behind dbt v2."
-sidebar_label: "Install open source dbt v2"
+sidebar_label: "Install dbt OSS"
 pagination_next: null
 pagination_prev: null
 availability: local_free

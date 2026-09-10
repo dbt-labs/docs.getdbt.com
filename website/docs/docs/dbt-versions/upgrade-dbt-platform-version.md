@@ -75,8 +75,8 @@ To take advantage of the upgrade assistant and other upgrade tools, you'll need 
 
 | Upgrade task | Required permission(s) | Supported permission sets |
 |---------|------------------------|-----------------------------|
-| Enable dbt v2 access (triggers migration flows) | dbt v2 readiness: `write` <br></br> Projects: `write` | Admin, Account Admin, and anyone assigned the v2 Migration admin set, provided their base role also has `write` access to projects |
-| View dbt v2 readiness and job eligibility | dbt v2 readiness: `read` | Developer, Admin, Member, Account Admin, v2 Migration admin |
+| Enable dbt v2 access (triggers migration flows) | dbt v2 readiness: `write` <br></br> Projects: `write` | Admin, Account Admin, and anyone assigned the v2 Migration Admin set, provided their base role also has `write` access to projects |
+| View dbt v2 readiness and job eligibility | dbt v2 readiness: `read` | Developer, Admin, Member, Account Admin, v2 Migration Admin |
 | **Run once on <Constant name="fusion" />** job action | Runs: `write` | Job Admin, Job Runner, Admin, Member, Project Creator, Account Admin |
 | Enable **v2 Stable** for an environment | Environments: `write` | Job Admin, Admin, Member, Project Creator, Account Admin |
 
@@ -97,17 +97,17 @@ Once enabled, all admins and developers can see each project's dbt v2 readiness 
 
 Step 2: Restrict upgrade access (optional, Enterprise/Enterprise+ only)
 
-By default, all admins and developer-licensed users can access the <Constant name="fusion" /> readiness & upgrade flow. To restrict upgrade execution to users with the `v2 Migration admin` permission set, enable this additional setting. From your **Account settings**:
+By default, all admins and developer-licensed users can access the <Constant name="fusion" /> readiness & upgrade flow. To restrict upgrade execution to users with the `v2 Migration Admin` permission set, enable this additional setting. From your **Account settings**:
 
 1. Navigate to the **Account** screen.
 2. Click **Edit** and scroll to the **Settings** section.
 3. Click the box next to **Enable restricted dbt v2 upgrade permissions**.
 4. Click **Save**.
 
-This hides the <Constant name="fusion" /> upgrade workflows from users who don't have the [`v2 Migration admin`](/docs/platform/manage-access/enterprise-permissions#v2-migration-admin) permission set. To grant access to the upgrade workflows to specific projects and/or specific users:
+This hides the <Constant name="fusion" /> upgrade workflows from users who don't have the [`v2 Migration Admin`](/docs/platform/manage-access/enterprise-permissions#v2-migration-admin) permission set. To grant access to the upgrade workflows to specific projects and/or specific users:
 1. Navigate to an existing group in your **Account settings** and click **Edit**, or click [**Create group**](/docs/platform/manage-access/about-user-access#create-new-groups) to create a new one.
 2. Scroll to the **Access and permissions** section and click **Add permission**.
-3. Select the **v2 Migration admin** permission set from the dropdown, then select the project(s) you want the users to access. 
+3. Select the **v2 Migration Admin** permission set from the dropdown, then select the project(s) you want the users to access. 
 4. Click **Save**.
 
 The <Constant name="fusion" /> upgrade workflows helps identify areas of the project that need to be updated and provides tools for manually resolving and autofixing any errors. 

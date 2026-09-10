@@ -102,7 +102,7 @@ Key:
 
 #### Project access for project permissions
 
-|Project-level permission  | Admin | Analyst | Analyst read<sup>***</sup> | Cost Insights Admin | Cost Insights Viewer | Database admin | Developer | v2 Migration admin | Git Admin | Job admin | Job creator | Job runner  | Job viewer  | Metadata (Discovery API only) | Semantic Layer | Stakeholder/Read-Only | Team admin |
+|Project-level permission  | Admin | Analyst | Analyst read<sup>***</sup> | Cost Insights Admin | Cost Insights Viewer | Database admin | Developer | v2 Migration Admin | Git Admin | Job admin | Job creator | Job runner  | Job viewer  | Metadata (Discovery API only) | Semantic Layer | Stakeholder/Read-Only | Team admin |
 |--------------------------|:-----:|:-------:|:------------:|:-------------------:|:--------------------:|:--------------:|:---------:|:------------:|:---------:|:---------:|:-----------:|:-----------:|:-----------:|:---------------------------------------:|:--------------:|:-----------:|:----------:|
 | Environment credentials  |   W   |    R    |      R       |         -           |          -           |       W        |     R     |      -       |     R     |     W     |      R      |    -        |      -      |                  -                      |        -       |     R       |     R      |
 | Custom env. variables    |   W   |    W<sup>**</sup>  |      R       |         -           |          -           |       W        |     W<sup>**</sup>    |      -       |     W     |     W     |      R      |     -       |      R      |                  -                      |        -       |     R       |     W      |

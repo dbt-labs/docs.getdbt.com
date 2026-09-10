@@ -96,7 +96,7 @@ Switching to **v2 Fallback** alerts the dbt Support team, who may reach out to h
 - Leave all environments on the **v2 Stable** release track (default for new projects at GA)
 
 **Velocity-focused** &mdash; All plans
-- Prioritize immediate access to the latest Fusion features and fixes
+- Prioritize immediate access to the latest v2 features and fixes
 - Configure all environments to use the **v2 Nightly** release track
 
 **Cautious** &mdash; Enterprise, Enterprise+

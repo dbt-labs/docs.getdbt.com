@@ -69,11 +69,11 @@ By default, any user who can see the upgrade assistant can use it. To restrict u
 2. Select the checkbox next to **Enable restricted dbt v2 upgrade permissions**.
 3. Click **Save**.
 
-When this is enabled, only users with the **v2 Migration admin** [permission set](/docs/platform/manage-access/enterprise-permissions#v2-migration-admin) can execute upgrades. To assign this permission:
+When this is enabled, only users with the **v2 Migration Admin** [permission set](/docs/platform/manage-access/enterprise-permissions#v2-migration-admin) can execute upgrades. To assign this permission:
 
 1. Navigate to **Account settings** → **Groups** and choose the group to grant access.
 2. Click **Edit** and scroll to **Access and permissions**.
-3. Click **Add permission** and select **v2 Migration admin** from the dropdown.
+3. Click **Add permission** and select **v2 Migration Admin** from the dropdown.
 4. Select the project(s) users should access.
 5. Click **Save**.
 
