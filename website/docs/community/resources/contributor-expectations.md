@@ -73,7 +73,12 @@ Comment on it! Explain that you've run into the same bug, or had a similar idea 
 
 In our most critical repositories (such as `dbt-core`), our goal is to respond to new issues as soon as possible. This initial response will often be a short acknowledgement that the maintainers are aware of the issue, signalling our perception of its urgency. Depending on the nature of your issue, it might be well suited to an external contribution, from you or another community member.
 
-**What if you're opening an issue in a different repository?** We have engineering teams dedicated to active maintenance of [`dbt-core`](https://github.com/dbt-labs/dbt-core) (v1 and v2), as well as the component libraries of v1 ([`dbt-common`](https://github.com/dbt-labs/dbt-common) + [`dbt-adapters`](https://github.com/dbt-labs/dbt-adapters) (also includes the dbt Labs managed adapters)). The `dbt-core` repository is also the home of v2, the open-source Rust-based foundation built on the v2 runtime; this code previously lived in ([`dbt-fusion`](https://github.com/dbt-labs/dbt-fusion)). We've open-sourced a number of other software projects over the years, and the majority of them do not have the same activity or maintenance guarantees. Check to see if other recent issues have responses, or when the last commit was added to the `main` branch.
+**What if you're opening an issue in a different repository?** We have engineering teams dedicated to active maintenance of [`dbt`](https://github.com/dbt-labs/dbt-core), home to both v1 and v2. Some things to note about the `dbt-labs/dbt` repo when you're contributing:
+
+- v2 lives on the `main` branch
+- v1 lives on the `latest.1` branch, as well as the component libraries of v1 ([`dbt-common`](https://github.com/dbt-labs/dbt-common) + [`dbt-adapters`](https://github.com/dbt-labs/dbt-adapters) (which also includes the dbt Labs managed adapters). `dbt-adapters` applies to v1 only.
+
+We've open-sourced a number of other software projects over the years, and the majority of them do not have the same activity or maintenance guarantees. Check to see if other recent issues have responses, or when the last commit was added to the `main` branch.
 
 **You're not sure about the status of your issue.** If your issue is in an actively maintained repo and has a `triage` label attached, we're aware it's something that needs a response. If the issue has been triaged, but not prioritized, this could mean:
 
