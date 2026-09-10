@@ -74,9 +74,6 @@ Release notes are grouped by date for single-tenant environments.
 - **dbt Wizard overage email notifications**: Account admins now receive automated email notifications when dbt Wizard usage credits are exhausted, with separate notifications for accounts without a consumption commitment and accounts whose commitment is spent.
   <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pull/19004` ✅-->
 
-- **Clearer spend limit error message**: When you try to set a dbt Wizard spend limit below your current-period spend, the error message now names the exact amount already spent and states when you can lower the limit.
-  <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pull/18941` -->
-
 ### APIs, Identity, and Administration
 
 - **Clearer GitLab unavailability errors**: When a GitLab host is unreachable, affected API endpoints now return HTTP 503 with the message "GitLab is unavailable, please try again." instead of an unclear failure, affecting repository creation and GitLab group listing flows.
