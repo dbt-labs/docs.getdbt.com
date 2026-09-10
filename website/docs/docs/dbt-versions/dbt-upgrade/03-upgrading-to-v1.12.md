@@ -13,7 +13,7 @@ availability:
 ## Resources
 - [dbt v1.12 changelog](https://github.com/dbt-labs/dbt-core/blob/1.12.latest/CHANGELOG.md)
 - [<Constant name="core" /> CLI Installation guide](/docs/local/install-dbt)
-- [dbt platform upgrade guide](/docs/dbt-versions/upgrade-dbt-platform-version#fusion-release-tracks)
+- [dbt platform upgrade guide](/docs/dbt-versions/upgrade-dbt-platform-version#release-tracks)
 
 ## What to know before upgrading
 

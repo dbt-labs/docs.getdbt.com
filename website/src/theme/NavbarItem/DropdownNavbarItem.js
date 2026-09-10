@@ -105,7 +105,7 @@ function TransitionNote() {
       <br />
       v2 ={" "}
       <a
-        href="https://docs.getdbt.com/docs/dbt-versions/dbt-release-tracks?version=2.0#fusion-release-tracks"
+        href="https://docs.getdbt.com/docs/dbt-versions/dbt-release-tracks?version=2.0#dbt-v2-release-tracks"
         target="_blank"
         rel="noopener noreferrer"
       >

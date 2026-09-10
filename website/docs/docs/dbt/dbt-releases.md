@@ -35,7 +35,7 @@ If a shipped v2 release is later found to contain a regression, dbt Labs flags i
 
 On <Constant name="dbt_platform" />, each [environment](/docs/deploy/deploy-environments) uses the account default or your chosen **release track**. Release tracks control how often that environment receives new v2 builds. They're separate from the local CLI release channels in the previous section.
 
-For cadence, plan availability, and API values (`nightly`, `stable`, and more), refer to [release tracks](/docs/dbt-versions/dbt-release-tracks#fusion-release-tracks). To change the release track for an environment, follow [Upgrade dbt in dbt platform](/docs/dbt-versions/upgrade-dbt-platform-version).
+For cadence, plan availability, and API values (`nightly`, `stable`, and more), refer to [release tracks](/docs/dbt-versions/dbt-release-tracks#dbt-v2-release-tracks). To change the release track for an environment, follow [Upgrade dbt in dbt platform](/docs/dbt-versions/upgrade-dbt-platform-version).
 
 :::tip Live data below is for local CLI channels
 
@@ -47,7 +47,7 @@ The **Current versions** cards and full release list below pull the public v2 ma
     <summary>Updating your self-hosted installation</summary>
 <p>
 
-The following commands apply only to _local_ installations of dbt. They don't affect which v2 build your <Constant name="dbt_platform" /> environments use. Instead, you can set a [release track](https://github.com/docs/dbt-versions/dbt-release-tracks#fusion-release-tracks) per environment in <Constant name="dbt_platform" />.
+The following commands apply only to _local_ installations of dbt. They don't affect which v2 build your <Constant name="dbt_platform" /> environments use. Instead, you can set a [release track](https://github.com/docs/dbt-versions/dbt-release-tracks#dbt-v2-release-tracks) per environment in <Constant name="dbt_platform" />.
 
 Running the system update command without a version flag installs the `latest` stable release:
 
