@@ -43,16 +43,28 @@ The recommendations table displays the following columns:
 | Column | Description |
 |--------|-------------|
 | **Model name** | The name of the model that could benefit from a higher `lag_tolerance` value. |
-| **Project** | The dbt project the model belongs to. |
+| **Project** | The dbt project the model belongs to, as set by `name:` in `dbt_project.yml`. This may differ from the project name in the <Constant name="dbt_platform" />. |
 | **Current lag** | The model's current `lag_tolerance` setting. |
 | **Recommended lag** | The `lag_tolerance` value dbt State recommends based on observed upstream data refresh patterns. |
 | **% time saved** | The estimated percentage of build time you'd save by applying the recommended `lag_tolerance`. |
-| **Projected 30d time savings** | The estimated compute time saved over the next 30 days if you apply the recommended `lag_tolerance`. |
+| **Projected 30d time savings** | The estimated build time you could save over the next 30 days by applying the recommended `lag_tolerance`, based on redundant builds in the previous 30 days. This estimate includes only this model, so actual savings may be higher if downstream models also do not rebuild.|
 </SimpleTable>
 
 You can search for a specific model using the search bar, or filter recommendations by project using the **Project** dropdown menu.
 
 To apply a recommendation, update the model's `lag_tolerance` config. For configuration syntax and examples, refer to the [`lag_tolerance` config page](/reference/resource-configs/lag-tolerance).
+
+### How dbt State calculates recommendations
+
+dbt State analyzes each model’s build history from the previous 30 days. Models with fewer than 10 recorded builds are excluded because there isn't enough history to make a reliable recommendation.
+
+For each eligible model, dbt State:
+
+1. Identifies builds where the model’s definition and inputs had not changed since the previous build.
+2. Estimates the build time that different `lag_tolerance` values would have saved.
+3. Recommends the smallest value that would have saved more than 30 minutes, helping reduce redundant builds while keeping data as fresh as possible.
+
+A model doesn’t appear in the table if it’s a view or its current `lag_tolerance` value is already equal to or greater than the recommended value. Each account displays 20 models with the highest projected savings.
 
 <Lightbox src="/img/docs/dbt-platform/using-dbt-platform/lag-tolerance-recommendations.png" width="80%" title="Lag tolerance recommendations" />
 
