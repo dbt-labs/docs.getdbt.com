@@ -8,7 +8,7 @@ availability:
 ---
 
 
-You can address deprecation warnings in the <Constant name="dbt_platform" /> by finding and fixing them using the autofix tool in the <Constant name="studio_ide" />. You can run the autofix tool on the [Compatible or Latest release track](/docs/dbt-versions/dbt-release-tracks) of <Constant name="core" /> before you upgrade to <Constant name="fusion" />!
+You can address deprecation warnings in the <Constant name="dbt_platform" /> by finding and fixing them using the autofix tool in the <Constant name="studio_ide" />. You can run the autofix tool on the [**v1 Compatible** or **v1 Latest** release track](/docs/dbt-versions/dbt-release-tracks) of <Constant name="core" /> before you upgrade to <Constant name="fusion" />!
 
 To find and fix deprecations:
 

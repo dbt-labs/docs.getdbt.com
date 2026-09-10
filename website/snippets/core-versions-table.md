@@ -20,6 +20,6 @@
 
 All functionality in dbt Core since the v1.7 release is available in [<Constant name="dbt" /> release tracks](/docs/dbt-versions/dbt-release-tracks), which provide automated upgrades at a cadence appropriate for your team.
 
-<sup>1</sup> Release tracks are required for the Developer and Starter plans on <Constant name="dbt" />. Accounts using older dbt versions will be migrated to the **Latest** release track.
+<sup>1</sup> Release tracks are required for the Developer and Starter plans on <Constant name="dbt" />. Accounts using older dbt versions will be migrated to the **v1 Latest** release track.
 
 For customers of <Constant name="dbt" />: dbt Labs strongly recommends migrating environments on older and unsupported versions to [release tracks](/docs/dbt-versions/dbt-release-tracks) or a supported version. On <Constant name="legacy_deprecation_date" />, dbt Labs will deprecate dbt Core versions v1.3 through v1.7, removing them from availability in <Constant name="dbt_platform" />.
