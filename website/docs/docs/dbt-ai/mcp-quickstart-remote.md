@@ -32,8 +32,10 @@ Self-hosted development and agentic workflows (for example, running dbt commands
 
 Follow these steps to set up the remote MCP server.
 
-### 1. Manage AI features
+### 1. Manage AI features (optional)
 AI features are enabled by default. Admins can [turn them off or back on anytime](/docs/platform/manage-dbt-ai).
+
+Remote MCP doesn't depend on this setting. `text_to_sql` is the only tool that needs AI features &mdash; with them off, it's hidden and the rest of the tools work as usual.
 
 ### 2. Get your credentials
 Obtain the following information from <Constant name="dbt_platform"/>:
