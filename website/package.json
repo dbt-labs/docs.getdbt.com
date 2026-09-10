@@ -113,5 +113,8 @@
   "version": "0.0.0",
   "lint-staged": {
     "*.{js,ts,jsx,tsx,md}": "npm run lint"
+  },
+  "overrides": {
+    "shell-quote": "1.9.0"
   }
 }
