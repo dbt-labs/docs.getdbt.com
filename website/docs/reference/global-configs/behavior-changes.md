@@ -33,9 +33,9 @@ Behavior change flags go through three phases of development:
 
 ### Introduced in <Constant name="core_v1" />
 
-This table outlines which month of the **Latest** release track in <Constant name="dbt" /> and which version of <Constant name="core" /> contains the behavior change's introduction (disabled by default) or maturity (enabled by default).
+This table outlines which month of the **v1 Latest** release track in <Constant name="dbt" /> and which version of <Constant name="core" /> contains the behavior change's introduction (disabled by default) or maturity (enabled by default).
 
-| Flag | <Constant name="dbt" /> **Latest**: Intro | <Constant name="dbt" /> **Latest**: Maturity | <Constant name="core" />: Intro | <Constant name="core" />: Maturity | <Constant name="core" />: Removed |
+| Flag | <Constant name="dbt" /> **v1 Latest**: Intro | <Constant name="dbt" /> **v1 Latest**: Maturity | <Constant name="core" />: Intro | <Constant name="core" />: Maturity | <Constant name="core" />: Removed |
 |-----------------------------------------------------------------|------------------|---------------------|-----------------|--------------------|----|
 | [require_explicit_package_overrides_for_builtin_materializations](/reference/global-configs/behavior-flags/require_explicit_package_overrides_for_builtin_materializations) | 2024.04 | 2024.06 | 1.6.14, 1.7.14 | 1.8.0 | 2.0 |
 | [require_resource_names_without_spaces](/reference/global-configs/behavior-flags/require_resource_names_without_spaces) | 2024.05 | 2025.05 | 1.8.0 | 1.10.0 | 2.0 |
@@ -60,7 +60,7 @@ This table outlines which month of the **Latest** release track in <Constant nam
 
 ### Flags reaching maturity
 
-Several behavior change flags on the <Constant name="dbt_platform" /> `Latest` release track are planned to reach maturity on September 1, 2026, switching their default values from `false` to `true`. The September 1 date applies only to the <Constant name="dbt_platform" /> release tracks. The flags have reached maturity in <Constant name="dbt" /> v1.12. For intro dates, refer to the <Constant name="core" /> behavior changes table.
+Several behavior change flags on the <Constant name="dbt_platform" /> `v1 Latest` release track are planned to reach maturity on September 1, 2026, switching their default values from `false` to `true`. The September 1 date applies only to the <Constant name="dbt_platform" /> release tracks. The flags have reached maturity in <Constant name="dbt" /> v1.12. For intro dates, refer to the <Constant name="core" /> behavior changes table.
 
 | Flag | Impact |
 |---|---|

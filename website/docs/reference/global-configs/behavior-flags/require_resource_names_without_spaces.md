@@ -10,7 +10,7 @@ This flag was removed in v2. The new behavior is always enabled. If you're upgra
 
 :::
 
-| require_resource_names_without_spaces | <Constant name="dbt" /> **Latest** | <Constant name="core" /> |
+| require_resource_names_without_spaces | <Constant name="dbt" /> **v1 Latest** | <Constant name="core" /> |
 |---|---|---|
 | Introduced | 2024.05 | 1.8.0 |
 | Matured (default → `true`) | 2025.05 | 1.10.0 |

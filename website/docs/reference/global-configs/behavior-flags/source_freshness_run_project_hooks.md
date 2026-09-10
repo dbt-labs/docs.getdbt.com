@@ -10,7 +10,7 @@ This flag was removed in v2. The new behavior is always enabled. If you're upgra
 
 :::
 
-| source_freshness_run_project_hooks | <Constant name="dbt" /> **Latest** | <Constant name="core" /> |
+| source_freshness_run_project_hooks | <Constant name="dbt" /> **v1 Latest** | <Constant name="core" /> |
 |---|---|---|
 | Introduced | 2024.03 | 1.8.0 |
 | Matured (default → `true`) | 2025.05 | 1.10.0 |

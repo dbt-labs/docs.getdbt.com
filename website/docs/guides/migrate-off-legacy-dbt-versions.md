@@ -45,7 +45,7 @@ If you don't migrate a legacy environment or clear a legacy job, it's cleaned up
 To update your environment to a release track:
 
 1. Navigate to the Settings page of the environment, then click **Edit**.
-2. Click the **dbt version** dropdown and select a [release track](/docs/dbt-versions/dbt-release-tracks) (**Latest** is recommended).
+2. Click the **dbt version** dropdown and select a [release track](/docs/dbt-versions/dbt-release-tracks) (**v1 Latest** is recommended).
 3. Save your changes.
 
 As a best practice, test the upgrade in a development environment first. See [Upgrade versions in dbt platform](/docs/dbt-versions/upgrade-dbt-platform-version) for details, including how to set the version through the [Admin API](/docs/dbt-apis/admin-api) or Terraform.

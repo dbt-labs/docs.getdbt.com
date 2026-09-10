@@ -10,7 +10,7 @@ This flag was removed in v2. The new behavior is always enabled. If you're upgra
 
 :::
 
-| require_explicit_package_overrides_for_builtin_materializations | <Constant name="dbt" /> **Latest** | <Constant name="core" /> |
+| require_explicit_package_overrides_for_builtin_materializations | <Constant name="dbt" /> **v1 Latest** | <Constant name="core" /> |
 |---|---|---|
 | Introduced | 2024.04 | 1.6.14, 1.7.14 |
 | Matured (default → `true`) | 2024.06 | 1.8.0 |

@@ -162,13 +162,13 @@ Notable features:
 - Can access <Constant name="catalog" />.
 
 </Expandable>
-<Expandable alt_header="Fusion admin">
+<Expandable alt_header="v2 Migration admin">
 
 This permission set enables users to interact with <Constant name="fusion"/> upgrade workflows. We recommend limiting this permission to users who are actively [working on migrating](/guides/upgrade-to-v2?step=1) a project to <Constant name="fusion"/>.
 
-By default, all users can access the <Constant name="fusion"/> upgrade experience. When the upgrade permissions setting is enabled, only users with the **Fusion admin** or **Account admin** permission set can perform upgrades. If the setting is disabled (no check mark), upgrades are not restricted.
+By default, all users can access the <Constant name="fusion"/> upgrade experience. When the upgrade permissions setting is enabled, only users with the **v2 Migration admin** or **Account admin** permission set can perform upgrades. If the setting is disabled (no check mark), upgrades are not restricted.
 
-- **Fusion admin** &mdash; Assign to user accounts only. Cannot be assigned to service tokens.
+- **v2 Migration admin** &mdash; Assign to user accounts only. Cannot be assigned to service tokens.
 - **Account admin** &mdash; Assign to user accounts or service tokens. Allows both users and service tokens to perform upgrades.
 
 For more information, refer to [Upgrade to <Constant name="fusion"/>](/docs/dbt-versions/upgrade-dbt-platform-version#dbt-v2).
