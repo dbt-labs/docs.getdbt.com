@@ -535,7 +535,7 @@ If you want all dynamic tables to be transient by default (without setting `tran
 
 **Key points:**
 - Setting `transient: true` creates the dynamic table with the `TRANSIENT` keyword in the `CREATE DYNAMIC TABLE` statement.
-- Snowflake does not accept a transient interactive table (error 001003). If you set `transient: true` at the project level in dbt_project.yml, your interactive table models inherit it and fail. Set `transient: false` on those models to override it.
+- Snowflake does not support changing the transient property on an existing dynamic table. Changing `transient` from `true` to `false` or vice versa triggers a full table recreation.
 - To make all new dynamic tables transient by default when `transient` is not specified, enable the `snowflake_default_transient_dynamic_tables` flag in your `dbt_project.yml`.
 
 For example:
@@ -601,18 +601,17 @@ SnowflakeDynamicTableConfig.__init__() missing 6 required positional arguments: 
 ```
 Ensure that `QUOTED_IDENTIFIERS_IGNORE_CASE` on your account is set to `FALSE`. 
 
-<VersionBlock firstVersion="1.12">
 
 ## Interactive tables <Lifecycle status="beta" /> {#interactive-tables}
 
-Starting in `dbt-snowflake` v1.13, the Snowflake adapter supports [interactive tables](https://docs.snowflake.com/en/user-guide/interactive), which are optimized for low-latency queries. This materialization is specific to Snowflake, which means that any model configuration that would normally come along for the ride from `dbt-core` (for example, as with a `view`) may not be available for interactive tables.
+Starting in `dbt-snowflake` v1.13, the Snowflake adapter supports [interactive tables](https://docs.snowflake.com/en/user-guide/interactive), which are optimized for low-latency queries. This materialization is specific to Snowflake, which means that any model configuration that dbt usually provides by default (for example, for a `view`) may not apply to interactive tables.
 
 :::info dbt's support for interactive tables is in beta
 Interactive tables are generally available in Snowflake, but dbt's support for the `interactive_table` materialization is in beta in both the v1 and v2 engines. Behavior and configuration options may change.
 
-- **<Constant name="dbt_platform" />**: the **Latest** [release track](/docs/dbt-versions/dbt-release-tracks).
-- **dbt v2**: the latest version.
-- **dbt v1**: `dbt-snowflake` v1.13 or later.
+- **<Constant name="dbt_platform" />**
+- **dbt v2*
+- **dbt v1** (Coming soon in `dbt-snowflake` v1.13 or later)
 :::
 
 Setting [`target_lag`](#target-lag-interactive-tables) makes the table a _dynamic_ interactive table that Snowflake refreshes automatically. Without it, the table is _static_ and only rebuilds when you run dbt. Several configurations below behave differently depending on which form you're using.
@@ -745,8 +744,8 @@ select * from {{ ref('stg_orders') }}
 ```
 
 **Key points:**
-- Changing `target_lag` from one value to another alters the table in place.
-- Adding `target_lag` to a static table, or removing it from a dynamic one, triggers a full refresh. Snowflake rejects both transitions in place.
+- Changing `target_lag` from one value to another updates the table in place with an `alter` statement.
+- Adding `target_lag` to a static table, or removing it from a dynamic one, replaces the table. Snowflake can't switch between the static and dynamic forms with an `alter`, so dbt runs `create or replace` instead. You don't need to pass --full-refresh — dbt does this for you.
 
 Learn more about `TARGET_LAG` in [CREATE INTERACTIVE TABLE](https://docs.snowflake.com/en/sql-reference/sql/create-interactive-table) in Snowflake's docs.
 
@@ -767,9 +766,11 @@ select * from {{ ref('stg_orders') }}
 ```
 
 **Key points:**
-- If `refresh_warehouse` is not set, `snowflake_warehouse` is used for both DDL execution and self-refresh operations.
+- On a dynamic interactive table, if `refresh_warehouse` is not set, `snowflake_warehouse` is used for both DDL execution and self-refresh operations.
+- On a static interactive table, `refresh_warehouse` is ignored because the table never refreshes itself. `snowflake_warehouse` still controls which warehouse dbt uses to build the table.
 - You can change `refresh_warehouse` on an existing interactive table without a full refresh.
-- To revert to the default behavior, remove the `refresh_warehouse` parameter from your model configuration or explicitly set it to `None`.
+- On a dynamic interactive table, you can change `refresh_warehouse` without replacing the table. dbt updates it in place with an `alter` statement.
+- To go back to using `snowflake_warehouse` for refreshes, remove `refresh_warehouse` from your model configuration.
 
 ### Initialization warehouse (interactive tables)
 
@@ -794,7 +795,7 @@ select * from {{ ref('stg_orders') }}
 
 ### Change monitoring for interactive tables
 
-Interactive tables support [`on_configuration_change`](/reference/resource-configs/on_configuration_change). Which configuration changes dbt can apply in place, and which force a full rebuild, depends on what Snowflake allows:
+Interactive tables support [`on_configuration_change`](/reference/resource-configs/on_configuration_change).  Snowflake determines which configuration changes dbt can apply in place, and which force a full rebuild:
 
 <SimpleTable>
 
@@ -812,21 +813,21 @@ Interactive tables support [`on_configuration_change`](/reference/resource-confi
 
 The following configurations are not supported on interactive tables. dbt rejects the first two when it parses your project, rather than letting Snowflake fail the run:
 
-- `table_format: iceberg` &mdash; Interactive tables have no Iceberg variant.
-- `transient: true` &mdash; Snowflake does not accept a transient interactive table.
-- `change_tracking` &mdash; Accepted but inert. `CREATE INTERACTIVE TABLE` does not take a change tracking option.
+- `table_format: iceberg`: Interactive tables have no Iceberg variant.
+- `transient: true`: Snowflake does not accept a transient interactive table (error 001003). If you set `transient: true` at the project level in dbt_project.yml, your interactive table models inherit it and fail. Set `transient: false` on those models to override it.
+- `change_tracking`: Accepted but inert. `CREATE INTERACTIVE TABLE` does not take a change tracking option.
 
 ### Limitations of interactive tables
 
 Limitations worth noting when you build interactive tables with dbt:
 
-- dbt does not attach or detach interactive tables to or from [interactive warehouses](https://docs.snowflake.com/en/user-guide/interactive) at this time. Manage that association in Snowflake. The two are independent objects (Snowflake can attach an interactive warehouse to [other relation types](https://docs.snowflake.com/en/user-guide/interactive#all-table-format-support-preview) as well.) 
+- dbt does not attach or detach interactive tables to or from [interactive warehouses](https://docs.snowflake.com/en/user-guide/interactive) at this time. Manage that association in Snowflake. The two are independent objects; Snowflake can attach an interactive warehouse to [other relation types](https://docs.snowflake.com/en/user-guide/interactive#all-table-format-support-preview) as well.
 - Dropping a column from an interactive table is not supported. This is reachable if you have an `incremental` model with [`on_schema_change: sync_all_columns`](/docs/build/incremental-models#what-if-the-columns-of-my-incremental-model-change) running against a relation that was previously an interactive table.
 - Converting an interactive table to an `incremental` model requires a `--full-refresh`.
 - Interactive tables cannot be cloned or created in a personal database.
 - [Model contracts](/docs/mesh/govern/model-contracts) are not supported.
 
-Find more information about interactive table and interactive warehouse limitations, including per-warehouse table limits, in [Snowflake interactive analytics](https://docs.snowflake.com/en/user-guide/interactive) in Snowflake's docs.
+Find more information about interactive table and interactive warehouse limitations, including per-warehouse table limits, in the [Snowflake documentation](https://docs.snowflake.com/en/user-guide/interactive).
 
 ### Troubleshooting interactive tables
 
@@ -846,8 +847,6 @@ Note that a `change_tracking` model config is _not_ a substitute here, since tha
 :::
 
 If your interactive table model fails to rerun after the initial execution with an error about missing positional arguments, ensure that `QUOTED_IDENTIFIERS_IGNORE_CASE` on your account is set to `FALSE`.
-
-</VersionBlock>
 
 ## Semantic Views
 [Snowflake Semantic Views](https://docs.snowflake.com/en/user-guide/views-semantic/overview) provide a native schema-level object for centralizing metric definitions and reducing fragmented metric logic across BI and analytics tools.
