@@ -60,7 +60,7 @@ config:
 
 :::note <Constant name="core" /> flag
 
-The v2 parser flag is only applies to <Constant name="dbt" /> v1.12 or higher. If you're already on v2, the flag has no impact.
+The v2 parser flag only applies to dbt v1.12 and higher 1.x versions. If you're already on v2, the flag has no impact.
 
 :::
 

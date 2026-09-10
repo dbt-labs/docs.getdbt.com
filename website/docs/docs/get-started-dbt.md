@@ -18,7 +18,7 @@ Begin your dbt journey by choosing how you want to develop:
 
 <Constant name="dbt" /> provides a fully managed environment to develop, run, and deploy dbt projects—with CI/CD, documentation hosting, and more. Learn more about [<Constant name="dbt" /> features](/docs/platform/about-platform/dbt-platform-features) and [start your free trial](https://www.getdbt.com/signup/) today. 
 
-The <Constant name="fusion_engine" /> adds managed execution and a unified development experience so you can focus on building rather than infrastructure.
+<Constant name="fusion_engine" /> adds managed execution and a unified development experience so you can focus on building rather than infrastructure.
 
 Choose your warehouse to get started with a quickstart:
 

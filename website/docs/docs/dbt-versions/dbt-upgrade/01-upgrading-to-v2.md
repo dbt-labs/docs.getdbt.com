@@ -290,11 +290,11 @@ v2 handles threading differently depending on your data platform:
 
 <FusionThreads />
 
-For more information, refer to [Using threads](/docs/running-a-dbt-project/using-threads#fusion-engine-thread-optimization).
+For more information, refer to [Using threads](/docs/running-a-dbt-project/using-threads#dbt-v2-thread-optimization).
 
 #### Continue to compile unrelated nodes after hitting a compile error
 
-As soon as <Constant name="core" /> `compile` encounters an error compiling one of your models, dbt stops and doesn't compile anything else.
+As soon as v1's `compile` encounters an error compiling one of your models, dbt stops and doesn't compile anything else.
 
 When v2's `compile` encounters an error, it will skip nodes downstream of the one that failed to compile, but it will keep compiling the rest of the DAG (in parallel, up to the number of configured / optimal threads).
 
@@ -476,7 +476,7 @@ v2 is available in two distributions. For more information, refer to [dbt licens
 | Distribution | Package | Use it when |
 | --- | --- | --- |
 | <Constant name="fusion" /> | `dbt` | The recommended v2 experience. |
-| Open source v2 | `dbt-core` | Your organization has a strict requirement to use the Apache 2.0 [open-source runtime](/docs/local/install-dbt-v2). |
+| dbt OSS | `dbt-core` | Your organization has a strict requirement to use the Apache 2.0 [open-source runtime](/docs/local/install-dbt-v2). |
 </SimpleTable>
 
 If you have a older project that isn’t ready to move to v2, continue using `dbt-core` v1.x for compatibility. For new or upgraded projects, we recommend v2.

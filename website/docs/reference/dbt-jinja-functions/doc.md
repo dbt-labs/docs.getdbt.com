@@ -73,7 +73,7 @@ Docs block names must be unique within your project. If you define multiple `{% 
  
 <VersionBlock firstVersion="1.11" lastVersion="1.99">
  
-In <Constant name="dbt" /> v1.11 and later, duplicate docs block names are not allowed. If duplicates are found, dbt reports the conflicting files and raises a compilation error. Rename one block so each docs block name is unique.
+In <Constant name="dbt" /> v1.11 and later 1.x versions, duplicate docs block names are not allowed. If duplicates are found, dbt reports the conflicting files and raises a compilation error. Rename one block so each docs block name is unique.
  
 <File name="models/docs/example.md">
  

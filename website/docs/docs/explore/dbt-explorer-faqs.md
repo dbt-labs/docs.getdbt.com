@@ -31,7 +31,7 @@ availability: platform_login
 
 ## How dbt Catalog works
 
-<Expandable alt_header="Can I use dbt Catalog on-premises or with my self-hosted v1 deployment?" >
+<Expandable alt_header="Can I use dbt Catalog on-premises or with my self-hosted dbt deployment?" >
 
 No. <Constant name="catalog" /> and all of its features are only available as a <Constant name="dbt" /> user experience. <Constant name="catalog" /> reflects the metadata from your <Constant name="dbt" /> project(s) and their runs. 
 
@@ -159,7 +159,7 @@ Read-only users can consume metadata in <Constant name="catalog" />. More bespok
 
 </Expandable>
 
-<Expandable alt_header="Will v1 users be able to leverage any of these new dbt Catalog features?" >
+<Expandable alt_header="Will self-hosted dbt users be able to leverage any of these new dbt Catalog features?" >
 
 No. <Constant name="catalog" /> is a <Constant name="dbt" />-only product experience.
 

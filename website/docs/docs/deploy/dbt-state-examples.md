@@ -1,7 +1,7 @@
 ---
 title: "dbt State usage examples"
 sidebar_label: "dbt State examples"
-description: "Side-by-side dbt v1 and dbt v1 with dbt State execution scenarios using the Jaffle Shop project."
+description: "Side-by-side standalone local dbt execution and local dbt with dbt State execution scenarios using the Jaffle Shop project."
 id: "dbt-state-examples"
 tags: ['dbt State']
 pagination_prev: "docs/deploy/dbt-state-deferral"

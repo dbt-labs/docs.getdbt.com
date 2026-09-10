@@ -5,7 +5,7 @@ description: "Connecting your warehouse to dbt v1 using the CLI."
 level: 'Beginner'
 platform: 'dbt-core'
 icon: 'square-terminal'
-tags: ['dbt v1','Quickstart']
+tags: ['Quickstart']
 hide_table_of_contents: true
 ---
 

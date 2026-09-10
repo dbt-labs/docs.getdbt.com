@@ -7,7 +7,7 @@ hoverSnippet: Learn how to use Databricks workflows to run dbt jobs
 # time_to_complete: '30 minutes' commenting out until we test
 icon: 'databricks'
 hide_table_of_contents: true
-tags: ['Databricks', 'dbt v1','dbt platform','Orchestration']
+tags: ['Databricks', 'dbt platform', 'Orchestration']
 level: 'Intermediate'
 ---
 

@@ -34,7 +34,7 @@ If you're ready to get started, choose one of the following options. To learn mo
 <Card
     title="dbt v2 upgrade"
     body="Learn how you can upgrade and leverage the speed and scale of dbt v2"
-    link="/docs/dbt-versions/upgrade-dbt-platform-version#dbt-fusion-engine"
+    link="/docs/dbt-versions/upgrade-dbt-platform-version#dbt-v2"
     icon="dbt-bit"/>
 
 </div>

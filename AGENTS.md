@@ -104,9 +104,10 @@ These rules are **mandatory** — incorrect branding is the most common docs err
 
 | Name | Usage | Notes |
 | --- | --- | --- |
-| **dbt** | Always lowercase | Generic **only** — use deliberately for statements that are product-agnostic (true regardless of version). Not the default for former dbt Core/Fusion references |
+| **dbt** | Always lowercase | Default — Use for general features that don't need version gating (like for v1) or new default features going forward with v2 |
 | **dbt v1** | Always lowercase `dbt` | Formerly "dbt Core". dbt versions ≤ 1.x. Write `dbt v1` in a header or at the start of a sentence; use bare `v1` inline |
 | **dbt v2** | Always lowercase `dbt` | Formerly "Fusion" / "dbt Fusion engine" / "dbt Core 2.0". dbt versions ≥ 2.x. Write `dbt v2` in a header or at the start of a sentence; use bare `v2` inline |
+| **dbt OSS** | Hard-coded literal, no `<Constant>` | The Apache 2.0 open-source distribution of v2. Use instead of vague phrasings like "the open source layer/portions of v2". Not a synonym for dbt v2, which also covers the proprietary distribution |
 | **dbt platform** | Not "dbt Cloud" | The cloud-based platform (formerly dbt Cloud) |
 | **dbt Labs** | The company | When docs say "we," this is who "we" is |
 
@@ -125,9 +126,8 @@ All other features (models, environments, configs, settings) are common nouns.
 <Constant name="studio_ide" />     // → "Studio IDE"
 ```
 
-Use the **specific** constant (`core` / `fusion`) so a reader can always tell which
-version a sentence refers to. Use `<Constant name="dbt" />` only when the statement is
-genuinely product-agnostic.
+Use the **specific** constant (`core` / `fusion`) when a reader needs to know which
+version a sentence refers to. Use `<Constant name="dbt" />` as the default and when the statement is product-agnostic.
 
 Refer to `website/constants.js` for constant names.
 

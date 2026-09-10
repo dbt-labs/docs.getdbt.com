@@ -45,10 +45,11 @@ Always use these exact names (case-sensitive):
 | Product | Usage | Notes |
 |---------|-------|-------|
 | dbt Labs | The company | Always lowercase "dbt", capital "L" |
-| dbt | Generic reference — use deliberately | Only for statements that are product-agnostic (true of dbt regardless of version). Not the default for former "dbt Core"/"Fusion" references |
-| dbt v1 | Versions ≤1.x (formerly "dbt Core") | Always lowercase "dbt". Write "dbt v1" in a header or at the start of a sentence; use bare "v1" inline |
+| dbt | Default reference | Use for general features that don't need version gating (like for v1) or new default features going forward with v2 |
+| dbt v1 | Versions ≤1.x (formerly "dbt Core" or "dbt Core v1.x") | Always lowercase "dbt". Write "dbt v1" in a header or at the start of a sentence; use bare "v1" inline |
 | dbt v2 | Versions ≥2.x (formerly "Fusion" / "dbt Fusion engine" / "dbt Core 2.0") | Always lowercase "dbt". Write "dbt v2" in a header or at the start of a sentence; use bare "v2" inline |
-| dbt | Cloud-based offering | Formerly "dbt Cloud"; use "managed dbt" or "dbt platform" for clarity |
+| dbt OSS | The Apache 2.0 open-source distribution of v2 | Hard-code the literal text — there is no `<Constant>` for it. Not a synonym for dbt v2, which also covers the proprietary distribution |
+| dbt | Cloud-based offering | Formerly "dbt Cloud"; use "dbt platform" for clarity |
 
 Plan tiers (capitalize): Developer, Starter, Enterprise, Enterprise+
 

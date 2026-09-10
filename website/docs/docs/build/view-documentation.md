@@ -11,7 +11,7 @@ You can view documentation in three complementary ways, depending on your needs:
 | Option | Description | Availability |
 |------|-------------|--------------|
 | [**dbt Docs (Legacy)**](#dbt-docs) | Generates a static website with model lineage, metadata, and documentation that can be hosted on your web server (like S3 or Netlify). | <Constant name="core" /> or <Constant name="dbt" /> Developer plans |
-| [**dbt Docs v2**](#dbt-docs-v2) <Lifecycle status="beta" size="70" /> | A modern, performant open-source catalog built for data consumers. Includes a redesigned UI, large-project performance, Semantic Layer metadata, and column-level lineage (<Constant name="fusion" />), served as a static site you can host anywhere. | <Constant name="fusion_engine" /> |
+| [**dbt Docs v2**](#dbt-docs-v2) | A modern, performant open-source catalog built for data consumers. Includes a redesigned UI, large-project performance, Semantic Layer metadata, and column-level lineage (<Constant name="fusion" />), served as a static site you can host anywhere. | <Constant name="fusion_engine" /> |
 | [**<Constant name="catalog" />**](/docs/explore/explore-projects) | The premier documentation experience in <Constant name="dbt" />. Builds on dbt Docs to provide a dynamic, real-time interface with rich [metadata](/docs/explore/explore-projects#generate-metadata), customizable views, deep insight into your project and resources, and collaborative tools. | <Constant name="dbt" /> Starter, Enterprise, or Enterprise+ plans |
 
 ## Navigating your documentation
@@ -42,7 +42,7 @@ To access <Constant name="catalog" />, navigate to the **Catalog** option in the
 
 For additional details and instructions on how to explore your lineage, navigate your resources, view model query history and data health signals, feature availability, and more &mdash; refer to [Discover data with <Constant name="catalog" />](/docs/explore/explore-projects).
 
-### dbt Docs v2 <Lifecycle status="beta"/>
+### dbt Docs v2
 
 dbt Docs v2 is the next-generation open-source catalog experience, available when using <Constant name="fusion_engine" />. It is designed for data consumers (analysts, BI users, data scientists, and stakeholders) who need to understand what data exists, how it was built, and whether they can trust it.
 

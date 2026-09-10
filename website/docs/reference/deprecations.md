@@ -92,7 +92,7 @@ In <Constant name="fusion" />, behavior differs from <Constant name="core" />:
 - The `Deprecations` group may not silence all deprecation-style warnings. Prefer the specific event name from your logs (for example, `SemanticModelDeprecated`).
 - Some deprecated configs are hard errors in <Constant name="fusion" /> and cannot be silenced. You must fix them.
 
-For more information about how <Constant name="fusion" /> handles `warn_error_options`, supported names, and hard-error cases, refer to [<Constant name="fusion" /> behavior and warning codes](/reference/global-configs/warnings#fusion-behavior-and-warning-codes).
+For more information about how <Constant name="fusion" /> handles `warn_error_options`, supported names, and hard-error cases, refer to [<Constant name="fusion" /> behavior and warning codes](/reference/global-configs/warnings#dbt-v2-behavior-and-warning-codes).
 
 </VersionBlock>
 

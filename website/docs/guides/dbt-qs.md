@@ -25,13 +25,13 @@ This quickstart guide will get you from zero to running your first dbt project w
 - The dbt VS Code extension installed and connected  
 - The ability to preview, compile, and run dbt commands directly from your IDE 
 
-### About <Constant name="fusion_engine" /> {#about-the}
+### About <Constant name="fusion_engine" /> {#about-dbt-v2}
 
 <Constant name="fusion" /> and the features it provides are available in multiple environments:
 
 | Environment | How to use <Constant name="fusion" /> |
 |--------------|-------------------|
-| **<Constant name="studio_ide" />** | <Constant name="fusion" /> is automatically enabled; just [upgrade your environment(s)](/docs/dbt-versions/upgrade-dbt-platform-version#dbt-fusion-engine). |
+| **<Constant name="studio_ide" />** | <Constant name="fusion" /> is automatically enabled; just [upgrade your environment(s)](/docs/dbt-versions/upgrade-dbt-platform-version#dbt-v2). |
 | **Local CLI** | [Install <Constant name="fusion_engine" />](/docs/local/install-dbt?version=2) locally following this guide. |
 | **VS Code / Cursor IDE** | [Install the dbt extension](/docs/install-dbt-extension) to unlock <Constant name="fusion" />'s interactive power in your editor. |
 

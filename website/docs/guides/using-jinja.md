@@ -6,7 +6,7 @@ hoverSnippet: "Improve your SQL code with Jinja"
 # time_to_complete: '30 minutes' commenting out until we test
 icon: 'guides'
 hide_table_of_contents: true
-tags: ['Jinja', 'dbt v1']
+tags: ['Jinja']
 level: 'Advanced'
 ---
 

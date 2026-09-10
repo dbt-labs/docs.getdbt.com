@@ -26,7 +26,7 @@ _`v2 Stable` is the default for all new <Constant name="fusion" />-powered proje
 | ------------- | ------- | ----------- | ----------------- | --------- |
 | **v2 Nightly** | Nightly | The latest nightly build. Includes early access to new features. | All plans | `fusion-nightly` |
 | **v2 Stable** (default) | Weekly | A weekly release that balances stability and feature access. <br /> | All plans | `fusion-stable` |
-| **<v2 Extended** | Monthly | The previous month's final <Constant name="fusion" /> Stable release. Designed for those who want maximum stability and additional testing time. | Enterprise, Enterprise+ | `fusion-extended` |
+| **v2 Extended** | Monthly | The previous month's final <Constant name="fusion" /> Stable release. Designed for those who want maximum stability and additional testing time. | Enterprise, Enterprise+ | `fusion-extended` |
 | **v2 Fallback** | Monthly | The previous month's <Constant name="fusion" /> Extended release. Emergency rollback option for account admins. | Enterprise+ | `fusion-fallback` |
 
 
@@ -188,18 +188,5 @@ If the package you’ve installed relies on _undocumented_ functionality of db
 
 </Expandable>
 
-<Expandable alt_header="I see that dbt v1.8 was released in April 2024. Will a version 1.8 become available in the dbt platform?" >
-
-No. Going forward, customers will access new functionality and ongoing support in dbt by receiving automatic updates. We believe this is the best way for us to offer a reliable, stable, and secure runtime for dbt, and for you as dbt users to be able to consistently take advantage of new features.
-
-In 2023 (and earlier), customers were expected to manage their own upgrades by selecting <Constant name="core" /> versions, up to and including <Constant name="dbt" /> v1.7, which was released in October 2023. (Way back in 2021, <Constant name="dbt" /> customers would pick specific _patch releases_ of <Constant name="core" />, such as upgrading from `v0.21.0` to `v0.21.1`. We’ve come a long way since then!)
-
-In 2024, we've changed the way that new dbt functionality is made available for <Constant name="dbt" /> customers. Behavior or breaking changes are gated behind opt-in flags. Users don't need to spend valuable time managing their own upgrades. Currently, it is possible to receive continuous (daily) updates. We are adding other release cadence options for managed customers of <Constant name="dbt" /> by the end of the year.
-
-Opting into a release cadence with automated upgrades is required for accessing any new functionality that we've released in 2024, and going forward.
-
-We continue to release new minor versions of <Constant name="core" /> (OSS). We most recently released <Constant name="dbt" /> v1.9 on December 9, 2024. These releases always include a subset of the functionality that's already available to the dbt platform customers, and always after the functionality has been available in the dbt platform.
-
-</Expandable>
 
 If you have comments or concerns, we’re happy to help. If you’re an existing <Constant name="dbt" /> customer, you may reach out to your account team or [contact support](/docs/dbt-support#dbt-cloud-support).

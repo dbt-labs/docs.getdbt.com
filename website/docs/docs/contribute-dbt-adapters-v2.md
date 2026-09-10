@@ -8,7 +8,7 @@ availability:
 ---
 
 :::caution Work in progress
-This guide is a work in progress — synthesized from internal dbt v2 v2 adapter team docs, DuckDB/ClickHouse reference implementations, the Exasol community adapter, and the v1 adapter creation guide.
+This guide is a work in progress — synthesized from internal dbt v2 adapter team docs, DuckDB/ClickHouse reference implementations, the Exasol community adapter, and the v1 adapter creation guide.
 
 **Community contribution scope:** You are responsible for **Phase 1 (foundation)** only — connecting, running macros, and basic materializations. Phase 2 (SQL static analysis) is led by dbt Labs after your Phase 1 PR is merged.
 :::
@@ -20,7 +20,7 @@ This guide is a work in progress — synthesized from internal dbt v2 v2 adapter
 This guide walks you through contributing a new v2 adapter to dbt-core as a community member. The file breakdown in the [reference section](#reference-file-by-file-implementation-guide) shows the ~13 files a complete community v2 adapter touches. Exasol, a community contributed v2 adapter, is the example used throughout this guide.
 
 :::info What is <Constant name="core_v2" />?
-v2 is the new Rust-based dbt engine. Adapters in v2 are written in Rust and live inside the `dbt-core` monorepo, rather than as standalone Python packages.
+dbt v2 is the new Rust-based dbt engine. Adapters in v2 are written in Rust and live inside the `dbt-core` monorepo, rather than as standalone Python packages.
 :::
 
 ### How adapters are different now

@@ -121,7 +121,7 @@ If you're using Snowflake, we recommend:
     database: true
     schema: true
     identifier: true
-    snowflake_ignore_case: true  # dbt v2-only config. Aligns with Snowflake's session parameter QUOTED_IDENTIFIERS_IGNORE_CASE behavior. 
+    snowflake_ignore_case: true  # v2-only config. Aligns with Snowflake's session parameter QUOTED_IDENTIFIERS_IGNORE_CASE behavior. 
                                  # Ignored by dbt v1 and other adapters.
   ```
 

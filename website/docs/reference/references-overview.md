@@ -2,7 +2,7 @@
 title: "About References"
 id: "references-overview"
 sidebar_label: "About References"
-description: "Connect dbt to any data platform in the dbt platform or dbt v1, using a dedicated adapter plugin"
+description: "Connect dbt to any data platform in the dbt platform or locally, using a dedicated adapter plugin"
 hide_table_of_contents: true
 pagination_next: null
 pagination_prev: null

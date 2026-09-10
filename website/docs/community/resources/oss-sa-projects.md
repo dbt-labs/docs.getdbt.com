@@ -4,7 +4,7 @@ Looking for a good place to get involved contributing code? dbt Labs supports th
 
 ## Rust
 
-- [The open source layer of v2](https://github.com/dbt-labs/dbt-core) - the next major version of dbt v1, powered by <Constant name="fusion_engine" /> (previously in [`dbt-fusion`](https://github.com/dbt-labs/dbt-fusion))
+- [dbt OSS](https://github.com/dbt-labs/dbt-core) - the Apache 2.0 open-source distribution of dbt v2 (previously in [`dbt-fusion`](https://github.com/dbt-labs/dbt-fusion))
 
 ## Python
 

@@ -1,7 +1,7 @@
 ---
-title: Install dbt open source v2
+title: Install dbt OSS
 id: install-dbt-v2
-description: "Install open source dbt v2, the open-source foundation behind dbt v2."
+description: "Install dbt OSS, the open-source foundation behind dbt v2."
 sidebar_label: "Install open source dbt v2"
 pagination_next: null
 pagination_prev: null
@@ -11,7 +11,7 @@ availability: local_free
 
 <VersionBlock lastVersion="1.99">
 
-This page is for installing the Apache 2.0 open-source distribution of v2. To view the installation instructions, select **v2** from the version picker in the docs navigation. To install <Constant name="core_v1" />, refer to [Install <Constant name="core_v1" />](/docs/local/install-dbt?version=1.12).
+This page is for installing dbt OSS, the Apache 2.0 open-source distribution of v2. To view the installation instructions, select **v2** from the version picker in the docs navigation. To install <Constant name="core_v1" />, refer to [Install <Constant name="core_v1" />](/docs/local/install-dbt?version=1.12).
 
 To upgrade an existing v1 project to v2, refer to [Upgrade to v2](/docs/dbt-versions/dbt-upgrade/upgrading-to-v2?version=2.0).
 
@@ -25,7 +25,7 @@ The open-source v2 foundation is licensed under Apache 2.0. Most users don't nee
 
 ## Install
 
-Install the open source v2 prerelease with `pip`:
+Install the dbt OSS prerelease with `pip`:
 
 ```shell
 python -m pip install --pre dbt-core
@@ -68,7 +68,7 @@ To contribute, refer to the [`dbt-core` repository](https://github.com/dbt-labs/
 
 ## License
 
-The open source portions of v2 are licensed under Apache 2.0. Refer to the [LICENSE file](https://github.com/dbt-labs/dbt-core/blob/HEAD/LICENSE) in the repository. Refer to [dbt licensing](/docs/dbt-licensing?version=2.0) for more info.
+dbt OSS is licensed under Apache 2.0. Refer to the [LICENSE file](https://github.com/dbt-labs/dbt-core/blob/HEAD/LICENSE) in the repository. Refer to [dbt licensing](/docs/dbt-licensing?version=2.0) for more info.
 
 ## Related
 

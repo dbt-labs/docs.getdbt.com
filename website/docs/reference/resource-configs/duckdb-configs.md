@@ -2,7 +2,7 @@
 title: "DuckDB configurations"
 id: "duckdb-configs"
 description: "Reference for DuckDB-specific configurations in dbt-duckdb, including secrets, DuckLake, external files, incremental strategies, and more."
-tags: ['DuckDB', 'dbt v1']
+tags: ['DuckDB']
 ---
 
 These configurations are specific to `dbt-duckdb`. For profile setup and connection options, refer to [Connect DuckDB](/docs/local/connect-data-platform/duckdb-setup). For general dbt concepts, refer to [Materializations](/docs/build/materializations) and [Incremental models](/docs/build/incremental-models).

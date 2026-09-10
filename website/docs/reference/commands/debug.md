@@ -202,7 +202,7 @@ Options:
  --connection          
                 Test the connection to the target database
                 independent of dependency checks.
-                Available in Studio IDE and dbt v1 CLI
+                Available in Studio IDE and dbt CLI
 
  --config-dir          
                 Print a system-specific command to access

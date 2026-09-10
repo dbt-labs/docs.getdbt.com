@@ -15,11 +15,11 @@ dbt v2 has the following distributions today, all free to install and run.
 | Distribution | Package | Use it when |
 | --- | --- | --- |
 | <Constant name="fusion" /> | `dbt` | The recommended v2 experience. |
-| Open source | `dbt-core` | Your organization has a strict requirement to use the Apache 2.0 open-source runtime |
+| dbt OSS | `dbt-core` | Your organization has a strict requirement to use the Apache 2.0 open-source runtime |
 
 </SimpleTable>
 
-If you have a older project that isn’t ready to move to v2, continue using `dbt-core` v1.x for compatibility. For new or upgraded projects, we recommend [upgrading to v2](/docs/dbt-versions/upgrade-dbt-platform-version?version=2.0#dbt-fusion-engine%20in%20the%20dbt%20platform).
+If you have a older project that isn’t ready to move to v2, continue using `dbt-core` v1.x for compatibility. For new or upgraded projects, we recommend [upgrading to v2](/docs/dbt-versions/upgrade-dbt-platform-version?version=2.0#dbt-v2).
 
 ## Which one should I use?
 
@@ -31,16 +31,16 @@ Typically you'd choose the open source installtion directly only if you're in on
 1. Your organization's license policy requires a strict open-source distribution
 2. You're building something custom on top of the OSS code itself. 
 
-Already running <Constant name="core_v1" />? You don't have to move to v2 &mdash; it's still fully supported. Over time, new capabilities will land in v2 only, so most people will eventually want to [upgrade ](/docs/dbt-versions/upgrade-dbt-platform-version?version=2.0#dbt-fusion-engine%20in%20the%20dbt%20platform).
+Already running <Constant name="core_v1" />? You don't have to move to v2 &mdash; it's still fully supported. Over time, new capabilities will land in v2 only, so most people will eventually want to [upgrade](/docs/dbt-versions/upgrade-dbt-platform-version?version=2.0#dbt-v2).
 
 To check which distribution you're using, run `dbt --version` in the command line.
 
 ## What changed, and what didn't
 
 **Changed:**
-- v2 is available through two distributions: <Constant name="fusion" /> and the open source v2.
-- The new Apache 2.0 open-source distribution for v2 is powered by the shared Rust engine code and is now available in `dbt-core`.
-- dbt v2 builds on the open source layer and extends it with additional proprietary capabilities under the dbt Product Licensing Agreement.
+- v2 is available through two distributions: <Constant name="fusion" /> and dbt OSS.
+- dbt OSS, the Apache 2.0 open-source distribution for v2, is powered by the shared Rust engine code and is now available in `dbt-core`.
+- dbt v2 builds on dbt OSS and extends it with additional proprietary capabilities under the dbt Product Licensing Agreement.
 
 **Unchanged:**
 - <Constant name="core_v1" /> is still fully available and still Apache 2.0.
@@ -54,7 +54,7 @@ To check which distribution you're using, run `dbt --version` in the command lin
 
 dbt v1 is released under the [Apache 2.0 license](http://www.apache.org/licenses/LICENSE-2.0). It's fully supported and free to install and run.
 
-Typically, you'd use <Constant name="core_v1" /> if you're managing older projects and aren't yet ready to [upgrade to v2](/docs/dbt-versions/upgrade-dbt-platform-version?version=2.0#dbt-fusion-engine%20in%20the%20dbt%20platform).
+Typically, you'd use <Constant name="core_v1" /> if you're managing older projects and aren't yet ready to [upgrade to v2](/docs/dbt-versions/upgrade-dbt-platform-version?version=2.0#dbt-v2).
 
 ### What's v2?
 

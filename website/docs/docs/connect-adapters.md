@@ -10,7 +10,7 @@ This section provides more details on different ways you can connect dbt to an a
 
 ### Set up in dbt
 
-Explore the fastest and most reliable way to deploy dbt using the <Constant name="dbt_platform" />, a hosted architecture that runs dbt across your organization. The <Constant name="dbt_platform" /> lets you seamlessly [connect](/docs/platform/about-platform-setup) with a variety of [trusted](/docs/supported-data-platforms) data platform providers directly in the <Constant name="dbt" /> UI.
+Explore the fastest and most reliable way to deploy dbt by using the <Constant name="dbt_platform" />, a hosted architecture that runs dbt across your organization. The <Constant name="dbt_platform" /> lets you seamlessly [connect](/docs/platform/about-platform-setup) with a variety of [trusted](/docs/supported-data-platforms) data platform providers directly in the <Constant name="dbt" /> UI.
 
 ### Install self-hosted dbt
 

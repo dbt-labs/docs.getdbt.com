@@ -7,7 +7,6 @@ hoverSnippet: Learn how to create packages for dbt.
 # time_to_complete: '30 minutes' commenting out until we test
 icon: 'guides'
 hide_table_of_contents: true
-tags: ['dbt v1']
 level: 'Advanced'
 ---
 

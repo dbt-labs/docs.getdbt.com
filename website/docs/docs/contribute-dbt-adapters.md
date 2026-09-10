@@ -1,5 +1,5 @@
 ---
-title: "Contribute to dbt v1 adapters"
+title: "Contribute to dbt adapters"
 id: "contribute-dbt-adapters"
 description: "Contribute to existing dbt v1 adapters or open a pull request for a new v1 or v2 adapter."
 pagination_next: null

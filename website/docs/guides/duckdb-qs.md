@@ -7,7 +7,7 @@ platform: 'dbt-core'
 icon: 'duckdb-seeklogo'
 level: 'Beginner'
 hide_table_of_contents: true
-tags: ['dbt v1','Quickstart']
+tags: ['Quickstart']
 ---
 
 <div style={{maxWidth: '900px'}}>

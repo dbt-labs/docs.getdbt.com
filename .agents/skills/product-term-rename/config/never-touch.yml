@@ -27,8 +27,12 @@ literals:
   - "fusionReleases"
   # Real product/permission names
   - "Fusion admin"
-  # Slack channel + asset paths
-  - "#dbt-fusion-engine"
+  # Slack channel + asset paths.
+  # NOTE: backticks are load-bearing. The bare string "#dbt-fusion-engine" also
+  # matches URL fragments (`...upgrade-dbt-platform-version#dbt-fusion-engine`),
+  # which ARE renameable — a rename PR must move link anchors onto the new text
+  # rather than preserve retired ones. The channel name is always backticked.
+  - "`#dbt-fusion-engine`"
   - "/img/fusion/"
   # Third-party — NOT our product
   - "DataFusion"

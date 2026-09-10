@@ -41,7 +41,7 @@ On **BigQuery**, this is analogous to a `dataset`.
 
 ## Default
 
-<VersionBlock firstVersion="1.9">In <Constant name="dbt" /> v1.9+ and <Constant name="dbt" /> **Latest** release track, this is not a required parameter. </VersionBlock>
+<VersionBlock firstVersion="1.9">In <Constant name="dbt" /> v1.9+, this is not a required parameter. </VersionBlock>
 
 ## Examples
 ### Build all snapshots in a schema named `snapshots`
