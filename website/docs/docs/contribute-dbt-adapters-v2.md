@@ -17,10 +17,10 @@ This guide is a work in progress — synthesized from internal Fusion v2 adapter
 
 <Constant name="core_v2" /> adapters work very differently from <Constant name="core_v1" /> adapters. In v1, each adapter was a standalone Python package that implemented a fragmented Python interface. In <Constant name="core_v2" />, adapters live **inside a monorepo written in Rust**, connected to warehouses via ADBC (Arrow Database Connectivity) drivers — and the community contribution model has changed accordingly.
 
-This guide walks you through contributing a new <Constant name="core_v2" /> adapter to dbt-core as a community member. The file breakdown in the [reference section](#reference-file-by-file-implementation-guide) shows the ~13 files a complete community <Constant name="core_v2" /> adapter touches. Exasol, a community contributed <Constant name="core_v2" /> adapter, is the example used throughout this guide.
+This guide walks you through contributing a new <Constant name="core_v2" /> adapter to `dbt-labs/dbt` as a community member. The file breakdown in the [reference section](#reference-file-by-file-implementation-guide) shows the ~13 files a complete community <Constant name="core_v2" /> adapter touches. Exasol, a community contributed <Constant name="core_v2" /> adapter, is the example used throughout this guide.
 
 :::info What is <Constant name="core_v2" />?
-<Constant name="core_v2" /> is the new Rust-based dbt engine. Adapters in <Constant name="core_v2" /> are written in Rust and live inside the `dbt-core` monorepo, rather than as standalone Python packages.
+<Constant name="core_v2" /> is the new Rust-based dbt engine. Adapters in <Constant name="core_v2" /> are written in Rust and live inside the `dbt-labs/dbt` monorepo, rather than as standalone Python packages.
 :::
 
 ### How adapters are different now
@@ -32,7 +32,7 @@ In <Constant name="core_v1" />, every adapter is:
 - Built upon vendor-maintained Python SDK connectors/drivers
 
 In <Constant name="core_v2" />, adapters are:
-- **Part of the `dbt-core` monorepo**, contributed as PRs
+- **Part of the `dbt-labs/dbt` monorepo**, contributed as PRs
 - **Written in Rust** (with Jinja SQL macros still used for SQL logic)
 - Connected to warehouses via **ADBC drivers** — a unified driver interface that abstracts away connection management
 - Organized by **vertical** (feature area) rather than by warehouse — meaning a bug fix in one crate often benefits all adapters
@@ -156,7 +156,7 @@ go version  # verify
 
 # Clone the repo
 git clone https://github.com/dbt-labs/dbt
-cd dbt-core
+cd dbt
 
 # Verify you can build
 cargo build --bin dbt
@@ -261,7 +261,7 @@ profiles.yml / dbt_project.yml
 
 ### Crate map
 
-In Rust, a **crate** is a package — the unit of compilation, roughly equivalent to a "library" or "module" in other languages. The `dbt-core` monorepo has multiple crates, each responsible for one vertical slice of functionality across all warehouses. This is a quick-reference map of the six crates you'll touch to build your adapter, in the order you'll work through them in Step 4.
+In Rust, a **crate** is a package — the unit of compilation, roughly equivalent to a "library" or "module" in other languages. The `dbt-labs/dbt` monorepo has multiple crates, each responsible for one vertical slice of functionality across all warehouses. This is a quick-reference map of the six crates you'll touch to build your adapter, in the order you'll work through them in Step 4.
 
 | Crate | Location | What you touch |
 |---|---|---|
@@ -654,7 +654,7 @@ Unlike first-party adapters, your users won't get the driver automatically — <
 ## Step 7: Promote your adapter
 
 :::caution Your PR must be merged first
-dbt Labs reviews and merges community adapter PRs into dbt-core. Wait until the PR is merged and the adapter ships in a published release before directing users to it.
+dbt Labs reviews and merges community adapter PRs into `dbt-labs/dbt`. Wait until the PR is merged and the adapter ships in a published release before directing users to it.
 :::
 
 ### Community channels

@@ -98,7 +98,7 @@ For more information on the adapters which support foreign key constraints, have
 
 In transactional databases, it is possible to define "constraints" on the allowed values of certain columns, stricter than just the data type of those values. For example, Postgres supports and enforces all the constraints in the ANSI SQL standard (`not null`, `unique`, `primary key`, `foreign key`), plus a flexible row-level `check` constraint that evaluates to a boolean expression.
 
-Most analytical data platforms support and enforce a `not null` constraint, but they either do not support or do not enforce the rest. It is sometimes still desirable to add an "informational" constraint, knowing it is _not_ enforced, for the purpose of integrating with legacy data catalog or entity-relation diagram tools ([dbt-core#3295](https://github.com/dbt-labs/dbt/issues/3295)). Some data platforms can optionally use primary or foreign key constraints for query optimization if you specify an additional keyword.
+Most analytical data platforms support and enforce a `not null` constraint, but they either do not support or do not enforce the rest. It is sometimes still desirable to add an "informational" constraint, knowing it is _not_ enforced, for the purpose of integrating with legacy data catalog or entity-relation diagram tools ([dbt-labs/dbt#3295](https://github.com/dbt-labs/dbt/issues/3295)). Some data platforms can optionally use primary or foreign key constraints for query optimization if you specify an additional keyword.
 
 To that end, there are two optional fields you can specify on any filter:
 - `warn_unenforced: False` to skip warning on constraints that are supported, but not enforced, by this data platform. The constraint will be included in templated DDL.

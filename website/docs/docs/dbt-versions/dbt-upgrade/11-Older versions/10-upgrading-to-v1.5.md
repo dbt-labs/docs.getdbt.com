@@ -37,7 +37,7 @@ This release includes significant new features, and rework to `dbt-core`'s CLI a
 
 :::
 
-Setting `log-path` and `target-path` in `dbt_project.yml` has been deprecated for consistency with other invocation-specific runtime configs ([dbt-core#6882](https://github.com/dbt-labs/dbt/issues/6882)). We recommend setting via env var or CLI flag instead.
+Setting `log-path` and `target-path` in `dbt_project.yml` has been deprecated for consistency with other invocation-specific runtime configs ([dbt-labs/dbt#6882](https://github.com/dbt-labs/dbt/issues/6882)). We recommend setting via env var or CLI flag instead.
 
 The `dbt list` command will now include `INFO` level logs by default. Previously, the `list` command (and _only_ the `list` command) had `WARN`-level stdout logging, to support piping its results to [`jq`](https://jqlang.github.io/jq/manual/), a file, or another process. To achieve that goal, you can use either of the following parameters:
 - `dbt list --log-level warn` (recommended; equivalent to previous default)
@@ -49,7 +49,7 @@ The following env vars have been renamed, for consistency with the convention fo
 - `DBT_NO_PRINT` → `DBT_PRINT`
 - `DBT_ARTIFACT_STATE_PATH` → `DBT_STATE`
 
-As described in [dbt-core#7169](https://github.com/dbt-labs/dbt/pull/7169), command-line parameters that could be silent before will no longer be silent. See [dbt-labs/dbt#7158](https://github.com/dbt-labs/dbt/issues/7158) and [dbt-labs/dbt#6800](https://github.com/dbt-labs/dbt/issues/6800) for more examples of the behavior we are fixing.
+As described in [dbt-labs/dbt#7169](https://github.com/dbt-labs/dbt/pull/7169), command-line parameters that could be silent before will no longer be silent. See [dbt-labs/dbt#7158](https://github.com/dbt-labs/dbt/issues/7158) and [dbt-labs/dbt#6800](https://github.com/dbt-labs/dbt/issues/6800) for more examples of the behavior we are fixing.
 
 An empty `tests:` key in a yaml file will now raise a validation error, instead of being silently skipped. You can resolve this by removing the empty `tests:` key, or by setting it to an empty list explicitly:
 ```yml

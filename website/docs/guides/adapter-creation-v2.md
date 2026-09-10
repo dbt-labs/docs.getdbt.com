@@ -35,7 +35,7 @@ The Exasol adapter, contributed by [Marco Nätlitz](https://www.linkedin.com/in/
 
 | Topic | <Constant name="core_v1" /> | <Constant name="core_v2" /> |
 |-------|-------------|-------------|
-| **Package structure** | Separate Python packages (e.g. `dbt-snowflake`, `dbt-bigquery`), each inheriting from `dbt-adapters` | Part of the `dbt-core` monorepo, contributed as PRs |
+| **Package structure** | Separate Python packages (e.g. `dbt-snowflake`, `dbt-bigquery`), each inheriting from `dbt-adapters` | Part of the `dbt-labs/dbt` monorepo, contributed as PRs |
 | **Who maintains them** | dbt Labs maintains base adapter and 6 major adapters; others community-maintained independently | dbt Labs maintains the monorepo; community contributes via PRs |
 | **Language** | Python | Rust (with Jinja SQL macros still used for SQL logic) |
 | **How they load** | Dynamically loaded at runtime via Python's plugin system | Compiled into the monorepo binary |
@@ -94,7 +94,7 @@ The structural diagram below shows how the layers fit together. Your work lives 
 
 ### Crate map
 
-In Rust, a **crate** is a package: the unit of compilation, roughly equivalent to a "library" or "module" in other languages. The `dbt-core` repo is a monorepo of multiple crates, each responsible for one vertical slice of functionality across all warehouses. This is a quick-reference map of the six crates you'll touch to build your adapter, in the order you'll work through them in Step 5.
+In Rust, a **crate** is a package: the unit of compilation, roughly equivalent to a "library" or "module" in other languages. The `dbt-labs/dbt` repo is a monorepo of multiple crates, each responsible for one vertical slice of functionality across all warehouses. This is a quick-reference map of the six crates you'll touch to build your adapter, in the order you'll work through them in Step 5.
 
 | Crate | Location | What you touch |
 |-------|----------|----------------|
@@ -206,7 +206,7 @@ go version  # verify
 
 # Clone the repo
 git clone https://github.com/dbt-labs/dbt
-cd dbt-core
+cd dbt
 
 # Verify you can build
 cargo build --bin dbt
@@ -658,7 +658,7 @@ Unlike adapters distributed via the CDN, your users won't get the driver automat
 ## Step 8: Promote your adapter
 
 :::caution Your PR must be merged first
-dbt Labs reviews and merges community adapter PRs into dbt-core. Wait until the PR is merged and the adapter ships in a published release before directing users to it.
+dbt Labs reviews and merges community adapter PRs into `dbt-labs/dbt`. Wait until the PR is merged and the adapter ships in a published release before directing users to it.
 :::
 
 ### Community channels

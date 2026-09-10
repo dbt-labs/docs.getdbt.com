@@ -42,9 +42,9 @@ For `--log-format`, `--log-level`, and related CLI configs, refer to [Logs](/ref
 
 <VersionBlock lastVersion="1.99">
 
-_For more details about how the eventing system has been implemented in dbt-core, see the [`events` module README](https://github.com/dbt-labs/dbt/blob/HEAD/core/dbt/events/README.md)._
+_For more details about how the eventing system has been implemented in dbt, see the [`events` module README](https://github.com/dbt-labs/dbt/blob/HEAD/core/dbt/events/README.md)._
 
-The structure of each event in `dbt-core` is backed by a schema defined using [protocol buffers](https://developers.google.com/protocol-buffers). All schemas are defined in the [`types.proto`](https://github.com/dbt-labs/dbt/blob/3bf148c443e6b1da394b62e88a08f1d7f1d8ccaa/core/dbt/events/core_types.proto) file within the `dbt-core` codebase.
+The structure of each event in `dbt-core` is backed by a schema defined using [protocol buffers](https://developers.google.com/protocol-buffers). All schemas are defined in the [`types.proto`](https://github.com/dbt-labs/dbt/blob/3bf148c443e6b1da394b62e88a08f1d7f1d8ccaa/core/dbt/events/core_types.proto) file within the `dbt-labs/dbt` codebase.
 
 Every event has the same two top-level keys:
 - `info`: Information common to all events. See the table below for the breakdown.

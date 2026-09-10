@@ -267,7 +267,7 @@ Install from source to get unreleased code or a specific commit. Clone the repo 
 
 ```shell
 git clone -b 1.latest https://github.com/dbt-labs/dbt.git
-cd dbt-core
+cd dbt
 python -m pip install -r requirements.txt
 ```
 

@@ -869,7 +869,7 @@ Anyone who installs `dbt-core`, and wishes to define their own test cases, can u
 
 To that end, we have built and made available a [package of reusable adapter test cases](https://github.com/dbt-labs/dbt-adapters/tree/main/dbt-tests-adapter), for creators and maintainers of adapter plugins. These test cases cover basic expected functionality, as well as functionality that frequently requires different implementations across databases.
 
-For the time being, this package is also located within the `dbt-core` repository, but separate from the `dbt-core` Python package.
+For the time being, this package is also located within the `dbt-labs/dbt` repository, but separate from the `dbt-core` Python package.
 
 ### Categories of tests
 
@@ -881,7 +881,7 @@ In the course of creating and maintaining your adapter, it's likely that you wil
 
 3. **Custom tests**, for behavior that is specific to your adapter / data platform. Each <Term id="data-warehouse" /> has its own specialties and idiosyncracies. We encourage you to use the same `pytest`-based framework, utilities, and fixtures to write your own custom tests for functionality that is unique to your adapter.
 
-If you run into an issue with the core framework, or the basic/optional test cases—or if you've written a custom test that you believe would be relevant and useful for other adapter plugin developers—please open an issue or PR in the `dbt-core` repository on GitHub.
+If you run into an issue with the core framework, or the basic/optional test cases—or if you've written a custom test that you believe would be relevant and useful for other adapter plugin developers—please open an issue or PR in the `dbt-labs/dbt` repository on GitHub.
 
 ### Getting started running basic tests
 
@@ -1090,7 +1090,7 @@ class TestSimpleMaterializationsBigQuery(BaseSimpleMaterializations):
 
 It's always worth asking whether the required modifications represent gaps in perceived or expected dbt functionality. Are these simple implementation details, which any user of this database would understand? Are they limitations worth documenting?
 
-If, on the other hand, they represent poor assumptions in the "basic" test cases, which fail to account for a common pattern in other types of databases-—please open an issue or PR in the `dbt-core` repository on GitHub.
+If, on the other hand, they represent poor assumptions in the "basic" test cases, which fail to account for a common pattern in other types of databases-—please open an issue or PR in the `dbt-labs/dbt` repository on GitHub.
 
 ### Running with multiple profiles
 
@@ -1357,7 +1357,7 @@ Breaking this down:
 
 The Trusted Adapter Program exists to allow adapter maintainers to demonstrate to the dbt community that your adapter is trusted to be used in production.
 
-The very first data platform dbt supported was Redshift followed quickly by Postgres ([dbt-core#174](https://github.com/dbt-labs/dbt/pull/174)). In 2017, back when dbt Labs (née Fishtown Analytics) was still a data consultancy, we added support for Snowflake and BigQuery. We also turned dbt's database support into an adapter framework ([dbt-core#259](https://github.com/dbt-labs/dbt/pull/259/)), and a plugin system a few years later. For years, dbt Labs specialized in those four data platforms and became experts in them. However, the surface area of all possible databases, their respective nuances, and keeping them up-to-date and bug-free is a Herculean and/or Sisyphean task that couldn't be done by a single person or even a single team! Enter the dbt community which enables <Constant name="core_v1" /> to work on more than 30 different databases (32 as of Sep '22)!
+The very first data platform dbt supported was Redshift followed quickly by Postgres ([dbt-labs/dbt#174](https://github.com/dbt-labs/dbt/pull/174)). In 2017, back when dbt Labs (née Fishtown Analytics) was still a data consultancy, we added support for Snowflake and BigQuery. We also turned dbt's database support into an adapter framework ([dbt-labs/dbt#259](https://github.com/dbt-labs/dbt/pull/259/)), and a plugin system a few years later. For years, dbt Labs specialized in those four data platforms and became experts in them. However, the surface area of all possible databases, their respective nuances, and keeping them up-to-date and bug-free is a Herculean and/or Sisyphean task that couldn't be done by a single person or even a single team! Enter the dbt community which enables <Constant name="core_v1" /> to work on more than 30 different databases (32 as of Sep '22)!
 
 Free and open-source tools for the data professional are increasingly abundant. This is by-and-large a _good thing_, however it requires due diligence that wasn't required in a paid-license, closed-source software world. Before taking a dependency on an open-source project is is important to determine the answer to the following questions:
 

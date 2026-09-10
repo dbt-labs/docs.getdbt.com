@@ -47,7 +47,7 @@ Explicit pin:
 
 `python -m pip install dbt-core==2.0.0rc2`
 
-For adapter install details, refer to the [`dbt-core` repository](https://github.com/dbt-labs/dbt).
+For adapter install details, refer to the [`dbt` repository](https://github.com/dbt-labs/dbt).
 
 ## What's included
 
@@ -68,7 +68,7 @@ For the full picture of what you get with dbt, refer to [Fusion availability](/d
 
 ## Contributing
 
-<Constant name="core_v2" /> is developed in the open. To contribute, refer to the [`dbt-core` repository](https://github.com/dbt-labs/dbt) and its [CONTRIBUTING guide](https://github.com/dbt-labs/dbt/blob/HEAD/CONTRIBUTING.md), or ask in the [dbt Community](/community/resources/getting-help).
+<Constant name="core_v2" /> is developed in the open. To contribute, refer to the [`dbt` repository](https://github.com/dbt-labs/dbt) and its [CONTRIBUTING guide](https://github.com/dbt-labs/dbt/blob/HEAD/CONTRIBUTING.md), or ask in the [dbt Community](/community/resources/getting-help).
 
 ## License
 
@@ -78,6 +78,6 @@ For the full picture of what you get with dbt, refer to [Fusion availability](/d
 
 - [Install dbt](/docs/local/install-dbt) (standard install)
 - [Upgrade to v2](/docs/dbt-versions/dbt-upgrade/upgrading-to-v2)
-- [`dbt-core` repository on GitHub](https://github.com/dbt-labs/dbt)
+- [`dbt` repository on GitHub](https://github.com/dbt-labs/dbt)
 
 </VersionBlock>
