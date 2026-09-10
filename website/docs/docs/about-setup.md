@@ -12,7 +12,7 @@ dbt compiles and runs your analytics code against your data platform, enabling y
 
 - **<Constant name="dbt_platform" />** (formerly dbt Cloud) runs <Constant name="fusion_engine" /> or <Constant name="core" /> in a hosted (single or multi-tenant) environment with a browser-based interface. The intuitive user interface aids you in setting up the various components. <Constant name="dbt" /> comes equipped with turnkey support for scheduling jobs, CI/CD, hosting documentation, monitoring, and alerting. It also offers an integrated development environment (<Constant name="studio_ide" />) and allows you to develop and run dbt commands from your local command line (CLI) or code editor.
 
-- **<Constant name="core" />** is an open-source command line tool that you can install in a self-hosted environment, and communication with databases is facilitated through adapters.
+- **Self-hosted dbt** is a free command line tool that you can install in a local environment, and communication with databases is facilitated through adapters.
 
 If you're not sure which is the right solution for you, read our [What is dbt?](/docs/introduction) and our [<Constant name="dbt" /> features](/docs/platform/about-platform/dbt-platform-features) articles to help you decide. If you still have questions, don't hesitate to [contact us](https://www.getdbt.com/contact/).
 
