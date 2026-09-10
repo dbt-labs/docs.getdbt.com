@@ -14,7 +14,7 @@ dbt writes the Information Schema to `target/info_schema/` in a versioned subdir
 
 The Information Schema contains tables across three namespaces: `dbt`, `dbt_rt`, and `dbt_internal`. For the full list of tables and their descriptions, refer to the [Information Schema tables](/reference/info-schema).
 
-You can query the files with any Parquet-compatible tool. dbt also generates a `views.sql` file alongside the Parquet files for convenient querying with [DuckDB](https://duckdb.org/).
+You can query the files with any Parquet-compatible tool (for example, DuckDB, Pandas, or Polars). dbt also generates a `views.sql` file alongside the Parquet files for convenient querying with [DuckDB](https://duckdb.org/).
 
 ## Generating the Information Schema
 
