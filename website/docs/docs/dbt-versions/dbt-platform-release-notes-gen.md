@@ -100,9 +100,6 @@ Release notes are grouped by date for single-tenant environments.
 - **Clearer invalid profile name error**: The error message for invalid profile names now reads "Profile name cannot contain spaces or special characters. Use dashes or underscores to separate words. For example, profile-name." This replaces the previous message that referenced "profile keys" and omitted underscores as a valid separator.
   <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pull/19063` -->
 
-- **Malformed OAuth client requests return 400**: Malformed OAuth server client creation requests (for example, sending a JSON array instead of an object) now return HTTP 400 Bad Request instead of HTTP 500 Internal Server Error.
-  <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pull/19025` -->
-
 ## Behavior change
 
 ### APIs, Identity, and Administration
