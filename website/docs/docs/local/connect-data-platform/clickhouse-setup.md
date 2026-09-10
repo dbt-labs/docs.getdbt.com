@@ -8,11 +8,11 @@ meta:
   github_repo: 'ClickHouse/dbt-clickhouse'
   pypi_package: 'dbt-clickhouse'
   min_core_version: 'v0.19.0'
-  cloud_support: Not Supported
+  cloud_support: Supported
   min_supported_version: 'n/a'
   slack_channel_name: '#db-clickhouse'
   slack_channel_link: 'https://getdbt.slack.com/archives/C01DRQ178LQ'
-  platform_name: 'Clickhouse'
+  platform_name: 'ClickHouse'
   config_page: '/reference/resource-configs/clickhouse-configs'
 availability: local_free
 ---
