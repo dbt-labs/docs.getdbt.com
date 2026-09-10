@@ -610,7 +610,7 @@ Starting in `dbt-snowflake` v1.13, the Snowflake adapter supports [interactive t
 Interactive tables are generally available in Snowflake, but dbt's support for the `interactive_table` materialization is in beta in both the v1 and v2 engines. Behavior and configuration options may change.
 
 - **<Constant name="dbt_platform" />**
-- **dbt v2*
+- **dbt v2**
 - **dbt v1** (Coming soon in `dbt-snowflake` v1.13 or later)
 :::
 
