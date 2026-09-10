@@ -30,6 +30,11 @@ Release notes are grouped by date for single-tenant environments.
 - **Lag tolerance recommendations**: The dbt State home page now includes a lag tolerance recommendations table showing which models could safely tolerate more lag along with projected 30-day compute savings. The table is searchable, filterable, and paginated, with columns for model name, project, current lag, recommended lag, percentage of time saved, and projected savings. Contact your account manager to enable.
   <!-- PRs: `https://github.com/dbt-labs/dbt-ui/pull/1568`, `https://github.com/dbt-labs/codex-api/pull/1516` -->
 
+### Catalog
+
+- **Column counts in the models table**: The models table in Catalog navigation now shows a column count for each model, sourced from catalog data.
+  <!-- PRs: `https://github.com/dbt-labs/dbt-ui/pull/1491` ✅-->
+
 ### Deployment and Configuration
 
 - **TLS support for argo-server connections**: Operators can now enable HTTPS and control Transport Layer Security (TLS) certificate verification for argo-server connections using the new `ARGO_TLS_VERIFY` environment variable (default: `false`). Helm chart deployments can configure this via the new `argo.tls.enabled` and `argo.tls.verify` values.
@@ -47,34 +52,48 @@ Release notes are grouped by date for single-tenant environments.
 - **DeepSeek and Kimi logos in model picker**: The AI model picker now shows brand logos for DeepSeek and Kimi (Moonshot AI) models instead of a generic fallback icon, making it easier to identify the active model provider.
   <!-- PRs: `https://github.com/dbt-labs/dbt-ui/pull/1571` -->
 
-- **Wizard spend limit of $0**: You can now set a $0 spend limit on the dbt Wizard add-on to block all paid usage. A $0 limit locks paid usage on the first billable cent while still allowing free grant usage. Error messages for invalid spend limits have also been updated to name the current spend amount and explain when the limit can be lowered.
-  <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pull/19033`, `https://github.com/dbt-labs/dbt-cloud/pull/18941` -->
-
-- **Wizard credits exhausted email notifications**: Billing and account admins now receive automated email notifications when dbt Wizard usage credits are exhausted — one for accounts with no consumption commitment and one for accounts whose paid consumption commitment is spent.
-  <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pull/19004` -->
-
-### Catalog
-
-- **Column count in nav models table**: The models table in Catalog navigation now displays a column count for each model, sourced from catalog data.
-  <!-- PRs: `https://github.com/dbt-labs/dbt-ui/pull/1491` -->
-
-- **Upstream sources sorted by freshness severity**: The Upstream Sources table on model detail pages now defaults to sorting by freshness severity, with Error first and Pass last. The Name and Status column headers are clickable sort controls, and the Status column no longer overflows horizontally on wide viewports.
-  <!-- PRs: `https://github.com/dbt-labs/dbt-ui/pull/1490` -->
-
-### Insights
-
-- **Unit tests included in cost aggregates**: Cost Insights aggregates now include unit tests when you filter by the Test resource type, aligning build counts with dbt State numbers. Previously, unit tests were silently excluded, resulting in lower-than-expected execution counts.
-  <!-- PRs: `https://github.com/dbt-labs/codex-api/pull/1528` -->
+- **Wizard spend limit of $0**: You can now set a $0 spend limit on the dbt Wizard add-on to block all paid usage. A $0 limit locks paid usage on the first billable cent while still allowing free grant usage.
+  <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pull/19033` -->
 
 ### Studio IDE
+
+- **Clearer missing credentials prompt**: Studio IDE now detects missing development credentials at startup and shows a "Development Credentials Required" modal with a direct link to add credentials, instead of failing silently.
+  <!-- PRs: `https://github.com/dbt-labs/dbt-ui/pull/1478` ✅-->
 
 - **File search no longer hangs on oversized output**: File search requests that produce more than 10 MiB of output in a single record now terminate gracefully and return a clear error message advising you to narrow the search path or exclude large generated files.
   <!-- PRs: `https://github.com/dbt-labs/ide-server/pull/1496` -->
 
+### Catalog
+
+- **Upstream sources sorted by freshness severity**: The Upstream Sources table on model detail pages now sorts by freshness severity by default (Error first, Pass last). Name and Status column headers are clickable sort controls, and the Status column no longer overflows horizontally on wide viewports.
+  <!-- PRs: `https://github.com/dbt-labs/dbt-ui/pull/1490` ✅-->
+
+### Orchestration and Run Status
+
+- **Full model timing view for large runs**: The model timing Gantt chart no longer limits groups to 2,000 rows. You can now see all models in the timing view for large runs, with virtualized scrolling for performance.
+  <!-- PRs: `https://github.com/dbt-labs/dbt-ui/pull/1515` ✅-->
+
 ### dbt platform
+
+- **Automatic email verification**: The email verification page now automatically sends a verification email to existing unverified users when the page loads, removing the need to manually click a button.
+  <!-- PRs: `https://github.com/dbt-labs/dbt-ui/pull/1473` -->
+
+- **Analytics connection visible to read-only users**: Read-only users can now see their assigned analytics connection in project settings instead of "Not configured."
+  <!-- PRs: `https://github.com/dbt-labs/dbt-ui/pull/1510` -->
+
+- **dbt Wizard overage email notifications**: Account admins now receive automated email notifications when dbt Wizard usage credits are exhausted, with separate notifications for accounts without a consumption commitment and accounts whose commitment is spent.
+  <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pull/19004` ✅-->
+
+- **Clearer spend limit error message**: When you try to set a dbt Wizard spend limit below your current-period spend, the error message now names the exact amount already spent and states when you can lower the limit.
+  <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pull/18941` -->
 
 - **Legacy dbt State login link on registration page**: The sign-in page now shows a "Looking for the old State login page?" link on the email step, directing you to the legacy State login URL while preserving OAuth query parameters.
   <!-- PRs: `https://github.com/dbt-labs/dbt-ui/pull/1578` -->
+
+### APIs, Identity, and Administration
+
+- **Clearer GitLab unavailability errors**: When a GitLab host is unreachable, affected API endpoints now return HTTP 503 with the message "GitLab is unavailable, please try again." instead of an unclear failure, affecting repository creation and GitLab group listing flows.
+  <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pull/18876` ✅-->
 
 ---
 
@@ -85,13 +104,15 @@ Release notes are grouped by date for single-tenant environments.
 - **Readable "Query count" column header**: The Query count column header in the Popular Models table was previously clipped. The column is now wider and the header is fully visible.
   <!-- PRs: `https://github.com/dbt-labs/dbt-ui/pull/1495` -->
 
+### Studio IDE
+
+- **Pinned model names in context card**: Pinned models in the dbt Wizard context card now display the friendly model name (for example, `customers`) instead of the raw metadata unique ID (for example, `model.jaffle_shop.customers`).
+  <!-- PRs: `https://github.com/dbt-labs/dbt-ui/pull/1533` ✅-->
+
 ### APIs, Identity, and Administration
 
-- **Clearer GitLab unavailability errors**: When a GitLab host is unreachable, the API now returns HTTP 503 with a "GitLab is unavailable, please try again." message instead of an unclear failure or silent error. This affects repository creation and GitLab group listing flows.
-  <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pull/18876` -->
-
-- **Correct HTTP status for cross-account write attempts**: Cross-account write attempts now return HTTP 403 Forbidden instead of a generic server error, giving you a clear, actionable signal when an operation is rejected due to an account mismatch.
-  <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pull/18966` -->
+- **Correct error for cross-account write attempts**: Cross-account write attempts now return HTTP 403 Forbidden instead of generic 500 Internal Server Error, giving API consumers a clear signal when an operation is rejected due to account mismatch.
+  <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pull/18966` ✅-->
 
 - **Corrected Azure DevOps account linking error**: Fixes swapped exception handlers for missing Azure DevOps (ADO) account linking. The error message now reads "Missing Azure user; link your Azure DevOps account in your personal profile" to guide you to the correct remediation step.
   <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pull/19047` -->
@@ -108,10 +129,13 @@ Release notes are grouped by date for single-tenant environments.
 
 ### APIs, Identity, and Administration
 
-- **Account creation blocked for service and OAuth tokens**: `POST /api/v2/accounts/` now returns HTTP 400 for service tokens and account-scoped personal access tokens (PATs), and HTTP 403 for OAuth access tokens. Each response includes an error message explaining which token type is disallowed.
-  <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pull/19023` -->
+- **Account creation blocked for service tokens and OAuth tokens**: Creating accounts via `POST /api/v2/accounts/` is now blocked for service tokens, account-scoped personal access tokens (PATs), and OAuth access tokens. Service tokens and account-scoped user API tokens receive HTTP 400; OAuth access tokens receive HTTP 403, with explicit error messages in each case.
+  <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pull/19023` ✅-->
 
-<span><img src="/img/fontawesome/rss.svg" alt="RSS" className="rss-icon" />Subscribe to release note updates via [RSS](/feeds/release-notes-st-rss.xml), [Atom](/feeds/release-notes-st-atom.xml), or [JSON Feed](/feeds/release-notes-st-rss.json).</span>
+### Catalog
+
+- **Cost Insights test counts now include unit tests**: Cost Insights aggregates now include unit tests when you filter by the Test resource type. Previously, unit tests were silently excluded, causing lower-than-expected execution counts.
+  <!-- PRs: `https://github.com/dbt-labs/codex-api/pull/1528` ✅-->
 
 ## September 2, 2026
 
