@@ -30,14 +30,6 @@ Release notes are grouped by date for single-tenant environments.
 - **Lag tolerance recommendations**: The dbt State home page now includes a lag tolerance recommendations table showing which models could safely tolerate more lag along with projected 30-day compute savings. The table is searchable, filterable, and paginated, with columns for model name, project, current lag, recommended lag, percentage of time saved, and projected savings. Contact your account manager to enable.
   <!-- PRs: `https://github.com/dbt-labs/dbt-ui/pull/1568`, `https://github.com/dbt-labs/codex-api/pull/1516` -->
 
-### APIs, Identity, and Administration
-
-- **Add-on trials at registration**: The registration API now accepts a `trial_products` field so you can start add-on product trials (for example, dbt State) at sign-up time. The response includes a `trials_started` field confirming which trials were activated.
-  <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pull/18957` -->
-
-- **Unlimited read-only seats**: Eligible enterprise plans can now be configured with uncapped read-only seats, removing the seat-count cap for read-only users. Billing settings pages hide the available seat count when the plan is uncapped, and plan-change validation no longer blocks upgrades due to read-only seat overages on uncapped target plans. Contact your account manager to enable.
-  <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pull/19009`, `https://github.com/dbt-labs/dbt-ui/pull/1562` -->
-
 ### Deployment and Configuration
 
 - **TLS support for argo-server connections**: Operators can now enable HTTPS and control Transport Layer Security (TLS) certificate verification for argo-server connections using the new `ARGO_TLS_VERIFY` environment variable (default: `false`). Helm chart deployments can configure this via the new `argo.tls.enabled` and `argo.tls.verify` values.
@@ -69,34 +61,17 @@ Release notes are grouped by date for single-tenant environments.
 - **Upstream sources sorted by freshness severity**: The Upstream Sources table on model detail pages now defaults to sorting by freshness severity, with Error first and Pass last. The Name and Status column headers are clickable sort controls, and the Status column no longer overflows horizontally on wide viewports.
   <!-- PRs: `https://github.com/dbt-labs/dbt-ui/pull/1490` -->
 
-- **Column transformation expressions in lineage API**: The `ColumnLineage` GraphQL type now exposes a `transformationExpression` field containing the raw SQL expression that defines how a transformed or renamed column is computed. Passthrough columns return `null`.
-  <!-- PRs: `https://github.com/dbt-labs/codex-api/pull/1514` -->
-
 ### Insights
 
 - **Unit tests included in cost aggregates**: Cost Insights aggregates now include unit tests when you filter by the Test resource type, aligning build counts with dbt State numbers. Previously, unit tests were silently excluded, resulting in lower-than-expected execution counts.
   <!-- PRs: `https://github.com/dbt-labs/codex-api/pull/1528` -->
-
-### Orchestration and Run Status
-
-- **Jobs can inherit dbt State settings from environment**: Jobs can now inherit dbt State enablement from their parent environment by setting `cost_optimization_features` to `['inherit_environment']`. The `enable_dbt_state` field is also now returned in environment API responses. Contact your account manager to enable.
-  <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pull/18973` -->
 
 ### Studio IDE
 
 - **File search no longer hangs on oversized output**: File search requests that produce more than 10 MiB of output in a single record now terminate gracefully and return a clear error message advising you to narrow the search path or exclude large generated files.
   <!-- PRs: `https://github.com/dbt-labs/ide-server/pull/1496` -->
 
-- **Tool execution interrupts in agentic chat**: dbt Copilot's agentic chat now supports tool execution interrupts, allowing client-side tools to run and resume with their results during an agent run. Parallel tool execution interrupts are batched before sending a single resume request. Contact your account manager to enable.
-  <!-- PRs: `https://github.com/dbt-labs/dbt-ui/pull/1443` -->
-
 ### dbt platform
-
-- **"dbt v2" replaces "Fusion" in upgrade UI**: In-app promotion and upgrade flows now use "dbt v2" terminology throughout modals, banners, buttons, badges, and checklist text, replacing the previous "Fusion" label.
-  <!-- PRs: `https://github.com/dbt-labs/dbt-ui/pull/1474` -->
-
-- **Analytics credential field respects write permissions**: Users without analytics credentials write permission now see "Contact your administrator to configure." instead of a configure link on the project settings page.
-  <!-- PRs: `https://github.com/dbt-labs/dbt-ui/pull/1542` -->
 
 - **Legacy dbt State login link on registration page**: The sign-in page now shows a "Looking for the old State login page?" link on the email step, directing you to the legacy State login URL while preserving OAuth query parameters.
   <!-- PRs: `https://github.com/dbt-labs/dbt-ui/pull/1578` -->
@@ -127,14 +102,6 @@ Release notes are grouped by date for single-tenant environments.
 - **Malformed OAuth client requests return 400**: Malformed OAuth server client creation requests (for example, sending a JSON array instead of an object) now return HTTP 400 Bad Request instead of HTTP 500 Internal Server Error.
   <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pull/19025` -->
 
-- **Service token permission row deletion**: Fixes a bug in the service token creation flow where deleting a permission row left a blank row instead of removing it from the table.
-  <!-- PRs: `https://github.com/dbt-labs/dbt-ui/pull/1528` -->
-
-### dbt platform
-
-- **Correct messaging for spent Wizard trials**: Developer plan users whose dbt Wizard trial has already been used no longer see the "Start 30-day trial" button. They now see "Your dbt Wizard trial has ended" messaging and a primary "Set up billing" or "Activate dbt Wizard" call to action.
-  <!-- PRs: `https://github.com/dbt-labs/dbt-ui/pull/1523` -->
-
 ---
 
 ## Behavior Changes
@@ -143,9 +110,6 @@ Release notes are grouped by date for single-tenant environments.
 
 - **Account creation blocked for service and OAuth tokens**: `POST /api/v2/accounts/` now returns HTTP 400 for service tokens and account-scoped personal access tokens (PATs), and HTTP 403 for OAuth access tokens. Each response includes an error message explaining which token type is disallowed.
   <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pull/19023` -->
-
-- **"Create new account" removed from account switcher**: The "Create new account" option has been removed from the navigation bar's account switcher menu.
-  <!-- PRs: `https://github.com/dbt-labs/dbt-ui/pull/1573` -->
 
 <span><img src="/img/fontawesome/rss.svg" alt="RSS" className="rss-icon" />Subscribe to release note updates via [RSS](/feeds/release-notes-st-rss.xml), [Atom](/feeds/release-notes-st-atom.xml), or [JSON Feed](/feeds/release-notes-st-rss.json).</span>
 
