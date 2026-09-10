@@ -46,6 +46,47 @@ dbt lint [FILE] [flags]
 
 `dbt lint` auto-discovers the nearest `.sqlfluff` file in your project directory tree. CLI flags `--rules` and `--exclude-rules` take precedence over the values in the config file. To create a `.sqlfluff` file, see [SQLFluff configuration files](https://docs.sqlfluff.com/en/stable/configuration/setting_configuration.html).
 
+## Jinja render modes
+
+Before `dbt lint` can check a model, it has to turn your Jinja-templated SQL into SQL. The `jinja_render_mode` setting controls how it does that, and your choice changes which violations you see.
+
+| Mode | How it handles Jinja | When to use it |
+|------|----------------------|----------------|
+| `symbolic` (default) | Executes your Jinja for real, but tracks which values come from introspective adapter calls, such as `adapter.execute`, `adapter.get_relation`, and `adapter.get_columns_in_relation`. Because those calls can't reach your warehouse at lint time, `dbt lint` replaces their output with a placeholder instead of a misleading empty value. Everything else renders normally. | Keep the default. It produces the fewest false positives on projects that use introspective macros. |
+| `rendered` | Executes your Jinja against parse-time stub values. Introspective adapter calls return empty results with no signal that they're fake, so a loop over `adapter.get_columns_in_relation(this)` renders zero iterations and can produce SQL your project would never actually run. | Use it to compare against `symbolic` when you're investigating a violation you don't expect. |
+| `turbo` | Never executes your Jinja. It reads the template syntactically, keeps the literal SQL you wrote, and replaces every `{{ ... }}` expression with a placeholder. | Use it when rendering is too slow or fails outright on a model. It's the fastest mode, but it can't see anything a macro generates. |
+
+### Setting the render mode
+
+Set the mode for a single invocation with `--jinja-render-mode`. The flag works on both `dbt lint` and `dbt format`:
+
+```shell
+dbt lint --jinja-render-mode rendered
+dbt format --jinja-render-mode turbo
+```
+
+Set it for the whole project in the `[dbt]` section of your `.sqlfluff` file:
+
+```
+[dbt]
+jinja_render_mode = symbolic
+```
+
+The CLI flag takes precedence over the config file.
+
+### Render variants
+
+In `symbolic` and `turbo` modes, a single model can produce more than one candidate SQL output. When `dbt lint` reaches an `{% if %}` block whose condition it can't resolve, it lints more than one branch rather than guessing which one you meant. Each of these candidates is a _render variant_, and `dbt lint` reports violations found across all of them.
+
+`render_variant_limit` caps how many variants `dbt lint` produces per model. It defaults to `5`. Set it in the `[sqlfluff]` section of your `.sqlfluff` file:
+
+```
+[sqlfluff]
+render_variant_limit = 5
+```
+
+Raising the limit widens coverage at the cost of lint time, since each additional variant is another render of the template. Lowering it to `1` restricts `dbt lint` to a single variant per model.
+
 ## Ignoring files and directories
 
 Use a `.sqlfluffignore` file at your project root to exclude paths you aren't ready to lint yet, such as `dbt_packages/` or `models/legacy/`.
@@ -126,19 +167,23 @@ The following rules report violations but can't be auto-fixed by `--fix`. They r
 
 ## FAQs
 
-<DetailsToggle alt_header="Why does dbt lint only lint one variant of Jinja-templated SQL?">
+<DetailsToggle alt_header="Why doesn't dbt lint check every possible output of my Jinja?">
 
-`dbt lint` always renders exactly one variant of your Jinja templates: the SQL your templates produce using the inputs available at parse time. It does not attempt to lint every possible SQL output a macro could produce under different inputs.
+`dbt lint` lints a bounded set of [render variants](#render-variants) per model, not every SQL output your macros could produce under every combination of inputs.
 
-This is a deliberate choice. Linting every possible render variant is expensive and surfaces violations in SQL your project may never execute. dbt Labs believes linting the SQL your project produces using its parse-time inputs is the right model for dbt projects. If you have feedback on this approach, open an issue in the [dbt-core GitHub repository](https://github.com/dbt-labs/dbt-core/issues) with the `Linter` label.
+This is a deliberate choice. The number of possible outputs grows combinatorially with the number of unresolved conditions in a template, so linting all of them is expensive and surfaces violations in SQL your project may never execute. Instead, `dbt lint` varies one unresolved condition at a time, up to `render_variant_limit`.
+
+One consequence is worth knowing about: exploring a branch your project never takes in practice can occasionally surface a violation from that unused path, most often inside a third-party package macro. If you have feedback on this approach, open an issue in the [dbt-core GitHub repository](https://github.com/dbt-labs/dbt-core/issues) with the `Linter` label.
 
 </DetailsToggle>
 
 <DetailsToggle alt_header="Why doesn't dbt lint report violations from some macros?">
 
-`dbt lint` lints the SQL that all macros produce. However, it intentionally suppresses diagnostics for macros that would issue introspection queries if `execute` were set to `true`. Without `execute` enabled, these macros typically produce invalid SQL. Flagging violations against that output generates noise rather than signal.
+`dbt lint` lints the SQL that all macros produce, but it can't resolve macros that depend on querying your warehouse. Introspective adapter calls, such as `adapter.execute` and `adapter.get_columns_in_relation`, have no real result at lint time.
 
-This behavior is similar to SQLFluff's `ignore_templated_areas` setting. However, you can't configure it today.
+How `dbt lint` handles that depends on your [render mode](#jinja-render-modes). In the default `symbolic` mode, it substitutes a placeholder wherever an introspective result would have been emitted and doesn't report violations against the placeholder, because flagging fabricated output generates noise rather than signal. The rest of the macro still lints normally.
+
+This behavior is similar to SQLFluff's `ignore_templated_areas` setting.
 
 </DetailsToggle>
 
