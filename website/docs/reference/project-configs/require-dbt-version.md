@@ -20,7 +20,7 @@ You can use `require-dbt-version` to restrict your project to only work with a r
 When you set this configuration:
 - If you have installed packages from the [dbt Packages hub](https://hub.getdbt.com/) that specify a `require_dbt_version` that doesn't match, running dbt commands will result in an error. 
 - It helps package maintainers (such as [dbt-utils](https://github.com/dbt-labs/dbt-utils)) ensure that users' dbt version is compatible with the package. 
-- It signals [compatibility with <Constant name="fusion_engine"/>](#fusion-compatibility) (`2.0.0` and higher).
+- It signals [compatibility with <Constant name="fusion_engine"/>](#dbt-v2-compatibility) (`2.0.0` and higher).
 - It might also help your whole team remain synchronized on the same version of dbt for local development, to avoid compatibility issues from changed behavior.
 
 You should pin to a major release. See [pin to a range](#pin-to-a-range) for more details. If this configuration isn't specified, no version check will occur.

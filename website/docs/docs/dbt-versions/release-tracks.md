@@ -21,7 +21,6 @@ By moving your environments and jobs to release tracks you can get all the funct
 The <Constant name="dbt_platform" /> has four <Constant name="fusion" /> release tracks available to give you control over stability vs. velocity.
 
 _`v2 Stable` is the default for all new <Constant name="fusion" />-powered projects._
-_`v2 Stable` is the default for all new <Constant name="fusion" />-powered projects._
 
 | Release track | Cadence | Description | [Plan availability](https://www.getdbt.com/pricing) | API value |
 | ------------- | ------- | ----------- | ----------------- | --------- |
@@ -51,7 +50,7 @@ To configure an environment in the [dbt Admin API](/docs/dbt-apis/admin-api) or 
 
 ## Which release track should I choose?
 
-### dbt v2 release tracks
+### Choosing a dbt v2 release track
 
 Choose **v2 Stable** (the default for new projects) for a weekly release cadence that balances stability and feature access. This is the recommended starting point for most customers migrating to <Constant name="fusion_engine" />.
 
@@ -63,7 +62,7 @@ Choose **v2 Fallback** as an emergency measure only. This is a temporary rollbac
 
 Account admins can set the org-wide default release track for new projects via a toggle in **Account Settings**. Individual project owners can then override that default per environment.
 
-### dbt v1 release tracks
+### Choosing a dbt v1 release track
 
 Choose the **v1 Latest** release track to continuously receive new features, fixes, performance improvements — latest & greatest dbt. This is the default for all customers on <Constant name="dbt" />.
 
@@ -89,7 +88,7 @@ Switching to **v2 Fallback** alerts the dbt Support team, who may reach out to h
 
 ### Common architectures
 
-#### dbt v2 release tracks
+#### dbt v2 track architectures
 
 **Default** &mdash; All plans
 - Prioritize a weekly release cadence that balances stability and new features
@@ -104,7 +103,7 @@ Switching to **v2 Fallback** alerts the dbt Support team, who may reach out to h
 - Configure production environments to use **v2 Extended** (one month behind v2 Stable)
 - Configure development environments to use **v2 Stable** so developers get access to upcoming changes before they reach production
 
-#### dbt v1 release tracks
+#### dbt v1 track architectures
 
 **Default** &mdash; Majority of customers on all plans
 - Prioritize immediate access to fixes and features
