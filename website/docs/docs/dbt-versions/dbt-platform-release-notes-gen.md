@@ -84,11 +84,6 @@ Release notes are grouped by date for single-tenant environments.
 
 ## Fixes
 
-### Catalog
-
-- **Readable "Query count" column header**: The Query count column header in the Popular Models table was previously clipped. The column is now wider and the header is fully visible.
-  <!-- PRs: `https://github.com/dbt-labs/dbt-ui/pull/1495` -->
-
 ### Studio IDE
 
 - **Pinned model names in context card**: Pinned models in the dbt Wizard context card now display the friendly model name (for example, `customers`) instead of the raw metadata unique ID (for example, `model.jaffle_shop.customers`).
