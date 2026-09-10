@@ -19,7 +19,7 @@ dbt v2 has the following distributions today, all free to install and run.
 
 </SimpleTable>
 
-If you have a older project that isn’t ready to move to v2, continue using `dbt-core` v1.x for compatibility. For new or upgraded projects, we recommend [upgrading to v2](/docs/dbt-versions/upgrade-dbt-platform-version?version=2.0#dbt-v2).
+If you have a older project that isn’t ready to move to v2, continue using v1.x for compatibility. For new or upgraded projects, we recommend [upgrading to v2](/docs/dbt-versions/upgrade-dbt-platform-version?version=2.0#dbt-v2).
 
 ## Which one should I use?
 
