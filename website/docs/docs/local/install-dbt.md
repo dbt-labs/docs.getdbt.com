@@ -81,7 +81,7 @@ To upgrade later, run `dbt system update`.
   dbt --version
   ```
 
-- With <Constant name="dbt" /> v2, you can start using the <Constant name="fusion" /> experience right away. For the best v2 editor experience, install the dbt VS Code extension to use features like autocomplete, inline errors, and lineage.
+- With <Constant name="dbt" /> v2, you can start using it right away. For the best v2 editor experience, install the dbt VS Code extension to use features like autocomplete, inline errors, and lineage.
 
   For full <Term id="lsp" /> features and other richer <Constant name="fusion" /> capabilities, run `dbt login` to sign in with a free <Constant name="dbt_platform" /> account:
 

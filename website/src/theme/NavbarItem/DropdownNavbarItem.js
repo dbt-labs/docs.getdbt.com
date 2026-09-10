@@ -109,16 +109,16 @@ function TransitionNote() {
         target="_blank"
         rel="noopener noreferrer"
       >
-        Fusion release tracks
+        dbt v2 release tracks
       </a>
       <br />
       v1 ={" "}
       <a
-        href="https://docs.getdbt.com/docs/dbt-versions/dbt-release-tracks?version=2.0#dbt-core-release-tracks"
+        href="https://docs.getdbt.com/docs/dbt-versions/dbt-release-tracks?version=2.0#dbt-v1-release-tracks"
         target="_blank"
         rel="noopener noreferrer"
       >
-        Core release tracks
+        dbt v1 release tracks
       </a>
     </>
   );

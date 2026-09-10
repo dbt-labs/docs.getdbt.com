@@ -30,7 +30,7 @@ _`v2 Stable` is the default for all new <Constant name="fusion" />-powered proje
 | **v2 Fallback** | Monthly | The previous month's v2 Extended release. Emergency rollback option for account admins. | Enterprise+ | `fusion-fallback` |
 
 
-### <Constant name="core" /> release tracks
+### <Constant name="core" /> release tracks {#dbt-v1-release-tracks}
 
 | Release track | Description | Plan availability | API value |
 | ------------- | ----------- | ----------------- | --------- |

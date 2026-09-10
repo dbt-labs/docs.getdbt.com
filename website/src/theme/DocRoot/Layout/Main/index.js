@@ -70,17 +70,17 @@ export default function DocRootLayoutMain({
         isPrereleaseBannerText: "",
       });
     } else {
-      // Check if this is Fusion (version 2.x) or a Core prerelease
+      // Check if this is v2 (version 2.x) or a v1 prerelease
       if (parseFloat(dbtVersion) >= 2) {
         setPreData({
           showisPrereleaseBanner: true,
-          isPrereleaseBannerText: `You're viewing the preview docs for the <a href="https://docs.getdbt.com/docs/dbt/about-dbt">dbt Fusion engine</a>.`,
+          isPrereleaseBannerText: `You're viewing the preview docs for <a href="https://docs.getdbt.com/docs/dbt/about-dbt">dbt v2</a>.`,
         });
       } else {
         // For other prerelease versions (like 1.11 beta)
         setPreData({
           showisPrereleaseBanner: true,
-          isPrereleaseBannerText: `You're viewing the docs for the beta version of dbt Core. Features may change before final release. Read more in the <a href="/docs/dbt-versions/dbt-upgrade/upgrading-to-v1.12">Upgrade guide</a>.`,
+          isPrereleaseBannerText: `You're viewing the docs for the beta version of dbt v1. Features may change before final release. Read more in the <a href="/docs/dbt-versions/dbt-upgrade/upgrading-to-v1.12">Upgrade guide</a>.`,
         });
       }
     }
@@ -96,12 +96,12 @@ export default function DocRootLayoutMain({
       if (new Date() > new Date(EOLDate)) {
         setEOLData({
           showEOLBanner: true,
-          EOLBannerText: `This version of dbt Core is <a href="/docs/dbt-versions">no longer supported</a>. There will be no more patches or security fixes. For improved performance, security, and features, upgrade to the <a href="https://github.com/dbt-labs/dbt-core/releases/latest"> latest stable version</a>. Some dbt customers might have an extended <a href="/docs/dbt-versions">critical support window</a>. `,
+          EOLBannerText: `This version of dbt v1 is <a href="/docs/dbt-versions">no longer supported</a>. There will be no more patches or security fixes. For improved performance, security, and features, upgrade to the <a href="https://github.com/dbt-labs/dbt-core/releases/latest"> latest stable version</a>. Some dbt customers might have an extended <a href="/docs/dbt-versions">critical support window</a>. `,
         });
       } else if (new Date() > threeMonths) {
         setEOLData({
           showEOLBanner: true,
-          EOLBannerText: `This version of dbt Core is nearing the end of its <a href="/docs/dbt-versions">critical support period</a>. For improved perfomance, security, and features, upgrade to the <a href="https://github.com/dbt-labs/dbt-core/releases/latest"> latest stable version</a>.`,
+          EOLBannerText: `This version of dbt v1 is nearing the end of its <a href="/docs/dbt-versions">critical support period</a>. For improved perfomance, security, and features, upgrade to the <a href="https://github.com/dbt-labs/dbt-core/releases/latest"> latest stable version</a>.`,
         });
       } else {
         setEOLData({
