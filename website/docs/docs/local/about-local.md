@@ -75,6 +75,6 @@ The dbt MCP server connects your local dbt project to AI assistants using the [M
 dbt framework has two distributions which can both be installed locally for free, powered by a single engine:
 
 - The Apache 2.0 licensed open-source distribution. Both v1 and v2 are available as open source installations.
-- dbt v2 extends the v2 open source offering with additional advanced capabilities &mdash; all free to use!
+- dbt v2 extends the dbt OSS offering with additional advanced capabilities &mdash; all free to use!
 
 Refer to [licensing](/docs/dbt-licensing) for more info.
