@@ -1,8 +1,8 @@
 ---
-title: "Contribute a dbt Core 2.0 adapter"
+title: "Contribute a dbt v2 adapter"
 id: adapter-creation-v2
-description: "Learn how to contribute a new community adapter to the dbt Core 2.0 Rust monorepo, from ADBC driver registration to SQL macros."
-hoverSnippet: "Step-by-step guide to contributing a community adapter to dbt Core v2.0, including crate structure, Rust patterns, and Jinja macros."
+description: "Learn how to contribute a new community adapter to the dbt v2 Rust monorepo, from ADBC driver registration to SQL macros."
+hoverSnippet: "Step-by-step guide to contributing a community adapter to dbt v2, including crate structure, Rust patterns, and Jinja macros."
 icon: 'guides'
 hide_table_of_contents: false
 tags: ['Adapter creation']
@@ -48,7 +48,7 @@ As a community contributor, you're building the foundation: connect your warehou
 
 Think of your adapter contribution as the bridge between <Constant name="core_v2" /> and your warehouse: everything dbt needs to talk to it, nothing more. The architecture diagram below shows where your work fits in the stack.
 
-<Lightbox src="/img/adapter-guide/adapter-creation-v2-architecture.svg" title="dbt Core v2.0 adapter architecture diagram showing the community contribution zone within the monorepo, the ADBC C ABI boundary, the ADBC driver, and the warehouse" />
+<Lightbox src="/img/adapter-guide/adapter-creation-v2-architecture.svg" title="dbt v2 adapter architecture diagram showing the community contribution zone within the monorepo, the ADBC C ABI boundary, the ADBC driver, and the warehouse" />
 
 ## Step 2: Prerequisites
 
@@ -90,7 +90,7 @@ dbt Labs is working toward a model where community drivers can be distributed an
 
 The structural diagram below shows how the layers fit together. Your work lives in the **ADAPTER** layer: the crates that handle warehouse identity, credential resolution, relation logic, and Jinja dispatch. XDBC (driver loading and connection pooling) sits just below and has a small registration step too.
 
-<Lightbox src="/img/adapter-guide/adapter-creation-v2-structural.svg" title="dbt Core v2.0 system layers diagram showing USER, CLI, PIPELINE, TASK RUNNER, ADAPTER (highlighted as the contribution zone), XDBC, and WAREHOUSE layers" />
+<Lightbox src="/img/adapter-guide/adapter-creation-v2-structural.svg" title="dbt v2 system layers diagram showing USER, CLI, PIPELINE, TASK RUNNER, ADAPTER (highlighted as the contribution zone), XDBC, and WAREHOUSE layers" />
 
 ### Crate map
 

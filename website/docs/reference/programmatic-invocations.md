@@ -2,7 +2,7 @@
 title: "Programmatic invocations"
 ---
 
-Programmatic invocations let you call dbt commands from Python scripts and applications, instead of running them in a shell. This is useful when you want to embed dbt runs into a larger application or workflow, while still using the same command surface area as the <Constant name="core" /> CLI.
+Programmatic invocations let you call dbt commands from Python scripts and applications, instead of running them in a shell. This is useful when you want to embed dbt runs into a larger application or workflow, while still using the same command surface area as the dbt CLI.
 
 Common use cases include:
 
@@ -60,7 +60,7 @@ For implementation details, refer to the [`dbt-python` crate](https://github.com
 
 ## Supported arguments
 
-`dbtRunner.invoke` accepts the same arguments as the <Constant name="core" /> CLI. The first positional argument is the command (for example, `run`, `build`, `test`), followed by any flags and options you would normally pass on the command line.
+`dbtRunner.invoke` accepts the same arguments as the dbt CLI. The first positional argument is the command (for example, `run`, `build`, `test`), followed by any flags and options you would normally pass on the command line.
 
 For example, `dbt.invoke(["run", "--select", "tag:my_tag"])` is equivalent to running `dbt run --select tag:my_tag`. There is no separate, dbtRunner‑specific list of arguments; the authoritative source for available options is the CLI help reference (`dbt --help`, `dbt run --help`, and so on) and the [dbt command reference](/reference/dbt-commands) documentation.
 

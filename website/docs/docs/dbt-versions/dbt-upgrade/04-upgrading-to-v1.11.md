@@ -1,7 +1,7 @@
 ---
 title: "Upgrading to v1.11"
 id: upgrading-to-v1.11
-description: New features and changes in dbt Core v1.11
+description: New features and changes in dbt v1.11
 displayed_sidebar: "docs"
 availability:
   engine: v1
@@ -12,23 +12,23 @@ availability:
 
 ## Resources
 
-- [<Constant name="core" /> v1.11 changelog](https://github.com/dbt-labs/dbt/blob/1.11.latest/CHANGELOG.md)
+- [<Constant name="dbt" /> v1.11 changelog](https://github.com/dbt-labs/dbt/blob/1.11.latest/CHANGELOG.md)
 - [<Constant name="core" /> CLI Installation guide](/docs/local/install-dbt)
-- [dbt platform upgrade guide](/docs/dbt-versions/upgrade-dbt-platform-version#fusion-release-tracks)
+- [dbt platform upgrade guide](/docs/dbt-versions/upgrade-dbt-platform-version#release-tracks)
 
 ## What to know before upgrading
 
 dbt Labs is committed to providing backward compatibility for all versions 1.x. Any behavior changes will be accompanied by a [behavior change flag](/reference/global-configs/behavior-changes#behavior-change-flags) to provide a migration window for existing projects. If you encounter an error upon upgrading, please let us know by [opening an issue](https://github.com/dbt-labs/dbt/issues/new).
 
-Starting in 2024, <Constant name="dbt" /> provides the functionality from new versions of <Constant name="core" /> via [release tracks](/docs/dbt-versions/dbt-release-tracks) with automatic upgrades. If you have selected the **v1 Latest** release track in <Constant name="dbt" />, you already have access to all the features, fixes, and other functionality included in the latest <Constant name="core" /> version! If you have selected the **v1 Compatible** release track, you will have access in the next monthly **v1 Compatible** release after the <Constant name="core" /> v1.11 final release.
+Starting in 2024, <Constant name="dbt" /> provides the functionality from new versions of <Constant name="core" /> via [release tracks](/docs/dbt-versions/dbt-release-tracks) with automatic upgrades. If you have selected the **v1 Latest** release track in <Constant name="dbt" />, you already have access to all the features, fixes, and other functionality included in the latest <Constant name="core" /> version! If you have selected the **v1 Compatible** release track, you will have access in the next monthly **v1 Compatible** release after the <Constant name="dbt" /> v1.11 final release.
 
 ## New and changed features and functionality
 
-New features and functionality available in <Constant name="core" /> v1.11
+New features and functionality available in <Constant name="dbt" /> v1.11
 
 ### User-defined functions (UDFs)
 
-<Constant name="core" /> v1.11 introduces support for user-defined functions (UDFs), which enable you to define and register custom functions in your warehouse. Like macros, UDFs promote code reuse, but they are objects in the warehouse so you can reuse the same logic in tools outside dbt.
+<Constant name="dbt" /> v1.11 introduces support for user-defined functions (UDFs), which enable you to define and register custom functions in your warehouse. Like macros, UDFs promote code reuse, but they are objects in the warehouse so you can reuse the same logic in tools outside dbt.
 
 Key features include:
 
@@ -46,7 +46,7 @@ Engine configuration environment variables use the `DBT_ENGINE_` prefix. For exa
 
 ### Managing changes to legacy behaviors
 
-<Constant name="core" /> v1.11 introduces new flags for [managing changes to legacy behaviors](/reference/global-configs/behavior-changes). You may opt into recently introduced changes (disabled by default), or opt out of mature changes (enabled by default), by setting `true` / `false` values, respectively, for `flags` in `dbt_project.yml`.
+<Constant name="dbt" /> v1.11 introduces new flags for [managing changes to legacy behaviors](/reference/global-configs/behavior-changes). You may opt into recently introduced changes (disabled by default), or opt out of mature changes (enabled by default), by setting `true` / `false` values, respectively, for `flags` in `dbt_project.yml`.
 
 You can read more about each of these behavior changes in the following links:
 
@@ -135,11 +135,11 @@ dbt parse --warn-error-options '{"silence": ["Deprecations"]}'
 
 ## Quick hits
 
-You will find these quick hits in <Constant name="core" /> v1.11:
+You will find these quick hits in <Constant name="dbt" /> v1.11:
 - The [`--sqlparse`](/reference/global-configs/sqlparse) flag sets [`sqlparse`](https://sqlparse.readthedocs.io/en/latest/api.html#security-and-performance-considerations) `MAX_GROUPING_DEPTH` and `MAX_GROUPING_TOKENS` when dbt parses SQL during compilation.
 - The `dbt ls` command can now write out nested keys. This makes it easier to debug and troubleshoot your project. Example: `dbt ls --output json --output-keys config.materialized`
 - Manifest metadata now includes `run_started_at`, providing better tracking of when dbt runs were initiated.
 - When a model is disabled, unit tests for that model are automatically disabled as well.
-- You can use the new [`config.meta_get()`](/reference/dbt-jinja-functions/config#configmeta_get) and [`config.meta_require()`](/reference/dbt-jinja-functions/config#configmeta_require) functions to access custom configurations stored under `meta`. These functions have been backported to <Constant name="core" /> v1.10. 
+- You can use the new [`config.meta_get()`](/reference/dbt-jinja-functions/config#configmeta_get) and [`config.meta_require()`](/reference/dbt-jinja-functions/config#configmeta_require) functions to access custom configurations stored under `meta`. These functions have been backported to <Constant name="dbt" /> v1.10. 
 
 

@@ -1,5 +1,5 @@
 ---
-title: "Connect Exasol to dbt Core"
+title: "Connect Exasol to dbt v1"
 sidebar_label: "Exasol"
 description: "Read this guide to learn about the Exasol warehouse setup in dbt."
 meta:

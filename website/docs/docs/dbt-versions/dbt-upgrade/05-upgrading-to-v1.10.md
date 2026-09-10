@@ -1,7 +1,7 @@
 ---
 title: "Upgrading to v1.10"
 id: upgrading-to-v1.10
-description: New features and changes in dbt Core v1.10
+description: New features and changes in dbt v1.10
 displayed_sidebar: "docs"
 availability:
   engine: v1
@@ -10,19 +10,19 @@ availability:
  
 ## Resources 
 
-- <Constant name="core" /> [v1.10 changelog](https://github.com/dbt-labs/dbt/blob/1.10.latest/CHANGELOG.md)
+- <Constant name="dbt" /> [v1.10 changelog](https://github.com/dbt-labs/dbt/blob/1.10.latest/CHANGELOG.md)
 - [<Constant name="core" /> CLI Installation guide](/docs/local/install-dbt)
-- [dbt platform upgrade guide](/docs/dbt-versions/upgrade-dbt-platform-version#fusion-release-tracks)
+- [dbt platform upgrade guide](/docs/dbt-versions/upgrade-dbt-platform-version#release-tracks)
 
 ## What to know before upgrading
 
 dbt Labs is committed to providing backward compatibility for all versions 1.x. Any behavior changes will be accompanied by a [behavior change flag](/reference/global-configs/behavior-changes#behavior-change-flags) to provide a migration window for existing projects. If you encounter an error upon upgrading, please let us know by [opening an issue](https://github.com/dbt-labs/dbt/issues/new).
 
-Starting in 2024, <Constant name="dbt" /> provides the functionality from new versions of <Constant name="core" /> via [release tracks](/docs/dbt-versions/dbt-release-tracks) with automatic upgrades. If you have selected the **v1 Latest** release track in <Constant name="dbt" />, you already have access to all the features, fixes, and other functionality that is included in <Constant name="core" /> v1.10! If you have selected the **v1 Compatible** release track, you will have access in the next monthly **v1 Compatible** release after the <Constant name="core" /> v1.10 final release.
+Starting in 2024, <Constant name="dbt" /> provides the functionality from new versions of <Constant name="core" /> via [release tracks](/docs/dbt-versions/dbt-release-tracks) with automatic upgrades. If you have selected the **v1 Latest** release track in <Constant name="dbt" />, you already have access to all the features, fixes, and other functionality that is included in <Constant name="dbt" /> v1.10! If you have selected the **v1 Compatible** release track, you will have access in the next monthly **v1 Compatible** release after the <Constant name="dbt" /> v1.10 final release.
 
 ## New and changed features and functionality
 
-New features and functionality available in <Constant name="core" /> v1.10
+New features and functionality available in <Constant name="dbt" /> v1.10
 
 ### The `--sample` flag
 
@@ -30,7 +30,7 @@ Large data sets can slow down dbt build times, making it harder for developers t
 
 ### Move standalone anchors under `anchors:` key
 
-As part of the ongoing process of making the dbt authoring language more precise, <Constant name="core" /> v1.10 raises a warning when it sees an unexpected top-level key in a properties YAML file. A common use case behind these unexpected keys is standalone anchor definitions at the top level of a properties YAML file. You can use the new top-level `anchors:` key as a container for these reusable configuration blocks.
+As part of the ongoing process of making the dbt authoring language more precise, <Constant name="dbt" /> v1.10 raises a warning when it sees an unexpected top-level key in a properties YAML file. A common use case behind these unexpected keys is standalone anchor definitions at the top level of a properties YAML file. You can use the new top-level `anchors:` key as a container for these reusable configuration blocks.
 
 For example, rather than using this configuration:
 
@@ -135,7 +135,7 @@ Hybrid projects are available as a private beta to [<Constant name="dbt"/> Enter
 
 ### Managing changes to legacy behaviors
 
-<Constant name="core" /> v1.10 introduces new flags for [managing changes to legacy behaviors](/reference/global-configs/behavior-changes). You may opt into recently introduced changes (disabled by default), or opt out of mature changes (enabled by default), by setting `true` / `false` values, respectively, for `flags` in `dbt_project.yml`.
+<Constant name="dbt" /> v1.10 introduces new flags for [managing changes to legacy behaviors](/reference/global-configs/behavior-changes). You may opt into recently introduced changes (disabled by default), or opt out of mature changes (enabled by default), by setting `true` / `false` values, respectively, for `flags` in `dbt_project.yml`.
 
 You can read more about each of these behavior changes in the following links:
 
@@ -160,7 +160,7 @@ What does this mean for you?
 1. If your project (or dbt package) encounters a new deprecation warning in `v1.10`, plan to update your invalid code soon. Although it’s just a warning for now, in a future version, dbt will enforce stricter validation of the inputs in your project. Check out the [`dbt-autofix` tool](https://github.com/dbt-labs/dbt-autofix) to autofix many of these!
 2. In the future, the [`meta` config](/reference/resource-configs/meta) will be the only place to put custom user-defined attributes. Everything else will be strongly typed and strictly validated. If you have an extra attribute you want to include in your project, or a model config you want to access in a custom materialization, you must nest it under `meta` moving forward.
 3. If you are using the [`—-warn-error` flag](/reference/global-configs/warnings) (or `--warn-error-options '{"error": "all"}'`) to promote all warnings to errors, this will include new deprecation warnings coming to <Constant name="core" />. If you don’t want these to be promoted to errors, the `--warn-error-options` flag gives you more granular control over exactly which types of warnings are treated as errors. You can set `"warn": ["Deprecations"]` (new as of `v1.10`) to continue treating the deprecation warnings as warnings.
-4. The `--models` / `--model` / `-m` flag was renamed to `--select` / `--s` way back in <Constant name="core" /> v0.21 (Oct 2021). Silently skipping this flag means ignoring your command's selection criteria, which could mean building your entire DAG when you only meant to select a small subset. For this reason, the `--models` / `--model` / `-m` flag **will raise a warning** in <Constant name="core" /> v1.10, and an error in <Constant name="fusion" />. Please update your job definitions accordingly.
+4. The `--models` / `--model` / `-m` flag was renamed to `--select` / `--s` way back in <Constant name="dbt" /> v0.21 (Oct 2021). Silently skipping this flag means ignoring your command's selection criteria, which could mean building your entire DAG when you only meant to select a small subset. For this reason, the `--models` / `--model` / `-m` flag **will raise a warning** in <Constant name="dbt" /> v1.10, and an error in <Constant name="fusion" />. Please update your job definitions accordingly.
 
 #### Custom inputs
   

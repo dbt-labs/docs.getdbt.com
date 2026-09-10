@@ -1,9 +1,9 @@
 ---
-title: "Supported BigQuery functions in dbt Fusion"
-sidebar_label: "BigQuery functions in Fusion"
+title: "Supported BigQuery functions in dbt v2"
+sidebar_label: "BigQuery functions in dbt v2"
 id: "bigquery-function-support"
-description: "Check which BigQuery built-in SQL functions dbt Fusion can typecheck during static analysis."
-tags: ['BigQuery', 'dbt Fusion', 'static_analysis']
+description: "Check which BigQuery built-in SQL functions dbt v2 can typecheck during static analysis."
+tags: ['BigQuery', 'dbt v2', 'static_analysis']
 ---
 
 import BigQueryFunctionsTable from '/snippets/_functions-table-bigquery.md';

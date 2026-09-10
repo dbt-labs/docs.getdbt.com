@@ -1,12 +1,12 @@
 ---
-title: "Upgrade to Fusion part 1: Preparing to upgrade"
+title: "Upgrade to dbt v2 part 1: Preparing to upgrade"
 id: "prepare-v2-upgrade"
 level: 'Intermediate'
 icon: 'zap'
 hide_table_of_contents: true
-tags: ['dbt Fusion engine', 'dbt platform', 'Upgrade']
+tags: ['dbt v2', 'dbt platform', 'Upgrade']
 recently_updated: true
-intro_text: This guide helps you prepare for an in-place upgrade from dbt Core to the dbt Fusion engine in the dbt platform.
+intro_text: This guide helps you prepare for an in-place upgrade from v1 to v2 in the dbt platform.
 ---
 
 <div style={{maxWidth: '900px'}}>
@@ -15,13 +15,13 @@ import FusionAdapters from '/snippets/_fusion-dwh-platform.md';
 
 ## Introduction
 
-The <Constant name="fusion_engine" /> represents the next evolution of data transformation. dbt has been rebuilt from the ground up but at its most basic, <Constant name="fusion" /> is a new version, and like any new version you should take steps to prepare to upgrade. This guide will take you through those preparations. 
+<Constant name="fusion_engine" /> represents the next evolution of data transformation. dbt has been rebuilt from the ground up but at its most basic, <Constant name="fusion" /> is a new version, and like any new version you should take steps to prepare to upgrade. This guide will take you through those preparations. 
 
 If <Constant name="fusion" /> is brand new to you, take a look at our [comprehensive documentation](/docs/introduction) on what it is, how it behaves, and what's different from <Constant name="core" /> before getting started with this guide. Once you're caught up, it's time to begin preparing your projects for the speed and power that <Constant name="fusion" /> has to offer.
 
 ## Prerequisites
 
-This guide will cover the preparations for upgrading to the <Constant name="fusion_engine" /> and is intended for customers already using the <Constant name="dbt_platform" /> with a version of <Constant name="core" />. If you're brand new to dbt, check out our [quickstart guides](/guides).
+This guide will cover the preparations for upgrading to <Constant name="fusion_engine" /> and is intended for customers already using the <Constant name="dbt_platform" /> with a version of <Constant name="core" />. If you're brand new to dbt, check out our [quickstart guides](/guides).
 
 To follow the steps in this guide, you must meet the following prerequisites:
 
@@ -37,7 +37,7 @@ Start with smaller, newer, or more familiar projects first. This makes it easier
 
 :::
 
-## Enable Fusion readiness features
+## Enable dbt v2 readiness features
 
 The <Constant name="fusion" /> readiness panel in the <Constant name="dbt_platform" /> and shows each project's eligibility status and blockers, is being rolled out in phases. If it hasn't been automatically enabled for your account yet, an [account admin](/docs/platform/manage-access/enterprise-permissions#account-admin) can manually enable it. This lets admins and developers see which projects and jobs are eligible for <Constant name="fusion" />, identify blockers, and initiate the upgrade once preparation is complete.
 
@@ -47,7 +47,7 @@ This step requires account admin access in <Constant name="dbt_platform" />:
 
 1. Click your account name in the left sidebar and select **Account settings**.
 2. Navigate to the **Account** screen and click **Edit**.
-3. Scroll to the **Settings** section and select the checkbox next to **Enable Fusion readiness & upgrade features**.
+3. Scroll to the **Settings** section and select the checkbox next to **Enable dbt v2 readiness & upgrade features**.
 4. Click **Save**.
 
 Once enabled:
@@ -60,16 +60,16 @@ By default, any user who can see the upgrade assistant can use it to initiate an
 
 :::note Enterprise tier accounts only
 
-The **Enable restricted Fusion upgrade permissions** toggle is only available to Enterprise/Enterprise+ accounts that have been granted this entitlement. Contact your account manager if you need this capability.
+The **Enable restricted dbt v2 upgrade permissions** toggle is only available to Enterprise/Enterprise+ accounts that have been granted this entitlement. Contact your account manager if you need this capability.
 
 :::
 
-1. In the same **Account** settings screen, select the checkbox next to **Enable restricted Fusion upgrade permissions**.
+1. In the same **Account** settings screen, select the checkbox next to **Enable restricted dbt v2 upgrade permissions**.
 2. Click **Save**.
 
-When enabled, only users assigned the [`v2 Migration admin`](/docs/platform/manage-access/enterprise-permissions#v2-migration-admin) permission set (scoped to specific projects) can execute the upgrade. For instructions on assigning this permission, refer to [Assign upgrade access](/guides/upgrade-to-v2?step=3#assign-upgrade-access-optional) in Part 2 of this guide.
+When enabled, only users assigned the [`v2 Migration Admin`](/docs/platform/manage-access/enterprise-permissions#v2-migration-admin) permission set (scoped to specific projects) can execute the upgrade. For instructions on assigning this permission, refer to [Assign upgrade access](/guides/upgrade-to-v2?step=3#assign-upgrade-access-optional) in Part 2 of this guide.
 
-### The Fusion readiness panel
+### The dbt v2 readiness panel
 
 With the readiness experience enabled, you can monitor your project's eligibility as you work through the preparation steps below. The panel shows which jobs are eligible or ineligible for <Constant name="fusion" /> and why.
 
@@ -118,7 +118,7 @@ After successfully testing your individual development environment with the over
 3. Click the **dbt version** dropdown and select **v1 Latest**.
 4. Click **Save** to apply the changes.
 
-<Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/choosing-dbt-version/select-development.png" width="90%" title="Upgrade development environment to v1 Latest dbt Core release track"/>
+<Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/choosing-dbt-version/select-development.png" width="90%" title="Upgrade development environment to **v1 Latest** release track"/>
 
 :::info Remove your override
 
@@ -172,7 +172,7 @@ The autofix tool can resolve many deprecations automatically, including:
 
 Check out the [autofix readme](https://github.com/dbt-labs/dbt-autofix/) for a complete list of the deprecations it addresses.
 
-:::note Fusion package compatibility
+:::note dbt v2 package compatibility
 
 In addition to deprecations, the autofix tool attempts to upgrade packages to the lowest supported <Constant name="fusion" />-compatible version. Check out [package support](/docs/dbt/supported-features#package-support) for more information about <Constant name="fusion" /> compatibility.
 
@@ -240,7 +240,7 @@ Review the changes made by the autofix tool to ensure they're correct:
 
 Once you're satisfied with the autofix changes, commit them to your branch:
 
-1. In the **Version control** panel, add a descriptive commit message like "Fix deprecation warnings for Fusion upgrade".
+1. In the **Version control** panel, add a descriptive commit message like "Fix deprecation warnings for dbt v2 upgrade".
 2. Click **Commit and sync** to save your changes.
 
 ### Step 6: Address remaining deprecations
@@ -402,18 +402,18 @@ Once you've verified the updated packages work correctly:
    - `packages.yml` or `dependencies.yml`
    - `package-lock.yml`
 
-2. Add a commit message like "Upgrade dbt packages for Fusion compatibility".
+2. Add a commit message like "Upgrade dbt packages for dbt v2 compatibility".
 3. Click **Commit and sync**.
 
 ## Update your jobs
 
-Use the <Constant name="fusion" /> readiness panel to validate your jobs against the <Constant name="fusion_engine" /> and fix any issues you find.
+Use the <Constant name="fusion" /> readiness panel to validate your jobs against <Constant name="fusion_engine" /> and fix any issues you find.
 
 For jobs that are eligible for <Constant name="fusion" /> in the readiness experience, **Run once on <Constant name="fusion" />** is replaced by a **Debug on <Constant name="fusion" />** dropdown in the eligibility banner or modal. Use a debug option when you want to inspect or fix issues interactively in <Constant name="studio_ide" />. Use **Run once on <Constant name="fusion" />** when you want to validate execution behavior in a deployment context.
 
 ### Review your jobs
 
-The readiness panel shows how many jobs are ineligible for <Constant name="fusion" /> or have an unknown eligibility status. If you don't see eligibility messaging, ask an account admin to enable **Fusion readiness & upgrade features** in [Account settings](/docs/platform/account-settings). For setup steps, refer to [Enable Fusion readiness features](/guides/prepare-v2-upgrade?step=3).
+The readiness panel shows how many jobs are ineligible for <Constant name="fusion" /> or have an unknown eligibility status. If you don't see eligibility messaging, ask an account admin to enable **dbt v2 readiness & upgrade features** in [Account settings](/docs/platform/account-settings). For setup steps, refer to [Enable dbt v2 readiness features](/guides/prepare-v2-upgrade?step=3).
 
 :::note
 If a job has not run in the last 7 days, you must run it once for the debugging options to be available.
@@ -424,7 +424,7 @@ If a job has not run in the last 7 days, you must run it once for the debugging 
    - From the readiness panel, click **Review jobs**.
    <Lightbox src="/img/fusion/review-jobs.png" width="60%" title="Shortcut to review your jobs from the readiness panel"/>
 2. Find the <Constant name="fusion" /> eligibility icon to the right of your jobs. Click **Review job** for  any job that is ineligible or has an unknown eligibility status.
-   <Lightbox src="/img/fusion/job-eligibility.png" width="60%" title="Take action on your jobs to make them Fusion eligible."/>
+   <Lightbox src="/img/fusion/job-eligibility.png" width="60%" title="Take action on your jobs to make them v2 eligible."/>
 3. Click **Debug on <Constant name="fusion" />** and choose one of the following:
    - [Debug in Studio](#debug-in-studio)
    - [Debug in Studio with <Constant name="wizard" />](#debug-in-studio-with-dbt-wizard)
@@ -436,7 +436,7 @@ In the <Constant name="studio_ide" />, run <Constant name="fusion" /> in your de
 
 1. Click **Debug in Studio**. dbt sets your user-level `DBT_DEVELOP_CORE_VERSION` environment variable to `latest-fusion`, then opens the <Constant name="studio_ide" /> with the **Problems** tab selected.
 
-<Lightbox src="/img/fusion/fusion-ide.png" width="60%" title="Running Fusion in development"/>
+<Lightbox src="/img/fusion/fusion-ide.png" width="60%" title="Running v2 in development"/>
 
 2. Review the warnings or errors in the **Problems** tab.
 3. Fix the issues directly or run the [autofix tool](/docs/platform/studio-ide/autofix-deprecations).
@@ -462,7 +462,7 @@ When you are confident a job is ready for <Constant name="fusion" />, you can ru
 
 Congratulations! You have validated <Constant name="fusion" /> eligibility for your jobs.
 
-<Lightbox src="/img/fusion/fusion-eligible.png" width="60%" title="Your job is now ready for Fusion!"/>
+<Lightbox src="/img/fusion/fusion-eligible.png" width="60%" title="Your job is now ready for v2!"/>
 
 ## What's next? 
 

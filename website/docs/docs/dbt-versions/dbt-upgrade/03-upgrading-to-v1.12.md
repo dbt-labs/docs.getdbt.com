@@ -1,7 +1,7 @@
 ---
 title: "Upgrading to v1.12"
 id: upgrading-to-v1.12
-description: New features and changes in dbt Core v1.12
+description: New features and changes in dbt v1.12
 displayed_sidebar: "docs"
 availability:
   engine: v1
@@ -11,22 +11,22 @@ availability:
 # Upgrading to v1.12
 
 ## Resources
-- [<Constant name="core" /> v1.12 changelog](https://github.com/dbt-labs/dbt/blob/1.12.latest/CHANGELOG.md)
+- [dbt v1.12 changelog](https://github.com/dbt-labs/dbt/blob/1.12.latest/CHANGELOG.md)
 - [<Constant name="core" /> CLI Installation guide](/docs/local/install-dbt)
-- [dbt platform upgrade guide](/docs/dbt-versions/upgrade-dbt-platform-version#fusion-release-tracks)
+- [dbt platform upgrade guide](/docs/dbt-versions/upgrade-dbt-platform-version#release-tracks)
 
 ## What to know before upgrading
 
 dbt Labs is committed to providing backward compatibility for all versions 1.x. Any behavior changes will be accompanied by a [behavior change flag](/reference/global-configs/behavior-changes#behavior-change-flags) to provide a migration window for existing projects. If you encounter an error upon upgrading, please let us know by [opening an issue](https://github.com/dbt-labs/dbt/issues/new).
 
-<Constant name="dbt" /> provides the functionality from new versions of <Constant name="core" /> via [release tracks](/docs/dbt-versions/dbt-release-tracks) with automatic upgrades. If you have selected the **v1 Latest** release track in <Constant name="dbt" />, you already have access to all the features, fixes, and other functionality included in the latest <Constant name="core" /> version! If you have selected the **v1 Compatible** release track, you will have access to the next monthly **v1 Compatible** release after the <Constant name="core" /> v1.12 final release.
+<Constant name="dbt" /> provides the functionality from new versions of <Constant name="core" /> via [release tracks](/docs/dbt-versions/dbt-release-tracks) with automatic upgrades. If you have selected the **v1 Latest** release track in <Constant name="dbt" />, you already have access to all the features, fixes, and other functionality included in the latest <Constant name="core" /> version! If you have selected the **v1 Compatible** release track, you will have access to the next monthly **v1 Compatible** release after the dbt v1.12 final release.
 
 ## New and changed features and functionality
 
 ### Opt-in v2 parser
-<Constant name="core" /> v1.12 introduces the `--use-v2-parser` flag that delegates parsing to the new v2 Rust parser instead of the v1 Python parser. The Rust parser is significantly faster than the Python parser — especially on larger projects, where it can be 5–10× quicker. If you're looking to speed up your development workflow or cut down on job startup times. Using the Rust parser is a natural first step toward v2 compatibility, so you can catch and fix any project issues gradually rather than all at once.
+dbt v1.12 introduces the `--use-v2-parser` flag that delegates parsing to the new v2 Rust parser instead of the v1 Python parser. The Rust parser is significantly faster than the Python parser — especially on larger projects, where it can be 5–10× quicker. If you're looking to speed up your development workflow or cut down on job startup times. Using the Rust parser is a natural first step toward v2 compatibility, so you can catch and fix any project issues gradually rather than all at once.
 
-This is an opt-in flag that changes no behavior unless explicitly set, making it a low-risk way to test v2 parser compatibility from within <Constant name="core" /> v1.12.
+This is an opt-in flag that changes no behavior unless explicitly set, making it a low-risk way to test v2 parser compatibility from within dbt v1.12.
 
 :::note
 The Rust parser is beta. Its output manifest may differ from the Python parser's in edge cases, which can affect downstream behavior. Fall back by removing `--use-v2-parser`, and [report issues](https://github.com/dbt-labs/dbt/issues) to help us close the gap.
@@ -52,7 +52,7 @@ packages:
 
 ### Extensions to UDFs
 
-- <Constant name="core" /> v1.12 adds support for JavaScript user-defined functions (UDFs) on Snowflake and BigQuery. Define a JavaScript UDF by creating a `.js` file in your `functions/` directory and a corresponding YAML file with the function's arguments and return type. For more information, refer to [User-defined functions](/docs/build/udfs).
+- dbt v1.12 adds support for JavaScript user-defined functions (UDFs) on Snowflake and BigQuery. Define a JavaScript UDF by creating a `.js` file in your `functions/` directory and a corresponding YAML file with the function's arguments and return type. For more information, refer to [User-defined functions](/docs/build/udfs).
 
 - You can define multiple argument signatures for the same user-defined function (UDF) using the `overloads` property. This lets you call the same function name with different input types, without creating separate UDFs for each variant. This is supported for SQL UDFs in Snowflake and Postgres, and Python UDFs in Snowflake. Each overload references a separate file using `defined_in`, with optional `arguments` and `returns`. All overloads are grouped into one <Term id="dag">DAG</Term> node, so they're built and selected together. On retry, dbt skips overloads that succeeded and reruns only those that failed. For more information, refer to [Defining overloaded UDFs](/docs/build/udfs#defining-udfs-in-dbt#defining-overloaded-UDFs) and [`overloads`](/reference/resource-properties/overloads).
 
@@ -72,7 +72,7 @@ You can now use the `--sql` flag with `dbt run-operation` to execute ad hoc data
 You can configure whether downstream models run when an upstream model fails using the [`on_error`](/reference/resource-configs/on_error) config. Set `on_error: continue` on a model to allow its downstream models to still attempt to run even when it fails. By default (`skip_children`), dbt skips all downstream models on failure. Note that [`--fail-fast`](/reference/global-configs/failing-fast) takes precedence &mdash; runs with `--fail-fast` stop at the first failure, even if a model is configured with `on_error: continue`.
 
 ### Apache Ossie semantic layer support
-- <Constant name="core" /> v1.12 supports the [Apache Ossie](https://github.com/apache/ossie) standard for defining semantic models and metrics. You can place Ossie-format `.json` files in an `osi/` directory at the root of your project, and dbt parses them into the manifest alongside any native dbt semantic models. To use a different directory, configure [`osi-paths`](/reference/project-configs/osi-paths) in `dbt_project.yml`. Ossie versions `0.1.0` and `0.1.1` are supported; any other version raises a parse error. For more information, refer to [Ossie semantic layer documents](/docs/build/ossie-semantic-models).
+- dbt v1.12 supports the [Apache Ossie](https://github.com/apache/ossie) standard for defining semantic models and metrics. You can place Ossie-format `.json` files in an `osi/` directory at the root of your project, and dbt parses them into the manifest alongside any native dbt semantic models. To use a different directory, configure [`osi-paths`](/reference/project-configs/osi-paths) in `dbt_project.yml`. Ossie versions `0.1.0` and `0.1.1` are supported; any other version raises a parse error. For more information, refer to [Ossie semantic layer documents](/docs/build/ossie-semantic-models).
 - dbt writes an `osi_document.json` file to your `target/` directory alongside `semantic_manifest.json` at parse time. This artifact provides an Ossie representation of your project's <Constant name="semantic_layer" />. For more information, refer to [Semantic manifest](/reference/artifacts/sl-manifest#apache-ossie-document).
 
 
@@ -80,7 +80,7 @@ This is separate from the new <Constant name="semantic_layer" /> YAML spec below
 
 ### New Semantic Layer YAML spec
 
-<Constant name="core" /> v1.12 adds support for the latest <Constant name="semantic_layer" /> YAML specification, which simplifies how you define metrics and dimensions by embedding semantic annotations directly alongside each model.
+dbt v1.12 adds support for the latest <Constant name="semantic_layer" /> YAML specification, which simplifies how you define metrics and dimensions by embedding semantic annotations directly alongside each model.
 
 Key changes in the new spec:
 - `semantic_model` is nested directly under each model instead of being a standalone top-level key.
@@ -93,7 +93,7 @@ For migration guidance and a comparison between the latest spec and the legacy s
 ### `selector` method for named YAML selectors
 You can reference a named selector from `selectors.yml` inside `--select` or `--exclude` using the [`selector` method](/reference/node-selection/methods#selector) (for example, `selector:my_selector`). This makes it easier to compose reusable YAML selectors with other [selection methods](/reference/node-selection/methods), [graph operators](/reference/node-selection/graph-operators), and [set operators](/reference/node-selection/set-operators) on the command line without duplicating logic.
 
-When you use the legacy `--selector` flag together with `--select` or `--exclude`, dbt only uses `--selector` for node selection and ignores `--select` and `--exclude`. Starting in <Constant name="core" /> v1.12, dbt also raises a warning when these flags are combined. If you want to combine a selector with `--select` or `--exclude`, use the new `selector:` method instead.
+When you use the legacy `--selector` flag together with `--select` or `--exclude`, dbt only uses `--selector` for node selection and ignores `--select` and `--exclude`. Starting in dbt v1.12, dbt also raises a warning when these flags are combined. If you want to combine a selector with `--select` or `--exclude`, use the new `selector:` method instead.
 
 ### Support for `vars.yml`
 You can use the [`vars.yml`](/docs/build/project-variables#defining-variables-in-varsyml) file, located at the project root, to define project variables. This keeps variable definitions in one place and helps simplify `dbt_project.yml`. Variables defined in `vars.yml` are parsed _before_ `dbt_project.yml`, so you can reference them in `dbt_project.yml` using `{{ var('...') }}`. You can continue to define variables in `dbt_project.yml` as before, but you cannot define variables in both files. For details and precedence, refer to [Project variables](/docs/build/project-variables).
@@ -101,9 +101,9 @@ You can use the [`vars.yml`](/docs/build/project-variables#defining-variables-in
 
 ### Improved exception handling and error messages
 
-<Constant name="core" /> v1.12 improves exception handling so error messages are clearer and stack traces are easier to interpret.
+dbt v1.12 improves exception handling so error messages are clearer and stack traces are easier to interpret.
 
-Previously, some internal failures surfaced as Python errors (for example, `AttributeError`, `KeyError`, `IndexError`, `RuntimeError`), which could be difficult to understand. In <Constant name="core" /> v1.12, these are replaced with dbt errors (such as `CompilationError` and `ParsingError`) that include a clear error message. When you need the full Python error output for debugging, use `--debug` or check the logs.
+Previously, some internal failures surfaced as Python errors (for example, `AttributeError`, `KeyError`, `IndexError`, `RuntimeError`), which could be difficult to understand. In dbt v1.12, these are replaced with dbt errors (such as `CompilationError` and `ParsingError`) that include a clear error message. When you need the full Python error output for debugging, use `--debug` or check the logs.
 
 Key improvements:
 
@@ -124,13 +124,13 @@ Key improvements:
 
 ### Managing changes to legacy behaviors
 
-<Constant name="core" /> v1.12 introduces new flags for [managing changes to legacy behaviors](/reference/global-configs/behavior-changes). You may opt into recently introduced changes (disabled by default), or opt out of mature changes (enabled by default), by setting `true` / `false` values, respectively, for `flags` in `dbt_project.yml`.
+dbt v1.12 introduces new flags for [managing changes to legacy behaviors](/reference/global-configs/behavior-changes). You may opt into recently introduced changes (disabled by default), or opt out of mature changes (enabled by default), by setting `true` / `false` values, respectively, for `flags` in `dbt_project.yml`.
 
 You can read more about each of these behavior changes in the following links:
 
 - (Mature, enabled by default) [`require_all_warnings_handled_by_warn_error`](/reference/global-configs/behavior-flags/require_all_warnings_handled_by_warn_error). All warnings raised during a run are now routed through the `--warn-error` / `--warn-error-options` handler. This only affects projects using `warn_error: true` or `--warn-error`.
 - (Mature, enabled by default) [`require_batched_execution_for_custom_microbatch_strategy`](/reference/global-configs/behavior-flags/require_batched_execution_for_custom_microbatch_strategy). dbt now executes custom microbatch strategies in batches. If you have a custom microbatch macro and set the flag to `false`, dbt issues a deprecation warning.
-- (Mature, enabled by default) [`require_nested_cumulative_type_params`](/reference/global-configs/behavior-flags/require_nested_cumulative_type_params). dbt now raises an error (instead of a warning) if cumulative metrics use the un-nested syntax. Cumulative-type metrics must be nested under the `cumulative_type_params` field, as required since <Constant name="core" /> v1.9.
+- (Mature, enabled by default) [`require_nested_cumulative_type_params`](/reference/global-configs/behavior-flags/require_nested_cumulative_type_params). dbt now raises an error (instead of a warning) if cumulative metrics use the un-nested syntax. Cumulative-type metrics must be nested under the `cumulative_type_params` field, as required since dbt v1.9.
 - (Mature, enabled by default) [`require_yaml_configuration_for_mf_time_spines`](/reference/global-configs/behavior-flags/require_yaml_configuration_for_mf_time_spines). dbt suppresses the `MFTimespineWithoutYamlConfigurationDeprecation` warning. The legacy SQL file configuration continues to work. This flag has no functional impact.
 - (Mature, enabled by default) [`skip_nodes_if_on_run_start_fails`](/reference/global-configs/behavior-flags/skip_nodes_if_on_run_start_fails). dbt skips all selected resources if there is a failure on an `on-run-start` hook.
 - (Mature, enabled by default) [`state_modified_compare_more_unrendered_values`](/reference/global-configs/behavior-flags/state_modified_compare_more_unrendered_values). dbt uses unrendered values in `state:modified` comparisons, reducing false positives when configs differ by target environment (such as `prod` vs. `dev`).
@@ -180,7 +180,7 @@ You can read more about each of these behavior changes in the following links:
 ## Quick hits
 
 - dbt now surfaces occasional, non-blocking hints that suggest ways to optimize your project. Hints are enabled by default. Disable them with the [`hints_enabled` flag](/reference/global-configs/about-global-configs).
-- <Constant name="core" /> v1.12 now tolerates Fusion-specific names in [`warn_error_options`](/reference/global-configs/warnings) instead of raising an error. If your config includes a Fusion-specific name (for example, `StaticAnalysis`, `PackageParsingCompatibility`), <Constant name="core" /> ignores it and emits a note: `<name> is not being used because it's specific to the dbt Fusion engine.` This lets you share `warn_error_options` configs across <Constant name="core" /> and <Constant name="fusion" />.
+- dbt v1.12 now tolerates dbt v2-specific names in [`warn_error_options`](/reference/global-configs/warnings) instead of raising an error. If your config includes a v2-specific name (for example, `StaticAnalysis`, `PackageParsingCompatibility`), <Constant name="core" /> ignores it and emits a note: `<name> is not being used because it's specific to the dbt Fusion engine.` This lets you share `warn_error_options` configs across <Constant name="core" /> and <Constant name="fusion" />.
 - Macros invoked with the [`dbt run-operation`](/reference/commands/run-operation) command can now `ref()` models with `private` or `protected` [access](/reference/resource-configs/access) without raising a `DbtReferenceError`. Because macros are not part of the group and access control system, dbt doesn't enforce group membership when a macro called by `run-operation` references a model.
 - `dbt seed` now supports the [`--empty`](/reference/commands/seed#the---empty-flag) flag. Use it to create seed tables with the correct schema but without loading any data.
 - <Constant name="core" /> now automatically loads environment variables from a `.env` file in your current working directory. Shell environment variables take precedence over `.env` values. New projects created with `dbt init` include `.env` in the default `.gitignore`. For more information, refer to [About env_var function](/reference/dbt-jinja-functions/env_var#using-the-env-file).

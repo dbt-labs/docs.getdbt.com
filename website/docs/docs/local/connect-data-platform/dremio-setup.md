@@ -1,5 +1,5 @@
 ---
-title: "Connect Dremio to dbt Core"
+title: "Connect Dremio to dbt v1"
 sidebar_label: "Dremio"
 description: "Read this guide to learn about the Dremio warehouse setup in dbt."
 meta:

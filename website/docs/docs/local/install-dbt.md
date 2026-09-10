@@ -81,7 +81,7 @@ To upgrade later, run `dbt system update`.
   dbt --version
   ```
 
-- With <Constant name="dbt" /> v2, you can start using the <Constant name="fusion" /> experience right away. For the best v2 editor experience, install the dbt VS Code extension to use features like autocomplete, inline errors, and lineage.
+- With <Constant name="dbt" /> v2, you can start using it right away. For the best v2 editor experience, install the dbt VS Code extension to use features like autocomplete, inline errors, and lineage.
 
   For full <Term id="lsp" /> features and other richer <Constant name="fusion" /> capabilities, run `dbt login` to sign in with a free <Constant name="dbt_platform" /> account:
 
@@ -98,7 +98,7 @@ If you or your org has a strict requirement to use the open-source runtime, inst
 Common issues and resolutions:
 
 - **dbt command not found:** Add the installation location to your `$PATH`.
-- **Version conflicts:** Check that no other <Constant name="core" /> or <Constant name="platform_cli" /> versions are installed or active on your machine.
+- **Version conflicts:** Check that no other self-hosted dbt or <Constant name="platform_cli" /> versions are installed or active on your machine.
 - **Installation permissions:** Make sure your user account can install software locally.
 
 ## FAQs
@@ -302,7 +302,7 @@ Most command-line tools, including dbt, support a `--help` flag that shows avail
 :::
 
 ## FAQs
-- <Expandable alt_header="How do I uninstall dbt Core v1.x?">
+- <Expandable alt_header="How do I uninstall dbt v1?">
     Uninstall with the same tool you used to install:
 
     ```shell

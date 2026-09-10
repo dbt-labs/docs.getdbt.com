@@ -7,7 +7,7 @@ hoverSnippet: Learn how to debug schema names in dbt.
 # time_to_complete: '30 minutes' commenting out until we test
 icon: 'guides'
 hide_table_of_contents: true
-tags: ['dbt Core','Troubleshooting']
+tags: ['Troubleshooting']
 level: 'Advanced'
 ---
 

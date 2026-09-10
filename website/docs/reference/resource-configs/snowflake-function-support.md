@@ -1,9 +1,9 @@
 ---
-title: "Supported Snowflake functions in dbt Fusion"
-sidebar_label: "Snowflake functions in Fusion"
+title: "Supported Snowflake functions in dbt v2"
+sidebar_label: "Snowflake functions in dbt v2"
 id: "snowflake-function-support"
-description: "Check which Snowflake built-in SQL functions dbt Fusion can typecheck during static analysis."
-tags: ['Snowflake', 'dbt Fusion', 'static_analysis']
+description: "Check which Snowflake built-in SQL functions dbt v2 can typecheck during static analysis."
+tags: ['Snowflake', 'dbt v2', 'static_analysis']
 ---
 
 import SnowflakeFunctionsTable from '/snippets/_functions-table-snowflake.md';

@@ -1,6 +1,6 @@
 ---
 title: "Upgrading to v1.5"
-description: New features and changes in dbt Core v1.5
+description: New features and changes in dbt v1.5
 id: "upgrading-to-v1.5"
 displayed_sidebar: "docs"
 availability:
@@ -12,7 +12,7 @@ import CoreVersionDeprecation from '/snippets/_core-version-deprecation-callout.
 
 <CoreVersionDeprecation />
 
-<Constant name="core" /> v1.5 is a feature release, with two significant additions:
+<Constant name="dbt" /> v1.5 is a feature release, with two significant additions:
 1. [**Model governance**](/docs/mesh/govern/about-model-governance) — access, contracts, versions — the first phase of [multi-project deployments](https://github.com/dbt-labs/dbt/discussions/6725)
 2. A Python entry point for [**programmatic invocations**](/reference/programmatic-invocations), at parity with the CLI
 

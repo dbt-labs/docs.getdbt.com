@@ -1,7 +1,7 @@
 ---
-title: "Contribute to dbt Core adapters"
+title: "Contribute to dbt adapters"
 id: "contribute-dbt-adapters"
-description: "Contribute to existing dbt Core adapters or open a pull request for a new v1 or v2 adapter."
+description: "Contribute to existing dbt v1 adapters or open a pull request for a new v1 or v2 adapter."
 pagination_next: null
 availability: all_users
 ---
@@ -27,10 +27,10 @@ If you have a new adapter, add it to this list using a pull request. See [Build,
 
 </VersionBlock>
 
-### Create a new <Constant name="core_v2" /> adapter
+### Create a new v2 adapter
 
 v2 is a Rust-based rewrite of the dbt engine built around a single monorepo. Instead of maintaining a separate Python package per warehouse, all adapters live together, organized by feature area rather than warehouse, inside `dbt-labs/dbt`. A bug fix in authentication or relation logic benefits every adapter at once, and your contribution makes the entire ecosystem stronger.
 
 ADBC drivers handle connection management—pre-compiled binaries you register, not write. You build the warehouse-specific logic: credentials, relation naming, SQL macros, and catalog queries across roughly 13 files in total.
 
-Contributing a <Constant name="core_v2" /> adapter means opening a pull request directly against the monorepo. You'll register your warehouse in the `AdapterType` enum, implement credential and relation types in Rust, write Jinja macros for your SQL dialect, and wire up basic integration tests against a real warehouse. The Rust compiler's match exhaustiveness enforcement acts as your to-do list — every unhandled variant is a compile error until your adapter is complete. For a step-by-step walkthrough, see [Contribute a <Constant name="core_v2" /> adapter](/guides/adapter-creation-v2).
+Contributing a v2 adapter means opening a pull request directly against the monorepo. You'll register your warehouse in the `AdapterType` enum, implement credential and relation types in Rust, write Jinja macros for your SQL dialect, and wire up basic integration tests against a real warehouse. The Rust compiler's match exhaustiveness enforcement acts as your to-do list — every unhandled variant is a compile error until your adapter is complete. For a step-by-step walkthrough, see [Contribute a <Constant name="core_v2" /> adapter](/guides/adapter-creation-v2).
