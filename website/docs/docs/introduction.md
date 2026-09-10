@@ -43,7 +43,7 @@ As a developer, dbt can:
 - Preview inline <Term id="cte">CTEs</Term> for faster debugging
 - Trace model and column definitions across your entire project
 
-Get all of this, free, in the [dbt extension for VS Code](/docs/about-dbt-extension), built on v2.
+Get all of this, free, in the [dbt extension for VS Code](/docs/about-dbt-extension), built to enhance the power of v2, but also available in v1.
 
 
 ## How to use dbt
