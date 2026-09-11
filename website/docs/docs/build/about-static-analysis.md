@@ -81,10 +81,7 @@ VS Code extension features by static analysis configuration:
 | Rich column lineage | ❌ | ❌ | ✅ |
 | Detect data type and function signature errors | ❌ | ❌ | ✅ |
 
-- dbt VS Code extension features in this table are available to all users for 14 days. 
-- After the 14-day period, sign in or register for a <Constant name="dbt_platform" /> account from the dbt VS Code extension to keep using advanced capabilities. 
-- Unregistered users can continue using core editing and build workflows without signing in.
-- Existing registered dbt VS Code extension users keep access to registration-required features automatically.
+- dbt VS Code extension features in this table are available to all users &mdash; what you get depends on your static analysis mode, not your account.
 
 :::tip Supported Snowflake functions
 To check out which Snowflake functions are supported in <Constant name="fusion"/> in `strict` mode, refer to [Snowflake function support](/reference/resource-configs/snowflake-function-support)
