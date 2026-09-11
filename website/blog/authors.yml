@@ -555,6 +555,13 @@ simon_podhajsky:
     x: sim_pod
   name: Simon Podhajsky
   page: true
+stephen_thibeault:
+  name: Stephen Thibeault
+  title: ""  # TODO
+  image_url: /img/blog/authors/stephen-thibeault.png  # TODO
+  socials:
+    linkedin: ""  # TODO
+  page: true
 sterling_paramore:
   description: |
     Sterling Paramore started his career in theoretical and computation biophysics and learned that working with data was way more fun than being locked in the ivory tower.  He loves solving data engineering and data analytics problems and has been a long time evangelist for dbt.
