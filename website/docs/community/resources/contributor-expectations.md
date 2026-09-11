@@ -4,7 +4,7 @@ title: "Expectations for dbt contributors"
 
 Whether it's `dbt-labs/dbt`, adapters, packages, or this very documentation site, contributing to the open source or source-available code that supports the dbt ecosystem is a great way to share your knowledge, level yourself up as a developer, and to give back to the community. The goal of this page is to help you understand what to expect when contributing to dbt ecosystem projects.
 
-Have you seen things in other projects that you like, and think we could learn from? [Open a discussion on the dbt Community Forum](https://discourse.getdbt.com), or start a conversation in the [dbt Community Slack](https://www.getdbt.com/community/join-the-community) (for example: `#community-strategy`, `#dbt-core-development`, `#package-ecosystem`, `#adapter-ecosystem`). We always appreciate hearing from you!
+Have you seen things in other projects that you like, and think we could learn from? [Open a discussion on the dbt Community Forum](https://discourse.getdbt.com), or start a conversation in the [dbt Community Slack](https://www.getdbt.com/community/join-the-community) (for example: `#community-strategy`, `#dbt-development`, `#package-ecosystem`, `#adapter-ecosystem`). We always appreciate hearing from you!
 
 ## Principles
 
