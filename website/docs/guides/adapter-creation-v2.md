@@ -1,8 +1,8 @@
 ---
-title: "Contribute a dbt Core 2.0 adapter"
+title: "Contribute a dbt v2 adapter"
 id: adapter-creation-v2
-description: "Learn how to contribute a new community adapter to the dbt Core 2.0 Rust monorepo, from ADBC driver registration to SQL macros."
-hoverSnippet: "Step-by-step guide to contributing a community adapter to dbt Core v2.0, including crate structure, Rust patterns, and Jinja macros."
+description: "Learn how to contribute a new community adapter to the dbt v2 Rust monorepo, from ADBC driver registration to SQL macros."
+hoverSnippet: "Step-by-step guide to contributing a community adapter to dbt v2, including crate structure, Rust patterns, and Jinja macros."
 icon: 'guides'
 hide_table_of_contents: false
 tags: ['Adapter creation']
@@ -35,7 +35,7 @@ The Exasol adapter, contributed by [Marco Nätlitz](https://www.linkedin.com/in/
 
 | Topic | <Constant name="core_v1" /> | <Constant name="core_v2" /> |
 |-------|-------------|-------------|
-| **Package structure** | Separate Python packages (e.g. `dbt-snowflake`, `dbt-bigquery`), each inheriting from `dbt-adapters` | Part of the `dbt-core` monorepo, contributed as PRs |
+| **Package structure** | Separate Python packages (e.g. `dbt-snowflake`, `dbt-bigquery`), each inheriting from `dbt-adapters` | Part of the `dbt-labs/dbt` monorepo, contributed as PRs |
 | **Who maintains them** | dbt Labs maintains base adapter and 6 major adapters; others community-maintained independently | dbt Labs maintains the monorepo; community contributes via PRs |
 | **Language** | Python | Rust (with Jinja SQL macros still used for SQL logic) |
 | **How they load** | Dynamically loaded at runtime via Python's plugin system | Compiled into the monorepo binary |
@@ -48,7 +48,7 @@ As a community contributor, you're building the foundation: connect your warehou
 
 Think of your adapter contribution as the bridge between <Constant name="core_v2" /> and your warehouse: everything dbt needs to talk to it, nothing more. The architecture diagram below shows where your work fits in the stack.
 
-<Lightbox src="/img/adapter-guide/adapter-creation-v2-architecture.svg" title="dbt Core v2.0 adapter architecture diagram showing the community contribution zone within the monorepo, the ADBC C ABI boundary, the ADBC driver, and the warehouse" />
+<Lightbox src="/img/adapter-guide/adapter-creation-v2-architecture.svg" title="dbt v2 adapter architecture diagram showing the community contribution zone within the monorepo, the ADBC C ABI boundary, the ADBC driver, and the warehouse" />
 
 ## Step 2: Prerequisites
 
@@ -90,11 +90,11 @@ dbt Labs is working toward a model where community drivers can be distributed an
 
 The structural diagram below shows how the layers fit together. Your work lives in the **ADAPTER** layer: the crates that handle warehouse identity, credential resolution, relation logic, and Jinja dispatch. XDBC (driver loading and connection pooling) sits just below and has a small registration step too.
 
-<Lightbox src="/img/adapter-guide/adapter-creation-v2-structural.svg" title="dbt Core v2.0 system layers diagram showing USER, CLI, PIPELINE, TASK RUNNER, ADAPTER (highlighted as the contribution zone), XDBC, and WAREHOUSE layers" />
+<Lightbox src="/img/adapter-guide/adapter-creation-v2-structural.svg" title="dbt v2 system layers diagram showing USER, CLI, PIPELINE, TASK RUNNER, ADAPTER (highlighted as the contribution zone), XDBC, and WAREHOUSE layers" />
 
 ### Crate map
 
-In Rust, a **crate** is a package: the unit of compilation, roughly equivalent to a "library" or "module" in other languages. The `dbt-core` repo is a monorepo of multiple crates, each responsible for one vertical slice of functionality across all warehouses. This is a quick-reference map of the six crates you'll touch to build your adapter, in the order you'll work through them in Step 5.
+In Rust, a **crate** is a package: the unit of compilation, roughly equivalent to a "library" or "module" in other languages. The `dbt-labs/dbt` repo is a monorepo of multiple crates, each responsible for one vertical slice of functionality across all warehouses. This is a quick-reference map of the six crates you'll touch to build your adapter, in the order you'll work through them in Step 5.
 
 | Crate | Location | What you touch |
 |-------|----------|----------------|
@@ -205,8 +205,8 @@ rustup show  # verify
 go version  # verify
 
 # Clone the repo
-git clone https://github.com/dbt-labs/dbt-core
-cd dbt-core
+git clone https://github.com/dbt-labs/dbt
+cd dbt
 
 # Verify you can build
 cargo build --bin dbt
@@ -246,7 +246,7 @@ What context helps for each arm:
 Watch out for:
 - **Hallucinated file paths**: AI often invents <Constant name="core_v2" /> paths. Use the file breakdown below as ground truth.
 - **Always verify with the type checker**: run `cargo build -p <crate>` after any AI-generated changes.
-- **SQL macro patterns from v1** may not apply cleanly in <Constant name="core_v2" />. Compare against the reference `adapters.sql` at `crates/dbt-loader/src/dbt_macro_assets/dbt-exasol/macros/adapters.sql` in [dbt-labs/dbt-core](https://github.com/dbt-labs/dbt-core).
+- **SQL macro patterns from v1** may not apply cleanly in <Constant name="core_v2" />. Compare against the reference `adapters.sql` at `crates/dbt-loader/src/dbt_macro_assets/dbt-exasol/macros/adapters.sql` in [dbt-labs/dbt](https://github.com/dbt-labs/dbt).
 
 ## Step 5: Build a new adapter
 
@@ -658,7 +658,7 @@ Unlike adapters distributed via the CDN, your users won't get the driver automat
 ## Step 8: Promote your adapter
 
 :::caution Your PR must be merged first
-dbt Labs reviews and merges community adapter PRs into dbt-core. Wait until the PR is merged and the adapter ships in a published release before directing users to it.
+dbt Labs reviews and merges community adapter PRs into `dbt-labs/dbt`. Wait until the PR is merged and the adapter ships in a published release before directing users to it.
 :::
 
 ### Community channels
@@ -673,7 +673,7 @@ Align with the adapters team on: which materializations you're targeting in the 
 
 ## Reference: File-by-file implementation guide
 
-A community-contributed <Constant name="core_v2" /> adapter touches roughly 13 files, all in the public [dbt-labs/dbt-core](https://github.com/dbt-labs/dbt-core) repo. The "Exasol example" column shows what it looks like in practice. Substitute your warehouse name and system catalog throughout.
+A community-contributed <Constant name="core_v2" /> adapter touches roughly 13 files, all in the public [dbt-labs/dbt](https://github.com/dbt-labs/dbt) repo. The "Exasol example" column shows what it looks like in practice. Substitute your warehouse name and system catalog throughout.
 
 | Generic path | What it does | Exasol example |
 |--------------|--------------|----------------|

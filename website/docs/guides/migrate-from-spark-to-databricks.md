@@ -7,7 +7,7 @@ hoverSnippet: Learn how to migrate from dbt-spark to dbt-databricks.
 # time_to_complete: '30 minutes' commenting out until we test
 icon: 'guides'
 hide_table_of_contents: true
-tags: ['Migration', 'dbt Core','dbt platform']
+tags: ['Migration', 'dbt platform']
 level: 'Intermediate'
 ---
 
@@ -76,7 +76,7 @@ These credentials will not get lost when there's a successful connection to Data
 - The personal access tokens your team added in their <Constant name="dbt" /> profile so they can develop in the <Constant name="studio_ide" /> for a given project.
 - The access token you added for each deployment environment so <Constant name="dbt" /> can connect to Databricks during production jobs.
 
-## Migrate dbt projects in <Constant name="core" />
+## Migrate dbt projects in <Constant name="dbt" />
 
 To migrate your <Constant name="core" /> projects to the `dbt-databricks` adapter from `dbt-spark`, you:
 1. Install the [dbt-databricks adapter](https://github.com/databricks/dbt-databricks) in your environment

@@ -1,8 +1,8 @@
 ---
 resource_types: [models, tests, unit tests, seeds, snapshots]
 title: "static_analysis"
-description: "Use the static_analysis config to control how the Fusion engine performs static SQL analysis for models, tests, unit tests, seeds, and snapshots."
-intro_text: "static_analysis controls how the Fusion engine analyzes SQL at compile time for models, tests, unit tests, seeds, and snapshots."
+description: "Use the static_analysis config to control how dbt v2 performs static SQL analysis for models, tests, seeds, and snapshots."
+intro_text: "static_analysis controls how dbt v2 analyzes SQL at compile time for models, tests, seeds, and snapshots."
 datatype: string
 default_value: baseline
 sidebar_label: "static_analysis"
@@ -10,11 +10,11 @@ sidebar_label: "static_analysis"
 
 :::info
 
-The `static_analysis` config is available in the <Constant name="fusion_engine"/> only. It isn't available in <Constant name="core" /> and will be ignored. To upgrade to <Constant name="fusion"/>, refer to [Get started with <Constant name="fusion"/>](/docs/dbt/get-started-dbt).
+The `static_analysis` config is available in <Constant name="fusion_engine"/> only. It isn't available in <Constant name="core" /> and will be ignored. To upgrade to <Constant name="fusion"/>, refer to [Get started with <Constant name="fusion"/>](/docs/dbt/get-started-dbt).
 
 :::
 
-The `static_analysis` config sets how the <Constant name="fusion_engine" /> validates SQL before execution—using `strict` analysis, a `baseline` that balances checks with compatibility, or `off` to skip analysis when needed. You can find supported configuration locations for each resource type.
+The `static_analysis` config sets how <Constant name="fusion_engine" /> validates SQL before execution—using `strict` analysis, a `baseline` that balances checks with compatibility, or `off` to skip analysis when needed. You can find supported configuration locations for each resource type.
 
 To check out which Snowflake functions are supported in <Constant name="fusion"/> in `strict` mode, refer to [Snowflake function support](/reference/resource-configs/snowflake-function-support). For BigQuery, refer to [BigQuery function support](/reference/resource-configs/bigquery-function-support).
 
@@ -164,7 +164,7 @@ unit_tests:
 
 You can configure `static_analysis` for [models](/docs/build/sql-models), [data tests](/docs/build/data-tests), [unit tests](/docs/build/unit-tests), [seeds](/docs/build/seeds), and [snapshots](/docs/build/snapshots).
 
-You can configure if and when the <Constant name="fusion_engine" /> performs static SQL analysis for a model. Configure the `static_analysis` config in your project YAML file (`dbt_project.yml`), model properties YAML file, or in a SQL config block in your model file. Refer to [Principles of static analysis](/docs/build/about-static-analysis?version=1.12#principles-of-static-analysis) for more information on the different modes of static analysis.
+You can configure if and when <Constant name="fusion_engine" /> performs static SQL analysis for a model. Configure the `static_analysis` config in your project YAML file (`dbt_project.yml`), model properties YAML file, or in a SQL config block in your model file. Refer to [Principles of static analysis](/docs/build/about-static-analysis?version=1.12#principles-of-static-analysis) for more information on the different modes of static analysis.
 
 Setting a model to `strict` does not automatically set `strict` for downstream models; they keep the project default unless you configure them explicitly. For more information and examples, refer to [strict mode inheritance](/docs/build/about-static-analysis#strict-mode-inheritance).
 
@@ -182,7 +182,7 @@ The `on` and `unsafe` values are deprecated and will be removed in May 2026. Use
 
 ### User-defined functions (UDFs) in `strict` mode
 
-When `static_analysis: strict` is in effect, the <Constant name="fusion_engine" /> parses `CREATE FUNCTION` statements from [`sql_header`](/reference/resource-configs/sql_header) and from [`on-run-start`](/reference/project-configs/on-run-start-on-run-end) project hooks, registers those UDFs in the compiler registry, and makes them available during strict static compilation. The `baseline` and `off` modes don't perform this UDF registration for static analysis.
+When `static_analysis: strict` is in effect, <Constant name="fusion_engine" /> parses `CREATE FUNCTION` statements from [`sql_header`](/reference/resource-configs/sql_header) and from [`on-run-start`](/reference/project-configs/on-run-start-on-run-end) project hooks, registers those UDFs in the compiler registry, and makes them available during strict static compilation. The `baseline` and `off` modes don't perform this UDF registration for static analysis.
 
 A model’s `sql_header` can include multiple statements. <Constant name="fusion" /> registers UDFs from `CREATE FUNCTION` statements and ignores other statements for this step.
 
@@ -215,11 +215,11 @@ For example, for the lineage Model A → Model B → Model C:
 
 This makes sure that stricter validation requirements don't apply downstream when parent models haven't met those requirements. `baseline` doesn't produce the full analyzed schema that `strict` needs from its upstream models, so a downstream model of a `baseline` model can't run strict-level type checking.
 
-Refer to the Fusion concepts page for deeper discussion and visuals: [New concepts](/docs/build/about-static-analysis). For more info on the JSON schema, refer to the [dbt-jsonschema file](https://github.com/dbt-labs/dbt-jsonschema/blob/1e2c1536fbdd421e49c8b65c51de619e3cd313ff/schemas/latest_fusion/dbt_project-latest-fusion.json#L4689).
+Refer to the v2 concepts page for deeper discussion and visuals: [New concepts](/docs/build/about-static-analysis). For more info on the JSON schema, refer to the [dbt-jsonschema file](https://github.com/dbt-labs/dbt-jsonschema/blob/1e2c1536fbdd421e49c8b65c51de619e3cd313ff/schemas/latest_fusion/dbt_project-latest-fusion.json#L4689).
 
 ### Custom materializations
 
-The <Constant name="fusion_engine" /> automatically sets `static_analysis: off` for models built with a [custom materialization](/guides/create-new-materializations). This applies whether you gave the materialization a new name or reused a built-in one, such as your own `table` or `incremental`. 
+<Constant name="fusion_engine" /> automatically sets `static_analysis: off` for models built with a [custom materialization](/guides/create-new-materializations). This applies whether you gave the materialization a new name or reused a built-in one, such as your own `table` or `incremental`. 
 
 A custom materialization can add, rename, or change the type of columns in the table it builds, and <Constant name="fusion" /> can't predict those changes before the model runs. It skips analysis for the same reason it skips [introspective queries](/docs/build/about-static-analysis#introspection-handling-in-baseline-mode).
 

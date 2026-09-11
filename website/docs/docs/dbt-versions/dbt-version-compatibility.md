@@ -1,14 +1,14 @@
 ---
 title: "Version compatibility"
 id: "dbt-version-compatibility"
-description: "Understand how the dbt Fusion engine, language server, and VS Code extension versions map together, and how to verify compatible binaries."
+description: "Understand how dbt v2, language server, and VS Code extension versions map together, and how to verify compatible binaries."
 pagination_next: null
 pagination_prev: null
 ---
 
 # Version compatibility <Lifecycle status="preview" />
 
-The <Constant name="fusion_engine" />, its language server (<Term id="lsp" />), and the dbt VS Code extension work together to power local development. This page explains how their versions relate, which combinations are compatible, and how to verify you have matching binaries.
+<Constant name="fusion_engine" />, its language server (<Term id="lsp" />), and the dbt VS Code extension work together to power local development. This page explains how their versions relate, which combinations are compatible, and how to verify you have matching binaries.
 
 ## How versioning works
 
@@ -23,7 +23,7 @@ The dbt VS Code extension keeps its own release version because it follows the V
 
 ## Compatibility matrix
 
-The following table maps each dbt VS Code extension version to the <Constant name="fusion_engine" /> versions it supports. If you let the extension download and manage <Constant name="fusion" /> for you, it always installs a compatible version automatically &mdash; you only need this table if you install or pin binaries manually.
+The following table maps each dbt VS Code extension version to the dbt versions it supports. If you let the extension download and manage <Constant name="fusion" /> for you, it always installs a compatible version automatically &mdash; you only need this table if you install or pin binaries manually.
 
 
 | dbt VS Code extension | Min <Constant name="fusion" /> version | Max <Constant name="fusion" /> version | Checksums | Notes |
@@ -35,7 +35,7 @@ A dash (-) in the **Max** column means there is no upper bound yet. Any <Constan
 
 ## Check your installed versions
 
-To confirm your setup is within the supported range, check the version of the <Constant name="fusion_engine" /> you have installed:
+To confirm your setup is within the supported range, check the version of <Constant name="fusion_engine" /> you have installed:
 
 ```shell
 dbt --version

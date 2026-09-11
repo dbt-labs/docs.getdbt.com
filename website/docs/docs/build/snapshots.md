@@ -91,7 +91,7 @@ The following table outlines the configurations available for snapshots:
 - Developers can still set a custom location with [`schema`](/reference/resource-configs/schema) and [`database`](/reference/resource-configs/database)  configs, consistent with other resource types.
 - A number of other configurations are also supported (for example, `tags` and `post-hook`). For the complete list, refer to [Snapshot configurations](/reference/snapshot-configs).
 - You can configure snapshots from both the `dbt_project.yml` file and a `config` block. For more information, refer to the [configuration docs](/reference/snapshot-configs).
-- Starting <Constant name="core" /> v1.12, you can inspect the SQL generated for snapshots by running [`dbt compile`](/reference/commands/compile). You can find compiled SQL files in the `target/compiled/` directory of your dbt project.
+- Starting <Constant name="dbt" /> v1.12, you can inspect the SQL generated for snapshots by running [`dbt compile`](/reference/commands/compile). You can find compiled SQL files in the `target/compiled/` directory of your dbt project.
 
 ### Add a snapshot to your project
 
@@ -199,7 +199,7 @@ Why timestamp is the preferred strategy:
 
 <Expandable alt_header="Use dbt_valid_to_current for easier date range queries">
 
-By default, `dbt_valid_to` is `NULL` for current records. However, if you set the [`dbt_valid_to_current` configuration](/reference/resource-configs/dbt_valid_to_current) (available in <Constant name="core" /> v1.9+), `dbt_valid_to` will be set to your specified value (such as `9999-12-31`) for current records.
+By default, `dbt_valid_to` is `NULL` for current records. However, if you set the [`dbt_valid_to_current` configuration](/reference/resource-configs/dbt_valid_to_current) (available in <Constant name="dbt" /> v1.9+), `dbt_valid_to` will be set to your specified value (such as `9999-12-31`) for current records.
 
 This allows for straightforward date range filtering.
 
@@ -229,10 +229,10 @@ Snapshots can't be rebuilt. Because of this, it's a good idea to put snapshots i
 
 When you run the [`dbt snapshot` command](/reference/commands/snapshot):
 
-- **On the first run:** dbt will create the initial snapshot table — this will be the result set of your `select` statement, with additional columns including `dbt_valid_from` and `dbt_valid_to`. All records will have a `dbt_valid_to = null` or the value specified in [`dbt_valid_to_current`](/reference/resource-configs/dbt_valid_to_current) (available in <Constant name="core" /> 1.9+) if configured.
+- **On the first run:** dbt will create the initial snapshot table — this will be the result set of your `select` statement, with additional columns including `dbt_valid_from` and `dbt_valid_to`. All records will have a `dbt_valid_to = null` or the value specified in [`dbt_valid_to_current`](/reference/resource-configs/dbt_valid_to_current) (available in <Constant name="dbt" /> 1.9+) if configured.
 - **On subsequent runs:** dbt will check which records have changed or if any new records have been created:
   - The `dbt_valid_to` column will be updated for any existing records that have changed.
-  - The updated record and any new records will be inserted into the snapshot table. These records will now have `dbt_valid_to = null` or the value configured in `dbt_valid_to_current` (available in <Constant name="core" /> v1.9+).
+  - The updated record and any new records will be inserted into the snapshot table. These records will now have `dbt_valid_to = null` or the value configured in `dbt_valid_to_current` (available in <Constant name="dbt" /> v1.9+).
 
 <SnapshotFullRefresh />
 
@@ -405,7 +405,7 @@ The resulting table will look like this:
 
 Snapshot <Term id="table">tables</Term> will be created as a clone of your source dataset, plus some additional meta-fields.
 
-In <Constant name="core" /> v1.9+ (or available sooner in [the **v1 Latest** release track in <Constant name="dbt" />](/docs/dbt-versions/dbt-release-tracks)):
+In <Constant name="dbt" /> v1.9+ (or available sooner in [the **v1 Latest** release track in the <Constant name="dbt_platform" />](/docs/dbt-versions/dbt-release-tracks)):
 - These column names can be customized to your team or organizational conventions using the [`snapshot_meta_column_names`](/reference/resource-configs/snapshot_meta_column_names) config.
 - Use the [`dbt_valid_to_current` config](/reference/resource-configs/dbt_valid_to_current) to set a custom indicator for the value of `dbt_valid_to` in current snapshot records (like a future date such as `9999-12-31`). By default, this value is `NULL`. When set, dbt will use this specified value instead of `NULL` for `dbt_valid_to` for current records in the snapshot table.
 - Use the [`hard_deletes`](/reference/resource-configs/hard-deletes) config to track deleted records as new rows with the `dbt_is_deleted` meta field when using the `hard_deletes='new_record'` field.
