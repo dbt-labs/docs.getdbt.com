@@ -17,6 +17,8 @@ It is possible to use separate state for `state:modified` and `--defer`, by pass
 
 If `--defer-state` is not specified, deferral will use the manifest supplied to `--state`. In most cases, you will want to use the same state for both; compare logical changes against production, and also "fail over" to the production environment for unbuilt upstream resources.
 
+Relative paths passed to `--state` and `--defer-state` resolve against your project directory rather than the directory you ran dbt from. This matters when you use `--project-dir`. Refer to [path resolution](/reference/node-selection/configure-state#path-resolution) for details.
+
 ### Usage
 
 ```shell
