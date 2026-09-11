@@ -47,7 +47,7 @@ The recommendations table displays the following columns:
 | **Current lag** | The model's current `lag_tolerance` setting. |
 | **Recommended lag** | The `lag_tolerance` value dbt State recommends based on your model's 30-day build history. |
 | **% time saved** | The estimated percentage of build time you'd save by applying the recommended `lag_tolerance`. |
-| **Projected 30d time savings** | The estimated build time you could save over the next 30 days by applying the recommended `lag_tolerance`, based on redundant builds in the previous 30 days. This estimate includes only this model, so actual savings may be higher if downstream models also do not rebuild.|
+| **Projected 30d time savings** | The estimated build time you could save over the next 30 days by applying the recommended `lag_tolerance`, based on redundant builds in the previous 30 days. This estimate includes only this model, so actual savings may be higher if downstream models also do not rebuild. |
 </SimpleTable>
 
 You can search for a specific model using the search bar, or filter recommendations by project using the **Project** dropdown menu.
