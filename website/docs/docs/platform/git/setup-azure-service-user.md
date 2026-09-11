@@ -24,9 +24,9 @@ To use our native integration with Azure DevOps in <Constant name="dbt" />, an a
 2. [Add permissions to your new app](#add-permissions-to-your-new-app).
 3. [Add another redirect URI](#add-another-redirect-uri).
 4. [Connect Azure DevOps to your new app](#connect-azure-devops-to-your-new-app).
-5. [Add your Entra ID app to <Constant name="dbt" />](#add-your-azure-ad-app-to-dbt-cloud).
+5. [Add your Entra ID app to <Constant name="dbt" />](#add-your-microsoft-entra-id-app-to-dbt).
 
-Once the Microsoft Entra ID app is added to <Constant name="dbt" />, an account admin must also [connect a service user](#connecting-a-service-user) via OAuth, which will be used to power headless actions in <Constant name="dbt" /> such as deployment runs and CI.
+Once the Microsoft Entra ID app is added to <Constant name="dbt" />, an account admin must also [connect a service user](#connect-a-service-user) via OAuth, which will be used to power headless actions in <Constant name="dbt" /> such as deployment runs and CI.
 
 
 Once the Microsoft Entra ID app is added to <Constant name="dbt" /> and the service user is connected, then <Constant name="dbt" /> developers can personally authenticate in <Constant name="dbt" /> from Azure DevOps. For more on this, see [Authenticate with Azure DevOps](/docs/platform/git/authenticate-azure).
@@ -102,7 +102,7 @@ An Azure admin will need one of the following permissions in both the Microsoft 
 - Azure Service Administrator
 - Azure Co-administrator
 
-If your Azure DevOps account is connected to Entra ID, then you can proceed to [Connecting a service user](#connecting-a-service-user). However, if you're just getting set up, connect Azure DevOps to the Microsoft Entra ID app you just created:
+If your Azure DevOps account is connected to Entra ID, then you can proceed to [Connecting a service user](#connect-a-service-user). However, if you're just getting set up, connect Azure DevOps to the Microsoft Entra ID app you just created:
 
 1. From your Azure DevOps account, select **Organization settings** in the bottom left.
 2. Navigate to Microsoft Entra ID.

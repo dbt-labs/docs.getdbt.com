@@ -334,6 +334,6 @@ import LicenseOverrideNote from '/snippets/_license-override-note.md';
 ## Additional resources
 
 - [Grant users access](/docs/platform/manage-access/about-user-access#grant-access)
-- [Role-based access control](/docs/platform/manage-access/about-user-access#role-based-access-control-)
+- [Role-based access control](/docs/platform/manage-access/about-user-access#role-based-access-control)
 - [Environment-level permissions](/docs/platform/manage-access/environment-permissions)
 

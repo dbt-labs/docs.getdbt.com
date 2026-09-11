@@ -46,7 +46,7 @@ All dbt Labs managed integrations will be updated automatically, which consists 
 | Integration | Action required |
 |---|---|
 | [Google Workspace SSO](/docs/platform/manage-access/set-up-sso-google-workspace#creating-credentials) | Update or add OAuth Client |
-| [SCIM (Okta)](/docs/platform/manage-access/scim#set-up-dbt-cloud) | Update the SCIM base URL in Okta |
+| [SCIM (Okta)](/docs/platform/manage-access/scim#set-up-dbt) | Update the SCIM base URL in Okta |
 
 ### Git providers
 

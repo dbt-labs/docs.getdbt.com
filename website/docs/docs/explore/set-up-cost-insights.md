@@ -32,7 +32,7 @@ To set up Cost Insights, follow these steps:
 1. [Assign required permissions.](#assign-required-permissions)
 2. [Configure platform metadata credentials.](#configure-platform-metadata-credentials)
 3. [(Optional) Configure Cost Insights settings.](#configure-cost-insights-settings-optional)
-4. [(Optional) Enable dbt State or state-aware orchestration in your job settings.](#enable-dbt-state-or-state-aware-orchestration-optional)
+4. [(Optional) Enable dbt State or state-aware orchestration in your job settings.](#enable-dbt-state-optional)
 
 After completing these setup steps, you can view cost and optimization data across multiple areas of the <Constant name="dbt_platform" />. Refer to [Explore cost data](/docs/explore/explore-cost-data) to learn more about the Cost Insights section and how to use it.
 

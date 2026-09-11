@@ -129,7 +129,7 @@ Switching to **v2 Fallback** alerts the dbt Support team, who may reach out to h
 
 If you regularly develop your dbt project in <Constant name="dbt" />, and you're still running on a legacy version of <Constant name="core" />, dbt Labs recommends that you try upgrading your project in a development environment. [Override your dbt version in development](/docs/dbt-versions/upgrade-dbt-platform-version#override-dbt-version). Then, launch the <Constant name="studio_ide" /> or <Constant name="platform_cli" /> and do your development work as usual. Everything should work as you expect.
 
-If you do see something unexpected or surprising, revert back to the previous version and record the differences you observed. [Contact <Constant name="dbt" /> support](/docs/dbt-support#dbt-cloud-support) with your findings for a more detailed investigation.
+If you do see something unexpected or surprising, revert back to the previous version and record the differences you observed. [Contact <Constant name="dbt" /> support](/docs/dbt-support#dbt-platform-support) with your findings for a more detailed investigation.
 
 Next, we recommend that you try upgrading your project’s [deployment environment](/docs/dbt-versions/upgrade-dbt-platform-version#environments). If your project has a [staging deployment environment](/docs/deploy/deploy-environments#staging-environment), upgrade and try working with it for a few days before you proceed with upgrading the production environment. 
 
@@ -139,17 +139,17 @@ If your organization has multiple dbt projects, we recommend starting your upgra
 
 To learn more about how dbt Labs deploys stable dbt upgrades in a safe manner to <Constant name="dbt" />, we recommend that you read our blog post: [How we're making sure you can confidently switch to the \"Latest\" release track in <Constant name="dbt" />](/blog/latest-dbt-stability).
 
-If you're running dbt version 1.6 or older, please know that your version of <Constant name="core" /> has reached [end-of-life (EOL)](/docs/dbt-versions#eol-version-support) and is no longer supported. We strongly recommend that you update to a newer version as soon as reasonably possible.
+If you're running dbt version 1.6 or older, please know that your version of <Constant name="core" /> has reached [end-of-life (EOL)](/docs/dbt-versions#end-of-life-versions) and is no longer supported. We strongly recommend that you update to a newer version as soon as reasonably possible.
 
 dbt Labs has extended the critical support period of <Constant name="dbt" /> v1.7 for <Constant name="dbt" /> Enterprise-tier customers to March 2025. At that point, we will be encouraging all customers to select a Release Track for ongoing updates in <Constant name="dbt" />.
 
 <Expandable alt_header="I'm using an older version of dbt in the dbt platform. What should I do? What happens if I do nothing?" >
 
-If you're running dbt version v1.6 or older, please know that your version of <Constant name="core" /> has reached [end-of-life (EOL)](/docs/dbt-versions#eol-version-support) and is no longer supported. We strongly recommend that you update to a newer version as soon as reasonably possible.
+If you're running dbt version v1.6 or older, please know that your version of <Constant name="core" /> has reached [end-of-life (EOL)](/docs/dbt-versions#end-of-life-versions) and is no longer supported. We strongly recommend that you update to a newer version as soon as reasonably possible.
 
 dbt Labs has extended the "Critical Support" period of <Constant name="dbt" /> v1.7 for dbt Enterprise-tier customers while we work through the migration with those customers to Release Tracks. In the meantime, this means that v1.7 will continue to be accessible in dbt for Enterprise customers, jobs and environments on v1.7 for those customers will not be automatically migrated to "Latest," and dbt Labs will continue to fix critical bugs and security issues.
 
-Starting in October 2024, dbt accounts on the Developer and Starter (formerly Teams) plans have been migrated to release tracks from older <Constant name="core" /> versions. If your account was migrated to the **v1 Latest** release track and you notice new failures in scheduled jobs, please [contact dbt support](/docs/dbt-support#dbt-cloud-support) to report the problem or request an extension.
+Starting in October 2024, dbt accounts on the Developer and Starter (formerly Teams) plans have been migrated to release tracks from older <Constant name="core" /> versions. If your account was migrated to the **v1 Latest** release track and you notice new failures in scheduled jobs, please [contact dbt support](/docs/dbt-support#dbt-platform-support) to report the problem or request an extension.
 
 </Expandable>
 
@@ -162,7 +162,7 @@ If you are upgrading from a very old unsupported version of <Constant name="core
 - [v1.5] Empty invalid `tests` config start raising a validation error](/docs/dbt-versions/dbt-upgrade/Older%20versions/upgrading-to-v1.5). Replace empty `tests` config with `tests: []` or remove it altogether.
 - [v1.6] Performance optimization to `load_result` means you cannot call it on the same query result multiple times. Instead, save it to a local variable once, and reuse that variable (context: [dbt-labs/dbt#7371](https://github.com/dbt-labs/dbt/pull/7371)
 
-You should [contact dbt support](/docs/dbt-support#dbt-cloud-support) to request an extension, during which you will need to make those updates.
+You should [contact dbt support](/docs/dbt-support#dbt-platform-support) to request an extension, during which you will need to make those updates.
 
 </Expandable>
 
@@ -170,7 +170,7 @@ You should [contact dbt support](/docs/dbt-support#dbt-cloud-support) to request
 
 For the vast majority of customers, there is no further action needed.
 
-If you see new failures in your scheduled jobs now that they are running on a newer version of dbt, you may need to update your project code to account for one of the edge cases described on this page. You should [contact dbt support](/docs/dbt-support#dbt-cloud-support) to request an extension, during which you will need to make those updates.
+If you see new failures in your scheduled jobs now that they are running on a newer version of dbt, you may need to update your project code to account for one of the edge cases described on this page. You should [contact dbt support](/docs/dbt-support#dbt-platform-support) to request an extension, during which you will need to make those updates.
 
 </Expandable>
 
@@ -180,13 +180,13 @@ When we talk about _latest version_, we’re referring to the underlying runtime
 
 If a new version of a dbt package includes a breaking change (for example, a change to one of the macros in `dbt_utils`), you don’t have to immediately use the new version. In your `packages` configuration (in `dependencies.yml` or  `packages.yml`), you can still specify which versions or version ranges of packages you want dbt to install. If you're not already doing so, we strongly recommend [checking `package-lock.yml` into version control](/reference/commands/deps#predictable-package-installs) for predictable package installs in deployment environments and a clear change history whenever you install upgrades.
 
-If you upgrade to the **v1 Latest** release track, and immediately see something that breaks, please [contact support](/docs/dbt-support#dbt-cloud-support) and, in the meantime, downgrade back to v1.7.
+If you upgrade to the **v1 Latest** release track, and immediately see something that breaks, please [contact support](/docs/dbt-support#dbt-platform-support) and, in the meantime, downgrade back to v1.7.
 
-If you’re already on the **v1 Latest** release track, and you observe a breaking change (like something worked yesterday, but today it isn't working, or works in a surprising/different way), please [contact support](/docs/dbt-support#dbt-cloud-support) immediately. Depending on your contracted support agreement, the dbt Labs team will respond within our SLA time and we would seek to roll back the change and/or roll out a fix (just as we would for any other part of dbt). This is the same whether or not the root cause of the breaking change is in the project code or in the code of a package.
+If you’re already on the **v1 Latest** release track, and you observe a breaking change (like something worked yesterday, but today it isn't working, or works in a surprising/different way), please [contact support](/docs/dbt-support#dbt-platform-support) immediately. Depending on your contracted support agreement, the dbt Labs team will respond within our SLA time and we would seek to roll back the change and/or roll out a fix (just as we would for any other part of dbt). This is the same whether or not the root cause of the breaking change is in the project code or in the code of a package.
 
 If the package you’ve installed relies on _undocumented_ functionality of dbt, it doesn't have the same guarantees as functionality that we’ve documented and tested. However, we will still do our best to avoid breaking them.
 
 </Expandable>
 
 
-If you have comments or concerns, we’re happy to help. If you’re an existing <Constant name="dbt" /> customer, you may reach out to your account team or [contact support](/docs/dbt-support#dbt-cloud-support).
+If you have comments or concerns, we’re happy to help. If you’re an existing <Constant name="dbt" /> customer, you may reach out to your account team or [contact support](/docs/dbt-support#dbt-platform-support).

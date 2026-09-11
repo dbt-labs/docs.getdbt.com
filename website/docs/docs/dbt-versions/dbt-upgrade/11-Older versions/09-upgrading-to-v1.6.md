@@ -65,8 +65,8 @@ For more detailed information and to ask questions, please read and comment on t
 ### Materialized views
 
 Supported on:
-- [Postgres](/reference/resource-configs/postgres-configs#materialized-view)
-- [Redshift](/reference/resource-configs/redshift-configs#materialized-view)
+- [Postgres](/reference/resource-configs/postgres-configs#materialized-views)
+- [Redshift](/reference/resource-configs/redshift-configs#materialized-views)
 - [Snowflake](/reference/resource-configs/snowflake-configs#dynamic-tables)
 - [Databricks](/reference/resource-configs/databricks-configs#materialized-views-and-streaming-tables)
 

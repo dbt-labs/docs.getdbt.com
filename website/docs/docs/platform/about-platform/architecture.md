@@ -50,7 +50,7 @@ The git repo information is stored on <Constant name="dbt" /> servers to make it
 
 ### Authentication services
 
-The default settings of <Constant name="dbt" /> enable local users with credentials stored in <Constant name="dbt" />. Still, integrations with various authentication services are offered as an alternative, including [single sign-on services](/docs/platform/manage-access/sso-overview). Access to features can be granted/restricted by role using [RBAC](/docs/platform/manage-access/about-user-access#role-based-access-control-).
+The default settings of <Constant name="dbt" /> enable local users with credentials stored in <Constant name="dbt" />. Still, integrations with various authentication services are offered as an alternative, including [single sign-on services](/docs/platform/manage-access/sso-overview). Access to features can be granted/restricted by role using [RBAC](/docs/platform/manage-access/about-user-access#role-based-access-control).
 
 SSO features are essential because they reduce the number of credentials a user must maintain. Users sign in once and the authentication token is shared among integrated services (such as <Constant name="dbt" />). The token expires and must be refreshed at predetermined intervals, requiring the user to go through the authentication process again. If the user is disabled in the SSO provider service, their access to <Constant name="dbt" /> is disabled, and they cannot override this with local auth credentials. 
 

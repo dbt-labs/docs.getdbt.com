@@ -170,11 +170,11 @@ This is where you create the foundation.
 
 2. Add in your package contents. This means your models and macros. Don’t forget to declare the vars in your dbt_project.yml file if you have any specific configurations.
 
-As you’re going through these steps, keep in mind how configurable you want your code to be. Does your code follow [dbt best practices](https://discourse.getdbt.com/t/your-essential-dbt-project-checklist/1377)? If it’s cross-platform, have you taken into account the various SQL dialects? Also if your package relies on any existing dbt packages, are you tying it to a specific version? [For more information on developing your package, check out our docs site. ](https://docs.getdbt.com/docs/guides/building-packages#3-develop-your-package)If you want assistance from the community, the [#packages-ecosystem](https://getdbt.slack.com/archives/CU4MRJ7QB) channel is a fantastic place to start.
+As you’re going through these steps, keep in mind how configurable you want your code to be. Does your code follow [dbt best practices](https://discourse.getdbt.com/t/your-essential-dbt-project-checklist/1377)? If it’s cross-platform, have you taken into account the various SQL dialects? Also if your package relies on any existing dbt packages, are you tying it to a specific version? [For more information on developing your package, check out our docs site. ](https://docs.getdbt.com/docs/guides/building-packages#develop-your-package)If you want assistance from the community, the [#packages-ecosystem](https://getdbt.slack.com/archives/CU4MRJ7QB) channel is a fantastic place to start.
 
 **Testing **
 
-After you have developed your core code, it’s time to [add integration tests](https://docs.getdbt.com/docs/guides/building-packages#4-add-integration-tests). This is a great thing to do because this confirms your assumptions and gives you and any contributors to your package a baseline of how the package should work. Our [audit-helper](https://github.com/dbt-labs/dbt-audit-helper/tree/master/integration_tests) package has some fantastic cross-platform integrations tests. Be sure to also install your package into an existing dbt project to validate that it works.
+After you have developed your core code, it’s time to [add integration tests](https://docs.getdbt.com/docs/guides/building-packages#add-integration-tests). This is a great thing to do because this confirms your assumptions and gives you and any contributors to your package a baseline of how the package should work. Our [audit-helper](https://github.com/dbt-labs/dbt-audit-helper/tree/master/integration_tests) package has some fantastic cross-platform integrations tests. Be sure to also install your package into an existing dbt project to validate that it works.
 
 **Document**
 
@@ -194,7 +194,7 @@ A mindset to have here is setting up a framework that encourages people to join 
 
 **Publish**
 
-Now that all the work is done, it’s time to take the stage. This is the part of the workflow where you will make the repo public if necessary and [add to have it added to our Hub site](https://docs.getdbt.com/docs/guides/building-packages#7-add-the-package-to-hubgetdbtcom). Be sure to tell folks what you have done in dbt Slack in the #i-made-this channel or social media.
+Now that all the work is done, it’s time to take the stage. This is the part of the workflow where you will make the repo public if necessary and [add to have it added to our Hub site](https://docs.getdbt.com/docs/guides/building-packages#add-the-package-to-hubgetdbtcom). Be sure to tell folks what you have done in dbt Slack in the #i-made-this channel or social media.
 
 **Maintain **
 

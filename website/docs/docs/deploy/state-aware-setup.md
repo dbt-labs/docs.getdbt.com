@@ -73,9 +73,9 @@ To create a state-aware job:
      - **Enable dbt v2 cost optimization features**: Select this option to enable **State-aware orchestration**. **Efficient testing** is disabled by default. You can expand **More options** to enable or disable individual settings. 
 - **Triggers** section:
     - **Run on schedule**: Run the deploy job on a set schedule.
-      - **Timing**: Specify whether to [schedule](#schedule-days) the deploy job using **Intervals** that run the job every specified number of hours, **Specific hours** that run the job at specific times of day, or **Cron schedule** that run the job specified using [cron syntax](#cron-schedule).
+      - **Timing**: Specify whether to [schedule](/docs/deploy/deploy-jobs#schedule-days) the deploy job using **Intervals** that run the job every specified number of hours, **Specific hours** that run the job at specific times of day, or **Cron schedule** that run the job specified using [cron syntax](/docs/deploy/deploy-jobs#cron-schedule).
       - **Days of the week**: By default, it’s set to every day when **Intervals** or **Specific hours** is chosen for **Timing**.
-    - **Run when another job finishes**: Run the deploy job when another _upstream_ deploy [job completes](#trigger-on-job-completion).  
+    - **Run when another job finishes**: Run the deploy job when another _upstream_ deploy [job completes](/docs/deploy/deploy-jobs#trigger-on-job-completion).  
         - **Project**: Specify the parent project that has that upstream deploy job. 
         - **Job**: Specify the upstream deploy job. 
         - **Completes on**: Select the job run status(es) that will [enqueue](/docs/deploy/job-scheduler#scheduler-queue) the deploy job.  

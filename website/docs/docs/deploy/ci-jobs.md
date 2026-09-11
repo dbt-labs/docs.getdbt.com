@@ -14,7 +14,7 @@ If you have a monorepo with several dbt projects, opening a single pull request 
 ## Prerequisites
 - You have a <Constant name="dbt" /> account.
 - CI features:
-   - For both the [concurrent CI checks](/docs/deploy/continuous-integration#concurrent-ci-checks) and [smart cancellation of stale builds](/docs/deploy/continuous-integration#smart-cancellation) features, your <Constant name="dbt" /> account must be on the [Starter, Enterprise, or Enterprise+ plan](https://www.getdbt.com/pricing/).
+   - For both the [concurrent CI checks](/docs/deploy/continuous-integration#concurrent-ci-checks) and [smart cancellation of stale builds](/docs/deploy/continuous-integration#smart-cancellation-of-stale-builds) features, your <Constant name="dbt" /> account must be on the [Starter, Enterprise, or Enterprise+ plan](https://www.getdbt.com/pricing/).
    - [SQL linting](/docs/deploy/continuous-integration#sql-linting) is available on [<Constant name="dbt" /> release tracks](/docs/dbt-versions/dbt-release-tracks) and to <Constant name="dbt" /> [Starter, Enterprise, or Enterprise+](https://www.getdbt.com/pricing/) accounts. Refer to [Configure SQLFluff linting](/docs/deploy/continuous-integration#to-configure-sqlfluff-linting) when you add SQLFluff to your project.
 
 import V2CILintingNote from '/snippets/_v2-ci-linting-note.md';
@@ -22,7 +22,7 @@ import V2CILintingNote from '/snippets/_v2-ci-linting-note.md';
 <V2CILintingNote />
 
 - [Advanced CI](/docs/deploy/advanced-ci) features:
-   - For the [compare changes](/docs/deploy/advanced-ci#compare-changes) feature, your <Constant name="dbt" /> account must be on an [Enterprise-tier plan](https://www.getdbt.com/pricing/) and have enabled Advanced CI features. Please ask your [<Constant name="dbt" /> administrator to enable](/docs/platform/account-settings#account-access-to-advanced-ci-features) this feature for you. After enablement, the **dbt compare** option becomes available in the CI job settings.
+   - For the [compare changes](/docs/deploy/advanced-ci#compare-changes) feature, your <Constant name="dbt" /> account must be on an [Enterprise-tier plan](https://www.getdbt.com/pricing/) and have enabled Advanced CI features. Please ask your [<Constant name="dbt" /> administrator to enable](/docs/platform/account-settings#enabling-advanced-ci-features-) this feature for you. After enablement, the **dbt compare** option becomes available in the CI job settings.
 - Set up a [connection with your <Constant name="git" /> provider](/docs/platform/git/configure-git). This integration lets <Constant name="dbt" /> run jobs on your behalf for job triggering.
    - If you're using a native [GitLab](/docs/platform/git/connect-gitlab) integration, you need a paid or self-hosted account that includes support for GitLab webhooks and [project access tokens](https://docs.gitlab.com/ee/user/project/settings/project_access_tokens.html). If you're using GitLab Free, merge requests will trigger CI jobs but CI job status updates (success or failure of the job) will not be reported back to GitLab.
 
@@ -95,7 +95,7 @@ The following is an example of a CI report in a GitHub pull request, which is sh
 
 <Lightbox src="/img/docs/dbt-platform/using-dbt-platform/example-github-ci-report.png" width="75%" title="Example of CI report comment in GitHub pull request"/>
 
-## Trigger a CI job with the API <Lifecycle status="managed,managed_plus" />
+## Trigger a CI job with the API<Lifecycle status="managed,managed_plus" />
 
 If you're not using <Constant name="dbt" />’s native <Constant name="git" /> integration with [GitHub](/docs/platform/git/connect-github), [GitLab](/docs/platform/git/connect-gitlab), or [Azure DevOps](/docs/platform/git/connect-azure-devops), you can use the [Administrative API](/docs/dbt-apis/admin-api) to trigger a CI job to run. However, <Constant name="dbt" /> will not automatically delete the temporary schema for you. This is because automatic deletion relies on incoming webhooks from <Constant name="git" /> providers, which is only available through the native integrations.
 
@@ -106,7 +106,7 @@ If you instead need workflows that run after a merge (not CI checks on an open p
 
 - You have a <Constant name="dbt" /> account.
 - You have a <Constant name="dbt" /> [Enterprise or Enterprise+ plan](https://www.getdbt.com/pricing/). Legacy Team plans also retain access.
-  - For the [Concurrent CI checks](/docs/deploy/continuous-integration#concurrent-ci-checks) and [Smart cancellation of stale builds](/docs/deploy/continuous-integration#smart-cancellation) features, your <Constant name="dbt" /> account must be on the [Enterprise or Enterprise+ plan](https://www.getdbt.com/pricing/), and legacy Team plans. Starter plans do not have access to these features when triggering a CI job with the API.
+  - For the [Concurrent CI checks](/docs/deploy/continuous-integration#concurrent-ci-checks) and [Smart cancellation of stale builds](/docs/deploy/continuous-integration#smart-cancellation-of-stale-builds) features, your <Constant name="dbt" /> account must be on the [Enterprise or Enterprise+ plan](https://www.getdbt.com/pricing/), and legacy Team plans. Starter plans do not have access to these features when triggering a CI job with the API.
 
 1. Set up a CI job with the [Create Job](/dbt-cloud/api-v2#/operations/Create%20Job) API endpoint using `"job_type": ci` or from the [<Constant name="dbt" /> UI](#set-up-ci-jobs).
 2. Call the [Trigger Job Run](/dbt-cloud/api-v2#/operations/Trigger%20Job%20Run) API endpoint to trigger the CI job. You must include both of these fields to the payload:
@@ -118,7 +118,7 @@ If you instead need workflows that run after a merge (not CI checks on an open p
       - `non_native_pull_request_id` (for example, Bitbucket)
    - Provide the `git_sha` or `git_branch` to target the correct commit or branch to run the job against.
 
-## Semantic validations in CI <Lifecycle status="self_service,managed,managed_plus" />
+## Semantic validations in CI<Lifecycle status="self_service,managed,managed_plus" />
 
 Automatically test your semantic nodes (metrics, semantic models, and saved queries) during code reviews by adding warehouse validation checks in your CI job, guaranteeing that any code changes made to dbt models don't break these metrics.
 

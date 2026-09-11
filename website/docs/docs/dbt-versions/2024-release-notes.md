@@ -40,7 +40,7 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 - **Fix**: Resolved intermittent issues in Single-tenant environments affecting <Constant name="semantic_layer" /> and query history.
 - **Fix**: [The dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) now respects the BigQuery [`execution_project` attribute](/docs/local/connect-data-platform/bigquery-setup#execution-project), including for exports.
 - **New**: [Model notifications](/docs/deploy/model-notifications) are now generally available in <Constant name="dbt" />. These notifications alert model owners through email about any issues encountered by models and tests as soon as they occur while running a job.
-- **New**: You can now use your [Azure OpenAI key](/docs/platform/account-integrations?ai-integration=azure#ai-integrations) (available in beta) to use <Constant name="dbt" /> features like [<Constant name="copilot" />](/docs/platform/wizard-platform). Additionally, you can use your own [OpenAI API key](/docs/platform/account-integrations?ai-integration=openai#ai-integrations) or use [dbt Labs-managed OpenAI](/docs/platform/account-integrations?ai-integration=dbtlabs#ai-integrations) key. Refer to [AI integrations](/docs/platform/account-integrations#ai-integrations) for more information.
+- **New**: You can now use your [Azure OpenAI key](/docs/platform/manage-dbt-ai#configure-ai-provider) (available in beta) to use <Constant name="dbt" /> features like [<Constant name="copilot" />](/docs/platform/wizard-platform). Additionally, you can use your own [OpenAI API key](/docs/platform/manage-dbt-ai#configure-ai-provider) or use [dbt Labs-managed OpenAI](/docs/platform/manage-dbt-ai#configure-ai-provider) key. Refer to [AI integrations](/docs/platform/manage-dbt-ai#configure-ai-provider) for more information.
 - **New**: The [`hard_deletes`](/reference/resource-configs/hard-deletes) config gives you more control on how to handle deleted rows from the source. Supported options are `ignore` (default), `invalidate` (replaces the legacy `invalidate_hard_deletes=true`), and `new_record`. Note that `new_record` will create a new metadata column in the snapshot table.
 
 ## November 2024
@@ -80,15 +80,15 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
   - Semantic Layer integration with [Excel desktop and M365](/docs/platform-integrations/semantic-layer/excel)
   - [Data health tiles](/docs/explore/data-tile)
   - [Semantic Layer and Cloud IDE integration](/docs/build/metricflow-commands#metricflow-commands)
-  - Query history in [Explorer](/docs/explore/model-query-history#view-query-history-in-explorer)
+  - Query history in [Explorer](/docs/explore/model-query-history#view-query-history-in-catalog)
   - Semantic Layer Metricflow improvements, including [improved granularity and custom calendar](/docs/build/metricflow-time-spine#custom-calendar) 
   - [Python SDK](/docs/dbt-apis/sl-python) is now generally available 
 
 </Expandable>
 
 - **Behavior change:** [Multi-factor authentication](/docs/platform/manage-access/mfa) is now enforced on all users who log in with username and password credentials. 
-- **Enhancement**: The dbt Semantic Layer JDBC now allows users to paginate `semantic_layer.metrics()` and `semantic_layer.dimensions()` for metrics and dimensions using `page_size` and `page_number` parameters. Refer to [Paginate metadata calls](/docs/dbt-apis/sl-jdbc#querying-the-api-for-metric-metadata) for more information.
-- **Enhancement**: The dbt Semantic Layer JDBC now allows you to filter your metrics to include only those that contain a specific substring, using the `search` parameter. If no substring is provided, the query returns all metrics. Refer to [Fetch metrics by substring search](/docs/dbt-apis/sl-jdbc#querying-the-api-for-metric-metadata) for more information.
+- **Enhancement**: The dbt Semantic Layer JDBC now allows users to paginate `semantic_layer.metrics()` and `semantic_layer.dimensions()` for metrics and dimensions using `page_size` and `page_number` parameters. Refer to [Paginate metadata calls](/docs/dbt-apis/sl-jdbc#querying-the-api-for-metadata) for more information.
+- **Enhancement**: The dbt Semantic Layer JDBC now allows you to filter your metrics to include only those that contain a specific substring, using the `search` parameter. If no substring is provided, the query returns all metrics. Refer to [Fetch metrics by substring search](/docs/dbt-apis/sl-jdbc#querying-the-api-for-metadata) for more information.
 - **Fix**: The [<Constant name="semantic_layer" /> Excel integration](/docs/platform-integrations/semantic-layer/excel) now correctly surfaces errors when a query fails to execute. Previously, it was not clear why a query failed to run.
 - **Fix:** Previously, POST requests to the Jobs API with invalid `cron` strings would return HTTP response status code 500s but would update the underlying entity. Now, POST requests to the Jobs API with invalid `cron` strings will result in status code 400s, without the underlying entity being updated.
 - **Fix:** Fixed an issue where the `Source` view page in dbt Explorer did not correctly display source freshness status if older than 30 days.
@@ -123,7 +123,7 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 - **New**: [Data health tile](/docs/explore/data-tile) is now generally available in dbt Explorer. Data health tiles provide a quick at-a-glance view of your data quality, highlighting potential issues in your data. You can embed these tiles in your dashboards to quickly identify and address data quality issues in your dbt project.
 - **New**: dbt Explorer's Model query history feature is now in Preview for <Constant name="dbt" /> Enterprise customers. Model query history allows you to view the count of consumption queries for a model based on the data warehouse's query logs. This feature provides data teams insight, so they can focus their time and infrastructure spend on the worthwhile used data products. To learn more, refer to [Model query history](/docs/explore/model-query-history). 
 - **Enhancement**: You can now use [Extended Attributes](/docs/dbt-platform-environments#extended-attributes) and [Environment Variables](/docs/build/environment-variables) when connecting to the <Constant name="semantic_layer" />. If you set a value directly in the <Constant name="semantic_layer" /> Credentials, it will have a higher priority than Extended Attributes. When using environment variables, the default value for the environment will be used.  If you're using exports, job environment variable overrides aren't supported yet, but they will be soon.
-- **New:** There are two new [environment variable defaults](/docs/build/environment-variables#dbt-cloud-context) &mdash; `DBT_CLOUD_ENVIRONMENT_NAME` and `DBT_CLOUD_ENVIRONMENT_TYPE`.
+- **New:** There are two new [environment variable defaults](/docs/build/environment-variables#dbt-platform-context) &mdash; `DBT_CLOUD_ENVIRONMENT_NAME` and `DBT_CLOUD_ENVIRONMENT_TYPE`.
 - **New:** The [Amazon Athena warehouse connection](/docs/platform/connect-data-platform/connect-amazon-athena) is available as a public preview for <Constant name="dbt" /> accounts that have upgraded to [the **Latest** release track](/docs/dbt-versions/dbt-release-tracks).
 
 ## August 2024
@@ -141,14 +141,14 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 - **New**: The ability to lint your SQL files from the <Constant name="dbt" /> CLI is now available. To learn more, refer to [Lint SQL files](/docs/platform/configure-dbt-cli#lint-sql-files).
 - **Behavior change:** dbt Cloud IDE automatically adds a `--limit 100` to preview queries to avoid slow and expensive queries during development. Recently, dbt Core changed how the `limit` is applied to ensure that `order by` clauses are consistently respected. Because of this, queries that already contain a limit clause might now cause errors in the IDE previews. To address this, dbt Labs plans to provide an option soon to disable the limit from being applied. Until then, dbt Labs recommends removing the (duplicate) limit clause from your queries during previews to avoid these IDE errors.
 
-- **Enhancement**: Introducing a revamped overview page for dbt Explorer, available in beta. It includes a new design and layout for the dbt Explorer homepage. The new layout provides a more intuitive experience for users to navigate their dbt projects, as well as a new **Latest updates** section to view the latest changes or issues related to project resources. To learn more, refer to [Overview page](/docs/explore/explore-projects#overview-page).
+- **Enhancement**: Introducing a revamped overview page for dbt Explorer, available in beta. It includes a new design and layout for the dbt Explorer homepage. The new layout provides a more intuitive experience for users to navigate their dbt projects, as well as a new **Latest updates** section to view the latest changes or issues related to project resources. To learn more, refer to [Overview page](/docs/explore/explore-projects#catalog-overview).
 
 #### dbt Semantic Layer
 - **New**: Introduced the [`dbt-sl-sdk` Python software development kit (SDK)](https://github.com/dbt-labs/semantic-layer-sdk-python) Python library, which provides you with easy access to the dbt Semantic Layer with Python. It allows developers to interact with the dbt Semantic Layer APIs and query metrics and dimensions in downstream tools. Refer to the [dbt Semantic Layer Python SDK](/docs/dbt-apis/sl-python) for more information.
 - **New**: Introduced Semantic validations in CI pipelines. Automatically test your semantic nodes (metrics, semantic models, and saved queries) during code reviews by adding warehouse validation checks in your CI job using the `dbt sl validate` command. You can also validate modified semantic nodes to guarantee code changes made to dbt models don't break these metrics. Refer to [Semantic validations in CI](/docs/deploy/ci-jobs#semantic-validations-in-ci) to learn about the additional commands and use cases.
 - **New**: We now expose the `meta` field within the [config property](/reference/resource-configs/meta) for dbt Semantic Layer metrics in the [JDBC and GraphQL APIs](/docs/dbt-apis/sl-api-overview) under the `meta` field.
 - **New**: Added a new command in the dbt CLI called `export-all`, which allows you to export multiple or all of your saved queries. Previously, you had to explicitly specify the [list of saved queries](/docs/build/metricflow-commands#list-saved-queries).
-- **Enhancement**: The <Constant name="semantic_layer" /> now offers more granular control by supporting multiple data platform credentials, which can represent different roles or service accounts. Available for <Constant name="dbt" /> Enterprise plans, you can map credentials to service tokens for secure authentication. Refer to [Set up <Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/setup-sl#set-up-dbt-semantic-layer) for more details.
+- **Enhancement**: The <Constant name="semantic_layer" /> now offers more granular control by supporting multiple data platform credentials, which can represent different roles or service accounts. Available for <Constant name="dbt" /> Enterprise plans, you can map credentials to service tokens for secure authentication. Refer to [Set up <Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/setup-sl#administer-the-semantic-layer-1) for more details.
 - **Fix**: Addressed a bug where unicode query filters (such as Chinese characters) were not working correctly in the <Constant name="semantic_layer" /> Tableau integration.
 - **Fix**: Resolved a bug with parsing certain private keys for BigQuery when running an export.
 - **Fix**: Addressed a bug that caused a "closed connection" error to be returned when querying or running an Export.
@@ -299,7 +299,7 @@ The following features are new or enhanced as part of our [<Constant name="dbt" 
 
 ## February 2024
 
-- **New:** [Exports](/docs/use-dbt-semantic-layer/exports#define-exports) allow you to materialize a saved query as a table or view in your data platform. By using exports, you can unify metric definitions in your data platform and query them as you would any other table or view.
+- **New:** [Exports](/docs/use-dbt-semantic-layer/exports#create-and-execute-exports) allow you to materialize a saved query as a table or view in your data platform. By using exports, you can unify metric definitions in your data platform and query them as you would any other table or view.
 - **New:** You can access a list of your [exports](/docs/use-dbt-semantic-layer/exports) with the new list saved-queries command by adding `--show-exports`
 - **New:** The <Constant name="semantic_layer" /> and [Tableau Connector](/docs/platform-integrations/semantic-layer/tableau) now supports relative date filters in Tableau.
 
@@ -417,7 +417,7 @@ The following features are new or enhanced as part of our [<Constant name="dbt" 
   - Native support for [partial parsing in dbt Cloud](/docs/platform/account-settings#partial-parsing)
   - Updated guidance on using dots or underscores in the [Best practice guide for models](/best-practices/how-we-style/1-how-we-style-our-dbt-models)
   - Updated [PrivateLink for VCS docs](/docs/platform/secure/private-connectivity/aws/aws-self-hosted)
-  - Added a new `job_runner` role in our [Enterprise project role permissions docs](/docs/platform/manage-access/enterprise-permissions#project-role-permissions)
+  - Added a new `job_runner` role in our [Enterprise project role permissions docs](/docs/platform/manage-access/enterprise-permissions#project-permissions)
   - Added saved queries to [Metricflow commands](/docs/build/metricflow-commands#list-saved-queries)
   - Removed [as_text docs](https://github.com/dbt-labs/docs.getdbt.com/pull/4726) that were wildly outdated
 

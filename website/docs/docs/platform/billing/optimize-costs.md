@@ -89,7 +89,7 @@ If you want to ensure that you're building views whenever the logic is changed, 
 
 1. Ensure you have a [CI job setup](/docs/deploy/ci-jobs) in your environment.
 2. Create a new [deploy job](/docs/deploy/deploy-jobs#create-and-schedule-jobs) and call it “Merge Job".
-3. Set the  **Environment** to your CI environment. Refer to [Types of environments](/docs/deploy/deploy-environments#types-of-environments) for more details.
+3. Set the  **Environment** to your CI environment. Refer to [Types of environments](/docs/dbt-platform-environments#types-of-environments) for more details.
 4. Set **Commands** to: `dbt run -s state:modified+`.
     Executing `dbt build` in this context is unnecessary because the CI job was used to both run and test the code that just got merged into main.
 5. Under the **Execution Settings**, select the default production job to compare changes against:

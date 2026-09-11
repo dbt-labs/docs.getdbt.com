@@ -28,7 +28,7 @@ The abstract methods `get_response` and `execute` now only return `connection.Ad
 
 The manifest schema version will be updated to v5. The only change is to the default value of `config` for parsed nodes.
 
-For users of [state-based functionality](/reference/node-selection/syntax#about-node-selection), such as the `state:modified` selector, recall that:
+For users of [state-based functionality](/reference/node-selection/syntax), such as the `state:modified` selector, recall that:
 
 > The `--state` artifacts must be of schema versions that are compatible with the currently running dbt version.
 
@@ -48,7 +48,7 @@ Expected a schema version of "https://schemas.getdbt.com/dbt/manifest/v5.json" i
 
 ### Advanced and experimental functionality
 
-**Fresh Rebuilds.** There's a new _experimental_ selection method in town: [`source_status:fresher`](/reference/node-selection/methods#source_status). Much like the `state:` and `result` methods, the goal is to use dbt metadata to run your DAG more efficiently. If dbt has access to previous and current results of `dbt source freshness` (the `sources.json` artifact), dbt can compare them to determine which sources have loaded new data, and select only resources downstream of "fresher" sources. Read more in [Understanding State](/reference/node-selection/syntax#about-node-selection) and [CI/CD in <Constant name="dbt" />](/docs/deploy/continuous-integration).
+**Fresh Rebuilds.** There's a new _experimental_ selection method in town: [`source_status:fresher`](/reference/node-selection/methods#source_status). Much like the `state:` and `result` methods, the goal is to use dbt metadata to run your DAG more efficiently. If dbt has access to previous and current results of `dbt source freshness` (the `sources.json` artifact), dbt can compare them to determine which sources have loaded new data, and select only resources downstream of "fresher" sources. Read more in [Understanding State](/reference/node-selection/syntax) and [CI/CD in <Constant name="dbt" />](/docs/deploy/continuous-integration).
 
 
 [**dbt-Jinja functions**](/reference/dbt-jinja-functions-context-variables) have a new landing page, and two new members:

@@ -98,7 +98,7 @@ Refer to [dbt docs commands](/reference/commands/cmd-docs) for full usage detail
 
 dbt provides three complementary ways to [view documentation](/docs/build/view-documentation) after descriptions are generated:
 
-- [**dbt Docs (Legacy)**](/docs/build/view-documentation#dbt-docs): A static documentation site with model lineage, metadata, and documentation that can be hosted on your web server (like S3 or Netlify). Available for <Constant name="core_v1" /> or <Constant name="dbt" /> Developer plans.
+- [**dbt Docs (Legacy)**](/docs/build/view-documentation#dbt-docs-legacy): A static documentation site with model lineage, metadata, and documentation that can be hosted on your web server (like S3 or Netlify). Available for <Constant name="core_v1" /> or <Constant name="dbt" /> Developer plans.
 - [**dbt Docs v2**](/docs/build/view-documentation#dbt-docs-v2): A modern, performant open-source catalog with a redesigned UI, Semantic Layer metadata, and column-level lineage, served as a static site you can host anywhere. Available with <Constant name="fusion_engine" />.
 - [**<Constant name="catalog" />**](/docs/explore/explore-projects): Builds upon dbt Docs to provide a dynamic, real-time interface with enhanced metadata, customizable views, deeper project insights, and collaboration tools. Available on <Constant name="dbt" /> [Starter, Enterprise, or Enterprise+ plans](https://www.getdbt.com/pricing).
 

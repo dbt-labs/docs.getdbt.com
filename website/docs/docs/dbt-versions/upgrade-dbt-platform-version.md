@@ -167,7 +167,7 @@ For more on version support and future releases, see [Understanding <Constant na
 
 ### Need help upgrading?
 
-If you want more advice on how to upgrade your dbt projects, check out our [migration guides](/docs/dbt-versions/dbt-upgrade/) and our [upgrading Q&A page](/docs/dbt-versions/upgrade-dbt-platform-version#upgrading-legacy-versions-under-10).
+If you want more advice on how to upgrade your dbt projects, check out our [migration guides](/docs/dbt-versions/dbt-upgrade/) and our [upgrading Q&A page](/docs/dbt-versions/upgrade-dbt-platform-version#upgrade-considerations).
 
 ### Testing your changes before upgrading
 

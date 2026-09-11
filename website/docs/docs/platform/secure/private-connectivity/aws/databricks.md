@@ -30,7 +30,7 @@ You can set up a Databricks AWS PrivateLink endpoint in two ways:
 - [Self-serve private endpoints](#self-serve-private-endpoints): Create and manage Databricks PrivateLink endpoints directly in the <Constant name="dbt_platform" /> user interface. Currently in beta.
 - [Support-led setup](#support-led-setup): Contact dbt Support to configure your Databricks PrivateLink endpoint.
 
-### Self-serve private endpoints <Lifecycle status="beta" />
+### Self-serve private endpoints<Lifecycle status="beta" />
 
 _Self-serve private endpoints are currently in beta for Databricks on AWS, and available to all eligible customers. This feature isn't available for Azure or GCP. If you don't see **Private endpoints** in your account settings, use the [Support-led setup](#support-led-setup) instead._
 

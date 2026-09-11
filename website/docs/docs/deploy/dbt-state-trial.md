@@ -66,4 +66,4 @@ You can set a spend alert to get notified when your monthly dbt State costs reac
 
 - [About dbt State](/docs/deploy/dbt-state-about)
 - [Set up dbt State](/docs/deploy/dbt-state-setup)
-- [dbt State usage and pricing](/docs/platform/billing#dbt-state-usage)
+- [dbt State usage and pricing](/docs/platform/billing/dbt-state-usage#daily-active-target-tables)

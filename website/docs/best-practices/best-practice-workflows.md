@@ -173,7 +173,7 @@ dbt source freshness # must be run again to compare current to previous state
 dbt build --select source_status:fresher+ --state path/to/prod/artifacts
 ```
 
-To learn more, read the docs on [state](/reference/node-selection/syntax#about-node-selection).
+To learn more, read the docs on [state](/reference/node-selection/syntax).
 
 ## Pro-tips for dbt Projects
 ### Limit the data processed when in development

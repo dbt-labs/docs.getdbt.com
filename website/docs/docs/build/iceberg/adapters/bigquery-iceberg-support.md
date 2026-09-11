@@ -216,7 +216,7 @@ To maintain best practices, dbt enforces an input and, by default, writes your t
 
 <VersionBlock firstVersion="2.0">
 
-## Lakehouse Runtime Catalog (LRC) <Lifecycle status="beta" />
+## Lakehouse Runtime Catalog (LRC)<Lifecycle status="beta" />
 
 :::info <Constant name="fusion" /> only
 

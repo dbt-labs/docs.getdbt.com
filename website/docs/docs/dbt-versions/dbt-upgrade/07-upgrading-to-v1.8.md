@@ -36,7 +36,7 @@ Historically, dbt's test coverage was confined to [“data” tests](/docs/build
 
 In v1.8, we're introducing native support for [unit testing](/docs/build/unit-tests). Unit tests validate your SQL modeling logic on a small set of static inputs __before__ you materialize your full model in production. They support a test-driven development approach, improving both the efficiency of developers and the reliability of code.
 
-Starting from v1.8, when you execute the `dbt test` command, it will run both unit and data tests. Use the [`test_type`](/reference/node-selection/methods#test_type) method to run only unit or data tests:
+Starting from v1.8, when you execute the `dbt test` command, it will run both unit and data tests. Use the [`test_type`](/reference/node-selection/methods#the-test_type) method to run only unit or data tests:
 
 ```shell
 
@@ -66,7 +66,7 @@ models:
 
 #### The `--empty` flag
 
-The [`run`](/reference/commands/run#the-`--empty`-flag) and [`build`](/reference/commands/build#the---empty-flag) commands now support the `--empty` flag for building schema-only dry runs. The `--empty` flag limits the refs and sources to zero rows. dbt will still execute the model SQL against the target data warehouse but will avoid expensive reads of input data. This validates dependencies and ensures your models will build properly.
+The [`run`](/reference/commands/run#the---empty-flag) and [`build`](/reference/commands/build#the---empty-flag) commands now support the `--empty` flag for building schema-only dry runs. The `--empty` flag limits the refs and sources to zero rows. dbt will still execute the model SQL against the target data warehouse but will avoid expensive reads of input data. This validates dependencies and ensures your models will build properly.
 
 ### dbt-core and adapters are decoupled
 

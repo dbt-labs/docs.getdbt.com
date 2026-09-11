@@ -339,7 +339,7 @@ Release notes are grouped by date for single-tenant environments.
 
 ### Studio IDE
 
-- **Find in files**: The [Studio IDE](/docs/platform/studio-ide/ide-user-interface#search-your-project) now includes search and replace functionality and a command palette, enabling you to quickly find and replace text across your project, navigate files, jump to symbols, and run IDE configuration commands.
+- **Find in files**: The [Studio IDE](/docs/platform/studio-ide/ide-user-interface#search-and-replace) now includes search and replace functionality and a command palette, enabling you to quickly find and replace text across your project, navigate files, jump to symbols, and run IDE configuration commands.
 
 ### Catalog
 
@@ -421,7 +421,7 @@ Release notes are grouped by date for single-tenant environments.
 
 ### dbt platform
 
-- **dbt State in development**: [Enable dbt State](/docs/deploy/dbt-state-setup#enabling-dbt-state-in-studio) in development environments, or override it per user in **User development settings**. Requires dbt State to be enabled on the account by an admin.
+- **dbt State in development**: [Enable dbt State](/docs/deploy/dbt-state-setup#enabling-dbt-state-on-your-account) in development environments, or override it per user in **User development settings**. Requires dbt State to be enabled on the account by an admin.
 - **dbt State disabled for unsupported warehouse adapters on jobs**: The dbt State checkbox in job settings is now disabled when the job's environment uses an unsupported warehouse adapter. A help icon displays a tooltip explaining the limitation, and the feature is automatically removed from the job payload on save.
 
 ## June 10, 2026
@@ -668,7 +668,7 @@ Release notes are grouped by date for single-tenant environments.
 ### dbt Copilot and agents
 
 - **Preview**: The [Developer agent](/docs/platform/wizard-platform) is now in preview. Use natural language prompts to build or refactor models, and generate SQL, tests, documentation, and semantic models from scratch. For more information, refer to the [Developer agent](/docs/platform/wizard-platform).
-- **Enhancement:** Delete individual [<Constant name="copilot" /> chat conversations](/docs/platform/wizard-platform#availability-and-considerations) from the conversation list (**More actions** menu (three dots) > **Delete**). Deleting the open conversation clears the panel.
+- **Enhancement:** Delete individual [<Constant name="copilot" /> chat conversations](/docs/platform/wizard-platform#other-ai-features-in-dbt-platform) from the conversation list (**More actions** menu (three dots) > **Delete**). Deleting the open conversation clears the panel.
 - **Enhancement:** Commands run by <Constant name="copilot" /> and the [<Constant name="dev_agent" />](/docs/platform/wizard-platform) now appear in the <Constant name="studio_ide" /> **Commands** tab with a <Constant name="copilot" /> icon and **Run by Copilot** tooltip, so you can tell agent-run commands apart from manually run ones.
 
 ### dbt platform
@@ -705,7 +705,7 @@ Release notes are grouped by date for single-tenant environments.
 
 ### dbt Copilot and agents
 
-- **Job investigation support in Studio agent**: The Studio IDE dev agent can now help you investigate and troubleshoot dbt job and run failures using the `troubleshooting-dbt-job-errors` skill. The agent notes when your local project state may differ from the job (for example, a different branch or uncommitted changes). This feature is currently in beta. Refer to [Debug job failures](/docs/platform/wizard-platform?version=2.0#debug-job-failures) for more information.
+- **Job investigation support in Studio agent**: The Studio IDE dev agent can now help you investigate and troubleshoot dbt job and run failures using the `troubleshooting-dbt-job-errors` skill. The agent notes when your local project state may differ from the job (for example, a different branch or uncommitted changes). This feature is currently in beta. Refer to [Debug job failures](/docs/dbt-ai/wizard-ide#debug-job-failures) for more information.
 
 ### Semantic Layer
 

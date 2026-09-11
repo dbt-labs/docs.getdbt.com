@@ -52,7 +52,7 @@ To tell dbt which rows it should transform on an incremental run, wrap valid SQL
 
 Often, you'll want to filter for "new" rows, as in, rows that have been created since the last time dbt ran this model. The best way to find the timestamp of the most recent run of this model is by checking the most recent timestamp in your target table. dbt makes it easy to query your target table by using the "[\{\{ this \}\}](/reference/dbt-jinja-functions/this)" variable.
 
-Also common is wanting to capture both new and updated records. For updated records, you'll need to [define a unique key](#defining-a-unique-key-optional) to ensure you don't bring in modified records as duplicates. Your `is_incremental()` code will check for rows created *or modified* since the last time dbt ran this model.
+Also common is wanting to capture both new and updated records. For updated records, you'll need to [define a unique key](#defining-a-unique-key) to ensure you don't bring in modified records as duplicates. Your `is_incremental()` code will check for rows created *or modified* since the last time dbt ran this model.
 
 For example, a model that includes a computationally slow transformation on a column can be built incrementally, as follows:
 

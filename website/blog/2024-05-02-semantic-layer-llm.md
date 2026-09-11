@@ -114,7 +114,7 @@ Within dbt Cloud, you’ll need the following (more detail can be found [here](h
 
 - Have a dbt Cloud Team or Enterprise account. Suitable for both Multi-tenant and Single-tenant deployment.
 - Have both your production and development [environments](https://docs.getdbt.com/docs/dbt-platform-environments) running dbt version 1.6 or higher.
-- Create a successful job run in the environment where you [configure the Semantic Layer](https://docs.getdbt.com/docs/use-dbt-semantic-layer/setup-sl#set-up-dbt-semantic-layer).
+- Create a successful job run in the environment where you [configure the Semantic Layer](https://docs.getdbt.com/docs/use-dbt-semantic-layer/setup-sl#administer-the-semantic-layer-1).
 
 ## The Code
 There are several components to the application that are worth calling out here individually: retrieving your project’s semantics (specifically metrics and dimensions) when the application loads, examples that guide the LLM to what valid and invalid output looks like, parsing the output to a structured object, and then using that output as an argument in the UDF we built earlier that makes a request to the Semantic Layer.
