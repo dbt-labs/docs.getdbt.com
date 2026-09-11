@@ -388,6 +388,37 @@ models:
 
 This move is only necessary for fragments defined outside of the main YAML structure. For more information about this new key, see [anchors](/reference/resource-properties/anchors).
 
+#### Self-referential (recursive) YAML anchors are not supported {#self-referential-yaml}
+
+In v1, dbt could parse a YAML anchor that merges into an element of the same sequence it's defined on, creating a self-referential (cyclic) anchor. For example, anchoring a full `tables:` sequence and then merging that anchor into one of the sequence's own elements:
+
+```yml
+sources:
+  - name: catalogue
+    tables: &tables
+      - name: anchor_item
+        description: The first table in the sequence.
+      - <<: *tables
+        name: merged_item
+```
+
+This parsed successfully in v1 only because PyYAML (the YAML library <Constant name="core_v1" /> depends on) incidentally allows self-referential anchors, a side effect of Python's own support for cyclic data structures, not an intentional YAML feature. No other major YAML implementation allows this pattern.
+
+In v2, parsing this pattern hits a recursion limit and raises an error, so the entire properties file fails to parse. This is a deliberate limitation, not a bug. v2 does not plan to support self-referential anchors.
+
+To resolve this, remove the self-reference. Anchor only the parts of the document that don't merge back into themselves, for example, anchor a single table mapping instead of the whole sequence:
+
+```yml
+sources:
+  - name: catalogue
+    tables:
+      - &anchor_item_alias
+        name: anchor_item
+        description: The first table in the sequence.
+      - <<: *anchor_item_alias
+        name: merged_item
+```
+
 #### Algebraic operations in Jinja macros
 
 In v1, you can set algebraic functions in the return function of a Jinja macro:
