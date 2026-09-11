@@ -371,6 +371,12 @@ dbt supports the specification of BigQuery labels for the tables and <Term id="v
 
 The `labels` config can be provided in a model config, or in the `dbt_project.yml` file, as shown below.
 
+<VersionBlock firstVersion="1.12.XXX">
+
+Labels are merged across configuration levels, so a model's `labels` are combined with those set for its folder or project in `dbt_project.yml`, with the more specific level overwriting the less specific label.
+
+</VersionBlock>
+
   BigQuery key-value pair entries for labels larger than 63 characters are truncated.
 
 **Configuring labels in a model file**
