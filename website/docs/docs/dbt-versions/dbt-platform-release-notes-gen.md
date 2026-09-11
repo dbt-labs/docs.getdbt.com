@@ -40,7 +40,8 @@ Release notes are grouped by date for single-tenant environments.
 
 ### Catalog
 
-- **Upstream sources sorted by freshness severity**: The **Upstream Sources** table on model detail pages now sorts by freshness severity by default (Error first, Pass last). **Name** and **Status** column headers are clickable sort controls, and the **Status** column no longer overflows horizontally on wide viewports.
+- **Upstream sources sorted by freshness severity**: The **Upstream Sources** table on the model detail pages now sorts by freshness severity by default (Error first, Pass last). Click **Name** or **Status** to change the sort order. The **Status** column also no longer overflows on wide screens.
+
   <!-- PRs: `https://github.com/dbt-labs/dbt-ui/pull/1490` ✅-->
 
 ### Orchestration and run status
