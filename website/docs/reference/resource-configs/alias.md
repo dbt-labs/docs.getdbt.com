@@ -1,8 +1,8 @@
 ---
-resource_types: [models, seeds, snapshots, tests]
+resource_types: [models, seeds, snapshots, tests, functions]
 description: "Aliasing a resource lets you give it a custom name in the database instead of using the filename."
 datatype: string
-intro_text: Specify a custom alias for a model, data test, snapshot, or seed and give it a more user-friendly name in the database.
+intro_text: Specify a custom alias for a model, data test, snapshot, seed, or function and give it a more user-friendly name in the database.
 ---
 
 
@@ -194,11 +194,47 @@ When using [`store_failures_as`](/reference/resource-configs/store_failures_as),
 
 
 </TabItem>
+
+<TabItem value="functions" label="Functions">
+
+Configure a function's alias in your project YAML file (`dbt_project.yml`) or a properties YAML file (for example, `functions/schema.yml`).
+
+The following examples demonstrate how to `alias` a function named `calculate_tax` to `tax_calculator`.
+
+In the `dbt_project.yml` file at the project level:
+
+<File name='dbt_project.yml'>
+
+```yml
+functions:
+  your_project:
+    calculate_tax:
+      +alias: tax_calculator
+```
+
+</File>
+
+In the `functions/schema.yml` file:
+
+<File name='functions/schema.yml'>
+
+```yml
+functions:
+  - name: calculate_tax
+    config:
+      alias: tax_calculator
+```
+
+</File>
+
+This creates the function as `analytics.finance.tax_calculator` in the database instead of `analytics.finance.calculate_tax`.
+
+</TabItem>
 </Tabs>
 
 ## Definition
 
-Optionally specify a custom alias for a [model](/docs/build/models), [data test](/docs/build/data-tests), [snapshot](/docs/build/snapshots), or [seed](/docs/build/seeds).
+Optionally specify a custom alias for a [model](/docs/build/models), [data test](/docs/build/data-tests), [snapshot](/docs/build/snapshots), [seed](/docs/build/seeds), or [function](/docs/build/udfs).
 
 When dbt creates a relation (<Term id="table" />/<Term id="view" />) in a database, it creates it as: `{{ database }}.{{ schema }}.{{ identifier }}`, e.g. `analytics.finance.payments`
 

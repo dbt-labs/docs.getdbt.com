@@ -19,6 +19,7 @@ default_value: true
     { label: 'Exposures', value: 'exposures', },
     { label: 'Semantic models', value: 'semantic models', },
     { label: 'Saved queries', value: 'saved queries', },
+    { label: 'Functions', value: 'functions', },
   ]
 }>
 <TabItem value="models">
@@ -360,6 +361,33 @@ saved-queries:
 saved_queries:
   - name: [<saved_query_name>]
     [config](/reference/resource-properties/config):
+      enabled: true | false
+```
+
+</File>
+
+</TabItem>
+
+<TabItem value="functions">
+
+
+<File name='dbt_project.yml'>
+
+```yml
+functions:
+  [<resource-path>](/reference/resource-configs/resource-path):
+    +enabled: true | false
+
+```
+
+</File>
+
+<File name='functions/schema.yml'>
+
+```yaml
+functions:
+  - name: [<function-name>]
+    config:
       enabled: true | false
 ```
 
