@@ -12,7 +12,7 @@ keywords:
 
 Metrics define measurable quantities that you can query through the <Constant name="semantic_layer" />. You define them in different places, depending on your <Constant name="dbt" /> version:
 
-- In a model using the *latest* YAML spec. Top-level `metrics:` list on a [model](/reference/model-properties) that has semantic modeling enabled, alongside `semantic_model:` and `columns:`. Available in the <Constant name="dbt_platform" /> **v1 Latest** release track and the <Constant name="fusion_engine" />.
+- In a model using the *latest* YAML spec. Top-level `metrics:` list on a [model](/reference/model-properties) that has semantic modeling enabled, alongside `semantic_model:` and `columns:`. Available in the <Constant name="dbt_platform" /> **v1 Latest** release track and <Constant name="fusion_engine" />.
 - In the standalone *legacy* YAML spec.  Refer to [Creating metrics](/docs/build/metrics-overview) for more information.
 
 import LatestYamlSpecAvailability from '/snippets/_latest-yaml-spec-availability-versioned.md';

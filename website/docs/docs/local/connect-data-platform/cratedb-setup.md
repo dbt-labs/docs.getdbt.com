@@ -1,5 +1,5 @@
 ---
-title: "Connect CrateDB to dbt Core"
+title: "Connect CrateDB to dbt v1"
 sidebar_label: "CrateDB"
 description: "Read this guide to learn about the CrateDB data platform setup in dbt."
 id: "cratedb-setup"

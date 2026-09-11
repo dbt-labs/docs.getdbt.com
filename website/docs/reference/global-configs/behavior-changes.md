@@ -60,7 +60,7 @@ This table outlines which month of the **v1 Latest** release track in <Constant 
 
 ### Flags reaching maturity
 
-Several behavior change flags on the <Constant name="dbt_platform" /> `v1 Latest` release track are planned to reach maturity on September 1, 2026, switching their default values from `false` to `true`. The September 1 date applies only to the <Constant name="dbt_platform" /> release tracks. The flags have reached maturity in <Constant name="core" /> v1.12. For intro dates, refer to the <Constant name="core" /> behavior changes table.
+Several behavior change flags on the <Constant name="dbt_platform" /> `v1 Latest` release track are planned to reach maturity on September 1, 2026, switching their default values from `false` to `true`. The September 1 date applies only to the <Constant name="dbt_platform" /> release tracks. The flags have reached maturity in <Constant name="dbt" /> v1.12. For intro dates, refer to the <Constant name="core" /> behavior changes table.
 
 | Flag | Impact |
 |---|---|
@@ -72,7 +72,7 @@ Several behavior change flags on the <Constant name="dbt_platform" /> `v1 Latest
 | [require_yaml_configuration_for_mf_time_spines](/reference/global-configs/behavior-flags/require_yaml_configuration_for_mf_time_spines) | Suppresses a deprecation warning (no functional change) |
 | [validate_macro_args](/reference/global-configs/behavior-flags/validate_macro_args) | New warning for mismatched macro arguments; errors with `--warn-error` |
 
-### Introduced in <Constant name="fusion" /> and <Constant name="core_v2" />
+### Introduced in <Constant name="fusion" />
 
 The following flags are specific to <Constant name="fusion" /> and have no equivalent in <Constant name="core" />. They are configured the same way — in the `flags:` block of `dbt_project.yml`.
 
@@ -153,10 +153,10 @@ When a maturity date has not yet been set (shown as -), we have not yet determin
 
 Since behavior change flags are different from other dbt changes, it's important to understand the difference:
 - [Deprecation warnings](/reference/deprecations) &mdash; Features in your project code that will stop working (behavior flags often control when these become errors)
-- [Deprecated CLI flags](/docs/dbt-versions/dbt-upgrade/upgrading-to-v2#deprecated-flags) &mdash; Command-line flags being removed in dbt Fusion
+- [Deprecated CLI flags](/docs/dbt-versions/dbt-upgrade/upgrading-to-v2#deprecated-flags) &mdash; Command-line flags being removed in v2
 
 See the [Changes overview](/reference/changes-overview) for a quick comparison.
 
-If you're upgrading to [dbt Fusion](/docs/dbt-versions/dbt-upgrade/upgrading-to-v2) or [<Constant name="core_v2" />](/docs/dbt-versions/dbt-upgrade/upgrading-to-v2), a subset of behavior change flags are removed and their new behavior is always enabled.
+If you're upgrading to [v2](/docs/dbt-versions/dbt-upgrade/upgrading-to-v2), a subset of behavior change flags are removed and their new behavior is always enabled.
 
 </Expandable>

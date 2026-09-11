@@ -1,14 +1,14 @@
 ---
-title: Build a data lakehouse with dbt Core and Dremio Cloud
+title: Build a data lakehouse with dbt v1 and Dremio Cloud
 id: build-dremio-lakehouse
-description:  Learn how to build a data lakehouse with dbt Core and Dremio Cloud.
-displayText: Build a data lakehouse with dbt Core and Dremio Cloud
-hoverSnippet: Learn how to build a data lakehouse with dbt Core and Dremio Cloud
+description:  Learn how to build a data lakehouse with dbt v1 and Dremio Cloud.
+displayText: Build a data lakehouse with dbt v1 and Dremio Cloud
+hoverSnippet: Learn how to build a data lakehouse with dbt v1 and Dremio Cloud
 # time_to_complete: '30 minutes' commenting out until we test
 platform: 'dbt-core'
 icon: 'guides'
 hide_table_of_contents: true
-tags: ['Dremio', 'dbt Core']
+tags: ['Dremio', 'dbt v1']
 level: 'Intermediate'
 ---
 
@@ -16,13 +16,13 @@ level: 'Intermediate'
 
 ## Introduction
 
-This guide will demonstrate how to build a data lakehouse with <Constant name="core" /> 1.5 or newer and Dremio Cloud. You can simplify and optimize your data infrastructure with dbt's robust transformation framework and Dremio’s open and easy data lakehouse. The integrated solution empowers companies to establish a strong data and analytics foundation, fostering self-service analytics and enhancing business insights while simplifying operations by eliminating the necessity to write complex Extract, Transform, and Load (ETL) pipelines. 
+This guide will demonstrate how to build a data lakehouse with <Constant name="dbt" /> 1.5 or newer and Dremio Cloud. You can simplify and optimize your data infrastructure with dbt's robust transformation framework and Dremio’s open and easy data lakehouse. The integrated solution empowers companies to establish a strong data and analytics foundation, fostering self-service analytics and enhancing business insights while simplifying operations by eliminating the necessity to write complex Extract, Transform, and Load (ETL) pipelines. 
 
 ### Prerequisites
 
 * You must have a [Dremio Cloud](https://docs.dremio.com/cloud/) account.
 * You must have Python 3 installed.
-* You must have <Constant name="core" /> v1.5 or newer [installed](//docs/local/install-dbt). 
+* You must have <Constant name="dbt" /> v1.5 or newer [installed](//docs/local/install-dbt). 
 * You must have the Dremio adapter 1.5.0 or newer [installed and configured](/docs/local/connect-data-platform/dremio-setup) for Dremio Cloud.
 * You must have basic working knowledge of <Constant name="git" /> and the command line interface (CLI).
 

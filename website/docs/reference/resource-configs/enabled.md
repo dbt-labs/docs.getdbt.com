@@ -403,7 +403,7 @@ models:
 
 ### Disable Semantic Layer resources from a package
 
-Some packages may define <Constant name="semantic_layer" /> resources (semantic models, metrics, saved queries) using an older specification that isn’t compatible with the <Constant name="fusion_engine" />. 
+Some packages may define <Constant name="semantic_layer" /> resources (semantic models, metrics, saved queries) using an older specification that isn’t compatible with <Constant name="fusion_engine" />. 
 
 To use these packages with <Constant name="fusion" /> while keeping your own semantic layer definitions, disable the package’s semantic layer resources in the relevant YAML file.
 

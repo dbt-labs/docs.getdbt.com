@@ -14,7 +14,7 @@ availability:
 You can use your existing SQLFluff config with minimal changes. dbt Labs intends to track the latest SQLFluff rule spec going forward.
 
 :::note
-`dbt lint` is part of the <Constant name="fusion_engine" />. It is not the same as `dbt sqlfluff lint` on the <Constant name="platform_cli" />. For SQLFluff on the platform CLI, see [Configure the dbt platform CLI](/docs/platform/configure-dbt-cli). [Linting in Studio IDE](/docs/platform/studio-ide/lint-format) continues to use SQLFluff.
+`dbt lint` is part of <Constant name="fusion_engine" />. It is not the same as `dbt sqlfluff lint` on the <Constant name="platform_cli" />. For SQLFluff on the platform CLI, see [Configure the dbt platform CLI](/docs/platform/configure-dbt-cli). [Linting in Studio IDE](/docs/platform/studio-ide/lint-format) continues to use SQLFluff.
 :::
 
 ## Benchmarks
@@ -190,4 +190,4 @@ This behavior is similar to SQLFluff's `ignore_templated_areas` setting.
 
 ## Feedback
 
-If you encounter unexpected behavior or have suggestions, open an issue in the [dbt-core GitHub repository](https://github.com/dbt-labs/dbt-core/issues) and apply the `Linter` label.
+If you encounter unexpected behavior or have suggestions, open an issue in the [dbt-labs/dbt GitHub repository](https://github.com/dbt-labs/dbt/issues) and apply the `Linter` label.

@@ -161,7 +161,7 @@ By default, `dbt deps` "pins" each package. See ["Pinning packages"](#pinning-pa
 
 ### Internally hosted tarball URL
 
-Some organizations have security requirements to pull resources only from internal services. To address the need to install packages from hosted environments such as Artifactory or cloud storage buckets, <Constant name="core" /> enables you to install packages from internally-hosted tarball URLs. 
+Some organizations have security requirements to pull resources only from internal services. To address the need to install packages from hosted environments such as Artifactory or cloud storage buckets, dbt enables you to install packages from internally-hosted tarball URLs. 
 
 
 ```yaml
@@ -179,7 +179,7 @@ Where `name: 'dbt_utils'` specifies the subfolder of `dbt_packages` that's creat
 Native private packages let you install packages from [supported](#prerequisites) private <Constant name="git" /> repos using the `private` key, without having to configure a [token](#git-token-method) or write out a full Git URL. This simplifies setup and reduces credential management.
 
 - <Constant name="dbt_platform" />: Uses your existing <Constant name="git" /> [integration](/docs/platform/git/configure-git) for authentication.
-- Locally using <Constant name="fusion" /> or <Constant name="core" /> v1.12+: Uses your system's SSH configuration. Requires the [`provider` key](#using-the-provider-key).
+- Locally using <Constant name="fusion" /> or <Constant name="dbt" /> v1.12+: Uses your system's SSH configuration. Requires the [`provider` key](#using-the-provider-key).
 
 #### Prerequisites
 
@@ -189,7 +189,7 @@ Native private packages let you install packages from [supported](#prerequisites
     - Use the `org/project/repo` path with the `ado` provider.
   - **[GitLab](/docs/platform/git/connect-gitlab)**
     - Every GitLab repo with private packages must also be a <Constant name="dbt_platform" /> project.
-- **Locally using <Constant name="fusion" /> or <Constant name="core" /> v1.12+**: You must have an SSH key configured on your machine for the relevant Git provider and include the [`provider` key](#using-the-provider-key) in your package configuration.
+- **Locally using <Constant name="fusion" /> or <Constant name="dbt" /> v1.12+**: You must have an SSH key configured on your machine for the relevant Git provider and include the [`provider` key](#using-the-provider-key) in your package configuration.
 
 #### Configuration
 
@@ -258,9 +258,9 @@ packages:
 #### Using the `provider` key
 
 Add the `provider` key when:
-- You are using multiple <Constant name="git" /> integrations or using the <Constant name="fusion_engine" />.
+- You are using multiple <Constant name="git" /> integrations or using <Constant name="fusion_engine" />.
 - You are using <Constant name="fusion" /> locally (with the [<Constant name="fusion" /> CLI](/docs/local/install-dbt?version=2) or the [VS Code extension](/docs/local/install-dbt?version=2)) (required).
-- You are using <Constant name="core" /> v1.12 or later for SSH-based cloning (required).
+- You are using <Constant name="dbt" /> v1.12 or later for SSH-based cloning (required).
 
 ```yaml
 packages:
@@ -426,7 +426,7 @@ There are a few specific use cases where we recommend using a "local" package:
 ## What packages are available?
 To see the library of published dbt packages, check out the [dbt package hub](https://hub.getdbt.com)!
 
-## Fusion package compatibility
+## dbt v2 package compatibility
 
 import FusionSupportedPackages from '/snippets/_fusion-supported-packages.md';
 
@@ -446,7 +446,7 @@ When you remove a package from your `packages.yml` file, it isn't automatically 
 Running [`dbt deps`](/reference/commands/deps) "pins" each package by creating or updating the `package-lock.yml` file in the _project_root_ where `packages.yml` is recorded. 
 
 - The `package-lock.yml` file contains a record of all packages installed.
-- If subsequent `dbt deps` runs contain no changes to `dependencies.yml` or `packages.yml`, dbt-core installs from `package-lock.yml`. 
+- If subsequent `dbt deps` runs contain no changes to `dependencies.yml` or `packages.yml`, dbt installs from `package-lock.yml`. 
 
 For example, if you use a branch name, the `package-lock.yml` file pins to the head commit. If you use a version range, it pins to the latest release. In either case, subsequent commits or versions will **not** be installed. To get new commits or versions, run `dbt deps --upgrade` or add `package-lock.yml` to your .gitignore file.
 

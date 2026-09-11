@@ -42,7 +42,7 @@ For in-progress steps, <Constant name="dbt_platform" /> only displays the tail o
 
 <VersionBlock lastVersion="1.99">
 
-When a job on the <Constant name="core" /> engine finishes, selecting a step opens the **System logs**. At the top, a summary shows how many errors, warnings, deprecations, skips, and successes appear in that step’s output.
+When a job on <Constant name="core" /> finishes, selecting a step opens the **System logs**. At the top, a summary shows how many errors, warnings, deprecations, skips, and successes appear in that step’s output.
 
 <Lightbox src="/img/docs/dbt-platform/deployment/system-logs.png" width="80%" title="System logs summary" />
 
@@ -56,7 +56,7 @@ To verify the actual count, use the up and down buttons on each status to naviga
 
 <VersionBlock firstVersion="2.0">
 
-When a job on the <Constant name="fusion_engine" /> finishes, selecting a step displays a structured logs view showing the status of each resource. Nodes are classified into the following categories, and you can expand each node to view its log details:
+When a job on <Constant name="fusion_engine" /> finishes, selecting a step displays a structured logs view showing the status of each resource. Nodes are classified into the following categories, and you can expand each node to view its log details:
 - **Success**
 - **Reused**
 - **Failed**
@@ -65,9 +65,9 @@ When a job on the <Constant name="fusion_engine" /> finishes, selecting a step d
 - **Skipped**
 - **No-op**
 
-For more information about each status, refer to [Fusion telemetry and observability](/reference/telemetry-observability#node-outcome).
+For more information about each status, refer to [dbt v2 telemetry and observability](/reference/telemetry-observability#node-outcome).
 
-<Lightbox src="/img/docs/dbt-platform/deployment/fusion-logs.png" width="80%" title="Structured logs in Fusion" />
+<Lightbox src="/img/docs/dbt-platform/deployment/fusion-logs.png" width="80%" title="Structured logs in v2" />
 
 </VersionBlock>
 

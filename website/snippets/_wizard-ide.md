@@ -129,13 +129,13 @@ Instead of hanging or showing a generic error, the agent returns a clear message
 
 You can then choose whether to retry the command, narrow the request, or take another action.
 
-### Fusion migration workflow {#fusion-migration-workflow}
+### dbt v2 migration workflow {#fusion-migration-workflow}
 
 import FusionMigrationWorkflow from '/snippets/_fusion-migration-workflow.md';
 
 <FusionMigrationWorkflow />
 
-For more on how to prepare your project for <Constant name="fusion" /> and what to do when you hit compatibility errors, see the [dbt v2 readiness checklist](/docs/dbt/dbt-readiness) and the [Upgrade to Fusion guides](/guides/prepare-v2-upgrade).
+For more on how to prepare your project for <Constant name="fusion" /> and what to do when you hit compatibility errors, see the [dbt v2 readiness checklist](/docs/dbt/dbt-readiness) and the [Upgrade to dbt v2 guides](/guides/prepare-v2-upgrade).
 
 ### Writing effective prompts
 
