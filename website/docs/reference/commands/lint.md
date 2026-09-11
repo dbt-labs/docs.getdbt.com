@@ -49,7 +49,7 @@ dbt lint [FILE] [flags]
 
 ## Jinja render modes
 
-Before `dbt lint` can check a model, it must render your Jinja-templated SQL into plain SQL. The `jinja_render_mode` setting controls how it renders, and the mode you choose changes which violations you see.
+Before `dbt lint` can check a model, it must render your Jinja-templated SQL into plain SQL. The `jinja_render_mode` setting controls how it renders, and the mode you choose changes which violations you see:
 
 | Mode | How it handles Jinja | When to use it |
 |------|----------------------|----------------|
@@ -57,7 +57,7 @@ Before `dbt lint` can check a model, it must render your Jinja-templated SQL int
 | `rendered` | Executes your Jinja against parse-time stub values. Introspective adapter calls return empty results with no signal that the values aren't real, so a loop over `adapter.get_columns_in_relation(this)` renders zero iterations and can produce SQL your project would never run. | Compare it against `symbolic` when you're investigating an unexpected violation. |
 | `turbo` | Never executes your Jinja. It reads the template syntactically, keeps the literal SQL you wrote, and replaces every `{{ ... }}` expression with a placeholder. | Use it when rendering is too slow or fails outright on a model. It's the fastest mode, but it can't see anything a macro generates. |
 
-### Setting the render mode
+### Set the render mode
 
 Set the mode for a single run with `--jinja-render-mode`. The flag works with both `dbt lint` and `dbt format`:
 
