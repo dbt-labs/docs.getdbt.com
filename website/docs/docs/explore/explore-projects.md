@@ -70,7 +70,7 @@ When using global navigation and searching across your projects, the following p
 
 | Feature | Starter | Enterprise | Enterprise+ |
 |---------|:-------:|:----------:|:-----------:|
-| <Constant name="core" /> lineage & resource browsing | ✅ | ✅ | ✅ |
+| dbt lineage & resource browsing | ✅ | ✅ | ✅ |
 | [Global navigation](/docs/explore/global-navigation) | ✅ | ✅ | ✅ |
 | [Data health signals](/docs/explore/data-health-signals) | ✅ | ✅ | ✅ |
 | [Model performance](/docs/explore/model-performance) | ❌ | ✅ | ✅ |

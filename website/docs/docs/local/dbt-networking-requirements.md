@@ -2,7 +2,7 @@
 title: "dbt v2 networking requirements"
 id: "dbt-networking-requirements"
 sidebar_label: "v2 networking requirements"
-description: "Outbound network access requirements for the dbt Fusion engine, including adapter drivers, telemetry, and manifest downloads."
+description: "Outbound network access requirements for dbt v2, including adapter drivers, telemetry, and manifest downloads."
 
 ---
 
@@ -53,7 +53,7 @@ When you assemble a bundle for air-gapped or firewall-restricted machines:
 2. Verify the binary against its published SHA-256 checksum before distributing it. Refer to [Verify binaries for manual and air-gapped installs](/docs/dbt-versions/dbt-version-compatibility#verify-binaries-for-manual-and-air-gapped-installs).
 3. Point the dbt VS Code extension at the bundled binary with the `dbt.fusionPath` setting. Refer to [dbt extension settings](/docs/configure-dbt-extension#dbt-extension-settings).
 
-For supported adapters, refer to [Fusion requirements](/docs/dbt/supported-features#requirements).
+For supported adapters, refer to [v2 requirements](/docs/dbt/supported-features#requirements).
 
 ## Telemetry {#telemetry}
 

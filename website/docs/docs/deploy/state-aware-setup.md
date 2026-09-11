@@ -32,7 +32,7 @@ import FusionLifecycle from '/snippets/_fusion-lifecycle-callout.md';
 To use state-aware orchestration, make sure you meet these prerequisites:
 
 - You must have a <Constant name="dbt" /> [Enterprise and Enterprise+ accounts](https://www.getdbt.com/signup/) and a [Developer seat license](/docs/platform/manage-access/seats-and-users).
-- You have updated the environment that will run state-aware orchestration to the <Constant name="fusion_engine" />. For more information, refer to [Upgrading to <Constant name="fusion_engine" />](/docs/dbt-versions/dbt-upgrade/upgrading-to-v2).
+- You have updated the environment that will run state-aware orchestration to <Constant name="fusion_engine" />. For more information, refer to [Upgrading to <Constant name="fusion_engine" />](/docs/dbt-versions/dbt-upgrade/upgrading-to-v2).
 - Your account must have access to state-aware orchestration. Contact your account manager to request access.
 - You must have a dbt project connected to a [data platform](/docs/platform/connect-data-platform/about-connections).
 - You must have [access permission](/docs/platform/manage-access/about-user-access) to view, create, modify, or run jobs.
@@ -53,7 +53,7 @@ Once your account has access to state-aware orchestration, any new deploy job yo
 ## Create a job
 
 :::info New jobs are state-aware by default
-For existing jobs, select **Enable Fusion cost optimization features** in the **Job settings** page to enable state-aware orchestration.
+For existing jobs, select **Enable dbt v2 cost optimization features** in the **Job settings** page to enable state-aware orchestration.
 :::
 
 To create a state-aware job:
@@ -70,7 +70,7 @@ To create a state-aware job:
 - **Execution settings** section:
      - **Commands**: By default, it includes the `dbt build` command. Click **Add command** to add more [commands](/docs/deploy/job-commands) that you want to be invoked when the job runs.
      - **Generate docs on run**: Enable this option if you want to [generate project docs](/docs/build/documentation) when this deploy job runs.
-     - **Enable Fusion cost optimization features**: Select this option to enable **State-aware orchestration**. **Efficient testing** is disabled by default. You can expand **More options** to enable or disable individual settings. 
+     - **Enable dbt v2 cost optimization features**: Select this option to enable **State-aware orchestration**. **Efficient testing** is disabled by default. You can expand **More options** to enable or disable individual settings. 
 - **Triggers** section:
     - **Run on schedule**: Run the deploy job on a set schedule.
       - **Timing**: Specify whether to [schedule](#schedule-days) the deploy job using **Intervals** that run the job every specified number of hours, **Specific hours** that run the job at specific times of day, or **Cron schedule** that run the job specified using [cron syntax](#cron-schedule).

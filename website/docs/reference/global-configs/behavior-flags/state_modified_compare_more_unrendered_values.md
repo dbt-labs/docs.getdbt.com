@@ -4,9 +4,9 @@ id: "state_modified_compare_more_unrendered_values"
 sidebar_label: "state modified compare more unrendered values"
 ---
 
-:::caution Removed in <Constant name="core_v2" />
+:::caution Removed in v2
 
-This flag was removed in <Constant name="core_v2" /> and in <Constant name="fusion" />. The new behavior is always enabled. If you're upgrading, remove this flag from your `dbt_project.yml`.
+This flag was removed in v2. The new behavior is always enabled. If you're upgrading, remove this flag from your `dbt_project.yml`.
 
 :::
 
@@ -25,7 +25,7 @@ import StateModified from '/snippets/_state-modified-compare.md';
 
 :::
 
-Starting in <Constant name="core" /> v1.12, `state_modified_compare_more_unrendered_values` defaults to `true`, reducing false positives during `state:modified` checks, especially when configs differ by target environment (such as `prod` vs. `dev`).
+Starting in dbt v1.12, `state_modified_compare_more_unrendered_values` defaults to `true`, reducing false positives during `state:modified` checks, especially when configs differ by target environment (such as `prod` vs. `dev`).
 
 The flag changes the `state:modified` comparison from using rendered values to unrendered values instead, by persisting `unrendered_config` during model parsing and `unrendered_database` and `unrendered_schema` configs during source parsing.
 

@@ -1,5 +1,5 @@
 ---
-title: "Connect Extrica to dbt Core"
+title: "Connect Extrica to dbt v1"
 sidebar_label: "Extrica"
 description: "Read this guide to learn about the Extrica Trino Query Engine setup in dbt."
 id: "extrica-setup"

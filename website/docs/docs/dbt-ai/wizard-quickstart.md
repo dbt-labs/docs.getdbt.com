@@ -37,7 +37,7 @@ Install <Constant name="wizard" /> locally and start an agentic dbt development 
 
 <VersionBlock lastVersion="1.99">
 
-:::tip Upgrade to the <Constant name="fusion_engine" />
+:::tip Upgrade to <Constant name="fusion_engine" />
 On <Constant name="fusion_engine"/> (version 2.0 and later), start <Constant name="wizard"/> with `wizard` and use `wizard COMMAND_NAME` for CLI commands.
 :::
 

@@ -4,9 +4,9 @@ id: "skip_nodes_if_on_run_start_fails"
 sidebar_label: "skip nodes if on run start fails"
 ---
 
-:::caution Removed in <Constant name="core_v2" />
+:::caution Removed in v2
 
-This flag was removed in <Constant name="core_v2" /> and in <Constant name="fusion" />. The new behavior is always enabled. If you're upgrading, remove this flag from your `dbt_project.yml`.
+This flag was removed in v2. The new behavior is always enabled. If you're upgrading, remove this flag from your `dbt_project.yml`.
 
 :::
 
@@ -20,7 +20,7 @@ This flag was removed in <Constant name="core_v2" /> and in <Constant name="fusi
 
 <br />
 
-Starting in <Constant name="core" /> v1.12, `skip_nodes_if_on_run_start_fails` defaults to `true`, skipping all selected resources if there is a failure on an `on-run-start` hook.
+Starting in <Constant name="dbt" /> v1.12, `skip_nodes_if_on_run_start_fails` defaults to `true`, skipping all selected resources if there is a failure on an `on-run-start` hook.
 
 For more information, refer to [`on-run-start` / `on-run-end`](/reference/project-configs/on-run-start-on-run-end).
 

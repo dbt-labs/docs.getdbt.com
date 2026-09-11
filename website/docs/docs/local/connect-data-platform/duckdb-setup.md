@@ -54,7 +54,7 @@ The DuckDB adapter for <Constant name="fusion" /> is in beta. Some features avai
 
 # Connect DuckDB to <Constant name="core" />
 
-<ProductCard text="Fusion compatible" url="/docs/local/connect-data-platform/duckdb-setup?version=2" /> connection also available.
+<ProductCard text="dbt v2 compatible" url="/docs/local/connect-data-platform/duckdb-setup?version=2" /> connection also available.
 
 :::info Community plugin
 

@@ -8,7 +8,7 @@ availability:
   access: login_required
 ---
 
-# Connect BigQuery <ProductCard text="Fusion compatible" />
+# Connect BigQuery <ProductCard text="dbt v2 compatible" />
 
 To see which BigQuery functions are supported in <Constant name="fusion"/> in `strict` mode, refer to [BigQuery function support](/reference/resource-configs/bigquery-function-support).
 
