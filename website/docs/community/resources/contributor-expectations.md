@@ -2,7 +2,7 @@
 title: "Expectations for dbt contributors"
 ---
 
-Whether it's `dbt-core`, adapters, packages, or this very documentation site, contributing to the open source or source-available code that supports the dbt ecosystem is a great way to share your knowledge, level yourself up as a developer, and to give back to the community. The goal of this page is to help you understand what to expect when contributing to dbt ecosystem projects.
+Whether it's `dbt-labs/dbt`, adapters, packages, or this very documentation site, contributing to the open source or source-available code that supports the dbt ecosystem is a great way to share your knowledge, level yourself up as a developer, and to give back to the community. The goal of this page is to help you understand what to expect when contributing to dbt ecosystem projects.
 
 Have you seen things in other projects that you like, and think we could learn from? [Open a discussion on the dbt Community Forum](https://discourse.getdbt.com), or start a conversation in the [dbt Community Slack](https://www.getdbt.com/community/join-the-community) (for example: `#community-strategy`, `#dbt-core-development`, `#package-ecosystem`, `#adapter-ecosystem`). We always appreciate hearing from you!
 
@@ -71,9 +71,9 @@ Comment on it! Explain that you've run into the same bug, or had a similar idea 
 
 ##### You've opened a new issue. What can you expect to happen?
 
-In our most critical repositories (such as `dbt-core`), our goal is to respond to new issues as soon as possible. This initial response will often be a short acknowledgement that the maintainers are aware of the issue, signalling our perception of its urgency. Depending on the nature of your issue, it might be well suited to an external contribution, from you or another community member.
+In our most critical repositories (such as `dbt-labs/dbt`), our goal is to respond to new issues as soon as possible. This initial response will often be a short acknowledgement that the maintainers are aware of the issue, signalling our perception of its urgency. Depending on the nature of your issue, it might be well suited to an external contribution, from you or another community member.
 
-**What if you're opening an issue in a different repository?** We have engineering teams dedicated to active maintenance of [`dbt`](https://github.com/dbt-labs/dbt-core), home to both v1 and v2. Some things to note about the `dbt-labs/dbt` repo when you're contributing:
+**What if you're opening an issue in a different repository?** We have engineering teams dedicated to active maintenance of [`dbt-labs/dbt`](https://github.com/dbt-labs/dbt), home to both v1 and v2. Some things to note about the `dbt-labs/dbt` repo when you're contributing:
 
 - v2 lives on the `main` branch
 - v1 lives on the `latest.1` branch, as well as the component libraries of v1 ([`dbt-common`](https://github.com/dbt-labs/dbt-common) + [`dbt-adapters`](https://github.com/dbt-labs/dbt-adapters) (which also includes the dbt Labs managed adapters). `dbt-adapters` applies to v1 only.
@@ -119,8 +119,8 @@ Automation labels new issues for triage — currently with both the faceted `sta
 
 **We receive more PRs than we can thoroughly review, test, and merge.** Our teams have finite capacity, and our top priority is maintaining a well-scoped, high-quality framework for the tens of thousands of people who use it every week. To that end, we must prioritize overall stability and planned improvements over a long tail of niche potential features. For best results, say what in particular you'd like feedback on, and explain what would it mean to you, your team, and other community members to have the proposed change merged. Smaller PRs tackling well-scoped issues tend to be easier and faster for review. Two examples of community-contributed PRs:
 
-- [(dbt-core#9347) Fix configuration of turning test warnings into failures](https://github.com/dbt-labs/dbt-core/pull/9347)
-- [(dbt-core#9863) Better error message when trying to select a disabled model](https://github.com/dbt-labs/dbt-core/pull/9863)
+- [(dbt-labs/dbt#9347) Fix configuration of turning test warnings into failures](https://github.com/dbt-labs/dbt/pull/9347)
+- [(dbt-labs/dbt#9863) Better error message when trying to select a disabled model](https://github.com/dbt-labs/dbt/pull/9863)
 
 **Automation that can help us:** Many repositories have a template for pull request descriptions, which will include a checklist that must be completed before the PR can be merged. You don't have to do all of these things to get an initial PR, but they will delay our review process. Those include:
 

@@ -126,7 +126,7 @@ Leave feedback or submit a feature request for <Constant name="dbt" /> or <Const
 <Lightbox src="/img/docs/leave-feedback.gif" title="Leave feedback in dbt" />
 
 #### Share feedback or feature request for <Constant name="dbt" />
-- [Create a GitHub issue here](https://github.com/dbt-labs/dbt-core/issues).
+- [Create a GitHub issue here](https://github.com/dbt-labs/dbt/issues).
 
 ## External help
 

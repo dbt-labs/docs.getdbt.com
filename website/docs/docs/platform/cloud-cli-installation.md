@@ -215,7 +215,7 @@ For data practitioners working with a self-hosted installation, this means AI as
 
 <DetailsToggle alt_header="What's the difference between the dbt platform CLI and dbt?">
 
-The <Constant name="platform_cli" /> and <a href="https://github.com/dbt-labs/dbt-core"><Constant name="dbt" /></a>, an open-source project, are both command line tools that enable you to run dbt commands. 
+The <Constant name="platform_cli" /> and <a href="https://github.com/dbt-labs/dbt"><Constant name="dbt" /></a>, an open-source project, are both command line tools that enable you to run dbt commands. 
 
 The key distinction is that the <Constant name="platform_cli" /> is tailored for the <Constant name="dbt_platform" />'s infrastructure and integrates with all its <a href="https://docs.getdbt.com/docs/platform/about-platform/dbt-platform-features">features</a>.
 

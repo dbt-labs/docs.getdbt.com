@@ -12,13 +12,13 @@ availability:
 
 ## Resources
 
-- [<Constant name="dbt" /> v1.11 changelog](https://github.com/dbt-labs/dbt-core/blob/1.11.latest/CHANGELOG.md)
+- [<Constant name="dbt" /> v1.11 changelog](https://github.com/dbt-labs/dbt/blob/1.11.latest/CHANGELOG.md)
 - [<Constant name="core" /> CLI Installation guide](/docs/local/install-dbt)
 - [dbt platform upgrade guide](/docs/dbt-versions/upgrade-dbt-platform-version#release-tracks)
 
 ## What to know before upgrading
 
-dbt Labs is committed to providing backward compatibility for all versions 1.x. Any behavior changes will be accompanied by a [behavior change flag](/reference/global-configs/behavior-changes#behavior-change-flags) to provide a migration window for existing projects. If you encounter an error upon upgrading, please let us know by [opening an issue](https://github.com/dbt-labs/dbt-core/issues/new).
+dbt Labs is committed to providing backward compatibility for all versions 1.x. Any behavior changes will be accompanied by a [behavior change flag](/reference/global-configs/behavior-changes#behavior-change-flags) to provide a migration window for existing projects. If you encounter an error upon upgrading, please let us know by [opening an issue](https://github.com/dbt-labs/dbt/issues/new).
 
 Starting in 2024, <Constant name="dbt" /> provides the functionality from new versions of <Constant name="core" /> via [release tracks](/docs/dbt-versions/dbt-release-tracks) with automatic upgrades. If you have selected the **v1 Latest** release track in <Constant name="dbt" />, you already have access to all the features, fixes, and other functionality included in the latest <Constant name="core" /> version! If you have selected the **v1 Compatible** release track, you will have access in the next monthly **v1 Compatible** release after the <Constant name="dbt" /> v1.11 final release.
 

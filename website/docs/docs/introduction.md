@@ -43,7 +43,7 @@ As a developer, dbt can:
 - Preview inline <Term id="cte">CTEs</Term> for faster debugging
 - Trace model and column definitions across your entire project
 
-Get all of this, free, in the [dbt extension for VS Code](/docs/about-dbt-extension), built on v2.
+Get all of this, free, in the [dbt extension for VS Code](/docs/about-dbt-extension), built to enhance the power of v2, but also available in v1.
 
 
 ## How to use dbt
@@ -74,7 +74,7 @@ Other ways to run self-hosted dbt:
 - [<Constant name="core_v1" />](/docs/local/install-dbt?version=1.0): The original Python-based CLI. 
 - [dbt OSS](/docs/local/install-dbt-v2):  The free, fully open-source (Apache 2.0) distribution of the new Rust-based dbt engine. Typically for organizations with a strict requirement to use this OSS runtime.
 
-To contribute to the open-source project, refer to the [GitHub repo](https://github.com/dbt-labs/dbt-core).
+To contribute to the open-source project, refer to the [GitHub repo](https://github.com/dbt-labs/dbt).
 
 ## Why use dbt
 
