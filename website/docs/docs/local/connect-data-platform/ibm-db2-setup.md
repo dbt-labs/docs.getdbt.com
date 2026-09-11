@@ -1,5 +1,5 @@
 ---
-title: "Connect IBM Db2 to dbt Core"
+title: "Connect IBM Db2 to dbt v1"
 sidebar_label: "IBM Db2"
 description: "Read this guide to learn about the IBM Db2 setup in dbt."
 id: "ibm-db2-setup"
@@ -218,6 +218,6 @@ Db2 uppercases unquoted identifiers by default. The adapter handles this automat
 ## Notes
 
 - The `ibm-dbt-db2` adapter is built on the `ibm_db` Python driver (version 3.2.8) which is automatically installed with the adapter.
-- **Python Version Requirements**: Requires Python 3.10, 3.11, or 3.12. Python 3.9 is not supported due to <Constant name="core" /> v1.11+ dependency requirements. Python 3.13+ has not been tested yet.
+- **Python Version Requirements**: Requires Python 3.10, 3.11, or 3.12. Python 3.9 is not supported due to <Constant name="dbt" /> v1.11+ dependency requirements. Python 3.13+ has not been tested yet.
 - **Constraints**: CHECK, UNIQUE, PRIMARY KEY, and FOREIGN KEY constraints are defined but not enforced by Db2 in the dbt context. Only NOT NULL constraints are enforced.
 - **LISTAGG Limitation**: Db2's LISTAGG function does not support limiting the number of aggregated values.

@@ -33,7 +33,7 @@ selectors:
 
 <VersionBlock firstVersion="1.12">
 
-Starting in <Constant name="core" /> v1.12, you can reference a named selector from `--select` or `--exclude` using the [`selector` method](/reference/node-selection/methods#selector) (for example, `selector:my_selector`).
+Starting in <Constant name="dbt" /> v1.12, you can reference a named selector from `--select` or `--exclude` using the [`selector` method](/reference/node-selection/methods#selector) (for example, `selector:my_selector`).
 
 </VersionBlock>
 
@@ -362,7 +362,7 @@ For additional examples, check out [this GitHub Gist](https://gist.github.com/je
 
 ## Using `selector:` with `--select`
 
-Starting in <Constant name="core" /> v1.12, dbt raises `SelectExcludeIgnoredWithSelectorWarning` when the legacy `--selector` flag is combined with `--select` or `--exclude`. Use the [`selector:` method](/reference/node-selection/methods#selector) directly with `--select` to reference a predefined selector alongside other selection criteria.
+Starting in <Constant name="dbt" /> v1.12, dbt raises `SelectExcludeIgnoredWithSelectorWarning` when the legacy `--selector` flag is combined with `--select` or `--exclude`. Use the [`selector:` method](/reference/node-selection/methods#selector) directly with `--select` to reference a predefined selector alongside other selection criteria.
 
 For example: 
 

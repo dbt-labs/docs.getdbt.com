@@ -18,7 +18,7 @@ Cost Insights shows estimated costs and compute time for your dbt projects and m
 
 <SaoDeprecated />
 
-[dbt State](/docs/deploy/dbt-state-about) and [state-aware orchestration](/docs/deploy/state-aware-about) make your dbt workflows more efficient by reusing models and tests instead of running full rebuilds. When either is enabled, Cost Insights helps you demonstrate the resulting cost reductions and efficiency gains. These cost and cost reduction estimates are based on a retroactive analysis of runs after you enable <Constant name="fusion" /> and dbt State or state-aware orchestration. They reflect actual historical usage, _not_ forecasts of future costs or cost reductions.
+[dbt State](/docs/deploy/dbt-state-about) and [state-aware orchestration](/docs/deploy/state-aware-about) make your dbt workflows more efficient by reusing models and tests instead of running full rebuilds. When either is enabled, Cost Insights helps you demonstrate the resulting cost reductions and efficiency gains. These cost and cost reduction estimates are based on a retroactive analysis of runs after you enable dbt State or state-aware orchestration. They reflect actual historical usage, _not_ forecasts of future costs or cost reductions.
 
 With Cost Insights, you can see:
 

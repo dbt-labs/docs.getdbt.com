@@ -1,0 +1,62 @@
+# Denylist — identifiers that CONTAIN a rename term but MUST NOT be text-replaced.
+# scan.py classes any occurrence whose match falls inside one of these (or whose
+# line matches one of the regexes) as `denylisted` and excludes it from all edits.
+# verify.py asserts each of these still exists at its original count after a run.
+
+# --- Literal identifiers ---------------------------------------------------
+literals:
+  # CI / bot plumbing — silently breaks the weekly function-gap issue bot
+  - "FUSION_REPO_TOKEN"
+  - "FUSION_ISSUES_TOKEN"
+  - "FUSION_REPO"
+  - "dbt-labs/fs"
+  - "dbt-labs/dbt-fusion"
+  - "CHANGELOG-fusion.md"
+  # Release tracks / config / API values
+  - "fusion-stable"
+  - "fusion-nightly"
+  - "fusion_cloud"
+  - "dbt.fusionPath"
+  - "is_fusion_ready"
+  - "fusion_readiness_read"
+  # AvailabilityMatrix row key — column renders blank if renamed
+  - "fusion:"
+  # Build plugin wiring — usePluginData() returns undefined if renamed
+  - "docusaurus-build-fusion-releases-plugin"
+  - "buildFusionReleases"
+  - "fusionReleases"
+  # Real product/permission names
+  - "Fusion admin"
+  # Slack channel + asset paths.
+  # NOTE: backticks are load-bearing. The bare string "#dbt-fusion-engine" also
+  # matches URL fragments (`...upgrade-dbt-platform-version#dbt-fusion-engine`),
+  # which ARE renameable — a rename PR must move link anchors onto the new text
+  # rather than preserve retired ones. The channel name is always backticked.
+  - "`#dbt-fusion-engine`"
+  - "/img/fusion/"
+  # Third-party — NOT our product
+  - "DataFusion"
+  - "Apache DataFusion"
+
+# --- JSX / component identifiers (import failures / build breaks) ----------
+components:
+  - "FusionLifecycle"
+  - "AboutFusion"
+  - "FusionThreads"
+  - "FusionReadinessPanel"
+  - "fusionReleases"
+
+# --- Regex denylist (matched against the whole line) -----------------------
+# Anything structural: code fences handled by scan.py directly; these catch
+# inline identifiers the literal list can't enumerate.
+regex:
+  - "_fusion[-_][a-z0-9-]+\\.md"      # _fusion-troubleshooting.md, etc.
+  - "core[-_]v2"                       # core-v2 slugs / keys
+  - "https?://\\S*fusion"              # any URL containing fusion
+  - "\\bconfusion\\b"                  # word-level trap
+  # Compound identifiers — lowercase "fusion" glued into a token (link text, repo
+  # names, HTTP headers, slugs). Case-SENSITIVE so prose "Fusion-specific" is unaffected.
+  - "[A-Za-z0-9]-fusion"               # dbt-fusion, x-dbt-fusion, brooklyn-.../dbt-fusion-…
+  - "fusion-[a-z0-9]"                  # fusion-devcontainer, fusion-stable, …
+  - "fusion[#/]"                        # dbt-fusion#123 link text, fusion/ paths
+  - "fusion_[a-z]"                      # fusion_cloud, fusion_engine attr values

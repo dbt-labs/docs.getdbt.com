@@ -1,7 +1,7 @@
 ---
 title: "dbt State usage examples"
 sidebar_label: "dbt State examples"
-description: "Side-by-side dbt Core and dbt Core with dbt State execution scenarios using the Jaffle Shop project."
+description: "Side-by-side standalone local dbt execution and local dbt with dbt State execution scenarios using the Jaffle Shop project."
 id: "dbt-state-examples"
 tags: ['dbt State']
 pagination_prev: "docs/deploy/dbt-state-deferral"
@@ -21,7 +21,7 @@ The following examples use this [Jaffle Shop project](https://github.com/dbt-lab
 
 <Lightbox src="/img/docs/dbt-state/dbt_state_dag.png" title="The Jaffle Shop DAG" />
 
-Each of the following scenarios shows how a run differs between <Constant name="core" /> alone and <Constant name="core" /> with dbt State, using the same command and project.
+Each of the following scenarios shows how a run differs between <Constant name="dbt" /> alone and <Constant name="dbt" /> with dbt State, using the same command and project.
 
 | Scenario | Command | What dbt State changes |
 | --- | --- | --- |
