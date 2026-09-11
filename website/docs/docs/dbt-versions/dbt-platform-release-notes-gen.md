@@ -25,11 +25,6 @@ Release notes are grouped by date for single-tenant environments.
 
 ## New
 
-### dbt Copilot and agents
-
-- **Lag tolerance recommendations**: The dbt State home page now includes a lag tolerance recommendations table showing which models could safely tolerate more lag along with projected 30-day compute savings. The table is searchable, filterable, and paginated, with columns for model name, project, current lag, recommended lag, percentage of time saved, and projected savings. Contact your account manager to enable.
-  <!-- PRs: `https://github.com/dbt-labs/dbt-ui/pull/1568`, `https://github.com/dbt-labs/codex-api/pull/1516` -->
-
 ### Catalog
 
 - **Column counts in the models table**: The models table in Catalog navigation now shows a column count for each model, sourced from catalog data.
@@ -37,21 +32,10 @@ Release notes are grouped by date for single-tenant environments.
 
 ## Enhancements
 
-### dbt Copilot and agents
-
-- **DeepSeek and Kimi logos in model picker**: The AI model picker now shows brand logos for DeepSeek and Kimi (Moonshot AI) models instead of a generic fallback icon, making it easier to identify the active model provider.
-  <!-- PRs: `https://github.com/dbt-labs/dbt-ui/pull/1571` -->
-
-- **Wizard spend limit of $0**: You can now set a $0 spend limit on the dbt Wizard add-on to block all paid usage. A $0 limit locks paid usage on the first billable cent while still allowing free grant usage.
-  <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pull/19033` -->
-
 ### Studio IDE
 
 - **Clearer missing credentials prompt**: Studio IDE now detects missing development credentials at startup and shows a "Development Credentials Required" modal with a direct link to add credentials, instead of failing silently.
   <!-- PRs: `https://github.com/dbt-labs/dbt-ui/pull/1478` ✅-->
-
-- **File search no longer hangs on oversized output**: File search requests that produce more than 10 MiB of output in a single record now terminate gracefully and return a clear error message advising you to narrow the search path or exclude large generated files.
-  <!-- PRs: `https://github.com/dbt-labs/ide-server/pull/1496` -->
 
 ### Catalog
 
@@ -65,11 +49,8 @@ Release notes are grouped by date for single-tenant environments.
 
 ### dbt platform
 
-- **Automatic email verification**: The email verification page now automatically sends a verification email to existing unverified users when the page loads, removing the need to manually click a button.
-  <!-- PRs: `https://github.com/dbt-labs/dbt-ui/pull/1473` -->
-
 - **Analytics connection visible to read-only users**: Read-only users can now see their assigned analytics connection in project settings instead of "Not configured."
-  <!-- PRs: `https://github.com/dbt-labs/dbt-ui/pull/1510` -->
+  <!-- PRs: `https://github.com/dbt-labs/dbt-ui/pull/1510` ✅-->
 
 - **dbt Wizard overage email notifications**: Account admins now receive automated email notifications when dbt Wizard usage credits are exhausted, with separate notifications for accounts without a consumption commitment and accounts whose commitment is spent.
   <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pull/19004` ✅-->
@@ -93,9 +74,6 @@ Release notes are grouped by date for single-tenant environments.
 
 - **Corrected Azure DevOps account linking error**: Fixes swapped exception handlers for missing Azure DevOps (ADO) account linking. The error message now reads "Missing Azure user; link your Azure DevOps account in your personal profile" to guide you to the correct remediation step.
   <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pull/19047` ✅-->
-
-- **Clearer invalid profile name error**: The error message for invalid profile names now reads "Profile name cannot contain spaces or special characters. Use dashes or underscores to separate words. For example, profile-name." This replaces the previous message that referenced "profile keys" and omitted underscores as a valid separator.
-  <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pull/19063` -->
 
 ## Behavior change
 
