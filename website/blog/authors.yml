@@ -557,10 +557,10 @@ simon_podhajsky:
   page: true
 stephen_thibeault:
   name: Stephen Thibeault
-  title: ""  # TODO
-  image_url: /img/blog/authors/stephen-thibeault.png  # TODO
+  title: Senior Resident Architect 
+  image_url: /img/blog/authors/stephen-thibeault.png  
   socials:
-    linkedin: ""  # TODO
+    linkedin: stephen-thibeault-62841789
   page: true
 sterling_paramore:
   description: |
