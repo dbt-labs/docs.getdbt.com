@@ -256,6 +256,8 @@ If you need to reprocess historical data, we recommend using a targeted backfill
 dbt run --full-refresh --event-time-start "2024-01-01" --event-time-end "2024-02-01"
 ```
 
+Because the end is exclusive, this reprocesses all of January 2024 and nothing in February. Refer to [Backfills](#backfills) for more on how the range is divided into batches.
+
 ## Usage
 
 **You must write your model query to process (read and return) exactly one "batch" of data**. This is a simplifying assumption and a powerful one:
@@ -288,7 +290,17 @@ As always, dbt will process the batches between the start and end as independent
 dbt run --event-time-start "2024-09-01" --event-time-end "2024-09-04"
 ```
 
-<Lightbox src="/img/docs/building-a-dbt-project/microbatch/microbatch_backfill.png" title="Configure a lookback to reprocess additional batches during standard incremental runs"/>
+`--event-time-start` is inclusive and `--event-time-end` is exclusive, so the command above processes three daily batches &mdash; September 1, 2, and 3 &mdash; and doesn't touch September 4. To backfill through the end of a day, pass the start of the next one.
+
+| Batch | Rows processed |
+| ----- | -------------- |
+| 1 | `event_time >= '2024-09-01' and event_time < '2024-09-02'` |
+| 2 | `event_time >= '2024-09-02' and event_time < '2024-09-03'` |
+| 3 | `event_time >= '2024-09-03' and event_time < '2024-09-04'` |
+
+An `--event-time-end` that falls partway through a batch is rounded up to the end of that batch, so `--event-time-end "2024-09-04 09:00"` with `batch_size: day` processes all of September 4 rather than only the first nine hours.
+
+<Lightbox src="/img/docs/building-a-dbt-project/microbatch/microbatch_backfill.png" title="Backfill a range of batches with --event-time-start and --event-time-end"/>
 
 ## Retry
 
