@@ -35,7 +35,7 @@ The **State** tab also displays the following charts:
 
 ## Lag tolerance recommendations
 
-The **dbt State** page includes a **Lag tolerance recommendations** section that identifies models that could safely tolerate more lag, letting dbt State skip more runs and save additional compute.
+The **dbt State** page, which you can access from the left-side menu of the <Constant name="dbt_platform" />, includes a **Lag tolerance recommendations** section that identifies models that could safely tolerate more lag, letting dbt State skip more runs and save additional compute.
 
 The recommendations table displays the following columns:
 
@@ -45,7 +45,7 @@ The recommendations table displays the following columns:
 | **Model name** | The name of the model that could benefit from a higher `lag_tolerance` value. |
 | **Project** | The dbt project the model belongs to, as set by `name:` in `dbt_project.yml`. This may differ from the project name in the <Constant name="dbt_platform" />. |
 | **Current lag** | The model's current `lag_tolerance` setting. |
-| **Recommended lag** | The `lag_tolerance` value dbt State recommends based on observed upstream data refresh patterns. |
+| **Recommended lag** | The `lag_tolerance` value dbt State recommends based on your model's 30-day build history. |
 | **% time saved** | The estimated percentage of build time you'd save by applying the recommended `lag_tolerance`. |
 | **Projected 30d time savings** | The estimated build time you could save over the next 30 days by applying the recommended `lag_tolerance`, based on redundant builds in the previous 30 days. This estimate includes only this model, so actual savings may be higher if downstream models also do not rebuild.|
 </SimpleTable>
