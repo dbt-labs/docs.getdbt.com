@@ -8,7 +8,7 @@ authors: [stephen_thibeault]
 tags: [ai, context engineering, data ecosystem]
 hide_table_of_contents: false
 
-date: 2026-09-13
+date: 2026-09-16
 is_featured: true
 ---
 
