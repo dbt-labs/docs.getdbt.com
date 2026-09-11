@@ -30,7 +30,7 @@ unit_tests:
       meta: {dictionary}
       tags: <string> | [<string>]
       enabled: {boolean} # optional. v1.9 or higher. If not configured, defaults to `true`
-      compute: local | remote # optional. v2.0 or higher. Defaults to `remote`. See [Run unit tests locally](/docs/build/unit-tests#run-unit-tests-locally)
+      compute: local | remote # optional. v2.0 or higher. Defaults to `remote`. `local`in beta and requires DBT_ENGINE_EXPERIMENTAL_LOCAL_UNIT_TESTS=true. See [Run unit tests locally](/docs/build/unit-tests#run-unit-tests-locally)
     given:
       - input: <ref_or_source_call> # optional for seeds
         format: dict | csv | sql
