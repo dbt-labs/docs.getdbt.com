@@ -13,7 +13,7 @@ Whether you currently use <Constant name="dbt_platform" /> or self-host dbt, fol
 <!-- no toc -->
 - [Prepare your local setup](#prepare-your-local-setup)
 - [Set environment variables locally](#set-environment-variables-locally)
-- [Configure the dbt extension](#configure-the-dbt-extension)
+- [Configure the dbt extension](#configure-in-the-vs-code-extension-settings)
 
 If you're new to dbt or getting started with a new project, you can skip this page and check out our [Quickstart for dbt v2](/guides/dbt?step=1) to get started with the dbt extension.
 

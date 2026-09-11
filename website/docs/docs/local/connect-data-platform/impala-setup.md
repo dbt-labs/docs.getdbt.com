@@ -41,7 +41,7 @@ The default mechanism is `binary`. To use HTTP transport, use the boolean option
 dbt-impala supports three authentication mechanisms:
 - [`insecure`](#Insecure) No authentication is used, only recommended for testing.
 - [`ldap`](#ldap) Authentication via LDAP
-- [`kerbros`](#kerbros) Authentication via Kerberos (GSSAPI)
+- [`kerbros`](#kerberos) Authentication via Kerberos (GSSAPI)
 
 ### Insecure
 

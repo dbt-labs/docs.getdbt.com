@@ -49,13 +49,13 @@ import ConsiderationsTableau from '/snippets/_auto-exposures-considerations-tb.m
 
 ## Set up downstream exposures
 
-Set up downstream exposures in [Tableau](#set-up-in-tableau) and [<Constant name="dbt" />](#set-up-in-dbt-cloud) to ensure that your BI tool's extracts are updated automatically.
+Set up downstream exposures in [Tableau](#set-up-in-tableau) and [<Constant name="dbt" />](#set-up-in-dbt) to ensure that your BI tool's extracts are updated automatically.
 
 ### Set up in Tableau
 
 This section explains the steps to configure the integration in Tableau. A Tableau site admin must complete these steps. 
 
-Once configured in both Tableau and [<Constant name="dbt" />](#set-up-in-dbt-cloud), you can [view downstream exposures](#view-downstream-exposures) in <Constant name="catalog" />. 
+Once configured in both Tableau and [<Constant name="dbt" />](#set-up-in-dbt), you can [view downstream exposures](#view-downstream-exposures) in <Constant name="catalog" />. 
 
 1. Enable [personal access tokens (PATs)](https://help.tableau.com/current/server/en-us/security_personal_access_tokens.htm) for your Tableau account.
    <Lightbox src="/img/docs/platform-integrations/auto-exposures/tableau-enable-pat.jpg" title="Enable PATs for the account in Tableau"/>

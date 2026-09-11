@@ -79,7 +79,7 @@ When a table is deleted in the warehouse:
 
 This behavior ensures consistency between the dbt state and the actual warehouse state. It also reduces the need to manually clear cache or disable state-aware orchestration when models are modified outside of dbt.
 
-## Efficient testing in state-aware orchestration <Lifecycle status="private_beta" />
+## Efficient testing in state-aware orchestration<Lifecycle status="private_beta" />
 
 :::info Private beta feature
 State-aware orchestration features in the <Constant name="dbt_platform" /> are only available in <Constant name="fusion" />. Contact your account manager to enable <Constant name="fusion" /> in your account. 

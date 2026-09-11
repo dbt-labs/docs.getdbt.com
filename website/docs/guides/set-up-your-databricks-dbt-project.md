@@ -66,7 +66,7 @@ Let’s [create a Databricks SQL warehouse](https://docs.databricks.com/sql/admi
 6. Click **Create**.
 7. Configure warehouse permissions to ensure our service principal and developer have the right access.
 
-We are not covering python in this post but if you want to learn more, check out these [docs](/docs/build/python-models#specific-data-platforms). Depending on your workload, you may wish to create a larger SQL Warehouse for production workflows while having a smaller development SQL Warehouse (if you’re not using Serverless SQL Warehouses). As your project grows, you might want to apply [compute per model configurations](/reference/resource-configs/databricks-configs#specifying-the-compute-for-models). 
+We are not covering python in this post but if you want to learn more, check out these [docs](/docs/build/python-models#python-specific-functionality). Depending on your workload, you may wish to create a larger SQL Warehouse for production workflows while having a smaller development SQL Warehouse (if you’re not using Serverless SQL Warehouses). As your project grows, you might want to apply [compute per model configurations](/reference/resource-configs/databricks-configs#specifying-the-compute-for-models). 
 
 ## Configure your dbt project
 
@@ -108,12 +108,12 @@ Let’s set up our deployment environment:
 1. Follow the Databricks instructions to [set up your service principal’s token](https://docs.databricks.com/dev-tools/service-principals.html#use-curl-or-postman). Note that the `lifetime_seconds` will define how long this credential stays valid. You should use a large number here to avoid regenerating tokens frequently and production job failures.
 2. Now let’s pop back over to <Constant name="dbt" /> to fill out the environment fields. Click on environments in the <Constant name="dbt" /> UI or define a new target in your profiles.yml.
 3. Set the Production environment’s *catalog* to the **prod** catalog created above. Provide the [service token](https://docs.databricks.com/administration-guide/users-groups/service-principals.html#manage-access-tokens-for-a-service-principal) for your **prod** service principal and set that as the *token* in your production environment’s deployment credentials.
-4. Set the schema to the default for your prod environment. This can be overridden by [custom schemas](/docs/build/custom-schemas#what-is-a-custom-schema) if you need to use more than one.
+4. Set the schema to the default for your prod environment. This can be overridden by [custom schemas](/docs/build/custom-schemas#understanding-custom-schemas) if you need to use more than one.
 5. Provide your Service Principal token.
 
 ## Connect dbt to your git repository
 
-Next, you’ll need somewhere to store and version control your code that allows you to collaborate with teammates. Connect your dbt project to a git repository with [<Constant name="dbt" />](/guides/databricks#set-up-a-dbt-cloud-managed-repository). [<Constant name="core" />](/guides/manual-install#create-a-repository) projects will use the git CLI.
+Next, you’ll need somewhere to store and version control your code that allows you to collaborate with teammates. Connect your dbt project to a git repository with [<Constant name="dbt" />](/guides/databricks#set-up-a-dbt-managed-repository). [<Constant name="core" />](/guides/manual-install#create-a-repository) projects will use the git CLI.
 
 ### Next steps
 

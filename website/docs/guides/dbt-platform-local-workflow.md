@@ -25,7 +25,7 @@ This guide walks through credentials, environment variables, <Constant name="fus
 ## 1. Managing credentials
 
 How you authenticate to your data warehouse locally depends on which self-hosted tool you use:
-- [dbt platform CLI](/guides/dbt-platform-local-workflow?step=3#dbt-platform-cli): For a CLI-only development experience (without the dbt VS Code extension), use the <Constant name="platform_cli" /> with <Constant name="fusion"/> set as your platform release track. Warehouse credentials are managed centrally in <Constant name="dbt_platform" /> and passed through automatically &mdash; no `profiles.yml` required.
+- [dbt platform CLI](/guides/dbt-platform-local-workflow?step=3#1-managing-credentials): For a CLI-only development experience (without the dbt VS Code extension), use the <Constant name="platform_cli" /> with <Constant name="fusion"/> set as your platform release track. Warehouse credentials are managed centrally in <Constant name="dbt_platform" /> and passed through automatically &mdash; no `profiles.yml` required.
 - [dbt VS Code extension](/guides/dbt-platform-local-workflow?step=3#dbt-vs-code-extension-profilesyml-required): For IDE-based local development, the dbt VS Code extension runs <Constant name="fusion_engine" /> and its <Term id="lsp" /> features in a local process. This path requires a `profiles.yml` to connect directly to your warehouse.
 
 ### <Constant name="platform_cli" />

@@ -238,7 +238,7 @@ Some noteworthy improvements include autocomplete snippets for SQL and YAML file
 
 ### Model timing for Multi-tenant Team and Enterprise accounts
 
-We started the new year with a gift! Multi-tenant Team and Enterprise accounts can now use the new [Model timing](/docs/deploy/deploy-jobs#model-timing) tab in <Constant name="dbt" />. You can use this tab to further explore long-running models to see if they need refactoring or rescheduling.
+We started the new year with a gift! Multi-tenant Team and Enterprise accounts can now use the new [Model timing](/docs/deploy/run-visibility#model-timing-tab) tab in <Constant name="dbt" />. You can use this tab to further explore long-running models to see if they need refactoring or rescheduling.
 
 #### Performance improvements and enhancements
 

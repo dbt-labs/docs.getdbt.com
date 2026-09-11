@@ -86,7 +86,7 @@ During execution, dbt:
 - Creates or updates tables/views in the warehouse.
 - Applies any materializations (incremental, table, view, ephemeral).
 
-`execute` impacts the values of `ref()` and `source()`, and won't work as expected inside of a [`sql_header`](/reference/resource-configs/sql_header#usage).
+`execute` impacts the values of `ref()` and `source()`, and won't work as expected inside of a [`sql_header`](/reference/resource-configs/sql_header#definition).
 
 This is because in the initial parse of the project, dbt identifies every use of `ref()` and `source()` to build the DAG, but doesn’t resolve them to actual database identifiers. Instead, it replaces each with a placeholder value to ensure the SQL compiles cleanly during parsing.
 

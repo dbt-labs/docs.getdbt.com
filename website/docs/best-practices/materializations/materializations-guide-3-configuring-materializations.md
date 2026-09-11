@@ -35,7 +35,7 @@ Let’s look at how we can use tables and views to get started with materializat
 
 
 :::info
-🐍 **Not all adapters support python yet**, check the [docs here to be sure](/docs/build/python-models#specific-data-platforms) before spending time writing python models.
+🐍 **Not all adapters support python yet**, check the [docs here to be sure](/docs/build/python-models#python-specific-functionality) before spending time writing python models.
 :::
 
 - Configuring a model to materialize as a `table` is simple, and possible for both SQL and python models.

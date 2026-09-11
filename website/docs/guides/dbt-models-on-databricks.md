@@ -170,7 +170,7 @@ Databricks is committed to continuously improving its performance. For example, 
 
 ### dbt Discovery API
 
-Now you might be wondering, how do you identify opportunities for performance improvement inside of dbt? Well, with each job run, <Constant name="dbt" /> generates metadata on the timing, configuration, and freshness of models in your dbt project. The [dbt Discovery API](/docs/dbt-apis/discovery-api) is a GraphQL service that supports queries on this metadata, using  the [graphical explorer](https://metadata.cloud.getdbt.com/graphiql) or the endpoint itself. Teams can pipe this data into their data warehouse and analyze it like any other data source in a business intelligence platform. <Constant name="dbt" /> users can also use the data from the [Model Timing tab](/docs/deploy/run-visibility#model-timing) to visually identify models that take the most time and may require refactoring.
+Now you might be wondering, how do you identify opportunities for performance improvement inside of dbt? Well, with each job run, <Constant name="dbt" /> generates metadata on the timing, configuration, and freshness of models in your dbt project. The [dbt Discovery API](/docs/dbt-apis/discovery-api) is a GraphQL service that supports queries on this metadata, using  the [graphical explorer](https://metadata.cloud.getdbt.com/graphiql) or the endpoint itself. Teams can pipe this data into their data warehouse and analyze it like any other data source in a business intelligence platform. <Constant name="dbt" /> users can also use the data from the [Model Timing tab](/docs/deploy/run-visibility#model-timing-tab) to visually identify models that take the most time and may require refactoring.
 
 ### dbt Admin API
 

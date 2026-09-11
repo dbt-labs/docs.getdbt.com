@@ -29,7 +29,7 @@ Stores the network representation of the dbt resource DAG.
 
 This file is useful for investigating performance issues in <Constant name="core" />'s graph algorithms.
 
-It is more anonymized and compact than [`manifest.json`](/reference/artifacts/manifest-json) and [`graph.gpickle`](#graph.gpickle).
+It is more anonymized and compact than [`manifest.json`](/reference/artifacts/manifest-json) and [`graph.gpickle`](#graphgpickle).
 
 It includes that information at two separate points in time:
 1. `linked` &mdash; immediately after the graph is linked together, and

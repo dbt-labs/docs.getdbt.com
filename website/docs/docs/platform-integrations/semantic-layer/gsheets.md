@@ -17,7 +17,7 @@ The <Constant name="semantic_layer" /> offers a seamless integration with Google
 
 - You have [configured the <Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/setup-sl) and are using dbt v1.6 or higher. If you haven't created metrics yet, start with the [Quickstart for the <Constant name="semantic_layer" />](/guides/sl-qs).
 - You need a Google account with access to Google Sheets and the ability to install Google add-ons.
-- You have a [<Constant name="dbt" /> Environment ID](/docs/use-dbt-semantic-layer/setup-sl#set-up-dbt-semantic-layer).
+- You have a [<Constant name="dbt" /> Environment ID](/docs/use-dbt-semantic-layer/setup-sl#administer-the-semantic-layer-1).
 - You have a [service token](/docs/dbt-apis/service-tokens) or a [personal access token](/docs/dbt-apis/user-tokens) to authenticate with from a <Constant name="dbt" /> account.
 - You must have a <Constant name="dbt" /> Starter or Enterprise-tier [account](https://www.getdbt.com/pricing). Suitable for both Multi-tenant and Single-tenant deployment.
 
@@ -31,7 +31,7 @@ import SLCourses from '/snippets/_sl-course.md';
 
 1. Navigate to the [<Constant name="semantic_layer" /> for Sheets App](https://gsuite.google.com/marketplace/app/foo/392263010968) to install the add-on. You can also find it in Google Sheets by going to [**Extensions -> Add-on -> Get add-ons**](https://support.google.com/docs/answer/2942256?hl=en&co=GENIE.Platform%3DDesktop&oco=0#zippy=%2Cinstall-add-ons%2Cinstall-an-add-on) and searching for it there.
 2. After installing, open the **Extensions** menu and select **<Constant name="semantic_layer" /> for Sheets**. This will open a custom menu on the right-hand side of your screen.
-3. [Find your](/docs/use-dbt-semantic-layer/setup-sl#set-up-dbt-semantic-layer) **Host** and **Environment ID** in <Constant name="dbt" />.
+3. [Find your](/docs/use-dbt-semantic-layer/setup-sl#administer-the-semantic-layer-1) **Host** and **Environment ID** in <Constant name="dbt" />.
    - Navigate to **Account Settings** and select **Projects** on the left sidebar.
    - Select your project and then navigate to the **<Constant name="semantic_layer" />** settings.  You'll need this to authenticate in Google Sheets in the following step.
    - You can generate your service token by clicking **Generate service token** within the <Constant name="semantic_layer" /> configuration page or navigating to **API tokens** in <Constant name="dbt" />. Alternatively, you can also create a personal access token by going to **API tokens** > **Personal tokens**. 

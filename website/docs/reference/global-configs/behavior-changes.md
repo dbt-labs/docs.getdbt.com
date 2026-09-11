@@ -96,7 +96,7 @@ This table outlines which version of the dbt adapter contains the behavior chang
 | [use_replace_on_for_insert_overwrite](/reference/global-configs/databricks-changes#use-replace-on-for-insert_overwrite-strategy) | Databricks 1.11.0 | 1.11.0 | - |
 | [use_describe_as_json_for_relation_metadata](/reference/global-configs/databricks-changes#use-describe-as-json-for-relation-metadata) | Databricks 1.12.0 | - | - |
 | [redshift_skip_autocommit_transaction_statements](/reference/global-configs/redshift-changes#redshift_skip_autocommit_transaction_statements-flag) | Redshift 1.12.0 | - | - |
-| [bigquery_use_batch_source_freshness](/reference/global-configs/bigquery-changes#bigquery-use-batch-source-freshness) | BigQuery 1.11.0rc2 | - | - |
+| [bigquery_use_batch_source_freshness](/reference/global-configs/bigquery-changes#the-bigquery_use_batch_source_freshness-flag) | BigQuery 1.11.0rc2 | - | - |
 | [bigquery_reject_wildcard_metadata_source_freshness](/reference/global-configs/bigquery-changes#the-bigquery_reject_wildcard_metadata_source_freshness-flag) | BigQuery 1.12.0 | - | - |
 | [bigquery_use_standard_sql_for_partitions](/reference/global-configs/bigquery-changes#the-bigquery_use_standard_sql_for_partitions-flag) | BigQuery 1.12.0 | 1.12.0 | - |
 | [snowflake_default_transient_dynamic_tables](/reference/global-configs/snowflake-changes#the-snowflake_default_transient_dynamic_tables-flag) | Snowflake 1.12.0 | - | - |

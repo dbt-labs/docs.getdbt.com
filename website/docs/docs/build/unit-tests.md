@@ -60,7 +60,7 @@ dbt test --select "test_type:unit"
 
 <VersionBlock firstVersion="2.0">
 
-## Run unit tests locally <Lifecycle status="beta" />
+## Run unit tests locally<Lifecycle status="beta" />
 
 You can run unit tests locally when you're working through tricky SQL and you want to know right away whether your logic works. By default, each unit test sends a query to your data platform and waits for the result. This can slow down testing and use warehouse compute.
 

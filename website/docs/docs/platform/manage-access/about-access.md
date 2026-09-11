@@ -75,7 +75,7 @@ The `Owner` and `Member` groups have default permission sets:
 
 Default groups are automatically provisioned for all accounts to simplify the initial set up. We recommend  creating your own organizational groups so you can customize the permissions. Once you create your own groups, you can delete the default groups.
 
-### Create new groups <Lifecycle status="managed,managed_plus" />
+### Create new groups<Lifecycle status="managed,managed_plus" />
 
 - Create new groups from the **Groups & Licenses** section of the **Account settings**.
 - If you use an external IdP for SSO, you can sync those SSO groups to <Constant name="dbt" /> from the **Group details** pane when creating or editing existing groups.
@@ -110,7 +110,7 @@ In the following example, the `analyst` permission set, which by default has rea
 
 Only use **Environment write access** settings when you intend to grant users the ability to edit environments. To grant users only the permissions inherent to their set, leave this setting blank (all boxes unchecked).
 
-### SSO mappings <Lifecycle status="managed,managed_plus" />
+### SSO mappings<Lifecycle status="managed,managed_plus" />
 
 SSO Mappings connect an identity provider (IdP) group membership to a <Constant name="dbt" /> group. When users log into <Constant name="dbt" /> via a supported identity provider, their IdP group memberships sync with <Constant name="dbt" />. Upon logging in successfully, the user's group memberships (and permissions) will automatically adjust within <Constant name="dbt" />.
 
@@ -149,7 +149,7 @@ import LicenseOverrideNote from '/snippets/_license-override-note.md';
 
 <LicenseOverrideNote />
 
-#### Enable granular permissions for Read-Only users <Lifecycle status="managed,managed_plus"/>
+#### Enable granular permissions for Read-Only users<Lifecycle status="managed,managed_plus"/>
 
 Granular permissions let you restrict which projects Read-Only users can access, allowing you to set permissions by group rather than applying the default permissions for Read-Only licenses.
 
@@ -214,7 +214,7 @@ You can skip or automate this step if license mapping and group mapping are enab
 
 For more information, refer to [Grant access](/docs/platform/manage-access/about-user-access#grant-access).
 
-## Role-based access control <Lifecycle status="managed,managed_plus" />
+## Role-based access control<Lifecycle status="managed,managed_plus" />
 
 Role-based access control (RBAC) allows you to grant users access to features and functionality based on their group membership. With this method, you can grant users varying access levels to different projects and environments. You can take access and security to the next level by integrating <Constant name="dbt" /> with a third-party identity provider (IdP) to grant users access when they authenticate with your SSO or OAuth service.
 

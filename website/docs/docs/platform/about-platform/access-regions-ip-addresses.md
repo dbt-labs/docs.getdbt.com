@@ -31,7 +31,7 @@ Your <Constant name="dbt" /> account will connect to your data platform or git p
 | EMEA  | eu-central-1	(Frankfurt) | <small>ACCOUNT_PREFIX.eu1.dbt.com</small> | 3.123.45.39 <br /> 3.126.140.248 <br /> 3.72.153.148 | All Enterprise plans | [EMEA AWS](https://status.getdbt.com/emea-aws) |
 | APAC  | ap-southeast-2  (Sydney)| <small>ACCOUNT_PREFIX.au1.dbt.com</small> | 52.65.89.235 <br /> 3.106.40.33 <br /> 13.239.155.206 <br />|  All Enterprise plans | [APAC AWS](https://status.getdbt.com/apac-aws) |
 | Japan | ap-northeast-1 (Tokyo) | <small>ACCOUNT_PREFIX.jp1.dbt.com</small> | 35.76.76.152 <br />  54.238.211.79 <br /> 13.115.236.233 <br /> | All Enterprise plans | [JP Cell 1 AWS](https://status.getdbt.com/jp-cell-1-aws) | 
-| Virtual Private dbt or Single tenant | Customized |  Customized | Ask [Support](/community/resources/getting-help#dbt-cloud-support) for your IPs | All Enterprise plans | Customized |
+| Virtual Private dbt or Single tenant | Customized |  Customized | Ask [Support](/community/resources/getting-help#dbt-support) for your IPs | All Enterprise plans | Customized |
 
 
 ## Google Cloud Platform (GCP) {#GCP}
@@ -42,7 +42,7 @@ Your <Constant name="dbt" /> account will connect to your data platform or git p
 | North America  | us-central1 | <small>ACCOUNT_PREFIX.us3.dbt.com</small> | 34.33.2.0/26 | All Enterprise plans | [US Cell 1 GCP](https://status.getdbt.com/us-cell-1-gcp) | 
 | EMEA  | London  |  <small>ACCOUNT_PREFIX.eu3.dbt.com</small> |  34.39.41.0/26  | All Enterprise plans | [EU Cell 1 GCP](https://status.getdbt.com/eu-cell-1-gcp) |
 | EMEA  | Frankfurt | <small>ACCOUNT_PREFIX.eu4.dbt.com</small> | 34.185.244.128/26 | All Enterprise plans | [EU4 Cell 1 GCP](https://status.getdbt.com/eu-4-cell-1-gcp) |
-| Virtual Private dbt or Single tenant | Customized |  Customized | Ask [Support](/community/resources/getting-help#dbt-cloud-support) for your IPs | All Enterprise plans | Customized |
+| Virtual Private dbt or Single tenant | Customized |  Customized | Ask [Support](/community/resources/getting-help#dbt-support) for your IPs | All Enterprise plans | Customized |
 
 
 ## Microsoft Azure {#Azure}
@@ -52,7 +52,7 @@ Your <Constant name="dbt" /> account will connect to your data platform or git p
 | North America  | East US 2 (Virginia) | <small>ACCOUNT_PREFIX.us2.dbt.com</small> | 20.10.67.192/26 | All Enterprise plans | [US Cell 1 AZURE](https://status.getdbt.com/us-cell-1-azure) |
 | EMEA  |  North Europe (Ireland)  |  <small>ACCOUNT_PREFIX.eu2.dbt.com</small>  | 20.13.190.192/26   | All Enterprise plans | [EMEA Cell 1 AZURE](https://status.getdbt.com/emea-cell-1-azure) |
 | APAC | Australia East | <small>ACCOUNT_PREFIX.au2.dbt.com</small> | 20.11.97.208/28 | All Enterprise plans | [AUS Cell 1 AZURE](https://status.getdbt.com/au-2-cell-1-azure) |
-| Virtual Private dbt or Single tenant | Customized |  Customized | Ask [Support](/community/resources/getting-help#dbt-cloud-support) for your IPs | All Enterprise plans | Customized |
+| Virtual Private dbt or Single tenant | Customized |  Customized | Ask [Support](/community/resources/getting-help#dbt-support) for your IPs | All Enterprise plans | Customized |
 
 
 ## Accessing your account

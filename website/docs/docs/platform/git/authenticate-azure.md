@@ -11,7 +11,7 @@ availability:
 ---
 
 
-If you use the <Constant name="studio_ide" /> or <Constant name="dbt" /> CLI to collaborate on your team's Azure DevOps dbt repo, you need to [link your <Constant name="dbt" /> profile to Azure DevOps](#link-your-dbt-cloud-profile-to-azure-devops), which provides an extra layer of authentication.
+If you use the <Constant name="studio_ide" /> or <Constant name="dbt" /> CLI to collaborate on your team's Azure DevOps dbt repo, you need to [link your <Constant name="dbt" /> profile to Azure DevOps](#link-your-dbt-profile-to-azure-devops), which provides an extra layer of authentication.
 
 ## Link your dbt profile to Azure DevOps
 

@@ -369,7 +369,7 @@ savedQuery(environmentId: "123", savedQueryName: "query_name") {
 
 When querying for data, _either_ a `groupBy` _or_ a `metrics` selection is required. The following section provides examples of how to query metrics:
 
-- [Create query](#create-metric-query)
+- [Create query](#create-query)
 - [Fetch query result](#fetch-query-result)
 
 #### Create query

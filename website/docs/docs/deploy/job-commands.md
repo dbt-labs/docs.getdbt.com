@@ -12,7 +12,7 @@ Each job allows you to:
 - Configure job commands
 - View job run details, including timing, artifacts, and detailed run steps
 - Access logs to view or help debug issues and historical invocations of dbt
-- Set up notifications, and [more](/docs/deploy/deployments#dbt-cloud)
+- Set up notifications, and [more](/docs/deploy/deployments#deploy-with-dbt)
 
 ## Job command types
 

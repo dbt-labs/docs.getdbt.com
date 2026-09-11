@@ -19,7 +19,7 @@ To use the <Constant name="wizard" />, follow these steps:
 
 1. Open your dbt project in the [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio), then click **<Constant name="wizard" />** in the command palette.
 2. Start a prompt in several ways in the [<Constant name="wizard" /> panel](/docs/dbt-ai/wizard-ide?version=2#panel-controls):
-   - **Quick actions**: Use [quick-action resource generation](/docs/dbt-ai/wizard-ide#quick-action-resource-generation) at the top of the panel for quick action prompts.
+   - **Quick actions**: Use [quick-action resource generation](/docs/dbt-ai/wizard-ide#using-dbt-wizard) at the top of the panel for quick action prompts.
    - **Plain text**: Type directly into the text field to describe what you want to build or change.
    - **Model context**: Type `@` to select a model as context. This scopes the agent's changes to that resource.
 3. Select the [**Agent mode** button](/docs/dbt-ai/wizard-ide#agent-modes) to specify the mode for the <Constant name="wizard" />. Available modes are **Explore only**, **Ask for approval** (default), and **Edit files automatically**.

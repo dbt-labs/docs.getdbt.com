@@ -68,7 +68,7 @@ If you're on an Enterprise-tier plan and have the correct [permissions](/docs/pl
 
 - To add a user, go to **Account Settings** and select **Users**. 
   - Click the [**Invite Users**](/docs/platform/manage-access/invite-users) button. 
-  - For fine-grained permission configuration, refer to [Role based access control](/docs/platform/manage-access/about-user-access#role-based-access-control-).
+  - For fine-grained permission configuration, refer to [Role based access control](/docs/platform/manage-access/about-user-access#role-based-access-control).
 
 
 </TabItem>
@@ -137,7 +137,7 @@ Great work! After completing these steps, your <Constant name="dbt" /> user coun
 
 ## Managing license types
 
-Licenses can be assigned to users individually or through group membership. To assign a license via group membership, you can manually add a user to a group during the invitation process or assign them to a group after they’ve enrolled in <Constant name="dbt" />. Alternatively, with [SSO configuration](/docs/platform/manage-access/sso-overview) and [role-based access control](/docs/platform/manage-access/about-user-access#role-based-access-control-) (Enterprise-tier only), users can be automatically assigned to groups. By default, new users in an account are assigned a Developer license.
+Licenses can be assigned to users individually or through group membership. To assign a license via group membership, you can manually add a user to a group during the invitation process or assign them to a group after they’ve enrolled in <Constant name="dbt" />. Alternatively, with [SSO configuration](/docs/platform/manage-access/sso-overview) and [role-based access control](/docs/platform/manage-access/about-user-access#role-based-access-control) (Enterprise-tier only), users can be automatically assigned to groups. By default, new users in an account are assigned a Developer license.
 
 ### Manual configuration
 
@@ -151,7 +151,7 @@ To manually assign a specific type of license to a user on your team:
 
 <Lightbox src="/img/docs/dbt-platform/access-control/license-manual.png" width="55%" title="Manually assigning licenses"/>
 
-### Mapped configuration <Lifecycle status="managed,managed_plus" /> 
+### Mapped configuration<Lifecycle status="managed,managed_plus" /> 
 
 If your account is connected to an Identity Provider (IdP) for [Single Sign On](/docs/platform/manage-access/sso-overview), you can automatically map IdP user groups to specific license types in <Constant name="dbt" />. For SCIM-based license mapping with Okta, see [Automated license mapping](/docs/platform/manage-access/scim-manage-user-licenses#automated-license-mapping).
 

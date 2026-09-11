@@ -188,7 +188,7 @@ Follow these steps to embed the data health tile in Sigma:
 
 ## Job-based data health <Lifecycle status="Legacy"/>
 
-The default experience is the [environment-based data health tile](#view-exposure-in-dbt-explorer) with <Constant name="catalog" />.
+The default experience is the [environment-based data health tile](#view-exposure-in-dbt-catalog) with <Constant name="catalog" />.
 
 This section is for legacy job-based data health tiles. If you're using the revamped environment-based exposure tile, refer to the previous section. Expand the following to learn more about the legacy job-based data health tile.
 

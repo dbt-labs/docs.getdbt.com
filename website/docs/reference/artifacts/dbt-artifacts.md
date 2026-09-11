@@ -16,7 +16,7 @@ With every invocation, dbt generates and saves one or more *artifacts*. Several 
 </VersionBlock>
 
 - [documentation](/docs/explore/build-and-view-your-docs)
-- [state](/reference/node-selection/syntax#about-node-selection)
+- [state](/reference/node-selection/syntax)
 - [visualizing source freshness](/docs/build/sources#source-data-freshness)
 
 They could also be used to:
@@ -41,7 +41,7 @@ Most dbt commands (and corresponding RPC methods) produce artifacts:
 - [catalog](catalog-json): produced by `docs generate`
 - [sources](/reference/artifacts/sources-json): produced by `source freshness`
 
-When running commands from the [<Constant name="dbt" /> CLI](/docs/platform/dbt-cli-installation), all artifacts are downloaded by default. If you want to change this behavior, refer to [How to skip artifacts from being downloaded](/docs/platform/configure-dbt-cli#how-to-skip-artifacts-from-being-downloaded).
+When running commands from the [<Constant name="dbt" /> CLI](/docs/platform/dbt-cli-installation), all artifacts are downloaded by default. If you want to change this behavior, refer to [How to skip artifacts from being downloaded](/docs/platform/configure-dbt-cli#faqs).
 
 ## Where are artifacts produced?
 

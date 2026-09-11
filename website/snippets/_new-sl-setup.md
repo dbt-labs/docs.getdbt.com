@@ -90,7 +90,7 @@ You can use the generated PAT as the authentication method for <Constant name="s
 
 <Lightbox src="/img/docs/dbt-platform/semantic-layer/sl-configure-example.png" width="50%" title="After configuring, you'll be provided with the connection details to connect to you downstream tools." />
 
-### 4. Add more credentials <Lifecycle status="managed_plus,managed" />
+### 4. Add more credentials<Lifecycle status="managed_plus,managed" />
 All <Constant name="dbt" /> Enterprise plans can optionally add multiple credentials and map them to service tokens, offering more granular control and tailored access for different teams, which can then be shared to relevant teams for BI connection setup. These credentials control the physical access to underlying data accessed by the Semantic Layer.
 
 We recommend configuring credentials and service tokens to reflect your teams and their roles. For example, create tokens or credentials that align with your team's needs, such as providing access to finance-related schemas to the Finance team.
@@ -129,7 +129,7 @@ Follow these steps to delete the Semantic Layer configuration for a project:
 2. In the **Semantic Layer** section, select **Delete Semantic Layer**. 
 3. Confirm the deletion by clicking **Yes, delete semantic layer** in the confirmation pop up.
 
-To re-enable the dbt Semantic Layer setup in the future, you will need to recreate your setup configurations by following the [previous steps](#set-up-dbt-semantic-layer). If your semantic models and metrics are still in your project, no changes are needed. If you've removed them, you'll need to set up the YAML configs again.
+To re-enable the dbt Semantic Layer setup in the future, you will need to recreate your setup configurations by following the [previous steps](#administer-the-semantic-layer). If your semantic models and metrics are still in your project, no changes are needed. If you've removed them, you'll need to set up the YAML configs again.
 
 <Lightbox src="/img/docs/dbt-platform/semantic-layer/sl-delete-config.png" width="90%" title="Delete the Semantic Layer configuration for a project."/>
 
@@ -138,7 +138,7 @@ To re-enable the dbt Semantic Layer setup in the future, you will need to recrea
  The following are the additional flexible configurations for Semantic Layer credentials.
 
 ### Map service tokens to credentials
-- After configuring your environment, you can map additional service tokens to the same credential if you have the required [permissions](/docs/platform/manage-access/about-user-access#permission-sets).
+- After configuring your environment, you can map additional service tokens to the same credential if you have the required [permissions](/docs/platform/manage-access/about-user-access#permissions).
 - Go to the **Credentials & service tokens** page and click the **+Add Service Token** button in the **Linked Service Tokens** section.
 - Type the service token name and select the permission set you need (Semantic Layer Only and Metadata Only).
 - Click **Save** to link the service token to the credential.

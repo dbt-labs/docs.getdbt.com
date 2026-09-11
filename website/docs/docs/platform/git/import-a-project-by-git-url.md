@@ -130,7 +130,7 @@ To add a deploy key to a BitBucket account:
 - Next, navigate to the **New Repository** page in <Constant name="dbt" />.
 - Choose the **<Constant name="git" /> Clone** tab, and paste in the SSH URL you copied from the console.
 - In the newly created Repository details page, you'll see a **Deploy Key** field.
-- Copy the contents of this field as you'll need it for [Step 3](#step-3-grant-dbt-cloud-aws-user-access).
+- Copy the contents of this field as you'll need it for [Step 3](#step-3-grant-dbt-aws-user-access).
 
 **Note:** The <Constant name="dbt" />-generated public key is the only key that will work in the next step. Any other key that has been generated outside of <Constant name="dbt" /> will not work.
 

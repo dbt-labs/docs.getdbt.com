@@ -233,7 +233,7 @@ sources:
 </File>
 
 In this example, the `event_time` is set to `event_timestamp`, which has the exact time each clickstream event happened.
-Not only is this required for the [incremental microbatching strategy](/docs/build/incremental-microbatch), but when you compare data across [CI and production](/docs/deploy/advanced-ci#speeding-up-comparisons) environments, dbt will use `event_timestamp` to filter and match data by this event-based timeframe, ensuring that only overlapping timeframes are compared.
+Not only is this required for the [incremental microbatching strategy](/docs/build/incremental-microbatch), but when you compare data across [CI and production](/docs/deploy/advanced-ci#optimizing-comparisons) environments, dbt will use `event_timestamp` to filter and match data by this event-based timeframe, ensuring that only overlapping timeframes are compared.
 
 </VersionBlock>
 

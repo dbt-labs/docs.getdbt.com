@@ -9,7 +9,7 @@ The following charts outline private connectivity options for AWS deployments of
 _Tenancy:_ MT (multi-tenant) and ST (single-tenant) — [learn more about tenancy](/docs/platform/about-platform/tenancy).
 
 :::note About the following matrix tables
-These tables indicate whether private connectivity can be established to specific services, considering major factors such as the network and basic auth layers. dbt has validated these configurations using common deployment patterns and typical use cases. However, individual configurations may vary. If you encounter issues or have questions about your environment, [contact dbt Support](/community/resources/getting-help#dbt-cloud-support) for guidance.
+These tables indicate whether private connectivity can be established to specific services, considering major factors such as the network and basic auth layers. dbt has validated these configurations using common deployment patterns and typical use cases. However, individual configurations may vary. If you encounter issues or have questions about your environment, [contact dbt Support](/community/resources/getting-help#dbt-support) for guidance.
 :::
 
 ---
@@ -59,4 +59,4 @@ All of the services below share a common PrivateLink setup guide — backend con
 | Starburst / Trino | ✅ | ✅ |
 | Teradata (self-hosted) | ✅ | ✅ |
 
-If you have questions about whether your specific architecture is supported, [contact dbt Support](/community/resources/getting-help#dbt-cloud-support).
+If you have questions about whether your specific architecture is supported, [contact dbt Support](/community/resources/getting-help#dbt-support).

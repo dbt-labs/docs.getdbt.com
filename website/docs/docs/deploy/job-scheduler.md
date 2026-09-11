@@ -120,7 +120,7 @@ To reactivate jobs deactivated because the account is inactive, either log out a
 <FAQ path="Troubleshooting/job-memory-limits" />
 
 ## Related docs
-- [<Constant name="dbt" /> architecture](/docs/platform/about-platform/architecture#dbt-cloud-features-architecture)
+- [<Constant name="dbt" /> architecture](/docs/platform/about-platform/architecture#about-dbt-architecture)
 - [Job commands](/docs/deploy/job-commands)
 - [Job notifications](/docs/deploy/job-notifications)
 - [Webhooks](/docs/deploy/webhooks)

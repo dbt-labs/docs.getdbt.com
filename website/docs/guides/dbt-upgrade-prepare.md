@@ -428,7 +428,7 @@ If a job has not run in the last 7 days, you must run it once for the debugging 
 3. Click **Debug on <Constant name="fusion" />** and choose one of the following:
    - [Debug in Studio](#debug-in-studio)
    - [Debug in Studio with <Constant name="wizard" />](#debug-in-studio-with-dbt-wizard)
-   - [Run once on <Constant name="fusion" />](#run-once-on-fusion)
+   - [Run once on <Constant name="fusion" />](#run-once-on-)
 
 #### Debug in Studio
 
@@ -445,7 +445,7 @@ In the <Constant name="studio_ide" />, run <Constant name="fusion" /> in your de
 
 To revert the `latest-fusion` override, use the dbt version control in <Constant name="studio_ide" /> or update the **dbt version** under **User development settings** in [Account settings](/docs/platform/account-settings) → **Credentials**. For more details, refer to [Override dbt version](/docs/dbt-versions/upgrade-dbt-platform-version#override-dbt-version).
 
-#### Debug in Studio with dbt Wizard <Lifecycle status="beta" size="80%" />
+#### Debug in Studio with dbt Wizard<Lifecycle status="beta" size="80%" />
 
 import FusionMigrationWorkflow from '/snippets/_fusion-migration-workflow.md';
 

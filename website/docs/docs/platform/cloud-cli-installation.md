@@ -182,13 +182,13 @@ To update the <Constant name="platform_cli" />, run `brew update` and then `brew
 
 <TabItem value="windows" label="Windows (executable)">
 
-To update, follow the [Windows installation instructions](/docs/platform/dbt-cli-installation?install=windows#install-dbt-cloud-cli) and replace the existing `dbt.exe` executable with the new one.
+To update, follow the [Windows installation instructions](/docs/platform/dbt-cli-installation?install=windows#install-dbt-platform-cli) and replace the existing `dbt.exe` executable with the new one.
 
 </TabItem>
 
 <TabItem value="linux" label="Linux (executable)">
 
-To update, follow the [Linux installation instructions](/docs/platform/dbt-cli-installation?install=linux#install-dbt-cloud-cli) and replace the existing `dbt` executable with the new one.
+To update, follow the [Linux installation instructions](/docs/platform/dbt-cli-installation?install=linux#install-dbt-platform-cli) and replace the existing `dbt` executable with the new one.
 
 </TabItem>
 
