@@ -55,5 +55,5 @@ There are three primary ways to contribute to the dbt projects. We’ll use <Con
 
 The following channels in the dbt Community Slack are a great place to ask questions:
 
-- #dbt-core-development
+- #dbt-development
 - #adapter-ecosystem
