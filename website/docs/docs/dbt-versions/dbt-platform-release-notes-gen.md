@@ -20,6 +20,7 @@ availability:
 
 Release notes are grouped by date for single-tenant environments.
 
+<span><img src="/img/fontawesome/rss.svg" alt="RSS" className="rss-icon" />Subscribe to release note updates via [RSS](/feeds/release-notes-st-rss.xml), [Atom](/feeds/release-notes-st-atom.xml), or [JSON Feed](/feeds/release-notes-st-rss.json).</span>
 
 ## September 9, 2026
 
@@ -27,52 +28,52 @@ Release notes are grouped by date for single-tenant environments.
 
 ### Catalog
 
-- **Column counts in the models table**: The models table in Catalog navigation now shows a column count for each model, sourced from catalog data.
+- **Column counts in the models table**: The models table in Catalog navigation now shows a column count for each model.
   <!-- PRs: `https://github.com/dbt-labs/dbt-ui/pull/1491` ✅-->
 
 ## Enhancements
 
 ### Studio IDE
 
-- **Clearer missing credentials prompt**: Studio IDE now detects missing development credentials at startup and shows a "Development Credentials Required" modal with a direct link to add credentials, instead of failing silently.
+- **Clearer missing credentials prompt**: Studio IDE now detects missing development credentials at startup and shows a **Development Credentials Required** modal with a direct link to add credentials, instead of failing silently.
   <!-- PRs: `https://github.com/dbt-labs/dbt-ui/pull/1478` ✅-->
 
 ### Catalog
 
-- **Upstream sources sorted by freshness severity**: The Upstream Sources table on model detail pages now sorts by freshness severity by default (Error first, Pass last). Name and Status column headers are clickable sort controls, and the Status column no longer overflows horizontally on wide viewports.
+- **Upstream sources sorted by freshness severity**: The **Upstream Sources** table on model detail pages now sorts by freshness severity by default (Error first, Pass last). **Name** and **Status** column headers are clickable sort controls, and the **Status** column no longer overflows horizontally on wide viewports.
   <!-- PRs: `https://github.com/dbt-labs/dbt-ui/pull/1490` ✅-->
 
 ### Orchestration and run status
 
-- **Full model timing view for large runs**: The model timing Gantt chart no longer limits groups to 2,000 rows. You can now see all models in the timing view for large runs, with virtualized scrolling for performance.
+- **Full model timing view for large runs**: The model timing Gantt chart no longer limits groups to 2,000 rows. You can now see all models in the timing view for large runs.
   <!-- PRs: `https://github.com/dbt-labs/dbt-ui/pull/1515` ✅-->
 
 ### dbt platform
 
-- **Analytics connection visible to read-only users**: Read-only users can now see their assigned analytics connection in project settings instead of "Not configured."
+- **Analytics connection visible to read-only users**: Read-only users can now see their assigned analytics connection in project settings instead of **Not configured**.
   <!-- PRs: `https://github.com/dbt-labs/dbt-ui/pull/1510` ✅-->
 
-- **dbt Wizard overage email notifications**: Account admins now receive automated email notifications when dbt Wizard usage credits are exhausted, with separate notifications for accounts without a consumption commitment and accounts whose commitment is spent.
+- **dbt Wizard overage email notifications**: Account admins now receive email when dbt Wizard usage credits are exhausted, with separate notices for accounts that have no usage commitment and accounts that have used their full commitment.
   <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pull/19004` ✅-->
 
 ### APIs, Identity, and Administration
 
-- **Clearer GitLab unavailability errors**: When a GitLab host is unreachable, affected API endpoints now return HTTP 503 with the message "GitLab is unavailable, please try again." instead of an unclear failure, affecting repository creation and GitLab group listing flows.
+- **Clearer GitLab unavailability errors**: When a GitLab host is unreachable, affected API endpoints now return HTTP 503 with the message "GitLab is unavailable, please try again." instead of an unclear failure. This applies when you create a repository or list GitLab groups.
   <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pull/18876` ✅-->
 
 ## Fixes
 
-### Studio IDE
+### dbt AI and agents
 
-- **Pinned model names in context card**: Pinned models in the dbt Wizard context card now display the friendly model name (for example, `customers`) instead of the raw metadata unique ID (for example, `model.jaffle_shop.customers`).
+- **Pinned model names in context card**: Pinned models in the dbt Wizard context card now display the model name (for example, `customers`) instead of the raw metadata unique ID (for example, `model.jaffle_shop.customers`).
   <!-- PRs: `https://github.com/dbt-labs/dbt-ui/pull/1533` ✅-->
 
 ### APIs, Identity, and Administration
 
-- **Correct error for cross-account write attempts**: Cross-account write attempts now return HTTP 403 Forbidden instead of generic 500 Internal Server Error, giving API consumers a clear signal when an operation is rejected due to account mismatch.
+- **Correct error for cross-account write attempts**: Cross-account write attempts now return HTTP 403 Forbidden instead of a generic 500 Internal Server Error, so you get a clear rejection when the account doesn't match.
   <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pull/18966` ✅-->
 
-- **Corrected Azure DevOps account linking error**: Fixes swapped exception handlers for missing Azure DevOps (ADO) account linking. The error message now reads "Missing Azure user; link your Azure DevOps account in your personal profile" to guide you to the correct remediation step.
+- **Corrected Azure DevOps account linking error**: The error for a missing Azure DevOps account link now shows the correct message: "Missing Azure user; link your Azure DevOps account in your personal profile."
   <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pull/19047` ✅-->
 
 ## Behavior change
@@ -82,12 +83,10 @@ Release notes are grouped by date for single-tenant environments.
 - **Account creation blocked for service tokens and OAuth tokens**: Creating accounts via `POST /api/v2/accounts/` is now blocked for service tokens, account-scoped personal access tokens (PATs), and OAuth access tokens. Service tokens and account-scoped user API tokens receive HTTP 400; OAuth access tokens receive HTTP 403, with explicit error messages in each case.
   <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pull/19023` ✅-->
 
-### Catalog
+### Insights
 
 - **Cost Insights test counts now include unit tests**: Cost Insights aggregates now include unit tests when you filter by the Test resource type. Previously, unit tests were silently excluded, causing lower-than-expected execution counts.
   <!-- PRs: `https://github.com/dbt-labs/codex-api/pull/1528` ✅-->
-
-<span><img src="/img/fontawesome/rss.svg" alt="RSS" className="rss-icon" />Subscribe to release note updates via [RSS](/feeds/release-notes-st-rss.xml), [Atom](/feeds/release-notes-st-atom.xml), or [JSON Feed](/feeds/release-notes-st-rss.json).</span>
 
 ## September 2, 2026
 
