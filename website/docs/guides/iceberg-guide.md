@@ -6,7 +6,7 @@ level: 'Advanced'
 icon: 'zap'
 description: "Use Snowflake Horizon's open Iceberg REST catalog to access and transform one shared set of governed tables from Snowflake and DuckDB."
 hide_table_of_contents: true
-tags: ['dbt Fusion engine','Snowflake','Iceberg','DuckDB']
+tags: ['dbt v2','Snowflake','Iceberg','DuckDB']
 recently_updated: true
 ---
 
@@ -21,7 +21,7 @@ By the end of this guide, your `fusion-jaffle-shop` project will transform data 
 
 The DuckDB step is the interesting part. Because Iceberg is an open table format and Horizon speaks the open Iceberg REST protocol, an external engine like DuckDB can operate directly on your governed Snowflake tables. Both solutions are reading and writing the same files, through the same catalog, without a separate copy of the data.
 
-Concretely, the transformation runs in a local DuckDB process (embedded in the <Constant name="fusion_engine" />); Horizon serves catalog metadata and vends short-lived storage credentials so DuckDB can access the underlying files, which live in your own S3 bucket the whole time.
+Concretely, the transformation runs in a local DuckDB process (embedded in <Constant name="fusion_engine" />); Horizon serves catalog metadata and vends short-lived storage credentials so DuckDB can access the underlying files, which live in your own S3 bucket the whole time.
 
 Snowflake warehouses are highly performant. Even a single-node XSMALL handles most production transformations well, and for the majority of your workloads, running them in Snowflake is still the right call. But there are times when it's useful to reach the same governed tables from somewhere else: a quick exploratory query from a laptop, a step that fits naturally into a pipeline already running on another engine, or a workload where you'd rather not spin up a warehouse at all. Horizon's Iceberg REST catalog is what makes that possible without duplicating data or losing governance.
 
@@ -380,7 +380,7 @@ jaffle_shop:
           oauth2_scope: "session:role:TRANSFORMER"
 ```
 
-The Fusion project's `dbt_project.yml` sets `profile: default`. Either rename the profile key above to `default`, or set `profile: jaffle_shop`. Keep it consistent.
+The v2 project's `dbt_project.yml` sets `profile: default`. Either rename the profile key above to `default`, or set `profile: jaffle_shop`. Keep it consistent.
 
 :::note If `externalbrowser` fails
 
@@ -582,7 +582,7 @@ A regular (non-Iceberg) table of the same name already occupies that namespace (
 
 <Expandable alt_header="`unknown method: map has no method named warn_once` during grants.">
 
-The dbt-duckdb `apply_grants` macro hits a Fusion incompatibility. Grants are meaningless on DuckDB anyway — make `grant_config` empty on the DuckDB target (`grants={} if target.name == 'duckdb' else {...}`) and remove the project-level `marts` `+grants` so nothing gets merged back in.
+The dbt-duckdb `apply_grants` macro hits a v2 incompatibility. Grants are meaningless on DuckDB anyway — make `grant_config` empty on the DuckDB target (`grants={} if target.name == 'duckdb' else {...}`) and remove the project-level `marts` `+grants` so nothing gets merged back in.
 
 </Expandable>
 

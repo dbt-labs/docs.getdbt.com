@@ -16,7 +16,7 @@ Each <Constant name="dbt" /> project can only have a single development environm
 | **How many can I have in my project?** | 1 | Any number | 1 | 1 |
 
 :::note 
-For users familiar with development on <Constant name="core" />, each environment is roughly analogous to an entry in your `profiles.yml` file, with some additional information about your repository to ensure the proper version of code is executed. More info on dbt core environments [here](/docs/local/dbt-environments).
+For users familiar with development on <Constant name="core" />, each environment is roughly analogous to an entry in your `profiles.yml` file, with some additional information about your repository to ensure the proper version of code is executed. More info on v1 environments [here](/docs/local/dbt-environments).
 :::
 
 ## Common environment settings
@@ -28,7 +28,7 @@ Both development and deployment environments have a section called **General Set
 | Environment name | Production  | The environment name  | Any string! |
 | Environment type | Deployment | The type of environment | Deployment, Development|
 | Set deployment type | PROD |  Designates the deployment environment type. | Production, Staging, General | 
-| dbt version | Latest | <Constant name="dbt" /> automatically upgrades the dbt version running in this environment, based on the [release track](/docs/dbt-versions/dbt-release-tracks) you select. | Latest, Compatible, Extended |
+| dbt version | **v1 Latest** | <Constant name="dbt" /> automatically upgrades the dbt version running in this environment, based on the [release track](/docs/dbt-versions/dbt-release-tracks) you select. | **v2 Stable**, **v2 Nightly**, **v2 Extended**, **v1 Latest**, **v1 Compatible**, **v1 Extended** |
 | Only run on a custom branch | ☑️ | Determines whether to use a branch other than the repository’s default  | See below |
 | Custom branch | dev | Custom Branch name | See below |
 

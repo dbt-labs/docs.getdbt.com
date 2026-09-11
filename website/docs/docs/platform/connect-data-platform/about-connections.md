@@ -48,7 +48,7 @@ For projects still on v1, dbt supports the following data platforms:
 | [PostgreSQL](/docs/platform/connect-data-platform/connect-postgresql-alloydb) | ✅ |
 | [Snowflake](/docs/platform/connect-data-platform/connect-snowflake) | ✅ |
 | [Starburst or Trino](/docs/platform/connect-data-platform/connect-starburst-trino) | ✅ |
-| [Teradata](/docs/platform/connect-data-platform/connect-teradata) <Lifecycle status="preview" /> | ✅ |
+| [Teradata](/docs/platform/connect-data-platform/connect-teradata) | ✅ |
 
 </VersionBlock>
 

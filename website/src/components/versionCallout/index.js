@@ -12,7 +12,7 @@ const VersionCallout = ({ version }) => {
       <span>
         Available from dbt v{version} or with the{' '}
         <a href="/docs/dbt-versions/dbt-release-tracks">
-        dbt "Latest" release track
+        dbt "v1 Latest" release track
         </a>{''}.
       </span>
     </Admonition>

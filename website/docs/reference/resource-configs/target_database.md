@@ -6,9 +6,9 @@ datatype: string
 
 :::note
 
-Starting in <Constant name="core" /> v1.9+, this functionality is no longer utilized. Use the [database](/reference/resource-configs/database) config as an alternative to define a custom database while still respecting the `generate_database_name` macro. 
+Starting in <Constant name="dbt" /> v1.9+, this functionality is no longer utilized. Use the [database](/reference/resource-configs/database) config as an alternative to define a custom database while still respecting the `generate_database_name` macro. 
 
-Try it now in the [<Constant name="dbt" /> **Latest** release track](/docs/dbt-versions/dbt-release-tracks).
+Try it now in the [<Constant name="dbt" /> **v1 Latest** release track](/docs/dbt-versions/dbt-release-tracks).
 
 :::
 

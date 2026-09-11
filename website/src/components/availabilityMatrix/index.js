@@ -92,8 +92,8 @@ function ConnectionMatrix({ rows }) {
         <thead>
           <tr>
             <th scope="col">Connection</th>
-            <th scope="col">Core (Python)</th>
-            <th scope="col">Fusion</th>
+            <th scope="col">dbt v1</th>
+            <th scope="col">dbt v2</th>
           </tr>
         </thead>
         <tbody>

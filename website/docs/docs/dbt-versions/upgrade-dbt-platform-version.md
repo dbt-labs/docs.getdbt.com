@@ -7,7 +7,7 @@ availability: platform_login
 import FusionDWH from '/snippets/_fusion-dwh-platform.md';
 import FusionUpgradeSteps from '/snippets/_fusion-upgrade-steps.md';
 
-In <Constant name="dbt" />, both [jobs](/docs/deploy/jobs) and [environments](/docs/dbt-platform-environments) are configured to use a specific version of <Constant name="core" />. The version can be upgraded at any time.
+In <Constant name="dbt" />, both [jobs](/docs/deploy/jobs) and [environments](/docs/dbt-platform-environments) are configured to use a specific version of dbt. The version can be upgraded at any time.
 
 ## Environments
 
@@ -19,7 +19,7 @@ Navigate to the settings page of an environment, then click **Edit**. Click the 
 
 Starting in 2024, your project gets upgraded automatically on a cadence that you choose:
 
-The **Latest** track ensures you have up-to-date <Constant name="dbt" /> functionality, and early access to new features of the dbt framework. The **Compatible** and **Extended** tracks are designed for customers who need a less-frequent release cadence, the ability to test new dbt releases before they go live in production, and/or ongoing compatibility with the latest open source releases of <Constant name="core" />.
+The **v1 Latest** track ensures you have up-to-date <Constant name="dbt" /> functionality, and early access to new features of the dbt framework. The **v1 Compatible** and **v1 Extended** tracks are designed for customers who need a less-frequent release cadence, the ability to test new dbt releases before they go live in production, and/or ongoing compatibility with the latest open source releases of <Constant name="core" />.
 
 As a best practice, dbt Labs recommends that you test the upgrade in development first; use the [Override dbt version](#override-dbt-version) setting to test _your_ project on the latest dbt version before upgrading your deployment environments and the default development environment for all your colleagues.
 
@@ -41,91 +41,89 @@ Configure your project to use a different dbt version than what's configured in 
 3. In the side panel, click **Edit** and scroll to the **User development settings** section. 
 4. Choose a version from the **dbt version** dropdown and click **Save**.
 
-  An example of overriding the configured version to [**Latest** release track](/docs/dbt-versions/dbt-release-tracks) for the selected project:
+  An example of overriding the configured version to [**v1 Latest** release track](/docs/dbt-versions/dbt-release-tracks) for the selected project:
 
   <Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/choosing-dbt-version/example-override-version.png" width="60%" title="Example of overriding the dbt version on your user account"/>
 
 5. (Optional) Verify that <Constant name="dbt" /> will use your override setting to build the project by invoking a `dbt build` command in the <Constant name="studio_ide" />'s command bar. Expand the **System Logs** section and find the output's first line. It should begin with `Running with dbt=` and list the version <Constant name="dbt" /> is using. <br /><br />
    For users on Release tracks, the output will display `Running dbt...` instead of a specific version, reflecting the flexibility and continuous automatic updates provided by the release track functionality.
 
-## <Constant name="fusion_engine" /> 
+## <Constant name="fusion_engine" /> {#dbt-v2}
 
 dbt Labs has introduced the new [<Constant name="fusion_engine" />](/docs/introduction), a ground-up rebuild of dbt. This is currently generally available for Snowflake projects and in preview for other supported adapters on the <Constant name="dbt_platform" />. Eligible customers can update environments to <Constant name="fusion" /> using the same workflows as v1.x, but remember:
-- If you don't see the `Fusion Stable` release track as an option, you should check with your dbt Labs account team about eligibility.
-- To increase the compatibility of your project, update all jobs and environments to the **Latest** release track and read more about the changes in our [upgrade guide](/docs/dbt-versions/dbt-upgrade/upgrading-to-v2).
+- If you don't see the **v2 Stable** release track as an option, you should check with your dbt Labs account team about eligibility.
+- To increase the compatibility of your project, update all jobs and environments to the **v1 Latest** release track and read more about the changes in our [upgrade guide](/docs/dbt-versions/dbt-upgrade/upgrading-to-v2).
 - Make sure you're using a [supported adapter](/docs/platform/connect-data-platform/about-connections?version=2.0) and authentication method:
   <FusionDWH /> 
     <small> _Adapter lifecycle can differ between the <Constant name="dbt_platform" /> and local development &mdash; an adapter can reach GA in the dbt platform before it reaches GA for local use._ </small> <br />
-- Once you upgrade your development environment(s) to `Fusion Stable`, every user will have to restart the IDE.
+- Once you upgrade your development environment(s) to `v2 Stable`, every user will have to restart the IDE.
 
-  <Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/platform-upgrading-dbt-versions/upgrade-fusion.png" width="90%" title="Upgrade to the Fusion engine in your environment settings." />
+  <Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/platform-upgrading-dbt-versions/upgrade-fusion.png" width="90%" title="Upgrade to v2 in your environment settings." />
 
 ### Upgrading environments to <Constant name="fusion" />
 
 When you're ready to upgrade your project(s) to <Constant name="fusion_engine" />, there are some tools available to you in the dbt platform UI to help you get started. The <Constant name="fusion" /> upgrade assistant will step you through the process of preparing and upgrading your projects. 
 
-  <Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/choosing-dbt-version/fusion-upgrade-gui.png" width="60%" title="The Fusion upgrade assistant."/>
+  <Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/choosing-dbt-version/fusion-upgrade-gui.png" width="60%" title="The v2 upgrade assistant."/>
 
 #### Prerequisites
 
 To take advantage of the upgrade assistant and other upgrade tools, you'll need to meet the following prerequisites:
-- Your dbt project must be updated to use the **Latest** release track.
+- Your dbt project must be updated to use the **v1 Latest** release track.
 - You must have a `developer` license.
 - You must have the proper [permissions set](/docs/platform/manage-access/enterprise-permissions) to execute individual upgrade tasks. Migrating to <Constant name="fusion" /> is a multi-step process and some of these steps may be repeated across projects by different users:
 
 | Upgrade task | Required permission(s) | Supported permission sets |
 |---------|------------------------|-----------------------------|
-| Enable Fusion access (triggers migration flows) | Fusion readiness: `write` <br></br> Projects: `write` | Admin, Account Admin and anyone assigned the Fusion admin set, provided their base role also has `write` access to projects |
-| View Fusion readiness and job eligibility | Fusion readiness: `read` | Developer, Admin, Member, Account Admin, Fusion admin |
+| Enable dbt v2 access (triggers migration flows) | dbt v2 readiness: `write` <br></br> Projects: `write` | Admin, Account Admin, and anyone assigned the v2 Migration Admin set, provided their base role also has `write` access to projects |
+| View dbt v2 readiness and job eligibility | dbt v2 readiness: `read` | Developer, Admin, Member, Account Admin, v2 Migration Admin |
 | **Run once on <Constant name="fusion" />** job action | Runs: `write` | Job Admin, Job Runner, Admin, Member, Project Creator, Account Admin |
-| Enable Fusion-latest for an environment | Environments: `write` | Job Admin, Admin, Member, Project Creator, Account Admin |
+| Enable **v2 Stable** for an environment | Environments: `write` | Job Admin, Admin, Member, Project Creator, Account Admin |
 
 #### Assign access to upgrade
 
 The <Constant name="fusion" /> readiness & upgrade flow are controlled by two account-level settings that an admin must configure.
 
-Step 1: Enable Fusion readiness features (required)
+Step 1: Enable dbt v2 readiness features (required)
 
 The upgrade assistant and readiness panel only appear after enabling this setting. From your **Account settings**:
 
 1. Navigate to the **Account** screen.
 2. Click **Edit** and scroll to the **Settings** section.
-3. Click the box next to **Enable Fusion readiness & upgrade features**.
+3. Click the box next to **Enable dbt v2 readiness & upgrade features**.
 4. Click **Save**.
 
-Once enabled, all admins and developers can see each project's Fusion readiness status and which jobs are eligible or ineligible for <Constant name="fusion" />. Admins can also initiate the <Constant name="fusion" /> upgrade from development environments, environment settings, and job settings (subject to existing user permissions). Developer-licensed users will have access to debug tools to help make projects <Constant name="fusion" /> eligible in both development and production environments.
+Once enabled, all admins and developers can see each project's v2 readiness status and which jobs are eligible or ineligible for <Constant name="fusion" />. Admins can also initiate the <Constant name="fusion" /> upgrade from development environments, environment settings, and job settings (subject to existing user permissions). Developer-licensed users will have access to debug tools to help make projects <Constant name="fusion" /> eligible in both development and production environments.
 
 Step 2: Restrict upgrade access (optional, Enterprise/Enterprise+ only)
 
-By default, all admins and developer-licensed users can access the <Constant name="fusion" /> readiness & upgrade flow. To restrict upgrade execution to users with the `Fusion admin` permission set, enable this additional setting. From your **Account settings**:
+By default, all admins and developer-licensed users can access the <Constant name="fusion" /> readiness & upgrade flow. To restrict upgrade execution to users with the `v2 Migration Admin` permission set, enable this additional setting. From your **Account settings**:
 
 1. Navigate to the **Account** screen.
 2. Click **Edit** and scroll to the **Settings** section.
-3. Click the box next to **Enable restricted Fusion upgrade permissions**.
+3. Click the box next to **Enable restricted dbt v2 upgrade permissions**.
 4. Click **Save**.
 
-This hides the <Constant name="fusion" /> upgrade workflows from users who don't have the [`Fusion admin`](/docs/platform/manage-access/enterprise-permissions#fusion-admin) permission set. To grant access to the upgrade workflows to specific projects and/or specific users:
+This hides the <Constant name="fusion" /> upgrade workflows from users who don't have the [`v2 Migration Admin`](/docs/platform/manage-access/enterprise-permissions#v2-migration-admin) permission set. To grant access to the upgrade workflows to specific projects and/or specific users:
 1. Navigate to an existing group in your **Account settings** and click **Edit**, or click [**Create group**](/docs/platform/manage-access/about-user-access#create-new-groups) to create a new one.
 2. Scroll to the **Access and permissions** section and click **Add permission**.
-3. Select the **Fusion admin** permission set from the dropdown, then select the project(s) you want the users to access. 
+3. Select the **v2 Migration Admin** permission set from the dropdown, then select the project(s) you want the users to access. 
 4. Click **Save**.
-
-  <Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/choosing-dbt-version/assign-fusion-admin.png" width="60%" title="Assign Fusion admin to groups and projects."/>
 
 The <Constant name="fusion" /> upgrade workflows helps identify areas of the project that need to be updated and provides tools for manually resolving and autofixing any errors. 
 
 #### Upgrade your development environment
 
 To begin the process of upgrading to <Constant name="fusion" /> with the assistant:
-1. From the project homepage or sidebar menu, click the **Start Fusion upgrade** or **Get started** button. You will be redirected to the <Constant name="studio_ide" />.
-  <Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/choosing-dbt-version/start-upgrade.png" width="60%" title="Start the Fusion upgrade."/>
+1. From the project homepage or sidebar menu, click the **Start dbt v2 upgrade** or **Get started** button. You will be redirected to the <Constant name="studio_ide" />.
+  <Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/choosing-dbt-version/start-upgrade.png" width="60%" title="Start the v2 upgrade."/>
 2. At the top of the <Constant name="studio_ide" /> click **Check deprecation warnings**. 
   <Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/choosing-dbt-version/check-deprecations.png" width="60%" title="Begin the process of parsing for deprecation warnings."/>
 3. dbt parses your project for the deprecations and presents a list of all deprecation warnings along with the option to **Autofix warnings**. Autofixing attempts to correct all syntax errors automatically. See [Fix deprecation warnings](/docs/platform/studio-ide/autofix-deprecations) for more information. 
   <Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/choosing-dbt-version/check-deprecations.png" width="60%" title="Begin the process of parsing for deprecation warnings."/>
 4. Once the deprecation warnings have been resolved, click the **Enable <Constant name="fusion" />** button. This upgrades your development environment to <Constant name="fusion" />!
 
-  <Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/choosing-dbt-version/autofix-success.png" width="60%" title="You're now ready to upgrade to Fusion in your development environment!"/>
+  <Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/choosing-dbt-version/autofix-success.png" width="60%" title="You're now ready to upgrade to v2 in your development environment!"/>
 
 Now that you've upgraded your development environment to <Constant name="fusion" />, you're ready to start the process of upgrading your Production, Staging, and General environments. Follow your organization's standard procedures and use the [release tracks](#release-tracks) to upgrade.
 

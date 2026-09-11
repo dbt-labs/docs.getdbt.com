@@ -33,6 +33,41 @@ The **State** tab also displays the following charts:
 - **DATT** &mdash; Shows the target tables processed by dbt State, split into **Billable** and **Free**. Daily active target tables (DATTs) are the [billable units](/docs/platform/billing/dbt-state-usage#daily-active-target-tables) for dbt State. During a trial, all DATTs are counted as free.
 - **Asset builds** &mdash; Shows all model builds for the month, including models reused and cloned.
 
+## Lag tolerance recommendations
+
+The **dbt State** page, which you can access from the left-side menu of the <Constant name="dbt_platform" />, includes a **Lag tolerance recommendations** section that identifies models that could safely tolerate more lag, letting dbt State skip more runs and save additional compute.
+
+The recommendations table displays the following columns:
+
+<SimpleTable>
+| Column | Description |
+|--------|-------------|
+| **Model name** | The name of the model that could benefit from a higher `lag_tolerance` value. |
+| **Project** | The dbt project the model belongs to, as set by `name:` in `dbt_project.yml`. This may differ from the project name in the <Constant name="dbt_platform" />. |
+| **Current lag** | The model's current `lag_tolerance` setting. |
+| **Recommended lag** | The `lag_tolerance` value dbt State recommends based on your model's 30-day build history. |
+| **% time saved** | The estimated percentage of build time you'd save by applying the recommended `lag_tolerance`. |
+| **Projected 30d time savings** | The estimated build time you could save over the next 30 days by applying the recommended `lag_tolerance`, based on redundant builds in the previous 30 days. This estimate includes only this model, so actual savings may be higher if downstream models also do not rebuild. |
+</SimpleTable>
+
+You can search for a specific model using the search bar, or filter recommendations by project using the **Project** dropdown menu.
+
+To apply a recommendation, update the model's `lag_tolerance` config. For configuration syntax and examples, refer to the [`lag_tolerance` config page](/reference/resource-configs/lag-tolerance).
+
+### How dbt State calculates recommendations
+
+dbt State analyzes each model’s build history from the previous 30 days. Models with fewer than 10 recorded builds are excluded because there isn't enough history to make a reliable recommendation.
+
+For each eligible model, dbt State:
+
+1. Identifies builds where the model’s definition and inputs had not changed since the previous build.
+2. Estimates the build time that different `lag_tolerance` values would have saved.
+3. Recommends the smallest value that would have saved more than 30 minutes, helping reduce redundant builds while keeping data as fresh as possible.
+
+A model doesn’t appear in the table if it’s a view or its current `lag_tolerance` value is already equal to or greater than the recommended value. Each account displays 20 models with the highest projected savings.
+
+<Lightbox src="/img/docs/dbt-platform/using-dbt-platform/lag-tolerance-recommendations.png" width="80%" title="Lag tolerance recommendations" />
+
 ## Models built and reused chart
 
 When you go to your **Account home**, you'll see a chart showing the number of models built and reused, giving you visibility into how dbt State is optimizing your data builds. You can also view the number of reused models per project on **Account home**.
@@ -75,4 +110,5 @@ To see why dbt State rebuilt, reused, or cloned a specific resource, go to **Orc
 - [Set up dbt State](/docs/deploy/dbt-state-setup)
 - [dbt State trial and billing](/docs/deploy/dbt-state-trial)
 - [dbt State configs](/reference/resource-configs/dbt-state-configs)
+- [`lag_tolerance` config reference](/reference/resource-configs/lag-tolerance)
 - [Migrate from state-aware orchestration](/docs/deploy/dbt-state-migration)

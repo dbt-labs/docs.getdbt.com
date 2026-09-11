@@ -15,7 +15,7 @@ Use `dbt show` to:
 
 By default, `dbt show` will display the first 5 rows from the query result. This can be customized by passing the `limit` or the `inline` flags , where `n` is the number of rows to display.
 
-If previewing a model, dbt will always compile and run the compiled query from source. It will not select from the already-materialized database relation, even if you've just run the model. (We may support that in the future; if you're interested, upvote or comment on [dbt-core#7391](https://github.com/dbt-labs/dbt-core/issues/7391).)
+If previewing a model, dbt will always compile and run the compiled query from source. It will not select from the already-materialized database relation, even if you've just run the model. (We may support that in the future; if you're interested, upvote or comment on [dbt-labs/dbt#7391](https://github.com/dbt-labs/dbt/issues/7391).)
 
 #### `limit` flag
 - The `--limit` flag modifies the underlying SQL and not just the number of rows displayed. By using the `--limit n` flag, it means `n` is the number of rows to display and retrieved from the data warehouse. 

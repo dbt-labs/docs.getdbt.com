@@ -1,5 +1,5 @@
 ---
-title: "Connect AWS Glue to dbt Core"
+title: "Connect AWS Glue to dbt v1"
 sidebar_label: "AWS Glue"
 description: "Read this guide to learn about the AWS Glue warehouse setup in dbt."
 id: "glue-setup"

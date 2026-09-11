@@ -27,6 +27,10 @@ import AboutFusion from '/snippets/_about-fusion.md';
 
 <AboutFusion />
 
+## Resources
+
+- [<Constant name="fusion_engine" /> changelog](https://github.com/dbt-labs/dbt/blob/main/CHANGELOG-fusion.md)
+
 ## Install dbt
 
 Upgrading to v2 is an install step. Install dbt using `pip` to get <Constant name="fusion" /> for v2:
@@ -45,9 +49,9 @@ This new major version is an opportunity to _strengthen the framework_ by removi
 
 That work is documented below — it should be simple, straightforward, and in many cases, auto-fixable with the [`dbt-autofix`](https://github.com/dbt-labs/dbt-autofix) helper or the [agent skill](https://github.com/dbt-labs/dbt-agent-skills/tree/main/skills/dbt-migration/skills/migrating-dbt-core-to-fusion).
 
-:::tip Test v2 parser compatibility from <Constant name="core" /> v1.12
+:::tip Test v2 parser compatibility from <Constant name="dbt" /> v1.12
 
-If you're on <Constant name="core" /> v1.12, you can test the rust parser compatibility before fully migrating by using the opt-in [`--use-v2-parser`](/reference/global-configs/parsing#opt-in-v2-parser) flag. This delegates parsing to the v2 parser without changing any other behavior, making it a low-risk way to catch compatibility issues early.
+If you're on <Constant name="dbt" /> v1.12, you can test the rust parser compatibility before fully migrating by using the opt-in [`--use-v2-parser`](/reference/global-configs/parsing#opt-in-v2-parser) flag. This delegates parsing to the v2 parser without changing any other behavior, making it a low-risk way to catch compatibility issues early.
 
 :::
 
@@ -62,7 +66,7 @@ The following adapters are supported in v2:
 ### A clean slate
 
 v2 will not support any deprecated functionality (see the [Changes overview](/reference/changes-overview) for details):
-- All [deprecation warnings](/reference/deprecations) must be resolved before upgrading to the new engine. This includes historic deprecations and [new ones as of <Constant name="core" /> v1.10](/docs/dbt-versions/dbt-upgrade/upgrading-to-v1.10#deprecation-warnings).
+- All [deprecation warnings](/reference/deprecations) must be resolved before upgrading to the new engine. This includes historic deprecations and [new ones as of <Constant name="dbt" /> v1.10](/docs/dbt-versions/dbt-upgrade/upgrading-to-v1.10#deprecation-warnings).
 - Some [behavior change flags](/reference/global-configs/behavior-changes#behavior-change-flags) will be removed (generally enabled). You can no longer opt out of them using `flags:` in your `dbt_project.yml`.
 
 ### Ecosystem packages
@@ -122,6 +126,12 @@ v2 introduces [dbt Docs v2](/docs/build/view-documentation#dbt-docs-v2), a faste
 To hydrate catalog metadata (`catalog.json`) for <Constant name="catalog" /> without building the site, use the [`--write-catalog` flag](/reference/commands/cmd-docs#--write-catalog-flag) instead.
 
 For full usage, refer to [About dbt docs commands](/reference/commands/cmd-docs).
+
+### Local execution of unit tests <Lifecycle status="beta" />
+
+v2 introduces the [`compute`](/reference/resource-configs/compute) config for unit tests. Set your unit tests with `compute: local` and dbt runs the test with DuckDB instead of sending it to your data platform, which takes the warehouse round trip out of your development loop.
+
+This config is opt-in. For details, refer to [Run unit tests locally](/docs/build/unit-tests#run-unit-tests-locally).
 
 ### Changed functionality
 
@@ -211,13 +221,13 @@ Some historic CLI flags from v1 will no longer do anything in v2. If you pass th
 
 The following deprecated flag requires updates in your job definitions or scripts:
 
-- **`--models` / `--model` / `-m`:** Use `--select` / `-s` instead (renamed in <Constant name="core" /> v0.21). dbt raises an error in v2 if you use the old flags. Do not pass `--models` as the value to `-s` (for example, `dbt run -s --models`); v1 treated that as a model name, but v2 requires a valid selector.
+- **`--models` / `--model` / `-m`:** Use `--select` / `-s` instead (renamed in <Constant name="dbt" /> v0.21). dbt raises an error in v2 if you use the old flags. Do not pass `--models` as the value to `-s` (for example, `dbt run -s --models`); v1 treated that as a model name, but v2 requires a valid selector.
 
 <FusionPartialParseCliFlags />
 
 #### Conflicting package versions when a local package depends on a hub package which the root package also wants will error
 
-If a local package depends on a hub package that the root package also wants, `dbt deps` doesn't resolve conflicting versions in <Constant name="core" /> v1; it will install whatever the root project requests.
+If a local package depends on a hub package that the root package also wants, `dbt deps` doesn't resolve conflicting versions in <Constant name="core" />; it will install whatever the root project requests.
 
 v2 will present an error:
 
@@ -308,17 +318,17 @@ In v2, `dbt build` runs _all_ of the unit tests _first_, and then builds the res
 
 #### Configuring `--threads`
 
-<Constant name="core" /> v1 runs with `--threads 1` by default. You can increase this number to run more nodes in parallel on the remote data platform, up to the max parallelism enabled by the DAG.
+<Constant name="core" /> runs with `--threads 1` by default. You can increase this number to run more nodes in parallel on the remote data platform, up to the max parallelism enabled by the DAG.
 
 v2 handles threading differently depending on your data platform:
 
 <FusionThreads />
 
-For more information, refer to [Using threads](/docs/running-a-dbt-project/using-threads#fusion-engine-thread-optimization).
+For more information, refer to [Using threads](/docs/running-a-dbt-project/using-threads#dbt-v2-thread-optimization).
 
 #### Continue to compile unrelated nodes after hitting a compile error
 
-As soon as <Constant name="core" /> v1 `compile` encounters an error compiling one of your models, dbt stops and doesn't compile anything else.
+As soon as v1's `compile` encounters an error compiling one of your models, dbt stops and doesn't compile anything else.
 
 When v2's `compile` encounters an error, it will skip nodes downstream of the one that failed to compile, but it will keep compiling the rest of the DAG (in parallel, up to the number of configured / optimal threads).
 
@@ -499,8 +509,8 @@ v2 is available in two distributions. For more information, refer to [dbt licens
 <SimpleTable>
 | Distribution | Package | Use it when |
 | --- | --- | --- |
-| <Constant name="fusion" /> | `dbt` | You want the recommended v2 experience, with <Constant name="fusion" /> installed by default. |
-| <Constant name="core_v2" /> | `dbt-core` | Your organization has a strict requirement to use the Apache 2.0 [open-source runtime](/docs/local/install-dbt-v2). |
+| <Constant name="fusion" /> | `dbt` | The recommended v2 experience. |
+| dbt OSS | `dbt-core` | Your organization has a strict requirement to use the Apache 2.0 [open-source runtime](/docs/local/install-dbt-v2). |
 </SimpleTable>
 
-If you have a older project that isn’t ready to move to v2, continue using `dbt-core` v1.x for compatibility. For new or upgraded projects, we recommend v2.
+If you have a older project that isn’t ready to move to v2, continue using v1.x for compatibility. For new or upgraded projects, we recommend v2.

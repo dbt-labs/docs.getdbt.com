@@ -222,7 +222,7 @@ First things first: access to underlying data is always defined and enforced by 
 * **Public:** Models with `public` access can be referenced everywhere. These are the “data products” of your organization.
 
 * **Protected:** Models with `protected` access can only be referenced within the same project. This is the default level of model access. 
-We are discussing a future extension to `protected` models to allow for their reference in _specific_ downstream projects. Please read [the GitHub issue](https://github.com/dbt-labs/dbt-core/issues/9340), and upvote/comment if you’re interested in this use case.
+We are discussing a future extension to `protected` models to allow for their reference in _specific_ downstream projects. Please read [the GitHub issue](https://github.com/dbt-labs/dbt/issues/9340), and upvote/comment if you’re interested in this use case.
 
 * **Private:** Model `groups` enable more-granular control over where `private` models can be referenced. By defining a group, and configuring models to belong to that group, you can restrict other models (not in the same group) from referencing any `private` models the group contains. Groups also provide a standard mechanism for defining the `owner` of all resources it contains.
 
@@ -290,9 +290,9 @@ The [<Constant name="dbt" /> CLI](/docs/platform/dbt-cli-installation) allows us
 
 </DetailsToggle>
 
-<DetailsToggle alt_header="Can I upgrade Mesh projects to Fusion incrementally?">
+<DetailsToggle alt_header="Can I upgrade Mesh projects to v2 incrementally?">
 
-Yes! You can upgrade select projects to the <Constant name="fusion_engine" /> while keeping others on <Constant name="core" />.
+Yes! You can upgrade select projects to <Constant name="fusion_engine" /> while keeping others on <Constant name="core" />.
 
 - <Constant name="fusion" /> projects can reference public models from <Constant name="core" /> projects
 - <Constant name="core" /> projects can reference public models from <Constant name="fusion" /> projects
@@ -317,15 +317,15 @@ Yes, your account must be on [at least dbt v1.6](/docs/dbt-versions/upgrade-dbt-
 
 </DetailsToggle>
 
-<DetailsToggle alt_header="Is there a way to leverage dbt Mesh capabilities in dbt Core?">
+<DetailsToggle alt_header="Is there a way to leverage dbt Mesh capabilities with local dbt installations?">
 
-While dbt Core defines several of the foundational elements for dbt Mesh, <Constant name="dbt" /> offers an enhanced experience that leverages these elements for scaled collaboration across multiple teams, facilitated by multi-project discovery in <Constant name="catalog" /> that’s tailored to each user’s access.
+While self-hosted local dbt installations (dbt CLI) define several of the foundational elements for dbt Mesh, the <Constant name="dbt_platform" /> offers an enhanced experience that leverages these elements for scaled collaboration across multiple teams, facilitated by multi-project discovery in <Constant name="catalog" /> that’s tailored to each user’s access.
 
-Several key components that underpin the dbt Mesh pattern, including [model contracts, versions, and access modifiers](/docs/mesh/govern/about-model-governance), are defined and implemented in dbt Core. We believe these are components of the core language, which is why their implementations are open source. We want to define a standard pattern that analytics engineers everywhere can adopt, extend, and help us improve.
+Several key components that underpin the dbt Mesh pattern, including [model contracts, versions, and access modifiers](/docs/mesh/govern/about-model-governance), are defined and implemented in the local dbt CLI. We believe these are components of the core language, which is why their implementations are open source. We want to define a standard pattern that analytics engineers everywhere can adopt, extend, and help us improve.
 
-To reference models defined in another project, users can also leverage [packages](/docs/build/packages), a longstanding feature of dbt Core. By importing an upstream project as a package, dbt will import all models defined in that project, which enables the resolution of cross-project references to those models. They can be [optionally restricted](/docs/mesh/govern/model-access#how-do-i-restrict-access-to-models-defined-in-a-package) to just the models with `public` access.
+To reference models defined in another project, users can also leverage [packages](/docs/build/packages), a longstanding feature of dbt. By importing an upstream project as a package, dbt will import all models defined in that project, which enables the resolution of cross-project references to those models. They can be [optionally restricted](/docs/mesh/govern/model-access#how-do-i-restrict-access-to-models-defined-in-a-package) to just the models with `public` access.
 
-The major distinction comes with <Constant name="dbt" />'s metadata service, which is unique to the <Constant name="dbt" /> platform and allows for the resolution of references to only the public models in a project. This service enables users to take dependencies on upstream projects, and reference just their `public` models, *without* needing to load the full complexity of those upstream projects into their local development environment.
+The major distinction comes with the <Constant name="dbt_platform" />'s metadata service, which is unique to the cloud-hosted accounts and allows for the resolution of references to only the public models in a project. This service enables users to take dependencies on upstream projects, and reference just their `public` models, *without* needing to load the full complexity of those upstream projects into their local development environment.
 
 </DetailsToggle>
 

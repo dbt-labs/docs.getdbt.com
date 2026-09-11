@@ -12,9 +12,9 @@ availability: local_free
 dbt connects to your data platform to run SQL transformations against your data. 
 <VersionBlock firstVersion="2.0">
 
-## Supported Fusion data platforms
+## Supported dbt v2 data platforms
 
-The <Constant name="fusion_engine" /> includes built-in support for:
+<Constant name="fusion_engine" /> includes built-in support for:
 
 - [Snowflake](/docs/local/connect-data-platform/snowflake-setup) <Lifecycle status="preview" />
 - [Databricks](/docs/local/connect-data-platform/databricks-setup) <Lifecycle status="preview" />

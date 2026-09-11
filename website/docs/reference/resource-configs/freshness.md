@@ -12,10 +12,8 @@ import FreshnessFields from '/snippets/_freshness-fields.md';
 
 # freshness <Lifecycle status="beta" />
 
-<VersionBlock lastVersion="1.99">
-
-:::note dbt v2 only
-Freshness model configurations are only available for the dbt Fusion engine. Refer to [Source data freshness](/docs/build/sources#source-data-freshness) when using dbt v1.
+:::note <Constant name="fusion" /> only
+Freshness model configurations are only available for dbt v2. Refer to [Source data freshness](/docs/build/sources#source-data-freshness) when using <Constant name="core" />.
 :::
 
 </VersionBlock>
