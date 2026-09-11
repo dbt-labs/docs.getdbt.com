@@ -388,7 +388,7 @@ models:
 
 This move is only necessary for fragments defined outside of the main YAML structure. For more information about this new key, see [anchors](/reference/resource-properties/anchors).
 
-#### Self-referential (recursive) YAML anchors are not supported
+#### Self-referential (recursive) YAML anchors are not supported {#self-referential-yaml}
 
 In v1, dbt could parse a YAML anchor that merges into an element of the same sequence it's defined on, creating a self-referential (cyclic) anchor. For example, anchoring a full `tables:` sequence and then merging that anchor into one of the sequence's own elements:
 
