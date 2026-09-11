@@ -58,6 +58,76 @@ To run only unit tests on demand, use the `test_type` selector — this works ac
 dbt test --select "test_type:unit"
 ```
 
+<VersionBlock firstVersion="2.0">
+
+## Run unit tests locally <Lifecycle status="beta" />
+
+You can run unit tests locally when you're working through tricky SQL and you want to know right away whether your logic works. By default, each unit test sends a query to your data platform and waits for the result. This can slow down testing and use warehouse compute.
+
+Because unit tests use static fixtures instead of real data, they don’t need to necessarily run on your data platform. Use the [`compute: local` config](/reference/resource-configs/compute) to run them locally with DuckDB for faster feedback _without_ the warehouse compute cost.
+
+That gives you:
+
+- A test loop that keeps up with you. Change your SQL, rerun the test, and repeat without waiting on a warehouse queue.
+- Room to test as you go, so you catch broken logic while you're still writing it instead of finding it in CI (or worse, after it reaches production)
+- Queries that execute with the same functions and runtime semantics as the remote warehouse
+- Your data platform's compute left for building models.
+
+### Prerequisites
+
+- Snowflake or BigQuery. Local execution isn't available for other data platforms, and it only applies to unit tests.
+- The direct upstream models of the model you're testing already exist in your data platform. dbt fetches their schemas to translate your SQL, so if they don't exist, the test fails with an error about fetching the upstream relation schema.
+- `static_analysis` isn't set to `off` on the test. Local execution needs static analysis to translate your SQL, so `compute: local` promotes [static analysis](/reference/resource-configs/static-analysis) to `strict` for that test. If you set `static_analysis: off`, the test can't run locally and fails with `ExecutorFailed (dbt1401)`.
+
+### What to know before you use it
+
+- dbt fetches upstream schemas the first time you run the test, then caches them. Later runs reuse the cache, so they don't re-fetch.
+- Local execution only works if dbt can compile your model's SQL and translate it to DuckDB. Complex SQL and functions specific to your data platform might have no DuckDB equivalent so Snowflake's `AI_CLASSIFY` and `haversine` are two examples. So for example, a model that calls `haversine` fails with `failed in db_runner: Internal: Catalog Error: Scalar Function with name haversine does not exist!`.
+- A translation failure is a test failure. `local` doesn't fall back to your data platform, so the test fails and dbt exits with a non-zero code. 
+
+### How to configure
+
+You can configure it on a single unit test:
+
+<File name='models/schema.yml'>
+
+```yaml
+unit_tests:
+  - name: test_is_valid_email_address
+    model: dim_customers
+    config:
+      compute: local
+```
+
+</File>
+
+Or on every unit test in your project:
+
+<File name='dbt_project.yml'>
+
+```yaml
+unit_tests:
+  my_project:
+    +compute: local
+```
+
+</File>
+
+[`compute`](/reference/resource-configs/compute) accepts two values:
+
+<SimpleTable>
+
+| Value | What it does |
+|-------|--------------|
+| `remote` | Sends the test to your data platform to run, using warehouse compute like any other query. This is the default, so you only need to set it explicitly to opt a test out of a project-level `+compute: local`. |
+| `local` | Runs the test with DuckDB, wherever dbt itself is running. Nothing is sent to your data platform, so the test returns quickly and uses no warehouse compute. |
+
+</SimpleTable>
+
+You might also see `sidecar` in error messages but it means the same thing as `local`.
+
+</VersionBlock>
+
 ## Unit testing a model
 
 This example creates a new `dim_customers` model with a field `is_valid_email_address` that calculates whether or not the customer’s email is valid: 
@@ -358,7 +428,7 @@ unit_tests:
 
 ```
 
-There is currently no way to unit test whether the dbt framework inserted/merged the records into your existing model correctly, but [we're investigating support for this in the future](https://github.com/dbt-labs/dbt-core/issues/8664).
+There is currently no way to unit test whether the dbt framework inserted/merged the records into your existing model correctly, but [we're investigating support for this in the future](https://github.com/dbt-labs/dbt/issues/8664).
 
 ## Unit testing a model that depends on ephemeral model(s)
 

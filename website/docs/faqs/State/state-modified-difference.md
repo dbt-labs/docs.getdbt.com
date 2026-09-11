@@ -1,6 +1,6 @@
 ---
 title: How is dbt State different from using state:modified?
-description: "Learn how dbt State compares to the state:modified selector in dbt Core."
+description: "Learn how dbt State compares to the state:modified selector in dbt v1."
 sidebar_label: 'How is this different from state:modified?'
 id: state-modified-difference
 ---

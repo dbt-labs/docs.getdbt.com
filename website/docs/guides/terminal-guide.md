@@ -45,7 +45,7 @@ Search for "Terminal" in the Start menu. Windows Terminal supports Command Promp
 In VS Code, press `` Ctrl+` `` to open a terminal panel directly in your editor.
 
 :::tip Using dbt on Windows?
-<Constant name="core" /> runs natively on Windows via PowerShell. For the best experience, consider using [WSL (Windows Subsystem for Linux)](https://learn.microsoft.com/en-us/windows/wsl/install).
+dbt runs natively on Windows via PowerShell. For the best experience, consider using [WSL (Windows Subsystem for Linux)](https://learn.microsoft.com/en-us/windows/wsl/install).
 :::
 
 </TabItem>

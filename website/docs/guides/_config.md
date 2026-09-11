@@ -1,13 +1,13 @@
 ---
 title: Browse our guides
-description: The dbt platform is the fastest and most reliable way to deploy dbt for scalable data transformation, while dbt Core powers open-source transformation workflows. Together, they provide a seamless analytics engineering experience. Explore our step-by-step guides, quickstart tutorials, and troubleshooting resources to get started with dbt and your data platform.
+description: The dbt platform is the fastest and most reliable way to deploy dbt for scalable data transformation, while dbt v1 powers open-source transformation workflows. Together, they provide a seamless analytics engineering experience. Explore our step-by-step guides, quickstart tutorials, and troubleshooting resources to get started with dbt and your data platform.
 categories:
 
   - title: Get started with dbt v2
     guides:
       - dbt
-      - prepare-dbt-upgrade
-      - upgrade-to-dbt
+      - prepare-v2-upgrade
+      - upgrade-to-v2
       - dbt-platform-local-workflow
       - adapter-creation-v2
 

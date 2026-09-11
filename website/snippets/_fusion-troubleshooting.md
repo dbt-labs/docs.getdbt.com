@@ -70,11 +70,11 @@ This command downloads the LSP and re-activates the extension to resolve the err
 If you see an error message indicating that your version of dbt is unsupported, then there is likely a problem with your environment.
 
 Check the dbt Path setting in your VS Code settings. If this path is set, ensure that it is pointing to a valid <Constant name="fusion_engine" /> executable.
-If necessary, you can also install the <Constant name="fusion_engine" /> directly using these instructions: [Install the <Constant name="fusion" /> CLI](/docs/local/install-dbt?version=2)
+If necessary, you can also install <Constant name="fusion_engine" /> directly using these instructions: [Install the <Constant name="fusion" /> CLI](/docs/local/install-dbt?version=2)
 
 </Expandable>
 
-<Expandable alt_header="dbt Fusion binary not found at the configured path">
+<Expandable alt_header="dbt v2 binary not found at the configured path">
 
 If the extension reports that the <Constant name="fusion_engine" /> binary can't be found at the configured path (for example, `dbt-fusion binary not found at [path]`), the `dbt.fusionPath` setting is pointing to a location that doesn't contain a valid binary.
 
@@ -83,7 +83,7 @@ If the extension reports that the <Constant name="fusion_engine" /> binary can't
 - To install manually, follow [Install the <Constant name="fusion" /> CLI](/docs/local/install-dbt?version=2).
 </Expandable>
 
-<Expandable alt_header="dbt Fusion version is not compatible with this extension">
+<Expandable alt_header="dbt v2 version is not compatible with this extension">
 
 If the extension reports that the installed <Constant name="fusion" /> version isn't compatible with your dbt VS Code extension version, the two are outside the supported range.
 
@@ -93,7 +93,7 @@ If the extension reports that the installed <Constant name="fusion" /> version i
 
 </Expandable>
 
-<Expandable alt_header="dbt Fusion crashes on startup">
+<Expandable alt_header="dbt v2 crashes on startup">
 
 If the extension reports that <Constant name="fusion" /> crashed on startup, confirm the binary runs on its own:
 
@@ -101,7 +101,7 @@ If the extension reports that <Constant name="fusion" /> crashed on startup, con
 2. Use the **Show Logs** action in the notification (or open the **Output** tab) to review the startup error.
 </Expandable>
 
-<Expandable alt_header="A known-bad dbt Fusion version is installed">
+<Expandable alt_header="A known-bad dbt v2 version is installed">
 
 If the extension warns that your installed <Constant name="fusion" /> version has a known regression, dbt Labs has flagged that release as [known-bad](/docs/dbt-versions/dbt-version-compatibility#known-bad-releases). Update to the version named in the notification.
 
