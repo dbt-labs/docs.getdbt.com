@@ -237,12 +237,12 @@ Where you run dbt changes how you generate and view your docs. `dbt docs serve` 
 | Where you're working | Command to run | How to view your docs |
 |---------------------|----------------|-----------------------|
 | [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio) | `dbt docs generate` | Click the docs icon above the file tree to open the generated site. |
-| <Constant name="dbt_platform" /> jobs | Nothing extra for <Constant name="catalog" />. Add `dbt docs generate` as a job step to also produce the static site. | View metadata in [<Constant name="catalog" />](/docs/explore/build-and-view-your-docs), or download the site artifacts from the run and host them yourself. |
+| <Constant name="dbt_platform" /> jobs | Nothing extra &mdash; catalog metadata refreshes automatically | View your project in [<Constant name="catalog" />](/docs/explore/build-and-view-your-docs) |
 | Locally with the [<Constant name="platform_cli" />](/docs/platform/dbt-cli-installation) or a [local install](/docs/local/install-dbt) | `dbt docs generate`, then `dbt docs serve` | Preview in your browser at `localhost:8580`, or host the `target/` output on a static file host. |
 
 In <Constant name="dbt_platform" /> jobs running on <Constant name="fusion" />, you don't need to change anything to hydrate catalog metadata. dbt runs `write-catalog` automatically with `build` and `run`, so <Constant name="catalog" /> stays current without a `dbt docs generate` step. You can optionally include `--write-catalog` when running `dbt parse` or `dbt compile`.
 
-Adding `dbt docs generate` as an explicit job step writes the full [dbt Docs v2](#dbt-docs-v2) site artifacts &mdash; including `index.html` &mdash; so you can retrieve them from the run and host the site outside of <Constant name="catalog" />. Without that step, the job hydrates catalog metadata but doesn't produce the static site.
+To build and host the [dbt Docs v2](#dbt-docs-v2) static site yourself, generate it locally with `dbt docs generate` and publish the output to a static file host.
 
 :::note Developer plans
 Developer plans don't have access to <Constant name="catalog" />. To view your docs, either run `dbt docs generate` in the <Constant name="studio_ide" /> and open the docs icon, or generate and serve the site locally.
