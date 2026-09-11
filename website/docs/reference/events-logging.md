@@ -42,9 +42,9 @@ For `--log-format`, `--log-level`, and related CLI configs, refer to [Logs](/ref
 
 <VersionBlock lastVersion="1.99">
 
-_For more details about how the eventing system has been implemented in dbt-core, see the [`events` module README](https://github.com/dbt-labs/dbt-core/blob/HEAD/core/dbt/events/README.md)._
+_For more details about how the eventing system has been implemented in dbt, see the [`events` module README](https://github.com/dbt-labs/dbt/blob/HEAD/core/dbt/events/README.md)._
 
-The structure of each event in `dbt-core` is backed by a schema defined using [protocol buffers](https://developers.google.com/protocol-buffers). All schemas are defined in the [`types.proto`](https://github.com/dbt-labs/dbt-core/blob/3bf148c443e6b1da394b62e88a08f1d7f1d8ccaa/core/dbt/events/core_types.proto) file within the `dbt-core` codebase.
+The structure of each event in `dbt-core` is backed by a schema defined using [protocol buffers](https://developers.google.com/protocol-buffers). All schemas are defined in the [`types.proto`](https://github.com/dbt-labs/dbt/blob/3bf148c443e6b1da394b62e88a08f1d7f1d8ccaa/core/dbt/events/core_types.proto) file within the `dbt-labs/dbt` codebase.
 
 Every event has the same two top-level keys:
 - `info`: Information common to all events. See the table below for the breakdown.
@@ -54,7 +54,7 @@ Every event has the same two top-level keys:
 
 | Field       | Description   |
 |-------------|---------------|
-| `category` | Placeholder for future use (see [dbt-labs/dbt-core#5958](https://github.com/dbt-labs/dbt-core/issues/5958)) |
+| `category` | Placeholder for future use (see [dbt-labs/dbt#5958](https://github.com/dbt-labs/dbt/issues/5958)) |
 | `code` | Unique shorthand identifier for this event type, e.g. `A123` |
 | `extra` | Dictionary of custom environment metadata, based on environment variables prefixed with `DBT_ENV_CUSTOM_ENV_` |
 | [`invocation_id`](/reference/dbt-jinja-functions/invocation_id) | A unique identifier for this invocation of dbt |
@@ -79,7 +79,7 @@ Many events are fired while compiling or running a specific DAG node (model, see
 | `node_path` | File path to where this resource is defined |
 | `node_relation` | Nested object containing this node's database representation: `database`, `schema`, `alias`, and full `relation_name` with quoting & inclusion policies applied |
 | `node_started_at` | Timestamp when node processing started |
-| `node_status` | Current status of the node, either `RunningStatus` (while running) or `NodeStatus` (finished) as defined in [the result contract](https://github.com/dbt-labs/dbt-core/blob/eba90863ed4043957330ea44ca267db1a2d81fcd/core/dbt/contracts/results.py#L75-L88) |
+| `node_status` | Current status of the node, either `RunningStatus` (while running) or `NodeStatus` (finished) as defined in [the result contract](https://github.com/dbt-labs/dbt/blob/eba90863ed4043957330ea44ca267db1a2d81fcd/core/dbt/contracts/results.py#L75-L88) |
 | `resource_type` | `model`, `test`, `seed`, `snapshot`, etc. |
 | `unique_id` | The unique identifier for this resource, which can be used to look up more contextual information in the [manifest](/reference/artifacts/manifest-json) |
 
@@ -137,7 +137,7 @@ Many events are fired while compiling or running a specific DAG node (model, see
 
 <Constant name="fusion_engine" /> doesn't share <Constant name="core" />'s Python event interface.
 
-We are currently [developing](https://github.com/dbt-labs/dbt-core/issues/13102) a Python API with Rust bindings for programmatic invocations.
+We are currently [developing](https://github.com/dbt-labs/dbt/issues/13102) a Python API with Rust bindings for programmatic invocations.
 
 </VersionBlock>
 

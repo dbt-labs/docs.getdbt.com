@@ -29,7 +29,7 @@ import AboutFusion from '/snippets/_about-fusion.md';
 
 ## Resources
 
-- [<Constant name="fusion_engine" /> changelog](https://github.com/dbt-labs/dbt-core/blob/main/CHANGELOG-fusion.md)
+- [<Constant name="fusion_engine" /> changelog](https://github.com/dbt-labs/dbt/blob/main/CHANGELOG-fusion.md)
 
 ## Install dbt
 
