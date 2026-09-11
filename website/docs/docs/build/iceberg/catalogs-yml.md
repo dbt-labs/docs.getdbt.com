@@ -88,7 +88,8 @@ catalogs:
 | catalog `type`    | default for | supported by                  | Notes                                                                                         |
 |-------------------|-------------|-------------------------------|-----------------------------------------------------------------------------------------------|
 | horizon           | snowflake   | snowflake, duckdb             |                                                                                               |
-| glue              | athena      | athena, snowflake, duckdb     |                                                                                               |
+| glue              | athena      | athena, snowflake, duckdb     | Default catalog type for Athena. Refer to [Iceberg catalogs](/reference/resource-configs/athena-configs#iceberg-catalogs). |
+| s3_tables         |             | athena                        | Amazon S3 Tables managed Iceberg catalogs for Athena (`dbt-athena` 1.11.1 and later). Refer to [Iceberg catalogs](/reference/resource-configs/athena-configs#iceberg-catalogs) and [AWS S3 Tables](/reference/resource-configs/athena-configs#aws-s3-tables). |
 | biglake_metastore | bigquery    | bigquery, snowflake           | Supports BigQuery [Lakehouse Runtime Catalog tables](/docs/build/iceberg/adapters/bigquery-iceberg-support#lakehouse-runtime-catalog-lrc) through the `lakehouse_catalog` config |
 | unity             | databricks  | databricks, snowflake, duckdb | Supports Iceberg (native), Delta, "Uniform" formats                                           |
 | hive_metastore    |             | databricks                    | Supports Hudi format, in addition to Iceberg + Delta                                          |
