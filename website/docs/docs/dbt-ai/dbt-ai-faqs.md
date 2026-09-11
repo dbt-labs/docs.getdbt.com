@@ -5,6 +5,8 @@ description: "Answers to common questions about dbt AI features, including dbt W
 availability: all_users
 ---
 
+import WizardArchitecturePlatform from '/snippets/_wizard-architecture-platform.md';
+
 # dbt AI FAQs
 
 <IntroText>
@@ -129,6 +131,8 @@ In <Constant name="dbt_platform" />, the <Constant name="wizard"/> BYOK option i
 ## Privacy and data
 
 This section covers <Constant name="wizard" /> in the <Constant name="dbt_platform" />. For what the CLI collects and how to opt out, refer to [<Constant name="wizard" /> CLI data use and telemetry](/docs/dbt-ai/wizard-telemetry).
+
+<WizardArchitecturePlatform />
 
 <Expandable alt_header="Does dbt Wizard access my warehouse data?">
 

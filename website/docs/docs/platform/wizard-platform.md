@@ -104,6 +104,7 @@ To choose a provider or bring your own key, refer to [Manage AI features](/docs/
 
 - [<Constant name="wizard" /> home tab](/docs/platform/wizard-home)
 - [<Constant name="wizard" /> in <Constant name="studio_ide" />](/docs/dbt-ai/wizard-ide)
+- [How <Constant name="wizard" /> works](/docs/dbt-ai/wizard-how-it-works#in-the-dbt-platform) &mdash; architecture and data flow in the <Constant name="dbt_platform" />
 - [Manage AI features in <Constant name="dbt_platform" />](/docs/platform/manage-dbt-ai) &mdash; admin setup for AI access and providers
 - [Configure BYOK in <Constant name="dbt_platform" />](/docs/platform/wizard-byok-platform)
 - [Models and pricing](/docs/dbt-ai/pricing-billing/overview)

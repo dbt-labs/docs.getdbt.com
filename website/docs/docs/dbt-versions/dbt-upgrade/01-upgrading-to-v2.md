@@ -27,6 +27,10 @@ import AboutFusion from '/snippets/_about-fusion.md';
 
 <AboutFusion />
 
+## Resources
+
+- [<Constant name="fusion_engine" /> changelog](https://github.com/dbt-labs/dbt-core/blob/main/CHANGELOG-fusion.md)
+
 ## Install dbt
 
 Upgrading to v2 is an install step. Install dbt using `pip` to get <Constant name="fusion" /> for v2:
@@ -109,6 +113,12 @@ As dbt projects grow and more contributors add models, quality silently degrades
 In dbt v2, you can create [project quality checks](/docs/build/project-checks) to enforce project standards before any warehouse work runs. Write a SQL rule under the `checks/` directory, then run checks on demand with `dbt check`. Checks also run automatically with every `dbt build`. Use `--skip-checks` to bypass checks on a build.
 
 For more information, refer to [Project quality checks](/docs/build/project-checks).
+
+### Local execution of unit tests <Lifecycle status="beta" />
+
+v2 introduces the [`compute`](/reference/resource-configs/compute) config for unit tests. Set your unit tests with `compute: local` and dbt runs the test with DuckDB instead of sending it to your data platform, which takes the warehouse round trip out of your development loop.
+
+This config is opt-in. For details, refer to [Run unit tests locally](/docs/build/unit-tests#run-unit-tests-locally).
 
 ### Changed functionality
 

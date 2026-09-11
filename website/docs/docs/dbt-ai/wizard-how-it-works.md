@@ -7,6 +7,8 @@ tags: [AI, Wizard]
 availability: all_users
 ---
 
+import WizardArchitecturePlatform from '/snippets/_wizard-architecture-platform.md';
+
 <Constant name="wizard" /> helps teams develop, troubleshoot, harden, and ship trusted dbt projects faster and with less risk.
 
 Built for governed data development in dbt, <Constant name="wizard" /> understands your project, routes to the right dbt tools, and validates work with awareness of warehouse operations. Use it to investigate failed runs, debug models, assess impact, make changes, and ship trusted data work in one place.
@@ -35,8 +37,6 @@ That index gives <Constant name="wizard" /> four capabilities that aren't possib
 :::note dbt version shown in the status panel
 The dbt version <Constant name="wizard" /> displays comes from your project's manifest (`target/manifest.json`), not the `dbt` executable on your `PATH`. If you generated the manifest with a different binary, <Constant name="wizard" /> reports that version until you recompile. Run `dbt compile` (or `dbt parse`/`dbt build`) with your intended dbt to refresh the manifest and the displayed version.
 :::
-
-{/* DIAGRAM: dbt artifacts/manifests → metadata engine → Wizard context */}
 
 ## Validation mechanics {#validation-loop-mechanics}
 
@@ -86,6 +86,8 @@ Refer to the [Skills](/docs/dbt-ai/wizard-skills) page for more details.
 ## In the dbt platform
 
 Use <Constant name="wizard" /> in the [<Constant name="dbt_platform" />](/docs/platform/wizard-platform) from the home app or <Constant name="studio_ide" />. 
+
+<WizardArchitecturePlatform />
 
 ### Approval and review
 
