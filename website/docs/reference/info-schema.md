@@ -35,7 +35,7 @@ The `dbt` namespace tables contain information about your project's structure, r
 | `dbt.functions` | All user-defined functions |
 | `dbt.analyses` | All analyses |
 | `dbt.hooks` | All `on-run-start` and `on-run-end` hook operations |
-| `dbt.data_tests` | All data tests (generic and singular), with test-specific detail columns |
+| `dbt.data_tests` | All data tests (generic and singular) |
 | `dbt.unit_tests` | All unit tests |
 | `dbt.macros` | All macros |
 | `dbt.groups` | All groups |
