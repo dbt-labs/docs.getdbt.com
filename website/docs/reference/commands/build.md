@@ -13,7 +13,7 @@ The `dbt build` command will:
 - test [tests](/docs/build/data-tests)
 - snapshot [snapshots](/docs/build/snapshots)
 - seed [seeds](/docs/build/seeds)
-- build [user-defined functions](/docs/build/udfs) (available from <Constant name="core" /> v1.11 and in the <Constant name="fusion_engine" />)
+- build [user-defined functions](/docs/build/udfs) (available from <Constant name="dbt" /> v1.11 and up)
 
 In DAG order, for selected resources or an entire project.
 
@@ -40,7 +40,7 @@ dbt build --generate-info-schema --static-analysis strict
 **Skipping on failures:** Tests on upstream resources will block downstream resources from running, and a test failure will cause those downstream resources to skip entirely. E.g. If `model_b` depends on `model_a`, and a `unique` test on `model_a` fails, then `model_b` will `SKIP`.
 - Don't want a test to cause skipping? Adjust its [severity or thresholds](/reference/resource-configs/severity) to `warn` instead of `error`
 - In the case of a test with multiple parents, where one parent depends on the other (e.g. a `relationships` test between `model_a` + `model_b`), that test will block-and-skip children of the most-downstream parent only (`model_b`).
-- If you have a test with multiple parents that are independent of each other, dbt [skips](https://github.com/dbt-labs/dbt-core/blob/d5071fa13502be273596a0b7c8b13d14b6c68655/core/dbt/compilation.py#L224-L257) the downstream node only if that node depends on all of those parents.
+- If you have a test with multiple parents that are independent of each other, dbt [skips](https://github.com/dbt-labs/dbt/blob/d5071fa13502be273596a0b7c8b13d14b6c68655/core/dbt/compilation.py#L224-L257) the downstream node only if that node depends on all of those parents.
 
 <VersionBlock firstVersion="2.0">
 
@@ -144,7 +144,7 @@ Done. PASS=7 WARN=0 ERROR=0 SKIP=0 TOTAL=7
 ```
 
 ## Functions
-_Available from <Constant name="core" /> v1.11 and in the <Constant name="fusion_engine" />_
+_Available from <Constant name="dbt" /> v1.11 and up_
 
 The `build` command builds [user-defined functions](/docs/build/udfs) as part of the DAG execution. To build or rebuild only `functions` in your project, run `dbt build --select "resource_type:function"`. For example:
 

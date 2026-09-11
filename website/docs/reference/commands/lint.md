@@ -14,7 +14,7 @@ availability:
 You can use your existing SQLFluff config with minimal changes. dbt Labs intends to track the latest SQLFluff rule spec going forward.
 
 :::note
-`dbt lint` is part of the <Constant name="fusion_engine" />. It is not the same as `dbt sqlfluff lint` on the <Constant name="platform_cli" />. For SQLFluff on the platform CLI, see [Configure the dbt platform CLI](/docs/platform/configure-dbt-cli). [Linting in Studio IDE](/docs/platform/studio-ide/lint-format) continues to use SQLFluff.
+`dbt lint` is part of <Constant name="fusion_engine" />. It is not the same as `dbt sqlfluff lint` on the <Constant name="platform_cli" />. For SQLFluff on the platform CLI, see [Configure the dbt platform CLI](/docs/platform/configure-dbt-cli). [Linting in Studio IDE](/docs/platform/studio-ide/lint-format) continues to use SQLFluff.
 :::
 
 ## Benchmarks
@@ -130,7 +130,7 @@ The following rules report violations but can't be auto-fixed by `--fix`. They r
 
 `dbt lint` always renders exactly one variant of your Jinja templates: the SQL your templates produce using the inputs available at parse time. It does not attempt to lint every possible SQL output a macro could produce under different inputs.
 
-This is a deliberate choice. Linting every possible render variant is expensive and surfaces violations in SQL your project may never execute. dbt Labs believes linting the SQL your project produces using its parse-time inputs is the right model for dbt projects. If you have feedback on this approach, open an issue in the [dbt-core GitHub repository](https://github.com/dbt-labs/dbt-core/issues) with the `Linter` label.
+This is a deliberate choice. Linting every possible render variant is expensive and surfaces violations in SQL your project may never execute. dbt Labs believes linting the SQL your project produces using its parse-time inputs is the right model for dbt projects. If you have feedback on this approach, open an issue in the [dbt GitHub repository](https://github.com/dbt-labs/dbt/issues) with the `Linter` label.
 
 </DetailsToggle>
 
@@ -144,4 +144,4 @@ This behavior is similar to SQLFluff's `ignore_templated_areas` setting. However
 
 ## Feedback
 
-If you encounter unexpected behavior or have suggestions, open an issue in the [dbt-core GitHub repository](https://github.com/dbt-labs/dbt-core/issues) and apply the `Linter` label.
+If you encounter unexpected behavior or have suggestions, open an issue in the [dbt-labs/dbt GitHub repository](https://github.com/dbt-labs/dbt/issues) and apply the `Linter` label.
