@@ -220,7 +220,15 @@ dbt build --write-catalog
 
 ### What's different from docs generate
 
-The `--write-catalog` flag focuses solely on metadata hydration, generating the `catalog.json` file that powers [Catalog](/docs/explore/build-and-view-your-docs) and metadata APIs. It does not generate the static documentation website files (`index.html`).
+Both write artifacts, but only `dbt docs generate` builds a site you can open in a browser:
+
+| | `--write-catalog` | `dbt docs generate` |
+|--|-------------------|---------------------|
+| What it writes | `catalog.json` only | The full [dbt Docs v2](#dbt-docs-v2) site: `index.html`, `assets/`, and the index files |
+| What it powers | [<Constant name="catalog" />](/docs/explore/build-and-view-your-docs) and the metadata APIs | A static site you can preview with `dbt docs serve` or host anywhere |
+| When it runs | Automatically with `build` and `run` in <Constant name="fusion" /> jobs | Only when you run it |
+
+So if you want a hostable static site, run `dbt docs generate` &mdash; `--write-catalog` alone won't produce one.
 
 ## Platform behavior
 
