@@ -173,6 +173,8 @@ To preview the site locally, run:
 dbt docs serve
 ```
 
+`dbt docs serve` is a local command. Use it when you're developing on your own machine with the [<Constant name="platform_cli" />](/docs/platform/dbt-cli-installation) or a [local install](/docs/local/install-dbt). The [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio) and <Constant name="dbt_platform" /> jobs don't support it &mdash; see [Platform behavior](#platform-behavior) for how to view docs there.
+
 `dbt docs serve` generates the site if it's missing or older than the index, then serves the static files. The server starts on port `8580` by default and opens in your browser. Use `--port` to change the port:
 
 ```shell
@@ -208,12 +210,6 @@ For <Constant name="fusion" /> jobs running in <Constant name="dbt_platform" />,
 dbt build --write-catalog
 ```
 
-### Platform behavior
-
-In <Constant name="dbt_platform" /> jobs running on <Constant name="fusion" />, you don't need to change anything to hydrate catalog metadata. dbt runs `write-catalog` automatically with `build` and `run`, so you don't need to run a separate command. You can optionally include it when running `dbt parse` or `dbt compile`.
-
-To produce the [dbt Docs v2](#dbt-docs-v2) static site in a job, run `dbt docs generate` as a job step or enable documentation generation in your job settings. Otherwise, the job hydrates catalog metadata but doesn't produce the static site.
-
 ### Local usage
 
 When running <Constant name="fusion" /> locally, add the `--write-catalog` flag to your command to generate the catalog:
@@ -225,5 +221,23 @@ dbt build --write-catalog
 ### What's different from docs generate
 
 The `--write-catalog` flag focuses solely on metadata hydration, generating the `catalog.json` file that powers [Catalog](/docs/explore/build-and-view-your-docs) and metadata APIs. It does not generate the static documentation website files (`index.html`).
+
+## Platform behavior
+
+Where you run dbt changes how you generate and view your docs. `dbt docs serve` only runs on your own machine &mdash; there's no equivalent in <Constant name="dbt_platform" />.
+
+| Where you're working | Command to run | How to view your docs |
+|---------------------|----------------|-----------------------|
+| [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio) | `dbt docs generate` | Click the docs icon above the file tree to open the generated site. |
+| <Constant name="dbt_platform" /> jobs | Nothing extra for <Constant name="catalog" />. Add `dbt docs generate` as a job step to also produce the static site. | View metadata in [<Constant name="catalog" />](/docs/explore/build-and-view-your-docs), or download the site artifacts from the run and host them yourself. |
+| Locally with the [<Constant name="platform_cli" />](/docs/platform/dbt-cli-installation) or a [local install](/docs/local/install-dbt) | `dbt docs generate`, then `dbt docs serve` | Preview in your browser at `localhost:8580`, or host the `target/` output on a static file host. |
+
+In <Constant name="dbt_platform" /> jobs running on <Constant name="fusion" />, you don't need to change anything to hydrate catalog metadata. dbt runs `write-catalog` automatically with `build` and `run`, so <Constant name="catalog" /> stays current without a `dbt docs generate` step. You can optionally include `--write-catalog` when running `dbt parse` or `dbt compile`.
+
+Adding `dbt docs generate` as an explicit job step writes the full [dbt Docs v2](#dbt-docs-v2) site artifacts &mdash; including `index.html` &mdash; so you can retrieve them from the run and host the site outside of <Constant name="catalog" />. Without that step, the job hydrates catalog metadata but doesn't produce the static site.
+
+:::note Developer plans
+Developer plans don't have access to <Constant name="catalog" />. To view your docs, either run `dbt docs generate` in the <Constant name="studio_ide" /> and open the docs icon, or generate and serve the site locally.
+:::
 
 </VersionBlock>
