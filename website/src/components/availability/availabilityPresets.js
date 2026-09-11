@@ -32,8 +32,8 @@ export const ENGINE_LABELS = {
 };
 
 export const ENGINE_TOOLTIPS = {
-  v1: 'Available in dbt Core 1.x',
-  v2: 'Available in v2 (including Fusion)',
+  v1: 'Available in v1',
+  v2: 'Available in v2',
 };
 
 export function getEngineFacet(engine) {

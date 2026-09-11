@@ -1,7 +1,7 @@
 ---
 title: "Upgrading to v1.8"
 id: upgrading-to-v1.8
-description: New features and changes in dbt Core v1.8
+description: New features and changes in dbt v1.8
 displayed_sidebar: "docs"
 availability:
   engine: v1
@@ -10,17 +10,17 @@ availability:
  
 ## Resources
 
-- [Changelog](https://github.com/dbt-labs/dbt-core/blob/1.8.latest/CHANGELOG.md)
+- [Changelog](https://github.com/dbt-labs/dbt/blob/1.8.latest/CHANGELOG.md)
 - [<Constant name="core" /> CLI Installation guide](/docs/local/install-dbt)
 - [Cloud upgrade guide](/docs/dbt-versions/upgrade-dbt-platform-version)
 
 ## What to know before upgrading
 
-dbt Labs is committed to providing backward compatibility for all versions 1.x, except for any changes explicitly mentioned on this page. If you encounter an error upon upgrading, please let us know by [opening an issue](https://github.com/dbt-labs/dbt-core/issues/new).
+dbt Labs is committed to providing backward compatibility for all versions 1.x, except for any changes explicitly mentioned on this page. If you encounter an error upon upgrading, please let us know by [opening an issue](https://github.com/dbt-labs/dbt/issues/new).
 
 ## Release tracks 
 
-Starting in 2024, <Constant name="dbt" /> provides the functionality from new versions of <Constant name="core" /> via [release tracks](/docs/dbt-versions/dbt-release-tracks) with automatic upgrades. Select a release track in your development, staging, and production [environments](/docs/deploy/deploy-environments) to access everything in <Constant name="core" /> v1.8+ and more. To upgrade an environment in the [<Constant name="dbt" /> Admin API](/docs/dbt-apis/admin-api) or [Terraform](https://registry.terraform.io/providers/dbt-labs/dbtcloud/latest), set `dbt_version` to the string `latest`.
+Starting in 2024, <Constant name="dbt" /> provides the functionality from new versions of <Constant name="core" /> via [release tracks](/docs/dbt-versions/dbt-release-tracks) with automatic upgrades. Select a release track in your development, staging, and production [environments](/docs/deploy/deploy-environments) to access everything in <Constant name="dbt" /> v1.8+ and more. To upgrade an environment in the [<Constant name="dbt" /> Admin API](/docs/dbt-apis/admin-api) or [Terraform](https://registry.terraform.io/providers/dbt-labs/dbtcloud/latest), set `dbt_version` to the string `latest`.
 
 ## New and changed features and functionality
 
@@ -70,7 +70,7 @@ The [`run`](/reference/commands/run#the-`--empty`-flag) and [`build`](/reference
 
 ### dbt-core and adapters are decoupled
 
-Before v1.8, dbt adapters directly depended on components of `dbt-core`, and `dbt-core` depended on the adapter for execution. This bidirectional dependency made it difficult to develop adapters independently. Starting in <Constant name="core" /> v1.8, [`dbt-core` and adapters are decoupled](https://github.com/dbt-labs/dbt-adapters/discussions/87), making it easier to maintain and evolve them independent of each other.
+Before v1.8, dbt adapters directly depended on components of `dbt-core`, and `dbt-core` depended on the adapter for execution. This bidirectional dependency made it difficult to develop adapters independently. Starting in <Constant name="dbt" /> v1.8, [`dbt-core` and adapters are decoupled](https://github.com/dbt-labs/dbt-adapters/discussions/87), making it easier to maintain and evolve them independent of each other.
 
 For backward compatibility, adapter packages continue to depend on `dbt-core` at install time. Running a dbt project still requires both `dbt-core` and an adapter, and since v1.0, many users have installed both together using [`pip install dbt-<adapter>`](/docs/dbt-versions/dbt-upgrade/Older%20versions/upgrading-to-v1.0#installation).
 
@@ -92,7 +92,7 @@ The ability for installed packages to override built-in materializations without
 
 ### Managing changes to legacy behaviors
 
-<Constant name="core" /> v1.8 has introduced flags for [managing changes to legacy behaviors](/reference/global-configs/behavior-changes). You may opt into recently introduced changes (disabled by default), or opt out of mature changes (enabled by default), by setting `true` / `false` values, respectively, for `flags` in `dbt_project.yml`.
+<Constant name="dbt" /> v1.8 has introduced flags for [managing changes to legacy behaviors](/reference/global-configs/behavior-changes). You may opt into recently introduced changes (disabled by default), or opt out of mature changes (enabled by default), by setting `true` / `false` values, respectively, for `flags` in `dbt_project.yml`.
 
 You can read more about each of these behavior changes in the following links:
 

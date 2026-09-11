@@ -183,7 +183,7 @@ Find BigQuery-specific configuration information in the [BigQuery adapter refere
 
 # Connect BigQuery to <Constant name="core" />
 
-<ProductCard text="Fusion compatible" url="/docs/local/connect-data-platform/bigquery-setup?version=2" /> connection also available.
+<ProductCard text="dbt v2 compatible" url="/docs/local/connect-data-platform/bigquery-setup?version=2" /> connection also available.
 
 import SetUpPages from '/snippets/_setup-pages-intro.md';
 
@@ -217,7 +217,7 @@ BigQuery targets can be specified using one of four methods:
 For self-hosted dbt installations, we recommend using the OAuth method. If you're scheduling dbt on a server, you should use the service account auth method instead.
 
 :::tip Workload Identity Federation
-WIF authentication (`external-oauth-wif`) is available in [<Constant name="fusion" />](/docs/local/connect-data-platform/bigquery-setup?version=2.0#supported-authentication-types). It's not supported in <Constant name="core" /> v1.12 and earlier.
+WIF authentication (`external-oauth-wif`) is available in [<Constant name="fusion" />](/docs/local/connect-data-platform/bigquery-setup?version=2.0#supported-authentication-types). It's not supported in dbt v1.12 and earlier.
 :::
 
 BigQuery targets should be set up using the following configuration in your `profiles.yml` file. There are a number of [optional configurations](#optional-configurations) you may specify as well.

@@ -21,7 +21,7 @@ import InfoSchemaIntro from '/snippets/_info-schema-intro.md';
 - [Data tests](/docs/build/data-tests)
 - [Analyses](/docs/build/analyses)
 - [Functions](/docs/build/udfs)
-- [Snapshots](/docs/build/snapshots) (available in <Constant name="core" /> v1.12)
+- [Snapshots](/docs/build/snapshots) (available in <Constant name="dbt" /> v1.12)
 </VersionBlock>
 
 You can find these compiled SQL files in the `target/` directory of your dbt project.

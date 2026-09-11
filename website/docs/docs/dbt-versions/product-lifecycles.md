@@ -9,7 +9,7 @@ availability: all_users
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-dbt Labs manages the lifecycle of features across the cloud-hosted dbt platform and self-hosted dbt v1 and v2. Each feature is assigned a lifecycle status that describes its stability, support level, and availability. Use the tabs below to find the lifecycle stages for the product you're using.
+dbt Labs manages the lifecycle of features across the cloud-hosted dbt platform and self-hosted v1 and v2. Each feature is assigned a lifecycle status that describes its stability, support level, and availability. Use the tabs below to find the lifecycle stages for the product you're using.
 
 Service level objective (SLO) support varies between products and lifecycles.
 
