@@ -5,6 +5,8 @@ id: "build"
 ---
 
 import SnapshotFullRefresh from '/snippets/_snapshot-full-refresh.md';
+import InfoSchemaStaticAnalysis from '/snippets/_info-schema-static-analysis.md';
+import InfoSchemaIntro from '/snippets/_info-schema-intro.md';
 
 The `dbt build` command will:
 - run [models](/docs/build/models)
@@ -18,6 +20,22 @@ In DAG order, for selected resources or an entire project.
 ## Details
 
 **Artifacts:** The `build` task will write a single [manifest](/reference/artifacts/manifest-json) and a single [run results artifact](/reference/artifacts/run-results-json). The run results will include information about all models, tests, seeds, and snapshots that were selected to build, combined into one file.
+
+<VersionBlock firstVersion="2.0">
+
+<InfoSchemaIntro label="dbt Information Schema:" />
+
+```shell
+dbt build --generate-info-schema
+```
+
+<InfoSchemaStaticAnalysis />
+
+```shell
+dbt build --generate-info-schema --static-analysis strict
+```
+
+</VersionBlock>
 
 **Skipping on failures:** Tests on upstream resources will block downstream resources from running, and a test failure will cause those downstream resources to skip entirely. E.g. If `model_b` depends on `model_a`, and a `unique` test on `model_a` fails, then `model_b` will `SKIP`.
 - Don't want a test to cause skipping? Adjust its [severity or thresholds](/reference/resource-configs/severity) to `warn` instead of `error`
