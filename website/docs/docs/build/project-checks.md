@@ -14,7 +14,7 @@ Checks let you enforce project standards with SQL, locally, without a warehouse 
 
 Each check queries project metadata &mdash; such as models, sources, columns, and dependencies &mdash; using the [`{{ info_schema() }}` macro](/reference/dbt-jinja-functions/info-schema-macro).
 
-They are similar to [data tests](/docs/build/data-tests) &mdash; a check finds the "bad" rows and it passes if the query returns zero rows, and fails otherwise. However, checks are earlier and cheaper than data tests: they run at parse time, locally, and with no warehouse connection.
+They are similar to [data tests](/docs/build/data-tests) &mdash; a check finds the "bad" rows and it passes if the query returns zero rows, and fails otherwise. Unlike data tests, checks run earlier and locally at parse time, without a warehouse connection.
 
 Checks run automatically with every `dbt build`. You can also run them on demand with `dbt check` or skip them during a build with `--skip-checks`.
 
