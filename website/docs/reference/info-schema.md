@@ -12,7 +12,7 @@ For an overview of the dbt Information Schema, how to generate it, and how to qu
 
 ## Tables
 
-The following tables reflect schema version 1, written to `target/info_schema/v1/`. The version only increments on breaking schema changes (for example, when a column is removed or retyped).
+The following tables reflect dbt Information Schema v1, written to `target/info_schema/v1/`. The version only increments on breaking schema changes (for example, when a column is removed or retyped).
 
 The Information Schema generates tables across the following namespaces.
 
@@ -25,6 +25,7 @@ The `dbt` namespace tables contain information about your project's structure, r
 
 | Table | Description |
 |-------|-------------|
+| `dbt.dag_nodes` | All DAG participants with `unique_id` and `resource_type` |
 | `dbt.project` | Project-level metadata |
 | `dbt.packages` | Installed packages, one row per package |
 | `dbt.project_vars` | Project variables, one row per (project scope, variable name) |
@@ -52,7 +53,6 @@ The `dbt` namespace tables contain information about your project's structure, r
 | `dbt.semantic_relationships` | Relationships between semantic models |
 | `dbt.time_spines` | Time spine definitions |
 | `dbt.classifiers` | Resource classifiers |
-| `dbt.dag_nodes` | All DAG participants with `unique_id` and `resource_type` |
 | `dbt.edges` | DAG edges (parent → child) |
 | `dbt.node_columns` | Column names, types, and descriptions for all nodes |
 | `dbt.column_lineage` | Column-level lineage (populated with `--static-analysis strict`) |
