@@ -59,7 +59,7 @@ You're ready to use the dbt extension. Next, you can:
 
 - Follow the [getting started](#getting-started) workflow to finish setup.
 - [Upgrade your project to dbt v2](/docs/upgrade-to-dbt-extension) if you're migrating from v1.
-- [Sign in or register](/docs/sign-in-dbt-extension) for a <Constant name="dbt_platform" /> account to keep using advanced features after the 14-day trial.
+- [Sign in](/docs/sign-in-dbt-extension) to a <Constant name="dbt_platform" /> account if you want to use the extension's <Constant name="dbt_platform" /> capabilities, such as the **Catalog** tab.
 - Review the [limitations and unsupported features](/docs/dbt/supported-features#limitations).
 
 <Expandable alt_header="Install dbt v2 from the command line, if you haven't already.">
@@ -87,7 +87,7 @@ The panel guides you through:
 1. **Install or update dbt v2**: Detects whether the v2 binary is missing or outdated and installs or updates it with a single click.
 2. **Open project**: Checks for a `dbt_project.yml` file in your workspace to confirm a valid dbt project is open before proceeding.
 3. **Check dbt v2 compatibility**: Guides you through upgrading your project to v2. You can choose between an agentic migration or manual CLI onboarding &mdash; refer to [Upgrade to dbt v2](/docs/upgrade-to-dbt-extension).
-4. **Register**: Confirms you've registered your email to use the extension beyond the 14-day trial period &mdash; refer to [Sign in or register](/docs/sign-in-dbt-extension).
+4. **Sign in**: Confirms you've signed in to a <Constant name="dbt_platform" /> account, which the extension uses for <Constant name="dbt_platform" /> capabilities like the **Catalog** tab &mdash; refer to [Sign in](/docs/sign-in-dbt-extension).
 
 When all setup steps are complete, the panel shows a green **Extension setup complete** button.
 

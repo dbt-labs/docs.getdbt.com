@@ -1,8 +1,8 @@
 ---
-title: Sign in or register the dbt VS Code extension
+title: Sign in to the dbt VS Code extension
 id: sign-in-dbt-extension
-description: "Sign in or register to unlock advanced features in the dbt VS Code extension."
-sidebar_label: "Sign in or register"
+description: "Sign in to connect the dbt VS Code extension to your dbt platform account."
+sidebar_label: "Sign in"
 availability: local_all
 ---
 
@@ -10,17 +10,15 @@ import FusionTroubleshooting from '/snippets/_fusion-troubleshooting.md';
 import AboutFusion from '/snippets/_about-fusion.md';
 import AuthorizeAdditionalAccess from '/snippets/_vsce-authorize-additional-access.md';
 
-# Sign in or register <Lifecycle status="preview" />
+# Sign in <Lifecycle status="preview" />
 
-The dbt VS Code extension comes with a suite of features that are available to all users for 14 days. After the 14-day trial, sign in or register for a <Constant name="dbt_platform" /> account to keep using all features, including advanced features such as [live preview for models and CTEs](/docs/dbt-extension-features#live-preview-for-models-and-ctes), [column-level lineage](/docs/dbt-extension-features#rich-lineage-in-context), and more.
+Sign in to connect the dbt VS Code extension to your <Constant name="dbt_platform" /> account. Signing in is what lets the extension reach your account for <Constant name="dbt_platform" /> capabilities, such as the [**Catalog** tab](/docs/dbt-extension-features#explore-your-catalog) and [compare changes](/docs/dbt/vs-compare-changes) with <Constant name="dbt_platform" /> deferral.
 
 Refer to [VS Code extension features](/docs/dbt-extension-features#feature-availability) for the full list of features and their availability.
 
-Most features remain available without signing in &mdash; only advanced features prompt you to sign in after the trial ends.
-
 <VersionBlock firstVersion="1.13">
 
-To continue using all the features, register or log in from the command line using [`dbt login`](/reference/commands/login?version=2.0), available with v2 and later. Your login state can be shared across dbt features, including the dbt VS Code extension and, in supported versions, dbt State.
+You can sign in from the command line using [`dbt login`](/reference/commands/login?version=2.0), available with v2 and later. Your login state can be shared across dbt features, including the dbt VS Code extension and, in supported versions, dbt State.
 
 </VersionBlock>
 
@@ -29,11 +27,11 @@ Run [`dbt login status`](/reference/commands/login?version=2.0#dbt-login-status)
 ## Key points
 
 - The extension is free for organizations for up to 15 users. Refer to the [acceptable use policy](https://www.getdbt.com/dbt-assets/vscode-plugin-aup).
-- Registration links your editor to your registered <Constant name="dbt_platform" /> account so you can keep using advanced features after the 14-day trial.
-- You can authenticate with `dbt login` or register from inside the extension. If you don't have a <Constant name="dbt_platform" /> account, you can create a free account during authentication to unlock advanced features.
+- Signing in links your editor to your <Constant name="dbt_platform" /> account so the extension can use <Constant name="dbt_platform" /> capabilities.
+- You can authenticate with `dbt login` or sign in from inside the extension. If you don't have a <Constant name="dbt_platform" /> account, you can create a free account during authentication.
 - If a valid [`dbt_cloud.yml`](/reference/dbt_cloud.yml) file exists on your machine, the extension can use it automatically.
 
-If you've registered before, you won't need to authenticate again unless your session expired.
+If you've signed in before, you won't need to authenticate again unless your session expired.
 
 ## Session expiry and re-authorization
 
@@ -47,13 +45,13 @@ When re-authorizing, the **Authorize dbt login** consent screen lists the access
 
 ## Choose a sign-in path
 
-There are a couple of different ways to sign in or register for a <Constant name="dbt_platform" /> account. Choose the best path for you:
+There are a couple of different ways to sign in to a <Constant name="dbt_platform" /> account. Choose the best path for you:
 
 <SimpleTable>
 | If you... | Use this path |
 | --- | --- |
 | Starting authentication from the terminal | [`dbt login`](?registration-path=dbt-login#choose-a-sign-in-path) from the command line. |
-| Are new to dbt and don't have a <Constant name="dbt_platform" /> account | [First-time registration](?registration-path=first-time#choose-a-sign-in-path) from the dbt VS Code extension. |
+| Are new to dbt and don't have a <Constant name="dbt_platform" /> account | [First-time sign-in](?registration-path=first-time#choose-a-sign-in-path) from the dbt VS Code extension. |
 | Can't sign in or need to reset access | [Recover your login](?registration-path=recover-login#choose-a-sign-in-path) from the dbt VS Code extension. |
 | Prefer file-based authentication to remove need for re-authenticating | [`dbt_cloud.yml`](?registration-path=dbt-cloud-yml#choose-a-sign-in-path) from the dbt VS Code extension. |
 </SimpleTable>
@@ -94,7 +92,7 @@ Use this path if you prefer the terminal or want a single auth flow that works a
 
 <AuthorizeAdditionalAccess />
 
-You've now unlocked the full feature set of the dbt VS Code extension. For details on what `dbt login` unlocks across tools, refer to the [`dbt login` reference](/reference/commands/login?version=2.0).
+The extension can now reach your <Constant name="dbt_platform" /> account. For details on what `dbt login` does across tools, refer to the [`dbt login` reference](/reference/commands/login?version=2.0).
 
 </TabItem>
 
@@ -102,7 +100,7 @@ You've now unlocked the full feature set of the dbt VS Code extension. For detai
 
 <h3 id="first-time-registration">First-time registration</h3>
 
-Register to unlock the full [feature set](/docs/dbt-extension-features) of the dbt VS Code extension. Use this path if you've never registered before. The extension and the CLI open the same browser flow, so you can start from either entry point:
+Create a <Constant name="dbt_platform" /> account and connect it to the extension. Use this path if you've never signed in before. The extension and the CLI open the same browser flow, so you can start from either entry point:
 
 - **From the extension:** Click the registration prompt, or open the command palette (Windows/Linux: Ctrl + Shift + P, macOS: Cmd + Shift + P) and run **dbt: Register dbt extension**.
 

@@ -63,17 +63,13 @@ Check out the following video to see the features and functionality of the dbt V
 
 ### Sign in and feature access
 
-After you install the dbt VS Code extension, all [features](/docs/dbt-extension-features) are available for 14 days with no registration. After that, most features continue to work without registration. To keep using advanced features, [register](/docs/sign-in-dbt-extension) for a free <Constant name="dbt_platform" /> account. Previously only registered users had access to the dbt VS Code extension.
+After you install the dbt VS Code extension, its [features](/docs/dbt-extension-features) are available to you. What's available depends on your project's [static analysis](/docs/build/about-static-analysis) mode. For example, column-level lineage and column go-to definition need `static_analysis: strict`.
 
-Without registration, the vast majority of features continue to work. Only advanced features prompt you to register or sign in to an existing account after the trial period ends.
-
-:::note Strict static analysis requires registration
-If your project uses `static_analysis: strict` in `dbt_project.yml` or you pass `--static-analysis strict` at runtime, registration for a <Constant name="dbt_platform" /> account is required regardless of the trial status.
-:::
+A few capabilities read data from your <Constant name="dbt_platform" /> account, such as the **Catalog** tab and [compare changes](/docs/dbt/vs-compare-changes) with platform deferral. [Sign in](/docs/sign-in-dbt-extension) to a <Constant name="dbt_platform" /> account so the extension can reach your account for those.
 
 Refer to [VS Code extension features](/docs/dbt-extension-features#feature-availability) for the full list of features and their availability.
 
-When you register or sign in for advanced features, authentication is handled by [`dbt login`](/reference/commands/login?version=2.0). Your login state is shared across the CLI, dbt VS Code extension, and dbt State (if you log in using <Constant name="dbt_platform" />). You can use the [get started wizard](/docs/install-dbt-extension#getting-started) or run `dbt login` from your terminal, then restart or reload VS Code. The extension detects your login automatically.
+Signing in is handled by [`dbt login`](/reference/commands/login?version=2.0). Your login state is shared across the CLI, dbt VS Code extension, and dbt State (if you log in using <Constant name="dbt_platform" />). You can use the [get started wizard](/docs/install-dbt-extension#getting-started) or run `dbt login` from your terminal, then restart or reload VS Code. The extension detects your login automatically.
 
 ### The dbt extension menu
 
