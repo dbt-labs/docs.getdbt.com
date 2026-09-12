@@ -595,6 +595,7 @@ const sidebarSettings = {
               link: { type: "doc", id: "docs/build/data-tests" },
               items: ["docs/build/data-tests", "docs/build/unit-tests"],
             },
+            "docs/build/checks",
             {
               type: "category",
               label: "Documentation",
@@ -753,7 +754,6 @@ const sidebarSettings = {
           link: { type: "doc", id: "docs/build/empty-flag" },
           items: ["docs/build/empty-flag", "docs/build/sample-flag"],
         },
-        "docs/build/project-checks",
         //"docs/building-a-dbt-project/dont-nest-your-curlies",
         //"docs/building-a-dbt-project/archival",
       ],
@@ -1772,7 +1772,7 @@ const sidebarSettings = {
     "reference/info-schema",
     {
       type: "category",
-      label: "Project quality checks",
+      label: "Checks",
       link: { type: "doc", id: "reference/info-schema-views" },
       items: [
         "reference/info-schema-views",

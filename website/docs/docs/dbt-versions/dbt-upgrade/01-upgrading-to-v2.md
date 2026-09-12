@@ -106,13 +106,13 @@ To hydrate catalog metadata (`catalog.json`) for <Constant name="catalog" /> wit
 
 For full usage, refer to [About dbt docs commands](/reference/commands/cmd-docs).
 
-### Project quality checks <Lifecycle status="beta" />
+### Checks <Lifecycle status="beta" />
 
 As dbt projects grow and more contributors add models, quality silently degrades: a model ships without a description, a `public` model gets no `owner`, a model doesn't follow your org's naming convention.
 
-In dbt v2, you can create [project quality checks](/docs/build/project-checks) to enforce project standards before any warehouse work runs. Write a SQL rule under the `checks/` directory, then run checks on demand with `dbt check`. Checks also run automatically with every `dbt build`. Use `--skip-checks` to bypass checks on a build.
+In dbt v2, you can create [checks](/docs/build/checks) to enforce project standards before any warehouse work runs. Write a SQL rule under the `checks/` directory, then run checks on demand with `dbt check`. Checks also run automatically with every `dbt build`. Use `--skip-checks` to bypass checks on a build.
 
-For more information, refer to [Project quality checks](/docs/build/project-checks).
+For more information, refer to [Checks](/docs/build/checks).
 
 ### Local execution of unit tests <Lifecycle status="beta" />
 

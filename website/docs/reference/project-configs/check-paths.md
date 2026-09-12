@@ -15,7 +15,7 @@ check-paths: [directorypath]
 
 ## Definition
 
-Specify custom directories where dbt looks for [project quality checks](/docs/build/project-checks).
+Specify custom directories where dbt looks for [checks](/docs/build/checks).
 
 ## Default
 

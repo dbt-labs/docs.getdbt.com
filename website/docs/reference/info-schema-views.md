@@ -2,12 +2,12 @@
 title: "Views and columns reference"
 sidebar_label: "Views and columns"
 id: "info-schema-views"
-description: "Column reference for all views available through the info_schema() macro in project quality checks."
+description: "Column reference for all views available through the info_schema() macro in checks."
 availability:
   engine: v2
 ---
 
-You can query the following tables in a check. Each one corresponds to a table of the same name in the [dbt Information Schema](/docs/build/dbt-information-schema), and shows only the columns that are final at parse time. Use these table names in [`{{ info_schema() }}`](/reference/dbt-jinja-functions/info-schema-macro) when writing [project quality checks](/docs/build/project-checks).
+You can query the following tables in a check. Each one corresponds to a table of the same name in the [dbt Information Schema](/docs/build/dbt-information-schema), and shows only the columns that are final at parse time. Use these table names in [`{{ info_schema() }}`](/reference/dbt-jinja-functions/info-schema-macro) when writing [checks](/docs/build/checks).
 
 | Table | Columns |
 |------|---------|

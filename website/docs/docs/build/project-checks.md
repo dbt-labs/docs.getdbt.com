@@ -1,12 +1,12 @@
 ---
-title: "Project quality checks"
+title: "Checks"
 description: "Write SQL rules that enforce project standards."
-id: "project-checks"
+id: "checks"
 availability:
   engine: v2
 ---
 
-# Project quality checks <Lifecycle status="beta" />
+# Checks <Lifecycle status="beta" />
 
 As dbt projects grow and more contributors add models, quality silently degrades: a model ships without a description, a `public` model gets no `owner`, a model doesn't follow your org's naming convention.
 

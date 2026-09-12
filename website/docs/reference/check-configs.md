@@ -1,6 +1,6 @@
 ---
 title: Check configurations
-description: "Configure severity, enabled, selection_filter_on, tags, and meta for project quality checks."
+description: "Configure severity, enabled, selection_filter_on, tags, and meta for checks."
 availability:
   engine: v2
 meta:
@@ -8,7 +8,7 @@ meta:
 ---
 
 ## Related documentation
-- [Project quality checks](/docs/build/project-checks)
+- [Checks](/docs/build/checks)
 - [Check properties](/reference/check-properties)
 - [`dbt check` command](/reference/commands/check)
 

@@ -19,7 +19,7 @@ The Information Schema generates tables across the following namespaces.
 - [`dbt`](#dbt-namespace)
 - [`dbt_rt`](#dbt_rt-namespace)
 
-When writing project checks, you query `dbt` namespace tables as views through the `{{ info_schema() }}` macro. Refer to [Views and columns reference](/reference/info-schema-views) for the views and columns you can use for checks.
+When writing checks, you query `dbt` namespace tables as views through the `{{ info_schema() }}` macro. Refer to [Views and columns reference](/reference/info-schema-views) for the views and columns you can use for checks.
 
 ### `dbt` namespace
 
@@ -77,4 +77,4 @@ The `dbt_rt` namespace tables and views contain runtime execution data.
 ## Related
 
 - [dbt Information Schema](/docs/build/dbt-information-schema)
-- [Project checks](/docs/build/project-checks)
+- [Checks](/docs/build/checks)

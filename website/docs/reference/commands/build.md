@@ -44,7 +44,7 @@ dbt build --generate-info-schema --static-analysis strict
 
 <VersionBlock firstVersion="2.0">
 
-**Project quality checks:** `dbt build` runs [checks](/docs/build/project-checks) before it compiles or runs any models. Checks are SQL queries you write against the [dbt Information Schema](/docs/build/dbt-information-schema) to enforce your team's project standards. For example, a check might be that every model has a description. A check passes when its query returns no rows. A failing check stops the build before anything is materialized, unless the check's `severity` is set to `warn`.
+**Checks:** `dbt build` runs [checks](/docs/build/checks) before it compiles or runs any models. Checks are SQL queries you write against the [dbt Information Schema](/docs/build/dbt-information-schema) to enforce your team's project standards. For example, a check might be that every model has a description. A check passes when its query returns no rows. A failing check stops the build before anything is materialized, unless the check's `severity` is set to `warn`.
 
 </VersionBlock>
 
@@ -74,7 +74,7 @@ dbt build --generate-info-schema --static-analysis strict
 
 ### The `--skip-checks` flag
 
-The `build` command supports `--skip-checks` to bypass the [project quality checks](/docs/build/project-checks) gate. Models still compile and run; checks are not evaluated and no warning is issued.
+The `build` command supports `--skip-checks` to bypass the [checks](/docs/build/checks) gate. Models still compile and run; checks are not evaluated and no warning is issued.
 
 ```shell
 dbt build --skip-checks

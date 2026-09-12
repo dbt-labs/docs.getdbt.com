@@ -103,6 +103,6 @@ checks:
 
 ## Related docs
 
-- [Project quality checks](/docs/build/project-checks)
+- [Checks](/docs/build/checks)
 - [Check configurations](/reference/check-configs)
-- [Using selectors with checks](/docs/build/project-checks#using-selectors-with-checks)
+- [Using selectors with checks](/docs/build/checks#using-selectors-with-checks)

@@ -6,7 +6,7 @@ availability:
   engine: v2
 ---
 
-`dbt check` parses your project, runs [project quality checks](/docs/build/project-checks), and reports results.
+`dbt check` parses your project, runs [checks](/docs/build/checks), and reports results.
 
 ## Usage
 
@@ -36,6 +36,6 @@ Passing an unknown check name fails the command. Passing a disabled check name i
 
 ## Related docs
 
-- [Project quality checks](/docs/build/project-checks)
+- [Checks](/docs/build/checks)
 - [`dbt build`](/reference/commands/build)
 - [check-paths project config](/reference/project-configs/check-paths)
