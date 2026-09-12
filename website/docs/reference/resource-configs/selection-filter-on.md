@@ -29,17 +29,11 @@ For example, the following check returns edge rows and has no `unique_id` column
 <File name='checks/no_direct_raw_dependency.sql'>
 
 ```sql
-select
-    e.parent_unique_id,
-    e.child_unique_id,
-    c.name as consumer
-from {{ info_schema('edges') }} as e
-join {{ info_schema('models') }} as p
-    on p.unique_id = e.parent_unique_id
-join {{ info_schema('models') }} as c
-    on c.unique_id = e.child_unique_id
-where p.name like 'raw_%'
-  and c.name not like 'stg_%'
+select parent_unique_id, child_unique_id
+from {{ info_schema('edges') }}
+where child_unique_id like 'model.%'
+  and parent_unique_id like '%raw_%'
+  and child_unique_id not like '%stg_%'
 ```
 </File>
 

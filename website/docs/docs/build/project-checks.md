@@ -193,7 +193,20 @@ import SelectionFilterOnValues from '/snippets/_selection-filter-on-values.md';
 
 <SelectionFilterOnValues />
 
-For example, a check that queries DAG edges returns `parent_unique_id` and `child_unique_id` instead of `unique_id`. Set `selection_filter_on` to both columns so dbt can scope the check to selected resources by either endpoint:
+
+For example, the following check returns edge rows and has no `unique_id` column, so you must set `selection_filter_on` to tell dbt which columns contain resource IDs to filter on:
+
+<File name='checks/no_direct_raw_dependency.sql'>
+
+```sql
+select parent_unique_id, child_unique_id
+from {{ info_schema('edges') }}
+where child_unique_id like 'model.%'
+  and parent_unique_id like '%raw_%'
+  and child_unique_id not like '%stg_%'
+```
+
+</File>
 
 <File name='checks/_checks.yml'>
 
