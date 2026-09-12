@@ -77,7 +77,7 @@ The most popular `dbt-labs` packages (`dbt_utils`, `audit_helper`, `dbt_external
 
 ### dbt Information Schema
 
-Similar to a database's `INFORMATION_SCHEMA`, the [dbt Information Schema](/docs/build/dbt-information-schema) is a set of standard tables that provide information about all of the resources in your dbt project. Rather than parsing `manifest.json`, you can query your project metadata using SQL across three namespaces: `dbt`, `dbt_rt`, and `dbt_internal`.
+Similar to a database's `INFORMATION_SCHEMA`, the [dbt Information Schema](/docs/build/dbt-information-schema) is a set of standard tables that provide information about all of the resources in your dbt project. Rather than parsing `manifest.json`, you can query your project metadata using SQL across the `dbt` and `dbt_rt` namespaces.
 
 Use the `--generate-info-schema` flag with `dbt build`, `dbt run`, `dbt compile`, or `dbt parse` to write the Information Schema to `target/info_schema/` in a versioned subdirectory (currently `v1/`). The files use the standard Parquet format; you can query them with any Parquet-compatible tool.
 
@@ -410,6 +410,37 @@ models:
 </File>
 
 This move is only necessary for fragments defined outside of the main YAML structure. For more information about this new key, see [anchors](/reference/resource-properties/anchors).
+
+#### Self-referential (recursive) YAML anchors are not supported {#self-referential-yaml}
+
+In v1, dbt could parse a YAML anchor that merges into an element of the same sequence it's defined on, creating a self-referential (cyclic) anchor. For example, anchoring a full `tables:` sequence and then merging that anchor into one of the sequence's own elements:
+
+```yml
+sources:
+  - name: catalogue
+    tables: &tables
+      - name: anchor_item
+        description: The first table in the sequence.
+      - <<: *tables
+        name: merged_item
+```
+
+This parsed successfully in v1 only because PyYAML (the YAML library <Constant name="core_v1" /> depends on) incidentally allows self-referential anchors, a side effect of Python's own support for cyclic data structures, not an intentional YAML feature. No other major YAML implementation allows this pattern.
+
+In v2, parsing this pattern hits a recursion limit and raises an error, so the entire properties file fails to parse. This is a deliberate limitation, not a bug. v2 does not plan to support self-referential anchors.
+
+To resolve this, remove the self-reference. Anchor only the parts of the document that don't merge back into themselves, for example, anchor a single table mapping instead of the whole sequence:
+
+```yml
+sources:
+  - name: catalogue
+    tables:
+      - &anchor_item_alias
+        name: anchor_item
+        description: The first table in the sequence.
+      - <<: *anchor_item_alias
+        name: merged_item
+```
 
 #### Algebraic operations in Jinja macros
 

@@ -1,1 +1,1 @@
-To populate column types and column-level lineage in `dbt.node_columns` and `dbt.column_lineage`, combine with [`--static-analysis strict`](/docs/build/about-static-analysis). Without it, `dbt.node_columns` and `dbt.column_lineage` are structural only and dbt emits a warning.
+To populate column types and column-level lineage in `dbt.node_columns` and `dbt.column_lineage`, combine with [`--static-analysis strict`](/docs/build/about-static-analysis). Without it, `dbt.node_columns` and `dbt.column_lineage` contain no column types and no lineage.

@@ -101,6 +101,6 @@ $ dbt parse
 dbt parse --generate-info-schema
 ```
 
-Because `dbt parse` doesn't connect to your warehouse, the Information Schema it produces is structural only &mdash; no column types, no column-level lineage, and no runtime results.
+Because `dbt parse` doesn't connect to your warehouse, the Information Schema it produces contains no column types, no column-level lineage, and no runtime results.
 
 </VersionBlock>

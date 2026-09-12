@@ -1,20 +1,22 @@
 ---
 title: "dbt Information Schema"
 sidebar_label: "About dbt Information Schema"
-description: "The dbt Information Schema is a queryable artifact set at target/info_schema/ that exposes your project's metadata as relational tables."
+description: "The dbt Information Schema is a contracted interface into your dbt project metadata."
 id: "dbt-information-schema"
 availability:
   engine: v2
   access: free
 ---
 
-The dbt Information Schema is a set of standard tables that provide information about all of the resources in your dbt project. Rather than parsing `manifest.json`, you can query your project metadata using SQL &mdash; the same way you'd query a database's system tables. You can also use this as the data source for [project checks](/docs/build/project-checks), which let you enforce standards and quality rules across your project.
+The dbt Information Schema is a set of standard tables that provide information about all of the resources in your dbt project. It uses the [Parquet](https://parquet.apache.org/) format, which is significantly more compact than JSON artifacts. For example, a project whose `manifest.json` and `catalog.json` total ~70 MB has an Information Schema of only ~5 MB.
 
-dbt writes the Information Schema to `target/info_schema/` in a versioned subdirectory (currently `v1/`) as standard [Parquet](https://parquet.apache.org/) files. The versioned subdirectory only increments on breaking schema changes (for example, when a column is removed or retyped).
+When you use the [`--generate-info-schema`](#generating-the-information-schema) flag, dbt writes the Information Schema to `target/info_schema/` in a versioned subdirectory (currently `v1/`) as standard Parquet files. The versioned subdirectory only increments on breaking schema changes (for example, when a column is removed or retyped). The metadata available in the schema grows with each step: parsing produces metadata without column types, lineage, or runtime results, compiling adds column types and lineage (with `--static-analysis strict`), and running or building populates runtime results.
 
-The Information Schema contains tables across three namespaces: `dbt`, `dbt_rt`, and `dbt_internal`. For the full list of tables and their descriptions, refer to the [Information Schema tables](/reference/info-schema).
+You can also use this as the data source for [project checks](/docs/build/project-checks), which let you enforce standards and quality rules across your project.
 
-You can query the files with any Parquet-compatible tool (for example, DuckDB, Pandas, or Polars). dbt also generates a `views.sql` file alongside the Parquet files for convenient querying with [DuckDB](https://duckdb.org/).
+The Information Schema contains tables across the `dbt` and `dbt_rt` namespaces. For the full list of tables and their descriptions, refer to the [Information Schema tables](/reference/info-schema).
+
+Rather than parsing `manifest.json`, you can query your project metadata using SQL &mdash; the same way you'd query a database's system tables. Use [`dbt show --inline`](#querying-with-dbt-show) to run SQL queries against the Information Schema directly from the CLI, or [`dbt show --info`](#querying-with-dbt-show) to query a view by name without writing SQL. You can also point any Parquet-compatible tool (for example, Pandas or Polars) directly at the files. For convenient querying with [DuckDB](https://duckdb.org/), dbt also generates a `views.sql` file alongside the Parquet files.
 
 ## Generating the Information Schema
 
@@ -27,15 +29,13 @@ dbt compile --generate-info-schema
 dbt parse --generate-info-schema
 ```
 
-- To populate column types and column-level lineage in `dbt.node_columns` and `dbt.column_lineage`, combine [`dbt build`](/reference/commands/build), [`dbt run`](/reference/commands/run), or [`dbt compile`](/reference/commands/compile) with [`--static-analysis strict`](/docs/build/about-static-analysis). Without it, `dbt.node_columns` and `dbt.column_lineage` are structural only and dbt emits a warning.
+- To populate column types and column-level lineage in `dbt.node_columns` and `dbt.column_lineage`, combine [`dbt build`](/reference/commands/build), [`dbt run`](/reference/commands/run), or [`dbt compile`](/reference/commands/compile) with [`--static-analysis strict`](/docs/build/about-static-analysis). Without it, `dbt.node_columns` and `dbt.column_lineage` contain no column types and no lineage. When using `dbt compile`, dbt also emits a warning.
 
   ```shell
   dbt build --generate-info-schema --static-analysis strict
   ```
 
-- For [`dbt parse`](/reference/commands/parse), the Information Schema is structural only &mdash; no column types, no lineage, and no runtime results, because `dbt parse` doesn't connect to your warehouse.
-
-`--generate-info-schema` also automatically enables partial parse; the Information Schema is built from the metadata dbt writes during the invocation.
+- For [`dbt parse`](/reference/commands/parse), the Information Schema contains no column types, no lineage, and no runtime results, because `dbt parse` doesn't connect to your warehouse.
 
 ### Overriding the output directory
 
@@ -54,17 +54,7 @@ DBT_INFO_SCHEMA_DIR=/tmp/my_schema dbt build --generate-info-schema
 
 ### Checking the schema version
 
-To check which schema version you're on, query the `schema_version` column from the `dbt.project` table. The version is also embedded in each Parquet file's metadata under `dbt:info-schema-version`.
-
-```shell
-dbt show --info project
-```
-
-Or to query just the version:
-
-```shell
-dbt show --inline "select schema_version from {{ info_schema('project') }}"
-```
+You can find the schema version in the versioned subdirectory name (for example, `target/info_schema/v1/`).
 
 ## Querying the Information Schema
 
