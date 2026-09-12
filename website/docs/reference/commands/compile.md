@@ -162,7 +162,7 @@ For more selector patterns, refer to [Test selection examples](/reference/node-s
 dbt compile --generate-info-schema
 ```
 
-<InfoSchemaStaticAnalysis />
+<InfoSchemaStaticAnalysis /> When used without `--static-analysis strict`, dbt emits a warning.
 
 ```shell
 dbt compile --generate-info-schema --static-analysis strict
