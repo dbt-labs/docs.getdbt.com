@@ -14,7 +14,7 @@ Checks let you enforce project standards with SQL, locally, without a warehouse 
 
 Each check queries project metadata &mdash; such as models, sources, columns, and dependencies &mdash; using the [`{{ info_schema() }}` macro](/reference/dbt-jinja-functions/info-schema-macro).
 
-They are similar to [data tests](/docs/build/data-tests) &mdash; a check finds the "bad" rows and it passes if the query returns zero rows, and fails otherwise. Unlike data tests, checks run earlier and locally at parse time, without a warehouse connection.
+Similar to [data tests](/docs/build/data-tests), a check finds any instances in your project that do not meet your expectations &mdash; for example, models missing a description or `public` models with no owner. A check passes when the query returns zero rows, and fails when it returns one or more. Unlike data tests, checks run earlier and locally at parse time, without a warehouse connection.
 
 Checks run automatically with every `dbt build`. You can also run them on demand with `dbt check` or skip them during a build with `--skip-checks`.
 
@@ -41,7 +41,7 @@ The following steps walk you through creating your first check.
 
 1. Declare the `info_schema` version in `dbt_project.yml`:
 
-    The `info_schema.version` pins which version of the info schema the [`{{ info_schema() }}`](/reference/dbt-jinja-functions/info-schema-macro) macro resolves to.
+    The `info_schema.version` pins which version of the info schema the [`{{ info_schema() }}`](/reference/dbt-jinja-functions/info-schema-macro) macro resolves to. Currently, `1` is the only available version.
 
     <File name='dbt_project.yml'>
 
@@ -111,8 +111,8 @@ The following examples show common project quality rules, each defined as a SQL 
 
   ```sql
   select s.unique_id, s.name
-  from {{ info_schema('sources') }} s
-  left join {{ info_schema('edges') }} e on e.parent_unique_id = s.unique_id
+  from {{ info_schema('sources') }} as s
+  left join {{ info_schema('edges') }} as e on e.parent_unique_id = s.unique_id
   where e.child_unique_id is null
   ```
 
@@ -155,11 +155,13 @@ The following examples show common project quality rules, each defined as a SQL 
 
 Checks run with `dbt check` and `dbt build`. Other commands (`dbt run`, `dbt test`, `dbt compile`, etc.) do not run checks.
 
+<SimpleTable>
 | Command | Behavior |
 |---------|----------|
 | `dbt check` | Runs all checks. |
 | `dbt check <name1> <name2> …` | Runs only the named checks. An unknown check name is an error; a disabled check name is accepted and skipped. |
 | `dbt build` | Runs all enabled checks before models compile. A failing check stops the run before any model is compiled or executed. Warn failures are reported and the build continues. Use `--skip-checks` to bypass. |
+</SimpleTable>
 
 ## Skipping checks on build
 

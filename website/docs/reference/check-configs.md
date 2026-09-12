@@ -33,9 +33,9 @@ checks:
   [<resource-path>](/reference/resource-configs/resource-path):
     [+](/reference/resource-configs/plus-prefix)[severity](/reference/resource-configs/severity): error | warn
     [+](/reference/resource-configs/plus-prefix)[enabled](/reference/resource-configs/enabled): true | false
-    [+](/reference/resource-configs/plus-prefix)[selection_filter_on](/reference/resource-configs/selection-filter-on): <column_name> | [<column_names>] | none
-    [+](/reference/resource-configs/plus-prefix)[tags](/reference/resource-configs/tags): <string> | [<string>]
-    [+](/reference/resource-configs/plus-prefix)[meta](/reference/resource-configs/meta): {<dictionary>}
+    [+](/reference/resource-configs/plus-prefix)[selection_filter_on](/reference/resource-configs/selection-filter-on): column_name | [column_names] | none
+    [+](/reference/resource-configs/plus-prefix)[tags](/reference/resource-configs/tags): string | [string]
+    [+](/reference/resource-configs/plus-prefix)[meta](/reference/resource-configs/meta): {dictionary}
 ```
 
 </File>
@@ -50,13 +50,13 @@ checks:
 version: 2
 
 checks:
-  - name: [<check-name>](/reference/resource-configs/resource-path)
+  - name: check-name
     config:
       [severity](/reference/resource-configs/severity): error | warn
       [enabled](/reference/resource-configs/enabled): true | false
-      [selection_filter_on](/reference/resource-configs/selection-filter-on): <column_name> | [<column_names>] | none
-      [tags](/reference/resource-configs/tags): <string> | [<string>]
-      [meta](/reference/resource-configs/meta): {<dictionary>}
+      [selection_filter_on](/reference/resource-configs/selection-filter-on): column_name | [column_names] | none
+      [tags](/reference/resource-configs/tags): string | [string]
+      [meta](/reference/resource-configs/meta): {dictionary}
 ```
 
 </File>
@@ -71,8 +71,8 @@ checks:
 {{ config(
     severity = "error" | "warn",
     enabled = true | false,
-    selection_filter_on = "<column_name>" | ["<column_names>"] | "none",
-    tags = ["<string>"],
+    selection_filter_on = "column_name" | ["column_names"] | "none",
+    tags = ["string"],
     meta = {"key": "value"}
 ) }}
 

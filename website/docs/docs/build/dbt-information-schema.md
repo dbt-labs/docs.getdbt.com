@@ -12,7 +12,7 @@ The dbt Information Schema is a set of standard tables that provide information 
 
 When you use the [`--generate-info-schema`](#generating-the-information-schema) flag, dbt writes the Information Schema to `target/info_schema/` in a versioned subdirectory (currently `v1/`) as standard Parquet files. The versioned subdirectory only increments on breaking schema changes (for example, when a column is removed or retyped). The metadata available in the schema grows with each step: parsing produces metadata without column types, lineage, or runtime results, compiling adds column types and lineage (with `--static-analysis strict`), and running or building populates runtime results.
 
-You can also use this as the data source for [checks](/docs/build/project-checks), which let you enforce standards and quality rules across your project.
+You can also use this as the data source for [checks](/docs/build/checks), which let you enforce standards and quality rules across your project.
 
 The Information Schema contains tables across the `dbt` and `dbt_rt` namespaces. For the full list of tables and their descriptions, refer to the [Information Schema tables](/reference/info-schema).
 
