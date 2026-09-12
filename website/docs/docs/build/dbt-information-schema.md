@@ -12,7 +12,7 @@ The dbt Information Schema is a set of standard tables that provide information 
 
 When you use the [`--generate-info-schema`](#generating-the-information-schema) flag, dbt writes the Information Schema to `target/info_schema/` in a versioned subdirectory (currently `v1/`) as standard Parquet files. The versioned subdirectory only increments on breaking schema changes (for example, when a column is removed or retyped). The metadata available in the schema grows with each step: parsing produces metadata without column types, lineage, or runtime results, compiling adds column types and lineage (with `--static-analysis strict`), and running or building populates runtime results.
 
-You can also use this as the data source for [checks](/docs/build/checks), which let you enforce standards and quality rules across your project.
+You can also use this as the data source for [checks](#using-the-information-schema-in-checks), which let you enforce standards and quality rules across your project.
 
 The Information Schema contains tables across the `dbt` and `dbt_rt` namespaces. For the full list of tables and their descriptions, refer to the [Information Schema tables](/reference/info-schema).
 
@@ -51,10 +51,6 @@ Or with the environment variable:
 ```shell
 DBT_INFO_SCHEMA_DIR=/tmp/my_schema dbt build --generate-info-schema
 ```
-
-### Checking the schema version
-
-You can find the schema version in the versioned subdirectory name (for example, `target/info_schema/v1/`).
 
 ## Querying the Information Schema
 
@@ -100,6 +96,16 @@ select * from dbt.models limit 5;
 select * from dbt_rt.run_results where status = 'error';
 ```
 
+## Using the Information Schema in checks
+
+[Checks](/docs/build/checks) use the [`{{ info_schema() }}`](/reference/dbt-jinja-functions/info-schema) macro to query the dbt Information Schema at parse time. To use it, set the `info_schema` version in `dbt_project.yml`. Currently, `1` is the only available version.
+
+```yaml
+info_schema:
+  version: 1
+```
+
+You can find the schema version in the versioned subdirectory name (for example, `target/info_schema/v1/`). The version only increments on breaking schema changes (for example, when a column is removed or retyped).
 
 ## Related docs
 - [Information Schema tables](/reference/info-schema)

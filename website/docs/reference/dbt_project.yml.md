@@ -36,6 +36,7 @@ The following example is a list of all available configurations in the `dbt_proj
 [asset-paths](/reference/project-configs/asset-paths): [directorypath]
 [function-paths](/reference/project-configs/function-paths): [directorypath]
 [osi-paths](/reference/project-configs/osi-paths): [directorypath]
+[check-paths](/reference/project-configs/check-paths): [directorypath]
 
 [packages-install-path](/reference/project-configs/packages-install-path): directorypath
 
@@ -87,8 +88,14 @@ snapshots:
 sources:
   [<source-configs>](source-configs)
   
+checks:
+  [<check-configs>](/reference/check-configs)
+
 data_tests:
   [<test-configs>](/reference/data-test-configs)
+
+[info_schema](/docs/build/dbt-information-schema):
+  version: 1  # Pins which version of the dbt Information Schema the {{ info_schema() }} macro resolves to
 
 vars:
   [<variables>](/docs/build/project-variables)
