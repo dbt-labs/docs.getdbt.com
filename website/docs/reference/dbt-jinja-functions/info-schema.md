@@ -14,7 +14,7 @@ Each view exposes a set of columns you can select and filter on in your check SQ
 ```sql
 select name
 from {{ info_schema('models') }}
-where description is null or description = ''
+where description = ''
 ```
 
 For the full list of columns available for each view, refer to the [Views and columns reference](/reference/info-schema-views).

@@ -10,9 +10,9 @@ availability:
 
 As dbt projects grow and more contributors add models, quality silently degrades: a model ships without a description, a `public` model gets no `owner`, a model doesn't follow your org's naming convention.
 
-Project quality checks in <Constant name="core_v2" /> let you enforce project standards with SQL. Write a rule (for example, every model has a description, required tags are set) and dbt enforces it before any warehouse work runs. If the project violates a rule, `dbt build` stops before compiling or materializing a single model.
+Checks let you enforce project standards with SQL, locally, without a warehouse connection. Define rules (such as every model must have a description, required tags are set, and so on) and dbt enforces it at parse time before any warehouse work runs. If the project violates a rule, `dbt build` stops before compiling or materializing a single model.
 
-Checks are SQL queries that use the [`{{ info_schema() }}` macro](/reference/dbt-jinja-functions/info-schema-macro) to query project metadata (models, sources, columns, edges, and more) and enforce rules about your project's structure.
+Each check queries project metadata &mdash; such as models, sources, columns, and dependencies &mdash; using the [`{{ info_schema() }}` macro](/reference/dbt-jinja-functions/info-schema-macro).
 
 They are similar to [data tests](/docs/build/data-tests) &mdash; a check finds the "bad" rows and it passes if the query returns zero rows, and fails otherwise. However, checks are earlier and cheaper than data tests: they run at parse time, locally, and with no warehouse connection.
 
@@ -61,13 +61,13 @@ The following steps walk you through creating your first check.
     ```sql
     select unique_id
     from {{ info_schema('models') }}
-    where description is null or description = ''
+    where description = ''
     ```
 
     </File>
 
 
-3. Configure the check in a properties YAML file in your `checks/` directory. You can use any file name; for this example, we're using `_checks.yml`.
+3. Configure the check in a properties YAML file in your `checks/` directory. 
 
     <File name='checks/_checks.yml'>
 
@@ -90,7 +90,7 @@ The following steps walk you through creating your first check.
 
 ## Example checks
 
-The following examples show common project quality rules.
+The following examples show common project quality rules, each defined as a SQL query against the `info_schema` macros and saved as a `.sql` file under `checks/`.
 
 - Enforce that all `public` models have a description:
 
@@ -100,12 +100,12 @@ The following examples show common project quality rules.
   select unique_id
   from {{ info_schema('models') }}
   where access = 'public'
-    and (description is null or description = '')
+    and description = ''
   ```
 
   </File>
 
-- Flag sources that no model references. A source with no downstream models is either unused or missing a model that should reference it:
+- Flag sources that aren't referenced by models. An unreferenced source has no downstream models, and is either unused or missing a model that should reference it:
 
   <File name='checks/unused_sources.sql'>
 
@@ -157,19 +157,19 @@ Checks run with `dbt check` and `dbt build`. Other commands (`dbt run`, `dbt tes
 
 | Command | Behavior |
 |---------|----------|
-| `dbt check` | Runs all enabled checks. |
+| `dbt check` | Runs all checks. |
 | `dbt check <name1> <name2> …` | Runs only the named checks. An unknown check name is an error; a disabled check name is accepted and skipped. |
 | `dbt build` | Runs all enabled checks before models compile. A failing check stops the run before any model is compiled or executed. Warn failures are reported and the build continues. Use `--skip-checks` to bypass. |
 
 ## Skipping checks on build
 
-To skip all checks during a build, pass `--skip-checks` to `dbt build`. Models still compile and run.
+To skip all checks during a build, pass the `--skip-checks` flag to `dbt build`. Models still compile and run.
 
 ```shell
 dbt build --skip-checks
 ```
 
-To skip a specific check, set `enabled: false` in its config. The check still appears in the manifest but does not run.
+To skip a specific check, set `enabled: false` in its config block in the YAML file. The check still appears in the manifest but does not run.
 
 ```yaml
 checks:

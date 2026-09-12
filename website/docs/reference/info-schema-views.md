@@ -7,9 +7,9 @@ availability:
   engine: v2
 ---
 
-Each view mirrors a table of the same name in the [dbt Information Schema](/docs/build/dbt-information-schema), showing only the columns that are final at parse time. Use these views in [`{{ info_schema() }}`](/reference/dbt-jinja-functions/info-schema-macro) when writing [project quality checks](/docs/build/project-checks).
+You can query the following tables in a check. Each one corresponds to a table of the same name in the [dbt Information Schema](/docs/build/dbt-information-schema), and shows only the columns that are final at parse time. Use these table names in [`{{ info_schema() }}`](/reference/dbt-jinja-functions/info-schema-macro) when writing [project quality checks](/docs/build/project-checks).
 
-| View | Columns |
+| Table | Columns |
 |------|---------|
 | `models` | `unique_id`, `name`, `resource_type`, `package_name`, `original_file_path`, `fqn`, `alias`, `description`, `node_language`, `database_name`, `schema_name`, `relation_name`, `identifier`, `enabled`, `materialized`, `config`, `access`, `group`, `contract_enforced`, `version`, `latest_version`, `deprecation_date`, `primary_key`, `properties_yml_file_path`, `tags`, `meta`, `ingested_at` |
 | `seeds` | `unique_id`, `name`, `resource_type`, `package_name`, `original_file_path`, `fqn`, `alias`, `description`, `node_language`, `database_name`, `schema_name`, `relation_name`, `identifier`, `enabled`, `materialized`, `config`, `access`, `group`, `contract_enforced`, `version`, `latest_version`, `deprecation_date`, `primary_key`, `properties_yml_file_path`, `tags`, `meta`, `ingested_at` |
