@@ -98,7 +98,7 @@ select * from dbt_rt.run_results where status = 'error';
 
 ## Using the Information Schema in checks
 
-[Checks](/docs/build/checks) use the [`{{ info_schema() }}`](/reference/dbt-jinja-functions/info-schema) macro to query the dbt Information Schema at parse time. To use it, set the `info_schema` version in `dbt_project.yml`. Currently, `1` is the only available version.
+[Checks](/docs/build/checks) use the [`{{ info_schema() }}`](/reference/dbt-jinja-functions/info-schema-macro) macro to query the dbt Information Schema at parse time. To use it, set the `info_schema` version in `dbt_project.yml`. Currently, `1` is the only available version.
 
 ```yaml
 info_schema:

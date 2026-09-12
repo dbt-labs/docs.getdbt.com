@@ -8,11 +8,11 @@ availability:
 
 # Checks <Lifecycle status="beta" />
 
-Checks provide linting for your dbt project. A project starts clean, then twelve people contribute for a year. Someone ships a model with no description. A public model has no owner. A new model ignores naming conventions. None of this breaks anything, so it's not caught, but quality erodes quietly.
+Checks are SQL queries that lint your dbt project. As dbt projects grow and more contributors add models, maintaining consistent standards becomes harder: a model ships without a description, a public model has no owner, a new model ignores naming conventions. None of this breaks anything, so it's not caught, but quality erodes silently.
 
 Checks let you enforce project standards with SQL, locally, without a warehouse connection. Define rules (such as every model must have a description, required tags are set, and so on) and dbt enforces it at parse time before any warehouse work runs. If the project violates a rule, `dbt build` stops before compiling or materializing a single model.
 
-Each check queries project metadata &mdash; such as models, sources, columns, and dependencies &mdash; using the [`{{ info_schema() }}` macro](/reference/dbt-jinja-functions/info-schema-macro).
+Each check queries the [dbt Information Schema](/docs/build/dbt-information-schema) using the [`{{ info_schema() }}` macro](/reference/dbt-jinja-functions/info-schema-macro).
 
 Similar to [data tests](/docs/build/data-tests), a check finds any instances in your project that do not meet your expectations &mdash; for example, models without a description or `public` models with no owner. A check passes when the query returns zero rows, and fails when it returns one or more. Unlike data tests, checks run earlier and locally at parse time, without a warehouse connection.
 
