@@ -41,7 +41,7 @@ The following steps walk you through creating your first check.
 
 1. Declare the `info_schema` version in `dbt_project.yml`:
 
-    The `info_schema.version` pins which version of the view schema the [`{{ info_schema() }}`](/reference/dbt-jinja-functions/info-schema-macro) macro resolves to.
+    The `info_schema.version` pins which version of the info schema the [`{{ info_schema() }}`](/reference/dbt-jinja-functions/info-schema-macro) macro resolves to.
 
     <File name='dbt_project.yml'>
 
