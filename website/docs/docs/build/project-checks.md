@@ -32,7 +32,7 @@ This section covers the rules and constraints for writing check SQL files and co
 
 [`{{ info_schema() }}`](/reference/dbt-jinja-functions/info-schema-macro) is the supported way to query the [dbt Information Schema](/docs/build/dbt-information-schema) in a check. Pass the name of the view you want to query (for example, `{{ info_schema('models') }}` for models or `{{ info_schema('edges') }}` for DAG edges). No materialized [Information Schema](/reference/info-schema) files are required; checks run against an intermediate representation built at parse time.
 
-For the full list of available tables and columns, refer to [Views and columns reference](/reference/info-schema-views/).
+For the full list of available views and columns, refer to [Columns available for checks](/reference/info-schema#columns-available-for-checks).
 
 ## Writing your first check
 
@@ -53,7 +53,7 @@ The following steps walk you through creating your first check.
 
 2. Write a check under `checks/`:
 
-    Use [`{{ info_schema() }}`](/reference/dbt-jinja-functions/info-schema-macro) to query project metadata. A check passes if the query returns zero rows. For available views and columns, refer to the [Views and columns reference](/reference/info-schema-views/).
+    Use [`{{ info_schema() }}`](/reference/dbt-jinja-functions/info-schema-macro) to query project metadata. A check passes if the query returns zero rows. For available views and columns, refer to [Columns available for checks](/reference/info-schema#columns-available-for-checks).
 
     <File name='checks/all_models_have_descriptions.sql'>
 

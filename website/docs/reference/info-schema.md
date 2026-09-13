@@ -77,6 +77,8 @@ The `dbt_rt` namespace tables contain runtime execution data. These tables are n
 
 When you query a table in the Information Schema through the `{{ info_schema() }}` macro, dbt exposes it as a _view_ &mdash; the same table name, but with only a subset of columns available: those that are resolved at parse time. The full table (in `target/info_schema/v1/`) may contain additional columns. Use the view name (without the `dbt.` prefix) as the argument to the macro.
 
+`dbt.classifiers`, `dbt.column_lineage`, and `dbt.semantic_relationships` are in the list of dbt Information Schema tables but they are not available for checks because they are not populated at parse time.
+
 | View | Columns |
 |------|---------|
 | `models` | `unique_id`, `name`, `resource_type`, `package_name`, `original_file_path`, `fqn`, `alias`, `description`, `node_language`, `database_name`, `schema_name`, `relation_name`, `identifier`, `enabled`, `materialized`, `config`, `access`, `group`, `contract_enforced`, `version`, `latest_version`, `deprecation_date`, `primary_key`, `properties_yml_file_path`, `tags`, `meta`, `ingested_at` |
