@@ -2,6 +2,8 @@
 title: freshness
 description: "Read this guide to understand the `freshness` configuration in dbt."
 id: "freshness"
+availability:
+  access: free
 ---
 
 import SaoDeprecated from '/snippets/_sao-deprecated.md';
@@ -327,8 +329,6 @@ Not all materializations support freshness checks the same way. dbt validates yo
 | `view`, `external` | Required | Views don't expose row-level metadata. Set `loaded_at_field` or `loaded_at_query` to measure freshness. An empty string (`loaded_at_field: ""`) is treated the same as unset and raises a parse error. |
 | `ephemeral` | Not supported | Nothing is materialized to measure. Raises a parse error. |
 </SimpleTable>
-
-An incomplete freshness rule (for example, `warn_after` with `count` but no `period`) issues a warning at parse time for all materializations; `dbt run` and `dbt build` warn but still succeed. Only `dbt freshness` treats it as an error. Separately, `view` and `external` models require `loaded_at_field` or `loaded_at_query` &mdash; omitting both is a parse error that fails `dbt run`, `dbt build`, and `dbt freshness`, regardless of whether the freshness rule is complete.
 
 ### Cross-project freshness
 
