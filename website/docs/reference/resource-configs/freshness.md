@@ -328,7 +328,32 @@ Not all materializations support freshness checks the same way. dbt validates yo
 | `ephemeral` | Not supported | Nothing is materialized to measure. Raises a parse error. |
 </SimpleTable>
 
+An incomplete freshness rule (for example, `warn_after` with `count` but no `period`) issues a warning at parse time for all materializations; `dbt run` and `dbt build` warn but still succeed. Only `dbt freshness` treats it as an error. Separately, `view` and `external` models require `loaded_at_field` or `loaded_at_query` &mdash; omitting both is a parse error that fails `dbt run`, `dbt build`, and `dbt freshness`, regardless of whether the freshness rule is complete.
+
+### Cross-project freshness
+
 For public models in a [dbt Mesh](/docs/mesh/about-mesh), dbt stores the freshness config so downstream projects can check upstream model freshness without running the upstream project.
+
+For example, `project_a` owns a public model `orders` with freshness configured:
+
+```yaml
+# project_a: models/orders.yml
+models:
+  - name: orders
+    access: public
+    config:
+      loaded_at_field: updated_at
+      freshness:
+        warn_after: {count: 24, period: hour}
+        error_after: {count: 48, period: hour}
+```
+
+`project_b` depends on `orders`. To check whether `orders` data is fresh, run `dbt freshness` from `project_b` &mdash; no need to re-run `project_a`:
+
+```bash
+# run from project_b
+dbt freshness --select project_a.orders
+```
 
 ### Examples
 
