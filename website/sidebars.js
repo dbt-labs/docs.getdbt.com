@@ -1772,14 +1772,6 @@ const sidebarSettings = {
     "reference/info-schema",
     {
       type: "category",
-      label: "Checks",
-      link: { type: "doc", id: "reference/info-schema-views" },
-      items: [
-        "reference/info-schema-views",
-      ],
-    },
-    {
-      type: "category",
       label: "Jinja reference",
       link: {
         type: "generated-index",

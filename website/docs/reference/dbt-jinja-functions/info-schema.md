@@ -19,7 +19,7 @@ from {{ info_schema('models') }}
 where description = ''
 ```
 
-For the full list of columns available for each view, refer to the [Views and columns reference](/reference/info-schema-views).
+For the full list of columns available for each view, refer to [Columns available for checks](/reference/info-schema#columns-available-for-checks).
 
 :::note
 Checks currently only have access to parse-time metadata. Only views whose columns are fully populated at parse time are available. Passing a view name that doesn't exist or isn't available at parse time causes the check to fail with a message listing what is available.
