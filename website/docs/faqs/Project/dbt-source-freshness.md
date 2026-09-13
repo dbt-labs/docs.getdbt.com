@@ -9,7 +9,7 @@ Yes!
 
 <VersionBlock firstVersion="2.0">
 
-The [`dbt freshness`](/reference/commands/freshness) command outputs a pass/warning/error status for each source or model selected in the freshness check.
+The [`dbt freshness`](/reference/commands/freshness) command measures how recently data was loaded and reports a pass/warning/error for each source or model based on your `warn_after` and `error_after` thresholds.
 
 dbt writes the model and source freshness results to `target/freshness.json`. When sources are included, it also writes `target/sources.json` for backward compatibility.
 

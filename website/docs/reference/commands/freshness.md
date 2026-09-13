@@ -9,7 +9,7 @@ availability:
 
 # dbt freshness <Lifecycle status="beta" />
 
-The `dbt freshness` command checks whether sources and models with [freshness](/reference/resource-configs/freshness) configured meet your `warn_after` and `error_after` thresholds, reporting warnings and errors accordingly. It replaces [`dbt source freshness`](/reference/commands/source), which checks sources only.
+The `dbt freshness` command checks whether sources and models with [freshness](/reference/resource-configs/freshness) configured meet your `warn_after` and `error_after` thresholds, reporting warnings and errors accordingly.
 
 ## Usage
 
@@ -23,26 +23,14 @@ dbt freshness [--select SELECTOR] [--resource-type RESOURCE_TYPE] [--exclude-res
 dbt freshness
 ```
 
-### Check only sources
+### Filter by resource type
 
 ```bash
+# Check only sources
 dbt freshness --resource-type source
-```
 
-### Check only models
-
-```bash
+# Check only models
 dbt freshness --resource-type model
-```
-
-### Exclude a resource type
-
-```bash
-# Check everything except sources
-dbt freshness --exclude-resource-type source
-
-# Check everything except models
-dbt freshness --exclude-resource-type model
 ```
 
 ### Check a specific model or source
@@ -62,13 +50,13 @@ dbt freshness --select "source:jaffle_shop.orders"
 
 `dbt freshness` selects any source or model with `warn_after` or `error_after` set in its `freshness` config.
 
-Freshness is measured using one of three methods, in order of precedence:
+Freshness is measured using one of three methods, in order of precedence. It then compares the latest timestamp against the current timestamp to determine how old the data is:
 
 | Method | When used |
 |---|---|
 | `loaded_at_query` | When set on the node — runs the custom SQL expression to get the latest timestamp |
 | `loaded_at_field` | When set — queries `MAX(<loaded_at_field>)` against the materialized relation |
-| Adapter metadata | For `table`, `incremental`, `materialized_view`, and `dynamic_table` models with no `loaded_at_field` — uses the adapter's relation metadata to determine last modified time |
+| Adapter metadata | When neither `loaded_at_field` nor `loaded_at_query` is set — queries adapter relation metadata for last modified time. Applies to `table`, `incremental`, `materialized_view`, and `dynamic_table` models only. |
 
 ## Command output
 

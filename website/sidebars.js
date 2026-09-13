@@ -1488,7 +1488,7 @@ const sidebarSettings = {
             "reference/source-configs",
             "reference/resource-properties/database",
             "reference/resource-properties/external",
-            "reference/resource-properties/freshness",
+            { type: "ref", id: "reference/resource-configs/freshness" },
             "reference/resource-properties/identifier",
             "reference/resource-properties/loader",
             "reference/resource-properties/quoting",

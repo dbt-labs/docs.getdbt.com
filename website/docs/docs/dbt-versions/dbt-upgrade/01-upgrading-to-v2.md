@@ -87,7 +87,7 @@ You can declare freshness thresholds directly on any model:
 models:
   - name: stg_orders
     config:
-      loaded_at_field: updated_at  # or loaded_at_query; required for view/external, optional for table/incremental
+      loaded_at_field: updated_at  # or loaded_at_query
       freshness:
         warn_after: {count: 24, period: hour}
         error_after: {count: 48, period: hour}
@@ -103,13 +103,38 @@ For full configuration options and materialization rules, refer to [freshness](/
 
 #### `dbt freshness` command
 
-[`dbt freshness`](/reference/commands/freshness) replaces `dbt source freshness` and checks both sources and models in a single invocation. `dbt source freshness` is still supported for backward compatibility and continues to produce `sources.json`.
+[`dbt freshness`](/reference/commands/freshness) checks the freshness of sources and models.
 
-After every `dbt freshness` run, dbt writes `target/freshness.json` &mdash; a new artifact that covers both sources and models. Each entry includes a `resource_type` field (`"source"` or `"model"`) to distinguish them. For the full schema, refer to [`freshness.json`](/reference/artifacts/freshness-json).
+:::note
+`dbt source freshness` is a legacy command that checks freshness for sources _only_. It's still supported for backward compatibility and continues to produce `sources.json`, but we recommend using `dbt freshness` going forward.
+:::
+
+`dbt freshness` evaluates how fresh your sources and models are against the thresholds you've configured, and reports a warning or error when data is stale. Results are written to `target/freshness.json`, which covers both sources and models. For the full schema, refer to [`freshness.json`](/reference/artifacts/freshness-json).
 
 #### Cross-project freshness
 
-dbt stores a public model's freshness config in `publication.json` in a [dbt Mesh](/docs/mesh/about-mesh) project. Downstream projects can check upstream model freshness without running the upstream project.
+In a [dbt Mesh](/docs/mesh/about-mesh) project, dbt stores a public model's freshness config so downstream projects can check upstream model freshness without running the upstream project.
+
+For example, `project_a` owns a public model `orders` with freshness configured:
+
+```yaml
+# project_a: models/orders.yml
+models:
+  - name: orders
+    access: public
+    config:
+      loaded_at_field: updated_at
+      freshness:
+        warn_after: {count: 24, period: hour}
+        error_after: {count: 48, period: hour}
+```
+
+`project_b` depends on `orders`. To check whether `orders` data is fresh, run `dbt freshness` from `project_b` &mdash; no need to re-run `project_a`:
+
+```bash
+# run from project_b
+dbt freshness --select project_a.orders
+```
 
 ### `dbt login`
 

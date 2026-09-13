@@ -149,8 +149,6 @@ models:
 
 <VersionBlock firstVersion="2.0">
 
-Note, most model configurations are defined under `config`, while freshness settings go under `freshness`.
-
 <File name='models/properties.yml'>
 
 ```yaml
@@ -166,7 +164,7 @@ models:
         warn_after: {count: 24, period: hour}
         error_after: {count: 48, period: hour}
         build_after: <dict>        # build scheduling — Enterprise only
-      loaded_at_field: updated_at  # required for view/external; optional for table/incremental
+      loaded_at_field: updated_at  # or loaded_at_query
       [on_error](/reference/resource-configs/on_error): skip_children | continue
       [latest_version_pointer](/reference/resource-configs/latest_version_pointer): <dict>
 ```
@@ -472,7 +470,6 @@ You can use the `freshness` config in the following ways:
 
 - **Build scheduling** (`build_after`): To skip rebuilding a model when upstream data hasn't changed since the last build. Available on dbt platform Enterprise tiers only.
 
-Note that for every `freshness` sub-key, you must either set both `count` and `period`, or omit the sub-key entirely.
 
 <File name="models/my_model.yml">
 
@@ -489,7 +486,7 @@ models:
           count: 6
           period: hour
           updates_on: any  # optional
-      loaded_at_field: updated_at  # required for view/external; optional for table/incremental
+      loaded_at_field: updated_at  # or loaded_at_query
 ```
 
 </File>

@@ -227,16 +227,20 @@ The results of this query are used to determine whether the source is fresh or n
 
 ### Build models based on source freshness
 
-Our best practice recommendation is to use [data source freshness](/docs/build/sources#declaring-source-freshness). This will allow settings to be transfered into a `.yml` file where source freshness is defined on [model level](/reference/resource-properties/freshness).
+Our best practice recommendation is to use [data source freshness](/docs/build/sources#declaring-source-freshness). This will allow settings to be transfered into a `.yml` file where source freshness is defined on [model level](/reference/resource-configs/freshness).
 
 To build models based on source freshness in dbt:
 
 1. <VersionBlock firstVersion="2.0">Run [`dbt freshness --resource-type source`](/reference/commands/freshness) to check the freshness of your sources.</VersionBlock><VersionBlock lastVersion="1.12">Run `dbt source freshness` to check the freshness of your sources.</VersionBlock>
 2. Use the `dbt build --select source_status:fresher+` command to build and test models downstream of fresher sources.
 
-Using these commands in order makes sure models update with the latest data. This eliminates wasted compute cycles on unchanged data and builds models _only_ when necessary. 
+Using these commands in order makes sure models update with the latest data. This eliminates wasted compute cycles on unchanged data and builds models _only_ when necessary.
 
 Set [source freshness checks](/docs/deploy/source-freshness#enabling-source-freshness-checks) to 30 minutes, then run a job which rebuilds every hour. This setup retrieves all the models and rebuilds them in one attempt if their source freshness has expired. For more information, refer to [Source freshness check frequency](/docs/deploy/source-freshness#source-freshness-check-frequency).
+
+:::tip
+You can also use [dbt State](/docs/deploy/dbt-state-about) for this use case. Set the [`lag_tolerance`](/reference/resource-configs/lag-tolerance) config to control how much time must pass since the last upstream data change before dbt triggers a rebuild, without chaining commands manually.
+:::
 
 ### Filter
 
