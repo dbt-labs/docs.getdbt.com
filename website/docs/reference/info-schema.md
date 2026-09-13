@@ -8,15 +8,13 @@ availability:
   access: free
 ---
 
-For an overview of the dbt Information Schema, how to generate it, and how to query it, refer to [dbt Information Schema](/docs/build/dbt-information-schema).
+The [dbt Information Schema](/docs/build/dbt-information-schema) generates the following tables by materializing your project metadata as Parquet files under `target/info_schema/v1/`. The version only increments on breaking schema changes (for example, when a column is removed or retyped). 
 
-The dbt Information Schema materializes your project metadata as Parquet files under `target/info_schema/v1/`. You can query these same tables at parse time using the [`{{ info_schema() }}`](/reference/dbt-jinja-functions/info-schema-macro) macro &mdash; for example, when writing [checks](/docs/build/checks). Refer to [Columns available for checks](#columns-available-for-checks) to know which columns are accessible.
+You can also query these tables at parse time using the [`{{ info_schema() }}`](/reference/dbt-jinja-functions/info-schema-macro) macro (for example, when writing [checks](/docs/build/checks)). dbt exposes each table as a _view_ &mdash; the same table name, but limited to parse-time columns. Refer to [Columns available for checks](#columns-available-for-checks) to know which columns are accessible. 
 
 ## Tables
 
-The following tables reflect dbt Information Schema v1, written to `target/info_schema/v1/`. The version only increments on breaking schema changes (for example, when a column is removed or retyped).
-
-The Information Schema generates tables across the following namespaces.
+The Information Schema generates tables across the following namespaces:
 
 - [`dbt`](#dbt-namespace)
 - [`dbt_rt`](#dbt_rt-namespace)
@@ -75,7 +73,7 @@ The `dbt_rt` namespace tables contain runtime execution data. These tables are n
 
 ## Columns available for checks
 
-When you query a table in the Information Schema through the `{{ info_schema() }}` macro, dbt exposes it as a _view_ &mdash; the same table name, but with only a subset of columns available: those that are resolved at parse time. The full table (in `target/info_schema/v1/`) may contain additional columns. Use the view name (without the `dbt.` prefix) as the argument to the macro.
+When you query a table in the Information Schema through the `{{ info_schema() }}` macro, dbt exposes it as a view &mdash; the same table name, but with only a subset of columns available: those that are resolved at parse time. The full table (in `target/info_schema/v1/`) may contain additional columns. Use the view name (without the `dbt.` prefix) as the argument to the macro.
 
 `dbt.classifiers`, `dbt.column_lineage`, and `dbt.semantic_relationships` are in the list of [dbt Information Schema tables](#tables) but they are not available for checks because they are not populated at parse time.
 
