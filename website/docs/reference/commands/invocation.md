@@ -78,6 +78,14 @@ Active Invocations:
 ➜  jaffle-shop git:(test-cli) ✗ 
 ```
 
+To reattach to a specific active invocation, copy its `ID` and pass it to the `--id` flag:
+
+```shell
+dbt reattach --id 6dcf4723-e057-48b5-946f-a4d87e1d117a
+```
+
+If you omit `--id`, dbt reattaches to the most recent invocation.
+
 :::tip
 
 To cancel an active session in the terminal, use the `Ctrl + Z` shortcut.
@@ -88,5 +96,3 @@ To cancel an active session in the terminal, use the `Ctrl + Z` shortcut.
 
 - [Install <Constant name="dbt" /> CLI](/docs/platform/dbt-cli-installation)
 - [Troubleshooting <Constant name="dbt" /> CLI 'Session occupied' error](/faqs/Troubleshooting/long-sessions-dbt-cli)
-
-
