@@ -221,7 +221,7 @@ The following rules report violations but can't be auto-fixed by `--fix`. They r
 
 This is a deliberate choice. The number of possible outputs grows combinatorially with the number of unresolved conditions in a template, so linting all of them is expensive and surfaces violations in SQL your project might never execute. Instead, `dbt lint` varies one unresolved condition at a time, up to `render_variant_limit`.
 
-Keep one consequence in mind: when `dbt lint` explores a branch your project never takes, it can surface a violation from that unused path, most often inside a third-party package macro. If you have feedback on this approach, open an issue in the [dbt-core GitHub repository](https://github.com/dbt-labs/dbt-core/issues) with the `Linter` label.
+Keep one consequence in mind: when `dbt lint` explores a branch your project never takes, it can surface a violation from that unused path, most often inside a third-party package macro. If you have feedback on this approach, open an issue in the [dbt-core GitHub repository](https://github.com/dbt-labs/dbt/issues) with the `Linter` label.
 
 </DetailsToggle>
 
