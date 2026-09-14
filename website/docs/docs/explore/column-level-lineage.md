@@ -17,8 +17,8 @@ Column-level lineage (CLL) gives you insight into the provenance of your data pr
 ## Availability
 
 You can use CLL in two places:
-- **[<Constant name="catalog" />](/docs/explore/explore-projects) in the <Constant name="dbt_platform" />**:  If you have an Enterprise or Enterprise+ plan with <Constant name="catalog" /> access.
-- **Locally with <Constant name="dbt" /> v2**: If your project uses [`static_analysis: strict`](/reference/resource-configs/static-analysis?version=2) and you've signed into a dbt platform account (free or paid) using [`dbt login`](/reference/commands/login?version=2.0). Available in the [dbt VS Code extension](/docs/dbt-extension-features#rich-lineage-in-context) and [dbt Docs v2](/docs/build/view-documentation#dbt-docs-v2). 
+- **[<Constant name="catalog" />](/docs/explore/explore-projects) in the <Constant name="dbt_platform" />**:  Requires an Enterprise or Enterprise+ plan with <Constant name="catalog" /> access.
+- **Locally with <Constant name="dbt" /> v2**: Requires [strict static analysis](/docs/build/about-static-analysis#configuring-static_analysis) and signing into a dbt platform account (free or paid) using [`dbt login`](/reference/commands/login?version=2.0). Available in the [dbt VS Code extension](/docs/dbt-extension-features#rich-lineage-in-context) and [dbt Docs v2](/docs/build/view-documentation#dbt-docs-v2).
 
 import ExplorerCourse from '/snippets/_explorer-course-link.md';
 
@@ -26,18 +26,18 @@ import ExplorerCourse from '/snippets/_explorer-course-link.md';
 
 ## Access the column-level lineage in Catalog
 
-There is no additional setup required for CLL in <Constant name="catalog" /> if your account is on an Enterprise plan that can use <Constant name="catalog" />. You can access the CLL by expanding the column card in the **Columns** tab of an <Constant name="catalog" /> [resource details page](/docs/explore/explore-projects#view-resource-details) for a model, source, or snapshot.
+There is no additional setup required for CLL in <Constant name="catalog" /> if your account is an Enterprise or Enterprise+ plan with <Constant name="catalog" /> access. You can access the CLL by expanding the column card in the **Columns** tab of an <Constant name="catalog" /> [resource details page](/docs/explore/explore-projects#view-resource-details) for a model, source, or snapshot.
 
 <Constant name="dbt" /> updates the lineage in <Constant name="catalog" /> after each run that's executed in the production or staging environment. At least one job in the production or staging environment must run `dbt docs generate`. Refer to [Generating metadata](/docs/explore/explore-projects#generate-metadata) for more details.
 
 <Lightbox src="/img/docs/collaborate/dbt-explorer/example-cll.png" width="40%" title="Example of the Columns tab and where to expand for the CLL"/>
 
-### Access column-level lineage locally
+## Access column-level lineage locally
 
 When you develop with <Constant name="dbt" /> v2, you don't need <Constant name="catalog" /> to see column lineage:
 
-- **dbt VS Code extension** &mdash; right-click a filename or a model's SQL, then select **dbt: View Lineage** &rarr; **Show column lineage**. Refer to [Rich lineage in context](/docs/dbt-extension-features#rich-lineage-in-context) for the full workflow.
-- **dbt Docs v2** &mdash; produce the artifacts with `--static-analysis strict`, then generate the site. Refer to [dbt Docs v2](/docs/build/view-documentation#dbt-docs-v2).
+- **dbt VS Code extension**: Right-click a filename or a model's SQL, then select **dbt: View Lineage** &rarr; **Show column lineage**. Refer to [Rich lineage in context](/docs/dbt-extension-features#rich-lineage-in-context) for the full workflow.
+- **dbt Docs v2**: Build the index with `dbt build --write-index --static-analysis strict`, then export it with `dbt docs generate --no-compile`. Plain `dbt docs generate` recompiles without strict, so column lineage is hidden. Refer to [dbt Docs v2](/docs/build/view-documentation#dbt-docs-v2).
 
 ## Column evolution lens {#column-lens}
 
@@ -71,7 +71,7 @@ During development, analytics engineers can use column-level lineage to understa
 
 When exploring your data products, navigating column lineage allows analytics engineers and data analysts to more easily navigate and understand the origin and usage of their data, enabling them to make better decisions with higher confidence.
 
-## Caveats
+## Caveats in Catalog
 
 Refer to the following CLL caveats or limitations as you navigate <Constant name="catalog" />.
 
