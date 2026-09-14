@@ -21,7 +21,7 @@ Skills install only when you configure an `ai_provider`. Without one, `dbt deps`
 
 ## Set the ai_provider flag
 
-Set `ai_provider` in the `flags` block of your root project:
+Set [`ai_provider` in the `flags`](/reference/global-configs/about-global-configs?version=2#available-flags) block of your root project:
 
 <File name='dbt_project.yml'>
 
