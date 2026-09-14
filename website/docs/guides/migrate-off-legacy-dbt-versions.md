@@ -1,16 +1,16 @@
 ---
 title: "Migrate off legacy dbt versions"
 id: migrate-off-legacy-dbt-versions
-description: "A quickstart for moving environments and jobs off legacy dbt versions to a dbt Core release track."
+description: "A quickstart for moving environments and jobs off legacy dbt versions to a dbt v1 release track."
 hoverSnippet: "Move your environments and jobs off legacy dbt versions to a release track."
 icon: 'guides'
 hide_table_of_contents: true
-tags: ['Migration', 'dbt Core', 'dbt platform', 'Upgrade']
+tags: ['Migration', 'dbt v1', 'dbt platform', 'Upgrade']
 keywords: ['legacy dbt version', 'release track', 'migrate dbt version', 'upgrade dbt version']
 level: 'Beginner'
 ---
 
-Legacy <Constant name="core" /> versions v1.3–v1.7 are being deprecated on <Constant name="legacy_deprecation_date" />. To keep your work running and supported, move your environments and jobs to a [<Constant name="core" /> release track](/docs/dbt-versions/dbt-release-tracks) now. A release track keeps you on a supported version automatically and prepares your project for [<Constant name="fusion_engine" />](/docs/introduction) later.
+Legacy <Constant name="dbt" /> versions v1.3–v1.7 are being deprecated on <Constant name="legacy_deprecation_date" />. To keep your work running and supported, move your environments and jobs to a [<Constant name="core" /> release track](/docs/dbt-versions/dbt-release-tracks) now. A release track keeps you on a supported version automatically and prepares your project for [<Constant name="fusion_engine" />](/docs/introduction) later.
 
 :::info The single-hop path
 

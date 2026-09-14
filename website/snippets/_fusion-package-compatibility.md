@@ -17,7 +17,7 @@ This means that even if you see a v2 warning for a package that `dbt-autofix` id
 
 The message discrepancy is temporary while we implement and roll out `dbt-autofix`'s enhanced compatibility detection to v2 warnings. 
 
-Here's an example of a dbt v2 warning in the <Constant name="studio_ide" /> that says a package isn't compatible with v2 but `dbt-autofix` indicates it is compatible:
+Here's an example of a v2 warning in the <Constant name="studio_ide" /> that says a package isn't compatible with v2 but `dbt-autofix` indicates it is compatible:
 ```text
 dbt1065: Package 'dbt_utils' requires dbt version [>=1.30,<2.0.0], but current version is 2.0.0-preview.72. This package may not be compatible with your dbt version. dbt(1065) [Ln 1, Col 1]
 ```

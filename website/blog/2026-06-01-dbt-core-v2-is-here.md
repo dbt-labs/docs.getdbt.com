@@ -29,7 +29,7 @@ If you've been an early adopter of the dbt Fusion engine, these features might s
 
 We think that this is the best way to continue to meet our commitments as stewards of the dbt framework, the best way to enable [our _One dbt_ vision](https://roundup.getdbt.com/p/one-dbt), and the best way to maintain dbt's position as the standard for data transformation in the agentic era.
 
-If you want to learn more about the new capabilities in dbt Core and where we're headed next, Jeremy, Elias, and I (Grace) [just published another roadmap post](https://github.com/dbt-labs/dbt-core/blob/main/docs/roadmap/2026-06-announcing-v2.md) - go check it out. For more detail about what is (and isn't) changing, and why we're doing this, read the rest of this post.
+If you want to learn more about the new capabilities in dbt Core and where we're headed next, Jeremy, Elias, and I (Grace) [just published another roadmap post](https://github.com/dbt-labs/dbt/blob/main/docs/roadmap/2026-06-announcing-v2.md) - go check it out. For more detail about what is (and isn't) changing, and why we're doing this, read the rest of this post.
 
 ## Putting all our efforts behind a single engine
 

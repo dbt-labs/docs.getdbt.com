@@ -1,5 +1,5 @@
 ---
-title: "Connect ClickHouse to dbt Core"
+title: "Connect ClickHouse to dbt v1"
 sidebar_label: "ClickHouse"
 description: "Read this guide to learn about the ClickHouse warehouse setup in dbt."
 meta:

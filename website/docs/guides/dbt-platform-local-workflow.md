@@ -1,10 +1,10 @@
 ---
-title: "Hybrid development with dbt platform and Fusion"
+title: "Hybrid development with dbt platform and dbt v2"
 id: "dbt-platform-local-workflow"
 level: 'Beginner'
 icon: 'zap'
 hide_table_of_contents: true
-tags: ['dbt Fusion engine', 'dbt platform', 'Local development']
+tags: ['dbt v2', 'dbt platform', 'Local development']
 recently_updated: true
 ---
 
@@ -18,7 +18,7 @@ This guide walks through credentials, environment variables, <Constant name="fus
 
 ## Prerequisites
 
-- You have a <Constant name="dbt_platform" /> account with at least one project using the <Constant name="fusion_engine" />.
+- You have a <Constant name="dbt_platform" /> account with at least one project using <Constant name="fusion_engine" />.
 - You have either the [dbt platform CLI](/docs/platform/dbt-cli-installation) or the [dbt VS Code extension + local dbt](/docs/local/install-dbt) installed.
 
 
@@ -26,7 +26,7 @@ This guide walks through credentials, environment variables, <Constant name="fus
 
 How you authenticate to your data warehouse locally depends on which self-hosted tool you use:
 - [dbt platform CLI](/guides/dbt-platform-local-workflow?step=3#dbt-platform-cli): For a CLI-only development experience (without the dbt VS Code extension), use the <Constant name="platform_cli" /> with <Constant name="fusion"/> set as your platform release track. Warehouse credentials are managed centrally in <Constant name="dbt_platform" /> and passed through automatically &mdash; no `profiles.yml` required.
-- [dbt VS Code extension](/guides/dbt-platform-local-workflow?step=3#dbt-vs-code-extension-profilesyml-required): For IDE-based local development, the dbt VS Code extension runs the <Constant name="fusion_engine" /> and its <Term id="lsp" /> features in a local process. This path requires a `profiles.yml` to connect directly to your warehouse.
+- [dbt VS Code extension](/guides/dbt-platform-local-workflow?step=3#dbt-vs-code-extension-profilesyml-required): For IDE-based local development, the dbt VS Code extension runs <Constant name="fusion_engine" /> and its <Term id="lsp" /> features in a local process. This path requires a `profiles.yml` to connect directly to your warehouse.
 
 ### <Constant name="platform_cli" />
 
@@ -134,13 +134,13 @@ Consider a script that fetches variables from your secrets manager (for example,
 
 :::
 
-## 3. Managing Fusion versions
+## 3. Managing dbt v2 versions
 
 The **v2 Stable** release track on <Constant name="dbt_platform" /> updates continuously as <Constant name="fusion" /> ships new releases. If your local version falls behind, you might see inconsistent behavior. The same query could compile differently locally than in production, or a feature might exist in <Constant name="dbt_platform" /> but not in your local binary. Stay current to avoid these mismatches.
 
 ### Versions on the dbt platform
 
-On <Constant name="dbt_platform" />, <Constant name="fusion" /> follows a versionless release track model. The default release track is **v2 Stable**, which always runs the most recent stable release. For details on release tracks and their stability levels, see [<Constant name="fusion" /> releases](/docs/dbt-versions/dbt-release-tracks?#fusion-release-tracks).
+On <Constant name="dbt_platform" />, <Constant name="fusion" /> follows a versionless release track model. The default release track is **v2 Stable**, which always runs the most recent stable release. For details on release tracks and their stability levels, see [<Constant name="fusion" /> releases](/docs/dbt-versions/dbt-release-tracks#dbt-v2-release-tracks).
 
 ### Versions installed locally
 
@@ -170,7 +170,7 @@ Use a [VS Code dev container](https://code.visualstudio.com/docs/devcontainers/c
 Our friends at Brooklyn Data have published a ready-to-use <Constant name="fusion" /> dev container:
 
 - **Dev container template:** [brooklyn-data/dbt-fusion-devcontainer](https://github.com/brooklyn-data/dbt-fusion-devcontainer)
-- **Blog post:** [Why you should use dev containers with dbt <Constant name="fusion" />](https://www.brooklyndata.co/ideas/2025/06/11/why-you-should-use-dev-containers-with-dbt-fusion)
+- **Blog post:** [Why you should use dev containers with dbt v2](https://www.brooklyndata.co/ideas/2025/06/11/why-you-should-use-dev-containers-with-dbt-fusion)
 
 To get started with their template:
 

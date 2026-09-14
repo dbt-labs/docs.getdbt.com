@@ -151,7 +151,7 @@ dbt sl query --metrics average_purchase_price --group-by metric_time,user_id__ty
 ```
 
 ```yaml 
-mf query --metrics average_purchase_price --group-by metric_time,user_id__type # In dbt Core
+mf query --metrics average_purchase_price --group-by metric_time,user_id__type # In dbt v1
 ```
 
 #### SQL examples

@@ -1,7 +1,7 @@
 ---
 title: "Setting up dbt State"
 sidebar_label: "Set up dbt State"
-description: "Learn how to install and configure dbt State across dbt Core, dbt platform, and Fusion."
+description: "Learn how to install and configure dbt State across dbt v1, dbt platform, and dbt v2."
 id: "dbt-state-setup"
 tags: ['dbt State']
 availability: everywhere_usage
@@ -15,13 +15,13 @@ This page walks you through setting up dbt State across <Constant name="core" />
 
 Before you set up dbt State, make sure you have:
 
-- **A supported dbt version**: dbt State is natively available in <Constant name="dbt_platform" /> and the <Constant name="fusion_engine" />. It's also available as a plugin for <Constant name="core" /> v1.7–1.12.
+- **A supported dbt version**: dbt State is natively available in <Constant name="dbt_platform" /> and <Constant name="fusion_engine" />. It's also available as a plugin for dbt v1.7–1.12.
 - **A supported data platform**: Snowflake, Databricks, BigQuery, or Redshift. More warehouses are on the roadmap.
 - **A <Constant name="dbt_platform" /> account**: Refer to [About dbt State](/docs/deploy/dbt-state-about#signing-up-for-dbt-state) for sign-up details, and [dbt State usage and pricing](/docs/platform/billing/dbt-state-usage) for pricing details. Note that dbt State isn't available on [legacy Starter](/docs/platform/billing/plans-and-billing#legacy-plans) plan. Please [contact dbt Labs](https://www.getdbt.com/contact) if that applies to you.
 
 ## Setting up dbt State
 
-Set up dbt State either in <Constant name="dbt_platform" /> or locally in <Constant name="core" /> by using the following steps depending on how you're using dbt:
+Set up dbt State either in the <Constant name="dbt_platform" /> or self-hosted dbt by using the following steps depending on how you're using dbt:
 
 - Already logged in to <Constant name="dbt_platform" /> and managing your account? Use **dbt Account settings**.
 - Signing up or logging in through the [dbt platform sign-up page](http://us1.dbt.com/register?_dbtsrc=dbt-state)? Use **dbt platform sign-up**.
@@ -124,7 +124,7 @@ flags:
 
 <TabItem value="core-legacy" label="dbt v1.7-1.12">
 
-dbt State is available as a plugin for <Constant name="core" /> v1.7+. If you are running on <Constant name="core" /> v1.9 or older, we encourage you to upgrade to a [more recent version with ongoing support](/docs/dbt-versions#latest-releases).
+dbt State is available as a plugin for dbt v1.7+. If you are running on dbt v1.9 or older, we encourage you to upgrade to a [more recent version with ongoing support](/docs/dbt-versions#latest-releases).
 
 To install the plugin:
 
@@ -184,11 +184,15 @@ In this example, models in the `prod` target rebuild only when upstream data is 
 
 For more details, refer to the [`lag_tolerance` config reference](/reference/resource-configs/lag-tolerance).
 
+import LagToleranceRecommendationsTip from '/snippets/_lag-tolerance-recommendations-tip.md';
+
+<LagToleranceRecommendationsTip />
+
 ## Inviting team members
 
 The more team members you have using dbt State, the better it gets; more team members means more opportunities to clone existing nodes rather than rebuilding them. To invite colleagues:
 
-- From the <Constant name="core_v2" /> CLI: Have your colleagues run [`dbt login`](/reference/commands/login?version=2.0) after dbt State is enabled on the account.
+- From the v2 CLI: Have your colleagues run [`dbt login`](/reference/commands/login?version=2.0) after dbt State is enabled on the account.
 - From <Constant name="dbt_platform" />: Go to **Account settings** > **Users** and click **Invite users**. For more information, refer to [Invite new users](/docs/platform/manage-access/invite-users#invite-new-users).
 
 ## Debugging dbt State
@@ -208,4 +212,5 @@ To see which decision dbt State made for each node after a run and why, you can 
 - [Configure deferral](/docs/deploy/dbt-state-deferral)
 - [Non-interactive environment setup](/docs/deploy/dbt-state-cicd)
 - [dbt State configs](/reference/resource-configs/dbt-state-configs)
+- [Monitor dbt State activity](/docs/deploy/dbt-state-interface)
 

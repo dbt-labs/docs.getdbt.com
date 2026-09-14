@@ -37,7 +37,7 @@ The <Constant name="platform_cli" /> is available in all [deployment regions](/d
 Refer to the [FAQs](#faqs) for more information about managing multiple <Constant name="platform_cli" /> tools and creating an alias.
 
 :::tip Using the <Constant name="dbt_platform"/> CLI for hybrid development with <Constant name="fusion"/>?
-See the [Hybrid development with <Constant name="dbt_platform"/>  and <Constant name="fusion"/>](/guides/dbt-platform-local-workflow) guide to keep credentials, environment variables, and <Constant name="fusion"/> versions in sync across your local CLI and <Constant name="dbt_platform"/>.
+See the [Hybrid development with <Constant name="dbt_platform"/> and <Constant name="fusion"/>](/guides/dbt-platform-local-workflow) guide to keep credentials, environment variables, and <Constant name="fusion"/> versions in sync across your local CLI and the <Constant name="dbt_platform"/>.
 :::
 
 
@@ -51,7 +51,7 @@ You can install the <Constant name="platform_cli" /> via the command line by usi
 
 Before you begin, make sure you have [Homebrew installed](http://brew.sh/) in your code editor or command line terminal. Refer to the [FAQs](#faqs) if your operating system runs into path conflicts. 
 
-1. Verify that you don't already have <Constant name="core" /> installed by running the following command:
+1. Verify that you don't already have <Constant name="dbt" /> installed by running the following command:
   
   ```bash
   which dbt
@@ -213,24 +213,24 @@ For data practitioners working with a self-hosted installation, this means AI as
 
 ## FAQs
 
-<DetailsToggle alt_header="What's the difference between the dbt platform CLI and dbt Core?">
+<DetailsToggle alt_header="What's the difference between the dbt platform CLI and dbt?">
 
-The <Constant name="platform_cli" /> and <a href="https://github.com/dbt-labs/dbt-core"><Constant name="core" /></a>, an open-source project, are both command line tools that enable you to run dbt commands. 
+The <Constant name="platform_cli" /> and <a href="https://github.com/dbt-labs/dbt"><Constant name="dbt" /></a>, an open-source project, are both command line tools that enable you to run dbt commands. 
 
 The key distinction is that the <Constant name="platform_cli" /> is tailored for the <Constant name="dbt_platform" />'s infrastructure and integrates with all its <a href="https://docs.getdbt.com/docs/platform/about-platform/dbt-platform-features">features</a>.
 
 </DetailsToggle>
 
-<DetailsToggle alt_header="How do I run both the dbt platform CLI and dbt Core?">
+<DetailsToggle alt_header="How do I run both the dbt platform CLI and dbt?">
 
-For compatibility, both the <Constant name="platform_cli" /> and <Constant name="core" /> are invoked by running `dbt`. This can create path conflicts if your operating system selects one over the other based on your $PATH environment variable (settings).
+For compatibility, both the <Constant name="platform_cli" /> and <Constant name="dbt" /> are invoked by running `dbt`. This can create path conflicts if your operating system selects one over the other based on your $PATH environment variable (settings).
 
-If you have <Constant name="core" /> installed locally, either:
+If you have <Constant name="dbt" /> installed locally, either:
 
 1. Install natively, ensuring you either deactivate the virtual environment containing <Constant name="core" /> or create an alias for the <Constant name="platform_cli" />. 
-2. (Advanced users) Install natively, but modify the $PATH environment variable to correctly point to the <Constant name="platform_cli" /> binary to use both <Constant name="platform_cli" /> and <Constant name="core" /> together.
+2. (Advanced users) Install natively, but modify the $PATH environment variable to correctly point to the <Constant name="platform_cli" /> binary to use both <Constant name="platform_cli" /> and <Constant name="dbt" /> together.
 
-You can always uninstall the <Constant name="platform_cli" /> to return to using <Constant name="core" />.
+You can always uninstall the <Constant name="platform_cli" /> to return to using <Constant name="dbt" />.
 
 </DetailsToggle>
 
@@ -249,10 +249,10 @@ To create an alias for the <Constant name="platform_cli" />: <br />
 
 4. Test and use the alias to run commands:<br />
    - To run the <Constant name="platform_cli" />, use the <code>dbt-cli</code> command: <code>dbt-cli command_name</code>. Replace 'command_name' with the specific dbt command you want to execute.<br />
-   - To run <Constant name="core" />, use the <code>dbt</code> command: <code>dbt command_name</code>. Replace 'command_name' with the specific dbt command you want to execute.<br />
+   - To run <Constant name="dbt" />, use the <code>dbt</code> command: <code>dbt command_name</code>. Replace 'command_name' with the specific dbt command you want to execute.<br />
 
 
-You can then use the <code>dbt-cli</code> command to invoke the <Constant name="platform_cli" /> while you keep <Constant name="core" /> installed natively.
+You can then use the <code>dbt-cli</code> command to invoke the <Constant name="platform_cli" /> while you keep <Constant name="dbt" /> installed natively.
 
 </DetailsToggle>
 

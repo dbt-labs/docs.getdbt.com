@@ -5,7 +5,7 @@ title: "dbt Command reference"
 You can run dbt using the following tools:
 
 - In your browser with the [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio)
-- On the command line interface using the [<Constant name="platform_cli" />](/docs/platform/dbt-cli-installation) or open-source [<Constant name="core" />](/docs/local/install-dbt).
+- On the command line interface using the [<Constant name="platform_cli" />](/docs/platform/dbt-cli-installation), or self-hosted dbt &mdash; either [<Constant name="fusion" />](/docs/local/install-dbt?version=2.0) or [<Constant name="core" />](/docs/local/install-dbt?version=1.0).
 
 A key distinction is that <Constant name="platform_cli" /> and <Constant name="studio_ide" /> are designed to support safe parallel execution of dbt commands, leveraging <Constant name="dbt_platform" />'s infrastructure and its comprehensive [features](/docs/platform/about-platform/dbt-platform-features). In contrast, <Constant name="core" /> _doesn't support_ safe parallel execution for multiple invocations in the same process. Learn more in the [parallel execution](#parallel-execution) section.
 
@@ -34,10 +34,6 @@ For information about selecting models on the command line, refer to [Model sele
 
 Commands marked ❌ indicate write commands, commands marked ✅ indicate read commands, and commands marked N/A indicate that parallel execution isn't relevant for that command.
 
-:::info
-Some commands are not yet supported in the <Constant name="fusion_engine" /> or have limited functionality. Refer to the [<Constant name="fusion" /> supported features](/docs/dbt/supported-features) page for details.
-:::
-
 
 | Command | Description | Parallel execution |  <div style={{width:'250px'}}>Caveats</div> |
 |---------|-------------| :-----------------:| ------------------------------------------ |
@@ -50,7 +46,7 @@ Some commands are not yet supported in the <Constant name="fusion_engine" /> or 
 | [deps](/reference/commands/deps) | Downloads dependencies for a project |  ✅ |  All tools <br /> All [supported versions](/docs/dbt-versions) |
 | [docs](/reference/commands/cmd-docs) | Generates documentation for a project |   ✅ | All tools <br /> All [supported versions](/docs/dbt-versions) |
 | [environment](/reference/commands/dbt-environment?version=2.0) | Enables you to interact with your <Constant name="dbt_platform" /> environment. |   N/A | <Constant name="platform_cli" /> <br /> Requires [dbt v1.5 or higher](/docs/dbt-versions) |
-| help | Displays help information for any command | N/A | <Constant name="core" />, <Constant name="platform_cli" /> <br /> All [supported versions](/docs/dbt-versions) |
+| help | Displays help information for any command | N/A | All tools <br /> All [supported versions](/docs/dbt-versions) |
 | [init](/reference/commands/init) | Initializes a new dbt project |   ✅ | <Constant name="fusion" /> <br /> <Constant name="core" /><br /> All [supported versions](/docs/dbt-versions) |
 | [invocation](/reference/commands/invocation?version=2.0) | Enables users to debug long-running sessions by interacting with active invocations.|  N/A | <Constant name="platform_cli" /> <br /> Requires [dbt v1.5 or higher](/docs/dbt-versions) |
 | [lint](/reference/commands/lint?version=2.0) | Lints SQL files in a project for style, correctness, and convention violations | ✅ | Requires <Constant name="dbt_platform" /> project on <Constant name="fusion" /> |
@@ -67,6 +63,6 @@ Some commands are not yet supported in the <Constant name="fusion_engine" /> or 
 | [source](/reference/commands/source) | Provides tools for working with source data (including validating that sources are "fresh") | ✅ | All tools<br /> All [supported versions](/docs/dbt-versions) |
 | [system](/reference/commands/system?version=2.0) | Manages the CLI installation: update to a new version, uninstall, or pre-install ADBC adapter drivers | N/A | <Constant name="fusion" /> only |
 | [test](/reference/commands/test) | Executes tests defined in a project  |  ✅ | All tools <br /> All [supported versions](/docs/dbt-versions) <br /> <Constant name="fusion" /> flag `--warn-error` not yet supported  |
-| [wizard](/docs/dbt-ai/wizard-cli-reference) | Starts an agentic dbt development session with <Constant name="wizard"/> from the command line | N/A | Local development <br />  [All supported versions](/docs/dbt-versions) |
+| [wizard](/docs/dbt-ai/wizard-cli-reference) | Starts an agentic dbt development session with <Constant name="wizard"/> from the command line | N/A |  [All supported versions](/docs/dbt-versions) |
 
 Note, use the [`--version`](/reference/commands/version) flag to display the installed <Constant name="core" /> or <Constant name="platform_cli" /> version. (Not applicable for the <Constant name="studio_ide" />). Available on all [supported versions](/docs/dbt-versions).

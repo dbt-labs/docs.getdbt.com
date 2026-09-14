@@ -29,7 +29,7 @@ This setup requires connecting your <Constant name="core" /> project to a <Const
 Follow these steps to set up a <Constant name="dbt" /> Hybrid project and upload <Constant name="core" /> artifacts into <Constant name="dbt" />:
 
 <!--no toc --> 
-    - [Make <Constant name="core" /> models public](#make-dbt-core-models-public) (optional)
+    - [Make <Constant name="dbt" /> models public](#make-dbt-models-public) (optional)
     - [Create hybrid project](#create-hybrid-project)
     - [Generate service token and artifact upload values](#generate-service-token-and-artifact-upload-values)
     - [Configure <Constant name="core" /> project and upload artifacts](#configure-dbt-core-project-and-upload-artifacts)
@@ -37,7 +37,7 @@ Follow these steps to set up a <Constant name="dbt" /> Hybrid project and upload
 
 Make sure to enable the hybrid projects toggle in <Constant name="dbt" />’s **Account settings** page.
 
-### Make <Constant name="core" /> models public (optional) {#make-dbt-core-models-public}
+### Make <Constant name="dbt" /> models public (optional) {#make-dbt-models-public}
 
 This step is optional and and only needed if you want to share your <Constant name="core" /> models with other <Constant name="dbt" /> projects using the [cross-project referencing](/docs/mesh/govern/project-dependencies#how-to-write-cross-project-ref) feature.
 
@@ -99,7 +99,7 @@ The <Constant name="dbt" /> admin should share the values with a <Constant name=
 
 3. Make sure to copy and save the values as they're needed to configure your <Constant name="core" /> project in the next step. Once the service token is created, you can't access it again.
 
-### Configure <Constant name="core" /> project and upload artifacts
+### Configure <Constant name="dbt" /> project and upload artifacts
 
 Once you have the values from the previous step, you can prepare your <Constant name="core" /> project for artifact upload by following these steps:
 
@@ -148,7 +148,7 @@ Once you have the values from the previous step, you can prepare your <Constant 
    dbt-cloud:
      tenant_hostname: cloud.getdbt.com # Replace with your Tenant URL
    ```
-5. Once you set the environment variables using the `export` command in the same <Constant name="core" /> CLI session, you can execute a `dbt run` in the CLI. 
+5. Once you set the environment variables using the `export` command in the same dbt CLI session, you can execute a `dbt run` in the CLI. 
    ```bash
     dbt run
     ```

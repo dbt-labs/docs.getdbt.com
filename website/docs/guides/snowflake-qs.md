@@ -5,7 +5,7 @@ level: 'Beginner'
 icon: 'snowflake'
 tags: ['dbt platform','Quickstart','Snowflake']
 hide_table_of_contents: true
-product_badge: "Fusion compatible"
+product_badge: "dbt v2 compatible"
 ---
 
 <div style={{maxWidth: '900px'}}>

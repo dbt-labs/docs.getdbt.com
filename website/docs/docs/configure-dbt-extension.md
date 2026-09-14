@@ -178,7 +178,7 @@ To configure environment variables in VS Code/Cursor:
 
 </TabItem>
 
-<!-- commenting out as this might not be the best way to configure environment variables and we're recommending the .env file instead https://github.com/dbt-labs/dbt-core/issues/12106
+<!-- commenting out as this might not be the best way to configure environment variables and we're recommending the .env file instead https://github.com/dbt-labs/dbt/issues/12106
 <TabItem value="settings-json" label="Open Settings (JSON)">
 1. Open the [Command Palette](https://code.visualstudio.com/docs/configure/settings#_user-settings) (Cmd + Shift + P for Mac, Ctrl + Shift + P for Windows/Linux).
 2. Then select **Preferences: Open Settings (JSON)** in the dropdown menu. 
@@ -249,7 +249,7 @@ The following settings are the most relevant when you install or manage dbt your
 
 | Setting                       | Description |
 | ----------------------------- | ----------- |
-| `dbt.fusionPath`              | Path to the dbt v2 binary. The extension invokes the language server through this binary (`dbt-fusion lsp`). Set this when you install v2 manually &mdash; for example, in an [air-gapped environment](/docs/dbt-versions/dbt-version-compatibility#verify-binaries-for-manual-and-air-gapped-installs) &mdash; instead of letting the extension download it. |
+| `dbt.fusionPath`              | Path to the v2 binary. The extension invokes the language server through this binary (`dbt-fusion lsp`). Set this when you install v2 manually &mdash; for example, in an [air-gapped environment](/docs/dbt-versions/dbt-version-compatibility#verify-binaries-for-manual-and-air-gapped-installs) &mdash; instead of letting the extension download it. |
 | `dbt.badReleasesManifestPath` | Path to a local copy of the [known-bad-releases manifest](/docs/dbt-versions/dbt-version-compatibility#known-bad-releases). Use this if you don't have outbound network access and distribute the manifest alongside your binary bundle (for example, air-gapped installations). |
 | `dbt.environmentVariables`    | Environment variables the extension passes to dbt. Refer to [Configure in the VS Code extension settings](#configure-in-the-vs-code-extension-settings). |
 

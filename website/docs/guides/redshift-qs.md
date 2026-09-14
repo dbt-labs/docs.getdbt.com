@@ -5,7 +5,7 @@ level: 'Beginner'
 icon: 'redshift'
 hide_table_of_contents: true
 tags: ['Redshift', 'dbt platform','Quickstart']
-product_badge: "Fusion compatible"
+product_badge: "dbt v2 compatible"
 ---
 
 <div style={{maxWidth: '900px'}}>

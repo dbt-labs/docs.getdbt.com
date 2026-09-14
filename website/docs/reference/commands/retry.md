@@ -40,7 +40,7 @@ Run `dbt retry --help` for the full list of flags available.
 
 <VersionBlock firstVersion="2.0">
 
-The following flags are supported when you run `dbt retry` with the <Constant name="fusion_engine" />:
+The following flags are supported when you run `dbt retry` with <Constant name="fusion_engine" />:
 
 | Flag | Input value | Description | Example |
 |------|-------------|-------------|---------|
@@ -55,7 +55,7 @@ The following flags are supported when you run `dbt retry` with the <Constant na
 <br />
 Run `dbt retry --help` for the full list of flags available.
 
-### Fusion node selection
+### dbt v2 node selection
 
 Unlike `dbt retry` with <Constant name="core" />, <Constant name="fusion" /> lets you narrow what gets retried using [`--select`](/reference/node-selection/syntax), [`--exclude`](/reference/node-selection/syntax), and [`--selector`](/reference/node-selection/yaml-selectors). Those arguments override the prior invocation’s selection set for the retry run instead of only inheriting it.
 

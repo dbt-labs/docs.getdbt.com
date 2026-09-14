@@ -1,5 +1,5 @@
 ---
-title: "Connect Upsolver to dbt Core"
+title: "Connect Upsolver to dbt v1"
 sidebar_label: "Upsolver"
 description: "Read this guide to learn how to configure Upsolver with dbt."
 id: "upsolver-setup"
