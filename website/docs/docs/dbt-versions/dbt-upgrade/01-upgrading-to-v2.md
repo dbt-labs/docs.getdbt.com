@@ -75,27 +75,112 @@ The most popular `dbt-labs` packages (`dbt_utils`, `audit_helper`, `dbt_external
 
 ## New and changed features and functionality
 
+<!-- Docs for ino schema, model freshness, checks, and agent skills will be added in separate PRs -->
+
+
+### Strict validation
+
+In v1, misspelled configs, unexpected YAML keys, and invalid flags were silently ignored. In v2, dbt enforces a tightly-defined language specification at parse time and raises explicit errors for any violation, including unused config paths in `dbt_project.yml`, unknown CLI options, and duplicate config keys.
+
+### Faster Rust parser
+
+The v2 engine is a complete rewrite in Rust, delivering faster parse and compile times, especially on large projects. No configuration is needed; the performance improvement is automatic.
+
+### dbt Docs v2
+
+v2 introduces [dbt Docs v2](/docs/build/view-documentation#dbt-docs-v2), a faster, statically hostable documentation experience that replaces the v1 static site. `dbt docs generate` compiles your project, produces the v2 Parquet artifacts, and exports a static site in a single command. `dbt docs serve` previews that site locally, and because the browser queries those artifacts directly with DuckDB-WASM (WebAssembly), you can also host the generated files on any static file host. You only need `--generate-info-schema` if you want to produce the artifacts from a separate `dbt compile` or `dbt build` command.
+
+To hydrate catalog metadata (`catalog.json`) for <Constant name="catalog" /> without building the site, use the [`--write-catalog` flag](/reference/commands/cmd-docs#--write-catalog-flag) instead.
+
+For full usage, refer to [About dbt docs commands](/reference/commands/cmd-docs).
+
+### dbt-docs site
+
+The new dbt-docs site visualizes your full project metadata (models, sources, tests, macros, and column-level lineage) directly from the Parquet artifacts in `target/index/`. Because the browser queries those artifacts locally via DuckDB-WASM, no server-side query engine is needed and the site can be hosted on any static file host.
+
+Column-level lineage is visible in dbt-docs when you build with `--static-analysis strict`. For details on generating and serving the site, refer to [About dbt docs commands](/reference/commands/cmd-docs).
+
+### Adapters built on ADBC drivers
+
+All v2 adapters connect to data warehouses via the [Arrow Database Connectivity (ADBC)](https://arrow.apache.org/adbc/) standard instead of Python-based adapter libraries. As a result, dbt ships as a single self-contained binary with no Python runtime required.
+
+On first run, dbt downloads adapter drivers from the dbt Labs CDN and caches them locally. Subsequent runs work offline. For supported adapters, refer to [Supported data platforms](/docs/supported-data-platforms).
+
+### `dbt lint`
+
+v2 introduces [`dbt lint`](/reference/commands/lint), a high-performance SQL linter built into dbt. It is SQLFluff-compatible: it reads your `.sqlfluff` config and uses the same rule codes (for example, `CP01`, `RF03`). Run `dbt lint` to lint all models, or `dbt lint [FILE]` to target a specific file. Use `--fix` to auto-apply fixable violations.
+
+### SQL syntax comprehension
+
+Baseline static analysis parses each model's SQL at compile time to understand its structure without a warehouse connection. This is the default mode in dbt v2. Enable it explicitly per-model or project-wide:
+
+```yaml
+# dbt_project.yml
+models:
+  your_project:
+    +static_analysis: baseline
+```
+
+Or pass `--static-analysis baseline` on the CLI. Baseline analysis infers column schemas at compile time without running queries. For details, refer to [About static analysis](/docs/build/about-static-analysis).
+
+### SQL type and semantic comprehension
+
+Strict static analysis fully resolves column types and validates references across your project without executing queries. It is required to produce [column-level lineage](/docs/explore/column-level-lineage).
+
+Enable it per-model or project-wide:
+
+```yaml
+# dbt_project.yml
+models:
+  your_project:
+    +static_analysis: strict
+```
+
+Or pass `--static-analysis strict` on the CLI (or set `DBT_STATIC_ANALYSIS=strict`). For details, refer to [static_analysis](/reference/resource-configs/static-analysis).
+
+:::note Deprecated values
+`static_analysis: on` and `static_analysis: unsafe` are deprecated synonyms for `strict`. Update these to `strict`; they will be removed in a future release.
+:::
+
+### Column-level lineage
+
+v2 tracks which source columns flow into which output columns across your entire DAG. To generate column lineage, build or compile with `--static-analysis strict`:
+
+```shell
+dbt build --static-analysis strict
+```
+
+The lineage is then visible in [dbt-docs](/docs/build/view-documentation#dbt-docs-v2). No additional configuration is needed; the site detects the presence of the lineage artifact automatically. For details, refer to [Column-level lineage](/docs/explore/column-level-lineage).
+
+### Language server protocol (LSP)
+
+v2 includes a built-in language server that enables IDE features for dbt SQL and YAML files, including hover information, diagnostics, go-to-definition, and column-level completions. The standalone `dbt-lsp` package is no longer published; LSP is now bundled in the `dbt` binary and used automatically by the dbt VS Code extension and <Constant name="studio_ide" />.
+
+Features available depend on your `static_analysis` setting: `baseline` adds syntax error detection and CTE preview; `strict` adds column go-to-definition, column lineage, and type checking. For details, refer to [About dbt LSP](/docs/about-dbt-lsp).
+
 ### `dbt login`
 
 In <Constant name="dbt" /> v2, [`dbt login`](/reference/commands/login?version=2.0) enables browser-based authentication. It opens a browser window prompting you to sign in to your <Constant name="dbt_platform" /> account or create a free account.
 
 Run [`dbt login status`](/reference/commands/login?version=2.0#dbt-login-status) to view your current authentication status.
 
-`dbt login` unlocks a broader set of features, such as advanced features in the [dbt VS Code extension](/docs/about-dbt-extension). For details, refer to [`dbt login`](/reference/commands/login?version=2.0).
+### Experimental features
 
-### dbt Docs v2
-
-v2 introduces [dbt Docs v2](/docs/build/view-documentation#dbt-docs-v2), a faster, statically hostable documentation experience that replaces the v1 static site. `dbt docs generate` compiles your project, produces the v2 Parquet artifacts, and exports a static site in a single command. `dbt docs serve` previews that site locally, and because the browser queries those artifacts directly with DuckDB-WASM (WebAssembly), you can also host the generated files on any static file host. You only need `--write-index` if you want to produce the artifacts from a separate `dbt compile` or `dbt build` command.
-
-To hydrate catalog metadata (`catalog.json`) for <Constant name="catalog" /> without building the site, use the [`--write-catalog` flag](/reference/commands/cmd-docs#--write-catalog-flag) instead.
-
-For full usage, refer to [About dbt docs commands](/reference/commands/cmd-docs).
-
-### Local execution of unit tests <Lifecycle status="beta" />
+#### Local execution of unit tests <Lifecycle status="beta" />
 
 v2 introduces the [`compute`](/reference/resource-configs/compute) config for unit tests. Set your unit tests with `compute: local` and dbt runs the test with DuckDB instead of sending it to your data platform, which takes the warehouse round trip out of your development loop.
 
 This config is experimental and requires opt-in: set `DBT_ENGINE_EXPERIMENTAL_LOCAL_UNIT_TESTS=true` in the environment where dbt runs before you use `compute: local`. For details, refer to [Run unit tests locally](/docs/build/unit-tests#run-unit-tests-locally).
+
+#### Multi-adapter invocations
+
+v2 supports running a single project against multiple adapters simultaneously. This is experimental and requires opt-in:
+
+```bash
+export DBT_ENGINE_EXPERIMENTAL_MULTI_ADAPTER=true
+```
+
+Without this flag, dbt fails at parse time if any node in the project has an `adapter` config, even for runs that don't select that node. The gate reads config as written, not as selected, so the entire project needs the env var to parse once any model uses a non-default adapter.
 
 ### Changed functionality
 
@@ -448,7 +533,7 @@ return('xyzabc')
 
 {% endmacro %}
 ```
-### Accessing custom configurations in meta
+#### Accessing custom configurations in meta
 
 `config.get()` and `config.require()` don't return values from the `meta` dictionary. If you try to access a key that only exists in `meta`, dbt emits a warning:
 
@@ -474,26 +559,14 @@ To access custom configurations stored under meta, use the explicit methods:
 
 For more information, see [config.meta_get()](/reference/dbt-jinja-functions/config#configmeta_get) and [config.meta_require()](/reference/dbt-jinja-functions/config#configmeta_require).
 
-### v2 compiler
 
-#### Snowflake model functions
+## Quick hits
 
-v2 supports [Snowflake ML model functions](https://docs.snowflake.com/en/guides-overview-ml-functions), which allow you to call machine learning models directly in SQL. 
+- v2 supports exporting traces and logs in JSONL, Parquet, and OTLP formats. For details, refer to [dbt v2 telemetry and observability](/reference/telemetry-observability).
+- Data tests can now run in batches (`DBT_ENGINE_BATCH_TESTS=true`) and skip redundant cached results (`DBT_ENGINE_SKIP_REDUNDANT_TESTS=true`), reducing execution overhead on large projects.
+- The v2 compiler parses and type-checks [Snowflake model function](https://docs.snowflake.com/en/guides-overview-ml-functions) calls (`model!method(...)`), accepting any arguments and treating results as `VARIANT`. Cast the result to the type you need (for example, `model!predict(col)::float`).
 
-Because model function return types are flexible and defined by the underlying model, v2 uses simplified type checking:
-- **Arguments:** v2 accepts any arguments without strict type validation.
-- **Return type:** v2 treats all model function results as `VARIANT`.
-
-To use the result in your models, cast it to the expected type:
-
-```sql
-select 
-  my_model!predict(input_column)::float as prediction_score
-from {{ ref('my_table') }}
-```
-
-
-### Package support
+## Package support
 
 import FusionPackages from '/snippets/_fusion-supported-packages.md';
 
