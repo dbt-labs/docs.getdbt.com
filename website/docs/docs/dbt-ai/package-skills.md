@@ -61,17 +61,18 @@ flags:
 
 </File>
 
-dbt resolves `ai_provider` from two places, in order of precedence:
+dbt resolves `ai_provider` from three places, in order of precedence:
 
 1. The `--ai-provider` command-line option, which accepts a comma-separated list, for example `dbt deps --ai-provider claude,cursor`.
-2. The `flags` block in your root project's `dbt_project.yml`, as shown previously.
+2. The `DBT_ENGINE_AI_PROVIDER` environment variable.
+3. The `flags` block in your root project's `dbt_project.yml`, as shown previously.
 
 Only the root project's `flags` block is read. Setting `ai_provider` in a package has no effect, because the choice of coding agent belongs to the user, not to the package author.
 
 If your project or its packages ship skills and `ai_provider` isn't set, `dbt deps` succeeds and warns that it found skills but installed none. For example:
 
 ```text
-[warning] [AiProviderUnset (dbt1801)]: Found 3 agent skill(s) in this project and its packages, but 'ai_provider' is not set, so none were installed. Set it in dbt_project.yml (flags: {ai_provider: claude}) or via --ai-provider. Known providers: wizard, claude, openai, codex, cursor, gemini.
+[warning] [AiProviderUnset (dbt1801)]: Found 3 agent skill(s) in this project and its packages, but 'ai_provider' is not set, so none were installed. Set it in dbt_project.yml (flags: {ai_provider: claude}), via --ai-provider, or with DBT_ENGINE_AI_PROVIDER. Known providers: wizard, claude, openai, codex, cursor, gemini.
 ```
 
 ## Ship skills in a package
