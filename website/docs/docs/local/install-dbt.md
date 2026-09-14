@@ -19,10 +19,10 @@ Get <Constant name="dbt" /> running on your machine in a few minutes. Installing
 <TabItem value="pip" label="pip">
 
 ```shell
-python -m pip install --pre dbt
+python -m pip install dbt
 ```
 
-To upgrade later, run `python -m pip install --upgrade --pre dbt`.
+To upgrade later, run `python -m pip install --upgrade dbt`.
 
 </TabItem>
 
@@ -216,7 +216,7 @@ python -m pip install --upgrade dbt-core==1.9
 Use `--pre` to install prerelease versions. This may also install prerelease versions of other dependencies.
 
 ```shell
-python3 -m pip install --pre dbt-ADAPTER_NAME
+python3 -m pip install --pre dbt
 ```
 
 </Expandable>

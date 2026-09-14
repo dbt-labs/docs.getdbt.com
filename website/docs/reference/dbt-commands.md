@@ -13,7 +13,7 @@ A key distinction is that <Constant name="platform_cli" /> and <Constant name="s
 
 <Constant name="dbt_platform" /> allows for concurrent execution of commands, enhancing efficiency without compromising data integrity. This enables you to run multiple commands at the same time. However, it's important to understand which commands can be run in parallel and which can't.
 
-In contrast, [`dbt-core` _doesn't_ support](/reference/programmatic-invocations#parallel-execution-not-supported) safe parallel execution for multiple invocations in the same process, and requires users to manage concurrency manually to ensure data integrity and system stability.
+In contrast, [`dbt` _doesn't_ support](/reference/programmatic-invocations#parallel-execution-not-supported) safe parallel execution for multiple invocations in the same process, and requires users to manage concurrency manually to ensure data integrity and system stability.
 
 To ensure your dbt workflows are both efficient and safe, you can run different types of dbt commands in parallel &mdash; for example, `dbt build` (write operation) can safely run alongside `dbt parse` (read operation). However, you can't run `dbt build` and `dbt run` (both write operations) in parallel.
 

@@ -36,7 +36,7 @@ import AboutFusion from '/snippets/_about-fusion.md';
 Upgrading to v2 is an install step. Install dbt using `pip` to get <Constant name="fusion" /> for v2:
 
 ```shell
-python -m pip install --pre dbt
+python -m pip install dbt
 ```
 
 For full instructions, including Homebrew, winget, and additional options, refer to [Install dbt](/docs/local/install-dbt).
@@ -507,7 +507,7 @@ v2 is available in two distributions. For more information, refer to [dbt licens
 | Distribution | Package | Use it when |
 | --- | --- | --- |
 | <Constant name="fusion" /> | `dbt` | The recommended v2 experience. |
-| dbt OSS | `dbt-core` | Your organization has a strict requirement to use the Apache 2.0 [open-source runtime](/docs/local/install-dbt-v2). |
+| dbt OSS | `dbt-oss` | Your organization has a strict requirement to use the Apache 2.0 [open-source runtime](/docs/local/install-dbt-v2). |
 </SimpleTable>
 
 If you have a older project that isn’t ready to move to v2, continue using v1.x for compatibility. For new or upgraded projects, we recommend v2.

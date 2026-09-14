@@ -17,8 +17,8 @@ Similar to the [`manifest.json` file](/reference/artifacts/manifest-json), the `
 
 There are two reasons why `semantic_manifest.json` exists alongside `manifest.json`:
 
-- Deserialization: `dbt-core` and MetricFlow use different libraries for handling data serialization.
-- Efficiency and performance: MetricFlow and the dbt Semantic Layer need specific semantic details from the manifest. By trimming down the information printed into `semantic_manifest.json`, the process becomes more efficient and enables faster data handling between `dbt-core` and MetricFlow.
+- Deserialization: dbt and MetricFlow use different libraries for handling data serialization.
+- Efficiency and performance: MetricFlow and the dbt Semantic Layer need specific semantic details from the manifest. By trimming down the information printed into `semantic_manifest.json`, the process becomes more efficient and enables faster data handling between `dbt` and MetricFlow.
 
 ## Top-level keys
 <VersionBlock firstVersion="1.12">
