@@ -208,7 +208,7 @@ python -m pip install dbt-core
 python -m pip install --upgrade dbt-ADAPTER_NAME
 
 # Downgrade to a specific version
-python -m pip install --upgrade dbt-core==1.9
+python -m pip install --upgrade dbt-core==1.11
 ```
 
 ### Install a prerelease
