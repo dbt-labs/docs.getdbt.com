@@ -843,6 +843,8 @@ const sidebarSettings = {
           items: ["docs/deploy/hybrid-projects", "docs/deploy/hybrid-setup"],
         },
         "docs/deploy/deployment-tools",
+        "docs/deploy/deployment-configuration-validator",
+        "docs/deploy/deployment-platform-capabilities-catalog",
       ],
     }, // end of "Deploy dbt"
     {
