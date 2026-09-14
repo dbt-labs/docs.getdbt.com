@@ -432,6 +432,14 @@ import FusionSupportedPackages from '/snippets/_fusion-supported-packages.md';
 
 <FusionSupportedPackages />
 
+<VersionBlock firstVersion="2.0">
+
+## Ship agent skills in a package
+
+A package can also ship [agent skills](/docs/dbt-ai/package-skills). Add a `skills` directory to the package, and every project that installs the package can install those skills for their coding agent provider(s) with `dbt deps`. Refer to [Installing agent skills from dbt packages](/docs/dbt-ai/package-skills) for the setup.
+
+</VersionBlock>
+
 ## Advanced package configuration
 ### Updating a package
 When you update a version or revision in your `packages.yml` file, it isn't automatically updated in your dbt project. You should run `dbt deps` to update the package. You may also need to run a [full refresh](/reference/commands/run) of the models in this package.

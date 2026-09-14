@@ -36,6 +36,7 @@ The following example is a list of all available configurations in the `dbt_proj
 [asset-paths](/reference/project-configs/asset-paths): [directorypath]
 [function-paths](/reference/project-configs/function-paths): [directorypath]
 [osi-paths](/reference/project-configs/osi-paths): [directorypath]
+[skill-paths](/reference/project-configs/skill-paths): [directorypath]
 
 [packages-install-path](/reference/project-configs/packages-install-path): directorypath
 
@@ -80,6 +81,9 @@ semantic-models:
 
 saved-queries:
   [<saved-queries-configs>](/docs/build/saved-queries)
+
+skills:
+  [<skill-configs>](/docs/dbt-ai/package-skills#disable-a-skill)
 
 snapshots:
   [<snapshot-configs>](/reference/snapshot-configs)

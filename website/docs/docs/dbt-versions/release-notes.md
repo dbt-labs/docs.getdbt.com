@@ -22,6 +22,7 @@ For <Constant name="fusion_engine" /> updates, refer to the [dbt-fusion changelo
 
 ## September 2026
 
+- **New:** Install [agent skills from dbt packages](/docs/dbt-ai/package-skills). Set the `ai_provider` flag, and `dbt deps` installs the `SKILL.md` files that your project and its packages ship into the directory your coding agent reads from, so a team can share one set of conventions through a versioned dependency instead of copying files between repositories.
 - **Enhancement:** The [Analyst Read](/docs/platform/manage-access/enterprise-permissions#analyst-read) permission set is now available to all accounts without requiring a feature flag. You can assign it to groups so read-only users can view Catalog and project configuration such as connections, environments, and <Constant name="semantic_layer" /> settings.
 - **Enhancement:** When you connect to Snowflake through the <Constant name="semantic_layer" />, authentication failures and permission errors now return distinct messages prefixed with `[WAREHOUSE_AUTHENTICATION_FAILED]` or `[WAREHOUSE_PERMISSION_DENIED]`, so you can tell credential issues apart from missing grants.
 - **Fix:** Saving a job with an invalid day-of-month value such as `*,L` now shows a validation error and prevents the broken schedule from being saved. Use either `*` or `L` in the day-of-month field, not both.
