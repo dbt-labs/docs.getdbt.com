@@ -447,7 +447,7 @@ models:
 </TabItem>
 </Tabs>
 
-The `build_after` config powers state-aware orchestration by rebuilding models _only when new source or upstream data is available_. This is useful for models that depend on other models but only need to be updated periodically.
+The `build_after` config applies to state-aware orchestration (SAO), which is now deprecated. `build_after` rebuilds models _only when new source or upstream data is available_. This is useful for models that depend on other models but only need to be updated periodically.
 
 `freshness` works alongside dbt job orchestration by helping you determine when models should be rebuilt in a scheduled job. When a job runs, dbt makes sure models run only when needed, which helps avoid overbuilding models unnecessarily. dbt does this by:
 

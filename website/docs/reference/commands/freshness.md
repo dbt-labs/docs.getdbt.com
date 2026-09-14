@@ -69,7 +69,6 @@ After `dbt freshness` completes, dbt writes `target/freshness.json` covering all
   "metadata": {
     "generated_at": "2026-08-28T00:00:00.000000Z"
   },
-  "elapsed_time": 1.23,
   "results": [
     {
       "unique_id": "model.jaffle_shop.stg_orders",

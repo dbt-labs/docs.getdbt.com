@@ -466,7 +466,7 @@ models:
 
 You can use the `freshness` config in the following ways:
 
-- **Freshness SLA** (`warn_after`, `error_after`): To declare how stale this model's data is allowed to be. dbt checks these thresholds when you run [`dbt freshness`](/reference/commands/freshness) and reports `Pass`, `Warn`, or `Error`. Support varies by materialization and measurement method. Refer to the [measurement methods table](/reference/resource-configs/freshness#what-gets-checked) for more information.
+- **Freshness SLA** (`warn_after`, `error_after`): To declare how stale this model's data is allowed to be. dbt checks these thresholds when you run [`dbt freshness`](/reference/commands/freshness) and reports `Pass`, `Warn`, or `Error`. Support varies by materialization and measurement method. Refer to the [measurement methods table](/reference/commands/freshness#what-gets-checked) for more information.
 
 - **Build scheduling** (`build_after`): To skip rebuilding a model when upstream data hasn't changed since the last build. Available on dbt platform Enterprise tiers only.
 
