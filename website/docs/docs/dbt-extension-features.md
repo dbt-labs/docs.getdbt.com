@@ -178,7 +178,7 @@ View table lineage:
 
 **Requires registration:** 
 
-Column-level lineage (depends on strict static analysis):
+[Column-level lineage](/docs/explore/column-level-lineage) (depends on strict static analysis):
 
 View column lineage:
 - Right-click on a filename, or in the SQL contents of a model file.
