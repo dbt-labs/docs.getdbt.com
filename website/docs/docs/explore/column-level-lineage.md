@@ -3,9 +3,6 @@ title: "Column-level lineage"
 description: "Use column-level lineage to gain insights about your data at a granular level, in dbt Catalog or locally with dbt v2."
 tags: ['CLL']
 availability: everywhere_usage
-  surface:
-    - local
-    - platform
 ---
 
 # Column-level lineage
