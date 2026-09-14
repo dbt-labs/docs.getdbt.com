@@ -26,7 +26,7 @@ import ExplorerCourse from '/snippets/_explorer-course-link.md';
 
 ## Access the column-level lineage in Catalog
 
-There is no additional setup required for CLL in <Constant name="catalog" /> if your account is an Enterprise or Enterprise+ plan with <Constant name="catalog" /> access. You can access the CLL by expanding the column card in the **Columns** tab of an <Constant name="catalog" /> [resource details page](/docs/explore/explore-projects#view-resource-details) for a model, source, or snapshot.
+There is no additional setup required for CLL in <Constant name="catalog" /> if your account is an Enterprise or Enterprise+ plan with <Constant name="catalog" /> access. You can access CLL from the column card in the **Columns** tab in the <Constant name="catalog" /> [resource details page](/docs/explore/explore-projects#view-resource-details) for a model, source, or snapshot.
 
 <Constant name="dbt" /> updates the lineage in <Constant name="catalog" /> after each run that's executed in the production or staging environment. At least one job in the production or staging environment must run `dbt docs generate`. Refer to [Generating metadata](/docs/explore/explore-projects#generate-metadata) for more details.
 
