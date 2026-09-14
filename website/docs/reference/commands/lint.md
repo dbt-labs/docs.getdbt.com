@@ -49,13 +49,60 @@ dbt lint [FILE] [flags]
 
 ## Jinja render modes
 
-Before `dbt lint` can check a model, it must render your Jinja-templated SQL into plain SQL. The `jinja_render_mode` setting controls how it renders, and the mode you choose changes which violations you see:
+Before `dbt lint` can check a model, it has to turn your Jinja-templated SQL into plain SQL. Most Jinja renders cleanly at lint time, but some macros ask your data platform a question, such as which columns a table has, and `dbt lint` never connects to your platform, so those calls have no real answer. The `jinja_render_mode` setting controls how `dbt lint` handles them, and that changes which violations you see.
 
-| Mode | How it handles Jinja | When to use it |
-|------|----------------------|----------------|
-| `symbolic` (default) | Executes your Jinja, but tracks which values come from introspective adapter calls, such as `adapter.execute`, `adapter.get_relation`, and `adapter.get_columns_in_relation`. Because those calls can't reach your warehouse at lint time, `dbt lint` replaces their output with a placeholder instead of a misleading empty value. Everything else renders normally. | Keep the default. It produces the fewest false positives on projects that use introspective macros. |
-| `rendered` | Executes your Jinja against parse-time stub values. Introspective adapter calls return empty results with no signal that the values aren't real, so a loop over `adapter.get_columns_in_relation(this)` renders zero iterations and can produce SQL your project would never run. | Compare it against `symbolic` when you're investigating an unexpected violation. |
-| `turbo` | Never executes your Jinja. It reads the template syntactically, keeps the literal SQL you wrote, and replaces every `{{ ... }}` expression with a placeholder. | Use it when rendering is too slow or fails outright on a model. It's the fastest mode, but it can't see anything a macro generates. |
+Most projects should keep the default, `symbolic`. The three modes are:
+
+| Mode | Summary |
+|------|---------|
+| [`symbolic` (default)](#symbolic-default) | Renders your Jinja normally and substitutes a placeholder for results it can't get from your platform. |
+| [`rendered`](#rendered) | Renders your Jinja against empty stub values, with no signal that they're stand-ins. |
+| [`turbo`](#turbo) | Skips execution entirely and lints your literal template text. |
+
+### Symbolic (default)
+
+Executes your Jinja, but tracks which values come from <Term id="introspective-adapter-call">introspective adapter calls</Term>, such as `adapter.execute`, `adapter.get_relation`, and `adapter.get_columns_in_relation`. Because those calls can't reach your warehouse at lint time, `dbt lint` replaces their output with a placeholder instead of a misleading empty value. Everything else renders normally.
+
+Keep the default. It produces the fewest false positives on projects that use <Term id="introspective-macro">introspective macros</Term>.
+
+For example, a model that loops over the result of an introspective call:
+
+```jinja
+{% set cols = adapter.get_columns_in_relation(ref('orders')) %}
+select {{ cols | map(attribute='name') | join(', ') }}
+from {{ ref('orders') }}
+```
+
+renders, for linting purposes, as something like:
+
+```sql
+select your_columns
+from orders
+```
+
+`dbt lint` doesn't report violations against the placeholder value itself, but it lints everything else in the query normally.
+
+### Rendered
+
+Executes your Jinja against parse-time stub values. Introspective adapter calls return empty results with no signal that the values aren't real, so the same model renders as:
+
+```sql
+select
+from orders
+```
+
+The empty `select` list can produce SQL your project would never run, and `dbt lint` checks that unrealistic result instead. Compare `rendered` against `symbolic` when you're investigating an unexpected violation.
+
+### Turbo
+
+Never executes your Jinja. It reads the template syntactically, keeps the literal SQL you wrote, and replaces every `{{ ... }}` expression with a placeholder, including ones that aren't introspective:
+
+```sql
+select your_expression
+from your_expression
+```
+
+Use it when rendering is too slow or fails outright on a model. It's the fastest mode, but it can't see anything a macro generates.
 
 ### Set the render mode
 
@@ -70,7 +117,7 @@ Set it for the whole project in the `[dbt]` section of your `.sqlfluff` file:
 
 ```ini
 [dbt]
-jinja_render_mode = symbolic
+jinja_render_mode = rendered
 ```
 
 The CLI flag takes precedence over the config file.
@@ -83,7 +130,7 @@ In `symbolic` and `turbo` modes, a single model can produce more than one candid
 
 ```ini
 [sqlfluff]
-render_variant_limit = 5
+render_variant_limit = 10
 ```
 
 Raising the limit widens coverage at the cost of lint time, because each additional variant is another render of the template. Lowering it to `1` restricts `dbt lint` to a single variant per model.
