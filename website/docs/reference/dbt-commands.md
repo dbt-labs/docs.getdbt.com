@@ -49,7 +49,7 @@ Commands marked ❌ indicate write commands, commands marked ✅ indicate read c
 | help | Displays help information for any command | N/A | All tools <br /> All [supported versions](/docs/dbt-versions) |
 | [init](/reference/commands/init) | Initializes a new dbt project |   ✅ | <Constant name="fusion" /> <br /> <Constant name="core" /><br /> All [supported versions](/docs/dbt-versions) |
 | [invocation](/reference/commands/invocation?version=2.0) | Enables users to debug long-running sessions by interacting with active invocations.|  N/A | <Constant name="platform_cli" /> <br /> Requires [dbt v1.5 or higher](/docs/dbt-versions) |
-| [lint](/reference/commands/lint?version=2.0) | Lints SQL files in a project for style, correctness, and convention violations | ✅ | Requires <Constant name="dbt_platform" /> project on <Constant name="fusion" /> |
+| [lint](/reference/commands/lint?version=2.0) | Lints SQL files in a project for style, correctness, and convention violations | ✅ | All tools <br /> Requires <Constant name="fusion" /> &mdash; not available in [dbt OSS](/docs/local/install-dbt-v2) |
 | [list](/reference/commands/list) | Lists resources defined in a dbt project |  ✅ | All tools <br /> All [supported versions](/docs/dbt-versions) |
 | [login](/reference/commands/login?version=2.0) | Logs in to your <Constant name="dbt_platform" /> account | N/A | v2 and later <br /> <Constant name="platform_cli" /> |
 | [parse](/reference/commands/parse) | Parses a project and writes detailed timing info |  ✅ | All tools <br /> All [supported versions](/docs/dbt-versions) |
