@@ -9,12 +9,14 @@ availability:
 
 # About dbt lint command <Lifecycle status="beta" />
 
-`dbt lint` is a high-performance SQL linter built into <Constant name="fusion_engine" />. It's available anywhere <Constant name="fusion_engine" /> runs &mdash; including a [local install](/docs/local/install-dbt?version=2.0) &mdash; and doesn't require a <Constant name="dbt_platform" /> account. It is SQLFluff-compatible: it reads your `.sqlfluff` config, uses the same rule codes (for example, `CP01`, `RF03`), and respects `-- noqa` suppression comments. Compatible does not mean identical: `dbt lint` and SQLFluff can return different results for the same file and config. Refer to [Rule parity with SQLFluff](#rule-parity-with-sqlfluff).
+`dbt lint` is a high-performance SQL linter built into <Constant name="fusion_engine" />. It's available anywhere v2 runs, locally or in <Constant name="dbt_platform"/>. 
+
+It is SQLFluff-compatible: it reads your `.sqlfluff` config, uses the same rule codes (for example, `CP01`, `RF03`), and respects `-- noqa` suppression comments. Compatible does not mean identical: `dbt lint` and SQLFluff can return different results for the same file and config. Refer to [Rule parity with SQLFluff](#rule-parity-with-sqlfluff).
 
 You can use your existing SQLFluff config with minimal changes. dbt Labs intends to track the latest SQLFluff rule spec going forward.
 
 :::note
-`dbt lint` is part of <Constant name="fusion_engine" /> and isn't included in [dbt OSS](/docs/local/install-dbt-v2), the Apache 2.0 distribution. It is not the same as `dbt sqlfluff lint` on the <Constant name="platform_cli" />. For SQLFluff on the platform CLI, see [Configure the dbt platform CLI](/docs/platform/configure-dbt-cli). [Linting in Studio IDE](/docs/platform/studio-ide/lint-format) continues to use SQLFluff.
+`dbt lint` is part of <Constant name="fusion_engine" /> and is not the same as `dbt sqlfluff lint` on the <Constant name="platform_cli" />. For SQLFluff on the platform CLI, see [Configure the dbt platform CLI](/docs/platform/configure-dbt-cli). [Linting in Studio IDE](/docs/platform/studio-ide/lint-format) continues to use SQLFluff.
 :::
 
 ## Benchmarks
