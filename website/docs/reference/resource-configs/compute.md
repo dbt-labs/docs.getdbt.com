@@ -17,21 +17,9 @@ Compute controls whether a unit test runs against your data platform or locally 
 
 </IntroText>
 
-:::info Available in v2
+:::info Available in v2 with opt in
 
-The `compute` config is available in v2 only. It isn't available in v1 and will be ignored. To upgrade to v2, refer to [Upgrade to v2](/docs/dbt-versions/dbt-upgrade/upgrading-to-v2) upgrade guide.
-
-:::
-
-
-
-By default, each unit test sends a query to your data platform and waits for the result. This can slow down testing and use warehouse compute.
-
-Use the `compute: local` config to run [unit tests](/docs/build/unit-tests) locally with DuckDB for faster feedback while you develop while managing warehouse compute cost. 
-
-:::note Opt in required with an environment variable
-
-Setting `compute: local` on a unit test is in beta. Set the `DBT_ENGINE_EXPERIMENTAL_LOCAL_UNIT_TESTS` environment variable to `true` before you use it:
+The `compute` config is available in v2 only. It isn't available in v1 and will be ignored. To upgrade to v2, refer to [Upgrade to v2](/docs/dbt-versions/dbt-upgrade/upgrading-to-v2) upgrade guide. Setting `compute: local` on a unit test is in an experimental feature. Set the `DBT_ENGINE_EXPERIMENTAL_LOCAL_UNIT_TESTS` environment variable to `true` before you use it:
 
 ```bash
 export DBT_ENGINE_EXPERIMENTAL_LOCAL_UNIT_TESTS=true
@@ -40,6 +28,10 @@ export DBT_ENGINE_EXPERIMENTAL_LOCAL_UNIT_TESTS=true
 Without it, dbt fails with an invalid configuration error that names the variable.
 
 :::
+
+By default, each unit test sends a query to your data platform and waits for the result. This can slow down testing and use warehouse compute.
+
+Use the `compute: local` config to run [unit tests](/docs/build/unit-tests) locally with DuckDB for faster feedback while you develop while managing warehouse compute cost. 
 
 <File name='models/filename.yml'>
 
