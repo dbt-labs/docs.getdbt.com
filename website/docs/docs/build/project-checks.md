@@ -147,7 +147,7 @@ Checks run with `dbt check` and `dbt build`. Other commands (`dbt run`, `dbt tes
 
 ## Skipping checks on build
 
-To skip all checks during a build, pass the `--skip-checks` flag to `dbt build`. Models still compile and run.
+To skip all checks during a build, pass the [`--skip-checks` flag](/reference/commands/build?version=2#the---skip-checks-flag)  to `dbt build`. Models still compile and run.
 
 ```shell
 dbt build --skip-checks
@@ -163,7 +163,7 @@ checks:
 ```
 
 :::note Disabling at the project level
-Unlike the `--skip-checks` flag, setting `+enabled: false` in `dbt_project.yml` is persistent and nothing in the output shows that checks were skipped. A successful `dbt build` in CI doesn't indicate whether the project has no checks or all checks are disabled. Running `dbt check <name>` for a disabled check also succeeds without running the check or returning an error.
+Setting `+enabled: false` in `dbt_project.yml` is persistent, and nothing in the output shows checks were skipped. A successful `dbt build` in CI doesn't tell you whether the project has no checks or all checks are disabled. Running `dbt check <name>` for a disabled check also succeeds without running the check or returning an error.
 :::
 
 

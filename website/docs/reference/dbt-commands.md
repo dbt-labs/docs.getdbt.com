@@ -37,7 +37,7 @@ Commands marked ❌ indicate write commands, commands marked ✅ indicate read c
 
 | Command | Description | Parallel execution |  <div style={{width:'250px'}}>Caveats</div> |
 |---------|-------------| :-----------------:| ------------------------------------------ |
-| [build](/reference/commands/build) | Builds and tests all selected resources (models, seeds, tests, and more). In <Constant name="core_v2" /> and later, runs checks before any model compiles; use `--skip-checks` to bypass. |  ❌ | All tools <br /> All [supported versions](/docs/dbt-versions) |
+| [build](/reference/commands/build) | Builds and tests selected resources. In dbt v2+, runs checks before compiling models; use `--skip-checks` to bypass. |  ❌ | All tools <br /> All [supported versions](/docs/dbt-versions) |
 | cancel | Cancels the most recent invocation. | N/A | <Constant name="platform_cli" /> <br /> Requires [dbt v1.6 or higher](/docs/dbt-versions) |
 | [check](/reference/commands/check) | Runs checks against the metadata index without compiling or materializing models | ✅ | <Constant name="core_v2" /> and later |
 | [clean](/reference/commands/clean) | Deletes artifacts present in the dbt project |  ✅ | All tools <br /> All [supported versions](/docs/dbt-versions) |
