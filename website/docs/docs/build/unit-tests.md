@@ -64,7 +64,7 @@ dbt test --select "test_type:unit"
 
 :::note Opt in with an environment variable
 
-Running an individual unit test on local compute is currently in beta. Set `DBT_ENGINE_EXPERIMENTAL_LOCAL_UNIT_TESTS=true` in the environment where dbt runs before you use `compute: local`.
+Running an individual unit test on local compute is currently an experimental feature. Set `DBT_ENGINE_EXPERIMENTAL_LOCAL_UNIT_TESTS=true` in the environment where dbt runs before you use `compute: local`.
 
 :::
 
@@ -81,7 +81,7 @@ That gives you:
 
 ### Prerequisites
 
-- The `DBT_ENGINE_EXPERIMENTAL_LOCAL_UNIT_TESTS` environment variable set to `true`. This config is in beta and you need to opt in. Without it, dbt fails with an invalid configuration error that names the variable.
+- The `DBT_ENGINE_EXPERIMENTAL_LOCAL_UNIT_TESTS` environment variable set to `true`. This config is experimental and you need to opt in. Without it, dbt fails with an invalid configuration error that names the variable.
 - Snowflake or BigQuery. Local execution isn't available for other data platforms, and it only applies to unit tests.
 - The direct upstream models of the model you're testing already exist in your data platform. dbt fetches their schemas to translate your SQL, so if they don't exist, the test fails with an error about fetching the upstream relation schema.
 - `static_analysis` isn't set to `off` on the test. Local execution needs static analysis to translate your SQL, so `compute: local` promotes [static analysis](/reference/resource-configs/static-analysis) to `strict` for that test. If you set `static_analysis: off`, the test can't run locally and fails with `ExecutorFailed (dbt1401)`.
