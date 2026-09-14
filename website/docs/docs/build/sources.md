@@ -11,7 +11,18 @@ availability: all_users
 * [Source properties](/reference/source-properties)
 * [Source configurations](/reference/source-configs)
 * [`{{ source() }}` Jinja function](/reference/dbt-jinja-functions/source)
+
+<VersionBlock firstVersion="2.0">
+
+* [`dbt freshness` command](/reference/commands/freshness)
+
+</VersionBlock>
+
+<VersionBlock lastVersion="1.99">
+
 * [`source freshness` command](/reference/commands/source)
+
+</VersionBlock>
 
 ## Using sources
 Sources make it possible to name and describe the data loaded into your warehouse by your Extract and Load tools. By declaring these tables as sources in dbt, you can then
@@ -227,7 +238,7 @@ The results of this query are used to determine whether the source is fresh or n
 
 ### Build models based on source freshness
 
-Our best practice recommendation is to use [data source freshness](/docs/build/sources#declaring-source-freshness). This will allow settings to be transfered into a `.yml` file where source freshness is defined on [model level](/reference/resource-configs/freshness).
+Our best practice recommendation is to use [data source freshness](/docs/build/sources#declaring-source-freshness), configured in your `.yml` files using the [`freshness`](/reference/resource-configs/freshness) config.
 
 To build models based on source freshness in dbt:
 

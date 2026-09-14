@@ -15,6 +15,7 @@ import FusionUpgradeSteps from '/snippets/_fusion-upgrade-steps.md';
 import FusionLifecycle from '/snippets/_fusion-lifecycle-callout.md';
 import FusionThreads from '/snippets/_fusion-threads.md';
 import FusionPartialParseCliFlags from '/snippets/_fusion-partial-parse-cli-flags.md';
+import SourceFreshnessLegacy from '/snippets/_source-freshness-legacy.md';
 
 v2 is the current era of dbt, delivered through <Constant name="fusion" />. When you install dbt, you get <Constant name="fusion" /> by default. This guide walks you through upgrading a v1 project to v2. 
 
@@ -105,9 +106,7 @@ For full configuration options and materialization rules, refer to [freshness](/
 
 [`dbt freshness`](/reference/commands/freshness) evaluates how fresh your sources and models are against the thresholds you've configured, and reports a warning or error when data is stale. Results are written to `target/freshness.json`, which covers both sources and models. For the full schema, refer to [`freshness.json`](/reference/artifacts/freshness-json).
 
-:::note
-`dbt source freshness` is a legacy command that checks freshness for sources _only_. It's still supported for backward compatibility and continues to produce `sources.json`, but we recommend using `dbt freshness` going forward.
-:::
+<SourceFreshnessLegacy />
 
 #### Cross-project freshness
 

@@ -16,20 +16,22 @@ Unlike [`sources.json`](/reference/artifacts/sources-json), which covers sources
 
 ### Top-level keys
 
-- [`metadata`](/reference/artifacts/dbt-artifacts#common-metadata)
-- `elapsed_time`: Total invocation time in seconds.
+- `metadata`: Invocation metadata with the following fields:
+  - `dbt_schema_version`: Schema URL for this artifact (always `https://schemas.getdbt.com/dbt/freshness/v0.json`).
+  - `dbt_version`: dbt version that produced the file.
+  - `generated_at`: Timestamp when the file was written.
+  - `invocation_id`: Unique identifier for this invocation.
+  - `invocation_started_at`: Timestamp when the invocation started. Omitted if not available.
+  - `env`: Map of `DBT_ENV_CUSTOM_ENV_*` environment variables, if set.
 - `results`: Array of freshness results.
 
 Each entry in `results` is a dictionary with the following keys:
 
 - `unique_id`: Unique node identifier, mapping results to `nodes` or `sources` in the [manifest](/reference/artifacts/manifest-json).
 - `resource_type`: Either `model` or `source`.
-- `max_loaded_at`: Max value of the loaded-at timestamp when queried. Determined by `loaded_at_query`, `loaded_at_field`, or adapter metadata, in that order.
+- `max_loaded_at`: Max value of the loaded-at timestamp when queried.
 - `snapshotted_at`: Timestamp when the check ran.
 - `max_loaded_at_time_ago_in_s`: Interval between `max_loaded_at` and `snapshotted_at` in seconds.
-- `status`: Freshness status: `pass`, `warn`, or `error` if the check succeeds; `runtime error` if the query fails.
-- `criteria`: The freshness thresholds (`warn_after`, `error_after`) configured for this node.
-- `execution_time`: Total time spent checking freshness for this node.
-- `timing`: Array of timing steps (for example, `compile`, `execute`).
-- `adapter_response`: Adapter-level response metadata.
+- `status`: Freshness status: `Pass`, `Warn`, or `Error`. If the freshness query fails, dbt logs an error but omits the node from the file rather than writing it with a failed status.
+- `criteria`: The freshness configuration for this node, including `warn_after`, `error_after`, `filter`, `loaded_at_field`, and `loaded_at_query`.
 - `thread_id`: Identifier for the thread that ran this check.

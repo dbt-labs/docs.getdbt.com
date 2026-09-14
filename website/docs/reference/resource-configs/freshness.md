@@ -7,6 +7,7 @@ availability:
 ---
 
 import SaoDeprecated from '/snippets/_sao-deprecated.md';
+import SourceFreshnessLegacy from '/snippets/_source-freshness-legacy.md';
 
 # freshness
 
@@ -14,7 +15,9 @@ Use the `freshness` config to declare how fresh your [source](#source-freshness)
 
 <VersionBlock firstVersion="2.0">
 
-Run [`dbt freshness`](/reference/commands/freshness) to check every source and model with freshness configured. You can also run [`dbt source freshness`](/reference/commands/source) to check sources only &mdash; it's supported in v2 for backward compatibility.
+Run [`dbt freshness`](/reference/commands/freshness) to check every source and model with freshness configured.
+
+<SourceFreshnessLegacy />
 
 </VersionBlock>
 
@@ -34,11 +37,11 @@ Use the following fields to configure freshness for sources and models unless ot
 | `warn_after` | How old the most recent data can be before a freshness check reports a warning. Requires both `count` and `period`. |
 | `error_after` | How old the most recent data can be before a freshness check reports an error. Same format as `warn_after`. |
 | `loaded_at_field` | Column dbt queries to determine the most recent loaded timestamp. Required when adapter metadata is unavailable. |
-| `loaded_at_query` | A SQL expression that returns the most recent loaded timestamp. Alternative to `loaded_at_field`. If both are set, `loaded_at_query` takes precedence. Available in dbt v1.10 and later. |
-| `filter` | Sources only. Adds a `WHERE` clause to the freshness query to limit data scanned. Useful for BigQuery partitioned tables or large tables on Snowflake, Databricks, or Spark. Does not affect other uses of the source table. Does not apply to `loaded_at_query`. |
+| `loaded_at_query` | A SQL expression that returns the most recent loaded timestamp. Alternative to `loaded_at_field`. Setting both `loaded_at_query` and `loaded_at_field` on the same resource is a parse error. Available in dbt v1.10 and later. |
+| `filter` | Adds a `WHERE` clause to the freshness query to limit data scanned. Useful for BigQuery partitioned tables or large tables on Snowflake, Databricks, or Spark. Does not affect other uses of the source or model. Does not apply to `loaded_at_query`. |
 </SimpleTable>
 
-One or both of `warn_after` and `error_after` can be provided. If neither is set, dbt will not check freshness for that resource.
+One or both of `warn_after` and `error_after` can be provided. If neither is set, dbt will not check freshness for that resource. Each of `warn_after` and `error_after` requires both `count` and `period`; setting only one issues a parse warning but causes an error when `dbt freshness` runs.
 
 ## Source freshness
 
@@ -69,16 +72,16 @@ sources:
     config:
       freshness: # changed to config in v1.9
         warn_after:
-          [count](#count): <positive_integer>
-          [period](#period): minute | hour | day
+          count: <positive_integer>
+          period: minute | hour | day
         error_after:
-          [count](#count): <positive_integer>
-          [period](#period): minute | hour | day
-        [filter](#filter): <boolean_sql_expression>
+          count: <positive_integer>
+          period: minute | hour | day
+        filter: <boolean_sql_expression>
       # changed to config in v1.10
-      [loaded_at_field](#loaded_at_field): <column_name_or_expression>
+      loaded_at_field: <column_name_or_expression>
       # or use loaded_at_query in v1.10 or higher
-      [loaded_at_query](#loaded_at_query): <sql_expression>
+      loaded_at_query: <sql_expression>
 
     tables:
       - name: <table_name>
@@ -86,14 +89,14 @@ sources:
           # source.table.config.freshness overrides source.config.freshness
           freshness:
             warn_after:
-              [count](#count): <positive_integer>
-              [period](#period): minute | hour | day
+              count: <positive_integer>
+              period: minute | hour | day
             error_after:
-              [count](#count): <positive_integer>
-              [period](#period): minute | hour | day
-            [filter](#filter): <boolean_sql_expression>
-          [loaded_at_field](#loaded_at_field): <column_name_or_expression>
-          [loaded_at_query](#loaded_at_query): <sql_expression>
+              count: <positive_integer>
+              period: minute | hour | day
+            filter: <boolean_sql_expression>
+          loaded_at_field: <column_name_or_expression>
+          loaded_at_query: <sql_expression>
 ```
 
 </File>
@@ -252,7 +255,7 @@ where {{ filter }}
 {% endif %}
 ```
 
-_[Source code](https://github.com/dbt-labs/dbt/blob/HEAD/core/dbt/include/global_project/macros/adapters/common.sql#L262)_
+_[Source code](https://github.com/dbt-labs/dbt-adapters/blob/main/dbt-adapters/src/dbt/include/global_project/macros/adapters/freshness.sql#L5-L16)_
 
 </TabItem>
 </Tabs>
@@ -329,6 +332,8 @@ Not all materializations support freshness checks the same way. dbt validates yo
 | `view`, `external` | Required | Views don't expose row-level metadata. Set `loaded_at_field` or `loaded_at_query` to measure freshness. An empty string (`loaded_at_field: ""`) is treated the same as unset and raises a parse error. |
 | `ephemeral` | Not supported | Nothing is materialized to measure. Raises a parse error. |
 </SimpleTable>
+
+An incomplete freshness rule (for example, `warn_after` with `count` but no `period`) issues a warning at parse time for all materializations; `dbt run` and `dbt build` warn but still succeed. Only `dbt freshness` treats it as an error. Separately, `view` and `external` models require l`oaded_at_field` or `loaded_at_query` &mdash; omitting both is a parse error that fails `dbt run`, `dbt build`, and `dbt freshness`, regardless of whether the freshness rule is complete.
 
 ### Cross-project freshness
 

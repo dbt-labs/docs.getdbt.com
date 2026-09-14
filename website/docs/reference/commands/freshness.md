@@ -50,13 +50,13 @@ dbt freshness --select "source:jaffle_shop.orders"
 
 `dbt freshness` selects any source or model with `warn_after` or `error_after` set in its `freshness` config.
 
-Freshness is measured using one of three methods, in order of precedence. It then compares the latest timestamp against the current timestamp to determine how old the data is:
+Freshness is measured using one of three methods. It then compares the latest timestamp against the current timestamp to determine how old the data is. You cannot set both `loaded_at_query` and `loaded_at_field` on the same resource — dbt returns a parse error if both are set:
 
 | Method | When used |
 |---|---|
 | `loaded_at_query` | When set on the node — runs the custom SQL expression to get the latest timestamp |
 | `loaded_at_field` | When set — queries `MAX(<loaded_at_field>)` against the materialized relation |
-| Adapter metadata | When neither `loaded_at_field` nor `loaded_at_query` is set — queries adapter relation metadata for last modified time. Applies to `table`, `incremental`, `materialized_view`, and `dynamic_table` models only. |
+| Adapter metadata | When neither `loaded_at_field` nor `loaded_at_query` is set — queries adapter relation metadata for last modified time. Applies to sources and `table`, `incremental`, `materialized_view`, and `dynamic_table` models. `view` and `external` models must use `loaded_at_field` or `loaded_at_query`. |
 
 ## Command output
 
@@ -66,18 +66,18 @@ After `dbt freshness` completes, dbt writes `target/freshness.json` covering all
 
 ```json
 {
-  "meta": {
-    "generated_at": "2026-08-28T00:00:00.000000Z",
-    "elapsed_time": 1.23
+  "metadata": {
+    "generated_at": "2026-08-28T00:00:00.000000Z"
   },
+  "elapsed_time": 1.23,
   "results": [
     {
       "unique_id": "model.jaffle_shop.stg_orders",
       "resource_type": "model",
-      "max_loaded_at": "2026-08-27T22:00:00+00:00Z",
-      "snapshotted_at": "2026-08-28T00:00:00+00:00Z",
+      "max_loaded_at": "2026-08-27T22:00:00+00:00",
+      "snapshotted_at": "2026-08-28T00:00:00+00:00",
       "max_loaded_at_time_ago_in_s": 7200,
-      "state": "pass",
+      "status": "Pass",
       "criteria": {
         "warn_after": {"count": 24, "period": "hour"},
         "error_after": {"count": 48, "period": "hour"}
@@ -86,10 +86,10 @@ After `dbt freshness` completes, dbt writes `target/freshness.json` covering all
     {
       "unique_id": "source.jaffle_shop.jaffle_shop.orders",
       "resource_type": "source",
-      "max_loaded_at": "2026-08-27T23:30:00+00:00Z",
-      "snapshotted_at": "2026-08-28T00:00:00+00:00Z",
+      "max_loaded_at": "2026-08-27T23:30:00+00:00",
+      "snapshotted_at": "2026-08-28T00:00:00+00:00",
       "max_loaded_at_time_ago_in_s": 1800,
-      "state": "pass",
+      "status": "Pass",
       "criteria": {
         "warn_after": {"count": 12, "period": "hour"},
         "error_after": {"count": 24, "period": "hour"}
