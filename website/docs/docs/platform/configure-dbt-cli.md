@@ -63,7 +63,7 @@ To set environment variables in the <Constant name="platform_cli" /> for your db
 
 The <Constant name="platform_cli" /> uses the same set of [dbt commands](/reference/dbt-commands) and [MetricFlow commands](/docs/build/metricflow-commands) as <Constant name="core" /> to execute the commands you provide. For example, use the [`dbt environment`](/reference/commands/dbt-environment?version=2.0) command to view your <Constant name="dbt" /> configuration details. With the <Constant name="platform_cli" />, you can:
 
-- Run [multiple invocations in parallel](/reference/dbt-commands) and ensure [safe parallelism](/reference/dbt-commands#parallel-execution), which `dbt` doesn't currently guarantee.
+- Run [multiple invocations in parallel](/reference/dbt-commands) and ensure [safe parallelism](/reference/dbt-commands#parallel-execution).
 - Automatically defer build artifacts to your project's production environment.
 - Support [project dependencies](/docs/mesh/govern/project-dependencies), which allows you to depend on another project using the metadata service in <Constant name="dbt" />. 
   - Project dependencies instantly connect to and reference (or  `ref`) public models defined in other projects. You don't need to execute or analyze these upstream models yourself. Instead, you treat them as an API that returns a dataset.
