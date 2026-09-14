@@ -81,7 +81,7 @@ When using global navigation and searching across your projects, the following p
 | [Downstream exposures](/docs/explore/view-downstream-exposures) | ❌ | ✅ | ✅ |
 | [Data health tile](/docs/explore/data-tile) | ❌ | ✅ | ✅ |
 
-This table covers <Constant name="catalog" /> only. [Column-level lineage](/docs/explore/column-level-lineage) is also available locally when you develop with <Constant name="dbt" /> v2, regardless of your plan.
+This table covers <Constant name="catalog" /> only. [Column-level lineage](/docs/explore/column-level-lineage) is also available locally when you develop with <Constant name="fusion" />, regardless of your plan.
 
 import ExplorerCourse from '/snippets/_explorer-course-link.md';
 
