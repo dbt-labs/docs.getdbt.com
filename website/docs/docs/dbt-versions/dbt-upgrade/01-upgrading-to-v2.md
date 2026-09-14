@@ -88,6 +88,13 @@ dbt compile --generate-info-schema
 dbt parse --generate-info-schema
 ```
 
+You can query the dbt Information Schema directly from the CLI using [`dbt show --info`](/reference/commands/show):
+
+```shell
+dbt show --info models
+dbt show --inline "select name from {{ info_schema('models') }} order by name"
+```
+
 For more information, refer to [dbt Information Schema](/docs/build/dbt-information-schema).
 
 ### `dbt login`
