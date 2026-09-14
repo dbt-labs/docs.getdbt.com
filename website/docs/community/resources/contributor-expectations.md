@@ -137,6 +137,6 @@ Both bug fixes and backwards-compatible new features will be included in the [ne
 
 #### <Constant name="fusion_engine" />
 
-<Constant name="fusion_engine" /> is released continuously, and it contains a superset of the code and functionality available in the open source layer. When dbt v2.0.0 is released (General Availability), the version numbers for dbt OSS and <Constant name="fusion" /> will converge.
+<Constant name="fusion_engine" /> is released continuously, and it contains a superset of the code and functionality available in the open source layer. When dbt v2.0 is released to General Availability, the version numbers for dbt OSS and <Constant name="fusion" /> will converge.
 
 The next major version of our [open source](/docs/dbt-versions/dbt-upgrade/upgrading-to-v2) offering is built on the v2 runtime. Contributions to dbt targeting the v2.x series follow the same principles as v1.x: bug fixes and backwards-compatible features are included in the next available release. Because v2 is currently in beta, we will be releasing new versions rapidly as we get closer to the final v2.0.0 release (General Availability).
