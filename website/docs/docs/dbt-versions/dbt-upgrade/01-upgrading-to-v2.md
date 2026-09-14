@@ -36,7 +36,7 @@ import AboutFusion from '/snippets/_about-fusion.md';
 Upgrading to v2 is an install step. Install dbt using `pip` to get <Constant name="fusion" /> for v2:
 
 ```shell
-python -m pip install dbt
+python -m pip install --pre dbt
 ```
 
 For full instructions, including Homebrew, winget, and additional options, refer to [Install dbt](/docs/local/install-dbt).

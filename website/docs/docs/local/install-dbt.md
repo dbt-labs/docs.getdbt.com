@@ -19,10 +19,10 @@ Get <Constant name="dbt" /> running on your machine in a few minutes. Installing
 <TabItem value="pip" label="pip">
 
 ```shell
-python -m pip install dbt
+python -m pip install --pre dbt
 ```
 
-To upgrade later, run `python -m pip install --upgrade dbt`.
+To upgrade later, run `python -m pip install --upgrade --pre dbt`.
 
 </TabItem>
 

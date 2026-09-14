@@ -25,10 +25,10 @@ The open-source v2 foundation is licensed under Apache 2.0. Most users don't nee
 
 ## Install
 
-Install the dbt OSS with `pip`:
+Install the dbt OSS prerelease with `pip`:
 
 ```shell
-python -m pip install dbt
+python -m pip install --pre dbt-core
 ```
 
 Confirm the installed version begins with `2.`:
