@@ -152,7 +152,7 @@ After [setting the foundations of the <Constant name="dbt_platform" />](/guides/
 
 ## Transition and training
 
-Once you've confirmed that <Constant name="dbt_platform" /> orchestration and CI/CD are working as expected, you should pause your current orchestration tool and stop or update your current CI/CD process. This is not relevant if you're still using an external orchestrator (such as Airflow), and you've swapped out dbt execution for <Constant name="dbt_platform" /> execution (through the [API](/docs/dbt-apis/overview)).
+Once you've confirmed that <Constant name="dbt_platform" /> orchestration and CI/CD are working as expected, you should pause your current orchestration tool and stop or update your current CI/CD process. This is not relevant if you're still using an external orchestrator (such as Airflow), and you've swapped out local dbt execution for <Constant name="dbt_platform" /> execution (through the [API](/docs/dbt-apis/overview)).
 
 Familiarize your team with the <Constant name="dbt_platform" />'s [features](/docs/platform/about-platform/dbt-platform-features) and optimize development and deployment processes. Some key features to consider include:
 - **Release tracks:** Choose a [release track](/docs/dbt-versions/dbt-release-tracks) for automatic dbt version upgrades, at the cadence appropriate for your team — removing the hassle of manual updates and the risk of version discrepancies. You can also get early access to new functionality, ahead of self-hosted dbt.
