@@ -1,0 +1,65 @@
+name: Release note matcher
+
+on:
+  schedule:
+    # Weekdays 9am UTC
+    - cron: '0 9 * * 1-5'
+  workflow_dispatch:
+    inputs:
+      auto_close:
+        description: 'Close high-confidence matches (leave off for report-only)'
+        required: false
+        type: boolean
+        default: false
+      dry_run_close:
+        description: 'If auto_close is on, print closes without applying them'
+        required: false
+        type: boolean
+        default: false
+
+jobs:
+  match:
+    if: github.repository == 'dbt-labs/docs.getdbt.com'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    concurrency:
+      group: release-note-matcher
+      cancel-in-progress: false
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+
+      - name: Match docs-internal release note issues
+        env:
+          # Needs access to dbt-labs/docs-internal issues.
+          # Store a docs-team PAT (or bot token) as DOCS_INTERNAL_TOKEN.
+          GH_TOKEN: ${{ secrets.DOCS_INTERNAL_TOKEN }}
+          AUTO_CLOSE: ${{ github.event_name == 'workflow_dispatch' && inputs.auto_close || false }}
+          DRY_RUN_CLOSE: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run_close || false }}
+        run: |
+          if [ -z "$GH_TOKEN" ]; then
+            echo "::error::DOCS_INTERNAL_TOKEN secret is not set. Add a token with access to dbt-labs/docs-internal."
+            exit 1
+          fi
+
+          ARGS=(
+            --issues-repo dbt-labs/docs-internal
+            --mt-file website/docs/docs/dbt-versions/release-notes.md
+          )
+
+          if [ "$AUTO_CLOSE" = "true" ]; then
+            ARGS+=(--auto-close)
+          fi
+          if [ "$DRY_RUN_CLOSE" = "true" ]; then
+            ARGS+=(--dry-run-close)
+          fi
+
+          python3 .github/scripts/match_release_note_issues.py "${ARGS[@]}"
