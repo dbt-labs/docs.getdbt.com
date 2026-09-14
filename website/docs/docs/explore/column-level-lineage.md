@@ -14,7 +14,7 @@ Column-level lineage (CLL) gives you insight into the provenance of your data pr
 
 <Lightbox src="/img/docs/collaborate/dbt-explorer/example-overview-cll.png" width="95%" title="Overview of column level lineage"/>
 
-## Availability
+## Prerequisites
 
 You can use CLL in two places:
 - **[<Constant name="catalog" />](/docs/explore/explore-projects) in the <Constant name="dbt_platform" />**:  Requires an Enterprise or Enterprise+ plan with <Constant name="catalog" /> access.
