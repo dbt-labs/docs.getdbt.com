@@ -97,6 +97,28 @@ v2 introduces the [`compute`](/reference/resource-configs/compute) config for un
 
 This config is experimental and requires opt-in: set `DBT_ENGINE_EXPERIMENTAL_LOCAL_UNIT_TESTS=true` in the environment where dbt runs before you use `compute: local`. For details, refer to [Run unit tests locally](/docs/build/unit-tests#run-unit-tests-locally).
 
+### Agent skills
+
+v2 introduces [agent skills](/docs/dbt-ai/package-skills), reusable instructions your coding agent reads from a `SKILL.md` file. Your project and its packages can both ship them, so your team shares one set of conventions instead of copying files between repos.
+
+To use agent skills, you need both:
+
+- Skills to install, which means a `skills/` directory in your project, a package that ships skills, or both
+- Set the `ai_provider` flag in your root project, which tells dbt which coding agent you use
+
+  <File name='dbt_project.yml'>
+  
+  ```yml
+  flags:
+    ai_provider: claude
+  ```
+  
+  </File>
+
+`dbt deps` then installs those skills into the directory your agent reads from, such as `.claude/skills`, and `dbt clean` removes them. If either piece is missing, `dbt deps` installs your packages as usual and writes no skills.
+
+For full usage info, refer to [Installing agent skills from dbt packages](/docs/dbt-ai/package-skills).
+
 ### Changed functionality
 
 When developing v2, there were opportunities to improve the dbt framework — failing earlier (when possible), fixing bugs, optimizing run order, and deprecating flags that are no longer relevant. The result is a handful of specific and nuanced changes to existing behavior.
