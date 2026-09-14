@@ -18,7 +18,7 @@ Column-level lineage (CLL) gives you insight into the provenance of your data pr
 
 You can use CLL in two places:
 - **[<Constant name="catalog" />](/docs/explore/explore-projects) in the <Constant name="dbt_platform" />**:  Requires an Enterprise or Enterprise+ plan with <Constant name="catalog" /> access.
-- **Locally with <Constant name="dbt" /> v2**: Requires [strict static analysis](/docs/build/about-static-analysis#configuring-static_analysis). Available in the [dbt VS Code extension](/docs/dbt-extension-features#rich-lineage-in-context) and [dbt Docs v2](/docs/build/view-documentation#dbt-docs-v2).
+- **Locally with <Constant name="dbt" /> v2**: Requires [strict static analysis](/docs/build/about-static-analysis#configuring-static_analysis). Available in the [dbt VS Code extension](/docs/dbt-extension-features#rich-lineage-in-context), [dbt Docs v2](/docs/build/view-documentation#dbt-docs-v2), or from the command line.
 
 import ExplorerCourse from '/snippets/_explorer-course-link.md';
 
@@ -34,10 +34,11 @@ There is no additional setup required for CLL in <Constant name="catalog" /> if 
 
 ## Access column-level lineage locally
 
-When you develop with <Constant name="dbt" /> v2, you don't need <Constant name="catalog" /> to see column lineage:
+When you develop with <Constant name="dbt" /> v2, you can see column-level lineage in these ways:
 
 - **dbt VS Code extension**: Right-click a filename or a model's SQL, then select **dbt: View Lineage** &rarr; **Show column lineage**. Refer to [Rich lineage in context](/docs/dbt-extension-features#rich-lineage-in-context) for the full workflow.
 - **dbt Docs v2**: Build the index with `dbt build --write-index --static-analysis strict`, then export it with `dbt docs generate --no-compile`. Plain `dbt docs generate` recompiles without strict, so column lineage is hidden. Refer to [dbt Docs v2](/docs/build/view-documentation#dbt-docs-v2).
+- - **Command line or artifact**: Run `dbt show --info column_lineage`, or read the `column_lineage` Parquet artifact directly, to consume column lineage.
 
 ## Column evolution lens {#column-lens}
 
