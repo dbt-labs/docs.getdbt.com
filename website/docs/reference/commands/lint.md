@@ -41,7 +41,7 @@ dbt lint [FILE] [flags]
 | `--exclude-rules` | Comma-separated list of rule codes to disable. Overrides config. |
 | `--changed` | Lint only files modified in the current git working tree. |
 | `--format human\|json\|github-annotation` | Output format. Defaults to `human`. Use `json` for machine-readable output or `github-annotation` for GitHub Actions integration. |
-| `--jinja-render-mode <mode>` | How `dbt lint` renders Jinja before linting. Accepts `symbolic`, `rendered`, or `turbo`. Defaults to `symbolic`. Overrides config. Refer to [Jinja render modes](#jinja-render-modes). |
+| `--jinja-render-mode <mode>` | How `dbt lint` renders Jinja before linting. Accepts `symbolic` (default), `rendered`, or `turbo`. Overrides `.sqlfluff` config. Refer to [Jinja render modes](#jinja-render-modes). |
 
 ## Configuration
 
