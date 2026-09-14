@@ -28,7 +28,7 @@ import ExplorerCourse from '/snippets/_explorer-course-link.md';
 
 There is no additional setup required for CLL in <Constant name="catalog" /> if your account is on an Enterprise plan that can use <Constant name="catalog" />. You can access the CLL by expanding the column card in the **Columns** tab of an <Constant name="catalog" /> [resource details page](/docs/explore/explore-projects#view-resource-details) for a model, source, or snapshot.
 
-<Constant name="dbt" /> updates the lineage in Explorer after each run that's executed in the production or staging environment. At least one job in the production or staging environment must run `dbt docs generate`. Refer to [Generating metadata](/docs/explore/explore-projects#generate-metadata) for more details.
+<Constant name="dbt" /> updates the lineage in <Constant name="catalog" /> after each run that's executed in the production or staging environment. At least one job in the production or staging environment must run `dbt docs generate`. Refer to [Generating metadata](/docs/explore/explore-projects#generate-metadata) for more details.
 
 <Lightbox src="/img/docs/collaborate/dbt-explorer/example-cll.png" width="40%" title="Example of the Columns tab and where to expand for the CLL"/>
 
