@@ -30,6 +30,6 @@ Each entry in `results` is a dictionary with the following keys:
 - `status`: Freshness status: `pass`, `warn`, or `error` if the check succeeds; `runtime error` if the query fails.
 - `criteria`: The freshness thresholds (`warn_after`, `error_after`) configured for this node.
 - `execution_time`: Total time spent checking freshness for this node.
-- `timing`: Array of timing steps (e.g., `compile`, `execute`).
+- `timing`: Array of timing steps (for example, `compile`, `execute`).
 - `adapter_response`: Adapter-level response metadata.
 - `thread_id`: Identifier for the thread that ran this check.
