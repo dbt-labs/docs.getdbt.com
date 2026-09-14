@@ -9,7 +9,7 @@ availability:
 
 # About dbt lint command <Lifecycle status="beta" />
 
-`dbt lint` is a fast SQL linter built into <Constant name="fusion_engine" />, available locally or in <Constant name="dbt_platform"/>. It isn't available in dbt OSS, but you can [upgrade to v2](/docs/dbt-versions/dbt-upgrade/upgrading-to-v2?version=2) to access built-in linting.
+`dbt lint` is a fast SQL linter built into <Constant name="fusion_engine" />, available locally or in <Constant name="dbt_platform"/>. It isn't available in dbt OSS, however you can [upgrade to v2](/docs/dbt-versions/dbt-upgrade/upgrading-to-v2?version=2) to access built-in linting.
 
 It is SQLFluff-compatible: it reads your `.sqlfluff` config, uses the same rule codes (for example, `CP01`, `RF03`), and respects `-- noqa` suppression comments. Compatible does not mean identical: `dbt lint` and SQLFluff can return different results for the same file and config. Refer to [Rule parity with SQLFluff](#rule-parity-with-sqlfluff).
 
