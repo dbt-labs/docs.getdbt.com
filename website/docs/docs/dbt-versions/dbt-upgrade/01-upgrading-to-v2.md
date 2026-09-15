@@ -156,6 +156,19 @@ v2 includes a built-in language server that enables IDE features for dbt SQL and
 
 Features available depend on your `static_analysis` setting: `baseline` adds syntax error detection and CTE preview; `strict` adds column go-to-definition, column lineage, and type checking. For details, refer to [About dbt LSP](/docs/about-dbt-lsp).
 
+### Agent skills
+
+v2 introduces [agent skills](/docs/dbt-ai/package-skills), which are reusable instructions your coding agent reads from a `SKILL.md` file. You and your team can ship skills from your own project or from a package, so everyone works from one set of conventions instead of copying files between repos.
+
+To use agent skills, you need to:
+
+- Include skills in your project's `skills/` directory, use a package that ships skills, or both
+- Set the `ai_provider` flag in your root project to tell dbt which which coding agent you use. Supported values are `wizard`, `claude`, `openai`, `codex`, `cursor`, or `gemini` (case-insensitive).
+
+Once both are in place, `dbt deps` installs those skills into the directory your agent reads from (such as `.claude/skills` or `.agents/skills`), and `dbt clean` removes them. If you're missing either piece, `dbt deps` installs your packages as usual and skips the skills.
+
+For full usage info, including how to disable a skill you don't want, refer to [Installing agent skills from dbt packages](/docs/dbt-ai/package-skills).
+
 ### `dbt login`
 
 In <Constant name="dbt" /> v2, [`dbt login`](/reference/commands/login?version=2.0) enables browser-based authentication. It opens a browser window prompting you to sign in to your <Constant name="dbt_platform" /> account or create a free account.
