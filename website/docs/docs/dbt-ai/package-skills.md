@@ -34,7 +34,7 @@ flags:
 
 </File>
 
-Each provider has a directory it reads skills from. Most providers share `.agents/skills`; claude reads skills via its own directory:
+Each provider has a directory it reads skills from. Most providers share `.agents/skills`; claude reads skills via its own directory. Supported providers are:
 
 | `ai_provider` value | Installs to |
 |---------------------|-------------|
