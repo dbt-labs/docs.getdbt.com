@@ -20,7 +20,7 @@ The dbt VS Code extension is free to install, and its editor features are availa
 | SQL <Term id="lsp" /> go-to column and CTE | `static_analysis: strict` |
 | SQL <Term id="lsp" /> hover to see the schema for `select *` | `static_analysis: strict` |
 
-A few capabilities read data from your <Constant name="dbt_platform" /> account and need you to [sign in](/docs/sign-in-dbt-extension) so the extension can reach it:
+These features need you to [sign in](/docs/sign-in-dbt-extension) so the extension can read data from your <Constant name="dbt_platform" /> account:
 
 | Feature | Why it needs a <Constant name="dbt_platform" /> account |
 |---------|--------------------------------------------------------|
