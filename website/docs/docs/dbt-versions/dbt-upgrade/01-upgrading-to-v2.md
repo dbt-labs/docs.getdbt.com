@@ -25,7 +25,7 @@ v2 is faster and stricter, but your existing project language and DAG semantics 
 
 import AboutFusion from '/snippets/_about-fusion.md';
 
-<AboutFusion />
+<AboutFusion hideUpgradeLink />
 
 ## Resources
 
@@ -88,17 +88,13 @@ The v2 engine is a complete rewrite in Rust, delivering faster parse and compile
 
 ### dbt Docs v2
 
-v2 introduces [dbt Docs v2](/docs/build/view-documentation#dbt-docs-v2), a faster, statically hostable documentation experience that replaces the v1 static site. `dbt docs generate` compiles your project, produces the v2 Parquet artifacts, and exports a static site in a single command. `dbt docs serve` previews that site locally, and because the browser queries those artifacts directly with DuckDB-WASM (WebAssembly), you can also host the generated files on any static file host. You only need `--generate-info-schema` if you want to produce the artifacts from a separate `dbt compile` or `dbt build` command.
+v2 introduces [dbt Docs v2](/docs/build/view-documentation#dbt-docs-v2), a fast, modern self-hosted catalog experience built to help you understand and trust your production data. You get column-level lineage, Semantic Layer metadata, and a beautifully refreshed interface, all working smoothly on the largest projects. Under the hood, your metadata lives in efficient Parquet artifacts for faster load times and a catalog that scales as your project grows.
+
+`dbt docs generate` compiles your project, produces the v2 Parquet artifacts, and exports a static site in a single command. `dbt docs serve` previews that site locally. Because the browser queries those artifacts directly with DuckDB-WASM, you can also host the generated files on any static file host. Column-level lineage is visible when you build with `--static-analysis strict`.
 
 To hydrate catalog metadata (`catalog.json`) for <Constant name="catalog" /> without building the site, use the [`--write-catalog` flag](/reference/commands/cmd-docs#--write-catalog-flag) instead.
 
-For full usage, refer to [About dbt docs commands](/reference/commands/cmd-docs).
-
-### dbt Docs v2
-
-With dbt Docs v2, you get a fast, modern self-hosted catalog experience built to help you understand and trust your production data. You get column-level lineage, Semantic Layer metadata, and a beautifully refreshed interface, all working smoothly on the largest projects. Under the hood, your metadata lives in efficient Parquet artifacts so you get faster load times, a catalog that scales effortlessly as your project grows, and data that's easy to query directly.
-
-Column-level lineage is visible in dbt-docs when you build with `--static-analysis strict`. For details on generating and serving the site, refer to [About dbt docs commands](/reference/commands/cmd-docs?version=2).
+For full usage, refer to [About dbt docs commands](/reference/commands/cmd-docs?version=2).
 
 ### Adapters built on ADBC drivers
 
@@ -110,9 +106,15 @@ On first run, dbt downloads adapter drivers from the dbt Labs CDN and caches the
 
 v2 introduces [`dbt lint`](/reference/commands/lint), a high-performance SQL linter built into dbt. It is SQLFluff-compatible: you keep your existing .sqlfluff config and rule codes (for example, `CP01`, `RF03`). Run `dbt lint` to lint all models, or `dbt lint [FILE]` to target a specific file. Use `--fix` to auto-apply fixable violations.
 
-### SQL syntax comprehension
+### Static analysis
 
-Baseline static analysis parses each model's SQL at compile time to understand its structure without a warehouse connection. This is the default mode in dbt v2. Enable it explicitly per-model or project-wide:
+Unlike dbt v1.x, which only rendered Jinja-templated SQL strings into queries, v2 adds a second phase: static analysis. After rendering, the engine produces and validates a logical plan for every query in your project &mdash; without executing anything against the warehouse. This enables dialect-aware validation, column-level lineage, and precise type checking. The [`static_analysis`](/reference/resource-configs/static-analysis) config controls how strictly this is applied.
+
+#### Baseline static analysis
+
+Baseline mode is the default in dbt v2. It parses each model's SQL at compile time to understand its structure without a warehouse connection, catching most SQL errors while providing a smooth migration experience. In baseline mode, all findings are warnings rather than errors, so your project continues running even when the compiler flags issues.
+
+Enable it explicitly per-model or project-wide:
 
 ```yaml
 # dbt_project.yml
@@ -121,11 +123,11 @@ models:
     +static_analysis: baseline
 ```
 
-Or pass `--static-analysis baseline` on the CLI. Baseline analysis infers column schemas at compile time without running queries. For details, refer to [About static analysis](/docs/build/about-static-analysis).
+Or pass `--static-analysis baseline` on the CLI. For details, refer to [About static analysis](/docs/build/about-static-analysis).
 
-### SQL type and semantic comprehension
+#### Strict static analysis
 
-Strict static analysis fully resolves column types and validates references across your project without executing queries. It is required to produce [column-level lineage](/docs/explore/column-level-lineage).
+Strict mode fully resolves column types and validates references across your entire project before execution begins; nothing runs until the project is proven valid. It is required to produce [column-level lineage](/docs/explore/column-level-lineage) and unlocks additional LSP features like column go-to-definition and type checking. Strict mode requires authentication through [`dbt login`](/reference/commands/login?version=2.0); unauthenticated runs fall back to baseline.
 
 Enable it per-model or project-wide:
 
