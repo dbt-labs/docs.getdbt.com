@@ -1042,7 +1042,7 @@ const sidebarSettings = {
         {
           type: "link",
           label: "Fusion changelog",
-          href: "https://github.com/dbt-labs/dbt-core/blob/main/CHANGELOG-fusion.md",
+          href: "https://github.com/dbt-labs/dbt/blob/main/CHANGELOG-fusion.md",
         },
         {
           type: "category",

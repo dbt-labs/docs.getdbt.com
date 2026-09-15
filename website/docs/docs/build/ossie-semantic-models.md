@@ -11,11 +11,11 @@ availability: all_users
 
 <VersionCallout version="1.12" />
 
-<Constant name="core" /> v1.12 and higher supports the [Apache Ossie](https://github.com/apache/ossie) standard for defining semantic models and metrics. You can place Ossie-format `.json` files in an `osi/` directory at the root of your project, or configure [`osi-paths`](/reference/project-configs/osi-paths) in `dbt_project.yml` to use one or more custom directories relative to your project root. dbt parses them into the manifest alongside any native dbt semantic models. Ossie-sourced definitions and native dbt semantic models can coexist in the same project.
+<Constant name="dbt" /> v1.12 and higher supports the [Apache Ossie](https://github.com/apache/ossie) standard for defining semantic models and metrics. You can place Ossie-format `.json` files in an `osi/` directory at the root of your project, or configure [`osi-paths`](/reference/project-configs/osi-paths) in `dbt_project.yml` to use one or more custom directories relative to your project root. dbt parses them into the manifest alongside any native dbt semantic models. Ossie-sourced definitions and native dbt semantic models can coexist in the same project.
 
 ## Prerequisites
 
-- You must be on <Constant name="core" /> v1.12 or higher.
+- You must be on <Constant name="dbt" /> v1.12 or higher.
 - Ossie documents must use version `0.1.0` or `0.1.1`. Any other version string raises a parse error.
 
 ## Defining semantic models using Ossie documents

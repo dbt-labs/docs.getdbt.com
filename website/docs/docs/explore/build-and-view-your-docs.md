@@ -16,7 +16,7 @@ This shift makes [dbt Docs](#dbt-docs) a legacy documentation feature in <Consta
 
 ## Set up a documentation job
 
-:::note Upcoming change for Fusion jobs
+:::note Upcoming change for dbt v2 jobs
 In a future update, this setup will no longer be applicable for <Constant name="fusion" /> jobs in the <Constant name="dbt_platform" />. Execution commands (`run`, `build`, `seed`, `snapshot`) will automatically trigger metadata generation, so you won't need to add a `dbt docs generate` step or select the **Generate docs on run** option in **Execution settings**.
 :::
 

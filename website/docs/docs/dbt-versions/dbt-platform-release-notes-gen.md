@@ -40,7 +40,6 @@ Release notes are grouped by date for single-tenant environments.
 
 - **Upstream sources sorted by freshness severity**: The **Upstream Sources** table on the model detail pages now sorts by freshness severity by default (Error first, Pass last). Click **Name** or **Status** to change the sort order. The **Status** column also no longer overflows on wide screens.
 
-
 ### Orchestration and run status
 
 - **Full model timing view for large runs**: The model timing Gantt chart no longer limits groups to 2,000 rows. You can now see all models in the timing view for large runs.

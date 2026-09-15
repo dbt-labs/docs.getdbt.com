@@ -1,10 +1,10 @@
 ---
-title: "Hybrid development with dbt platform and Fusion"
+title: "Hybrid development with dbt platform and dbt v2"
 id: "dbt-platform-local-workflow"
 level: 'Beginner'
 icon: 'zap'
 hide_table_of_contents: true
-tags: ['dbt Fusion engine', 'dbt platform', 'Local development']
+tags: ['dbt v2', 'dbt platform', 'Local development']
 recently_updated: true
 ---
 
@@ -18,7 +18,7 @@ This guide walks through credentials, environment variables, <Constant name="fus
 
 ## Prerequisites
 
-- You have a <Constant name="dbt_platform" /> account with at least one project using the <Constant name="fusion_engine" />.
+- You have a <Constant name="dbt_platform" /> account with at least one project using <Constant name="fusion_engine" />.
 - You have either the [dbt platform CLI](/docs/platform/dbt-cli-installation) or the [dbt VS Code extension + local dbt](/docs/local/install-dbt) installed.
 
 
@@ -26,7 +26,7 @@ This guide walks through credentials, environment variables, <Constant name="fus
 
 How you authenticate to your data warehouse locally depends on which self-hosted tool you use:
 - [dbt platform CLI](/guides/dbt-platform-local-workflow?step=3#dbt-platform-cli): For a CLI-only development experience (without the dbt VS Code extension), use the <Constant name="platform_cli" /> with <Constant name="fusion"/> set as your platform release track. Warehouse credentials are managed centrally in <Constant name="dbt_platform" /> and passed through automatically &mdash; no `profiles.yml` required.
-- [dbt VS Code extension](/guides/dbt-platform-local-workflow?step=3#dbt-vs-code-extension-profilesyml-required): For IDE-based local development, the dbt VS Code extension runs the <Constant name="fusion_engine" /> and its <Term id="lsp" /> features in a local process. This path requires a `profiles.yml` to connect directly to your warehouse.
+- [dbt VS Code extension](/guides/dbt-platform-local-workflow?step=3#dbt-vs-code-extension-profilesyml-required): For IDE-based local development, the dbt VS Code extension runs <Constant name="fusion_engine" /> and its <Term id="lsp" /> features in a local process. This path requires a `profiles.yml` to connect directly to your warehouse.
 
 ### <Constant name="platform_cli" />
 
@@ -134,17 +134,17 @@ Consider a script that fetches variables from your secrets manager (for example,
 
 :::
 
-## 3. Managing Fusion versions
+## 3. Managing dbt v2 versions
 
-The **Latest** release track on <Constant name="dbt_platform" /> updates continuously as <Constant name="fusion" /> ships new releases. If your local version falls behind, you might see inconsistent behavior. The same query could compile differently locally than in production, or a feature might exist in <Constant name="dbt_platform" /> but not in your local binary. Stay current to avoid these mismatches.
+The **v2 Stable** release track on <Constant name="dbt_platform" /> updates continuously as <Constant name="fusion" /> ships new releases. If your local version falls behind, you might see inconsistent behavior. The same query could compile differently locally than in production, or a feature might exist in <Constant name="dbt_platform" /> but not in your local binary. Stay current to avoid these mismatches.
 
 ### Versions on the dbt platform
 
-On <Constant name="dbt_platform" />, <Constant name="fusion" /> follows a versionless release track model. The default release track is **<Constant name="fusion" /> Stable**, which always runs the most recent stable release. For details on release tracks and their stability levels, see [<Constant name="fusion" /> releases](/docs/dbt-versions/dbt-release-tracks?#fusion-release-tracks).
+On <Constant name="dbt_platform" />, <Constant name="fusion" /> follows a versionless release track model. The default release track is **v2 Stable**, which always runs the most recent stable release. For details on release tracks and their stability levels, see [<Constant name="fusion" /> releases](/docs/dbt-versions/dbt-release-tracks#dbt-v2-release-tracks).
 
 ### Versions installed locally
 
-By default, the <Constant name="fusion" /> [installation script](/docs/local/install-dbt) installs the latest stable release, the same version that ships with the **<Constant name="fusion" /> Stable** release track on <Constant name="dbt_platform" />:
+By default, the <Constant name="fusion" /> [installation script](/docs/local/install-dbt) installs the latest stable release, the same version that ships with the **v2 Stable** release track on <Constant name="dbt_platform" />:
 
 ```shell
 # macOS / Linux
@@ -170,7 +170,7 @@ Use a [VS Code dev container](https://code.visualstudio.com/docs/devcontainers/c
 Our friends at Brooklyn Data have published a ready-to-use <Constant name="fusion" /> dev container:
 
 - **Dev container template:** [brooklyn-data/dbt-fusion-devcontainer](https://github.com/brooklyn-data/dbt-fusion-devcontainer)
-- **Blog post:** [Why you should use dev containers with dbt <Constant name="fusion" />](https://www.brooklyndata.co/ideas/2025/06/11/why-you-should-use-dev-containers-with-dbt-fusion)
+- **Blog post:** [Why you should use dev containers with dbt v2](https://www.brooklyndata.co/ideas/2025/06/11/why-you-should-use-dev-containers-with-dbt-fusion)
 
 To get started with their template:
 
@@ -182,18 +182,18 @@ curl -fsSL https://raw.githubusercontent.com/brooklyn-data/dbt-fusion-devcontain
 Then open your project in VS Code and select **Reopen in Container** when prompted. VS Code builds the image and installs the latest stable <Constant name="fusion" /> release automatically.
 
 :::info Coming soon
-We're introducing additional <Constant name="fusion" /> release tracks on <Constant name="dbt_platform" /> beyond **<Constant name="fusion" /> Stable**. When they're available, we'll update this guide with steps to pin your dev container to a specific track.
+We're introducing additional <Constant name="fusion" /> release tracks on <Constant name="dbt_platform" /> beyond **v2 Stable**. When they're available, we'll update this guide with steps to pin your dev container to a specific track.
 :::
 
 ### Without dev containers: update at the start of each session
 
-If dev containers aren't an option for your team, run `dbt system update` at the start of each development session instead. That installs the latest stable release, the same version as the **Latest** track on <Constant name="dbt_platform" />, so your local binary stays current:
+If dev containers aren't an option for your team, run `dbt system update` at the start of each development session instead. That installs the latest stable release, the same version as the **v2 Stable** track on <Constant name="dbt_platform" />, so your local binary stays current:
 
 ```shell
 dbt system update && dbt debug
 ```
 
-Pinning to a specific version number does not work long term here: the **Latest** track on <Constant name="dbt_platform" /> keeps advancing, and a pinned self-hosted installation falls behind. Aim to stay on **Latest** instead of locking to one release.
+Pinning to a specific version number does not work long term here: the **v2 Stable** track on <Constant name="dbt_platform" /> keeps advancing, and a pinned self-hosted installation falls behind. Aim to stay on **v2 Stable** instead of locking to one release.
 
 To make this easy to remember, add a `dev` target to your project's `Makefile`:
 

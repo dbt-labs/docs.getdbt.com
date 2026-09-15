@@ -18,7 +18,7 @@ This is the only way to enjoy all the power of dbt v2 while developing with a se
 
 The dbt VS Code extension is available in the [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=dbtLabsInc.dbt). _Note, this is a public preview release. Behavior may change ahead of the broader generally available (GA) release._
 
-The dbt VS Code extension works with dbt v2, the default free-to-use product you get when you install dbt.
+The dbt VS Code extension works with v2, the default free-to-use product you get when you install dbt.
 
 ## Version compatibility
 
@@ -78,8 +78,8 @@ When you register or sign in for advanced features, authentication is handled by
 ### The dbt extension menu
 
 The dbt logo on the sidebar (or the **dbt Extension** text on the bottom tray) launches the main menu for the extension. This menu contains helpful information and actions you can take:
-- **Get started button:** Launches the [dbt v2 upgrade](/docs/upgrade-to-dbt-extension) workflow.
-- **Extension info:** Information about the extension, dbt v2, and your dbt project. Includes configuration options and actions.
+- **Get started button:** Launches the [v2 upgrade](/docs/upgrade-to-dbt-extension) workflow.
+- **Extension info:** Information about the extension, v2, and your dbt project. Includes configuration options and actions.
 - **Help:** Quick links to support, bug submissions, and documentation.
 
 <Lightbox src="/img/docs/extension/sidebar-menu.png" width="30%" title="dbt VS Code extension welcome screen."/>
@@ -163,7 +163,7 @@ We welcome feedback as we work to continuously improve the extension, and would 
 For more information regarding support and acceptable use of the dbt VS Code extension, refer to our [Acceptable Use Policy](https://www.getdbt.com/dbt-assets/vscode-plugin-aup).
 
 :::tip Developing locally as a <Constant name="dbt_platform"/> user?
-Refer to the [Hybrid development with <Constant name="dbt_platform"/> and dbt v2](/guides/dbt-platform-local-workflow) guide for how to keep credentials, environment variables, and dbt v2 versions in sync between your local extension and <Constant name="dbt_platform"/>.
+Refer to the [Hybrid development with <Constant name="dbt_platform"/> and dbt v2](/guides/dbt-platform-local-workflow) guide for how to keep credentials, environment variables, and v2 versions in sync between your local extension and <Constant name="dbt_platform"/>.
 :::
 
 import AboutFusion from '/snippets/_about-fusion.md';

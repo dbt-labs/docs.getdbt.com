@@ -1,11 +1,11 @@
 ---
-title: "Quickstart for the dbt Fusion engine"
+title: "Quickstart for dbt v2"
 id: "dbt"
 # time_to_complete: '30 minutes' commenting out until we test
 level: 'Beginner'
 icon: 'zap'
 hide_table_of_contents: true
-tags: ['dbt Fusion engine', 'dbt platform','Quickstart']
+tags: ['dbt v2', 'dbt platform','Quickstart']
 recently_updated: true
 ---
 
@@ -18,24 +18,24 @@ import FusionLifecycle from '/snippets/_fusion-lifecycle-callout.md';
 
 <FusionLifecycle />
 
-The <Constant name="fusion_engine" /> is a powerful new approach to classic dbt ideas! Completely rebuilt from the ground up in Rust, <Constant name="fusion" /> lets you compile and run your dbt projects faster than ever — often in seconds. 
+<Constant name="fusion_engine" /> is a powerful new approach to classic dbt ideas! Completely rebuilt from the ground up in Rust, <Constant name="fusion" /> lets you compile and run your dbt projects faster than ever — often in seconds. 
 
 This quickstart guide will get you from zero to running your first dbt project with <Constant name="fusion" /> + VS Code. By the end, you’ll have:
-- A working dbt project (`jaffle_shop`) built with the <Constant name="fusion_engine" />
+- A working dbt project (`jaffle_shop`) built with <Constant name="fusion_engine" />
 - The dbt VS Code extension installed and connected  
 - The ability to preview, compile, and run dbt commands directly from your IDE 
 
-### About the <Constant name="fusion_engine" />
+### About <Constant name="fusion_engine" /> {#about-dbt-v2}
 
 <Constant name="fusion" /> and the features it provides are available in multiple environments:
 
 | Environment | How to use <Constant name="fusion" /> |
 |--------------|-------------------|
-| **<Constant name="studio_ide" />** | <Constant name="fusion" /> is automatically enabled; just [upgrade your environment(s)](/docs/dbt-versions/upgrade-dbt-platform-version#dbt-fusion-engine). |
+| **<Constant name="studio_ide" />** | <Constant name="fusion" /> is automatically enabled; just [upgrade your environment(s)](/docs/dbt-versions/upgrade-dbt-platform-version#dbt-v2). |
 | **Local CLI** | [Install <Constant name="fusion_engine" />](/docs/local/install-dbt?version=2) locally following this guide. |
 | **VS Code / Cursor IDE** | [Install the dbt extension](/docs/install-dbt-extension) to unlock <Constant name="fusion" />'s interactive power in your editor. |
 
-To learn more about which tool is best for you, see the [Fusion availability](/docs/dbt/dbt-availability) page. To learn about the <Constant name="fusion_engine" /> and how it works, read more [about the <Constant name="fusion_engine" />](/docs/introduction).
+To learn more about which tool is best for you, see the [v2 availability](/docs/dbt/dbt-availability) page. To learn about <Constant name="fusion_engine" /> and how it works, read more [about <Constant name="fusion_engine" />](/docs/introduction).
 
 
 ## Prerequisites
@@ -45,7 +45,7 @@ To take full advantage of this guide, you'll need to meet the following prerequi
 - You should have a basic understanding of [dbt projects](/docs/build/projects), [git workflows](/docs/platform/git/git-version-control), and [data warehouse requirements](/docs/supported-data-platforms).
 - Make sure you're using a supported adapter and authentication method:
     <FusionDWH /> 
-- You need a macOS (Terminal), Linux, or Windows (Powershell) machine to run the <Constant name="fusion_engine" />. 
+- You need a macOS (Terminal), Linux, or Windows (Powershell) machine to run <Constant name="fusion_engine" />. 
 - You need to have [Visual Studio Code](https://code.visualstudio.com/) installed. The [Cursor](https://www.cursor.com/en) code editor will also work, but these instructions will focus on VS Code.
 - You need admin or install privileges on your machine.  
 
@@ -53,7 +53,7 @@ To take full advantage of this guide, you'll need to meet the following prerequi
 
 By following this guide, you will:
 - Set up a fully functional dbt environment with an operational project  
-- Install and use the <Constant name="fusion_engine" /> + dbt VS Code extension  
+- Install and use <Constant name="fusion_engine" /> + dbt VS Code extension  
 - Run dbt commands from your IDE or terminal  
 - Preview data, view lineage, and write SQL faster with autocomplete, and more! 
 
@@ -61,10 +61,10 @@ You can learn more through high-quality [dbt Learn courses and workshops](https:
 
 ## Installation
 
-It's easy to think of the <Constant name="fusion_engine" /> and the dbt extension as two different products, but they're a powerful combo that works together to unlock the full potential of dbt. Think of the <Constant name="fusion_engine" /> as exactly that — an engine. The dbt extension and VS Code are the chassis, and together they form a powerful vehicle for transforming your data. 
+It's easy to think of <Constant name="fusion_engine" /> and the dbt extension as two different products, but they're a powerful combo that works together to unlock the full potential of dbt. Think of <Constant name="fusion_engine" /> as exactly that — an engine. The dbt extension and VS Code are the chassis, and together they form a powerful vehicle for transforming your data. 
 
 :::info
-- You can install the <Constant name="fusion_engine" /> and use it standalone with the CLI.
+- You can install <Constant name="fusion_engine" /> and use it standalone with the CLI.
 - You *cannot* use the dbt extension without <Constant name="fusion" /> installed.
 - Use `dbt` as your default command. If you already have another dbt command-line tool installed (such as the <Constant name="platform_cli" /> or <Constant name="core" />), you can use `dbtf` as an unambiguous alias for <Constant name="fusion" />.
 :::
@@ -133,14 +133,14 @@ Now let's create your first dbt project powered by <Constant name="fusion" />!
 
 ## Explore with the dbt VS Code extension
 
-The dbt VS Code extension (available for VS Code and Cursor) compiles and builds your project with the <Constant name="fusion_engine" />, a powerful and blazing fast rebuild of dbt from the ground up. 
+The dbt VS Code extension (available for VS Code and Cursor) compiles and builds your project with <Constant name="fusion_engine" />, a powerful and blazing fast rebuild of dbt from the ground up. 
 
 Want to see <Constant name="fusion" /> in action? Check out the following video to get a sense of how it works:
 
 <div style={{ position: 'relative', maxWidth: '960px', margin: '2rem auto', overflow: 'hidden', borderRadius: '12px', height: '500px', boxShadow: 'var(--ifm-global-shadow-lw)' }}>
   <iframe
     src="https://app.storylane.io/share/a1rkqx0mbd7a" 
-    title="dbt Fusion + VS Code extension walkthrough"
+    title="dbt v2 + VS Code extension walkthrough"
     style={{ position: 'relative', top: '-48px', height: '900px', width: '100%', border: 0, paddingBottom:'calc(42.20% + 25px)',transform: 'scale(1)'}}
     allow="fullscreen; autoplay; encrypted-media"
   />
@@ -210,7 +210,7 @@ Testing, testing... is this mic on? It is and it's ready to execute your command
 <ConfettiTrigger>
 Try choosing some of them and see what they do 😎
 
-This is just the start. There is so much more available and so much more coming. Be sure to check out our resources for all the information about the <Constant name="fusion_engine" /> and the dbt VS Code extension!
+This is just the start. There is so much more available and so much more coming. Be sure to check out our resources for all the information about <Constant name="fusion_engine" /> and the dbt VS Code extension!
 
 </ConfettiTrigger>
 

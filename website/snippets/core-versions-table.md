@@ -1,6 +1,6 @@
 ### Latest releases
 
-| dbt Core | Initial release | Support level and end date |
+| dbt v1 | Initial release | Support level and end date |
 |:---:|:---:|:---:|
 | [**v2.0**](/docs/dbt-versions/dbt-upgrade/upgrading-to-v2) | Currently in [beta](/docs/dbt-versions/product-lifecycles) | TBD | - |
 | [**v1.12**](/docs/dbt-versions/dbt-upgrade/upgrading-to-v1.12) | Jul 16, 2026 | **Active support &mdash; July 15, 2027** |
@@ -18,8 +18,8 @@
 | [**v1.0**](/docs/dbt-versions/dbt-upgrade/Older%20versions/upgrading-to-v1.0) | Dec 3, 2021  | Deprecated ⛔️ |
 | **v0.X** ⛔️ | (Various dates) | Deprecated ⛔️ |
 
-All functionality in dbt Core since the v1.7 release is available in [<Constant name="dbt" /> release tracks](/docs/dbt-versions/dbt-release-tracks), which provide automated upgrades at a cadence appropriate for your team.
+All functionality in v1 since the v1.7 release is available in [<Constant name="dbt" /> release tracks](/docs/dbt-versions/dbt-release-tracks), which provide automated upgrades at a cadence appropriate for your team.
 
-<sup>1</sup> Release tracks are required for the Developer and Starter plans on <Constant name="dbt" />. Accounts using older dbt versions will be migrated to the **Latest** release track.
+<sup>1</sup> Release tracks are required for the Developer and Starter plans on <Constant name="dbt" />. Accounts using older dbt versions will be migrated to the **v1 Latest** release track.
 
-For customers of <Constant name="dbt" />: dbt Labs strongly recommends migrating environments on older and unsupported versions to [release tracks](/docs/dbt-versions/dbt-release-tracks) or a supported version. On <Constant name="legacy_deprecation_date" />, dbt Labs will deprecate dbt Core versions v1.3 through v1.7, removing them from availability in <Constant name="dbt_platform" />.
+For customers of <Constant name="dbt" />: dbt Labs strongly recommends migrating environments on older and unsupported versions to [release tracks](/docs/dbt-versions/dbt-release-tracks) or a supported version. On <Constant name="legacy_deprecation_date" />, dbt Labs will deprecate v1 versions v1.3 through v1.7, removing them from availability in <Constant name="dbt_platform" />.

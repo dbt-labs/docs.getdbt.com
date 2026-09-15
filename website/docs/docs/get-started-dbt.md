@@ -18,7 +18,7 @@ Begin your dbt journey by choosing how you want to develop:
 
 <Constant name="dbt" /> provides a fully managed environment to develop, run, and deploy dbt projects—with CI/CD, documentation hosting, and more. Learn more about [<Constant name="dbt" /> features](/docs/platform/about-platform/dbt-platform-features) and [start your free trial](https://www.getdbt.com/signup/) today. 
 
-The <Constant name="fusion_engine" /> adds managed execution and a unified development experience so you can focus on building rather than infrastructure.
+<Constant name="fusion_engine" /> adds managed execution and a unified development experience so you can focus on building rather than infrastructure.
 
 Choose your warehouse to get started with a quickstart:
 
@@ -85,8 +85,6 @@ Choose your warehouse to get started with a quickstart:
 When you install dbt into your Windows, macOS, or Linux environment, you get command-line tools and the VS Code extension that enable you to transform data using analytics engineering best practices.
 
 You can use self-hosted tools with or without a <Constant name="dbt_platform" /> account. With an account, the VS Code extension and <Constant name="platform_cli" /> sync with your platform project for CI/CD, documentation, and more. Without an account, you run dbt entirely on your own infrastructure.
-
-Develop with a self-hosted installation using the <Constant name="fusion_engine" /> or <Constant name="core" /> engine.
 
 <div className="grid--3-col">
 

@@ -46,19 +46,19 @@ To use the extension, you need the following:
 
     <Lightbox src="/img/docs/extension/install-dbt-fusion-engine.png" width="60%" title="Follow the prompt to install v2"/>
 
-7. Run the VS Code extension [upgrade tool](/docs/upgrade-to-dbt-extension) to check whether your project is ready for dbt v2 and fix any errors or deprecations.
+7. Run the VS Code extension [upgrade tool](/docs/upgrade-to-dbt-extension) to check whether your project is ready for v2 and fix any errors or deprecations.
 8. Optional: [Configure your local environment](/docs/configure-dbt-extension) to mirror your <Constant name="dbt_platform" /> environment and [set environment variables](/docs/configure-dbt-extension#configure-environment-variables) required by your project.
 
 :::note The language server ships with dbt v2
 
-The dbt language server is part of the dbt v2 binary rather than a separate download &mdash; the extension runs it through dbt v2. If you install v2 manually (for example, in an air-gapped environment) instead of letting the extension manage it, use the [version compatibility matrix](/docs/dbt-versions/dbt-version-compatibility) to pick a binary that matches your extension version.
+The dbt language server is part of the v2 binary rather than a separate download &mdash; the extension runs it through v2. If you install v2 manually (for example, in an air-gapped environment) instead of letting the extension manage it, use the [version compatibility matrix](/docs/dbt-versions/dbt-version-compatibility) to pick a binary that matches your extension version.
 
 :::
 
 You're ready to use the dbt extension. Next, you can:
 
 - Follow the [getting started](#getting-started) workflow to finish setup.
-- [Upgrade your project to dbt v2](/docs/upgrade-to-dbt-extension) if you're migrating from dbt v1.
+- [Upgrade your project to dbt v2](/docs/upgrade-to-dbt-extension) if you're migrating from v1.
 - [Sign in or register](/docs/sign-in-dbt-extension) for a <Constant name="dbt_platform" /> account to keep using advanced features after the 14-day trial.
 - Review the [limitations and unsupported features](/docs/dbt/supported-features#limitations).
 
@@ -78,15 +78,15 @@ After installation, follow the [getting started](#getting-started) workflow. You
 
 After v2 and the dbt VS Code extension are installed, the dbt logo appears in the sidebar. Click it to open the **Get started** panel.
 
-The **Get started** panel is a persistent setup companion available in VS Code and Cursor. It monitors your environment and shows the most important next action. As new dbt v2 releases ship or your project changes, the panel resurfaces relevant steps automatically. For more details refer to [Upgrade to dbt v2](/docs/upgrade-to-dbt-extension).
+The **Get started** panel is a persistent setup companion available in VS Code and Cursor. It monitors your environment and shows the most important next action. As new v2 releases ship or your project changes, the panel resurfaces relevant steps automatically. For more details refer to [Upgrade to dbt v2](/docs/upgrade-to-dbt-extension).
 
 <Lightbox src="/img/docs/extension/vsce-get-started.png" width="100%" title="The Get started panel in VS Code showing the setup steps, with the active step highlighted."/>
 
 The panel guides you through:
 
-1. **Install or update dbt v2**: Detects whether the dbt v2 binary is missing or outdated and installs or updates it with a single click.
+1. **Install or update dbt v2**: Detects whether the v2 binary is missing or outdated and installs or updates it with a single click.
 2. **Open project**: Checks for a `dbt_project.yml` file in your workspace to confirm a valid dbt project is open before proceeding.
-3. **Check dbt v2 compatibility**: Guides you through upgrading your project to dbt v2. You can choose between an agentic migration or manual CLI onboarding &mdash; refer to [Upgrade to dbt v2](/docs/upgrade-to-dbt-extension).
+3. **Check dbt v2 compatibility**: Guides you through upgrading your project to v2. You can choose between an agentic migration or manual CLI onboarding &mdash; refer to [Upgrade to dbt v2](/docs/upgrade-to-dbt-extension).
 4. **Register**: Confirms you've registered your email to use the extension beyond the 14-day trial period &mdash; refer to [Sign in or register](/docs/sign-in-dbt-extension).
 
 When all setup steps are complete, the panel shows a green **Extension setup complete** button.

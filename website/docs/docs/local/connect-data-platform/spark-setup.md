@@ -22,7 +22,7 @@ availability: local_free
 
 # Connect Apache Spark to <Constant name="fusion" /> <Lifecycle status="beta" />
 
-The <Constant name="fusion_engine" /> supports Apache Spark, enabling faster compilation and execution for your Spark-based dbt projects. Currently, <Constant name="fusion" /> only supports Apache Spark 3.0.
+<Constant name="fusion_engine" /> supports Apache Spark, enabling faster compilation and execution for your Spark-based dbt projects. Currently, <Constant name="fusion" /> only supports Apache Spark 3.0.
 
 ## <Constant name="fusion" /> and Spark
 
@@ -190,7 +190,7 @@ For detailed configuration options, refer to the [Spark configuration](/referenc
 
 # Connect Apache Spark to <Constant name="core" />
 
-<ProductCard text="Fusion compatible" url="/docs/local/connect-data-platform/spark-setup?version=2" /> connection also available.
+<ProductCard text="dbt v2 compatible" url="/docs/local/connect-data-platform/spark-setup?version=2" /> connection also available.
 
 <Snippet path="warehouse-setups-cloud-callout" />
 <Snippet path="dbt-databricks-for-databricks" />

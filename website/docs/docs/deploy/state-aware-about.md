@@ -28,7 +28,7 @@ import SaoDeprecated from '/snippets/_sao-deprecated.md';
 State-aware orchestration saves you compute costs and reduces runtime because when a job runs, it checks for new records and only builds the models that will change.
 
 
-<Lightbox src="/img/docs/deploy/sao.gif" title="Fusion powered state-aware orchestration" />
+<Lightbox src="/img/docs/deploy/sao.gif" title="dbt v2 powered state-aware orchestration" />
 
 We built <Constant name="dbt" />'s state-aware orchestration on these four core principles:
 
@@ -116,7 +116,7 @@ To enable Efficient testing:
 
 1. From the main menu, go to **Orchestration** > **Jobs**. 
 2. Select your deploy job. Go to your job settings and click **Edit**. 
-3. Under **Enable Fusion cost optimization features**, expand **More options**.
+3. Under **Enable dbt v2 cost optimization features**, expand **More options**.
 4. Select **Efficient testing**. This feature is disabled by default.
 5. Click **Save**.
 

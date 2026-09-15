@@ -30,10 +30,10 @@ When you install dbt, you get v2 by default. There's no separate feature set to 
 To use v2 in your project you must:
 - Use a supported adapter and authentication method:
   <FusionDWH /> 
-- Be able to run your project on the latest version of dbt Core v1.x with no deprecation warnings or errors.
+- Be able to run your project on the latest version of v1 with no deprecation warnings or errors.
 - Migrate your Semantic Layer configurations to the [latest YAML spec](/docs/build/latest-metrics-spec).
 
-## Parity with dbt Core v1.x
+## Parity with dbt v1
 
 dbt v2 supports nearly all of v1.x's capabilities today. Refer to [Limitations](#limitations) below for the small number of gaps that remain.
 
@@ -51,16 +51,16 @@ Most v2 features work right away, with no login required. A few more unlock once
 
 ## Limitations
 
-If your project uses any of the following, you can still use dbt v2, but full migration may not be possible yet:
+If your project uses any of the following, you can still use v2, but full migration may not be possible yet:
 
 - Models that rely on materialization features v2 doesn't fully support, or that need configurations it's still missing
-- Tooling that depends on v1.x's exact log output &mdash; v2's logging system is still unstable and incomplete
+- Tooling that depends on v1.x's exact log output
 - Workflows built around dbt platform features v2 doesn't yet support, like model-level notifications
 - Using the dbt VS Code extension in Cursor's Agent mode &mdash; lineage visualization only renders in Editor mode, so switch there if you need the full lineage tab
-
-import FusionFeatures from '/snippets/_fusion-missing-features.md';
-
-<FusionFeatures />
+- [Linting using SQLFluff](/docs/deploy/continuous-integration#to-configure-sqlfluff-linting) &mdash; You use SQLFluff for linting in CI or local development. SQLFluff is not natively compatible with <Constant name="fusion_engine"/> but we provide a [SQLFluff compatible high performance alternative](/reference/commands/lint?version=2.0) with <Constant name="fusion" />. Support varies by where you run it:
+    - **<Constant name="dbt_platform"/> CI jobs**: CI jobs on a <Constant name="fusion"/> version invoke [`dbt lint`](/reference/commands/lint?version=2.0) instead of SQLFluff, so results can differ. Refer to [Rule parity with SQLFluff](/reference/commands/lint?version=2.0#rule-parity-with-sqlfluff).
+    - **Studio IDE**: SQLFluff linting works, but uses the <Constant name="core"/> engine templater rather than <Constant name="fusion"/>. 
+    - **Local development**: You can run SQLFluff locally using the standalone <Constant name="core"/> engine templater as a workaround. A native <Constant name="fusion"/> linter is available with [`dbt lint` command](/reference/commands/lint?version=2.0)
 
 ## Package support
 
