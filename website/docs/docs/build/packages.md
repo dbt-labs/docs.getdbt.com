@@ -20,6 +20,8 @@ In dbt, libraries like these are called _packages_. dbt's packages are so powerf
 * building models and macros for a particular tool used in your data stack, for example:
   * Models to understand [Redshift](https://hub.getdbt.com/dbt-labs/redshift/latest/) privileges.
   * Macros to work with data loaded by [Stitch](https://hub.getdbt.com/dbt-labs/stitch_utils/latest/).
+* shaping unstructured data so AI agents can retrieve, trust, and cite it, for example:
+  * chunking, embedding, and semantically searching call transcripts or support tickets with the [dbt_context_engineering](https://hub.getdbt.com/dbt-labs/dbt_context_engineering/latest/) package. Refer to the [dbt_context_engineering blog](https://docs.getdbt.com/blog/dbt-context-engineering).
 
 dbt _packages_ are in fact standalone dbt projects, with models, macros, and other resources that tackle a specific problem area. As a dbt user, by adding a package to your project, all of the package's resources will become part of your own project. This means:
 * Models in the package will be materialized when you `dbt run`.
