@@ -78,7 +78,7 @@ VS Code extension features by static analysis configuration:
 | Preview CTE results | ❌ | ✅ | ✅ |
 | Go-to-definition/reference (columns) | ❌ | ❌ | ✅ |
 | Automatic refactor column names | ❌ | ❌ | ✅ |
-| Rich column lineage | ❌ | ❌ | ✅ |
+| Column-level lineage | ❌ | ❌ | ✅ |
 | Detect data type and function signature errors | ❌ | ❌ | ✅ |
 
 - dbt VS Code extension features in this table are available to all users &mdash; what you get depends on your static analysis mode, not your account.
