@@ -436,7 +436,9 @@ import FusionSupportedPackages from '/snippets/_fusion-supported-packages.md';
 
 ## Ship agent skills in a package
 
-A package can also ship [agent skills](/docs/dbt-ai/package-skills). Add a `skills` directory to the package, and every project that installs the package can install those skills for their coding agent provider(s) with `dbt deps`. Refer to [Installing agent skills from dbt packages](/docs/dbt-ai/package-skills) for the setup.
+A package can share more than models and macros &mdash; it can also ship [agent skills](/docs/dbt-ai/package-skills), which are reusable instructions that a coding agent reads from a `SKILL.md` file. An agent doesn't know that your staging models take a `stg_` prefix, so teams end up copying those conventions between repos, where they drift. Using a package makes agent skills a versioned dependency like everything else.
+
+Add a `skills` directory to the package, and every project that installs it gets those skills with `dbt deps`, as long as the installing project sets the `ai_provider` flag. Refer to [Installing agent skills from dbt packages](/docs/dbt-ai/package-skills) for the setup.
 
 </VersionBlock>
 
