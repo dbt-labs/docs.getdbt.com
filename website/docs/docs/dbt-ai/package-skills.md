@@ -23,7 +23,7 @@ Agent skills install locally where your coding agent runs. Skills install only w
 
 ## Set the ai_provider flag
 
-Set [`ai_provider` in the `flags`](/reference/global-configs/about-global-configs?version=2#available-flags) block of your root project:
+Set [`ai_provider` in the `flags`](/reference/global-configs/about-global-configs?version=2#available-flags) block of your root project. For example, if you use claude as your AI provider, you'd set it as such:
 
 <File name='dbt_project.yml'>
 
@@ -34,15 +34,28 @@ flags:
 
 </File>
 
-You can also list more than one provider:
+Each provider has a directory it reads skills from. Most providers share `.agents/skills`; claude reads skills via its own directory:
+
+| `ai_provider` value | Installs to |
+|---------------------|-------------|
+| `wizard` | `.agents/skills` |
+| `claude` | `.claude/skills` |
+| `openai` | `.agents/skills` |
+| `codex`  | `.agents/skills` |
+| `cursor` | `.agents/skills` |
+| `gemini` | `.agents/skills` |
+
+Values are case-insensitive, so `wizard`, `Wizard`, and `WIZARD` all resolve the same way.
+
+You can also list more than one provider, which installs the same skills into each provider's directory:
 
 <File name='dbt_project.yml'>
 
 ```yml
 flags:
   ai_provider:
-    - claude
     - wizard
+    - claude
 ```
 
 </File>
@@ -58,6 +71,7 @@ If your project or its packages ship skills and `ai_provider` isn't set, `dbt de
 
 ```text
 [warning] [AiProviderUnset (dbt1801)]: Found 3 agent skill(s) in this project and its packages, but 'ai_provider' is not set, so none were installed. Set it in dbt_project.yml (flags: {ai_provider: claude}) or via --ai-provider. Known providers: wizard, claude, openai, codex, cursor, gemini.
+```
 
 ## Ship skills in a package
 
@@ -124,8 +138,15 @@ Installing packages
 Installing demo_skills
  Installed demo_skills
  Installed 1 package
+Installing add-a-data-test (demo_skills) -> .agents/skills
+Installing naming-conventions (demo_skills) -> .agents/skills
+```
+
+With more than one provider set, dbt writes a copy per directory:
+
+```text
+Installing add-a-data-test (demo_skills) -> .agents/skills
 Installing add-a-data-test (demo_skills) -> .claude/skills
-Installing naming-conventions (demo_skills) -> .claude/skills
 ```
 
 dbt installs skills whenever it installs packages, so `dbt build`, `dbt run`, and `dbt parse` install them too. You don't have to run `dbt deps` yourself.
@@ -138,7 +159,7 @@ Re-running a command when nothing has changed writes nothing and reports nothing
 
 When dbt installs a skill, it records what it did in the installed copy's frontmatter, under the `metadata` field:
 
-<File name='.claude/skills/naming-conventions/SKILL.md'>
+<File name='.agents/skills/naming-conventions/SKILL.md'>
 
 ```markdown
 ---
@@ -204,8 +225,8 @@ dbt clean
 ```
 
 ```text
-  Removing add-a-data-test -> .claude/skills
-  Removing naming-conventions -> .claude/skills
+  Removing add-a-data-test -> .agents/skills
+  Removing naming-conventions -> .agents/skills
 ```
 
 ## Related docs
