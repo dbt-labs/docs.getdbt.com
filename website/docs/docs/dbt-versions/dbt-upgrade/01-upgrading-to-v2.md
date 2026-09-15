@@ -108,7 +108,7 @@ To use agent skills, you need both:
 
 Once both are in place, `dbt deps` installs those skills into the directory your agent reads from, such as `.claude/skills`, and `dbt clean` removes them. If you're missing either piece, `dbt deps` installs your packages as usual and skips the skills.
 
-For full usage info, refer to [Installing agent skills from dbt packages](/docs/dbt-ai/package-skills).
+For full usage info, including how to disable a skill you don't want, refer to [Installing agent skills from dbt packages](/docs/dbt-ai/package-skills).
 
 ### Changed functionality
 
