@@ -57,7 +57,7 @@ Only the root project's `flags` block is read. Setting `ai_provider` in a packag
 If your project or its packages ship skills and `ai_provider` isn't set, `dbt deps` succeeds and warns that it found skills but installed none. For example:
 
 ```text
-[warning] [AiProviderUnset (dbt1801)]: Found 3 agent skill(s) in this project and its packages, but 'ai_provider' is not set, so none were installed. Set it in dbt_project.yml (flags: {ai_provider: claude}), via --ai-provider, or with DBT_AI_PROVIDER. Known providers: wizard, claude, openai, codex, cursor, gemini.
+[warning] [AiProviderUnset (dbt1801)]: Found 3 agent skill(s) in this project and its packages, but 'ai_provider' is not set, so none were installed. Set it in dbt_project.yml (flags: {ai_provider: claude}) or via --ai-provider. Known providers: wizard, claude, openai, codex, cursor, gemini.
 
 ## Ship skills in a package
 
