@@ -5,6 +5,9 @@ sidebar_label: "compile"
 id: "compile"
 ---
 
+import InfoSchemaStaticAnalysis from '/snippets/_info-schema-static-analysis.md';
+import InfoSchemaIntro from '/snippets/_info-schema-intro.md';
+
 `dbt compile` generates executable SQL from source files for:
 
 <VersionBlock lastVersion="1.11">
@@ -33,7 +36,7 @@ Some common misconceptions:
 - `dbt compile` is _not_ a pre-requisite of `dbt run`, or other building commands. Those commands will handle compilation themselves.
 - If you just want dbt to read and validate your project code, without connecting to the data warehouse, use `dbt parse` instead.
 
-### Interactive compile
+## Interactive compile
 
 Starting in dbt v1.5, `compile` can be "interactive" in the CLI, by displaying the compiled code of a node or arbitrary dbt-SQL query:
 - `--select` a specific node _by name_
@@ -101,7 +104,7 @@ The command accesses the data platform to cache-related metadata, and to run int
 Compiled SQL for resources that use introspective queries may depend on metadata from your warehouse. Compilation may be incomplete or may differ depending on the state of that metadata.
 :::
 
-### Compiling tests with `--select`
+## Compiling tests with `--select`
 
 You can use `dbt compile` to compile tests, as long as your selector matches a test node in the project.
 
@@ -149,5 +152,23 @@ FULL_TEST_NODE_NAME
 
 For more selector patterns, refer to [Test selection examples](/reference/node-selection/test-selection-examples).
 
-### FAQs
+<VersionBlock firstVersion="2.0">
+
+## dbt Information Schema
+
+<InfoSchemaIntro />
+
+```shell
+dbt compile --generate-info-schema
+```
+
+<InfoSchemaStaticAnalysis /> When used without `--static-analysis strict`, dbt emits a warning.
+
+```shell
+dbt compile --generate-info-schema --static-analysis strict
+```
+
+</VersionBlock>
+
+## FAQs
 <FAQ path="Warehouse/db-connection-dbt-compile" />
