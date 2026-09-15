@@ -17,6 +17,7 @@ Column-level lineage (CLL) gives you insight into the provenance of your data pr
 ## Prerequisites
 
 You can use CLL in two places:
+
 - **[<Constant name="catalog" />](/docs/explore/explore-projects) in the <Constant name="dbt_platform" />**:  Requires an Enterprise or Enterprise+ plan with <Constant name="catalog" /> access.
 - **Locally with <Constant name="dbt" /> v2**: Requires [strict static analysis](/docs/build/about-static-analysis#configuring-static_analysis). Available in the [dbt VS Code extension](/docs/dbt-extension-features#rich-lineage-in-context), [dbt Docs v2](/docs/build/view-documentation#dbt-docs-v2), or from the command line.
 
@@ -30,15 +31,15 @@ There is no additional setup required for CLL in <Constant name="catalog" /> if 
 
 <Constant name="dbt" /> updates the lineage in <Constant name="catalog" /> after each run that's executed in the production or staging environment. At least one job in the production or staging environment must run `dbt docs generate`. Refer to [Generating metadata](/docs/explore/explore-projects#generate-metadata) for more details.
 
-<Lightbox src="/img/docs/collaborate/dbt-explorer/example-cll.png" width="40%" title="Example of the Columns tab and where to expand for the CLL"/>
+<Lightbox src="/img/docs/collaborate/dbt-explorer/example-cll.png" width="40%" title="Example of the Columns tab and where to open the CLL"/>
 
 ## Access column-level lineage locally
 
 When you develop with <Constant name="dbt" /> v2, you can see column-level lineage in these ways:
 
 - **dbt VS Code extension**: Right-click a filename or a model's SQL, then select **dbt: View Lineage** &rarr; **Show column lineage**. Refer to [Rich lineage in context](/docs/dbt-extension-features#rich-lineage-in-context) for the full workflow.
-- **dbt Docs v2**: Build the index with `dbt build --write-index --static-analysis strict`, then export it with `dbt docs generate --no-compile`. Plain `dbt docs generate` recompiles without strict, so column lineage is hidden. Refer to [dbt Docs v2](/docs/build/view-documentation#dbt-docs-v2).
-- **Command line or artifact**: Run `dbt show --info column_lineage`, or read the `column_lineage` Parquet artifact directly, to consume column lineage.
+- **dbt Docs v2**: Run `dbt compile --generate-info-schema --static-analysis strict`, then `dbt docs generate --no-compile`. `dbt docs generate` has no `--static-analysis` flag, so the strict compile must come first or the site won't include column lineage. Refer to [dbt Docs v2](/docs/build/view-documentation#dbt-docs-v2).
+- **Command line or artifact**: Run `dbt compile --generate-info-schema --static-analysis strict`, then `dbt show --info column_lineage`. You can find these files in `target/info_schema/` and read the `column_lineage` Parquet directly.
 
 ## Column evolution lens {#column-lens}
 
