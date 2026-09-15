@@ -196,5 +196,6 @@ Built-in skills are updated with each <Constant name="wizard"/> release. Custom 
 
 - [<Constant name="wizard"/> in Studio IDE](/docs/dbt-ai/wizard-ide)
 - [Use skills in the <Constant name="dbt_platform" />](/docs/dbt-ai/wizard-platform-skills)
+- [Installing agent skills from dbt packages](/docs/dbt-ai/package-skills)
 - [How <Constant name="wizard"/> works](/docs/dbt-ai/wizard-how-it-works)
 - [<Constant name="wizard"/> CLI overview](/docs/dbt-ai/wizard-cli)
