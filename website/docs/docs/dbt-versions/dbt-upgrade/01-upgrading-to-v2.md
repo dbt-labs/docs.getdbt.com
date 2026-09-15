@@ -95,7 +95,20 @@ For full usage, refer to [About dbt docs commands](/reference/commands/cmd-docs)
 
 v2 introduces the [`compute`](/reference/resource-configs/compute) config for unit tests. Set your unit tests with `compute: local` and dbt runs the test with DuckDB instead of sending it to your data platform, which takes the warehouse round trip out of your development loop.
 
-This config is opt-in. For details, refer to [Run unit tests locally](/docs/build/unit-tests#run-unit-tests-locally).
+This config is experimental and requires opt-in: set `DBT_ENGINE_EXPERIMENTAL_LOCAL_UNIT_TESTS=true` in the environment where dbt runs before you use `compute: local`. For details, refer to [Run unit tests locally](/docs/build/unit-tests#run-unit-tests-locally).
+
+### Agent skills
+
+v2 introduces [agent skills](/docs/dbt-ai/package-skills), which are reusable instructions your coding agent reads from a `SKILL.md` file. You and your team can ship skills from your own project or from a package, so everyone works from one set of conventions instead of copying files between repos.
+
+To use agent skills, you need to:
+
+- Include skills in your project's `skills/` directory, use a package that ships skills, or both
+- Set the `ai_provider` flag in your root project to tell dbt which which coding agent you use. Supported values are `wizard`, `claude`, `openai`, `codex`, `cursor`, or `gemini` (case-insensitive).
+
+Once both are in place, `dbt deps` installs those skills into the directory your agent reads from (such as `.claude/skills` or `.agents/skills`), and `dbt clean` removes them. If you're missing either piece, `dbt deps` installs your packages as usual and skips the skills.
+
+For full usage info, including how to disable a skill you don't want, refer to [Installing agent skills from dbt packages](/docs/dbt-ai/package-skills).
 
 ### Changed functionality
 
@@ -387,6 +400,37 @@ models:
 </File>
 
 This move is only necessary for fragments defined outside of the main YAML structure. For more information about this new key, see [anchors](/reference/resource-properties/anchors).
+
+#### Self-referential (recursive) YAML anchors are not supported {#self-referential-yaml}
+
+In v1, dbt could parse a YAML anchor that merges into an element of the same sequence it's defined on, creating a self-referential (cyclic) anchor. For example, anchoring a full `tables:` sequence and then merging that anchor into one of the sequence's own elements:
+
+```yml
+sources:
+  - name: catalogue
+    tables: &tables
+      - name: anchor_item
+        description: The first table in the sequence.
+      - <<: *tables
+        name: merged_item
+```
+
+This parsed successfully in v1 only because PyYAML (the YAML library <Constant name="core_v1" /> depends on) incidentally allows self-referential anchors, a side effect of Python's own support for cyclic data structures, not an intentional YAML feature. No other major YAML implementation allows this pattern.
+
+In v2, parsing this pattern hits a recursion limit and raises an error, so the entire properties file fails to parse. This is a deliberate limitation, not a bug. v2 does not plan to support self-referential anchors.
+
+To resolve this, remove the self-reference. Anchor only the parts of the document that don't merge back into themselves, for example, anchor a single table mapping instead of the whole sequence:
+
+```yml
+sources:
+  - name: catalogue
+    tables:
+      - &anchor_item_alias
+        name: anchor_item
+        description: The first table in the sequence.
+      - <<: *anchor_item_alias
+        name: merged_item
+```
 
 #### Algebraic operations in Jinja macros
 
