@@ -1,0 +1,3 @@
+- **Default (not set):** If the query returns `unique_id`, dbt keeps only rows whose `unique_id` is in the selection. If the query does not return `unique_id`, the check runs against the whole project. Useful for aggregate checks like "the project has at least one model".
+- **`none`:** The check always runs against the whole project, ignoring any selector. Use this to make whole-project behavior explicit.
+- **A column name or list of column names (for example, `[parent_unique_id, child_unique_id]`):** dbt keeps a row if the ID in any of the named columns is in the selection. Each named column must exist in the result, or the check raises an error. Use this for checks that return relationships between resources (edges).
