@@ -39,7 +39,7 @@ When you develop with <Constant name="dbt" /> v2, you can see column-level linea
 
 - **dbt VS Code extension**: Right-click a filename or a model's SQL, then select **dbt: View Lineage** &rarr; **Show column lineage**. Refer to [Rich lineage in context](/docs/dbt-extension-features#rich-lineage-in-context) for the full workflow.
 - **dbt Docs v2**: Run `dbt compile --generate-info-schema --static-analysis strict`, then `dbt docs generate --no-compile`. `dbt docs generate` has no `--static-analysis` flag, so the strict compile must come first or the site won't include column lineage. Refer to [dbt Docs v2](/docs/build/view-documentation#dbt-docs-v2).
-- **Command line or artifact**: Run `dbt compile --generate-info-schema --static-analysis strict`, then `dbt show --info column_lineage`. You can find these files in `target/info_schema/` and read the `column_lineage` Parquet directly.
+- **Command line or artifact**: Run `dbt compile --generate-info-schema --static-analysis strict`, then [`dbt show --info column_lineage`](/docs/build/dbt-information-schema#querying-with-dbt-show). You can find these files in `target/info_schema/` and read the [`dbt.column_lineage`](/reference/info-schema) Parquet directly.
 
 ## Column evolution lens {#column-lens}
 
