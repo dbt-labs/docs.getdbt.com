@@ -438,6 +438,7 @@ const sidebarSettings = {
             },
           ],
         },
+        "docs/dbt-ai/package-skills",
         {
           type: "category",
           label: "dbt Copilot",
@@ -1256,6 +1257,7 @@ const sidebarSettings = {
         "reference/project-configs/query-comment",
         "reference/project-configs/quoting",
         "reference/project-configs/require-dbt-version",
+        "reference/project-configs/skill-paths",
         "reference/project-configs/snapshot-paths",
         "reference/project-configs/seed-paths",
         "reference/project-configs/model-paths",

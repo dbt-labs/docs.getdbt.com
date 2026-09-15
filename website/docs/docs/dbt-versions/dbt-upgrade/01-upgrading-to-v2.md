@@ -103,7 +103,7 @@ In <Constant name="dbt" /> v2, [`dbt login`](/reference/commands/login?version=2
 
 Run [`dbt login status`](/reference/commands/login?version=2.0#dbt-login-status) to view your current authentication status.
 
-`dbt login` unlocks a broader set of features, such as advanced features in the [dbt VS Code extension](/docs/about-dbt-extension). For details, refer to [`dbt login`](/reference/commands/login?version=2.0).
+`dbt login` unlocks a broader set of features, and connects tools like the [dbt VS Code extension](/docs/about-dbt-extension) to your <Constant name="dbt_platform" /> account. For details, refer to [`dbt login`](/reference/commands/login?version=2.0).
 
 ### dbt Docs v2
 
@@ -118,6 +118,19 @@ For full usage, refer to [About dbt docs commands](/reference/commands/cmd-docs)
 v2 introduces the [`compute`](/reference/resource-configs/compute) config for unit tests. Set your unit tests with `compute: local` and dbt runs the test with DuckDB instead of sending it to your data platform, which takes the warehouse round trip out of your development loop.
 
 This config is experimental and requires opt-in: set `DBT_ENGINE_EXPERIMENTAL_LOCAL_UNIT_TESTS=true` in the environment where dbt runs before you use `compute: local`. For details, refer to [Run unit tests locally](/docs/build/unit-tests#run-unit-tests-locally).
+
+### Agent skills
+
+v2 introduces [agent skills](/docs/dbt-ai/package-skills), which are reusable instructions your coding agent reads from a `SKILL.md` file. You and your team can ship skills from your own project or from a package, so everyone works from one set of conventions instead of copying files between repos.
+
+To use agent skills, you need to:
+
+- Include skills in your project's `skills/` directory, use a package that ships skills, or both
+- Set the `ai_provider` flag in your root project to tell dbt which which coding agent you use. Supported values are `wizard`, `claude`, `openai`, `codex`, `cursor`, or `gemini` (case-insensitive).
+
+Once both are in place, `dbt deps` installs those skills into the directory your agent reads from (such as `.claude/skills` or `.agents/skills`), and `dbt clean` removes them. If you're missing either piece, `dbt deps` installs your packages as usual and skips the skills.
+
+For full usage info, including how to disable a skill you don't want, refer to [Installing agent skills from dbt packages](/docs/dbt-ai/package-skills).
 
 ### Changed functionality
 
