@@ -88,6 +88,13 @@ dbt compile --generate-info-schema
 dbt parse --generate-info-schema
 ```
 
+You can query the dbt Information Schema directly from the CLI using [`dbt show --info`](/reference/commands/show):
+
+```shell
+dbt show --info models
+dbt show --inline "select name from {{ info_schema('models') }} order by name"
+```
+
 For more information, refer to [dbt Information Schema](/docs/build/dbt-information-schema).
 
 ### `dbt login`
@@ -118,7 +125,7 @@ For more information, refer to [Checks](/docs/build/checks).
 
 v2 introduces the [`compute`](/reference/resource-configs/compute) config for unit tests. Set your unit tests with `compute: local` and dbt runs the test with DuckDB instead of sending it to your data platform, which takes the warehouse round trip out of your development loop.
 
-This config is opt-in. For details, refer to [Run unit tests locally](/docs/build/unit-tests#run-unit-tests-locally).
+This config is experimental and requires opt-in: set `DBT_ENGINE_EXPERIMENTAL_LOCAL_UNIT_TESTS=true` in the environment where dbt runs before you use `compute: local`. For details, refer to [Run unit tests locally](/docs/build/unit-tests#run-unit-tests-locally).
 
 ### Changed functionality
 

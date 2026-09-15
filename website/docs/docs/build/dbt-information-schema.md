@@ -39,18 +39,16 @@ dbt parse --generate-info-schema
 
 ### Overriding the output directory
 
-Use `--info-schema-dir` (env var: `DBT_INFO_SCHEMA_DIR`) to write the Information Schema to a custom directory. The versioned subdirectory (`v1/`) is still appended under whatever directory you set.
+Use `--info-schema-dir` to write the Information Schema to a custom directory. The versioned subdirectory (`v1/`) is still appended under whatever directory you set.
 
 ```shell
 dbt build --generate-info-schema --info-schema-dir /tmp/my_schema
 # writes to /tmp/my_schema/v1/
 ```
 
-Or with the environment variable:
+### Checking the schema version
 
-```shell
-DBT_INFO_SCHEMA_DIR=/tmp/my_schema dbt build --generate-info-schema
-```
+You can find the schema version in the versioned subdirectory name (for example, `target/info_schema/v1/`).
 
 ## Querying the Information Schema
 
