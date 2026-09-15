@@ -17,7 +17,7 @@ The dbt VS Code extension uses a dynamic Language Server Protocol (<Term id="lsp
 
 :::info Feature availability
 
-The extension's editor features are available to all users. Some capabilities depend on your project's [static analysis](/docs/build/about-static-analysis) mode, and a few read data from your <Constant name="dbt_platform" /> account.
+The extension's editor features are available to all users. Some features depend on your project's [static analysis](/docs/build/about-static-analysis) mode, and a few read data from your <Constant name="dbt_platform" /> account.
 
 See the [feature availability](#feature-availability) tables for the full list of features and what each needs.
 
