@@ -25,11 +25,7 @@ v2 is faster and stricter, but your existing project language and DAG semantics 
 
 import AboutFusion from '/snippets/_about-fusion.md';
 
-<AboutFusion />
-
-## Resources
-
-- [<Constant name="fusion_engine" /> changelog](https://github.com/dbt-labs/dbt/blob/main/CHANGELOG-fusion.md)
+<AboutFusion hideUpgradeLink />
 
 ## Install dbt
 
@@ -43,7 +39,7 @@ For full instructions, including Homebrew, winget, and additional options, refer
 
 ## What to know before upgrading
 
-If you have an older project that isn't ready to move to v2, or you need compatibility with existing tooling, packages, or workflows that haven't moved to v2 yet, you can stay on dbt v1.x, which remains fully supported. Over time, new capabilities will land in v2 only, so most people will eventually want to upgrade. To install or continue using v1.x, refer to [Install dbt v1.x](/docs/local/install-dbt?version=1.12).
+If you have an older project that isn't ready to move to v2, or you need compatibility with existing tooling, packages, or workflows that haven't moved to v2 yet, you can stay on dbt v1.x, which remains fully supported. Over time, new capabilities will land in v2 only, so most people will eventually want to upgrade. To install or continue using v1.x, refer to [Install dbt v1.x](/docs/local/install-dbt?version=1).
 
 This new major version is an opportunity to _strengthen the framework_ by removing deprecated functionality, rationalizing confusing behavior, and providing more rigorous validation on erroneous inputs. This means that there is some work involved in preparing an existing dbt project for v2.
 
@@ -75,27 +71,90 @@ The most popular `dbt-labs` packages (`dbt_utils`, `audit_helper`, `dbt_external
 
 ## New and changed features and functionality
 
-### `dbt login`
+<!-- Docs for ino schema, model freshness, checks, and agent skills will be added in separate PRs -->
 
-In <Constant name="dbt" /> v2, [`dbt login`](/reference/commands/login?version=2.0) enables browser-based authentication. It opens a browser window prompting you to sign in to your <Constant name="dbt_platform" /> account or create a free account.
 
-Run [`dbt login status`](/reference/commands/login?version=2.0#dbt-login-status) to view your current authentication status.
+### Strict validation
 
-`dbt login` unlocks a broader set of features, such as advanced features in the [dbt VS Code extension](/docs/about-dbt-extension). For details, refer to [`dbt login`](/reference/commands/login?version=2.0).
+In v1, misspelled configs, unexpected YAML keys, and invalid flags were silently ignored. In v2, dbt enforces a tightly-defined language specification at parse time and raises explicit errors for any violation, including unused config paths in `dbt_project.yml`, unknown CLI options, and duplicate config keys.
+
+### Faster Rust parser
+
+The v2 engine is a complete rewrite in Rust, delivering faster parse and compile times, especially on large projects. No configuration is needed; the performance improvement is automatic.
 
 ### dbt Docs v2
 
-v2 introduces [dbt Docs v2](/docs/build/view-documentation#dbt-docs-v2), a faster, statically hostable documentation experience that replaces the v1 static site. `dbt docs generate` compiles your project, produces the v2 Parquet artifacts, and exports a static site in a single command. `dbt docs serve` previews that site locally, and because the browser queries those artifacts directly with DuckDB-WASM (WebAssembly), you can also host the generated files on any static file host. You only need `--write-index` if you want to produce the artifacts from a separate `dbt compile` or `dbt build` command.
+v2 introduces [dbt Docs v2](/docs/build/view-documentation#dbt-docs-v2), a fast, modern self-hosted catalog experience built to help you understand and trust your production data. You get column-level lineage, Semantic Layer metadata, and a beautifully refreshed interface, all working smoothly on the largest projects. Under the hood, your metadata lives in efficient Parquet artifacts for faster load times and a catalog that scales as your project grows.
+
+`dbt docs generate` compiles your project, produces the v2 Parquet artifacts, and exports a static site in a single command. `dbt docs serve` previews that site locally. Because the browser queries those artifacts directly with DuckDB-WASM, you can also host the generated files on any static file host. Column-level lineage is visible when you build with `--static-analysis strict`.
 
 To hydrate catalog metadata (`catalog.json`) for <Constant name="catalog" /> without building the site, use the [`--write-catalog` flag](/reference/commands/cmd-docs#--write-catalog-flag) instead.
 
-For full usage, refer to [About dbt docs commands](/reference/commands/cmd-docs).
+For full usage, refer to [About dbt docs commands](/reference/commands/cmd-docs?version=2).
 
-### Local execution of unit tests <Lifecycle status="beta" />
+### Adapters built on ADBC drivers
 
-v2 introduces the [`compute`](/reference/resource-configs/compute) config for unit tests. Set your unit tests with `compute: local` and dbt runs the test with DuckDB instead of sending it to your data platform, which takes the warehouse round trip out of your development loop.
+All v2 adapters connect to data warehouses via the [Arrow Database Connectivity (ADBC)](https://arrow.apache.org/adbc/) standard instead of Python-based adapter libraries. As a result, dbt ships as a single self-contained binary with no Python runtime required.
 
-This config is experimental and requires opt-in: set `DBT_ENGINE_EXPERIMENTAL_LOCAL_UNIT_TESTS=true` in the environment where dbt runs before you use `compute: local`. For details, refer to [Run unit tests locally](/docs/build/unit-tests#run-unit-tests-locally).
+On first run, dbt downloads adapter drivers from the dbt Labs CDN and caches them locally. Subsequent runs work offline. For supported adapters, refer to [Supported data platforms](/docs/supported-data-platforms).
+
+### `dbt lint` <Lifecycle status="beta" />
+
+v2 introduces [`dbt lint`](/reference/commands/lint), a high-performance SQL linter built into dbt. It is SQLFluff-compatible: you keep your existing .sqlfluff config and rule codes (for example, `CP01`, `RF03`). Run `dbt lint` to lint all models, or `dbt lint [FILE]` to target a specific file. Use `--fix` to auto-apply fixable violations.
+
+### Static analysis
+
+Unlike dbt v1.x, which only rendered Jinja-templated SQL strings into queries, v2 adds a second phase: static analysis. After rendering, the engine produces and validates a logical plan for every query in your project &mdash; without executing anything against the warehouse. This enables dialect-aware validation, column-level lineage, and precise type checking. The [`static_analysis`](/reference/resource-configs/static-analysis) config controls how strictly this is applied.
+
+#### Baseline static analysis
+
+Baseline mode is the default in dbt v2. It parses each model's SQL at compile time to understand its structure without a warehouse connection, catching most SQL errors while providing a smooth migration experience. In baseline mode, all findings are warnings rather than errors, so your project continues running even when the compiler flags issues.
+
+Enable it explicitly per-model or project-wide:
+
+```yaml
+# dbt_project.yml
+models:
+  your_project:
+    +static_analysis: baseline
+```
+
+Or pass `--static-analysis baseline` on the CLI. For details, refer to [About static analysis](/docs/build/about-static-analysis).
+
+#### Strict static analysis
+
+Strict mode fully resolves column types and validates references across your entire project before execution begins; nothing runs until the project is proven valid. It is required to produce [column-level lineage](/docs/explore/column-level-lineage) and unlocks additional LSP features like column go-to-definition and type checking. Strict mode requires authentication through [`dbt login`](/reference/commands/login?version=2.0); unauthenticated runs fall back to baseline.
+
+Enable it per-model or project-wide:
+
+```yaml
+# dbt_project.yml
+models:
+  your_project:
+    +static_analysis: strict
+```
+
+Or pass `--static-analysis strict` on the CLI (or set `DBT_STATIC_ANALYSIS=strict`). For details, refer to [static_analysis](/reference/resource-configs/static-analysis).
+
+:::note Deprecated values
+`static_analysis: on` and `static_analysis: unsafe` are deprecated synonyms for `strict`. Update these to `strict`; they will be removed in a future release.
+:::
+
+### Column-level lineage
+
+v2 tracks which source columns flow into which output columns across your entire DAG. To generate column lineage, build or compile with `--static-analysis strict`:
+
+```shell
+dbt build --static-analysis strict
+```
+
+The lineage is then visible in [dbt-docs](/docs/build/view-documentation#dbt-docs-v2). No additional configuration is needed; the site detects the presence of the lineage artifact automatically. For details, refer to [Column-level lineage](/docs/explore/column-level-lineage).
+
+### Language server protocol (LSP)
+
+v2 includes a built-in language server that enables IDE features for dbt SQL and YAML files, including hover information, diagnostics, go-to-definition, and column-level completions. The standalone `dbt-lsp` package is no longer published; LSP is now bundled in the `dbt` binary and used automatically by the dbt VS Code extension and <Constant name="studio_ide" />.
+
+Features available depend on your `static_analysis` setting: `baseline` adds syntax error detection and CTE preview; `strict` adds column go-to-definition, column lineage, and type checking. For details, refer to [About dbt LSP](/docs/about-dbt-lsp).
 
 ### Agent skills
 
@@ -109,6 +168,30 @@ To use agent skills, you need to:
 Once both are in place, `dbt deps` installs those skills into the directory your agent reads from (such as `.claude/skills` or `.agents/skills`), and `dbt clean` removes them. If you're missing either piece, `dbt deps` installs your packages as usual and skips the skills.
 
 For full usage info, including how to disable a skill you don't want, refer to [Installing agent skills from dbt packages](/docs/dbt-ai/package-skills).
+
+### `dbt login`
+
+In <Constant name="dbt" /> v2, [`dbt login`](/reference/commands/login?version=2.0) enables browser-based authentication. It opens a browser window prompting you to sign in to your <Constant name="dbt_platform" /> account or create a free account.
+
+Run [`dbt login status`](/reference/commands/login?version=2.0#dbt-login-status) to view your current authentication status.
+
+### Experimental features
+
+#### Local execution of unit tests <Lifecycle status="beta" />
+
+v2 introduces the [`compute`](/reference/resource-configs/compute) config for unit tests. Set your unit tests with `compute: local` and dbt runs the test with DuckDB instead of sending it to your data platform, which takes the warehouse round trip out of your development loop.
+
+This config is experimental and requires opt-in: set `DBT_ENGINE_EXPERIMENTAL_LOCAL_UNIT_TESTS=true` in the environment where dbt runs before you use `compute: local`. For details, refer to [Run unit tests locally](/docs/build/unit-tests#run-unit-tests-locally).
+
+#### Multi-adapter invocations
+
+v2 supports running a single project against multiple adapters simultaneously as part of our cross-platform [dbt Mesh](/docs/mesh/cross-platform-mesh?version=2). This is experimental and requires opt-in:
+
+```bash
+export DBT_ENGINE_EXPERIMENTAL_MULTI_ADAPTER=true
+```
+
+Without this flag, dbt fails at parse time if any node in the project has an `adapter` config, even for runs that don't select that node. The gate reads config as written, not as selected, so the entire project needs the env var to parse once any model uses a non-default adapter.
 
 ### Changed functionality
 
@@ -461,7 +544,7 @@ return('xyzabc')
 
 {% endmacro %}
 ```
-### Accessing custom configurations in meta
+#### Accessing custom configurations in meta
 
 `config.get()` and `config.require()` don't return values from the `meta` dictionary. If you try to access a key that only exists in `meta`, dbt emits a warning:
 
@@ -487,26 +570,14 @@ To access custom configurations stored under meta, use the explicit methods:
 
 For more information, see [config.meta_get()](/reference/dbt-jinja-functions/config#configmeta_get) and [config.meta_require()](/reference/dbt-jinja-functions/config#configmeta_require).
 
-### v2 compiler
 
-#### Snowflake model functions
+## Quick hits
 
-v2 supports [Snowflake ML model functions](https://docs.snowflake.com/en/guides-overview-ml-functions), which allow you to call machine learning models directly in SQL. 
+- v2 supports exporting traces and logs in JSONL, Parquet, and OTLP formats. For details, refer to [dbt v2 telemetry and observability](/reference/telemetry-observability).
+- Data tests can now run in batches (`DBT_ENGINE_BATCH_TESTS=true`) and skip redundant cached results (`DBT_ENGINE_SKIP_REDUNDANT_TESTS=true`), reducing execution overhead on large projects.
+- The v2 compiler parses and type-checks [Snowflake model function](https://docs.snowflake.com/en/guides-overview-ml-functions) calls (`model!method(...)`), accepting any arguments and treating results as `VARIANT`. Cast the result to the type you need (for example, `model!predict(col)::float`).
 
-Because model function return types are flexible and defined by the underlying model, v2 uses simplified type checking:
-- **Arguments:** v2 accepts any arguments without strict type validation.
-- **Return type:** v2 treats all model function results as `VARIANT`.
-
-To use the result in your models, cast it to the expected type:
-
-```sql
-select 
-  my_model!predict(input_column)::float as prediction_score
-from {{ ref('my_table') }}
-```
-
-
-### Package support
+## Package support
 
 import FusionPackages from '/snippets/_fusion-supported-packages.md';
 
