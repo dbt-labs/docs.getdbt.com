@@ -141,7 +141,7 @@ Yes, a reused column, labeled as passthrough or rename, inherits its description
 
 <Expandable alt_header="Is column-level lineage also available in the development tab?" >
 
-If you develop in <Constant name="dbt_platform" />, column-level lineage is not in the <Constant name="studio_ide" />, but it is available in <Constant name="catalog" />. If you develop locally with <Constant name="fusion" />, the [dbt VS Code extension](/docs/dbt-extension-features#rich-lineage-in-context) shows column lineage in your editor.
+If you develop in <Constant name="dbt_platform" />, column-level lineage is not in the <Constant name="studio_ide" />, but it is available in <Constant name="catalog" /> for Enterprise and Enterprise+ plans. If you develop locally with <Constant name="fusion" />, the [dbt VS Code extension](/docs/dbt-extension-features#rich-lineage-in-context) shows column lineage in your editor.
 
 </Expandable>
 
