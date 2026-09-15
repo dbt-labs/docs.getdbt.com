@@ -22,6 +22,19 @@ For <Constant name="fusion_engine" /> updates, refer to the [v2 changelog](https
 
 ## September 2026
 
+- **New:** The models table in Catalog navigation now shows a column count for each model.
+- **Enhancement:** <Constant name="studio_ide" /> now detects missing development credentials at startup and shows a **Development Credentials Required** modal with a direct link to add credentials, instead of failing silently.
+- **Enhancement:** The **Upstream Sources** table on the model detail pages now sorts by freshness severity by default (Error first, Pass last). Click **Name** or **Status** to change the sort order. The **Status** column also no longer overflows on wide screens.
+- **Enhancement:** The model timing Gantt chart no longer limits groups to 2,000 rows. You can now see all models in the timing view for large runs.
+- **Enhancement:** Read-only users can now see their assigned analytics connection in project settings instead of **Not configured**.
+- **Enhancement:** Account admins now receive email when <Constant name="wizard" /> usage credits are exhausted, with separate notices for accounts that have no usage commitment and accounts that have used their full commitment.
+- **Enhancement:** When a GitLab host is unreachable, affected API endpoints now return HTTP 503 with the message "GitLab is unavailable, please try again." instead of an unclear failure. This applies when you create a repository or list GitLab groups.
+- **Fix:** Pinned models in the <Constant name="wizard" /> context card now display the model name (for example, `customers`) instead of the raw metadata unique ID (for example, `model.jaffle_shop.customers`).
+- **Fix:** Cross-account write attempts now return HTTP 403 Forbidden instead of a generic 500 Internal Server Error, so you get a clear rejection when the account doesn't match.
+- **Fix:** The error for a missing Azure DevOps account link now shows the correct message: "Missing Azure user; link your Azure DevOps account in your personal profile."
+- **Behavior change:** Creating accounts via `POST /api/v2/accounts/` is now blocked for service tokens, account-scoped personal access tokens (PATs), and OAuth access tokens. Service tokens and account-scoped user API tokens receive HTTP 400; OAuth access tokens receive HTTP 403, with explicit error messages in each case.
+- **Behavior change:** Cost Insights aggregates now include unit tests when you filter by the Test resource type. Previously, unit tests were silently excluded, causing lower-than-expected execution counts.
+
 - **New:** The **dbt State** page now includes a [**Lag tolerance recommendations**](/docs/deploy/dbt-state-interface#lag-tolerance-recommendations) section that identifies models that could safely tolerate more lag. For each model, it shows the current lag tolerance, the recommended value, the estimated percentage of build time you'd save, and projected build time savings over the next 30 days. You can search by model name or filter by project, and apply recommendations by updating the [`lag_tolerance`](/reference/resource-configs/lag-tolerance) config.
 - **New:** The Snowflake adapter now supports the `interactive_table` materialization in beta on dbt v2 (dbt-snowflake v1.13+), covering both static and dynamic (auto-refreshing) interactive tables. For more information, see [Interactive tables](/reference/resource-configs/snowflake-configs).
 - **Enhancement:** The [Analyst Read](/docs/platform/manage-access/enterprise-permissions#analyst-read) permission set is now available to all accounts without requiring a feature flag. You can assign it to groups so read-only users can view Catalog and project configuration such as connections, environments, and <Constant name="semantic_layer" /> settings.
