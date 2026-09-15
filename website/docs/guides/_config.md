@@ -11,6 +11,11 @@ categories:
       - dbt-platform-local-workflow
       - adapter-creation-v2
 
+  - title: Get started with dbt Wizard
+    guides:
+      - wizard-cli-qs
+      - wizard-platform-qs
+
   - title: Foundations
     guides:
       - terminal-guide
