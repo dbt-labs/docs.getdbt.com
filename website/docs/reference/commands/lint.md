@@ -7,7 +7,7 @@ availability:
   engine: v2
 ---
 
-# About dbt lint command <Lifecycle status="beta" />
+# About dbt lint command
 
 `dbt lint` is a fast SQL linter built into <Constant name="fusion_engine" />, available locally or in <Constant name="dbt_platform"/>. dbt lint requires v2 or later. If you're on an earlier version, [upgrade or install dbt](/docs/dbt-versions/dbt-upgrade/upgrading-to-v2?version=2).
 
