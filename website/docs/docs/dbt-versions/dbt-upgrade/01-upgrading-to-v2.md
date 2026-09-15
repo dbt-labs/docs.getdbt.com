@@ -43,7 +43,7 @@ For full instructions, including Homebrew, winget, and additional options, refer
 
 ## What to know before upgrading
 
-If you have an older project that isn't ready to move to v2, or you need compatibility with existing tooling, packages, or workflows that haven't moved to v2 yet, you can stay on dbt v1.x, which remains fully supported. Over time, new capabilities will land in v2 only, so most people will eventually want to upgrade. To install or continue using v1.x, refer to [Install dbt v1.x](/docs/local/install-dbt?version=1.12).
+If you have an older project that isn't ready to move to v2, or you need compatibility with existing tooling, packages, or workflows that haven't moved to v2 yet, you can stay on dbt v1.x, which remains fully supported. Over time, new capabilities will land in v2 only, so most people will eventually want to upgrade. To install or continue using v1.x, refer to [Install dbt v1.x](/docs/local/install-dbt?version=1).
 
 This new major version is an opportunity to _strengthen the framework_ by removing deprecated functionality, rationalizing confusing behavior, and providing more rigorous validation on erroneous inputs. This means that there is some work involved in preparing an existing dbt project for v2.
 
@@ -94,11 +94,11 @@ To hydrate catalog metadata (`catalog.json`) for <Constant name="catalog" /> wit
 
 For full usage, refer to [About dbt docs commands](/reference/commands/cmd-docs).
 
-### dbt-docs site
+### dbt Docs v2
 
-The new dbt-docs site visualizes your full project metadata (models, sources, tests, macros, and column-level lineage) directly from the Parquet artifacts in `target/index/`. Because the browser queries those artifacts locally via DuckDB-WASM, no server-side query engine is needed and the site can be hosted on any static file host.
+With dbt Docs v2, you get a fast, modern self-hosted catalog experience built to help you understand and trust your production data. You get column-level lineage, Semantic Layer metadata, and a beautifully refreshed interface, all working smoothly on the largest projects. Under the hood, your metadata lives in efficient Parquet artifacts so you get faster load times, a catalog that scales effortlessly as your project grows, and data that's easy to query directly.
 
-Column-level lineage is visible in dbt-docs when you build with `--static-analysis strict`. For details on generating and serving the site, refer to [About dbt docs commands](/reference/commands/cmd-docs).
+Column-level lineage is visible in dbt-docs when you build with `--static-analysis strict`. For details on generating and serving the site, refer to [About dbt docs commands](/reference/commands/cmd-docs?version=2).
 
 ### Adapters built on ADBC drivers
 
@@ -108,7 +108,7 @@ On first run, dbt downloads adapter drivers from the dbt Labs CDN and caches the
 
 ### `dbt lint`
 
-v2 introduces [`dbt lint`](/reference/commands/lint), a high-performance SQL linter built into dbt. It is SQLFluff-compatible: it reads your `.sqlfluff` config and uses the same rule codes (for example, `CP01`, `RF03`). Run `dbt lint` to lint all models, or `dbt lint [FILE]` to target a specific file. Use `--fix` to auto-apply fixable violations.
+v2 introduces [`dbt lint`](/reference/commands/lint), a high-performance SQL linter built into dbt. It is SQLFluff-compatible: you keep your existing .sqlfluff config and rule codes (for example, `CP01`, `RF03`). Run `dbt lint` to lint all models, or `dbt lint [FILE]` to target a specific file. Use `--fix` to auto-apply fixable violations.
 
 ### SQL syntax comprehension
 
@@ -174,7 +174,7 @@ This config is experimental and requires opt-in: set `DBT_ENGINE_EXPERIMENTAL_LO
 
 #### Multi-adapter invocations
 
-v2 supports running a single project against multiple adapters simultaneously. This is experimental and requires opt-in:
+v2 supports running a single project against multiple adapters simultaneously as part of our cross-platform [dbt Mesh](/docs/mesh/cross-platform-mesh?version=2). This is experimental and requires opt-in:
 
 ```bash
 export DBT_ENGINE_EXPERIMENTAL_MULTI_ADAPTER=true
