@@ -101,10 +101,10 @@ This config is experimental and requires opt-in: set `DBT_ENGINE_EXPERIMENTAL_LO
 
 v2 introduces [agent skills](/docs/dbt-ai/package-skills), which are reusable instructions your coding agent reads from a `SKILL.md` file. You and your team can ship skills from your own project or from a package, so everyone works from one set of conventions instead of copying files between repos.
 
-To use agent skills, you need both:
+To use agent skills, you need to:
 
-- **Skills to install**: A `skills/` directory in your project, a package that ships skills, or a mix of the two
-- **The `ai_provider` flag set:**  The flag tells dbt which coding agent you use. Set it in your root project to `wizard`, `claude`, `openai`, `codex`, `cursor`, or `gemini`. Values are case-insensitive.
+- Include skills in your project's `skills/` directory, use a package that ships skills, or both
+- Set the `ai_provider` flag in your root project to tell dbt which which coding agent you use. Supported values are `wizard`, `claude`, `openai`, `codex`, `cursor`, or `gemini` (case-insensitive).
 
 Once both are in place, `dbt deps` installs those skills into the directory your agent reads from (such as `.claude/skills` or `.agents/skills`), and `dbt clean` removes them. If you're missing either piece, `dbt deps` installs your packages as usual and skips the skills.
 
