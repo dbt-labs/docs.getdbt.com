@@ -33,7 +33,7 @@ If you're using the <Constant name="dbt_platform" /> (including the <Constant na
 
 ### Release channels
 
-<Constant name="fusion" /> is distributed through release channels during the preview period:
+<Constant name="fusion" /> is distributed through release channels:
 
 | Channel | Description | Stability |
 |---------|-------------|-----------|
