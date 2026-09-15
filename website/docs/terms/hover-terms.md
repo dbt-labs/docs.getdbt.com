@@ -151,6 +151,14 @@ sql-rendering:
   displayText: SQL rendering
   hoverSnippet: The dbt v1 engine takes SQL with Jinja, and renders all the macros present in the model to produce SQL that is ready to run against the database. For SQL parsing and compilation capabilities, use the dbt v2 engine instead to better understand your SQL structure.
 
+introspective-adapter-call:
+  displayText: introspective adapter call
+  hoverSnippet: A macro call, such as adapter.execute or adapter.get_columns_in_relation, that queries your data platform at run time. dbt lint never connects to a warehouse, so these calls have no real result at lint time.
+
+introspective-macro:
+  displayText: introspective macro
+  hoverSnippet: A macro that makes an introspective adapter call, such as adapter.execute or adapter.get_columns_in_relation, to query your data platform. dbt lint never connects to a warehouse, so these macros have no real result at lint time.
+
 selector-expression:
   displayText: selector expression
   hoverSnippet: An expression used with --select and --exclude to include or exclude specific nodes in your dbt project.
