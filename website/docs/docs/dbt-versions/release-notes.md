@@ -162,7 +162,7 @@ To simplify the docs experience, clarify availability, and make it easier to fin
 The following features are new or enhanced as part of dbt Labs announcements at [Snowflake Summit 2026](https://www.getdbt.com/events/snowflake-summit-2026) in San Francisco from June 1–4, 2026:
 
 - **Alpha**: [dbt Core 2.0](/docs/dbt-versions/dbt-upgrade/upgrading-to-v2) is now available in alpha!
-  - **New**: dbt Core 2.0 is the open-source Apache 2.0 foundation that <Constant name="fusion_engine" /> builds on, delivering a faster, Rust-based runtime. It ships as two distributions: `dbt-core` (OSS, Apache 2.0) and `dbt` (<Constant name="fusion" /> distribution, proprietary).
+  - **New**: dbt Core 2.0 is the open-source Apache 2.0 foundation that <Constant name="fusion_engine" /> builds on, delivering a faster, Rust-based runtime. It ships as two distributions: `dbt-oss` (OSS, Apache 2.0) and `dbt` (<Constant name="fusion" /> distribution, proprietary).
 - **Beta**: [`dbt lint`](/reference/commands/lint?version=2.0) is now available in beta!
   - **New**: `dbt lint` is a high-performance SQL linter built into the <Constant name="dbt_platform" />, available on projects running <Constant name="fusion_engine" />. It is SQLFluff-compatible; it reads your existing `.sqlfluff` config, uses the same rule codes, and respects `-- noqa` suppression comments. In benchmarks, it runs roughly 50× faster than single-threaded SQLFluff..
 - **Preview**: [dbt Docs v2](/docs/build/view-documentation#dbt-docs-v2) is now available in preview!
