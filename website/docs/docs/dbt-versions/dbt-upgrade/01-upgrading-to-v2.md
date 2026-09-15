@@ -27,10 +27,6 @@ import AboutFusion from '/snippets/_about-fusion.md';
 
 <AboutFusion hideUpgradeLink />
 
-## Resources
-
-- [<Constant name="fusion_engine" /> changelog](https://github.com/dbt-labs/dbt/blob/main/CHANGELOG-fusion.md)
-
 ## Install dbt
 
 Upgrading to v2 is an install step. Install dbt using `pip` to get <Constant name="fusion" /> for v2:
