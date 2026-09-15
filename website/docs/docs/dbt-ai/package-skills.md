@@ -36,6 +36,7 @@ flags:
 
 Each provider has a directory it reads skills from. Most providers share `.agents/skills`; claude reads skills via its own directory. Supported providers are:
 
+<SimpleTable>
 | `ai_provider` value | Installs to |
 |---------------------|-------------|
 | `wizard` | `.agents/skills` |
@@ -44,7 +45,7 @@ Each provider has a directory it reads skills from. Most providers share `.agent
 | `codex`  | `.agents/skills` |
 | `cursor` | `.agents/skills` |
 | `gemini` | `.agents/skills` |
-
+</SimpleTable>
 Values are case-insensitive, so `wizard`, `Wizard`, and `WIZARD` all resolve the same way.
 
 You can also list more than one provider, which installs the same skills into each provider's directory:
