@@ -91,7 +91,7 @@ To hydrate catalog metadata (`catalog.json`) for <Constant name="catalog" /> wit
 
 For full usage, refer to [About dbt docs commands](/reference/commands/cmd-docs).
 
-### Local execution of unit tests
+### Local execution of unit tests <Lifecycle status="beta" />
 
 v2 introduces the [`compute`](/reference/resource-configs/compute) config for unit tests. Set your unit tests with `compute: local` and dbt runs the test with DuckDB instead of sending it to your data platform, which takes the warehouse round trip out of your development loop.
 
