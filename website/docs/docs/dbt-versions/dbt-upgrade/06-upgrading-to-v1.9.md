@@ -76,7 +76,7 @@ To learn how to safely migrate existing snapshots, refer to [Snapshot configurat
 ### Some `properties` moved to `configs`
 
 The following `properties` were moved to `configs` in [<Constant name="dbt" /> v1.10](/docs/dbt-versions/dbt-upgrade/upgrading-to-v1.10) and backported to <Constant name="dbt" /> v1.9:
-- [`freshness`](/reference/resource-properties/freshness) for sources
+- [`freshness`](/reference/resource-configs/freshness) for sources
 - [`meta`](/reference/resource-configs/meta) under `columns`
 - [`tags`](/reference/resource-configs/tags) under `columns`
 

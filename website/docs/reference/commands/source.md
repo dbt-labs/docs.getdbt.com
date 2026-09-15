@@ -6,7 +6,9 @@ id: "source"
 
 The `dbt source` command provides subcommands that are useful when working with source data. This command provides one subcommand, `dbt source freshness`.
 
-
+:::tip <Constant name="core_v2" /> and later
+Starting <Constant name="core_v2" />, use [`dbt freshness`](/reference/commands/freshness) to check both sources and models with freshness configured in a single command. `dbt source freshness` still works and checks sources only.
+:::
 
 ### dbt source freshness
 

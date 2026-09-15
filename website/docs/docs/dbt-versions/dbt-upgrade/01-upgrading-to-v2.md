@@ -15,6 +15,7 @@ import FusionUpgradeSteps from '/snippets/_fusion-upgrade-steps.md';
 import FusionLifecycle from '/snippets/_fusion-lifecycle-callout.md';
 import FusionThreads from '/snippets/_fusion-threads.md';
 import FusionPartialParseCliFlags from '/snippets/_fusion-partial-parse-cli-flags.md';
+import SourceFreshnessLegacy from '/snippets/_source-freshness-legacy.md';
 
 v2 is the current era of dbt, delivered through <Constant name="fusion" />. When you install dbt, you get <Constant name="fusion" /> by default. This guide walks you through upgrading a v1 project to v2. 
 
@@ -74,6 +75,63 @@ v2 will not support any deprecated functionality (see the [Changes overview](/re
 The most popular `dbt-labs` packages (`dbt_utils`, `audit_helper`, `dbt_external_tables`, `dbt_project_evaluator`) are already compatible with v2. External packages published by organizations outside of dbt may use outdated code or incompatible features that fail to parse in v2. We're working with those package maintainers to make packages available for v2. Packages requiring an upgrade to a new release for v2 compatibility, will be documented in this upgrade guide.
 
 ## New and changed features and functionality
+
+### Model freshness and the `dbt freshness` command <Lifecycle status="beta" />
+
+v2 lets you declare freshness thresholds on models and sources, and adds a new [`dbt freshness`](/reference/commands/freshness) command to check both resources with freshness configured in a single invocation.
+
+#### Model freshness
+
+You can declare freshness thresholds directly on any model:
+
+```yaml
+models:
+  - name: stg_orders
+    config:
+      loaded_at_field: updated_at  # or loaded_at_query
+      freshness:
+        warn_after: {count: 24, period: hour}
+        error_after: {count: 48, period: hour}
+```
+
+How dbt measures freshness depends on the materialization:
+
+- `table`, `incremental`, `materialized_view`, `dynamic_table`: Uses `loaded_at_field` or `loaded_at_query` if set, otherwise falls back to adapter metadata (such as the table's last-modified time).
+- `view`, `external`: `loaded_at_field` or `loaded_at_query` is required &mdash; there is no adapter metadata fallback.
+- `ephemeral`: Not supported. Setting freshness on an ephemeral model raises a parse error.
+
+For full configuration options and materialization rules, refer to [freshness](/reference/resource-configs/freshness).
+
+#### `dbt freshness` command
+
+[`dbt freshness`](/reference/commands/freshness) evaluates how fresh your sources and models are against the thresholds you've configured, and reports a warning or error when data is stale. Results are written to `target/freshness.json`, which covers both sources and models. For the full schema, refer to [`freshness.json`](/reference/artifacts/freshness-json).
+
+<SourceFreshnessLegacy />
+
+#### Cross-project freshness
+
+In a [dbt Mesh](/docs/mesh/about-mesh) project, dbt stores a public model's freshness config so downstream projects can check upstream model freshness without running the upstream project.
+
+For example, `project_a` owns a public model `orders` with freshness configured:
+
+```yaml
+# project_a: models/orders.yml
+models:
+  - name: orders
+    access: public
+    config:
+      loaded_at_field: updated_at
+      freshness:
+        warn_after: {count: 24, period: hour}
+        error_after: {count: 48, period: hour}
+```
+
+`project_b` depends on `orders`. To check whether `orders` data is fresh, run `dbt freshness` from `project_b` &mdash; no need to re-run `project_a`:
+
+```bash
+# run from project_b
+dbt freshness --select project_a.orders
+```
 
 ### `dbt login`
 
@@ -196,11 +254,9 @@ Some historic CLI flags from v1 will no longer do anything in v2. If you pass th
 
 ##### CLI flags that need changes {#cli-flags-that-need-changes}
 
-The following deprecated flags require updates in your job definitions or scripts:
+The following deprecated flag requires updates in your job definitions or scripts:
 
 - **`--models` / `--model` / `-m`:** Use `--select` / `-s` instead (renamed in <Constant name="dbt" /> v0.21). dbt raises an error in v2 if you use the old flags. Do not pass `--models` as the value to `-s` (for example, `dbt run -s --models`); v1 treated that as a model name, but v2 requires a valid selector.
-
-- **`--resource-type` / `--exclude-resource-type`:** Use `--resource-types` / `--exclude-resource-types`. For more information, see [Resource type flags](/reference/global-configs/resource-type).
 
 <FusionPartialParseCliFlags />
 
