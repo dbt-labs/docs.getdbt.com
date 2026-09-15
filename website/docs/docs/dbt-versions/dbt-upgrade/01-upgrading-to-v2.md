@@ -99,23 +99,14 @@ This config is experimental and requires opt-in: set `DBT_ENGINE_EXPERIMENTAL_LO
 
 ### Agent skills
 
-v2 introduces [agent skills](/docs/dbt-ai/package-skills), reusable instructions your coding agent reads from a `SKILL.md` file. Your project and its packages can both ship them, so your team shares one set of conventions instead of copying files between repos.
+v2 introduces [agent skills](/docs/dbt-ai/package-skills), which are reusable instructions your coding agent reads from a `SKILL.md` file. You and your team can ship skills from your own project or from a package, so everyone works from one set of conventions instead of copying files between repos.
 
 To use agent skills, you need both:
 
-- Skills to install, which means a `skills/` directory in your project, a package that ships skills, or both
-- Set the `ai_provider` flag in your root project, which tells dbt which coding agent you use
+- **Skills to install**: A `skills/` directory in your project, a package that ships skills, or a mix of the two
+- **The `ai_provider` flag set:**  The flag tells dbt which coding agent you use. Set it in your root project.
 
-  <File name='dbt_project.yml'>
-  
-  ```yml
-  flags:
-    ai_provider: claude
-  ```
-  
-  </File>
-
-`dbt deps` then installs those skills into the directory your agent reads from, such as `.claude/skills`, and `dbt clean` removes them. If either piece is missing, `dbt deps` installs your packages as usual and writes no skills.
+Once both are in place, `dbt deps` installs those skills into the directory your agent reads from, such as `.claude/skills`, and `dbt clean` removes them. If you're missing either piece, `dbt deps` installs your packages as usual and skips the skills.
 
 For full usage info, refer to [Installing agent skills from dbt packages](/docs/dbt-ai/package-skills).
 
