@@ -75,7 +75,7 @@ As with the beauty of any open-source project, Iceberg support grew organically,
 
 dbt is more than about abstracting away the DDL to create and manage objects. It’s also about ensuring an opinionated approach to managing and optimizing your data. That remains true for our strategy around Iceberg Support.
 
-In our dbt-snowflake implementation, we have already started to [enforce best practices centered around how to manage the base location](https://docs.getdbt.com/reference/resource-configs/snowflake-configs#base-location) to ensure you don’t create technical debt accidentally, ensuring your Iceberg implementation scales over time. And we aren’t done yet.
+In our dbt-snowflake implementation, we have already started to [enforce best practices centered around how to manage the base location](https://docs.getdbt.com/reference/resource-configs/snowflake-configs#iceberg-table-format) to ensure you don’t create technical debt accidentally, ensuring your Iceberg implementation scales over time. And we aren’t done yet.
 
 That said, while we can create the models, there is a *lot* of initial work to get to that stage.  dbt developers must still consider the implementation, like how their external volume has been set up or where dbt can access the metadata. We have to make this better.
 

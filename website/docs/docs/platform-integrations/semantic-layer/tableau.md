@@ -18,7 +18,7 @@ The Tableau integration allows you to use worksheets to query the <Constant name
 - You have [configured the <Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/setup-sl) and are using dbt v1.6 or higher.
 - You must have [Tableau Desktop](https://www.tableau.com/en-gb/products/desktop) version 2021.1 and greater, Tableau Server, or [Tableau Cloud](https://www.tableau.com/products/cloud-bi).
 - Log in to Tableau Desktop (with Cloud or Server credentials) or Tableau Cloud. You can also use a licensed Tableau Server deployment.
-- You need your [<Constant name="dbt" /> host](/docs/use-dbt-semantic-layer/setup-sl#3-view-connection-detail), [Environment ID](/docs/use-dbt-semantic-layer/setup-sl#set-up-dbt-semantic-layer), and a [service token](/docs/dbt-apis/service-tokens) or a [personal access token](/docs/dbt-apis/user-tokens) to log in. This account should be set up with the <Constant name="semantic_layer" />.
+- You need your [<Constant name="dbt" /> host](/docs/use-dbt-semantic-layer/setup-sl#3-view-connection-detail), [Environment ID](/docs/use-dbt-semantic-layer/setup-sl#administer-the-semantic-layer-1), and a [service token](/docs/dbt-apis/service-tokens) or a [personal access token](/docs/dbt-apis/user-tokens) to log in. This account should be set up with the <Constant name="semantic_layer" />.
 - You must have a <Constant name="dbt" /> Starter or Enterprise-tier [account](https://www.getdbt.com/pricing). Suitable for both Multi-tenant and Single-tenant deployment.
 
 import SLCourses from '/snippets/_sl-course.md';

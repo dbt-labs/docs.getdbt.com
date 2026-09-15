@@ -45,7 +45,7 @@ The [<Constant name="dbt" /> scheduler](/docs/deploy/job-scheduler) executes CI 
 - [**Run slot treatment**](#run-slot-treatment) &mdash; CI runs don't consume a run slot.
 - [**SQL linting**](#sql-linting) &mdash; When enabled, linting runs on all SQL files in your project as a step before your CI job builds.
 
-### Concurrent CI checks <Lifecycle status="self_service,managed,managed_plus" />
+### Concurrent CI checks<Lifecycle status="self_service,managed,managed_plus" />
 
 When you collaborate on a dbt project with your team and open pull requests in the same dbt repository, the same CI job can run for each qualifying event.
 
@@ -56,20 +56,20 @@ You don't have to wait for someone else’s CI run to finish before your own che
 The following describes the conditions when CI checks are run concurrently and when they’re not:
 
 - CI runs with different PR numbers execute concurrently.
-- CI runs with the _same_ PR number and _different_ commit SHAs execute serially because they’re building into the same schema. <Constant name="dbt" /> will run the latest commit and cancel any older, stale commits. For details, refer to [Smart cancellation of stale builds](#smart-cancellation).
+- CI runs with the _same_ PR number and _different_ commit SHAs execute serially because they’re building into the same schema. <Constant name="dbt" /> will run the latest commit and cancel any older, stale commits. For details, refer to [Smart cancellation of stale builds](#smart-cancellation-of-stale-builds).
 - CI runs with the same PR number and same commit SHA can still execute concurrently when they come from different <Constant name="dbt" /> projects. This can happen when two CI jobs are set up in different <Constant name="dbt" /> projects that share the same dbt repository.
 
-### Smart cancellation of stale builds <Lifecycle status="self_service,managed,managed_plus" />
+### Smart cancellation of stale builds<Lifecycle status="self_service,managed,managed_plus" />
 
 When you push a new commit to a PR, <Constant name="dbt" /> enqueues a new CI run for the latest commit and cancels any CI run that is (now) stale and still in flight. This can happen when you’re pushing new commits while a CI build is still in process and not yet done. By canceling runs in a safe and deliberate way, <Constant name="dbt" /> helps improve productivity and reduce data platform spend on wasteful CI runs.
 
 <Lightbox src="/img/docs/dbt-platform/using-dbt-platform/example-smart-cancel-job.png" width="70%" title="Example of an automatically canceled run"/>
 
-### Run slot treatment <Lifecycle status="self_service,managed,managed_plus" />
+### Run slot treatment<Lifecycle status="self_service,managed,managed_plus" />
 
 CI runs don't consume run slots. This guarantees a CI check will never block a production run.
 
-### SQL linting <Lifecycle status="self_service,managed,managed_plus" />
+### SQL linting<Lifecycle status="self_service,managed,managed_plus" />
 
 Available on [<Constant name="dbt" /> release tracks](/docs/dbt-versions/dbt-release-tracks) and <Constant name="dbt" /> Starter or Enterprise-tier accounts.
 

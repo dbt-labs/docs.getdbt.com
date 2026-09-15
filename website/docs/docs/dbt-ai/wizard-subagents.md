@@ -87,7 +87,7 @@ You don't need to declare these &mdash; <Constant name="wizard"/> routes to them
 | Ask naturally	| Add useful tests for stg_customers. |
 | Ask for the agent by name	| Use test_writer to add tests to stg_customers. |
 
-To add your own roles, refer to [Custom agents](#custom-agents-cli).
+To add your own roles, refer to [Custom agents](#custom-agents).
 
 ## Manage subagents
 

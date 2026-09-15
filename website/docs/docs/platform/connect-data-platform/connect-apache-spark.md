@@ -12,7 +12,7 @@ availability:
 <Snippet path="dbt-databricks-for-databricks" />
 
 :::note
-See [Connect Databricks](#connect-databricks) for the Databricks version of this page.
+See [Connect Databricks](/docs/platform/connect-data-platform/connect-databricks) for the Databricks version of this page.
 :::
 
 <Constant name="dbt" /> supports connecting to an Apache Spark cluster using the HTTP method

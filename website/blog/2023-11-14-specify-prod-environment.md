@@ -30,7 +30,7 @@ You should [split your Jobs](#how) across Environments in dbt Cloud based on the
 
 Historically, dbt Cloud required a separate environment for _Development_, but was otherwise unopinionated in how you configured your account. This mostly just worked – as long as you didn't have anything more complex than a CI job mixed in with a couple of production jobs – because important constructs like deferral in CI and documentation were only ever tied to a single job.
 
-But as companies' dbt deployments have grown more complex, it doesn't make sense to assume that a single job is enough anymore. We need to exchange a job-oriented strategy for a more mature and scalable environment-centric view of the world. To support this, a recent change in dbt Cloud enables project administrators to [mark one of their environments as the Production environment](/docs/deploy/deploy-environments#set-as-production-environment-beta), just as has long been possible for the Development environment.
+But as companies' dbt deployments have grown more complex, it doesn't make sense to assume that a single job is enough anymore. We need to exchange a job-oriented strategy for a more mature and scalable environment-centric view of the world. To support this, a recent change in dbt Cloud enables project administrators to [mark one of their environments as the Production environment](/docs/deploy/deploy-environments#set-as-production-environment), just as has long been possible for the Development environment.
 
 Explicitly separating your Production workloads lets dbt Cloud be smarter with the metadata it creates, and is particularly important for two new features: dbt Explorer and the revised CI workflows.
 
@@ -66,7 +66,7 @@ For most projects, changing from a job-centric to environment-centric approach t
 
 1. Create a new dbt Cloud environment called Staging
 2. For each job that belongs to the Staging environment, edit the job and update its environment
-3. Tick the ["Mark as Production environment" box](/docs/deploy/deploy-environments#set-as-production-environment-beta) in your original environment's settings
+3. Tick the ["Mark as Production environment" box](/docs/deploy/deploy-environments#set-as-production-environment) in your original environment's settings
 
 ## Conclusion
 

@@ -341,7 +341,7 @@ profile-to-my-RS-target:
 
 To run certain macros with autocommit, load the profile with autocommit using the `--profile` flag. For more context, please refer to this [PR](https://github.com/dbt-labs/dbt-redshift/pull/475/files).
 
-### `datasharing` <Lifecycle status="beta" />
+### `datasharing`<Lifecycle status="beta" />
 
 <RedshiftDatasharing />
 

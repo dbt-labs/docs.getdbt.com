@@ -106,7 +106,7 @@ You will then be redirected to BigQuery and asked to approve the drive, cloud pl
 
 Select **Allow**. This redirects you back to the <Constant name="dbt_platform" />. You are now an authenticated BigQuery user and can begin accessing dbt development tools. 
 
-## Set up BigQuery Workload Identity Federation <Lifecycle status= "managed" /> 
+## Set up BigQuery Workload Identity Federation<Lifecycle status= "managed" /> 
 
 Workload Identity Federation (WIF) allows application workloads, running outside the <Constant name="dbt_platform" />, to act as a service account without the need to manage service accounts or other keys for deployment environments. The following instructions will enable you to authenticate your BigQuery connection in the <Constant name="dbt_platform" /> using WIF. 
 Currently, Microsoft Entra ID is the only supported identity provider (IdP). If you need additional IdP support, please contact your account team.
@@ -282,5 +282,5 @@ For more details, see Google's documentation on [controlling third-party app acc
 
 If the connection still fails after your administrator trusts the OAuth client in Google Workspace, ask your GCP project administrator to check whether a Google Cloud [Organization Policy](https://cloud.google.com/resource-manager/docs/organization-policy/overview) restricts external OAuth clients. The relevant constraint is `constraints/iam.allowedExternalOAuthClients`.
 
-If neither of these steps resolves the issue, contact [dbt Support](https://docs.getdbt.com/community/resources/getting-help#dbt-cloud-support) with the approximate time of the failed connection attempt and the email address you used to authenticate with Google.
+If neither of these steps resolves the issue, contact [dbt Support](https://docs.getdbt.com/community/resources/getting-help#dbt-support) with the approximate time of the failed connection attempt and the email address you used to authenticate with Google.
 </Expandable>

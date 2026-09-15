@@ -32,7 +32,7 @@ To use the EXTRACT function, you’ll simply specify the date part you want extr
 extract(<date_part> from <date/time field>)
 ```
 
-Depending on the data warehouse you use, the value returned from an EXTRACT function is often a numeric value or the same date type as the input `<date/time field>`. Read the [documentation for your data warehouse](#data-warehouse-support-for-extract-function) to better understand EXTRACT outputs.
+Depending on the data warehouse you use, the value returned from an EXTRACT function is often a numeric value or the same date type as the input `<date/time field>`. Read the [documentation for your data warehouse](#data-warehouse-support-for-the-extract-function) to better understand EXTRACT outputs.
 
 > **Note:**
 > You may additionally see a comma used in place of the ‘from’ in the EXTRACT function, like `extract(<date_part>, <date/time field>)`. We feel that using that ‘from’ in the function makes it a little more readable.

@@ -13,7 +13,7 @@ The following patterns commonly cause unexpected rebuilds:
 
 - [Views with `select *`](#views-with-select)
 - [Non-deterministic Jinja templating](#non-deterministic-jinja-templating)
-- [Models with external sources in BigQuery](#models-with-external-sources-in-bigquery)
+- [Models with external sources in BigQuery](#models-with-external-sources-on-bigquery)
 - [Models with custom materializations](#models-with-custom-materializations)
 
 ## Views with `select *` {#views-with-select}

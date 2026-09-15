@@ -214,7 +214,7 @@ Open a new tab and follow these steps for account setup, sample data, and your d
 In this section, you will set up a <Constant name="dbt" /> managed repository and initialize your dbt project to start developing.
 
 ### Set up a dbt managed repository 
-If you used Snowflake or Databricks Partner Connect, you can skip to [initializing your dbt project](#initialize-your-dbt-project-and-start-developing). Partner Connect provides a [managed repository](/docs/platform/git/managed-repository). Otherwise, you will need to create your repository connection. 
+If you used Snowflake or Databricks Partner Connect, you can skip to [initializing your dbt project](#initialize-your-dbt-project). Partner Connect provides a [managed repository](/docs/platform/git/managed-repository). Otherwise, you will need to create your repository connection. 
 
 <Snippet path="tutorial-managed-repo" />
 

@@ -37,7 +37,7 @@ In the <Constant name="dbt_platform" />, you can natively connect to your data p
 ### Tips
 - Manage [dbt versions](/docs/dbt-versions/upgrade-dbt-platform-version) and ensure team collaboration with <Constant name="dbt_platform" />'s one-click feature, eliminating the need for manual updates and version discrepancies. Select a [release track](/docs/dbt-versions/dbt-release-tracks) for ongoing updates, to always stay up to date with fixes and (optionally) get early access to new functionality for your dbt project.
 - The <Constant name="dbt_platform" /> supports a whole host of [cloud providers](/docs/platform/connect-data-platform/about-connections), including Snowflake, Databricks, BigQuery, Fabric, and Redshift (to name a few).
-- Use [Extended Attributes](/docs/deploy/deploy-environments#extended-attributes) to set a flexible [profiles.yml](/docs/local/profiles.yml) snippet in your <Constant name="dbt_platform" /> environment settings. It gives you more control over environments (both deployment and development) and extends how the <Constant name="dbt_platform" /> connects to the data platform within a given environment.
+- Use [Extended Attributes](/docs/dbt-platform-environments#extended-attributes) to set a flexible [profiles.yml](/docs/local/profiles.yml) snippet in your <Constant name="dbt_platform" /> environment settings. It gives you more control over environments (both deployment and development) and extends how the <Constant name="dbt_platform" /> connects to the data platform within a given environment.
   - For example, if you have a field in your `profiles.yml` that you’d like to add to the <Constant name="dbt_platform" /> adapter user interface, you can use Extended Attributes to set it.
 
 ### Caveats
@@ -65,7 +65,7 @@ A web-based interface for building, testing, running, and version-controlling db
   - Create feature branches from the branch configured in the development environment.
   - View saved but not-committed code changes directly in the <Constant name="studio_ide" />.
 - [Format or lint](/docs/platform/studio-ide/lint-format) your code with `sqlfluff` or `sqlfmt`. This includes support for adding your custom linting rules.
-- Allows users to natively [defer to production](/docs/platform/about-defer#defer-in-dbt-cli) metadata directly in their development workflows, reducing the number of objects.
+- Allows users to natively [defer to production](/docs/platform/about-defer#defer-in-dbt-platform-cli) metadata directly in their development workflows, reducing the number of objects.
 - Support running multiple dbt commands at the same time through [safe parallel execution](/reference/dbt-commands#parallel-execution), a [feature](/docs/platform/about-platform/dbt-platform-features) available in <Constant name="dbt_platform" />'s infrastructure. In contrast, `dbt-core` *doesn't support* safe parallel execution for multiple invocations in the same process.
 
 The <Constant name="studio_ide" /> provides a simplified interface that's accessible to all users, regardless of their technical background. However, there are some capabilities that are intentionally not available in the <Constant name="studio_ide" /> due to its focus on simplicity and ease of use:
@@ -89,7 +89,7 @@ When moving from self-hosted dbt to the <Constant name="dbt_platform" />, make s
 **Key features**
 
 - Allows users to run dbt commands against their <Constant name="dbt_platform" /> development environment from their local command line with minimal configuration.
-- Allows users to natively [defer to production](/docs/platform/about-defer#defer-in-dbt-cli) metadata directly in their development workflows, reducing the number of objects.
+- Allows users to natively [defer to production](/docs/platform/about-defer#defer-in-dbt-platform-cli) metadata directly in their development workflows, reducing the number of objects.
 - Support running multiple dbt commands at the same time through [safe parallel execution](/reference/dbt-commands#parallel-execution), a [feature](/docs/platform/about-platform/dbt-platform-features) available in <Constant name="dbt_platform" />'s infrastructure. In contrast, `dbt-core` *doesn't support* safe parallel execution for multiple invocations in the same process.
 - Able to use Visual Studio (VS) Code extensions
 

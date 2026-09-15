@@ -38,7 +38,7 @@ The `dbt-databricks` adapter provides better defaults than `dbt-spark` does. The
 
 With dbt-spark, however, the default for `incremental_strategy` is `append`. If you want to continue using `incremental_strategy=append`, you must set this config specifically on your incremental models. If you already specified `incremental_strategy=merge` on your incremental models, you don't need to change anything when moving to dbt-databricks; but, you can keep your models clean (tidy) by removing the config since it's redundant. Read [About incremental_strategy](/docs/build/incremental-strategy) to learn more.
 
-For more information on defaults, see [Caveats](/docs/local/connect-data-platform/databricks-setup#caveats).
+For more information on defaults, see [Caveats](/docs/local/connect-data-platform/databricks-setup#supported-functionality).
 
 ### Pure Python
 

@@ -4,7 +4,7 @@ description: "Configure Microsoft Fabric Data Warehouse settings in dbt, includi
 id: "fabric-configs"
 ---
 
-This page describes configuration options specific to the `dbt-fabric` adapter for Microsoft Fabric Data Warehouse. It outlines supported materializations, incremental strategies (including [merge](#merge) and [microbatch](#microbatch)), cross-warehouse references, warehouse snapshots, and profile setup.
+This page describes configuration options specific to the `dbt-fabric` adapter for Microsoft Fabric Data Warehouse. It outlines supported materializations, incremental strategies (including [merge](#merge-default) and [microbatch](#microbatch)), cross-warehouse references, warehouse snapshots, and profile setup.
 
 ## Materializations
 

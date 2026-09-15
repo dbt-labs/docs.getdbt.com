@@ -9,7 +9,7 @@ The `invocation_id` outputs a UUID generated for this dbt command. This value is
 
 If available, the `invocation_id` is:
 - available in the compilation context of [`query-comment`](/reference/project-configs/query-comment)
-- included in the `info` dictionary in dbt [events and logs](/reference/events-logging#info)
+- included in the `info` dictionary in dbt [events and logs](/reference/events-logging#info-fields)
 - included in the `metadata` dictionary in [dbt artifacts](/reference/artifacts/dbt-artifacts#common-metadata)
 - included as a label in all BigQuery jobs that dbt originates
 

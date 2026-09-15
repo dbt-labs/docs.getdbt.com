@@ -184,7 +184,7 @@ snapshots:
 
 Configure multiple unique keys for an incremental model as a string representing a single column or a list of single-quoted column names that can be used together, for example, `['col1', 'col2', …]`. 
 
-Columns must not contain null values, otherwise the incremental model will fail to match rows and generate duplicate rows. Refer to [Defining a unique key](/docs/build/incremental-models#defining-a-unique-key-optional) for more information.
+Columns must not contain null values, otherwise the incremental model will fail to match rows and generate duplicate rows. Refer to [Defining a unique key](/docs/build/incremental-models#defining-a-unique-key) for more information.
 
 <File name='models/my_incremental_model.sql'>
 

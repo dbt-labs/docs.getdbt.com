@@ -34,7 +34,7 @@ As part of your initial <Constant name="dbt" /> setup, you should already have D
 
 ## Create a new CI environment
 
-See [Create a new environment](/docs/dbt-platform-environments#create-a-deployment-environment). The environment should be called **CI**. Just like your existing Production environment, it will be a Deployment-type environment.
+See [Create a new environment](/docs/dbt-platform-environments#deployment-environment). The environment should be called **CI**. Just like your existing Production environment, it will be a Deployment-type environment.
 
 When setting a Schema in the **Deployment Credentials** area, remember that <Constant name="dbt" /> will automatically generate a custom schema name for each PR to ensure that they don't interfere with your deployed models. This means you can safely set the same Schema name as your Production job.
 
@@ -51,7 +51,7 @@ In the Execution Settings, your command will be preset to `dbt build --select st
 - [`dbt build`](/reference/commands/build) runs all nodes (seeds, models, snapshots, tests) at once in DAG order. If something fails, nodes that depend on it will be skipped.
 - The [`state:modified+` selector](/reference/node-selection/methods#state) means that only modified nodes and their children will be run ("Slim CI"). In addition to [not wasting time](https://discourse.getdbt.com/t/how-we-sped-up-our-ci-runs-by-10x-using-slim-ci/2603) building and testing nodes that weren't changed in the first place, this significantly reduces compute costs.
 
-To be able to find modified nodes, dbt needs to have something to compare against. <Constant name="dbt" /> uses the last successful run of any job in your Production environment as its [comparison state](/reference/node-selection/syntax#about-node-selection). As long as you identified your Production environment in Step 2, you won't need to touch this. If you didn't, pick the right environment from the dropdown.
+To be able to find modified nodes, dbt needs to have something to compare against. <Constant name="dbt" /> uses the last successful run of any job in your Production environment as its [comparison state](/reference/node-selection/syntax). As long as you identified your Production environment in Step 2, you won't need to touch this. If you didn't, pick the right environment from the dropdown.
 
 If you point CI at a non-production environment (staging, QA, UAT, or similar) that runs many jobs, comparison manifests can change unpredictably, or lag behind merges to your integration branch (for example, `develop`).
 
@@ -345,7 +345,7 @@ See [Custom branch behavior](/docs/dbt-platform-environments#custom-branch-behav
 
 ### 3. Create a new QA environment
 
-See [Create a new environment](/docs/dbt-platform-environments#create-a-deployment-environment). The environment should be called **QA**. Just like your existing Production and CI environments, it will be a Deployment-type environment.
+See [Create a new environment](/docs/dbt-platform-environments#deployment-environment). The environment should be called **QA**. Just like your existing Production and CI environments, it will be a Deployment-type environment.
 
 Set its branch to `qa` as well.
 
@@ -362,7 +362,7 @@ To be able to find modified nodes, dbt needs to have something to compare agains
 
 ### Optional: also add a compile-only job
 
-<Constant name="dbt" /> uses the last successful run of any job in that environment as its [comparison state](/reference/node-selection/syntax#about-node-selection). If you have a lot of PRs in flight, the comparison state could switch around regularly.
+<Constant name="dbt" /> uses the last successful run of any job in that environment as its [comparison state](/reference/node-selection/syntax). If you have a lot of PRs in flight, the comparison state could switch around regularly.
 
 Adding a regularly-scheduled job inside of the QA environment whose only command is `dbt compile` can regenerate a more stable manifest for comparison purposes.
 

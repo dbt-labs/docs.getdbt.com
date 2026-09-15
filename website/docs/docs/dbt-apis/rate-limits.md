@@ -37,7 +37,7 @@ For SCIM scope, throttling responses, and identity provider behavior, see [SCIM 
 
 The most common way teams hit the Discovery API limit is to request very small pages in GraphQL (for example, `first: 1`) repeatedly. Each page is another request, so small pages require far more calls than fetching the same data in larger chunks. Use the largest page size that still works for you, up to what that query allows (often up to `500`). Full examples, including how to page with `after`, are in [Query the Discovery API](/docs/dbt-apis/discovery-querying).
 
-## SCIM and IdP provisioning <Lifecycle status="managed,managed_plus" />
+## SCIM and IdP provisioning<Lifecycle status="managed,managed_plus" />
 
 For SCIM, the application rate limit of 20 requests every 5 seconds per account (Enterprise and Enterprise+) applies only to creating a user (`POST /api/v3/accounts/{account_id}/scim/v2/Users`) and replacing a user (`PUT /api/v3/accounts/{account_id}/scim/v2/Users/{user_id}`). dbt counts requests in a fixed 5-second window.
 

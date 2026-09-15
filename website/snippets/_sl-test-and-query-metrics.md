@@ -1,14 +1,14 @@
 To work with metrics in dbt, you have several tools to validate or run commands. Here's how you can test and query metrics depending on your setup:
 
 - [**<Constant name="studio_ide" /> users**](#studio-ide-users) &mdash; Run [MetricFlow commands](/docs/build/metricflow-commands#metricflow-commands) directly in the [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio) to query/preview metrics. View metrics visually in the **Lineage** tab.
-- [**<Constant name="platform_cli" /> users**](#dbt-cli-users) &mdash; The [<Constant name="platform_cli" />](/docs/platform/dbt-cli-installation) enables you to run [MetricFlow commands](/docs/build/metricflow-commands#metricflow-commands) to query and preview metrics directly in your command line interface.
+- [**<Constant name="platform_cli" /> users**](#-users) &mdash; The [<Constant name="platform_cli" />](/docs/platform/dbt-cli-installation) enables you to run [MetricFlow commands](/docs/build/metricflow-commands#metricflow-commands) to query and preview metrics directly in your command line interface.
 - **<Constant name="core" /> users** &mdash; Use the MetricFlow CLI for command execution. While this guide focuses on <Constant name="dbt" /> users, <Constant name="core" /> users can find detailed MetricFlow CLI setup instructions in the [MetricFlow commands](/docs/build/metricflow-commands#metricflow-commands) page. Note that to use the <Constant name="semantic_layer" />, you need to have a [Starter or Enterprise-tier account](https://www.getdbt.com/).
 
 Alternatively, you can run commands with SQL client tools like DataGrip, DBeaver, or RazorSQL.
 
 ### Studio IDE users
 
-You can use the `dbt sl` prefix before the command name to execute them in <Constant name="dbt" />. For example, to list all metrics, run `dbt sl list metrics`. For a complete list of the MetricFlow commands available in the <Constant name="studio_ide" />, refer to the [MetricFlow commands](/docs/build/metricflow-commands#metricflow-commandss) page.
+You can use the `dbt sl` prefix before the command name to execute them in <Constant name="dbt" />. For example, to list all metrics, run `dbt sl list metrics`. For a complete list of the MetricFlow commands available in the <Constant name="studio_ide" />, refer to the [MetricFlow commands](/docs/build/metricflow-commands#metricflow-commands) page.
 
 The <Constant name="studio_ide" /> **Status button** (located in the bottom right of the editor) displays an **Error** status if there's an error in your metric or semantic model definition. You can click the button to see the specific issue and resolve it.
 

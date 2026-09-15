@@ -185,7 +185,7 @@ DBT_PROD_ENV_ID=12345
 </TabItem>
 <TabItem value="full" label="All variables">
 
-A complete reference of all available variables. Most setups only need a subset of these &mdash; refer to the [API and SQL tool settings](#api-and-sql-tool-settings) and [dbt CLI settings](#dbt-cli-settings) tables for details on each variable.
+A complete reference of all available variables. Most setups only need a subset of these &mdash; refer to the [API and SQL tool settings](#api-and-sql-tool-settings) and [dbt CLI settings](#cli-only) tables for details on each variable.
 
 ```code
 DBT_HOST=cloud.getdbt.com
@@ -371,7 +371,7 @@ All tools are available by default. Set any of these to `true` to turn off a too
 | `DISABLE_DISCOVERY` | `false` | Disable dbt Discovery API MCP tools. |
 | `DISABLE_ADMIN_API` | `false` | Disable dbt Administrative API MCP tools. |
 | `DISABLE_SQL` | `true` | SQL MCP tools are disabled by default. Set to `false` to enable. |
-| `DISABLE_DBT_CODEGEN` | `true` | [dbt codegen MCP tools](/docs/dbt-ai/mcp-available-tools#codegen-tools) are disabled by default. Set to `false` to enable (requires dbt-codegen package). |
+| `DISABLE_DBT_CODEGEN` | `true` | [dbt codegen MCP tools](/docs/dbt-ai/mcp-available-tools#dbt-codegen) are disabled by default. Set to `false` to enable (requires dbt-codegen package). |
 | `DISABLE_LSP` | `false` | Disable dbt LSP/dbt v2 MCP tools. |
 | `DISABLE_MCP_SERVER_METADATA` | `true` | MCP server metadata tools (like `get_mcp_server_version`) are disabled by default. Set to `false` to enable. |
 | `DISABLE_TOOLS` | `""` | A comma-separated list of specific tool names to disable. |

@@ -69,7 +69,7 @@ select * from {{ ref('snowplow_sessions') }}
 
 ### generate_alias_name
 
-The alias generated for a model is controlled by a macro called `generate_alias_name`. This macro can be overridden in a dbt project to change how dbt aliases models. This macro works similarly to the [generate_schema_name](/docs/build/custom-schemas#advanced-custom-schema-configuration) macro.
+The alias generated for a model is controlled by a macro called `generate_alias_name`. This macro can be overridden in a dbt project to change how dbt aliases models. This macro works similarly to the [generate_schema_name](/docs/build/custom-schemas#changing-the-way-dbt-generates-a-schema-name) macro.
 
 To override dbt's alias name generation, create a macro named `generate_alias_name` in your own dbt project. The `generate_alias_name` macro accepts two arguments:
 

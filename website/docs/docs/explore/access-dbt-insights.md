@@ -101,7 +101,7 @@ From here, you can:
 - [View metadata and query details](#view-details) in the **Details** tab.
 - [Visualize results](#chart-results) in the **Chart** tab.
 - Check the [**Query history**](#query-history) for status and past runs.
-- Use [**<Constant name="catalog" />**](#use-dbt-explorer) to explore model lineage and context.
+- Use [**<Constant name="catalog" />**](#use-dbt-catalog) to explore model lineage and context.
 - If you want to save the query, you can click **Save Insight** in the [query console menu](/docs/explore/navigate-dbt-insights#query-console-menu) to save it for future reference.
 
 :::tip Want to turn a query into a model?

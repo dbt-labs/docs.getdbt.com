@@ -123,10 +123,10 @@ Your existing dbt project source code should live in a <Constant name="git" /> r
 
 This section highlights the development configurations you'll need for your <Constant name="dbt" /> project. The following categories are covered in this section:
 
-- [<Constant name="dbt_platform" /> environments](/guides/dbt-migration-1?step=7#dbt-cloud-environments)
+- [<Constant name="dbt_platform" /> environments](/guides/dbt-migration-1?step=7#dbt-environments)
 - [Initial setup steps](/guides/dbt-migration-1?step=7#initial-setup-steps)
 - [Additional configuration](/guides/dbt-migration-1?step=7#additional-configuration-2)
-- [<Constant name="dbt_platform" /> commands](/guides/dbt-migration-1?step=7#dbt-cloud-commands)
+- [<Constant name="dbt_platform" /> commands](/guides/dbt-migration-1?step=7#dbt-commands)
 
 ### dbt environments
 
@@ -149,7 +149,7 @@ The most common data environments are production, staging, and development. The 
    - Each environment is roughly equivalent to an entry in your `profiles.yml` file. This means you don't need a `profiles.yml` file in your project.
 
 4. **Development tools** &mdash; Set up your development workspace with the [<Constant name="dbt_platform" /> CLI](/docs/platform/dbt-cli-installation) (command line interface or code editor) or [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio) (browser-based) to build, test, run, and version control your dbt code in your tool of choice.
-   - If you've previously installed <Constant name="dbt" />, the [<Constant name="dbt_platform" /> CLI installation doc](/docs/platform/dbt-cli-installation?install=pip#install-dbt-cloud-cli) has more information on how to install the <Constant name="dbt_platform" /> CLI, create aliases, or uninstall <Constant name="dbt" /> for a smooth transition.
+   - If you've previously installed <Constant name="dbt" />, the [<Constant name="dbt_platform" /> CLI installation doc](/docs/platform/dbt-cli-installation?install=pip#install-dbt-platform-cli) has more information on how to install the <Constant name="dbt_platform" /> CLI, create aliases, or uninstall <Constant name="dbt" /> for a smooth transition.
 
 ### Additional configuration
 Explore these additional configurations to optimize your developer setup further:
@@ -161,11 +161,11 @@ Explore these additional configurations to optimize your developer setup further
 
 ## Environment variables
 This section will help you understand how to set up and manage <Constant name="dbt_platform" /> environment variables for your project. The following categories are covered:
-- [Environment variables in the <Constant name="dbt_platform" />](/guides/dbt-migration-1?step=7#environment-variables-in-dbt-cloud)
-- [<Constant name="dbt_platform" /> environment variables order of precedence](/guides/dbt-migration-1?step=7#dbt-cloud-environment-variables-order-of-precedence)
-- [Set environment variables in the <Constant name="dbt_platform" />](/guides/dbt-migration-1?step=7#set-environment-variables-in-dbt-cloud)
+- [Environment variables in the <Constant name="dbt_platform" />](/guides/dbt-migration-1?step=7#environment-variables-in-dbt)
+- [<Constant name="dbt_platform" /> environment variables order of precedence](/guides/dbt-migration-1?step=7#dbt-environment-variables-order-of-precedence)
+- [Set environment variables in the <Constant name="dbt_platform" />](/guides/dbt-migration-1?step=7#set-environment-variables-in-dbt)
 
-In the <Constant name="dbt_platform" />, you can set [environment variables](/docs/build/environment-variables) in the <Constant name="dbt_platform" /> user interface (UI). Read [Set up environment variables](#set-environment-variables-in-dbt-cloud) for more info.
+In the <Constant name="dbt_platform" />, you can set [environment variables](/docs/build/environment-variables) in the <Constant name="dbt_platform" /> user interface (UI). Read [Set up environment variables](#set-environment-variables-in-dbt) for more info.
 
 In self-hosted dbt, environment variables, or the [`env_var` function](/reference/dbt-jinja-functions/env_var), are defined manually by the developer or within the external application running dbt.
 
@@ -195,7 +195,7 @@ Environment variables in the <Constant name="dbt_platform" /> are managed with a
 
 This section outlines the considerations and methods to set up your <Constant name="dbt_platform" /> environments and jobs for orchestration. The following categories are covered in this section:
 
-- [<Constant name="dbt_platform" /> environments](/guides/dbt-migration-1?step=8#dbt-cloud-environments-1)
+- [<Constant name="dbt_platform" /> environments](/guides/dbt-migration-1?step=8#dbt-environments-1)
 - [Initial setup steps](/guides/dbt-migration-1?step=8#initial-setup-steps-1)
 - [Additional configuration](/guides/dbt-migration-1?step=8#additional-configuration-3)
 - [CI/CD setup](/guides/dbt-migration-1?step=8#cicd-setup)
@@ -241,7 +241,7 @@ This build-on-PR functionality is a great way to catch bugs before deploying to 
 
 In this section, you'll be able to validate whether your models run or compile correctly in your development tool of choice: The [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio) or [<Constant name="dbt_platform" /> CLI](/docs/platform/dbt-cli-installation).
 
-You'll want to make sure you set up your [development environment and credentials](/docs/dbt-platform-environments#set-developer-credentials).
+You'll want to make sure you set up your [development environment and credentials](/docs/dbt-platform-environments#set-user-credentials).
 
 1. In your [development tool](/docs/platform/about-develop-dbt) of choice, you can review your dbt project, ensure it's set up correctly, and run some [dbt commands](/reference/dbt-commands):
    - Run `dbt compile` to make sure your project compiles correctly.

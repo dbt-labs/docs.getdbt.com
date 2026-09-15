@@ -13,7 +13,7 @@ Optionally set a test to always or never store its failures in the database.
 - If the `store_failures` config is `none` or omitted, the resource will use the value of the `--store-failures` flag.
 - When true, `store_failures` saves all records (up to [limit](/reference/resource-configs/limit)) that failed the test. Failures are saved in a new table with the name of the test.
 - A test's results will always **replace** previous failures for the same test, even if that test results in no failures.
-- By default, `store_failures` uses a schema named `{{ profile.schema }}_dbt_test__audit`, but, you can [configure](/reference/resource-configs/schema#tests) the schema to a different value. Ensure you have the authorization to create or access schemas for your work. For more details, refer to the [FAQ](#faqs).
+- By default, `store_failures` uses a schema named `{{ profile.schema }}_dbt_test__audit`, but, you can [configure](/reference/resource-configs/schema#data-tests) the schema to a different value. Ensure you have the authorization to create or access schemas for your work. For more details, refer to the [FAQ](#faqs).
 
 This logic is encoded in the [`should_store_failures()`](https://github.com/dbt-labs/dbt-adapters/blob/60005a0a2bd33b61cb65a591bc1604b1b3fd25d5/dbt/include/global_project/macros/materializations/configs.sql#L15) macro.
 

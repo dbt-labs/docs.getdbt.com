@@ -7,7 +7,7 @@ import FusionPartialParseCliFlags from '/snippets/_fusion-partial-parse-cli-flag
 
 ## Related documentation
 - The `dbt parse` [command](/reference/commands/parse)
-- Partial parsing [profile config](/docs/local/profiles.yml#partial_parse) and [CLI flags](/reference/global-configs/parsing)
+- Partial parsing [profile config](/docs/local/profiles.yml#user-config) and [CLI flags](/reference/global-configs/parsing)
 - Parsing [CLI flags](/reference/global-configs/parsing)
 
 ## What is parsing?

@@ -68,7 +68,7 @@ You can get started with Wizard wherever you work, whether it's the terminal or 
 
 (Be warned, the wizard has been known to <WizardPopcorn>cast spells</WizardPopcorn>.)
 
-### Wizard in the CLI <Lifecycle status="beta"/>
+### Wizard in the CLI<Lifecycle status="beta"/>
 
 A terminal-based agent for governed data development in dbt, whether your team uses the <Constant name="dbt_platform" /> or self-hosts. Bring your own key to experience the full agentic analytics engineering loop.
 
@@ -76,7 +76,7 @@ A terminal-based agent for governed data development in dbt, whether your team u
 <NewToTerminal />
 
 
-### Wizard in dbt platform <Lifecycle status="preview"/>
+### Wizard in dbt platform<Lifecycle status="preview"/>
 
 Leverage agentic capabilities in the home app or [<Constant name="studio_ide" />](/docs/dbt-ai/wizard-ide) for governed data development in dbt.
 

@@ -77,11 +77,11 @@ The dbt platform offers a variety of access control tools that you can leverage 
 
 - [ ] Manually [invite users](/docs/platform/manage-access/invite-users) to the dbt platform, and they can authenticate using [MFA (SMS or authenticator app)](/docs/platform/manage-access/mfa).
 - [ ] Configure [single sign-on or OAuth](/docs/platform/manage-access/sso-overview) for advanced access control. <Lifecycle status="managed,managed_plus" /> accounts only. 
-    - [ ] Create [SSO mappings](/docs/platform/manage-access/about-user-access#sso-mappings-) for groups
+    - [ ] Create [SSO mappings](/docs/platform/manage-access/about-user-access#sso-mappings) for groups
 - Configure [System for Cross-Domain Identity Management (SCIM)](/docs/platform/manage-access/scim) if available for your IdP. 
 - [ ] Ensure invited users are able to connect to the data warehouse from their personal profile. 
-- [ ] [Create groups](/docs/platform/manage-access/about-user-access#create-new-groups-) with granular permission sets assigned.
-- [ ] Create [RBAC rules](https://docs.getdbt.com/docs/platform/manage-access/about-user-access#role-based-access-control-) to assign users to groups and permission sets upon sign in. <Lifecycle status="managed,managed_plus" /> accounts only. 
+- [ ] [Create groups](/docs/platform/manage-access/about-user-access#create-new-groups) with granular permission sets assigned.
+- [ ] Create [RBAC rules](https://docs.getdbt.com/docs/platform/manage-access/about-user-access#role-based-access-control) to assign users to groups and permission sets upon sign in. <Lifecycle status="managed,managed_plus" /> accounts only. 
 - [ ] Enforce SSO for all non-admin users, and MFA is enforced for all password-based logins. 
 
 ## Continue the journey 

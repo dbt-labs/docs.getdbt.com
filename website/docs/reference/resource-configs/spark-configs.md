@@ -12,7 +12,7 @@ To-do:
 <Snippet path="dbt-databricks-for-databricks" />
 
 :::note
-See [Databricks configuration](#databricks-configs) for the Databricks version of this page.
+See [Databricks configuration](/reference/resource-configs/databricks-configs) for the Databricks version of this page.
 :::
 
 ## Configuring tables

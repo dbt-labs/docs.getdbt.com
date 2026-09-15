@@ -70,7 +70,7 @@ If this is your first time running dbt, you may want to start with the [Introduc
 
 Most folks who have written Stored Procedures in the past think about the world in terms of a stateful process that progresses line-by-line. You start out creating your <Term id="table">tables</Term>, and then use <Term id="dml" /> to insert, update, and delete data, continually applying operations to the same base table throughout the course of a transformation. 
 
-On the other hand, dbt takes a declarative approach to managing datasets by using SELECT statements to describe the set of data that should make up the table. The tables (or <Term id="view">views</Term>) defined in this way represent each stage or unit of transformation work, and are assembled into a [Directed Acyclic Graph (DAG)](https://docs.getdbt.com/docs/introduction#what-makes-dbt-so-powerful) to determine the order in which each statement runs. As we’ll see, this achieves the same ends as procedural transformations, but instead of applying many operations to one dataset, we take a more modular approach. This makes it MUCH easier to reason about, document, and test transformation pipelines.
+On the other hand, dbt takes a declarative approach to managing datasets by using SELECT statements to describe the set of data that should make up the table. The tables (or <Term id="view">views</Term>) defined in this way represent each stage or unit of transformation work, and are assembled into a [Directed Acyclic Graph (DAG)](https://docs.getdbt.com/docs/introduction#why-use-dbt) to determine the order in which each statement runs. As we’ll see, this achieves the same ends as procedural transformations, but instead of applying many operations to one dataset, we take a more modular approach. This makes it MUCH easier to reason about, document, and test transformation pipelines.
 
 ### Step 2: Plan how to convert your stored procedure to dbt code
 
@@ -83,7 +83,7 @@ In general, we've found that the recipe presented below is an effective conversi
 5. Map INSERTS and UPDATES in the stored procedure to SELECT in dbt models
 6. Map DELETES in the stored procedure to WHERE filters in dbt models
 7. If necessary, use [variables](/docs/build/project-variables) in dbt to dynamically assign values at runtime, similar to arguments passed to a stored procedure.
-8. Iterate on your process to refine the dbt [DAG](https://docs.getdbt.com/docs/introduction#what-makes-dbt-so-powerful) further. You could continue optimizing forever, but typically we find a good stopping point when the outputs from the stored procedure and final dbt models are at parity.
+8. Iterate on your process to refine the dbt [DAG](https://docs.getdbt.com/docs/introduction#why-use-dbt) further. You could continue optimizing forever, but typically we find a good stopping point when the outputs from the stored procedure and final dbt models are at parity.
 
 Sometimes, we find ourselves confronted with code that’s so complex, the end user isn’t able to understand exactly what it’s doing. In these cases, it may not be possible to perform an apples-to-apples mapping of the process embedded in the original stored procedure, and it’s actually more efficient to scrap the whole thing and focus on working backwards to reproduce the desired output in dbt. Note the section on auditing results below as a key success driver in this situation.
 

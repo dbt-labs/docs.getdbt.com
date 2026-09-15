@@ -61,7 +61,7 @@ When you initialize a project, you create one of these three profiles. You must 
 * Profile for Dremio Software with Username/Password Authentication
 * Profile for Dremio Software with Authentication Through a Personal Access Token
 
-For descriptions of the configurations in these profiles, see [Configurations](#configurations).
+For descriptions of the configurations in these profiles, see [Configurations](#configurations-common-to-profiles-for-dremio-cloud-and-dremio-software).
 
 <Tabs
   defaultValue="cloud"

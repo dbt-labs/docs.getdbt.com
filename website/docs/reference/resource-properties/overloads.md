@@ -47,7 +47,7 @@ dbt runs all overloads regardless of individual failures, so you get a complete 
 
 - If any overload fails, dbt marks the function node as `PARTIAL_SUCCESS` and skips downstream nodes.
 - [`dbt retry`](/reference/commands/retry) skips overloads that already succeeded and only re-runs the previously failed ones.
-- [`state:modified`](/reference/node-selection/methods#the-state-method) detects changes to any overload's function body, arguments, or return type and marks the root function node as modified.
+- [`state:modified`](/reference/node-selection/methods#state) detects changes to any overload's function body, arguments, or return type and marks the root function node as modified.
 
 ## Properties
 

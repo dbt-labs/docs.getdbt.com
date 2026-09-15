@@ -37,6 +37,6 @@ Package dependencies allow you to add source code from someone else's dbt projec
 - Use `packages.yml` to include packages in your project's dependencies. This includes both public packages, such as those from the [dbt Hub](https://hub.getdbt.com/), and private packages. dbt now supports [native private packages](/docs/build/packages#native-private-packages).
 - [`packages.yml` supports Jinja rendering](/docs/build/dbt-tips#yaml-tips) for historical reasons, allowing dynamic configurations. This can be useful if you need to insert values, like a [Git token method](/docs/build/packages#git-token-method) from an environment variable, into your package specifications.
 
-Previously, to use private Git repositories in dbt, you needed to use a workaround that involved embedding a Git token with Jinja. This is not ideal as it requires extra steps like creating a user and sharing a Git token. We’ve introduced support for [native private packages](/docs/build/packages#native-private-packages-) to address this.
+Previously, to use private Git repositories in dbt, you needed to use a workaround that involved embedding a Git token with Jinja. This is not ideal as it requires extra steps like creating a user and sharing a Git token. We’ve introduced support for [native private packages](/docs/build/packages#native-private-packages) to address this.
 
 </Expandable>

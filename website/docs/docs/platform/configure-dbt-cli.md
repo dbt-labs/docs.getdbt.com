@@ -22,7 +22,7 @@ Learn how to configure the <Constant name="platform_cli" /> for your <Constant n
 
 - You must set up a project in <Constant name="dbt" />.
   - **Note** &mdash; If you're using the <Constant name="platform_cli" />, you can connect to your [data platform](/docs/platform/connect-data-platform/about-connections) directly in the <Constant name="dbt_platform" /> interface and don't need a [`profiles.yml`](/docs/local/profiles.yml) file. 
-- You must have your [personal user credentials](/docs/dbt-platform-environments#set-developer-credentials) configured in **Account settings** assigned to that project. The <Constant name="platform_cli" /> will use these credentials, stored securely in <Constant name="dbt" />, to communicate with your data platform.
+- You must have your [personal user credentials](/docs/dbt-platform-environments#set-user-credentials) configured in **Account settings** assigned to that project. The <Constant name="platform_cli" /> will use these credentials, stored securely in <Constant name="dbt" />, to communicate with your data platform.
 - You must be on dbt version 1.5 or higher. Refer to [<Constant name="dbt" /> versions](/docs/dbt-versions/upgrade-dbt-platform-version) to upgrade.
 
 ## Configure the dbt platform CLI
@@ -46,7 +46,7 @@ Once you install the <Constant name="platform_cli" />, you need to configure it 
         project-id: PROJECT_ID
     ```
 
-5. You should now be able to [use the <Constant name="platform_cli"/>](#use-the-dbt-cli) and run [dbt commands](/reference/dbt-commands) like [`dbt environment show`](/reference/commands/dbt-environment?version=2.0) to view your <Constant name="dbt" /> configuration details or `dbt compile` to compile models in your dbt project.
+5. You should now be able to [use the <Constant name="platform_cli"/>](#use-the-dbt-platform-cli) and run [dbt commands](/reference/dbt-commands) like [`dbt environment show`](/reference/commands/dbt-environment?version=2.0) to view your <Constant name="dbt" /> configuration details or `dbt compile` to compile models in your dbt project.
 
 With your repo recloned, you can add, edit, and sync files with your repo.
 

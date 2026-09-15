@@ -32,8 +32,8 @@ Follow these steps to set up a <Constant name="dbt" /> Hybrid project and upload
     - [Make <Constant name="dbt" /> models public](#make-dbt-models-public) (optional)
     - [Create hybrid project](#create-hybrid-project)
     - [Generate service token and artifact upload values](#generate-service-token-and-artifact-upload-values)
-    - [Configure <Constant name="core" /> project and upload artifacts](#configure-dbt-core-project-and-upload-artifacts)
-    - [Review artifacts in <Constant name="dbt" />](#review-artifacts-in-dbt-cloud)
+    - [Configure <Constant name="core" /> project and upload artifacts](#configure--project-and-upload-artifacts)
+    - [Review artifacts in <Constant name="dbt" />](#review-artifacts-in-the-dbt-platform)
 
 Make sure to enable the hybrid projects toggle in <Constant name="dbt" />’s **Account settings** page.
 
@@ -109,7 +109,7 @@ Once you have the values from the previous step, you can prepare your <Constant 
       - installed: 1.10.0-b1
       - latest:    1.9.3     - Ahead of latest version!
    ```
-2. If you don't have the latest version (1.10 or later), [upgrade](/docs/local/install-dbt?version=1#change-dbt-core-versions) your <Constant name="core" /> project by running `python -m pip install --upgrade dbt-core`.
+2. If you don't have the latest version (1.10 or later), [upgrade](/docs/local/install-dbt?version=1#upgrade) your <Constant name="core" /> project by running `python -m pip install --upgrade dbt-core`.
 3. Set the following environment variables in your <Constant name="core" /> project by running the following commands in the CLI. Replace the `your_account_id`, `your_environment_id`, and `your_token` with the actual values in the [previous step](#generate-service-token-and-artifact-upload-values).
 
    <VersionBlock lastVersion="1.10">
@@ -137,7 +137,7 @@ Once you have the values from the previous step, you can prepare your <Constant 
    - Set the environment variables in whatever way you use them in your project.
    - To unset an environment variable, run `unset environment_variable_name`, replacing `environment_variable_name` with the actual name of the environment variable.
 
-4. In your local <Constant name="core" /> project, add the following items you copied in the [previous section](/docs/deploy/hybrid-setup#enable-artifact-upload) to the <Constant name="core" />'s `dbt_project.yml` file:
+4. In your local <Constant name="core" /> project, add the following items you copied in the [previous section](/docs/deploy/hybrid-setup#generate-service-token-and-artifact-upload-values) to the <Constant name="core" />'s `dbt_project.yml` file:
    - `tenant_hostname`
    ```yaml
    name: "jaffle_shop"

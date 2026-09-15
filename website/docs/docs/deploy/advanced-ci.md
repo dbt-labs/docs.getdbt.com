@@ -20,13 +20,13 @@ By analyzing the data changes that code changes produce, you can ensure you're a
 
 :::info How to enable this feature
 
-You can opt into Advanced CI in <Constant name="dbt" />. Please refer to [Account access to Advanced CI features](/docs/platform/account-settings#account-access-to-advanced-ci-features) to learn how enable it in your <Constant name="dbt" /> account.
+You can opt into Advanced CI in <Constant name="dbt" />. Please refer to [Account access to Advanced CI features](/docs/platform/account-settings#enabling-advanced-ci-features-) to learn how enable it in your <Constant name="dbt" /> account.
 
 :::
 
 ## Prerequisites
 - You have a <Constant name="dbt" /> Enterprise or Enterprise+ account.
-- You have [Advanced CI features](/docs/platform/account-settings#account-access-to-advanced-features) enabled.
+- You have [Advanced CI features](/docs/platform/account-settings#enabling-advanced-ci-features-) enabled.
 - You use a supported data platform: BigQuery, Databricks, Postgres, Redshift, or Snowflake. Support for additional data platforms coming soon.
 
 ## Compare changes feature {#compare-changes}

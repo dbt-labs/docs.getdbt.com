@@ -12,7 +12,7 @@ dbt AI usage is metered differently depending on the feature you use:
 
 From September 1, 2026, a couple of things are changing for dbt AI features:
 - **AI features are being enabled by default.** They're already on for new accounts and are rolling out soon to existing accounts. If your organization opted out, they'll remain off. Admins can turn AI features on or off anytime in **Account settings**.
-- **<Constant name="wizard" /> is moving to usage-based billing** for [dbt-<Term id="managed"/> AI](#dbt-managed-inference). Usage is metered per token against your consumption pool, and an admin can set a monthly spend limit in <Constant name="dbt_platform"/>.
+- **<Constant name="wizard" /> is moving to usage-based billing** for [dbt-<Term id="managed"/> AI](#dbt-wizard). Usage is metered per token against your consumption pool, and an admin can set a monthly spend limit in <Constant name="dbt_platform"/>.
 
 Refer to [<Constant name="wizard" /> billing and access FAQs](/docs/dbt-ai/wizard-billing-faqs) for more info.
 

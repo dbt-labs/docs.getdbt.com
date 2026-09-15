@@ -22,7 +22,7 @@ Use compare changes to check impact early and validate changes before you open a
 - Validate outputs are correct when refactoring logic, adding or removing columns, or implementing join modifications. 
 - It compares your current working copy against your `manifest.json` (for example, your last production state) and shows changes to primary keys, rows, and columns in the **Compare** tab. 
 
-The dbt VS Code extension's compare changes feature is different from the [Advanced CI compare changes feature](#how-this-differs-from-advanced-ci), which runs at the PR stage in deployment rather than locally during development.
+The dbt VS Code extension's compare changes feature is different from the [Advanced CI compare changes feature](#how-is-this-different-from-advanced-ci-compare-changes), which runs at the PR stage in deployment rather than locally during development.
 
 :::info
 Compare changes in development is available for models only. Support for seeds, snapshots, ephemeral models, and Python models is coming soon.
@@ -65,7 +65,7 @@ To use compare changes in development, follow these steps:
    - Bottom panel: Click the **Compare** tab and then click the **Compare** button.
   
     <Lightbox src="/img/docs/extension/vs-compare-changes-options.png" width="90%" title="Compare changes in development" />
-4. Once you click the **Compare** button, the extension will execute a `dbt build` command to build the model you're working on and then runs the comparison. The [**Compare** tab](#compare-tab) displays the changes to the data's primary keys, rows, and columns. Clicking the tabs will display more details about the changes, like specific columns that were added or modified.
+4. Once you click the **Compare** button, the extension will execute a `dbt build` command to build the model you're working on and then runs the comparison. The [**Compare** tab](#compare-tab-results) displays the changes to the data's primary keys, rows, and columns. Clicking the tabs will display more details about the changes, like specific columns that were added or modified.
 5. Once you've compared changes and see the changes in the **Compare** tab, you can then decide to commit your changes or continue editing.
 
 ## Compare tab results

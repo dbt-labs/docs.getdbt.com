@@ -83,8 +83,8 @@ The following features are new or enhanced as part of [dbt's Coalesce analytics 
   For questions, contact [support@getdbt.com](mailto:support@getdbt.com).
 
 - **Enhancement**:
-  - **<Constant name="fusion" /> MCP tools** &mdash; Added <Constant name="fusion" /> tools that support `compile_sql` and `get_column_lineage` (Fusion-exclusive) for both [Remote](/docs/dbt-ai/mcp-available-tools#fusion-tools-remote) and [Local](/docs/dbt-ai/mcp-available-tools#fusion-tools-local) usage. Remote <Constant name="fusion" /> tools defer to your prod environment by default (set with `x-dbt-prod-environment-id`); you can disable deferral with `x-dbt-fusion-disable-defer=true`. Refer to [set up remote MCP](/docs/dbt-ai/setup-remote-mcp) for more info.
-  - **Self-hosted MCP server OAuth** &mdash; You can now authenticate the self-hosted dbt MCP server to the dbt platform with OAuth (supported docs for [Claude](/docs/dbt-ai/integrate-mcp-claude), [Cursor](/docs/dbt-ai/integrate-mcp-cursor), and [VS Code](/docs/dbt-ai/integrate-mcp-vscode)), reducing local secret management and standardizing setup. Refer to [dbt platform authentication](/docs/dbt-ai/setup-local-mcp#dbt-platform-authentication) for more information.
+  - **<Constant name="fusion" /> MCP tools** &mdash; Added <Constant name="fusion" /> tools that support `compile_sql` and `get_column_lineage` (Fusion-exclusive) for both [Remote](/docs/dbt-ai/mcp-available-tools#supported-tools-by-mcp-server-type) and [Local](/docs/dbt-ai/mcp-available-tools#supported-tools-by-mcp-server-type) usage. Remote <Constant name="fusion" /> tools defer to your prod environment by default (set with `x-dbt-prod-environment-id`); you can disable deferral with `x-dbt-fusion-disable-defer=true`. Refer to [set up remote MCP](/docs/dbt-ai/setup-remote-mcp) for more info.
+  - **Self-hosted MCP server OAuth** &mdash; You can now authenticate the self-hosted dbt MCP server to the dbt platform with OAuth (supported docs for [Claude](/docs/dbt-ai/integrate-mcp-claude), [Cursor](/docs/dbt-ai/integrate-mcp-cursor), and [VS Code](/docs/dbt-ai/integrate-mcp-vscode)), reducing local secret management and standardizing setup. Refer to [dbt platform authentication](/docs/dbt-ai/setup-local-mcp#oauth-authentication-with-dbt-platform-) for more information.
 - **Behavior change**: The CodeGenCodeLens feature for creating models from your sources with a click of a button has been temporarily removed from the <Constant name="studio_ide" /> due to compatibility issues. We plan to reintroduce this feature in the near future for both the IDE and the VS Code extension.
 
 ## September 2025
@@ -108,7 +108,7 @@ The following features are new or enhanced as part of [dbt's Coalesce analytics 
 
 ## June 2025
 
-- **New**: [System for Cross-Domain Identity Management](/docs/platform/manage-access/scim#scim-configuration-for-entra-id) (SCIM) through Microsoft Entra ID is now GA. Also available on legacy Enterprise plans. 
+- **New**: [System for Cross-Domain Identity Management](/docs/platform/manage-access/scim#set-up-scim) (SCIM) through Microsoft Entra ID is now GA. Also available on legacy Enterprise plans. 
 - **Enhancement:** You can now set the [compilation environment](/docs/explore/access-dbt-insights#set-jinja-environment) to control how Jinja functions are rendered in dbt Insights.
 - **Beta**: The dbt Fusion engine supports the BigQuery adapter in beta.
 - **New:** You can now view the history of settings changes for [projects](/docs/platform/account-settings), [environments](/docs/dbt-platform-environments), and [jobs](/docs/deploy/deploy-jobs).
@@ -174,7 +174,7 @@ The following features are new or enhanced as part of our [dbt Launch Showcase](
 - **Behavior change**: As of March 31st, 2025, <Constant name="core" /> versions 1.0, 1.1, and 1.2 have been deprecated from <Constant name="dbt" />. They are no longer available to select as versions for dbt projects. Workloads currently on these versions will be automatically upgraded to v1.3, which may cause new failures.
 - **Enhancement**: [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl) users on single-tenant configurations no longer need to contact their account representative to enable this feature. Setup is now self-service and available across all tenant configurations.
 - **New**: The <Constant name="semantic_layer" /> now supports Postgres as a data platform. For more details on how to set up the <Constant name="semantic_layer" /> for Postgres, see [Set up the <Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/setup-sl).
-- **New**: New [environment variable default](/docs/build/environment-variables#dbt-cloud-context) `DBT_CLOUD_INVOCATION_CONTEXT`. 
+- **New**: New [environment variable default](/docs/build/environment-variables#dbt-platform-context) `DBT_CLOUD_INVOCATION_CONTEXT`. 
 - **Enhancement**: Users assigned [read-only licenses](/docs/platform/manage-access/about-user-access#licenses) are now able to view the [Deploy](/docs/deploy/deployments) section of their <Constant name="dbt" /> account and click into the individual sections but not edit or otherwise make any changes. 
 
 #### dbt Developer day

@@ -184,7 +184,7 @@ This method *technically* works. Joanne can track what she needs:
 
 And she can easily switch versions by adding a filter on her BI layer.
 
-However, this method causes long job times and adds potentially unnecessary complexity – one of the reasons our [best practices](https://docs.getdbt.com/docs/building-a-dbt-project/snapshots#snapshot-query-best-practices) recommend only using snapshots to track changes in your source data, rather than your final models.
+However, this method causes long job times and adds potentially unnecessary complexity – one of the reasons our [best practices](https://docs.getdbt.com/docs/building-a-dbt-project/snapshots#configuration-best-practices) recommend only using snapshots to track changes in your source data, rather than your final models.
 
 Below, you’ll find two solutions that are more effective than snapshotting a final model, as well as the pros and cons of each method.
 

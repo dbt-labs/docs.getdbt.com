@@ -417,7 +417,7 @@ Check out the following docs to learn more about how to use <Constant name="wiza
 
 - [About dbt Wizard](/docs/platform/wizard-platform)
 - [dbt Wizard in Studio IDE](/docs/dbt-ai/wizard-ide)
-- [Generate resources](/docs/dbt-ai/wizard-ide#generate-resources)
+- [Generate resources](/docs/dbt-ai/wizard-ide#using-dbt-wizard)
 - [Build visual models with dbt Wizard](/docs/platform/build-canvas-copilot)
 - [Build queries in dbt Insights](/docs/explore/navigate-dbt-insights)
 

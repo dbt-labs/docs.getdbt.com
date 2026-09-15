@@ -93,7 +93,7 @@ To [create](/docs/platform/about-platform-setup) a new project in <Constant name
 
 
 ### Create a production environment
-In <Constant name="dbt" />, each project can have one deployment environment designated as "Production.". You must set up a ["Production" or "Staging" deployment environment](/docs/deploy/deploy-environments) for each project you want to "mesh" together. This enables you to leverage <Constant name="catalog" /> in the [later steps](/guides/mesh-qs?step=5#create-and-run-a-dbt-cloud-job) of this guide.
+In <Constant name="dbt" />, each project can have one deployment environment designated as "Production.". You must set up a ["Production" or "Staging" deployment environment](/docs/deploy/deploy-environments) for each project you want to "mesh" together. This enables you to leverage <Constant name="catalog" /> in the [later steps](/guides/mesh-qs?step=5#create-and-run-a-dbt-job) of this guide.
 
 To set a production environment:
 1. Navigate to **Deploy** -> **Environments**, then click **Create New Environment**.

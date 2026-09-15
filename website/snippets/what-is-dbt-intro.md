@@ -1,6 +1,6 @@
 dbt is the industry standard for data transformation, helping teams work faster and produce higher-quality data. As you build in dbt, your project creates structured context &mdash; lineage, tests, contracts, metrics, and governance &mdash; that explains how your data connects, what it means, and what changes may affect.
 
-That context makes dbt especially powerful for AI and comes with features like [<Constant name="wizard" />](#dbt-wizard), which helps you investigate, build, validate, and ship with full project context and governance on by default.
+That context makes dbt especially powerful for AI and comes with features like [<Constant name="wizard" />](/docs/platform/wizard-overview), which helps you investigate, build, validate, and ship with full project context and governance on by default.
 
 You can use dbt and its [framework](#dbt-framework) to:
 - Centralize and modularize your analytics code, while also providing your data team with guardrails typically found in software engineering workflows. 

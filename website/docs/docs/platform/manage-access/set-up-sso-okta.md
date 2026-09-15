@@ -193,7 +193,7 @@ To complete setup, follow the steps below in <Constant name="dbt" />.
 
 ## Setting up RBAC
 Now you have completed setting up SSO with Okta, the next steps will be to set up
-[RBAC groups](/docs/platform/manage-access/about-user-access#role-based-access-control-) to complete your access control configuration.
+[RBAC groups](/docs/platform/manage-access/about-user-access#role-based-access-control) to complete your access control configuration.
 
 :::tip Set up SCIM
 Now that you've set up SSO with Okta, you can [set up SCIM](/docs/platform/manage-access/scim-okta) to automate user and group provisioning (and license assignment for Okta).

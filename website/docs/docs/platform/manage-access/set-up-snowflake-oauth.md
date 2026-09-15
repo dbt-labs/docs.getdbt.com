@@ -27,7 +27,7 @@ import SnowflakeOauthWithPL from '/snippets/_snowflake-oauth-with-pl.md';
 To set up Snowflake OAuth in <Constant name="dbt" />, admins from both are required for the following steps:
 1. [Locate the redirect URI value](#locate-the-redirect-uri-value) in <Constant name="dbt" />.
 2. [Create a security integration](#create-a-security-integration) in Snowflake.
-3. [Configure a connection](#configure-a-connection-in-dbt-cloud) in <Constant name="dbt" />.
+3. [Configure a connection](#configure-a-connection-in-dbt) in <Constant name="dbt" />.
 
 To use Snowflake in the <Constant name="studio_ide" />, all developers must [authenticate with Snowflake](#authorize-developer-credentials) in their profile credentials.
 

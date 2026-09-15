@@ -316,7 +316,7 @@ Archived release notes for <Constant name="dbt" /> from 2023
     * To improve discoverability, the docs team made changes to the [deploy dbt sidebar](/docs/deploy/deployments). We added cards and aligned better with the dbt Cloud UI and the way it’s used.
     * Deprecated legacy job schemas in the [Discovery API](/docs/dbt-apis/discovery-api).
     * Added a page to describe [experimental and beta features](/docs/dbt-versions/experimental-features) in dbt Cloud and what you need to know about them.
-    * Added a section to introduce a new beta feature [**Extended Attributes**](/docs/dbt-platform-environments#extended-attributes-beta), which allows users to set a flexible `profiles.yml` snippet in their dbt Cloud Environment settings.
+    * Added a section to introduce a new beta feature [**Extended Attributes**](/docs/dbt-platform-environments#extended-attributes), which allows users to set a flexible `profiles.yml` snippet in their dbt Cloud Environment settings.
     ## 🎯 Core projects
 
     * We released [dbt 1.6](/docs/dbt-versions/dbt-upgrade/Older%20versions/upgrading-to-v1.6)! We added docs for the new commands `dbt retry` and `dbt clone`
@@ -606,7 +606,7 @@ Archived release notes for <Constant name="dbt" /> from 2023
     - We launched a new [Lint and format page](/docs/platform/studio-ide/lint-format), which highlights the awesome new dbt Cloud IDE linting/formatting function.
     - We enabled a connection between [dbt Cloud release notes](/docs/dbt-versions/release-notes) and the dbt Slack community. This means new dbt Cloud release notes are automatically sent to the slack community [#dbt-cloud channel](https://getdbt.slack.com/archives/CMZ2V0X8V) via RSS feed, keeping users up to date with changes that may affect them. 
     - We’ve added two new docs links in the dbt Cloud Job settings user interface (UI). This will provide additional guidance and help users succeed when setting up a dbt Cloud job: [job commands](/docs/deploy/job-commands) and job triggers.    
-    - We added information related to the newly created [IT license](/docs/platform/manage-access/about-user-access#license-based-access-control), available for Team and Enterprise plans. 
+    - We added information related to the newly created [IT license](/docs/platform/manage-access/about-user-access#licenses), available for Team and Enterprise plans. 
     - We added a new [Supported browser page](/docs/platform/about-platform/browsers), which lists the recommended browsers for dbt Cloud.
     - We launched a new page informing users of [new Experimental features option](/docs/dbt-versions/experimental-features) in dbt Cloud.
     - We worked with dbt Engineering to help publish new beta versions of the dbt [dbt Cloud Administrative API docs](/docs/dbt-apis/admin-api). 
@@ -871,7 +871,7 @@ Archived release notes for <Constant name="dbt" /> from 2023
     Refer to some additional info and resources to help you upgrade your dbt version:
 
     - [How to upgrade dbt without fear](/blog/upgrade-dbt-without-fear) 
-    - [Upgrade Q&A on breaking changes](/docs/dbt-versions/upgrade-dbt-platform-version#upgrading-legacy-versions-under-10)
+    - [Upgrade Q&A on breaking changes](/docs/dbt-versions/upgrade-dbt-platform-version#upgrade-considerations)
     - [Version migration guides](/docs/dbt-versions/dbt-upgrade)
 
   </Expandable>

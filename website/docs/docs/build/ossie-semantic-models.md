@@ -50,7 +50,7 @@ To define semantic models with Ossie documents:
 
 3. Run any command that triggers compilation, such as `dbt compile` or `dbt run`. dbt automatically discovers and parses Ossie files.
 
-The resulting semantic models (and metrics, when defined in your Ossie documents) appear in [dbt artifacts](/reference/artifacts/dbt-artifacts) in your `target/` directory, including [`manifest.json`](/reference/artifacts/manifest-json), [`semantic_manifest.json`](/reference/artifacts/sl-manifest), and [`osi_document.json`](/reference/artifacts/sl-manifest#osi-document).
+The resulting semantic models (and metrics, when defined in your Ossie documents) appear in [dbt artifacts](/reference/artifacts/dbt-artifacts) in your `target/` directory, including [`manifest.json`](/reference/artifacts/manifest-json), [`semantic_manifest.json`](/reference/artifacts/sl-manifest), and [`osi_document.json`](/reference/artifacts/sl-manifest#apache-ossie-document).
 
 ## Limitations
 

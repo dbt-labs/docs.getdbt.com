@@ -16,7 +16,7 @@ level: 'Advanced'
 
 This guide will show you how to set up an integration between <Constant name="dbt" /> jobs and Slack using [<Constant name="dbt" /> webhooks](/docs/deploy/webhooks) and Zapier. It builds on the native [native Slack integration](/docs/deploy/job-notifications#slack-notifications) by attaching error message details of models and tests in a thread. 
 
-Note: Because there is not a webhook for Run Cancelled, you may want to keep the standard Slack integration installed to receive those notifications. You could also use the [alternative integration](#alternate-approach) that augments the native integration without replacing it.
+Note: Because there is not a webhook for Run Cancelled, you may want to keep the standard Slack integration installed to receive those notifications. You could also use the [alternative integration](#alternately-use-a-dbt-app-slack-message-to-trigger-zapier) that augments the native integration without replacing it.
 
 When a <Constant name="dbt" /> job finishes running, the integration will:
 

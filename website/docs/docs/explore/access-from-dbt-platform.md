@@ -20,9 +20,9 @@ The **Lineage tab** in <Constant name="dbt" /> jobs displays the lineage associa
 
 <Lightbox src="/img/docs/collaborate/dbt-explorer/explorer-from-lineage.gif" title="Access dbt Catalog from the lineage tab by double-clicking on the lineage node." />
 
-### Model timing tab in jobs <Lifecycle status="self_service,managed,managed_plus"/>
+### Model timing tab in jobs<Lifecycle status="self_service,managed,managed_plus"/>
 
-The [model timing tab](/docs/deploy/run-visibility#model-timing) in <Constant name="dbt" /> jobs displays the composition, order, and time taken by each model in a job run.
+The [model timing tab](/docs/deploy/run-visibility#model-timing-tab) in <Constant name="dbt" /> jobs displays the composition, order, and time taken by each model in a job run.
 
 You can open <Constant name="catalog" /> from the **model timing tab** to investigate resources, diagnose performance bottlenecks, understand dependencies and relationships of slow-running models, and make changes to improve their performance.
 

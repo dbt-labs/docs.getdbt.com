@@ -4,7 +4,7 @@
 
 ## dbt metadata
 
-If you're using a [hybrid project setup](/docs/deploy/hybrid-setup) and uploading artifacts from dbt v1, make sure to follow the [setup instructions](/docs/deploy/hybrid-setup#connect-project-in-dbt-cloud) to connect your project in <Constant name="dbt" />. This enables <Constant name="catalog" /> to access and display your metadata correctly.
+If you're using a [hybrid project setup](/docs/deploy/hybrid-setup) and uploading artifacts from dbt v1, make sure to follow the [setup instructions](/docs/deploy/hybrid-setup#create-hybrid-project) to connect your project in <Constant name="dbt" />. This enables <Constant name="catalog" /> to access and display your metadata correctly.
 
 - To ensure all metadata is available in <Constant name="catalog" />, run `dbt build` and `dbt docs generate` as part of your job in your production or staging environment. Running these two commands ensures all relevant metadata (like lineage, test results, documentation, and more) is available in <Constant name="catalog" />.
 - <Constant name="catalog" /> automatically retrieves the metadata updates after each job run in the production or staging deployment environment so it always has the latest results for your project. This includes deploy and merge jobs.

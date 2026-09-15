@@ -47,7 +47,7 @@ To use the extension, you need the following:
     <Lightbox src="/img/docs/extension/install-dbt-fusion-engine.png" width="60%" title="Follow the prompt to install v2"/>
 
 7. Run the VS Code extension [upgrade tool](/docs/upgrade-to-dbt-extension) to check whether your project is ready for v2 and fix any errors or deprecations.
-8. Optional: [Configure your local environment](/docs/configure-dbt-extension) to mirror your <Constant name="dbt_platform" /> environment and [set environment variables](/docs/configure-dbt-extension#configure-environment-variables) required by your project.
+8. Optional: [Configure your local environment](/docs/configure-dbt-extension) to mirror your <Constant name="dbt_platform" /> environment and [set environment variables](/docs/configure-dbt-extension#set-environment-variables-locally) required by your project.
 
 :::note The language server ships with dbt v2
 

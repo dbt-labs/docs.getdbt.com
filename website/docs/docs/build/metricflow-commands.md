@@ -81,7 +81,7 @@ This section applies to <Constant name="dbt_platform" /> users running the v2 or
 | <div style={{width:'250px'}}>Command</div>  | <div style={{width:'100px'}}>Description</div> | <Constant name="studio_ide" /> | <Constant name="platform_cli" /> | VS Code/Cursor |
 |---------|-------------|---------------|---------------| -----------|
 | [`list metrics`](#list-metrics) | Lists metrics with dimensions. |  ✅ | ✅ | ✅ |
-| [`list dimensions`](#list) | Lists unique dimensions for metrics. |  ✅  | ✅ | ✅ |
+| [`list dimensions`](#list-dimensions) | Lists unique dimensions for metrics. |  ✅  | ✅ | ✅ |
 | [`list dimension-values`](#list-dimension-values) | List dimensions with metrics. | ✅ | ✅ | ✅ |
 | [`list entities`](#list-entities) | Lists all unique entities.  |  ✅  | ✅ | ✅ |
 | [`list saved-queries`](#list-saved-queries) | Lists available saved queries. Use the `--show-exports` flag to display each export listed under a saved query or `--show-parameters` to show the full query parameters each saved query uses. |  ✅ | ✅ | ✅ |
@@ -110,10 +110,10 @@ Check out the following video for a short video demo of how to query or preview 
 This section applies to local self-hosted users who aren't on <Constant name="dbt_platform" />, whether you execute with v1 or v2. Commands and validations execute locally and use the `mf` prefix before the command name to execute them. For example, to list all metrics, run `mf list metrics`.
 
 - [`list metrics`](#list-metrics) &mdash; Lists metrics with dimensions.
-- [`list dimensions`](#list) &mdash; Lists unique dimensions for metrics.
+- [`list dimensions`](#list-dimensions) &mdash; Lists unique dimensions for metrics.
 - [`list dimension-values`](#list-dimension-values) &mdash; List dimensions with metrics.
 - [`list entities`](#list-entities) &mdash; Lists all unique entities.
-- [`validate-configs`](#validate-configs) &mdash; Validates semantic model configurations.
+- [`validate-configs`](#validate) &mdash; Validates semantic model configurations.
 - [`health-checks`](#health-checks) &mdash; Performs data platform health check.
 - [`tutorial`](#tutorial) &mdash; Dedicated MetricFlow tutorial to help get you started.
 - [`query`](#query) &mdash; Query metrics and dimensions you want to see in the command line interface. Refer to [query examples](#query-examples) to help you get started.

@@ -22,7 +22,7 @@ You can assign as many permission sets as needed to one token. For more on permi
 
 ## Generate service account tokens
 
-You can generate service tokens if you have a Developer [license](/docs/platform/manage-access/seats-and-users) and account admin [permissions](/docs/platform/manage-access/about-user-access#permission-sets). To create a service token in <Constant name="dbt" />, follow these steps:
+You can generate service tokens if you have a Developer [license](/docs/platform/manage-access/seats-and-users) and account admin [permissions](/docs/platform/manage-access/about-user-access#permissions). To create a service token in <Constant name="dbt" />, follow these steps:
 
 1. From <Constant name="dbt" />, click on your account name in the left side menu and select **Account settings**.
 2. On the left sidebar, click **Service Tokens**.

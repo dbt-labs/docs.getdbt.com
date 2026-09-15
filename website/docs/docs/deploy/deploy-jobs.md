@@ -126,7 +126,7 @@ import StateModifiedScheduledJobs from '/snippets/_state-modified-scheduled-jobs
 
 <StateModifiedScheduledJobs />
 
-### Trigger on job completion  <Lifecycle status="self_service,managed,managed_plus" />
+### Trigger on job completion<Lifecycle status="self_service,managed,managed_plus" />
 To _chain_ deploy jobs together:
 1. In the **Triggers** section, enable the **Run when another job finishes** option.
 2. Select the project that has the deploy job you want to run after completion.
@@ -136,7 +136,7 @@ To _chain_ deploy jobs together:
 
 <Lightbox src="/img/docs/deploy/deploy-job-completion.png" width="100%" title="Example of Trigger on job completion on the Deploy job page"/>
 
-5. You can set up a configuration where an upstream job triggers multiple downstream (child) jobs and jobs in other projects. You must have proper [permissions](/docs/platform/manage-access/enterprise-permissions#project-role-permissions) to the project and job to configure the trigger. 
+5. You can set up a configuration where an upstream job triggers multiple downstream (child) jobs and jobs in other projects. You must have proper [permissions](/docs/platform/manage-access/enterprise-permissions#project-permissions) to the project and job to configure the trigger. 
 
 If another job triggers your job to run, you can find a link to the upstream job in the [run details section](/docs/deploy/run-visibility#job-run-details).
 
