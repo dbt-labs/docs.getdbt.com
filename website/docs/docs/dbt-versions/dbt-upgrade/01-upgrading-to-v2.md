@@ -8,7 +8,7 @@ availability:
   access: free
 ---
 
-# Upgrading to v2 <Lifecycle status="beta" />
+# Upgrading to v2
 
 import FusionAdapters from '/snippets/_fusion-dwh.md';
 import FusionUpgradeSteps from '/snippets/_fusion-upgrade-steps.md';
@@ -91,7 +91,7 @@ To hydrate catalog metadata (`catalog.json`) for <Constant name="catalog" /> wit
 
 For full usage, refer to [About dbt docs commands](/reference/commands/cmd-docs).
 
-### Local execution of unit tests <Lifecycle status="beta" />
+### Local execution of unit tests
 
 v2 introduces the [`compute`](/reference/resource-configs/compute) config for unit tests. Set your unit tests with `compute: local` and dbt runs the test with DuckDB instead of sending it to your data platform, which takes the warehouse round trip out of your development loop.
 
