@@ -98,7 +98,7 @@ To hydrate catalog metadata (`catalog.json`) for <Constant name="catalog" /> wit
 
 For full usage, refer to [About dbt docs commands](/reference/commands/cmd-docs?version=2).
 
-### Model freshness and the `dbt freshness` command <Lifecycle status="beta" />
+### Model freshness and the `dbt freshness` command
 
 v2 expands freshness checks to models, building on the existing support for sources. You can configure freshness thresholds on models to receive warnings or errors when the data is stale. For config options and materialization requirements, refer to [freshness](/reference/resource-configs/freshness).
 
@@ -112,7 +112,7 @@ All v2 adapters connect to data warehouses via the [Arrow Database Connectivity 
 
 On first run, dbt downloads adapter drivers from the dbt Labs CDN and caches them locally. Subsequent runs work offline. For supported adapters, refer to [Supported data platforms](/docs/supported-data-platforms).
 
-### `dbt lint` <Lifecycle status="beta" />
+### `dbt lint`
 
 v2 introduces [`dbt lint`](/reference/commands/lint), a high-performance SQL linter built into dbt. It is SQLFluff-compatible: you keep your existing .sqlfluff config and rule codes (for example, `CP01`, `RF03`). Run `dbt lint` to lint all models, or `dbt lint [FILE]` to target a specific file. Use `--fix` to auto-apply fixable violations.
 
@@ -191,7 +191,7 @@ Run [`dbt login status`](/reference/commands/login?version=2.0#dbt-login-status)
 
 ### Experimental features
 
-#### Local execution of unit tests <Lifecycle status="beta" />
+#### Local execution of unit tests
 
 v2 introduces the [`compute`](/reference/resource-configs/compute) config for unit tests. Set your unit tests with `compute: local` and dbt runs the test with DuckDB instead of sending it to your data platform, which takes the warehouse round trip out of your development loop.
 
