@@ -10,7 +10,7 @@ availability:
 
 The dbt Information Schema is a contracted interface into the metadata for all of the resources in your dbt project. It takes the form of [Parquet](https://parquet.apache.org/) artifacts, which are more performant than JSON artifacts. For example, a project with a `manifest.json` and `catalog.json` that total ~70 MB has an Information Schema of only ~5 MB. It also includes intermediate views that you can query with `dbt show`. You can also query the Information Schema from SQL you write in your checks.
 
-When you use the [`--generate-info-schema`](#generating-the-information-schema) flag, dbt writes the Information Schema to `target/info_schema/` in a versioned subdirectory (for example, `target/info_schema/v1/`) as standard Parquet files. The metadata available in the schema grows with each step: parsing produces basic metadata, compiling adds column types and column-level lineage (with --static-analysis strict), and running or building populates runtime results.
+When you use the [`--generate-info-schema`](#generating-the-information-schema) flag, dbt writes the Information Schema to `target/info_schema/` in a versioned subdirectory (for example, `target/info_schema/v1/`) as standard Parquet files. The metadata available in the schema grows with each step: parsing produces basic metadata, compiling adds column types and column-level lineage (with `--static-analysis strict`), and running or building populates runtime results.
 
 For the full list of tables and their descriptions, refer to the [Information Schema tables](/reference/info-schema).
 
