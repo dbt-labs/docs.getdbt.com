@@ -1,0 +1,23 @@
+  dbt-core 2.0.0-alpha.1
+   Loading ~/.dbt/profiles.yml
+   Loading packages.yml
+dbt State is enabled (endpoint https://api.state.dbt.com:443, defer_to prod)
+    Passed [  3.12s] unit_test dev_joell_dbt_test__audit.test_order_items_compute_to_bools_correctly
+ Succeeded [  6.66s] model dev_joell.orders (table)
+    Passed [  2.56s] test  dbt_utils_expression_is_true_orders_order_items_subtotal_subtotal
+    Passed [  4.00s] test  dbt_utils_expression_is_true_orders_order_total_subtotal_tax_paid
+    Passed [  4.00s] test  relationships_order_items_order_id__order_id__ref_orders_
+    Passed [  4.26s] test  not_null_orders_order_id
+    Passed [  5.23s] test  unique_orders_order_id
+    Warned [  6.07s] test  accepted_values_orders_is_today_order__True (models/marts/orders.yml:37:13)
+    Passed [  6.63s] test  relationships_orders_customer_id__customer_id__ref_stg_customers_
+    Reused [-------] model dev_joell.customers (view - No new changes on any upstreams)
+    Reused [-------] test  not_null_customers_customer_id (No new changes on any upstreams)
+    Reused [-------] test  accepted_values_customers_customer_type__new__returning (No new changes on any upstreams)
+    Reused [-------] test  dbt_utils_expression_is_true_customers_lifetime_spend_pretax_lifetime_tax_paid_lifetime_spend (No new changes on any upstreams)
+    Reused [-------] test  unique_customers_customer_id (No new changes on any upstreams)
+
+==================== Execution Summary =====================
+Finished 'build' with 1 warning for target 'snowflake' [27.6s]
+Processed: 2 models | 11 tests | 1 unit test
+Summary: 14 total | 8 success | 5 reused | 1 warn

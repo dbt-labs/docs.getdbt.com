@@ -3,9 +3,14 @@ title: "About state-aware orchestration"
 description: "Learn about how state-aware orchestration automatically determines which models to build by detecting changes in code or data every time a job runs." 
 id: "state-aware-about"
 tags: ['scheduler','SAO']
+unlisted: true
+availability:
+  surface: platform
+  access: paid_plan
+  minPlan: enterprise
 ---
 
-# About state-aware orchestration <Lifecycle status="private_preview,managed,managed_plus" />
+# About state-aware orchestration <Lifecycle status="private_preview" />
 
 <IntroText>
 
@@ -14,12 +19,16 @@ Every time a job runs, state-aware orchestration automatically determines which 
 </IntroText>
 
 import FusionLifecycle from '/snippets/_fusion-lifecycle-callout.md';
+import SaoDeprecated from '/snippets/_sao-deprecated.md';
+
+<SaoDeprecated />
 
 <FusionLifecycle />
 
 State-aware orchestration saves you compute costs and reduces runtime because when a job runs, it checks for new records and only builds the models that will change.
 
-<Lightbox src="/img/docs/deploy/sao.gif" title="Fusion powered state-aware orchestration" />
+
+<Lightbox src="/img/docs/deploy/sao.gif" title="dbt v2 powered state-aware orchestration" />
 
 We built <Constant name="dbt" />'s state-aware orchestration on these four core principles:
 
@@ -29,7 +38,7 @@ We built <Constant name="dbt" />'s state-aware orchestration on these four core 
 - **Sensible defaults:** State-aware orchestration works out-of-the-box (natively), with an optional configuration setting for more advanced controls. For more information, refer to [state-aware advanced configurations](/docs/deploy/state-aware-setup#advanced-configurations).
 
 :::note
-State-aware orchestration does not depend on [static analysis](/docs/fusion/new-concepts#principles-of-static-analysis) and works even when `static_analysis` is disabled.
+State-aware orchestration does not depend on [static analysis](/docs/build/about-static-analysis#principles-of-static-analysis) and works even when `static_analysis` is disabled.
 :::
 
 ## Optimizing builds with state-aware orchestration
@@ -43,6 +52,10 @@ Without configuring anything, <Constant name="dbt" />'s state-aware orchestratio
 **Note:** When a model fails a [data test](/docs/build/data-tests), state-aware orchestration rebuilds it on subsequent runs instead of reusing it from prior state. This ensures dbt reevaluates models with unresolved data quality issues.
 
 ### Handling concurrent jobs
+
+:::caution Not supported in dbt State
+Concurrent job handling works differently in dbt State. For a full list of behavioral differences, refer to [Known differences from state-aware orchestration](/docs/deploy/dbt-state-migration#known-differences-from-state-aware-orchestration).
+:::
 
 If two separate jobs both depend on the same downstream model (for example, `model_ab`) and both detect upstream changes (`updates_on = any`), `model_ab` could run twice &mdash; once for each job. However, if `model_ab` was already built and nothing has changed since that build, neither job will rebuild it. Instead, both jobs will reuse the existing version instead of rebuilding.
 
@@ -69,7 +82,7 @@ This behavior ensures consistency between the dbt state and the actual warehouse
 ## Efficient testing in state-aware orchestration <Lifecycle status="private_beta" />
 
 :::info Private beta feature
-State-aware orchestration features in the <Constant name="dbt_platform" /> are only available in Fusion, which is in private preview. Contact your account manager to enable Fusion in your account. 
+State-aware orchestration features in the <Constant name="dbt_platform" /> are only available in <Constant name="fusion" />. Contact your account manager to enable <Constant name="fusion" /> in your account. 
 :::
 
 Data quality can get degraded in two ways: 
@@ -79,7 +92,7 @@ Data quality can get degraded in two ways:
 
 Running dbt’s out-of-the-box [data tests](/docs/build/data-tests) (`unique`, `not_null`, `accepted_values`, `relationships`) on every build helps catch data errors before they impact business decisions. Catching these errors often requires having multiple tests on every model and running tests even when not necessary. If nothing relevant has changed, repeated test executions don’t improve coverage and only increase cost.
 
-With Fusion, dbt gains an understanding of the SQL code based on the logical plan for the compiled code. dbt then can determine when a test must run again, or when a prior upstream test result can be reused.
+With <Constant name="fusion" />, dbt gains an understanding of the SQL code based on the logical plan for the compiled code. dbt then can determine when a test must run again, or when a prior upstream test result can be reused.
 
 Efficient testing in state-aware orchestration reduces warehouse costs by avoiding redundant data tests and combining multiple tests into one run. This feature includes two optimizations:
     
@@ -97,13 +110,13 @@ The following tests can be reused when Efficient testing is enabled:
 
 ### Enabling Efficient testing
 
-Before enabling Efficient testing, make sure you have configured [`static_analysis`](/docs/fusion/new-concepts#configuring-static_analysis).
+Before enabling Efficient testing, make sure you have configured [`static_analysis`](/docs/build/about-static-analysis#configuring-static_analysis).
 
 To enable Efficient testing:
 
 1. From the main menu, go to **Orchestration** > **Jobs**. 
 2. Select your deploy job. Go to your job settings and click **Edit**. 
-3. Under **Enable Fusion cost optimization features**, expand **More options**.
+3. Under **Enable dbt v2 cost optimization features**, expand **More options**.
 4. Select **Efficient testing**. This feature is disabled by default.
 5. Click **Save**.
 
@@ -165,6 +178,7 @@ The following section lists some considerations when using Efficient testing in 
 
 ## Related FAQs
 
+<FAQ path="Runs/what-happened-to-sao" />
 <FAQ path="Runs/sao-difference-core" />
 
 ## Related docs
@@ -173,3 +187,7 @@ The following section lists some considerations when using Efficient testing in 
 - [Artifacts](/docs/deploy/artifacts)
 - [Continuous integration (CI) jobs](/docs/deploy/ci-jobs)
 - [`freshness`](/reference/resource-configs/freshness)
+- [About dbt State](/docs/deploy/dbt-state-about)
+- [Set up dbt State](/docs/deploy/dbt-state-setup)
+- [dbt State configs](/reference/resource-configs/dbt-state-configs)
+- [Migrate to dbt State](/docs/deploy/dbt-state-migration)

@@ -207,7 +207,7 @@ const FilterableTable = ({ children }) => {
       // Show filter if:
       // 1. Column has 1-20 unique values (good for dropdown)
       // 2. OR it's the first column (name/key column) with any number of values
-      if ((values.length >= 1 && values.length <= 20) || (colIndex === 0 && values.length >= 1)) {
+      if ((values.length >= 1 && values.length <= 50) || (colIndex === 0 && values.length >= 1)) {
         options[colIndex] = values;
       }
     });
@@ -364,59 +364,27 @@ const FilterableTable = ({ children }) => {
   // If we're in a SimpleTable context, render as a plain table
   if (isSimpleTable) {
     return (
-      <>
-        <table ref={tableRef} style={{ display: 'none' }}>
-          {children}
-        </table>
-        <table style={{ width: '100%', borderCollapse: 'collapse' }}>
-          <thead>
-            <tr>
-              {headers.map((header, index) => (
-                <th 
-                  key={index}
-                  style={{ 
-                    textAlign: columnAlignments[index] || 'left',
-                    padding: '0.75rem',
-                    border: '1px solid var(--ifm-table-border-color)',
-                    backgroundColor: 'var(--ifm-table-head-background)',
-                    fontWeight: 'bold'
-                  }}
-                >
-                  <Markdown>{header}</Markdown>
-                </th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {initialData.map((row, rowIndex) => (
-              <tr key={rowIndex}>
-                {row.cells.map((cell, cellIndex) => (
-                  <td 
-                    key={cellIndex}
-                    style={{ 
-                      textAlign: columnAlignments[cellIndex] || 'left',
-                      padding: '0.75rem',
-                      border: '1px solid var(--ifm-table-border-color)'
-                    }}
-                  >
-                    <Markdown>{cell}</Markdown>
-                  </td>
-                ))}
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </>
+      <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+        {children}
+      </table>
     );
   }
 
+  // Table data is parsed from the DOM after mount, so during SSR (and for
+  // no-JS visitors and the markdown derived from the built HTML) there is no
+  // parsed data yet. Show the source table itself until parsing completes
+  // rather than a "Loading table..." placeholder, so the static HTML always
+  // contains the real rows.
+  const isParsed = headers.length > 0;
+
   return (
     <div className={styles.filterableTableContainer}>
-      {/* Hidden table for data extraction */}
-      <table ref={tableRef} style={{ display: 'none' }}>
+      {/* Source table: visible until parsed, then kept (hidden) for re-parsing */}
+      <table ref={tableRef} style={isParsed ? { display: 'none' } : undefined}>
         {children}
       </table>
 
+      {isParsed && (
       <div className={styles.tableWrapper}>
         {/* Search bar positioned at top right - always visible */}
         <div className={styles.searchBar}>
@@ -611,6 +579,7 @@ const FilterableTable = ({ children }) => {
           </table>
         )}
       </div>
+      )}
     </div>
   );
 };

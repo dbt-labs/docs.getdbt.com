@@ -7,9 +7,9 @@ intro_text: "Deprecations are about features in your project code (models, confi
 
 Deprecated functionality still works in the v1.10 release but is no longer supported and will be removed in a future version. Deprecations currently show as warnings but don't prevent runs and other commands (unless you've configured [warnings as errors](/reference/global-configs/warnings)), but will cause errors after upgrading if not addressed. 
 
-Not the same as [behavior change flags](/reference/global-configs/behavior-changes) (which are opt-in/out flags in your `dbt_project.yml` file) or [deprecated CLI flags](/docs/dbt-versions/core-upgrade/upgrading-to-fusion#deprecated-flags) (which are command-line flags being removed in <Constant name="fusion" />). See the [Changes overview](/reference/changes-overview) for a quick comparison.
+Not the same as [behavior change flags](/reference/global-configs/behavior-changes) (which are opt-in/out flags in your `dbt_project.yml` file) or [deprecated CLI flags](/docs/dbt-versions/dbt-upgrade/upgrading-to-v2#deprecated-flags) (which are command-line flags being removed in <Constant name="fusion" />). See the [Changes overview](/reference/changes-overview) for a quick comparison.
 
-Upgrading to [<Constant name="fusion" />](/docs/dbt-versions/core-upgrade/upgrading-to-fusion)? You must resolve all deprecations listed on this page before upgrading.
+Upgrading to [<Constant name="fusion" />](/docs/dbt-versions/dbt-upgrade/upgrading-to-v2)? You must resolve all deprecations listed on this page before upgrading.
 
 :::
 
@@ -29,6 +29,18 @@ dbt parse --no-partial-parse --show-all-deprecations
 
 The `--no-partial-parse` flag ensures that even deprecations only picked up during parsing are included. The `--show-all-deprecations` flag ensures that each occurrence of the deprecations is listed instead  of just the first.
 
+<VersionBlock firstVersion="2.0">
+
+:::note <Constant name="fusion" /> and `dbt parse`
+
+When you use <Constant name="fusion_engine" />, omit `--no-partial-parse` from the command above. That flag is deprecated in <Constant name="fusion" /> and may log deprecation warning `dbt1700`. Run `dbt parse --show-all-deprecations` without `--no-partial-parse`.
+
+For more information, refer to [Deprecated flags](/docs/dbt-versions/dbt-upgrade/upgrading-to-v2#deprecated-flags) in the guide to upgrading to <Constant name="fusion_engine" />.
+
+:::
+
+</VersionBlock>
+
 ```bash
 
 19:15:13 [WARNING]: Deprecated functionality
@@ -41,18 +53,48 @@ Summary of encountered deprecations:
 
 If you're using <Constant name="dbt" />, you can view deprecation warnings from the **Dashboard** area of your account.
 
-    <Lightbox src="/img/docs/dbt-cloud/deprecation-warnings.png" title="The deprecation warnings listed on the dbt dashboard." />
+    <Lightbox src="/img/docs/dbt-platform/deprecation-warnings.png" title="The deprecation warnings listed on the dbt dashboard." />
 
 Click into a job to view more details and locate the deprecation warnings in the logs (or run the `parse` command with flags from the <Constant name="studio_ide" /> or <Constant name="platform_cli" />).
 
-    <Lightbox src="/img/docs/dbt-cloud/deprecation-list.png" title="Deprecation warnings listed in the logs." />
+    <Lightbox src="/img/docs/dbt-platform/deprecation-list.png" title="Deprecation warnings listed in the logs." />
 
 ### Automatic remediation
 
-Some deprecations can be automatically fixed with a script. Read more about it in [this dbt blog post](https://www.getdbt.com/blog/how-to-get-ready-for-the-new-dbt-engine#:~:text=2.%20Resolve%20deprecation%20warnings). [Download the script](https://github.com/dbt-labs/dbt-autofix) and follow the installation instructions to get started. 
+Some deprecations can be automatically fixed with a script. Read more about it in [this dbt blog post](https://www.getdbt.com/blog/how-to-get-ready-for-the-new-dbt-engine#:~:text=2.%20Resolve%20deprecation%20warnings). [Download the script](https://github.com/dbt-labs/dbt-autofix) and follow the installation instructions to get started.
 
-**Coming soon**: The IDE will soon have an interface for running this same script to remediate deprecation warnings in <Constant name="dbt" />.
+You can run this script directly from [<Constant name="studio_ide"/>](/docs/platform/studio-ide/autofix-deprecations) using the **Autofix warnings** button to resolve deprecation warnings in <Constant name="dbt_platform" />.
 
+<Lightbox src="/img/docs/dbt-platform/platform-ide/autofix-button.png" width="90%" title="Use the Autofix warnings button in the Studio IDE to address deprecation warnings in dbt platform."/>
+
+### Silence deprecation warnings
+
+dbt Labs recommends fixing deprecation warnings rather than silencing them. If you need to temporarily reduce noise in logs, use `--warn-error-options` with the `silence` parameter. This works with any dbt command, including `dbt test` and `dbt parse`.
+
+For full configuration options (CLI flag, environment variable, and `dbt_project.yml`), refer to [Warnings](/reference/global-configs/warnings).
+
+To silence all deprecation warnings in <Constant name="core" />:
+
+```bash
+dbt test --warn-error-options '{"silence": ["Deprecations"]}'
+```
+
+<VersionBlock lastVersion="1.99">
+
+You can also silence specific deprecation types by name (for example, `ConfigLogPathDeprecation`).
+
+</VersionBlock>
+
+<VersionBlock firstVersion="2.0">
+
+In <Constant name="fusion" />, behavior differs from <Constant name="core" />:
+
+- The `Deprecations` group may not silence all deprecation-style warnings. Prefer the specific event name from your logs (for example, `SemanticModelDeprecated`).
+- Some deprecated configs are hard errors in <Constant name="fusion" /> and cannot be silenced. You must fix them.
+
+For more information about how <Constant name="fusion" /> handles `warn_error_options`, supported names, and hard-error cases, refer to [<Constant name="fusion" /> behavior and warning codes](/reference/global-configs/warnings#dbt-v2-behavior-and-warning-codes).
+
+</VersionBlock>
 
 ## List of Deprecation Warnings
 
@@ -60,7 +102,7 @@ The following are deprecation warnings in dbt today and the associated version n
 
 ### ArgumentsPropertyInGenericTestDeprecation
 
-dbt has deprecated the ability to specify a custom top-level property called `arguments` on generic tests. This deprecation warning is only raised when the behavior flag `require_generic_test_arguments_property` is set to `False`.
+dbt has deprecated the ability to specify a custom top-level property called `arguments` on generic tests. This deprecation warning is only raised when the behavior flag `require_generic_test_arguments_property` is set to `false`.
 
 #### ArgumentsPropertyInGenericTestDeprecation warning resolution
 
@@ -79,7 +121,7 @@ models:
 
 </File>
 
-You should set the `require_generic_test_arguments_property` flag to `True` and nest any keyword arguments to your test under the new `arguments` property:
+You should set the `require_generic_test_arguments_property` flag to `true` and nest any keyword arguments to your test under the new `arguments` property:
 
 <File name='model.yml'>
 
@@ -114,7 +156,7 @@ models:
 
 ### ConfigDataPathDeprecation
 
-In [dbt v1.0](/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-to-v1.0) `data-paths` has been renamed to [seed-paths](/reference/project-configs/model-paths). If you receive this deprecation warning, it means that `data-paths` is still being used in your project's `dbt_project.yml`.
+In [dbt v1.0](/docs/dbt-versions/dbt-upgrade/Older%20versions/upgrading-to-v1.0) `data-paths` has been renamed to [seed-paths](/reference/project-configs/model-paths). If you receive this deprecation warning, it means that `data-paths` is still being used in your project's `dbt_project.yml`.
 
 Example warning:
 
@@ -132,7 +174,7 @@ Change `data-paths` to `seed-paths` in your `dbt_project.yml`.
 
 ### ConfigLogPathDeprecation
 
-[dbt v1.5](/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-to-v1.5) specifying `log-path` in `dbt_project.yml` was deprecated. Receiving this deprecation warning means that `log-path` is still specified in your `dbt_project.yml` and it's not set to the default value `logs`.
+[dbt v1.5](/docs/dbt-versions/dbt-upgrade/Older%20versions/upgrading-to-v1.5) specifying `log-path` in `dbt_project.yml` was deprecated. Receiving this deprecation warning means that `log-path` is still specified in your `dbt_project.yml` and it's not set to the default value `logs`.
 
 Example:
 
@@ -171,7 +213,7 @@ Remove `log-path` from your `dbt_project.yml` and specify it via either the CLI 
 
 ### ConfigSourcePathDeprecation
 
-In [dbt v1.0](/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-to-v1.0) `source-paths` has been renamed to [model-paths](/reference/project-configs/model-paths). Receiving this deprecation warning means that `source-paths` is still being used in your project's `dbt_project.yml`.
+In [dbt v1.0](/docs/dbt-versions/dbt-upgrade/Older%20versions/upgrading-to-v1.0) `source-paths` has been renamed to [model-paths](/reference/project-configs/model-paths). Receiving this deprecation warning means that `source-paths` is still being used in your project's `dbt_project.yml`.
 
 Example: 
 
@@ -190,7 +232,7 @@ Change `source-paths` to `model-paths` in your `dbt_project.yml`.
 
 ### ConfigTargetPathDeprecation
 
-In [dbt 1.5](/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-to-v1.5) specifying  `target-path` in `dbt_project.yml` was deprecated. Receiving this deprecation warning means that `target-path` is still specified in your `dbt_project.yml` and it's not set to the default value, `target`.
+In [dbt 1.5](/docs/dbt-versions/dbt-upgrade/Older%20versions/upgrading-to-v1.5) specifying  `target-path` in `dbt_project.yml` was deprecated. Receiving this deprecation warning means that `target-path` is still specified in your `dbt_project.yml` and it's not set to the default value, `target`.
 
 Example:
 
@@ -257,7 +299,7 @@ This warning is displayed when you specify a config that dbt does not recognize 
 
 Previously, when you could define any additional fields directly under `config`, it could lead to collisions between pre-existing user-defined configurations and official configurations of the dbt framework. 
 
-As of dbt Core v1.10 and in the <Constant name="fusion_engine" />, top-level config keys will be reserved for official configurations of the dbt framework.
+As of dbt v1.10 and in <Constant name="fusion_engine" />, top-level config keys will be reserved for official configurations of the dbt framework.
 
 import DeprecationWarnings4 from '/snippets/_deprecation-warnings.md';
 
@@ -267,7 +309,13 @@ import DeprecationWarnings4 from '/snippets/_deprecation-warnings.md';
 
 Nest custom configs under `meta` and ensure `meta` is nested under `config` (similar to [`PropertyMovedToConfigDeprecation`](#propertymovedtoconfigdeprecation)).
 
-Example that results in the warning: 
+The same resolution applies whether the custom key is in a model config or a generic test definition. Select the relevant tab for an example:
+
+<Tabs>
+
+<TabItem value="model" label="Model config">
+
+Example that results in the warning:
 
 ```yaml
 models:
@@ -294,6 +342,44 @@ models:
           meta:
             some_key: some_value
 ```
+
+</TabItem>
+
+<TabItem value="test" label="Generic test definition">
+
+If you define a custom key directly under a test in a `tests:` block, nest it under `config.meta`.
+
+Example that results in the warning:
+
+```yaml
+tests:
+  - name: custom_generic_test
+    description: My custom generic test
+    arguments:
+      - name: active_timestamp
+        type: timestamp
+        description: The active timestamp for the model
+```
+
+Example of the resolution:
+
+```yaml
+tests:
+  - name: custom_generic_test
+    description: My custom generic test
+    config:
+      meta:
+        arguments:
+          - name: active_timestamp
+            type: timestamp
+            description: The active timestamp for the model
+```
+
+</TabItem>
+
+</Tabs>
+
+#### Accessing nested configurations
 
 To access custom configurations nested under attributes of `meta`, use `config.get('meta')` and then index the meta dictionary by the name of your custom attribute. Users will need to adjust their code that accesses the custom config keys directly as top-level keys.
 
@@ -375,9 +461,9 @@ config:
 
 ### DuplicateNameDistinctNodeTypesDeprecation
 
-dbt raises this warning when two unversioned resources in the same package share the same name (for example, a model and a seed both named `sales`) and the `require_unique_project_resource_names` flag is set to `False`. Previously, dbt did not always detect these name conflicts, which meant duplicate names could sometimes point to the wrong resource.
+dbt raises this warning when two unversioned resources in the same package share the same name (for example, a model and a seed both named `sales`) and the `require_unique_project_resource_names` flag is set to `false`. Previously, dbt did not always detect these name conflicts, which meant duplicate names could sometimes point to the wrong resource.
 
-When the `require_unique_project_resource_names` flag is set to `True`, dbt raises a `DuplicateResourceNameError`. For more information, see [Unique project resource names](/reference/global-configs/behavior-changes#unique-project-resource-names).
+When the `require_unique_project_resource_names` flag is set to `true`, dbt raises a `DuplicateResourceNameError`. For more information, see [Unique project resource names](/reference/global-configs/behavior-flags/require_unique_project_resource_names).
 
 #### DuplicateNameDistinctNodeTypesDeprecation warning resolution
 
@@ -423,7 +509,7 @@ Review your custom environment variables and ensure they don't conflict with dbt
 
 ### ExposureNameDeprecation
 
-In [dbt 1.3](/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-to-v1.3#new-and-changed-documentation), dbt began allowing only letters, numbers, and underscores in the `name` property of [exposures](/reference/exposure-properties).
+In [dbt 1.3](/docs/dbt-versions/dbt-upgrade/Older%20versions/upgrading-to-v1.3#new-and-changed-documentation), dbt began allowing only letters, numbers, and underscores in the `name` property of [exposures](/reference/exposure-properties).
 
 Example:
 
@@ -447,7 +533,7 @@ Ensure your exposure names only contain letters, numbers, and underscores. A mor
 
 dbt raises this deprecation warning when a custom `generate_schema_name` macro returns a `null` value. Returning `null` schema names can lead to invalid or unpredictable behavior.
 
-This deprecation warning is raised when the [`require_valid_schema_from_generate_schema_name` flag](/reference/global-configs/behavior-changes#valid-schema-from-generate_schema_name) is set to `False`. When the flag is set to `True`, dbt raises an error during parsing.
+This deprecation warning is raised when the [`require_valid_schema_from_generate_schema_name` flag](/reference/global-configs/behavior-flags/require_valid_schema_from_generate_schema_name) is set to `false`. When the flag is set to `true`, dbt raises an error during parsing.
 
 #### GenerateSchemaNameNullValueDeprecation warning resolution
 
@@ -474,11 +560,11 @@ This deprecation type is a catch-all/fallback. dbt attempts to handle all JSON s
 
 #### GenericJSONSchemaValidationDeprecation warning resolution
 
-If you are seeing this warning, unfortunately, there isn't much you can do at this time, but we are continuing to work on reducing instances of this deprecation. If you would like guidance on a specific instance you are seeing, please [contact support](mailto:support@getdbt.com) (available for cloud-based dbt platform customers) or the [community Slack](https://www.getdbt.com/community) (for dbt Core users).
+If you are seeing this warning, unfortunately, there isn't much you can do at this time, but we are continuing to work on reducing instances of this deprecation. If you would like guidance on a specific instance you are seeing, please [contact support](mailto:support@getdbt.com) (available for cloud-based dbt platform customers) or the [community Slack](https://www.getdbt.com/community) (for <Constant name="core" /> users).
 
 ### MFCumulativeTypeParamsDeprecation
 
-In dbt [v1.9](/docs/dbt-versions/core-upgrade/upgrading-to-v1.9) implementing `window` and `time_to_grain` directly on the `type_params` of a [metric](/reference/global-configs/behavior-changes#cumulative-metrics) was deprecated. 
+In dbt [v1.9](/docs/dbt-versions/dbt-upgrade/upgrading-to-v1.9) implementing `window` and `time_to_grain` directly on the `type_params` of a [metric](/reference/global-configs/behavior-flags/require_nested_cumulative_type_params) was deprecated.
 
 Example:
 
@@ -499,7 +585,7 @@ Nest your `window` and `time_to_grain` under the `cumulative_type_params` proper
 
 ### MFTimespineWithoutYamlConfigurationDeprecation
 
-Before dbt v1.9, the MetricFlow time spine configuration was stored in a `metricflow_time_spine.sql` file. In [v1.9](/docs/dbt-versions/core-upgrade/upgrading-to-v1.9) dbt introduced the [YAML timespine defintion](/docs/build/metricflow-time-spine#configuring-time-spine-in-yaml) for MetricFlow. It was then decided that it would be the standard going forward. If you see this deprecation warning, you don't have a YAML timespine definition for Metricflow.
+Before dbt v1.9, the MetricFlow time spine configuration was stored in a `metricflow_time_spine.sql` file. In [v1.9](/docs/dbt-versions/dbt-upgrade/upgrading-to-v1.9) dbt introduced the [YAML timespine defintion](/docs/build/metricflow-time-spine#configuring-time-spine-in-yaml) for MetricFlow. It was then decided that it would be the standard going forward. If you see this deprecation warning, you don't have a YAML timespine definition for Metricflow.
 
 Example:
 
@@ -522,7 +608,7 @@ Define your MetricFlow timespine in [YAML](/docs/build/metricflow-time-spine#cre
 
 dbt has deprecated specifiying keyword arguments as properties on custom generic data tests or data tests that use the [alternative `test_name` format](/docs/reference/resource-properties/data-tests.md#alternative-format-for-defining-tests). Instead, arguments to tests should be specified under the new `arguments` property.
 
-This deprecation warning is only raised when the behavior flag `require_generic_test_arguments_property` is set to `True`.
+This deprecation warning is only raised when the behavior flag `require_generic_test_arguments_property` is set to `true`.
 
 
 #### MissingArgumentsPropertyInGenericTestDeprecation warning resolution
@@ -639,7 +725,7 @@ models:
 
 ### ModelParamUsageDeprecation
 
-The `--models` / `--model` / `-m` flag was renamed to `--select` / `--s` way back in dbt Core v0.21 (Oct 2021). Silently skipping this flag means ignoring your command's selection criteria, which could mean building your entire DAG when you only meant to select a small subset. For this reason, the `--models` / `--model` / `-m` flag will raise a warning in dbt Core v1.10, and an error in Fusion. Please update your job definitions accordingly.
+The `--models` / `--model` / `-m` flag was renamed to `--select` / `--s` way back in dbt v0.21 (Oct 2021). Silently skipping this flag means ignoring your command's selection criteria, which could mean building your entire DAG when you only meant to select a small subset. For this reason, the `--models` / `--model` / `-m` flag will raise a warning in dbt v1.10, and an error in <Constant name="fusion" />. Please update your job definitions accordingly.
 
 #### ModelParamUsageDeprecation warning resolution
 
@@ -737,7 +823,7 @@ The following are recommended approaches:
 
 ### PackageMaterializationOverrideDeprecation
 
-The behavior where installed packages could override built-in materializations without your explicit opt-in is deprecated. Setting the [`require_explicit_package_overrides_for_builtin_materializations` flag](/reference/global-configs/behavior-changes#package-override-for-built-in-materialization) to `false` in your `dbt_project.yml` allowed packages that matched the name of a built-in materialization to continue to be included in the search and resolution order.
+The behavior where installed packages could override built-in materializations without your explicit opt-in is deprecated. Setting the [`require_explicit_package_overrides_for_builtin_materializations` flag](/reference/global-configs/behavior-flags/require_explicit_package_overrides_for_builtin_materializations) to `false` in your `dbt_project.yml` allowed packages that matched the name of a built-in materialization to continue to be included in the search and resolution order.
 
 #### PackageMaterializationOverrideDeprecation warning resolution
 
@@ -832,7 +918,7 @@ sources:
 
 ### ResourceNamesWithSpacesDeprecation
 
-In [dbt 1.8](/docs/dbt-versions/core-upgrade/upgrading-to-v1.8#managing-changes-to-legacy-behaviors), allowing resource names to have spaces in them was deprecated. If you get this deprecation warning, dbt detected a resource name with a space in it.
+In [dbt 1.8](/docs/dbt-versions/dbt-upgrade/upgrading-to-v1.8#managing-changes-to-legacy-behaviors), allowing resource names to have spaces in them was deprecated. If you get this deprecation warning, dbt detected a resource name with a space in it.
 
 Example: 
 
@@ -848,7 +934,7 @@ Rename the resource in violation so it no longer contains a space in its name.
 
 ### SourceFreshnessProjectHooksNotRun
 
-If you are seeing this, it means that the behavior flag `source_freshness_run_project_hooks` is set to `false` and either `on-run-start` or `on-run-end` is defined ([docs](/reference/global-configs/behavior-changes#project-hooks-with-source-freshness)). Previously, project hooks wouldn't be run on sources when `dbt source freshness` was run. 
+If you are seeing this, it means that the behavior flag `source_freshness_run_project_hooks` is set to `false` and either `on-run-start` or `on-run-end` is defined ([docs](/reference/global-configs/behavior-flags/source_freshness_run_project_hooks)). Previously, project hooks wouldn't be run on sources when `dbt source freshness` was run. 
 
 Example: 
 
@@ -862,7 +948,7 @@ information: https://docs.getdbt.com/reference/global-configs/legacy-behaviors
 
 #### SourceFreshnessProjectHooksNotRun warning resolution
 
-Set `source_freshness_run_project_hooks` to `true`. For instructions on skipping project hooks during a `dbt source freshness` invocation, check out the [behavior change documentation](/reference/global-configs/behavior-changes#project-hooks-with-source-freshness).
+Set `source_freshness_run_project_hooks` to `true`. For instructions on skipping project hooks during a `dbt source freshness` invocation, check out the [behavior change documentation](/reference/global-configs/behavior-flags/source_freshness_run_project_hooks).
 
 ### SourceOverrideDeprecation
 

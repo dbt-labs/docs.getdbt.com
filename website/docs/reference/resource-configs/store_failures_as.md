@@ -1,4 +1,5 @@
 ---
+description: "Specify how a data test stores its failures in the database: as a table, a view, or ephemerally."
 resource_types: [tests]
 id: "store_failures_as"
 ---

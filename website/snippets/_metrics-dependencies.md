@@ -4,7 +4,7 @@
 Metric nodes will reflect dependencies on semantic models based on their _measures_. However, dependencies based on filters should not be reflected in:
 
 - [dbt selection syntax](/reference/node-selection/syntax)
-- Visualization of the <Term id="dag">DAG</Term> in dbt-docs and the [integrated development environment](/docs/cloud/studio-ide/develop-in-studio) (IDE).
+- Visualization of the <Term id="dag">DAG</Term> in dbt-docs and the [integrated development environment](/docs/platform/studio-ide/develop-in-studio) (IDE).
 
 This is because metrics need to source nodes for their `depends_on` attribute from a few different places:
 
@@ -21,7 +21,7 @@ But there's a condition: Only the metrics that actually use measures or derived 
 Metric nodes will reflect dependencies on semantic models based on their simple metrics. However, dependencies based on filters should not be reflected in:
 
 - [dbt selection syntax](/reference/node-selection/syntax)
-- Visualization of the <Term id="dag">DAG</Term> in dbt-docs and the [integrated development environment](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) (IDE).
+- Visualization of the <Term id="dag">DAG</Term> in dbt-docs and the [integrated development environment](/docs/platform/studio-ide/develop-in-studio) (IDE).
 
 This is because metrics need to source nodes for their `depends_on` attribute from a few different places:
 

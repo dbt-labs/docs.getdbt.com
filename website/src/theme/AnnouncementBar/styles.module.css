@@ -25,6 +25,16 @@ html[data-announcement-bar-initially-dismissed='true'] .announcementBar {
   display: none;
 }
 
+/*
+ * Page-level banners (set via `banner` frontmatter) are independent of the
+ * global announcement bar, so they must stay visible even if a visitor has
+ * dismissed the global bar (which sets the attribute above).
+ */
+html[data-announcement-bar-initially-dismissed='true'] .pageAnnouncementBar,
+.pageAnnouncementBar {
+  display: flex;
+}
+
 .announcementBarPlaceholder {
   flex: 0 0 10px;
 }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Head from "@docusaurus/Head";
 import MDXCode from '@theme/MDXComponents/Code';
 import MDXPre from '@theme/MDXComponents/Pre';
@@ -31,26 +31,41 @@ import YoutubeVideo from '@site/src/components/youtube';
 import WistiaVideo from '@site/src/components/wistia';
 import VersionBlock from '@site/src/components/versionBlock';
 import Term from '@site/src/components/term';
-import EventsFeed from '@site/src/components/events';
-import { DiscourseFeed, DiscourseHelpFeed } from '@site/src/components/discourse';
 import Hero from '@site/src/components/hero'
 import Card from '@site/src/components/card'
 import Callout from '@site/src/components/callout'
 import BlogPostCard from '@site/src/components/blogPostCard';
 import DocCarousel from '@site/src/components/docCarousel';
 import PostCarousel from '@site/src/components/postCarousel';
-import CommunitySpotlightCard from '@site/src/components/communitySpotlightCard';
-import CommunitySpotlightList from '@site/src/components/communitySpotlightList';
-import dbtEditor from '@site/src/components/dbt-editor';
 import Icon from '@site/src/components/icon';
 import Lifecycle from '@site/src/components/lifeCycle';
 import ProductCard from '@site/src/components/productCard';
 import DetailsToggle from '@site/src/components/detailsToggle';
 import Expandable from '@site/src/components/expandable';
+import Steps, { Step } from '@site/src/components/steps';
 import ConfettiTrigger from '@site/src/components/confetti/';
+import WizardPopcorn from '@site/src/components/wizardPopcorn/';
 import VersionCallout from '@site/src/components/versionCallout';
 import IntroText from '@site/src/components/IntroText';
 import Constant from '@site/src/components/constant';
+import Availability from '@site/src/components/availability';
+import AvailabilityContext from '@site/src/components/availabilityContext';
+import AvailabilityMatrix from '@site/src/components/availabilityMatrix';
+
+function H1WithAvailability(props) {
+  const { availability, renderAfterH1 } = useContext(AvailabilityContext);
+
+  return (
+    <>
+      <MDXHeading as="h1" {...props} />
+      {renderAfterH1 && availability && (
+        <Availability
+          availability={availability}
+        />
+      )}
+    </>
+  );
+}
 
 const MDXComponents = {
   Head,
@@ -62,7 +77,7 @@ const MDXComponents = {
   ul: MDXUl,
   img: MDXImg,
   table: FilterableTable, // All tables automatically get filtering functionality
-  h1: (props) => <MDXHeading as="h1" {...props} />,
+  h1: H1WithAvailability,
   h2: (props) => <MDXHeading as="h2" {...props} />,
   h3: (props) => <MDXHeading as="h3" {...props} />,
   h4: (props) => <MDXHeading as="h4" {...props} />,
@@ -92,23 +107,21 @@ const MDXComponents = {
   YoutubeVideo: YoutubeVideo,
   VersionBlock: VersionBlock,
   Term: Term,
-  EventsFeed: EventsFeed,
-  DiscourseFeed: DiscourseFeed,
-  DiscourseHelpFeed: DiscourseHelpFeed,
-  CommunitySpotlightCard,
-  CommunitySpotlightList,
-  dbtEditor: dbtEditor,
   Icon: Icon,
   Lifecycle: Lifecycle,
   ProductCard: ProductCard,
   DetailsToggle: DetailsToggle,
   Expandable: Expandable,
+  Steps: Steps,
+  Step: Step,
   ConfettiTrigger: ConfettiTrigger,
+  WizardPopcorn: WizardPopcorn,
   SortableTable: SortableTable,
   FilterableTable: FilterableTable,
   SimpleTable: SimpleTable,
   VersionCallout: VersionCallout,
   IntroText: IntroText,
   Constant: Constant,
+  AvailabilityMatrix: AvailabilityMatrix,
 };
 export default MDXComponents;

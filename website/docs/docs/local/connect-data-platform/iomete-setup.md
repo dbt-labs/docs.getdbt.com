@@ -1,5 +1,5 @@
 ---
-title: "Connect iomete to dbt Core"
+title: "Connect iomete to dbt v1"
 sidebar_label: "iomete"
 description: "Read this guide to learn about the iomete warehouse setup in dbt."
 id: "iomete-setup"
@@ -15,6 +15,7 @@ meta:
   slack_channel_link: 'https://getdbt.slack.com/archives/C03JFG22EP9'
   platform_name: 'iomete'
   config_page: '/reference/resource-configs/no-configs'
+availability: local_free
 ---
 
 

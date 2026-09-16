@@ -1,13 +1,13 @@
 ## GCP private connectivity matrix
 
-The following charts outline private connectivity options for GCP deployments of <Constant name="dbt" /> ([multi-tenant](/docs/cloud/about-cloud/tenancy)).
+The following charts outline private connectivity options for GCP deployments of <Constant name="dbt" /> ([multi-tenant](/docs/platform/about-platform/tenancy)).
 
 **Legend:**
 - ✅ = Available
 - ❌ = Not currently available
 - \* = <Term id="shared-endpoint">Shared endpoint</Term> (all others are <Term id="dedicated-endpoint">dedicated</Term>)
 
-_Tenancy:_ MT (multi-tenant) — [learn more about tenancy](/docs/cloud/about-cloud/tenancy).
+_Tenancy:_ MT (multi-tenant) — [learn more about tenancy](/docs/platform/about-platform/tenancy).
 
 :::note About the following matrix tables
 These tables indicate whether private connectivity can be established to specific services, considering major factors such as the network and basic auth layers. dbt has validated these configurations using common deployment patterns and typical use cases. However, individual configurations may vary. If you encounter issues or have questions about your environment, [contact dbt Support](/community/resources/getting-help#dbt-cloud-support) for guidance.
@@ -23,8 +23,8 @@ These tables indicate whether private connectivity can be established to specifi
 
 | Service | MT | Setup guide |
 |---------|-----|-------------|
-| Snowflake | ✅ | [View](/docs/cloud/secure/private-connectivity/gcp/gcp-snowflake) |
-| Google BigQuery | ✅* | [View](/docs/cloud/secure/private-connectivity/gcp/gcp-bigquery) |
+| Snowflake | ✅ | [View](/docs/platform/secure/private-connectivity/gcp/gcp-snowflake) |
+| Google BigQuery | ✅* | [View](/docs/platform/secure/private-connectivity/gcp/gcp-bigquery) |
 | Teradata VantageCloud | ✅ | |
 
 ---
@@ -33,7 +33,7 @@ These tables indicate whether private connectivity can be established to specifi
 
 All of the services below share a common Private Service Connect setup guide — backend configuration varies by service. Self-hosted connections use the <Term id="customer-provisioned">customer-provisioned</Term> model — you are the <Term id="service-producer">service producer</Term> and dbt is the <Term id="consumer">consumer</Term>.
 
-**Setup guide:** [Configuring GCP Private Service Connect for self-hosted services](/docs/cloud/secure/private-connectivity/gcp/gcp-self-hosted)
+**Setup guide:** [Configuring GCP Private Service Connect for self-hosted services](/docs/platform/secure/private-connectivity/gcp/gcp-self-hosted)
 
 | Service | MT |
 |---------|-----|

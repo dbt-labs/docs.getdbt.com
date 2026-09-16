@@ -4,7 +4,9 @@ id: "failing-fast"
 sidebar: "Failing fast"
 ---
 
-Supply the `-x` or `--fail-fast` flag to `dbt run` to make dbt exit immediately if a single resource fails to build. If other models are in-progress when the first model fails, then dbt will terminate the connections for these still-running models.
+Supply the `-x` or `--fail-fast` flag to `dbt run`, `dbt build`, or `dbt test` to make dbt exit immediately on the first failure. `fail_fast` is a global flag, so it stops on both run errors and test errors —&mdash; not just run errors. If other models are in-progress when the first failure happens, then dbt will terminate the connections for these still-running models.
+
+For the full precedence rules and environment-variable equivalent (`DBT_FAIL_FAST`), refer to [`fail_fast` row in About global configs](/reference/global-configs/about-global-configs#available-flags).
 
 For example, you can select four models to run, but if a failure occurs in the first model, the failure will prevent other models from running:
 

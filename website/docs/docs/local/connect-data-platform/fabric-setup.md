@@ -1,5 +1,5 @@
 ---
-title: "Connect Microsoft Fabric Data Warehouse to dbt Core"
+title: "Connect Microsoft Fabric Data Warehouse to dbt v1"
 sidebar_label: "Microsoft Fabric Data Warehouse"
 description: "Read this guide to learn about the Microsoft Fabric Data Warehouse setup in dbt."
 id: fabric-setup
@@ -12,6 +12,7 @@ meta:
   cloud_support: Supported
   platform_name: 'Microsoft Fabric'
   config_page: '/reference/resource-configs/fabric-configs'
+availability: local_free
 ---
 
 <Snippet path="warehouse-setups-cloud-callout" />
@@ -59,7 +60,7 @@ Microsoft Fabric supports two authentication types:
 - Microsoft Entra service principal
 - Microsoft Entra password
 
-To better understand the authentication mechanisms, read our [Connect Microsoft Fabric](/docs/cloud/connect-data-platform/connect-microsoft-fabric) page.
+To better understand the authentication mechanisms, read our [Connect Microsoft Fabric](/docs/platform/connect-data-platform/connect-microsoft-fabric) page.
 
 :::
 

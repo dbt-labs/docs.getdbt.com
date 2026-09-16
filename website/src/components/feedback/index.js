@@ -62,7 +62,7 @@ export const Feedback = () => {
     try {
       // Execute reCAPTCHA
       const token = await window.grecaptcha.execute(
-        "6LeIksMrAAAAABYsWNCpUv15lXXzEZj91zdDCymo",
+        "6LdcbMEsAAAAAOMzfSqbwkS5beDLJBxqIedWFz6M",
         {
           action: "feedback_submission",
         }
@@ -101,7 +101,7 @@ export const Feedback = () => {
   };
 
   return (
-    <div className={styles.feedbackContainer}>
+    <div className={styles.feedbackContainer} data-md-hide="true">
       <h2 id="feedback-header" className={styles.feedbackHeader}>Was this page helpful?</h2>
       <form onSubmit={handleFormSubmit} className={styles.feedbackActions}>
         <div className={styles.feedbackButtons}>

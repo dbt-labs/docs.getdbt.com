@@ -161,7 +161,7 @@ Here’s our branching strategy again, but now with the dbt Cloud processes we w
 
 In order to create the jobs in our diagram, we need dbt Cloud environments. Here are the common configurations for this setup\: 
 
-| Environment Name | [Environment Type](https://docs.getdbt.com/docs/dbt-cloud-environments#types-of-environments) | [Deployment Type](https://docs.getdbt.com/docs/deploy/deploy-environments#staging-environment) | Base Branch | Will handle… |
+| Environment Name | [Environment Type](https://docs.getdbt.com/docs/dbt-platform-environments#types-of-environments) | [Deployment Type](https://docs.getdbt.com/docs/deploy/deploy-environments#staging-environment) | Base Branch | Will handle… |
 | --- | --- | --- | --- | --- |
 | Development | development | - | `main` | Operations done in the IDE (including creating feature branches) |
 | Continuous Integration | deployment | General | `main` | A continuous integration job |
@@ -185,7 +185,7 @@ map environment configurations to our data platform\:
 | Production | `production` | `analytics` |
 
 :::note
-We are showing environment configurations here, but a default database will be set at the highest level in a **[connection](https://docs.getdbt.com/docs/cloud/connect-data-platform/about-connections)** (which is a required setting of an environment). *Deployment* environments can override a connection's database setting when needed.
+We are showing environment configurations here, but a default database will be set at the highest level in a **[connection](https://docs.getdbt.com/docs/platform/connect-data-platform/about-connections)** (which is a required setting of an environment). *Deployment* environments can override a connection's database setting when needed.
 :::
 
 ### Direct promotion example
@@ -260,7 +260,7 @@ Here’s our branching strategy again, but now with the dbt Cloud processes we w
 
 In order to create the jobs in our diagram, we need dbt Cloud environments. Here are the common configurations for this setup\: 
 
-| Environment Name | [Environment Type](https://docs.getdbt.com/docs/dbt-cloud-environments#types-of-environments) | [Deployment Type](https://docs.getdbt.com/docs/deploy/deploy-environments#staging-environment) | Base Branch | Will handle… |
+| Environment Name | [Environment Type](https://docs.getdbt.com/docs/dbt-platform-environments#types-of-environments) | [Deployment Type](https://docs.getdbt.com/docs/deploy/deploy-environments#staging-environment) | Base Branch | Will handle… |
 | --- | --- | --- | --- | --- |
 | Development | development | - | `qa` | Operations done in the IDE (including creating feature branches) |
 | Feature CI | deployment | General | `qa` | A continuous integration job |
@@ -274,7 +274,7 @@ we need to set our **database** and **schema** settings on the environments.
 There are two common setups for mapping code, but before we get in to those 
 remember this note from direct promotion\:
 :::note
-We are showing environment configurations here, but a default database will be set at the highest level in a **[connection](https://docs.getdbt.com/docs/cloud/connect-data-platform/about-connections)** (which is a required setting of an environment). *Deployment* environments can override a connection's database setting when needed.
+We are showing environment configurations here, but a default database will be set at the highest level in a **[connection](https://docs.getdbt.com/docs/platform/connect-data-platform/about-connections)** (which is a required setting of an environment). *Deployment* environments can override a connection's database setting when needed.
 ::: 
 
 - **Configuration 1**\: A 1\:1 of `qa` and `main` assets
@@ -433,7 +433,7 @@ Many git providers have a CODEOWNERS feature which can be leveraged to tag appro
 <summary>How do you execute other types of checks in the development workflow?</summary>
 <p>
 
-Auto-formatting and linting are both [features available in dbt Cloud's IDE](https://docs.getdbt.com/docs/cloud/studio-ide/lint-format#format). You can enable linting [within your CI job](https://docs.getdbt.com/docs/deploy/continuous-integration#sql-linting).
+Auto-formatting and linting are both [features available in dbt Cloud's IDE](https://docs.getdbt.com/docs/platform/studio-ide/lint-format#format). You can enable linting [within your CI job](https://docs.getdbt.com/docs/deploy/continuous-integration#sql-linting).
 
 Other types of checks are typically implemented through external pipelines, and usually through the git provider due to the alignment of where these checks are desired in the development workflow. Many git providers have pipeline features available, such as GitHub's Actions or Gitlab's CI/CD Pipelines. Here's an example which [checks that a branch name follows a pattern upon a pull request event](https://medium.com/@durgeshm01722/add-a-branch-naming-pattern-status-check-to-your-github-prs-660c53331b68)).
     

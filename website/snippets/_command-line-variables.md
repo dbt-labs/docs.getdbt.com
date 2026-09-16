@@ -6,25 +6,31 @@ Use `--vars` to pass one or more variables to a dbt command. Provide the argumen
 
 For example:
 
-```
+```shell
 $ dbt run --vars '{"event_type": "signup"}'
 ```
 
-Inside a model or macro, access the value using the `var()` function:
+You can use the same `--vars` syntax with other dbt commands, such as `dbt snapshot`:
 
+```shell
+$ dbt snapshot --select my_snapshot --vars '{"cutoff_date": "2026-01-01"}'
 ```
+
+Inside a model, snapshot, or macro, access the value using the `var()` function:
+
+```shell
 select '{{ var("event_type") }}' as event_type
 ```
 
 When you pass variables using `--vars`, you can access them anywhere you use the `var()` function in your project.
 
 You can pass multiple variables at once:
-```
+```shell
 $ dbt run --vars '{event_type: signup, region: us}'
 ```
 
 If only one variable is being set, the brackets are optional:
-```
+```shell
 $ dbt run --vars 'event_type: signup'
 ```
 
@@ -32,7 +38,8 @@ The `--vars` argument accepts a YAML dictionary as a string on the command line.
 YAML is convenient because it does not require strict quoting as with <Term id="json" />.
 
 Both of the following are valid and equivalent:
-```
+
+```shell
 $ dbt run --vars '{"key": "value", "date": 20180101}'
 $ dbt run --vars '{key: value, date: 20180101}'
 ```

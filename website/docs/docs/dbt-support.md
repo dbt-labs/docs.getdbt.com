@@ -3,6 +3,7 @@ title: "dbt support"
 id: "dbt-support"
 pagination_next: null
 pagination_prev: null
+availability: all_users
 ---
 
 Support for dbt is available to all users through the following channels:
@@ -11,7 +12,7 @@ Support for dbt is available to all users through the following channels:
 - [The Community Forum](https://discourse.getdbt.com/).
 - [dbt Community slack](https://www.getdbt.com/community/join-the-community/).
   
-## dbt Core support
+## <Constant name="dbt" /> support
 
 If you're developing on the command line (CLI) and have questions or need some help &mdash; reach out to the helpful dbt community through [the Community Forum](https://discourse.getdbt.com/) or [dbt Community slack](https://www.getdbt.com/community/join-the-community/).
 
@@ -21,17 +22,15 @@ The global dbt Support team is available to <Constant name="dbt" /> customers by
 
 ### Create a support ticket
 To create a support ticket in <Constant name="dbt" />:
-1. In the <Constant name="dbt" /> navigation, click on **Help & Guides**.
+1. In the <Constant name="dbt" /> navigation, click on **Get resources**.
 2. Click **Create a support ticket**.
 3. Fill out the form and click **Create Ticket**.
 4. A dbt Support team member will respond to your ticket through email.
 
-<Lightbox src="/img/create-support-ticket.gif" title="Create a support ticket in dbt" />
-
 ### Ask dbt Support Assistant
 dbt Support Assistant is an AI widget that provides instant, AI-generated responses to common questions. This feature is available to <Constant name="dbt" /> users and can help answer troubleshooting questions, give a synopsis of features and functionality, or link to relevant documentation. 
 
-The dbt Support Assistant AI widget is separate from [<Constant name="copilot" />](/docs/cloud/dbt-copilot), a powerful AI engine that helps with code generation to accelerate your analytics workflows. The dbt Support Assistant focuses on answering documentation and troubleshooting-related questions. Enabling or disabling AI features in <Constant name="dbt" /> won't affect the dbt Support Assistant's availability.
+The dbt Support Assistant AI widget is separate from [<Constant name="wizard" />](/docs/platform/wizard-platform), a powerful AI engine that helps with code generation to accelerate your analytics workflows. The dbt Support Assistant focuses on answering documentation and troubleshooting-related questions. Enabling or disabling AI features in <Constant name="dbt" /> won't affect the dbt Support Assistant's availability.
 
 :::info
 We recommend validating information received in AI responses for any scenario using our documentation. Please [contact support](mailto:support@getdbt.com) to report incorrect information provided by the Support Assistant.
@@ -126,8 +125,8 @@ Leave feedback or submit a feature request for <Constant name="dbt" /> or <Const
 
 <Lightbox src="/img/docs/leave-feedback.gif" title="Leave feedback in dbt" />
 
-#### Share feedback or feature request for dbt Core
-- [Create a GitHub issue here](https://github.com/dbt-labs/dbt-core/issues).
+#### Share feedback or feature request for <Constant name="dbt" />
+- [Create a GitHub issue here](https://github.com/dbt-labs/dbt/issues).
 
 ## External help
 

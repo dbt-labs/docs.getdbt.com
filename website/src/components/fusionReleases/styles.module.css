@@ -38,8 +38,41 @@
   letter-spacing: 0.05em;
 }
 
-.versionCard code {
+.versionCard a {
+  color: var(--ifm-link-color);
+  text-decoration: none;
+}
+
+.versionCard a:hover {
+  color: var(--ifm-link-hover-color);
+}
+
+/* Underline the version `code` so decoration isn’t dropped by default `code` styles */
+.versionCard a code {
   font-size: 0.95rem;
+  text-decoration: underline;
+  text-underline-offset: 0.12em;
+}
+
+.versionCard a:hover code {
+  text-decoration-thickness: 2px;
+}
+
+.versionCardVersionRow {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.releaseCandidateBadge {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  background: var(--ifm-color-warning-contrast-background);
+  color: var(--ifm-color-warning-dark);
+  white-space: nowrap;
 }
 
 .versionDate {
@@ -124,7 +157,12 @@
   background: var(--ifm-color-emphasis-100);
   padding: 0.2rem 0.6rem;
   border-radius: 4px;
-  color: var(--ifm-font-color-base);
+  color: var(--ifm-link-color);
+  text-decoration: none;
+}
+
+a.versionTag:hover {
+  text-decoration: underline;
 }
 
 .badge {

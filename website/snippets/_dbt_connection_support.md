@@ -12,4 +12,4 @@
 | AWS Athena    | ✅              | ✅                          | ❌                         | ❌                       | ❌                        | ❌  | ✅              |
 | Postgres      | ✅              | ❌                          | ❌                         | ❌                       | ❌                        | ✅  | ✅              |
 
-** Private connectivity is only supported for certain cloud providers and deployment types. See [Private connectivity documentation](/docs/cloud/secure/private-connectivity/private-connectivity) for details.
+** Private connectivity is only supported for certain cloud providers and deployment types. See [Private connectivity documentation](/docs/platform/secure/private-connectivity/private-connectivity) for details.

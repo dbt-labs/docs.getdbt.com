@@ -284,14 +284,62 @@ When the `persist_docs` option is configured appropriately, you'll be able to
 see model descriptions in the `Comment` field of `describe [table] extended`
 or `show table extended in [database] like '*'`.
 
-## Always `schema`, never `database`
+## Catalog-qualified identifiers (`catalog.schema.table`)
 
-Apache Spark uses the terms "schema" and "database" interchangeably. dbt understands
-`database` to exist at a higher level than `schema`. As such, you should _never_
-use or set `database` as a node config or in the target profile when running dbt-spark.
+Apache Spark supports catalog-qualified three-part identifiers of the form
+`catalog.namespace.identifier`. In dbt-spark, the Spark namespace maps to dbt's
+canonical `schema` field, and the Spark catalog maps to dbt's canonical
+`database` field. The profile key `catalog` is an alias for `database`.
 
-If you want to control the schema/database in which dbt will materialize models,
-use the `schema` config and `generate_schema_name` macro _only_.
+To select a specific catalog, set `catalog` in your target profile:
+
+<File name='~/.dbt/profiles.yml'>
+
+```yaml
+your_profile_name:
+  target: dev
+  outputs:
+    dev:
+      type: spark
+      method: session
+      host: localhost
+      catalog: my_catalog
+      schema: my_namespace
+```
+
+</File>
+
+With this profile, dbt renders relations as `my_catalog.my_namespace.table_name`.
+The connection method used in the example (`session`) is illustrative only —
+three-part naming is independent of the connection method and applies to
+`session`, `thrift`, `http`, and `odbc` connections alike; the method only
+selects the transport.
+
+Omitting `catalog` preserves the existing two-part `schema.table` identifiers.
+
+Model and source configurations use dbt's canonical `database` field to select
+a different catalog:
+
+```sql
+{{ config(database="other_catalog") }}
+```
+
+<VersionBlock firstVersion="1.11">
+
+**Compatibility notes for catalog-qualified identifiers:**
+
+- `catalog` and `database` are aliases — set one or the other, never both.
+- Existing profiles where `database` and `schema` have the same value continue
+  to render two-part identifiers. Use the explicit `catalog` key when the
+  catalog and the namespace intentionally have the same name.
+- Model and source `database` (or `+database`) values that dbt-spark previously
+  ignored will begin selecting a catalog. Audit your project for dormant
+  `database` configs before upgrading.
+- Spark itself must support multipart identifiers, and the named catalog must
+  already be configured in your Spark environment — dbt-spark does not install
+  catalog plugins.
+
+</VersionBlock>
 
 ## Default file format configurations
 

@@ -13,7 +13,7 @@ NoneType object has no attribute
 enumerate_fields'
 ```
 
-Usually this error indicates that you tried connecting your database via [SSH tunnel](/docs/cloud/connect-data-platform/connect-redshift#connecting-using-an-ssh-tunnel). If you're seeing this error, double-check you have supplied the following items:
+Usually this error indicates that you tried connecting your database via [SSH tunnel](/docs/platform/connect-data-platform/connect-redshift#connecting-using-an-ssh-tunnel). If you're seeing this error, double-check you have supplied the following items:
 
 - the hostname
 - username

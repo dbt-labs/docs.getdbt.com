@@ -1,10 +1,10 @@
 <DetailsToggle alt_header="Is the dbt Semantic Layer open source?">
 
-The <Constant name="semantic_layer" /> is proprietary; however, some components of the <Constant name="semantic_layer" /> are open source, such as <Constant name="core" /> and MetricFlow.
+The <Constant name="semantic_layer" /> is proprietary; however, some components of the <Constant name="semantic_layer" /> are open source, such as <Constant name="dbt" /> and MetricFlow.
 
-<Constant name="dbt" /> Developer or <Constant name="core" /> users can define metrics in their project, including a local <Constant name="core" /> project, using the <Constant name="studio_ide" />, <Constant name="platform_cli" />, or <Constant name="core" /> CLI. However, to experience the universal <Constant name="semantic_layer" /> and access those metrics using the API or downstream tools, users must be on a <Constant name="dbt" /> [Enterprise or Enterprise+](https://www.getdbt.com/pricing/) plan.
+<Constant name="dbt_platform" /> Developer or <Constant name="dbt" /> users can define metrics in their project, including a local <Constant name="dbt" /> project, using the <Constant name="studio_ide" />, <Constant name="platform_cli" />, or dbt CLI. However, to experience the universal <Constant name="semantic_layer" /> and access those metrics using the API or downstream tools, users must be on a <Constant name="dbt_platform" /> [Enterprise or Enterprise+](https://www.getdbt.com/pricing/) plan.
 
-Refer to <a href="https://docs.getdbt.com/docs/cloud/billing">Billing</a> for more information.
+Refer to <a href="https://docs.getdbt.com/docs/platform/billing">Billing</a> for more information.
 
 </DetailsToggle>
 
@@ -16,7 +16,7 @@ As we refine MetricFlow’s API layers, some users may find it easier to set up 
 
 </DetailsToggle>
 
-<DetailsToggle alt_header="Why is my query limited to 100 rows in the Cloud CLI?">
+<DetailsToggle alt_header="Why is my query limited to 100 rows in the dbt platform CLI?">
 
 The default `limit` for query issues from the <Constant name="platform_cli" /> is 100 rows. We set this default to prevent returning unnecessarily large data sets as the <Constant name="platform_cli" /> is typically used to query the dbt Semantic Layer during the development process, not for production reporting or to access large data sets. For most workflows, you only need to return a subset of the data.
   

@@ -3,7 +3,17 @@ title: "About dbt artifacts"
 sidebar_label: "About dbt artifacts"
 ---
 
+<VersionBlock lastVersion="1.11">
+
 With every invocation, dbt generates and saves one or more *artifacts*. Several of these are <Term id="json" /> files (`semantic_manifest.json`, `manifest.json`, `catalog.json`, `run_results.json`, and `sources.json`) that are used to power:
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.12">
+
+With every invocation, dbt generates and saves one or more *artifacts*. Several of these are <Term id="json" /> files (`semantic_manifest.json`, `osi_document.json`, `manifest.json`, `catalog.json`, `run_results.json`, and `sources.json`) that are used to power:
+
+</VersionBlock>
 
 - [documentation](/docs/explore/build-and-view-your-docs)
 - [state](/reference/node-selection/syntax#about-node-selection)
@@ -21,12 +31,27 @@ They could also be used to:
 
 Most dbt commands (and corresponding RPC methods) produce artifacts:
 - [semantic manifest](/reference/artifacts/sl-manifest): produced whenever your dbt project is parsed
+<VersionBlock firstVersion="1.12">
+
+- [Apache Ossie document](/reference/artifacts/sl-manifest#apache-ossie-document): produced whenever your dbt project is parsed
+
+</VersionBlock>
 - [manifest](/reference/artifacts/manifest-json): produced by commands that read and understand your project
 - [run results](/reference/artifacts/run-results-json): produced by commands that run, compile, or catalog nodes in your DAG
 - [catalog](catalog-json): produced by `docs generate`
-- [sources](/reference/artifacts/sources-json): produced by `source freshness`
+<VersionBlock lastVersion="1.99">
 
-When running commands from the [<Constant name="dbt" /> CLI](/docs/cloud/cloud-cli-installation), all artifacts are downloaded by default. If you want to change this behavior, refer to [How to skip artifacts from being downloaded](/docs/cloud/configure-cloud-cli#how-to-skip-artifacts-from-being-downloaded).
+- [sources](/reference/artifacts/sources-json): produced by `dbt source freshness`
+
+</VersionBlock>
+<VersionBlock firstVersion="2.0">
+
+- [sources](/reference/artifacts/sources-json): produced by `dbt freshness` when sources are included; retained for backward compatibility
+- [freshness](/reference/artifacts/freshness-json): produced by [`dbt freshness`](/reference/commands/freshness); covers both sources and models with freshness configured, with a `resource_type` field on each entry to distinguish them
+
+</VersionBlock>
+
+When running commands from the [<Constant name="dbt" /> CLI](/docs/platform/dbt-cli-installation), all artifacts are downloaded by default. If you want to change this behavior, refer to [How to skip artifacts from being downloaded](/docs/platform/configure-dbt-cli#how-to-skip-artifacts-from-being-downloaded).
 
 ## Where are artifacts produced?
 
@@ -45,7 +70,7 @@ All artifacts produced by dbt include a `metadata` dictionary with these propert
 
 In the manifest, the `metadata` may also include:
 - `send_anonymous_usage_stats`: Whether this invocation sent [anonymous usage statistics](/reference/global-configs/usage-stats) while executing.
-- `project_name`: The `name` defined in the root project's `dbt_project.yml`. (Added in manifest v10 / dbt Core v1.6)
+- `project_name`: The `name` defined in the root project's `dbt_project.yml`. (Added in manifest v10 / <Constant name="dbt" /> v1.6)
 - `project_id`: Project identifier, hashed from `project_name`, sent with anonymous usage stats if enabled.
 - `user_id`: User identifier, stored by default in `~/dbt/.user.yml`, sent with anonymous usage stats if enabled.
 

@@ -105,7 +105,7 @@ import LegacySnapshotConfig from '/snippets/_legacy-snapshot-config.md';
 
 ### Snapshot configuration migration
 
-The latest snapshot configurations introduced in dbt Core v1.9 (such as [`snapshot_meta_column_names`](/reference/resource-configs/snapshot_meta_column_names), [`dbt_valid_to_current`](/reference/resource-configs/dbt_valid_to_current), and `hard_deletes`) are best suited for new snapshots, but you can also adopt them in existing snapshots by migrating your table schema and configs carefully to avoid any inconsistencies in your snapshots. 
+The latest snapshot configurations introduced in <Constant name="dbt" /> v1.9 (such as [`snapshot_meta_column_names`](/reference/resource-configs/snapshot_meta_column_names), [`dbt_valid_to_current`](/reference/resource-configs/dbt_valid_to_current), and `hard_deletes`) are best suited for new snapshots, but you can also adopt them in existing snapshots by migrating your table schema and configs carefully to avoid any inconsistencies in your snapshots. 
 
 Here's how you can do it:
 
@@ -236,7 +236,7 @@ Snapshots can be configured in multiple ways:
 
 <VersionBlock firstVersion="1.9">
 
-1. Defined in YAML files using the `config` [resource property](/reference/model-properties), typically in your [snapshots directory](/reference/project-configs/snapshot-paths) or whichever folder you pefer. Available in [the <Constant name="dbt" /> release track](/docs/dbt-versions/cloud-release-tracks), dbt v1.9 and higher.
+1. Defined in YAML files using the `config` [resource property](/reference/model-properties), typically in your [snapshots directory](/reference/project-configs/snapshot-paths) or whichever folder you prefer. Available in [the <Constant name="dbt" /> release track](/docs/dbt-versions/dbt-release-tracks), dbt v1.9 and higher.
 2. From the `dbt_project.yml` file, under the `snapshots:` key. To apply a configuration to a snapshot, or directory of snapshots, define the resource path as nested dictionary keys.
 </VersionBlock>
 

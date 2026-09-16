@@ -74,7 +74,7 @@ Often overlooked, this third pillar of process can be the key to success when sc
 
 ### Technology and people
 
-Our teams’ differing levels of technical maturity demanded different technical solutions. The core team was well versed with dbt Core (even [contributing](https://github.com/dbt-labs/dbt-core/pull/3408) to the project!) and had been working on the same project for 3 years with software engineering best practices  (i.e. CI/CD, unit tests, linting, and pre-commit hooks). The affiliate teams had noticeably different exposure to these tools. Thus, we rolled out dbt Cloud to the country teams to avoid onboarding them to complex core workflows, which would have unnecessarily slowed them down.
+Our teams’ differing levels of technical maturity demanded different technical solutions. The core team was well versed with dbt Core (even [contributing](https://github.com/dbt-labs/dbt/pull/3408) to the project!) and had been working on the same project for 3 years with software engineering best practices  (i.e. CI/CD, unit tests, linting, and pre-commit hooks). The affiliate teams had noticeably different exposure to these tools. Thus, we rolled out dbt Cloud to the country teams to avoid onboarding them to complex core workflows, which would have unnecessarily slowed them down.
 
 dbt Cloud removed the need to set up local environments; no need to worry about library versions or about installing git clients. Instead, they were quickly building and testing dbt models. As SQL is second nature to all of the country teams (irrespective of the platform they were using prior to dbt), they picked up dbt in no time at all, and the need for support from the core team quickly became minimal.
 
@@ -92,7 +92,7 @@ Operating at scale meant we needed to adapt our processes that once worked for a
 
 ### Project setup flow
 
-Because we decided to go with a multi-project architecture, there was some initial setup needed. Each country would need a dbt project in our Git repository and also needed to be deployed in dbt Cloud…twice, as each affiliate has a dev and a prod project. To avoid setting up all of the projects manually in the dbt Cloud UI, we implemented a python library as a wrapper around the [dbt Cloud Administrative API](https://docs.getdbt.com/docs/dbt-cloud-apis/admin-cloud-api).  This would read a YAML configuration file and deploy all of the projects automatically. This saved a lot of time, as we would already have a new team’s dbt project setup in both the git repository and dbt Cloud as soon as they were ready to start building.
+Because we decided to go with a multi-project architecture, there was some initial setup needed. Each country would need a dbt project in our Git repository and also needed to be deployed in dbt Cloud…twice, as each affiliate has a dev and a prod project. To avoid setting up all of the projects manually in the dbt Cloud UI, we implemented a python library as a wrapper around the [dbt Cloud Administrative API](https://docs.getdbt.com/docs/dbt-apis/admin-api).  This would read a YAML configuration file and deploy all of the projects automatically. This saved a lot of time, as we would already have a new team’s dbt project setup in both the git repository and dbt Cloud as soon as they were ready to start building.
 
 ### Development flow
 

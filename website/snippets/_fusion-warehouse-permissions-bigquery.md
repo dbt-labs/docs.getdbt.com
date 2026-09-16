@@ -47,7 +47,7 @@ The following roles represent the typical starting point for dbt access:
 | `roles/bigquery.user` | Run jobs, create datasets | Job execution |
 | `roles/bigquery.jobUser` | Run jobs only | Minimal query execution |
 
-For Storage Read API access with Fusion, also grant **BigQuery Read Session User** (`roles/bigquery.readSessionUser`) on the project, as noted in [Connect BigQuery](/docs/cloud/connect-data-platform/connect-bigquery#required-permissions).
+For Storage Read API access with <Constant name="fusion" />, also grant **BigQuery Read Session User** (`roles/bigquery.readSessionUser`) on the project, as noted in [Connect BigQuery](/docs/platform/connect-data-platform/connect-bigquery#required-permissions).
 
 ### Metadata operations
 
@@ -63,7 +63,7 @@ The following are required for fundamental dbt features:
 
 ### INFORMATION_SCHEMA and metadata views
 
-Fusion queries these BigQuery system views:
+dbt v2 queries these BigQuery system views:
 
 | View | Purpose | Scope |
 | --- | --- | --- |

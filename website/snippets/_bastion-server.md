@@ -1,4 +1,4 @@
-Use an SSH tunnel when your {props.redshift}{props.postgresalloydb} instance is not publicly accessible and must be reached through a [bastion server](/docs/cloud/connect-data-platform/connect-redshift#about-the-bastion-server-in-aws). When enabled, <Constant name="dbt_platform" /> connects to your database by first establishing a secure connection to the bastion host, which then forwards traffic to your database.
+Use an SSH tunnel when your {props.redshift}{props.postgresalloydb} instance is not publicly accessible and must be reached through a [bastion server](/docs/platform/connect-data-platform/connect-redshift#about-the-bastion-server-in-aws). When enabled, <Constant name="dbt_platform" /> connects to your database by first establishing a secure connection to the bastion host, which then forwards traffic to your database.
 
 To configure a connection using an SSH tunnel:
 
@@ -8,7 +8,7 @@ To configure a connection using an SSH tunnel:
 4. Enter the hostname, username, and port for the bastion server.
 
 <Lightbox
-  src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/postgres-redshift-ssh-tunnel.png"
+  src="/img/docs/dbt-platform/platform-configuring-dbt-platform/postgres-redshift-ssh-tunnel.png"
   width="70%"
   title="A public key is generated after saving"
 />
@@ -43,7 +43,7 @@ To configure a connection using an SSH tunnel:
 
 To configure the SSH tunnel in <Constant name="dbt" />, you'll need to provide the hostname/IP of your bastion server, username, and port, of your choosing, that <Constant name="dbt" /> will connect to. Review the following steps:
 
-1. Verify the bastion server has its network security rules set up to accept connections from the [<Constant name="dbt" /> IP addresses](/docs/cloud/about-cloud/access-regions-ip-addresses) on whatever port you configured.
+1. Verify the bastion server has its network security rules set up to accept connections from the [<Constant name="dbt" /> IP addresses](/docs/platform/about-platform/access-regions-ip-addresses) on whatever port you configured.
 2. Set up the user account by using the bastion servers instance's CLI, The following example uses the username `dbtcloud`:
     
     ```shell

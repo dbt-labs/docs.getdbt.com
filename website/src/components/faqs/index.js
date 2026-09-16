@@ -35,7 +35,7 @@ function FAQ({ path, alt_header = null }) {
   };
 
   return (
-    <div className={styles.faqs}>
+    <div className={`${styles.faqs} faq-container`}>
       <span className={styles.link} onClick={toggleOn}>
         <span
           className={styles.toggle}

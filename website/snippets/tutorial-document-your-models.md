@@ -57,12 +57,15 @@ Update your `models/schema.yml` file to include some descriptions, such as those
 <TabItem value="View in Catalog" >
 
 [<Constant name="catalog" />](/docs/explore/explore-projects) provides powerful tools to interact with your dbt projects, including documentation:
-1. From the IDE, run one of the following commands:
+
+1. Run one of the following commands:
    - `dbt docs generate` if you're on <Constant name="core" />
-   - `dbt build` if you're on the <Constant name="fusion_engine" />
-2. Click **Catalog** in the navigation menu to launch <Constant name="catalog" />.
-3. In the <Constant name="catalog" /> pane, click the environment selection dropdown menu at the top of the file tree and change it from **Production** to **Development**.
-  <Lightbox src="/img/docs/collaborate/dbt-explorer/catalog-nav-dropdown.png" width="85%" title="View your development environment information." />
+   - `dbt build` if you're on <Constant name="fusion_engine" />
+2. Click **<Constant name="catalog" />** in the navigation menu to launch <Constant name="catalog" />.
+3. <Constant name="catalog" /> reflects **Production** by default. If your account has additional environments (for example, **Staging**), you can select them from the environment dropdown.
+
+  <Lightbox src="/img/docs/collaborate/dbt-explorer/catalog-nav-dropdown.png" width="85%" title="Select an environment in Catalog." />
+
 4. Select your project from the file tree.
 5. Use the search bar or browse the resource list to find the `customers` model.
 6. Click the model to view its details, including the descriptions you added.
@@ -75,7 +78,7 @@ Update your `models/schema.yml` file to include some descriptions, such as those
 
 <TabItem value="View in Studio IDE" >
 
-You can view docs directly from the IDE if you're on `Latest` or another version of <Constant name="core" />. Keep in mind that this is a legacy view and doesn't offer the same level of interactivity as <Constant name="catalog" />.
+You can view docs directly from the IDE if you're on **v1 Latest** or another version of <Constant name="core" />. Keep in mind that this is a legacy view and doesn't offer the same level of interactivity as <Constant name="catalog" />.
 
 1. In the IDE, run `dbt docs generate`.
 2. From the navigation bar, click the **View docs** icon located to the right of the **branch name**.

@@ -45,10 +45,11 @@ Always use these exact names (case-sensitive):
 | Product | Usage | Notes |
 |---------|-------|-------|
 | dbt Labs | The company | Always lowercase "dbt", capital "L" |
-| dbt | Generic reference | Use when content applies to all dbt offerings |
-| dbt Core | Versions ≤1.x | Lowercase "dbt", capital "C" |
-| dbt Fusion engine | Versions ≥2.x | Can shorten to "Fusion" in docs |
-| dbt | Cloud-based offering | Formerly "dbt Cloud"; use "managed dbt" or "dbt platform" for clarity |
+| dbt | Default reference | Use for general features that don't need version gating (like for v1) or new default features going forward with v2 |
+| dbt v1 | Versions ≤1.x (formerly "dbt Core" or "dbt Core v1.x") | Always lowercase "dbt". Write "dbt v1" in a header or at the start of a sentence; use bare "v1" inline |
+| dbt v2 | Versions ≥2.x (formerly "Fusion" / "dbt Fusion engine" / "dbt Core 2.0") | Always lowercase "dbt". Write "dbt v2" in a header or at the start of a sentence; use bare "v2" inline |
+| dbt OSS | The Apache 2.0 open-source distribution of v2 | Hard-code the literal text — there is no `<Constant>` for it. Not a synonym for dbt v2, which also covers the proprietary distribution |
+| dbt | Cloud-based offering | Formerly "dbt Cloud"; use "dbt platform" for clarity |
 
 Plan tiers (capitalize): Developer, Starter, Enterprise, Enterprise+
 
@@ -114,7 +115,7 @@ Use all caps unless another standard exists (such as in code blocks):
 
 | ❌ Avoid | ✅ Use |
 |----------|--------|
-| `/docs/deploy/how-we-think-about-architecture` | `/docs/cloud/about-cloud/architecture` |
+| `/docs/deploy/how-we-think-about-architecture` | `/docs/platform/about-platform/architecture` |
 | `getting-started-with-dbt-setup.md` | `dbt-setup.md` |
 
 ### Sidebar configuration
@@ -315,7 +316,7 @@ Use the `<Card` component to display content and actions on a single topic. Thes
 <Card
     title="Studio IDE"
     body="The IDE is the easiest way to develop dbt models."
-    link="/docs/cloud/studio-ide/develop-in-studio"
+    link="/docs/platform/studio-ide/develop-in-studio"
     icon="pencil-paper"/>
 
 <Card
@@ -404,7 +405,7 @@ Explain placeholders in the preceding paragraph. For example, you'd explain CLUS
 
 **Example:**
 ```markdown
-[Regions & IP Addresses](/docs/cloud/about-cloud/access-regions-ip-addresses)
+[Regions & IP Addresses](/docs/platform/about-platform/access-regions-ip-addresses)
 ```
 
 **Section links:**
@@ -529,8 +530,8 @@ Avoid Latin abbreviations. Use plain language:
 
 | ❌ Avoid | ✅ Use |
 |----------|--------|
-| CLI (alone) | dbt CLI or dbt Core |
-| dbt CLI | dbt CLI (full name) |
+| CLI (alone) | dbt CLI or dbt v1/v2 |
+| dbt CLI | dbt platform CLI (full name) |
 | enter (in UI) | type |
 | type (in command line) | enter |
 | e-mail | email |

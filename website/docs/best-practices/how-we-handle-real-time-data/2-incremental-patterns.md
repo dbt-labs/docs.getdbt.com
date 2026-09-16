@@ -33,7 +33,7 @@ In this example, assume you have raw events continuously landing into `raw.event
 Configure the SQL model with the following settings:
 
 - Use the `incremental` filter to only scan rows newer than the latest timestamp already in the target.
-- Use `incremental_strategy='merge'` with `unique_key=event_id` to give you idempotent upserts (inserts + updates).
+- Use `incremental_strategy='merge'` with `unique_key=event_id` to give you <Term id="idempotent">idempotent</Term> upserts (inserts + updates).
 - Cluster by date using `cluster_by=['event_date']` helps with query pruning during `MERGE` operations (syntax varies by warehouse).
 - Run the model every few minutes to achieve a freshness service level agreement (SLA) measured in minutes, depending on ingestion and job scheduling.
 
@@ -181,7 +181,7 @@ There are some key differences from [pattern 1](#incremental-merge-from-append-o
 
 ## Pattern 3: Microbatch for large time-series tables {#microbatch-for-large-time-series-tables}
 
-For large `fact` tables where backfills or long lookback windows are challenging, use `incremental_strategy='microbatch'` (available in <Constant name="core" /> v1.9 or higher and Latest release track in <Constant name="dbt_platform" />). Refer to [incremental microbatch](/docs/build/incremental-microbatch) for more details. Note that Microsoft Fabric doesn't support microbatch yet. See [incremental strategy by adapter](/docs/build/incremental-strategy#supported-incremental-strategies-by-adapter) for more details.
+For large `fact` tables where backfills or long lookback windows are challenging, use `incremental_strategy='microbatch'` (available in <Constant name="dbt" /> v1.9 or higher and **v1 Latest** release track in <Constant name="dbt_platform" />). Refer to [incremental microbatch](/docs/build/incremental-microbatch) for more details. Note that Microsoft Fabric doesn't support microbatch yet. See [incremental strategy by adapter](/docs/build/incremental-strategy#supported-incremental-strategies-by-adapter) for more details.
 
 :::info microbatch must have event_time
 

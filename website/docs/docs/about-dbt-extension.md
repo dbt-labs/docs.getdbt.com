@@ -1,27 +1,48 @@
 ---
 title: About the dbt VS Code extension
 id: about-dbt-extension
-description: "Bring all the speed and power of the dbt Fusion engine to your local development workflow."
+description: "Bring all the speed and power of self-hosted dbt to your local dbt development workflow, whether you execute with dbt v1 or v2."
 sidebar_label: "dbt VS Code extension"
 image: /img/docs/extension/extension-marketplace.png
 pagination_next: "docs/dbt-extension-features"
+availability: local_all
 ---
 
-# About the dbt VS Code extension <Lifecycle status="preview" />
+# About the dbt VS Code extension
 
 The dbt VS Code extension brings a hyper-fast, intelligent, and cost-efficient dbt development experience to VS Code.
-This is the only way to enjoy all the power of the <Constant name="fusion_engine" /> while developing locally.
+This is the only way to enjoy all the power of dbt v2 while developing with a self-hosted installation.
 
 - _Save time and resources_ with near-instant parsing, live error detection, powerful IntelliSense capabilities, and more.
 - _Stay in flow_ with a seamless, end-to-end dbt development experience designed from scratch for local dbt development.
 
-The dbt VS Code extension is available in the [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=dbtLabsInc.dbt). _Note, this is a public preview release. Behavior may change ahead of the broader generally available (GA) release._
+The dbt VS Code extension is available in the [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=dbtLabsInc.dbt).
 
-The dbt VS Code extension is only compatible with the <Constant name="fusion_engine" />, but not with <Constant name="core" />.
+The dbt VS Code extension works with v2, the default free-to-use product you get when you install dbt.
 
-:::tip Try out the Fusion quickstart guide
+## Version compatibility
 
-Check out the [Fusion quickstart guide](/guides/fusion?step=1) to try the dbt VS Code extension in action.
+dbt v1 and v2 both support the dbt VS Code extension.
+
+You get editor features out of the box as long as your project complies with the v2 language spec:
+
+- Autocomplete for `ref`, sources, macros, and doc blocks
+- Go to definition and find references for models, sources, macros, and docs
+- Jinja syntax error detection
+- Model renames that update `ref` calls, and source or table reference renames
+- View compiled SQL, and preview a model, selected SQL, or an individual CTE
+- Run `dbt run`, `build`, `test`, and selectors
+- Table descriptions, metadata, and metadata on hover
+- Production column types, descriptions, and tests
+- Visual and textual table lineage in the extension pane
+
+If your project isn't compliant with the v2 language spec yet, the extension has [dbt-autofix](https://github.com/dbt-labs/dbt-autofix) built in. Opt in to fix deprecations across your project in a single pull request. Each issue in the **Problems** pane also has an autofix action, available from the lightbulb or right-click menu.
+
+To unlock the full language server, including column-level lineage, column go-to definition and find references, nonexistent-column and type detection, warehouse-specific syntax checks, column renames that propagate downstream, and `SELECT *` expansion, enable [`static_analysis: strict`](/reference/resource-configs/static-analysis?version=2) and resolve your parse errors. Refer to [About dbt LSP](/docs/about-dbt-lsp) for the full feature list.
+
+:::tip Try out the dbt v2 quickstart guide
+
+Check out the [v2 quickstart guide](/guides/dbt?step=1) to try the dbt VS Code extension in action.
 
 :::
 
@@ -34,17 +55,27 @@ Check out the following video to see the features and functionality of the dbt V
 <div style={{ position: 'relative', maxWidth: '960px', margin: '2rem auto', overflow: 'hidden', borderRadius: '12px', height: '500px', boxShadow: 'var(--ifm-global-shadow-lw)' }}>
   <iframe
     src="https://app.storylane.io/share/a1rkqx0mbd7a"
-    title="dbt Fusion + VS Code extension walkthrough"
+    title="dbt v2 + VS Code extension walkthrough"
     style={{ position: 'relative', top: '-48px', height: '900px', width: '100%', border: 0, paddingBottom:'calc(42.20%)',transform: 'scale(1)'}}
     allow="fullscreen; autoplay; encrypted-media"
   />
 </div>
 
+### Sign in and feature access
+
+After you install the dbt VS Code extension, its [features](/docs/dbt-extension-features) are available to you. What's available depends on your project's [static analysis](/docs/build/about-static-analysis) mode. For example, column-level lineage and column go-to definition need `static_analysis: strict`.
+
+A few capabilities read data from your <Constant name="dbt_platform" /> account, such as the **Catalog** tab and [compare changes](/docs/dbt/vs-compare-changes) with platform deferral. [Sign in](/docs/sign-in-dbt-extension) to a <Constant name="dbt_platform" /> account so the extension can reach your account for those.
+
+Refer to [VS Code extension features](/docs/dbt-extension-features#feature-availability) for the full list of features and their availability.
+
+Signing in is handled by [`dbt login`](/reference/commands/login?version=2.0). Your login state is shared across the CLI, dbt VS Code extension, and dbt State (if you log in using <Constant name="dbt_platform" />). You can use the [get started wizard](/docs/install-dbt-extension#getting-started) or run `dbt login` from your terminal, then restart or reload VS Code. The extension detects your login automatically.
+
 ### The dbt extension menu
 
 The dbt logo on the sidebar (or the **dbt Extension** text on the bottom tray) launches the main menu for the extension. This menu contains helpful information and actions you can take:
-- **Get started button:** Launches the [Fusion upgrade](/docs/install-dbt-extension#upgrade-to-fusion) workflow.
-- **Extension info:** Information about the extension, Fusion, and your dbt project. Includes configuration options and actions.
+- **Get started button:** Launches the [v2 upgrade](/docs/upgrade-to-dbt-extension) workflow.
+- **Extension info:** Information about the extension, v2, and your dbt project. Includes configuration options and actions.
 - **Help:** Quick links to support, bug submissions, and documentation.
 
 <Lightbox src="/img/docs/extension/sidebar-menu.png" width="30%" title="dbt VS Code extension welcome screen."/>
@@ -57,17 +88,7 @@ The dbt extension caches important schema information from your data warehouse t
 2. Expand the **Extension info** section and location the **Actions** subsection.
 3. Click **Clear Cache** to update.
 
-### Productivity features
-
-:::info This section has moved
-
-We've moved productivity features to their own page! Check out their [new location](/docs/dbt-extension-features).
-
-:::
-
 ## Using the extension
-
-Your dbt environment must be using the dbt Fusion engine in order to use this extension. See [the Fusion documentation](/docs/fusion) for more on eligibility and upgrading.
 
 Once installed, the dbt extension automatically activates when you open any `.sql` or `.yml` file inside of a dbt project directory. 
 
@@ -117,6 +138,16 @@ To solve this issue, do one of the following:
   This could disable _all_ use of the schema store, resulting in unintended consequences. 
 
 
+## dbt Wizard
+
+The dbt VS Code extension and [dbt Wizard](/docs/dbt-ai/wizard-quickstart) are designed to work together. The extension gives you fast parsing, inline error detection, and IntelliSense. [dbt Wizard](/docs/dbt-ai/wizard-quickstart) adds an AI layer on top &mdash; one that works with a live understanding of your project through dbt's [native metadata engine](/docs/dbt-ai/about-dbt-ai), a structured index of your [lineage](/docs/explore/explore-projects), model health, test coverage, and semantic definitions.
+
+- **Build and refactor from natural language**: Describe what you want, review the diff, approve or redirect before anything is saved.
+- **Validate changes before they land**: The agent compiles and runs against your warehouse in a tight loop — not just editor linting.
+- **Work with your full project map**: Traverse the [DAG](/docs/explore/explore-projects), understand downstream impact, and keep tests and YAML in sync as models change.
+
+For data practitioners, combining the extension's dbt-powered editor experience with dbt Wizard's project-aware agent means less manual YAML, fewer context switches, and faster iteration on complex modeling work. See [dbt Wizard quickstart](/docs/dbt-ai/wizard-quickstart) to get started.
+
 ## Support
 
 dbt platform customers can contact dbt Labs support at [support@getdbt.com](mailto:support@getdbt.com). You can also get in touch with us by reaching out to your Account Manager directly.
@@ -126,6 +157,10 @@ For organizations that are not customers of the dbt platform, the best place for
 We welcome feedback as we work to continuously improve the extension, and would love to hear from you!
 
 For more information regarding support and acceptable use of the dbt VS Code extension, refer to our [Acceptable Use Policy](https://www.getdbt.com/dbt-assets/vscode-plugin-aup).
+
+:::tip Developing locally as a <Constant name="dbt_platform"/> user?
+Refer to the [Hybrid development with <Constant name="dbt_platform"/> and dbt v2](/guides/dbt-platform-local-workflow) guide for how to keep credentials, environment variables, and v2 versions in sync between your local extension and <Constant name="dbt_platform"/>.
+:::
 
 import AboutFusion from '/snippets/_about-fusion.md';
 

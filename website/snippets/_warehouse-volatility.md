@@ -9,6 +9,6 @@ Different warehouses show volatility controls with different keywords and defaul
 | [Databricks](https://docs.databricks.com/aws/en/udf/unity-catalog#set-deterministic-if-your-function-produces-consistent-results) | `DETERMINISTIC` | Not supported | Assumed `non-deterministic` unless declared |
 | [Postgres](https://www.postgresql.org/docs/current/xfunc-volatility.html) | `IMMUTABLE` | `STABLE` | `VOLATILE` (default) |
 
-BigQuery does not support explicitly setting volatility. Instead, BigQuery infers volatility based on the functions and expressions used within the UDF.
+For SQL and Python UDFs, BigQuery does not support explicitly setting volatility and infers it based on the functions and expressions used. For JavaScript UDFs, BigQuery supports `deterministic` and `non-deterministic` only; `stable` is not supported.
 
 </Expandable>

@@ -2,17 +2,26 @@
 title: "About dbt versions"
 id: "dbt-versions"
 description: "Learn about semantic versioning for dbt engines, and how long those versions are supported."
-pagination_next: "docs/dbt-versions/upgrade-dbt-version-in-cloud"
+pagination_next: "docs/dbt-versions/upgrade-dbt-platform-version"
 pagination_prev: null
+availability: all_users
 ---
 
-Both dbt engines &mdash; the <Constant name="fusion_engine"/> (Rust-based) and <Constant name="core"/> (Python-based) &mdash; follow [semantic versioning](https://semver.org/). This page explains how versioning works for local dbt installations.
+dbt v2 is the current generation of dbt and uses the 2.x release series. dbt v1 is the Python-based generation and stays on the 1.x series. Both follow semantic versioning. This page covers versioning for local dbt installations.
 
-If you're using the <Constant name="dbt_platform" /> (including the <Constant name="platform_cli"/>), you don't need to manage dbt versions yourself. [Release tracks](/docs/dbt-versions/cloud-release-tracks) automatically keep you up to date and provide early access to new features.
+v2 ships in two distributions. Install dbt v2 for the full, recommended experience. If your organization has a strict requirement for an Apache 2.0 licensed runtime, install dbt OSS instead. For more information, refer to [dbt licensing](https://github.com/docs/dbt-licensing).
 
-## dbt Fusion engine versioning
+If you're using the <Constant name="dbt_platform" /> (including the <Constant name="platform_cli"/>), you don't need to manage dbt versions yourself. [Release tracks](/docs/dbt-versions/dbt-release-tracks) automatically keep you up to date and provide early access to new features.
 
-The <Constant name="fusion_engine"/> uses semantic versioning starting with version 2.0. To install or update <Constant name="fusion"/>, see [Install dbt](/docs/local/install-dbt?version=2).
+## <Constant name="fusion_engine" /> versioning
+
+<Constant name="fusion_engine"/> uses semantic versioning starting with version 2.0. To install or update <Constant name="fusion"/>, see [Install dbt](/docs/local/install-dbt?version=2).
+
+### Latest release
+
+| dbt v2 | Initial release | Support level and end date |
+|:---:|:---:|:---:|
+| [**v2.0**](/docs/dbt-versions/dbt-upgrade/upgrading-to-v2) | Sept 14, 2026 | **Active support &mdash; Sept 13, 2027** |
 
 ### Semantic versioning
 
@@ -24,7 +33,7 @@ The <Constant name="fusion_engine"/> uses semantic versioning starting with vers
 
 ### Release channels
 
-<Constant name="fusion" /> is distributed through release channels during the preview period:
+<Constant name="fusion" /> is distributed through release channels:
 
 | Channel | Description | Stability |
 |---------|-------------|-----------|
@@ -34,7 +43,7 @@ The <Constant name="fusion_engine"/> uses semantic versioning starting with vers
 
 Run `dbt system update` to get the latest stable release, or specify a channel with `dbt system update --version canary`.
 
-For current versions and release history, see [<Constant name="fusion"/> releases](/docs/fusion/fusion-releases).
+For current versions and release history, see [<Constant name="fusion"/> releases](/docs/dbt/dbt-releases).
 
 ### Checking your version
 
@@ -42,16 +51,16 @@ Run `dbt --version` to check your installed version:
 
 ```
 $ dbt --version
-dbt Fusion 2.0.0-preview.126
+dbt v2 2.0.0
 ```
 
 ### Further reading
 
-- [Install <Constant name="fusion"/>](/docs/local/install-dbt?version=2): Install or update the <Constant name="fusion_engine" />.
-- [<Constant name="fusion"/> releases](/docs/fusion/fusion-releases): View current versions and release history.
-- [Get started with <Constant name="fusion"/>](/docs/fusion/get-started-fusion): Learn about <Constant name="fusion" /> features and migration.
+- [Install <Constant name="fusion"/>](/docs/local/install-dbt?version=2): Install or update <Constant name="fusion_engine" />.
+- [<Constant name="fusion"/> releases](/docs/dbt/dbt-releases): View current versions and release history.
+- [Get started with <Constant name="fusion"/>](/docs/dbt/get-started-dbt): Learn about <Constant name="fusion" /> features and migration.
 
-## dbt Core versioning
+## <Constant name="core" /> versioning
 
 The <Constant name="core"/> engine uses semantic versioning for the 1.x release series. To install or update <Constant name="core"/>, see [Install dbt](/docs/local/install-dbt?version=1).
 
@@ -59,7 +68,7 @@ The <Constant name="core"/> engine uses semantic versioning for the 1.x release 
 
 <Snippet path="core-versions-table" />
 
-### How dbt Core uses semantic versioning
+### How <Constant name="core" /> uses semantic versioning {#how-dbt-v1-uses-semantic-versioning}
 
 dbt follows [semantic versioning](https://semver.org/):
 
@@ -102,13 +111,19 @@ Refer to [Supported data platforms](/docs/supported-data-platforms) for the full
 
 ### Further reading
 
-- [Choosing a <Constant name="core" /> version in <Constant name="dbt" />](/docs/dbt-versions/upgrade-dbt-version-in-cloud): Learn how to use <Constant name="core" /> versions in <Constant name="dbt" />.
+- [Choosing a <Constant name="core" /> version in <Constant name="dbt" />](/docs/dbt-versions/upgrade-dbt-platform-version): Learn how to use <Constant name="core" /> versions in <Constant name="dbt" />.
 - [Install <Constant name="core" />](/docs/local/install-dbt?version=1): Install or update <Constant name="core" />.
 - [`require-dbt-version`](/reference/project-configs/require-dbt-version) and [`dbt_version`](/reference/dbt-jinja-functions/dbt_version): Restrict your project to work with a specific range of versions.
 
 ## End-of-life versions
 
-Once a dbt version reaches end-of-life (EOL), it no longer receives patches, including for known bugs. We recommend upgrading to a newer version in [<Constant name="dbt" />](/docs/dbt-versions/upgrade-dbt-version-in-cloud), [<Constant name="fusion" />](/docs/local/install-dbt?version=2#update-fusion) [<Constant name="core" />](/docs/local/install-dbt?version=1#upgrading-dbt-core). All versions prior to v1.0 have been deprecated.
+:::info
+
+On <Constant name="legacy_deprecation_date" />, <Constant name="dbt" /> versions v1.3-v1.7 will be deprecated and removed from availability in <Constant name="dbt_platform" />. Upgrade any environments still on these versions to a supported version or a [release track](/docs/dbt-versions/dbt-release-tracks) before then.
+
+:::
+
+Once a dbt version reaches end-of-life (EOL), it no longer receives patches, including for known bugs. We recommend upgrading to a newer version in [<Constant name="dbt" />](/docs/dbt-versions/upgrade-dbt-platform-version), [<Constant name="fusion" />](/docs/local/install-dbt?version=2), or [<Constant name="core" />](/docs/local/install-dbt). All versions prior to v1.0 have been deprecated.
 
 ## Current version support
 
@@ -117,13 +132,13 @@ dbt supports each minor version (for example, v1.8) for _one year_ from its init
 After a newer minor version ships, the previous one transitions to **critical support** (security and installation fixes only) for the remainder of its one-year window. After the one-year window ends, the version reaches **end of life** and no longer receives patches.
 
 While a minor version is officially supported:
-- You can use it in <Constant name="dbt" />. For more on <Constant name="dbt" /> versioning, see [Choosing a dbt version](/docs/dbt-versions/upgrade-dbt-version-in-cloud).
+- You can use it in <Constant name="dbt" />. For more on <Constant name="dbt" /> versioning, see [Choosing a dbt version](/docs/dbt-versions/upgrade-dbt-platform-version).
 - You can select it from the version dropdown on this website to see documentation that is accurate for use with that minor version.
 
 ## Upgrading
 
 Upgrade to new patch versions as soon as they're available. Upgrade to new minor versions when you're ready because you can only get some features and fixes on the latest minor version.
 
-dbt makes all versions available as prereleases before the final release. For minor versions, we aim to release one or more betas 4+ weeks before the final release so you can try new features and share feedback. Release candidates are available about two weeks before the final release for testing in production-like environments. Refer to the [`dbt-fusion` milestones](https://github.com/dbt-labs/dbt-fusion/milestones) or [`dbt-core` milestones](https://github.com/dbt-labs/dbt-core/milestones) for details.
+dbt makes all versions available as prereleases before the final release. For minor versions, we aim to release one or more betas 4+ weeks before the final release so you can try new features and share feedback. Release candidates are available about two weeks before the final release for testing in production-like environments. Refer to the [`dbt-labs/dbt` milestones](https://github.com/dbt-labs/dbt/milestones) for details.
 
 

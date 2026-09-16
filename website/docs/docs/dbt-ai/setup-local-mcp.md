@@ -1,8 +1,10 @@
 ---
-title: "Set up local MCP"
-sidebar_label: "Set up local MCP"
-description: "Learn how to set up the local dbt-mcp server"
+title: "Set up self-hosted MCP"
+sidebar_label: "Set up self-hosted MCP"
+description: "Learn how to set up the self-hosted dbt-mcp server"
 id: "setup-local-mcp"
+availability:
+  surface: local
 ---
 
 import MCPExample from '/snippets/_mcp-config-files.md';
@@ -10,10 +12,10 @@ import StaticSubdomainRequired from '/snippets/_static-subdomain-required.md';
 import MCPFaqUvx from '/snippets/_mcp-faq-uvx.md';
 import MCPFaqOauth from '/snippets/_mcp-faq-oauth.md';
 
-[The local dbt MCP server](https://github.com/dbt-labs/dbt-mcp) runs locally on your machine and supports <Constant name="core" />, <Constant name="fusion_engine" />, and <Constant name="platform_cli" />. You can use it with or without a <Constant name="dbt_platform" /> account.
+[The self-hosted dbt MCP server](https://github.com/dbt-labs/dbt-mcp) runs on your machine and supports <Constant name="core" />, <Constant name="fusion_engine" />, and <Constant name="platform_cli" />. You can use it with or without a <Constant name="dbt_platform" /> account.
 
 :::note No clone required
-You don't need to clone the dbt-mcp repository to use local MCP. [Install uv](https://docs.astral.sh/uv/getting-started/installation/) and run `uvx dbt-mcp`, which fetches and runs dbt-mcp for you. 
+You don't need to clone the dbt-mcp repository to use self-hosted MCP. [Install uv](https://docs.astral.sh/uv/getting-started/installation/) and run `uvx dbt-mcp`, which fetches and runs dbt-mcp for you. 
 
 If you'd like to contribute to dbt MCP, clone the [dbt-mcp repo](https://github.com/dbt-labs/dbt-mcp) and contribute away!
 :::
@@ -30,7 +32,7 @@ Use this table to understand what each toolset needs and whether it works with o
 | Admin API | `DBT_HOST`, `DBT_TOKEN`, `DBT_ACCOUNT_ID` | Yes | No |
 | SQL execution (`execute_sql`) | Personal access token, `DBT_DEV_ENV_ID`, `DBT_USER_ID` | Yes | No |
 | Codegen | `DBT_PROJECT_DIR`, `DBT_PATH`, and `DISABLE_DBT_CODEGEN=false` | Yes | Yes |
-| LSP / Fusion | `DBT_PROJECT_DIR`, `DBT_PATH`, and the dbt VS Code extension | Yes | Yes |
+| LSP / <Constant name="fusion" /> | `DBT_PROJECT_DIR`, `DBT_PATH`, and the dbt VS Code extension | Yes | Yes |
 
 :::note Toolsets auto-disable when required variables are missing
 If a required variable is not set, dbt-mcp will automatically disable that toolset rather than error. For example, if `DBT_HOST` is not configured, the Semantic Layer, Discovery, and Admin API toolsets won't be available. To confirm which toolsets are active, set `DBT_MCP_LOG_LEVEL=DEBUG` in your environment and check the [server logs](#debug-configurations).
@@ -53,14 +55,14 @@ If you're connecting to <Constant name="dbt_platform" /> features (<Constant nam
 | CI or automation | **Service token** |
 
 :::warning `execute_sql` requires a PAT
-The `execute_sql` tool does _not_ work with service tokens. You must use a [Personal Access Token (PAT)](/docs/dbt-cloud-apis/user-tokens) for `DBT_TOKEN` when using this tool.
+The `execute_sql` tool does _not_ work with service tokens. You must use a [Personal Access Token (PAT)](/docs/dbt-apis/user-tokens) for `DBT_TOKEN` when using this tool.
 :::
 
 ## Setup options
 
 Choose the setup method that best fits your workflow:
 
-### OAuth authentication with <Constant name="dbt_platform"/> <Lifecycle status="managed, managed_plus" />
+### OAuth authentication with dbt platform <Lifecycle status="self_service, managed, managed_plus" />
 
 This method uses OAuth to authenticate with your <Constant name="dbt_platform" /> account. It's the simplest setup and doesn't require managing tokens or environment variables manually.
 
@@ -80,7 +82,7 @@ After completing OAuth setup, skip to [Test your configuration](#optional-test-y
 
 This option runs the MCP server locally and connects it to your local dbt project using `DBT_PROJECT_DIR` and `DBT_PATH`.
 
-If you're using the <Constant name="core" /> or <Constant name="fusion" /> CLI and don't need access to <Constant name="dbt_platform" /> features (Discovery API, Semantic Layer, Administrative API), you can set up local MCP with just your dbt project information.
+If you're using <Constant name="core_v1" /> or <Constant name="fusion" /> and don't need access to <Constant name="dbt_platform" /> features (Discovery API, Semantic Layer, Administrative API), you can set up local MCP with just your dbt project information.
 
 Add this configuration to your MCP client (refer to the specific [integration guides](#set-up-your-mcp-client) for exact file locations):
 
@@ -159,7 +161,7 @@ DBT_PATH=/path/to/your/dbt/executable
 </TabItem>
 <TabItem value="platform-only" label="dbt platform only">
 
-Use this if you only need <Constant name="dbt_platform" /> features and won't run dbt CLI commands:
+Use this if you only need <Constant name="dbt_platform" /> features and won't run dbt commands:
 
 ```code
 DBT_HOST=cloud.getdbt.com
@@ -194,7 +196,6 @@ DBT_ACCOUNT_ID=your-account-id
 DBT_TOKEN=your-service-token
 DBT_PROJECT_DIR=/path/to/your/dbt/project
 DBT_PATH=/path/to/your/dbt/executable
-MULTICELL_ACCOUNT_PREFIX=your-account-prefix
 ```
 
 </TabItem>
@@ -271,10 +272,9 @@ uvx dbt-mcp
 
 | Environment variable | Required | Description |
 | --- | --- | --- |
-| `DBT_HOST` | Required | Your <Constant name="dbt_platform" /> [instance hostname](/docs/cloud/about-cloud/access-regions-ip-addresses). **Important:** For Multi-cell accounts, exclude the account prefix from the hostname. The default is `cloud.getdbt.com`. |
-| `MULTICELL_ACCOUNT_PREFIX` | Only required for Multi-cell instances | Set your Multi-cell account prefix here (not in DBT_HOST). If you are not using Multi-cell, don't set this value. You can learn more about regions and hosting [here](/docs/cloud/about-cloud/access-regions-ip-addresses). |
-| `DBT_TOKEN` | Required | Your personal access token or service token from the <Constant name="dbt_platform" />. <br/>**Note**: The `execute_sql` tool requires a [Personal Access Token (PAT)](/docs/dbt-cloud-apis/user-tokens) — service tokens do not work for this tool. For Semantic Layer use, a PAT is also recommended. If you're using a service token for other toolsets, make sure it has at least `Semantic Layer Only`, `Metadata Only`, and `Developer` permissions. |
-| `DBT_ACCOUNT_ID` | Required for Administrative API tools | Your [dbt account ID](/faqs/Accounts/find-user-id) |
+| `DBT_HOST` | Required | Your <Constant name="dbt_platform" /> [instance hostname](/docs/platform/about-platform/access-regions-ip-addresses). The default is `cloud.getdbt.com`. For multi-cell and multi-tenant accounts with a static subdomain, use the full hostname — for example, `abc123.us1.dbt.com`. |
+| `DBT_TOKEN` | Required | Your personal access token or service token from the <Constant name="dbt_platform" />. <br/>**Note**: The `execute_sql` tool requires a [Personal Access Token (PAT)](/docs/dbt-apis/user-tokens) — service tokens do not work for this tool. For Semantic Layer use, a PAT is also recommended. If you're using a service token for other toolsets, make sure it has at least `Semantic Layer Only`, `Metadata Only`, and `Developer` permissions. |
+| `DBT_ACCOUNT_ID` | Required for Administrative API tools and PAT-based auth | Your [dbt account ID](/faqs/Accounts/find-user-id). Also required when using a Personal Access Token (PAT) as your `DBT_TOKEN`. |
 | `DBT_PROD_ENV_ID` | Required | Your <Constant name="dbt_platform" /> production environment ID |
 | `DBT_DEV_ENV_ID` | Optional | Your <Constant name="dbt_platform" /> development environment ID |
 | `DBT_USER_ID` | Optional | Your <Constant name="dbt_platform" /> user ID ([docs](/faqs/Accounts/find-user-id)) |
@@ -294,33 +294,25 @@ DBT_USER_ID=https://cloud.getdbt.com/settings/profile
 ```
 :::
 
-**Multi-cell configuration examples:**
+**Subdomain prefix configuration example:**
 
 ✅ **Correct configuration:**
 ```bash
-DBT_HOST=us1.dbt.com
-MULTICELL_ACCOUNT_PREFIX=abc123
+DBT_HOST=abc123.us1.dbt.com  # Use the full hostname including the prefix
+DBT_ACCOUNT_ID=12345          # Required when using PAT-based auth
 ```
 
-❌ **Incorrect configuration (common mistake):**
-```bash
-DBT_HOST=abc123.us1.dbt.com  # Don't include prefix in host!
-# MULTICELL_ACCOUNT_PREFIX not set
-```
+You don't need to set `MULTICELL_ACCOUNT_PREFIX` or `DBT_HOST_PREFIX`.
 
-If your full URL is `abc123.us1.dbt.com`, separate it as:
-- `DBT_HOST=us1.dbt.com`
-- `MULTICELL_ACCOUNT_PREFIX=abc123`
+## Environment variables
 
-## dbt CLI settings
-
-The local dbt-mcp supports all flavors of dbt, including <Constant name="core" /> and <Constant name="fusion_engine" />.
+The self-hosted dbt-mcp supports all flavors of dbt, including <Constant name="core" /> and <Constant name="fusion_engine" />.
 
 | Environment variable | Required | Description | Example |
 | --- | --- | --- | --- |
 | `DBT_PROJECT_DIR` | Required | The full path to where the repository of your dbt project is hosted locally. This is the folder containing your `dbt_project.yml` file. | macOS/Linux: `/Users/myname/reponame`<br/>Windows: `C:/Users/myname/reponame` |
-| `DBT_PATH` | Required | The full path to your dbt executable (<Constant name="core" />/<Constant name="fusion" />/<Constant name="cloud_cli" />). See the next section for how to find this. | macOS/Linux: `/opt/homebrew/bin/dbt`<br/>Windows: `C:/Python39/Scripts/dbt.exe` |
-| `DBT_CLI_TIMEOUT` | Optional | Configure the number of seconds before your agent will timeout dbt CLI commands. | Defaults to 60 seconds. |
+| `DBT_PATH` | Required | The full path to your dbt executable (<Constant name="core" />/<Constant name="fusion" />/<Constant name="platform_cli" />). See the next section for how to find this. | macOS/Linux: `/opt/homebrew/bin/dbt`<br/>Windows: `C:/Python39/Scripts/dbt.exe` |
+| `DBT_CLI_TIMEOUT` | Optional | Configure the number of seconds before your agent will timeout dbt commands. | Defaults to 60 seconds. |
 
 ### Locating your `DBT_PATH`
 
@@ -374,13 +366,13 @@ All tools are available by default. Set any of these to `true` to turn off a too
 
 | Name | Default | Description |
 | --- | --- | --- |
-| `DISABLE_DBT_CLI` | `false` | Disable <Constant name="core" />, <Constant name="cloud_cli" />, and dbt <Constant name="fusion" /> MCP tools. |
+| `DISABLE_DBT_CLI` | `false` | Disable <Constant name="core" />, <Constant name="platform_cli" />, and <Constant name="fusion" /> MCP tools. |
 | `DISABLE_SEMANTIC_LAYER` | `false` | Disable dbt Semantic Layer MCP tools. |
 | `DISABLE_DISCOVERY` | `false` | Disable dbt Discovery API MCP tools. |
 | `DISABLE_ADMIN_API` | `false` | Disable dbt Administrative API MCP tools. |
 | `DISABLE_SQL` | `true` | SQL MCP tools are disabled by default. Set to `false` to enable. |
 | `DISABLE_DBT_CODEGEN` | `true` | [dbt codegen MCP tools](/docs/dbt-ai/mcp-available-tools#codegen-tools) are disabled by default. Set to `false` to enable (requires dbt-codegen package). |
-| `DISABLE_LSP` | `false` | Disable dbt LSP/Fusion MCP tools. |
+| `DISABLE_LSP` | `false` | Disable dbt LSP/dbt v2 MCP tools. |
 | `DISABLE_MCP_SERVER_METADATA` | `true` | MCP server metadata tools (like `get_mcp_server_version`) are disabled by default. Set to `false` to enable. |
 | `DISABLE_TOOLS` | `""` | A comma-separated list of specific tool names to disable. |
 
@@ -396,7 +388,7 @@ Use `DBT_MCP_ENABLE_*` variables when you want to explicitly allowlist which too
 | `DBT_MCP_ENABLE_ADMIN_API` | Not set | Set to `true` to enable Administrative API tools. |
 | `DBT_MCP_ENABLE_SQL` | Not set | Set to `true` to enable SQL tools. |
 | `DBT_MCP_ENABLE_DBT_CODEGEN` | Not set | Set to `true` to enable dbt codegen tools. |
-| `DBT_MCP_ENABLE_LSP` | Not set | Set to `true` to enable LSP/Fusion tools. |
+| `DBT_MCP_ENABLE_LSP` | Not set | Set to `true` to enable LSP/dbt v2 tools. |
 | `DBT_MCP_ENABLE_TOOLS` | Not set | A comma-separated list of specific tool names to enable. |
 
 ### Precedence

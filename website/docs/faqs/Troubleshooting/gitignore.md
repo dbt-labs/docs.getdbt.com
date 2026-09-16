@@ -22,7 +22,7 @@ dbt_modules/
 2. Save your changes but _don't commit_
 3. Restart the <Constant name="studio_ide" /> by clicking on the three dots next to the **<Constant name="studio_ide" /> Status button** on the lower right of the <Constant name="studio_ide" />.
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-ide/restart-ide.png" width="50%" title="Restart the IDE by clicking the three dots on the lower right or click on the Status bar" />
+<Lightbox src="/img/docs/dbt-platform/platform-ide/restart-ide.png" width="50%" title="Restart the IDE by clicking the three dots on the lower right or click on the Status bar" />
 
 4. Select **Restart <Constant name="studio_ide" />**.
 5. Go back to the **File explorer** in the IDE and delete the following files or folders if you have them:
@@ -33,6 +33,6 @@ dbt_modules/
 9.  Merge the PR on your git provider page.
 10. Switch to your main branch and click on **Pull from remote** to pull in all the changes you made to your main branch. You can verify the changes by making sure the files/folders in the .gitignore file are in italics. 
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-ide/gitignore-italics.png" width="50%" title="A dbt project on the main branch that has properly configured gitignore folders (highlighted in italics)."/>
+<Lightbox src="/img/docs/dbt-platform/platform-ide/gitignore-italics.png" width="50%" title="A dbt project on the main branch that has properly configured gitignore folders (highlighted in italics)."/>
 
 For more info, refer to this [detailed video](https://www.loom.com/share/9b3b8e2b617f41a8bad76ec7e42dd014) for additional guidance. 

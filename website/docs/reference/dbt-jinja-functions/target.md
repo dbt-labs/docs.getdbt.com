@@ -8,9 +8,9 @@ description: "The `target` variable contains information about your connection t
 The `target` variable contains information about your connection to the warehouse.
 
 - **<Constant name="core" />:** These values are based on the target defined in your [profiles.yml](/docs/local/profiles.yml) file. Please note that for certain adapters, additional configuration steps may be required. Refer to the [set up page](/docs/local/connect-data-platform/about-dbt-connections) for your data platform.
-- **<Constant name="dbt" />** To learn more about setting up your adapter in <Constant name="dbt" />, refer to [About data platform connections](/docs/cloud/connect-data-platform/about-connections).
+- **<Constant name="dbt" />** To learn more about setting up your adapter in <Constant name="dbt" />, refer to [About data platform connections](/docs/platform/connect-data-platform/about-connections).
    - **[<Constant name="orchestrator" />](/docs/deploy/job-scheduler)**: `target.name` is defined per job as described in [Custom target names](/docs/build/custom-target-names). For other attributes, values are defined by the deployment connection. To check these values, click **Deploy** and select **Environments**. Then, select the relevant deployment environment, and click **Settings**.
-   - **[<Constant name="studio_ide" />](/docs/cloud/studio-ide/develop-in-studio)**: These values are defined by your connection and credentials. To edit these values, click on your account name in the left side menu and select **Account settings**. Then, click **Credentials**. Select and edit a project to set up the credentials and target name.
+   - **[<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio)**: These values are defined by your connection and credentials. To edit these values, click on your account name in the left side menu and select **Account settings**. Then, click **Credentials**. Select and edit a project to set up the credentials and target name.
 
 Some configurations are shared between all adapters, while others are adapter-specific. You can also use the [`--target` flag](#using-the---target-flag) to set the active target when running dbt commands.
 

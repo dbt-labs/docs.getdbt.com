@@ -1,11 +1,11 @@
 ---
-title: "Quickstart for dbt Core from a manual install"
+title: "Quickstart for dbt v1 from a manual install"
 id: manual-install
-description: "Connecting your warehouse to dbt Core using the CLI."
+description: "Connecting your warehouse to dbt v1 using the CLI."
 level: 'Beginner'
 platform: 'dbt-core'
 icon: 'square-terminal'
-tags: ['dbt Core','Quickstart']
+tags: ['Quickstart']
 hide_table_of_contents: true
 ---
 
@@ -15,11 +15,11 @@ hide_table_of_contents: true
 
 When you use <Constant name="core" /> to work with dbt, you will be editing files locally using a code editor, and running projects using a command line interface (CLI). 
 
-If you want to edit files and run projects using the web-based dbt Integrated Development Environment (<Constant name="studio_ide" />), refer to the [<Constant name="dbt" /> quickstarts](/guides). You can also develop and run dbt commands using the [<Constant name="dbt" /> CLI](/docs/cloud/cloud-cli-installation) &mdash; a <Constant name="dbt" /> powered command line.
+If you want to edit files and run projects using the web-based dbt Integrated Development Environment (<Constant name="studio_ide" />), refer to the [<Constant name="dbt" /> quickstarts](/guides). You can also develop and run dbt commands using the [<Constant name="dbt" /> CLI](/docs/platform/dbt-cli-installation) &mdash; a <Constant name="dbt" /> powered command line.
 
 ### Prerequisites
 
-* To use dbt Core, it's important that you know some basics of the Terminal. In particular, you should understand `cd`, `ls` and `pwd` to navigate through the directory structure of your computer easily.
+* To use <Constant name="core" />, it's important that you know some basics of the Terminal. In particular, you should understand `cd`, `ls` and `pwd` to navigate through the directory structure of your computer easily.
 * Install <Constant name="core" /> using the [installation instructions](/docs/local/install-dbt) for your operating system.
 * Complete appropriate Setting up and Loading data steps in the Quickstart for <Constant name="dbt" /> series. For example, for BigQuery, complete [Setting up (in BigQuery)](/guides/bigquery?step=2) and [Loading data (BigQuery)](/guides/bigquery?step=3).
 * [Create a GitHub account](https://github.com/join) if you don't already have one.
@@ -43,11 +43,11 @@ The following steps use [GitHub](https://github.com/) as the <Constant name="git
 
 ## Create a project
 
-Learn how to use a series of commands using the command line of the Terminal to create your project. dbt Core includes an `init` command that helps scaffold a dbt project.
+Learn how to use a series of commands using the command line of the Terminal to create your project. <Constant name="core" /> includes an `init` command that helps scaffold a dbt project.
 
 To create your dbt project:
 
-1. Make sure you have dbt Core installed and check the version using the `dbt --version` command:
+1. Make sure you have <Constant name="core" /> installed and check the version using the `dbt --version` command:
 
 ```shell
 dbt --version
@@ -205,7 +205,7 @@ $ git checkout -b add-customers-model
 
 4. From the command line, enter `dbt run`.
 <div style={{maxWidth: '400px'}}>
-<Lightbox src="/img/first-model-dbt-cli.png" title="A successful run with the dbt Core CLI" />
+<Lightbox src="/img/first-model-dbt-cli.png" title="A successful run with the v1 CLI" />
 </div>
 
 When you return to the BigQuery console, you can `select` from this model.
@@ -434,7 +434,7 @@ This time, when you performed a `dbt run`, separate views/tables were created fo
 You can also explore:
 
 * The `target` directory to see all of the compiled SQL. The `run` directory shows the create or replace table statements that are running, which are the select statements wrapped in the correct DDL.
-* The `logs` file to see how dbt Core logs all of the action happening within your project. It shows the select statements that are running and the python logging happening when dbt runs.
+* The `logs` file to see how <Constant name="core" /> logs all of the action happening within your project. It shows the select statements that are running and the python logging happening when dbt runs.
 
 ## Add tests to your models
 
@@ -471,7 +471,7 @@ We recommend using <Constant name="dbt" /> as the easiest and most reliable way 
 
 For more info on how to get started, refer to [create and schedule jobs](/docs/deploy/deploy-jobs#create-and-schedule-jobs).
 
-<Lightbox src="/img/docs/dbt-cloud/deployment/run-overview.png" width="90%" title="Overview of a dbt job run, which includes the job run details, trigger type, commit SHA, environment name, detailed run steps, logs, and more."/>
+<Lightbox src="/img/docs/dbt-platform/deployment/run-overview.png" width="90%" title="Overview of a dbt job run, which includes the job run details, trigger type, commit SHA, environment name, detailed run steps, logs, and more."/>
 
 For more information about using <Constant name="core" /> to schedule a job, refer [dbt airflow](/blog/dbt-airflow-spiritual-alignment) blog post.
 

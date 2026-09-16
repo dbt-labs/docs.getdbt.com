@@ -13,7 +13,12 @@ website/i18n/*
 
 # IDE configs
 .vscode
+!.vscode/docs.code-snippets
 .idea
+
+# Claude Code local worktrees and settings (never commit)
+.claude/worktrees/
+.claude/settings.local.json
 
 # Local Netlify folder
 .netlify
@@ -25,3 +30,6 @@ website/i18n/*
 
 # Auto-generated at build time by scripts/fetch-mcp-readme-tools.js
 website/snippets/_mcp-tools-from-readme.md
+# Auto-generated at build time by scripts/generate-functions-snippet.js
+website/snippets/_functions-table-*.md
+/.superpowers

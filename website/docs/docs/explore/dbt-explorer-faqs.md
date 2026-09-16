@@ -2,6 +2,7 @@
 title: "dbt Catalog FAQs"
 sidebar_label: "dbt Catalog FAQs"
 description: "Learn more with the FAQs about dbt Catalog, how it works, how to interact with it, and more."
+availability: platform_login
 ---
 
 [<Constant name="catalog" />](/docs/explore/explore-projects) is <Constant name="dbt" />’s new knowledge base and lineage visualization experience. It offers an interactive and high-level view of your company’s entire data estate, where you can dive deep into the context you need to understand and improve lineage so your teams can trust the data they’re using to make decisions.
@@ -30,9 +31,9 @@ description: "Learn more with the FAQs about dbt Catalog, how it works, how to i
 
 ## How dbt Catalog works
 
-<Expandable alt_header="Can I use dbt Catalog on-premises or with my self-hosted dbt Core deployment?" >
+<Expandable alt_header="Can I use dbt Catalog on-premises or with my self-hosted dbt deployment?" >
 
-No. <Constant name="catalog" /> and all of its features are only available as a <Constant name="dbt" /> user experience. <Constant name="catalog" /> reflects the metadata from your <Constant name="dbt" /> project(s) and their runs. 
+No. <Constant name="catalog" /> and all of its features are only available as a <Constant name="dbt_platform" /> user experience. <Constant name="catalog" /> reflects the metadata from your <Constant name="dbt_platform" /> project(s) and their runs. 
 
 </Expandable>
 
@@ -140,7 +141,7 @@ Yes, a reused column, labeled as passthrough or rename, inherits its description
 
 <Expandable alt_header="Is column-level lineage also available in the development tab?" >
 
-Not currently, but we plan to incorporate column-level awareness across features in <Constant name="dbt" /> in the future.
+If you develop in <Constant name="dbt_platform" />, column-level lineage is not in the <Constant name="studio_ide" />, but it is available in <Constant name="catalog" /> for Enterprise and Enterprise+ plans. If you develop locally with <Constant name="fusion" />, the [dbt VS Code extension](/docs/dbt-extension-features#rich-lineage-in-context) shows column lineage in your editor.
 
 </Expandable>
 
@@ -158,7 +159,7 @@ Read-only users can consume metadata in <Constant name="catalog" />. More bespok
 
 </Expandable>
 
-<Expandable alt_header="Will dbt Core users be able to leverage any of these new dbt Catalog features?" >
+<Expandable alt_header="Will self-hosted dbt users be able to leverage any of these new dbt Catalog features?" >
 
 No. <Constant name="catalog" /> is a <Constant name="dbt" />-only product experience.
 
@@ -178,8 +179,8 @@ The ability to embed and share views is being evaluated as a potential future ca
 
 <Expandable alt_header=" Is dbt Catalog accessible from other areas inside dbt?" >
 
-Yes, you can [access <Constant name="catalog" /> from various <Constant name="dbt" /> features](/docs/explore/access-from-dbt-cloud), ensuring you have a seamless experience navigating between resources and lineage in your project.
+Yes, you can [access <Constant name="catalog" /> from various <Constant name="dbt" /> features](/docs/explore/access-from-dbt-platform), ensuring you have a seamless experience navigating between resources and lineage in your project.
 
-While the primary way to access <Constant name="catalog" /> is through the **Catalog** link in the navigation, you can also access it from the [<Constant name="studio_ide" />](/docs/explore/access-from-dbt-cloud#dbt-cloud-ide), [the lineage tab in jobs](/docs/explore/access-from-dbt-cloud#lineage-tab-in-jobs), and the [model timing tab in jobs](/docs/explore/access-from-dbt-cloud#model-timing-tab-in-jobs).
+While the primary way to access <Constant name="catalog" /> is through the **Catalog** link in the navigation, you can also access it from the [<Constant name="studio_ide" />](/docs/explore/access-from-dbt-platform#studio-ide), [the lineage tab in jobs](/docs/explore/access-from-dbt-platform#lineage-tab-in-jobs), and the [model timing tab in jobs](/docs/explore/access-from-dbt-platform#model-timing-tab-in-jobs).
 
 </Expandable>

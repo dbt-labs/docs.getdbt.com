@@ -1,5 +1,6 @@
 ---
 title: "MindsDB configurations"
+description: "Configure MindsDB-specific settings for dbt models, including authentication and connection options."
 id: "mindsdb-configs"
 ---
 

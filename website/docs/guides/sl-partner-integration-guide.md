@@ -26,7 +26,7 @@ import SLCourses from '/snippets/_sl-course.md';
 
 To build a <Constant name="semantic_layer" /> integration: 
 
-- We offer a [JDBC](/docs/dbt-cloud-apis/sl-jdbc) API and [GraphQL API](/docs/dbt-cloud-apis/sl-graphql). Refer to the dedicated [<Constant name="semantic_layer" /> API](/docs/dbt-cloud-apis/sl-api-overview) for more technical integration details.
+- We offer a [JDBC](/docs/dbt-apis/sl-jdbc) API and [GraphQL API](/docs/dbt-apis/sl-graphql). Refer to the dedicated [<Constant name="semantic_layer" /> API](/docs/dbt-apis/sl-api-overview) for more technical integration details.
 
 - Familiarize yourself with the [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl) and [MetricFlow](/docs/build/about-metricflow)'s key concepts. There are two main objects: 
 
@@ -94,7 +94,7 @@ We recommend organizing metrics and dimensions in ways that a non-technical user
 
 - **Organizing metrics** &mdash; The goal is to organize metrics into a hierarchy in our configurations, instead of presenting them in a long list.<br /><br /> This hierarchy helps you organize metrics based on specific criteria, such as business unit or team. By providing this structured organization, users can find and navigate metrics more efficiently, enhancing their overall data analysis experience.
 
-- **Using saved queries** &mdash; The <Constant name="semantic_layer" /> has a concept of [saved queries](/docs/build/saved-queries) which allows users to pre-build slices of metrics, dimensions, filters to be easily accessed. You should surface these as first class objects in your integration. Refer to the [JDBC](/docs/dbt-cloud-apis/sl-jdbc) and [GraphQL](/docs/dbt-cloud-apis/sl-graphql) APIs for syntax.
+- **Using saved queries** &mdash; The <Constant name="semantic_layer" /> has a concept of [saved queries](/docs/build/saved-queries) which allows users to pre-build slices of metrics, dimensions, filters to be easily accessed. You should surface these as first class objects in your integration. Refer to the [JDBC](/docs/dbt-apis/sl-jdbc) and [GraphQL](/docs/dbt-apis/sl-graphql) APIs for syntax.
 
 ### Query flexibility
 
@@ -124,7 +124,7 @@ For better analysis, it's best to have the context of the metrics close to where
 
 - Expose additional metadata from the Semantic layer (measures, type parameters).
 
-- Use the [Discovery API](/docs/dbt-cloud-apis/discovery-api) to enhance the metric and build confidence in its accuracy:
+- Use the [Discovery API](/docs/dbt-apis/discovery-api) to enhance the metric and build confidence in its accuracy:
   * Check if the metric is fresh and when it was last updated.
   * Include lineage information to understand the metric's origin.
 
@@ -144,14 +144,14 @@ In the cases where our APIs support either a string or a filter list for the `wh
 These are recommendations on how to evolve a <Constant name="semantic_layer" /> integration and not a strict runbook.
 
 **Stage 1 - The basic**
-* Supporting and using [JDBC](/docs/dbt-cloud-apis/sl-jdbc) or [GraphQL](/docs/dbt-cloud-apis/sl-graphql) is the first step. Refer to the [<Constant name="semantic_layer" /> APIs](/docs/dbt-cloud-apis/sl-api-overview) for more technical details. 
+* Supporting and using [JDBC](/docs/dbt-apis/sl-jdbc) or [GraphQL](/docs/dbt-apis/sl-graphql) is the first step. Refer to the [<Constant name="semantic_layer" /> APIs](/docs/dbt-apis/sl-api-overview) for more technical details. 
 
 **Stage 2 - More discoverability and basic querying**
 * Support listing metrics defined in the project
 * Listing available dimensions based on one or many metrics
 * Querying defined metric values on their own or grouping by available dimensions
-* Display metadata from [Discovery API](/docs/dbt-cloud-apis/discovery-api) and other context
-* Expose [saved queries](/docs/build/saved-queries), which are pre-built metrics, dimensions, and filters that <Constant name="semantic_layer" /> developers create for easier analysis. You can expose them in your application. Refer to the [JDBC](/docs/dbt-cloud-apis/sl-jdbc) and [GraphQL](/docs/dbt-cloud-apis/sl-graphql) APIs for syntax.
+* Display metadata from [Discovery API](/docs/dbt-apis/discovery-api) and other context
+* Expose [saved queries](/docs/build/saved-queries), which are pre-built metrics, dimensions, and filters that <Constant name="semantic_layer" /> developers create for easier analysis. You can expose them in your application. Refer to the [JDBC](/docs/dbt-apis/sl-jdbc) and [GraphQL](/docs/dbt-apis/sl-graphql) APIs for syntax.
 
 **Stage 3 - More querying flexibility and better user experience (UX)**
 * More advanced filtering

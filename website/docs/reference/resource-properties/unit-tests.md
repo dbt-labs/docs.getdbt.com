@@ -22,14 +22,15 @@ import UnitTestsPrereqs from '/snippets/_unit-tests-prereqs.md';
 
 unit_tests:
   - name: <test-name> # this is the unique name of the test
-    model: <model-name> 
-      versions: #optional
-        include: <list-of-versions-to-include> #optional
-        exclude: <list-of-versions-to-exclude> #optional
+    model: <model-name>
+    versions: #optional
+      include: <list-of-versions-to-include> #optional
+      exclude: <list-of-versions-to-exclude> #optional
     config: 
       meta: {dictionary}
       tags: <string> | [<string>]
       enabled: {boolean} # optional. v1.9 or higher. If not configured, defaults to `true`
+      compute: local | remote # optional. v2.0 or higher. Defaults to `remote`.  Requires DBT_ENGINE_EXPERIMENTAL_LOCAL_UNIT_TESTS=true. See [Run unit tests locally](/docs/build/unit-tests#run-unit-tests-locally)
     given:
       - input: <ref_or_source_call> # optional for seeds
         format: dict | csv | sql

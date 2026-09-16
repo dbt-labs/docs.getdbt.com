@@ -1,5 +1,5 @@
 ---
-title: "Connect Decodable to dbt Core"
+title: "Connect Decodable to dbt v1"
 sidebar_label: "Decodable"
 id: "decodable-setup"
 meta:
@@ -15,6 +15,7 @@ meta:
   slack_channel_link: 'https://decodablecommunity.slack.com'
   platform_name: 'Decodable'
   config_page: '/reference/resource-configs/no-configs'
+availability: local_free
 ---
 
 :::info Community plugin

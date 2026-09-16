@@ -97,7 +97,7 @@ describe('docs.getdbt.com docs tab', () => {
     cy.get('@subMenuA').contains('Connect your database').click()
     cy.checkLinksNotBroken(`${Cypress.config('baseUrl')}/docs/get-started/connect-your-database`, `${Cypress.config('baseUrl')}/docs/introduction`)
     cy.get('@subMenuA').contains('Develop in Cloud').click()
-    cy.checkLinksNotBroken(`${Cypress.config('baseUrl')}/docs/get-started/develop-in-the-cloud`, `${Cypress.config('baseUrl')}/docs/introduction`)
+    cy.checkLinksNotBroken(`${Cypress.config('baseUrl')}/docs/platform/studio-ide/develop-in-studio`, `${Cypress.config('baseUrl')}/docs/introduction`)
     cy.get('@subMenuA').contains('dbt Cloud tips').click()
     cy.checkLinksNotBroken(`${Cypress.config('baseUrl')}/docs/get-started/dbt-cloud-tips`, `${Cypress.config('baseUrl')}/docs/introduction`)
 

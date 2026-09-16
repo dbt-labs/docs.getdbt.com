@@ -4,6 +4,7 @@ id: dimensions
 description: "Dimensions determine the level of aggregation for a metric, and are non-aggregatable expressions."
 sidebar_label: "Dimensions"
 tags: [Metrics, Semantic Layer]
+availability: all_users
 ---
 
 <VersionBlock lastVersion="1.11">
@@ -296,7 +297,7 @@ You can use multiple time groups in separate metrics. For example, the `users_cr
 # dbt users
 dbt sl query --metrics users_created,users_deleted --group-by metric_time__year --order-by metric_time__year
 
-# dbt Core users
+# dbt v1 users
 mf query --metrics users_created,users_deleted --group-by metric_time__year --order-by metric_time__year
 ```
 
@@ -872,7 +873,7 @@ The following command or code represents how to return the count of transactions
 # dbt platform users
 dbt sl query --metrics transactions --group-by metric_time__month,sales_person__tier --order-by metric_time__month,sales_person__tier
 
-# dbt Core users
+# dbt v1 users
 mf query --metrics transactions --group-by metric_time__month,sales_person__tier --order-by metric_time__month,sales_person__tier
 
 ```

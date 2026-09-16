@@ -15,6 +15,12 @@ Some adapters can display behavior changes when certain flags are enabled. The f
 <div className="grid--3-col">
 
 <Card
+    title="BigQuery"
+    body="Behavior changes for the BigQuery adapter."
+    link="reference/global-configs/bigquery-changes"
+    icon="bigquery"/>
+
+<Card
     title="Databricks"
     body="Behavior changes for the Databricks adapter."
     link="reference/global-configs/databricks-changes"

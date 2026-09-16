@@ -61,7 +61,7 @@ The sample body's values are hard-coded and not reflective of your project, but 
 
 ## Store secrets 
 
-In the next step, you will need the Webhook Secret Key from the prior step, and a <Constant name="dbt" /> [personal access token](/docs/dbt-cloud-apis/user-tokens) or [service account token](/docs/dbt-cloud-apis/service-tokens). 
+In the next step, you will need the Webhook Secret Key from the prior step, and a <Constant name="dbt" /> [personal access token](/docs/dbt-apis/user-tokens) or [service account token](/docs/dbt-apis/service-tokens). 
 
 Zapier allows you to [store secrets](https://help.zapier.com/hc/en-us/articles/8496293271053-Save-and-retrieve-data-from-Zaps), which prevents your keys from being displayed in plaintext in the Zap code. You will be able to access them via the [StoreClient utility](https://help.zapier.com/hc/en-us/articles/8496293969549-Store-data-from-code-steps-with-StoreClient).
 
@@ -76,7 +76,7 @@ In the **Set up action** area, add two items to **Input Data**: `raw_body` and `
 
 In the **Code** field, paste the following code, replacing `YOUR_SECRET_HERE` with the secret you created when setting up the Storage by Zapier integration. Remember that this is not your <Constant name="dbt" /> secret.
 
-The code below will validate the authenticity of the request, extract the run logs for the completed job from the Admin API, and then build a summary message that pulls out any error messages from the end-of-invocation logs created by <Constant name="core" />.
+The code below will validate the authenticity of the request, extract the run logs for the completed job from the Admin API, and then build a summary message that pulls out any error messages from the end-of-invocation logs created by dbt.
 
 ```python
 import hashlib

@@ -5,6 +5,9 @@ sidebar_label: "compile"
 id: "compile"
 ---
 
+import InfoSchemaStaticAnalysis from '/snippets/_info-schema-static-analysis.md';
+import InfoSchemaIntro from '/snippets/_info-schema-intro.md';
+
 `dbt compile` generates executable SQL from source files for:
 
 <VersionBlock lastVersion="1.11">
@@ -18,7 +21,7 @@ id: "compile"
 - [Data tests](/docs/build/data-tests)
 - [Analyses](/docs/build/analyses)
 - [Functions](/docs/build/udfs)
-- [Snapshots](/docs/build/snapshots) (available in <Constant name="core" /> v1.12)
+- [Snapshots](/docs/build/snapshots) (available in <Constant name="dbt" /> v1.12)
 </VersionBlock>
 
 You can find these compiled SQL files in the `target/` directory of your dbt project.
@@ -33,7 +36,7 @@ Some common misconceptions:
 - `dbt compile` is _not_ a pre-requisite of `dbt run`, or other building commands. Those commands will handle compilation themselves.
 - If you just want dbt to read and validate your project code, without connecting to the data warehouse, use `dbt parse` instead.
 
-### Interactive compile
+## Interactive compile
 
 Starting in dbt v1.5, `compile` can be "interactive" in the CLI, by displaying the compiled code of a node or arbitrary dbt-SQL query:
 - `--select` a specific node _by name_
@@ -95,11 +98,69 @@ select * from "jaffle_shop"."main"."raw_orders"
 
 The command accesses the data platform to cache-related metadata, and to run introspective queries. Use the flags:
 - `--no-populate-cache` to disable the initial cache population. If metadata is needed, it will be a cache miss, requiring dbt to run the metadata query. This is a `dbt` flag, which means you need to add `dbt` as a prefix. For example: `dbt --no-populate-cache`.
-- `--no-introspect` to disable [introspective queries](/faqs/Warehouse/db-connection-dbt-compile#introspective-queries). dbt will raise an error if a resource's definition requires running one. This is a `dbt compile` flag, which means you need to add `dbt compile` as a prefix. For example:`dbt compile --no-introspect`.
+- `--no-introspect` to disable [introspective queries](/faqs/Warehouse/db-connection-dbt-compile#introspective-queries). dbt will raise an error if a resource's definition requires running one. This is a `dbt compile` flag, which means you need to add `dbt compile` as a prefix. For example: `dbt compile --no-introspect`.
 
 :::caution Resources that use introspective queries
 Compiled SQL for resources that use introspective queries may depend on metadata from your warehouse. Compilation may be incomplete or may differ depending on the state of that metadata.
 :::
 
-### FAQs
+## Compiling tests with `--select`
+
+You can use `dbt compile` to compile tests, as long as your selector matches a test node in the project. You can also target groups of tests with selector methods:
+
+**Compile all test nodes:**
+
+```bash
+dbt compile --select "resource_type:test"
+```
+
+**Compile only generic tests:**
+
+```bash
+dbt compile --select "test_type:generic"
+```
+
+**Compile only singular tests:**
+
+```bash
+dbt compile --select "test_type:singular"
+```
+
+If dbt returns `selection does not match any nodes`, your selector did not match a discovered node. To troubleshoot:
+
+1. List tests for a model selector:
+
+```bash
+dbt ls --resource-type test --select "MODEL_NAME"
+```
+
+2. Copy one of the returned test node names into `dbt compile --select`:
+
+```bash
+dbt compile --select "TEST_NODE_NAME"
+```
+
+For example, a returned test node name may look like this:
+
+```text
+FULL_TEST_NODE_NAME
+```
+
+3. If no tests are returned, check test definitions and project paths before running `compile` again.
+
+For more selector patterns, refer to [Test selection examples](/reference/node-selection/test-selection-examples).
+
+<VersionBlock firstVersion="2.0">
+
+## dbt Information Schema
+
+<InfoSchemaIntro />
+
+```shell
+dbt compile --generate-info-schema --static-analysis strict
+```
+
+</VersionBlock>
+
+## FAQs
 <FAQ path="Warehouse/db-connection-dbt-compile" />

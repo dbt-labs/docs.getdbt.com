@@ -19,6 +19,7 @@ default_value: true
     { label: 'Exposures', value: 'exposures', },
     { label: 'Semantic models', value: 'semantic models', },
     { label: 'Saved queries', value: 'saved queries', },
+    { label: 'Skills', value: 'skills', },
   ]
 }>
 <TabItem value="models">
@@ -234,7 +235,7 @@ analyses:
 
 </File>
 
-To configure analyses at the project level, set the [`require_corrected_analysis_fqns`](/reference/global-configs/behavior-changes#project-level-configuration-for-analyses) flag to `true` in your `dbt_project.yml`.
+To configure analyses at the project level, set the [`require_corrected_analysis_fqns`](/reference/global-configs/behavior-flags/require_corrected_analysis_fqns) flag to `true` in your `dbt_project.yml`.
 
 <File name='dbt_project.yml'>
 
@@ -367,6 +368,39 @@ saved_queries:
 
 </TabItem>
 
+<TabItem value="skills">
+
+<VersionBlock firstVersion="2.0">
+
+<File name='dbt_project.yml'>
+
+```yaml
+skills:
+  [<resource-path>](/reference/resource-configs/resource-path):
+    [+](/reference/resource-configs/plus-prefix)enabled: true | false
+```
+
+</File>
+
+For [agent skills](/docs/dbt-ai/package-skills), the resource path is the package that ships the skill, followed by the skill's name:
+
+<File name='dbt_project.yml'>
+
+```yaml
+skills:
+  demo_skills:
+    naming-conventions:
+      +enabled: false
+```
+
+</File>
+
+A package's own `skills` config sets the defaults for the skills it ships, and your root project's `skills` config overrides it. Disabling a skill is how you resolve two packages that ship skills with the same name.
+
+</VersionBlock>
+
+</TabItem>
+
 </Tabs>
 
 ## Definition
@@ -403,7 +437,7 @@ models:
 
 ### Disable Semantic Layer resources from a package
 
-Some packages may define <Constant name="semantic_layer" /> resources (semantic models, metrics, saved queries) using an older specification that isn’t compatible with the <Constant name="fusion_engine" />. 
+Some packages may define <Constant name="semantic_layer" /> resources (semantic models, metrics, saved queries) using an older specification that isn’t compatible with <Constant name="fusion_engine" />. 
 
 To use these packages with <Constant name="fusion" /> while keeping your own semantic layer definitions, disable the package’s semantic layer resources in the relevant YAML file.
 

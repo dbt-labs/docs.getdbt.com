@@ -1,5 +1,5 @@
 ---
-title: "Connect AlloyDB to dbt Core"
+title: "Connect AlloyDB to dbt v1"
 sidebar_label: "AlloyDB"
 meta:
   maintained_by: dbt Labs
@@ -13,6 +13,7 @@ meta:
   slack_channel_link: 'https://getdbt.slack.com/archives/C0172G2E273'
   platform_name: 'AlloyDB'
   config_page: '/reference/resource-configs/postgres-configs'
+availability: local_free
 ---
 
 

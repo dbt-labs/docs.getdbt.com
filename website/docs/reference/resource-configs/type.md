@@ -17,7 +17,7 @@ functions:
 
 </File>
 
-In the future, we're considering adding support for `table` type. Refer to [this issue](https://github.com/dbt-labs/dbt-core/issues/11917) to track the progress and provide any feedback.
+In the future, we're considering adding support for `table` type. Refer to [this issue](https://github.com/dbt-labs/dbt/issues/11917) to track the progress and provide any feedback.
 
 ## Definition
 
@@ -103,6 +103,6 @@ functions:
 - [User-defined functions](/docs/build/udfs)
 - [Function properties](/reference/function-properties)
 - [Function configurations](/reference/function-configs)
-- [Volatility](/reference/resource-configs/volatility)
-- [Arguments](/reference/resource-properties/function-arguments)
-- [Returns](/reference/resource-properties/returns)
+- [volatility](/reference/resource-configs/volatility)
+- [arguments](/reference/resource-properties/function-arguments)
+- [returns](/reference/resource-properties/returns)

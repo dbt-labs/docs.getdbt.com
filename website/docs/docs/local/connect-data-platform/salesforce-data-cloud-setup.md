@@ -4,7 +4,7 @@ description: "Read this guide to learn about the Salesforce Data 360 warehouse s
 id: "salesforce-data-cloud-setup"
 meta:
   maintained_by: dbt Labs
-  authors: 'Fusion dbt maintainers'
+  authors: 'dbt v2 dbt maintainers'
   github_repo: 'dbt-labs/dbt-fusion'
   pypi_package: N/A
   min_core_version: N/A
@@ -14,25 +14,19 @@ meta:
   slack_channel_link: N/A
   platform_name: 'Salesforce Data 360'
   config_page: '/reference/resource-configs/data-cloud-configs'
+unlisted: true
+availability: local_free
 ---
 
 # Salesforce Data 360 setup <Lifecycle status="beta"/>
 
-This `dbt-salesforce` adapter is available via the <Constant name="fusion_engine" /> CLI. To access the adapter, [install dbt Fusion](/docs/fusion/about-fusion-install). We recommend using the [VS Code Extension](/docs/local/install-dbt?version=2#get-started) as the development interface. <Constant name="dbt_platform" /> support coming soon. 
+This `dbt-salesforce` adapter is available via the <Constant name="fusion_engine" /> CLI. To access the adapter, [install <Constant name="fusion" />](/docs/local/install-dbt). We recommend using the [VS Code Extension](/docs/local/install-dbt?version=2) as the development interface. <Constant name="dbt_platform" /> support coming soon. 
 
-## Prerequisites
+import SalesforcePrereqs from '/snippets/_salesforce-data-cloud-prereqs.md';
 
-Before you can connect dbt to the Salesforce Data 360, you need the following:
+<SalesforcePrereqs />
 
-- A Data 360 instance
-- [An external client app that dbt connects to for the Data 360 instance](https://help.salesforce.com/s/articleView?id=xcloud.create_a_local_external_client_app.htm&type=5), with [OAuth configured](https://help.salesforce.com/s/articleView?id=xcloud.configure_external_client_app_oauth_settings.htm&type=5). OAuth scopes must include:
-  - `api` - To manage user data via APIs.
-  - `refresh_token`, `offline_access` - To perform requests at any time, even when the user is offline or tokens have expired.
-  - `cdp_query_api` - To execute ANSI SQL queries on Data 360 data.
-- [A private key and the `server.key` file](https://developer.salesforce.com/docs/atlas.en-us.252.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_auth_key_and_cert.htm)
-- User with `Data Cloud Architect` permission
-
-## Configure Fusion
+## Configure <Constant name="fusion" />
 
 To connect dbt to Salesforce Data 360, set up your `profiles.yml`. Refer to the following configuration:
 

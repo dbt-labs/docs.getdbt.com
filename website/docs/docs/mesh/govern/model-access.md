@@ -3,11 +3,12 @@ title: "Model access"
 id: model-access
 sidebar_label: "Model access"
 description: "Define model access with group capabilities"
+availability: all_users
 ---
 
 :::info "Model access" is not "User access"
 
-**Model groups and access** and **user groups and access** mean two different things. "User groups and access" is a specific term used in <Constant name="dbt" /> to manage permissions. Refer to [User access](/docs/cloud/manage-access/about-user-access) for more info.
+**Model groups and access** and **user groups and access** mean two different things. "User groups and access" is a specific term used in <Constant name="dbt" /> to manage permissions. Refer to [User access](/docs/platform/manage-access/about-user-access) for more info.
 
 The two concepts will be closely related, as we develop multi-project collaboration workflows this year:
 - Users with access to develop in a dbt project can view and modify **all** models in that project, including private models.
@@ -46,6 +47,7 @@ Each model can only belong to one `group`, and groups cannot be nested. If you s
 
 
 import ModelGovernanceRollback from '/snippets/_model-governance-rollback.md';
+import MacroAccessRestrictions from '/snippets/_macro-access-restrictions.md';
 
 <ModelGovernanceRollback />
 
@@ -68,6 +70,8 @@ dbt.exceptions.DbtReferenceError: Parsing Error
   Node model.jaffle_shop.marketing_model attempted to reference node model.jaffle_shop.finance_model, 
   which is not allowed because the referenced node is private to the finance group.
 ```
+
+<MacroAccessRestrictions />
 
 By default, all models are `protected`. This means that other models in the same project can reference them, regardless of their group. This is largely for backward compatibility when assigning groups to an existing set of models, as there may already be existing references across group assignments.
 

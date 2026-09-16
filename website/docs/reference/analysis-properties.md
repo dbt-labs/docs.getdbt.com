@@ -46,10 +46,6 @@ analyses:
 
 <AnalysesProjectLevelConfig />
 
-:::info Beta feature
-The project-level configuration for analyses is a beta feature in <Constant name="core" /> v1.12.
-:::
-
 <File name='dbt_project.yml'>
 
 ```yaml

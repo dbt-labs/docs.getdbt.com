@@ -21,7 +21,7 @@ The `profile` field in [`dbt_project.yml`](/reference/dbt_project.yml) reference
 Only one `profiles.yml` file is required and it can manage multiple projects and connections. 
 
 <Tabs>
-<TabItem value="fusion" label="dbt Fusion">
+<TabItem value="fusion" label="dbt v2">
 
 <Constant name="fusion"/> searches for the parent directory of `profiles.yml` in the following order and uses the first location it finds:
 
@@ -30,14 +30,30 @@ Only one `profiles.yml` file is required and it can manage multiple projects and
 3. `~/.dbt/` directory (Recommended location) &mdash; Shared across all projects.
 
 </TabItem>
-<TabItem value="core" label="dbt Core">
+<TabItem value="core" label="dbt v1">
 
 <Constant name="core"/> searches for the parent directory of `profiles.yml` in the following order and uses the first location it finds:
 
+<VersionBlock lastVersion="1.10">
+
 1. `--profiles-dir` flag
-2. <VersionBlock lastVersion="1.10">`DBT_PROFILES_DIR`</VersionBlock><VersionBlock firstVersion="1.11">`DBT_ENGINE_PROFILES_DIR`</VersionBlock> environment variable 
+2. `DBT_PROFILES_DIR` environment variable
 3. Current working directory
 4. `~/.dbt/` directory (Recommended location)
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.11">
+
+1. `--profiles-dir` flag
+2. `DBT_ENGINE_PROFILES_DIR` environment variable
+3. `DBT_PROFILES_DIR` environment variable (legacy variable but supported for backward compatibility)
+4. Current working directory
+5. `~/.dbt/` directory (Recommended location)
+
+**Note:** <Constant name="core"/> prefers `DBT_ENGINE_PROFILES_DIR` for the profiles directory, which aligns with the `DBT_ENGINE_*` env var naming in v1.11. Use `DBT_ENGINE_PROFILES_DIR` going forward; `DBT_PROFILES_DIR` remains supported for compatibility.
+
+</VersionBlock>
 
 Note: <Constant name="core"/> supports using the <VersionBlock lastVersion="1.10">`DBT_PROFILES_DIR`</VersionBlock><VersionBlock firstVersion="1.11">`DBT_ENGINE_PROFILES_DIR`</VersionBlock> environment variable or a `profiles.yml` file in the current working directory. These options aren't currently supported in <Constant name="fusion"/>.
 
@@ -118,7 +134,7 @@ my_second_project_profile:
 
 ### Environment variables
 
-Use environment variables to keep sensitive credentials out of your `profiles.yml` file. Check out the [env_var](/reference/dbt-jinja-functions/env_var) reference for more information. 
+Use environment variables to keep sensitive credentials out of your `profiles.yml` file. Check out the [env_var](/reference/dbt-jinja-functions/env_var) reference for more information.
 
 Example:
 
@@ -142,13 +158,17 @@ my_profile:
 
 </File>
 
+When using dbt locally, you can also store environment variables in a `.env` file in your project root instead of setting them directly in your shell. dbt, the dbt VS Code extension, and <Constant name="dbt"/> v1.12+ automatically load the `.env` file from your current working directory. Environment variables set in your shell take precedence over values in the `.env` file. For more information, refer to [About env_var function](/reference/dbt-jinja-functions/env_var#using-the-env-file).
+
+To keep credentials out of version control, add `.env` to your `.gitignore` file &mdash; new projects on v1.12 and higher created with `dbt init` include this by default.
+
 ## User config
 
 You can set default values of global configs for all projects that you run using your local machine. Refer to [About global configs](/reference/global-configs/about-global-configs) for details.
 
 ## Understanding targets in profiles
 
-dbt supports multiple targets within one profile to encourage the use of separate development and production environments as discussed in [dbt environments](/docs/local/dbt-core-environments).
+dbt supports multiple targets within one profile to encourage the use of separate development and production environments as discussed in [dbt environments](/docs/local/dbt-environments).
 
 A typical profile for an analyst using dbt locally will have a target named `dev`, and have this set as the default.
 

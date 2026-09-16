@@ -1,25 +1,67 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useContext } from 'react'
 import VersionContext from '../../stores/VersionContext';
 import { availableInCurrentVersion } from '../../utils/available-in-current-version';
 
-export default function VersionBlock({ firstVersion = "0", lastVersion = undefined, children }) {
-  const { version } = useContext(VersionContext);
+/**
+ * Builds a human-readable version note (such as "Applies to dbt v1.12 and
+ * later") from the block's version range and optional product. Returns null
+ * when the block has no version constraint, so unversioned blocks stay untagged.
+ */
+function versionNote(firstVersion, lastVersion, product) {
+  const first = firstVersion && firstVersion !== "0" && typeof firstVersion !== "boolean" ? firstVersion : null;
+  const last = lastVersion && typeof lastVersion !== "boolean" ? lastVersion : null;
 
-  const [loading, setLoading] = useState(true);
+  let range;
+  if (first && last) range = `v${first} to v${last}`;
+  else if (first) range = `v${first} and later`;
+  else if (last) range = `v${last} and earlier`;
+  else return null;
 
-  // Hide versionBlock components until version ready
-  useEffect(() => {
-    version && setLoading(false);
-  }, [version]);
+  return `(Applies to ${product ? `${product} ` : "dbt "}${range})`;
+}
 
-  // Only check version if current version set
+/**
+ * Conditionally renders children based on version range and optional product filter.
+ *
+ * @param {string} [firstVersion="0"] - Earliest version this content appears in
+ * @param {string} [lastVersion] - Latest version this content appears in (omit for all future)
+ * @param {string} [product] - If set, only renders when the selected product matches (case-sensitive)
+ * @example
+ * <VersionBlock firstVersion="1.12">Only in 1.12+</VersionBlock>
+ * <VersionBlock firstVersion="2.0" product="Fusion">Only in Fusion 2.0+</VersionBlock>
+ */
+export default function VersionBlock({ firstVersion = "0", lastVersion = undefined, product = undefined, children }) {
+  const { version, product: currentProduct } = useContext(VersionContext);
+
+  // `version` falls back to the default version in VersionContext, so these
+  // checks resolve during SSR. Rendering the default version's content at build
+  // time (rather than null until a client-side effect runs) is what lets the
+  // generated per-page `.md` include versioned tables and code blocks. The
+  // client still swaps to the selected version after mount, since the first
+  // client render uses the same default and matches the server output.
   if (version) {
-    if (!availableInCurrentVersion(
-      version, 
-      firstVersion, 
-      lastVersion
-    )) return null;
+    // Product filter: hide if a specific product is required but doesn't match
+    if (product && currentProduct && product !== currentProduct) return null;
+
+    // Version range filter
+    if (!availableInCurrentVersion(version, firstVersion, lastVersion)) return null;
   }
 
-  return loading ? null : <>{children}</>;
+  // A version note tags the block with the dbt version its content applies to.
+  // `.version-md-note` visually hides it from sighted readers on the page (the
+  // version switcher is their signal), but it stays in the DOM as real content,
+  // so it flows into the generated per-page `.md` and tells AI agents which
+  // version they're reading. It is deliberately NOT `aria-hidden`: the repo's
+  // rehypeCleanMarkdown plugin strips aria-hidden nodes from the markdown, and
+  // exposing the note to screen readers gives them the same version cue.
+  const note = versionNote(firstVersion, lastVersion, product);
+
+  return (
+    <>
+      {note && (
+        <span className="version-md-note">{note} </span>
+      )}
+      {children}
+    </>
+  );
 }

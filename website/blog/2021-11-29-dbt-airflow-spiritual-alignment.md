@@ -121,7 +121,7 @@ Having your upstream extract + load jobs configured in Airflow means that analys
 
 When a dbt run fails within an Airflow pipeline, an engineer monitoring the overall pipeline will likely not have the business context to understand why the individual model or test failed—they were probably not the one who built it.
 
-dbt provides common programmatic interfaces (the [dbt Cloud Admin + Metadata APIs](/docs/dbt-cloud-apis/overview), and [.json-based artifacts](/reference/artifacts/dbt-artifacts) in the case of dbt Core) that provide the context needed for the engineer to self-serve—either by rerunning from a point of failure or reaching out to the owner.
+dbt provides common programmatic interfaces (the [dbt Cloud Admin + Metadata APIs](/docs/dbt-apis/overview), and [.json-based artifacts](/reference/artifacts/dbt-artifacts) in the case of dbt Core) that provide the context needed for the engineer to self-serve—either by rerunning from a point of failure or reaching out to the owner.
 
 ## Why I ❤️ dbt Cloud + Airflow
 

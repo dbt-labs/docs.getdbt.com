@@ -18,18 +18,18 @@ export default function DocSidebarItem({item, ...props}) {
 
   // dbt Custom
   const { versionedPages, versionedCategories } = usePluginData('docusaurus-build-global-data-plugin');
-  const { version } = useContext(VersionContext)
+  const { version, product } = useContext(VersionContext)
 
-  // Hide versionedPages if they do not match the current version
-  if(version && versionedPages) {
-    const { pageAvailable } = pageVersionCheck(version, versionedPages, item.docId)
+  // Hide versionedPages if they do not match the current version or product
+  if(versionedPages) {
+    const { pageAvailable } = pageVersionCheck(version, versionedPages, item.docId, product)
     if(!pageAvailable)
       return null
   }
 
-  // Hide versionedCategories if they do not match the current version
-  if(version && versionedCategories && item.type === 'category') {
-    const { categoryAvailable } = categoryVersionCheck(version, versionedCategories, item.label)
+  // Hide versionedCategories if they do not match the current version or product
+  if(versionedCategories && item.type === 'category') {
+    const { categoryAvailable } = categoryVersionCheck(version, versionedCategories, item.label, product)
     if(!categoryAvailable)
       return null
   }

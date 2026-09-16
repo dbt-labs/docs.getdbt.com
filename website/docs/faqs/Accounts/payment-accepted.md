@@ -5,6 +5,6 @@ sidebar_label: 'Can I pay invoice'
 id: payment-accepted
 ---
 
-Currently for Starter plans, self-service <Constant name="dbt" /> payments must be made with a credit card and by default, they will be billed monthly based on the number of [active developer seats and usage](/docs/cloud/billing).
+Currently for Starter plans, self-service <Constant name="dbt" /> payments must be made with a credit card and by default, they will be billed monthly based on the number of [active developer seats and usage](/docs/platform/billing).
 
 We don't have any plans to do invoicing for self-service teams in the near future, but we *do* currently support invoices for companies on the **<Constant name="dbt" /> Enterprise or Enterprise+ plans.** Feel free to [contact us](https://www.getdbt.com/contact) to build your Enterprise pricing.

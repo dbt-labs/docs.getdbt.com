@@ -27,7 +27,7 @@ For example, if you want to use the `develop` branch of a connected repository:
 3. Enter **develop** as the name of your custom branch.
 4. Click **Save**.
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/dev-environment-custom-branch.png" width="100%" title="Configuring a custom base repository branch"/>
+<Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/dev-environment-custom-branch.png" width="100%" title="Configuring a custom base repository branch"/>
 
 ## Deployment
 

@@ -2,6 +2,7 @@
 title: "Jinja and macros"
 description: "Enhance your SQL with Jinja and macros when developing in dbt to create reusable, modular logic."
 id: "jinja-macros"
+availability: all_users
 ---
 
 ## Related reference docs
@@ -79,7 +80,7 @@ You can recognize Jinja based on the delimiters the language uses, which we refe
 
 When used in a dbt model, your Jinja needs to compile to a valid query. To check what SQL your Jinja compiles to:
 * **Using <Constant name="dbt" />:** Click the compile button to see the compiled SQL in the Compiled SQL pane
-* **Using dbt Core:** Run `dbt compile` from the command line. Then open the compiled SQL file in the `target/compiled/{project name}/` directory. Use a split screen in your code editor to keep both files open at once.
+* **Using <Constant name="core" />:** Run `dbt compile` from the command line. Then open the compiled SQL file in the `target/compiled/{project name}/` directory. Use a split screen in your code editor to keep both files open at once.
 
 ### Macros
 [Macros](/docs/build/jinja-macros) in Jinja are pieces of code that can be reused multiple times – they are analogous to "functions" in other programming languages, and are extremely useful if you find yourself repeating code across multiple models. Macros are defined in `.sql` files, typically in your `macros` directory ([docs](/reference/project-configs/macro-paths)).
@@ -192,5 +193,3 @@ Writing a macro for the first time? Check whether we've open sourced one in [dbt
 {% endfor %}
 ```
 
-<Snippet path="discourse-help-feed-header" />
-<DiscourseHelpFeed tags="wee"/>
