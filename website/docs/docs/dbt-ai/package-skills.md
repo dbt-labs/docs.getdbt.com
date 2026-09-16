@@ -48,6 +48,8 @@ Each provider has a directory it reads skills from. Most providers share `.agent
 </SimpleTable>
 Values are case-insensitive, so `wizard`, `Wizard`, and `WIZARD` all resolve the same way.
 
+If you use <Constant name="wizard" />, set `wizard` no matter which model it runs &mdash; whether you [bring your own key](/docs/dbt-ai/wizard-byok) or use managed AI. `ai_provider` only tells dbt which directory to write skills to, not which model your agent uses.
+
 You can also list more than one provider, which installs the same skills into each provider's directory:
 
 <File name='dbt_project.yml'>
@@ -116,6 +118,27 @@ dbt reads a package's `SKILL.md` files and never modifies them. Only the install
 
 A `SKILL.md` that dbt can't read — because it's missing frontmatter, or its `name` doesn't match its directory — produces a warning and is skipped. One malformed skill in a package doesn't stop the rest from installing.
 
+## Add skills to your own project
+
+You don't need a package to use skills. Any dbt project can define its own, using the same layout and `SKILL.md` format as a package. Create a `skills` directory in your project:
+
+```text
+skills/
+  house-style/
+    SKILL.md
+```
+
+Your project's skills install alongside any that your packages ship, so a project can define its own skills, install skills from packages, or both. dbt labels your project's skills `(this project)` in the output:
+
+```text
+Installing house-style (this project) -> .agents/skills
+Installing add-a-data-test (demo_skills) -> .agents/skills
+```
+
+Skills defined in your own project still require an `ai_provider`, install to the same directories, and are tracked and removed the same way as package skills.
+
+Use this when the rules are specific to one project and you don't want to publish a package. Once you want to share the same skills across several projects, move them into a package and install it as a dependency &mdash; including a private package, which works no differently.
+
 ## Install the skills
 
 Add the package to your project as you would any other dependency:
@@ -153,7 +176,7 @@ Installing add-a-data-test (demo_skills) -> .claude/skills
 
 dbt installs skills whenever it installs packages, so `dbt build`, `dbt run`, and `dbt parse` install them too. You don't have to run `dbt deps` yourself.
 
-dbt collects skills from your root project as well as from every installed package, including packages installed as transitive dependencies. A `skills` directory in your own project installs alongside the ones your packages ship.
+dbt collects skills from every installed package, including packages installed as transitive dependencies, as well as from [your root project](#add-skills-to-your-own-project).
 
 Re-running a command when nothing has changed writes nothing and reports nothing. dbt rewrites the installed copy only when the source has changed.
 
