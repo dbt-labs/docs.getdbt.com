@@ -199,6 +199,24 @@ Because [linting in the <Constant name="studio_ide" />](/docs/platform/studio-id
 
 If you need SQLFluff behavior, you can either lint in the <Constant name="studio_ide" />, which continues to run SQLFluff, or run SQLFluff locally using the standalone <Constant name="core" /> engine templater. Refer to [<Constant name="fusion" /> limitations](/docs/dbt/supported-features#limitations) for more information.
 
+## Limitations
+
+Keep these limitations in mind:
+
+### Rules without autofix
+
+The following rules report violations but can't be auto-fixed by `--fix`. They require reordering of SQL fragments or broader reflow that source-mapping (based on `macro_spans`) can't safely fix inside Jinja-templated SQL:
+
+- **Aliasing:** `AL03`, `AL04`, `AL06`, `AL08`
+- **References:** `RF01`, `RF02`, `RF04`, `RF05`
+- **Structure:** `ST03`, `ST04`, `ST05`, `ST06`, `ST07`, `ST09`, `ST10`, `ST11`
+- **Ambiguity / convention:** `AM01`, `AM06`, `CV08`, `CV09`, `CV12`
+
+### Single fix pass
+
+`--fix` runs a single pass; it doesn't iterate until the file is clean. A fix applied by one rule can expose a violation from another rule on the next run. For example, `AL09` removes a self-alias, which may then cause `RF02` to flag the now-unqualified reference. Re-run `dbt lint --fix` until the output is clean.
+
+
 ## FAQs
 
 <DetailsToggle alt_header="Why doesn't dbt lint check every possible output of my Jinja?">
