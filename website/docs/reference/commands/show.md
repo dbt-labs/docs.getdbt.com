@@ -31,7 +31,7 @@ If previewing a model, dbt will always compile and run the compiled query from s
 <VersionBlock firstVersion="2.0">
 
 #### `--info` flag
-- The `--info <view>` flag queries the [dbt Information Schema](/docs/build/dbt-information-schema) directly from the CLI. It reads from the intermediate SQL views and doesn't connect to your warehouse. You don't need to run `--generate-info-schema` first.
+- The `--info <view>` flag queries the [dbt Information Schema](/docs/build/dbt-information-schema) directly from the CLI. It reads from the intermediate SQL views and doesn't connect to your warehouse. 
 - It is equivalent to `--inline "select * from {{ info_schema('<view>') }}"`.
 
 ```shell
