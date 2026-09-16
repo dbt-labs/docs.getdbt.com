@@ -438,6 +438,7 @@ const sidebarSettings = {
             },
           ],
         },
+        "docs/dbt-ai/package-skills",
         {
           type: "category",
           label: "dbt Copilot",
@@ -571,6 +572,7 @@ const sidebarSettings = {
       items: [
         "docs/build/projects",
         "docs/build/about-static-analysis",
+        "docs/build/dbt-information-schema",
         "docs/build/dbt-tips",
         {
           type: "category",
@@ -1255,6 +1257,7 @@ const sidebarSettings = {
         "reference/project-configs/query-comment",
         "reference/project-configs/quoting",
         "reference/project-configs/require-dbt-version",
+        "reference/project-configs/skill-paths",
         "reference/project-configs/snapshot-paths",
         "reference/project-configs/seed-paths",
         "reference/project-configs/model-paths",
@@ -1488,7 +1491,7 @@ const sidebarSettings = {
             "reference/source-configs",
             "reference/resource-properties/database",
             "reference/resource-properties/external",
-            "reference/resource-properties/freshness",
+            { type: "ref", id: "reference/resource-configs/freshness" },
             "reference/resource-properties/identifier",
             "reference/resource-properties/loader",
             "reference/resource-properties/quoting",
@@ -1578,6 +1581,7 @@ const sidebarSettings = {
             "reference/commands/debug",
             "reference/commands/deps",
             "reference/commands/dbt-environment",
+            "reference/commands/freshness",
             "reference/commands/init",
             "reference/commands/invocation",
             "reference/commands/lint",
@@ -1755,6 +1759,7 @@ const sidebarSettings = {
         "reference/programmatic-invocations",
       ],
     },
+    "reference/info-schema",
     {
       type: "category",
       label: "Jinja reference",
@@ -1794,6 +1799,7 @@ const sidebarSettings = {
         "reference/artifacts/manifest-json",
         "reference/artifacts/run-results-json",
         "reference/artifacts/sources-json",
+        "reference/artifacts/freshness-json",
         "reference/artifacts/sl-manifest",
         "reference/artifacts/other-artifacts",
       ],

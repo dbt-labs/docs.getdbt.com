@@ -101,6 +101,8 @@ exports.versions = products.flatMap((product) =>
  * lastVersion to further restrict by version within that product.
  */
 exports.versionedPages = [
+  { page: "docs/dbt-ai/package-skills", firstVersion: "2.0" },
+  { page: "reference/project-configs/skill-paths", firstVersion: "2.0" },
   { page: "docs/dbt/fusion", firstVersion: "2.0" },
   { page: "docs/dbt/dbt-availability", firstVersion: "2.0" },
   { page: "docs/dbt/dbt-readiness", firstVersion: "2.0" },
@@ -122,6 +124,7 @@ exports.versionedPages = [
   { page: "reference/commands/dbt-environment", firstVersion: "2.0" },
   { page: "reference/commands/invocation", firstVersion: "2.0" },
   { page: "reference/commands/system", firstVersion: "2.0" },
+  { page: "reference/commands/freshness", firstVersion: "2.0" },
   { page: "docs/local/connect-data-platform/salesforce-data-cloud-setup", firstVersion: "2.0" },
   { page: "docs/build/sample-flag", firstVersion: "1.10" },
   { page: "docs/build/empty-flag", firstVersion: "1.8" },

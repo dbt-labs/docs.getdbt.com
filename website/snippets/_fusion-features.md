@@ -24,6 +24,6 @@ Creating an account also unlocks additional free-tier access to dbt services.
 | Precise column-level lineage | - | ✅ |
 | dbt docs v2 (full), including column-level lineage | - | ✅ |
 
-For the best dbt experience, use the dbt VS Code extension. You can get started for free, and when you create a free <Constant name="dbt_platform" /> account, you’ll unlock additional access to advanced dbt features in your editor and beyond, including those shown in the table above.
+For the best dbt experience, use the dbt VS Code extension. You can get started for free, and a free <Constant name="dbt_platform" /> account connects your editor to your account for <Constant name="dbt_platform" /> capabilities like the **Catalog** tab.
 
 To learn more about VS Code-specific capabilities, refer to [dbt VS Code extension features](/docs/dbt-extension-features).
