@@ -37,8 +37,9 @@ Commands marked ❌ indicate write commands, commands marked ✅ indicate read c
 
 | Command | Description | Parallel execution |  <div style={{width:'250px'}}>Caveats</div> |
 |---------|-------------| :-----------------:| ------------------------------------------ |
-| [build](/reference/commands/build) | Builds and tests all selected resources (models, seeds, tests, and more) |  ❌ | All tools <br /> All [supported versions](/docs/dbt-versions) | 
+| [build](/reference/commands/build) | Builds and tests all selected resources. |  ❌ | All tools <br /> All [supported versions](/docs/dbt-versions) |
 | cancel | Cancels the most recent invocation. | N/A | <Constant name="platform_cli" /> <br /> Requires [dbt v1.6 or higher](/docs/dbt-versions) |
+| [check](/reference/commands/check) | Runs checks against the [dbt Information Schema](/docs/build/dbt-information-schema) | ✅ | <Constant name="core_v2" /> and later |
 | [clean](/reference/commands/clean) | Deletes artifacts present in the dbt project |  ✅ | All tools <br /> All [supported versions](/docs/dbt-versions) |
 | [clone](/reference/commands/clone) | Clones selected models from the specified state |  ❌ | All tools <br /> Requires [dbt v1.6 or higher](/docs/dbt-versions) |
 | [compile](/reference/commands/compile) | Compiles (but does not run) the models in a project |  ✅ | All tools <br /> All [supported versions](/docs/dbt-versions) |
