@@ -58,7 +58,7 @@ dbt show --info models
 dbt show --info models --format json --limit 20
 ```
 
-This queries the intermediate views directly, without connecting to your warehouse. You don't need to run `--generate-info-schema` first. `--info <view>` is equivalent to `--inline "select * from {{ info_schema('<view>') }}"`.
+This queries the intermediate views directly, without connecting to your warehouse.  `--info <view>` is equivalent to `--inline "select * from {{ info_schema('<view>') }}"`.
 
 You can also use `--inline` SQL that calls `{{ info_schema() }}` directly:
 
