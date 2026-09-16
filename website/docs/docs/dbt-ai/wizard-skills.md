@@ -72,7 +72,7 @@ flags:
 
 </File>
 
-Use `wizard` whether you bring your own key or use managed AI &mdash; `ai_provider` only tells dbt where to write the skill files.
+Use `wizard` whether you bring your own key or use managed AI.
 
 For the full setup, including how to ship skills in a package and disable ones you don't want, refer to [Installing agent skills from dbt packages](/docs/dbt-ai/package-skills).
 
