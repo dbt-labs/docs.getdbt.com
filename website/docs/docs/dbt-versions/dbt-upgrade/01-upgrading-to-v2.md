@@ -106,7 +106,9 @@ For full usage, refer to [About dbt docs commands](/reference/commands/cmd-docs?
 
 ### Batch tests
 
-Data tests can now run in batches! When you use `--batch-tests`, multiple data tests applied to a single model are batched into a single query and scan against the warehouse (internal testing shows this reduces test command runtime by 40%, queries issued by 65%, and warehouse cost of running tests by 15%!)
+Data tests can now run in batches! When you use `--batch-tests`, multiple data tests applied to a single model are batched into a single query and scan against the warehouse. Internal testing shows batch tests reduce test command runtime by 40%, queries issued by 65%, and warehouse cost of running tests by 15%!
+
+Enable with `--batch-tests` on [`dbt test`](/reference/commands/test) or [`dbt build`](/reference/commands/build) or `DBT_ENGINE_BATCH_TESTS=true` environment variable.
 
 ### Model freshness and the `dbt freshness` command
 
