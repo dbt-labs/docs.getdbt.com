@@ -106,9 +106,7 @@ Compiled SQL for resources that use introspective queries may depend on metadata
 
 ## Compiling tests with `--select`
 
-You can use `dbt compile` to compile tests, as long as your selector matches a test node in the project.
-
-You can also target groups of tests with selector methods:
+You can use `dbt compile` to compile tests, as long as your selector matches a test node in the project. You can also target groups of tests with selector methods:
 
 **Compile all test nodes:**
 
@@ -157,12 +155,6 @@ For more selector patterns, refer to [Test selection examples](/reference/node-s
 ## dbt Information Schema
 
 <InfoSchemaIntro />
-
-```shell
-dbt compile --generate-info-schema
-```
-
-<InfoSchemaStaticAnalysis /> When used without `--static-analysis strict`, dbt emits a warning.
 
 ```shell
 dbt compile --generate-info-schema --static-analysis strict
