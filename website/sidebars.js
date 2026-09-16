@@ -572,6 +572,7 @@ const sidebarSettings = {
       items: [
         "docs/build/projects",
         "docs/build/about-static-analysis",
+        "docs/build/dbt-information-schema",
         "docs/build/dbt-tips",
         {
           type: "category",
@@ -1758,6 +1759,7 @@ const sidebarSettings = {
         "reference/programmatic-invocations",
       ],
     },
+    "reference/info-schema",
     {
       type: "category",
       label: "Jinja reference",
