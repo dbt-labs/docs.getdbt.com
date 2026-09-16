@@ -356,9 +356,9 @@ import FusionReadinessPanel from '/snippets/_fusion-migration-readiness-panel.md
 
 <FusionReadinessPanel />
 
-### Step 5: Enable dbt State (optional but recommended) <Lifecycle status="preview" />
+### Step 5: Enable dbt State (optional but recommended)
 
-[dbt State](/docs/deploy/dbt-state-about) automatically determines which models need rebuilding based on code or data changes, which can reduce warehouse costs by 30% or more. dbt State is in preview. To get started, see [Set up dbt State](/docs/deploy/dbt-state-setup).
+[dbt State](/docs/deploy/dbt-state-about) automatically determines which models need rebuilding based on code or data changes, which can reduce warehouse costs by 30% or more. To get started, see [Set up dbt State](/docs/deploy/dbt-state-setup).
 
 <SaoDeprecated />
 

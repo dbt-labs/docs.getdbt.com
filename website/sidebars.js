@@ -77,6 +77,7 @@ const sidebarSettings = {
                 "docs/platform/connect-data-platform/connect-amazon-athena",
                 "docs/platform/connect-data-platform/connect-azure-synapse-analytics",
                 "docs/platform/connect-data-platform/connect-bigquery",
+                "docs/platform/connect-data-platform/connect-clickhouse",
                 "docs/platform/connect-data-platform/connect-databricks",
                 "docs/platform/connect-data-platform/connect-microsoft-fabric",
                 "docs/platform/connect-data-platform/connect-onehouse",
@@ -419,6 +420,17 @@ const sidebarSettings = {
                 "docs/dbt-ai/wizard-slash-commands",
                 "docs/dbt-ai/wizard-config",
                 "docs/dbt-ai/wizard-telemetry",
+              ],
+            },
+            {
+              type: "category",
+              label: "Wizard Desktop",
+              collapsed: true,
+              link: { type: "doc", id: "docs/dbt-ai/wizard-desktop" },
+              items: [
+                "docs/dbt-ai/wizard-desktop",
+                "docs/dbt-ai/wizard-desktop-use",
+                "docs/dbt-ai/wizard-desktop-settings",
               ],
             },
             {
@@ -983,6 +995,24 @@ const sidebarSettings = {
         },
         "docs/use-dbt-semantic-layer/sl-faqs",
       ],
+    },
+    {
+      type: 'html',
+      value: 'Compute',
+      className: 'sidebar-title',
+    },
+    "docs/lake-compute/lake-compute",
+    "docs/lake-compute/compute-onboarding",
+    "docs/lake-compute/compute-faq",
+    {
+      type: 'html',
+      value: 'Business intelligence',
+      className: 'sidebar-title',
+    },
+    {
+      type: "link",
+      label: "dbt Charts",
+      href: "https://docs.dbtcharts.com/",
     },
     {
       type: 'html',

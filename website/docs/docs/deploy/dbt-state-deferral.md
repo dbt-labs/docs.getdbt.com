@@ -7,7 +7,7 @@ tags: ['dbt State']
 availability: everywhere_usage
 ---
 
-# Configuring deferral in dbt State <Lifecycle status="preview" />
+# Configuring deferral in dbt State
 
 By default, dbt State defers to your production environment. You only need to configure this if you want to change that behavior:
 
