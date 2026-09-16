@@ -71,8 +71,7 @@ The most popular `dbt-labs` packages (`dbt_utils`, `audit_helper`, `dbt_external
 
 ## New and changed features and functionality
 
-<!-- Docs for ino schema, model freshness, checks, and agent skills will be added in separate PRs -->
-
+<!-- Docs for info schema, model freshness, checks, and agent skills will be added in separate PRs -->
 
 ### Strict validation
 
@@ -81,6 +80,14 @@ In v1, misspelled configs, unexpected YAML keys, and invalid flags were silently
 ### Faster Rust parser
 
 The v2 engine is a complete rewrite in Rust, delivering faster parse and compile times, especially on large projects. No configuration is needed; the performance improvement is automatic.
+
+### dbt Information Schema
+
+Similar to a database's `INFORMATION_SCHEMA`, the [dbt Information Schema](/docs/build/dbt-information-schema) is a contracted interface into the metadata for all of the resources in your dbt project.
+
+When you use the [`--generate-info-schema`](#generating-the-information-schema) flag, dbt writes the Information Schema to `target/info_schema/` in a versioned subdirectory (for example, `target/info_schema/v1/`) as standard Parquet files. The metadata available in the schema grows with each step: parsing produces basic metadata, compiling adds column types and column-level lineage (with `--static-analysis strict`), and running or building populates runtime results.
+
+For more information, refer to [dbt Information Schema](/docs/build/dbt-information-schema).
 
 ### dbt Docs v2
 
