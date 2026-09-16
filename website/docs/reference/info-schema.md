@@ -72,7 +72,10 @@ The `dbt_rt` namespace tables contain runtime execution data. These tables are n
 
 ## Columns available for checks
 
-When you query a table in the Information Schema using the `{{ info_schema() }}` macro in a check, dbt exposes it as a view &mdash; the same table name, but with only a subset of columns available: those that are resolved at parse time. The full table (in `target/info_schema/v1/`) may contain additional columns. Use the view name (without the `dbt.` prefix) as the argument to the macro. When using `dbt show --inline`, all columns in the table are available.
+When you use `{{ info_schema() }}` macro in a check, you can access only columns resolved at parse time. dbt exposes these columns through a view with the same name as the Information Schema table. Pass that name without the `dbt.` prefix to the macro.
+
+The full table in `target/info_schema/v1/` may have more columns. You can access all columns when you use the macro with `dbt show --inline`.
+
 
 | View | Columns |
 |------|---------|
