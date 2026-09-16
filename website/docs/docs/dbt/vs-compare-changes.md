@@ -10,7 +10,7 @@ availability:
   engine: v2
 ---
 
-# Compare changes during development <Lifecycle status="beta" />
+# Compare changes during development
 
 :::info
 Compare changes needs a baseline to compare against &mdash; either [<Constant name="dbt_platform" /> deferral](#how-it-works), which uses your <Constant name="dbt_platform" /> account, or a local `manifest.json`, which doesn't.

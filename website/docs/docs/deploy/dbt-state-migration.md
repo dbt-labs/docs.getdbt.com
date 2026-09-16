@@ -9,7 +9,7 @@ availability: everywhere_usage
 
 import DbtStateVsSao from '/snippets/_dbt-state-vs-sao.md';
 
-# Migrating from state-aware orchestration to dbt State <Lifecycle status="preview" />
+# Migrating from state-aware orchestration to dbt State
 
 <DbtStateVsSao />
 
@@ -29,8 +29,6 @@ In <Constant name="fusion_engine" />, you can enable dbt State without updating 
 
 - If `lag_tolerance` and `require_fresh_data_from` are not set, dbt State falls back to your existing `build_after` configs until `build_after` is deprecated.
 - If neither `build_after` nor the `state` configs exist, dbt State uses its [default configs](/reference/resource-configs/dbt-state-configs): `lag_tolerance: 45m` and `require_fresh_data_from: any`.
-
-dbt Labs will communicate a migration timeline for state-aware orchestration users when dbt State reaches general availability.
 :::
 
 ### Examples

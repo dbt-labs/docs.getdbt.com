@@ -7,7 +7,7 @@ availability:
   access: free
 ---
 
-# dbt freshness <Lifecycle status="beta" />
+# dbt freshness
 
 The `dbt freshness` command evaluates whether sources and models with [freshness](/reference/resource-configs/freshness) configured meet your `warn_after` and `error_after` thresholds, reporting warnings and errors accordingly.
 

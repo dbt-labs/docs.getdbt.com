@@ -6,7 +6,7 @@ availability:
   engine: v2
 ---
 
-# Checks <Lifecycle status="beta" />
+# Checks
 
 As dbt projects grow and more contributors add models, maintaining consistent standards becomes harder: a model ships without a description, a public model has no owner, a new model ignores naming conventions. None of this breaks anything, so it's not caught, but quality erodes silently.
 

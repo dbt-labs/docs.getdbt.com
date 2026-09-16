@@ -60,7 +60,7 @@ dbt test --select "test_type:unit"
 
 <VersionBlock firstVersion="2.0">
 
-## Run unit tests locally <Lifecycle status="beta" />
+## Run unit tests locally
 
 :::note Opt in with an environment variable
 

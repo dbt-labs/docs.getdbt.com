@@ -12,17 +12,17 @@ import AboutFusion from '/snippets/_about-fusion.md';
 
 Get <Constant name="dbt" /> running on your machine in a few minutes. Installing dbt gives you <Constant name="fusion" /> by default: the current, free-to-use experience for v2. Choose your preferred installation method:
 
-## Install dbt <Lifecycle status="preview" />
+## Install dbt
 
 <Tabs groupId="install-method" queryString>
 
 <TabItem value="pip" label="pip">
 
 ```shell
-python -m pip install --pre dbt
+python -m pip install dbt
 ```
 
-To upgrade later, run `python -m pip install --upgrade --pre dbt`.
+To upgrade later, run `python -m pip install --upgrade dbt`.
 
 </TabItem>
 
@@ -204,11 +204,11 @@ python -m pip install dbt-core
 ### Upgrade
 
 ```shell
-# Upgrade adapter (and dbt-core)
+# Upgrade v1 pip installations
 python -m pip install --upgrade dbt-ADAPTER_NAME
 
 # Downgrade to a specific version
-python -m pip install --upgrade dbt-core==1.9
+python -m pip install --upgrade dbt-core==1.11
 ```
 
 ### Install a prerelease
@@ -216,7 +216,7 @@ python -m pip install --upgrade dbt-core==1.9
 Use `--pre` to install prerelease versions. This may also install prerelease versions of other dependencies.
 
 ```shell
-python3 -m pip install --pre dbt-ADAPTER_NAME
+python3 -m pip install --pre dbt
 ```
 
 </Expandable>

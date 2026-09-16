@@ -10,7 +10,7 @@ import FusionTroubleshooting from '/snippets/_fusion-troubleshooting.md';
 import AboutFusion from '/snippets/_about-fusion.md';
 import AuthorizeAdditionalAccess from '/snippets/_vsce-authorize-additional-access.md';
 
-# Sign in <Lifecycle status="preview" />
+# Sign in
 
 Sign in to connect the dbt VS Code extension to your <Constant name="dbt_platform" /> account. Signing in is what lets the extension reach your account for <Constant name="dbt_platform" /> capabilities, such as the [**Catalog** tab](/docs/dbt-extension-features#explore-your-catalog) and [compare changes](/docs/dbt/vs-compare-changes) with <Constant name="dbt_platform" /> deferral.
 

@@ -9,7 +9,7 @@ availability: everywhere_usage
 
 import DbtStateAppRetirement from '/snippets/_dbt-state-app-retirement.md';
 
-# About dbt State <Lifecycle status="preview" />
+# About dbt State
 
 <IntroText>
 

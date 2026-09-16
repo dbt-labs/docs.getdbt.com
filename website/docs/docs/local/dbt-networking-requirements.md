@@ -6,7 +6,7 @@ description: "Outbound network access requirements for dbt v2, including adapter
 
 ---
 
-# dbt v2 networking requirements <Lifecycle status="preview" />
+# dbt v2 networking requirements
 
 <Constant name="fusion" /> requires outbound HTTPS access to several endpoints depending on your usage. This page describes each requirement and provides guidance for enterprise environments that restrict outbound traffic.
 

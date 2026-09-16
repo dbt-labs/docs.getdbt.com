@@ -8,7 +8,7 @@ pagination_next: "docs/dbt-extension-features"
 availability: local_all
 ---
 
-# About the dbt VS Code extension <Lifecycle status="preview" />
+# About the dbt VS Code extension
 
 The dbt VS Code extension brings a hyper-fast, intelligent, and cost-efficient dbt development experience to VS Code.
 This is the only way to enjoy all the power of dbt v2 while developing with a self-hosted installation.
@@ -16,7 +16,7 @@ This is the only way to enjoy all the power of dbt v2 while developing with a se
 - _Save time and resources_ with near-instant parsing, live error detection, powerful IntelliSense capabilities, and more.
 - _Stay in flow_ with a seamless, end-to-end dbt development experience designed from scratch for local dbt development.
 
-The dbt VS Code extension is available in the [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=dbtLabsInc.dbt). _Note, this is a public preview release. Behavior may change ahead of the broader generally available (GA) release._
+The dbt VS Code extension is available in the [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=dbtLabsInc.dbt).
 
 The dbt VS Code extension works with v2, the default free-to-use product you get when you install dbt.
 

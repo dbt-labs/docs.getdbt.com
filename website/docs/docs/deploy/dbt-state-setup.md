@@ -7,7 +7,7 @@ tags: ['dbt State']
 availability: everywhere_usage
 ---
 
-# Setting up dbt State <Lifecycle status="preview" />
+# Setting up dbt State
 
 This page walks you through setting up dbt State across <Constant name="core" />, <Constant name="dbt_platform" />, and <Constant name="fusion" />.
 
@@ -85,7 +85,7 @@ For next steps, see:
    - [Enable dbt State in Studio](/docs/deploy/dbt-state-enable-studio)
 
 </TabItem>
-<TabItem value="fusion" label="v2">
+<TabItem value="fusion" label="dbt v2">
 
 1. Navigate to your project:
 

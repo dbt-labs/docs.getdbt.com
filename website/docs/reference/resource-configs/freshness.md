@@ -262,7 +262,7 @@ _[Source code](https://github.com/dbt-labs/dbt-adapters/blob/main/dbt-adapters/s
 
 <VersionBlock firstVersion="2.0">
 
-## Model freshness <Lifecycle status="beta" />
+## Model freshness
 
 Use the `freshness` config on a model to:
 

@@ -462,7 +462,7 @@ models:
 
 <VersionBlock firstVersion="2.0">
 
-### Configuring model freshness <Lifecycle status="beta" />
+### Configuring model freshness
 
 You can use the `freshness` config in the following ways:
 
