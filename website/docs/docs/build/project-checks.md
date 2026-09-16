@@ -172,7 +172,7 @@ Setting `+enabled: false` in `dbt_project.yml` disables the check silently &mdas
 
 ## Using selectors with checks
 
-[`--select` and other selector methods](/reference/node-selection/syntax) do something different for checks than for other commands: instead of selecting which checks run, they select which project resources the checks evaluate.
+With checks, [`--select` and other selector methods](/reference/node-selection/syntax) choose which project resources to evaluate, not which checks run.
 
 Why checks work this way:
 
