@@ -70,7 +70,7 @@ For more info, refer to [upgrading to v2](/docs/dbt-versions/dbt-upgrade/upgradi
 
 On dbt v2, a dbt package can ship skills, and `dbt deps` installs them into the directory your coding agent reads from.
 
-To opt in, set `ai_provider` to `wizard` in your root project:
+To opt in, set `ai_provider` to one of the [supported providers list](/docs/dbt-ai/package-skills?version=2#set-the-ai_provider-flag). If you use Wizard, set `ai_provider` to `wizard` in your root project:
 
 <File name='dbt_project.yml'>
 
