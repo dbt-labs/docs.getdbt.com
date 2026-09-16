@@ -68,7 +68,7 @@ For more info, refer to [upgrading to v2](/docs/dbt-versions/dbt-upgrade/upgradi
 
 <VersionBlock firstVersion="2.0">
 
-On dbt v2, a dbt package can ship skills, and `dbt deps` installs them into `.agents/skills/` &mdash; the same project-level location <Constant name="wizard" /> already reads from, so they're picked up on your next session with no extra setup.
+On dbt v2, a dbt package can ship skills, and `dbt deps` installs them into the directory your coding agent reads from.
 
 To opt in, set `ai_provider` to `wizard` in your root project:
 
