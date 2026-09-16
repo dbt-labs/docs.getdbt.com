@@ -18,7 +18,7 @@ availability: local_free
 
 <VersionBlock firstVersion="2.0">
 
-# Connect BigQuery to <Constant name="fusion" /> <Lifecycle status='preview' />
+# Connect BigQuery to <Constant name="fusion" />
 
 You can configure the BigQuery adapter by running `dbt init` in your CLI or manually providing the `profiles.yml` file with the fields configured for your authentication type.
 

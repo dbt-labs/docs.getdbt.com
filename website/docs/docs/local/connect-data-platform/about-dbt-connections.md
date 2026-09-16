@@ -16,12 +16,13 @@ dbt connects to your data platform to run SQL transformations against your data.
 
 <Constant name="fusion_engine" /> includes built-in support for:
 
-- [Snowflake](/docs/local/connect-data-platform/snowflake-setup) <Lifecycle status="preview" />
-- [Databricks](/docs/local/connect-data-platform/databricks-setup) <Lifecycle status="preview" />
-- [Amazon Redshift](/docs/local/connect-data-platform/redshift-setup) <Lifecycle status="preview" />
-- [Google BigQuery](/docs/local/connect-data-platform/bigquery-setup) <Lifecycle status="preview" />
-- [DuckDB](/docs/local/connect-data-platform/duckdb-setup) <Lifecycle status="beta" />
+- [Snowflake](/docs/local/connect-data-platform/snowflake-setup)
+- [Databricks](/docs/local/connect-data-platform/databricks-setup)
+- [Amazon Redshift](/docs/local/connect-data-platform/redshift-setup)
+- [Google BigQuery](/docs/local/connect-data-platform/bigquery-setup)
+- [DuckDB](/docs/local/connect-data-platform/duckdb-setup)
 - [Apache Spark](/docs/local/connect-data-platform/spark-setup) <Lifecycle status="beta" />
+- [ClickHouse](/docs/local/connect-data-platform/clickhouse-setup) <Lifecycle status="beta" />
 
 <small> _Adapter lifecycle can differ between the <Constant name="dbt_platform" /> and local development. An adapter can reach GA in the dbt platform before it reaches GA for local use._ </small> <br /><br />
 

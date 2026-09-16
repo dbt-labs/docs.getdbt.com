@@ -8,7 +8,7 @@ availability:
   access: free
 ---
 
-# Upgrading to v2 <Lifecycle status="beta" />
+# Upgrading to v2
 
 import FusionAdapters from '/snippets/_fusion-dwh.md';
 import FusionUpgradeSteps from '/snippets/_fusion-upgrade-steps.md';
@@ -33,7 +33,7 @@ import AboutFusion from '/snippets/_about-fusion.md';
 Upgrading to v2 is an install step. Install dbt using `pip` to get <Constant name="fusion" /> for v2:
 
 ```shell
-python -m pip install --pre dbt
+python -m pip install dbt
 ```
 
 For full instructions, including Homebrew, winget, and additional options, refer to [Install dbt](/docs/local/install-dbt).
@@ -88,7 +88,7 @@ When you use the [`--generate-info-schema`](#generating-the-information-schema) 
 
 For more information, refer to [dbt Information Schema](/docs/build/dbt-information-schema).
 
-### Checks <Lifecycle status="beta" />
+### Checks
 
 In dbt v2, you can create [checks](/docs/build/checks) to enforce project standards (for example, all models must have a description, a public model must have an owner, and so on) at parse time, before any warehouse work runs. Write a SQL rule under the `checks/` directory, then run checks on demand with `dbt check`. Checks also run automatically with every `dbt build`. Use `--skip-checks` to bypass checks on a build.
 
@@ -104,7 +104,7 @@ To hydrate catalog metadata (`catalog.json`) for <Constant name="catalog" /> wit
 
 For full usage, refer to [About dbt docs commands](/reference/commands/cmd-docs?version=2).
 
-### Model freshness and the `dbt freshness` command <Lifecycle status="beta" />
+### Model freshness and the `dbt freshness` command
 
 v2 expands freshness checks to models, building on the existing support for sources. You can configure freshness thresholds on models to receive warnings or errors when the data is stale. For config options and materialization requirements, refer to [freshness](/reference/resource-configs/freshness).
 
@@ -118,7 +118,7 @@ All v2 adapters connect to data warehouses via the [Arrow Database Connectivity 
 
 On first run, dbt downloads adapter drivers from the dbt Labs CDN and caches them locally. Subsequent runs work offline. For supported adapters, refer to [Supported data platforms](/docs/supported-data-platforms).
 
-### `dbt lint` <Lifecycle status="beta" />
+### `dbt lint`
 
 v2 introduces [`dbt lint`](/reference/commands/lint), a high-performance SQL linter built into dbt. It is SQLFluff-compatible: you keep your existing .sqlfluff config and rule codes (for example, `CP01`, `RF03`). Run `dbt lint` to lint all models, or `dbt lint [FILE]` to target a specific file. Use `--fix` to auto-apply fixable violations.
 
@@ -197,7 +197,7 @@ Run [`dbt login status`](/reference/commands/login?version=2.0#dbt-login-status)
 
 ### Experimental features
 
-#### Local execution of unit tests <Lifecycle status="beta" />
+#### Local execution of unit tests
 
 v2 introduces the [`compute`](/reference/resource-configs/compute) config for unit tests. Set your unit tests with `compute: local` and dbt runs the test with DuckDB instead of sending it to your data platform, which takes the warehouse round trip out of your development loop.
 
@@ -609,7 +609,7 @@ v2 is available in two distributions. For more information, refer to [dbt licens
 | Distribution | Package | Use it when |
 | --- | --- | --- |
 | <Constant name="fusion" /> | `dbt` | The recommended v2 experience. |
-| dbt OSS | `dbt-core` | Your organization has a strict requirement to use the Apache 2.0 [open-source runtime](/docs/local/install-dbt-v2). |
+| dbt OSS | `dbt-oss` | Your organization has a strict requirement to use the Apache 2.0 [open-source runtime](/docs/local/install-dbt-v2). |
 </SimpleTable>
 
 If you have a older project that isn’t ready to move to v2, continue using v1.x for compatibility. For new or upgraded projects, we recommend v2.

@@ -191,6 +191,6 @@ Explore mode answers are grounded in what your project defines. Here are some th
 - [dbt Wizard home tab](/docs/platform/wizard-home)
 - [User licenses](/docs/platform/manage-access/about-user-access) 
 - [Invite users](/docs/platform/manage-access/invite-users)
-- [Enable AI features in the dbt platform](/docs/platform/manage-dbt-ai)
+- [Enable AI features in dbt platform](/docs/platform/manage-dbt-ai)
 
 

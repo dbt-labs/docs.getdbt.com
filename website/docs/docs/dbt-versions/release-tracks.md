@@ -176,7 +176,7 @@ If you see new failures in your scheduled jobs now that they are running on a ne
 
 <Expandable alt_header="What about breaking changes to packages (maintained by dbt Labs or by others)?" >
 
-When we talk about _latest version_, we’re referring to the underlying runtime for dbt, not the versions of packages you’re installing. Our continuous release for dbt includes testing against several popular dbt packages. This ensures that updates we make to dbt-core, adapters, or anywhere else are compatible with the code in those packages.
+When we talk about _latest version_, we’re referring to the underlying runtime for dbt, not the versions of packages you’re installing. Our continuous release for dbt includes testing against several popular dbt packages. This ensures that updates we make to `dbt`, adapters, or anywhere else are compatible with the code in those packages.
 
 If a new version of a dbt package includes a breaking change (for example, a change to one of the macros in `dbt_utils`), you don’t have to immediately use the new version. In your `packages` configuration (in `dependencies.yml` or  `packages.yml`), you can still specify which versions or version ranges of packages you want dbt to install. If you're not already doing so, we strongly recommend [checking `package-lock.yml` into version control](/reference/commands/deps#predictable-package-installs) for predictable package installs in deployment environments and a clear change history whenever you install upgrades.
 

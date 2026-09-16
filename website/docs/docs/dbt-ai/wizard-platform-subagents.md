@@ -1,7 +1,7 @@
 ---
-title: "Use subagents with dbt Wizard in the dbt platform"
+title: "Use subagents with dbt Wizard in dbt platform"
 id: "wizard-platform-subagents"
-description: "Delegate work to specialized subagents in dbt Wizard in the dbt platform."
+description: "Delegate work to specialized subagents in dbt Wizard in dbt platform."
 sidebar_label: "Use subagents"
 tags: [AI, Wizard]
 unlisted: true
@@ -10,7 +10,7 @@ availability: platform_usage
 
 import WizardFeedbackCallout from '/snippets/_wizard-feedback-callout.md';
 
-# Use subagents with <Constant name="wizard" /> in the <Constant name="dbt_platform" /> <Lifecycle status="beta"/>
+# Use subagents with <Constant name="wizard" /> in <Constant name="dbt_platform" /> <Lifecycle status="beta"/>
 
 <IntroText>
 Subagents let <Constant name="wizard" /> spin up focused agents to handle parts of a larger task, such as exploring your project, making changes, or reviewing results. <Constant name="wizard"/> orchestrates them and consolidates the results back into your session.
@@ -62,7 +62,7 @@ You don't need to declare these &mdash; <Constant name="wizard"/> routes to them
 
 ## Related docs
 
-- [About <Constant name="wizard" /> in the <Constant name="dbt_platform" />](/docs/platform/wizard-platform)
+- [About <Constant name="wizard" /> in <Constant name="dbt_platform" />](/docs/platform/wizard-platform)
 - [<Constant name="wizard" /> in Studio IDE](/docs/dbt-ai/wizard-ide)
 - [Use subagents locally](/docs/dbt-ai/wizard-subagents)
 - [How <Constant name="wizard" /> works](/docs/dbt-ai/wizard-how-it-works)

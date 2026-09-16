@@ -83,6 +83,12 @@ etl:
   displayText: ETL
   hoverSnippet: Extract, Transform, Load (ETL) is the process of first extracting data from a data source, transforming it, and then loading it into a target data warehouse.
 
+git-worktree:
+  displayText: worktree
+  hoverSnippet: A worktree is a second copy of your repo in its own folder, on its own branch. Same repo and same history, just a separate place to work, so changes in one worktree don't touch the files in another.
+  hoverLink: https://git-scm.com/docs/git-worktree
+  hoverLinkText: Refer to the git worktree docs.
+
 grain:
   displayText: grain
   hoverSnippet: Your data's grain is the combination of columns at which records in a table are unique. Ideally, this is captured in a single column and a unique primary key.
@@ -170,6 +176,10 @@ subquery:
 surrogate-key:
   displayText: surrogate key
   hoverSnippet: A surrogate key is a unique identifier derived from the data itself. It often takes the form of a hashed value of multiple columns that will create a uniqueness constraint for each row.
+
+target-schema:
+  displayText: target schema
+  hoverSnippet: Your target schema is the schema dbt builds your models into for a given environment, set in your connection or profile. Dev work usually goes to your own schema so you don't overwrite anyone else's tables.
 
 table:
   displayText:  table
