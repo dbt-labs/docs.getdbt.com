@@ -17,11 +17,11 @@ sidebar_label: "Sources"
 
 </VersionBlock>
 
-This file contains information about [sources with freshness checks](/docs/build/sources#checking-source-freshness). dbt uses this file to power its [Source Freshness visualization](/docs/build/sources#source-data-freshness).
+This file contains information about [sources with freshness checks](/docs/build/sources#evaluate-source-freshness). dbt uses this file to power its [Source Freshness visualization](/docs/build/sources#source-data-freshness).
 
 <VersionBlock firstVersion="2.0">
 
-`sources.json` contains sources only, unlike [`freshness.json`](/reference/artifacts/freshness-json), which covers both sources and models in a single file. If a `dbt freshness` run checks only models and no sources are included, dbt does not overwrite `sources.json`.
+`sources.json` is a legacy artifact that contains freshness results for sources only. For results that includes both sources and models in one file, use [`freshness.json`](/reference/artifacts/freshness-json). If a `dbt freshness` run checks only models and no sources are included, dbt does not overwrite `sources.json`.
 
 </VersionBlock>
 

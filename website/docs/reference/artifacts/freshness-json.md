@@ -8,11 +8,12 @@ availability:
 
 # Freshness JSON file <Lifecycle status="beta" />
 
+**Current schema**: [v0](https://schemas.getdbt.com/dbt/freshness/v0/index.html)
 **Produced by:** [`dbt freshness`](/reference/commands/freshness)
 
 This file contains freshness results for all sources and models with [freshness](/reference/resource-configs/freshness) configured. dbt writes it to `target/freshness.json` after every `dbt freshness` invocation.
 
-Unlike [`sources.json`](/reference/artifacts/sources-json), which covers sources only, `freshness.json` covers both sources and models. Each entry includes a `resource_type` field to distinguish them.
+Each entry includes a `resource_type` field that identifies whether a resource is a source or a model.
 
 ### Top-level keys
 

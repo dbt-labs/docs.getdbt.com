@@ -78,60 +78,11 @@ The most popular `dbt-labs` packages (`dbt_utils`, `audit_helper`, `dbt_external
 
 ### Model freshness and the `dbt freshness` command <Lifecycle status="beta" />
 
-v2 lets you declare freshness thresholds on models and sources, and adds a new [`dbt freshness`](/reference/commands/freshness) command to check both resources with freshness configured in a single invocation.
+v2 expands freshness checks to models, building on the existing support for sources. You can configure freshness thresholds on models to receive warnings or errors when the data is stale. For config options and materialization requirements, refer to [freshness](/reference/resource-configs/freshness).
 
-#### Model freshness
+Use the new [`dbt freshness`](/reference/commands/freshness) command to check all sources and models with freshness configured in a single invocation and writes to a [`target/freshness.json` file](/reference/artifacts/freshness-json).
 
-You can declare freshness thresholds directly on any model:
-
-```yaml
-models:
-  - name: stg_orders
-    config:
-      loaded_at_field: updated_at  # or loaded_at_query
-      freshness:
-        warn_after: {count: 24, period: hour}
-        error_after: {count: 48, period: hour}
-```
-
-How dbt measures freshness depends on the materialization:
-
-- `table`, `incremental`, `materialized_view`, `dynamic_table`: Uses `loaded_at_field` or `loaded_at_query` if set, otherwise falls back to adapter metadata (such as the table's last-modified time).
-- `view`, `external`: `loaded_at_field` or `loaded_at_query` is required &mdash; there is no adapter metadata fallback.
-- `ephemeral`: Not supported. Setting freshness on an ephemeral model raises a parse error.
-
-For full configuration options and materialization rules, refer to [freshness](/reference/resource-configs/freshness).
-
-#### `dbt freshness` command
-
-[`dbt freshness`](/reference/commands/freshness) evaluates how fresh your sources and models are against the thresholds you've configured, and reports a warning or error when data is stale. Results are written to `target/freshness.json`, which covers both sources and models. For the full schema, refer to [`freshness.json`](/reference/artifacts/freshness-json).
-
-<SourceFreshnessLegacy />
-
-#### Cross-project freshness
-
-In a [dbt Mesh](/docs/mesh/about-mesh) project, dbt stores a public model's freshness config so downstream projects can check upstream model freshness without running the upstream project.
-
-For example, `project_a` owns a public model `orders` with freshness configured:
-
-```yaml
-# project_a: models/orders.yml
-models:
-  - name: orders
-    access: public
-    config:
-      loaded_at_field: updated_at
-      freshness:
-        warn_after: {count: 24, period: hour}
-        error_after: {count: 48, period: hour}
-```
-
-`project_b` depends on `orders`. To check whether `orders` data is fresh, run `dbt freshness` from `project_b` &mdash; no need to re-run `project_a`:
-
-```bash
-# run from project_b
-dbt freshness --select project_a.orders
-```
+The [`dbt source freshness`](/reference/commands/source?version=2#dbt-source-freshness) command remains supported for backwards compatibility, checks sources only, and continues to produce a `sources.json` file. We recommend using  `dbt freshness` going forward. 
 
 ### `dbt login`
 
@@ -235,7 +186,7 @@ Some historic CLI flags from v1 will no longer do anything in v2. If you pass th
 | [`--cache-selected-only` / `--no-cache-selected-only`](/reference/global-configs/cache) | No action required |
 | [`--clean-project-files-only` / `--no-clean-project-files-only`](/reference/commands/clean#--clean-project-files-only) | No action required |
 | `--single-threaded` / `--no-single-threaded` | No action required |
-| `dbt source freshness` [`--output` / `-o`](/docs/deploy/source-freshness)  | |
+| `dbt source freshness` [`--output` / `-o`](/reference/commands/source?version=1.12#source-freshness-commands)  | |
 | [`--config-dir`](/reference/commands/debug)  | No action required | 
 | [`--resource-type` / `--exclude-resource-type`](/reference/global-configs/resource-type) | Refer to [CLI flags that need changes](#cli-flags-that-need-changes). |
 | `--show-resource-report` / `--no-show-resource-report` | No action required |
