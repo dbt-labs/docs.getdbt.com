@@ -59,7 +59,16 @@ Avoid duplicate skill names across locations. If you need to replace a built-in 
 
 ### Skills from dbt packages
 
-Skills don't have to be written by hand. On dbt v2, a dbt package can ship skills, and `dbt deps` installs them into `.agents/skills/` &mdash; the same project-level location <Constant name="wizard" /> already reads from, so they're picked up on your next session with no extra setup.
+<VersionBlock lastVersion="1.99">
+
+From v2 and later, you can ship agent skills in a dbt package and install them with `dbt deps` into the directory your coding agent reads from. This allows your whole team picks up the same skills from a versioned dependency instead of managing them separately.
+
+For more info, refer to [upgrading to v2](/docs/dbt-versions/dbt-upgrade/upgrading-to-v2?version=2#agent-skills)
+</VersionBlock>
+
+<VersionBlock firstVersion="2.0">
+
+On dbt v2, a dbt package can ship skills, and `dbt deps` installs them into `.agents/skills/` &mdash; the same project-level location <Constant name="wizard" /> already reads from, so they're picked up on your next session with no extra setup.
 
 To opt in, set `ai_provider` to `wizard` in your root project:
 
@@ -75,6 +84,8 @@ flags:
 Use `wizard` whether you bring your own key or use managed AI.
 
 For the full setup, including how to ship skills in a package and disable ones you don't want, refer to [Installing agent skills from dbt packages](/docs/dbt-ai/package-skills).
+
+</VersionBlock>
 
 ## Create a skill
 
