@@ -118,26 +118,7 @@ dbt reads a package's `SKILL.md` files and never modifies them. Only the install
 
 A `SKILL.md` that dbt can't read — because it's missing frontmatter, or its `name` doesn't match its directory — produces a warning and is skipped. One malformed skill in a package doesn't stop the rest from installing.
 
-## Add skills to your own project
 
-You don't need a package to use skills. Any dbt project can define its own, using the same layout and `SKILL.md` format as a package. Create a `skills` directory in your project:
-
-```text
-skills/
-  house-style/
-    SKILL.md
-```
-
-Your project's skills install alongside any that your packages ship, so a project can define its own skills, install skills from packages, or both. dbt labels your project's skills `(this project)` in the output:
-
-```text
-Installing house-style (this project) -> .agents/skills
-Installing add-a-data-test (demo_skills) -> .agents/skills
-```
-
-Skills defined in your own project still require an `ai_provider`, install to the same directories, and are tracked and removed the same way as package skills.
-
-Use this when the rules are specific to one project and you don't want to publish a package. Once you want to share the same skills across several projects, move them into a package and install it as a dependency &mdash; including a private package, which works no differently.
 
 ## Install the skills
 
