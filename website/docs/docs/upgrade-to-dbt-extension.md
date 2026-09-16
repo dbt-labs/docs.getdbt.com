@@ -46,7 +46,7 @@ You can start manual onboarding in either of the following ways:
 
 Once the upgrade is completed, you're ready to dive into all the features that <Constant name="fusion_engine" /> has to offer!
 
-Next, [sign in or register](/docs/sign-in-dbt-extension) for a <Constant name="dbt_platform" /> account to keep using advanced features after the 14-day trial.
+Next, [sign in](/docs/sign-in-dbt-extension) to a <Constant name="dbt_platform" /> account if you want to use the extension's <Constant name="dbt_platform" /> capabilities.
 
 </TabItem>
 <TabItem value="terminal" label="From your terminal">
@@ -105,7 +105,7 @@ The tool compiles your project with full <Constant name="fusion" /> static analy
 
 Once the upgrade is completed, you're ready to dive into all the features that <Constant name="fusion_engine" /> has to offer!
 
-Next, [sign in or register](/docs/sign-in-dbt-extension) for a <Constant name="dbt_platform" /> account to keep using advanced features after the 14-day trial.
+Next, [sign in](/docs/sign-in-dbt-extension) to a <Constant name="dbt_platform" /> account if you want to use the extension's <Constant name="dbt_platform" /> capabilities.
 
 </TabItem>
 </Tabs>
@@ -114,7 +114,7 @@ Next, [sign in or register](/docs/sign-in-dbt-extension) for a <Constant name="d
 
 Once you've upgraded your project to <Constant name="fusion" />, you can:
 
-- [Sign in or register](/docs/sign-in-dbt-extension) for a <Constant name="dbt_platform" /> account to keep using advanced features after the 14-day trial.
+- [Sign in](/docs/sign-in-dbt-extension) to a <Constant name="dbt_platform" /> account if you want to use the extension's <Constant name="dbt_platform" /> capabilities, such as the **Catalog** tab.
 - [Configure your local environment](/docs/configure-dbt-extension) to mirror your <Constant name="dbt_platform" /> environment and [set environment variables](/docs/configure-dbt-extension#configure-environment-variables) required by your project.
 - [Compare changes locally](/docs/dbt/vs-compare-changes) to preview data changes caused by your local edits.
 - [Optimize static analysis for development and deployment](/best-practices/optimize-static-analysis-for-development-and-deployment) for stronger local validation without slowing deployment jobs.
