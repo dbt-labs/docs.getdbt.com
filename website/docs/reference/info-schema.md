@@ -12,16 +12,14 @@ For an overview of the dbt Information Schema, how to generate it, and how to qu
 
 ## Tables
 
-The following tables reflect dbt Information Schema v1, written to `target/info_schema/v1/`. The version only increments on breaking schema changes (for example, when a column is removed or retyped).
+The dbt Information Schema v1 generates tables across these namespaces:
 
-The Information Schema generates tables across the following namespaces.
-
-- [`dbt`](#dbt-namespace)
-- [`dbt_rt`](#dbt_rt-namespace)
+- [`dbt`](#dbt-namespace): Contains metadata about your project's structure, resources, and configuration. Answers the question: *What is your project?*
+- [`dbt_rt`](#dbt_rt-namespace): Contains runtime execution data. Answers the question: *What happened when you ran your project?*
 
 ### `dbt` namespace
 
-The `dbt` namespace tables contain information about your project's structure, resources, and configuration.
+The `dbt` namespace tables contain metadata about your project's structure, resources, and configuration.
 
 | Table | Description |
 |-------|-------------|
@@ -59,7 +57,7 @@ The `dbt` namespace tables contain information about your project's structure, r
 
 ### `dbt_rt` namespace
 
-The `dbt_rt` namespace tables and views contain runtime execution data.
+The `dbt_rt` namespace tables contain runtime execution data.
 
 | Table | Description |
 |-------|-------------|
@@ -70,7 +68,6 @@ The `dbt_rt` namespace tables and views contain runtime execution data.
 | `dbt_rt.freshness` | Freshness check results for sources and models; `resource_type` indicates whether a row is a `source` or `model` |
 | `dbt_rt.diagnostics` | Diagnostic data from invocations |
 | `dbt_rt.adapter_queries` | Adapter queries issued during invocations |
-
 
 ## Related
 
