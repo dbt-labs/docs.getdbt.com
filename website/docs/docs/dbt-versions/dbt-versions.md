@@ -17,6 +17,12 @@ If you're using the <Constant name="dbt_platform" /> (including the <Constant na
 
 <Constant name="fusion_engine"/> uses semantic versioning starting with version 2.0. To install or update <Constant name="fusion"/>, see [Install dbt](/docs/local/install-dbt?version=2).
 
+### Latest release
+
+| dbt v2 | Initial release | Support level and end date |
+|:---:|:---:|:---:|
+| [**v2.0**](/docs/dbt-versions/dbt-upgrade/upgrading-to-v2) | Sept 14, 2026 | **Active support &mdash; Sept 13, 2027** |
+
 ### Semantic versioning
 
 <Constant name="fusion" /> follows [semantic versioning](https://semver.org/):
@@ -27,7 +33,7 @@ If you're using the <Constant name="dbt_platform" /> (including the <Constant na
 
 ### Release channels
 
-<Constant name="fusion" /> is distributed through release channels during the preview period:
+<Constant name="fusion" /> is distributed through release channels:
 
 | Channel | Description | Stability |
 |---------|-------------|-----------|

@@ -6,7 +6,7 @@ pagination_next: null
 pagination_prev: null
 ---
 
-# Version compatibility <Lifecycle status="preview" />
+# Version compatibility
 
 <Constant name="fusion_engine" />, its language server (<Term id="lsp" />), and the dbt VS Code extension work together to power local development. This page explains how their versions relate, which combinations are compatible, and how to verify you have matching binaries.
 

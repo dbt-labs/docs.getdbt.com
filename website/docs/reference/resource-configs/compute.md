@@ -9,7 +9,7 @@ availability:
   engine: v2
 ---
 
-# compute <Lifecycle status="beta" />
+# compute
 
 <IntroText>
 

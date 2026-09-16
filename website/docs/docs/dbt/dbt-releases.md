@@ -9,7 +9,7 @@ pagination_prev: null
 
 import FusionReleases from '/src/components/fusionReleases';
 
-# Self-hosted dbt releases <Lifecycle status="preview" />
+# Self-hosted dbt releases
 
 This page shows release information for local builds of dbt v2 only. v2 releases on the <Constant name="dbt_platform" /> adhere to the [release tracks](/docs/dbt-versions/dbt-release-tracks) categories, giving you control over release cadence and stability.
 

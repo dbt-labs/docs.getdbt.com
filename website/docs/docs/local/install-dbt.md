@@ -12,7 +12,7 @@ import AboutFusion from '/snippets/_about-fusion.md';
 
 Get <Constant name="dbt" /> running on your machine in a few minutes. Installing dbt gives you <Constant name="fusion" /> by default: the current, free-to-use experience for v2. Choose your preferred installation method:
 
-## Install dbt <Lifecycle status="preview" />
+## Install dbt
 
 <Tabs groupId="install-method" queryString>
 

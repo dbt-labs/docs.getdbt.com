@@ -37,12 +37,6 @@ Confirm the installed version begins with `2.`:
 dbt --version
 ```
 
-During beta, you must target either the pre-release version or an explicit pin. After install, immediately update to the most recent version:
-
-Explicit pin:
-
-`python -m pip install dbt-oss==2.0.0rc2`
-
 For adapter install details, refer to the [`dbt` repository](https://github.com/dbt-labs/dbt).
 
 ## What's included
