@@ -57,6 +57,25 @@ The following table summarizes where <Constant name="wizard" /> looks for skills
 
 Avoid duplicate skill names across locations. If you need to replace a built-in or imported skill, create the replacement in an intended project or user location and remove or rename the older copy.
 
+### Skills from dbt packages
+
+Skills don't have to be written by hand. On dbt v2, a dbt package can ship skills, and `dbt deps` installs them into `.agents/skills/` &mdash; the same project-level location <Constant name="wizard" /> already reads from, so they're picked up on your next session with no extra setup.
+
+To opt in, set `ai_provider` to `wizard` in your root project:
+
+<File name='dbt_project.yml'>
+
+```yml
+flags:
+  ai_provider: wizard
+```
+
+</File>
+
+Use `wizard` whether you bring your own key or use managed AI &mdash; `ai_provider` only tells dbt where to write the skill files.
+
+For the full setup, including how to ship skills in a package and disable ones you don't want, refer to [Installing agent skills from dbt packages](/docs/dbt-ai/package-skills).
+
 ## Create a skill
 
 From your terminal, use the following commands to create a skill folder and file:
