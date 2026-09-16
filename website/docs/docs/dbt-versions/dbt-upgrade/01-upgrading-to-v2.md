@@ -112,8 +112,7 @@ All v2 adapters connect to data warehouses via the [Arrow Database Connectivity 
 
 On first run, dbt downloads adapter drivers from the dbt Labs CDN and caches them locally. Subsequent runs work offline. For supported adapters, refer to [Supported data platforms](/docs/supported-data-platforms).
 
-
-### Local execution of unit tests <Lifecycle status="beta" />
+### `dbt lint` <Lifecycle status="beta" />
 
 v2 introduces [`dbt lint`](/reference/commands/lint), a high-performance SQL linter built into dbt. It is SQLFluff-compatible: you keep your existing .sqlfluff config and rule codes (for example, `CP01`, `RF03`). Run `dbt lint` to lint all models, or `dbt lint [FILE]` to target a specific file. Use `--fix` to auto-apply fixable violations.
 
