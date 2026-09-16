@@ -118,8 +118,6 @@ dbt reads a package's `SKILL.md` files and never modifies them. Only the install
 
 A `SKILL.md` that dbt can't read — because it's missing frontmatter, or its `name` doesn't match its directory — produces a warning and is skipped. One malformed skill in a package doesn't stop the rest from installing.
 
-
-
 ## Install the skills
 
 Add the package to your project as you would any other dependency:
@@ -157,7 +155,7 @@ Installing add-a-data-test (demo_skills) -> .claude/skills
 
 dbt installs skills whenever it installs packages, so `dbt build`, `dbt run`, and `dbt parse` install them too. You don't have to run `dbt deps` yourself.
 
-dbt collects skills from every installed package, including packages installed as transitive dependencies, as well as from [your root project](#add-skills-to-your-own-project).
+dbt collects skills from your root project as well as from every installed package, including packages installed as transitive dependencies. A `skills` directory in your own project installs alongside the ones your packages ship.
 
 Re-running a command when nothing has changed writes nothing and reports nothing. dbt rewrites the installed copy only when the source has changed.
 
