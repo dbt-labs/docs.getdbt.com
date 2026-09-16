@@ -8,7 +8,7 @@ availability:
   access: free
 ---
 
-The [dbt Information Schema](/docs/build/dbt-information-schema) tables are produced by [`dbt build`](/reference/commands/build), [`dbt run`](/reference/commands/run), [`dbt compile`](/reference/commands/compile), or [`dbt parse`](/reference/commands/parse) with the `--generate-info-schema` flag.
+The [dbt Information Schema](/docs/build/dbt-information-schema) is a contracted interface into the metadata for all of the resources in your dbt project. Information Schema tables are produced by [`dbt build`](/reference/commands/build), [`dbt run`](/reference/commands/run), [`dbt compile`](/reference/commands/compile), or [`dbt parse`](/reference/commands/parse) with the `--generate-info-schema` flag.
 
 ## Tables
 

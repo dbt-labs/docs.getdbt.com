@@ -12,7 +12,7 @@ As dbt projects grow and more contributors add models, maintaining consistent st
 
 Checks are SQL queries that assert rules and standards about your project metadata. Define rules (such as every model must have a description, required tags are set, and so on) and dbt enforces them before any warehouse work runs. 
 
-Write your checks in DuckDB SQL, using the [`{{ info_schema() }}` macro](/reference/dbt-jinja-functions/info-schema-macro) to reference the [dbt Information Schema](/docs/build/dbt-information-schema) in your SQL. Checks run locally in DuckDB at parse time, so they don't require a connection to your warehouse. If the project violates a rule, `dbt build` stops before compiling or materializing a single model.
+Write your checks in DuckDB SQL, using the [`{{ info_schema() }}` macro](/reference/dbt-jinja-functions/info-schema-macro) to reference the [dbt Information Schema](/docs/build/dbt-information-schema) in your query. Checks run locally in DuckDB, so they don't require a connection to your warehouse. If the project violates a rule, `dbt build` stops before compiling or materializing a single model.
 
 Similar to [data tests](/docs/build/data-tests), a check finds any instances in your project that do not meet your expectations. A check passes when the query returns zero rows, and fails when it returns one or more.
 
@@ -29,7 +29,7 @@ This section covers the rules and constraints for writing check SQL files and co
 
 ### The `info_schema()` macro
 
-[`{{ info_schema() }}`](/reference/dbt-jinja-functions/info-schema-macro) is the supported way to query the [dbt Information Schema](/docs/build/dbt-information-schema) in a check. Pass the name of the table you want to query (for example, `{{ info_schema('models') }}` for models or `{{ info_schema('edges') }}` for DAG edges). No materialized [Information Schema](/reference/info-schema) files are required; checks run against an intermediate representation built at parse time.
+[`{{ info_schema() }}`](/reference/dbt-jinja-functions/info-schema-macro) is the supported way to reference the [dbt Information Schema](/docs/build/dbt-information-schema) in a check. Pass the name of the table you want to query (for example, `{{ info_schema('models') }}` for models or `{{ info_schema('edges') }}` for DAG edges). No materialized [Information Schema](/reference/info-schema) files are required; checks run against an intermediate representation built at parse time.
 
 For the full list of available views and columns, refer to [Columns available for checks](/reference/info-schema#columns-available-for-checks).
 
