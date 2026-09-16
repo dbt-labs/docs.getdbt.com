@@ -4,17 +4,17 @@ sidebar_label: "source"
 id: "source"
 ---
 
-The `dbt source` command provides subcommands that are useful when working with source data.
+The `dbt source` command provides a subcommand that's useful when working with source data.
 
 <VersionBlock firstVersion="2.0">
 
-This command provides one subcommand, [`dbt freshness`](/reference/commands/freshness), which evaluates both sources and models against their configured freshness thresholds in a single command. 
+The subcommand, `dbt freshness`, evaluates both [sources](/reference/resource-configs/freshness?version=2) and [models]( /reference/resource-configs/freshness) against their configured freshness thresholds in a single command.  For the full list of flags, including how to scope a run to sources only, refer to [`dbt freshness`](/reference/commands/freshness).
 
 </VersionBlock>
 
 <VersionBlock lastVersion="1.99">
 
-This command provides one subcommand, `dbt source freshness`.
+The available subcommand provided is `dbt source freshness`.
 
 </VersionBlock>
 
@@ -76,15 +76,8 @@ sources:
 
 This helps to monitor the data pipeline health.
 
-You can also configure source freshness in the **Execution settings** section in your <Constant name="dbt" /> job **Settings** page. For more information, refer to [Enabling source freshness checks](/docs/deploy/source-freshness#enabling-source-freshness-checks).
+You can also configure source freshness in the **Execution settings** section in your dbt platform job **Settings** page. For more information, refer to [Enabling source freshness checks](/docs/deploy/source-freshness#enabling-source-freshness-checks).
 
-<VersionBlock firstVersion="2.0">
-
-### Freshness commands
-
-Freshness is evaluated by `dbt freshness`, which covers both sources and models. For the full list of flags, including how to scope a run to sources only, refer to [`dbt freshness`](/reference/commands/freshness).
-
-</VersionBlock>
 
 <VersionBlock lastVersion="1.99">
 
