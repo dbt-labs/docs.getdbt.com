@@ -8,20 +8,18 @@ availability:
   access: free
 ---
 
-The [dbt Information Schema](/docs/build/dbt-information-schema) generates the following tables by materializing your project metadata as Parquet files under `target/info_schema/v1/`. The version only increments on breaking schema changes (for example, when a column is removed or retyped). 
-
-You can also query these tables at parse time using the [`{{ info_schema() }}`](/reference/dbt-jinja-functions/info-schema-macro) macro (for example, when writing [checks](/docs/build/checks)). dbt exposes each table as a _view_ &mdash; the same table name, but limited to parse-time columns. Refer to [Columns available for checks](#columns-available-for-checks) to know which columns are accessible. 
+For an overview of the dbt Information Schema, how to generate it, and how to query it, refer to [dbt Information Schema](/docs/build/dbt-information-schema).
 
 ## Tables
 
-The Information Schema generates tables across the following namespaces:
+The dbt Information Schema v1 generates tables across these namespaces:
 
-- [`dbt`](#dbt-namespace)
-- [`dbt_rt`](#dbt_rt-namespace)
+- [`dbt`](#dbt-namespace): Contains metadata about your project's structure, resources, and configuration. Answers the question: *What is your project?*
+- [`dbt_rt`](#dbt_rt-namespace): Contains runtime execution data. Answers the question: *What happened when you ran your project?*
 
 ### `dbt` namespace
 
-The `dbt` namespace tables contain information about your project's structure, resources, and configuration.
+The `dbt` namespace tables contain metadata about your project's structure, resources, and configuration.
 
 | Table | Description |
 |-------|-------------|
@@ -70,6 +68,7 @@ The `dbt_rt` namespace tables contain runtime execution data. These tables are n
 | `dbt_rt.freshness` | Freshness check results for sources and models; `resource_type` indicates whether a row is a `source` or `model` |
 | `dbt_rt.diagnostics` | Diagnostic data from invocations |
 | `dbt_rt.adapter_queries` | Adapter queries issued during invocations |
+
 
 ## Columns available for checks
 
