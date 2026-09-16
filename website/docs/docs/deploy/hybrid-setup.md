@@ -32,7 +32,7 @@ Follow these steps to set up a <Constant name="dbt" /> Hybrid project and upload
     - [Make <Constant name="dbt" /> models public](#make-dbt-models-public) (optional)
     - [Create hybrid project](#create-hybrid-project)
     - [Generate service token and artifact upload values](#generate-service-token-and-artifact-upload-values)
-    - [Configure <Constant name="core" /> project and upload artifacts](#configure-dbt-core-project-and-upload-artifacts)
+    - [Configure <Constant name="core" /> project and upload artifacts](#configure-dbt-project-and-upload-artifacts)
     - [Review artifacts in <Constant name="dbt" />](#review-artifacts-in-dbt-cloud)
 
 Make sure to enable the hybrid projects toggle in <Constant name="dbt" />’s **Account settings** page.
@@ -99,7 +99,7 @@ The <Constant name="dbt" /> admin should share the values with a <Constant name=
 
 3. Make sure to copy and save the values as they're needed to configure your <Constant name="core" /> project in the next step. Once the service token is created, you can't access it again.
 
-### Configure <Constant name="dbt" /> project and upload artifacts
+### Configure dbt project and upload artifacts
 
 Once you have the values from the previous step, you can prepare your <Constant name="core" /> project for artifact upload by following these steps:
 

@@ -9,7 +9,7 @@ availability: everywhere_usage
 
 import DbtStateAppRetirement from '/snippets/_dbt-state-app-retirement.md';
 
-# About dbt State <Lifecycle status="preview" />
+# About dbt State
 
 <IntroText>
 
@@ -64,6 +64,10 @@ The following decision tree shows how dbt State chooses the most efficient valid
 The key idea is that dbt State only skips work when it can prove the existing object is sufficiently equivalent for the current run. If the SQL logic, relevant config, schema, or upstream freshness means the result might be different, dbt rebuilds instead.
 
 </Expandable>
+
+### Use dbt State with state:* selectors <Lifecycle status="beta" />
+
+In self-managed deployments, you can also use dbt State with `state:*` selectors. Instead of comparing against a single `manifest.json`, these selectors use dbt State as the comparison source, with state tracked for each individual node. Refer to [dbt State-powered `state:*` selectors](/docs/deploy/dbt-state-deferral#dbt-state-powered-state-selectors) for more information.
 
 ## Signing up for dbt State
 

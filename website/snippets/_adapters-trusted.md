@@ -34,8 +34,8 @@
 
 <Card
     title="ClickHouse"
-    body="<ul><li><a href='/docs/local/connect-data-platform/clickhouse-setup'>Install with dbt v1 </a> </li></ul><br /> <a href=https://badge.fury.io/py/dbt-clickhouse><img src=https://badge.fury.io/py/dbt-clickhouse.svg/></a>"
-    pills='["dbt v1"]'
+    body="<ul><li><a href='/docs/platform/connect-data-platform/connect-clickhouse'>Set up in the dbt platform </a> <br /></li><li><a href='/docs/local/connect-data-platform/clickhouse-setup'>Install with dbt v1 </a> <br /></li><li><a href='/docs/local/connect-data-platform/clickhouse-setup'>Install with dbt v2 </a> </li></ul><br /> <a href=https://badge.fury.io/py/dbt-clickhouse><img src=https://badge.fury.io/py/dbt-clickhouse.svg/></a>"
+    pills='["dbt platform", "dbt v1", "<Constant name="fusion" />"]'
     icon="clickhouse"/>
     
 <Card
