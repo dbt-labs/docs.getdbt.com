@@ -48,7 +48,7 @@ Each provider has a directory it reads skills from. Most providers share `.agent
 </SimpleTable>
 Values are case-insensitive, so `wizard`, `Wizard`, and `WIZARD` all resolve the same way.
 
-If you use <Constant name="wizard" />, set `wizard` no matter which model it runs &mdash; whether you [bring your own key](/docs/dbt-ai/wizard-byok) or use managed AI. `ai_provider` only tells dbt which directory to write skills to, not which model your agent uses.
+If you use <Constant name="wizard" />, set `wizard` even if you [bring your own key](/docs/dbt-ai/wizard-byok) or use dbt-<Term id="managed"/> AI. `ai_provider` only tells dbt which directory to write skills to.
 
 You can also list more than one provider, which installs the same skills into each provider's directory:
 
