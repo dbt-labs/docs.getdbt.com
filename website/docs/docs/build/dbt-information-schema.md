@@ -8,7 +8,7 @@ availability:
   access: free
 ---
 
-The dbt Information Schema is a contracted interface into the metadata for all of the resources in your dbt project. It takes the form of [Parquet](https://parquet.apache.org/) artifacts, which are more performant than JSON artifacts. For example, a project with a `manifest.json` and `catalog.json` that total ~70 MB has an Information Schema of only ~5 MB. It also includes intermediate views that you can query with `dbt show`. You can also query the Information Schema from SQL you write in your checks.
+The dbt Information Schema is a contracted interface into the metadata for all of the resources in your dbt project. It takes the form of [Parquet](https://parquet.apache.org/) artifacts, which are more performant than JSON artifacts. For example, a project with a `manifest.json` and `catalog.json` that total ~70 MB has an Information Schema of only ~5 MB. It also includes intermediate views that you can query with `dbt show`. You can also query the Information Schema from SQL you write in your [checks](#using-the-information-schema-in-checks).
 
 When you use the [`--generate-info-schema`](#generating-the-information-schema) flag, dbt writes the Information Schema to `target/info_schema/` in a versioned subdirectory (for example, `target/info_schema/v1/`) as standard Parquet files. The metadata available in the schema grows with each step: parsing produces basic metadata, compiling adds column types and column-level lineage (with `--static-analysis strict`), and running or building populates runtime results.
 
@@ -69,14 +69,14 @@ models = pd.read_parquet("target/info_schema/v1/dbt.models.parquet")
 
 ## Using the Information Schema in checks
 
-[Checks](/docs/build/checks) use the [`{{ info_schema() }}`](/reference/dbt-jinja-functions/info-schema-macro) macro to query the dbt Information Schema at parse time. To use it, set the `info_schema` version in `dbt_project.yml`. Currently, `1` is the only available version.
+[Checks](/docs/build/checks) are SQL queries that run against the dbt Information Schema to check your project quality. Use the [`{{ info_schema() }}`](/reference/dbt-jinja-functions/info-schema-macro) macro in your check to reference a view in the dbt Information Schema. You must set the version of the `info_schema` you want to use in `dbt_project.yml`. Currently, `1` is the only available version.
 
 ```yaml
 info_schema:
   version: 1
 ```
 
-You can find the schema version in the versioned subdirectory name (for example, `target/info_schema/v1/`). The version only increments on breaking schema changes (for example, when a column is removed or retyped).
+You can find the schema version in the versioned subdirectory name (for example, `target/info_schema/v1/`).
 
 ## Related docs
 - [Information Schema tables](/reference/info-schema)

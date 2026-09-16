@@ -91,8 +91,6 @@ For more information, refer to [dbt Information Schema](/docs/build/dbt-informat
 
 ### Checks <Lifecycle status="beta" />
 
-As dbt projects grow and more contributors add models, maintaining consistent standards becomes harder: a model ships without a description, a public model has no owner, a new model ignores naming conventions. None of this breaks anything, so it's not caught, but quality erodes quietly.
-
 In dbt v2, you can create [checks](/docs/build/checks) to enforce project standards (for example, all models must have a description, a public model must have an owner, and so on) at parse time, before any warehouse work runs. Write a SQL rule under the `checks/` directory, then run checks on demand with `dbt check`. Checks also run automatically with every `dbt build`. Use `--skip-checks` to bypass checks on a build.
 
 For more information, refer to [Checks](/docs/build/checks).

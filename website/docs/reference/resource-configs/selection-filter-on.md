@@ -1,7 +1,7 @@
 ---
 title: selection_filter_on
 id: "selection-filter-on"
-description: "Configure which output column selector methods use to filter check result rows."
+description: "Configure which output columns dbt uses to match check result rows against a selector."
 resource_types: [checks]
 datatype: string | [string] | none
 availability:
@@ -10,7 +10,7 @@ availability:
 
 When you pass a selector (`--select`, `--exclude`, `--selector`) to `dbt check` or `dbt build`, dbt uses it to scope which project resources each check evaluates. `selection_filter_on` tells dbt which column in the check's output contains the resource IDs to match against the selection.
 
-By default, dbt scopes check results to selected resources by matching the `unique_id` column in the output. If the check returns no `unique_id` column, it runs against the whole project. Use `selection_filter_on` to change this default. For example, to specify `[parent_unique_id, child_unique_id]` for an edge check, or `none` to always run the check against the whole project.
+By default, dbt scopes check results to selected resources by matching the `unique_id` column in the output. If the check returns no `unique_id` column, it runs against the whole project. Use `selection_filter_on` to change this default.
 
 ## Values
 
@@ -20,20 +20,20 @@ import SelectionFilterOnValues from '/snippets/_selection-filter-on-values.md';
 
 ## When to set this config
 
-For most checks that return a single `unique_id` column, the default behavior is correct and no configuration is needed.
+If your check returns a `unique_id` column, you don't need to set this config.
 
-Use `selection_filter_on` when your check returns edge rows (parent/child pairs). Set it to the columns that contain resource IDs (for example, `[parent_unique_id, child_unique_id]`) so selectors can scope rows by either column.
+Use `selection_filter_on` when your check returns rows with ID columns other than `unique_id`. Set it to the columns that contain resource IDs so selectors can scope rows by those columns.
 
-For example, the following check returns edge rows and has no `unique_id` column, so you must set `selection_filter_on` to tell dbt which columns contain resource IDs to filter on:
+The following check queries the `edges` table and returns `child_unique_id` instead of `unique_id`, so you must set `selection_filter_on`:
 
-<File name='checks/no_direct_raw_dependency.sql'>
+<File name='checks/multiple_sources_joined.sql'>
 
 ```sql
-select parent_unique_id, child_unique_id
+select child_unique_id, count(*) as source_parents
 from {{ info_schema('edges') }}
-where child_unique_id like 'model.%'
-  and parent_unique_id like '%raw_%'
-  and child_unique_id not like '%stg_%'
+where parent_unique_id like 'source.%'
+group by child_unique_id
+having count(*) > 1
 ```
 </File>
 
@@ -55,7 +55,7 @@ Configure `selection_filter_on` for this check using one of the following method
 
 ```yaml
 checks:
-  +selection_filter_on: [parent_unique_id, child_unique_id]
+  +selection_filter_on: child_unique_id
 ```
 
 </File>
@@ -69,10 +69,10 @@ checks:
 ```yaml
 version: 2
 checks:
-  - name: no_direct_raw_dependency
-    description: "Fails if a non-staging model refs a raw_ model directly."
+  - name: multiple_sources_joined
+    description: "Fails if any model reads directly from more than one source."
     config:
-      selection_filter_on: [parent_unique_id, child_unique_id]
+      selection_filter_on: child_unique_id
 ```
 
 </File>
@@ -81,11 +81,11 @@ checks:
 
 <TabItem value="config">
 
-<File name='checks/no_direct_raw_dependency.sql'>
+<File name='checks/multiple_sources_joined.sql'>
 
 ```sql
 {{ config(
-    selection_filter_on = ["parent_unique_id", "child_unique_id"]
+    selection_filter_on = "child_unique_id"
 ) }}
 ```
 

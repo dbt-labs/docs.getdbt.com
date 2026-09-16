@@ -8,29 +8,28 @@ availability:
 
 # Checks <Lifecycle status="beta" />
 
-Checks are SQL queries that lint your dbt project. As dbt projects grow and more contributors add models, maintaining consistent standards becomes harder: a model ships without a description, a public model has no owner, a new model ignores naming conventions. None of this breaks anything, so it's not caught, but quality erodes silently.
+As dbt projects grow and more contributors add models, maintaining consistent standards becomes harder: a model ships without a description, a public model has no owner, a new model ignores naming conventions. None of this breaks anything, so it's not caught, but quality erodes silently.
 
-Checks let you enforce project standards with SQL, locally, without a warehouse connection. Define rules (such as every model must have a description, required tags are set, and so on) and dbt enforces it at parse time before any warehouse work runs. If the project violates a rule, `dbt build` stops before compiling or materializing a single model.
+Checks are SQL queries that assert rules and standards about your project metadata. Define rules (such as every model must have a description, required tags are set, and so on) and dbt enforces them before any warehouse work runs. 
 
-Each check queries the [dbt Information Schema](/docs/build/dbt-information-schema) using the [`{{ info_schema() }}` macro](/reference/dbt-jinja-functions/info-schema-macro).
+Write your checks in DuckDB SQL, using the [`{{ info_schema() }}` macro](/reference/dbt-jinja-functions/info-schema-macro) to reference the [dbt Information Schema](/docs/build/dbt-information-schema) in your SQL. Checks run locally in DuckDB at parse time, so they don't require a connection to your warehouse. If the project violates a rule, `dbt build` stops before compiling or materializing a single model.
 
-Similar to [data tests](/docs/build/data-tests), a check finds any instances in your project that do not meet your expectations &mdash; for example, models without a description or `public` models with no owner. A check passes when the query returns zero rows, and fails when it returns one or more. Unlike data tests, checks run earlier and locally at parse time, without a warehouse connection.
+Similar to [data tests](/docs/build/data-tests), a check finds any instances in your project that do not meet your expectations. A check passes when the query returns zero rows, and fails when it returns one or more.
 
-Checks run automatically with every `dbt build`. You can also run them on demand with `dbt check` or skip them during a build with `--skip-checks`.
+Checks run automatically with every `dbt build`; you can use `--skip-checks` to skip them. You can also run them on demand with `dbt check`.
 
 ## Guidelines for writing SQL check files
 
 This section covers the rules and constraints for writing check SQL files and configuring check behavior.
 
-- A check is a SQL file in your `checks/` directory paired with a properties YAML file in the same directory. To use a different directory, set [`check-paths`](/reference/project-configs/check-paths) in `dbt_project.yml`.
+- A check is a SQL file in your `checks/` directory. You can optionally pair it with a properties YAML file in the same directory to configure it. To use a different directory, set [`check-paths`](/reference/project-configs/check-paths) in `dbt_project.yml`.
 - The filename without the `.sql` extension becomes the check name (for example, `all_models_have_descriptions` is the check name for `checks/all_models_have_descriptions.sql`).
 - Jinja in check files renders at parse time. You can use Jinja, but the result must be valid DuckDB SQL at that point; checks do not go through a separate compile step the way models do.
-- Checks cannot use `ref()` and do not appear in the model DAG.
 - Checks are dbt resources; each check appears in `manifest.json`, supports `tags` and `meta`, and `dbt ls` lists them.
 
 ### The `info_schema()` macro
 
-[`{{ info_schema() }}`](/reference/dbt-jinja-functions/info-schema-macro) is the supported way to query the [dbt Information Schema](/docs/build/dbt-information-schema) in a check. Pass the name of the view you want to query (for example, `{{ info_schema('models') }}` for models or `{{ info_schema('edges') }}` for DAG edges). No materialized [Information Schema](/reference/info-schema) files are required; checks run against an intermediate representation built at parse time.
+[`{{ info_schema() }}`](/reference/dbt-jinja-functions/info-schema-macro) is the supported way to query the [dbt Information Schema](/docs/build/dbt-information-schema) in a check. Pass the name of the table you want to query (for example, `{{ info_schema('models') }}` for models or `{{ info_schema('edges') }}` for DAG edges). No materialized [Information Schema](/reference/info-schema) files are required; checks run against an intermediate representation built at parse time.
 
 For the full list of available views and columns, refer to [Columns available for checks](/reference/info-schema#columns-available-for-checks).
 
@@ -117,25 +116,29 @@ The following examples show common project quality rules, each defined as a SQL 
 
   </File>
 
-- Flag `public` models missing an owner in `meta`:
+- Flag `public` models with no group owner:
 
   <File name='checks/public_models_have_owners.sql'>
 
   ```sql
-  select unique_id
-  from {{ info_schema('models') }}
-  where access = 'public'
+  select m.unique_id
+  from {{ info_schema('models') }} as m
+  left join {{ info_schema('groups') }} as g on g.name = m."group"
+  where m.access = 'public'
     and (
-          json_extract_string(meta, '$.owner') is null
-          or trim(json_extract_string(meta, '$.owner')) = ''
-        )
+      g.unique_id is null
+      or (
+        (g.owner_name is null or trim(g.owner_name) = '')
+        and (g.owner_email is null or trim(g.owner_email) = '')
+      )
+    )
   ```
 
   </File>
 
 ## Commands
 
-Checks run with `dbt check` and `dbt build`. Other commands (`dbt run`, `dbt test`, `dbt compile`, etc.) do not run checks.
+Checks run with `dbt check` and `dbt build`.
 
 <SimpleTable>
 | Command | Behavior |
@@ -147,7 +150,7 @@ Checks run with `dbt check` and `dbt build`. Other commands (`dbt run`, `dbt tes
 
 ## Skipping checks on build
 
-To skip all checks during a build, pass the [`--skip-checks` flag](/reference/commands/build?version=2#the---skip-checks-flag)  to `dbt build`. Models still compile and run.
+To skip all checks, pass the [`--skip-checks` flag](/reference/commands/build?version=2#the---skip-checks-flag) to `dbt build`.
 
 ```shell
 dbt build --skip-checks
@@ -163,7 +166,7 @@ checks:
 ```
 
 :::note Disabling at the project level
-Setting `+enabled: false` in `dbt_project.yml` is persistent, and nothing in the output shows checks were skipped. A successful `dbt build` in CI doesn't tell you whether the project has no checks or all checks are disabled. Running `dbt check <name>` for a disabled check also succeeds without running the check or returning an error.
+Setting `+enabled: false` in `dbt_project.yml` disables the check silently &mdash; nothing in the output shows checks were skipped. A successful `dbt build` in CI doesn't tell you whether the project has no checks or all checks are disabled. Running `dbt check <name>` for a disabled check also succeeds without running the check or returning an error.
 :::
 
 
@@ -177,33 +180,27 @@ Why checks work this way:
 - You may want to limit which resources are checked. This lets you incrementally introduce checks in an existing project. In development, run `dbt build --select <the part of your DAG you're working on>` to check only those resources. In CI, your checks run only against modified resources.
 - When developing a new check, you can run one check at a time: `dbt check name_of_check`, or `dbt check name_of_check --select <resources to check>` to run it against a specific subset. You can also preview any `info_schema` query directly: `dbt show --inline "select * from {{ info_schema('...') }}"`. For example, to inspect your checks' own metadata, run `dbt show --inline "select * from {{ info_schema('checks') }}"`.
 
-If a selector produces an empty selection, checks are `Skipped` and dbt emits a `NoNodesForSelectionCriteria` warning naming the selector:
-
-```shell
-[warning] [NoNodesForSelectionCriteria (dbt1092)]: The selection criterion 'state:modified' does not match any enabled nodes
-```
 
 ### How `selection_filter_on` works
 
-By default, dbt scopes check results to selected resources by matching the `unique_id` column in the output. If the check returns no `unique_id` column, it runs against the whole project.
+By default, dbt filters check results to selected resources by matching the `unique_id` column in the output. If the check returns no `unique_id` column, it runs against the whole project.
 
-Use [`selection_filter_on`](/reference/resource-configs/selection-filter-on) when your check returns rows with different ID columns. For example, an edge check that returns `parent_unique_id` and `child_unique_id` instead of a plain `unique_id`. This tells dbt which columns contain resource IDs to filter on.
+Use [`selection_filter_on`](/reference/resource-configs/selection-filter-on) when your check returns rows with different ID columns that you want to filter on. It accepts the following values:
 
 import SelectionFilterOnValues from '/snippets/_selection-filter-on-values.md';
 
 <SelectionFilterOnValues />
 
+For example, the following check returns `child_unique_id` instead of `unique_id`, so you must set `selection_filter_on`:
 
-For example, the following check returns edge rows and has no `unique_id` column, so you must set `selection_filter_on` to tell dbt which columns contain resource IDs to filter on:
-
-<File name='checks/no_direct_raw_dependency.sql'>
+<File name='checks/multiple_sources_joined.sql'>
 
 ```sql
-select parent_unique_id, child_unique_id
+select child_unique_id, count(*) as source_parents
 from {{ info_schema('edges') }}
-where child_unique_id like 'model.%'
-  and parent_unique_id like '%raw_%'
-  and child_unique_id not like '%stg_%'
+where parent_unique_id like 'source.%'
+group by child_unique_id
+having count(*) > 1
 ```
 
 </File>
@@ -212,27 +209,13 @@ where child_unique_id like 'model.%'
 
 ```yaml
 checks:
-  - name: no_direct_raw_dependency
-    description: "Fails if a non-staging model refs a raw_ model directly."
+  - name: multiple_sources_joined
+    description: "Fails if any model reads directly from more than one source."
     config:
-      selection_filter_on: [parent_unique_id, child_unique_id]
+      selection_filter_on: child_unique_id
 ```
 
 </File>
-
-
-## Check results
-
-Each check produces one of the following statuses:
-
-| Status | When | Fails the command? | Error code |
-|--------|------|--------------------|------------|
-| `Passed` | Zero rows returned | No | — |
-| `Failed` | One or more rows returned with `severity: error`, or the check could not be evaluated (bad SQL, or `selection_filter_on` names a missing column). The latter fails even if `severity` is `warn`. | Yes | `dbt1650` (violations), `dbt1653` (evaluation error) |
-| `Warned` | One or more rows returned, `severity: warn` | No (`--warn-error` or `warn_error_options` can promote it) | `dbt1651` |
-| `Skipped` | Selector matched nothing the check can report on | No | `dbt1652` |
-
-Each check result is recorded in `run_results.json` as `check.<project>.<name>`. When a `dbt build` is blocked by a failing check, the models that did not run are recorded as `Skipped` with the reason `skipped because a parse-time check failed`.
 
 
 ## Related documentation

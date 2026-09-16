@@ -8,7 +8,7 @@ availability:
   access: free
 ---
 
-For an overview of the dbt Information Schema, how to generate it, and how to query it, refer to [dbt Information Schema](/docs/build/dbt-information-schema).
+The [dbt Information Schema](/docs/build/dbt-information-schema) tables are produced by [`dbt build`](/reference/commands/build), [`dbt run`](/reference/commands/run), [`dbt compile`](/reference/commands/compile), or [`dbt parse`](/reference/commands/parse) with the `--generate-info-schema` flag.
 
 ## Tables
 
@@ -72,9 +72,7 @@ The `dbt_rt` namespace tables contain runtime execution data. These tables are n
 
 ## Columns available for checks
 
-When you query a table in the Information Schema through the `{{ info_schema() }}` macro, dbt exposes it as a view &mdash; the same table name, but with only a subset of columns available: those that are resolved at parse time. The full table (in `target/info_schema/v1/`) may contain additional columns. Use the view name (without the `dbt.` prefix) as the argument to the macro.
-
-`dbt.classifiers`, `dbt.column_lineage`, and `dbt.semantic_relationships` are in the list of [dbt Information Schema tables](#tables) but they are not available for checks because they are not populated at parse time.
+When you query a table in the Information Schema using the `{{ info_schema() }}` macro in a check, dbt exposes it as a view &mdash; the same table name, but with only a subset of columns available: those that are resolved at parse time. The full table (in `target/info_schema/v1/`) may contain additional columns. Use the view name (without the `dbt.` prefix) as the argument to the macro. When using `dbt show --inline`, all columns in the table are available.
 
 | View | Columns |
 |------|---------|

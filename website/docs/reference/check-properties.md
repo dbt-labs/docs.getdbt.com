@@ -6,13 +6,19 @@ availability:
 
 You can declare check properties in `.yml` files in your `checks/` directory (as defined by the [`check-paths` config](/reference/project-configs/check-paths)).
 
-## Available properties
+<File name='checks/_checks.yml'>
 
-| Property | Type | Required | Description |
-|----------|------|----------|-------------|
-| [name](/reference/resource-configs/resource-path) | string | Yes | The check name. Must match the filename of the check SQL file (without the `.sql` extension). |
-| [description](/reference/resource-properties/description) | string | No | Documentation for the check. |
+```yaml
+checks:
+  - name: <string>
+    [description](/reference/resource-properties/description): <markdown_string>
+    [config](/reference/check-configs):
+      [<check_config>](/reference/check-configs): <config_value>
 
+  - name: ... # declare properties of additional checks
+```
+
+</File>
 
 ## Example
 
@@ -31,9 +37,9 @@ checks:
         owner: "data-platform-team"
 
   - name: public_models_have_owners
-    description: "Fails if any public model is missing an owner."
+    description: "Warns if any public model is missing an owner."
     config:
-      severity: error
+      severity: warn
 ```
 
 </File>

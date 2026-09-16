@@ -91,7 +91,7 @@ where ...
 
 The following examples show common ways to configure checks.
 
-### Warn-severity check
+### Warn on check failure
 
 You can use `severity: warn` when rolling out a new rule gradually. Issues are logged but the build does not fail.
 
@@ -106,18 +106,17 @@ checks:
 
 </File>
 
-### Edge check with `selection_filter_on`
+### Filter by a non-`unique_id` column
 
-Edge checks return parent/child pairs rather than a single `unique_id` column. Without `selection_filter_on`, dbt looks for a `unique_id` column to scope rows by `--select` and finds none, so the check always runs against the whole project. Set `selection_filter_on` to list both columns so `--select` scopes rows by either endpoint:
+The `edges` table has no `unique_id` column, so checks that query it won't return one. When you use `--select`, dbt looks for a `unique_id` column to scope results and finds none, so the check runs against the whole project regardless of the selector. Set `selection_filter_on` to the columns that contain resource IDs so `--select` scopes rows by those columns. For example, the `multiple_sources_joined` check aggregates by `child_unique_id`, so only that column needs to be set:
 
-<File name='checks/_no_staging_to_mart_dependency.yml'>
+<File name='checks/_multiple_sources_joined.yml'>
 
 ```yaml
 checks:
-  - name: no_staging_to_mart_dependency
+  - name: multiple_sources_joined
     config:
-      severity: error
-      selection_filter_on: [parent_unique_id, child_unique_id]
+      selection_filter_on: child_unique_id
 ```
 
 </File>

@@ -74,7 +74,7 @@ dbt build --generate-info-schema --static-analysis strict
 
 ### The `--skip-checks` flag
 
-The `build` command supports `--skip-checks` to bypass the [checks](/docs/build/checks) gate. Models still compile and run; checks are not evaluated and no warning is issued.
+The `build` command supports `--skip-checks` to bypass the [checks](/docs/build/checks) gate.
 
 ```shell
 dbt build --skip-checks
