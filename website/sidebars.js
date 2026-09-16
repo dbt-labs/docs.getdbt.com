@@ -1768,6 +1768,7 @@ const sidebarSettings = {
                 "reference/global-configs/usage-stats",
                 "reference/global-configs/version-compatibility",
                 "reference/global-configs/logs",
+                "reference/global-configs/batch-tests",
                 "reference/global-configs/cache",
                 "reference/global-configs/failing-fast",
                 "reference/global-configs/indirect-selection",
