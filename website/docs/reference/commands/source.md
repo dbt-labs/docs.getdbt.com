@@ -4,17 +4,18 @@ sidebar_label: "source"
 id: "source"
 ---
 
-The `dbt source` command provides a subcommand that's useful when working with source data.
 
 <VersionBlock firstVersion="2.0">
 
-The subcommand, `dbt freshness`, evaluates both [sources](/reference/resource-configs/freshness?version=2) and [models]( /reference/resource-configs/freshness) against their configured freshness thresholds in a single command.  For the full list of flags, including how to scope a run to sources only, refer to [`dbt freshness`](/reference/commands/freshness).
+The `dbt source` command provides one legacy subcommand, `dbt source freshness`, which evaluates sources only.
+
+In v2, use the top-level [`dbt freshness`](/reference/commands/freshness) command to evaluate both sources and models against their configured [freshness thresholds](/reference/resource-configs/freshness) in a single command.
 
 </VersionBlock>
 
 <VersionBlock lastVersion="1.99">
 
-The available subcommand is `dbt source freshness`.
+The `dbt source` command provides a subcommand that's useful when working with source data. The available subcommand is `dbt source freshness`.
 
 </VersionBlock>
 
