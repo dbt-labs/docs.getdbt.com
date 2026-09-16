@@ -60,7 +60,7 @@ To install a specific channel or version, pass the `--version` flag:
 ```shell
 dbt system update --version canary    # Install the canary release
 dbt system update --version dev       # Install the dev release
-dbt system update --version 2.0.0-preview.126     # Install a specific version
+dbt system update --version 2.0.0     # Install a specific version
 ```
 
 </p>

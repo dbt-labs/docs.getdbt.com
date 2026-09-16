@@ -84,7 +84,7 @@ The following are the essential steps from the [<Constant name="fusion_engine" /
     ```
 2. You should see output similar to the following:
     ```bash
-    dbt 2.0.0-preview.178
+    dbt 2.0.0
     ```
 
 ### Install the dbt VS Code extension
