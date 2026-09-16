@@ -104,6 +104,10 @@ To hydrate catalog metadata (`catalog.json`) for <Constant name="catalog" /> wit
 
 For full usage, refer to [About dbt docs commands](/reference/commands/cmd-docs?version=2).
 
+### Batch tests
+
+Data tests can now run in batches! When you use `--batch-tests`, multiple data tests applied to a single model are batched into a single query and scan against the warehouse (internal testing shows this reduces test command runtime by 40%, queries issued by 65%, and warehouse cost of running tests by 15%!)
+
 ### Model freshness and the `dbt freshness` command
 
 v2 expands freshness checks to models, building on the existing support for sources. You can configure freshness thresholds on models to receive warnings or errors when the data is stale. For config options and materialization requirements, refer to [freshness](/reference/resource-configs/freshness).
@@ -188,12 +192,6 @@ To use agent skills, you need to:
 Once both are in place, `dbt deps` installs those skills into the directory your agent reads from (such as `.claude/skills` or `.agents/skills`), and `dbt clean` removes them. If you're missing either piece, `dbt deps` installs your packages as usual and skips the skills.
 
 For full usage info, including how to disable a skill you don't want, refer to [Installing agent skills from dbt packages](/docs/dbt-ai/package-skills).
-
-### `dbt login`
-
-In <Constant name="dbt" /> v2, [`dbt login`](/reference/commands/login?version=2.0) enables browser-based authentication. It opens a browser window prompting you to sign in to your <Constant name="dbt_platform" /> account or create a free account.
-
-Run [`dbt login status`](/reference/commands/login?version=2.0#dbt-login-status) to view your current authentication status.
 
 ### Experimental features
 
@@ -592,8 +590,9 @@ For more information, see [config.meta_get()](/reference/dbt-jinja-functions/con
 ## Quick hits
 
 - v2 supports exporting traces and logs in JSONL, Parquet, and OTLP formats. For details, refer to [dbt v2 telemetry and observability](/reference/telemetry-observability).
-- Data tests can now run in batches (`DBT_ENGINE_BATCH_TESTS=true`) and skip redundant cached results (`DBT_ENGINE_SKIP_REDUNDANT_TESTS=true`), reducing execution overhead on large projects.
 - The v2 compiler parses and type-checks [Snowflake model function](https://docs.snowflake.com/en/guides-overview-ml-functions) calls (`model!method(...)`), accepting any arguments and treating results as `VARIANT`. Cast the result to the type you need (for example, `model!predict(col)::float`).
+- In <Constant name="dbt" /> v2, [`dbt login`](/reference/commands/login?version=2.0) enables browser-based authentication. It opens a browser window prompting you to sign in to your <Constant name="dbt_platform" /> account or create a free account.
+  - Run [`dbt login status`](/reference/commands/login?version=2.0#dbt-login-status) to view your current authentication status.
 
 ## Package support
 
