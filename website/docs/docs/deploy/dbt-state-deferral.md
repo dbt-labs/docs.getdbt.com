@@ -54,12 +54,12 @@ If you've overridden `generate_*_name()` macros with runtime values (such as env
 
 When dbt State is enabled, [`state:*` selectors](/reference/node-selection/methods#state) can use dbt State as their comparison source instead of a single `manifest.json` from the most recent job run. Each node (models, snapshots, seeds, and tests) is compared against its own last execution in the [`defer_to_target`](/reference/resource-configs/defer-to-target) environment (default: `prod`), so a node is only selected as modified if its own logic changed, no matter which job last ran it.
 
-This feature is for **self-managed deployments**, meaning you orchestrate dbt runs yourself (for example, with Airflow or GitHub Actions) rather than with <Constant name="dbt_platform" /> jobs. You still authenticate to the <Constant name="dbt_platform" /> for dbt State, which the `project-id` does below.
+This feature is for **self-managed deployments**, meaning you orchestrate dbt runs yourself (for example, with Airflow or GitHub Actions) rather than with <Constant name="dbt_platform" /> jobs. You still authenticate to the <Constant name="dbt_platform" /> for dbt State using `project-id`.
+
 ### Prerequisites
 
 - dbt State is enabled for your project.
 - `project-id` is set in the `dbt-cloud` block in `dbt_project.yml`:
-To use this feature, connect your project to the <Constant name="dbt_platform" /> by setting `project-id` in `dbt_project.yml`:
 
 <File name="dbt_project.yml">
 
@@ -70,7 +70,9 @@ dbt-cloud:
 
 </File>
 
-This feature applies to self-managed deployments only. When orchestrating with the <Constant name="dbt_platform" />, dbt uses `manifest.json` for deferral and so `state:*` selectors compare against that manifest, not per-node execution history.
+:::note
+When orchestrating with the <Constant name="dbt_platform" />, each job produces a `manifest.json`, so dbt State uses that for `state:*` comparisons instead of per-node execution history.
+:::
 
 ## Specify your project or org
 
