@@ -182,7 +182,7 @@ sources:
             where ingested_at >= current_timestamp - interval '3 days'
 ```
 
-For more details, refer to [dbt State configurations](/reference/resource-configs/dbt-state-configs) and [Source freshness](/reference/resource-properties/freshness).
+For more details, refer to [dbt State configurations](/reference/resource-configs/dbt-state-configs) and [freshness](/reference/resource-configs/freshness).
 
 
 ### Long-term considerations

@@ -15,6 +15,7 @@ import FusionUpgradeSteps from '/snippets/_fusion-upgrade-steps.md';
 import FusionLifecycle from '/snippets/_fusion-lifecycle-callout.md';
 import FusionThreads from '/snippets/_fusion-threads.md';
 import FusionPartialParseCliFlags from '/snippets/_fusion-partial-parse-cli-flags.md';
+import SourceFreshnessLegacy from '/snippets/_source-freshness-legacy.md';
 
 v2 is the current era of dbt, delivered through <Constant name="fusion" />. When you install dbt, you get <Constant name="fusion" /> by default. This guide walks you through upgrading a v1 project to v2. 
 
@@ -69,9 +70,7 @@ v2 will not support any deprecated functionality (see the [Changes overview](/re
 
 The most popular `dbt-labs` packages (`dbt_utils`, `audit_helper`, `dbt_external_tables`, `dbt_project_evaluator`) are already compatible with v2. External packages published by organizations outside of dbt may use outdated code or incompatible features that fail to parse in v2. We're working with those package maintainers to make packages available for v2. Packages requiring an upgrade to a new release for v2 compatibility, will be documented in this upgrade guide.
 
-## New and changed features and functionality
-
-<!-- Docs for info schema, model freshness, checks, and agent skills will be added in separate PRs -->
+## New and changed features and functionality 
 
 ### Strict validation
 
@@ -98,6 +97,14 @@ v2 introduces [dbt Docs v2](/docs/build/view-documentation#dbt-docs-v2), a fast,
 To hydrate catalog metadata (`catalog.json`) for <Constant name="catalog" /> without building the site, use the [`--write-catalog` flag](/reference/commands/cmd-docs#--write-catalog-flag) instead.
 
 For full usage, refer to [About dbt docs commands](/reference/commands/cmd-docs?version=2).
+
+### Model freshness and the `dbt freshness` command <Lifecycle status="beta" />
+
+v2 expands freshness checks to models, building on the existing support for sources. You can configure freshness thresholds on models to receive warnings or errors when the data is stale. For config options and materialization requirements, refer to [freshness](/reference/resource-configs/freshness).
+
+Use the new [`dbt freshness`](/reference/commands/freshness) command to check all sources and models with freshness configured in a single invocation and, and to write results to a [`target/freshness.json` file](/reference/artifacts/freshness-json).
+
+The [`dbt source freshness`](/reference/commands/source?version=2#dbt-source-freshness) command remains supported for backward compatibility, checks sources only, and continues to produce a `sources.json` file. We recommend using  `dbt freshness` going forward.
 
 ### Adapters built on ADBC drivers
 
@@ -267,7 +274,7 @@ Some historic CLI flags from v1 will no longer do anything in v2. If you pass th
 | [`--cache-selected-only` / `--no-cache-selected-only`](/reference/global-configs/cache) | No action required |
 | [`--clean-project-files-only` / `--no-clean-project-files-only`](/reference/commands/clean#--clean-project-files-only) | No action required |
 | `--single-threaded` / `--no-single-threaded` | No action required |
-| `dbt source freshness` [`--output` / `-o`](/docs/deploy/source-freshness)  | |
+| `dbt source freshness` [`--output` / `-o`](/reference/commands/source?version=1.12#source-freshness-commands)  | |
 | [`--config-dir`](/reference/commands/debug)  | No action required | 
 | [`--resource-type` / `--exclude-resource-type`](/reference/global-configs/resource-type) | Refer to [CLI flags that need changes](#cli-flags-that-need-changes). |
 | `--show-resource-report` / `--no-show-resource-report` | No action required |
@@ -286,11 +293,9 @@ Some historic CLI flags from v1 will no longer do anything in v2. If you pass th
 
 ##### CLI flags that need changes {#cli-flags-that-need-changes}
 
-The following deprecated flags require updates in your job definitions or scripts:
+The following deprecated flag requires updates in your job definitions or scripts:
 
 - **`--models` / `--model` / `-m`:** Use `--select` / `-s` instead (renamed in <Constant name="dbt" /> v0.21). dbt raises an error in v2 if you use the old flags. Do not pass `--models` as the value to `-s` (for example, `dbt run -s --models`); v1 treated that as a model name, but v2 requires a valid selector.
-
-- **`--resource-type` / `--exclude-resource-type`:** Use `--resource-types` / `--exclude-resource-types`. For more information, see [Resource type flags](/reference/global-configs/resource-type).
 
 <FusionPartialParseCliFlags />
 
