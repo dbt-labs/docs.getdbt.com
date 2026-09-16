@@ -10,7 +10,6 @@ availability:
 
 When you pass a selector (`--select`, `--exclude`, `--selector`) to `dbt check` or `dbt build`, dbt uses it to scope which project resources each check evaluates. `selection_filter_on` tells dbt which column in the check's output contains the resource IDs to match against the selection.
 
-By default, dbt scopes check results to selected resources by matching the `unique_id` column in the output. If the check returns no `unique_id` column, it runs against the whole project. Use `selection_filter_on` to change this default.
 
 ## Values
 
