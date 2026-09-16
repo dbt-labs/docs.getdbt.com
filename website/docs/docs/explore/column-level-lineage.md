@@ -19,7 +19,7 @@ Column-level lineage (CLL) gives you insight into the provenance of your data pr
 You can use CLL in two places:
 
 - **[<Constant name="catalog" />](/docs/explore/explore-projects) in the <Constant name="dbt_platform" />**:  Requires an Enterprise or Enterprise+ plan with <Constant name="catalog" /> access.
-- **Locally with <Constant name="dbt" /> v2**: Requires [strict static analysis](/docs/build/about-static-analysis#configuring-static_analysis). Available in the [dbt VS Code extension](/docs/dbt-extension-features#rich-lineage-in-context), [dbt Docs v2](/docs/build/view-documentation#dbt-docs-v2), or from the command line.
+- **Locally with <Constant name="dbt" /> v2**: Requires [strict static analysis](/docs/build/about-static-analysis#configuring-static_analysis). Available in the [dbt VS Code extension](/docs/dbt-extension-features#rich-lineage-in-context), [dbt Docs v2](/docs/build/view-documentation#dbt-docs-v2), or from the command line. For more information, refer to [dbt Information Schema](/docs/build/dbt-information-schema?version=2).
 
 import ExplorerCourse from '/snippets/_explorer-course-link.md';
 
