@@ -124,7 +124,7 @@ Some notes when using `loaded_at_field` or `loaded_at_query`:
   ```
 - If a source is a view in the data warehouse, the available metadata is usually insufficient to discern freshness, and dbt emits a warning during freshness checks. To determine freshness for sources that are views, add a `loaded_at_field` or `loaded_at_query` to your configuration.
 
-To learn more about model freshness and `build_after`, refer to [model `freshness` config](/reference/resource-configs/freshness). To learn more about source and upstream model freshness configs, refer to [resource `freshness` config](/reference/resource-properties/freshness).
+To learn more about model freshness and `build_after`, refer to [model `freshness` config](/reference/resource-configs/freshness). To learn more about source and upstream model freshness configs, refer to [resource `freshness` config](/reference/resource-configs/freshness).
 
 ### Customizing behavior
 
@@ -293,7 +293,7 @@ models:
 ```yaml
 models:
   [<resource-path>](/reference/resource-configs/resource-path):
-    [+](/reference/resource-configs/plus-prefix)[freshness](/reference/resource-properties/freshness):
+    [+](/reference/resource-configs/plus-prefix)[freshness](/reference/resource-configs/freshness):
       build_after: 
         count: 4
         period: hour

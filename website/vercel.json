@@ -43,6 +43,11 @@
   ],
   "redirects": [
     {
+      "source": "/reference/resource-properties/freshness",
+      "destination": "/reference/resource-configs/freshness",
+      "permanent": true
+    },
+    {
       "source": "/docs/fusion/about-core",
       "destination": "/docs/introduction",
       "permanent": true

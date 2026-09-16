@@ -37,8 +37,9 @@ Commands marked ❌ indicate write commands, commands marked ✅ indicate read c
 
 | Command | Description | Parallel execution |  <div style={{width:'250px'}}>Caveats</div> |
 |---------|-------------| :-----------------:| ------------------------------------------ |
-| [build](/reference/commands/build) | Builds and tests all selected resources (models, seeds, tests, and more) |  ❌ | All tools <br /> All [supported versions](/docs/dbt-versions) | 
+| [build](/reference/commands/build) | Builds and tests all selected resources. |  ❌ | All tools <br /> All [supported versions](/docs/dbt-versions) |
 | cancel | Cancels the most recent invocation. | N/A | <Constant name="platform_cli" /> <br /> Requires [dbt v1.6 or higher](/docs/dbt-versions) |
+| [check](/reference/commands/check) | Runs checks against the [dbt Information Schema](/docs/build/dbt-information-schema) | ✅ | <Constant name="core_v2" /> and later |
 | [clean](/reference/commands/clean) | Deletes artifacts present in the dbt project |  ✅ | All tools <br /> All [supported versions](/docs/dbt-versions) |
 | [clone](/reference/commands/clone) | Clones selected models from the specified state |  ❌ | All tools <br /> Requires [dbt v1.6 or higher](/docs/dbt-versions) |
 | [compile](/reference/commands/compile) | Compiles (but does not run) the models in a project |  ✅ | All tools <br /> All [supported versions](/docs/dbt-versions) |
@@ -46,6 +47,7 @@ Commands marked ❌ indicate write commands, commands marked ✅ indicate read c
 | [deps](/reference/commands/deps) | Downloads dependencies for a project |  ✅ |  All tools <br /> All [supported versions](/docs/dbt-versions) |
 | [docs](/reference/commands/cmd-docs) | Generates documentation for a project |   ✅ | All tools <br /> All [supported versions](/docs/dbt-versions) |
 | [environment](/reference/commands/dbt-environment?version=2.0) | Enables you to interact with your <Constant name="dbt_platform" /> environment. |   N/A | <Constant name="platform_cli" /> <br /> Requires [dbt v1.5 or higher](/docs/dbt-versions) |
+| [freshness](/reference/commands/freshness) | Checks whether sources and models with freshness configured meet your staleness thresholds | ✅ | All tools <br /> Requires [dbt v2.0 or higher](/docs/dbt-versions) |
 | help | Displays help information for any command | N/A | All tools <br /> All [supported versions](/docs/dbt-versions) |
 | [init](/reference/commands/init) | Initializes a new dbt project |   ✅ | <Constant name="fusion" /> <br /> <Constant name="core" /><br /> All [supported versions](/docs/dbt-versions) |
 | [invocation](/reference/commands/invocation?version=2.0) | Enables users to debug long-running sessions by interacting with active invocations.|  N/A | <Constant name="platform_cli" /> <br /> Requires [dbt v1.5 or higher](/docs/dbt-versions) |
