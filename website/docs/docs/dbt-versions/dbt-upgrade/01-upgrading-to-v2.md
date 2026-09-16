@@ -70,18 +70,7 @@ v2 will not support any deprecated functionality (see the [Changes overview](/re
 
 The most popular `dbt-labs` packages (`dbt_utils`, `audit_helper`, `dbt_external_tables`, `dbt_project_evaluator`) are already compatible with v2. External packages published by organizations outside of dbt may use outdated code or incompatible features that fail to parse in v2. We're working with those package maintainers to make packages available for v2. Packages requiring an upgrade to a new release for v2 compatibility, will be documented in this upgrade guide.
 
-## New and changed features and functionality
-
-### Model freshness and the `dbt freshness` command <Lifecycle status="beta" />
-
-v2 expands freshness checks to models, building on the existing support for sources. You can configure freshness thresholds on models to receive warnings or errors when the data is stale. For config options and materialization requirements, refer to [freshness](/reference/resource-configs/freshness).
-
-Use the new [`dbt freshness`](/reference/commands/freshness) command to check all sources and models with freshness configured in a single invocation and writes to a [`target/freshness.json` file](/reference/artifacts/freshness-json).
-
-The [`dbt source freshness`](/reference/commands/source?version=2#dbt-source-freshness) command remains supported for backwards compatibility, checks sources only, and continues to produce a `sources.json` file. We recommend using  `dbt freshness` going forward. 
-
-### `dbt login`
-<!-- Docs for info schema, model freshness, checks, and agent skills will be added in separate PRs -->
+## New and changed features and functionality 
 
 ### Strict validation
 
@@ -108,6 +97,14 @@ v2 introduces [dbt Docs v2](/docs/build/view-documentation#dbt-docs-v2), a fast,
 To hydrate catalog metadata (`catalog.json`) for <Constant name="catalog" /> without building the site, use the [`--write-catalog` flag](/reference/commands/cmd-docs#--write-catalog-flag) instead.
 
 For full usage, refer to [About dbt docs commands](/reference/commands/cmd-docs?version=2).
+
+### Model freshness and the `dbt freshness` command <Lifecycle status="beta" />
+
+v2 expands freshness checks to models, building on the existing support for sources. You can configure freshness thresholds on models to receive warnings or errors when the data is stale. For config options and materialization requirements, refer to [freshness](/reference/resource-configs/freshness).
+
+Use the new [`dbt freshness`](/reference/commands/freshness) command to check all sources and models with freshness configured in a single invocation and, and to write results to a [`target/freshness.json` file](/reference/artifacts/freshness-json).
+
+The [`dbt source freshness`](/reference/commands/source?version=2#dbt-source-freshness) command remains supported for backward compatibility, checks sources only, and continues to produce a `sources.json` file. We recommend using  `dbt freshness` going forward.
 
 ### Adapters built on ADBC drivers
 
