@@ -21,7 +21,7 @@ When you use the [`--generate-info-schema`](#generating-the-information-schema) 
 
 Use `dbt show --inline` to run SQL queries or `dbt show --info` to query a view by name. You can also read the files with Parquet-compatible tools such as Pandas or Polars.
 
-For available tables and their descriptions, see [Information Schema tables](/reference/info-schem)
+For available tables and their descriptions, see [Information Schema tables](/reference/info-schema).
 
 ## Generating the Information Schema
 
