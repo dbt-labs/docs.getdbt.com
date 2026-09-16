@@ -2,6 +2,7 @@
 title: "About dbt source command"
 sidebar_label: "source"
 id: "source"
+description: "Use the dbt source command to work with source data in your dbt project."
 ---
 
 
