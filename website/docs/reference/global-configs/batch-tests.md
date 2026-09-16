@@ -9,7 +9,6 @@ availability:
 
 The `--batch-tests` flag combines compatible data tests that target the same model into a single query per test type, rather than running one query per test. This reduces the number of queries dbt runs for tests, which can improve performance in projects with many data tests.
 
-
 ## What gets batched
 
 Batch tests:
@@ -26,7 +25,7 @@ Batch tests:
   - `store_failures`
   - `store_failures_as`
 
-Excluded tests run on their own, as they do without batching. Each batched test still reports its own pass or fail result, with the line number where it's defined.
+Excluded tests run on their own, as they do without batching.
 
 ## Setting the flag
 
@@ -46,7 +45,7 @@ dbt build --batch-tests
 
 </File>
 
-Or using an environment variable:
+With an environment variable:
 
 <File name='Env var'>
 
@@ -57,7 +56,7 @@ dbt build
 
 </File>
 
-Or setting it as a flag in your `dbt_project.yml`:
+In your `dbt_project.yml`:
 
 <File name='dbt_project.yml'>
 
