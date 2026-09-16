@@ -23,7 +23,7 @@ Agent skills install locally where your coding agent runs. Skills install only w
 
 ## Set the ai_provider flag
 
-Set [`ai_provider` in the `flags`](/reference/global-configs/about-global-configs?version=2#available-flags) block of your root project. For example, if you use claude as your AI provider, you'd set it as such:
+Set [`ai_provider` in the `flags`](/reference/global-configs/about-global-configs?version=2#available-flags) block of your root project to tell dbt which directory to write skills to. For example, if you use claude as your AI provider, you'd set it as such:
 
 <File name='dbt_project.yml'>
 
@@ -48,7 +48,7 @@ Each provider has a directory it reads skills from. Most providers share `.agent
 </SimpleTable>
 Values are case-insensitive, so `wizard`, `Wizard`, and `WIZARD` all resolve the same way.
 
-If you use <Constant name="wizard" />, set `wizard` even if you [bring your own key](/docs/dbt-ai/wizard-byok) or use dbt-<Term id="managed"/> AI. `ai_provider` only tells dbt which directory to write skills to.
+If you use <Constant name="wizard" />, set `wizard` even if you [bring your own key](/docs/dbt-ai/wizard-byok) or use dbt-<Term id="managed"/> AI.
 
 You can also list more than one provider, which installs the same skills into each provider's directory:
 
