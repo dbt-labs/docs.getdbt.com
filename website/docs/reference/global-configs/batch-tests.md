@@ -9,21 +9,24 @@ availability:
 
 The `--batch-tests` flag combines compatible data tests that target the same model into a single query per test type, rather than running one query per test. This reduces the number of queries dbt runs for tests, which can improve performance in projects with many data tests.
 
-## What gets batched
+## Batching tests
 
-Batch tests:
+Batching applies to `dbt build` and `dbt test`. dbt batches a group of tests when all of these are true:
 
-- Group two or more tests of the same type (`unique` or `not_null`) that are attached to the same model and use their default configuration
-- Run with `dbt build` and `dbt test`
-- Exclude any test that sets one of the following:
-  - `severity`
-  - `error_if`
-  - `warn_if`
-  - `fail_calc`
-  - `limit`
-  - `where`
-  - `store_failures`
-  - `store_failures_as`
+- The tests are `unique` or `not_null`
+- They're attached to the same model
+- They use their default configuration
+- At least two of them are the same type
+
+dbt excludes tests from batching when any of the following is set:
+- `severity`
+- `error_if`
+- `warn_if`
+- `fail_calc`
+- `limit`
+- `where`
+- `store_failures`
+- `store_failures_as`
 
 Excluded tests run on their own, as they do without batching.
 
