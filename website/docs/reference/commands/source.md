@@ -14,7 +14,7 @@ The subcommand, `dbt freshness`, evaluates both [sources](/reference/resource-co
 
 <VersionBlock lastVersion="1.99">
 
-The available subcommand provided is `dbt source freshness`.
+The available subcommand is `dbt source freshness`.
 
 </VersionBlock>
 
