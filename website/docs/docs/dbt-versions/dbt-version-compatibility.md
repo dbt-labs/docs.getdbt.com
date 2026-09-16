@@ -18,7 +18,7 @@ The dbt VS Code extension keeps its own release version because it follows the V
 
 | Component | Example versioning |
 | --------- | ---------- |
-| <Constant name="fusion_engine" /> binary (CLI + LSP) | `2.0.0-preview.N` |
+| <Constant name="fusion_engine" /> binary (CLI + LSP) | `2.0.0` |
 | dbt VS Code extension | The extension version (for example, `0.36.0`), with compatible <Constant name="fusion" /> version range |
 
 ## Compatibility matrix

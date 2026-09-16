@@ -51,7 +51,7 @@ Run `dbt --version` to check your installed version:
 
 ```
 $ dbt --version
-dbt Fusion 2.0.0-preview.126
+dbt v2 2.0.0
 ```
 
 ### Further reading

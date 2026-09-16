@@ -73,7 +73,7 @@ The following are the essential steps from the [<Constant name="fusion_engine" /
 
 1. Run the following commands to install the <Constant name="fusion_engine" /> CLI:
     ```shell
-    python -m pip install --pre dbt
+    python -m pip install dbt
     ```
 
 ### Verify the <Constant name="fusion_engine" /> installation
@@ -84,7 +84,7 @@ The following are the essential steps from the [<Constant name="fusion_engine" /
     ```
 2. You should see output similar to the following:
     ```bash
-    dbt 2.0.0-preview.178
+    dbt 2.0.0
     ```
 
 ### Install the dbt VS Code extension

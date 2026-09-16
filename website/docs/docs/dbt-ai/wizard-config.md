@@ -231,8 +231,8 @@ The `deferral.mode` setting in `wizard_config.toml` controls who handles deferra
 | `deferral.mode` value | What it means |
 |---|---|
 | `"wizard"` | <Constant name="wizard"/> handles deferral for you. You tell <Constant name="wizard"/> which [target](/docs/local/profiles.yml) from your `profiles.yml` to defer to (it tries to detect one automatically when you first set up the project). <Constant name="wizard"/> then compiles that target and reuses its models for any upstream models you haven't built yourself. |
-| `"fusion_cloud"` | The <Constant name="dbt_platform" /> handles deferral against your connected environment, so <Constant name="wizard"/> doesn't manage any local state. Set automatically when you're connected to the platform. |
-| `"cloud_cli"` | The <Constant name="platform_cli" /> manages credentials and deferral through the <Constant name="dbt_platform" />, so <Constant name="wizard" /> skips its production compile and deferral flag injection. |
+| `"fusion_cloud"` | <Constant name="dbt_platform" /> handles deferral against your connected environment, so <Constant name="wizard"/> doesn't manage any local state. Set automatically when you're connected to the platform. |
+| `"cloud_cli"` | The <Constant name="platform_cli" /> manages credentials and deferral through <Constant name="dbt_platform" />, so <Constant name="wizard" /> skips its production compile and deferral flag injection. |
 | `"dbt_state"` | dbt State or run cache handles deferral, so <Constant name="wizard"/> skips its own production compile. |
 | `"manual"` | You provide the deferral manifest directory with `state`. |
 | `"disabled"` | Deferral is disabled for the project. |

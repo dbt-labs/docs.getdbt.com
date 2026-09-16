@@ -15,5 +15,5 @@ Every new account gets free {props.product} usage credits to start. What you get
 - Enterprise and Enterprise+ accounts should add a committed spend amount to their contract to keep using <Constant name="wizard" />. You may lose access to <Constant name="wizard" /> without this commit in place. If you've set an optional monthly <Constant name="wizard" /> spend limit, that still applies and pauses usage once reached.
 
 :::info Running {props.product} from the CLI against a self-hosted dbt project?
-Run `dbt login` (or `wizard login`) to get the same 30-day trial. The command creates your free dbt account and provisions the trial together, and that account is where you manage usage and spend limits. 
+The trial is opt-in here too &mdash; running `dbt login` (or `wizard login`) is how you opt in. The command creates your free dbt account and starts the same 30-day trial, and that account is where you manage usage and spend limits.
 :::
