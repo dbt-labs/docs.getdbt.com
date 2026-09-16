@@ -8,23 +8,31 @@ availability:
   access: free
 ---
 
-The dbt Information Schema is a contracted interface into the metadata for all of the resources in your dbt project. It takes the form of [Parquet](https://parquet.apache.org/) artifacts, which are more performant than JSON artifacts. For example, a project with a `manifest.json` and `catalog.json` that total ~70 MB has an Information Schema of only ~5 MB. It also includes intermediate views that you can query with `dbt show`. You can also query the Information Schema from SQL you write in your [checks](#using-the-information-schema-in-checks).
 
-When you use the [`--generate-info-schema`](#generating-the-information-schema) flag, dbt writes the Information Schema to `target/info_schema/` in a versioned subdirectory (for example, `target/info_schema/v1/`) as standard Parquet files. The metadata available in the schema grows with each step: parsing produces basic metadata, compiling adds column types and column-level lineage (with `--static-analysis strict`), and running or building populates runtime results.
+The dbt Information Schema is a contracted interface into your project’s metadata. You can query it using SQL with [`dbt show`](#querying-with-dbt-show) or in your [checks](#using-the-information-schema-in-checks).
 
-For the full list of tables and their descriptions, refer to the [Information Schema tables](/reference/info-schema).
+The metadata is stored as [Parquet](https://parquet.apache.org/) files, which are more compact and efficient to query than JSON artifacts. For example, a project whose `manifest.json` and `catalog.json` total ~70 MB has an Information Schema of ~5 MB.
 
-Rather than parsing `manifest.json`, you can query your project metadata using SQL. Use [`dbt show --inline`](#querying-with-dbt-show) to run SQL queries against the Information Schema directly from the CLI, or [`dbt show --info`](#querying-with-dbt-show) to query a view by name. You can also point any Parquet-compatible tool (for example, Pandas or Polars) directly at the files. 
+When you use the [`--generate-info-schema`](#generating-the-information-schema) flag, dbt writes these files to a versioned directory, such as `target/info_schema/v1/`. The available metadata grows as dbt processes your project:
+
+- Parsing provides basic project metadata
+- Compiling adds column types and column-level lineage (with `--static-analysis strict`)
+- Running or building adds runtime results
+
+Use `dbt show --inline` to run SQL queries or `dbt show --info` to query a view by name. You can also read the files with Parquet-compatible tools such as Pandas or Polars.
+
+For available tables and their descriptions, see [Information Schema tables](/reference/info-schem)
 
 ## Generating the Information Schema
 
-Use the `--generate-info-schema` flag with `dbt build`, `dbt run`, `dbt compile`, or `dbt parse`.
+Use `--generate-info-schema` flag with `dbt build`, `dbt run`, `dbt compile`, or `dbt parse`.
 
-- To populate column types and column-level lineage in `dbt.node_columns` and `dbt.column_lineage`, combine [`dbt build`](/reference/commands/build), [`dbt run`](/reference/commands/run), or [`dbt compile`](/reference/commands/compile) with [`--static-analysis strict`](/docs/build/about-static-analysis). Without it, `dbt.node_columns` and `dbt.column_lineage` contain no column types and no lineage.
+- With `dbt build`, `dbt run`, or `dbt compile`, add `--static-analysis strict` to include column types in `dbt.node_columns` and column-level lineage in `dbt.column_lineage`:
 
   ```shell
   dbt build --generate-info-schema --static-analysis strict
   ```
+  Without this flag, `dbt.node_columns` and `dbt.column_lineage` contain no column types and no lineage.
 
 - For [`dbt parse`](/reference/commands/parse), the Information Schema contains no column types, no lineage, and no runtime results, because `dbt parse` doesn't connect to your warehouse.
 
@@ -39,16 +47,18 @@ dbt build --generate-info-schema --info-schema-dir /tmp/my_schema
 
 ## Querying the Information Schema
 
+You can query the Information Schema locally with `dbt show` or any Parquet-compatible tool.
+
 ### Querying with `dbt show`
 
-Use `dbt show --info <view>` to query a specific Information Schema view directly from the CLI:
+Use `dbt show --info <view>` to query a view directly from the CLI:
 
 ```shell
 dbt show --info models
 dbt show --info models --format json --limit 20
 ```
 
-`--info <view>` is equivalent to `--inline "select * from {{ info_schema('<view>') }}"` and queries `target/info_schema/`. It does not connect to your warehouse.
+This queries from `target/info_schema/` without connecting to your warehouse. `--info <view> is equivalent to `--inline "select * from {{ info_schema('<view>') }}"`.
 
 You can also use `--inline` SQL that calls `{{ info_schema() }}` directly:
 
@@ -58,9 +68,7 @@ dbt show --inline "select name from {{ info_schema('models') }} order by name"
 
 ### Querying with external tools
 
-You can query the Parquet files with any Parquet-compatible tool.
-
-**Parquet-compatible tools:** Point your tool directly at the Parquet files in `target/info_schema/v1/`. For example, with pandas:
+Point any Parquet-compatible tool at the files in `target/info_schema/v1/`. For example, with pandas:
 
 ```python
 import pandas as pd
