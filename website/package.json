@@ -2,7 +2,7 @@
   "scripts": {
     "prestart": "npm run prepare && node scripts/fetch-mcp-readme-tools.js && node scripts/generate-functions-snippet.js",
     "start": "docusaurus start",
-    "prebuild": "node scripts/git-lastupdate-debug.js; node scripts/fetch-mcp-readme-tools.js && node scripts/generate-functions-snippet.js",
+    "prebuild": "node scripts/inject-last-updated.js; node scripts/fetch-mcp-readme-tools.js && node scripts/generate-functions-snippet.js",
     "build": "docusaurus build",
     "postbuild": "node scripts/rewriteMarkdownLinks.js",
     "generate:wizard-cli": "node scripts/generate-wizard-cli-reference.js",
