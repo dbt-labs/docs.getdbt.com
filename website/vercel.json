@@ -1,4 +1,5 @@
 {
+  "buildCommand": "git fetch --unshallow --tags || true && npm run build",
   "cleanUrls": true,
   "trailingSlash": false,
   "headers": [
