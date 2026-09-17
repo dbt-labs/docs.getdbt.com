@@ -56,17 +56,11 @@ Start with a development or test environment. Moving it to a release track first
 
 You can also set the version through the [Admin API](/docs/dbt-apis/admin-api) or Terraform. Refer to [Upgrade versions in dbt platform](/docs/dbt-versions/upgrade-dbt-platform-version) for the full walkthrough.
 
-Once the environment is on the new version, [fix any compatibility issues it surfaces](#fix-compatibility-issues-in-your-project) before you migrate the rest of your environments and jobs.
+Once the environment is on the new version, fix any compatibility issues it surfaces before you migrate the rest of your environments and jobs.
 
 ## Fix compatibility issues in your project
 
 Moving to a release track can surface deprecation warnings that weren't visible on your legacy version. Resolve these in your project code before you migrate your remaining environments, either by hand or with autofix.
-
-### Manually fix
-
-1. Run `dbt parse --no-partial-parse --show-all-deprecations` to list the deprecations in your project, or view them from the **Dashboard** in your dbt platform account.
-2. Look up each warning in [Deprecations](/reference/deprecations) and update your project code accordingly.
-3. Rerun `dbt parse` to confirm the warnings are resolved, then commit your changes.
 
 ### Autofix (recommended) {#autofix}
 
@@ -80,17 +74,21 @@ Autofix runs the [dbt-autofix](https://github.com/dbt-labs/dbt-autofix) script t
 
 #### dbt VS Code extension
 
-1. In the [dbt VS Code extension](/docs/about-dbt-extension), reparse your project against the updated environment to surface any deprecation warnings.
+1. In the [dbt VS Code extension](/docs/about-dbt-extension), run `dbt parse` against the updated environment to surface any deprecation warnings. The **Problems** tab will also surface useful information.
 2. Resolve them with the [dbt-autofix](https://github.com/dbt-labs/dbt-autofix?tab=readme-ov-file#installation) tool, either from the command line or by following the prompts in the extension's upgrade assistant.
 3. We recommend upgrading from a deprecated version to **v1 Latest** first, but if you intend on moving this project to <Constant name="fusion" />, use the extension's [agentic migration](/docs/upgrade-to-dbt-extension#agentic-migration) flow instead, which runs autofix as part of the full v1-to-v2 upgrade.
 
-## Migrate your remaining environments and jobs
 
-Once your project is compatible, apply the same steps to your other environments and jobs. Use the scenarios in [Identify projects using legacy versions](#identify-projects-using-legacy-versions) to confirm what to do for each one.
+### Manually fix
 
-### Update a job's version
+1. Run `dbt parse --no-partial-parse --show-all-deprecations` to list the deprecations in your project, or view them from the **Dashboard** in your dbt platform account.
+2. Look up each warning in [Deprecations](/reference/deprecations) and update your project code accordingly.
+3. Rerun `dbt parse` to confirm the warnings are resolved, then commit your changes.
 
-Tp clear or change an override for a job on a supported environment that's pinned to a legacy version:
+
+## Update a job's version
+
+To clear or change an override for a job on a supported environment that's pinned to a legacy version:
 
 1. Open the job's settings and find the **dbt version** setting.
 2. Either clear the override so the job inherits the environment's version, or set it to a [release track](/docs/dbt-versions/dbt-release-tracks).
@@ -105,5 +103,4 @@ Moving from a pinned legacy version to a release track can surface behavior chan
 - Establish a fallback path in case you need to roll back.
 
 ## Get help
-
 If you hit a blocker you can't resolve, [contact Support](mailto:support@getdbt.com) with your project ID, environment ID, affected job run IDs and logs, your current version, and your target release track.
