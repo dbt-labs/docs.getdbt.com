@@ -2,6 +2,10 @@
 title: "Defer"
 ---
 
+import DbtStateTip from '/snippets/_dbt-state-tip.md';
+
+<DbtStateTip />
+
 Defer is a powerful feature that makes it possible to run a subset of <VersionBlock lastVersion="1.10">models or tests</VersionBlock><VersionBlock firstVersion="1.11">models, tests, or functions</VersionBlock> in a [sandbox environment](/docs/environments-in-dbt) without having to first build their upstream parents. This can save time and computational resources when you want to test a small number of models in a large project.
 
 <Lightbox src src="/img/docs/reference/defer-diagram.png" width="50%" title="Use 'defer' to modify end-of-pipeline models by pointing to production models, instead of running everything upstream." />
