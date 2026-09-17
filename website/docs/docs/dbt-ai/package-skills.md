@@ -208,7 +208,7 @@ skills:
 
 A package's own `skills` config sets the defaults for the skills it ships, and your root project's `skills` config overrides it. This works the same way as [enabling and disabling other resources](/reference/resource-configs/enabled).
 
-### More examples
+## More examples
 
 Set `+enabled` at the package level to control a whole package, or nest it under a skill name to control a single skill.
 
