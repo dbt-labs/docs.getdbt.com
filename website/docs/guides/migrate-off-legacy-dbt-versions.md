@@ -62,7 +62,7 @@ Once the environment is on the new version, [fix any compatibility issues it sur
 
 Moving to a release track can surface deprecation warnings that weren't visible on your legacy version. Resolve these in your project code before you migrate your remaining environments, either by hand or with autofix.
 
-### Manually
+### Manually fix
 
 1. Run `dbt parse --no-partial-parse --show-all-deprecations` to list the deprecations in your project, or view them from the **Dashboard** in your dbt platform account.
 2. Look up each warning in [Deprecations](/reference/deprecations) and update your project code accordingly.
