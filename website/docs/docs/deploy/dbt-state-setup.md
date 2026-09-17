@@ -7,7 +7,7 @@ tags: ['dbt State']
 availability: everywhere_usage
 ---
 
-# Setting up dbt State <Lifecycle status="preview" />
+# Setting up dbt State
 
 This page walks you through setting up dbt State across <Constant name="core" />, <Constant name="dbt_platform" />, and <Constant name="fusion" />.
 
@@ -85,7 +85,7 @@ For next steps, see:
    - [Enable dbt State in Studio](/docs/deploy/dbt-state-enable-studio)
 
 </TabItem>
-<TabItem value="fusion" label="v2">
+<TabItem value="fusion" label="dbt v2">
 
 1. Navigate to your project:
 
@@ -184,6 +184,10 @@ In this example, models in the `prod` target rebuild only when upstream data is 
 
 For more details, refer to the [`lag_tolerance` config reference](/reference/resource-configs/lag-tolerance).
 
+import LagToleranceRecommendationsTip from '/snippets/_lag-tolerance-recommendations-tip.md';
+
+<LagToleranceRecommendationsTip />
+
 ## Inviting team members
 
 The more team members you have using dbt State, the better it gets; more team members means more opportunities to clone existing nodes rather than rebuilding them. To invite colleagues:
@@ -208,4 +212,5 @@ To see which decision dbt State made for each node after a run and why, you can 
 - [Configure deferral](/docs/deploy/dbt-state-deferral)
 - [Non-interactive environment setup](/docs/deploy/dbt-state-cicd)
 - [dbt State configs](/reference/resource-configs/dbt-state-configs)
+- [Monitor dbt State activity](/docs/deploy/dbt-state-interface)
 

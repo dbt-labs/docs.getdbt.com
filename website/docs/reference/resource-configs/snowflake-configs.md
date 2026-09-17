@@ -17,7 +17,7 @@ Our Snowflake Iceberg table content has moved to a [new page](/docs/build/iceber
 
 The Snowflake adapter supports [dynamic tables](https://docs.snowflake.com/en/user-guide/dynamic-tables-about).
 This materialization is specific to Snowflake, which means that any model configuration that
-would normally come along for the ride from `dbt-core` (e.g. as with a `view`) may not be available
+would normally come along for the ride from `dbt` (like with a `view`) may not be available
 for dynamic tables. This gap will decrease in future patches and versions.
 While this materialization is specific to Snowflake, it very much follows the implementation
 of [materialized views](/docs/build/materializations#Materialized-View).

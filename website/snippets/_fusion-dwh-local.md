@@ -8,6 +8,6 @@
         - Supports authentication using single sign-on, service accounts, or user tokens
   </Expandable>
 
-  <Expandable alt_header="DuckDB (CLI only)" lifecycle="beta" lifecycle_size="75">
+  <Expandable alt_header="DuckDB (CLI only)">
     DuckDB does not require authentication &mdash; it runs locally on your machine.
   </Expandable>

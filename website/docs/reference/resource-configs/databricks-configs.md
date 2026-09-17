@@ -1152,7 +1152,7 @@ dbt-databricks automatically adds the following tags to every query:
 | Tag key | Description |
 |---------|-------------|
 | `@@dbt_model_name` | The name of the model being executed |
-| `@@dbt_core_version` | The version of dbt-core being used |
+| `@@dbt_core_version` | The version of dbt being used |
 | `@@dbt_databricks_version` | The version of dbt-databricks being used |
 | `@@dbt_materialized` | The materialization type (table, view, incremental, and so on.) |
 
