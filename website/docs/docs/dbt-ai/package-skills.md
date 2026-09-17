@@ -214,23 +214,31 @@ Set `+enabled` at the package level to control a whole package, or nest it under
 
 Disable every skill from one package, and leave all others enabled:
 
+<File name='dbt_project.yml'>
+  
 ```yml
 skills:
   demo_skills:
     +enabled: false
 ```
+</File>
 
 Enable skills from only one package, and disable them from all others:
 
+<File name='dbt_project.yml'>
+  
 ```yml
 skills:
   +enabled: false
   demo_skills:
     +enabled: true
 ```
+</File>
 
 Enable just two skills, and disable everything else:
 
+<File name='dbt_project.yml'>
+  
 ```yml
 skills:
   demo_skills:
@@ -240,9 +248,12 @@ skills:
     adding-exposures:
       +enabled: true
 ```
+</File>
 
 Disable just two skills, and leave everything else enabled:
 
+<File name='dbt_project.yml'>
+  
 ```yml
 skills:
   demo_skills:
@@ -251,6 +262,7 @@ skills:
     adding-exposures:
       +enabled: false
 ```
+</File>
 
 :::caution Skill names must be unique
 Because skills install under their own name, two enabled skills with the same name would occupy the same directory. Rather than choose between them, dbt fails the command before writing anything:
