@@ -6,7 +6,7 @@ availability:
   access: free
 ---
 
-# Freshness JSON file <Lifecycle status="beta" />
+# Freshness JSON file
 
 - **Current schema**: [v0](https://schemas.getdbt.com/dbt/freshness/v0/index.html)
 - **Produced by:** [`dbt freshness`](/reference/commands/freshness)

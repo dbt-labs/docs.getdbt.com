@@ -7,7 +7,7 @@ availability:
   engine: v2
 ---
 
-# About dbt lint command <Lifecycle status="beta" />
+# About dbt lint command
 
 `dbt lint` is a fast SQL linter built into <Constant name="fusion_engine" />, available locally or in <Constant name="dbt_platform"/>. dbt lint requires v2 or later. If you're on an earlier version, [upgrade or install dbt](/docs/dbt-versions/dbt-upgrade/upgrading-to-v2?version=2).
 
@@ -199,7 +199,7 @@ Because [linting in the <Constant name="studio_ide" />](/docs/platform/studio-id
 
 If you need SQLFluff behavior, you can either lint in the <Constant name="studio_ide" />, which continues to run SQLFluff, or run SQLFluff locally using the standalone <Constant name="core" /> engine templater. Refer to [<Constant name="fusion" /> limitations](/docs/dbt/supported-features#limitations) for more information.
 
-## Beta limitations
+## Limitations
 
 Keep these limitations in mind:
 
@@ -215,6 +215,7 @@ The following rules report violations but can't be auto-fixed by `--fix`. They r
 ### Single fix pass
 
 `--fix` runs a single pass; it doesn't iterate until the file is clean. A fix applied by one rule can expose a violation from another rule on the next run. For example, `AL09` removes a self-alias, which may then cause `RF02` to flag the now-unqualified reference. Re-run `dbt lint --fix` until the output is clean.
+
 
 ## FAQs
 

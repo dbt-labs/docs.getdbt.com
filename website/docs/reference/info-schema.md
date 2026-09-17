@@ -8,7 +8,7 @@ availability:
   access: free
 ---
 
-For an overview of the dbt Information Schema, how to generate it, and how to query it, refer to [dbt Information Schema](/docs/build/dbt-information-schema).
+The [dbt Information Schema](/docs/build/dbt-information-schema) is a contracted interface into the metadata for all of the resources in your dbt project. Information Schema tables are produced by [`dbt build`](/reference/commands/build), [`dbt run`](/reference/commands/run), [`dbt compile`](/reference/commands/compile), or [`dbt parse`](/reference/commands/parse) with the `--generate-info-schema` flag.
 
 ## Tables
 
@@ -57,7 +57,7 @@ The `dbt` namespace tables contain metadata about your project's structure, reso
 
 ### `dbt_rt` namespace
 
-The `dbt_rt` namespace tables contain runtime execution data.
+The `dbt_rt` namespace tables contain runtime execution data. These tables are not available for parse-time checks.
 
 | Table | Description |
 |-------|-------------|
@@ -69,6 +69,46 @@ The `dbt_rt` namespace tables contain runtime execution data.
 | `dbt_rt.diagnostics` | Diagnostic data from invocations |
 | `dbt_rt.adapter_queries` | Adapter queries issued during invocations |
 
-## Related
+
+## Columns available for checks
+
+When you use `{{ info_schema() }}` macro in a check, you can access only columns resolved at parse time. dbt exposes these columns through a view with the same name as the Information Schema table. Pass that name without the `dbt.` prefix to the macro.
+
+The full table in `target/info_schema/v1/` may have more columns. You can access all columns when you use the macro with `dbt show --inline`.
+
+
+| View | Columns |
+|------|---------|
+| `models` | `unique_id`, `name`, `resource_type`, `package_name`, `original_file_path`, `fqn`, `alias`, `description`, `node_language`, `database_name`, `schema_name`, `relation_name`, `identifier`, `enabled`, `materialized`, `config`, `access`, `group`, `contract_enforced`, `version`, `latest_version`, `deprecation_date`, `primary_key`, `properties_yml_file_path`, `tags`, `meta`, `ingested_at` |
+| `seeds` | `unique_id`, `name`, `resource_type`, `package_name`, `original_file_path`, `fqn`, `alias`, `description`, `node_language`, `database_name`, `schema_name`, `relation_name`, `identifier`, `enabled`, `materialized`, `config`, `access`, `group`, `contract_enforced`, `version`, `latest_version`, `deprecation_date`, `primary_key`, `properties_yml_file_path`, `tags`, `meta`, `ingested_at` |
+| `snapshots` | `unique_id`, `name`, `resource_type`, `package_name`, `original_file_path`, `fqn`, `alias`, `description`, `node_language`, `database_name`, `schema_name`, `relation_name`, `identifier`, `enabled`, `materialized`, `config`, `access`, `group`, `contract_enforced`, `version`, `latest_version`, `deprecation_date`, `primary_key`, `properties_yml_file_path`, `tags`, `meta`, `raw_code`, `ingested_at` |
+| `functions` | `unique_id`, `name`, `resource_type`, `package_name`, `original_file_path`, `fqn`, `alias`, `description`, `node_language`, `database_name`, `schema_name`, `relation_name`, `identifier`, `enabled`, `materialized`, `config`, `access`, `group`, `contract_enforced`, `version`, `latest_version`, `deprecation_date`, `primary_key`, `properties_yml_file_path`, `tags`, `meta`, `raw_code`, `ingested_at` |
+| `analyses` | `unique_id`, `name`, `resource_type`, `package_name`, `original_file_path`, `fqn`, `alias`, `description`, `node_language`, `database_name`, `schema_name`, `relation_name`, `identifier`, `enabled`, `materialized`, `config`, `access`, `group`, `contract_enforced`, `version`, `latest_version`, `deprecation_date`, `primary_key`, `properties_yml_file_path`, `tags`, `meta`, `raw_code`, `ingested_at` |
+| `hooks` | `unique_id`, `name`, `resource_type`, `package_name`, `original_file_path`, `fqn`, `alias`, `description`, `node_language`, `database_name`, `schema_name`, `relation_name`, `identifier`, `enabled`, `materialized`, `config`, `access`, `group`, `contract_enforced`, `version`, `latest_version`, `deprecation_date`, `primary_key`, `properties_yml_file_path`, `tags`, `meta`, `raw_code`, `ingested_at` |
+| `checks` | `unique_id`, `name`, `resource_type`, `package_name`, `original_file_path`, `fqn`, `alias`, `description`, `node_language`, `database_name`, `schema_name`, `relation_name`, `identifier`, `enabled`, `materialized`, `config`, `access`, `group`, `contract_enforced`, `version`, `latest_version`, `deprecation_date`, `primary_key`, `properties_yml_file_path`, `tags`, `meta`, `raw_code`, `ingested_at` |
+| `sources` | `unique_id`, `name`, `resource_type`, `package_name`, `original_file_path`, `fqn`, `alias`, `description`, `node_language`, `database_name`, `schema_name`, `relation_name`, `identifier`, `enabled`, `materialized`, `config`, `access`, `group`, `contract_enforced`, `version`, `latest_version`, `deprecation_date`, `primary_key`, `properties_yml_file_path`, `tags`, `meta`, `source_name`, `source_description`, `loader`, `loaded_at_field`, `ingested_at` |
+| `data_tests` | `unique_id`, `name`, `package_name`, `original_file_path`, `fqn`, `description`, `database_name`, `schema_name`, `relation_name`, `enabled`, `materialized`, `config`, `tags`, `meta`, `group`, `properties_yml_file_path`, `test_name`, `test_definition_package`, `arguments`, `column_name`, `node_unique_id`, `severity`, `warn_if`, `error_if`, `fail_calc`, `store_failures`, `store_failures_as`, `ingested_at` |
+| `unit_tests` | `unique_id`, `name`, `model`, `description`, `package_name`, `original_file_path`, `fqn`, `given`, `expect`, `overrides`, `versions`, `ingested_at` |
+| `node_columns` | `node_unique_id`, `column_name`, `data_type_declared`, `description`, `tags`, `ingested_at` |
+| `dag_nodes` | `unique_id`, `resource_type`, `ingested_at` — one row per enabled resource that participates in the DAG, including exposures, metrics, and unit tests |
+| `edges` | `parent_unique_id`, `child_unique_id`, `ingested_at` |
+| `macros` | `unique_id`, `name`, `package_name`, `original_file_path`, `macro_sql`, `description`, `depends_on_macros`, `arguments`, `docs_show`, `properties_yml_file_path`, `meta`, `created_at`, `ingested_at` |
+| `docs_blocks` | `unique_id`, `name`, `package_name`, `original_file_path`, `content`, `ingested_at` |
+| `groups` | `unique_id`, `name`, `description`, `owner_name`, `owner_email`, `ingested_at` |
+| `exposures` | `unique_id`, `name`, `exposure_type`, `label`, `owner_name`, `owner_email`, `url`, `maturity`, `description`, `package_name`, `original_file_path`, `fqn`, `depends_on`, `tags`, `created_at`, `ingested_at` |
+| `metrics` | `unique_id`, `name`, `label`, `metric_type`, `description`, `package_name`, `original_file_path`, `fqn`, `type_params`, `metric_filter`, `time_granularity`, `input_metric_names`, `group`, `tags`, `meta`, `config`, `created_at`, `ingested_at` |
+| `saved_queries` | `unique_id`, `name`, `label`, `description`, `package_name`, `original_file_path`, `fqn`, `query_params`, `exports`, `depends_on`, `group`, `tags`, `created_at`, `ingested_at` |
+| `semantic_models` | `unique_id`, `name`, `model`, `label`, `description`, `fqn`, `node_relation`, `primary_entity`, `defaults`, `group`, `created_at`, `ingested_at` |
+| `semantic_entities` | `unique_id`, `name`, `entity_type`, `description`, `label`, `entity_role`, `expr`, `ingested_at` |
+| `semantic_measures` | `unique_id`, `name`, `agg`, `description`, `label`, `expr`, `create_metric`, `agg_time_dimension`, `agg_params`, `non_additive_dimension`, `ingested_at` |
+| `semantic_dimensions` | `unique_id`, `name`, `dimension_type`, `description`, `label`, `expr`, `is_partition`, `time_granularity`, `validity_params`, `ingested_at` |
+| `time_spines` | `unique_id`, `primary_column`, `primary_granularity`, `custom_granularities`, `node_relation`, `ingested_at` |
+| `project` | `project_name`, `dbt_version`, `adapter_type`, `git_sha`, `git_branch`, `git_uncommitted_changes`, `ingested_at` |
+| `packages` | `package_name`, `ingested_at` |
+| `project_vars` | `project_name`, `var_name`, `var_value`, `ingested_at` — a package-scoped var appears on that package's `project_name` |
+| `project_env_vars` | `env_var_name`, `ingested_at` |
+
+## Related docs
 
 - [dbt Information Schema](/docs/build/dbt-information-schema)
+- [Checks](/docs/build/checks)

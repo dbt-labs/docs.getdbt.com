@@ -20,6 +20,7 @@ import CopilotBeta from '/snippets/_dbt-copilot-avail.md';
 * [Data test properties](/reference/resource-properties/data-tests)
 * [Data test configurations](/reference/data-test-configs)
 * [Test selection examples](/reference/node-selection/test-selection-examples)
+* [Batch tests](/reference/global-configs/batch-tests)
 
 :::important
 
@@ -282,6 +283,10 @@ dbt test --select "test_type:data"
 ```
 
 In <Constant name="dbt" /> (v1.9+), you can also use `dbt test --resource-type test`. For more options, refer to [test selection examples](/reference/node-selection/test-selection-examples).
+
+## Batch your data tests
+
+In <Constant name="dbt" /> v2, you can reduce the number of queries dbt issues for tests by enabling [batch tests](/reference/global-configs/batch-tests). Batching groups `unique` and `not_null` tests that are attached to the same model into one query per test type, and each test still reports its own pass or fail result.
 
 ## Storing data test failures
 
