@@ -61,7 +61,7 @@ Avoid duplicate skill names across locations. If you need to replace a built-in 
 
 <VersionBlock lastVersion="1.99">
 
-From v2 and later, you can ship agent skills in a dbt package and install them with `dbt deps` into the directory your coding agent reads from. This allows your whole team picks up the same skills from a versioned dependency instead of managing them separately.
+From v2 and later, you can ship agent skills in a dbt package and install them with `dbt deps` into the directory your coding agent reads from. Your whole team picks up the same skills from a versioned dependency instead of managing them separately.
 
 For more information, refer to [upgrading to v2](/docs/dbt-versions/dbt-upgrade/upgrading-to-v2?version=2#agent-skills).
 </VersionBlock>
