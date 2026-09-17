@@ -90,7 +90,7 @@ Once your project is compatible, apply the same steps to your other environments
 
 ### Update a job's version
 
-If a job on a supported environment is pinned to a legacy version, clear or change the override:
+Tp clear or change an override for a job on a supported environment that's pinned to a legacy version:
 
 1. Open the job's settings and find the **dbt version** setting.
 2. Either clear the override so the job inherits the environment's version, or set it to a [release track](/docs/dbt-versions/dbt-release-tracks).
