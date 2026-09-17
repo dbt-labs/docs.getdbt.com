@@ -27,6 +27,17 @@ What you migrate is driven by a job's effective version: the version pinned on t
 1. Navigate to **Orchestration** > **Environments** and note any environment whose **dbt version** is v1.3–v1.7. The current version is displayed below the environment name. 
 2. Open the jobs in your supported environments and check for any job with a **version override** pinned to v1.3–v1.7.
 
+Find the row that matches each environment, then follow the linked steps.
+
+| Environment version | Job version | What you do |
+|---------------------|-------------|-------------|
+| Legacy (v1.3–v1.7) | Inherits from environment, or pinned to a legacy version | [Migrate the environment to a release track](#migrate-an-environment-to-a-release-track) |
+| Legacy (v1.3–v1.7) | At least one job pinned to a supported version | [Migrate the environment to a release track](#migrate-an-environment-to-a-release-track); the supported jobs are retained |
+| Supported | One or more jobs pinned to a legacy version | [Update the job's version](#update-a-jobs-version); the environment is untouched |
+| Legacy and **dormant** (unused 12+ months) | — | [Delete the environment](#delete-a-dormant-environment), or migrate it if you still need it |
+
+If you don't migrate a legacy environment or clear a legacy job, it's cleaned up when legacy versions are retired: a legacy environment (and its jobs) is deleted, a legacy environment that already has a job on a supported version is **updated** with only the legacy jobs removed, and a supported environment with legacy-pinned jobs keeps the environment and loses **only those jobs**.
+
 ## Delete a dormant environment
 
 Before you migrate a project off a deprecated version, consider whether it's needed at all. If a legacy environment has been dormant for a year or more, you probably no longer need it, so delete it.
@@ -75,16 +86,7 @@ Autofix runs the [dbt-autofix](https://github.com/dbt-labs/dbt-autofix) script t
 
 ## Migrate your remaining environments and jobs
 
-Once your project is compatible, find the row that matches each of your other environments, then follow the linked steps.
-
-| Environment version | Job version | What you do |
-|---------------------|-------------|-------------|
-| Legacy (v1.3–v1.7) | Inherits from environment, or pinned to a legacy version | [Migrate the environment to a release track](#migrate-an-environment-to-a-release-track) |
-| Legacy (v1.3–v1.7) | At least one job pinned to a supported version | [Migrate the environment to a release track](#migrate-an-environment-to-a-release-track); the supported jobs are retained |
-| Supported | One or more jobs pinned to a legacy version | [Update the job's version](#update-a-jobs-version); the environment is untouched |
-| Legacy and **dormant** (unused 12+ months) | — | [Delete the environment](#delete-a-dormant-environment), or migrate it if you still need it |
-
-If you don't migrate a legacy environment or clear a legacy job, it's cleaned up when legacy versions are retired: a legacy environment (and its jobs) is deleted, a legacy environment that already has a job on a supported version is **updated** with only the legacy jobs removed, and a supported environment with legacy-pinned jobs keeps the environment and loses **only those jobs**.
+Once your project is compatible, apply the same steps to your other environments and jobs. Use the scenarios in [Identify projects using legacy versions](#identify-projects-using-legacy-versions) to confirm what to do for each one.
 
 ### Update a job's version
 
