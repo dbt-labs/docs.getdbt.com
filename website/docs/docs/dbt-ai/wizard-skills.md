@@ -57,7 +57,7 @@ The following table summarizes where <Constant name="wizard" /> looks for skills
 
 Avoid duplicate skill names across locations. If you need to replace a built-in or imported skill, create the replacement in an intended project or user location and remove or rename the older copy.
 
-### Skills from dbt packages
+## Skills from dbt packages
 
 <VersionBlock lastVersion="1.99">
 
