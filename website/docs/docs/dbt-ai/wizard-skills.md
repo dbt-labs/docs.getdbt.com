@@ -83,7 +83,7 @@ flags:
 
 Use `wizard` whether you bring your own key or use managed AI.
 
-For the full setup, including how to ship skills in a package and disable ones you don't want, refer to [Installing agent skills from dbt packages](/docs/dbt-ai/package-skills).
+For the full setup, including how to ship skills in a package and disable ones you don't want, examples, and more &mdash; refer to [Installing agent skills from dbt packages](/docs/dbt-ai/package-skills).
 
 </VersionBlock>
 
