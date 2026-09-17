@@ -1,16 +1,16 @@
 ---
 title: "Migrate off legacy dbt versions"
 id: migrate-off-legacy-dbt-versions
-description: "A quickstart for moving environments and jobs off legacy dbt versions to a dbt Core release track."
+description: "A quickstart for moving environments and jobs off legacy dbt versions to a dbt v1 release track."
 hoverSnippet: "Move your environments and jobs off legacy dbt versions to a release track."
 icon: 'guides'
 hide_table_of_contents: true
-tags: ['Migration', 'dbt Core', 'dbt platform', 'Upgrade']
+tags: ['Migration', 'dbt v1', 'dbt platform', 'Upgrade']
 keywords: ['legacy dbt version', 'release track', 'migrate dbt version', 'upgrade dbt version']
 level: 'Beginner'
 ---
 
-Legacy <Constant name="core" /> versions v1.3–v1.7 are being deprecated on <Constant name="legacy_deprecation_date" />. To keep your work running and supported, move your environments and jobs to a [<Constant name="core" /> release track](/docs/dbt-versions/dbt-release-tracks) now. A release track keeps you on a supported version automatically and prepares your project for [<Constant name="fusion_engine" />](/docs/introduction) later.
+Legacy <Constant name="dbt" /> versions v1.3–v1.7 are being deprecated on <Constant name="legacy_deprecation_date" />. To keep your work running and supported, move your environments and jobs to a [<Constant name="core" /> release track](/docs/dbt-versions/dbt-release-tracks) now. A release track keeps you on a supported version automatically and prepares your project for [<Constant name="fusion_engine" />](/docs/introduction) later.
 
 :::info The single-hop path
 
@@ -45,7 +45,7 @@ If you don't migrate a legacy environment or clear a legacy job, it's cleaned up
 To update your environment to a release track:
 
 1. Navigate to the Settings page of the environment, then click **Edit**.
-2. Click the **dbt version** dropdown and select a [release track](/docs/dbt-versions/dbt-release-tracks) (**Latest** is recommended).
+2. Click the **dbt version** dropdown and select a [release track](/docs/dbt-versions/dbt-release-tracks) (**v1 Latest** is recommended).
 3. Save your changes.
 
 As a best practice, test the upgrade in a development environment first. See [Upgrade versions in dbt platform](/docs/dbt-versions/upgrade-dbt-platform-version) for details, including how to set the version through the [Admin API](/docs/dbt-apis/admin-api) or Terraform.

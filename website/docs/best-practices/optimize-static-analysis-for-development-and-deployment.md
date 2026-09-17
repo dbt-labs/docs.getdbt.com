@@ -1,7 +1,7 @@
 ---
 title: "Optimize static analysis for development and deployment"
 id: "optimize-static-analysis-for-development-and-deployment"
-description: "Configure Fusion static analysis with strict in development and baseline in deployment for stronger local checks and faster jobs."
+description: "Configure dbt v2 static analysis with strict in development and baseline in deployment for stronger local checks and faster jobs."
 sidebar_label: "Optimize static analysis"
 displayText: Optimize static analysis for development and deployment
 hoverSnippet: Use strict static analysis in development and baseline in deployment for stronger local checks and faster jobs.
@@ -13,7 +13,7 @@ import FusionLifecycle from '/snippets/_fusion-lifecycle-callout.md';
 
 <IntroText>
 
-Static analysis helps the <Constant name="fusion_engine" /> validate your SQL before it runs. This guide shows how to configure it so you get stronger checks while you develop, and faster, less blocking runs in deployment.
+Static analysis helps <Constant name="fusion_engine" /> validate your SQL before it runs. This guide shows how to configure it so you get stronger checks while you develop, and faster, less blocking runs in deployment.
 
 </IntroText>
 
@@ -24,7 +24,7 @@ This guide explains why using `strict` in development and `baseline` (the defaul
 - **Development:** `strict` mode has the strongest SQL checks before you promote changes, including richer column-level features in the VS Code extension.
 - **Deployment:** `baseline` skips remote warehouse schema downloads and surfaces findings as warnings, so jobs are less likely to block. That can save compile time (and warehouse cost) in deployment, especially in projects with many sources. Review deployment logs for warnings that `strict` would have raised as errors in development.
 
-`strict` can increase compile time because the <Constant name="fusion_engine" /> downloads schemas for all sources (including sources your models do not reference). Teams with thousands of sources have seen large differences between `baseline` and `strict`.
+`strict` can increase compile time because <Constant name="fusion_engine" /> downloads schemas for all sources (including sources your models do not reference). Teams with thousands of sources have seen large differences between `baseline` and `strict`.
 
 ## Set the mode with the CLI flag
 

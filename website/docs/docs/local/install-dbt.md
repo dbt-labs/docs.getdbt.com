@@ -12,17 +12,17 @@ import AboutFusion from '/snippets/_about-fusion.md';
 
 Get <Constant name="dbt" /> running on your machine in a few minutes. Installing dbt gives you <Constant name="fusion" /> by default: the current, free-to-use experience for v2. Choose your preferred installation method:
 
-## Install dbt <Lifecycle status="preview" />
+## Install dbt
 
 <Tabs groupId="install-method" queryString>
 
 <TabItem value="pip" label="pip">
 
 ```shell
-python -m pip install --pre dbt
+python -m pip install dbt
 ```
 
-To upgrade later, run `python -m pip install --upgrade --pre dbt`.
+To upgrade later, run `python -m pip install --upgrade dbt`.
 
 </TabItem>
 
@@ -81,7 +81,7 @@ To upgrade later, run `dbt system update`.
   dbt --version
   ```
 
-- With <Constant name="dbt" /> v2, you can start using the <Constant name="fusion" /> experience right away. For the best v2 editor experience, install the dbt VS Code extension to use features like autocomplete, inline errors, and lineage.
+- With <Constant name="dbt" /> v2, you can start using it right away. For the best v2 editor experience, install the dbt VS Code extension to use features like autocomplete, inline errors, and lineage.
 
   For full <Term id="lsp" /> features and other richer <Constant name="fusion" /> capabilities, run `dbt login` to sign in with a free <Constant name="dbt_platform" /> account:
 
@@ -98,7 +98,7 @@ If you or your org has a strict requirement to use the open-source runtime, inst
 Common issues and resolutions:
 
 - **dbt command not found:** Add the installation location to your `$PATH`.
-- **Version conflicts:** Check that no other <Constant name="core" /> or <Constant name="platform_cli" /> versions are installed or active on your machine.
+- **Version conflicts:** Check that no other self-hosted dbt or <Constant name="platform_cli" /> versions are installed or active on your machine.
 - **Installation permissions:** Make sure your user account can install software locally.
 
 ## FAQs
@@ -204,11 +204,11 @@ python -m pip install dbt-core
 ### Upgrade
 
 ```shell
-# Upgrade adapter (and dbt-core)
+# Upgrade v1 pip installations
 python -m pip install --upgrade dbt-ADAPTER_NAME
 
 # Downgrade to a specific version
-python -m pip install --upgrade dbt-core==1.9
+python -m pip install --upgrade dbt-core==1.11
 ```
 
 ### Install a prerelease
@@ -216,14 +216,14 @@ python -m pip install --upgrade dbt-core==1.9
 Use `--pre` to install prerelease versions. This may also install prerelease versions of other dependencies.
 
 ```shell
-python3 -m pip install --pre dbt-ADAPTER_NAME
+python3 -m pip install --pre dbt
 ```
 
 </Expandable>
 
 <Expandable alt_header="Docker">
 
-<Constant name="core" /> images are distributed via [GitHub Packages](https://github.com/dbt-labs/dbt-core/pkgs/container/dbt-core) and include pinned versions of dbt-core, one or more adapters, and all dependencies.
+<Constant name="core" /> images are distributed via [GitHub Packages](https://github.com/dbt-labs/dbt/pkgs/container/dbt-core) and include pinned versions of dbt-core, one or more adapters, and all dependencies.
 
 ### Prerequisites
 
@@ -257,7 +257,7 @@ Note: bind-mount sources must be absolute paths. You may need to adjust `--netwo
 
 ### Build a custom image
 
-If the pre-made images don't fit your use case, use the [`Dockerfile`](https://github.com/dbt-labs/dbt-core/blob/1.latest/docker/Dockerfile) and [`README`](https://github.com/dbt-labs/dbt-core/blob/1.latest/docker/README.md) to build images with multiple adapters, third-party adapters, or different system architectures. Custom image builds are community-supported — [open an issue](https://github.com/dbt-labs/dbt-core/issues) or [ask the community](/community/resources/getting-help) if you run into trouble.
+If the pre-made images don't fit your use case, use the [`Dockerfile`](https://github.com/dbt-labs/dbt/blob/1.latest/docker/Dockerfile) and [`README`](https://github.com/dbt-labs/dbt/blob/1.latest/docker/README.md) to build images with multiple adapters, third-party adapters, or different system architectures. Custom image builds are community-supported — [open an issue](https://github.com/dbt-labs/dbt/issues) or [ask the community](/community/resources/getting-help) if you run into trouble.
 
 </Expandable>
 
@@ -266,8 +266,8 @@ If the pre-made images don't fit your use case, use the [`Dockerfile`](https://g
 Install from source to get unreleased code or a specific commit. Clone the repo and install with `pip`:
 
 ```shell
-git clone -b 1.latest https://github.com/dbt-labs/dbt-core.git
-cd dbt-core
+git clone -b 1.latest https://github.com/dbt-labs/dbt.git
+cd dbt
 python -m pip install -r requirements.txt
 ```
 
@@ -289,7 +289,7 @@ python -m pip install .
 
 For editable mode: `python -m pip install -e .`
 
-For more details, read the [contributing guidelines](https://github.com/dbt-labs/dbt-core/blob/1.latest/CONTRIBUTING.md).
+For more details, read the [contributing guidelines](https://github.com/dbt-labs/dbt/blob/1.latest/CONTRIBUTING.md).
 
 </Expandable>
 
@@ -302,7 +302,7 @@ Most command-line tools, including dbt, support a `--help` flag that shows avail
 :::
 
 ## FAQs
-- <Expandable alt_header="How do I uninstall dbt Core v1.x?">
+- <Expandable alt_header="How do I uninstall dbt v1?">
     Uninstall with the same tool you used to install:
 
     ```shell

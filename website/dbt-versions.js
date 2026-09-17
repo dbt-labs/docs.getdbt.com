@@ -101,6 +101,8 @@ exports.versions = products.flatMap((product) =>
  * lastVersion to further restrict by version within that product.
  */
 exports.versionedPages = [
+  { page: "docs/dbt-ai/package-skills", firstVersion: "2.0" },
+  { page: "reference/project-configs/skill-paths", firstVersion: "2.0" },
   { page: "docs/dbt/fusion", firstVersion: "2.0" },
   { page: "docs/dbt/dbt-availability", firstVersion: "2.0" },
   { page: "docs/dbt/dbt-readiness", firstVersion: "2.0" },
@@ -117,10 +119,12 @@ exports.versionedPages = [
   { page: "reference/telemetry-observability", firstVersion: "2.0" },
   { page: "docs/local/dbt-networking-requirements", firstVersion: "2.0" },
   { page: "docs/build/about-static-analysis", firstVersion: "2.0" },
+  { page: "reference/resource-configs/compute", firstVersion: "2.0" },
   { page: "reference/commands/lint", firstVersion: "2.0" },
   { page: "reference/commands/dbt-environment", firstVersion: "2.0" },
   { page: "reference/commands/invocation", firstVersion: "2.0" },
   { page: "reference/commands/system", firstVersion: "2.0" },
+  { page: "reference/commands/freshness", firstVersion: "2.0" },
   { page: "docs/local/connect-data-platform/salesforce-data-cloud-setup", firstVersion: "2.0" },
   { page: "docs/build/sample-flag", firstVersion: "1.10" },
   { page: "docs/build/empty-flag", firstVersion: "1.8" },
@@ -132,6 +136,7 @@ exports.versionedPages = [
   { page: "docs/platform/connect-data-platform/connect-onehouse", lastVersion: "1.99" },
   { page: "docs/platform/connect-data-platform/connect-postgresql-alloydb", lastVersion: "1.99" },
   { page: "docs/platform/connect-data-platform/connect-salesforce", firstVersion: "2.0" },
+  { page: "docs/platform/connect-data-platform/connect-clickhouse", firstVersion: "2.0" },
   { page: "docs/platform/connect-data-platform/connect-starburst-trino", lastVersion: "1.99" },
   { page: "docs/platform/connect-data-platform/connect-teradata", lastVersion: "1.99" },
   { page: "docs/build/measures", lastVersion: "1.11" },
@@ -140,7 +145,6 @@ exports.versionedPages = [
   { page: "docs/local/connect-data-platform/alloydb-setup", lastVersion: "1.99" },
   { page: "docs/local/connect-data-platform/athena-setup", lastVersion: "1.99" },
   { page: "docs/local/connect-data-platform/azuresynapse-setup", lastVersion: "1.99" },
-  { page: "docs/local/connect-data-platform/clickhouse-setup", lastVersion: "1.99" },
   { page: "docs/local/connect-data-platform/confluent-setup", lastVersion: "1.99" },
   { page: "docs/local/connect-data-platform/cratedb-setup", lastVersion: "1.99" },
   { page: "docs/local/connect-data-platform/databend-setup", lastVersion: "1.99" },

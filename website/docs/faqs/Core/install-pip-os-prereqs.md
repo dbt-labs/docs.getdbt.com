@@ -1,7 +1,7 @@
 ---
 title: "Does my operating system have prerequisites?"
-description: "You can check whether your operating system has prerequisites for installing dbt Core."
-sidebar_label: 'dbt Core system prerequisites'
+description: "You can check whether your operating system has prerequisites for installing dbt v1."
+sidebar_label: 'dbt v1 system prerequisites'
 id: install-pip-os-prereqs.md
 
 ---

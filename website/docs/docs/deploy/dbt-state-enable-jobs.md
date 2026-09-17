@@ -7,7 +7,7 @@ tags: ['dbt State']
 availability: everywhere_usage
 ---
 
-# Enabling dbt State on individual jobs <Lifecycle status="preview" />
+# Enabling dbt State on individual jobs
 
 dbt State is available on all job types: deploy, continuous integration (CI), and merge jobs.
 

@@ -243,7 +243,7 @@ A user-defined description used to document:
 - macros, and macro arguments
 - data tests, and data test columns
 - unit tests for models
-- groups (<Constant name="core" /> v1.10+)
+- groups (<Constant name="dbt" /> v1.10+)
 
 These descriptions are used in the documentation website rendered by dbt (refer to [the documentation guide](/docs/build/documentation) or [<Constant name="catalog" />](/docs/explore/explore-projects)). 
 
@@ -461,7 +461,7 @@ version: 2
 
 models:
   - name: customers
-    description: "!\[dbt Logo](https://raw.githubusercontent.com/dbt-labs/dbt-core/refs/heads/1.latest/docs/images/dbt-core.svg)"
+    description: "!\[dbt Logo](https://raw.githubusercontent.com/dbt-labs/dbt/refs/heads/1.latest/docs/images/dbt-core.svg)"
 
     columns:
       - name: customer_id
