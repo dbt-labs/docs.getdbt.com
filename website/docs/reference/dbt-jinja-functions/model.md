@@ -44,7 +44,7 @@ If you're using the command line interface (CLI), use [log()](/reference/dbt-jin
 
 ## Batch properties for microbatch models
 
-Starting in dbt Core v1.9, the model object includes a `batch` property (`model.batch`), which provides details about the current batch when executing an [incremental microbatch](/docs/build/incremental-microbatch) model. This property is only populated during the batch execution of a microbatch model.
+Starting in dbt v1.9, the model object includes a `batch` property (`model.batch`), which provides details about the current batch when executing an [incremental microbatch](/docs/build/incremental-microbatch) model. This property is only populated during the batch execution of a microbatch model.
 
 The following table describes the properties of the `batch` object. Note that dbt appends the property to the `model` and `batch` objects. 
 

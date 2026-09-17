@@ -21,11 +21,17 @@ The following sections list every tool by category, along with which server type
 | [Metadata Discovery](#discovery) | ✅ | ✅ |
 | [Administrative API](#admin-api) | ✅ | ✅ |
 | [Codegen Tools](#dbt-codegen) | ✅ | ❌ |
-| [Fusion Tools](#dbt-lsp) | ✅ | ✅ |
+| [dbt v2 Tools](#dbt-lsp) | ✅ | ✅ |
 | [Product Docs Tools](#product-docs) |  ✅ | ✅ |
 | [MCP Server Metadata Tools](#mcp-server-metadata) | ✅ | ✅ |
 
 Note that access to the Discovery API and the Semantic Layer API is limited depending on your [plan type](https://www.getdbt.com/pricing).
+
+### Tools that require AI features
+
+`text_to_sql` is the only tool that depends on [AI features](/docs/platform/manage-dbt-ai) being enabled for your account.
+
+If an admin turns AI features off, `text_to_sql` doesn't appear in the tool list for the remote MCP server. Every other tool keeps working. Turning off AI features doesn't disable remote MCP.
 
 ## dbt MCP server tool list
 

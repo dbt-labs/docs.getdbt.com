@@ -6,7 +6,7 @@
 - SQL models
 - Models materialized as one of the following:
     - `table`
-    - `view` &mdash; views offer limited support for column names and data types, but not `constraints`
+    - `view` &mdash; views offer support for column names and data types, but not `constraints`
     - `incremental` &mdash; with `on_schema_change: append_new_columns` or `on_schema_change: fail`
 - Certain data platforms, but the supported and [enforced `constraints`](/reference/resource-properties/constraints) vary by platform
 

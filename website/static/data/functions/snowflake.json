@@ -2,7 +2,7 @@
   "_meta": {
     "platform": "snowflake",
     "platform_name": "Snowflake",
-    "count": 945
+    "count": 946
   },
   "functions": [
     {
@@ -6302,6 +6302,13 @@
       "name": "APPLICATION_CONFIGURATION_VALUE_HISTORY",
       "category": "Table",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/application_configuration_value_history",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "CORTEX_SEARCH_BATCH",
+      "category": "Table",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/cortex_search_batch",
       "preview_status": "GA",
       "fusion_typecheck": false
     },

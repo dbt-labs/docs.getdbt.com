@@ -29,7 +29,7 @@ If you are a dbt user or partner with access to <Constant name="dbt" /> and the 
 
 You *may* be able to use our JDBC API with tools that do not have an official integration with the <Constant name="semantic_layer" />. If the tool you use allows you to write SQL and either supports a generic JDBC driver option (such as DataGrip) or supports Dremio and uses ArrowFlightSQL driver version 12.0.0 or higher, you can access the <Constant name="semantic_layer" /> API.
 
-Refer to [Get started with the <Constant name="semantic_layer" />](/guides/sl-snowflake-qs) for more info.
+Refer to [Get started with the <Constant name="semantic_layer" />](/guides/sl-qs) for more info.
 
 Note that the <Constant name="semantic_layer" /> GraphQL API doesn't support `ref` to call dbt objects. Instead, use the complete qualified table name. If you're using dbt macros at query time to calculate your metrics, you should move those calculations into your <Constant name="semantic_layer" /> metric definitions as code.
 
