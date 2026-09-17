@@ -82,7 +82,7 @@ Autofix runs the [dbt-autofix](https://github.com/dbt-labs/dbt-autofix) script t
 
 1. In the [dbt VS Code extension](/docs/about-dbt-extension), reparse your project against the updated environment to surface any deprecation warnings.
 2. Resolve them with the [dbt-autofix](https://github.com/dbt-labs/dbt-autofix?tab=readme-ov-file#installation) tool, either from the command line or by following the prompts in the extension's upgrade assistant.
-3. If you're also moving this project to <Constant name="fusion" />, use the extension's [agentic migration](/docs/upgrade-to-dbt-extension#agentic-migration) flow instead, which runs autofix as part of the full v1-to-v2 upgrade.
+3. We recommend upgrading from a deprecated version to **v1 Latest** first, but if you intend on moving this project to <Constant name="fusion" />, use the extension's [agentic migration](/docs/upgrade-to-dbt-extension#agentic-migration) flow instead, which runs autofix as part of the full v1-to-v2 upgrade.
 
 ## Migrate your remaining environments and jobs
 
