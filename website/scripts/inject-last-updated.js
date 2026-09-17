@@ -11,6 +11,11 @@
 // Ephemeral: this edits files in the build sandbox only; nothing is committed.
 // Safe by design: any failure (no token, API error, unparseable file) is
 // caught and the build continues — a page just falls back to git as before.
+//
+// Requires the GITHUB_TOKEN env var in the Vercel project. When it expires
+// (fine-grained tokens last up to a year), dates silently go stale — watch for
+// the "TOKEN REJECTED" warning in the build log. Rotation + verification steps:
+// see scripts/inject-last-updated.md.
 const fs = require("fs");
 const path = require("path");
 const matter = require("gray-matter");
@@ -50,6 +55,11 @@ async function graphql(query) {
 		},
 		body: JSON.stringify({ query }),
 	});
+	if (res.status === 401 || res.status === 403) {
+		const err = new Error(`GitHub GraphQL HTTP ${res.status} (token rejected)`);
+		err.tokenRejected = true;
+		throw err;
+	}
 	if (!res.ok) throw new Error(`GitHub GraphQL HTTP ${res.status}`);
 	const json = await res.json();
 	if (json.errors) throw new Error(json.errors.map((e) => e.message).join("; "));
@@ -77,6 +87,14 @@ async function fetchDates(files) {
 		try {
 			data = await graphql(query);
 		} catch (err) {
+			if (err.tokenRejected) {
+				console.warn(
+					"[last-updated] TOKEN REJECTED: GITHUB_TOKEN is missing scope or expired. " +
+						"Dates will fall back to git (wrong on Vercel). " +
+						"Rotate it — see website/scripts/inject-last-updated.md."
+				);
+				return dates; // no point retrying every batch with a bad token
+			}
 			console.warn(`[last-updated] batch at ${i} failed: ${err.message}`);
 			continue;
 		}
