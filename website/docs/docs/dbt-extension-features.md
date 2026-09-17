@@ -8,7 +8,7 @@ image: /img/docs/extension/extension-features.png
 availability: local_all
 ---
 
-# dbt VS Code extension features <Lifecycle status="preview" />
+# dbt VS Code extension features
 
 <IntroText>
 The dbt VS Code extension uses a dynamic Language Server Protocol (<Term id="lsp" />) to provide a fast, intelligent, and cost-efficient dbt development experience with enhanced workflows and easy navigation.
@@ -195,7 +195,7 @@ CTE preview:
   <source src="/img/docs/extension/preview-cte.mp4" type="video/webm" />
 </video>
 
-## Explore your catalog <Lifecycle status="beta" /> {#explore-your-catalog}
+## Explore your catalog {#explore-your-catalog}
 
 This tab reads metadata from your <Constant name="dbt_platform" /> account, so you need to [sign in](/docs/sign-in-dbt-extension) to use it.
 

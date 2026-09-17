@@ -104,7 +104,8 @@ Use this table to compare all available flags and how to configure them across i
 
 | Flag | <Constant name="dbt" /> CLI? | Type / default | In project? | Env var | <div style={{width:'200px'}}>CLI flags</div> |
 |------|----------------|----------------|-------------|---------|-----------|
-| [ai_provider](/docs/dbt-ai/package-skills#set-the-ai_provider-flag) (v2.0+) | ❌ | list <br /> default: None | ✅ | — | `--ai-provider` |
+| [ai_provider](/docs/dbt-ai/package-skills#set-the-ai_provider-flag) (v2.0+) | ❌ | list <br /> default: None | ✅ | `DBT_ENGINE_AI_PROVIDER` | `--ai-provider` |
+| [batch_tests](/reference/global-configs/batch-tests) (v2.0+) | ❌ | boolean <br /> default: False | ✅ | `DBT_ENGINE_BATCH_TESTS` | `--batch-tests` |
 | [cache_selected_only](/reference/global-configs/cache) | ✅ | boolean <br /> default: False | ✅ | `DBT_ENGINE_CACHE_SELECTED_ONLY` | `--cache-selected-only` <br /> `--no-cache-selected-only` |
 | [clean_project_files_only](/reference/commands/clean#--clean-project-files-only) | ❌ | boolean <br /> default: True | ❌ | `DBT_ENGINE_CLEAN_PROJECT_FILES_ONLY` | `--clean-project-files-only` <br /> `--no-clean-project-files-only` |
 | [debug](/reference/global-configs/logs#debug-level-logging) | ✅ | boolean <br /> default: False | ✅ | `DBT_ENGINE_DEBUG` | `--debug` <br /> `--no-debug` |

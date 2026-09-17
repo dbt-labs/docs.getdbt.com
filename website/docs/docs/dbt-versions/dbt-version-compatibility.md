@@ -6,7 +6,7 @@ pagination_next: null
 pagination_prev: null
 ---
 
-# Version compatibility <Lifecycle status="preview" />
+# Version compatibility
 
 <Constant name="fusion_engine" />, its language server (<Term id="lsp" />), and the dbt VS Code extension work together to power local development. This page explains how their versions relate, which combinations are compatible, and how to verify you have matching binaries.
 
@@ -18,7 +18,7 @@ The dbt VS Code extension keeps its own release version because it follows the V
 
 | Component | Example versioning |
 | --------- | ---------- |
-| <Constant name="fusion_engine" /> binary (CLI + LSP) | `2.0.0-preview.N` |
+| <Constant name="fusion_engine" /> binary (CLI + LSP) | `2.0.0` |
 | dbt VS Code extension | The extension version (for example, `0.36.0`), with compatible <Constant name="fusion" /> version range |
 
 ## Compatibility matrix

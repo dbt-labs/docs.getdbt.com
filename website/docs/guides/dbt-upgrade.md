@@ -356,9 +356,9 @@ import FusionReadinessPanel from '/snippets/_fusion-migration-readiness-panel.md
 
 <FusionReadinessPanel />
 
-### Step 5: Enable dbt State (optional but recommended) <Lifecycle status="preview" />
+### Step 5: Enable dbt State (optional but recommended)
 
-[dbt State](/docs/deploy/dbt-state-about) automatically determines which models need rebuilding based on code or data changes, which can reduce warehouse costs by 30% or more. dbt State is in preview. To get started, see [Set up dbt State](/docs/deploy/dbt-state-setup).
+[dbt State](/docs/deploy/dbt-state-about) automatically determines which models need rebuilding based on code or data changes, which can reduce warehouse costs by 30% or more. To get started, see [Set up dbt State](/docs/deploy/dbt-state-setup).
 
 <SaoDeprecated />
 
@@ -407,7 +407,7 @@ Rolling back to **v1 Latest** will disable <Constant name="fusion" />-specific f
 
 :::
 
-## dbt lint <Lifecycle status="beta" />
+## dbt lint
 
 Now that your project is running on <Constant name="fusion" />, you have access to `dbt lint`. The `lint` command is a high-performance SQL linter built into <Constant name="fusion" />. It is SQLFluff-compatible: it reads your existing `.sqlfluff` config file, uses the same rule codes (for example, `CP01`, `RF03`), and respects `-- noqa` suppression comments. Compatible does not mean identical. For parity expectations, refer to [Rule parity with SQLFluff](/reference/commands/lint?version=2.0#rule-parity-with-sqlfluff).
 

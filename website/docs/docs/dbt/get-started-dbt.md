@@ -17,15 +17,13 @@ Once you've caught up on everything [dbt has to offer](/docs/introduction), star
     title="Install dbt"
     body="Install dbt from your command line."
     link="/docs/local/install-dbt"
-    icon="dbt-bit"
-    lifecycle="preview"/>
+    icon="dbt-bit"/>
 
 <Card
     title="Install the dbt VS Code extension"
     body="Get dbt's performance plus autocomplete, inline errors, and lineage in your editor."
     link="/docs/about-dbt-extension"
-    icon="dbt-bit"
-    lifecycle="preview"/>
+    icon="dbt-bit"/>
 
 <Card
     title="Sign up for the dbt platform"

@@ -77,6 +77,7 @@ const sidebarSettings = {
                 "docs/platform/connect-data-platform/connect-amazon-athena",
                 "docs/platform/connect-data-platform/connect-azure-synapse-analytics",
                 "docs/platform/connect-data-platform/connect-bigquery",
+                "docs/platform/connect-data-platform/connect-clickhouse",
                 "docs/platform/connect-data-platform/connect-databricks",
                 "docs/platform/connect-data-platform/connect-microsoft-fabric",
                 "docs/platform/connect-data-platform/connect-onehouse",
@@ -423,6 +424,17 @@ const sidebarSettings = {
             },
             {
               type: "category",
+              label: "Wizard Desktop",
+              collapsed: true,
+              link: { type: "doc", id: "docs/dbt-ai/wizard-desktop" },
+              items: [
+                "docs/dbt-ai/wizard-desktop",
+                "docs/dbt-ai/wizard-desktop-use",
+                "docs/dbt-ai/wizard-desktop-settings",
+              ],
+            },
+            {
+              type: "category",
               label: "Wizard in platform",
               collapsed: true,
               link: { type: "doc", id: "docs/platform/wizard-platform" },
@@ -596,6 +608,7 @@ const sidebarSettings = {
               link: { type: "doc", id: "docs/build/data-tests" },
               items: ["docs/build/data-tests", "docs/build/unit-tests"],
             },
+            "docs/build/checks",
             {
               type: "category",
               label: "Documentation",
@@ -985,6 +998,24 @@ const sidebarSettings = {
     },
     {
       type: 'html',
+      value: 'Compute',
+      className: 'sidebar-title',
+    },
+    "docs/lake-compute/lake-compute",
+    "docs/lake-compute/compute-onboarding",
+    "docs/lake-compute/compute-faq",
+    {
+      type: 'html',
+      value: 'Business intelligence',
+      className: 'sidebar-title',
+    },
+    {
+      type: "link",
+      label: "dbt Charts",
+      href: "https://docs.dbtcharts.com/",
+    },
+    {
+      type: 'html',
       value: 'Additional tools',
       className: 'sidebar-title',
     },
@@ -1243,6 +1274,7 @@ const sidebarSettings = {
         "reference/dbtignore",
         "reference/project-configs/analysis-paths",
         "reference/project-configs/asset-paths",
+        "reference/project-configs/check-paths",
         "reference/project-configs/clean-targets",
         "reference/project-configs/config-version",
         "reference/project-configs/dispatch-config",
@@ -1540,6 +1572,16 @@ const sidebarSettings = {
         },
         {
           type: "category",
+          label: "For checks",
+          link: { type: "doc", id: "reference/check-properties" },
+          items: [
+            "reference/check-properties",
+            "reference/check-configs",
+            "reference/resource-configs/selection-filter-on",
+          ],
+        },
+        {
+          type: "category",
           label: "For functions",
           link: { type: "doc", id: "reference/function-properties" },
           items: [
@@ -1574,6 +1616,7 @@ const sidebarSettings = {
           },
           items: [
             "reference/commands/build",
+            "reference/commands/check",
             "reference/commands/clean",
             "reference/commands/clone",
             "reference/commands/cmd-docs",
@@ -1725,6 +1768,7 @@ const sidebarSettings = {
                 "reference/global-configs/usage-stats",
                 "reference/global-configs/version-compatibility",
                 "reference/global-configs/logs",
+                "reference/global-configs/batch-tests",
                 "reference/global-configs/cache",
                 "reference/global-configs/failing-fast",
                 "reference/global-configs/indirect-selection",
