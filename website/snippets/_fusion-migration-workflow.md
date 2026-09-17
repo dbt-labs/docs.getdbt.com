@@ -5,16 +5,16 @@ The <Constant name="fusion" /> migration workflow is accessible through the <Con
 :::
 
 1. From the job list, click the **Review job** button for a job with a successful run.
-   - If you don't see the **Review job** button, enable the **Show Fusion eligibility** toggle in the job list.
+   - If you don't see the **Review job** button, enable the **Show dbt v2 eligibility** toggle in the job list.
 2. In the **<Constant name="fusion"/> eligibility unknown for this job** pop-up, click **Debug in Studio with dbt Wizard**.
 3. dbt redirects you to the <Constant name="studio_ide" /> and sets your personal development environment to <Constant name="fusion" />.
 4. <Constant name="wizard" /> opens and automatically triggers the <Constant name="fusion" /> migration skill with this prompt:
     ```
-    I need help fixing Fusion compatibility issues in this project. Please investigate and resolve any deprecation warnings or incompatibilities. Please use the migrating-dbt-core-to-fusion skill to guide this.
+    I need help fixing dbt v2 compatibility issues in this project. Please investigate and resolve any deprecation warnings or incompatibilities. Please use the migrating-dbt-core-to-fusion skill to guide this.
     ```
 5. Review and approve <Constant name="wizard" />'s permission requests so it can run the commands it needs.
 6. The <Constant name="wizard" /> iteratively runs `dbt compile`, reads the results, and applies fixes until it reaches a successful compile or encounters an error it can't resolve. If it gets blocked, it exits cleanly, explains what it could not fix, and creates and links to a markdown file summarizing all changes made. 
 7. When the project compiles with no warnings or errors, commit and publish your changes.
 8. After you merge the changes, wait for the job to run again or run it manually on <Constant name="fusion"/>.
 
-<Lightbox src="/img/docs/dbt-platform/fusion-migration-workflow.gif" width="95%" title="The Developer Agent's fusion migration workflow triaging and fixing Fusion compatibility errors in the Studio IDE." />
+<Lightbox src="/img/docs/dbt-platform/fusion-migration-workflow.gif" width="95%" title="The Developer Agent's v2 migration workflow triaging and fixing v2 compatibility errors in the Studio IDE." />
