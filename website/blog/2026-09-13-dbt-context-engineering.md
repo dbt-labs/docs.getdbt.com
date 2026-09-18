@@ -89,7 +89,7 @@ Add the package to `packages.yml` and run `dbt deps`:
 
 ```yaml
 packages:
-  - package: dbt-labs/dbt-context-engineering
+  - package: dbt-labs/dbt_context_engineering
     version: 0.1.0
 ```
 
