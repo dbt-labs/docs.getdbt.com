@@ -8,7 +8,7 @@ datatype: string
 <Tabs>
 <TabItem value="model" label="Model">
 
-Specify a [custom schema](/docs/build/custom-schemas#understanding-custom-schemas) for a group of models in your project YAML file (`dbt_project.yml`) or in a [SQL file config](/reference/resource-configs/schema#models).
+Specify a [custom schema](/docs/build/custom-schemas#understanding-custom-schemas) for a group of models in your project YAML file (`dbt_project.yml`), in a [SQL file config](/reference/resource-configs/schema#models), or in a property YAML file.
  
 For example, if you have a group of marketing-related models and want to place them in a separate schema called `marketing`, you can configure it like this:
 
@@ -19,6 +19,18 @@ models:
   your_project:
     marketing: #  Grouping or folder for set of models
       +schema: marketing
+```
+</File>
+
+You can also set the schema for an individual model in its property file:
+
+<File name='models/properties.yml'>
+
+```yml
+models:
+  - name: my_model
+    config:
+      schema: marketing
 ```
 </File>
 
@@ -161,6 +173,19 @@ Configure individual models using a config block:
 {{ config(
     schema='marketing'
 ) }}
+```
+
+</File>
+
+Or configure individual models in a property file:
+
+<File name='models/properties.yml'>
+
+```yml
+models:
+  - name: my_model
+    config:
+      schema: marketing
 ```
 
 </File>

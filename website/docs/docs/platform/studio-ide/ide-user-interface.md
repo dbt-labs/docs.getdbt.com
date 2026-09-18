@@ -184,13 +184,13 @@ Starting from dbt v1.6 or higher, when you save changes to a model, you can comp
 
 4. **Lint button** &mdash; The **Lint** button runs the [linter](/docs/platform/studio-ide/lint-format) on the active file in the file editor. The linter checks for syntax errors and style issues in your code and displays the results in the **Code quality** tab.
 
-5. **dbt Wizard** &mdash; [dbt Wizard](/docs/dbt-ai/wizard-ide) is the new and recommended governed agentic experience integrated into the <Constant name="studio_ide" /> that uses your project context to help you develop governed dbt changes faster. It can generate or refactor models, semantic models, tests, and documentation from natural language prompts. <Lifecycle status="self_service,managed,managed_plus" />
+5. **dbt Wizard** &mdash; [dbt Wizard](/docs/dbt-ai/wizard-ide) is the new and recommended governed agentic experience integrated into the <Constant name="studio_ide" /> that uses your project context to help you develop governed dbt changes faster. It can generate or refactor models, semantic models, tests, and documentation from natural language prompts. 
 
     [dbt Copilot](/docs/platform/studio-ide/develop-studio-ai#dbt-copilot-in-studio-ide) is separate from <Constant name="wizard" /> and is dbt's inline AI assistance experience, providing single-click generation of SQL, documentation, tests, and semantic models in <Constant name="studio_ide" />, <Constant name="canvas" />, and <Constant name="insights" />. 
 
 6. **Commands tab** &mdash; View the most recently run [dbt commands](/reference/dbt-commands) from your current IDE session, their results, and relevant system logs.
 
-7. **Problems tab** &mdash; You must be running the <Constant name="fusion_engine" /> to utilize the problems tab. Gain insights into problems with your dbt project that may prevent it from running properly in <Constant name="fusion" /> as you edit and before you execute runs. 
+7. **Problems tab** &mdash; You must be running <Constant name="fusion_engine" /> to utilize the problems tab. Gain insights into problems with your dbt project that may prevent it from running properly in <Constant name="fusion" /> as you edit and before you execute runs. 
 <Lightbox src="/img/docs/dbt-platform/platform-ide/ide-problems-tab.png" width="90%" title="Preview results show up in the Results console tab"/>
 
 8. **Results tab** &mdash; The Results console tab displays the most recent Preview results in tabular format. 

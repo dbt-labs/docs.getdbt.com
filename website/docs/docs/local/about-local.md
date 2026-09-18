@@ -20,7 +20,7 @@ You can run <Constant name="dbt" /> locally from your terminal with the dbt CLI,
 Install <Constant name="dbt" /> locally to run dbt commands from your terminal. You can install it with `pip`:
 
 ```shell
-python -m pip install --pre dbt-<adapter>
+python -m pip install dbt
 ```
 
 Or with `curl`:
@@ -36,12 +36,12 @@ For full installation instructions, including adapter-specific setup, refer to [
 <VersionBlock lastVersion="1.99">
 
 :::tip Ready for the current version?
-v2 is the current generation of dbt and the recommended choice for most users &mdash; it's faster, adds richer developer tooling, and is free to use with <Constant name="fusion" />. [Upgrade to v2](/docs/dbt-versions/core-upgrade/upgrading-to-v2).
+v2 is the current generation of dbt and the recommended choice for most users &mdash; it's faster, adds richer developer tooling, and is free to use with <Constant name="fusion" />. [Upgrade to v2](/docs/dbt-versions/dbt-upgrade/upgrading-to-v2).
 :::
 
-## Install dbt Core v1.x
+## Install <Constant name="core_v1" />
 
-dbt Core v1.x is the Python-based distribution and remains maintained. For full installation instructions, refer to [Install dbt](/docs/local/install-dbt?version=1.0).
+<Constant name="core_v1" /> is the Python-based distribution and remains maintained. For full installation instructions, refer to [Install dbt](/docs/local/install-dbt?version=1.0).
 
 </VersionBlock>
 
@@ -74,8 +74,7 @@ The dbt MCP server connects your local dbt project to AI assistants using the [M
 ## Licensing info
 dbt framework has two distributions which can both be installed locally for free, powered by a single engine:
 
-- dbt Core is completely open-source and the code behind Fusion. Its code and binary are subject to the Apache 2.0 license.
-  - Includes dbt Core v1.x and dbt Core 2.0
-- dbt Fusion extends dbt Core with additional advanced capabilities &mdash; some are free to use, and other premium features (under proprietary code) are unlocked with a free login or payment method.
+- The Apache 2.0 licensed open-source distribution. Both v1 and v2 are available as open source installations.
+- dbt v2 extends the dbt OSS offering with additional advanced capabilities &mdash; all free to use!
 
 Refer to [licensing](/docs/dbt-licensing) for more info.

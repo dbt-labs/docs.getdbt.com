@@ -1,5 +1,5 @@
 ---
-title: "Connect TiDB to dbt Core"
+title: "Connect TiDB to dbt v1"
 sidebar_label: "TiDB"
 description: "Read this guide to learn about the TiDB warehouse setup in dbt."
 id: "tidb-setup"

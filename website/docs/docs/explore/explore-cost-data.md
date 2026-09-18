@@ -10,7 +10,7 @@ availability:
   minPlan: enterprise
 ---
 
-# Explore cost data <Lifecycle status="beta" />
+# Explore cost data
 
 
 You can access Cost Insights in these different <Constant name="dbt_platform" /> areas:
@@ -78,6 +78,7 @@ The project dashboard includes the following tabs that help you analyze cost and
 ### Table view
 
 Access the table view by clicking **Show table**, which provides detailed optimization data such as models reused, usage reduction, and cost reduction.
+
 
 import TableView from '/snippets/_table-view.md';
 

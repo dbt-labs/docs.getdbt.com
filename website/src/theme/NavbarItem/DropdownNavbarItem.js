@@ -63,7 +63,7 @@ function getCurrentVersionLabel(subProductName) {
   for (const product of products) {
     const sp = product.subProducts.find((s) => s.name === subProductName);
     if (sp) {
-      if (product.subProducts.length === 1) {
+      if (product.subProducts.length === 1 || sp.name === product.name) {
         return sp.name;
       }
       return product.displayName
@@ -105,20 +105,20 @@ function TransitionNote() {
       <br />
       v2 ={" "}
       <a
-        href="https://docs.getdbt.com/docs/dbt-versions/dbt-release-tracks?version=2.0#fusion-release-tracks"
+        href="https://docs.getdbt.com/docs/dbt-versions/dbt-release-tracks?version=2.0#dbt-v2-release-tracks"
         target="_blank"
         rel="noopener noreferrer"
       >
-        Fusion release tracks
+        dbt v2 release tracks
       </a>
       <br />
       v1 ={" "}
       <a
-        href="https://docs.getdbt.com/docs/dbt-versions/dbt-release-tracks?version=2.0#dbt-core-release-tracks"
+        href="https://docs.getdbt.com/docs/dbt-versions/dbt-release-tracks?version=2.0#dbt-v1-release-tracks"
         target="_blank"
         rel="noopener noreferrer"
       >
-        Core release tracks
+        dbt v1 release tracks
       </a>
     </>
   );
@@ -257,6 +257,7 @@ function DropdownNavbarItemDesktop({
           className="version-dropdown__trigger"
           aria-haspopup="listbox"
           aria-expanded={showDropdown}
+          aria-label={`dbt version: ${currentLabel}`}
           onClick={() => setShowDropdown((v) => !v)}
         >
           <span className="version-dropdown__branch" aria-hidden="true">
@@ -267,6 +268,7 @@ function DropdownNavbarItemDesktop({
               />
             </svg>
           </span>
+          <span className="version-dropdown__label" aria-hidden="true">dbt version</span>
           <span className="version-dropdown__current">{currentLabel}</span>
           <span className="version-dropdown__caret" aria-hidden="true">▾</span>
         </button>
@@ -305,20 +307,11 @@ function DropdownNavbarItemDesktop({
               const sp = product.subProducts[0];
               return renderItem(sp, sp.name, false);
             }
-            const latestName = product.subProducts[0]?.name;
+            const [groupSp, ...specificSps] = product.subProducts;
             return (
               <React.Fragment key={product.name}>
-                <li>
-                  <a
-                    className="dropdown__link version-dropdown__link version-dropdown__group-link"
-                    role="option"
-                    data-dbt-subproduct={latestName}
-                    onClick={selectSubProduct}
-                  >
-                    <span className="version-dropdown__text">{getGroupHeader(product)}</span>
-                  </a>
-                </li>
-                {product.subProducts.map((sp) => renderItem(sp, sp.version, true))}
+                {renderItem(groupSp, groupSp.name, false)}
+                {specificSps.map((sp) => renderItem(sp, sp.version, true))}
               </React.Fragment>
             );
           })}
@@ -417,7 +410,7 @@ function DropdownNavbarItemMobile({
               />
             </svg>
           </span>
-          <span>Version</span>
+          <span>dbt version</span>
         </div>
         <ul className="menu__list">
           {products.map((product) => {
@@ -439,18 +432,22 @@ function DropdownNavbarItemMobile({
                 </li>
               );
             }
+            const [mobileGroupSp, ...mobileSpecificSps] = product.subProducts;
+            const mobileGroupActive = mobileGroupSp.name === versionContext?.subProduct;
             return (
               <React.Fragment key={product.name}>
                 <li className="menu__list-item">
                   <a
-                    className="menu__link version-menu-mobile__grouplink"
-                    data-dbt-subproduct={product.subProducts[0]?.name}
+                    className={clsx("menu__link version-menu-mobile__grouplink", {
+                      "menu__link--active": mobileGroupActive,
+                    })}
+                    data-dbt-subproduct={mobileGroupSp.name}
                     onClick={selectSubProduct}
                   >
-                    {getGroupHeader(product)}
+                    {mobileGroupSp.name}
                   </a>
                 </li>
-                {product.subProducts.map((sp) => {
+                {mobileSpecificSps.map((sp) => {
                   const isActive = sp.name === versionContext?.subProduct;
                   return (
                     <li key={sp.name} className="menu__list-item">

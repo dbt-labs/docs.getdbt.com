@@ -1,4 +1,6 @@
-#### Availability and considerations
+import WizardAgentModes from '/snippets/_wizard-agent-modes.md';
+
+<Expandable alt_header="Availability and considerations">
 
 - **Where it runs:** Supported in the [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio) only, all [deployment types](/docs/platform/about-platform/tenancy?version=2.0). Not supported in VS Code or the <Constant name="platform_cli" />.
 - **Engines:** Works with <Constant name="fusion_engine" /> and <Constant name="core" />.
@@ -7,6 +9,7 @@
 - **Chat history:** Retained for 90 days only. Chat history isn't supported yet on single-tenant deployments, so save anything important before closing.
 - **Plan mode:** Not supported yet. The agent doesn't show a separate plan before applying changes, however you can use the **Ask for approval** mode to approve each file.
 - **New chat:** Click **Start new dbt Wizard chat** (top right of the dbt Wizard panel) to begin a new session.
+</Expandable>
 
 ### Using dbt Wizard
 
@@ -15,23 +18,26 @@ Use the <Constant name="wizard" /> panel to generate resources with quick action
 To use the <Constant name="wizard" />, follow these steps:
 
 1. Open your dbt project in the [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio), then click **<Constant name="wizard" />** in the command palette.
-2. Start a prompt in several ways in the [<Constant name="wizard" /> panel](/docs/dbt-ai/wizard-ide):
-   - **Quick actions**: Use [quick-action resource generation](/docs/dbt-ai/wizard-ide#quick-action-resource-generation) at the top of the panel to generate documentation, tests, semantic models, and metrics.
+2. Start a prompt in several ways in the [<Constant name="wizard" /> panel](/docs/dbt-ai/wizard-ide?version=2#panel-controls):
+   - **Quick actions**: Use [quick-action resource generation](/docs/dbt-ai/wizard-ide#quick-action-resource-generation) at the top of the panel for quick action prompts.
    - **Plain text**: Type directly into the text field to describe what you want to build or change.
    - **Model context**: Type `@` to select a model as context. This scopes the agent's changes to that resource.
-3. Select the [**Agent mode** button](/docs/dbt-ai/wizard-ide) to specify the mode for the <Constant name="wizard" />. Available modes are **Ask for approval** (default) and **Edit files automatically**.
-4. [Review the agent's suggestions](/docs/dbt-ai/wizard-ide) and approve or reject the changes. You can also use the **Start new dbt Wizard chat** button to start a new chat session.
-5. [Approve dbt commands](/docs/dbt-ai/wizard-ide) when the <Constant name="wizard" /> requests to run commands like `dbt compile` or `dbt build`.
-6. Repeat the process to build or change more models.
-7. Commit the changes to your dbt project and open a pull request.
+3. Select the [**Agent mode** button](/docs/dbt-ai/wizard-ide#agent-modes) to specify the mode for the <Constant name="wizard" />. Available modes are **Explore only**, **Ask for approval** (default), and **Edit files automatically**.
+4. Select the dbt <Term id="managed" /> model you'd like to work with from the [model picker](/docs/dbt-ai/pricing-billing/overview#choose-a-model) next to the **Agent mode** button.
+5. [Review the agent's suggestions](/docs/dbt-ai/wizard-ide#reviewing-agent-suggestions) and approve or reject the changes. You can also use the **Start new dbt Wizard chat** button to start a new chat session.
+6. [Approve dbt commands](/docs/dbt-ai/wizard-ide#granting-command-permissions) when the <Constant name="wizard" /> requests to run commands like `dbt compile` or `dbt build`.
+7. Repeat the process to build or change more models.
+8. Commit the changes to your dbt project and open a pull request.
 
-<div style={{maxWidth: '100%', margin: '20px 0'}}>
-<video width="100%" controls autoPlay muted loop playsInline>
-  <source src="/img/docs/dbt-platform/dev-agent.mp4" type="video/mp4" />
-  Your browser does not support the video tag.
-</video>
-<span style={{display: 'block', textAlign: 'center', fontSize: '0.9em', color: 'var(--ifm-color-emphasis-600)', marginTop: '8px'}}>Example of using the <Constant name="wizard" /> to refactor a model in the Studio IDE.</span>
-</div>
+The following images show how <Constant name="wizard"/> displays its work and outcome:
+
+<DocCarousel slidesPerView={1}>
+
+<Lightbox src="/img/docs/dbt-platform/wizard-ide-refactor-lineage.png" width="85%" title="dbt Wizard refactoring a model and displaying the lineage inside the chat interface."/>
+
+<Lightbox src="/img/docs/dbt-platform/wizard-ide-refactor-diff.png" width="85%" title="Wizard final refactor result displayed as a diff"/>
+
+</DocCarousel>
 
 For more details on the <Constant name="wizard" /> and how it works, expand the following sections to open additional information.
 
@@ -40,33 +46,26 @@ For more details on the <Constant name="wizard" /> and how it works, expand the 
 The <Constant name="wizard" /> panel contains:
 
 1. **Quick actions** (center): Buttons at the top of the panel for common tasks like generating documentation, tests, semantic models, and metrics. When selected, the text field is pre-filled with a prompt.
-2. **Agent mode button** (bottom left): Switch between **Ask for approval** and **Edit files automatically** mode. Click the button to change modes.
-3. **dbt model context** (bottom left): Shows the currently open file. Use `@` in the text field to reference a different dbt model. Click **x** to remove the dbt model context.
-4. **Text input field** (bottom left): Type your prompt in the text field to describe what you want to build or change. Type `@` to select a dbt model as context. This scopes the agent's changes to that resource.
-5. **Start new dbt Wizard chat** (top right): Starts a new chat session.
-6. **Stop** or **Enter** (bottom right): Press **Enter** to submit your prompt. Press **Stop** to stop the current session and agent processing. You cannot undo this action. 
+2. **Agent mode button** (bottom left): Switch between **Explore only**, **Ask for approval**, and **Edit files automatically** mode. Click the button to change modes.
+3. **Model picker** (bottom left): Select the dbt <Term id="managed" /> model to use for the session. Refer to [Choose a model](#choose-a-model) for the available models.
+4. **dbt model context** (bottom left): Shows the currently open file. Use `@` in the text field to reference a different dbt model. Click **x** to remove the dbt model context.
+5. **Text input field** (bottom left): Type your prompt in the text field to describe what you want to build or change. Type `@` to select a dbt model as context. This scopes the agent's changes to that resource.
+6. **Start new dbt Wizard chat** (top right): Starts a new chat session.
+7. **Stop** or **Enter** (bottom right): Press **Enter** to submit your prompt. Press **Stop** to stop the current session and agent processing. You cannot undo this action. 
 
-<Lightbox src="/img/docs/dbt-platform/dev-agent-copilot-panel.png" width="95%" title="The Wizard panel in the Studio IDE showing quick-action buttons, text input field, and agent mode controls." />
+<Lightbox src="/img/docs/dbt-platform/wizard-panel.png" width="95%" title="The Wizard panel in the Studio IDE showing quick-action buttons, the agent mode button, the model picker, and the text input field." />
 
-<Constant name="dbt_wizard"/> also has a simplified wayfinder bar above the text input field. The wayfinder bar shows your current project and branch and guides you through Git tasks, such as committing files or creating a branch.
+<Constant name="wizard"/> also has a simplified wayfinder bar above the text input field. The wayfinder bar shows your current project and branch and guides you through Git tasks, such as committing files or creating a branch.
 
 </Expandable>
 
+<a id="agent-modes"></a>
+
 <Expandable alt_header="Agent modes">
 
-The <Constant name="wizard" /> operates in two modes:
+<WizardAgentModes />
 
-<SimpleTable>
-
-| Mode | Behavior |
-|------|----------|
-| **Ask for approval** (default) | The agent drafts edits to files. You approve each file change before it is persisted. Best when you want tight control over what gets saved to your branch. |
-| **Edit files automatically** | The agent drafts and automatically saves file edits without per-file approval. Best for faster iteration when you're confident in the prompt. |
-</SimpleTable>
-
-You can switch between modes at any time by clicking the **Agent mode** button in the <Constant name="wizard" /> panel.
-
-<Lightbox src="/img/docs/dbt-platform/dev-agent-ask-mode.png" width="95%" title="dbt Wizard in Ask for approval mode, requesting approval before making file edits." />
+<Lightbox src="/img/docs/dbt-platform/wizard-modes.png" width="95%" title="dbt Wizard in Explore only, Ask for approval, and Edit files automatically modes." />
 
 </Expandable>
 
@@ -78,7 +77,6 @@ When the <Constant name="wizard" /> proposes code changes, you can review them b
 - **Line indicators**: Added and removed lines are highlighted with line number indicators so you can see exactly what changed.
 - **Copy or open in editor**: Use the options in the top-right corner of the diff view to copy the suggestion or open it directly in the editor.
 
-<Lightbox src="/img/docs/dbt-platform/dev-agent-code-suggestion.png" width="95%" title="dbt Wizard displaying a diff of proposed YAML changes with line indicators and copy/open options." />
 
 </Expandable>
 
@@ -103,8 +101,6 @@ You can select one of the following options:
 </SimpleTable>
 
 After you run a command, <Constant name="wizard" /> adds an icon and a tooltip to the <Constant name="studio_ide" /> [**Commands** tab](/docs/platform/studio-ide/ide-user-interface#console-section) results. This helps you distinguish agent-run commands from manually run commands in the run results and logs. 
-
-<Lightbox src="/img/docs/dbt-platform/dev-agent-cmd-icon.png" width="95%" title="Commands run by dbt Wizard appear in the Studio IDE Commands tab with a dbt Wizard icon and 'Run by dbt Wizard' tooltip." />
 
 </Expandable>
 
@@ -133,13 +129,13 @@ Instead of hanging or showing a generic error, the agent returns a clear message
 
 You can then choose whether to retry the command, narrow the request, or take another action.
 
-### Fusion migration workflow {#fusion-migration-workflow}
+### dbt v2 migration workflow {#fusion-migration-workflow}
 
 import FusionMigrationWorkflow from '/snippets/_fusion-migration-workflow.md';
 
 <FusionMigrationWorkflow />
 
-For more on how to prepare your project for <Constant name="fusion" /> and what to do when you hit compatibility errors, see the [Fusion readiness checklist](/docs/fusion/fusion-readiness) and the [Upgrade to Fusion guides](/guides/prepare-fusion-upgrade).
+For more on how to prepare your project for <Constant name="fusion" /> and what to do when you hit compatibility errors, see the [dbt v2 readiness checklist](/docs/dbt/dbt-readiness) and the [Upgrade to dbt v2 guides](/guides/prepare-v2-upgrade).
 
 ### Writing effective prompts
 

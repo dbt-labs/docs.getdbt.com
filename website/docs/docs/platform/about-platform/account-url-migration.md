@@ -19,10 +19,10 @@ Account-specific access URLs are being assigned to <Constant name="dbt" /> accou
 
 If your account has been assigned a new access URL, please review the [migration timeline](#migration-timeline) and update your account's external integrations using the [integration checklist](#integration-checklist).
 
-If your account has not been assigned a new access URL, you will receive an email and in-app notification with a scheduled assignment date. When the change takes effect, you'll be automatically redirected to your **dbt.com** account-specific access URL. Account sign-in remains the same. Both the new **dbt.com** and **getdbt.com** region URLs will support integrations according to the dates on the [migration timeline](#migration-timeline).
+If your account has not been assigned a new access URL, you will receive an email and in-app notification with a scheduled enablement date. When the change takes effect, you'll be automatically redirected to your **dbt.com** account-specific access URL. Account sign-in remains the same. Both the new **dbt.com** and **getdbt.com** region URLs will support integrations according to the dates on the [migration timeline](#migration-timeline).
 
 :::info
-Before assignment, if your organization uses network allowlisting, add the **dbt.com** domain to your allowlists. For single-tenant accounts, there will be no change to IP addresses. For multi-tenant accounts, refer to [Access, Regions, & IP Addresses](/docs/platform/about-platform/access-regions-ip-addresses) for updated IPs.
+Before assignment, if your organization uses network allowlisting, add the **dbt.com** domain to your allowlists. For single-tenant accounts, there will be no change to IP addresses. For multi-tenant accounts, refer to [Access, Regions, & IP Addresses](/docs/platform/about-platform/access-regions-ip-addresses) for updated IPs. If your account has [IP restrictions](/docs/platform/secure/ip-restrictions) enabled, review [Validating IP restrictions](#validating-ip-restrictions) before your assignment date.
 :::
 
 ## Migration timeline
@@ -33,7 +33,7 @@ Accounts across all regions and service providers are being assigned new access 
 |---|---|---|
 | Multi-tenant **dbt.com** access URL assignment | ✅ Completed | January 2026 |
 | Single tenant **dbt.com** access URL assignment | In Progress | April - September 2026 |
-| **getdbt.com** region URL deprecation | Scheduled | November 1, 2026 |
+| **getdbt.com** region URL deprecation | Scheduled | February 3, 2027 (previously November 1, 2026) |
 
 ## Integration checklist
 
@@ -41,24 +41,59 @@ Review the following checklist before the **getdbt.com** region URL deprecation 
 
 All dbt Labs managed integrations will be updated automatically, which consists of the <Constant name="dbt" /> GitHub Application, Slack Application, and outbound <Constant name="git" /> provider webhooks.
 
+### Identity and access management
+
 | Integration | Action required |
 |---|---|
 | [Google Workspace SSO](/docs/platform/manage-access/set-up-sso-google-workspace#creating-credentials) | Update or add OAuth Client |
-| [Azure ADO OAuth SSO](/docs/platform/git/setup-service-principal) | Update or add App Registration |
+| [SCIM (Okta)](/docs/platform/manage-access/scim#set-up-dbt-cloud) | Update the SCIM base URL in Okta |
+
+### Git providers
+
+GitLab and Azure DevOps repositories will continue to use your legacy **getdbt.com** URL for OAuth flows. You can't yet update an existing repository to use your new account access URL. Instead, you can recreate a repository to generate a Redirect URI based on your new account access URL.
+
+| Integration | Action required |
+|---|---|
 | [GitLab (dbt Labs app)](/docs/platform/git/connect-gitlab#setting-up-a-gitlab-oauth-application) | Update or add GL Group Application with new Redirect URI |
 | [GitLab (bring-your-own app)](/docs/platform/git/connect-gitlab#setting-up-a-gitlab-oauth-application) | Update or add GL Group Application with new Redirect URI |
+| [Azure DevOps (service principal)](/docs/platform/git/setup-service-principal) | Update or add App Registration |
 | GitHub On-premises | Contact [dbt Labs Support](mailto:support@getdbt.com) |
+
+### Data platform connections
+
+Data platform connections will continue to use your legacy **getdbt.com** URL for OAuth flows. You can't yet update an existing connection to use your new account access URL. Instead, you can recreate a connection to generate a Redirect URI based on your new account access URL.
+
+| Integration | Action required |
+|---|---|
 | [Snowflake OAuth](/docs/platform/manage-access/set-up-snowflake-oauth#subdomain-migration) | Update or add Security Integration; update dbt connection |
 | [Snowflake External OAuth](/docs/platform/manage-access/snowflake-external-oauth#identity-provider-configuration) | Update Redirect URI in your IdP application |
 | [Databricks OAuth](/docs/platform/manage-access/set-up-databricks-oauth) | Update Redirect URLs or add a new Connection; update dbt connection |
 | [BigQuery OAuth](/docs/platform/manage-access/set-up-bigquery-oauth) | Update Redirect URI or add a new Connection; update dbt connection |
 | [Redshift External OAuth](/docs/platform/manage-access/redshift-external-oauth) | Update Redirect URI in your IdP application |
+
+### Network and API
+
+| Integration | Action required |
+|---|---|
 | Network allowlists | Add new access URLs to your allowlist policies |
 | Inbound webhooks | Update access URLs in your webhook configurations |
-| [SCIM (Okta)](/docs/platform/manage-access/scim#set-up-dbt-cloud) | Update the SCIM base URL in Okta |
 | [API integrations](/docs/dbt-apis/overview) | Update access URLs in your API clients |
 | [Terraform provider](https://registry.terraform.io/providers/dbt-labs/dbtcloud/latest/docs) | Update access URLs in your Terraform configuration |
 | Browser Bookmarks | Update personal and shared bookmarks |
+
+## Validating IP restrictions
+
+If you've received notification of a new access URL assignment and have IP restrictions enabled, review the network rules that point specifically at your **\*.getdbt.com** domain. These include VPN split-tunneling rules, proxy (PAC) rules, and firewall egress rules. Update these rules for your new **\*.dbt.com** access URL before your account's scheduled assignment date so access isn't disrupted.
+
+To confirm your new access URL is accessible, send a test request from the same network you'd normally use to reach your **\*.getdbt.com** URL. Replace `NEW_ACCESS_URL` with your account's new access URL and `ACCOUNT_ID` with your account ID:
+
+- **Browser:** Go to `https://NEW_ACCESS_URL/api/v2/accounts/ACCOUNT_ID/`
+- **Terminal:** Run `curl -s https://NEW_ACCESS_URL/api/v2/accounts/ACCOUNT_ID/`
+
+| Result | Response detail | What it means |
+|---|---|---|
+| ✅ Passed | `{ ... "detail": "Authentication credentials were not provided." ... }` | The request reached the API and passed IP restrictions. There's no authenticated session, which is expected for this test. |
+| ⚠️ Blocked | `{ ... "user_message": "Forbidden: Access denied" ... }` | The request's IP address isn't on your allowlist. Update your network egress rules for the new access URL and test again. |
 
 ## FAQs
 

@@ -15,7 +15,7 @@ The <Constant name="semantic_layer" /> offers a seamless integration with Google
 
 ## Prerequisites
 
-- You have [configured the <Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/setup-sl) and are using dbt v1.6 or higher.
+- You have [configured the <Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/setup-sl) and are using dbt v1.6 or higher. If you haven't created metrics yet, start with the [Quickstart for the <Constant name="semantic_layer" />](/guides/sl-qs).
 - You need a Google account with access to Google Sheets and the ability to install Google add-ons.
 - You have a [<Constant name="dbt" /> Environment ID](/docs/use-dbt-semantic-layer/setup-sl#set-up-dbt-semantic-layer).
 - You have a [service token](/docs/dbt-apis/service-tokens) or a [personal access token](/docs/dbt-apis/user-tokens) to authenticate with from a <Constant name="dbt" /> account.

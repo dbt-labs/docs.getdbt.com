@@ -1,7 +1,8 @@
 ---
 title: "External metadata ingestion"
 sidebar_label: "External metadata ingestion"
-description: "Connect directly to your data warehouse, giving you visibility into tables, views, and other resources that aren't defined in dbt with dbt Catalog." 
+description: "Connect directly to your data warehouse, giving you visibility into tables, views, and other resources that aren't defined in dbt with dbt Catalog."
+unlisted: true
 availability:
   surface: platform
   access: paid_plan

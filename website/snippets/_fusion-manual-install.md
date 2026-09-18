@@ -3,13 +3,13 @@ Choose your preferred installation method:
 <Expandable alt_header="Pip installation for Windows, macOS, and Linux">
 
 ```shell
-python -m pip install --pre dbt
+python -m pip install dbt
 ```
 
 To upgrade to a newer version:
 
 ```shell
-python -m pip install --upgrade --pre dbt
+python -m pip install --upgrade dbt
 ```
 
 </Expandable>
@@ -62,7 +62,7 @@ dbt system update
 
 ```shell
 brew tap dbt-labs/dbt
-brew install dbt
+brew install dbt-labs/dbt/dbt
 ```
 
 To upgrade to a newer version:
@@ -95,7 +95,7 @@ Run the following command to verify your installation:
 dbt --version
 ```
 
-You can use `dbt` or its <Constant name="fusion" /> alias `dbtf` (handy if you already have the Core or platform CLI installed). Default install path:
+You can use `dbt` or its <Constant name="fusion" /> alias `dbtf` (handy if you already have another dbt CLI installed). Default install path:
 
 - macOS/Linux: `$HOME/.local/bin/dbt`
 - Windows: `C:\Users\<username>\.local\bin\dbt.exe`

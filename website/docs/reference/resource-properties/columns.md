@@ -1,4 +1,5 @@
 ---
+description: "Use the columns property to document and test individual columns on models, sources, seeds, and snapshots."
 resource_types: all
 datatype: test
 ---

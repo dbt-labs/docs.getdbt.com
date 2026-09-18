@@ -240,21 +240,21 @@ html[data-theme="dark"] input.sc-avest {
 }
 
 /* IDE Extension nav item */
-.navbar__item.nav-install-dbt-extension {
+.navbar__item.nav-install-dbt {
   order: 5;
   background: var(--ifm-color-primary);
   transition: all 0.3s ease-in-out;
   color: var(--color-neutral-primary);
 }
-.navbar__item.nav-install-dbt-extension:hover {
+.navbar__item.nav-install-dbt:hover {
   background-color: var(--ifm-color-primary) !important;
   background-image: linear-gradient(oklab(0.865972 0.00164044 0.169914 / 0.5) 0%, rgba(0, 0, 0, 0) 50%) !important;
   transition: transform 0.2s ease-in-out;
 }
-html[data-theme="dark"] .navbar__item.nav-install-dbt-extension {
+html[data-theme="dark"] .navbar__item.nav-install-dbt {
   color: var(--color-neutral-primary);
 }
-html[data-theme="dark"] .navbar__item.nav-install-dbt-extension:hover {
+html[data-theme="dark"] .navbar__item.nav-install-dbt:hover {
   color: var(--color-neutral-primary) !important;
   background-color: var(--ifm-color-primary) !important;
   background-image: linear-gradient(oklab(0.865972 0.00164044 0.169914 / 0.5) 0%, rgba(0, 0, 0, 0) 50%) !important;
@@ -699,6 +699,16 @@ html[data-theme="dark"] .version-dropdown__trigger:hover {
   display: inline-flex;
   align-items: center;
   color: #999;
+}
+
+.version-dropdown__label {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #57534e;
+}
+
+html[data-theme="dark"] .version-dropdown__label {
+  color: #e0e0e0;
 }
 
 .version-dropdown__current {
@@ -3561,4 +3571,22 @@ html[data-theme='dark'] .rss-icon {
   vertical-align: super;
   font-size: 0.75em;
   line-height: 0;
+}
+
+/*
+ * Version tags rendered by VersionBlock. Hidden on the page (the version
+ * switcher is the reader-facing signal), but present in the DOM so they flow
+ * into the generated per-page `.md`, telling AI agents which dbt version the
+ * block's content applies to.
+ */
+.version-md-note {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }

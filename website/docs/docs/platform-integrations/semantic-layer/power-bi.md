@@ -14,9 +14,9 @@ availability:
 The Power BI integration enables you to query the <Constant name="semantic_layer" /> directly, allowing you to build dashboards with trusted, live data in Power BI. It provides a live connection to the <Constant name="semantic_layer" /> through Power BI Desktop or Power BI Service.
 
 :::info
-This integration is currently in preview. Production readiness depends on Microsoft's participation in the Open Semantic Interchange (OSI) standard.
+This integration is currently in preview. Production readiness depends on Microsoft's participation in the Apache Ossie standard.
 
-Using Power BI? You can help shape the future of this integration. Ask your Microsoft representative about OSI support!
+Using Power BI? You can help shape the future of this integration. Ask your Microsoft representative about Ossie support!
 :::
 
 ## Prerequisites

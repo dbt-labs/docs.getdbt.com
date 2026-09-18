@@ -1,5 +1,5 @@
 ---
-title: "Connect Materialize to dbt Core"
+title: "Connect Materialize to dbt v1"
 sidebar_label: "Materialize"
 description: "Read this guide to learn about the Materialize warehouse setup in dbt."
 id: "materialize-setup"
