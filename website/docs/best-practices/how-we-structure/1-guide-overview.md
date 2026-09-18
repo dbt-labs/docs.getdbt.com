@@ -50,6 +50,7 @@ We'll walk through our topics in the same order that our data would move through
    1. Review the overall structure comprehensively
    2. Expand on YAML configuration in-depth
    3. Discuss how to use the other folders in a dbt project: `data-tests`, `seeds`, and `analyses`
+   4. Map those folders to the schemas they create in the warehouse
 
 Below is the complete file tree of the project we’ll be working through. Don’t worry if this looks like a lot of information to take in at once - this is just to give you the full vision of what we’re building towards. We’ll focus in on each of the sections one by one as we break down the project’s structure.
 
