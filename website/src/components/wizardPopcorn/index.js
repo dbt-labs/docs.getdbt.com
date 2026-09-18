@@ -19,10 +19,10 @@ import PlayInvite from './playInvite';
 
 // Clicks needed to offer the parse-error shootout, and to summon the Wizard
 // finale. The game is only ever offered — never launched at a reader — so the
-// invite appears at 5 and the finale lands at 20. The counter resets after the
-// finale, so the cycle repeats: game at 5, wizard at 20, game again at 25, and
+// invite appears at 3 and the finale lands at 20. The counter resets after the
+// finale, so the cycle repeats: game at 3, wizard at 20, game again at 25, and
 // so on, with no page refresh needed.
-const GAME_AT = 5;
+const GAME_AT = 3;
 const UNLOCK_AT = 20;
 
 // Finale timing (ms): fairy dust shimmers in first → the Wizard roller-skates
@@ -169,7 +169,7 @@ const WizardPopcorn = ({ children = 'wizard logo' }) => {
   const timers = useRef([]);
 
   // Turning the invite down (or finishing a round) puts the counter back to
-  // zero, so the next 5 clicks offer the game again rather than skipping
+  // zero, so the next 3 clicks offer the game again rather than skipping
   // ahead to the finale.
   const closeInvite = useCallback(() => {
     clickCount.current = 0;
