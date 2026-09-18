@@ -140,6 +140,13 @@ A service user is a pseudo user set up in the same way an admin would set up a r
 
 :::
 
+If the <Constant name="studio_ide" /> fails to start, the cause depends on which connection is missing:
+
+- `Azure Service User not found`: the account-level service user isn't connected. Reconnect it using the OAuth flow described above.
+- `Missing Azure user`: the developer's own Azure DevOps account isn't linked to <Constant name="dbt" />.
+
+Refer to the [troubleshooting steps in Authenticate with Azure DevOps](/docs/platform/git/authenticate-azure#troubleshooting) to resolve either error.
+
 ### Service users permissions
 
 A service user account must have the following Azure DevOps permissions for all Azure DevOps projects and repos you want accessible in <Constant name="dbt" />. Read more about how <Constant name="dbt" /> uses each permission in the following paragraphs.
