@@ -2219,6 +2219,11 @@ button .DocSearch-Button-Keys {
 
   .navbar {
     padding: 0 var(--ifm-navbar-padding-horizontal) 0 0;
+    /* Let the navbar grow instead of clamping to a fixed height, so nav items
+       that wrap to a second line (for example with enlarged browser text) stay
+       contained above the bottom separator rather than overlapping it. */
+    height: auto;
+    min-height: var(--ifm-navbar-height);
   }
 
   html.docs-version-current aside html.docs-version-current .sidebar_node_modules-\@docusaurus-theme-classic-lib-next-theme-DocSidebar-styles-module {
