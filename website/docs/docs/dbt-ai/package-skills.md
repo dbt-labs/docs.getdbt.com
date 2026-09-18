@@ -23,7 +23,7 @@ Agent skills install locally where your coding agent runs. Skills install only w
 
 ## Set the ai_provider flag
 
-Set [`ai_provider` in the `flags`](/reference/global-configs/about-global-configs?version=2#available-flags) block of your root project. For example, if you use claude as your AI provider, you'd set it as such:
+Set [`ai_provider` in the `flags`](/reference/global-configs/about-global-configs?version=2#available-flags) block of your root project to tell dbt which directory to write skills to. For example, if you use claude as your AI provider, you'd set it as such:
 
 <File name='dbt_project.yml'>
 
@@ -47,6 +47,8 @@ Each provider has a directory it reads skills from. Most providers share `.agent
 | `gemini` | `.agents/skills` |
 </SimpleTable>
 Values are case-insensitive, so `wizard`, `Wizard`, and `WIZARD` all resolve the same way.
+
+If you use <Constant name="wizard" />, set `wizard` even if you [bring your own key](/docs/dbt-ai/wizard-byok) or use dbt-<Term id="managed"/> AI.
 
 You can also list more than one provider, which installs the same skills into each provider's directory:
 
@@ -205,6 +207,62 @@ skills:
 </File>
 
 A package's own `skills` config sets the defaults for the skills it ships, and your root project's `skills` config overrides it. This works the same way as [enabling and disabling other resources](/reference/resource-configs/enabled).
+
+## More examples
+
+Set `+enabled` at the package level to control a whole package, or nest it under a skill name to control a single skill.
+
+Disable every skill from one package, and leave all others enabled:
+
+<File name='dbt_project.yml'>
+  
+```yml
+skills:
+  demo_skills:
+    +enabled: false
+```
+</File>
+
+Enable skills from only one package, and disable them from all others:
+
+<File name='dbt_project.yml'>
+  
+```yml
+skills:
+  +enabled: false
+  demo_skills:
+    +enabled: true
+```
+</File>
+
+Enable just two skills, and disable everything else:
+
+<File name='dbt_project.yml'>
+  
+```yml
+skills:
+  demo_skills:
+    +enabled: false
+    naming-conventions:
+      +enabled: true
+    adding-exposures:
+      +enabled: true
+```
+</File>
+
+Disable just two skills, and leave everything else enabled:
+
+<File name='dbt_project.yml'>
+  
+```yml
+skills:
+  demo_skills:
+    naming-conventions:
+      +enabled: false
+    adding-exposures:
+      +enabled: false
+```
+</File>
 
 :::caution Skill names must be unique
 Because skills install under their own name, two enabled skills with the same name would occupy the same directory. Rather than choose between them, dbt fails the command before writing anything:
