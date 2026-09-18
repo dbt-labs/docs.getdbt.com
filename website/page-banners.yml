@@ -15,6 +15,7 @@
 - paths:
     - /docs/lake-compute
     - /docs/lake-compute/compute-onboarding
+    - /docs/lake-compute/compute-faq
   text: "See Lake Compute in action: join our upcoming webinar on cost-optimized, multi-engine transformations with dbt and Apache Iceberg on October 7th. <b>Save your seat</b>"
   link: "https://www.getdbt.com/resources/webinars/cost-optimized-transformations-with-dbt-and-apache-iceberg-on-open-multi-engine-compute/?utm_medium=internal&utm_source=docs&utm_campaign=fy-2027_cost-optimized-transformations_aw&utm_content=____&utm_term=all_all__"
   open_in_new_tab: true
