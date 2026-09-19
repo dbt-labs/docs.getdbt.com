@@ -20,8 +20,8 @@ sources:
             - name: <column_name>
               data_type: <string>
               description: <string>
-              config:
-                meta: {dictionary} # changed to config in v1.10
+              expression: <string>
+              meta: {dictionary}
             - ...
           <additional_property>: <additional_value>
 ```
@@ -39,3 +39,5 @@ You may wish to define the `external` property in order to:
 - Define metadata that you can later extract from the [manifest](/reference/artifacts/manifest-json)
 
 For an example of how this property can be used to power custom workflows, see the [`dbt-external-tables`](https://github.com/dbt-labs/dbt-external-tables) package.
+
+[`dbt-external-tables`](https://github.com/dbt-labs/dbt-external-tables) (Snowflake) reads a partition `expression` from the partition itself, or from `meta.expression`. It does not read `config.meta.expression`.
