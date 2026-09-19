@@ -1,0 +1,72 @@
+name: Auto-approval audit
+
+# Weekly feedback loop for the auto-approve bot. Lists every PR the bot touched
+# in the last 7 days so a human can spot calls it got wrong, and flags any that
+# were reverted or hot-fixed soon after merge.
+#
+# Nothing here is automatic-corrective by design: the point is that a person
+# reads the list and tightens safe-file-patterns.txt or the thresholds.
+
+on:
+  schedule:
+    - cron: "0 14 * * 1" # Mondays, 14:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+  pull-requests: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@v7
+        with:
+          script: |
+            const { owner, repo } = context.repo
+            const since = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000)
+            const sinceISO = since.toISOString().slice(0, 10)
+
+            const q = `repo:${owner}/${repo} is:pr is:merged label:auto-approved merged:>=${sinceISO}`
+            const { data } = await github.rest.search.issuesAndPullRequests({ q, per_page: 100 })
+
+            if (data.total_count === 0) {
+              core.info('No auto-approved merges in the last 7 days; skipping the audit issue.')
+              core.summary.addRaw('No auto-approved merges in the last 7 days.')
+              await core.summary.write()
+              return
+            }
+
+            // A revert or follow-up fix touching the same PR is the loudest
+            // signal the bot approved something it should not have.
+            const lines = []
+            for (const pr of data.items) {
+              const revertQ = `repo:${owner}/${repo} is:pr in:title "Revert" "#${pr.number}"`
+              const reverts = await github.rest.search.issuesAndPullRequests({ q: revertQ, per_page: 5 })
+              const flag = reverts.data.total_count > 0 ? ' — **possibly reverted**' : ''
+              lines.push(`- [ ] #${pr.number} ${pr.title} (@${pr.user.login})${flag}`)
+            }
+
+            const body = [
+              `Auto-approved and merged since ${sinceISO}: **${data.total_count}**.`,
+              '',
+              'Tick each one you have eyeballed. If the bot approved something it should not have:',
+              '',
+              '1. Note the PR here.',
+              '2. Tighten `.github/safe-file-patterns.txt` or the thresholds in `.github/scripts/low-risk-check.js`.',
+              '3. If it is urgent, set the `AUTO_APPROVE_MODE` repo variable to `off`.',
+              '',
+              ...lines,
+            ].join('\n')
+
+            await github.rest.issues.create({
+              owner,
+              repo,
+              title: `Auto-approval audit: week of ${sinceISO}`,
+              body,
+              labels: ['auto-approval-audit'],
+            })
+
+            core.summary.addRaw(body)
+            await core.summary.write()

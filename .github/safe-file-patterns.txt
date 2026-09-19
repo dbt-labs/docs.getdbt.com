@@ -1,0 +1,28 @@
+# Files eligible for low-risk auto-approval.
+# One glob per line. Lines starting with "!" are denials and always win.
+# Keep this list narrow: anything here can be merged with a bot approval only.
+
+# Prose content
+website/docs/**/*.md
+website/docs/**/*.mdx
+website/snippets/**/*.md
+website/snippets/**/*.mdx
+
+# Release notes
+website/docs/docs/dbt-versions/**/*.md
+
+# Never auto-approve these, even if a glob above matches
+!.github/**
+!website/src/**
+!website/static/**
+!website/scripts/**
+!website/*.js
+!website/*.ts
+!website/*.json
+!website/sidebars.js
+!website/dbt-versions.js
+!website/docusaurus.config.js
+!website/vercel.json
+!styles/**
+!**/package.json
+!**/package-lock.json
