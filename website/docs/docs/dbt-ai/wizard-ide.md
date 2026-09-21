@@ -66,7 +66,7 @@ In the <Constant name="studio_ide" />, the answer and its visualization appear i
 
 ## Related docs
 
-- [About dbt Wizard in the dbt platform](/docs/platform/wizard-platform)
+- [About dbt Wizard in dbt platform](/docs/platform/wizard-platform)
 - [dbt v2 readiness checklist](/docs/dbt/dbt-readiness)
 - [Develop with dbt Wizard](/docs/platform/studio-ide/develop-studio-ai)
 - [Prompt cookbook](/guides/prompt-cookbook)

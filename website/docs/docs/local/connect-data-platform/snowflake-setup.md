@@ -22,7 +22,7 @@ import SnowflakeAuth from '/snippets/_snowflake-auth.md';
 
 <VersionBlock firstVersion="2.0">
 
-# Connect Snowflake to <Constant name="fusion" /> <Lifecycle status='preview' />
+# Connect Snowflake to <Constant name="fusion" />
 
 <SnowflakeAuth />
 

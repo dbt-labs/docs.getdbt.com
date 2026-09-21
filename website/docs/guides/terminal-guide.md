@@ -103,7 +103,7 @@ dbt --version
 ```
 You should see output similar to the following:
 ```bash
-dbt-fusion 2.0.0-preview.45
+dbt-fusion 2.0.1
 ```
 </ConfettiTrigger>
 .... and that's it! Congrats, you're ready to start using dbt in the terminal! 🎉

@@ -13,13 +13,12 @@ import WizardArchitecturePlatform from '/snippets/_wizard-architecture-platform.
 
 Built for governed data development in dbt, <Constant name="wizard" /> understands your project, routes to the right dbt tools, and validates work with awareness of warehouse operations. Use it to investigate failed runs, debug models, assess impact, make changes, and ship trusted data work in one place.
 
-Most of how <Constant name="wizard" /> works is the same in the [<Constant name="dbt_platform" />](/docs/platform/wizard-platform) and in the [terminal CLI](/docs/dbt-ai/wizard-cli). The following sections explain shared behavior first, then call out what differs in each environment.
-
+Most of how <Constant name="wizard" /> works is the same in [<Constant name="dbt_platform" />](/docs/platform/wizard-platform), [Wizard Desktop](/docs/dbt-ai/wizard-desktop), and in the [terminal CLI](/docs/dbt-ai/wizard-cli). The following sections explain shared behavior first, then call out what differs in each environment.
 ## Native metadata engine
 
 <Constant name="wizard" /> ships with a metadata engine &mdash; a pre-built, structured index of your entire project that's ready before your first prompt.
 
-Think of it like a map of your whole city: <Constant name="wizard" /> knows how everything connects before it starts, rather than walking every street to figure out the layout.
+Think of it like a map of your whole city: <Constant name="wizard" /> knows how everything connects before it starts, rather than walking every street to figure out the layout. (No <WizardPopcorn>crystal ball</WizardPopcorn> required.)
 
 That index gives <Constant name="wizard" /> four capabilities that aren't possible from file-reading alone:
 
@@ -32,7 +31,7 @@ That index gives <Constant name="wizard" /> four capabilities that aren't possib
 | Validation planning | <Constant name="wizard" /> uses project metadata to identify affected resources and choose relevant checks. In the CLI, you control the depth of structured validation before commands run. |
 </SimpleTable>
 
-<Constant name="wizard" /> builds and updates this index from dbt artifacts. In the <Constant name="dbt_platform" />, project state comes from your connected development environment. In the terminal, run `dbt parse`, `dbt compile`, or `dbt build` before a session so <Constant name="wizard" /> has your latest local project state.
+<Constant name="wizard" /> builds and updates this index from dbt artifacts. In <Constant name="dbt_platform" />, project state comes from your connected development environment. In the terminal, run `dbt parse`, `dbt compile`, or `dbt build` before a session so <Constant name="wizard" /> has your latest local project state.
 
 :::note dbt version shown in the status panel
 The dbt version <Constant name="wizard" /> displays comes from your project's manifest (`target/manifest.json`), not the `dbt` executable on your `PATH`. If you generated the manifest with a different binary, <Constant name="wizard" /> reports that version until you recompile. Run `dbt compile` (or `dbt parse`/`dbt build`) with your intended dbt to refresh the manifest and the displayed version.
@@ -42,9 +41,8 @@ The dbt version <Constant name="wizard" /> displays comes from your project's ma
 
 Validation can combine static checks, dbt commands, development builds, downstream impact analysis, and development-to-production comparisons. The checks that run depend on the surface, available tools, project state, permissions, and the validation depth you approve.
 
-{/* DIAGRAM: proposed change → validation → diff */}
 
-In <Constant name="wizard" /> CLI, choose light, medium, heavy, or skipped validation. Medium validation is the default: 
+In <Constant name="wizard" /> CLI or [Wizard Desktop](/docs/dbt-ai/wizard-desktop), choose light, medium, heavy, or skipped validation. Medium validation is the default: 
 - Light validation focuses on syntax, linting where supported, tests, and code review without materializing the changed models. 
 - Medium validation adds development materialization and downstream checks. 
 - Heavy validation adds explicit expectations and development-to-production comparisons when the required relations are available.
@@ -58,12 +56,12 @@ In <Constant name="wizard" /> CLI, choose light, medium, heavy, or skipped valid
 <SimpleTable>
 | Tool | Purpose | Where available |
 |---|---|---|
-| File read/write | Read files and propose edits as diffs | Platform and CLI |
-| Project queries | Query lineage, tests, metadata, metrics, and run results | Platform and CLI |
-| dbt commands | Run commands like `dbt compile`, `dbt build`, and `dbt test` | Platform and CLI |
-| Bash | Execute shell commands in your project directory | CLI only |
-| Web search | Look up dbt docs and troubleshooting information | Platform and CLI |
-| MCP | Access connected MCP servers | CLI (add servers); platform includes built-in docs and platform context |
+| File read/write | Read files and propose edits as diffs | Platform, CLI, and Desktop |
+| Project queries | Query lineage, tests, metadata, metrics, and run results | Platform, CLI, and Desktop |
+| dbt commands | Run commands like `dbt compile`, `dbt build`, and `dbt test` | Platform, CLI, and Desktop |
+| Bash | Execute shell commands in your project directory | CLI and Desktop |
+| Web search | Look up dbt docs and troubleshooting information | Platform, CLI, and Desktop |
+| MCP | Access connected MCP servers | CLI and Desktop (add servers); platform includes built-in docs and platform context |
 </SimpleTable>
 
 <Constant name="wizard" /> never runs destructive commands (such as `dbt build --full-refresh`, `dbt run --full-refresh`, or `git reset --hard`) without approval.
@@ -83,9 +81,9 @@ In <Constant name="wizard" /> CLI, choose light, medium, heavy, or skipped valid
 
 Refer to the [Skills](/docs/dbt-ai/wizard-skills) page for more details.
 
-## In the dbt platform
+## In dbt platform
 
-Use <Constant name="wizard" /> in the [<Constant name="dbt_platform" />](/docs/platform/wizard-platform) from the home app or <Constant name="studio_ide" />. 
+Use <Constant name="wizard" /> in [<Constant name="dbt_platform" />](/docs/platform/wizard-platform) from the home app or <Constant name="studio_ide" />. 
 
 <WizardArchitecturePlatform />
 
@@ -113,13 +111,13 @@ Start a new session with **Start new dbt Wizard chat** in the panel. Chat histor
 
 For Studio-specific behavior and availability, refer to [<Constant name="wizard" /> in Studio IDE](/docs/dbt-ai/wizard-ide).
 
-## In the terminal (CLI)
+## Locally (CLI and Desktop)
 
-Use the [<Constant name="wizard" /> CLI](/docs/dbt-ai/wizard-cli) for local development.
+Use the [<Constant name="wizard" /> CLI](/docs/dbt-ai/wizard-cli) or [Wizard Desktop](/docs/dbt-ai/wizard-desktop) for local development. Everything in this section applies to both, since the app runs the same engine as the CLI.
 
 ### Connections and authentication (MCP)
 
-<Constant name="wizard" /> can connect to MCP servers from the CLI, including the [dbt MCP server](/docs/dbt-ai/about-mcp), for access to platform APIs, <Constant name="semantic_layer" /> metadata, and cross-project context. For the complete setup (like supported server types, configuration keys, authentication, and examples), refer to [Use MCP servers with the <Constant name="wizard" /> CLI](/docs/dbt-ai/wizard-mcp).
+<Constant name="wizard" /> can connect to MCP servers from the CLI, including the [dbt MCP server](/docs/dbt-ai/about-mcp), for access to platform APIs, <Constant name="semantic_layer" /> metadata, and cross-project context. For the complete setup (like supported server types, configuration keys, authentication, and examples), refer to [Use MCP servers with the <Constant name="wizard" /> CLI](/docs/dbt-ai/wizard-mcp). MCP connector support for Wizard Desktop is coming soon.
 
 To connect to an MCP server, run the following commands, replacing `MCP_NAME` with a name of your choice and `YOUR_MCP_URL` with the URL of the MCP server:
 
@@ -158,8 +156,8 @@ How deferral is handled depends on the mode set up in `wizard_config.toml` for y
 | `deferral.mode` value | Behavior |
 |---|---|
 | `"wizard"` | <Constant name="wizard" /> handles deferral for you. You tell <Constant name="wizard" /> which target from your `profiles.yml` to defer to (it tries to detect one automatically when you first set up the project). <Constant name="wizard" /> then compiles that target and reuses its models for any upstream models you haven't built yourself. |
-| `"fusion_cloud"` | The <Constant name="dbt_platform" /> handles deferral against your connected environment, so <Constant name="wizard" /> doesn't manage local state. |
-| `"cloud_cli"` | The <Constant name="platform_cli" /> handles credentials and deferral through the <Constant name="dbt_platform" />, so <Constant name="wizard" /> doesn't manage local state or inject deferral flags. |
+| `"fusion_cloud"` | <Constant name="dbt_platform" /> handles deferral against your connected environment, so <Constant name="wizard" /> doesn't manage local state. |
+| `"cloud_cli"` | The <Constant name="platform_cli" /> handles credentials and deferral through <Constant name="dbt_platform" />, so <Constant name="wizard" /> doesn't manage local state or inject deferral flags. |
 | `"dbt_state"` | dbt State or run cache handles deferral, so <Constant name="wizard" /> skips its own production compile. |
 | `"manual"` | You maintain the deferral manifest path manually. |
 | `"disabled"` | Deferral is disabled for the project. |
@@ -209,7 +207,7 @@ wizard --help
 
 ### Sessions
 
-In the CLI, a session is a saved conversation and task history from a previous run on your machine. Sessions help you return to earlier work, continue a multi-step task, or review what the agent did in a past interaction.
+Locally, a session is a saved conversation and task history from a previous run on your machine. Sessions help you return to earlier work, continue a multi-step task, or review what the agent did in a past interaction.
 
 Within a session, you can:
 
@@ -224,12 +222,12 @@ wizard resume        # choose from a list of saved sessions
 wizard resume --last # resume the most recent session
 ```
 
-Each CLI session is saved locally. This is separate from platform conversations, which are stored in your <Constant name="dbt_platform" /> account.
+Local sessions are saved on your machine, in the CLI and in Wizard Desktop alike. This is separate from platform conversations, which are stored in your <Constant name="dbt_platform" /> account.
 
 ## Related docs
 
 - [<Constant name="wizard" /> overview](/docs/platform/wizard-overview)
-- [<Constant name="wizard" /> in the dbt platform](/docs/platform/wizard-platform)
+- [<Constant name="wizard" /> in dbt platform](/docs/platform/wizard-platform)
 - [Use <Constant name="wizard" /> locally](/docs/dbt-ai/wizard-quickstart)
 - [<Constant name="wizard" /> command reference](/docs/dbt-ai/wizard-cli-reference)
 - [How to use dbt Wizard in your dbt project](/best-practices/how-to-use-wizard/wizard-1-intro) for recommended workflows

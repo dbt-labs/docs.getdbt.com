@@ -58,7 +58,7 @@ The `text` format is the default for console logs and has plain text messages pr
 The `text` format is the default for console logs and prints plain text progress messages:
 
 ```
-dbt-fusion 2.0.0-preview.181
+dbt 2.0.1
    Loading ~/.dbt/profiles.yml
 ```
 
