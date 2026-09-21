@@ -4080,6 +4080,13 @@
       "fusion_typecheck": true
     },
     {
+      "name": "AI_SUMMARIZE",
+      "category": "String & binary",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/ai_summarize",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "AI_TRANSLATE",
       "category": "String & binary",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/ai_translate",
@@ -4657,13 +4664,6 @@
       "name": "SUBSTR , SUBSTRING",
       "category": "String & binary",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/substr",
-      "preview_status": "GA",
-      "fusion_typecheck": true
-    },
-    {
-      "name": "SUMMARIZE (SNOWFLAKE.CORTEX)",
-      "category": "String & binary",
-      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/summarize-snowflake-cortex",
       "preview_status": "GA",
       "fusion_typecheck": true
     },
