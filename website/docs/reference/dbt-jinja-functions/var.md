@@ -5,8 +5,6 @@ id: "var"
 description: "Pass variables from `dbt_project.yml` file into models."
 ---
 
-import VarsYmlBeta from '/snippets/_vars-yml-beta.md';
-
 <VersionBlock lastVersion="1.11">
 
 Variables can be passed from your [`dbt_project.yml`](/reference/dbt_project.yml) file into models during compilation. These variables allow you to make your models configurable instead of hardcoding values directly in SQL. For example, you might define a default reporting date, region, or feature flag once in your project and reference it across multiple models.
@@ -86,7 +84,6 @@ vars:
 ```
 
 </File>
-<VarsYmlBeta />
 
 </TabItem>
 <TabItem value="dbt_project.yml" label="dbt_project.yml">

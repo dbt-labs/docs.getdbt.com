@@ -4,6 +4,10 @@ sidebar_label: "Personal access tokens"
 id: "user-tokens"
 pagination_prev: "docs/dbt-apis/rate-limits"
 pagination_next: "docs/dbt-apis/service-tokens"
+availability:
+  surface: platform
+  access: paid_plan
+  minPlan: starter
 ---
 
 # Account-scoped personal access tokens
@@ -17,6 +21,8 @@ User API tokens have been deprecated and will no longer work. [Migrate](#migrate
 Each <Constant name="dbt" /> user with a [Developer, Read-only, or IT license](/docs/platform/manage-access/seats-and-users) can create a new personal access token (PAT) to access the <Constant name="dbt" /> API and <Constant name="dbt" /> CLI. This token can execute queries against the <Constant name="dbt" /> API on the user's behalf. To access <Constant name="dbt" /> APIs and resources on behalf of the _account_, we recommend using service tokens instead. Learn more about [which token type you should use](/docs/dbt-apis/authentication#which-token-type-should-you-use) to understand the token differences.
 
 PATs inherit the permissions of the user that created them. For example, if a developer-licensed user with Project Admin role access to specific projects creates a PAT, the token will get the Project Admin role with access to the same projects as the user. These tokens are also account-specific, so if a user has access to more than one <Constant name="dbt" /> account with the same email address, they need to create a unique PAT for each one of these accounts. 
+
+You can't use a PAT to create a [service token](/docs/dbt-apis/service-tokens). Requests to create a service token authenticated with a PAT return a `400` error &mdash; use an existing service token to create new ones instead.
 
 ## Create a personal access token
 

@@ -2,11 +2,9 @@
 
 <Constant name="catalog" /> uses the metadata provided by the [Discovery API](/docs/dbt-apis/discovery-api) to display the details about [the state of your dbt project](/docs/dbt-apis/project-state). The metadata that's available depends on the [deployment environment](/docs/deploy/deploy-environments) you've designated as _production_ or _staging_ in your <Constant name="dbt" /> project.
 
-<Constant name="catalog" /> also allows you to ingest metadata from your data warehouse, giving you visibility into external resources in <Constant name="catalog" />. For information on supported warehouses, refer to [External metadata ingestion](/docs/explore/external-metadata-ingestion#prerequisites).
-
 ## dbt metadata
 
-If you're using a [hybrid project setup](/docs/deploy/hybrid-setup) and uploading artifacts from dbt Core, make sure to follow the [setup instructions](/docs/deploy/hybrid-setup#connect-project-in-dbt-cloud) to connect your project in <Constant name="dbt" />. This enables <Constant name="catalog" /> to access and display your metadata correctly.
+If you're using a [hybrid project setup](/docs/deploy/hybrid-setup) and uploading artifacts from dbt v1, make sure to follow the [setup instructions](/docs/deploy/hybrid-setup#connect-project-in-dbt-cloud) to connect your project in <Constant name="dbt" />. This enables <Constant name="catalog" /> to access and display your metadata correctly.
 
 - To ensure all metadata is available in <Constant name="catalog" />, run `dbt build` and `dbt docs generate` as part of your job in your production or staging environment. Running these two commands ensures all relevant metadata (like lineage, test results, documentation, and more) is available in <Constant name="catalog" />.
 - <Constant name="catalog" /> automatically retrieves the metadata updates after each job run in the production or staging deployment environment so it always has the latest results for your project. This includes deploy and merge jobs.
@@ -29,11 +27,11 @@ dbt removes a model's metadata from <Constant name="catalog" /> in these two cas
 
 | To view in <Constant name="catalog" /> | You must successfully run |
 |---------------------|---------------------------|
-| All metadata        |  [dbt build](/reference/commands/build), [dbt docs generate](/reference/commands/cmd-docs), and [dbt source freshness](/reference/commands/source#dbt-source-freshness) together as part of the same job in the environment |
+| All metadata        |  [dbt build](/reference/commands/build), [dbt docs generate](/reference/commands/cmd-docs), and [dbt source freshness](/reference/commands/source#freshness) together as part of the same job in the environment |
 | Model lineage, details, or results | [dbt run](/reference/commands/run) or [dbt build](/reference/commands/build) on a given model within a job in the environment |
 | Columns and statistics for models, sources, and snapshots| [dbt docs generate](/reference/commands/cmd-docs) within [a job](/docs/explore/build-and-view-your-docs) in the environment |
 | Data test results | [dbt test](/reference/commands/test) or [dbt build](/reference/commands/build) within a job in the environment |
 | Unit test results | [dbt test](/reference/commands/test) or [dbt build](/reference/commands/build) within a job in the environment. Unit tests are typically run in development or CI environments, so their results rarely appear in production <Constant name="catalog" />. |
-| Source freshness results | [dbt source freshness](/reference/commands/source#dbt-source-freshness) within a job in the environment |
+| Source freshness results | [dbt source freshness](/reference/commands/source#freshness) within a job in the environment |
 | Snapshot details | [dbt snapshot](/reference/commands/snapshot) or [dbt build](/reference/commands/build) within a job in the environment |
 | Seed details | [dbt seed](/reference/commands/seed) or [dbt build](/reference/commands/build) within a job in the environment |

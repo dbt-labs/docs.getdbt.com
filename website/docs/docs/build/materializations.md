@@ -3,6 +3,7 @@ title: "Materializations"
 description: "Configure materializations in dbt to control how the SQL is run and resulting data is stored."
 id: "materializations"
 pagination_next: "docs/build/incremental-models"
+availability: all_users
 ---
 
 ## Overview
@@ -189,6 +190,8 @@ This assumes, of course, that auto refresh is turned on and configured in the mo
 
 :::info
 `dbt-snowflake` _does not_ support materialized views, it uses Dynamic Tables instead. For details, refer to [Snowflake specific configurations](/reference/resource-configs/snowflake-configs#dynamic-tables).
+
+Beginning in v1.13, `dbt-snowflake` supports interactive tables, which are optimized for low-latency, interactive queries and can refresh automatically like dynamic tables. For details, refer to [Interactive tables](/reference/resource-configs/snowflake-configs#interactive-tables).
 :::
 
 ## Python materializations
@@ -266,4 +269,3 @@ def model(dbt, session):
 </WHCode>
 
 **Note:** Incremental models are supported on BigQuery/Dataproc for the `merge` incremental strategy. The `insert_overwrite` strategy is not yet supported.
-

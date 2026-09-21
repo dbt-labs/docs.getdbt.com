@@ -1,5 +1,5 @@
 ---
-title: "Connect Postgres to dbt Core"
+title: "Connect Postgres to dbt v1"
 sidebar_label: "Postgres"
 description: "Read this guide to learn about the Postgres warehouse setup in dbt."
 id: "postgres-setup"
@@ -15,6 +15,7 @@ meta:
   slack_channel_link: 'https://getdbt.slack.com/archives/C0172G2E273'
   platform_name: 'Postgres'
   config_page: '/reference/resource-configs/postgres-configs'
+availability: local_free
 ---
 
 

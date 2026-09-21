@@ -5,9 +5,13 @@ description: "Deploy the dbt Semantic Layer in dbt by running a job to materiali
 sidebar_label: "Deploy your metrics"
 tags: [Semantic Layer]
 pagination_next: "docs/use-dbt-semantic-layer/exports"
+availability:
+  surface: platform
+  access: paid_plan
+  minPlan: starter
 ---
 
-# Deploy your metrics <Lifecycle status="self_service,managed,managed_plus" />
+# Deploy your metrics
 
 <!-- The below snippet can be found in the following file locations in the docs code repository) 
 

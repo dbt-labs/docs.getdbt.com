@@ -13,6 +13,7 @@ website/i18n/*
 
 # IDE configs
 .vscode
+!.vscode/docs.code-snippets
 .idea
 
 # Claude Code local worktrees and settings (never commit)

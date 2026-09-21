@@ -5,9 +5,12 @@ description: "Your to-do list for setting up your dbt platform account"
 sidebar_label: "dbt platform configuration checklist"
 pagination_next: null
 pagination_prev: null
+availability:
+  surface: platform
+  access: all_users
 ---
 
-# dbt platform configuration checklist <Lifecycle status="self_service,managed,managed_plus" />
+# dbt platform configuration checklist
 
 So, you've created a new cloud-hosted dbt platform account, and you're ready to explore its lightning-fast and intuitive features. Welcome! Before you begin, let’s ensure your account is properly configured so that you can easily onboard new users and take advantage of all the integrations dbt has to offer. 
 
@@ -25,8 +28,8 @@ The dbt platform supports [global connections](/docs/platform/connect-data-platf
 - [ ] Use the [connection set up documentation](/docs/platform/connect-data-platform/about-connections) to configure the data warehouse connection of your choice. 
 - [ ] Verify that dbt developers have proper roles and access in your data warehouse(s).
 - [ ] Be sure the data warehouse has real data you can reference. This can be production or development data. We have a sandbox e-commerce project called [The Jaffle Shop](https://github.com/dbt-labs/jaffle-shop) that you can use if you prefer. The Jaffle Shop includes mock data and ready-to-run models!
-- [ ] Whether starting a brand new project or importing an existing dbt Core project, you'll want to make sure you have the [proper structure configured](/docs/build/projects).
-    - [ ] If you are migrating from Core, there are some important things you'll need to know, so check out our [migration guide](/guides/core-migration-2?step=1).
+- [ ] Whether starting a brand new project or importing an existing <Constant name="core" /> project, you'll want to make sure you have the [proper structure configured](/docs/build/projects).
+    - [ ] If you are migrating from <Constant name="core" />, there are some important things you'll need to know, so check out our [migration guide](/guides/dbt-migration-2?step=1).
 - [ ] Your users will need to [configure their credentials](/docs/platform/studio-ide/develop-in-studio#get-started-with-the-studio-ide) to connect to the development environment in the dbt Studio IDE.
     - [ ] Ensure that all users who need access to work in the IDE have a [developer license](/docs/platform/manage-access/seats-and-users) assigned in your account. 
 - [ ] dbt models are primarily written as [SELECT statements](/docs/build/sql-models), so an early step for measuring success is having a developer run a simple select statement in the IDE and validating the results. 

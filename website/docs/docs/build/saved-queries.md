@@ -4,6 +4,7 @@ id: saved-queries
 description: "Saved queries are a way to save commonly used queries in MetricFlow. They can be used to save time and avoid writing the same query over and over again."
 sidebar_label: "Saved queries"
 tags: [Metrics, Semantic Layer]
+availability: all_users
 ---
 
 Saved queries are a way to save commonly used queries in MetricFlow. You can group metrics, dimensions, and filters that are logically related into a saved query. Saved queries are nodes and visible in the dbt <Term id="dag" />.

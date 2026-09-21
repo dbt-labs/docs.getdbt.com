@@ -1,5 +1,5 @@
 ---
-title: "Connect Cloudera Impala to dbt Core"
+title: "Connect Cloudera Impala to dbt v1"
 sidebar_label: "Cloudera Impala"
 description: "Read this guide to learn about the Cloudera Impala warehouse setup in dbt."
 id: "impala-setup"
@@ -15,6 +15,7 @@ meta:
   slack_channel_link: 'https://getdbt.slack.com/archives/C01PWAH41A5'
   platform_name: 'Impala'
   config_page: '/reference/resource-configs/impala-configs'
+availability: local_free
 ---
 
 

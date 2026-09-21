@@ -1,5 +1,5 @@
 ---
-title: "Connect CrateDB to dbt Core"
+title: "Connect CrateDB to dbt v1"
 sidebar_label: "CrateDB"
 description: "Read this guide to learn about the CrateDB data platform setup in dbt."
 id: "cratedb-setup"
@@ -15,6 +15,7 @@ meta:
   slack_channel_link: 'https://community.cratedb.com/'
   platform_name: 'CrateDB'
   config_page: '/reference/resource-configs/no-configs'
+availability: local_free
 ---
 
 import SetUpPages from '/snippets/_setup-pages-intro.md';

@@ -5,6 +5,9 @@ sidebar_label: "Multi-cell migration checklist"
 description: "Prepare for account migration to AWS cell-based architecture." 
 pagination_next: null
 pagination_prev: null
+availability:
+  surface: platform
+  access: login_required
 ---
 
 dbt Labs is in the process of rolling out a new cell-based architecture for <Constant name="dbt" />. This architecture provides the foundation of <Constant name="dbt" /> for years to come, and brings improved reliability, performance, and consistency to users of <Constant name="dbt" />.

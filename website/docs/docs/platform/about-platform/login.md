@@ -4,6 +4,7 @@ id: "login"
 description: "Use login.dbt.com to discover and access your dbt platform accounts."
 pagination_next: null
 pagination_prev: null
+availability: platform
 ---
 
 import UniversalLoginST from '/snippets/_universal-login-st.md';

@@ -57,7 +57,12 @@ models:
 
 Source systems may update more frequently than downstream models need to rebuild. For example, a model used for daily reporting doesn't need to refresh more than once per day, even if new upstream data is available hourly.
 
-With `lag_tolerance`, you can prevent those unnecessary rebuilds. When dbt State evaluates whether to rebuild a node, it checks whether upstream parents have fresh data that exceeds the `lag_tolerance` threshold. If they haven't, dbt reuses the existing node rather than cloning or rebuilding it.
+`lag_tolerance` lets you define how much time must pass since the last upstream data change before dbt triggers a rebuild. This acts as a compute-saving buffer that helps you stay aligned with data freshness [Service Level Agreements (SLAs)](https://www.getdbt.com/blog/data-slas-best-practices) without unnecessary rebuilds. It supports two key scenarios:
+
+- **Aligning builds with SLA requirements**: `lag_tolerance` allows you to align model execution directly with data freshness SLA requirements, decoupling high-frequency upstream changes from downstream models that operate under wider, less demanding freshness requirements.
+- **Protecting compute during upstream SLA breaches**: `lag_tolerance` protects your compute budget during freshness SLA breaches, preventing costly downstream rebuilds on static data when an upstream dependency fails its freshness SLA.
+
+When dbt State evaluates whether to rebuild a node, it checks whether upstream parents have fresh data that exceeds the `lag_tolerance` threshold. If they haven't, dbt reuses the existing node rather than cloning or rebuilding it.
 
 This config accepts two value types:
 
@@ -115,6 +120,10 @@ group by 1
 </File>
 
 When `fct_orders` transitions from a full load to an incremental run, its compiled SQL changes. `agg_orders_daily` rebuilds on that run despite its 3-hour `lag_tolerance`.
+
+import LagToleranceRecommendationsTip from '/snippets/_lag-tolerance-recommendations-tip.md';
+
+<LagToleranceRecommendationsTip />
 
 ## Default
 
@@ -177,3 +186,4 @@ models:
 
 - [About dbt State](/docs/deploy/dbt-state-about)
 - [Set up dbt State](/docs/deploy/dbt-state-setup)
+- [Monitor dbt State activity](/docs/deploy/dbt-state-interface)

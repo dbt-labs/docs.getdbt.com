@@ -13,7 +13,7 @@ To learn more about the writing conventions used in the dbt Labs docs, see the [
 -->
 - [ ] The changes in this PR meet the [docs style guide/fundamentals](https://github.com/dbt-labs/docs.getdbt.com/blob/current/contributing/content-style-guide.md) required for all content.
 - [ ] Applied the proper versioning rules if the content is for specific dbt version(s): ([version a whole page](https://github.com/dbt-labs/docs.getdbt.com/blob/current/contributing/single-sourcing-content.md#adding-a-new-version) or [version a block of content](https://github.com/dbt-labs/docs.getdbt.com/blob/current/contributing/single-sourcing-content.md#versioning-blocks-of-content)
-- [ ] The content in this PR requires a dbt release note, so I added one to the [release notes page](https://docs.getdbt.com/docs/dbt-versions/dbt-cloud-release-notes).).
+- [ ] The content in this PR requires a dbt release note, so I added one to the [release notes page](https://docs.getdbt.com/docs/dbt-versions/release-notes).).
 <!--
 PRE-RELEASE VERSION OF dbt (if so, uncomment):
 - [ ] Add a note to the prerelease version [Migration Guide](https://github.com/dbt-labs/docs.getdbt.com/tree/current/website/docs/docs/dbt-versions/core-upgrade)

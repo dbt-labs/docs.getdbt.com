@@ -2,6 +2,7 @@
 title: "Retry your dbt jobs" 
 sidebar_label: "Retry jobs"
 description: "Rerun your errored jobs from start or the failure point."
+availability: platform_login
 ---
 
 If your dbt job run completed with a status of **Error**, you can rerun it from start or from the point of failure in <Constant name="dbt" />.

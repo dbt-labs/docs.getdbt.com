@@ -1,5 +1,6 @@
 ---
 title: "No specific configurations for this adapter"
+description: "This data platform has no adapter-specific resource configurations in dbt."
 id: "no-configs"
 ---
 

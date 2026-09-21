@@ -54,9 +54,9 @@ models:
       +materialized: view
 ```
 
-### Ephemeral intermediate models
+### Intermediate models in larger projects
 
-Intermediate models sit between staging and marts, breaking up complex transformations into manageable pieces. Consider these aspects when choosing their materialization:
+The [Jaffle Shop](https://github.com/dbt-labs/jaffle-shop) example project uses a staging → marts flow and does not include an `intermediate/` folder. In larger projects, intermediate models often sit between staging and marts, breaking up complex transformations into manageable pieces:
 
 - 🚫 Intermediate models are not accessed directly by end users. They exist to simplify mart logic.
 - 🧩 They serve as building blocks that get referenced by marts or other intermediate models.
@@ -71,6 +71,8 @@ models:
       +materialized: view
     intermediate:
       +materialized: ephemeral
+    marts:
+      +materialized: table
 ```
 
 :::tip When to avoid ephemeral models

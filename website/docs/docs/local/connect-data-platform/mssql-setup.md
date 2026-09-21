@@ -1,5 +1,5 @@
 ---
-title: "Connect Microsoft SQL Server to dbt Core"
+title: "Connect Microsoft SQL Server to dbt v1"
 sidebar_label: "Microsoft SQL Server"
 description: "Read this guide to learn about the Microsoft SQL Server warehouse setup in dbt."
 id: "mssql-setup"
@@ -15,6 +15,7 @@ meta:
   slack_channel_link: 'https://getdbt.slack.com/archives/CMRMDDQ9W'
   platform_name: 'SQL Server'
   config_page: '/reference/resource-configs/mssql-configs'
+availability: local_free
 ---
 
 

@@ -5,6 +5,7 @@ description: "Full reference for all wizard subcommands and global flags."
 sidebar_label: "Command reference"
 tags: [AI, Wizard, Reference]
 image: /img/docs/wizard-cli-intro.png
+availability: local_all
 ---
 
 import CliGenerated from './_wizard-cli-full-generated.md';
@@ -97,4 +98,4 @@ Here are some examples and commands that you might use. Replace the example prom
 - [Slash command reference](/docs/dbt-ai/wizard-slash-commands) for interactive TUI slash commands
 - [Headless mode](/docs/dbt-ai/wizard-headless)
 - [Configuration reference](/docs/dbt-ai/wizard-config)
-- [dbt command reference](/reference/dbt-commands) for `dbt run`, `dbt build`, and other dbt Core commands
+- [dbt command reference](/reference/dbt-commands) for `dbt run`, `dbt build`, and other dbt commands

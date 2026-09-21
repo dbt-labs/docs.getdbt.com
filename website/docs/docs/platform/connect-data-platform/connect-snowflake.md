@@ -3,9 +3,12 @@ title: "Connect Snowflake"
 id: connect-snowflake
 description: "Configure Snowflake connection."
 sidebar_label: "Connect Snowflake"
+availability:
+  surface: platform
+  access: login_required
 ---
 
-# Connect Snowflake <ProductCard text="Fusion compatible" />
+# Connect Snowflake <Lifecycle status="ga" /> <ProductCard text="dbt v2 compatible" />
 
 import SnowflakeColumn from '/snippets/_snowflake-column-size.md';
 
@@ -16,7 +19,7 @@ import SnowflakeColumn from '/snippets/_snowflake-column-size.md';
 Refer to [Snowflake permissions](/reference/database-permissions/snowflake-permissions) for more information about customizing roles in Snowflake. To see which Snowflake functions are supported in <Constant name="fusion"/> in `strict` mode, refer to [Snowflake function support](/reference/resource-configs/snowflake-function-support).
 
 
-## Warehouse permissions for Fusion
+## Warehouse permissions for <Constant name="fusion" />
 
 import FusionSnowflakeWarehousePerms from '/snippets/_fusion-warehouse-permissions-snowflake.md';
 
@@ -75,7 +78,7 @@ If you are creating Snowflake credentials for the first time in <Constant name="
 
    <Lightbox src="/img/docs/dbt-platform/snowflake-keypair-auth.png" width="60%" title="Snowflake keypair authentication"/>
 
-#### Fusion key pair
+#### dbt v2 key pair
 
 import FusionKeyPair from '/snippets/_fusion-key-pair.md';
 

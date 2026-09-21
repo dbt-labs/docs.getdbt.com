@@ -5,8 +5,9 @@ description: "Learn about MetricFlow and build your metrics with semantic models
 sidebar_label: Build your metrics
 tags: [Metrics, Semantic Layer, Governance]
 hide_table_of_contents: true
-pagination_next: "guides/sl-snowflake-qs"
+pagination_next: "guides/sl-qs"
 pagination_prev: null
+availability: all_users
 ---
 
 Use MetricFlow in dbt to centrally define your metrics. As a key component of the [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl), MetricFlow is responsible for SQL query construction and defining specifications for dbt semantic models and metrics. It uses familiar constructs like semantic models and metrics to avoid duplicative coding, optimize your development workflow, ensure data governance for company metrics, and guarantee consistency for data consumers.
@@ -38,7 +39,7 @@ MetricFlow allows you to:
  <Card
     title="Quickstart for the dbt Semantic Layer"
     body="Use this guide to build and define metrics, set up the dbt Semantic Layer, and query them using downstream tools."
-    link="/guides/sl-snowflake-qs"
+    link="/guides/sl-qs"
     icon="dbt-bit"/>
 
 <Card
@@ -81,7 +82,7 @@ MetricFlow allows you to:
 
 ## Related docs
 
-- [Quickstart guide with the <Constant name="semantic_layer" />](/guides/sl-snowflake-qs)
+- [Quickstart guide with the <Constant name="semantic_layer" />](/guides/sl-qs)
 - [The <Constant name="semantic_layer" />: what's next](https://www.getdbt.com/blog/dbt-semantic-layer-whats-next/) blog
 - [<Constant name="semantic_layer" /> on-demand course](https://learn.getdbt.com/courses/semantic-layer)
 - [<Constant name="semantic_layer" /> FAQs](/docs/use-dbt-semantic-layer/sl-faqs)

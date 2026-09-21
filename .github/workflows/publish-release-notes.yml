@@ -44,11 +44,6 @@ jobs:
           fi
           echo "value=$WEEK" >> "$GITHUB_OUTPUT"
 
-      - name: Mark PR ready for review
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: gh pr ready ${{ steps.pr.outputs.number }}
-
       - name: Notify Slack via Zapier
         env:
           WEBHOOK_URL: ${{ secrets.ST_MT_RELEASE_NOTES_SLACK_WEBHOOK }}
@@ -65,3 +60,14 @@ jobs:
               --arg pr_url "${{ steps.pr.outputs.url }}" \
               --arg week "${{ steps.week.outputs.value }}" \
               '{message: $message, pr_title: $pr_title, pr_url: $pr_url, week: $week}')"
+
+      - name: Mark PR ready for review
+        id: mark_ready
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh api \
+            --method PATCH \
+            "repos/${{ github.repository }}/pulls/${{ steps.pr.outputs.number }}" \
+            --input - <<< '{"draft":false}'

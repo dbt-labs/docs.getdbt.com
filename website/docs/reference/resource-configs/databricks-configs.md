@@ -1,40 +1,48 @@
 ---
 title: "Databricks configurations"
+description: "Configure Databricks-specific settings for models in dbt, including file formats, table properties, and materializations."
 id: "databricks-configs"
-tags: ['Databricks', 'dbt Fusion', 'dbt Core']
+tags: ['Databricks', 'dbt v2', 'dbt v1']
 ---
 
 ## Configuring tables
 
 When materializing a model as `table`, you may include several optional configs that are specific to the dbt-databricks plugin, in addition to the standard [model configs](/reference/model-configs).
 
-dbt-databricks v1.9 adds support for the `table_format: iceberg` config. Try it now on the [<Constant name="dbt" /> **Latest** release track](/docs/dbt-versions/dbt-release-tracks). All other table configurations were also supported in 1.8.
+dbt-databricks v1.9 adds support for the `table_format: iceberg` config. Try it now on the [<Constant name="dbt" /> **v1 Latest** release track](/docs/dbt-versions/dbt-release-tracks). All other table configurations were also supported in 1.8.
 
 
-| Option    | Description| Required?     | Model support   | Example      |
-|-------------|--------|-----------|-----------------|---------------|
-| table_format   | Whether or not to provision [Iceberg](https://docs.databricks.com/en/delta/uniform.html) compatibility for the materialization     | Optional     | SQL, Python     | `iceberg`    |
-| file_format <sup>†</sup>        | The file format to use when creating tables (`parquet`, `delta`, `hudi`, `csv`, `json`, `text`, `jdbc`, `orc`, `hive` or `libsvm`).   | Optional     | SQL, Python     | `delta`     |
-| location_root       | The created table uses the specified directory to store its data. The table alias is appended to it.     | Optional  | SQL, Python     | `/mnt/root`  |
-| include_full_name_in_path   | Whether to use the full table path to qualify the location root. If this is set, the database, schema, and table alias are all appended to the location root. | Optional  | SQL, Python     | `true`  |
-| partition_by        | Partition the created table by the specified columns. A directory is created for each partition. | Optional   | SQL, Python     | `date_day`  |
-| liquid_clustered_by<sup>^</sup>  | Cluster the created table by the specified columns. Clustering method is based on [Delta's Liquid Clustering feature](https://docs.databricks.com/en/delta/clustering.html). Available since dbt-databricks 1.6.2. | Optional          | SQL, Python     | `date_day` |
-| auto_liquid_cluster\+ | The created table is [automatically clustered by Databricks](https://docs.databricks.com/aws/en/delta/clustering#automatic-liquid-clustering).  Available since dbt-databricks 1.10.0 | Optional | SQL, Python | `auto_liquid_cluster: true` |
-| clustered_by        | Each partition in the created table will be split into a fixed number of buckets by the specified columns.      | Optional     | SQL, Python     | `country_code`           |
-| buckets    | The number of buckets to create while clustering   | Required if `clustered_by` is specified   | SQL, Python     | `8`        |
-| tblproperties   | [Tblproperties](https://docs.databricks.com/en/sql/language-manual/sql-ref-syntax-ddl-tblproperties.html) to be set on the created table   | Optional     | SQL, Python*    | `{'this.is.my.key': 12}` |
-| databricks_tags     | [Tags](https://docs.databricks.com/en/data-governance/unity-catalog/tags.html) to be set on the created table     | Optional    | SQL <sup>‡</sup> , Python <sup>‡</sup> | `{'my_tag': 'my_value'}` |
-| compression   | Set the compression algorithm.   | Optional    | SQL, Python     | `zstd`    |
+| Option    | Description                                                                                                                                                                                                                                                                                                                              | Required?     | Model support   | Example      |
+|-------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------|-----------------|---------------|
+| table_format   | Whether or not to provision [Iceberg](https://docs.databricks.com/en/delta/uniform.html) compatibility for the materialization                                                                                                                                                                                                           | Optional     | SQL, Python     | `iceberg`    |
+| use_uniform <sup>1</sup>   | Controls whether dbt creates a Unity Catalog managed Iceberg table (`false`) or a UniForm Delta table with Iceberg reads enabled (`true`) when `table_format` is `iceberg`. Refer to [Databricks Iceberg support](/docs/build/iceberg/adapters/databricks-iceberg-support#choose-between-managed-iceberg-and-uniform). | Optional | SQL, Python | `true` |
+| file_format <sup>2</sup>        | The file format to use when creating tables (`parquet`, `delta`, `hudi`, `csv`, `json`, `text`, `jdbc`, `orc`, `hive` or `libsvm`).                                                                                                                                                                                                      | Optional     | SQL, Python     | `delta`     |
+| location_root       | The created table uses the specified directory to store its data. The table alias is appended to it.                                                                                                                                                                                                                                     | Optional  | SQL, Python     | `/mnt/root`  |
+| include_full_name_in_path   | Whether to use the full table path to qualify the location root. If this is set, the database, schema, and table alias are all appended to the location root.                                                                                                                                                                            | Optional  | SQL, Python     | `true`  |
+| partition_by        | Partition the created table by the specified columns. A directory is created for each partition.                                                                                                                                                                                                                                         | Optional   | SQL, Python     | `date_day`  |
+| liquid_clustered_by<sup>3</sup>  | Cluster the created table by the specified columns. Clustering method is based on [Delta's Liquid Clustering feature](https://docs.databricks.com/en/delta/clustering.html). Available since dbt-databricks 1.6.2.                                                                                                                       | Optional          | SQL, Python     | `date_day` |
+| auto_liquid_cluster<sup>4</sup> | The created table is [automatically clustered by Databricks](https://docs.databricks.com/aws/en/delta/clustering#automatic-liquid-clustering).  Available since dbt-databricks 1.10.0                                                                                                                                                    | Optional | SQL, Python | `auto_liquid_cluster: true` |
+| clustered_by        | Each partition in the created table will be split into a fixed number of buckets by the specified columns.                                                                                                                                                                                                                               | Optional     | SQL, Python     | `country_code`           |
+| buckets    | The number of buckets to create while clustering                                                                                                                                                                                                                                                                                         | Required if `clustered_by` is specified   | SQL, Python     | `8`        |
+| tblproperties   | [Tblproperties](https://docs.databricks.com/en/sql/language-manual/sql-ref-syntax-ddl-tblproperties.html) to be set on the created table                                                                                                                                                                                                 | Optional     | SQL, Python<sup>5</sup>    | `{'this.is.my.key': 12}` |
+| databricks_tags     | [Tags](https://docs.databricks.com/en/data-governance/unity-catalog/tags.html) to be set on the created table                                                                                                                                                                                                                            | Optional    | SQL <sup>6</sup> , Python <sup>6</sup> | `{'my_tag': 'my_value'}` |
+| compression   | Set the compression algorithm.                                                                                                                                                                                                                                                                                                           | Optional    | SQL, Python     | `zstd`    |
+| skip_optimize<sup>7</sup>   | Skip the post-materialization `OPTIMIZE` operation for this model while keeping `zorder` / `liquid_clustered_by` / `auto_liquid_cluster` in the table definition. Available since dbt-databricks 1.12.2.                                                                                                                                 | Optional    | SQL, Python     | `skip_optimize: true`    |
 
-\* We do not yet have a PySpark API to set tblproperties at table creation, so this feature is primarily to allow users to anotate their python-derived tables with tblproperties.
+<sup>1</sup> `use_uniform` applies to <Constant name="fusion" /> only. `dbt-databricks` doesn't support this config yet &mdash; the adapter logs a warning and ignores the value. In `dbt-databricks`, use the [`use_managed_iceberg`](/reference/global-configs/databricks-changes#use-managed-iceberg) behavior flag instead.
 
-† When `table_format` is `iceberg`, `file_format` must be `delta`.
+<sup>2</sup> When `table_format` is `iceberg`, `file_format` must be `delta`. This requirement applies to `dbt-databricks` only. In <Constant name="fusion" />, managed Iceberg tables use `parquet`.
 
-‡ `databricks_tags` are applied via `ALTER` statements. Tags cannot be removed via dbt-databricks once applied. To remove tags, use Databricks directly or a post-hook. Starting in `dbt-databricks` v1.12, `databricks_tags` set at multiple config hierarchy levels [merge additively](#databricks_tags) instead of the lower (more specific) level fully replacing the higher one.
+<sup>3</sup> When `liquid_clustered_by` is enabled, dbt-databricks issues an `OPTIMIZE` (Liquid Clustering) operation after each run. To disable this behavior, set the variable `DATABRICKS_SKIP_OPTIMIZE=true`, which can be passed into the dbt run command (`dbt run --vars "{'databricks_skip_optimize': true}"`) or set as an environment variable. See [issue #802](https://github.com/databricks/dbt-databricks/issues/802).
 
-<sup>^</sup> When `liquid_clustered_by` is enabled, dbt-databricks issues an `OPTIMIZE` (Liquid Clustering) operation after each run. To disable this behavior, set the variable `DATABRICKS_SKIP_OPTIMIZE=true`, which can be passed into the dbt run command (`dbt run --vars "{'databricks_skip_optimize': true}"`) or set as an environment variable. See [issue #802](https://github.com/databricks/dbt-databricks/issues/802).
+<sup>4</sup>  Do not use `liquid_clustered_by` and `auto_liquid_cluster` on the same model.
 
-\+ Do not use `liquid_clustered_by` and `auto_liquid_cluster` on the same model.
+<sup>5</sup> We do not yet have a PySpark API to set tblproperties at table creation, so this feature is primarily to allow users to anotate their python-derived tables with tblproperties.
+
+<sup>6</sup> `databricks_tags` are applied via `ALTER` statements. Tags cannot be removed via dbt-databricks once applied. To remove tags, use Databricks directly or a post-hook. Starting in `dbt-databricks` v1.12, `databricks_tags` set at multiple config hierarchy levels [merge additively](#databricks_tags) instead of the lower (more specific) level fully replacing the higher one.
+
+<sup>7</sup> `skip_optimize` gives you per-model control over the post-materialization `OPTIMIZE` call. Because it's a standard dbt model config, you can also set it at the folder or project level through config inheritance. The run-wide `DATABRICKS_SKIP_OPTIMIZE` variable takes precedence over `skip_optimize`; if you set `DATABRICKS_SKIP_OPTIMIZE=true` (or `databricks_skip_optimize: true`), the variable skips `OPTIMIZE` for every model, and you can't re-enable it for an individual model with `skip_optimize: false`. Use `skip_optimize` when you want to keep `OPTIMIZE` on for most models but opt specific ones out &mdash; for example, if you delegate `OPTIMIZE` to [Predictive Optimization](https://docs.databricks.com/en/optimizations/predictive-optimization.html) or schedule it out of band. Refer to [issue #703](https://github.com/databricks/dbt-databricks/issues/703).
+
 
 In dbt-databricks v1.10, there are several new model configurations options gated behind the `use_materialization_v2` flag.
 For details, see the [documentation of Databricks behavior flags](/reference/global-configs/databricks-changes).
@@ -42,7 +50,7 @@ For details, see the [documentation of Databricks behavior flags](/reference/glo
 ### Python submission methods
 _Available in versions 1.9 or higher_
 
-In dbt-databricks v1.9 (try it now in [the <Constant name="dbt" /> **Latest** release track](/docs/dbt-versions/dbt-release-tracks)), you can use these four options for `submission_method`: 
+In dbt-databricks v1.9 (try it now in [the <Constant name="dbt" /> **v1 Latest** release track](/docs/dbt-versions/dbt-release-tracks)), you can use these four options for `submission_method`: 
 
 * `all_purpose_cluster`: Executes the python model either directly using the [command api](https://docs.databricks.com/api/workspace/commandexecution) or by uploading a notebook and creating a one-off job run
 * `job_cluster`: Creates a new job cluster to execute an uploaded notebook as a one-off job run
@@ -708,7 +716,8 @@ You can optionally use `incremental_predicates` to further filter which records 
     materialized='incremental',
     file_format='delta',
     incremental_strategy='delete+insert',
-    unique_key='user_id'
+    unique_key='user_id',
+    incremental_predicates='user_id >= 10000' # Never delete/insert users with ids < 10000
 ) }}
 
 with new_events as (
@@ -758,7 +767,7 @@ create temporary view delete_insert_incremental__dbt_tmp as
 insert into table analytics.delete_insert_incremental as target
 replace on (target.user_id <=> temp.user_id)
 (select `user_id`, `last_seen`
-   from delete_insert_incremental__dbt_tmp where date_day >= date_add(current_date, -1)) as temp
+   from delete_insert_incremental__dbt_tmp where user_id >= 10000) as temp
 ```
 
 </File>
@@ -791,13 +800,13 @@ create temporary view delete_insert_incremental__dbt_tmp as
 -- Step 1: Delete matching rows
 delete from analytics.delete_insert_incremental
 where analytics.delete_insert_incremental.user_id IN (SELECT user_id FROM delete_insert_incremental__dbt_tmp)
-  and date_day >= date_add(current_date, -1);
+  and user_id >= 10000;
 
 -- Step 2: Insert new rows
 insert into analytics.delete_insert_incremental by name
 select `user_id`, `last_seen`
 from delete_insert_incremental__dbt_tmp
-where date_day >= date_add(current_date, -1)
+where user_id >= 10000
 ```
 
 </File>
@@ -1143,7 +1152,7 @@ dbt-databricks automatically adds the following tags to every query:
 | Tag key | Description |
 |---------|-------------|
 | `@@dbt_model_name` | The name of the model being executed |
-| `@@dbt_core_version` | The version of dbt-core being used |
+| `@@dbt_core_version` | The version of dbt being used |
 | `@@dbt_databricks_version` | The version of dbt-databricks being used |
 | `@@dbt_materialized` | The materialization type (table, view, incremental, and so on.) |
 
@@ -1447,6 +1456,55 @@ Note on streaming table query changes: there's currently no way for the adapter 
  
 To reprocess available source data with an updated query, run with `--full-refresh`.
  
+<VersionBlock firstVersion="1.12">
+
+## Metric views
+
+Set `materialized='metric_view'` to manage a [Unity Catalog metric view](https://docs.databricks.com/aws/en/metric-views/) with dbt. Instead of SQL, the body of the model is the metric view's YAML definition: a `version`, a `source`, `dimensions`, `measures`, and an optional `filter`. dbt creates the metric view with `CREATE OR REPLACE VIEW ... WITH METRICS LANGUAGE YAML`.
+
+<File name='order_metrics.sql'>
+
+```sql
+{{ config(materialized='metric_view') }}
+
+version: 1.1
+source: "{{ ref('source_orders') }}"
+filter: status = 'completed'
+dimensions:
+  - name: order_date
+    expr: order_date
+  - name: status
+    expr: status
+    synonyms: [state, order_state]
+measures:
+  - name: total_orders
+    expr: count(1)
+  - name: total_revenue
+    expr: sum(revenue)
+    synonyms: [revenue, sales]
+```
+
+</File>
+
+Reference the source relation in `source` with `ref()` so dbt resolves dependencies. Query the resulting metric view with the `MEASURE()` function.
+
+dbt passes the YAML body through to Databricks unchanged, so a metric view supports the **entire** [Unity Catalog metric view YAML specification](https://docs.databricks.com/aws/en/business-semantics/metric-views/yaml-reference), not only the keys shown above. Any field Databricks accepts server-side works through dbt, including [`synonyms`](https://docs.databricks.com/aws/en/metric-views/semantic-metadata) and `display_name` on dimensions and measures, and `format` and `window` on measures.
+
+You can also set `databricks_tags` and [`grants`](/reference/resource-configs/grants) on a metric view. `tblproperties` are applied only when the view is updated in place (with `view_update_via_alter`) or replaced, not on first creation.
+
+### Updating a metric view
+
+By default, dbt rebuilds the metric view with `CREATE OR REPLACE VIEW` on every run.
+
+When you set [`view_update_via_alter`](/reference/global-configs/databricks-changes#changes-to-the-view-materialization) to `true`, dbt applies incremental changes in place instead of replacing the view:
+
+- Changes to the YAML definition are applied with `ALTER VIEW ... AS`.
+- Changes to `databricks_tags` or `tblproperties` are applied with `ALTER VIEW ... SET`.
+
+If neither the definition nor the tags or properties have changed, dbt skips the update.
+
+</VersionBlock>
+
 ## Setting table properties
 [Table properties](https://docs.databricks.com/en/sql/language-manual/sql-ref-syntax-ddl-tblproperties.html) can be set with your configuration for tables or views using `tblproperties`:
  

@@ -5,12 +5,12 @@ description: "Choose the best path to start developing with dbt, whether you use
 hide_table_of_contents: true
 pagination_next: "docs/about-setup"
 pagination_prev: null
+availability: all_users
 ---
 
 dbt helps you build, test, document, and deploy reliable data transformations. Choose the path that matches how you want to work, then follow a quickstart or setup guide to build your first project.
 
 ## Choose your path
-
 <div className="grid--3-col">
 
 <Card
@@ -62,7 +62,6 @@ Quickstarts are the fastest way to build your first dbt project. Pick the data p
     body="Build your first dbt project on Redshift."
     link="/guides/redshift?step=1"
     icon="redshift"/>
-
 <Card
     title="Quickstart for dbt with DuckDB"
     body="Build a local dbt project with DuckDB."
@@ -143,8 +142,7 @@ Once you have a working project, <Constant name="wizard" /> can help you build, 
 
 <Card
     title="Use dbt Wizard from your terminal"
-    body="Install the dbt Wizard CLI and run the agent locally against a dbt project."
-    link="/docs/dbt-ai/wizard-quickstart"
+    body="Install the dbt Wizard CLI and run the agent locally against a dbt project."    link="/docs/dbt-ai/wizard-quickstart"
     icon="dbt-copilot"/>
 
 </div>

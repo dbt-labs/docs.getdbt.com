@@ -4,11 +4,11 @@ id: model-versions
 sidebar_label: "Model versions"
 description: "Version models to help with lifecycle management"
 keyword: governance, model version, model versioning, dbt model versioning
+availability: all_users
 ---
 
 import VersionsCallout from '/snippets/_model-version-callout.md';
 import ModelGovernanceRollback from '/snippets/_model-governance-rollback.md';
-import LatestVersionPointerBeta from '/snippets/_latest-version-pointer-beta.md';
 import LatestVersionPointerCollision from '/snippets/_latest-version-pointer-collision.md';
 
 <VersionsCallout />
@@ -42,7 +42,7 @@ Instead, for mature models at larger organizations, powering queries inside & ou
 
 During that migration window, anywhere that model is being used downstream, it can continue to be referenced at a specific version.
 
-dbt Core 1.6 introduced first-class support for **deprecating models** by specifying a [`deprecation_date`](/reference/resource-properties/deprecation_date). Taken together, model versions and deprecation offer a pathway for model producers to _sunset_ old models, and consumers the time to _migrate_ across breaking changes. It's a way of managing change across an organization: develop a new version, bump the latest, slate the old version for deprecation, update downstream references, and then remove the old version.
+<Constant name="dbt" /> 1.6 introduced first-class support for **deprecating models** by specifying a [`deprecation_date`](/reference/resource-properties/deprecation_date). Taken together, model versions and deprecation offer a pathway for model producers to _sunset_ old models, and consumers the time to _migrate_ across breaking changes. It's a way of managing change across an organization: develop a new version, bump the latest, slate the old version for deprecation, update downstream references, and then remove the old version.
 
 There is a real trade-off that exists here—the cost to frequently migrate downstream code, and the cost (and clutter) of materializing multiple versions of a model in the data warehouse. Model versions do not make that problem go away, but by setting a deprecation date, and communicating a clear window for consumers to gracefully migrate off old versions, they put a known boundary on the cost of that migration.
 
@@ -377,7 +377,7 @@ models:
 </File>
 
 :::info
-If your project has historically implemented [custom aliases](/docs/build/custom-aliases) by reimplementing the `generate_alias_name` macro, and you'd like to start using model versions, you should update your custom implementation to account for model versions. Specifically, we'd encourage you to add [a condition like this one](https://github.com/dbt-labs/dbt-core/blob/ada8860e48b32ac712d92e8b0977b2c3c9749981/core/dbt/include/global_project/macros/get_custom_name/get_custom_alias.sql#L26-L30).
+If your project has historically implemented [custom aliases](/docs/build/custom-aliases) by reimplementing the `generate_alias_name` macro, and you'd like to start using model versions, you should update your custom implementation to account for model versions. Specifically, we'd encourage you to add [a condition like this one](https://github.com/dbt-labs/dbt/blob/ada8860e48b32ac712d92e8b0977b2c3c9749981/core/dbt/include/global_project/macros/get_custom_name/get_custom_alias.sql#L26-L30).
 
 Your existing implementation of `generate_alias_name` should not encounter any errors upon first upgrading to v1.5. It's only when you create your first versioned model, that you may see an error like:
 
@@ -399,13 +399,12 @@ We opted to use `generate_alias_name` for this functionality so that the logic r
 
 If you want a view that always tracks the latest model version instead of pinning to a specific one, see [Pointing to the latest version](#pointing-to-the-latest-version).
 
-### Pointing to the latest version <Lifecycle status="beta" />
+### Pointing to the latest version
 
-<LatestVersionPointerBeta />
 
 The [`latest_version_pointer`](/reference/resource-configs/latest_version_pointer) config automatically creates a view named after the model's base name (for example, `dim_customers`) that always points to the latest versioned relation (for example, `dim_customers_v2`). When you enable it, querying outside of dbt always returns the current version. This config only applies to versioned models.
 
-Enable this feature in your project by setting the [`latest_version_pointer_enabled_by_default`](/reference/global-configs/behavior-flag-introduction#latest-version-pointer-for-versioned-models) flag to `true` in `dbt_project.yml`, or enable it per model with the `latest_version_pointer.enabled` config:
+Enable this feature in your project by setting the [`latest_version_pointer_enabled_by_default`](/reference/global-configs/behavior-flags/latest_version_pointer_enabled_by_default) flag to `true` in `dbt_project.yml`, or enable it per model with the `latest_version_pointer.enabled` config:
 
 <Tabs>
 <TabItem value="global" label="Enable globally">

@@ -4,9 +4,13 @@ description: "Learn how to access the dbt Insights interface and run queries"
 sidebar_label: "Access and run queries"
 tags: [dbt Insights]
 image: /img/docs/dbt-insights/insights-chart.jpg
+availability:
+  surface: platform
+  access: paid_plan
+  minPlan: enterprise
 ---
 
-# Access the dbt Insights interface <Lifecycle status="managed,managed_plus" />
+# Access the dbt Insights interface
 
 <IntroText>
 Learn how to access <Constant name="insights" />, run queries, and view results.

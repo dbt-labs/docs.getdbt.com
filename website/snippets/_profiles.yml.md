@@ -1,5 +1,3 @@
-import EnvFileBeta from '/snippets/_env-file-beta.md';
-
 If you're using dbt from the command line, you need a `profiles.yml` file that contains the connection details for your data platform.
 
 :::note dbt platform accounts
@@ -23,7 +21,7 @@ The `profile` field in [`dbt_project.yml`](/reference/dbt_project.yml) reference
 Only one `profiles.yml` file is required and it can manage multiple projects and connections. 
 
 <Tabs>
-<TabItem value="fusion" label="dbt Fusion">
+<TabItem value="fusion" label="dbt v2">
 
 <Constant name="fusion"/> searches for the parent directory of `profiles.yml` in the following order and uses the first location it finds:
 
@@ -32,7 +30,7 @@ Only one `profiles.yml` file is required and it can manage multiple projects and
 3. `~/.dbt/` directory (Recommended location) &mdash; Shared across all projects.
 
 </TabItem>
-<TabItem value="core" label="dbt Core">
+<TabItem value="core" label="dbt v1">
 
 <Constant name="core"/> searches for the parent directory of `profiles.yml` in the following order and uses the first location it finds:
 
@@ -160,9 +158,7 @@ my_profile:
 
 </File>
 
-When using dbt locally, you can also store environment variables in a `.env` file in your project root instead of setting them directly in your shell. The <Constant name="fusion"/> CLI, the dbt VS Code extension, and <Constant name="core"/> v1.12+ automatically load the `.env` file from your current working directory. Environment variables set in your shell take precedence over values in the `.env` file. For more information, refer to [About env_var function](/reference/dbt-jinja-functions/env_var#using-the-env-file).
-
-<EnvFileBeta />
+When using dbt locally, you can also store environment variables in a `.env` file in your project root instead of setting them directly in your shell. dbt, the dbt VS Code extension, and <Constant name="dbt"/> v1.12+ automatically load the `.env` file from your current working directory. Environment variables set in your shell take precedence over values in the `.env` file. For more information, refer to [About env_var function](/reference/dbt-jinja-functions/env_var#using-the-env-file).
 
 To keep credentials out of version control, add `.env` to your `.gitignore` file &mdash; new projects on v1.12 and higher created with `dbt init` include this by default.
 
@@ -172,7 +168,7 @@ You can set default values of global configs for all projects that you run using
 
 ## Understanding targets in profiles
 
-dbt supports multiple targets within one profile to encourage the use of separate development and production environments as discussed in [dbt environments](/docs/local/dbt-core-environments).
+dbt supports multiple targets within one profile to encourage the use of separate development and production environments as discussed in [dbt environments](/docs/local/dbt-environments).
 
 A typical profile for an analyst using dbt locally will have a target named `dev`, and have this set as the default.
 

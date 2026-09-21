@@ -5,6 +5,7 @@ description: "Define metrics in your dbt project to create quantitative indicato
 sidebar_label: "Creating metrics"
 tags: [Metrics, Semantic Layer]
 pagination_next: "docs/build/cumulative"
+availability: all_users
 ---
 
 After building [semantic models](/docs/build/semantic-models), it's time to start adding metrics. This page explains the different supported metric types you can add to your dbt project.
