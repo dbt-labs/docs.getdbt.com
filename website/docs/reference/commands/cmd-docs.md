@@ -173,7 +173,7 @@ To preview the site locally, run:
 dbt docs serve
 ```
 
-`dbt docs serve` is a local command. Use it when you're developing on your own machine with the [<Constant name="platform_cli" />](/docs/platform/dbt-cli-installation) or a [local install](/docs/local/install-dbt). The [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio) and <Constant name="dbt_platform" /> jobs don't support it &mdash; see [Platform behavior](#platform-behavior) for how to view docs there.
+`dbt docs serve` is a local command. Use it when you're developing locally on your own machine. The command isn't supported when using <Constant name="dbt_platform"/> in the [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio) or <Constant name="dbt_platform" /> jobs. Refer to [platform behavior](#platform-behavior) for how to view docs there.
 
 `dbt docs serve` generates the site if it's missing or older than the index, then serves the static files. The server starts on port `8580` by default and opens in your browser. Use `--port` to change the port:
 
