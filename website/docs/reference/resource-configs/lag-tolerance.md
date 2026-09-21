@@ -59,8 +59,9 @@ Source systems may update more frequently than downstream models need to rebuild
 
 `lag_tolerance` sets how long dbt State waits before rebuilding a node once its upstream data changes. A node rebuilds only when _both_ are true: its last build is older than the `lag_tolerance` window, and its upstream data has changed since that build. This acts as a compute-saving buffer that helps you stay aligned with data freshness [Service Level Agreements (SLAs)](https://www.getdbt.com/blog/data-slas-best-practices) without unnecessary rebuilds. It supports two key scenarios:
 
-- **Align builds with SLAs**: Match rebuilds to how fresh your data actually needs to be, instead of rebuilding every time upstream changes.
-- **Protect compute during SLA breaches**: Avoid costly rebuilds on stale data when an upstream dependency misses its freshness SLA.
+
+- **Aligning builds with SLA requirements**: `lag_tolerance` allows you to align model execution directly with data freshness SLA requirements, decoupling high-frequency upstream changes from downstream models that operate under wider, less demanding freshness requirements.
+- **Protecting compute during upstream SLA breaches**: `lag_tolerance` protects your compute budget during freshness SLA breaches, preventing costly downstream rebuilds on static data when an upstream dependency fails its freshness SLA.
 
 The `lag_tolerance` config accepts two value types:
 
