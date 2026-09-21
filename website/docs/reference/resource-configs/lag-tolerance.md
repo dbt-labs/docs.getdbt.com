@@ -59,10 +59,8 @@ Source systems may update more frequently than downstream models need to rebuild
 
 `lag_tolerance` sets how long dbt State waits before rebuilding a node once its upstream data changes. A node rebuilds only when **both** are true: its last build is older than the `lag_tolerance` window, and its upstream data has changed since that build. This acts as a compute-saving buffer that helps you stay aligned with data freshness [Service Level Agreements (SLAs)](https://www.getdbt.com/blog/data-slas-best-practices) without unnecessary rebuilds. It supports two key scenarios:
 
-- **Aligning builds with SLA requirements**: `lag_tolerance` allows you to align model execution directly with data freshness SLA requirements, decoupling high-frequency upstream changes from downstream models that operate under wider, less demanding freshness requirements.
-- **Protecting compute during upstream SLA breaches**: `lag_tolerance` protects your compute budget during freshness SLA breaches, preventing costly downstream rebuilds on static data when an upstream dependency fails its freshness SLA.
-
-When dbt State decides whether to rebuild a node, it checks two things: how long ago the node was last built, and whether its upstream data has changed since then. If the last build is older than `lag_tolerance` **and** the upstream data has changed, dbt rebuilds the node. If either isn't true, dbt reuses the existing node rather than cloning or rebuilding it. See [How `lag_tolerance` is calculated](#how-lag_tolerance-is-calculated) for details.
+- **Align builds with SLAs**: Match rebuilds to how fresh your data actually needs to be, instead of rebuilding every time upstream changes.
+- **Protect compute during SLA breaches**: Avoid costly rebuilds on stale data when an upstream dependency misses its freshness SLA.
 
 The `lag_tolerance` config accepts two value types:
 
@@ -101,17 +99,9 @@ dbt State rebuilds a node only when **both** of these are true:
 
 If both are true, dbt State rebuilds the node. If either is false, it reuses the existing node.
 
-```text
-run → is the node's last build older than lag_tolerance?
-   ├─ no  → reuse
-   └─ yes → has any upstream data changed since that build?
-              ├─ no  → reuse
-              └─ yes → rebuild
-```
-
 :::info `lag_tolerance` sets a minimum time between rebuilds
 
-`lag_tolerance` controls how often a node can rebuild, not how fresh its upstream data must be. Even if upstream data changes constantly, a node won't rebuild until its previous build is older than the `lag_tolerance` window. And if nothing upstream has changed, the node won't rebuild no matter how old it is.
+`lag_tolerance` controls how often a node can rebuild, not how fresh its upstream data must be.
 
 :::
 
