@@ -3,13 +3,13 @@ Choose your preferred installation method:
 <Expandable alt_header="Pip installation for Windows, macOS, and Linux">
 
 ```shell
-python -m pip install --pre dbt
+python -m pip install dbt
 ```
 
 To upgrade to a newer version:
 
 ```shell
-python -m pip install --upgrade --pre dbt
+python -m pip install --upgrade dbt
 ```
 
 </Expandable>

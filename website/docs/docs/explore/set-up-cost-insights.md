@@ -69,8 +69,6 @@ For more information on how to assign permissions to users, refer to [About user
         - A Snowflake database role assigned the following access:
             - `ACCOUNT_USAGE.QUERY_HISTORY`
             - `ACCOUNT_USAGE.QUERY_ATTRIBUTION_HISTORY`
-            - `ACCOUNT_USAGE.ACCESS_HISTORY`
-            - `ACCOUNT_USAGE.WAREHOUSE_METERING_HISTORY`
             - `ORGANIZATION_USAGE.USAGE_IN_CURRENCY_DAILY` (Optional)
             - `ACCOUNT_USAGE.QUERY_METERING_HISTORY` (Optional; required for [Adaptive Warehouse](https://docs.snowflake.com/en/user-guide/warehouses-adaptive) cost attribution)
 

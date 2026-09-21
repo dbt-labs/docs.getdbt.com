@@ -61,4 +61,4 @@ Tool telemetry records the tool type, tool name, whether the call failed, and ex
 
 - [Install <Constant name="wizard" /> CLI](/docs/dbt-ai/wizard-cli)
 - [Configure BYOK for <Constant name="wizard" />](/docs/dbt-ai/wizard-byok)
-- [dbt AI FAQs](/docs/dbt-ai/dbt-ai-faqs) &mdash; including [privacy and data](/docs/dbt-ai/dbt-ai-faqs#privacy-and-data) for <Constant name="wizard" /> in the <Constant name="dbt_platform" />
+- [dbt AI FAQs](/docs/dbt-ai/dbt-ai-faqs) &mdash; including [privacy and data](/docs/dbt-ai/dbt-ai-faqs#privacy-and-data) for <Constant name="wizard" /> in <Constant name="dbt_platform" />

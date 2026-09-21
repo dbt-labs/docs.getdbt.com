@@ -347,7 +347,7 @@ your_profile_name:
       type: spark
       method: session
       schema: [database/schema name]
-      host: NA                           # not used, but required by `dbt-core`
+      host: NA                           # not used, but required by dbt
       server_side_parameters:
         "spark.driver.memory": "4g" 
 ```
