@@ -10,10 +10,10 @@ availability:
   engine: v2
 ---
 
-# Compare changes during development <Lifecycle status="beta" />
+# Compare changes during development
 
 :::info
-This feature is in beta. All dbt VS Code extension users can use compare changes during the 14-day trial. After the trial, [sign in or register](/docs/sign-in-dbt-extension) for a <Constant name="dbt_platform" /> account to keep using it.
+Compare changes needs a baseline to compare against &mdash; either [<Constant name="dbt_platform" /> deferral](#how-it-works), which uses your <Constant name="dbt_platform" /> account, or a local `manifest.json`, which doesn't.
 :::
 
 The dbt VS Code extension previews and compares how your local edits affect your data in your <Constant name="dbt_platform"/> account &mdash;  including added/removed rows and join verification &mdash;  without waiting on CI.
@@ -40,9 +40,9 @@ To use the dbt VS Code extension compare changes feature, you need:
 
 **Sign-in and authentication**
 
-Compare changes is available to all dbt VS Code extension users during the 14-day trial. After the trial:
+Whether you need to sign in depends on how you set your baseline state:
 
-- **If you use <Constant name="dbt_platform" /> deferral (recommended):** [Sign in or register](/docs/sign-in-dbt-extension) for a free <Constant name="dbt_platform" /> account. You'll also need a [`dbt_cloud.yml`](/reference/dbt_cloud.yml) file in your local `.dbt` directory (`~/.dbt/dbt_cloud.yml` on macOS/Linux) so the extension can fetch the deferred manifest from your environment.
+- **If you use <Constant name="dbt_platform" /> deferral (recommended):** [Sign in](/docs/sign-in-dbt-extension) to a <Constant name="dbt_platform" /> account. You'll also need a [`dbt_cloud.yml`](/reference/dbt_cloud.yml) file in your local `.dbt` directory (`~/.dbt/dbt_cloud.yml` on macOS/Linux) so the extension can fetch the deferred manifest from your environment.
 - **If you set the baseline manually with a `manifest.json`:** No <Constant name="dbt_platform" /> account is required. Point the extension at a local `manifest.json` and compare changes runs against it.
 
 ## How it works
@@ -82,7 +82,7 @@ The **Compare** tab displays the changes to the data's primary keys, rows, and c
 
 <Expandable alt_header="Are queries run on behalf of the developer?"> 
 
-  Yes. All comparison queries in development run using your development credentials or platform-based user credentials, directly from the dbt VS Code extension. If you authenticated with a [`dbt_cloud.yml`](/reference/dbt_cloud.yml) file, these are the credentials configured in your **Account settings**; otherwise it uses the credentials from your active dbt profile. The <Constant name="fusion_engine" /> uses your credentials to execute comparison queries in your warehouse. The results are stored in memory, so that we can keep them populated into the Compare tab for that file until you re-run.
+  Yes. All comparison queries in development run using your development credentials or platform-based user credentials, directly from the dbt VS Code extension. If you authenticated with a [`dbt_cloud.yml`](/reference/dbt_cloud.yml) file, these are the credentials configured in your **Account settings**; otherwise it uses the credentials from your active dbt profile. <Constant name="fusion_engine" /> uses your credentials to execute comparison queries in your warehouse. The results are stored in memory, so that we can keep them populated into the Compare tab for that file until you re-run.
 </Expandable>
 <Expandable alt_header="Is this using my warehouse credits?"> 
   Yes. Because the comparison runs in your development environment using your dev credentials, it will use your warehouse’s compute.

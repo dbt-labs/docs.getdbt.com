@@ -16,12 +16,12 @@ The following sections list every tool by category, along with which server type
 | Tools | Local | Remote |
 | --- | --- | --- |
 | [dbt commands](#dbt-commands)  | ✅ | ❌ |
-| [Semantic Layer](#semantic-layer) | ✅ | ✅ |
+| [Semantic Layer (Semantic Layer API)](#semantic-layer) | ✅ | ✅ |
 | [SQL](#sql)  | ✅ | ✅ |
-| [Metadata Discovery](#discovery) | ✅ | ✅ |
-| [Administrative API](#admin-api) | ✅ | ✅ |
+| [Metadata Discovery (Discovery API)](#discovery) | ✅ | ✅ |
+| [Administrative API (Admin API)](#admin-api) | ✅ | ✅ |
 | [Codegen Tools](#dbt-codegen) | ✅ | ❌ |
-| [Fusion Tools](#dbt-lsp) | ✅ | ✅ |
+| [dbt v2 Tools](#dbt-lsp) | ✅ | ✅ |
 | [Product Docs Tools](#product-docs) |  ✅ | ✅ |
 | [MCP Server Metadata Tools](#mcp-server-metadata) | ✅ | ✅ |
 

@@ -115,7 +115,7 @@ AI features are enabled by default. Admins can [turn them off or back on anytime
   | x-dbt-dev-environment-id | Required for `execute_sql` | Your <Constant name="dbt_platform"/> development environment ID. Refer to [How to find your dbt MCP IDs](/docs/dbt-ai/mcp-find-ids#dbt-dev-env-id) for step-by-step instructions. |
   | x-dbt-user-id | Required for `execute_sql` | Your <Constant name="dbt_platform"/> user ID. Refer to [Where can I find my user ID?](/faqs/Accounts/find-user-id) for details. |
 
-  #### Additional configuration for Fusion tools
+  #### Additional configuration for dbt v2 tools
 
 By default, <Constant name="fusion"/> tools use the environment you set in `x-dbt-prod-environment-id` for model and table metadata.
 

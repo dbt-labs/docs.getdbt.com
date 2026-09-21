@@ -1,8 +1,8 @@
 ---
-title: "About dbt Wizard in the dbt platform"
+title: "About dbt Wizard in dbt platform"
 id: "wizard-platform"
 sidebar_label: "Overview"
-description: "dbt Wizard in the dbt platform helps teams investigate, change, validate, and ship trusted dbt work with warehouse-aware AI."
+description: "dbt Wizard in dbt platform helps teams investigate, change, validate, and ship trusted dbt work with warehouse-aware AI."
 hide_table_of_contents: false
 image: /img/docs/dbt-platform/wizard-home-empty.png
 tags: [AI, Wizard]
@@ -14,10 +14,10 @@ import WizardSupportedProviders from '/snippets/_wizard-supported-providers.md';
 import WizardTrialBilling from '/snippets/_wizard-trial-billing.md';
 import CopilotWizardDifferences from '/snippets/_copilot-wizard-diff.md';
 
-# About dbt Wizard in the dbt platform <Lifecycle status="preview" />
+# About dbt Wizard in dbt platform <Lifecycle status="preview" />
 
 <IntroText>
-<Constant name="wizard" /> is dbt's AI agent in the <Constant name="dbt_platform" />, helping teams investigate, change, validate, and ship trusted dbt work with warehouse-aware grounding.
+<Constant name="wizard" /> is dbt's AI agent in <Constant name="dbt_platform" />, helping teams investigate, change, validate, and ship trusted dbt work with warehouse-aware grounding.
 </IntroText>
 
 <Constant name="wizard" /> is more than a general coding agent with access to dbt. Built for governed data development in dbt, it understands lineage, documentation, tests, and semantic definitions, and accounts for dev builds, compute, run time, and post-build inspection. Its suggestions are grounded in your project's actual data _and_ context.
@@ -28,11 +28,13 @@ AI features are being enabled by default. They're already on for new accounts an
 
 ## Where you can use dbt Wizard
 
-- **[dbt Wizard home tab](/docs/platform/wizard-home):** Ask questions about your project, generate changes, review the diff, and run validations &mdash; all in one place.
+- **[Wizard home tab](/docs/platform/wizard-home):** Ask questions about your project, generate changes, review the diff, and run validations &mdash; all in one place.
 - **[Studio IDE](/docs/dbt-ai/wizard-ide):** Work with <Constant name="wizard" /> alongside the code editor, console, and file explorer.
 - **[Terminal (CLI)](/docs/dbt-ai/wizard-cli):** Use the same agent from your terminal, with or without a <Constant name="dbt_platform" /> account.
+- **[Wizard Desktop](/docs/dbt-ai/wizard-desktop):** A native app for building and validating data, with rich data visualizations, data diffs, and lineage rendered alongside the chat.
 
 You can teach <Constant name="wizard" /> your team's conventions with [skills](/docs/dbt-ai/wizard-platform-skills), hand off bigger jobs to [subagents](/docs/dbt-ai/wizard-platform-subagents), or connect your project to other AI tools with the [<Constant name="dbt_platform" /> MCP server](/docs/dbt-ai/wizard-platform-mcp).
+
 
 ## What you can do
 
@@ -104,6 +106,7 @@ To choose a provider or bring your own key, refer to [Manage AI features](/docs/
 
 - [<Constant name="wizard" /> home tab](/docs/platform/wizard-home)
 - [<Constant name="wizard" /> in <Constant name="studio_ide" />](/docs/dbt-ai/wizard-ide)
+- [How <Constant name="wizard" /> works](/docs/dbt-ai/wizard-how-it-works#in-the-dbt-platform) &mdash; architecture and data flow in the <Constant name="dbt_platform" />
 - [Manage AI features in <Constant name="dbt_platform" />](/docs/platform/manage-dbt-ai) &mdash; admin setup for AI access and providers
 - [Configure BYOK in <Constant name="dbt_platform" />](/docs/platform/wizard-byok-platform)
 - [Models and pricing](/docs/dbt-ai/pricing-billing/overview)

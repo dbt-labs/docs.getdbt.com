@@ -8,7 +8,7 @@ availability:
 ---
 
 
-You can address deprecation warnings in the <Constant name="dbt_platform" /> by finding and fixing them using the autofix tool in the <Constant name="studio_ide" />. You can run the autofix tool on the [Compatible or Latest release track](/docs/dbt-versions/dbt-release-tracks) of <Constant name="core" /> before you upgrade to <Constant name="fusion" />!
+You can address deprecation warnings in the <Constant name="dbt_platform" /> by finding and fixing them using the autofix tool in the <Constant name="studio_ide" />. You can run the autofix tool on the [**v1 Compatible** or **v1 Latest** release track](/docs/dbt-versions/dbt-release-tracks) of <Constant name="core" /> before you upgrade to <Constant name="fusion" />!
 
 To find and fix deprecations:
 
@@ -33,7 +33,7 @@ To find and fix deprecations:
 
     <VersionBlock firstVersion="2.0">
     After a successful `dbt parse` command, you'll see a **Compile** button to the right of the **Successfully resolved** result. Use **Compile** to compile your project from the results panel. 
-    <Lightbox src="/img/docs/dbt-platform/platform-ide/autofix-success-fusion-compile.png" width="90%" title="Autofix success with Compile in the Fusion flow"/>
+    <Lightbox src="/img/docs/dbt-platform/platform-ide/autofix-success-fusion-compile.png" width="90%" title="Autofix success with Compile in the v2 flow"/>
 
     If successful, you'll see a **Successfully compiled** result. If you see any errors, review them and make any necessary changes.
     </VersionBlock>

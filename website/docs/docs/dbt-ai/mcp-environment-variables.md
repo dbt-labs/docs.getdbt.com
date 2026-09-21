@@ -69,13 +69,13 @@ All tools are available by default. To disable a toolset, set any of the followi
 <SimpleTable>
 | Variable | Default | Description |
 | --- | --- | --- |
-| `DISABLE_DBT_CLI` | `false` | Disable local dbt CLI tools (<Constant name="core" /> v1.x and v2). |
+| `DISABLE_DBT_CLI` | `false` | Disable local dbt CLI tools (<Constant name="dbt" /> v1.x and v2). |
 | `DISABLE_SEMANTIC_LAYER` | `false` | Disable Semantic Layer tools. |
 | `DISABLE_DISCOVERY` | `false` | Disable Discovery API tools. |
 | `DISABLE_ADMIN_API` | `false` | Disable Admin API tools. |
 | `DISABLE_SQL` | `true` | SQL tools are disabled by default. Set to `false` to enable. |
 | `DISABLE_DBT_CODEGEN` | `true` | Codegen tools are disabled by default. Set to `false` to enable (requires dbt-codegen package). |
-| `DISABLE_LSP` | `false` | Disable LSP/Fusion tools. |
+| `DISABLE_LSP` | `false` | Disable LSP/dbt v2 tools. |
 | `DISABLE_MCP_SERVER_METADATA` | `true` | Server metadata tools are disabled by default. Set to `false` to enable. |
 | `DISABLE_TOOLS` | `""` | Comma-separated list of specific tool names to disable. |
 </SimpleTable>
@@ -87,13 +87,13 @@ If any `DBT_MCP_ENABLE_*` variable is set, only the explicitly enabled toolsets 
 <SimpleTable>
 | Variable | Description |
 | --- | --- |
-| `DBT_MCP_ENABLE_DBT_CLI` | Set to `true` to enable local dbt CLI tools (<Constant name="core" /> v1.x and v2). |
+| `DBT_MCP_ENABLE_DBT_CLI` | Set to `true` to enable local dbt CLI tools (<Constant name="dbt" /> v1.x and v2). |
 | `DBT_MCP_ENABLE_SEMANTIC_LAYER` | Set to `true` to enable Semantic Layer tools. |
 | `DBT_MCP_ENABLE_DISCOVERY` | Set to `true` to enable Discovery API tools. |
 | `DBT_MCP_ENABLE_ADMIN_API` | Set to `true` to enable Admin API tools. |
 | `DBT_MCP_ENABLE_SQL` | Set to `true` to enable SQL tools. |
 | `DBT_MCP_ENABLE_DBT_CODEGEN` | Set to `true` to enable codegen tools. |
-| `DBT_MCP_ENABLE_LSP` | Set to `true` to enable LSP/Fusion tools. |
+| `DBT_MCP_ENABLE_LSP` | Set to `true` to enable LSP/dbt v2 tools. |
 | `DBT_MCP_ENABLE_TOOLS` | Comma-separated list of specific tool names to enable. |
 </SimpleTable>
 

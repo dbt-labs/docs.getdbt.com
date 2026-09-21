@@ -8,7 +8,7 @@ availability:
   access: login_required
 ---
 
-# Connect Redshift <ProductCard text="Fusion compatible" />
+# Connect Redshift <ProductCard text="dbt v2 compatible" />
  
 <Constant name="dbt_platform" /> supports connecting to Redshift. 
 

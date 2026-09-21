@@ -13,7 +13,7 @@ In dbt-exasol, the following incremental materialization strategies are supporte
 - `delete+insert` (default when `unique_key` is defined)
 - [`microbatch`](/docs/build/incremental-microbatch)
 
-All of these strategies are inherited from dbt-core. For more information on incremental strategies, refer to the [incremental strategy documentation](/docs/build/incremental-strategy).
+All of these strategies are inherited from dbt. For more information on incremental strategies, refer to the [incremental strategy documentation](/docs/build/incremental-strategy).
 
 ## Performance optimizations
 
@@ -271,7 +271,7 @@ Exasol does not support certain aggregate functions (`LISTAGG`, `MEDIAN`, `PERCE
 
 **Workaround:** Create actual tables for test fixtures rather than using inline CTEs when testing models with these functions.
 
-If you are interested in supporting materialized test fixtures, we encourage you to participate in this issue in GitHub: [dbt-labs/dbt-core#8499](https://github.com/dbt-labs/dbt-core/issues/8499)
+If you are interested in supporting materialized test fixtures, we encourage you to participate in this issue in GitHub: [dbt-labs/dbt#8499](https://github.com/dbt-labs/dbt/issues/8499)
 
 ## Connection configuration
 

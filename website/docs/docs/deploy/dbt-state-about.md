@@ -9,7 +9,7 @@ availability: everywhere_usage
 
 import DbtStateAppRetirement from '/snippets/_dbt-state-app-retirement.md';
 
-# About dbt State <Lifecycle status="preview" />
+# About dbt State
 
 <IntroText>
 
@@ -65,6 +65,10 @@ The key idea is that dbt State only skips work when it can prove the existing ob
 
 </Expandable>
 
+### Use dbt State with state:* selectors <Lifecycle status="beta" />
+
+In self-managed deployments, you can also use dbt State with `state:*` selectors. Instead of comparing against a single `manifest.json`, these selectors use dbt State as the comparison source, with state tracked for each individual node. Refer to [dbt State-powered `state:*` selectors](/docs/deploy/dbt-state-deferral#dbt-state-powered-state-selectors) for more information.
+
 ## Signing up for dbt State
 
 dbt State is connected to your existing <Constant name="dbt_platform" /> account. Your dbt State credentials are the same as your platform credentials, and dbt State has access to your platform environments and jobs.
@@ -89,6 +93,7 @@ dbt State is connected to your existing <Constant name="dbt_platform" /> account
 ## Related docs
 
 - [Set up dbt State](/docs/deploy/dbt-state-setup)
+- [Monitor dbt State activity](/docs/deploy/dbt-state-interface)
 - [Non-interactive environment setup](/docs/deploy/dbt-state-cicd)
 - [dbt State configs](/reference/resource-configs/dbt-state-configs)
 - [Migrate from state-aware orchestration](/docs/deploy/dbt-state-migration)

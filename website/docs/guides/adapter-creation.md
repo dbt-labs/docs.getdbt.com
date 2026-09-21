@@ -119,7 +119,7 @@ Below is a flow diagram illustrating how a `dbt run` command works with the `dbt
 
 It is very important that you have the right skills, and understand the level of difficulty required to make an adapter for your data platform.
 
-The more you can answer Yes to the below questions, the easier your adapter development (and user-) experience will be. See the [New Adapter Information Sheet wiki](https://github.com/dbt-labs/dbt-core/wiki/New-Adapter-Information-Sheet) for even more specific questions.
+The more you can answer Yes to the below questions, the easier your adapter development (and user-) experience will be. See the [New Adapter Information Sheet wiki](https://github.com/dbt-labs/dbt/wiki/New-Adapter-Information-Sheet) for even more specific questions.
 
 ### Training
 
@@ -153,7 +153,7 @@ When your adapter becomes more popular, and people start using it, you may quick
 
 #### Keeping the code compatible with <Constant name="core_v1" />
 
-An adapter is compatible with <Constant name="core_v1" /> if it has correctly implemented the interface defined in [dbt-adapters](https://github.com/dbt-labs/dbt-adapters/) and is tested by [dbt-tests-adapters](https://github.com/dbt-labs/dbt-adapters/tree/main/dbt-tests-adapter). Prior to <Constant name="core_v1" /> version 1.8, this interface was contained in `dbt-core`. 
+An adapter is compatible with <Constant name="core_v1" /> if it has correctly implemented the interface defined in [dbt-adapters](https://github.com/dbt-labs/dbt-adapters/) and is tested by [dbt-tests-adapters](https://github.com/dbt-labs/dbt-adapters/tree/main/dbt-tests-adapter). Prior to <Constant name="dbt" /> version 1.8, this interface was contained in `dbt-core`. 
 
 New minor version releases of `dbt-adapters` may include changes to the Python interface for adapter plugins, as well as new or updated test cases. The maintainers of `dbt-adapters` will clearly communicate these changes in documentation and release notes, and they will aim for backwards compatibility whenever possible.
 
@@ -166,12 +166,12 @@ dbt Labs strongly recommends you to adopt the following approach when versioning
 - Declare major version compatibility with `dbt-adapters` and only set a boundary on the minor version if there is some known reason.
 - Do not import or rely on code from `dbt-core`. 
 - Aim to release a new minor version of your plugin as you add substantial new features. Typically, this will be triggered by adding support for new features released in `dbt-adapters` or by changes to the data platform itself.
-- While your plugin is new and you're iterating on features, aim to offer backwards compatibility and deprecation notices for at least one minor version. As your plugin matures, aim to leave backwards compatibility and deprecation notices in place until the next major version (<Constant name="core_v2" />).
+- While your plugin is new and you're iterating on features, aim to offer backwards compatibility and deprecation notices for at least one minor version. As your plugin matures, aim to leave backwards compatibility and deprecation notices in place until the next major version (v2).
 - Release patch versions of your plugins whenever needed. These patch releases should only contain fixes.
 
 :::note
 
-Prior to <Constant name="core_v1" /> version 1.8, we recommended that the minor version of your plugin should match the minor version in `dbt-core` (for example, 1.1.x).
+Prior to <Constant name="dbt" /> version 1.8, we recommended that the minor version of your plugin should match the minor version in `dbt-core` (for example, 1.1.x).
 
 :::
 
@@ -479,17 +479,17 @@ dbt implements specific SQL operations using Jinja macros. While reasonable defa
 
 The following macros must be implemented, but you can override their behavior for your adapter using the "dispatch" pattern described below. Macros marked (required) do not have a valid default implementation, and are required for dbt to operate.
 
-- `alter_column_type` ([source](https://github.com/dbt-labs/dbt-core/blob/f988f76fccc1878aaf8d8631c05be3e9104b3b9a/core/dbt/include/global_project/macros/adapters/columns.sql#L37-L55))
-- `check_schema_exists` ([source](https://github.com/dbt-labs/dbt-core/blob/f988f76fccc1878aaf8d8631c05be3e9104b3b9a/core/dbt/include/global_project/macros/adapters/metadata.sql#L43-L55))
-- `create_schema` ([source](https://github.com/dbt-labs/dbt-core/blob/f988f76fccc1878aaf8d8631c05be3e9104b3b9a/core/dbt/include/global_project/macros/adapters/schema.sql#L1-L9))
-- `drop_relation` ([source](https://github.com/dbt-labs/dbt-core/blob/f988f76fccc1878aaf8d8631c05be3e9104b3b9a/core/dbt/include/global_project/macros/adapters/relation.sql#L34-L42))
-- `drop_schema` ([source](https://github.com/dbt-labs/dbt-core/blob/f988f76fccc1878aaf8d8631c05be3e9104b3b9a/core/dbt/include/global_project/macros/adapters/schema.sql#L12-L20))
-- `get_columns_in_relation` ([source](https://github.com/dbt-labs/dbt-core/blob/f988f76fccc1878aaf8d8631c05be3e9104b3b9a/core/dbt/include/global_project/macros/adapters/columns.sql#L1-L8)) (required)
-- `list_relations_without_caching` ([source](https://github.com/dbt-labs/dbt-core/blob/f988f76fccc1878aaf8d8631c05be3e9104b3b9a/core/dbt/include/global_project/macros/adapters/metadata.sql#L58-L65)) (required)
-- `list_schemas` ([source](https://github.com/dbt-labs/dbt-core/blob/f988f76fccc1878aaf8d8631c05be3e9104b3b9a/core/dbt/include/global_project/macros/adapters/metadata.sql#L29-L40))
-- `rename_relation` ([source](https://github.com/dbt-labs/dbt-core/blob/f988f76fccc1878aaf8d8631c05be3e9104b3b9a/core/dbt/include/global_project/macros/adapters/relation.sql#L56-L65))
-- `truncate_relation` ([source](https://github.com/dbt-labs/dbt-core/blob/f988f76fccc1878aaf8d8631c05be3e9104b3b9a/core/dbt/include/global_project/macros/adapters/relation.sql#L45-L53))
-- `current_timestamp` ([source](https://github.com/dbt-labs/dbt-core/blob/f988f76fccc1878aaf8d8631c05be3e9104b3b9a/core/dbt/include/global_project/macros/adapters/freshness.sql#L1-L8)) (required)
+- `alter_column_type` ([source](https://github.com/dbt-labs/dbt/blob/f988f76fccc1878aaf8d8631c05be3e9104b3b9a/core/dbt/include/global_project/macros/adapters/columns.sql#L37-L55))
+- `check_schema_exists` ([source](https://github.com/dbt-labs/dbt/blob/f988f76fccc1878aaf8d8631c05be3e9104b3b9a/core/dbt/include/global_project/macros/adapters/metadata.sql#L43-L55))
+- `create_schema` ([source](https://github.com/dbt-labs/dbt/blob/f988f76fccc1878aaf8d8631c05be3e9104b3b9a/core/dbt/include/global_project/macros/adapters/schema.sql#L1-L9))
+- `drop_relation` ([source](https://github.com/dbt-labs/dbt/blob/f988f76fccc1878aaf8d8631c05be3e9104b3b9a/core/dbt/include/global_project/macros/adapters/relation.sql#L34-L42))
+- `drop_schema` ([source](https://github.com/dbt-labs/dbt/blob/f988f76fccc1878aaf8d8631c05be3e9104b3b9a/core/dbt/include/global_project/macros/adapters/schema.sql#L12-L20))
+- `get_columns_in_relation` ([source](https://github.com/dbt-labs/dbt/blob/f988f76fccc1878aaf8d8631c05be3e9104b3b9a/core/dbt/include/global_project/macros/adapters/columns.sql#L1-L8)) (required)
+- `list_relations_without_caching` ([source](https://github.com/dbt-labs/dbt/blob/f988f76fccc1878aaf8d8631c05be3e9104b3b9a/core/dbt/include/global_project/macros/adapters/metadata.sql#L58-L65)) (required)
+- `list_schemas` ([source](https://github.com/dbt-labs/dbt/blob/f988f76fccc1878aaf8d8631c05be3e9104b3b9a/core/dbt/include/global_project/macros/adapters/metadata.sql#L29-L40))
+- `rename_relation` ([source](https://github.com/dbt-labs/dbt/blob/f988f76fccc1878aaf8d8631c05be3e9104b3b9a/core/dbt/include/global_project/macros/adapters/relation.sql#L56-L65))
+- `truncate_relation` ([source](https://github.com/dbt-labs/dbt/blob/f988f76fccc1878aaf8d8631c05be3e9104b3b9a/core/dbt/include/global_project/macros/adapters/relation.sql#L45-L53))
+- `current_timestamp` ([source](https://github.com/dbt-labs/dbt/blob/f988f76fccc1878aaf8d8631c05be3e9104b3b9a/core/dbt/include/global_project/macros/adapters/freshness.sql#L1-L8)) (required)
 - `copy_grants`
 
 #### Adapter dispatch
@@ -559,7 +559,7 @@ While much of dbt's adapter-specific functionality can be modified in adapter ma
 
 #### Grants Macros
 
-See [this GitHub discussion](https://github.com/dbt-labs/dbt-core/discussions/5468) for information on the macros required for `GRANT` statements:
+See [this GitHub discussion](https://github.com/dbt-labs/dbt/discussions/5468) for information on the macros required for `GRANT` statements:
 
 ### Behavior change flags
 
@@ -678,7 +678,7 @@ See examples:
 
 #### `__version__.py`
 
-To assure that `dbt --version` provides the latest dbt core version the adapter supports, be sure include a `__version__.py` file. The filepath will be `dbt/adapters/<adapter_name>/__version__.py`. We recommend using the latest dbt core version and as the adapter is made compatible with later versions, this file will need to be updated. For a sample file, check out this [example](https://github.com/dbt-labs/dbt-snowflake/blob/main/dbt/adapters/snowflake/__version__.py).
+To assure that `dbt --version` provides the latest v1 version the adapter supports, be sure include a `__version__.py` file. The filepath will be `dbt/adapters/<adapter_name>/__version__.py`. We recommend using the latest v1 version and as the adapter is made compatible with later versions, this file will need to be updated. For a sample file, check out this [example](https://github.com/dbt-labs/dbt-snowflake/blob/main/dbt/adapters/snowflake/__version__.py).
 
 It should be noted that both of these files are included in the bootstrapped output of the `dbt-database-adapter-scaffold` so when using the scaffolding, these files will be included.
 
@@ -691,7 +691,7 @@ This document has two sections:
 
 ### Testing prerequisites
 
-- Your adapter must be compatible with <Constant name="core_v1" /> **v1.1** or newer
+- Your adapter must be compatible with <Constant name="dbt" /> **v1.1** or newer
 - You should be familiar with **pytest**: [https://docs.pytest.org](https://docs.pytest.org)
 
 ### About the testing framework
@@ -706,7 +706,7 @@ Those utilities allow you to do three basic things:
 2. **Define a sequence of dbt commands.** The most important utility  is `run_dbt()`, which returns the [results](/reference/dbt-classes#result-objects) of each dbt command. It takes a list of CLI specifiers (subcommand + flags), as well as an optional second argument, `expect_pass=False`, for cases where you expect the command to fail.
 3. **Validate the results of those dbt commands.** For example, `check_relations_equal()` asserts that two database objects have the same structure and content. You can also write your own `assert` statements, by inspecting the results of a dbt command, or querying arbitrary database objects with `project.run_sql()`.
 
-You can see the full suite of utilities, with arguments and annotations, in [`util.py`](https://github.com/dbt-labs/dbt-core/blob/1.latest/core/dbt/tests/util.py). You'll also see them crop up across a number of test cases. While all utilities are intended to be reusable, you won't need all of them for every test. In the example below, we'll show a simple test case that uses only a few utilities.
+You can see the full suite of utilities, with arguments and annotations, in [`util.py`](https://github.com/dbt-labs/dbt/blob/1.latest/core/dbt/tests/util.py). You'll also see them crop up across a number of test cases. While all utilities are intended to be reusable, you won't need all of them for every test. In the example below, we'll show a simple test case that uses only a few utilities.
 
 #### Example: a simple test case
 
@@ -869,7 +869,7 @@ Anyone who installs `dbt-core`, and wishes to define their own test cases, can u
 
 To that end, we have built and made available a [package of reusable adapter test cases](https://github.com/dbt-labs/dbt-adapters/tree/main/dbt-tests-adapter), for creators and maintainers of adapter plugins. These test cases cover basic expected functionality, as well as functionality that frequently requires different implementations across databases.
 
-For the time being, this package is also located within the `dbt-core` repository, but separate from the `dbt-core` Python package.
+For the time being, this package is also located within the `dbt-labs/dbt` repository, but separate from the `dbt-core` Python package.
 
 ### Categories of tests
 
@@ -881,7 +881,7 @@ In the course of creating and maintaining your adapter, it's likely that you wil
 
 3. **Custom tests**, for behavior that is specific to your adapter / data platform. Each <Term id="data-warehouse" /> has its own specialties and idiosyncracies. We encourage you to use the same `pytest`-based framework, utilities, and fixtures to write your own custom tests for functionality that is unique to your adapter.
 
-If you run into an issue with the core framework, or the basic/optional test cases—or if you've written a custom test that you believe would be relevant and useful for other adapter plugin developers—please open an issue or PR in the `dbt-core` repository on GitHub.
+If you run into an issue with the core framework, or the basic/optional test cases—or if you've written a custom test that you believe would be relevant and useful for other adapter plugin developers—please open an issue or PR in the `dbt-labs/dbt` repository on GitHub.
 
 ### Getting started running basic tests
 
@@ -1090,7 +1090,7 @@ class TestSimpleMaterializationsBigQuery(BaseSimpleMaterializations):
 
 It's always worth asking whether the required modifications represent gaps in perceived or expected dbt functionality. Are these simple implementation details, which any user of this database would understand? Are they limitations worth documenting?
 
-If, on the other hand, they represent poor assumptions in the "basic" test cases, which fail to account for a common pattern in other types of databases-—please open an issue or PR in the `dbt-core` repository on GitHub.
+If, on the other hand, they represent poor assumptions in the "basic" test cases, which fail to account for a common pattern in other types of databases-—please open an issue or PR in the `dbt-labs/dbt` repository on GitHub.
 
 ### Running with multiple profiles
 
@@ -1357,7 +1357,7 @@ Breaking this down:
 
 The Trusted Adapter Program exists to allow adapter maintainers to demonstrate to the dbt community that your adapter is trusted to be used in production.
 
-The very first data platform dbt supported was Redshift followed quickly by Postgres ([dbt-core#174](https://github.com/dbt-labs/dbt-core/pull/174)). In 2017, back when dbt Labs (née Fishtown Analytics) was still a data consultancy, we added support for Snowflake and BigQuery. We also turned dbt's database support into an adapter framework ([dbt-core#259](https://github.com/dbt-labs/dbt-core/pull/259/)), and a plugin system a few years later. For years, dbt Labs specialized in those four data platforms and became experts in them. However, the surface area of all possible databases, their respective nuances, and keeping them up-to-date and bug-free is a Herculean and/or Sisyphean task that couldn't be done by a single person or even a single team! Enter the dbt community which enables <Constant name="core_v1" /> to work on more than 30 different databases (32 as of Sep '22)!
+The very first data platform dbt supported was Redshift followed quickly by Postgres ([dbt-labs/dbt#174](https://github.com/dbt-labs/dbt/pull/174)). In 2017, back when dbt Labs (née Fishtown Analytics) was still a data consultancy, we added support for Snowflake and BigQuery. We also turned dbt's database support into an adapter framework ([dbt-labs/dbt#259](https://github.com/dbt-labs/dbt/pull/259/)), and a plugin system a few years later. For years, dbt Labs specialized in those four data platforms and became experts in them. However, the surface area of all possible databases, their respective nuances, and keeping them up-to-date and bug-free is a Herculean and/or Sisyphean task that couldn't be done by a single person or even a single team! Enter the dbt community which enables <Constant name="core_v1" /> to work on more than 30 different databases (32 as of Sep '22)!
 
 Free and open-source tools for the data professional are increasingly abundant. This is by-and-large a _good thing_, however it requires due diligence that wasn't required in a paid-license, closed-source software world. Before taking a dependency on an open-source project is is important to determine the answer to the following questions:
 
@@ -1365,7 +1365,7 @@ Free and open-source tools for the data professional are increasingly abundant. 
 2. Does it meet my team's specific use case?
 3. Does anyone "own" the code, or is anyone liable for ensuring it works?
 4. Do bugs get fixed quickly?
-5. Does it stay up-to-date with new <Constant name="core" /> features?
+5. Does it stay up-to-date with new dbt features?
 6. Is the usage substantial enough to self-sustain?
 7. What risks do I take on by taking a dependency on this library?
 
@@ -1399,7 +1399,7 @@ Proceed to the "Document a new adapter" step for more information.
 
 Keeping an adapter up-to-date with the latest features of dbt, as defined in [dbt-adapters](https://github.com/dbt-labs/dbt-adapters), is an integral part of being a trusted adapter. We encourage adapter maintainers to keep track of new dbt-adapter releases and support new features relevant to their platform, ensuring users have the best version of dbt. 
 
-Before [<Constant name="core_v1" /> version 1.8](/docs/dbt-versions/dbt-upgrade/upgrading-to-v1.8#new-dbt-core-adapter-installation-procedure), adapter versions needed to match the semantic versioning of <Constant name="core_v1" />. After v1.8, this is no longer required. This means users can use an adapter on v1.8+ with a different version of <Constant name="core_v1" /> v1.8+. For example, a user could use dbt-core v1.9 with dbt-postgres v1.8. 
+Before [dbt v1.8](/docs/dbt-versions/dbt-upgrade/upgrading-to-v1.8#new-dbt-core-adapter-installation-procedure), adapter versions needed to match the semantic versioning of <Constant name="core_v1" />. After v1.8, this is no longer required. This means users can use an adapter on v1.8+ with a different version of dbt v1.8+. For example, a user could use dbt-core v1.9 with dbt-postgres v1.8. 
 
 ### Community responsiveness
 

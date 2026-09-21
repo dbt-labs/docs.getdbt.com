@@ -38,7 +38,7 @@ Foreign key constraints accept two additional inputs:
 - `to`: A relation input, likely [`ref()`](/reference/dbt-jinja-functions/ref)] and [`source()`](/reference/dbt-jinja-functions/source), indicating the referenced table.
 - `to_columns`: A list of column(s) in that table containing the corresponding primary or unique key.
 
-This syntax for defining foreign keys uses `ref`, meaning it will capture dependencies and works across different environments. It's available in [<Constant name="dbt" /> **Latest**](/docs/dbt-versions/dbt-release-tracks) and [<Constant name="core" /> v1.9+](/docs/dbt-versions/dbt-upgrade/upgrading-to-v1.9).
+This syntax for defining foreign keys uses `ref`, meaning it will capture dependencies and works across different environments. It's available in [<Constant name="dbt" /> **v1 Latest**](/docs/dbt-versions/dbt-release-tracks) and [<Constant name="dbt" /> v1.9+](/docs/dbt-versions/dbt-upgrade/upgrading-to-v1.9).
 
 Since constraints support and enforcement [varies by platform](/reference/resource-properties/constraints#platform-specific-support), dbt offers two optional fields you can specify on any filter:
 
@@ -98,7 +98,7 @@ For more information on the adapters which support foreign key constraints, have
 
 In transactional databases, it is possible to define "constraints" on the allowed values of certain columns, stricter than just the data type of those values. For example, Postgres supports and enforces all the constraints in the ANSI SQL standard (`not null`, `unique`, `primary key`, `foreign key`), plus a flexible row-level `check` constraint that evaluates to a boolean expression.
 
-Most analytical data platforms support and enforce a `not null` constraint, but they either do not support or do not enforce the rest. It is sometimes still desirable to add an "informational" constraint, knowing it is _not_ enforced, for the purpose of integrating with legacy data catalog or entity-relation diagram tools ([dbt-core#3295](https://github.com/dbt-labs/dbt-core/issues/3295)). Some data platforms can optionally use primary or foreign key constraints for query optimization if you specify an additional keyword.
+Most analytical data platforms support and enforce a `not null` constraint, but they either do not support or do not enforce the rest. It is sometimes still desirable to add an "informational" constraint, knowing it is _not_ enforced, for the purpose of integrating with legacy data catalog or entity-relation diagram tools ([dbt-labs/dbt#3295](https://github.com/dbt-labs/dbt/issues/3295)). Some data platforms can optionally use primary or foreign key constraints for query optimization if you specify an additional keyword.
 
 To that end, there are two optional fields you can specify on any filter:
 - `warn_unenforced: False` to skip warning on constraints that are supported, but not enforced, by this data platform. The constraint will be included in templated DDL.
@@ -552,7 +552,7 @@ alter table schema_name.my_model add constraint 472394792387497234 check (id > 0
 
 ## Custom constraints 
 
-In <Constant name="dbt" /> and <Constant name="core" />, you can use custom constraints on models for the advanced configuration of tables. Different data warehouses support different syntax and capabilities. 
+In dbt, you can use custom constraints on models for the advanced configuration of tables. Different data warehouses support different syntax and capabilities. 
 
 Custom constraints allow you to add configuration to specific columns. For example:
 
