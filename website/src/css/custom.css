@@ -1058,6 +1058,16 @@ html[data-theme="dark"] .version-subpicker__option:hover {
   gap: 8px;
 }
 
+/* While the window is actively resized, kill transitions so the navbar and its
+   open dropdown menus don't replay their animations and "dip" mid-drag. The
+   is-resizing class is toggled by src/clientModules/resizeTransitionStopper.js. */
+html.is-resizing .navbar,
+html.is-resizing .navbar *,
+html.is-resizing .navbar *::before,
+html.is-resizing .navbar *::after {
+  transition: none !important;
+}
+
 /* Custom nav styles from right before mobile,
    up to where nav begins to hit logo
 */
@@ -2219,6 +2229,11 @@ button .DocSearch-Button-Keys {
 
   .navbar {
     padding: 0 var(--ifm-navbar-padding-horizontal) 0 0;
+    /* Let the navbar grow instead of clamping to a fixed height, so nav items
+       that wrap to a second line (for example with enlarged browser text) stay
+       contained above the bottom separator rather than overlapping it. */
+    height: auto;
+    min-height: var(--ifm-navbar-height);
   }
 
   html.docs-version-current aside html.docs-version-current .sidebar_node_modules-\@docusaurus-theme-classic-lib-next-theme-DocSidebar-styles-module {
