@@ -38,29 +38,21 @@ When specifying a GitHub repository in the <Constant name="dbt_platform" /> usin
 
 <Constant name="dbt" /> connects to GitHub through a GitHub App. You have two options:
 
-| Application | Who it's for | What you set up |
-| ----------- | ------------ | --------------- |
-| Shared <Constant name="dbt" /> application (default) | Any plan, connecting to `github.com` | Nothing to configure. Install the <Constant name="dbt" /> app in your GitHub organization. See [Installing dbt in your GitHub account](#installing-dbt-in-your-github-account). |
-| Your own GitHub application | Enterprise and Enterprise+ accounts on GitHub Enterprise Server, or GitHub with EU data residency | Register a GitHub App in your organization and add its details to <Constant name="dbt" />. See [Custom GitHub application](#custom-github-application). |
+- Shared <Constant name="dbt" /> application (default), available to any org connecting to `github.com`. [Install the <Constant name="dbt" /> app](#installing-dbt-in-your-github-account) in your GitHub organization.
+- Your own GitHub application, available on Enterprise and Enterprise+ accounts on GitHub Enterprise Server, or GitHub with EU data residency. [Register a GitHub App](#custom-github-application) in your organization and add its details to <Constant name="dbt" />. See [Custom GitHub application]. |
 
 You can use one GitHub application per <Constant name="dbt" /> account, not one per project.
 
 ## Installing dbt in your GitHub account
 
-You can connect your <Constant name="dbt" /> account to GitHub by installing the <Constant name="dbt" /> application in your GitHub organization and providing access to the appropriate repositories. 
-To connect your <Constant name="dbt" /> account to your GitHub account: 
+You can connect your <Constant name="dbt" /> account to GitHub by installing the <Constant name="dbt" /> application in your GitHub organization and providing access to the right repos:
 
 1. From <Constant name="dbt" />, click on your account name in the left side menu and select **Account settings**. 
-
 2. Select **Personal profile** under the **Your profile** section.
-
 3. Scroll down to **Linked accounts**.
-
 <Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/connecting-github/github-connect-1.png" width= "80%" title="Navigated to Linked Accounts under your profile"/>
-
 4. In the **Linked accounts** section, set up your GitHub account connection to <Constant name="dbt" /> by clicking **Link** to the right of GitHub. This redirects you to your account on GitHub where you will be asked to install and configure the <Constant name="dbt" /> application. 
-
-5. Select the GitHub organization and repositories <Constant name="dbt" /> should access.
+5. Select the GitHub organization and repos <Constant name="dbt" /> should access.
 
    <Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/connecting-github/github-app-install.png" width="50%" title="Installing the dbt application into a GitHub organization"/>
 
@@ -82,32 +74,30 @@ If you are your GitHub organization owner, you can also configure the <Constant 
 
 ## Custom GitHub application <Lifecycle status="managed,managed_plus" /> {#custom-github-application}
 
-The shared <Constant name="dbt" /> GitHub App is hosted per [region](/docs/platform/about-platform/access-regions-ip-addresses), so it can only reach repositories on `github.com`. If your organization runs [GitHub Enterprise Server](https://docs.github.com/en/enterprise-server@3.14/admin/overview/about-github-enterprise-server) or [GitHub with EU data residency](https://github.com/enterprise/data-residency), register your own GitHub application and point <Constant name="dbt" /> at it. You keep the full native integration, including CI.
+The shared <Constant name="dbt" /> GitHub App is hosted per [region](/docs/platform/about-platform/access-regions-ip-addresses), so it can only reach repositories on `github.com`. If your organization runs [GitHub Enterprise Server](https://docs.github.com/en/enterprise-server@3.14/admin/overview/about-github-enterprise-server) or [GitHub with EU data residency](https://github.com/enterprise/data-residency), register your own GitHub application and point <Constant name="dbt" /> at it. 
 
-An account admin (or security admin) sets this up once:
+An account admin (or security admin) can set this up once:
 
-1. [Register a GitHub application](#register-a-github-application) in your GitHub organization.
-2. [Add your GitHub application to <Constant name="dbt" />](#add-your-github-application-to-dbt).
+1. [Register a GitHub application](#register-a-github-application) in your GitHub organization
+2. [Add your GitHub application to <Constant name="dbt" />](#add-your-github-application-to-dbt)
 
 Then each developer on the account needs to [relink their GitHub profile](#relink-your-github-profile).
 
 ### Register a GitHub application
 
-Create the app in your GitHub organization, not under a personal account, so it survives people leaving. For the full walkthrough on the GitHub side, see GitHub's guide to [registering a GitHub App](https://docs.github.com/en/apps/creating-github-apps/registering-a-github-app/registering-a-github-app).
+We recommend creating the app in your GitHub organization instead of a personal account to ensure the connection doesn't break should a person leave. For the full walkthrough on the GitHub side, check out GitHub's guide to [registering a GitHub App](https://docs.github.com/en/apps/creating-github-apps/registering-a-github-app/registering-a-github-app).
 
 1. In <Constant name="dbt" />, go to **Account settings** > **Integrations** > **Git** and expand the **GitHub** section. Select **Copy** next to **Redirect URL** &mdash; you need it in the next step. Leave this page open.
-
 2. In your GitHub organization, go to **Settings** > **Developer settings** > **GitHub Apps** and select **New GitHub App**.
-
 3. Enter the following:
-
+    <SimpleTable>
     | Field | Value |
     | ----- | ----- |
     | **GitHub App name** | Something recognizable, such as `dbt platform` |
     | **Homepage URL** | Your <Constant name="dbt" /> [access URL](/docs/platform/about-platform/access-regions-ip-addresses) |
-    | **Callback URL** | The **Redirect URL** you copied from <Constant name="dbt" /> |
+    | **Redirect URL** | The **Redirect URL** you copied from <Constant name="dbt" /> |
     | **Webhook** | Leave **Active** selected |
-
+    </SimpleTable>
 4. Grant the app these repository permissions:
 
     - Read access to metadata
@@ -119,12 +109,9 @@ Create the app in your GitHub organization, not under a personal account, so it 
     - Read and write access to Workflows
 
 5. Select **Create GitHub App**. GitHub generates an **App ID** and a **Client ID**.
-
-6. Generate a **Client secret** and copy it somewhere safe &mdash; GitHub only shows it once.
-
-7. Under **Private keys**, select **Generate a private key**. GitHub downloads a `.pem` file. You'll paste its contents into <Constant name="dbt" />.
-
-8. Install the app into your organization and note its **install URL**. See GitHub's docs on [sharing your app via an install link](https://docs.github.com/en/apps/sharing-github-apps/sharing-your-github-app#sharing-your-github-app-via-an-install-link).
+6. Generate a **Client secret** and copy it somewhere safe as GitHub only shows it once.
+7. Under **Private keys**, select **Generate a private key**. GitHub downloads a `.pem` file. You'll then paste its contents into <Constant name="dbt" />.
+8. Install the app into your organization and note its **install URL**. Refer to GitHub's docs on [sharing your app via an install link](https://docs.github.com/en/apps/sharing-github-apps/sharing-your-github-app#sharing-your-github-app-via-an-install-link).
 
 If you're a Business Critical customer using [IP restrictions](/docs/platform/secure/ip-restrictions), make sure your GitHub instance's CIDRs are allowed, or the connection will fail.
 
@@ -137,9 +124,8 @@ If your account already uses the shared <Constant name="dbt" /> GitHub App, swit
 :::
 
 1. In <Constant name="dbt" />, go back to **Account settings** > **Integrations** > **Git** and expand the **GitHub** section.
-
 2. Enter the following:
-
+    <SimpleTable>
     | Field | Value |
     | ----- | ----- |
     | **GitHub base URL** | Your GitHub hostname. Use `https://github.com` for GitHub.com, or your own hostname for GitHub Enterprise Server, such as `https://github.yourgreatcompany.com` |
@@ -148,23 +134,23 @@ If your account already uses the shared <Constant name="dbt" /> GitHub App, swit
     | **Client secret** | The client secret you generated |
     | **Private key** | The full contents of the `.pem` file you downloaded, including the `BEGIN` and `END` lines |
     | **Install URL** | Optional. Your app's install link |
-
+    </SimpleTable>
     <Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/connecting-github/github-application-platform.png" width="85%" title="Adding your own GitHub application under Account settings, Integrations, Git"/>
 
-3. Select **Save**. <Constant name="dbt" /> validates the credentials against GitHub. If something's wrong &mdash; a bad app ID, private key, or base URL &mdash; <Constant name="dbt" /> shows an error and doesn't save the configuration.
+3. Select **Save**. <Constant name="dbt" /> validates the credentials against GitHub. If something's isn't right, <Constant name="dbt" /> shows an error and doesn't save the configuration.
 
 <Constant name="dbt" /> now routes all GitHub authorization for this account through your application.
 
 ### Relink your GitHub profile
 
-Every developer authenticates against the account's GitHub application, so repository access matches what your GitHub admin actually granted them. After an admin adds or changes the application, relink your profile:
+Every developer authenticates against the account's GitHub application, so repo access matches what your GitHub admin actually granted them. After an admin adds or changes the application, relink your profile:
 
 1. From <Constant name="dbt" />, click your account name in the left side menu and select **Account settings**.
 2. Select **Personal profile** under the **Your profile** section.
 3. Scroll to **Linked accounts** and select **Unlink** next to GitHub if an old connection is still listed.
 4. Select **Link** and authorize your organization's GitHub application.
 
-For the full walkthrough, see [Authenticate your personal GitHub account](#authenticate-your-personal-github-account).
+For the full walkthrough, refer to [Authenticate your personal GitHub account](#authenticate-your-personal-github-account).
 
 ### Remove a GitHub integration
 
@@ -172,11 +158,13 @@ Account admins and security admins can delete a GitHub integration from **Accoun
 
 :::caution Removing an integration disconnects everyone
 
-Deleting the integration breaks repository access and CI for the whole account until you configure a new one. You can't stage a replacement first, because an account supports only one GitHub integration at a time.
+Deleting the integration breaks repo access and CI for the _whole_ account until you configure a new one. You can't stage a replacement first, because an account supports only one GitHub integration at a time.
 
 :::
 
 ### Limitations
+
+Note that the following limitations apply:
 
 - One GitHub application per <Constant name="dbt" /> account. You can't set a different application per project.
 - You can't configure multiple GitHub integrations on the same account.
