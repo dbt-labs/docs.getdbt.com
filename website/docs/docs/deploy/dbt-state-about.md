@@ -7,7 +7,6 @@ tags: ['dbt State']
 availability: everywhere_usage
 ---
 
-import DbtStateAppRetirement from '/snippets/_dbt-state-app-retirement.md';
 
 # About dbt State
 
@@ -73,7 +72,9 @@ In self-managed deployments, you can also use dbt State with `state:*` selectors
 
 dbt State is connected to your existing <Constant name="dbt_platform" /> account. Your dbt State credentials are the same as your platform credentials, and dbt State has access to your platform environments and jobs.
 
-<DbtStateAppRetirement />
+:::caution dbt State app deprecated
+The standalone dbt State app (`app.state.dbt.com`) is deprecated. To continue using dbt State, [create a free <Constant name="dbt_platform" /> account](http://us1.dbt.com/register?_dbtsrc=dbt-state) &mdash; your free trial will be extended upon account creation.
+:::
 
 
 ## FAQs
