@@ -38,8 +38,8 @@ When specifying a GitHub repository in the <Constant name="dbt_platform" /> usin
 
 <Constant name="dbt" /> connects to GitHub through a GitHub App. You have two options:
 
-- Shared <Constant name="dbt" /> application (default), available to any org connecting to `github.com`. [Install the <Constant name="dbt" /> app](#installing-dbt-in-your-github-account) in your GitHub organization.
-- Your own GitHub application, available on Enterprise and Enterprise+ accounts on GitHub Enterprise Server, or GitHub with EU data residency. [Register a GitHub App](#custom-github-application) in your organization and add its details to <Constant name="dbt" />. See [Custom GitHub application]. |
+- [Shared <Constant name="dbt" /> application (default)](#installing-dbt-in-your-github-account), available to any org connecting to `github.com`. 
+- Your own [custom GitHub application](#custom-github-application), available on Enterprise and Enterprise+ accounts on GitHub Enterprise Server, or GitHub with EU data residency.
 
 You can use one GitHub application per <Constant name="dbt" /> account, not one per project.
 
