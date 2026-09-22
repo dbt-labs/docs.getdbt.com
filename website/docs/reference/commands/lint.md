@@ -56,7 +56,7 @@ These rules are off by default. and to turn them on, add a `rules` line to your 
 ```ini
 [sqlfluff]
 templater = dbt
-dialect = <your_dialect>
+dialect = your_dialect
 rules = DBT02,DBT03,DBT04,DBT05
 ```
 
