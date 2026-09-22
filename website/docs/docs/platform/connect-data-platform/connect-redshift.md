@@ -24,7 +24,7 @@ For example SQL grants in Redshift, refer to [Redshift permissions](/reference/d
 
 Use the following fields when creating a connection:
 
-| Field | Required | Description | Examples |
+| Field | Required? | Description | Examples |
 | ----- | -------- | ----------- | -------- |
 | Server Hostname | Required | The hostname of the database to connect to. This can either be a hostname or an IP address. Refer to [Find your cluster](https://docs.aws.amazon.com/redshift/latest/mgmt/connecting-connection-string.html) to find the hostname. | Redshift: `hostname.region.redshift.amazonaws.com` |
 | Port | Required | Usually 5439 (Redshift) | `5439` |
