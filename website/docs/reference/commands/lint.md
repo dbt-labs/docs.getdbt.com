@@ -52,19 +52,33 @@ dbt lint [FILE] [flags]
 
 ## dbt-specific rules
 
-Beyond the standard SQLFluff rule set, `dbt lint` adds a small set of dbt-specific rules, using the `DBT##` code prefix. Add these codes to your `.sqlfluff` file's `rules` or `exclude_rules` settings just like any other rule code.
+Beyond the standard SQLFluff rule set, `dbt lint` ships five dbt-specific rules, under the `DBT##` code prefix. These rules catch dbt patterns that generic SQL linting can't, like hard-coded relation names instead of `ref()`.
 
 :::note
-This list is preliminary and unconfirmed. Details may change before general availability.
+This is a preliminary list. Details may change before general availability.
 :::
 
-| Code | Dotted name | Rule |
-|------|-------------|------|
-| `DBT01` | `dbt.import_ctes` | Every `ref()`/`source()` must be imported through a top-level CTE, not referenced inline |
-| `DBT02` | `dbt.join_condition_or` | A `JOIN`'s `ON` clause must not contain `OR` |
-| `DBT03` | `dbt.function_wrapped_filter_column` | A comparison must not wrap a bare column reference in a function call |
-| `DBT04` | `dbt.leading_wildcard_like` | A `LIKE`/`ILIKE` pattern must not start with a wildcard |
-| `DBT05` | `dbt.hard_coded_reference` | A `ref()`/`source()` must not be hard-coded to a literal string |
+These rules are off by default. To turn them on, add `templater = dbt` and a `rules` line to your `.sqlfluff` file:
+
+```ini
+[sqlfluff]
+templater = dbt
+dialect = <your_dialect>
+rules = DBT02,DBT03,DBT04,DBT05
+```
+
+- `templater = dbt` is required. Any other value (including `jinja` or `dbt-cloud`) falls back to standard SQLFluff behavior and skips these rules.
+- List only the rule codes you want. There's no shortcut value (like `all`) that turns on every dbt-specific rule at once.
+- All dbt-specific rules report at **warning** severity, so `dbt lint` still exits `0` even when they find violations. If you want a violation to fail CI, check the lint output yourself rather than relying on the exit code.
+
+| Code | Dotted name | Catches |
+|------|-------------|---------|
+| `DBT02` | `dbt.join_condition_or` | A `JOIN`'s `ON` clause that contains `OR` |
+| `DBT03` | `dbt.function_wrapped_filter_column` | A comparison that wraps a bare column reference in a function call |
+| `DBT04` | `dbt.leading_wildcard_like` | A `LIKE`/`ILIKE` pattern that starts with a wildcard |
+| `DBT05` | `dbt.hard_coded_reference` | A hard-coded relation name instead of `ref()`/`source()` |
+
+`DBT01` (`dbt.import_ctes`) also exists, and is meant to catch a `ref()`/`source()` referenced inline instead of through a top-level CTE. It doesn't fire yet in this preview build, so leave it out of your `rules` line until this note is updated.
 
 ## Jinja render modes
 
