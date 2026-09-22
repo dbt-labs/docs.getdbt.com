@@ -49,7 +49,7 @@ dbt lint [FILE] [flags]
 
 ## dbt-specific rules
 
-`dbt lint` also ships five dbt-specific rules, under the `DBT##` code prefix. These rules catch dbt patterns that generic SQL linting can't, like hard-coded relation names instead of `ref()`.
+`dbt lint` also ships five dbt-specific rules, under the `DBT` code prefix. These rules catch dbt patterns that generic SQL linting can't, like hard-coded relation names instead of `ref()`.
 
 These rules are off by default and to turn them on, add a `rules` line to your `.sqlfluff` file:
 
