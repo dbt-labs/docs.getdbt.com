@@ -1074,7 +1074,7 @@ const sidebarSettings = {
         "docs/dbt-versions/experimental-features",
         {
           type: "link",
-          label: "dbt changelog",
+          label: "dbt v2 changelog",
           href: "https://github.com/dbt-labs/dbt/blob/main/CHANGELOG-dbt.md",
         },
         {
