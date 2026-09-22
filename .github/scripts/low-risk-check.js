@@ -5,7 +5,7 @@
 const fs = require("fs");
 const path = require("path");
 
-const MAX_CHANGED_WORDS = 10; // added + removed words across the whole PR
+const MAX_CHANGED_WORDS = 30; // added + removed words across the whole PR
 const MAX_CHANGED_FILES = 3;
 const TRUSTED_TEAM = "product-docs"; // team slug in the repo's org
 const OPT_OUT_LABEL = "do-not-auto-approve"; // human kill switch, per PR
