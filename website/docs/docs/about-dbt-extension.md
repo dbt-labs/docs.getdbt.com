@@ -164,4 +164,4 @@ Refer to the [Hybrid development with <Constant name="dbt_platform"/> and dbt v2
 
 import AboutFusion from '/snippets/_about-fusion.md';
 
-<AboutFusion />
+<AboutFusion hideExtensionLink/>
