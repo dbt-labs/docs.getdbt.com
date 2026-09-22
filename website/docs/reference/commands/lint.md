@@ -58,7 +58,7 @@ Beyond the standard SQLFluff rule set, `dbt lint` ships five dbt-specific rules,
 This is a preliminary list. Details may change before general availability.
 :::
 
-These rules are off by default. To turn them on, add `templater = dbt` and a `rules` line to your `.sqlfluff` file:
+These rules are off by default. To turn them on, add a `rules` line to your `.sqlfluff` file:
 
 ```ini
 [sqlfluff]
@@ -67,7 +67,10 @@ dialect = <your_dialect>
 rules = DBT02,DBT03,DBT04,DBT05
 ```
 
-- `templater = dbt` is required. Any other value (including `jinja` or `dbt-cloud`) falls back to standard SQLFluff behavior and skips these rules.
+:::note
+Set `templater = dbt` to avoid a spurious `dbt9000` warning, but it doesn't gate these rules — `dbt-cloud` and other values still run them.
+:::
+
 - List only the rule codes you want. There's no shortcut value (like `all`) that turns on every dbt-specific rule at once.
 - All dbt-specific rules report at **warning** severity, so `dbt lint` still exits `0` even when they find violations. If you want a violation to fail CI, check the lint output yourself rather than relying on the exit code.
 
