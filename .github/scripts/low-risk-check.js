@@ -109,7 +109,7 @@ async function evaluate({ github, context, core }) {
   if (!orgToken) {
     reasons.push("ORG_TOKEN is not available, cannot verify team membership");
   } else {
-    const org = require("@actions/github").getOctokit(orgToken);
+    const org = new github.constructor({ auth: orgToken });
     try {
       const membership = await org.rest.teams.getMembershipForUserInOrg({
         org: owner,
