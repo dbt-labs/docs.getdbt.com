@@ -26,7 +26,7 @@ The following fields are required when creating a connection:
 
 | Field | Description | Examples |
 | ----- | ----------- | -------- |
-| Host Name | The hostname of the database to connect to. This can either be a hostname or an IP address. Refer to [Find your cluster](https://docs.aws.amazon.com/redshift/latest/mgmt/connecting-connection-string.html) to find the hostname. | Redshift: `hostname.region.redshift.amazonaws.com` |
+| Server Hostname | The hostname of the database to connect to. This can either be a hostname or an IP address. Refer to [Find your cluster](https://docs.aws.amazon.com/redshift/latest/mgmt/connecting-connection-string.html) to find the hostname. | Redshift: `hostname.region.redshift.amazonaws.com` |
 | Port | Usually 5439 (Redshift) | `5439` |
 | Database | The logical database to connect to and run queries against. | `analytics` |
 
