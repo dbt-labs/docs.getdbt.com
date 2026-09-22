@@ -1,5 +1,5 @@
 ---
-title: "Contribute a dbt Core v2.0 adapter"
+title: "Contribute a dbt v2 adapter"
 id: "contribute-dbt-adapters-v2"
 pagination_next: null
 availability:
@@ -8,31 +8,31 @@ availability:
 ---
 
 :::caution Work in progress
-This guide is a work in progress — synthesized from internal Fusion v2 adapter team docs, DuckDB/ClickHouse reference implementations, the Exasol community adapter, and the v1 adapter creation guide.
+This guide is a work in progress — synthesized from internal v2 adapter team docs, DuckDB/ClickHouse reference implementations, the Exasol community adapter, and the v1 adapter creation guide.
 
 **Community contribution scope:** You are responsible for **Phase 1 (foundation)** only — connecting, running macros, and basic materializations. Phase 2 (SQL static analysis) is led by dbt Labs after your Phase 1 PR is merged.
 :::
 
 ## Step 1: Introduction
 
-dbt Core v2.0 adapters work very differently from dbt Core v1.x adapters. In v1, each adapter was a standalone Python package that implemented a fragmented Python interface. In dbt Core v2.0, adapters live **inside a monorepo written in Rust**, connected to warehouses via ADBC (Arrow Database Connectivity) drivers — and the community contribution model has changed accordingly.
+<Constant name="core_v2" /> adapters work very differently from <Constant name="core_v1" /> adapters. In v1, each adapter was a standalone Python package that implemented a fragmented Python interface. In v2, adapters live **inside a monorepo written in Rust**, connected to warehouses via ADBC (Arrow Database Connectivity) drivers — and the community contribution model has changed accordingly.
 
-This guide walks you through contributing a new dbt Core v2.0 adapter to dbt-core as a community member. The file breakdown in the [reference section](#reference-file-by-file-implementation-guide) shows the ~13 files a complete community dbt Core v2.0 adapter touches. Exasol, a community contributed dbt Core v2.0 adapter, is the example used throughout this guide.
+This guide walks you through contributing a new v2 adapter to `dbt-labs/dbt` as a community member. The file breakdown in the [reference section](#reference-file-by-file-implementation-guide) shows the ~13 files a complete community v2 adapter touches. Exasol, a community contributed v2 adapter, is the example used throughout this guide.
 
-:::info What is dbt Core v2.0?
-dbt Core v2.0 is the new Rust-based dbt engine. Adapters in Core v2 are written in Rust and live inside the `dbt-core` monorepo, rather than as standalone Python packages.
+:::info What is <Constant name="core_v2" />?
+dbt v2 is the new Rust-based dbt engine. Adapters in v2 are written in Rust and live inside the `dbt-labs/dbt` monorepo, rather than as standalone Python packages.
 :::
 
 ### How adapters are different now
 
-In dbt Core v1.x, every adapter is:
+In <Constant name="core_v1" />, every adapter is:
 - A **separate Python package** (e.g. `dbt-snowflake`, `dbt-bigquery`)
 - **Community-owned** and maintained independently
 - **Dynamically loaded** at runtime via Python's plugin system
 - Built upon vendor-maintained Python SDK connectors/drivers
 
-In dbt Core v2.0, adapters are:
-- **Part of the `dbt-core` monorepo**, contributed as PRs
+In <Constant name="core_v2" />, adapters are:
+- **Part of the `dbt-labs/dbt` monorepo**, contributed as PRs
 - **Written in Rust** (with Jinja SQL macros still used for SQL logic)
 - Connected to warehouses via **ADBC drivers** — a unified driver interface that abstracts away connection management
 - Organized by **vertical** (feature area) rather than by warehouse — meaning a bug fix in one crate often benefits all adapters
@@ -69,12 +69,12 @@ dbt Labs does not write drivers. If your warehouse doesn't have an ADBC driver y
 
 **What "having an ADBC driver" actually means**
 
-For certain adapters (Snowflake, BigQuery, Databricks, Redshift, DuckDB, ClickHouse, Salesforce, Spark, SQL Server), dbt Core v2.0 automatically downloads the correct driver binary from the dbt Labs CDN on first use. Users never have to think about it.
+For certain adapters (Snowflake, BigQuery, Databricks, Redshift, DuckDB, ClickHouse, Salesforce, Spark, SQL Server), v2 automatically downloads the correct driver binary from the dbt Labs CDN on first use. Users never have to think about it.
 
 Community adapters don't have CDN support. Instead, <Constant name="fusion" /> looks for a shared library by name on the user's system — e.g. `libadbc_driver_exasol.dylib` on macOS, `libadbc_driver_exasol.so` on Linux. If the file isn't present, the connection fails at runtime.
 
 This means two things for you as a contributor:
-1. **The driver binary must exist somewhere.** It's a compiled shared library (`.dylib`/`.so`/`.dll`) that implements the ADBC C ABI for your warehouse. Exasol's driver is `exarrow-rs`, a separate Rust crate maintained by Exasol — not part of `dbt-core` and not in `apache/arrow-adbc`. Your warehouse's driver will likely live in a similar separate repo.
+1. **The driver binary must exist somewhere.** It's a compiled shared library (`.dylib`/`.so`/`.dll`) that implements the ADBC C ABI for your warehouse. Exasol's driver is `exarrow-rs`, a separate Rust crate maintained by Exasol — not part of `dbt` and not in `apache/arrow-adbc`. Your warehouse's driver will likely live in a similar separate repo.
 2. **Your users will need to install it manually.** Unlike first-party adapters, there's no auto-download. Your documentation (Step 6) needs to tell users where to get the driver and how to install it.
 
 Check whether a driver already exists for your warehouse:
@@ -95,7 +95,7 @@ If no driver exists yet, building one is a separate project that comes before th
 Skip to the checklist below, then go straight to Step 4. You won't have macro SQL or connection logic to port, but the rest of the guide (crate structure, Rust patterns, AI workflow) still applies.
 :::
 
-Most community contributors aren't building from scratch — they're porting an adapter they already maintain or use in Python for dbt Core v1. If that's you, **you have a significant head start**, and this is the most realistic path for the vast majority of contributors.
+Most community contributors aren't building from scratch — they're porting an adapter they already maintain or use in Python for <Constant name="core_v1" />. If that's you, **you have a significant head start**, and this is the most realistic path for the vast majority of contributors.
 
 Before writing any Rust, check a few things:
 
@@ -107,7 +107,7 @@ Check the [trusted adapters](/docs/trusted-adapters) and [community adapters](/d
 
 Some warehouses already appear in v2's `AdapterType` enum but aren't fully implemented yet — the enum variant exists, which means the boilerplate is partially in place. When you add the remaining code, the compiler shows you exactly what's still missing. The warehouses in this state are:
 
-| Warehouse | v1 adapter | Fusion status |
+| Warehouse | v1 adapter | dbt v2 status |
 |-----------|------------|---------------|
 | Athena | [dbt-athena](https://github.com/dbt-athena/dbt-athena) (trusted) | `AdapterType::Athena` exists — needs auth, macros, adapter arms |
 | Trino | [dbt-trino](https://github.com/starburstdata/dbt-trino) (trusted) | `AdapterType::Trino` exists — needs auth, macros, adapter arms |
@@ -123,26 +123,26 @@ For warehouses not yet in `AdapterType` at all (MySQL, Hive, Vertica, SQL Server
 |---|---|---|
 | `macros/adapters.sql` | `dbt-loader/.../dbt-<wh>/macros/adapters.sql` | Mostly a direct port — same `<wh>__` dispatch prefix, same macro names, same Jinja patterns |
 | `macros/catalog.sql` | Same location | The catalog SQL (`list_relations_without_caching`, `get_catalog`) transfers almost verbatim |
-| Custom materializations and adapter-overrides | Same location | Look out for Jinja that might not yet be supported in dbt Core v2.0; that will need to be addressed separately |
+| Custom materializations and adapter-overrides | Same location | Look out for Jinja that might not yet be supported in v2; that will need to be addressed separately |
 | Profile fields in `credentials.py` / `profile_template.yml` | `DbConfig` struct in `dbt-schemas` | Each profile field becomes a struct field — optional fields use `Option<T>` |
 | Connection URI / DSN construction in `connections.py` | `dbt-auth/src/<wh>/mod.rs` | The URI building logic maps cleanly to the auth module pattern |
-| `BaseRelation.quote_policy` / identifier casing behavior | `Policy::new(...)` in `relation_object.rs` | The 3-part vs. 2-part name structure and quote flags map 1:1 to the dbt Core v2.0 `Policy` struct |
+| `BaseRelation.quote_policy` / identifier casing behavior | `Policy::new(...)` in `relation_object.rs` | The 3-part vs. 2-part name structure and quote flags map 1:1 to the v2 `Policy` struct |
 | Catalog introspection SQL in macros and `adapter.py` | `get_relation.rs` and Jinja macros | The system catalog table names and queries you already know transfer directly |
 
 **What doesn't transfer by design**
 
-A few components won't transfer 1:1 from v1 to dbt Core v2.0 — meaning less code and maintenance for you:
+A few components won't transfer 1:1 from v1 to v2 — meaning less code and maintenance for you:
 - `ConnectionManager` methods (`open`, `cancel`, `get_response`, `execute`) — In v1, these were your responsibility to implement against the Python DB API 2.0 spec. In v2, connection management is owned entirely by the ADBC driver.
 - Python adapter class hierarchy and execution-wrapping methods — now handled by `match adapter_type()` expressions in the shared `adapter_impl.rs` (Step 4.5 explains how these work).
 - `setup.py` / package dependencies on `dbt-core` — dbt Labs handles packaging and distribution once your PR is merged. No `setup.py`, no PyPI release, and no version pinning required.
 
 **How to use the v1 adapter with AI**
 
-The Jinja macros are the biggest asset. Feed your LLM your v1 `macros/adapters.sql` alongside the reference `adapters.sql` (in the file breakdown at the bottom of this guide) and ask it to port the macros into the Fusion structure. The SQL logic is the same; you're confirming the dialect is right and the system catalog table names match.
+The Jinja macros are the biggest asset. Feed your LLM your v1 `macros/adapters.sql` alongside the reference `adapters.sql` (in the file breakdown at the bottom of this guide) and ask it to port the macros into the v2 structure. The SQL logic is the same; you're confirming the dialect is right and the system catalog table names match.
 
 For profile config and auth, feed your LLM your v1 `credentials.py` or `profile_template.yml` alongside the reference `DbConfig` struct and auth module (see the file breakdown below). Field names and connection parameters usually map directly.
 
-The most common mismatch: v1 `connections.py` has a lot of Python connection-management code that has no equivalent in Core v2 — the driver handles all of that. Focus only on URI/DSN construction and credential fields — skip anything related to cursors, retries, or connection pooling.
+The most common mismatch: v1 `connections.py` has a lot of Python connection-management code that has no equivalent in v2 — the driver handles all of that. Focus only on URI/DSN construction and credential fields — skip anything related to cursors, retries, or connection pooling.
 
 ### Dev machine setup
 
@@ -155,8 +155,8 @@ rustup show  # verify
 go version  # verify
 
 # Clone the repo
-git clone https://github.com/dbt-labs/dbt-core
-cd dbt-core
+git clone https://github.com/dbt-labs/dbt
+cd dbt
 
 # Verify you can build
 cargo build --bin dbt
@@ -192,7 +192,7 @@ Every missing case is a compile error, so the AI always has a precise specificat
 - **Your warehouse's specifics** — system catalog table names and the connection fields from your `profiles.yml`.
 
 **Watch out for:**
-- **Hallucinated file paths** — AI often invents Fusion paths. Use the file breakdown below as ground truth.
+- **Hallucinated file paths** — AI often invents v2 paths. Use the file breakdown below as ground truth.
 - **Always verify with the type checker** — run `cargo check -p <crate>` after any AI-generated changes.
 - **SQL macro patterns from v1** may not apply cleanly in <Constant name="fusion" />. Compare against the reference `adapters.sql` in `crates/dbt-loader/src/dbt_macro_assets/dbt-exasol/macros/adapters.sql` in [dbt-labs/dbt-fusion](https://github.com/dbt-labs/dbt-fusion).
 
@@ -204,9 +204,9 @@ Before writing code, it helps to understand the layers you'll be working in.
 
 ### Why ADBC?
 
-A key architectural decision in Core v2 is the use of **ADBC (Arrow Database Connectivity)** as the unified driver interface.
+A key architectural decision in <Constant name="core_v2" /> is the use of **ADBC (Arrow Database Connectivity)** as the unified driver interface.
 
-In dbt Core v1.x, adapters connected via Python drivers — often wrapping `pyodbc` or proprietary connection mechanisms. Each adapter owned its connection logic entirely.
+In <Constant name="core_v1" />, adapters connected via Python drivers — often wrapping `pyodbc` or proprietary connection mechanisms. Each adapter owned its connection logic entirely.
 
 In v2, each warehouse connects through an **ADBC driver** — a pre-compiled binary that handles the wire protocol, authentication handshakes, and connection pooling. Your adapter code never touches any of that. For CDN-supported first-party adapters, <Constant name="fusion" /> downloads this driver automatically on first use. For community adapters, users install it manually — which is why Step 2 covers finding or building a driver.
 
@@ -214,7 +214,7 @@ ADBC is column-native end-to-end — if your warehouse supports columnar output 
 
 ### The vertical model
 
-Unlike v1 where *each warehouse* had its own monolithic adapter class (`SnowflakeAdapter`, `BigqueryAdapter`), Core v2 organizes adapter logic by **vertical** — feature areas that *span all warehouses*:
+Unlike v1 where *each warehouse* had its own monolithic adapter class (`SnowflakeAdapter`, `BigqueryAdapter`), v2 organizes adapter logic by **vertical** — feature areas that *span all warehouses*:
 - **`dbt-xdbc`** — driver loading, ADBC connections (all warehouses)
 - **`dbt-auth`** — credential resolution (all warehouses, per-warehouse modules)
 - **`dbt-adapter`** — a single `ConcreteAdapter` with warehouse-specific behavior driven by `match adapter_type()`, not per-warehouse structs
@@ -261,7 +261,7 @@ profiles.yml / dbt_project.yml
 
 ### Crate map
 
-In Rust, a **crate** is a package — the unit of compilation, roughly equivalent to a "library" or "module" in other languages. The `dbt-core` monorepo has multiple crates, each responsible for one vertical slice of functionality across all warehouses. This is a quick-reference map of the six crates you'll touch to build your adapter, in the order you'll work through them in Step 4.
+In Rust, a **crate** is a package — the unit of compilation, roughly equivalent to a "library" or "module" in other languages. The `dbt-labs/dbt` monorepo has multiple crates, each responsible for one vertical slice of functionality across all warehouses. This is a quick-reference map of the six crates you'll touch to build your adapter, in the order you'll work through them in Step 4.
 
 | Crate | Location | What you touch |
 |---|---|---|
@@ -519,7 +519,7 @@ The loader discovers adapter packages by scanning `src/dbt_macro_assets/`. You d
 | File | What to do |
 |---|---|
 | `dbt_macro_assets/dbt-<warehouse>/dbt_project.yml` | Adapter plugin project definition: `name: dbt_<warehouse>`, `macro-paths: ["macros"]` |
-| `macros/adapters.sql` | Core adapter macros: `create_schema`, `drop_schema`, `drop_relation`, `rename_relation`, `truncate_relation`, `create_table_as`, `create_view_as`, `list_schemas`, `check_schema_exists`, `information_schema_name`, `current_timestamp`, `get_columns_in_relation`, `list_relations_without_caching` |
+| `macros/adapters.sql` | <Constant name="core" /> adapter macros: `create_schema`, `drop_schema`, `drop_relation`, `rename_relation`, `truncate_relation`, `create_table_as`, `create_view_as`, `list_schemas`, `check_schema_exists`, `information_schema_name`, `current_timestamp`, `get_columns_in_relation`, `list_relations_without_caching` |
 
 v2 uses the same `adapter.dispatch()` pattern as v1. Your macros use the `<warehouse>__` prefix to override defaults:
 
@@ -654,7 +654,7 @@ Unlike first-party adapters, your users won't get the driver automatically — <
 ## Step 7: Promote your adapter
 
 :::caution Your PR must be merged first
-dbt Labs reviews and merges community adapter PRs into dbt-core. Wait until the PR is merged and the adapter ships in a published release before directing users to it.
+dbt Labs reviews and merges community adapter PRs into `dbt-labs/dbt`. Wait until the PR is merged and the adapter ships in a published release before directing users to it.
 :::
 
 ### Community channels
@@ -672,7 +672,7 @@ Align with the adapters team on: which materializations you're targeting in the 
 
 ## Reference: File-by-file implementation guide
 
-A community contributed v2 adapter touches roughly 13 files, all in the public [dbt-labs/dbt-core](https://github.com/dbt-labs/dbt-core) repo. The "Exasol example" column shows what it looks like in practice — substitute your warehouse name and system catalog throughout.
+A community contributed v2 adapter touches roughly 13 files, all in the public [dbt-labs/dbt](https://github.com/dbt-labs/dbt) repo. The "Exasol example" column shows what it looks like in practice — substitute your warehouse name and system catalog throughout.
 
 | Generic path | What it does | Exasol example |
 |---|---|---|

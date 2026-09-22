@@ -20,6 +20,7 @@ import CopilotBeta from '/snippets/_dbt-copilot-avail.md';
 * [Data test properties](/reference/resource-properties/data-tests)
 * [Data test configurations](/reference/data-test-configs)
 * [Test selection examples](/reference/node-selection/test-selection-examples)
+* [Batch tests](/reference/global-configs/batch-tests)
 
 :::important
 
@@ -197,7 +198,7 @@ Done. PASS=2 WARN=0 ERROR=0 SKIP=0 TOTAL=2
 ```
 3. Check out the SQL dbt is running by either:
    * **<Constant name="dbt" />:** checking the Details tab.
-   * **dbt Core:** checking the `target/compiled` directory
+   * **<Constant name="core" />:** checking the `target/compiled` directory
 
 
 **Unique test**
@@ -281,7 +282,11 @@ To run data tests while excluding unit tests, use the `test_type` selector &mdas
 dbt test --select "test_type:data"
 ```
 
-In <Constant name="core" /> (v1.9+), you can also use `dbt test --resource-type test`. For more options, refer to [test selection examples](/reference/node-selection/test-selection-examples).
+In <Constant name="dbt" /> (v1.9+), you can also use `dbt test --resource-type test`. For more options, refer to [test selection examples](/reference/node-selection/test-selection-examples).
+
+## Batch your data tests
+
+In <Constant name="dbt" /> v2, you can reduce the number of queries dbt issues for tests by enabling [batch tests](/reference/global-configs/batch-tests). Batching groups `unique` and `not_null` tests that are attached to the same model into one query per test type, and each test still reports its own pass or fail result.
 
 ## Storing data test failures
 

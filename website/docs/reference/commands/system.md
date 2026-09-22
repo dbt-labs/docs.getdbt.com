@@ -2,7 +2,7 @@
 title: "About dbt system command"
 sidebar_label: "system"
 id: "system"
-description: "Use dbt system to update or uninstall the Fusion engine using the CLI, or pre-install supported ADBC adapter drivers."
+description: "Use dbt system to update or uninstall dbt v2 using the CLI, or pre-install supported ADBC adapter drivers."
 ---
 
 # About dbt system command
@@ -39,7 +39,7 @@ dbt system update [flags]
 
 | Flag | Description |
 |---|---|
-| `--version VERSION` | Update to a specific version (for example, `2.0.0-preview.190`) or a named channel (`canary`, `dev`). Defaults to the latest stable release. |
+| `--version VERSION` | Update to a specific version (for example, `2.0.1`) or a named channel (`canary`, `dev`). Defaults to the latest stable release. |
 | `--package PACKAGE` | Which package to update. Accepts `dbt` or `all`. Defaults to `dbt`. |
 
 ### Version channels
@@ -61,7 +61,7 @@ dbt system update
 Update to a specific version:
 
 ```shell
-dbt system update --version 2.0.0-preview.188
+dbt system update --version 2.0.1
 ```
 
 Update to the canary channel:
@@ -97,4 +97,4 @@ This command takes no additional flags.
 ## Related commands
 
 - [`dbt debug`](/reference/commands/debug) &mdash; Test your dbt project and connection configuration.
-- [dbt v2 networking requirements](/docs/local/dbt-networking-requirements) &mdash; Review outbound endpoints required by the <Constant name="fusion_engine" />.
+- [dbt v2 networking requirements](/docs/local/dbt-networking-requirements) &mdash; Review outbound endpoints required by <Constant name="fusion_engine" />.

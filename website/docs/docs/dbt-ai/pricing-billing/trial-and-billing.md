@@ -48,7 +48,7 @@ Start from **Billing & Usage**, or from the <Constant name="wizard" /> prompt in
 2. Under **Settings**, click **Billing & Usage**.
 3. On the **Overview** tab, find the **dbt Wizard** card and click **Start trial**.
 
-No credit card is required. Your 30-day trial with $100 in usage credits starts right away, and you can track how much you've used anytime in **Billing & Usage**.
+No credit card is required. Your 30-day trial with $100 in usage credits starts right away. The $100 is per account and shared by everyone on it, and you can track how much you've used anytime in **Billing & Usage**.
 
 <Lightbox src="/img/docs/dbt-platform/wizard-billing-overview.png" width="85%" title="The Billing & Usage Overview page, showing dbt State and dbt Wizard cards with Start trial buttons, plus a usage-by-month chart" />
 
@@ -56,7 +56,7 @@ No credit card is required. Your 30-day trial with $100 in usage credits starts 
 
 <TabItem value="cli" label="Wizard CLI">
 
-There's no **Start trial** button in the CLI. Logging in is what starts your trial &mdash; one command creates your free <Constant name="dbt" /> account, if you don't have one, and provisions the 30-day trial with $100 in usage credits at the same time.
+There's no **Start trial** button in the CLI. Logging in is what starts your trial &mdash; one command creates your free <Constant name="dbt" /> account, if you don't have one, and provisions the 30-day trial with $100 in usage credits for your account at the same time. The $100 is per account, not per user, so it's shared with anyone else on your account.
 
 1. [Install <Constant name="wizard" />](/docs/dbt-ai/wizard-quickstart).
 2. Run `dbt login` and complete the browser sign-in, or create a new account to manage your <Constant name="wizard" /> spend limits:
@@ -100,19 +100,29 @@ What you do next depends on your plan.
 
 ### Enterprise and Enterprise+ plans
 
-There's no trial to start and no self-serve credit card flow. Your monthly usage credits are granted automatically &mdash; [contact your account team](https://www.getdbt.com/contact) to set up or adjust committed spend.
+There's no trial to start and no self-serve credit card flow. Your monthly usage credits &mdash; $100/month on Enterprise and $200/month on Enterprise+ &mdash; are granted automatically per account, not per user, and shared by everyone on the account. [Contact your account team](https://www.getdbt.com/contact) to set up or adjust committed spend.
+
+Enterprise and Enterprise+ accounts should add a committed spend amount to their contract to keep using <Constant name="wizard" />. You may lose access to <Constant name="wizard" /> without this commit in place. If you've set an optional monthly <Constant name="wizard" /> spend limit, that still applies and pauses usage once reached.
 
 ## Manage your spend limit
 
 Your spend limit caps how much dbt <Term id="managed" /> <Constant name="wizard" /> usage your account can consume in a billing period, across both the <Constant name="dbt_platform" /> and local development.
 
 - You only pay for actual usage, up to the limit you choose. The limit is a cap, not a prepaid charge.
-- If you reach your limit, <Constant name="wizard" /> usage pauses until you raise it or the next billing cycle starts.
+- If you reach your limit, <Constant name="wizard" /> usage pauses until you raise it or the next billing cycle starts. This applies on every plan, including Enterprise-tiered plans that set the optional limit. Enterprise-tiered accounts that don't have a committed spend amount will be prompted to connect with their account rep about adding a spend amount.
 - Limits are set separately for <Constant name="wizard" /> and [dbt State](/docs/deploy/dbt-state-about), but both draw from your account's overall usage-based spend.
 
 To view or update your limit, go to **Billing & Usage > Usage-based features > Wizard**. Enterprise-tiered plans can [contact their account team](https://www.getdbt.com/contact) to adjust their limit.
 
 <Lightbox src="/img/docs/dbt-platform/wizard-manage-spend.png" width="85%" title="The Manage your dbt Wizard spend limit page, showing pre-set monthly options and a Custom option." />
+
+## View your usage and costs
+
+To see what you've spent, go to **Account settings > Billing & Usage > Usage-based features** and open the **Wizard** tab. From there you can check:
+
+- How much of your included monthly usage you've used, what's left, and when it resets.
+- Your current <Constant name="wizard" /> spend limit, with an **Edit** button to change it.
+- **<Constant name="wizard" /> usage by model**, which breaks down your usage (in UTC) so you can see which models are driving your costs.
 
 ## How usage is measured
 

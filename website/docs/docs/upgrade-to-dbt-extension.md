@@ -6,24 +6,24 @@ sidebar_label: "Upgrade to dbt v2"
 availability: local_all
 ---
 
-# Upgrade to <Constant name="fusion" /> <Lifecycle status="preview" />
+# Upgrade to <Constant name="fusion" />
 
-After [installing the dbt VS Code extension](/docs/install-dbt-extension), use the **Get started** panel to upgrade your project to the <Constant name="fusion_engine" /> if you haven't already done so.
+After [installing the dbt VS Code extension](/docs/install-dbt-extension), use the **Get started** panel to upgrade your project to <Constant name="fusion_engine" /> if you haven't already done so.
 
 :::note
 
-If you are already running the <Constant name="fusion_engine" />, you must be on version `2.0.0-beta.66` or higher to use the upgrade tool.
+If you are already running <Constant name="fusion_engine" />, you must be on version `2.0.0-beta.66` or higher to use the upgrade tool.
 
 :::
 
 The dbt extension provides two ways to upgrade your project to <Constant name="fusion" /> from the **Get started** panel:
 
-- [**Agentic migration**:](#agentic-migration) Runs the <Constant name="core" />-to-<Constant name="fusion" /> migration with <Constant name="copilot" /> or AI agents. Select this option in the **Check Fusion compatibility** step. Requires <Constant name="copilot" /> or AI agents.
+- [**Agentic migration**:](#agentic-migration) Runs the <Constant name="core" />-to-<Constant name="fusion" /> migration with <Constant name="copilot" /> or AI agents. Select this option in the **Check dbt v2 compatibility** step. Requires <Constant name="copilot" /> or AI agents.
 - [**Manual CLI onboarding**:](#manual-cli-onboarding) Walks you through the upgrade in your terminal. Use this if you prefer the CLI or don't use <Constant name="copilot" /> or AI agents.
 
 ## Agentic migration
 
-1. Select **Start with an agent** from the **Check Fusion compatibility** step.
+1. Select **Start with an agent** from the **Check dbt v2 compatibility** step.
 2. The extension installs the **Migrate <Constant name="core" /> to <Constant name="fusion" />** agent skill to your editor's skill folder, then opens your AI chat with a migration prompt.
 3. Click **Install & open chat** to continue. The chat opens with the migration prompt already loaded, so you can run it directly from the editor. No CLI commands are required.
 
@@ -38,15 +38,15 @@ You can start manual onboarding in either of the following ways:
 <Tabs>
 <TabItem value="panel" label="From the Get started panel">
 
-- From the **Get started** panel, select **Start manually in CLI** in the **Check Fusion compatibility** step.
+- From the **Get started** panel, select **Start manually in CLI** in the **Check dbt v2 compatibility** step.
 - Follow the prompts in the upgrade assistant to complete the upgrade.
 - Run ` dbtf compile` to verify your project is ready for <Constant name="fusion" />.
 
-<Lightbox src="/img/docs/extension/fusion-onboarding-complete.png" width="70%" title="The message received when you have completed upgrading your project to the dbt Fusion engine." />
+<Lightbox src="/img/docs/extension/fusion-onboarding-complete.png" width="70%" title="The message received when you have completed upgrading your project to v2." />
 
-Once the upgrade is completed, you're ready to dive into all the features that the <Constant name="fusion_engine" /> has to offer!
+Once the upgrade is completed, you're ready to dive into all the features that <Constant name="fusion_engine" /> has to offer!
 
-Next, [sign in or register](/docs/sign-in-dbt-extension) for a <Constant name="dbt_platform" /> account to keep using advanced features after the 14-day trial.
+Next, [sign in](/docs/sign-in-dbt-extension) to a <Constant name="dbt_platform" /> account if you want to use the extension's <Constant name="dbt_platform" /> capabilities.
 
 </TabItem>
 <TabItem value="terminal" label="From your terminal">
@@ -99,13 +99,13 @@ After parsing succeeds, the tool compiles your project without static analysis. 
 
 The tool compiles your project with full <Constant name="fusion" /> static analysis. This checks that your SQL code is valid in the context of your warehouse's tables and columns.
 
-    <Lightbox src="/img/docs/extension/fusion-onboarding-complete.png" width="70%" title="The message received when you have completed upgrading your project to the dbt Fusion engine." />
+    <Lightbox src="/img/docs/extension/fusion-onboarding-complete.png" width="70%" title="The message received when you have completed upgrading your project to v2." />
 
 </Expandable>
 
-Once the upgrade is completed, you're ready to dive into all the features that the <Constant name="fusion_engine" /> has to offer!
+Once the upgrade is completed, you're ready to dive into all the features that <Constant name="fusion_engine" /> has to offer!
 
-Next, [sign in or register](/docs/sign-in-dbt-extension) for a <Constant name="dbt_platform" /> account to keep using advanced features after the 14-day trial.
+Next, [sign in](/docs/sign-in-dbt-extension) to a <Constant name="dbt_platform" /> account if you want to use the extension's <Constant name="dbt_platform" /> capabilities.
 
 </TabItem>
 </Tabs>
@@ -114,7 +114,7 @@ Next, [sign in or register](/docs/sign-in-dbt-extension) for a <Constant name="d
 
 Once you've upgraded your project to <Constant name="fusion" />, you can:
 
-- [Sign in or register](/docs/sign-in-dbt-extension) for a <Constant name="dbt_platform" /> account to keep using advanced features after the 14-day trial.
+- [Sign in](/docs/sign-in-dbt-extension) to a <Constant name="dbt_platform" /> account if you want to use the extension's <Constant name="dbt_platform" /> capabilities, such as the **Catalog** tab.
 - [Configure your local environment](/docs/configure-dbt-extension) to mirror your <Constant name="dbt_platform" /> environment and [set environment variables](/docs/configure-dbt-extension#configure-environment-variables) required by your project.
 - [Compare changes locally](/docs/dbt/vs-compare-changes) to preview data changes caused by your local edits.
 - [Optimize static analysis for development and deployment](/best-practices/optimize-static-analysis-for-development-and-deployment) for stronger local validation without slowing deployment jobs.

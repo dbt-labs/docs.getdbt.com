@@ -1,8 +1,8 @@
 ---
-title: Install dbt open source v2
+title: Install dbt OSS
 id: install-dbt-v2
-description: "Install open source dbt v2, the open-source foundation behind Fusion."
-sidebar_label: "Install open source dbt v2"
+description: "Install dbt OSS, the open-source foundation behind dbt v2."
+sidebar_label: "Install dbt OSS"
 pagination_next: null
 pagination_prev: null
 availability: local_free
@@ -11,28 +11,24 @@ availability: local_free
 
 <VersionBlock lastVersion="1.99">
 
-This page is for installing dbt Core 2.0, the Apache 2.0 open-source distribution of v2. To view the installation instructions, select **v2** from the version picker in the docs navigation. To install dbt Core v1.x, refer to [Install dbt Core v1.x](/docs/local/install-dbt?version=1.12).
+This page is for installing dbt OSS, the Apache 2.0 open-source distribution of v2. To view the installation instructions, select **v2** from the version picker in the docs navigation. To install <Constant name="core_v1" />, refer to [Install <Constant name="core_v1" />](/docs/local/install-dbt?version=1.12).
 
 To upgrade an existing v1 project to v2, refer to [Upgrade to v2](/docs/dbt-versions/dbt-upgrade/upgrading-to-v2?version=2.0).
 
-To understand the differences between dbt Core v1.x, dbt Core 2.0, and <Constant name="fusion" />, refer to [dbt licensing](/docs/dbt-licensing?version=2.0).
+To understand the differences between v1 and v2 refer to [dbt licensing](/docs/dbt-licensing?version=2.0).
 
 </VersionBlock>
 
 <VersionBlock firstVersion="2.0">
 
-:::caution dbt Core 2.0 is in beta
-dbt Core 2.0 is under active development and not recommended for production use. Features and APIs may change before the stable release.
-:::
-
-dbt Core 2.0 is the open-source foundation behind <Constant name="fusion" />, licensed under Apache 2.0. Most users don't need this page &mdash; [install dbt normally](/docs/local/install-dbt) with the standard instructions. This page is for organizations that require the Apache 2.0 codebase specifically.
+The open-source v2 foundation is licensed under Apache 2.0. Most users don't need this page &mdash; [install dbt normally](/docs/local/install-dbt) with the standard instructions. This page is for organizations that require the Apache 2.0 codebase specifically.
 
 ## Install
 
-Install the dbt Core 2.0 prerelease with `pip`:
+Install the dbt OSS with `pip`:
 
 ```shell
-python -m pip install --pre dbt-core
+python -m pip install dbt-oss
 ```
 
 Confirm the installed version begins with `2.`:
@@ -41,13 +37,7 @@ Confirm the installed version begins with `2.`:
 dbt --version
 ```
 
-During beta, you must target either the pre-release version or an explicit pin. After install, immediately update to the most recent version:
-
-Explicit pin:
-
-`python -m pip install dbt-core==2.0.0rc1`
-
-For adapter install details, refer to the [`dbt-core` repository](https://github.com/dbt-labs/dbt-core).
+For adapter install details, refer to the [`dbt` repository](https://github.com/dbt-labs/dbt).
 
 ## What's included
 
@@ -57,27 +47,27 @@ For adapter install details, refer to the [`dbt-core` repository](https://github
 
 ## What's not included
 
-The [standard <Constant name="dbt" /> install](/docs/local/install-dbt) gives you <Constant name="fusion" />, which adds the following to dbt Core 2.0:
+The [standard <Constant name="dbt" /> install](/docs/local/install-dbt) gives you <Constant name="fusion" />, which adds the following on top of the open source layer:
 
 - SQL comprehension and static analysis
 - <Term id="lsp" /> features (autocomplete, hover info, inline errors)
 - `dbt lint` and error diagnostics
 - dbt VS Code extension integration
 
-For the full picture of what you get with dbt, refer to [Fusion availability](/docs/dbt/dbt-availability).
+For the full picture of what you get with dbt, refer to [v2 availability](/docs/dbt/dbt-availability).
 
 ## Contributing
 
-dbt Core 2.0 is developed in the open. To contribute, refer to the [`dbt-core` repository](https://github.com/dbt-labs/dbt-core) and its [CONTRIBUTING guide](https://github.com/dbt-labs/dbt-core/blob/HEAD/CONTRIBUTING.md), or ask in the [dbt Community](/community/resources/getting-help).
+To contribute, refer to the [`dbt` repository](https://github.com/dbt-labs/dbt) and its [CONTRIBUTING guide](https://github.com/dbt-labs/dbt/blob/HEAD/CONTRIBUTING.md), or ask in the [dbt Community](/community/resources/getting-help).
 
 ## License
 
-dbt Core 2.0 is licensed under Apache 2.0. Refer to the [LICENSE file](https://github.com/dbt-labs/dbt-core/blob/HEAD/LICENSE) in the repository. Refer to [dbt licensing](/docs/dbt-licensing?version=2.0) for more info.
+dbt OSS is licensed under Apache 2.0. Refer to the [LICENSE file](https://github.com/dbt-labs/dbt/blob/HEAD/LICENSE) in the repository. Refer to [dbt licensing](/docs/dbt-licensing?version=2.0) for more info.
 
 ## Related
 
 - [Install dbt](/docs/local/install-dbt) (standard install)
 - [Upgrade to v2](/docs/dbt-versions/dbt-upgrade/upgrading-to-v2)
-- [`dbt-core` repository on GitHub](https://github.com/dbt-labs/dbt-core)
+- [`dbt` repository on GitHub](https://github.com/dbt-labs/dbt)
 
 </VersionBlock>

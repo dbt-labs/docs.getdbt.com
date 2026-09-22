@@ -19,13 +19,13 @@ Configure environments to tell <Constant name="dbt" /> or <Constant name="core" 
 <div className="grid--2-col">
 
 <Card
-    title="Environments in dbt"
+    title="Environments in dbt platform"
     body="Seamlessly configure development and deployment environments in dbt to control how your project runs in both the Studio IDE, dbt platform CLI, and dbt jobs."
     link="/docs/dbt-platform-environments"
     icon="dbt-bit"/>
 
 <Card
-    title="Environments in dbt Core"
+    title="Environments in self-hosted dbt"
     body="Setup and maintain separate deployment and development environments through the use of targets within a profile file"
     link="/docs/local/dbt-environments"
     icon="command-line"/>
@@ -36,6 +36,6 @@ Configure environments to tell <Constant name="dbt" /> or <Constant name="core" 
 
 - [<Constant name="dbt" /> environment best practices](/guides/set-up-ci)
 - [Deployment environments](/docs/deploy/deploy-environments)
-- [About <Constant name="core" /> versions](/docs/dbt-versions)
+- [About dbt versions](/docs/dbt-versions)
 - [Set Environment variables in <Constant name="dbt" />](/docs/build/environment-variables#special-environment-variables)
 - [Use Environment variables in jinja](/reference/dbt-jinja-functions/env_var)
