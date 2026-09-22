@@ -68,7 +68,7 @@ const statusDisplayNames = {
   new: 'New',
   beta: 'Beta',
   private_beta: 'Private beta',
-  ga: 'GA',
+  ga: 'Generally available (GA)',
   preview: 'Preview',
   private_preview: 'Private preview',
 };

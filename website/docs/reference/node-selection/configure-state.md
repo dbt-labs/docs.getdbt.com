@@ -20,7 +20,7 @@ If both the flag and env var are provided, the flag takes precedence.
 
 :::warning Syntax deprecated
 
-In [dbt v1.5](/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-to-v1.5#behavior-changes), we deprecated the original syntax for state (`DBT_ARTIFACT_STATE_PATH`) and defer (`DBT_DEFER_TO_STATE`). Although dbt supports backward compatibility with the old syntax, we will remove it in a future release that we have not yet determined.
+In [dbt v1.5](/docs/dbt-versions/dbt-upgrade/Older%20versions/upgrading-to-v1.5#behavior-changes), we deprecated the original syntax for state (`DBT_ARTIFACT_STATE_PATH`) and defer (`DBT_DEFER_TO_STATE`). Although dbt supports backward compatibility with the old syntax, we will remove it in a future release that we have not yet determined.
 
 :::
 

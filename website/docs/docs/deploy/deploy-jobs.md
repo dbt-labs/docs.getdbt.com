@@ -46,11 +46,16 @@ You can create a deploy job and configure it to run on [scheduled days and times
     - [**Commands**](/docs/deploy/job-commands#built-in-commands) &mdash; By default, it includes the `dbt build` command. Click **Add command** to add more [commands](/docs/deploy/job-commands) that you want to be invoked when the job runs. During a job run, [built-in commands](/docs/deploy/job-commands#built-in-commands) are "chained" together and if one run step fails, the entire job fails with an "Error" status. 
     - [**Generate docs on run**](/docs/deploy/job-commands#checkbox-commands) (not applicable to <Constant name="fusion" /> jobs) &mdash; Enable this option if you want to [generate project docs](/docs/explore/build-and-view-your-docs) when this deploy job runs. If the step fails, the job can succeed if subsequent steps pass. 
     - [**Run source freshness**](/docs/deploy/job-commands#checkbox-commands) &mdash; Enable this option to invoke the `dbt source freshness` command before running the deploy job. If the step fails, the job can succeed if subsequent steps pass. Refer to [Source freshness](/docs/deploy/source-freshness) for more details.
-    - [**Enable dbt State**](/docs/deploy/dbt-state-about) <Lifecycle status="preview" /> &mdash; dbt State reduces unnecessary model rebuilds by reusing nodes when neither the logic nor the data has changed. For more details, refer to [Setting up dbt State](/docs/deploy/dbt-state-setup) and [Enabling dbt State on individual jobs](/docs/deploy/dbt-state-enable-jobs).
+    - [**Enable dbt State**](/docs/deploy/dbt-state-about) &mdash; dbt State reduces unnecessary model rebuilds by reusing nodes when neither the logic nor the data has changed. For more details, refer to [Setting up dbt State](/docs/deploy/dbt-state-setup) and [Enabling dbt State on individual jobs](/docs/deploy/dbt-state-enable-jobs).
 4. Options in the **Triggers** section:
     - **Run on schedule** &mdash; Run the deploy job on a set schedule.
         - **Timing** &mdash; Specify whether to [schedule](#schedule-days) the deploy job using **Intervals** that run the job every specified number of hours, **Specific hours** that run the job at specific times of day, or **Cron schedule** that run the job specified using [cron syntax](#cron-schedule).
         - **Days of the week** &mdash; By default, it’s set to every day when **Intervals** or **Specific hours** is chosen for **Timing**.
+
+        :::note Using `state:modified` on a scheduled job 
+        Using a [`state:modified`](/reference/node-selection/methods#state) selector on a scheduled job can result in the job completing successfully with zero models built when no changes are detected since the last deferred run. Refer to [Scheduled jobs and state:modified](#scheduled-jobs-and-statemodified) for details and recommendations.
+        :::
+
     - **Run when another job finishes** &mdash; Run the deploy job when another _upstream_ deploy [job completes](#trigger-on-job-completion).  
         - **Project** &mdash; Specify the parent project that has that upstream deploy job. 
         - **Job** &mdash; Specify the upstream deploy job. 
@@ -114,6 +119,12 @@ Examples of cron job schedules:
 - `0 7 L * 5`: At 07:00 AM, on the last day of the month, and on Friday.
 - `30 14 L * *`: At 02:30 PM, on the last day of the month.
 - `0 4 * * MON#1`: At 4:00 AM on the first Monday of every month.
+
+### Scheduled jobs and `state:modified`
+
+import StateModifiedScheduledJobs from '/snippets/_state-modified-scheduled-jobs.md';
+
+<StateModifiedScheduledJobs />
 
 ### Trigger on job completion  <Lifecycle status="self_service,managed,managed_plus" />
 To _chain_ deploy jobs together:

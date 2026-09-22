@@ -1,10 +1,10 @@
-To determine if a package is compatible with the <Constant name="fusion_engine" />, visit the [dbt package hub](https://hub.getdbt.com/) and look for the <Constant name="fusion" />-compatible badge, or review the package's [`require-dbt-version` configuration](/reference/project-configs/require-dbt-version#pin-to-a-range).
+To determine if a package is compatible with dbt v2, visit the [dbt package hub](https://hub.getdbt.com/) and look for the <Constant name="fusion" />-compatible badge, or review the package's [`require-dbt-version` configuration](/reference/project-configs/require-dbt-version#pin-to-a-range).
 
-- Packages with a `require-dbt-version` that equals or contains `2.0.0` are compatible with <Constant name="fusion" />. For example, `require-dbt-version: ">=1.10.0,<3.0.0"`.
+- Packages with a `require-dbt-version` that equals or contains `2.0.0` are compatible with dbt v2. For example, `require-dbt-version: ">=1.10.0,<3.0.0"`.
 
-    Even if a package doesn't reflect compatibility in the package hub, it may still work with <Constant name="fusion" />. Work with package maintainers to track updates, and [thoroughly test packages](https://docs.getdbt.com/guides/fusion-package-compat?step=5) that aren't clearly compatible before deploying.
+    Even if a package doesn't reflect compatibility in the package hub, it may still work with v2. Work with package maintainers to track updates, and [thoroughly test packages](https://docs.getdbt.com/guides/dbt-package-compat?step=5) that aren't clearly compatible before deploying.
 
-- Package maintainers who would like to make their package compatible with <Constant name="fusion" /> can refer to the [Fusion package upgrade guide](/guides/fusion-package-compat) for instructions.
+- Package maintainers who would like to make their package compatible with v2 can refer to the [dbt v2 package upgrade guide](/guides/dbt-package-compat) for instructions.
 
 Fivetran package considerations:
 

@@ -5,6 +5,7 @@ pagination_prev: "reference/node-selection/configure-state"
 ---
 
 import StateModified from '/snippets/_state-modified-compare.md';
+import StateModifiedScheduledJobs from '/snippets/_state-modified-scheduled-jobs.md';
 
 The [`state:` selection method](/reference/node-selection/methods#state) is a powerful feature, with a lot of underlying complexity. Below are a handful of considerations when setting up automated jobs that leverage state comparison.
 
@@ -73,9 +74,13 @@ To reduce false positives during `state:modified` selection due to env-aware log
 
 </VersionBlock>
 
+### Scheduled jobs
+
+<StateModifiedScheduledJobs />
+
 ### Final note
 
-State comparison is complex. We hope to reach eventual consistency between all configuration options, as well as providing users with the control they need to reliably return all modified resources, and only the ones they expect. If you're interested in learning more, read [open issues tagged "state"](https://github.com/dbt-labs/dbt-core/issues?q=is%3Aopen+is%3Aissue+label%3Astate) in the dbt repository.
+State comparison is complex. We hope to reach eventual consistency between all configuration options, as well as providing users with the control they need to reliably return all modified resources, and only the ones they expect. If you're interested in learning more, read [open issues tagged "state"](https://github.com/dbt-labs/dbt/issues?q=is%3Aopen+is%3Aissue+label%3Astate) in the dbt repository.
 
 ## Related docs
 - [About state in dbt](/reference/node-selection/state-selection)

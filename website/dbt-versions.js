@@ -29,18 +29,25 @@ const products = [
     // List newest first; the first entry is treated as the current/latest track.
     // `stage` drives the lifecycle tag shown in the menu: "alpha" | "rc" | "beta" | "Preview"
     // (omit for a stable/GA release). Update as a version moves through its cycle.
-    subProducts: [
-      {
-        name: "dbt Core v1.12",
-        EOLDate: "2027-07-15",
-        version: "1.12",
-      },
-      {
-        name: "dbt Core v1.11",
-        EOLDate: "2026-12-18",
-        version: "1.11",
-      },
-    ],
+    get subProducts() {
+      const specific = [
+        {
+          name: "dbt Core v1.12",
+          EOLDate: "2027-07-15",
+          version: "1.12",
+        },
+        {
+          name: "dbt Core v1.11",
+          EOLDate: "2026-12-18",
+          version: "1.11",
+        },
+      ];
+      return [
+        // Group-level selection — always mirrors the latest specific entry above
+        { name: "v1", EOLDate: specific[0].EOLDate, version: specific[0].version },
+        ...specific,
+      ];
+    },
   },
 ];
 
@@ -94,32 +101,30 @@ exports.versions = products.flatMap((product) =>
  * lastVersion to further restrict by version within that product.
  */
 exports.versionedPages = [
-  { page: "docs/fusion/fusion", firstVersion: "2.0" },
-  { page: "docs/fusion/get-started-fusion", firstVersion: "2.0" },
-  { page: "docs/fusion/fusion-availability", firstVersion: "2.0" },
-  { page: "docs/fusion/fusion-readiness", firstVersion: "2.0" },
-  { page: "docs/fusion/new-concepts", firstVersion: "2.0" },
-  { page: "docs/fusion/supported-features", firstVersion: "2.0" },
-  { page: "docs/fusion/fusion-networking", firstVersion: "2.0" },
-  { page: "docs/fusion/fusion-releases", firstVersion: "2.0" },
-  { page: "docs/fusion/telemetry", firstVersion: "2.0" },
-  { page: "docs/dbt-extension-features", firstVersion: "2.0" },
-  { page: "docs/install-dbt-extension", firstVersion: "2.0" },
-  { page: "docs/sign-in-dbt-extension", firstVersion: "2.0" },
-  { page: "docs/configure-dbt-extension", firstVersion: "2.0" },
+  { page: "docs/dbt-ai/package-skills", firstVersion: "2.0" },
+  { page: "reference/project-configs/skill-paths", firstVersion: "2.0" },
+  { page: "docs/dbt/fusion", firstVersion: "2.0" },
+  { page: "docs/dbt/dbt-availability", firstVersion: "2.0" },
+  { page: "docs/dbt/dbt-readiness", firstVersion: "2.0" },
+  { page: "docs/dbt/new-concepts", firstVersion: "2.0" },
+  { page: "docs/dbt/supported-features", firstVersion: "2.0" },
+  { page: "docs/dbt/fusion-networking", firstVersion: "2.0" },
+  { page: "docs/dbt/dbt-releases", firstVersion: "2.0" },
+  { page: "docs/dbt/telemetry", firstVersion: "2.0" },
   { page: "reference/commands/login", firstVersion: "2.0" },
-  { page: "docs/upgrade-to-fusion-extension", firstVersion: "2.0" },
-  { page: "docs/fusion/about-fusion", firstVersion: "2.0" },
-  { page: "docs/fusion/about-fusion-install", firstVersion: "2.0" },
-  { page: "docs/fusion/adbc", firstVersion: "2.0" },
-  { page: "docs/fusion/vs-compare-changes", firstVersion: "2.0" },
+  { page: "docs/dbt/about-dbt", firstVersion: "2.0" },
+  { page: "docs/dbt/about-dbt-install", firstVersion: "2.0" },
+  { page: "docs/dbt/adbc", firstVersion: "2.0" },
+  { page: "docs/dbt/vs-compare-changes", firstVersion: "2.0" },
   { page: "reference/telemetry-observability", firstVersion: "2.0" },
-  { page: "docs/local/fusion-networking-requirements", firstVersion: "2.0" },
+  { page: "docs/local/dbt-networking-requirements", firstVersion: "2.0" },
   { page: "docs/build/about-static-analysis", firstVersion: "2.0" },
+  { page: "reference/resource-configs/compute", firstVersion: "2.0" },
   { page: "reference/commands/lint", firstVersion: "2.0" },
   { page: "reference/commands/dbt-environment", firstVersion: "2.0" },
   { page: "reference/commands/invocation", firstVersion: "2.0" },
   { page: "reference/commands/system", firstVersion: "2.0" },
+  { page: "reference/commands/freshness", firstVersion: "2.0" },
   { page: "docs/local/connect-data-platform/salesforce-data-cloud-setup", firstVersion: "2.0" },
   { page: "docs/build/sample-flag", firstVersion: "1.10" },
   { page: "docs/build/empty-flag", firstVersion: "1.8" },
@@ -131,6 +136,7 @@ exports.versionedPages = [
   { page: "docs/platform/connect-data-platform/connect-onehouse", lastVersion: "1.99" },
   { page: "docs/platform/connect-data-platform/connect-postgresql-alloydb", lastVersion: "1.99" },
   { page: "docs/platform/connect-data-platform/connect-salesforce", firstVersion: "2.0" },
+  { page: "docs/platform/connect-data-platform/connect-clickhouse", firstVersion: "2.0" },
   { page: "docs/platform/connect-data-platform/connect-starburst-trino", lastVersion: "1.99" },
   { page: "docs/platform/connect-data-platform/connect-teradata", lastVersion: "1.99" },
   { page: "docs/build/measures", lastVersion: "1.11" },
@@ -139,7 +145,6 @@ exports.versionedPages = [
   { page: "docs/local/connect-data-platform/alloydb-setup", lastVersion: "1.99" },
   { page: "docs/local/connect-data-platform/athena-setup", lastVersion: "1.99" },
   { page: "docs/local/connect-data-platform/azuresynapse-setup", lastVersion: "1.99" },
-  { page: "docs/local/connect-data-platform/clickhouse-setup", lastVersion: "1.99" },
   { page: "docs/local/connect-data-platform/confluent-setup", lastVersion: "1.99" },
   { page: "docs/local/connect-data-platform/cratedb-setup", lastVersion: "1.99" },
   { page: "docs/local/connect-data-platform/databend-setup", lastVersion: "1.99" },
@@ -183,6 +188,7 @@ exports.versionedPages = [
   { page: "docs/local/connect-data-platform/ydb-setup", lastVersion: "1.99" },
   { page: "docs/local/connect-data-platform/yellowbrick-setup", lastVersion: "1.99" },
   { page: "reference/global-configs/cache", lastVersion: "1.99" },
+  { page: "reference/global-configs/fast-test-edges", lastVersion: "1.99" },
   { page: "reference/global-configs/sqlparse", firstVersion: "1.11" },
   { page: "reference/global-configs/user-settings", firstVersion: "1.13" },
 ];

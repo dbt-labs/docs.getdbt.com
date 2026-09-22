@@ -29,7 +29,7 @@ If you've been an early adopter of the dbt Fusion engine, these features might s
 
 We think that this is the best way to continue to meet our commitments as stewards of the dbt framework, the best way to enable [our _One dbt_ vision](https://roundup.getdbt.com/p/one-dbt), and the best way to maintain dbt's position as the standard for data transformation in the agentic era.
 
-If you want to learn more about the new capabilities in dbt Core and where we're headed next, Jeremy, Elias, and I (Grace) [just published another roadmap post](https://github.com/dbt-labs/dbt-core/blob/main/docs/roadmap/2026-06-announcing-v2.md) - go check it out. For more detail about what is (and isn't) changing, and why we're doing this, read the rest of this post.
+If you want to learn more about the new capabilities in dbt Core and where we're headed next, Jeremy, Elias, and I (Grace) [just published another roadmap post](https://github.com/dbt-labs/dbt/blob/main/docs/roadmap/2026-06-announcing-v2.md) - go check it out. For more detail about what is (and isn't) changing, and why we're doing this, read the rest of this post.
 
 ## Putting all our efforts behind a single engine
 
@@ -84,7 +84,7 @@ We think this is great for everyone in the dbt ecosystem, and a significant impr
 
 Whichever distribution of v2.0 you're upgrading to, it's a major version change and those come with some bumps where we break from the past to get ready for the future. Based on dbt's adoption curve over the last five years, most people reading this weren't part of the migration from dbt v0 to v1.0, so this could be your first time.
 
-It's easier this time: the [dbt-autofix](https://github.com/dbt-labs/dbt-autofix) package and our [agent skill](https://github.com/dbt-labs/dbt-agent-skills/tree/main/skills/dbt-migration/skills/migrating-dbt-core-to-fusion) for version upgrades mean you can get a long way very quickly. The best way to prepare to migrate is to first [upgrade to dbt v1.12](/docs/dbt-versions/core-upgrade/upgrading-to-v1.12) (or the ["Latest" release track](/docs/dbt-versions/dbt-release-tracks) in the dbt platform).
+It's easier this time: the [dbt-autofix](https://github.com/dbt-labs/dbt-autofix) package and our [agent skill](https://github.com/dbt-labs/dbt-agent-skills/tree/main/skills/dbt-migration/skills/migrating-dbt-core-to-fusion) for version upgrades mean you can get a long way very quickly. The best way to prepare to migrate is to first [upgrade to dbt v1.12](/docs/dbt-versions/dbt-upgrade/upgrading-to-v1.12) (or the ["Latest" release track](/docs/dbt-versions/dbt-release-tracks) in the dbt platform).
 
 It enforces many of the behavior changes that are fully removed in v2.0 of the framework, and even ships with the Fusion-powered project parser so that you can check whether your project will parse correctly. Run `dbt parse --use-v2-parser` to try it out. If your project succeeds, you're good to go, and should check out the [installation guide](/docs/local/install-dbt?version=2.0) to switch over.
 

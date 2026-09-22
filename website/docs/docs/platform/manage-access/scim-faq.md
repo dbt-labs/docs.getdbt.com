@@ -103,10 +103,12 @@ When a SCIM-managed user's email is updated in the IdP, <Constant name="dbt_plat
 
 SCIM-native license mapping (using a SCIM attribute) is supported for Okta only. For Okta license mapping setup, refer to [Manage user licenses with SCIM](/docs/platform/manage-access/scim-manage-user-licenses).
 
-Although Entra ID doesn't support SCIM-native license mapping, you can, however, use SSO-based Active Directory group → license mapping alongside your Entra ID SCIM setup. This approach works so long as the **Ignore dbt license mapping** toggle (found in **Account settings > SSO & SCIM**) toggle stays disabled. 
+SCIM license mapping with Entra ID _may_ be possible using [custom attributes](https://learn.microsoft.com/en-us/entra/fundamentals/custom-security-attributes-overview), depending on your Entra ID configuration. Because this setup varies by environment, we don't provide a standard configuration or troubleshooting guidance for it. **Use this approach at your own risk.**
+
+For a simpler, supported approach, use SSO-based Active Directory group → license mapping alongside your Entra ID SCIM setup. This works so long as the **Ignore dbt license mapping** toggle (found in **Account settings > SSO & SCIM**) stays disabled. 
 
 - **Disabled (recommended)**: <Constant name="dbt_platform" /> honors your [SSO license mappings](/docs/platform/manage-access/seats-and-users#mapped-configuration) based on Entra ID group membership.
-- **Enabled:** <Constant name="dbt_platform" /> ignores your SSO license mappings. Because Entra ID doesn't support SCIM-native license attributes, enabling this toggle effectively removes license mapping entirely for Entra ID users.
+- **Enabled:** <Constant name="dbt_platform" /> ignores your SSO license mappings. Because SCIM-native license mapping isn't a supported configuration for Entra ID, enabling this toggle effectively removes license mapping entirely for Entra ID users.
 
 </Expandable>
 

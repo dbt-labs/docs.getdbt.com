@@ -34,14 +34,8 @@ import Generatemetadata from '/snippets/_generate-metadata.md';
 <Generatemetadata /> 
 
 :::tip
-If your organization works in both dbt Core and Cloud, you can unify these workflows by automatically uploading dbt Core artifacts into dbt Cloud and viewing them in <Constant name="catalog" /> for a more connected dbt experience. To learn more, visit [hybrid projects](/docs/deploy/hybrid-projects).
+If your organization works in both <Constant name="core" /> and Cloud, you can unify these workflows by automatically uploading <Constant name="core" /> artifacts into dbt Cloud and viewing them in <Constant name="catalog" /> for a more connected dbt experience. To learn more, visit [hybrid projects](/docs/deploy/hybrid-projects).
 :::
-
-### External metadata ingestion <Lifecycle status="preview" />
-
-Connect directly to your data warehouse with [external metadata ingestion](/docs/explore/external-metadata-ingestion), giving you visibility into tables, views, and other resources that aren't defined in dbt with <Constant name="catalog" />.
-
-We create dbt metadata and pull external metadata. <Constant name="catalog" /> uses the metadata provided by the [Discovery API](/docs/dbt-apis/discovery-api) to display details about the state of your project. The available metadata depends on which [deployment environment](/docs/deploy/deploy-environments) you’ve designated as production or staging in your dbt project.
 
 ## Catalog overview 
 
@@ -69,7 +63,6 @@ When using global navigation and searching across your projects, the following p
 
 - Your project access permissions determine which dbt projects appear in the left-hand menu of the global navigation.
 - In <Constant name="catalog" /> searches, we use soft access controls, you'll see all matching resources in search results, with clear indicators for items you don't have access to.
-- For external metadata, the global platform credential controls which resources metadata users can discover. See [External metadata ingestion](/docs/explore/external-metadata-ingestion) for more details.
 
 ### Availability by plan
 
@@ -77,7 +70,7 @@ When using global navigation and searching across your projects, the following p
 
 | Feature | Starter | Enterprise | Enterprise+ |
 |---------|:-------:|:----------:|:-----------:|
-| Core lineage & resource browsing | ✅ | ✅ | ✅ |
+| dbt lineage & resource browsing | ✅ | ✅ | ✅ |
 | [Global navigation](/docs/explore/global-navigation) | ✅ | ✅ | ✅ |
 | [Data health signals](/docs/explore/data-health-signals) | ✅ | ✅ | ✅ |
 | [Model performance](/docs/explore/model-performance) | ❌ | ✅ | ✅ |
@@ -87,7 +80,8 @@ When using global navigation and searching across your projects, the following p
 | [Model query history](/docs/explore/model-query-history) | ❌ | ✅ | ✅ |
 | [Downstream exposures](/docs/explore/view-downstream-exposures) | ❌ | ✅ | ✅ |
 | [Data health tile](/docs/explore/data-tile) | ❌ | ✅ | ✅ |
-| [External metadata ingestion](/docs/explore/external-metadata-ingestion) | ❌ | ✅ | ✅ |
+
+This table covers <Constant name="catalog" /> only. Refer to [Column-level lineage](/docs/explore/column-level-lineage) to learn how you can use this feature locally.
 
 import ExplorerCourse from '/snippets/_explorer-course-link.md';
 
@@ -268,7 +262,7 @@ In the upper right corner of the resource details page, you can:
     - **Details** section &mdash; Key properties like the model's relation name (for example, how it's represented and how you can query it in the data platform: `database.schema.identifier`); model governance attributes like access, group, and if contracted; and more.
     - **Relationships** section &mdash; The nodes the model **Depends On**, is **Referenced by**, and (if applicable) is **Used by** for projects that have declared the models' project as a dependency.
 - **Code** tab &mdash; The source code and compiled code for the model.
-- **Columns** tab &mdash; The available columns in the model. This tab also shows tests results (if any) that you can select to view the test's details page. A :white_check_mark: denotes a passing test. To filter the columns in the resource, you can use the search bar that's located at the top of the columns view.
+- **Columns** tab &mdash; The available columns in the model, including [tags](/reference/resource-configs/tags) defined on columns in your <Constant name="dbt" /> YAML. Column tags appear as clickable badges that filter the lineage view by that tag. This tab also shows test results (if any) that you can select to view the test's details page. A :white_check_mark: denotes a passing test. To filter the columns in the resource (including by tag name), use the search bar at the top of the columns view.
 
 </Expandable>
 
@@ -314,7 +308,7 @@ Example of the Tests view:
     - **Source freshness** section &mdash; Information on whether refreshing the data was successful, the last time the source was loaded, the timestamp of when a run generated data, and the run ID.
     - **Details** section &mdash; Details like database, schema, and more.
     - **Relationships** section &mdash; A table that lists all the sources used with their freshness status, the timestamp of when freshness was last checked, and the timestamp of when the source was last loaded.
-- **Columns** tab &mdash; The available columns in the source. This tab also shows tests results (if any) that you can select to view the test's details page. A :white_check_mark: denotes a passing test.
+- **Columns** tab &mdash; The available columns in the source, including [tags](/reference/resource-configs/tags) defined on columns in your <Constant name="dbt" /> YAML. Column tags appear as clickable badges that filter the lineage view by that tag. This tab also shows test results (if any) that you can select to view the test's details page. A :white_check_mark: denotes a passing test.
 
 </Expandable>
 

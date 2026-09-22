@@ -1,5 +1,5 @@
 ---
-title: "Connect SQLite to dbt Core"
+title: "Connect SQLite to dbt v1"
 sidebar_label: "SQLite"
 description: "Read this guide to learn about the SQLite warehouse setup in dbt."
 id: "sqlite-setup"
@@ -29,9 +29,9 @@ import SetUpPages from '/snippets/_setup-pages-intro.md';
 
 <SetUpPages meta={frontMatter.meta}/>
 
-Starting with the release of <Constant name="core" /> 1.0.0, versions of dbt-sqlite are aligned to the same major+minor [version](https://semver.org/) of <Constant name="core" />.
-- versions 1.1.x of this adapter work with <Constant name="core" /> 1.1.x
-- versions 1.0.x of this adapter work with <Constant name="core" /> 1.0.x
+Starting with the release of <Constant name="dbt" /> 1.0.0, versions of dbt-sqlite are aligned to the same major+minor [version](https://semver.org/) of <Constant name="core" />.
+- versions 1.1.x of this adapter work with <Constant name="dbt" /> 1.1.x
+- versions 1.0.x of this adapter work with <Constant name="dbt" /> 1.0.x
 
 ## Connecting to SQLite with dbt-sqlite
 

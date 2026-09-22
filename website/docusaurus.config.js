@@ -4,7 +4,9 @@ import katex from "rehype-katex";
 import rehypeCodeLanguage from "./plugins/rehypeCodeLanguage.js";
 import rehypeCleanMarkdown from "./plugins/rehypeCleanMarkdown.js";
 import rehypeTabsToHeadings from "./plugins/rehypeTabsToHeadings.js";
+import rehypeMdHide from "./plugins/rehypeMdHide.js";
 import remarkBlogFootnoteLinks from "./plugins/remarkBlogFootnoteLinks.js";
+import remarkConstantsInCode from "./plugins/remarkConstantsInCode.js";
 const { themes } = require('prism-react-renderer')
 
 const { products, versions, versionedPages, versionedCategories } = require("./dbt-versions");
@@ -178,10 +180,6 @@ var siteSettings = {
               to: "/docs/dbt-licensing",
             },
             {
-              label: "Fusion Diaries",
-              href: "https://github.com/dbt-labs/dbt-core/discussions/categories/announcements?discussions_q=is:open+diaries+category:Announcements",
-            },
-            {
               label: "Courses",
               href: "https://learn.getdbt.com",
             },
@@ -232,11 +230,11 @@ var siteSettings = {
           ],
         },
         {
-          label: "Install VS Code extension",
+          label: "Get started with dbt",
           position: "right",
-          to: "https://marketplace.visualstudio.com/items?itemName=dbtLabsInc.dbt",
-          id: "nav-install-vs-code-extension",
-          className: "nav-install-dbt-extension",
+          to: "/docs/dbt/get-started-dbt?version=2",
+          id: "nav-install-dbt",
+          className: "nav-install-dbt",
         },
       ],
     },
@@ -249,7 +247,7 @@ var siteSettings = {
               <div class='cta-section-text'>
                 <span class="eyebrow">Get started</span>
                 <h2 class="heading-2">Start building with dbt.</h2>
-                <p>The free dbt VS Code extension is the best way to develop locally with the dbt Fusion Engine.</p>
+                <p>The free dbt VS Code extension is the best way to develop locally with dbt.</p>
               </div>
               <div class="cta-section">
                 <a href="https://marketplace.visualstudio.com/items?itemName=dbtLabsInc.dbt" target="_blank" class="primary-cta">Install free extension</a>
@@ -322,6 +320,7 @@ var siteSettings = {
       ],
     },
   },
+  clientModules: [require.resolve("./src/clientModules/resizeTransitionStopper.js")],
   presets: [
     [
       "@docusaurus/preset-classic",
@@ -333,7 +332,7 @@ var siteSettings = {
           path: "docs",
           routeBasePath: "/",
           sidebarPath: require.resolve("./sidebars.js"),
-          remarkPlugins: [math],
+          remarkPlugins: [math, remarkConstantsInCode],
           rehypePlugins: [katex],
 
           editUrl:
@@ -353,7 +352,7 @@ var siteSettings = {
           postsPerPage: 20,
           blogSidebarTitle: "Recent posts",
           blogSidebarCount: 5,
-          remarkPlugins: [math, remarkBlogFootnoteLinks],
+          remarkPlugins: [math, remarkBlogFootnoteLinks, remarkConstantsInCode],
           rehypePlugins: [katex],
           // Un-truncated blog posts will throw an error
           // https://docusaurus.io/blog/releases/3.5#onuntruncatedblogposts
@@ -394,7 +393,7 @@ var siteSettings = {
           relativePaths: false,
         },
         processing: {
-          beforeDefaultRehypePlugins: [rehypeCodeLanguage, rehypeCleanMarkdown, rehypeTabsToHeadings],
+          beforeDefaultRehypePlugins: [rehypeCodeLanguage, rehypeCleanMarkdown, rehypeTabsToHeadings, rehypeMdHide],
         },
         include: {
           includeBlog: false,
@@ -462,13 +461,13 @@ var siteSettings = {
                   name: "dbt local installation",
                   routes: [
                     { route: "/docs/local/install-dbt" },
-                    { route: "/docs/local/dbt-core-environments" },
+                    { route: "/docs/local/dbt-environments" },
                   ],
                   subsections: [
                     {
                       id: "about-fusion-install",
                       name: "Install dbt Fusion engine",
-                      routes: [{ route: "/docs/fusion/about-fusion-install" }],
+                      routes: [{ route: "/docs/dbt/about-dbt-install" }],
                     },
                     {
                       id: "core-connect-data-platform",
@@ -484,7 +483,7 @@ var siteSettings = {
             {
               id: "fusion",
               name: "Fusion",
-              routes: [{ route: "/docs/fusion/**" }],
+              routes: [{ route: "/docs/dbt/**" }],
             },
             {
               id: "platform",
