@@ -55,9 +55,9 @@ These rules are off by default. and to turn them on, add a `rules` line to your 
 
 ```ini
 [sqlfluff]
-templater = dbt
-dialect = your_dialect
-rules = DBT02,DBT03,DBT04,DBT05
+[templater](https://docs.sqlfluff.com/en/stable/configuration/templating/dbt.html) = dbt
+[dialect](https://docs.sqlfluff.com/en/stable/reference/dialects.html) = your_dialect
+[rules](https://docs.sqlfluff.com/en/stable/configuration/rule_configuration.html) = DBT02,DBT03,DBT04,DBT05
 ```
 
 - List only the rule codes you want. There's no shortcut value (like `all`) that turns on every dbt-specific rule at once.
