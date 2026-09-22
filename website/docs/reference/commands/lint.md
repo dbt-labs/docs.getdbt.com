@@ -50,6 +50,22 @@ dbt lint [FILE] [flags]
 
 `dbt lint` auto-discovers the nearest `.sqlfluff` file in your project directory tree. CLI flags `--rules` and `--exclude-rules` take precedence over the values in the config file. To create a `.sqlfluff` file, see [SQLFluff configuration files](https://docs.sqlfluff.com/en/stable/configuration/setting_configuration.html).
 
+## dbt-specific rules
+
+Beyond the standard SQLFluff rule set, `dbt lint` adds a small set of dbt-specific rules, using the `DBT##` code prefix. Add these codes to your `.sqlfluff` file's `rules` or `exclude_rules` settings just like any other rule code.
+
+:::note
+This list is preliminary and unconfirmed. Details may change before general availability.
+:::
+
+| Code | Dotted name | Rule |
+|------|-------------|------|
+| `DBT01` | `dbt.import_ctes` | Every `ref()`/`source()` must be imported through a top-level CTE, not referenced inline |
+| `DBT02` | `dbt.join_condition_or` | A `JOIN`'s `ON` clause must not contain `OR` |
+| `DBT03` | `dbt.function_wrapped_filter_column` | A comparison must not wrap a bare column reference in a function call |
+| `DBT04` | `dbt.leading_wildcard_like` | A `LIKE`/`ILIKE` pattern must not start with a wildcard |
+| `DBT05` | `dbt.hard_coded_reference` | A `ref()`/`source()` must not be hard-coded to a literal string |
+
 ## Jinja render modes
 
 Before `dbt lint` can check a model, it has to turn your Jinja-templated SQL into plain SQL. Most Jinja renders cleanly at lint time, but some macros ask your data platform a question, such as which columns a table has, and `dbt lint` never connects to your platform, so those calls have no real answer. The `jinja_render_mode` setting controls how `dbt lint` handles them, and that changes which violations you see.
