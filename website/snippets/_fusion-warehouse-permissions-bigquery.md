@@ -63,7 +63,7 @@ The following are required for fundamental dbt features:
 
 ### INFORMATION_SCHEMA and metadata views
 
-Fusion queries these BigQuery system views:
+dbt v2 queries these BigQuery system views:
 
 | View | Purpose | Scope |
 | --- | --- | --- |

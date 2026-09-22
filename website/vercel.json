@@ -43,6 +43,11 @@
   ],
   "redirects": [
     {
+      "source": "/reference/resource-properties/freshness",
+      "destination": "/reference/resource-configs/freshness",
+      "permanent": true
+    },
+    {
       "source": "/docs/fusion/about-core",
       "destination": "/docs/introduction",
       "permanent": true
@@ -239,12 +244,22 @@
     },
     {
       "source": "/guides/prepare-fusion-upgrade",
-      "destination": "/guides/prepare-dbt-upgrade",
+      "destination": "/guides/prepare-v2-upgrade",
       "permanent": true
     },
     {
       "source": "/guides/upgrade-to-fusion",
-      "destination": "/guides/upgrade-to-dbt",
+      "destination": "/guides/upgrade-to-v2",
+      "permanent": true
+    },
+    {
+      "source": "/guides/prepare-dbt-upgrade",
+      "destination": "/guides/prepare-v2-upgrade",
+      "permanent": true
+    },
+    {
+      "source": "/guides/upgrade-to-dbt",
+      "destination": "/guides/upgrade-to-v2",
       "permanent": true
     },
     {

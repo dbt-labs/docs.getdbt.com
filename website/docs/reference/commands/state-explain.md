@@ -80,7 +80,7 @@ Use the `--verbose` flag to see the full step-by-step analysis for each node and
 dbt state explain --verbose -s my_node_name
 ```
 
-In <Constant name="core_v2" />, `--verbose` adds a run configuration summary at the top and shows the full step-by-step analysis for each node.
+In dbt v2, `--verbose` adds a run configuration summary at the top and shows the full step-by-step analysis for each node.
 
 ```shell
 Run configuration:

@@ -1,5 +1,5 @@
 ---
-title: "Connect MaxCompute to dbt Core"
+title: "Connect MaxCompute to dbt v1"
 sidebar_label: "MaxCompute"
 description: "Read this guide to learn about the MaxCompute setup in dbt."
 meta:

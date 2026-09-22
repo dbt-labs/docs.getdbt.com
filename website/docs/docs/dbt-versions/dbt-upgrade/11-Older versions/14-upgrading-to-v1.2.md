@@ -1,6 +1,6 @@
 ---
 title: "Upgrading to v1.2"
-description: New features and changes in dbt Core v1.2
+description: New features and changes in dbt v1.2
 id: "upgrading-to-v1.2"
 displayed_sidebar: "docs"
 availability:
@@ -10,13 +10,13 @@ availability:
 
 ### Resources
 
-- [Changelog](https://github.com/dbt-labs/dbt-core/blob/1.2.latest/CHANGELOG.md)
+- [Changelog](https://github.com/dbt-labs/dbt/blob/1.2.latest/CHANGELOG.md)
 - [<Constant name="core" /> CLI Installation guide](/docs/local/install-dbt)
 - [Cloud upgrade guide](/docs/dbt-versions/upgrade-dbt-platform-version)
 
 ## What to know before upgrading
 
-There are no breaking changes for code in dbt projects and packages. We are committed to providing backwards compatibility for all versions 1.x. If you encounter an error upon upgrading, please let us know by [opening an issue](https://github.com/dbt-labs/dbt-core/issues/new).
+There are no breaking changes for code in dbt projects and packages. We are committed to providing backwards compatibility for all versions 1.x. If you encounter an error upon upgrading, please let us know by [opening an issue](https://github.com/dbt-labs/dbt/issues/new).
 
 ### For consumers of dbt artifacts (metadata)
 
@@ -24,11 +24,11 @@ The manifest schema version has been updated to `v6`. The relevant changes are:
 - Change to `config` default, which includes a new `grants` property with default value `{}`
 - Addition of a `metrics` property, to any node which could reference metrics using the `metric()` function
 
-For users of [state-based selection](/reference/node-selection/syntax#about-node-selection): This release also includes new logic declaring forwards compatibility for older manifest versions. While running <Constant name="core" /> v1.2, it should be possible to use `state:modified --state ...` selection against a manifest produced by <Constant name="core" /> v1.0 or v1.1.
+For users of [state-based selection](/reference/node-selection/syntax#about-node-selection): This release also includes new logic declaring forwards compatibility for older manifest versions. While running <Constant name="dbt" /> v1.2, it should be possible to use `state:modified --state ...` selection against a manifest produced by <Constant name="dbt" /> v1.0 or v1.1.
 
 ## For maintainers of adapter plugins
 
-See GitHub discussion [dbt-labs/dbt-core#5468](https://github.com/dbt-labs/dbt-core/discussions/5468) for detailed information
+See GitHub discussion [dbt-labs/dbt#5468](https://github.com/dbt-labs/dbt/discussions/5468) for detailed information
 
 ## New and changed functionality
 

@@ -180,10 +180,6 @@ var siteSettings = {
               to: "/docs/dbt-licensing",
             },
             {
-              label: "Fusion Diaries",
-              href: "https://github.com/dbt-labs/dbt-core/discussions/categories/announcements?discussions_q=is:open+diaries+category:Announcements",
-            },
-            {
               label: "Courses",
               href: "https://learn.getdbt.com",
             },
@@ -324,6 +320,7 @@ var siteSettings = {
       ],
     },
   },
+  clientModules: [require.resolve("./src/clientModules/resizeTransitionStopper.js")],
   presets: [
     [
       "@docusaurus/preset-classic",

@@ -4,15 +4,15 @@ id: "require_yaml_configuration_for_mf_time_spines"
 sidebar_label: "require yaml configuration for mf time spines"
 ---
 
-:::caution Removed in <Constant name="core_v2" />
+:::caution Removed in v2
 
-This flag was removed in <Constant name="core_v2" /> and in <Constant name="fusion" />. The new behavior is always enabled. If you're upgrading, remove this flag from your `dbt_project.yml`.
+This flag was removed in v2. The new behavior is always enabled. If you're upgrading, remove this flag from your `dbt_project.yml`.
 
 :::
 
 
 
-| require_yaml_configuration_for_mf_time_spines | <Constant name="dbt" /> **Latest** | <Constant name="core" /> |
+| require_yaml_configuration_for_mf_time_spines | <Constant name="dbt" /> **v1 Latest** | <Constant name="core" /> |
 |---|---|---|
 | Introduced | 2024.10 | 1.9.0 |
 | Matured (default → `true`) | 2026.09 | 1.12.0 |
@@ -20,9 +20,9 @@ This flag was removed in <Constant name="core_v2" /> and in <Constant name="fusi
 
 <br />
 
-In previous versions (<Constant name="core" /> 1.8 and earlier), the MetricFlow time spine configuration was stored in a `metricflow_time_spine.sql` file.
+In previous versions (<Constant name="dbt" /> 1.8 and earlier), the MetricFlow time spine configuration was stored in a `metricflow_time_spine.sql` file.
 
-Starting in <Constant name="core" /> v1.12, this flag defaults to `true`, suppressing the `MFTimespineWithoutYamlConfigurationDeprecation` deprecation warning. The legacy SQL file configuration continues to work in both cases.
+Starting in <Constant name="dbt" /> v1.12, this flag defaults to `true`, suppressing the `MFTimespineWithoutYamlConfigurationDeprecation` deprecation warning. The legacy SQL file configuration continues to work in both cases.
 
 The MetricFlow properties YAML file should have the `time_spine:` field. Refer to [MetricFlow timespine](/docs/build/metricflow-time-spine) for more details.
 

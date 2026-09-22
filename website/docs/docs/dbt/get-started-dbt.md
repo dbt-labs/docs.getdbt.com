@@ -17,15 +17,13 @@ Once you've caught up on everything [dbt has to offer](/docs/introduction), star
     title="Install dbt"
     body="Install dbt from your command line."
     link="/docs/local/install-dbt"
-    icon="dbt-bit"
-    lifecycle="preview"/>
+    icon="dbt-bit"/>
 
 <Card
     title="Install the dbt VS Code extension"
     body="Get dbt's performance plus autocomplete, inline errors, and lineage in your editor."
     link="/docs/about-dbt-extension"
-    icon="dbt-bit"
-    lifecycle="preview"/>
+    icon="dbt-bit"/>
 
 <Card
     title="Sign up for the dbt platform"
@@ -44,13 +42,13 @@ Upgrade your existing projects to v2 and learn about the tools available to you 
 <Card
     title="Preparing to upgrade from v1 to v2"
     body="Step-by-step guide to prepare your dbt platform projects for upgrading to v2."
-    link="/guides/prepare-dbt-upgrade"
+    link="/guides/prepare-v2-upgrade"
     icon="dbt-bit" />
 
 <Card
     title="Upgrade to v2"
     body="Learn how to upgrade your eligible projects on the dbt platform to v2."
-    link="/guides/upgrade-to-dbt"
+    link="/guides/upgrade-to-v2"
     icon="dbt-bit" />
 
 <Card

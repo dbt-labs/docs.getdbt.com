@@ -8,7 +8,7 @@ import IndirSelect from '/snippets/_indirect-selection-definitions.md';
 
 Indirect selection determines which tests to run when you select models or other resources. It applies to tests that are related to your selected resources through relationships in your DAG &mdash; for example, tests on upstream or downstream models, or tests that reference multiple models.
 
-Use the `--indirect-selection` flag with `dbt test` or `dbt build` to configure this behavior. You can set this as a CLI flag or an environment variable. In dbt <Constant name="core"/>, you can also configure user configurations in [YAML selectors](/reference/node-selection/yaml-selectors) or in the `flags:` block of `dbt_project.yml`, which sets project-level flags.
+Use the `--indirect-selection` flag with `dbt test` or `dbt build` to configure this behavior. You can set this as a CLI flag or an environment variable. In <Constant name="core"/>, you can also configure user configurations in [YAML selectors](/reference/node-selection/yaml-selectors) or in the `flags:` block of `dbt_project.yml`, which sets project-level flags.
 
 :::tip Indirect selection happens by default
 Even without explicitly using the [`--indirect-selection` flag](/reference/node-selection/test-selection-examples?indirect-selection-mode=eager#indirect-selection), dbt uses indirect selection when you run commands like `dbt test --select "stg_model_a+"`. The default mode is `eager`, which runs all tests that reference your selected models. For example, `dbt test --select model_b` will run tests defined on `model_b`, as well as tests defined on upstream models if those tests reference `model_b`. 

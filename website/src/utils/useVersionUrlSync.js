@@ -14,6 +14,9 @@ export function useVersionUrlSync() {
     // Only run on client side and when we have a version
     if (typeof window === 'undefined' || !urlVersion) return;
 
+    // Blog posts aren't versioned content, so never add a version param there
+    if (location.pathname.startsWith('/blog')) return;
+
     const url = new URL(window.location.href);
     const currentVersionParam = url.searchParams.get('version');
 
