@@ -136,7 +136,7 @@ Common issues and resolutions:
      ```
   </Expandable>
 
-<AboutFusion />
+<AboutFusion hideInstallLink/>
 
 </VersionBlock>
 
