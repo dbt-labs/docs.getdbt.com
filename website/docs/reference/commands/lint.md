@@ -59,7 +59,7 @@ These rules are off by default and to turn them on, add a `rules` line to your `
 [dialect](https://docs.sqlfluff.com/en/stable/reference/dialects.html) = your_dialect
 [rules](https://docs.sqlfluff.com/en/stable/configuration/rule_configuration.html) = DBT02,DBT03,DBT04,DBT05
 ```
-
+<SimpleTable>
 | Code | Dotted name | Rule | 
 |------|-------------|---------|
 | `DBT01` | `dbt.import_ctes` | Every `ref()/source()` must be imported through a top-level CTE, not referenced inline| 
@@ -67,7 +67,7 @@ These rules are off by default and to turn them on, add a `rules` line to your `
 | `DBT03` | `dbt.function_wrapped_filter_column` | A comparison must not wrap a bare column reference in a function call |
 | `DBT04` | `dbt.leading_wildcard_like` | A `LIKE/ILIKE` pattern must not start with a wildcard| 
 | `DBT05` | `dbt.hard_coded_reference` | A `ref()/source()` must not be hard-coded to a literal string|
-
+</SimpleTable>
 
 ## Jinja render modes
 
