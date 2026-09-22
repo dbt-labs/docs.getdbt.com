@@ -222,6 +222,6 @@ import FusionTroubleshooting from '/snippets/_fusion-troubleshooting.md';
 
 import AboutFusion from '/snippets/_about-fusion.md';
 
-<AboutFusion />
+<AboutFusion hideQuickstartLink/>
 
 </div>

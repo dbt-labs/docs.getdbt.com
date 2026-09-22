@@ -3,11 +3,11 @@ import { usePluginData } from "@docusaurus/useGlobalData";
 import styles from "./styles.module.css";
 
 const CHANGELOG_BASE =
-  "https://github.com/dbt-labs/dbt/blob/main/CHANGELOG-fusion.md";
+  "https://github.com/dbt-labs/dbt/blob/main/CHANGELOG-dbt.md";
 
 /**
- * Fragment for a Fusion release version, matching GitHub’s autolink for the
- * corresponding `## {version}` heading in CHANGELOG-fusion.md (e.g. `2.0.0-preview.172` → `200-preview172`).
+ * Fragment for a dbt release version, matching GitHub’s autolink for the
+ * corresponding `## {version}` heading in CHANGELOG-dbt.md (e.g. `2.0.0-preview.172` → `200-preview172`).
  */
 function versionToChangelogFragment(version) {
   return version
@@ -21,7 +21,7 @@ function changelogUrlForVersion(version) {
   return `${CHANGELOG_BASE}#${versionToChangelogFragment(version)}`;
 }
 
-/** Fusion versions that should show a “release candidate” label in the UI. */
+/** dbt versions that should show a “release candidate” label in the UI. */
 const FUSION_RELEASE_CANDIDATE_VERSIONS = new Set(["2.0.0-preview.173"]);
 
 function isFusionReleaseCandidateVersion(version) {
