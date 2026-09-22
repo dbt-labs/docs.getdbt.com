@@ -24,12 +24,16 @@ For example SQL grants in Redshift, refer to [Redshift permissions](/reference/d
 
 Use the following fields when creating a connection:
 
+<SimpleTable>
+  
 | Field | Required? | Description | Examples |
 | ----- | -------- | ----------- | -------- |
 | Server Hostname | Required | The hostname of the database to connect to. This can either be a hostname or an IP address. Refer to [Find your cluster](https://docs.aws.amazon.com/redshift/latest/mgmt/connecting-connection-string.html) to find the hostname. | Redshift: `hostname.region.redshift.amazonaws.com` |
 | Port | Required | Usually 5439 (Redshift) | `5439` |
 | Database | Optional | The logical database to connect to and run queries against. | `analytics` |
 | Retries | Optional | Number of retries (on each statement). Defaults to 3 if not set. Max value is 10. | `4` |
+
+</SimpleTable>
 
 **Note**: When you set up a Redshift connection in <Constant name="dbt" />, SSL-related parameters aren't available as inputs. 
 
@@ -52,6 +56,7 @@ You will need to create an IAM User, generate an [access key](https://docs.aws.a
 - on Serverless, grant permission to the IAM user in Redshift. The `user` field is ignored (but still required)
 - For both, the `password` field will be ignored.
 
+<SimpleTable>
 | Profile field | Example | Description |
 | ------------- | ------- | ------------ |
 | `method` |IAM| use IAM to authenticate via IAM User authentication |
@@ -60,6 +65,7 @@ You will need to create an IAM User, generate an [access key](https://docs.aws.a
 | `region`  | us-east-1 | Region of your Redshift instance | 
 | `access_key_id` | ACCESS_KEY_ID | IAM user [access key id](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey) |
 | `secret_access_key` | SECRET_ACCESS_KEY | IAM user secret access key |
+</SimpleTable>
 
 <br/>
 
