@@ -16,7 +16,7 @@ These paths are fully supported for <Constant name="dbt_platform" /> users. Keep
 
 This guide walks through command routing, credentials, environment variables, <Constant name="fusion" /> versions, and Mesh or deferral, with concrete, copy-paste-ready steps to keep everything aligned.
 
-If you run both the <Constant name="platform_cli" /> and a local <Constant name="fusion" /> build from the same project, start with [Choosing which dbt runs in terminal](/guides/dbt-platform-local-workflow?step=3#1-choosing-which-dbt-runs-in-terminal). Both tools are invoked as `dbt`, and the rest of this guide assumes you can tell them apart.
+If you run both the <Constant name="platform_cli" /> and a local <Constant name="fusion" /> build from the same project, start with [Choosing which dbt runs](/guides/dbt-platform-local-workflow?step=3#1-choosing-which-dbt-runs). Both tools are invoked as `dbt`, and the rest of this guide assumes you can tell them apart.
 
 ## Prerequisites
 
@@ -24,7 +24,7 @@ If you run both the <Constant name="platform_cli" /> and a local <Constant name=
 - You have either the [dbt platform CLI](/docs/platform/dbt-cli-installation) or the [dbt VS Code extension + local dbt](/docs/local/install-dbt) installed.
 
 
-## 1. Choosing which dbt runs in terminal
+## 1. Choosing which dbt runs
 
 If you install both the <Constant name="platform_cli" /> and a local <Constant name="fusion" /> build, you have two separate programs on your machine that are both invoked by typing `dbt`. Before you configure credentials, environment variables, or versions, make it unambiguous which one you're calling.
 
