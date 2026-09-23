@@ -142,7 +142,9 @@ Agents run shell commands the same way a script does, so they inherit `$PATH` bu
 ```markdown
 ## dbt command routing
 
-- Use `~/.local/bin/dbt` for local dbt v2 commands. It runs on this machine
+Replace the paths below with the output of `which -a dbt` on this machine.
+
+- Use `$HOME/.local/bin/dbt` for local dbt v2 commands. It runs on this machine
   against `profiles.yml`.
 - Use `/opt/homebrew/bin/dbt` for dbt platform CLI commands. It runs on
   dbt platform against the environment's release track.
