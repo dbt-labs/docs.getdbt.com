@@ -14,6 +14,20 @@ const OPT_OUT_LABEL = "do-not-auto-approve"; // human kill switch, per PR
 // lines is treated as risky no matter how small.
 const RISKY_FRONTMATTER = /^[+-]\s*(id|slug|title|sidebar_label|sidebar_position|pagination_next|pagination_prev|displayed_sidebar|hide_table_of_contents|tags|keywords)\s*:/;
 
+// docusaurus.config.js is otherwise denied (site-wide build config). It's only
+// low-risk when every changed line is inside the announcementBar block — the
+// promo banner text/link, nothing that touches build or plugin behavior.
+const ANNOUNCEMENT_BANNER_LINE = /^[+-]\s*(announcementBar\s*:\s*\{\s*|announcementBarActive\s*:.*|announcementBarLink\s*:.*|id\s*:.*|content\s*:.*|isCloseable\s*:.*|\}\s*,?\s*|["'].*)$/;
+
+function isAnnouncementBarOnly(patch) {
+  for (const line of (patch || "").split("\n")) {
+    if (!line.startsWith("+") && !line.startsWith("-")) continue;
+    if (line.startsWith("+++") || line.startsWith("---")) continue;
+    if (!ANNOUNCEMENT_BANNER_LINE.test(line)) return false;
+  }
+  return true;
+}
+
 function globToRegex(glob) {
   let out = "";
   for (let i = 0; i < glob.length; i++) {
@@ -129,6 +143,23 @@ async function evaluate({ github, context, core }) {
     }
   }
 
+  // Style guide compliance: don't approve ahead of Vale. Read-only check against
+  // the head SHA — never runs Vale itself, so no PR code is checked out or executed.
+  const checkRuns = await github.paginate(github.rest.checks.listForRef, {
+    owner,
+    repo,
+    ref: pr.head.sha,
+    per_page: 100,
+  });
+  const valeRun = checkRuns.find((c) => c.name === "Vale linting");
+  if (!valeRun) {
+    reasons.push("Vale linting check has not reported yet");
+  } else if (valeRun.status !== "completed") {
+    reasons.push("Vale linting check is still running");
+  } else if (valeRun.conclusion !== "success") {
+    reasons.push("Vale linting check did not pass");
+  }
+
   const files = await github.paginate(github.rest.pulls.listFiles, {
     owner,
     repo,
@@ -154,6 +185,16 @@ async function evaluate({ github, context, core }) {
     }
     if (!allow.some((re) => re.test(f.filename))) {
       reasons.push(`${f.filename} is not on the safe-file list`);
+      continue;
+    }
+    if (f.filename === "website/docusaurus.config.js") {
+      if (!isAnnouncementBarOnly(f.patch)) {
+        reasons.push(`${f.filename} changes outside the announcementBar block`);
+      }
+      totalWords += countWords((f.patch || "").split("\n")
+        .filter((l) => (l.startsWith("+") || l.startsWith("-")) && !l.startsWith("+++") && !l.startsWith("---"))
+        .map((l) => l.slice(1))
+        .join(" "));
       continue;
     }
     const { words, riskyFrontmatter } = analyzePatch(f.patch);

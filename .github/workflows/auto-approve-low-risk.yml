@@ -24,6 +24,7 @@ on:
 permissions:
   contents: read
   pull-requests: write
+  checks: read
 
 concurrency:
   group: auto-approve-${{ github.event.pull_request.number }}
