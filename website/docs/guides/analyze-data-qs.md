@@ -115,9 +115,7 @@ She's happy with the results and clicks **Details** to see the AI-generated repo
 
 Once she's ready to get the insight to her stakeholder, she clicks **Chart** to view the chart prefilled with the data from the **Data** tab. 
 
-She adds x- and y-axis labels, such as "Month of first order" and "Total new customers" to make it more comprehensible for the final report she'll share with her stakeholder. Next, she takes a screenshot to share with them.
-
-<!-- ![ADD IMAGE Insights-axis-title](/img/analyst-walkthrough/insights-axis-title.png) -->
+She adds x- and y-axis labels, such as "Month of first order" and "Total new customers" to 
 
 She often comes back to this data so Kimiko decides to bookmark the page by clicking **Bookmark** in the top right. She also exports it to a CSV file.
 
@@ -127,11 +125,10 @@ Kimiko has a few conversations with teammates and she finds out they're running 
 
 To do this, she opens the query in <Constant name="insights" /> and clicks **Develop** then ***Develop in** <Constant name="canvas" />. This opens the SQL query in a visual form, represented in a DAG.
 
-<!-- ![ADD IMAGE Canvas-overview](/img/analyst-walkthrough/canvas-overview.png) -->
 
 When she examines the model, she notes it's selecting from customers as expected, filtering for 2024, showing dates by month, and aggregating over that month. She runs it in her development environment and clicks **Commit** to submit a pull request. 
 
-<!-- ![ADD IMAGE Canvas-commit](/img/analyst-walkthrough/canvas-commit.png) -->
+
 
 Now Kimiko's entire team, those who have the same access as her, can run this model and see the same results she does! What's more is they can help her improve the model as the stakeholder requests get more complicated, and she will benefit from their help.
 
