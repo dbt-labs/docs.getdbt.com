@@ -4,10 +4,6 @@ description: "Learn how to configure state selection in dbt."
 pagination_next: "reference/node-selection/state-comparison-caveats"
 ---
 
-import DbtStateTip from '/snippets/_dbt-state-tip.md';
-
-<DbtStateTip />
-
 State and [defer](/reference/node-selection/defer) can be set by environment variables as well as CLI flags:
 
 - `--state` or <VersionBlock lastVersion="1.10">`DBT_STATE`</VersionBlock><VersionBlock firstVersion="1.11">`DBT_ENGINE_STATE`</VersionBlock>: file path
