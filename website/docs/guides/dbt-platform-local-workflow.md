@@ -16,7 +16,7 @@ These paths are fully supported for <Constant name="dbt_platform" /> users. Keep
 
 This guide walks through command routing, credentials, environment variables, <Constant name="fusion" /> versions, and Mesh or deferral, with concrete, copy-paste-ready steps to keep everything aligned.
 
-If you run both the <Constant name="platform_cli" /> and a local <Constant name="fusion" /> build from the same project, start with [Choosing which dbt runs](/guides/dbt-platform-local-workflow?step=3). Both tools are invoked as `dbt`, and the rest of this guide assumes you can tell them apart.
+If you run both the <Constant name="platform_cli" /> and a local <Constant name="fusion" /> build from the same project, start with [Choosing which dbt runs in terminal](/guides/dbt-platform-local-workflow?step=3#1-choosing-which-dbt-runs-in-terminal). Both tools are invoked as `dbt`, and the rest of this guide assumes you can tell them apart.
 
 ## Prerequisites
 
@@ -24,7 +24,7 @@ If you run both the <Constant name="platform_cli" /> and a local <Constant name=
 - You have either the [dbt platform CLI](/docs/platform/dbt-cli-installation) or the [dbt VS Code extension + local dbt](/docs/local/install-dbt) installed.
 
 
-## 1. Choosing which dbt runs
+## 1. Choosing which dbt runs in terminal
 
 If you install both the <Constant name="platform_cli" /> and a local <Constant name="fusion" /> build, you have two separate programs on your machine that are both invoked by typing `dbt`. Before you configure credentials, environment variables, or versions, make it unambiguous which one you're calling.
 
@@ -32,7 +32,7 @@ Skip this section if you only ever install one of the two.
 
 ### The two execution paths
 
-Both paths read the same project files &mdash; one clone of your repository, one `dbt_project.yml`, one set of models, macros, and tests. What differs is where the work happens and where the connection details come from.
+Both the <Constant name="platform_cli" /> and the local <Constant name="fusion" /> execution paths read the same project files &mdash; one clone of your repository, one `dbt_project.yml`, one set of models, macros, and tests. What differs is where the work happens and where the connection details come from.
 
 <SimpleTable>
 
@@ -40,34 +40,21 @@ Both paths read the same project files &mdash; one clone of your repository, one
 |---|---|---|
 | **What it is** | A client that sends your command to <Constant name="dbt_platform" /> | A dbt executable that runs on your machine |
 | **Where dbt runs** | On <Constant name="dbt_platform" /> infrastructure | Locally, or inside your agent's virtual machine |
-| **Which engine runs** | Whichever [release track](/docs/dbt-versions/dbt-release-tracks#dbt-v2-release-tracks) your platform environment is set to | The version of the binary you installed |
-| **Warehouse connection** | Credentials stored in <Constant name="dbt_platform" /> | Your local `profiles.yml` and environment |
-| **Configuration files** | [`dbt_cloud.yml`](/reference/dbt_cloud.yml) | `profiles.yml`, `.env` |
 
 </SimpleTable>
 
-:::warning A v2 release track does not change your local dbt
-
-Moving a <Constant name="dbt_platform" /> environment to a v2 release track changes the engine that <Constant name="dbt_platform" /> uses for that environment. It does not install, update, replace, or select the <Constant name="fusion" /> executable on your machine, and it does not turn the <Constant name="platform_cli" /> into <Constant name="fusion" />.
-
-The reverse is also true: running `dbt system update` locally updates your local install only. It has no effect on which build your <Constant name="dbt_platform" /> environments run.
-
-Treat the two version settings as independent, and keep them aligned yourself. Refer to [Managing dbt v2 versions](/guides/dbt-platform-local-workflow?step=6) for how to do that.
-
-:::
-
 ### Give each tool its own command
 
-Both programs are installed as `dbt`, so whichever one appears first in your `$PATH` wins. Rather than relying on `$PATH` order, give at least one of them an explicit name.
+Because both programs are installed as `dbt`, whichever one appears first in your `$PATH` opens when you use `dbt`. To avoid relying on `$PATH` order, you can assign at least one of them an alias that you can use on the command line to call each one explicitly.
 
-The <Constant name="fusion" /> [installation script](/docs/local/install-dbt) already does this for you: it adds a `dbtf` alias to your shell profile pointing at the local <Constant name="fusion" /> binary. Pair that with a `dbt-cli` alias for the <Constant name="platform_cli" />, as described in the [<Constant name="platform_cli" /> FAQs](/docs/platform/dbt-cli-installation#faqs), and every command says exactly what it means:
+The <Constant name="fusion" /> [installation script](/docs/local/install-dbt) already provides `dbtf` as an alias and points to the local <Constant name="fusion" /> binary, or executable program. You can also add a `dbt-cli` alias for the <Constant name="platform_cli" /> so each command calls exactly what it says, for example:
 
 ```shell
 dbtf build --select my_model      # Runs locally, on your installed v2 binary
 dbt-cli build --select my_model   # Runs on dbt platform, on your environment's release track
 ```
 
-Follow these steps to set this up.
+Follow these steps to set up an alias:
 
 1. Find out what `dbt` resolves to today, and whether more than one is installed:
 
@@ -75,29 +62,33 @@ Follow these steps to set this up.
    which -a dbt
    ```
 
-2. Install the tools you need. The <Constant name="fusion" /> [installation script](/docs/local/install-dbt) installs to `$HOME/.local/bin/dbt` on macOS and Linux, or `C:\Users\USERNAME\.local\bin\dbt.exe` on Windows, and adds the `dbtf` alias. Install the [<Constant name="platform_cli" />](/docs/platform/dbt-cli-installation) separately.
+2. Install the tools you need:
+   - Install <Constant name="fusion" /> using the [installation script](/docs/local/install-dbt), which puts it in `$HOME/.local/bin/dbt` on macOS and Linux, or `C:\Users\USERNAME\.local\bin\dbt.exe` on Windows, and adds the `dbtf` alias.
+   - Install the [<Constant name="platform_cli" />](/docs/platform/dbt-cli-installation) separately.
 
-3. Add an alias for the <Constant name="platform_cli" /> to your shell profile, pointing at its binary. On macOS with Homebrew, that binary is at `/opt/homebrew/bin/dbt`:
+3. Using the path you identified in Step 1 for your dbt platform CLI install, add an alias to your shell profile that points to its installed program.
+
+   For example, on macOS with Homebrew you can create an alias for the executable at `/opt/homebrew/bin/dbt`:
 
    ```shell
    # ~/.zshrc or ~/.bashrc
    alias dbt-cli="/opt/homebrew/bin/dbt"
    ```
 
-4. Reload your shell profile:
+   Reload your shell profile:
 
    ```shell
    source ~/.zshrc   # or source ~/.bashrc
    ```
 
-5. Confirm each command resolves to the tool you expect. The two version strings should differ:
+4. Confirm each command resolves to the tool you expect and the two version strings differ:
 
    ```shell
    dbtf --version
    dbt-cli --version
    ```
 
-6. Decide what bare `dbt` means on your machine and write it down for your team in `CONTRIBUTING.md`. Whichever you choose, `dbtf` and `dbt-cli` stay unambiguous.
+5. Decide which program opens when you run bare `dbt` on your machine and create a best practice for your team. Regardless, `dbtf` and `dbt-cli` clearly run the named program.
 
 :::caution Shell aliases don't apply everywhere
 
@@ -160,21 +151,7 @@ Agents run shell commands the same way a script does, so they inherit `$PATH` bu
 - Ask before running any command that creates or modifies warehouse objects.
 ```
 
-Use absolute paths in agent instructions rather than the `dbtf` and `dbt-cli` aliases, because the agent's shell may not load your shell profile. Discover the real paths on the machine the agent runs on with `which -a dbt`, and update the instructions file when they change.
-
-### Verify your setup
-
-Run these from your repository root. Each command should name the tool you expect:
-
-```shell
-which -a dbt        # Every dbt on your PATH, in resolution order
-dbtf --version      # Local dbt v2 version
-dbt-cli --version   # dbt platform CLI version
-dbtf debug          # Local warehouse connection through profiles.yml
-dbt-cli environment # dbt platform environment and connection details
-```
-
-For remote agent virtual machines, run the same checks inside a fresh session. Tools installed ad hoc in an earlier session may not persist.
+Use absolute paths in agent instructions rather than the `dbtf` and `dbt-cli` aliases, because the agent's shell may not load your shell profile. Discover the real paths on the machine the agent runs on with `which -a dbt`, and update the instructions file when they change. On a remote agent virtual machine, confirm the paths inside a fresh session, because tools installed ad hoc in an earlier session may not persist.
 
 ## 2. Managing credentials
 
@@ -291,6 +268,16 @@ Consider a script that fetches variables from your secrets manager (for example,
 ## 4. Managing dbt v2 versions
 
 The **v2 Stable** release track on <Constant name="dbt_platform" /> updates continuously as <Constant name="fusion" /> ships new releases. If your local version falls behind, you might see inconsistent behavior. The same query could compile differently locally than in production, or a feature might exist in <Constant name="dbt_platform" /> but not in your local binary. Stay current to avoid these mismatches.
+
+:::warning A v2 release track does not change your local dbt
+
+Moving a <Constant name="dbt_platform" /> environment to a v2 release track changes the engine that <Constant name="dbt_platform" /> uses for that environment. It does not install, update, replace, or select the <Constant name="fusion" /> executable on your machine, and it does not turn the <Constant name="platform_cli" /> into <Constant name="fusion" />.
+
+The reverse is also true: running `dbt system update` locally updates your local install only. It has no effect on which build your <Constant name="dbt_platform" /> environments run.
+
+Treat the two version settings as independent, and keep them aligned yourself using the steps in this section.
+
+:::
 
 ### Versions on the dbt platform
 
