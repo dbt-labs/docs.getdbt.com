@@ -41,10 +41,8 @@ jobs:
       - name: Get changed files
         run: |
           git diff --name-only "origin/${{ github.base_ref }}" "${{ github.event.pull_request.head.sha }}" \
-            -- 'website/docs/**/*.md' 'website/docs/**/*.mdx' \
-               'website/snippets/**/*.md' 'website/snippets/**/*.mdx' \
-               'website/blog/**/*.md' 'website/blog/**/*.mdx' \
-            > changed_files.txt
+            -- website/docs website/snippets website/blog \
+            | grep -E '\.mdx?$' > changed_files.txt || true
           cat changed_files.txt
 
       - name: Check for broken local image paths
