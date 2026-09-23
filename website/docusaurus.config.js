@@ -320,6 +320,7 @@ var siteSettings = {
       ],
     },
   },
+  clientModules: [require.resolve("./src/clientModules/resizeTransitionStopper.js")],
   presets: [
     [
       "@docusaurus/preset-classic",
