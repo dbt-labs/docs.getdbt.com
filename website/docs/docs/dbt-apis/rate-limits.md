@@ -5,9 +5,13 @@ id: "rate-limits"
 sidebar_label: "Rate limits"
 pagination_next: "docs/dbt-apis/user-tokens"
 pagination_prev: "docs/dbt-apis/overview"
+availability:
+  surface: platform
+  access: paid_plan
+  minPlan: starter
 ---
 
-# API rate limits <Lifecycle status="self_service,managed,managed_plus" />
+# API rate limits
 
 <IntroText>
 

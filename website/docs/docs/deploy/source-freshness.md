@@ -2,6 +2,7 @@
 title: "Source freshness"
 id: "source-freshness"
 description: "Validate that data freshness meets expectations and alert if stale."
+availability: platform_login
 ---
 
 <Constant name="dbt" /> provides a helpful interface around dbt's [source data freshness](/docs/build/sources#source-data-freshness) calculations. When a <Constant name="dbt" /> job is configured to run source freshness checks, <Constant name="dbt" /> will render a user interface showing you the state of the most recent check. This interface is intended to help you determine if your source data freshness is meeting the service level agreement (SLA) that you've defined for your organization.

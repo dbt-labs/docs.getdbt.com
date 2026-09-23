@@ -2,7 +2,11 @@ import path from "path";
 import math from "remark-math";
 import katex from "rehype-katex";
 import rehypeCodeLanguage from "./plugins/rehypeCodeLanguage.js";
+import rehypeCleanMarkdown from "./plugins/rehypeCleanMarkdown.js";
+import rehypeTabsToHeadings from "./plugins/rehypeTabsToHeadings.js";
+import rehypeMdHide from "./plugins/rehypeMdHide.js";
 import remarkBlogFootnoteLinks from "./plugins/remarkBlogFootnoteLinks.js";
+import remarkConstantsInCode from "./plugins/remarkConstantsInCode.js";
 const { themes } = require('prism-react-renderer')
 
 const { products, versions, versionedPages, versionedCategories } = require("./dbt-versions");
@@ -87,13 +91,13 @@ var siteSettings = {
       //debug: true,
     },
     announcementBar: {
-      id: "dbt-summit-2026",
-      content: "Join us at dbt Summit, September 15–18 in Las Vegas. Come learn, swap ideas, and spend time with the dbt community as we shape the future of data and AI.",
+      id: "post-dbt-summit-2026",
+      content: "Relive the best of dbt Summit! Get access to the keynotes and breakout sessions from dbt Summit 2026. See the latest product innovations from dbt, and hear how data teams are leveling up for the agentic era.",
       isCloseable: true,
     },
     announcementBarActive: true,
     announcementBarLink:
-      "https://www.getdbt.com/dbt-summit/?utm_medium=internal&utm_source=docs&utm_campaign=q3-2027_dbt-summit-2026_aw&utm_content=dbt-summit____&utm_term=all_all__",
+      "https://www.getdbt.com/dbt-summit/registration/online",
     prism: {
       theme: (() => {
         var theme = themes.nightOwl;
@@ -172,8 +176,8 @@ var siteSettings = {
               to: "/docs/dbt-support",
             },
             {
-              label: "Fusion Diaries",
-              href: "https://github.com/dbt-labs/dbt-core/discussions/categories/announcements?discussions_q=is:open+diaries+category:Announcements",
+              label: "Licensing",
+              to: "/docs/dbt-licensing",
             },
             {
               label: "Courses",
@@ -226,11 +230,11 @@ var siteSettings = {
           ],
         },
         {
-          label: "Install VS Code extension",
+          label: "Get started with dbt",
           position: "right",
-          to: "https://marketplace.visualstudio.com/items?itemName=dbtLabsInc.dbt",
-          id: "nav-install-vs-code-extension",
-          className: "nav-install-dbt-extension",
+          to: "/docs/dbt/get-started-dbt?version=2",
+          id: "nav-install-dbt",
+          className: "nav-install-dbt",
         },
       ],
     },
@@ -238,19 +242,12 @@ var siteSettings = {
       links: [
         {
           html: `
-          <script 
-            src="https://solve-widget.forethought.ai/embed.js" id="forethought-widget-embed-script" data-api-key="9d421bf3-96b8-403e-9900-6fb059132264" 
-            data-ft-workflow-tag="docs" 
-            config-ft-greeting-message="Welcome to dbt Product docs! Ask a question."
-            config-ft-widget-header-title = "Ask a question"
-            config-ft-privacy-policy = "We're pleased to offer this complimentary chatbot service, powered by Forethought.ai, to optimize your experience and productivity. Your use of this chatbot is subject to, and may be retained pursuant to, the terms of the privacy policy available for review at <a href='https://www.getdbt.com/cloud/privacy-policy' target='_blank'>https://www.getdbt.com/cloud/privacy-policy</a>."
-          ></script>
           <div class='bottom-cta'>
             <div class='container'>
               <div class='cta-section-text'>
                 <span class="eyebrow">Get started</span>
                 <h2 class="heading-2">Start building with dbt.</h2>
-                <p>The free dbt VS Code extension is the best way to develop locally with the dbt Fusion Engine.</p>
+                <p>The free dbt VS Code extension is the best way to develop locally with dbt.</p>
               </div>
               <div class="cta-section">
                 <a href="https://marketplace.visualstudio.com/items?itemName=dbtLabsInc.dbt" target="_blank" class="primary-cta">Install free extension</a>
@@ -323,6 +320,7 @@ var siteSettings = {
       ],
     },
   },
+  clientModules: [require.resolve("./src/clientModules/resizeTransitionStopper.js")],
   presets: [
     [
       "@docusaurus/preset-classic",
@@ -334,7 +332,7 @@ var siteSettings = {
           path: "docs",
           routeBasePath: "/",
           sidebarPath: require.resolve("./sidebars.js"),
-          remarkPlugins: [math],
+          remarkPlugins: [math, remarkConstantsInCode],
           rehypePlugins: [katex],
 
           editUrl:
@@ -354,7 +352,7 @@ var siteSettings = {
           postsPerPage: 20,
           blogSidebarTitle: "Recent posts",
           blogSidebarCount: 5,
-          remarkPlugins: [math, remarkBlogFootnoteLinks],
+          remarkPlugins: [math, remarkBlogFootnoteLinks, remarkConstantsInCode],
           rehypePlugins: [katex],
           // Un-truncated blog posts will throw an error
           // https://docusaurus.io/blog/releases/3.5#onuntruncatedblogposts
@@ -386,14 +384,16 @@ var siteSettings = {
       "@signalwire/docusaurus-plugin-llms-txt",
       {
         generate: {
-          // Individual .md files are generated by buildRawMarkdownData (raw source,
-          // VersionBlock tags preserved). Disable here to avoid conflict.
-          enableMarkdownFiles: false,
+          // This plugin owns the per-page .md files, generated from the rendered
+          // HTML so partials are inlined and components (VersionBlock, FAQ, Term)
+          // are resolved. buildRawMarkdownData is kept only for the in-browser
+          // "Copy page" global data, not for writing files.
+          enableMarkdownFiles: true,
           enableLlmsFullTxt: true,
           relativePaths: false,
         },
         processing: {
-          beforeDefaultRehypePlugins: [rehypeCodeLanguage],
+          beforeDefaultRehypePlugins: [rehypeCodeLanguage, rehypeCleanMarkdown, rehypeTabsToHeadings, rehypeMdHide],
         },
         include: {
           includeBlog: false,
@@ -461,13 +461,13 @@ var siteSettings = {
                   name: "dbt local installation",
                   routes: [
                     { route: "/docs/local/install-dbt" },
-                    { route: "/docs/local/dbt-core-environments" },
+                    { route: "/docs/local/dbt-environments" },
                   ],
                   subsections: [
                     {
                       id: "about-fusion-install",
                       name: "Install dbt Fusion engine",
-                      routes: [{ route: "/docs/fusion/about-fusion-install" }],
+                      routes: [{ route: "/docs/dbt/about-dbt-install" }],
                     },
                     {
                       id: "core-connect-data-platform",
@@ -483,7 +483,7 @@ var siteSettings = {
             {
               id: "fusion",
               name: "Fusion",
-              routes: [{ route: "/docs/fusion/**" }],
+              routes: [{ route: "/docs/dbt/**" }],
             },
             {
               id: "platform",
@@ -533,6 +533,7 @@ var siteSettings = {
     "/css/search.css",
     "/css/api.css",
     "https://use.typekit.net/kvb8avc.css",
+    "https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css",
     {
       href: "https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css",
       type: "text/css",

@@ -4,6 +4,9 @@ id: connect-apache-spark
 description: "Setup instructions for connecting Apache Spark to dbt"
 sidebar_label: "Connect Apache Spark"
 pagination_next: null
+availability:
+  surface: platform
+  access: login_required
 ---
 
 <Snippet path="dbt-databricks-for-databricks" />

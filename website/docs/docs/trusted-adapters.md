@@ -2,6 +2,7 @@
 title: "Trusted adapters"
 id: "trusted-adapters"
 hide_table_of_contents: true
+availability: all_users
 ---
 
 

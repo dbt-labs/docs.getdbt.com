@@ -3,6 +3,10 @@ title: "Configuring Snowflake and Azure Private Link"
 id: azure-snowflake
 description: "Configuring Azure Private Link for Snowflake."
 sidebar_label: "Snowflake"
+availability:
+  surface: platform
+  access: paid_plan
+  minPlan: enterprise_plus
 ---
 
 import SetUpPages from '/snippets/_available-tiers-enterprise-plus.md';

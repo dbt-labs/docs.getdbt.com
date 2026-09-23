@@ -1,0 +1,19 @@
+---
+# Product naming: Fusion / dbt Fusion engine -> dbt v2 ; dbt Core -> dbt v1.
+# Shipped with the product-term rename so the retired terms can't regress.
+#
+# NOTE: Vale can't do sentence-position trimming (dbt v1 vs bare v1) — it flags
+# the retired terms and suggests the specific-version replacement. Vale skips
+# fenced code by default for .md.
+extends: substitution
+message: "Use the current naming: '%s' should be renamed (Fusion → dbt v2, dbt Core → dbt v1). See the Product Rename Strategy."
+level: error
+ignorecase: false
+swap:
+  'dbt Fusion engine': dbt v2
+  'dbt Fusion': dbt v2
+  '\bFusion engine\b': dbt v2
+  '\bFusion\b': dbt v2
+  'dbt Core 2\.0': dbt v2
+  '\bCore v2\b': dbt v2
+  'dbt Core': dbt v1

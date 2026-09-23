@@ -4,9 +4,10 @@ sidebar_label: "Enable in Studio"
 description: "Enable dbt State in the dbt Studio IDE for faster development runs, either at the environment level or per user."
 id: "dbt-state-enable-studio"
 tags: ['dbt State']
+availability: everywhere_usage
 ---
 
-# Enabling dbt State in Studio <Lifecycle status="preview" />
+# Enabling dbt State in Studio
 
 When you enable dbt State in the <Constant name="studio_ide" />, it runs automatically on every `dbt run` or `dbt build` during development &mdash; skipping unchanged models and reusing production results so your runs are _faster_.
 

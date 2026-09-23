@@ -1,5 +1,5 @@
 ---
-title: "Connect Microsoft Fabric Data Warehouse to dbt Core"
+title: "Connect Microsoft Fabric Data Warehouse to dbt v1"
 sidebar_label: "Microsoft Fabric Data Warehouse"
 description: "Read this guide to learn about the Microsoft Fabric Data Warehouse setup in dbt."
 id: fabric-setup
@@ -12,6 +12,7 @@ meta:
   cloud_support: Supported
   platform_name: 'Microsoft Fabric'
   config_page: '/reference/resource-configs/fabric-configs'
+availability: local_free
 ---
 
 <Snippet path="warehouse-setups-cloud-callout" />

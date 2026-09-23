@@ -3,13 +3,16 @@ title: "Connect Redshift"
 id: connect-redshift
 description: "Setup instructions for connecting Redshift to dbt"
 sidebar_label: "Connect Redshift"
+availability:
+  surface: platform
+  access: login_required
 ---
 
-# Connect Redshift <ProductCard text="Fusion compatible" />
+# Connect Redshift <ProductCard text="dbt v2 compatible" />
  
 <Constant name="dbt_platform" /> supports connecting to Redshift. 
 
-## Warehouse permissions for Fusion
+## Warehouse permissions for <Constant name="fusion" />
 
 import FusionRedshiftWarehousePerms from '/snippets/_fusion-warehouse-permissions-redshift.md';
 
@@ -19,13 +22,18 @@ For example SQL grants in Redshift, refer to [Redshift permissions](/reference/d
 
 ## Connection fields
 
-The following fields are required when creating a connection:
+Use the following fields when creating a connection:
 
-| Field | Description | Examples |
-| ----- | ----------- | -------- |
-| Host Name | The hostname of the database to connect to. This can either be a hostname or an IP address. Refer to [set up pages](/docs/local/connect-data-platform/about-dbt-connections) to find the hostname for your adapter. | Redshift: `hostname.region.redshift.amazonaws.com` |
-| Port | Usually 5439 (Redshift) | `5439` |
-| Database | The logical database to connect to and run queries against. | `analytics` |
+<SimpleTable>
+  
+| Field | Required? | Description | Examples |
+| ----- | -------- | ----------- | -------- |
+| Server Hostname | Required | The hostname of the database to connect to. This can either be a hostname or an IP address. Refer to [Find your cluster](https://docs.aws.amazon.com/redshift/latest/mgmt/connecting-connection-string.html) to find the hostname. | Redshift: `hostname.region.redshift.amazonaws.com` |
+| Port | Required | Usually 5439 (Redshift) | `5439` |
+| Database | Optional | The logical database to connect to and run queries against. | `analytics` |
+| Retries | Optional | Number of retries (on each statement). Defaults to 3 if not set. Max value is 10. | `4` |
+
+</SimpleTable>
 
 **Note**: When you set up a Redshift connection in <Constant name="dbt" />, SSL-related parameters aren't available as inputs. 
 
@@ -38,7 +46,7 @@ See the following supported authentication methods for Redshift:
 
 - Username and password
 - SSH tunneling
-- Identity Center via [external Oauth](/docs/platform/manage-access/redshift-external-oauth)
+- AWS IAM Identity Center via [external OAuth](/docs/platform/manage-access/redshift-external-oauth) (Okta or Entra ID) for development connections
 - IAM User authentication via [extended attributes](/docs/dbt-platform-environments#extended-attributes)
 
 On the <Constant name="dbt_platform" />, the IAM user authentication is currently only supported via [extended attributes](/docs/dbt-platform-environments#extended-attributes). Once the project is created, development and deployment environments can be updated to use extended attributes to pass the fields described below, as some are not supported via textbox.
@@ -48,6 +56,7 @@ You will need to create an IAM User, generate an [access key](https://docs.aws.a
 - on Serverless, grant permission to the IAM user in Redshift. The `user` field is ignored (but still required)
 - For both, the `password` field will be ignored.
 
+<SimpleTable>
 | Profile field | Example | Description |
 | ------------- | ------- | ------------ |
 | `method` |IAM| use IAM to authenticate via IAM User authentication |
@@ -56,6 +65,7 @@ You will need to create an IAM User, generate an [access key](https://docs.aws.a
 | `region`  | us-east-1 | Region of your Redshift instance | 
 | `access_key_id` | ACCESS_KEY_ID | IAM user [access key id](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey) |
 | `secret_access_key` | SECRET_ACCESS_KEY | IAM user secret access key |
+</SimpleTable>
 
 <br/>
 

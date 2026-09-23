@@ -1,5 +1,5 @@
 ---
-title: "Connect Yellowbrick to dbt Core"
+title: "Connect Yellowbrick to dbt v1"
 sidebar_label: "Yellowbrick"
 description: "Read this guide to learn about the Yellowbrick warehouse setup in dbt."
 id: "yellowbrick-setup"
@@ -15,6 +15,7 @@ meta:
   slack_channel_link: 'https://www.getdbt.com/community'
   platform_name: 'Yellowbrick Data'
   config_page: '/reference/resource-configs/yellowbrick-configs'
+availability: local_free
 ---
 
 

@@ -1,5 +1,5 @@
 ---
-title: "Connect Microsoft Fabric Lakehouse to dbt Core"
+title: "Connect Microsoft Fabric Lakehouse to dbt v1"
 sidebar_label: "Microsoft Fabric Lakehouse"
 description: "Read this guide to learn about the Microsoft Fabric spark setup for Lakehouse in dbt."
 id: "fabricspark-setup"
@@ -15,6 +15,7 @@ meta:
   slack_channel_link: 'https://getdbt.slack.com/archives/C01DRQ178LQ'
   platform_name: 'Microsoft Fabric'
   config_page: '/reference/resource-configs/fabricspark-configs'
+availability: local_free
 ---
 
 

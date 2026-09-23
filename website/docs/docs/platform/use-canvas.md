@@ -6,11 +6,15 @@ description: "Access and use Canvas to create or edit dbt models through a visua
 pagination_prev: "docs/platform/canvas-interface"
 pagination_next: "docs/platform/build-canvas-copilot"
 image: /img/docs/dbt-platform/canvas/canvas.png
+availability:
+  surface: platform
+  access: paid_plan
+  minPlan: enterprise
 ---
 
 import Prerequisites from '/snippets/_canvas-prerequisites.md';
 
-# Edit and create dbt models <Lifecycle status='managed, managed_plus'/> 
+# Edit and create dbt models
 
 <p style={{ color: '#717d7d', fontSize: '1.1em' }}>
 Access and use <Constant name="canvas" /> to create or edit dbt models through a visual, drag-and-drop experience.

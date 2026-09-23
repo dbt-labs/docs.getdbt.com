@@ -4,6 +4,7 @@ id: cumulative
 description: "Use Cumulative metrics to aggregate a metric over a given window."
 sidebar_label: Cumulative
 tags: [Metrics, Semantic Layer]
+availability: all_users
 ---
 
 <VersionBlock firstVersion="1.12">

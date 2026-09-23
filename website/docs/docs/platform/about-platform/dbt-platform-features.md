@@ -6,6 +6,9 @@ description: "Explore dbt's features and learn why the dbt platform is the faste
 hide_table_of_contents: true
 pagination_next: "docs/platform/about-platform/architecture"
 pagination_prev: null
+availability:
+  surface: platform
+  access: login_required
 ---
 
 <Constant name="dbt_platform" /> is the fastest and most reliable way to deploy dbt. Develop, test, schedule, document, and investigate data models all in one browser-based UI.
@@ -17,7 +20,7 @@ In addition to providing a hosted architecture for running dbt across your organ
 <div className="grid--3-col">
 
 <Card
-    title="dbt CLI"
+    title="dbt platform CLI"
     body="Use the CLI for the dbt platform to develop, test, run, and version control dbt projects and commands, directly from the command line."
     link="/docs/platform/dbt-cli-installation"
     icon="dbt-bit"/>

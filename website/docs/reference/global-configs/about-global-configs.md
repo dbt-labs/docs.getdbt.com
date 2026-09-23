@@ -39,18 +39,6 @@ on-run-start:
 
 Because the values of `flags` can differ across invocations, we strongly advise against using `flags` as an input to configurations or dependencies (`ref` + `source`) that dbt resolves [during parsing](/reference/parsing#known-limitations).
 
-### Common flag examples
-
-Use the `--target` flag to specify which target (environment) to use when running dbt commands. For example:
-
-```bash
-dbt run --target dev
-dbt run --target prod
-dbt build --target staging
-```
-
-The `--target` flag allows you to run the same dbt project against different environments without modifying your configuration files. Define the target in your `profiles.yml` file. Learn more about [connection profiles and targets](/docs/local/profiles.yml#understanding-targets-in-profiles).
-
 Use this table to compare all available flags and how to configure them across interfaces:
 
 - **<Constant name="dbt" /> CLI**: Indicates whether the flag is supported in the [<Constant name="dbt_platform" />-supported CLI](/docs/platform/dbt-cli-installation).
@@ -103,6 +91,7 @@ Use this table to compare all available flags and how to configure them across i
 | [use_colors_file](/reference/global-configs/logs#color) | ❌ | boolean <br /> default: True | ✅ | `DBT_USE_COLORS_FILE` | `--use-colors-file` <br /> `--no-use-colors-file` |
 | [use_colors](/reference/global-configs/print-output#print-color) | ❌ | boolean <br /> default: True | ✅ | `DBT_USE_COLORS` | `--use-colors` <br /> `--no-use-colors` |
 | [use_experimental_parser](/reference/global-configs/parsing#experimental-parser) | ❌ | boolean <br /> default: False | ✅ | `DBT_USE_EXPERIMENTAL_PARSER` | `--use-experimental-parser` <br /> `--no-use-experimental-parser` |
+| [use_fast_test_edges](/reference/global-configs/fast-test-edges) | ✅ | boolean <br /> default: False | ❌ | `DBT_USE_FAST_TEST_EDGES` | `--use-fast-test-edges` <br /> `--no-use-fast-test-edges` |
 | [version_check](/reference/global-configs/version-compatibility) | ❌ | boolean <br /> default: varies | ✅ | `DBT_VERSION_CHECK` | `--version-check` <br /> `--no-version-check` |
 | [warn_error_options](/reference/global-configs/warnings) | ✅ | dict <br /> default: {} | ✅ | `DBT_WARN_ERROR_OPTIONS` | `--warn-error-options` |
 | [warn_error](/reference/global-configs/warnings) | ✅ | boolean <br /> default: False | ✅ | `DBT_WARN_ERROR` | `--warn-error` |
@@ -113,9 +102,10 @@ Use this table to compare all available flags and how to configure them across i
 
 <VersionBlock firstVersion="1.11">
 
-
 | Flag | <Constant name="dbt" /> CLI? | Type / default | In project? | Env var | <div style={{width:'200px'}}>CLI flags</div> |
 |------|----------------|----------------|-------------|---------|-----------|
+| [ai_provider](/docs/dbt-ai/package-skills#set-the-ai_provider-flag) (v2.0+) | ❌ | list <br /> default: None | ✅ | `DBT_ENGINE_AI_PROVIDER` | `--ai-provider` |
+| [batch_tests](/reference/global-configs/batch-tests) (v2.0+) | ❌ | boolean <br /> default: False | ✅ | `DBT_ENGINE_BATCH_TESTS` | `--batch-tests` |
 | [cache_selected_only](/reference/global-configs/cache) | ✅ | boolean <br /> default: False | ✅ | `DBT_ENGINE_CACHE_SELECTED_ONLY` | `--cache-selected-only` <br /> `--no-cache-selected-only` |
 | [clean_project_files_only](/reference/commands/clean#--clean-project-files-only) | ❌ | boolean <br /> default: True | ❌ | `DBT_ENGINE_CLEAN_PROJECT_FILES_ONLY` | `--clean-project-files-only` <br /> `--no-clean-project-files-only` |
 | [debug](/reference/global-configs/logs#debug-level-logging) | ✅ | boolean <br /> default: False | ✅ | `DBT_ENGINE_DEBUG` | `--debug` <br /> `--no-debug` |
@@ -127,8 +117,10 @@ Use this table to compare all available flags and how to configure them across i
 | [event_time_end](/reference/dbt-jinja-functions/model#batch-properties-for-microbatch-models) | ✅ | datetime <br /> default: None | ❌ | `DBT_ENGINE_EVENT_TIME_END` | `--event-time-end` |
 | [fail_fast](/reference/global-configs/failing-fast) | ✅ | boolean <br /> default: False | ✅ | `DBT_ENGINE_FAIL_FAST` | `--fail-fast` <br /> `-x` <br /> `--no-fail-fast` |
 | [full_refresh](/reference/resource-configs/full_refresh) | ✅ | boolean <br /> default: False | ✅ (as resource config) | `DBT_ENGINE_FULL_REFRESH` | `--full-refresh` <br /> `--no-full-refresh` |
+| [generate_info_schema](/docs/build/dbt-information-schema) (v2.0+) | ✅ | boolean <br /> default: False | ❌ | — | `--generate-info-schema` |
 | hints_enabled (v1.12+) | ✅ | boolean <br /> default: True | ✅ | `DBT_ENGINE_HINTS_ENABLED` | `--hints-enabled` <br /> `--no-hints-enabled` |
 | [indirect_selection](/reference/node-selection/test-selection-examples#syntax-examples) | ❌ | enum <br /> default: eager | ✅ | `DBT_ENGINE_INDIRECT_SELECTION` | `--indirect-selection` |
+| [info_schema_dir](/docs/build/dbt-information-schema) (v2.0+) | ✅ | path <br /> default: None (uses `<target>/info_schema/`) | ❌ | — | `--info-schema-dir` |
 | [introspect](/reference/commands/compile#introspective-queries) | ❌ | boolean <br /> default: True | ❌ | `DBT_ENGINE_INTROSPECT` | `--introspect` <br /> `--no-introspect` |
 | [log_cache_events](/reference/global-configs/logs#logging-relational-cache-events) | ❌ | boolean <br /> default: False | ❌ | `DBT_ENGINE_LOG_CACHE_EVENTS` | `--log-cache-events` <br /> `--no-log-cache-events` |
 | [log_format_file](/reference/global-configs/logs#log-formatting) | ❌ | enum <br /> default: default (text) | ✅ | `DBT_ENGINE_LOG_FORMAT_FILE` | `--log-format-file` |
@@ -141,8 +133,8 @@ Use this table to compare all available flags and how to configure them across i
 | [populate_cache](/reference/global-configs/cache) | ✅ | boolean <br /> default: True | ✅ | `DBT_ENGINE_POPULATE_CACHE` | `--populate-cache` <br /> `--no-populate-cache` |
 | [print](/reference/global-configs/print-output#suppress-print-messages-in-stdout) | ❌ | boolean <br /> default: True | ❌ | `DBT_ENGINE_PRINT` | `--print` <br /> `--no-print` |
 | [printer_width](/reference/global-configs/print-output#printer-width) | ❌ | int <br /> default: 80 | ✅ | `DBT_ENGINE_PRINTER_WIDTH` | `--printer-width` |
-| [profile](/docs/core/connect-data-platform/connection-profiles#about-profiles) | ❌ | string <br /> default: None | ✅ (as top-level key) | `DBT_ENGINE_PROFILE`  | [`--profile`](/docs/core/connect-data-platform/connection-profiles#overriding-profiles-and-targets) |
-| [profiles_dir](/docs/core/connect-data-platform/connection-profiles#about-profiles) | ❌ | path <br /> default: None (current dir, then HOME dir) | ❌ | `DBT_ENGINE_PROFILES_DIR` | `--profiles-dir` |
+| [profile](/docs/local/connection-profiles#about-profiles) | ❌ | string <br /> default: None | ✅ (as top-level key) | `DBT_ENGINE_PROFILE`  | [`--profile`](/docs/local/connection-profiles#overriding-profiles-and-targets) |
+| [profiles_dir](/docs/local/connection-profiles#about-profiles) | ❌ | path <br /> default: None (current dir, then HOME dir) | ❌ | `DBT_ENGINE_PROFILES_DIR` | `--profiles-dir` |
 | [project_dir](/reference/dbt_project.yml) | ❌ | path <br /> default: (empty) | ❌ | `DBT_ENGINE_PROJECT_DIR` | `--project-dir` |
 | [quiet](/reference/global-configs/logs#suppress-non-error-logs-in-output) | ✅ | boolean <br /> default: False | ❌ | `DBT_ENGINE_QUIET` | `--quiet` |
 | [resource-type](/reference/global-configs/resource-type) (v1.8+) | ✅ | string <br /> default: None | ❌ | `DBT_ENGINE_RESOURCE_TYPES` <br></br> `DBT_ENGINE_EXCLUDE_RESOURCE_TYPES` | `--resource-type` <br></br> `--exclude-resource-type` |
@@ -154,10 +146,11 @@ Use this table to compare all available flags and how to configure them across i
 | [static_parser](/reference/global-configs/parsing#static-parser) | ❌ | boolean <br /> default: True | ✅ | `DBT_ENGINE_STATIC_PARSER` | `--static-parser` <br /> `--no-static-parser` |
 | [store_failures](/reference/resource-configs/store_failures) | ✅ | boolean <br /> default: False | ✅ (as resource config) | `DBT_ENGINE_STORE_FAILURES` | `--store-failures` <br /> `--no-store-failures` |
 | [target_path](/reference/global-configs/json-artifacts) | ❌ | path <br /> default: None (uses `target/`) | ❌ | `DBT_ENGINE_TARGET_PATH` | `--target-path` |
-| [target](/docs/core/connect-data-platform/connection-profiles#about-profiles) | ❌ | string <br /> default: None | ❌ | `DBT_ENGINE_TARGET` | [`--target`](/docs/core/connect-data-platform/connection-profiles#overriding-profiles-and-targets) |
+| [target](/docs/local/connection-profiles#about-profiles) | ❌ | string <br /> default: None | ❌ | `DBT_ENGINE_TARGET` | [`--target`](/docs/local/connection-profiles#overriding-profiles-and-targets) |
 | [use_colors_file](/reference/global-configs/logs#color) | ❌ | boolean <br /> default: True | ✅ | `DBT_ENGINE_USE_COLORS_FILE` | `--use-colors-file` <br /> `--no-use-colors-file` |
 | [use_colors](/reference/global-configs/print-output#print-color) | ❌ | boolean <br /> default: True | ✅ | `DBT_ENGINE_USE_COLORS` | `--use-colors` <br /> `--no-use-colors` |
 | [use_experimental_parser](/reference/global-configs/parsing#experimental-parser) | ❌ | boolean <br /> default: False | ✅ | `DBT_ENGINE_USE_EXPERIMENTAL_PARSER` | `--use-experimental-parser` <br /> `--no-use-experimental-parser` |
+| [use_fast_test_edges](/reference/global-configs/fast-test-edges) | ✅ | boolean <br /> default: False | ❌ | `DBT_ENGINE_USE_FAST_TEST_EDGES` | `--use-fast-test-edges` <br /> `--no-use-fast-test-edges` |
 | [use_v2_parser](/reference/global-configs/parsing#opt-in-v2-parser) | ✅ | boolean <br /> default: False | ✅ | `DBT_ENGINE_USE_V2_PARSER` | `--use-v2-parser` |
 | [version_check](/reference/global-configs/version-compatibility) | ❌ | boolean <br /> default: varies | ✅ | `DBT_ENGINE_VERSION_CHECK` | `--version-check` <br /> `--no-version-check` |
 | [warn_error_options](/reference/global-configs/warnings) | ✅ | dict <br /> default: {} | ✅ | `DBT_ENGINE_WARN_ERROR_OPTIONS` | `--warn-error-options` |
@@ -165,3 +158,15 @@ Use this table to compare all available flags and how to configure them across i
 | [write_json](/reference/global-configs/json-artifacts) | ✅ | boolean <br /> default: True | ✅ | `DBT_ENGINE_WRITE_JSON` | `--write-json` <br /> `--no-write-json` |
 
 </VersionBlock>
+
+### Common flag examples
+
+Use the `--target` flag to specify which target (environment) to use when running dbt commands. For example:
+
+```bash
+dbt run --target dev
+dbt run --target prod
+dbt build --target staging
+```
+
+The `--target` flag allows you to run the same dbt project against different environments without modifying your configuration files. Define the target in your `profiles.yml` file. Learn more about [connection profiles and targets](/docs/local/profiles.yml#understanding-targets-in-profiles).

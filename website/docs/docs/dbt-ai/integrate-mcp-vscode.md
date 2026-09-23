@@ -3,6 +3,7 @@ title: "Integrate VS Code with MCP"
 sidebar_label: "Integrate VS Code with MCP"
 description: "Guide to set up VS Code with dbt-mcp"
 id: "integrate-mcp-vscode"
+availability: all_users
 ---
 
 import MCPExample from '/snippets/_mcp-config-files.md';
@@ -49,7 +50,7 @@ To get started, in VS Code:
 
     Self-hosted MCP with OAuth is for users who want to use the <Constant name="dbt_platform" /> features.
 
-    Before you begin, make sure your account admin has enabled AI features on your <Constant name="dbt_platform"/> account. Refer to [Enable dbt AI](/docs/platform/enable-dbt-ai) for more info.
+    AI features are enabled by default. Admins can [turn them off or back on anytime](/docs/platform/manage-dbt-ai).
     
     Choose your configuration based on your use case:
 

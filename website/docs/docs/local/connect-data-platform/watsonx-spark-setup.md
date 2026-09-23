@@ -1,5 +1,5 @@
 ---
-title: "Connect IBM watsonx.data Spark to dbt Core"
+title: "Connect IBM watsonx.data Spark to dbt v1"
 sidebar_label: "IBM watsonx.data Spark"
 description: "Read this guide to learn about the IBM watsonx.data Spark setup in dbt."
 id: "watsonx-spark-setup"
@@ -15,6 +15,7 @@ meta:
   slack_channel_link: 
   platform_name: IBM watsonx.data
   config_page: /reference/resource-configs/watsonx-Spark-config
+availability: local_free
 ---
 
 
@@ -38,7 +39,7 @@ Read the official documentation for using **watsonx.data** with `dbt-watsonx-spa
 Note: Installing an adapter doesn't install '<Constant name="core" />' automatically. This is because adapters and <Constant name="core" /> versions are decoupled to avoid overwriting <Constant name="core" /> installations. Use the following command for installation:
 
 ```sh
-python -m pip install <Constant name="core" /> dbt-watsonx-spark
+python -m pip install dbt-core dbt-watsonx-spark
 ```
 
 ## Configuring `dbt-watsonx-spark`

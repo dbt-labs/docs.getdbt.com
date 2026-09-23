@@ -5,6 +5,9 @@ description: "dbt billing information."
 sidebar_label: About billing
 pagination_next: null
 pagination_prev: null
+availability:
+  surface: platform
+  access: login_required
 ---
 
 import DbtStatePricing from '/snippets/_dbt-state-pricing.md';
