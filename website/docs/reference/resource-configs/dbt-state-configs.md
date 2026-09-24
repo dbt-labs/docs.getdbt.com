@@ -7,7 +7,7 @@ tags: ['dbt State']
 
 When you run a dbt command with [dbt State](/docs/deploy/dbt-state-about) enabled, dbt compares a node's logic and data against previous builds and takes the most efficient path:
 
-- **Reuse** — if the object exists in the target schema, its logic hasn't changed, and it isn't yet due to rebuild under its `lag_tolerance` (its last build is still within the tolerance window, or its upstream data hasn't changed), the node is reused.
+- **Reuse** — if the object exists in the target schema, its logic hasn't changed, and it is not yet due for rebuilding under its `lag_tolerance` (its last build is still within the tolerance window, or its upstream data hasn't changed), the node is reused.
 - **Clone** — if reuse isn't possible but the object exists in the deferred environment with the same logic and sufficiently fresh data, dbt State clones it.
 - **Normal build** — if neither reuse nor clone is possible, the node builds as normal, using deferral for any unselected upstream nodes.
 
