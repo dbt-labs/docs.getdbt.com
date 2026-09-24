@@ -239,6 +239,7 @@ Where you run dbt changes how you generate and view your docs:
 
 - In the [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio), run `dbt docs generate` and click the docs icon above the file tree to open the generated site.
   <Lightbox src="/img/reference/dremio-setup/studio-docs-icon.png" width="90%" title="View the docs icon above the version control panel in dbt platform's Studio IDE"/>
+  <Lightbox src="/img/reference/dremio-setup/studio-docs-icon.png" width="90%" title="View the docs icon above the version control panel in dbt platform's Studio IDE"/>
 - In <Constant name="dbt_platform" /> jobs running dbt v2, dbt build and dbt run automatically refresh catalog metadata, so you don't need a separate `dbt docs generate` step. View your project in [<Constant name="catalog" />](/docs/explore/build-and-view-your-docs).
     - If your job uses `dbt parse` or `dbt compile`, add `--write-catalog` to refresh catalog metadata.
 To generate a dbt Docs v2 static site to host yourself, add `dbt docs generate` to your job's commands.
