@@ -238,12 +238,11 @@ So if you want a hostable static site, run `dbt docs generate`. `--write-catalog
 Where you run dbt changes how you generate and view your docs:
 
 - In the [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio), run `dbt docs generate` and click the docs icon above the file tree to open the generated site.
-- In <Constant name="dbt_platform" /> jobs, the catalog metadata refreshes automatically so no commands are required. View your project in [<Constant name="catalog" />](/docs/explore/build-and-view-your-docs).
-    - To build and host the dbt Docs v2 static site yourself, manually add the `dbt docs generate` command in the job's settings to generate a static docs site for hosting. 
+- In <Constant name="dbt_platform" /> jobs running dbt v2, dbt build and dbt run automatically refresh catalog metadata, so you don't need a separate `dbt docs generate` step. View your project in [<Constant name="catalog" />](/docs/explore/build-and-view-your-docs).
+    - If your job uses `dbt parse` or `dbt compile`, add `--write-catalog` to refresh catalog metadata.
+To generate a dbt Docs v2 static site to host yourself, add `dbt docs generate` to your job's commands.
+
 
 <Lightbox src="/img/reference/dremio-setup/studio-docs-icon.png" width="90%" title="View the docs icon above the version control panel in dbt platform's Studio IDE"/>
-
-In <Constant name="dbt_platform" /> jobs running on <Constant name="fusion" />, you don't need to change anything to hydrate catalog metadata. dbt runs `write-catalog` automatically with `build` and `run`, so <Constant name="catalog" /> stays current without a `dbt docs generate` step. You can optionally include `--write-catalog` when running `dbt parse` or `dbt compile`.
-
 
 </VersionBlock>
