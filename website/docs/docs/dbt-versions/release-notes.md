@@ -21,6 +21,7 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 For <Constant name="fusion_engine" /> updates, refer to the [v2 changelog](https://github.com/dbt-labs/dbt/blob/main/CHANGELOG-dbt.md).
 
 ## September 2026
+- **Private beta:** Enterprise and Enterprise+ accounts can now [bring their own GitHub application](/docs/platform/git/connect-github#custom-github-application), allowing you to natively connect GitHub Enterprise Server and GitHub Enterprise Cloud with data residency (`ghe.com`) instead of using a git URL and SSH. Reach out to your account manager to join the private beta.
 
 ### dbt Summit 2026 announcements
 
@@ -63,7 +64,6 @@ Two other things moved:
 
 ### Pre-dbt Summit
 
-- **Private beta:** Enterprise and Enterprise+ accounts can now [bring their own GitHub application](/docs/platform/git/connect-github#custom-github-application), allowing you to natively connect GitHub Enterprise Server and GitHub Enterprise Cloud with data residency (`ghe.com`) instead of using a git URL and SSH. Reach out to your account manager to join the private beta.
 - **Beta:** When [dbt State](/docs/deploy/dbt-state-about) is enabled in a self-managed deployment and your project is connected to the <Constant name="dbt_platform" />, `state:*` selectors use dbt State as their comparison source, unless a state manifest is explicitly provided. Each node (models, snapshots, seeds, and tests) is compared against its own last execution in the deferral target environment rather than a single `manifest.json` from the most recent job run. Refer to [dbt State-powered `state:*` selectors](/docs/deploy/dbt-state-deferral#dbt-state-powered-state-selectors) for more information.
 - **New:** The **dbt State** page now includes a [**Lag tolerance recommendations**](/docs/deploy/dbt-state-interface#lag-tolerance-recommendations) section that identifies models that could safely tolerate more lag. For each model, it shows the current lag tolerance, the recommended value, the estimated percentage of build time you'd save, and projected build time savings over the next 30 days. You can search by model name or filter by project, and apply recommendations by updating the [`lag_tolerance`](/reference/resource-configs/lag-tolerance) config.
 - **New:** The Snowflake adapter now supports the `interactive_table` materialization in beta on dbt v2 (dbt-snowflake v1.13+), covering both static and dynamic (auto-refreshing) interactive tables. For more information, see [Interactive tables](/reference/resource-configs/snowflake-configs).
