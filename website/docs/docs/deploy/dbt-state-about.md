@@ -28,12 +28,13 @@ dbt State works with dbt (v1 and v2) and the <Constant name="dbt_platform" />, a
 
 ## Benefits
 
-dbt State delivers efficiency gains across both production and development environments:
+dbt State reduces warehouse compute costs and simplifies how you develop, orchestrate, and execute dbt:
 
 - **Fresher data, lower costs**: Nodes only rebuild when the result would be different (new data or code changes), reducing warehouse compute while keeping production data fresh.
-- **Faster iteration cycles**: In development, dbt automatically clones selected nodes from production whenever possible, so you spend less time waiting for builds and more time writing code.
-- **Smarter than standard deferral**: Unlike standard deferral, which always builds selected nodes and only defers unselected upstream references, dbt State decides whether transformations need to run at all, or whether an existing table can simply be cloned.
-- **Model-level freshness threshold**: The [`lag_tolerance`](/reference/resource-configs/lag-tolerance) config sets how much time must pass since the last upstream data change before dbt triggers a rebuild. It decouples downstream models from high-frequency upstream changes, and prevents costly rebuilds on stagnant data when an upstream dependency misses its freshness [Service Level Agreement (SLA)](https://www.getdbt.com/blog/data-slas-best-practices).
+- **Faster, simpler development**: Without dbt State, developing in a fresh schema means you need to build upstream dependencies, maintain development copies, or configure `--defer` with a state manifest. With dbt State, none of that is needed since dbt finds the freshest available state across environments, clones fresh upstream assets, and rebuilds only what changed.
+- **Simpler orchestration**: Orchestration decisions typically happen at the job level &mdash; which nodes belong in which job, and how often that job should run. dbt State adds node-level decision-making within each run: instead of rebuilding every selected node, dbt evaluates each one individually and decides whether to rebuild, clone, or skip based on its logic and data freshness. Unlike standard deferral, which always builds selected nodes and only defers unselected upstream references, dbt State can skip or clone selected nodes, too.
+- **Model-level freshness threshold**: The [`lag_tolerance`](/reference/resource-configs/lag-tolerance) config sets how long dbt State waits before rebuilding a node once its upstream data changes. A node rebuilds only when its last build is older than the tolerance window and its upstream data has changed. It decouples downstream models from high-frequency upstream changes, and prevents costly rebuilds on stagnant data when an upstream dependency misses its freshness [Service Level Agreement (SLA)](https://www.getdbt.com/blog/data-slas-best-practices).
+
 
 ## How dbt State works
 
