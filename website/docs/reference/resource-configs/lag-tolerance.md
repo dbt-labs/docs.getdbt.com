@@ -55,7 +55,7 @@ models:
 
 ## Definition
 
-Source systems may update more frequently than downstream models need to rebuild. For example, a model used for daily reporting doesn't need to refresh more than once per day, even if new upstream data is available hourly.
+Source systems may update more frequently than some downstream models need to rebuild. For example, a model used for daily reporting doesn't need to refresh more than once per day, even if new upstream data is available hourly, while the model powering customer facing metrics that uses some of the same sources may need to update every 30 minutes.
 
 `lag_tolerance` sets how long dbt State waits before rebuilding a node once its upstream data changes. A node rebuilds only when _both_ are true: its last build is older than the `lag_tolerance` window, and its upstream data has changed since that build. This acts as a compute-saving buffer that helps you stay aligned with data freshness [Service Level Agreements (SLAs)](https://www.getdbt.com/blog/data-slas-best-practices) without unnecessary rebuilds. It supports two key scenarios:
 
@@ -188,6 +188,22 @@ models:
 </File>
 
 In this example, models in the `prod` target rebuild once their last build is more than 4 hours old and their upstream data has changed. In all other environments, models rebuild once their last build is more than 7 days old and their upstream data has changed.
+
+### Vary tolerance by day of the week
+
+Use a Jinja expression to evaluate the day of the week and apply a tighter tolerance on weekdays than on weekends:
+
+<File name="dbt_project.yml">
+
+```yaml
+models:
+  +state:
+    lag_tolerance: "{{ '24h' if modules.datetime.datetime.today().weekday() in (5, 6) else '1h' }}"
+```
+
+</File>
+
+In this example, models rebuild once their last build is more than 1 hour old (Monday–Friday) or more than 24 hours old (Saturday–Sunday) and their upstream data has changed.
 
 ### Apply different tolerances per folder
 
