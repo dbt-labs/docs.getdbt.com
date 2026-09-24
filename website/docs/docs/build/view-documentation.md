@@ -58,7 +58,7 @@ To generate and serve dbt Docs v2 with <Constant name="fusion_engine" />, run `d
 
 `dbt docs serve` only works on your own machine. Where you work changes how you view your docs:
 
-- In the <Constant name="studio_ide" />, run `dbt docs generate` and click the docs icon above the file tree.
+- In the <Constant name="studio_ide" />, run `dbt docs generate` and click the docs icon above the version control panel.
 - In <Constant name="dbt_platform" /> jobs, <Constant name="catalog" /> metadata refreshes automatically on <Constant name="fusion" /> runs, so there's no docs step to add. Refer to [platform behavior](/reference/commands/cmd-docs?version=2#platform-behavior) for more info.
 - Locally, run `dbt docs generate` and then `dbt docs serve`, or host the output on a static file host.
 
