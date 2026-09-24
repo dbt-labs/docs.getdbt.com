@@ -70,7 +70,7 @@ You can connect your <Constant name="dbt" /> account to GitHub by installing the
 If you are your GitHub organization owner, you can also configure the <Constant name="dbt" /> GitHub application to have access to only select repositories. This configuration must be done in GitHub, but we provide an easy link in <Constant name="dbt" /> to start this process.
 <Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/connecting-github/configure-github.png" title="Configuring the dbt app"/>
 
-## Custom GitHub application <Lifecycle status="managed,managed_plus" /> {#custom-github-application}
+## Custom GitHub application <Lifecycle status="managed,managed_plus,private_beta" /> {#custom-github-application}
 
 
 :::info Available in private beta
