@@ -237,18 +237,13 @@ So if you want a hostable static site, run `dbt docs generate`. `--write-catalog
 
 Where you run dbt changes how you generate and view your docs:
 
-<SimpleTable>
+- In the <Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio), run `dbt docs generate` amd click the docs icon above the file tree to open the generated site.
+- In <Constant name="dbt_platform" /> jobs, the catalog metadata refreshes automatically so no commands are required. View your project in [<Constant name="catalog" />](/docs/explore/build-and-view-your-docs).
+    - To build and host the dbt Docs v2 static site yourself, manually add the `dbt docs generate` command in the job's settings to generate a static docs site for hosting. 
 
-| Where you're working | Command to run | How to view your docs |
-|---------------------|----------------|-----------------------|
-| [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio) | `dbt docs generate` | Click the docs icon above the file tree to open the generated site. |
-| <Constant name="dbt_platform" /> jobs | Not applicable. The catalog metadata refreshes automatically. | View your project in [<Constant name="catalog" />](/docs/explore/build-and-view-your-docs) |
-| Locally  | `dbt docs generate`, then `dbt docs serve` | Preview in your browser at `localhost:8580`, or host the `target/` output on a static file host. |
-
-</SimpleTable>
+<Lightbox src="/img/reference/dremio-setup/studio-docs-icon.png" width="90%" title="View the docs icon above the version control panel in dbt platform's Studio IDE"/>
 
 In <Constant name="dbt_platform" /> jobs running on <Constant name="fusion" />, you don't need to change anything to hydrate catalog metadata. dbt runs `write-catalog` automatically with `build` and `run`, so <Constant name="catalog" /> stays current without a `dbt docs generate` step. You can optionally include `--write-catalog` when running `dbt parse` or `dbt compile`.
 
-To build and host the dbt Docs v2 static site yourself, manually add the `dbt docs generate` command in the job's settings to generate a static docs site for hosting. 
 
 </VersionBlock>
