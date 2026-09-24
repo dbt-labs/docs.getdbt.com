@@ -203,7 +203,7 @@ models:
 
 </File>
 
-In this example, models rebuild once their last build is more than 1 hour old (Monday–Friday) or more than 24 hours old (Saturday–Sunday) and their upstream data has changed.
+In this example, models rebuild once their last build is more than 1 hour old (Monday to Friday) or more than 24 hours old (Saturday to Sunday) and their upstream data has changed.
 
 ### Apply different tolerances per folder
 
