@@ -72,6 +72,11 @@ If you are your GitHub organization owner, you can also configure the <Constant 
 
 ## Custom GitHub application <Lifecycle status="managed,managed_plus" /> {#custom-github-application}
 
+
+:::info Available in private beta
+Configuring a custom GitHub app is available in private beta. To join, reach out to your account manager.
+:::
+
 The shared <Constant name="dbt" /> GitHub App is hosted per [region](/docs/platform/about-platform/access-regions-ip-addresses), so it can only reach repositories on `github.com`. If your organization runs [GitHub Enterprise Server](https://docs.github.com/en/enterprise-server@3.14/admin/overview/about-github-enterprise-server) or [GitHub with EU data residency](https://github.com/enterprise/data-residency), register your own GitHub application and point <Constant name="dbt" /> at it. 
 
 An account admin (or security admin) can set this up once:
