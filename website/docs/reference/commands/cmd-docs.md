@@ -237,7 +237,7 @@ So if you want a hostable static site, run `dbt docs generate`. `--write-catalog
 
 Where you run dbt changes how you generate and view your docs:
 
-- In the <Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio), run `dbt docs generate` amd click the docs icon above the file tree to open the generated site.
+- In the [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio), run `dbt docs generate` and click the docs icon above the file tree to open the generated site.
 - In <Constant name="dbt_platform" /> jobs, the catalog metadata refreshes automatically so no commands are required. View your project in [<Constant name="catalog" />](/docs/explore/build-and-view-your-docs).
     - To build and host the dbt Docs v2 static site yourself, manually add the `dbt docs generate` command in the job's settings to generate a static docs site for hosting. 
 
