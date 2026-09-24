@@ -175,7 +175,7 @@ If you don't set `lag_tolerance`, dbt State uses `45m` (45 minutes).
 
 ### Use different tolerances per environment
 
-Use a Jinja expression to set a shorter tolerance in production and a longer tolerance elsewhere/ This keeps production data fresh while reducing unnecessary rebuilds during development:
+Use a Jinja expression to set a shorter tolerance in production and a longer tolerance elsewhere. This keeps production data fresh while reducing unnecessary rebuilds during development:
 
 <File name="dbt_project.yml">
 
