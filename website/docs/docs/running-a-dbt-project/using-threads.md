@@ -43,9 +43,7 @@ You will define the number of threads in your `profiles.yml` file (when developi
 
 In the context of <Constant name="fusion"/>, a thread is an open connection to your data warehouse, not the number of parallel threads on your local machine's CPU. Data platforms vary in how many concurrent connections they allow; exceeding those limits causes the platform to reject new connections.
 
-Historically, analytics engineers set `threads:` to ensure dbt never opened more connections than the platform could handle. In dbt v2, `threads` controls parallel SQL queries on your warehouse. 
-
-To let dbt v2 run as many queries at once as your project allows:
+In dbt v2, `threads` sets the maximum number of SQL queries dbt runs on your warehouse at the same time. To let dbt v2 run as many queries at once as your project allows:
 
 - When running in <Constant name="dbt_platform"/>: Set `threads` to `256`. <Constant name="dbt_platform"/> doesn't accept `0` and `256` is high enough to have the same effect.
 - When running locally: Set `threads: 0` (or pass `--threads 0`).
