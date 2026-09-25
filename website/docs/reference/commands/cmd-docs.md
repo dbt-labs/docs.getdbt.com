@@ -197,7 +197,7 @@ dbt Docs v2 renders your project's `__overview__` doc block as the landing page,
 
 The `--write-catalog` flag generates the [`catalog.json`](/reference/artifacts/catalog-json) artifact, which contains metadata about the tables and <Term id="view">views</Term> produced by the models in your project. It focuses solely on metadata hydration and does not build the documentation site — use [dbt Docs v2](#dbt-docs-v2) for that.
 
-<Constant name="fusion" /> jobs in <Constant name="dbt_platform" /> refresh <Constant name="catalog" /> metadata automatically on every run, so you don't need to add the flag there. When you run dbt locally, add the flag yourself. You can use it with the following commands:
+<Constant name="fusion" /> jobs in <Constant name="dbt_platform" /> refresh <Constant name="catalog" /> metadata automatically on every run, so you don't need to add the `--write-catalog` flag there. When you run dbt locally, add the flag yourself. You can use it with the following commands:
 
 - `dbt build`
 - `dbt run`
