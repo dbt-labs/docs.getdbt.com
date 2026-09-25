@@ -1,77 +1,86 @@
 ---
-title: "Getting the most out of your Iceberg catalog (plus a Fivetran MDLS bonus)"
-description: "Tools for browsing, scripting against, and consolidating your Apache Iceberg catalog, plus what's new for Fivetran Managed Data Lake Service customers."
+title: "Getting the most out of your Iceberg catalog"
+description: "Three tools for browsing, scripting against, and consolidating tables in an Apache Iceberg REST catalog, plus what's new for Fivetran Managed Data Lake Service customers."
 slug: getting-the-most-out-of-your-iceberg-catalog
 authors: [jack_lowery, casey_karst]
-tags: [iceberg, catalogs]
+tags: [data ecosystem, iceberg, catalogs]
 hide_table_of_contents: false
 date: 2026-09-25
 is_featured: true
 ---
 
 :::caution Draft post
-This post is a work in progress. The VS Code extension and connector-migration sections below are marked **[NEEDS CONFIRMATION FROM JACK/CASEY]** — they're written from limited access to those repos and need a real pass (actual capabilities, inputs, prerequisites, and ideally a screenshot or short clip) before this goes live. Don't merge over those flags without replacing them with real detail.
+The VS Code extension and connector-upgrade sections are marked **NEEDS CONFIRMATION**. They were written from limited access to those repos and need a pass from Jack or Casey (real capabilities, prerequisites, and a screenshot or clip) before this merges.
 :::
 
-Here's a test: pull up your Apache Iceberg catalog right now. Can you tell me, without opening a query engine, what tables live in it and when their schemas last changed? Can you hit the Iceberg REST API directly without reverse-engineering an OAuth flow from a Postman error message? If you've got a dozen near-identical tables — one per tenant, one per region — sitting in your lake, could you unify them into one queryable table this afternoon, without rewriting a single Parquet file?
+Adopting Apache Iceberg is the easy part. Running it well day to day is where teams get stuck. A few questions worth asking about your own setup:
 
-If the answer to any of those is "not really," you're not doing anything wrong. Apache Iceberg has effectively won the open table format war, but winning the format war didn't fix the practitioner experience around it. That gap is what this post is about.
+- Can you see which tables are in your catalog, and when their schemas last changed, without starting a query engine?
+- Can you call your catalog's REST API directly, OAuth and all, when a client isn't seeing the snapshot you expect?
+- If you have a dozen identical tables (one per tenant, one per region), can you query them as one table without copying any data?
+
+If any of those made you wince, this post is for you. Below are three tools we've been using to make Iceberg catalogs easier to work with. The examples run against Fivetran Managed Data Lake Service (MDLS) because that's what we use every day, but the ideas apply to any Iceberg REST catalog.
 
 <!-- truncate -->
 
-## 1. Exploring your catalog from VS Code
+## Browse your catalog from VS Code
 
-Query engines are the wrong tool for "what tables exist, what are their current schemas, when did they last change" — that's a browsing problem, not a querying problem, and today the answer for most people is opening a notebook and running `DESCRIBE TABLE` a dozen times. Third-party tools like DBCode's generic Iceberg extension exist for exactly this reason, but they're built to browse anything with an Iceberg catalog rather than being tuned to any one catalog's specific behavior.
+Most people answer "what's in my catalog?" by opening a notebook and running `DESCRIBE TABLE` over and over. That's a browsing problem being solved with a query engine.
 
-[fivetran/iceberg-explorer-vscode](https://github.com/fivetran/iceberg-explorer-vscode) brings catalog and Iceberg table metadata browsing into the editor most of us already have open all day, instead of a separate notebook or query session.
+[iceberg-explorer-vscode](https://github.com/fivetran/iceberg-explorer-vscode) puts catalog and table metadata in a sidebar in the editor you already have open. Generic options like DBCode's Iceberg extension exist too; this one is built and tested against Polaris, the catalog behind MDLS.
 
-*[NEEDS CONFIRMATION FROM JACK/CASEY: exact capabilities of this repo — what the extension actually surfaces (table list, schema history, snapshot/manifest detail?), install steps, and a screenshot or short clip for the final version of this post.]*
+*[NEEDS CONFIRMATION FROM JACK/CASEY: what the extension surfaces (table list, schema history, snapshots, manifests?), which catalogs it supports besides Polaris, install steps, and a screenshot or short clip of it running against MDLS.]*
 
-## 2. A Postman collection for Iceberg REST metadata
+## Call the REST catalog API with Postman
 
-Sometimes you don't want an editor extension or a query engine — you want to hit the API directly, script something, or debug why a client isn't seeing the snapshot you expect. That's exactly the territory where hand-rolled REST Catalog calls get painful: OAuth setup, endpoint shapes, and error responses that don't tell you much on their own.
+When something looks wrong, sometimes you want to skip every client library and ask the catalog directly. The Iceberg REST catalog spec is well defined, but getting an OAuth token and the right request shapes by hand takes longer than it should.
 
-Fivetran ships an official Postman collection for this. It's linked from the [API tools section](https://fivetran.com/docs/developer-resources/rest-api/api-tools#apitools) of the developer docs as the **Fivetran Iceberg REST Catalog Postman collection**, and it's built specifically for pulling metadata out of tables in a Fivetran Iceberg REST Catalog. You'll need to set up OAuth 2.0 credentials first (the collection walks you through it), but once that's done, you've got a ready-made set of requests for exploring catalog and table metadata over REST — without writing an HTTP client from scratch or guessing at request shapes from the spec.
+The **Fivetran Iceberg REST Catalog Postman collection**, linked from the [Fivetran API tools docs](https://fivetran.com/docs/developer-resources/rest-api/api-tools#apitools), gives you a ready-made set of requests for listing namespaces and tables and pulling table metadata. Set up OAuth 2.0 client credentials once (the collection walks you through it), and you can see the shape of every response before you write any code for a metadata audit or monitoring check.
 
-## 3. No-rewrite unified lake tables, fast
+*[NEEDS CONFIRMATION: the collection is built for the Fivetran catalog. Confirm whether it works against other Iceberg REST catalogs by swapping the base URL and token endpoint, and adjust this section's framing if not.]*
 
-If you're running per-tenant, per-region, or per-customer ingestion, you end up with N structurally identical Iceberg tables in your lake — one `orders` table per customer instead of one `orders` table, period. Querying across all of them means unioning N tables by hand, or building and maintaining a view that does it for you every time a new tenant gets onboarded.
+## Unify identical tables without rewriting data
 
-The fix sounds simple once you remember what an Iceberg table actually *is*: mostly metadata. A table is a manifest — a list of which Parquet files currently belong to it — plus a schema. If you want to consolidate N tables into one, you don't need to touch a single data file. You need a new manifest that points at all the existing files across all N source tables. That's the entire idea behind [unified_lake_tables](https://github.com/fivetran-jacklowery/unified_lake_tables): build the new manifest, skip the rewrite, get a single queryable table in the time it takes to list some files.
+Per-tenant ingestion leaves you with one `orders` table per customer instead of one `orders` table. Querying across them means a growing `UNION ALL` view that someone has to update each time a tenant is onboarded.
 
-Worth flagging up front: this repo lives under Jack's personal GitHub namespace, not the Fivetran org. It's a community/example build being shared because it's genuinely useful and unusually well-documented, not a shipped, GA product feature — treat it accordingly.
+An Iceberg table is mostly metadata: a schema plus manifests listing which Parquet files belong to it. To combine N tables, you don't need to move any data. You need one new manifest that points at the files the N tables already have. That's what [unified_lake_tables](https://github.com/fivetran-jacklowery/unified_lake_tables) does.
 
-Here's the part that makes this more than an afternoon of manifest-splicing, and worth reading the README for even if you never run the code: Iceberg doesn't resolve columns by name, it resolves them by an internal numeric field ID. Two source tables that evolved independently — say, two tenants who each added their own new column at different times — can land unrelated new columns on the *same* field ID. Iceberg won't error on this. It'll just silently serve the wrong column's data through the unified table, which is about the worst failure mode you can get from a metadata operation that's supposed to be free.
+<Lightbox src="/img/blog/2026-09-25-iceberg-catalog/unified-manifest.svg" title="Three tenant tables share their Parquet files with a new unified table through a single new manifest" width="90%" />
 
-The repo's fix is a three-layer approach: reserve a range of field IDs up front so tables don't collide by default, widen for free when two schemas are compatible enough that no actual conflict exists, and only fall back to an actual rewrite when there's a genuine collision that can't be resolved any other way.
+If you've used Iceberg's `add_files` procedure in Spark, the idea will feel familiar. The hard part is schemas. Iceberg matches columns by numeric field ID, not by name, and the IDs are baked into each Parquet file. Two tenant tables that each added a different column at different times can assign both new columns the *same* ID. Iceberg won't raise an error. It will quietly return one column's values under the other's name.
 
-A few known gaps, documented on purpose:
+The repo handles this in three steps:
 
-- It's been validated against exactly one schema-change pattern so far: a source table adding a new nullable column.
-- True column renames are an acknowledged, currently open gap — the unified table will keep silently serving the old column name forever, with no error or warning.
-- Dropped columns and changed data types are untested; behavior is unknown, not "known to work."
-- It's explicitly not a general-purpose ETL replacement. It's additive-column-safe. It is not transform-safe.
+1. Reserve a range of field IDs up front so tables don't collide by default.
+2. When two schemas are compatible, widen the unified schema without touching data.
+3. Only rewrite files when there's a real collision that can't be resolved any other way.
 
-### Get hands-on with an Iceberg catalog and DuckDB
+This is an example project under Jack's personal GitHub account, not a supported product. Its README is candid about what's covered today:
 
-If you want to try all of this against a real catalog without provisioning any infrastructure, check out the [Iceberg quickstart guide](/guides/iceberg?step=12) — it walks through standing up a catalog and querying it with DuckDB right on your laptop.
+- Tested: source tables adding a new nullable column, and copy-on-write updates and deletes (including MDLS's soft deletes).
+- Known gap: column renames. The unified table keeps serving the old name, with no warning.
+- Untested: dropped columns and changed data types.
 
-## Bonus: for Fivetran MDLS customers
+Run your own validation before pointing it at anything in production.
 
-### Upgrading existing connectors to MDLS
+## Try it yourself
 
-If you're running Fivetran into a warehouse today and have been eyeing a move to a managed lakehouse, there's a more direct path than standing up Polaris and reconfiguring destinations by hand. The tool for this lives at [fivetran/cakarst_mdls_migrator](https://github.com/fivetran/cakarst_mdls_migrator) — a repo aimed at upgrading existing Fivetran setups to Fivetran Managed Data Lake Service (MDLS) rather than having you reconstruct the destination and catalog wiring from scratch.
+Want to see an Iceberg REST catalog shared across engines end to end? The [Snowflake Horizon and Apache Iceberg guide](/guides/iceberg) walks you through building tables in Snowflake, then reading and writing those same tables from DuckDB on your laptop through Horizon's REST catalog. You'll need a Snowflake account and an S3 bucket, and about an hour.
 
-*[NEEDS CONFIRMATION FROM JACK/CASEY: exact capabilities of this repo — what it actually automates, what inputs it expects, and any prerequisites or limitations, before we describe it in more detail here.]*
+## Bonus: if you use Fivetran MDLS
 
-If you want the "why," not just the "how," [the business case for upgrading to a data lake](https://www.fivetran.com/blog/the-business-case-for-upgrading-to-a-data-lake) covers the reasoning and incremental migration steps this tool is meant to make more concrete.
+### Upgrade existing connectors to MDLS
 
-### MDLS supports writes now
+If you already load data with Fivetran into a warehouse, [cakarst_mdls_migrator](https://github.com/fivetran/cakarst_mdls_migrator) helps you move those connectors to MDLS without rebuilding the destination and catalog setup by hand.
 
-We [announced Write Credentials for MDLS a few weeks ago](https://www.fivetran.com/blog/introducing-fivetran-managed-data-lake-write-credentials), and it's worth putting in context here, because it's the piece that turns MDLS from "a place Fivetran writes to and you read from" into a two-way relationship with your lake.
+*[NEEDS CONFIRMATION FROM JACK/CASEY: what it automates, required inputs and permissions, prerequisites, and limitations. The draft called this a "skill"; confirm whether it's an agent skill, a CLI, or a script.]*
 
-MDLS now issues a second, write-permissioned credential set, separate from the read-only credentials you've had all along. Write Credentials are gated to Destination Admins and Account Admins specifically, and they let you run real DDL and DML — create, alter, and drop tables, insert, update, delete, and merge rows — directly against the hosted Apache Polaris catalog through whatever query engine you're already using.
+For the reasoning behind making the move, see [the business case for upgrading to a data lake](https://www.fivetran.com/blog/the-business-case-for-upgrading-to-a-data-lake).
 
-One caveat worth repeating every time this comes up: **pause the Fivetran connection before altering a table**. Writing to a table while a connection is still syncing into it can cause permanent data loss.
+### MDLS supports writes
 
-Before this shipped, the REST Catalog was read-only from external query engines — Fivetran was the only thing that wrote metadata, a constraint [covered in detail in the governance post](https://www.fivetran.com/blog/governing-your-lakehouse-with-fivetran-managed-data-lake-service). Write Credentials is what changes that constraint — and it's the reason the no-rewrite table unification above has a path to actually landing changes back in your catalog, rather than staying read-only forever.
+MDLS used to be read-only from outside: Fivetran wrote the tables, and your query engines read them. With [Write Credentials](https://www.fivetran.com/blog/introducing-fivetran-managed-data-lake-write-credentials), Destination Admins and Account Admins can issue a separate write-enabled credential and run DDL and DML (create, alter, drop, insert, update, delete, merge) against the Polaris catalog from Snowflake or any other engine. A common first use is deleting a user's records to honor a GDPR request.
+
+One rule: *pause the Fivetran connection before you alter a table.* Writing to a table while a sync is loading into it can cause permanent data loss.
+
+For how access control works underneath, see [governing your lakehouse with MDLS](https://www.fivetran.com/blog/governing-your-lakehouse-with-fivetran-managed-data-lake-service).
