@@ -11,11 +11,11 @@ import EventTimeRequired from '/snippets/_event_time_required.md';
 
 :::info
 
-Available for [<Constant name="dbt" /> **Latest**](/docs/dbt-versions/dbt-release-tracks) and <Constant name="core" /> v1.9 or higher.
+Available for [<Constant name="dbt" /> **v1 Latest**](/docs/dbt-versions/dbt-release-tracks) and <Constant name="dbt" /> v1.9 or higher.
 
 If you use a custom microbatch macro, set a [distinct behavior flag](/reference/global-configs/behavior-flags/require_batched_execution_for_custom_microbatch_strategy) in your `dbt_project.yml` to enable batched execution. If you don't have a custom microbatch macro, you don't need to set this flag as dbt will handle microbatching automatically for any model using the [microbatch strategy](#how-microbatch-compares-to-other-incremental-strategies).
 
-Read and participate in the discussion: [<Constant name="core" />#10672](https://github.com/dbt-labs/dbt-core/discussions/10672). Refer to [Supported incremental strategies by adapter](/docs/build/incremental-strategy#supported-incremental-strategies-by-adapter) for a list of supported adapters. 
+Read and participate in the discussion: [Core#10672](https://github.com/dbt-labs/dbt/discussions/10672). Refer to [Supported incremental strategies by adapter](/docs/build/incremental-strategy#supported-incremental-strategies-by-adapter) for a list of supported adapters. 
 
 :::
 
@@ -189,7 +189,7 @@ dbt will instruct the data platform to take the result of each batch query and [
 
 It does not matter whether the table already contains data for that day. Given the same input data, the resulting table is the same no matter how many times a batch is reprocessed.
 
-<Lightbox src="/img/docs/building-a-dbt-project/microbatch/microbatch_filters.png" title="Each batch of sessions filters page_views to the matching time-bound batch, but doesn't filter sessions, performing a full scan for each batch."/>
+<Lightbox src="/img/docs/building-a-dbt-project/microbatch/microbatch_filters.png" title="Each batch of sessions filters page_views to the matching time-bound batch, but doesn't filter customers, performing a full scan for each batch."/>
 
 ## Relevant configs
 

@@ -4,13 +4,13 @@ id: "source_freshness_run_project_hooks"
 sidebar_label: "source freshness run project hooks"
 ---
 
-:::caution Removed in <Constant name="core_v2" />
+:::caution Removed in v2
 
-This flag was removed in <Constant name="core_v2" /> and in <Constant name="fusion" />. The new behavior is always enabled. If you're upgrading, remove this flag from your `dbt_project.yml`.
+This flag was removed in v2. The new behavior is always enabled. If you're upgrading, remove this flag from your `dbt_project.yml`.
 
 :::
 
-| source_freshness_run_project_hooks | <Constant name="dbt" /> **Latest** | <Constant name="core" /> |
+| source_freshness_run_project_hooks | <Constant name="dbt" /> **v1 Latest** | <Constant name="core" /> |
 |---|---|---|
 | Introduced | 2024.03 | 1.8.0 |
 | Matured (default → `true`) | 2025.05 | 1.10.0 |

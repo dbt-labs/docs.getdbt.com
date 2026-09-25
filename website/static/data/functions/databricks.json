@@ -2,7 +2,7 @@
   "_meta": {
     "platform": "databricks",
     "platform_name": "Databricks",
-    "count": 773
+    "count": 777
   },
   "functions": [
     {
@@ -72,6 +72,13 @@
       "name": "AI_CLASSIFY",
       "category": "Built-in",
       "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/ai_classify",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "AI_ENRICH",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/ai_enrich",
       "preview_status": "GA",
       "fusion_typecheck": false
     },
@@ -163,6 +170,13 @@
       "name": "AI_TOP_DRIVERS",
       "category": "Built-in",
       "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/ai_top_drivers",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "AI_TRANSCRIBE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/ai_transcribe",
       "preview_status": "GA",
       "fusion_typecheck": false
     },
@@ -879,6 +893,13 @@
       "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/count_min_sketch",
       "preview_status": "GA",
       "fusion_typecheck": true
+    },
+    {
+      "name": "COUNTER_DIFF",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/counter_diff",
+      "preview_status": "GA",
+      "fusion_typecheck": false
     },
     {
       "name": "COVAR_POP",
@@ -4447,6 +4468,13 @@
       "name": "TILDESIGN",
       "category": "Built-in",
       "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/tildesign",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "TIME_BUCKET",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/time_bucket",
       "preview_status": "GA",
       "fusion_typecheck": false
     },

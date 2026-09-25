@@ -9,7 +9,7 @@ availability: everywhere_usage
 
 import DbtStateAppRetirement from '/snippets/_dbt-state-app-retirement.md';
 
-# About dbt State <Lifecycle status="preview" />
+# About dbt State
 
 <IntroText>
 
@@ -19,24 +19,28 @@ dbt State makes dbt smarter about what to build. Instead of rebuilding every nod
 
 With dbt State, dbt first compares the logic and data of each node to previous builds across multiple environments on every run &mdash; whether orchestrated in the <Constant name="dbt_platform" />, through your own orchestrator, or in development. If the logic is the same and the data is still fresh, dbt reuses an existing object. It will either clone an existing node from elsewhere, or skip executing a model that already exists, rather than building it anew. Additionally, it will automatically defer to production state without the need to manually set the `--defer` or `--state` flags.
 
-dbt State can reuse all node types that create relations in the database (such as models, snapshots, seeds) and data tests.
+dbt State can reuse all node types that create relations in the database (such as SQL models, snapshots, seeds) and data tests. Note that the following models are not eligible for reuse:
+
+- **Python models**: dbt State builds Python models on every run, even if their code and upstream data have not changed.
+- **Models with custom materializations**: dbt State builds these models on every run because custom materializations may have side effects (for example, modifying table properties or writing to other schemas), and dbt State cannot safely determine whether skipping the run would produce the same result.
 
 dbt State works with dbt (v1 and v2) and the <Constant name="dbt_platform" />, across all environments and orchestrators, making it a flexible approach regardless of how you run dbt. It requires authentication through a <Constant name="dbt_platform" /> account. For pricing details, refer to [dbt State usage and pricing](/docs/platform/billing/dbt-state-usage).
 
 ## Benefits
 
-dbt State delivers efficiency gains across both production and development environments:
+dbt State reduces warehouse compute costs and simplifies how you develop, orchestrate, and execute dbt:
 
 - **Fresher data, lower costs**: Nodes only rebuild when the result would be different (new data or code changes), reducing warehouse compute while keeping production data fresh.
-- **Faster iteration cycles**: In development, dbt automatically clones selected nodes from production whenever possible, so you spend less time waiting for builds and more time writing code.
-- **Smarter than standard deferral**: Unlike standard deferral, which always builds selected nodes and only defers unselected upstream references, dbt State decides whether transformations need to run at all, or whether an existing table can simply be cloned.
-- **Model-level freshness threshold**: The [`lag_tolerance`](/reference/resource-configs/lag-tolerance) config sets how much time must pass since the last upstream data change before dbt triggers a rebuild. It decouples downstream models from high-frequency upstream changes, and prevents costly rebuilds on stagnant data when an upstream dependency misses its freshness [Service Level Agreement (SLA)](https://www.getdbt.com/blog/data-slas-best-practices).
+- **Faster, simpler development**: Without dbt State, developing in a fresh schema means you need to build upstream dependencies, maintain development copies, or configure `--defer` with a state manifest. With dbt State, none of that is needed since dbt finds the freshest available state across environments, clones fresh upstream assets, and rebuilds only what changed.
+- **Simpler orchestration**: Orchestration decisions typically happen at the job level &mdash; which nodes belong in which job, and how often that job should run. dbt State adds node-level decision-making within each run: instead of rebuilding every selected node, dbt evaluates each one individually and decides whether to rebuild, clone, or skip based on its logic and data freshness. Unlike standard deferral, which always builds selected nodes and only defers unselected upstream references, dbt State can skip or clone selected nodes, too.
+- **Model-level freshness threshold**: The [`lag_tolerance`](/reference/resource-configs/lag-tolerance) config sets how long dbt State waits before rebuilding a node once its upstream data changes. A node rebuilds only when its last build is older than the tolerance window and its upstream data has changed. It decouples downstream models from high-frequency upstream changes, and prevents costly rebuilds on stagnant data when an upstream dependency misses its freshness [Service Level Agreement (SLA)](https://www.getdbt.com/blog/data-slas-best-practices).
+
 
 ## How dbt State works
 
 When you run a command like `dbt build --select +my_model`, dbt State evaluates each selected node and applies the most efficient approach it can:
 
-- **Reuse node from same schema (skip)** — dbt checks whether the object already exists in the target schema, its logic hasn't changed, and its upstream parents haven't received fresh data beyond the configured [`lag_tolerance`](/reference/resource-configs/lag-tolerance). If all conditions are met, dbt skips the node entirely, as if it was never selected. For data tests, if the nodes being tested haven't changed since the last run, the previous test result is reused without re-executing the test query.
+- **Reuse node from same schema (skip)** — dbt checks whether the object already exists in the target schema, its logic hasn't changed, and it is not yet due for rebuilding based on its [`lag_tolerance`](/reference/resource-configs/lag-tolerance) (either because the last build is still within the tolerance window, or its upstream data hasn't changed). If all conditions are met, dbt skips the node entirely, as if it was never selected. For data tests, if the nodes being tested haven't changed since the last run, the previous test result is reused without re-executing the test query.
 
   For views, if the view's logic is unchanged, dbt State reuses it even if new data has arrived upstream. Because views don't store data, new upstream data is automatically reflected when the view is queried, even without a rebuild. Note that views using `select *` on an upstream node may behave differently &mdash; refer to [Views with `select *`](/faqs/State/views-rebuilt#views-with-select) for more information.
 - **Reuse node from different schema (clone)** — dbt State looks across all environments and jobs for a matching object with identical logic and fresh data. This includes schemas where a model was built before it ever ran in production. When multiple candidates exist, dbt State clones from the one with the freshest data, regardless of which environment it came from. For example, if a CI schema has fresher data than production and identical logic, dbt State clones from there. The node is marked as **Reused** at a fraction of the compute cost.
@@ -48,7 +52,7 @@ dbt State fetches table metadata (for example, last-modified timestamps) in the 
 
 Without dbt State, every selected node rebuilds on every run regardless of whether anything has changed.
 
-To see which decision dbt State made for each node after a run and why, you can run the <VersionBlock firstVersion="2.0">[`dbt state explain`](/reference/commands/state-explain)</VersionBlock><VersionBlock lastVersion="1.99">[`dbt-state explain`](/reference/commands/state-explain)</VersionBlock> command.
+To see which decision dbt State made for each node after a run and why, you can run the <VersionBlock firstVersion="2.0">[`dbt state explain`](/reference/commands/state-explain)</VersionBlock><VersionBlock lastVersion="1.99">[`dbt-state explain`](/reference/commands/state-explain)</VersionBlock> command. If you use the <Constant name="dbt_platform" />, the same information is available without running a command &mdash; go to the [**Explain** tab](/docs/deploy/dbt-state-interface#explain-tab) on the job run details page to see the full decision breakdown for each node.
 
 For the full list of available configs, see [dbt State configs](/reference/resource-configs/dbt-state-configs).
 
@@ -62,6 +66,10 @@ The key idea is that dbt State only skips work when it can prove the existing ob
 
 </Expandable>
 
+### Use dbt State with state:* selectors <Lifecycle status="beta" />
+
+In self-managed deployments, you can also use dbt State with `state:*` selectors. Instead of comparing against a single `manifest.json`, these selectors use dbt State as the comparison source, with state tracked for each individual node. Refer to [dbt State-powered `state:*` selectors](/docs/deploy/dbt-state-deferral#dbt-state-powered-state-selectors) for more information.
+
 ## Signing up for dbt State
 
 dbt State is connected to your existing <Constant name="dbt_platform" /> account. Your dbt State credentials are the same as your platform credentials, and dbt State has access to your platform environments and jobs.
@@ -74,6 +82,7 @@ dbt State is connected to your existing <Constant name="dbt_platform" /> account
 <FAQ path="Runs/what-happened-to-sao" />
 <FAQ path="State/state-modified-difference" />
 <FAQ path="State/incremental-models" />
+<FAQ path="State/python-models" />
 <FAQ path="State/data-storage" />
 <FAQ path="State/last-updated-timestamp" />
 <FAQ path="State/model-change-calculation" />
@@ -85,6 +94,7 @@ dbt State is connected to your existing <Constant name="dbt_platform" /> account
 ## Related docs
 
 - [Set up dbt State](/docs/deploy/dbt-state-setup)
+- [Monitor dbt State activity](/docs/deploy/dbt-state-interface)
 - [Non-interactive environment setup](/docs/deploy/dbt-state-cicd)
 - [dbt State configs](/reference/resource-configs/dbt-state-configs)
 - [Migrate from state-aware orchestration](/docs/deploy/dbt-state-migration)

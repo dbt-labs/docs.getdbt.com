@@ -31,11 +31,11 @@ Behavior change flags go through three phases of development:
 2. **Mature (enabled by default):** The default value of the flag is switched to the new behavior by default. You can still preserve the old behavior, but you may see deprecation warnings.
 3. **Removed (generally enabled):** The old behavior is removed from the dbt codebase(s). Most flags are supported indefinitely, but there is no committement to supporting them forever. If a flag is removed, there will be significant advanced warning.
 
-### Introduced in dbt Core v1.x
+### Introduced in <Constant name="core_v1" />
 
-This table outlines which month of the **Latest** release track in <Constant name="dbt" /> and which version of <Constant name="core" /> contains the behavior change's introduction (disabled by default) or maturity (enabled by default).
+This table outlines which month of the **v1 Latest** release track in <Constant name="dbt" /> and which version of <Constant name="core" /> contains the behavior change's introduction (disabled by default) or maturity (enabled by default).
 
-| Flag | <Constant name="dbt" /> **Latest**: Intro | <Constant name="dbt" /> **Latest**: Maturity | <Constant name="core" />: Intro | <Constant name="core" />: Maturity | <Constant name="core" />: Removed |
+| Flag | <Constant name="dbt" /> **v1 Latest**: Intro | <Constant name="dbt" /> **v1 Latest**: Maturity | <Constant name="core" />: Intro | <Constant name="core" />: Maturity | <Constant name="core" />: Removed |
 |-----------------------------------------------------------------|------------------|---------------------|-----------------|--------------------|----|
 | [require_explicit_package_overrides_for_builtin_materializations](/reference/global-configs/behavior-flags/require_explicit_package_overrides_for_builtin_materializations) | 2024.04 | 2024.06 | 1.6.14, 1.7.14 | 1.8.0 | 2.0 |
 | [require_resource_names_without_spaces](/reference/global-configs/behavior-flags/require_resource_names_without_spaces) | 2024.05 | 2025.05 | 1.8.0 | 1.10.0 | 2.0 |
@@ -58,14 +58,28 @@ This table outlines which month of the **Latest** release track in <Constant nam
 | [allow_jinja_file_extensions](/reference/global-configs/behavior-flags/allow_jinja_file_extensions) | 2026.5 | - | 1.12.0 | - | - |
 | [latest_version_pointer_enabled_by_default](/reference/global-configs/behavior-flags/latest_version_pointer_enabled_by_default) | 2026.5 | - | 1.12.0 | - | - |
 
-### Introduced in <Constant name="fusion" /> and Core v2
+### Flags reaching maturity
+
+Several behavior change flags on the <Constant name="dbt_platform" /> `v1 Latest` release track are planned to reach maturity on September 1, 2026, switching their default values from `false` to `true`. The September 1 date applies only to the <Constant name="dbt_platform" /> release tracks. The flags have reached maturity in <Constant name="dbt" /> v1.12. For intro dates, refer to the <Constant name="core" /> behavior changes table.
+
+| Flag | Impact |
+|---|---|
+| [skip_nodes_if_on_run_start_fails](/reference/global-configs/behavior-flags/skip_nodes_if_on_run_start_fails) | Can stop build |
+| [require_nested_cumulative_type_params](/reference/global-configs/behavior-flags/require_nested_cumulative_type_params) | Can stop build (parse error) |
+| [require_all_warnings_handled_by_warn_error](/reference/global-configs/behavior-flags/require_all_warnings_handled_by_warn_error) | Can stop build (when `--warn-error` is set) |
+| [require_batched_execution_for_custom_microbatch_strategy](/reference/global-configs/behavior-flags/require_batched_execution_for_custom_microbatch_strategy) | Behavior change for custom microbatch macros |
+| [state_modified_compare_more_unrendered_values](/reference/global-configs/behavior-flags/state_modified_compare_more_unrendered_values) | Selection-set change with potential CI impact |
+| [require_yaml_configuration_for_mf_time_spines](/reference/global-configs/behavior-flags/require_yaml_configuration_for_mf_time_spines) | Suppresses a deprecation warning (no functional change) |
+| [validate_macro_args](/reference/global-configs/behavior-flags/validate_macro_args) | New warning for mismatched macro arguments; errors with `--warn-error` |
+
+### Introduced in <Constant name="fusion" /> {#introduced-in-dbt-v2}
 
 The following flags are specific to <Constant name="fusion" /> and have no equivalent in <Constant name="core" />. They are configured the same way — in the `flags:` block of `dbt_project.yml`.
 
 | Flag | Adapter | Default | Introduced | Becomes default |
 |---|---|---|---|---|
 | [require_resource_names_without_plus_prefix](/reference/global-configs/behavior-flags/require_resource_names_without_plus_prefix) | All | `false` | 2.0.0-preview.208 | Not yet set |
-| use_catalogs_v2 | All | `false` | 2.0.0-preview.174 | Not yet set |
+| [use_catalogs_v2](/docs/build/iceberg/catalogs-yml?version=2#new-spec-recommended) | All | `true` | 2.0.0-preview.174 | 2.0.0 |
 | bigquery_noop_alter_relation_comment | BigQuery | `false` | 2.0.0-preview.124 | Not yet set |
 
 
@@ -139,10 +153,10 @@ When a maturity date has not yet been set (shown as -), we have not yet determin
 
 Since behavior change flags are different from other dbt changes, it's important to understand the difference:
 - [Deprecation warnings](/reference/deprecations) &mdash; Features in your project code that will stop working (behavior flags often control when these become errors)
-- [Deprecated CLI flags](/docs/dbt-versions/dbt-upgrade/upgrading-to-v2#deprecated-flags) &mdash; Command-line flags being removed in dbt Fusion
+- [Deprecated CLI flags](/docs/dbt-versions/dbt-upgrade/upgrading-to-v2#deprecated-flags) &mdash; Command-line flags being removed in v2
 
 See the [Changes overview](/reference/changes-overview) for a quick comparison.
 
-If you're upgrading to [dbt Fusion](/docs/dbt-versions/dbt-upgrade/upgrading-to-v2) or [<Constant name="core_v2" />](/docs/dbt-versions/dbt-upgrade/upgrading-to-v2), a subset of behavior change flags are removed and their new behavior is always enabled.
+If you're upgrading to [v2](/docs/dbt-versions/dbt-upgrade/upgrading-to-v2), a subset of behavior change flags are removed and their new behavior is always enabled.
 
 </Expandable>

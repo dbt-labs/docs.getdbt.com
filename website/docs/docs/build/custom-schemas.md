@@ -208,7 +208,7 @@ In the `generate_schema_name` macro examples shown in the [built-in alternative 
 
 If your schema names are being generated incorrectly, double-check your target name in the relevant environment.
 
-For more information, consult the [managing environments in <Constant name="core" />](/docs/local/dbt-environments) guide.
+For more information, consult the [managing environments in <Constant name="dbt" />](/docs/local/dbt-environments) guide.
 
 ## Related docs
 

@@ -7,12 +7,12 @@ pagination_prev: null
 hide_table_of_contents: true
 ---
 
-dbt supports model governance to help you control who can access models, what data they contain, how they change over time, and reference them across projects. dbt supports model governance in dbt Core and the <Constant name="dbt_platform" />, with some differences in the features available across environments/plans.
+dbt supports model governance to help you control who can access models, what data they contain, how they change over time, and reference them across projects. dbt supports model governance in <Constant name="core" /> and the <Constant name="dbt_platform" />, with some differences in the features available across environments/plans.
 
-- Use model governance to define model structure and visibility in dbt Core and the <Constant name="dbt_platform" />.
+- Use model governance to define model structure and visibility in <Constant name="core" /> and the <Constant name="dbt_platform" />.
 - <Constant name="dbt" /> builds on this with features like [cross-project ref](/docs/mesh/govern/project-dependencies) that enable collaboration at scale across multiple projects, powered by its metadata service and [<Constant name="catalog" />](/docs/explore/explore-projects). Available in <Constant name="dbt" /> Enterprise or Enterprise+ plans.
 
-All of the following features are available in dbt Core and the <Constant name="dbt_platform" />, _except_ project dependencies, which is only available to [<Constant name="dbt" /> Enterprise-tier plans](https://www.getdbt.com/pricing).
+All of the following features are available in <Constant name="core" /> and the <Constant name="dbt_platform" />, _except_ project dependencies, which is only available to [<Constant name="dbt" /> Enterprise-tier plans](https://www.getdbt.com/pricing).
 
 - [**Model access**](model-access)  &mdash; Mark models as "public" or "private" to distinguish between mature data products and implementation details — and to control who can `ref` each. 
 - [**Model contracts**](model-contracts) &mdash;Guarantee the shape of a model (column names, data types, constraints) before it builds, to prevent surprises for downstream data consumers. 

@@ -52,7 +52,7 @@ sources:
 
 ### Table materialization 
 
-dbt <Constant name="fusion" /> supports Table materialization on Salesforce Data 360. Execution of the materialization results in the creation of a [batch data transform](https://help.salesforce.com/s/articleView?id=data.c360_a_batch_transform_overview.htm&language=en_US&type=5) and a [Data Lake Object (DLO)](https://developer.salesforce.com/docs/atlas.en-us.object_reference.meta/object_reference/sforce_api_concepts_data_cloud_objects.htm) for querying. 
+<Constant name="fusion" /> supports Table materialization on Salesforce Data 360. Execution of the materialization results in the creation of a [batch data transform](https://help.salesforce.com/s/articleView?id=data.c360_a_batch_transform_overview.htm&language=en_US&type=5) and a [Data Lake Object (DLO)](https://developer.salesforce.com/docs/atlas.en-us.object_reference.meta/object_reference/sforce_api_concepts_data_cloud_objects.htm) for querying. 
 
 Currently, only the `profile` type DLO is supported. Support for `engagement` DLOs is coming soon. Profile DLOs must define a `primary_key` in the model config. For example:
 
