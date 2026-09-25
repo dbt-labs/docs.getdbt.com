@@ -24,7 +24,7 @@ Generally the optimal number of threads depends on your data warehouse and its c
 
 <VersionBlock lastVersion="1.99">
 
-We recommend setting this to 4 to start with.
+In dbt v1, we recommend setting this to 4 to start with.
 
 </VersionBlock>
 
