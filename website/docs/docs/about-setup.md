@@ -4,7 +4,7 @@ id: about-setup
 description: "About setup and installation of self-hosted dbt and the dbt platform"
 sidebar_label: "dbt setup and installation"
 pagination_next: "docs/environments-in-dbt"
-pagination_prev: null
+pagination_prev: "docs/get-started-dbt"
 availability: all_users
 ---
 
