@@ -74,13 +74,7 @@ For the full set of connection options, see the [dbt-athena setup page](/docs/lo
 
 :::info Adapter availability
 
-S3 Tables support is available on <Constant name="dbt_platform"/>. It was added in [dbt-adapters#2047](https://github.com/dbt-labs/dbt-adapters/pull/2047), merged July 17, 2026, after the latest stable `dbt-athena` release on PyPI (`1.11.0`, released July 16).
-
-Until a stable release includes this support, install the adapter from GitHub to use it locally or in a self-hosted environment:
-
-```shell
-pip install "git+https://github.com/dbt-labs/dbt-adapters.git@main#subdirectory=dbt-athena"
-```
+S3 Tables support is available on <Constant name="dbt_platform"/> and in `dbt-athena` version `1.11.1` or later.
 :::
 
 ### Enable the S3 Tables integration with Glue
