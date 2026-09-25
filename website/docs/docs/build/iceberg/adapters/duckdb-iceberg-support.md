@@ -7,7 +7,7 @@ description: Understand DuckDB support for Apache Iceberg.
 
 # DuckDB and Apache Iceberg <Lifecycle status="beta" />
 
-:::info <Constant name="Fusion" /> only
+:::info <Constant name="fusion" /> only
 
 DuckDB support for `catalogs.yml` requires [<Constant name="fusion_engine" />](/docs/introduction) with the `use_catalogs_v2` behavior flag enabled. It isn't available in the legacy Python `dbt-duckdb` adapter for <Constant name="core" />.
 
@@ -86,24 +86,28 @@ catalogs:
 
 `endpoint` and `endpoint_type` are mutually exclusive.
 
-:::caution Writing to S3 Tables: use the explicit `endpoint` form, not `endpoint_type`
+### Writing to S3 Tables
 
-The `endpoint_type: S3_TABLES` shortcut shown above works for *reading* from S3 Tables, but as of the current Fusion preview builds, it incorrectly defaults the REST catalog authentication to OAuth2 instead of SigV4 when **writing**. This surfaces as either:
+To write to S3 Tables, use an explicit `endpoint` with `authorization_type: SIGV4`.
 
-```
+In the current v2 preview builds, the `endpoint_type: S3_TABLES` shortcut works for _reading_, but incorrectly defaults to OAuth2 instead of SigV4 when writing. This surfaces as either errors:
+
+```text
 Invalid Configuration Error: AUTHORIZATION_TYPE is 'oauth2', yet no 'secret' was provided...
 ```
-or, if a secret is attached to the catalog directly:
-```
+
+```text
 InvalidArguments: HTTP Error: Failed to retrieve OAuth2 token from  (sqlstate: ...)
 ```
 
-S3 Tables authenticates with SigV4, not OAuth2. Until this is fixed, use the explicit `endpoint` + `authorization_type: SIGV4` form for any S3 Tables catalog you plan to write to. See [Amazon S3 Tables (write path)](#amazon-s3-tables-write-path) below for the full, verified configuration.
-:::
+S3 Tables requires SigV4 authentication. Until this is fixed, use the explicit `endpoint` + `authorization_type: SIGV4` config. Refer to [Write to Amazon S3 Tables](#write-to-amazon-s3-tables) for any S3 Tables catalog you write to.
 
-## Amazon S3 Tables (write path)
+## Write to Amazon S3 Tables
 
-To materialize Iceberg models into an S3 Tables bucket, attach it as an `iceberg_rest` catalog using the explicit `endpoint` form together with SigV4 authentication, and set the S3 Tables write-compatibility options:
+To materialize Iceberg models into an S3 Tables bucket, configure your catalog, AWS credentials, and model as follows.
+
+### Configure your catalog
+In `catalogs.yml`, define an `iceberg_rest` catalog with an explicit endpoint form together with SigV4 authentication, and set the S3 Tables write-compatibility options:
 
 <File name='catalogs.yml'>
 
@@ -126,7 +130,13 @@ catalogs:
 
 </File>
 
-`secret` references an `s3` credential-chain secret defined in `profiles.yml` (see [Secrets](#secrets) below) &mdash; this supplies the SigV4 credentials, not an OAuth2 token.
+Replace the placeholders with your AWS Region, account ID, table bucket name, and namespace.
+
+`secret` references an `s3` credential-chain secret defined in `profiles.yml` (refer to [Secrets](#secrets)) &mdash; this supplies the SigV4 credentials, not an OAuth2 token.
+
+### Configure AWS credentials
+
+In `profiles.yml`, define an `s3` secret with the same name you used in `catalogs.yml`. The `credential_chain` provider supplies AWS credentials for SigV4 authentication.
 
 <File name='profiles.yml'>
 
@@ -150,6 +160,9 @@ my_profile:
 
 </File>
 
+### Configure your model
+Set `catalog_name` to your catalog's name and `schema` to your S3 Tables namespace:
+
 <File name='models/my_s3_tables_model.sql'>
 
 ```sql
@@ -166,7 +179,11 @@ select * from {{ ref('jaffle_shop_customers') }}
 
 </File>
 
-Because DuckDB's default schema is `main`, dbt's default schema-naming logic concatenates it with your model's custom schema (for example, `main_my_namespace`), which won't match an existing S3 Tables namespace. Add a project-level override so the schema resolves to your namespace exactly:
+### Match the schema to your namespace
+
+Because DuckDB's default schema is `main`, dbt's default schema-naming logic concatenates it with your model's custom schema (for example, `main_my_namespace`), which won't match an existing S3 Tables namespace. 
+
+Add a project-level override so the schema resolves to your namespace exactly:
 
 <File name='macros/generate_schema_name.sql'>
 
