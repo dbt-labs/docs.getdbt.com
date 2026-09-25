@@ -1,0 +1,143 @@
+name: Auto-approve low-risk PRs
+
+# Approves (never merges) PRs from @dbt-labs/product-docs that only make tiny,
+# prose-only edits to allowlisted docs files: typos, link fixes, one-line
+# release notes. A human still clicks merge, and all other required checks
+# still have to pass.
+#
+# Three ways to stop the bot, in increasing order of blast radius:
+#   1. Add the `do-not-auto-approve` label to a single PR.
+#   2. Set the AUTO_APPROVE_MODE repo variable to `dry-run` (comments only)
+#      or `off` (does nothing). No PR needed — Settings > Variables.
+#   3. Delete this workflow.
+#
+# Default mode is dry-run until someone sets the variable.
+
+on:
+  pull_request_target:
+    types: [opened, synchronize, reopened, ready_for_review, labeled, unlabeled]
+  # Re-evaluate when a human reviews, so a "changes requested" or a dismissal
+  # pulls the bot approval back instead of sitting alongside it.
+  pull_request_review:
+    types: [submitted, dismissed]
+
+permissions:
+  contents: read
+  pull-requests: write
+  checks: read
+
+concurrency:
+  group: auto-approve-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  auto-approve:
+    runs-on: ubuntu-latest
+    if: vars.AUTO_APPROVE_MODE != 'off'
+    env:
+      MODE: ${{ vars.AUTO_APPROVE_MODE || 'dry-run' }}
+    steps:
+      # Always the BASE branch, never PR code: this workflow holds a write
+      # token, so it must not check out or execute anything from the PR.
+      - uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6
+        with:
+          ref: ${{ github.event.pull_request.base.ref }}
+          sparse-checkout: .github
+
+      - name: Evaluate risk
+        id: risk
+        uses: actions/github-script@v7
+        env:
+          ORG_TOKEN: ${{ secrets.ORG_TOKEN }}
+        with:
+          script: |
+            const check = require(`${process.env.GITHUB_WORKSPACE}/.github/scripts/low-risk-check.js`)
+            const { eligible, reasons, totalWords } = await check({ github, context, core })
+            core.summary.addHeading('Low-risk auto-approval', 3)
+            core.summary.addRaw(eligible
+              ? `Eligible. ${totalWords} word(s) changed. Mode: ${process.env.MODE}.`
+              : `Not eligible: ${reasons.join('; ')}`)
+            await core.summary.write()
+
+      # Dry run: leave a single, self-updating comment instead of approving.
+      - name: Comment (dry run)
+        if: steps.risk.outputs.eligible == 'true' && env.MODE == 'dry-run'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { owner, repo } = context.repo
+            const issue_number = context.payload.pull_request.number
+            const marker = '<!-- auto-approve-low-risk -->'
+            const body = `${marker}\n**Dry run:** this PR meets the low-risk criteria and would have been auto-approved. No review was submitted.`
+            const comments = await github.paginate(github.rest.issues.listComments, { owner, repo, issue_number })
+            const existing = comments.find(c => c.user.login === 'github-actions[bot]' && c.body.includes(marker))
+            if (existing) {
+              await github.rest.issues.updateComment({ owner, repo, comment_id: existing.id, body })
+            } else {
+              await github.rest.issues.createComment({ owner, repo, issue_number, body })
+            }
+
+      - name: Approve
+        if: steps.risk.outputs.eligible == 'true' && env.MODE == 'on'
+        uses: actions/github-script@v7
+        with:
+          # Swap for a bot/app token if this approval has to satisfy CODEOWNERS.
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const { owner, repo } = context.repo
+            const pull_number = context.payload.pull_request.number
+            const reviews = await github.paginate(github.rest.pulls.listReviews, { owner, repo, pull_number })
+            // Idempotent: re-approving would fire another review event and loop.
+            const mine = reviews.find(r => r.user.login === 'github-actions[bot]' && r.state === 'APPROVED')
+            if (mine) {
+              core.info('Already approved by the bot; nothing to do.')
+              return
+            }
+            await github.rest.pulls.createReview({
+              owner, repo, pull_number,
+              event: 'APPROVE',
+              body: [
+                'Auto-approved: prose-only change to allowlisted docs files, under the low-risk size threshold.',
+                '',
+                'A human still needs to merge. If this call looks wrong, add the `do-not-auto-approve` label — the approval is withdrawn within a minute, and please say so in #docs so the rules get tightened.',
+              ].join('\n'),
+            })
+            await github.rest.issues.addLabels({
+              owner, repo, issue_number: pull_number, labels: ['auto-approved'],
+            })
+
+      # New commits, a new label, or a human review can push a PR out of the
+      # safe zone. Withdraw everything the bot did so the PR looks untouched.
+      - name: Withdraw when no longer low-risk
+        if: steps.risk.outputs.eligible != 'true'
+        uses: actions/github-script@v7
+        env:
+          REASONS: ${{ steps.risk.outputs.reasons }}
+        with:
+          script: |
+            const { owner, repo } = context.repo
+            const pull_number = context.payload.pull_request.number
+            const marker = '<!-- auto-approve-low-risk -->'
+
+            const reviews = await github.paginate(github.rest.pulls.listReviews, { owner, repo, pull_number })
+            for (const r of reviews) {
+              if (r.user.login === 'github-actions[bot]' && r.state === 'APPROVED') {
+                await github.rest.pulls.dismissReview({
+                  owner, repo, pull_number, review_id: r.id,
+                  message: `No longer low-risk: ${process.env.REASONS}`,
+                })
+              }
+            }
+
+            const comments = await github.paginate(github.rest.issues.listComments, { owner, repo, issue_number: pull_number })
+            for (const c of comments) {
+              if (c.user.login === 'github-actions[bot]' && c.body.includes(marker)) {
+                await github.rest.issues.deleteComment({ owner, repo, comment_id: c.id })
+              }
+            }
+
+            try {
+              await github.rest.issues.removeLabel({ owner, repo, issue_number: pull_number, name: 'auto-approved' })
+            } catch (e) {
+              if (e.status !== 404) throw e
+            }
