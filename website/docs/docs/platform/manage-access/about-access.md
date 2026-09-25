@@ -163,7 +163,7 @@ Key things to know before enabling:
 
 To turn on granular permissions:
 
-1. Go to **Account settings**.
+1. Go to **Account settings** &rarr; **Groups & Licenses**.
 2. Click **Enable granular permissions**.
 3. Select the checkbox acknowledging that this setting can't be reversed once enabled.
 4. Click **Enable** to confirm, or **Cancel** to go back without making changes.
@@ -306,7 +306,9 @@ Group memberships are updated whenever a user logs into <Constant name="dbt" /> 
 
 <Expandable alt_header="Can I set up SSO without RBAC?">
 
-Yes, see the documentation on [Manual Assignment](#manual-assignment) above for more information on using SSO without RBAC.
+Yes. If a group has no [SSO mappings](#sso-mappings), it stays unmanaged &mdash; <Constant name="dbt" /> won't change its membership when users log in through your IdP. Admins add and remove those users manually from the **Groups & Licenses** section of **Account settings**.
+
+Add an SSO mapping to an unmanaged group and it becomes managed: from then on, <Constant name="dbt" /> adjusts membership at sign-in based on the user's IdP groups.
 
 </Expandable>
 

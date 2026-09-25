@@ -5,6 +5,8 @@ description: "Answers to common questions about dbt AI features, including dbt W
 availability: all_users
 ---
 
+import WizardArchitecturePlatform from '/snippets/_wizard-architecture-platform.md';
+
 # dbt AI FAQs
 
 <IntroText>
@@ -19,7 +21,7 @@ dbt Labs is committed to protecting your privacy and data. This page provides in
 
 <Expandable alt_header="What is dbt Wizard?">
 
-<Constant name="wizard" /> is the latest and recommended agentic experience for governed data development in dbt, available in both the <Constant name="dbt_platform" /> and the terminal CLI. It helps teams ship trusted dbt changes faster and with less risk by understanding project context, routing to the right dbt tools, validating changes, and supporting review before changes are persisted.
+<Constant name="wizard" /> is the latest and recommended agentic experience for governed data development in dbt. Wizard is available in the <Constant name="dbt_platform" />, the terminal CLI, and as a [Desktop app](/docs/dbt-ai/wizard-desktop). It helps teams ship trusted dbt changes faster and with less risk by understanding project context, routing to the right dbt tools, validating changes, and supporting review before changes are persisted.
 
 Use <Constant name="wizard" /> to investigate lineage and downstream impact, generate or refactor SQL from natural-language prompts, create [documentation](/docs/build/documentation), [data tests](/docs/build/data-tests), [metrics](/docs/build/metrics-overview), and [semantic models](/docs/build/semantic-models), and validate changes with warehouse awareness.
 
@@ -27,16 +29,23 @@ In the <Constant name="dbt_platform" />, <Constant name="wizard" /> is available
 
 In the CLI, you can use <Constant name="wizard" /> from your terminal for local development workflows.
 
+In [Wizard Desktop](/docs/dbt-ai/wizard-desktop), you get <Constant name="wizard" /> as a native app. View rich data visualizations, data diffs, and lineage to understand your data and your changes, and keep several conversations going at once, each on its own branch, so you can work on more than one thing at a time.
+
 </Expandable>
 
 <Expandable alt_header="Where can I find dbt Wizard?">
 
-<Constant name="wizard" /> is available in the <Constant name="dbt_platform" /> and as a terminal CLI.
+<Constant name="wizard" /> is available in the <Constant name="dbt_platform" />, as a terminal CLI, and as Wizard Desktop.
 
 - In the platform, you can use <Constant name="wizard" /> in the [<Constant name="studio_ide" />](/docs/dbt-ai/wizard-ide) for governed data development in dbt.
-- In the CLI, use the [<Constant name="wizard" /> CLI](/docs/dbt-ai/about-dbt-wizard-cli) for local development and automation.
+- In the CLI, use the [<Constant name="wizard" /> CLI](/docs/dbt-ai/wizard-cli) for local development and automation.
+- In [Wizard Desktop](/docs/dbt-ai/wizard-desktop), use a native app with rich data visualizations, data diffs, lineage, and multiple conversations running at once.
 
-To use <Constant name="wizard" /> in the platform, you need a <Constant name="dbt" /> [Starter, Enterprise, or Enterprise+ account](https://www.getdbt.com/contact), and an admin must [enable AI features](/docs/platform/enable-dbt-ai) for your account.
+To use <Constant name="wizard" /> in the platform, you need any <Constant name="dbt" /> [platform account](https://www.getdbt.com/contact). 
+
+All <Constant name="dbt_platform"/> plans have access to <Constant name="wizard" /> in <Constant name="studio_ide" /> and the [home tab](/docs/platform/wizard-home).
+
+AI features are enabled by default. Admins can [turn them off or back on anytime](/docs/platform/manage-dbt-ai).
 
 </Expandable>
 
@@ -76,11 +85,11 @@ No, dbt Copilot actions apply only to dbt Copilot usage. Refer to [<Constant nam
 
 **In the <Constant name="dbt_platform" />**:
 
-When enabled by an admin, <Constant name="wizard" /> is available to users with a <Constant name="dbt" /> [developer license](/docs/platform/manage-access/seats-and-users) on [Starter, Enterprise, and Enterprise+ accounts](https://www.getdbt.com/contact).
+When enabled by an admin, <Constant name="wizard" /> is available to users with a <Constant name="dbt" /> [developer license](/docs/platform/manage-access/seats-and-users) on any [dbt platform account](https://www.getdbt.com/contact).
 
 **In the CLI**:
 
-For <Constant name="wizard" /> CLI, bring your own API key or credentials for a supported provider using [BYOK](/docs/dbt-ai/wizard-byok): OpenAI, Anthropic, Azure AI Foundry, AWS Bedrock, Google Gemini, or Snowflake Cortex (preview). Install and configure the CLI on your local machine. BYOK means any token costs will be billed directly by whichever provider you choose.
+<Constant name="wizard" /> CLI uses dbt Labs-managed models (OpenAI, Anthropic, or open weight models), billed through dbt's spend-limit billing. You can also bring your own API key or credentials for a supported provider using [BYOK](/docs/dbt-ai/wizard-byok): OpenAI, Anthropic, Azure AI Foundry, AWS Bedrock, Google Gemini, or Snowflake Cortex (preview). BYOK is a good backup option if you want to manage AI costs directly &mdash; token costs are billed directly by whichever provider you choose. Install and configure the CLI on your local machine.
 
 Refer to [Use dbt Wizard locally](/docs/dbt-ai/wizard-quickstart) for more information.
 
@@ -88,25 +97,35 @@ Refer to [Use dbt Wizard locally](/docs/dbt-ai/wizard-quickstart) for more infor
 
 <Expandable alt_header="Is dbt Wizard available for all deployment types?">
 
-Yes, <Constant name="wizard" /> is deployed everywhere including [multi-tenant and single-tenant deployments](/docs/platform/about-platform/access-regions-ip-addresses).
+Yes, <Constant name="wizard" /> is deployed everywhere, including [multi-tenant and single-tenant deployments](/docs/platform/about-platform/access-regions-ip-addresses).
 
 </Expandable>
 
 ## How it works
 
+<Expandable alt_header="What data/code is used to train the AI model supporting dbt Wizard?">
+
+
+<Constant name="wizard" /> is supported by dbt Labs-managed models (OpenAI, Anthropic, or open weight models), or by several third-party pre-trained AI models at your discretion (BYOK OpenAI, BYOK Anthropic, BYOK Azure AI Foundry, and so on). When using <Term id="managed" /> OpenAI, our agreement with OpenAI prohibits OpenAI from retaining your data persistently. Refer to our [dbt Labs AI principles page](https://www.getdbt.com/legal/ai-principles) for more information.
+
+
+</Expandable>
+
 <Expandable alt_header="Which AI model providers does dbt Wizard use?">
 
-- For dbt-<Term id="managed"/> inference, Wizard can be used with several frontier models including models provided by OpenAI and Anthropic as well as several open weight models either in the <Constant name="dbt_platform" /> or the CLI. By default, accounts use <Term id="managed" /> OpenAI. 
+In the <Constant name="dbt_platform" />, <Constant name="wizard" /> uses a managed OpenAI model by default. dbt Labs also offers managed open weight models. On any plan, you can also [bring your own provider keys](/docs/platform/wizard-byok-platform) for OpenAI, Anthropic, or Azure AI Foundry.
 
-- For BYOK, you can bring your own key either in [<Constant name="dbt_platform"/>](/docs/platform/enable-dbt-ai#configure-ai-provider) or the [the CLI](/docs/dbt-ai/wizard-byok). 
+The [<Constant name="wizard"/> CLI](/docs/dbt-ai/wizard-cli) supports the same dbt Labs-managed models, or OpenAI, Anthropic, Azure AI Foundry, AWS Bedrock, Google Gemini, and Snowflake Cortex (preview) in bring-your-own-key mode. Refer to [Configure BYOK](/docs/dbt-ai/wizard-byok) and [Supported AI providers](/docs/dbt-ai/pricing-billing/overview#supported-ai-providers) for more information.
 
-Refer to [Model Provider Rate table](https://www.getdbt.com/legal/dbt-wizard-token-costs-by-model) and [Service Consumption Table](https://www.getdbt.com/legal/service-consumption-table) for more information.
+For how model choice affects cost, which models draw from your consumption pool, and how BYOK billing works, refer to [<Constant name="wizard" /> billing and access FAQs](/docs/dbt-ai/wizard-billing-faqs).
+
+Refer to the [Model Provider Rate table](https://www.getdbt.com/legal/dbt-wizard-token-costs-by-model) and [Service Consumption Table](https://www.getdbt.com/legal/service-consumption-table) for more information.
 
 </Expandable>
 
 <Expandable alt_header="Do we support BYOK (bring your own key) at the project level?">
 
-In <Constant name="dbt_platform" />, the <Constant name="wizard"/> BYOK option is currently an account-only configuration. However, there may be a future where we make this configurable on a project-level.
+In <Constant name="dbt_platform" />, the <Constant name="wizard"/> BYOK option is currently an account-only configuration. However, there may be a future where we make this configurable on a project-level. BYOK is a good option if you want to manage AI costs directly, rather than using a dbt Labs-managed model.
 
 <Constant name="wizard" /> CLI supports BYOK locally for OpenAI, Anthropic, Azure AI Foundry, AWS Bedrock, Google Gemini, and Snowflake Cortex (preview). 
 
@@ -115,6 +134,8 @@ In <Constant name="dbt_platform" />, the <Constant name="wizard"/> BYOK option i
 ## Privacy and data
 
 This section covers <Constant name="wizard" /> in the <Constant name="dbt_platform" />. For what the CLI collects and how to opt out, refer to [<Constant name="wizard" /> CLI data use and telemetry](/docs/dbt-ai/wizard-telemetry).
+
+<WizardArchitecturePlatform />
 
 <Expandable alt_header="Does dbt Wizard access my warehouse data?">
 

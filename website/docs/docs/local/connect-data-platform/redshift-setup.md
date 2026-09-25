@@ -20,7 +20,7 @@ availability: local_free
 
 <VersionBlock firstVersion="2.0">
 
-# Connect Redshift to <Constant name="fusion" /> <Lifecycle status='preview' />
+# Connect Redshift to <Constant name="fusion" />
 
 You can configure the Redshift adapter by running `dbt init` in your CLI or manually providing the `profiles.yml` file with the fields configured for your authentication type.
 
@@ -82,7 +82,7 @@ default:
 
 <TabItem value="IAM profile">
 
-Specify the IAM profile to use to connect your Fusion sessions. You will need to provide the following information:
+Specify the IAM profile to use to connect your v2 sessions. You will need to provide the following information:
 - **IAM Profile:** The profile name
 - **Cluster ID:** The unique identifier for your AWS cluster
 - **Region:** Your AWS region (for example, us-east-1)
@@ -123,9 +123,9 @@ Find Redshift-specific configuration information in the [Redshift adapter refere
 
 <VersionBlock lastVersion="1.99">
 
-# Connect Redshift to dbt Core
+# Connect Redshift to <Constant name="core" />
 
-<ProductCard text="Fusion compatible" url="/docs/local/connect-data-platform/redshift-setup?version=2" /> connection also available.
+<ProductCard text="dbt v2 compatible" url="/docs/local/connect-data-platform/redshift-setup?version=2" /> connection also available.
 
 import SetUpPages from '/snippets/_setup-pages-intro.md';
 import RedshiftDatasharing from '/snippets/_redshift-datasharing.md';
@@ -174,7 +174,7 @@ Click on one of these authentication methods for further details on how to confi
   defaultValue="database"
   values={[
     {label: 'Database', value: 'database'},
-    {label: 'IAM User via AWS Profile (Core)', value: 'iam-user-profile'}]
+    {label: 'IAM User via AWS Profile (<Constant name="core" />)', value: 'iam-user-profile'}]
 }>
 
 <TabItem value="database">

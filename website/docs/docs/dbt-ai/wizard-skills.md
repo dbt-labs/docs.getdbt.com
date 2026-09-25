@@ -57,6 +57,36 @@ The following table summarizes where <Constant name="wizard" /> looks for skills
 
 Avoid duplicate skill names across locations. If you need to replace a built-in or imported skill, create the replacement in an intended project or user location and remove or rename the older copy.
 
+## Skills from dbt packages
+
+<VersionBlock lastVersion="1.99">
+
+From v2 and later, you can ship agent skills in a dbt package and install them with `dbt deps` into the directory your coding agent reads from. Your whole team picks up the same skills from a versioned dependency instead of managing them separately.
+
+For more information, refer to [upgrading to v2](/docs/dbt-versions/dbt-upgrade/upgrading-to-v2?version=2#agent-skills).
+</VersionBlock>
+
+<VersionBlock firstVersion="2.0">
+
+On dbt v2, a dbt package can ship skills, and `dbt deps` installs them into the directory your coding agent reads from.
+
+To opt in, set `ai_provider` to one of the [supported providers list](/docs/dbt-ai/package-skills?version=2#set-the-ai_provider-flag). If you use Wizard, set `ai_provider` to `wizard` in your root project:
+
+<File name='dbt_project.yml'>
+
+```yml
+flags:
+  ai_provider: wizard
+```
+
+</File>
+
+Use `wizard` whether you bring your own key or use managed AI.
+
+For the full setup, including how to ship skills in a package and disable ones you don't want, examples, and more &mdash; refer to [Installing agent skills from dbt packages](/docs/dbt-ai/package-skills).
+
+</VersionBlock>
+
 ## Create a skill
 
 From your terminal, use the following commands to create a skill folder and file:
@@ -154,7 +184,7 @@ If a project skill and a global skill use the same name, the project skill takes
 
 <Constant name="wizard"/> ships with skills from [dbt Agent Skills](https://github.com/dbt-labs/dbt-agent-skills), maintained by dbt Labs and the community. These capture analytics engineering knowledge for common workflows and are always available. The agent loads the relevant skill automatically when your prompt matches its use case.
 
-The following skills are always available and refer to the [dbt Agent Skills repository](https://github.com/dbt-labs/dbt-agent-skills) for installation in other AI clients, contributing new skills, and the latest catalog.
+The following skills all ship bundled with <Constant name="wizard"/>. You don't call them directly as the agent loads whichever one best matches your prompt. Refer to the [dbt Agent Skills repository](https://github.com/dbt-labs/dbt-agent-skills) for installation in other AI clients, contributing new skills, and the latest catalog.
 
 <SimpleTable>
 
@@ -179,7 +209,7 @@ These skills are for migration projects rather than everyday sessions:
 
 | Skill | What it does |
 |-------|-------------|
-| `migrating-dbt-core-to-fusion` | Migrate dbt projects from dbt Core to the <Constant name="fusion_engine" /> |
+| `migrating-dbt-core-to-fusion` | Migrate dbt projects from <Constant name="core" /> to <Constant name="fusion_engine" /> |
 | `migrating-dbt-project-across-platforms` | Migrate dbt projects across data platforms |
 </SimpleTable>
 
@@ -190,11 +220,12 @@ Built-in skills are updated with each <Constant name="wizard"/> release. Custom 
 - **Keep `SKILL.md` focused.** One skill per concern (style guide, testing conventions, deployment workflow). Smaller skills are loaded more reliably than large monolithic ones.
 - **Use `description` to control when <Constant name="wizard"/> activates the skill.** A precise description ("Use when creating or editing models in models/marts/") means the skill fires when relevant, not on every prompt.
 - **Start a new session after adding or editing a skill.** Skills are discovered at session start — mid-session changes aren't picked up until you start a new chat.
-- **Cross-project sharing isn't supported yet.** To reuse a skill in another repo, copy the skill files manually. CLI users can also use `~/.agents/skills/` for skills they want everywhere.
+- **Share skills across projects**: To share skills across projects in v2, [ship them in a dbt package](/docs/dbt-ai/package-skills?version=2) and install it with `dbt deps`. Refer to [Skills from dbt packages](/docs/dbt-ai/package-skills?version=2). For personal skills you want across all your local projects, use ~/.agents/skills/.
 
 ## Related docs
 
 - [<Constant name="wizard"/> in Studio IDE](/docs/dbt-ai/wizard-ide)
 - [Use skills in the <Constant name="dbt_platform" />](/docs/dbt-ai/wizard-platform-skills)
+- [Installing agent skills from dbt packages](/docs/dbt-ai/package-skills)
 - [How <Constant name="wizard"/> works](/docs/dbt-ai/wizard-how-it-works)
-- [<Constant name="wizard"/> CLI overview](/docs/dbt-ai/about-dbt-wizard-cli)
+- [<Constant name="wizard"/> CLI overview](/docs/dbt-ai/wizard-cli)

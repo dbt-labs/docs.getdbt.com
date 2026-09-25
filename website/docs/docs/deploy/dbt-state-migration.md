@@ -9,7 +9,7 @@ availability: everywhere_usage
 
 import DbtStateVsSao from '/snippets/_dbt-state-vs-sao.md';
 
-# Migrating from state-aware orchestration to dbt State <Lifecycle status="preview" />
+# Migrating from state-aware orchestration to dbt State
 
 <DbtStateVsSao />
 
@@ -25,12 +25,10 @@ To migrate to dbt State, move your configs from `freshness.build_after` to the n
 | `freshness.build_after.count` + `freshness.build_after.period` | [`state.lag_tolerance`](/reference/resource-configs/lag-tolerance) | Combined into a single field with shorthand values (for example, `1800s`, `30m`, `12h`, `1d`, `2w`) or Jinja expressions |
 
 :::note Backward compatibility in <Constant name="fusion" />
-In the <Constant name="fusion_engine" />, you can enable dbt State without updating your project configs first.
+In <Constant name="fusion_engine" />, you can enable dbt State without updating your project configs first.
 
 - If `lag_tolerance` and `require_fresh_data_from` are not set, dbt State falls back to your existing `build_after` configs until `build_after` is deprecated.
 - If neither `build_after` nor the `state` configs exist, dbt State uses its [default configs](/reference/resource-configs/dbt-state-configs): `lag_tolerance: 45m` and `require_fresh_data_from: any`.
-
-dbt Labs will communicate a migration timeline for state-aware orchestration users when dbt State reaches general availability.
 :::
 
 ### Examples
@@ -150,11 +148,11 @@ models:
 State-aware orchestration and dbt State differ in a few ways:
 
 - **More models rebuilding than expected**: If you notice more rebuilds after you migrate, the most common causes are:
-  - **Views with `select *`**: dbt State can't determine which columns `select *` resolves to without querying the upstream schema, so it always rebuilds these views rather than risk reusing a stale result.
+  - **Views with `select *` on a `ref()` or `source()`**: dbt State can't determine which columns `select *` resolves to without querying the upstream schema, so it rebuilds these views rather than risk reusing a stale result. Views that use `select *` on a CTE are reused, because dbt can resolve the columns from the CTE definition. For more information, refer to [Views with `select *`](/faqs/State/views-rebuilt#views-with-select).
   - **Non-determinism in Jinja-templated SQL**: Macros like `dbt_utils.get_relations_by_pattern` with `dbt_utils.union_relations` can return relations in a different order on each run, which produces different compiled SQL. dbt State detects a new hash and rebuilds the model. If that model has downstream dependencies, those models rebuild, too.
   - **Models with external sources on BigQuery**: Models that use external sources (such as Google Sheets) always rebuild because BigQuery doesn't expose modification timestamps for external sources, so dbt State can't determine freshness. 
   
-  To avoid this, configure [`loaded_at_field`](/reference/resource-properties/freshness#loaded_at_field) or [`loaded_at_query`](/reference/resource-properties/freshness#loaded_at_query) in your source definition to point to a timestamp field &mdash; this lets dbt State query a timestamp field directly to determine freshness, instead of relying on warehouse metadata.
+  To avoid this, configure [`loaded_at_field`](/reference/resource-configs/freshness) or [`loaded_at_query`](/reference/resource-configs/freshness) in your source definition to point to a timestamp field &mdash; this lets dbt State query a timestamp field directly to determine freshness, instead of relying on warehouse metadata.
 
   Refer to [Why is my model being rebuilt instead of reused?](/faqs/State/views-rebuilt) for details on each cause and how to diagnose them.
 

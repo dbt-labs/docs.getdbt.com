@@ -9,9 +9,9 @@ availability:
   access: login_required
 ---
 
-# Connect Salesforce Data 360 <Lifecycle status="beta"/> <ProductCard text="Fusion compatible" />
+# Connect Salesforce Data 360 <Lifecycle status="beta"/> <ProductCard text="dbt v2 compatible" />
 
-The <Constant name="fusion_engine" /> in <Constant name="dbt_platform" /> supports connecting to Salesforce Data 360.
+<Constant name="fusion_engine" /> in <Constant name="dbt_platform" /> supports connecting to Salesforce Data 360.
 
 import SalesforcePrereqs from '/snippets/_salesforce-data-cloud-prereqs.md';
 

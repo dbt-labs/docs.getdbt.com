@@ -48,6 +48,8 @@ not_null_stg_locations_location_id
 
 </VersionBlock>
 
+If you use the <Constant name="dbt_platform" />, the same information is available without running a command &mdash; go to the [**Explain** tab](/docs/deploy/dbt-state-interface#explain-tab) on the job run details page to see the full decision breakdown for each node.
+
 ## Specifying a log file
 
 By default, <VersionBlock firstVersion="2.0">`dbt state explain`</VersionBlock><VersionBlock lastVersion="1.99">`dbt-state explain`</VersionBlock> reads from the most recent execution. To analyze a previous run, you can use `--log-file` (or `-l`) to specify a state file from the `logs/state/` directory:
@@ -78,7 +80,7 @@ Use the `--verbose` flag to see the full step-by-step analysis for each node and
 dbt state explain --verbose -s my_node_name
 ```
 
-In <Constant name="core_v2" />, `--verbose` adds a run configuration summary at the top and shows the full step-by-step analysis for each node.
+In dbt v2, `--verbose` adds a run configuration summary at the top and shows the full step-by-step analysis for each node.
 
 ```shell
 Run configuration:
