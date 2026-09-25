@@ -17,7 +17,7 @@ dbt supports creating Iceberg tables for two Athena materializations:
 
 ## AWS Glue Data Catalog
 
-On AWS, the [AWS Glue Data Catalog](https://docs.aws.amazon.com/athena/latest/ug/glue-athena.html) is the metadata layer that registers Iceberg tables. It is the shared source of truth that lets one engine write a table and another read it: Amazon Athena, Amazon Redshift, Amazon EMR, and Apache Spark all resolve Iceberg tables through Glue. dbt drives Glue through the engine's adapter &mdash; today that is [dbt-athena](/docs/core/connect-data-platform/athena-setup).
+On AWS, the [AWS Glue Data Catalog](https://docs.aws.amazon.com/athena/latest/ug/glue-athena.html) is the metadata layer that registers Iceberg tables. It is the shared source of truth that lets one engine write a table and another read it: Amazon Athena, Amazon Redshift, Amazon EMR, and Apache Spark all resolve Iceberg tables through Glue. dbt drives Glue through the engine's adapter &mdash; today that is [dbt-athena](/docs/local/connect-data-platform/athena-setup).
 
 Amazon S3 Tables extends this model with a managed Iceberg catalog that owns its own storage, surfaced to Glue through a federated catalog. Both paths register governed Iceberg tables that any Glue-connected engine can read.
 
