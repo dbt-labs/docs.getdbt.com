@@ -45,7 +45,7 @@ In the context of <Constant name="fusion"/>, a thread is an open connection to y
 
 In dbt v2, `threads` sets the maximum number of SQL queries dbt runs on your warehouse at the same time. To let dbt v2 run as many queries at once as your project allows:
 
-- **When running in <Constant name="dbt_platform"/>**: Set `threads` to `256`. <Constant name="dbt_platform"/> doesn't accept `0` and `256` is high enough to have the same effect.
+- **When running in <Constant name="dbt_platform"/>**: Set `threads` to `256` in your [job settings](/docs/deploy/deploy-jobs?version=2#create-and-schedule-jobs). <Constant name="dbt_platform"/> doesn't accept `0` and `256` is high enough to have the same effect.
 - **When running locally**: Set `threads: 0` (or pass `--threads 0`).
 
 If your warehouse rejects connections or you hit rate limits, lower `threads` to reduce concurrent load.
