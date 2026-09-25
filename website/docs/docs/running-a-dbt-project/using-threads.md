@@ -43,16 +43,16 @@ You will define the number of threads in your `profiles.yml` file (when developi
 
 In the context of <Constant name="fusion"/>, a thread is an open connection to your data warehouse, not the number of parallel threads on your local machine's CPU. Data platforms vary in how many concurrent connections they allow; exceeding those limits causes the platform to reject new connections.
 
-Historically, analytics engineers set `threads:` to ensure dbt never opened more connections than the platform could handle.
+Historically, analytics engineers set `threads:` to ensure dbt never opened more connections than the platform could handle. In dbt v2, `threads` controls parallel SQL queries on your warehouse. 
 
-In dbt v2, `threads` sets the maximum number of operations that can run on your warehouse at the same time. dbt still uses other threads internally for things like parsing and scheduling, but only `threads` controls parallel SQL on your warehouse. To allow v2 run as many operations in parallel as your project allows:
+To let dbt v2 run as many queries at once as your project allows:
 
-- When running in <Constant name="dbt_platform"/>: Set `threads` to `256` since you can't set `threads` to `0` in job or environment settings. 
+- When running in <Constant name="dbt_platform"/>: Set `threads` to `256`. <Constant name="dbt_platform"/> doesn't accept `0` and `256` is high enough to have the same effect.
 - When running locally: Set `threads: 0` (or pass `--threads 0`).
 
 If your warehouse rejects connections or you hit rate limits, lower `threads` to reduce concurrent load.
 
-Project parsing runs separately and automatically uses all available CPUs. To disable parallel parsing and run one operation at a time, use the `--no-parallel` flag. This is useful for debugging parse errors and does not affect threads.
+Project parsing runs separately and automatically uses all available CPUs. To disable parallel parsing and run one operation at a time, use the `--no-parallel` flag. This is useful for debugging parse errors and does not affect `threads`.
 
 ### Adapter-specific behavior
 
