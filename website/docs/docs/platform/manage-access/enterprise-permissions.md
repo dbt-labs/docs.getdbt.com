@@ -141,13 +141,24 @@ Database admins manage configurations between <Constant name="dbt" /> and the un
 
 Notable features: 
 - Database admin is a project-level set. 
-- Can set up and maintain environment variables and <Constant name="semantic_layer" /> configs.
+- Can set up and maintain <Constant name="semantic_layer" /> configs.
+- Limited access to environment variables &mdash; the table that follows breaks down what's allowed at each level.
 - Write access to data platform configurations within environments (credentials, warehouse, schema per environment), including:
   - Editing [profile](/docs/platform/about-profiles) configs like profile name, deployment credentials, extended attributes, and connection overrides such as `schema`, `role`, `database`, and so on (fields vary by data platform).
   - Creating new profiles for projects they have access to, including setting which connection the profile is associated with
 - Helpful for scenarios where your data warehouse admins only need access to <Constant name="dbt" /> to configure data platform settings within environments.
 - Read-only access to account-level connections, Git repo, job, and run settings. 
 - Can access <Constant name="catalog" />.
+
+Environment variables work differently for this set, so here's where a database admin can and can't change them:
+
+| Level | Access |
+|-------|--------|
+| Job | Can override an environment variable's value on a job |
+| Environment | Read-only. Can't create, edit, or delete environment variables |
+| User credentials | No access, because this set doesn't include <Constant name="studio_ide" /> access |
+
+Granting [environment write access](/docs/platform/manage-access/about-user-access#environment-write-access) doesn't change this. It elevates job and run permissions to write, but leaves environment variables read-only.
 
 </Expandable>
 <Expandable alt_header="Developer">
