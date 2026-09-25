@@ -23,7 +23,6 @@ Before connecting a Cortex agent to the remote dbt MCP server, make sure you hav
 
 Make sure the following are set up before connecting from Snowflake:
 - **Account setup**
-  - Have [AI features](/docs/platform/manage-dbt-ai) enabled.
   - [Remote MCP OAuth enabled](/docs/dbt-ai/setup-remote-mcp). The remote MCP server is generally available, but the OAuth connection method is in public beta for Starter and Enterprise-tiered accounts.
   - A [static subdomain](/docs/platform/about-platform/access-regions-ip-addresses) configured, for example `abc123` in `abc123.us1.dbt.com`. If your account doesn't have a subdomain, contact support.
 - **Access and permissions**

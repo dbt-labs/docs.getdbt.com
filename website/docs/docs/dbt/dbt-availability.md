@@ -17,4 +17,4 @@ You can get started with many dbt features right away, and even more are availab
 
 - [Install dbt](/docs/local/install-dbt) locally
 - Install the [dbt VS Code extension](/docs/about-dbt-extension)
-- Upgrade environments in the [dbt platform](/docs/dbt-versions/upgrade-dbt-platform-version#dbt-fusion-engine)
+- Upgrade environments in the [dbt platform](/docs/dbt-versions/upgrade-dbt-platform-version#dbt-v2)

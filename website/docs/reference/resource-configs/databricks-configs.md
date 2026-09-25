@@ -2,7 +2,7 @@
 title: "Databricks configurations"
 description: "Configure Databricks-specific settings for models in dbt, including file formats, table properties, and materializations."
 id: "databricks-configs"
-tags: ['Databricks', 'dbt Fusion', 'dbt Core']
+tags: ['Databricks', 'dbt v2', 'dbt v1']
 ---
 
 ## Configuring tables
@@ -1152,7 +1152,7 @@ dbt-databricks automatically adds the following tags to every query:
 | Tag key | Description |
 |---------|-------------|
 | `@@dbt_model_name` | The name of the model being executed |
-| `@@dbt_core_version` | The version of dbt-core being used |
+| `@@dbt_core_version` | The version of dbt being used |
 | `@@dbt_databricks_version` | The version of dbt-databricks being used |
 | `@@dbt_materialized` | The materialization type (table, view, incremental, and so on.) |
 

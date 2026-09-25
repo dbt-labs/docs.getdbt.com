@@ -50,7 +50,7 @@ Avoid defining the same MCP server name in more than one location unless you int
 The <Constant name="wizard"/> CLI lets you add, remove, authenticate, and customize MCP servers, including per-tool approvals, through the `config.toml` file.
 
 :::info MCP servers are a CLI feature
-You can configure MCP servers only in the <Constant name="wizard" /> CLI. You can't add your own MCP servers in the <Constant name="dbt_platform" /> (<Constant name="studio_ide" /> and the home app), but <Constant name="wizard" /> includes built-in dbt tools, such as [dbt Agent skills](https://github.com/dbt-labs/dbt-agent-skills) and product documentation fetching through the dbt MCP server.
+You can configure MCP servers only in the <Constant name="wizard" /> CLI. You can't add your own MCP servers in <Constant name="dbt_platform" /> (<Constant name="studio_ide" /> and the home app), but <Constant name="wizard" /> includes built-in dbt tools, such as [dbt Agent skills](https://github.com/dbt-labs/dbt-agent-skills) and product documentation fetching through the dbt MCP server.
 :::
 
 ## Supported MCP server types
@@ -230,7 +230,7 @@ The self-hosted server reads its connection settings (such as `DBT_HOST`, `DBT_T
 </TabItem>
 <TabItem value="remote" label="Remote (dbt platform account)">
 
-Hosted on the dbt platform. Build the URL from your platform host (`https://YOUR_DBT_HOST_URL/api/ai/v1/mcp/`, for example `https://cloud.getdbt.com/api/ai/v1/mcp/`), then authenticate:
+Hosted on dbt platform. Build the URL from your platform host (`https://YOUR_DBT_HOST_URL/api/ai/v1/mcp/`, for example `https://cloud.getdbt.com/api/ai/v1/mcp/`), then authenticate:
 
 ```bash
 wizard mcp add dbt --url https://YOUR_DBT_HOST_URL/api/ai/v1/mcp/

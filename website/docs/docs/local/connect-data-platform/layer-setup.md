@@ -1,5 +1,5 @@
 ---
-title: "Connect Layer to dbt Core"
+title: "Connect Layer to dbt v1"
 sidebar_label: "Layer"
 description: "Read this guide to learn about the Layer warehouse setup in dbt."
 id: "layer-setup"

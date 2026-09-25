@@ -8,7 +8,7 @@ availability:
   access: login_required
 ---
 
-# Connect Snowflake <Lifecycle status="ga" /> <ProductCard text="Fusion compatible" />
+# Connect Snowflake <Lifecycle status="ga" /> <ProductCard text="dbt v2 compatible" />
 
 import SnowflakeColumn from '/snippets/_snowflake-column-size.md';
 
@@ -78,7 +78,7 @@ If you are creating Snowflake credentials for the first time in <Constant name="
 
    <Lightbox src="/img/docs/dbt-platform/snowflake-keypair-auth.png" width="60%" title="Snowflake keypair authentication"/>
 
-#### Fusion key pair
+#### dbt v2 key pair
 
 import FusionKeyPair from '/snippets/_fusion-key-pair.md';
 

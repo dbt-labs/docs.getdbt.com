@@ -1,5 +1,5 @@
 ---
-title: "Connect Oracle to dbt Core"
+title: "Connect Oracle to dbt v1"
 sidebar_label: "Oracle"
 description: "Read this guide to learn about the Oracle warehouse setup in dbt."
 id: "oracle-setup"
