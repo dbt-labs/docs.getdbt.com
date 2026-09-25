@@ -44,7 +44,7 @@ my_profile:
 
 </File>
 
-For the full set of connection options, see the [dbt-athena setup page](/docs/core/connect-data-platform/athena-setup).
+For the full set of connection options, see the [dbt-athena setup page](/docs/local/connect-data-platform/athena-setup).
 
 Without a `catalogs.yml`, set `table_type='iceberg'` directly on the model:
 
