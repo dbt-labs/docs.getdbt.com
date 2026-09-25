@@ -730,6 +730,7 @@ const sidebarSettings = {
                 "docs/build/iceberg/adapters/databricks-iceberg-support",
                 "docs/build/iceberg/adapters/bigquery-iceberg-support",
                 "docs/build/iceberg/adapters/duckdb-iceberg-support",
+                "docs/build/iceberg/adapters/aws-iceberg-support",
               ],
             },
           ],
