@@ -342,7 +342,6 @@ select 1 as id
 
 ##### Considerations
 
-- The `table`, `incremental`, and `snapshot` materializations are supported.
 - Python models aren't supported for S3 Tables catalogs.
 - `external_location`, `s3_data_dir`, and `s3_data_naming` are ignored because S3 Tables manages the storage location.
 - Table replacement uses drop and recreate. S3 Tables doesn't support `ALTER TABLE RENAME`, so the Iceberg high-availability behavior described in [High availability (HA) table](#high-availability-ha-table) doesn't apply.
