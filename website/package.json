@@ -2,7 +2,7 @@
   "scripts": {
     "prestart": "npm run prepare && node scripts/fetch-mcp-readme-tools.js && node scripts/generate-functions-snippet.js",
     "start": "docusaurus start",
-    "prebuild": "node scripts/fetch-mcp-readme-tools.js && node scripts/generate-functions-snippet.js",
+    "prebuild": "node scripts/inject-last-updated.js; node scripts/fetch-mcp-readme-tools.js && node scripts/generate-functions-snippet.js",
     "build": "docusaurus build",
     "postbuild": "node scripts/rewriteMarkdownLinks.js",
     "generate:wizard-cli": "node scripts/generate-wizard-cli-reference.js",
@@ -11,7 +11,8 @@
     "lint": "eslint --cache",
     "lintAll": "eslint . --fix",
     "prepare": "cd .. && husky install",
-    "cleanup-duplicates": "node scripts/cleanup_duplicate_constants.js"
+    "cleanup-duplicates": "node scripts/cleanup_duplicate_constants.js",
+    "check-images": "node ../.github/scripts/check-image-paths.js"
   },
   "dependencies": {
     "@datadog/browser-rum": "^6.27.1",

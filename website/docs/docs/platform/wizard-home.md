@@ -1,7 +1,7 @@
 ---
 title: "dbt Wizard home tab"
 id: "wizard-home"
-description: "Use the dbt Wizard home tab in the dbt platform for an agent-native development workflow — iterate in natural language, review inline diffs and DAG previews, and validate changes without leaving the agent."
+description: "Use the dbt Wizard home tab in dbt platform for an agent-native development workflow — iterate in natural language, review inline diffs and DAG previews, and validate changes without leaving the agent."
 sidebar_label: "Wizard home tab"
 tags: [AI, Wizard, Platform]
 availability: platform_usage
@@ -15,7 +15,7 @@ import WizardModelPicker from '/snippets/_wizard-model-picker.md';
 # dbt Wizard home tab <Lifecycle status="preview" />
 
 <IntroText>
-The <Constant name="wizard" /> home tab is an agent-native development experience in the <Constant name="dbt_platform" />. 
+The <Constant name="wizard" /> home tab is an agent-native development experience in <Constant name="dbt_platform" />. 
 </IntroText>
 
 Use the <Constant name="wizard" /> home tab to investigate and generate changes with natural language prompts, review inline diffs and DAG previews, and validate changes without leaving the agent.
@@ -113,7 +113,7 @@ For most development workflows, you can move between the two surfaces freely. Us
 
 - [dbt Wizard in Studio IDE](/docs/dbt-ai/wizard-ide)
 - [Invite read-only users to dbt Wizard](/docs/platform/wizard-read-only-users)
-- [About dbt Wizard in the dbt platform](/docs/platform/wizard-platform)
+- [About dbt Wizard in dbt platform](/docs/platform/wizard-platform)
 - [How dbt Wizard works](/docs/dbt-ai/wizard-how-it-works)
 - [Prompt cookbook](/guides/prompt-cookbook)
 - [dbt AI FAQs](/docs/dbt-ai/dbt-ai-faqs)

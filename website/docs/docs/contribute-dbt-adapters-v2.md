@@ -74,7 +74,7 @@ For certain adapters (Snowflake, BigQuery, Databricks, Redshift, DuckDB, ClickHo
 Community adapters don't have CDN support. Instead, <Constant name="fusion" /> looks for a shared library by name on the user's system — e.g. `libadbc_driver_exasol.dylib` on macOS, `libadbc_driver_exasol.so` on Linux. If the file isn't present, the connection fails at runtime.
 
 This means two things for you as a contributor:
-1. **The driver binary must exist somewhere.** It's a compiled shared library (`.dylib`/`.so`/`.dll`) that implements the ADBC C ABI for your warehouse. Exasol's driver is `exarrow-rs`, a separate Rust crate maintained by Exasol — not part of `dbt-core` and not in `apache/arrow-adbc`. Your warehouse's driver will likely live in a similar separate repo.
+1. **The driver binary must exist somewhere.** It's a compiled shared library (`.dylib`/`.so`/`.dll`) that implements the ADBC C ABI for your warehouse. Exasol's driver is `exarrow-rs`, a separate Rust crate maintained by Exasol — not part of `dbt` and not in `apache/arrow-adbc`. Your warehouse's driver will likely live in a similar separate repo.
 2. **Your users will need to install it manually.** Unlike first-party adapters, there's no auto-download. Your documentation (Step 6) needs to tell users where to get the driver and how to install it.
 
 Check whether a driver already exists for your warehouse:

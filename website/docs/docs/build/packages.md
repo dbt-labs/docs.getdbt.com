@@ -20,6 +20,8 @@ In dbt, libraries like these are called _packages_. dbt's packages are so powerf
 * building models and macros for a particular tool used in your data stack, for example:
   * Models to understand [Redshift](https://hub.getdbt.com/dbt-labs/redshift/latest/) privileges.
   * Macros to work with data loaded by [Stitch](https://hub.getdbt.com/dbt-labs/stitch_utils/latest/).
+* shaping unstructured data so AI agents can retrieve, trust, and cite it, for example:
+  * chunking, embedding, and semantically searching call transcripts or support tickets with the [dbt_context_engineering](https://hub.getdbt.com/dbt-labs/dbt_context_engineering/latest/) package. Refer to the [dbt_context_engineering blog](https://docs.getdbt.com/blog/dbt-context-engineering).
 
 dbt _packages_ are in fact standalone dbt projects, with models, macros, and other resources that tackle a specific problem area. As a dbt user, by adding a package to your project, all of the package's resources will become part of your own project. This means:
 * Models in the package will be materialized when you `dbt run`.
@@ -431,6 +433,16 @@ To see the library of published dbt packages, check out the [dbt package hub](ht
 import FusionSupportedPackages from '/snippets/_fusion-supported-packages.md';
 
 <FusionSupportedPackages />
+
+<VersionBlock firstVersion="2.0">
+
+## Ship agent skills in a package
+
+A package can share more than models and macros &mdash; it can also ship [agent skills](/docs/dbt-ai/package-skills), which are reusable instructions that a coding agent reads from a `SKILL.md` file. An agent doesn't know that your staging models take a `stg_` prefix, so teams end up copying those conventions between repos, where they drift. Using a package makes agent skills a versioned dependency like everything else.
+
+Add a `skills` directory to the package, and every project that installs it gets those skills with `dbt deps`, as long as the installing project sets the `ai_provider` flag. Refer to [Installing agent skills from dbt packages](/docs/dbt-ai/package-skills) for the setup.
+
+</VersionBlock>
 
 ## Advanced package configuration
 ### Updating a package

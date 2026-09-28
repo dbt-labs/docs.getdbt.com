@@ -4,7 +4,7 @@ description: "Install dbt v2 in a self-hosted setup to take data transformation 
 id: about-dbt-install
 ---
 
-# About self-hosted dbt v2 installation <Lifecycle status="preview" />
+# About self-hosted dbt v2 installation
 
 import FusionLifecycle from '/snippets/_fusion-lifecycle-callout.md'
 import FusionPrereqs from '/snippets/_fusion-prereqs.md';

@@ -70,4 +70,4 @@ import FusionPackages from '/snippets/_fusion-supported-packages.md';
 
 import AboutFusion from '/snippets/_about-fusion.md';
 
-<AboutFusion />
+<AboutFusion hideFeaturesLink/>

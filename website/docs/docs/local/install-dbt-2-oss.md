@@ -25,10 +25,10 @@ The open-source v2 foundation is licensed under Apache 2.0. Most users don't nee
 
 ## Install
 
-Install the dbt OSS prerelease with `pip`:
+Install the dbt OSS with `pip`:
 
 ```shell
-python -m pip install --pre dbt-core
+python -m pip install dbt-oss
 ```
 
 Confirm the installed version begins with `2.`:
@@ -36,12 +36,6 @@ Confirm the installed version begins with `2.`:
 ```shell
 dbt --version
 ```
-
-During beta, you must target either the pre-release version or an explicit pin. After install, immediately update to the most recent version:
-
-Explicit pin:
-
-`python -m pip install dbt-core==2.0.0rc2`
 
 For adapter install details, refer to the [`dbt` repository](https://github.com/dbt-labs/dbt).
 

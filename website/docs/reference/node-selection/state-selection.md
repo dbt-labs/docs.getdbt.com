@@ -5,7 +5,7 @@ pagination_next: "reference/node-selection/configure-state"
 ---
 
 :::tip Looking for a managed state experience?
-If you want a managed experience for state with dbt to skip rerunning models that haven't changed, check out [dbt State](/docs/deploy/dbt-state-about).
+If you want a managed experience for state with dbt to skip rerunning models that haven't changed, check out [dbt State](/docs/deploy/dbt-state-about). In self-managed deployments with dbt State enabled, all [`state:*` selectors](/reference/node-selection/methods#state) can also use dbt State as their comparison source for per-node granularity without managing a `manifest.json`. Refer to [dbt State-powered `state:*` selectors](/docs/deploy/dbt-state-deferral#dbt-state-powered-state-selectors) for more information.
 :::
 
 :::info Why idempotence matters here
