@@ -20,7 +20,19 @@ There's no set limit of the maximum number of threads you can set – while incr
 - Increasing the number of threads increases the load on your warehouse, which may impact other tools in your data stack. For example, if your BI tool uses the same compute resources as dbt, their queries may get queued during a dbt run.
 - The number of concurrent queries your database will allow you to run may be a limiting factor in how many models can be actively built – some models may queue while waiting for an available query slot.
 
-Generally the optimal number of threads depends on your data warehouse and its configuration. It’s best to test different values to find the best number of threads for your project. We recommend setting this to 4 to start with.
+Generally the optimal number of threads depends on your data warehouse and its configuration. It’s best to test different values to find the best number of threads for your project. 
+
+<VersionBlock lastVersion="1.99">
+
+In dbt v1, we recommend setting this to 4 to start with.
+
+</VersionBlock>
+
+<VersionBlock firstVersion="2.0">
+
+In dbt v2, start with the maximum and lower it if needed. For the recommended values, check out the [dbt v2 thread optimization](#dbt-v2-thread-optimization) section.
+
+</VersionBlock>
 
 You can use a different number of threads than the value defined in your target by using the `--threads` option when executing a dbt command.
 
@@ -31,13 +43,14 @@ You will define the number of threads in your `profiles.yml` file (when developi
 
 In the context of <Constant name="fusion"/>, a thread is an open connection to your data warehouse, not the number of parallel threads on your local machine's CPU. Data platforms vary in how many concurrent connections they allow; exceeding those limits causes the platform to reject new connections.
 
-Historically, analytics engineers set `threads:` to ensure dbt never opened more connections than the platform could handle.
+In dbt v2, `threads` sets the maximum number of SQL queries dbt runs on your warehouse at the same time. To let dbt v2 run as many queries at once as your project allows:
 
-<Constant name="fusion"/> works well without configuring `threads`. Rather than treating `threads` as a strict limit, <Constant name="fusion"/> automatically manages connection parallelism based on platform limits and uses backpressure to avoid overloading your warehouse. In general, we recommend not setting `threads` when using <Constant name="fusion"/>.
+- **When running in <Constant name="dbt_platform"/>**: Set `threads` to `256` in your [job settings](/docs/deploy/deploy-jobs?version=2#create-and-schedule-jobs).
+- **When running locally**: Set `threads: 0` (or pass `--threads 0`).
 
-However, if <Constant name="fusion"/> still opens more connections than your warehouse can handle, configure `threads` to cap the maximum number of concurrent connections.
+If your warehouse rejects connections or you hit rate limits, lower `threads` to reduce concurrent load.
 
-Project parsing runs separately and automatically uses all available CPUs. To disable parallel parsing and run one operation at a time, use the `--no-parallel` flag. This is useful for debugging parse errors and does not affect threads.
+Project parsing runs separately and automatically uses all available CPUs. To disable parallel parsing and run one operation at a time, use the `--no-parallel` flag. This is useful for debugging parse errors and does not affect `threads`.
 
 ### Adapter-specific behavior
 
