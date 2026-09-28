@@ -141,18 +141,7 @@ Learn how to use <Constant name="dbt" />'s features to help your team ship timel
 <!--
 <a href="https://docs.getdbt.com/docs/deploy/dbt-cloud-job" target="_blank" class="pagination-nav__label nav-create-account button button--primary">Try deploying with dbt</a> 
 
-<DocCarousel slidesPerView={1}>
 
-<Lightbox src="/img/docs/dbt-platform/deployment/deploy-scheduler.jpg" width="98%" title="An overview of a dbt job run which contains Run Summary, Job Trigger, Run Duration, and more."/>
-
-<Lightbox src="/img/docs/dbt-platform/deployment/run-history.jpg" width="95%" title="Run History dashboard allows you to monitor the health of your dbt project and displays jobs, job status, environment, timing, and more."/>
-
-
-<Lightbox src="/img/docs/dbt-platform/deployment/access-logs.gif" width="85%" title="Access logs for run steps" />
-
-<Lightbox src ="/img/docs/dbt-platform/using-dbt-platform/job-commands.gif" width="95%" title="Setting up a job and configuring checkbox and dbt commands"/>
-
-</DocCarousel>
 
 ## Run dbt in production
 

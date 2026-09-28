@@ -18,9 +18,22 @@ availability:
 
 Release notes are grouped by month for both multi-tenant and virtual private cloud (VPC) environments. <span><img src="/img/fontawesome/rss.svg" alt="RSS" className="rss-icon" />Subscribe to release note updates via [RSS](/feeds/release-notes-rss.xml), [Atom](/feeds/release-notes-atom.xml), or [JSON Feed](/feeds/release-notes-rss.json).</span>
 
-For <Constant name="fusion_engine" /> updates, refer to the [v2 changelog](https://github.com/dbt-labs/dbt/blob/main/CHANGELOG-fusion.md).
+For <Constant name="fusion_engine" /> updates, refer to the [v2 changelog](https://github.com/dbt-labs/dbt/blob/main/CHANGELOG-dbt.md).
 
 ## September 2026
+
+- **New:** The models table in Catalog navigation now shows a column count for each model.
+- **Enhancement:** <Constant name="studio_ide" /> now detects missing development credentials at startup and shows a **Development Credentials Required** modal with a direct link to add credentials, instead of failing silently.
+- **Enhancement:** The **Upstream Sources** table on the model detail pages now sorts by freshness severity by default (Error first, Pass last). Click **Name** or **Status** to change the sort order. The **Status** column also no longer overflows on wide screens.
+- **Enhancement:** The model timing Gantt chart no longer limits groups to 2,000 rows. You can now see all models in the timing view for large runs.
+- **Enhancement:** Read-only users can now see their assigned analytics connection in project settings instead of **Not configured**.
+- **Enhancement:** Account admins now receive email when <Constant name="wizard" /> usage credits are exhausted, with separate notices for accounts that have no usage commitment and accounts that have used their full commitment.
+- **Enhancement:** When a GitLab host is unreachable, affected API endpoints now return HTTP 503 with the message "GitLab is unavailable, please try again." instead of an unclear failure. This applies when you create a repository or list GitLab groups.
+- **Fix:** Pinned models in the <Constant name="wizard" /> context card now display the model name (for example, `customers`) instead of the raw metadata unique ID (for example, `model.jaffle_shop.customers`).
+- **Fix:** Cross-account write attempts now return HTTP 403 Forbidden instead of a generic 500 Internal Server Error, so you get a clear rejection when the account doesn't match.
+- **Fix:** The error for a missing Azure DevOps account link now shows the correct message: "Missing Azure user; link your Azure DevOps account in your personal profile."
+- **Behavior change:** Creating accounts via `POST /api/v2/accounts/` is now blocked for service tokens, account-scoped personal access tokens (PATs), and OAuth access tokens. Service tokens and account-scoped user API tokens receive HTTP 400; OAuth access tokens receive HTTP 403, with explicit error messages in each case.
+- **Behavior change:** Cost Insights aggregates now include unit tests when you filter by the Test resource type. Previously, unit tests were silently excluded, causing lower-than-expected execution counts.
 
 ### dbt Summit 2026 announcements
 

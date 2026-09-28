@@ -1,6 +1,6 @@
 ## More information about dbt v2
 
-- [<Constant name="fusion_engine" /> changelog](https://github.com/dbt-labs/dbt/blob/main/CHANGELOG-fusion.md)
+- [<Constant name="fusion_engine" /> changelog](https://github.com/dbt-labs/dbt/blob/main/CHANGELOG-dbt.md)
     {!props.hideExtensionLink && <li><a href="/docs/about-dbt-extension">About the dbt extension</a></li>}
     {!props.hideInstallLink && <li><a href="/docs/local/install-dbt">Install dbt v2</a></li>}
     {!props.hideQuickstartLink && <li><a href="/guides/dbt?step=1">dbt v2 quickstart guide</a></li>}
