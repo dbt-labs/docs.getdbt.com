@@ -11,7 +11,8 @@
     "lint": "eslint --cache",
     "lintAll": "eslint . --fix",
     "prepare": "cd .. && husky install",
-    "cleanup-duplicates": "node scripts/cleanup_duplicate_constants.js"
+    "cleanup-duplicates": "node scripts/cleanup_duplicate_constants.js",
+    "check-images": "node ../.github/scripts/check-image-paths.js"
   },
   "dependencies": {
     "@datadog/browser-rum": "^6.27.1",
