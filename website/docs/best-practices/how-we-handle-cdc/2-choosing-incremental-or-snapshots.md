@@ -7,9 +7,7 @@ hoverSnippet: "Choose incremental models, snapshots, or both for CDC"
 availability: all_users
 ---
 
-Use [incremental models](/docs/build/incremental-models-overview), [snapshots](/docs/build/snapshots), or both depending on whether you need current values, historical versions, or both. 
-
-The same `unique_key` matches rows to update in an incremental model, and matches rows to store as versions in a snapshot. Refer to [`unique_key`](/reference/resource-configs/unique_key) for that config.
+Use [incremental models](/docs/build/incremental-models-overview), [snapshots](/docs/build/snapshots), or both depending on whether you need current values, historical versions, or both.
 
 ## Compare incremental models and snapshots
 
@@ -24,7 +22,8 @@ Start with this table if you already know what you need to keep. Use it to match
 <br />
 The examples in the next section follow two customers, Alice and Bob. Both start with a pending status. Alice’s status then changes to active.
 
-These examples use [`unique_key`](https://docs.getdbt.com/reference/resource-configs/unique_key) to identify each customer across runs. The incremental model uses it to match rows for updates. The snapshot uses it to track versions of the same customer.
+These examples use [`unique_key`](/reference/resource-configs/unique_key) to identify each customer across runs. The incremental model uses it to match rows for updates. The snapshot uses it to track versions of the same customer.
+
 ## Incremental only
 
 Use an incremental model when the source already tells you what changed, and later models only need the current row.
