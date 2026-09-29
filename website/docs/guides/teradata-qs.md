@@ -181,6 +181,8 @@ You can now delete the files that dbt created when you initialized the project:
 
 ## Build your first model
 
+If you'd like to use AI to build your first model, check out the [build it with dbt Wizard](#or-build-it-with-dbt-wizard) section below.
+
 You have two options for working with files in the <Constant name="studio_ide" />:
 
 - Create a new branch (recommended) &mdash; Create a new branch to edit and commit your changes. Navigate to **Version Control** on the left sidebar and click **Create branch**.

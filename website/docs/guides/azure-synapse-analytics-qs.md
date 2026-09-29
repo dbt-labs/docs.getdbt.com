@@ -119,6 +119,8 @@ Now that you have a repository configured, you can initialize your project and s
     - In the command line bar at the bottom, enter `dbt run` and click **Enter**. You should see a `dbt run succeeded` message.
 
 ## Build your first model
+
+If you'd like to use AI to build your first model, check out the [build it with dbt Wizard](#or-build-it-with-dbt-wizard) section below.
 1. Under **Version Control** on the left, click **Create branch**. You can name it `add-customers-model`. You need to create a new branch since the main branch is set to read-only mode.
 1. Click the three dot menu (**...**) next to the `models` directory, then select **Create file**.  
 1. Name the file `customers.sql`, then click **Create**.
