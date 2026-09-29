@@ -88,10 +88,11 @@ function Home() {
               </div>
               <div className="home-card-grid">
                 <Card
-                  title="dbt Wizard"
-                  body="Build, refactor, and validate dbt projects with an AI agent purpose-built for analytics engineering — in the dbt platform or from your terminal."
-                  link="/docs/platform/wizard-overview"
-                  icon="dbt-copilot"
+                  title="Get started with dbt"
+                  tag="Guide"
+                  body="Get up and running quickly with our dbt quickstart guides."
+                  link="/docs/get-started-dbt"
+                  icon="settings"
                 />
                 <Card
                   title="About dbt"
@@ -99,13 +100,6 @@ function Home() {
                   body="Explore dbt and discover how its shared Rust runtime delivers faster, more scalable performance."
                   link="/docs/introduction"
                   icon="zap"
-                />
-                <Card
-                  title="Get started with dbt"
-                  tag="Guide"
-                  body="Get up and running quickly with our dbt quickstart guides."
-                  link="/docs/get-started-dbt"
-                  icon="settings"
                 />
                 <Card
                   title="Move to the dbt platform"
