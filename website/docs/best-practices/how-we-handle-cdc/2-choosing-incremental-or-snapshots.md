@@ -2,27 +2,29 @@
 title: "Choosing incremental models or snapshots"
 id: "2-choosing-incremental-or-snapshots"
 description: "Choose incremental models, snapshots, or both for change data capture in dbt."
-sidebar_label: "Incremental vs snapshots"
+sidebar_label: "Choosing incremental models or snapshots"
 hoverSnippet: "Choose incremental models, snapshots, or both for CDC"
 availability: all_users
 ---
 
-This page covers when to use [incremental models](/docs/build/incremental-models-overview), [snapshots](/docs/build/snapshots), or both for change data capture.
+Use [incremental models](/docs/build/incremental-models-overview), [snapshots](/docs/build/snapshots), or both depending on whether you need current values, historical versions, or both. 
 
 The same `unique_key` matches rows to update in an incremental model, and matches rows to store as versions in a snapshot. Refer to [`unique_key`](/reference/resource-configs/unique_key) for that config.
 
 ## Compare incremental models and snapshots
 
-Start with this table if you already know what you need to keep. Use it to match the source to an incremental model, a snapshot, or both. Each approach has a section on this page.
-
+Start with this table if you already know what you need to keep. Use it to match the source to an incremental model, a snapshot, or both.
+<SimpleTable>
 | Approach | Use it when | Do not use it when |
 | --- | --- | --- |
 | [Incremental only](#incremental-only) | You need the latest row per id, and the source already lists changes or has a reliable change timestamp | You must answer "what did this row look like last month?" from this table |
 | [Snapshot only](#snapshot-only) | The source overwrites rows in place, you need history, and scanning it each run is acceptable | The source only adds rows and never updates them, or the table is so large that a full snapshot run is too expensive |
 | [Incremental models and snapshots together](#using-incremental-models-and-snapshots-together) | You want incremental staging so runs stay cheap, and a snapshot for history | You only need one of those jobs, or you would snapshot the final table people query |
-
+</SimpleTable>
 <br />
+The examples in the next section follow two customers, Alice and Bob. Both start with a pending status. Alice’s status then changes to active.
 
+These examples use [`unique_key`](https://docs.getdbt.com/reference/resource-configs/unique_key) to identify each customer across runs. The incremental model uses it to match rows for updates. The snapshot uses it to track versions of the same customer.
 ## Incremental only
 
 Use an incremental model when the source already tells you what changed, and later models only need the current row.

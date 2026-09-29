@@ -1,5 +1,5 @@
 ---
-title: "CDC in dbt"
+title: "Change data capture in dbt"
 id: "1-intro"
 description: "Learn how change data capture works in dbt, and how to choose incremental models, snapshots, or both."
 sidebar_label: "Introduction"
@@ -7,24 +7,26 @@ hoverSnippet: "Learn how change data capture works in dbt"
 availability: all_users
 ---
 
-A <Constant name="dbt" /> run has a start and an end. Change data capture (CDC) still fits that model. You pick up what changed in a source (new rows, updates, and deletes), then transform only that change instead of rebuilding the whole table.
+Change data capture (CDC) identifies new, updated, and deleted rows in your source data so you can process changes without rebuilding an _entire_ table.
+
+This guide explains how you can use incremental models and snapshots in dbt to keep tables current, preserve a history of changes, or both. To find the best approach for your project, check out [Choosing incremental models or snapshots](/best-practices/how-we-handle-cdc/2-choosing-incremental-or-snapshots).
 
 This guide is for anyone who needs to keep a table current, keep a history of changes, or do both.
 
 The next page, [Choosing incremental models or snapshots](/best-practices/how-we-handle-cdc/2-choosing-incremental-or-snapshots), covers when to use incremental models, snapshots, or both in a <Constant name="dbt" /> project.
 
-## What CDC means in dbt
+## How to handle CDC in dbt
 
-CDC means you record that a row changed, and you decide what to do with that change.
+When source data changes, you may want to update your table, keep old versions, or do both.
 
 In <Constant name="dbt" />, that usually means one of two ways to build a table:
 
 - An [incremental model](/docs/build/incremental-models-overview) keeps a table current. On each run, <Constant name="dbt" /> processes new or changed rows and _replaces_ the old row for that `unique_key`.
 - A [snapshot](/docs/build/snapshots) keeps history. On each run, <Constant name="dbt" /> compares the source to the last snapshot and _adds_ a row when the record changes, with `dbt_valid_from` and `dbt_valid_to`.
 
-The same `unique_key` does different jobs in each case. Refer to [`unique_key`](/reference/resource-configs/unique_key) for that config, or read [Strategies for change data capture in dbt](/blog/change-data-capture) for a longer example of that split.
+- An [incremental model](/docs/build/incremental-models-overview) keeps a table current. On each run, <Constant name="dbt" /> processes new or changed rows and _replaces_ the old row for that `unique_key`.
 
-Snapshots only capture changes when you run them. You must run them on a schedule, or you miss changes. [How often should I run the snapshot command?](/faqs/Runs/snapshot-frequency) recommends hourly to daily.
+Snapshots only capture changes when you run them, which means you should run them on a schedule or you might miss changes. Refer to the FAQ [How often should I run the snapshot command?](/faqs/Runs/snapshot-frequency), which recommends hourly to daily.
 
 ## CDC is not the same as near real-time
 
@@ -34,23 +36,23 @@ That series includes [CDC with Snowflake Streams](/best-practices/how-we-handle-
 
 Use the near-real-time guide when the question is job frequency, streams, or dynamic tables. Use this guide when the question is incremental vs snapshots.
 
-## Choose the latest row, history, or both
+## ## Choose an approach: latest row, history, or both
 
-How your source stores data, and what you need to keep, determine the approach. Before you add an incremental model, a snapshot, or both, use these questions to choose:
+Your approach depends on how your source exposes changes and what you need to keep. Use these questions to choose:
 
-1. Does the source already send a list of changes (from a loading tool, a stream, or a table that only adds rows), or does it overwrite existing rows in place?
-2. Do you need the latest row per id, a full history, or both?
-3. Is reading every source row cheap enough, or do you need to process only new or changed rows so runs stay small?
+1. Does your source provide a list of changes, or overwrite existing rows?
+2. Do you need current values, historical versions, or both?
+3. Can you afford to read the full source on each run?
 
 | You need | Typical source | Use |
 | --- | --- | --- |
 | Latest row only | A list of changes, or a table that overwrites rows and has a reliable change timestamp | Incremental model |
 | Current row plus old versions | A table that overwrites rows, and it is small enough to scan each run | Snapshot |
-| Current row plus old versions, without scanning the full source each run | A table that overwrites rows, or a cleaned list of changes | An incremental staging model, then a snapshot, then a model that keeps only the latest snapshot row |
+| Current row plus old versions, without scanning the full source each run | A table that overwrites rows, or a cleaned list of changes | An incremental staging model, then a snapshot, then a downstream model that keeps only the latest snapshot row |
 
 <br />
 
-These are three ways to use incremental models and snapshots. CDC is not a separate <Constant name="dbt" /> product. [Choosing incremental models or snapshots](/best-practices/how-we-handle-cdc/2-choosing-incremental-or-snapshots) walks through each approach.
+For examples of each approach, refer to [Choosing incremental models or snapshots](/best-practices/how-we-handle-cdc/2-choosing-incremental-or-snapshots).
 
 ## Key recommendations
 
