@@ -11,7 +11,7 @@ You can view documentation in three complementary ways, depending on your needs:
 | Option | Description | Availability |
 |------|-------------|--------------|
 | [**dbt Docs (Legacy)**](#dbt-docs) | Generates a static website with model lineage, metadata, and documentation that can be hosted on your web server (like S3 or Netlify). | <Constant name="core" /> or <Constant name="dbt" /> Developer plans |
-| [**dbt Docs v2**](#dbt-docs-v2) | A modern, performant open-source catalog built for data consumers. Includes a redesigned UI, large-project performance, Semantic Layer metadata, and column-level lineage (<Constant name="fusion" />), served as a static site you can host anywhere. | <Constant name="fusion_engine" /> |
+| [**dbt Docs v2**](#dbt-docs-v2) | A modern, performant open-source catalog built for data consumers. Includes a redesigned UI, large-project performance, Semantic Layer metadata, and column-level lineage (<Constant name="fusion" />), served as a static site you can host anywhere. | <Constant name="fusion_engine" /> (local only) |
 | [**<Constant name="catalog" />**](/docs/explore/explore-projects) | The premier documentation experience in <Constant name="dbt" />. Builds on dbt Docs to provide a dynamic, real-time interface with rich [metadata](/docs/explore/explore-projects#generate-metadata), customizable views, deep insight into your project and resources, and collaborative tools. | <Constant name="dbt" /> Starter, Enterprise, or Enterprise+ plans |
 
 ## Navigating your documentation
@@ -56,7 +56,7 @@ Key improvements over dbt Docs:
 
 To generate and serve dbt Docs v2 with <Constant name="fusion_engine" />, run `dbt docs generate` to build the site, then `dbt docs serve` to preview it locally. `dbt docs generate` compiles your project and writes the index for you in a single command.
 
-dbt Docs v2 runs locally ony. In <Constant name="dbt_platform" />, jobs on <Constant name="fusion" /> refresh <Constant name="catalog" /> metadata automatically, so use [<Constant name="catalog" />](/docs/explore/build-and-view-your-docs) to explore your project. Refer to [platform behavior](/reference/commands/cmd-docs?version=2#platform-behavior) for more info.
+dbt Docs v2 runs locally only. In <Constant name="dbt_platform" />, jobs on <Constant name="fusion" /> refresh <Constant name="catalog" /> metadata automatically, so use [<Constant name="catalog" />](/docs/explore/build-and-view-your-docs) to explore your project, and give all your applicable users read-only access to it without restrictions. Refer to [platform behavior](/reference/commands/cmd-docs?version=2#platform-behavior) for more info.
 
 To include column-level lineage and richer column metadata, first produce the artifacts with [`--static-analysis strict`](https://docs.getdbt.com/docs/build/about-static-analysis?version=1.13) using `dbt compile` or `dbt build`, then export the site:
 

@@ -173,7 +173,7 @@ To preview the site locally, run:
 dbt docs serve
 ```
 
-Use `dbt docs serve` to view your documentation locally on your own machine. <Constant name="dbt_platform"/> doesn't support dbt Docs v2. Refer to [platform behavior](#platform-behavior) for details.
+Use `dbt docs serve` to view your documentation locally on your own machine. In <Constant name="dbt_platform"/>, use <Constant name="catalog" /> to explore your project. Refer to [platform behavior](#platform-behavior) for details.
 
 `dbt docs serve` generates the site if it's missing or older than the index, then serves the static files. The server starts on port `8580` by default and opens in your browser. Use `--port` to change the port:
 
@@ -234,11 +234,12 @@ Both write artifacts, but only `dbt docs generate` builds the static dbt Docs si
 
 ## Platform behavior
 
-dbt Docs v2 isn't supported in <Constant name="dbt_platform" />. Use [<Constant name="catalog" />](/docs/explore/build-and-view-your-docs) to explore your project there instead:
+dbt Docs v2 isn't supported in <Constant name="dbt_platform" />. Instead, [<Constant name="catalog" />](/docs/explore/build-and-view-your-docs) gives you a hosted, always-up-to-date view of your project:
 
-- In <Constant name="dbt_platform" /> jobs running v2, `dbt build` and `dbt run` automatically refresh <Constant name="catalog" /> metadata, so you don't need a separate docs step. If you add `dbt docs generate` as a job step, dbt replaces it with `dbt compile --write-catalog`, so the job doesn't produce the static site or `index.html`.
-- The <Constant name="studio_ide" /> doesn't generate or serve the dbt Docs v2 site.
+- In <Constant name="dbt_platform" /> jobs running v2, `dbt build` and `dbt run` automatically refresh <Constant name="catalog" /> metadata, so you don't need a separate docs step.
+- If you add `dbt docs generate` as a job step, dbt runs `dbt compile --write-catalog` instead and shows a banner pointing you to <Constant name="catalog" />. The job doesn't produce the static site or `index.html`.
+- To share your project with stakeholders who don't develop in dbt, give all your applicable users [read-only access](/docs/platform/manage-access/seats-and-users) to <Constant name="catalog" /> without restrictions.
 
-To share your project with stakeholders who don't develop in dbt, give them [read-only access](/docs/platform/manage-access/seats-and-users) to <Constant name="catalog" />. To build and host the static site yourself, run `dbt docs generate` [locally](#generate-the-site).
+To build and host the static site yourself, run `dbt docs generate` [locally](#generate-the-site).
 
 </VersionBlock>

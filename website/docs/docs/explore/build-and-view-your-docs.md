@@ -16,8 +16,8 @@ This shift makes [dbt Docs](#dbt-docs) a legacy documentation feature in <Consta
 
 ## Set up a documentation job
 
-:::note Upcoming change for dbt v2 jobs
-In a future update, this setup will no longer be applicable for <Constant name="fusion" /> jobs in the <Constant name="dbt_platform" />. Execution commands (`run`, `build`, `seed`, `snapshot`) will automatically trigger metadata generation, so you won't need to add a `dbt docs generate` step or select the **Generate docs on run** option in **Execution settings**.
+:::note dbt v2 jobs
+This setup doesn't apply to <Constant name="fusion" /> jobs in the <Constant name="dbt_platform" />. Execution commands (`run`, `build`, `seed`, `snapshot`) automatically generate metadata for <Constant name="catalog" />, so you don't need a `dbt docs generate` step or the **Generate docs on run** option. For details, refer to [platform behavior](/reference/commands/cmd-docs?version=2#platform-behavior).
 :::
 
 <Constant name="catalog" /> uses the [metadata](/docs/explore/explore-projects#generate-metadata) generated after each job run in the production or staging environment, ensuring it always has the latest project results. To view richer metadata, you can set up documentation for a job in <Constant name="dbt" /> when you edit your job settings or create a new job.
