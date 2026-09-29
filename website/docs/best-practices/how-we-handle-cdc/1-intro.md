@@ -30,11 +30,13 @@ Your approach depends on how your source exposes changes and what you need to ke
 2. Do you need current values, historical versions, or both?
 3. Can you afford to read the full source on each run?
 
+<SimpleTable>
 | You need | Typical source | Use |
 | --- | --- | --- |
 | Latest row only | A list of changes, or a table that overwrites rows and has a reliable change timestamp | Incremental model |
 | Current row plus old versions | A table that overwrites rows, and it is small enough to scan each run | Snapshot |
 | Current row plus old versions, without scanning the full source each run | A table that overwrites rows, or a cleaned list of changes | An incremental staging model, then a snapshot, then a downstream model that keeps only the latest snapshot row |
+</SimpleTable>
 
 <br />
 

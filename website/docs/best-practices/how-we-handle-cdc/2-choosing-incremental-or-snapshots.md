@@ -42,19 +42,23 @@ Refer to [Configure incremental models](/docs/build/incremental-models) and [Abo
 
 After the first run, Alice and Bob are both `pending`:
 
+<SimpleTable>
 | id | name | status | updated_at |
 | -- | ---- | ------ | ---------- |
 | 1 | Alice | pending | 2026-01-01 00:00:00 |
 | 2 | Bob | pending | 2026-01-01 00:00:00 |
+</SimpleTable>
 
 <br />
 
 After a second run where Alice moves from `pending` to `shipped`, the incremental table has one row per person. The old `pending` row is gone:
 
+<SimpleTable>
 | id | name | status | updated_at |
 | -- | ---- | ------ | ---------- |
 | 1 | Alice | shipped | 2026-01-02 00:00:00 |
 | 2 | Bob | pending | 2026-01-01 00:00:00 |
+</SimpleTable>
 
 <br />
 
@@ -73,11 +77,13 @@ Refer to [Add snapshots to your DAG](/docs/build/snapshots) for configuration.
 
 After the same Alice change, the snapshot keeps both versions:
 
+<SimpleTable>
 | id | name | status | updated_at | dbt_valid_from | dbt_valid_to |
 | -- | ---- | ------ | ---------- | -------------- | ------------ |
 | 1 | Alice | pending | 2026-01-01 00:00:00 | 2026-01-01 00:00:00 | 2026-01-02 00:00:00 |
 | 1 | Alice | shipped | 2026-01-02 00:00:00 | 2026-01-02 00:00:00 | `null` |
 | 2 | Bob | pending | 2026-01-01 00:00:00 | 2026-01-01 00:00:00 | `null` |
+</SimpleTable>
 
 <br />
 
