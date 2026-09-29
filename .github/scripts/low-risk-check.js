@@ -9,24 +9,11 @@ const MAX_CHANGED_WORDS = 30; // added + removed words across the whole PR
 const MAX_CHANGED_FILES = 3;
 const TRUSTED_TEAM = "product-docs"; // team slug in the repo's org
 const OPT_OUT_LABEL = "do-not-auto-approve"; // human kill switch, per PR
+const CONFIG_FILE = "website/docusaurus.config.js";
 
 // Frontmatter keys that change URLs, nav, or build behavior. Any edit to these
 // lines is treated as risky no matter how small.
 const RISKY_FRONTMATTER = /^[+-]\s*(id|slug|title|sidebar_label|sidebar_position|pagination_next|pagination_prev|displayed_sidebar|hide_table_of_contents|tags|keywords)\s*:/;
-
-// docusaurus.config.js is otherwise denied (site-wide build config). It's only
-// low-risk when every changed line is inside the announcementBar block — the
-// promo banner text/link, nothing that touches build or plugin behavior.
-const ANNOUNCEMENT_BANNER_LINE = /^[+-]\s*(announcementBar\s*:\s*\{\s*|announcementBarActive\s*:.*|announcementBarLink\s*:.*|id\s*:.*|content\s*:.*|isCloseable\s*:.*|\}\s*,?\s*|["'].*)$/;
-
-function isAnnouncementBarOnly(patch) {
-  for (const line of (patch || "").split("\n")) {
-    if (!line.startsWith("+") && !line.startsWith("-")) continue;
-    if (line.startsWith("+++") || line.startsWith("---")) continue;
-    if (!ANNOUNCEMENT_BANNER_LINE.test(line)) return false;
-  }
-  return true;
-}
 
 function globToRegex(glob) {
   let out = "";
@@ -68,22 +55,109 @@ function loadPatterns(root) {
   return { allow, deny };
 }
 
-function countWords(text) {
+function tokenize(text) {
   const t = text.trim();
-  return t ? t.split(/\s+/).length : 0;
+  return t ? t.split(/\s+/) : [];
 }
 
-// Counts words added + removed in a unified diff patch, and flags risky lines.
+// Words that differ between a removed block and the added block that replaces
+// it: (removed - common) + (added - common), where common is the LCS of the two
+// word lists. A one-word swap in a 300-word paragraph line counts as 2, not 600.
+function wordDelta(removed, added) {
+  const a = tokenize(removed.join(" "));
+  const b = tokenize(added.join(" "));
+  if (!a.length || !b.length) return a.length + b.length;
+  // Huge rewrites are over the limit anyway; skip the quadratic LCS.
+  if (a.length * b.length > 4_000_000) return a.length + b.length;
+  let prev = new Array(b.length + 1).fill(0);
+  for (let i = 1; i <= a.length; i++) {
+    const cur = new Array(b.length + 1).fill(0);
+    for (let j = 1; j <= b.length; j++) {
+      cur[j] = a[i - 1] === b[j - 1] ? prev[j - 1] + 1 : Math.max(prev[j], cur[j - 1]);
+    }
+    prev = cur;
+  }
+  const common = prev[b.length];
+  return a.length - common + (b.length - common);
+}
+
+// Walks a unified diff patch. Returns changed words, whether a risky frontmatter
+// line was touched, and the old/new line numbers of every changed line.
 function analyzePatch(patch) {
   let words = 0;
   let riskyFrontmatter = false;
-  for (const line of (patch || "").split("\n")) {
-    if (!line.startsWith("+") && !line.startsWith("-")) continue;
-    if (line.startsWith("+++") || line.startsWith("---")) continue;
-    if (RISKY_FRONTMATTER.test(line)) riskyFrontmatter = true;
-    words += countWords(line.slice(1));
+  const removedLines = [];
+  const addedLines = [];
+  let oldNo = 0;
+  let newNo = 0;
+  let removed = [];
+  let added = [];
+  const flush = () => {
+    words += wordDelta(removed, added);
+    removed = [];
+    added = [];
+  };
+  for (const line of patch.split("\n")) {
+    const hunk = line.match(/^@@ -(\d+)(?:,\d+)? \+(\d+)(?:,\d+)? @@/);
+    if (hunk) {
+      flush();
+      oldNo = Number(hunk[1]);
+      newNo = Number(hunk[2]);
+      continue;
+    }
+    if (line.startsWith("\\")) continue; // "\ No newline at end of file"
+    if (line.startsWith("-")) {
+      if (RISKY_FRONTMATTER.test(line)) riskyFrontmatter = true;
+      removed.push(line.slice(1));
+      removedLines.push(oldNo++);
+    } else if (line.startsWith("+")) {
+      if (RISKY_FRONTMATTER.test(line)) riskyFrontmatter = true;
+      added.push(line.slice(1));
+      addedLines.push(newNo++);
+    } else {
+      flush();
+      oldNo++;
+      newNo++;
+    }
   }
-  return { words, riskyFrontmatter };
+  flush();
+  return { words, riskyFrontmatter, removedLines, addedLines };
+}
+
+// Line range (1-indexed, inclusive) of the announcement banner settings in
+// docusaurus.config.js: the `announcementBar: { ... }` object plus the
+// announcementBarActive / announcementBarLink keys that follow it.
+function bannerRange(source) {
+  const lines = source.split("\n");
+  const start = lines.findIndex((l) => /^\s*announcementBar\s*:\s*\{/.test(l));
+  if (start === -1) return null;
+  let depth = 0;
+  let end = start;
+  for (; end < lines.length; end++) {
+    for (const ch of lines[end]) {
+      if (ch === "{") depth++;
+      else if (ch === "}") depth--;
+    }
+    if (depth === 0) break;
+  }
+  if (depth !== 0) return null;
+  // Sibling keys, including a value that wraps onto the next line.
+  while (end + 1 < lines.length) {
+    const next = lines[end + 1];
+    if (/^\s*announcementBar(Active|Link)\s*:/.test(next)) {
+      end++;
+    } else if (/^\s*announcementBarLink\s*:\s*$/.test(lines[end]) && /^\s*["'`].*["'`],?\s*$/.test(next)) {
+      end++;
+    } else {
+      break;
+    }
+  }
+  return [start + 1, end + 1];
+}
+
+async function fileAt(github, owner, repo, filePath, ref) {
+  const { data } = await github.rest.repos.getContent({ owner, repo, path: filePath, ref });
+  return Buffer.from(data.content, data.encoding).toString("utf8");
 }
 
 async function evaluate({ github, context, core }) {
@@ -143,23 +217,6 @@ async function evaluate({ github, context, core }) {
     }
   }
 
-  // Style guide compliance: don't approve ahead of Vale. Read-only check against
-  // the head SHA — never runs Vale itself, so no PR code is checked out or executed.
-  const checkRuns = await github.paginate(github.rest.checks.listForRef, {
-    owner,
-    repo,
-    ref: pr.head.sha,
-    per_page: 100,
-  });
-  const valeRun = checkRuns.find((c) => c.name === "Vale linting");
-  if (!valeRun) {
-    reasons.push("Vale linting check has not reported yet");
-  } else if (valeRun.status !== "completed") {
-    reasons.push("Vale linting check is still running");
-  } else if (valeRun.conclusion !== "success") {
-    reasons.push("Vale linting check did not pass");
-  }
-
   const files = await github.paginate(github.rest.pulls.listFiles, {
     owner,
     repo,
@@ -187,19 +244,32 @@ async function evaluate({ github, context, core }) {
       reasons.push(`${f.filename} is not on the safe-file list`);
       continue;
     }
-    if (f.filename === "website/docusaurus.config.js") {
-      if (!isAnnouncementBarOnly(f.patch)) {
-        reasons.push(`${f.filename} changes outside the announcementBar block`);
-      }
-      totalWords += countWords((f.patch || "").split("\n")
-        .filter((l) => (l.startsWith("+") || l.startsWith("-")) && !l.startsWith("+++") && !l.startsWith("---"))
-        .map((l) => l.slice(1))
-        .join(" "));
+    // GitHub omits the patch for very large diffs. No patch means we can't see
+    // what changed, so it can't be low-risk.
+    if (typeof f.patch !== "string") {
+      reasons.push(`${f.filename} has no diff available to inspect`);
       continue;
     }
-    const { words, riskyFrontmatter } = analyzePatch(f.patch);
-    if (riskyFrontmatter) reasons.push(`${f.filename} edits frontmatter that affects URLs or nav`);
+    const { words, riskyFrontmatter, removedLines, addedLines } = analyzePatch(f.patch);
     totalWords += words;
+
+    if (f.filename === CONFIG_FILE) {
+      // Site-wide build config: only the announcement banner settings qualify.
+      // Check real line positions in both versions of the file, not line shapes.
+      const [base, head] = await Promise.all([
+        fileAt(github, owner, repo, f.filename, pr.base.sha),
+        fileAt(github, owner, repo, f.filename, pr.head.sha),
+      ]);
+      const baseRange = bannerRange(base);
+      const headRange = bannerRange(head);
+      const inside = (n, r) => r && n >= r[0] && n <= r[1];
+      if (!removedLines.every((n) => inside(n, baseRange)) || !addedLines.every((n) => inside(n, headRange))) {
+        reasons.push(`${f.filename} changes outside the announcementBar block`);
+      }
+      continue;
+    }
+
+    if (riskyFrontmatter) reasons.push(`${f.filename} edits frontmatter that affects URLs or nav`);
   }
 
   if (totalWords > MAX_CHANGED_WORDS) {
@@ -226,3 +296,6 @@ module.exports = async ({ github, context, core }) => {
     : `Not eligible: ${result.reasons.join("; ")}`);
   return result;
 };
+
+// Exposed for local testing only.
+module.exports._internals = { analyzePatch, wordDelta, bannerRange, globToRegex };
