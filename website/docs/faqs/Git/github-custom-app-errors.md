@@ -9,6 +9,7 @@ id: github-custom-app-errors
 
 - **App ID**: Use the **App ID** from your GitHub app's settings page, not the client ID or the installation ID.
 - **Private key**: Paste the entire contents of the `.pem` file, including the `-----BEGIN RSA PRIVATE KEY-----` and `-----END RSA PRIVATE KEY-----` lines. If you lost the file, generate a new private key in GitHub.
+- **Client ID**: Paste the **Client ID** from your GitHub app 
 - **GitHub base URL**: Use the hostname of your GitHub instance with no trailing slash and no `/api/v3` path, for example `https://github.yourgreatcompany.com`.
 - **Client secret**: GitHub only shows this once. If you didn't copy it, generate a new one.
 - **Network access**: Your GitHub instance must be reachable from <Constant name="dbt" />. If you use [IP restrictions](/docs/platform/secure/ip-restrictions), confirm the relevant CIDRs are allowed.
