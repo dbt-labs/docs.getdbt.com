@@ -9,7 +9,7 @@ availability: all_users
 
 Change data capture (CDC) identifies new, updated, and deleted rows in your source data so you can process changes without rebuilding an _entire_ table.
 
-This guide explains how you can use incremental models and snapshots in dbt to keep tables current, preserve a history of changes, or both. To find the best approach for your project, check out [Choosing incremental models or snapshots](/best-practices/how-we-handle-cdc/2-choosing-incremental-or-snapshots).
+This guide explains how you can use incremental models and snapshots in <Constant name="dbt" /> to keep tables current, preserve a history of changes, or both. To find the best approach for your project, refer to [Choosing incremental models or snapshots](/best-practices/how-we-handle-cdc/2-choosing-incremental-or-snapshots). For job frequency, streams, and dynamic tables, refer to [Near real-time data in dbt](/best-practices/how-we-handle-real-time-data/1-intro), including [CDC with Snowflake Streams](/best-practices/how-we-handle-real-time-data/2-incremental-patterns#cdc-with-snowflake-streams).
 
 ## How to handle CDC in dbt
 
@@ -21,14 +21,6 @@ In <Constant name="dbt" />, that usually means one of two ways to build a table:
 - A [snapshot](/docs/build/snapshots) keeps history. On each run, <Constant name="dbt" /> compares the source to the last snapshot and _adds_ a row when the record changes, with `dbt_valid_from` and `dbt_valid_to`.
 
 Snapshots only capture changes when you run them, which means you should run them on a schedule or you might miss changes. Refer to the FAQ [How often should I run the snapshot command?](/faqs/Runs/snapshot-frequency), which recommends hourly to daily.
-
-## CDC is not the same as near real-time
-
-[Near real-time data in dbt](/best-practices/how-we-handle-real-time-data/1-intro) is about _how fresh_ a table is (minutes, not hours). CDC in this guide is about _what to keep_ (the latest row, a history of changes, or both).
-
-That series includes [CDC with Snowflake Streams](/best-practices/how-we-handle-real-time-data/2-incremental-patterns#cdc-with-snowflake-streams): the warehouse writes a list of changes, and an incremental model reads it. That approach does not use snapshots.
-
-Use the near-real-time guide when the question is job frequency, streams, or dynamic tables. Use this guide when the question is incremental vs snapshots.
 
 ## Choose an approach: latest row, history, or both
 
