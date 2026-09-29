@@ -88,11 +88,11 @@ function Home() {
               </div>
               <div className="home-card-grid">
                 <Card
-                  title="dbt Wizard"
-                  tag="Beta"
-                  body="Build, refactor, and validate dbt projects with an AI agent purpose-built for analytics engineering — in the dbt platform or from your terminal."
-                  link="/docs/platform/wizard-overview"
-                  icon="dbt-copilot"
+                  title="Get started with dbt"
+                  tag="Guide"
+                  body="Get up and running quickly with our dbt quickstart guides."
+                  link="/docs/get-started-dbt"
+                  icon="settings"
                 />
                 <Card
                   title="About dbt"
@@ -100,13 +100,6 @@ function Home() {
                   body="Explore dbt and discover how its shared Rust runtime delivers faster, more scalable performance."
                   link="/docs/introduction"
                   icon="zap"
-                />
-                <Card
-                  title="Get started with dbt"
-                  tag="Guide"
-                  body="Get up and running quickly with our dbt quickstart guides."
-                  link="/docs/get-started-dbt"
-                  icon="settings"
                 />
                 <Card
                   title="Move to the dbt platform"
@@ -141,7 +134,6 @@ function Home() {
                 />
                 <Card
                   title="dbt State"
-                  tag="Preview"
                   body="dbt State makes dbt smarter about what to build — skipping unnecessary rebuilds by reusing nodes when logic and data haven't changed. Works with self-hosted dbt and the dbt platform."
                   link="/docs/deploy/dbt-state-about"
                   icon="forward"
