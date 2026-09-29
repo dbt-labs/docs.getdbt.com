@@ -326,6 +326,8 @@ Congratulations on making it through the guide 🎉!
 
 </ConfettiTrigger>
 
+<Snippet path="quickstarts/connect-your-ai" />
+
 </div>
 
 

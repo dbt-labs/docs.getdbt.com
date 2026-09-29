@@ -390,3 +390,5 @@ Sources make it possible to name and describe the data loaded into your warehous
 
 <Snippet path="quickstarts/schedule-a-job" />
 
+
+<Snippet path="quickstarts/connect-your-ai" />

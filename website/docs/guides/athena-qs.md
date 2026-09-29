@@ -335,3 +335,5 @@ Later, you can connect your business intelligence (BI) tools to these views and 
 <Snippet path="quickstarts/test-and-document-your-project" />
 
 <Snippet path="quickstarts/schedule-a-job" />
+
+<Snippet path="quickstarts/connect-your-ai" />

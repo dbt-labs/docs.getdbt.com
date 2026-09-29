@@ -214,6 +214,8 @@ This is just the start. There is so much more available and so much more coming.
 
 </ConfettiTrigger>
 
+<Snippet path="quickstarts/connect-your-ai" />
+
 ## Troubleshooting
 
 import FusionTroubleshooting from '/snippets/_fusion-troubleshooting.md';

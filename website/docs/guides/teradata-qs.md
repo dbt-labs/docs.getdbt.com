@@ -682,3 +682,5 @@ Congratulations 🎉! You've just deployed your first dbt project!
 
 
 
+
+<Snippet path="quickstarts/connect-your-ai" />

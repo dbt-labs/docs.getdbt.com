@@ -479,4 +479,6 @@ For more info on how to get started, refer to [create and schedule jobs](/docs/d
 
 For more information about using <Constant name="core" /> to schedule a job, refer [dbt airflow](/blog/dbt-airflow-spiritual-alignment) blog post.
 
+<Snippet path="quickstarts/connect-your-ai" />
+
 </div>
