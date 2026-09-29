@@ -15,7 +15,7 @@ Connecting your GitHub account to <Constant name="dbt" /> provides convenience a
 - Trigger [Continuous integration](/docs/deploy/continuous-integration)(CI) builds when pull requests are opened in GitHub.
 
 :::note GitHub Enterprise Cloud (`ghe.com`) domains
-If your organization uses GitHub Enterprise Cloud hosted on a `ghe.com` domain, the shared <Constant name="dbt" /> GitHub App can't reach it. Note that `ghe.com` accounts are cloud-managed (not on-premises), but this limitation still applies.
+If your organization uses GitHub Enterprise Cloud, hosted on a `ghe.com` domain, the shared <Constant name="dbt" /> GitHub App can't reach it. Note that `ghe.com` accounts are cloud-managed (not on-premises), but this limitation still applies.
 
 Enterprise and Enterprise+ accounts can connect by registering a [custom GitHub application](#custom-github-application) instead. On other plans, use [importing a project by git URL](/docs/platform/git/import-a-project-by-git-url) with SSH/deploy keys. Your organization's SSH URL configuration may require additional steps, and some native integration features are unavailable with the git URL method.
 
@@ -26,7 +26,7 @@ For additional help with your specific setup, contact [dbt Support](mailto:suppo
 
 - **GitHub permissions**: You must be a GitHub organization owner to [install the application](/docs/platform/git/connect-github#installing-dbt-in-your-github-account). Learn more about [GitHub organization](https://docs.github.com/en/organizations/managing-peoples-access-to-your-organization-with-roles/roles-in-an-organization) roles.
 - **dbt permissions**: Your GitHub organization owner also needs [_Owner_](/docs/platform/manage-access/self-service-permissions) or [_Account Admin_](/docs/platform/manage-access/enterprise-permissions) permissions in <Constant name="dbt_platform"/>. If needed, create a temporary account with these [permissions](/docs/platform/manage-access/enterprise-permissions) for the installation.
-- **On-premises GitHu or EU-hosted GitHub**: On Enterprise and Enterprise+ plans, you can use the native integration by registering a [custom GitHub application](#custom-github-application). On other plans, [connect using a Git URL](/docs/platform/git/import-a-project-by-git-url), which supports [fewer](/docs/platform/git/import-a-project-by-git-url#limited-integration) Git features.
+- **On-premises GitHub or EU-hosted GitHub**: On Enterprise and Enterprise+ plans, you can use the native integration by registering a [custom GitHub application](#custom-github-application). On other plans, [connect using a Git URL](/docs/platform/git/import-a-project-by-git-url), which supports [fewer](/docs/platform/git/import-a-project-by-git-url#limited-integration) Git features.
 
 :::important Case-sensitive repository names
 When specifying a GitHub repository in the <Constant name="dbt_platform" /> using the UI, API, or Terraform provider, the repository name must exactly match the case used in the GitHub URL to avoid cloning errors or job failures. For example, if the URL of your repository is `github.com/my-org/MyRepo`, enter the name as `MyRepo`, not `myrepo`.
@@ -140,7 +140,7 @@ If your account already uses the shared <Constant name="dbt" /> GitHub App, swit
     </SimpleTable>
     <Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/connecting-github/github-application-platform.png" width="85%" title="Adding your own GitHub application under Account settings, Integrations, Git"/>
 
-3. Select **Save**. <Constant name="dbt" /> validates the credentials against GitHub. If something's isn't right, <Constant name="dbt" /> shows an error and doesn't save the configuration.
+3. Select **Save**. <Constant name="dbt" /> validates the credentials against GitHub. If something isn't right, <Constant name="dbt" /> shows an error and doesn't save the configuration.
 
 <Constant name="dbt" /> now routes all GitHub authorization for this account through your application.
 
