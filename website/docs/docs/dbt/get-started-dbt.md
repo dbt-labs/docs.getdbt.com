@@ -31,12 +31,6 @@ Once you've caught up on everything [dbt has to offer](/docs/introduction), star
     link="https://www.getdbt.com/signup"
     icon="dbt-bit"/>
 
-<Card
-    title="Try dbt Wizard"
-    body="Let dbt Wizard build your first model from a plain-English prompt, grounded in your project's real lineage."
-    link="/docs/dbt-ai/wizard-quickstart"
-    icon="dbt-copilot"/>
-
 </div>
 
 ### Already using dbt? Start here

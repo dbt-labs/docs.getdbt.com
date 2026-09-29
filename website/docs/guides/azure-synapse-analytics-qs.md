@@ -120,7 +120,7 @@ Now that you have a repository configured, you can initialize your project and s
 
 ## Build your first model
 
-If you'd like to use AI to build your first model, check out the [build it with dbt Wizard](#or-build-it-with-dbt-wizard) section below.
+If you'd like to use AI to build your first model, check out the [build it with dbt Wizard](#build-it-with-ai-using-dbt-wizard) in the next section.
 1. Under **Version Control** on the left, click **Create branch**. You can name it `add-customers-model`. You need to create a new branch since the main branch is set to read-only mode.
 1. Click the three dot menu (**...**) next to the `models` directory, then select **Create file**.  
 1. Name the file `customers.sql`, then click **Create**.
@@ -185,7 +185,7 @@ If you'd like to use AI to build your first model, check out the [build it with 
 
 1. Enter `dbt run` in the command prompt at the bottom of the screen. You should get a successful run and see the three models.
 
-Later, you can connect your business intelligence (BI) tools to these views and tables so they only read cleaned up data rather than raw data in your BI tool.
+Later, you can connect your business intelligence (BI) tools (like [dbt Charts](https://dbtcharts.com/)) to these views and tables so they only read cleaned up data rather than raw data.
 
 #### FAQs
 

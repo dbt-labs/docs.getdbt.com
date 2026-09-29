@@ -235,7 +235,7 @@ Now that you have a repository configured, you can initialize your project and s
 
 ## Build your first model
 
-If you'd like to use AI to build your first model, check out the [build it with dbt Wizard](#or-build-it-with-dbt-wizard) section below.
+If you'd like to use AI to build your first model, check out the [build it with dbt Wizard](#build-it-with-ai-using-dbt-wizard) in the next section.
 
 You have two options for working with files in the <Constant name="studio_ide" />:
 
@@ -302,7 +302,7 @@ select * from final
 
 4. Enter `dbt run` in the command prompt at the bottom of the screen. You should get a successful run and see the three models.
 
-Later, you can connect your business intelligence (BI) tools to these views and tables so they only read cleaned up data rather than raw data in your BI tool.
+Later, you can connect your business intelligence (BI) tools (like [dbt Charts](https://dbtcharts.com/)) to these views and tables so they only read cleaned up data rather than raw data.
 
 #### FAQs
 

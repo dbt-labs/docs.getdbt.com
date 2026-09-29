@@ -106,33 +106,14 @@ You can use self-hosted tools with or without a <Constant name="dbt_platform" />
     icon="duckdb-seeklogo"/>
 </div>
 
-## dbt Wizard
-
-[<Constant name="wizard" />](/docs/platform/wizard-overview) is an AI agent purpose-built for analytics engineering. It uses dbt's [native metadata engine](/docs/dbt-ai/about-dbt-ai) — a structured index of your project's lineage, model health, tests, and semantic definitions — to build, refactor, validate, and document your project grounded in full project context. Ask it to build your first model instead of writing the SQL by hand.
-
-<div className="grid--3-col">
-
-<Card
-    title="dbt Wizard in the dbt platform"
-    body="Use dbt Wizard in the Studio IDE or home app to build and refactor models from natural language, generate tests and docs, and validate changes against your warehouse."
-    link="/docs/dbt-ai/wizard-ide"
-    icon="dbt-copilot"/>
-
-<Card
-    title="dbt Wizard from your terminal"
-    body="Install the dbt Wizard CLI to run the agent locally against any dbt project — with or without a dbt platform plan. Start with a free trial using dbt managed AI, or bring your own provider key."
-    link="/docs/dbt-ai/wizard-quickstart"
-    icon="dbt-copilot"/>
-
-</div>
 
 ## Connect your AI to your data
 
-You don't have to choose between learning dbt and using AI — pair them from day one:
+You don't have to choose between learning dbt and using AI &mdash; you can absolutely pair them from day one:
 
-- **<Constant name="wizard" />** — Ask it to build, refactor, or document a model in plain English, grounded in your project's real lineage and tests. [Get started with <Constant name="wizard" />](/docs/dbt-ai/wizard-quickstart).
-- **dbt MCP server** — Connect Claude, Cursor, or another AI tool to query your project, run dbt commands, and pull metrics directly. [Connect the dbt MCP server](/docs/dbt-ai/about-mcp).
-- **Fivetran context layer** — Give any AI tool richer context about your data, so its answers are grounded in what your data actually means. [Explore the context layer](https://fivetran.com/docs/context-layer).
+- Use the <Constant name="wizard" /> and ask it to build, refactor, or document a model in natural language, grounded in your project's real lineage and tests. [Get started with <Constant name="wizard" />](/docs/dbt-ai/wizard-quickstart).
+- Set up the dbt MCP server to connect to Claude, Cursor, or another AI tool to query your project, run dbt commands, and pull metrics directly. [Connect the dbt MCP server](/docs/dbt-ai/about-mcp).
+- Connect to the Fivetran context layer to give any AI tool richer context about your data, so its answers are grounded in what your data actually means. [Explore the context layer](https://fivetran.com/docs/context-layer).
 
 ## Related docs
 
