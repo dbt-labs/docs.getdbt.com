@@ -1917,7 +1917,7 @@ const sidebarSettings = {
         },
         {
           type: "category",
-          label: "How to handle CDC",
+          label: "How to handle change data capture",
           link: {
             type: "doc",
             id: "best-practices/how-we-handle-cdc/1-intro",
