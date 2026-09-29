@@ -56,7 +56,7 @@ Key improvements over dbt Docs:
 
 To generate and serve dbt Docs v2 with <Constant name="fusion_engine" />, run `dbt docs generate` to build the site, then `dbt docs serve` to preview it locally. `dbt docs generate` compiles your project and writes the index for you in a single command.
 
-dbt Docs v2 runs locally only. <Constant name="dbt_platform" /> doesn't support it in jobs or the <Constant name="studio_ide" />. Platform jobs on <Constant name="fusion" /> refresh <Constant name="catalog" /> metadata automatically, so use [<Constant name="catalog" />](/docs/explore/build-and-view-your-docs) to explore your project there. Refer to [platform behavior](/reference/commands/cmd-docs?version=2#platform-behavior) for more info.
+dbt Docs v2 runs locally ony. In <Constant name="dbt_platform" />, jobs on <Constant name="fusion" /> refresh <Constant name="catalog" /> metadata automatically, so use [<Constant name="catalog" />](/docs/explore/build-and-view-your-docs) to explore your project. Refer to [platform behavior](/reference/commands/cmd-docs?version=2#platform-behavior) for more info.
 
 To include column-level lineage and richer column metadata, first produce the artifacts with [`--static-analysis strict`](https://docs.getdbt.com/docs/build/about-static-analysis?version=1.13) using `dbt compile` or `dbt build`, then export the site:
 
