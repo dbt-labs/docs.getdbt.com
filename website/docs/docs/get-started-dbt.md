@@ -106,7 +106,6 @@ You can use self-hosted tools with or without a <Constant name="dbt_platform" />
     icon="duckdb-seeklogo"/>
 </div>
 
-</div>
 
 ## Connect your AI to your data
 
