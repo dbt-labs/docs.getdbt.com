@@ -29,7 +29,7 @@ describe('AvailabilityMatrix', () => {
     expect(screen.getByText('Not supported')).toBeInTheDocument();
   });
 
-  it('renders connection availability states for Core (Python) and Fusion', () => {
+  it('renders connection availability states for dbt v1 and dbt v2', () => {
     render(
       <AvailabilityMatrix
         type="connection"
@@ -54,8 +54,8 @@ describe('AvailabilityMatrix', () => {
       />
     );
 
-    expect(screen.getByText('Core (Python)')).toBeInTheDocument();
-    expect(screen.getByText('Fusion')).toBeInTheDocument();
+    expect(screen.getByText('dbt v1')).toBeInTheDocument();
+    expect(screen.getByText('dbt v2')).toBeInTheDocument();
     expect(screen.getAllByText('Yes')).toHaveLength(4);
     expect(screen.getByText('Private preview')).toBeInTheDocument();
     expect(screen.getByText('Not supported')).toBeInTheDocument();

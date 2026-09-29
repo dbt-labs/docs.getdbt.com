@@ -31,7 +31,7 @@ The scheduler also:
 - Uses [<Constant name="dbt" />'s Git repository caching](/docs/platform/account-settings#git-repository-caching) to protect against third-party outages and improve job run reliability. <Lifecycle status="managed,managed_plus" />
 - Powers running dbt in staging and production environments, bringing ease and confidence to CI/CD workflows and enabling observability and governance in deploying dbt at scale. 
 - Uses [Hybrid projects](/docs/deploy/hybrid-projects) to upload <Constant name="core" /> artifacts into dbt for central visibility, cross-project referencing, and easier collaboration. <Lifecycle status="beta,managed_plus" />
-- Uses [dbt State](/docs/deploy/dbt-state-about) to decide what needs to be rebuilt based on upstream data freshness and code changes. <Lifecycle status="preview" />
+- Uses [dbt State](/docs/deploy/dbt-state-about) to decide what needs to be rebuilt based on upstream data freshness and code changes.
 
 ## Scheduler terms
 

@@ -27,7 +27,7 @@ The server exposes a set of tools that operate on top of your dbt project. You a
 | Governed metrics | Business questions answered from your certified Semantic Layer definitions | `list_metrics`, `get_dimensions`, `query_metrics` |
 | Flexible SQL | Exploratory queries generated and run with full awareness of your models | `text_to_sql`, `execute_sql` |
 | Operations | Job run history, failure details, and retries through the Administrative API | `list_jobs_runs`, `get_job_run_error`, `retry_job_run` |
-| Column lineage | Dependencies traced to the individual column with the <Constant name="fusion_engine" /> | `fusion.get_column_lineage` |
+| Column lineage | Dependencies traced to the individual column with <Constant name="fusion_engine" /> | `fusion.get_column_lineage` |
 | Product docs | Answers to dbt questions pulled from the official documentation | `search_product_docs`, `get_product_doc_pages` |
 
 The [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) is the anchor of that list and has the greatest potential to unlock value for nontechnical stakeholders. Your metrics are defined explicitly, so when Claude answers a question about revenue or active users, it returns the trusted number. Everything else builds trustworthy context around that governed core, and each tool serves a person asking a question as readily as an agent taking an action.

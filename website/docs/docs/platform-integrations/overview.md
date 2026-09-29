@@ -15,7 +15,7 @@ Many data applications integrate with <Constant name="dbt" />, enabling you to l
 
 <Card
     title="dbt VS Code extension"
-    body="The dbt extension brings a hyper-fast, intelligent, and cost-efficient dbt development experience to VS Code. The best way to experience all the power of the new dbt Fusion engine while developing locally."
+    body="The dbt extension brings a hyper-fast, intelligent, and cost-efficient dbt development experience to VS Code. The best way to experience all the power of the new dbt v2 while developing locally."
     link="/docs/about-dbt-extension"
     icon="vsce"
     showBorderBeam

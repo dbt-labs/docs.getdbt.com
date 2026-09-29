@@ -66,7 +66,7 @@ function CopyPage({ dropdownRight = false, pageUrl }) {
         </button>
 
         <Link
-          id="view_as_markdown"
+          id="llm_view_as_markdown"
           className={styles.dropdownItem}
           href={markdownUrl}
           target="_blank"

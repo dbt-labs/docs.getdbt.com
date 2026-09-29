@@ -38,7 +38,7 @@ sources:
   [<resource-path>](/reference/resource-configs/resource-path):
     [+](/reference/resource-configs/plus-prefix)[enabled](/reference/resource-configs/enabled): true | false
     [+](/reference/resource-configs/plus-prefix)[event_time](/reference/resource-configs/event-time): my_time_field
-    [+](/reference/resource-configs/plus-prefix)[freshness](/reference/resource-properties/freshness):
+    [+](/reference/resource-configs/plus-prefix)[freshness](/reference/resource-configs/freshness):
       warn_after:  
         count: <positive_integer>
         period: minute | hour | day
@@ -69,7 +69,7 @@ sources:
       [enabled](/reference/resource-configs/enabled): true | false
       [event_time](/reference/resource-configs/event-time): my_time_field
       [meta](/reference/resource-configs/meta): {<dictionary>}
-      [freshness](/reference/resource-properties/freshness):
+      [freshness](/reference/resource-configs/freshness):
         warn_after:  
           count: <positive_integer>
           period: minute | hour | day
@@ -261,7 +261,7 @@ Use a `freshness` block to define expectations about how frequently a table is u
 
 dbt compares the most recently updated timestamp calculated from a column, warehouse metadata, or custom query against the current timestamp when the freshness check is running.
 
-You can provide one or both of the `warn_after` and `error_after` parameters. If neither is provided, then dbt will not calculate freshness snapshots for the tables in this source. For more information, see [freshness](/reference/resource-properties/freshness).
+You can provide one or both of the `warn_after` and `error_after` parameters. If neither is provided, then dbt will not calculate freshness snapshots for the tables in this source. For more information, see [freshness](/reference/resource-configs/freshness).
 
 See the following example of a `dbt_project.yml` file using the `freshness` config:
 
@@ -270,7 +270,7 @@ See the following example of a `dbt_project.yml` file using the `freshness` conf
 ```yml
 sources:
   [<resource-path>](/reference/resource-configs/resource-path):
-    [+](/reference/resource-configs/plus-prefix)[freshness](/reference/resource-properties/freshness):
+    [+](/reference/resource-configs/plus-prefix)[freshness](/reference/resource-configs/freshness):
       warn_after:  
         count: 4
         period: hour

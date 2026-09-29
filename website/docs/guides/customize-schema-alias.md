@@ -28,10 +28,10 @@ Different warehouses have different names for _logical databases_. The informati
 
 The following is dbt's out-of-the-box default behavior:
 
-- The database where the object is created is defined by the database configured at the [environment level in <Constant name="dbt" />](/docs/dbt-platform-environments) or in the [`profiles.yml` file](/docs/local/profiles.yml) in dbt Core.
+- The database where the object is created is defined by the database configured at the [environment level in <Constant name="dbt" />](/docs/dbt-platform-environments) or in the [`profiles.yml` file](/docs/local/profiles.yml) in <Constant name="core" />.
 
 - The schema depends on whether you have defined a [custom schema](/docs/build/custom-schemas) for the model:
-    - If you haven't defined a custom schema, dbt creates the object in the default schema. In <Constant name="dbt" />, this is typically `dbt_username` for development and the default schema for deployment environments. In dbt Core, it uses the schema specified in the `profiles.yml` file.
+    - If you haven't defined a custom schema, dbt creates the object in the default schema. In <Constant name="dbt" />, this is typically `dbt_username` for development and the default schema for deployment environments. In <Constant name="core" />, it uses the schema specified in the `profiles.yml` file.
     - If you define a custom schema, dbt concatenates the schema mentioned earlier with the custom one.
     - For example, if the configured schema is `dbt_myschema` and the custom one is `marketing`, the objects will be created under `dbt_myschema_marketing`.
     - Note that for automated CI jobs, the schema name derives from the job number and PR number: `dbt_cloud_pr_<job_id>_<pr_id>`.

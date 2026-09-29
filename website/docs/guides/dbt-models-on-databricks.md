@@ -7,7 +7,7 @@ hoverSnippet: Learn how to optimize and troubleshoot your dbt models on Databric
 # time_to_complete: '30 minutes' commenting out until we test
 icon: 'databricks'
 hide_table_of_contents: true
-tags: ['Databricks', 'dbt Core','dbt platform']
+tags: ['Databricks', 'dbt platform']
 level: 'Intermediate'
 ---
 

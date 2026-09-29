@@ -8,7 +8,7 @@ availability:
   access: login_required
 ---
 
-# Connect Teradata <Lifecycle status="preview" />
+# Connect Teradata 
 
 Your environment(s) must be on a supported [release track](/docs/dbt-versions/dbt-release-tracks) to use the Teradata connection.
 
