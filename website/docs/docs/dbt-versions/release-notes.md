@@ -22,6 +22,7 @@ For <Constant name="fusion_engine" /> updates, refer to the [v2 changelog](https
 
 ## September 2026
 
+- **Enhancement:** Job settings now have a **dbt State** dropdown menu with three options **On**, **Off**, or **Inherited from environment**. This menu lets you enable or disable [dbt State](/docs/deploy/dbt-state-about) explicitly per job, or have the job follow the environment's setting. New jobs default to **Inherited from environment**, while existing jobs must be updated manually. Refer to [Enabling dbt State on individual jobs](/docs/deploy/dbt-state-enable-jobs) for more information.
 - **New:** [DuckDB support for Apache Iceberg](/docs/build/iceberg/adapters/duckdb-iceberg-support) is now generally available for local use with <Constant name="fusion" />.
 - **New:** The models table in Catalog navigation now shows a column count for each model.
 - **Enhancement:** <Constant name="studio_ide" /> now detects missing development credentials at startup and shows a **Development Credentials Required** modal with a direct link to add credentials, instead of failing silently.
@@ -77,7 +78,6 @@ Two other things moved:
 
 ### Pre-dbt Summit
 
-- **Enhancement:** Job settings now have a **dbt State** dropdown menu with three options **On**, **Off**, or **Inherited from environment**. This menu lets you enable or disable [dbt State](/docs/deploy/dbt-state-about) explicitly per job, or have the job follow the environment's setting. New jobs default to **Inherited from environment**, while existing jobs must be updated manually. Refer to [Enabling dbt State on individual jobs](/docs/deploy/dbt-state-enable-jobs) for more information.
 - **Beta:** When [dbt State](/docs/deploy/dbt-state-about) is enabled in a self-managed deployment and your project is connected to the <Constant name="dbt_platform" />, `state:*` selectors use dbt State as their comparison source, unless a state manifest is explicitly provided. Each node (models, snapshots, seeds, and tests) is compared against its own last execution in the deferral target environment rather than a single `manifest.json` from the most recent job run. Refer to [dbt State-powered `state:*` selectors](/docs/deploy/dbt-state-deferral#dbt-state-powered-state-selectors) for more information.
 - **New:** The **dbt State** page now includes a [**Lag tolerance recommendations**](/docs/deploy/dbt-state-interface#lag-tolerance-recommendations) section that identifies models that could safely tolerate more lag. For each model, it shows the current lag tolerance, the recommended value, the estimated percentage of build time you'd save, and projected build time savings over the next 30 days. You can search by model name or filter by project, and apply recommendations by updating the [`lag_tolerance`](/reference/resource-configs/lag-tolerance) config.
 - **New:** The Snowflake adapter now supports the `interactive_table` materialization in beta on dbt v2 (dbt-snowflake v1.13+), covering both static and dynamic (auto-refreshing) interactive tables. For more information, see [Interactive tables](/reference/resource-configs/snowflake-configs).

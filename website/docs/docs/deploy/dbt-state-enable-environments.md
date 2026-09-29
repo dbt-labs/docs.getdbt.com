@@ -23,7 +23,7 @@ To enable dbt State on a deployment environment:
 3. In the **dbt State** section, select **Enable dbt State**.
 5. Click **Save**.
 
-For development environments, refer to [Enabling dbt State in Studio](/docs/deploy/dbt-state-enable-studio) for more information.
+For development environments, refer to [Enabling dbt State in Studio](/docs/deploy/dbt-state-enable-studio).
 
 ## Related docs
 
