@@ -56,8 +56,8 @@ To enable dbt State:
 
 7. Select the jobs to enable dbt State for. You can either enable:
 
-   - **By environment**: Enables dbt State on all existing jobs within the selected environment at once. New jobs created in that environment will have dbt State enabled automatically.
-   - **By specific jobs**: Enables dbt State on individual jobs. To enable it on additional jobs later, refer to [Enabling dbt State on individual jobs](/docs/deploy/dbt-state-enable-jobs).
+   - **By environment**: Enables dbt State on the selected environment. New jobs automatically default to **Inherited from environment** and have dbt State enabled without additional configuration. Existing jobs are _not_ updated &mdash; you must configure them manually.
+   - **By specific jobs**: Enables dbt State on individual jobs. To enable it on additional jobs, refer to [Enabling dbt State on individual jobs](/docs/deploy/dbt-state-enable-jobs).
 
 8. Click **Enable dbt State**.
 

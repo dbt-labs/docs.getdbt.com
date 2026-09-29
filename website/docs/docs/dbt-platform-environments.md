@@ -33,8 +33,9 @@ To create a new <Constant name="dbt" /> development environment:
 1. Navigate to **Orchestration** > **Environments**.
 2. Click **+ Create Environment**.
 3. Select **Development** as the environment type. You can only create one Development environment for a project.
-4. Fill in the fields under **General Settings** and **User credentials**.
-5. Click **Save** to create the environment.
+4. Fill in the fields under **Environment settings** and **User credentials**.
+5. (Optional) If dbt State is enabled on your account, the **Enable dbt State** option appears. Enable it to reduce unnecessary node rebuilds. For details, refer to [Enabling dbt State in Studio](/docs/deploy/dbt-state-enable-studio#enabling-dbt-state-on-a-development-environment).
+6. Click **Save** to create the environment.
 
 <Lightbox src="/img/docs/dbt-platform/refresh-ide/new-development-environment-fields.png" width="85%" height="200" title="Creating a development environment"/>
 
