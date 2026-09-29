@@ -2,7 +2,6 @@
 title: "Change data capture in dbt"
 id: "1-intro"
 description: "Learn how change data capture works in dbt, and how to choose incremental models, snapshots, or both."
-sidebar_label: "Introduction"
 hoverSnippet: "Learn how change data capture works in dbt"
 availability: all_users
 ---
