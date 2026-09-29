@@ -60,7 +60,7 @@ GitLab and Azure DevOps repositories will continue to use your legacy **getdbt.c
 | GitHub On-premises | Contact [dbt Labs Support](mailto:support@getdbt.com) |
 
 :::warning Azure DevOps CI jobs may stop triggering
-Pull request events can stop reaching <Constant name="dbt" />, so continuous integration (CI) jobs set to run on pull requests do not start. No error appears in <Constant name="dbt" /> or in Azure DevOps.
+If you connected an Azure DevOps repository before your account moved to its account-specific access URL, pull request events for that repository can stop reaching <Constant name="dbt" />. Continuous integration (CI) jobs set to run on pull requests do not start, and no error appears in <Constant name="dbt" /> or in Azure DevOps.
 
 If this happens, follow these steps to disconnect the repository and connect the same one again:
 
