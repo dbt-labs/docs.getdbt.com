@@ -173,7 +173,7 @@ To preview the site locally, run:
 dbt docs serve
 ```
 
-Use `dbt docs serve` to view your documentation locally on your own machine. If you're using <Constant name="dbt_platform"/>, refer to [platform behavior](#platform-behavior) for how to view docs there.
+Use `dbt docs serve` to view your documentation locally on your own machine. <Constant name="dbt_platform"/> doesn't support dbt Docs v2. Refer to [platform behavior](#platform-behavior) for details.
 
 `dbt docs serve` generates the site if it's missing or older than the index, then serves the static files. The server starts on port `8580` by default and opens in your browser. Use `--port` to change the port:
 
@@ -234,11 +234,11 @@ Both write artifacts, but only `dbt docs generate` builds the static dbt Docs si
 
 ## Platform behavior
 
-Where you run dbt changes how you generate and view your docs:
+dbt Docs v2 isn't supported in <Constant name="dbt_platform" />. Use [<Constant name="catalog" />](/docs/explore/build-and-view-your-docs) to explore your project there instead:
 
-- In <Constant name="dbt_platform" /> jobs running v2, `dbt build` and `dbt run` automatically refresh catalog metadata, so you don't need a separate `dbt docs generate` step. View your project in [<Constant name="catalog" />](/docs/explore/build-and-view-your-docs).
-- In the [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio), run `dbt docs generate` and click the docs icon above the file tree to open the generated site.
-  <Lightbox src="/img/reference/dremio-setup/studio-docs-icon.png" width="90%" title="View the docs icon above the version control panel in dbt platform's Studio IDE"/>
+- In <Constant name="dbt_platform" /> jobs running v2, `dbt build` and `dbt run` automatically refresh <Constant name="catalog" /> metadata, so you don't need a separate docs step. If you add `dbt docs generate` as a job step, dbt replaces it with `dbt compile --write-catalog`, so the job doesn't produce the static site or `index.html`.
+- The <Constant name="studio_ide" /> doesn't generate or serve the dbt Docs v2 site.
 
+To share your project with stakeholders who don't develop in dbt, give them [read-only access](/docs/platform/manage-access/seats-and-users) to <Constant name="catalog" />. To build and host the static site yourself, run `dbt docs generate` [locally](#generate-the-site).
 
 </VersionBlock>
