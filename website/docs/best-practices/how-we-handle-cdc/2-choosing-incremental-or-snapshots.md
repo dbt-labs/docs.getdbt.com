@@ -20,7 +20,7 @@ Start with this table if you already know what you need to keep. Use it to match
 | [Incremental models and snapshots together](#using-incremental-models-and-snapshots-together) | You want incremental staging so runs stay cheap, and a snapshot for history | You only need one of those jobs, or you would snapshot the final table people query |
 </SimpleTable>
 <br />
-The examples in the next section follow two customers, Alice and Bob. Both start with a pending status. Alice’s status then changes to active.
+The examples in the next section follow two customers, Alice and Bob. Both start with a pending status. Alice’s status then changes to shipped.
 
 These examples use [`unique_key`](/reference/resource-configs/unique_key) to identify each customer across runs. The incremental model uses it to match rows for updates. The snapshot uses it to track versions of the same customer.
 
@@ -32,7 +32,13 @@ Use an incremental model when later models only need the current row, and you ca
 - A table that only adds rows
 - A table that overwrites rows and has a reliable `updated_at` (or load timestamp) you can filter on
 
-Configure `unique_key` and an incremental strategy such as `merge` so running the model twice with the same data does not create duplicates. Filter to new changes with `is_incremental()`. For configuration details, refer to [Configure incremental models](/docs/build/incremental-models) and [About incremental strategy](/docs/build/incremental-strategy).
+To keep one current row per customer and avoid duplicates:
+
+- Use `is_incremental()` to filter new changes
+- Set `unique_key` to the customer id so <Constant name="dbt" /> can match existing rows
+- Choose an incremental strategy such as `merge`, which updates matching rows and inserts new ones
+
+Refer to [Configure incremental models](/docs/build/incremental-models) and [About incremental strategy](/docs/build/incremental-strategy) for details.
 
 After the first run, Alice and Bob are both `pending`:
 
