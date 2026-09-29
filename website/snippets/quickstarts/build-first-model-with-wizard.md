@@ -1,4 +1,4 @@
-#### Or, build it with dbt Wizard
+### Build it with AI using dbt Wizard
 
 Prefer not to write the SQL by hand? <Constant name="wizard" /> can build the same model for you, right in the <Constant name="studio_ide" />, grounded in your project's actual schema and lineage.
 
