@@ -235,7 +235,7 @@ Now that you have a repository configured, you can initialize your project and s
 
 ## Build your first model
 
-If you'd like to use AI to build your first model, check out the [build it with dbt Wizard](#or-build-it-with-dbt-wizard) section below.
+If you'd like to use AI to build your first model, check out the [build it with dbt Wizard](#or-build-it-with-dbt-wizard) in the next section.
 
 You have two options for working with files in the <Constant name="studio_ide" />:
 
