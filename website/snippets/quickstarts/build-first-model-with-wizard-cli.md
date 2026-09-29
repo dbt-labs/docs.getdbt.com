@@ -24,7 +24,7 @@ irm https://public.cdn.getdbt.com/dbt-wizard/install/install-wizard.ps1 | iex
 
 </Tabs>
 
-2. Run `wizard` in your project directory to start a session.
+2. Run `wizard` in your project directory to start a session and then go through the onboarding (if you haven't already).
 
 <Lightbox src="/img/docs/wizard-cli-intro.png" title="A dbt Wizard session running in the terminal" />
 
