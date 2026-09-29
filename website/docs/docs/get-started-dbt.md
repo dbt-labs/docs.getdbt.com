@@ -106,24 +106,6 @@ You can use self-hosted tools with or without a <Constant name="dbt_platform" />
     icon="duckdb-seeklogo"/>
 </div>
 
-## dbt Wizard
-
-[<Constant name="wizard" />](/docs/platform/wizard-overview) is an AI agent purpose-built for analytics engineering. It uses dbt's [native metadata engine](/docs/dbt-ai/about-dbt-ai) — a structured index of your project's lineage, model health, tests, and semantic definitions — to build, refactor, validate, and document your project grounded in full project context. Ask it to build your first model instead of writing the SQL by hand.
-
-<div className="grid--3-col">
-
-<Card
-    title="dbt Wizard in the dbt platform"
-    body="Use dbt Wizard in the Studio IDE or home app to build and refactor models from natural language, generate tests and docs, and validate changes against your warehouse."
-    link="/docs/dbt-ai/wizard-ide"
-    icon="dbt-copilot"/>
-
-<Card
-    title="dbt Wizard from your terminal"
-    body="Install the dbt Wizard CLI to run the agent locally against any dbt project — with or without a dbt platform plan. Start with a free trial using dbt managed AI, or bring your own provider key."
-    link="/docs/dbt-ai/wizard-quickstart"
-    icon="dbt-copilot"/>
-
 </div>
 
 ## Connect your AI to your data
