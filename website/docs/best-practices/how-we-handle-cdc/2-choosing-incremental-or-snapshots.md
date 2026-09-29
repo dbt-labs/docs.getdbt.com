@@ -26,9 +26,7 @@ These examples use [`unique_key`](/reference/resource-configs/unique_key) to ide
 
 ## Incremental only
 
-Use an incremental model when the source already tells you what changed, and later models only need the current row.
-
-Typical sources:
+Use an incremental model when later models only need the current row, and you can identify new or changed rows from:
 
 - A loading tool or stream that writes inserts, updates, and deletes (for an example, refer to [CDC with Snowflake Streams](/best-practices/how-we-handle-real-time-data/2-incremental-patterns#cdc-with-snowflake-streams))
 - A table that only adds rows
