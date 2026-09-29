@@ -185,7 +185,7 @@ If you'd like to use AI to build your first model, check out the [build it with 
 
 1. Enter `dbt run` in the command prompt at the bottom of the screen. You should get a successful run and see the three models.
 
-Later, you can connect your business intelligence (BI) tools to these views and tables so they only read cleaned up data rather than raw data in your BI tool.
+Later, you can connect your business intelligence (BI) tools (like [dbt Charts](https://dbtcharts.com/)) to these views and tables so they only read cleaned up data rather than raw data.
 
 #### FAQs
 
