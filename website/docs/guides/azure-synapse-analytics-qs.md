@@ -193,6 +193,8 @@ Later, you can connect your business intelligence (BI) tools to these views and 
 <FAQ path="Models/run-downtime" />
 <FAQ path="Troubleshooting/sql-errors" />
 
+<Snippet path="quickstarts/build-first-model-with-wizard" />
+
 ## Change the way your model is materialized
 
 <Snippet path="quickstarts/change-way-model-materialized" />

@@ -251,6 +251,8 @@ select * from final
 
 Later, you can connect your business intelligence (BI) tools to these views and tables so they only read cleaned-up data rather than raw data.
 
+<Snippet path="quickstarts/build-first-model-with-wizard" />
+
 ## Change the way your model is materialized
 
 <Snippet path="quickstarts/change-way-model-materialized" />

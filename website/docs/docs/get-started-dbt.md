@@ -108,7 +108,7 @@ You can use self-hosted tools with or without a <Constant name="dbt_platform" />
 
 ## dbt Wizard
 
-[<Constant name="wizard" />](/docs/platform/wizard-overview) is an AI agent purpose-built for analytics engineering. It uses dbt's [native metadata engine](/docs/dbt-ai/about-dbt-ai) — a structured index of your project's lineage, model health, tests, and semantic definitions — to build, refactor, validate, and document your project grounded in full project context.
+[<Constant name="wizard" />](/docs/platform/wizard-overview) is an AI agent purpose-built for analytics engineering. It uses dbt's [native metadata engine](/docs/dbt-ai/about-dbt-ai) — a structured index of your project's lineage, model health, tests, and semantic definitions — to build, refactor, validate, and document your project grounded in full project context. Ask it to build your first model instead of writing the SQL by hand.
 
 <div className="grid--3-col">
 
@@ -125,6 +125,14 @@ You can use self-hosted tools with or without a <Constant name="dbt_platform" />
     icon="dbt-copilot"/>
 
 </div>
+
+## Connect your AI to your data
+
+You don't have to choose between learning dbt and using AI — pair them from day one:
+
+- **<Constant name="wizard" />** — Ask it to build, refactor, or document a model in plain English, grounded in your project's real lineage and tests. [Get started with <Constant name="wizard" />](/docs/dbt-ai/wizard-quickstart).
+- **dbt MCP server** — Connect Claude, Cursor, or another AI tool to query your project, run dbt commands, and pull metrics directly. [Connect the dbt MCP server](/docs/dbt-ai/about-mcp).
+- **Fivetran context layer** — Give any AI tool richer context about your data, so its answers are grounded in what your data actually means. [Explore the context layer](https://fivetran.com/docs/context-layer).
 
 ## Related docs
 

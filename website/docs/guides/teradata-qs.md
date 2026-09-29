@@ -256,6 +256,8 @@ select * from final
 
 You can connect your business intelligence (BI) tools to these views and tables so they only read cleaned-up data rather than raw data in your BI tool.
 
+<Snippet path="quickstarts/build-first-model-with-wizard" />
+
 ## Change the way your model is materialized
 
 One of the most powerful features of dbt is that you can change the way a model is materialized in your warehouse, simply by changing a configuration value.  You can change things between tables and views by changing a keyword rather than writing the data definition language (DDL) to do this behind the scenes.

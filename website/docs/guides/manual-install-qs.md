@@ -218,6 +218,8 @@ When you return to the BigQuery console, you can `select` from this model.
 <FAQ path="Models/run-downtime" />
 <FAQ path="Troubleshooting/sql-errors" />
 
+<Snippet path="quickstarts/build-first-model-with-wizard-cli" />
+
 ## Change the way your model is materialized
 
 
