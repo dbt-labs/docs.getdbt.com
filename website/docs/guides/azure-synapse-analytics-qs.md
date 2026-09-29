@@ -183,7 +183,7 @@ Now that you have a repository configured, you can initialize your project and s
 
 1. Enter `dbt run` in the command prompt at the bottom of the screen. You should get a successful run and see the three models.
 
-Later, you can connect your business intelligence (BI) tools to these views and tables so they only read cleaned up data rather than raw data in your BI tool.
+Later, you can connect your business intelligence (BI) tools (like [dbt Charts](https://dbtcharts.com/)) to these views and tables so they only read cleaned up data rather than raw data in your BI tool.
 
 #### FAQs
 
