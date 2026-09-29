@@ -63,9 +63,7 @@ To create a state-aware job:
     - **Job name**: Specify the name, for example, `Daily build`.
     - (Optional) **Description**: Provide a description of what the job does (for example, what the job consumes and what the job produces). 
     - **Environment**: By default, it’s set to the deployment environment you created the state-aware job from.
-3. Options in the **Execution settings** and **Triggers** sections:
-
-<Lightbox src="/img/docs/dbt-platform/using-dbt-platform/example-triggers-section.png" width="90%" title="Example of Triggers on the Deploy Job page"/>
+3. Options in the **Execution settings** and **Triggers** sections.
 
 - **Execution settings** section:
      - **Commands**: By default, it includes the `dbt build` command. Click **Add command** to add more [commands](/docs/deploy/job-commands) that you want to be invoked when the job runs.
@@ -124,7 +122,7 @@ Some notes when using `loaded_at_field` or `loaded_at_query`:
   ```
 - If a source is a view in the data warehouse, the available metadata is usually insufficient to discern freshness, and dbt emits a warning during freshness checks. To determine freshness for sources that are views, add a `loaded_at_field` or `loaded_at_query` to your configuration.
 
-To learn more about model freshness and `build_after`, refer to [model `freshness` config](/reference/resource-configs/freshness). To learn more about source and upstream model freshness configs, refer to [resource `freshness` config](/reference/resource-properties/freshness).
+To learn more about model freshness and `build_after`, refer to [model `freshness` config](/reference/resource-configs/freshness). To learn more about source and upstream model freshness configs, refer to [resource `freshness` config](/reference/resource-configs/freshness).
 
 ### Customizing behavior
 
@@ -293,7 +291,7 @@ models:
 ```yaml
 models:
   [<resource-path>](/reference/resource-configs/resource-path):
-    [+](/reference/resource-configs/plus-prefix)[freshness](/reference/resource-properties/freshness):
+    [+](/reference/resource-configs/plus-prefix)[freshness](/reference/resource-configs/freshness):
       build_after: 
         count: 4
         period: hour

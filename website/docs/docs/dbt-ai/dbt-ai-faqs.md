@@ -21,7 +21,7 @@ dbt Labs is committed to protecting your privacy and data. This page provides in
 
 <Expandable alt_header="What is dbt Wizard?">
 
-<Constant name="wizard" /> is the latest and recommended agentic experience for governed data development in dbt, available in both the <Constant name="dbt_platform" /> and the terminal CLI. It helps teams ship trusted dbt changes faster and with less risk by understanding project context, routing to the right dbt tools, validating changes, and supporting review before changes are persisted.
+<Constant name="wizard" /> is the latest and recommended agentic experience for governed data development in dbt. Wizard is available in the <Constant name="dbt_platform" />, the terminal CLI, and as a [Desktop app](/docs/dbt-ai/wizard-desktop). It helps teams ship trusted dbt changes faster and with less risk by understanding project context, routing to the right dbt tools, validating changes, and supporting review before changes are persisted.
 
 Use <Constant name="wizard" /> to investigate lineage and downstream impact, generate or refactor SQL from natural-language prompts, create [documentation](/docs/build/documentation), [data tests](/docs/build/data-tests), [metrics](/docs/build/metrics-overview), and [semantic models](/docs/build/semantic-models), and validate changes with warehouse awareness.
 
@@ -29,14 +29,17 @@ In the <Constant name="dbt_platform" />, <Constant name="wizard" /> is available
 
 In the CLI, you can use <Constant name="wizard" /> from your terminal for local development workflows.
 
+In [Wizard Desktop](/docs/dbt-ai/wizard-desktop), you get <Constant name="wizard" /> as a native app. View rich data visualizations, data diffs, and lineage to understand your data and your changes, and keep several conversations going at once, each on its own branch, so you can work on more than one thing at a time.
+
 </Expandable>
 
 <Expandable alt_header="Where can I find dbt Wizard?">
 
-<Constant name="wizard" /> is available in the <Constant name="dbt_platform" /> and as a terminal CLI.
+<Constant name="wizard" /> is available in the <Constant name="dbt_platform" />, as a terminal CLI, and as Wizard Desktop.
 
 - In the platform, you can use <Constant name="wizard" /> in the [<Constant name="studio_ide" />](/docs/dbt-ai/wizard-ide) for governed data development in dbt.
 - In the CLI, use the [<Constant name="wizard" /> CLI](/docs/dbt-ai/wizard-cli) for local development and automation.
+- In [Wizard Desktop](/docs/dbt-ai/wizard-desktop), use a native app with rich data visualizations, data diffs, lineage, and multiple conversations running at once.
 
 To use <Constant name="wizard" /> in the platform, you need any <Constant name="dbt" /> [platform account](https://www.getdbt.com/contact). 
 

@@ -1,7 +1,7 @@
 ---
-title: "Use skills with dbt Wizard in the dbt platform"
+title: "Use skills with dbt Wizard in dbt platform"
 id: "wizard-platform-skills"
-description: "Create and use skills to give dbt Wizard in the dbt platform reusable, project-specific instructions."
+description: "Create and use skills to give dbt Wizard in dbt platform reusable, project-specific instructions."
 sidebar_label: "Use skills"
 tags: [AI, Wizard]
 pagination_prev: "docs/platform/wizard-home"
@@ -9,7 +9,7 @@ pagination_next: "docs/dbt-ai/wizard-platform-mcp"
 availability: platform_usage
 ---
 
-# Use skills with <Constant name="wizard" /> in the <Constant name="dbt_platform" /> <Lifecycle status="beta"/>
+# Use skills with <Constant name="wizard" /> in <Constant name="dbt_platform" /> <Lifecycle status="beta"/>
 
 <IntroText>
 Skills are reusable instructions that help <Constant name="wizard" /> follow your team's SQL conventions, naming rules, modeling patterns, and workflows without repeating them in every prompt.

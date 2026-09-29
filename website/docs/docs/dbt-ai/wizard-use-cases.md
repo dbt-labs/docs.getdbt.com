@@ -8,7 +8,7 @@ availability: all_users
 ---
 
 <IntroText>
-Common use cases for <Constant name="wizard" />, with example prompts and what to expect.
+Common use cases for <Constant name="wizard" />, with example prompts and what to expect. No <WizardPopcorn>spellbook</WizardPopcorn> needed.
 </IntroText>
 
 <Constant name="wizard" /> works best when you give it a clear scope (which dbt model or area), an intent (what you want to change or learn), and any constraints (naming conventions, materialization, tests). The following examples follow that pattern.
@@ -24,7 +24,7 @@ Common use cases for <Constant name="wizard" />, with example prompts and what t
 - [Validate before shipping](#validate-before-shipping)
 - [Add a semantic model](#add-a-semantic-model)
 
-This page assumes you're using <Constant name="wizard" /> in the terminal with an active session or in <Constant name="dbt_platform" />. For examples of using <Constant name="wizard" /> in the Studio IDE, refer to the [Prompt cookbook](/guides/prompt-cookbook). To use <Constant name="wizard" /> in the CLI, use the `wizard` [command reference](/docs/dbt-ai/wizard-cli-reference).
+These prompts work the same across surfaces &mdash; the [CLI](/docs/dbt-ai/wizard-quickstart), the [Wizard Desktop](/docs/dbt-ai/wizard-desktop), and <Constant name="wizard" /> in [<Constant name="dbt_platform" />](/docs/platform/wizard-platform). For examples specific to the Studio IDE, refer to the [Prompt cookbook](/guides/prompt-cookbook). To use <Constant name="wizard" /> in the CLI, use the `wizard` [command reference](/docs/dbt-ai/wizard-cli-reference).
 
 
 :::tip Best practices for using dbt Wizard
@@ -246,5 +246,5 @@ For version-specific examples and validation steps, refer to [Build Semantic Lay
 - [Build Semantic Layer definitions](/best-practices/how-to-use-wizard/wizard-7-semantic-layer)
 - [dbt Wizard overview](/docs/dbt-ai/wizard-cli)
 - [Configure BYOK](/docs/dbt-ai/wizard-byok)
-- [dbt Wizard in Studio IDE](/docs/dbt-ai/wizard-ide): same agent, in the dbt platform
+- [dbt Wizard in Studio IDE](/docs/dbt-ai/wizard-ide): same agent, in dbt platform
 - [Prompt cookbook](/guides/prompt-cookbook): more prompt patterns for the dbt Wizard in Studio IDE (many apply to the CLI too)

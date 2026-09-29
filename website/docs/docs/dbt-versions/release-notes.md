@@ -18,10 +18,66 @@ availability:
 
 Release notes are grouped by month for both multi-tenant and virtual private cloud (VPC) environments. <span><img src="/img/fontawesome/rss.svg" alt="RSS" className="rss-icon" />Subscribe to release note updates via [RSS](/feeds/release-notes-rss.xml), [Atom](/feeds/release-notes-atom.xml), or [JSON Feed](/feeds/release-notes-rss.json).</span>
 
-For <Constant name="fusion_engine" /> updates, refer to the [v2 changelog](https://github.com/dbt-labs/dbt/blob/main/CHANGELOG-fusion.md).
+For <Constant name="fusion_engine" /> updates, refer to the [v2 changelog](https://github.com/dbt-labs/dbt/blob/main/CHANGELOG-dbt.md).
 
 ## September 2026
 
+- **New:** [DuckDB support for Apache Iceberg](/docs/build/iceberg/adapters/duckdb-iceberg-support) is now generally available for local use with <Constant name="fusion" />.
+- **New:** The models table in Catalog navigation now shows a column count for each model.
+- **Enhancement:** <Constant name="studio_ide" /> now detects missing development credentials at startup and shows a **Development Credentials Required** modal with a direct link to add credentials, instead of failing silently.
+- **Enhancement:** The **Upstream Sources** table on the model detail pages now sorts by freshness severity by default (Error first, Pass last). Click **Name** or **Status** to change the sort order. The **Status** column also no longer overflows on wide screens.
+- **Enhancement:** The model timing Gantt chart no longer limits groups to 2,000 rows. You can now see all models in the timing view for large runs.
+- **Enhancement:** Read-only users can now see their assigned analytics connection in project settings instead of **Not configured**.
+- **Enhancement:** Account admins now receive email when <Constant name="wizard" /> usage credits are exhausted, with separate notices for accounts that have no usage commitment and accounts that have used their full commitment.
+- **Enhancement:** When a GitLab host is unreachable, affected API endpoints now return HTTP 503 with the message "GitLab is unavailable, please try again." instead of an unclear failure. This applies when you create a repository or list GitLab groups.
+- **Fix:** Pinned models in the <Constant name="wizard" /> context card now display the model name (for example, `customers`) instead of the raw metadata unique ID (for example, `model.jaffle_shop.customers`).
+- **Fix:** Cross-account write attempts now return HTTP 403 Forbidden instead of a generic 500 Internal Server Error, so you get a clear rejection when the account doesn't match.
+- **Fix:** The error for a missing Azure DevOps account link now shows the correct message: "Missing Azure user; link your Azure DevOps account in your personal profile."
+- **Behavior change:** Creating accounts via `POST /api/v2/accounts/` is now blocked for service tokens, account-scoped personal access tokens (PATs), and OAuth access tokens. Service tokens and account-scoped user API tokens receive HTTP 400; OAuth access tokens receive HTTP 403, with explicit error messages in each case.
+- **Behavior change:** Cost Insights aggregates now include unit tests when you filter by the Test resource type. Previously, unit tests were silently excluded, causing lower-than-expected execution counts.
+
+### dbt Summit 2026 announcements
+
+The following product name changes and features are part of dbt Labs announcements at [dbt Summit 2026](https://www.getdbt.com/dbt-summit) in Las Vegas, September 15-18, 2026.
+
+#### Product naming updates
+
+We've updated some of our product names and we're excited to unveil them at dbt Summit! Our docs have been updated to use this terminology:
+
+<SimpleTable>
+  
+| Previously | Now | What to know |
+|------------|-----|--------------|
+| — | `dbt` | The industry standard for data transformation, available in self-host and cloud-hosted configurations |
+| Fusion, dbt Core v2.x | `dbt v2` (recommended), `dbt OSS` (open source, Apache 2.0 only) | Check out [our blog](/blog/comparing-dbt-and-dbt-oss) for more information |
+| dbt Core v1.x | `dbt v1` | Remains open source |
+
+</SimpleTable>
+
+Two other things moved:
+
+- The GitHub repo for dbt (v1 and v2) is now at [dbt-labs/dbt](https://github.com/dbt-labs/dbt).
+- The [`pip install`](/docs/local/install-dbt?version=2) instructions:
+  - dbt v2: `pip install dbt` (previously installed the dbt platform CLI).
+  - dbt v1: `pip install dbt-core` remains for now, but over time will be migrated to `pip install dbt-oss`.
+
+#### Now generally available
+
+- **[dbt v2.0](/docs/dbt-versions/dbt-upgrade/upgrading-to-v2)** is the next major version of dbt, running on a single engine written in Rust. Install it with `pip install dbt` and run it wherever you deploy dbt: on your laptop, in your virtual private cloud, or on the <Constant name="dbt_platform" />. Read more in [dbt v2.0 is GA](/blog/dbt-v2-is-ga).
+- **[dbt State](/docs/deploy/dbt-state-about)** skips or clones nodes when the logic and data haven't changed, rather than rebuilding everything on every run. It works locally (dbt v1.7 through v2.0), on the <Constant name="dbt_platform" />, and with external orchestrators. To get started, refer to [Setting up dbt State](/docs/deploy/dbt-state-setup).
+- **Adapters for dbt v2.0** — [Snowflake](/docs/local/connect-data-platform/snowflake-setup?version=2), [BigQuery](/docs/local/connect-data-platform/bigquery-setup?version=2), [Redshift](/docs/local/connect-data-platform/redshift-setup?version=2), and [Databricks](/docs/local/connect-data-platform/databricks-setup?version=2) are available for local and platform use. [DuckDB](/docs/local/connect-data-platform/duckdb-setup?version=2) is available for local use. Refer to [Adapter lifecycle](/docs/supported-data-platforms?version=2.0#adapter-lifecycle) and [About connections](/docs/platform/connect-data-platform/about-connections?version=2.0) for current status and platform connection support.
+
+#### In preview and beta
+
+- **Private beta: [Lake Compute](/docs/lake-compute)** is a dedicated engine, built on DuckDB, that runs dbt models directly against your Apache Iceberg™ tables, priced for transformation and nothing else.
+- **Private beta: [Wizard Desktop](/docs/dbt-ai/wizard-desktop)** runs the same Wizard engine in a native app with rendered tables and charts, inline diffs, and parallel chats. [Sign up to get the download link](https://www.getdbt.com/wizard-desktop-waitlist).
+- **Private beta: [ClickHouse](/docs/platform/connect-data-platform/connect-clickhouse?version=2.0)** connections for dbt v2.0 on the <Constant name="dbt_platform" />. Connect ClickHouse Cloud on a v2 release track using username and password over HTTPS. ClickHouse is also in beta for local use — refer to [Connect ClickHouse](/docs/local/connect-data-platform/clickhouse-setup?version=2).
+- **Beta: [Apache Spark](/docs/local/connect-data-platform/spark-setup?version=2)** adapter for dbt v2.0, for local use (CLI only).
+- **Public beta: [dbt Charts](https://docs.dbtcharts.com/)** turns YAML into interactive dashboards that query your dbt models directly, so boards stay in sync with the transformations your team already trusts. Develop locally with the `dct` CLI.
+
+### Pre-dbt Summit
+
+- **Beta:** When [dbt State](/docs/deploy/dbt-state-about) is enabled in a self-managed deployment and your project is connected to the <Constant name="dbt_platform" />, `state:*` selectors use dbt State as their comparison source, unless a state manifest is explicitly provided. Each node (models, snapshots, seeds, and tests) is compared against its own last execution in the deferral target environment rather than a single `manifest.json` from the most recent job run. Refer to [dbt State-powered `state:*` selectors](/docs/deploy/dbt-state-deferral#dbt-state-powered-state-selectors) for more information.
 - **New:** The **dbt State** page now includes a [**Lag tolerance recommendations**](/docs/deploy/dbt-state-interface#lag-tolerance-recommendations) section that identifies models that could safely tolerate more lag. For each model, it shows the current lag tolerance, the recommended value, the estimated percentage of build time you'd save, and projected build time savings over the next 30 days. You can search by model name or filter by project, and apply recommendations by updating the [`lag_tolerance`](/reference/resource-configs/lag-tolerance) config.
 - **New:** The Snowflake adapter now supports the `interactive_table` materialization in beta on dbt v2 (dbt-snowflake v1.13+), covering both static and dynamic (auto-refreshing) interactive tables. For more information, see [Interactive tables](/reference/resource-configs/snowflake-configs).
 - **Enhancement:** The [Analyst Read](/docs/platform/manage-access/enterprise-permissions#analyst-read) permission set is now available to all accounts without requiring a feature flag. You can assign it to groups so read-only users can view Catalog and project configuration such as connections, environments, and <Constant name="semantic_layer" /> settings.
@@ -162,7 +218,7 @@ To simplify the docs experience, clarify availability, and make it easier to fin
 The following features are new or enhanced as part of dbt Labs announcements at [Snowflake Summit 2026](https://www.getdbt.com/events/snowflake-summit-2026) in San Francisco from June 1–4, 2026:
 
 - **Alpha**: [dbt Core 2.0](/docs/dbt-versions/dbt-upgrade/upgrading-to-v2) is now available in alpha!
-  - **New**: dbt Core 2.0 is the open-source Apache 2.0 foundation that <Constant name="fusion_engine" /> builds on, delivering a faster, Rust-based runtime. It ships as two distributions: `dbt-core` (OSS, Apache 2.0) and `dbt` (<Constant name="fusion" /> distribution, proprietary).
+  - **New**: dbt Core 2.0 is the open-source Apache 2.0 foundation that <Constant name="fusion_engine" /> builds on, delivering a faster, Rust-based runtime. It ships as two distributions: `dbt-oss` (OSS, Apache 2.0) and `dbt` (<Constant name="fusion" /> distribution, proprietary).
 - **Beta**: [`dbt lint`](/reference/commands/lint?version=2.0) is now available in beta!
   - **New**: `dbt lint` is a high-performance SQL linter built into the <Constant name="dbt_platform" />, available on projects running <Constant name="fusion_engine" />. It is SQLFluff-compatible; it reads your existing `.sqlfluff` config, uses the same rule codes, and respects `-- noqa` suppression comments. In benchmarks, it runs roughly 50× faster than single-threaded SQLFluff..
 - **Preview**: [dbt Docs v2](/docs/build/view-documentation#dbt-docs-v2) is now available in preview!

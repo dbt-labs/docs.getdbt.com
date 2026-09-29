@@ -52,7 +52,7 @@ To complete the required setup steps, you'll need:
 
 - A **Snowflake account** where you can act as `ACCOUNTADMIN`. This guide builds everything from scratch, so a brand-new account (a trial works) is exactly the assumed starting point.
 - An **AWS account** where you can create an S3 bucket and an IAM role + policy.
-- A local clone of the [**`fusion-jaffle-shop`** project](https://github.com/matthewshaver/fusion-jaffle-shop), with the seed CSVs present in `seeds/`.
+- A local clone of the [**`fusion-jaffle-shop`** project](https://github.com/matthewshaver/jaffle-shop-multi-adapter), with the seed CSVs present in `seeds/`.
 - Comfort running SQL in Snowsight and basic commands in a terminal.
 
 ### Tools to install and verify
@@ -83,10 +83,10 @@ This guide is for v2 only. The `catalogs.yml` mechanism it relies on is not avai
 
 This guide will use a heavily augmented copy of the traditional Jaffle Shop project. The project itself contains more information than required to simply setup an Iceberg workflow, so you can use it to run more trials and observe results. 
 
-Clone the [`fusion-jaffle-shop` project](https://github.com/matthewshaver/fusion-jaffle-shop) from GitHub:
+Clone the [`fusion-jaffle-shop` project](https://github.com/matthewshaver/jaffle-shop-multi-adapter) from GitHub:
 
 ```bash
-git clone https://github.com/matthewshaver/fusion-jaffle-shop.git
+git clone https://github.com/matthewshaver/jaffle-shop-multi-adapter.git
 ```
 
 Then navigate into the project directory:

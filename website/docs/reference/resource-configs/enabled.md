@@ -19,6 +19,7 @@ default_value: true
     { label: 'Exposures', value: 'exposures', },
     { label: 'Semantic models', value: 'semantic models', },
     { label: 'Saved queries', value: 'saved queries', },
+    { label: 'Skills', value: 'skills', },
   ]
 }>
 <TabItem value="models">
@@ -364,6 +365,39 @@ saved_queries:
 ```
 
 </File>
+
+</TabItem>
+
+<TabItem value="skills">
+
+<VersionBlock firstVersion="2.0">
+
+<File name='dbt_project.yml'>
+
+```yaml
+skills:
+  [<resource-path>](/reference/resource-configs/resource-path):
+    [+](/reference/resource-configs/plus-prefix)enabled: true | false
+```
+
+</File>
+
+For [agent skills](/docs/dbt-ai/package-skills), the resource path is the package that ships the skill, followed by the skill's name:
+
+<File name='dbt_project.yml'>
+
+```yaml
+skills:
+  demo_skills:
+    naming-conventions:
+      +enabled: false
+```
+
+</File>
+
+A package's own `skills` config sets the defaults for the skills it ships, and your root project's `skills` config overrides it. Disabling a skill is how you resolve two packages that ship skills with the same name.
+
+</VersionBlock>
 
 </TabItem>
 

@@ -9,7 +9,7 @@ availability: everywhere_usage
 
 import DbtStateExplainTab from '/snippets/_dbt-state-explain-tab.md';
 
-# Monitor dbt State activity <Lifecycle status="preview" />
+# Monitor dbt State activity
 
 <IntroText>
 Learn how to monitor dbt State activity in <Constant name="dbt_platform" /> for better visibility into model builds and cost savings.
