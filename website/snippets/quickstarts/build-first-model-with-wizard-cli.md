@@ -1,6 +1,6 @@
 ### Build it with AI using dbt Wizard
 
-Prefer not to write the SQL by hand? The [<Constant name="wizard" /> CLI](/docs/dbt-ai/wizard-cli) can build the same model for you from your terminal, grounded in your project's actual schema and lineage.
+Prefer not to write the SQL by hand? The [<Constant name="wizard" /> CLI](/docs/dbt-ai/wizard-cli) can build the same model for you from your terminal, grounded in your project's actual schema and lineage. Be warned, the wizard has been known to <WizardPopcorn>cast spells</WizardPopcorn>.
 
 1. Install the <Constant name="wizard" /> CLI:
 
