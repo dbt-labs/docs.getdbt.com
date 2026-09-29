@@ -90,7 +90,6 @@ When you use the [`validate_macro_args`](/reference/global-configs/behavior-flag
 - `optional[<Type>]`, for example, `optional[integer]`
 - [`relation`](/reference/dbt-classes#relation)
 - [`column`](/reference/dbt-classes#column)
-- Unions of types separated by `|`, for example, `str | int` or `list[str | int]`
 
 </VersionBlock>
 
