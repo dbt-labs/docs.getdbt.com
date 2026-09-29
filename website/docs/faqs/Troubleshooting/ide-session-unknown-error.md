@@ -9,7 +9,7 @@ If you're seeing the following error when you launch the <Constant name="studio_
 
 ```shell
 
-Your <Constant name="studio_ide" /> session experienced an unknown error and was terminated. Please contact support.
+Your Studio IDE session experienced an unknown error and was terminated. Please contact support.
 
 ```
 
