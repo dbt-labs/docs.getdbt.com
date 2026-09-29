@@ -33,9 +33,9 @@ Once you've caught up on everything [dbt has to offer](/docs/introduction), star
 
 <Card
     title="Try dbt Wizard"
-    body="Let dbt Wizard build your first model from a plain-English prompt, grounded in your project's real lineage."
+    body="Let dbt Wizard build your first model from a plain language prompt, grounded in your project's real lineage."
     link="/docs/dbt-ai/wizard-quickstart"
-    icon="dbt-copilot"/>
+    icon="wizard"/>
 
 </div>
 
