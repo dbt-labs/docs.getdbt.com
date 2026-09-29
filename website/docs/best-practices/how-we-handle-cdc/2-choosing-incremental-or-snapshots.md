@@ -66,7 +66,7 @@ After a second run where Alice moves from `pending` to `shipped`, the incrementa
 
 Use a snapshot when the source overwrites rows in place and you need history, but you do not need a separate incremental staging model.
 
-A snapshot keeps old rows instead of overwriting them. Run `dbt snapshot` (or `dbt build`) on a schedule so you do not miss changes. [How often should I run the snapshot command?](/faqs/Runs/snapshot-frequency) recommends hourly to daily.
+A snapshot keeps old rows instead of overwriting them. Run `dbt snapshot` (or `dbt build`) on a schedule so you do not miss changes. Refer to the FAQ [How often should I run the snapshot command?](/faqs/Runs/snapshot-frequency), which recommends hourly to daily.
 
 Choose a strategy:
 
@@ -102,9 +102,9 @@ source (table that overwrites rows, or a list of changes)
 
 - The incremental model holds the latest row per id, so each run only processes new changes.
 - The snapshot reads that staging table (or the source) and writes history.
-- The current model selects snapshot rows where `dbt_valid_to` is null, which is the latest version the tables people query need.
+- The current model selects snapshot rows where `dbt_valid_to` is null.
 
-Snapshot _staging models or sources_, not the finished table people query. Snapshotting a final reporting table is a common mistake. [Strategies for change data capture in dbt](/blog/change-data-capture) treats a later incremental history model and an earlier snapshot as two options, and warns against snapshotting the table people query. This approach keeps the snapshot before those tables.
+Snapshot _staging models or sources_, not the finished table people query.
 
 The following example uses the same Alice and Bob rows as the tables on this page. `raw_customers` is the source table that overwrites `status` in place.
 
@@ -173,14 +173,12 @@ If the source already includes from and to dates (or a list of changes you want 
 
 ## What else to consider
 
-These come up often with CDC. They are not a third approach. Use the linked pages when you implement one of the three options on this page.
-
 - Hard deletes: Loading tools often mark a row as deleted. Snapshots can close the old row or add a deletion record with [`hard_deletes`](/reference/resource-configs/hard-deletes). Incremental models must handle deletes in your merge (or a separate delete statement).
-- Late-arriving changes: Widen the incremental filter so you look a bit further back than the last run, and know when a `--full-refresh` is the safe fix. For information on those options, refer to [Configure incremental models](/docs/build/incremental-models).
+- Late-arriving changes: Widen the incremental filter so you look a bit further back than the last run, and know when a `--full-refresh` is the safe fix. Refer to [Configure incremental models](/docs/build/incremental-models).
 - Several changes in one run: On incremental models, keep only the latest change per id before you merge.
 - Source columns change: On incremental models, use [`on_schema_change`](/docs/build/incremental-models#what-if-the-columns-of-my-incremental-model-change). Snapshots can add new columns as they appear.
 - Tests: For snapshots, unique on `(unique_key, dbt_valid_from)`, no overlapping `dbt_valid_from` / `dbt_valid_to` ranges, and exactly one current row per id (`dbt_valid_to` is null). Freshness tests belong on the raw source.
-- Cost: Organize the table on the change timestamp. Add extra filters so you do not scan full history on every run. For information on those filters, refer to [About incremental strategy](/docs/build/incremental-strategy).
+- Cost: Organize the table on the change timestamp. Add extra filters so you do not scan full history on every run. Refer to [About incremental strategy](/docs/build/incremental-strategy).
 
 ## Related docs
 
