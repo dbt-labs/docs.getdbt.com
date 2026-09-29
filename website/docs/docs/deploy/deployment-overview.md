@@ -15,7 +15,7 @@ Use the <Constant name="dbt_platform" />'s capabilities to seamlessly run a dbt 
 
 </IntroText>
 
-The <Constant name="dbt_platform" /> offers the easiest and most reliable way to run your dbt project in production. Effortlessly promote high quality code from development to production and build fresh data assets that your business intelligence tools and end users query to make business decisions. <Term id="deploying">Deploying</Term> with <Constant name="dbt" /> lets you:
+The <Constant name="dbt_platform" /> offers the easiest and most reliable way to run your dbt project in production. Effortlessly promote high quality code from development to production and build fresh data assets that your business intelligence tools (like [dbt Charts](https://dbtcharts.com/)) and end users query to make business decisions. <Term id="deploying">Deploying</Term> with <Constant name="dbt" /> lets you:
 - Keep production data fresh on a timely basis
 - Ensure CI and production pipelines are efficient 
 - Identify the root cause of failures in deployment environments
