@@ -7,7 +7,7 @@ For the best dbt experience, use dbt v2 with the dbt VS Code extension to access
 - [**dbt lint**](/reference/commands/lint?version=2) <sup>*</sup> 
 - [**dbt docs v2**](/reference/commands/cmd-docs?version=2#dbt-docs-v2) (lite) <sup>*</sup>
 - [**dbt docs v2**](/reference/commands/cmd-docs?version=2#dbt-docs-v2) (full): including column-level lineage
-- [**<Term id="lsp" />**](/docs/about-dbt-lsp?version=2) (lite): go-to ref, source, and macro <sup>*</sup>
+- [**<Term id="lsp" />**](/docs/about-dbt-lsp?version=2) (lite): Go-to ref, source, and macro <sup>*</sup>
 - [**Full <Term id="lsp" />**](/docs/about-dbt-lsp?version=2): CTE, hover to see schema, and more 
 - [**SQL comprehension, type checking, and impact analysis**](/blog/the-levels-of-sql-comprehension)
 - [**Precise column-level lineage**](/docs/explore/column-level-lineage?version=2)
