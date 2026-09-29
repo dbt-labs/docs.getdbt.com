@@ -59,10 +59,12 @@ macros:
 
 ### Supported types
 
+<VersionBlock lastVersion="1.99">
+
 From <Constant name="dbt" /> v1.10, when you use the [`validate_macro_args`](/reference/global-configs/behavior-flags/validate_macro_args) flag, dbt supports the following types for macro arguments:
 
 - `string` or `str`
-- `bool` (use `bool`, not `boolean`; unlike `string`/`str`, there is no `boolean` alias)
+- `bool` (`boolean` isn't supported and triggers an invalid type warning)
 - `integer` or `int`
 - `float`
 - `any`
@@ -71,6 +73,26 @@ From <Constant name="dbt" /> v1.10, when you use the [`validate_macro_args`](/re
 - `optional[<Type>]`, for example, `optional[integer]`
 - [`relation`](/reference/dbt-classes#relation)
 - [`column`](/reference/dbt-classes#column)
+
+</VersionBlock>
+
+<VersionBlock firstVersion="2.0">
+
+When you use the [`validate_macro_args`](/reference/global-configs/behavior-flags/validate_macro_args) flag, dbt supports the following types for macro arguments:
+
+- `string` or `str`
+- `boolean` or `bool`
+- `integer` or `int`
+- `float`
+- `any`
+- `list[<Type>]`, for example, `list[string]`
+- `dict[<Type>, <Type>]`, for example, `dict[str, list[int]]`
+- `optional[<Type>]`, for example, `optional[integer]`
+- [`relation`](/reference/dbt-classes#relation)
+- [`column`](/reference/dbt-classes#column)
+- Unions of types separated by `|`, for example, `str | int` or `list[str | int]`
+
+</VersionBlock>
 
 Note that the types follow a Python-like style but are used for documentation and validation only. They are not Python types.
 
