@@ -47,7 +47,9 @@ You can use the column evolution lineage lens to determine when a column is tran
 
 <Lightbox src="/img/docs/collaborate/dbt-explorer/example-evolution-lens.png" width="90%" title="Example of the Column evolution lens"/>
 
-In <Constant name="catalog" />, a column labeled **Transformation** shows a short snippet of the formula that produced it. Select the column to view the full formula. <Constant name="catalog" /> includes the transformation type and formula after you change the project and a job runs in the production or staging environment.
+The **Transformation** column previews the formula used to produce a column’s values. To view the full formula, select the column in the full lineage view.
+
+The transformation type and formula appear after you update your project and a job runs in your production or staging environment.
 
 ### Inherited column descriptions
 
