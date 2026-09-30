@@ -107,6 +107,18 @@ If you add `dbt docs generate` as a run step, dbt runs `dbt compile --write-cata
 To refresh <Constant name="catalog" /> metadata without building models, add `dbt compile --write-catalog` in the **Commands** section.
 :::
 
+## View your docs
+
+[<Constant name="catalog" />](/docs/explore/explore-projects) is where you view your project's documentation in the <Constant name="dbt_platform" />. It always shows your project's latest production state, so there's nothing to deploy or host. In <Constant name="catalog" />, you can:
+
+- Search and filter your project's resources, such as models, sources, and metrics.
+- Explore the [lineage graph](/docs/explore/explore-projects#project-lineage) to see how your resources connect.
+- Open a [resource's details](/docs/explore/explore-projects#view-resource-details) to see its description, columns, tests, and recent run results.
+
+To open it, click **Catalog** in the navigation. To explore a model in the lineage graph, select your project in the left sidebar, click **View lineage**, and then click a model to view its description.
+
+<Lightbox src="/img/docs/collaborate/dbt-explorer/example-project-lineage-graph.png" width="100%" title="Example of the full lineage graph in Catalog" />
+
 To share your project with stakeholders who don't develop in dbt, give all your applicable users [read-only access](/docs/platform/manage-access/seats-and-users) to <Constant name="catalog" /> without restrictions.
 
 </VersionBlock>
