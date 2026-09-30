@@ -31,9 +31,9 @@ Every job invocation automatically includes the [`dbt deps`](/reference/commands
 
 <Lightbox src="/img/docs/dbt-platform/using-dbt-platform/fail-dbtdeps.png" width="85%" title="A failed job that had an error during the dbt deps run step."/>
 
-### Checkbox commands
-
 <VersionBlock lastVersion="1.99">
+
+### Checkbox commands
 
 For every job, you have the option to select the [Generate docs on run](/docs/explore/build-and-view-your-docs) or [Run source freshness](/docs/deploy/source-freshness) checkboxes, enabling you to run the commands automatically. 
 
@@ -45,9 +45,11 @@ For every job, you have the option to select the [Generate docs on run](/docs/ex
 
 <VersionBlock firstVersion="2.0">
 
-Jobs running v2 don't have the **Generate docs on run** checkbox:
+### Docs and source freshness
 
-- **Docs** &mdash; Every job run refreshes [<Constant name="catalog" />](/docs/explore/explore-projects) metadata automatically, so there's nothing to select. Read [Set up a documentation job](/docs/explore/build-and-view-your-docs?version=2#set-up-a-documentation-job) for more information.
+Here's how docs and source freshness work in v2 jobs:
+
+- **Docs** &mdash; There's no **Generate docs on run** checkbox. Every job run refreshes [<Constant name="catalog" />](/docs/explore/explore-projects) metadata automatically. Read [Set up a documentation job](/docs/explore/build-and-view-your-docs?version=2#set-up-a-documentation-job) for more information.
 - **Source freshness** &mdash; To check that your source data is up to date before your models build on it, select the **Run source freshness** checkbox or add `dbt source freshness` to the **Commands** list. Read [Source freshness](/docs/deploy/source-freshness) for more information.
 
 </VersionBlock>
