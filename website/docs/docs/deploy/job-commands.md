@@ -48,7 +48,7 @@ For every job, you have the option to select the [Generate docs on run](/docs/ex
 Jobs running v2 don't have the **Generate docs on run** checkbox:
 
 - **Docs** &mdash; Every job run refreshes [<Constant name="catalog" />](/docs/explore/explore-projects) metadata automatically, so there's nothing to select. Read [Set up a documentation job](/docs/explore/build-and-view-your-docs?version=2#set-up-a-documentation-job) for more information.
-- **Source freshness** &mdash; Select the **Run source freshness** checkbox or add `dbt source freshness` to the **Commands** list. The checkbox runs it as the first step without failing the job, while a command step fails the job if freshness checks fail. Read [Source freshness](/docs/deploy/source-freshness) for more information.
+- **Source freshness** &mdash; To check that your source data is up to date before your models build on it, select the **Run source freshness** checkbox or add `dbt source freshness` to the **Commands** list. Read [Source freshness](/docs/deploy/source-freshness) for more information.
 
 </VersionBlock>
 
