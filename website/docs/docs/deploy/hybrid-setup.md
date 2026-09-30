@@ -110,9 +110,9 @@ Once you have the values from the previous step, you can prepare your <Constant 
       - latest:    1.9.3     - Ahead of latest version!
    ```
 2. If you don't have the latest version (1.10 or later), [upgrade](/docs/local/install-dbt?version=1#change-dbt-core-versions) your <Constant name="core" /> project by running `python -m pip install --upgrade dbt-core`.
-3. Set the following environment variables in your <Constant name="core" /> project by running the following commands in the CLI. Replace the `your_account_id`, `your_environment_id`, and `your_token` with the actual values in the [previous step](#generate-service-token-and-artifact-upload-values).
+3. Set the following environment variables in your <Constant name="core" /> project by running the following commands in the CLI. Replace the `your_account_id`, `your_environment_id`, and `your_token` with the actual values in the [previous step](#generate-service-token-and-artifact-upload-values). The upload variable name depends on the installed <Constant name="core" /> version. On 1.10, use `DBT_UPLOAD_TO_ARTIFACTS_INGEST_API`. On 1.11 and later, use `DBT_ENGINE_UPLOAD_TO_ARTIFACTS_INGEST_API`. Version 1.10 ignores `DBT_ENGINE_UPLOAD_TO_ARTIFACTS_INGEST_API`, and the run finishes with no artifact upload message.
 
-   <VersionBlock lastVersion="1.10">
+   For 1.10:
 
    ```bash
    export DBT_CLOUD_ACCOUNT_ID=your_account_id
@@ -121,9 +121,7 @@ Once you have the values from the previous step, you can prepare your <Constant 
    export DBT_UPLOAD_TO_ARTIFACTS_INGEST_API=True
    ```
 
-   </VersionBlock>
-
-   <VersionBlock firstVersion="1.11">
+   For 1.11 and later:
 
    ```bash
    export DBT_CLOUD_ACCOUNT_ID=your_account_id
@@ -131,8 +129,6 @@ Once you have the values from the previous step, you can prepare your <Constant 
    export DBT_CLOUD_TOKEN=your_token
    export DBT_ENGINE_UPLOAD_TO_ARTIFACTS_INGEST_API=True
    ```
-
-   </VersionBlock>
 
    - Set the environment variables in whatever way you use them in your project.
    - To unset an environment variable, run `unset environment_variable_name`, replacing `environment_variable_name` with the actual name of the environment variable.
