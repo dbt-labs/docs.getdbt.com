@@ -8,9 +8,6 @@ website/docs/**/*.mdx
 website/snippets/**/*.md
 website/snippets/**/*.mdx
 
-# Release notes
-website/docs/docs/dbt-versions/**/*.md
-
 # Sidebar nav: allowed, but same word/file limits as everything else apply.
 # No special-case threshold — a real reorg blows past 30 words anyway.
 website/sidebars.js
