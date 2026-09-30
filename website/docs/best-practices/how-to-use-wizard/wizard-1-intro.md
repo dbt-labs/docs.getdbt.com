@@ -21,7 +21,7 @@ These workflows apply to the <Constant name="wizard" /> CLI and <Constant name="
 
 For local workflows, make sure the <Constant name="wizard" /> CLI is installed, configured, and connected to a dbt project with an up-to-date `target/manifest.json`. 
 
-- To set up the CLI, check out [Use Wizard locally](/docs/dbt-ai/wizard-quickstart).
+- To set up the CLI, check out [Use Wizard locally](/docs/dbt-ai/wizard-quickstart)
 - For options such as deferral and approval policies, check out the [Wizard CLI config reference](/docs/dbt-ai/wizard-config) 
 - To use Wizard in the <Constant name="dbt_platform" />, check out [Use Wizard in dbt platform](/docs/platform/wizard-platform)
 
