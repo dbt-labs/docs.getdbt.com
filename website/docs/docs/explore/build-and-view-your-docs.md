@@ -119,7 +119,7 @@ To open it, click **Catalog** in the navigation. To explore a model in the linea
 
 <Lightbox src="/img/docs/collaborate/dbt-explorer/example-project-lineage-graph.png" width="100%" title="Example of the full lineage graph in Catalog" />
 
-To share your project with stakeholders who don't develop in dbt, give all your applicable users [read-only access](/docs/platform/manage-access/seats-and-users) to <Constant name="catalog" /> without restrictions.
+<Constant name="catalog" /> is available to Developer and read-only users. To share your project with stakeholders who don't develop in dbt, give all your applicable users [read-only access](/docs/platform/manage-access/seats-and-users) to <Constant name="catalog" /> without restrictions.
 
 </VersionBlock>
 
