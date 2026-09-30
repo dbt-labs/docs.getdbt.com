@@ -18,6 +18,9 @@ Before you start, make sure your Redshift cluster or workgroup is set up for [IA
 | `idp_response_timeout` | No | `60` | Seconds dbt waits for you to finish signing in before timing out. |
 
 </SimpleTable>
+
+`idc_region` isn't the same as your AWS account region. dbt doesn't support setting `region` alongside `browser_identity_center` in `profiles.yml` yet, so it reads your AWS region from your AWS config file (`~/.aws/config`). Make sure a default region is set there — for example, by running `aws configure`.
+
 #### Example IAM Identity Center configuration
 
 <File name="profiles.yml">

@@ -184,7 +184,7 @@ Click on one of these authentication methods for further details on how to confi
   defaultValue="database"
   values={[
     {label: 'Database', value: 'database'},
-    {label: 'IAM User via AWS Profile (<Constant name="core" />)', value: 'iam-user-profile'},
+    {label: 'IAM User via AWS Profile', value: 'iam-user-profile'},
     {label: 'IAM Identity Center (browser)', value: 'browser-identity-center'}]
 }>
 
