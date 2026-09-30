@@ -40,11 +40,19 @@ To access <Constant name="catalog" />, navigate to the **Catalog** option in the
 - Model query history to track consumption queries on your models to gain deeper insights into data usage. 
 - Downstream exposures to automatically expose relevant data models from tools like Tableau to enhance visibility.
 
+:::tip Sharing docs with stakeholders?
+Anyone with a developer or read-only seat can explore your project(s) in <Constant name="catalog" />. Add as many read-only seats as you need to share docs with stakeholders, no separate docs site required.
+:::
+
 For additional details and instructions on how to explore your lineage, navigate your resources, view model query history and data health signals, feature availability, and more &mdash; refer to [Discover data with <Constant name="catalog" />](/docs/explore/explore-projects).
 
 ### dbt Docs v2
 
 dbt Docs v2 is the next-generation open-source catalog experience, available when using <Constant name="fusion_engine" />. It is designed for data consumers (analysts, BI users, data scientists, and stakeholders) who need to understand what data exists, how it was built, and whether they can trust it.
+
+:::info dbt Docs v2 local only
+dbt Docs v2 runs locally only. In <Constant name="dbt_platform" />, jobs on <Constant name="fusion" /> refresh <Constant name="catalog" /> metadata automatically, so use [<Constant name="catalog" />](/docs/explore/build-and-view-your-docs) to explore your project, and give all your applicable users read-only access to it without restrictions. Refer to [platform behavior](/reference/commands/cmd-docs?version=2#platform-behavior) for more info.
+:::
 
 Key improvements over dbt Docs:
 
@@ -56,7 +64,6 @@ Key improvements over dbt Docs:
 
 To generate and serve dbt Docs v2 with <Constant name="fusion_engine" />, run `dbt docs generate` to build the site, then `dbt docs serve` to preview it locally. `dbt docs generate` compiles your project and writes the index for you in a single command.
 
-dbt Docs v2 runs locally only. In <Constant name="dbt_platform" />, jobs on <Constant name="fusion" /> refresh <Constant name="catalog" /> metadata automatically, so use [<Constant name="catalog" />](/docs/explore/build-and-view-your-docs) to explore your project, and give all your applicable users read-only access to it without restrictions. Refer to [platform behavior](/reference/commands/cmd-docs?version=2#platform-behavior) for more info.
 
 To include column-level lineage and richer column metadata, first produce the artifacts with [`--static-analysis strict`](https://docs.getdbt.com/docs/build/about-static-analysis?version=1.13) using `dbt compile` or `dbt build`, then export the site:
 
