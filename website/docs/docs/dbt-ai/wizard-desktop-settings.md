@@ -61,7 +61,7 @@ When you select **Reset app**, it can't be undone which means chat history goes 
 
 ## AI providers
 
-Choose how <Constant name="wizard" /> reaches a model. Come here if you selected **Skip for now** during onboarding, or to switch approaches later. Select **Refresh** to re-check which providers and models are available. If you've connected more than one <Constant name="dbt_platform" /> account, choose which one powers AI models here.
+Choose how <Constant name="wizard" /> reaches a model. Come here if you selected **Skip for now** during onboarding, or to switch approaches later. Select **Refresh** to re-check which providers and models are available. If you've connected more than one <Constant name="dbt_platform" /> account, choose which one powers AI models here by clicking **Configure**.
 
 <SimpleTable>
 
