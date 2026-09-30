@@ -37,9 +37,9 @@ Controls what appears alongside a chat while you work.
 
 ## Account
 
-Shows the dbt account <Constant name="wizard" /> uses for hosted models and platform access, and gives you the tools to clean up what the app has written to disk. 
+Shows the dbt accounts <Constant name="wizard" /> uses for hosted models and platform access, and gives you the tools to clean up what the app has written to disk. 
 
-- **Profile** lists the name and email you signed in with, and the <Constant name="dbt_platform" /> host the app is connected to, such as `vu491.us1.dbt.com`. Select **Sign out** to disconnect the account.
+- **Profile** lists each <Constant name="dbt_platform" /> account you've connected, with the name and email you signed in with and the host, such as `vu491.us1.dbt.com`. You can connect more than one account and switch between them without signing in again. Each account has its own **Sign out**. To pick which account powers AI models, go to [AI providers](#ai-providers).
 - **Maintenance** reclaims disk space or returns <Constant name="wizard" /> to a clean state. This will affect the Wizard CLI too:
 
     <SimpleTable>
@@ -61,7 +61,7 @@ When you select **Reset app**, it can't be undone which means chat history goes 
 
 ## AI providers
 
-Choose how <Constant name="wizard" /> reaches a model. Come here if you selected **Skip for now** during onboarding, or to switch approaches later. Select **Refresh** to re-check which providers and models are available.
+Choose how <Constant name="wizard" /> reaches a model. Come here if you selected **Skip for now** during onboarding, or to switch approaches later. Select **Refresh** to re-check which providers and models are available. If you've connected more than one <Constant name="dbt_platform" /> account, choose which one powers AI models here.
 
 <SimpleTable>
 
@@ -95,6 +95,7 @@ Sets how the app looks and how much detail inline widgets show.
 | Setting | What it does |
 |---|---|
 | Theme | Switches between **Light**, **Dark**, and **System**. Same choice you made during onboarding. Cycle it with <kbd>⌘</kbd> + <kbd>⌥</kbd> + <kbd>T</kbd> |
+| Transcript density | Controls how much tool activity shows in chat. Choose **Verbose** to see everything, **Focused** to see the least, or **Balanced** for somewhere in between. Back-to-back tool calls collapse into one card, and you can fine-tune what shows per category |
 | Inspector rail labels | Shows the surface names beneath the pane rail icons, so you get **Explorer** and **Lineage** as text rather than icons alone |
 | Terminal font family | The font the integrated terminals use. Enter the name exactly as it's installed, for example `FiraCode Nerd Font`. Your preferred family is used first, with `Geist Mono, monospace` as the fallback |
 | Terminal font size | A whole number from 8 to 32 |
