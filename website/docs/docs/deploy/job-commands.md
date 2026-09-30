@@ -39,17 +39,18 @@ For every job, you have the option to select the [Generate docs on run](/docs/ex
 
 **Generate docs on run** checkbox &mdash; <Constant name="dbt" /> executes the `dbt docs generate` command, _after_ the listed commands. If that particular run step in your job fails, the job can still succeed if all subsequent run steps are successful. Read [Set up a documentation job](/docs/explore/build-and-view-your-docs#set-up-a-documentation-job) for more information.
 
+**Run source freshness** checkbox &mdash; <Constant name="dbt" /> executes the `dbt source freshness` command as the first run step in your job. If that particular run step in your job fails, the job can still succeed if all subsequent run steps are successful. Read [Source freshness](/docs/deploy/source-freshness) for more information.
+
 </VersionBlock>
 
 <VersionBlock firstVersion="2.0">
 
-For every job, you have the option to select the [Run source freshness](/docs/deploy/source-freshness) checkbox, enabling you to run the command automatically.
+Jobs running v2 don't have the **Generate docs on run** or **Run source freshness** checkboxes:
 
-Jobs running v2 refresh [<Constant name="catalog" />](/docs/explore/explore-projects) metadata automatically with every execution command, so there's no docs checkbox to select. Read [Set up a documentation job](/docs/explore/build-and-view-your-docs?version=2#set-up-a-documentation-job) for more information.
+- **Docs** &mdash; Every job run refreshes [<Constant name="catalog" />](/docs/explore/explore-projects) metadata automatically, so there's nothing to select. Read [Set up a documentation job](/docs/explore/build-and-view-your-docs?version=2#set-up-a-documentation-job) for more information.
+- **Source freshness** &mdash; Add `dbt source freshness` to the **Commands** list instead. Read [Source freshness](/docs/deploy/source-freshness) for more information.
 
 </VersionBlock>
-
-**Run source freshness** checkbox &mdash; <Constant name="dbt" /> executes the `dbt source freshness` command as the first run step in your job. If that particular run step in your job fails, the job can still succeed if all subsequent run steps are successful. Read [Source freshness](/docs/deploy/source-freshness) for more information.
 
 ### Command list
 

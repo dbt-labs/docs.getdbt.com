@@ -92,13 +92,13 @@ The <Constant name="studio_ide" /> makes it possible to view [documentation](/do
 
 <VersionBlock firstVersion="2.0">
 
-<Constant name="catalog" /> uses the [metadata](/docs/explore/explore-projects#generate-metadata) from each job run in your production or staging environment. Jobs running v2 generate this metadata automatically with every execution command (`run`, `build`, `seed`, `snapshot`), so you don't need a separate documentation job, a `dbt docs generate` step, or a docs checkbox.
+<Constant name="catalog" /> uses the [metadata](/docs/explore/explore-projects#generate-metadata) from each job run in your production or staging environment. Jobs running v2 generate this metadata automatically on every run, whatever commands the job uses, so you don't need a separate documentation job, a `dbt docs generate` step, or a docs checkbox.
 
 To keep <Constant name="catalog" /> up to date:
 
 1. In the top left, click **Deploy** and select **Jobs**.
 2. Create a new job or select an existing job in a production or staging environment and click **Settings**.
-3. Under **Commands**, add an execution command, such as `dbt build` or `dbt run`, and click **Save**.
+3. Under **Execution settings**, add the commands you want to run, such as `dbt build`, and click **Save**.
 4. After the job runs, click **Catalog** in the navigation to explore your project.
 
 If you add `dbt docs generate` as a run step, dbt runs `dbt compile --write-catalog` instead and shows a banner pointing you to <Constant name="catalog" />. For more info, refer to [platform behavior](/reference/commands/cmd-docs?version=2#platform-behavior).

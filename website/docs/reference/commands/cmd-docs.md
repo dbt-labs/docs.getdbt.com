@@ -243,7 +243,7 @@ Both write artifacts, but only `dbt docs generate` builds a documentation site y
 ## Platform behavior
 dbt Docs v2 is built for local and self-hosted workflows. In <Constant name="dbt_platform" />, use [<Constant name="catalog" />](/docs/explore/build-and-view-your-docs), which gives you a hosted, always-up-to-date view of your project:
 
-- In <Constant name="dbt_platform" /> jobs running v2, `dbt build` and `dbt run` automatically refresh <Constant name="catalog" /> metadata, so you don't need a separate docs step.
+- In <Constant name="dbt_platform" /> jobs running v2, every job run automatically refreshes <Constant name="catalog" /> metadata, so you don't need a separate docs step.
 - If you add `dbt docs generate` as a job step, dbt automatically runs `dbt compile --write-catalog` instead and directs you to <Constant name="catalog" />. The job doesn't produce the static site or `index.html`.
 - To share your project with stakeholders who don't develop in dbt, add as many [read-only seats](/docs/platform/manage-access/seats-and-users) as you need.  Developer and read-only seats both include access to <Constant name="catalog" />
 
