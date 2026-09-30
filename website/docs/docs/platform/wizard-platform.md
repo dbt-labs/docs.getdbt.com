@@ -20,7 +20,7 @@ import CopilotWizardDifferences from '/snippets/_copilot-wizard-diff.md';
 <Constant name="wizard" /> is dbt's AI agent in <Constant name="dbt_platform" />, helping teams investigate, change, validate, and ship trusted dbt work with warehouse-aware grounding.
 </IntroText>
 
-<Constant name="wizard" /> is more than a general coding agent with access to dbt. Built for governed data development in dbt, it understands lineage, documentation, tests, and semantic definitions, and accounts for dev builds, compute, run time, and post-build inspection. Its suggestions are grounded in your project's actual data _and_ context.
+<Constant name="wizard" /> is more than a general coding agent with access to dbt. Built for governed data development in dbt, it understands lineage, documentation, tests, and semantic definitions, and accounts for dev builds, compute, run time, and post-build inspection. Its suggestions are grounded in your project's actual data _and_ context. Be warned, the wizard has been known to <WizardPopcorn>cast spells</WizardPopcorn>.
 
 AI features are being enabled by default. They're already on for new accounts and are rolling out soon to existing accounts. If your organization opted out, they'll remain off. Admins can [turn AI off or back on and configure providers](/docs/platform/manage-dbt-ai) anytime.
 
