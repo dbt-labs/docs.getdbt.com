@@ -92,7 +92,7 @@ The <Constant name="studio_ide" /> makes it possible to view [documentation](/do
 
 <VersionBlock firstVersion="2.0">
 
-<Constant name="catalog" /> uses the [metadata](/docs/explore/explore-projects#generate-metadata) from each job run in your production or staging environment. Jobs running v2 generate this metadata automatically on every run, whatever commands the job uses, so you don't need a separate documentation job, a `dbt docs generate` step, or a docs checkbox.
+<Constant name="catalog" /> uses the [metadata](/docs/explore/explore-projects#generate-metadata) from each job run in your production or staging environment. Jobs running v2 generate this metadata automatically on every job run, so you don't need a separate documentation job, a `dbt docs generate` step, or a docs checkbox.
 
 To keep <Constant name="catalog" /> up to date:
 
