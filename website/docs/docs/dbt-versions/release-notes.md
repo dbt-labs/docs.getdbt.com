@@ -21,6 +21,7 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 For <Constant name="fusion_engine" /> updates, refer to the [v2 changelog](https://github.com/dbt-labs/dbt/blob/main/CHANGELOG-dbt.md).
 
 ## September 2026
+- **Private beta:** Enterprise and Enterprise+ accounts can now [bring their own GitHub application](/docs/platform/git/connect-github#custom-github-application) to natively connect GitHub Enterprise Server (self-hosted) and GitHub Enterprise Cloud with data residency (hosted on `ghe.com`), instead of using a git URL and SSH. Reach out to your account manager to join the private beta.
 
 - **New:** [DuckDB support for Apache Iceberg](/docs/build/iceberg/adapters/duckdb-iceberg-support) is now generally available for local use with <Constant name="fusion" />.
 - **New:** The models table in Catalog navigation now shows a column count for each model.
