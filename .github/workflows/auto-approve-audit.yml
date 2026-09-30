@@ -4,10 +4,8 @@ name: Auto-approval audit
 # that merged in the last 7 days or is still open, so a human can spot calls it
 # got wrong, and flags any that were reverted.
 #
-# Reports to three places:
-#   - A GitHub issue (always, when there is anything to report)
-#   - Slack, if the SLACK_WEBHOOK_URL secret is set
-#   - The "Auto approved PRs" Notion database, if the NOTION_TOKEN secret is set
+# Opens a GitHub issue when there is anything to report. A Runlayer agent posts
+# the Slack summary and updates the "Auto approved PRs" Notion database.
 #
 # Nothing here is automatic-corrective by design: the point is that a person
 # reads the list and tightens safe-file-patterns.txt or the thresholds.
@@ -31,11 +29,6 @@ jobs:
           sparse-checkout: .github
 
       - uses: actions/github-script@v7
-        env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
-          # "Auto approved PRs" data source in Notion. Not a secret.
-          NOTION_DATA_SOURCE_ID: 3eabb38e-bda7-80ce-b073-000b6ae44a70
         with:
           script: |
             const summary = require(`${process.env.GITHUB_WORKSPACE}/.github/scripts/auto-approve-summary.js`)
