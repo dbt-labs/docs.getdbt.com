@@ -27,7 +27,7 @@ While running any job can produce artifacts, you should only associate one produ
 
 <Lightbox src="/img/docs/dbt-platform/using-dbt-platform/project-level-artifact-updated.png" width="70%" title="Configuring Artifacts"/>
 
-If you don't see your job listed, you might need to edit the job and select **Run source freshness** and **Generate docs on run**.
+If you don't see your job listed, you might need to edit the job and select **Run source freshness**<VersionBlock lastVersion="1.99"> and **Generate docs on run**</VersionBlock>.
 
 <Lightbox src="/img/docs/dbt-platform/using-dbt-platform/edit-job-generate-artifacts.png" title="Editing the job to generate artifacts"/>
 
@@ -41,7 +41,11 @@ Navigate to [<Constant name="catalog" />](/docs/explore/explore-projects) throug
 
 To view a resource, its metadata, and what commands are needed, refer to [generate metadata](/docs/explore/explore-projects#generate-metadata) for more details.
 
+<VersionBlock lastVersion="1.99">
+
 Both the job's commands and the docs generate step (triggered by the **Generate docs on run** checkbox) must succeed during the job invocation to update the documentation.
+
+</VersionBlock>
 
 <Expandable alt_header="For dbt Docs">
 
