@@ -1,10 +1,12 @@
-Sign in through [AWS IAM Identity Center](https://docs.aws.amazon.com/singlesignon/latest/userguide/what-is.html) in your browser. Set `method` to `browser_identity_center` and dbt opens a browser window for you to authenticate when it connects — no password or IAM profile in your `profiles.yml`.
+Sign in through [AWS IAM Identity Center](https://docs.aws.amazon.com/singlesignon/latest/userguide/what-is.html) and set `method` to `browser_identity_center`. dbt opens a browser window for you to authenticate without needing a password or IAM profile in your `profiles.yml`.
 
-:::note
+:::note Local only
 This method works when you run dbt locally from the command line. It isn't supported in the <Constant name="dbt_platform" /> yet.
 :::
 
 Before you start, make sure your Redshift cluster or workgroup is set up for [IAM Identity Center integration](https://docs.aws.amazon.com/redshift/latest/mgmt/redshift-iam-access-control-idp-connect.html). You need the following fields:
+
+<SimpleTable>
 
 | Profile field | Required | Default | Description |
 | ------------- | -------- | ------- | ----------- |
@@ -15,6 +17,7 @@ Before you start, make sure your Redshift cluster or workgroup is set up for [IA
 | `idc_client_display_name` | No | `Amazon Redshift driver` | App name shown in the browser consent prompt. |
 | `idp_response_timeout` | No | `60` | Seconds dbt waits for you to finish signing in before timing out. |
 
+</SimpleTable>
 #### Example IAM Identity Center configuration
 
 <File name="profiles.yml">
