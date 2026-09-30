@@ -11,7 +11,7 @@ Before you start, make sure your Redshift cluster or workgroup is set up for [IA
 | Profile field | Required | Default | Description |
 | ------------- | -------- | ------- | ----------- |
 | `method` | Yes | &mdash; | Set to `browser_identity_center`. |
-| `idc_region` | Yes | &mdash; | AWS region where your IAM Identity Center instance lives (for example, `us-east-1`). |
+| `idc_region`* | Yes | &mdash; | AWS region where your IAM Identity Center instance lives (for example, `us-east-1`). |
 | `issuer_url` | Yes | &mdash; | Issuer URL of your IAM Identity Center instance (for example, `https://identitycenter.amazonaws.com/ssoins-1234567890abcdef`). |
 | `idp_listen_port` | No | `7890` | Local port dbt listens on for the browser redirect after you sign in. |
 | `idc_client_display_name` | No | `Amazon Redshift driver` | App name shown in the browser consent prompt. |
@@ -19,7 +19,7 @@ Before you start, make sure your Redshift cluster or workgroup is set up for [IA
 
 </SimpleTable>
 
-`idc_region` isn't the same as your AWS account region. dbt doesn't support setting `region` alongside `browser_identity_center` in `profiles.yml` yet, so it reads your AWS region from your AWS config file (`~/.aws/config`). Make sure a default region is set there — for example, by running `aws configure`.
+*`idc_region` isn't the same as your AWS account region. dbt doesn't support setting `region` alongside `browser_identity_center` in `profiles.yml` yet, so it reads your AWS region from your AWS config file (`~/.aws/config`). Make sure a default region is set there (for example, by running `aws configure`).
 
 #### Example IAM Identity Center configuration
 
