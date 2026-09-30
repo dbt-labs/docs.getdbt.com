@@ -16,10 +16,10 @@ name: Auto-approve low-risk PRs
 on:
   pull_request_target:
     types: [opened, synchronize, reopened, ready_for_review, labeled, unlabeled]
-  # Re-evaluate when a human reviews, so a "changes requested" or a dismissal
-  # pulls the bot approval back instead of sitting alongside it.
-  pull_request_review:
-    types: [submitted, dismissed]
+  # No pull_request_review trigger on purpose: that event runs the workflow file
+  # from the PR branch with a write token, so a PR could edit this file and
+  # approve itself. A human "changes requested" review already blocks merge, and
+  # the bot re-checks it on the next push or label change.
 
 permissions:
   contents: read
