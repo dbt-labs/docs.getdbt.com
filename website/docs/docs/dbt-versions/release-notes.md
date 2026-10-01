@@ -22,7 +22,7 @@ For <Constant name="fusion_engine" /> updates, refer to the [v2 changelog](https
 
 ## September 2026
 
-- **Enhancement:** Job settings now have a **dbt State** dropdown with three options: **On**, **Off**, or **Inherited from environment**. This lets you enable or disable [dbt State](/docs/deploy/dbt-state-about) explicitly per job, or inherit the environment's setting. New jobs default to **Inherited from environment**; existing jobs must be updated manually. Refer to [Enabling dbt State on individual jobs](/docs/deploy/dbt-state-enable-jobs).
+- **Enhancement:** Job settings now have a **dbt State** dropdown with three options: **On**, **Off**, or **Inherited from environment**. This lets you enable or disable [dbt State](/docs/deploy/dbt-state-about) explicitly per job, or inherit the environment's setting. New jobs default to **Inherited from environment**; existing jobs must be updated manually. Refer to [Enabling dbt State on individual jobs](/docs/deploy/dbt-state-enable-jobs) for more information.
 - **New:** [DuckDB support for Apache Iceberg](/docs/build/iceberg/adapters/duckdb-iceberg-support) is now generally available for local use with <Constant name="fusion" />.
 - **New:** The models table in Catalog navigation now shows a column count for each model.
 - **Enhancement:** <Constant name="studio_ide" /> now detects missing development credentials at startup and shows a **Development Credentials Required** modal with a direct link to add credentials, instead of failing silently.
