@@ -106,24 +106,11 @@ Once you have the values from the previous step, you can prepare your <Constant 
 1. Check your dbt version by running `dbt --version` and you should see the following:
    ```bash
       Core:
-      - installed: 1.10.0-b1
-      - latest:    1.9.3     - Ahead of latest version!
+      - installed: 1.11.0
+      - latest:    1.11.0 - Up to date!
    ```
-2. If you don't have the latest version (1.10 or later), [upgrade](/docs/local/install-dbt?version=1#change-dbt-core-versions) your <Constant name="core" /> project by running `python -m pip install --upgrade dbt-core`.
+2. If you don't have the [latest supported version](/docs/dbt-versions), [upgrade](/docs/local/install-dbt?version=1#change-dbt-core-versions) your <Constant name="core" /> project by running `python -m pip install --upgrade dbt-core`.
 3. Set the following environment variables in your <Constant name="core" /> project by running the following commands in the CLI. Replace the `your_account_id`, `your_environment_id`, and `your_token` with the actual values in the [previous step](#generate-service-token-and-artifact-upload-values).
-
-   <VersionBlock lastVersion="1.10">
-
-   ```bash
-   export DBT_CLOUD_ACCOUNT_ID=your_account_id
-   export DBT_CLOUD_ENVIRONMENT_ID=your_environment_id
-   export DBT_CLOUD_TOKEN=your_token
-   export DBT_UPLOAD_TO_ARTIFACTS_INGEST_API=True
-   ```
-
-   </VersionBlock>
-
-   <VersionBlock firstVersion="1.11">
 
    ```bash
    export DBT_CLOUD_ACCOUNT_ID=your_account_id
@@ -131,8 +118,6 @@ Once you have the values from the previous step, you can prepare your <Constant 
    export DBT_CLOUD_TOKEN=your_token
    export DBT_ENGINE_UPLOAD_TO_ARTIFACTS_INGEST_API=True
    ```
-
-   </VersionBlock>
 
    - Set the environment variables in whatever way you use them in your project.
    - To unset an environment variable, run `unset environment_variable_name`, replacing `environment_variable_name` with the actual name of the environment variable.
