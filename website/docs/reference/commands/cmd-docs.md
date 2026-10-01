@@ -130,7 +130,7 @@ dbt Docs v2 is built for local and self-hosted workflows. In <Constant name="dbt
 
 ## dbt Docs v2
 
-dbt Docs v2 is a documentation site you generate and host yourself, from your local machine or your own pipeline (like GitHub Actions). It isn't available in <Constant name="dbt_platform" />, where you use [<Constant name="catalog" />](/docs/explore/build-and-view-your-docs) instead. Refer to [Platform behavior](#platform-behavior) for details.
+dbt Docs v2 is a self-hosted documentation site generated on your local machine or your own pipeline (like GitHub Actions). It isn't available in the <Constant name="dbt_platform" />, where you use [<Constant name="catalog" />](/docs/explore/build-and-view-your-docs) instead. Refer to [dbt platform behavior](#dbt-platform-behavior) for details.
 
 Instead of loading a static `manifest.json` in the browser, v2 produces Parquet artifacts when you compile or build your project. `dbt docs generate` exports a documentation site made of plain static files (a single-page app plus those artifacts) that any file host can serve. The browser reads the Parquet directly using DuckDB-WASM (WebAssembly), so you don't need to run a stateful server to view your docs. This keeps the experience fast even for large projects.
 
@@ -240,8 +240,8 @@ Both write artifacts, but only `dbt docs generate` builds a documentation site y
 
 </SimpleTable>
 
-## Platform behavior
-dbt Docs v2 is built for local and self-hosted workflows. In <Constant name="dbt_platform" />, use [<Constant name="catalog" />](/docs/explore/build-and-view-your-docs), which gives you a hosted, always-up-to-date view of your project:
+## dbt platform behavior
+dbt Docs v2 is built for local and self-hosted workflows. In <Constant name="dbt_platform" />, use [<Constant name="catalog" />](/docs/explore/build-and-view-your-docs), which gives you a cloud-hosted, always-up-to-date view of your project:
 
 - In <Constant name="dbt_platform" /> jobs running v2, every job run automatically refreshes <Constant name="catalog" /> metadata, so you don't need a separate docs step.
 - If you add `dbt docs generate` as a job step, dbt automatically runs `dbt compile --write-catalog` instead and directs you to <Constant name="catalog" />. The job doesn't produce the static site or `index.html`.

@@ -79,16 +79,16 @@ dbt provides three ways to [view documentation](/docs/build/view-documentation) 
 
 <VersionBlock lastVersion="1.99">
 
-:::tip Try out dbt Docs v2 locally!
+:::tip Use dbt Docs v2 locally!
 
-Try out dbt Docs v2, a redesigned, open-source docs site with Semantic Layer metadata and column-level lineage that you can host anywhere. [Upgrade to v2](/docs/dbt-versions/dbt-upgrade/upgrading-to-v2?version=2) and refer to [dbt Docs v2](/docs/build/view-documentation?version=2#dbt-docs-v2).
+dbt Docs v2, built on top of the powerful dbt v2 capabilities, is a sleek, open-source docs site with Semantic Layer metadata and column-level lineage that you can host anywhere. [Upgrade to v2](/docs/dbt-versions/dbt-upgrade/upgrading-to-v2?version=2) and refer to [dbt Docs v2](/docs/build/view-documentation?version=2#dbt-docs-v2) for more information.
 :::
 
 <SimpleTable>
 
 | Option | What it is | Where you use it | How to generate it |
 |--------|-----------|------------------|--------------------|
-| [**dbt Docs (Legacy)**](/docs/build/view-documentation#dbt-docs) | A static site with model lineage, metadata, and documentation that you can host on your own web server (like S3 or Netlify) | <Constant name="core_v1" /> or <Constant name="dbt" /> Developer plans | Run `dbt docs generate`. Refer to [generate docs locally](#generate-docs-locally) for steps |
+| [**dbt Docs v1**](/docs/build/view-documentation#dbt-docs) | A static site with model lineage, metadata, and documentation that you can host on your own web server (like S3 or Netlify) | <Constant name="core_v1" /> or <Constant name="dbt" /> Developer plans | Run `dbt docs generate`. Refer to [generate docs locally](#generate-docs-locally) for steps |
 | [**dbt <Constant name="catalog" />**](/docs/explore/explore-projects) | A dynamic, real-time interface with enhanced metadata, customizable views, deeper project insights, and collaboration tools. | <Constant name="dbt_platform" /> [Starter, Enterprise, or Enterprise+ plans](https://www.getdbt.com/pricing) | Populated automatically when your jobs run with <Constant name="fusion_engine" />. No extra step required! |
 
 </SimpleTable>
@@ -100,7 +100,7 @@ Try out dbt Docs v2, a redesigned, open-source docs site with Semantic Layer met
 
 | Option | What it is | Where you use it | How to generate it |
 |--------|-----------|------------------|--------------------|
-| [**dbt Docs (Legacy)**](/docs/build/view-documentation#dbt-docs) | A static site with model lineage, metadata, and documentation that you can host on your own web server (like S3 or Netlify) | <Constant name="core_v1" /> or <Constant name="dbt" /> Developer plans | Run `dbt docs generate`. Refer to [generate docs locally](#generate-docs-locally) for steps |
+| [**dbt Docs v1**](/docs/build/view-documentation#dbt-docs) | A static site with model lineage, metadata, and documentation that you can host on your own web server (like S3 or Netlify) | <Constant name="core_v1" /> or <Constant name="dbt" /> Developer plans | Run `dbt docs generate`. Refer to [generate docs locally](#generate-docs-locally) for steps |
 | [**dbt Docs v2**](/docs/build/view-documentation#dbt-docs-v2) | A redesigned, open-source documentation site with Semantic Layer metadata and [column-level lineage](/docs/explore/column-level-lineage) that you can host anywhere | Locally with <Constant name="fusion_engine" />. Not available in <Constant name="dbt_platform" /> | Run `dbt docs generate` locally. Refer to [generate docs locally](#generate-docs-locally) for steps |
 | [**dbt <Constant name="catalog" />**](/docs/explore/explore-projects) | A dynamic, real-time interface with enhanced metadata, customizable views, deeper project insights, and collaboration tools. | <Constant name="dbt_platform" /> [Starter, Enterprise, or Enterprise+ plans](https://www.getdbt.com/pricing) | Populated automatically when your jobs run with <Constant name="fusion_engine" />. No extra step required! |
 
