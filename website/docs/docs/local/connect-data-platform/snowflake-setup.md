@@ -118,7 +118,7 @@ default:
       account: ABC123
       user: JANE.SMITH@YOURCOMPANY.COM
       database: JAFFLE_SHOP
-      warehouse: TRANFORM
+      warehouse: TRANSFORM
       schema: JANE_SMITH
 ```
 
