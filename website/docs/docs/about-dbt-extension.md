@@ -156,7 +156,7 @@ For organizations that aren't customers of the dbt platform, the best place for 
 
 We welcome feedback as we work to continuously improve the extension, and would love to hear from you!
 
-The extension is available to all users and for more info, refer to the the [dbt Product License Agreement](https://www.getdbt.com/dbt-product-license-agreement).
+The extension is available to all users and for more information, refer to the the [dbt Product License Agreement](https://www.getdbt.com/dbt-product-license-agreement).
 
 :::tip Developing locally as a <Constant name="dbt_platform"/> user?
 Refer to the [Hybrid development with <Constant name="dbt_platform"/> and dbt v2](/guides/dbt-platform-local-workflow) guide for how to keep credentials, environment variables, and v2 versions in sync between your local extension and <Constant name="dbt_platform"/>.
