@@ -9,7 +9,7 @@ hide_table_of_contents: true
 import FusionFeatures from '/snippets/_fusion-features.md';
 import FusionLifecycle from '/snippets/_fusion-lifecycle.md';
 
-You can get started with many dbt features right away, and even more are available when you sign in with any <Constant name="dbt_platform" /> account, even the free developer tier!
+Get started with many dbt features right away when you install dbt v2 and the dbt VS Code extension. Unlock advanced capabilities when you sign in with any <Constant name="dbt_platform" /> account, even the free developer tier!
 
 <FusionFeatures/>
 
