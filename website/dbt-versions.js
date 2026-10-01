@@ -101,6 +101,7 @@ exports.versions = products.flatMap((product) =>
  * lastVersion to further restrict by version within that product.
  */
 exports.versionedPages = [
+  { page: "docs/build/ossie-semantic-models", firstVersion: "1.12", lastVersion: "1.99" },
   { page: "docs/dbt-ai/package-skills", firstVersion: "2.0" },
   { page: "reference/project-configs/skill-paths", firstVersion: "2.0" },
   { page: "docs/dbt/fusion", firstVersion: "2.0" },
