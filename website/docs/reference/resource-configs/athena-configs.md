@@ -292,7 +292,7 @@ select * from (
 
 #### AWS S3 Tables
 
-In `dbt-athena` 1.11.1 and later, you can write Iceberg models to [Amazon S3 Tables](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-tables.html) by defining a catalog with `type: s3_tables` in `catalogs.yml` and setting `catalog_name` on the model. The `table`, `incremental`, and `snapshot` materializations are supported.
+In `dbt-athena` 1.11.1 and later, you can write Iceberg models to [Amazon S3 Tables](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-tables.html) by defining a catalog with `type: s3_tables` in `catalogs.yml` and setting `catalog_name` on the model. `table`, `incremental`, and `snapshot` materializations are supported.
 
 ##### Prerequisites
 
