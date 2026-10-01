@@ -54,7 +54,7 @@ import DeleteEnvironment from '/snippets/_delete-environment.md';
 Start with a development or test environment. Moving it to a release track first lets you find and fix any compatibility issues in your project before you touch your other environments.
 
 1. Navigate to the Settings page of the environment, then click **Edit**.
-2. Click the **dbt version** dropdown and select a [release track](/docs/dbt-versions/dbt-release-tracks). We recommend **v2 Stable**; at minimum, select the **v1 Latest** release track.
+2. Click the **dbt version** dropdown and select the recommend **V2 Stable** [release track](/docs/dbt-versions/dbt-release-tracks).  If you need to stay on v1, select the **v1 Latest** release track.
 3. Save your changes.
 
 You can also set the version through the [Admin API](/docs/dbt-apis/admin-api) or Terraform. Refer to [Upgrade versions in dbt platform](/docs/dbt-versions/upgrade-dbt-platform-version) for the full walkthrough.
