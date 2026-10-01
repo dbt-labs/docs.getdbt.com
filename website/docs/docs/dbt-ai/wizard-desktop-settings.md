@@ -39,7 +39,7 @@ Controls what appears alongside a chat while you work.
 
 Shows the dbt accounts <Constant name="wizard" /> uses for hosted models and platform access, and gives you the tools to clean up what the app has written to disk. 
 
-- **Profile** lists each <Constant name="dbt_platform" /> account you've connected, with the name and email you signed in with and the host, such as `vu491.us1.dbt.com`. You can connect more than one account and switch between them without signing in again. Each account has its own **Sign out**. To pick which account powers AI models, go to [AI providers](#ai-providers).
+- **Connected dbt accounts** lists each <Constant name="dbt_platform" /> account you've connected, with the platform account hostname, such as `abc123.us1.dbt.com`. Connect more than one account by clicking on **+Add account** and switch between them without signing in again. Each account has its own **Sign out**. To pick which account powers AI models, go to [AI providers](#ai-providers).
 - **Maintenance** reclaims disk space or returns <Constant name="wizard" /> to a clean state. This will affect the Wizard CLI too:
 
     <SimpleTable>
@@ -61,7 +61,7 @@ When you select **Reset app**, it can't be undone which means chat history goes 
 
 ## AI providers
 
-Choose how <Constant name="wizard" /> reaches a model. Come here if you selected **Skip for now** during onboarding, or to switch approaches later. Select **Refresh** to re-check which providers and models are available. If you've connected more than one <Constant name="dbt_platform" /> account, choose which one powers AI models here.
+Choose how <Constant name="wizard" /> reaches a model. Come here if you selected **Skip for now** during onboarding, or to switch approaches later. Select **Refresh** to re-check which providers and models are available. If you've connected more than one <Constant name="dbt_platform" /> account, choose which one powers AI models here by clicking **Configure**.
 
 <SimpleTable>
 
