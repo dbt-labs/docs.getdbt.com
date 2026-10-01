@@ -219,17 +219,11 @@ Refer to the v2 concepts page for deeper discussion and visuals: [New concepts](
 
 ### Custom materializations
 
-Models that use a [custom materialization](/guides/create-new-materializations) use their configured `static_analysis` mode (`baseline` by default), the same as any other model. This applies whether you give the materialization a new name or reuse a built-in one, such as your own `table` or `incremental`.
+Models that use a [custom materialization](/guides/create-new-materializations) follow the same `static_analysis` rules as any other model, whether you give the materialization a new name or reuse a built-in one like `table` or `incremental`. Downstream models follow the usual [cascading rules](#how-static-analysis-modes-cascade).
 
-Models downstream of a model that uses a custom materialization inherit its effective mode through the normal cascade, so <Constant name="fusion" /> analyzes them too.
+If a custom materialization adds, renames, or retypes columns, <Constant name="fusion" /> can't predict those changes from the model's SQL. This mainly affects `strict`, which needs accurate upstream schemas. If you use `strict`, set `static_analysis: off` on the models that use that materialization.
 
-If a custom materialization changes the schema of the table it builds (for example, by adding, renaming, or changing the type of columns), <Constant name="fusion" /> can't predict those changes from the model's SQL. This mainly affects `strict`, which relies on accurate upstream schemas. If you use `strict`, set `static_analysis: off` explicitly on the models that use that materialization.
-
-Keep in mind:
-
-- Because `off` cascades, all models downstream of a model set to `off` are also ineligible for static analysis, and features that depend on SQL comprehension (such as column-level lineage and type checking) aren't available for them.
-- To keep static analysis coverage across most of your DAG, place schema-changing custom materializations near the leaves (or ends) of your lineage where practical.
-- If static analysis reports errors on a model that uses a custom materialization, and you can't resolve them in the model's SQL, set `static_analysis: off` on that model.
+Because `off` cascades, every downstream model also loses static analysis and the features that depend on it, such as column-level lineage and type checking. To keep coverage across your DAG, use schema-changing materializations on models that nothing else depends on.
 
 For more information, refer to [Custom materializations](/docs/build/about-static-analysis#custom-materializations).
 
@@ -468,7 +462,6 @@ snapshots:
 
 - For models, disabling static analysis means that features of the VS Code extension that depend on SQL comprehension will be unavailable.
 - For models, static analysis can fail in some cases (for example, dynamic SQL constructs or unrecognized UDFs) and you might need to set `static_analysis: off`. For more examples, refer to [When should I turn static analysis off?](/docs/build/about-static-analysis#when-should-i-turn-static-analysis-off).
-- If you use `strict` and a model uses a [custom materialization](#custom-materializations) that changes the schema of the persisted table, set `static_analysis: off` on that model explicitly.
 - Because modes cascade, the mode you configure isn't always the mode in effect. To check the effective mode for a model, use the CodeLens in the dbt VS Code extension or the <Constant name="studio_ide" />, which shows which models have static analysis disabled and why.
 
 ## Related docs

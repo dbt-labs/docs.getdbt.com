@@ -172,7 +172,7 @@ You can modify the way static analysis is applied for specific models in your pr
 
 Setting `static_analysis: strict` on a model does not automatically set `strict` for downstream models; they keep the project default unless you set them explicitly. For rules and examples, refer to [How modes cascade in your lineage](#how-modes-cascade-in-your-lineage) and [strict mode inheritance](#strict-mode-inheritance).
 
-Models that use custom materializations follow these same rules. If you use `strict` and a custom materialization changes the schema of the persisted table, set `static_analysis: off` on the models that use it. Refer to [Custom materializations](#custom-materializations).
+Models that use custom materializations follow these same rules, with one exception for `strict`. Refer to [Custom materializations](#custom-materializations).
 
 The [`static_analysis`](/reference/resource-configs/static-analysis) config options are:
 
@@ -250,19 +250,17 @@ Refer to [CLI options](/reference/global-configs/command-line-options) and [Conf
 
 ### Custom materializations
 
-Models that use a [custom materialization](/guides/create-new-materializations) follow the same `static_analysis` rules as any other model. dbt uses the mode you configure (`baseline` by default) and applies the usual [cascading rules](#how-modes-cascade-in-your-lineage).
+Models that use a [custom materialization](/guides/create-new-materializations) follow the same `static_analysis` rules as any other model, including the default `baseline` mode and the usual [cascading rules](#how-modes-cascade-in-your-lineage).
 
 This applies to both kinds of custom materializations:
 - **A name you invented:** such as `materialized='my_custom_load'`. Find these in your model configs.
 - **A built-in name:** such as your own macro named `materialization table, default`. These are harder to spot, because models that say `materialized='table'` look standard but run your code instead of dbt's.
 
-Models downstream of a model that uses a custom materialization inherit that model's effective mode through the normal cascade. For example, a `view` model that depends on a `baseline` model with a custom materialization also runs in `baseline`.
-
 #### Schema-changing custom materializations
 
-dbt v2 can't see inside your materialization code. If a custom materialization only changes _how_ dbt builds a model (for example, with custom `create` statements, merge logic, or grants), the schema v2 infers from the model's SQL still matches the persisted table. If the materialization changes the schema of the persisted table (for example, by adding, renaming, or retyping columns), the inferred schema doesn't match what lands in your warehouse.
+dbt v2 can't see inside your materialization code. That's fine if the materialization only changes _how_ a model is built (for example, custom `create` statements, merge logic, or grants). But if it adds, renames, or retypes columns, the schema v2 infers from your SQL won't match the table in your warehouse.
 
-This mainly affects `strict` mode, which relies on accurate upstream schemas for type checking. `baseline` doesn't depend on the fully analyzed schema of upstream models. If you use `strict` and a custom materialization changes the persisted schema, set `static_analysis: off` explicitly on the models that use it, the same way you handle [introspective queries](#introspection-handling-in-baseline-mode). For example:
+This mainly affects `strict`, which needs accurate upstream schemas for type checking, unlike `baseline`. If you use `strict`, set `static_analysis: off` on models that use a schema-changing materialization:
 
 <File name='models/my_schema_changing_model.sql'>
 
@@ -277,13 +275,11 @@ select ...
 
 </File>
 
-Because `off` cascades downstream, models downstream of a model set to `off` are also ineligible for static analysis. To keep coverage across most of your DAG, keep schema-changing custom materializations near the leaves (or ends) of your lineage where practical.
-
-If static analysis reports errors on a model that uses a custom materialization, and you can't resolve them in the model's SQL, set `static_analysis: off` on that model.
+Because `off` cascades, every downstream model also loses static analysis. To keep coverage across your DAG, use schema-changing materializations on models that nothing else depends on.
 
 ### Identify a model's mode
 
-The mode you configure for a model isn't always the mode in effect. This is because a model's effective mode depends on its parents. You can see when a model has static analysis off in the [dbt VS Code extension](/docs/about-dbt-extension) and the <Constant name="studio_ide" /> both of which show a CodeLens above your models, indicating which models have static analysis disabled and why.
+The mode you configure isn't always the mode in effect, because a model's effective mode also depends on its parents. The [dbt VS Code extension](/docs/about-dbt-extension) and the <Constant name="studio_ide" /> both show a CodeLens above each model that tells you when static analysis is off and why.
 
 Keep in mind that `dbt ls --output json --output-keys config.static_analysis` reports the mode you _configured_ for each model, not the mode v2 resolves after applying the cascading rules.
 
@@ -386,8 +382,6 @@ For more information, including CLI examples and an optional environment variabl
 With baseline mode enabled by default, static analysis is less likely to block your runs. You should only disable it if <Constant name="fusion_engine" /> cannot parse SQL that is valid for your database of choice.
 
 This is a very rare occurrence. If you encounter this situation, please [open an issue](https://github.com/dbt-labs/dbt-fusion/issues) with an example of the failing SQL so we can update our parsers.
-
-If you use `strict`, you should also set `static_analysis: off` on models that use a [custom materialization that changes the schema of the persisted table](#custom-materializations).
 
 import AboutFusion from '/snippets/_about-fusion.md';
 
