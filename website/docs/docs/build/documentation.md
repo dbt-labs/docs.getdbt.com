@@ -74,7 +74,7 @@ models:
 
 ## Generating documentation
 
-dbt provides three ways to [view documentation](/docs/build/view-documentation) for your project. Which one you use depends on your dbt version and where you run dbt.
+dbt provides both self-hosted and cloud-hosted solutions to [view documentation](/docs/build/view-documentation) for your project. Which one you use depends on your dbt version and where you run dbt.
 
 
 <VersionBlock lastVersion="1.99">
@@ -125,15 +125,15 @@ Anyone with a developer or read-only seat can explore your project(s) in <Consta
 
 <VersionBlock firstVersion="2.0">
 
-Using <Constant name="fusion_engine" />, dbt Docs v2 replaces the v1 static site with a modern, performant catalog. dbt docs generate compiles your project, produces the v2 Parquet artifacts, and writes a static site that the browser queries directly with DuckDB-WASM (WebAssembly), so you don't need a server to view it. 
+Using <Constant name="fusion_engine" />, dbt Docs v2 enhances the original v1 static site with a modern, performant catalog. dbt docs generate compiles your project, produces the v2 Parquet artifacts, and writes a static site that the browser queries directly with DuckDB-WASM (WebAssembly), so you don't need a server to view it. 
 
 To generate and serve documentation locally:
 
 - Run `dbt docs generate` to compile your project, write the index, and export the documentation site in a single command.
 - Run `dbt docs serve` to preview the site locally.
 
-:::note dbt Docs v2 is local only
-dbt Docs v2 only works locally. If you're on <Constant name="dbt_platform" />, use [<Constant name="catalog" />](/docs/explore/explore-projects) which is populated automatically when your jobs run with v2. Adding a `dbt docs generate` step to a job won't produce a static site in <Constant name="dbt_platform" />.
+:::note dbt Docs v2 availability
+dbt Docs v2 only works self-hosted installations of dbt v2. If you're on the <Constant name="dbt_platform" />, use [<Constant name="catalog" />](/docs/explore/explore-projects) which is populated automatically when your jobs run with v2. Adding a `dbt docs generate` step to a job won't produce a static site in <Constant name="dbt_platform" />.
 :::
 
 </VersionBlock>
