@@ -5,9 +5,13 @@ description: "Configuration instructions for dbt and external OAuth connections 
 sidebar_label: "Set up external OAuth with Snowflake"
 pagination_next: null
 pagination_prev: null
+availability:
+  surface: platform
+  access: paid_plan
+  minPlan: enterprise
 ---
 
-# Set up external OAuth with Snowflake <Lifecycle status="managed, managed_plus" />
+# Set up external OAuth with Snowflake
 
 import AboutExternal from '/snippets/_about-external-oauth.md';
 

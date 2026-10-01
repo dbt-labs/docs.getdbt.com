@@ -3,6 +3,7 @@ title: "About dbt projects"
 id: "projects"
 pagination_next: null
 pagination_prev: null
+availability: all_users
 ---
 
 A dbt project informs dbt about the context of your project and how to transform your data (build your data sets). By design, dbt enforces the top-level structure of a dbt project such as the `dbt_project.yml` file, the `models` directory, the `snapshots` directory, and so on. Within the directories of the top-level, you can organize your project in any way that meets the needs of your organization and data pipeline.
@@ -94,7 +95,7 @@ During project initialization, dbt creates sample model files in your project di
 
 ## Sample projects
 
-If you want to explore dbt projects more in-depth, you can clone dbt Lab’s [Jaffle shop](https://github.com/dbt-labs/jaffle_shop) on GitHub. It's a runnable project that contains sample configurations and helpful notes.
+If you want to explore dbt projects more in-depth, refer to [Clone the Jaffle Shop sample project](/guides/clone-jaffle-shop). It's a runnable project that contains sample configurations and helpful notes.
 
 If you want to see what a mature, production project looks like, check out the [GitLab Data Team public repo](https://gitlab.com/gitlab-data/analytics/-/tree/master/transform/snowflake-dbt).
 

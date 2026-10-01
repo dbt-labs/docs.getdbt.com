@@ -1,5 +1,5 @@
 ---
-title: "Connect MySQL to dbt Core"
+title: "Connect MySQL to dbt v1"
 sidebar_label: "MySQL"
 description: "Read this guide to learn about the MySQL warehouse setup in dbt."
 id: "mysql-setup"
@@ -15,6 +15,7 @@ meta:
   slack_channel_link: 'https://getdbt.slack.com/archives/C03BK0SHC64'
   platform_name: 'MySQL'
   config_page: '/reference/resource-configs/no-configs'
+availability: local_free
 ---
 
 

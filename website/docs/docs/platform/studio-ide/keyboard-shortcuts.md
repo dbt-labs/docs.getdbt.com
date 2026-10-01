@@ -2,6 +2,9 @@
 title: "Studio IDE keyboard shortcuts"
 description: "Learn about the keyboard shortcuts available in the Studio IDE."
 sidebar_label: "Keyboard shortcuts"
+availability:
+  surface: platform
+  access: login_required
 ---
 
 

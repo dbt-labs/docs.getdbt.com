@@ -1,5 +1,6 @@
 ---
 title: "Vertica configurations"
+description: "Configure Vertica-specific settings for dbt models, including incremental model configurations and supported on_schema_change options."
 id: "vertica-configs"
 ---
 ## Configuration of Incremental Models

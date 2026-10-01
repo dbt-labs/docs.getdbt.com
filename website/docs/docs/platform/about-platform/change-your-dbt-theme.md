@@ -4,6 +4,9 @@ id: change-your-dbt-theme
 description: "Learn about theme switching in dbt"
 sidebar_label: Change your dbt theme
 image: /img/docs/dbt-platform/using-dbt-platform/light-vs-dark.png
+availability:
+  surface: platform
+  access: login_required
 ---
 
 # Change your dbt theme 

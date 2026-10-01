@@ -20,11 +20,11 @@ By default, `dbt debug` validates:
 
 ## Flags
 
-Most of the `dbt debug` flags apply to the <Constant name="core" /> CLI. Some flags also work in <Constant name="platform_cli" />, but only `--connection` is supported in the <Constant name="studio_ide" />.
+Most of the `dbt debug` flags apply to the self-hosted dbt CLI. Some flags also work in <Constant name="platform_cli" />, but only `--connection` is supported in the <Constant name="studio_ide" />.
 
-- <Constant name="core" /> CLI: Supports all flags.
+- dbt CLI: Supports all flags.
 - <Constant name="studio_ide" />: Only supports dbt `debug` and `dbt debug --connection`.
-- <Constant name="platform_cli" />: Only supports dbt `debug` and `dbt debug --connection`. You can also use the [`dbt environment`](/reference/commands/dbt-environment) command to interact with your <Constant name="dbt" /> environment. 
+- <Constant name="platform_cli" />: Only supports dbt `debug` and `dbt debug --connection`. You can also use the [`dbt environment`](/reference/commands/dbt-environment?version=2.0) command to interact with your <Constant name="dbt" /> environment. 
 
 `dbt debug` supports the following flags in your terminal when using the command line interface (CLI):
 
@@ -165,9 +165,6 @@ Options:
                 general --use-colors/--no-use-colors
                 setting.
 
- --use-experimental-parser / --no-use-experimental-parser
-                Enable experimental parsing features.
-
  -V, -v, --version        
                 Show version information and exit
 
@@ -205,7 +202,7 @@ Options:
  --connection          
                 Test the connection to the target database
                 independent of dependency checks.
-                Available in Studio IDE and dbt Core CLI
+                Available in Studio IDE and dbt CLI
 
  --config-dir          
                 Print a system-specific command to access

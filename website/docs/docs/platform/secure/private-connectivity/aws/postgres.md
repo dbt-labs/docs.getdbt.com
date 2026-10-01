@@ -3,9 +3,13 @@ title: "Configure AWS PrivateLink for Postgres"
 id: aws-postgres
 description: "Configuring PrivateLink for Postgres."
 sidebar_label: "Postgres"
+availability:
+  surface: platform
+  access: paid_plan
+  minPlan: enterprise_plus
 ---
 
-# Configure AWS PrivateLink for Postgres <Lifecycle status="managed_plus" />
+# Configure AWS PrivateLink for Postgres
 
 import SetUpPages from '/snippets/_available-tiers-enterprise-plus.md';
 import PrivateLinkCreateConnection from '/snippets/_privatelink-create-connection.md';

@@ -3,6 +3,7 @@ title: "Model access"
 id: model-access
 sidebar_label: "Model access"
 description: "Define model access with group capabilities"
+availability: all_users
 ---
 
 :::info "Model access" is not "User access"

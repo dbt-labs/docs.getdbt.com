@@ -1,5 +1,5 @@
 ---
-title: "Connect SingleStore to dbt Core"
+title: "Connect SingleStore to dbt v1"
 sidebar_label: "SingleStore"
 description: "Read this guide to learn about the SingleStore warehouse setup in dbt."
 id: "singlestore-setup"
@@ -15,6 +15,7 @@ meta:
   slack_channel_link: 'https://getdbt.slack.com/archives/C02V2QHFF7U'
   platform_name: 'SingleStore'
   config_page: '/reference/resource-configs/singlestore-configs'
+availability: local_free
 ---
 
 

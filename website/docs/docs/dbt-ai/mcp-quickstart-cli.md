@@ -1,8 +1,9 @@
 ---
-title: "Run dbt MCP server locally"
-sidebar_label: "Run dbt MCP locally"
-description: "Set up dbt MCP server with local dbt commands"
+title: "Run the self-hosted dbt MCP server"
+sidebar_label: "Run self-hosted dbt MCP"
+description: "Set up the self-hosted dbt MCP server with dbt commands"
 id: "mcp-quickstart-cli"
+availability: local_free
 ---
 
 import MCPQSLocal from '/snippets/_mcp-qs-local.md';

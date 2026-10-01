@@ -4,6 +4,7 @@ id: "wizard-mcp"
 description: "Connect the dbt Wizard CLI to MCP servers to give it more tools and context."
 sidebar_label: "Use MCP servers"
 tags: [AI, Wizard]
+availability: local_all
 ---
 
 import WizardFeedbackCallout from '/snippets/_wizard-feedback-callout.md';
@@ -49,7 +50,7 @@ Avoid defining the same MCP server name in more than one location unless you int
 The <Constant name="wizard"/> CLI lets you add, remove, authenticate, and customize MCP servers, including per-tool approvals, through the `config.toml` file.
 
 :::info MCP servers are a CLI feature
-You can configure MCP servers only in the <Constant name="wizard" /> CLI. You can't add your own MCP servers in the <Constant name="dbt_platform" /> (<Constant name="studio_ide" /> and the home app), but <Constant name="wizard" /> includes built-in dbt tools, such as [dbt Agent skills](https://github.com/dbt-labs/dbt-agent-skills) and product documentation fetching through the dbt MCP server.
+You can configure MCP servers only in the <Constant name="wizard" /> CLI. You can't add your own MCP servers in <Constant name="dbt_platform" /> (<Constant name="studio_ide" /> and the home app), but <Constant name="wizard" /> includes built-in dbt tools, such as [dbt Agent skills](https://github.com/dbt-labs/dbt-agent-skills) and product documentation fetching through the dbt MCP server.
 :::
 
 ## Supported MCP server types
@@ -216,7 +217,7 @@ The following examples show common scenarios for adding an MCP server and how to
 The [dbt MCP server](/docs/dbt-ai/about-mcp) gives <Constant name="wizard"/> governed access to your project's models, metrics, lineage, freshness, and platform APIs. You can connect it two ways:
 
 <Tabs>
-<TabItem value="local" label="Local (no account required)" default>
+<TabItem value="local" label="Self-hosted (no account required)" default>
 
 Runs on your machine through `uvx` and works with or without a <Constant name="dbt_platform" /> account — the best fit for development:
 
@@ -224,12 +225,12 @@ Runs on your machine through `uvx` and works with or without a <Constant name="d
 wizard mcp add dbt -- uvx dbt-mcp
 ```
 
-The local server reads its connection settings (such as `DBT_HOST`, `DBT_TOKEN`, and `DBT_PROJECT_DIR`) from environment variables, typically a `.env` file in your dbt project root. You don't need a URL. For setup, refer to [Run dbt locally](/docs/dbt-ai/mcp-quickstart-cli) and [Set up local MCP](/docs/dbt-ai/setup-local-mcp).
+The self-hosted server reads its connection settings (such as `DBT_HOST`, `DBT_TOKEN`, and `DBT_PROJECT_DIR`) from environment variables, typically a `.env` file in your dbt project root. You don't need a URL. For setup, refer to [Run self-hosted dbt](/docs/dbt-ai/mcp-quickstart-cli) and [Set up self-hosted MCP](/docs/dbt-ai/setup-local-mcp).
 
 </TabItem>
 <TabItem value="remote" label="Remote (dbt platform account)">
 
-Hosted on the platform with no local install. Build the URL from your platform host (`https://YOUR_DBT_HOST_URL/api/ai/v1/mcp/`, for example `https://cloud.getdbt.com/api/ai/v1/mcp/`), then authenticate:
+Hosted on dbt platform. Build the URL from your platform host (`https://YOUR_DBT_HOST_URL/api/ai/v1/mcp/`, for example `https://cloud.getdbt.com/api/ai/v1/mcp/`), then authenticate:
 
 ```bash
 wizard mcp add dbt --url https://YOUR_DBT_HOST_URL/api/ai/v1/mcp/

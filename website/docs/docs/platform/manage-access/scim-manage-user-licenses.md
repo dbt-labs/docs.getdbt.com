@@ -3,11 +3,15 @@ title: "Manage user licenses with SCIM"
 description: "Automate license assignment for Okta users via SCIM."
 id: "scim-manage-user-licenses"
 sidebar_label: "Manage user licenses with SCIM"
+availability:
+  surface: platform
+  access: paid_plan
+  minPlan: enterprise
 ---
 
 import ScimLicenseMappingCallout from '/snippets/_scim-license-mapping-callout.md';
 
-# Manage user licenses with SCIM <Lifecycle status="managed, managed_plus" />
+# Manage user licenses with SCIM
 
 You can manage user license assignments using System for Cross-Domain Identity Management (SCIM) and a user attribute in Okta, so the license type is set as users are provisioned and onboarded.
 
@@ -21,8 +25,8 @@ Before you enable SCIM license mapping:
 
 ## Enable SCIM license mapping
 
-To use license management using SCIM, go to your **Account settings** > **SSO & SCIM**. Under the **SCIM** section, enable **Manage user licenses with SCIM**. This setting enforces license type for a user based on their SCIM attribute and disable the license mapping and manual configuration set up in dbt.
-<Lightbox src="/img/docs/dbt-platform/access-control/scim-managed-licenses.png" width="60%" title="Enable SCIM managed user license distribution." />
+To manage user licenses with SCIM, go to **Account settings** > **SSO & SCIM**. Under the **SCIM** section, enable the **Ignore dbt license mapping** toggle. This setting enforces license type for a user based on their SCIM attribute and disables the license mapping and manual configuration set up in dbt.
+<Lightbox src="/img/docs/dbt-platform/access-control/scim-managed-licenses.png" width="90%" title="Enable SCIM managed user license distribution." />
 
 We recommend that you complete the setup instructions for your identity provider (IdP) prior to enabling this toggle in your dbt account. Once enabled, any existing license mappings in <Constant name="dbt" /> will be ignored.
 

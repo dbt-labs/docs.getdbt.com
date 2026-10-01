@@ -22,8 +22,9 @@ CATEGORY_MAP = {
     "behavior change": "Behavior change",
 }
 
+# Matches both **New:** and **New**: category prefixes used in MT notes.
 MT_CATEGORY_PREFIX_RE = re.compile(
-    r"^\*\*(New|Enhancement|Fix|Behavior change|Beta|Alpha|Preview|Private beta)\*\*:?\s*",
+    r"^\*\*(New|Enhancement|Fix|Behavior change|Beta|Alpha|Preview|Private beta):?\*\*:?\s*",
     re.IGNORECASE,
 )
 
@@ -105,10 +106,62 @@ def extract_bullets(week_lines: list[str]) -> list[tuple[str, str]]:
     return bullets
 
 
+FEATURE_TITLE_PREFIX_RE = re.compile(r"^\*\*[^*]+\*\*:\s*")
+
+# Longest phrases first. Maps plain ST text → website/constants.js names.
+# Bare "dbt" is intentionally omitted (too many false positives).
+CONSTANT_REPLACEMENTS: list[tuple[re.Pattern[str], str]] = [
+    (re.compile(r"\bdbt Fusion engine\b"), "fusion_engine"),
+    (re.compile(r"\bdbt Wizard\b"), "wizard"),
+    (re.compile(r"\bdbt platform\b"), "dbt_platform"),
+    (re.compile(r"\bdbt Core\b"), "core"),
+    (re.compile(r"\bdbt CLI\b"), "platform_cli"),
+    (re.compile(r"\bStudio IDE\b"), "studio_ide"),
+    (re.compile(r"\bSemantic Layer\b"), "semantic_layer"),
+    # Avoid Fusion-version / Fusion-based compound adjectives.
+    (re.compile(r"\bFusion\b(?!-)"), "fusion"),
+]
+
+
+def apply_constants(text: str) -> str:
+    """Replace known product names with <Constant /> tags for MT notes.
+
+    Skips content already inside backticks or existing Constant tags.
+    """
+    protected: list[str] = []
+
+    def _stash(match: re.Match[str]) -> str:
+        protected.append(match.group(0))
+        return f"__CONST_PROTECT_{len(protected) - 1}__"
+
+    # Protect existing constants and inline code so we do not double-wrap.
+    working = re.sub(r"<Constant\b[^>]*/>", _stash, text)
+    working = re.sub(r"`[^`]+`", _stash, working)
+
+    for pattern, constant_name in CONSTANT_REPLACEMENTS:
+        working = pattern.sub(f'<Constant name="{constant_name}" />', working)
+
+    for index, original in enumerate(protected):
+        working = working.replace(f"__CONST_PROTECT_{index}__", original)
+
+    return working
+
+
 def format_mt_bullet(category: str, body: str) -> str:
-    if body.startswith("**") and "**:" in body[:80]:
-        return f"- {body}"
-    return f"- **{category}:** {body}"
+    """Format an MT bullet to lead with the ST section category.
+
+    Single-tenant bullets usually look like:
+      **Feature title**: Description...
+    under a category heading (New, Enhancements, Fixes).
+
+    Multi-tenant bullets should lead with the category:
+      - **New:** Description...
+    """
+    description = FEATURE_TITLE_PREFIX_RE.sub("", body.strip(), count=1).strip()
+    if not description:
+        description = body.strip()
+    description = apply_constants(description)
+    return f"- **{category}:** {description}"
 
 
 def bullet_signature(text: str) -> str:

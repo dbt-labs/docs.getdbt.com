@@ -3,6 +3,7 @@ title: "Custom target names"
 id: "custom-target-names"
 description: "You can define a custom target name for any dbt job to correspond to settings in your dbt project."
 pagination_next: null
+availability: all_users
 ---
 
 ## dbt Scheduler

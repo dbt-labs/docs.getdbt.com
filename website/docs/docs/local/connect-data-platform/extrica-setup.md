@@ -1,5 +1,5 @@
 ---
-title: "Connect Extrica to dbt Core"
+title: "Connect Extrica to dbt v1"
 sidebar_label: "Extrica"
 description: "Read this guide to learn about the Extrica Trino Query Engine setup in dbt."
 id: "extrica-setup"
@@ -12,6 +12,7 @@ meta:
   cloud_support: 'Not Supported'
   min_supported_version: 'n/a'
   platform_name: 'Extrica'
+availability: local_free
 ---
 
 <h2> Overview of {frontMatter.meta.pypi_package} </h2>
@@ -21,7 +22,7 @@ meta:
     <li><strong>Authors</strong>: {frontMatter.meta.authors}</li>
     <li><strong>GitHub repo</strong>: <a href={`https://github.com/${frontMatter.meta.github_repo}`}>{frontMatter.meta.github_repo}</a></li>
     <li><strong>PyPI package</strong>: <code>{frontMatter.meta.pypi_package}</code> <a href={`https://badge.fury.io/py/${frontMatter.meta.pypi_package}`}><img src={`https://badge.fury.io/py/${frontMatter.meta.pypi_package}.svg`}/></a></li>
-    <li><strong>Supported dbt Core version</strong>: {frontMatter.meta.min_core_version} and newer</li>
+    <li><strong>Supported <Constant name="core" /> version</strong>: {frontMatter.meta.min_core_version} and newer</li>
     <li><strong><Constant name="dbt" /> support</strong>: {frontMatter.meta.cloud_support}</li>
     <li><strong>Minimum data platform version</strong>: {frontMatter.meta.min_supported_version}</li>
     </ul>

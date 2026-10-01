@@ -1,5 +1,5 @@
 ---
-title: "Connect Doris to dbt Core"
+title: "Connect Doris to dbt v1"
 sidebar_label: "Doris"
 description: "Read this guide to learn about the Doris warehouse setup in dbt."
 id: "doris-setup"
@@ -14,6 +14,7 @@ meta:
   slack_channel_link: 'https://www.getdbt.com/community'
   platform_name: 'Apache Doris / SelectDB'
   config_page: '/reference/resource-configs/doris-configs'
+availability: local_free
 ---
 
 

@@ -1,0 +1,7 @@
+{
+  "version": "https://jsonfeed.org/version/1",
+  "title": "dbt single-tenant release notes",
+  "home_page_url": "https://docs.getdbt.com/docs/dbt-versions/dbt-platform-release-notes-gen",
+  "description": "dbt provides release notes for single-tenant so you can see recent and historical changes.",
+  "items": []
+}

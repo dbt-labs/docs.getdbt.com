@@ -5,6 +5,9 @@ id: "2023-release-notes"
 sidebar_label: "2023 release notes"
 pagination_next: null
 pagination_prev: null
+availability:
+  surface: platform
+  access: free
 ---
 
 Archived release notes for <Constant name="dbt" /> from 2023
@@ -71,7 +74,7 @@ Archived release notes for <Constant name="dbt" /> from 2023
     - Feedback and community support &mdash; Engage and share feedback with the dbt Labs team and dbt Community slack using channels like [#dbt-cloud-semantic-layer](https://getdbt.slack.com/archives/C046L0VTVR6) and [#dbt-metricflow](https://getdbt.slack.com/archives/C02CCBBBR1D). Or reach out to your dbt Cloud account representative.
     - Resources for upgrading &mdash; Refer to some additional info and resources to help you upgrade your dbt version:
     - [Upgrade version in dbt Cloud](/docs/dbt-versions/upgrade-dbt-platform-version)
-    - [Version migration guides](/docs/dbt-versions/core-upgrade)
+    - [Version migration guides](/docs/dbt-versions/dbt-upgrade)
 
   </Expandable>
 
@@ -236,7 +239,7 @@ Archived release notes for <Constant name="dbt" /> from 2023
     <Lightbox src="/img/docs/dbt-platform/semantic-layer/sl-architecture.jpg" width="80%" title="Use the universal dbt Semantic Layer to define and queried metrics in integration tools."/>
 
     The dbt Semantic Layer is available to [dbt Cloud Team or Enterprise](https://www.getdbt.com/) multi-tenant plans on dbt v1.6 or higher. 
-    - Team and Enterprise customers can use 1,000 Queried Metrics per month for no additional cost on a limited trial basis, subject to reasonable use limitations. Refer to [Billing](/docs/platform/billing#what-counts-as-a-queried-metric) for more information.
+    - Team and Enterprise customers can use 1,000 Queried Metrics per month for no additional cost on a limited trial basis, subject to reasonable use limitations. Refer to [Billing](/docs/platform/billing/how-pricing-works#what-counts-as-a-queried-metric) for more information.
     - <Constant name="dbt" /> Developer plans and <Constant name="core" /> users can define metrics but won't be able to query them with integrated tools.
 
   </Expandable>
@@ -316,7 +319,7 @@ Archived release notes for <Constant name="dbt" /> from 2023
     * Added a section to introduce a new beta feature [**Extended Attributes**](/docs/dbt-platform-environments#extended-attributes-beta), which allows users to set a flexible `profiles.yml` snippet in their dbt Cloud Environment settings.
     ## 🎯 Core projects
 
-    * We released [dbt 1.6](/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-to-v1.6)! We added docs for the new commands `dbt retry` and `dbt clone`
+    * We released [dbt 1.6](/docs/dbt-versions/dbt-upgrade/Older%20versions/upgrading-to-v1.6)! We added docs for the new commands `dbt retry` and `dbt clone`
 
     ## New 📚 Guides, ✏️ blog posts, and FAQs
 
@@ -328,7 +331,7 @@ Archived release notes for <Constant name="dbt" /> from 2023
 
 - <Expandable alt_header='Removing prerelease versions'>
 
-    Previously, when dbt Labs released a new [version](/docs/dbt-versions#how-dbt-core-uses-semantic-versioning) in dbt Cloud, the older patch _prerelease_ version and the _latest_ version remained as options in the dropdown menu available in the **Environment settings**. Now, when the _latest_ version is released, the _prerelease_ version will be removed and all customers remaining on it will be migrated seamlessly. There will be no interruptions to service when this migration occurs. 
+    Previously, when dbt Labs released a new [version](/docs/dbt-versions#how-dbt-v1-uses-semantic-versioning) in dbt Cloud, the older patch _prerelease_ version and the _latest_ version remained as options in the dropdown menu available in the **Environment settings**. Now, when the _latest_ version is released, the _prerelease_ version will be removed and all customers remaining on it will be migrated seamlessly. There will be no interruptions to service when this migration occurs. 
 
     To see which version you are currently using and to upgrade, select **Deploy** in the top navigation bar and select **Environments**. Choose the preferred environment and click **Settings**. Click **Edit** to make a change to the current dbt version. dbt Labs recommends always using the latest version whenever possible to take advantage of new features and functionality. 
 
@@ -601,7 +604,7 @@ Archived release notes for <Constant name="dbt" /> from 2023
     - We clarified the nuances of [CI and CI jobs](/docs/deploy/continuous-integration), updated the [Scheduler content](/docs/deploy/job-scheduler), added two new pages for the job settings and run visibility, moved the project state page to the [Syntax page](/reference/node-selection/syntax), and provided a landing page for [Deploying with Cloud](/docs/deploy/jobs) to help readers navigate the content better.
     - We reformatted the [Supported data platforms page](/docs/supported-data-platforms) by adding dbt Cloud to the page, splitting it into multiple pages, using cards to display verified adapters, and moving the [Warehouse setup pages](/docs/local/connect-data-platform/about-dbt-connections) to the Docs section. 
     - We launched a new [Lint and format page](/docs/platform/studio-ide/lint-format), which highlights the awesome new dbt Cloud IDE linting/formatting function.
-    - We enabled a connection between [dbt Cloud release notes](/docs/dbt-versions/dbt-cloud-release-notes) and the dbt Slack community. This means new dbt Cloud release notes are automatically sent to the slack community [#dbt-cloud channel](https://getdbt.slack.com/archives/CMZ2V0X8V) via RSS feed, keeping users up to date with changes that may affect them. 
+    - We enabled a connection between [dbt Cloud release notes](/docs/dbt-versions/release-notes) and the dbt Slack community. This means new dbt Cloud release notes are automatically sent to the slack community [#dbt-cloud channel](https://getdbt.slack.com/archives/CMZ2V0X8V) via RSS feed, keeping users up to date with changes that may affect them. 
     - We’ve added two new docs links in the dbt Cloud Job settings user interface (UI). This will provide additional guidance and help users succeed when setting up a dbt Cloud job: [job commands](/docs/deploy/job-commands) and job triggers.    
     - We added information related to the newly created [IT license](/docs/platform/manage-access/about-user-access#license-based-access-control), available for Team and Enterprise plans. 
     - We added a new [Supported browser page](/docs/platform/about-platform/browsers), which lists the recommended browsers for dbt Cloud.
@@ -835,12 +838,12 @@ Archived release notes for <Constant name="dbt" /> from 2023
   * [connection page](/docs/platform/connect-data-platform/connect-starburst-trino), 
   * [set up page](/docs/local/connect-data-platform/trino-setup), and [config page](/reference/resource-configs/trino-configs). 
     - Enhanced [dbt Cloud jobs page](/docs/deploy/jobs) and section to include conceptual info on the queue time, improvements made around it, and about failed jobs. 
-    - Check out the April dbt [Cloud release notes](/docs/dbt-versions/dbt-cloud-release-notes)
+    - Check out the April dbt [Cloud release notes](/docs/dbt-versions/release-notes)
 
     ## 🎯 Core projects 
 
     - Clearer descriptions in the [Jinja functions page](/reference/dbt-jinja-functions-context-variables), that improve content for each card. 
-    - [1.5 Docs](/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-to-v1.5) have been released as a Release Candidate (RC)! 
+    - [1.5 Docs](/docs/dbt-versions/dbt-upgrade/Older%20versions/upgrading-to-v1.5) have been released as a Release Candidate (RC)! 
     - See the beautiful [work captured in Core v 1.5](https://github.com/dbt-labs/docs.getdbt.com/issues?q=is%3Aissue+label%3A%22dbt-core+v1.5%22+is%3Aclosed).
 
     ## New 📚 Guides and ✏️ blog posts
@@ -869,7 +872,7 @@ Archived release notes for <Constant name="dbt" /> from 2023
 
     - [How to upgrade dbt without fear](/blog/upgrade-dbt-without-fear) 
     - [Upgrade Q&A on breaking changes](/docs/dbt-versions/upgrade-dbt-platform-version#upgrading-legacy-versions-under-10)
-    - [Version migration guides](/docs/dbt-versions/core-upgrade)
+    - [Version migration guides](/docs/dbt-versions/dbt-upgrade)
 
   </Expandable>
 

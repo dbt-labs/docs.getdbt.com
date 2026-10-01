@@ -2,6 +2,7 @@
 title: "Add Exposures to your DAG"
 sidebar_label: "Exposures"
 id: "exposures"
+availability: all_users
 ---
 
 Exposures make it possible to define and describe a downstream use of your dbt project, such as in a dashboard, application, or data science pipeline. By defining exposures, you can then:

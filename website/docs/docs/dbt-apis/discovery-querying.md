@@ -3,9 +3,17 @@ title: "Query the Discovery API"
 id: "discovery-querying"
 sidebar_label: "Query the Discovery API"
 pagination_next: "docs/dbt-apis/discovery-schema-environment"
+availability:
+  surface: platform
+  access: paid_plan
+  minPlan: starter
 ---
 
+import ApiRateLimitsCallout from '/snippets/_api-rate-limits-callout.md';
+
 The Discovery API supports ad-hoc queries and integrations. If you are new to the API, refer to [About the Discovery API](/docs/dbt-apis/discovery-api) for an introduction.
+
+<ApiRateLimitsCallout />
 
 Use the Discovery API to evaluate data pipeline health and project state across runs or at a moment in time. dbt Labs provide a default [GraphQL explorer](https://metadata.cloud.getdbt.com/graphql) for this API, enabling you to run queries and browse the schema. However, you can also use any GraphQL client of your choice to query the API.
 

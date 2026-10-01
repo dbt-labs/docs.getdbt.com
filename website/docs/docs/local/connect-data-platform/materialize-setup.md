@@ -1,5 +1,5 @@
 ---
-title: "Connect Materialize to dbt Core"
+title: "Connect Materialize to dbt v1"
 sidebar_label: "Materialize"
 description: "Read this guide to learn about the Materialize warehouse setup in dbt."
 id: "materialize-setup"
@@ -15,6 +15,7 @@ meta:
   slack_channel_link: 'https://getdbt.slack.com/archives/C01PWAH41A5'
   platform_name: 'Materialize'
   config_page: '/reference/resource-configs/materialize-configs'
+availability: local_free
 ---
 
 

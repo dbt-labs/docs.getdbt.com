@@ -1,5 +1,6 @@
 ---
 title: quote_args
+description: "Control whether Snowflake quotes argument names when dbt creates a JavaScript user-defined function (UDF), which determines their casing."
 sidebar_label: "quote_args"
 id: quote_args
 ---

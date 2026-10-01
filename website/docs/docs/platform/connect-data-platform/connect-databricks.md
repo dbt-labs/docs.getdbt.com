@@ -3,9 +3,12 @@ title: "Connect Databricks"
 id: connect-databricks
 description: "Setup instructions for connecting Databricks to dbt"
 sidebar_label: "Connect Databricks"
+availability:
+  surface: platform
+  access: login_required
 ---
 
-# Connect Databricks <ProductCard text="Fusion compatible" />
+# Connect Databricks <ProductCard text="dbt v2 compatible" />
 
 The dbt-databricks adapter is maintained by the Databricks team. The Databricks team is committed to supporting and improving the adapter over time, so you can be sure the integrated experience will provide the best of dbt and the best of Databricks. Connecting to Databricks via dbt-spark has been deprecated.
 
@@ -30,7 +33,7 @@ To learn how to optimize performance with data platform-specific configurations 
 
 To grant users or roles database permissions (access rights and privileges), refer to the [example permissions](/reference/database-permissions/databricks-permissions) page.
 
-## Warehouse permissions for Fusion
+## Warehouse permissions for <Constant name="fusion" />
 
 import FusionDatabricksWarehousePerms from '/snippets/_fusion-warehouse-permissions-databricks.md';
 

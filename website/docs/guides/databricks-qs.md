@@ -5,7 +5,7 @@ level: 'Beginner'
 icon: 'databricks'
 hide_table_of_contents: true
 tags: ['Platform', 'Quickstart', 'Databricks']
-product_badge: "Fusion compatible"
+product_badge: "dbt v2 compatible"
 ---
 
 <div style={{maxWidth: '900px'}}>
@@ -308,7 +308,7 @@ select * from final
 
 4. Enter `dbt run` in the command prompt at the bottom of the screen. You should get a successful run and see the three models.
 
-Later, you can connect your business intelligence (BI) tools to these views and tables so they only read cleaned up data rather than raw data in your BI tool.
+Later, you can connect your business intelligence (BI) tools (like [dbt Charts](https://dbtcharts.com/)) to these views and tables so they only read cleaned up data rather than raw data.
 
 #### FAQs
 

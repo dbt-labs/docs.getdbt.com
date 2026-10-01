@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>dbt single-tenant release notes</title>
+  <link href="https://docs.getdbt.com/docs/dbt-versions/dbt-platform-release-notes-gen"/>
+  <subtitle>dbt provides release notes for single-tenant so you can see recent and historical changes.</subtitle>
+</feed>

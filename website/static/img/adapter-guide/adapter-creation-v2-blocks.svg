@@ -1,8 +1,8 @@
 <svg viewBox="0 0 760 620" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif">
   <rect width="760" height="620" fill="white"/>
 
-  <text x="140" y="24" text-anchor="middle" font-size="13" font-weight="700" fill="#111">dbt Core v1</text>
-  <text x="460" y="24" text-anchor="middle" font-size="13" font-weight="700" fill="#111">dbt Core v2</text>
+  <text x="140" y="24" text-anchor="middle" font-size="13" font-weight="700" fill="#111">dbt Core v1.x</text>
+  <text x="460" y="24" text-anchor="middle" font-size="13" font-weight="700" fill="#111">dbt Core v2.0</text>
 
   <!-- IN V1, NOT IN V2 -->
   <text x="8" y="52" font-size="10" font-weight="700" fill="#6b7280" letter-spacing="0.5">IN V1, NOT IN V2 — absorbed by dbt Labs or the ADBC driver</text>

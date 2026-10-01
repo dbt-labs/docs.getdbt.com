@@ -1,21 +1,18 @@
-## Fusion and dbt Core v2 features
+## What you get with v2
 
-<Constant name="core" /> v2 and <Constant name="fusion" /> represent the next evolution of the classic <Constant name="core" /> toolset, with performance enhancements and powerful new features. <Constant name="core" /> v2 includes everything available in <Constant name="core" /> v1.x, plus the speed and power of <Constant name="fusion" />. Level up your development by [installing the <Constant name="fusion_engine" />](/docs/local/install-dbt?version=2).
+For the best dbt experience, use dbt v2 with the dbt VS Code extension to access the following features:
 
-To access the full set of features, register with your email address or sign in to your <Constant name="dbt_platform" /> account using `dbt login`. The following table shows which features are available to all users and which require registration:
+- **dbt v1 workflows** (except dbt docs v1)
+- [**Syntax error detection**](/docs/dbt-extension-features?version=2#live-error-detection)<sup>*</sup> (Jinja, YAML, SQL) 
+- [**dbt lint**](/reference/commands/lint?version=2) <sup>*</sup> 
+- [**dbt docs v2**](/reference/commands/cmd-docs?version=2#dbt-docs-v2)<sup>*</sup> (lite or full): Full includes column-level lineage.
+- [**<Term id="lsp" />**](/docs/about-dbt-lsp?version=2)<sup>*</sup> (lite): Go-to ref, source, and macro 
+- [**Full <Term id="lsp" />**](/docs/about-dbt-lsp?version=2): CTE, hover to see schema, and more 
+- [**SQL comprehension, type checking, and impact analysis**](/blog/the-levels-of-sql-comprehension)
+- [**Precise column-level lineage**](/docs/explore/column-level-lineage?version=2)
 
-| Feature | <nobr> dbt Core v2</nobr> <br />(OSS) | Fusion <br /> <nobr>(all users)</nobr> | Fusion <br /> <nobr>(with registration)</nobr> |
-|---------|:-----------------:|:------------------:|:--------------------------:|
-| Everything in dbt Core today <br /> (except dbt docs v1) | ✅ | ✅ | ✅ |
-| dbt docs v2 (lite) | ✅ | ✅ | ✅ |
-| Syntax error detection | - | ✅ | ✅ |
-| LSP (lite) | - | ✅ | ✅ |
-| dbt lint   | - | ✅ | ✅ |
-| SQL Comprehension | - | - | ✅ |
-| Full LSP | - | - | ✅ |
-| Query cache | - | - | ✅ |
-| dbt docs v2 (full) | - | - | ✅ |
-| dbt Mesh | - | - | ✅ |
-| Auto-deferral | - | - | ✅ |
-| Compare changes | - | - | ✅ |
-| Precise column-level lineage artifact generation | - | - | ✅ |
+<sup>*</sup> Free forever. Really!
+
+Connect your <Constant name="dbt_platform" /> account editor for additional enhanced capabilities like the **Catalog** tab.
+
+To learn more about VS Code-specific capabilities, refer to [dbt VS Code extension features](/docs/dbt-extension-features).

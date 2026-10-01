@@ -21,7 +21,7 @@ This document provides a comprehensive overview of account-specific features in 
 
 ## Copilot features
 
-### Codegen <Lifecycle status="Starter, Enterprise, Enterprise+"/>
+### Codegen <Lifecycle status="self_service, managed, managed_plus"/>
 
 <Constant name="wizard" /> codegen refers to the code generation capabilities provided by <Constant name="wizard" />, an AI-powered assistant integrated into <Constant name="dbt" />. This feature allows users to generate SQL code, documentation, tests, and semantic models directly from natural language prompts, helping automate and accelerate common analytics engineering workflows.⁠⁠⁠⁠
 
@@ -36,7 +36,7 @@ The code <Constant name="wizard" /> generates may include:
 
 <Constant name="wizard" /> codegen is available in the <Constant name="studio_ide" />, <Constant name="canvas" />, and (soon) <Constant name="insights" />, making it possible to generate and edit code directly within these interfaces.⁠ 
 
-### Bring your own key (BYOK) <Lifecycle status="Enterprise, Enterprise+"/>
+### Bring your own key (BYOK) <Lifecycle status="managed, managed_plus"/>
 
 BYOK allows users to provide and manage their own encryption or API keys, rather than relying on keys managed by a vendor or third party. This gives organizations greater control over data security, compliance, and contracts.
 
@@ -65,7 +65,7 @@ Some of the reasons organizations require BYOK include:
 
 Note that BYOK is different from bring your own cloud (BYOC). BYOK refers to key or credential management, whereas BYOC refers to running software workloads in your own cloud environment.
 
-### Natural language in Canvas <Lifecycle status="Enterprise, Enterprise+"/>
+### Natural language in Canvas <Lifecycle status="managed, managed_plus"/>
 
 Natural language in <Constant name="canvas" /> refers to the ability to build data models visually in <Constant name="canvas" /> using plain language prompts, powered by GenAI (<Constant name="wizard" />). You can describe what you want to build or transform, and the tool generates the underlying SQL and transformation steps for you. No SQL expertise is required. It's aimed at making data modeling more accessible to less-technical users or anyone who prefers a drag-and-drop or conversational interface over hand-coding SQL.⁠⁠
 
@@ -75,11 +75,11 @@ The natural language capability is fully integrated into the <Constant name="can
 
 This approach is especially valuable for analysts and business users, allowing broader participation in data transformation tasks without losing dbt's governance, reproducibility, and code review processes.
 
-## Canvas <Lifecycle status="Enterprise, Enterprise+"/>
+## Canvas <Lifecycle status="managed, managed_plus"/>
 
 <Constant name="canvas" /> enables efficient data access and transformation through a visual interface, combining the benefits of code-driven development with AI-assisted code generation for a seamless, flexible experience.
 
-## dbt Insights <Lifecycle status="Enterprise, Enterprise+"/>
+## dbt Insights <Lifecycle status="managed, managed_plus"/>
 
 <Constant name="insights" /> is an interactive feature in <Constant name="dbt" /> designed for writing, running, and analyzing SQL queries within an intuitive interface. It brings together SQL query execution, results visualization, and integration with dbt metadata and documentation &mdash; all in one place.⁠⁠
 
@@ -93,19 +93,19 @@ The interface supports syntax highlighting, code completion, asset linking (to e
 
 While <Constant name="insights" /> supports some light visualizations and query sharing, it is not intended to replace BI tools for reporting or dashboarding. Instead, it's focused on fast ad hoc analysis and insight generation. Integrations allow users to "jump off" into downstream BI tools with their queries if needed.⁠
 
-## dbt Mesh cross platform <Lifecycle status="Enterprise, Enterprise+"/>
+## dbt Mesh cross platform <Lifecycle status="managed, managed_plus"/>
 
 dbt Mesh cross-platform (sometimes called "cross-platform Mesh" or "cross-platform dbt Mesh") is a capability in dbt Mesh that allows for referencing models and sharing lineage across multiple dbt projects, even when those projects use different data warehouse platforms.
 
-## SCIM <Lifecycle status="Enterprise, Enterprise+"/>
+## SCIM <Lifecycle status="managed, managed_plus"/>
 
 SCIM (System for Cross-Domain Identity Management) automates user identities and groups, enhancing security and simplifying admin tasks. It allows for real-time user provisioning, deprovisioning, and profile updates in <Constant name="dbt" />, primarily using Okta as the identity provider.
 
-## Hybrid projects <Lifecycle status="Enterprise, Enterprise+"/>
+## Hybrid projects <Lifecycle status="managed, managed_plus"/>
 
 Hybrid projects refer to a setup where both <Constant name="core" /> and <Constant name="dbt" /> are utilized within the same organization, often working on the same codebase or data platform. This approach enables different teams or contributors to work in the environment that aligns best with their preferences or workflows, while still benefiting from shared assets and centralized metadata.
 
-## Enterprise security <Lifecycle status="Enterprise+"/>
+## Enterprise security <Lifecycle status="managed_plus"/>
 
 Enterprise security includes robust capabilities for managing network access and user permissions, designed to safeguard sensitive data. Two widely used features that support these efforts are PrivateLink and IP allowlisting.
 

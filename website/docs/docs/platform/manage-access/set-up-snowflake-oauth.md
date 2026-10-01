@@ -2,9 +2,13 @@
 title: "Set up Snowflake OAuth"
 description: "Learn how dbt administrators can use Snowflake OAuth to control access in a dbt account."
 id: "set-up-snowflake-oauth"
+availability:
+  surface: platform
+  access: paid_plan
+  minPlan: enterprise
 ---
 
-# Set up Snowflake OAuth <Lifecycle status="managed, managed_plus" />
+# Set up Snowflake OAuth
 
 :::info Subdomain migration
 

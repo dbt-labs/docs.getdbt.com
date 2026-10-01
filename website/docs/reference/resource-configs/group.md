@@ -1,4 +1,5 @@
 ---
+description: "Assign dbt resources to groups to organize ownership and control access to private models."
 resource_types: [models, seeds, snapshots, tests, analyses, metrics]
 id: "group"
 ---

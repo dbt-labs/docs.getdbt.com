@@ -1,15 +1,8 @@
+## More information about dbt v2
 
-## More information about Fusion
-
-Fusion marks a significant update to dbt. While many of the workflows you've grown accustomed to remain unchanged, there are a lot of new ideas, and a lot of old ones going away. The following is a list of the full scope of our current release of the Fusion engine, including implementation, installation, deprecations, and limitations:
-
-- [About the dbt Fusion engine](/docs/fusion/about-fusion)
-- [About the dbt extension](/docs/about-dbt-extension)
-- [New concepts in Fusion](/docs/fusion/new-concepts)
-- [Supported features matrix](/docs/fusion/supported-features)
-- [Installing <Constant name="fusion" /> CLI](/docs/local/install-dbt?version=2)
-- [Installing VS Code extension](/docs/install-dbt-extension)
-- [Fusion release track](/docs/dbt-versions/upgrade-dbt-platform-version#dbt-fusion-engine)
-- [Quickstart for Fusion](/guides/fusion?step=1)
-- [Upgrade guide](/docs/dbt-versions/core-upgrade/upgrading-to-v2)
-- [Fusion license agreement](https://www.getdbt.com/dbt-fusion-engine-license-agreement)
+- [<Constant name="fusion_engine" /> changelog](https://github.com/dbt-labs/dbt/blob/main/CHANGELOG-dbt.md)
+    {!props.hideExtensionLink && <li><a href="/docs/about-dbt-extension">About the dbt extension</a></li>}
+    {!props.hideInstallLink && <li><a href="/docs/local/install-dbt">Install dbt v2</a></li>}
+    {!props.hideQuickstartLink && <li><a href="/guides/dbt?step=1">dbt v2 quickstart guide</a></li>}
+    {!props.hideUpgradeLink && <li><a href="/docs/dbt-versions/dbt-upgrade/upgrading-to-v2">Upgrade guide</a></li>}
+- [dbt v2 license agreement](https://www.getdbt.com/dbt-fusion-engine-license-agreement)

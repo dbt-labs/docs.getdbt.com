@@ -4,9 +4,13 @@ id: "enterprise-permissions"
 description: "Permission sets for Enterprise plans."
 hide_table_of_contents: true #For the sake of the tables on this page
 pagination_next: null
+availability:
+  surface: platform
+  access: paid_plan
+  minPlan: enterprise
 ---
 
-# Enterprise permissions <Lifecycle status="managed,managed_plus" />
+# Enterprise permissions
 
 import Permissions from '/snippets/_enterprise-permissions-table.md';
 import SetUpPages from '/snippets/_available-enterprise-only.md';
@@ -21,6 +25,10 @@ The <Constant name="dbt" /> Enterprise and Enterprise+ plans support a number of
 The following permission sets are available for assignment in all <Constant name="dbt" /> Enterprise-tier accounts. They can be granted to <Constant name="dbt" /> groups and then to users. A <Constant name="dbt" /> group can be associated with more than one permission set. Permission assignments with more access take precedence. 
 
 Access to <Constant name="dbt" /> features and functionality is split into `account-level` and `project-level` permission sets. Account-level permissions are primarily for account administration (inviting users, configuring SSO, and creating groups). Project-level permissions are for the configuration and maintenance of the projects themselves (configuring environments, accessing IDE, and running jobs). Account permission sets may have access to project features, and project permission sets may have access to account features. Check out the [permissions tables](/docs/platform/manage-access/enterprise-permissions#account-permissions) to compare sets and their access. 
+
+:::tip Read-Only users
+If you have users with a Read-Only license, you can [enable granular permissions](/docs/platform/manage-access/about-user-access#enable-granular-permissions-for-read-only-users) for your account. This is a one-time, irreversible setting. After you enable it, Read-Only users keep their project access only if they're in a group with a Read-Only permission set that covers all projects.
+:::
 
 <Expandable alt_header="Account admin">
 
@@ -45,6 +53,20 @@ Notable features:
 - The default permissions assigned to the `Member` group.
 
 </Expandable>
+
+<Expandable alt_header="Account Viewer">
+The Account Viewer permissions set provides read-only access to the <Constant name="dbt" /> account. Useful for any persona who needs insights into your <Constant name="dbt" /> account without access to create or change configurations.
+
+The Account Viewer permission set is frequently paired with the [Read-only license-type](/docs/platform/manage-access/seats-and-users).
+
+Notable features:
+- Account Viewer is an account-level set.
+- Read-only access to all settings, projects, environments, and runs.
+- Read-only access to audit logs, including sensitive account-level information.
+- No access to the IDE. 
+- Can access <Constant name="catalog" />
+
+</Expandable>
 <Expandable alt_header="Analyst">
 
 The Analyst permission set is designed for users who need to run and analyze dbt models in the IDE but can't create or edit anything outside the IDE. 
@@ -57,21 +79,17 @@ Notable features:
 - Can access <Constant name="catalog" />.
 
 </Expandable>
-<Expandable alt_header="Analyst read" lifecycle="private_beta">
+<Expandable alt_header="Analyst read">
 
-The Analyst read permission set is a project-level set designed for users who need read-only access to analyze dbt models and project resources without the ability to develop or make changes.
+The Analyst read permission set is a project-level set designed for users who need read-only access to analyze dbt models and project resources without the ability to develop or make changes. It does not change the user's license.
 
-:::info Availability
-
-The OAuth integration that lets read-only users connect to analysis features (such as the [dbt MCP server](/docs/dbt-ai/about-mcp)) is available to use. The **Analyst read** permission set and the read-only permission changes described here are in **private beta**. To enable them, contact your account manager.
-
-:::
+On Enterprise-tier plans, you can assign Analyst read to Read-Only users. That lets those users manage their own warehouse credentials and use the [dbt MCP server](/docs/dbt-ai/about-mcp). They can connect with OAuth or a personal access token. For MCP authentication options, refer to [Connect dbt MCP server to dbt platform](/docs/dbt-ai/mcp-quickstart-oauth).
 
 Notable features:
 - Analyst read is a project-level set.
-- Read-only access to project resources, jobs, runs, and environment configs.
-- Can access <Constant name="catalog" />.
-- Includes `user_credential_write`, so users can view and edit their own user credentials on **Your profile** > **Credentials** without access to the <Constant name="studio_ide" /> or <Constant name="platform_cli" />. Read-only users still need personal user credentials on this page to run warehouse queries in analysis features such as <Constant name="insights" /> and the <Constant name="semantic_layer" />.
+- Read-only access to **Connections** (account and project), **Projects**, repositories (Git repository settings), <Constant name="semantic_layer" /> configuration, **Environments**, custom environment variables, and <Constant name="catalog" /> metadata (Metadata GraphQL API).
+- No read access to jobs or runs.
+- Includes `user_credential_write`, so users can view and edit their own user credentials on **Your profile** > **Credentials** without access to the <Constant name="studio_ide" /> or <Constant name="platform_cli" />. Read-only users need personal user credentials on this page to run warehouse queries in analysis features such as the <Constant name="semantic_layer" />. In <Constant name="wizard" /> [Explore mode](/docs/platform/wizard-home#ask-questions-in-explore-mode), users without personal credentials fall back to the project's [analytics credential](/docs/platform/wizard-read-only-users#set-up-analytics-credentials) instead.
 - No write access and no access to develop in the <Constant name="studio_ide" /> or <Constant name="platform_cli" />.
 
 To access the capabilities of this permission set, you _must_ add users to a group that's assigned the Analyst read permission set. Users won't have access until they're added to the group. For the setup steps, refer to [Set up read-only user access](/docs/platform/manage-access/about-user-access#set-up-read-only-user-access).
@@ -106,6 +124,8 @@ Notable features:
 
 The Cost Insights Viewer permission set provides read-only access to [Cost Insights](/docs/explore/cost-insights) data with the minimum permissions needed to view estimated cost and reduction information.
 
+A Read-Only license is not enough to view Cost Insights. Assign this permission set through a group.
+
 Notable features:
 - Cost Insights Viewer is both an account-level and project-level set.
 - Read-only access to cost and savings data across projects, models, and jobs.
@@ -121,11 +141,22 @@ Database admins manage configurations between <Constant name="dbt" /> and the un
 
 Notable features: 
 - Database admin is a project-level set. 
-- Can set up and maintain environment variables and <Constant name="semantic_layer" /> configs.
-- Write access to data platform configurations within environments (credentials, warehouse, schema per environment).
+- Can set up and maintain <Constant name="semantic_layer" /> configs.
+- Write access to data platform configurations within environments (credentials, warehouse, schema per environment), including:
+  - Editing [profile](/docs/platform/about-profiles) configs like profile name, deployment credentials, extended attributes, and connection overrides such as `schema`, `role`, `database`, and so on (fields vary by data platform).
+  - Creating new profiles for projects they have access to, including setting which connection the profile is associated with
 - Helpful for scenarios where your data warehouse admins only need access to <Constant name="dbt" /> to configure data platform settings within environments.
 - Read-only access to account-level connections, Git repo, job, and run settings. 
 - Can access <Constant name="catalog" />.
+- Has limited access to environment variables. Use the following table to see what's allowed at each level:
+
+| Level | Access |
+|-------|--------|
+| Job | Can override an environment variable's value on a job |
+| Environment | Read-only. Can't create, edit, or delete environment variables |
+| User credentials | No access, because this set doesn't include <Constant name="studio_ide" /> access |
+
+Granting [environment write access](/docs/platform/manage-access/about-user-access#environment-write-access) doesn't change this. It elevates job and run permissions to write, but leaves environment variables read-only.
 
 </Expandable>
 <Expandable alt_header="Developer">
@@ -140,16 +171,16 @@ Notable features:
 - Can access <Constant name="catalog" />.
 
 </Expandable>
-<Expandable alt_header="Fusion admin">
+<Expandable alt_header="v2 Migration Admin">
 
-This permission set enables users to interact with <Constant name="fusion"/> upgrade workflows. We recommend limiting this permission to users who are actively [working on migrating](/guides/upgrade-to-fusion?step=1) a project to <Constant name="fusion"/>.
+This permission set enables users to interact with <Constant name="fusion"/> upgrade workflows. We recommend limiting this permission to users who are actively [working on migrating](/guides/upgrade-to-v2?step=1) a project to <Constant name="fusion"/>.
 
-By default, all users can access the <Constant name="fusion"/> upgrade experience. When the upgrade permissions setting is enabled, only users with the **Fusion admin** or **Account admin** permission set can perform upgrades. If the setting is disabled (no check mark), upgrades are not restricted.
+By default, all users can access the <Constant name="fusion"/> upgrade experience. When the upgrade permissions setting is enabled, only users with the **v2 Migration Admin** or **Account admin** permission set can perform upgrades. If the setting is disabled (no check mark), upgrades are not restricted.
 
-- **Fusion admin** &mdash; Assign to user accounts only. Cannot be assigned to service tokens.
+- **v2 Migration Admin** &mdash; Assign to user accounts only. Cannot be assigned to service tokens.
 - **Account admin** &mdash; Assign to user accounts or service tokens. Allows both users and service tokens to perform upgrades.
 
-For more information, refer to [Upgrade to dbt <Constant name="fusion"/>](/docs/dbt-versions/upgrade-dbt-platform-version#dbt-fusion-engine).
+For more information, refer to [Upgrade to <Constant name="fusion"/>](/docs/dbt-versions/upgrade-dbt-platform-version#dbt-v2).
 
 </Expandable>
 <Expandable alt_header="Git admin">
@@ -281,7 +312,7 @@ Notable features:
 </Expandable>
 <Expandable alt_header="Stakeholder and Read-Only">
 
-The Stakeholder and Read-Only are identical permission sets that are similar to Viewer, but without access to sensitive content such as account settings, billing information, or audit logs. Useful for personas who need to monitor projects and their configurations.
+The Stakeholder and Read-Only are identical permission sets that are similar to Account Viewer, but without access to sensitive content such as account settings, billing information, or audit logs. Useful for personas who need to monitor projects and their configurations.
 
 Notable features: 
 - Stakeholder is a project-level set.
@@ -300,19 +331,6 @@ Notable features:
 - Access to manage the project(s) for a team of users. Limited scope and access can be extended via environment permissions. 
 - Read-only access to many account settings (excluding sensitive content like billing and auth providers).
 - Can access <Constant name="catalog" />.
-
-</Expandable>
-<Expandable alt_header="Viewer">
-The Account Viewer permissions set provides read-only access to the <Constant name="dbt" /> account. Useful for any persona who needs insights into your <Constant name="dbt" /> account without access to create or change configurations.
-
-The Viewer permission set is frequently paired with the [Read-only license-type](/docs/platform/manage-access/seats-and-users).
-
-Notable features:
-- Viewer is an account-level set.
-- Read-only access to all settings, projects, environments, and runs.
-- Read-only access to audit logs, including sensitive account-level information.
-- No access to the IDE. 
-- Can access <Constant name="catalog" />
 
 </Expandable>
 

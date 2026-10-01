@@ -4,7 +4,7 @@ sidebar_label: "overloads"
 id: overloads
 ---
 
-# overloads <Lifecycle status="beta" />
+# overloads
 
 <VersionCallout version="1.12" />
 
@@ -36,10 +36,6 @@ functions:
 </File>
 
 ## Definition
-
-:::info Beta feature
-The `overloads` property is a beta feature in <Constant name="core" /> v1.12.
-:::
 
 The `overloads` property lets you define multiple argument signatures for the same [user-defined function UDF](/docs/build/udfs). This lets you call the same function name with different input types, without creating separate UDFs for each variant. The warehouse calls the right version based on the argument types. `overloads` is supported for SQL UDFs in Snowflake and Postgres, and Python and JavaScript UDFs in Snowflake.
 

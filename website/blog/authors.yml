@@ -555,6 +555,13 @@ simon_podhajsky:
     x: sim_pod
   name: Simon Podhajsky
   page: true
+stephen_thibeault:
+  name: Stephen Thibeault
+  title: Senior Resident Architect 
+  image_url: /img/blog/authors/stephen-thibeault.png  
+  socials:
+    linkedin: stephen-thibeault-62841789
+  page: true
 sterling_paramore:
   description: |
     Sterling Paramore started his career in theoretical and computation biophysics and learned that working with data was way more fun than being locked in the ivory tower.  He loves solving data engineering and data analytics problems and has been a long time evangelist for dbt.
@@ -649,4 +656,12 @@ mirna_wong:
   socials:
     linkedin: mirnawong
   name: Mirna Wong
+  page: true
+alex_noonan:
+  image_url: /img/blog/authors/alex-noonan.jpg
+  title: Senior Developer Experience Advocate
+  socials:
+    x: alexnoonan6
+    linkedin: alexander-noonan
+  name: Alex Noonan
   page: true

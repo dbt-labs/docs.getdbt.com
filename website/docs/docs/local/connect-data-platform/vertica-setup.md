@@ -1,5 +1,5 @@
 ---
-title: "Connect Vertica to dbt Core"
+title: "Connect Vertica to dbt v1"
 sidebar_label: "Vertica"
 id: "vertica-setup"
 meta:
@@ -14,6 +14,7 @@ meta:
   slack_channel_link: 'https://www.getdbt.com/community/'
   platform_name: 'Vertica'
   config_page: '/reference/resource-configs/vertica-configs'
+availability: local_free
 ---
 
 
