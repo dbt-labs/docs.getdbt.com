@@ -5,7 +5,7 @@ description: "Use the --static-analysis flag to override model-level static_anal
 sidebar: "Static analysis"
 ---
 
-Use the `--static-analysis` flag to override model-level `static_analysis` behavior for a single run. This flag applies to the <Constant name="fusion_engine" /> only; it is ignored by <Constant name="core" />.
+Use the `--static-analysis` flag to override model-level `static_analysis` behavior for a single run. This flag applies to dbt v2 only; it is ignored by v1.
 
 Values:
 
@@ -19,7 +19,7 @@ The `on` and `unsafe` values are deprecated and will be removed in May 2026. Use
 
 :::
 
-If not set, <Constant name="fusion" /> defaults to `baseline` mode, which provides a smooth transition from <Constant name="core" /> while still catching most SQL errors. See [Configuring `static_analysis`](/docs/fusion/new-concepts#configuring-static_analysis) for more information on incrementally opting in to stricter analysis.
+If not set, dbt defaults to `baseline` mode, which provides a smooth transition from v1 while still catching most SQL errors. See [Configuring `static_analysis`](/docs/fusion/new-concepts#configuring-static_analysis) for more information on incrementally opting in to stricter analysis.
 
 <File name='Usage'>
 
@@ -74,8 +74,6 @@ analyses:
 
 ### Precedence
 
-<!-- PLACEHOLDER: confirm final ordering with engineering, including exactly how the CLI flag interacts (it changes the default for unset values rather than clobbering explicit configs). -->
-
 <Constant name="fusion" /> resolves the static analysis level for each resource from most specific to least specific:
 
 1. The `--static-analysis` CLI flag, which changes the default for resources that don't have an explicit config rather than overriding configs you've already set.
@@ -83,14 +81,6 @@ analyses:
 3. A `static_analysis` config set for that resource type in `dbt_project.yml` (for example, under `models:`).
 4. The `flags.default_static_analysis_level` project flag.
 5. The built-in default (`baseline`).
-
-:::info Backward compatibility
-
-<!-- PLACEHOLDER: confirm the migration/deprecation plan. The existing `--static-analysis` CLI flag and the node-level `static_analysis` config are unchanged and continue to work. A behavior change flag to migrate users to the new flag name may be added later. -->
-
-The existing `--static-analysis` CLI flag and the [node-level `static_analysis` config](/reference/resource-configs/static-analysis) continue to work as before. This flag is additive. If you don't set it, your project behaves exactly as it does today.
-
-:::
 
 ## Related docs
 
