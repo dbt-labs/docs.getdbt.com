@@ -26,7 +26,7 @@ Run [`dbt login status`](/reference/commands/login?version=2.0#dbt-login-status)
 
 ## Key points
 
-- The extension is available to all users. Refer to the the [dbt Product License Agreement](https://www.getdbt.com/dbt-product-license-agreement) for more info.
+- The extension is available to all users. Refer to the the [dbt Product License Agreement](https://www.getdbt.com/dbt-product-license-agreement) for more information.
 - Signing in links your editor to your <Constant name="dbt_platform" /> account so the extension can use <Constant name="dbt_platform" /> capabilities.
 - You can authenticate with `dbt login` or sign in from inside the extension. If you don't have a <Constant name="dbt_platform" /> account, you can create a free account during authentication.
 - If a valid [`dbt_cloud.yml`](/reference/dbt_cloud.yml) file exists on your machine, the extension can use it automatically.
