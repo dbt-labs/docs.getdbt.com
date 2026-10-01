@@ -297,7 +297,7 @@ In `dbt-athena` 1.11.1 and later, you can write Iceberg models to [Amazon S3 Tab
 ##### Prerequisites
 
 - `dbt-athena` 1.11.1 or later, and <Constant name="dbt" /> v1.12 or later with `use_catalogs_v2` enabled.
-- An [S3 Tables table bucket](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-tables-buckets.html).
+- An [S3 table bucket](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-tables-buckets.html).
 - [AWS Glue integration](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-tables-integrating-aws.html) enabled for that bucket, so it appears as `s3tablescatalog/YOUR_TABLE_BUCKET`. Without it, the catalog won't resolve.
 - A namespace in the table bucket that matches the schema dbt uses for the model. dbt doesn't create S3 Tables namespaces for you.
 - An IAM role with S3 Tables read and write access, plus Glue permissions to create and delete tables in that catalog. Refer to [Integrating Amazon S3 Tables with AWS analytics services](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-tables-integrating-aws.html) for the required permissions.
