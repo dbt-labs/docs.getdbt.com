@@ -20,7 +20,7 @@ This shift makes [dbt Docs](#dbt-docs) a legacy documentation feature in <Consta
 
 <VersionBlock firstVersion="2.0">
 
-To build a static documentation site you host yourself, use [dbt Docs v2](/docs/build/view-documentation#dbt-docs-v2) locally. dbt Docs v2 isn't available in the <Constant name="dbt_platform" />.
+To build a self-hosted static documentation site, use [dbt Docs v2](/docs/build/view-documentation#dbt-docs-v2) locally. dbt Docs v2 isn't available in the <Constant name="dbt_platform" />.
 
 </VersionBlock>
 
@@ -101,13 +101,13 @@ To keep <Constant name="catalog" /> up to date:
 3. Under **Execution settings**, add the commands you want to run, such as `dbt build`, and click **Save**.
 4. After the job runs, click **Catalog** in the navigation to explore your project.
 
-If you add `dbt docs generate` as a run step, dbt runs `dbt compile --write-catalog` instead and shows a banner pointing you to <Constant name="catalog" />. For more info, refer to [platform behavior](/reference/commands/cmd-docs?version=2#platform-behavior).
+If you add `dbt docs generate` as a run step, dbt runs `dbt compile --write-catalog` instead and displays a banner directing you to <Constant name="catalog" />. For more info, refer to [platform behavior](/reference/commands/cmd-docs?version=2#platform-behavior).
 
-:::tip Tip &mdash; Metadata-only jobs
+:::tip Metadata-only jobs
 To refresh <Constant name="catalog" /> metadata without building models, add `dbt compile --write-catalog` in the **Commands** section.
 :::
 
-## View your docs
+## View your project documentation
 
 [<Constant name="catalog" />](/docs/explore/explore-projects) is where you view your project's documentation in the <Constant name="dbt_platform" />. It always shows your project's latest production state, so there's nothing to deploy or host. In <Constant name="catalog" />, you can:
 

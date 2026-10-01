@@ -50,8 +50,8 @@ For additional details and instructions on how to explore your lineage, navigate
 
 dbt Docs v2 is the next-generation open-source catalog experience, available when using <Constant name="fusion_engine" />. It is designed for data consumers (analysts, BI users, data scientists, and stakeholders) who need to understand what data exists, how it was built, and whether they can trust it.
 
-:::info dbt Docs v2 local only
-dbt Docs v2 runs locally only. In <Constant name="dbt_platform" />, jobs on <Constant name="fusion" /> refresh <Constant name="catalog" /> metadata automatically, so use [<Constant name="catalog" />](/docs/explore/build-and-view-your-docs) to explore your project, and give all your applicable users read-only access to it without restrictions. Refer to [platform behavior](/reference/commands/cmd-docs?version=2#platform-behavior) for more info.
+:::info dbt Docs v2 availability
+dbt Docs v2 is available on [self-hosted dbt v2 installations](/docs/local/install-dbt?version=2) only. In <Constant name="dbt_platform" />, jobs on <Constant name="fusion" /> refresh <Constant name="catalog" /> metadata automatically, so use [<Constant name="catalog" />](/docs/explore/build-and-view-your-docs) to explore your project, and give all your applicable users read-only access to it without restrictions. Refer to [platform behavior](/reference/commands/cmd-docs?version=2#platform-behavior) for more info.
 :::
 
 Key improvements over dbt Docs:
