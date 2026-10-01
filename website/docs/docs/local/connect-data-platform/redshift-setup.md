@@ -18,6 +18,8 @@ meta:
 availability: local_free
 ---
 
+import RedshiftBrowserIdc from '/snippets/_redshift-browser-identity-center.md';
+
 <VersionBlock firstVersion="2.0">
 
 # Connect Redshift to <Constant name="fusion" />
@@ -27,6 +29,7 @@ You can configure the Redshift adapter by running `dbt init` in your CLI or manu
 The Redshift adapter for <Constant name="fusion" /> supports the following [authentication methods](#supported-authentication-types):
 - Password
 - IAM profile
+- IAM Identity Center (browser)
 
 ## Warehouse permissions
 
@@ -113,6 +116,12 @@ default:
 
 </File>
 </TabItem>
+
+<TabItem value="IAM Identity Center (browser)">
+
+<RedshiftBrowserIdc />
+
+</TabItem>
 </Tabs>
 
 ## More information
@@ -167,6 +176,7 @@ The authentication methods that <Constant name="core" /> supports on Redshift ar
 
 - `Database` &mdash; Password-based authentication (default, will be used if `method` is not provided)
 - `IAM User` &mdash; IAM User authentication via AWS Profile
+- `IAM Identity Center` &mdash; Browser-based sign-in through AWS IAM Identity Center
 
 Click on one of these authentication methods for further details on how to configure your connection profile. Each tab also includes an example `profiles.yml` configuration file for you to review.
 
@@ -174,7 +184,8 @@ Click on one of these authentication methods for further details on how to confi
   defaultValue="database"
   values={[
     {label: 'Database', value: 'database'},
-    {label: 'IAM User via AWS Profile (<Constant name="core" />)', value: 'iam-user-profile'}]
+    {label: 'IAM User via AWS Profile', value: 'iam-user-profile'},
+    {label: 'IAM Identity Center (browser)', value: 'browser-identity-center'}]
 }>
 
 <TabItem value="database">
@@ -279,6 +290,12 @@ If you receive the "You must specify a region" error when using IAM Authenticati
 #### Specifying an IAM Profile
 
 When the `iam_profile` configuration is set, dbt will use the specified profile from your `~/.aws/config` file instead of using the profile name `default`
+
+</TabItem>
+
+<TabItem value="browser-identity-center">
+
+<RedshiftBrowserIdc />
 
 </TabItem>
 
