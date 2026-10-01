@@ -13,6 +13,8 @@ The dbt Information Schema is a contracted interface into your project’s metad
 
 The metadata is stored as [Parquet](https://parquet.apache.org/) files, which are more compact and efficient to query than JSON artifacts. For example, a project whose `manifest.json` and `catalog.json` total ~70 MB has an Information Schema of ~5 MB.
 
+The Information Schema doesn't use warehouse compute to build or to query it. dbt writes the files from its internal project metadata, using an embedded DuckDB engine that runs inside the dbt process. You don't need to install, configure, or manage DuckDB to use the Information Schema.
+
 When you use the [`--generate-info-schema`](#generating-the-information-schema) flag, dbt writes these files to a versioned directory, such as `target/info_schema/v1/`. The available metadata grows as dbt processes your project:
 
 - Parsing provides basic project metadata
@@ -36,7 +38,13 @@ Use `--generate-info-schema` flag with `dbt build`, `dbt run`, `dbt compile`, or
 
 - For [`dbt parse`](/reference/commands/parse), the Information Schema contains no column types, no lineage, and no runtime results, because `dbt parse` doesn't connect to your warehouse.
 
-### Overriding the output directory
+- `dbt show` reads your project's metadata directly, so you don't need to generate anything before using the command. Use `--generate-info-schema` when you want to export the Parquet files to disk (for example, to read them with [external tools](#querying-with-external-tools)).
+
+### Schema directory
+
+The Information Schema Parquet files are stored in your project's `target/info_schema/v1/` directory (or the directory you set with [`--info-schema-dir`](#overriding-the-output-directory)). They aren't stored in your data warehouse.
+
+#### Overriding the output directory
 
 Use `--info-schema-dir` to write the Information Schema to a custom directory. The versioned subdirectory (`v1/`) is still appended under whatever directory you set.
 
