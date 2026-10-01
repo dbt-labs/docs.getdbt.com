@@ -18,7 +18,6 @@ When migrating off a legacy version:
 
 - **v2 (recommended)**: [dbt v2](/docs/dbt-versions/dbt-upgrade/upgrading-to-v2?version=2) is generally available. Since you're already upgrading, move directly to v2 to get all the powerful features and capabilities it has to offer.
 - **v1 (minimum requirement)**: To keep your environments and jobs running after <Constant name="legacy_deprecation_date" />, move to a v1 release track to stay supported.
-- **A v1 release track is the minimum requirement:** To keep your environments and jobs running after <Constant name="legacy_deprecation_date" />, they must be on at least a v1 release track.
 
 :::
 
