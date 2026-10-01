@@ -42,7 +42,7 @@ Use `--generate-info-schema` flag with `dbt build`, `dbt run`, `dbt compile`, or
 
 ### Schema directory
 
-The Information Schema Parquet files are stored in your project's `target/info_schema/v1/` directory (or the directory you set with [`--info-schema-dir`](#overriding-the-output-directory)). They aren't stored in your data warehouse.
+The Information Schema Parquet files live in a versioned subdirectory under your project's `target/info_schema/` directory (or wherever you've set with [`--info-schema-dir`](#overriding-the-output-directory)). They aren't stored in your data warehouse.
 
 #### Overriding the output directory
 
