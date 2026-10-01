@@ -16,7 +16,7 @@ It's been a few years since dbt-core turned 1.0! Since then, we've committed to 
 
 In 2024, we're taking this promise further by:
 
-- Stabilizing interfaces for everyone — adapter maintainers, metadata consumers, and (of course) people writing dbt code everywhere — as discussed in [our November 2023 roadmap update](https://github.com/dbt-labs/dbt-core/blob/main/docs/roadmap/2023-11-dbt-tng.md).
+- Stabilizing interfaces for everyone — adapter maintainers, metadata consumers, and (of course) people writing dbt code everywhere — as discussed in [our November 2023 roadmap update](https://github.com/dbt-labs/dbt/blob/main/docs/roadmap/2023-11-dbt-tng.md).
 - Introducing [Release tracks](/docs/dbt-versions/dbt-release-tracks) (formerly known as Versionless) to dbt Cloud. No more manual upgrades and no need for _a second sandbox project_ just to try out new features in development. For more details, refer to [Upgrade Core version in Cloud](/docs/dbt-versions/upgrade-dbt-platform-version).
 
 We're leaving the rest of this post as is, so we can all remember how it used to be. Enjoy a stroll down memory lane.
@@ -31,7 +31,7 @@ While I have a lot of fun things to share this month, I can't start with anythin
 
 Yep, it's official:
 
-**💥[dbt will support metric definitions](https://github.com/dbt-labs/dbt-core/issues/4071?utm_campaign=Monthly%20Product%20Updates&utm_source=hs_email&utm_medium=email&_hsenc=p2ANqtz-_wfy8vfjMjwQ7o8TXEOVz-oXI35iVcVP1HtAvriVHfJoAd1IcsP-MCww6vJUDlvAfiuQjZ)💥**
+**💥[dbt will support metric definitions](https://github.com/dbt-labs/dbt/issues/4071?utm_campaign=Monthly%20Product%20Updates&utm_source=hs_email&utm_medium=email&_hsenc=p2ANqtz-_wfy8vfjMjwQ7o8TXEOVz-oXI35iVcVP1HtAvriVHfJoAd1IcsP-MCww6vJUDlvAfiuQjZ)💥**
 
 With this feature, you'll be able to centrally define rules for aggregating metrics (think, "active users" or "MRR") in version controlled, tested, documented dbt project code.
 

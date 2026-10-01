@@ -9,7 +9,7 @@ import BaseLocationEnvIsolation from '/snippets/_base-location-env-isolation-war
 
 dbt supports materializing models in the Iceberg table format in two ways:
 
-- **Simplest:** The model config `table_format = 'iceberg'` instructs dbt to materialize this model as an Iceberg table in Snowflake Horizon (managed catalog), using Snowflake-managed storage
+- **Simplest:** The model config `table_format = 'iceberg'` instructs dbt to materialize this model as an Iceberg table in Snowflake Horizon (managed catalog). Whether dbt writes to Snowflake-managed storage by default depends on the version you're running &mdash; refer to [External volume defaults](#external-volume-defaults).
 - **Extensible:** Define an Iceberg catalog in `catalogs.yml` and configure this model with `catalog_name`
 
 ## Creating Iceberg tables
@@ -52,17 +52,38 @@ For more information, check out the Snowflake reference for [`CREATE ICEBERG TAB
 | Parameter | Type   | Required | Description   | Sample input | Note   |
 | ------ | ----- | -------- | ------------- | ------------ | ------ |
 | `table_format` | String | Yes     | Configures the objects table format.  | `iceberg`  | `iceberg` is the only accepted value.    |
-| `external_volume` | String | Yes(*)   | Specifies the identifier (name) of the external volume where Snowflake writes the Iceberg table's metadata and data files. | `my_s3_bucket`            | *You don't need to specify this if the account, database, or schema already has an associated external volume. [More info](https://docs.snowflake.com/user-guide/tables-iceberg-configure-external-volume#set-a-default-external-volume-at-the-account-database-or-schema-level) |
-| `base_location_root` | String  | No  | If provided, the input overrides the default dbt base_location value of `_dbt` |
-| `base_location_subpath` | String | No       | An optional suffix to add to the `base_location` path that dbt automatically specifies.     | `jaffle_marketing_folder` | We recommend that you don't specify this. Modifying this parameter results in a new Iceberg table. See [Base Location](#base-location) for more info.                                                                                                  |
+| `external_volume` | String | No   | Specifies the identifier (name) of the external volume where Snowflake writes the Iceberg table's metadata and data files. Set it to `SNOWFLAKE_MANAGED` to write to [Snowflake-managed storage](https://docs.snowflake.com/en/user-guide/tables-iceberg-internal-storage). | `my_s3_bucket`<br />`SNOWFLAKE_MANAGED` | Refer to [External volume defaults](#external-volume-defaults). |
+| `base_location_root` | String  | No  | If provided, the input overrides the default dbt `base_location` value of `_dbt` | `foo` |  |
+| `base_location_subpath` | String | No       | An optional suffix to add to the `base_location` path that dbt automatically specifies.     | `jaffle_marketing_folder` | We recommend that you don't specify this. Modifying this parameter results in a new Iceberg table. Refer to [Base location](#base-location) for more information.                                                                                              |
 | `iceberg_version` | Integer | No | Specifies the Iceberg format version for the table. Defaults to `2`. Cannot be changed after table creation. | `3` | Set to `3` for improved `VARIANT` type support and better incremental/snapshot performance through deletion vectors. |
+
+#### External volume defaults
+
+When a model sets `table_format: iceberg` without an `external_volume`, dbt's behavior depends on the version you're running.
+
+<VersionBlock firstVersion="2.0">
+
+dbt emits `external_volume = 'SNOWFLAKE_MANAGED'` in the `CREATE ICEBERG TABLE` DDL and omits `base_location`, so the table uses Snowflake-managed storage.
+
+</VersionBlock>
+
+<VersionBlock lastVersion="1.12">
+
+Starting in `dbt-snowflake` v1.12, the `snowflake_managed_iceberg_default` [behavior flag](/reference/global-configs/snowflake-changes#the-snowflake_managed_iceberg_default-flag) controls this behavior:
+
+- When set to `false` (default): dbt doesn't emit `external_volume`. Snowflake falls back to any [default external volume](https://docs.snowflake.com/user-guide/tables-iceberg-configure-external-volume#set-a-default-external-volume-at-the-account-database-or-schema-level) set at the account, database, or schema level, and dbt still generates a `base_location`.
+- When set to `true`: dbt emits `external_volume = 'SNOWFLAKE_MANAGED'` and omits `base_location`.
+
+</VersionBlock>
+
+When you set `external_volume` to `SNOWFLAKE_MANAGED`, dbt omits `base_location` in every version. dbt resolves `external_volume` from the model config first and then from the catalog definition in `catalogs.yml`, so setting it in either place omits `base_location`. When `external_volume` names a user-defined volume, such as an Amazon S3 bucket, dbt emits both `external_volume` and `base_location`.
 
 #### Extensible: Configure `horizon` catalog
 
 First, configure a catalog with `type: horizon` in `catalogs.yml`:
 
 <Tabs defaultValue="new" values={[
-  { label: 'New spec', value: 'new' },
+  { label: 'New spec (beta)', value: 'new' },
   { label: 'Old spec', value: 'old' }
 ]}>
 <TabItem value="new">
@@ -140,7 +161,7 @@ First, you need to set up a catalog integration and (recommended) catalog-linked
 
 Caveats:
 - For some external catalogs (for example, AWS Glue), table and column identifiers must use only alphanumeric characters (letters and numbers), be lowercase, and surrounded by double quotes.
-- Starting in dbt Core v1.11, dbt-snowflake supports basic table materialization on Iceberg tables registered in a Glue catalog through a catalog-linked database. Note that incremental materializations aren't yet supported.
+- Starting in <Constant name="dbt" /> v1.11, dbt-snowflake supports basic table materialization on Iceberg tables registered in a Glue catalog through a catalog-linked database. Note that incremental materializations aren't yet supported.
 
 After you create the external catalog integration, you can do two things:
 
@@ -151,7 +172,7 @@ After you create the external catalog integration, you can do two things:
 Now, we can configure that external catalog in `catalogs.yml`. Here is an example for an AWS Glue catalog:
 
 <Tabs defaultValue="new" values={[
-  { label: 'New spec', value: 'new' },
+  { label: 'New spec (beta)', value: 'new' },
   { label: 'Old spec', value: 'old' }
 ]}>
 <TabItem value="new">
@@ -202,6 +223,8 @@ These are the additional configurations, specific to Snowflake, that can be supp
 
 #### Snowflake-managed (Horizon)
 
+<VersionBlock lastVersion="1.11">
+
 | Field | Required | Accepted values |
 | --- | --- | --- |
 | `change_tracking` | Optional | `True` or `False`    |
@@ -210,11 +233,26 @@ These are the additional configurations, specific to Snowflake, that can be supp
 | `storage_serialization_policy` | Optional | `COMPATIBLE` or `OPTIMIZED`     |
 | `base_location_root` | Optional | Relative path segment (for example, `'subpath1/subpath2'`) |
 | `base_location_subpath` | Optional | Relative path segment (for example, `'subpath1/subpath2'`), only configurable per-model |
+
+</VersionBlock>
+
 <VersionBlock firstVersion="1.12">
+
+| Field | Required | Accepted values |
+| --- | --- | --- |
+| `change_tracking` | Optional | `True` or `False`    |
+| `data_retention_time_in_days` | Optional | Standard Account: `1`, Enterprise or higher: `0` to `90`, default `1`  |
+| `max_data_extension_time_in_days` | Optional |  `0` to `90` with a default of `14`  |
+| `storage_serialization_policy` | Optional | `COMPATIBLE` or `OPTIMIZED`     |
+| `base_location_root` | Optional | Relative path segment (for example, `'subpath1/subpath2'`) |
+| `base_location_subpath` | Optional | Relative path segment (for example, `'subpath1/subpath2'`), only configurable per-model |
 | `iceberg_version` (v1.12+) | Optional | `2` (default) or `3` |
+
 </VersionBlock>
 
 #### External catalogs
+
+<VersionBlock lastVersion="1.11">
 
 | Field | Required | Accepted values |
 | --- | --- | --- |
@@ -223,8 +261,20 @@ These are the additional configurations, specific to Snowflake, that can be supp
 | `catalog_linked_database_type` | Optional | Catalog-linked database type. For example, `glue`  |
 | `max_data_extension_time_in_days` | Optional |  `0` to `90` (default: `14`)  |
 | `target_file_size` | Optional | Values like `'AUTO'`, `'16MB'`, `'32MB'`, `'64MB'`, `'128MB'`. Case-insensitive  |
+
+</VersionBlock>
+
 <VersionBlock firstVersion="1.12">
+
+| Field | Required | Accepted values |
+| --- | --- | --- |
+| `auto_refresh` | Optional | `True` or `False`    |
+| `catalog_linked_database` | Required for `catalog type: iceberg_rest` | Catalog-linked database name   |
+| `catalog_linked_database_type` | Optional | Catalog-linked database type. For example, `glue`  |
+| `max_data_extension_time_in_days` | Optional |  `0` to `90` (default: `14`)  |
+| `target_file_size` | Optional | Values like `'AUTO'`, `'16MB'`, `'32MB'`, `'64MB'`, `'128MB'`. Case-insensitive  |
 | `iceberg_version` (v1.12+) | Optional | `2` (default) or `3` |
+
 </VersionBlock>
 
 -  **storage_serialization_policy:** The serialization policy tells Snowflake what kind of encoding and compression to perform on the table data files. If not specified at table creation, the table inherits the value set at the schema, database, or account level. If the value isn’t specified at any level, the table uses the default value. You can’t change the value of this parameter after table creation.
@@ -243,7 +293,9 @@ These are the additional configurations, specific to Snowflake, that can be supp
 
 ### Base location 
 
-Snowflake's `CREATE ICEBERG TABLE` DDL requires that a `base_location` be provided. dbt defines this parameter on the user's behalf to streamline usage and enforce basic isolation of table data within the `EXTERNAL VOLUME`. The default behavior in dbt is to provide a `base_location` string of the form: `_dbt/{SCHEMA_NAME}/{MODEL_NAME}`. 
+Snowflake's `CREATE ICEBERG TABLE` DDL requires a `base_location` when the table uses a custom external volume. dbt defines this parameter on your behalf to streamline usage and enforce basic isolation of table data within the `EXTERNAL VOLUME`. By default, dbt provides a `base_location` string of the form `_dbt/{SCHEMA_NAME}/{MODEL_NAME}`.
+
+Snowflake rejects `BASE_LOCATION` for Iceberg tables that use Snowflake-managed storage, so dbt omits it when you set `external_volume` to `SNOWFLAKE_MANAGED`. dbt also omits it when you leave `external_volume` unset, depending on the version you're running &mdash; refer to [External volume defaults](#external-volume-defaults).
 
 We recommend using the default behavior, but if you need to customize the resulting `base_location`, you can configure the `base_location` with the model configuration fields `base_location_root` and `base_location_subpath`. <VersionBlock firstVersion="2.0"> `base_location_subpath` is only accepted in model configurations. </VersionBlock>
 

@@ -1,17 +1,65 @@
 ---
-title: "dbt platform compatible track - changelog"
-sidebar_label: "Compatible track changelog"
-description: "The Compatible release track updates once per month, and it includes up-to-date open source versions as of the monthly release."
+title: "dbt platform v1 Compatible track - changelog"
+sidebar_label: "v1 Compatible track changelog"
+description: "The v1 Compatible release track updates once per month, and it includes up-to-date open source versions as of the monthly release."
 availability:
   surface: platform
   access: free
 ---
 
-Select the **Compatible** and **Extended** release tracks if you need a less-frequent release cadence, the ability to test new dbt releases before they go live in production, and/or ongoing compatibility with the latest open source releases of <Constant name="core" />.
+Select the **v1 Compatible** and **v1 Extended** release tracks if you need a less-frequent release cadence, the ability to test new dbt releases before they go live in production, and/or ongoing compatibility with the latest open source releases of <Constant name="core" />.
 
-Each monthly **Compatible** release includes functionality matching up-to-date open source versions of <Constant name="core" /> and adapters at the time of release.
+Each monthly **v1 Compatible** release includes functionality matching up-to-date open source versions of <Constant name="core" /> and adapters at the time of release.
 
 For more information, see [release tracks](/docs/dbt-versions/dbt-release-tracks).
+
+## August 2026
+
+Release date: August 18, 2026
+
+This compatible release includes functionality from the following versions of <Constant name="core" /> OSS:
+
+```
+dbt-core==1.12.0
+
+# shared interfaces
+dbt-adapters==1.24.5
+dbt-common==1.38.0
+dbt-extractor==0.6.0
+dbt-semantic-interfaces==0.9.0
+dbt-sl-sdk[sync]==0.13.4
+dbt-state==2.42.0
+
+# adapters
+dbt-athena==1.11.0
+dbt-bigquery==1.12.0
+dbt-databricks==1.12.4
+dbt-fabric==1.9.4
+dbt-postgres==1.11.0
+dbt-redshift==1.11.0
+dbt-snowflake==1.12.0
+dbt-spark==1.10.3
+dbt-synapse==1.8.5
+dbt-teradata==1.11.0
+dbt-trino==1.10.3
+```
+
+Changelogs:
+- [dbt-core 1.12.0](https://github.com/dbt-labs/dbt/blob/1.12.latest/CHANGELOG.md)
+- [dbt-adapters 1.24.5](https://github.com/dbt-labs/dbt-adapters/blob/main/dbt-adapters/CHANGELOG.md)
+- [dbt-common 1.38.0](https://github.com/dbt-labs/dbt-common/blob/main/CHANGELOG.md)
+- [dbt-state 2.42.0](https://github.com/dbt-labs/dbt-state)
+- [dbt-athena 1.11.0](https://github.com/dbt-labs/dbt-adapters/blob/stable/dbt-athena/CHANGELOG.md)
+- [dbt-bigquery 1.12.0](https://github.com/dbt-labs/dbt-adapters/blob/stable/dbt-bigquery/CHANGELOG.md)
+- [dbt-databricks 1.12.4](https://github.com/databricks/dbt-databricks/blob/main/CHANGELOG.md)
+- [dbt-fabric 1.9.4](https://github.com/microsoft/dbt-fabric/releases/tag/v1.9.4)
+- [dbt-postgres 1.11.0](https://github.com/dbt-labs/dbt-adapters/blob/stable/dbt-postgres/CHANGELOG.md)
+- [dbt-redshift 1.11.0](https://github.com/dbt-labs/dbt-adapters/blob/stable/dbt-redshift/CHANGELOG.md)
+- [dbt-snowflake 1.12.0](https://github.com/dbt-labs/dbt-adapters/blob/stable/dbt-snowflake/CHANGELOG.md)
+- [dbt-spark 1.10.3](https://github.com/dbt-labs/dbt-adapters/blob/stable/dbt-spark/CHANGELOG.md)
+- [dbt-synapse 1.8.5](https://github.com/microsoft/dbt-synapse/blob/v1.8.latest/CHANGELOG.md)
+- [dbt-teradata 1.11.0](https://github.com/Teradata/dbt-teradata/releases/tag/v1.11.0)
+- [dbt-trino 1.10.3](https://github.com/starburstdata/dbt-trino/blob/master/CHANGELOG.md)
 
 ## July 2026
 
@@ -27,7 +75,7 @@ Release date: July 21, 2026
 
 - Pin `pyathena` to v3.35 and older
 
-This compatible release includes functionality from the following versions of dbt Core OSS:
+This compatible release includes functionality from the following versions of <Constant name="core" /> OSS:
 
 ```
 dbt-core==1.11.12
@@ -54,7 +102,7 @@ dbt-trino==1.10.2
 ```
 
 Changelogs:
-- [dbt-core 1.11.12](https://github.com/dbt-labs/dbt-core/blob/1.11.latest/CHANGELOG.md)
+- [dbt-core 1.11.12](https://github.com/dbt-labs/dbt/blob/1.11.latest/CHANGELOG.md)
 - [dbt-adapters 1.22.10](https://github.com/dbt-labs/dbt-adapters/blob/main/dbt-adapters/CHANGELOG.md)
 - [dbt-common 1.37.5](https://github.com/dbt-labs/dbt-common/blob/main/CHANGELOG.md)
 - [dbt-athena 1.10.2](https://github.com/dbt-labs/dbt-adapters/blob/stable/dbt-athena/CHANGELOG.md)
@@ -75,7 +123,7 @@ Release date: June 15, 2026
 
 ### dbt cloud-based platform
 
-This compatible release includes functionality from the following versions of dbt Core OSS:
+This compatible release includes functionality from the following versions of <Constant name="core" /> OSS:
 
 ```
 dbt-core==1.11.11
@@ -102,7 +150,7 @@ dbt-trino==1.10.2
 ```
 
 Changelogs:
-- [dbt-core 1.11.11](https://github.com/dbt-labs/dbt-core/blob/1.11.latest/CHANGELOG.md)
+- [dbt-core 1.11.11](https://github.com/dbt-labs/dbt/blob/1.11.latest/CHANGELOG.md)
 - [dbt-adapters 1.22.10](https://github.com/dbt-labs/dbt-adapters/blob/main/dbt-adapters/CHANGELOG.md)
 - [dbt-common 1.37.5](https://github.com/dbt-labs/dbt-common/blob/main/CHANGELOG.md)
 - [dbt-athena 1.10.1](https://github.com/dbt-labs/dbt-adapters/blob/stable/dbt-athena/CHANGELOG.md)
@@ -129,7 +177,7 @@ Release date: April 21, 2026
 
 ### dbt cloud-based platform
 
-This compatible release includes functionality from the following versions of dbt Core OSS:
+This compatible release includes functionality from the following versions of <Constant name="core" /> OSS:
 
 ```
 dbt-core==1.11.8
@@ -156,7 +204,7 @@ dbt-trino==1.10.1
 ```
 
 Changelogs:
-- [dbt-core 1.11.8](https://github.com/dbt-labs/dbt-core/blob/1.11.latest/CHANGELOG.md)
+- [dbt-core 1.11.8](https://github.com/dbt-labs/dbt/blob/1.11.latest/CHANGELOG.md)
 - [dbt-adapters 1.22.10](https://github.com/dbt-labs/dbt-adapters/blob/main/dbt-adapters/CHANGELOG.md)
 - [dbt-common 1.37.3](https://github.com/dbt-labs/dbt-common/blob/main/CHANGELOG.md)
 - [dbt-athena 1.10.0](https://github.com/dbt-labs/dbt-adapters/blob/stable/dbt-athena/CHANGELOG.md)
@@ -189,7 +237,7 @@ Release date: February 27, 2026
 ### Dependencies
 - Update dbt-databricks upper bound to 1.12
 
-This compatible release includes functionality from the following versions of dbt Core OSS:
+This compatible release includes functionality from the following versions of <Constant name="core" /> OSS:
 
 ```
 dbt-core==1.11.6
@@ -216,7 +264,7 @@ dbt-trino==1.10.1
 ```
 
 Changelogs:
-- [dbt-core 1.11.6](https://github.com/dbt-labs/dbt-core/blob/1.11.latest/CHANGELOG.md#dbt-core-1116---february-17-2026)
+- [dbt-core 1.11.6](https://github.com/dbt-labs/dbt/blob/1.11.latest/CHANGELOG.md#dbt-core-1116---february-17-2026)
 - [dbt-adapters 1.22.6](https://github.com/dbt-labs/dbt-adapters/blob/main/dbt-adapters/CHANGELOG.md#dbt-adapters-1226---february-17-2026)
 - [dbt-common 1.37.2](https://github.com/dbt-labs/dbt-common/blob/main/CHANGELOG.md#dbt-common-1372---december-15-2025)
 - [dbt-athena 1.10.0](https://github.com/dbt-labs/dbt-adapters/blob/stable/dbt-athena/CHANGELOG.md#dbt-athena-1100---december-22-2025)
@@ -238,10 +286,10 @@ Release date: January 22, 2026
 ### dbt cloud-based platform
 
 ### Under the Hood
-- Add debug log for local md5 hash for fusion conformance
+- Add debug log for local md5 hash for dbt v2 conformance
 - Resolve Click CLI UserWarning regarding --target and --profile usage in Advanced CI
 
-This compatible release includes functionality from the following versions of dbt Core OSS:
+This compatible release includes functionality from the following versions of <Constant name="core" /> OSS:
 
 ```
 dbt-core==1.10.19
@@ -268,7 +316,7 @@ dbt-trino==1.10.1
 ```
 
 Changelogs:
-- [dbt-core 1.10.19](https://github.com/dbt-labs/dbt-core/blob/1.10.latest/CHANGELOG.md#dbt-core-11019---january-20-2026)
+- [dbt-core 1.10.19](https://github.com/dbt-labs/dbt/blob/1.10.latest/CHANGELOG.md#dbt-core-11019---january-20-2026)
 - [dbt-adapters 1.22.5](https://github.com/dbt-labs/dbt-adapters/blob/main/dbt-adapters/CHANGELOG.md#dbt-adapters-1225---january-14-2026)
 - [dbt-common 1.37.2](https://github.com/dbt-labs/dbt-common/blob/main/CHANGELOG.md#dbt-common-1372---december-15-2025)
 - [dbt-athena 1.10.0](https://github.com/dbt-labs/dbt-adapters/blob/stable/dbt-athena/CHANGELOG.md#dbt-athena-1100---december-22-2025)
@@ -289,7 +337,7 @@ Release date: December 9, 2025
 
 ### dbt cloud-based platform
 
-This compatible release includes functionality from the following versions of dbt Core OSS:
+This compatible release includes functionality from the following versions of <Constant name="core" /> OSS:
 
 ```
 dbt-core==1.10.15
@@ -316,7 +364,7 @@ dbt-trino==1.9.3
 ```
 
 Changelogs:
-- [dbt-core 1.10.15](https://github.com/dbt-labs/dbt-core/blob/1.10.latest/CHANGELOG.md#dbt-core-11015---november-12-2025)
+- [dbt-core 1.10.15](https://github.com/dbt-labs/dbt/blob/1.10.latest/CHANGELOG.md#dbt-core-11015---november-12-2025)
 - [dbt-adapters 1.16.7](https://github.com/dbt-labs/dbt-adapters/blob/main/dbt-adapters/CHANGELOG.md#dbt-adapters-1166---september-03-2025)
 - [dbt-common 1.33.0](https://github.com/dbt-labs/dbt-common/blob/main/CHANGELOG.md#dbt-common-1330---october-20-2025)
 - [dbt-athena 1.9.5](https://github.com/dbt-labs/dbt-adapters/blob/main/dbt-athena/CHANGELOG.md#dbt-athena-194---april-28-2025)
@@ -344,7 +392,7 @@ Release date: November 11, 2025
 - Make source schema recording cache thread-safe
 - Record column schemas for deferred relations and unselected dependencies
 
-This compatible release includes functionality from the following versions of dbt Core OSS:
+This compatible release includes functionality from the following versions of <Constant name="core" /> OSS:
 
 ```
 dbt-core==1.10.15
@@ -371,7 +419,7 @@ dbt-trino==1.9.3
 ```
 
 Changelogs:
-- [dbt-core 1.10.15](https://github.com/dbt-labs/dbt-core/blob/1.10.latest/CHANGELOG.md#dbt-core-11015---november-12-2025)
+- [dbt-core 1.10.15](https://github.com/dbt-labs/dbt/blob/1.10.latest/CHANGELOG.md#dbt-core-11015---november-12-2025)
 - [dbt-adapters 1.16.7](https://github.com/dbt-labs/dbt-adapters/blob/main/dbt-adapters/CHANGELOG.md#dbt-adapters-1166---september-03-2025)
 - [dbt-common 1.33.0](https://github.com/dbt-labs/dbt-common/blob/main/CHANGELOG.md#dbt-common-1330---october-20-2025)
 - [dbt-athena 1.9.5](https://github.com/dbt-labs/dbt-adapters/blob/main/dbt-athena/CHANGELOG.md#dbt-athena-194---april-28-2025)
@@ -396,7 +444,7 @@ Release date: October 23, 2025
 ### Under the Hood
 - Add instrumentation to adapter methods for reliable debugging traces at the adapter boundary
 
-This compatible release includes functionality from the following versions of dbt Core OSS:
+This compatible release includes functionality from the following versions of <Constant name="core" /> OSS:
 
 ```
 dbt-core==1.10.13
@@ -423,7 +471,7 @@ dbt-trino==1.9.3
 ```
 
 Changelogs:
-- [dbt-core 1.10.13](https://github.com/dbt-labs/dbt-core/blob/1.10.latest/CHANGELOG.md#dbt-core-11013---september-25-2025)
+- [dbt-core 1.10.13](https://github.com/dbt-labs/dbt/blob/1.10.latest/CHANGELOG.md#dbt-core-11013---september-25-2025)
 - [dbt-adapters 1.16.7](https://github.com/dbt-labs/dbt-adapters/blob/main/dbt-adapters/CHANGELOG.md#dbt-adapters-1166---september-03-2025)
 - [dbt-common 1.33.0](https://github.com/dbt-labs/dbt-common/blob/main/CHANGELOG.md#dbt-common-1330---october-20-2025)
 - [dbt-athena 1.9.5](https://github.com/dbt-labs/dbt-adapters/blob/main/dbt-athena/CHANGELOG.md#dbt-athena-194---april-28-2025)
@@ -443,7 +491,7 @@ Changelogs:
 
 Release date: September 10, 2025
 
-This compatible release includes functionality from the following versions of dbt Core OSS:
+This compatible release includes functionality from the following versions of <Constant name="core" /> OSS:
 
 ```
 dbt-core==1.10.11
@@ -471,7 +519,7 @@ dbt-trino==1.9.3
 ```
 
 Changelogs:
-- [dbt-core 1.10.11](https://github.com/dbt-labs/dbt-core/blob/1.10.latest/CHANGELOG.md#dbt-core-11011---september-04-2025)
+- [dbt-core 1.10.11](https://github.com/dbt-labs/dbt/blob/1.10.latest/CHANGELOG.md#dbt-core-11011---september-04-2025)
 - [dbt-adapters 1.16.6](https://github.com/dbt-labs/dbt-adapters/blob/main/dbt-adapters/CHANGELOG.md#dbt-adapters-1166---september-03-2025)
 - [dbt-common 1.29.0](https://github.com/dbt-labs/dbt-common/blob/main/CHANGELOG.md#dbt-common-1290---september-04-2025)
 - [dbt-athena 1.9.4](https://github.com/dbt-labs/dbt-adapters/blob/main/dbt-athena/CHANGELOG.md#dbt-athena-194---april-28-2025)
@@ -490,10 +538,10 @@ Changelogs:
 
 Release date: August 12, 2025
 
-### Notable dbt Core OSS changes
+### Notable <Constant name="core" /> OSS changes
 
 This compatible upgrade brings in a minor update to `dbt-core`, from `dbt-core==1.9.8` to `dbt-core==1.10.8`. Some noteworthy changes from this minor version include:
-- Introduction of several new [deprecations](/reference/deprecations) that warn about project incompatibilities between dbt Core and Fusion engines.
+- Introduction of several new [deprecations](/reference/deprecations) that warn about project incompatibilities between <Constant name="core" /> and v2.
 - Support for defining `meta` and `tags` within `config` of columns and exposures, as well as defining `freshness` within `config` of sources. These changes lead to manifest.json minor schema evolutions which may cause an intermittent increase in false positives during `state:modified` comparisons.
 
 ### dbt cloud-based platform 
@@ -512,7 +560,7 @@ This compatible upgrade brings in a minor update to `dbt-core`, from `dbt-core==
 - Disable telemetry client logger
 - Update semantic layer SDK to 0.11
 
-This release includes functionality from the following versions of dbt Core OSS:
+This release includes functionality from the following versions of <Constant name="core" /> OSS:
 
 ```
 dbt-core==1.10.8
@@ -539,7 +587,7 @@ dbt-trino==1.9.3
 ```
 
 Changelogs:
-- [dbt-core 1.10.8](https://github.com/dbt-labs/dbt-core/blob/1.10.latest/CHANGELOG.md#dbt-core-1108---august-12-2025)
+- [dbt-core 1.10.8](https://github.com/dbt-labs/dbt/blob/1.10.latest/CHANGELOG.md#dbt-core-1108---august-12-2025)
 - [dbt-adapters 1.16.3](https://github.com/dbt-labs/dbt-adapters/blob/main/dbt-adapters/CHANGELOG.md#dbt-adapters-1163---july-21-2025)
 - [dbt-common 1.25.0](https://github.com/dbt-labs/dbt-common/blob/main/CHANGELOG.md#dbt-common-1271---july-21-2025)
 - [dbt-athena 1.9.4](https://github.com/dbt-labs/dbt-adapters/blob/main/dbt-athena/CHANGELOG.md#dbt-athena-194---april-28-2025)
@@ -565,7 +613,7 @@ Compatible releases will resume in August 2025.
 
 Release date: June 12, 2025
 
-This release includes functionality from the following versions of dbt Core OSS:
+This release includes functionality from the following versions of <Constant name="core" /> OSS:
 
 ```
 dbt-core==1.9.8
@@ -594,7 +642,7 @@ dbt-trino==1.9.2
 ```
 
 Changelogs:
-- [dbt-core 1.9.8](https://github.com/dbt-labs/dbt-core/blob/1.9.latest/CHANGELOG.md#dbt-core-198---june-10-2025)
+- [dbt-core 1.9.8](https://github.com/dbt-labs/dbt/blob/1.9.latest/CHANGELOG.md#dbt-core-198---june-10-2025)
 - [dbt-adapters 1.15.3](https://github.com/dbt-labs/dbt-adapters/blob/main/dbt-adapters/CHANGELOG.md#dbt-adapters-1153---may-20-2025)
 - [dbt-common 1.25.0](https://github.com/dbt-labs/dbt-common/blob/main/CHANGELOG.md#dbt-common-1250---may-20-2025)
 - [dbt-athena 1.9.4](https://github.com/dbt-labs/dbt-adapters/blob/main/dbt-athena/CHANGELOG.md#dbt-athena-194---april-28-2025)
@@ -625,7 +673,7 @@ These changes reflect capabilities that are only available in the dbt platform.
 
 - Create JSON schemas for PublicationArtifact and ResolvedProjectsArtifact
 
-This release includes functionality from the following versions of dbt Core OSS:
+This release includes functionality from the following versions of <Constant name="core" /> OSS:
 ```
 dbt-core==1.9.4
 
@@ -649,7 +697,7 @@ dbt-trino==1.9.1
 ```
 
 Changelogs:
-- [dbt-core 1.9.4](https://github.com/dbt-labs/dbt-core/blob/1.9.latest/CHANGELOG.md#dbt-core-194---april-02-2025)
+- [dbt-core 1.9.4](https://github.com/dbt-labs/dbt/blob/1.9.latest/CHANGELOG.md#dbt-core-194---april-02-2025)
 - [dbt-adapters 1.14.8](https://github.com/dbt-labs/dbt-adapters/blob/main/dbt-adapters/CHANGELOG.md#dbt-adapters-1148---april-25-2025)
 - [dbt-common 1.24.0](https://github.com/dbt-labs/dbt-common/blob/main/CHANGELOG.md#dbt-common-1240---may-09-2025)
 - [dbt-athena 1.9.4](https://github.com/dbt-labs/dbt-adapters/blob/main/dbt-athena/CHANGELOG.md#dbt-athena-194---april-28-2025)
@@ -676,7 +724,7 @@ These changes reflect capabilities that are only available in dbt Cloud.
 
 - Add secondary profiles to profile.py
 
-This release includes functionality from the following versions of dbt Core OSS:
+This release includes functionality from the following versions of <Constant name="core" /> OSS:
 ```
 dbt-core==1.9.4
 
@@ -700,14 +748,14 @@ dbt-trino==1.9.1
 ```
 
 Changelogs:
-- [dbt-core 1.9.4](https://github.com/dbt-labs/dbt-core/blob/1.9.latest/CHANGELOG.md#dbt-core-194---april-02-2025)
+- [dbt-core 1.9.4](https://github.com/dbt-labs/dbt/blob/1.9.latest/CHANGELOG.md#dbt-core-194---april-02-2025)
 - [dbt-adapters 1.14.5](https://github.com/dbt-labs/dbt-adapters/blob/main/dbt-adapters/CHANGELOG.md#dbt-adapters-1145---april-07-2025)
 - [dbt-common 1.17.0](https://github.com/dbt-labs/dbt-common/blob/main/CHANGELOG.md#dbt-common-1170---march-31-2025)
 - [dbt-athena 1.9.3](https://github.com/dbt-labs/dbt-adapters/blob/main/dbt-athena/CHANGELOG.md#dbt-athena-193---april-07-2025)
 - [dbt-bigquery 1.9.1](https://github.com/dbt-labs/dbt-bigquery/blob/1.9.latest/CHANGELOG.md#dbt-bigquery-191---january-10-2025)
 - [dbt-databricks 1.9.7](https://github.com/databricks/dbt-databricks/blob/main/CHANGELOG.md#dbt-databricks-197-feb-25-2025)
 - [dbt-fabric 1.9.4](https://github.com/microsoft/dbt-fabric/releases/tag/v1.9.4)
-- [dbt-postgres 1.9.0](https://github.com/dbt-labs/dbt-postgres/blob/main/CHANGELOG.md#dbt-postgres-190---december-09-2024)
+- [dbt-postgres 1.9.0](https://github.com/dbt-labs/dbt-adapters/blob/main/dbt-postgres/CHANGELOG.md#dbt-postgres-190---december-09-2024)
 - [dbt-redshift 1.9.3](https://github.com/dbt-labs/dbt-adapters/blob/main/dbt-redshift/CHANGELOG.md#dbt-redshift-193---april-01-2025)
 - [dbt-snowflake 1.9.2](https://github.com/dbt-labs/dbt-adapters/blob/main/dbt-snowflake/CHANGELOG.md#dbt-snowflake-192---march-07-2025)
 - [dbt-spark 1.9.2](https://github.com/dbt-labs/dbt-adapters/blob/main/dbt-spark/CHANGELOG.md#dbt-spark-192---march-07-2025)
@@ -743,7 +791,7 @@ dbt-trino==1.9.0
 ```
 
 Changelogs:
-- [<Constant name="core" /> 1.9.3](https://github.com/dbt-labs/dbt-core/blob/1.9.latest/CHANGELOG.md#dbt-core-193---march-07-2025)
+- [dbt 1.9.3](https://github.com/dbt-labs/dbt/blob/1.9.latest/CHANGELOG.md#dbt-core-193---march-07-2025)
 - [dbt-adapters 1.14.1](https://github.com/dbt-labs/dbt-adapters/blob/main/dbt-adapters/CHANGELOG.md#dbt-adapters-1141---march-04-2025)
 - [dbt-common 1.15.0](https://github.com/dbt-labs/dbt-common/blob/main/CHANGELOG.md#dbt-common-1150---february-14-2025)
 - [dbt-bigquery 1.9.1](https://github.com/dbt-labs/dbt-bigquery/blob/1.9.latest/CHANGELOG.md#dbt-bigquery-191---january-10-2025)
@@ -800,7 +848,7 @@ dbt-trino==1.9.0
 ```
 
 Changelogs:
-- [<Constant name="core" /> 1.9.2](https://github.com/dbt-labs/dbt-core/blob/1.9.latest/CHANGELOG.md#dbt-core-192---january-29-2025)
+- [dbt 1.9.2](https://github.com/dbt-labs/dbt/blob/1.9.latest/CHANGELOG.md#dbt-core-192---january-29-2025)
 - [dbt-adapters 1.14.0](https://github.com/dbt-labs/dbt-adapters/blob/main/dbt-adapters/CHANGELOG.md#dbt-adapters-1140---february-07-2025)
 - [dbt-common 1.14.0](https://github.com/dbt-labs/dbt-common/blob/main/CHANGELOG.md)
 - [dbt-bigquery 1.9.1](https://github.com/dbt-labs/dbt-bigquery/blob/1.9.latest/CHANGELOG.md#dbt-bigquery-191---january-10-2025)
@@ -854,7 +902,7 @@ dbt-trino==1.9.0
 ```
 
 Changelogs:
-- [<Constant name="core" /> 1.9.1](https://github.com/dbt-labs/dbt-core/blob/1.9.latest/CHANGELOG.md#dbt-core-191---december-16-2024)
+- [dbt 1.9.1](https://github.com/dbt-labs/dbt/blob/1.9.latest/CHANGELOG.md#dbt-core-191---december-16-2024)
 - [dbt-adapters 1.13.1](https://github.com/dbt-labs/dbt-adapters/blob/main/dbt-adapters/CHANGELOG.md#dbt-adapters-1131---january-10-2025)
 - [dbt-common 1.14.0](https://github.com/dbt-labs/dbt-common/blob/main/CHANGELOG.md)
 - [dbt-bigquery 1.9.1](https://github.com/dbt-labs/dbt-bigquery/blob/1.9.latest/CHANGELOG.md#dbt-bigquery-191---january-10-2025)
@@ -896,13 +944,13 @@ dbt-trino==1.8.5
 ```
 
 Changelogs:
-- [<Constant name="core" /> 1.9.0](https://github.com/dbt-labs/dbt-core/blob/1.9.latest/CHANGELOG.md#dbt-core-190---december-09-2024)
+- [dbt 1.9.0](https://github.com/dbt-labs/dbt/blob/1.9.latest/CHANGELOG.md#dbt-core-190---december-09-2024)
 - [dbt-adapters 1.10.4](https://github.com/dbt-labs/dbt-adapters/blob/main/dbt-adapters/CHANGELOG.md#dbt-adapters-1104---november-11-2024)
 - [dbt-common 1.14.0](https://github.com/dbt-labs/dbt-common/blob/main/CHANGELOG.md)
 - [dbt-bigquery 1.9.0](https://github.com/dbt-labs/dbt-bigquery/blob/1.9.latest/CHANGELOG.md#dbt-bigquery-190---december-09-2024)
 - [dbt-databricks 1.9.0](https://github.com/databricks/dbt-databricks/blob/main/CHANGELOG.md#dbt-databricks-190-december-9-2024)
 - [dbt-fabric 1.8.8](https://github.com/microsoft/dbt-fabric/blob/v1.8.latest/CHANGELOG.md)
-- [dbt-postgres 1.9.0](https://github.com/dbt-labs/dbt-postgres/blob/main/CHANGELOG.md#dbt-postgres-190---december-09-2024)
+- [dbt-postgres 1.9.0](https://github.com/dbt-labs/dbt-adapters/blob/main/dbt-postgres/CHANGELOG.md#dbt-postgres-190---december-09-2024)
 - [dbt-redshift 1.9.0](https://github.com/dbt-labs/dbt-redshift/blob/1.9.latest/CHANGELOG.md#dbt-redshift-190---december-09-2024)
 - [dbt-snowflake 1.9.0](https://github.com/dbt-labs/dbt-snowflake/blob/1.9.latest/CHANGELOG.md#dbt-snowflake-190---december-09-2024)
 - [dbt-spark 1.9.0](https://github.com/dbt-labs/dbt-spark/blob/1.9.latest/CHANGELOG.md#dbt-spark-190---december-10-2024)

@@ -5,6 +5,8 @@ sidebar_label: "Cross-platform Mesh"
 description: Understand how Iceberg catalogs and dbt Mesh can combine to enable collaboration across multiple data platforms.
 ---
 
+# Cross-platform Mesh using Iceberg catalogs <Lifecycle status="beta" />
+
 If a model is configured with `catalog_name`, dbt uses the current project's [catalog definition](/docs/build/iceberg/about-catalogs) (in `catalogs.yml`), for the current active adapter, to resolve the top-level namespace of that model.
 
 This means that you can materialize a dbt model in your `databricks_project` to an Iceberg table in Unity catalog, and select from it in another model in your `snowflake_project`. You can even materialize that model back to Unity catalog, and then use it for other models in `databricks_project`.
@@ -92,7 +94,7 @@ with monthly_revenue as (
 
 This works for [both ways of resolving cross-project references](/docs/mesh/govern/project-dependencies):
 
-1. `package` dependencies (supported in dbt Core + dbt platform)
+1. `package` dependencies (supported in <Constant name="core" /> + dbt platform)
 2. `project` dependencies (dbt platform Enterprise; refer to the [advantages of this approach](/docs/mesh/govern/project-dependencies#advantages))
 
 **For `package` dependencies:**

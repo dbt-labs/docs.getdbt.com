@@ -18,15 +18,18 @@ meta:
 availability: local_free
 ---
 
+import RedshiftBrowserIdc from '/snippets/_redshift-browser-identity-center.md';
+
 <VersionBlock firstVersion="2.0">
 
-# Connect Redshift to Fusion <Lifecycle status='preview' />
+# Connect Redshift to <Constant name="fusion" />
 
 You can configure the Redshift adapter by running `dbt init` in your CLI or manually providing the `profiles.yml` file with the fields configured for your authentication type.
 
-The Redshift adapter for Fusion supports the following [authentication methods](#supported-authentication-types):
+The Redshift adapter for <Constant name="fusion" /> supports the following [authentication methods](#supported-authentication-types):
 - Password
 - IAM profile
+- IAM Identity Center (browser)
 
 ## Warehouse permissions
 
@@ -36,7 +39,7 @@ import FusionRedshiftWarehousePerms from '/snippets/_fusion-warehouse-permission
 
 For example SQL grants in Redshift, refer to [Redshift permissions](/reference/database-permissions/redshift-permissions).
 
-## Configure Fusion
+## Configure <Constant name="fusion" />
 
 Executing `dbt init` in your CLI will prompt for the following fields:
 - **Host:** The hostname of your Redshift cluster
@@ -82,7 +85,7 @@ default:
 
 <TabItem value="IAM profile">
 
-Specify the IAM profile to use to connect your Fusion sessions. You will need to provide the following information:
+Specify the IAM profile to use to connect your v2 sessions. You will need to provide the following information:
 - **IAM Profile:** The profile name
 - **Cluster ID:** The unique identifier for your AWS cluster
 - **Region:** Your AWS region (for example, us-east-1)
@@ -113,6 +116,12 @@ default:
 
 </File>
 </TabItem>
+
+<TabItem value="IAM Identity Center (browser)">
+
+<RedshiftBrowserIdc />
+
+</TabItem>
 </Tabs>
 
 ## More information
@@ -123,9 +132,9 @@ Find Redshift-specific configuration information in the [Redshift adapter refere
 
 <VersionBlock lastVersion="1.99">
 
-# Connect Redshift to dbt Core
+# Connect Redshift to <Constant name="core" />
 
-<ProductCard text="Fusion compatible" url="/docs/local/connect-data-platform/redshift-setup?version=2" /> connection also available.
+<ProductCard text="dbt v2 compatible" url="/docs/local/connect-data-platform/redshift-setup?version=2" /> connection also available.
 
 import SetUpPages from '/snippets/_setup-pages-intro.md';
 import RedshiftDatasharing from '/snippets/_redshift-datasharing.md';
@@ -167,6 +176,7 @@ The authentication methods that <Constant name="core" /> supports on Redshift ar
 
 - `Database` &mdash; Password-based authentication (default, will be used if `method` is not provided)
 - `IAM User` &mdash; IAM User authentication via AWS Profile
+- `IAM Identity Center` &mdash; Browser-based sign-in through AWS IAM Identity Center
 
 Click on one of these authentication methods for further details on how to configure your connection profile. Each tab also includes an example `profiles.yml` configuration file for you to review.
 
@@ -174,7 +184,8 @@ Click on one of these authentication methods for further details on how to confi
   defaultValue="database"
   values={[
     {label: 'Database', value: 'database'},
-    {label: 'IAM User via AWS Profile (Core)', value: 'iam-user-profile'}]
+    {label: 'IAM User via AWS Profile', value: 'iam-user-profile'},
+    {label: 'IAM Identity Center (browser)', value: 'browser-identity-center'}]
 }>
 
 <TabItem value="database">
@@ -279,6 +290,12 @@ If you receive the "You must specify a region" error when using IAM Authenticati
 #### Specifying an IAM Profile
 
 When the `iam_profile` configuration is set, dbt will use the specified profile from your `~/.aws/config` file instead of using the profile name `default`
+
+</TabItem>
+
+<TabItem value="browser-identity-center">
+
+<RedshiftBrowserIdc />
 
 </TabItem>
 

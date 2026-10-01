@@ -1,5 +1,6 @@
 ---
 title: "About config property"
+description: "Use the config property to set configs for a resource directly in its YAML file, instead of in dbt_project.yml."
 sidebar_label: "config"
 resource_types: [models, seeds, snapshots, tests, sources, metrics, exposures]
 datatype: "{dictionary}"
@@ -112,6 +113,7 @@ snapshots:
 
 <VersionCallout version="1.8" />
 
+<VersionBlock lastVersion="1.12">
 <File name='models/<filename>.yml'>
 
 ```yml
@@ -124,6 +126,24 @@ snapshots:
 ```
 
 </File>
+</VersionBlock>
+
+<VersionBlock firstVersion="2.0">
+<File name='models/<filename>.yml'>
+
+```yml
+[unit_tests](/reference/resource-properties/unit-tests):
+  - name: <test-name>
+    config:
+      [compute](/reference/resource-configs/compute): local | remote
+      [enabled](/reference/resource-configs/enabled): true | false
+      [meta](/reference/resource-configs/meta): {dictionary}
+      [static_analysis](/reference/resource-configs/static-analysis): strict | baseline | off
+      [tags](/reference/resource-configs/tags): <string>
+```
+
+</File>
+</VersionBlock>
 
 </TabItem>
 

@@ -54,7 +54,7 @@ Log into the Azure portal for your organization. Using the [**Microsoft Entra ID
    - Update the Microsoft Entra ID Domain: In the dbt “Microsoft Entra ID Domain:” field, enter the specific authority string (`organizations`, `common`, or `consumers`) rather than the domain name for your Azure directory. For more details, see the [Supplying credentials](#supplying-credentials)
    - Grant Admin Consent for Each Tenant: Because this is an Entra (formerly Azure AD) requirement, each separate tenant will need its own administrator to grant consent. If users from other tenants attempt to log in before this is done, they will see an “admin approval required” screen. An admin can resolve this by visiting the specific consent URL provided by Microsoft for their tenant (for example,`https://login.microsoftonline.com/{TENANT_ID}/adminconsent?client_id={CLIENT_ID}`)
 
-5. Configure the **Redirect URI**. The table below shows the appropriate Redirect URI values for single-tenant and multi-tenant Entra ID app deployments. For most enterprise use-cases, you will want to use the single-tenant Redirect URI. Replace `YOUR_AUTH0_URI` with the [appropriate Auth0 URI](/docs/platform/manage-access/sso-overview#auth0-uris) for your region and plan.
+5. Configure the **Redirect URI**. Set the type to **Web** and reference the table below for the appropriate Redirect URI values for single-tenant and multi-tenant Entra ID app deployments. For most enterprise use-cases, you will want to use the single-tenant Redirect URI. Replace `YOUR_AUTH0_URI` with the [appropriate Auth0 URI](/docs/platform/manage-access/sso-overview#auth0-uris) for your region and plan.
 
 **Note:** Your dbt platform tenancy has no bearing on this setting. This Entra ID app setting controls app access:
      - **Single-tenant:** Only users from your Entra ID tenant can access the app.
@@ -74,12 +74,18 @@ Log into the Azure portal for your organization. Using the [**Microsoft Entra ID
 
 :::info Configuration with the new Microsoft Entra ID interface (optional)
 
-Depending on your Microsoft Entra ID settings, your App Registration page might look different than the screenshots shown earlier. If you are _not_ prompted to configure a Redirect URI on the **New Registration** page, then follow steps 6 - 7 below after creating your App Registration. If you were able to set up the Redirect URI in the steps above, then skip ahead to [step 8](#adding-users-to-an-enterprise-application).
+Depending on your Microsoft Entra ID settings, your App Registration page might look different than the screenshots shown earlier. If you are _not_ prompted to configure a Redirect URI on the **New Registration** page, then follow steps 7 - 8 below after creating your App Registration. If you were able to set up the Redirect URI in the steps above, then skip ahead to [step 8](#adding-users-to-an-enterprise-application).
 :::
 
 7. After registering the new application without specifying a Redirect URI, click on **App registration** and then navigate to the **Authentication** tab for the new application.
 
 8. Click **+ Add platform** and enter a Redirect URI for your application. See step 4 above for more information on the correct Redirect URI value for your <Constant name="dbt" /> application.
+    
+    :::info Platform type
+
+    When selecting the platform type, choose **Web**, not **Single-page application (SPA)**. The <Constant name="dbt" /> SSO integration redeems the authorization code from the server using a client secret. So, if you add the **Redirect URI** under **SPA**, Entra ID enforces PKCE and rejects the server-side token exchange, causing sign-in to fail with the error `AADSTS9002325: Proof Key for Code Exchange is required for cross-origin authorization code redemption.`
+
+    :::
 
 <Lightbox src="/img/docs/dbt-platform/dbt-platform-enterprise/azure/azure-redirect-uri.png" title="Configuring a Redirect URI"/>
 
@@ -216,6 +222,23 @@ If you set up SSO before December 2025, your existing configuration may request 
 Ensure that the domain name under which user accounts exist in Azure matches the domain you supplied in [Supplying credentials](#supplying-credentials) when you configured SSO.
 
 <Lightbox src="/img/docs/dbt-platform/dbt-platform-enterprise/azure/azure-get-domain.png" title="Obtaining the user domain from Azure" />
+
+</Expandable>
+
+<Expandable alt_header="Receiving a 'Server error' message after signing in">
+
+After completing the Entra ID login flow, you're redirected back to the <Constant name="dbt_platform" /> login page and see the following message:
+```
+Server error! There was a server error. Please try again, or contact support@getdbt.com if this persists.
+```
+
+This typically happens when Microsoft Entra ID can't find a SAML signing certificate configured for the application. The underlying error (`AADSTS500031: Cannot find signing certificate configured`) isn't surfaced to the user.
+
+To confirm this is the cause:
+1. Check your Entra ID **Enterprise Applications → YOUR_APP → Sign-in logs** 
+2. Filter by **Failure** status. 
+3. If you see the `AADSTS500031` error there, resolve it by going to **Enterprise Applications → YOUR_APP → Single sign-on → SAML Signing Certificate**, and add the missing certificate. 
+4. If a certificate exists but is corrupted, create a new certificate, set an expiration date, mark it **Active** to override the existing one, and then remove the unused certificate.
 
 </Expandable>
 

@@ -2,7 +2,7 @@
   "_meta": {
     "platform": "snowflake",
     "platform_name": "Snowflake",
-    "count": 942
+    "count": 958
   },
   "functions": [
     {
@@ -1497,6 +1497,48 @@
       "fusion_typecheck": false
     },
     {
+      "name": "EXTREME_OUTLIER_COUNT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_extreme_outlier_count",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "EXTREME_OUTLIER_IQR_COUNT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_extreme_outlier_iqr_count",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "EXTREME_OUTLIER_IQR_PERCENT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_extreme_outlier_iqr_percent",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "EXTREME_OUTLIER_PERCENT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_extreme_outlier_percent",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "EXTREME_OUTLIER_ZSCORE_COUNT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_extreme_outlier_zscore_count",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "EXTREME_OUTLIER_ZSCORE_PERCENT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_extreme_outlier_zscore_percent",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "FRESHNESS (SYSTEM DATA METRIC FUNCTION)",
       "category": "Data metric",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_freshness",
@@ -1528,6 +1570,48 @@
       "name": "NULL_PERCENT (SYSTEM DATA METRIC FUNCTION)",
       "category": "Data metric",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_null_percent",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "OUTLIER_COUNT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_outlier_count",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "OUTLIER_IQR_COUNT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_outlier_iqr_count",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "OUTLIER_IQR_PERCENT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_outlier_iqr_percent",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "OUTLIER_PERCENT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_outlier_percent",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "OUTLIER_ZSCORE_COUNT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_outlier_zscore_count",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "OUTLIER_ZSCORE_PERCENT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_outlier_zscore_percent",
       "preview_status": "GA",
       "fusion_typecheck": false
     },
@@ -3401,6 +3485,13 @@
       "fusion_typecheck": true
     },
     {
+      "name": "ARRAY_CONSTRUCT_STRUCTURED",
+      "category": "Semi-structured and structured data",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/array_construct_structured",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "ARRAY_CONTAINS",
       "category": "Semi-structured and structured data",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/array_contains",
@@ -3772,6 +3863,13 @@
       "fusion_typecheck": true
     },
     {
+      "name": "MAP_CONSTRUCT",
+      "category": "Semi-structured and structured data",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/map_construct",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "MAP_CONTAINS_KEY",
       "category": "Semi-structured and structured data",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/map_contains_key",
@@ -3833,6 +3931,13 @@
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/object_construct_keep_null",
       "preview_status": "GA",
       "fusion_typecheck": true
+    },
+    {
+      "name": "OBJECT_CONSTRUCT_KEEP_NULL_STRUCTURED",
+      "category": "Semi-structured and structured data",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/object_construct_keep_null_structured",
+      "preview_status": "GA",
+      "fusion_typecheck": false
     },
     {
       "name": "OBJECT_DELETE",
@@ -4057,6 +4162,13 @@
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/ai_similarity",
       "preview_status": "GA",
       "fusion_typecheck": true
+    },
+    {
+      "name": "AI_SUMMARIZE",
+      "category": "String & binary",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/ai_summarize",
+      "preview_status": "GA",
+      "fusion_typecheck": false
     },
     {
       "name": "AI_TRANSLATE",
@@ -4636,13 +4748,6 @@
       "name": "SUBSTR , SUBSTRING",
       "category": "String & binary",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/substr",
-      "preview_status": "GA",
-      "fusion_typecheck": true
-    },
-    {
-      "name": "SUMMARIZE (SNOWFLAKE.CORTEX)",
-      "category": "String & binary",
-      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/summarize-snowflake-cortex",
       "preview_status": "GA",
       "fusion_typecheck": true
     },
@@ -6281,6 +6386,13 @@
       "name": "APPLICATION_CONFIGURATION_VALUE_HISTORY",
       "category": "Table",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/application_configuration_value_history",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "CORTEX_SEARCH_BATCH",
+      "category": "Table",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/cortex_search_batch",
       "preview_status": "GA",
       "fusion_typecheck": false
     },

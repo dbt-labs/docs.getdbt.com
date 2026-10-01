@@ -1,15 +1,15 @@
 ---
-title: "Fusion telemetry and observability"
+title: "dbt v2 telemetry and observability"
 id: "telemetry-observability"
-sidebar_label: "Fusion telemetry and observability"
-description: "Fusion support for telemetry and observability"
+sidebar_label: "dbt v2 telemetry and observability"
+description: "dbt v2 support for telemetry and observability"
 pagination_next: null
 pagination_prev: null
 ---
 
 import SaoDeprecated from '/snippets/_sao-deprecated.md';
 
-The <Constant name="fusion_engine" /> provides a comprehensive observability system that replaces [<Constant name="core" />'s structured logging](/reference/events-logging#structured-logging). Built on [OpenTelemetry](https://opentelemetry.io/) conventions and backed by a stable protobuf schema, it enables deep integration with orchestrators, observability platforms, and custom tooling.
+<Constant name="fusion_engine" /> provides a comprehensive observability system that replaces [<Constant name="core" />'s structured logging](/reference/events-logging#structured-logging). Built on [OpenTelemetry](https://opentelemetry.io/) conventions and backed by a stable protobuf schema, it enables deep integration with orchestrators, observability platforms, and custom tooling.
 
 For shared CLI logging configs such as `--log-format` and `--log-level`, refer to [Logs](/reference/global-configs/logs).
 
@@ -61,6 +61,38 @@ OTEL_EXPORTER_OTLP_ENDPOINT="http://localhost:4318" dbtf build --export-to-otlp
 ### Download telemetry from platform job runs
 
 On the <Constant name="dbt_platform" />, <Constant name="fusion"/> job runs store OTel telemetry as Parquet artifacts for dbt command steps. From a completed run, open the **Run summary** tab, select a step, and click **Download** > **Download OTel log**. The option appears only for <Constant name="fusion"/> runs where the step produced an OTel file. For step-by-step instructions, refer to [Downloading logs](/docs/deploy/run-visibility#access-logs).
+
+#### Retrieve telemetry using the API
+
+You can also retrieve the OTel Parquet artifact for a run step through the [dbt Administrative API v2](/dbt-cloud/api-v2#/operations/Retrieve%20Run%20Artifact), which lets you download artifacts after a job completes. Use this to automate ingestion of node outcomes and test outcomes into a downstream system, such as a data quality framework in your warehouse.
+
+Each <Constant name="fusion"/> command step that produces telemetry writes a `telemetry-STEP_NUMBER-otel.parquet` artifact. Some steps like `dbt deps` don't produce a Parquet artifact.
+
+You can use the Retrieve Run Artifact endpoint to fetch this artifact:
+
+  ```bash
+  GET https://YOUR_ACCESS_URL/api/v2/accounts/ACCOUNT_ID/runs/RUN_ID/artifacts/metadata/telemetry-STEP_NUMBER-otel.parquet?step=STEP_NUMBER
+  ```
+
+Replace `YOUR_ACCESS_URL` with the [Access URL](/docs/platform/about-platform/access-regions-ip-addresses) for your region and plan, and `ACCOUNT_ID`, `RUN_ID`, `STEP_NUMBER` with your values. Authenticate with a [service account token](/docs/dbt-apis/service-tokens) or [personal access token](/docs/dbt-apis/user-tokens). 
+
+For example, you can do this with `curl`:
+
+```bash
+curl --request GET \
+  --url 'https://YOUR_ACCESS_URL/api/v2/accounts/12345/runs/67890/artifacts/metadata/telemetry-4-otel.parquet?step=4' \
+  --header 'Authorization: Token YOUR_TOKEN' \
+  --output telemetry-4-otel.parquet
+```
+
+To find which step produced the telemetry artifact you want, list the run's steps by including `run_steps` in the run details request:
+
+```bash
+GET https://YOUR_ACCESS_URL/api/v2/accounts/ACCOUNT_ID/runs/RUN_ID/?include_related=["run_steps"]
+```
+
+You can only retrieve this artifact for <Constant name="fusion"/> steps that emitted an OTel log.
+
 
 ## Telemetry data
 
@@ -152,16 +184,44 @@ If you ran a job in the <Constant name="dbt_platform" />, you can download the O
 
 Leverage DuckDB to better understand your telemetry data stored in Parquet files. 
 
-Find slowest nodes:
+Find slowest nodes by **processing cost** (not wall-clock lifetime at the connection gate):
+
 ```python
 import duckdb
 duckdb.sql("""
     SELECT
         attributes.unique_id,
-        (end_time_unix_nano - start_time_unix_nano) / 1e6 AS duration_ms
+        attributes.duration_ms,
+        attributes.idle_time_ms
     FROM 'telemetry.parquet'
     WHERE event_type LIKE '%NodeProcessed%'
-    ORDER BY duration_ms DESC
+      AND attributes.duration_ms IS NOT NULL
+    ORDER BY attributes.duration_ms DESC
+    LIMIT 10
+""").show()
+```
+
+:::note Choose the right timing metric
+
+Telemetry provides several ways to measure node performance:
+
+- **Processing time (`attributes.duration_ms`)** measures the time v2 spent actively processing the node, including nested `NodeEvaluated` work. It excludes time spent waiting for upstream nodes or internal backpressure. Use this metric to identify the nodes that take the longest to process.
+- **Node lifetime (`end_time_unix_nano - start_time_unix_nano`)** measures the full time from the start to the end of the span, including time spent waiting at the connection-limit gate. In builds with saturated threads, this metric might surface nodes with the longest queue time rather than the most processing work.
+- **Idle time (`attributes.idle_time_ms`)** measures how long the node spent waiting instead of being actively processed, such as while waiting for an upstream node or available processing capacity. Use it to identify where resource constraints are causing delays.
+- **Warehouse execution time** is the sum of `QueryExecuted` span durations for each `unique_id`. It excludes v2-side work such as compilation and static analysis. Use this metric to compare telemetry with your warehouse query history.
+
+:::
+
+Find nodes with the highest warehouse time (optional):
+```python
+duckdb.sql("""
+    SELECT
+        attributes.unique_id,
+        SUM((end_time_unix_nano - start_time_unix_nano) / 1e6) AS warehouse_ms
+    FROM 'telemetry.parquet'
+    WHERE event_type LIKE '%QueryExecuted%'
+    GROUP BY attributes.unique_id
+    ORDER BY warehouse_ms DESC
     LIMIT 10
 """).show()
 ```
@@ -211,7 +271,7 @@ export OTEL_EXPORTER_OTLP_ENDPOINT="http://localhost:4318"
 dbtf build --export-to-otlp
 ```
 
-## Mapping to dbt Core concepts
+## Mapping to <Constant name="core" /> concepts
 
 If you're familiar with <Constant name="core" />'s structured logging, here's how <Constant name="fusion" /> telemetry maps:
 
@@ -235,7 +295,7 @@ If you're familiar with <Constant name="core" />'s structured logging, here's ho
 
 Note that <Constant name="core" />'s `fail` status maps to <Constant name="fusion" />'s `node_outcome: success` because <Constant name="fusion" /> distinguishes between "the test ran successfully and found data issues" versus "the test couldn't run." This separation enables more precise alerting and retry logic.
 
-<Constant name="fusion" /> adds `skip_reason: cached` for nodes reused via [State Aware Orchestration](/docs/deploy/state-aware-about), which has no <Constant name="core" /> equivalent.
+<Constant name="fusion" /> adds `skip_reason: cached` for nodes reused via [dbt State](/docs/deploy/dbt-state-about), which has no <Constant name="core" /> equivalent.
 
 <SaoDeprecated />
 

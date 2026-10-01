@@ -13,6 +13,7 @@ import Line from '@theme/CodeBlock/Line';
 import CopyButton from '@theme/CodeBlock/CopyButton';
 import WordWrapButton from '@theme/CodeBlock/WordWrapButton';
 import Container from '@theme/CodeBlock/Container';
+import ReportCodeButton from './ReportCodeButton';
 import styles from './styles.module.css';
 
 // Prism languages are always lowercase
@@ -110,6 +111,11 @@ export default function CodeBlockString({
                   />
                 )}
                 <CopyButton className={styles.codeButton} code={plainTextCode} />
+                <ReportCodeButton
+                  className={styles.codeButton}
+                  code={plainTextCode}
+                  language={language}
+                />
               </div>
             </>
           )}

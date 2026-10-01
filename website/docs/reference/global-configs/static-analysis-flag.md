@@ -5,7 +5,7 @@ description: "Use the --static-analysis flag to override model-level static_anal
 sidebar: "Static analysis"
 ---
 
-Use the `--static-analysis` flag to override model-level `static_analysis` behavior for a single run. This flag applies to the <Constant name="fusion_engine" /> only; it is ignored by <Constant name="core" />.
+Use the `--static-analysis` flag to override model-level `static_analysis` behavior for a single run. This flag applies to <Constant name="fusion_engine" /> only; it is ignored by <Constant name="core" />.
 
 Values:
 
@@ -33,4 +33,6 @@ dbt run --static-analysis off
 
 ## Related docs
 
-Also check out the model-level [`static_analysis` (resource config)](/reference/resource-configs/static-analysis) and [About flags](/reference/global-configs/about-global-configs) pages for more details.
+- [`static_analysis` (resource config)](/reference/resource-configs/static-analysis)
+- [About flags](/reference/global-configs/about-global-configs)
+- [Optimize static analysis for development and deployment](/best-practices/optimize-static-analysis-for-development-and-deployment)

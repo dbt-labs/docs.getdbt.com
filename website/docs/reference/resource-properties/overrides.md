@@ -33,8 +33,8 @@ The following source properties can be overridden:
  - [schema](/reference/resource-properties/schema)
  - [loader](/reference/resource-properties/loader)
  - [quoting](/reference/resource-properties/quoting)
- - [freshness](/reference/resource-properties/freshness)
- - [loaded_at_field](/reference/resource-properties/freshness#loaded_at_field)
+ - [freshness](/reference/resource-configs/freshness)
+ - [loaded_at_field](/reference/resource-configs/freshness)
  - [tags](/reference/resource-configs/tags)
 
 ## Examples

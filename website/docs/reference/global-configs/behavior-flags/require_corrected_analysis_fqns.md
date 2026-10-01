@@ -6,7 +6,7 @@ sidebar_label: "require corrected analysis fqns"
 
 import AnalysesProjectLevelConfig from '/snippets/_analyses-project-level-config.md';
 
-| require_corrected_analysis_fqns | <Constant name="dbt" /> **Latest** | <Constant name="core" /> |
+| require_corrected_analysis_fqns | <Constant name="dbt" /> **v1 Latest** | <Constant name="core" /> |
 |---|---|---|
 | Introduced | 2026.3 | 1.12.0 |
 | Matured (default → `true`) | — | — |

@@ -11,22 +11,21 @@
 #   link (optional):         URL the banner links to.
 #   open_in_new_tab (optional): open the link in a new tab.
 
+
 - paths:
-    - /docs/platform/wizard-overview
-    - /docs/dbt-ai/about-dbt-wizard-cli
-    - /docs/platform/wizard-platform
-    - /docs/dbt-ai/wizard-quickstart
-    - /docs/dbt-ai/wizard-how-it-works
-    - /docs/dbt-ai/about-dbt-ai
-    - /docs/dbt-ai/copilot-overview
-    - /docs/platform/enable-dbt-ai
-    - /guides/prompt-cookbook
-    - /docs/dbt-ai/about-mcp
-    - /docs/dbt-ai/integrate-mcp-claude
-    - /docs/dbt-ai/mcp-troubleshooting
-    - /docs/dbt-ai/wizard-skills
-    - /docs/dbt-ai/wizard-platform-skills
-    - /docs/dbt-ai/wizard-ide
-  text: "dbt Wizard: An agent purpose-built for analytics engineering. Join us virtually on July 22nd to see real demos in the CLI and dbt platform!"
-  link: "https://www.getdbt.com/resources/webinars/dbt-wizard-an-agent-purpose-built-for-analytics-engineering"
+    - /docs/lake-compute
+    - /docs/lake-compute/compute-onboarding
+    - /docs/lake-compute/compute-faq
+  text: "See Lake Compute in action: join our upcoming webinar on cost-optimized, multi-engine transformations with dbt and Apache Iceberg on October 7th. <b>Save your seat</b>"
+  link: "https://www.getdbt.com/resources/webinars/cost-optimized-transformations-with-dbt-and-apache-iceberg-on-open-multi-engine-compute/?utm_medium=internal&utm_source=docs&utm_campaign=fy-2027_cost-optimized-transformations_aw&utm_content=____&utm_term=all_all__"
+  open_in_new_tab: true
+
+- paths:
+    - /docs/build/iceberg/adapters/snowflake-iceberg-support
+    - /docs/build/iceberg/adapters/duckdb-iceberg-support
+    - /docs/build/iceberg/adapters/databricks-iceberg-support
+    - /docs/build/iceberg/adapters/bigquery-iceberg-support
+    - /docs/mesh/cross-platform-mesh
+  text: "See this taken further: join us for our webinar on cost-optimized transformations with dbt, Apache Iceberg, and multi-engine compute on October 7th. <b>Save your seat</b>"
+  link: "https://www.getdbt.com/resources/webinars/cost-optimized-transformations-with-dbt-and-apache-iceberg-on-open-multi-engine-compute/?utm_medium=internal&utm_source=docs&utm_campaign=fy-2027_cost-optimized-transformations_aw&utm_content=____&utm_term=all_all__"
   open_in_new_tab: true
