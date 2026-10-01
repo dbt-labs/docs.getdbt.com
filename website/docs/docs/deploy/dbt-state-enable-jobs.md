@@ -9,9 +9,18 @@ availability: everywhere_usage
 
 # Enabling dbt State on individual jobs
 
-dbt State is available on all job types: deploy, continuous integration (CI), and merge jobs. Each job has a **dbt State** dropdown menu in its execution settings with **On**, **Off**, or **Inherited from environment** options. New jobs default to **Inherited from environment** &mdash; no additional configuration needed as long as dbt State is enabled on the environment.
+dbt State is available on all job types: deploy, continuous integration (CI), and merge jobs. Each job has a **dbt State** dropdown in its execution settings with **On**, **Off**, or **Inherited from environment** options. New jobs default to **Inherited from environment** &mdash; no additional configuration needed as long as dbt State is enabled on the environment.
 
-Existing jobs default to **Off** and must be updated manually to follow the environment setting.
+Existing jobs default to **Off**. To follow the environment's setting, you must update each job manually.
+
+<!-- TODO (ORC-4324): When this ships, replace with:
+
+dbt State is available on all job types: deploy, continuous integration (CI), and merge jobs. Each job has a **dbt State** dropdown in its execution settings with **On**, **Off**, or **Inherited from environment** options.
+
+When you enable dbt State on a deployment environment:
+- New jobs default to **Inherited from environment** with dbt State enabled automatically.
+- Existing jobs with **dbt State** set to **Off** automatically switch to **Inherited from environment**, enabling dbt State for those jobs.
+-->
 
 To enable dbt State on individual jobs: 
 

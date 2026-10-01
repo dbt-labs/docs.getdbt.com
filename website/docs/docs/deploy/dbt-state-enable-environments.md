@@ -11,9 +11,13 @@ availability: everywhere_usage
 
 You can enable [dbt State](/docs/deploy/dbt-state-about) at the environment level, allowing jobs in that environment to inherit the setting automatically. This option is only visible if dbt State is enabled on your account.
 
-When dbt State is enabled on a deployment environment (production, staging, or general):
+When you enable dbt State on a deployment environment (production, staging, or general):
 - New jobs default to **Inherited from environment** and have dbt State enabled without any additional configuration.
-- Existing jobs are _not_ updated &mdash; you must configure them manually. Refer to [Enabling dbt State on individual jobs](/docs/deploy/dbt-state-enable-jobs) for more information.
+- Existing jobs are not automatically updated. You must [configure each job manually](/docs/deploy/dbt-state-enable-jobs).
+
+<!-- TODO (ORC-4324): When this ships, replace with:
+- Existing jobs with **dbt State** set to **Off** automatically switch to **Inherited from environment**, enabling dbt State for those jobs.
+-->
 
 To enable dbt State on a deployment environment:
 

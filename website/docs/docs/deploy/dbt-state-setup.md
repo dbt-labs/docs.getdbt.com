@@ -56,7 +56,10 @@ To enable dbt State:
 
 7. Select the jobs to enable dbt State for. You can either enable:
 
-   - **By environment**: Enables dbt State on the selected environment. New jobs automatically default to **Inherited from environment** and have dbt State enabled without additional configuration. Existing jobs are _not_ updated &mdash; you must configure them manually.
+   - **By environment**: Enables dbt State on the selected environment. New jobs automatically default to **Inherited from environment** and have dbt State enabled without additional configuration. Existing jobs are not automatically updated &mdash; you must [configure each job manually](/docs/deploy/dbt-state-enable-jobs).
+      <!-- TODO (ORC-4324): When this ships, replace with:
+      - **By environment**: Enables dbt State on the selected environment. New jobs automatically default to **Inherited from environment** and have dbt State enabled without additional configuration. Existing jobs with **dbt State** set to **Off** automatically switch to **Inherited from environment**, enabling dbt State for those jobs.
+      -->
    - **By specific jobs**: Enables dbt State on individual jobs. To enable it on additional jobs, refer to [Enabling dbt State on individual jobs](/docs/deploy/dbt-state-enable-jobs).
 
 8. Click **Enable dbt State**.
