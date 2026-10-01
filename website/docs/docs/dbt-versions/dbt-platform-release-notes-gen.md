@@ -40,7 +40,7 @@ Release notes are grouped by date for single-tenant environments.
 
 - **UTC timestamps in account Insights table**: The "last run finished at" column in the account Insights table now displays times in UTC, giving you a consistent reference regardless of your local timezone.
 
-- **Accurate Cost Insights build counts**: Cost Insights now excludes errored nodes (from failed or cancelled runs that never executed) from build counts, aligning reported counts with dbt State. You may see lower build counts for affected run dates after this change.
+**Accurate Cost Insights build counts**: Cost Insights no longer counts nodes that never executed as builds (for example, from a cancelled or failed run), aligning that count with dbt State. You may see lower build counts for affected run dates after this change.
 
 - **Snowflake Adaptive warehouse cost tracking for all users**: Per-query Snowflake Adaptive warehouse costs are now tracked automatically for all accounts in [Cost Insights](/docs/explore/cost-insights) when `QUERY_METERING_HISTORY` is accessible, with no additional configuration required.
 
