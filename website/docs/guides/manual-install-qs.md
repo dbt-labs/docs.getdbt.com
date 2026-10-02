@@ -194,6 +194,8 @@ $ git checkout -b add-customers-model
 
 ## Build your first model
 
+If you'd like to use AI to build your first model, check out the <a id="qs-jump-to-build-with-ai" href="#build-it-with-ai-using-dbt-wizard">build it with dbt Wizard</a> in the next section.
+
 
 1. Open your project in your favorite code editor.
 2. Create a new SQL file in the `models` directory, named `models/customers.sql`.
@@ -215,6 +217,8 @@ When you return to the BigQuery console, you can `select` from this model.
 <FAQ path="Models/create-a-schema" />
 <FAQ path="Models/run-downtime" />
 <FAQ path="Troubleshooting/sql-errors" />
+
+<Snippet path="quickstarts/build-first-model-with-wizard-cli" />
 
 ## Change the way your model is materialized
 
@@ -524,5 +528,7 @@ For more info on how to get started, refer to [create and schedule jobs](/docs/d
 <Lightbox src="/img/docs/dbt-platform/deployment/run-overview.png" width="90%" title="Overview of a dbt job run, which includes the job run details, trigger type, commit SHA, environment name, detailed run steps, logs, and more."/>
 
 To schedule jobs yourself with an orchestrator like Airflow, refer to the [dbt and Airflow](/blog/dbt-airflow-spiritual-alignment) blog post.
+
+<Snippet path="quickstarts/connect-your-ai" />
 
 </div>

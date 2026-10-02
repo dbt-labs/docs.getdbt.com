@@ -32,6 +32,10 @@ import SLCourses from '/snippets/_sl-course.md';
 
 <SLCourses/>
 
+import SlConnectYourAi from '/snippets/_sl-connect-your-ai.md';
+
+<SlConnectYourAi/>
+
 This quickstart is for <Constant name="dbt" /> users on the <Constant name="dbt_platform" />. You will build and define metrics, set up the <Constant name="semantic_layer" /> in a dbt project, and query those metrics in Google Sheets.
 
 The guide works on any supported data platform. Use the tabs in [Set up your warehouse](#set-up-your-warehouse) to create an account, load the sample data, and connect dbt. Later steps include a tab when the SQL or YAML is different for your platform.
