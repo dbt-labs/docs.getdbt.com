@@ -241,7 +241,7 @@ This region must match the location of your BigQuery dataset if you want to use 
 
 You can re-use connections across multiple projects with [global connections](/docs/platform/connect-data-platform/about-connections#migration-from-project-level-connections-to-account-level-connections). Connections are attached at the environment level (formerly project level), so you can use multiple connections inside of a single project (to handle dev, staging, production, and more).
 
-BigQuery connections in <Constant name="dbt" /> currently expect the credentials to be handled at the connection level (and only BigQuery connections). This was originally designed to facilitate creating a new connection by uploading a service account keyfile. This describes how to override credentials at the environment level, via [extended attributes](/docs/dbt-platform-environments#extended-attributes), _to allow project administrators to manage credentials independently_ of the account level connection details used for that environment.
+BigQuery connections in <Constant name="dbt" /> currently expect the credentials to be handled at the connection level (and only BigQuery connections). This was originally designed to facilitate creating a new connection by uploading a service account keyfile. This describes how to override those credentials with [extended attributes](/docs/dbt-platform-environments#extended-attributes), _so project administrators can manage credentials independently_ of the account-level connection details. For a deployment environment, set the override on the [connection profile](/docs/platform/about-profiles). For a development environment, set it on the **General settings** page.
 
 For a project, you will first create an environment variable to store the secret `private_key` value. Then, you will use extended attributes to override the entire service account JSON (you can't only override the secret key due to a constraint of extended attributes).
 
@@ -272,7 +272,7 @@ For a project, you will first create an environment variable to store the secret
 
 2. **Extended attributes**
 
-    In the environment details, complete the [extended attributes](/docs/dbt-platform-environments#extended-attributes) block with the following payload (replacing `XXX` with your corresponding information):
+    On the [connection profile](/docs/platform/about-profiles) for a deployment environment, or on the development environment's **General settings** page, complete the [extended attributes](/docs/dbt-platform-environments#extended-attributes) block with the following payload (replacing `XXX` with your corresponding information):
 
     ```yaml
     keyfile_json:
