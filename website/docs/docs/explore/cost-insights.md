@@ -44,7 +44,7 @@ The Cost Insights section is available in different <Constant name="dbt_platform
 
 </DocCarousel>
 
-## Prerequisities
+## Prerequisites
 
 import ViewCostData from '/snippets/_cost-insights-view.md';
 
