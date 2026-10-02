@@ -30,6 +30,6 @@ irm https://public.cdn.getdbt.com/dbt-wizard/install/install-wizard.ps1 | iex
 
 3. Prompt it: "Create a customers model that joins orders and customers, and includes each customer's most recent order date and total number of orders."
 4. Review the SQL <Constant name="wizard" /> generates, then accept it to save the model.
-5. Enter `dbt run` to build it.
+5. Type `dbt run` to build it.
 
 Either way, you end up with the same working model. For full setup details, refer to [Use dbt Wizard locally](/docs/dbt-ai/wizard-quickstart).
