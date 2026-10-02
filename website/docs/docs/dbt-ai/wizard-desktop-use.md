@@ -185,6 +185,8 @@ A worktree is a second copy of your repo, sitting in its own folder, on its own 
 
 That's what lets you run several chats at once. Refactor a model in one, chase a failing test in another, answer a data question in a third. Nothing collides, and you don't have to stash anything.
 
+Because each chat is isolated, start a new chat with **+ New** for each discrete task rather than reusing one long conversation. Go back to an existing chat only when you're continuing that same task.
+
 For more info on how worktrees work, refer to [git worktree](https://git-scm.com/docs/git-worktree).
 
 ### Worktree and schema names
