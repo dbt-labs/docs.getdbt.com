@@ -31,9 +31,7 @@ For <Constant name="fusion_engine" /> updates, refer to the [v2 changelog](https
 - **Enhancement:** When a Redshift connection fails because the credentials are wrong, or a role does not have the required permissions, you now see a specific error message instead of a generic failure.
 - **Enhancement:** The external metadata ingestion checkbox in connection settings is now hidden unless it is already enabled for that connection. The toggle has also been removed from the account-level settings page.
 - **Fix:** Models with a "Warned" status now appear correctly in the [Execution timeline](/docs/deploy/run-visibility#execution-timeline) Gantt chart. The [critical path, peak concurrency, average active, and longest model](/docs/deploy/run-visibility#metric-tiles) summary tiles now include warned models in their calculations.
-
 - **Private beta:** Enterprise and Enterprise+ accounts can now [bring their own GitHub application](/docs/platform/git/connect-github#custom-github-application) to natively connect GitHub Enterprise Server (self-hosted) and GitHub Enterprise Cloud with data residency (hosted on `ghe.com`), instead of using a git URL and SSH. Reach out to your account manager to join the private beta.
-
 - **New:** [DuckDB support for Apache Iceberg](/docs/build/iceberg/adapters/duckdb-iceberg-support) is now generally available for local use with <Constant name="fusion" />.
 - **New:** The models table in Catalog navigation now shows a column count for each model.
 - **Enhancement:** <Constant name="studio_ide" /> now detects missing development credentials at startup and shows a **Development Credentials Required** modal with a direct link to add credentials, instead of failing silently.
