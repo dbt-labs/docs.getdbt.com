@@ -7,6 +7,8 @@ tags: ['dbt State']
 availability: everywhere_usage
 ---
 
+import DbtStateNoninteractiveNote from '/snippets/_dbt-state-noninteractive-note.md';
+
 # Setting up dbt State
 
 This page walks you through setting up dbt State across <Constant name="core" />, <Constant name="dbt_platform" />, and <Constant name="fusion" />.
@@ -129,9 +131,7 @@ flags:
   manage_state: true
 ```
 
-:::note
-If you're running dbt on non-interactive environments such as CI/CD pipelines or an external orchestrator, follow the [non-interactive environment setup](/docs/deploy/dbt-state-cicd) to configure service token authentication.
-:::
+<DbtStateNoninteractiveNote />
 
 </TabItem>
 
@@ -178,9 +178,7 @@ dbt State is now enabled and will run automatically on every `dbt run` or `dbt b
 
 The CLI flags `--manage-state` and `--no-manage-state` are not available in older <Constant name="core" /> versions. Use the environment variable (`DBT_ENGINE_ENABLE_STATE`) or project flag (`enable_state`) to enable or disable dbt State.
 
-:::note
-If you're running dbt on non-interactive environments such as CI/CD pipelines or an external orchestrator, follow the [non-interactive environment setup](/docs/deploy/dbt-state-cicd) to configure service token authentication.
-:::
+<DbtStateNoninteractiveNote />
 
 </TabItem>
 </Tabs>
