@@ -24,7 +24,7 @@ If you run both the <Constant name="platform_cli" /> and a local <Constant name=
 - You have either the [dbt platform CLI](/docs/platform/dbt-cli-installation) or the [dbt VS Code extension + local dbt](/docs/local/install-dbt) installed.
 
 
-## 1. Choosing which dbt runs
+## Choosing which dbt runs
 
 If you install both the <Constant name="platform_cli" /> and a local <Constant name="fusion" /> build, you have two separate programs on your machine that are both invoked by typing `dbt`. Before you configure credentials, environment variables, or versions, make it unambiguous which one you're calling.
 
@@ -155,7 +155,7 @@ Replace the paths below with the output of `which -a dbt` on this machine.
 
 Use absolute paths in agent instructions rather than the `dbtf` and `dbt-cli` aliases, because the agent's shell may not load your shell profile. Discover the real paths on the machine the agent runs on with `which -a dbt`, and update the instructions file when they change. On a remote agent virtual machine, confirm the paths inside a fresh session, because tools installed ad hoc in an earlier session may not persist.
 
-## 2. Managing credentials
+## Managing credentials
 
 How you authenticate to your data warehouse locally depends on which self-hosted tool you use:
 - [dbt platform CLI](/guides/dbt-platform-local-workflow?step=4#dbt-platform-cli): For a CLI-only development experience (without the dbt VS Code extension), use the <Constant name="platform_cli" /> with <Constant name="fusion"/> set as your platform release track. Warehouse credentials are managed centrally in <Constant name="dbt_platform" /> and passed through automatically &mdash; no `profiles.yml` required.
@@ -196,7 +196,7 @@ The dbt VS Code extension first-time setup flow prompts you through this process
 We're working on a solution that lets you develop locally in the dbt VS Code extension while you manage credentials entirely in <Constant name="dbt_platform" />, without a local `profiles.yml`. We'll update this page when that ships.
 :::
 
-## 3. Managing environment variables
+## Managing environment variables
 
 Environment variables you set in <Constant name="dbt_platform" /> apply to production runs and the <Constant name="studio_ide" /> sessions. For local development, you manage environment variables separately.
 
@@ -267,7 +267,7 @@ Consider a script that fetches variables from your secrets manager (for example,
 
 :::
 
-## 4. Managing dbt v2 versions
+## Managing dbt v2 versions
 
 The **v2 Stable** release track on <Constant name="dbt_platform" /> updates continuously as <Constant name="fusion" /> ships new releases. If your local version falls behind, you might see inconsistent behavior. The same query could compile differently locally than in production, or a feature might exist in <Constant name="dbt_platform" /> but not in your local binary. Stay current to avoid these mismatches.
 
@@ -358,7 +358,7 @@ You can also document this convention in your project's `CONTRIBUTING.md` so it'
 
 ---
 
-## 5. dbt Mesh and deferral
+## dbt Mesh and deferral
 
 If your project uses [dbt Mesh](/docs/mesh/about-mesh), referencing models from other dbt projects via cross-project refs, <Constant name="fusion" /> handles this automatically during development when a [`dbt_cloud.yml`](/reference/dbt_cloud.yml) is present.
 
