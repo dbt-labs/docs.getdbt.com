@@ -270,16 +270,7 @@ def main() -> int:
         print("Dry run only — no files were changed.")
         return 0
 
-    # Only insert a blank line when the next content is not another bullet.
-    # A blank between bullets makes CommonMark treat the list as "loose"
-    # (each item wrapped in <p>), which adds visible gaps between entries.
-    next_line = mt_lines[insert_at] if insert_at < len(mt_lines) else ""
-    separator = (
-        [""]
-        if next_line.strip() and not next_line.startswith("- ")
-        else []
-    )
-    new_mt_lines = mt_lines[:insert_at] + to_insert + separator + mt_lines[insert_at:]
+    new_mt_lines = mt_lines[:insert_at] + to_insert + [""] + mt_lines[insert_at:]
     mt_path.write_text("\n".join(new_mt_lines) + "\n", encoding="utf-8")
     print(f"Updated {mt_path}")
     return 0
