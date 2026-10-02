@@ -16,7 +16,7 @@ These paths are fully supported for <Constant name="dbt_platform" /> users. Keep
 
 This guide walks through command routing, credentials, environment variables, <Constant name="fusion" /> versions, and Mesh or deferral, with concrete, copy-paste-ready steps to keep everything aligned.
 
-If you run both the <Constant name="platform_cli" /> and a local <Constant name="fusion" /> build from the same project, start with [Choosing which dbt runs](/guides/dbt-platform-local-workflow?step=3#1-choosing-which-dbt-runs). Both tools are invoked as `dbt`, and the rest of this guide assumes you can tell them apart.
+If you run both the <Constant name="platform_cli" /> and a local <Constant name="fusion" /> build from the same project, start with [Choosing which dbt runs](/guides/dbt-platform-local-workflow?step=3#choosing-which-dbt-runs). Both tools are invoked as `dbt`, and the rest of this guide assumes you can tell them apart.
 
 ## Prerequisites
 
