@@ -507,7 +507,7 @@
       "category": "Built-in",
       "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/time-series-functions#date_bucket",
       "preview_status": "GA",
-      "fusion_typecheck": false
+      "fusion_typecheck": true
     },
     {
       "name": "DATE_DIFF",
@@ -556,7 +556,7 @@
       "category": "Built-in",
       "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/time-series-functions#datetime_bucket",
       "preview_status": "GA",
-      "fusion_typecheck": false
+      "fusion_typecheck": true
     },
     {
       "name": "DATETIME_DIFF",
@@ -2691,7 +2691,7 @@
       "category": "Built-in",
       "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/time-series-functions#timestamp_bucket",
       "preview_status": "GA",
-      "fusion_typecheck": false
+      "fusion_typecheck": true
     },
     {
       "name": "TIMESTAMP_DIFF",

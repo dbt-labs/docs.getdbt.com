@@ -45,7 +45,7 @@ jobs:
 
       - name: Evaluate risk
         id: risk
-        uses: actions/github-script@v7
+        uses: actions/github-script@f28e40c7f34bde8b3046d885e986cb6290c5673b # v7
         env:
           ORG_TOKEN: ${{ secrets.ORG_TOKEN }}
         with:
@@ -61,7 +61,7 @@ jobs:
       # Dry run: leave a single, self-updating comment instead of approving.
       - name: Comment (dry run)
         if: steps.risk.outputs.eligible == 'true' && env.MODE == 'dry-run'
-        uses: actions/github-script@v7
+        uses: actions/github-script@f28e40c7f34bde8b3046d885e986cb6290c5673b # v7
         with:
           script: |
             const { owner, repo } = context.repo
@@ -78,7 +78,7 @@ jobs:
 
       - name: Approve
         if: steps.risk.outputs.eligible == 'true' && env.MODE == 'on'
-        uses: actions/github-script@v7
+        uses: actions/github-script@f28e40c7f34bde8b3046d885e986cb6290c5673b # v7
         with:
           # Swap for a bot/app token if this approval has to satisfy CODEOWNERS.
           github-token: ${{ secrets.GITHUB_TOKEN }}
@@ -109,7 +109,7 @@ jobs:
       # safe zone. Withdraw everything the bot did so the PR looks untouched.
       - name: Withdraw when no longer low-risk
         if: steps.risk.outputs.eligible != 'true'
-        uses: actions/github-script@v7
+        uses: actions/github-script@f28e40c7f34bde8b3046d885e986cb6290c5673b # v7
         env:
           REASONS: ${{ steps.risk.outputs.reasons }}
         with:
