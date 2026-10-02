@@ -517,7 +517,7 @@ You need to commit the changes you made to the project so that the repository ha
 
 ## Schedule a job
 
-We recommend using the <Constant name="dbt_platform" /> as the easiest and most reliable way to [deploy jobs](/docs/deploy/deployments) and automate your dbt project in production. 
+We recommend using <Constant name="dbt_platform" /> as the easiest and most reliable way to [deploy jobs](/docs/deploy/deployments) and automate your dbt project in production. 
 
 For more info on how to get started, refer to [create and schedule jobs](/docs/deploy/deploy-jobs#create-and-schedule-jobs).
 
