@@ -145,7 +145,7 @@ To change the default value:
 
 These custom values will apply to all future cost calculations for this connection. If you clear these values, they will reset to the default warehouse pricing.
 
-## Configure custom relation overrides (optional) <Lifecycle status="private_beta" />
+## Configure custom relation overrides (optional) <Lifecycle status="private_beta" /> {#custom-relation-overrides}
 
 :::info Private beta feature
 This feature is available only for Snowflake connections with Cost Insights enabled. To join the private beta, contact your account representative.
