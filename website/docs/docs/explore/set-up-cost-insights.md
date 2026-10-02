@@ -32,7 +32,7 @@ To set up Cost Insights, follow these steps:
 1. [Assign required permissions.](#assign-required-permissions)
 2. [Configure platform metadata credentials.](#configure-platform-metadata-credentials)
 3. [(Optional) Configure Cost Insights settings.](#configure-cost-insights-settings-optional)
-4. [(Optional, Snowflake only) Configure custom relation overrides.](#configure-custom-relation-overrides-optional)
+4. [(Optional, Snowflake only) Configure custom relation overrides.](#custom-relation-overrides)
 5. [(Optional) Enable dbt State or state-aware orchestration in your job settings.](#enable-dbt-state-or-state-aware-orchestration-optional)
 
 After completing these setup steps, you can view cost and optimization data across multiple areas of the <Constant name="dbt_platform" />. Refer to [Explore cost data](/docs/explore/explore-cost-data) to learn more about the Cost Insights section and how to use it.
@@ -76,7 +76,7 @@ For more information on how to assign permissions to users, refer to [About user
                 If `QUERY_METERING_HISTORY` access is not granted, Adaptive Warehouse queries appear as $0 in Cost Insights and a warning is shown in the connection test. For more information, refer to the [Snowflake documentation](https://docs.snowflake.com/en/sql-reference/account-usage/query_metering_history).
         
         :::note
-        If you don't have access to the `SNOWFLAKE` system database, you can [configure custom relation overrides](#configure-custom-relation-overrides-optional) to point Cost Insights to your own tables or views.
+        If you don't have access to the `SNOWFLAKE` system database, you can [configure custom relation overrides](#custom-relation-overrides) to point Cost Insights to your own tables or views.
         :::
         </Expandable>
 
