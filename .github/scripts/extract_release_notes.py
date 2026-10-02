@@ -6,6 +6,7 @@ from __future__ import annotations
 import argparse
 import re
 import sys
+from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
 
@@ -164,40 +165,201 @@ def format_mt_bullet(category: str, body: str) -> str:
     return f"- **{category}:** {description}"
 
 
-def bullet_signature(text: str) -> str:
-    """Return a normalized title key used to detect duplicate bullets."""
+MARKDOWN_LINK_RE = re.compile(r"\[([^\]]*)\]\(([^)\s]+)[^)]*\)")
+CONSTANT_TAG_RE = re.compile(r'<Constant\s+name="([^"]+)"\s*/>')
+TOKEN_RE = re.compile(r"[a-z0-9]+")
+
+# Common words that carry no feature meaning when comparing rewrites.
+DUPLICATE_STOPWORDS = frozenset(
+    """
+    a an the and or but for with to of in on at by as is are was were be been
+    has have had will can now also when each into your you this that these those
+    it its from new use using used via refer more information info details
+    available including include includes about after before than then them they
+    their there which while where what who how not only just any all per see
+    so if no do does our we
+    """.split()
+)
+
+# Anchors that are too generic to identify a feature on their own.
+GENERIC_ANCHORS = frozenset(
+    {"overview", "prerequisites", "limitations", "considerations", "faqs", "examples"}
+)
+
+# Lifecycle stages. A feature moving from one stage to another (for example,
+# beta to GA) is a new release, not a duplicate, even with near-identical text.
+LIFECYCLE_PATTERNS: list[tuple[str, re.Pattern[str]]] = [
+    ("private beta", re.compile(r"\bprivate beta\b", re.IGNORECASE)),
+    ("beta", re.compile(r"\b(?<!private )beta\b", re.IGNORECASE)),
+    ("preview", re.compile(r"\bpreview\b", re.IGNORECASE)),
+    ("alpha", re.compile(r"\balpha\b", re.IGNORECASE)),
+    (
+        "ga",
+        re.compile(r"\bgenerally available\b|\bgeneral availability\b|\(GA\)|\bGA\b"),
+    ),
+]
+
+# Jaccard similarity of significant tokens that counts as a reworded duplicate.
+TOKEN_OVERLAP_THRESHOLD = 0.6
+# Lower bars once two bullets already point at the same docs. Anchored links
+# (page#section) are specific to a feature; bare page links are shared widely.
+ANCHOR_TOKEN_OVERLAP_THRESHOLD = 0.2
+PAGE_TOKEN_OVERLAP_THRESHOLD = 0.4
+MIN_TOKENS_FOR_OVERLAP = 6
+
+
+@dataclass(frozen=True)
+class BulletFingerprint:
+    signature: str
+    body: str
+    link_targets: frozenset[str]
+    anchors: frozenset[str]
+    tokens: frozenset[str]
+    lifecycle: frozenset[str]
+
+
+def strip_bullet_prefix(text: str) -> str:
     line = text.strip()
     if line.startswith("- "):
         line = line[2:].strip()
-    line = MT_CATEGORY_PREFIX_RE.sub("", line, count=1)
+    return MT_CATEGORY_PREFIX_RE.sub("", line, count=1)
+
+
+def bullet_signature(text: str) -> str:
+    """Return a normalized title key used to detect duplicate bullets."""
+    line = strip_bullet_prefix(text)
     title_match = re.match(r"\*\*([^*]+)\*\*", line)
     if title_match:
         return re.sub(r"\s+", " ", title_match.group(1).strip().lower())
     return re.sub(r"\s+", " ", line[:120].lower())
 
 
-def collect_existing_signatures(mt_lines: list[str]) -> set[str]:
-    return {
-        bullet_signature(line)
-        for line in mt_lines
-        if line.strip().startswith("- ")
-    }
+def normalize_body(text: str) -> str:
+    """Return bullet description text with markup, links, and casing removed."""
+    line = strip_bullet_prefix(text)
+    line = FEATURE_TITLE_PREFIX_RE.sub("", line, count=1)
+    line = CONSTANT_TAG_RE.sub(lambda m: m.group(1).replace("_", " "), line)
+    line = MARKDOWN_LINK_RE.sub(r"\1", line)
+    line = re.sub(r"https?://\S+", " ", line)
+    return " ".join(TOKEN_RE.findall(line.lower()))
+
+
+def extract_link_targets(text: str) -> tuple[frozenset[str], frozenset[str]]:
+    """Return (normalized link targets, feature-ish anchors) from a bullet."""
+    targets: set[str] = set()
+    anchors: set[str] = set()
+    for _, target in MARKDOWN_LINK_RE.findall(text):
+        cleaned = re.sub(r"^https?://(www\.)?docs\.getdbt\.com", "", target.strip().lower())
+        page, _, anchor = cleaned.partition("#")
+        page = page.split("?", 1)[0].rstrip("/")
+        if page.endswith((".md", ".mdx")):
+            page = page.rsplit(".", 1)[0]
+        if not page and not anchor:
+            continue
+        targets.add(f"{page}#{anchor}" if anchor else page)
+        if anchor and anchor not in GENERIC_ANCHORS and (
+            "-" in anchor or len(anchor) >= 10
+        ):
+            anchors.add(anchor)
+    return frozenset(targets), frozenset(anchors)
+
+
+def significant_tokens(body: str) -> frozenset[str]:
+    return frozenset(
+        token
+        for token in body.split()
+        if len(token) > 2 and token not in DUPLICATE_STOPWORDS
+    )
+
+
+def lifecycle_stages(text: str) -> frozenset[str]:
+    return frozenset(
+        stage for stage, pattern in LIFECYCLE_PATTERNS if pattern.search(text)
+    )
+
+
+def fingerprint(text: str) -> BulletFingerprint:
+    body = normalize_body(text)
+    link_targets, anchors = extract_link_targets(text)
+    return BulletFingerprint(
+        signature=bullet_signature(text),
+        body=body,
+        link_targets=link_targets,
+        anchors=anchors,
+        tokens=significant_tokens(body),
+        lifecycle=lifecycle_stages(text),
+    )
+
+
+def token_overlap(left: frozenset[str], right: frozenset[str]) -> float:
+    """Jaccard similarity of two token sets."""
+    if not left or not right:
+        return 0.0
+    return len(left & right) / len(left | right)
+
+
+def duplicate_reason(
+    candidate: BulletFingerprint, existing: BulletFingerprint
+) -> str | None:
+    """Return why candidate duplicates existing, or None if it does not."""
+    if candidate.signature == existing.signature:
+        return "same title/signature"
+    if candidate.body and candidate.body == existing.body:
+        return "same normalized body"
+
+    # Fuzzy rules below never match across lifecycle stages (beta -> GA, and so on).
+    if candidate.lifecycle != existing.lifecycle:
+        return None
+
+    overlap = token_overlap(candidate.tokens, existing.tokens)
+
+    shared_targets = candidate.link_targets & existing.link_targets
+    anchored_targets = sorted(t for t in shared_targets if "#" in t)
+    if anchored_targets and overlap >= ANCHOR_TOKEN_OVERLAP_THRESHOLD:
+        return f"same docs link ({anchored_targets[0]})"
+    if shared_targets and overlap >= PAGE_TOKEN_OVERLAP_THRESHOLD:
+        return f"same docs link ({sorted(shared_targets)[0]})"
+
+    # Same section anchor on a different page, for example
+    # run-visibility#explain-tab vs dbt-state-interface#explain-tab.
+    shared_anchors = sorted(candidate.anchors & existing.anchors)
+    if shared_anchors and overlap >= ANCHOR_TOKEN_OVERLAP_THRESHOLD:
+        return f"same feature anchor (#{shared_anchors[0]})"
+
+    if (
+        min(len(candidate.tokens), len(existing.tokens)) >= MIN_TOKENS_FOR_OVERLAP
+        and overlap >= TOKEN_OVERLAP_THRESHOLD
+    ):
+        return f"high wording overlap ({overlap:.0%})"
+    return None
 
 
 def filter_duplicates(
-    formatted: list[str], existing: set[str]
-) -> tuple[list[str], list[str]]:
+    formatted: list[str], existing_lines: list[str]
+) -> tuple[list[str], list[tuple[str, str]]]:
+    """Split formatted bullets into (new, skipped-with-reason).
+
+    existing_lines are raw MT file lines; only bullet lines are compared.
+    Bullets accepted earlier in the same run are also checked, so one ST week
+    cannot add the same feature twice.
+    """
+    seen = [
+        fingerprint(line) for line in existing_lines if line.strip().startswith("- ")
+    ]
     new_bullets: list[str] = []
-    skipped: list[str] = []
-    seen = set(existing)
+    skipped: list[tuple[str, str]] = []
 
     for bullet in formatted:
-        signature = bullet_signature(bullet)
-        if signature in seen:
-            skipped.append(bullet)
+        candidate = fingerprint(bullet)
+        reason = next(
+            (r for r in (duplicate_reason(candidate, prior) for prior in seen) if r),
+            None,
+        )
+        if reason:
+            skipped.append((bullet, reason))
             continue
         new_bullets.append(bullet)
-        seen.add(signature)
+        seen.append(candidate)
 
     return new_bullets, skipped
 
@@ -237,8 +399,7 @@ def main() -> int:
     insert_at = find_month_insert_line(mt_lines, month_heading)
 
     formatted = [format_mt_bullet(category, body) for category, body in bullets]
-    existing_signatures = collect_existing_signatures(mt_lines)
-    to_insert, skipped = filter_duplicates(formatted, existing_signatures)
+    to_insert, skipped = filter_duplicates(formatted, mt_lines)
 
     print(f"Week: {args.week}")
     print(f"Target month section: ## {month_heading}")
@@ -249,8 +410,8 @@ def main() -> int:
 
     if skipped:
         print("--- Skipped duplicates ---")
-        for bullet in skipped:
-            print(bullet)
+        for bullet, reason in skipped:
+            print(f"{bullet}\n    ↳ {reason}")
         print("--- End skipped ---")
         print()
 
