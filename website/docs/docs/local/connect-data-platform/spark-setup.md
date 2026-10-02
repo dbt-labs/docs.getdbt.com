@@ -223,6 +223,18 @@ $ python -m pip install "dbt-spark[session]"
 
 <p>For further info, refer to the GitHub repository: <a href={`https://github.com/${frontMatter.meta.github_repo}`}>{frontMatter.meta.github_repo}</a></p>
 
+## Catalog-qualified identifiers
+
+dbt-spark supports catalog-qualified three-part identifiers of the form
+`catalog.schema.table`. Set `catalog` in your target profile (an alias for dbt's
+canonical `database` field) to select a Spark catalog; the Spark namespace
+continues to use dbt's `schema` field. Three-part naming works with every
+connection method below — the method only selects the transport and does not
+change identifier rendering.
+
+For profile examples, compatibility notes, and per-model catalog selection, see
+[Catalog-qualified identifiers](/reference/resource-configs/spark-configs#catalog-qualified-identifiers-catalogschematable).
+
 ## Connection methods
 
 dbt-spark can connect to Spark clusters by four different methods:
