@@ -15,14 +15,11 @@ In a non-interactive environment, dbt runs without a person available to complet
 
 dbt State automatically detects when it's running in a non-interactive environment. If valid credentials are not provided, dbt State disables itself and displays a warning, allowing your dbt commands to continue without caching.
 
-There are two authentication methods depending on your setup:
+Running dbt in a non-interactive environment requires a service account token for authentication. A <Constant name="dbt_platform" /> account is required to generate a service token; if you don't have one yet, refer to [Set up dbt State](/docs/deploy/dbt-state-setup) to create a free account before proceeding.
 
-- [**Service account token**](#service-token-dbt-platform) for <Constant name="dbt_platform" /> users
-- [**OAuth client credentials**](#oauth-client-credentials) for standalone dbt State app users
+For standalone dbt State app users, refer to [OAuth client credentials](#oauth-client-credentials).
 
 ## Service account token
-
-For <Constant name="dbt_platform" /> users, you can authenticate dbt State with a [service token](/docs/dbt-apis/service-tokens).
 
 ### Prerequisites
 
@@ -36,11 +33,13 @@ Before you begin, make sure you have:
 
 To create a service account token in <Constant name="dbt_platform" />, refer to [Generate service account tokens](/docs/dbt-apis/service-tokens#generate-service-account-tokens). When adding permissions for the token, assign at least one of the following:
 
-- **Owner**
 - **Account Admin**
+
+The following are available on Enterprise plans only:
+- **Owner**
 - **Job Admin**
 - **Job Creator**
-- **Job Runner** (recommended; provides the minimum access required for dbt State)
+- **Job Runner** (Recommended; provides the minimum access required for dbt State)
 - **Developer**
 
 ### Configuring authentication
@@ -55,6 +54,8 @@ DBT_CLOUD_ACCOUNT_ID=YOUR_ACCOUNT_ID
 
 Replace `YOUR_SERVICE_TOKEN` with your service token, `YOUR_ACCOUNT_HOST` with your [account host](/docs/platform/about-platform/access-regions-ip-addresses) (for example, `abc123.us1.dbt.com`), and `YOUR_ACCOUNT_ID` with your numeric account ID. Go to **Account settings** > **Account** to find your account ID and account host (the hostname from the **Access URL** field).
 
+Once configured, [verify dbt State is active](#verifying-dbt-state-is-active).
+
 ## OAuth client credentials
 
 <DbtStateAppRetirement />
@@ -67,7 +68,7 @@ If you're using the standalone [dbt State web app](https://app.state.dbt.com/), 
 - A standalone dbt State account at [app.state.dbt.com](https://app.state.dbt.com/).
 - An **Admin** or **Owner** role in your dbt State organization. Refer to [Roles and tab access](#roles-and-tab-access) for details.
 
-## Roles and tab access
+### Roles and tab access
 
 The dbt State web app has four tabs under **Organization**:
 
