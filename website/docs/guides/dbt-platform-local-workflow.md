@@ -14,7 +14,9 @@ Hybrid dbt deployments are becoming increasingly common. <Constant name="fusion"
 
 These paths are fully supported for <Constant name="dbt_platform" /> users. Keeping the environments in sync across credentials, environment variables, and engine versions is one of the first operational challenges teams encounter.
 
-This guide walks through credentials, environment variables, <Constant name="fusion" /> versions, and Mesh or deferral, with concrete, copy-paste-ready steps to keep everything aligned.
+This guide walks through command routing, credentials, environment variables, <Constant name="fusion" /> versions, and Mesh or deferral, with concrete, copy-paste-ready steps to keep everything aligned.
+
+If you run both the <Constant name="platform_cli" /> and a local <Constant name="fusion" /> build from the same project, start with [Choosing which dbt runs](/guides/dbt-platform-local-workflow?step=3#1-choosing-which-dbt-runs). Both tools are invoked as `dbt`, and the rest of this guide assumes you can tell them apart.
 
 ## Prerequisites
 
@@ -22,13 +24,144 @@ This guide walks through credentials, environment variables, <Constant name="fus
 - You have either the [dbt platform CLI](/docs/platform/dbt-cli-installation) or the [dbt VS Code extension + local dbt](/docs/local/install-dbt) installed.
 
 
-## 1. Managing credentials
+## 1. Choosing which dbt runs
+
+If you install both the <Constant name="platform_cli" /> and a local <Constant name="fusion" /> build, you have two separate programs on your machine that are both invoked by typing `dbt`. Before you configure credentials, environment variables, or versions, make it unambiguous which one you're calling.
+
+Skip this section if you only ever install one of the two.
+
+### The two execution paths
+
+Both the <Constant name="platform_cli" /> and the local <Constant name="fusion" /> execution paths read the same project files &mdash; one clone of your repository, one `dbt_project.yml`, one set of models, macros, and tests. What differs is where the work happens and where the connection details come from.
+
+<SimpleTable>
+
+| Area | <Constant name="platform_cli" /> | Local <Constant name="fusion" /> |
+|---|---|---|
+| **What it is** | A client that sends your command to <Constant name="dbt_platform" /> | A dbt executable that runs on your machine |
+| **Where dbt runs** | On <Constant name="dbt_platform" /> infrastructure | Locally, or inside your agent's virtual machine |
+
+</SimpleTable>
+
+### Give each tool its own command
+
+Because both programs are installed as `dbt`, whichever one appears first in your `$PATH` opens when you use `dbt`. To avoid relying on `$PATH` order, you can assign at least one of them an alias that you can use on the command line to call each one explicitly.
+
+The <Constant name="fusion" /> [installation script](/docs/local/install-dbt) already provides `dbtf` as an alias and points to the local <Constant name="fusion" /> binary, or executable program. You can also add a `dbt-cli` alias for the <Constant name="platform_cli" /> so each command calls exactly what it says, for example:
+
+```shell
+dbtf build --select my_model      # Runs locally, on your installed v2 binary
+dbt-cli build --select my_model   # Runs on dbt platform, on your environment's release track
+```
+
+Follow these steps to set up an alias:
+
+1. Find out what `dbt` resolves to today, and whether more than one is installed:
+
+   ```shell
+   which -a dbt
+   ```
+
+2. Install the tools you need:
+   - Install <Constant name="fusion" /> using the [installation script](/docs/local/install-dbt), which puts it in `$HOME/.local/bin/dbt` on macOS and Linux, or `C:\Users\USERNAME\.local\bin\dbt.exe` on Windows, and adds the `dbtf` alias.
+   - Install the [<Constant name="platform_cli" />](/docs/platform/dbt-cli-installation) separately.
+
+3. Using the path you identified in Step 1 for your dbt platform CLI install, add an alias to your shell profile that points to its installed program.
+
+   For example, on macOS with Homebrew you can create an alias for the executable at `/opt/homebrew/bin/dbt`:
+
+   ```shell
+   # ~/.zshrc or ~/.bashrc
+   alias dbt-cli="/opt/homebrew/bin/dbt"
+   ```
+
+   Reload your shell profile:
+
+   ```shell
+   source ~/.zshrc   # or source ~/.bashrc
+   ```
+
+4. Confirm each command resolves to the tool you expect and the two version strings differ:
+
+   ```shell
+   dbtf --version
+   dbt-cli --version
+   ```
+
+5. Decide which program opens when you run bare `dbt` on your machine and create a best practice for your team. Regardless, `dbtf` and `dbt-cli` clearly run the named program.
+
+:::caution Shell aliases don't apply everywhere
+
+`dbtf` and `dbt-cli` are shell aliases. They're available in your interactive terminal, but not in `Makefile` recipes, shell scripts, CI jobs, or commands an AI agent runs in a non-interactive shell. In those contexts, use the absolute path to the binary, or control `$PATH` ordering so that bare `dbt` resolves to the tool you want.
+
+:::
+
+### Commands that mean different things in each tool
+
+Most commands (`build`, `run`, `test`, `compile`) behave equivalently, but the run happens in a different place. A few are specific to one tool, and running them against the other either fails or does something you didn't intend:
+
+- `dbt system update` and `dbt system uninstall` manage a local <Constant name="fusion" /> install. They have no meaning for the <Constant name="platform_cli" /> and no effect on <Constant name="dbt_platform" />.
+- `dbt init` hydrates a local `profiles.yml`. You need it for the local <Constant name="fusion" /> path, not for the <Constant name="platform_cli" />, which doesn't use `profiles.yml`.
+- `dbt debug` inspects a local profile, target, and connection. Use [`dbt environment`](/reference/commands/dbt-environment) for <Constant name="platform_cli" /> environment and connection details.
+
+When both tools are installed, write these as `dbtf system update`, `dbtf init`, and `dbtf debug` so they can't be misread.
+
+### How each editor and agent picks a dbt
+
+Each tool in your workflow resolves `dbt` on its own terms. Configuring one does not configure the others.
+
+<SimpleTable>
+
+| Where you run dbt | How it picks a dbt | What to configure |
+|---|---|---|
+| **dbt VS Code extension** | The `dbt.fusionPath` setting, or a v2 build the extension downloads and manages itself | Leave `dbt.fusionPath` unset to let the extension manage v2. If you install v2 yourself, set it to the absolute path of the v2 binary |
+| **VS Code or Cursor integrated terminal** | Your shell `$PATH` and shell profile aliases | The `dbtf` and `dbt-cli` aliases described earlier |
+| **Coding agents, such as Claude Code or Cursor agent mode** | A non-interactive shell &mdash; `$PATH` applies, shell aliases usually don't | Absolute binary paths, plus a written command-routing rule in the agent's instructions file |
+| **Remote agent virtual machines** | The virtual machine's own `$PATH`, not your workstation's | Install both tools in the virtual machine, persist them in its setup configuration so they survive fresh sessions, and store credentials in that platform's secrets manager |
+
+</SimpleTable>
+
+:::note `dbt.fusionPath` is not a terminal setting
+
+`dbt.fusionPath` tells the dbt VS Code extension which binary to start the <Term id="lsp" /> and the extension's own menu actions from. It has no effect on commands you type in an integrated terminal, and no effect on commands an agent runs. It must point to a valid <Constant name="fusion" /> binary &mdash; an absolute filesystem path, not an alias name and not the <Constant name="platform_cli" />.
+
+Find the path to pass it with:
+
+```shell
+command -v dbtf
+```
+
+Keep machine-specific absolute paths in your user settings rather than committing them to workspace settings, so the setting doesn't break for teammates whose paths differ.
+
+:::
+
+### Tell your coding agent which command to use
+
+Agents run shell commands the same way a script does, so they inherit `$PATH` but not your interactive aliases, and they have no way to guess which execution path you intended. State the convention in the instructions file the agent reads &mdash; `CLAUDE.md`, `AGENTS.md`, `.cursor/rules/`, or the equivalent for your tool:
+
+```markdown
+## dbt command routing
+
+Replace the paths below with the output of `which -a dbt` on this machine.
+
+- Use `$HOME/.local/bin/dbt` for local dbt v2 commands. It runs on this machine
+  against `profiles.yml`.
+- Use `/opt/homebrew/bin/dbt` for dbt platform CLI commands. It runs on
+  dbt platform against the environment's release track.
+- Never substitute one for the other.
+- Run dbt commands from the repository root.
+- Ask before running any command that creates or modifies warehouse objects.
+```
+
+Use absolute paths in agent instructions rather than the `dbtf` and `dbt-cli` aliases, because the agent's shell may not load your shell profile. Discover the real paths on the machine the agent runs on with `which -a dbt`, and update the instructions file when they change. On a remote agent virtual machine, confirm the paths inside a fresh session, because tools installed ad hoc in an earlier session may not persist.
+
+## 2. Managing credentials
 
 How you authenticate to your data warehouse locally depends on which self-hosted tool you use:
-- [dbt platform CLI](/guides/dbt-platform-local-workflow?step=3#dbt-platform-cli): For a CLI-only development experience (without the dbt VS Code extension), use the <Constant name="platform_cli" /> with <Constant name="fusion"/> set as your platform release track. Warehouse credentials are managed centrally in <Constant name="dbt_platform" /> and passed through automatically &mdash; no `profiles.yml` required.
-- [dbt VS Code extension](/guides/dbt-platform-local-workflow?step=3#dbt-vs-code-extension-profilesyml-required): For IDE-based local development, the dbt VS Code extension runs <Constant name="fusion_engine" /> and its <Term id="lsp" /> features in a local process. This path requires a `profiles.yml` to connect directly to your warehouse.
+- [dbt platform CLI](/guides/dbt-platform-local-workflow?step=4#dbt-platform-cli): For a CLI-only development experience (without the dbt VS Code extension), use the <Constant name="platform_cli" /> with <Constant name="fusion"/> set as your platform release track. Warehouse credentials are managed centrally in <Constant name="dbt_platform" /> and passed through automatically &mdash; no `profiles.yml` required.
+- [dbt VS Code extension](/guides/dbt-platform-local-workflow?step=4#dbt-vs-code-extension-profilesyml-required): For IDE-based local development, the dbt VS Code extension runs <Constant name="fusion_engine" /> and its <Term id="lsp" /> features in a local process. This path requires a `profiles.yml` to connect directly to your warehouse.
 
-### <Constant name="platform_cli" />
+### <Constant name="platform_cli" /> {#dbt-platform-cli}
 
 The [<Constant name="platform_cli" />](/docs/platform/dbt-cli-installation) is the lowest-friction path for <Constant name="dbt_platform" /> users who want a self-hosted CLI-only workflow without VS Code. It authenticates using your <Constant name="dbt_platform" /> session, and your warehouse credentials are managed centrally in <Constant name="dbt_platform" /> and passed through automatically.
 
@@ -63,11 +196,11 @@ The dbt VS Code extension first-time setup flow prompts you through this process
 We're working on a solution that lets you develop locally in the dbt VS Code extension while you manage credentials entirely in <Constant name="dbt_platform" />, without a local `profiles.yml`. We'll update this page when that ships.
 :::
 
-## 2. Managing environment variables
+## 3. Managing environment variables
 
 Environment variables you set in <Constant name="dbt_platform" /> apply to production runs and the <Constant name="studio_ide" /> sessions. For local development, you manage environment variables separately.
 
-### <Constant name="platform_cli" />
+### <Constant name="platform_cli" /> {#dbt-platform-cli-env-vars}
 
 When you use the <Constant name="platform_cli" />, <Constant name="dbt_platform" /> injects the same environment variables you use in production into your <Constant name="platform_cli" /> session. You don't need extra setup.
 
@@ -134,9 +267,19 @@ Consider a script that fetches variables from your secrets manager (for example,
 
 :::
 
-## 3. Managing dbt v2 versions
+## 4. Managing dbt v2 versions
 
 The **v2 Stable** release track on <Constant name="dbt_platform" /> updates continuously as <Constant name="fusion" /> ships new releases. If your local version falls behind, you might see inconsistent behavior. The same query could compile differently locally than in production, or a feature might exist in <Constant name="dbt_platform" /> but not in your local binary. Stay current to avoid these mismatches.
+
+:::warning A v2 release track does not change your local dbt
+
+Moving a <Constant name="dbt_platform" /> environment to a v2 release track changes the engine that <Constant name="dbt_platform" /> uses for that environment. It does not install, update, replace, or select the <Constant name="fusion" /> executable on your machine, and it does not turn the <Constant name="platform_cli" /> into <Constant name="fusion" />.
+
+The reverse is also true: running `dbt system update` locally updates your local install only. It has no effect on which build your <Constant name="dbt_platform" /> environments run.
+
+Treat the two version settings as independent, and keep them aligned yourself using the steps in this section.
+
+:::
 
 ### Versions on the dbt platform
 
@@ -215,7 +358,7 @@ You can also document this convention in your project's `CONTRIBUTING.md` so it'
 
 ---
 
-## 4. dbt Mesh and deferral
+## 5. dbt Mesh and deferral
 
 If your project uses [dbt Mesh](/docs/mesh/about-mesh), referencing models from other dbt projects via cross-project refs, <Constant name="fusion" /> handles this automatically during development when a [`dbt_cloud.yml`](/reference/dbt_cloud.yml) is present.
 
@@ -255,6 +398,7 @@ The following table summarizes the key differences between the two development p
 
 | Area | dbt platform CLI | dbt VS Code extension |
 |---|---|---|
+| **Command when both are installed** | `dbt-cli` (alias you add) | `dbtf` (alias the installer adds) |
 | **Credentials** | Managed through your <Constant name="dbt_platform" /> session, no `profiles.yml` needed | `profiles.yml` required; use `dbt init` to hydrate from <Constant name="dbt_platform" /> |
 | **Environment variables** | Same env vars as in <Constant name="dbt_platform" /> automatically | Use a `.env` file at the project root |
 | **Version management** | `dbt system update` to stay current | Dev container recommended for automatic sync |
@@ -265,6 +409,8 @@ The following table summarizes the key differences between the two development p
 
 - [Install <Constant name="fusion" />](/docs/local/install-dbt)
 - [dbt platform CLI installation](/docs/platform/dbt-cli-installation)
+- [dbt extension settings, including `dbt.fusionPath`](/docs/configure-dbt-extension#dbt-extension-settings)
+- [`dbt environment` command](/reference/commands/dbt-environment)
 - [<Constant name="fusion" /> releases and release channels](/docs/dbt/dbt-releases)
 - [About profiles.yml](/docs/local/profiles.yml)
 - [Environment variables (local)](/docs/local/configure-environment-variables)
