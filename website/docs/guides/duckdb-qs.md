@@ -36,6 +36,7 @@ You can learn more through high-quality [dbt Learn courses and workshops](https:
 - [Create a GitHub repository](/guides/manual-install?step=2)
 - [Build your first models](/guides/manual-install?step=3)
 - [Test and document your project](/guides/manual-install?step=4)
+- [Use dbt Wizard locally](/docs/dbt-ai/wizard-quickstart) to build models with AI instead of by hand
 
 
 ## Prerequisites
@@ -324,6 +325,8 @@ git push
 Congratulations on making it through the guide 🎉!
 
 </ConfettiTrigger>
+
+<Snippet path="quickstarts/connect-your-ai" />
 
 </div>
 
