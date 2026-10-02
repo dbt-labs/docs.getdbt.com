@@ -21,7 +21,8 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 For <Constant name="fusion_engine" /> updates, refer to the [v2 changelog](https://github.com/dbt-labs/dbt/blob/main/CHANGELOG-dbt.md).
 
 ## September 2026
-- **New:** The job run details page now shows an [**Explain** tab](/docs/deploy/run-visibility#explain-tab) for every dbt State run. The tab is available while a run is in progress and updates as resources finish.
+
+- **Private beta:** Snowflake users can now configure [custom relation overrides](/docs/explore/set-up-cost-insights#custom-relation-overrides) when setting up Cost Insights. If your credentials don't have access to the `SNOWFLAKE` system database, you can use your own tables or views in place of the default Snowflake system tables. Contact your account representative for access.
 - **Enhancement:** The [column lineage](/docs/explore/column-level-lineage#column-lens) panel now shows SQL transformation expressions for all users. You can see how columns are derived across your lineage without any additional configuration.
 - **Enhancement:** The "last run finished at" column in the account Insights table now displays times in UTC, giving you a consistent reference regardless of your local timezone.
 - **Enhancement:** Per-query Snowflake Adaptive warehouse costs are now tracked automatically for all accounts in [Cost Insights](/docs/explore/cost-insights) when `QUERY_METERING_HISTORY` is accessible, with no additional configuration required.
