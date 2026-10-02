@@ -1,6 +1,6 @@
 ### Build it with AI using dbt Wizard
 
-Prefer not to write the SQL by hand? The [<Constant name="wizard" /> CLI](/docs/dbt-ai/wizard-cli) can build the same model for you from your terminal, grounded in your project's actual schema and lineage. Be warned, the wizard has been known to <WizardPopcorn>cast spells</WizardPopcorn>.
+Prefer not to write the SQL by hand? The [<Constant name="wizard" /> CLI](/docs/dbt-ai/wizard-cli?section=qs-build-with-ai-cli) can build the same model for you from your terminal, grounded in your project's actual schema and lineage. Be warned, the wizard has been known to <WizardPopcorn>cast spells</WizardPopcorn>.
 
 1. Install the <Constant name="wizard" /> CLI:
 
@@ -32,4 +32,4 @@ irm https://public.cdn.getdbt.com/dbt-wizard/install/install-wizard.ps1 | iex
 4. Review the SQL <Constant name="wizard" /> generates, then accept it to save the model.
 5. Type `dbt run` to build it.
 
-Either way, you end up with the same working model. For full setup details, refer to [Use dbt Wizard locally](/docs/dbt-ai/wizard-quickstart).
+Either way, you end up with the same working model. For full setup details, refer to [Use dbt Wizard locally](/docs/dbt-ai/wizard-quickstart?section=qs-build-with-ai-cli).
