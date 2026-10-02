@@ -21,8 +21,17 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 For <Constant name="fusion_engine" /> updates, refer to the [v2 changelog](https://github.com/dbt-labs/dbt/blob/main/CHANGELOG-dbt.md).
 
 ## September 2026
+- **New:** The job run details page now shows an [**Explain** tab](/docs/deploy/run-visibility#explain-tab) for every dbt State run. The tab is available while a run is in progress and updates as resources finish.
+- **Enhancement:** The [column lineage](/docs/explore/column-level-lineage#column-lens) panel now shows SQL transformation expressions for all users. You can see how columns are derived across your lineage without any additional configuration.
+- **Enhancement:** The "last run finished at" column in the account Insights table now displays times in UTC, giving you a consistent reference regardless of your local timezone.
+- **Enhancement:** Per-query Snowflake Adaptive warehouse costs are now tracked automatically for all accounts in [Cost Insights](/docs/explore/cost-insights) when `QUERY_METERING_HISTORY` is accessible, with no additional configuration required.
+- **Enhancement:** Job settings now always show a dbt State mode dropdown with inherit, on, or off. This replaces the previous per-job checkbox. You can also set dbt State as the default for a deployment environment.
+- **Enhancement:** AI reasoning blocks in agent chat now render in the correct order relative to answer text, both during live streaming and after you reload the conversation.
+- **Enhancement:** BigQuery authentication failures now surface as distinct 401 errors, and access-denied failures surface as 403 permission errors, instead of generic data platform errors. You get a more specific message to help diagnose credential and permission issues.
+- **Enhancement:** When a Redshift connection fails because the credentials are wrong, or a role does not have the required permissions, you now see a specific error message instead of a generic failure.
+- **Enhancement:** The external metadata ingestion checkbox in connection settings is now hidden unless it is already enabled for that connection. The toggle has also been removed from the account-level settings page.
+- **Fix:** Models with a "Warned" status now appear correctly in the [Execution timeline](/docs/deploy/run-visibility#execution-timeline) Gantt chart. The [critical path, peak concurrency, average active, and longest model](/docs/deploy/run-visibility#metric-tiles) summary tiles now include warned models in their calculations.
 - **Private beta:** Enterprise and Enterprise+ accounts can now [bring their own GitHub application](/docs/platform/git/connect-github#custom-github-application) to natively connect GitHub Enterprise Server (self-hosted) and GitHub Enterprise Cloud with data residency (hosted on `ghe.com`), instead of using a git URL and SSH. Reach out to your account manager to join the private beta.
-
 - **New:** [DuckDB support for Apache Iceberg](/docs/build/iceberg/adapters/duckdb-iceberg-support) is now generally available for local use with <Constant name="fusion" />.
 - **New:** The models table in Catalog navigation now shows a column count for each model.
 - **Enhancement:** <Constant name="studio_ide" /> now detects missing development credentials at startup and shows a **Development Credentials Required** modal with a direct link to add credentials, instead of failing silently.
