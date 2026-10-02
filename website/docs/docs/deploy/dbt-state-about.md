@@ -72,7 +72,7 @@ In self-managed deployments, you can also use dbt State with `state:*` selectors
 
 ## Signing up for dbt State
 
-dbt State requires a <Constant name="dbt_platform" /> account for authentication and state storage, even if you run dbt locally or in a non-interactive environment.
+dbt State requires a <Constant name="dbt_platform" /> account for authentication, even if you run dbt locally or in a non-interactive environment.
 
 - **Existing <Constant name="dbt_platform" /> users**: Your dbt State credentials are the same as your platform credentials, and dbt State has access to your platform environments and jobs.
 - **New to <Constant name="dbt_platform" />**: Create an account from the [dbt platform sign-up page](http://us1.dbt.com/register?_dbtsrc=dbt-state). For dbt v2 and v1 users, you can trigger sign-up from the CLI by running `dbt login` (dbt v2) or `dbt run`/`dbt build` (dbt v1.7–1.12), which opens the sign-up page where you can create a free account.
