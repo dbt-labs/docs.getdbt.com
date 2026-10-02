@@ -102,6 +102,12 @@ projects:
   - name: jaffle_shop
 ```
 
+<VersionBlock lastVersion="1.99">
+
+If your consumer needs a public model from a different upstream deployment environment than the default, [configure Mesh environment routing](/docs/mesh/govern/project-dependencies#route-public-model-references-to-an-upstream-environment) in its `dependencies.yml`. For example, a consumer in a general deployment environment can select a producer's general deployment publication by environment ID.
+
+</VersionBlock>
+
 ### Best practices
 
 - When you’ve **confirmed the right groups**, it's time to split your projects.
