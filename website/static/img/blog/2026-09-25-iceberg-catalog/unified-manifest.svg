@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" font-family="Helvetica, Arial, sans-serif" font-size="14">
+  <rect width="720" height="360" fill="#ffffff"/>
+  <text x="360" y="28" text-anchor="middle" font-size="16" font-weight="bold" fill="#1f2937">One new manifest, zero rewritten files</text>
+  <g fill="#e0f2fe" stroke="#0369a1" stroke-width="1.5">
+    <rect x="30" y="60" width="170" height="44" rx="6"/>
+    <rect x="30" y="130" width="170" height="44" rx="6"/>
+    <rect x="30" y="200" width="170" height="44" rx="6"/>
+  </g>
+  <g fill="#0c4a6e" text-anchor="middle">
+    <text x="115" y="87">tenant_a.orders</text>
+    <text x="115" y="157">tenant_b.orders</text>
+    <text x="115" y="227">tenant_c.orders</text>
+  </g>
+  <g fill="#f3f4f6" stroke="#6b7280" stroke-width="1.5">
+    <rect x="290" y="60" width="140" height="184" rx="6"/>
+  </g>
+  <text x="360" y="90" text-anchor="middle" fill="#374151" font-weight="bold">Parquet files</text>
+  <g fill="#9ca3af">
+    <rect x="310" y="105" width="100" height="18" rx="3"/>
+    <rect x="310" y="130" width="100" height="18" rx="3"/>
+    <rect x="310" y="155" width="100" height="18" rx="3"/>
+    <rect x="310" y="180" width="100" height="18" rx="3"/>
+    <rect x="310" y="205" width="100" height="18" rx="3"/>
+  </g>
+  <text x="360" y="265" text-anchor="middle" fill="#6b7280" font-size="12">untouched</text>
+  <g fill="#dcfce7" stroke="#15803d" stroke-width="1.5">
+    <rect x="520" y="120" width="170" height="64" rx="6"/>
+  </g>
+  <text x="605" y="147" text-anchor="middle" fill="#14532d" font-weight="bold">all_tenants.orders</text>
+  <text x="605" y="167" text-anchor="middle" fill="#14532d" font-size="12">new manifest only</text>
+  <g stroke="#0369a1" stroke-width="1.5" fill="none">
+    <path d="M200 82 L290 114"/><path d="M200 152 L290 164"/><path d="M200 222 L290 214"/>
+  </g>
+  <g stroke="#15803d" stroke-width="1.5" stroke-dasharray="5 4" fill="none">
+    <path d="M520 140 L410 114"/><path d="M520 150 L410 139"/><path d="M520 152 L410 164"/><path d="M520 160 L410 189"/><path d="M520 170 L410 214"/>
+  </g>
+  <text x="360" y="320" text-anchor="middle" fill="#374151" font-size="13">Source tables keep their manifests. The unified table's manifest points at the same files.</text>
+</svg>
