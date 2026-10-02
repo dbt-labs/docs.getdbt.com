@@ -258,7 +258,7 @@ This applies to both kinds of custom materializations:
 
 #### Schema-changing custom materializations
 
-dbt v2 can't see inside your materialization code. That's fine if the materialization only changes _how_ a model is built (for example, custom `create` statements, merge logic, or grants). But if it adds, renames, or retypes columns, the schema v2 infers from your SQL won't match the table in your warehouse.
+dbt v2 infers your model’s columns from its SQL, without looking inside your materialization code. Custom `create` statements, merge logic, or grants are fine _if_ they only change how a model is built and they leave the columns unchanged. But if your materialization adds or renames columns, or changes their data types, dbt’s inferred schema won’t match the table in your warehouse.
 
 This mainly affects `strict`, which needs accurate upstream schemas for type checking, unlike `baseline`. If you use `strict`, set `static_analysis: off` on models that use a schema-changing materialization:
 
