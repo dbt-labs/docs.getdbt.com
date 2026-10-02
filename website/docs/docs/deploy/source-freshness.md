@@ -13,7 +13,7 @@ availability: platform_login
 
 [`dbt build`](/reference/commands/build) does _not_ include source freshness checks when building and testing resources in your DAG. Instead, you can use one of these common patterns for defining jobs:
 - Add `dbt build` to the run step to run models, tests, and so on. 
-- Select the **Generate docs on run** checkbox to automatically [generate project docs](/docs/explore/build-and-view-your-docs).
+- <VersionBlock lastVersion="1.99">Select the **Generate docs on run** checkbox to automatically [generate project docs](/docs/explore/build-and-view-your-docs).</VersionBlock><VersionBlock firstVersion="2.0">Every job run refreshes [<Constant name="catalog" />](/docs/explore/build-and-view-your-docs) metadata automatically, so you don't need a docs step.</VersionBlock>
 - Select the **Run source freshness** checkbox to enable [source freshness](#checkbox) as the first step of the job. 
 
 <Lightbox src="/img/docs/dbt-platform/select-source-freshness.png" title="Selecting source freshness"/>
