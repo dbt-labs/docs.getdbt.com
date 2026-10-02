@@ -306,41 +306,41 @@ In `dbt-athena` 1.11.1 and later, you can write Iceberg models to [Amazon S3 Tab
 
 1. Enable the `use_catalogs_v2` flag in your `dbt_project.yml`:
 
-<File name='dbt_project.yml'>
+    <File name='dbt_project.yml'>
 
-```yml
-flags:
-  use_catalogs_v2: true
-```
+    ```yml
+    flags:
+      use_catalogs_v2: true
+    ```
 
-</File>
+    </File>
 
 2. Define the catalog in [`catalogs.yml`](/docs/build/iceberg/catalogs-yml). Set `catalog_database` to the catalog name Athena uses for your table bucket (`s3tablescatalog/YOUR_TABLE_BUCKET`). The model's schema maps to the S3 Tables namespace:
 
-<File name='catalogs.yml'>
+    <File name='catalogs.yml'>
 
-```yml
-catalogs:
-  - name: my_s3_tables
-    type: s3_tables
-    table_format: iceberg
-    config:
-      athena:
-        catalog_database: s3tablescatalog/my-table-bucket
-```
+    ```yml
+    catalogs:
+      - name: my_s3_tables
+        type: s3_tables
+        table_format: iceberg
+        config:
+          athena:
+            catalog_database: s3tablescatalog/my-table-bucket
+    ```
 
-</File>
+    </File>
 
 3. Configure your model to use the catalog:
 
-```sql
-{{ config(
-    materialized='table',
-    catalog_name='my_s3_tables'
-) }}
+    ```sql
+    {{ config(
+        materialized='table',
+        catalog_name='my_s3_tables'
+    ) }}
 
-select 1 as id
-```
+    select 1 as id
+    ```
 
 ##### Considerations
 
