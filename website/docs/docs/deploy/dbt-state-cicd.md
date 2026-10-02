@@ -36,8 +36,8 @@ To create a service account token in <Constant name="dbt_platform" />, refer to 
 - **Account Admin**
 
 The following are available on Enterprise plans only:
-- **Job Admin**
 - **Owner**
+- **Job Admin**
 - **Job Creator**
 - **Job Runner** (Recommended; provides the minimum access required for dbt State)
 - **Developer**
