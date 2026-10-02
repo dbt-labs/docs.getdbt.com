@@ -60,7 +60,7 @@ Once configured, [verify dbt State is active](#verifying-dbt-state-is-active).
 
 <DbtStateAppRetirement />
 
-If you were using the standalone [dbt State web app](https://app.state.dbt.com/), authenticate with OAuth client credentials.
+If you're using the standalone [dbt State web app](https://app.state.dbt.com/), authenticate with OAuth client credentials.
 
 ### Prerequisites
 

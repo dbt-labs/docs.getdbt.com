@@ -189,7 +189,7 @@ To see how dbt State optimizes your runs, refer to [dbt State usage examples](/d
 
 ## Configuring lag tolerance
 
-Lag tolerance is available to all dbt State users. It controls how long dbt State waits before rebuilding a node once its upstream data changes. A node rebuilds only when its last build is older than the tolerance window and its upstream data has changed. You can set it at the project, environment, or model level. If not configured, `lag_tolerance` defaults to `45m`. We recommend starting with the following Jinja expression:
+Lag tolerance controls how long dbt State waits before rebuilding a node once its upstream data changes. A node rebuilds only when its last build is older than the tolerance window and its upstream data has changed. You can set it at the project, environment, or model level. If not configured, `lag_tolerance` defaults to `45m`. We recommend starting with the following Jinja expression:
 
 <File name="dbt_project.yml">
 
