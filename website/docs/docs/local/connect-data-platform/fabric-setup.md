@@ -191,11 +191,11 @@ your_profile_name:
 
 </File>
 
-<Lightbox collapsed={true} title="Note" alt="" src="" wide={true}>
+:::note
 
 `ActiveDirectoryPassword` (and `ActiveDirectoryIntegrated`, on Windows) authenticate the SQL connection natively through the driver. Because of this, they can't currently be combined with `workspace_id`/`workspace_name`-based host resolution or other Fabric REST API-dependent features (for example, warehouse snapshots or Purview sync) — set `server` explicitly when using these methods.
 
-</Lightbox>
+:::
 
 </TabItem>
 
