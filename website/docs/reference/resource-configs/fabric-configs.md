@@ -1,6 +1,6 @@
 ---
 title: "Microsoft Fabric Data Warehouse configurations"
-description: "Configure Microsoft Fabric Data Warehouse settings in dbt, including materializations, incremental strategies, and cross-warehouse references."
+description: "Configure Microsoft Fabric Data Warehouse settings in dbt, including materializations, IDENTITY columns, incremental strategies, scalar SQL UDFs, and cross-warehouse references."
 id: "fabric-configs"
 ---
 
@@ -60,6 +60,58 @@ models:
 </Tabs>
 
 > **Limitation:** Nested <Term id="cte"/> aren't supported in model materialization. Models using multiple nested CTEs may fail during compilation or execution.
+
+#### Clustered tables
+
+Set `cluster_by` on a table model to create it with a `CLUSTER BY` physical layout:
+
+```sql
+{{ config(materialized='table', cluster_by=['customer_id', 'order_date']) }}
+select * from ...
+```
+
+`cluster_by` accepts a single column name or a list of column names.
+
+#### Statistics
+
+Set `statistics` on a table model to have dbt create or update column statistics after the table is built:
+
+```sql
+{{
+  config(
+    materialized='table',
+    statistics=['customer_id', 'order_date'],  -- or `true` for all columns, or a single column name
+    statistics_sample_percent=25               -- optional; defaults to a full scan when omitted
+  )
+}}
+select * from ...
+```
+
+#### IDENTITY columns
+
+A contract-enforced table model (`contract.enforced: true`) can declare a single `bigint` column as a Fabric `IDENTITY` column via that column's `meta.identity` property:
+
+```yaml
+models:
+  - name: my_model
+    config:
+      contract:
+        enforced: true
+    columns:
+      - name: id
+        data_type: bigint
+        meta:
+          identity: auto   # or: insert
+```
+
+* `auto`: Fabric assigns the value. The column is excluded from the model's own INSERT column list.
+* `insert`: the model's query supplies explicit values, written through `SET IDENTITY_INSERT ... ON/OFF` and reseeded with `DBCC CHECKIDENT` so later `auto` inserts don't collide.
+
+Only one `IDENTITY` column is allowed per table, and it must be `bigint`. Declaring, changing, or removing the identity column forces a full table replace. Not currently supported on incremental models — see [#462](https://github.com/microsoft/dbt-fabric/issues/462) for tracking.
+
+#### Schema-aware full refresh
+
+Table and incremental models run with `--full-refresh` preserve the existing table object (an atomic `TRUNCATE` + full reload, retaining object-bound metadata and optimization history) when its ordered schema, `IDENTITY` properties, and `cluster_by` layout are unchanged. Named primary-key, unique, and foreign-key constraints are reconciled transactionally. A schema, identity, or physical-layout change instead uses an atomic CTAS/drop/rename replacement.
 
 ## Table Clone
 The `table_clone` materialization creates a physical copy of an existing table using Fabric’s cloning capabilities. This is useful for versioning, branching, or snapshot-like workflows.
@@ -142,6 +194,38 @@ select * from source_table
 {% endif %}
 ```
 
+#### Deleting rows with `merge`
+
+Two additional options can be combined with `incremental_strategy: merge` to delete target rows as part of the same run. They're mutually exclusive — use one or the other.
+
+* **`delete_not_matched_by_source`** — adds `WHEN NOT MATCHED BY SOURCE THEN DELETE` to the generated `MERGE` statement, deleting target rows whose `unique_key` is absent from the source. Use this when the incremental model's query returns the complete current dataset (not just a delta):
+
+  ```sql
+  {{
+    config(
+      materialized='incremental',
+      incremental_strategy='merge',
+      unique_key='id',
+      delete_not_matched_by_source=true
+    )
+  }}
+  select * from source_table
+  ```
+
+* **`delete_condition`** — issues a follow-up `DELETE ... FROM ... INNER JOIN ... WHERE` after the `MERGE`, removing target rows that match the source on `unique_key` and satisfy a user-supplied SQL expression. Use this for soft-delete patterns where the source carries a delete-flag column:
+
+  ```sql
+  {{
+    config(
+      materialized='incremental',
+      incremental_strategy='merge',
+      unique_key='id',
+      delete_condition='DBT_INTERNAL_SOURCE.is_deleted = 1'
+    )
+  }}
+  select * from source_table
+  ```
+
 ### Append
 Appends new records to the existing dataset.
 
@@ -189,6 +273,40 @@ select * from raw_events
 - If you don't specify a `unique_key`, dbt-fabric defaults to `append`.
 
 For more details, see [Incremental models](/docs/build/incremental-models).
+## Functions (scalar SQL UDFs)
+
+Starting with dbt Core 1.11, `dbt-fabric` supports first-class SQL scalar UDF (`function`) resources. Functions participate in the DAG, can be referenced from models with the `function()` Jinja function, support default arguments, and are discoverable through the adapter's relation cache.
+
+<File name="functions/price_for_xlarge.sql">
+
+```sql
+SELECT @price * 2
+```
+
+</File>
+
+<File name="functions/price_for_xlarge.yml">
+
+```yaml
+functions:
+  - name: price_for_xlarge
+    arguments:
+      - name: price
+        data_type: int
+    returns:
+      data_type: int
+```
+
+</File>
+
+Reference the function from a model or an ad hoc query:
+
+```sql
+select {{ function('price_for_xlarge') }}(100)
+```
+
+> **Note:** Fabric Data Warehouse does not support function volatility hints (`VOLATILE`/`STABLE`/`IMMUTABLE`); specifying one on a function logs a warning and is otherwise ignored. Only the `sql` language is supported — `python` functions raise a compile error.
+
 ## Permissions
 
 The Microsoft Entra identity (user or service principal) must be a Fabric Workspace admin to work on the database level at this time. Fine grain access control will be incorporated in the future.
@@ -218,34 +336,24 @@ sources:
 
 ## Warehouse snapshots
 
-Microsoft Fabric warehouse snapshots are read-only copies of your warehouse at a specific moment, kept for up to 30 days. They allow analysts query a stable dataset, even while ELT processes are updating the warehouse. By moving the snapshot’s timestamp forward, changes are applied all at once (atomically).
+Microsoft Fabric warehouse snapshots are read-only copies of your warehouse at a specific moment, kept for up to 30 days. They let analysts query a stable dataset even while ELT processes are updating the warehouse. By moving the snapshot's timestamp forward, changes are applied all at once (atomically).
 
-dbt-fabric supports warehouse snapshots, which helps track changes in Fabric Data Warehouse objects between dbt runs. Fabric automatically creates snapshots _before_ and _after_ you run the `dbt run`, `dbt build`, or `dbt snapshot` commands.
+`dbt-fabric` exposes warehouse snapshot creation/refresh as the `create_or_update_fabric_warehouse_snapshot(snapshot_name, description=none)` macro, callable from `on-run-start`, `on-run-end`, a `post-hook`, or any other Jinja context — it is **not** a `profiles.yml` setting. Calling it with a name that already exists updates that snapshot (moving its point-in-time forward) instead of creating a new one.
 
-To use them, your `profiles.yml` must include the `workspace_id` and the warehouse snapshot name so dbt can create the snapshot as a child item of your warehouse. 
+This uses the Fabric REST API, so your profile must resolve a workspace — set `workspace_id` or `workspace_name` (in addition to `server`/`database`).
 
-Learn more [here](https://learn.microsoft.com/en-us/fabric/data-warehouse/warehouse-snapshot)
+<File name="dbt_project.yml">
 
 ```yaml
-fabric_dw:
-  target: dev
-  outputs:
-    dev:
-      type: fabric
-      server: "<your-fabric-server-name>"
-      database: "<your-warehouse-name>"
-      schema: "<default-schema>"
-      authentication: CLI
-      workspace_id: e4487eff-d67d-4b58-917c-ffbb61a5c05f
-      warehouse_snapshot_name: dbt-dwtests-snpshot
-      
-### Behavior
-- Before a dbt operation (`run`, `build`, `snapshot`), the adapter captures the pre-state of affected tables.
-- After execution, the warehouse snapshot is created with snapshot timestamp.
+on-run-end:
+  - "{{ create_or_update_fabric_warehouse_snapshot('dbt-run-snapshot', 'Snapshot after dbt run') }}"
+```
 
-For additional details:
-- [dbt snapshot documentation](/docs/build/snapshots)
-- [Fabric adapter snapshots reference](/reference/resource-configs/fabric-configs)
+</File>
+
+Learn more about warehouse snapshots [in the Microsoft Fabric docs](https://learn.microsoft.com/en-us/fabric/data-warehouse/warehouse-snapshot).
+
+For additional details, see [dbt hooks documentation](/reference/resource-configs/pre-hook-post-hook).
 
 
 ## dbt-utils
