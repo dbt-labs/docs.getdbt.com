@@ -109,6 +109,10 @@ In the platform, a session is a saved conversation in the <Constant name="wizard
 
 Start a new session with **Start new dbt Wizard chat** in the panel. Chat history is retained for 90 days. Refreshing the same browser tab keeps your active session; opening a new tab starts empty.
 
+:::tip Start a new chat for each task
+Use a separate chat for each discrete unit of work, such as building one model, debugging one job failure, or reviewing a change. A focused conversation keeps the context relevant to the task, so <Constant name="wizard" /> doesn't carry over assumptions from unrelated work. Return to an existing chat only when you're continuing that same task.
+:::
+
 For Studio-specific behavior and availability, refer to [<Constant name="wizard" /> in Studio IDE](/docs/dbt-ai/wizard-ide).
 
 ## Locally (CLI and Desktop)
@@ -223,6 +227,10 @@ wizard resume --last # resume the most recent session
 ```
 
 Local sessions are saved on your machine, in the CLI and in Wizard Desktop alike. This is separate from platform conversations, which are stored in your <Constant name="dbt_platform" /> account.
+
+:::tip Start a new session for each task
+Use a separate session for each discrete unit of work, such as building one model, debugging one job failure, or reviewing one change. Resume a previous session only when you're continuing the same task. In the CLI, type `/new` to start fresh without leaving the TUI, or type `/compact` to summarize the conversation if a long session for a single task approaches the context limit. For more information, refer to [Slash commands](/docs/dbt-ai/wizard-slash-commands).
+:::
 
 ## Related docs
 
