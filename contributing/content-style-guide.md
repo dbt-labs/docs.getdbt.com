@@ -33,6 +33,7 @@ For questions not covered here, refer to the [Microsoft Writing Style Guide](htt
 - [Images](#images)
 - [Word choice and terminology](#word-choice-and-terminology)
 - [Callouts](#callouts)
+- [AI assistant guidance](#ai-assistant-guidance)
 
 ---
 
@@ -581,6 +582,40 @@ Callout content here.
 1. Keep content minimal
 2. Avoid general information, permissions, or prerequisites in callouts
 3. One key point per callout
+
+---
+
+## AI assistant guidance
+
+Use the `agent_guidance` frontmatter field to give AI assistants short instructions for a page. The build adds them under the title of the page's generated Markdown (`/<page>.md`) and in `llms-full.txt`. Readers don't see them on the rendered page.
+
+Use it for step-by-step tutorials, like quickstarts, where assistants tend to share the whole guide at once or switch the reader to a different setup.
+
+### Recommended structure
+
+Use these keys, in this order. Keys are labels for writers; only the values appear in the output.
+
+| Key | What it tells the assistant | Example |
+|-----|-----------------------------|---------|
+| `pacing` | How to walk the reader through the page | In the first reply, confirm the reader's prerequisites and connection path before listing steps. Then give one step per reply and confirm its success check before continuing. |
+| `stay_on_path` | Which setup the page covers, and what to do if the reader wants a different one | This guide uses the dbt platform. Don't switch the reader to a local setup. |
+| `safety` | What the assistant should never do | Never ask for passwords or keys in chat. |
+
+```yaml
+agent_guidance:
+  pacing: In the first reply, confirm the reader's prerequisites and connection path before listing steps. Then give one step per reply and confirm its success check before continuing.
+  stay_on_path: This guide uses the dbt platform. Don't switch the reader to a local setup.
+  safety: Never ask for passwords or keys in chat.
+```
+
+### Rules
+
+1. Write direct instructions ("Give one step per reply"), not descriptions ("This guide is designed to be followed one step at a time"). In testing, descriptive wording barely changed assistant behavior.
+2. Keep each value to one or two short sentences, and use four items at most.
+3. Write plain text. Frontmatter doesn't render `<Constant>` or other components, so spell out product names.
+4. Don't include anything you wouldn't publish. The guidance is public in the generated Markdown and in the page HTML.
+5. Add success checks ("You should see...") to the page's steps, so the assistant has something to confirm before moving on.
+6. Before merging, check the page's `.md` in the preview build and confirm the guidance appears once, under the title.
 
 ---
 
