@@ -41,7 +41,7 @@ This page walks you through installing the app, connecting it to the services it
 ## Prerequisites
 
 To use Wizard Desktop, you'll need:
-- A computer on macOS and Linux, with Windows support coming soon.
+- A computer using macOS, Linux, or Windows.
 - A dbt account. You can create a free account when you sign in or use an existing account.
 - A local copy of your dbt project on your machine if you want <Constant name="wizard" /> to work on project files. The app scans for existing projects, and you can also select a project folder yourself.
 - Warehouse credentials if you want <Constant name="wizard" /> to run your project or query data. You don't need to configure them before opening the app.
