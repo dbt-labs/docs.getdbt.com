@@ -1277,7 +1277,7 @@ The BigQuery Python models also have the following additional configuration para
   - The `gcs_bucket` parameter specifies the GCS bucket used for storing artifacts for the job.
 
 - The `packages` parameter
-  - The `packages` parameter lists Python packages to `pip install` before your model runs. It only works with `submission_method: bigframes`. Dataproc (`serverless` and `cluster`) silently ignores it without an error or warning. To install packages on Dataproc, use a custom container image (serverless) or initialization actions (cluster) instead. Refer to **Installing packages** under the Dataproc tab in [Python model configuration](#python-model-configuration).
+  - The `packages` parameter lists Python packages to `pip install` before your model runs. It only works with `submission_method: bigframes`. Dataproc (`serverless` and `cluster`) ignores it without an error or warning. To install packages on Dataproc, use a custom container image (serverless) or initialization actions (cluster) instead. Refer to **Installing packages** under the Dataproc tab in [Python model configuration](#python-model-configuration).
 
 - The `timeout` parameter
   - The `timeout` parameter specifies the maximum execution time in seconds for the Python model. This is particularly useful for BigFrames models that may require longer execution times for complex data processing or machine learning workloads. If not specified, the model will use the default timeout configured for the execution environment.
