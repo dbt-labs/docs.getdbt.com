@@ -18,7 +18,7 @@ const SNIPPETS_DIR = path.join(__dirname, '..', 'snippets');
 
 function buildTable(functions) {
   const header = [
-    '| <div style={{minWidth:"200px"}}>Function</div> | Category | Fusion typechecking |',
+    '| <div style={{minWidth:"200px"}}>Function</div> | Category | v2 typechecking |',
     '|------|----------|:-------------------:|',
   ].join('\n');
 

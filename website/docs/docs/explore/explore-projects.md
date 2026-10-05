@@ -70,7 +70,7 @@ When using global navigation and searching across your projects, the following p
 
 | Feature | Starter | Enterprise | Enterprise+ |
 |---------|:-------:|:----------:|:-----------:|
-| <Constant name="core" /> lineage & resource browsing | ✅ | ✅ | ✅ |
+| dbt lineage & resource browsing | ✅ | ✅ | ✅ |
 | [Global navigation](/docs/explore/global-navigation) | ✅ | ✅ | ✅ |
 | [Data health signals](/docs/explore/data-health-signals) | ✅ | ✅ | ✅ |
 | [Model performance](/docs/explore/model-performance) | ❌ | ✅ | ✅ |
@@ -80,6 +80,8 @@ When using global navigation and searching across your projects, the following p
 | [Model query history](/docs/explore/model-query-history) | ❌ | ✅ | ✅ |
 | [Downstream exposures](/docs/explore/view-downstream-exposures) | ❌ | ✅ | ✅ |
 | [Data health tile](/docs/explore/data-tile) | ❌ | ✅ | ✅ |
+
+This table covers <Constant name="catalog" /> only. Refer to [Column-level lineage](/docs/explore/column-level-lineage) to learn how you can use this feature locally.
 
 import ExplorerCourse from '/snippets/_explorer-course-link.md';
 

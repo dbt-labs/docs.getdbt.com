@@ -5,7 +5,7 @@ description: "Use the --static-analysis flag to override model-level static_anal
 sidebar: "Static analysis"
 ---
 
-Use the `--static-analysis` flag to override model-level `static_analysis` behavior for a single run. This flag applies to the <Constant name="fusion_engine" /> only; it is ignored by <Constant name="core" />.
+Use the `--static-analysis` flag to override model-level `static_analysis` behavior for a single run. This flag applies to <Constant name="fusion_engine" /> only; it is ignored by <Constant name="core" />.
 
 Values:
 

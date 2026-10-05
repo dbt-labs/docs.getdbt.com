@@ -56,7 +56,7 @@ The syntax for using the DATEDIFF function in [Google BigQuery](https://cloud.go
 
 You may be able to memorize the syntax for the DATEDIFF function for the primary data warehouse you use. What happens when you switch to a different one for a new job or a new data stack? Remembering if there’s an underscore in the function name or which argument the `<date part>` is passed in as is… no fun and leads to the inevitable, countless “datediff in bigquery” Google searches.
 
-Luckily, [<Constant name="core" />](https://github.com/dbt-labs/dbt-core) has your back! <Constant name="core" /> is the open source dbt product that helps data folks write their [data transformations](https://www.getdbt.com/analytics-engineering/transformation/) following software engineering best practices.
+Luckily, [dbt](https://github.com/dbt-labs/dbt) has your back! dbt is the product that helps data folks write their [data transformations](https://www.getdbt.com/analytics-engineering/transformation/) following software engineering best practices.
 
 [Adapters](/docs/supported-data-platforms) support [cross-database macros](/reference/dbt-jinja-functions/cross-database-macros) to help you write certain functions, like DATE_TRUNC and DATEDIFF, without having to memorize sticky function syntax.
 

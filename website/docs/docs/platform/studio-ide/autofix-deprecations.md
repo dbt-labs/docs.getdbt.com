@@ -33,7 +33,7 @@ To find and fix deprecations:
 
     <VersionBlock firstVersion="2.0">
     After a successful `dbt parse` command, you'll see a **Compile** button to the right of the **Successfully resolved** result. Use **Compile** to compile your project from the results panel. 
-    <Lightbox src="/img/docs/dbt-platform/platform-ide/autofix-success-fusion-compile.png" width="90%" title="Autofix success with Compile in the Fusion flow"/>
+    <Lightbox src="/img/docs/dbt-platform/platform-ide/autofix-success-fusion-compile.png" width="90%" title="Autofix success with Compile in the v2 flow"/>
 
     If successful, you'll see a **Successfully compiled** result. If you see any errors, review them and make any necessary changes.
     </VersionBlock>

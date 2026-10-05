@@ -17,7 +17,7 @@ Welcome to the 2021 changelog for the <Constant name="dbt" /> application! You c
 
 ## dbt Cloud v1.1.41 (December 8, 2021)
 
-It's one of the best weeks of the year - it's [Coalesce](https://coalesce.getdbt.com/)! We'll have some exciting product announcements to share! Did somebody say [metrics](https://coalesce.getdbt.com/talks/keynote-metric-system/) and [<Constant name="core" /> v1.0](https://coalesce.getdbt.com/talks/dbt-v10-reveal/)?!
+It's one of the best weeks of the year - it's [Coalesce](https://coalesce.getdbt.com/)! We'll have some exciting product announcements to share! Did somebody say [metrics](https://coalesce.getdbt.com/talks/keynote-metric-system/) and [<Constant name="core" />](https://coalesce.getdbt.com/talks/dbt-v10-reveal/)?!
 
 #### New products and features
 

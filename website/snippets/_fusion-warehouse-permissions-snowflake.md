@@ -48,8 +48,8 @@ The following are conditional permissions for schema and database management:
 
 | Permission | Object | When required |
 | --- | --- | --- |
-| `CREATE SCHEMA` | Database | <Constant name="fusion" /> should auto-create schemas |
-| `CREATE DATABASE` | Account | <Constant name="fusion" /> should auto-create databases |
+| `CREATE SCHEMA` | Database | <Constant name="dbt" /> should auto-create schemas |
+| `CREATE DATABASE` | Account | <Constant name="dbt" /> should auto-create databases |
 
 ### Advanced features
 

@@ -16,7 +16,7 @@ After setting up your MCP server, you connect it to Cursor. Log in to Cursor and
 
 Choose your setup based on your workflow:
 - OAuth for <Constant name="dbt_platform" /> connections
-- CLI only if using <Constant name="core" /> or the <Constant name="fusion_engine" /> locally. 
+- CLI only if using <Constant name="core" /> or <Constant name="fusion_engine" /> locally. 
 - Configure environment variables if you're using them in your <Constant name="dbt_platform" /> account.
 
 ### OAuth or CLI
@@ -25,7 +25,7 @@ Click one of the following application links with Cursor open to automatically c
 
 <Tabs>
 
-<TabItem value="CLI only (dbt Core and Fusion)">
+<TabItem value="CLI only (dbt v1 and dbt v2)">
 
 Self-hosted configuration for users who only want to use dbt commands with <Constant name="core" /> or <Constant name="fusion_engine" /> (no <Constant name="dbt_platform" /> features).
 

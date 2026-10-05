@@ -15,13 +15,13 @@ meta:
   slack_channel_link: 'https://getdbt.slack.com/archives/CNGCW8HKL'
   platform_name: 'Databricks'
   config_page: '/reference/resource-configs/databricks-configs'
-  product_badge: "Fusion compatible"
+  product_badge: "dbt v2 compatible"
 availability: local_free
 --- 
 
 <VersionBlock firstVersion="2.0">
 
-# Connect Databricks to <Constant name="fusion" /> <Lifecycle status='preview' />
+# Connect Databricks to <Constant name="fusion" />
 
 
 You can configure the Databricks adapter by running `dbt init` in your CLI or manually providing the `profiles.yml` file with the fields configured for your authentication type.
@@ -154,7 +154,7 @@ Find Databricks-specific configuration information in the [Databricks adapter re
 
 # Connect Databricks to <Constant name="core" /> 
 
-<ProductCard text="Fusion compatible" url="/docs/local/connect-data-platform/databricks-setup?version=2" /> connection also available.
+<ProductCard text="dbt v2 compatible" url="/docs/local/connect-data-platform/databricks-setup?version=2" /> connection also available.
 
 import SetUpPages from '/snippets/_setup-pages-intro.md';
 
