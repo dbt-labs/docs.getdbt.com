@@ -6,6 +6,10 @@ icon: 'snowflake'
 tags: ['dbt platform','Quickstart','Snowflake']
 hide_table_of_contents: true
 product_badge: "dbt v2 compatible"
+agent_guidance:
+  pacing: In the first reply, confirm the reader's prerequisites and connection path before listing steps. Then give one step per reply and confirm its success check before continuing.
+  stay_on_path: This guide uses the dbt platform. Don't switch the reader to a local setup.
+  safety: Never ask for passwords or keys in chat.
 ---
 
 <div style={{maxWidth: '900px'}}>
@@ -57,6 +61,8 @@ import LoadData from '/snippets/_load-data.md';
 
 <LoadData/>
 
+You should see rows returned for all three queries. If a `create` or `copy into` statement fails with an insufficient privileges error, check that your Snowflake trial uses the **Enterprise** edition and that you're using the `ACCOUNTADMIN` role. Continue when all three tables return data.
+
 ## Connect dbt to Snowflake
 
 There are two ways to connect <Constant name="dbt" /> to Snowflake. The first option is Partner Connect, which provides a streamlined setup to create your <Constant name="dbt" /> account from within your new Snowflake trial account. The second option is to create your <Constant name="dbt" /> account separately and build the Snowflake connection yourself (connect manually). If you want to get started quickly, dbt Labs recommends using Partner Connect. If you want to customize your setup from the very beginning and gain familiarity with the <Constant name="dbt" /> setup flow, dbt Labs recommends connecting manually.
@@ -97,6 +103,8 @@ Using Partner Connect allows you to create a complete dbt account with your [Sno
 
 <Lightbox src="/img/snowflake_tutorial/dbt_cloud_update_database_and_warehouse.png" title="dbt - Update Database and Warehouse" />
 
+You should now be logged into <Constant name="dbt" /> with a project that has a Snowflake connection using the `analytics` database and `transforming` warehouse. Partner Connect also created a managed repository for you, so skip to [Initialize your dbt project and start developing](#initialize-your-dbt-project-and-start-developing).
+
 </TabItem>
 <TabItem value="manual-connect" label="Connect manually">
 
@@ -133,7 +141,7 @@ Using Partner Connect allows you to create a complete dbt account with your [Sno
     <Lightbox src="/img/snowflake_tutorial/dbt_cloud_snowflake_development_credentials.png" title="dbt - Snowflake User credentials" />
 
 11. Click **Test connection**. This verifies that <Constant name="dbt" /> can access your Snowflake account.
-12. If the test succeeded, click **Save** to complete the configuration. If it failed, you may need to check your Snowflake settings and credentials.
+12. If the test succeeded, click **Save** to complete the configuration. If it failed, check your Snowflake settings and credentials. The most common cause is an **Account** value that still includes `snowflakecomputing.com`.
 
 </TabItem>
 </Tabs>
@@ -154,7 +162,7 @@ Now that you have a repository configured, you can initialize your project and s
         ```sql
         select * from raw.jaffle_shop.customers
         ```
-    - In the command line bar at the bottom, enter `dbt run` and click **Enter**. You should see a `dbt run succeeded` message.
+    - In the command line bar at the bottom, enter `dbt run` and click **Enter**. You should see a `dbt run succeeded` message. If you get an insufficient privileges error, follow the steps in the next note before continuing.
 
 :::info
 If you receive an insufficient privileges error on Snowflake at this point, it may be because your Snowflake role doesn't have permission to access the raw source data, to build target tables and views, or both. 
@@ -420,7 +428,7 @@ Sources make it possible to name and describe the data loaded into your warehous
 
     </File>
 
-5. Execute `dbt run`. 
+5. Execute `dbt run`. You should see a successful run that includes `stg_customers`, `stg_orders`, and `customers`.
 
     The results of your `dbt run` will be exactly the same as the previous step. Your `stg_customers` and `stg_orders`
     models will still query from the same raw data source in Snowflake. By using `source`, you can
