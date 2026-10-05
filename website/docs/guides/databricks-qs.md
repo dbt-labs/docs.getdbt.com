@@ -6,6 +6,10 @@ icon: 'databricks'
 hide_table_of_contents: true
 tags: ['Platform', 'Quickstart', 'Databricks']
 product_badge: "dbt v2 compatible"
+agent_guidance:
+  pacing: In the first reply, confirm the reader’s prerequisites and connection path before listing steps. Then give one step per reply and confirm its success check before continuing.
+  stay_on_path: This guide uses dbt platform. Don’t switch the reader to a local setup. If the reader wants to set up dbt locally, use the https://docs.getdbt.com/guides/dbt guide instead
+  safety: Never ask for passwords or keys in chat.
 ---
 
 <div style={{maxWidth: '900px'}}>
