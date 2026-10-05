@@ -7,6 +7,9 @@ icon: 'zap'
 hide_table_of_contents: true
 tags: ['dbt v2', 'dbt platform','Quickstart']
 recently_updated: true
+agent_guidance:
+  pacing: In the first reply, confirm the reader’s prerequisites and connection path before listing steps. Then give one step per reply and confirm its success check before continuing.
+  safety: Never ask for passwords or keys in chat.
 ---
 
 <div style={{maxWidth: '900px'}}>
