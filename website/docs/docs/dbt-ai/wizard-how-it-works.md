@@ -110,7 +110,7 @@ In the platform, a session is a saved conversation in the <Constant name="wizard
 Start a new session with **Start new dbt Wizard chat** in the panel. Chat history is retained for 90 days. Refreshing the same browser tab keeps your active session; opening a new tab starts empty.
 
 :::tip Start a new chat for each task
-Use a separate chat for each discrete unit of work, such as building one model, debugging one job failure, or reviewing one change. A focused conversation keeps the context relevant to the task, so <Constant name="wizard" /> doesn't carry over assumptions from unrelated work. Return to an existing chat only when you're continuing that same task.
+Use a separate chat for each discrete unit of work, such as building one model, debugging one job failure, or reviewing a change. A focused conversation keeps the context relevant to the task, so <Constant name="wizard" /> doesn't carry over assumptions from unrelated work. Return to an existing chat only when you're continuing that same task.
 :::
 
 For Studio-specific behavior and availability, refer to [<Constant name="wizard" /> in Studio IDE](/docs/dbt-ai/wizard-ide).

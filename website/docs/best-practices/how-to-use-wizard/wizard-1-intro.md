@@ -27,6 +27,6 @@ For local workflows, make sure the <Constant name="wizard" /> CLI is installed, 
 
 ## Use one chat per task
 
-Start a new <Constant name="wizard" /> chat for each discrete unit of work, such as building one model, debugging one job failure, or validating one change. A focused conversation keeps the context relevant to the task, so <Constant name="wizard" /> doesn't carry over assumptions from unrelated work. Go back to an existing chat only when you're continuing that same task.
+Start a new <Constant name="wizard" /> chat for each discrete unit of work, such as building one model, debugging one job failure, or validating a change. A focused conversation keeps the context relevant to the task so <Constant name="wizard" /> doesn't carry over assumptions from unrelated work. Go back to an existing chat only when you're continuing that same task.
 
 The workflows in this guide follow that pattern: each one is a self-contained task you can run in its own chat. For how to start, resume, and manage sessions on each surface, refer to [Sessions and conversations](/docs/dbt-ai/wizard-how-it-works#sessions-and-conversations) for the <Constant name="dbt_platform" /> and [Sessions](/docs/dbt-ai/wizard-how-it-works#sessions) for the CLI and Wizard Desktop.
