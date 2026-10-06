@@ -27,10 +27,12 @@ While running any job can produce artifacts, you should only associate one produ
 
 <Lightbox src="/img/docs/dbt-platform/using-dbt-platform/project-level-artifact-updated.png" width="70%" title="Configuring Artifacts"/>
 
-If you don't see your job listed, you might need to edit the job and select **Run source freshness**<VersionBlock lastVersion="1.99"> and **Generate docs on run**</VersionBlock>.
+If you don't see your job listed, you might need to edit the job and select **Run source freshness** <VersionBlock lastVersion="1.99"> and **Generate docs on run** </VersionBlock>.
 
+<VersionBlock lastVersion="1.99"> 
 <Lightbox src="/img/docs/dbt-platform/using-dbt-platform/edit-job-generate-artifacts.png" title="Editing the job to generate artifacts"/>
-
+</VersionBlock>
+  
 When you add a production job to a project, <Constant name="dbt" /> updates the content and provides links to the production documentation and source freshness artifacts it generated for that project. You can see these links by clicking **Deploy** in the upper left, selecting **Jobs**, and then selecting the production job. From the job page, you can select a specific run to see how artifacts were updated for that run only.
 
 </Expandable>
