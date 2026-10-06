@@ -65,8 +65,11 @@ order by 1
 
 </File>
 
-:::caution
-In <Constant name="dbt" />, `execute` becomes `True` while `dbt compile` compiles each node. As a result, wrapping a [`run_query`](/reference/dbt-jinja-functions/run_query) call in `{% if execute %}` prevents the call during parsing, but does not prevent it during `dbt compile`. To run a query only for specific commands, also check [`flags.WHICH`](/reference/dbt-jinja-functions/flags#flagswhich), for example `{% if execute and flags.WHICH in ['run', 'build'] %}`.
+:::caution `{% if execute %}` doesn't stop queries during `dbt compile`
+If `dbt compile` is slow, or you see unexpected queries in your warehouse's query history, check for `run_query` calls guarded only by `{% if execute %}`.
+
+That's because `execute` is `True` any time dbt compiles your models' SQL, not just when models are being built. To limit the query to commands that build models, also check [`flags.WHICH`](https://github.com/reference/dbt-jinja-functions/flags#flagswhich):
+
 :::
 
 ## Parsing vs execution
