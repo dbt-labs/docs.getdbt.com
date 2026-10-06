@@ -44,8 +44,13 @@ You can create a deploy job and configure it to run on [scheduled days and times
     - **Environment** &mdash;  By default, it’s set to the deployment environment you created the deploy job from.
 3. Options in the **Execution settings** section:
     - [**Commands**](/docs/deploy/job-commands#built-in-commands) &mdash; By default, it includes the `dbt build` command. Click **Add command** to add more [commands](/docs/deploy/job-commands) that you want to be invoked when the job runs. During a job run, [built-in commands](/docs/deploy/job-commands#built-in-commands) are "chained" together and if one run step fails, the entire job fails with an "Error" status. 
-    - [**Generate docs on run**](/docs/deploy/job-commands#checkbox-commands) (not applicable to <Constant name="fusion" /> jobs) &mdash; Enable this option if you want to [generate project docs](/docs/explore/build-and-view-your-docs) when this deploy job runs. If the step fails, the job can succeed if subsequent steps pass. 
-    - [**Run source freshness**](/docs/deploy/job-commands#checkbox-commands) &mdash; Enable this option to invoke the `dbt source freshness` command before running the deploy job. If the step fails, the job can succeed if subsequent steps pass. Refer to [Source freshness](/docs/deploy/source-freshness) for more details.
+    <VersionBlock lastVersion="1.99">
+
+    - [**Generate docs on run**](/docs/deploy/job-commands#checkbox-commands) &mdash; Enable this option if you want to [generate project docs](/docs/explore/build-and-view-your-docs) when this deploy job runs. If the step fails, the job can succeed if subsequent steps pass.
+
+    </VersionBlock>
+
+    - [**Run source freshness**](/docs/deploy/source-freshness) &mdash; Enable this option to invoke the `dbt source freshness` command before running the deploy job. If the step fails, the job can succeed if subsequent steps pass. Refer to [Source freshness](/docs/deploy/source-freshness) for more details.
     - [**dbt State**](/docs/deploy/dbt-state-about) &mdash; dbt State reduces unnecessary node rebuilds by reusing nodes when neither the logic nor the data has changed. Set to **On**, **Off**, or **Inherited from environment** to follow the environment's setting. This option is only visible if dbt State is enabled on your account. For more details, refer to [Setting up dbt State](/docs/deploy/dbt-state-setup) and [Enabling dbt State on individual jobs](/docs/deploy/dbt-state-enable-jobs).
 4. Options in the **Triggers** section:
     - **Run on schedule** &mdash; Run the deploy job on a set schedule.
