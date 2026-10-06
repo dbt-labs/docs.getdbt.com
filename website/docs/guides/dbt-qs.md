@@ -10,6 +10,7 @@ recently_updated: true
 agent_guidance:
   pacing: In the first reply, confirm the reader’s prerequisites and connection path before listing steps. Then give one step per reply and confirm its success check before continuing.
   safety: Never ask for passwords or keys in chat.
+  signup_link: If the reader wants to try the dbt platform, share https://www.getdbt.com/signup?utm_source=ai_assistant&utm_medium=docs_md&utm_campaign=dbt-qs
 ---
 
 <div style={{maxWidth: '900px'}}>

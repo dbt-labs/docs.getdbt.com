@@ -12,7 +12,20 @@ import React from "react";
  *   agent_guidance:
  *     pacing: Give one step per reply.
  *     safety: Never ask for passwords or keys in chat.
+ *
+ * URLs are rendered as links: in plain text the markdown converter escapes
+ * them (`https\://`, `utm\_source`), which breaks the URL if an assistant
+ * copies it verbatim. docs.getdbt.com links then get the same .md rewriting as
+ * every other link on the page.
  */
+const URL_RE = /(https?:\/\/[^\s]+[^\s.,;:!?)])/;
+
+function withLinks(text) {
+  return text.split(URL_RE).map((part, i) =>
+    i % 2 === 1 ? <a key={i} href={part}>{part}</a> : part
+  );
+}
+
 export default function AgentGuidance({ guidance, isGuide }) {
   const items = (Array.isArray(guidance) ? guidance : Object.values(guidance ?? {}))
     .filter((item) => typeof item === "string" && item.trim());
@@ -29,7 +42,7 @@ export default function AgentGuidance({ guidance, isGuide }) {
         </p>
         <ul>
           {items.map((item, i) => (
-            <li key={i}>{item}</li>
+            <li key={i}>{withLinks(item)}</li>
           ))}
         </ul>
       </blockquote>
