@@ -70,6 +70,15 @@ If `dbt compile` is slow, or you see unexpected queries in your warehouse's quer
 
 That's because `execute` is `True` any time dbt compiles your models' SQL, not just when models are being built. To limit the query to commands that build models, also check [`flags.WHICH`](https://github.com/reference/dbt-jinja-functions/flags#flagswhich):
 
+```jinja
+{% set results = none %}
+{% if execute and flags.WHICH in ['run', 'build'] %}
+  {% set results = run_query(my_query) %}
+{% endif %}
+```
+
+Make sure the rest of your macro handles results being none when the query is skipped.
+
 :::
 
 ## Parsing vs execution
