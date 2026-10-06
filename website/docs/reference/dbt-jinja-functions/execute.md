@@ -65,6 +65,10 @@ order by 1
 
 </File>
 
+:::caution
+In dbt, `execute` becomes `True` while [`dbt compile`](/reference/commands/compile) compiles each node. As a result, wrapping a [`run_query`](/reference/dbt-jinja-functions/run_query) call in `{% if execute %}` prevents the call during parsing, but does not prevent it during `dbt compile`. To run a query only for specific commands, also check [`flags.WHICH`](/reference/dbt-jinja-functions/flags#flagswhich), for example `{% if execute and flags.WHICH in ['run', 'build'] %}`.
+:::
+
 ## Parsing vs execution
 
 Parsing in Jinja is when dbt:
