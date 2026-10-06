@@ -1,13 +1,11 @@
 ---
 title: "Non-interactive environment setup for dbt State"
 sidebar_label: "Non-interactive environment setup"
-description: "Learn how to configure dbt State authentication for CI/CD and other non-interactive environments using service tokens or OAuth client credentials."
+description: "Learn how to configure dbt State authentication for CI/CD and other non-interactive environments using service tokens."
 id: "dbt-state-cicd"
 tags: ['dbt State']
 availability: everywhere_usage
 ---
-
-import DbtStateAppRetirement from '/snippets/_dbt-state-app-retirement.md';
 
 # Setting up dbt State for non-interactive environments
 
@@ -17,11 +15,9 @@ dbt State automatically detects when it's running in a non-interactive environme
 
 Running dbt in a non-interactive environment requires a service account token for authentication. A <Constant name="dbt_platform" /> account is required to generate a service token; if you don't have one yet, refer to [Set up dbt State](/docs/deploy/dbt-state-setup) to create a free account before proceeding.
 
-For standalone dbt State app users, refer to [OAuth client credentials](#oauth-client-credentials).
+If you previously signed up for dbt State at `app.state.dbt.com` and haven't migrated to <Constant name="dbt_platform" /> yet, refer to [OAuth client credentials](/docs/deploy/dbt-state-oauth).
 
-## Service account token
-
-### Prerequisites
+## Prerequisites
 
 Before you begin, make sure you have:
 
@@ -29,7 +25,7 @@ Before you begin, make sure you have:
 - **Owner** or **Account Admin** permissions to create a service token.
 - dbt State installed and configured. Refer to [Set up dbt State](/docs/deploy/dbt-state-setup) for more information.
 
-### Creating a service token
+## Creating a service token
 
 To create a service account token in <Constant name="dbt_platform" />, refer to [Generate service account tokens](/docs/dbt-apis/service-tokens#generate-service-account-tokens). When adding permissions for the token, assign at least one of the following:
 
@@ -42,7 +38,7 @@ The following are available on Enterprise plans only:
 - **Job Runner** (Recommended; provides the minimum access required for dbt State)
 - **Developer**
 
-### Configuring authentication
+## Configuring authentication
 
 Set the following environment variables in your orchestration environment:
 
@@ -55,61 +51,6 @@ DBT_CLOUD_ACCOUNT_ID=YOUR_ACCOUNT_ID
 Replace `YOUR_SERVICE_TOKEN` with your service token, `YOUR_ACCOUNT_HOST` with your [account host](/docs/platform/about-platform/access-regions-ip-addresses) (for example, `abc123.us1.dbt.com`), and `YOUR_ACCOUNT_ID` with your numeric account ID. Go to **Account settings** > **Account** to find your account ID and account host (the hostname from the **Access URL** field).
 
 Once configured, [verify dbt State is active](#verifying-dbt-state-is-active).
-
-## OAuth client credentials
-
-<DbtStateAppRetirement />
-
-If you're using the standalone [dbt State web app](https://app.state.dbt.com/), authenticate with OAuth client credentials.
-
-### Prerequisites
-
-- dbt State installed and configured. Refer to [Set up dbt State](/docs/deploy/dbt-state-setup) for more information.
-- A standalone dbt State account at [app.state.dbt.com](https://app.state.dbt.com/).
-- An **Admin** or **Owner** role in your dbt State organization. Refer to [Roles and tab access](#roles-and-tab-access) for details.
-
-### Roles and tab access
-
-The dbt State web app has four tabs under **Organization**:
-
-<SimpleTable>
-| Tab | Description |
-|-----|-------------|
-| **Usage** | View your project reuses and compute time saved once dbt State is enabled. |
-| **Users** | Invite team members and grant or revoke access. |
-| **Billing** | View daily active target tables (DATTs) for the current billing period. |
-| **Clients** | Create and manage OAuth clients for CI/CD and other non-interactive environments. |
-</SimpleTable>
-<br />
-Your role determines which tabs you can access.
-
-<SimpleTable>
-| Role | Access | Notes |
-|------|-----------|-------|
-| **Owner** | Usage, Users, Billing, Clients | The user who created the organization is the Owner by default. An Owner can transfer their role to another user, which demotes the original Owner to Admin. |
-| **Admin** | Usage, Users, Billing, Clients | — |
-| **Developer** | Usage | Default role when users are added. |
-</SimpleTable>
-
-An existing **Owner** or **Admin** can grant or revoke admin access from the **Users** tab.
-
-### Creating an OAuth client
-
-1. In the [dbt State web app](https://app.state.dbt.com/), navigate to the **Clients** tab.
-2. Click **Add OAuth Client**.
-3. Enter a name and description for the new client and click **Create**.
-4. Copy the client ID and secret to use in your environment configuration.
-
-### Configuring OAuth authentication
-
-Once you have the client ID and secret, set the following environment variables in your environment. Using environment variables is the recommended approach as it keeps sensitive credentials out of your code repository.
-
-```bash
-DBT_ENGINE_STATE_OAUTH_CLIENT_ID=YOUR_CLIENT_ID
-DBT_ENV_SECRET_STATE_OAUTH_CLIENT_SECRET=YOUR_CLIENT_SECRET
-```
-
-Replace `YOUR_CLIENT_ID` and `YOUR_CLIENT_SECRET` with the values from your OAuth client.
 
 ## Verifying dbt State is active
 
@@ -124,5 +65,6 @@ Replace `YOUR_CLIENT_ID` and `YOUR_CLIENT_SECRET` with the values from your OAut
 
 - [About dbt State](/docs/deploy/dbt-state-about)
 - [Set up dbt State](/docs/deploy/dbt-state-setup)
+- [OAuth client credentials (standalone app)](/docs/deploy/dbt-state-oauth)
 - [dbt State configs](/reference/resource-configs/dbt-state-configs)
 - [Migrate from state-aware orchestration](/docs/deploy/dbt-state-migration)

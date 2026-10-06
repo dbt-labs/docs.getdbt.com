@@ -874,7 +874,15 @@ const sidebarSettings = {
             "docs/deploy/dbt-state-setup",
             "docs/deploy/dbt-state-enable-env-jobs",
             "docs/deploy/dbt-state-enable-studio",
-            "docs/deploy/dbt-state-cicd", 
+            {
+              type: "category",
+              label: "Non-interactive environment setup",
+              link: { type: "doc", id: "docs/deploy/dbt-state-cicd" },
+              items: [
+                "docs/deploy/dbt-state-cicd",
+                "docs/deploy/dbt-state-oauth",
+              ],
+            },
             "docs/deploy/dbt-state-deferral",
           ],
         },
