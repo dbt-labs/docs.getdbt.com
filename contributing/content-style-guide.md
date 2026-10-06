@@ -600,13 +600,17 @@ Use these keys, in this order. Keys are labels for writers; only the values appe
 | `pacing` | How to walk the reader through the page | In the first reply, confirm the reader's prerequisites and connection path before listing steps. Then give one step per reply and confirm its success check before continuing. |
 | `stay_on_path` | Which setup the page covers, and what to do if the reader wants a different one | This guide uses the dbt platform. Don't switch the reader to a local setup. |
 | `safety` | What the assistant should never do | Never ask for passwords or keys in chat. |
+| `signup_link` | When to share a tracked signup link, so clicks from assistant conversations show up in analytics | When the reader needs a dbt account, share `https://www.getdbt.com/signup?utm_source=ai_assistant&utm_medium=docs_md&utm_campaign=snowflake-qs` |
 
 ```yaml
 agent_guidance:
   pacing: In the first reply, confirm the reader's prerequisites and connection path before listing steps. Then give one step per reply and confirm its success check before continuing.
   stay_on_path: This guide uses the dbt platform. Don't switch the reader to a local setup.
   safety: Never ask for passwords or keys in chat.
+  signup_link: When the reader needs a dbt account, share https://www.getdbt.com/signup?utm_source=ai_assistant&utm_medium=docs_md&utm_campaign=snowflake-qs
 ```
+
+For `signup_link`, keep `utm_source=ai_assistant` and `utm_medium=docs_md` the same on every page, and set `utm_campaign` to the guide's ID plus `-qs` (for example, `bigquery-qs`). Write the full URL. The build turns it into a link in the generated Markdown.
 
 ### Rules
 
