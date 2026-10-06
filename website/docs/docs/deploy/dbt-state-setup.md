@@ -59,13 +59,16 @@ To enable dbt State:
 
 7. Select the jobs to enable dbt State for. You can either enable:
 
-   - **By environment**: Enables dbt State on all existing jobs within the selected environment at once. New jobs created in that environment will have dbt State enabled automatically.
-   - **By specific jobs**: Enables dbt State on individual jobs. To enable it on additional jobs later, refer to [Enabling dbt State on individual jobs](/docs/deploy/dbt-state-enable-jobs).
+   - **By environment**: Enables dbt State on the selected environment. New jobs automatically default to **Inherited from environment** and have dbt State enabled without additional configuration. Existing jobs are not automatically updated &mdash; you must [configure each job manually](/docs/deploy/dbt-state-enable-env-jobs#enabling-dbt-state-on-individual-jobs).
+      <!-- TODO (ORC-4324): When this ships, replace with:
+      - **By environment**: Enables dbt State on the selected environment. New jobs automatically default to **Inherited from environment** and have dbt State enabled without additional configuration. Existing jobs with **dbt State** set to **Off** automatically switch to **Inherited from environment**, enabling dbt State for those jobs.
+      -->
+   - **By specific jobs**: Enables dbt State on individual jobs. To enable it on additional jobs, refer to [Enabling dbt State on individual jobs](/docs/deploy/dbt-state-enable-env-jobs#enabling-dbt-state-on-individual-jobs).
 
 8. Click **Enable dbt State**.
 
 For next steps, see:
-- [Enable dbt State on individual jobs](/docs/deploy/dbt-state-enable-jobs)
+- [Enable dbt State on environments and jobs](/docs/deploy/dbt-state-enable-env-jobs)
 - [Enable dbt State in Studio](/docs/deploy/dbt-state-enable-studio)
 
 </TabItem>
@@ -89,7 +92,7 @@ For next steps, see:
 3. Go to **Orchestration** to [create your environments](/docs/deploy/deploy-environments) and [jobs](/docs/deploy/jobs).
 
 For next steps, see:
-   - [Enable dbt State on individual jobs](/docs/deploy/dbt-state-enable-jobs)
+   - [Enable dbt State on environments and jobs](/docs/deploy/dbt-state-enable-env-jobs)
    - [Enable dbt State in Studio](/docs/deploy/dbt-state-enable-studio)
 
 </TabItem>
