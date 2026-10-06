@@ -43,4 +43,4 @@ You can override the development environment's dbt State setting for your own ac
 
 - [About dbt State](/docs/deploy/dbt-state-about)
 - [Set up dbt State](/docs/deploy/dbt-state-setup)
-- [Enable dbt State on individual jobs](/docs/deploy/dbt-state-enable-jobs)
+- [Enable dbt State on environments and jobs](/docs/deploy/dbt-state-enable-env-jobs)

@@ -51,7 +51,7 @@ You can create a deploy job and configure it to run on [scheduled days and times
     </VersionBlock>
 
     - [**Run source freshness**](/docs/deploy/source-freshness) &mdash; Enable this option to invoke the `dbt source freshness` command before running the deploy job. If the step fails, the job can succeed if subsequent steps pass. Refer to [Source freshness](/docs/deploy/source-freshness) for more details.
-    - [**Enable dbt State**](/docs/deploy/dbt-state-about) &mdash; dbt State reduces unnecessary model rebuilds by reusing nodes when neither the logic nor the data has changed. For more details, refer to [Setting up dbt State](/docs/deploy/dbt-state-setup) and [Enabling dbt State on individual jobs](/docs/deploy/dbt-state-enable-jobs).
+    - [**dbt State**](/docs/deploy/dbt-state-about) &mdash; [dbt State] reuses nodes when their logic and data haven’t changed, avoiding unnecessary rebuilds. Select **On**, **Off**, or **Inherited from environment** to use the environment’s setting. This option appears only when dbt State is [enabled](/docs/deploy/dbt-state-setup) on your account. Learn more about [enabling dbt State on individual jobs](/docs/deploy/dbt-state-enable-env-jobs#enabling-dbt-state-on-individual-jobs).
 4. Options in the **Triggers** section:
     - **Run on schedule** &mdash; Run the deploy job on a set schedule.
         - **Timing** &mdash; Specify whether to [schedule](#schedule-days) the deploy job using **Intervals** that run the job every specified number of hours, **Specific hours** that run the job at specific times of day, or **Cron schedule** that run the job specified using [cron syntax](#cron-schedule).

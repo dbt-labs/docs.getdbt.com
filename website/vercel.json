@@ -43,6 +43,11 @@
   ],
   "redirects": [
     {
+      "source": "/docs/deploy/dbt-state-enable-jobs",
+      "destination": "/docs/deploy/dbt-state-enable-env-jobs",
+      "permanent": true
+    },
+    {
       "source": "/reference/resource-properties/freshness",
       "destination": "/reference/resource-configs/freshness",
       "permanent": true
