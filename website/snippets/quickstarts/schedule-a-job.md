@@ -41,11 +41,11 @@ As the `jaffle_shop` business gains more customers, and those customers create m
 3. Scroll down to the **Execution settings** section.
 4. Under **Commands**, add this command as part of your job if you don't see it:
    * `dbt build`
-5. Select the **Generate docs on run** option to automatically [generate updated project docs](/docs/explore/build-and-view-your-docs) each time your job runs. 
+5. <VersionBlock lastVersion="1.99">Select the **Generate docs on run** option to automatically [generate updated project docs](/docs/explore/build-and-view-your-docs) each time your job runs.</VersionBlock><VersionBlock firstVersion="2.0">You don't need to add a docs step. Every job run refreshes your project's metadata in [<Constant name="catalog" />](/docs/explore/build-and-view-your-docs) automatically.</VersionBlock>
 6. For this exercise, do _not_ set a schedule for your project to run &mdash; while your organization's project should run regularly, there's no need to run this example project on a schedule. Scheduling a job is sometimes referred to as _deploying a project_.
 7. Click **Save**, then click **Run now** to run your job.
 8. Click the run and watch its progress under **Run summary**.
-9. Once the run is complete, click **View Documentation** to see the docs for your project.
+9. Once the run is complete, <VersionBlock lastVersion="1.99">click **View Documentation** to see the docs for your project.</VersionBlock><VersionBlock firstVersion="2.0">click **Catalog** in the navigation to explore your project.</VersionBlock>
 
 
 Congratulations 🎉! You've just deployed your first dbt project!
