@@ -11,7 +11,7 @@ Deployment environments in <Constant name="dbt" /> are crucial for deploying dbt
 - The warehouse connection information (including the target database/schema settings)
 - The [connection profile](/docs/platform/about-profiles) (the credentials dbt uses to connect)
 - The version of your code to execute
-- Whether [dbt State](/docs/deploy/dbt-state-about) is enabled for the environment, which jobs in the environment can inherit. For more information, refer to [Enabling dbt State on environments](/docs/deploy/dbt-state-enable-environments).
+- Whether [dbt State](/docs/deploy/dbt-state-about) is enabled for the environment, which jobs in the environment can inherit. For more information, refer to [Enabling dbt State on environments and jobs](/docs/deploy/dbt-state-enable-env-jobs).
 
 A <Constant name="dbt" /> project can have multiple deployment environments, providing you the flexibility and customization to tailor the execution of dbt jobs. You can use deployment environments to [create and schedule jobs](/docs/deploy/deploy-jobs#create-and-schedule-jobs), [enable continuous integration](/docs/deploy/continuous-integration), or more based on your specific needs or requirements.
 
@@ -48,7 +48,7 @@ You can also leverage the dbt Job scheduler to [validate your semantic nodes in 
 
 ### dbt State
 
-[dbt State](/docs/deploy/dbt-state-about) reduces unnecessary node rebuilds by reusing nodes when neither the logic nor the data has changed. You can enable it on a deployment environment so that jobs in the environment can inherit the setting. This option is only visible if dbt State is enabled on your account. For steps, refer to [Enabling dbt State on environments](/docs/deploy/dbt-state-enable-environments).
+[dbt State](/docs/deploy/dbt-state-about) reduces unnecessary node rebuilds by reusing nodes when neither the logic nor the data has changed. You can enable it on a deployment environment so that jobs in the environment can inherit the setting. This option is only visible if dbt State is enabled on your account. For steps, refer to [Enabling dbt State on environments and jobs](/docs/deploy/dbt-state-enable-env-jobs).
 
 ## Staging environment
 

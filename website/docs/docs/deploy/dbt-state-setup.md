@@ -56,17 +56,16 @@ To enable dbt State:
 
 7. Select the jobs to enable dbt State for. You can either enable:
 
-   - **By environment**: Enables dbt State on the selected environment. New jobs automatically default to **Inherited from environment** and have dbt State enabled without additional configuration. Existing jobs are not automatically updated &mdash; you must [configure each job manually](/docs/deploy/dbt-state-enable-jobs).
+   - **By environment**: Enables dbt State on the selected environment. New jobs automatically default to **Inherited from environment** and have dbt State enabled without additional configuration. Existing jobs are not automatically updated &mdash; you must [configure each job manually](/docs/deploy/dbt-state-enable-env-jobs#enabling-dbt-state-on-individual-jobs).
       <!-- TODO (ORC-4324): When this ships, replace with:
       - **By environment**: Enables dbt State on the selected environment. New jobs automatically default to **Inherited from environment** and have dbt State enabled without additional configuration. Existing jobs with **dbt State** set to **Off** automatically switch to **Inherited from environment**, enabling dbt State for those jobs.
       -->
-   - **By specific jobs**: Enables dbt State on individual jobs. To enable it on additional jobs, refer to [Enabling dbt State on individual jobs](/docs/deploy/dbt-state-enable-jobs).
+   - **By specific jobs**: Enables dbt State on individual jobs. To enable it on additional jobs, refer to [Enabling dbt State on individual jobs](/docs/deploy/dbt-state-enable-env-jobs#enabling-dbt-state-on-individual-jobs).
 
 8. Click **Enable dbt State**.
 
 For next steps, see:
-- [Enable dbt State on environments](/docs/deploy/dbt-state-enable-environments)
-- [Enable dbt State on individual jobs](/docs/deploy/dbt-state-enable-jobs)
+- [Enable dbt State on environments and jobs](/docs/deploy/dbt-state-enable-env-jobs)
 - [Enable dbt State in Studio](/docs/deploy/dbt-state-enable-studio)
 
 </TabItem>
@@ -85,8 +84,7 @@ For next steps, see:
    Once started, you cannot pause the trial. After 30 days, you must add a credit card or enterprise contract to continue. For information about how the trial period and billing work, refer to [dbt State trial and billing](/docs/deploy/dbt-state-trial).
 
 4. Go to **Orchestration** to create your environments and jobs. For next steps, see:
-   - [Enable dbt State on environments](/docs/deploy/dbt-state-enable-environments)
-   - [Enable dbt State on individual jobs](/docs/deploy/dbt-state-enable-jobs)
+   - [Enable dbt State on environments and jobs](/docs/deploy/dbt-state-enable-env-jobs)
    - [Enable dbt State in Studio](/docs/deploy/dbt-state-enable-studio)
 
 </TabItem>
