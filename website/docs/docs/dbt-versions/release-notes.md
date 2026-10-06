@@ -22,7 +22,7 @@ For <Constant name="fusion_engine" /> updates, refer to the [v2 changelog](https
 
 ## September 2026
 
-- **Enhancement:** Job settings now have a **dbt State** dropdown with three options: **On**, **Off**, or **Inherited from environment**. This lets you enable or disable [dbt State](/docs/deploy/dbt-state-about) explicitly per job, or inherit the environment's setting. New jobs default to **Inherited from environment**; existing jobs must be updated manually. Refer to [Enabling dbt State on individual jobs](/docs/deploy/dbt-state-enable-jobs) for more information.
+- **Enhancement:** You can now enable or disable [dbt State](/docs/deploy/dbt-state-about) for each job using the **dbt State** dropdown: **On**, **Off**, or **Inherited from environment**. New jobs default to **Inherited from environment**. Make sure to manually update existing jobs. Refer to [Enabling dbt State on individual jobs](/docs/deploy/dbt-state-enable-jobs) for more information.
 - **Private beta:** Snowflake users can now configure [custom relation overrides](/docs/explore/set-up-cost-insights#custom-relation-overrides) when setting up Cost Insights. If your credentials don't have access to the `SNOWFLAKE` system database, you can use your own tables or views in place of the default Snowflake system tables. Contact your account representative for access.
 - **Enhancement:** The [column lineage](/docs/explore/column-level-lineage#column-lens) panel now shows SQL transformation expressions for all users. You can see how columns are derived across your lineage without any additional configuration.
 - **Enhancement:** The "last run finished at" column in the account Insights table now displays times in UTC, giving you a consistent reference regardless of your local timezone.
