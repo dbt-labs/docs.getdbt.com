@@ -396,7 +396,7 @@ In this step, we’ll need to create a development branch and set up project lev
     - `materialized` &mdash; Tells dbt how to materialize models when compiling the code before it pushes it down to Snowflake. All models in the `marts` folder will be built as tables.
     - `tags` &mdash; Applies tags at a directory level to all models. All models in the `aggregates` folder will be tagged as `bi` (abbreviation for business intelligence).
     - `docs` &mdash; Specifies the `node_color` either by the plain color name or a hex value.
-5. [Materializations](/docs/build/materializations) are strategies for persisting dbt models in a warehouse, with `tables` and `views` being the most commonly utilized types. By default, all dbt models are materialized as views and other materialization types can be configured in the `dbt_project.yml` file or in a model itself. It’s very important to note *Python models can only be materialized as tables or incremental models.* Since all our Python models exist under `marts`, the following portion of our `dbt_project.yml` ensures no errors will occur when we run our Python models. Starting with [dbt version 1.4](/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-to-v1.4#updates-to-python-models), Python files will automatically get materialized as tables even if not explicitly specified.
+5. [Materializations](/docs/build/materializations) are strategies for persisting dbt models in a warehouse, with `tables` and `views` being the most commonly utilized types. By default, all dbt models are materialized as views and other materialization types can be configured in the `dbt_project.yml` file or in a model itself. It’s very important to note *Python models can only be materialized as tables or incremental models.* Since all our Python models exist under `marts`, the following portion of our `dbt_project.yml` ensures no errors will occur when we run our Python models. Starting with [dbt version 1.4](/docs/dbt-versions/dbt-upgrade/Older%20versions/upgrading-to-v1.4#updates-to-python-models), Python files will automatically get materialized as tables even if not explicitly specified.
 
     ```yaml
     marts:     
@@ -946,7 +946,7 @@ By now, we are pretty good at creating new files in the correct directories so w
 
     That wraps up the intermediate models we need to create our core models!
 
-### Core models
+### dbt models
 
 1. Create a file `fct_results.sql`. This is what I like to refer to as the “mega table” &mdash; a really large denormalized table with all our context added in at row level for human readability. Importantly, we have a table `circuits` that is linked through the table `races`. When we joined `races` to `results` in `int_results.sql` we allowed our tables to make the connection from `circuits` to `results` in `fct_results.sql`. We are only taking information about pit stops at the result level so our join would not cause a [fanout](https://community.looker.com/technical-tips-tricks-1021/what-is-a-fanout-23327).
 
@@ -1202,7 +1202,7 @@ First, we want to find out: which constructor had the fastest pit stops in 2021?
 Let’s take a step back before starting machine learning to both review and go more in-depth at the methods that make running dbt python models possible. If you want to know more outside of this lab’s explanation read the documentation [here](/docs/build/python-models?version=1).
 
 - dbt model(dbt, session). For starters, each Python model lives in a .py file in your models/ folder. It defines a function named `model()`, which takes two parameters:
-  - dbt &mdash; A class compiled by <Constant name="core" />, unique to each model, enables you to run your Python code in the context of your dbt project and DAG.
+  - dbt &mdash; A class compiled by dbt, unique to each model, enables you to run your Python code in the context of your dbt project and DAG.
   - session &mdash; A class representing your data platform’s connection to the Python backend. The session is needed to read in tables as DataFrames and to write DataFrames back to tables. In PySpark, by convention, the SparkSession is named spark, and available globally. For consistency across platforms, we always pass it into the model function as an explicit argument called session.
 - The `model()` function must return a single DataFrame. On Snowpark (Snowflake), this can be a Snowpark or pandas DataFrame.
 - `.source()` and `.ref()` functions. Python models participate fully in dbt's directed acyclic graph (DAG) of transformations. If you want to read directly from a raw source table, use `dbt.source()`. We saw this in our earlier section using SQL with the source function. These functions have the same execution, but with different syntax. Use the `dbt.ref()` method within a Python model to read data from other models (SQL or Python). These methods return DataFrames pointing to the upstream source, model, seed, or snapshot.

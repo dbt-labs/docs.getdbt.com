@@ -1,41 +1,44 @@
+<VersionBlock lastVersion="1.99">
 
+:::tip Upgrade for automatic updates
+Upgrade to [v2](/docs/dbt-versions/dbt-upgrade/upgrading-to-v2) to run <Constant name="wizard"/> as `wizard` and get automatic updates.
+:::
 
-Install <Constant name="wizard"/> as `wizard` on your `PATH` using the curl script for your operating system:
+</VersionBlock>
 
-<Tabs groupId="wizard-install-os">
-<TabItem value="macos-linux" label="macOS/Linux" default>
+<Steps>
+
+<Step title="Install the dbt Wizard CLI">
+
+Run the install script for your operating system:
+
+macOS/Linux:
 
 ```bash
 curl -fsSL https://public.cdn.getdbt.com/dbt-wizard/install/install-wizard.sh | sh
 ```
 
-This installs <Constant name="wizard"/> to `/usr/local/bin/wizard`, along with `dbt-index`, the [metadata engine](/docs/dbt-ai/wizard-how-it-works#native-metadata-engine) that powers <Constant name="wizard"/>'s project-aware answers. See [Uninstall](/docs/dbt-ai/wizard-cli#uninstall) if you ever need to remove them.
-
-</TabItem>
-<TabItem value="windows" label="Windows">
-
-Run the following in PowerShell:
+Windows (PowerShell):
 
 ```powershell
 irm https://public.cdn.getdbt.com/dbt-wizard/install/install-wizard.ps1 | iex
 ```
 
-</TabItem>
-</Tabs>
+This installs <Constant name="wizard"/> to `/usr/local/bin/wizard`, along with the dbt [metadata engine](/docs/dbt-ai/wizard-how-it-works#native-metadata-engine) that powers <Constant name="wizard"/>'s project-aware answers.
 
-Then verify the install and start a session:
+</Step>
+
+<Step title="Start a session">
+
+Verify the install and start an interactive session:
 
 ```bash
 wizard --version   # confirm the install
-wizard             # start an interactive session
+wizard             # start a session
 ```
 
-After running `wizard --version`, you should see something like `dbt-wizard VERSION`. Run `wizard --help` to see all available commands and flags. <Constant name="wizard" /> installs default config files &mdash; refer to the [config reference](/docs/dbt-ai/wizard-config) for more details.
+</Step>
 
-<VersionBlock lastVersion="1.99">
+</Steps>
 
-:::tip Upgrade for automatic updates
-Upgrade to [v2](/docs/dbt-versions/core-upgrade/upgrading-to-v2) to run <Constant name="wizard"/> as `wizard` and get automatic updates.
-:::
-
-</VersionBlock>
+For first-run setup and billing, refer to [Use <Constant name="wizard" /> locally](/docs/dbt-ai/wizard-quickstart).

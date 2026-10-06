@@ -22,6 +22,194 @@ Release notes are grouped by date for single-tenant environments.
 
 <span><img src="/img/fontawesome/rss.svg" alt="RSS" className="rss-icon" />Subscribe to release note updates via [RSS](/feeds/release-notes-st-rss.xml), [Atom](/feeds/release-notes-st-atom.xml), or [JSON Feed](/feeds/release-notes-st-rss.json).</span>
 
+## September 30, 2026
+
+## New
+
+### Orchestration and run status
+
+- **State Explain tab available for all dbt State runs**: The job run details page now shows an [**Explain** tab](/docs/deploy/run-visibility#explain-tab) for every dbt State run. The tab is available while a run is in progress and updates as resources finish.
+
+## Enhancements
+
+### Catalog
+
+- **SQL transformation expressions in column lineage**: The [column lineage](/docs/explore/column-level-lineage#column-lens) panel now shows SQL transformation expressions for all users. You can see how columns are derived across your lineage without any additional configuration.
+
+### Insights
+
+- **UTC timestamps in account Insights table**: The "last run finished at" column in the account Insights table now displays times in UTC, giving you a consistent reference regardless of your local timezone.
+
+**Accurate Cost Insights build counts**: Cost Insights no longer counts nodes that never executed as builds (for example, from a cancelled or failed run), aligning that count with dbt State. You may see lower build counts for affected run dates after this change.
+
+- **Snowflake Adaptive warehouse cost tracking for all users**: Per-query Snowflake Adaptive warehouse costs are now tracked automatically for all accounts in [Cost Insights](/docs/explore/cost-insights) when `QUERY_METERING_HISTORY` is accessible, with no additional configuration required.
+
+### Orchestration and run status
+
+- **dbt State mode in job settings**: Job settings now always show a dbt State mode dropdown with inherit, on, or off. This replaces the previous per-job checkbox. You can also set dbt State as the default for a deployment environment.
+
+### dbt AI and agents
+
+- **Correct reasoning block order after conversation reload**: AI reasoning blocks in agent chat now render in the correct order relative to answer text, both during live streaming and after you reload the conversation.
+
+### Semantic Layer
+
+- **More actionable BigQuery connection errors**: BigQuery authentication failures now surface as distinct 401 errors, and access-denied failures surface as 403 permission errors, instead of generic data platform errors. You get a more specific message to help diagnose credential and permission issues.
+
+- **Clearer Redshift connection errors**: When a Redshift connection fails because the credentials are wrong, or a role does not have the required permissions, you now see a specific error message instead of a generic failure.
+
+### dbt platform
+
+- **External metadata ingestion toggle shown only when enabled**: The external metadata ingestion checkbox in connection settings is now hidden unless it is already enabled for that connection. The toggle has also been removed from the account-level settings page.
+
+## Fixes
+
+### Orchestration and run status
+
+- **Warned models included in Model Timing tab**: Models with a "Warned" status now appear correctly in the [Execution timeline](/docs/deploy/run-visibility#execution-timeline) Gantt chart. The [critical path, peak concurrency, average active, and longest model](/docs/deploy/run-visibility#metric-tiles) summary tiles now include warned models in their calculations.
+
+## September 23, 2026
+
+## Enhancements
+
+### dbt AI and agents
+
+- **Monthly spend limit of $0 for dbt Wizard**: You can now set a $0 monthly [spend limit](/docs/dbt-ai/pricing-billing/trial-and-billing#manage-your-spend-limit) for dbt Wizard, which stops all paid usage account-wide immediately. Selecting a limit below your current period's accrued spend no longer blocks submission. dbt platform displays a warning instead, and the limit takes effect right away.
+
+### dbt platform
+
+- **Committed spend breakdown by product**: The committed spend card on the dbt State and AI Usage tabs now shows a per-product breakdown of how much committed spend has been drawn by dbt State and dbt Wizard respectively.
+
+- **Billing period day counter**: The billing period card in workspace settings now shows a "Day X of Y" counter instead of "X days left." The total days are calculated from the actual billing window length, so the counter stays accurate for billing periods shorter or longer than 30 days.
+
+- **Rolling 12-month window in Models built chart**: The Models built (Enterprise Usage by Month) chart now always displays a rolling 12-month window ending at the current month. Expired or completed billing plans no longer anchor the window to the plan end date.
+
+- **Clearer GitHub outage errors**: GitHub integration flows now return a consistent HTTP 503 response with a human-readable message ("GitHub is temporarily unavailable. Please try again in a few minutes.") during GitHub outages, timeouts, and upstream 5xx errors, instead of raw or generic failures.
+
+### APIs, Identity, and Administration
+
+- **Pagination for List Service Tokens API**: The `GET /api/v3/accounts/{id}/service-tokens/` endpoint now accepts `limit` and `offset` query parameters. Query with no parameters specified will continue to return all service tokens to preserve backwards-compatibility for existing callers.
+
+## Fixes
+
+### dbt platform
+
+- **Email addresses stay in the invite panel**: Email addresses you type in the invite panel stay in place when the list of available groups reloads.
+
+- **Actionable error for adapter version incompatibility**: When a connection test fails because an adapter requires a higher dbt version than the environment provides, you now see a clear HTTP 400 error message instead of a generic HTTP 500 server error.
+
+- **Actionable error for managed repository download failures**: When a managed repository cannot be downloaded due to a GitHub App permissions issue, you now see the message "This managed repository couldn't be downloaded due to a dbt Labs configuration issue. Please contact support." instead of a silent or generic failure.
+
+- **Correct dbt version when an adapter does not support dbt v2**: When you select an adapter that is not compatible with dbt v2 during new project setup, a warning banner appears and the development environment is created with the latest compatible dbt version.
+
+## September 9, 2026
+
+## New
+
+### Catalog
+
+- **Column counts in the models table**: The models table in Catalog navigation now shows a column count for each model.
+
+## Enhancements
+
+### Studio IDE
+
+- **Clearer missing credentials prompt**: Studio IDE now detects missing development credentials at startup and shows a **Development Credentials Required** modal with a direct link to add credentials, instead of failing silently.
+
+### Catalog
+
+- **Upstream sources sorted by freshness severity**: The **Upstream Sources** table on the model detail pages now sorts by freshness severity by default (Error first, Pass last). Click **Name** or **Status** to change the sort order. The **Status** column also no longer overflows on wide screens.
+
+### Orchestration and run status
+
+- **Full model timing view for large runs**: The model timing Gantt chart no longer limits groups to 2,000 rows. You can now see all models in the timing view for large runs.
+
+### dbt platform
+
+- **Analytics connection visible to read-only users**: Read-only users can now see their assigned analytics connection in project settings instead of **Not configured**.
+
+- **dbt Wizard overage email notifications**: Account admins now receive email when dbt Wizard usage credits are exhausted, with separate notices for accounts that have no usage commitment and accounts that have used their full commitment.
+
+### APIs, Identity, and Administration
+
+- **Clearer GitLab unavailability errors**: When a GitLab host is unreachable, affected API endpoints now return HTTP 503 with the message "GitLab is unavailable, please try again." instead of an unclear failure. This applies when you create a repository or list GitLab groups.
+
+## Fixes
+
+### dbt AI and agents
+
+- **Pinned model names in context card**: Pinned models in the dbt Wizard context card now display the model name (for example, `customers`) instead of the raw metadata unique ID (for example, `model.jaffle_shop.customers`).
+
+### APIs, Identity, and Administration
+
+- **Correct error for cross-account write attempts**: Cross-account write attempts now return HTTP 403 Forbidden instead of a generic 500 Internal Server Error, so you get a clear rejection when the account doesn't match.
+
+- **Corrected Azure DevOps account linking error**: The error for a missing Azure DevOps account link now shows the correct message: "Missing Azure user; link your Azure DevOps account in your personal profile."
+
+## Behavior change
+
+### APIs, Identity, and Administration
+
+- **Account creation blocked for service tokens and OAuth tokens**: Creating accounts via `POST /api/v2/accounts/` is now blocked for service tokens, account-scoped personal access tokens (PATs), and OAuth access tokens. Service tokens and account-scoped user API tokens receive HTTP 400; OAuth access tokens receive HTTP 403, with explicit error messages in each case.
+
+### Insights
+
+- **Cost Insights test counts now include unit tests**: Cost Insights aggregates now include unit tests when you filter by the Test resource type. Previously, unit tests were silently excluded, causing lower-than-expected execution counts.
+
+## September 2, 2026
+
+## Enhancements
+
+### APIs, Identity, and Administration
+
+- **Analyst Read permission set available to all accounts**: The [Analyst Read](/docs/platform/manage-access/enterprise-permissions#analyst-read) permission set is now available to all accounts without requiring a feature flag. You can assign it to groups so read-only users can view Catalog and project configuration such as connections, environments, and Semantic Layer settings.
+
+### Semantic Layer
+
+- **Clearer Snowflake authentication and permission errors**: When you connect to Snowflake through the Semantic Layer, authentication failures and permission errors now return distinct messages prefixed with `[WAREHOUSE_AUTHENTICATION_FAILED]` or `[WAREHOUSE_PERMISSION_DENIED]`, so you can tell credential issues apart from missing grants.
+
+## Fixes
+
+### Orchestration and run status
+
+- **Clearer invalid cron expression errors**: Saving a job with an invalid day-of-month value such as `*,L` now shows a validation error and prevents the broken schedule from being saved. Use either `*` or `L` in the day-of-month field, not both.
+
+## Behavior change
+
+### APIs, Identity, and Administration
+
+- **Unscoped group and service token permissions rejected**: When you assign a project-scoped permission set to a group or service token, you must now specify either all projects or a specific project. Requests that leave project scope unset return a `400` error. Account-level permission sets such as Billing Admin and Notification Manager are not affected. Existing legacy assignments continue to work until you change them.
+
+## August 26, 2026
+
+## New
+
+### Orchestration and run status
+
+- **dbt State explain tab on run details**: A new "State explain" tab on the run details page shows dbt State's decision for each model in a run (rebuilt, reused, or cloned), with expandable details, search, and Comma-Separated Values (CSV) download. You can use this tab to investigate why each model was rebuilt or reused. Contact your account manager to enable.
+
+## Enhancements
+
+### dbt platform
+
+- **Clearer billing admin guidance for non-admins**: Non-admin users now see an "Ask an admin to enable" message on the dbt Wizard and dbt State cards in Billing & Usage when a trial is available but they lack permission to start it, instead of a blank space. The same message appears if a non-admin tries to start a trial from a dbt State or dbt Wizard link.
+
+### Orchestration and run status
+
+- **dbt State available on more release tracks**: dbt State is now available for jobs running on the Compatible, Fusion Extended, and Fusion Fallback release tracks, in addition to previously supported tracks.
+
+- **Corrected Fusion release track names**: The display names for dbt Fusion release tracks are now "Fusion Stable" and "Fusion Nightly" instead of the previous reversed labels "Stable Fusion" and "Nightly Fusion".
+
+- **Large compare results in pull request comments**: When compare results are larger than 50 MB, pull request comments now show a "too large to summarize" notice with a link to the full compare report, instead of failing with no message.
+
+### Studio IDE
+
+- **Correct browser tab title**: The Studio IDE browser tab now displays "dbt Studio" instead of a generic editor title.
+
+### Integrations
+
+- **More reliable MCP OAuth sign-in**: When you connect an MCP client with OAuth, more clients can now complete sign-in successfully.
+
 ## August 19, 2026
 
 ## Enhancements
@@ -64,7 +252,7 @@ Release notes are grouped by date for single-tenant environments.
 
 - **Run history refreshes automatically after a trigger**: After you trigger a run or rerun, the run history list now polls every 2.5 seconds until the new run appears, eliminating the need for a manual page reload. Polling stops automatically once the run is visible or after 45 seconds.
 
-## Behavior Changes
+## Behavior change
 
 ### Catalog
 
@@ -84,7 +272,7 @@ Release notes are grouped by date for single-tenant environments.
 
 - **Clearer SCIM error messages**: System for Cross-domain Identity Management (SCIM) API errors now include the user email addresses that caused seat or license failures, so you can identify which users blocked provisioning.
 
-## Behavior Changes
+## Behavior change
 
 ### APIs, Identity, and Administration
 
@@ -255,7 +443,7 @@ Release notes are grouped by date for single-tenant environments.
 
 - **Accurate job and run scoping in dbt Wizard**: dbt Wizard now correctly scopes job and run investigations to your current project instead of returning results across your entire account. You no longer see unrelated jobs from other projects when asking dbt Wizard to investigate a run.
 
-## Behavior Changes
+## Behavior change
 
 ### dbt platform
 
@@ -350,7 +538,7 @@ Release notes are grouped by date for single-tenant environments.
 
 - **Safer handling of non-JSON OpenAI error responses**: Error handling for OpenAI `BadRequestError` now gracefully handles responses with non-JSON bodies, preventing an unhandled exception when parsing the error code. You should see a proper error rather than an internal server error in these cases.
 
-## Behavior Changes
+## Behavior change
 
 ### APIs, Identity, and Administration
 
@@ -386,7 +574,7 @@ Release notes are grouped by date for single-tenant environments.
 - **Workspace file operations API**: Adds public Studio file operation endpoints for `stat`, `get`, `put`, `list directory`, `delete`, `mkdir`, and `rename` under `/api/ide/v3/{environment_id}/files/`. File paths are passed as query parameters to avoid user paths appearing in traces.
 - **Environment status endpoint**: Adds a `/api/ide/v3/{environment_id}/status` endpoint that returns the dbt version and Fusion status for a development environment, allowing Studio to display version information without additional API calls.
 
-## Behavior Changes
+## Behavior change
 
 ### dbt platform
 
@@ -433,7 +621,7 @@ Release notes are grouped by date for single-tenant environments.
 
 - **Accurate health status filtering for stale assets**: The Catalog health filter now correctly classifies assets with a healthy bitmask but a last successful run older than 30 days as "Caution" instead of "Healthy." Assets whose last run was marked `reused` continue to be treated as healthy.
 
-## Behavior Changes
+## Behavior change
 
 ### dbt Copilot and agents
 
@@ -635,7 +823,7 @@ Release notes are grouped by date for single-tenant environments.
 
 - **Correct handling of `tool_call_chunk` content blocks**: Fixed a bug in single tenant environments that would occasionally block conversations from being able to be continued.
 
-## Behavior Changes
+## Behavior change
 
 ### APIs, Identity, and Administration
 
@@ -898,7 +1086,7 @@ Release notes are grouped by date for single-tenant environments.
 
 - **`github_installation_id` and `github_webhook_id` support large values**: These repository fields have been promoted from 32-bit to 64-bit integers (`BigIntegerField`) to accommodate GitHub installation and webhook IDs that exceed the 32-bit integer range.
 
-## Behavior changes
+## Behavior change
 
 ### APIs, Identity, and Administration
 
@@ -948,7 +1136,7 @@ Release notes are grouped by date for single-tenant environments.
 
 - **Large group permission sync no longer silently truncated**: Fixed an issue where group permission sync could miss updates for groups with many permissions.
 
-## Behavior Changes
+## Behavior change
 
 ### Studio IDE
 
@@ -1068,7 +1256,7 @@ Release notes are grouped by date for single-tenant environments.
 
 - **Cleaner AI diff overlays:** Studio IDE now removes the accept and reject overlay when you leave an artificial intelligence (AI) diff view to prevent stale UI controls.
 
-## Behavior Changes
+## Behavior change
 
 ### Studio IDE
 
@@ -1122,7 +1310,7 @@ Release notes are grouped by date for single-tenant environments.
 
 - **Clearer private endpoint validation errors:** Creating a private endpoint now returns a `400` error with a clear message when `snowflake_output` is malformed or not valid JSON.
 
-## Behavior Changes
+## Behavior change
 
 ### Orchestration and Run Status
 
@@ -1171,7 +1359,7 @@ Release notes are grouped by date for single-tenant environments.
 - **Improved timeout handling and authentication stability**: Reduced environment setup timeouts and resolved intermittent authentication failures during busy periods.
 - **Clearer invalid credentials error**: If your development connection credentials are invalid, you now see a clearer error message to help you diagnose the issue faster.
 
-## Behavior Changes
+## Behavior change
 
 ### Orchestration and Run Status
 
@@ -1221,7 +1409,7 @@ Release notes are grouped by date for single-tenant environments.
 
 - **Project deletion now supported in Admin v2 and v3 Projects APIs**: Projects APIs now explicitly support DELETE with stricter permission checks.
 
-## Behavior Changes
+## Behavior change
 
 ### Webhooks
 
@@ -1313,7 +1501,7 @@ Release notes are grouped by date for single-tenant environments.
 
 - **Fewer related models timeouts**: Reduces intermittent failures when attaching related models by increasing internal timeouts for related-model fetching. Users should experience fewer timeout errors when working with related models.
 
-## Behavior Changes
+## Behavior change
 
 ### Studio IDE
 
@@ -1413,7 +1601,7 @@ Release notes are grouped by date for single-tenant environments.
 
 - **Macro Metadata: More consistent timestamps and argument comparison**: Macro metadata persistence now uses more consistent Coordinated Universal Time (UTC) timestamps and improves argument comparison to reduce noisy or incorrect macro updates.
 
-## Behavior Changes
+## Behavior change
 
 ### dbt platform APIs
 
@@ -1513,7 +1701,7 @@ Release notes are grouped by date for single-tenant environments.
 
 - **Copilot: Empty Tool Outputs No Longer Cause Failures**: Treats empty tool outputs as valid results (for example, "no matches") to reduce unnecessary "tool call failed" errors.
 
-## Behavior Changes
+## Behavior change
 
 ### dbt platform
 

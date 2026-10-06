@@ -76,7 +76,7 @@ models:
 
 ## Definition
 
-:::note dbt platform on Fusion
+:::note dbt platform on <Constant name="fusion" />
 
 In <Constant name="fusion" />, `latest_version_pointer` is enabled by default for all versioned models. If you have a versioned model with an explicit `alias` that matches the model's base name, you may see a `dbt1005` collision error. See [Naming collisions](#naming-collisions) below for how to resolve it.
 

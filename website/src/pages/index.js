@@ -74,7 +74,7 @@ function Home() {
                     id="hero-vs-code-cta"
                     className="hero-border-beam-cta"
                     to="/docs/local/install-dbt">
-                      <span>Install dbt VS Code extension + Fusion</span>
+                      <span>Install dbt</span>
                       </Link>
                 </div>
               </div>
@@ -88,20 +88,6 @@ function Home() {
               </div>
               <div className="home-card-grid">
                 <Card
-                  title="dbt Wizard"
-                  tag="Beta"
-                  body="Build, refactor, and validate dbt projects with an AI agent purpose-built for analytics engineering — in the dbt platform or from your terminal."
-                  link="/docs/platform/wizard-overview"
-                  icon="dbt-copilot"
-                />
-                <Card
-                  title="dbt Core"
-                  tag="Article"
-                  body="Explore dbt Core and discover how its shared Rust runtime delivers faster, more scalable performance."
-                  link="/docs/fusion/about-core"
-                  icon="zap"
-                />
-                <Card
                   title="Get started with dbt"
                   tag="Guide"
                   body="Get up and running quickly with our dbt quickstart guides."
@@ -109,10 +95,17 @@ function Home() {
                   icon="settings"
                 />
                 <Card
+                  title="About dbt"
+                  tag="Article"
+                  body="Explore dbt and discover how its shared Rust runtime delivers faster, more scalable performance."
+                  link="/docs/introduction"
+                  icon="zap"
+                />
+                <Card
                   title="Move to the dbt platform"
                   tag="Guide"
-                  body="Move from self-hosted dbt Core to the dbt platform and follow recommended best practices for building scalable data pipelines."
-                  link="/guides/core-migration-1?step=1"
+                  body="Move from self-hosted dbt to the dbt platform and follow recommended best practices for building scalable data pipelines."
+                  link="/guides/dbt-migration-1?step=1"
                   icon="tool"
                 />
               </div>
@@ -134,15 +127,14 @@ function Home() {
                 />
                 <Card
                   title="VS Code Extension"
-                  body="This free tool brings the full power of the dbt Fusion engine into your local environment with features like live error detection, lightning-fast parse times, insights and rich lineage all in VS Code or Cursor."
+                  body="This free tool brings the full power of the dbt into your local environment with features like live error detection, lightning-fast parse times, insights and rich lineage all in VS Code or Cursor."
                   link="/docs/about-dbt-extension"
                   icon="vsce"
                   showBorderBeam
                 />
                 <Card
                   title="dbt State"
-                  tag="Preview"
-                  body="dbt State makes dbt smarter about what to build — skipping unnecessary rebuilds by reusing nodes when logic and data haven't changed. Works with dbt Core, dbt platform, and the dbt Fusion engine."
+                  body="dbt State makes dbt smarter about what to build — skipping unnecessary rebuilds by reusing nodes when logic and data haven't changed. Works with self-hosted dbt and the dbt platform."
                   link="/docs/deploy/dbt-state-about"
                   icon="forward"
                 />
@@ -157,12 +149,6 @@ function Home() {
                   body="dbt Insights in dbt empowers users to seamlessly explore and query data with an intuitive, context-rich interface."
                   link="/docs/explore/dbt-insights"
                   icon="insights"
-                />
-                <Card
-                  title="dbt Canvas"
-                  body="dbt Canvas helps you quickly access and transform data through a visual, drag-and-drop experience and with a built-in AI for custom code generation."
-                  link="/docs/platform/canvas"
-                  icon="canvas"
                 />
                 <Card
                   title="dbt Semantic Layer"
