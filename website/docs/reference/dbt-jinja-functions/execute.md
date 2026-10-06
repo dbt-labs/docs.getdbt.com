@@ -77,7 +77,7 @@ That's because `execute` is `True` any time dbt compiles your models' SQL, not j
 {% endif %}
 ```
 
-Make sure the rest of your macro handles results being none when the query is skipped.
+Make sure the rest of your macro handles `results` being `none` when the query is skipped.
 
 :::
 
