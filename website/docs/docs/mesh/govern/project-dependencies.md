@@ -151,6 +151,51 @@ To avoid causing downtime for downstream developers, you should define and trigg
 3. Trigger the job to run, and ensure it completes successfully.
 4. Update the environment to mark it as **Staging**.
 
+<VersionBlock lastVersion="1.99">
+
+### Route public model references to an upstream environment
+
+If the default environment selection doesn't match your deployment setup, configure environment routing on the *consumer* project's dependency. For example, you can make a consumer production environment use a producer staging publication, or map a consumer general deployment environment to a producer general deployment environment. Routing changes which upstream publication dbt uses to resolve a [public model](/docs/mesh/govern/model-access) in a two-argument [cross-project `ref()`](#how-to-write-cross-project-ref). It doesn't copy data or grant warehouse access.
+
+Environment routing is available for project dependencies on the <Constant name="dbt_platform" /> with <Constant name="core" />. The example below uses fictional environment IDs; replace them with IDs from your own projects.
+
+| Consumer environment | Without routing | With an explicit route |
+| --- | --- | --- |
+| Production | Producer production | Producer staging, if you configure production → staging |
+| Staging | Producer staging, if configured | Another producer deployment environment you select |
+| General deployment | Producer staging, if configured; otherwise production | Producer general deployment, if you configure general → general |
+
+The examples in the last column describe *separate configurations*. Each route maps one consumer environment to one upstream environment for a given project dependency. Without a matching route or a configured default, dbt retains its existing environment selection. If an upstream staging environment exists but hasn't published the required model metadata, publish it before relying on the default staging route; dbt doesn't fall back to production in that case.
+
+1. In the <Constant name="dbt_platform" />, open **Deploy** > **Environments** for the consumer project and select the environment you want to route. Copy its numeric environment ID from the environment page URL.
+2. Open **Deploy** > **Environments** for the producer project, select the deployment environment that publishes the public model, and copy its numeric ID from that page's URL. Ask the producer project's owner for the ID if you can't view that environment. Make sure a deployment job has run successfully there after the model was made public.
+3. Add the route to `dependencies.yml` at the root of the consumer dbt project, next to `dbt_project.yml`:
+
+<File name="dependencies.yml">
+
+```yml
+projects:
+  - name: jaffle_finance
+    default_upstream_environment: production # Optional when no route matches
+    mesh_environment_routing:
+      - in_this_project_environment: 12001 # Consumer environment ID (fictional)
+        use_upstream_environment: 34002   # Producer environment ID (fictional)
+```
+
+</File>
+
+`in_this_project_environment` identifies the consumer environment where you run dbt. `use_upstream_environment` selects a deployment environment in the named upstream project. Keep using `{{ ref('jaffle_finance', 'monthly_revenue') }}` in your consumer model; the route changes the publication used to resolve that reference.
+
+You can use a numeric environment ID for either value. You can also use the exact lowercase type `development`, `staging`, or `production` for `in_this_project_environment`; upstream values accept `staging` or `production`. Use an ID for a general or other custom deployment environment. An uppercase environment variable name such as `UPSTREAM_ENVIRONMENT_ID` can supply an ID or supported type as its value without Jinja. Set that variable in the environment where dbt runs. If more than one route could match, the first matching entry wins. Don't repeat the same resolved consumer selector.
+
+Optionally, add `default_upstream_environment` to the same upstream project entry to choose a producer environment when no route matches. A matching `mesh_environment_routing` entry takes precedence; without either setting, dbt uses the existing production/staging selection.
+
+dbt rejects invalid routing values or missing environment variables. Resolution also fails if the selected upstream ID isn't in the named producer project, isn't a deployment environment, or has no usable publication. A type selector must identify an available upstream environment; if multiple environments have that type, use an ID instead. Routing doesn't bypass model access or warehouse permissions.
+
+To check a route, run `dbt compile --select YOUR_CONSUMER_MODEL` for a consumer model that uses a cross-project `ref()`, then inspect the compiled SQL or the imported public model's relation in `target/manifest.json`. Confirm that its database and schema match the selected producer publication. Run `dbt build --select YOUR_CONSUMER_MODEL` to verify that the consumer can query it. Where your execution surface reports the resolved upstream environment ID in run logs, compare it with the ID you selected. A successful compile confirms reference resolution; a successful build also tests warehouse access.
+
+</VersionBlock>
+
 ### Comparison
 
 If you were to instead install the `jaffle_finance` project as a `package` dependency, you would instead be pulling down its full source code and adding it to your runtime environment. This means:
