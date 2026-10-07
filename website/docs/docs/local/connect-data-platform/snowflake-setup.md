@@ -40,7 +40,7 @@ The Snowflake adapter for <Constant name="fusion" /> supports the following [aut
 
 ## Warehouse permissions
 
-import FusionSnowflakeWarehousePerms from '/snippets/_fusion-warehouse-permissions-snowflake.md';
+import FusionSnowflakeWarehousePerms from '/snippets/_v2-warehouse-permissions-snowflake.md';
 
 <FusionSnowflakeWarehousePerms />
 
@@ -132,7 +132,7 @@ Key pair authentication gives you the option to:
 - Define the path to the key. 
 - Provide the plain-text PEM format key inline.
 
-import FusionKeyPair from '/snippets/_fusion-key-pair.md';
+import FusionKeyPair from '/snippets/_v2-key-pair.md';
 
 <FusionKeyPair />
 

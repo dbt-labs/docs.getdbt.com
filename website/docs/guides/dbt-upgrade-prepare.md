@@ -11,7 +11,7 @@ intro_text: This guide helps you prepare for an in-place upgrade from v1 to v2 i
 
 <div style={{maxWidth: '900px'}}>
 
-import FusionAdapters from '/snippets/_fusion-dwh-platform.md';
+import FusionAdapters from '/snippets/_v2-dwh-platform.md';
 
 ## Introduction
 
@@ -284,7 +284,7 @@ If a critical package isn't yet compatible with <Constant name="fusion" />:
 - Consider contributing the compatibility updates yourself.
 - Try it out anyway! The incompatible portion of the package might not impact your project. 
 
-import FusionPackageCompatibility from '/snippets/_fusion-package-compatibility.md';
+import FusionPackageCompatibility from '/snippets/_v2-package-compatibility.md';
 
 <FusionPackageCompatibility />
 
@@ -447,7 +447,7 @@ To revert the `latest-fusion` override, use the dbt version control in <Constant
 
 #### Debug in Studio with dbt Wizard <Lifecycle status="beta" size="80%" />
 
-import FusionMigrationWorkflow from '/snippets/_fusion-migration-workflow.md';
+import FusionMigrationWorkflow from '/snippets/_v2-migration-workflow.md';
 
 <FusionMigrationWorkflow />
 

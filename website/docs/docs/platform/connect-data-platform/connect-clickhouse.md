@@ -19,7 +19,7 @@ ClickHouse connections on v2 are in private beta and not production-ready. To re
 
 ## Warehouse permissions for <Constant name="fusion" />
 
-import FusionClickHouseWarehousePerms from '/snippets/_fusion-warehouse-permissions-clickhouse.md';
+import FusionClickHouseWarehousePerms from '/snippets/_v2-warehouse-permissions-clickhouse.md';
 
 <FusionClickHouseWarehousePerms />
 
