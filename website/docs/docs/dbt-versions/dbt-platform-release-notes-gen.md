@@ -76,7 +76,7 @@ Release notes are grouped by date for single-tenant environments.
 
 ### Insights
 
-- **Correct chart axis labels for decimal data**: Charts with decimal data values (for example, 25.43 mins) no longer push the y-axis name outside the visible canvas area. The axis gap is now calculated from rounded tick values.
+- **Correct chart axis labels for decimal data**: Charts with decimal data values (for example, 25.43 minutes) no longer push the y-axis name outside the visible canvas area. The axis gap is now calculated from rounded tick values.
 
 - **Horizontal bar chart axis name no longer overlaps the legend**: The x-axis name, grid bottom margin, and legend centering on horizontal bar charts are now computed correctly so the axis label no longer overlaps the legend.
 
