@@ -171,7 +171,6 @@ Caveats:
 <VersionBlock firstVersion="2.0">
 
 - <Constant name="dbt" /> supports table and incremental materializations (the `append`, `merge`, and `delete+insert` strategies) on Iceberg tables registered in a Glue catalog through a catalog-linked database. For incremental models, the model must resolve to a `type: glue` catalog in `catalogs.yml` (using `catalog_name`), and identifiers must follow Glue's lowercase, double-quoted rule (for example, set `quoting: {schema: true, identifier: true}` at the project level).
-- Known issue: at the end of each incremental run, dbt drops the `__dbt_tmp` relation with `DROP TABLE ... CASCADE`, which catalog-linked databases reject. The model is reported as failed even though the data is written correctly. To work around this, override the `snowflake__drop_table` macro in your project so it doesn't use `cascade`. Track the fix in [dbt-labs/dbt#16629](https://github.com/dbt-labs/dbt/issues/16629).
 
 </VersionBlock>
 
