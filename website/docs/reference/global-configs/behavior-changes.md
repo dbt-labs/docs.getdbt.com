@@ -33,9 +33,9 @@ Behavior change flags go through three phases of development:
 
 ### Introduced in <Constant name="core_v1" />
 
-This table outlines which month of the **v1 Latest** release track in <Constant name="dbt" /> and which version of <Constant name="core" /> contains the behavior change's introduction (disabled by default) or maturity (enabled by default).
+This table outlines which month of the **v1 Latest** release track in <Constant name="dbt" /> and which version of <Constant name="core" /> contains the behavior change's introduction (disabled by default) or maturity (enabled by default). Flags marked 2.0 in the **Removed** column are removed in dbt v2 and the new behavior is always enabled.
 
-| Flag | **v1 Latest**: Intro | **v1 Latest**: Maturity | <Constant name="core" />: Intro | <Constant name="core" />: Maturity |  Removed <small> Flags marked 2.0 are removed in dbt v2 and the new behavior is always enabled.</small>|
+| Flag | **v1 Latest**: Intro | **v1 Latest**: Maturity | <Constant name="core" />: Intro | <Constant name="core" />: Maturity |  Removed |
 |-----------------------------------------------------------------|------------------|---------------------|-----------------|--------------------|----|
 | [require_explicit_package_overrides_for_builtin_materializations](/reference/global-configs/behavior-flags/require_explicit_package_overrides_for_builtin_materializations) | 2024.04 | 2024.06 | 1.6.14, 1.7.14 | 1.8.0 | 2.0 |
 | [require_resource_names_without_spaces](/reference/global-configs/behavior-flags/require_resource_names_without_spaces) | 2024.05 | 2025.05 | 1.8.0 | 1.10.0 | 2.0 |
@@ -85,9 +85,9 @@ The following flags are specific to <Constant name="fusion" /> and have no equiv
 
 ### Adapter-specific behavior change flags
 
-This table outlines which version of the dbt adapter contains the behavior change's introduction (disabled by default) or maturity (enabled by default).
+This table outlines which version of the dbt adapter contains the behavior change's introduction (disabled by default) or maturity (enabled by default). Flags marked 2.0 are in the **Removed** column are removed in dbt v2 and the new behavior is always enabled.
 
-| Flag | dbt-ADAPTER: Intro | dbt-ADAPTER: Maturity | Removed <small> Flags marked 2.0 are removed in dbt v2 and the new behavior is always enabled.</small>|
+| Flag | dbt-ADAPTER: Intro | dbt-ADAPTER: Maturity | Removed |
 | ----------------------------- | ----------------------- | -------------------------- |-----------------|
 | [use_info_schema_for_columns](/reference/global-configs/databricks-changes#use-information-schema-for-columns) | Databricks 1.9.0 | - | 2.0 |
 | [use_user_folder_for_python](/reference/global-configs/databricks-changes#use-users-folder-for-python-model-notebooks) | Databricks 1.9.0 | - | 2.0 |
