@@ -68,7 +68,7 @@ order by 1
 :::caution `{% if execute %}` doesn't stop queries during `dbt compile`
 If `dbt compile` is slow, or you see unexpected queries in your warehouse's query history, check for `run_query` calls guarded only by `{% if execute %}`.
 
-That's because `execute` is `True` any time dbt compiles your models' SQL, not just when models are being built. To limit the query to commands that build models, also check [`flags.WHICH`](https://github.com/reference/dbt-jinja-functions/flags#flagswhich):
+That's because `execute` is `True` any time dbt compiles your models' SQL, not just when models are being built. To limit the query to commands that build models, also check [`flags.WHICH`](/reference/dbt-jinja-functions/flags#flagswhich):
 
 ```jinja
 {% set results = none %}
