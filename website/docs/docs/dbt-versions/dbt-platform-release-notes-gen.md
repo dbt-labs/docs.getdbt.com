@@ -61,7 +61,7 @@ Release notes are grouped by date for single-tenant environments.
 ### dbt platform
 
 - **dbt State no longer in preview**: The dbt State navigation option no longer carries a "Preview" badge. Incomplete projects (those without a repository or skipped setup) are also excluded from automatic project selection on the dbt State home page.
- 
+
 - **Add-on trial-to-allowance email notification**: Billing admins now receive an email when an add-on trial transitions to the free monthly allowance plan instead of expiring outright. Enterprise accounts are directed to their account team; self-serve accounts are directed to add a payment method.
 
 - **Expanded State Spend API fields**: The State Spend API response now includes allowance amount, consumed and remaining allowance, reset and end dates, and an `is_soft_blocked` flag indicating when dbt State activity is halted due to an exhausted allowance.
