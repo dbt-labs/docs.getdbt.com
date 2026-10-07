@@ -181,6 +181,8 @@ You can now delete the files that dbt created when you initialized the project:
 
 ## Build your first model
 
+If you'd like to use AI to build your first model, check out the <a id="qs-jump-to-build-with-ai" href="#build-it-with-ai-using-dbt-wizard">build it with dbt Wizard</a> in the next section.
+
 You have two options for working with files in the <Constant name="studio_ide" />:
 
 - Create a new branch (recommended) &mdash; Create a new branch to edit and commit your changes. Navigate to **Version Control** on the left sidebar and click **Create branch**.
@@ -255,6 +257,8 @@ select * from final
 4. Enter `dbt run` in the command prompt at the bottom of the screen. You should get a successful run and see the three models.
 
 You can connect your business intelligence (BI) tools to these views and tables so they only read cleaned-up data rather than raw data in your BI tool.
+
+<Snippet path="quickstarts/build-first-model-with-wizard" />
 
 ## Change the way your model is materialized
 
@@ -678,3 +682,5 @@ Congratulations 🎉! You've just deployed your first dbt project!
 
 
 
+
+<Snippet path="quickstarts/connect-your-ai" />
