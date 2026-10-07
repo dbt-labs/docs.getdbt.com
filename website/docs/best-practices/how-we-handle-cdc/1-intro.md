@@ -23,18 +23,14 @@ Snapshots only capture changes when you run them, which means you should run the
 
 ## Choose an approach: latest row, history, or both
 
-Your approach depends on how your source exposes changes and what you need to keep. Use these questions to choose:
-
-1. Does your source provide a list of changes, or overwrite existing rows?
-2. Do you need current values, historical versions, or both?
-3. Can you afford to read the full source on each run?
+Your approach depends on how your source exposes changes and what you need to keep.
 
 <SimpleTable>
-| You need | Typical source | Use |
+| If you need | How your source stores changes | Use |
 | --- | --- | --- |
-| Latest row only | A list of changes, or a table that overwrites rows and has a reliable change timestamp | Incremental model |
-| Current row plus old versions | A table that overwrites rows, and it is small enough to scan each run | Snapshot |
-| Current row plus old versions, without scanning the full source each run | A table that overwrites rows, or a cleaned list of changes | An incremental staging model, then a snapshot, then a downstream model that keeps only the latest snapshot row |
+| Latest row only | Appends a row for each change, or overwrites rows but has a reliable change timestamp | Incremental model |
+| Current row plus old versions | Overwrites rows, and is small enough to scan each run | Snapshot |
+| Current row plus old versions, without scanning the full source each run | Overwrites rows, or appends a row for each change (after cleanup) | An incremental staging model, then a snapshot, then a downstream model that keeps only the latest snapshot row |
 </SimpleTable>
 
 <br />

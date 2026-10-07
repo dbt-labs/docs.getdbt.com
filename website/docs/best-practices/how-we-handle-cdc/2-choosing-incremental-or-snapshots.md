@@ -3,7 +3,7 @@ title: "Choosing incremental models or snapshots"
 id: "2-choosing-incremental-or-snapshots"
 description: "Choose incremental models, snapshots, or both for change data capture in dbt."
 sidebar_label: "Choosing incremental models or snapshots"
-hoverSnippet: "Choose incremental models, snapshots, or both for CDC"
+hoverSnippet: "Choose incremental models, snapshots, or both for change data capture"
 availability: all_users
 ---
 
@@ -20,95 +20,88 @@ Start with this table if you already know what you need to keep. Use it to match
 | [Incremental models and snapshots together](#using-incremental-models-and-snapshots-together) | You want incremental staging so runs stay cheap, and a snapshot for history | You only need one of those jobs, or you would snapshot the final table people query |
 </SimpleTable>
 <br />
-The examples in the next section follow two customers, Alice and Bob. Both start with a pending status. Alice’s status then changes to shipped.
-
-These examples use [`unique_key`](/reference/resource-configs/unique_key) to identify each customer across runs. The incremental model uses it to match rows for updates. The snapshot uses it to track versions of the same customer.
 
 ## Incremental only
 
-Use an incremental model when later models only need the current row, and you can identify new or changed rows from:
+Choose this approach when you only need each row's current values. Your source must let you identify new or updated rows from:
 
 - A loading tool or stream that writes inserts, updates, and deletes (for an example, refer to [CDC with Snowflake Streams](/best-practices/how-we-handle-real-time-data/2-incremental-patterns#cdc-with-snowflake-streams))
 - A table that only adds rows
 - A table that overwrites rows and has a reliable `updated_at` (or load timestamp) you can filter on
 
-To keep one current row per customer and avoid duplicates:
+These examples follow two customers, Alice and Bob. After the first run, both have a `trial` status:
 
-- Use `is_incremental()` to filter new changes
-- Set `unique_key` to the customer id so <Constant name="dbt" /> can match existing rows
-- Choose an incremental strategy such as `merge`, which updates matching rows and inserts new ones
+<SimpleTable>
+| id | name | status | updated_at |
+| -- | ---- | ------ | ---------- |
+| 1 | Alice | trial | 2026-01-01 00:00:00 |
+| 2 | Bob | trial | 2026-01-01 00:00:00 |
+</SimpleTable>
+
+<br />
+
+Alice then becomes an `active` customer the next day. With a `merge` strategy and `id` as the `unique_key`, the next run updates her existing row:
+
+<SimpleTable>
+| id | name | status | updated_at |
+| -- | ---- | ------ | ---------- |
+| 1 | Alice | active | 2026-01-02 00:00:00 |
+| 2 | Bob | trial | 2026-01-01 00:00:00 |
+</SimpleTable>
+
+<br />
+
+Alice's current status is `active`. Her earlier `trial` status is no longer stored in this table.
+
+To configure this behavior:
+
+- Use `is_incremental()` to apply a filter for new or updated rows on later runs
+- Set [`unique_key`](/reference/resource-configs/unique_key) to the customer ID so <Constant name="dbt" /> can match incoming rows to existing ones
+- Choose a strategy such as `merge`, which updates matching rows and inserts new ones
 
 Refer to [Configure incremental models](/docs/build/incremental-models) and [About incremental strategy](/docs/build/incremental-strategy) for details.
 
-After the first run, Alice and Bob are both `pending`:
-
-<SimpleTable>
-| id | name | status | updated_at |
-| -- | ---- | ------ | ---------- |
-| 1 | Alice | pending | 2026-01-01 00:00:00 |
-| 2 | Bob | pending | 2026-01-01 00:00:00 |
-</SimpleTable>
-
-<br />
-
-After a second run where Alice moves from `pending` to `shipped`, the incremental table has one row per person. The old `pending` row is gone:
-
-<SimpleTable>
-| id | name | status | updated_at |
-| -- | ---- | ------ | ---------- |
-| 1 | Alice | shipped | 2026-01-02 00:00:00 |
-| 2 | Bob | pending | 2026-01-01 00:00:00 |
-</SimpleTable>
-
-<br />
-
 ## Snapshot only
 
-Use a snapshot when the source overwrites rows in place and you need history, but you do not need a separate incremental staging model.
+Choose this approach when your source overwrites rows and you need the history to answer questions such as "When did Alice become an active customer?"
 
-A snapshot keeps old rows instead of overwriting them. Run `dbt snapshot` (or `dbt build`) on a schedule so you do not miss changes. Refer to the FAQ [How often should I run the snapshot command?](/faqs/Runs/snapshot-frequency), which recommends hourly to daily.
-
-Choose a strategy:
-
-- `timestamp` when `updated_at` is reliable and moves forward when the row changes
-- `check` when you cannot trust `updated_at`. <Constant name="dbt" /> compares the columns you list (or all columns) and records a change when those values change
-
-Refer to [Add snapshots to your DAG](/docs/build/snapshots) for configuration.
-
-After the same Alice change, the snapshot keeps both versions:
+Using the same example, run a snapshot before and after Alice's status changes. With the `timestamp` strategy, the snapshot keeps both versions:
 
 <SimpleTable>
 | id | name | status | updated_at | dbt_valid_from | dbt_valid_to |
 | -- | ---- | ------ | ---------- | -------------- | ------------ |
-| 1 | Alice | pending | 2026-01-01 00:00:00 | 2026-01-01 00:00:00 | 2026-01-02 00:00:00 |
-| 1 | Alice | shipped | 2026-01-02 00:00:00 | 2026-01-02 00:00:00 | `null` |
-| 2 | Bob | pending | 2026-01-01 00:00:00 | 2026-01-01 00:00:00 | `null` |
+| 1 | Alice | trial | 2026-01-01 00:00:00 | 2026-01-01 00:00:00 | 2026-01-02 00:00:00 |
+| 1 | Alice | active | 2026-01-02 00:00:00 | 2026-01-02 00:00:00 | `null` |
+| 2 | Bob | trial | 2026-01-01 00:00:00 | 2026-01-01 00:00:00 | `null` |
 </SimpleTable>
 
 <br />
 
-The open row (`dbt_valid_to` is null) is the current version.
+The `dbt_valid_from` and `dbt_valid_to` columns show you when each version was valid. By default, `dbt_valid_to` is `null` for the current version.
+
+To configure your snapshot, set `unique_key` to the customer ID and choose how to detect changes:
+
+- Use `timestamp` (recommended) when you have a reliable `updated_at` column that advances whenever a row changes
+- Use `check` when a table has no reliable `updated_at` column. <Constant name="dbt" /> tracks changes by comparing the columns you specify, or all columns
+
+Run `dbt snapshot` or `dbt build` regularly on a schedule. Snapshots capture the values available when they run, so they cannot recover intermediate changes that were overwritten between runs. Choose a schedule based on how often your data changes and how much detail you need in its history.
+
+Refer to [Add snapshots to your DAG](/docs/build/snapshots) and [How often should I run the snapshot command?](/faqs/Runs/snapshot-frequency) for configuration and scheduling.
 
 ## Using incremental models and snapshots together
 
-Use incremental models and snapshots together when you need cheap, current staging _and_ a history of each change.
+Use incremental models and snapshots together when you need an incremental staging model to prepare incoming data before capturing its history.
 
-```text
-source (table that overwrites rows, or a list of changes)
-  → stg_* (incremental: filter on change or load time, merge on unique_key)
-    → snapshot (history of each version)
-    → dim_* (current: where dbt_valid_to is null)
-```
+The following example continues with Alice and Bob. It uses a source named `raw` with a `customers` table that stores one current row per customer. Replace these names with a [source defined in your project](/docs/build/sources).
 
-- The incremental model holds the latest row per id, so each run only processes new changes.
-- The snapshot reads that staging table (or the source) and writes history.
-- The current model selects snapshot rows where `dbt_valid_to` is null.
+The source includes two timestamps:
 
-Snapshot _staging models or sources_, not the finished table people query.
+- `updated_at`: When the customer's data changed.
+- `_loaded_at`: When your loading tool wrote that version to the warehouse. This example assumes it is populated and advances with each loaded change.
 
-The following example uses the same Alice and Bob rows as the tables on this page. `raw_customers` is the source table that overwrites `status` in place.
+### 1. Process incoming changes
 
-This staging model keeps one current row per customer. On later runs it only reads rows newer than the last `_loaded_at` value already in the table.
+Create an incremental staging model that uses `_loaded_at` to find recently loaded rows and `id` to update the matching customer.
 
 <File name="models/staging/stg_customers.sql">
 
@@ -127,15 +120,22 @@ select
     status,
     updated_at,
     _loaded_at
-from {{ ref('raw_customers') }}
+from {{ source('raw', 'customers') }}
 {% if is_incremental() %}
-where _loaded_at > (select coalesce(max(_loaded_at), '1970-01-01') from {{ this }})
+where _loaded_at >= (
+    select coalesce(max(_loaded_at), '1970-01-01')
+    from {{ this }}
+)
 {% endif %}
 ```
 
 </File>
 
-This snapshot reads `stg_customers` and stores a new version when `updated_at` moves forward.
+The first run reads all rows. Later runs read rows at or after the latest stored `_loaded_at` value. Using `>=` includes rows that share that timestamp.
+
+### 2. Capture historical versions
+
+Create a snapshot of the staging model. It uses `updated_at` to detect changes to each customer's data.
 
 <File name="snapshots/customers_snapshot.yml">
 
@@ -151,23 +151,29 @@ snapshots:
 
 </File>
 
-This model returns only the open snapshot row, which is the latest version of each customer.
+Snapshot sources or lightly transformed staging models. Keep business logic in downstream models so changes to that logic do not become part of your source history.
+
+### 3. Select current values for reporting
+
+Create a model that selects the current version of each customer:
 
 <File name="models/marts/dim_customers_current.sql">
 
 ```sql
-select *
+select
+    id,
+    name,
+    status,
+    updated_at
 from {{ ref('customers_snapshot') }}
 where dbt_valid_to is null
 ```
 
 </File>
 
-After Alice changes from `pending` to `shipped`:
+Run these resources in dependency order: staging model, snapshot, then reporting model. You can use `dbt build` with all three selected.
 
-- `stg_customers` matches the incremental-only table (one row per id, Alice is `shipped`).
-- `customers_snapshot` matches the snapshot-only table (Alice has two rows).
-- `dim_customers_current` matches the latest row (Alice `shipped`, Bob `pending`).
+After a run captures Alice's change, the staging and reporting models show her as `active`. The snapshot keeps both her `trial` and `active` versions, as shown in the earlier examples.
 
 If the source already includes from and to dates (or a list of changes you want to keep in full), you may not need a snapshot. Load those changes with incremental `append` or `merge`, and keep the latest row with a SQL filter.
 
@@ -176,9 +182,9 @@ If the source already includes from and to dates (or a list of changes you want 
 - Hard deletes: Loading tools often mark a row as deleted. Snapshots can close the old row or add a deletion record with [`hard_deletes`](/reference/resource-configs/hard-deletes). Incremental models must handle deletes in your merge (or a separate delete statement).
 - Late-arriving changes: Widen the incremental filter so you look a bit further back than the last run, and know when a `--full-refresh` is the safe fix. Refer to [Configure incremental models](/docs/build/incremental-models).
 - Several changes in one run: On incremental models, keep only the latest change per id before you merge.
-- Source columns change: On incremental models, use [`on_schema_change`](/docs/build/incremental-models#what-if-the-columns-of-my-incremental-model-change). Snapshots can add new columns as they appear.
-- Tests: For snapshots, unique on `(unique_key, dbt_valid_from)`, no overlapping `dbt_valid_from` / `dbt_valid_to` ranges, and exactly one current row per id (`dbt_valid_to` is null). Freshness tests belong on the raw source.
-- Cost: Organize the table on the change timestamp. Add extra filters so you do not scan full history on every run. Refer to [About incremental strategy](/docs/build/incremental-strategy).
+- Source columns change: Use [`on_schema_change`](/docs/build/incremental-models#what-if-the-columns-of-my-incremental-model-change) to control how incremental models handle schema changes. Snapshots can add new columns, but you may need to update [`check_cols`](/docs/build/snapshots#check-strategy) if you use the `check` strategy.
+- Tests: Test that the source or staging `unique_key` is unique and not null. For snapshots, also test that `(unique_key, dbt_valid_from)` is unique, that `dbt_valid_from` / `dbt_valid_to` ranges do not overlap, and that each ID has at most one current version (`dbt_valid_to` is null). Monitor [source freshness](/docs/build/sources#source-data-freshness) to identify loading delays.
+- Cost: Organize your table by the change timestamp and use filters to limit how much data each run scans. Refer to [About incremental strategy](/docs/build/incremental-strategy).
 
 ## Related docs
 
