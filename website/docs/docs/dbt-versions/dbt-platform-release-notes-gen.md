@@ -20,6 +20,7 @@ availability:
 
 Release notes are grouped by date for single-tenant environments.
 
+<span><img src="/img/fontawesome/rss.svg" alt="RSS" className="rss-icon" />Subscribe to release note updates via [RSS](/feeds/release-notes-st-rss.xml), [Atom](/feeds/release-notes-st-atom.xml), or [JSON Feed](/feeds/release-notes-st-rss.json).</span>
 
 ## October 7, 2026
 
@@ -80,8 +81,6 @@ Release notes are grouped by date for single-tenant environments.
 - **Horizontal bar chart axis name no longer overlaps the legend**: The x-axis name, grid bottom margin, and legend centering on horizontal bar charts are now computed correctly so the axis label no longer overlaps the legend.
 
 - **Cost Insights no longer stuck on "Preparing"**: The Cost Insights dashboard no longer shows a perpetual loading spinner when partial cost data exists. You now see available cost data even when some rows have not been fully processed.
-
-<span><img src="/img/fontawesome/rss.svg" alt="RSS" className="rss-icon" />Subscribe to release note updates via [RSS](/feeds/release-notes-st-rss.xml), [Atom](/feeds/release-notes-st-atom.xml), or [JSON Feed](/feeds/release-notes-st-rss.json).</span>
 
 ## September 30, 2026
 
