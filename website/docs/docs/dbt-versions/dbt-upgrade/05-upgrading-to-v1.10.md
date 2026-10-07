@@ -1,7 +1,7 @@
 ---
 title: "Upgrading to v1.10"
 id: upgrading-to-v1.10
-description: New features and changes in dbt Core v1.10
+description: New features and changes in dbt v1.10
 displayed_sidebar: "docs"
 availability:
   engine: v1
@@ -10,19 +10,19 @@ availability:
  
 ## Resources 
 
-- <Constant name="core" /> [v1.10 changelog](https://github.com/dbt-labs/dbt-core/blob/1.10.latest/CHANGELOG.md)
+- <Constant name="dbt" /> [v1.10 changelog](https://github.com/dbt-labs/dbt/blob/1.10.latest/CHANGELOG.md)
 - [<Constant name="core" /> CLI Installation guide](/docs/local/install-dbt)
-- [dbt platform upgrade guide](/docs/dbt-versions/upgrade-dbt-platform-version#fusion-release-tracks)
+- [dbt platform upgrade guide](/docs/dbt-versions/upgrade-dbt-platform-version#release-tracks)
 
 ## What to know before upgrading
 
-dbt Labs is committed to providing backward compatibility for all versions 1.x. Any behavior changes will be accompanied by a [behavior change flag](/reference/global-configs/behavior-changes#behavior-change-flags) to provide a migration window for existing projects. If you encounter an error upon upgrading, please let us know by [opening an issue](https://github.com/dbt-labs/dbt-core/issues/new).
+dbt Labs is committed to providing backward compatibility for all versions 1.x. Any behavior changes will be accompanied by a [behavior change flag](/reference/global-configs/behavior-changes#behavior-change-flags) to provide a migration window for existing projects. If you encounter an error upon upgrading, please let us know by [opening an issue](https://github.com/dbt-labs/dbt/issues/new).
 
-Starting in 2024, <Constant name="dbt" /> provides the functionality from new versions of <Constant name="core" /> via [release tracks](/docs/dbt-versions/dbt-release-tracks) with automatic upgrades. If you have selected the **Latest** release track in <Constant name="dbt" />, you already have access to all the features, fixes, and other functionality that is included in <Constant name="core" /> v1.10! If you have selected the **Compatible** release track, you will have access in the next monthly **Compatible** release after the <Constant name="core" /> v1.10 final release.
+Starting in 2024, <Constant name="dbt" /> provides the functionality from new versions of <Constant name="core" /> via [release tracks](/docs/dbt-versions/dbt-release-tracks) with automatic upgrades. If you have selected the **v1 Latest** release track in <Constant name="dbt" />, you already have access to all the features, fixes, and other functionality that is included in <Constant name="dbt" /> v1.10! If you have selected the **v1 Compatible** release track, you will have access in the next monthly **v1 Compatible** release after the <Constant name="dbt" /> v1.10 final release.
 
 ## New and changed features and functionality
 
-New features and functionality available in <Constant name="core" /> v1.10
+New features and functionality available in <Constant name="dbt" /> v1.10
 
 ### The `--sample` flag
 
@@ -30,7 +30,7 @@ Large data sets can slow down dbt build times, making it harder for developers t
 
 ### Move standalone anchors under `anchors:` key
 
-As part of the ongoing process of making the dbt authoring language more precise, dbt Core v1.10 raises a warning when it sees an unexpected top-level key in a properties YAML file. A common use case behind these unexpected keys is standalone anchor definitions at the top level of a properties YAML file. You can use the new top-level `anchors:` key as a container for these reusable configuration blocks.
+As part of the ongoing process of making the dbt authoring language more precise, <Constant name="dbt" /> v1.10 raises a warning when it sees an unexpected top-level key in a properties YAML file. A common use case behind these unexpected keys is standalone anchor definitions at the top level of a properties YAML file. You can use the new top-level `anchors:` key as a container for these reusable configuration blocks.
 
 For example, rather than using this configuration:
 
@@ -89,7 +89,7 @@ This move is only necessary for fragments defined outside of the main YAML struc
 
 ### Parsing `catalogs.yml`
 
-dbt Core can now parse the `catalogs.yml` file. This is an important milestone in the journey to supporting external catalogs for Iceberg tables, as it enables write integrations. You'll be able to provide a config specifying a catalog integration for your producer model:
+<Constant name="core" /> can now parse the `catalogs.yml` file. This is an important milestone in the journey to supporting external catalogs for Iceberg tables, as it enables write integrations. You'll be able to provide a config specifying a catalog integration for your producer model:
 
 For example:
 
@@ -123,7 +123,7 @@ models:
 
 Check out our [docs on external catalog support](/docs/build/iceberg/about-catalogs) today! We'll have more information about this in the coming weeks, but this is an exciting step in journey to cross-platform support. 
 
-### Integrating dbt Core artifacts with dbt projects
+### Integrating <Constant name="core" /> artifacts with dbt projects
 
 With [hybrid projects](/docs/deploy/hybrid-projects), <Constant name="core"/> users working in the command line interface (CLI) can execute runs that seamlessly upload [artifacts](/reference/artifacts/dbt-artifacts) into <Constant name="dbt"/>. This enhances hybrid <Constant name="core"/>/<Constant name="dbt"/> deployments by:
 
@@ -135,7 +135,7 @@ Hybrid projects are available as a private beta to [<Constant name="dbt"/> Enter
 
 ### Managing changes to legacy behaviors
 
-dbt Core v1.10 introduces new flags for [managing changes to legacy behaviors](/reference/global-configs/behavior-changes). You may opt into recently introduced changes (disabled by default), or opt out of mature changes (enabled by default), by setting `true` / `false` values, respectively, for `flags` in `dbt_project.yml`.
+<Constant name="dbt" /> v1.10 introduces new flags for [managing changes to legacy behaviors](/reference/global-configs/behavior-changes). You may opt into recently introduced changes (disabled by default), or opt out of mature changes (enabled by default), by setting `true` / `false` values, respectively, for `flags` in `dbt_project.yml`.
 
 You can read more about each of these behavior changes in the following links:
 
@@ -159,8 +159,8 @@ What does this mean for you?
 
 1. If your project (or dbt package) encounters a new deprecation warning in `v1.10`, plan to update your invalid code soon. Although it’s just a warning for now, in a future version, dbt will enforce stricter validation of the inputs in your project. Check out the [`dbt-autofix` tool](https://github.com/dbt-labs/dbt-autofix) to autofix many of these!
 2. In the future, the [`meta` config](/reference/resource-configs/meta) will be the only place to put custom user-defined attributes. Everything else will be strongly typed and strictly validated. If you have an extra attribute you want to include in your project, or a model config you want to access in a custom materialization, you must nest it under `meta` moving forward.
-3. If you are using the [`—-warn-error` flag](/reference/global-configs/warnings) (or `--warn-error-options '{"error": "all"}'`) to promote all warnings to errors, this will include new deprecation warnings coming to dbt Core. If you don’t want these to be promoted to errors, the `--warn-error-options` flag gives you more granular control over exactly which types of warnings are treated as errors. You can set `"warn": ["Deprecations"]` (new as of `v1.10`) to continue treating the deprecation warnings as warnings.
-4. The `--models` / `--model` / `-m` flag was renamed to `--select` / `--s` way back in dbt Core v0.21 (Oct 2021). Silently skipping this flag means ignoring your command's selection criteria, which could mean building your entire DAG when you only meant to select a small subset. For this reason, the `--models` / `--model` / `-m` flag **will raise a warning** in dbt Core v1.10, and an error in <Constant name="fusion" />. Please update your job definitions accordingly.
+3. If you are using the [`—-warn-error` flag](/reference/global-configs/warnings) (or `--warn-error-options '{"error": "all"}'`) to promote all warnings to errors, this will include new deprecation warnings coming to <Constant name="core" />. If you don’t want these to be promoted to errors, the `--warn-error-options` flag gives you more granular control over exactly which types of warnings are treated as errors. You can set `"warn": ["Deprecations"]` (new as of `v1.10`) to continue treating the deprecation warnings as warnings.
+4. The `--models` / `--model` / `-m` flag was renamed to `--select` / `--s` way back in <Constant name="dbt" /> v0.21 (Oct 2021). Silently skipping this flag means ignoring your command's selection criteria, which could mean building your entire DAG when you only meant to select a small subset. For this reason, the `--models` / `--model` / `-m` flag **will raise a warning** in <Constant name="dbt" /> v1.10, and an error in <Constant name="fusion" />. Please update your job definitions accordingly.
 
 #### Custom inputs
   
@@ -328,7 +328,7 @@ import SnowflakeColumn from '/snippets/_snowflake-column-size.md';
 
 - Use the [`--use-fast-test-edges`](/reference/global-configs/fast-test-edges) flag with `dbt build` to reduce the number of test edges dbt adds to the execution graph. In large projects, this can significantly reduce run times and memory usage.
 
-- Provide the [`loaded_at_query`](/reference/resource-properties/freshness#loaded_at_query) property for source freshness to specify custom SQL to generate the `maxLoadedAt` time stamp on the source (versus the [built-in query](https://github.com/dbt-labs/dbt-adapters/blob/6c41bedf27063eda64375845db6ce5f7535ef6aa/dbt/include/global_project/macros/adapters/freshness.sql#L4-L16), which uses the `loaded_at_field`). You cannot define `loaded_at_query` if the `loaded_at_field` config is also provided.
+- Provide the [`loaded_at_query`](/reference/resource-configs/freshness) property for source freshness to specify custom SQL to generate the `maxLoadedAt` time stamp on the source (versus the [built-in query](https://github.com/dbt-labs/dbt-adapters/blob/6c41bedf27063eda64375845db6ce5f7535ef6aa/dbt/include/global_project/macros/adapters/freshness.sql#L4-L16), which uses the `loaded_at_field`). You cannot define `loaded_at_query` if the `loaded_at_field` config is also provided.
 
 - Provide validation for macro arguments using the [`validate_macro_args`](/reference/global-configs/behavior-flags/validate_macro_args) flag, which is disabled by default. When enabled, this flag checks that documented macro argument names match those in the macro definition and validates their types against a supported format. Previously, dbt did not enforce standard argument types, treating the type field as documentation-only. If no arguments are documented, dbt infers them from the macro and includes them in the manifest.json file. Learn more about [supported types](/reference/resource-properties/arguments#supported-types). 
 

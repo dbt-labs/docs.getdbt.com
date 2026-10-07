@@ -2,7 +2,7 @@
   "_meta": {
     "platform": "snowflake",
     "platform_name": "Snowflake",
-    "count": 946
+    "count": 1060
   },
   "functions": [
     {
@@ -11,6 +11,13 @@
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/tag_references_with_lineage",
       "preview_status": "GA",
       "fusion_typecheck": true
+    },
+    {
+      "name": "ACCUMULATE",
+      "category": "Aggregate",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/accumulate",
+      "preview_status": "GA",
+      "fusion_typecheck": false
     },
     {
       "name": "AGG",
@@ -1035,6 +1042,13 @@
       "fusion_typecheck": true
     },
     {
+      "name": "IS_AGENT_ACTIVATED (SYS_CONTEXT FUNCTION)",
+      "category": "Context",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/is_agent_activated",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "IS_APPLICATION_ROLE_ACTIVATED (SYS_CONTEXT FUNCTION)",
       "category": "Context",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/is_application_role_activated",
@@ -1178,6 +1192,13 @@
       "name": "SYS_CONTEXT (SNOWFLAKE$APPLICATION NAMESPACE)",
       "category": "Context",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/sys_context_snowflake_application",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "SYS_CONTEXT (SNOWFLAKE$CURRENT NAMESPACE)",
+      "category": "Context",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/sys_context_snowflake_current",
       "preview_status": "GA",
       "fusion_typecheck": false
     },
@@ -1462,6 +1483,27 @@
       "fusion_typecheck": false
     },
     {
+      "name": "APPROX_QUANTILE_25 (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_approx_quantile_25",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "APPROX_QUANTILE_50 (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_approx_quantile_50",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "APPROX_QUANTILE_99 (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_approx_quantile_99",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "AVG (SYSTEM DATA METRIC FUNCTION)",
       "category": "Data metric",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_avg",
@@ -1483,6 +1525,20 @@
       "fusion_typecheck": false
     },
     {
+      "name": "CASE_FORMAT_VIOLATION_COUNT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_case_format_violation_count",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "CASE_FORMAT_VIOLATION_PERCENT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_case_format_violation_percent",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "DATA_METRIC_SCHEDULED_TIME (SYSTEM DATA METRIC FUNCTION)",
       "category": "Data metric",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_data_metric_schedule_time",
@@ -1497,9 +1553,93 @@
       "fusion_typecheck": false
     },
     {
+      "name": "EXTREME_OUTLIER_COUNT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_extreme_outlier_count",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "EXTREME_OUTLIER_IQR_COUNT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_extreme_outlier_iqr_count",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "EXTREME_OUTLIER_IQR_PERCENT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_extreme_outlier_iqr_percent",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "EXTREME_OUTLIER_PERCENT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_extreme_outlier_percent",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "EXTREME_OUTLIER_ZSCORE_COUNT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_extreme_outlier_zscore_count",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "EXTREME_OUTLIER_ZSCORE_PERCENT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_extreme_outlier_zscore_percent",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "FRESHNESS (SYSTEM DATA METRIC FUNCTION)",
       "category": "Data metric",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_freshness",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "FUTURE_TIMESTAMP_COUNT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_future_timestamp_count",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "FUTURE_TIMESTAMP_PERCENT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_future_timestamp_percent",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "INVALID_JSON_COUNT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_invalid_json_count",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "INVALID_JSON_PERCENT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_invalid_json_percent",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "INVALID_NUMERIC_TYPE_CAST_COUNT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_invalid_numeric_type_cast_count",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "INVALID_NUMERIC_TYPE_CAST_PERCENT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_invalid_numeric_type_cast_percent",
       "preview_status": "GA",
       "fusion_typecheck": false
     },
@@ -1511,11 +1651,32 @@
       "fusion_typecheck": true
     },
     {
+      "name": "MEDIAN (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_median",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
       "name": "MIN (SYSTEM DATA METRIC FUNCTION)",
       "category": "Data metric",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_min",
       "preview_status": "GA",
       "fusion_typecheck": true
+    },
+    {
+      "name": "NEGATIVE_COUNT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_negative_count",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "NEGATIVE_PERCENT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_negative_percent",
+      "preview_status": "GA",
+      "fusion_typecheck": false
     },
     {
       "name": "NULL_COUNT (SYSTEM DATA METRIC FUNCTION)",
@@ -1532,9 +1693,79 @@
       "fusion_typecheck": false
     },
     {
+      "name": "OUTLIER_COUNT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_outlier_count",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "OUTLIER_IQR_COUNT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_outlier_iqr_count",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "OUTLIER_IQR_PERCENT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_outlier_iqr_percent",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "OUTLIER_PERCENT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_outlier_percent",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "OUTLIER_ZSCORE_COUNT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_outlier_zscore_count",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "OUTLIER_ZSCORE_PERCENT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_outlier_zscore_percent",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "REFERENTIAL_INTEGRITY_COUNT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_referential_integrity_count",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "ROW_COUNT (SYSTEM DATA METRIC FUNCTION)",
       "category": "Data metric",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_row_count",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "SCHEMA_CHANGE_COUNT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_schema_change_count",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "SPECIAL_CHARACTER_COUNT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_special_character_count",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "SPECIAL_CHARACTER_PERCENT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_special_character_percent",
       "preview_status": "GA",
       "fusion_typecheck": false
     },
@@ -1546,9 +1777,65 @@
       "fusion_typecheck": true
     },
     {
+      "name": "STRING_LENGTH_AVG (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_string_length_avg",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "STRING_LENGTH_MAX (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_string_length_max",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "STRING_LENGTH_MIN (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_string_length_min",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "UNIQUE_COUNT (SYSTEM DATA METRIC FUNCTION)",
       "category": "Data metric",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_unique_count",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "UNTRIMMED_STRING_COUNT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_untrimmed_string_count",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "UNTRIMMED_STRING_PERCENT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_untrimmed_string_percent",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "VARIANCE (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_variance",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ZERO_COUNT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_zero_count",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "ZERO_PERCENT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_zero_percent",
       "preview_status": "GA",
       "fusion_typecheck": false
     },
@@ -3366,6 +3653,104 @@
       "fusion_typecheck": false
     },
     {
+      "name": "PERIOD_BEGIN",
+      "category": "Period",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/period_begin",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "PERIOD_CONSTRUCT",
+      "category": "Period",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/period_construct",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "PERIOD_CONTAINS",
+      "category": "Period",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/period_contains",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "PERIOD_END",
+      "category": "Period",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/period_end",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "PERIOD_EQUALS",
+      "category": "Period",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/period_equals",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "PERIOD_IMMEDIATELY_PRECEDES",
+      "category": "Period",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/period_immediately_precedes",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "PERIOD_IMMEDIATELY_SUCCEEDS",
+      "category": "Period",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/period_immediately_succeeds",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "PERIOD_INTERSECT",
+      "category": "Period",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/period_intersect",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "PERIOD_LDIFF",
+      "category": "Period",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/period_ldiff",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "PERIOD_MEETS",
+      "category": "Period",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/period_meets",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "PERIOD_OVERLAPS",
+      "category": "Period",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/period_overlaps",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "PERIOD_PRECEDES",
+      "category": "Period",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/period_precedes",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "PERIOD_RDIFF",
+      "category": "Period",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/period_rdiff",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "PERIOD_SUCCEEDS",
+      "category": "Period",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/period_succeeds",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "ARRAY_APPEND",
       "category": "Semi-structured and structured data",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/array_append",
@@ -3495,6 +3880,13 @@
       "name": "ARRAY_REMOVE_AT",
       "category": "Semi-structured and structured data",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/array_remove_at",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ARRAY_REPEAT",
+      "category": "Semi-structured and structured data",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/array_repeat",
       "preview_status": "GA",
       "fusion_typecheck": true
     },
@@ -4010,6 +4402,13 @@
       "fusion_typecheck": true
     },
     {
+      "name": "AI_COMPLETE (STRUCTURED OUTPUTS)",
+      "category": "String & binary",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/ai_complete-structured-outputs",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
       "name": "AI_COUNT_TOKENS",
       "category": "String & binary",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/ai_count_tokens",
@@ -4078,6 +4477,13 @@
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/ai_similarity",
       "preview_status": "GA",
       "fusion_typecheck": true
+    },
+    {
+      "name": "AI_SUMMARIZE",
+      "category": "String & binary",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/ai_summarize",
+      "preview_status": "GA",
+      "fusion_typecheck": false
     },
     {
       "name": "AI_TRANSLATE",
@@ -4262,6 +4668,13 @@
       "fusion_typecheck": true
     },
     {
+      "name": "EVALUATE AN AI FUNCTION (AI_FUNCTION_EVALUATION)",
+      "category": "String & binary",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/ai_function_evaluation",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "EXTRACT_ANSWER (SNOWFLAKE.CORTEX)",
       "category": "String & binary",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/extract_answer-snowflake-cortex",
@@ -4302,6 +4715,13 @@
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/finetune-snowflake-cortex",
       "preview_status": "GA",
       "fusion_typecheck": true
+    },
+    {
+      "name": "FORMAT_STRING_TEMPLATE",
+      "category": "String & binary",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/format_string_template",
+      "preview_status": "GA",
+      "fusion_typecheck": false
     },
     {
       "name": "HEX_DECODE_BINARY",
@@ -4442,6 +4862,13 @@
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/octet_length",
       "preview_status": "GA",
       "fusion_typecheck": true
+    },
+    {
+      "name": "OPTIMIZE AN AI FUNCTION (AI_FUNCTION_OPTIMIZATION)",
+      "category": "String & binary",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/ai_function_optimization",
+      "preview_status": "GA",
+      "fusion_typecheck": false
     },
     {
       "name": "PARSE_IP",
@@ -4661,11 +5088,11 @@
       "fusion_typecheck": true
     },
     {
-      "name": "SUMMARIZE (SNOWFLAKE.CORTEX)",
+      "name": "THREAD_MESSAGES (SNOWFLAKE.CORTEX)",
       "category": "String & binary",
-      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/summarize-snowflake-cortex",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/thread_messages-snowflake-cortex",
       "preview_status": "GA",
-      "fusion_typecheck": true
+      "fusion_typecheck": false
     },
     {
       "name": "TRANSLATE",
@@ -4808,9 +5235,23 @@
       "fusion_typecheck": false
     },
     {
+      "name": "EXPLAIN_GRANTABLE_PRIVILEGES",
+      "category": "System",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/explain_grantable_privileges",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "EXPLAIN_JSON",
       "category": "System",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/explain_json",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "EXPLAIN_PRIVILEGES",
+      "category": "System",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/explain_privileges",
       "preview_status": "GA",
       "fusion_typecheck": false
     },
@@ -4885,6 +5326,13 @@
       "fusion_typecheck": false
     },
     {
+      "name": "SYSTEM$ADD_PRIVATELINK_ENDPOINT_HOSTNAME",
+      "category": "System",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/system_add_privatelink_endpoint_hostname",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "SYSTEM$ADD_REFERENCE",
       "category": "System",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/system_add_reference",
@@ -4941,6 +5389,13 @@
       "fusion_typecheck": false
     },
     {
+      "name": "SYSTEM$AUTHORIZE_SNOWFLAKE_MANAGED_STORAGE_VOLUME_PRIVATELINK_ACCESS",
+      "category": "System",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/system_authorize_snowflake_managed_storage_volume_privatelink_access",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "SYSTEM$AUTHORIZE_STAGE_PRIVATELINK_ACCESS",
       "category": "System",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/system_authorize_stage_privatelink_access",
@@ -4983,6 +5438,20 @@
       "fusion_typecheck": false
     },
     {
+      "name": "SYSTEM$BLOCK_SNOWFLAKE_MANAGED_STORAGE_VOLUME_PUBLIC_ACCESS",
+      "category": "System",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/system_block_snowflake_managed_storage_volume_public_access",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "SYSTEM$BLOCK_SNOWFLAKE_MANAGED_STORAGE_VOLUME_PUBLIC_ACCESS_WITH_EXCEPTION",
+      "category": "System",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/system_block_snowflake_managed_storage_volume_public_access_with_exception",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "SYSTEM$CANCEL_ALL_QUERIES",
       "category": "System",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/system_cancel_all_queries",
@@ -4995,6 +5464,13 @@
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/system_cancel_query",
       "preview_status": "GA",
       "fusion_typecheck": true
+    },
+    {
+      "name": "SYSTEM$CAST_MULTI_PARTY_APPROVAL_VOTE",
+      "category": "System",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/system_cast_multi_party_approval_vote",
+      "preview_status": "GA",
+      "fusion_typecheck": false
     },
     {
       "name": "SYSTEM$CATALOG_LINK_STATUS",
@@ -5081,6 +5557,13 @@
       "fusion_typecheck": false
     },
     {
+      "name": "SYSTEM$CREATE_EVALUATION_DATASET",
+      "category": "System",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/system_create_evaluation_dataset",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "SYSTEM$CURRENT_USER_TASK_NAME",
       "category": "System",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/system_current_user_task_name",
@@ -5109,6 +5592,27 @@
       "fusion_typecheck": false
     },
     {
+      "name": "SYSTEM$DBT_GET_LAST_FAILED_RUN_TARGET",
+      "category": "System",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/system_dbt_get_last_failed_run_target",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "SYSTEM$DBT_GET_LAST_RUN_TARGET",
+      "category": "System",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/system_dbt_get_last_run_target",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "SYSTEM$DBT_GET_LAST_SUCCESSFUL_RUN_TARGET",
+      "category": "System",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/system_dbt_get_last_successful_run_target",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "SYSTEM$DEACTIVATE_CMK_INFO",
       "category": "System",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/system_deactivate_cmk_info",
@@ -5119,6 +5623,13 @@
       "name": "SYSTEM$DECODE_PAT",
       "category": "System",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/system_decode_pat",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "SYSTEM$DEMIGRATE_DBT_PROJECT",
+      "category": "System",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/system_demigrate_dbt_project",
       "preview_status": "GA",
       "fusion_typecheck": false
     },
@@ -5172,6 +5683,20 @@
       "fusion_typecheck": true
     },
     {
+      "name": "SYSTEM$DISABLE_FEATURE_GROUPS",
+      "category": "System",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/system_disable_feature_groups",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "SYSTEM$DISABLE_FEATURE_GROUPS_PREVIEW",
+      "category": "System",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/system_disable_feature_groups_preview",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "SYSTEM$DISABLE_GLOBAL_DATA_SHARING_FOR_ACCOUNT",
       "category": "System",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/system_disable_global_data_sharing_for_account",
@@ -5196,6 +5721,13 @@
       "name": "SYSTEM$ENABLE_BEHAVIOR_CHANGE_BUNDLE",
       "category": "System",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/system_enable_behavior_change_bundle",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "SYSTEM$ENABLE_FEATURE_GROUPS",
+      "category": "System",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/system_enable_feature_groups",
       "preview_status": "GA",
       "fusion_typecheck": false
     },
@@ -5270,6 +5802,13 @@
       "fusion_typecheck": true
     },
     {
+      "name": "SYSTEM$EXECUTE_CATALOG_OPERATION",
+      "category": "System",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/system_execute_catalog_operation",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "SYSTEM$EXPLAIN_JSON_TO_TEXT",
       "category": "System",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/system_explain_json_to_text",
@@ -5298,6 +5837,13 @@
       "fusion_typecheck": true
     },
     {
+      "name": "SYSTEM$FETCH_EXTERNAL_SECRET_FROM_INTEGRATION",
+      "category": "System",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/system_fetch_external_secret_from_integration",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "SYSTEM$FINISH_OAUTH_FLOW",
       "category": "System",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/system_finish_oauth_flow",
@@ -5319,6 +5865,20 @@
       "fusion_typecheck": false
     },
     {
+      "name": "SYSTEM$GET_ALERT_CONFIG",
+      "category": "System",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/system_get_alert_config",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "SYSTEM$GET_ALERT_TEMPLATE",
+      "category": "System",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/system_get_alert_template",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "SYSTEM$GET_ALL_DEFAULT_COLUMNS_OVERRIDES",
       "category": "System",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/system_get_all_default_columns_overrides",
@@ -5331,6 +5891,13 @@
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/system_get_all_references",
       "preview_status": "GA",
       "fusion_typecheck": true
+    },
+    {
+      "name": "SYSTEM$GET_APPLICATION_SERVICE_LOGS",
+      "category": "System",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/system_get_application_service_logs",
+      "preview_status": "GA",
+      "fusion_typecheck": false
     },
     {
       "name": "SYSTEM$GET_AWS_SNS_IAM_POLICY",
@@ -5466,6 +6033,13 @@
       "fusion_typecheck": false
     },
     {
+      "name": "SYSTEM$GET_LISTING_URL_FOR_EXTERNAL_CONSUMER",
+      "category": "System",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/system_get_listing_url_for_external_consumer",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "SYSTEM$GET_LOGIN_FAILURE_DETAILS",
       "category": "System",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/system_get_login_failure_details",
@@ -5543,6 +6117,20 @@
       "fusion_typecheck": false
     },
     {
+      "name": "SYSTEM$GET_SECURITY_INTEGRATIONS_FOR_API_PROVIDER",
+      "category": "System",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/system_get_security_integrations_for_api_provider",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "SYSTEM$GET_SERVICE_CALLER_TOKEN_EXPIRY",
+      "category": "System",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/system_get_service_caller_token_expiry",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "SYSTEM$GET_SERVICE_DNS_DOMAIN",
       "category": "System",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/system_get_service_dns_domain",
@@ -5581,6 +6169,13 @@
       "name": "SYSTEM$GET_STAGE_PRIVATELINK_AUTHORIZED_ENDPOINTS",
       "category": "System",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/system_get_stage_privatelink_authorized_endpoints",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "SYSTEM$GET_TABLE_ARCHIVE_METADATA",
+      "category": "System",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/system_get_table_archive_metadata",
       "preview_status": "GA",
       "fusion_typecheck": false
     },
@@ -5697,6 +6292,27 @@
       "fusion_typecheck": false
     },
     {
+      "name": "SYSTEM$ISSUE_PER_ACCOUNT_APP_SERVICE_CERTIFICATE",
+      "category": "System",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/system_issue_per_account_app_service_certificate",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "SYSTEM$ISSUE_PER_ACCOUNT_CERTIFICATES",
+      "category": "System",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/system_issue_per_account_certificates",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "SYSTEM$ISSUE_WORKLOAD_IDENTITY_FEDERATION_TOKEN",
+      "category": "System",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/system_issue_workload_identity_federation_token",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "SYSTEM$LAST_CHANGE_COMMIT_TIME",
       "category": "System",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/system_last_change_commit_time",
@@ -5725,9 +6341,23 @@
       "fusion_typecheck": false
     },
     {
+      "name": "SYSTEM$LIST_ALERT_TEMPLATES",
+      "category": "System",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/system_list_alert_templates",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "SYSTEM$LIST_APPLICATION_RESTRICTED_FEATURES",
       "category": "System",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/system_list_application_restricted_features",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "SYSTEM$LIST_EXTERNAL_SECRETS",
+      "category": "System",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/system_list_external_secrets",
       "preview_status": "GA",
       "fusion_typecheck": false
     },
@@ -5763,6 +6393,13 @@
       "name": "SYSTEM$LOG, SYSTEM$LOG_<LEVEL> (FOR SNOWFLAKE SCRIPTING)",
       "category": "System",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/system_log",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "SYSTEM$MIGRATE_DBT_PROJECT",
+      "category": "System",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/system_migrate_dbt_project",
       "preview_status": "GA",
       "fusion_typecheck": false
     },
@@ -5844,6 +6481,13 @@
       "fusion_typecheck": false
     },
     {
+      "name": "SYSTEM$READ_OSSIE_YAML_FROM_SEMANTIC_VIEW",
+      "category": "System",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/system_read_ossie_yaml_from_semantic_view",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "SYSTEM$READ_YAML_FROM_SEMANTIC_VIEW",
       "category": "System",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/system_read_yaml_from_semantic_view",
@@ -5886,11 +6530,25 @@
       "fusion_typecheck": false
     },
     {
+      "name": "SYSTEM$REMOTE_APP_OPERATION",
+      "category": "System",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/system_remote_app_operation",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "SYSTEM$REMOVE_ALL_REFERENCES",
       "category": "System",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/system_remove_all_references",
       "preview_status": "GA",
       "fusion_typecheck": true
+    },
+    {
+      "name": "SYSTEM$REMOVE_PRIVATELINK_ENDPOINT_HOSTNAME",
+      "category": "System",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/system_remove_privatelink_endpoint_hostname",
+      "preview_status": "GA",
+      "fusion_typecheck": false
     },
     {
       "name": "SYSTEM$REMOVE_REFERENCE",
@@ -5931,6 +6589,13 @@
       "name": "SYSTEM$REVOKE_PRIVATELINK",
       "category": "System",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/system_revoke_privatelink",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "SYSTEM$REVOKE_SNOWFLAKE_MANAGED_STORAGE_VOLUME_PRIVATELINK_ACCESS",
+      "category": "System",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/system_revoke_snowflake_managed_storage_volume_privatelink_access",
       "preview_status": "GA",
       "fusion_typecheck": false
     },
@@ -6033,6 +6698,13 @@
       "fusion_typecheck": true
     },
     {
+      "name": "SYSTEM$SHOW_BUDGET_SHARED_RESOURCE_CANDIDATES",
+      "category": "System",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/system_show_budget_shared_resource_candidates",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "SYSTEM$SHOW_BUDGETS_FOR_RESOURCE",
       "category": "System",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/system_show_budgets_for_resource",
@@ -6043,6 +6715,13 @@
       "name": "SYSTEM$SHOW_BUDGETS_IN_ACCOUNT",
       "category": "System",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/system_show_budgets_in_account",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "SYSTEM$SHOW_DYNAMIC_TABLES_CREATED_FOR_RESHARING",
+      "category": "System",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/system_show_dynamic_tables_created_for_resharing",
       "preview_status": "GA",
       "fusion_typecheck": false
     },
@@ -6071,6 +6750,13 @@
       "name": "SYSTEM$SHOW_SENSITIVE_DATA_MONITORED_ENTITIES",
       "category": "System",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/system_show_sensitive_data_monitored_entities",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "SYSTEM$SNOWFLAKE_MANAGED_STORAGE_VOLUME_PUBLIC_ACCESS_STATUS",
+      "category": "System",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/system_snowflake_managed_storage_volume_public_access_status",
       "preview_status": "GA",
       "fusion_typecheck": false
     },
@@ -6117,6 +6803,13 @@
       "fusion_typecheck": false
     },
     {
+      "name": "SYSTEM$TAG_VALUE_CONTAINS",
+      "category": "System",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/system_tag_value_contains",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "SYSTEM$TASK_DEPENDENTS_ENABLE",
       "category": "System",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/system_task_dependents_enable",
@@ -6148,6 +6841,13 @@
       "name": "SYSTEM$UNBLOCK_INTERNAL_STAGES_PUBLIC_ACCESS",
       "category": "System",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/system_unblock_internal_stages_public_access",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "SYSTEM$UNBLOCK_SNOWFLAKE_MANAGED_STORAGE_VOLUME_PUBLIC_ACCESS",
+      "category": "System",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/system_unblock_snowflake_managed_storage_volume_public_access",
       "preview_status": "GA",
       "fusion_typecheck": false
     },
@@ -6194,6 +6894,20 @@
       "fusion_typecheck": false
     },
     {
+      "name": "SYSTEM$UNVERIFY_DNS_DOMAIN",
+      "category": "System",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/system_unverify_dns_domain",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "SYSTEM$UPDATE_MULTI_PARTY_APPROVAL_JUSTIFICATION",
+      "category": "System",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/system_update_multi_party_approval_justification",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "SYSTEM$USER_TASK_CANCEL_ONGOING_EXECUTIONS",
       "category": "System",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/system_user_task_cancel_ongoing_executions",
@@ -6229,11 +6943,25 @@
       "fusion_typecheck": false
     },
     {
+      "name": "SYSTEM$VERIFY_DNS_DOMAIN",
+      "category": "System",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/system_verify_dns_domain",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "SYSTEM$VERIFY_EXTERNAL_OAUTH_TOKEN",
       "category": "System",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/system_verify_ext_oauth_token",
       "preview_status": "GA",
       "fusion_typecheck": true
+    },
+    {
+      "name": "SYSTEM$VERIFY_EXTERNAL_SECRET_INTEGRATION",
+      "category": "System",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/system_verify_external_secret_integration",
+      "preview_status": "GA",
+      "fusion_typecheck": false
     },
     {
       "name": "SYSTEM$VERIFY_EXTERNAL_VOLUME",
@@ -6250,9 +6978,51 @@
       "fusion_typecheck": true
     },
     {
+      "name": "SYSTEM$WAIT_FOR_OPENFLOW_CONNECTOR_STATUS",
+      "category": "System",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/system_wait_for_openflow_connector_status",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "SYSTEM$WAIT_FOR_OPENFLOW_DEPLOYMENT_STATUS",
+      "category": "System",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/system_wait_for_openflow_deployment_status",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "SYSTEM$WAIT_FOR_OPENFLOW_RUNTIME_STATUS",
+      "category": "System",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/system_wait_for_openflow_runtime_status",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "SYSTEM$WAIT_FOR_SERVICES",
       "category": "System",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/system_wait_for_services",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "SYSTEM$WAIT_FOR_STABLE_OPENFLOW_CONNECTORS",
+      "category": "System",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/system_wait_for_stable_openflow_connectors",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "SYSTEM$WAIT_FOR_STABLE_OPENFLOW_DEPLOYMENTS",
+      "category": "System",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/system_wait_for_stable_openflow_deployments",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "SYSTEM$WAIT_FOR_STABLE_OPENFLOW_RUNTIMES",
+      "category": "System",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/system_wait_for_stable_openflow_runtimes",
       "preview_status": "GA",
       "fusion_typecheck": false
     },
@@ -6327,6 +7097,13 @@
       "fusion_typecheck": false
     },
     {
+      "name": "ESTIMATE_HYBRID_TABLE_STORAGE_USAGE",
+      "category": "Table",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/estimate_hybrid_table_storage_usage",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "FLATTEN",
       "category": "Table",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/flatten",
@@ -6344,6 +7121,13 @@
       "name": "GET_AI_EVALUATION_DATA (SNOWFLAKE.LOCAL)",
       "category": "Table",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/get_ai_evaluation_data-snowflake-local",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "GET_AI_OBSERVABILITY_EVENTS (SNOWFLAKE.LOCAL)",
+      "category": "Table",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/get_ai_observability_events-snowflake-local",
       "preview_status": "GA",
       "fusion_typecheck": false
     },
@@ -6411,6 +7195,13 @@
       "fusion_typecheck": true
     },
     {
+      "name": "REPLICATION_GROUP_LAG_HISTORY",
+      "category": "Table",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/replication_group_lag_history",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "REST_EVENT_HISTORY",
       "category": "Table",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/rest_event_history",
@@ -6423,6 +7214,13 @@
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/result_scan",
       "preview_status": "GA",
       "fusion_typecheck": true
+    },
+    {
+      "name": "SEMANTIC_VIEW_MATERIALIZATION_REFRESH_HISTORY",
+      "category": "Table",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/semantic_view_materialization_refresh_history",
+      "preview_status": "GA",
+      "fusion_typecheck": false
     },
     {
       "name": "STORAGE_LIFECYCLE_POLICY_HISTORY",

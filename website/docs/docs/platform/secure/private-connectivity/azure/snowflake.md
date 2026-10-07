@@ -61,7 +61,7 @@ Subject: New Azure Multi-Tenant Private Link Request
 
 <PrivateLinkSLA />
 
-3. dbt Support will provide the `private endpoint resource_id` of our `private_endpoint` and the `CIDR` range for you to complete the [PrivateLink configuration](https://community.snowflake.com/s/article/HowtosetupPrivatelinktoSnowflakefromCloudServiceVendors) by contacting the Snowflake Support team. 
+3. dbt Support will provide the `private endpoint resource_id` of our `private_endpoint` for you to complete the [PrivateLink configuration](https://community.snowflake.com/s/article/HowtosetupPrivatelinktoSnowflakefromCloudServiceVendors) by contacting the Snowflake Support team. 
 
 
 4. (Optional) If enabling an [Azure private endpoint for an Internal Stage](https://docs.snowflake.com/en/user-guide/private-internal-stages-azure), it will also provide the `resource_id` for the Internal Stage endpoint. 
@@ -84,7 +84,9 @@ Once dbt Support completes the configuration, you can start creating new connect
 <PrivateLinkCreateConnection platform="Snowflake" />
 
 ## Configuring network policies
-If your organization uses [Snowflake Network Policies](https://docs.snowflake.com/en/user-guide/network-policies) to restrict access to your Snowflake account, you need to add a network rule for <Constant name="dbt" />. 
+If your organization uses [Snowflake Network Policies](https://docs.snowflake.com/en/user-guide/network-policies) to restrict access to your Snowflake account, you need to add a network rule for <Constant name="dbt" />.
+
+Use the Azure Link ID to identify the <Constant name="dbt" /> private endpoint in the network rule. 
 
 ### Find the endpoint Azure Link ID
 

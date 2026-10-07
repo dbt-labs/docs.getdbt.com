@@ -30,7 +30,7 @@ Refer to the [Licensing FAQs](https://www.getdbt.com/licenses-faq) for more info
 
 ## The dbt engine
 
-The current generation of the dbt is written in Rust with a native understanding of SQL across multiple engine dialects. That comprehension lets dbt catch errors before they reach your warehouse and powers editor features like autocomplete and inline errors as you type.
+The current generation of dbt is written in Rust with a native understanding of SQL across multiple engine dialects. That comprehension lets dbt catch errors before they reach your warehouse and powers editor features like autocomplete and inline errors as you type.
 
 v2 is the default experience when you [install dbt](/docs/local/install-dbt). It builds on the Apache 2.0 open-source runtime CLI foundation for the dbt framework. dbt is free to use, with some capabilities unlocked when you sign in with any <Constant name="dbt_platform" /> account.
 
@@ -43,7 +43,7 @@ As a developer, dbt can:
 - Preview inline <Term id="cte">CTEs</Term> for faster debugging
 - Trace model and column definitions across your entire project
 
-Get all of this, free, in the [dbt extension for VS Code](/docs/about-dbt-extension), built on v2.
+Get all of this, free, in the [dbt extension for VS Code](/docs/about-dbt-extension), built to enhance the power of v2, but also available in v1.
 
 
 ## How to use dbt
@@ -71,10 +71,10 @@ For the best development experience, we recommend pairing v2 with the [dbt VS Co
 To get started quickly, try the [dbt quickstart](/guides/dbt).
 
 Other ways to run self-hosted dbt:
-- [dbt Core v1.x](/docs/local/install-dbt?version=1.0): The original Python-based CLI. 
-- [dbt Core v2.x](/docs/local/install-dbt-v2): dbt Core 2.0, the free, fully open-source (Apache 2.0) distribution of the new Rust-based dbt engine. Typically for organizations with a strict requirement to use this OSS runtime.
+- [<Constant name="core_v1" />](/docs/local/install-dbt?version=1.0): The original Python-based CLI. 
+- [dbt OSS](/docs/local/install-dbt-v2):  The free, fully open-source (Apache 2.0) distribution of the new Rust-based dbt engine. Typically for organizations with a strict requirement to use this OSS runtime.
 
-To contribute to the open-source project, refer to the [GitHub repo](https://github.com/dbt-labs/dbt-core).
+To contribute to the open-source project, refer to the [GitHub repo](https://github.com/dbt-labs/dbt).
 
 ## Why use dbt
 

@@ -7,10 +7,11 @@ availability: platform_login
 
 Deployment environments in <Constant name="dbt" /> are crucial for deploying dbt jobs in production and using features or integrations that depend on dbt metadata or results. To execute dbt, environments determine the settings used during job runs, including:
 
-- The version of <Constant name="core" /> that will be used to run your project
+- The version of <Constant name="dbt" /> that will be used to run your project
 - The warehouse connection information (including the target database/schema settings)
 - The [connection profile](/docs/platform/about-profiles) (the credentials dbt uses to connect)
 - The version of your code to execute
+- Whether [dbt State](/docs/deploy/dbt-state-about) is enabled for the environment, which jobs in the environment can inherit. For more information, refer to [Enabling dbt State on environments and jobs](/docs/deploy/dbt-state-enable-env-jobs).
 
 A <Constant name="dbt" /> project can have multiple deployment environments, providing you the flexibility and customization to tailor the execution of dbt jobs. You can use deployment environments to [create and schedule jobs](/docs/deploy/deploy-jobs#create-and-schedule-jobs), [enable continuous integration](/docs/deploy/continuous-integration), or more based on your specific needs or requirements.
 
@@ -44,6 +45,10 @@ In <Constant name="dbt" />, each project can have one designated deployment envi
 For customers using the <Constant name="semantic_layer" />, the next section of environment settings is the <Constant name="semantic_layer" /> configurations. [The <Constant name="semantic_layer" /> setup guide](/docs/use-dbt-semantic-layer/setup-sl) has the most up-to-date setup instructions.
 
 You can also leverage the dbt Job scheduler to [validate your semantic nodes in a CI job](/docs/deploy/ci-jobs#semantic-validations-in-ci) to ensure code changes made to dbt models don't break these metrics.
+
+### dbt State
+
+[dbt State](/docs/deploy/dbt-state-about) reduces unnecessary node rebuilds by reusing nodes when neither the logic nor the data has changed. You can enable it on a deployment environment so that jobs in the environment can inherit the setting. This option is only visible if dbt State is enabled on your account. For steps, refer to [Enabling dbt State on environments and jobs](/docs/deploy/dbt-state-enable-env-jobs).
 
 ## Staging environment
 
@@ -86,9 +91,6 @@ There is exactly one source (`sensitive_source`), and all downstream dbt models 
 
 Finally, the staging environment has its own view in [<Constant name="catalog" />](/docs/explore/explore-projects), giving you a full view of your prod and pre-prod data.
 
-<Lightbox src="/img/docs/collaborate/dbt-explorer/explore-staging-env.png" width="85%" title="Explore in a staging environment" />
-
-
 ### Create a Staging environment
 
 
@@ -103,14 +105,12 @@ We recommend that the data warehouse credentials be for a dedicated user or serv
 
 A deployment environment needs two settings to run jobs:
 
-| Setting | Scope | Controls |
 <SimpleTable>
-
+| Setting | Scope | Controls |
 | --- | --- | --- |
 | **Deployment connection** | Environment-level | Where dbt builds objects in your warehouse (database, schema, and warehouse) |
 | **Connection profile** | Project-level (assigned to the environment) | How dbt authenticates, and the credentials it uses to connect |
 </SimpleTable>
-<br />
 
 You need to complete both settings as a deployment connection on its own isn't enough for jobs to run. You also need a [connection profile](#connection-profiles) assigned to the environment.
 
@@ -198,4 +198,5 @@ import DeleteEnvironment from '/snippets/_delete-environment.md';
 - [Deploy jobs](/docs/deploy/deploy-jobs)
 - [CI jobs](/docs/deploy/continuous-integration)
 - [Delete a job or environment in <Constant name="dbt" />](/faqs/Environments/delete-environment-job)
+- [Set up dbt State](/docs/deploy/dbt-state-setup)
 
