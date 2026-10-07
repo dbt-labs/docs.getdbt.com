@@ -26,7 +26,7 @@ Release notes are grouped by date for single-tenant environments.
 
 ## New
 
-### dbt Copilot and agents
+### dbt AI and agents
 
 - **Preview**: Explore mode is now available in the dbt Wizard [home tab](/docs/platform/wizard-home#ask-questions-in-explore-mode) and [Studio IDE](/docs/dbt-ai/wizard-ide#ask-questions-in-explore-mode). Explore mode lets users ask questions of governed production data in plain language, with the SQL or metric definition behind every answer. Read-only users can now be [invited](/docs/platform/wizard-read-only-users) to ask questions about your data without a developer license in the Wizard home tab.
 
@@ -42,7 +42,7 @@ Release notes are grouped by date for single-tenant environments.
 
 ## Enhancements
 
-### dbt Copilot and agents
+### dbt AI and agents
 
 - **Better file search for Wizard @-mentions**: Workspace @-mention queries now use server-side fuzzy matching instead of filtering a local list, returning better-ranked results for large repositories. The context file picker also prevents selecting stale results while a search is still in flight.
 
@@ -70,7 +70,7 @@ Release notes are grouped by date for single-tenant environments.
 
 ## Fixes
 
-### dbt Copilot and agents
+### dbt AI and agents
 
 - **Wizard diff card no longer crashes on malformed patches**: When the Wizard receives a malformed diff patch, it now displays a "Couldn't parse diff" error badge instead of crashing.
 
