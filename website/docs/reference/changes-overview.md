@@ -28,7 +28,7 @@ Use this page to understand the different types of changes, what to do, and wher
 
 <Card
   title="Deprecated CLI flags"
-  body="Command-line flags passed to dbt commands that are being removed in Fusion.<br/><br/><strong>Impact:</strong> Some ignored (with warnings); <strong>--models</strong> flag will error in Fusion.<br/><br/><strong>Action:</strong> Update job definitions and scripts to remove or replace these flags."
+  body="Command-line flags passed to dbt commands that are being removed in dbt v2.<br/><br/><strong>Impact:</strong> Some ignored (with warnings); <strong>--models</strong> flag will error in dbt v2.<br/><br/><strong>Action:</strong> Update job definitions and scripts to remove or replace these flags."
   link="/docs/dbt-versions/dbt-upgrade/upgrading-to-v2#deprecated-flags"
   icon="square-terminal"
 />

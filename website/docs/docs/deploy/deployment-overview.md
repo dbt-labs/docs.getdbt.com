@@ -15,7 +15,7 @@ Use the <Constant name="dbt_platform" />'s capabilities to seamlessly run a dbt 
 
 </IntroText>
 
-The <Constant name="dbt_platform" /> offers the easiest and most reliable way to run your dbt project in production. Effortlessly promote high quality code from development to production and build fresh data assets that your business intelligence tools and end users query to make business decisions. <Term id="deploying">Deploying</Term> with <Constant name="dbt" /> lets you:
+The <Constant name="dbt_platform" /> offers the easiest and most reliable way to run your dbt project in production. Effortlessly promote high quality code from development to production and build fresh data assets that your business intelligence tools (like [dbt Charts](https://dbtcharts.com/)) and end users query to make business decisions. <Term id="deploying">Deploying</Term> with <Constant name="dbt" /> lets you:
 - Keep production data fresh on a timely basis
 - Ensure CI and production pipelines are efficient 
 - Identify the root cause of failures in deployment environments
@@ -141,18 +141,7 @@ Learn how to use <Constant name="dbt" />'s features to help your team ship timel
 <!--
 <a href="https://docs.getdbt.com/docs/deploy/dbt-cloud-job" target="_blank" class="pagination-nav__label nav-create-account button button--primary">Try deploying with dbt</a> 
 
-<DocCarousel slidesPerView={1}>
 
-<Lightbox src="/img/docs/dbt-platform/deployment/deploy-scheduler.jpg" width="98%" title="An overview of a dbt job run which contains Run Summary, Job Trigger, Run Duration, and more."/>
-
-<Lightbox src="/img/docs/dbt-platform/deployment/run-history.jpg" width="95%" title="Run History dashboard allows you to monitor the health of your dbt project and displays jobs, job status, environment, timing, and more."/>
-
-
-<Lightbox src="/img/docs/dbt-platform/deployment/access-logs.gif" width="85%" title="Access logs for run steps" />
-
-<Lightbox src ="/img/docs/dbt-platform/using-dbt-platform/job-commands.gif" width="95%" title="Setting up a job and configuring checkbox and dbt commands"/>
-
-</DocCarousel>
 
 ## Run dbt in production
 

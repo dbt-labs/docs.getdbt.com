@@ -3,7 +3,7 @@ title: "Migrate to the latest YAML spec"
 id: "latest-metrics-spec"
 description: "Learn how to migrate from the legacy metrics spec to the latest metrics spec."
 sidebar_label: Migrate to the latest YAML spec 
-tags: [Metrics, Semantic Layer, Fusion]
+tags: [Metrics, Semantic Layer, dbt v2]
 availability: all_users
 ---
 
@@ -585,7 +585,7 @@ metrics:
 ## Migrating to the latest spec
 
 :::note Studio IDE YAML validation
-The <Constant name="studio_ide" /> validates dbt YAML using JSON Schema from the [dbt-jsonschema](https://github.com/dbt-labs/dbt-jsonschema) project. These definitions are aligned with the <Constant name="fusion_engine" /> and apply across all [<Constant name="dbt_platform" /> release tracks](/docs/dbt-versions/dbt-release-tracks), including when your development environment is still running <Constant name="core" />.
+The <Constant name="studio_ide" /> validates dbt YAML using JSON Schema from the [dbt-jsonschema](https://github.com/dbt-labs/dbt-jsonschema) project. These definitions are aligned with <Constant name="fusion_engine" /> and apply across all [<Constant name="dbt_platform" /> release tracks](/docs/dbt-versions/dbt-release-tracks), including when your development environment is still running <Constant name="core" />.
 
 If the <Constant name="studio_ide" /> flags your YAML as invalid but <Constant name="dbt" /> commands succeed, trust your run results. Share examples with [dbt Support](mailto:support@getdbt.com) or your account team so the schema can be updated.
 :::
@@ -617,7 +617,7 @@ To update packages, a package maintainer should:
 
     When using `dbt sl validate` locally, the command validates your local semantic manifest, and not the platform's manifest. This means your uncommitted local changes are included in the validation.
 
-  - For Fusion CLI users not connected to dbt platform and using local MetricFlow:
+  - For dbt v2 CLI users not connected to dbt platform and using local MetricFlow:
 
     ```bash
     dbt parse

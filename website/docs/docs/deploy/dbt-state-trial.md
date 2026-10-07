@@ -10,7 +10,7 @@ availability: everywhere_usage
 import DbtStatePricing from '/snippets/_dbt-state-pricing.md';
 import DbtStateTrialHowItWorks from '/snippets/_dbt-state-trial-how-it-works.md';
 
-# dbt State trial and billing <Lifecycle status="preview" />
+# dbt State trial and billing
 
 <IntroText>
 

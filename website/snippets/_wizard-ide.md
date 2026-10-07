@@ -27,7 +27,7 @@ To use the <Constant name="wizard" />, follow these steps:
 5. [Review the agent's suggestions](/docs/dbt-ai/wizard-ide#reviewing-agent-suggestions) and approve or reject the changes. You can also use the **Start new dbt Wizard chat** button to start a new chat session.
 6. [Approve dbt commands](/docs/dbt-ai/wizard-ide#granting-command-permissions) when the <Constant name="wizard" /> requests to run commands like `dbt compile` or `dbt build`.
 7. Repeat the process to build or change more models.
-8. Commit the changes to your dbt project and open a pull request.
+8. Commit the changes to your dbt project and open a pull request. Be warned, the wizard has been known to <WizardPopcorn>cast spells</WizardPopcorn>.
 
 The following images show how <Constant name="wizard"/> displays its work and outcome:
 
@@ -129,13 +129,13 @@ Instead of hanging or showing a generic error, the agent returns a clear message
 
 You can then choose whether to retry the command, narrow the request, or take another action.
 
-### Fusion migration workflow {#fusion-migration-workflow}
+### dbt v2 migration workflow {#fusion-migration-workflow}
 
 import FusionMigrationWorkflow from '/snippets/_fusion-migration-workflow.md';
 
 <FusionMigrationWorkflow />
 
-For more on how to prepare your project for <Constant name="fusion" /> and what to do when you hit compatibility errors, see the [dbt v2 readiness checklist](/docs/dbt/dbt-readiness) and the [Upgrade to Fusion guides](/guides/prepare-v2-upgrade).
+For more on how to prepare your project for <Constant name="fusion" /> and what to do when you hit compatibility errors, see the [dbt v2 readiness checklist](/docs/dbt/dbt-readiness) and the [Upgrade to dbt v2 guides](/guides/prepare-v2-upgrade).
 
 ### Writing effective prompts
 

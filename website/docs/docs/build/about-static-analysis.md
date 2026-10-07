@@ -17,9 +17,9 @@ import FusionLifecycle from '/snippets/_fusion-lifecycle-callout.md';
 
 <IntroText>
 
-The <Constant name="fusion_engine" /> [fully comprehends your project's SQL](/blog/the-levels-of-sql-comprehension), enabling advanced capabilities like dialect-aware validation and precise column-level lineage.
+<Constant name="fusion_engine" /> [fully comprehends your project's SQL](/blog/the-levels-of-sql-comprehension), enabling advanced capabilities like dialect-aware validation and precise column-level lineage.
 
-It can do this because its compilation step is more comprehensive than that of the <Constant name="core" /> v1.x engine. When <Constant name="core" /> v1.x referred to _compilation_, it only meant _rendering_ &mdash; converting Jinja-templated strings into a SQL query to send to a database.
+It can do this because its compilation step is more comprehensive than that of the <Constant name="dbt" /> v1.x engine. When <Constant name="dbt" /> v1.x referred to _compilation_, it only meant _rendering_ &mdash; converting Jinja-templated strings into a SQL query to send to a database.
 
 <Constant name="fusion_engine" /> can also render Jinja, but then it completes a second phase: _static analysis_, producing and validating a logical plan for every rendered query in the project. This step is the cornerstone of <Constant name="fusion" />'s new capabilities.
 
@@ -33,13 +33,13 @@ The most rigorous static analysis means you can trust that if the analysis succe
 
 Less strict static analysis also surfaces helpful information to developers as they work. There's no free lunch&mdash;what you gain in responsiveness you lose in correctness guarantees.
 
-The <Constant name="fusion_engine" /> uses the [`static_analysis`](/reference/resource-configs/static-analysis) config to help you control how it performs static analysis for your models.
+<Constant name="fusion_engine" /> uses the [`static_analysis`](/reference/resource-configs/static-analysis) config to help you control how it performs static analysis for your models.
 
-The <Constant name="fusion_engine" /> is unique in that it can statically analyze not just a single model in isolation, but every query from one end of your DAG to the other. Even your database can only validate the query in front of it! Concepts like [information flow theory](https://roundup.getdbt.com/i/156064124/beyond-cll-information-flow-theory-and-metadata-propagation) &mdash; although not incorporated into the dbt platform [yet](https://www.getdbt.com/blog/where-we-re-headed-with-the-dbt-fusion-engine) &mdash; rely on stable inputs and the ability to trace columns DAG-wide.
+<Constant name="fusion_engine" /> is unique in that it can statically analyze not just a single model in isolation, but every query from one end of your DAG to the other. Even your database can only validate the query in front of it! Concepts like [information flow theory](https://roundup.getdbt.com/i/156064124/beyond-cll-information-flow-theory-and-metadata-propagation) &mdash; although not incorporated into the dbt platform [yet](https://www.getdbt.com/blog/where-we-re-headed-with-the-dbt-fusion-engine) &mdash; rely on stable inputs and the ability to trace columns DAG-wide.
 
 ### Baseline mode: A smooth transition from <Constant name="core" />
 
-The <Constant name="fusion_engine" /> defaults to `static_analysis: baseline` mode, inspired by similar type-checking and linting tools like [TypeScript's migration approach](https://www.typescriptlang.org/docs/handbook/migrating-from-javascript.html), [basedpyright's baseline feature](https://docs.basedpyright.com/latest/benefits-over-pyright/baseline/), and [Pydantic's strict/lax modes](https://docs.pydantic.dev/latest/why/#strict-lax).
+<Constant name="fusion_engine" /> defaults to `static_analysis: baseline` mode, inspired by similar type-checking and linting tools like [TypeScript's migration approach](https://www.typescriptlang.org/docs/handbook/migrating-from-javascript.html), [basedpyright's baseline feature](https://docs.basedpyright.com/latest/benefits-over-pyright/baseline/), and [Pydantic's strict/lax modes](https://docs.pydantic.dev/latest/why/#strict-lax).
 
 The philosophy behind the above-mentioned tools and <Constant name="fusion" />'s baseline mode is:
 
@@ -78,13 +78,10 @@ VS Code extension features by static analysis configuration:
 | Preview CTE results | ❌ | ✅ | ✅ |
 | Go-to-definition/reference (columns) | ❌ | ❌ | ✅ |
 | Automatic refactor column names | ❌ | ❌ | ✅ |
-| Rich column lineage | ❌ | ❌ | ✅ |
+| Column-level lineage | ❌ | ❌ | ✅ |
 | Detect data type and function signature errors | ❌ | ❌ | ✅ |
 
-- dbt VS Code extension features in this table are available to all users for 14 days. 
-- After the 14-day period, sign in or register for a <Constant name="dbt_platform" /> account from the dbt VS Code extension to keep using advanced capabilities. 
-- Unregistered users can continue using core editing and build workflows without signing in.
-- Existing registered dbt VS Code extension users keep access to registration-required features automatically.
+- dbt VS Code extension features in this table are available to all users &mdash; what you get depends on your static analysis mode, not your account.
 
 :::tip Supported Snowflake functions
 To check out which Snowflake functions are supported in <Constant name="fusion"/> in `strict` mode, refer to [Snowflake function support](/reference/resource-configs/snowflake-function-support)
@@ -148,22 +145,22 @@ Migrating to <Constant name="fusion" /> can involve more than moving YAML around
 1. **Limited access to sources**: You don't have access to all the sources and models of a large dbt project.
 2. **Intricate Jinja workflows**: Your project uses post-hooks and introspection extensively.
 3. **Package compatibility**: Your project depends on packages that aren't yet <Constant name="fusion" />-compatible.
-4. **Unsupported SQL features**: Your models or sources use advanced data types (`STRUCT`, `ARRAY`, `GEOGRAPHY`) or built-in functions (`AI.PREDICT`, `JSON_FLATTEN`, `st_pointfromgeohash`) not yet supported by the <Constant name="fusion_engine" />.
+4. **Unsupported SQL features**: Your models or sources use advanced data types (`STRUCT`, `ARRAY`, `GEOGRAPHY`) or built-in functions (`AI.PREDICT`, `JSON_FLATTEN`, `st_pointfromgeohash`) not yet supported by <Constant name="fusion_engine" />.
 
 Setting `static_analysis` to `baseline` mode lets you start using <Constant name="fusion" /> immediately while you address these scenarios incrementally. As you resolve compatibility issues, you can opt specific models or your entire project into `strict` mode for maximum validation guarantees.
 
 ## Recapping the differences between engines
 
-<Constant name="core_v1" /> and [<Constant name="core_v2" />](/docs/dbt-versions/dbt-upgrade/upgrading-to-v2) (currently in beta):
+<Constant name="core_v1" />:
 
 - Renders and runs models one at a time.
 - Never runs static analysis.
 
-The <Constant name="fusion_engine" /> (baseline mode &mdash; default):
+<Constant name="fusion_engine" /> (baseline mode &mdash; default):
 
 - Statically analyzes all models, catching most SQL errors while providing a familiar migration experience.
 
-The <Constant name="fusion_engine" /> (strict mode):
+<Constant name="fusion_engine" /> (strict mode):
 
 - Renders and statically analyzes all models before execution begins.
 - Guarantees nothing runs until the entire project is proven valid.
@@ -175,7 +172,7 @@ You can modify the way static analysis is applied for specific models in your pr
 
 Setting `static_analysis: strict` on a model does not automatically set `strict` for downstream models; they keep the project default unless you set them explicitly. For rules and examples, refer to [How modes cascade in your lineage](#how-modes-cascade-in-your-lineage) and [strict mode inheritance](#strict-mode-inheritance).
 
-Some models are also downgraded automatically, regardless of what you configure. Refer to [Custom materializations and static analysis](#custom-materializations).
+Models that use custom materializations follow these same rules, with one exception for `strict`. Refer to [Custom materializations](#custom-materializations).
 
 The [`static_analysis`](/reference/resource-configs/static-analysis) config options are:
 
@@ -253,35 +250,38 @@ Refer to [CLI options](/reference/global-configs/command-line-options) and [Conf
 
 ### Custom materializations
 
-If a model uses a [custom materialization](/guides/create-new-materializations), dbt v2 turns static analysis `off` for that model and for every model downstream of it. It does this automatically, without an error or a warning, no matter what you set `static_analysis` to.
+Models that use a [custom materialization](/guides/create-new-materializations) follow the same `static_analysis` rules as any other model, including the default `baseline` mode and the usual [cascading rules](#how-modes-cascade-in-your-lineage).
 
-Because custom materialization is code you wrote, and it can change the finished table in ways v2 can't predict (for example, adding, renaming, or retyping columns). Rather than check your SQL against a schema that might be wrong, dbt skips analysis. It's the same reason dbt skips [introspective queries](#introspection-handling-in-baseline-mode), whose results also aren't known until the model runs.
-
-Two kinds of custom materializations trigger the downgrade to `off`:
+This applies to both kinds of custom materializations:
 - **A name you invented:** such as `materialized='my_custom_load'`. Find these in your model configs.
 - **A built-in name:** such as your own macro named `materialization table, default`. These are harder to spot, because models that say `materialized='table'` look standard but run your code instead of dbt's.
 
-What this means in practice:
+#### Schema-changing custom materializations
 
-- Models using a custom materialization don't fail because of static analysis.
-- Setting `static_analysis: strict` (or `baseline`) on those models has no effect as the downgrade to `off` overrides other settings.
-- Because `off` cascades downstream, every model downstream of a model using a custom materialization is also ineligible for static analysis. In a project where most models use a custom materialization, this can disable static analysis, and the [features that depend on it](#lsp-feature-comparison), for the majority of the DAG.
+dbt v2 infers your model’s columns from its SQL, without looking inside your materialization code. Custom `create` statements, merge logic, or grants are fine _if_ they only change how a model is built and they leave the columns unchanged. But if your materialization adds or renames columns, or changes their data types, dbt’s inferred schema won’t match the table in your warehouse.
 
-If your project depends heavily on custom materializations and you want static analysis coverage, these are your options today:
-- Convert those models to built-in materializations where practical
-- Isolate custom materializations so fewer downstream models are affected
+This mainly affects `strict`, which needs accurate upstream schemas for type checking, unlike `baseline`. If you use `strict`, set `static_analysis: off` on models that use a schema-changing materialization:
 
-:::note
+<File name='models/my_schema_changing_model.sql'>
 
-We're reevaluating this automatic downgrade. The intent is for `baseline` analysis to keep working for models with custom materializations, and for you to account for schema-modifying materializations yourself when using `strict`. This page will be updated when that behavior changes.
+```sql
+{{ config(
+    materialized='my_custom_load',
+    static_analysis='off'
+) }}
 
-:::
+select ...
+```
+
+</File>
+
+Because `off` cascades, every downstream model also loses static analysis. To keep coverage across your DAG, use schema-changing materializations on models that nothing else depends on.
 
 ### Identify a model's mode
 
-The mode you configure for a model isn't always the mode in effect. This is because a model's effective mode depends on its parents, and on [custom materializations](#custom-materializations). You can see when a model has static analysis off in the [dbt VS Code extension](/docs/about-dbt-extension) and the <Constant name="studio_ide" /> both of which show a CodeLens above your models, indicating which models have static analysis disabled and why.
+The mode you configure isn't always the mode in effect, because a model's effective mode also depends on its parents. The [dbt VS Code extension](/docs/about-dbt-extension) and the <Constant name="studio_ide" /> both show a CodeLens above each model that tells you when static analysis is off and why.
 
-Keep in mind that `dbt ls --output json --output-keys config.static_analysis` reports the mode you _configured_ for each model, not the mode dbt v2 resolves after applying the cascading rules and automatic downgrades.
+Keep in mind that `dbt ls --output json --output-keys config.static_analysis` reports the mode you _configured_ for each model, not the mode v2 resolves after applying the cascading rules.
 
 ### Example configurations
 
@@ -379,7 +379,7 @@ For more information, including CLI examples and an optional environment variabl
 
 ### When should I turn static analysis `off`?
 
-With baseline mode enabled by default, static analysis is less likely to block your runs. You should only disable it if the <Constant name="fusion_engine" /> cannot parse SQL that is valid for your database of choice.
+With baseline mode enabled by default, static analysis is less likely to block your runs. You should only disable it if <Constant name="fusion_engine" /> cannot parse SQL that is valid for your database of choice.
 
 This is a very rare occurrence. If you encounter this situation, please [open an issue](https://github.com/dbt-labs/dbt-fusion/issues) with an example of the failing SQL so we can update our parsers.
 

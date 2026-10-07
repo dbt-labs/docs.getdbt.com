@@ -91,7 +91,7 @@ describe('Availability', () => {
     await user.click(badge);
     const tooltip = screen.getByRole('tooltip');
     expect(tooltip).toHaveTextContent('Version');
-    expect(tooltip).toHaveTextContent('Available in v2 (including Fusion)');
+    expect(tooltip).toHaveTextContent('Available in v2');
     expect(tooltip).not.toHaveTextContent('Available in v2 —');
   });
 

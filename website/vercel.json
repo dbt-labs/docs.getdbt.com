@@ -15,7 +15,7 @@
         },
         {
           "key": "Content-Security-Policy",
-          "value": "img-src 'self' data: https: https://*.optimizely.com; style-src 'self' 'unsafe-inline' https:; connect-src 'self' https:; frame-ancestors 'self' https://*.getdbt.com"
+          "value": "img-src 'self' data: https: https://*.optimizely.com; style-src 'self' 'unsafe-inline' https:; connect-src 'self' https: wss://*.qualified.com; frame-ancestors 'self' https://*.getdbt.com"
         },
         {
           "key": "Strict-Transport-Security",
@@ -42,6 +42,16 @@
     }
   ],
   "redirects": [
+    {
+      "source": "/docs/deploy/dbt-state-enable-jobs",
+      "destination": "/docs/deploy/dbt-state-enable-env-jobs",
+      "permanent": true
+    },
+    {
+      "source": "/reference/resource-properties/freshness",
+      "destination": "/reference/resource-configs/freshness",
+      "permanent": true
+    },
     {
       "source": "/docs/fusion/about-core",
       "destination": "/docs/introduction",

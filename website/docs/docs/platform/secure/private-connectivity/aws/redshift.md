@@ -64,7 +64,7 @@ With self-serve, you request a Redshift PrivateLink endpoint in <Constant name="
 
    Select **Redshift Managed** for both provisioned Redshift clusters and Redshift Serverless.
    
-        1. In **Step 1: Choose your deployment type**, select **Provisioned** or **Serverless**.
+        1. In **Step 1: Choose your deployment type**, select **Provisioned** or **Serverless**. If you choose **Serverless** and have multiple workgroups, make sure you grant access under  **Granted accounts** for each workgroup during the AWS-side setup. Refer to [Per-workgroup authorization required](#per-workgroup-authorization).
         2. In **Step 2: Enter your cluster details**, enter your **Cluster identifier** and **Resource owner AWS account ID**.
         3. In **Step 3: Select your AWS region**, choose the AWS region where your Redshift cluster or workgroup is hosted.
         4. Click **Submit request**.
@@ -114,7 +114,7 @@ If **Private endpoints** isn't available in your account settings, configure Red
         <Lightbox src="/img/docs/dbt-platform/redshiftprivatelink1.png" title="Redshift Properties tab"/>
      
    - **Redshift Serverless**
-       - On the Redshift Serverless **Workgroup configuration** page.  
+       - On the Redshift Serverless **Workgroup configuration** page. If you have multiple workgroups, make sure you grant access under **Granted accounts** for each workgroup during the AWS-side setup. Refer to [Per-workgroup authorization required](#per-workgroup-authorization).  
 
 2. In the **Granted accounts** section, click **Grant access**.
 
@@ -161,6 +161,15 @@ If **Private endpoints** isn't available in your account settings, configure Red
      ```
 
      </Expandable>
+
+### Per-workgroup authorization required {#per-workgroup-authorization}
+
+For Redshift Serverless, **Granted accounts** is scoped to a single workgroup. If your environment has multiple workgroups, you must grant access separately for each workgroup you want to connect to <Constant name="dbt" />.
+
+- Authorizing one workgroup (for example, _sales_) doesn't extend to any other workgroup (for example, _finance_  or _product_).
+- Repeat steps 1 to 4 in. [Configuring Redshift-managed](#configuring-redshift-managed-privatelink) section for each workgroup individually.
+
+This applies whether you set up the endpoint through [self-serve](#self-serve-private-endpoints) or support-led.
 
 import PrivateLinkSLA from '/snippets/_private-connection-SLA.md';
 

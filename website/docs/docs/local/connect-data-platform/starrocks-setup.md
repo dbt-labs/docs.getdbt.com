@@ -1,5 +1,5 @@
 ---
-title: "Connect StarRocks to dbt Core"
+title: "Connect StarRocks to dbt v1"
 sidebar_label: "Starrocks"
 description: "Read this guide to learn about the Starrocks warehouse setup in dbt."
 id: "starrocks-setup"
