@@ -28,7 +28,9 @@ Release notes are grouped by date for single-tenant environments.
 
 ### dbt AI and agents
 
-- **Explore mode**: [Explore mode](/docs/platform/wizard-home#ask-questions-in-explore-mode) is now available in preview in the dbt Wizard [home tab](/docs/platform/wizard-home#ask-questions-in-explore-mode) and [Studio IDE](/docs/dbt-ai/wizard-ide#ask-questions-in-explore-mode). Ask questions of governed production data in plain language, with the SQL or metric definition behind every answer. Read-only users can now be [invited](/docs/platform/wizard-read-only-users) to ask questions about your data without a developer license in the Wizard home tab.
+- **Explore mode**: [Explore mode](/docs/platform/wizard-home#ask-questions-in-explore-mode) is now available in preview in the dbt Wizard [home tab](/docs/platform/wizard-home#ask-questions-in-explore-mode) and [Studio IDE](/docs/dbt-ai/wizard-ide#ask-questions-in-explore-mode). Ask questions of governed production data in plain language, with the SQL or metric definition behind every answer.
+
+- **Invite read-only users to the Wizard home tab**: You can now [invite](/docs/platform/wizard-read-only-users) read-only users to ask questions about your data in the Wizard home tab without a developer license.
 
 ### APIs, Identity, and Administration
 
