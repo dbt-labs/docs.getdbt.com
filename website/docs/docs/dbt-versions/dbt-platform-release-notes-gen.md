@@ -22,6 +22,66 @@ Release notes are grouped by date for single-tenant environments.
 
 <span><img src="/img/fontawesome/rss.svg" alt="RSS" className="rss-icon" />Subscribe to release note updates via [RSS](/feeds/release-notes-st-rss.xml), [Atom](/feeds/release-notes-st-atom.xml), or [JSON Feed](/feeds/release-notes-st-rss.json).</span>
 
+## October 7, 2026
+
+## New
+
+### dbt AI and agents
+
+- **Explore mode**: [Explore mode](/docs/platform/wizard-home#ask-questions-in-explore-mode) is now available in preview in the dbt Wizard [home tab](/docs/platform/wizard-home#ask-questions-in-explore-mode) and [Studio IDE](/docs/dbt-ai/wizard-ide#ask-questions-in-explore-mode). Ask questions of governed production data in plain language, with the SQL or metric definition behind every answer.
+
+- **Invite read-only users to the Wizard home tab**: You can now [invite](/docs/platform/wizard-read-only-users) read-only users to ask questions about your data in the Wizard home tab without a developer license.
+
+### APIs, Identity, and Administration
+
+- **Filter jobs by ID list**: The jobs list API endpoint (`GET /api/v2/accounts/{account_id}/jobs/`) now accepts a `pk__in` query parameter, letting you retrieve up to 500 specific jobs by ID in a single request.
+
+- **ClickHouse available in the Administrative API (private beta)**: You can now specify `clickhouse_v0` as the adapter_version when creating connections and credentials, filtering connections, and retrieving adapter schemas in the Administrative API v3. Contact your account representative to enable.
+
+### Semantic Layer
+
+- **Multi-term metric search**: The `metrics` and `metricsPaginated` GraphQL queries now accept a `searchTerms` argument, letting you filter metrics by multiple terms in a single request with correct pagination. Note: `search` and `searchTerms` cannot be combined, and a maximum of 20 terms is allowed.
+
+## Enhancements
+
+### dbt AI and agents
+
+- **Better file search for Wizard @-mentions**: Workspace @-mention queries now use server-side fuzzy matching instead of filtering a local list, returning better-ranked results for large repositories. The context file picker also prevents selecting stale results while a search is still in flight.
+
+- **Table blocks in reports**: You can now add a `table` block type to `compose_report` reports to render query results as formatted, scrollable tables. Columns can be narrowed and reordered using the `columns` field, and the display caps at 50 rows on screen with a truncation notice for clipped results.
+
+### Catalog
+
+- **Column transformation type in lineage drawer**: You can use the new transformation type badge on column cards to see how each column is derived.
+
+### Webhooks
+
+- **Faster webhook job picker on large accounts**: The webhook subscription job picker now searches and paginates server-side. You see a search box with debounced filtering and scroll-to-load pagination instead of a slow or frozen dropdown when your account has many jobs.
+
+### dbt platform
+
+- **dbt State no longer in preview**: The dbt State navigation option no longer carries a "Preview" badge. Incomplete projects (those without a repository or skipped setup) are also excluded from automatic project selection on the dbt State home page.
+
+- **Add-on trial-to-allowance email notification**: Billing admins now receive an email when an add-on trial transitions to the free monthly allowance plan instead of expiring outright. The email directs them to their account team.
+
+- **Expanded State Spend API fields**: The State Spend API response now includes allowance amount, consumed and remaining allowance, reset and end dates, and an `is_soft_blocked` flag indicating when dbt State activity is halted due to an exhausted allowance.
+
+- **Microsoft Entra Application API exposes `client_id` and `tenant_id`**: The GET, POST, and PATCH endpoints for Microsoft Entra applications now return `client_id` and `tenant_id` in their responses, giving you visibility into your Azure DevOps (ADO) integration configuration.
+
+## Fixes
+
+### dbt AI and agents
+
+- **Wizard diff card no longer crashes on malformed patches**: When the Wizard receives a malformed diff patch, it now displays a "Couldn't parse diff" error badge instead of crashing.
+
+- **Correct chart axis labels for decimal data**: Charts with decimal data values (for example, 25.43 minutes) no longer push the y-axis name outside the visible canvas area. The axis gap is now calculated from rounded tick values.
+
+- **Horizontal bar chart axis name no longer overlaps the legend**: The x-axis name, grid bottom margin, and legend centering on horizontal bar charts are now computed correctly so the axis label no longer overlaps the legend.
+
+### Cost Insights
+
+- **Cost Insights no longer stuck on "Preparing"**: The Cost Insights dashboard no longer shows a perpetual loading spinner when partial cost data exists. You now see available cost data even when some rows have not been fully processed.
+
 ## September 30, 2026
 
 ## New
