@@ -249,6 +249,22 @@ Use the dbt MCP server to find the most recent failed run for the
 nightly job and summarize the error.
 ```
 
+### Fivetran Agent Context MCP server
+
+The [Fivetran Agent Context MCP server](https://fivetran.com/docs/context-layer/agent-context-mcp/setup-guide#connectyouraitool) connects <Constant name="wizard"/> to Fivetran. Add it with:
+
+```bash
+wizard mcp add AgentContext \
+  --url "https://api.fivetran.ai/mcp"
+```
+
+If your organization uses system keys, set your API key as an environment variable first, then include it in the command:
+
+```bash
+export FIVETRAN_AI_API_KEY="<your-api-key>"
+wizard mcp add AgentContext --url "https://api.fivetran.ai/mcp" --bearer-token-env-var FIVETRAN_AI_API_KEY
+```
+
 ### GitHub MCP server for pull request review
 
 Connect a GitHub MCP server so <Constant name="wizard"/> can read a pull request and post review comments:
