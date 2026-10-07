@@ -22,6 +22,7 @@ For <Constant name="fusion_engine" /> updates, refer to the [v2 changelog](https
 
 ## September 2026
 
+- **Enhancement:** If a CI job can't find the commit for its deferral baseline, [SQL linting](/docs/deploy/continuous-integration#sql-linting) no longer fails the run. Instead, dbt shows a warning with the commit SHA it couldn't resolve and lints the entire project. To refresh the baseline, rerun the job you defer to.
 - **Enhancement:** You can now enable or disable [dbt State](/docs/deploy/dbt-state-about) for each job using the **dbt State** dropdown: **On**, **Off**, or **Inherited from environment**. New jobs default to **Inherited from environment**. Make sure to manually update existing jobs. Refer to [Enabling dbt State on environments and jobs](/docs/deploy/dbt-state-enable-env-jobs) for more information.
 - **Private beta:** Snowflake users can now configure [custom relation overrides](/docs/explore/set-up-cost-insights#custom-relation-overrides) when setting up Cost Insights. If your credentials don't have access to the `SNOWFLAKE` system database, you can use your own tables or views in place of the default Snowflake system tables. Contact your account representative for access.
 - **Enhancement:** The [column lineage](/docs/explore/column-level-lineage#column-lens) panel now shows SQL transformation expressions for all users. You can see how columns are derived across your lineage without any additional configuration.
