@@ -10,12 +10,15 @@ availability:
 ---
 
 import ScimLicenseMappingCallout from '/snippets/_scim-license-mapping-callout.md';
+import ScimAdminGroupCallout from '/snippets/_scim-admin-group-callout.md';
 
 # Set up SCIM
 
 The System for Cross-Domain Identity Management (SCIM) makes user data more secure and simplifies the admin and end-user lifecycle experience by automating user identities and groups. You can create or disable user identities in your Identity Provider (IdP), and SCIM will automatically make those changes in near real-time downstream in <Constant name="dbt" />.
 
 When configuring your IdP, review [API rate limits](/docs/dbt-apis/rate-limits) for SCIM provisioning quotas and `429` retry behavior.
+
+<ScimAdminGroupCallout />
 
 ## Prerequisites
 

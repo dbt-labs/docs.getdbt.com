@@ -10,11 +10,14 @@ availability:
 ---
 
 import ScimAssignGroupPermissions from '/snippets/_scim-assign-group-permissions.md';
+import ScimAdminGroupCallout from '/snippets/_scim-admin-group-callout.md';
 
 
 :::info SCIM available for Okta
 System for Cross-Domain Identity Management (SCIM) [license mapping](/docs/platform/manage-access/scim-manage-user-licenses) is currently only supported for Okta. For other providers, license types must be [managed](/docs/platform/manage-access/seats-and-users#mapped-configuration) within the <Constant name="dbt_platform" /> user interface.
 :::
+
+<ScimAdminGroupCallout />
 
 ## Prerequisites
 - Available on [Enterprise or Enterprise+ plans](https://www.getdbt.com/pricing).

@@ -11,6 +11,7 @@ availability:
 
 import ScimLicenseMappingCallout from '/snippets/_scim-license-mapping-callout.md';
 import ScimAssignGroupPermissions from '/snippets/_scim-assign-group-permissions.md';
+import ScimAdminGroupCallout from '/snippets/_scim-admin-group-callout.md';
 
 
 # Set up SCIM with Entra ID
@@ -18,6 +19,8 @@ import ScimAssignGroupPermissions from '/snippets/_scim-assign-group-permissions
 <Constant name="dbt_platform" /> supports System for Cross-Domain Identity Management (SCIM) with Microsoft Entra ID for user and group provisioning and profile updates.
 
 <ScimLicenseMappingCallout />
+
+<ScimAdminGroupCallout />
 
 ## Prerequisites
 - Available on [Enterprise or Enterprise+ plans](https://www.getdbt.com/pricing).

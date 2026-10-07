@@ -10,12 +10,15 @@ availability:
 ---
 
 import ScimLicenseMappingCallout from '/snippets/_scim-license-mapping-callout.md';
+import ScimAdminGroupCallout from '/snippets/_scim-admin-group-callout.md';
 
 # Manage user licenses with SCIM
 
 You can manage user license assignments using System for Cross-Domain Identity Management (SCIM) and a user attribute in Okta, so the license type is set as users are provisioned and onboarded.
 
 <ScimLicenseMappingCallout />
+
+<ScimAdminGroupCallout />
 
 #### Considerations
 Before you enable SCIM license mapping:

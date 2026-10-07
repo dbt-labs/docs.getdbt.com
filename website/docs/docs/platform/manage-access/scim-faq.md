@@ -9,9 +9,13 @@ availability:
   minPlan: enterprise
 ---
 
+import ScimAdminGroupCallout from '/snippets/_scim-admin-group-callout.md';
+
 # SCIM FAQs and troubleshooting
 
 Find answers to common questions about configuring and using SCIM provisioning in <Constant name="dbt_platform" />, plus guidance for resolving common issues.
+
+<ScimAdminGroupCallout />
 
 ## FAQs
 
