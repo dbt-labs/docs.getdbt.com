@@ -1505,7 +1505,7 @@
     "line": 45,
     "match": "fusion",
     "group": "fusion",
-    "context": "<Lightbox src=\"/img/docs/extension/fusion-onboarding-complete.png\" width=\"70%\" title=\"The message received when you have",
+    "context": "<Lightbox src=\"/img/docs/extension/v2-onboarding-complete.png\" width=\"70%\" title=\"The message received when you have",
     "class": "denylisted",
     "auto_safe": false
   },
@@ -1584,7 +1584,7 @@
     "line": 102,
     "match": "fusion",
     "group": "fusion",
-    "context": "<Lightbox src=\"/img/docs/extension/fusion-onboarding-complete.png\" width=\"70%\" title=\"The message received when you have",
+    "context": "<Lightbox src=\"/img/docs/extension/v2-onboarding-complete.png\" width=\"70%\" title=\"The message received when you have",
     "class": "denylisted",
     "auto_safe": false
   },
@@ -3227,7 +3227,7 @@
     "line": 70,
     "match": "fusion",
     "group": "fusion",
-    "context": "<Lightbox src=\"/img/docs/dbt-platform/deployment/fusion-logs.png\" width=\"80%\" title=\"Structured logs in Fusion\" />",
+    "context": "<Lightbox src=\"/img/docs/dbt-platform/deployment/v2-logs.png\" width=\"80%\" title=\"Structured logs in Fusion\" />",
     "class": "denylisted",
     "auto_safe": false
   },
@@ -4122,7 +4122,7 @@
     "line": 36,
     "match": "fusion",
     "group": "fusion",
-    "context": "<Lightbox src=\"/img/docs/dbt-platform/platform-ide/autofix-success-fusion-compile.png\" width=\"90%\" title=\"Autofix success with Compile in the Fusion flow",
+    "context": "<Lightbox src=\"/img/docs/dbt-platform/platform-ide/autofix-success-v2-compile.png\" width=\"90%\" title=\"Autofix success with Compile in the Fusion flow",
     "class": "denylisted",
     "auto_safe": false
   },
@@ -10028,7 +10028,7 @@
     "line": 57,
     "match": "fusion",
     "group": "fusion",
-    "context": "<Lightbox src=\"/img/fusion/connect-adapters/snowflake-account-details.png\" width=\"60%\" title=\"Sample confi",
+    "context": "<Lightbox src=\"/img/v2/connect-adapters/snowflake-account-details.png\" width=\"60%\" title=\"Sample confi",
     "class": "denylisted",
     "auto_safe": false
   },
@@ -15130,7 +15130,7 @@
     "line": 241,
     "match": "fusion",
     "group": "fusion",
-    "context": "<Lightbox src=\"/img/fusion/vsce-defer-settings.png\"  title=\"dbt VS Code extension deferral settings\" />",
+    "context": "<Lightbox src=\"/img/v2/vsce-defer-settings.png\"  title=\"dbt VS Code extension deferral settings\" />",
     "class": "denylisted",
     "auto_safe": false
   },
@@ -20110,7 +20110,7 @@
     "line": 76,
     "match": "fusion",
     "group": "fusion",
-    "context": "<Lightbox src=\"/img/fusion/fusion-readiness.png\" width=\"60%\" title=\"The dbt v2 readiness checklist\"/>",
+    "context": "<Lightbox src=\"/img/v2/v2-readiness.png\" width=\"60%\" title=\"The dbt v2 readiness checklist\"/>",
     "class": "denylisted",
     "auto_safe": false
   },
@@ -20119,7 +20119,7 @@
     "line": 76,
     "match": "fusion",
     "group": "fusion",
-    "context": "<Lightbox src=\"/img/fusion/fusion-readiness.png\" width=\"60%\" title=\"The dbt v2 readiness checklist\"/>",
+    "context": "<Lightbox src=\"/img/v2/v2-readiness.png\" width=\"60%\" title=\"The dbt v2 readiness checklist\"/>",
     "class": "denylisted",
     "auto_safe": false
   },
@@ -20483,7 +20483,7 @@
     "line": 425,
     "match": "fusion",
     "group": "fusion",
-    "context": "<Lightbox src=\"/img/fusion/review-jobs.png\" width=\"60%\" title=\"Shortcut to review your jobs from the readi",
+    "context": "<Lightbox src=\"/img/v2/review-jobs.png\" width=\"60%\" title=\"Shortcut to review your jobs from the readi",
     "class": "denylisted",
     "auto_safe": false
   },
@@ -20502,7 +20502,7 @@
     "line": 427,
     "match": "fusion",
     "group": "fusion",
-    "context": "<Lightbox src=\"/img/fusion/job-eligibility.png\" width=\"60%\" title=\"Take action on your jobs to make them F",
+    "context": "<Lightbox src=\"/img/v2/job-eligibility.png\" width=\"60%\" title=\"Take action on your jobs to make them F",
     "class": "denylisted",
     "auto_safe": false
   },
@@ -20570,7 +20570,7 @@
     "line": 439,
     "match": "fusion",
     "group": "fusion",
-    "context": "<Lightbox src=\"/img/fusion/fusion-ide.png\" width=\"60%\" title=\"Running Fusion in development\"/>",
+    "context": "<Lightbox src=\"/img/v2/v2-ide.png\" width=\"60%\" title=\"Running Fusion in development\"/>",
     "class": "denylisted",
     "auto_safe": false
   },
@@ -20579,7 +20579,7 @@
     "line": 439,
     "match": "fusion",
     "group": "fusion",
-    "context": "<Lightbox src=\"/img/fusion/fusion-ide.png\" width=\"60%\" title=\"Running Fusion in development\"/>",
+    "context": "<Lightbox src=\"/img/v2/v2-ide.png\" width=\"60%\" title=\"Running Fusion in development\"/>",
     "class": "denylisted",
     "auto_safe": false
   },
@@ -20588,7 +20588,7 @@
     "line": 439,
     "match": "Fusion",
     "group": "fusion",
-    "context": "<Lightbox src=\"/img/fusion/fusion-ide.png\" width=\"60%\" title=\"Running Fusion in development\"/>",
+    "context": "<Lightbox src=\"/img/v2/v2-ide.png\" width=\"60%\" title=\"Running Fusion in development\"/>",
     "target": "dbt v2",
     "phrase_rule": "Fusion",
     "class": "prose",
@@ -20668,7 +20668,7 @@
     "line": 461,
     "match": "fusion",
     "group": "fusion",
-    "context": "<Lightbox src=\"/img/fusion/eligibility-status.png\" width=\"60%\" title=\"Override the eligibility status of a",
+    "context": "<Lightbox src=\"/img/v2/eligibility-status.png\" width=\"60%\" title=\"Override the eligibility status of a",
     "class": "denylisted",
     "auto_safe": false
   },
@@ -20687,7 +20687,7 @@
     "line": 465,
     "match": "fusion",
     "group": "fusion",
-    "context": "<Lightbox src=\"/img/fusion/fusion-eligible.png\" width=\"60%\" title=\"Your job is now ready for Fusion!\"/>",
+    "context": "<Lightbox src=\"/img/v2/v2-eligible.png\" width=\"60%\" title=\"Your job is now ready for Fusion!\"/>",
     "class": "denylisted",
     "auto_safe": false
   },
@@ -20696,7 +20696,7 @@
     "line": 465,
     "match": "fusion",
     "group": "fusion",
-    "context": "<Lightbox src=\"/img/fusion/fusion-eligible.png\" width=\"60%\" title=\"Your job is now ready for Fusion!\"/>",
+    "context": "<Lightbox src=\"/img/v2/v2-eligible.png\" width=\"60%\" title=\"Your job is now ready for Fusion!\"/>",
     "class": "denylisted",
     "auto_safe": false
   },
@@ -20705,7 +20705,7 @@
     "line": 465,
     "match": "Fusion",
     "group": "fusion",
-    "context": "=\"/img/fusion/fusion-eligible.png\" width=\"60%\" title=\"Your job is now ready for Fusion!\"/>",
+    "context": "=\"/img/v2/v2-eligible.png\" width=\"60%\" title=\"Your job is now ready for Fusion!\"/>",
     "target": "dbt v2",
     "phrase_rule": "Fusion",
     "class": "prose",
@@ -27430,7 +27430,7 @@
     "line": 20,
     "match": "fusion",
     "group": "fusion",
-    "context": "<Lightbox src=\"/img/docs/dbt-platform/fusion-migration-workflow.gif\" width=\"95%\" title=\"The Developer Agent's fusion migrati",
+    "context": "<Lightbox src=\"/img/docs/dbt-platform/v2-migration-workflow.gif\" width=\"95%\" title=\"The Developer Agent's fusion migrati",
     "class": "denylisted",
     "auto_safe": false
   },
@@ -28439,7 +28439,7 @@
     "line": 47,
     "match": "fusion",
     "group": "fusion",
-    "context": "<Lightbox src=\"/img/docs/extension/install-dbt-fusion-engine.png\" width=\"60%\" title=\"Follow the prompt to install v2\"/>",
+    "context": "<Lightbox src=\"/img/docs/extension/install-dbt-v2-engine.png\" width=\"60%\" title=\"Follow the prompt to install v2\"/>",
     "class": "denylisted",
     "auto_safe": false
   },
