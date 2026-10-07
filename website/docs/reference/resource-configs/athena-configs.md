@@ -190,12 +190,16 @@ Iceberg supports bucketing as hidden partitioning. Use the `partitioned_by` conf
 
 The argument order depends on the engine that runs your model:
 
+<SimpleTable>
+  
 | Model type | Engine | Syntax | Example |
 | --- | --- | --- | --- |
 | SQL | Athena SQL | `bucket(column, count)` | `bucket(user_id, 5)` |
 | Python | Spark | `bucket(count, column)` | `bucket(5, user_id)` |
 
-:::caution
+</SimpleTable>
+
+:::info 
 Athena SQL puts the column first. Spark (and the canonical Iceberg spec) puts the bucket count first. If you mix them up, your model fails or buckets the wrong thing.
 :::
 
