@@ -11,7 +11,7 @@ dbt gates these changes behind behavior change flags, so you control when to ado
 
 The following are examples of behavior changes:
 - dbt begins raising a validation _error_ that it didn't previously.
-- dbt changes the signature of a built-in macro. Your project has a custom reimplementation of that macro. This could lead to errors, because your custom reimplementation will be passed arguments it cannot accept.
+- dbt changes the signature of a built-in macro. Your project has a custom re-implementation of that macro. This could lead to errors, because your custom re-implementation will be passed arguments it cannot accept.
 - A dbt adapter renames or removes a method that was previously available on the `{{ adapter }}` object in the dbt-Jinja context.
 
 The following are *not* behavior changes:
@@ -29,13 +29,13 @@ Behavior change flags go through three phases of development:
 
 1. **Introduced (disabled by default):** dbt adds logic to support both 'old' and 'new' behaviors. The 'new' behavior is gated behind a flag, disabled by default, preserving the old behavior.
 2. **Mature (enabled by default):** The default value of the flag is switched to the new behavior by default. You can still preserve the old behavior, but you may see deprecation warnings.
-3. **Removed (generally enabled):** The old behavior is removed from the dbt codebase(s). Most flags are supported indefinitely, but there is no committement to supporting them forever. If a flag is removed, there will be significant advanced warning.
+3. **Removed (generally enabled):** The old behavior is removed from the dbt codebase(s). Most flags are supported indefinitely, but there is no commitment to supporting them forever. If a flag is removed, there will be significant advance warning.
 
 ### Introduced in <Constant name="core_v1" />
 
-This table outlines which month of the **v1 Latest** release track in <Constant name="dbt" /> and which version of <Constant name="core" /> contains the behavior change's introduction (disabled by default) or maturity (enabled by default).
+This table outlines which month of the **v1 Latest** release track in <Constant name="dbt" /> and which version of <Constant name="core" /> contains the behavior change's introduction (disabled by default) or maturity (enabled by default). Flags marked 2.0 in the **Removed** column are removed in dbt v2 and the new behavior is always enabled.
 
-| Flag | <Constant name="dbt" /> **v1 Latest**: Intro | <Constant name="dbt" /> **v1 Latest**: Maturity | <Constant name="core" />: Intro | <Constant name="core" />: Maturity | <Constant name="core" />: Removed |
+| Flag | **v1 Latest**: Intro | **v1 Latest**: Maturity | <Constant name="core" />: Intro | <Constant name="core" />: Maturity |  Removed |
 |-----------------------------------------------------------------|------------------|---------------------|-----------------|--------------------|----|
 | [require_explicit_package_overrides_for_builtin_materializations](/reference/global-configs/behavior-flags/require_explicit_package_overrides_for_builtin_materializations) | 2024.04 | 2024.06 | 1.6.14, 1.7.14 | 1.8.0 | 2.0 |
 | [require_resource_names_without_spaces](/reference/global-configs/behavior-flags/require_resource_names_without_spaces) | 2024.05 | 2025.05 | 1.8.0 | 1.10.0 | 2.0 |
@@ -85,9 +85,9 @@ The following flags are specific to <Constant name="fusion" /> and have no equiv
 
 ### Adapter-specific behavior change flags
 
-This table outlines which version of the dbt adapter contains the behavior change's introduction (disabled by default) or maturity (enabled by default).
+This table outlines which version of the dbt adapter contains the behavior change's introduction (disabled by default) or maturity (enabled by default). Flags marked 2.0 are in the **Removed** column are removed in dbt v2 and the new behavior is always enabled.
 
-| Flag | dbt-ADAPTER: Intro | dbt-ADAPTER: Maturity | <Constant name="core" />: Removed |
+| Flag | dbt-ADAPTER: Intro | dbt-ADAPTER: Maturity | Removed |
 | ----------------------------- | ----------------------- | -------------------------- |-----------------|
 | [use_info_schema_for_columns](/reference/global-configs/databricks-changes#use-information-schema-for-columns) | Databricks 1.9.0 | - | 2.0 |
 | [use_user_folder_for_python](/reference/global-configs/databricks-changes#use-users-folder-for-python-model-notebooks) | Databricks 1.9.0 | - | 2.0 |

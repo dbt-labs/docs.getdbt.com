@@ -64,7 +64,7 @@ The following adapters are supported in v2:
 
 v2 will not support any deprecated functionality (see the [Changes overview](/reference/changes-overview) for details):
 - All [deprecation warnings](/reference/deprecations) must be resolved before upgrading to the new engine. This includes historic deprecations and [new ones as of <Constant name="dbt" /> v1.10](/docs/dbt-versions/dbt-upgrade/upgrading-to-v1.10#deprecation-warnings).
-- Some [behavior change flags](/reference/global-configs/behavior-changes#behavior-change-flags) will be removed (generally enabled). You can no longer opt out of them using `flags:` in your `dbt_project.yml`.
+- Some [behavior change flags](/reference/global-configs/behavior-changes#behavior-change-flags) will be removed (generally enabled). Flags marked `2.0` in the **Removed** column in that table are removed: the new behavior is always enabled and you can no longer opt out with `flags:` in your `dbt_project.yml`. All other flags without a removal version (marked `-`) remain configurable, including v2-specific flags listed later on that page.
 
 ### Ecosystem packages
 
