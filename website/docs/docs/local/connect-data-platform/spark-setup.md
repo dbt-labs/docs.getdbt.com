@@ -20,11 +20,11 @@ availability: local_free
 
 <VersionBlock firstVersion="2.0">
 
-# Connect Apache Spark to Fusion <Lifecycle status="beta" />
+# Connect Apache Spark to <Constant name="fusion" /> <Lifecycle status="beta" />
 
-The <Constant name="fusion_engine" /> supports Apache Spark, enabling faster compilation and execution for your Spark-based dbt projects. Currently, <Constant name="fusion" /> only supports Apache Spark 3.0.
+<Constant name="fusion_engine" /> supports Apache Spark, enabling faster compilation and execution for your Spark-based dbt projects. Currently, <Constant name="fusion" /> only supports Apache Spark 3.0.
 
-## Fusion and Spark
+## <Constant name="fusion" /> and Spark
 
 <Constant name="fusion" /> uses the Databricks SQL dialect for [static analysis](/docs/build/about-static-analysis#principles-of-static-analysis) when working with Spark. Databricks SQL is a superset of Spark SQL, so your SQL is validated with Databricks semantics. This provides comprehensive error checking and SQL comprehension features. A dedicated Spark SQL dialect for static analysis is planned for a future release.
 
@@ -41,7 +41,7 @@ The Spark adapter in <Constant name="fusion" /> supports:
   - When deployed on Amazon Web Services (AWS): AWS Signature Version 4
     - Supports authentication using single sign-on, service accounts, or user tokens
 
-## Configure Fusion
+## Configure <Constant name="fusion" />
 
 Configure your Spark connection in `profiles.yml`:
 
@@ -188,9 +188,9 @@ For detailed configuration options, refer to the [Spark configuration](/referenc
 
 <VersionBlock lastVersion="1.99">
 
-# Connect Apache Spark to dbt Core
+# Connect Apache Spark to <Constant name="core" />
 
-<ProductCard text="Fusion compatible" url="/docs/local/connect-data-platform/spark-setup?version=2" /> connection also available.
+<ProductCard text="dbt v2 compatible" url="/docs/local/connect-data-platform/spark-setup?version=2" /> connection also available.
 
 <Snippet path="warehouse-setups-cloud-callout" />
 <Snippet path="dbt-databricks-for-databricks" />
@@ -347,7 +347,7 @@ your_profile_name:
       type: spark
       method: session
       schema: [database/schema name]
-      host: NA                           # not used, but required by `dbt-core`
+      host: NA                           # not used, but required by dbt
       server_side_parameters:
         "spark.driver.memory": "4g" 
 ```

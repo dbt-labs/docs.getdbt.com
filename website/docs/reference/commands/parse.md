@@ -5,6 +5,8 @@ description: "Read this guide on how dbt's parse command can be used to parse yo
 id: "parse"
 ---
 
+import InfoSchemaIntro from '/snippets/_info-schema-intro.md';
+
 The `dbt parse` command parses and validates the contents of your dbt project. If your project contains Jinja or YAML syntax errors, the command will fail.
 
 It will also produce an artifact with detailed timing information, which is useful to understand parsing times for large projects. Refer to [Project parsing](/reference/parsing) for more information.
@@ -88,3 +90,17 @@ $ dbt parse
 ```
 
 </File>
+
+<VersionBlock firstVersion="2.0">
+
+## dbt Information Schema
+
+<InfoSchemaIntro />
+
+```shell
+dbt parse --generate-info-schema
+```
+
+Because `dbt parse` doesn't connect to your warehouse, the Information Schema it produces contains no column types, no column-level lineage, and no runtime results.
+
+</VersionBlock>
