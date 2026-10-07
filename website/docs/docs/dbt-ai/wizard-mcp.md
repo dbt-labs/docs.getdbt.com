@@ -251,13 +251,13 @@ nightly job and summarize the error.
 
 ### Fivetran Agent Context MCP server
 
-
-To connect <Constant name="wizard"/> to Fivetran, add the [Fivetran Agent Context MCP server](https://fivetran.com/docs/context-layer/agent-context-mcp/setup-guide#connectyouraitool) using the following command:
+Connect <Constant name="wizard"/> to the [Fivetran Agent Context MCP server](https://fivetran.com/docs/context-layer/agent-context-mcp) which gives Wizard access to your organization's Fivetran context layer, so it can answer questions using your business definitions, metrics, and operational data. Add it with the following command:
 
 ```bash
 wizard mcp add AgentContext \
   --url "https://api.fivetran.ai/mcp"
 ```
+Wizard then prompts you to authorize the connection. Follow the prompts to finish connecting.
 
 If your organization uses system keys, set your API key as an environment variable first, then include it in the command:
 
