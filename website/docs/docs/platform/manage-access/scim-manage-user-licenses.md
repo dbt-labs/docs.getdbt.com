@@ -10,7 +10,6 @@ availability:
 ---
 
 import ScimLicenseMappingCallout from '/snippets/_scim-license-mapping-callout.md';
-import ScimAdminGroupCallout from '/snippets/_scim-admin-group-callout.md';
 
 # Manage user licenses with SCIM
 
@@ -18,10 +17,9 @@ You can manage user license assignments using System for Cross-Domain Identity M
 
 <ScimLicenseMappingCallout />
 
-<ScimAdminGroupCallout />
-
 #### Considerations
 Before you enable SCIM license mapping:
+- Create an IdP group for your account admins, provision it through SCIM, and assign it the [Account Admin](/docs/platform/manage-access/enterprise-permissions#account-admin) permission set before you enable SCIM. SCIM turns off default groups and SSO group mappings, so without this you can lose admin access.
 - **Default license**: New users are assigned a Developer license unless you change it manually using [SSO license mappings](/docs/platform/manage-access/seats-and-users#mapped-configuration), or using SCIM.
 - **Best practice**: Use one source of truth for license assignment (either <Constant name="dbt_platform" /> or SCIM). Don't mix SCIM license management with manual or single sign-on (SSO) mapping changes.
 - **Analyst license**: Only available on [select plans](/docs/platform/manage-access/seats-and-users). Assigning this license using SCIM will return an error if that license type isn't available for your account. The [Analyst license type](/docs/platform/manage-access/about-user-access?version=1.12#licenses) is not available for new purchase.
