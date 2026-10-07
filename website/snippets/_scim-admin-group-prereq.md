@@ -1,0 +1,1 @@
+Create an IdP group for your account admins, provision it through SCIM, and assign it the [Account Admin](/docs/platform/manage-access/enterprise-permissions#account-admin) permission set before you enable SCIM. SCIM turns off default groups and SSO group mappings, so without this you can lose admin access.

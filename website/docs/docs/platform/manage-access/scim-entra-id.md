@@ -11,6 +11,7 @@ availability:
 
 import ScimLicenseMappingCallout from '/snippets/_scim-license-mapping-callout.md';
 import ScimAssignGroupPermissions from '/snippets/_scim-assign-group-permissions.md';
+import ScimAdminGroupPrereq from '/snippets/_scim-admin-group-prereq.md';
 
 
 # Set up SCIM with Entra ID
@@ -25,7 +26,7 @@ import ScimAssignGroupPermissions from '/snippets/_scim-assign-group-permissions
 - You must have [permissions](/docs/platform/manage-access/enterprise-permissions) to configure the account settings in <Constant name="dbt_platform" />.
 - Complete [setup SSO with Entra ID](/docs/platform/manage-access/set-up-sso-microsoft-entra-id) before configuring SCIM settings.
 - Complete the [Set up SCIM](/docs/platform/manage-access/scim#set-up-dbt) to get your SCIM base URL and token.
-- Create an IdP group for your account admins, provision it through SCIM, and assign it the [Account Admin](/docs/platform/manage-access/enterprise-permissions#account-admin) permission set before you enable SCIM. SCIM turns off default groups and SSO group mappings, so without this you can lose admin access.
+- <ScimAdminGroupPrereq />
 
 ## Set up Entra ID
 

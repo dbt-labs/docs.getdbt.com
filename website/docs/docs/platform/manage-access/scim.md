@@ -10,6 +10,7 @@ availability:
 ---
 
 import ScimLicenseMappingCallout from '/snippets/_scim-license-mapping-callout.md';
+import ScimAdminGroupPrereq from '/snippets/_scim-admin-group-prereq.md';
 
 # Set up SCIM
 
@@ -21,7 +22,7 @@ When configuring your IdP, review [API rate limits](/docs/dbt-apis/rate-limits) 
 
 To configure SCIM in your <Constant name="dbt" /> environment:
 - You must be on an [Enterprise or Enterprise+ plan](https://www.getdbt.com/pricing).
-- Create an IdP group for your account admins, provision it through SCIM, and assign it the [Account Admin](/docs/platform/manage-access/enterprise-permissions#account-admin) permission set before you enable SCIM. SCIM turns off default groups and SSO group mappings, so without this you can lose admin access.
+- <ScimAdminGroupPrereq />
 - You must use Okta or Entra ID as your SSO provider and have it connected in the dbt platform.
 - You must have [permissions](/docs/platform/manage-access/enterprise-permissions) to configure the account settings in <Constant name="dbt_platform" /> and change application settings in [Okta](https://help.okta.com/en-us/content/topics/security/administrators-admin-comparison.htm).
 - If you have IP restrictions enabled, you must add [Okta's IPs](https://help.okta.com/en-us/content/topics/security/ip-address-allow-listing.htm) to your allowlist. If you're using Entra ID with IP restrictions enabled, refer to [Azure SCIM provisioning fails due to IP allowlisting](/docs/platform/manage-access/scim-faq) in the SCIM FAQ.
