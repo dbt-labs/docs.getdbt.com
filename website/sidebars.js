@@ -872,9 +872,9 @@ const sidebarSettings = {
           label: "Set up dbt State",
           link: { type: "doc", id: "docs/deploy/dbt-state-setup" },
           items: [
-            "docs/deploy/dbt-state-setup", 
-            "docs/deploy/dbt-state-enable-jobs", 
-            "docs/deploy/dbt-state-enable-studio", 
+            "docs/deploy/dbt-state-setup",
+            "docs/deploy/dbt-state-enable-env-jobs",
+            "docs/deploy/dbt-state-enable-studio",
             "docs/deploy/dbt-state-cicd", 
             "docs/deploy/dbt-state-deferral",
           ],

@@ -29,7 +29,7 @@ import ExplorerCourse from '/snippets/_explorer-course-link.md';
 
 There is no additional setup required for CLL in <Constant name="catalog" /> if your account is an Enterprise or Enterprise+ plan with <Constant name="catalog" /> access. You can access CLL from the column card in the **Columns** tab in the <Constant name="catalog" /> [resource details page](/docs/explore/explore-projects#view-resource-details) for a model, source, or snapshot.
 
-<Constant name="dbt" /> updates the lineage in <Constant name="catalog" /> after each run that's executed in the production or staging environment. At least one job in the production or staging environment must run `dbt docs generate`. Refer to [Generating metadata](/docs/explore/explore-projects#generate-metadata) for more details.
+<Constant name="dbt" /> updates the lineage in <Constant name="catalog" /> after each run that's executed in the production or staging environment. <VersionBlock lastVersion="1.99">At least one job in the production or staging environment must run `dbt docs generate`.</VersionBlock><VersionBlock firstVersion="2.0">Jobs running v2 refresh this metadata automatically on every job run.</VersionBlock> Refer to [Generating metadata](/docs/explore/explore-projects#generate-metadata) for more details.
 
 <Lightbox src="/img/docs/collaborate/dbt-explorer/example-cll.png" width="40%" title="Example of the Columns tab and where to open the CLL"/>
 
@@ -46,6 +46,10 @@ When you develop with <Constant name="dbt" /> v2, you can see column-level linea
 You can use the column evolution lineage lens to determine when a column is transformed vs. reused (passthrough or rename). The lens helps you distinguish when and how a column is actually changed as it flows through your dbt lineage, informing debugging workflows in particular. 
 
 <Lightbox src="/img/docs/collaborate/dbt-explorer/example-evolution-lens.png" width="90%" title="Example of the Column evolution lens"/>
+
+The **Transformation** column previews the formula used to produce a column’s values. To view the full formula, select the column in the full lineage view.
+
+The transformation type and formula appear after you update your project and a job runs in your production or staging environment.
 
 ### Inherited column descriptions
 
