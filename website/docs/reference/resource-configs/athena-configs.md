@@ -12,7 +12,7 @@ id: "athena-configs"
 |-----------|---------|-------------|
 | `external_location` | None | The full S3 path to where the table is saved. It only works with incremental models. It doesn't work with Hive tables with `ha` set to `true`. |
 | `partitioned_by` | None | An array list of columns by which the table will be partitioned. Currently limited to 100 partitions. |
-| `bucketed_by` | None | An array list of the columns to bucket data. Ignored if using Iceberg. |
+| `bucketed_by` | None | An array list of the columns to bucket data. Ignored if using Iceberg. For Iceberg, refer to [Iceberg bucketing](#iceberg-bucketing). |
 | `bucket_count` | None | The number of buckets for bucketing your data. This parameter is ignored if using Iceberg. |
 | `table_type` | Hive | The type of table. Supports `hive` or `iceberg`. |
 | `ha` | False | Build the table using the high-availability method. Only available for Hive tables. |
@@ -184,12 +184,66 @@ select 'A'          as user_id,
        current_date as my_date
 ```
 
+#### Iceberg bucketing
+
+Iceberg supports bucketing as hidden partitioning. Use the `partitioned_by` config with the `bucket` function to hash a column into a fixed number of buckets. The `bucketed_by` and `bucket_count` configs are ignored for Iceberg tables.
+
+The argument order depends on the engine that runs your model:
+
+| Model type | Engine | Syntax | Example |
+| --- | --- | --- | --- |
+| SQL | Athena SQL | `bucket(column, count)` | `bucket(user_id, 5)` |
+| Python | Spark | `bucket(count, column)` | `bucket(5, user_id)` |
+
+:::caution
+Athena SQL puts the column first. Spark (and the canonical Iceberg spec) puts the bucket count first. If you mix them up, your model fails or buckets the wrong thing.
+:::
+
+<Tabs>
+
+<TabItem value="sql" label="SQL model">
+
+This example hashes `user_id` into 5 buckets:
+
+```sql
+{{ config(
+    materialized='table',
+    table_type='iceberg',
+    format='parquet',
+    partitioned_by=['bucket(user_id, 5)']
+) }}
+
+select 'A' as user_id,
+       'pi' as name
+```
+
+</TabItem>
+
+<TabItem value="python" label="Python model">
+
+This example hashes `user_id` into 5 buckets:
+
+```python
+def model(dbt, session):
+    dbt.config(
+        materialized='table',
+        table_type='iceberg',
+        format='parquet',
+        partitioned_by=['bucket(5, user_id)']
+    )
+
+    return session.createDataFrame([("A", "pi")], ["user_id", "name"])
+```
+
+</TabItem>
+
+</Tabs>
+
+You can combine bucketing with other partitions, for example `partitioned_by=['status', 'bucket(user_id, 5)']`.
+
 #### Iceberg catalogs
 
 In `dbt-athena` 1.11.1 and later, you can define Iceberg catalogs in `catalogs.yml` and select one with `catalog_name` on a model. The default catalog type for Athena is `glue`. Refer to [Using catalogs.yml](/docs/build/iceberg/catalogs-yml) for the `catalogs.yml` format.
-
-Iceberg supports bucketing as hidden partitions. Use the `partitioned_by` config to add specific bucketing
-conditions.
 
 Iceberg supports the `PARQUET`, `AVRO` and `ORC` table formats for data .
 
