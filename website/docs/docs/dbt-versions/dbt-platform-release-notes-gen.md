@@ -46,13 +46,11 @@ Release notes are grouped by date for single-tenant environments.
 
 - **Better file search for Wizard @-mentions**: Workspace @-mention queries now use server-side fuzzy matching instead of filtering a local list, returning better-ranked results for large repositories. The context file picker also prevents selecting stale results while a search is still in flight.
 
+- **Table blocks in reports**: You can now add a `table` block type to `compose_report` reports to render query results as formatted, scrollable tables. Columns can be narrowed and reordered using the `columns` field, and the display caps at 50 rows on screen with a truncation notice for clipped results.
+
 ### Catalog
 
 - **Column transformation type in lineage drawer**: You can use the new transformation type badge on column cards to see how each column is derived.
-
-### Insights
-
-- **Table blocks in reports**: You can now add a `table` block type to `compose_report` reports to render query results as formatted, scrollable tables. Columns can be narrowed and reordered using the `columns` field, and the display caps at 50 rows on screen with a truncation notice for clipped results.
 
 ### Webhooks
 
@@ -62,7 +60,7 @@ Release notes are grouped by date for single-tenant environments.
 
 - **dbt State no longer in preview**: The dbt State navigation option no longer carries a "Preview" badge. Incomplete projects (those without a repository or skipped setup) are also excluded from automatic project selection on the dbt State home page.
 
-- **Add-on trial-to-allowance email notification**: Billing admins now receive an email when an add-on trial transitions to the free monthly allowance plan instead of expiring outright. Enterprise accounts are directed to their account team; self-serve accounts are directed to add a payment method.
+- **Add-on trial-to-allowance email notification**: Billing admins now receive an email when an add-on trial transitions to the free monthly allowance plan instead of expiring outright. The email directs them to their account team.
 
 - **Expanded State Spend API fields**: The State Spend API response now includes allowance amount, consumed and remaining allowance, reset and end dates, and an `is_soft_blocked` flag indicating when dbt State activity is halted due to an exhausted allowance.
 
@@ -74,11 +72,11 @@ Release notes are grouped by date for single-tenant environments.
 
 - **Wizard diff card no longer crashes on malformed patches**: When the Wizard receives a malformed diff patch, it now displays a "Couldn't parse diff" error badge instead of crashing.
 
-### Insights
-
 - **Correct chart axis labels for decimal data**: Charts with decimal data values (for example, 25.43 minutes) no longer push the y-axis name outside the visible canvas area. The axis gap is now calculated from rounded tick values.
 
 - **Horizontal bar chart axis name no longer overlaps the legend**: The x-axis name, grid bottom margin, and legend centering on horizontal bar charts are now computed correctly so the axis label no longer overlaps the legend.
+
+### Cost Insights
 
 - **Cost Insights no longer stuck on "Preparing"**: The Cost Insights dashboard no longer shows a perpetual loading spinner when partial cost data exists. You now see available cost data even when some rows have not been fully processed.
 
