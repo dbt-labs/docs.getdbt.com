@@ -164,7 +164,7 @@ Caveats:
 
 <VersionBlock lastVersion="1.12">
 
-- Starting in <Constant name="dbt" /> v1.11, dbt-snowflake supports basic table materialization on Iceberg tables registered in a Glue catalog through a catalog-linked database. Note that incremental materializations aren't yet supported.
+- Starting in <Constant name="dbt" /> v1.11, dbt-snowflake supports basic table materialization on Iceberg tables registered in a Glue catalog through a catalog-linked database. Incremental model support is currently only available in v2.
 
 </VersionBlock>
 
