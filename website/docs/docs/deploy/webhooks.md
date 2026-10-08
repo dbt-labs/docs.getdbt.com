@@ -74,12 +74,16 @@ To reactivate a webhook, use one of the following methods:
 To find the appropriate <Constant name="dbt" /> access URL for your region and plan, refer to [Regions & IP addresses](/docs/platform/about-platform/access-regions-ip-addresses).
 
 ### Differences between completed and errored webhook events {#completed-errored-event-difference}
-The `job.run.errored` event is a subset of the `job.run.completed` events. If you subscribe to both, you will receive two notifications when your job encounters an error. However, <Constant name="dbt" /> triggers the two events at different times:
+When your job encounters an error, <Constant name="dbt" /> usually sends both a `job.run.errored` and a `job.run.completed` event. If you subscribe to both, you receive two notifications for the same run. However, <Constant name="dbt" /> triggers the two events at different times:
 
 - `job.run.completed` &mdash;  This event only fires once the job’s metadata and artifacts have been ingested and are available from the <Constant name="dbt" /> Admin and Discovery APIs. 
 - `job.run.errored` &mdash; This event fires immediately so the job’s metadata and artifacts might not have been ingested. This means that information might not be available for you to use.
 
+For some failures, such as a parsing error that stops the run before any node executes, <Constant name="dbt" /> might send only the `job.run.errored` event and no `job.run.completed` event.
+
 If your integration depends on data from the Admin API (such as accessing the logs from the run) or Discovery API (accessing model-by-model statuses), use the `job.run.completed` event and filter on `runStatus` or `runStatusCode`. 
+
+If your integration needs to detect every failed run, don't rely on `job.run.completed` alone. Also subscribe to `job.run.errored`, and deduplicate the two events on `runId`.
 
 If your integration doesn’t depend on additional data or if improved delivery performance is more important for you, use `job.run.errored` and build your integration to handle API calls that might not return data a short period at first. 
 
