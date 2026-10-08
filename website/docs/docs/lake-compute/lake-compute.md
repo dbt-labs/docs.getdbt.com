@@ -9,7 +9,7 @@ slug: /docs/lake-compute
 
 :::info Lake Compute is in private beta
 
-To request access, fill out the [Lake Compute signup form](https://docs.google.com/forms/d/e/1FAIpQLSdWXHU3VFqq1t8GVAA2BMfY_AfeVJH26OXJFlNwXiVv4pcuXQ/viewform). Lake Compute is in active development and likely to change. Breaking changes may occur, documentation may be incomplete, technical support may be limited, and no service-level agreement covers it during beta. Refer to [Private beta limitations](/docs/lake-compute#private-beta-limitations) before you plan real work around it.
+To request access or region support, fill out the [Lake Compute signup form](https://docs.google.com/forms/d/e/1FAIpQLSdWXHU3VFqq1t8GVAA2BMfY_AfeVJH26OXJFlNwXiVv4pcuXQ/viewform). Lake Compute is in active development and likely to change. Breaking changes may occur, documentation may be incomplete, technical support may be limited, and no service-level agreement covers it during beta. Refer to [Private beta limitations](/docs/lake-compute#private-beta-limitations) before you plan real work around it.
 
 :::
 
@@ -32,7 +32,7 @@ To set up Lake Compute, you need:
 
 - Enrollment in the Lake Compute private beta. Request access with the [Lake Compute signup form](https://docs.google.com/forms/d/e/1FAIpQLSdWXHU3VFqq1t8GVAA2BMfY_AfeVJH26OXJFlNwXiVv4pcuXQ/viewform). The **Compute** tab doesn't appear on your MDLS destination until your account is enrolled.
 - A Fivetran account. You can create a new Fivetran account, and use it indefinitely, since there is not yet billing for MDLS or Lake Compute; or trial full features (including connectors) for 14 days.
-- An existing Fivetran Managed Data Lake Service (MDLS) destination — which includes an MDLS Iceberg catalog (Polaris) and an Amazon S3 storage bucket — already in a supported AWS region, or create a new one with a storage bucket in a supported AWS region. Lake Compute, your storage bucket, and (if using Lake Compute as "sidecar") your primary data must all be in the same region. Lake Compute currently supports AWS regions `us-east-1` and `us-west-2`.
+- An existing Fivetran Managed Data Lake Service (MDLS) destination — which includes an MDLS Iceberg catalog (Polaris) and an Amazon S3 storage bucket — already in a supported AWS region, or create a new one with a storage bucket in a supported AWS region. Lake Compute, your storage bucket, and (if using Lake Compute as "sidecar") your primary data must all be in the same region. Lake Compute currently supports AWS regions `us-east-1` and `us-west-2`. If you need a region that isn’t listed, complete the [sign-up form](https://docs.google.com/forms/d/e/1FAIpQLSdWXHU3VFqq1t8GVAA2BMfY_AfeVJH26OXJFlNwXiVv4pcuXQ/viewform) to request it.
 - Permission to configure the required cloud storage, catalog integration, warehouse access, authentication, and—where applicable—network policy allowlisting.
 
 After you complete setup, you need a dbt project running on **dbt v2**. You also need time to identify suitable models, adapt SQL where necessary, and validate results.
