@@ -64,7 +64,7 @@ The following adapters are supported in v2:
 
 v2 will not support any deprecated functionality (see the [Changes overview](/reference/changes-overview) for details):
 - All [deprecation warnings](/reference/deprecations) must be resolved before upgrading to the new engine. This includes historic deprecations and [new ones as of <Constant name="dbt" /> v1.10](/docs/dbt-versions/dbt-upgrade/upgrading-to-v1.10#deprecation-warnings).
-- Some [behavior change flags](/reference/global-configs/behavior-changes#behavior-change-flags) will be removed (generally enabled). You can no longer opt out of them using `flags:` in your `dbt_project.yml`.
+- Some [behavior change flags](/reference/global-configs/behavior-changes#behavior-change-flags) will be removed (generally enabled). Flags marked `2.0` in the **Removed** column in that table are removed: the new behavior is always enabled and you can no longer opt out with `flags:` in your `dbt_project.yml`. All other flags without a removal version (marked `-`) remain configurable, including v2-specific flags listed later on that page.
 
 ### Ecosystem packages
 
@@ -99,6 +99,8 @@ For more information, refer to [Checks](/docs/build/checks).
 v2 introduces [dbt Docs v2](/docs/build/view-documentation#dbt-docs-v2), a fast, modern self-hosted catalog experience built to help you understand and trust your production data. You get column-level lineage, Semantic Layer metadata, and a beautifully refreshed interface, all working smoothly on the largest projects. Under the hood, your metadata lives in efficient Parquet artifacts for faster load times and a catalog that scales as your project grows.
 
 `dbt docs generate` compiles your project, produces the v2 Parquet artifacts, and exports a static site in a single command. `dbt docs serve` previews that site locally. Because the browser queries those artifacts directly with DuckDB-WASM, you can also host the generated files on any static file host. Column-level lineage is visible when you build with `--static-analysis strict`.
+
+dbt Docs v2 runs locally only. If you use <Constant name="dbt_platform" />, your jobs refresh <Constant name="catalog" /> metadata automatically, so explore your project in [<Constant name="catalog" />](/docs/explore/build-and-view-your-docs) instead.
 
 To hydrate catalog metadata (`catalog.json`) for <Constant name="catalog" /> without building the site, use the [`--write-catalog` flag](/reference/commands/cmd-docs#--write-catalog-flag) instead.
 
