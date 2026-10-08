@@ -4,8 +4,8 @@ id: "upgrade-dbt-platform-version"
 availability: platform_login
 ---
 
-import FusionDWH from '/snippets/_fusion-dwh-platform.md';
-import FusionUpgradeSteps from '/snippets/_fusion-upgrade-steps.md';
+import FusionDWH from '/snippets/_v2-dwh-platform.md';
+import FusionUpgradeSteps from '/snippets/_v2-upgrade-steps.md';
 
 In <Constant name="dbt" />, both [jobs](/docs/deploy/jobs) and [environments](/docs/dbt-platform-environments) are configured to use a specific version of dbt. The version can be upgraded at any time.
 
@@ -125,7 +125,7 @@ To begin the process of upgrading to <Constant name="fusion" /> with the assista
 
 Now that you've upgraded your development environment to <Constant name="fusion" />, you're ready to start the process of upgrading your Production, Staging, and General environments. Follow your organization's standard procedures and use the [release tracks](#release-tracks) to upgrade.
 
-import FusionReadinessPanel from '/snippets/_fusion-migration-readiness-panel.md';
+import FusionReadinessPanel from '/snippets/_v2-migration-readiness-panel.md';
 
 <FusionReadinessPanel />
 

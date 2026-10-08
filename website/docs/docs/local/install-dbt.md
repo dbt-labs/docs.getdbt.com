@@ -6,7 +6,7 @@ sidebar_label: "Install dbt"
 availability: local_free
 ---
 
-import AboutFusion from '/snippets/_about-fusion.md';
+import AboutFusion from '/snippets/_about-v2.md';
 
 <VersionBlock firstVersion="2.0">
 

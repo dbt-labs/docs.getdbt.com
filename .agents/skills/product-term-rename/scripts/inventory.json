@@ -409,7 +409,7 @@
     "line": 10,
     "match": "fusion",
     "group": "fusion",
-    "context": "import AboutFusion from '/snippets/_about-fusion.md';",
+    "context": "import AboutFusion from '/snippets/_about-v2.md';",
     "class": "structural",
     "auto_safe": false
   },
@@ -1192,7 +1192,7 @@
     "line": 169,
     "match": "fusion",
     "group": "fusion",
-    "context": "import AboutFusion from '/snippets/_about-fusion.md';",
+    "context": "import AboutFusion from '/snippets/_about-v2.md';",
     "class": "structural",
     "auto_safe": false
   },
@@ -2558,7 +2558,7 @@
     "line": 71,
     "match": "fusion",
     "group": "fusion",
-    "context": "import AboutFusion from '/snippets/_about-fusion.md';",
+    "context": "import AboutFusion from '/snippets/_about-v2.md';",
     "class": "structural",
     "auto_safe": false
   },
@@ -7639,7 +7639,7 @@
     "line": 26,
     "match": "fusion",
     "group": "fusion",
-    "context": "import AboutFusion from '/snippets/_about-fusion.md';",
+    "context": "import AboutFusion from '/snippets/_about-v2.md';",
     "class": "structural",
     "auto_safe": false
   },
@@ -9250,7 +9250,7 @@
     "line": 9,
     "match": "fusion",
     "group": "fusion",
-    "context": "import AboutFusion from '/snippets/_about-fusion.md';",
+    "context": "import AboutFusion from '/snippets/_about-v2.md';",
     "class": "structural",
     "auto_safe": false
   },
@@ -12895,7 +12895,7 @@
     "line": 386,
     "match": "fusion",
     "group": "fusion",
-    "context": "import AboutFusion from '/snippets/_about-fusion.md';",
+    "context": "import AboutFusion from '/snippets/_about-v2.md';",
     "class": "structural",
     "auto_safe": false
   },
@@ -14733,7 +14733,7 @@
     "line": 223,
     "match": "fusion",
     "group": "fusion",
-    "context": "import AboutFusion from '/snippets/_about-fusion.md';",
+    "context": "import AboutFusion from '/snippets/_about-v2.md';",
     "class": "structural",
     "auto_safe": false
   },
@@ -26997,7 +26997,7 @@
     "auto_safe": false
   },
   {
-    "path": "website/snippets/_fusion-supported-packages.md",
+    "path": "website/snippets/_v2-supported-packages.md",
     "line": 1,
     "match": "<Constant name=\"fusion\" />",
     "group": "constant:fusion",
@@ -27007,7 +27007,7 @@
     "auto_safe": false
   },
   {
-    "path": "website/snippets/_fusion-threads.md",
+    "path": "website/snippets/_v2-threads.md",
     "line": 3,
     "match": "<Constant name=\"fusion\"/>",
     "group": "constant:fusion",
@@ -27017,7 +27017,7 @@
     "auto_safe": false
   },
   {
-    "path": "website/snippets/_fusion-threads.md",
+    "path": "website/snippets/_v2-threads.md",
     "line": 3,
     "match": "<Constant name=\"fusion\"/>",
     "group": "constant:fusion",
@@ -27027,7 +27027,7 @@
     "auto_safe": false
   },
   {
-    "path": "website/snippets/_fusion-threads.md",
+    "path": "website/snippets/_v2-threads.md",
     "line": 4,
     "match": "<Constant name=\"fusion\"/>",
     "group": "constant:fusion",
@@ -27037,7 +27037,7 @@
     "auto_safe": false
   },
   {
-    "path": "website/snippets/_fusion-threads.md",
+    "path": "website/snippets/_v2-threads.md",
     "line": 4,
     "match": "<Constant name=\"fusion\"/>",
     "group": "constant:fusion",
@@ -27047,7 +27047,7 @@
     "auto_safe": false
   },
   {
-    "path": "website/snippets/_fusion-threads.md",
+    "path": "website/snippets/_v2-threads.md",
     "line": 5,
     "match": "<Constant name=\"fusion\" />",
     "group": "constant:fusion",
@@ -27057,7 +27057,7 @@
     "auto_safe": false
   },
   {
-    "path": "website/snippets/_fusion-threads.md",
+    "path": "website/snippets/_v2-threads.md",
     "line": 5,
     "match": "<Constant name=\"fusion\"/>",
     "group": "constant:fusion",
@@ -27067,7 +27067,7 @@
     "auto_safe": false
   },
   {
-    "path": "website/snippets/_fusion-threads.md",
+    "path": "website/snippets/_v2-threads.md",
     "line": 6,
     "match": "<Constant name=\"fusion\" />",
     "group": "constant:fusion",
@@ -27077,7 +27077,7 @@
     "auto_safe": false
   },
   {
-    "path": "website/snippets/_fusion-threads.md",
+    "path": "website/snippets/_v2-threads.md",
     "line": 6,
     "match": "<Constant name=\"fusion\"/>",
     "group": "constant:fusion",
@@ -27236,7 +27236,7 @@
     "auto_safe": true
   },
   {
-    "path": "website/snippets/_fusion-manual-install.md",
+    "path": "website/snippets/_v2-manual-install.md",
     "line": 36,
     "match": "<Constant name=\"fusion\" />",
     "group": "constant:fusion",
@@ -27246,7 +27246,7 @@
     "auto_safe": false
   },
   {
-    "path": "website/snippets/_fusion-manual-install.md",
+    "path": "website/snippets/_v2-manual-install.md",
     "line": 98,
     "match": "<Constant name=\"fusion\" />",
     "group": "constant:fusion",
@@ -27256,7 +27256,7 @@
     "auto_safe": false
   },
   {
-    "path": "website/snippets/_fusion-manual-install.md",
+    "path": "website/snippets/_v2-manual-install.md",
     "line": 98,
     "match": "Core",
     "group": "core",
@@ -27306,7 +27306,7 @@
     "auto_safe": true
   },
   {
-    "path": "website/snippets/_fusion-features.md",
+    "path": "website/snippets/_v2-features.md",
     "line": 17,
     "match": "dbt Core v1.x",
     "group": "core",
@@ -27317,7 +27317,7 @@
     "auto_safe": true
   },
   {
-    "path": "website/snippets/_fusion-migration-workflow.md",
+    "path": "website/snippets/_v2-migration-workflow.md",
     "line": 1,
     "match": "<Constant name=\"fusion\"/>",
     "group": "constant:fusion",
@@ -27327,7 +27327,7 @@
     "auto_safe": false
   },
   {
-    "path": "website/snippets/_fusion-migration-workflow.md",
+    "path": "website/snippets/_v2-migration-workflow.md",
     "line": 1,
     "match": "fusion",
     "group": "fusion",
@@ -27336,7 +27336,7 @@
     "auto_safe": false
   },
   {
-    "path": "website/snippets/_fusion-migration-workflow.md",
+    "path": "website/snippets/_v2-migration-workflow.md",
     "line": 4,
     "match": "<Constant name=\"fusion\" />",
     "group": "constant:fusion",
@@ -27346,7 +27346,7 @@
     "auto_safe": false
   },
   {
-    "path": "website/snippets/_fusion-migration-workflow.md",
+    "path": "website/snippets/_v2-migration-workflow.md",
     "line": 8,
     "match": "Fusion",
     "group": "fusion",
@@ -27357,7 +27357,7 @@
     "auto_safe": true
   },
   {
-    "path": "website/snippets/_fusion-migration-workflow.md",
+    "path": "website/snippets/_v2-migration-workflow.md",
     "line": 9,
     "match": "<Constant name=\"fusion\"/>",
     "group": "constant:fusion",
@@ -27367,7 +27367,7 @@
     "auto_safe": false
   },
   {
-    "path": "website/snippets/_fusion-migration-workflow.md",
+    "path": "website/snippets/_v2-migration-workflow.md",
     "line": 10,
     "match": "<Constant name=\"fusion\" />",
     "group": "constant:fusion",
@@ -27377,7 +27377,7 @@
     "auto_safe": false
   },
   {
-    "path": "website/snippets/_fusion-migration-workflow.md",
+    "path": "website/snippets/_v2-migration-workflow.md",
     "line": 11,
     "match": "<Constant name=\"fusion\" />",
     "group": "constant:fusion",
@@ -27387,7 +27387,7 @@
     "auto_safe": false
   },
   {
-    "path": "website/snippets/_fusion-migration-workflow.md",
+    "path": "website/snippets/_v2-migration-workflow.md",
     "line": 13,
     "match": "Fusion",
     "group": "fusion",
@@ -27398,7 +27398,7 @@
     "auto_safe": true
   },
   {
-    "path": "website/snippets/_fusion-migration-workflow.md",
+    "path": "website/snippets/_v2-migration-workflow.md",
     "line": 13,
     "match": "fusion",
     "group": "fusion",
@@ -27407,7 +27407,7 @@
     "auto_safe": false
   },
   {
-    "path": "website/snippets/_fusion-migration-workflow.md",
+    "path": "website/snippets/_v2-migration-workflow.md",
     "line": 13,
     "match": "core",
     "group": "core",
@@ -27416,7 +27416,7 @@
     "auto_safe": false
   },
   {
-    "path": "website/snippets/_fusion-migration-workflow.md",
+    "path": "website/snippets/_v2-migration-workflow.md",
     "line": 18,
     "match": "<Constant name=\"fusion\"/>",
     "group": "constant:fusion",
@@ -27426,7 +27426,7 @@
     "auto_safe": false
   },
   {
-    "path": "website/snippets/_fusion-migration-workflow.md",
+    "path": "website/snippets/_v2-migration-workflow.md",
     "line": 20,
     "match": "fusion",
     "group": "fusion",
@@ -27435,7 +27435,7 @@
     "auto_safe": false
   },
   {
-    "path": "website/snippets/_fusion-migration-workflow.md",
+    "path": "website/snippets/_v2-migration-workflow.md",
     "line": 20,
     "match": "fusion",
     "group": "fusion",
@@ -27446,7 +27446,7 @@
     "auto_safe": false
   },
   {
-    "path": "website/snippets/_fusion-migration-workflow.md",
+    "path": "website/snippets/_v2-migration-workflow.md",
     "line": 20,
     "match": "Fusion",
     "group": "fusion",
@@ -28057,7 +28057,7 @@
     "auto_safe": true
   },
   {
-    "path": "website/snippets/_about-fusion.md",
+    "path": "website/snippets/_about-v2.md",
     "line": 6,
     "match": "<Constant name=\"fusion\" />",
     "group": "constant:fusion",
@@ -28067,7 +28067,7 @@
     "auto_safe": false
   },
   {
-    "path": "website/snippets/_about-fusion.md",
+    "path": "website/snippets/_about-v2.md",
     "line": 8,
     "match": "fusion",
     "group": "fusion",
@@ -28096,7 +28096,7 @@
     "auto_safe": false
   },
   {
-    "path": "website/snippets/_fusion-partial-parse-cli-flags.md",
+    "path": "website/snippets/_v2-partial-parse-cli-flags.md",
     "line": 1,
     "match": "<Constant name=\"fusion\" />",
     "group": "constant:fusion",
@@ -28106,7 +28106,7 @@
     "auto_safe": false
   },
   {
-    "path": "website/snippets/_fusion-partial-parse-cli-flags.md",
+    "path": "website/snippets/_v2-partial-parse-cli-flags.md",
     "line": 1,
     "match": "<Constant name=\"core\" />",
     "group": "constant:core",
@@ -28116,7 +28116,7 @@
     "auto_safe": false
   },
   {
-    "path": "website/snippets/_fusion-partial-parse-cli-flags.md",
+    "path": "website/snippets/_v2-partial-parse-cli-flags.md",
     "line": 1,
     "match": "<Constant name=\"fusion\" />",
     "group": "constant:fusion",
@@ -28126,7 +28126,7 @@
     "auto_safe": false
   },
   {
-    "path": "website/snippets/_fusion-partial-parse-cli-flags.md",
+    "path": "website/snippets/_v2-partial-parse-cli-flags.md",
     "line": 1,
     "match": "<Constant name=\"fusion_engine\" />",
     "group": "constant:fusion_engine",
@@ -28266,7 +28266,7 @@
     "auto_safe": true
   },
   {
-    "path": "website/snippets/_fusion-warehouse-permissions-snowflake.md",
+    "path": "website/snippets/_v2-warehouse-permissions-snowflake.md",
     "line": 1,
     "match": "<Constant name=\"fusion_engine\" />",
     "group": "constant:fusion_engine",
@@ -28276,7 +28276,7 @@
     "auto_safe": false
   },
   {
-    "path": "website/snippets/_fusion-warehouse-permissions-snowflake.md",
+    "path": "website/snippets/_v2-warehouse-permissions-snowflake.md",
     "line": 10,
     "match": "<Constant name=\"fusion\" />",
     "group": "constant:fusion",
@@ -28286,7 +28286,7 @@
     "auto_safe": false
   },
   {
-    "path": "website/snippets/_fusion-warehouse-permissions-snowflake.md",
+    "path": "website/snippets/_v2-warehouse-permissions-snowflake.md",
     "line": 16,
     "match": "Core",
     "group": "core",
@@ -28295,7 +28295,7 @@
     "auto_safe": false
   },
   {
-    "path": "website/snippets/_fusion-warehouse-permissions-snowflake.md",
+    "path": "website/snippets/_v2-warehouse-permissions-snowflake.md",
     "line": 51,
     "match": "<Constant name=\"fusion\" />",
     "group": "constant:fusion",
@@ -28305,7 +28305,7 @@
     "auto_safe": false
   },
   {
-    "path": "website/snippets/_fusion-warehouse-permissions-snowflake.md",
+    "path": "website/snippets/_v2-warehouse-permissions-snowflake.md",
     "line": 52,
     "match": "<Constant name=\"fusion\" />",
     "group": "constant:fusion",
@@ -28315,7 +28315,7 @@
     "auto_safe": false
   },
   {
-    "path": "website/snippets/_fusion-warehouse-permissions-bigquery.md",
+    "path": "website/snippets/_v2-warehouse-permissions-bigquery.md",
     "line": 1,
     "match": "<Constant name=\"fusion_engine\" />",
     "group": "constant:fusion_engine",
@@ -28325,7 +28325,7 @@
     "auto_safe": false
   },
   {
-    "path": "website/snippets/_fusion-warehouse-permissions-bigquery.md",
+    "path": "website/snippets/_v2-warehouse-permissions-bigquery.md",
     "line": 1,
     "match": "<Constant name=\"fusion\" />",
     "group": "constant:fusion",
@@ -28335,7 +28335,7 @@
     "auto_safe": false
   },
   {
-    "path": "website/snippets/_fusion-warehouse-permissions-bigquery.md",
+    "path": "website/snippets/_v2-warehouse-permissions-bigquery.md",
     "line": 50,
     "match": "<Constant name=\"fusion\" />",
     "group": "constant:fusion",
@@ -28345,7 +28345,7 @@
     "auto_safe": false
   },
   {
-    "path": "website/snippets/_fusion-warehouse-permissions-bigquery.md",
+    "path": "website/snippets/_v2-warehouse-permissions-bigquery.md",
     "line": 66,
     "match": "Fusion",
     "group": "fusion",
@@ -28356,7 +28356,7 @@
     "auto_safe": true
   },
   {
-    "path": "website/snippets/_fusion-migration-readiness-panel.md",
+    "path": "website/snippets/_v2-migration-readiness-panel.md",
     "line": 1,
     "match": "Fusion",
     "group": "fusion",
@@ -28367,7 +28367,7 @@
     "auto_safe": true
   },
   {
-    "path": "website/snippets/_fusion-migration-readiness-panel.md",
+    "path": "website/snippets/_v2-migration-readiness-panel.md",
     "line": 3,
     "match": "<Constant name=\"fusion\" />",
     "group": "constant:fusion",
@@ -28377,7 +28377,7 @@
     "auto_safe": false
   },
   {
-    "path": "website/snippets/_fusion-migration-readiness-panel.md",
+    "path": "website/snippets/_v2-migration-readiness-panel.md",
     "line": 3,
     "match": "Fusion",
     "group": "fusion",
@@ -28388,7 +28388,7 @@
     "auto_safe": true
   },
   {
-    "path": "website/snippets/_fusion-migration-readiness-panel.md",
+    "path": "website/snippets/_v2-migration-readiness-panel.md",
     "line": 5,
     "match": "<Constant name=\"fusion\" />",
     "group": "constant:fusion",
@@ -28398,7 +28398,7 @@
     "auto_safe": false
   },
   {
-    "path": "website/snippets/_fusion-migration-readiness-panel.md",
+    "path": "website/snippets/_v2-migration-readiness-panel.md",
     "line": 5,
     "match": "fusion",
     "group": "fusion",
@@ -28407,7 +28407,7 @@
     "auto_safe": false
   },
   {
-    "path": "website/snippets/_fusion-lifecycle-callout.md",
+    "path": "website/snippets/_v2-lifecycle-callout.md",
     "line": 3,
     "match": "<Constant name=\"fusion_engine\" />",
     "group": "constant:fusion_engine",
@@ -28417,7 +28417,7 @@
     "auto_safe": false
   },
   {
-    "path": "website/snippets/_fusion-lifecycle-callout.md",
+    "path": "website/snippets/_v2-lifecycle-callout.md",
     "line": 6,
     "match": "fusion",
     "group": "fusion",
@@ -28426,7 +28426,7 @@
     "auto_safe": false
   },
   {
-    "path": "website/snippets/_fusion-lifecycle-callout.md",
+    "path": "website/snippets/_v2-lifecycle-callout.md",
     "line": 8,
     "match": "fusion",
     "group": "fusion",
@@ -28464,7 +28464,7 @@
     "auto_safe": true
   },
   {
-    "path": "website/snippets/_fusion-prereqs.md",
+    "path": "website/snippets/_v2-prereqs.md",
     "line": 3,
     "match": "<Constant name=\"fusion\" />",
     "group": "constant:fusion",
@@ -28474,7 +28474,7 @@
     "auto_safe": false
   },
   {
-    "path": "website/snippets/_fusion-prereqs.md",
+    "path": "website/snippets/_v2-prereqs.md",
     "line": 7,
     "match": "<Constant name=\"fusion\" />",
     "group": "constant:fusion",
@@ -28484,7 +28484,7 @@
     "auto_safe": false
   },
   {
-    "path": "website/snippets/_fusion-troubleshooting.md",
+    "path": "website/snippets/_v2-troubleshooting.md",
     "line": 72,
     "match": "<Constant name=\"fusion_engine\" />",
     "group": "constant:fusion_engine",
@@ -28494,7 +28494,7 @@
     "auto_safe": false
   },
   {
-    "path": "website/snippets/_fusion-troubleshooting.md",
+    "path": "website/snippets/_v2-troubleshooting.md",
     "line": 73,
     "match": "<Constant name=\"fusion_engine\" />",
     "group": "constant:fusion_engine",
@@ -28504,7 +28504,7 @@
     "auto_safe": false
   },
   {
-    "path": "website/snippets/_fusion-troubleshooting.md",
+    "path": "website/snippets/_v2-troubleshooting.md",
     "line": 73,
     "match": "<Constant name=\"fusion\" />",
     "group": "constant:fusion",
@@ -28514,7 +28514,7 @@
     "auto_safe": false
   },
   {
-    "path": "website/snippets/_fusion-troubleshooting.md",
+    "path": "website/snippets/_v2-troubleshooting.md",
     "line": 77,
     "match": "dbt Fusion",
     "group": "fusion",
@@ -28525,7 +28525,7 @@
     "auto_safe": false
   },
   {
-    "path": "website/snippets/_fusion-troubleshooting.md",
+    "path": "website/snippets/_v2-troubleshooting.md",
     "line": 79,
     "match": "<Constant name=\"fusion_engine\" />",
     "group": "constant:fusion_engine",
@@ -28535,7 +28535,7 @@
     "auto_safe": false
   },
   {
-    "path": "website/snippets/_fusion-troubleshooting.md",
+    "path": "website/snippets/_v2-troubleshooting.md",
     "line": 79,
     "match": "fusion",
     "group": "fusion",
@@ -28544,7 +28544,7 @@
     "auto_safe": false
   },
   {
-    "path": "website/snippets/_fusion-troubleshooting.md",
+    "path": "website/snippets/_v2-troubleshooting.md",
     "line": 81,
     "match": "<Constant name=\"fusion\" />",
     "group": "constant:fusion",
@@ -28554,7 +28554,7 @@
     "auto_safe": false
   },
   {
-    "path": "website/snippets/_fusion-troubleshooting.md",
+    "path": "website/snippets/_v2-troubleshooting.md",
     "line": 82,
     "match": "<Constant name=\"fusion\" />",
     "group": "constant:fusion",
@@ -28564,7 +28564,7 @@
     "auto_safe": false
   },
   {
-    "path": "website/snippets/_fusion-troubleshooting.md",
+    "path": "website/snippets/_v2-troubleshooting.md",
     "line": 83,
     "match": "<Constant name=\"fusion\" />",
     "group": "constant:fusion",
@@ -28574,7 +28574,7 @@
     "auto_safe": false
   },
   {
-    "path": "website/snippets/_fusion-troubleshooting.md",
+    "path": "website/snippets/_v2-troubleshooting.md",
     "line": 86,
     "match": "dbt Fusion",
     "group": "fusion",
@@ -28585,7 +28585,7 @@
     "auto_safe": false
   },
   {
-    "path": "website/snippets/_fusion-troubleshooting.md",
+    "path": "website/snippets/_v2-troubleshooting.md",
     "line": 88,
     "match": "<Constant name=\"fusion\" />",
     "group": "constant:fusion",
@@ -28595,7 +28595,7 @@
     "auto_safe": false
   },
   {
-    "path": "website/snippets/_fusion-troubleshooting.md",
+    "path": "website/snippets/_v2-troubleshooting.md",
     "line": 90,
     "match": "<Constant name=\"fusion\" />",
     "group": "constant:fusion",
@@ -28605,7 +28605,7 @@
     "auto_safe": false
   },
   {
-    "path": "website/snippets/_fusion-troubleshooting.md",
+    "path": "website/snippets/_v2-troubleshooting.md",
     "line": 92,
     "match": "<Constant name=\"fusion\" />",
     "group": "constant:fusion",
@@ -28615,7 +28615,7 @@
     "auto_safe": false
   },
   {
-    "path": "website/snippets/_fusion-troubleshooting.md",
+    "path": "website/snippets/_v2-troubleshooting.md",
     "line": 96,
     "match": "dbt Fusion",
     "group": "fusion",
@@ -28626,7 +28626,7 @@
     "auto_safe": false
   },
   {
-    "path": "website/snippets/_fusion-troubleshooting.md",
+    "path": "website/snippets/_v2-troubleshooting.md",
     "line": 98,
     "match": "<Constant name=\"fusion\" />",
     "group": "constant:fusion",
@@ -28636,7 +28636,7 @@
     "auto_safe": false
   },
   {
-    "path": "website/snippets/_fusion-troubleshooting.md",
+    "path": "website/snippets/_v2-troubleshooting.md",
     "line": 100,
     "match": "<Constant name=\"fusion\" />",
     "group": "constant:fusion",
@@ -28646,7 +28646,7 @@
     "auto_safe": false
   },
   {
-    "path": "website/snippets/_fusion-troubleshooting.md",
+    "path": "website/snippets/_v2-troubleshooting.md",
     "line": 100,
     "match": "<Constant name=\"fusion\" />",
     "group": "constant:fusion",
@@ -28656,7 +28656,7 @@
     "auto_safe": false
   },
   {
-    "path": "website/snippets/_fusion-troubleshooting.md",
+    "path": "website/snippets/_v2-troubleshooting.md",
     "line": 104,
     "match": "dbt Fusion",
     "group": "fusion",
@@ -28667,7 +28667,7 @@
     "auto_safe": false
   },
   {
-    "path": "website/snippets/_fusion-troubleshooting.md",
+    "path": "website/snippets/_v2-troubleshooting.md",
     "line": 106,
     "match": "<Constant name=\"fusion\" />",
     "group": "constant:fusion",
@@ -28677,7 +28677,7 @@
     "auto_safe": false
   },
   {
-    "path": "website/snippets/_fusion-troubleshooting.md",
+    "path": "website/snippets/_v2-troubleshooting.md",
     "line": 131,
     "match": "<Constant name=\"fusion\" />",
     "group": "constant:fusion",
@@ -28687,7 +28687,7 @@
     "auto_safe": false
   },
   {
-    "path": "website/snippets/_fusion-troubleshooting.md",
+    "path": "website/snippets/_v2-troubleshooting.md",
     "line": 133,
     "match": "<Constant name=\"fusion\" />",
     "group": "constant:fusion",
@@ -28697,7 +28697,7 @@
     "auto_safe": false
   },
   {
-    "path": "website/snippets/_fusion-troubleshooting.md",
+    "path": "website/snippets/_v2-troubleshooting.md",
     "line": 133,
     "match": "core",
     "group": "core",
@@ -28777,7 +28777,7 @@
     "auto_safe": false
   },
   {
-    "path": "website/snippets/_fusion-warehouse-permissions-databricks.md",
+    "path": "website/snippets/_v2-warehouse-permissions-databricks.md",
     "line": 1,
     "match": "<Constant name=\"fusion_engine\" />",
     "group": "constant:fusion_engine",
@@ -29579,7 +29579,7 @@
     "auto_safe": true
   },
   {
-    "path": "website/snippets/_fusion-warehouse-permissions-redshift.md",
+    "path": "website/snippets/_v2-warehouse-permissions-redshift.md",
     "line": 1,
     "match": "<Constant name=\"fusion_engine\" />",
     "group": "constant:fusion_engine",
@@ -29589,7 +29589,7 @@
     "auto_safe": false
   },
   {
-    "path": "website/snippets/_fusion-warehouse-permissions-redshift.md",
+    "path": "website/snippets/_v2-warehouse-permissions-redshift.md",
     "line": 15,
     "match": "Core",
     "group": "core",
@@ -29598,7 +29598,7 @@
     "auto_safe": false
   },
   {
-    "path": "website/snippets/_fusion-warehouse-permissions-redshift.md",
+    "path": "website/snippets/_v2-warehouse-permissions-redshift.md",
     "line": 32,
     "match": "<Constant name=\"fusion\" />",
     "group": "constant:fusion",
@@ -29619,7 +29619,7 @@
     "auto_safe": true
   },
   {
-    "path": "website/snippets/_fusion-upgrade-steps.md",
+    "path": "website/snippets/_v2-upgrade-steps.md",
     "line": 5,
     "match": "<Constant name=\"fusion\" />",
     "group": "constant:fusion",
@@ -29629,7 +29629,7 @@
     "auto_safe": false
   },
   {
-    "path": "website/snippets/_fusion-upgrade-steps.md",
+    "path": "website/snippets/_v2-upgrade-steps.md",
     "line": 5,
     "match": "<Constant name=\"core\" />",
     "group": "constant:core",
@@ -29639,7 +29639,7 @@
     "auto_safe": false
   },
   {
-    "path": "website/snippets/_fusion-upgrade-steps.md",
+    "path": "website/snippets/_v2-upgrade-steps.md",
     "line": 5,
     "match": "<Constant name=\"fusion\" />",
     "group": "constant:fusion",
@@ -29649,7 +29649,7 @@
     "auto_safe": false
   },
   {
-    "path": "website/snippets/_fusion-upgrade-steps.md",
+    "path": "website/snippets/_v2-upgrade-steps.md",
     "line": 5,
     "match": "<Constant name=\"fusion\" />",
     "group": "constant:fusion",
@@ -29659,7 +29659,7 @@
     "auto_safe": false
   },
   {
-    "path": "website/snippets/_fusion-upgrade-steps.md",
+    "path": "website/snippets/_v2-upgrade-steps.md",
     "line": 5,
     "match": "<Constant name=\"core\" />",
     "group": "constant:core",
@@ -29669,7 +29669,7 @@
     "auto_safe": false
   },
   {
-    "path": "website/snippets/_fusion-upgrade-steps.md",
+    "path": "website/snippets/_v2-upgrade-steps.md",
     "line": 7,
     "match": "<Constant name=\"fusion\" />",
     "group": "constant:fusion",
@@ -29679,7 +29679,7 @@
     "auto_safe": false
   },
   {
-    "path": "website/snippets/_fusion-upgrade-steps.md",
+    "path": "website/snippets/_v2-upgrade-steps.md",
     "line": 7,
     "match": "<Constant name=\"core\" />",
     "group": "constant:core",
@@ -29689,7 +29689,7 @@
     "auto_safe": false
   },
   {
-    "path": "website/snippets/_fusion-upgrade-steps.md",
+    "path": "website/snippets/_v2-upgrade-steps.md",
     "line": 7,
     "match": "<Constant name=\"fusion\" />",
     "group": "constant:fusion",
@@ -29699,7 +29699,7 @@
     "auto_safe": false
   },
   {
-    "path": "website/snippets/_fusion-upgrade-steps.md",
+    "path": "website/snippets/_v2-upgrade-steps.md",
     "line": 7,
     "match": "<Constant name=\"core\" />",
     "group": "constant:core",
@@ -29709,7 +29709,7 @@
     "auto_safe": false
   },
   {
-    "path": "website/snippets/_fusion-upgrade-steps.md",
+    "path": "website/snippets/_v2-upgrade-steps.md",
     "line": 7,
     "match": "<Constant name=\"fusion\" />",
     "group": "constant:fusion",
@@ -29719,7 +29719,7 @@
     "auto_safe": false
   },
   {
-    "path": "website/snippets/_fusion-upgrade-steps.md",
+    "path": "website/snippets/_v2-upgrade-steps.md",
     "line": 7,
     "match": "<Constant name=\"core\" />",
     "group": "constant:core",
@@ -29729,7 +29729,7 @@
     "auto_safe": false
   },
   {
-    "path": "website/snippets/_fusion-upgrade-steps.md",
+    "path": "website/snippets/_v2-upgrade-steps.md",
     "line": 16,
     "match": "<Constant name=\"core\" />",
     "group": "constant:core",
@@ -29739,7 +29739,7 @@
     "auto_safe": false
   },
   {
-    "path": "website/snippets/_fusion-upgrade-steps.md",
+    "path": "website/snippets/_v2-upgrade-steps.md",
     "line": 16,
     "match": "<Constant name=\"fusion_engine\" />",
     "group": "constant:fusion_engine",
@@ -29830,7 +29830,7 @@
     "auto_safe": false
   },
   {
-    "path": "website/snippets/_fusion-key-pair.md",
+    "path": "website/snippets/_v2-key-pair.md",
     "line": 1,
     "match": "<Constant name=\"fusion\" />",
     "group": "constant:fusion",
@@ -29840,7 +29840,7 @@
     "auto_safe": false
   },
   {
-    "path": "website/snippets/_fusion-key-pair.md",
+    "path": "website/snippets/_v2-key-pair.md",
     "line": 1,
     "match": "<Constant name=\"fusion\" />",
     "group": "constant:fusion",

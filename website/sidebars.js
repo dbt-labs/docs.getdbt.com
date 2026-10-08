@@ -1982,6 +1982,18 @@ const sidebarSettings = {
         },
         {
           type: "category",
+          label: "How to handle change data capture",
+          link: {
+            type: "doc",
+            id: "best-practices/how-we-handle-cdc/1-intro",
+          },
+          items: [
+            "best-practices/how-we-handle-cdc/1-intro",
+            "best-practices/how-we-handle-cdc/2-choosing-incremental-or-snapshots",
+          ],
+        },
+        {
+          type: "category",
           label: "Materialization best practices",
           link: {
             type: "doc",

@@ -131,7 +131,7 @@ You can then choose whether to retry the command, narrow the request, or take an
 
 ### dbt v2 migration workflow {#fusion-migration-workflow}
 
-import FusionMigrationWorkflow from '/snippets/_fusion-migration-workflow.md';
+import FusionMigrationWorkflow from '/snippets/_v2-migration-workflow.md';
 
 <FusionMigrationWorkflow />
 

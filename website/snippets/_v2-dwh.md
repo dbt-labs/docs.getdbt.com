@@ -1,5 +1,5 @@
-import FusionDWHPlatform from '/snippets/_fusion-dwh-platform.md';
-import FusionDWHLocal from '/snippets/_fusion-dwh-local.md';
+import FusionDWHPlatform from '/snippets/_v2-dwh-platform.md';
+import FusionDWHLocal from '/snippets/_v2-dwh-local.md';
 
 <FusionDWHPlatform />
 
