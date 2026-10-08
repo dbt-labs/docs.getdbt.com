@@ -18,7 +18,7 @@ You can manage user license assignments using System for Cross-Domain Identity M
 
 <ScimLicenseMappingCallout />
 
-#### Considerations
+## Prerequisites 
 Before you enable SCIM license mapping:
 - <ScimAdminGroupPrereq />
 - **Default license**: New users are assigned a Developer license unless you change it manually using [SSO license mappings](/docs/platform/manage-access/seats-and-users#mapped-configuration), or using SCIM.
