@@ -1,0 +1,347 @@
+/* WizardPopcorn — inline link + a burst of popping ASCII wizards. */
+
+/* The inline trigger, styled like a normal docs link. */
+.link {
+  appearance: none;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: var(--ifm-link-color);
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  cursor: pointer;
+}
+
+.link:hover {
+  text-decoration-style: solid;
+}
+
+/* Full-viewport, click-through layer that holds the popping wizards. */
+.overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 9999;
+}
+
+.pop {
+  position: fixed;
+  transform-origin: center bottom;
+  animation: wizard-popcorn 1.2s ease-out forwards;
+  will-change: transform, opacity;
+}
+
+/* The little wizard sprite (no card — just the figure). */
+.sprite {
+  margin: 0;
+  padding: 0;
+  background: none;
+  line-height: 1;
+  font-family: Menlo, ui-monospace, SFMono-Regular, Monaco, Consolas, monospace;
+  font-size: 12px;
+  font-weight: 400;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.25));
+}
+
+/* Each line is a block; segments within a line (e.g. the dbt logo on the
+ * laptop screen) are inline children, so only target direct children here. */
+.sprite > span {
+  display: block;
+  white-space: pre;
+}
+
+/* dbt Wizard palette, matched to the Figma export. */
+.hat {
+  color: #fe6702;
+}
+.face {
+  color: #ffffff;
+  /* keep the white face readable on light docs backgrounds */
+  text-shadow: 0 0 1px rgba(0, 0, 0, 0.45);
+}
+.legs {
+  color: #b0a3ff;
+}
+/* Roller skates for the skating finale. */
+.skate {
+  color: #59d6ff;
+}
+.wheel {
+  color: #ffd166;
+}
+/* Laptop-on-a-neck-strap for the skating finale. */
+.strap {
+  color: #c9bfa3;
+}
+.laptop {
+  color: #8fe3ff;
+  text-shadow: 0 0 6px rgba(143, 227, 255, 0.8);
+}
+.keys {
+  color: #c8ccd8;
+}
+/* The dbt bit logo overlaid on the laptop screen. Sized/placed in em so it
+ * tracks the sprite's font-size and rides the skate/poof transforms. */
+.laptopLogo {
+  position: absolute;
+  top: 9.5em;
+  left: 3em;
+  width: 2em;
+  height: 2em;
+  transform: translate(-50%, -50%);
+  filter: drop-shadow(0 0 3px rgba(254, 103, 2, 0.6));
+}
+
+/* Pop up, overshoot, then float away and fade. */
+@keyframes wizard-popcorn {
+  0% {
+    transform: translateY(20px) scale(0) rotate(var(--rot, 0deg));
+    opacity: 0;
+  }
+  25% {
+    transform: translateY(-12px) scale(calc(var(--scale, 1) * 1.18))
+      rotate(var(--rot, 0deg));
+    opacity: 1;
+  }
+  60% {
+    transform: translateY(-34px) scale(var(--scale, 1)) rotate(var(--rot, 0deg));
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-70px) scale(calc(var(--scale, 1) * 0.9))
+      rotate(var(--rot, 0deg));
+    opacity: 0;
+  }
+}
+
+/* ── Finale: the unlocked dancing Wizard ─────────────────────────────────
+ * A single big Wizard centered on screen: it dances, casts a spell, then
+ * poofs out. Click-through and decorative, like the popcorn overlay.
+ */
+.finale {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 10000;
+  /* Shared so the sprite and the overlaid logo size off the same unit. */
+  --wiz-fs: min(4.3vh, 6vw);
+}
+
+/* The centered wizard is blown up to fill most of the viewport. The sprite is
+ * a <pre>, which the docs theme styles heavily (code-block font-size, padding,
+ * background), so we override those with !important to win the cascade and
+ * size the figure off vh/vw — ~85% of the page, fitting on either axis. */
+.finale .sprite {
+  font-size: var(--wiz-fs) !important;
+  line-height: 1 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: none !important;
+  border: none !important;
+  max-width: none !important;
+  filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.35));
+}
+
+.finale_skating,
+.finale_poofing {
+  position: relative;
+  /* Match the sprite's font-size so the logo's em units line up with it. */
+  font-size: var(--wiz-fs);
+  /* Where the skate ends — the poof picks up from the same spot so it
+   * disappears wherever it skated to (no jump back to center). */
+  --skate-end: 34vw;
+  transform-origin: center bottom;
+}
+
+/* Phase 2 — the Wizard roller-skates in from the left and glides across. */
+.finale_skating {
+  animation: wizard-skate 3.6s cubic-bezier(0.3, 0, 0.5, 1) forwards;
+}
+
+/* Phase 3 — poof out of existence wherever the skate left it. */
+.finale_poofing {
+  animation: wizard-poof 0.85s cubic-bezier(0.4, 0, 0.6, 1) forwards;
+}
+
+/* A full-screen light sweep that makes the whole page shimmer. Two diagonal
+ * bands cross at different speeds, over a softly pulsing magical glow. */
+.shimmer {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+      115deg,
+      transparent 28%,
+      rgba(217, 200, 255, 0.28) 46%,
+      rgba(255, 255, 255, 0.42) 50%,
+      rgba(217, 200, 255, 0.28) 54%,
+      transparent 72%
+    ),
+    linear-gradient(
+      -60deg,
+      transparent 30%,
+      rgba(191, 233, 255, 0.22) 49%,
+      rgba(255, 255, 255, 0.3) 50%,
+      rgba(191, 233, 255, 0.22) 51%,
+      transparent 70%
+    );
+  background-size: 300% 300%, 320% 320%;
+  mix-blend-mode: screen;
+  animation: shimmer-sweep 3.4s ease-in-out infinite;
+}
+
+/* A soft radial glow that breathes behind everything for extra shimmer. */
+.shimmer::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(176, 163, 255, 0.22),
+    transparent 60%
+  );
+  animation: glow-pulse 2.6s ease-in-out infinite;
+}
+
+/* Fine fairy-dust mote: drifts upward and twinkles on its own loop. */
+.dust {
+  position: absolute;
+  pointer-events: none;
+  animation-name: dust-float;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  will-change: transform, opacity;
+}
+
+/* Magic dust left behind as the Wizard poofs away. */
+.puff {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  font-size: min(6vh, 7vw);
+  color: #d9d0ff;
+  text-shadow: 0 0 10px rgba(176, 163, 255, 0.85);
+  animation: puff-out 0.8s ease-out forwards;
+}
+
+/* Roller-skate in from the left and glide across, with a skater's side-to-side
+ * push: alternating lean and a little bob, gradually crossing to --skate-end. */
+@keyframes wizard-skate {
+  0% {
+    transform: translateX(-72vw) translateY(0) rotate(-10deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  25% {
+    transform: translateX(-36vw) translateY(-1.2vh) rotate(11deg);
+  }
+  40% {
+    transform: translateX(-18vw) translateY(0) rotate(-11deg);
+  }
+  55% {
+    transform: translateX(0vw) translateY(-1.2vh) rotate(11deg);
+  }
+  70% {
+    transform: translateX(16vw) translateY(0) rotate(-9deg);
+  }
+  85% {
+    transform: translateX(28vw) translateY(-1vh) rotate(8deg);
+  }
+  100% {
+    transform: translateX(var(--skate-end, 34vw)) translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+/* Dissolve: stay where it skated to, drift up slightly, blur and fade away. */
+@keyframes wizard-poof {
+  0% {
+    transform: translateX(var(--skate-end, 34vw)) translateY(0) scale(1);
+    opacity: 1;
+    filter: blur(0);
+  }
+  100% {
+    transform: translateX(var(--skate-end, 34vw)) translateY(-4vh) scale(1.12);
+    opacity: 0;
+    filter: blur(10px);
+  }
+}
+
+/* Fairy dust: float upward with a little sideways drift, twinkling in and out. */
+@keyframes dust-float {
+  0% {
+    transform: translate(0, 0);
+    opacity: 0;
+  }
+  25% {
+    opacity: var(--peak, 1);
+  }
+  75% {
+    opacity: var(--peak, 1);
+  }
+  100% {
+    transform: translate(var(--drift, 0), var(--rise, -40px));
+    opacity: 0;
+  }
+}
+
+/* Two diagonal light sweeps crossing the screen (one layer each way). */
+@keyframes shimmer-sweep {
+  0% {
+    background-position: 0% 0%, 100% 100%;
+  }
+  50% {
+    background-position: 100% 100%, 0% 0%;
+  }
+  100% {
+    background-position: 0% 0%, 100% 100%;
+  }
+}
+
+/* Soft breathing glow behind everything. */
+@keyframes glow-pulse {
+  0%,
+  100% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.08);
+  }
+}
+
+@keyframes puff-out {
+  0% {
+    transform: translate(-50%, -50%) scale(0.3);
+    opacity: 0;
+  }
+  25% {
+    opacity: 0.95;
+  }
+  100% {
+    transform: translate(calc(-50% + var(--sx, 0)), calc(-50% + var(--sy, 0)))
+      scale(calc(var(--ss, 1) * 1.6));
+    opacity: 0;
+  }
+}
+
+/* No surprise motion for folks who opt out. */
+@media (prefers-reduced-motion: reduce) {
+  .pop {
+    animation: none;
+    display: none;
+  }
+
+  /* The finale is gated in JS too, but hide it here as belt-and-suspenders. */
+  .finale {
+    display: none;
+  }
+}

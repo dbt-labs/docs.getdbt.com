@@ -4,6 +4,9 @@ id: ide-user-interface
 description: "Develop, test, run, and build in the Studio IDE. With the Studio IDE, you can compile dbt code into SQL and run it against your database directly"
 sidebar_label: User interface
 tags: [IDE]
+availability:
+  surface: platform
+  access: login_required
 ---
 
 The [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio) is a tool for developers to effortlessly build, test, run, and version-control their dbt projects, and enhance data governance — all from the convenience of your browser. Use the <Constant name="studio_ide" /> to compile dbt code into SQL and run it against your database directly — no command line required!
@@ -23,14 +26,14 @@ The <Constant name="studio_ide" /> streamlines your workflow, and features a pop
 1. **<Constant name="git" /> repository link:** The <Constant name="git" /> repository link, located on the upper left of the <Constant name="studio_ide" />, takes you to your repository on the same active branch. It also displays the repository name and the active branch name.
     * **Note:** This linking feature is only available for GitHub or GitLab repositories on multi-tenant <Constant name="dbt" /> accounts.
 
-2. **Documentation site button:** Clicking the Documentation site book icon, located next to the Git repository link, leads to the dbt Documentation site. The site is powered by the latest dbt artifacts generated in the IDE using the `dbt docs generate` command from the Command bar.
+2. **Documentation site button:** Clicking the Documentation site book icon, located next to the Git repository link, leads to the dbt Documentation site. The site is powered by the latest dbt artifacts generated in the IDE using the `dbt docs generate` command (<Constant name="core_v1" /> only) from the Command bar.
 
 3. [**Version Control**](#editing-features): The <Constant name="studio_ide" />'s powerful Version Control section contains all git-related elements, including the <Constant name="git" /> actions button and the **Changes** section. 
 
 4. **File explorer:** The File explorer shows the filetree of your repository. You can:
     - Click on any file in the filetree to open the file in the file editor. 
     - Click and drag files between directories to move files. 
-    - Right-click a file to access the sub-menu options like duplicate file, copy file name, copy as `ref`, rename, delete.
+    - Right-click a file to access the sub-menu options like copy name, copy relative path, copy as `ref`, download, duplicate, rename, and delete.
     - Use file indicators, located to the right of your files or folder name, to see when changes or actions were made:
       * Unsaved (•) — The <Constant name="studio_ide" /> detects unsaved changes to your file/folder
       * Modification (M) — The <Constant name="studio_ide" /> detects a modification of existing files/folders
@@ -52,7 +55,7 @@ The <Constant name="studio_ide" /> streamlines your workflow, and features a pop
 
 Refer to [Using defer in <Constant name="dbt" />](/docs/platform/about-defer#defer-in-the-dbt-ide) for more info.
 
-7. **Status:** The <Constant name="studio_ide" /> Status button, located on the lower right of the <Constant name="studio_ide" />, displays the current connection statuses to both the warehouse and the dbt [language server (LSP)](/docs/about-dbt-lsp) status if you're on <Constant name="fusion" /> or the engine server status if you're on <Constant name="core" />. It includes shortcuts to environment settings and developer credentials.
+7. **Status:** The <Constant name="studio_ide" /> Status button, located on the lower right of the <Constant name="studio_ide" />, displays the current connection statuses to both the warehouse and the dbt [language server (LSP)](/docs/about-dbt-lsp) status if you're on <Constant name="fusion" /> or the engine server status if you're on <Constant name="core" />. It includes shortcuts to environment settings and user credentials.
 
     <Lightbox src="/img/docs/dbt-platform/platform-ide/server-status.png" width="60%" title="View the connection statuses for your account."/>
 
@@ -181,11 +184,13 @@ Starting from dbt v1.6 or higher, when you save changes to a model, you can comp
 
 4. **Lint button** &mdash; The **Lint** button runs the [linter](/docs/platform/studio-ide/lint-format) on the active file in the file editor. The linter checks for syntax errors and style issues in your code and displays the results in the **Code quality** tab.
 
-5. **dbt Copilot** &mdash; [dbt Copilot](/docs/platform/dbt-copilot) is an AI assistant integrated into the <Constant name="studio_ide" />. Use the quick-action buttons to generate documentation, tests, semantic models, and metrics with a single click. The Copilot panel also provides access to the [<Constant name="dev_agent" />](/docs/dbt-ai/developer-agent), which applies natural language prompts to generate or refactor models, semantic models, tests, and documentation autonomously. Select **Ask** or **Code** mode in the bottom toolbar to activate the <Constant name="dev_agent" />. <Lifecycle status="self_service,managed,managed_plus" />
+5. **dbt Wizard** &mdash; [dbt Wizard](/docs/dbt-ai/wizard-ide) is the new and recommended governed agentic experience integrated into the <Constant name="studio_ide" /> that uses your project context to help you develop governed dbt changes faster. It can generate or refactor models, semantic models, tests, and documentation from natural language prompts. 
+
+    [dbt Copilot](/docs/platform/studio-ide/develop-studio-ai#dbt-copilot-in-studio-ide) is separate from <Constant name="wizard" /> and is dbt's inline AI assistance experience, providing single-click generation of SQL, documentation, tests, and semantic models in <Constant name="studio_ide" />, <Constant name="canvas" />, and <Constant name="insights" />. 
 
 6. **Commands tab** &mdash; View the most recently run [dbt commands](/reference/dbt-commands) from your current IDE session, their results, and relevant system logs.
 
-7. **Problems tab** &mdash; You must be running the <Constant name="fusion_engine" /> to utilize the problems tab. Gain insights into problems with your dbt project that may prevent it from running properly in <Constant name="fusion" /> as you edit and before you execute runs. 
+7. **Problems tab** &mdash; You must be running <Constant name="fusion_engine" /> to utilize the problems tab. Gain insights into problems with your dbt project that may prevent it from running properly in <Constant name="fusion" /> as you edit and before you execute runs. 
 <Lightbox src="/img/docs/dbt-platform/platform-ide/ide-problems-tab.png" width="90%" title="Preview results show up in the Results console tab"/>
 
 8. **Results tab** &mdash; The Results console tab displays the most recent Preview results in tabular format. 

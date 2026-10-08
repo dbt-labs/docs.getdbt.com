@@ -37,6 +37,8 @@ The following permissions are required for fundamental dbt features:
 | `pg_class` | List relations | Access to system catalog |
 | `pg_namespace` | Schema information | Access to system catalog |
 | `sys_query_detail` | Source freshness (last insert time) | SELECT on the system view |
+| `svv_table_info` | List materialized views when the project includes them | SELECT on the system view |
+| `svv_mv_info` | List materialized views when the project includes them | SELECT on the system view |
 
 ### Schema management 
 

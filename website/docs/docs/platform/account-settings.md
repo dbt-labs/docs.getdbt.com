@@ -2,6 +2,9 @@
 title: "Account settings in dbt"
 sidebar_label: "Account settings" 
 description: "Learn how to enable account settings for your dbt users."
+availability:
+  surface: platform
+  access: login_required
 ---
 
 The following sections describe the different **Account settings** available from your <Constant name="dbt" /> account in the sidebar (under your account name on the lower left-hand side). 
@@ -49,11 +52,11 @@ To use, select the **Enable partial parsing between deployment runs** option fro
 
 ## Account access and enablement
 
-### Enabling dbt Copilot <Lifecycle status="self_service,managed,managed_plus" /> 
+Enable access to features in your account by selecting the appropriate option from your account settings.
 
-[<Constant name="copilot" />](/docs/platform/dbt-copilot) is an AI-powered assistant fully integrated into your dbt experience and is designed to accelerate your analytics workflows.
+### Enabling AI features
 
-To use this feature, your <Constant name="dbt" /> administrator must enable <Constant name="copilot" /> on your account by selecting the **Enable account access to dbt Copilot features** option from the account settings. For more information, see [Enable dbt Copilot](/docs/platform/enable-dbt-copilot).
+Admins can enable access to both <Constant name="wizard" /> (dbt Labs’ AI agent layer, available on the <Constant name="dbt_platform" /> and CLI) and dbt Copilot for authorized users across the <Constant name="dbt_platform" />. 
 
 ### Enabling Advanced CI features <Lifecycle status="managed,managed_plus" />
 
@@ -64,14 +67,6 @@ To use Advanced CI features, your <Constant name="dbt" /> account must have acce
 Once enabled, the **dbt compare** option becomes available in the CI job settings for you to select.
 
 <Lightbox src="/img/docs/deploy/account-settings-advanced-ci.png" width="85%" title="The Enable account access to Advanced CI option" />
-
-### Enabling external metadata ingestion in dbt Catalog <Lifecycle status='self_service,managed,managed_plus' />
-
-[<Constant name="catalog" />](/docs/explore/explore-projects) allows you to view your project's resources (for example, models, tests, and metrics), their lineage, and model consumption to gain a better understanding of your project's latest production state.
-
-You can bring [external metadata](/docs/explore/external-metadata-ingestion) into <Constant name="catalog" /> by connecting directly to your warehouse. This enables you to view tables and other assets that aren't defined in dbt. Currently, external metadata ingestion is supported for Snowflake only.
-
-To use external metadata ingestion, you must be an [account admin](/docs/platform/manage-access/enterprise-permissions#account-admin) with permission to edit connections. Enable <Constant name="catalog" /> in your account by selecting the **Ingest external metadata in dbt Catalog (formerly dbt Explorer)** option from your account settings. For more information, see [Enable external metadata ingestion](/docs/explore/external-metadata-ingestion#enable-external-metadata-ingestion).
 
 ### Enable global account discovery
 

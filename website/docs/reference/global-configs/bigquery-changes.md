@@ -48,7 +48,7 @@ Runtime Error in source my_* (models/schema.yml)
   this source to use a query-based freshness check instead.
 ```
 
-To calculate freshness for wildcard tables, configure [`loaded_at_field`](/reference/resource-properties/freshness#loaded_at_field) on the source to use query-based freshness checks instead. 
+To calculate freshness for wildcard tables, configure [`loaded_at_field`](/reference/resource-configs/freshness) on the source to use query-based freshness checks instead. 
 
 Example configuration:
 
@@ -78,18 +78,9 @@ BigQuery is [deprecating legacy SQL starting June 1, 2026](https://docs.cloud.go
 
 The `bigquery_use_standard_sql_for_partitions` flag controls whether dbt uses standard SQL (`INFORMATION_SCHEMA.PARTITIONS`) instead of legacy SQL (`$__PARTITIONS_SUMMARY__`) when calling `get_partitions_metadata()`.
 
-By default, this flag is set to `false` and legacy SQL remains the default. To enable standard SQL, set the flag to `true` in your `dbt_project.yml`:
+By default, this flag is set to `true`, enabling standard SQL. To revert to legacy SQL, set the flag to `false` in your `dbt_project.yml`.
 
-<File name='dbt_project.yml'>
-
-```yaml
-flags:
-  bigquery_use_standard_sql_for_partitions: true
-```
-
-</File>
-
-Before enabling this flag, note the following:
+When switching from legacy SQL, note the following:
 
 - **Cost:** `$__PARTITIONS_SUMMARY__` is free to query. `INFORMATION_SCHEMA.PARTITIONS` is billed per query at BigQuery's flat-rate pricing, not per-byte.
 - **Column differences:** Only `partition_id` is compatible between the two sources. The legacy meta-table also returned `project_id`, `dataset_id`, `table_id`, `creation_time`, and `last_modified_time`. If you have custom macros that access those columns from `get_partitions_metadata()` results, you must update them.

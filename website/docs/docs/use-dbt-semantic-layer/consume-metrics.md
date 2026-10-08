@@ -4,11 +4,19 @@ description: "Learn how to query and consume metrics from your deployed dbt Sema
 sidebar_label: "Consume your metrics"
 tags: [Semantic Layer]
 pagination_next: "docs/use-dbt-semantic-layer/sl-faqs"
+availability:
+  surface: platform
+  access: paid_plan
+  minPlan: starter
 ---
 
-# Consume metrics from your Semantic Layer <Lifecycle status="self_service,managed,managed_plus" />
+# Consume metrics from your Semantic Layer
 
 After [deploying](/docs/use-dbt-semantic-layer/deploy-sl) your <Constant name="semantic_layer" />, the next important (and fun!) step is querying and consuming the metrics you’ve defined. This page links to key resources that guide you through the process of consuming metrics across different integrations, APIs, and tools, using various different [query syntaxes](/docs/dbt-apis/sl-jdbc#querying-the-api-for-metric-metadata).
+
+import SlConnectYourAi from '/snippets/_sl-connect-your-ai.md';
+
+<SlConnectYourAi/>
 
 Once your <Constant name="semantic_layer" /> is deployed, you can start querying your metrics using a variety of tools and APIs. Here are the main resources to get you started:
 

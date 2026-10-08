@@ -1,0 +1,73 @@
+name: Publish release notes PR
+
+on:
+  schedule:
+    - cron: '0 8 * * 5' # Fridays 8am UTC (~9am UK during BST)
+  workflow_dispatch: {}
+
+jobs:
+  publish:
+    if: github.repository == 'dbt-labs/docs.getdbt.com'
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+      contents: read
+
+    concurrency:
+      group: publish-release-notes
+      cancel-in-progress: false
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Find draft release-notes PR
+        id: pr
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          PR_JSON=$(gh pr list --state open --label release-notes --json number,title,url,isDraft --jq '[.[] | select(.isDraft == true)] | .[0]')
+          if [ "$PR_JSON" = "null" ] || [ -z "$PR_JSON" ]; then
+            echo "::error::No open draft PR with release-notes label found"
+            exit 1
+          fi
+          echo "number=$(echo "$PR_JSON" | jq -r .number)" >> "$GITHUB_OUTPUT"
+          echo "title=$(echo "$PR_JSON" | jq -r .title)" >> "$GITHUB_OUTPUT"
+          echo "url=$(echo "$PR_JSON" | jq -r .url)" >> "$GITHUB_OUTPUT"
+
+      - name: Extract week from PR title
+        id: week
+        run: |
+          TITLE="${{ steps.pr.outputs.title }}"
+          WEEK=$(echo "$TITLE" | sed -n 's/.*for \(.*\)$/\1/p')
+          if [ -z "$WEEK" ]; then
+            WEEK="unknown"
+          fi
+          echo "value=$WEEK" >> "$GITHUB_OUTPUT"
+
+      - name: Notify Slack via Zapier
+        env:
+          WEBHOOK_URL: ${{ secrets.ST_MT_RELEASE_NOTES_SLACK_WEBHOOK }}
+        run: |
+          if [ -z "$WEBHOOK_URL" ]; then
+            echo "::error::ST_MT_RELEASE_NOTES_SLACK_WEBHOOK secret is not set"
+            exit 1
+          fi
+          curl -fsS -X POST "$WEBHOOK_URL" \
+            -H "Content-Type: application/json" \
+            -d "$(jq -n \
+              --arg message "Release notes draft PR ready for Friday review" \
+              --arg pr_title "${{ steps.pr.outputs.title }}" \
+              --arg pr_url "${{ steps.pr.outputs.url }}" \
+              --arg week "${{ steps.week.outputs.value }}" \
+              '{message: $message, pr_title: $pr_title, pr_url: $pr_url, week: $week}')"
+
+      - name: Mark PR ready for review
+        id: mark_ready
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh api \
+            --method PATCH \
+            "repos/${{ github.repository }}/pulls/${{ steps.pr.outputs.number }}" \
+            --input - <<< '{"draft":false}'

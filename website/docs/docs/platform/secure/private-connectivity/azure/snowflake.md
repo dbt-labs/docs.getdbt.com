@@ -3,9 +3,14 @@ title: "Configuring Snowflake and Azure Private Link"
 id: azure-snowflake
 description: "Configuring Azure Private Link for Snowflake."
 sidebar_label: "Snowflake"
+availability:
+  surface: platform
+  access: paid_plan
+  minPlan: enterprise_plus
 ---
 
 import SetUpPages from '/snippets/_available-tiers-enterprise-plus.md';
+import PrivateLinkCreateConnection from '/snippets/_privatelink-create-connection.md';
 import PrivateLinkSLA from '/snippets/_private-connection-SLA.md';
 import CloudProviders from '/snippets/_private-connection-across-providers.md';
 
@@ -56,7 +61,7 @@ Subject: New Azure Multi-Tenant Private Link Request
 
 <PrivateLinkSLA />
 
-3. dbt Support will provide the `private endpoint resource_id` of our `private_endpoint` and the `CIDR` range for you to complete the [PrivateLink configuration](https://community.snowflake.com/s/article/HowtosetupPrivatelinktoSnowflakefromCloudServiceVendors) by contacting the Snowflake Support team. 
+3. dbt Support will provide the `private endpoint resource_id` of our `private_endpoint` for you to complete the [PrivateLink configuration](https://community.snowflake.com/s/article/HowtosetupPrivatelinktoSnowflakefromCloudServiceVendors) by contacting the Snowflake Support team. 
 
 
 4. (Optional) If enabling an [Azure private endpoint for an Internal Stage](https://docs.snowflake.com/en/user-guide/private-internal-stages-azure), it will also provide the `resource_id` for the Internal Stage endpoint. 
@@ -76,14 +81,12 @@ SELECT SYSTEM$AUTHORIZE_STAGE_PRIVATELINK_ACCESS ( 'AZURE_PRIVATE_ENDPOINT_RESOU
 
 Once dbt Support completes the configuration, you can start creating new connections using Private Link.
 
-1. From **Account settings** → **Projects**, click **+ New project** and select **Snowflake**.
-2. You will see two radio buttons: **Public** and **Private**. Select **Private**.
-3. Select the private endpoint from the dropdown (this automatically populates the hostname/account field).
-4. Configure the remaining data platform details.
-5. Test your connection and save it.
+<PrivateLinkCreateConnection platform="Snowflake" />
 
 ## Configuring network policies
-If your organization uses [Snowflake Network Policies](https://docs.snowflake.com/en/user-guide/network-policies) to restrict access to your Snowflake account, you need to add a network rule for <Constant name="dbt" />. 
+If your organization uses [Snowflake Network Policies](https://docs.snowflake.com/en/user-guide/network-policies) to restrict access to your Snowflake account, you need to add a network rule for <Constant name="dbt" />.
+
+Use the Azure Link ID to identify the <Constant name="dbt" /> private endpoint in the network rule. 
 
 ### Find the endpoint Azure Link ID
 

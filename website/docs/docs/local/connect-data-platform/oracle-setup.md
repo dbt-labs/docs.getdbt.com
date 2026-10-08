@@ -1,5 +1,5 @@
 ---
-title: "Connect Oracle to dbt Core"
+title: "Connect Oracle to dbt v1"
 sidebar_label: "Oracle"
 description: "Read this guide to learn about the Oracle warehouse setup in dbt."
 id: "oracle-setup"
@@ -15,6 +15,7 @@ meta:
   slack_channel_link: 'https://getdbt.slack.com/archives/C01PWH4TXLY'
   platform_name: 'Oracle'
   config_page: '/reference/resource-configs/oracle-configs'
+availability: local_free
 ---
 
 import SetUpPages from '/snippets/_setup-pages-intro.md';

@@ -2,7 +2,7 @@
 title: "BigQuery configurations"
 description: "Reference guide for Big Query configurations in dbt."
 id: "bigquery-configs"
-tags: ['BigQuery', 'dbt Fusion', 'dbt Core']
+tags: ['BigQuery', 'dbt v2', 'dbt v1']
 ---
 
 <!----
@@ -300,6 +300,40 @@ Clustering on multiple columns:
 }}
 
 select * from ...
+```
+
+</File>
+
+## Using Reservations
+
+The `reservation` config routes dbt-submitted BigQuery jobs to a specific [reservation](https://docs.cloud.google.com/bigquery/docs/reservations-workload-management#flexible).
+
+You can set `reservation` at three levels, from lowest to highest precedence:
+
+1. **Target level** (`profiles.yml`) — applies to all jobs for the target. See [Connect BigQuery](/docs/local/connect-data-platform/bigquery-setup?version=1.12#reservation).
+
+2. **Project level** (`dbt_project.yml`) — applies to all matching models.
+
+<File name='dbt_project.yml'>
+
+```yaml
+models:
+  my_project:
+    +reservation: 'projects/abc-123/locations/US/reservations/my-reservation'
+```
+
+</File>
+
+3. **Model level** (`{{ config(...) }}`) — overrides project and target settings for a single model.
+
+<File name='models/my_model.sql'>
+
+```sql
+{{ config(
+    reservation='projects/abc-123/locations/US/reservations/my-reservation'
+) }}
+
+select ...
 ```
 
 </File>
@@ -683,7 +717,7 @@ with events as (
 This example model serves to replace the data in the destination table for both
 _today_ and _yesterday_ every day that it is run. It is the fastest and cheapest
 way to incrementally update a table using dbt. If we wanted this to run more dynamically—
-let’s say, always for the past 3 days—we could leverage dbt’s baked-in [datetime macros](https://github.com/dbt-labs/dbt-core/blob/dev/octavius-catto/core/dbt/include/global_project/macros/etc/datetime.sql) and write a few of our own.
+let’s say, always for the past 3 days—we could leverage dbt’s baked-in [datetime macros](https://github.com/dbt-labs/dbt/blob/dev/octavius-catto/core/dbt/include/global_project/macros/etc/datetime.sql) and write a few of our own.
 
 Think of this as "full control" mode. You must ensure that expressions or literal values in the `partitions` config have proper quoting when templated, and that they match the `partition_by.data_type` (`timestamp`, `datetime`, `date`, or `int64`). Otherwise, the filter in the incremental `merge` statement will raise an error.
 
@@ -777,10 +811,6 @@ from {{ ref('events') }}
 By default, dbt-created tables never expire. You can configure certain model(s)
 to expire after a set number of hours by setting `hours_to_expiration`.
 
-:::info Note
-The `hours_to_expiration` only applies to initial creation of the underlying table. It doesn't reset for incremental models when they do another run.
-:::
-
 <File name='dbt_project.yml'>
 
 ```yml
@@ -802,6 +832,31 @@ models:
 
 select ...
 
+```
+
+</File>
+
+The `hours_to_expiration` config only applies when the underlying table is first created. It doesn't reset on incremental runs.To work around this, call a macro in your +post-hook that resets the expiration timestamp manually. Update the hours argument to match your hours_to_expiration value.
+
+**Example macro SQL:**
+
+```sql
+{% macro reset_expiration_for_incremental(hours) %}
+  -- Check if the current model is being run incrementally
+  {% if is_incremental() %}
+    -- Set expiration timestamp because it's only applied on creation, not on merge
+    ALTER TABLE {{ this }}
+      SET OPTIONS (expiration_timestamp = TIMESTAMP_ADD(CURRENT_TIMESTAMP(), INTERVAL {{ hours }} HOUR))
+  {% endif %}
+{% endmacro %}
+```
+<File name='dbt_project.yml'>
+
+```yml
+models:
+  my_project:
+    +post-hook:
+      - "{{ reset_expiration_for_incremental(hours=6) }}"
 ```
 
 </File>
@@ -1158,7 +1213,7 @@ Installation of third-party packages on Dataproc varies depending on whether it'
 
     You can also install packages at cluster creation time by [defining cluster properties](https://cloud.google.com/dataproc/docs/tutorials/python-configuration#image_version_20): `dataproc:pip.packages` or `dataproc:conda.packages`.  
 
-- **Dataproc Serverless** &mdash; Google recommends using a [custom docker image](https://cloud.google.com/dataproc-serverless/docs/guides/custom-containers) to install thrid-party packages. The image needs to be hosted in [Google Artifact Registry](https://cloud.google.com/artifact-registry/docs). It can then be used by providing the image path in dbt profiles:
+- **Dataproc Serverless** &mdash; Google recommends using a [custom docker image](https://cloud.google.com/dataproc-serverless/docs/guides/custom-containers) to install third-party packages. The image needs to be hosted in [Google Artifact Registry](https://cloud.google.com/artifact-registry/docs). It can then be used by providing the image path in dbt profiles:
     
     <File name='profiles.yml'>
     ```yml
@@ -1200,7 +1255,7 @@ The BigQuery Python models also have the following additional configuration para
 | `notebook_template_id`  | `<integer>` | no       | ``        | `<NOTEBOOK RUNTIME TEMPLATE_ID>` |
 | `compute_region`        | `<string>`  | no       | ``        | `<COMPUTE_REGION>` |
 | `gcs_bucket`            | `<string>`  | no       | ``        | `<GCS_BUCKET>` |
-| `packages`              | `<string>`  | no       | ``        | `['numpy<=1.1.1', 'pandas', 'mlflow']` |
+| `packages`              | `<string>`  | no       | ``        | `['numpy<=1.1.1', 'pandas', 'mlflow']` (`bigframes` only) |
 | `timeout`               | `<integer>` | no       | ``        | `<timeout_in_seconds>` |
 
 - The `enable_list_inference` parameter
@@ -1220,6 +1275,9 @@ The BigQuery Python models also have the following additional configuration para
 
 - The `gcs_bucket` parameter
   - The `gcs_bucket` parameter specifies the GCS bucket used for storing artifacts for the job.
+
+- The `packages` parameter
+  - The `packages` parameter lists Python packages to `pip install` before your model runs. It only works with `submission_method: bigframes`. Dataproc (`serverless` and `cluster`) ignores it without an error or warning. To install packages on Dataproc, use a custom container image (serverless) or initialization actions (cluster) instead. Refer to **Installing packages** under the Dataproc tab in [Python model configuration](#python-model-configuration).
 
 - The `timeout` parameter
   - The `timeout` parameter specifies the maximum execution time in seconds for the Python model. This is particularly useful for BigFrames models that may require longer execution times for complex data processing or machine learning workloads. If not specified, the model will use the default timeout configured for the execution environment.

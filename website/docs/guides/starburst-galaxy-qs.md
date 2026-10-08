@@ -209,7 +209,7 @@ To query the Jaffle Shop data with Starburst Galaxy, you need to create tables u
 9. Enter the **Settings** for your new project:
     - **Host** – The **Host** value from the **Connection information** modal in your Starburst Galaxy tab.
     - **Port** – 443 (which is the default)
-10. Enter the **Development Credentials** for your new project:
+10. Enter the **User credentials** for your new project:
     - **User** – The **User** value from the **Connection information** modal in your Starburst Galaxy tab. Make sure to use the entire string, including the account's role which is the `/` and all the characters that follow. If you don’t include it, your default role is used and that might not have the correct permissions for project development.
     - **Password** – The password you use to log in to your Starburst Galaxy account.
     - **Database** – The Starburst catalog you want to save your data to (for example, when writing new tables). For future reference, database is synonymous to catalog between <Constant name="dbt" /> and Starburst Galaxy. 
@@ -234,6 +234,8 @@ Now that you have a repository configured, you can initialize your project and s
     - In the command line bar at the bottom, enter `dbt run` and click **Enter**. You should see a `dbt run succeeded` message.
 
 ## Build your first model
+
+If you'd like to use AI to build your first model, check out the <a id="qs-jump-to-build-with-ai" href="#build-it-with-ai-using-dbt-wizard">build it with dbt Wizard</a> in the next section.
 
 You have two options for working with files in the <Constant name="studio_ide" />:
 
@@ -300,7 +302,7 @@ select * from final
 
 4. Enter `dbt run` in the command prompt at the bottom of the screen. You should get a successful run and see the three models.
 
-Later, you can connect your business intelligence (BI) tools to these views and tables so they only read cleaned up data rather than raw data in your BI tool.
+Later, you can connect your business intelligence (BI) tools (like [dbt Charts](https://dbtcharts.com/)) to these views and tables so they only read cleaned up data rather than raw data.
 
 #### FAQs
 
@@ -309,6 +311,8 @@ Later, you can connect your business intelligence (BI) tools to these views and 
 <FAQ path="Models/create-a-schema" />
 <FAQ path="Models/run-downtime" />
 <FAQ path="Troubleshooting/sql-errors" />
+
+<Snippet path="quickstarts/build-first-model-with-wizard" />
 
 ## Change the way your model is materialized
 
@@ -428,3 +432,5 @@ Later, you can connect your business intelligence (BI) tools to these views and 
 This quickstart focuses on using <Constant name="dbt" /> to run models against a data lake (S3) by using Starburst Galaxy as the query engine. In most real world scenarios, the data that is needed for running models is actually spread across multiple data sources and is stored in a variety of formats. With Starburst Galaxy, Starburst Enterprise, and Trino, you can run your models on any of the data you need, no matter where it is stored.
 
 If you want to try this out, you can refer to the [Starburst Galaxy docs](https://docs.starburst.io/starburst-galaxy/catalogs/) to add more data sources and load the Jaffle Shop data into the source you select. Then, extend your models to query the new data source and the data source you created in this quickstart.
+
+<Snippet path="quickstarts/connect-your-ai" />

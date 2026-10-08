@@ -4,9 +4,13 @@ sidebar_label: "Data health signals"
 id: data-health-signals
 description: "Learn how data health signals offer a quick, at-a-glance view of data health when browsing your resources in dbt Catalog."
 image: /img/docs/collaborate/dbt-explorer/data-health-signal.jpg
+availability:
+  surface: platform
+  access: paid_plan
+  minPlan: starter
 ---
 
-# Data health signals <Lifecycle status="preview,self_service,managed,managed_plus" /> 
+# Data health signals <Lifecycle status="preview" />
 
 Data health signals offer a quick, at-a-glance view of data health when browsing your resources in <Constant name="catalog" />. They keep you informed on the status of your resource's health using the indicators **Healthy**, **Caution**, **Degraded**, or **Unknown**.
 
@@ -17,7 +21,7 @@ Note,  we don’t calculate data health for non-dbt resources.
 - Each data health signal reflects key data health components, such as test success status, missing resource descriptions, missing tests, absence of builds in 30-day windows, [and more](#data-health-signal-criteria).
 
 
-<Lightbox src="/img/docs/collaborate/dbt-explorer/data-health-signal.jpg" width="55%" title="View data health signals for your models."/> 
+<Lightbox src="/img/docs/collaborate/dbt-explorer/data-health-signal.png" width="55%" title="View data health signals for your models."/> 
 
 ## Access data health signals
 

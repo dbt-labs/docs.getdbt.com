@@ -1,4 +1,5 @@
 ---
+description: "Limit the number of failing records returned by a data test query, which is useful when storing failures for large datasets."
 resource_types: [tests]
 datatype: integer
 ---

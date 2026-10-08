@@ -126,6 +126,8 @@ snapshots:
   - name: your_snapshot_name
     config:
       alias: the_best_snapshot
+```
+
 </File>
 
 In `snapshots/your_snapshot.sql` file:

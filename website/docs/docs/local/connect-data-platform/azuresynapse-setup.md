@@ -1,5 +1,5 @@
 ---
-title: "Connect Microsoft Azure Synapse Analytics to dbt Core"
+title: "Connect Microsoft Azure Synapse Analytics to dbt v1"
 sidebar_label: "Microsoft Azure Synapse Analytics"
 description: "Read this guide to learn about the Mircosoft Azure Synapse Analytics dedicated SQL pool setup in dbt."
 meta:
@@ -14,6 +14,7 @@ meta:
   slack_channel_link: 'https://getdbt.slack.com/archives/C01DRQ178LQ'
   platform_name: 'Synapse'
   config_page: '/reference/resource-configs/azuresynapse-configs'
+availability: local_free
 ---
 
 :::info

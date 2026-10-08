@@ -4,6 +4,7 @@ id: "monitor-jobs"
 description: "Monitor your dbt job and set up alerts to ensure seamless orchestration and optimize your data transformations"
 tags: ["scheduler"]
 pagination_next: "docs/deploy/run-visibility"
+availability: platform_login
 ---
 
 Monitor your <Constant name="dbt" /> jobs to help identify improvement and set up alerts to proactively alert the right people or team. 

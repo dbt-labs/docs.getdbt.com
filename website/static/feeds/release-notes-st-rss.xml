@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+  <channel>
+    <title>dbt single-tenant release notes</title>
+    <link>https://docs.getdbt.com/docs/dbt-versions/dbt-platform-release-notes-gen</link>
+    <description>dbt provides release notes for single-tenant so you can see recent and historical changes.</description>
+  </channel>
+</rss>

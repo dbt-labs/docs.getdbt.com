@@ -3,6 +3,9 @@ title: "Multi-factor authentication"
 description: "Configure dbt MFA"
 id: "mfa"
 sidebar: null
+availability:
+  surface: platform
+  access: login_required
 ---
 
 # Multi-factor authentication

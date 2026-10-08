@@ -2,6 +2,9 @@
 title: "Connect Azure Synapse Analytics"
 description: "Configure Azure Synapse Analytics connection."
 sidebar_label: "Connect Azure Synapse Analytics"
+availability:
+  surface: platform
+  access: login_required
 ---
 
 # Connect Azure Synapse Analytics

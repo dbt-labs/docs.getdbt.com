@@ -3,9 +3,15 @@ title: "Connect apps with OAuth"
 description: "Manage OAuth 2.0 client registrations to connect AI tools and third-party apps to dbt."
 id: "connect-apps-oauth"
 sidebar_label: "Connect apps with OAuth"
+availability:
+  surface: platform
+  access: paid_plan
+  minPlan: starter
 ---
 
-# Connect apps with OAuth <Lifecycle status="private_beta,managed,managed_plus" />
+import MCPCustomConnectorOauth from '/snippets/_mcp-custom-connector-oauth.md';
+
+# Connect apps with OAuth <Lifecycle status="beta" />
 
 The **App integrations** section in <Constant name="dbt_platform" /> lets admins manage OAuth 2.0 client registrations &mdash; a standard that lets external apps connect to dbt securely without sharing API tokens. Use it for:
 
@@ -13,7 +19,7 @@ The **App integrations** section in <Constant name="dbt_platform" /> lets admins
 - Your own API integrations built against <Constant name="dbt_platform" /> APIs, when you want end users to sign in with their dbt identity instead of distributing tokens.
 - Third-party apps and IDE extensions that support OAuth for connecting to dbt.
 
-This feature is available to Account admins on Enterprise or Enterprise+ plans.
+This feature is available to Account admins on Starter, Enterprise or Enterprise+ plans.
 
 To access this section, go to **Account settings** → **Integrations** → **App integrations**.
 
@@ -65,18 +71,7 @@ When you connect an MCP client to the [remote dbt MCP server](/docs/dbt-ai/setup
 
 Clients that support dynamic registration complete the registration step automatically &mdash; you'll see them appear in the **Dynamically registered** table after first use.
 
-1. To connect a custom MCP client to dbt, navigate to your AI tool's connector settings and enter your <Constant name="dbt_platform" /> MCP URL. The following example shows how to connect dbt to a custom MCP in Claude Desktop.
-  
-2. Enter a name and paste your MCP URL (for example, `https://abc123.us1.dbt.com/api/ai/v1/mcp`), then click **Add**.
-     <Lightbox src="/img/docs/dbt-cloud/oauth-add-custom-connector.png" title="Custom connector dialog showing the dbt MCP URL" />
-
-3. The tool will redirect you to dbt to complete the OAuth consent flow where you can approve or deny individual [scopes](#scopes-and-consent].
-    <Lightbox src="/img/docs/dbt-cloud/oauth-consent-screen.png" width="60%" title="OAuth consent screen showing requested scopes and project access" />
-
-4. The tool will be added to the **Custom connectors** table and you can then connect it to dbt by clicking **Connect**.
-   <Lightbox src="/img/docs/dbt-cloud/oauth-connectors-page.png" title="Adding a custom dbt connector in an AI tool's connector settings" />
-
-5. That's it 🎉! You can now use the tool to connect to dbt. Ask your tool a question like "What is the total revenue for the last 30 days?" go on from there!
+<MCPCustomConnectorOauth />
 
 For more information on remote MCP OAuth setup, see [Use the remote dbt MCP server](/docs/dbt-ai/mcp-quickstart-remote).
 
@@ -111,7 +106,7 @@ When a user unchecks one or more scopes on the consent screen, the access token 
 - Handle `403` responses gracefully and surface a clear message if a required scope was not granted.
 - Avoid assuming the full set of requested scopes was approved; always check the `scope` field in the token response.
 
-To select the scopes your client should request, choose from the list above. For clients registered via [Dynamic Client Registration](#dynamic-registration), scopes are declared in the registration request. For [manually registered clients](#manual-registration), scopes are configured as part of the registration form.
+To select the scopes your client should request, choose from the list above. Request scopes during the authorization request (`/oauth/authorize`). Scopes are not set during client registration.
 
 ## Sessions and refresh tokens
 

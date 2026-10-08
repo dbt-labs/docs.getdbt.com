@@ -2,6 +2,10 @@
 title: "Exposures object schema"
 sidebar_label: "Exposures"
 id: "discovery-schema-job-exposures"
+availability:
+  surface: platform
+  access: paid_plan
+  minPlan: starter
 ---
 
 import { NodeArgsTable, SchemaTable } from "./schema";
@@ -24,7 +28,7 @@ The example below queries information about all exposures in a given job includi
 ```graphql
 {
   job(id: 123) {
-    exposures(jobId: 123) {
+    exposures(first: 10, after: "{somePaginationCursorValue}") {
       runId
       projectId
       name
@@ -33,6 +37,7 @@ The example below queries information about all exposures in a given job includi
       ownerName
       url
       ownerEmail
+      paginationCursor
       parentsSources {
         uniqueId
         sourceName

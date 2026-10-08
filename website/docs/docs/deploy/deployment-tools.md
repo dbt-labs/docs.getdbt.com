@@ -24,7 +24,7 @@ Installing the [<Constant name="dbt" /> Provider](https://airflow.apache.org/doc
 
 </TabItem>
 
-<TabItem value="airflowcore" label="dbt Core">
+<TabItem value="airflowcore" label="dbt v1">
 
 Invoking <Constant name="core" /> jobs through the [BashOperator](https://registry.astronomer.io/providers/apache-airflow/modules/bashoperator). In this case, be sure to install dbt into a virtual environment to avoid issues with conflicting dependencies between Airflow and dbt.
 
@@ -41,11 +41,7 @@ Automation servers (such as CodeDeploy, GitLab CI/CD ([video](https://youtu.be/-
 
 Integrate <Constant name="dbt" /> and [Azure Data Factory](https://learn.microsoft.com/en-us/azure/data-factory/) (ADF) for a smooth data process from data ingestion to data transformation. You can seamlessly trigger <Constant name="dbt" /> jobs upon completion of ingestion jobs by using the [dbt API](/docs/dbt-apis/overview) in ADF.
 
-
-The following video provides you with a detailed overview of how to trigger a <Constant name="dbt" /> job via the API in Azure Data Factory.
-
-
-To use the dbt API to trigger a job in <Constant name="dbt" /> through ADF:
+The following steps provides you with a detailed overview of how to trigger a <Constant name="dbt" /> job using the API in Azure Data Factory. To use the dbt API to trigger a job in <Constant name="dbt" /> through ADF:
 
 1. In <Constant name="dbt" />, go to the job settings of the daily production job and turn off the scheduled run in the **Trigger** section.
 2. You'll want to create a pipeline in ADF to trigger a <Constant name="dbt" /> job.
@@ -107,7 +103,7 @@ If your organization uses [Prefect](https://www.prefect.io/), the way you will r
 
 </TabItem>
 
-<TabItem value="prefect2core" label="dbt Core">
+<TabItem value="prefect2core" label="dbt v1">
 
 - Use the [trigger_dbt_cli_command](https://prefecthq.github.io/prefect-dbt/cli/commands/#prefect_dbt.cli.commands.trigger_dbt_cli_command) task. 
 - For details on both of these methods, see [prefect-dbt docs](https://prefecthq.github.io/prefect-dbt/).
@@ -128,7 +124,7 @@ If your organization uses [Prefect](https://www.prefect.io/), the way you will r
 
 </TabItem>
 
-<TabItem value="prefect1core" label="dbt Core">
+<TabItem value="prefect1core" label="dbt v1">
 
 - Use the [DbtShellTask](https://docs.prefect.io/api/latest/tasks/dbt.html#dbtshelltask) to schedule, execute, and monitor your dbt runs. 
 - Use the supported [ShellTask](https://docs.prefect.io/api/latest/tasks/shell.html#shelltask) to execute dbt commands through the shell.

@@ -3,11 +3,16 @@ title: "Configure AWS PrivateLink for Postgres"
 id: aws-postgres
 description: "Configuring PrivateLink for Postgres."
 sidebar_label: "Postgres"
+availability:
+  surface: platform
+  access: paid_plan
+  minPlan: enterprise_plus
 ---
 
-# Configure AWS PrivateLink for Postgres <Lifecycle status="managed_plus" />
+# Configure AWS PrivateLink for Postgres
 
 import SetUpPages from '/snippets/_available-tiers-enterprise-plus.md';
+import PrivateLinkCreateConnection from '/snippets/_privatelink-create-connection.md';
 import PrivateLinkTroubleshooting from '/snippets/_privatelink-troubleshooting.md';
 import PrivateLinkCrossZone from '/snippets/_privatelink-cross-zone-load-balancing.md';
 import CloudProviders from '/snippets/_private-connection-across-providers.md';
@@ -104,10 +109,6 @@ When you receive notification that the resources are provisioned within the <Con
 
 Once <Constant name="dbt" /> Support completes the configuration, you can start creating new connections using PrivateLink.
 
-1. Navigate to **Settings** → **Create new project** → select **PostgreSQL**.
-2. You will see two radio buttons: **Public** and **Private**. Select **Private**. 
-3. Select the private endpoint from the dropdown (this automatically populates the hostname/account field).
-4. Configure the remaining data platform details.
-5. Test your connection and save it.
+<PrivateLinkCreateConnection platform="PostgreSQL" />
 
 <PrivateLinkTroubleshooting features={'/snippets/_privatelink-troubleshooting.md'}/>

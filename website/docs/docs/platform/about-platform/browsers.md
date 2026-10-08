@@ -3,6 +3,9 @@ title: "Supported browsers"
 id: "browsers"
 description: "dbt supports the latest browsers like Chrome and Firefox."
 pagination_next: null
+availability:
+  surface: platform
+  access: login_required
 ---
 
 To have the best experience with <Constant name="dbt" />, we recommend using the latest versions of the following browsers:

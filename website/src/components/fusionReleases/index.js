@@ -3,11 +3,11 @@ import { usePluginData } from "@docusaurus/useGlobalData";
 import styles from "./styles.module.css";
 
 const CHANGELOG_BASE =
-  "https://github.com/dbt-labs/dbt-fusion/blob/main/CHANGELOG.md";
+  "https://github.com/dbt-labs/dbt/blob/main/CHANGELOG-dbt.md";
 
 /**
- * Fragment for a Fusion release version, matching GitHub’s autolink for the
- * corresponding `## {version}` heading in CHANGELOG.md (e.g. `2.0.0-preview.172` → `200-preview172`).
+ * Fragment for a dbt release version, matching GitHub’s autolink for the
+ * corresponding `## {version}` heading in CHANGELOG-dbt.md (e.g. `2.0.0-preview.172` → `200-preview172`).
  */
 function versionToChangelogFragment(version) {
   return version
@@ -21,7 +21,7 @@ function changelogUrlForVersion(version) {
   return `${CHANGELOG_BASE}#${versionToChangelogFragment(version)}`;
 }
 
-/** Fusion versions that should show a “release candidate” label in the UI. */
+/** dbt versions that should show a “release candidate” label in the UI. */
 const FUSION_RELEASE_CANDIDATE_VERSIONS = new Set(["2.0.0-preview.173"]);
 
 function isFusionReleaseCandidateVersion(version) {
@@ -97,7 +97,7 @@ function VersionCards({ versions }) {
 
   return (
     <div>
-      <h3>Current versions</h3>
+      <h3 id="current-versions">Current versions</h3>
       <div className={styles.versionsGrid}>
         {channels.map(([channel, info]) => (
           <div key={channel} className={styles.versionCard}>
@@ -107,7 +107,7 @@ function VersionCards({ versions }) {
                 href={changelogUrlForVersion(info.tag)}
                 target="_blank"
                 rel="noopener noreferrer"
-                title="View this version in the dbt Fusion changelog"
+                title="View this version in the dbt v2 changelog"
               >
                 <code>{info.tag}</code>
               </a>
@@ -146,7 +146,7 @@ function ReleaseItem({ version, data }) {
           target="_blank"
           rel="noopener noreferrer"
           className={styles.versionTag}
-          title="View this release in the dbt Fusion changelog"
+          title="View this release in the dbt v2 changelog"
         >
           {version}
         </a>
@@ -232,9 +232,12 @@ export default function FusionReleases() {
     <div className={styles.container}>
       <VersionCards versions={versions} />
 
-      <h3>All releases</h3>
+      <h3 id="all-releases">All releases</h3>
 
-      <div className={styles.controls}>
+      {/* Client-side search/filter controls -- interactive chrome with no place
+          in a static Markdown export; data-md-hide drops it from the generated
+          Markdown while the rendered page keeps it. */}
+      <div className={styles.controls} data-md-hide="true">
         <input
           type="text"
           className={styles.searchInput}
@@ -273,7 +276,7 @@ export default function FusionReleases() {
         </div>
       </div>
 
-      <div className={styles.resultCount}>
+      <div className={styles.resultCount} data-md-hide="true">
         Showing {filteredReleases.length} of {sortedReleases.length} releases
       </div>
 

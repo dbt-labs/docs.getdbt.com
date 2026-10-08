@@ -3,6 +3,7 @@ title: "About documentation"
 description: "Learn how good documentation for your dbt models helps stakeholders discover and understand your datasets."
 id: "documentation"
 pagination_next: "docs/build/view-documentation"
+availability: all_users
 ---
 
 import CopilotBeta from '/snippets/_dbt-copilot-avail.md';
@@ -73,18 +74,70 @@ models:
 
 ## Generating documentation
 
-Generate documentation for your project by following these steps:
+dbt provides both self-hosted and cloud-hosted solutions to [view documentation](/docs/build/view-documentation) for your project. Which one you use depends on your dbt version and where you run dbt.
 
-1. Run the `dbt docs generate` [command](/reference/commands/cmd-docs#dbt-docs-generate) to compile relevant information about your dbt project and warehouse into `manifest.json` and `catalog.json` files, respectively. 
-2. Ensure you've created the models with `dbt run` or `dbt build` to view the documentation for all columns, not just those described in your project.
-3. Run the `dbt docs serve` [command](/reference/commands/cmd-docs#dbt-docs-serve) if you're developing locally to use these `.json` files to populate a local website.
 
-dbt provides two complementary ways to [view documentation](/docs/build/view-documentation), and your descriptions, after they're generated:
+<VersionBlock lastVersion="1.99">
 
-- [**dbt Docs**](/docs/build/view-documentation#dbt-docs): A static documentation site with model lineage, metadata, and documentation that can be hosted on your web server (like S3 or Netlify). Available for <Constant name="core" /> or <Constant name="dbt" /> Developer plans.
-- [**<Constant name="catalog" />**](/docs/explore/explore-projects): Builds upon dbt Docs to provide a dynamic, real-time interface with enhanced metadata, customizable views, deeper project insights, and collaboration tools. Available on <Constant name="dbt" /> [Starter, Enterprise, or Enterprise+ plans](https://www.getdbt.com/pricing).
+:::tip Use dbt Docs v2 locally!
 
-Refer to [View documentation](/docs/build/view-documentation) to get the most out of your dbt project's documentation.
+dbt Docs v2, built on top of the powerful dbt v2 capabilities, is a sleek, open-source docs site with Semantic Layer metadata and column-level lineage that you can host anywhere. [Upgrade to v2](/docs/dbt-versions/dbt-upgrade/upgrading-to-v2?version=2) and refer to [dbt Docs v2](/docs/build/view-documentation?version=2#dbt-docs-v2) for more information.
+:::
+
+<SimpleTable>
+
+| Option | What it is | Where you use it | How to generate it |
+|--------|-----------|------------------|--------------------|
+| [**dbt Docs v1**](/docs/build/view-documentation#dbt-docs) | A static site with model lineage, metadata, and documentation that you can host on your own web server (like S3 or Netlify) | <Constant name="core_v1" /> or <Constant name="dbt" /> Developer plans | Run `dbt docs generate`. Refer to [generate docs locally](#generate-docs-locally) for steps |
+| [**dbt <Constant name="catalog" />**](/docs/explore/explore-projects) | A dynamic, real-time interface with enhanced metadata, customizable views, deeper project insights, and collaboration tools. | <Constant name="dbt_platform" /> [Starter, Enterprise, or Enterprise+ plans](https://www.getdbt.com/pricing) | Populated automatically when your jobs run with <Constant name="fusion_engine" />. No extra step required! |
+
+</SimpleTable>
+
+</VersionBlock>
+
+<VersionBlock firstVersion="2.0">
+<SimpleTable>
+
+| Option | What it is | Where you use it | How to generate it |
+|--------|-----------|------------------|--------------------|
+| [**dbt Docs v2**](/docs/build/view-documentation#dbt-docs-v2) | A redesigned, open-source documentation site with Semantic Layer metadata and [column-level lineage](/docs/explore/column-level-lineage) that you can host anywhere | Locally with <Constant name="fusion_engine" />. Not available in <Constant name="dbt_platform" /> | Run `dbt docs generate` locally. Refer to [generate docs locally](#generate-docs-locally) for steps |
+| [**dbt <Constant name="catalog" />**](/docs/explore/explore-projects) | A dynamic, real-time interface with enhanced metadata, customizable views, deeper project insights, and collaboration tools. | <Constant name="dbt_platform" /> [Starter, Enterprise, or Enterprise+ plans](https://www.getdbt.com/pricing) | Populated automatically when your jobs run with <Constant name="fusion_engine" />. No extra step required! |
+
+</SimpleTable>
+
+</VersionBlock>
+
+:::tip Sharing docs with stakeholders?
+Anyone with a developer or read-only seat can explore your project(s) in <Constant name="catalog" />. Add as many read-only seats as you need to share docs with stakeholders, no separate docs site required.
+:::
+
+### Generate docs locally
+
+<VersionBlock lastVersion="1.99">
+
+1. Save your YAML description updates for models, sources, and columns. Use the same project context you use for development, including any selectors or exclusions, so the generated artifacts match the resources dbt parses for that run.
+2. Build your models with `dbt run` or `dbt build` so the docs include all columns, not just the ones described in your project.
+3. Run [`dbt docs generate`](/reference/commands/cmd-docs#dbt-docs-generate) to compile your project and warehouse information into `manifest.json` and `catalog.json`.
+4. Run [`dbt docs serve`](/reference/commands/cmd-docs#dbt-docs-serve) to use those files to populate a local website.
+
+</VersionBlock>
+
+<VersionBlock firstVersion="2.0">
+
+Using <Constant name="fusion_engine" />, dbt Docs v2 enhances the original v1 static site with a modern, performant catalog. dbt docs generate compiles your project, produces the v2 Parquet artifacts, and writes a static site that the browser queries directly with DuckDB-WASM (WebAssembly), so you don't need a server to view it. 
+
+To generate and serve documentation locally:
+
+- Run `dbt docs generate` to compile your project, write the index, and export the documentation site in a single command.
+- Run `dbt docs serve` to preview the site locally.
+
+:::note dbt Docs v2 availability
+dbt Docs v2 only works self-hosted installations of dbt v2. If you're on the <Constant name="dbt_platform" />, use [<Constant name="catalog" />](/docs/explore/explore-projects) which is populated automatically when your jobs run with v2. Adding a `dbt docs generate` step to a job won't produce a static site in <Constant name="dbt_platform" />.
+:::
+
+</VersionBlock>
+
+Refer to [dbt docs commands](/reference/commands/cmd-docs) for full usage details, and [View documentation](/docs/build/view-documentation) to get the most out of your project's documentation.
 
 ## Using docs blocks
 
@@ -127,7 +180,7 @@ Docs blocks should be placed in files with a `.md` file extension. By default, d
 
 <VersionBlock firstVersion="1.12">
 
-Place docs blocks in `.md` files. You can also use Jinja-style extensions (`.md.j2`, `.md.jinja`, `.md.jinja2`), however these require setting [`allow_jinja_file_extensions: true`](/reference/global-configs/behavior-changes#jinja-file-extensions) in your `dbt_project.yml`. This enables Jinja-aware syntax highlighting in IDEs that associate these suffixes with Jinja templating.
+Place docs blocks in `.md` files. You can also use Jinja-style extensions (`.md.j2`, `.md.jinja`, `.md.jinja2`), however these require setting [`allow_jinja_file_extensions: true`](/reference/global-configs/behavior-flags/allow_jinja_file_extensions) in your `dbt_project.yml`. This enables Jinja-aware syntax highlighting in IDEs that associate these suffixes with Jinja templating.
 
 By default, dbt searches in all resource paths for docs blocks (for example, the combined list of [model-paths](/reference/project-configs/model-paths), [seed-paths](/reference/project-configs/seed-paths), [analysis-paths](/reference/project-configs/analysis-paths), [test-paths](/reference/project-configs/test-paths), [macro-paths](/reference/project-configs/macro-paths), and [snapshot-paths](/reference/project-configs/snapshot-paths)). You can adjust this behavior using the [docs-paths](/reference/project-configs/docs-paths) config.
 

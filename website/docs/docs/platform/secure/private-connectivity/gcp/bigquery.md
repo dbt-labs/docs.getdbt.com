@@ -3,11 +3,16 @@ title: "Configuring BigQuery and GCP Private Service Connect"
 id: gcp-bigquery
 description: "Configuring GCP Private Service Connect for BigQuery."
 sidebar_label: "BigQuery"
+availability:
+  surface: platform
+  access: paid_plan
+  minPlan: enterprise_plus
 ---
 
-# Configuring BigQuery Private Service Connect <Lifecycle status="managed_plus" />
+# Configuring BigQuery Private Service Connect
 
 import SetUpPages from '/snippets/_available-tiers-enterprise-plus.md';
+import PrivateLinkCreateConnection from '/snippets/_privatelink-create-connection.md';
 import CloudProviders from '/snippets/_private-connection-across-providers.md';
 
 <SetUpPages />
@@ -44,9 +49,6 @@ You may already have credentials set up for your datasets. If not, you can follo
 
 Once dbt Support completes the configuration, you can start creating new connections using PSC: 
 
-1. Navigate to **Account settings** > **Connections**.
-2. In the **Connections** page, select **BigQuery**. Click **Edit**.
-3. You will see two radio buttons: **Default Endpoint** and **PrivateLink Endpoint**. Select **PrivateLink Endpoint**. 
-4. Select the private endpoint from the dropdown (this will automatically populate the API endpoint field).
-5. Input any remaining data platform details, including the BigQuery credentials you might have created in previous steps.
-6. Save the connection and test in either a project job or Studio session.
+<PrivateLinkCreateConnection
+  platform="BigQuery"
+/>

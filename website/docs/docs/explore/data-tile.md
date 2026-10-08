@@ -4,9 +4,13 @@ id: "data-tile"
 sidebar_label: "Data health tile"
 description: "Embed data health tiles in your dashboards to distill data health signals for data consumers."
 image: /img/docs/collaborate/dbt-explorer/data-tile-pass.jpg
+availability:
+  surface: platform
+  access: paid_plan
+  minPlan: enterprise
 ---
 
-# Data health tile <Lifecycle status="managed,managed_plus" />
+# Data health tile
 
 With data health tiles, stakeholders will get an at-a-glance confirmation on whether the data they’re looking at is stale or degraded. It allows teams to immediately go back into <Constant name="catalog" /> to see more details and investigate issues.
 
@@ -23,7 +27,7 @@ Data health tiles rely on [exposures](/docs/build/exposures) to surface data hea
 - Automatic &mdash; Pulled automatically for supported <Constant name="dbt" /> integrations. <Constant name="dbt" /> automatically [creates and visualizes downstream exposures](/docs/platform-integrations/downstream-exposures), removing the need for manual YAML definitions. These downstream exposures are stored in dbt’s metadata system, appear in [<Constant name="catalog" />](/docs/explore/explore-projects), and behave like manual exposures, however they don’t exist in YAML files.
 
 <DocCarousel slidesPerView={1}>
-<Lightbox src="/img/docs/collaborate/dbt-explorer/data-tile-pass.jpg" width="60%" title="Example of passing Data health tile in your dashboard." />
+<Lightbox src="/img/docs/collaborate/dbt-explorer/data-tile-pass.png" width="60%" title="Example of passing Data health tile in your dashboard." />
 <Lightbox src="/img/docs/collaborate/dbt-explorer/data-tiles.png" width="60%" title="Embed data health tiles in your dashboards to distill data health signals for data consumers." />
 </DocCarousel>
 
@@ -44,17 +48,17 @@ First, be sure to enable [source freshness](/docs/deploy/source-freshness) in 
 
 1. Navigate to <Constant name="catalog" /> by clicking on the **Catalog** link in the navigation.
 2. In the main **Overview** page, go to the left navigation.
-3. Under the **Resources** tab, click on **Exposures** to view the [exposures](/docs/build/exposures) list.
+3. Click on **Exposures** to view the [exposures](/docs/build/exposures) list.
 4. Select a dashboard exposure and go to the **General** tab to view the data health information.
-5. In this tab, you’ll see:   
-   - Name of the exposure. 
-   - Data health status: Data freshness passed, Data quality passed, Data may be stale, Data quality degraded.
-   - Resource type (model, source, and so on).
-   - Dashboard status: Failure, Pass, Stale.
-   - You can also see the last check completed, the last check time, and the last check duration.
-6. You can click the **Open Dashboard** button on the upper right to immediately view this in your analytics tool.
+5. In this tab, you’ll see:
+   - The exposure name at the top of the page.
+   - The resource type (for example, **Exposure**) and an **Updated at** timestamp.
+   - A **Data health** section that shows when the **Last check completed** (relative time since the check ran).
+   - A freshness summary (for example, **Data is fresh**) and a breakdown of upstream **Sources** (fresh, delayed, stale, skipped, outdated, unconfigured).
+   - A quality summary (for example, **Data quality passed**) and a breakdown of upstream **Models** and **Tests**.
+6. You can click the **Open in Dashboard** button in the upper right to immediately view this in your analytics tool.
 
-<Lightbox src="/img/docs/collaborate/dbt-explorer/data-tile-exposures.jpg" width="95%" title="View an exposure in dbt Catalog." />
+<Lightbox src="/img/docs/collaborate/dbt-explorer/data-tile-exposures.png" width="95%" title="View an exposure in dbt Catalog." />
 
 ## Embed in your dashboard
 
@@ -66,7 +70,7 @@ Follow these steps to set up your data health tile:
 2. Select **API tokens** in the left sidebar and then **Service tokens**.
 3. Click on **Create service token** and give it a name.
 4. Select the [**Metadata Only**](/docs/dbt-apis/service-tokens) permission. This token will be used to embed the tile in your dashboard in the later steps.
-<Lightbox src="/img/docs/collaborate/dbt-explorer/data-tile-setup.jpg" width="95%" title="Set up your dashboard status tile and service token to embed a data health tile" />
+<Lightbox src="/img/docs/collaborate/dbt-explorer/data-tile-setup.png" width="95%" title="Set up your dashboard status tile and service token to embed a data health tile" />
 
 5. Copy the **Metadata Only** token and save it in a secure location. You'll need it token in the next steps.
 6. Navigate back to <Constant name="catalog" /> and select an exposure.
@@ -77,7 +81,7 @@ Follow these steps to set up your data health tile:
 
 7. Below the **Data health** section, expand on the toggle for instructions on how to embed the exposure tile (if you're an account admin with develop permissions). 
 8. In the expanded toggle, you'll see a text field where you can paste your **Metadata Only token**.
-<Lightbox src="/img/docs/collaborate/dbt-explorer/data-tile-example.jpg" width="85%" title="Expand the toggle to embed data health tile into your dashboard." />
+<Lightbox src="/img/docs/collaborate/dbt-explorer/data-tile-example.png" width="85%" title="Expand the toggle to embed data health tile into your dashboard." />
 
 9. Once you’ve pasted your token, you can select either **URL** or **iFrame** depending on which you need to add to your dashboard.
 
@@ -147,15 +151,16 @@ Follow these steps to embed the data health tile in Tableau:
 <Lightbox src="/img/docs/collaborate/dbt-explorer/tableau-example.png" width="80%" title="Embed data health tile iFrame in Tableau"/>
 
 1. Create a dashboard in Tableau and connect to your database to pull in the data.
-2. Ensure you've copied the URL or iFrame snippet available in <Constant name="catalog" />'s **Data health** section, under the **Embed data health into your dashboard** toggle.
+2. Copy the URL or iFrame snippet available in <Constant name="catalog" />'s **Data health** section, under the **Embed data health into your dashboard** toggle.
 3. Insert a **Web Page** object.
-4. Insert the URL and click **Ok**.
+4. Paste the copied URL and click **Ok**.
+
+   The URL you copy from <Constant name="catalog" /> looks similar to the following but may include additional Tableau-specific parameters (such as `biResourceId` and `autoBiProvider=tableau`) that are required to resolve the exposure:
 
     ```text/html
     https://metadata.ACCESS_URL/exposure-tile?uniqueId=exposure.EXPOSURE_NAME&environmentType=production&environmentId=220370&token=<YOUR_METADATA_TOKEN>
     ```
 
-    *Note, replace the placeholders with your actual values.*
 5. You should now see the data health tile embedded in your Tableau dashboard.
 
 </TabItem>
@@ -250,7 +255,7 @@ Looker does not allow you to directly embed HTML and instead requires creating a
 
 - Once you have set up your custom visualization, you can use it on any dashboard! You can configure it with the exposure name, job ID, and token relevant to that dashboard.
 
-<Lightbox src="/img/docs/dbt-platform/using-dbt-platform/dashboard-status-tiles/custom-looker.jpeg " width="60%"/>
+<Lightbox src="/img/docs/dbt-platform/using-dbt-platform/dashboard-status-tiles/custom-looker.jpeg" width="60%"/>
 </TabItem>
 
 <TabItem value="tableau" label="Tableau">

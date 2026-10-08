@@ -1,4 +1,5 @@
 ---
+description: "Customize how a data test calculates the number of failing records instead of using the default count of failing rows."
 resource_types: [tests]
 datatype: string
 ---

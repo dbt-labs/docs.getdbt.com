@@ -4,6 +4,7 @@ id: conversion
 description: "Use Conversion metrics to measure conversion events."
 sidebar_label: Conversion
 tags: [Metrics, Semantic Layer]
+availability: all_users
 ---
 
 Conversion metrics let you measure how often one event leads to another for a specific entity within a defined time window.

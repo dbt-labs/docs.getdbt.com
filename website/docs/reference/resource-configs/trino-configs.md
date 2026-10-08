@@ -1,5 +1,6 @@
 ---
 title: "Starburst/Trino configurations"
+description: "Configure Starburst/Trino-specific settings for dbt models, including cluster requirements and catalog permissions."
 id: "trino-configs"
 ---
 
@@ -368,6 +369,20 @@ models:
         select: ['reporter', 'bi']
 ```
 </File>
+
+## persist_docs
+
+_Available in `dbt-trino` v1.10.3 and later_
+
+By default, [`persist_docs`](/reference/resource-configs/persist_docs) writes model and column descriptions to the underlying catalog using `COMMENT ON` SQL statements.
+
+If you set `starburst_url` along with `starburst_client_id` and `starburst_secret_key` in your connection profile, enabling `persist_docs` also syncs the model and column descriptions to Starburst's Data Discovery catalog through its REST API. This is opt-in and additive &mdash; projects that don't set `starburst_url` are unaffected. For details on configuring these profile fields, refer to [Additional parameters](/docs/local/connect-data-platform/trino-setup#additional-parameters) in the Starburst/Trino setup guide.
+
+Column descriptions sync to Data Discovery in batches. The `starburst_max_column_batch_size` parameter controls the batch size with a default of `100`.
+
+The `starburst_metadata_failure_strategy` controls how dbt handles errors from the Data Discovery API:
+- `continue_on_error` (default) &mdash; Logs a warning and continues the run.
+- `fail_fast` &mdash; Aborts the run.
 
 ## Model contracts
 

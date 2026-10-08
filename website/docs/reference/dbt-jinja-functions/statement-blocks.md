@@ -17,7 +17,7 @@ We recommend using the [`run_query` macro](/reference/dbt-jinja-functions/run_qu
 
 <VersionBlock firstVersion="2.0">
 
-:::tip When to use statement blocks in Fusion
+:::tip When to use statement blocks in <Constant name="fusion" />
 
 For queries where you need to fetch results (for example, when your macro or Jinja code needs to use data returned from the database), you can use either `statement` blocks with `fetch_result=True` or the [`run_query` macro](/reference/dbt-jinja-functions/run_query).
 

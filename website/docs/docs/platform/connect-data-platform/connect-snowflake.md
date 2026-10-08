@@ -3,11 +3,12 @@ title: "Connect Snowflake"
 id: connect-snowflake
 description: "Configure Snowflake connection."
 sidebar_label: "Connect Snowflake"
+availability:
+  surface: platform
+  access: login_required
 ---
 
-import SnowflakeAuth from '/snippets/_snowflake-auth.md';
-
-# Connect Snowflake <ProductCard text="Fusion compatible" />
+# Connect Snowflake <Lifecycle status="ga" /> <ProductCard text="dbt v2 compatible" />
 
 import SnowflakeColumn from '/snippets/_snowflake-column-size.md';
 
@@ -18,7 +19,7 @@ import SnowflakeColumn from '/snippets/_snowflake-column-size.md';
 Refer to [Snowflake permissions](/reference/database-permissions/snowflake-permissions) for more information about customizing roles in Snowflake. To see which Snowflake functions are supported in <Constant name="fusion"/> in `strict` mode, refer to [Snowflake function support](/reference/resource-configs/snowflake-function-support).
 
 
-## Warehouse permissions for Fusion
+## Warehouse permissions for <Constant name="fusion" />
 
 import FusionSnowflakeWarehousePerms from '/snippets/_fusion-warehouse-permissions-snowflake.md';
 
@@ -39,52 +40,19 @@ The following fields are required when creating a Snowflake connection:
 
 ## Authentication methods
 
-This section describes the different authentication methods for connecting <Constant name="dbt" /> to Snowflake. Configure Deployment environment (Production, Staging, General) credentials globally in the [**Connections**](/docs/deploy/deploy-environments#deployment-connection) area of **Account settings**. Individual users configure their development credentials in the [**Credentials**](/docs/platform/studio-ide/develop-in-studio#get-started-with-the-studio-ide) area of their user profile.
+This section describes the different authentication methods for connecting <Constant name="dbt" /> to Snowflake. Configure deployment environment (Production, Staging, General) credentials globally in the [**Connections**](/docs/deploy/deploy-environments#deployment-connection) area of **Account settings**. Individual users configure their user credentials in the [**Credentials**](/docs/platform/studio-ide/develop-in-studio#get-started-with-the-studio-ide) area of their user profile.
 
-### Username and password with MFA
+:::note Snowflake authentication in the dbt platform
 
-<SnowflakeAuth />
+You cannot create new Snowflake credentials with username and password in <Constant name="dbt_platform" />. New development and deployment credentials default to [key pair](#key-pair) authentication. For user credentials on Enterprise-tier plans, [Snowflake OAuth](#snowflake-oauth) is also available when configured on the connection. To update existing password credentials, refer to [Username and password with MFA](#username-and-password-with-mfa).
 
-**Available in:** Development environments
-
-The `Username / Password` auth method is the simplest way to authenticate
-Development credentials in a dbt project. Simply enter your Snowflake
-username (specifically, the `login_name`) and the corresponding user's Snowflake `password`
-to authenticate <Constant name="dbt" /> to run queries against Snowflake on behalf of a Snowflake user.
-
-`Username / Password` authentication is not supported for deployment credentials because MFA is required. In deployment environments, use [keypair](/docs/platform/connect-data-platform/connect-snowflake#key-pair) authentication instead.
-
-**Note**: The *Schema** field in the **Developer Credentials** section is required.
-<Lightbox src="/img/docs/dbt-platform/snowflake-userpass-auth.png" width="70%" title="Snowflake username/password authentication"/>
-
-**Prerequisites:**
-- A development environment in a <Constant name="dbt" /> project
-- The Duo authentication app
-- Admin access to Snowflake (if MFA settings haven't already been applied to the account)
-- [Admin (write) access](/docs/platform/manage-access/seats-and-users) to <Constant name="dbt" /> environments
-
-[MFA](https://docs.snowflake.com/en/user-guide/security-mfa) is required by Snowflake for all `Username / Password` logins. Snowflake's MFA support is powered by the Duo Security service.
-
-- In <Constant name="dbt" />, set the following [extended attribute](/docs/dbt-platform-environments#extended-attributes) in the development environment **General settings** page, under the **Extended attributes** section:
-
-   ```yaml
-  authenticator: username_password_mfa
-   ```
-
-- To reduce the number of user prompts when connecting to Snowflake with MFA, [enable token caching](https://docs.snowflake.com/en/user-guide/security-mfa#using-mfa-token-caching-to-minimize-the-number-of-prompts-during-authentication-optional) in Snowflake.
-- Optionally, if users miss prompts and their Snowflake accounts get locked, you can prevent automatic retries by adding the following in the same **Extended attributes** section:
-
-  ```yaml
-  connect_retries: 0
-  ```
-
-<Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/extended-attributes-mfa.png" width="70%" title="Configure the MFA username and password, and connect_retries in the development environment settings." />
+:::
 
 ### Key pair
 
-**Available in:** Development environments,  Deployment environments
+**Available in:** Development environments, Deployment environments
 
-The `Keypair` auth method uses Snowflake's [Key Pair Authentication](https://docs.snowflake.com/en/user-guide/key-pair-auth) to authenticate Development or Deployment credentials for a <Constant name="dbt" /> project.
+If you are creating Snowflake credentials for the first time in <Constant name="dbt_platform" />, key pair is the default authentication method. Use it for both development and deployment credentials. The `Keypair` auth method uses Snowflake's [Key Pair Authentication](https://docs.snowflake.com/en/user-guide/key-pair-auth) to authenticate development or deployment credentials for a <Constant name="dbt" /> project.
 
 1. After [generating an encrypted key pair](https://docs.snowflake.com/en/user-guide/key-pair-auth.html#configuring-key-pair-authentication), be sure to set the `rsa_public_key` for the Snowflake user to authenticate in <Constant name="dbt" />:
 
@@ -110,7 +78,7 @@ The `Keypair` auth method uses Snowflake's [Key Pair Authentication](https://doc
 
    <Lightbox src="/img/docs/dbt-platform/snowflake-keypair-auth.png" width="60%" title="Snowflake keypair authentication"/>
 
-#### Fusion key pair
+#### dbt v2 key pair
 
 import FusionKeyPair from '/snippets/_fusion-key-pair.md';
 
@@ -125,6 +93,35 @@ a Snowflake user without the configuration of Snowflake password in <Constant na
 
 For more information on configuring a Snowflake OAuth connection in <Constant name="dbt" />, please see [the docs on setting up Snowflake OAuth](/docs/platform/manage-access/set-up-snowflake-oauth).
 <Lightbox src="/img/docs/dbt-platform/dbt-platform-enterprise/database-connection-snowflake-oauth.png" width="55%" title="Configuring Snowflake OAuth connection"/>
+
+:::note Migrate from username and password
+
+If your credentials still use username and password, you can view the existing configuration in **Credentials**, connection profiles, or deployment credential forms, but you cannot save changes until you switch **Auth method** to key pair or OAuth. A warning banner may also appear at the top of your account when password credentials are still in use.
+
+To migrate off of username and password, follow the steps in [Key pair](#key-pair) or [Snowflake OAuth](#snowflake-oauth).
+
+:::
+
+### Username and password with MFA
+
+**Available in:** Existing development and deployment credentials only
+
+If you are still on username and password while you plan your migration, [MFA](https://docs.snowflake.com/en/user-guide/security-mfa) is required by Snowflake for all password logins. Snowflake's MFA support is powered by the Duo Security service.
+
+- In <Constant name="dbt" />, set the following [extended attribute](/docs/dbt-platform-environments#extended-attributes) in the development environment **General settings** page, under the **Extended attributes** section:
+
+   ```yaml
+  authenticator: username_password_mfa
+   ```
+
+- To reduce the number of user prompts when connecting to Snowflake with MFA, [enable token caching](https://docs.snowflake.com/en/user-guide/security-mfa#using-mfa-token-caching-to-minimize-the-number-of-prompts-during-authentication-optional) in Snowflake.
+- Optionally, if users miss prompts and their Snowflake accounts get locked, you can prevent automatic retries by adding the following in the same **Extended attributes** section:
+
+  ```yaml
+  connect_retries: 0
+  ```
+
+<Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/extended-attributes-mfa.png" width="70%" title="Configure the MFA username and password, and connect_retries in the development environment settings." />
 
 ## Configuration
 

@@ -1,0 +1,62 @@
+<svg viewBox="0 0 640 600" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif">
+  <rect width="640" height="600" fill="white"/>
+  <defs>
+    <marker id="a" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+      <path d="M1,1 L7,4 L1,7 Z" fill="#9ca3af"/>
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="320" y="22" text-anchor="middle" font-size="15" font-weight="700" fill="#111">dbt Core v2.0 system layers</text>
+
+  <!-- USER -->
+  <rect x="220" y="36" width="200" height="44" rx="6" fill="#f3f4f6" stroke="#e5e7eb" stroke-width="1.5"/>
+  <text x="320" y="63" text-anchor="middle" font-size="13" font-weight="600" fill="#111">USER</text>
+  <line x1="320" y1="80" x2="320" y2="98" stroke="#9ca3af" stroke-width="1.5" marker-end="url(#a)"/>
+
+  <!-- CLI -->
+  <rect x="150" y="100" width="340" height="56" rx="6" fill="#f3f4f6" stroke="#e5e7eb" stroke-width="1.5"/>
+  <text x="320" y="122" text-anchor="middle" font-size="13" font-weight="600" fill="#111">CLI</text>
+  <text x="320" y="140" text-anchor="middle" font-size="11" fill="#6b7280">dbt-main · dbt-clap</text>
+  <line x1="320" y1="156" x2="320" y2="174" stroke="#9ca3af" stroke-width="1.5" marker-end="url(#a)"/>
+
+  <!-- PIPELINE -->
+  <rect x="80" y="176" width="480" height="96" rx="6" fill="#f3f4f6" stroke="#e5e7eb" stroke-width="1.5"/>
+  <text x="320" y="198" text-anchor="middle" font-size="13" font-weight="600" fill="#111">PIPELINE</text>
+  <rect x="100" y="206" width="130" height="50" rx="4" fill="#e5e7eb"/>
+  <text x="165" y="227" text-anchor="middle" font-size="11" font-weight="600" fill="#374151">LOAD</text>
+  <text x="165" y="244" text-anchor="middle" font-size="10" fill="#6b7280">dbt-loader</text>
+  <rect x="255" y="206" width="130" height="50" rx="4" fill="#e5e7eb"/>
+  <text x="320" y="227" text-anchor="middle" font-size="11" font-weight="600" fill="#374151">RESOLVE</text>
+  <text x="320" y="244" text-anchor="middle" font-size="10" fill="#6b7280">dbt-parser</text>
+  <rect x="410" y="206" width="130" height="50" rx="4" fill="#e5e7eb"/>
+  <text x="475" y="227" text-anchor="middle" font-size="11" font-weight="600" fill="#374151">SCHEDULE</text>
+  <text x="475" y="244" text-anchor="middle" font-size="10" fill="#6b7280">dbt-scheduler</text>
+  <line x1="320" y1="272" x2="320" y2="290" stroke="#9ca3af" stroke-width="1.5" marker-end="url(#a)"/>
+
+  <!-- TASK RUNNER -->
+  <rect x="100" y="292" width="440" height="56" rx="6" fill="#f3f4f6" stroke="#e5e7eb" stroke-width="1.5"/>
+  <text x="320" y="314" text-anchor="middle" font-size="13" font-weight="600" fill="#111">TASK RUNNER</text>
+  <text x="320" y="332" text-anchor="middle" font-size="11" fill="#6b7280">dbt-tasks · RenderTask · AnalyzeTask · RunTask</text>
+  <line x1="320" y1="348" x2="320" y2="366" stroke="#9ca3af" stroke-width="1.5" marker-end="url(#a)"/>
+
+  <!-- ADAPTER highlighted -->
+  <rect x="40" y="368" width="560" height="108" rx="6" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
+  <rect x="40" y="368" width="560" height="28" rx="6" fill="#f59e0b"/>
+  <rect x="40" y="382" width="560" height="14" fill="#f59e0b"/>
+  <text x="320" y="387" text-anchor="middle" font-size="11" font-weight="700" fill="white" letter-spacing="0.5">ADAPTER — your contribution lives here</text>
+  <text x="320" y="412" text-anchor="middle" font-size="11" font-weight="600" fill="#374151">dbt-adapter · dbt-adapter-core · dbt-adapter-sql</text>
+  <text x="320" y="430" text-anchor="middle" font-size="10.5" fill="#6b7280">AdapterType enum · AdapterFactory · AdapterImpl · BaseRelation</text>
+  <text x="320" y="448" text-anchor="middle" font-size="10.5" fill="#6b7280">MetadataAdapter · Jinja dispatch</text>
+  <line x1="320" y1="476" x2="320" y2="494" stroke="#9ca3af" stroke-width="1.5" marker-end="url(#a)"/>
+
+  <!-- XDBC -->
+  <rect x="100" y="496" width="440" height="56" rx="6" fill="#f3f4f6" stroke="#e5e7eb" stroke-width="1.5"/>
+  <text x="320" y="518" text-anchor="middle" font-size="13" font-weight="600" fill="#111">XDBC</text>
+  <text x="320" y="536" text-anchor="middle" font-size="11" fill="#6b7280">dbt-xdbc · Connection trait · driver loading · --threads semaphore</text>
+  <line x1="320" y1="552" x2="320" y2="570" stroke="#9ca3af" stroke-width="1.5" marker-end="url(#a)"/>
+
+  <!-- WAREHOUSE -->
+  <rect x="200" y="572" width="240" height="20" rx="6" fill="#f3f4f6" stroke="#e5e7eb" stroke-width="1.5"/>
+  <text x="320" y="586" text-anchor="middle" font-size="13" font-weight="600" fill="#111">WAREHOUSE</text>
+</svg>

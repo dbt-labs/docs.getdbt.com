@@ -1,5 +1,6 @@
 ---
 title: "Oracle configurations"
+description: "Configure Oracle-specific settings for dbt models, including parallel hints and adapter options."
 id: "oracle-configs"
 ---
 

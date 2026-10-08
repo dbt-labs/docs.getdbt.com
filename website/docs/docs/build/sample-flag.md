@@ -4,6 +4,7 @@ description: "Use the sample flag to lower development time and reduce warehouse
 sidebar_label: "The sample flag"
 pagination_next: null
 pagination_prev: "docs/build/empty-flag"
+availability: all_users
 ---
 
 # About the `--sample` flag

@@ -114,15 +114,15 @@ If you created your Teradata Vantage database instance at https://clearscape.ter
   
   <Lightbox src="/img/teradata/dbt_cloud_teradata_account_settings.png" title="dbt - Teradata Account Settings" />
 
-6. Set up your personal development credentials by going to **Your profile** > **Credentials**.
+6. Set up your personal user credentials by navigating to **Your profile** > **Credentials**.
 7. Select your project that uses the Teradata connection. 
-8. Click the **configure your development environment and add a connection** link. This directs you to a page where you can enter your personal development credentials.
-9. Enter your **Development credentials** for Teradata with:
+8. Click the **configure your development environment and add a connection** link. This directs you to a page where you can enter your personal user credentials.
+9. Enter your **User credentials** for Teradata with:
    * **Username** &mdash; The username of Teradata database.
    * **Password** &mdash; The password of Teradata database.
    * **Schema** &mdash; The default database to use.
   
-   <Lightbox src="/img/teradata/dbt_cloud_teradata_development_credentials.png" title="dbt - Teradata Development Credentials" />
+   <Lightbox src="/img/teradata/dbt_cloud_teradata_development_credentials.png" title="dbt - Teradata User credentials" />
 
 10. Click **Test Connection** to verify that <Constant name="dbt" /> can access your Teradata Vantage instance.
 11. If the test succeeded, click **Save** to complete the configuration. If it failed, you may need to check your Teradata settings and credentials.
@@ -180,6 +180,8 @@ You can now delete the files that dbt created when you initialized the project:
 
 
 ## Build your first model
+
+If you'd like to use AI to build your first model, check out the <a id="qs-jump-to-build-with-ai" href="#build-it-with-ai-using-dbt-wizard">build it with dbt Wizard</a> in the next section.
 
 You have two options for working with files in the <Constant name="studio_ide" />:
 
@@ -255,6 +257,8 @@ select * from final
 4. Enter `dbt run` in the command prompt at the bottom of the screen. You should get a successful run and see the three models.
 
 You can connect your business intelligence (BI) tools to these views and tables so they only read cleaned-up data rather than raw data in your BI tool.
+
+<Snippet path="quickstarts/build-first-model-with-wizard" />
 
 ## Change the way your model is materialized
 
@@ -678,3 +682,5 @@ Congratulations 🎉! You've just deployed your first dbt project!
 
 
 
+
+<Snippet path="quickstarts/connect-your-ai" />

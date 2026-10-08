@@ -1,5 +1,5 @@
 ---
-title: "Connect TiDB to dbt Core"
+title: "Connect TiDB to dbt v1"
 sidebar_label: "TiDB"
 description: "Read this guide to learn about the TiDB warehouse setup in dbt."
 id: "tidb-setup"
@@ -16,6 +16,7 @@ meta:
   slack_channel_link: 'https://getdbt.slack.com/archives/C03CC86R1NY'
   platform_name: 'TiDB'
   config_page: '/reference/resource-configs/no-configs'
+availability: local_free
 ---
 
 

@@ -2,6 +2,7 @@
 title: "Artifacts"
 id: "artifacts"
 description: "Use artifacts to power your automated docs site and source freshness data." 
+availability: platform_login
 ---
 
 When running dbt jobs, dbt generates and saves *artifacts*. You can use these artifacts, like `manifest.json`, `catalog.json`, and `sources.json` to power different aspects of the <Constant name="dbt_platform" />, namely: [<Constant name="catalog" />](/docs/explore/explore-projects), [dbt Docs](/docs/explore/build-and-view-your-docs#dbt-docs), and [source freshness reporting](/docs/build/sources#source-data-freshness).
@@ -26,10 +27,12 @@ While running any job can produce artifacts, you should only associate one produ
 
 <Lightbox src="/img/docs/dbt-platform/using-dbt-platform/project-level-artifact-updated.png" width="70%" title="Configuring Artifacts"/>
 
-If you don't see your job listed, you might need to edit the job and select **Run source freshness** and **Generate docs on run**.
+If you don't see your job listed, you might need to edit the job and select **Run source freshness** <VersionBlock lastVersion="1.99"> and **Generate docs on run** </VersionBlock>
 
+<VersionBlock lastVersion="1.99"> 
 <Lightbox src="/img/docs/dbt-platform/using-dbt-platform/edit-job-generate-artifacts.png" title="Editing the job to generate artifacts"/>
-
+</VersionBlock>
+  
 When you add a production job to a project, <Constant name="dbt" /> updates the content and provides links to the production documentation and source freshness artifacts it generated for that project. You can see these links by clicking **Deploy** in the upper left, selecting **Jobs**, and then selecting the production job. From the job page, you can select a specific run to see how artifacts were updated for that run only.
 
 </Expandable>
@@ -40,7 +43,11 @@ Navigate to [<Constant name="catalog" />](/docs/explore/explore-projects) throug
 
 To view a resource, its metadata, and what commands are needed, refer to [generate metadata](/docs/explore/explore-projects#generate-metadata) for more details.
 
+<VersionBlock lastVersion="1.99">
+
 Both the job's commands and the docs generate step (triggered by the **Generate docs on run** checkbox) must succeed during the job invocation to update the documentation.
+
+</VersionBlock>
 
 <Expandable alt_header="For dbt Docs">
 

@@ -4,16 +4,16 @@ Looking for a good place to get involved contributing code? dbt Labs supports th
 
 ## Rust
 
-- [<Constant name="fusion_engine" />](https://github.com/dbt-labs/dbt-fusion) - the next-generation engine powering dbt
+- [dbt OSS](https://github.com/dbt-labs/dbt) - the Apache 2.0 open-source distribution of dbt v2 (previously in [`dbt-fusion`](https://github.com/dbt-labs/dbt-fusion))
 
 ## Python
 
-- [<Constant name="core" />](https://github.com/dbt-labs/dbt-core) - the original engine powering dbt
+- [<Constant name="core" />](https://github.com/dbt-labs/dbt/tree/1.latest) - the original engine powering dbt
 - [hubcap](https://github.com/dbt-labs/hubcap) - the code powering the dbt Package hub
 
 ## dbt
 
-- [dbt Labs' packages](https://hub.getdbt.com/dbt-labs/) - the dbt pacakges created and supported by dbt Labs. Packages are just dbt projects, so if you know the SQL, Jinja, and YAML necessary to work in dbt, you can contribute to packages.
+- [dbt Labs' packages](https://hub.getdbt.com/dbt-labs/) - the dbt packages created and supported by dbt Labs. Packages are just dbt projects, so if you know the SQL, Jinja, and YAML necessary to work in dbt, you can contribute to packages.
 
 ## YAML and JSON Config
 

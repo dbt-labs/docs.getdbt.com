@@ -15,17 +15,21 @@ meta:
   slack_channel_link: 'https://getdbt.slack.com/archives/C01DRQ178LQ'
   platform_name: 'Redshift'
   config_page: '/reference/resource-configs/redshift-configs'
+availability: local_free
 ---
+
+import RedshiftBrowserIdc from '/snippets/_redshift-browser-identity-center.md';
 
 <VersionBlock firstVersion="2.0">
 
-# Connect Redshift to Fusion <Lifecycle status='preview' />
+# Connect Redshift to <Constant name="fusion" />
 
 You can configure the Redshift adapter by running `dbt init` in your CLI or manually providing the `profiles.yml` file with the fields configured for your authentication type.
 
-The Redshift adapter for Fusion supports the following [authentication methods](#supported-authentication-types):
+The Redshift adapter for <Constant name="fusion" /> supports the following [authentication methods](#supported-authentication-types):
 - Password
 - IAM profile
+- IAM Identity Center (browser)
 
 ## Warehouse permissions
 
@@ -35,7 +39,7 @@ import FusionRedshiftWarehousePerms from '/snippets/_fusion-warehouse-permission
 
 For example SQL grants in Redshift, refer to [Redshift permissions](/reference/database-permissions/redshift-permissions).
 
-## Configure Fusion
+## Configure <Constant name="fusion" />
 
 Executing `dbt init` in your CLI will prompt for the following fields:
 - **Host:** The hostname of your Redshift cluster
@@ -81,7 +85,7 @@ default:
 
 <TabItem value="IAM profile">
 
-Specify the IAM profile to use to connect your Fusion sessions. You will need to provide the following information:
+Specify the IAM profile to use to connect your v2 sessions. You will need to provide the following information:
 - **IAM Profile:** The profile name
 - **Cluster ID:** The unique identifier for your AWS cluster
 - **Region:** Your AWS region (for example, us-east-1)
@@ -112,6 +116,12 @@ default:
 
 </File>
 </TabItem>
+
+<TabItem value="IAM Identity Center (browser)">
+
+<RedshiftBrowserIdc />
+
+</TabItem>
 </Tabs>
 
 ## More information
@@ -122,9 +132,9 @@ Find Redshift-specific configuration information in the [Redshift adapter refere
 
 <VersionBlock lastVersion="1.99">
 
-# Connect Redshift to dbt Core
+# Connect Redshift to <Constant name="core" />
 
-<ProductCard text="Fusion compatible" url="/docs/local/connect-data-platform/redshift-setup?version=2" /> connection also available.
+<ProductCard text="dbt v2 compatible" url="/docs/local/connect-data-platform/redshift-setup?version=2" /> connection also available.
 
 import SetUpPages from '/snippets/_setup-pages-intro.md';
 import RedshiftDatasharing from '/snippets/_redshift-datasharing.md';
@@ -146,7 +156,7 @@ import RedshiftDatasharing from '/snippets/_redshift-datasharing.md';
 | `autocreate`  | false | Optional, default `False`. Creates user if they do not exist |
 | `db_groups`  | ['ANALYSTS'] | Optional. A list of existing database group names that the DbUser joins for the current session |
 | `ra3_node`  | true | Optional, default `False`. Enables cross-database sources. Kept for backward compatibility; use `datasharing` for new projects instead. |
-| `datasharing` <Lifecycle status="beta" /> | true | Optional, default `False`. Enables cross-database and cross-cluster access for [Redshift Datasharing](https://docs.aws.amazon.com/redshift/latest/dg/datashare-overview.html). Available in `dbt-redshift v1.11.0rc1` and later. |
+| `datasharing` <Lifecycle status="beta" /> | true | Optional, default `False`. Enables cross-database and cross-cluster access for [Redshift Datasharing](https://docs.aws.amazon.com/redshift/latest/dg/datashare-overview.html). Available in `dbt-redshift` v1.11.0rc1 and later. |
 | `autocommit`  | true | Optional, default `True`. Enables autocommit after each statement |
 | `retries`  | 1 | Number of retries (on each statement) |
 | `retry_all`  | true | Allows dbt to retry all statements in a query|
@@ -154,6 +164,7 @@ import RedshiftDatasharing from '/snippets/_redshift-datasharing.md';
 | `tcp_keepalive_idle`  | 200 | Number of seconds of inactivity before the first keep-alive probe is sent |
 | `tcp_keepalive_interval`  | 200 | Number of seconds of inactivity before the next probe is sent |
 | `tcp_keepalive_count`  | 5 | Number of times probes will be sent |
+| `drop_without_cascade`  | false | Optional, default `False`. Omits `CASCADE` from `DROP TABLE/VIEW/MATERIALIZED VIEW` statements. Available in `dbt-redshift` v1.11.0rc3 and later. |
 
 For your tcp_keepalive inputs, we recommend taking a look at the [Redshift documentation](https://docs.aws.amazon.com/redshift/latest/mgmt/troubleshooting-connections.html) for more information on the right configuration for you. 
 
@@ -165,6 +176,7 @@ The authentication methods that <Constant name="core" /> supports on Redshift ar
 
 - `Database` &mdash; Password-based authentication (default, will be used if `method` is not provided)
 - `IAM User` &mdash; IAM User authentication via AWS Profile
+- `IAM Identity Center` &mdash; Browser-based sign-in through AWS IAM Identity Center
 
 Click on one of these authentication methods for further details on how to configure your connection profile. Each tab also includes an example `profiles.yml` configuration file for you to review.
 
@@ -172,7 +184,8 @@ Click on one of these authentication methods for further details on how to confi
   defaultValue="database"
   values={[
     {label: 'Database', value: 'database'},
-    {label: 'IAM User via AWS Profile (Core)', value: 'iam-user-profile'}]
+    {label: 'IAM User via AWS Profile', value: 'iam-user-profile'},
+    {label: 'IAM Identity Center (browser)', value: 'browser-identity-center'}]
 }>
 
 <TabItem value="database">
@@ -280,6 +293,12 @@ When the `iam_profile` configuration is set, dbt will use the specified profile 
 
 </TabItem>
 
+<TabItem value="browser-identity-center">
+
+<RedshiftBrowserIdc />
+
+</TabItem>
+
 
 </Tabs>
 
@@ -348,6 +367,14 @@ To run certain macros with autocommit, load the profile with autocommit using th
 - `iam_duration_seconds`
 
 - `keepalives_idle`
+
+### `drop_without_cascade`
+
+Set `drop_without_cascade: true` to omit `CASCADE` from `DROP TABLE`, `DROP VIEW`, and `DROP MATERIALIZED VIEW` statements. Use this when your project has no downstream dependents (for example, it uses only unbound views) and you want to avoid the overhead of resolving the `CASCADE` dependency graph on every drop for large clusters.
+
+:::info
+This option is intended for projects with no downstream dependents. If a dependent object exists and `CASCADE` is omitted, Redshift raises an error.
+:::
 
 ### `sort` and `dist` keys
 

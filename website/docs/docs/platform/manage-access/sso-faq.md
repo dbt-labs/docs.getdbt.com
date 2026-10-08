@@ -3,9 +3,13 @@ title: "SSO FAQs and troubleshooting"
 description: "Common questions and troubleshooting for single sign-on (SSO) in dbt platform"
 id: "sso-faq"
 sidebar: "SSO FAQ and troubleshooting"
+availability:
+  surface: platform
+  access: paid_plan
+  minPlan: enterprise
 ---
 
-# SSO FAQs and troubleshooting <Lifecycle status="managed, managed_plus" />
+# SSO FAQs and troubleshooting
 
 Find answers to common questions about configuring and using single sign-on (SSO) in <Constant name="dbt_platform" />, plus guidance for resolving common issues.
 
@@ -93,6 +97,12 @@ This occurs when tenant-level admin consent hasn't been granted for the dbt SSO 
 1. Have an Entra ID admin navigate to **Azure portal → Enterprise Applications → Your dbt application → Permissions**.
 2. Click **Grant admin consent** for the organization. This grants consent on behalf of all users in the tenant and prevents the prompt from appearing for new users going forward.
 3. Once granted, have the affected users retry signing in.
+
+</Expandable>
+
+<Expandable alt_header="Receiving a 'AADSTS90094: Admin consent is required' error">
+
+If you set up SSO before December 2025, your existing configuration may request `Directory.Read.All` instead of `GroupMember.Read.All` for new setups. To use the updated scopes, delete and re-create your SSO [configuration](/docs/platform/manage-access/set-up-sso-microsoft-entra-id#configuring-permissions). 
 
 </Expandable>
 

@@ -13,7 +13,7 @@ Retry re-executes the last invocation from the point of failure.
 
 ## Retry flags
 
-The `dbt retry` flags apply when you use a local dbt installation or the <Constant name="studio_ide" />.
+The `dbt retry` flags apply when you use a self-hosted dbt installation or the <Constant name="studio_ide" />.
 
 :::note dbt platform CLI
 If you use the [<Constant name="dbt_platform" /> CLI](/docs/platform/dbt-cli-installation) against your cloud environment, `dbt retry` accepts only a small subset of overrides—typically `--threads`, `--vars`, and related options. Use `dbt retry --help` on your machine for the exact list your CLI build supports.
@@ -40,7 +40,7 @@ Run `dbt retry --help` for the full list of flags available.
 
 <VersionBlock firstVersion="2.0">
 
-The following flags are supported when you run `dbt retry` with the <Constant name="fusion_engine" />:
+The following flags are supported when you run `dbt retry` with <Constant name="fusion_engine" />:
 
 | Flag | Input value | Description | Example |
 |------|-------------|-------------|---------|
@@ -55,7 +55,7 @@ The following flags are supported when you run `dbt retry` with the <Constant na
 <br />
 Run `dbt retry --help` for the full list of flags available.
 
-### Fusion node selection
+### dbt v2 node selection
 
 Unlike `dbt retry` with <Constant name="core" />, <Constant name="fusion" /> lets you narrow what gets retried using [`--select`](/reference/node-selection/syntax), [`--exclude`](/reference/node-selection/syntax), and [`--selector`](/reference/node-selection/yaml-selectors). Those arguments override the prior invocation’s selection set for the retry run instead of only inheriting it.
 
@@ -76,6 +76,7 @@ dbt retry --exclude package:analytics --selector nightly_models
 Retry works with the following commands:
 
 - [`build`](/reference/commands/build)
+- [`check`](/reference/commands/check)
 - [`compile`](/reference/commands/compile)
 - [`clone`](/reference/commands/clone)
 - [`docs generate`](/reference/commands/cmd-docs#dbt-docs-generate)

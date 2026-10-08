@@ -4,6 +4,7 @@ title: "Ratio metrics"
 description: "Use ratio metrics to create a ratio out of two metrics. "
 sidebar_label: Ratio
 tags: [Metrics, Semantic Layer]
+availability: all_users
 ---
 
 Ratio metrics allow you to create a ratio between two metrics. You specify a numerator and a denominator metric. You can optionally apply filters, names, and aliases to both the numerator and denominator when computing the metric.

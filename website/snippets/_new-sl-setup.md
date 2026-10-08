@@ -26,7 +26,7 @@ Select the environment where you want to enable the Semantic Layer:
 There are two options for setting up <Constant name="semantic_layer" /> using API tokens: 
 
 - [Add a credential and create service tokens](#add-a-credential-and-create-service-tokens)
-- [Configure development credentials and create personal tokens](#configure-development-credentials-and-create-a-personal-token)
+- [Configure user credentials and create personal tokens](#configure-development-credentials-and-create-a-personal-token)
 
 #### Add a credential and create service tokens
 
@@ -68,15 +68,15 @@ This credential controls the physical access to underlying data accessed by the 
 
 #### Configure development credentials and create a personal token
 
-Using [personal access tokens (PATs)](/docs/dbt-apis/user-tokens) is also a supported authentication method for the dbt <Constant name="semantic_layer" />. This enables user-level authentication, reducing the need for sharing tokens between users. When you authenticate using PATs, queries are run using your personal development credentials. 
+Using [personal access tokens (PATs)](/docs/dbt-apis/user-tokens) is also a supported authentication method for the dbt <Constant name="semantic_layer" />. This enables user-level authentication, reducing the need for sharing tokens between users. When you authenticate using PATs, queries are run using your personal user credentials. 
 
 To use PATs in <Constant name="semantic_layer" />:
 
-1. Configure your development credentials.
+1. Configure your user credentials.
    1. Click your account name at the bottom left-hand menu and go to **Account settings** > **Credentials**.
    2. Select your project. 
    3. Click **Edit**.
-   4. Go to **Development credentials** and enter your details. 
+   4. Go to **User credentials** and enter your details. 
    5. Click **Save**.
 2. [Create a personal access token](/docs/dbt-apis/user-tokens). Make sure to copy the token. 
 

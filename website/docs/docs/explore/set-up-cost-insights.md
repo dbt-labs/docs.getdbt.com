@@ -4,26 +4,36 @@ sidebar_label: "Set up Cost Insights"
 description: "Learn how to set up Cost Insights to track warehouse compute costs and view realized savings from state-aware orchestration across your dbt projects and models."
 id: "set-up-cost-insights"
 tags: ['SAO', 'cost savings', 'models built', 'cost insights', 'cost reduction', 'cost optimization']
+availability:
+  surface: platform
+  access: paid_plan
+  minPlan: enterprise
 ---
 
-# Set up Cost Insights <Lifecycle status="beta,managed,managed_plus" />
+import SaoDeprecated from '/snippets/_sao-deprecated.md';
 
-This guide walks you through setting up Cost Insights to track warehouse compute costs and cost reductions from state-aware orchestration across your dbt projects and models.
+# Set up Cost Insights
+
+This guide walks you through setting up Cost Insights to track warehouse compute costs and cost reductions from dbt State and state-aware orchestration across your dbt projects and models.
 
 ## Prerequisites
 
 Before setting up Cost Insights, ensure you have:
 
-- A dbt account with <Constant name="fusion_engine" /> enabled. Contact your account manager to enable <Constant name="fusion" /> for your account.
 - An administrator role.
-- A supported data warehouse: Snowflake, BigQuery, or Databricks.
+- A supported data warehouse: 
+    - Snowflake
+    - BigQuery
+    - Databricks
+    - Amazon Redshift <Lifecycle status="preview" />
 
 To set up Cost Insights, follow these steps:
 
 1. [Assign required permissions.](#assign-required-permissions)
 2. [Configure platform metadata credentials.](#configure-platform-metadata-credentials)
 3. [(Optional) Configure Cost Insights settings.](#configure-cost-insights-settings-optional)
-4. [(Optional) Enable state-aware orchestration in your job settings.](#enable-state-aware-orchestration-optional)
+4. [(Optional, Snowflake only) Configure custom relation overrides.](#custom-relation-overrides)
+5. [(Optional) Enable dbt State or state-aware orchestration in your job settings.](#enable-dbt-state-or-state-aware-orchestration-optional)
 
 After completing these setup steps, you can view cost and optimization data across multiple areas of the <Constant name="dbt_platform" />. Refer to [Explore cost data](/docs/explore/explore-cost-data) to learn more about the Cost Insights section and how to use it.
 
@@ -60,9 +70,14 @@ For more information on how to assign permissions to users, refer to [About user
         - A Snowflake database role assigned the following access:
             - `ACCOUNT_USAGE.QUERY_HISTORY`
             - `ACCOUNT_USAGE.QUERY_ATTRIBUTION_HISTORY`
-            - `ACCOUNT_USAGE.ACCESS_HISTORY`
-            - `ACCOUNT_USAGE.WAREHOUSE_METERING_HISTORY`
             - `ORGANIZATION_USAGE.USAGE_IN_CURRENCY_DAILY` (Optional)
+            - `ACCOUNT_USAGE.QUERY_METERING_HISTORY` (Optional; required for [Adaptive Warehouse](https://docs.snowflake.com/en/user-guide/warehouses-adaptive) cost attribution)
+
+                If `QUERY_METERING_HISTORY` access is not granted, Adaptive Warehouse queries appear as $0 in Cost Insights and a warning is shown in the connection test. For more information, refer to the [Snowflake documentation](https://docs.snowflake.com/en/sql-reference/account-usage/query_metering_history).
+        
+        :::note
+        If you don't have access to the `SNOWFLAKE` system database, you can [configure custom relation overrides](#custom-relation-overrides) to point Cost Insights to your own tables or views.
+        :::
         </Expandable>
 
         <Expandable alt_header="BigQuery">
@@ -82,18 +97,40 @@ For more information on how to assign permissions to users, refer to [About user
         For more information, refer to the Databricks documentation on [granting access to system tables](https://docs.databricks.com/aws/en/admin/system-tables/#grant-access-to-system-tables).
         </Expandable>
 
+        <Expandable alt_header="Amazon Redshift" lifecycle="preview" lifecycle_size="75">
+        By default, Redshift users can only view their own queries. dbt must be able to query all users' queries in `SYS_QUERY_HISTORY` to attribute costs across your dbt runs. Grant one of the following permissions to the platform metadata credentials user:
+
+        - **`sys:monitor` role** (recommended):
+            ```sql
+            GRANT ROLE sys:monitor TO <user>;
+            ```
+        - **Unrestricted syslog access**:
+            ```sql
+            ALTER USER <user> SYSLOG ACCESS UNRESTRICTED;
+            ```
+
+        For more information, refer to the [Amazon Redshift documentation on enhanced query monitoring permissions](https://docs.aws.amazon.com/redshift/latest/mgmt/metrics-enhanced-query-monitoring.html#metrics-enhanced-query-monitoring-permissions).
+
+        dbt verifies cross-user visibility during the connection test. If the credentials can only see their own queries, the test fails and cost data will not be processed for that environment.
+
+        </Expandable>
+
 5. Verify that **Cost insights** is enabled under **Features**. This feature is enabled by default when you configure platform metadata credentials.
 6. Click **Save**.
 
 ## Configure Cost Insights settings (optional)
 
-By default, dbt uses standard warehouse pricing. If you have custom pricing contracts, you can override these values _except_ for Databricks connections. The default values vary by warehouse:
+**Note:** This step is required for Amazon Redshift users. Without a configured price, costs will appear as $0.
+
+By default, dbt uses standard warehouse pricing, which you can override if you have custom pricing agreements. Databricks and Amazon Redshift do not have default values. The default values vary by warehouse:
 
 | Warehouse | Default values |
 |-----------|----------------|
 | [Snowflake](https://www.snowflake.com/en/pricing-options/) | `price_per_credit` = $3 |
 | [BigQuery](https://cloud.google.com/bigquery/pricing) | `price_per_slot_hour` = $0.04, `price_per_tib` = $6.25 |
 | [Databricks](https://docs.databricks.com/aws/en/admin/system-tables/pricing) | dbt queries the `list_prices` system table directly, so there is no default value. |
+| [Amazon Redshift Serverless](https://aws.amazon.com/redshift/pricing/) | `rpu_price_per_hour` — no default value; costs appear as $0 until configured. |
+| [Amazon Redshift Provisioned](https://aws.amazon.com/redshift/pricing/) | `node_price_per_hour` — no default value; costs appear as $0 until configured. |
 
 <br></br>
 
@@ -108,9 +145,33 @@ To change the default value:
 
 These custom values will apply to all future cost calculations for this connection. If you clear these values, they will reset to the default warehouse pricing.
 
-## Enable state-aware orchestration (optional)
+## Configure custom relation overrides (optional) <Lifecycle status="private_beta" /> {#custom-relation-overrides}
 
-Cost Insights displays cost data for your dbt models and jobs without state-aware orchestration. However, to understand the impact of optimizations and see cost reductions from model and test reuse, you must enable state-aware orchestration in your jobs. For steps on how to enable this feature, see [Setting up state-aware orchestration](/docs/deploy/state-aware-setup).
+:::info Private beta feature
+This feature is available only for Snowflake connections with Cost Insights enabled. To join the private beta, contact your account representative.
+:::
+
+If you're a Snowflake user whose credentials don't have access to the `SNOWFLAKE` system database, you can use your own tables or views in place of the default [Snowflake system tables](/docs/explore/set-up-cost-insights#snowflake) that Cost Insights queries. You don't need to override all three &mdash; any table you don't configure falls back to the Snowflake system default.
+
+To configure custom relation overrides:
+
+1. Click your account name at the bottom of the left-side menu and click **Account settings**.
+2. Under **Settings**, go to **Connections**.
+3. Select the Snowflake connection where you want to configure custom relation overrides.
+4. Go to the **Cost Insights settings** section and scroll to **Custom relation overrides**.
+5. Enter the fully-qualified name for one or more of the following fields. Each value must be a fully-qualified `database.schema.table` identifier (unquoted or double-quoted).
+    - **Custom query history relation**: Replaces `SNOWFLAKE.ACCOUNT_USAGE.QUERY_HISTORY`.
+    - **Custom query attribution history relation**: Replaces `SNOWFLAKE.ACCOUNT_USAGE.QUERY_ATTRIBUTION_HISTORY`.
+    - **Custom usage in currency daily relation**: Replaces `SNOWFLAKE.ORGANIZATION_USAGE.USAGE_IN_CURRENCY_DAILY`.
+6. Click **Save**.
+
+## Enable dbt State (optional)
+
+<SaoDeprecated />
+
+Cost Insights displays cost data for your dbt models and jobs without dbt State. However, to understand the impact of optimizations and see cost reductions from model and test reuse, you must enable dbt State in your jobs. For steps on how to enable it, see [Setting up dbt State](/docs/deploy/dbt-state-setup).
+
+Cost Insights also reflects cost reductions and efficiency gains from state-aware orchestration if you have it enabled.
 
 import CostInsights from '/snippets/_cost-insights-sao.md';
 
