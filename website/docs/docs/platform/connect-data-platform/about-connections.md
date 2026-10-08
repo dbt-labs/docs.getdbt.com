@@ -71,7 +71,7 @@ The following tables show which authentication types are supported for each conn
 
 <VersionBlock firstVersion="2.0">
 
-import AuthTypesFusion from '/snippets/_dbt_connection_support_fusion.md';
+import AuthTypesFusion from '/snippets/_dbt_connection_support_v2.md';
 
 <AuthTypesFusion />
 

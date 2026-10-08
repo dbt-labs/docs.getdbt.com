@@ -3,7 +3,7 @@ title: "Project Parsing"
 description: "Read this guide to understand the project parsing configuration in dbt."
 ---
 
-import FusionPartialParseCliFlags from '/snippets/_fusion-partial-parse-cli-flags.md';
+import FusionPartialParseCliFlags from '/snippets/_v2-partial-parse-cli-flags.md';
 
 ## Related documentation
 - The `dbt parse` [command](/reference/commands/parse)

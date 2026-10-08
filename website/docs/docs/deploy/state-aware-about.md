@@ -18,7 +18,7 @@ Every time a job runs, state-aware orchestration automatically determines which 
 
 </IntroText>
 
-import FusionLifecycle from '/snippets/_fusion-lifecycle-callout.md';
+import FusionLifecycle from '/snippets/_v2-lifecycle-callout.md';
 import SaoDeprecated from '/snippets/_sao-deprecated.md';
 
 <SaoDeprecated />

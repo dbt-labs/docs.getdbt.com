@@ -23,7 +23,7 @@ import SaoDeprecated from '/snippets/_sao-deprecated.md';
 
 <SaoDeprecated />
 
-import FusionLifecycle from '/snippets/_fusion-lifecycle-callout.md';
+import FusionLifecycle from '/snippets/_v2-lifecycle-callout.md';
 
 <FusionLifecycle />
 

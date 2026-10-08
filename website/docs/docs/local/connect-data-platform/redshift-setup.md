@@ -33,7 +33,7 @@ The Redshift adapter for <Constant name="fusion" /> supports the following [auth
 
 ## Warehouse permissions
 
-import FusionRedshiftWarehousePerms from '/snippets/_fusion-warehouse-permissions-redshift.md';
+import FusionRedshiftWarehousePerms from '/snippets/_v2-warehouse-permissions-redshift.md';
 
 <FusionRedshiftWarehousePerms />
 

@@ -1,4 +1,4 @@
-import FusionDWH from '/snippets/_fusion-dwh.md';
+import FusionDWH from '/snippets/_v2-dwh.md';
 
 Learn more about installing <Constant name="fusion" /> locally, along with important prerequisites, step-by-step installation instructions, troubleshooting common issues, and configuration guidance.
 

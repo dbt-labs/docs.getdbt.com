@@ -35,7 +35,7 @@ To grant users or roles database permissions (access rights and privileges), ref
 
 ## Warehouse permissions for <Constant name="fusion" />
 
-import FusionDatabricksWarehousePerms from '/snippets/_fusion-warehouse-permissions-databricks.md';
+import FusionDatabricksWarehousePerms from '/snippets/_v2-warehouse-permissions-databricks.md';
 
 <FusionDatabricksWarehousePerms />
 

@@ -14,7 +14,7 @@ availability:
 
 ## Warehouse permissions for <Constant name="fusion" />
 
-import FusionRedshiftWarehousePerms from '/snippets/_fusion-warehouse-permissions-redshift.md';
+import FusionRedshiftWarehousePerms from '/snippets/_v2-warehouse-permissions-redshift.md';
 
 <FusionRedshiftWarehousePerms />
 

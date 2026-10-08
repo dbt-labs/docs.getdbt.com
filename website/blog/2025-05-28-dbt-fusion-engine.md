@@ -2,7 +2,7 @@
 title: "Meet the dbt Fusion Engine: the new Rust-based, industrial-grade engine for dbt"
 description: "The dbt Fusion engine delivers a next-gen developer experience by combining high-speed execution with deep understanding of your code."
 slug: dbt-fusion-engine
-image: /img/blog/2025-05-28-dbt-fusion-engine/next-gen-star.png
+image: /img/blog/2025-05-28-dbt-v2-engine/next-gen-star.png
 authors: [jason_ganz]
 
 tags: [analytics craft, data ecosystem]
@@ -33,7 +33,7 @@ dbt came to represent many things:
   - An authoring layer: The schema, spec, and definitions for a dbt project written in SQL, YML, and Jinja
   - An engine: The tooling via which the authoring layer was built and executed against a data platform, resolving templated code into executable SQL, building your dependency graph, and more.
 
-<Lightbox src="/img/blog/2025-05-28-dbt-fusion-engine/engine-and-authoring-layer.png" title="dbt is made up of two different things: authoring layer and engine." />
+<Lightbox src="/img/blog/2025-05-28-dbt-v2-engine/engine-and-authoring-layer.png" title="dbt is made up of two different things: authoring layer and engine." />
 
 While the authoring layer has continued to evolve nicely, giving dbt developers ever-more functionality to work with, the engine itself, dbt Core, is still built on the same technology and uses the same primary design principles that it started with in 2016. This causes two primary problems that cannot be iteratively solved:
 
@@ -70,7 +70,7 @@ Fusion:
 
 Based on the technology from [SDF](https://www.getdbt.com/blog/dbt-labs-acquires-sdf-labs), Fusion represents a step change increase in the technical capabilities of dbt.
 
-<Lightbox src="/img/blog/2025-05-28-dbt-fusion-engine/familiar-authoring-powerful-new-engine.png" title="Familiar Authoring Layer, Powerful New Engine." />
+<Lightbox src="/img/blog/2025-05-28-dbt-v2-engine/familiar-authoring-powerful-new-engine.png" title="Familiar Authoring Layer, Powerful New Engine." />
 
 As a result of these capabilities, Fusion can deliver new experiences. Some of these we’re releasing today, like real-time error detection in VS Code and significant cost savings in project execution.  dbt now knows about your code!
 
@@ -82,7 +82,7 @@ As a result of these capabilities, Fusion can deliver new experiences. Some of t
 
 You can think of Fusion as the same dbt you know and love, but better and faster, and you're going to see it show up in a lot of places!
 
-<Lightbox src="/img/blog/2025-05-28-dbt-fusion-engine/next-gen-star.png" title="Functionality powered by the dbt Fusion Engine and its components" />
+<Lightbox src="/img/blog/2025-05-28-dbt-v2-engine/next-gen-star.png" title="Functionality powered by the dbt Fusion Engine and its components" />
 
 So how and why should you adopt Fusion for your dbt project?
 
@@ -102,7 +102,7 @@ There’s a whole host of features in the VS Code extension. Some early favorite
 - **Write code with confidence — live error detection and function autocomplete.**
   - How many time have you hit `dbt run` only to realize that you typed `select * frmo`, misspelled a column name or tried to sum the unsummable? No more! With the LSP-powered VS Code extension, you can immediately see when pesky errors sneak into your code.
 
-    <Lightbox src="/img/blog/2025-05-28-dbt-fusion-engine/you-wouldnt-sum-a-datetime.png" title="You wouldn't sum a datetime." />
+    <Lightbox src="/img/blog/2025-05-28-dbt-v2-engine/you-wouldnt-sum-a-datetime.png" title="You wouldn't sum a datetime." />
 
   - Similarly — is it `dateadd` or `date_add`? And which way around do the arguments go again? Just start typing and you'll see contextual prompts and autocomplete.
 - **See how the code you’ve written iteratively progresses to your transformed data:** *Preview CTEs and viewing compiled code*

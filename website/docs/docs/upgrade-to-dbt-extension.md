@@ -42,7 +42,7 @@ You can start manual onboarding in either of the following ways:
 - Follow the prompts in the upgrade assistant to complete the upgrade.
 - Run ` dbtf compile` to verify your project is ready for <Constant name="fusion" />.
 
-<Lightbox src="/img/docs/extension/fusion-onboarding-complete.png" width="70%" title="The message received when you have completed upgrading your project to v2." />
+<Lightbox src="/img/docs/extension/v2-onboarding-complete.png" width="70%" title="The message received when you have completed upgrading your project to v2." />
 
 Once the upgrade is completed, you're ready to dive into all the features that <Constant name="fusion_engine" /> has to offer!
 
@@ -99,7 +99,7 @@ After parsing succeeds, the tool compiles your project without static analysis. 
 
 The tool compiles your project with full <Constant name="fusion" /> static analysis. This checks that your SQL code is valid in the context of your warehouse's tables and columns.
 
-    <Lightbox src="/img/docs/extension/fusion-onboarding-complete.png" width="70%" title="The message received when you have completed upgrading your project to v2." />
+    <Lightbox src="/img/docs/extension/v2-onboarding-complete.png" width="70%" title="The message received when you have completed upgrading your project to v2." />
 
 </Expandable>
 

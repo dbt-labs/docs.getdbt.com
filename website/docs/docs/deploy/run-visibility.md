@@ -67,7 +67,7 @@ When a job on <Constant name="fusion_engine" /> finishes, selecting a step displ
 
 For more information about each status, refer to [dbt v2 telemetry and observability](/reference/telemetry-observability#node-outcome).
 
-<Lightbox src="/img/docs/dbt-platform/deployment/fusion-logs.png" width="80%" title="Structured logs in v2" />
+<Lightbox src="/img/docs/dbt-platform/deployment/v2-logs.png" width="80%" title="Structured logs in v2" />
 
 </VersionBlock>
 

@@ -2,7 +2,7 @@
 title: "Path to GA: How the dbt Fusion engine rolls out from beta to production"
 description: "We're moving quickly to enable as many teams as possible to start using the new dbt Fusion engine. Check out our roadmap and learn how to follow our progress."
 slug: dbt-fusion-engine-path-to-ga
-image: /img/blog/2025-05-28-dbt-fusion-engine-path-to-ga/indicative-timeline.png
+image: /img/blog/2025-05-28-dbt-v2-engine-path-to-ga/indicative-timeline.png
 authors: [jeremy_cohen, joel_labes]
 tags: [data ecosystem]
 hide_table_of_contents: false
@@ -125,7 +125,7 @@ It's worth noting that *resolution* doesn't necessarily mean identical behaviour
 
 Here's a point-in-time snapshot of how we expect to tackle the known remaining work. Please refer to the [repository's issues page](https://github.com/dbt-labs/dbt-fusion/issues) as the source of truth:
 
-<Lightbox src="/img/blog/2025-05-28-dbt-fusion-engine-path-to-ga/indicative-timeline.png" title="An indication of the dbt Fusion engine's path to GA" width="100%" />
+<Lightbox src="/img/blog/2025-05-28-dbt-v2-engine-path-to-ga/indicative-timeline.png" title="An indication of the dbt Fusion engine's path to GA" width="100%" />
 
 ### Surprise unimplemented features
 

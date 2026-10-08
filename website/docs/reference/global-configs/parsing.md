@@ -4,7 +4,7 @@ id: "parsing"
 sidebar: "Parsing"
 ---
 
-import FusionPartialParseCliFlags from '/snippets/_fusion-partial-parse-cli-flags.md';
+import FusionPartialParseCliFlags from '/snippets/_v2-partial-parse-cli-flags.md';
 
 ### Partial Parsing
 

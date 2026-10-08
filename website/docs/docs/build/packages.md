@@ -430,7 +430,7 @@ To see the library of published dbt packages, check out the [dbt package hub](ht
 
 ## dbt v2 package compatibility
 
-import FusionSupportedPackages from '/snippets/_fusion-supported-packages.md';
+import FusionSupportedPackages from '/snippets/_v2-supported-packages.md';
 
 <FusionSupportedPackages />
 
