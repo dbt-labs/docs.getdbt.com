@@ -79,7 +79,7 @@ When your job encounters an error, <Constant name="dbt" /> usually sends both a 
 - `job.run.completed` &mdash;  This event only fires once the job’s metadata and artifacts have been ingested and are available from the <Constant name="dbt" /> Admin and Discovery APIs. 
 - `job.run.errored` &mdash; This event fires immediately so the job’s metadata and artifacts might not have been ingested. This means that information might not be available for you to use.
 
-For some failures that stop the run before any node executes, such as a parsing error caused by an invalid unit test definition, <Constant name="dbt" /> might send only the `job.run.errored` event and no `job.run.completed` event.
+For some failures, such as a failing unit test or a parsing error that stops the run before any node executes, <Constant name="dbt" /> might send only the `job.run.errored` event and no `job.run.completed` event.
 
 If your integration depends on data from the Admin API (such as accessing the logs from the run) or Discovery API (accessing model-by-model statuses), use the `job.run.completed` event and filter on `runStatus` or `runStatusCode`. 
 
