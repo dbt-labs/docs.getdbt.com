@@ -10,11 +10,11 @@ recently_updated: true
 ---
 
 <div style={{maxWidth: '900px'}}>
-import FusionDWH from '/snippets/_fusion-dwh.md';
+import FusionDWH from '/snippets/_v2-dwh.md';
 
 ## Introduction
 
-import FusionLifecycle from '/snippets/_fusion-lifecycle-callout.md';
+import FusionLifecycle from '/snippets/_v2-lifecycle-callout.md';
 
 <FusionLifecycle />
 
@@ -214,13 +214,15 @@ This is just the start. There is so much more available and so much more coming.
 
 </ConfettiTrigger>
 
+<Snippet path="quickstarts/connect-your-ai" />
+
 ## Troubleshooting
 
-import FusionTroubleshooting from '/snippets/_fusion-troubleshooting.md';
+import FusionTroubleshooting from '/snippets/_v2-troubleshooting.md';
 
 <FusionTroubleshooting />
 
-import AboutFusion from '/snippets/_about-fusion.md';
+import AboutFusion from '/snippets/_about-v2.md';
 
 <AboutFusion hideQuickstartLink/>
 

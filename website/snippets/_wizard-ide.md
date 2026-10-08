@@ -27,7 +27,7 @@ To use the <Constant name="wizard" />, follow these steps:
 5. [Review the agent's suggestions](/docs/dbt-ai/wizard-ide#reviewing-agent-suggestions) and approve or reject the changes. You can also use the **Start new dbt Wizard chat** button to start a new chat session.
 6. [Approve dbt commands](/docs/dbt-ai/wizard-ide#granting-command-permissions) when the <Constant name="wizard" /> requests to run commands like `dbt compile` or `dbt build`.
 7. Repeat the process to build or change more models.
-8. Commit the changes to your dbt project and open a pull request.
+8. Commit the changes to your dbt project and open a pull request. Be warned, the wizard has been known to <WizardPopcorn>cast spells</WizardPopcorn>.
 
 The following images show how <Constant name="wizard"/> displays its work and outcome:
 
@@ -131,7 +131,7 @@ You can then choose whether to retry the command, narrow the request, or take an
 
 ### dbt v2 migration workflow {#fusion-migration-workflow}
 
-import FusionMigrationWorkflow from '/snippets/_fusion-migration-workflow.md';
+import FusionMigrationWorkflow from '/snippets/_v2-migration-workflow.md';
 
 <FusionMigrationWorkflow />
 

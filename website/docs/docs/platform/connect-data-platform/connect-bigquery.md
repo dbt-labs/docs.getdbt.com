@@ -20,7 +20,7 @@ import BigQueryPerms from '/snippets/_bigquery-permissions.md';
 
 ## Warehouse permissions for <Constant name="fusion" />
 
-import FusionBigQueryWarehousePerms from '/snippets/_fusion-warehouse-permissions-bigquery.md';
+import FusionBigQueryWarehousePerms from '/snippets/_v2-warehouse-permissions-bigquery.md';
 
 <FusionBigQueryWarehousePerms />
 
@@ -154,7 +154,7 @@ The `location` of BigQuery datasets can be set using the `location` setting in a
 
 <Expandable alt_header="Maximum bytes billed">
 
-When a `maximum_bytes_billed` value is configured for a BigQuery profile, that allows you to limit how much data your query can process. It’s a safeguard to prevent your query from accidentally processing more data than you expect, which could lead to higher costs. Queries executed by dbt will fail if they exceed the configured maximum bytes threshhold. This configuration should be supplied as an integer number of bytes.
+When a `maximum_bytes_billed` value is configured for a BigQuery profile, that allows you to limit how much data your query can process. It’s a safeguard to prevent your query from accidentally processing more data than you expect, which could lead to higher costs. Queries executed by dbt will fail if they exceed the configured maximum bytes threshold. This configuration should be supplied as an integer number of bytes.
 
 If your `maximum_bytes_billed` is 1000000000, you would enter that value in the `maximum_bytes_billed` field in <Constant name="dbt" />.
 

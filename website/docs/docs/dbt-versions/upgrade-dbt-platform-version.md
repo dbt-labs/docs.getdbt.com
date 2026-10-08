@@ -4,8 +4,8 @@ id: "upgrade-dbt-platform-version"
 availability: platform_login
 ---
 
-import FusionDWH from '/snippets/_fusion-dwh-platform.md';
-import FusionUpgradeSteps from '/snippets/_fusion-upgrade-steps.md';
+import FusionDWH from '/snippets/_v2-dwh-platform.md';
+import FusionUpgradeSteps from '/snippets/_v2-upgrade-steps.md';
 
 In <Constant name="dbt" />, both [jobs](/docs/deploy/jobs) and [environments](/docs/dbt-platform-environments) are configured to use a specific version of dbt. The version can be upgraded at any time.
 
@@ -64,7 +64,7 @@ dbt Labs has introduced the new [<Constant name="fusion_engine" />](/docs/introd
 
 When you're ready to upgrade your project(s) to <Constant name="fusion_engine" />, there are some tools available to you in the dbt platform UI to help you get started. The <Constant name="fusion" /> upgrade assistant will step you through the process of preparing and upgrading your projects. 
 
-  <Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/choosing-dbt-version/fusion-upgrade-gui.png" width="60%" title="The v2 upgrade assistant."/>
+  <Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/choosing-dbt-version/v2-upgrade-gui.png" width="60%" title="The v2 upgrade assistant."/>
 
 #### Prerequisites
 
@@ -115,19 +115,17 @@ The <Constant name="fusion" /> upgrade workflows helps identify areas of the pro
 #### Upgrade your development environment
 
 To begin the process of upgrading to <Constant name="fusion" /> with the assistant:
-1. From the project homepage or sidebar menu, click the **Start dbt v2 upgrade** or **Get started** button. You will be redirected to the <Constant name="studio_ide" />.
-  <Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/choosing-dbt-version/start-upgrade.png" width="60%" title="Start the v2 upgrade."/>
+1. From the project homepage, click the **Start dbt v2 upgrade** or **Upgrade** button. You will be redirected to the <Constant name="studio_ide" />.
 2. At the top of the <Constant name="studio_ide" /> click **Check deprecation warnings**. 
   <Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/choosing-dbt-version/check-deprecations.png" width="60%" title="Begin the process of parsing for deprecation warnings."/>
 3. dbt parses your project for the deprecations and presents a list of all deprecation warnings along with the option to **Autofix warnings**. Autofixing attempts to correct all syntax errors automatically. See [Fix deprecation warnings](/docs/platform/studio-ide/autofix-deprecations) for more information. 
-  <Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/choosing-dbt-version/check-deprecations.png" width="60%" title="Begin the process of parsing for deprecation warnings."/>
-4. Once the deprecation warnings have been resolved, click the **Enable <Constant name="fusion" />** button. This upgrades your development environment to <Constant name="fusion" />!
+4. Once the deprecation warnings have been resolved, click the **Upgrade to <Constant name="fusion" />** button. This upgrades your development environment to <Constant name="fusion" />!
 
   <Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/choosing-dbt-version/autofix-success.png" width="60%" title="You're now ready to upgrade to v2 in your development environment!"/>
 
 Now that you've upgraded your development environment to <Constant name="fusion" />, you're ready to start the process of upgrading your Production, Staging, and General environments. Follow your organization's standard procedures and use the [release tracks](#release-tracks) to upgrade.
 
-import FusionReadinessPanel from '/snippets/_fusion-migration-readiness-panel.md';
+import FusionReadinessPanel from '/snippets/_v2-migration-readiness-panel.md';
 
 <FusionReadinessPanel />
 
