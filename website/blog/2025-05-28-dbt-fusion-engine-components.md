@@ -2,7 +2,7 @@
 title: "The Components of the dbt Fusion engine and how they fit together"
 description: "The new engine makes it possible to decouple source code from functionality, introducing new ways to distribute functionality to the Community."
 slug: dbt-fusion-engine-components
-image: /img/blog/2025-05-28-dbt-fusion-engine/next-gen-star.png
+image: /img/blog/2025-05-28-dbt-v2-engine/next-gen-star.png
 authors: [jason_ganz, joel_labes]
 tags: [analytics craft, data ecosystem]
 hide_table_of_contents: false
@@ -105,7 +105,7 @@ The dbt VS Code extension is one of the first product experiences built on top o
 
 The Language Server is built on top of a subset of the technology powering the extended Fusion engine: as an example, it can quickly compile SQL and interact with databases, but it defers to the dbt binary when it's time to actually run a model.
 
-<Lightbox src="/img/blog/2025-05-28-dbt-fusion-engine-components/vscode-ext-binary-roles.png" title="The VS Code extension interacts with the Language Server to understand your SQL, and the Fusion binary to execute your SQL." />
+<Lightbox src="/img/blog/2025-05-28-dbt-v2-engine-components/vscode-ext-binary-roles.png" title="The VS Code extension interacts with the Language Server to understand your SQL, and the Fusion binary to execute your SQL." />
 
 ### The dbt Authoring Layer
 
