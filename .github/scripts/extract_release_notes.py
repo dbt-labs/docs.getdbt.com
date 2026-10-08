@@ -204,8 +204,12 @@ TOKEN_OVERLAP_THRESHOLD = 0.6
 # Lower bars once two bullets already point at the same docs. Anchored links
 # (page#section) are specific to a feature; bare page links are shared widely.
 ANCHOR_TOKEN_OVERLAP_THRESHOLD = 0.2
-PAGE_TOKEN_OVERLAP_THRESHOLD = 0.4
+PAGE_TOKEN_OVERLAP_THRESHOLD = 0.35
 MIN_TOKENS_FOR_OVERLAP = 6
+# A shorter bullet whose tokens are mostly covered by a longer existing note
+# (for example ST split a combined MT Preview bullet into two New bullets).
+CONTAINMENT_THRESHOLD = 0.8
+MIN_TOKENS_FOR_CONTAINMENT = 5
 
 
 @dataclass(frozen=True)
@@ -298,6 +302,27 @@ def token_overlap(left: frozenset[str], right: frozenset[str]) -> float:
     return len(left & right) / len(left | right)
 
 
+def token_containment(smaller: frozenset[str], larger: frozenset[str]) -> float:
+    """Fraction of smaller token set also present in larger."""
+    if not smaller:
+        return 0.0
+    return len(smaller & larger) / len(smaller)
+
+
+def lifecycle_blocks_fuzzy(
+    candidate: BulletFingerprint, existing: BulletFingerprint
+) -> bool:
+    """True when both notes name different lifecycle stages (for example beta → GA).
+
+    If either side has no lifecycle wording, still allow fuzzy matching so a
+    split **New** bullet can match a combined **Preview** note that already
+    covers it.
+    """
+    if not candidate.lifecycle or not existing.lifecycle:
+        return False
+    return candidate.lifecycle != existing.lifecycle
+
+
 def duplicate_reason(
     candidate: BulletFingerprint, existing: BulletFingerprint
 ) -> str | None:
@@ -307,14 +332,39 @@ def duplicate_reason(
     if candidate.body and candidate.body == existing.body:
         return "same normalized body"
 
-    # Fuzzy rules below never match across lifecycle stages (beta -> GA, and so on).
-    if candidate.lifecycle != existing.lifecycle:
+    # Fuzzy rules below never match across lifecycle promotions (beta → GA).
+    if lifecycle_blocks_fuzzy(candidate, existing):
         return None
 
     overlap = token_overlap(candidate.tokens, existing.tokens)
+    if len(candidate.tokens) <= len(existing.tokens):
+        smaller, larger = candidate.tokens, existing.tokens
+    else:
+        smaller, larger = existing.tokens, candidate.tokens
+    containment = token_containment(smaller, larger)
 
     shared_targets = candidate.link_targets & existing.link_targets
+    shared_anchors = sorted(candidate.anchors & existing.anchors)
     anchored_targets = sorted(t for t in shared_targets if "#" in t)
+
+    # Split ST bullets vs one combined MT note: most of the shorter wording is
+    # already inside the longer note, and they share a docs page or anchor.
+    if (
+        (shared_targets or shared_anchors)
+        and len(smaller) >= MIN_TOKENS_FOR_CONTAINMENT
+        and containment >= CONTAINMENT_THRESHOLD
+    ):
+        detail = (
+            anchored_targets[0]
+            if anchored_targets
+            else (
+                sorted(shared_targets)[0]
+                if shared_targets
+                else f"#{shared_anchors[0]}"
+            )
+        )
+        return f"covered by existing note ({detail})"
+
     if anchored_targets and overlap >= ANCHOR_TOKEN_OVERLAP_THRESHOLD:
         return f"same docs link ({anchored_targets[0]})"
     if shared_targets and overlap >= PAGE_TOKEN_OVERLAP_THRESHOLD:
@@ -322,7 +372,6 @@ def duplicate_reason(
 
     # Same section anchor on a different page, for example
     # run-visibility#explain-tab vs dbt-state-interface#explain-tab.
-    shared_anchors = sorted(candidate.anchors & existing.anchors)
     if shared_anchors and overlap >= ANCHOR_TOKEN_OVERLAP_THRESHOLD:
         return f"same feature anchor (#{shared_anchors[0]})"
 
