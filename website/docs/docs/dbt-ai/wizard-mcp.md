@@ -257,12 +257,12 @@ Connect <Constant name="wizard"/> to the [Fivetran Agent Context MCP server](htt
 wizard mcp add AgentContext \
   --url "https://api.fivetran.ai/mcp"
 ```
-Wizard then prompts you to authorize the connection. Follow the prompts to finish connecting.
+<Constant name="wizard"/> then prompts you to authorize the connection. Follow the prompts to finish connecting.
 
 If your organization uses system keys, set your API key as an environment variable first, then include it in the command:
 
 ```bash
-export FIVETRAN_AI_API_KEY="<your-api-key>"
+export FIVETRAN_AI_API_KEY=YOUR_API_KEY
 wizard mcp add AgentContext --url "https://api.fivetran.ai/mcp" --bearer-token-env-var FIVETRAN_AI_API_KEY
 ```
 
