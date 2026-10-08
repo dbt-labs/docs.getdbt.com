@@ -9,7 +9,7 @@ pagination_prev: null
 
 <VersionBlock lastVersion="1.99">
 
-import FusionLifecycle from '/snippets/_fusion-lifecycle-callout.md';
+import FusionLifecycle from '/snippets/_v2-lifecycle-callout.md';
 
 <FusionLifecycle />
 
@@ -383,6 +383,6 @@ With baseline mode enabled by default, static analysis is less likely to block y
 
 This is a very rare occurrence. If you encounter this situation, please [open an issue](https://github.com/dbt-labs/dbt-fusion/issues) with an example of the failing SQL so we can update our parsers.
 
-import AboutFusion from '/snippets/_about-fusion.md';
+import AboutFusion from '/snippets/_about-v2.md';
 
 <AboutFusion />

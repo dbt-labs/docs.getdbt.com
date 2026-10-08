@@ -1,5 +1,5 @@
 
-import FusionManualInstall from '/snippets/_fusion-manual-install.md';
+import FusionManualInstall from '/snippets/_v2-manual-install.md';
 
 The dbt extension &mdash; available for [VS Code and Cursor](https://marketplace.visualstudio.com/items?itemName=dbtLabsInc.dbt&ssr=false#overview), and [Windsurf](https://open-vsx.org/extension/dbtLabsInc/dbt) &mdash; makes dbt development smoother and more efficient. dbt v1 and v2 both support the extension &mdash; refer to [Version compatibility](/docs/about-dbt-extension#version-compatibility) for which features need which setup.
 

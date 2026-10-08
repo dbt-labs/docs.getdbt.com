@@ -10,7 +10,7 @@ recently_updated: true
 intro_text: This guide helps you implement an in-place upgrade from the latest version of dbt v1 to dbt v2 in the dbt platform.
 ---
 
-import FusionAdapters from '/snippets/_fusion-dwh-platform.md';
+import FusionAdapters from '/snippets/_v2-dwh-platform.md';
 import SaoDeprecated from '/snippets/_sao-deprecated.md';
 
 ## Introduction 
@@ -352,7 +352,7 @@ Validate the upgrade by running a job:
 
 If the job succeeds, your production upgrade is successful!
 
-import FusionReadinessPanel from '/snippets/_fusion-migration-readiness-panel.md';
+import FusionReadinessPanel from '/snippets/_v2-migration-readiness-panel.md';
 
 <FusionReadinessPanel />
 

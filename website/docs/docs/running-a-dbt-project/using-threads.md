@@ -6,7 +6,7 @@ description: "Understand what threads mean and how to use them."
 pagination_next: null
 availability: all_users
 ---
-import FusionThreads from '/snippets/_fusion-threads.md';
+import FusionThreads from '/snippets/_v2-threads.md';
  
 When dbt runs, it creates a directed acyclic graph (DAG) of links between models. The number of threads represents the maximum number of paths through the graph dbt may work on at once – increasing the number of threads can minimize the run time of your project.
 
