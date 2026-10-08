@@ -413,17 +413,54 @@ def filter_duplicates(
     return new_bullets, skipped
 
 
-def find_month_insert_line(lines: list[str], month_heading: str) -> int:
+def _bullet_insert_after_month(lines: list[str], month_index: int) -> int:
+    """Return the index where new bullets should be inserted under a month heading."""
+    for next_index in range(month_index + 1, len(lines)):
+        if lines[next_index].startswith("## "):
+            return next_index
+        if lines[next_index].startswith("- "):
+            return next_index
+    return month_index + 1
+
+
+def ensure_month_heading(lines: list[str], month_heading: str) -> tuple[int, bool]:
+    """Ensure the month heading exists (newest-first). Mutates lines if created.
+
+    Returns (bullet_insert_index, created).
+    """
     target = f"## {month_heading}"
     for index, line in enumerate(lines):
         if line.strip() == target:
-            for next_index in range(index + 1, len(lines)):
-                if lines[next_index].startswith("## "):
-                    return next_index
-                if lines[next_index].startswith("- "):
-                    return next_index
-            return index + 1
-    raise ValueError(f'Month heading not found in MT file: "{month_heading}"')
+            return _bullet_insert_after_month(lines, index), False
+
+    new_month = datetime.strptime(month_heading, "%B %Y")
+    month_indexes: list[tuple[int, datetime]] = []
+    for index, line in enumerate(lines):
+        match = MONTH_HEADING_RE.match(line.strip())
+        if match:
+            month_indexes.append(
+                (index, datetime.strptime(match.group(1), "%B %Y"))
+            )
+
+    heading_at: int | None = None
+    for index, existing in month_indexes:
+        if new_month > existing:
+            heading_at = index
+            break
+
+    if heading_at is None:
+        if month_indexes:
+            last_start = month_indexes[-1][0]
+            heading_at = len(lines)
+            for index in range(last_start + 1, len(lines)):
+                if lines[index].startswith("## "):
+                    heading_at = index
+                    break
+        else:
+            heading_at = len(lines)
+
+    lines[heading_at:heading_at] = [target]
+    return heading_at + 1, True
 
 
 def main() -> int:
@@ -445,13 +482,16 @@ def main() -> int:
     week_lines = st_lines[start:end]
     bullets = extract_bullets(week_lines)
     month_heading = week_to_month_heading(args.week)
-    insert_at = find_month_insert_line(mt_lines, month_heading)
+    insert_at, created_month = ensure_month_heading(mt_lines, month_heading)
 
     formatted = [format_mt_bullet(category, body) for category, body in bullets]
     to_insert, skipped = filter_duplicates(formatted, mt_lines)
 
     print(f"Week: {args.week}")
     print(f"Target month section: ## {month_heading}")
+    if created_month:
+        action = "Would create" if args.dry_run else "Created"
+        print(f"{action} missing month heading: ## {month_heading}")
     print(f"Bullets found: {len(formatted)}")
     print(f"Skipped (already in MT file): {len(skipped)}")
     print(f"Would add: {len(to_insert)}")
@@ -471,6 +511,8 @@ def main() -> int:
         return 0
 
     print("--- Preview (what would be added to the monthly file) ---")
+    if created_month:
+        print(f"## {month_heading}")
     for bullet in to_insert:
         print(bullet)
     print("--- End preview ---")
