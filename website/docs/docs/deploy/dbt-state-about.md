@@ -100,7 +100,7 @@ For setup steps, refer to [Set up dbt State](/docs/deploy/dbt-state-setup).
 
 - [Set up dbt State](/docs/deploy/dbt-state-setup)
 - [Monitor dbt State activity](/docs/deploy/dbt-state-interface)
-- [Non-interactive environment setup](/docs/deploy/dbt-state-cicd)
+- [Setting up authentication for non-interactive environments](/docs/deploy/dbt-state-cicd)
 - [dbt State configs](/reference/resource-configs/dbt-state-configs)
 - [Migrate from state-aware orchestration](/docs/deploy/dbt-state-migration)
 - [dbt State trial and billing](/docs/deploy/dbt-state-trial)

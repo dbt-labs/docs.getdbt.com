@@ -876,10 +876,9 @@ const sidebarSettings = {
             "docs/deploy/dbt-state-enable-studio",
             {
               type: "category",
-              label: "Non-interactive environment setup",
+              label: "Set up auth for non-interactive environments",
               link: { type: "doc", id: "docs/deploy/dbt-state-cicd" },
               items: [
-                "docs/deploy/dbt-state-cicd",
                 "docs/deploy/dbt-state-oauth",
               ],
             },

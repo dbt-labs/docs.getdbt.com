@@ -1,6 +1,6 @@
 ---
 title: "OAuth client credentials for dbt State"
-sidebar_label: "OAuth client credentials"
+sidebar_label: "OAuth client credentials (Retired)"
 description: "Learn how to configure dbt State authentication using OAuth client credentials for the standalone dbt State app."
 id: "dbt-state-oauth"
 tags: ['dbt State']
@@ -9,7 +9,7 @@ availability: everywhere_usage
 
 import DbtStateAppRetirement from '/snippets/_dbt-state-app-retirement.md';
 
-# OAuth client credentials for dbt State
+# OAuth client credentials for dbt State <Lifecycle status="Retired" />
 
 <DbtStateAppRetirement />
 
@@ -70,4 +70,4 @@ Once configured, [verify dbt State is active](/docs/deploy/dbt-state-cicd#verify
 
 - [About dbt State](/docs/deploy/dbt-state-about)
 - [Set up dbt State](/docs/deploy/dbt-state-setup)
-- [Non-interactive environment setup](/docs/deploy/dbt-state-cicd)
+- [Setting up authentication for non-interactive environments](/docs/deploy/dbt-state-cicd)

@@ -28,7 +28,7 @@ Set up dbt State either in the <Constant name="dbt_platform" /> or self-hosted d
 - Already logged in to <Constant name="dbt_platform" /> and managing your account? Use **dbt Account settings**.
 - Signing up or logging in through the [dbt platform sign-up page](http://us1.dbt.com/register?_dbtsrc=dbt-state)? Use **dbt platform sign-up**.
 - Using the CLI? Use **dbt v2** or **dbt v1.7-1.12**.
-   - If you're running dbt in a non-interactive environment, enable dbt State first using the instructions below, then follow the [non-interactive environment setup](/docs/deploy/dbt-state-cicd) to configure authentication.
+   - If you're running dbt in a non-interactive environment, enable dbt State first using the instructions below, then follow [Setting up authentication for non-interactive environments](/docs/deploy/dbt-state-cicd).
 
 <Tabs queryString="type">
 <TabItem value="account-settings" label="dbt Account settings">
@@ -232,7 +232,7 @@ To see which decision dbt State made for each node after a run and why, you can 
 - [Migrate from state-aware orchestration](/docs/deploy/dbt-state-migration)
 - [`dbt login` with dbt State](/reference/commands/login?version=2.0#dbt-login-with-dbt-state)
 - [Configure deferral](/docs/deploy/dbt-state-deferral)
-- [Non-interactive environment setup](/docs/deploy/dbt-state-cicd)
+- [Setting up authentication for non-interactive environments](/docs/deploy/dbt-state-cicd)
 - [dbt State configs](/reference/resource-configs/dbt-state-configs)
 - [Monitor dbt State activity](/docs/deploy/dbt-state-interface)
 
