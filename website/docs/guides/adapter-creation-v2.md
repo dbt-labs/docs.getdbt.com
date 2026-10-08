@@ -35,10 +35,10 @@ The Exasol adapter, contributed by [Marco Nätlitz](https://www.linkedin.com/in/
 
 | Topic | <Constant name="core_v1" /> | <Constant name="core_v2" /> |
 |-------|-------------|-------------|
-| **Package structure** | Separate Python packages (e.g. `dbt-snowflake`, `dbt-bigquery`), each inheriting from `dbt-adapters` | Part of the `dbt-labs/dbt` monorepo, contributed as PRs |
-| **Who maintains them** | dbt Labs maintains base adapter and 6 major adapters; others community-maintained independently | dbt Labs maintains the monorepo; community contributes via PRs |
+| **Package structure** | Separate Python packages (for example, `dbt-snowflake` and `dbt-bigquery`), each inheriting from `dbt-adapters` | Part of the `dbt-labs/dbt` monorepo, contributed as PRs |
+| **Who maintains them** | dbt Labs maintains base adapter and 6 major adapters; others community-maintained independently | dbt Labs maintains the monorepo; community contributes through pull requests |
 | **Language** | Python | Rust (with Jinja SQL macros still used for SQL logic) |
-| **How they load** | Dynamically loaded at runtime via Python's plugin system | Compiled into the monorepo binary |
+| **How they load** | Dynamically loaded at runtime through Python's plugin system | Compiled into the monorepo binary |
 | **Connection management** | Each adapter implements its own connection logic, built on vendor Python SDK connectors/drivers | ADBC drivers handle connection management: a unified driver interface that abstracts away wire protocol details |
 | **Code organization** | Organized by warehouse, each adapter is its own isolated codebase | Organized by feature area (vertical): a fix in one crate benefits all adapters |
 
@@ -79,7 +79,7 @@ Check these sources to find out if one exists for your warehouse:
 If no driver exists yet, building one is a separate project that comes before the adapter contribution. This is outside the scope of dbt Labs. [Columnar](https://columnar.tech/) specializes in building ADBC drivers and may be a useful resource.
 
 :::note Long-term: signed driver distribution
-dbt Labs is working toward a model where community drivers can be distributed and loaded safely via signed binaries, similar to how operating systems verify installers. The goal is to make third-party driver installation as seamless and trustworthy as first-party. This isn't in place yet, but dbt Labs is considering this direction.
+dbt Labs is working toward a model where community drivers can be distributed and loaded safely through signed binaries, similar to how operating systems verify installers. The goal is to make third-party driver installation as seamless and trustworthy as first-party. This isn't in place yet, but dbt Labs is considering this direction.
 :::
 
 ## Step 3: Understanding the codebase shape before you build
@@ -158,7 +158,7 @@ Before writing any Rust, check a couple of things:
 
 1. Does a v1 adapter already exist for your warehouse?
 
-Check the [trusted adapters](/docs/trusted-adapters) and [community adapters](/docs/community-adapters) lists. If one exists, find its GitHub repo: the macro SQL and connection logic are almost directly reusable.
+Refer to the [community adapters](/docs/trusted-adapters) list. If one exists, find its GitHub repo. The macro SQL and connection logic are almost directly reusable.
 
 2. Did dbt Labs already add a placeholder for your warehouse?
 
@@ -166,13 +166,13 @@ Some warehouses already appear in v2's `AdapterType` enum but aren't fully imple
 
 | Warehouse | v1 adapter | <Constant name="core_v2" /> status |
 |-----------|------------|-------------------|
-| Athena | [dbt-athena](https://github.com/dbt-athena/dbt-athena) (trusted) | `AdapterType::Athena` exists: needs auth, macros, adapter arms |
-| Trino | [dbt-trino](https://github.com/starburstdata/dbt-trino) (trusted) | `AdapterType::Trino` exists: needs auth, macros, adapter arms |
-| Starburst | [dbt-trino](https://github.com/starburstdata/dbt-trino) (trusted) | `AdapterType::Starburst` exists: needs auth, macros, adapter arms |
-| Dremio | [dbt-dremio](https://github.com/dremio/dbt-dremio) (trusted) | `AdapterType::Dremio` exists: needs auth, macros, adapter arms |
-| Oracle | [dbt-oracle](https://github.com/oracle/dbt-oracle) (trusted) | `AdapterType::Oracle` exists: needs auth, macros, adapter arms |
+| Athena | [dbt-athena](https://github.com/dbt-athena/dbt-athena) | `AdapterType::Athena` exists: needs auth, macros, adapter arms |
+| Trino | [dbt-trino](https://github.com/starburstdata/dbt-trino) | `AdapterType::Trino` exists: needs auth, macros, adapter arms |
+| Starburst | [dbt-trino](https://github.com/starburstdata/dbt-trino) | `AdapterType::Starburst` exists: needs auth, macros, adapter arms |
+| Dremio | [dbt-dremio](https://github.com/dremio/dbt-dremio) | `AdapterType::Dremio` exists: needs auth, macros, adapter arms |
+| Oracle | [dbt-oracle](https://github.com/oracle/dbt-oracle) | `AdapterType::Oracle` exists: needs auth, macros, adapter arms |
 
-For warehouses not yet in `AdapterType` at all (MySQL, Hive, Vertica, SQL Server, Teradata, etc.), you start from Step 5.1 by adding the `AdapterType` variant.
+For warehouses not yet in `AdapterType` at all (MySQL, Hive, Vertica, SQL Server, Teradata, and more), you start from Step 5.1 by adding the `AdapterType` variant.
 
 #### What transfers from v1 to v2
 
@@ -299,8 +299,8 @@ Your driver already exists (covered in Step 2). This step is where you register 
 
 | File | What to do | Required? |
 |-------|-----------|-----------|
-| `src/driver.rs` | Add a variant to the `Backend` enum; add the ADBC library name (e.g. `"adbc_driver_exasol"`) and FFI protocol; also define a `LoadStrategy` | **Yes** |
-| `src/install.rs` | Add CDN download URL and platform strings | No, only for drivers distributed via the dbt Labs CDN, which requires separate coordination with dbt Labs |
+| `src/driver.rs` | Add a variant to the `Backend` enum; add the ADBC library name (for example, `"adbc_driver_exasol"`) and FFI protocol; also define a `LoadStrategy` | **Yes** |
+| `src/install.rs` | Add CDN download URL and platform strings | No, only for drivers distributed through the dbt Labs CDN, which requires separate coordination with dbt Labs |
 
 The `Backend` enum maps to the ADBC shared library name (`lib<name>.so` / `<name>.dll` / `lib<name>.dylib`). You're registering its identity so <Constant name="core_v2" /> knows what to load. You're not writing the driver here.
 
@@ -389,7 +389,7 @@ AdapterType::MyWarehouse => {
 | File | What to do | Required? |
 |------|------------|-----------|
 | `src/<warehouse>/mod.rs` | Credential resolution, reads config fields, env vars, key files, tokens; builds the ADBC connection URI and credentials | **Yes** |
-| `src/<warehouse>/init.rs` | Init SQL generation, SQL that must run when the connection opens (e.g. `USE SCHEMA`, `SET` statements, extension loading) | Optional, only for warehouses that need SQL on connection open. Most don't. |
+| `src/<warehouse>/init.rs` | Init SQL generation, SQL that must run when the connection opens (for example, `USE SCHEMA`, `SET` statements, and extension loading) | Optional, only for warehouses that need SQL on connection open. Most don't. |
 | `src/lib.rs` | Register the new module with `mod <warehouse>;` and wire it into the auth dispatch match | **Yes** |
 
 The auth module turns a `DbConfig` into a live, authenticated ADBC connection. At minimum you need basic credential handling. More sophisticated auth (OAuth, SSO, key-pair) can be added incrementally.
@@ -400,7 +400,7 @@ The pattern is: read config fields → construct URI → call `builder.with_pars
 
 **Crate:** `crates/dbt-adapter/`
 
-This is the largest step. You're adding warehouse-specific behavior to the shared adapter layer via `match adapter_type()` arms.
+This is the largest step. You're adding warehouse-specific behavior to the shared adapter layer using `match adapter_type()` arms.
 
 :::tip Simple vs. complex adapters
 Most adapters, including Exasol, Athena, Trino, Starburst, Dremio, Oracle, and ClickHouse, add match arms directly to the shared files in `src/relation/`.
@@ -589,7 +589,7 @@ For catalog introspection, use your warehouse's system catalog. For example, Exa
 {%- endmacro %}
 ```
 
-If your warehouse is similar to an existing one (e.g. Postgres-compatible), start by delegating to that dialect's macros and only override where behavior differs:
+If your warehouse is similar to an existing one (for example, Postgres-compatible), start by delegating to that dialect's macros and only override where behavior differs:
 
 ```sql
 {% macro mywarehouse__create_table_as(temporary, relation, sql) -%}
@@ -645,14 +645,14 @@ Once your adapter is merged and available in a release, document it so users can
 Document the `profiles.yml` configuration for your warehouse: what fields are required, what's optional, and example values. Follow the format of existing [adapter setup guides](/docs/local/connect-data-platform/about-dbt-connections?version=2.0).
 
 :::caution Driver installation is critical to document
-Unlike adapters distributed via the CDN, your users won't get the driver automatically: <Constant name="core_v2" /> won't download it for them. Your setup guide must explain where to get the driver binary and how to install it so <Constant name="core_v2" /> can find it at runtime. Without this, users will configure a valid profile and still get a connection error. Include the exact library name <Constant name="core_v2" /> looks for (e.g. `libadbc_driver_<yourwarehouse>.dylib`) and where to put it.
+Unlike adapters distributed through the CDN, your users won't get the driver automatically: <Constant name="core_v2" /> won't download it for them. Your setup guide must explain where to get the driver binary and how to install it so <Constant name="core_v2" /> can find it at runtime. Without this, users will configure a valid profile and still get a connection error. Include the exact library name <Constant name="core_v2" /> looks for (for example, `libadbc_driver_<yourwarehouse>.dylib`) and where to put it.
 :::
 
 ### General documentation guidelines
 
 - Assume the reader knows dbt fundamentals but is not an expert on your warehouse's inner workings.
 - Include a complete working `profiles.yml` example.
-- Document any warehouse-specific quirks (e.g. 2-part vs 3-part naming, identifier case sensitivity).
+- Document any warehouse-specific quirks (for example, 2-part versus 3-part naming and identifier case sensitivity).
 - Link to the warehouse vendor's ADBC driver documentation.
 
 ## Step 8: Promote your adapter
@@ -686,7 +686,7 @@ A community-contributed <Constant name="core_v2" /> adapter touches roughly 13 f
 | `crates/dbt-adapter/src/column/column_builder.rs` | Column builder match arm, maps Arrow record batches to dbt column objects | `Exasol => Ok(Self::build_postgres_like(...))` |
 | `crates/dbt-adapter/src/metadata/get_relation.rs` | Catalog lookup function, queries system tables to find a relation by name | `exasol_get_relation()`, queries `sys.exa_all_tables` / `sys.exa_all_views` |
 | `crates/dbt-adapter/src/relation/relation_impl.rs` | Add your adapter to the `include_policy()` match, controls whether the database prefix is included and whether parts are quoted | `Policy::new(false, true, true)`, database disabled, schema + identifier quoted. Default `Policy::trues()` includes and quotes all three parts. |
-| `crates/dbt-adapter/src/relation/factory.rs` | Add warehouse to `RelationStatic` arm in `create_static_relation` | Exasol added alongside Postgres, Redshift, DuckDB, etc. |
+| `crates/dbt-adapter/src/relation/factory.rs` | Add warehouse to `RelationStatic` arm in `create_static_relation` | Exasol added alongside Postgres, Redshift, DuckDB, and more. |
 | `crates/dbt-adapter/src/sql_types.rs` | Metadata column name arms, `DATA_TYPE` and schema listing column names | Exasol uses standard `DATA_TYPE` column name |
 | `crates/dbt-loader/src/dbt_macro_assets/dbt-<warehouse>/dbt_project.yml` | Macro plugin project definition | `dbt-exasol/dbt_project.yml` |
 | `crates/dbt-loader/src/dbt_macro_assets/dbt-<warehouse>/macros/adapters.sql` | All required adapter macros | `dbt-exasol/macros/adapters.sql`, uses `sys.*` instead of `information_schema` |

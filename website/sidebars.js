@@ -33,7 +33,6 @@ const sidebarSettings = {
         "docs/supported-data-platforms",
         "docs/connect-adapters",
         "docs/trusted-adapters",
-        "docs/community-adapters",
         "docs/contribute-dbt-adapters",
       ],
     }, // Supported data platforms directory

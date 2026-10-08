@@ -12,18 +12,13 @@ import FusionLifecycle from '/snippets/_fusion-lifecycle.md';
 
 dbt connects to and runs SQL against your database, warehouse, lake, or query engine. These SQL-speaking platforms are collectively referred to as _data platforms_. dbt connects with data platforms by using a dedicated adapter plugin for each. Plugins are built as Python modules that <Constant name="core" /> discovers if they are installed on your system. Refer to the [Build, test, document, and promote adapters](/guides/adapter-creation) guide for details.
 
+Adapters are maintained by dbt Labs, partners, and community members. Refer to [community adapters](/docs/trusted-adapters) for the combined list.
+
 <VersionBlock firstVersion="2.0" >
 
 <FusionLifecycle/>
 
 </VersionBlock>
-
-## Types of Adapters
-
-There are two types of adapters available today:
-
-- **Trusted** &mdash; [Trusted adapters](trusted-adapters) are those where the adapter maintainers have decided to participate in the Trusted Adapter Program and have made a commitment to meeting those requirements. For adapters supported in <Constant name="dbt" />, maintainers have undergone an additional rigorous process that covers contractual requirements for development, documentation, user experience, and maintenance.
-- **Community** &mdash; [Community adapters](community-adapters) are open-source and maintained by community members. These adapters are not part of the Trusted Adapter Program and could have usage inconsistencies.
 
 <details>
   <summary>Considerations for depending on an open-source project</summary>

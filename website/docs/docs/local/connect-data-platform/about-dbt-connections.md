@@ -52,9 +52,9 @@ For detailed configuration options, refer to [Connection profiles](/docs/local/p
 - [Microsoft Fabric](/docs/local/connect-data-platform/fabric-setup)
 - [Azure Synapse](/docs/local/connect-data-platform/azuresynapse-setup)
 
-When you install <Constant name="core" />, you also need to install the specific adapter for your data platform. Data platform adapters may be verified by our [Trusted Adapter Program](/docs/trusted-adapters), and maintained by dbt Labs, partners, or community members.
+When you install <Constant name="core" />, you also need to install the specific adapter for your data platform. Those adapters are maintained by dbt Labs, partners, and community members. Refer to [community adapters](/docs/trusted-adapters).
 
-For the full list of supported platforms, see [Supported data platforms](/docs/supported-data-platforms).
+For the full list of supported platforms, refer to [Supported data platforms](/docs/supported-data-platforms).
 
 ## Connection profiles
 
@@ -78,7 +78,7 @@ The following table lists features available for adapters:
 
 ### Catalog 
 
-For adapters that support it, you can partially build the catalog (<Constant name="core_v1" /> only). This builds the catalog for only selected models via `dbt docs generate --select ...`. For adapters that don't support partial catalog generation, run `dbt docs generate` to build the full catalog.
+For adapters that support it, you can partially build the catalog (<Constant name="core_v1" /> only). This builds the catalog for only selected models using `dbt docs generate --select ...`. For adapters that don't support partial catalog generation, run `dbt docs generate` to build the full catalog.
 
 ### Source freshness
 

@@ -10,7 +10,7 @@ This section provides more details on different ways you can connect dbt to an a
 
 ### Set up in dbt
 
-Explore the fastest and most reliable way to deploy dbt by using the <Constant name="dbt_platform" />, a hosted architecture that runs dbt across your organization. The <Constant name="dbt_platform" /> lets you seamlessly [connect](/docs/platform/about-platform-setup) with a variety of [trusted](/docs/supported-data-platforms) data platform providers directly in the <Constant name="dbt" /> UI.
+Explore the fastest and most reliable way to deploy dbt by using the <Constant name="dbt_platform" />, a hosted architecture that runs dbt across your organization. The <Constant name="dbt_platform" /> lets you [connect](/docs/platform/about-platform-setup) to [supported data platforms](/docs/supported-data-platforms) directly in the <Constant name="dbt" /> UI.
 
 ### Install self-hosted dbt
 
@@ -30,8 +30,8 @@ With a few exceptions [^1], you can install all [adapters](/docs/supported-data-
 
 <VersionBlock firstVersion="2.0">
 
-Trusted adapters ship with <Constant name="fusion" /> &mdash; when you [install dbt](/docs/local/install-dbt), the supported data platforms are available out of the box, with no separate `pip install` per adapter needed.
+Adapters ship with <Constant name="fusion" />. When you [install dbt](/docs/local/install-dbt), the supported data platforms are available with no separate `pip install` for each adapter.
 
-Refer to [adapter creation](/guides/adapter-creation-v2?step=1) for more info.
+Refer to [adapter creation](/guides/adapter-creation-v2?step=1) for more information.
 
 </VersionBlock>
