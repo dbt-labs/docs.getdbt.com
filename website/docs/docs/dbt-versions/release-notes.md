@@ -21,8 +21,6 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 For <Constant name="fusion_engine" /> updates, refer to the [v2 changelog](https://github.com/dbt-labs/dbt/blob/main/CHANGELOG-dbt.md).
 
 ## October 2026
-- **New:** [Explore mode](/docs/platform/wizard-home#ask-questions-in-explore-mode) is now available in preview in the <Constant name="wizard" /> [home tab](/docs/platform/wizard-home#ask-questions-in-explore-mode) and [<Constant name="studio_ide" />](/docs/dbt-ai/wizard-ide#ask-questions-in-explore-mode). Ask questions of governed production data in plain language, with the SQL or metric definition behind every answer.
-- **New:** You can now [invite](/docs/platform/wizard-read-only-users) read-only users to ask questions about your data in the Wizard home tab without a developer license.
 - **New:** The jobs list API endpoint (`GET /api/v2/accounts/{account_id}/jobs/`) now accepts a `pk__in` query parameter, letting you retrieve up to 500 specific jobs by ID in a single request.
 - **New:** You can now specify `clickhouse_v0` as the adapter_version when creating connections and credentials, filtering connections, and retrieving adapter schemas in the Administrative API v3. Contact your account representative to enable.
 - **New:** The `metrics` and `metricsPaginated` GraphQL queries now accept a `searchTerms` argument, letting you filter metrics by multiple terms in a single request with correct pagination. Note: `search` and `searchTerms` cannot be combined, and a maximum of 20 terms is allowed.
