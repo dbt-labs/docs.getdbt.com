@@ -20,6 +20,23 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 
 For <Constant name="fusion_engine" /> updates, refer to the [v2 changelog](https://github.com/dbt-labs/dbt/blob/main/CHANGELOG-dbt.md).
 
+## October 2026
+- **New:** The jobs list API endpoint (`GET /api/v2/accounts/{account_id}/jobs/`) now accepts a `pk__in` query parameter, letting you retrieve up to 500 specific jobs by ID in a single request.
+- **New:** You can now specify `clickhouse_v0` as the adapter_version when creating connections and credentials, filtering connections, and retrieving adapter schemas in the Administrative API v3. Contact your account representative to enable.
+- **New:** The `metrics` and `metricsPaginated` GraphQL queries now accept a `searchTerms` argument, letting you filter metrics by multiple terms in a single request with correct pagination. Note: `search` and `searchTerms` cannot be combined, and a maximum of 20 terms is allowed.
+- **Enhancement:** Workspace @-mention queries now use server-side fuzzy matching instead of filtering a local list, returning better-ranked results for large repositories. The context file picker also prevents selecting stale results while a search is still in flight.
+- **Enhancement:** You can now add a `table` block type to `compose_report` reports to render query results as formatted, scrollable tables. Columns can be narrowed and reordered using the `columns` field, and the display caps at 50 rows on screen with a truncation notice for clipped results.
+- **Enhancement:** You can use the new transformation type badge on column cards to see how each column is derived.
+- **Enhancement:** The webhook subscription job picker now searches and paginates server-side. You see a search box with debounced filtering and scroll-to-load pagination instead of a slow or frozen dropdown when your account has many jobs.
+- **Enhancement:** The dbt State navigation option no longer carries a "Preview" badge. Incomplete projects (those without a repository or skipped setup) are also excluded from automatic project selection on the dbt State home page.
+- **Enhancement:** Billing admins now receive an email when an add-on trial transitions to the free monthly allowance plan instead of expiring outright. The email directs them to their account team.
+- **Enhancement:** The State Spend API response now includes allowance amount, consumed and remaining allowance, reset and end dates, and an `is_soft_blocked` flag indicating when dbt State activity is halted due to an exhausted allowance.
+- **Enhancement:** The GET, POST, and PATCH endpoints for Microsoft Entra applications now return `client_id` and `tenant_id` in their responses, giving you visibility into your Azure DevOps (ADO) integration configuration.
+- **Fix:** When the Wizard receives a malformed diff patch, it now displays a "Couldn't parse diff" error badge instead of crashing.
+- **Fix:** Charts with decimal data values (for example, 25.43 minutes) no longer push the y-axis name outside the visible canvas area. The axis gap is now calculated from rounded tick values.
+- **Fix:** The x-axis name, grid bottom margin, and legend centering on horizontal bar charts are now computed correctly so the axis label no longer overlaps the legend.
+- **Fix:** The Cost Insights dashboard no longer shows a perpetual loading spinner when partial cost data exists. You now see available cost data even when some rows have not been fully processed.
+
 ## September 2026
 
 - **Enhancement:** If a CI job can't find the commit for its deferral baseline, [SQL linting](/docs/deploy/continuous-integration#sql-linting) no longer fails the run. Instead, dbt shows a warning with the commit SHA it couldn't resolve and lints the entire project. To refresh the baseline, rerun the job you defer to.
