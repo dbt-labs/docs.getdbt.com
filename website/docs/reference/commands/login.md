@@ -4,12 +4,11 @@ sidebar_label: "login"
 id: "login"
 description: "Use dbt login to authenticate and unlock advanced features across dbt tools."
 intro_text: "Use dbt login to authenticate once and unlock advanced features across dbt tools."
-availability:
-  engine: v2
+availability: local_free
 ---
 
 :::info
-Available in <Constant name="dbt" /> v2.0 and later.
+Available in <Constant name="dbt" /> v1.13 and later.
 :::
 
 Run `dbt login` from the command line to unlock advanced dbt features. It'll open browser-based authentication where you can sign in to your existing <Constant name="dbt_platform" /> account or create a free one &mdash; no credit card required!
