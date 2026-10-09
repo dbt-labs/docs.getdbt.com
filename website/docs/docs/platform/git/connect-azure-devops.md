@@ -34,7 +34,7 @@ No matter which approach you take, you will need admins for <Constant name="dbt"
 
 ## Troubleshooting
 
-<Expandable alt_header="CI jobs don't trigger on pull requests"/>
+<Expandable alt_header="CI jobs don't trigger on pull requests" >
 
 If continuous integration (CI) jobs aren't triggered when you open pull requests in Azure DevOps, and you don't see an error in <Constant name="dbt" /> or Azure DevOps, try these checks:
 
