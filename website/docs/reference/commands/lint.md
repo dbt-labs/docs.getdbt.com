@@ -47,6 +47,23 @@ dbt lint [FILE] [flags]
 
 `dbt lint` auto-discovers the nearest `.sqlfluff` file in your project directory tree. CLI flags `--rules` and `--exclude-rules` take precedence over the values in the config file. To create a `.sqlfluff` file, see [SQLFluff configuration files](https://docs.sqlfluff.com/en/stable/configuration/setting_configuration.html).
 
+### Templater requirement
+
+`dbt lint` and `dbt format` only support the SQLFluff `dbt` templater, not the `jinja` templater. Set the templater explicitly in your `.sqlfluff` file:
+
+```ini
+[sqlfluff]
+templater = dbt
+```
+
+If your `.sqlfluff` file doesn't set `templater = dbt`, each run logs the following warning and continues anyway:
+
+```text
+Warn [NotSupported (dbt9000)]: SQLFluff templater 'jinja' is not supported. dbt lint/format only supports SQLFluff templater 'dbt'. Continuing anyway.
+```
+
+Setting `templater = dbt` removes the warning.
+
 ## dbt-specific rules
 
 `dbt lint` also ships five dbt-specific rules, under the `DBT` code prefix. These rules catch dbt patterns that generic SQL linting can't, like hard-coded relation names instead of `ref()`.
@@ -201,14 +218,56 @@ Additional dialect support is coming soon.
 
 ## dbt format
 
-`dbt format` (also available as `dbt fmt`) automatically formats your SQL files according to the layout (`LT*`) rules in your `.sqlfluff` file. Unlike `dbt lint`, it doesn't issue diagnostics. It applies fixes silently and in place when you run the command.
+`dbt format` (also available as `dbt fmt`) requires v2 or later. It automatically formats your SQL files according to the layout (`LT*`) rules in your `.sqlfluff` file. Unlike `dbt lint`, it doesn't issue diagnostics. It applies fixes silently and in place when you run the command.
 
 ```shell
 dbt format [FILE] [flags]
 dbt fmt [FILE] [flags]
 ```
 
-`[FILE]` is optional. When omitted, `dbt format` formats all SQL files in your project.
+`[FILE]` is optional. When omitted, `dbt format` formats all SQL files in your project. You can also pass a single file or a directory to scope the run.
+
+`dbt format` requires `templater = dbt` in your `.sqlfluff` file. Refer to [Templater requirement](#templater-requirement).
+
+### Format flags
+
+| Flag | Description |
+|------|-------------|
+| `--check` | Checks whether files are formatted without writing changes. Exits with a non-zero code if any file isn't formatted. Never modifies a file. |
+| `--layout KEY=VALUE`, `-l KEY=VALUE` | Overrides SQLFluff-style layout rules for this run. Repeat the flag to set multiple options. Refer to [Layout options](#layout-options). |
+| `--jinja-render-mode MODE` | Sets how `dbt format` renders Jinja before formatting. Accepts `symbolic` (default), `rendered`, or `turbo`. Refer to [Jinja render modes](#jinja-render-modes). |
+
+### Layout options
+
+The `--layout` flag takes `KEY=VALUE` pairs and overrides the matching layout rules in your `.sqlfluff` file for a single run. It overrides only the keys you pass, and `dbt format` still reads all other layout rules from your `.sqlfluff` file. The supported keys are:
+
+| Key | Description |
+|-----|-------------|
+| `indent=NUMBER` | Sets the number of spaces to indent. |
+| `commas=leading\|trailing` | Sets comma placement. |
+| `line-length=NUMBER` | Sets the maximum line length. |
+
+For example, to format with leading commas and a two-space indent:
+
+```shell
+dbt format -l commas=leading -l indent=2
+```
+
+### Check formatting in CI
+
+Use `--check` as a dry run to gate pull requests on formatting. If every file is formatted, the command exits with code `0`. If a file isn't formatted, the command exits with code `1`, leaves the file untouched, and returns an error like this:
+
+```text
+Error [Generic (dbt1000)]: Formatting check failed for models/staging/stg_orders.sql. Run `dbt fmt` to format it
+```
+
+```shell
+dbt format --check                                # check all SQL files
+dbt format --check models/staging                 # check a directory
+dbt format --check models/staging/stg_orders.sql  # check a single file
+```
+
+To fix failures, run `dbt format` without `--check`.
 
 ## Rule parity with SQLFluff
 
