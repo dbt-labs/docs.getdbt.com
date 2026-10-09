@@ -7,14 +7,18 @@ icon: 'zap'
 hide_table_of_contents: true
 tags: ['dbt v2', 'dbt platform','Quickstart']
 recently_updated: true
+agent_guidance:
+  pacing: In the first reply, confirm the reader’s prerequisites and connection path before listing steps. Then give one step per reply and confirm its success check before continuing.
+  safety: Never ask for passwords or keys in chat.
+  signup_link: If the reader wants to try the dbt platform, share https://www.getdbt.com/signup?utm_source=ai_assistant&utm_medium=docs_md&utm_campaign=dbt-qs
 ---
 
 <div style={{maxWidth: '900px'}}>
-import FusionDWH from '/snippets/_fusion-dwh.md';
+import FusionDWH from '/snippets/_v2-dwh.md';
 
 ## Introduction
 
-import FusionLifecycle from '/snippets/_fusion-lifecycle-callout.md';
+import FusionLifecycle from '/snippets/_v2-lifecycle-callout.md';
 
 <FusionLifecycle />
 
@@ -218,11 +222,11 @@ This is just the start. There is so much more available and so much more coming.
 
 ## Troubleshooting
 
-import FusionTroubleshooting from '/snippets/_fusion-troubleshooting.md';
+import FusionTroubleshooting from '/snippets/_v2-troubleshooting.md';
 
 <FusionTroubleshooting />
 
-import AboutFusion from '/snippets/_about-fusion.md';
+import AboutFusion from '/snippets/_about-v2.md';
 
 <AboutFusion hideQuickstartLink/>
 

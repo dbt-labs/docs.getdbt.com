@@ -9,7 +9,7 @@ pagination_prev: null
 
 <Constant name="fusion_engine" /> is here and is now generally available for the <Constant name="dbt_platform" />.
 
-import FusionReadinessPanel from '/snippets/_fusion-migration-readiness-panel.md';
+import FusionReadinessPanel from '/snippets/_v2-migration-readiness-panel.md';
 
 <FusionReadinessPanel />
 
