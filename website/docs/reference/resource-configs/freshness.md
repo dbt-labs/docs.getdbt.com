@@ -162,7 +162,7 @@ sources:
   - name: jaffle_shop
     tables:
       - name: orders
-         loaded_at_query: |
+        loaded_at_query: |
             select max(_sdc_batched_at) from (
               select * from {{ this }}
               where _sdc_batched_at > dateadd(day, -7, current_date)
