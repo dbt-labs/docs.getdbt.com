@@ -13,6 +13,7 @@ availability: all_users
 - [`snapshot` command](/reference/commands/snapshot)
 - [Choosing incremental models or snapshots](/best-practices/how-we-handle-cdc/2-choosing-incremental-or-snapshots) for guidance on using snapshots for CDC
 
+import BigQueryCheckColsCasing from '/snippets/_bigquery-check-cols-casing.md';
 import CourseCallout from '/snippets/_materialization-video-callout.md';
 import SnapshotCompiledSql from '/snippets/_snapshot-compiled-sql.md';
 import SnapshotFullRefresh from '/snippets/_snapshot-full-refresh.md';
@@ -294,6 +295,8 @@ The `check` strategy requires the following configurations:
 | Config | Description | Example |
 | ------ | ----------- | ------- |
 | check_cols | A list of columns to check for changes, or `all` to check all columns | `["name", "email"]` |
+
+<BigQueryCheckColsCasing />
 
 :::caution check_cols = 'all'
 
