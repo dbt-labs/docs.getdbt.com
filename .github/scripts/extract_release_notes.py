@@ -195,7 +195,7 @@ LIFECYCLE_PATTERNS: list[tuple[str, re.Pattern[str]]] = [
     ("alpha", re.compile(r"\balpha\b", re.IGNORECASE)),
     (
         "ga",
-        re.compile(r"\bgenerally available\b|\bgeneral availability\b|\(GA\)|\bGA\b"),
+        re.compile(r"\bgenerally available\b|\bgeneral availability\b|\(GA\)|\bGA\b", re.IGNORECASE),
     ),
 ]
 
