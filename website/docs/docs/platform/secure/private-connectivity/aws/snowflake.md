@@ -184,7 +184,11 @@ If an Internal Stage PrivateLink endpoint has been provisioned, your dbt environ
 
 1. Obtain the Internal Stage PrivateLink endpoint DNS from dbt Support. For example, `*.vpce-012345678abcdefgh-4321dcba.s3.us-west-2.vpce.amazonaws.com`.
 2. In the appropriate dbt project, navigate to **Orchestration** → **Environments**.
-3. In any environment that should use the dbt Internal Stage PrivateLink endpoint, set an **Extended Attribute** similar to the following:
+3. Open the environment that should use the dbt Internal Stage PrivateLink endpoint and set **Extended attributes**:
+   - On a deployment environment, set them on the [connection profile](/docs/platform/about-profiles).
+   - On a development environment, set them on the **General settings** page.
+
+   Use a value similar to the following:
 ```
 s3_stage_vpce_dns_name: '*.vpce-012345678abcdefgh-4321dcba.s3.us-west-2.vpce.amazonaws.com'
 ```
