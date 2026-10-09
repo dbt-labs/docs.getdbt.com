@@ -306,7 +306,7 @@ Archived release notes for <Constant name="dbt" /> from 2023
     ## :zap: General docs projects
 
     * Added the ability to collapse sections you’re not currently looking at. There were quite a few people who wanted this, and it bugged us too, so we were happy to get this shipped!
-    * Introduced the idea of [“Trusted” adapters](/docs/supported-data-platforms#types-of-adapters).
+    * Introduced the idea of [“Trusted” adapters](/docs/community-adapters).
 
     ## ☁ Cloud projects
 
