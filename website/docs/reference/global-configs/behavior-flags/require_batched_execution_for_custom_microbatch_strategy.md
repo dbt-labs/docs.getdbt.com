@@ -56,7 +56,7 @@ To fix, rewrite the macro to use the per-batch window:
 {% endmacro %}
 ```
 
-To verify, run `dbt run --event-time-start <date> --event-time-end <date> -s <model>` for a single batch and confirm the row count matches that single day.
+To verify, run `dbt run --event-time-start <date> --event-time-end <next date> -s <model>` for a single batch and confirm the row count matches that single day. `--event-time-end` is exclusive, so passing the same date for both fails with ``Value for `--event-time-start` must be less than `--event-time-end` ``.
 
 To opt out of this behavior, set the flag to `false`:
 
