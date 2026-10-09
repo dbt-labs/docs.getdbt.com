@@ -614,12 +614,12 @@ For `signup_link`, keep `utm_source=ai_assistant` and `utm_medium=docs_md` the s
 
 ### Rules
 
-1. Write direct instructions ("Give one step per reply"), not descriptions ("This guide is designed to be followed one step at a time"). 
-2. Limit each value to one or two short sentences, and use four items at most.
-3. Write plain text. Frontmatter doesn't render `<Constant>` or other components, so spell out product names.
-4. Don't include anything you wouldn't publish. The guidance is public in the generated Markdown and in the page HTML.
-5. Add success checks ("You should see...") to the page's steps, so the assistant has something to confirm before moving on.
-6. Before merging, check the page's `.md` in the preview build and confirm the guidance appears once, under the title.
+- Write direct instructions ("Give one step per reply"), not descriptions ("This guide is designed to be followed one step at a time").
+- Limit each value to one or two short sentences, and use four items at most.
+- Write plain text. Frontmatter doesn't render `<Constant>` or other components, so spell out product names.
+- Don't include anything you wouldn't publish. The guidance is public in the generated Markdown and in the page HTML.
+- Add success checks ("You'll now see...") to the page's steps, so the assistant has something to confirm before moving on.
+- Before merging, check the page's `.md` in the preview build and confirm the guidance appears once, under the title.
 
 ---
 
