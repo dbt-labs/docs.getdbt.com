@@ -117,7 +117,7 @@ Configure catalogs in order to:
 - Support cross-platform Mesh
 
 Notes:
-- Every Databricks catalog may optionally configure `table_format`. By default, this is set to `iceberg` for `catalog_type=unity`, and `default` for `hive_metastore`.
+- <VersionBlock lastVersion="1.99">Every Databricks catalog configures `table_format`, which accepts the values `default` and `iceberg`.</VersionBlock><VersionBlock firstVersion="2.0">Every Databricks catalog configures `table_format`. `type: unity` requires `iceberg`, and `type: hive_metastore` requires `default`.</VersionBlock>
 - On Databricks, `catalog_name` takes precedence over the `catalog` config when determining the model's top-level namespace.
 
 ## Configure catalog integration for Iceberg tables
@@ -134,7 +134,7 @@ Notes:
 catalogs:
   - name: unity_catalog
     type: unity
-    table_format: iceberg # optional
+    table_format: iceberg
     config:
       databricks:
         # optional

@@ -92,7 +92,7 @@ First, configure a catalog with `type: horizon` in `catalogs.yml`:
 catalogs:
   - name: my_horizon_catalog
     type: horizon
-    table_format: iceberg  # optional - default
+    table_format: iceberg
     config:
       snowflake:
         # optional - specify additional Snowflake-specific configurations
