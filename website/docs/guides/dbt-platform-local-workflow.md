@@ -381,7 +381,7 @@ Auto-deferral is also on by default. When a [`dbt_cloud.yml`](/reference/dbt_clo
 
 - **In the VS Code extension:** Disable auto-deferral in the extension settings. Search for `Dbt > Flag: Defer` and uncheck the option:
 
-    <Lightbox src="/img/fusion/vsce-defer-settings.png"  title="dbt VS Code extension deferral settings" />
+    <Lightbox src="/img/v2/vsce-defer-settings.png"  title="dbt VS Code extension deferral settings" />
 
 - **On the CLI:** Pass `--no-defer` to any command to skip both deferral and the publication artifact download:
 

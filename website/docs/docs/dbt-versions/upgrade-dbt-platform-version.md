@@ -58,7 +58,7 @@ dbt Labs has introduced the new [<Constant name="fusion_engine" />](/docs/introd
     <small> _Adapter lifecycle can differ between the <Constant name="dbt_platform" /> and local development &mdash; an adapter can reach GA in the dbt platform before it reaches GA for local use._ </small> <br />
 - Once you upgrade your development environment(s) to `v2 Stable`, every user will have to restart the IDE.
 
-  <Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/platform-upgrading-dbt-versions/upgrade-fusion.png" width="90%" title="Upgrade to v2 in your environment settings." />
+  <Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/platform-upgrading-dbt-versions/upgrade-v2.png" width="90%" title="Upgrade to v2 in your environment settings." />
 
 ### Upgrading environments to <Constant name="fusion" />
 
