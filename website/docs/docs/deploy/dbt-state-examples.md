@@ -362,7 +362,7 @@ Done. PASS=0 WARN=0 ERROR=0 SKIP=0 NO-OP=0 REUSED=1 TOTAL=1
 
 - [About dbt State](/docs/deploy/dbt-state-about)
 - [Setting up dbt State](/docs/deploy/dbt-state-setup)
-- [Non-interactive environment setup for dbt State](/docs/deploy/dbt-state-cicd)
+- [Setting up authentication for non-interactive environments](/docs/deploy/dbt-state-cicd)
 - [Configuring deferral in dbt State](/docs/deploy/dbt-state-deferral)
 - [Monitoring dbt State activity in dbt platform](/docs/deploy/dbt-state-interface)
 - [Migrating from state-aware orchestration to dbt State](/docs/deploy/dbt-state-migration)
