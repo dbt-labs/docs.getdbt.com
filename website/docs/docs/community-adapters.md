@@ -17,9 +17,9 @@ We welcome [contributions to an existing adapter](/docs/contribute-dbt-adapters#
 
 To build a v1 adapter, refer to [Build, test, document, and promote adapters](/guides/adapter-creation). To contribute a v2 adapter, refer to [Contribute a dbt v2 adapter](/guides/adapter-creation-v2?step=1).
 
-import AdaptersTrusted from '/snippets/_adapters-trusted.md';
+import CommunityAdapters from '/snippets/_community-adapters.md';
 
-<AdaptersTrusted />
+<CommunityAdapters />
 
 ### Additional adapters
 
