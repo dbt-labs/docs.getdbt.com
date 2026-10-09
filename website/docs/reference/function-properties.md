@@ -4,9 +4,17 @@ title: Function properties
 
 <VersionCallout version="1.11" /> 
 
-Function properties can be declared in `.yml` files under a `functions` key.
+Function properties are the YAML properties you define for a [user-defined function (UDF)](/docs/build/udfs) in your project. In a properties YAML file (for example, `functions/is_positive_int.yml`), you name the function and specify information such as its description, configuration, arguments, and return type.
 
-We recommend that you put them in the `functions/` directory. You can name these files `schema.yml` or `whatever_you_want.yml`, and nest them in subfolders within that directory.
+The properties YAML file works with the function body you define in a corresponding SQL, Python, or JavaScript file under `functions/`. When you run `dbt build`, dbt uses both files together to generate the `CREATE FUNCTION` statement.
+
+Declare function properties in a properties YAML file under the `functions:` key, with one list entry per function.
+
+Define properties (including `config`) per function, under each `- name: ...` entry. If you declare multiple functions, repeat the relevant properties for each function. You can't declare a single `config` block at the `functions` level.
+
+If multiple functions share the same `config` values, you can use YAML anchors and aliases to avoid repeating the same block.
+
+We recommend that you put them in the `functions/` directory. You can name these files `properties.yml` or `whatever_you_want.yml`, and nest them in subfolders within that directory.
 
 <File name='functions/<filename>.yml'>
 
@@ -35,7 +43,7 @@ functions:
       data_type: <string> # required, warehouse-specific
       description: <markdown_string> # optional
     [overloads](/reference/resource-properties/overloads): # optional, SQL UDFs (Snowflake and Postgres) and Python UDFs (Snowflake), available in v1.12+
-      - defined_in: <string> # required, name of the SQL or Python file containing this overload's body
+      - defined_in: <string> # required, name of the SQL, Python, or JavaScript file containing this overload's body
         arguments: # optional
           - name: <string> # required if arguments is specified
             data_type: <string> # required if arguments is specified, warehouse-specific
@@ -53,7 +61,7 @@ functions:
 
 ## Example
 
-<File name='functions/schema.yml'>
+<File name='functions/is_positive_int.yml'>
 
 ```yml
 functions:
