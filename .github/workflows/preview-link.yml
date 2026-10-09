@@ -11,12 +11,19 @@ on:
       - 'website/docs/reference/**'
 
 permissions:
-  contents: write
+  contents: read
+  deployments: read
   pull-requests: write
+
+# A newer push makes the older run's preview links stale, so cancel it
+concurrency:
+  group: preview-link-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
 
 jobs:
   update-pr-description:
     runs-on: ubuntu-latest
+    timeout-minutes: 20
 
     steps:
       - name: Checkout code
@@ -24,146 +31,149 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Install necessary tools
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y jq curl
-
-      - name: Generate Vercel deployment URL
-        id: vercel_url
-        run: |
-          # Get the branch name
-          BRANCH_NAME="${{ github.head_ref }}"
-
-          # Convert to lowercase
-          BRANCH_NAME_LOWER=$(echo "$BRANCH_NAME" | tr '[:upper:]' '[:lower:]')
-
-          # Replace non-alphanumeric characters with hyphens
-          BRANCH_NAME_SANITIZED=$(echo "$BRANCH_NAME_LOWER" | sed 's/[^a-z0-9]/-/g')
-
-          # Construct the deployment URL
-          DEPLOYMENT_URL="https://docs-getdbt-com-git-${BRANCH_NAME_SANITIZED}-dbt-labs.vercel.app"
-
-          echo "deployment_url=$DEPLOYMENT_URL" >> $GITHUB_OUTPUT
-
-      - name: Wait for deployment to be accessible
-        id: wait_for_deployment
-        run: |
-          DEPLOYMENT_URL="${{ steps.vercel_url.outputs.deployment_url }}"
-          echo "Waiting for deployment at $DEPLOYMENT_URL to become accessible..."
-
-          MAX_ATTEMPTS=60  # Wait up to 10 minutes
-          SLEEP_TIME=10    # Check every 10 seconds
-          ATTEMPTS=0
-
-          while [ $ATTEMPTS -lt $MAX_ATTEMPTS ]; do
-            STATUS_CODE=$(curl -s -o /dev/null -w "%{http_code}" "$DEPLOYMENT_URL")
-            if [ "$STATUS_CODE" -eq 200 ]; then
-              echo "Deployment is accessible."
-              break
-            else
-              echo "Deployment not yet accessible (status code: $STATUS_CODE). Waiting..."
-              sleep $SLEEP_TIME
-              ATTEMPTS=$((ATTEMPTS + 1))
-            fi
-          done
-
-          if [ $ATTEMPTS -eq $MAX_ATTEMPTS ]; then
-            echo "Deployment did not become accessible within the expected time."
-            exit 1
-          fi  
-
-      - name: Get changed files
-        id: files
-        run: |
-          CHANGED_FILES=$(git diff --name-only ${{ github.event.pull_request.base.sha }} ${{ github.sha }} | grep -E '^website/docs/(docs|best-practices|guides|faqs|reference)/.*\.md$' || true)
-          if [ -z "$CHANGED_FILES" ]; then
-            echo "No documentation files were changed."
-            echo "changed_files=" >> $GITHUB_OUTPUT
-          else
-            CHANGED_FILES=$(echo "$CHANGED_FILES" | tr '\n' ' ')
-            echo "changed_files=$CHANGED_FILES" >> $GITHUB_OUTPUT
-          fi
-
-      - name: Generate file preview links
-        id: links
-        run: |
-          DEPLOYMENT_URL="${{ steps.vercel_url.outputs.deployment_url }}"
-          CHANGED_FILES="${{ steps.files.outputs.changed_files }}"
-
-          if [ -z "$CHANGED_FILES" ]; then
-            echo "No changed files found in the specified directories."
-            LINKS="No documentation files were changed."
-          else
-            LINKS=""
-            # Convert CHANGED_FILES back to newline-separated for processing
-            CHANGED_FILES=$(echo "$CHANGED_FILES" | tr ' ' '\n')
-            for FILE in $CHANGED_FILES; do
-              # Remove 'website/docs/' prefix
-              FILE_PATH="${FILE#website/docs/}"
-              # Remove the .md extension
-              FILE_PATH="${FILE_PATH%.md}"
-
-              # Construct the full URL
-              FULL_URL="$DEPLOYMENT_URL/$FILE_PATH"
-              LINKS="$LINKS\n- $FULL_URL"
-            done
-          fi
-
-          # Properly set the multi-line output
-          echo "links<<EOF" >> $GITHUB_OUTPUT
-          echo -e "$LINKS" >> $GITHUB_OUTPUT
-          echo "EOF" >> $GITHUB_OUTPUT
-
-      - name: Update PR description with deployment links
+      - name: Update PR description with preview links
         uses: actions/github-script@d7906e4ad0b1822421a7e6a35d5ca353c962f410 # actions/github-script@v6
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            const prNumber = context.issue.number;
+            const fs = require('fs');
+            const path = require('path');
+            const { execFileSync } = require('child_process');
 
-            // Fetch the current PR description
+            const { owner, repo } = context.repo;
+            const pr = context.payload.pull_request;
+            const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+            // 1. Wait for the Vercel bot's GitHub deployment on this commit to succeed.
+            //    Returns that build's own URL (it changes every build), used only as a fallback.
+            async function waitForDeployment() {
+              const maxAttempts = 60; // 60 x 15s = 15 minutes
+              for (let i = 0; i < maxAttempts; i++) {
+                const { data: deployments } = await github.rest.repos.listDeployments({
+                  owner,
+                  repo,
+                  sha: pr.head.sha,
+                  per_page: 100,
+                });
+                const vercel = deployments.filter((d) => d.creator?.login === 'vercel[bot]');
+
+                for (const deployment of vercel) {
+                  const { data: statuses } = await github.rest.repos.listDeploymentStatuses({
+                    owner,
+                    repo,
+                    deployment_id: deployment.id,
+                    per_page: 1, // newest first
+                  });
+                  const latest = statuses[0];
+                  if (latest?.state === 'success') {
+                    return latest.environment_url || latest.target_url;
+                  }
+                  if (latest && ['failure', 'error'].includes(latest.state)) {
+                    core.warning(`Vercel deployment ${latest.state}. See ${latest.target_url}`);
+                    return null;
+                  }
+                }
+
+                core.info(`Deployment not ready yet (attempt ${i + 1}/${maxAttempts}). Waiting...`);
+                await sleep(15000);
+              }
+              core.warning('Vercel deployment did not finish within 15 minutes.');
+              return null;
+            }
+
+            // 2. Work out each page's URL. Docusaurus uses frontmatter `slug`, then `id`, then the file name.
+            function readFrontmatter(file) {
+              const text = fs.readFileSync(file, 'utf8');
+              const match = text.match(/^---\r?\n([\s\S]*?)\r?\n---/);
+              const fm = {};
+              if (!match) return fm;
+              for (const line of match[1].split(/\r?\n/)) {
+                const m = line.match(/^(id|slug):\s*(.+?)\s*$/);
+                if (m) fm[m[1]] = m[2].replace(/^["']|["']$/g, '');
+              }
+              return fm;
+            }
+
+            function pageRoute(file) {
+              const rel = file.replace(/^website\/docs\//, '');
+              const dir = path.posix.dirname(rel);
+              const base = path.posix.basename(rel).replace(/\.mdx?$/, '');
+              const { id, slug } = readFrontmatter(file);
+
+              if (slug) {
+                if (slug.startsWith('/')) return slug.replace(/\/$/, '');
+                return path.posix.join(dir, slug);
+              }
+
+              const name = id || base;
+              const dirName = path.posix.basename(dir);
+              // index.md, README.md, and a file named after its folder all map to the folder URL
+              if (['index', 'readme'].includes(name.toLowerCase()) || name === dirName) {
+                return dir === '.' ? '' : dir;
+              }
+              return dir === '.' ? name : `${dir}/${name}`;
+            }
+
+            // The stable branch alias is <project>-git-<branch>-<team>.vercel.app. Fork PRs
+            // get a `fork-<owner>-` prefix. Vercel truncates and hashes labels over 63
+            // characters, and that hash can't be computed, so those use the build URL instead.
+            function branchAliasUrl() {
+              const sanitize = (v) => v.toLowerCase().replace(/[^a-z0-9]/g, '-');
+              const isFork = pr.head.repo.full_name !== pr.base.repo.full_name;
+              const branch = sanitize(
+                isFork ? `fork-${pr.head.repo.owner.login}-${pr.head.ref}` : pr.head.ref,
+              );
+              const label = `docs-getdbt-com-git-${branch}-dbt-labs`;
+              return label.length <= 63 ? `https://${label}.vercel.app` : null;
+            }
+
+            const buildUrl = await waitForDeployment();
+            if (!buildUrl) {
+              core.warning('Skipping PR description update: Vercel deployment not ready.');
+              return;
+            }
+            const baseUrl = (branchAliasUrl() || buildUrl).replace(/\/$/, '');
+            core.info(`Using preview URL: ${baseUrl}`);
+
+            // Only added or modified pages. Deleted pages have no preview.
+            const changedFiles = execFileSync(
+              'git',
+              ['diff', '--name-only', '--diff-filter=AMR', pr.base.sha, pr.head.sha],
+              { encoding: 'utf8' },
+            )
+              .split('\n')
+              .filter((f) => /^website\/docs\/(docs|best-practices|guides|faqs|reference)\/.*\.mdx?$/.test(f));
+
+            const links = changedFiles.length
+              ? changedFiles.map((f) => `- ${baseUrl}/${pageRoute(f)}`.replace(/\/$/, '')).join('\n')
+              : 'No documentation files were changed.';
+
+            // 3. Replace the preview block in the PR description
             const { data: pullRequest } = await github.rest.pulls.get({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              pull_number: prNumber,
+              owner,
+              repo,
+              pull_number: pr.number,
             });
 
-            let body = pullRequest.body || '';
-
-            // Define the markers
             const startMarker = '<!-- vercel-deployment-preview -->';
             const endMarker = '<!-- end-vercel-deployment-preview -->';
 
-            // Get the deployment URL and links from environment variables
-            const deploymentUrl = process.env.DEPLOYMENT_URL;
-            const links = process.env.LINKS;
-
-            // Build the deployment content without leading whitespace
             const deploymentContent = [
-              `${startMarker}`,
+              startMarker,
               '---',
               '🚀 Deployment available! Here are the direct links to the updated files:',
               '',
-              `${links}`,
+              links,
               '',
-              `${endMarker}`
+              endMarker,
             ].join('\n');
 
-            // Remove existing deployment content between markers
             const regex = new RegExp(`${startMarker}[\\s\\S]*?${endMarker}`, 'g');
-            body = body.replace(regex, '').trim();
+            const body = `${(pullRequest.body || '').replace(regex, '').trim()}\n\n${deploymentContent}`;
 
-            // Append the new deployment content
-            body = `${body}\n\n${deploymentContent}`;
-
-            // Update the PR description
             await github.rest.pulls.update({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              pull_number: prNumber,
-              body: body,
+              owner,
+              repo,
+              pull_number: pr.number,
+              body,
             });
-        env:
-          DEPLOYMENT_URL: ${{ steps.vercel_url.outputs.deployment_url }}
-          LINKS: ${{ steps.links.outputs.links }}
