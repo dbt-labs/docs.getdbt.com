@@ -200,7 +200,7 @@ The argument order depends on the engine that runs your model:
 </SimpleTable>
 
 :::info  Argument order differs by engine
-Athena SQL puts the column first. Spark puts the bucket count first. If you mix them up, your model fails or buckets the wrong thing.
+Athena SQL puts the column first. Spark puts the bucket count first. Mixing them up causes the model to fail or bucket the wrong column.
 :::
 
 <Tabs>
