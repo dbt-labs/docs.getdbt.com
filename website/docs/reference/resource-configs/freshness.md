@@ -140,14 +140,15 @@ To calculate freshness for wildcard tables, configure `loaded_at_field` to use q
 ```yml
 sources:
   - name: jaffle_shop
-    # Cast a date field to timestamp
-    loaded_at_field: "completed_date::timestamp"
+    config:
+      # Cast a date field to timestamp
+      loaded_at_field: "completed_date::timestamp"
 
     tables:
       - name: orders
-        # Cast a non-UTC timestamp to UTC
-        loaded_at_field: "convert_timezone('Australia/Sydney', 'UTC', created_at_local)"
         config:
+          # Cast a non-UTC timestamp to UTC
+          loaded_at_field: "convert_timezone('Australia/Sydney', 'UTC', created_at_local)"
           freshness:
             warn_after: {count: 12, period: hour}
 ```
@@ -174,7 +175,7 @@ sources:
 
 </VersionBlock>
 
-<VersionBlock lastVersion="1.9">
+<VersionBlock lastVersion="1.99">
 
 `loaded_at_query` is available in dbt v1.10 and later.
 
