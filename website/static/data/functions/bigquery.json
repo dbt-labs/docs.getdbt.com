@@ -2,7 +2,7 @@
   "_meta": {
     "platform": "bigquery",
     "platform_name": "BigQuery",
-    "count": 408
+    "count": 412
   },
   "functions": [
     {
@@ -507,7 +507,7 @@
       "category": "Built-in",
       "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/time-series-functions#date_bucket",
       "preview_status": "GA",
-      "fusion_typecheck": false
+      "fusion_typecheck": true
     },
     {
       "name": "DATE_DIFF",
@@ -556,7 +556,7 @@
       "category": "Built-in",
       "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/time-series-functions#datetime_bucket",
       "preview_status": "GA",
-      "fusion_typecheck": false
+      "fusion_typecheck": true
     },
     {
       "name": "DATETIME_DIFF",
@@ -937,6 +937,13 @@
       "fusion_typecheck": true
     },
     {
+      "name": "IS_ACYCLIC",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/graph-sql-functions#is_acyclic",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "IS_INF",
       "category": "Built-in",
       "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/mathematical_functions#is_inf",
@@ -949,6 +956,20 @@
       "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/mathematical_functions#is_nan",
       "preview_status": "GA",
       "fusion_typecheck": true
+    },
+    {
+      "name": "IS_SIMPLE",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/graph-sql-functions#is_simple",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "IS_TRAIL",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/graph-sql-functions#is_trail",
+      "preview_status": "GA",
+      "fusion_typecheck": false
     },
     {
       "name": "JSON_ARRAY",
@@ -1567,6 +1588,13 @@
       "fusion_typecheck": false
     },
     {
+      "name": "OBJ.LIST",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/objectref_functions#objlist",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "OBJ.MAKE_REF",
       "category": "Built-in",
       "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/objectref_functions#objmake_ref",
@@ -1704,7 +1732,7 @@
       "category": "Built-in",
       "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/range-functions#range",
       "preview_status": "GA",
-      "fusion_typecheck": false
+      "fusion_typecheck": true
     },
     {
       "name": "RANGE_BUCKET",
@@ -2670,7 +2698,7 @@
       "category": "Built-in",
       "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/time-series-functions#timestamp_bucket",
       "preview_status": "GA",
-      "fusion_typecheck": false
+      "fusion_typecheck": true
     },
     {
       "name": "TIMESTAMP_DIFF",
@@ -2782,7 +2810,7 @@
       "category": "Built-in",
       "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/utility-functions#typeof",
       "preview_status": "GA",
-      "fusion_typecheck": false
+      "fusion_typecheck": true
     },
     {
       "name": "UNICODE",

@@ -18,7 +18,7 @@ Begin your dbt journey by choosing how you want to develop:
 
 <Constant name="dbt" /> provides a fully managed environment to develop, run, and deploy dbt projects—with CI/CD, documentation hosting, and more. Learn more about [<Constant name="dbt" /> features](/docs/platform/about-platform/dbt-platform-features) and [start your free trial](https://www.getdbt.com/signup/) today. 
 
-The <Constant name="fusion_engine" /> adds managed execution and a unified development experience so you can focus on building rather than infrastructure.
+<Constant name="fusion_engine" /> adds managed execution and a unified development experience so you can focus on building rather than infrastructure.
 
 Choose your warehouse to get started with a quickstart:
 
@@ -86,18 +86,16 @@ When you install dbt into your Windows, macOS, or Linux environment, you get com
 
 You can use self-hosted tools with or without a <Constant name="dbt_platform" /> account. With an account, the VS Code extension and <Constant name="platform_cli" /> sync with your platform project for CI/CD, documentation, and more. Without an account, you run dbt entirely on your own infrastructure.
 
-Develop with a self-hosted installation using the <Constant name="fusion_engine" /> or <Constant name="core" /> engine.
-
 <div className="grid--3-col">
 
 <Card
-    title="dbt Fusion engine from a manual install"
-    body="Learn how to install dbt Fusion and set up a project."
+    title="Self-hosted dbt v2 from a manual install"
+    body="Learn how to install self-hosted v2 and set up a project."
     link="/guides/dbt?step=2"
     icon="dbt-bit"/>
 <Card
-    title="dbt Core from a manual install"
-    body="Learn how to install dbt Core and set up a project."
+    title="Self-hosted dbt v1 from a manual install"
+    body="Learn how to install self-hosted v1 and set up a project."
     link="/guides/manual-install"
     icon="dbt-bit"/>
 
@@ -108,25 +106,14 @@ Develop with a self-hosted installation using the <Constant name="fusion_engine"
     icon="duckdb-seeklogo"/>
 </div>
 
-## dbt Wizard
 
-[<Constant name="wizard" />](/docs/platform/wizard-overview) is an AI agent purpose-built for analytics engineering. It uses dbt's [native metadata engine](/docs/dbt-ai/about-dbt-ai) — a structured index of your project's lineage, model health, tests, and semantic definitions — to build, refactor, validate, and document your project grounded in full project context.
+## Connect your AI to your data
 
-<div className="grid--3-col">
+You don't have to choose between learning dbt and using AI &mdash; you can absolutely pair them from day one:
 
-<Card
-    title="dbt Wizard in the dbt platform"
-    body="Use dbt Wizard in the Studio IDE or home app to build and refactor models from natural language, generate tests and docs, and validate changes against your warehouse."
-    link="/docs/dbt-ai/wizard-ide"
-    icon="dbt-copilot"/>
-
-<Card
-    title="dbt Wizard from your terminal"
-    body="Install the dbt Wizard CLI to run the agent locally against any dbt project — with or without a dbt platform plan. Start with a free trial using dbt managed AI, or bring your own provider key."
-    link="/docs/dbt-ai/wizard-quickstart"
-    icon="dbt-copilot"/>
-
-</div>
+- Use the <Constant name="wizard" /> and ask it to build, refactor, or document a model in natural language, grounded in your project's real lineage and tests. [Get started with <Constant name="wizard" />](/docs/dbt-ai/wizard-quickstart).
+- Set up the dbt MCP server to connect to Claude, Cursor, or another AI tool to query your project, run dbt commands, and pull metrics directly. [Connect the dbt MCP server](/docs/dbt-ai/about-mcp).
+- Connect to the Fivetran context layer to give any AI tool richer context about your data, so its answers are grounded in what your data actually means. [Explore the context layer](https://fivetran.com/docs/context-layer).
 
 ## Related docs
 

@@ -18,11 +18,11 @@ import CopilotWizardDifferences from '/snippets/_copilot-wizard-diff.md';
 
 ## Explore dbt Wizard and AI
 
-<div style={{maxWidth: '1200px'}} className="grid--2-col">
+<div style={{maxWidth: '1200px'}} className="grid--3-col">
 
 <Card
     title="About dbt Wizard"
-    body="Purpose-built AI for governed data development in the dbt platform and CLI."
+    body="Purpose-built AI for governed data development in dbt platform, Desktop, and CLI."
     link="/docs/platform/wizard-overview"
     icon="wizard"/>    
 
@@ -37,6 +37,13 @@ import CopilotWizardDifferences from '/snippets/_copilot-wizard-diff.md';
     body="AI is on by default in your dbt platform account. Use dbt Wizard for governed dbt data development and dbt Copilot for inline AI assistance."
     link="/docs/platform/wizard-platform"
     icon="wizard"/>
+
+<Card
+    title="Wizard Desktop"
+    body="A native app for data authors and analysts. View rich data visualizations, data diffs, lineage, and more to get to your results faster than ever before."
+    link="/docs/dbt-ai/wizard-desktop"
+    icon="wizard"/>
+
 
 <Card
     title="Move to dbt Wizard"

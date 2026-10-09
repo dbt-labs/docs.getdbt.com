@@ -18,7 +18,7 @@ Every time a job runs, state-aware orchestration automatically determines which 
 
 </IntroText>
 
-import FusionLifecycle from '/snippets/_fusion-lifecycle-callout.md';
+import FusionLifecycle from '/snippets/_v2-lifecycle-callout.md';
 import SaoDeprecated from '/snippets/_sao-deprecated.md';
 
 <SaoDeprecated />
@@ -28,7 +28,7 @@ import SaoDeprecated from '/snippets/_sao-deprecated.md';
 State-aware orchestration saves you compute costs and reduces runtime because when a job runs, it checks for new records and only builds the models that will change.
 
 
-<Lightbox src="/img/docs/deploy/sao.gif" title="Fusion powered state-aware orchestration" />
+<Lightbox src="/img/docs/deploy/sao.gif" title="dbt v2 powered state-aware orchestration" />
 
 We built <Constant name="dbt" />'s state-aware orchestration on these four core principles:
 
@@ -59,7 +59,7 @@ Concurrent job handling works differently in dbt State. For a full list of behav
 
 If two separate jobs both depend on the same downstream model (for example, `model_ab`) and both detect upstream changes (`updates_on = any`), `model_ab` could run twice &mdash; once for each job. However, if `model_ab` was already built and nothing has changed since that build, neither job will rebuild it. Instead, both jobs will reuse the existing version instead of rebuilding.
 
-Under state-aware orchestration, all jobs read and write from the same shared state and build a model only when either the code or data state has changed. This means that each job individually evaulates whether a model needs rebuilding based on the model’s compiled code and upstream data state.
+Under state-aware orchestration, all jobs read and write from the same shared state and build a model only when either the code or data state has changed. This means that each job individually evaluates whether a model needs rebuilding based on the model’s compiled code and upstream data state.
 
 What happens when jobs overlap:
 
@@ -116,7 +116,7 @@ To enable Efficient testing:
 
 1. From the main menu, go to **Orchestration** > **Jobs**. 
 2. Select your deploy job. Go to your job settings and click **Edit**. 
-3. Under **Enable Fusion cost optimization features**, expand **More options**.
+3. Under **Enable dbt v2 cost optimization features**, expand **More options**.
 4. Select **Efficient testing**. This feature is disabled by default.
 5. Click **Save**.
 

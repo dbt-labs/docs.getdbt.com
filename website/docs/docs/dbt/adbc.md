@@ -1,5 +1,5 @@
 ---
-title: "Arrow ADBC and Fusion"
+title: "Arrow ADBC and dbt v2"
 id: "adbc"
 unlisted: true
 
@@ -13,7 +13,7 @@ This document provides technical guidance for dbt partners and vendors on how to
 
 ## Why <Constant name="fusion" /> uses ADBC
 
-The <Constant name="fusion_engine" /> represents a major evolution in the dbt engine with minimal changes to the authoring layer. Built in Rust, <Constant name="fusion" /> delivers speed, language understanding, and seamless integration with numerous data warehouses. A key aspect of the new engine is its adoption of ADBC &mdash; a modern, open standard from the Apache Arrow project that simplifies columnar data interchange across platforms.
+<Constant name="fusion_engine" /> represents a major evolution in the dbt engine with minimal changes to the authoring layer. Built in Rust, <Constant name="fusion" /> delivers speed, language understanding, and seamless integration with numerous data warehouses. A key aspect of the new engine is its adoption of ADBC &mdash; a modern, open standard from the Apache Arrow project that simplifies columnar data interchange across platforms.
 
 Historically, <Constant name="core" />  adapters required bespoke connection logic for each data platform. <Constant name="fusion" /> improves on this model with a unified ADBC driver layer that offers several key advantages:
 

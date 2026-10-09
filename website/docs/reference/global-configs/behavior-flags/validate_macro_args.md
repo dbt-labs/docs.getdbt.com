@@ -6,7 +6,7 @@ sidebar_label: "validate macro args"
 
 
 
-| validate_macro_args | <Constant name="dbt" /> **Latest** | <Constant name="core" /> |
+| validate_macro_args | <Constant name="dbt" /> **v1 Latest** | <Constant name="core" /> |
 |---|---|---|
 | Introduced | 2025.03 | 1.10.0 |
 | Matured (default → `true`) | 2026.09 | 1.12.0 |
@@ -14,7 +14,7 @@ sidebar_label: "validate macro args"
 
 <br />
 
-dbt validates macro arguments using the `validate_macro_args` flag. Starting in <Constant name="core" /> v1.12, this flag defaults to `true`.
+dbt validates macro arguments using the `validate_macro_args` flag. Starting in <Constant name="dbt" /> v1.12, this flag defaults to `true`.
 
 In the past, dbt didn't enforce a standard vocabulary for the [`type`](/reference/resource-properties/arguments#type) field on macro arguments in YAML. Because of this, the `type` field was used for documentation only, and dbt didn't check that:
 - the argument names matched those in your macro

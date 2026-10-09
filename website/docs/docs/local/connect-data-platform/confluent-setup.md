@@ -1,8 +1,8 @@
 ---
-title: "Connect Confluent Cloud to dbt Core"
+title: "Connect Confluent Cloud to dbt v1"
 sidebar_label: "Confluent Cloud"
 id: "confluent-setup"
-description: "Set up dbt Core with Confluent Cloud for Apache Flink using the dbt-confluent adapter."
+description: "Set up dbt v1 with Confluent Cloud for Apache Flink using the dbt-confluent adapter."
 meta:
   maintained_by: Confluent
   authors: "Confluent"

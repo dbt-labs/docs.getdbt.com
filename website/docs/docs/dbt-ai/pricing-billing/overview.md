@@ -18,7 +18,7 @@ Learn how <Constant name="wizard" /> usage is metered and how model access works
 
 This page covers which AI models <Constant name="wizard" /> can use and how usage is priced. To start a trial, add a credit card, or set a spend limit, refer to [Trial and billing](/docs/dbt-ai/pricing-billing/trial-and-billing).
 
-Get started with free dbt-managed usage credits &mdash; monthly usage credits included for Enterprise and Enterprise+ plans, or a 30-day free trial with $100 in credits on all other plans.
+Get started with free dbt-managed usage credits. Every credit balance is _per account, not per user_, which means everyone on your account shares the same pool. Enterprise and Enterprise+ accounts get monthly usage credits, and all other plans get a 30-day free trial with $100 in credits.
 
 There are two ways to pay for AI usage: let dbt Labs handle the models and the billing, or bring your own provider key. Here's how they compare:
 
@@ -43,7 +43,7 @@ These four terms come up on every <Constant name="wizard" /> billing page:
 | Term | What it means |
 |---|---|
 | Token | The unit of AI model usage. How many tokens you use, and the rate you pay for them, depends on the model, the context window, the length and complexity of your prompt, and the size of the response |
-| Usage credits | The free balance included with your plan &mdash; trial credits on Developer and Starter, or monthly credits on Enterprise and Enterprise+. Scoped to <Constant name="wizard" /> only |
+| Usage credits | The free balance included with your plan, shared by everyone on the account, whether thats trial credits on Developer and Starter, or monthly credits on Enterprise and Enterprise+. Scoped to <Constant name="wizard" /> only |
 | Consumption pool | Your overall dbt <Term id="managed" /> usage balance, including any pool you purchase once your credits run out. A purchased pool covers both <Constant name="wizard" /> and dbt State. Shown as **Consumption pool** in **Billing & Usage** |
 | Spend limit | The maximum dbt <Term id="managed" /> usage your account can consume in a billing period |
 </SimpleTable>

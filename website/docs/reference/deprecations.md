@@ -33,9 +33,9 @@ The `--no-partial-parse` flag ensures that even deprecations only picked up duri
 
 :::note <Constant name="fusion" /> and `dbt parse`
 
-When you use the <Constant name="fusion_engine" />, omit `--no-partial-parse` from the command above. That flag is deprecated in <Constant name="fusion" /> and may log deprecation warning `dbt1700`. Run `dbt parse --show-all-deprecations` without `--no-partial-parse`.
+When you use <Constant name="fusion_engine" />, omit `--no-partial-parse` from the command above. That flag is deprecated in <Constant name="fusion" /> and may log deprecation warning `dbt1700`. Run `dbt parse --show-all-deprecations` without `--no-partial-parse`.
 
-For more information, refer to [Deprecated flags](/docs/dbt-versions/dbt-upgrade/upgrading-to-v2#deprecated-flags) in the guide to upgrading to the <Constant name="fusion_engine" />.
+For more information, refer to [Deprecated flags](/docs/dbt-versions/dbt-upgrade/upgrading-to-v2#deprecated-flags) in the guide to upgrading to <Constant name="fusion_engine" />.
 
 :::
 
@@ -92,7 +92,7 @@ In <Constant name="fusion" />, behavior differs from <Constant name="core" />:
 - The `Deprecations` group may not silence all deprecation-style warnings. Prefer the specific event name from your logs (for example, `SemanticModelDeprecated`).
 - Some deprecated configs are hard errors in <Constant name="fusion" /> and cannot be silenced. You must fix them.
 
-For more information about how <Constant name="fusion" /> handles `warn_error_options`, supported names, and hard-error cases, refer to [<Constant name="fusion" /> behavior and warning codes](/reference/global-configs/warnings#fusion-behavior-and-warning-codes).
+For more information about how <Constant name="fusion" /> handles `warn_error_options`, supported names, and hard-error cases, refer to [<Constant name="fusion" /> behavior and warning codes](/reference/global-configs/warnings#dbt-v2-behavior-and-warning-codes).
 
 </VersionBlock>
 
@@ -299,7 +299,7 @@ This warning is displayed when you specify a config that dbt does not recognize 
 
 Previously, when you could define any additional fields directly under `config`, it could lead to collisions between pre-existing user-defined configurations and official configurations of the dbt framework. 
 
-As of dbt Core v1.10 and in the <Constant name="fusion_engine" />, top-level config keys will be reserved for official configurations of the dbt framework.
+As of dbt v1.10 and in <Constant name="fusion_engine" />, top-level config keys will be reserved for official configurations of the dbt framework.
 
 import DeprecationWarnings4 from '/snippets/_deprecation-warnings.md';
 
@@ -560,7 +560,7 @@ This deprecation type is a catch-all/fallback. dbt attempts to handle all JSON s
 
 #### GenericJSONSchemaValidationDeprecation warning resolution
 
-If you are seeing this warning, unfortunately, there isn't much you can do at this time, but we are continuing to work on reducing instances of this deprecation. If you would like guidance on a specific instance you are seeing, please [contact support](mailto:support@getdbt.com) (available for cloud-based dbt platform customers) or the [community Slack](https://www.getdbt.com/community) (for dbt Core users).
+If you are seeing this warning, unfortunately, there isn't much you can do at this time, but we are continuing to work on reducing instances of this deprecation. If you would like guidance on a specific instance you are seeing, please [contact support](mailto:support@getdbt.com) (available for cloud-based dbt platform customers) or the [community Slack](https://www.getdbt.com/community) (for <Constant name="core" /> users).
 
 ### MFCumulativeTypeParamsDeprecation
 
@@ -725,7 +725,7 @@ models:
 
 ### ModelParamUsageDeprecation
 
-The `--models` / `--model` / `-m` flag was renamed to `--select` / `--s` way back in dbt Core v0.21 (Oct 2021). Silently skipping this flag means ignoring your command's selection criteria, which could mean building your entire DAG when you only meant to select a small subset. For this reason, the `--models` / `--model` / `-m` flag will raise a warning in dbt Core v1.10, and an error in <Constant name="fusion" />. Please update your job definitions accordingly.
+The `--models` / `--model` / `-m` flag was renamed to `--select` / `--s` way back in dbt v0.21 (Oct 2021). Silently skipping this flag means ignoring your command's selection criteria, which could mean building your entire DAG when you only meant to select a small subset. For this reason, the `--models` / `--model` / `-m` flag will raise a warning in dbt v1.10, and an error in <Constant name="fusion" />. Please update your job definitions accordingly.
 
 #### ModelParamUsageDeprecation warning resolution
 

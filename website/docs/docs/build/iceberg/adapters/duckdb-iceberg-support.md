@@ -5,11 +5,11 @@ sidebar_label: "DuckDB Iceberg support"
 description: Understand DuckDB support for Apache Iceberg.
 ---
 
-# DuckDB and Apache Iceberg <Lifecycle status="beta" />
+# DuckDB and Apache Iceberg
 
 :::info <Constant name="fusion" /> only
 
-DuckDB support for `catalogs.yml` requires the [<Constant name="fusion_engine" />](/docs/introduction) (v2) with the `use_catalogs_v2` behavior flag enabled. It isn't available in the legacy Python `dbt-duckdb` adapter for dbt Core v1.
+DuckDB support for `catalogs.yml` requires [<Constant name="fusion_engine" />](/docs/introduction) with the `use_catalogs_v2` behavior flag enabled. It isn't available in the legacy Python `dbt-duckdb` adapter for <Constant name="core" />.
 
 <File name='dbt_project.yml'>
 

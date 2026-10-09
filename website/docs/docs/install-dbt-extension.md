@@ -7,7 +7,7 @@ image: /img/docs/extension/extension-marketplace.png
 availability: local_all
 ---
 
-# Install the dbt VS Code extension <Lifecycle status="preview" />
+# Install the dbt VS Code extension
 
 import InstallExtension from '/snippets/_install-dbt-extension.md'; 
 
@@ -16,6 +16,6 @@ import InstallExtension from '/snippets/_install-dbt-extension.md';
 ## Next steps
 Once you've installed the dbt VS Code extension, go to the next pages to get started:
 
-1. Review the [Upgrade to <Constant name="fusion" />](/docs/upgrade-to-dbt-extension) page to ensure your dbt project is using <Constant name="fusion" />.
-2. [Sign in or register](/docs/sign-in-dbt-extension) for a free <Constant name="dbt_platform" /> account to keep using advanced features after the 14-day trial.
+1. Review the [Upgrade to dbt v2](/docs/upgrade-to-dbt-extension) page to upgrade your dbt project to the next-gen engine today!
+2. [Sign in](/docs/sign-in-dbt-extension) to a <Constant name="dbt_platform" /> account if you want to use the extension's <Constant name="dbt_platform" /> capabilities, such as the **Catalog** tab.
 3. Review the [limitations and unsupported features](/docs/dbt/supported-features#limitations).
