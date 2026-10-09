@@ -69,7 +69,7 @@ dbt Labs does not write drivers. If your warehouse doesn't have an ADBC driver y
 
 **What "having an ADBC driver" actually means**
 
-For certain adapters (Snowflake, BigQuery, Databricks, Redshift, DuckDB, ClickHouse, Salesforce, Spark, SQL Server), v2 automatically downloads the correct driver binary from the dbt Labs CDN on first use. Users never have to think about it.
+For certain adapters (Snowflake, BigQuery, Databricks, Redshift, DuckDB, ClickHouse, Spark, SQL Server), v2 automatically downloads the correct driver binary from the dbt Labs CDN on first use. Users never have to think about it.
 
 Community adapters don't have CDN support. Instead, <Constant name="fusion" /> looks for a shared library by name on the user's system — e.g. `libadbc_driver_exasol.dylib` on macOS, `libadbc_driver_exasol.so` on Linux. If the file isn't present, the connection fails at runtime.
 
@@ -296,7 +296,7 @@ Rust's `match` expressions must handle every possible variant — there's no cat
 // crates/dbt-adapter-core/src/lib.rs
 pub enum AdapterType {
     Postgres, Snowflake, Bigquery, Databricks, Redshift,
-    Salesforce, Spark, DuckDB, Fabric,
+    Spark, DuckDB, Fabric,
     ClickHouse, Athena, Starburst, Trino, Datafusion, Dremio, Oracle,
     Exasol,        // ← already added
     MyWarehouse,   // ← add yours here
@@ -430,7 +430,7 @@ Decide up front whether your warehouse uses 2-part or 3-part names, and whether 
 Add your `AdapterType` to the `create_static_relation` match, wiring it to `RelationStatic` (the generic static relation used for Jinja's `api.Relation`):
 
 ```rust
-Databricks | Spark | Fabric | DuckDB | Exasol | Postgres | Redshift | Salesforce | Bigquery => {
+Databricks | Spark | Fabric | DuckDB | Exasol | Postgres | Redshift | Bigquery => {
     let relation_type = RelationStatic { adapter_type, quoting };
     StaticBaseRelationObject::new(Arc::new(relation_type))
 }

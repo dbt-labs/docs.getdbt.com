@@ -10,6 +10,7 @@ import {QuickstartGuideTitle} from "../../../components/quickstartGuideCard";
 import { Feedback } from "../../../components/feedback";
 import Availability from "@site/src/components/availability";
 import AvailabilityContext from "@site/src/components/availabilityContext";
+import AgentGuidance from "@site/src/components/agentGuidance";
 
 function useSyntheticTitle() {
   const { metadata, frontMatter, contentTitle } = useDoc();
@@ -44,6 +45,13 @@ export default function DocItemContent({ children }) {
         <header>
           <Heading as="h1">{syntheticTitle}</Heading>
         </header>
+      )}
+
+      {frontMatter.agent_guidance && (
+        <AgentGuidance
+          guidance={frontMatter.agent_guidance}
+          isGuide={isQuickstartGuide}
+        />
       )}
 
       {syntheticTitle && frontMatter.availability && (
