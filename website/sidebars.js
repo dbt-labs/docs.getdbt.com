@@ -871,9 +871,9 @@ const sidebarSettings = {
           label: "Set up dbt State",
           link: { type: "doc", id: "docs/deploy/dbt-state-setup" },
           items: [
-            "docs/deploy/dbt-state-setup", 
-            "docs/deploy/dbt-state-enable-jobs", 
-            "docs/deploy/dbt-state-enable-studio", 
+            "docs/deploy/dbt-state-setup",
+            "docs/deploy/dbt-state-enable-env-jobs",
+            "docs/deploy/dbt-state-enable-studio",
             "docs/deploy/dbt-state-cicd", 
             "docs/deploy/dbt-state-deferral",
           ],
@@ -1971,6 +1971,18 @@ const sidebarSettings = {
             "best-practices/how-we-handle-real-time-data/4-lambda-views",
             "best-practices/how-we-handle-real-time-data/5-views-only-pattern",
             "best-practices/how-we-handle-real-time-data/6-operational-considerations",
+          ],
+        },
+        {
+          type: "category",
+          label: "How to handle change data capture",
+          link: {
+            type: "doc",
+            id: "best-practices/how-we-handle-cdc/1-intro",
+          },
+          items: [
+            "best-practices/how-we-handle-cdc/1-intro",
+            "best-practices/how-we-handle-cdc/2-choosing-incremental-or-snapshots",
           ],
         },
         {

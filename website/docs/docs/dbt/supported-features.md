@@ -14,8 +14,8 @@ Learn about the features supported by dbt v2, including requirements and limitat
 
 </IntroText>
 
-import FusionLifecycle from '/snippets/_fusion-lifecycle-callout.md';
-import FusionDWH from '/snippets/_fusion-dwh.md';
+import FusionLifecycle from '/snippets/_v2-lifecycle-callout.md';
+import FusionDWH from '/snippets/_v2-dwh.md';
 
 <VersionBlock lastVersion="1.99">
 
@@ -64,10 +64,10 @@ If your project uses any of the following, you can still use v2, but full migrat
 
 ## Package support
 
-import FusionPackages from '/snippets/_fusion-supported-packages.md';
+import FusionPackages from '/snippets/_v2-supported-packages.md';
 
 <FusionPackages />
 
-import AboutFusion from '/snippets/_about-fusion.md';
+import AboutFusion from '/snippets/_about-v2.md';
 
 <AboutFusion hideFeaturesLink/>
