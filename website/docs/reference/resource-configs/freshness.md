@@ -162,20 +162,20 @@ sources:
   - name: jaffle_shop
     tables:
       - name: orders
-        config:
           loaded_at_query: |
             select max(_sdc_batched_at) from (
               select * from {{ this }}
               where _sdc_batched_at > dateadd(day, -7, current_date)
               qualify count(*) over (partition by _sdc_batched_at::date) > 2000
             )
+        config:
           freshness:
             warn_after: {count: 12, period: hour}
 ```
 
 </VersionBlock>
 
-<VersionBlock lastVersion="1.9">
+<VersionBlock lastVersion="1.99">
 
 `loaded_at_query` is available in dbt v1.10 and later.
 
