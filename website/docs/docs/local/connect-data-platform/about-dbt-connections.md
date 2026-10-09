@@ -52,7 +52,7 @@ For detailed configuration options, refer to [Connection profiles](/docs/local/p
 - [Microsoft Fabric](/docs/local/connect-data-platform/fabric-setup)
 - [Azure Synapse](/docs/local/connect-data-platform/azuresynapse-setup)
 
-When you install <Constant name="core" />, you also need to install the specific adapter for your data platform. Those adapters are maintained by dbt Labs, partners, and community members. Refer to [community adapters](/docs/community-adapters).
+When you install <Constant name="core" />, you also need to install the specific adapter for your data platform. Adapters are maintained by dbt Labs, partners, and community members. Refer to [community adapters](/docs/community-adapters).
 
 For the full list of supported platforms, refer to [Supported data platforms](/docs/supported-data-platforms).
 

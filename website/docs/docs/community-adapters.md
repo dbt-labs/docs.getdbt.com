@@ -8,7 +8,7 @@ availability: all_users
 ---
 
 :::note
-The Trusted Adapter Program for v1 has ended. Adapters are now listed together on this page.
+The Trusted Adapter Program for v1 has ended. All dbt, partner, and community maintained adapters are listed together on this page.
 :::
 
 Adapters connect dbt to data platforms. They are maintained by dbt Labs, partners, and community members.
