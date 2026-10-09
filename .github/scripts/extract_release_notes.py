@@ -327,14 +327,13 @@ def duplicate_reason(
     candidate: BulletFingerprint, existing: BulletFingerprint
 ) -> str | None:
     """Return why candidate duplicates existing, or None if it does not."""
+    # Lifecycle stages must not deduplicate a promotion (for example beta → GA).
+    if lifecycle_blocks_fuzzy(candidate, existing):
+        return None
     if candidate.signature == existing.signature:
         return "same title/signature"
     if candidate.body and candidate.body == existing.body:
         return "same normalized body"
-
-    # Fuzzy rules below never match across lifecycle promotions (beta → GA).
-    if lifecycle_blocks_fuzzy(candidate, existing):
-        return None
 
     overlap = token_overlap(candidate.tokens, existing.tokens)
     if len(candidate.tokens) <= len(existing.tokens):
