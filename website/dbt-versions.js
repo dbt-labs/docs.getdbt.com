@@ -32,12 +32,17 @@ const products = [
     get subProducts() {
       const specific = [
         {
-          name: "dbt Core v1.12",
+          name: "dbt v1.13",
+          version: "1.13",
+          stage: "beta",
+        },
+        {
+          name: "dbt v1.12",
           EOLDate: "2027-07-15",
           version: "1.12",
         },
         {
-          name: "dbt Core v1.11",
+          name: "dbt v1.11",
           EOLDate: "2026-12-18",
           version: "1.11",
         },
