@@ -27,4 +27,6 @@ dbt Labs is committed to providing backward compatibility for all versions 1.x. 
 
 ## Adapter-specific features and functionalities
 
-**Coming soon**
+### BigQuery
+
+- In dbt v1.13 and later, BigQuery [`check_cols`](/docs/build/snapshots#check-strategy) matches existing column names case-insensitively. Snapshot versions created before you upgrade remain in the table.
