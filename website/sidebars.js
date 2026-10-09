@@ -31,7 +31,6 @@ const sidebarSettings = {
       link: { type: "doc", id: "docs/supported-data-platforms" },
       items: [
         "docs/supported-data-platforms",
-        "docs/connect-adapters",
         "docs/community-adapters",
         "docs/contribute-dbt-adapters",
       ],

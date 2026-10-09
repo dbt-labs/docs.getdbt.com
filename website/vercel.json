@@ -2444,7 +2444,12 @@
     },
     {
       "source": "/docs/supported-data-platforms#adapter-installation",
-      "destination": "/docs/connect-adapters",
+      "destination": "/docs/supported-data-platforms#install-an-adapter",
+      "permanent": true
+    },
+    {
+      "source": "/docs/connect-adapters",
+      "destination": "/docs/supported-data-platforms#install-an-adapter",
       "permanent": true
     },
     {
@@ -2459,7 +2464,7 @@
     },
     {
       "source": "/docs/supported-data-platforms#maintainers",
-      "destination": "/docs/connect-adapters#maintainers",
+      "destination": "/docs/supported-data-platforms",
       "permanent": true
     },
     {
