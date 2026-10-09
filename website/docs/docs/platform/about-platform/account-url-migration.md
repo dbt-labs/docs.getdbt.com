@@ -59,17 +59,6 @@ GitLab and Azure DevOps repositories will continue to use your legacy **getdbt.c
 | [Azure DevOps (service principal)](/docs/platform/git/setup-service-principal) | Update or add an app registration |
 | GitHub On-premises | Contact [dbt Labs Support](mailto:support@getdbt.com) |
 
-:::warning Azure DevOps CI jobs may stop triggering
-If you connected an Azure DevOps repository before your account moved to its account-specific access URL, pull request events for that repository can stop reaching <Constant name="dbt" />. Continuous integration (CI) jobs set to run on pull requests do not start, and no error appears in <Constant name="dbt" /> or in Azure DevOps.
-
-If this happens, follow these steps to disconnect the repository and connect the same one again:
-
-1. From **Account settings**, select **Projects**, then select the project.
-2. Select the **Repository** link, then **Edit**, then **Disconnect**.
-3. Select **Confirm Disconnect**.
-4. Select **Configure Repository** and connect the same Azure DevOps repository.
-:::
-
 ### Data platform connections
 
 Data platform connections will continue to use your legacy **getdbt.com** URL for OAuth flows. You can't yet update an existing connection to use your new account access URL. Instead, you can recreate a connection to generate a redirect URI based on your new account access URL.
