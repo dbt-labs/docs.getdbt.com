@@ -27,7 +27,7 @@ You can use the <Constant name="semantic_layer" /> for a variety of tools and ap
 
 ## Rate limits
 
-Semantic Layer APIs have their own rate limits, which are shared across an environment and are separate from the Discovery API limit that applies to the `metadata` GraphQL endpoint. Refer to [API rate limits](/docs/dbt-apis/rate-limits#semantic-layer-apis) for details.
+Semantic Layer APIs have their own rate limits, which are shared across clients and users and are separate from the Discovery API limit that applies to the `metadata` GraphQL endpoint. Refer to [API rate limits](/docs/dbt-apis/rate-limits#semantic-layer-apis) for details.
 
 <!-- this partial lives here: https://github.com/dbt-labs/docs.getdbt.com/website/snippets/_sl-plan-info. Use it on diff pages and to tailor the message depending which instance can access the SL and what product lifecycle we're in. -->
 
