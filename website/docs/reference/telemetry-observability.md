@@ -1,15 +1,15 @@
 ---
-title: "Fusion telemetry and observability"
+title: "dbt v2 telemetry and observability"
 id: "telemetry-observability"
-sidebar_label: "Fusion telemetry and observability"
-description: "Fusion support for telemetry and observability"
+sidebar_label: "dbt v2 telemetry and observability"
+description: "dbt v2 support for telemetry and observability"
 pagination_next: null
 pagination_prev: null
 ---
 
 import SaoDeprecated from '/snippets/_sao-deprecated.md';
 
-The <Constant name="fusion_engine" /> provides a comprehensive observability system that replaces [<Constant name="core" />'s structured logging](/reference/events-logging#structured-logging). Built on [OpenTelemetry](https://opentelemetry.io/) conventions and backed by a stable protobuf schema, it enables deep integration with orchestrators, observability platforms, and custom tooling.
+<Constant name="fusion_engine" /> provides a comprehensive observability system that replaces [<Constant name="core" />'s structured logging](/reference/events-logging#structured-logging). Built on [OpenTelemetry](https://opentelemetry.io/) conventions and backed by a stable protobuf schema, it enables deep integration with orchestrators, observability platforms, and custom tooling.
 
 For shared CLI logging configs such as `--log-format` and `--log-level`, refer to [Logs](/reference/global-configs/logs).
 
@@ -184,16 +184,44 @@ If you ran a job in the <Constant name="dbt_platform" />, you can download the O
 
 Leverage DuckDB to better understand your telemetry data stored in Parquet files. 
 
-Find slowest nodes:
+Find slowest nodes by **processing cost** (not wall-clock lifetime at the connection gate):
+
 ```python
 import duckdb
 duckdb.sql("""
     SELECT
         attributes.unique_id,
-        (end_time_unix_nano - start_time_unix_nano) / 1e6 AS duration_ms
+        attributes.duration_ms,
+        attributes.idle_time_ms
     FROM 'telemetry.parquet'
     WHERE event_type LIKE '%NodeProcessed%'
-    ORDER BY duration_ms DESC
+      AND attributes.duration_ms IS NOT NULL
+    ORDER BY attributes.duration_ms DESC
+    LIMIT 10
+""").show()
+```
+
+:::note Choose the right timing metric
+
+Telemetry provides several ways to measure node performance:
+
+- **Processing time (`attributes.duration_ms`)** measures the time v2 spent actively processing the node, including nested `NodeEvaluated` work. It excludes time spent waiting for upstream nodes or internal backpressure. Use this metric to identify the nodes that take the longest to process.
+- **Node lifetime (`end_time_unix_nano - start_time_unix_nano`)** measures the full time from the start to the end of the span, including time spent waiting at the connection-limit gate. In builds with saturated threads, this metric might surface nodes with the longest queue time rather than the most processing work.
+- **Idle time (`attributes.idle_time_ms`)** measures how long the node spent waiting instead of being actively processed, such as while waiting for an upstream node or available processing capacity. Use it to identify where resource constraints are causing delays.
+- **Warehouse execution time** is the sum of `QueryExecuted` span durations for each `unique_id`. It excludes v2-side work such as compilation and static analysis. Use this metric to compare telemetry with your warehouse query history.
+
+:::
+
+Find nodes with the highest warehouse time (optional):
+```python
+duckdb.sql("""
+    SELECT
+        attributes.unique_id,
+        SUM((end_time_unix_nano - start_time_unix_nano) / 1e6) AS warehouse_ms
+    FROM 'telemetry.parquet'
+    WHERE event_type LIKE '%QueryExecuted%'
+    GROUP BY attributes.unique_id
+    ORDER BY warehouse_ms DESC
     LIMIT 10
 """).show()
 ```
@@ -243,7 +271,7 @@ export OTEL_EXPORTER_OTLP_ENDPOINT="http://localhost:4318"
 dbtf build --export-to-otlp
 ```
 
-## Mapping to dbt Core concepts
+## Mapping to <Constant name="core" /> concepts
 
 If you're familiar with <Constant name="core" />'s structured logging, here's how <Constant name="fusion" /> telemetry maps:
 
@@ -267,7 +295,7 @@ If you're familiar with <Constant name="core" />'s structured logging, here's ho
 
 Note that <Constant name="core" />'s `fail` status maps to <Constant name="fusion" />'s `node_outcome: success` because <Constant name="fusion" /> distinguishes between "the test ran successfully and found data issues" versus "the test couldn't run." This separation enables more precise alerting and retry logic.
 
-<Constant name="fusion" /> adds `skip_reason: cached` for nodes reused via [State Aware Orchestration](/docs/deploy/state-aware-about), which has no <Constant name="core" /> equivalent.
+<Constant name="fusion" /> adds `skip_reason: cached` for nodes reused via [dbt State](/docs/deploy/dbt-state-about), which has no <Constant name="core" /> equivalent.
 
 <SaoDeprecated />
 

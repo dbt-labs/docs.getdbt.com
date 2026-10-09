@@ -42,6 +42,7 @@ import Lifecycle from '@site/src/components/lifeCycle';
 import ProductCard from '@site/src/components/productCard';
 import DetailsToggle from '@site/src/components/detailsToggle';
 import Expandable from '@site/src/components/expandable';
+import Steps, { Step } from '@site/src/components/steps';
 import ConfettiTrigger from '@site/src/components/confetti/';
 import WizardPopcorn from '@site/src/components/wizardPopcorn/';
 import VersionCallout from '@site/src/components/versionCallout';
@@ -111,6 +112,8 @@ const MDXComponents = {
   ProductCard: ProductCard,
   DetailsToggle: DetailsToggle,
   Expandable: Expandable,
+  Steps: Steps,
+  Step: Step,
   ConfettiTrigger: ConfettiTrigger,
   WizardPopcorn: WizardPopcorn,
   SortableTable: SortableTable,

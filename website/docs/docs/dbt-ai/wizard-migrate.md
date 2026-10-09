@@ -17,7 +17,7 @@ Move from Claude Code to <Constant name="wizard" /> while keeping your project c
 
 You'll need:
 
-- [<Constant name="wizard" /> CLI](/docs/dbt-ai/wizard-cli) installed or <Constant name="wizard" /> enabled in the [<Constant name="dbt_platform" />](/docs/platform/wizard-platform)
+- [<Constant name="wizard" /> CLI](/docs/dbt-ai/wizard-cli) installed or <Constant name="wizard" /> enabled in [<Constant name="dbt_platform" />](/docs/platform/wizard-platform)
 - [BYOK](/docs/dbt-ai/wizard-byok) configured for a supported CLI provider (OpenAI, Anthropic, AWS Bedrock, or Snowflake Cortex in preview)
 - Any existing Claude Code files you want to migrate, such as `CLAUDE.md`, `.claude/CLAUDE.md`, or `.claude/skills/`
 

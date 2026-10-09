@@ -1,26 +1,23 @@
 ---
-title: "Use MCP servers with dbt Wizard in the dbt platform"
+title: "Use MCP servers with dbt Wizard in dbt platform"
 id: "wizard-platform-mcp"
-description: "Understand MCP server support for dbt Wizard in the dbt platform."
+description: "Understand MCP server support for dbt Wizard in dbt platform."
 sidebar_label: "Use MCP servers"
 tags: [AI, Wizard, MCP]
 pagination_prev: "docs/dbt-ai/wizard-platform-skills"
-pagination_next: "docs/dbt-ai/wizard-platform-privacy-data"
-availability:
-  surface: platform
-  access: paid_plan
-  minPlan: starter
+pagination_next: "docs/dbt-ai/dbt-ai-faqs"
+availability: platform_usage
 ---
 
-# Use MCP servers with <Constant name="wizard" /> in the <Constant name="dbt_platform" />
+# Use MCP servers with <Constant name="wizard" /> in <Constant name="dbt_platform" />
 
 <IntroText>
-<Constant name="wizard" /> in the <Constant name="dbt_platform" /> includes built-in dbt context. Custom MCP server connections are not yet supported in the platform experience.
+<Constant name="wizard" /> in <Constant name="dbt_platform" /> includes built-in dbt context. Custom MCP server connections are not yet supported in the platform experience.
 </IntroText>
 
-In the <Constant name="dbt_platform" />, <Constant name="wizard" /> can use dbt project context, dbt metadata, and built-in dbt documentation tooling without requiring you to configure an MCP server.  Refer to [Available MCP tools](/docs/dbt-ai/mcp-available-tools?version=2.0) for more info. 
+In <Constant name="dbt_platform" />, <Constant name="wizard" /> can use dbt project context, dbt metadata, and built-in dbt documentation tooling without requiring you to configure an MCP server.  Refer to [Available MCP tools](/docs/dbt-ai/mcp-available-tools?version=2.0) for more info. 
 
-Although custom MCP server connections aren't supported yet for <Constant name="wizard" /> in the <Constant name="dbt_platform" />, you can use the [<Constant name="wizard" /> CLI](/docs/dbt-ai/wizard-mcp) if you need custom MCP servers for development workflows.
+Although custom MCP server connections aren't supported yet for <Constant name="wizard" /> in <Constant name="dbt_platform" />, you can use the [<Constant name="wizard" /> CLI](/docs/dbt-ai/wizard-mcp) if you need custom MCP servers for development workflows.
 
 To discuss <Constant name="dbt_platform" /> MCP support, contact your dbt Labs account representative.
 

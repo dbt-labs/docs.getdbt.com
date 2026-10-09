@@ -2,7 +2,7 @@
   "scripts": {
     "prestart": "npm run prepare && node scripts/fetch-mcp-readme-tools.js && node scripts/generate-functions-snippet.js",
     "start": "docusaurus start",
-    "prebuild": "node scripts/fetch-mcp-readme-tools.js && node scripts/generate-functions-snippet.js",
+    "prebuild": "node scripts/inject-last-updated.js; node scripts/fetch-mcp-readme-tools.js && node scripts/generate-functions-snippet.js",
     "build": "docusaurus build",
     "postbuild": "node scripts/rewriteMarkdownLinks.js",
     "generate:wizard-cli": "node scripts/generate-wizard-cli-reference.js",
@@ -11,7 +11,8 @@
     "lint": "eslint --cache",
     "lintAll": "eslint . --fix",
     "prepare": "cd .. && husky install",
-    "cleanup-duplicates": "node scripts/cleanup_duplicate_constants.js"
+    "cleanup-duplicates": "node scripts/cleanup_duplicate_constants.js",
+    "check-images": "node ../.github/scripts/check-image-paths.js"
   },
   "dependencies": {
     "@datadog/browser-rum": "^6.27.1",
@@ -57,7 +58,7 @@
     "sanitize-html": "^2.8.0",
     "slugify": "^1.6.1",
     "styled-components": "5.3.3",
-    "swiper": "^8.4.3",
+    "swiper": "^12.1.2",
     "url-loader": "^4.1.1"
   },
   "devDependencies": {
@@ -113,5 +114,9 @@
   "version": "0.0.0",
   "lint-staged": {
     "*.{js,ts,jsx,tsx,md}": "npm run lint"
+  },
+  "overrides": {
+    "shell-quote": "1.12.0",
+    "sha.js": "2.4.12"
   }
 }

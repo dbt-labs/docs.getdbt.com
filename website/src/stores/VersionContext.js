@@ -62,6 +62,9 @@ export const VersionContextProvider = ({ value = "", children }) => {
 
   // Helper to update URL with the version parameter
   const updateUrlParams = useCallback((newSubProductName) => {
+    // Blog posts aren't versioned content, so never add a version param there
+    if (location.pathname.startsWith('/blog')) return
+
     const url = new URL(window.location.href)
     const sp = findSubProduct(newSubProductName);
 
@@ -82,7 +85,7 @@ export const VersionContextProvider = ({ value = "", children }) => {
     }
 
     window.history.replaceState({}, '', url.toString())
-  }, [])
+  }, [location.pathname])
 
   // Resolve a subProduct name from URL search params
   const resolveSubProductFromSearch = useCallback((search) => {
