@@ -27,4 +27,6 @@ dbt Labs is committed to providing backward compatibility for all versions 1.x. 
 
 ## Adapter-specific features and functionalities
 
-**Coming soon**
+### BigQuery
+
+- Unit tests now support the `_FILE_NAME` pseudocolumn on BigQuery external tables. You can include them directly in `dict` or `csv` fixture rows without `format: sql`. For more information, refer to [Unit testing with pseudocolumns](/docs/build/unit-tests#unit-testing-with-pseudocolumns).
