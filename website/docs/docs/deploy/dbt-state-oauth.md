@@ -5,6 +5,9 @@ description: "Learn how to configure dbt State authentication using OAuth client
 id: "dbt-state-oauth"
 tags: ['dbt State']
 availability: everywhere_usage
+pagination_next: null
+pagination_prev: null
+unlisted: true
 ---
 
 import DbtStateAppRetirement from '/snippets/_dbt-state-app-retirement.md';

@@ -65,6 +65,5 @@ Once configured, [verify dbt State is active](#verifying-dbt-state-is-active).
 
 - [About dbt State](/docs/deploy/dbt-state-about)
 - [Set up dbt State](/docs/deploy/dbt-state-setup)
-- [OAuth client credentials (standalone app)](/docs/deploy/dbt-state-oauth)
 - [dbt State configs](/reference/resource-configs/dbt-state-configs)
 - [Migrate from state-aware orchestration](/docs/deploy/dbt-state-migration)
