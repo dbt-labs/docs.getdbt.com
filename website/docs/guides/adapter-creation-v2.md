@@ -270,7 +270,7 @@ Rust's `match` expressions must handle every possible variant explicitly. So whe
 // crates/dbt-adapter-core/src/lib.rs
 pub enum AdapterType {
     Postgres, Snowflake, Bigquery, Databricks, Redshift,
-    Salesforce, Spark, DuckDB, Fabric,
+    Spark, DuckDB, Fabric,
     ClickHouse, Athena, Starburst, Trino, Datafusion, Dremio, Oracle,
     Exasol,        // ← already added
     MyWarehouse,   // ← add yours here
@@ -310,7 +310,7 @@ For these 11 adapters, <Constant name="core_v2" /> automatically downloads the d
 
 | On the CDN: auto-downloaded |
 |---|
-| Snowflake, BigQuery, ClickHouse, Postgres, Databricks, Redshift, DuckDB, DuckDB Extended, Salesforce, Spark, SQL Server |
+| Snowflake, BigQuery, ClickHouse, Postgres, Databricks, Redshift, DuckDB, DuckDB Extended, Spark, SQL Server |
 
 For **custom Arrow type mappings** (for example, DuckDB needed this for `HUGEINT`, `UTINYINT`): only add warehouse-specific type handling if your driver returns types that Arrow's standard schema doesn't cover. Most warehouses don't need this.
 
@@ -439,7 +439,7 @@ Decide up front whether your warehouse uses 2-part or 3-part names, and whether 
 Add your `AdapterType` to the `create_static_relation` match, wiring it to `RelationStatic` (the generic static relation used for Jinja's `api.Relation`):
 
 ```rust
-Databricks | Spark | Fabric | DuckDB | Exasol | Postgres | Redshift | Salesforce | Bigquery => {
+Databricks | Spark | Fabric | DuckDB | Exasol | Postgres | Redshift | Bigquery => {
     let relation_type = RelationStatic { adapter_type, quoting };
     StaticBaseRelationObject::new(Arc::new(relation_type))
 }

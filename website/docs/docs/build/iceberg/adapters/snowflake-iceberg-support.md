@@ -82,11 +82,8 @@ When you set `external_volume` to `SNOWFLAKE_MANAGED`, dbt omits `base_location`
 
 First, configure a catalog with `type: horizon` in `catalogs.yml`:
 
-<Tabs defaultValue="new" values={[
-  { label: 'New spec (beta)', value: 'new' },
-  { label: 'Old spec', value: 'old' }
-]}>
-<TabItem value="new">
+<Tabs defaultValue="new">
+<TabItem value="new" label={<><VersionBlock lastVersion="1.99">New spec (beta)</VersionBlock><VersionBlock firstVersion="2.0">New spec</VersionBlock></>}>
 
 <File name='catalogs.yml'>
 
@@ -95,7 +92,7 @@ First, configure a catalog with `type: horizon` in `catalogs.yml`:
 catalogs:
   - name: my_horizon_catalog
     type: horizon
-    table_format: iceberg  # optional - default
+    table_format: iceberg
     config:
       snowflake:
         # optional - specify additional Snowflake-specific configurations
@@ -107,7 +104,7 @@ catalogs:
 
 </TabItem>
 
-<TabItem value="old">
+<TabItem value="old" label="Old spec">
 
 <File name='catalogs.yml'>
 
@@ -161,7 +158,20 @@ First, you need to set up a catalog integration and (recommended) catalog-linked
 
 Caveats:
 - For some external catalogs (for example, AWS Glue), table and column identifiers must use only alphanumeric characters (letters and numbers), be lowercase, and surrounded by double quotes.
-- Starting in <Constant name="dbt" /> v1.11, dbt-snowflake supports basic table materialization on Iceberg tables registered in a Glue catalog through a catalog-linked database. Note that incremental materializations aren't yet supported.
+
+<VersionBlock lastVersion="1.12">
+
+- Starting in <Constant name="dbt" /> v1.11, dbt-snowflake supports basic table materialization on Iceberg tables registered in a Glue catalog through a catalog-linked database. Incremental model support is currently only available in v2.
+
+</VersionBlock>
+
+<VersionBlock firstVersion="2.0">
+
+- <Constant name="dbt" /> supports table and incremental materializations (the `append`, `merge`, and `delete+insert` strategies) on Iceberg tables registered in a Glue catalog through a catalog-linked database. For incremental models: 
+    - They must resolve to a `type: glue` catalog in `catalogs.yml` (using `catalog_name`) whose `config.snowflake.catalog_database` names the catalog-linked database. 
+    - Their identifiers must follow Glue's lowercase, double-quoted rule (for example, set `quoting: {schema: true, identifier: true}` at the project level).
+
+</VersionBlock>
 
 After you create the external catalog integration, you can do two things:
 
@@ -171,11 +181,8 @@ After you create the external catalog integration, you can do two things:
 
 Now, we can configure that external catalog in `catalogs.yml`. Here is an example for an AWS Glue catalog:
 
-<Tabs defaultValue="new" values={[
-  { label: 'New spec (beta)', value: 'new' },
-  { label: 'Old spec', value: 'old' }
-]}>
-<TabItem value="new">
+<Tabs defaultValue="new">
+<TabItem value="new" label={<><VersionBlock lastVersion="1.99">New spec (beta)</VersionBlock><VersionBlock firstVersion="2.0">New spec</VersionBlock></>}>
 
 <File name='catalogs.yml'>
 
@@ -194,7 +201,7 @@ catalogs:
 
 </TabItem>
 
-<TabItem value="old">
+<TabItem value="old" label="Old spec">
 
 <File name='catalogs.yml'>
 
