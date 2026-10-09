@@ -86,7 +86,7 @@ That said, one "catalog" **must** always point to the same actual data (Iceberg 
 catalogs:
   - name: my_iceberg_catalog
     type: CATALOG_TYPE     # see below
-    table_format: iceberg  # default, optional
+    table_format: iceberg  # required
     config:
       ADAPTER:
         # Configuration for a specific adapter to integrate with this catalog.
@@ -122,7 +122,7 @@ For example, you set a default `base_location_root` for all models in the `finan
 ```yml
 catalogs:
   - name: finance_db
-    catalog_type: unity
+    type: unity
     config:
       snowflake:
         base_location_root: 's3://my-bucket/finance_db'
