@@ -163,11 +163,11 @@ sources:
     tables:
       - name: orders
         loaded_at_query: |
-            select max(_sdc_batched_at) from (
-              select * from {{ this }}
-              where _sdc_batched_at > dateadd(day, -7, current_date)
-              qualify count(*) over (partition by _sdc_batched_at::date) > 2000
-            )
+          select max(_sdc_batched_at) from (
+            select * from {{ this }}
+            where _sdc_batched_at > dateadd(day, -7, current_date)
+            qualify count(*) over (partition by _sdc_batched_at::date) > 2000
+          )
         config:
           freshness:
             warn_after: {count: 12, period: hour}
