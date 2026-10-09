@@ -59,36 +59,57 @@ jobs:
           echo "value=$WEEK" >> "$GITHUB_OUTPUT"
 
       - name: Extract and update MT release notes
+        id: extract
         run: |
+          REPORT="${RUNNER_TEMP}/st-mt-sync-report.md"
+          echo "report_path=$REPORT" >> "$GITHUB_OUTPUT"
           python3 .github/scripts/extract_release_notes.py \
             --st-file website/docs/docs/dbt-versions/dbt-platform-release-notes-gen.md \
             --mt-file website/docs/docs/dbt-versions/release-notes.md \
-            --week "${{ steps.week.outputs.value }}"
+            --week "${{ steps.week.outputs.value }}" \
+            --report-file "$REPORT"
 
       - name: Open draft PR if MT file changed
         env:
           GH_TOKEN: ${{ github.token }}
+          WEEK: ${{ steps.week.outputs.value }}
+          REPORT_PATH: ${{ steps.extract.outputs.report_path }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
           git add website/docs/docs/dbt-versions/release-notes.md
           if git diff --staged --quiet; then
-            echo "No MT release notes changes for week ${{ steps.week.outputs.value }}"
+            echo "No MT release notes changes for week ${WEEK}"
             exit 0
           fi
 
-          BRANCH="automation/sync-mt-release-notes-${{ steps.week.outputs.value }}"
+          BRANCH="automation/sync-mt-release-notes-${WEEK}"
           BRANCH="${BRANCH// /-}"
 
           git checkout -b "$BRANCH"
-          git commit -m "docs: sync MT release notes for ${{ steps.week.outputs.value }}"
+          git commit -m "docs: sync MT release notes for ${WEEK}"
 
           git push --force origin "$BRANCH"
 
+          PR_BODY_FILE="${RUNNER_TEMP}/st-mt-pr-body.md"
+          {
+            printf '%s\n' \
+              "Automated sync of weekly single-tenant release notes into the monthly multi-tenant/VPC release notes." \
+              "" \
+              "Week synced: **${WEEK}**" \
+              "" \
+              "Please review for accuracy and add any MT-only items manually." \
+              ""
+            if [ -f "$REPORT_PATH" ]; then
+              cat "$REPORT_PATH"
+            fi
+          } > "$PR_BODY_FILE"
+
           EXISTING_PR=$(gh pr list --head "$BRANCH" --state open --json number --jq '.[0].number' || true)
           if [ -n "$EXISTING_PR" ]; then
-            echo "Draft PR already open: #$EXISTING_PR"
+            echo "Draft PR already open: #$EXISTING_PR — updating body with sync report"
+            gh pr edit "$EXISTING_PR" --body-file "$PR_BODY_FILE"
             exit 0
           fi
 
@@ -96,11 +117,7 @@ jobs:
             --draft \
             --base current \
             --head "$BRANCH" \
-            --title "docs: sync MT release notes for ${{ steps.week.outputs.value }}" \
-            --body "Automated sync of weekly single-tenant release notes into the monthly multi-tenant/VPC release notes.
-
-          Week synced: **${{ steps.week.outputs.value }}**
-
-          Please review for accuracy and add any MT-only items manually." \
+            --title "docs: sync MT release notes for ${WEEK}" \
+            --body-file "$PR_BODY_FILE" \
             --label release-notes \
             --assignee nataliefiann
