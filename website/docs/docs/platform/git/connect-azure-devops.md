@@ -36,12 +36,12 @@ No matter which approach you take, you will need admins for <Constant name="dbt"
 
 <Expandable alt_header="CI jobs don't trigger on pull requests"/>
 
-If continuous integration (CI) jobs stop starting when you open pull requests in Azure DevOps, and you don't see an error in <Constant name="dbt" /> or Azure DevOps, try these checks:
+If continuous integration (CI) jobs aren't triggered when you open pull requests in Azure DevOps, and you don't see an error in <Constant name="dbt" /> or Azure DevOps, try these checks:
 
 - Confirm the Azure DevOps service hooks for the repository still exist and point to your <Constant name="dbt" /> account.
 - Confirm your service principal or service user still has access to the repository.
 
-If those look fine, disconnect the repository and connect the same one again:
+If those look fine, disconnect and reconnect the repository:
 
 1. From **Account settings**, select **Projects**, then select the project.
 2. Select the **Repository** link, then **Edit**, then **Disconnect**.
