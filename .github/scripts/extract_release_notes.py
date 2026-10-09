@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import os
 import re
 import sys
 from dataclasses import dataclass
@@ -54,7 +55,79 @@ def parse_args() -> argparse.Namespace:
         action="store_true",
         help="Print preview only; do not write files.",
     )
+    parser.add_argument(
+        "--report-file",
+        help="Write a Markdown sync report (skips, reasons, adds) to this path.",
+    )
     return parser.parse_args()
+
+
+def build_sync_report(
+    week: str,
+    month_heading: str,
+    created_month: bool,
+    dry_run: bool,
+    formatted_count: int,
+    to_insert: list[str],
+    skipped: list[tuple[str, str]],
+) -> str:
+    """Build Markdown for the Actions job summary and draft PR body."""
+    lines = [
+        f"## ST→MT sync report — {week}",
+        "",
+        f"- Target month: `## {month_heading}`",
+        f"- Bullets found: {formatted_count}",
+        f"- Skipped (already in MT file): {len(skipped)}",
+        f"- Would add: {len(to_insert)}",
+    ]
+    if created_month:
+        action = "Would create" if dry_run else "Created"
+        lines.append(f"- {action} missing month heading: `## {month_heading}`")
+    lines.append("")
+
+    if skipped:
+        lines.append("### Skipped duplicates")
+        lines.append("")
+        for bullet, reason in skipped:
+            # Bullets already start with "- "; keep that list marker.
+            lines.append(bullet)
+            lines.append(f"  - Reason: `{reason}`")
+        lines.append("")
+    else:
+        lines.append("### Skipped duplicates")
+        lines.append("")
+        lines.append("_None._")
+        lines.append("")
+
+    if to_insert:
+        lines.append("### Adding to MT file")
+        lines.append("")
+        for bullet in to_insert:
+            lines.append(bullet)
+        lines.append("")
+    else:
+        lines.append("### Adding to MT file")
+        lines.append("")
+        lines.append("_None — all entries already exist in the MT file._")
+        lines.append("")
+
+    return "\n".join(lines)
+
+
+def write_sync_report(report: str, report_file: str | None) -> None:
+    """Write the sync report to --report-file and/or GITHUB_STEP_SUMMARY."""
+    if report_file:
+        path = Path(report_file)
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(report + "\n", encoding="utf-8")
+        print(f"Wrote sync report to {path}")
+
+    summary_path = os.environ.get("GITHUB_STEP_SUMMARY")
+    if summary_path:
+        with open(summary_path, "a", encoding="utf-8") as handle:
+            handle.write(report)
+            handle.write("\n")
+        print("Appended sync report to GITHUB_STEP_SUMMARY")
 
 
 def normalize_category(heading: str) -> str:
@@ -502,6 +575,17 @@ def main() -> int:
             print(f"{bullet}\n    ↳ {reason}")
         print("--- End skipped ---")
         print()
+
+    report = build_sync_report(
+        week=args.week,
+        month_heading=month_heading,
+        created_month=created_month,
+        dry_run=args.dry_run,
+        formatted_count=len(formatted),
+        to_insert=to_insert,
+        skipped=skipped,
+    )
+    write_sync_report(report, args.report_file)
 
     if not to_insert:
         print("No new bullets to add — all entries already exist in the MT file.")
