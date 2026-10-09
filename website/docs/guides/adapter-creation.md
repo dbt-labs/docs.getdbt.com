@@ -1187,7 +1187,7 @@ Many community members maintain their adapter plugins under open source licenses
 
 - Hosting on a public git provider (for example, GitHub or Gitlab)
 - Publishing to [PyPI](https://pypi.org/)
-- Adding your adapter to the [community adapters](/docs/trusted-adapters) list (refer to [Topics and pages to cover](#topics-and-pages-to-cover))
+- Adding your adapter to the [community adapters](/docs/community-adapters) list (refer to [Topics and pages to cover](#topics-and-pages-to-cover))
 
 ### General Guidelines
 
@@ -1222,7 +1222,7 @@ To contribute, all you will have to do make the changes listed in the table belo
 |--------------|--------------------------------------------|--------|-------------------------|
 | Connect              | `/docs/local/connect-data-platform/{MY-DATA-PLATFORM}-setup.md` | Create | Give all information needed to define a target in `~/.dbt/profiles.yml` and get `dbt debug` to connect to the database successfully. All possible configurations should be mentioned.             |
 | Configure            | `reference/resource-configs/{MY-DATA-PLATFORM}-configs.md`   | Create | What options and configuration specific to your data platform do users need to know? for example, table distribution and indexing options, column_quoting policy, which incremental strategies are supported |
-| Discover and Install | `docs/trusted-adapters.md`                                 | Modify | Add the adapter to the community adapters list. Include how to install the Python adapter package, ideally with pip and a PyPI package, or a `git+` link to the GitHub repo.                             |
+| Discover and Install | `docs/community-adapters.md`                                 | Modify | Add the adapter to the community adapters list. Include how to install the Python adapter package, ideally with pip and a PyPI package, or a `git+` link to the GitHub repo.                             |
 | Add link to sidebar  | `website/sidebars.js`                                        | Modify | Add the document id to the correct location in the sidebar menu                                                                                                                                      |
 
 For example say I want to document my new adapter: `dbt-ders`. For the "Connect" page, I will make a new Markdown file, `ders-setup.md` and add it to the `/website/docs/local/connect-data-platform/` directory.

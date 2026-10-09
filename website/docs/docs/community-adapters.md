@@ -1,6 +1,6 @@
 ---
 title: "Community adapters"
-id: "trusted-adapters"
+id: "community-adapters"
 sidebar_label: "Community adapters"
 description: "Community adapters connect dbt to data platforms. They are maintained by dbt Labs, partners, and the community."
 hide_table_of_contents: true

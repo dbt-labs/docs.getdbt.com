@@ -2434,12 +2434,12 @@
     },
     {
       "source": "/docs/supported-data-platforms#community-adapters",
-      "destination": "/docs/trusted-adapters",
+      "destination": "/docs/community-adapters",
       "permanent": true
     },
     {
-      "source": "/docs/community-adapters",
-      "destination": "/docs/trusted-adapters",
+      "source": "/docs/trusted-adapters",
+      "destination": "/docs/community-adapters",
       "permanent": true
     },
     {

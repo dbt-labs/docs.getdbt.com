@@ -101,7 +101,7 @@ Before writing any Rust, check a few things:
 
 **1. Does a v1 adapter already exist for your warehouse?**
 
-Refer to the [community adapters](/docs/trusted-adapters) list. If one exists, find its GitHub repo. The macro SQL and connection logic are almost directly reusable.
+Refer to the [community adapters](/docs/community-adapters) list. If one exists, find its GitHub repo. The macro SQL and connection logic are almost directly reusable.
 
 **2. Did dbt Labs already add a placeholder for your warehouse?**
 

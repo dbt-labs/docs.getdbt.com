@@ -42,7 +42,7 @@ Any new change to dbt-core and adapters goes through the following steps before 
 
 ### **Step 1: Unit & functional tests in dbt Core + adapters**
 
-First up is a battery of thousands of tests that we run dozens of times per day. No change, in either dbt-core or in the [data platform adapters](https://docs.getdbt.com/docs/trusted-adapters) supported by dbt Cloud, is merged until it has passed this full suite of tests. 
+First up is a battery of thousands of tests that we run dozens of times per day. No change, in either dbt-core or in the [data platform adapters](https://docs.getdbt.com/docs/community-adapters) supported by dbt Cloud, is merged until it has passed this full suite of tests. 
 
 Here, *unit tests* test internal components in isolation from one another, and *functional tests* represent edge cases in expected behavior under known conditions.
 
