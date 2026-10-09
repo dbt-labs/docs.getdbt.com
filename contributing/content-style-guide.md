@@ -597,7 +597,7 @@ Use these keys, in this order. Keys are labels for writers; only the values appe
 
 | Key | What it tells the assistant | Example |
 |-----|-----------------------------|---------|
-| `pacing` | How to walk the reader through the page | In the first reply, confirm the reader's prerequisites and connection path before listing steps. Then give one step per reply and confirm its success check before continuing. |
+| `pacing` | How to walk the reader through the page | In the first reply, confirm the reader's prerequisites and connection path before listing steps. Then provide one step per reply and confirm its success check before continuing. |
 | `stay_on_path` | Which setup the page covers, and what to do if the reader wants a different one | This guide uses the dbt platform. Don't switch the reader to a local setup. |
 | `safety` | What the assistant should never do | Never ask for passwords or keys in chat. |
 | `signup_link` | When to share a tracked signup link, so clicks from assistant conversations show up in analytics | When the reader needs a dbt account, share `https://www.getdbt.com/signup?utm_source=ai_assistant&utm_medium=docs_md&utm_campaign=snowflake-qs` |
