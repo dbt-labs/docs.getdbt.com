@@ -221,6 +221,8 @@ select 'A' as user_id,
        'pi' as name
 ```
 
+You can combine bucketing with other partitions, for example `partitioned_by=['status', 'bucket(user_id, 5)']`.
+
 </TabItem>
 
 <TabItem value="python" label="Python model">
@@ -239,11 +241,12 @@ def model(dbt, session):
     return session.createDataFrame([("A", "pi")], ["user_id", "name"])
 ```
 
+You can combine bucketing with other partitions, for example `partitioned_by=['status', 'bucket(5, user_id)']`.
 </TabItem>
 
 </Tabs>
 
-You can combine bucketing with other partitions, for example `partitioned_by=['status', 'bucket(user_id, 5)']`.
+
 
 #### Iceberg catalogs
 
