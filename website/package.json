@@ -58,7 +58,7 @@
     "sanitize-html": "^2.8.0",
     "slugify": "^1.6.1",
     "styled-components": "5.3.3",
-    "swiper": "^8.4.3",
+    "swiper": "^12.1.2",
     "url-loader": "^4.1.1"
   },
   "devDependencies": {
@@ -114,5 +114,9 @@
   "version": "0.0.0",
   "lint-staged": {
     "*.{js,ts,jsx,tsx,md}": "npm run lint"
+  },
+  "overrides": {
+    "shell-quote": "1.12.0",
+    "sha.js": "2.4.12"
   }
 }
