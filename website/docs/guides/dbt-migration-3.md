@@ -32,7 +32,7 @@ You may have already started your move to the <Constant name="dbt_platform" /> a
 
 ## Adapters and connections
 
-In the <Constant name="dbt_platform" />, you can natively connect to your data platform and test its [connection](/docs/connect-adapters) with a click of a button. This is especially useful for users who are new to the <Constant name="dbt_platform" /> or are looking to streamline their connection setup. Here are some tips and caveats to consider:
+In the <Constant name="dbt_platform" />, you can natively connect to your data platform and test its [connection](/docs/platform/connect-data-platform/about-connections) with a click of a button. This is especially useful for users who are new to the <Constant name="dbt_platform" /> or are looking to streamline their connection setup. Here are some tips and caveats to consider:
 
 ### Tips
 - Manage [dbt versions](/docs/dbt-versions/upgrade-dbt-platform-version) and ensure team collaboration with <Constant name="dbt_platform" />'s one-click feature, eliminating the need for manual updates and version discrepancies. Select a [release track](/docs/dbt-versions/dbt-release-tracks) for ongoing updates, to always stay up to date with fixes and (optionally) get early access to new functionality for your dbt project.

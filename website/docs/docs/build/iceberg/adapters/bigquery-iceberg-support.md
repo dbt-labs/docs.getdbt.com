@@ -48,11 +48,8 @@ Supply and nest these additional configurations, unique to BigQuery, under `conf
 
 1. Create a `catalogs.yml` at the top level of your dbt project.
 
-<Tabs defaultValue="new" values={[
-  { label: 'New spec (beta)', value: 'new' },
-  { label: 'Old spec', value: 'old' }
-]}>
-<TabItem value="new">
+<Tabs defaultValue="new">
+<TabItem value="new" label={<><VersionBlock lastVersion="1.99">New spec (beta)</VersionBlock><VersionBlock firstVersion="2.0">New spec</VersionBlock></>}>
 
 <File name="catalogs.yml">
 
@@ -71,7 +68,7 @@ catalogs:
 </File>
 
 </TabItem>
-<TabItem value="old">
+<TabItem value="old" label="Old spec">
 
 <File name="catalogs.yml">
 
@@ -154,11 +151,8 @@ select * from {{ ref('jaffle_shop_customers') }}
 
 </File>
 
-<Tabs defaultValue="new" values={[
-  { label: 'New spec (beta)', value: 'new' },
-  { label: 'Old spec', value: 'old' }
-]}>
-<TabItem value="new">
+<Tabs defaultValue="new">
+<TabItem value="new" label={<><VersionBlock lastVersion="1.99">New spec (beta)</VersionBlock><VersionBlock firstVersion="2.0">New spec</VersionBlock></>}>
 
 <File name='catalogs.yml'>
 
@@ -178,7 +172,7 @@ catalogs:
 </File>
 
 </TabItem>
-<TabItem value="old">
+<TabItem value="old" label="Old spec">
 
 <File name='catalogs.yml'>
 
