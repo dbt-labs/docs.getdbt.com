@@ -46,6 +46,7 @@ dbt-databricks v1.9 adds support for the `table_format: iceberg` config. Try it 
 
 In dbt-databricks v1.10, there are several new model configurations options gated behind the `use_materialization_v2` flag.
 For details, see the [documentation of Databricks behavior flags](/reference/global-configs/databricks-changes).
+In <Constant name="fusion" />, you can also [set `use_materialization_v2` per model](/reference/global-configs/databricks-changes#set-use_materialization_v2-per-model).
 
 ### Python submission methods
 _Available in versions 1.9 or higher_
