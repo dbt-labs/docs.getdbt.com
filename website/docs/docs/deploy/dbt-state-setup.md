@@ -96,7 +96,7 @@ For next steps, see:
    - [Enable dbt State in Studio](/docs/deploy/dbt-state-enable-studio)
 
 </TabItem>
-<TabItem value="new-versions" label="dbt v1.13/dbt v2">
+<TabItem value="latest-versions" label="dbt v1.13/dbt v2">
 
 1. Navigate to your project:
 
