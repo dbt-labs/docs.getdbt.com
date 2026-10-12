@@ -13,6 +13,7 @@ availability: platform_usage
 import WizardSupportedProviders from '/snippets/_wizard-supported-providers.md';
 import WizardTrialBilling from '/snippets/_wizard-trial-billing.md';
 import CopilotWizardDifferences from '/snippets/_copilot-wizard-diff.md';
+import WizardVideoCourse from '/snippets/_wizard-video-course.md';
 
 # About dbt Wizard in dbt platform <Lifecycle status="preview" />
 
@@ -25,6 +26,8 @@ import CopilotWizardDifferences from '/snippets/_copilot-wizard-diff.md';
 AI features are being enabled by default. They're already on for new accounts and are rolling out soon to existing accounts. If your organization opted out, they'll remain off. Admins can [turn AI off or back on and configure providers](/docs/platform/manage-dbt-ai) anytime.
 
 <WizardTrialBilling />
+
+<WizardVideoCourse />
 
 ## Where you can use dbt Wizard
 

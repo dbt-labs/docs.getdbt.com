@@ -14,6 +14,7 @@ import NewToTerminal from '/snippets/_new-to-terminal.md';
 import WizardFeedbackCallout from '/snippets/_wizard-feedback-callout.md';
 import WizardCliDbtCliSupport from '/snippets/_wizard-cli-dbt-cli-support.md';
 import WizardTrialBilling from '/snippets/_wizard-trial-billing.md';
+import WizardVideoCourse from '/snippets/_wizard-video-course.md';
 
 # Install <Constant name="wizard" /> CLI <Lifecycle status="beta"/>
 
@@ -24,6 +25,8 @@ Install the <Constant name="wizard" /> CLI from your terminal for agentic and go
 This guide explains how to install, verify, update, and uninstall the <Constant name="wizard" /> CLI on your local machine.
 
 <WizardTrialBilling />
+
+<WizardVideoCourse />
 
 <WizardCliDbtCliSupport />
 
