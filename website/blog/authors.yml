@@ -39,6 +39,11 @@ arthur_marcon:
   title: Analytics Engineer at Indicium Tech
   name: Arthur Marcon
   page: true
+casey_karst:
+  image_url: /img/blog/authors/casey-karst.png
+  title: Fivetran
+  name: Casey Karst
+  page: true
 barr_yaron:
   image_url: /img/blog/authors/barr-yaron.png
   title: Product Manager at dbt Labs
@@ -281,6 +286,11 @@ jade_milaney:
   image_url: /img/blog/authors/jade-milaney.jpg
   title: Analytics Consultant at Montreal Analytics
   name: Jade Milaney
+  page: true
+jack_lowery:
+  image_url: /img/blog/authors/jack-lowery.png
+  title: Fivetran
+  name: Jack Lowery
   page: true
 jason_ganz:
   image_url: /img/blog/authors/jasnonaz.jpeg
