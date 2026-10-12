@@ -11,7 +11,7 @@ import CopilotResources from '/snippets/_use-copilot-resources.md';
 import WizardIde from '/snippets/_wizard-ide.md';
 import WizardExploreUsage from '/snippets/_wizard-explore-usage.md';
 import WizardModelPicker from '/snippets/_wizard-model-picker.md';
-import WizardVideoCourse from ‘/snippets/_wizard-video-course.md’;
+import WizardVideoCourse from '/snippets/_wizard-video-course.md';
 
 # dbt Wizard in Studio IDE <Lifecycle status="preview"/>
 
