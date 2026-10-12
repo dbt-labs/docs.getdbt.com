@@ -2,7 +2,7 @@
 title: "Path to GA: How the dbt Fusion engine rolls out from beta to production"
 description: "We're moving quickly to enable as many teams as possible to start using the new dbt Fusion engine. Check out our roadmap and learn how to follow our progress."
 slug: dbt-fusion-engine-path-to-ga
-image: /img/blog/2025-05-28-dbt-fusion-engine-path-to-ga/indicative-timeline.png
+image: /img/blog/2025-05-28-dbt-v2-engine-path-to-ga/indicative-timeline.png
 authors: [jeremy_cohen, joel_labes]
 tags: [data ecosystem]
 hide_table_of_contents: false
@@ -125,7 +125,7 @@ It's worth noting that *resolution* doesn't necessarily mean identical behaviour
 
 Here's a point-in-time snapshot of how we expect to tackle the known remaining work. Please refer to the [repository's issues page](https://github.com/dbt-labs/dbt-fusion/issues) as the source of truth:
 
-<Lightbox src="/img/blog/2025-05-28-dbt-fusion-engine-path-to-ga/indicative-timeline.png" title="An indication of the dbt Fusion engine's path to GA" width="100%" />
+<Lightbox src="/img/blog/2025-05-28-dbt-v2-engine-path-to-ga/indicative-timeline.png" title="An indication of the dbt Fusion engine's path to GA" width="100%" />
 
 ### Surprise unimplemented features
 
@@ -143,7 +143,7 @@ So far, we've released the code necessary to self-compile a dbt binary that can 
 
 Beyond just the code necessary to produce a complete dbt binary, we've also committed to open-sourcing several of the underlying library components (such as dbt-jinja, dbt-serde-yaml, and the grammars necessary to produce a high-performance SQL parser). Again, check out the [Components of the dbt Fusion engine](/blog/dbt-fusion-engine-components) post for the details.
 
-Some behaviours that worked in dbt Core won't have an equivalent in this new codebase. The most obvious examples are those which depended on the vagaries of Python: arbitrary callbacks on the EventManager (there's no longer an EventManager on which to register a callback!), the experimental [plugins system](https://github.com/dbt-labs/dbt-core/blob/1.latest/core/dbt/plugins/manager.py) (dynamic loading of binaries works completely differently in Rust and would require signing), or the dbt templater in SQLFluff (which hooked into dbt Core beyond the exposed interfaces - although we plan to build a [fast linter ourselves](https://github.com/dbt-labs/dbt-fusion/issues/11)).
+Some behaviours that worked in dbt Core won't have an equivalent in this new codebase. The most obvious examples are those which depended on the vagaries of Python: arbitrary callbacks on the EventManager (there's no longer an EventManager on which to register a callback!), the experimental [plugins system](https://github.com/dbt-labs/dbt/blob/1.latest/core/dbt/plugins/manager.py) (dynamic loading of binaries works completely differently in Rust and would require signing), or the dbt templater in SQLFluff (which hooked into dbt Core beyond the exposed interfaces - although we plan to build a [fast linter ourselves](https://github.com/dbt-labs/dbt-fusion/issues/11)).
 
 ## Requirement for GA: The DX rocks
 

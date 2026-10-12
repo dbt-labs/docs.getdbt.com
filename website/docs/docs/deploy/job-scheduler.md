@@ -31,7 +31,7 @@ The scheduler also:
 - Uses [<Constant name="dbt" />'s Git repository caching](/docs/platform/account-settings#git-repository-caching) to protect against third-party outages and improve job run reliability. <Lifecycle status="managed,managed_plus" />
 - Powers running dbt in staging and production environments, bringing ease and confidence to CI/CD workflows and enabling observability and governance in deploying dbt at scale. 
 - Uses [Hybrid projects](/docs/deploy/hybrid-projects) to upload <Constant name="core" /> artifacts into dbt for central visibility, cross-project referencing, and easier collaboration. <Lifecycle status="beta,managed_plus" />
-- Uses [dbt State](/docs/deploy/dbt-state-about) to decide what needs to be rebuilt based on upstream data freshness and code changes. <Lifecycle status="preview" />
+- Uses [dbt State](/docs/deploy/dbt-state-about) to decide what needs to be rebuilt based on upstream data freshness and code changes.
 
 ## Scheduler terms
 
@@ -84,8 +84,13 @@ In <Constant name="dbt" />, the setting to provision memory available to a job i
 Jobs consume a lot of memory in the following situations:
 - A high thread count was specified
 - Custom dbt macros attempt to load data into memory instead of pushing compute down to the cloud data platform
+
+<VersionBlock lastVersion="1.99">
+
 - Having a job that generates dbt project documentation for a large and complex dbt project. 
   * To prevent problems with the job running out of memory, we recommend generating documentation in a separate job that is set aside for that task and removing `dbt docs generate` from all other jobs. This is especially important for large and complex projects.
+
+</VersionBlock>
 
 Refer to [<Constant name="dbt" /> architecture](/docs/platform/about-platform/architecture) for an architecture diagram and to learn how the data flows.
 

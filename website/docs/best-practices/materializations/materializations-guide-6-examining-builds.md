@@ -12,7 +12,7 @@ hoverSnippet: Read this guide to understand how to examine your builds in dbt.
 - ⌚ dbt keeps track of how **long each model took to build**, when it started, when it finished, its completion status (error, warn, or success), its materialization type, and _much_ more.
 - 🖼️ This information is stored in a couple files which dbt calls **artifacts**.
 - 📊 Artifacts contain a ton of information in JSON format, so aren’t easy to read, but **<Constant name="dbt" />** packages the most useful bits of information into a tidy **visualization** for you.
-- ☁️ If you’re not using <Constant name="dbt_platform" />, we can still use the output of the **<Constant name="core" /> CLI to understand our runs**.
+- ☁️ If you’re not using <Constant name="dbt_platform" />, we can still use the output of the **dbt CLI to understand our runs**.
 
 ### Model timing
 
@@ -40,7 +40,7 @@ That’s where <Constant name="dbt" />’s Model Timing visualization comes in e
 
 If you aren’t using <Constant name="dbt" />, that’s okay! We don’t get a fancy visualization out of the box, but we can use the output from the <Constant name="core" /> CLI to check our model times, and it’s a great opportunity to become familiar with that output.
 
-### dbt Core CLI output
+### dbt v1 CLI output
 
 If you’ve ever run dbt, whether `build`, `test`, `run` or something else, you’ve seen some output like below. Let’s take a closer look at how to read this.
 

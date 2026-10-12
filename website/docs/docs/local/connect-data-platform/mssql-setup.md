@@ -1,5 +1,5 @@
 ---
-title: "Connect Microsoft SQL Server to dbt Core"
+title: "Connect Microsoft SQL Server to dbt v1"
 sidebar_label: "Microsoft SQL Server"
 description: "Read this guide to learn about the Microsoft SQL Server warehouse setup in dbt."
 id: "mssql-setup"

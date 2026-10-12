@@ -44,9 +44,14 @@ You can create a deploy job and configure it to run on [scheduled days and times
     - **Environment** &mdash;  By default, it’s set to the deployment environment you created the deploy job from.
 3. Options in the **Execution settings** section:
     - [**Commands**](/docs/deploy/job-commands#built-in-commands) &mdash; By default, it includes the `dbt build` command. Click **Add command** to add more [commands](/docs/deploy/job-commands) that you want to be invoked when the job runs. During a job run, [built-in commands](/docs/deploy/job-commands#built-in-commands) are "chained" together and if one run step fails, the entire job fails with an "Error" status. 
-    - [**Generate docs on run**](/docs/deploy/job-commands#checkbox-commands) (not applicable to <Constant name="fusion" /> jobs) &mdash; Enable this option if you want to [generate project docs](/docs/explore/build-and-view-your-docs) when this deploy job runs. If the step fails, the job can succeed if subsequent steps pass. 
-    - [**Run source freshness**](/docs/deploy/job-commands#checkbox-commands) &mdash; Enable this option to invoke the `dbt source freshness` command before running the deploy job. If the step fails, the job can succeed if subsequent steps pass. Refer to [Source freshness](/docs/deploy/source-freshness) for more details.
-    - [**Enable dbt State**](/docs/deploy/dbt-state-about) <Lifecycle status="preview" /> &mdash; dbt State reduces unnecessary model rebuilds by reusing nodes when neither the logic nor the data has changed. For more details, refer to [Setting up dbt State](/docs/deploy/dbt-state-setup) and [Enabling dbt State on individual jobs](/docs/deploy/dbt-state-enable-jobs).
+    <VersionBlock lastVersion="1.99">
+
+    - [**Generate docs on run**](/docs/deploy/job-commands#checkbox-commands) &mdash; Enable this option if you want to [generate project docs](/docs/explore/build-and-view-your-docs) when this deploy job runs. If the step fails, the job can succeed if subsequent steps pass.
+
+    </VersionBlock>
+
+    - [**Run source freshness**](/docs/deploy/source-freshness) &mdash; Enable this option to invoke the `dbt source freshness` command before running the deploy job. If the step fails, the job can succeed if subsequent steps pass. Refer to [Source freshness](/docs/deploy/source-freshness) for more details.
+    - [**dbt State**](/docs/deploy/dbt-state-about) &mdash; [dbt State] reuses nodes when their logic and data haven’t changed, avoiding unnecessary rebuilds. Select **On**, **Off**, or **Inherited from environment** to use the environment’s setting. This option appears only when dbt State is [enabled](/docs/deploy/dbt-state-setup) on your account. Learn more about [enabling dbt State on individual jobs](/docs/deploy/dbt-state-enable-env-jobs#enabling-dbt-state-on-individual-jobs).
 4. Options in the **Triggers** section:
     - **Run on schedule** &mdash; Run the deploy job on a set schedule.
         - **Timing** &mdash; Specify whether to [schedule](#schedule-days) the deploy job using **Intervals** that run the job every specified number of hours, **Specific hours** that run the job at specific times of day, or **Cron schedule** that run the job specified using [cron syntax](#cron-schedule).
@@ -72,7 +77,7 @@ You can create a deploy job and configure it to run on [scheduled days and times
     :::
 
     - **dbt version** &mdash; By default, it’s set to inherit the [dbt version](/docs/dbt-versions) from the environment. dbt Labs strongly recommends that you don't change the default setting. This option to change the version at the job level is useful only when you upgrade a project to the next dbt version; otherwise, mismatched versions between the environment and job can lead to confusing behavior. 
-    - **Threads** &mdash; By default, it’s set to 4 [threads](/docs/local/profiles.yml#understanding-threads). Increase the thread count to increase model execution concurrency.
+    - **Threads** &mdash; By default, it’s set to 4 [threads](/docs/running-a-dbt-project/using-threads). Increase the thread count to increase model execution concurrency.
 
     <Lightbox src="/img/docs/dbt-platform/using-dbt-platform/deploy-job-adv-settings.png" width="90%" title="Example of Advanced Settings on the Deploy Job page"/>
 

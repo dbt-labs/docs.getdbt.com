@@ -62,6 +62,9 @@ export const VersionContextProvider = ({ value = "", children }) => {
 
   // Helper to update URL with the version parameter
   const updateUrlParams = useCallback((newSubProductName) => {
+    // Blog posts aren't versioned content, so never add a version param there
+    if (location.pathname.startsWith('/blog')) return
+
     const url = new URL(window.location.href)
     const sp = findSubProduct(newSubProductName);
 
@@ -70,13 +73,19 @@ export const VersionContextProvider = ({ value = "", children }) => {
     url.searchParams.delete('name')
 
     if (sp?.version) {
-      url.searchParams.set('version', sp.version)
+      // Group-level selections (e.g. "v1") use major version in URL (?version=1)
+      // Specific selections (e.g. "dbt Core v1.12") use full version (?version=1.12)
+      const productName = findProductForSubProduct(newSubProductName);
+      const urlVersion = newSubProductName === productName
+        ? sp.version.split('.')[0]
+        : sp.version;
+      url.searchParams.set('version', urlVersion)
     } else {
       url.searchParams.delete('version')
     }
 
     window.history.replaceState({}, '', url.toString())
-  }, [])
+  }, [location.pathname])
 
   // Resolve a subProduct name from URL search params
   const resolveSubProductFromSearch = useCallback((search) => {
@@ -219,8 +228,14 @@ export const VersionContextProvider = ({ value = "", children }) => {
   const currentProductName = findProductForSubProduct(subProductName)
   const latestStableRelease = versions.find((ver) => !ver?.isPrerelease)
 
+  const fullVersion = currentSubProduct?.version || defaultSubProduct?.version;
+  const urlVersion = subProductName === currentProductName
+    ? fullVersion?.split('.')[0]
+    : fullVersion;
+
   const context = {
-    version: currentSubProduct?.version || defaultSubProduct?.version,
+    version: fullVersion,
+    urlVersion,
     subProduct: subProductName,
     product: currentProductName,
     EOLDate: currentSubProduct?.EOLDate,

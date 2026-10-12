@@ -8,23 +8,26 @@ availability:
   access: login_required
 ---
 
-<Constant name="dbt" /> is [hosted](/docs/platform/about-platform/architecture) in multiple regions across the following service providers:
+Except as indicated below, <Constant name="dbt" /> is [hosted](/docs/platform/about-platform/architecture) in multiple regions across the following service providers:
 
 - [Amazon Web Services](#AWS)
 - [Google Cloud Platform](#GCP)
 - [Microsoft Azure](#Azure)
 
-Your <Constant name="dbt" /> account will always connect to your data platform or git provider from the below IP addresses. Be sure to allow traffic from these IPs in your firewall, and include them in any database grants.
+Your <Constant name="dbt" /> account will connect to your data platform or git provider from the below IP addresses. Be sure to allow traffic from these IPs in your firewall, and include them in any database grants.
 
 - [<Constant name="dbt" /> Enterprise-tier](https://www.getdbt.com/pricing/) plans can choose to have their account hosted in any of the regions listed in the following table. 
 - Organizations **must** choose a single region per <Constant name="dbt" /> account. To run <Constant name="dbt" /> in multiple regions, we recommend using multiple <Constant name="dbt" /> accounts. 
+
+[dbt State](/docs/deploy/dbt-state-about) is currently only available in a Google Cloud Platform US region. For more information, refer to [How is data stored in dbt State?](/faqs/State/data-storage)
 
 ## Amazon Web Services (AWS) {#AWS}
 
 
 | Region | Location | <div style={{width:'110px'}}>Access URL</div> | <div style={{width:'100px'}}>IP addresses</div> | Available plans | <div style={{width:'200px'}}>Status page link</div> |
 |--------|----------|------------|--------------|-------| --------- |
-| North America  | AWS us-east-1 (N. Virginia) | <small>ACCOUNT_PREFIX.us1.dbt.com</small> | 52.45.144.63 <br /> 54.81.134.249 <br />52.22.161.231 <br />52.3.77.232 <br />3.214.191.130 <br />34.233.79.135 | [All dbt platform plans](https://www.getdbt.com/pricing/) | **Multi-tenant:** <br /> [US AWS](https://status.getdbt.com/us-aws)<br /><br /> **Cell based:** <br />[US Cell 1 AWS](https://status.getdbt.com/us-cell-1-aws) <br /> [US Cell 2 AWS](https://status.getdbt.com/us-cell-2-aws) <br /> [US Cell 3 AWS](https://status.getdbt.com/us-cell-3-aws) <br /> [US Cell 4 AWS](https://status.getdbt.com/us-cell-4-aws) |
+| North America  | AWS us-east-1 (N. Virginia) | <small>ACCOUNT_PREFIX.us1.dbt.com</small> | 52.45.144.63 <br /> 54.81.134.249 <br />52.22.161.231 <br />52.3.77.232 <br />3.214.191.130 <br />34.233.79.135 | [All dbt platform plans](https://www.getdbt.com/pricing/) | **Multi-tenant:** <br /> [US East AWS](https://status.getdbt.com/us-aws)<br /><br /> **Cell based:** <br />[US East Cell 1 AWS](https://status.getdbt.com/us-cell-1-aws) <br /> [US East Cell 2 AWS](https://status.getdbt.com/us-cell-2-aws) <br /> [US East Cell 3 AWS](https://status.getdbt.com/us-cell-3-aws) <br /> [US East Cell 4 AWS](https://status.getdbt.com/us-cell-4-aws) |
+| North America  | AWS us-west-2 (Oregon)      | <small>ACCOUNT_PREFIX.us5.dbt.com</small> | 32.185.64.51 <br /> 34.217.173.137 <br /> 52.37.223.167 | All Enterprise plans | [US West Cell 1 AWS](https://status.getdbt.com/us-5-cell-1-aws) |
 | EMEA  | eu-central-1	(Frankfurt) | <small>ACCOUNT_PREFIX.eu1.dbt.com</small> | 3.123.45.39 <br /> 3.126.140.248 <br /> 3.72.153.148 | All Enterprise plans | [EMEA AWS](https://status.getdbt.com/emea-aws) |
 | APAC  | ap-southeast-2  (Sydney)| <small>ACCOUNT_PREFIX.au1.dbt.com</small> | 52.65.89.235 <br /> 3.106.40.33 <br /> 13.239.155.206 <br />|  All Enterprise plans | [APAC AWS](https://status.getdbt.com/apac-aws) |
 | Japan | ap-northeast-1 (Tokyo) | <small>ACCOUNT_PREFIX.jp1.dbt.com</small> | 35.76.76.152 <br />  54.238.211.79 <br /> 13.115.236.233 <br /> | All Enterprise plans | [JP Cell 1 AWS](https://status.getdbt.com/jp-cell-1-aws) | 

@@ -1,6 +1,6 @@
 ---
 title: What version of Python can I use?
-description: "Python versions supported with dbt Core"
+description: "Python versions supported with dbt v1"
 sidebar_label: 'Python version'
 id: install-python-compatibility
 ---

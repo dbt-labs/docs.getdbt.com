@@ -10,7 +10,7 @@ The default value is now `true`. To preserve the previous behavior, set this fla
 
 :::
 
-| require_generic_test_arguments_property | <Constant name="dbt" /> **Latest** | <Constant name="core" /> |
+| require_generic_test_arguments_property | <Constant name="dbt" /> **v1 Latest** | <Constant name="core" /> |
 |---|---|---|
 | Introduced | 2025.07 | 1.10.5 |
 | Matured (default → `true`) | 2025.08 | 1.10.8 |
@@ -18,7 +18,7 @@ The default value is now `true`. To preserve the previous behavior, set this fla
 
 dbt supports parsing key-value arguments that are inputs to generic tests when specified under the `arguments` property. In the past, dbt didn't support a way to clearly disambiguate between properties that were inputs to generic tests and framework configurations, and only accepted arguments as top-level properties.
 
-If you are on an older Core version where the flag is `false`, dbt will recognize the `arguments` property but raise the `ArgumentsPropertyInGenericTestDeprecation` warning.
+If you are on an older <Constant name="core" /> version where the flag is `false`, dbt will recognize the `arguments` property but raise the `ArgumentsPropertyInGenericTestDeprecation` warning.
 
 Here's an example using the new `arguments` property:
 
