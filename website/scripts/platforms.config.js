@@ -364,6 +364,9 @@ const PLATFORMS = [
           [...article.querySelectorAll('a')]
             .map((a) => a.getAttribute('href'))
             .filter((href) => href && /\/sql\/functions\//.test(href) && !/overview/.test(href))
+            // The overview links some pages twice (plain and with a #fragment or .html).
+            // Strip both so each page is scraped once and its category name is clean.
+            .map((href) => href.split('#')[0].replace(/\.html$/, ''))
         ),
       ];
 
