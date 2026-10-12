@@ -26,8 +26,6 @@ This guide explains how to install, verify, update, and uninstall the <Constant 
 
 <WizardTrialBilling />
 
-<WizardVideoCourse />
-
 <WizardCliDbtCliSupport />
 
 ## Prerequisites
@@ -53,6 +51,7 @@ Run the following command to update <Constant name="wizard" /> to the latest ver
 ```bash
 wizard update
 ```
+<WizardVideoCourse />
 
 ## Uninstall
 
