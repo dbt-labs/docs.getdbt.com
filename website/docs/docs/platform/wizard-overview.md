@@ -16,6 +16,7 @@ import WizardCliInstall from '/snippets/_wizard-cli-install-by-version.md';
 import NewToTerminal from '/snippets/_new-to-terminal.md';
 import WizardFeedbackCallout from '/snippets/_wizard-feedback-callout.md';
 import WizardTrialBilling from '/snippets/_wizard-trial-billing.md';
+import WizardVideoCourse from ‘/snippets/_wizard-video-course.md’;
 
 # About dbt Wizard
 
@@ -54,6 +55,8 @@ The following table shows where <Constant name="wizard" /> is available, the AI 
 | [Locally: Wizard Desktop](/docs/dbt-ai/wizard-desktop) | Private beta | dbt <Term id="managed" /> or BYOK |
 
 </SimpleTable>
+
+<WizardVideoCourse />
 
 ## Supported providers
 
