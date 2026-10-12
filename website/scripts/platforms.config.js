@@ -375,7 +375,10 @@ const PLATFORMS = [
         all.push(...scrapeDuckdbCategoryPage(html, pageUrl, category));
       }
 
-      return [...new Map(all.map((f) => [f.name, f])).values()];
+      // Dedupe per category, not per name: DuckDB documents some functions in
+      // more than one section (for example, GENERATE_SERIES and RANGE in both
+      // utility and timestamptz, UNNEST in both list and utility).
+      return [...new Map(all.map((f) => [`${f.category}::${f.name}`, f])).values()];
     },
   },
 ];
