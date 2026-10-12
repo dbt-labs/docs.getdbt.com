@@ -6,7 +6,12 @@ import getIconType from "../../utils/get-icon-type";
 import BorderBeam from '../borderBeam';
 import Lifecycle from '../lifeCycle';
 
-function Card({ title, body, link, icon, pills, tag, lifecycle, showBorderBeam = false }) {
+function Card({ title, body, link, icon, pills, tag, lifecycle, showBorderBeam = false, headingLevel = 4 }) {
+  // Callers can raise the title's heading level to keep the page outline
+  // sequential (for example, h3 cards under an h2 on the homepage). The
+  // heading-4 class keeps the look the same at any level.
+  const Heading = `h${headingLevel}`;
+
   // Set styles for icon if available in styles.module.css
   let imgClass = styles[icon] || ''
 
@@ -32,7 +37,7 @@ function Card({ title, body, link, icon, pills, tag, lifecycle, showBorderBeam =
             {lifecycle && <Lifecycle status={lifecycle} />}
           </div>
           {tag && <span className="tag">{tag}</span>}
-          <h4 className="heading-4">{title}</h4>
+          <Heading className="heading-4">{title}</Heading>
           <div
             className={styles.cardBody}
             dangerouslySetInnerHTML={{ __html: body }}
@@ -45,7 +50,7 @@ function Card({ title, body, link, icon, pills, tag, lifecycle, showBorderBeam =
           {lifecycle && <Lifecycle status={lifecycle} />}
         </div>
         {tag && <span className="tag">{tag}</span>}
-        <h4 className="heading-4">{title}</h4>
+        <Heading className="heading-4">{title}</Heading>
         <div
           className={styles.cardBody}
           dangerouslySetInnerHTML={{ __html: body }}
