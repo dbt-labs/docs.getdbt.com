@@ -1,5 +1,5 @@
 ---
-title: "Setting up authentication for non-interactive environments"
+title: "Set up authentication for non-interactive environments"
 sidebar_label: "Set up auth for non-interactive environments"
 description: "Learn how to configure dbt State authentication for CI/CD and other non-interactive environments using service tokens."
 id: "dbt-state-cicd"
@@ -7,7 +7,7 @@ tags: ['dbt State']
 availability: everywhere_usage
 ---
 
-# Setting up authentication for non-interactive environments
+# Set up authentication for non-interactive environments
 
 In a non-interactive environment, dbt runs without a person available to complete authentication manually &mdash; for example, CI/CD pipelines (such as GitHub Actions, GitLab CI, and Jenkins) and production orchestration tools (such as Airflow and Prefect). Browser-based authentication isn't possible in these environments. Instead, dbt State authenticates using credentials provided through environment variables, allowing it to continue caching state and optimizing your builds.
 
@@ -25,7 +25,7 @@ Before you begin, make sure you have:
 - **Owner** or **Account Admin** permissions to create a service token.
 - dbt State installed and configured. Refer to [Set up dbt State](/docs/deploy/dbt-state-setup) for more information.
 
-## Creating a service token
+## Create a service token
 
 To create a service account token in <Constant name="dbt_platform" />, refer to [Generate service account tokens](/docs/dbt-apis/service-tokens#generate-service-account-tokens). When adding permissions for the token, assign at least one of the following:
 
@@ -38,7 +38,7 @@ The following are available on Enterprise plans only:
 - **Job Runner** (Recommended; provides the minimum access required for dbt State)
 - **Developer**
 
-## Configuring authentication
+## Configure authentication
 
 Set the following environment variables in your orchestration environment:
 

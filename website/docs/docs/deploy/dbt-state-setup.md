@@ -165,7 +165,7 @@ To install the plugin:
 
 4. Run `dbt run` or `dbt build`.
 
-   The first time you execute `dbt run` or `dbt build`, a browser window opens where you can log in to or create a free <Constant name="dbt_platform" /> account. If you're creating a new account:
+   The first time you execute `dbt run` or `dbt build`, a browser window opens and prompts you to log in to or create a free <Constant name="dbt_platform" /> account. If you're creating a new account:
    1. Enter your name and password.
    2. Select **Enable a trial of dbt State**.
    3. Agree to the Terms of Service and click **Continue**.

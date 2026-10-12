@@ -75,7 +75,7 @@ In self-managed deployments, you can also use dbt State with `state:*` selectors
 dbt State requires a <Constant name="dbt_platform" /> account for authentication, even if you run dbt locally or in a non-interactive environment.
 
 - **Existing <Constant name="dbt_platform" /> users**: Your dbt State credentials are the same as your platform credentials, and dbt State has access to your platform environments and jobs.
-- **New to <Constant name="dbt_platform" />**: Create an account from the [dbt platform sign-up page](http://us1.dbt.com/register?_dbtsrc=dbt-state). For dbt v2 and v1 users, you can trigger sign-up from the CLI by running `dbt login` (dbt v2) or `dbt run`/`dbt build` (dbt v1.7–1.12), which opens the sign-up page where you can create a free account.
+- **New to <Constant name="dbt_platform" />**: Create an account from the [dbt platform sign-up page](http://us1.dbt.com/register?_dbtsrc=dbt-state). For dbt v2 and v1 users, you can start the account creation workflow from the CLI by running `dbt login` (dbt v2) or `dbt run`/`dbt build` (dbt v1.7–1.12), which opens the sign-up page where you can create a free account.
 
 For setup steps, refer to [Set up dbt State](/docs/deploy/dbt-state-setup).
 
@@ -100,7 +100,7 @@ For setup steps, refer to [Set up dbt State](/docs/deploy/dbt-state-setup).
 
 - [Set up dbt State](/docs/deploy/dbt-state-setup)
 - [Monitor dbt State activity](/docs/deploy/dbt-state-interface)
-- [Setting up authentication for non-interactive environments](/docs/deploy/dbt-state-cicd)
+- [Set up authentication for non-interactive environments](/docs/deploy/dbt-state-cicd)
 - [dbt State configs](/reference/resource-configs/dbt-state-configs)
 - [Migrate from state-aware orchestration](/docs/deploy/dbt-state-migration)
 - [dbt State trial and billing](/docs/deploy/dbt-state-trial)
