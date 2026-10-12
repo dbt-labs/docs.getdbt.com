@@ -64,7 +64,7 @@ function Card({ title, body, link, icon, pills, tag, lifecycle, showBorderBeam =
           </li>
         )}
       </ul>
-      {badgeHref && (
+      {badgeHref && availableInCurrentVersion(version, "0", "1.99") && (
         <a href={badgeHref}>
           <img alt="" src={`${badgeHref}.svg`} />
         </a>

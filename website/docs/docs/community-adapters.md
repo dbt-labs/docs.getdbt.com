@@ -7,9 +7,13 @@ hide_table_of_contents: true
 availability: all_users
 ---
 
+<VersionBlock lastVersion="1.99">
+
 :::note
 The Trusted Adapter Program for v1 has ended. All dbt, partner, and community maintained adapters are listed together on this page.
 :::
+
+</VersionBlock>
 
 Adapters connect dbt to data platforms. They are maintained by dbt Labs, partners, and community members.
 
