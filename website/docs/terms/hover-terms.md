@@ -83,6 +83,12 @@ etl:
   displayText: ETL
   hoverSnippet: Extract, Transform, Load (ETL) is the process of first extracting data from a data source, transforming it, and then loading it into a target data warehouse.
 
+git-worktree:
+  displayText: worktree
+  hoverSnippet: A worktree is a second copy of your repo in its own folder, on its own branch. Same repo and same history, just a separate place to work, so changes in one worktree don't touch the files in another.
+  hoverLink: https://git-scm.com/docs/git-worktree
+  hoverLinkText: Refer to the git worktree docs.
+
 grain:
   displayText: grain
   hoverSnippet: Your data's grain is the combination of columns at which records in a table are unique. Ideally, this is captured in a single column and a unique primary key.
@@ -101,11 +107,11 @@ lsp:
 
 managed:
   displayText: managed
-  hoverSnippet: dbt Labs manages the AI provider connection; no user provider key is required. Refer to
-  hoverLink: /docs/platform/billing
-  hoverLinkText: Billing
-  hoverLinkSuffix: for more info.
+  hoverSnippet: dbt Labs manages the AI provider connection. Usage is billed by dbt, so no provider key is required.
 
+inference:
+  displayText: inference
+  hoverSnippet: Running a trained AI model to get a response. Every agent turn is one or more inference calls. Usage is billed per inference call.
 
 materialization:
   displayText: materialization
@@ -149,7 +155,15 @@ sql-expression:
 
 sql-rendering:
   displayText: SQL rendering
-  hoverSnippet: The dbt Core engine takes SQL with Jinja, and renders all the macros present in the model to produce SQL that is ready to run against the database. For SQL parsing and compilation capabilities, use the Fusion engine instead to better understand your SQL structure.
+  hoverSnippet: The dbt v1 engine takes SQL with Jinja, and renders all the macros present in the model to produce SQL that is ready to run against the database. For SQL parsing and compilation capabilities, use the dbt v2 engine instead to better understand your SQL structure.
+
+introspective-adapter-call:
+  displayText: introspective adapter call
+  hoverSnippet: A macro call, such as adapter.execute or adapter.get_columns_in_relation, that queries your data platform at run time. dbt lint never connects to a warehouse, so these calls have no real result at lint time.
+
+introspective-macro:
+  displayText: introspective macro
+  hoverSnippet: A macro that makes an introspective adapter call, such as adapter.execute or adapter.get_columns_in_relation, to query your data platform. dbt lint never connects to a warehouse, so these macros have no real result at lint time.
 
 selector-expression:
   displayText: selector expression
@@ -162,6 +176,10 @@ subquery:
 surrogate-key:
   displayText: surrogate key
   hoverSnippet: A surrogate key is a unique identifier derived from the data itself. It often takes the form of a hashed value of multiple columns that will create a uniqueness constraint for each row.
+
+target-schema:
+  displayText: target schema
+  hoverSnippet: Your target schema is the schema dbt builds your models into for a given environment, set in your connection or profile. Dev work usually goes to your own schema so you don't overwrite anyone else's tables.
 
 table:
   displayText:  table

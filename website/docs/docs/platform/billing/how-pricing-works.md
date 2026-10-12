@@ -6,7 +6,7 @@ sidebar_label: "How pricing works"
 availability: platform
 ---
 
-As a customer, you pay for the number of seats you have and the amount of usage consumed each month.  Seats are billed primarily on the amount of Developer and Read licenses purchased. 
+As a customer, you pay for the number of seats you have and the amount of usage consumed each month.  Seats are billed primarily on the amount of licenses purchased. 
 
 Usage is based on the number of [Successful Models Built](#what-counts-as-a-successful-model-built) and, if purchased and used, <Constant name="semantic_layer" /> [Queried Metrics](#what-counts-as-a-queried-metric) subject to reasonable usage. All billing computations are conducted in Coordinated Universal Time (UTC).
 
@@ -38,6 +38,9 @@ When a dynamic table is initially created, the model is counted (if the creation
 | Tests                                       | ❌                  |
 | Seeds                                       | ❌                  |
 | Snapshots                                   | ❌                  |
+
+<br />
+When [dbt State](/docs/deploy/dbt-state-about) is enabled, a reused model (skipped or cloned) doesn't count as a Successful Model Built. They're billed separately as daily active target tables (DATTs). For more information, refer to [dbt State usage](/docs/platform/billing/dbt-state-usage).
 
 ### What counts as a Queried Metric?
 

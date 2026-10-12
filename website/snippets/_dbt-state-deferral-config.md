@@ -1,6 +1,6 @@
 By default, dbt State defers to your production environment. To control which environment dbt State defers to, configure it based on your setup:
 
-- **<Constant name="dbt_platform" />**: Add `project-id` (and optionally `defer-env-id`) to the `dbt-cloud` config block in `dbt_project.yml`. Refer to [Configure Cloud CLI](/docs/platform/dbt-cli-installation) for more information.
+- **<Constant name="dbt_platform" />**: Add `project-id` (and optionally `defer-env-id`) to the `dbt-cloud` config block in `dbt_project.yml`. Refer to [Configure the dbt platform CLI](/docs/platform/dbt-cli-installation) for more information.
 
   <File name="dbt_project.yml">
 

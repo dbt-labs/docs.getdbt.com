@@ -4,7 +4,7 @@ id: "allow_jinja_file_extensions"
 sidebar_label: "allow jinja file extensions"
 ---
 
-| allow_jinja_file_extensions | <Constant name="dbt" /> **Latest** | <Constant name="core" /> |
+| allow_jinja_file_extensions | <Constant name="dbt" /> **v1 Latest** | <Constant name="core" /> |
 |---|---|---|
 | Introduced | 2026.5 | 1.12.0 |
 | Matured (default → `true`) | — | — |

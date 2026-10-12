@@ -289,7 +289,7 @@ models:
 </File>
 </VersionBlock>
 
-When you run the query  `dbt sl query --metrics d7_booking_change --group-by metric_time__month` for the metric, here's how it's calculated. For dbt Core, you can use the `mf query` prefix. 
+When you run the query  `dbt sl query --metrics d7_booking_change --group-by metric_time__month` for the metric, here's how it's calculated. For <Constant name="core" />, you can use the `mf query` prefix. 
 
 1. Retrieve the raw, unaggregated dataset with the specified <VersionBlock lastVersion="1.11">measure</VersionBlock><VersionBlock firstVersion="1.12">simple metric</VersionBlock> and dimensions at the smallest level of detail, which is currently 'day'.
 2. Then, perform an offset join on the daily dataset, followed by performing a date trunc and aggregation to the requested granularity.

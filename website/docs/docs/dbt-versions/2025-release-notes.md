@@ -27,7 +27,7 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 - **New and enhancements:** The dbt [Studio IDE user interface](/docs/platform/studio-ide/ide-user-interface) has been enhanced to bring more powerful development features to your fingertips:
   -  A newly designed toolbar that groups all of your action and project insight tabs for easy access.
   - A dedicated inline **Commands** tab for history and logs.
-  - When you upgrade your development environment to the <Constant name="fusion_engine" />, the environment includes a new **Problems** tab that gives you live error detection on issues that could block your project from running successfully. 
+  - When you upgrade your development environment to <Constant name="fusion_engine" />, the environment includes a new **Problems** tab that gives you live error detection on issues that could block your project from running successfully. 
  
 ## November 2025
 
@@ -53,10 +53,10 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 The following features are new or enhanced as part of [dbt's Coalesce analytics engineering conference](https://coalesce.getdbt.com/event/21662b38-2c17-4c10-9dd7-964fd652ab44/summary) from October 13-16, 2025:
 
 - **New**: The [dbt MCP server](/docs/dbt-ai/about-mcp) is now generally available (GA). For more information on the dbt MCP server and dbt Agents, refer to the [Announcing dbt Agents and the remote dbt MCP Server: Trusted AI for analytics](https://www.getdbt.com/blog/dbt-agents-remote-dbt-mcp-server-trusted-ai-for-analytics) blog post.
-- **Private preview**: The [dbt platform (powered by Fusion)](/docs/dbt-versions/upgrade-dbt-platform-version#dbt-fusion-engine) is now in private preview. If you have any questions, please reach out to your account manager.
+- **Private preview**: The [dbt platform (powered by Fusion)](/docs/dbt-versions/upgrade-dbt-platform-version#dbt-v2) is now in private preview. If you have any questions, please reach out to your account manager.
   - [About data platform connections](/docs/platform/connect-data-platform/about-connections) lists all available <Constant name="dbt_platform" /> connections on Fusion and the supported authentication methods per connection. 
 - **New**: Fusion‑specific configuration is now available for BigQuery, Databricks, Redshift, and Snowflake. For more information, see [Connect Fusion to your data platform](/docs/local/profiles.yml).
-- **Alpha**: The `dbt-salesforce` adapter is available via the <Constant name="fusion_engine" /> CLI. Note that this connection is in the Alpha product stage and is not production-ready. For more information, see [Salesforce Data Cloud setup](/docs/local/connect-data-platform/salesforce-data-cloud-setup).
+- **Alpha**: The `dbt-salesforce` adapter is available via <Constant name="fusion_engine" /> CLI. Note that this connection is in the Alpha product stage and is not production-ready. For more information, see [Salesforce Data Cloud setup](/docs/local/connect-data-platform/salesforce-data-cloud-setup).
 - **Private preview**: [State-aware orchestration](/docs/deploy/state-aware-about) is now in private preview!
   - **New**: You can now [enable state-aware orchestration](/docs/deploy/state-aware-setup) by selecting **Enable Fusion cost optimization features** in your job settings. Previously, you had to disable **Force node selection** to enable state-aware orchestration.  
   - **Private beta**: The [Efficient Testing feature](/docs/deploy/state-aware-about#efficient-testing-in-state-aware-orchestration) is now available in private beta. This feature reduces warehouse costs by avoiding redundant data tests and combining multiple tests in a single query.
@@ -69,7 +69,7 @@ The following features are new or enhanced as part of [dbt's Coalesce analytics 
 - **New**: [dbt <Constant name="insights" />](/docs/explore/dbt-insights) is now generally available (GA)!
   - **Private beta**: The [Analyst agent](/docs/explore/navigate-dbt-insights#dbt-copilot) is now available in dbt <Constant name="insights" />. The Analyst agent is a conversational AI feature where you can ask natural language prompts and receive analysis in real-time. For more information, see [Analyze data with the Analyst agent](/docs/dbt-ai/analyst-agent).
   - **Beta**: The [Semantic Layer querying](/docs/explore/navigate-dbt-insights#semantic-layer-querying) within dbt <Constant name="insights" /> is now available in beta. With this feature, you can build SQL queries against the Semantic Layer without writing SQL code. It guides you in creating queries based on available metrics, dimensions, and entities.
-  - **Enhancement**: In [dbt <Constant name="insights" />](/docs/explore/dbt-insights), projects upgraded to the [<Constant name="fusion_engine" />](/docs/fusion/about-fusion) get [Language Server Protocol (LSP) features](/docs/explore/navigate-dbt-insights#lsp-features) and their compilation running on <Constant name="fusion" />.
+  - **Enhancement**: In [dbt <Constant name="insights" />](/docs/explore/dbt-insights), projects upgraded to the [<Constant name="fusion_engine" />](/docs/introduction) get [Language Server Protocol (LSP) features](/docs/explore/navigate-dbt-insights#lsp-features) and their compilation running on <Constant name="fusion" />.
 - **New**: [MetricFlow](/docs/build/about-metricflow) is now developed and maintained as part of the [Open Semantic Interchange (OSI)](https://www.snowflake.com/en/blog/open-semantic-interchange-ai-standard/) initiative, and is distributed under the [Apache 2.0 license](https://github.com/dbt-labs/metricflow/blob/main/LICENSE). For more information, see the blog post about [Open sourcing MetricFlow](https://www.getdbt.com/blog/open-source-metricflow-governed-metrics).
 
 ### Pre-Coalesce 
@@ -127,9 +127,9 @@ Snowflake connections that use External OAuth for user credentials can now emit 
 The following features are new or enhanced as part of our [dbt Launch Showcase](https://www.getdbt.com/resources/webinars/2025-dbt-cloud-launch-showcase) on May 28th, 2025:
 
 - **New**: The dbt Fusion engine is the brand new dbt engine re-written from the ground up to provide incredible speed, cost-savings tools, and comprehensive SQL language tools. The dbt Fusion engine is now available in beta for Snowflake users.
-  - Read more [about Fusion](/docs/fusion/about-fusion).
-  - Understand what actions you need to take to get your projects Fusion-ready with the [upgrade guide](/docs/dbt-versions/core-upgrade/upgrading-to-v2).
-  - Begin testing today with the [quickstart guide](/guides/fusion).
+  - Read more [about Fusion](/docs/introduction).
+  - Understand what actions you need to take to get your projects Fusion-ready with the [upgrade guide](/docs/dbt-versions/dbt-upgrade/upgrading-to-v2).
+  - Begin testing today with the [quickstart guide](/guides/dbt).
   - Know [where we're headed with the dbt Fusion engine](https://getdbt.com/blog/where-we-re-headed-with-the-dbt-fusion-engine). 
 - **New**: The dbt VS Code extension is a powerful new tool that brings the speed and productivity of the dbt Fusion engine into your Visual Studio Code editor. This is a free download that will forever change your dbt development workflows. The dbt VS Code extension is now available as beta [alongside Fusion](https://getdbt.com/blog/get-to-know-the-new-dbt-fusion-engine-and-vs-code-extension). Check out the [installation instructions](/docs/install-dbt-extension) and read more [about the features](/docs/about-dbt-extension) to get started enhancing your dbt workflows today! 
 - **New**: dbt Explorer is now <Constant name="catalog" />! Learn more about the change [here](https://getdbt.com/blog/updated-names-for-dbt-platform-and-features).
@@ -186,7 +186,7 @@ The following features are new or enhanced as part of our [dbt Developer day](ht
 
 #### Also available this month
 
-- **New**: Bringing your own [Azure OpenAI key](/docs/platform/enable-dbt-ai#enable-ai-features) for [<Constant name="wizard" />](/docs/platform/wizard-platform) is now generally available. Your organization can configure <Constant name="wizard" /> to use your own Azure OpenAI keys, giving you more control over data governance and billing.
+- **New**: Bringing your own [Azure OpenAI key](/docs/platform/manage-dbt-ai#manage-ai-features) for [<Constant name="wizard" />](/docs/platform/wizard-platform) is now generally available. Your organization can configure <Constant name="wizard" /> to use your own Azure OpenAI keys, giving you more control over data governance and billing.
 - **New**: The <Constant name="semantic_layer" /> supports Power BI as a [partner integration](/docs/platform-integrations/avail-sl-integrations), available in private beta. To join the private beta, please reach out to your account representative. Check out the [Power BI](/docs/platform-integrations/semantic-layer/power-bi) integration for more information.
 - **New**: [<Constant name="dbt" /> release tracks](/docs/dbt-versions/dbt-release-tracks) are Generally Available. Depending on their plan, customers may select among the Latest, Compatible, or Extended tracks to manage the update cadences for development and deployment environments.
 - **New:** The <Constant name="dbt" />-native integration with Azure DevOps now supports [Entra ID service principals](/docs/platform/git/setup-service-principal). Unlike a services user, which represents a real user object in Entra ID, the service principal is a secure identity associated with your <Constant name="dbt" /> app to access resources in Azure unattended. Please [migrate your service user](/docs/platform/git/setup-service-principal#migrate-to-service-principal) to a service principal for Azure DevOps  as soon as possible.

@@ -52,7 +52,7 @@ A note on BigQuery: BigQuery’s DATE_TRUNC function supports the truncation of 
 
 ## A dbt macro to remember​
 
-Why Snowflake, Amazon Redshift, Databricks, and Google BigQuery decided to use different implementations of essentially the same function is beyond us and it’s not worth the headache trying to figure that out. Instead of remembering if the `<date_part>` or the `<date/time field>` comes first, (which, let’s be honest, we can literally never remember) you can rely on a dbt Core macro to help you get away from finicky syntax.
+Why Snowflake, Amazon Redshift, Databricks, and Google BigQuery decided to use different implementations of essentially the same function is beyond us and it’s not worth the headache trying to figure that out. Instead of remembering if the `<date_part>` or the `<date/time field>` comes first, (which, let’s be honest, we can literally never remember) you can rely on a dbt macro to help you get away from finicky syntax.
 
 [Adapters](/docs/supported-data-platforms) support [cross-database macros](/reference/dbt-jinja-functions/cross-database-macros) to help you write certain functions, like DATE_TRUNC and DATEDIFF, without having to memorize sticky function syntax.
 
