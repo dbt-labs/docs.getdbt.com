@@ -98,7 +98,7 @@ We recommend creating the app in your GitHub organization instead of a personal 
     | **GitHub App name** | Something recognizable, such as `dbt platform` |
     | **Homepage URL** | Your <Constant name="dbt" /> [access URL](/docs/platform/about-platform/access-regions-ip-addresses) |
     | **Redirect URL** | The **Redirect URL** you copied from <Constant name="dbt" /> |
-    | **Webhook** | Leave **Active** selected and enter any placeholder URL (such as https://example.com) in the **Webhook URL** field. |
+    | **Webhook** | Leave **Active** selected and enter any placeholder URL (such as https://example.com) in the **Webhook URL** field.  dbt doesn't use it but GitHub requires it |
     </SimpleTable>
 4. Grant the app these repository permissions:
 
