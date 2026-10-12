@@ -15,11 +15,23 @@ Adapters connect dbt to data platforms. They are maintained by dbt Labs, partner
 
 We welcome [contributions to an existing adapter](/docs/contribute-dbt-adapters#contribute-to-a-pre-existing-adapter). Many adapters are maintained by volunteers, so be kind and help where you can.
 
-To build a v1 adapter, refer to [Build, test, document, and promote adapters](/guides/adapter-creation). To contribute a v2 adapter, refer to [Contribute a dbt v2 adapter](/guides/adapter-creation-v2?step=1).
+<VersionBlock lastVersion="1.99">
+
+To build a v1 adapter, refer to [Build, test, document, and promote adapters](/guides/adapter-creation).
+
+</VersionBlock>
+
+<VersionBlock firstVersion="2.0">
+
+To contribute a v2 adapter, refer to [Contribute a dbt v2 adapter](/guides/adapter-creation-v2?step=1).
+
+</VersionBlock>
 
 import CommunityAdapters from '/snippets/_community-adapters.md';
 
 <CommunityAdapters />
+
+<VersionBlock lastVersion="1.99">
 
 ### Additional adapters
 
@@ -37,3 +49,5 @@ import CommunityAdapters from '/snippets/_community-adapters.md';
 | [Vertica](/docs/local/connect-data-platform/vertica-setup) | [Watsonx-Presto](/docs/local/connect-data-platform/watsonx-presto-setup) | [Yellowbrick](/docs/local/connect-data-platform/yellowbrick-setup) |
 
 </SimpleTable>
+
+</VersionBlock>
