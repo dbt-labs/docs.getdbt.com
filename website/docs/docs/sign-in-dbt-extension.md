@@ -6,8 +6,8 @@ sidebar_label: "Sign in"
 availability: local_all
 ---
 
-import FusionTroubleshooting from '/snippets/_fusion-troubleshooting.md';
-import AboutFusion from '/snippets/_about-fusion.md';
+import FusionTroubleshooting from '/snippets/_v2-troubleshooting.md';
+import AboutFusion from '/snippets/_about-v2.md';
 import AuthorizeAdditionalAccess from '/snippets/_vsce-authorize-additional-access.md';
 
 # Sign in

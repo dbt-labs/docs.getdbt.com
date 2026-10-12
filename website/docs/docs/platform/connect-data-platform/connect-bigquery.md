@@ -20,7 +20,7 @@ import BigQueryPerms from '/snippets/_bigquery-permissions.md';
 
 ## Warehouse permissions for <Constant name="fusion" />
 
-import FusionBigQueryWarehousePerms from '/snippets/_fusion-warehouse-permissions-bigquery.md';
+import FusionBigQueryWarehousePerms from '/snippets/_v2-warehouse-permissions-bigquery.md';
 
 <FusionBigQueryWarehousePerms />
 

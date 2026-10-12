@@ -74,11 +74,11 @@ anchors:
         - not_null
         - unique
   - &source_template_alias
-    database: RAW
-    loader: fivetran
-    config:
-      freshness:
-        warn_after: {count: 1, period: day}
+      database: RAW
+      loader: fivetran
+      config:
+        freshness:
+          warn_after: {count: 1, period: day}
 
 models:
   - name: my_first_model

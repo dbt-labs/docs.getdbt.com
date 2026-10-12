@@ -6,7 +6,7 @@ sidebar_label: "How pricing works"
 availability: platform
 ---
 
-As a customer, you pay for the number of seats you have and the amount of usage consumed each month.  Seats are billed primarily on the amount of Developer and Read licenses purchased. 
+As a customer, you pay for the number of seats you have and the amount of usage consumed each month.  Seats are billed primarily on the amount of licenses purchased. 
 
 Usage is based on the number of [Successful Models Built](#what-counts-as-a-successful-model-built) and, if purchased and used, <Constant name="semantic_layer" /> [Queried Metrics](#what-counts-as-a-queried-metric) subject to reasonable usage. All billing computations are conducted in Coordinated Universal Time (UTC).
 

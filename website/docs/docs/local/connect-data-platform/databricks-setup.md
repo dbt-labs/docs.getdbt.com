@@ -33,7 +33,7 @@ The Databricks adapter for <Constant name="fusion" /> supports the following [au
 
 ## Warehouse permissions for <Constant name="fusion" />
 
-import FusionDatabricksWarehousePerms from '/snippets/_fusion-warehouse-permissions-databricks.md';
+import FusionDatabricksWarehousePerms from '/snippets/_v2-warehouse-permissions-databricks.md';
 
 <FusionDatabricksWarehousePerms />
 

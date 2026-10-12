@@ -10,11 +10,11 @@ availability:
 
 # Upgrading to v2
 
-import FusionAdapters from '/snippets/_fusion-dwh.md';
-import FusionUpgradeSteps from '/snippets/_fusion-upgrade-steps.md';
-import FusionLifecycle from '/snippets/_fusion-lifecycle-callout.md';
-import FusionThreads from '/snippets/_fusion-threads.md';
-import FusionPartialParseCliFlags from '/snippets/_fusion-partial-parse-cli-flags.md';
+import FusionAdapters from '/snippets/_v2-dwh.md';
+import FusionUpgradeSteps from '/snippets/_v2-upgrade-steps.md';
+import FusionLifecycle from '/snippets/_v2-lifecycle-callout.md';
+import FusionThreads from '/snippets/_v2-threads.md';
+import FusionPartialParseCliFlags from '/snippets/_v2-partial-parse-cli-flags.md';
 import SourceFreshnessLegacy from '/snippets/_source-freshness-legacy.md';
 
 v2 is the current era of dbt, delivered through <Constant name="fusion" />. When you install dbt, you get <Constant name="fusion" /> by default. This guide walks you through upgrading a v1 project to v2. 
@@ -24,7 +24,7 @@ v2 is faster and stricter, but your existing project language and DAG semantics 
 
 <FusionLifecycle />
 
-import AboutFusion from '/snippets/_about-fusion.md';
+import AboutFusion from '/snippets/_about-v2.md';
 
 <AboutFusion hideUpgradeLink />
 
@@ -44,7 +44,7 @@ If you have an older project that isn't ready to move to v2, or you need compati
 
 This new major version is an opportunity to _strengthen the framework_ by removing deprecated functionality, rationalizing confusing behavior, and providing more rigorous validation on erroneous inputs. This means that there is some work involved in preparing an existing dbt project for v2.
 
-That work is documented below — it should be simple, straightforward, and in many cases, auto-fixable with the [`dbt-autofix`](https://github.com/dbt-labs/dbt-autofix) helper or the [agent skill](https://github.com/dbt-labs/dbt-agent-skills/tree/main/skills/dbt-migration/skills/migrating-dbt-core-to-fusion).
+That work is documented below — it should be simple, straightforward, and in many cases, auto-fixable with the [`dbt-autofix`](https://github.com/dbt-labs/dbt-autofix) helper or the [agent skill](https://github.com/dbt-labs/dbt-agent-skills/tree/main/skills/dbt-migration/skills/migrating-dbt-core-to-v2).
 
 :::tip Test v2 parser compatibility from <Constant name="dbt" /> v1.12
 
@@ -601,7 +601,7 @@ For more information, see [config.meta_get()](/reference/dbt-jinja-functions/con
 
 ## Package support
 
-import FusionPackages from '/snippets/_fusion-supported-packages.md';
+import FusionPackages from '/snippets/_v2-supported-packages.md';
 
 <FusionPackages />
 

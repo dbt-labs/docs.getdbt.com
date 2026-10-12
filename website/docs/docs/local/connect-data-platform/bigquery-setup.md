@@ -29,7 +29,7 @@ The BigQuery adapter for <Constant name="fusion" /> supports the following [auth
 
 ## Warehouse permissions
 
-import FusionBigQueryWarehousePerms from '/snippets/_fusion-warehouse-permissions-bigquery.md';
+import FusionBigQueryWarehousePerms from '/snippets/_v2-warehouse-permissions-bigquery.md';
 
 <FusionBigQueryWarehousePerms />
 
