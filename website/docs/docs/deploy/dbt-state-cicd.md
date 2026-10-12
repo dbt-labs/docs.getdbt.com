@@ -1,5 +1,5 @@
 ---
-title: "Set up authentication for non-interactive environments"
+title: "Setting up authentication for non-interactive environments"
 sidebar_label: "Set up auth for non-interactive environments"
 description: "Learn how to configure dbt State authentication for CI/CD and other non-interactive environments using service tokens."
 id: "dbt-state-cicd"
@@ -7,7 +7,7 @@ tags: ['dbt State']
 availability: everywhere_usage
 ---
 
-# Set up authentication for non-interactive environments
+# Setting up authentication for non-interactive environments
 
 In a non-interactive environment, dbt runs without a person available to complete authentication manually &mdash; for example, CI/CD pipelines (such as GitHub Actions, GitLab CI, and Jenkins) and production orchestration tools (such as Airflow and Prefect). Browser-based authentication isn't possible in these environments. Instead, dbt State authenticates using credentials provided through environment variables, allowing it to continue caching state and optimizing your builds.
 
