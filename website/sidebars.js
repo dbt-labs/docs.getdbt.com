@@ -872,7 +872,7 @@ const sidebarSettings = {
             "docs/deploy/dbt-state-setup",
             "docs/deploy/dbt-state-enable-env-jobs",
             "docs/deploy/dbt-state-enable-studio",
-            "docs/deploy/dbt-state-cicd", 
+            "docs/deploy/dbt-state-cicd",
             "docs/deploy/dbt-state-deferral",
           ],
         },
