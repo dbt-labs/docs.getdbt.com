@@ -27,8 +27,6 @@ AI features are being enabled by default. They're already on for new accounts an
 
 <WizardTrialBilling />
 
-<WizardVideoCourse />
-
 ## Where you can use dbt Wizard
 
 - **[Wizard home tab](/docs/platform/wizard-home):** Ask questions about your project, generate changes, review the diff, and run validations &mdash; all in one place.
@@ -62,6 +60,8 @@ Most of the workflows in [How to use dbt Wizard in your dbt project](/best-pract
 
 ## Open dbt Wizard
 
+<WizardVideoCourse />
+
 1. Sign in to <Constant name="dbt_platform" />.
 2. Select the <Constant name="wizard" /> icon in the navigation menu, or open it in the <Constant name="studio_ide"/>.
 3. Enter a prompt. Try one of these to get a feel for it:
@@ -69,6 +69,7 @@ Most of the workflows in [How to use dbt Wizard in your dbt project](/best-pract
    - `which models in this project have no tests?`
    - `add not_null and unique tests to the primary key of stg_customers`
 4. ..and that's it 🎉!
+
 
 <DocCarousel slidesPerView={1}>
 
