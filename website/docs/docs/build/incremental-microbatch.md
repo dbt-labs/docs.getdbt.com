@@ -189,7 +189,7 @@ dbt will instruct the data platform to take the result of each batch query and [
 
 It does not matter whether the table already contains data for that day. Given the same input data, the resulting table is the same no matter how many times a batch is reprocessed.
 
-<Lightbox src="/img/docs/building-a-dbt-project/microbatch/microbatch_filters.png" title="Each batch of sessions filters page_views to the matching time-bound batch, but doesn't filter sessions, performing a full scan for each batch."/>
+<Lightbox src="/img/docs/building-a-dbt-project/microbatch/microbatch_filters.png" title="Each batch of sessions filters page_views to the matching time-bound batch, but doesn't filter customers, performing a full scan for each batch."/>
 
 ## Relevant configs
 
@@ -309,7 +309,7 @@ While we may consider adding support for custom time zones in the future, we als
 
 ## How microbatch compares to other incremental strategies
 
-As data warehouses roll out new operations for concurrently replacing/upserting data partitions, we may find that the new operation for the data warehouse is more efficient than what the adapter uses for microbatch. In such instances, we reserve the right the update the default operation for microbatch, so long as it works as intended/documented for models that fit the microbatch paradigm.
+As data warehouses roll out new operations for concurrently replacing/upserting data partitions, we may find that the new operation for the data warehouse is more efficient than what the adapter uses for microbatch. In such instances, we reserve the right to update the default operation for microbatch, so long as it works as intended/documented for models that fit the microbatch paradigm.
 
 Most incremental models rely on the end user (you) to explicitly tell dbt what "new" means, in the context of each model, by writing a filter in an `{% if is_incremental() %}` conditional block. You are responsible for crafting this SQL in a way that queries [`{{ this }}`](/reference/dbt-jinja-functions/this) to check when the most recent record was last loaded, with an optional look-back window for late-arriving records. 
 

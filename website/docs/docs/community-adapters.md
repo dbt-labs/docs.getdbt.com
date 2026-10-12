@@ -1,30 +1,39 @@
 ---
 title: "Community adapters"
 id: "community-adapters"
+sidebar_label: "Community adapters"
+description: "Community adapters connect dbt to data platforms. They are maintained by dbt Labs, partners, and the community."
+hide_table_of_contents: true
 availability: all_users
 ---
 
-Community adapters are adapter plugins contributed and maintained by members of the community. We welcome and encourage [adapter plugins contributions](/docs/contribute-dbt-adapters#contribute-to-a-pre-existing-adapter) from the dbt community.  Please be mindful that these [community maintainers](/docs/connect-adapters#maintainers) are intrepid volunteers who donate their time and effort — so be kind, understanding, and help out where you can!
+:::note
+The Trusted Adapter Program for v1 has ended. All dbt, partner, and community maintained adapters are listed together on this page.
+:::
 
-In v2, [DuckDB](/docs/local/connect-data-platform/duckdb-setup) is available as a community adapter. There are also several trusted adapters available: Apache Spark, BigQuery, Databricks, DuckDB, Redshift, Snowflake. For the full list, refer to [trusted adapters](/docs/trusted-adapters?version=2.0).
+Adapters connect dbt to data platforms. They are maintained by dbt Labs, partners, and community members.
 
-If you'd like to contribute a community adapter for v2, refer to [creating a v2 adapter](/guides/adapter-creation-v2?step=1).
+We welcome [contributions to an existing adapter](/docs/contribute-dbt-adapters#contribute-to-a-pre-existing-adapter). Many adapters are maintained by volunteers, so be kind and help where you can.
 
-Refer to the following available community adapter(s):
+To build a v1 adapter, refer to [Build, test, document, and promote adapters](/guides/adapter-creation). To contribute a v2 adapter, refer to [Contribute a dbt v2 adapter](/guides/adapter-creation-v2?step=1).
+
+import CommunityAdapters from '/snippets/_community-adapters.md';
+
+<CommunityAdapters />
+
+### Additional adapters
 
 <SimpleTable>
-  
+
 | Data platform |  |  |
 | --- | --- | --- |
 | [Confluent Cloud](/docs/local/connect-data-platform/confluent-setup) | [CrateDB](/docs/local/connect-data-platform/cratedb-setup) | [Databend Cloud](/docs/local/connect-data-platform/databend-setup) |
-| [DeltaStream](/docs/local/connect-data-platform/deltastream-setup) | [Doris & SelectDB](/docs/local/connect-data-platform/doris-setup) | [DuckDB](/docs/local/connect-data-platform/duckdb-setup) |
-| [Extrica](/docs/local/connect-data-platform/extrica-setup) | [Hologres](/docs/local/connect-data-platform/hologres-setup) | [IBM watsonx.data - Spark](/docs/local/connect-data-platform/watsonx-spark-setup) |
-| [Infer](/docs/local/connect-data-platform/infer-setup) | [iomete](/docs/local/connect-data-platform/iomete-setup) | [MaxCompute](/docs/local/connect-data-platform/maxcompute-setup) |
-| [MindsDB](/docs/local/connect-data-platform/mindsdb-setup) | [MySQL](/docs/local/connect-data-platform/mysql-setup) | [RisingWave](/docs/local/connect-data-platform/risingwave-setup) |
-| [Rockset](/docs/local/connect-data-platform/rockset-setup) | [Sail](/docs/local/connect-data-platform/sail-setup) | [SingleStore](/docs/local/connect-data-platform/singlestore-setup) |
+| [DeltaStream](/docs/local/connect-data-platform/deltastream-setup) | [Doris & SelectDB](/docs/local/connect-data-platform/doris-setup) | [Extrica](/docs/local/connect-data-platform/extrica-setup) |
+| [Hologres](/docs/local/connect-data-platform/hologres-setup) | [IBM watsonx.data - Spark](/docs/local/connect-data-platform/watsonx-spark-setup) | [Infer](/docs/local/connect-data-platform/infer-setup) |
+| [iomete](/docs/local/connect-data-platform/iomete-setup) | [MaxCompute](/docs/local/connect-data-platform/maxcompute-setup) | [MindsDB](/docs/local/connect-data-platform/mindsdb-setup) |
+| [MySQL](/docs/local/connect-data-platform/mysql-setup) | [Rockset](/docs/local/connect-data-platform/rockset-setup) | [Sail](/docs/local/connect-data-platform/sail-setup) |
 | [SQL Server & Azure SQL](/docs/local/connect-data-platform/mssql-setup) | [SQLite](/docs/local/connect-data-platform/sqlite-setup) | [Starrocks](/docs/local/connect-data-platform/starrocks-setup) |
 | [TiDB](/docs/local/connect-data-platform/tidb-setup) | [TimescaleDB](https://dbt-timescaledb.debruyn.dev/) | [Upsolver](/docs/local/connect-data-platform/upsolver-setup) |
 | [Vertica](/docs/local/connect-data-platform/vertica-setup) | [Watsonx-Presto](/docs/local/connect-data-platform/watsonx-presto-setup) | [Yellowbrick](/docs/local/connect-data-platform/yellowbrick-setup) |
 
 </SimpleTable>
-

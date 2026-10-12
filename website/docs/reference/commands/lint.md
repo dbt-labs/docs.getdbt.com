@@ -7,12 +7,9 @@ availability:
   engine: v2
 ---
 
-# About dbt lint command
-
 `dbt lint` is a fast SQL linter built into <Constant name="fusion_engine" />, available locally or in <Constant name="dbt_platform"/>. dbt lint requires v2 or later. If you're on an earlier version, [upgrade or install dbt](/docs/dbt-versions/dbt-upgrade/upgrading-to-v2?version=2).
 
 It's SQLFluff-compatible: it reads your `.sqlfluff` config, uses the same rule codes (for example, `CP01`, `RF03`), and respects `-- noqa` suppression comments. Compatible doesn't mean identical: `dbt lint` and SQLFluff can return different results for the same file and config. Refer to [Rule parity with SQLFluff](#rule-parity-with-sqlfluff).
-
 
 You can use your existing SQLFluff config with minimal changes. dbt Labs intends to track the latest SQLFluff rule spec going forward.
 
@@ -49,6 +46,28 @@ dbt lint [FILE] [flags]
 ## Configuration
 
 `dbt lint` auto-discovers the nearest `.sqlfluff` file in your project directory tree. CLI flags `--rules` and `--exclude-rules` take precedence over the values in the config file. To create a `.sqlfluff` file, see [SQLFluff configuration files](https://docs.sqlfluff.com/en/stable/configuration/setting_configuration.html).
+
+## dbt-specific rules
+
+`dbt lint` also ships five dbt-specific rules, under the `DBT` code prefix. These rules catch dbt patterns that generic SQL linting can't, like hard-coded relation names instead of `ref()`.
+
+These rules are off by default and to turn them on, add a `rules` line to your `.sqlfluff` file:
+
+```ini
+[sqlfluff]
+[templater](https://docs.sqlfluff.com/en/stable/configuration/templating/dbt.html) = dbt
+[dialect](https://docs.sqlfluff.com/en/stable/reference/dialects.html) = your_dialect
+[rules](https://docs.sqlfluff.com/en/stable/configuration/rule_configuration.html) = DBT02,DBT03,DBT04,DBT05
+```
+<SimpleTable>
+| Code | Dotted name | Rule | 
+|------|-------------|---------|
+| `DBT01` | `dbt.import_ctes` | Every `ref()/source()` must be imported through a top-level CTE, not referenced inline| 
+| `DBT02` | `dbt.join_condition_or` | A `JOIN`'s `ON` clause must not contain `OR` | 
+| `DBT03` | `dbt.function_wrapped_filter_column` | A comparison must not wrap a bare column reference in a function call |
+| `DBT04` | `dbt.leading_wildcard_like` | A `LIKE/ILIKE` pattern must not start with a wildcard| 
+| `DBT05` | `dbt.hard_coded_reference` | A `ref()/source()` must not be hard-coded to a literal string|
+</SimpleTable>
 
 ## Jinja render modes
 

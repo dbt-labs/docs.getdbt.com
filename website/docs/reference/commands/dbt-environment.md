@@ -38,7 +38,7 @@ Local Configuration:
   Active host name               cloud.getdbt.com
   dbt_cloud.yml file path        /Users/cesar/.dbt/dbt_cloud.yml
   dbt_project.yml file path      /Users/cesar/git/cloud-cli-test-project/dbt_project.yml
-  <Constant name="dbt" /> CLI version          0.35.7
+  dbt CLI version          0.35.7
   OS info                        darwin arm64
 
 Cloud Configuration:
