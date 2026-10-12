@@ -14,6 +14,7 @@ import NewToTerminal from '/snippets/_new-to-terminal.md';
 import WizardFeedbackCallout from '/snippets/_wizard-feedback-callout.md';
 import WizardCliDbtCliSupport from '/snippets/_wizard-cli-dbt-cli-support.md';
 import WizardTrialBilling from '/snippets/_wizard-trial-billing.md';
+import WizardVideoCourse from '/snippets/_wizard-video-course.md';
 
 # Install <Constant name="wizard" /> CLI <Lifecycle status="beta"/>
 
@@ -50,6 +51,7 @@ Run the following command to update <Constant name="wizard" /> to the latest ver
 ```bash
 wizard update
 ```
+<WizardVideoCourse />
 
 ## Uninstall
 
