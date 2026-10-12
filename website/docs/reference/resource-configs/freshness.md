@@ -177,7 +177,7 @@ sources:
 
 <VersionBlock lastVersion="1.99">
 
-`loaded_at_query` is available in dbt v1.10 and later.
+`loaded_at_query` is available in dbt v1.10 and later. 
 
 </VersionBlock>
 
