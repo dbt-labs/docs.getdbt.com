@@ -2,7 +2,7 @@
   "_meta": {
     "platform": "duckdb",
     "platform_name": "DuckDB",
-    "count": 513
+    "count": 628
   },
   "functions": [
     {
@@ -65,6 +65,34 @@
       "name": "AVG",
       "category": "aggregates",
       "docs_url": "https://duckdb.org/docs/current/sql/functions/aggregates#avgarg",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "BIT_AND",
+      "category": "aggregates",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/aggregates#bit_andarg",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "BIT_OR",
+      "category": "aggregates",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/aggregates#bit_orarg",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "BIT_XOR",
+      "category": "aggregates",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/aggregates#bit_xorarg",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "BITSTRING_AGG",
+      "category": "aggregates",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/aggregates#bitstring_aggarg",
       "preview_status": "GA",
       "fusion_typecheck": true
     },
@@ -489,6 +517,20 @@
       "fusion_typecheck": true
     },
     {
+      "name": "BIT_COUNT",
+      "category": "bitstring",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/bitstring#bit_countbitstring",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "BIT_LENGTH",
+      "category": "bitstring",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/bitstring#bit_lengthbitstring",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
       "name": "BIT_OR",
       "category": "bitstring",
       "docs_url": "https://duckdb.org/docs/current/sql/functions/bitstring#bit_orarg",
@@ -531,11 +573,32 @@
       "fusion_typecheck": false
     },
     {
+      "name": "LENGTH",
+      "category": "bitstring",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/bitstring#lengthbitstring",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "OCTET_LENGTH",
+      "category": "bitstring",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/bitstring#octet_lengthbitstring",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
       "name": "SET_BIT",
       "category": "bitstring",
       "docs_url": "https://duckdb.org/docs/current/sql/functions/bitstring#set_bitbitstring-index-new_value",
       "preview_status": "GA",
       "fusion_typecheck": false
+    },
+    {
+      "name": "BASE64",
+      "category": "blob",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/blob#to_base64blob",
+      "preview_status": "GA",
+      "fusion_typecheck": true
     },
     {
       "name": "DECODE",
@@ -552,6 +615,48 @@
       "fusion_typecheck": true
     },
     {
+      "name": "FROM_BASE64",
+      "category": "blob",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/blob#from_base64string",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "FROM_BINARY",
+      "category": "blob",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/blob#unbinvalue",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "FROM_HEX",
+      "category": "blob",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/blob#unhexvalue",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "HEX",
+      "category": "blob",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/blob#hexblob",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "MD5",
+      "category": "blob",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/blob#md5blob",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "MD5_NUMBER",
+      "category": "blob",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/blob#md5_numberblob",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "OCTET_LENGTH",
       "category": "blob",
       "docs_url": "https://duckdb.org/docs/current/sql/functions/blob#octet_lengthblob",
@@ -559,9 +664,100 @@
       "fusion_typecheck": true
     },
     {
+      "name": "READ_BLOB",
+      "category": "blob",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/blob#read_blobsource",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "REPEAT",
+      "category": "blob",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/blob#repeatblob-count",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "SHA1",
+      "category": "blob",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/blob#sha1blob",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "SHA256",
+      "category": "blob",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/blob#sha256blob",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TO_BASE64",
+      "category": "blob",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/blob#to_base64blob",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TO_HEX",
+      "category": "blob",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/blob#hexblob",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "UNBIN",
+      "category": "blob",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/blob#unbinvalue",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "UNHEX",
+      "category": "blob",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/blob#unhexvalue",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "DATE_ADD",
       "category": "date",
       "docs_url": "https://duckdb.org/docs/current/sql/functions/date#date_adddate-interval",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "DATE_DIFF",
+      "category": "date",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/date#date_diffpart-startdate-enddate",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "DATE_PART",
+      "category": "date",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/date#date_partpart-date",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "DATE_SUB",
+      "category": "date",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/date#date_subpart-startdate-enddate",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "DATE_TRUNC",
+      "category": "date",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/date#date_truncpart-date",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "DAYNAME",
+      "category": "date",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/date#daynamedate",
       "preview_status": "GA",
       "fusion_typecheck": true
     },
@@ -573,6 +769,55 @@
       "fusion_typecheck": false
     },
     {
+      "name": "EXTRACT",
+      "category": "date",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/date#extractpart-from-date",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "GREATEST",
+      "category": "date",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/date#greatestdate-date",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ISFINITE",
+      "category": "date",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/date#isfinitedate",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ISINF",
+      "category": "date",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/date#isinfdate",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "JULIAN",
+      "category": "date",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/date#juliandate",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "LAST_DAY",
+      "category": "date",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/date#last_daydate",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "LEAST",
+      "category": "date",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/date#leastdate-date",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
       "name": "MAKE_DATE",
       "category": "date",
       "docs_url": "https://duckdb.org/docs/current/sql/functions/date#make_dateyear-month-day",
@@ -580,9 +825,37 @@
       "fusion_typecheck": true
     },
     {
+      "name": "MONTHNAME",
+      "category": "date",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/date#monthnamedate",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "STRFTIME",
+      "category": "date",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/date#strftimedate-format",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TIME_BUCKET",
+      "category": "date",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/date#time_bucketbucket_width-date-origin",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
       "name": "TODAY",
       "category": "date",
       "docs_url": "https://duckdb.org/docs/current/sql/functions/date#today",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "CENTURY",
+      "category": "datepart",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/datepart#centurydate",
       "preview_status": "GA",
       "fusion_typecheck": true
     },
@@ -622,6 +895,13 @@
       "fusion_typecheck": true
     },
     {
+      "name": "EPOCH",
+      "category": "datepart",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/datepart#epochdate",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
       "name": "ERA",
       "category": "datepart",
       "docs_url": "https://duckdb.org/docs/current/sql/functions/datepart#eradate",
@@ -646,6 +926,13 @@
       "name": "ISOYEAR",
       "category": "datepart",
       "docs_url": "https://duckdb.org/docs/current/sql/functions/datepart#isoyeardate",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "JULIAN",
+      "category": "datepart",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/datepart#juliandate",
       "preview_status": "GA",
       "fusion_typecheck": true
     },
@@ -697,6 +984,13 @@
       "docs_url": "https://duckdb.org/docs/current/sql/functions/datepart#seconddate",
       "preview_status": "GA",
       "fusion_typecheck": true
+    },
+    {
+      "name": "TIMEZONE",
+      "category": "datepart",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/datepart#timezonedate",
+      "preview_status": "GA",
+      "fusion_typecheck": false
     },
     {
       "name": "TIMEZONE_HOUR",
@@ -783,11 +1077,32 @@
       "fusion_typecheck": false
     },
     {
+      "name": "DATE_PART",
+      "category": "interval",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/interval#date_partpart-interval",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
       "name": "DATEPART",
       "category": "interval",
       "docs_url": "https://duckdb.org/docs/current/sql/functions/interval#datepartpart-interval",
       "preview_status": "GA",
       "fusion_typecheck": true
+    },
+    {
+      "name": "EPOCH",
+      "category": "interval",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/interval#epochinterval",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "EXTRACT",
+      "category": "interval",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/interval#extractpart-from-interval",
+      "preview_status": "GA",
+      "fusion_typecheck": false
     },
     {
       "name": "TO_CENTURIES",
@@ -881,6 +1196,83 @@
       "fusion_typecheck": true
     },
     {
+      "name": "APPLY",
+      "category": "lambda",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/lambda#list_transformlist-lambdax",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "ARRAY_APPLY",
+      "category": "lambda",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/lambda#list_transformlist-lambdax",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "ARRAY_FILTER",
+      "category": "lambda",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/lambda#list_filterlist-lambdax",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "ARRAY_REDUCE",
+      "category": "lambda",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/lambda#list_reducelist-lambdaxy-initial_value",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "ARRAY_TRANSFORM",
+      "category": "lambda",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/lambda#list_transformlist-lambdax",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "FILTER",
+      "category": "lambda",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/lambda#list_filterlist-lambdax",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "LIST_APPLY",
+      "category": "lambda",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/lambda#list_transformlist-lambdax",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "LIST_FILTER",
+      "category": "lambda",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/lambda#list_filterlist-lambdax",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "LIST_REDUCE",
+      "category": "lambda",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/lambda#list_reducelist-lambdaxy-initial_value",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "LIST_TRANSFORM",
+      "category": "lambda",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/lambda#list_transformlist-lambdax",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "REDUCE",
+      "category": "lambda",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/lambda#list_reducelist-lambdaxy-initial_value",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "AGGREGATE",
       "category": "list",
       "docs_url": "https://duckdb.org/docs/current/sql/functions/list#list_aggregatelist-function_name-",
@@ -947,6 +1339,13 @@
       "name": "ARRAY_DISTINCT",
       "category": "list",
       "docs_url": "https://duckdb.org/docs/current/sql/functions/list#list_distinctlist",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ARRAY_EXTRACT",
+      "category": "list",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/list#array_extractlist-index",
       "preview_status": "GA",
       "fusion_typecheck": true
     },
@@ -1084,6 +1483,13 @@
       "fusion_typecheck": false
     },
     {
+      "name": "ARRAY_SLICE",
+      "category": "list",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/list#list_slicelist-begin-end-step",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
       "name": "ARRAY_SORT",
       "category": "list",
       "docs_url": "https://duckdb.org/docs/current/sql/functions/list#list_sortlist-col1-col2",
@@ -1133,6 +1539,34 @@
       "fusion_typecheck": false
     },
     {
+      "name": "CHAR_LENGTH",
+      "category": "list",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/list#lengthlist",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "CHARACTER_LENGTH",
+      "category": "list",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/list#lengthlist",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "CONCAT",
+      "category": "list",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/list#concatvalue-",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "CONTAINS",
+      "category": "list",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/list#containslist-element",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
       "name": "FILTER",
       "category": "list",
       "docs_url": "https://duckdb.org/docs/current/sql/functions/list#list_filterlist-lambdax",
@@ -1147,11 +1581,32 @@
       "fusion_typecheck": true
     },
     {
+      "name": "GENERATE_SERIES",
+      "category": "list",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/list#generate_seriesstart-stop-step",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
       "name": "GRADE_UP",
       "category": "list",
       "docs_url": "https://duckdb.org/docs/current/sql/functions/list#list_grade_uplist-col1-col2",
       "preview_status": "GA",
       "fusion_typecheck": false
+    },
+    {
+      "name": "LEN",
+      "category": "list",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/list#lengthlist",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "LENGTH",
+      "category": "list",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/list#lengthlist",
+      "preview_status": "GA",
+      "fusion_typecheck": true
     },
     {
       "name": "LIST_AGGR",
@@ -1630,11 +2085,25 @@
       "fusion_typecheck": true
     },
     {
+      "name": "RANGE",
+      "category": "list",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/list#rangestart-stop-step",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
       "name": "REDUCE",
       "category": "list",
       "docs_url": "https://duckdb.org/docs/current/sql/functions/list#list_reducelist-lambdaxy-initial_value",
       "preview_status": "GA",
       "fusion_typecheck": false
+    },
+    {
+      "name": "REPEAT",
+      "category": "list",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/list#repeatlist-count",
+      "preview_status": "GA",
+      "fusion_typecheck": true
     },
     {
       "name": "UNNEST",
@@ -1917,11 +2386,32 @@
       "fusion_typecheck": false
     },
     {
+      "name": "GREATEST",
+      "category": "numeric",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/numeric#greatestx1-x2-",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
       "name": "GREATEST_COMMON_DIVISOR",
       "category": "numeric",
       "docs_url": "https://duckdb.org/docs/current/sql/functions/numeric#greatest_common_divisorx-y",
       "preview_status": "GA",
       "fusion_typecheck": false
+    },
+    {
+      "name": "ISFINITE",
+      "category": "numeric",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/numeric#isfinitex",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ISINF",
+      "category": "numeric",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/numeric#isinfx",
+      "preview_status": "GA",
+      "fusion_typecheck": true
     },
     {
       "name": "ISNAN",
@@ -1936,6 +2426,13 @@
       "docs_url": "https://duckdb.org/docs/current/sql/functions/numeric#lcmx-y",
       "preview_status": "GA",
       "fusion_typecheck": false
+    },
+    {
+      "name": "LEAST",
+      "category": "numeric",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/numeric#leastx1-x2-",
+      "preview_status": "GA",
+      "fusion_typecheck": true
     },
     {
       "name": "LEAST_COMMON_MULTIPLE",
@@ -2113,6 +2610,55 @@
       "fusion_typecheck": true
     },
     {
+      "name": "REGEXP_EXTRACT",
+      "category": "regular_expressions",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/regular_expressions#regexp_extractstring-pattern-name_list-options",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "REGEXP_EXTRACT_ALL",
+      "category": "regular_expressions",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/regular_expressions#regexp_extract_allstring-regex-name_list-options",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "REGEXP_FULL_MATCH",
+      "category": "regular_expressions",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/regular_expressions#regexp_full_matchstring-regex-options",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "REGEXP_MATCHES",
+      "category": "regular_expressions",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/regular_expressions",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "REGEXP_REPLACE",
+      "category": "regular_expressions",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/regular_expressions#regexp_replacestring-pattern-replacement-options",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "REGEXP_SPLIT_TO_ARRAY",
+      "category": "regular_expressions",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/regular_expressions#regexp_split_to_arraystring-regex-options",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "REGEXP_SPLIT_TO_TABLE",
+      "category": "regular_expressions",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/regular_expressions#regexp_split_to_tablestring-regex-options",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
       "name": "ROW",
       "category": "struct",
       "docs_url": "https://duckdb.org/docs/current/sql/functions/struct#rowany-",
@@ -2184,738 +2730,766 @@
     },
     {
       "name": "ARRAY_EXTRACT",
-      "category": "text.html#replacestring-source-target",
-      "docs_url": "https://duckdb.org/docs/current/sql/functions/text.html#replacestring-source-target#array_extractstring-index",
+      "category": "text",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/text#array_extractstring-index",
       "preview_status": "GA",
       "fusion_typecheck": true
     },
     {
       "name": "ARRAY_SLICE",
-      "category": "text.html#replacestring-source-target",
-      "docs_url": "https://duckdb.org/docs/current/sql/functions/text.html#replacestring-source-target#array_slicelist-begin-end",
+      "category": "text",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/text#array_slicelist-begin-end",
       "preview_status": "GA",
       "fusion_typecheck": true
     },
     {
       "name": "ASCII",
-      "category": "text.html#replacestring-source-target",
-      "docs_url": "https://duckdb.org/docs/current/sql/functions/text.html#replacestring-source-target#asciistring",
+      "category": "text",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/text#asciistring",
       "preview_status": "GA",
       "fusion_typecheck": true
     },
     {
       "name": "BAR",
-      "category": "text.html#replacestring-source-target",
-      "docs_url": "https://duckdb.org/docs/current/sql/functions/text.html#replacestring-source-target#barx-min-max-width",
+      "category": "text",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/text#barx-min-max-width",
       "preview_status": "GA",
       "fusion_typecheck": true
     },
     {
       "name": "BASE64",
-      "category": "text.html#replacestring-source-target",
-      "docs_url": "https://duckdb.org/docs/current/sql/functions/text.html#replacestring-source-target#to_base64blob",
+      "category": "text",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/text#to_base64blob",
       "preview_status": "GA",
       "fusion_typecheck": true
     },
     {
       "name": "BIN",
-      "category": "text.html#replacestring-source-target",
-      "docs_url": "https://duckdb.org/docs/current/sql/functions/text.html#replacestring-source-target#binstring",
+      "category": "text",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/text#binstring",
       "preview_status": "GA",
       "fusion_typecheck": false
     },
     {
       "name": "BIT_LENGTH",
-      "category": "text.html#replacestring-source-target",
-      "docs_url": "https://duckdb.org/docs/current/sql/functions/text.html#replacestring-source-target#bit_lengthstring",
+      "category": "text",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/text#bit_lengthstring",
       "preview_status": "GA",
       "fusion_typecheck": true
     },
     {
       "name": "CHAR_LENGTH",
-      "category": "text.html#replacestring-source-target",
-      "docs_url": "https://duckdb.org/docs/current/sql/functions/text.html#replacestring-source-target#lengthstring",
+      "category": "text",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/text#lengthstring",
       "preview_status": "GA",
       "fusion_typecheck": true
     },
     {
       "name": "CHARACTER_LENGTH",
-      "category": "text.html#replacestring-source-target",
-      "docs_url": "https://duckdb.org/docs/current/sql/functions/text.html#replacestring-source-target#lengthstring",
+      "category": "text",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/text#lengthstring",
       "preview_status": "GA",
       "fusion_typecheck": true
     },
     {
       "name": "CHR",
-      "category": "text.html#replacestring-source-target",
-      "docs_url": "https://duckdb.org/docs/current/sql/functions/text.html#replacestring-source-target#chrcode_point",
+      "category": "text",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/text#chrcode_point",
       "preview_status": "GA",
       "fusion_typecheck": true
     },
     {
       "name": "CONCAT",
-      "category": "text.html#replacestring-source-target",
-      "docs_url": "https://duckdb.org/docs/current/sql/functions/text.html#replacestring-source-target#concatvalue-",
+      "category": "text",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/text#concatvalue-",
       "preview_status": "GA",
       "fusion_typecheck": true
     },
     {
       "name": "CONCAT_WS",
-      "category": "text.html#replacestring-source-target",
-      "docs_url": "https://duckdb.org/docs/current/sql/functions/text.html#replacestring-source-target#concat_wsseparator-string-",
+      "category": "text",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/text#concat_wsseparator-string-",
       "preview_status": "GA",
       "fusion_typecheck": true
     },
     {
       "name": "CONTAINS",
-      "category": "text.html#replacestring-source-target",
-      "docs_url": "https://duckdb.org/docs/current/sql/functions/text.html#replacestring-source-target#containsstring-search_string",
+      "category": "text",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/text#containsstring-search_string",
       "preview_status": "GA",
       "fusion_typecheck": true
     },
     {
       "name": "DAMERAU_LEVENSHTEIN",
-      "category": "text.html#replacestring-source-target",
-      "docs_url": "https://duckdb.org/docs/current/sql/functions/text.html#replacestring-source-target#damerau_levenshteins1-s2",
+      "category": "text",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/text#damerau_levenshteins1-s2",
       "preview_status": "GA",
       "fusion_typecheck": true
     },
     {
       "name": "EDITDIST3",
-      "category": "text.html#replacestring-source-target",
-      "docs_url": "https://duckdb.org/docs/current/sql/functions/text.html#replacestring-source-target#levenshteins1-s2",
+      "category": "text",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/text#levenshteins1-s2",
       "preview_status": "GA",
       "fusion_typecheck": false
     },
     {
       "name": "ENDS_WITH",
-      "category": "text.html#replacestring-source-target",
-      "docs_url": "https://duckdb.org/docs/current/sql/functions/text.html#replacestring-source-target#suffixstring-search_string",
+      "category": "text",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/text#suffixstring-search_string",
       "preview_status": "GA",
       "fusion_typecheck": true
     },
     {
       "name": "FORMAT",
-      "category": "text.html#replacestring-source-target",
-      "docs_url": "https://duckdb.org/docs/current/sql/functions/text.html#replacestring-source-target#formatformat-",
+      "category": "text",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/text#formatformat-",
       "preview_status": "GA",
       "fusion_typecheck": true
     },
     {
       "name": "FORMAT_BYTES",
-      "category": "text.html#replacestring-source-target",
-      "docs_url": "https://duckdb.org/docs/current/sql/functions/text.html#replacestring-source-target#format_bytesinteger",
+      "category": "text",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/text#format_bytesinteger",
       "preview_status": "GA",
       "fusion_typecheck": true
     },
     {
       "name": "FORMATREADABLEDECIMALSIZE",
-      "category": "text.html#replacestring-source-target",
-      "docs_url": "https://duckdb.org/docs/current/sql/functions/text.html#replacestring-source-target#formatreadabledecimalsizeinteger",
+      "category": "text",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/text#formatreadabledecimalsizeinteger",
       "preview_status": "GA",
       "fusion_typecheck": false
     },
     {
       "name": "FROM_BASE64",
-      "category": "text.html#replacestring-source-target",
-      "docs_url": "https://duckdb.org/docs/current/sql/functions/text.html#replacestring-source-target#from_base64string",
+      "category": "text",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/text#from_base64string",
       "preview_status": "GA",
       "fusion_typecheck": true
     },
     {
       "name": "FROM_BINARY",
-      "category": "text.html#replacestring-source-target",
-      "docs_url": "https://duckdb.org/docs/current/sql/functions/text.html#replacestring-source-target#unbinvalue",
+      "category": "text",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/text#unbinvalue",
       "preview_status": "GA",
       "fusion_typecheck": false
     },
     {
       "name": "FROM_HEX",
-      "category": "text.html#replacestring-source-target",
-      "docs_url": "https://duckdb.org/docs/current/sql/functions/text.html#replacestring-source-target#unhexvalue",
+      "category": "text",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/text#unhexvalue",
       "preview_status": "GA",
       "fusion_typecheck": true
     },
     {
       "name": "GREATEST",
-      "category": "text.html#replacestring-source-target",
-      "docs_url": "https://duckdb.org/docs/current/sql/functions/text.html#replacestring-source-target#greatestarg1-",
+      "category": "text",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/text#greatestarg1-",
       "preview_status": "GA",
       "fusion_typecheck": true
     },
     {
       "name": "HAMMING",
-      "category": "text.html#replacestring-source-target",
-      "docs_url": "https://duckdb.org/docs/current/sql/functions/text.html#replacestring-source-target#hammings1-s2",
+      "category": "text",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/text#hammings1-s2",
       "preview_status": "GA",
       "fusion_typecheck": true
     },
     {
       "name": "HASH",
-      "category": "text.html#replacestring-source-target",
-      "docs_url": "https://duckdb.org/docs/current/sql/functions/text.html#replacestring-source-target#hashvalue-",
+      "category": "text",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/text#hashvalue-",
       "preview_status": "GA",
       "fusion_typecheck": true
     },
     {
       "name": "HEX",
-      "category": "text.html#replacestring-source-target",
-      "docs_url": "https://duckdb.org/docs/current/sql/functions/text.html#replacestring-source-target#hexstring",
+      "category": "text",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/text#hexstring",
       "preview_status": "GA",
       "fusion_typecheck": true
     },
     {
       "name": "ILIKE_ESCAPE",
-      "category": "text.html#replacestring-source-target",
-      "docs_url": "https://duckdb.org/docs/current/sql/functions/text.html#replacestring-source-target#ilike_escapestring-like_specifier-escape_character",
+      "category": "text",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/text#ilike_escapestring-like_specifier-escape_character",
       "preview_status": "GA",
       "fusion_typecheck": false
     },
     {
       "name": "INSTR",
-      "category": "text.html#replacestring-source-target",
-      "docs_url": "https://duckdb.org/docs/current/sql/functions/text.html#replacestring-source-target#instrstring-search_string",
+      "category": "text",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/text#instrstring-search_string",
       "preview_status": "GA",
       "fusion_typecheck": true
     },
     {
       "name": "JACCARD",
-      "category": "text.html#replacestring-source-target",
-      "docs_url": "https://duckdb.org/docs/current/sql/functions/text.html#replacestring-source-target#jaccards1-s2",
+      "category": "text",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/text#jaccards1-s2",
       "preview_status": "GA",
       "fusion_typecheck": true
     },
     {
       "name": "JARO_SIMILARITY",
-      "category": "text.html#replacestring-source-target",
-      "docs_url": "https://duckdb.org/docs/current/sql/functions/text.html#replacestring-source-target#jaro_similaritys1-s2-score_cutoff",
+      "category": "text",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/text#jaro_similaritys1-s2-score_cutoff",
       "preview_status": "GA",
       "fusion_typecheck": true
     },
     {
       "name": "JARO_WINKLER_SIMILARITY",
-      "category": "text.html#replacestring-source-target",
-      "docs_url": "https://duckdb.org/docs/current/sql/functions/text.html#replacestring-source-target#jaro_winkler_similaritys1-s2-score_cutoff",
+      "category": "text",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/text#jaro_winkler_similaritys1-s2-score_cutoff",
       "preview_status": "GA",
       "fusion_typecheck": true
     },
     {
       "name": "LCASE",
-      "category": "text.html#replacestring-source-target",
-      "docs_url": "https://duckdb.org/docs/current/sql/functions/text.html#replacestring-source-target#lowerstring",
+      "category": "text",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/text#lowerstring",
       "preview_status": "GA",
       "fusion_typecheck": true
     },
     {
       "name": "LEAST",
-      "category": "text.html#replacestring-source-target",
-      "docs_url": "https://duckdb.org/docs/current/sql/functions/text.html#replacestring-source-target#leastarg1-",
+      "category": "text",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/text#leastarg1-",
       "preview_status": "GA",
       "fusion_typecheck": true
     },
     {
       "name": "LEFT",
-      "category": "text.html#replacestring-source-target",
-      "docs_url": "https://duckdb.org/docs/current/sql/functions/text.html#replacestring-source-target#leftstring-count",
+      "category": "text",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/text#leftstring-count",
       "preview_status": "GA",
       "fusion_typecheck": true
     },
     {
       "name": "LEFT_GRAPHEME",
-      "category": "text.html#replacestring-source-target",
-      "docs_url": "https://duckdb.org/docs/current/sql/functions/text.html#replacestring-source-target#left_graphemestring-count",
+      "category": "text",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/text#left_graphemestring-count",
       "preview_status": "GA",
       "fusion_typecheck": true
     },
     {
       "name": "LEN",
-      "category": "text.html#replacestring-source-target",
-      "docs_url": "https://duckdb.org/docs/current/sql/functions/text.html#replacestring-source-target#lengthstring",
+      "category": "text",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/text#lengthstring",
       "preview_status": "GA",
       "fusion_typecheck": true
     },
     {
       "name": "LENGTH",
-      "category": "text.html#replacestring-source-target",
-      "docs_url": "https://duckdb.org/docs/current/sql/functions/text.html#replacestring-source-target#lengthstring",
+      "category": "text",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/text#lengthstring",
       "preview_status": "GA",
       "fusion_typecheck": true
     },
     {
       "name": "LENGTH_GRAPHEME",
-      "category": "text.html#replacestring-source-target",
-      "docs_url": "https://duckdb.org/docs/current/sql/functions/text.html#replacestring-source-target#length_graphemestring",
+      "category": "text",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/text#length_graphemestring",
       "preview_status": "GA",
       "fusion_typecheck": false
     },
     {
       "name": "LEVENSHTEIN",
-      "category": "text.html#replacestring-source-target",
-      "docs_url": "https://duckdb.org/docs/current/sql/functions/text.html#replacestring-source-target#levenshteins1-s2",
+      "category": "text",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/text#levenshteins1-s2",
       "preview_status": "GA",
       "fusion_typecheck": true
     },
     {
       "name": "LIKE_ESCAPE",
-      "category": "text.html#replacestring-source-target",
-      "docs_url": "https://duckdb.org/docs/current/sql/functions/text.html#replacestring-source-target#like_escapestring-like_specifier-escape_character",
+      "category": "text",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/text#like_escapestring-like_specifier-escape_character",
       "preview_status": "GA",
       "fusion_typecheck": false
     },
     {
       "name": "LOWER",
-      "category": "text.html#replacestring-source-target",
-      "docs_url": "https://duckdb.org/docs/current/sql/functions/text.html#replacestring-source-target#lowerstring",
+      "category": "text",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/text#lowerstring",
       "preview_status": "GA",
       "fusion_typecheck": true
     },
     {
       "name": "LPAD",
-      "category": "text.html#replacestring-source-target",
-      "docs_url": "https://duckdb.org/docs/current/sql/functions/text.html#replacestring-source-target#lpadstring-count-character",
+      "category": "text",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/text#lpadstring-count-character",
       "preview_status": "GA",
       "fusion_typecheck": true
     },
     {
       "name": "LTRIM",
-      "category": "text.html#replacestring-source-target",
-      "docs_url": "https://duckdb.org/docs/current/sql/functions/text.html#replacestring-source-target#ltrimstring-characters",
+      "category": "text",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/text#ltrimstring-characters",
       "preview_status": "GA",
       "fusion_typecheck": true
     },
     {
       "name": "MD5",
-      "category": "text.html#replacestring-source-target",
-      "docs_url": "https://duckdb.org/docs/current/sql/functions/text.html#replacestring-source-target#md5string",
+      "category": "text",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/text#md5string",
       "preview_status": "GA",
       "fusion_typecheck": true
     },
     {
       "name": "MD5_NUMBER",
-      "category": "text.html#replacestring-source-target",
-      "docs_url": "https://duckdb.org/docs/current/sql/functions/text.html#replacestring-source-target#md5_numberstring",
+      "category": "text",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/text#md5_numberstring",
       "preview_status": "GA",
       "fusion_typecheck": false
     },
     {
       "name": "MD5_NUMBER_LOWER",
-      "category": "text.html#replacestring-source-target",
-      "docs_url": "https://duckdb.org/docs/current/sql/functions/text.html#replacestring-source-target#md5_number_lowerstring",
+      "category": "text",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/text#md5_number_lowerstring",
       "preview_status": "GA",
       "fusion_typecheck": false
     },
     {
       "name": "MD5_NUMBER_UPPER",
-      "category": "text.html#replacestring-source-target",
-      "docs_url": "https://duckdb.org/docs/current/sql/functions/text.html#replacestring-source-target#md5_number_upperstring",
+      "category": "text",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/text#md5_number_upperstring",
       "preview_status": "GA",
       "fusion_typecheck": false
     },
     {
       "name": "MISMATCHES",
-      "category": "text.html#replacestring-source-target",
-      "docs_url": "https://duckdb.org/docs/current/sql/functions/text.html#replacestring-source-target#hammings1-s2",
+      "category": "text",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/text#hammings1-s2",
       "preview_status": "GA",
       "fusion_typecheck": true
     },
     {
       "name": "NFC_NORMALIZE",
-      "category": "text.html#replacestring-source-target",
-      "docs_url": "https://duckdb.org/docs/current/sql/functions/text.html#replacestring-source-target#nfc_normalizestring",
+      "category": "text",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/text#nfc_normalizestring",
       "preview_status": "GA",
       "fusion_typecheck": true
     },
     {
       "name": "NOT_ILIKE_ESCAPE",
-      "category": "text.html#replacestring-source-target",
-      "docs_url": "https://duckdb.org/docs/current/sql/functions/text.html#replacestring-source-target#not_ilike_escapestring-like_specifier-escape_character",
+      "category": "text",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/text#not_ilike_escapestring-like_specifier-escape_character",
       "preview_status": "GA",
       "fusion_typecheck": false
     },
     {
       "name": "NOT_LIKE_ESCAPE",
-      "category": "text.html#replacestring-source-target",
-      "docs_url": "https://duckdb.org/docs/current/sql/functions/text.html#replacestring-source-target#not_like_escapestring-like_specifier-escape_character",
+      "category": "text",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/text#not_like_escapestring-like_specifier-escape_character",
       "preview_status": "GA",
       "fusion_typecheck": false
     },
     {
       "name": "ORD",
-      "category": "text.html#replacestring-source-target",
-      "docs_url": "https://duckdb.org/docs/current/sql/functions/text.html#replacestring-source-target#unicodestring",
+      "category": "text",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/text#unicodestring",
       "preview_status": "GA",
       "fusion_typecheck": true
     },
     {
       "name": "PARSE_DIRNAME",
-      "category": "text.html#replacestring-source-target",
-      "docs_url": "https://duckdb.org/docs/current/sql/functions/text.html#replacestring-source-target#parse_dirnamepath-separator",
+      "category": "text",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/text#parse_dirnamepath-separator",
       "preview_status": "GA",
       "fusion_typecheck": false
     },
     {
       "name": "PARSE_DIRPATH",
-      "category": "text.html#replacestring-source-target",
-      "docs_url": "https://duckdb.org/docs/current/sql/functions/text.html#replacestring-source-target#parse_dirpathpath-separator",
+      "category": "text",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/text#parse_dirpathpath-separator",
       "preview_status": "GA",
       "fusion_typecheck": false
     },
     {
       "name": "PARSE_FILENAME",
-      "category": "text.html#replacestring-source-target",
-      "docs_url": "https://duckdb.org/docs/current/sql/functions/text.html#replacestring-source-target#parse_filenamestring-trim_extension-separator",
+      "category": "text",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/text#parse_filenamestring-trim_extension-separator",
       "preview_status": "GA",
       "fusion_typecheck": false
     },
     {
       "name": "PARSE_PATH",
-      "category": "text.html#replacestring-source-target",
-      "docs_url": "https://duckdb.org/docs/current/sql/functions/text.html#replacestring-source-target#parse_pathpath-separator",
+      "category": "text",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/text#parse_pathpath-separator",
       "preview_status": "GA",
       "fusion_typecheck": false
     },
     {
       "name": "POSITION",
-      "category": "text.html#replacestring-source-target",
-      "docs_url": "https://duckdb.org/docs/current/sql/functions/text.html#replacestring-source-target#instrstring-search_string",
+      "category": "text",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/text#instrstring-search_string",
       "preview_status": "GA",
       "fusion_typecheck": true
     },
     {
       "name": "PREFIX",
-      "category": "text.html#replacestring-source-target",
-      "docs_url": "https://duckdb.org/docs/current/sql/functions/text.html#replacestring-source-target#prefixstring-search_string",
+      "category": "text",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/text#prefixstring-search_string",
       "preview_status": "GA",
       "fusion_typecheck": true
     },
     {
       "name": "PRINTF",
-      "category": "text.html#replacestring-source-target",
-      "docs_url": "https://duckdb.org/docs/current/sql/functions/text.html#replacestring-source-target#printfformat-",
+      "category": "text",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/text#printfformat-",
       "preview_status": "GA",
       "fusion_typecheck": true
     },
     {
       "name": "READ_TEXT",
-      "category": "text.html#replacestring-source-target",
-      "docs_url": "https://duckdb.org/docs/current/sql/functions/text.html#replacestring-source-target#read_textsource",
+      "category": "text",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/text#read_textsource",
       "preview_status": "GA",
       "fusion_typecheck": true
     },
     {
       "name": "REGEXP_ESCAPE",
-      "category": "text.html#replacestring-source-target",
-      "docs_url": "https://duckdb.org/docs/current/sql/functions/text.html#replacestring-source-target#regexp_escapestring",
+      "category": "text",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/text#regexp_escapestring",
       "preview_status": "GA",
       "fusion_typecheck": true
     },
     {
       "name": "REGEXP_EXTRACT",
-      "category": "text.html#replacestring-source-target",
-      "docs_url": "https://duckdb.org/docs/current/sql/functions/text.html#replacestring-source-target#regexp_extractstring-regex-name_list-options",
+      "category": "text",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/text#regexp_extractstring-regex-name_list-options",
       "preview_status": "GA",
       "fusion_typecheck": true
     },
     {
       "name": "REGEXP_EXTRACT_ALL",
-      "category": "text.html#replacestring-source-target",
-      "docs_url": "https://duckdb.org/docs/current/sql/functions/text.html#replacestring-source-target#regexp_extract_allstring-regex-name_list-options",
+      "category": "text",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/text#regexp_extract_allstring-regex-name_list-options",
       "preview_status": "GA",
       "fusion_typecheck": true
     },
     {
       "name": "REGEXP_FULL_MATCH",
-      "category": "text.html#replacestring-source-target",
-      "docs_url": "https://duckdb.org/docs/current/sql/functions/text.html#replacestring-source-target#regexp_full_matchstring-regex-col2",
+      "category": "text",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/text#regexp_full_matchstring-regex-col2",
       "preview_status": "GA",
       "fusion_typecheck": true
     },
     {
       "name": "REGEXP_MATCHES",
-      "category": "text.html#replacestring-source-target",
-      "docs_url": "https://duckdb.org/docs/current/sql/functions/text.html#replacestring-source-target#regexp_matchesstring-regex-options",
+      "category": "text",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/text#regexp_matchesstring-regex-options",
       "preview_status": "GA",
       "fusion_typecheck": true
     },
     {
       "name": "REGEXP_REPLACE",
-      "category": "text.html#replacestring-source-target",
-      "docs_url": "https://duckdb.org/docs/current/sql/functions/text.html#replacestring-source-target#regexp_replacestring-regex-replacement-options",
+      "category": "text",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/text#regexp_replacestring-regex-replacement-options",
       "preview_status": "GA",
       "fusion_typecheck": true
     },
     {
       "name": "REGEXP_SPLIT_TO_ARRAY",
-      "category": "text.html#replacestring-source-target",
-      "docs_url": "https://duckdb.org/docs/current/sql/functions/text.html#replacestring-source-target#string_split_regexstring-regex-options",
+      "category": "text",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/text#string_split_regexstring-regex-options",
       "preview_status": "GA",
       "fusion_typecheck": true
     },
     {
       "name": "REGEXP_SPLIT_TO_TABLE",
-      "category": "text.html#replacestring-source-target",
-      "docs_url": "https://duckdb.org/docs/current/sql/functions/text.html#replacestring-source-target#regexp_split_to_tablestring-regex",
+      "category": "text",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/text#regexp_split_to_tablestring-regex",
       "preview_status": "GA",
       "fusion_typecheck": true
     },
     {
       "name": "REPEAT",
-      "category": "text.html#replacestring-source-target",
-      "docs_url": "https://duckdb.org/docs/current/sql/functions/text.html#replacestring-source-target#repeatstring-count",
+      "category": "text",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/text#repeatstring-count",
       "preview_status": "GA",
       "fusion_typecheck": true
     },
     {
       "name": "REPLACE",
-      "category": "text.html#replacestring-source-target",
-      "docs_url": "https://duckdb.org/docs/current/sql/functions/text.html#replacestring-source-target#replacestring-source-target",
+      "category": "text",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/text#replacestring-source-target",
       "preview_status": "GA",
       "fusion_typecheck": true
     },
     {
       "name": "REVERSE",
-      "category": "text.html#replacestring-source-target",
-      "docs_url": "https://duckdb.org/docs/current/sql/functions/text.html#replacestring-source-target#reversestring",
+      "category": "text",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/text#reversestring",
       "preview_status": "GA",
       "fusion_typecheck": true
     },
     {
       "name": "RIGHT",
-      "category": "text.html#replacestring-source-target",
-      "docs_url": "https://duckdb.org/docs/current/sql/functions/text.html#replacestring-source-target#rightstring-count",
+      "category": "text",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/text#rightstring-count",
       "preview_status": "GA",
       "fusion_typecheck": true
     },
     {
       "name": "RIGHT_GRAPHEME",
-      "category": "text.html#replacestring-source-target",
-      "docs_url": "https://duckdb.org/docs/current/sql/functions/text.html#replacestring-source-target#right_graphemestring-count",
+      "category": "text",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/text#right_graphemestring-count",
       "preview_status": "GA",
       "fusion_typecheck": true
     },
     {
       "name": "RPAD",
-      "category": "text.html#replacestring-source-target",
-      "docs_url": "https://duckdb.org/docs/current/sql/functions/text.html#replacestring-source-target#rpadstring-count-character",
+      "category": "text",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/text#rpadstring-count-character",
       "preview_status": "GA",
       "fusion_typecheck": true
     },
     {
       "name": "RTRIM",
-      "category": "text.html#replacestring-source-target",
-      "docs_url": "https://duckdb.org/docs/current/sql/functions/text.html#replacestring-source-target#rtrimstring-characters",
+      "category": "text",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/text#rtrimstring-characters",
       "preview_status": "GA",
       "fusion_typecheck": true
     },
     {
       "name": "SHA1",
-      "category": "text.html#replacestring-source-target",
-      "docs_url": "https://duckdb.org/docs/current/sql/functions/text.html#replacestring-source-target#sha1value",
+      "category": "text",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/text#sha1value",
       "preview_status": "GA",
       "fusion_typecheck": true
     },
     {
       "name": "SHA256",
-      "category": "text.html#replacestring-source-target",
-      "docs_url": "https://duckdb.org/docs/current/sql/functions/text.html#replacestring-source-target#sha256value",
+      "category": "text",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/text#sha256value",
       "preview_status": "GA",
       "fusion_typecheck": true
     },
     {
       "name": "SPLIT",
-      "category": "text.html#replacestring-source-target",
-      "docs_url": "https://duckdb.org/docs/current/sql/functions/text.html#replacestring-source-target#string_splitstring-separator",
+      "category": "text",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/text#string_splitstring-separator",
       "preview_status": "GA",
       "fusion_typecheck": true
     },
     {
       "name": "SPLIT_PART",
-      "category": "text.html#replacestring-source-target",
-      "docs_url": "https://duckdb.org/docs/current/sql/functions/text.html#replacestring-source-target#split_partstring-separator-index",
+      "category": "text",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/text#split_partstring-separator-index",
       "preview_status": "GA",
       "fusion_typecheck": true
     },
     {
       "name": "STARTS_WITH",
-      "category": "text.html#replacestring-source-target",
-      "docs_url": "https://duckdb.org/docs/current/sql/functions/text.html#replacestring-source-target#starts_withstring-search_string",
+      "category": "text",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/text#starts_withstring-search_string",
       "preview_status": "GA",
       "fusion_typecheck": true
     },
     {
       "name": "STR_SPLIT",
-      "category": "text.html#replacestring-source-target",
-      "docs_url": "https://duckdb.org/docs/current/sql/functions/text.html#replacestring-source-target#string_splitstring-separator",
+      "category": "text",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/text#string_splitstring-separator",
       "preview_status": "GA",
       "fusion_typecheck": true
     },
     {
       "name": "STR_SPLIT_REGEX",
-      "category": "text.html#replacestring-source-target",
-      "docs_url": "https://duckdb.org/docs/current/sql/functions/text.html#replacestring-source-target#string_split_regexstring-regex-options",
+      "category": "text",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/text#string_split_regexstring-regex-options",
       "preview_status": "GA",
       "fusion_typecheck": true
     },
     {
       "name": "STRING_SPLIT",
-      "category": "text.html#replacestring-source-target",
-      "docs_url": "https://duckdb.org/docs/current/sql/functions/text.html#replacestring-source-target#string_splitstring-separator",
+      "category": "text",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/text#string_splitstring-separator",
       "preview_status": "GA",
       "fusion_typecheck": true
     },
     {
       "name": "STRING_SPLIT_REGEX",
-      "category": "text.html#replacestring-source-target",
-      "docs_url": "https://duckdb.org/docs/current/sql/functions/text.html#replacestring-source-target#string_split_regexstring-regex-options",
+      "category": "text",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/text#string_split_regexstring-regex-options",
       "preview_status": "GA",
       "fusion_typecheck": true
     },
     {
       "name": "STRING_TO_ARRAY",
-      "category": "text.html#replacestring-source-target",
-      "docs_url": "https://duckdb.org/docs/current/sql/functions/text.html#replacestring-source-target#string_splitstring-separator",
+      "category": "text",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/text#string_splitstring-separator",
       "preview_status": "GA",
       "fusion_typecheck": true
     },
     {
       "name": "STRIP_ACCENTS",
-      "category": "text.html#replacestring-source-target",
-      "docs_url": "https://duckdb.org/docs/current/sql/functions/text.html#replacestring-source-target#strip_accentsstring",
+      "category": "text",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/text#strip_accentsstring",
       "preview_status": "GA",
       "fusion_typecheck": true
     },
     {
       "name": "STRLEN",
-      "category": "text.html#replacestring-source-target",
-      "docs_url": "https://duckdb.org/docs/current/sql/functions/text.html#replacestring-source-target#strlenstring",
+      "category": "text",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/text#strlenstring",
       "preview_status": "GA",
       "fusion_typecheck": true
     },
     {
       "name": "STRPOS",
-      "category": "text.html#replacestring-source-target",
-      "docs_url": "https://duckdb.org/docs/current/sql/functions/text.html#replacestring-source-target#instrstring-search_string",
+      "category": "text",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/text#instrstring-search_string",
       "preview_status": "GA",
       "fusion_typecheck": true
     },
     {
       "name": "SUBSTR",
-      "category": "text.html#replacestring-source-target",
-      "docs_url": "https://duckdb.org/docs/current/sql/functions/text.html#replacestring-source-target#substringstring-start-length",
+      "category": "text",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/text#substringstring-start-length",
       "preview_status": "GA",
       "fusion_typecheck": true
     },
     {
       "name": "SUBSTRING",
-      "category": "text.html#replacestring-source-target",
-      "docs_url": "https://duckdb.org/docs/current/sql/functions/text.html#replacestring-source-target#substringstring-start-length",
+      "category": "text",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/text#substringstring-start-length",
       "preview_status": "GA",
       "fusion_typecheck": true
     },
     {
       "name": "SUBSTRING_GRAPHEME",
-      "category": "text.html#replacestring-source-target",
-      "docs_url": "https://duckdb.org/docs/current/sql/functions/text.html#replacestring-source-target#substring_graphemestring-start-length",
+      "category": "text",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/text#substring_graphemestring-start-length",
       "preview_status": "GA",
       "fusion_typecheck": true
     },
     {
       "name": "SUFFIX",
-      "category": "text.html#replacestring-source-target",
-      "docs_url": "https://duckdb.org/docs/current/sql/functions/text.html#replacestring-source-target#suffixstring-search_string",
+      "category": "text",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/text#suffixstring-search_string",
       "preview_status": "GA",
       "fusion_typecheck": true
     },
     {
       "name": "TO_BASE",
-      "category": "text.html#replacestring-source-target",
-      "docs_url": "https://duckdb.org/docs/current/sql/functions/text.html#replacestring-source-target#to_basenumber-radix-min_length",
+      "category": "text",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/text#to_basenumber-radix-min_length",
       "preview_status": "GA",
       "fusion_typecheck": true
     },
     {
       "name": "TO_BASE64",
-      "category": "text.html#replacestring-source-target",
-      "docs_url": "https://duckdb.org/docs/current/sql/functions/text.html#replacestring-source-target#to_base64blob",
+      "category": "text",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/text#to_base64blob",
       "preview_status": "GA",
       "fusion_typecheck": true
     },
     {
       "name": "TO_BINARY",
-      "category": "text.html#replacestring-source-target",
-      "docs_url": "https://duckdb.org/docs/current/sql/functions/text.html#replacestring-source-target#binstring",
+      "category": "text",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/text#binstring",
       "preview_status": "GA",
       "fusion_typecheck": false
     },
     {
       "name": "TO_HEX",
-      "category": "text.html#replacestring-source-target",
-      "docs_url": "https://duckdb.org/docs/current/sql/functions/text.html#replacestring-source-target#hexstring",
+      "category": "text",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/text#hexstring",
       "preview_status": "GA",
       "fusion_typecheck": true
     },
     {
       "name": "TRANSLATE",
-      "category": "text.html#replacestring-source-target",
-      "docs_url": "https://duckdb.org/docs/current/sql/functions/text.html#replacestring-source-target#translatestring-from-to",
+      "category": "text",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/text#translatestring-from-to",
       "preview_status": "GA",
       "fusion_typecheck": true
     },
     {
       "name": "TRIM",
-      "category": "text.html#replacestring-source-target",
-      "docs_url": "https://duckdb.org/docs/current/sql/functions/text.html#replacestring-source-target#trimstring-characters",
+      "category": "text",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/text#trimstring-characters",
       "preview_status": "GA",
       "fusion_typecheck": true
     },
     {
       "name": "UCASE",
-      "category": "text.html#replacestring-source-target",
-      "docs_url": "https://duckdb.org/docs/current/sql/functions/text.html#replacestring-source-target#upperstring",
+      "category": "text",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/text#upperstring",
       "preview_status": "GA",
       "fusion_typecheck": true
     },
     {
       "name": "UNBIN",
-      "category": "text.html#replacestring-source-target",
-      "docs_url": "https://duckdb.org/docs/current/sql/functions/text.html#replacestring-source-target#unbinvalue",
+      "category": "text",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/text#unbinvalue",
       "preview_status": "GA",
       "fusion_typecheck": false
     },
     {
       "name": "UNHEX",
-      "category": "text.html#replacestring-source-target",
-      "docs_url": "https://duckdb.org/docs/current/sql/functions/text.html#replacestring-source-target#unhexvalue",
+      "category": "text",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/text#unhexvalue",
       "preview_status": "GA",
       "fusion_typecheck": false
     },
     {
       "name": "UNICODE",
-      "category": "text.html#replacestring-source-target",
-      "docs_url": "https://duckdb.org/docs/current/sql/functions/text.html#replacestring-source-target#unicodestring",
+      "category": "text",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/text#unicodestring",
       "preview_status": "GA",
       "fusion_typecheck": true
     },
     {
       "name": "UPPER",
-      "category": "text.html#replacestring-source-target",
-      "docs_url": "https://duckdb.org/docs/current/sql/functions/text.html#replacestring-source-target#upperstring",
+      "category": "text",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/text#upperstring",
       "preview_status": "GA",
       "fusion_typecheck": true
     },
     {
       "name": "URL_DECODE",
-      "category": "text.html#replacestring-source-target",
-      "docs_url": "https://duckdb.org/docs/current/sql/functions/text.html#replacestring-source-target#url_decodestring",
+      "category": "text",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/text#url_decodestring",
       "preview_status": "GA",
       "fusion_typecheck": true
     },
     {
       "name": "URL_ENCODE",
-      "category": "text.html#replacestring-source-target",
-      "docs_url": "https://duckdb.org/docs/current/sql/functions/text.html#replacestring-source-target#url_encodestring",
+      "category": "text",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/text#url_encodestring",
       "preview_status": "GA",
       "fusion_typecheck": true
+    },
+    {
+      "name": "DATE_DIFF",
+      "category": "time",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/time#date_diffpart-starttime-endtime",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "DATE_PART",
+      "category": "time",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/time#date_partpart-time",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "DATE_SUB",
+      "category": "time",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/time#date_subpart-starttime-endtime",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "EXTRACT",
+      "category": "time",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/time#extractpart-from-time",
+      "preview_status": "GA",
+      "fusion_typecheck": false
     },
     {
       "name": "GET_CURRENT_TIME",
@@ -2932,6 +3506,13 @@
       "fusion_typecheck": true
     },
     {
+      "name": "AGE",
+      "category": "timestamp",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/timestamp#agetimestamp",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
       "name": "AGO",
       "category": "timestamp",
       "docs_url": "https://duckdb.org/docs/current/sql/functions/timestamp#agointerval",
@@ -2942,6 +3523,41 @@
       "name": "CENTURY",
       "category": "timestamp",
       "docs_url": "https://duckdb.org/docs/current/sql/functions/timestamp#centurytimestamp",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "CURRENT_LOCALTIMESTAMP",
+      "category": "timestamp",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/timestamp#current_localtimestamp",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "DATE_DIFF",
+      "category": "timestamp",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/timestamp#date_diffpart-starttimestamp-endtimestamp",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "DATE_PART",
+      "category": "timestamp",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/timestamp#date_partpart-timestamp",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "DATE_SUB",
+      "category": "timestamp",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/timestamp#date_subpart-starttimestamp-endtimestamp",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "DATE_TRUNC",
+      "category": "timestamp",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/timestamp#date_truncpart-timestamp",
       "preview_status": "GA",
       "fusion_typecheck": true
     },
@@ -2967,9 +3583,72 @@
       "fusion_typecheck": true
     },
     {
+      "name": "EPOCH_NS",
+      "category": "timestamp",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/timestamp#epoch_nstimestamp",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "EPOCH_US",
+      "category": "timestamp",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/timestamp#epoch_ustimestamp",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "EXTRACT",
+      "category": "timestamp",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/timestamp#extractfield-from-timestamp",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "GENERATE_SERIES",
+      "category": "timestamp",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/timestamp#generate_seriestimestamp-timestamp-interval",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "GREATEST",
+      "category": "timestamp",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/timestamp#greatesttimestamp-timestamp",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ISFINITE",
+      "category": "timestamp",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/timestamp#isfinitetimestamp",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ISINF",
+      "category": "timestamp",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/timestamp#isinftimestamp",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
       "name": "JULIAN",
       "category": "timestamp",
       "docs_url": "https://duckdb.org/docs/current/sql/functions/timestamp#juliantimestamp",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "LAST_DAY",
+      "category": "timestamp",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/timestamp#last_daytimestamp",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "LEAST",
+      "category": "timestamp",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/timestamp#leasttimestamp-timestamp",
       "preview_status": "GA",
       "fusion_typecheck": true
     },
@@ -2998,6 +3677,34 @@
       "name": "MONTHNAME",
       "category": "timestamp",
       "docs_url": "https://duckdb.org/docs/current/sql/functions/timestamp#monthnametimestamp",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "RANGE",
+      "category": "timestamp",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/timestamp#rangetimestamp-timestamp-interval",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "STRFTIME",
+      "category": "timestamp",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/timestamp#strftimetimestamp-format",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "STRPTIME",
+      "category": "timestamp",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/timestamp#strptimetext-format",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TIME_BUCKET",
+      "category": "timestamp",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/timestamp#time_bucketbucket_width-timestamp-origin",
       "preview_status": "GA",
       "fusion_typecheck": true
     },
@@ -3093,6 +3800,13 @@
       "fusion_typecheck": false
     },
     {
+      "name": "GREATEST",
+      "category": "timestamptz",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/timestamptz#greatesttimestamptz-timestamptz",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
       "name": "ISFINITE",
       "category": "timestamptz",
       "docs_url": "https://duckdb.org/docs/current/sql/functions/timestamptz#isfinitetimestamptz",
@@ -3110,6 +3824,13 @@
       "name": "LAST_DAY",
       "category": "timestamptz",
       "docs_url": "https://duckdb.org/docs/current/sql/functions/timestamptz#last_daytimestamptz",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "LEAST",
+      "category": "timestamptz",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/timestamptz#leasttimestamptz-timestamptz",
       "preview_status": "GA",
       "fusion_typecheck": true
     },
@@ -3331,6 +4052,13 @@
       "fusion_typecheck": true
     },
     {
+      "name": "GENERATE_SERIES",
+      "category": "utility",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/utility#generate_seriesstart-stop-step",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
       "name": "GETENV",
       "category": "utility",
       "docs_url": "https://duckdb.org/docs/current/sql/functions/utility#getenvvar",
@@ -3348,6 +4076,13 @@
       "name": "GLOB",
       "category": "utility",
       "docs_url": "https://duckdb.org/docs/current/sql/functions/utility#globsearch_path",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "HASH",
+      "category": "utility",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/utility#hashvalue",
       "preview_status": "GA",
       "fusion_typecheck": true
     },
@@ -3376,6 +4111,34 @@
       "name": "IS_HISTOGRAM_OTHER_BIN",
       "category": "utility",
       "docs_url": "https://duckdb.org/docs/current/sql/functions/utility#is_histogram_other_binarg",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "MD5",
+      "category": "utility",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/utility#md5string",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "MD5_NUMBER",
+      "category": "utility",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/utility#md5_numberstring",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "MD5_NUMBER_LOWER",
+      "category": "utility",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/utility#md5_number_lowerstring",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "MD5_NUMBER_UPPER",
+      "category": "utility",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/utility#md5_number_upperstring",
       "preview_status": "GA",
       "fusion_typecheck": false
     },
@@ -3422,9 +4185,30 @@
       "fusion_typecheck": false
     },
     {
+      "name": "RANGE",
+      "category": "utility",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/utility#rangestart-stop-step",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
       "name": "READ_BLOB",
       "category": "utility",
       "docs_url": "https://duckdb.org/docs/current/sql/functions/utility#read_blobsource",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "READ_TEXT",
+      "category": "utility",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/utility#read_textsource",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "REPEAT",
+      "category": "utility",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/utility#repeatvalue-count",
       "preview_status": "GA",
       "fusion_typecheck": true
     },
@@ -3441,6 +4225,20 @@
       "docs_url": "https://duckdb.org/docs/current/sql/functions/utility#replace_typevalue-source_type-target_type",
       "preview_status": "GA",
       "fusion_typecheck": false
+    },
+    {
+      "name": "SHA1",
+      "category": "utility",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/utility#sha1string",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "SHA256",
+      "category": "utility",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/utility#sha256string",
+      "preview_status": "GA",
+      "fusion_typecheck": true
     },
     {
       "name": "SLEEP_MS",
@@ -3467,6 +4265,13 @@
       "name": "TYPEOF",
       "category": "utility",
       "docs_url": "https://duckdb.org/docs/current/sql/functions/utility#typeofexpression",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "UNNEST",
+      "category": "utility",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/utility#unnestlist",
       "preview_status": "GA",
       "fusion_typecheck": true
     },
