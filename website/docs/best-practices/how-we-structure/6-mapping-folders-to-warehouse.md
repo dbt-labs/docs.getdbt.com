@@ -75,7 +75,7 @@ The following table shows the warehouse schema names for that config.
 
 <br />
 
-You use the same `dbt_project.yml` in development and production. The warehouse schema names change because the target schema comes from the [environment](/docs/dbt-platform-environments) (<Constant name="dbt_platform" />) or the [profile](/docs/local/dbt-core-environments) (<Constant name="core" />).
+You use the same `dbt_project.yml` in development and production. The warehouse schema names change because the target schema comes from the [environment](/docs/dbt-platform-environments) (<Constant name="dbt_platform" />) or the [profile](/docs/local/dbt-environments) (<Constant name="core" />).
 
 If you want production to use `marts` (not `analytics_prod_marts`), use the built-in [`generate_schema_name_for_env`](/docs/build/custom-schemas#a-built-in-alternative-pattern-for-generating-schema-names) pattern. That pattern is different from the default `<target_schema>_<custom_schema>` names. In production (`target.name` is `prod`), models land in the custom schema only (`marts`). In development, custom schemas are ignored, so every model lands in your target schema (`alice_dev`), not `alice_dev_marts`. Set the production target name to `prod` for that pattern to apply. Do not remove the target schema from the default macro, or developers will write into the same schemas.
 
