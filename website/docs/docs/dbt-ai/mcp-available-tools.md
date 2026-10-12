@@ -41,5 +41,5 @@ The following tool list is available for your MCP server and is auto-fetched fro
 
 ### Find jobs across project environments
 
-Use the `list_jobs` tool with a `project_id` to list jobs across every environment in a dbt project. This is useful when you need to inspect jobs outside the configured production environment. Without `project_id`, `list_jobs` continues to use the configured production environment, or lists jobs across the account when no production environment is configured.
+Use the `list_jobs` [tool](#admin-api) with a `project_id` to list jobs across every environment in a dbt project. This is useful when you need to inspect jobs outside the configured production environment. Without `project_id`, `list_jobs` continues to use the configured production environment, or lists jobs across the account when no production environment is configured.
  
