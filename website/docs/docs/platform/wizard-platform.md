@@ -60,8 +60,6 @@ Most of the workflows in [How to use dbt Wizard in your dbt project](/best-pract
 
 ## Open dbt Wizard
 
-<WizardVideoCourse />
-
 1. Sign in to <Constant name="dbt_platform" />.
 2. Select the <Constant name="wizard" /> icon in the navigation menu, or open it in the <Constant name="studio_ide"/>.
 3. Enter a prompt. Try one of these to get a feel for it:
@@ -82,6 +80,8 @@ Most of the workflows in [How to use dbt Wizard in your dbt project](/best-pract
 For more prompt ideas, refer to the [prompt cookbook](/guides/prompt-cookbook).
 
 If <Constant name="wizard" /> isn't available, confirm that your plan is eligible and that an admin has [enabled account access to AI features](/docs/platform/manage-dbt-ai#manage-ai-features).
+
+<WizardVideoCourse />
 
 ## Trial and usage credits
 
