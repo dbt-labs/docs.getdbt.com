@@ -72,7 +72,6 @@ If you are your GitHub organization owner, you can also configure the <Constant 
 
 ## Custom GitHub application <Lifecycle status="managed,managed_plus,private_beta" /> {#custom-github-application}
 
-
 :::info Available in private beta
 Configuring a custom GitHub app is available in private beta. To join, reach out to your account manager.
 :::
@@ -90,8 +89,7 @@ Then each developer on the account needs to [relink their GitHub profile](#relin
 
 We recommend creating the app in your GitHub organization instead of a personal account to ensure the connection doesn't break should a person leave. For the full walkthrough on the GitHub side, check out GitHub's guide to [registering a GitHub App](https://docs.github.com/en/apps/creating-github-apps/registering-a-github-app/registering-a-github-app).
 
-1. In <Constant name="dbt" />, go to **Account settings** > **Integrations** > **Git** and expand the **GitHub** section. Select **Copy** next to **Redirect URL** &mdash; you need it in the next step. Leave this page open.
-2. In your GitHub organization, go to **Settings** > **Developer settings** > **GitHub Apps** and select **New GitHub App**.
+1. In <Constant name="dbt" />, go to **Account settings** > **Integrations** > **Git** and expand the **GitHub** section. Select **Copy** next to **Redirect URL** &mdash; you need it in the next step.
 3. Enter the following:
     <SimpleTable>
     | Field | Value |
@@ -99,7 +97,7 @@ We recommend creating the app in your GitHub organization instead of a personal 
     | **GitHub App name** | Something recognizable, such as `dbt platform` |
     | **Homepage URL** | Your <Constant name="dbt" /> [access URL](/docs/platform/about-platform/access-regions-ip-addresses) |
     | **Redirect URL** | The **Redirect URL** you copied from <Constant name="dbt" /> |
-    | **Webhook** | Leave **Active** selected |
+    | **Webhook** | Leave **Active** selected and enter any placeholder URL (such as https://example.com) in the **Webhook URL** field. |
     </SimpleTable>
 4. Grant the app these repository permissions:
 
