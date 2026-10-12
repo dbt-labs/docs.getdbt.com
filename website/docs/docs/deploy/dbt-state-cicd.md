@@ -25,7 +25,7 @@ Before you begin, make sure you have:
 - **Owner** or **Account Admin** permissions to create a service token.
 - dbt State installed and configured. Refer to [Set up dbt State](/docs/deploy/dbt-state-setup) for more information.
 
-## Create a service token
+## Creating a service token
 
 To create a service account token in <Constant name="dbt_platform" />, refer to [Generate service account tokens](/docs/dbt-apis/service-tokens#generate-service-account-tokens). When adding permissions for the token, assign at least one of the following:
 
@@ -38,7 +38,7 @@ The following are available on Enterprise plans only:
 - **Job Runner** (Recommended; provides the minimum access required for dbt State)
 - **Developer**
 
-## Configure authentication
+## Configuring authentication
 
 Set the following environment variables in your orchestration environment:
 
@@ -50,7 +50,19 @@ DBT_CLOUD_ACCOUNT_ID=YOUR_ACCOUNT_ID
 
 Replace `YOUR_SERVICE_TOKEN` with your service token, `YOUR_ACCOUNT_HOST` with your [account host](/docs/platform/about-platform/access-regions-ip-addresses) (for example, `abc123.us1.dbt.com`), and `YOUR_ACCOUNT_ID` with your numeric account ID. Go to **Account settings** > **Account** to find your account ID and account host (the hostname from the **Access URL** field).
 
-Once configured, [verify dbt State is active](#verifying-dbt-state-is-active).
+### Network requirements
+
+If your network or environment restricts outbound traffic, allow the following URLs so dbt State can authenticate and communicate with the <Constant name="dbt_platform" />:
+
+<SimpleTable>
+| URL | Description |
+|-----|-------------|
+| `auth.state.dbt.com` | dbt State authentication |
+| `api.state.dbt.com` | dbt State API |
+| `abc123.us1.dbt.com` | Your <Constant name="dbt_platform" /> [access URL](/docs/platform/about-platform/access-regions-ip-addresses) (Replace with your account's access URL) |
+</SimpleTable>
+
+Once authentication is configured, [verify dbt State is active](#verifying-dbt-state-is-active).
 
 ## Verifying dbt State is active
 
