@@ -16,6 +16,10 @@ Ask an analytics engineer to rename a column and they won't start with the SQL. 
 
 We built [dbt Wizard](/docs/platform/wizard-overview) around a different idea. Wizard thinks like an analytics engineer: it thinks in DAGs, tests and fixes its own work, and keeps you in flow, so you review a working change instead of a first draft. None of that comes from the model; it comes from the harness, workflows, and UX we built around it.
 
+:::tip Try Wizard Desktop
+Run parallel agents, review data diffs and lineage next to the code, and validate changes against your warehouse. [Join the Wizard Desktop waitlist](https://www.getdbt.com/wizard-desktop-waitlist).
+:::
+
 <!-- truncate -->
 
 ## What an agent harness does
