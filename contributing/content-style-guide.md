@@ -66,7 +66,6 @@ Plan tiers (capitalize): Developer, Starter, Enterprise, Enterprise+
 - Semantic Layer
 - Copilot
 - dbt MCP server
-- dbt Agents
 - dbt Wizard
 - dbt Charts
 - Lake Compute
