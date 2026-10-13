@@ -103,7 +103,7 @@ If there has been a change in user roles or Slack permissions where you no longe
 - You must be a Slack Workspace Owner. 
 - You must be an account admin to configure Slack notifications in <Constant name="dbt" />. For more details, refer to [Users and licenses](/docs/platform/manage-access/seats-and-users).
 
-The integration supports public channels in the Slack workspace _only_.  For both private and public channel support, [migrate](/docs/deploy/job-notifications#migrating-legacy-slack-notification-settings) to [Account level slack integration](/docs/deploy/job-notifications#slack-notifications-account).
+The integration supports public channels in the Slack workspace only. To also send notifications to private channels, use the [account-level Slack integration](/docs/deploy/job-notifications#slack-notifications-account).
 
 Once an account admin links the Slack app, licensed users can configure job notifications if they have one of the following:
 - The **Account Admin**, **Owner**, or **Member** default [group](/docs/platform/manage-access/about-user-access#groups)
