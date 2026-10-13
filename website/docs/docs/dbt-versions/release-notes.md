@@ -21,7 +21,7 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 For <Constant name="fusion_engine" /> updates, refer to the [v2 changelog](https://github.com/dbt-labs/dbt/blob/main/CHANGELOG-dbt.md).
 
 ## October 2026
-- **Enhancement:** [Slack job notifications](/docs/deploy/job-notifications#slack-notifications-account) now support private channels. To use them, an account admin must unlink and relink the Slack app in **Account settings** > **Integrations** > **OAuth** and accept the new `groups:read` permission, which lets the app view basic information about private channels it's been added to. Then, add the app to each private channel.
+- **Enhancement:** [Slack job notifications](/docs/deploy/job-notifications#slack-notifications-account) now support private channels. To use them, an account admin must relink the Slack app to accept the new `groups:read` permission, then add the app to each private channel.
 - **New:** The jobs list API endpoint (`GET /api/v2/accounts/{account_id}/jobs/`) now accepts a `pk__in` query parameter, letting you retrieve up to 500 specific jobs by ID in a single request.
 - **New:** You can now specify `clickhouse_v0` as the adapter_version when creating connections and credentials, filtering connections, and retrieving adapter schemas in the Administrative API v3. Contact your account representative to enable.
 - **New:** The `metrics` and `metricsPaginated` GraphQL queries now accept a `searchTerms` argument, letting you filter metrics by multiple terms in a single request with correct pagination. Note: `search` and `searchTerms` cannot be combined, and a maximum of 20 terms is allowed.
