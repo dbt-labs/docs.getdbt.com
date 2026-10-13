@@ -8,11 +8,9 @@ import Lifecycle from '../lifeCycle';
 import VersionContext from '../../stores/VersionContext';
 import { availableInCurrentVersion } from '../../utils/available-in-current-version';
 
-function Card({ title, body, link, icon, pills, tag, lifecycle, showBorderBeam = false, platformHref, v1Href, v2Href, badgeHref }) {
+function Card({ title, body, link, icon, pills, tag, lifecycle, showBorderBeam = false, platformHref, v1Href, v2Href, badgeHref, headingLevel = 4 }) {
   const { version } = useContext(VersionContext);
   const baseLink = useBaseUrl(link || "/");
-
-function Card({ title, body, link, icon, pills, tag, lifecycle, showBorderBeam = false, headingLevel = 4 }) {
   // Callers can raise the title's heading level to keep the page outline
   // sequential (for example, h3 cards under an h2 on the homepage). The
   // heading-4 class keeps the look the same at any level.
@@ -90,7 +88,7 @@ function Card({ title, body, link, icon, pills, tag, lifecycle, showBorderBeam =
         {lifecycle && <Lifecycle status={lifecycle} />}
       </div>
       {tag && <span className="tag">{tag}</span>}
-      <h4 className="heading-4">{title}</h4>
+      <Heading className="heading-4">{title}</Heading>
       {cardBody}
       {!link && parsedPills && parsedPills.length > 0 && (
         <div className={styles.pillsContainer}>
@@ -107,43 +105,6 @@ function Card({ title, body, link, icon, pills, tag, lifecycle, showBorderBeam =
 
   return (
     <div className={styles.cardWrapper}>
-      {link ? <Link
-        to={useBaseUrl(link)}>
-        <article className={styles.card}>
-          <div className={styles.cardHeader}>
-            {icon && getIconType(icon, styles.icon , imgClass)}
-            {lifecycle && <Lifecycle status={lifecycle} />}
-          </div>
-          {tag && <span className="tag">{tag}</span>}
-          <Heading className="heading-4">{title}</Heading>
-          <div
-            className={styles.cardBody}
-            dangerouslySetInnerHTML={{ __html: body }}
-          ></div>
-          {showBorderBeam && <BorderBeam />}
-        </article>
-      </Link> : <article className={styles.card}>
-        <div className={styles.cardHeader}>
-          {icon && getIconType(icon, styles.icon , imgClass)}
-          {lifecycle && <Lifecycle status={lifecycle} />}
-        </div>
-        {tag && <span className="tag">{tag}</span>}
-        <Heading className="heading-4">{title}</Heading>
-        <div
-          className={styles.cardBody}
-          dangerouslySetInnerHTML={{ __html: body }}
-        ></div>
-        {parsedPills && parsedPills.length > 0 && (
-          <div className={styles.pillsContainer}>
-            {parsedPills.map((pill, index) => (
-              <span key={index} className={styles.pill}>
-                {pill}
-              </span>
-            ))}
-          </div>
-        )}
-        {showBorderBeam && <BorderBeam />}
-      </article>}
       {link ? <Link to={baseLink}>{article}</Link> : article}
     </div>
   );
