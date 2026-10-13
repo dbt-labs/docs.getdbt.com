@@ -1963,7 +1963,7 @@ html[data-theme="dark"] .main-wrapper nav a:active {
 
 }
 
-.footer-grid-item h5 {
+.footer-grid-item h3 {
   color: var(--text-inverse-primary);
   font-size: var(--text-lg);
 }
@@ -2857,7 +2857,7 @@ button .DocSearch-Button-Keys {
   gap: 12px;
 }
 
-.home-link-grid h4 {
+.home-link-grid h3 {
   margin-bottom: .5rem;
 }
 

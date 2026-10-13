@@ -22,6 +22,30 @@ Release notes are grouped by date for single-tenant environments.
 
 <span><img src="/img/fontawesome/rss.svg" alt="RSS" className="rss-icon" />Subscribe to release note updates via [RSS](https://docs.getdbt.com/feeds/release-notes-st-rss.xml), [Atom](https://docs.getdbt.com/feeds/release-notes-st-atom.xml), or [JSON Feed](https://docs.getdbt.com/feeds/release-notes-st-rss.json).</span>
 
+## October 14, 2026
+
+## Enhancements
+
+### APIs, Identity, and Administration
+
+- **Account connections page**: You can now sort columns, search by connection name, and filter by connection type, credentials, and connection method (private link or OAuth).
+
+### dbt State
+
+- **dbt State trial email**: When a dbt State trial ends, you'll get an email that communicates your Consumption or Enterprise plan and includes the allowance end date when your plan has one.
+
+## Fixes
+
+### Insights
+
+- **Dates on Insights charts**: Charts now show dates such as `2026-01` or `2026-01-15` from oldest to newest. Tables keep your query's row order until you sort a column.
+
+## Behavior change
+
+### APIs, Identity, and Administration
+
+- **SCIM tokens require a signed-in user**: You can no longer create a System for Cross-domain Identity Management (SCIM) token with a personal access token or a service token. Sign in to dbt and [create a SCIM token](/docs/platform/manage-access/scim#set-up-dbt).
+
 ## October 7, 2026
 
 ## New
