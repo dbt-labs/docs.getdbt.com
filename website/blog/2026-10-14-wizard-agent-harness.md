@@ -1,6 +1,6 @@
 ---
 title: "Inside the dbt Wizard harness: building an agent that thinks in DAGs"
-description: "Wizard thinks like an analytics engineer: it thinks in DAGs, tests and fixes its own work, and keeps you in flow, so you review a working change instead of a first draft."
+description: "Wizard works like an analytics engineer: it thinks in DAGs, tests and fixes its own work, and keeps you in flow, so you review a working change instead of a first draft."
 slug: wizard-agent-harness
 
 authors: [jason_lin, alex_noonan, sam_ferguson]
@@ -14,7 +14,7 @@ is_featured: true
 
 Ask an analytics engineer to rename a column and they won't start with the SQL. They'll check what reads it downstream, which tests and dashboards will break, build only what changed, and compare the data before anyone reviews it. The [dbt MCP server](/docs/dbt-ai/about-mcp) and [agent skills](/blog/dbt-agent-skills) can teach a coding agent those steps, but they can't make it take them every time, keep it from rebuilding your whole dev schema, or put a data diff in front of you at review.
 
-We built [dbt Wizard](/docs/platform/wizard-overview) around a different idea. Wizard thinks like an analytics engineer: it thinks in DAGs, tests and fixes its own work, and keeps you in flow, so you review a working change instead of a first draft. None of that comes from the model; it comes from the harness, workflows, and UX we built around it.
+We built [dbt Wizard](/docs/platform/wizard-overview) around a different idea. Wizard works like an analytics engineer: it thinks in DAGs, tests and fixes its own work, and keeps you in flow, so you review a working change instead of a first draft. None of that comes from the model; it comes from the harness, workflows, and UX we built around it.
 
 :::tip Try Wizard Desktop
 Run parallel agents, review data diffs and lineage next to the code, and validate changes against your warehouse. [Join the Wizard Desktop waitlist](https://www.getdbt.com/wizard-desktop-waitlist).
@@ -50,7 +50,7 @@ Wizard validates in two stages.
 
 While it works, the agent checks its own changes with dbt-native tools: it compiles SQL, resolves `ref()`s, and reads structured errors when something fails. Compiler and database errors go straight back to the model with the exact line and suggested fix, so it can revise before you see anything.
 
-When the change is ready, Wizard summarizes what it did and proposes a validation scope. In [Wizard Desktop](https://www.getdbt.com/wizard-desktop-waitlist), you can start validation from the Validation panel and choose how deep it goes, from a quick compile-and-test check to a full prod-vs-dev comparison. The [CLI](/docs/dbt-ai/wizard-cli) has the same depth settings. A dedicated validation agent then runs builds and tests restricted to exactly the models you approved. It won't widen the selection, change targets, or do a [full refresh](/reference/resource-configs/full_refresh). In the [dbt platform](/docs/platform/wizard-platform), Wizard takes a simpler, more proactive approach: it decides which commands to run to validate its changes and, if you've already approved those commands, runs them automatically.
+When the change is ready, Wizard summarizes what it did and proposes a validation scope. In [Wizard Desktop](https://www.getdbt.com/wizard-desktop-waitlist), you can start validation from the **Validation** panel and choose how deep it goes, from a quick compile-and-test check to a full prod-vs-dev comparison. The [CLI](/docs/dbt-ai/wizard-cli) has the same depth settings. A dedicated validation agent then runs builds and tests restricted to exactly the models you approved. It won't widen the selection, change targets, or do a [full refresh](/reference/resource-configs/full_refresh). In the [dbt platform](/docs/platform/wizard-platform), Wizard takes a simpler, more proactive approach: it decides which commands to run to validate its changes and, if you've already approved those commands, runs them automatically.
 
 <Lightbox src="/img/blog/2026-10-14-wizard-agent-harness/wizard-validation-plan.png" width="85%" title="A Wizard validation plan at the Medium depth: compile and lint, materialize, test, and build downstream dependents for the models in scope, with automatic deferral." />
 
@@ -72,13 +72,13 @@ Validation in dbt was never just "does this file parse?" The real question is wh
 
 ### The impact in practice
 
-For data practitioners, most of their time is spent on pipeline maintenance and putting out fires. This reactive work can wear teams down and prevent data teams from taking on new projects and meeting stakeholder demand.
+Data practitioners spend most of their time on pipeline maintenance and putting out fires. This reactive work can wear teams down and prevent data teams from taking on new projects and meeting stakeholder demand.
 
 As agents write more of the code, the question shifts from "does it run?" to "is it right?" To see what that looks like in practice, one of us (Alex) went through seven months of history on his personal trading data platform. It's built on Dagster, dbt, and BigQuery, with 239 assets (174 of them dbt models) and 1,114 data quality checks, and AI agents write most of its code. The history covers 24,388 runs and 405 merged PRs, from March 1 to October 3, 2026.
 
 57% of merged PRs were fixes, about 0.56 fix PRs for every PR merged. That ratio barely moved as the platform grew. Fix PRs tracked merged PRs almost exactly week to week (ρ 0.96), while a roughly 100× increase in rows written had no measurable effect on the fix rate. Pipelines broke because the complexity scaled up and he didn't have an ergonomic way to catch those data quality issues before running.
 
-A run that errors is found fast, in a median of one day here. A run that succeeds with the wrong number is a different story. In a sample of well-documented defects, silent ones took a median of 65 days to find, and as long as 361. One liquidity metric (that was never queried) was off by 1,000× for 210 days. A non-trivial number of these came from upstream data quality issues from the vendor.
+When a run errors, the defect is found fast, in a median of one day here. A run that succeeds with the wrong number is a different story. In a sample of well-documented defects, silent ones took a median of 65 days to find, and as long as 361. One liquidity metric (that was never queried) was off by 1,000× for 210 days. A non-trivial number of these came from upstream data quality issues from the vendor.
 
 <Lightbox src="/img/blog/2026-10-14-wizard-agent-harness/silent-vs-loud-defect-detection.png" width="85%" title="Median days to detect a defect: loud defects where the run errors were found in 1 day, while silent defects where the run is green but the number is wrong took 65 days." />
 
@@ -106,7 +106,7 @@ dbt's console output is designed for people: per-node progress lines, colors, ba
 
 Wizard runs dbt with [structured JSON logging](/reference/global-configs/logs) and turns the result into a compact report: pass/fail/skip counts, then only the nodes that failed, each with its error. On a sample build with a failing test, the agent sees about 150 tokens instead of about 1,300 from plain dbt output, or worse, 21,000 from an interactive terminal session. A SQL error arrives as the exact database message, line, and suggested column, nothing else.
 
-The same idea applies across commands. During a long build, an agent doesn't care about the immediate status of each model, so it polls for status instead. Wizard also strips out the colors, loading bars, and other output meant for humans. For each dbt operation, we make sure Wizard returns only the most relevant information. When builds run, Wizard sees precisely which models were built and their status. When tests run, it only sees how many tests were executed, which tests failed, and how they failed.
+The same idea applies across commands. During a long build, an agent doesn't need the status of each model as it finishes, so Wizard polls for a summary instead of streaming every line. Wizard also strips out the colors, loading bars, and other output meant for humans. For each dbt operation, we make sure Wizard returns only the most relevant information. When builds run, Wizard sees precisely which models were built and their status. When tests run, it only sees how many tests were executed, which tests failed, and how they failed.
 
 ## Skills: customizable and portable
 
@@ -141,7 +141,7 @@ By default, Wizard:
 
 - Shows edits as diffs and asks before applying them.
 - Runs shell commands in a read-only sandbox.
-- Requires explicit approval for destructive commands, like `--full-refresh`, `git reset --hard`, or anything that could cause irreversible changes, regardless of other settings.
+- Always requires explicit approval, regardless of other settings, for destructive commands like `--full-refresh`, `git reset --hard`, or anything that could cause irreversible changes.
 
 You control two things separately: what the agent can touch (from read-only up to full access) and how often it asks first (from every change to never).
 
