@@ -46,7 +46,7 @@ Wizard validates in two stages.
 
 While it works, the agent checks its own changes with dbt-native tools: it compiles SQL, resolves `ref()`s, and reads structured errors when something fails. Compiler and database errors go straight back to the model with the exact line and suggested fix, so it can revise before you see anything.
 
-When the change is ready, Wizard summarizes what it did and proposes a validation scope. In Wizard Desktop, you can start validation from the Validation panel and choose how deep it goes, from a quick compile-and-test check to a full prod-vs-dev comparison. The [CLI](/docs/dbt-ai/wizard-cli) has the same depth settings. A dedicated validation agent then runs builds and tests restricted to exactly the models you approved. It won't widen the selection, change targets, or do a [full refresh](/reference/resource-configs/full_refresh). In the [dbt platform](/docs/platform/wizard-platform), Wizard takes a simpler, more proactive approach: it decides which commands to run to validate its changes and, if you've already approved those commands, runs them automatically.
+When the change is ready, Wizard summarizes what it did and proposes a validation scope. In [Wizard Desktop](https://www.getdbt.com/wizard-desktop-waitlist), you can start validation from the Validation panel and choose how deep it goes, from a quick compile-and-test check to a full prod-vs-dev comparison. The [CLI](/docs/dbt-ai/wizard-cli) has the same depth settings. A dedicated validation agent then runs builds and tests restricted to exactly the models you approved. It won't widen the selection, change targets, or do a [full refresh](/reference/resource-configs/full_refresh). In the [dbt platform](/docs/platform/wizard-platform), Wizard takes a simpler, more proactive approach: it decides which commands to run to validate its changes and, if you've already approved those commands, runs them automatically.
 
 <Lightbox src="/img/blog/2026-10-15-wizard-agent-harness/wizard-validation-plan.png" width="85%" title="A Wizard validation plan at the Medium depth: compile and lint, materialize, test, and build downstream dependents for the models in scope, with automatic deferral." />
 
@@ -125,7 +125,7 @@ So instead of one agent trying to hold an entire refactor in its head (under tha
 
 Wizard Desktop takes this one level up. Subagents split up a single task, and parallel chats let you run several tasks at once. You can refactor a model in one chat, chase down a failing test in another, and answer a data question in a third. Each chat is isolated in both your repo and your warehouse, so parallel work never collides or writes to the same tables.
 
-Desktop also lets you choose how much validation a change gets, from a quick compile-and-test check to a full prod-vs-dev comparison. And when something's off, you can comment on the exact line, table cell, or chart and send that feedback straight back to the agent. The [Wizard Desktop docs](/docs/platform/wizard-overview#choose-a-dbt-wizard-experience) cover the details.
+Desktop also lets you choose how much validation a change gets, from a quick compile-and-test check to a full prod-vs-dev comparison. And when something's off, you can comment on the exact line, table cell, or chart and send that feedback straight back to the agent. To try it, [join the Wizard Desktop waitlist](https://www.getdbt.com/wizard-desktop-waitlist).
 
 ## The safety model
 
