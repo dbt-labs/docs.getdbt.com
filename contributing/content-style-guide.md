@@ -49,7 +49,7 @@ Always use these exact names (case-sensitive):
 | dbt v1 | Versions ≤1.x (formerly "dbt Core" or "dbt Core v1.x") | Always lowercase "dbt". Write "dbt v1" in a header or at the start of a sentence; use bare "v1" inline |
 | dbt v2 | Versions ≥2.x (formerly "Fusion" / "dbt Fusion engine" / "dbt Core 2.0") | Always lowercase "dbt". Write "dbt v2" in a header or at the start of a sentence; use bare "v2" inline |
 | dbt OSS | The Apache 2.0 open-source distribution of v2 | Hard-code the literal text — there is no `<Constant>` for it. Not a synonym for dbt v2, which also covers the proprietary distribution |
-| dbt platform | Cloud-based offering | Formerly "dbt Cloud"; "dbt" is the product name, "platform" is a clarifier and shouldn't be capitalized |
+| dbt platform | Cloud-based offering | Formerly "dbt Cloud"; "dbt" is the product name, "platform" is a descriptor and shouldn't be capitalized |
 | dbt VS Code extension | The official dbt extension for VS Code and related editors | Can be shortened to "vsce" for filenames and URLs but should always be spelled out in prose and titles |
 
 Plan tiers (capitalize): Developer, Starter, Enterprise, Enterprise+
