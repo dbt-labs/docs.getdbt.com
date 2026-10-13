@@ -8,7 +8,7 @@ authors: [jason_lin, alex_noonan, sam_ferguson]
 tags: [ai]
 hide_table_of_contents: false
 
-date: 2026-10-15
+date: 2026-10-14
 is_featured: true
 ---
 
@@ -34,7 +34,7 @@ Think of the harness as a runtime that answers questions on every task:
 
 Wizard's harness is built in layers: metadata and context, tools, skills and memory, subagent orchestration, and safety and review. But the layers alone aren't the interesting part. The loops are. In this article, we'll cover key improvements we make to the agent loop, how we provide efficient metadata, context, and tools, skills and memory, subagent orchestration, and how we help you review agent outputs.
 
-<Lightbox src="/img/blog/2026-10-15-wizard-agent-harness/wizard-harness-agent-loop.png" width="85%" title="The harness wraps every turn of the agent loop: context feeds the model, the model calls permission-checked tools, and finished work goes through scoped validation before you review impact and data diffs." />
+<Lightbox src="/img/blog/2026-10-14-wizard-agent-harness/wizard-harness-agent-loop.png" width="85%" title="The harness wraps every turn of the agent loop: context feeds the model, the model calls permission-checked tools, and finished work goes through scoped validation before you review impact and data diffs." />
 
 ## Validation in the loop
 
@@ -48,7 +48,7 @@ While it works, the agent checks its own changes with dbt-native tools: it compi
 
 When the change is ready, Wizard summarizes what it did and proposes a validation scope. In [Wizard Desktop](https://www.getdbt.com/wizard-desktop-waitlist), you can start validation from the Validation panel and choose how deep it goes, from a quick compile-and-test check to a full prod-vs-dev comparison. The [CLI](/docs/dbt-ai/wizard-cli) has the same depth settings. A dedicated validation agent then runs builds and tests restricted to exactly the models you approved. It won't widen the selection, change targets, or do a [full refresh](/reference/resource-configs/full_refresh). In the [dbt platform](/docs/platform/wizard-platform), Wizard takes a simpler, more proactive approach: it decides which commands to run to validate its changes and, if you've already approved those commands, runs them automatically.
 
-<Lightbox src="/img/blog/2026-10-15-wizard-agent-harness/wizard-validation-plan.png" width="85%" title="A Wizard validation plan at the Medium depth: compile and lint, materialize, test, and build downstream dependents for the models in scope, with automatic deferral." />
+<Lightbox src="/img/blog/2026-10-14-wizard-agent-harness/wizard-validation-plan.png" width="85%" title="A Wizard validation plan at the Medium depth: compile and lint, materialize, test, and build downstream dependents for the models in scope, with automatic deferral." />
 
 If any check fails, the harness routes that failure back into the model as context, the model revises, and the loop runs again.
 
@@ -62,7 +62,7 @@ Another reason the validation loop is a first-class citizen in the agent lifecyc
 
 Wizard [handles deferral for you](/docs/dbt-ai/wizard-how-it-works#deferral-and-state) by default, and it also works with [dbt State](/docs/deploy/dbt-state-about) or a manual setup if you already have one. Either way, validation runs against realistic state without the cost of a full rebuild.
 
-<Lightbox src="/img/blog/2026-10-15-wizard-agent-harness/wizard-deferral-animation.gif" width="85%" title="How Wizard uses deferral: after an agent edits fct_orders, rebuilding everything builds four models in dev, while deferring to prod reuses the upstream production copies, builds only the changed model, and adds a data diff and downstream impact check." />
+<Lightbox src="/img/blog/2026-10-14-wizard-agent-harness/wizard-deferral-animation.gif" width="85%" title="How Wizard uses deferral: after an agent edits fct_orders, rebuilding everything builds four models in dev, while deferring to prod reuses the upstream production copies, builds only the changed model, and adds a data diff and downstream impact check." />
 
 Validation in dbt was never just "does this file parse?" The real question is whether the change can run in a real warehouse without blowing up cost, run time, dependencies, contracts, or downstream models. That's what the loop is built to answer.
 
@@ -76,19 +76,19 @@ As agents write more of the code, the question shifts from "does it run?" to "is
 
 A run that errors is found fast, in a median of one day here. A run that succeeds with the wrong number is a different story. In a sample of well-documented defects, silent ones took a median of 65 days to find, and as long as 361. One liquidity metric (that was never queried) was off by 1,000× for 210 days. A non-trivial number of these came from upstream data quality issues from the vendor.
 
-<Lightbox src="/img/blog/2026-10-15-wizard-agent-harness/silent-vs-loud-defect-detection.png" width="85%" title="Median days to detect a defect: loud defects where the run errors were found in 1 day, while silent defects where the run is green but the number is wrong took 65 days." />
+<Lightbox src="/img/blog/2026-10-14-wizard-agent-harness/silent-vs-loud-defect-detection.png" width="85%" title="Median days to detect a defect: loud defects where the run errors were found in 1 day, while silent defects where the run is green but the number is wrong took 65 days." />
 
 The busiest week of the period, when an analytics agent was hooked up to the platform, had 104 merged PRs and kept run success at 98%. That same week produced 36 correctness fixes, a third of the month's total. Passing CI isn't the bar either: about 90% of agent-written PRs passed CI on the first try, whichever model wrote them. The defects that cost the most passed CI and code review.
 
 Since August, Wizard ([running GLM 5.3](/docs/dbt-ai/wizard-billing-faqs#dbt-managed-inference)) has taken an increased role in authoring any change that touches the platform. The validation loop and native dbt project understanding can proactively identify data quality issues and create fewer errors that need to be fixed later. To test that theory, we analyzed all of the pull requests during that period to see which harness and model generated the fewest defects. Wizard running GLM had a defect rate of only 5%, significantly better than similar frontier models with greater reasoning capabilities. That's a huge benefit to developer throughput and stakeholder trust, and it lowers total AI token usage, CI minutes, and warehouse consumption.
 
-<Lightbox src="/img/blog/2026-10-15-wizard-agent-harness/follow-up-fix-rate-by-harness.png" width="85%" title="PRs needing a follow-up fix within 14 days, by model and harness: Wizard had the lowest rate at 5%." />
+<Lightbox src="/img/blog/2026-10-14-wizard-agent-harness/follow-up-fix-rate-by-harness.png" width="85%" title="PRs needing a follow-up fix within 14 days, by model and harness: Wizard had the lowest rate at 5%." />
 
 ## Metadata-first, not file-first
 
 One key piece of tooling we introduce to aid Wizard with context discovery is a [native metadata index](/docs/dbt-ai/wizard-how-it-works#native-metadata-engine) of your dbt project. It's pre-built and ready before your first prompt, so instead of reading files to work out how your project fits together, Wizard queries the index. It also checks upstream and downstream dependencies before it changes code.
 
-<Lightbox src="/img/blog/2026-10-15-wizard-agent-harness/dbt-index-metadata-engine.png" width="85%" title="dbt build artifacts (manifest, catalog, run results, and semantic manifest) feed dbt-index, a set of DuckDB views over Parquet that Wizard queries for impact analysis, health checks, validation planning, and data profiling." />
+<Lightbox src="/img/blog/2026-10-14-wizard-agent-harness/dbt-index-metadata-engine.png" width="85%" title="dbt build artifacts (manifest, catalog, run results, and semantic manifest) feed dbt-index, a set of DuckDB views over Parquet that Wizard queries for impact analysis, health checks, validation planning, and data profiling." />
 
 That index contains models, columns, refs, lineage (including [column-level lineage](/docs/explore/column-level-lineage)), tests, [contracts](/reference/resource-configs/contract), [semantic definitions](/docs/use-dbt-semantic-layer/dbt-sl), run results, and model health. When you ask Wizard "what breaks if I rename this column?", it can answer immediately from the project graph without needing to hunt down every model in the lineage and read all their contents.
 
