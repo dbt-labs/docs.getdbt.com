@@ -257,7 +257,7 @@ In this step, you'll disable the Slack integration and remove the account-level 
 
 ## Slack app for private channels
 
-The Slack app can send job notifications to private channels when it has the `groups:read` permission, which lets it view basic information about private channels it's been added to, and is a member of the channel.
+The Slack app can send job notifications to private channels when it has the `groups:read` permission and is a member of the channel. This permission lets it view basic information about private channels it has joined.
 
 ### Send notifications to a private channel
 
@@ -271,8 +271,8 @@ If you linked the Slack app before private channel support, relink it to accept 
 
 1. Go to **Account settings** > **Integrations** > **OAuth**.
 2. Click the **X** icon next to Slack and select **Unlink**.
-3. Click **Link** which accepts the `groups:read` permission.
-4. Add the app to your private channel by following the [steps above](#send-notifications-to-a-private-channel).
+3. Click **Link**, which accepts the `groups:read` permission.
+4. Add the app to your private channel by following the [steps in the previous section](#send-notifications-to-a-private-channel).
 
 ## Microsoft Teams notifications
 
