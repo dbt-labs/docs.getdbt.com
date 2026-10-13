@@ -76,11 +76,11 @@ Each provider lists how many of its models are enabled, such as `6/6 models enab
 
 
 ## Connectors
-_Coming soon_
+MCP connectors give <Constant name="wizard" /> context about your pipelines, BI tools, and orchestration.
 
-MCP connectors give <Constant name="wizard" /> context about your pipelines, BI tools, and orchestration. Browsing and enabling them from this pane is planned for future releases.
+If your project is connected to <Constant name="dbt_platform" />, <Constant name="wizard" /> connects to the <Constant name="dbt_platform" /> MCP server by default and asks you to sign in with OAuth. Use the toggle on this pane to turn it on or off for each dbt account.
 
-Until then, add [MCP servers](/docs/dbt-ai/wizard-mcp) from the terminal:
+Browsing and enabling other connectors from this pane is planned for future releases. Until then, add [MCP servers](/docs/dbt-ai/wizard-mcp) from the terminal:
 
 1. Start a project chat and send your first message, which starts the terminal.
 2. Run `wizard` from the terminal.
