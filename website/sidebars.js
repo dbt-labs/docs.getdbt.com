@@ -31,8 +31,6 @@ const sidebarSettings = {
       link: { type: "doc", id: "docs/supported-data-platforms" },
       items: [
         "docs/supported-data-platforms",
-        "docs/connect-adapters",
-        "docs/trusted-adapters",
         "docs/community-adapters",
         "docs/contribute-dbt-adapters",
       ],
@@ -874,7 +872,7 @@ const sidebarSettings = {
             "docs/deploy/dbt-state-setup",
             "docs/deploy/dbt-state-enable-env-jobs",
             "docs/deploy/dbt-state-enable-studio",
-            "docs/deploy/dbt-state-cicd", 
+            "docs/deploy/dbt-state-cicd",
             "docs/deploy/dbt-state-deferral",
           ],
         },
