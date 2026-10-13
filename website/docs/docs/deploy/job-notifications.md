@@ -255,14 +255,24 @@ In this step, you'll disable the Slack integration and remove the account-level 
     - This removes the account-level Slack credentials. All Slack notifications that rely on the account-level integration will stop sending.
     - If any legacy, user-linked Slack integrations still exist, those notifications may continue until the legacy link is removed. We recommend migrating to the new account-level app and removing legacy links.
 
-## Slack app for private channels {#relink-slack-private-channels}
+## Slack app for private channels
 
-Private channel support needs the `groups:read` scope, which lets the app view basic information about private channels it's been added to. If you linked the Slack app (user-level or account-level) before this scope was added, relink it to accept the new permission. Until you do, private channels don't appear in the **Notification channel** dropdown. Only **Account Admins** can relink the app.
+The Slack app can send job notifications to private channels when it has the `groups:read` permission, which lets it view basic information about private channels it's been added to, and is a member of the channel.
+
+### Send notifications to a private channel
+
+1. Link the Slack app using the set-up steps for [user-level](#set-up-the-slack-integration) or [account-level](#set-up-the-slack-integration-1) notifications.
+2. In Slack, add the <Constant name="dbt_platform" /> Slack app to the private channel. The app must be a member of the channel before it can post there.
+3. In <Constant name="dbt_platform" />, select the channel from the **Notification channel** dropdown when you [configure Slack notifications](#configure-slack-notifications-1).
+
+### Already linked the Slack app? {#relink-slack-private-channels}
+
+If you linked the Slack app before private channel support, relink it to accept the new `groups:read` permission. Until you do, private channels don't appear in the **Notification channel** dropdown. Only **Account Admins** can relink the app.
 
 1. Go to **Account settings** > **Integrations** > **OAuth**.
 2. Click the **X** icon next to Slack and select **Unlink**.
 3. Click **Link** and accept the permissions, including the new `groups:read` permission.
-4. In Slack, add the <Constant name="dbt_platform" /> Slack app to each private channel you want to send notifications to. The app must be a member of the channel before it can post there.
+4. Add the app to your private channel by following the [steps above](#send-notifications-to-a-private-channel).
 
 ## Microsoft Teams notifications
 
