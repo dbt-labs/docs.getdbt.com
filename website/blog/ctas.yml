@@ -41,3 +41,9 @@
   subheader: Join us July 15th to learn how to save on warehouse compute costs!
   button_text: Register here
   url: https://www.getdbt.com/resources/webinars/dbt-state-build-what-s-changed-skip-what-hasn-t/?utm_medium=internal&utm_source=docs&utm_campaign=q2-2027_dbt-state-deep-dive-product_aw&utm_content=themed-webinar____&utm_term=all_all__
+
+- name: wizard_desktop_waitlist
+  header: Try Wizard Desktop
+  subheader: Run parallel agents, review data diffs and lineage next to the code, and validate changes against your warehouse.
+  button_text: Join the waitlist
+  url: https://www.getdbt.com/wizard-desktop-waitlist
