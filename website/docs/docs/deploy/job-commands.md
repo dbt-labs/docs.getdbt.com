@@ -47,12 +47,21 @@ For every job, you have the option to select the [Generate docs on run](/docs/ex
 
 You can add or remove as many dbt commands as necessary for every job. However, you need to have at least one dbt command. There are few commands listed as "<Constant name="dbt" /> CLI" or "<Constant name="core" />" in the [dbt Command reference page](/reference/dbt-commands) page. This means they are meant for use in <Constant name="core" /> or <Constant name="dbt" /> CLI, and not in <Constant name="studio_ide" />.
 
+<VersionBlock lastVersion="1.99">
+
+The **Commands** list doesn't accept `dbt lint` as a step. To lint in a CI job, select the **Linting** checkbox, which runs SQLFluff. Read [SQL linting](/docs/deploy/continuous-integration#sql-linting) to learn which files the checkbox checks and when a lint failure stops the job.
+
+</VersionBlock>
+
 <VersionBlock firstVersion="2.0">
+
+The **Commands** list doesn't accept `dbt lint` as a step. To lint in a CI job, select the **Linting** checkbox. Read [SQL linting](/docs/deploy/continuous-integration#sql-linting) to learn which files the checkbox checks and when a lint failure stops the job.
 
 For v2 jobs:
 
 - You don't need to add a docs command. Every job run refreshes [<Constant name="catalog" />](/docs/explore/explore-projects) metadata automatically. Read [Set up a documentation job](/docs/explore/build-and-view-your-docs?version=2#set-up-a-documentation-job) for more information.
 - To validate that your source data is up to date before your models are built, add `dbt source freshness` to the **Commands** list or select the **Run source freshness** checkbox. Read [Source freshness](/docs/deploy/source-freshness) for more information.
+- On v2 runs, the **Linting** checkbox runs [`dbt lint`](/reference/commands/lint).
 
 </VersionBlock>
 
