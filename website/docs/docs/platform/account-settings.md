@@ -33,7 +33,7 @@ For improved reliability and performance on your job runs, you can enable <Const
 - There are syntax errors in the `packages.yml` file. You can set up and use [continuous integration (CI)](/docs/deploy/continuous-integration) to find these errors sooner.
 - If a package doesn't work with the current dbt version. You can set up and use [continuous integration (CI)](/docs/deploy/continuous-integration) to identify this issue sooner.
 
-Repository caching is a single account-level setting. You don't configure it per job or environment. <Constant name="dbt" /> automatically skips the cache for CI jobs, so they always test the latest code in your pull request.
+Repository caching is a single account-level setting, which means you don't need to configure it per job or environment. dbt automatically skips the cache for CI jobs, so they always test the latest code in your pull request.
 
 To use, select the **Enable repository caching** option from your account settings. 
 
