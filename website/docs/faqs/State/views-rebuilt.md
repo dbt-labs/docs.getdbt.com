@@ -83,7 +83,7 @@ select '{{ env_var("AIRFLOW_RUN_ID") }}' as airflow_run_id, ...
 On BigQuery, models that use external sources (such as Google Sheets) always rebuild because BigQuery doesn't expose modification timestamps for external sources, so dbt State can't determine freshness.
 
 :::tip
-To prevent external sources from always being considered stale, configure [`loaded_at_field`](/reference/resource-properties/freshness#loaded_at_field) or [`loaded_at_query`](/reference/resource-properties/freshness#loaded_at_query) in your source definition to point to a timestamp field. This lets dbt State query a timestamp field directly to determine freshness, rather than relying on warehouse metadata.
+To prevent external sources from always being considered stale, configure [`loaded_at_field`](/reference/resource-configs/freshness) or [`loaded_at_query`](/reference/resource-configs/freshness) in your source definition to point to a timestamp field. This lets dbt State query a timestamp field directly to determine freshness, rather than relying on warehouse metadata.
 :::
 
 ## Models with custom materializations

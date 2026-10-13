@@ -74,10 +74,10 @@ dbt.invoke(["run"], select="tag:my_tag")
 
 ## Parallel execution not supported
 
-[`dbt-core`](https://pypi.org/project/dbt-core/) doesn't support [safe parallel execution](/reference/dbt-commands#parallel-execution) for multiple invocations in the same process. Running multiple dbt commands concurrently in one process is unsafe and officially discouraged, and requires a wrapping process to manage subprocesses. This is because:
+dbt doesn't support [safe parallel execution](/reference/dbt-commands#parallel-execution) for multiple invocations in the same process. Running multiple dbt commands concurrently in one process is unsafe and officially discouraged, and requires a wrapping process to manage subprocesses. This is because:
 
 - Running concurrent commands can unexpectedly interact with the data platform. For example, running `dbt run` and `dbt build` for the same models simultaneously could lead to unpredictable results.
-- Each `dbt-core` command interacts with global Python variables. To ensure safe operation, commands need to be executed in separate processes, for example by spawning subprocesses or using Celery for orchestration.
+- Each `dbt` command interacts with global Python variables. To ensure safe operation, commands need to be executed in separate processes, for example by spawning subprocesses or using Celery for orchestration.
 
 For [safe parallel execution](/reference/dbt-commands#available-commands), you can use the [<Constant name="platform_cli" />](/docs/platform/dbt-cli-installation) or [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio), both of which do that additional work to manage concurrency (multiple processes) on your behalf.
 
@@ -121,12 +121,12 @@ There is a one-to-one correspondence between [CLI exit codes](/reference/exit-co
 
 We're making an ongoing commitment to providing a Python entry point at functional parity with <Constant name="core" />'s CLI. We reserve the right to change the underlying implementation used to achieve that goal. We expect that the current implementation will unlock real use cases in the short- and medium-term while we work on a set of stable, long-term interfaces that will ultimately replace it.
 
-In particular, the objects returned by each command in `dbtRunnerResult.result` are not fully contracted, and therefore liable to change. Some of the returned objects are partially documented, because they overlap in part with the contents of [dbt artifacts](/reference/artifacts/dbt-artifacts). As Python objects, they contain many more fields and methods than what's available in the serialized JSON artifacts. These additional fields and methods should be considered **internal and liable to change in future versions of dbt-core.**
+In particular, the objects returned by each command in `dbtRunnerResult.result` are not fully contracted, and therefore liable to change. Some of the returned objects are partially documented, because they overlap in part with the contents of [dbt artifacts](/reference/artifacts/dbt-artifacts). As Python objects, they contain many more fields and methods than what's available in the serialized JSON artifacts. These additional fields and methods should be considered **internal and liable to change in future versions of dbt.**
 
 ## Advanced usage patterns
 
 :::caution
-The syntax and support for these patterns are liable to change in future versions of `dbt-core`.
+The syntax and support for these patterns are liable to change in future versions of dbt.
 :::
 
 The goal of `dbtRunner` is to offer parity with CLI workflows within a programmatic environment. There are a few advanced usage patterns that extend what's possible with the CLI.

@@ -19,9 +19,10 @@ For most supported data platforms, we recommend the v2 experience, which support
 | Connection | Available on v2  |
 |------------|:---------------------:|
 | [Snowflake](/docs/platform/connect-data-platform/connect-snowflake) | ✅ |
-| [Amazon Redshift](/docs/platform/connect-data-platform/connect-redshift) | Preview |
-| [Databricks](/docs/platform/connect-data-platform/connect-databricks) | Preview |
-| [Google BigQuery](/docs/platform/connect-data-platform/connect-bigquery) | Preview |
+| [Amazon Redshift](/docs/platform/connect-data-platform/connect-redshift) | ✅ |
+| [Databricks](/docs/platform/connect-data-platform/connect-databricks) | ✅ |
+| [Google BigQuery](/docs/platform/connect-data-platform/connect-bigquery) | ✅ |
+| [ClickHouse](/docs/platform/connect-data-platform/connect-clickhouse) | Private beta |
 </SimpleTable>
 
 <small> _Adapter lifecycle can differ between the <Constant name="dbt_platform" /> and local development &mdash; an adapter can reach GA in the dbt platform before it reaches GA for local use._ </small> <br /><br />
@@ -70,7 +71,7 @@ The following tables show which authentication types are supported for each conn
 
 <VersionBlock firstVersion="2.0">
 
-import AuthTypesFusion from '/snippets/_dbt_connection_support_fusion.md';
+import AuthTypesFusion from '/snippets/_dbt_connection_support_v2.md';
 
 <AuthTypesFusion />
 

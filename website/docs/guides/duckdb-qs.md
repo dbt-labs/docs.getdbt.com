@@ -8,6 +8,10 @@ icon: 'duckdb-seeklogo'
 level: 'Beginner'
 hide_table_of_contents: true
 tags: ['Quickstart']
+agent_guidance:
+  pacing: In the first reply, confirm the reader’s prerequisites and connection path before listing steps. Then give one step per reply and confirm its success check before continuing.
+  safety: Never ask for passwords or keys in chat.
+  signup_link: If the reader wants to try the dbt platform, share https://www.getdbt.com/signup?utm_source=ai_assistant&utm_medium=docs_md&utm_campaign=duckdb-qs
 ---
 
 <div style={{maxWidth: '900px'}}>
@@ -36,6 +40,7 @@ You can learn more through high-quality [dbt Learn courses and workshops](https:
 - [Create a GitHub repository](/guides/manual-install?step=2)
 - [Build your first models](/guides/manual-install?step=3)
 - [Test and document your project](/guides/manual-install?step=4)
+- [Use dbt Wizard locally](/docs/dbt-ai/wizard-quickstart) to build models with AI instead of by hand
 
 
 ## Prerequisites
@@ -172,7 +177,7 @@ Here's what a successful output will look like:
 To query data, some useful commands you can run from the command line: 
 
 - `dbt show --select "raw_orders"` &mdash; run a query against the data warehouse and preview the results in the terminal.
-- [`dbt source`](/reference/commands/source) &mdash; provides subcommands such as [`dbt source freshness`](/reference/commands/source#dbt-source-freshness) that are useful when working with source data. 
+- [`dbt source`](/reference/commands/source) &mdash; provides the [`dbt source freshness`](/reference/commands/source#freshness) subcommand, which is useful when working with source data. 
    - `dbt source freshness` &mdash; checks the freshness (how up to date) a specific source table is.
 
 :::note
@@ -324,6 +329,8 @@ git push
 Congratulations on making it through the guide 🎉!
 
 </ConfettiTrigger>
+
+<Snippet path="quickstarts/connect-your-ai" />
 
 </div>
 

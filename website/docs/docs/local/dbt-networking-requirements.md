@@ -6,7 +6,7 @@ description: "Outbound network access requirements for dbt v2, including adapter
 
 ---
 
-# dbt v2 networking requirements <Lifecycle status="preview" />
+# dbt v2 networking requirements
 
 <Constant name="fusion" /> requires outbound HTTPS access to several endpoints depending on your usage. This page describes each requirement and provides guidance for enterprise environments that restrict outbound traffic.
 
@@ -29,7 +29,7 @@ Adapter driver downloads require outbound HTTPS access to the dbt CDN:
 | **Adapter drivers** | `https://public.cdn.getdbt.com` | Downloads ADBC adapter driver libraries (`.dylib`, `.so`, `.dll`) on first use or when running `dbt system install-drivers` |
 
 :::info
-<Constant name="fusion" /> handles driver download automatically on first use. The `dbt system install-drivers` command downloads **all** supported drivers (Snowflake, BigQuery, Postgres, Databricks, Redshift, DuckDB, and Salesforce) at once. This is useful if you work across multiple data platforms and want to pre-cache every driver before going offline or switching projects.
+<Constant name="fusion" /> handles driver download automatically on first use. The `dbt system install-drivers` command downloads **all** supported drivers (Snowflake, BigQuery, Postgres, Databricks, Redshift, and DuckDB) at once. This is useful if you work across multiple data platforms and want to pre-cache every driver before going offline or switching projects.
 :::
 
 ### Enterprise proxy considerations

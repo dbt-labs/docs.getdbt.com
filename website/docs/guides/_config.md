@@ -18,7 +18,7 @@ categories:
 
   - title: Popular
     guides:
-      - migrate-off-legacy-dbt-versions
+      - dbt-charts
       - snowflake
       - databricks
       - bigquery

@@ -15,7 +15,7 @@ dbt v2 has the following distributions today, all free to install and run.
 | Distribution | Package | Use it when |
 | --- | --- | --- |
 | <Constant name="fusion" /> | `dbt` | The recommended v2 experience. |
-| dbt OSS | `dbt-core` | Your organization has a strict requirement to use the Apache 2.0 open-source runtime |
+| dbt OSS | `dbt-oss` | Your organization has a strict requirement to use the Apache 2.0 open-source runtime |
 
 </SimpleTable>
 
@@ -39,7 +39,7 @@ To check which distribution you're using, run `dbt --version` in the command lin
 
 **Changed:**
 - v2 is available through two distributions: <Constant name="fusion" /> and dbt OSS.
-- dbt OSS, the Apache 2.0 open-source distribution for v2, is powered by the shared Rust engine code and is now available in `dbt-core`.
+- dbt OSS, the Apache 2.0 open-source distribution for v2, is powered by the shared Rust engine code and is now available in `dbt-oss`.
 - dbt v2 builds on dbt OSS and extends it with additional proprietary capabilities under the dbt Product Licensing Agreement.
 
 **Unchanged:**

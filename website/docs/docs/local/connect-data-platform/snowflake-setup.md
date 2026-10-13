@@ -22,7 +22,7 @@ import SnowflakeAuth from '/snippets/_snowflake-auth.md';
 
 <VersionBlock firstVersion="2.0">
 
-# Connect Snowflake to <Constant name="fusion" /> <Lifecycle status='preview' />
+# Connect Snowflake to <Constant name="fusion" />
 
 <SnowflakeAuth />
 
@@ -40,7 +40,7 @@ The Snowflake adapter for <Constant name="fusion" /> supports the following [aut
 
 ## Warehouse permissions
 
-import FusionSnowflakeWarehousePerms from '/snippets/_fusion-warehouse-permissions-snowflake.md';
+import FusionSnowflakeWarehousePerms from '/snippets/_v2-warehouse-permissions-snowflake.md';
 
 <FusionSnowflakeWarehousePerms />
 
@@ -54,7 +54,7 @@ The information required for configuring the Snowflake adapter can be found conv
 3. In the field with your account name, click **View account details**.
 4. Click **Config file** and select the appropriate **Warehouse** and **Database**. 
 
-<Lightbox src="/img/fusion/connect-adapters/snowflake-account-details.png" width="60%" title="Sample config file in Snowflake." />
+<Lightbox src="/img/v2/connect-adapters/snowflake-account-details.png" width="60%" title="Sample config file in Snowflake." />
 
 ## Configure <Constant name="fusion" />
 
@@ -118,7 +118,7 @@ default:
       account: ABC123
       user: JANE.SMITH@YOURCOMPANY.COM
       database: JAFFLE_SHOP
-      warehouse: TRANFORM
+      warehouse: TRANSFORM
       schema: JANE_SMITH
 ```
 
@@ -132,7 +132,7 @@ Key pair authentication gives you the option to:
 - Define the path to the key. 
 - Provide the plain-text PEM format key inline.
 
-import FusionKeyPair from '/snippets/_fusion-key-pair.md';
+import FusionKeyPair from '/snippets/_v2-key-pair.md';
 
 <FusionKeyPair />
 

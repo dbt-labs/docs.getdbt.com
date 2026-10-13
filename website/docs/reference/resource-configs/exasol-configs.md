@@ -13,7 +13,7 @@ In dbt-exasol, the following incremental materialization strategies are supporte
 - `delete+insert` (default when `unique_key` is defined)
 - [`microbatch`](/docs/build/incremental-microbatch)
 
-All of these strategies are inherited from dbt-core. For more information on incremental strategies, refer to the [incremental strategy documentation](/docs/build/incremental-strategy).
+All of these strategies are inherited from dbt. For more information on incremental strategies, refer to the [incremental strategy documentation](/docs/build/incremental-strategy).
 
 ## Performance optimizations
 

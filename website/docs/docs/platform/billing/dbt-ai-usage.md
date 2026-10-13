@@ -15,8 +15,11 @@ From September 1, 2026, a couple of things are changing for dbt AI features:
 - **<Constant name="wizard" /> is moving to usage-based billing** for [dbt-<Term id="managed"/> AI](#dbt-managed-inference). Usage is metered per token against your consumption pool, and an admin can set a monthly spend limit in <Constant name="dbt_platform"/>.
 
 Refer to [<Constant name="wizard" /> billing and access FAQs](/docs/dbt-ai/wizard-billing-faqs) for more info.
-
 :::
+
+The [Wizard Desktop](/docs/dbt-ai/wizard-desktop) is billed through consumption pool pricing when you use dbt-managed inference, or directly by your provider when you use BYOK. 
+
+### Usage and metering information 
 
 <SimpleTable>
 | Feature | How it's metered | What limits usage |
@@ -31,12 +34,12 @@ Bring your own key (BYOK) usage isn't metered by dbt. Your AI provider bills you
 
 <Constant name="wizard" /> is metered by dollar-based usage rather than a count of actions. Usage is measured in tokens &mdash; prompts, project context, cached content, and generated responses all consume them &mdash; and converted into a dollar amount based on the model and token type. That amount is deducted from your consumption pool.
 
-Usage from the <Constant name="dbt_platform" /> and the local CLI both draw from the same account-level pool.
+Usage from <Constant name="dbt_platform" /> and the local CLI both draw from the same account-level pool.
 
 ### Usage credits by plan
 
 :::note All credits are account-level
-Usage credits are granted per account, not per user or per seat. Everyone on your account draws from the same balance, whether they use <Constant name="wizard" /> in the <Constant name="dbt_platform" /> or the local CLI.
+Usage credits are granted per account, not per user or per seat. Everyone on your account draws from the same balance, whether they use <Constant name="wizard" /> in <Constant name="dbt_platform" /> or the local CLI.
 :::
 
 <SimpleTable>

@@ -1,5 +1,7 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import styles from './styles.module.css';
+import SpellShooter from './spellShooter';
+import PlayInvite from './playInvite';
 
 /*
  * WizardPopcorn — renders an inline link (its children). Each click pops a
@@ -15,7 +17,12 @@ import styles from './styles.module.css';
  * (aria-hidden) and is suppressed under `prefers-reduced-motion`.
  */
 
-// Clicks needed to summon the Wizard finale.
+// Clicks needed to offer the parse-error shootout, and to summon the Wizard
+// finale. The game is only ever offered — never launched at a reader — so the
+// invite appears at 3 and the finale lands at 20. The counter resets after the
+// finale, so the cycle repeats: game at 3, wizard at 20, game again at 25, and
+// so on, with no page refresh needed.
+const GAME_AT = 3;
 const UNLOCK_AT = 20;
 
 // Finale timing (ms): fairy dust shimmers in first → the Wizard roller-skates
@@ -155,8 +162,28 @@ const WizardPopcorn = ({ children = 'wizard logo' }) => {
 
   // Finale state machine: null → 'dust' → 'skating' → 'poofing' → null.
   const [finale, setFinale] = useState(null);
+  // The mini-game: offered halfway to the finale, played only on request.
+  const [invite, setInvite] = useState(false);
+  const [game, setGame] = useState(false);
   const clickCount = useRef(0);
   const timers = useRef([]);
+
+  // Turning the invite down (or finishing a round) puts the counter back to
+  // zero, so the next 3 clicks offer the game again rather than skipping
+  // ahead to the finale.
+  const closeInvite = useCallback(() => {
+    clickCount.current = 0;
+    setInvite(false);
+  }, []);
+
+  const closeGame = useCallback(() => {
+    clickCount.current = 0;
+    setGame(false);
+  }, []);
+
+  // Stable identity: the invite restarts its linger timer whenever this
+  // changes, and this component re-renders on every click.
+  const expireInvite = useCallback(() => setInvite(false), []);
 
   // Clear any pending finale timers when we unmount mid-finale.
   useEffect(
@@ -185,13 +212,18 @@ const WizardPopcorn = ({ children = 'wizard logo' }) => {
       return;
     }
 
-    // Count clicks toward the hidden finale. Once unlocked, hold the count so
-    // the dance can't be re-triggered (or stacked) until it finishes.
+    // Count clicks toward the game invite and the hidden finale. While the
+    // finale is on screen we stop counting, so it can't be stacked on itself.
     if (finale === null) {
       clickCount.current += 1;
       if (clickCount.current >= UNLOCK_AT) {
+        // Wizard time. Reset so a fresh cycle starts right after.
         clickCount.current = 0;
+        setInvite(false);
         startFinale();
+      } else if (clickCount.current === GAME_AT) {
+        // Offer the game once per cycle, whether or not it was played before.
+        setInvite(true);
       }
     }
 
@@ -225,6 +257,21 @@ const WizardPopcorn = ({ children = 'wizard logo' }) => {
       <button type="button" className={styles.link} onClick={burst}>
         {children}
       </button>
+      {invite && !game && (
+        <PlayInvite
+          onPlay={() => {
+            setInvite(false);
+            setGame(true);
+          }}
+          onDismiss={closeInvite}
+          // Letting it time out isn't a "no" — keep the count running so
+          // clicking on through to 20 still summons the Wizard.
+          onExpire={expireInvite}
+        />
+      )}
+
+      {game && <SpellShooter onClose={closeGame} />}
+
       <div className={styles.overlay} aria-hidden="true">
         {pops.map((p) => (
           <span

@@ -10,6 +10,9 @@ Use `dbt show` to:
   - Only selecting a single node is supported. [Selector methods](/reference/node-selection/methods), [graph operators](/reference/node-selection/graph-operators), and other methods that select multiple nodes will not be utilized.
 - Run that query against the data warehouse
 - Preview the results in the terminal
+<VersionBlock firstVersion="2.0">
+- Query the [dbt Information Schema](/docs/build/dbt-information-schema) directly from the CLI using the `--info` flag, without connecting to your warehouse
+</VersionBlock>
 
 ## How it works
 
@@ -24,6 +27,25 @@ If previewing a model, dbt will always compile and run the compiled query from s
 #### `inline` flag
 - The results of the preview query are only included in dbt's logs and displayed in the terminal and aren't materialized in the data warehouse or stored in any dbt file, except if you use `dbt show --inline`.
 - The `--inline` flags enables you to run ad-hoc SQL, which means dbt can't ensure the query doesn't modify the data warehouse. To ensure no changes are made, use a profile or role with read-only permissions, which are managed directly in your data warehouse. For example: `dbt show --inline "select * from my_table" --profile my-read-only-profile`.
+
+<VersionBlock firstVersion="2.0">
+
+#### `--info` flag
+- The `--info <view>` flag queries the [dbt Information Schema](/docs/build/dbt-information-schema) directly from the CLI. It reads from the intermediate views and doesn't connect to your warehouse. 
+- It is equivalent to `--inline "select * from {{ info_schema('<view>') }}"`.
+
+```shell
+dbt show --info models
+dbt show --info models --limit 20
+```
+
+You can also write custom SQL against the Information Schema using `--inline`:
+
+```shell
+dbt show --inline "select name from {{ info_schema('models') }} order by name"
+```
+
+</VersionBlock>
 
 ### `--output json` flag
 - The `--output json` flag returns `dbt show` results in JSON format instead of the default human-readable output, which is helpful for scripting and automation.

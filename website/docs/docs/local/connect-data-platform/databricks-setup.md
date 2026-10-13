@@ -21,7 +21,7 @@ availability: local_free
 
 <VersionBlock firstVersion="2.0">
 
-# Connect Databricks to <Constant name="fusion" /> <Lifecycle status='preview' />
+# Connect Databricks to <Constant name="fusion" />
 
 
 You can configure the Databricks adapter by running `dbt init` in your CLI or manually providing the `profiles.yml` file with the fields configured for your authentication type.
@@ -33,7 +33,7 @@ The Databricks adapter for <Constant name="fusion" /> supports the following [au
 
 ## Warehouse permissions for <Constant name="fusion" />
 
-import FusionDatabricksWarehousePerms from '/snippets/_fusion-warehouse-permissions-databricks.md';
+import FusionDatabricksWarehousePerms from '/snippets/_v2-warehouse-permissions-databricks.md';
 
 <FusionDatabricksWarehousePerms />
 

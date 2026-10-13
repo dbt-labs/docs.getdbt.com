@@ -98,5 +98,5 @@ The following questions cover how dbt-<Term id="managed" /> <Term id="inference"
 - [Manage AI features in <Constant name="dbt_platform" />](/docs/platform/manage-dbt-ai) to turn AI features on or off
 - [How <Constant name="wizard" /> works](/docs/dbt-ai/wizard-how-it-works)
 - [dbt AI usage](/docs/platform/billing/dbt-ai-usage) for how dbt AI usage is metered and limited
-- [BYOK for the <Constant name="dbt_platform" />](/docs/platform/wizard-byok-platform) or [BYOK for the CLI](/docs/dbt-ai/wizard-byok)
+- [BYOK for <Constant name="dbt_platform" />](/docs/platform/wizard-byok-platform) or [BYOK for the CLI](/docs/dbt-ai/wizard-byok)
 - [Billing](/docs/platform/billing) for general <Constant name="dbt_platform" /> billing

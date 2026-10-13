@@ -9,7 +9,7 @@ availability:
   engine: v2
 ---
 
-# compute <Lifecycle status="beta" />
+# compute
 
 <IntroText>
 
@@ -17,12 +17,17 @@ Compute controls whether a unit test runs against your data platform or locally 
 
 </IntroText>
 
-:::info Available in v2
+:::info Available in v2 with opt in
 
-The `compute` config is available in v2 only. It isn't available in v1 and will be ignored. To upgrade to v2, refer to [Upgrade to v2](/docs/dbt-versions/dbt-upgrade/upgrading-to-v2) upgrade guide.
+The `compute` config is available in v2 only. It isn't available in v1 and will be ignored. To upgrade to v2, refer to [Upgrade to v2](/docs/dbt-versions/dbt-upgrade/upgrading-to-v2) upgrade guide. Setting `compute: local` on a unit test is in an experimental feature. Set the `DBT_ENGINE_EXPERIMENTAL_LOCAL_UNIT_TESTS` environment variable to `true` before you use it:
+
+```bash
+export DBT_ENGINE_EXPERIMENTAL_LOCAL_UNIT_TESTS=true
+```
+
+Without it, dbt fails with an invalid configuration error that names the variable.
 
 :::
-
 
 By default, each unit test sends a query to your data platform and waits for the result. This can slow down testing and use warehouse compute.
 
@@ -91,6 +96,7 @@ unit_tests:
 
 #### Things to know about local execution
 
+- `compute: local` is refused unless `DBT_ENGINE_EXPERIMENTAL_LOCAL_UNIT_TESTS=true` is set in the environment where dbt runs. This applies whether you set it on an individual test or as `+compute: local` in `dbt_project.yml`.
 - Your SQL has to be translatable to DuckDB. Platform-specific functions with no DuckDB equivalent fail, and `local` doesn't fall back to your data platform &mdash; a translation failure is a test failure.
 - To translate your SQL, dbt fetches the schemas of your model's direct upstream models from your data platform the first time you run the test, then caches them for later runs. Those upstream models must already exist in your data platform.
 - Setting `compute: local` also promotes [`static_analysis`](/reference/resource-configs/static-analysis) to `strict` for that test, because local execution needs strict analysis to translate your SQL. If you set `static_analysis: off` on the test, it can't run locally and produces an error.

@@ -9,7 +9,7 @@ availability: everywhere_usage
 
 import DbtStateExplainTab from '/snippets/_dbt-state-explain-tab.md';
 
-# Monitor dbt State activity <Lifecycle status="preview" />
+# Monitor dbt State activity
 
 <IntroText>
 Learn how to monitor dbt State activity in <Constant name="dbt_platform" /> for better visibility into model builds and cost savings.
@@ -35,7 +35,7 @@ The **State** tab also displays the following charts:
 
 ## Lag tolerance recommendations
 
-The **dbt State** page, which you can access from the left-side menu of the <Constant name="dbt_platform" />, includes a **Lag tolerance recommendations** section that identifies models that could safely tolerate more lag, letting dbt State skip more runs and save additional compute.
+The **dbt State** page, which you can access from the left-side menu of the <Constant name="dbt_platform" />, includes a **Lag tolerance recommendations** section that identifies models that could safely tolerate more lag, letting dbt State skip more runs and save additional compute. This is available to all dbt State users, including those running dbt locally, through CI/CD, or through an external orchestrator.
 
 The recommendations table displays the following columns:
 

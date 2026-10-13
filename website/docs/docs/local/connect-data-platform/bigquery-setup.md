@@ -18,7 +18,7 @@ availability: local_free
 
 <VersionBlock firstVersion="2.0">
 
-# Connect BigQuery to <Constant name="fusion" /> <Lifecycle status='preview' />
+# Connect BigQuery to <Constant name="fusion" />
 
 You can configure the BigQuery adapter by running `dbt init` in your CLI or manually providing the `profiles.yml` file with the fields configured for your authentication type.
 
@@ -29,7 +29,7 @@ The BigQuery adapter for <Constant name="fusion" /> supports the following [auth
 
 ## Warehouse permissions
 
-import FusionBigQueryWarehousePerms from '/snippets/_fusion-warehouse-permissions-bigquery.md';
+import FusionBigQueryWarehousePerms from '/snippets/_v2-warehouse-permissions-bigquery.md';
 
 <FusionBigQueryWarehousePerms />
 
@@ -616,7 +616,7 @@ my-profile:
 
 When a `maximum_bytes_billed` value is configured for a BigQuery profile,
 queries executed by dbt will fail if they exceed the configured maximum bytes
-threshhold. This configuration should be supplied as an integer number
+threshold. This configuration should be supplied as an integer number
 of bytes.
 
 

@@ -36,6 +36,8 @@ The following example is a list of all available configurations in the `dbt_proj
 [asset-paths](/reference/project-configs/asset-paths): [directorypath]
 [function-paths](/reference/project-configs/function-paths): [directorypath]
 [osi-paths](/reference/project-configs/osi-paths): [directorypath]
+[check-paths](/reference/project-configs/check-paths): [directorypath]
+[skill-paths](/reference/project-configs/skill-paths): [directorypath]
 
 [packages-install-path](/reference/project-configs/packages-install-path): directorypath
 
@@ -81,14 +83,23 @@ semantic-models:
 saved-queries:
   [<saved-queries-configs>](/docs/build/saved-queries)
 
+skills:
+  [<skill-configs>](/docs/dbt-ai/package-skills#disable-a-skill)
+
 snapshots:
   [<snapshot-configs>](/reference/snapshot-configs)
 
 sources:
   [<source-configs>](source-configs)
   
+checks:
+  [<check-configs>](/reference/check-configs)
+
 data_tests:
   [<test-configs>](/reference/data-test-configs)
+
+[info_schema](/docs/build/dbt-information-schema):
+  version: 1  # Pins which version of the dbt Information Schema the {{ info_schema() }} macro resolves to
 
 vars:
   [<variables>](/docs/build/project-variables)
@@ -119,24 +130,37 @@ import PlusPrefix from '/snippets/_plus-prefix.md';
 
 It's important to follow the correct YAML naming conventions for the configs in your `dbt_project.yml` file to ensure dbt can process them properly. This is especially true for resource types with more than one word.
 
-- Use dashes (`-`) when configuring resource types with multiple words in your `dbt_project.yml` file. Here's an example for [saved queries](/docs/build/saved-queries#configure-saved-query):
+- For the multi-word resource types `saved-queries` and `semantic-models`, use dashes (`-`) in `dbt_project.yml`. Here's an example for [saved queries](/docs/build/saved-queries#configure-saved-query):
 
     <File name="dbt_project.yml">
 
     ```yml
-    saved-queries:  # Use dashes for resource types in the dbt_project.yml file.
+    saved-queries:  # Use dashes for saved-queries and semantic-models in dbt_project.yml.
       my_saved_query:
         +cache:
           enabled: true
     ```
     </File>
 
-- Use underscore (`_`) when configuring resource types with multiple words for YAML files other than the `dbt_project.yml` file. For example, here's the same saved queries resource in the `semantic_models.yml` file:
+- For [data tests](/docs/build/data-tests) and [unit tests](/docs/build/unit-tests), use underscores (`_`) everywhere, including in `dbt_project.yml`:
 
-    <File name="models/semantic_models.yml">
+    <File name="dbt_project.yml">
 
     ```yml
-    saved_queries:  # Use underscores everywhere outside the dbt_project.yml file.
+    data_tests:  # Use underscores for data_tests and unit_tests, even in dbt_project.yml.
+      +store_failures: true
+
+    unit_tests:
+      +enabled: true
+    ```
+    </File>
+
+- For YAML files other than `dbt_project.yml`, use underscores (`_`) for multi-word resource types. For example, the same saved queries resource in a properties file:
+
+    <File name="models/saved_queries.yml">
+
+    ```yml
+    saved_queries:  # Use underscores outside of dbt_project.yml.
       - name: saved_query_name
         ... # Rest of the saved queries configuration.
         config:

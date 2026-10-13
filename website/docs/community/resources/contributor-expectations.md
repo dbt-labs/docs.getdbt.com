@@ -80,7 +80,7 @@ In our most critical repositories (such as `dbt-labs/dbt`), our goal is to respo
 
 We've open-sourced a number of other software projects over the years, and the majority of them do not have the same activity or maintenance guarantees. Check to see if other recent issues have responses, or when the last commit was added to the `main` branch.
 
-**You're not sure about the status of your issue.** If your issue is in an actively maintained repo and has a `triage` label attached, we're aware it's something that needs a response. If the issue has been triaged, but not prioritized, this could mean:
+**You're not sure about the status of your issue.** If your issue is in an actively maintained repo and has a `status:triage` label attached, we're aware it's something that needs a response. If the issue has been triaged, but not prioritized, this could mean:
 
 - The intended scope or user experience of a proposed feature requires further refinement from a maintainer
 - We believe the required code change is too tricky for an external contributor
@@ -107,7 +107,7 @@ Many labels follow a namespaced `facet:value` model, where each facet answers on
 | `status:` | `status:triage`, `status:needs-repro`, `status:has-repro`, `status:ready-for-review` | Where the issue sits in the workflow. |
 | `resolution:` | `resolution:wontfix` | Why an issue was closed without a code change. |
 
-Automation labels new issues for triage — currently with both the faceted `status:triage` and the legacy `triage` label while it migrates to the faceted set — to mark them as awaiting a maintainer's first response. Older issues may also carry previous, un-namespaced labels such as `bug`, `enhancement`, `good_first_issue`, `help_wanted`, `duplicate`, `stale`, and `wontfix`. These map onto the faceted labels above (`bug` → `type:bug`, `enhancement` → `type:feature`, `good_first_issue` → `type:good-first-issue`, `wontfix` → `resolution:wontfix`, and so on) and remain in place for continuity. You may see either set while the transition settles.
+Automation labels new issues with `status:triage` to mark them as awaiting a maintainer's first response. Older issues may also carry previous, un-namespaced labels such as `bug`, `enhancement`, `good_first_issue`, `help_wanted`, `duplicate`, `stale`, and `wontfix`. These map onto the faceted labels above (`bug` → `type:bug`, `enhancement` → `type:feature`, `good_first_issue` → `type:good-first-issue`, `wontfix` → `resolution:wontfix`, and so on) and remain in place for continuity. You may see either set while the transition settles.
 
 ### Pull requests
 
@@ -137,6 +137,6 @@ Both bug fixes and backwards-compatible new features will be included in the [ne
 
 #### <Constant name="fusion_engine" />
 
-<Constant name="fusion_engine" /> is released continuously, and it contains a superset of the code and functionality available in the open source layer. When dbt v2.0.0 is released (General Availability), the version numbers for dbt OSS and <Constant name="fusion" /> will converge.
+<Constant name="fusion_engine" /> is released continuously, and it contains a superset of the code and functionality available in the open source layer. Version numbers for dbt OSS and dbt v2 converge at v2.0.0.
 
-The next major version of our [open source](/docs/dbt-versions/dbt-upgrade/upgrading-to-v2) offering is built on the v2 runtime. Contributions to `dbt-core` targeting the v2.x series follow the same principles as v1.x: bug fixes and backwards-compatible features are included in the next available release. Because v2 is currently in beta, we will be releasing new versions rapidly as we get closer to the final v2.0.0 release (General Availability).
+The major version of our [open source](/docs/dbt-versions/dbt-upgrade/upgrading-to-v2) offering is built on the v2 runtime. Contributions to `dbt-core` targeting the v2.x series follow the same principles as v1.x: bug fixes and backwards-compatible features are included in the next available release.
