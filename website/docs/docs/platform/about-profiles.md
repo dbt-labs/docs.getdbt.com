@@ -5,6 +5,9 @@ description: "About dbt platform profile configuration."
 sidebar_label: "About profiles"
 pagination_next: null
 pagination_prev: null
+availability:
+  surface: platform
+  access: login_required
 ---
 
 <IntroText>

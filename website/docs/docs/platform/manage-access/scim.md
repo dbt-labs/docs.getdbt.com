@@ -3,11 +3,16 @@ title: "Set up SCIM"
 description: "Configure SCIM for SSO"
 id: "scim"
 sidebar: "Set up SCIM"
+availability:
+  surface: platform
+  access: paid_plan
+  minPlan: enterprise
 ---
 
 import ScimLicenseMappingCallout from '/snippets/_scim-license-mapping-callout.md';
+import ScimAdminGroupPrereq from '/snippets/_scim-admin-group-prereq.md';
 
-# Set up SCIM <Lifecycle status="managed, managed_plus" />
+# Set up SCIM
 
 The System for Cross-Domain Identity Management (SCIM) makes user data more secure and simplifies the admin and end-user lifecycle experience by automating user identities and groups. You can create or disable user identities in your Identity Provider (IdP), and SCIM will automatically make those changes in near real-time downstream in <Constant name="dbt" />.
 
@@ -20,6 +25,7 @@ To configure SCIM in your <Constant name="dbt" /> environment:
 - You must use Okta or Entra ID as your SSO provider and have it connected in the dbt platform.
 - You must have [permissions](/docs/platform/manage-access/enterprise-permissions) to configure the account settings in <Constant name="dbt_platform" /> and change application settings in [Okta](https://help.okta.com/en-us/content/topics/security/administrators-admin-comparison.htm).
 - If you have IP restrictions enabled, you must add [Okta's IPs](https://help.okta.com/en-us/content/topics/security/ip-address-allow-listing.htm) to your allowlist. If you're using Entra ID with IP restrictions enabled, refer to [Azure SCIM provisioning fails due to IP allowlisting](/docs/platform/manage-access/scim-faq) in the SCIM FAQ.
+- <ScimAdminGroupPrereq />
 
 ### Supported features
 

@@ -1,5 +1,5 @@
 ---
-title: "Connect Cloudera Hive to dbt Core"
+title: "Connect Cloudera Hive to dbt v1"
 sidebar_label: "Cloudera Hive"
 description: "Read this guide to learn about the Cloudera Hive warehouse setup in dbt."
 id: "hive-setup"
@@ -15,6 +15,7 @@ meta:
   slack_channel_link: 'https://getdbt.slack.com/archives/C0401DTNSKW'
   platform_name: 'Hive'
   config_page: '/reference/resource-configs/hive-configs'
+availability: local_free
 ---
 
 

@@ -4,6 +4,7 @@ id: entities
 description: "Entities are real-world concepts that correspond to key parts of your business, such as customers, transactions, and ad campaigns."
 sidebar_label: "Entities"
 tags: [Metrics, Semantic Layer]
+availability: all_users
 ---
 
 Entities are real-world concepts in a business, such as customers, transactions, and ad campaigns. We often focus our analyses on specific entities, such as customer churn or annual recurring revenue modeling. In our Semantic Layer models, these entities serve as a join key across semantic models.

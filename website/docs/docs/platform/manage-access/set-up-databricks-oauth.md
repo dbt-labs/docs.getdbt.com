@@ -2,9 +2,13 @@
 title: "Set up Databricks OAuth"
 description: "Learn how dbt administrators and users can use Databricks OAuth to control access in a dbt account."
 id: "set-up-databricks-oauth"
+availability:
+  surface: platform
+  access: paid_plan
+  minPlan: enterprise
 ---
 
-# Set up Databricks OAuth <Lifecycle status="managed, managed_plus" />
+# Set up Databricks OAuth
 
 <Constant name="dbt_platform" /> accounts on Enterprise and Enterprise+ plans support developer OAuth ([OAuth for partner solutions](https://docs.databricks.com/en/integrations/manage-oauth.html)) with Databricks. When you enable Databricks OAuth for a <Constant name="dbt" /> project, all developers must authenticate with Databricks in order to use the <Constant name="studio_ide" />.
 

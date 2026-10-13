@@ -3,6 +3,7 @@ title: "dbt Model Context Protocol server"
 sidebar_label: "dbt MCP server"
 description: "Learn about the dbt MCP server"
 id: "about-mcp"
+availability: all_users
 ---
 
 import McpToolsFromReadme from '/snippets/_mcp-tools-from-readme.md';

@@ -3,6 +3,7 @@ title: "dbt State usage"
 id: dbt-state-usage
 description: "Learn how dbt State usage and pricing works."
 sidebar_label: "dbt State usage"
+availability: everywhere_usage
 ---
 
 import DbtStatePricing from '/snippets/_dbt-state-pricing.md';

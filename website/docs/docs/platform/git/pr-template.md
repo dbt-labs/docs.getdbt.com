@@ -1,6 +1,9 @@
 ---
 title: "PR template"
 id: "pr-template"
+availability:
+  surface: platform
+  access: login_required
 ---
 ## Configure pull request (PR) template URLs
 

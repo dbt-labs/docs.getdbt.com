@@ -1,5 +1,14 @@
 /* eslint-disable */
 
+// This component renders two unrelated token families as pills:
+//   - plan tokens (developer, self_service, managed, managed_plus) signal which
+//     dbt platform plan a feature requires.
+//   - status tokens (new, beta, preview, ga, private_beta, private_preview) signal
+//     feature maturity/lifecycle stage.
+// These are intentionally styled differently (see styles.module.css: .lifecycle vs
+// .planPill) so a plan requirement is never visually confused with a lifecycle status.
+// Don't reuse status colors/shapes for plan tokens or vice versa.
+
 import React from 'react';
 import styles from './styles.module.css';
 import { STATUS_URLS, MANAGED_PLUS,MANAGED, SELF_SERVICE, DEVELOPER } from './lifecycle-urls.js';
@@ -17,6 +26,10 @@ const PLAN_VARIABLES = {
   'self_service': SELF_SERVICE,
   'developer': DEVELOPER,
 };
+
+// Resolved plan values (as opposed to lifecycle-status values) — used to pick the
+// plan-pill style instead of the status-pill style.
+const PLAN_TOKENS = new Set([MANAGED_PLUS, MANAGED, SELF_SERVICE, DEVELOPER]);
 
 const statusColors = {
   [MANAGED_PLUS]: '#E5E7EB',
@@ -55,7 +68,7 @@ const statusDisplayNames = {
   new: 'New',
   beta: 'Beta',
   private_beta: 'Private beta',
-  ga: 'GA',
+  ga: 'Generally available (GA)',
   preview: 'Preview',
   private_preview: 'Private preview',
 };
@@ -68,7 +81,7 @@ export default function Lifecycle(props) {
     return null;
   }
 
-  const sizePercent = props.size !== undefined ? parseFloat(props.size) / 100 : 1;
+  const sizePercent = props.size !== undefined ? parseFloat(props.size) / 100 : 0.82;
 
   const statuses = props.status.split(',').map(s => {
     const trimmedStatus = s.trim();
@@ -80,6 +93,9 @@ export default function Lifecycle(props) {
       {statuses.map((status, index) => {
         const isKnownStatus = Object.prototype.hasOwnProperty.call(statusColors, status);
         const url = isKnownStatus ? statusUrls[status] || props.customUrl || null : null;
+        const isPlanToken = PLAN_TOKENS.has(status);
+        const pillClass = isPlanToken ? styles.planPill : styles.lifecycle;
+        const pillModifier = isPlanToken ? 'plan-pill' : 'lifecycle';
 
         const style = {
           backgroundColor: props.backgroundColor || statusColors[status] || '#d3d3d3', // Default gray for unknown status
@@ -101,7 +117,7 @@ export default function Lifecycle(props) {
               href={url}
               target="_blank"
               rel="noopener noreferrer"
-              className={`${styles.lifecycle} lifecycle`}
+              className={`${pillClass} ${pillModifier}`}
               style={style}
               title={`Go to ${url}`} // optional tooltip for better UX
             >
@@ -114,7 +130,7 @@ export default function Lifecycle(props) {
         return (
           <span
             key={index}
-            className={`${styles.lifecycle} lifecycle`}
+            className={`${pillClass} ${pillModifier}`}
             style={style}
           >
             {displayName}

@@ -3,6 +3,10 @@ title: "Query the Discovery API"
 id: "discovery-querying"
 sidebar_label: "Query the Discovery API"
 pagination_next: "docs/dbt-apis/discovery-schema-environment"
+availability:
+  surface: platform
+  access: paid_plan
+  minPlan: starter
 ---
 
 import ApiRateLimitsCallout from '/snippets/_api-rate-limits-callout.md';

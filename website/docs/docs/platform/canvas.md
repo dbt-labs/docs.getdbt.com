@@ -6,11 +6,15 @@ description: "dbt Canvas enables you to quickly create and visualize dbt models 
 pagination_next: "docs/platform/canvas-interface"
 pagination_prev: null
 image: /img/docs/dbt-platform/canvas/canvas.png
+availability:
+  surface: platform
+  access: paid_plan
+  minPlan: enterprise
 ---
 
 import Prerequisites from '/snippets/_canvas-prerequisites.md';
 
-# About Canvas <Lifecycle status='managed,managed_plus'/> 
+# About Canvas
 
 <p style={{ color: '#717d7d', fontSize: '1.1em' }}>
 <Constant name="canvas" /> helps you quickly access and transform data through a visual, drag-and-drop experience.

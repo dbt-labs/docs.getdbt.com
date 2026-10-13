@@ -14,14 +14,14 @@ These tables indicate whether private connectivity can be established to specifi
 
 ---
 
-### Connecting to the dbt platform (Ingress)
+### Connecting to the dbt platform (Ingress) <Lifecycle status="beta"/>
 
 Your services can connect to <Constant name="dbt" /> over private connectivity using the <Term id="dbt-provisioned">dbt-provisioned</Term> model. In this case, dbt is the <Term id="service-producer">service producer</Term> and you are the <Term id="consumer">consumer</Term>.
 
-| Connectivity type | MT | ST |
-|-------------------|-----|-----|
-| Private <Constant name="dbt" /> access | ❌ | ✅ |
-| Dual access (public + private) | ❌ | ✅ |
+| Connectivity type | MT | ST | Setup guide |
+|-------------------|-----|-----|-------------|
+| Private <Constant name="dbt" /> access | ❌ | ✅ | [View](/docs/platform/secure/private-connectivity/aws/aws-ingress) |
+| Dual access (public + private) | ❌ | ✅ | [View](/docs/platform/secure/private-connectivity/aws/aws-ingress) |
 
 ---
 

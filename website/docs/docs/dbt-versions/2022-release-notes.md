@@ -5,6 +5,9 @@ id: "2022-release-notes"
 sidebar_label: "2022 release notes"
 pagination_next: null
 pagination_prev: null
+availability:
+  surface: platform
+  access: free
 ---
 
 Archived release notes for <Constant name="dbt" /> from 2022
@@ -207,7 +210,7 @@ Love the DAG in the <Constant name="studio_ide" /> as much as we do? Now when yo
 
 #### Performance improvements and enhancements
 
-* Updated recommended dbt commands in the <Constant name="studio_ide" /> to include <Constant name="core" /> v1.0 commands, such as "build" and the "--select" argument.  
+* Updated recommended dbt commands in the <Constant name="studio_ide" /> to include <Constant name="core" /> commands, such as "build" and the "--select" argument.  
 
 ### Service tokens and bug fixes
 

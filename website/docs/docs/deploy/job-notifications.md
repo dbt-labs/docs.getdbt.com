@@ -2,6 +2,7 @@
 title: "Job notifications"
 id: "job-notifications"
 description: "Set up notifications in dbt to receive email or Slack alerts about job run status."
+availability: platform_login
 ---
 
 Set up notifications in <Constant name="dbt_platform" /> to receive alerts about the outcome of a job run. You can choose to be notified by one or more of the following job run outcomes:
@@ -11,6 +12,7 @@ Set up notifications in <Constant name="dbt_platform" /> to receive alerts about
   - This notification is triggered by warning-level log lines from those steps, not the job's overall run status. A job that shows "success" in the user interface can still trigger a warn notification if test or freshness steps logged warnings.
 - **Fails** option &mdash; A job run failed to complete. 
 - **Is canceled** option &mdash; A job run is canceled.
+  - You may not see Slack notifications for runs canceled by <Constant name="dbt_platform" />'s inactivity-timeout cleanup process (which cancels runs that have been inactive for 10 minutes). To receive notifications for these cancellations, use [email notifications](#email-notifications) or [webhooks](/docs/deploy/webhooks).
 
 ### Notification options
 
@@ -88,7 +90,7 @@ You can send dbt job [notification emails](#configure-email-notifications) direc
 ## Slack notifications (user) {#slack-notifications}
 You can receive Slack alerts about jobs by setting up the Slack integration and then configuring the <Constant name="dbt" /> Slack notification settings. <Constant name="dbt" /> integrates with Slack via OAuth to ensure secure authentication.
 
-This is the current Slack integration available for all users and set at the user level, not to be confused with the [Slack notifications at the account level](#slack-notifications-account) feature.
+This Slack integration is set at the user level, not to be confused with the [Slack notifications at the account level](#slack-notifications-account) feature.
 
 :::note 
 Virtual Private Cloud (VPC) admins must [contact support](mailto:support@getdbt.com) to complete the Slack integration.
@@ -100,7 +102,8 @@ If there has been a change in user roles or Slack permissions where you no longe
 - You have a Slack workspace that you want to receive job notifications from.
 - You must be a Slack Workspace Owner. 
 - You must be an account admin to configure Slack notifications in <Constant name="dbt" />. For more details, refer to [Users and licenses](/docs/platform/manage-access/seats-and-users).
-- The integration only supports _public_ channels in the Slack workspace. 
+
+The integration supports public channels in the Slack workspace only. To also send notifications to private channels, use the [account-level Slack integration](/docs/deploy/job-notifications#slack-notifications-account).
 
 Once an account admin links the Slack app, licensed users can configure job notifications if they have one of the following:
 - The **Account Admin**, **Owner**, or **Member** default [group](/docs/platform/manage-access/about-user-access#groups)
@@ -159,7 +162,8 @@ A single <Constant name="dbt_platform" /> account can integrate with one Slack w
 - A <Constant name="dbt_platform"/> account admin must link the Slack app at the account level.
 - Install the official <Constant name="dbt_platform"/> Slack app using the [steps outlined in the next section](#set-up-the-slack-integration-1).
 - To install the Slack app to a workspace, your Slack org must permit app installations. In some orgs this requires a Slack admin approval.
-- The integration only supports _public_ channels in the Slack workspace. 
+
+The integration supports both _public_ and _private_ channels in the Slack workspace. To send notifications to a private channel, add the Slack app to that channel. For existing connections, an account admin must first [relink the Slack app](/docs/deploy/job-notifications#relink-slack-private-channels) to grant the new `groups:read` permission. Refer to [Slack app for private channels](/docs/deploy/job-notifications#slack-app-for-private-channels) for more information.
 
 Once an account admin links the Slack app, licensed users can configure job notifications if they have one of the following:
 - The **Account Admin**, **Owner**, or **Member** default [group](/docs/platform/manage-access/about-user-access#groups)
@@ -171,7 +175,7 @@ IT licenses can receive job notifications but can't [configure them](/docs/platf
 
 The account-level Slack integration uses the official <Constant name="dbt_platform" /> Slack app, which is separate from the [user-linked Slack integration](#slack-notifications). 
 
-To use Slack notifications, you must unlink the old Slack app and then connect the new official app: 
+To use Slack notifications, you must unlink the old Slack app and then connect the official app: 
 
 1. Go to **Account settings** > **Integrations** > **OAuth**.
 2. Click the **X** icon next to Slack and select **Unlink**.
@@ -213,6 +217,27 @@ Configure the Slack channel you want to receive job notifications from.
 
 That's it! Your Slack channel is now set up to receive dbt job notifications at the account level. This integration is now available throughout the account for all licensed users.
 
+### Slack app for private channels
+
+The account-level Slack app can send job notifications to private channels when it has the `groups:read` permission and is a member of the channel. This permission lets it view basic information about private channels it has joined.
+
+#### Send notifications to a private channel
+
+1. Link the Slack app using the [account-level set-up steps](#set-up-the-slack-integration-1).
+2. In Slack, add the <Constant name="dbt_platform" /> Slack app to the private channel. The app must be a member of the channel before it can post there.
+3. In <Constant name="dbt_platform" />, select the channel from the **Notification channel** dropdown when you [configure Slack notifications](#configure-slack-notifications-1). Private channels will have a **private** label next to them.
+
+<Lightbox src="/img/docs/deploy/slack-private-channel.png" width="90%" title="Example of a private channel selected in the Notification channel dropdown"/>
+
+#### Already linked the Slack app? {#relink-slack-private-channels}
+
+If you linked the Slack app before private channel support, relink it to accept the new `groups:read` permission. Until you do, private channels don't appear in the **Notification channel** dropdown. Only **Account Admins** can relink the app.
+
+1. Go to **Account settings** > **Integrations** > **OAuth**.
+2. Click the **X** icon next to Slack and select **Unlink**.
+3. Click **Link**, which accepts the `groups:read` permission.
+4. Add the app to your private channel by following the [steps in the previous section](#send-notifications-to-a-private-channel).
+
 ### Migrating legacy Slack notification settings
 
 If you previously configured Slack notifications with the legacy integration, you may see a migration banner on the **Slack notifications** page.
@@ -227,7 +252,9 @@ The banner appears when all of the following are true:
 
 Before migrating, you must unlink the legacy Slack integration and link the <Constant name="dbt_platform" /> app. Unlinking the legacy integration is a manual step, and only one Slack app can be linked at a time.
 
-The <Constant name="dbt_platform" /> Slack app sends job notifications to _public_ channels in your workspace. Private channels are different: notifications are not delivered there until you invite the <Constant name="dbt_platform" /> app to each private channel you use.
+:::info
+The <Constant name="dbt_platform" /> Slack app sends job notifications to both _public_ and _private_ channels in your workspace. Refer to [Slack app for private channels](/docs/deploy/job-notifications#slack-app-for-private-channels) for more info.
+:::
 
 1. Click **Migrate settings** to copy your existing settings to the <Constant name="dbt_platform" /> app, including:
 
@@ -236,12 +263,10 @@ The <Constant name="dbt_platform" /> Slack app sends job notifications to _publi
     - Your notification toggles (for example, **Succeeds**, **Warns**, **Fails**, and **Is canceled**)
 
 2. Click **Dismiss** to hide the banner for your current session &mdash; it reappears on reload until migration completes.
-3. After migration, if needed, dbt shows an informational message listing private Slack channels that still need setup.
-    - If any of your channels are private, invite the <Constant name="dbt_platform" /> app to each one after migrating so notifications can be delivered.
 
 When migration succeeds, dbt hides the banner and refreshes your Slack notification settings. If migration fails, the banner remains so you can try again.
 
-<Lightbox src="/img/docs/deploy/dbt-platform-slack-invite.png" width="100%" title="Example of private channel invite guidance for the dbt platform app"/>
+<Lightbox src="/img/docs/deploy/dbt-platform-slack-invite.png" width="100%" title="Example of invite guidance for the dbt platform app"/>
 
 ### Disable the Slack integration
 In this step, you'll disable the Slack integration and remove the account-level Slack credentials. You can always re-enable the integration by following the [Set up the Slack integration](#set-up-the-slack-integration-1) steps.

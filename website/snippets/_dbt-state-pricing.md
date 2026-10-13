@@ -12,6 +12,10 @@ dbt State calculates cost per billing period using the unit price (USD $0.094) x
 
 For current unit price and more information, refer to the [dbt Labs Service Consumption Table](https://www.getdbt.com/legal/service-consumption-table).
 
+### DATT chart
+
+You can view your DATT count in **Account settings** > **Billing & Usage** > **Usage-based features**. Under the **State** tab, the DATT chart shows DATTs split into **Billable** and **Free**. During a trial, all DATTs are counted as free.
+
 ### Cancellation
 
 Usage is tracked through your cancellation date. You're billed at month end for usage incurred before cancellation and not charged for usage after.

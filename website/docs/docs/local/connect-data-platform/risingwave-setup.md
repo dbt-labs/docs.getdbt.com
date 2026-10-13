@@ -1,5 +1,5 @@
 ---
-title: "Connect RisingWave to dbt Core"
+title: "Connect RisingWave to dbt v1"
 sidebar_label: "RisingWave"
 id: "risingwave-setup"
 description: "Read this guide to learn about how to set up RisingWave in dbt."
@@ -15,6 +15,7 @@ meta:
   slack_channel_link: 'https://www.risingwave.com/slack'
   platform_name: 'RisingWave'
   config_page: '/reference/resource-configs/no-configs'
+availability: local_free
 ---
 
 

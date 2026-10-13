@@ -2,8 +2,9 @@
 title: "dbt_cloud.yml file"
 id: dbt_cloud.yml
 sidebar_label: "dbt_cloud.yml"
-description: "Reference for the dbt_cloud.yml credentials file used by the dbt CLI and dbt VS Code extension to connect to the dbt platform."
+description: "Reference for the dbt_cloud.yml credentials file used by the dbt platform CLI and dbt VS Code extension to connect to the dbt platform."
 pagination_next: null
+availability: platform_login
 ---
 
 The `dbt_cloud.yml` file stores the credentials that dbt tools &mdash; like the [<Constant name="platform_cli" />](/docs/platform/dbt-cli-installation), the [dbt VS Code extension](/docs/about-dbt-extension), and more &mdash; use to authenticate with <Constant name="dbt_platform" />. You can download it from <Constant name="dbt_platform" /> and save it locally to your `.dbt` directory.
@@ -52,7 +53,7 @@ How you download the file depends on whether you're configuring the [<Constant n
     
    </Expandable>
 
-    If your downloaded file has a numerical suffix (for example, `dbt_cloud(2).yml`), rename it to `dbt_cloud.yml` before moving it. The dbt CLI and extension only look for the exact filename.
+    If your downloaded file has a numerical suffix (for example, `dbt_cloud(2).yml`), rename it to `dbt_cloud.yml` before moving it. The <Constant name="platform_cli" /> and extension only look for the exact filename.
 
 4. Confirm that the `project-id` in your [`dbt_project.yml` `dbt-cloud` block](#the-dbt-cloud-block-in-dbt_projectyml) matches the project you're working on. This registers and connects your tool to <Constant name="dbt_platform" /> and enables platform features such as <Constant name="mesh" /> and deferral.
 
@@ -178,6 +179,7 @@ dbt-cloud:
 |-------|----------|-------------|
 | `project-id` | Yes | The <Constant name="dbt_platform" /> project ID this local project maps to. Find it in the URL when viewing your project (for example, `https://YOUR_ACCESS_URL/develop/26228/projects/123456` → `123456`). |
 | `defer-env-id` | No | The environment ID to defer to for build artifacts. Used for <Constant name="fusion" /> [auto-deferral](/docs/platform/about-defer) and <Constant name="platform_cli" /> deferral overrides. |
+| `account_id` | No | <Constant name="fusion" /> only. The <Constant name="dbt_platform" /> account ID this local project belongs to. Note the underscore &mdash; unlike the other fields in this block, this one isn't hyphenated. |
 </SimpleTable>
 
 ## Related docs

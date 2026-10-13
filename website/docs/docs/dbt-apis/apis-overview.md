@@ -4,11 +4,15 @@ description: "Learn how dbt accounts on the Enterprise-tier plans can query the 
 id: "overview"
 pagination_next: "docs/dbt-apis/rate-limits"
 pagination_prev: null
+availability:
+  surface: platform
+  access: paid_plan
+  minPlan: starter
 ---
 
 import ApiRateLimitsCallout from '/snippets/_api-rate-limits-callout.md';
 
-# APIs overview <Lifecycle status="self_service,managed,managed_plus" />
+# APIs overview
 
 Accounts on the Starter, Enterprise, and Enterprise+ plans can query the <Constant name="dbt" /> APIs.
 

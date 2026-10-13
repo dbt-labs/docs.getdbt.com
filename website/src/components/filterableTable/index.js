@@ -370,13 +370,21 @@ const FilterableTable = ({ children }) => {
     );
   }
 
+  // Table data is parsed from the DOM after mount, so during SSR (and for
+  // no-JS visitors and the markdown derived from the built HTML) there is no
+  // parsed data yet. Show the source table itself until parsing completes
+  // rather than a "Loading table..." placeholder, so the static HTML always
+  // contains the real rows.
+  const isParsed = headers.length > 0;
+
   return (
     <div className={styles.filterableTableContainer}>
-      {/* Hidden table for data extraction */}
-      <table ref={tableRef} style={{ display: 'none' }}>
+      {/* Source table: visible until parsed, then kept (hidden) for re-parsing */}
+      <table ref={tableRef} style={isParsed ? { display: 'none' } : undefined}>
         {children}
       </table>
 
+      {isParsed && (
       <div className={styles.tableWrapper}>
         {/* Search bar positioned at top right - always visible */}
         <div className={styles.searchBar}>
@@ -571,6 +579,7 @@ const FilterableTable = ({ children }) => {
           </table>
         )}
       </div>
+      )}
     </div>
   );
 };

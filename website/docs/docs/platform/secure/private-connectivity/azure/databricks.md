@@ -4,6 +4,10 @@ id: azure-databricks
 description: "Configuring Azure Private Link for Databricks."
 sidebar_label: "Databricks"
 pagination_next: null
+availability:
+  surface: platform
+  access: paid_plan
+  minPlan: enterprise_plus
 ---
 
 import SetUpPages from '/snippets/_available-tiers-enterprise-plus.md';

@@ -15,11 +15,11 @@ osi-paths: [directorypath]
 
 ## Definition
 
-Optionally specify a custom list of directories where [Open Semantic Interchange (OSI) semantic layer documents](/docs/build/osi-semantic-models) are located.
+Optionally specify a custom list of directories where [Apache Ossie semantic layer documents](/docs/build/ossie-semantic-models) are located.
 
 ## Default
 
-By default, dbt will search for OSI documents in the `OSI` directory, for example, `osi-paths: ["OSI"]`.
+By default, dbt will search for Ossie documents in the `OSI` directory, for example, `osi-paths: ["OSI"]`.
 
 import RelativePath from '/snippets/_relative-path.md';
 
@@ -52,7 +52,7 @@ osi-paths: ["semantic_interchange"]
 
 </File>
 
-Use multiple directories to organize your OSI documents:
+Use multiple directories to organize your Ossie documents:
 
 <File name='dbt_project.yml'>
 

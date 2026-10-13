@@ -8,4 +8,4 @@
 | Python 3.11      | ✅    | ✅    | ✅    | ✅    | ✅    | ✅    | ✅    | ✅    | ✅    | ❌    | ❌    | ❌    | ❌    |
 | Python 3.10      | ✅    | ✅    | ✅    | ✅    | ✅    | ✅    | ✅    | ✅    | ✅    | ✅    | ✅    | ✅    | ✅    |
 
-⚠️ Python 3.13 is supported in dbt Core v1.10 for the Postgres adapter.
+⚠️ Python 3.13 is supported in dbt v1.10 for the Postgres adapter.

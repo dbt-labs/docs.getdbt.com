@@ -47,12 +47,53 @@ function makeLink(text, url) {
   return makeToken(link);
 }
 
+/*
+ * Rebuilding a line as plain tokens loses Prism's highlighting, so find
+ * where a "#" comment starts and re-tag the rest of the line as a comment.
+ * "#{" is skipped: that's string interpolation, not a comment.
+ */
+function commentStart(string) {
+  const regex = /#(?!\{)/;
+  const match = string.match(regex);
+
+  return match ? match.index : -1;
+}
+
+/*
+ * Push a plain text segment, splitting off a trailing comment if one
+ * starts here. Returns true once the line is inside a comment, so
+ * following segments stay comment-colored.
+ */
+function pushText(tokens, string, inComment) {
+  if (!string) {
+    return inComment;
+  }
+
+  if (inComment) {
+    tokens.push(makeToken(string, ["comment"]));
+    return true;
+  }
+
+  const hashIndex = commentStart(string);
+  if (hashIndex === -1) {
+    tokens.push(makeToken(string));
+    return false;
+  }
+
+  if (hashIndex > 0) {
+    tokens.push(makeToken(string.slice(0, hashIndex)));
+  }
+  tokens.push(makeToken(string.slice(hashIndex), ["comment"]));
+  return true;
+}
+
 function replaceLinks(line) {
   /*
    * Loop until input line is empty!
    */
 
   var tokens = [];
+  var inComment = false;
   let lineBuffer = line;
   while (lineBuffer.length > 0) {
     let res = isMarkdownLink(lineBuffer);
@@ -61,17 +102,19 @@ function replaceLinks(line) {
       // if we've already found a link. Otherwise,
       // we just want to return null and escape below
       if (tokens.length > 0) {
-        tokens.push(makeToken(lineBuffer));
+        pushText(tokens, lineBuffer, inComment);
       }
       break;
     }
 
     var before = lineBuffer.slice(0, res.index);
     var after = lineBuffer.slice(res.index + res.original_length);
-    tokens.push(makeToken(before));
+
+    inComment = pushText(tokens, before, inComment);
     if (res.escape) {
-      tokens.push(makeToken(res.full));
+      tokens.push(makeToken(res.full, inComment ? ["comment"] : undefined));
     } else {
+      // links stay clickable even inside a comment
       tokens.push(makeLink(res.text, res.url));
     }
     lineBuffer = after;
