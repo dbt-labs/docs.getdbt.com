@@ -36,7 +36,7 @@ Think of the harness as a runtime that answers questions on every task:
 - Can this task be split across focused helper agents?
 - What happens when the generated code fails?
 
-Wizard's harness is built in layers: metadata and context, tools, skills and memory, subagent orchestration, and safety and review. But the layers alone aren't the interesting part. The loops are. In this article, we'll cover key improvements we make to the agent loop, how we provide efficient metadata, context, and tools, skills and memory, subagent orchestration, and how we help you review agent outputs.
+Wizard's harness is built in layers: metadata and context, tools, skills and memory, subagent orchestration, and safety and review. But the layers alone aren't the interesting part. The loops are.
 
 <Lightbox src="/img/blog/2026-10-14-wizard-agent-harness/wizard-harness-agent-loop.png" width="85%" title="The harness wraps every turn of the agent loop: context feeds the model, the model calls permission-checked tools, and finished work goes through scoped validation before you review impact and data diffs." />
 
@@ -76,7 +76,7 @@ Data practitioners spend most of their time on pipeline maintenance and putting 
 
 As agents write more of the code, the question shifts from "does it run?" to "is it right?" To see what that looks like in practice, one of us (Alex) went through seven months of history on his personal trading data platform. It's built on Dagster, dbt, and BigQuery, with 239 assets (174 of them dbt models) and 1,114 data quality checks, and AI agents write most of its code. The history covers 24,388 runs and 405 merged PRs, from March 1 to October 3, 2026.
 
-57% of merged PRs were fixes, about 0.56 fix PRs for every PR merged. That ratio barely moved as the platform grew. Fix PRs tracked merged PRs almost exactly week to week (ρ 0.96), while a roughly 100× increase in rows written had no measurable effect on the fix rate. Pipelines broke because the complexity scaled up and he didn't have an ergonomic way to catch those data quality issues before running.
+Fixes made up 57% of all merged PRs. That ratio barely moved as the platform grew. Fix PRs tracked merged PRs almost exactly week to week (ρ 0.96), while a roughly 100× increase in rows written had no measurable effect on the fix rate. Pipelines broke because the complexity scaled up and he didn't have an ergonomic way to catch those data quality issues before running.
 
 When a run errors, the defect is found fast, in a median of one day here. A run that succeeds with the wrong number is a different story. In a sample of well-documented defects, silent ones took a median of 65 days to find, and as long as 361. One liquidity metric (that was never queried) was off by 1,000× for 210 days. A non-trivial number of these came from upstream data quality issues from the vendor.
 
@@ -84,7 +84,7 @@ When a run errors, the defect is found fast, in a median of one day here. A run 
 
 The busiest week of the period, when an analytics agent was hooked up to the platform, had 104 merged PRs and kept run success at 98%. That same week produced 36 correctness fixes, a third of the month's total. Passing CI isn't the bar either: about 90% of agent-written PRs passed CI on the first try, whichever model wrote them. The defects that cost the most passed CI and code review.
 
-Since August, Wizard ([running GLM 5.3](/docs/dbt-ai/wizard-billing-faqs#dbt-managed-inference)) has taken an increased role in authoring any change that touches the platform. The validation loop and native dbt project understanding can proactively identify data quality issues and create fewer errors that need to be fixed later. To test that theory, we analyzed all of the pull requests during that period to see which harness and model generated the fewest defects. Wizard running GLM had a defect rate of only 5%, significantly better than similar frontier models with greater reasoning capabilities. That's a huge benefit to developer throughput and stakeholder trust, and it lowers total AI token usage, CI minutes, and warehouse consumption.
+Since August, Wizard ([running GLM 5.3](/docs/dbt-ai/wizard-billing-faqs#dbt-managed-inference)) has taken an increased role in authoring any change that touches the platform. Our theory was that the validation loop and native project understanding would catch data quality issues earlier and introduce fewer errors. To test it, we analyzed every PR from that period by harness and model. Wizard running GLM had a 5% follow-up fix rate, lower than every other model and harness we measured, including frontier models with stronger reasoning. That's a huge benefit to developer throughput and stakeholder trust, and it lowers total AI token usage, CI minutes, and warehouse consumption.
 
 <Lightbox src="/img/blog/2026-10-14-wizard-agent-harness/follow-up-fix-rate-by-harness.png" width="85%" title="PRs needing a follow-up fix within 14 days, by model and harness: Wizard had the lowest rate at 5%." />
 
