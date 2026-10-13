@@ -60,7 +60,7 @@ The core idea is that the model writes something, dbt gives it real compiler and
 
 #### Keeping warehouse costs down
 
-Another reason the validation loop is a first-class citizen in the agent lifecycle is cost. Wizard explores your project and checks its work more than a typical agent, so we carefully control which commands the agent can run to check its work as it goes. In our experiments, we learned that agents, especially at higher reasoning levels, like to compile and build against the full dev schema to check their work, which burns warehouse compute and congests dev environments. Access to dbt commands through the MCP server or the shell doesn't prevent that. To avoid this behavior, Wizard routes every dbt command through its own tools instead of the shell, applies deferral automatically, and keeps validation runs to the approved scope.
+Another reason the validation loop is a first-class citizen in the agent lifecycle is cost. Wizard explores your project and checks its work more than a typical agent, so we carefully control which commands it can run. In our experiments, agents, especially at higher reasoning levels, liked to compile and build against the full dev schema to verify each change, which burns warehouse compute and congests dev environments. Access to dbt commands through the MCP server or the shell doesn't prevent that. To avoid this behavior, Wizard routes every dbt command through its own tools instead of the shell, applies deferral automatically, and keeps validation runs to the approved scope.
 
 [Deferral](/docs/platform/about-defer) is an extremely powerful feature, and Wizard gives it first-class support. If you're working on a model three layers deep in your DAG and the agent rebuilds every upstream dependency in your dev environment, you're burning warehouse compute and time for no reason, and running certain commands could end up doing that several times per task. Wizard builds only the dev objects it needs and defers unchanged upstream models to production state. Where it helps, it also compares dev and prod behavior and checks downstream impact.
 
@@ -116,7 +116,7 @@ Skills use the open Agent Skills format, so the ones your team already uses, inc
 
 ## Subagent orchestration
 
-Some tasks are too big for one context window. Wizard Desktop and the CLI are equipped with a team of [subagents](/docs/dbt-ai/wizard-subagents) that can handle complex tasks like refactoring many models, updating whole suites of tests, large-scale documentation, and updating contracts. We do this by breaking down the work across focused helper subagents that work in parallel, freeing up the main agent's context to coordinate the task.
+Some tasks are too big for one context window. Wizard comes with a team of [subagents](/docs/dbt-ai/wizard-subagents) that can handle complex tasks like refactoring many models, updating whole suites of tests, large-scale documentation, and updating contracts. We do this by breaking down the work across focused helper subagents that work in parallel, freeing up the main agent's context to coordinate the task.
 
 The built-in roles reflect how we think about analytics engineering workflows:
 
