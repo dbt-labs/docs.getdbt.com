@@ -62,7 +62,7 @@ Another reason the validation loop is a first-class citizen in the agent lifecyc
 
 Wizard [handles deferral for you](/docs/dbt-ai/wizard-how-it-works#deferral-and-state) by default, and it also works with [dbt State](/docs/deploy/dbt-state-about) or a manual setup if you already have one. Either way, validation runs against realistic state without the cost of a full rebuild.
 
-<!-- TODO: The Notion draft embeds an interactive "How Wizard uses deferral" HTML animation here. Export it as a static image or GIF, or host it and embed with an iframe. -->
+<Lightbox src="/img/blog/2026-10-15-wizard-agent-harness/wizard-deferral-animation.gif" width="85%" title="How Wizard uses deferral: after an agent edits fct_orders, rebuilding everything builds four models in dev, while deferring to prod reuses the upstream production copies, builds only the changed model, and adds a data diff and downstream impact check." />
 
 Validation in dbt was never just "does this file parse?" The real question is whether the change can run in a real warehouse without blowing up cost, run time, dependencies, contracts, or downstream models. That's what the loop is built to answer.
 
