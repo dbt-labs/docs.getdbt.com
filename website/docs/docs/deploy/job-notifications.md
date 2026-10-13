@@ -227,7 +227,7 @@ The account-level Slack app can send job notifications to private channels when 
 2. In Slack, add the <Constant name="dbt_platform" /> Slack app to the private channel. The app must be a member of the channel before it can post there.
 3. In <Constant name="dbt_platform" />, select the channel from the **Notification channel** dropdown when you [configure Slack notifications](#configure-slack-notifications-1). Private channels will have a **private** label next to them.
 
-<Lightbox src="/img/docs/deploy/slack-private-channel.png" width="100%" width="90%" title="Example of a private channel selected in the **Notification channel** dropdown"/>
+<Lightbox src="/img/docs/deploy/slack-private-channel.png" width="100%" width="90%" title="Example of a private channel selected in the Notification channel dropdown"/>
 
 #### Already linked the Slack app? {#relink-slack-private-channels}
 
