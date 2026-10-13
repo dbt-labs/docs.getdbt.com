@@ -163,7 +163,7 @@ A single <Constant name="dbt_platform" /> account can integrate with one Slack w
 - Install the official <Constant name="dbt_platform"/> Slack app using the [steps outlined in the next section](#set-up-the-slack-integration-1).
 - To install the Slack app to a workspace, your Slack org must permit app installations. In some orgs this requires a Slack admin approval.
 
-The integration supports both _public_ and _private_ channels in the Slack workspace. To send notifications to a private channel, make sure you add it to that channel.  For existing connections, an account admin must first [relink the Slack app](/docs/deploy/job-notifications#relink-slack-private-channels) to grant the new `groups:read` permission. Refer to [Slack app for private channels](/docs/deploy/job-notifications#slack-app-for-private-channels) for more info.
+The integration supports both _public_ and _private_ channels in the Slack workspace. To send notifications to a private channel, add the Slack app to that channel. For existing connections, an account admin must first [relink the Slack app](/docs/deploy/job-notifications#relink-slack-private-channels) to grant the new `groups:read` permission. Refer to [Slack app for private channels](/docs/deploy/job-notifications#slack-app-for-private-channels) for more information.
 
 Once an account admin links the Slack app, licensed users can configure job notifications if they have one of the following:
 - The **Account Admin**, **Owner**, or **Member** default [group](/docs/platform/manage-access/about-user-access#groups)
