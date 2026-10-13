@@ -102,7 +102,11 @@ If there has been a change in user roles or Slack permissions where you no longe
 - You have a Slack workspace that you want to receive job notifications from.
 - You must be a Slack Workspace Owner. 
 - You must be an account admin to configure Slack notifications in <Constant name="dbt" />. For more details, refer to [Users and licenses](/docs/platform/manage-access/seats-and-users).
-The integration only supports both _public_ and _private_ channels in the Slack workspace at this moment.
+The integration supports both _public_ and _private_ channels in the Slack workspace.
+
+:::caution Relink the Slack app to use private channels
+Private channel support needs the `groups:read` scope, which lets the app view basic information about private channels it's been added to. If you linked the Slack app before this scope was added, an account admin must [unlink and relink it](#disable-the-slack-integration) and accept the new permission. Then, add the app to each private channel.
+:::
 
 Once an account admin links the Slack app, licensed users can configure job notifications if they have one of the following:
 - The **Account Admin**, **Owner**, or **Member** default [group](/docs/platform/manage-access/about-user-access#groups)
@@ -161,7 +165,7 @@ A single <Constant name="dbt_platform" /> account can integrate with one Slack w
 - A <Constant name="dbt_platform"/> account admin must link the Slack app at the account level.
 - Install the official <Constant name="dbt_platform"/> Slack app using the [steps outlined in the next section](#set-up-the-slack-integration-1).
 - To install the Slack app to a workspace, your Slack org must permit app installations. In some orgs this requires a Slack admin approval.
-- The integration supports both _public_ and _private_ channels in the Slack workspace at this moment.
+- The integration supports both _public_ and _private_ channels in the Slack workspace. To send notifications to a private channel, add the Slack app to that channel.
 
 Once an account admin links the Slack app, licensed users can configure job notifications if they have one of the following:
 - The **Account Admin**, **Owner**, or **Member** default [group](/docs/platform/manage-access/about-user-access#groups)
@@ -180,6 +184,10 @@ To use Slack notifications, you must unlink the old Slack app and then connect t
 3. In the same OAuth section, click **Link** to connect the official Slack app.
 
 Until you do this, the account-level Slack option will not appear.
+
+:::caution Already linked the Slack app?
+To send notifications to private channels, an account admin must unlink and relink the Slack app, then accept the new `groups:read` permission. This scope lets the app view basic information about private channels it's been added to. Without it, private channels won't appear in the **Notification channel** dropdown.
+:::
 
     <Lightbox src="/img/docs/dbt-platform/Link-your-Slack-Profile.png" width="85%" title="Link for the Slack app"/>
 
