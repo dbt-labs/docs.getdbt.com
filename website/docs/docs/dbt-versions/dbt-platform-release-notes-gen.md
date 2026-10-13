@@ -32,7 +32,7 @@ Release notes are grouped by date for single-tenant environments.
 
 ### dbt State
 
-- **dbt State trial email**: When a dbt State trial ends, the email now matches your Consumption or Enterprise plan and includes the allowance end date when your plan has one.
+- **dbt State trial email**: When a dbt State trial ends, you'll get an email that communicates your Consumption or Enterprise plan and includes the allowance end date when your plan has one.
 
 ## Fixes
 
