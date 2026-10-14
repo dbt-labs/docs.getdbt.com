@@ -70,7 +70,7 @@ A profile can be assigned to more than one deployment environment, so these attr
 
 1. Go to **Orchestration** > **Environments**.
 2. Open the development environment and click **Settings**.
-3. Click **Edit**, then set **Extended attributes** and save your changes.
+3. Click **Edit profile**, then set **Extended attributes** and save your changes.
 
 <Lightbox src="/img/docs/dbt-platform/using-dbt-platform/extended-attributes.png" width="95%" title="The Extended attributes field on a connection profile." /> <br />
 
