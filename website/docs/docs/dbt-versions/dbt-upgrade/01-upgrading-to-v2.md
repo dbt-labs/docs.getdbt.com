@@ -606,7 +606,7 @@ In addition, accessing the `meta` dictionary itself (rather than a specific key)
 | <Constant name="core_v1" /> | Does not work. |
 | <Constant name="core_v2" /> | Returns the full `meta` dictionary. |
 
-To access custom configurations stored under meta, use the explicit methods:
+To access custom configurations stored under `meta`, use the explicit methods:
 
 ```jinja
 {% set owner = config.meta_get('owner') %}

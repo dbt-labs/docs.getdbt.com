@@ -5,12 +5,12 @@ sidebar_label: "Jinja support by file type"
 description: "Reference for which dbt file types support Jinja expressions, built-in dbt functions, and custom macros."
 ---
 
-You can use Jinja across many dbt file types, but support is not the same everywhere. Some files accept full Jinja plus custom macros, while others only allow a limited set of built-in functions, and a few files do not support Jinja at all. Knowing which category a file falls into helps you avoid errors and choose the right place for dynamic logic.
+Jinja support varies by dbt file type. Some files accept full Jinja and custom macros, others allow only a limited set of dbt context functions and variables, and a few don’t support Jinja at all. Knowing what a file supports helps you avoid errors and choose the right place for dynamic logic.
 
-This reference maps common file types to three categories of Jinja support:
+This reference shows which kinds of Jinja each file type supports:
 
 - **Jinja expressions** (`{{ }}`, `{% %}`, and `{# #}`): Control flow, string output, and comments
-- **Built-in dbt functions**: Context methods like [`env_var()`](/reference/dbt-jinja-functions/env_var), [`ref()`](/reference/dbt-jinja-functions/ref), and [`target`](/reference/dbt-jinja-functions/target)
+- **Built-in dbt functions and variables**: Context methods like [`env_var()`](/reference/dbt-jinja-functions/env_var), [`ref()`](/reference/dbt-jinja-functions/ref), and [`target`](/reference/dbt-jinja-functions/target)
 - **Custom macros**: Calling project-defined macros like `{{ my_macro() }}`
 
 For most file types, behavior is the same across versions. For examples and caveats on YAML edge cases, refer to [Examples and caveats](#examples-and-caveats). For guidance on writing Jinja in dbt, refer to [Jinja and macros](/docs/build/jinja-macros). For the full list of built-in functions available in a specific YAML file, refer to the per-file [dbt Jinja context](/reference/dbt-jinja-functions-context-variables) pages.
@@ -56,11 +56,11 @@ Only `profiles.yml` and `packages.yml` support the `DBT_ENV_SECRET_` prefix for 
 | `profiles.yml` | ✅ | Limited | ❌ | For available functions and variables, refer to [profiles.yml context](/reference/dbt-jinja-functions/profiles-yml-context) |
 | `packages.yml` | ✅ | Limited | ❌ | For available functions and variables, refer to [packages.yml context](/reference/dbt-jinja-functions/packages.yml%20context) |
 | `properties.yml` / `schema.yml` | ✅ | Limited | ✅ | Custom macros are supported in YAML values. For available functions and variables, refer to [properties.yml context](/reference/dbt-jinja-functions/dbt-properties-yml-context). `ref()` and `source()` are not available. Refer to [Examples and caveats](#examples-and-caveats). |
-| `selectors.yml` | ✅ | Limited | ✅ | Custom macros are supported. Also supports `env_var()`, `target`, `as_bool()`, and related context. Refer to [YAML selectors](/reference/node-selection/yaml-selectors) and [Examples and caveats](#examples-and-caveats). |
+| `selectors.yml` | ✅ | Limited | ✅ | Also supports `env_var()`, `target`, `as_bool()`, and related context. Refer to [YAML selectors](/reference/node-selection/yaml-selectors) and [Examples and caveats](#examples-and-caveats). |
 | `dependencies.yml` | ✅ | Limited | ❌ | Jinja is supported (for example `env_var()` in a git URL). Prefer `packages.yml` if the project must also run on <Constant name="core" />. Refer to [Examples and caveats](#examples-and-caveats). |
 | `.py` Python models | ❌ | ❌ | ❌ | Use the Python `dbt` class API instead |
 | `.csv` seeds | ❌ | ❌ | ❌ | Data files only |
-| Unit test SQL fixtures | ❌ | ❌ | ❌ | Unit test fixtures do not support Jinja. For fixture formats, refer to [data formats](/reference/resource-properties/data-formats). |
+| Unit test SQL fixtures | ❌ | ❌ | ❌ | For fixture formats, refer to [data formats](/reference/resource-properties/data-formats). |
 | `.sql.j2` / `.md.j2` (optional) | Same as `.sql` / `.md` | Same as `.sql` / `.md` | Same as `.sql` / `.md` | Beta in v1.12. Refer to [`allow_jinja_file_extensions`](/reference/global-configs/behavior-flags/allow_jinja_file_extensions) |
 
 </VersionBlock>
@@ -69,7 +69,7 @@ Only `profiles.yml` and `packages.yml` support the `DBT_ENV_SECRET_` prefix for 
 
 **Table key**
 
-- **Limited:** Jinja expressions work, but only a subset of built-in dbt functions is available (typically [`env_var()`](/reference/dbt-jinja-functions/env_var), [`var()`](/reference/dbt-jinja-functions/var), and [`target`](/reference/dbt-jinja-functions/target)). The exact list depends on the file type; refer to the linked context page in Notes. YAML files do not support [`ref()`](/reference/dbt-jinja-functions/ref) or [`source()`](/reference/dbt-jinja-functions/source) in `properties.yml` / `schema.yml`. For examples and caveats on YAML edge cases, refer to [Examples and caveats](#examples-and-caveats).
+- **Limited:** Jinja expressions work, but only a subset of built-in dbt functions and variables is available (typically [`env_var()`](/reference/dbt-jinja-functions/env_var), [`var()`](/reference/dbt-jinja-functions/var), and [`target`](/reference/dbt-jinja-functions/target)). The exact list depends on the file type; refer to the linked context page in Notes. YAML files do not support [`ref()`](/reference/dbt-jinja-functions/ref) or [`source()`](/reference/dbt-jinja-functions/source) in `properties.yml` / `schema.yml`. For examples and caveats on YAML edge cases, refer to [Examples and caveats](#examples-and-caveats).
 - **Same as `.sql` / `.md`:** Optional `.j2` file extensions use the same Jinja support as the matching non-`.j2` file type. For example, `.sql.j2` matches `.sql`, and `.md.j2` matches `.md`.
 
 ## Where to define custom Jinja blocks
@@ -94,7 +94,7 @@ Values in the top-level `vars:` block in `dbt_project.yml` are interpreted liter
 
 ### `sql_header` and static SQL configs
 
-Some config fields expect static SQL only and do not support Jinja. Check the relevant [resource config](/reference/resource-configs) page for the field you are configuring.
+The sql_header config doesn’t support Jinja or macros such as ref(), source(), and {{ this }}. Its value is used as written. For other configs, refer to the relevant [resource config](https://github.com/reference/resource-configs) page.
 
 ## Examples and caveats
 
