@@ -44,7 +44,7 @@ Wizard's harness is built in layers: metadata and context, tools, skills and mem
 
 As agents generate more and more code, validating the correctness of code changes and outputs becomes paramount to building reliable systems quickly. That's why Wizard ships with a dbt-native [validation loop](/docs/dbt-ai/wizard-how-it-works#validation-loop-mechanics) out of the box.
 
-#### Catching errors before you see them
+### Catching errors before you see them
 
 Wizard validates in two stages.
 
