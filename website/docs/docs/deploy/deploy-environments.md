@@ -183,7 +183,7 @@ The deployment connection sets _where_ dbt builds. The connection profile sets _
 
 Deployment credentials are managed through connection profiles, which are created at the project level and assigned to deployment environments. Profiles define the credentials and attributes dbt uses to connect to your warehouse.
 
-To configure credentials for this environment, refer to [About dbt platform profiles](/docs/platform/about-profiles). Jobs need a profile assigned to the environment, in addition to a deployment connection. Set [extended attributes](/docs/dbt-platform-environments#extended-attributes) on that profile to supply a `profiles.yml` attribute beyond the deployment connection fields.
+To configure credentials for this environment, refer to [About dbt platform profiles](/docs/platform/about-profiles). Jobs need both a deployment connection and a profile assigned to the environment. You can configure any [extended attributes](/docs/dbt-platform-environments#extended-attributes) on that profile.
 
 ## Delete an environment
 

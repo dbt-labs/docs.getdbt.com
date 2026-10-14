@@ -52,7 +52,7 @@ For more info, check out this [FAQ page on this topic](/faqs/Environments/custom
 Extended attributes are currently _not_ supported for SSH tunneling
 :::
 
-Extended attributes let you set a [`profiles.yml`](/docs/local/profiles.yml) snippet that changes how <Constant name="dbt" /> connects to your data platform. You can set any YAML attributes that a dbt adapter accepts in its `profiles.yml`. Extended attributes partially override connection or environment credentials, including custom environment variables.
+Extended attributes allow you set a [`profiles.yml`](/docs/local/profiles.yml) snippet that changes how <Constant name="dbt" /> connects to your data platform. You can set any YAML attributes that a dbt adapter accepts in its `profiles.yml`. Extended attributes partially override connection or environment credentials, including custom environment variables.
 
 Where you set them depends on the environment:
 
@@ -61,7 +61,9 @@ Where you set them depends on the environment:
 1. Go to **Orchestration** > **Environments**.
 2. Open the deployment environment and click **Settings**.
 3. Under **Connection profiles**, click the profile name.
-4. Set **Extended attributes** on that profile.
+4. Under **Connection profiles**, click **Edit profile** to open the profile page.
+5. On the profile page, click **Edit**.
+6. Add Extended attributes and save your changes.
 
 A profile can be assigned to more than one deployment environment, so these attributes apply to every environment that uses it.
 
