@@ -594,17 +594,21 @@ or config.meta_require('my_key') instead.
 
 Behavior when a key exists only in meta:
 
+<SimpleTable>
 | Method | Behavior |
 |--------|----------|
 | `config.get('my_key')` | Returns the default value and emits a warning. |
 | `config.require('my_key')` | Raises an error and emits a warning. |
+</SimpleTable>
 
 In addition, accessing the `meta` dictionary itself (rather than a specific key) behaves differently across engines:
 
+<SimpleTable>
 | Engine | `config.get('meta', default={})` |
 |--------|-----------------------------------|
 | <Constant name="core_v1" /> | Does not work. |
 | <Constant name="core_v2" /> | Returns the full `meta` dictionary. |
+</SimpleTable>
 
 To access custom configurations stored under `meta`, use the explicit methods:
 

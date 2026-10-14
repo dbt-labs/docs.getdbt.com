@@ -13,33 +13,35 @@ This reference shows which kinds of Jinja each file type supports:
 - **Built-in dbt functions and variables**: Context methods like [`env_var()`](/reference/dbt-jinja-functions/env_var), [`ref()`](/reference/dbt-jinja-functions/ref), and [`target`](/reference/dbt-jinja-functions/target)
 - **Custom macros**: Calling project-defined macros like `{{ my_macro() }}`
 
-For most file types, behavior is the same across versions. For examples and caveats on YAML edge cases, refer to [Examples and caveats](#examples-and-caveats). For guidance on writing Jinja in dbt, refer to [Jinja and macros](/docs/build/jinja-macros). For the full list of built-in functions available in a specific YAML file, refer to the per-file [dbt Jinja context](/reference/dbt-jinja-functions-context-variables) pages.
+Also refer to:
+
+- [Examples and caveats](#examples-and-caveats) for YAML edge cases
+- [Jinja and macros](/docs/build/jinja-macros) for guidance on writing Jinja in dbt
+- The per-file [dbt Jinja context](/reference/dbt-jinja-functions-context-variables) pages for the full list of built-in functions available in a specific YAML file
 
 ## Summary table
 
 The table below summarizes Jinja support by file type.
 
-Only `profiles.yml` and `packages.yml` support the `DBT_ENV_SECRET_` prefix for [`env_var()`](/reference/dbt-jinja-functions/env_var). Refer to [YAML tips](/docs/build/dbt-tips#yaml-tips).
-
 <VersionBlock lastVersion="1.12">
 
 | File type | Jinja expressions | Built-in dbt functions | Custom macros | Notes |
 | --- | --- | --- | --- | --- |
-| `.sql` models, analyses, singular tests | ✅ | ✅ | ✅ | Call macros here; define them in `macros/`. Hooks and operations apply too. |
-| `.sql` generic tests (`{% test %}`) | ✅ | ✅ | ✅ | Define `{% test %}` in `tests/generic/` or `macros/`; you can also call other macros from the test. |
-| `.sql` snapshots (legacy `{% snapshot %}`) | ✅ | ✅ | ✅ | Prefer [YAML snapshots](/docs/build/snapshots). For the older Jinja block syntax, refer to [Legacy snapshot configurations](/reference/resource-configs/snapshots-jinja-legacy). |
-| `.sql` materializations (`{% materialization %}`) | ✅ | ✅ | ✅ | Define `{% materialization %}` in `macros/` |
-| `.md` docs blocks (`{% docs %}`) | ✅ | ❌ | ❌ | Pure Jinja only; use [`doc()`](/reference/dbt-jinja-functions/doc) to reference blocks |
-| `dbt_project.yml` | ✅ | Limited | ❌ | For available functions and variables, refer to [dbt_project.yml context](/reference/dbt-jinja-functions/dbt-project-yml-context) |
-| `profiles.yml` | ✅ | Limited | ❌ | For available functions and variables, refer to [profiles.yml context](/reference/dbt-jinja-functions/profiles-yml-context) |
-| `packages.yml` | ✅ | Limited | ❌ | For available functions and variables, refer to [packages.yml context](/reference/dbt-jinja-functions/packages.yml%20context) |
+| `.sql` models, analyses, singular tests | ✅ | ✅ | ✅ | Call macros here. Hooks and operations apply too. Refer to [Where to define custom Jinja blocks](#where-to-define-custom-jinja-blocks). |
+| `.sql` generic tests (`{% test %}`) | ✅ | ✅ | ✅ | Refer to [Where to define custom Jinja blocks](#where-to-define-custom-jinja-blocks). |
+| `.sql` snapshots (legacy `{% snapshot %}`) | ✅ | ✅ | ✅ | Prefer [YAML snapshots](/docs/build/snapshots). For the legacy block, refer to [Where to define custom Jinja blocks](#where-to-define-custom-jinja-blocks). |
+| `.sql` materializations (`{% materialization %}`) | ✅ | ✅ | ✅ | Refer to [Where to define custom Jinja blocks](#where-to-define-custom-jinja-blocks). |
+| `.md` docs blocks (`{% docs %}`) | ✅ | ❌ | ❌ | Pure Jinja only; use [`doc()`](/reference/dbt-jinja-functions/doc) to reference blocks. |
+| `dbt_project.yml` | ✅ | Limited | ❌ | The top-level `vars:` block is literal (not Jinja). For available functions and variables, refer to [dbt_project.yml context](/reference/dbt-jinja-functions/dbt-project-yml-context). Refer to [Common exceptions](#vars-block-in-dbt_projectyml). |
+| `profiles.yml` | ✅ | Limited | ❌ | Supports the `DBT_ENV_SECRET_` prefix for [`env_var()`](/reference/dbt-jinja-functions/env_var). For available functions and variables, refer to [profiles.yml context](/reference/dbt-jinja-functions/profiles-yml-context). Refer to [YAML tips](/docs/build/dbt-tips#yaml-tips). |
+| `packages.yml` | ✅ | Limited | ❌ | Supports the `DBT_ENV_SECRET_` prefix for [`env_var()`](/reference/dbt-jinja-functions/env_var). For available functions and variables, refer to [packages.yml context](/reference/dbt-jinja-functions/packages.yml%20context). Refer to [YAML tips](/docs/build/dbt-tips#yaml-tips). |
 | `properties.yml` / `schema.yml` | ✅ | Limited | ❌ | For available functions and variables, refer to [properties.yml context](/reference/dbt-jinja-functions/dbt-properties-yml-context). `ref()` and `source()` are not available. |
 | `selectors.yml` | ✅ | Limited | ❌ | Supports `env_var()`, `target`, `as_bool()`, and related context. Refer to [YAML selectors](/reference/node-selection/yaml-selectors) for selector syntax. |
 | `dependencies.yml` | ❌ | ❌ | ❌ | Not Jinja-rendered. Use `packages.yml` for conditional logic. Refer to [Examples and caveats](#examples-and-caveats). |
-| `.py` Python models | ❌ | ❌ | ❌ | Use the Python `dbt` class API instead |
-| `.csv` seeds | ❌ | ❌ | ❌ | Data files only |
+| `.py` Python models | ❌ | ❌ | ❌ | Use the Python `dbt` class API instead. |
+| `.csv` seeds | ❌ | ❌ | ❌ | Data files only. |
 | Unit test SQL fixtures | ❌ | ❌ | ❌ | Unit test fixtures do not support Jinja. For fixture formats, refer to [data formats](/reference/resource-properties/data-formats). |
-| `.sql.j2` / `.md.j2` (optional) | Same as `.sql` / `.md` | Same as `.sql` / `.md` | Same as `.sql` / `.md` | Beta in v1.12. Refer to [`allow_jinja_file_extensions`](/reference/global-configs/behavior-flags/allow_jinja_file_extensions) |
+| `.sql.j2` / `.md.j2` (optional) | Same as `.sql` / `.md` | Same as `.sql` / `.md` | Same as `.sql` / `.md` | Requires [`allow_jinja_file_extensions`](/reference/global-configs/behavior-flags/allow_jinja_file_extensions) (`false` by default). |
 
 </VersionBlock>
 
@@ -47,21 +49,21 @@ Only `profiles.yml` and `packages.yml` support the `DBT_ENV_SECRET_` prefix for 
 
 | File type | Jinja expressions | Built-in dbt functions | Custom macros | Notes |
 | --- | --- | --- | --- | --- |
-| `.sql` models, analyses, singular tests | ✅ | ✅ | ✅ | Call macros here; define them in `macros/`. Hooks and operations apply too. |
-| `.sql` generic tests (`{% test %}`) | ✅ | ✅ | ✅ | Define `{% test %}` in `tests/generic/` or `macros/`; you can also call other macros from the test. |
-| `.sql` snapshots (legacy `{% snapshot %}`) | ✅ | ✅ | ✅ | Prefer [YAML snapshots](/docs/build/snapshots). For the older Jinja block syntax, refer to [Legacy snapshot configurations](/reference/resource-configs/snapshots-jinja-legacy). |
-| `.sql` materializations (`{% materialization %}`) | ✅ | ✅ | ✅ | Define `{% materialization %}` in `macros/` |
-| `.md` docs blocks (`{% docs %}`) | ✅ | ❌ | ❌ | Pure Jinja only; use [`doc()`](/reference/dbt-jinja-functions/doc) to reference blocks |
-| `dbt_project.yml` | ✅ | Limited | ✅ | Custom macros are supported in hooks. For available functions and variables, refer to [dbt_project.yml context](/reference/dbt-jinja-functions/dbt-project-yml-context). Refer to [Examples and caveats](#examples-and-caveats). |
-| `profiles.yml` | ✅ | Limited | ❌ | For available functions and variables, refer to [profiles.yml context](/reference/dbt-jinja-functions/profiles-yml-context) |
-| `packages.yml` | ✅ | Limited | ❌ | For available functions and variables, refer to [packages.yml context](/reference/dbt-jinja-functions/packages.yml%20context) |
-| `properties.yml` / `schema.yml` | ✅ | Limited | ✅ | Custom macros are supported in YAML values. For available functions and variables, refer to [properties.yml context](/reference/dbt-jinja-functions/dbt-properties-yml-context). `ref()` and `source()` are not available. Refer to [Examples and caveats](#examples-and-caveats). |
+| `.sql` models, analyses, singular tests | ✅ | ✅ | ✅ | Call macros here. Hooks and operations apply too. Refer to [Where to define custom Jinja blocks](#where-to-define-custom-jinja-blocks). |
+| `.sql` generic tests (`{% test %}`) | ✅ | ✅ | ✅ | Refer to [Where to define custom Jinja blocks](#where-to-define-custom-jinja-blocks). |
+| `.sql` snapshots (legacy `{% snapshot %}`) | ✅ | ✅ | ✅ | Prefer [YAML snapshots](/docs/build/snapshots). For the legacy block, refer to [Where to define custom Jinja blocks](#where-to-define-custom-jinja-blocks). |
+| `.sql` materializations (`{% materialization %}`) | ✅ | ✅ | ✅ | Refer to [Where to define custom Jinja blocks](#where-to-define-custom-jinja-blocks). |
+| `.md` docs blocks (`{% docs %}`) | ✅ | ❌ | ❌ | Pure Jinja only; use [`doc()`](/reference/dbt-jinja-functions/doc) to reference blocks. |
+| `dbt_project.yml` | ✅ | Limited | Limited | Custom macros are supported in hooks. The top-level `vars:` block is literal (not Jinja). For available functions and variables, refer to [dbt_project.yml context](/reference/dbt-jinja-functions/dbt-project-yml-context). Refer to [Common exceptions](#vars-block-in-dbt_projectyml) and [Examples and caveats](#examples-and-caveats). |
+| `profiles.yml` | ✅ | Limited | ❌ | Supports the `DBT_ENV_SECRET_` prefix for [`env_var()`](/reference/dbt-jinja-functions/env_var). For available functions and variables, refer to [profiles.yml context](/reference/dbt-jinja-functions/profiles-yml-context). Refer to [YAML tips](/docs/build/dbt-tips#yaml-tips). |
+| `packages.yml` | ✅ | Limited | ❌ | Supports the `DBT_ENV_SECRET_` prefix for [`env_var()`](/reference/dbt-jinja-functions/env_var). For available functions and variables, refer to [packages.yml context](/reference/dbt-jinja-functions/packages.yml%20context). Refer to [YAML tips](/docs/build/dbt-tips#yaml-tips). |
+| `properties.yml` / `schema.yml` | ✅ | Limited | ✅ | You can call custom macros in YAML values (for example `description`). For available functions and variables, refer to [properties.yml context](/reference/dbt-jinja-functions/dbt-properties-yml-context). `ref()` and `source()` are not available. Refer to [Examples and caveats](#examples-and-caveats). |
 | `selectors.yml` | ✅ | Limited | ✅ | Also supports `env_var()`, `target`, `as_bool()`, and related context. Refer to [YAML selectors](/reference/node-selection/yaml-selectors) and [Examples and caveats](#examples-and-caveats). |
 | `dependencies.yml` | ✅ | Limited | ❌ | Jinja is supported (for example `env_var()` in a git URL). Prefer `packages.yml` if the project must also run on <Constant name="core" />. Refer to [Examples and caveats](#examples-and-caveats). |
-| `.py` Python models | ❌ | ❌ | ❌ | Use the Python `dbt` class API instead |
-| `.csv` seeds | ❌ | ❌ | ❌ | Data files only |
+| `.py` Python models | ❌ | ❌ | ❌ | Use the Python `dbt` class API instead. |
+| `.csv` seeds | ❌ | ❌ | ❌ | Data files only. |
 | Unit test SQL fixtures | ❌ | ❌ | ❌ | For fixture formats, refer to [data formats](/reference/resource-properties/data-formats). |
-| `.sql.j2` / `.md.j2` (optional) | Same as `.sql` / `.md` | Same as `.sql` / `.md` | Same as `.sql` / `.md` | Beta in v1.12. Refer to [`allow_jinja_file_extensions`](/reference/global-configs/behavior-flags/allow_jinja_file_extensions) |
+| `.sql.j2` / `.md.j2` (optional) | Same as `.sql` / `.md` | Same as `.sql` / `.md` | Same as `.sql` / `.md` | Requires [`allow_jinja_file_extensions`](/reference/global-configs/behavior-flags/allow_jinja_file_extensions) (`false` by default). |
 
 </VersionBlock>
 
@@ -69,7 +71,7 @@ Only `profiles.yml` and `packages.yml` support the `DBT_ENV_SECRET_` prefix for 
 
 **Table key**
 
-- **Limited:** Jinja expressions work, but only a subset of built-in dbt functions and variables is available (typically [`env_var()`](/reference/dbt-jinja-functions/env_var), [`var()`](/reference/dbt-jinja-functions/var), and [`target`](/reference/dbt-jinja-functions/target)). The exact list depends on the file type; refer to the linked context page in Notes. YAML files do not support [`ref()`](/reference/dbt-jinja-functions/ref) or [`source()`](/reference/dbt-jinja-functions/source) in `properties.yml` / `schema.yml`. For examples and caveats on YAML edge cases, refer to [Examples and caveats](#examples-and-caveats).
+- **Limited:** Supported in part. For built-in dbt functions and variables, only a subset is available (typically [`env_var()`](/reference/dbt-jinja-functions/env_var), [`var()`](/reference/dbt-jinja-functions/var), and [`target`](/reference/dbt-jinja-functions/target)); the exact list depends on the file type. For custom macros, support may apply only in specific fields (for example hooks in `dbt_project.yml`). Refer to the linked context page in Notes, and to [Examples and caveats](#examples-and-caveats) for YAML edge cases.
 - **Same as `.sql` / `.md`:** Optional `.j2` file extensions use the same Jinja support as the matching non-`.j2` file type. For example, `.sql.j2` matches `.sql`, and `.md.j2` matches `.md`.
 
 ## Where to define custom Jinja blocks
@@ -78,11 +80,11 @@ You can call a custom macro (for example `{{ my_macro() }}`) from many `.sql` fi
 
 | Block | File type | Location | Notes |
 | --- | --- | --- | --- |
-| `{% macro %}` | `.sql` | `macros/` | Call from models, tests, hooks, and more |
-| `{% test %}` | `.sql` | `tests/generic/` or `macros/` | Define the generic test here; you can also call other macros inside it |
-| `{% materialization %}` | `.sql` | `macros/` | Define custom materializations here |
+| `{% macro %}` | `.sql` | `macros/` | Call from models, tests, hooks, and more. |
+| `{% test %}` | `.sql` | `tests/generic/` or `macros/` | Define the generic test here; you can also call other macros inside it. |
+| `{% materialization %}` | `.sql` | `macros/` | Define custom materializations here. |
 | `{% snapshot %}` | `.sql` | `snapshots/` (legacy) | Prefer [YAML snapshots](/docs/build/snapshots). Refer to [Legacy snapshot configurations](/reference/resource-configs/snapshots-jinja-legacy) for the older syntax. |
-| `{% docs %}` | `.md` | Any resource path or `docs/` | Pure Jinja only; no custom macro calls |
+| `{% docs %}` | `.md` | Any resource path or `docs/` | Pure Jinja only; no custom macro calls. |
 
 ## Common exceptions
 
@@ -94,7 +96,7 @@ Values in the top-level `vars:` block in `dbt_project.yml` are interpreted liter
 
 ### `sql_header` and static SQL configs
 
-The sql_header config doesn’t support Jinja or macros such as ref(), source(), and {{ this }}. Its value is used as written. For other configs, refer to the relevant [resource config](https://github.com/reference/resource-configs) page.
+The [`sql_header`](/reference/resource-configs/sql_header) config doesn’t support Jinja or macros such as `ref()`, `source()`, and `{{ this }}`. Its value is used as written. For other configs, refer to the relevant [resource config](/reference/resource-configs) page.
 
 ## Examples and caveats
 
