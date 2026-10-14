@@ -60,10 +60,9 @@ Where you set them depends on the environment:
 
 1. Go to **Orchestration** > **Environments**.
 2. Open the deployment environment and click **Settings**.
-3. Under **Connection profiles**, click the profile name.
-4. Under **Connection profiles**, click **Edit profile** to open the profile page.
-5. On the profile page, click **Edit**.
-6. Add Extended attributes and save your changes.
+3. Under **Connection profiles**, click **Edit profile** to open the profile page.
+4. On the profile page, click **Edit**.
+5. Add **Extended attributes** and save your changes.
 
 A profile can be assigned to more than one deployment environment, so these attributes apply to every environment that uses it.
 
