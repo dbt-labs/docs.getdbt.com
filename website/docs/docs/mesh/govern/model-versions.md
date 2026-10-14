@@ -13,7 +13,7 @@ import LatestVersionPointerCollision from '/snippets/_latest-version-pointer-col
 
 <VersionsCallout />
 
-Versioning APIs is a hard problem in software engineering. The root of the challenge is that the producers and consumers of an API have competing incentives:
+Evolving APIs is a hard problem in software engineering. The root of the challenge is that the producers and consumers of an API have competing incentives:
 - Producers of an API need the ability to modify its logic and structure. There is a real cost to maintaining legacy endpoints forever, but losing the trust of downstream users is far costlier.
 - Consumers of an API need to trust in its stability: their queries will keep working, and won't break without warning. Although migrating to a newer API version incurs an expense, an unplanned migration is far costlier.
 
