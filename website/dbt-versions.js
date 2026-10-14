@@ -181,6 +181,7 @@ exports.versionedPages = [
   { page: "docs/local/connect-data-platform/postgres-setup", lastVersion: "1.99" },
   { page: "docs/local/connect-data-platform/risingwave-setup", lastVersion: "1.99" },
   { page: "docs/local/connect-data-platform/rockset-setup", lastVersion: "1.99" },
+  { page: "docs/local/connect-data-platform/sail-setup", lastVersion: "1.99" },
   { page: "docs/local/connect-data-platform/singlestore-setup", lastVersion: "1.99" },
   { page: "docs/local/connect-data-platform/sqlite-setup", lastVersion: "1.99" },
   { page: "docs/local/connect-data-platform/starrocks-setup", lastVersion: "1.99" },
