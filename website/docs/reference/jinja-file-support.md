@@ -23,7 +23,7 @@ Only `profiles.yml` and `packages.yml` support the `DBT_ENV_SECRET_` prefix for 
 
 <VersionBlock lastVersion="1.12">
 
-| File type | Jinja expressions | Built-in dbt functions | Custom macros | Notes |
+| File type | Jinja expressions | dbt functions and variables | Custom macros | Notes |
 | --- | --- | --- | --- | --- |
 | `.sql` models, analyses, singular tests | ✅ | ✅ | ✅ | Call macros here; define them in `macros/`. Hooks and operations apply too. |
 | `.sql` generic tests (`{% test %}`) | ✅ | ✅ | ✅ | Define `{% test %}` in `tests/generic/` or `macros/`; you can also call other macros from the test. |
