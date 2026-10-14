@@ -94,7 +94,7 @@ Values in the top-level `vars:` block in `dbt_project.yml` are interpreted liter
 
 ### `sql_header` and static SQL configs
 
-The sql_header config doesn’t support Jinja or macros such as ref(), source(), and {{ this }}. Its value is used as written. For other configs, refer to the relevant [resource config](https://github.com/reference/resource-configs) page.
+The sql_header config doesn’t support Jinja or macros such as ref(), source(), and {{ this }}. Its value is used as written. For other configs, refer to the relevant [resource config](/reference/resource-configs) page.
 
 ## Examples and caveats
 
