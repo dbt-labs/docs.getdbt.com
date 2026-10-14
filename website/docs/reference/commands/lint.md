@@ -227,7 +227,7 @@ dbt fmt [FILE] [flags]
 
 `[FILE]` is optional. When omitted, `dbt format` formats all SQL files in your project. You can also pass a single file or a directory to scope the run.
 
-`dbt format` requires `templater = dbt` in your `.sqlfluff` file. Refer to [Templater requirement](#templater-requirement).
+`dbt format` logs a warning and continues when `.sqlfluff` does not set `templater = dbt`. Refer to [Templater requirement](#templater-requirement).
 
 ### Format flags
 
