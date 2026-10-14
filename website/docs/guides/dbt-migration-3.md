@@ -37,7 +37,7 @@ In the <Constant name="dbt_platform" />, you can natively connect to your data p
 ### Tips
 - Manage [dbt versions](/docs/dbt-versions/upgrade-dbt-platform-version) and ensure team collaboration with <Constant name="dbt_platform" />'s one-click feature, eliminating the need for manual updates and version discrepancies. Select a [release track](/docs/dbt-versions/dbt-release-tracks) for ongoing updates, to always stay up to date with fixes and (optionally) get early access to new functionality for your dbt project.
 - The <Constant name="dbt_platform" /> supports a whole host of [cloud providers](/docs/platform/connect-data-platform/about-connections), including Snowflake, Databricks, BigQuery, Fabric, and Redshift (to name a few).
-- Use [Extended attributes](/docs/dbt-platform-environments#extended-attributes) to set a [`profiles.yml`](/docs/local/profiles.yml) snippet on a deployment environment's [connection profile](/docs/platform/about-profiles), or on a development environment's **General settings** page. This gives you more control over how the <Constant name="dbt_platform" /> connects to the data platform in that environment.
+- Use [Extended attributes](/docs/dbt-platform-environments#extended-attributes) to set a [`profiles.yml`](/docs/local/profiles.yml) snippet that changes how the <Constant name="dbt_platform" /> connects to the data platform. That page explains where to configure them for deployment and development environments.
   - For example, if you have a field in your `profiles.yml` that you’d like to add to the <Constant name="dbt_platform" /> adapter user interface, you can use Extended attributes to set it.
 
 ### Caveats
