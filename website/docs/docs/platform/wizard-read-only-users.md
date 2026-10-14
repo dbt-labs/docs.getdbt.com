@@ -47,13 +47,13 @@ Read-only users only have access to Explore mode and see a simpler UI. The only 
 
 <Expandable alt_header="Which license does a read-only user need?">
 
-Read-only. For current license types and how they're assigned, refer to [User licenses](/docs/platform/manage-access/about-user-access). 
+You can use Read-only license. For current license types and how they're assigned, refer to [User licenses](/docs/platform/manage-access/about-user-access). 
 
 </Expandable>
 
 <Expandable alt_header="How many read-only users can we invite?">
 
-It depends on your <Constant name="dbt_platform"/> plan. For license availability by plan, refer to [dbt pricing](https://www.getdbt.com/pricing).
+You can invite any user that has a read-only license! Check out [Invite read-only users](#invite-read-only-users) for instructions on how to invite users. For license availability by plan, refer to [dbt pricing](https://www.getdbt.com/pricing).
 
 </Expandable>
 
@@ -97,12 +97,9 @@ Seeing <Constant name="wizard" /> in the Home tab doesn't mean the account is re
 
 </Expandable>
 
-
 ## Invite read-only users
 
-Read-only users need AI features turned on to use Wizard. AI features are [enabled](/docs/platform/manage-dbt-ai) by default, so there's usually nothing to change.
-
-
+This section explains how to invite read-only users to <Constant name="dbt_platform" /> so they can use the Wizard home tab. 
 1. In <Constant name="dbt_platform" />, go to **Account settings** --> **Users**.
 2. Click **Invite users**.
 3. Enter the email addresses of the people you want to invite.
