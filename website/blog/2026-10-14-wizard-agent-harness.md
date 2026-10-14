@@ -64,7 +64,8 @@ The core idea is that the model writes something, dbt gives it real compiler and
 
 Another reason the validation loop is a first-class citizen in the agent lifecycle is cost. Wizard explores your project and checks its work more than a typical agent, so we carefully control which commands it can run. In our experiments, agents, especially at higher reasoning levels, liked to compile and build against the full dev schema to verify each change, which burns warehouse compute and congests dev environments. Access to dbt commands through the MCP server or the shell doesn't prevent that. 
 
-<img width="717" height="349" alt="An agent rebuilds the entire dev schema after being asked to rename one column🥲" src="https://github.com/user-attachments/assets/01792505-dc98-49a5-98dd-d901349aee46" />
+
+<Lightbox src="/img/blog/wizard-this-is-fine.png" width="95%" title="An agent rebuilds the entire dev schema after being asked to rename one column 🥲" />
 
 To avoid this behavior, Wizard routes every dbt command through its own tools instead of the shell, applies deferral automatically, and keeps validation runs to the approved scope.
 
