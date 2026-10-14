@@ -59,7 +59,7 @@ templater = dbt
 If your `.sqlfluff` file doesn't set `templater = dbt`, each run logs the following warning and continues anyway:
 
 ```text
-[Warning] [NotSupported (dbt9000)]: SQLFluff templater 'jinja' is not supported. dbt lint/format only supports SQLFluff templater 'dbt'. Continuing anyway.
+[warning] [NotSupported (dbt9000)]: SQLFluff templater 'jinja' is not supported. dbt lint/format only supports SQLFluff templater 'dbt'. Continuing anyway.
 ```
 
 Setting `templater = dbt` removes the warning.
