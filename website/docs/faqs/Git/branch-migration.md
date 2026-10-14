@@ -4,7 +4,7 @@ sidebar_label: "Branches when changing providers or repositories"
 id: "branches-when-changing-git-providers"
 slug: branch-migration
 hide_table_of_contents: true
-description: "How Git branch names and commit history carry over when you change providers, repositories, or remotes—for dbt Core and the dbt platform, including platform-only notes for Studio IDE and repository settings."
+description: "How Git branch names and commit history carry over when you change providers, repositories, or remotes—for dbt v1 and the dbt platform, including platform-only notes for Studio IDE and repository settings."
 tags: [Git]
 ---
 

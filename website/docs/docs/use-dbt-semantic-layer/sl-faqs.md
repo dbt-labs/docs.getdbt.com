@@ -93,11 +93,11 @@ Yes, the dbt Semantic Layer is compatible with [dbt v1.6 or higher](/docs/dbt-ve
 Yes, <Constant name="dbt" /> [Starter, Enterprise, or Enterprise+](https://www.getdbt.com/pricing) plan customers can access the dbt Semantic Layer. Certain features like caching and using multiple credentials are available for Enterprise and Enterprise+ plans.
 </Expandable>
 
-<Expandable alt_header="Is there a way to leverage dbt Semantic Layer capabilities in dbt Core?">
+<Expandable alt_header="Is there a way to leverage dbt Semantic Layer capabilities outside the dbt platform?">
 
-The dbt Semantic Layer is proprietary to <Constant name="dbt" />, however some components of it are open-source. dbt Core users can use MetricFlow features, like defining metrics in their projects, without a <Constant name="dbt" /> plan.
+The dbt Semantic Layer is proprietary to <Constant name="dbt" />, however some components of it are open-source. <Constant name="dbt" /> users can use MetricFlow features, like defining metrics in their projects, without a <Constant name="dbt_platform" /> plan.
 
-dbt Core users can also query their semantic layer locally using the command line. However, they won't be able to use the [APIs](/docs/dbt-apis/sl-api-overview) or [available integrations](/docs/platform-integrations/avail-sl-integrations) to access metrics dynamically.
+<Constant name="dbt" /> users can also query their semantic layer locally using the command line. However, they won't be able to use the [APIs](/docs/dbt-apis/sl-api-overview) or [available integrations](/docs/platform-integrations/avail-sl-integrations) to access metrics dynamically.
 
 </Expandable>
 
@@ -162,7 +162,7 @@ MetricFlow is hosted in <Constant name="dbt" />. Requests from the [Semantic Lay
 2. Then you build your metrics on top of these semantic models. This is all done in `.yml` configurations alongside your dbt models in your projects.
 3. Once you've defined your metrics and semantic models, you can [configure the dbt Semantic Layer](/docs/use-dbt-semantic-layer/setup-sl) in <Constant name="dbt" />.
 
-Read our [dbt Semantic Layer quickstart](/guides/sl-snowflake-qs) guide for more information.
+Read our [dbt Semantic Layer quickstart](/guides/sl-qs) guide for more information.
 
 </Expandable>
 

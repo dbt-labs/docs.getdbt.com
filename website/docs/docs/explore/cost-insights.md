@@ -18,7 +18,7 @@ Cost Insights shows estimated costs and compute time for your dbt projects and m
 
 <SaoDeprecated />
 
-[dbt State](/docs/deploy/dbt-state-about) and [state-aware orchestration](/docs/deploy/state-aware-about) make your dbt workflows more efficient by reusing models and tests instead of running full rebuilds. When either is enabled, Cost Insights helps you demonstrate the resulting cost reductions and efficiency gains. These cost and cost reduction estimates are based on a retroactive analysis of runs after you enable <Constant name="fusion" /> and dbt State or state-aware orchestration. They reflect actual historical usage, _not_ forecasts of future costs or cost reductions.
+[dbt State](/docs/deploy/dbt-state-about) and [state-aware orchestration](/docs/deploy/state-aware-about) make your dbt workflows more efficient by reusing models and tests instead of running full rebuilds. When either is enabled, Cost Insights helps you demonstrate the resulting cost reductions and efficiency gains. These cost and cost reduction estimates are based on a retroactive analysis of runs after you enable dbt State or state-aware orchestration. They reflect actual historical usage, _not_ forecasts of future costs or cost reductions.
 
 With Cost Insights, you can see:
 
@@ -44,7 +44,7 @@ The Cost Insights section is available in different <Constant name="dbt_platform
 
 </DocCarousel>
 
-## Prerequisities
+## Prerequisites
 
 import ViewCostData from '/snippets/_cost-insights-view.md';
 
@@ -74,16 +74,13 @@ credits_per_query * price_per_credit
 ```
 
 Where:
-- `credits_per_query` - Cloud services, compute, and query acceleration credits attributed to the query. dbt sources this value from `QUERY_ATTRIBUTION_HISTORY`. For more information, see the [Snowflake documentation](https://docs.snowflake.com/en/sql-reference/account-usage/query_attribution_history).      
-- `price_per_credit` - Your Snowflake credit price (from Snowflake system tables when available, otherwise from your configured input or the default rate).
+- `credits_per_query` &mdash; Cloud services, compute, and query acceleration credits attributed to the query. 
+    - For standard and Generation 2 warehouses, dbt sources this value from [`QUERY_ATTRIBUTION_HISTORY`](https://docs.snowflake.com/en/sql-reference/account-usage/query_attribution_history). 
+    - For [Adaptive Warehouses](https://docs.snowflake.com/en/user-guide/warehouses-adaptive), dbt sources this value from [`QUERY_METERING_HISTORY`](https://docs.snowflake.com/en/sql-reference/account-usage/query_metering_history) &mdash; refer to [Configure platform metadata credentials](/docs/explore/set-up-cost-insights#snowflake) for required permissions.
+- `price_per_credit` &mdash; Your Snowflake credit price (from Snowflake system tables when available, otherwise from your configured input or the default rate).
 
-:::info Snowflake attribution limitations
-dbt attributes Snowflake costs at the query level using the [`QUERY_ATTRIBUTION_HISTORY`](https://docs.snowflake.com/en/sql-reference/account-usage/query_attribution_history). Because of how Snowflake populates that view, some warehouse spend can't be attributed to a dbt model and won't appear in Cost Insights:
-
-- **Short-running queries**: Snowflake doesn't attribute cost to queries that run in roughly 100 milliseconds or less.
-- **Adaptive Warehouses**: Queries on [Snowflake Adaptive Warehouses](https://docs.snowflake.com/en/user-guide/warehouses-adaptive) are not included in `QUERY_ATTRIBUTION_HISTORY`.
-
-As a result, Cost Insights totals may be _lower_ than the compute spend shown in your Snowflake billing dashboards. For more information, see the [Snowflake documentation](https://docs.snowflake.com/en/sql-reference/account-usage/query_attribution_history#usage-notes).
+:::info Snowflake attribution limitation
+Snowflake doesn't attribute cost to queries that run in roughly 100 milliseconds or less. As a result, Cost Insights totals may be _lower_ than the compute spend shown in your Snowflake billing dashboards. For more information, see the [Snowflake documentation](https://docs.snowflake.com/en/sql-reference/account-usage/query_attribution_history#usage-notes).
 :::
 </Expandable>
 

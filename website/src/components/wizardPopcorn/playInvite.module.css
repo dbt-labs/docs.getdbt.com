@@ -1,0 +1,170 @@
+/* PlayInvite — a little arcade cabinet in the corner. Opt-in, never modal. */
+
+.cabinet {
+  position: fixed;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  z-index: 9998;
+  width: 176px;
+  padding: 0.5rem 0.7rem 0.7rem;
+  text-align: center;
+  border-radius: 8px;
+  border: 2px solid #8b6bff;
+  background: linear-gradient(180deg, #1b1230 0%, #0f0b1c 100%);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.06),
+    0 10px 30px rgba(0, 0, 0, 0.5), 0 0 22px rgba(139, 107, 255, 0.35);
+  font-family: Menlo, ui-monospace, SFMono-Regular, Monaco, Consolas, monospace;
+  animation: invite-in 0.42s cubic-bezier(0.2, 1.1, 0.4, 1) both;
+}
+
+/* Faint CRT scanlines over the whole cabinet. */
+.cabinet::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 6px;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.05) 0px,
+    rgba(255, 255, 255, 0.05) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+}
+
+.leaving {
+  animation: invite-out 0.4s ease-in both;
+}
+
+@keyframes invite-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes invite-out {
+  to {
+    opacity: 0;
+    transform: translateY(10px) scale(0.97);
+  }
+}
+
+/* The lit marquee across the top. */
+.marquee {
+  margin: -0.1rem -0.3rem 0.45rem;
+  padding: 0.2rem 0;
+  border-radius: 4px;
+  background: linear-gradient(90deg, #fe6702, #ff9d4d, #fe6702);
+  background-size: 200% 100%;
+  animation: marquee-shift 3s linear infinite;
+}
+
+/* No text-transform here: the marquee spells out "dbt Wizard", and dbt is
+   always lowercase. */
+.marqueeText {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: #1b1230;
+}
+
+@keyframes marquee-shift {
+  to {
+    background-position: 200% 0;
+  }
+}
+
+.tagline {
+  margin: 0 0 0.35rem;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #d9c8ff;
+  text-shadow: 0 0 10px rgba(176, 163, 255, 0.85);
+}
+
+/* The classic blinking arcade line. */
+.blink {
+  margin: 0 0 0.6rem;
+  font-size: 9.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #9be8a8;
+  animation: blink 1.15s steps(2, end) infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0.15;
+  }
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.play {
+  appearance: none;
+  padding: 0.35rem 0.5rem;
+  border-radius: 5px;
+  border: 1px solid #b0a3ff;
+  background: #8b6bff;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #100c1d;
+  cursor: pointer;
+}
+
+.play:hover {
+  background: #a48dff;
+  box-shadow: 0 0 14px rgba(164, 141, 255, 0.6);
+}
+
+.skip {
+  appearance: none;
+  padding: 0.1rem;
+  border: none;
+  background: none;
+  font: inherit;
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  color: #8f87a8;
+  cursor: pointer;
+}
+
+.skip:hover {
+  color: #d9c8ff;
+  text-decoration: underline;
+}
+
+/* Tuck out of the way on small screens, and don't animate for readers who
+ * asked us not to. */
+@media (max-width: 500px) {
+  .cabinet {
+    right: 0.6rem;
+    bottom: 0.6rem;
+    width: 150px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cabinet,
+  .leaving,
+  .marquee,
+  .blink {
+    animation: none;
+  }
+}

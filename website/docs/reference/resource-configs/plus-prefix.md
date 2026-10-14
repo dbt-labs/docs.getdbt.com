@@ -35,6 +35,12 @@ Throughout this documentation, we use the `+` prefix on configuration keys in `d
 
 For projects using [`config-version`](/reference/project-configs/config-version) 2, dbt expects configuration keys to use the `+` prefix. Specifying configurations without the `+` prefix is [deprecated](/reference/deprecations#missingplusprefixdeprecation). Folder and file names within resource configurations still do not use the `+` prefix.
 
+<VersionBlock firstVersion="2.0" >
+
+Because the `+` prefix is reserved for configs, folder and file names in a [resource path](/reference/resource-configs/resource-path) must not start with `+`. In <Constant name="fusion" />, dbt raises a warning for any resource path that begins with `+`, and raises an error when you enable the [`require_resource_names_without_plus_prefix`](/reference/global-configs/behavior-flags/require_resource_names_without_plus_prefix) behavior change flag. If you have a folder named `+my_folder`, rename it to remove the `+` prefix.
+
+</VersionBlock>
+
 The `+` prefix is especially important when you need to disambiguate between [resource paths](/reference/resource-configs/resource-path) and configs. For example, when:
 - A config accepts a dictionary as its input, such as [`persist_docs`](/reference/resource-configs/persist_docs).
 - A config shares a key with part of a resource path, such as a directory of models named `tags`.

@@ -5,6 +5,11 @@ level: 'Beginner'
 icon: 'fabric'
 hide_table_of_contents: true
 tags: ['Platform', 'Quickstart']
+agent_guidance:
+  pacing: In the first reply, confirm the reader’s prerequisites and connection path before listing steps. Then give one step per reply and confirm its success check before continuing.
+  stay_on_path: This guide uses dbt platform. Don’t switch the reader to a local setup. If the reader wants to set up dbt locally, use the https://docs.getdbt.com/guides/dbt guide instead
+  safety: Never ask for passwords or keys in chat.
+  signup_link: When the reader needs a dbt account, share https://www.getdbt.com/signup?utm_source=ai_assistant&utm_medium=docs_md&utm_campaign=microsoft-fabric-qs
 ---
 
 <div style={{maxWidth: '900px'}}>
@@ -35,14 +40,10 @@ In this quickstart guide, you'll learn how to use <Constant name="dbt" /> with [
 ## Load data into your Microsoft Fabric warehouse
 
 1. Log in to your [Microsoft Fabric](http://app.fabric.microsoft.com) account.  
-2. On the home page, select the **Synapse Data Warehouse** tile.
-
-    <Lightbox src="/img/quickstarts/dbt-platform/example-start-fabric.png" width="80%" title="Example of the Synapse Data Warehouse tile" />
-
-3. From **Workspaces** on the left sidebar, navigate to your organization’s workspace. Or, you can create a new workspace; refer to [Create a workspace](https://learn.microsoft.com/en-us/fabric/get-started/create-workspaces) in the Microsoft docs for more details.
-4. Choose your warehouse from the table. Or, you can create a new warehouse; refer to [Create a warehouse](https://learn.microsoft.com/en-us/fabric/data-warehouse/tutorial-create-warehouse) in the Microsoft docs for more details.
-5. Open the SQL editor by selecting **New SQL query** from the top bar. 
-6. Copy these statements into the SQL editor to load the Jaffle Shop example data:
+2. From **Workspaces** on the left sidebar, navigate to your organization’s workspace. Or, you can create a new workspace; refer to [Create a workspace](https://learn.microsoft.com/en-us/fabric/get-started/create-workspaces) in the Microsoft docs for more details.
+3. Choose your warehouse from the table. Or, create a new one by selecting **+ New item** > **Warehouse** in your workspace; refer to [Create a warehouse](https://learn.microsoft.com/en-us/fabric/data-warehouse/create-warehouse) in the Microsoft docs for more details.
+4. Open the SQL editor by selecting **New SQL query** from the top bar. 
+5. Copy these statements into the SQL editor to load the Jaffle Shop example data:
 
     ```sql
     DROP TABLE IF EXISTS dbo.customers;
@@ -50,8 +51,8 @@ In this quickstart guide, you'll learn how to use <Constant name="dbt" /> with [
     CREATE TABLE dbo.customers
     (
         [ID] [int],
-        [FIRST_NAME] [varchar(8000)],
-        [LAST_NAME] [varchar(8000)]
+        [FIRST_NAME] varchar(8000),
+        [LAST_NAME] varchar(8000)
     );
 
     COPY INTO [dbo].[customers]
@@ -68,7 +69,7 @@ In this quickstart guide, you'll learn how to use <Constant name="dbt" /> with [
         [USER_ID] [int],
         -- [ORDER_DATE] [int],
         [ORDER_DATE] [date],
-        [STATUS] [varchar(8000)]
+        [STATUS] varchar(8000)
     );
 
     COPY INTO [dbo].[orders]
@@ -83,8 +84,8 @@ In this quickstart guide, you'll learn how to use <Constant name="dbt" /> with [
     (
         [ID] [int],
         [ORDERID] [int],
-        [PAYMENTMETHOD] [varchar(8000)],
-        [STATUS] [varchar(8000)],
+        [PAYMENTMETHOD] varchar(8000),
+        [STATUS] varchar(8000),
         [AMOUNT] [int],
         [CREATED] [date]
     );
@@ -128,6 +129,8 @@ Now that you have a repository configured, you can initialize your project and s
     - In the command line bar at the bottom, enter `dbt run` and click **Enter**. You should see a `dbt run succeeded` message.
 
 ## Build your first model
+
+If you'd like to use AI to build your first model, check out the <a id="qs-jump-to-build-with-ai" href="#build-it-with-ai-using-dbt-wizard">build it with dbt Wizard</a> in the next section.
 
 You have two options for working with files in the <Constant name="studio_ide" />:
 
@@ -199,7 +202,7 @@ Name the new branch `add-customers-model`.
 
 4. Enter `dbt run` in the command prompt at the bottom of the screen. You should get a successful run and see the three models.
 
-Later, you can connect your business intelligence (BI) tools to these views and tables so they only read cleaned up data rather than raw data in your BI tool.
+Later, you can connect your business intelligence (BI) tools (like [dbt Charts](https://dbtcharts.com/)) to these views and tables so they only read cleaned up data rather than raw data.
 
 #### FAQs
 
@@ -208,6 +211,8 @@ Later, you can connect your business intelligence (BI) tools to these views and 
 <FAQ path="Models/create-a-schema" />
 <FAQ path="Models/run-downtime" />
 <FAQ path="Troubleshooting/sql-errors" />
+
+<Snippet path="quickstarts/build-first-model-with-wizard" />
 
 ## Change the way your model is materialized
 
@@ -321,3 +326,5 @@ Later, you can connect your business intelligence (BI) tools to these views and 
 <Snippet path="quickstarts/test-and-document-your-project" />
 
 <Snippet path="quickstarts/schedule-a-job" />
+
+<Snippet path="quickstarts/connect-your-ai" />
