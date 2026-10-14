@@ -231,12 +231,6 @@ flags:
       - PreferCTE
 ```
 
-In `.sqlfluff`, set `templater = dbt`. `warn_error_options` promotes the warning when the templater is `dbt`.
-
-```ini
-[sqlfluff]
-templater = dbt
-```
 
 `error: all` promotes every dbt warning, including warnings from commands other than lint. To promote one lint rule, list that rule by name. Refer to [Warnings](/reference/global-configs/warnings).
 
