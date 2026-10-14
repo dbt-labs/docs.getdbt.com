@@ -17,7 +17,7 @@ This page walks you through setting up dbt State across <Constant name="core" />
 
 Before you set up dbt State, make sure you have:
 
-- **A supported dbt version**: dbt State is natively available in <Constant name="dbt_platform" /> and <Constant name="fusion_engine" />. It's also available as a plugin for dbt v1.7–1.12.
+- **A supported dbt version**: dbt State is natively available in <Constant name="dbt_platform" />, <Constant name="fusion_engine" />, and dbt v1.13. It's also available as a plugin for dbt v1.7–1.12.
 - **A supported data platform**: Snowflake, Databricks, BigQuery, or Redshift. More warehouses are on the roadmap.
 - **A <Constant name="dbt_platform" /> account**: dbt State uses your platform account for authentication, even if you're running dbt locally or in a non-interactive environment like CI/CD pipelines or an external orchestrator. Refer to [About dbt State](/docs/deploy/dbt-state-about#signing-up-for-dbt-state) for sign-up details, and [dbt State usage and pricing](/docs/platform/billing/dbt-state-usage) for pricing details. Note that dbt State isn't available on [legacy Starter](/docs/platform/billing/plans-and-billing#legacy-plans) plan. Please [contact dbt Labs](https://www.getdbt.com/contact) if that applies to you.
 
@@ -27,7 +27,7 @@ Set up dbt State either in the <Constant name="dbt_platform" /> or self-hosted d
 
 - Already logged in to <Constant name="dbt_platform" /> and managing your account? Use **dbt Account settings**.
 - Signing up or logging in through the [dbt platform sign-up page](http://us1.dbt.com/register?_dbtsrc=dbt-state)? Use **dbt platform sign-up**.
-- Using the CLI? Use **dbt v2** or **dbt v1.7-1.12**.
+- Using the CLI? Use **dbt v1.13/dbt v2** or **dbt v1.7-1.12**.
    - If you're running dbt in a non-interactive environment, enable dbt State first using the instructions below, then follow [Setting up authentication for non-interactive environments](/docs/deploy/dbt-state-cicd).
 
 <Tabs queryString="type">
@@ -96,7 +96,7 @@ For next steps, see:
    - [Enable dbt State in Studio](/docs/deploy/dbt-state-enable-studio)
 
 </TabItem>
-<TabItem value="fusion" label="dbt v2">
+<TabItem value="latest-versions" label="dbt v1.13/dbt v2">
 
 1. Navigate to your project:
 
@@ -214,7 +214,7 @@ import LagToleranceRecommendationsTip from '/snippets/_lag-tolerance-recommendat
 
 The more team members you have using dbt State, the better it gets; more team members means more opportunities to clone existing nodes rather than rebuilding them. To invite colleagues:
 
-- From the v2 CLI: Have your colleagues run [`dbt login`](/reference/commands/login?version=2.0) after dbt State is enabled on the account.
+- From the CLI (dbt v1.13+): Have your colleagues run [`dbt login`](/reference/commands/login) after dbt State is enabled on the account.
 - From <Constant name="dbt_platform" />: Go to **Account settings** > **Users** and click **Invite users**. For more information, refer to [Invite new users](/docs/platform/manage-access/invite-users#invite-new-users).
 
 ## Debugging dbt State

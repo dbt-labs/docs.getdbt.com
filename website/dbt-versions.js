@@ -117,7 +117,7 @@ exports.versionedPages = [
   { page: "docs/dbt/fusion-networking", firstVersion: "2.0" },
   { page: "docs/dbt/dbt-releases", firstVersion: "2.0" },
   { page: "docs/dbt/telemetry", firstVersion: "2.0" },
-  { page: "reference/commands/login", firstVersion: "2.0" },
+  { page: "reference/commands/login", firstVersion: "1.13" },
   { page: "docs/dbt/about-dbt", firstVersion: "2.0" },
   { page: "docs/dbt/about-dbt-install", firstVersion: "2.0" },
   { page: "docs/dbt/adbc", firstVersion: "2.0" },

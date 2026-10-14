@@ -40,14 +40,10 @@ In this quickstart guide, you'll learn how to use <Constant name="dbt" /> with [
 ## Load data into your Microsoft Fabric warehouse
 
 1. Log in to your [Microsoft Fabric](http://app.fabric.microsoft.com) account.  
-2. On the home page, select the **Synapse Data Warehouse** tile.
-
-    <Lightbox src="/img/quickstarts/dbt-platform/example-start-fabric.png" width="80%" title="Example of the Synapse Data Warehouse tile" />
-
-3. From **Workspaces** on the left sidebar, navigate to your organization’s workspace. Or, you can create a new workspace; refer to [Create a workspace](https://learn.microsoft.com/en-us/fabric/get-started/create-workspaces) in the Microsoft docs for more details.
-4. Choose your warehouse from the table. Or, you can create a new warehouse; refer to [Create a warehouse](https://learn.microsoft.com/en-us/fabric/data-warehouse/tutorial-create-warehouse) in the Microsoft docs for more details.
-5. Open the SQL editor by selecting **New SQL query** from the top bar. 
-6. Copy these statements into the SQL editor to load the Jaffle Shop example data:
+2. From **Workspaces** on the left sidebar, navigate to your organization’s workspace. Or, you can create a new workspace; refer to [Create a workspace](https://learn.microsoft.com/en-us/fabric/get-started/create-workspaces) in the Microsoft docs for more details.
+3. Choose your warehouse from the table. Or, create a new one by selecting **+ New item** > **Warehouse** in your workspace; refer to [Create a warehouse](https://learn.microsoft.com/en-us/fabric/data-warehouse/create-warehouse) in the Microsoft docs for more details.
+4. Open the SQL editor by selecting **New SQL query** from the top bar. 
+5. Copy these statements into the SQL editor to load the Jaffle Shop example data:
 
     ```sql
     DROP TABLE IF EXISTS dbo.customers;
@@ -55,8 +51,8 @@ In this quickstart guide, you'll learn how to use <Constant name="dbt" /> with [
     CREATE TABLE dbo.customers
     (
         [ID] [int],
-        [FIRST_NAME] [varchar(8000)],
-        [LAST_NAME] [varchar(8000)]
+        [FIRST_NAME] varchar(8000),
+        [LAST_NAME] varchar(8000)
     );
 
     COPY INTO [dbo].[customers]
@@ -73,7 +69,7 @@ In this quickstart guide, you'll learn how to use <Constant name="dbt" /> with [
         [USER_ID] [int],
         -- [ORDER_DATE] [int],
         [ORDER_DATE] [date],
-        [STATUS] [varchar(8000)]
+        [STATUS] varchar(8000)
     );
 
     COPY INTO [dbo].[orders]
@@ -88,8 +84,8 @@ In this quickstart guide, you'll learn how to use <Constant name="dbt" /> with [
     (
         [ID] [int],
         [ORDERID] [int],
-        [PAYMENTMETHOD] [varchar(8000)],
-        [STATUS] [varchar(8000)],
+        [PAYMENTMETHOD] varchar(8000),
+        [STATUS] varchar(8000),
         [AMOUNT] [int],
         [CREATED] [date]
     );

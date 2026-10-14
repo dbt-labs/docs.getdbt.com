@@ -4,12 +4,11 @@ sidebar_label: "login"
 id: "login"
 description: "Use dbt login to authenticate and unlock advanced features across dbt tools."
 intro_text: "Use dbt login to authenticate once and unlock advanced features across dbt tools."
-availability:
-  engine: v2
+availability: local_free
 ---
 
 :::info
-Available in <Constant name="dbt" /> v2.0 and later.
+Available in <Constant name="dbt" /> v1.13 and later.
 :::
 
 Run `dbt login` from the command line to unlock advanced dbt features. It'll open browser-based authentication where you can sign in to your existing <Constant name="dbt_platform" /> account or create a free one &mdash; no credit card required!
@@ -63,7 +62,7 @@ In <Constant name="fusion_engine" />, after platform authentication, the CLI che
 
 </SimpleTable>
 
-<!-- In <Constant name="dbt" /> v1.12, `dbt login` automatically sets `manage_state: true` in [`user_settings.yml`](/reference/global-configs/user-settings) after platform authentication, unless you've explicitly disabled it. Whether dbt State is enabled in your <Constant name="dbt_platform" /> account is checked when you run a dbt command &mdash; if it's not enabled, dbt will fail on your next `dbt run` or `dbt build`. To resolve this, refer to [User settings](/reference/global-configs/user-settings#when-dbt-state-is-enabled-locally-but-not-in-dbt-platform). -->
+In <Constant name="dbt" /> v1.13, `dbt login` automatically sets `manage_state: true` in [`user_settings.yml`](/reference/global-configs/user-settings) after platform authentication. If you previously set `manage_state: false`, the CLI prompts you before overwriting it.
 
 </VersionBlock>
 

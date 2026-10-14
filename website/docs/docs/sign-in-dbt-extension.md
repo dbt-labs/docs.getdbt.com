@@ -18,7 +18,7 @@ Refer to [VS Code extension features](/docs/dbt-extension-features#feature-avail
 
 <VersionBlock firstVersion="1.13">
 
-You can sign in from the command line using [`dbt login`](/reference/commands/login?version=2.0), available with v2 and later. Your login state can be shared across dbt features, including the dbt VS Code extension and, in supported versions, dbt State.
+You can sign in from the command line using [`dbt login`](/reference/commands/login?version=2.0), available with v1.13 and later. Your login state can be shared across dbt features, including the dbt VS Code extension and, in supported versions, dbt State.
 
 </VersionBlock>
 
