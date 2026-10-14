@@ -173,7 +173,7 @@ IT licenses can receive job notifications but can't [configure them](/docs/platf
 
 The account-level Slack integration uses the official <Constant name="dbt_platform" /> Slack app, which is separate from the [user-linked Slack integration](#slack-notifications). 
 
-To use Slack notifications, you must unlink the old Slack app and then connect the new official app: 
+To use Slack notifications, you must unlink the old Slack app and then connect the official app: 
 
 1. Go to **Account settings** > **Integrations** > **OAuth**.
 2. Click the **X** icon next to Slack and select **Unlink**.
