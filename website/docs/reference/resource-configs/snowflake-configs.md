@@ -604,14 +604,14 @@ Ensure that `QUOTED_IDENTIFIERS_IGNORE_CASE` on your account is set to `FALSE`.
 
 ## Interactive tables <Lifecycle status="beta" /> {#interactive-tables}
 
-Starting in `dbt-snowflake` v1.13, the Snowflake adapter supports [interactive tables](https://docs.snowflake.com/en/user-guide/interactive), which are optimized for low-latency queries. This materialization is specific to Snowflake, which means that any model configuration that dbt usually provides by default (for example, for a `view`) may not apply to interactive tables.
+Starting in `dbt-snowflake` v1.12, the Snowflake adapter supports [interactive tables](https://docs.snowflake.com/en/user-guide/interactive), which are optimized for low-latency queries. This materialization is specific to Snowflake, which means that any model configuration that dbt usually provides by default (for example, for a `view`) may not apply to interactive tables.
 
 :::info dbt's support for interactive tables is in beta
 Interactive tables are generally available in Snowflake, but dbt's support for the `interactive_table` materialization is in beta in both the v1 and v2 engines. Behavior and configuration options may change.
 
 - **<Constant name="dbt_platform" />**
 - **dbt v2**
-- **dbt v1** (Coming soon in `dbt-snowflake` v1.13 or later)
+- **dbt v1** (`dbt-snowflake` v1.12+)
 :::
 
 Setting [`target_lag`](#target-lag-interactive-tables) makes the table a _dynamic_ interactive table that Snowflake refreshes automatically. Without it, the table is _static_ and only rebuilds when you run dbt. Several configurations below behave differently depending on which form you're using.
