@@ -58,7 +58,7 @@ If any check fails, the harness routes that failure back into the model as conte
 
 The core idea is that the model writes something, dbt gives it real compiler and test feedback (bonus if you're using [static analysis](/reference/resource-configs/static-analysis)), and the harness manages that feedback cycle before a human ever sees the result. Humans can then review output that has already survived compilation and validation, not a first draft.
 
-#### Keeping warehouse costs down
+### Keeping warehouse costs down
 
 Another reason the validation loop is a first-class citizen in the agent lifecycle is cost. Wizard explores your project and checks its work more than a typical agent, so we carefully control which commands it can run. In our experiments, agents, especially at higher reasoning levels, liked to compile and build against the full dev schema to verify each change, which burns warehouse compute and congests dev environments. Access to dbt commands through the MCP server or the shell doesn't prevent that. To avoid this behavior, Wizard routes every dbt command through its own tools instead of the shell, applies deferral automatically, and keeps validation runs to the approved scope.
 
