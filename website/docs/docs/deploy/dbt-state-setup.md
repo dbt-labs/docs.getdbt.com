@@ -214,7 +214,7 @@ import LagToleranceRecommendationsTip from '/snippets/_lag-tolerance-recommendat
 
 The more team members you have using dbt State, the better it gets; more team members means more opportunities to clone existing nodes rather than rebuilding them. To invite colleagues:
 
-- From the v2 CLI: Have your colleagues run [`dbt login`](/reference/commands/login?version=2.0) after dbt State is enabled on the account.
+- From the CLI (dbt v1.13+): Have your colleagues run [`dbt login`](/reference/commands/login) after dbt State is enabled on the account.
 - From <Constant name="dbt_platform" />: Go to **Account settings** > **Users** and click **Invite users**. For more information, refer to [Invite new users](/docs/platform/manage-access/invite-users#invite-new-users).
 
 ## Debugging dbt State
