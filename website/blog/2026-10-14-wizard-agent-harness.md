@@ -12,7 +12,7 @@ date: 2026-10-14
 is_featured: true
 ---
 
-Ask an analytics engineer to rename a column and they won't start with the SQL. They'll check what reads it downstream, which tests and dashboards will break, build only what changed, and compare the data before anyone reviews it. The [dbt MCP server](/docs/dbt-ai/about-mcp) and [agent skills](/blog/dbt-agent-skills) can teach a coding agent those steps, but they can't make it take them every time, keep it from rebuilding your whole dev schema, or put a data diff in front of you at review.
+Ask an analytics engineer to rename a column and they won't start with the SQL. They'll check what reads it downstream, which tests and dashboards will break, build only what changed, and compare the data before anyone reviews it. The [dbt MCP server](/docs/dbt-ai/about-mcp) and [agent skills](/blog/dbt-agent-skills) can teach a coding agent those steps, but they can't make sure it follows them every time, builds on what's changed, or shows you the data diff before you review the changes.
 
 We built [dbt Wizard](/docs/platform/wizard-overview) around a different idea. Wizard works like an analytics engineer: it thinks in DAGs, tests and fixes its own work, and keeps you in flow, so you review a working change instead of a first draft. None of that comes from the model; it comes from the harness, workflows, and UX we built around it.
 
@@ -48,9 +48,11 @@ As agents generate more and more code, validating the correctness of code change
 
 Wizard validates in two stages.
 
-While it works, the agent checks its own changes with dbt-native tools: it compiles SQL, resolves `ref()`s, and reads structured errors when something fails. Compiler and database errors go straight back to the model with the exact line and suggested fix, so it can revise before you see anything.
+- While it works, the agent checks its own changes with dbt-native tools: it compiles SQL, resolves `ref()`s, and reads structured errors when something fails. Compiler and database errors go straight back to the model with the exact line and suggested fix, so it can revise before you see anything.
 
-When the change is ready, Wizard summarizes what it did and proposes a validation scope. In [Wizard Desktop](https://www.getdbt.com/wizard-desktop-waitlist), you can start validation from the **Validation** panel and choose how deep it goes, from a quick compile-and-test check to a full prod-vs-dev comparison. The [CLI](/docs/dbt-ai/wizard-cli) has the same depth settings. A dedicated validation agent then runs builds and tests restricted to exactly the models you approved. It won't widen the selection, change targets, or do a [full refresh](/reference/resource-configs/full_refresh). In the [dbt platform](/docs/platform/wizard-platform), Wizard takes a simpler, more proactive approach: it decides which commands to run to validate its changes and, if you've already approved those commands, runs them automatically.
+- When the change is ready, Wizard summarizes what it did and proposes a validation scope. How validation runs depends on where you use Wizard:
+  - [Wizard Desktop](https://www.getdbt.com/wizard-desktop-waitlist) and [CLI](/docs/dbt-ai/wizard-cli): Choose the validation depth, from a quick compile-and-test check to a full prod-vs-dev comparison. In Desktop, start from the **Validation** panel. A dedicated validation agent runs builds and tests only for the models you approved. It won't widen the selection, change targets, or do a [full refresh](/reference/resource-configs/full_refresh). 
+  - [dbt platform](/docs/platform/wizard-platform): Wizard takes a simpler, more proactive approach. Wizard decides which commands to run to validate its changes and runs them automatically if you've already approved them.
 
 <Lightbox src="/img/blog/2026-10-14-wizard-agent-harness/wizard-validation-plan.png" width="85%" title="A Wizard validation plan at the Medium depth: compile and lint, materialize, test, and build downstream dependents for the models in scope, with automatic deferral." />
 
@@ -60,7 +62,11 @@ The core idea is that the model writes something, dbt gives it real compiler and
 
 ### Keeping warehouse costs down
 
-Another reason the validation loop is a first-class citizen in the agent lifecycle is cost. Wizard explores your project and checks its work more than a typical agent, so we carefully control which commands it can run. In our experiments, agents, especially at higher reasoning levels, liked to compile and build against the full dev schema to verify each change, which burns warehouse compute and congests dev environments. Access to dbt commands through the MCP server or the shell doesn't prevent that. To avoid this behavior, Wizard routes every dbt command through its own tools instead of the shell, applies deferral automatically, and keeps validation runs to the approved scope.
+Another reason the validation loop is a first-class citizen in the agent lifecycle is cost. Wizard explores your project and checks its work more than a typical agent, so we carefully control which commands it can run. In our experiments, agents, especially at higher reasoning levels, liked to compile and build against the full dev schema to verify each change, which burns warehouse compute and congests dev environments. Access to dbt commands through the MCP server or the shell doesn't prevent that. 
+
+<img width="717" height="349" alt="An agent rebuilds the entire dev schema after being asked to rename one column🥲" src="https://github.com/user-attachments/assets/01792505-dc98-49a5-98dd-d901349aee46" />
+
+To avoid this behavior, Wizard routes every dbt command through its own tools instead of the shell, applies deferral automatically, and keeps validation runs to the approved scope.
 
 [Deferral](/docs/platform/about-defer) is an extremely powerful feature, and Wizard gives it first-class support. If you're working on a model three layers deep in your DAG and the agent rebuilds every upstream dependency in your dev environment, you're burning warehouse compute and time for no reason, and running certain commands could end up doing that several times per task. Wizard builds only the dev objects it needs and defers unchanged upstream models to production state. Where it helps, it also compares dev and prod behavior and checks downstream impact.
 
@@ -74,7 +80,7 @@ Validation in dbt was never just "does this file parse?" The real question is wh
 
 Data practitioners spend most of their time on pipeline maintenance and putting out fires. This reactive work can wear teams down and prevent data teams from taking on new projects and meeting stakeholder demand.
 
-As agents write more of the code, the question shifts from "does it run?" to "is it right?" To see what that looks like in practice, one of us (Alex) went through seven months of history on his personal trading data platform. It's built on Dagster, dbt, and BigQuery, with 239 assets (174 of them dbt models) and 1,114 data quality checks, and AI agents write most of its code. The history covers 24,388 runs and 405 merged PRs, from March 1 to October 3, 2026.
+As agents write more of the code, the question shifts from "does it run?" to "is it right?". To see what that looks like in practice, one of us (Alex) went through seven months of history on his personal trading data platform. It's built on Dagster, dbt, and BigQuery, with 239 assets (174 of them dbt models) and 1,114 data quality checks, and AI agents write most of its code. The history covers 24,388 runs and 405 merged PRs, from March 1 to October 3, 2026.
 
 Fixes made up 57% of all merged PRs. That ratio barely moved as the platform grew. Fix PRs tracked merged PRs almost exactly week to week (ρ 0.96), while a roughly 100× increase in rows written had no measurable effect on the fix rate. Pipelines broke because the complexity scaled up and he didn't have an ergonomic way to catch those data quality issues before running.
 
@@ -165,4 +171,6 @@ An agent with the dbt MCP server and skills can get you pretty far. It can read 
 
 That's the part we built Wizard for. It starts from your project graph, checks its own work against your warehouse with deferral on, and puts lineage and data diffs next to the code when it's your turn to review. You spend less time debugging first drafts and chasing numbers that quietly went wrong, and more time on the work your stakeholders are actually waiting for.
 
-dbt Wizard is available [in the dbt platform](/docs/platform/wizard-platform), [as a CLI](/docs/dbt-ai/wizard-cli), and as Wizard Desktop ([join the waitlist](https://www.getdbt.com/wizard-desktop-waitlist)). To see Wizard work through real tasks on a personal project, read [No babysitting, not today](/blog/wizard-use-cases). To learn more about building custom skills for your team, check out the [dbt Wizard documentation](/docs/platform/wizard-overview).
+dbt Wizard is available [in dbt platform](/docs/platform/wizard-platform), [as a CLI](/docs/dbt-ai/wizard-cli), and as Wizard Desktop ([join the waitlist](https://www.getdbt.com/wizard-desktop-waitlist)). 
+
+To see Wizard work through real tasks on a personal project, read [No babysitting, not today](/blog/wizard-use-cases). To learn more about building custom skills for your team, check out the [dbt Wizard documentation](/docs/platform/wizard-overview).
