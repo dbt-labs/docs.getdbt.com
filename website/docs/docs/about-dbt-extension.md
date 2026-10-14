@@ -162,6 +162,6 @@ The extension is available to all users and for more information, refer to the t
 Refer to the [Hybrid development with <Constant name="dbt_platform"/> and dbt v2](/guides/dbt-platform-local-workflow) guide for how to keep credentials, environment variables, and v2 versions in sync between your local extension and <Constant name="dbt_platform"/>.
 :::
 
-import AboutFusion from '/snippets/_about-fusion.md';
+import AboutFusion from '/snippets/_about-v2.md';
 
 <AboutFusion hideExtensionLink/>

@@ -6,8 +6,8 @@ sidebar_label: "Sign in"
 availability: local_all
 ---
 
-import FusionTroubleshooting from '/snippets/_fusion-troubleshooting.md';
-import AboutFusion from '/snippets/_about-fusion.md';
+import FusionTroubleshooting from '/snippets/_v2-troubleshooting.md';
+import AboutFusion from '/snippets/_about-v2.md';
 import AuthorizeAdditionalAccess from '/snippets/_vsce-authorize-additional-access.md';
 
 # Sign in
@@ -18,7 +18,7 @@ Refer to [VS Code extension features](/docs/dbt-extension-features#feature-avail
 
 <VersionBlock firstVersion="1.13">
 
-You can sign in from the command line using [`dbt login`](/reference/commands/login?version=2.0), available with v2 and later. Your login state can be shared across dbt features, including the dbt VS Code extension and, in supported versions, dbt State.
+You can sign in from the command line using [`dbt login`](/reference/commands/login?version=2.0), available with v1.13 and later. Your login state can be shared across dbt features, including the dbt VS Code extension and, in supported versions, dbt State.
 
 </VersionBlock>
 

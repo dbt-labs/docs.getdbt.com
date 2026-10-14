@@ -7,7 +7,7 @@ displayText: Optimize static analysis for development and deployment
 hoverSnippet: Use strict static analysis in development and baseline in deployment for stronger local checks and faster jobs.
 ---
 
-import FusionLifecycle from '/snippets/_fusion-lifecycle-callout.md';
+import FusionLifecycle from '/snippets/_v2-lifecycle-callout.md';
 
 <FusionLifecycle />
 

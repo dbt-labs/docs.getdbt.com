@@ -10,6 +10,7 @@ availability:
 ---
 
 import ScimLicenseMappingCallout from '/snippets/_scim-license-mapping-callout.md';
+import ScimAdminGroupPrereq from '/snippets/_scim-admin-group-prereq.md';
 
 # Manage user licenses with SCIM
 
@@ -17,7 +18,9 @@ You can manage user license assignments using System for Cross-Domain Identity M
 
 <ScimLicenseMappingCallout />
 
-#### Considerations
+<ScimAdminGroupPrereq />
+
+## Prerequisites 
 Before you enable SCIM license mapping:
 - **Default license**: New users are assigned a Developer license unless you change it manually using [SSO license mappings](/docs/platform/manage-access/seats-and-users#mapped-configuration), or using SCIM.
 - **Best practice**: Use one source of truth for license assignment (either <Constant name="dbt_platform" /> or SCIM). Don't mix SCIM license management with manual or single sign-on (SSO) mapping changes.

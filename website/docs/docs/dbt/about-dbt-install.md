@@ -6,8 +6,8 @@ id: about-dbt-install
 
 # About self-hosted dbt v2 installation
 
-import FusionLifecycle from '/snippets/_fusion-lifecycle-callout.md'
-import FusionPrereqs from '/snippets/_fusion-prereqs.md';
+import FusionLifecycle from '/snippets/_v2-lifecycle-callout.md'
+import FusionPrereqs from '/snippets/_v2-prereqs.md';
 
 <FusionLifecycle />
 
