@@ -258,7 +258,7 @@ dbt format -l commas=leading -l indent=2
 Use `--check` as a dry run to gate pull requests on formatting. If every file is formatted, the command exits with code `0`. If a file isn't formatted, the command exits with code `1`, leaves the file untouched, and returns an error like this:
 
 ```text
-Error [Generic (dbt1000)]: Formatting check failed for models/staging/stg_orders.sql. Run `dbt fmt` to format it
+[error] [Generic (dbt1000)]: Formatting check failed for models/staging/stg_orders.sql. Run `dbt fmt` to format it
 ```
 
 ```shell
