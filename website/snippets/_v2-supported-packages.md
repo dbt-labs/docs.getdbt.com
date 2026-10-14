@@ -11,6 +11,6 @@ Fivetran package considerations:
 - The Fivetran `source` and `transformation` packages have been combined into a single package.
 - If you manually installed source packages like `fivetran/github_source`, you need to ensure `fivetran/github` is installed and deactivate the transformation models.
 
-import FusionPackageCompatibility from '/snippets/_fusion-package-compatibility.md';
+import FusionPackageCompatibility from '/snippets/_v2-package-compatibility.md';
 
 <FusionPackageCompatibility />

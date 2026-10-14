@@ -13,6 +13,8 @@ Common use cases for <Constant name="wizard" />, with example prompts and what t
 
 <Constant name="wizard" /> works best when you give it a clear scope (which dbt model or area), an intent (what you want to change or learn), and any constraints (naming conventions, materialization, tests). The following examples follow that pattern.
 
+Start a new [chat or session](/best-practices/how-to-use-wizard/wizard-1-intro#use-one-chat-per-task) for each discrete task. For example, building a model and debugging an unrelated job failure should be two separate conversations.
+
 <!-- no toc -->
 - [Build a new model](#build-a-new-model)
 - [Refactor to incremental](#refactor-to-incremental)

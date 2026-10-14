@@ -6,8 +6,8 @@ description: "Learn where dbt is available and what you get with v2."
 hide_table_of_contents: true
 ---
 
-import FusionFeatures from '/snippets/_fusion-features.md';
-import FusionLifecycle from '/snippets/_fusion-lifecycle.md';
+import FusionFeatures from '/snippets/_v2-features.md';
+import FusionLifecycle from '/snippets/_v2-lifecycle.md';
 
 Get started with many dbt features right away when you install dbt v2 and the dbt VS Code extension. Unlock advanced capabilities when you sign in with any <Constant name="dbt_platform" /> account, even the free developer tier!
 

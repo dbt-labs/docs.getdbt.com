@@ -53,9 +53,9 @@ export function useCopyPage({ pageUrl } = {}) {
     }
   }
 
-  // Compute LLM service URLs with the current page URL
+  // Send assistants the .md file: it's cleaner than HTML and includes agent_guidance visibly.
   const llmServicesWithUrls = Object.entries(LLM_SERVICES).reduce((acc, [key, service]) => {
-    const encodedUrl = encodeURIComponent(canonicalUrl);
+    const encodedUrl = encodeURIComponent(markdownUrl || canonicalUrl);
     const llmUrl = service.url.replace('{url}', encodedUrl);
     
     acc[key] = {

@@ -11,7 +11,7 @@ intro_text: This guide helps you prepare for an in-place upgrade from v1 to v2 i
 
 <div style={{maxWidth: '900px'}}>
 
-import FusionAdapters from '/snippets/_fusion-dwh-platform.md';
+import FusionAdapters from '/snippets/_v2-dwh-platform.md';
 
 ## Introduction
 
@@ -73,7 +73,7 @@ When enabled, only users assigned the [`v2 Migration Admin`](/docs/platform/mana
 
 With the readiness experience enabled, you can monitor your project's eligibility as you work through the preparation steps below. The panel shows which jobs are eligible or ineligible for <Constant name="fusion" /> and why.
 
-<Lightbox src="/img/fusion/fusion-readiness.png" width="60%" title="The dbt v2 readiness checklist"/>
+<Lightbox src="/img/v2/v2-readiness.png" width="60%" title="The dbt v2 readiness checklist"/>
 
 Common ineligibility reasons include:
 - Environment(s) not on the **v1 Latest** [release track](/docs/dbt-versions/dbt-release-tracks#which-release-tracks-are-available)
@@ -284,7 +284,7 @@ If a critical package isn't yet compatible with <Constant name="fusion" />:
 - Consider contributing the compatibility updates yourself.
 - Try it out anyway! The incompatible portion of the package might not impact your project. 
 
-import FusionPackageCompatibility from '/snippets/_fusion-package-compatibility.md';
+import FusionPackageCompatibility from '/snippets/_v2-package-compatibility.md';
 
 <FusionPackageCompatibility />
 
@@ -422,9 +422,9 @@ If a job has not run in the last 7 days, you must run it once for the debugging 
 1. Open the jobs list using either path:
    - From the main menu, go to **Orchestration** → **Jobs**.
    - From the readiness panel, click **Review jobs**.
-   <Lightbox src="/img/fusion/review-jobs.png" width="60%" title="Shortcut to review your jobs from the readiness panel"/>
+   <Lightbox src="/img/v2/review-jobs.png" width="60%" title="Shortcut to review your jobs from the readiness panel"/>
 2. Find the <Constant name="fusion" /> eligibility icon to the right of your jobs. Click **Review job** for  any job that is ineligible or has an unknown eligibility status.
-   <Lightbox src="/img/fusion/job-eligibility.png" width="60%" title="Take action on your jobs to make them v2 eligible."/>
+   <Lightbox src="/img/v2/job-eligibility.png" width="60%" title="Take action on your jobs to make them v2 eligible."/>
 3. Click **Debug on <Constant name="fusion" />** and choose one of the following:
    - [Debug in Studio](#debug-in-studio)
    - [Debug in Studio with <Constant name="wizard" />](#debug-in-studio-with-dbt-wizard)
@@ -436,7 +436,7 @@ In the <Constant name="studio_ide" />, run <Constant name="fusion" /> in your de
 
 1. Click **Debug in Studio**. dbt sets your user-level `DBT_DEVELOP_CORE_VERSION` environment variable to `latest-fusion`, then opens the <Constant name="studio_ide" /> with the **Problems** tab selected.
 
-<Lightbox src="/img/fusion/fusion-ide.png" width="60%" title="Running v2 in development"/>
+<Lightbox src="/img/v2/v2-ide.png" width="60%" title="Running v2 in development"/>
 
 2. Review the warnings or errors in the **Problems** tab.
 3. Fix the issues directly or run the [autofix tool](/docs/platform/studio-ide/autofix-deprecations).
@@ -447,7 +447,7 @@ To revert the `latest-fusion` override, use the dbt version control in <Constant
 
 #### Debug in Studio with dbt Wizard <Lifecycle status="beta" size="80%" />
 
-import FusionMigrationWorkflow from '/snippets/_fusion-migration-workflow.md';
+import FusionMigrationWorkflow from '/snippets/_v2-migration-workflow.md';
 
 <FusionMigrationWorkflow />
 
@@ -458,11 +458,11 @@ When you are confident a job is ready for <Constant name="fusion" />, you can ru
 1. Click **Run once on <Constant name="fusion" />**.
 2. The job window opens and dbt runs the job on <Constant name="fusion" /> without changing other jobs or environment settings.
 3. When the job succeeds, click **Override eligibility status** to update the eligibility status.
-   <Lightbox src="/img/fusion/eligibility-status.png" width="60%" title="Override the eligibility status of a successful job."/>
+   <Lightbox src="/img/v2/eligibility-status.png" width="60%" title="Override the eligibility status of a successful job."/>
 
 Congratulations! You have validated <Constant name="fusion" /> eligibility for your jobs.
 
-<Lightbox src="/img/fusion/fusion-eligible.png" width="60%" title="Your job is now ready for v2!"/>
+<Lightbox src="/img/v2/v2-eligible.png" width="60%" title="Your job is now ready for v2!"/>
 
 ## What's next? 
 

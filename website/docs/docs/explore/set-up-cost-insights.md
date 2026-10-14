@@ -32,7 +32,8 @@ To set up Cost Insights, follow these steps:
 1. [Assign required permissions.](#assign-required-permissions)
 2. [Configure platform metadata credentials.](#configure-platform-metadata-credentials)
 3. [(Optional) Configure Cost Insights settings.](#configure-cost-insights-settings-optional)
-4. [(Optional) Enable dbt State or state-aware orchestration in your job settings.](#enable-dbt-state-or-state-aware-orchestration-optional)
+4. [(Optional, Snowflake only) Configure custom relation overrides.](#custom-relation-overrides)
+5. [(Optional) Enable dbt State or state-aware orchestration in your job settings.](#enable-dbt-state-or-state-aware-orchestration-optional)
 
 After completing these setup steps, you can view cost and optimization data across multiple areas of the <Constant name="dbt_platform" />. Refer to [Explore cost data](/docs/explore/explore-cost-data) to learn more about the Cost Insights section and how to use it.
 
@@ -73,6 +74,10 @@ For more information on how to assign permissions to users, refer to [About user
             - `ACCOUNT_USAGE.QUERY_METERING_HISTORY` (Optional; required for [Adaptive Warehouse](https://docs.snowflake.com/en/user-guide/warehouses-adaptive) cost attribution)
 
                 If `QUERY_METERING_HISTORY` access is not granted, Adaptive Warehouse queries appear as $0 in Cost Insights and a warning is shown in the connection test. For more information, refer to the [Snowflake documentation](https://docs.snowflake.com/en/sql-reference/account-usage/query_metering_history).
+        
+        :::note
+        If you don't have access to the `SNOWFLAKE` system database, you can [configure custom relation overrides](#custom-relation-overrides) to point Cost Insights to your own tables or views.
+        :::
         </Expandable>
 
         <Expandable alt_header="BigQuery">
@@ -139,6 +144,26 @@ To change the default value:
 6. Click **Save**.
 
 These custom values will apply to all future cost calculations for this connection. If you clear these values, they will reset to the default warehouse pricing.
+
+## Configure custom relation overrides (optional) <Lifecycle status="private_beta" /> {#custom-relation-overrides}
+
+:::info Private beta feature
+This feature is available only for Snowflake connections with Cost Insights enabled. To join the private beta, contact your account representative.
+:::
+
+If you're a Snowflake user whose credentials don't have access to the `SNOWFLAKE` system database, you can use your own tables or views in place of the default [Snowflake system tables](/docs/explore/set-up-cost-insights#snowflake) that Cost Insights queries. You don't need to override all three &mdash; any table you don't configure falls back to the Snowflake system default.
+
+To configure custom relation overrides:
+
+1. Click your account name at the bottom of the left-side menu and click **Account settings**.
+2. Under **Settings**, go to **Connections**.
+3. Select the Snowflake connection where you want to configure custom relation overrides.
+4. Go to the **Cost Insights settings** section and scroll to **Custom relation overrides**.
+5. Enter the fully-qualified name for one or more of the following fields. Each value must be a fully-qualified `database.schema.table` identifier (unquoted or double-quoted).
+    - **Custom query history relation**: Replaces `SNOWFLAKE.ACCOUNT_USAGE.QUERY_HISTORY`.
+    - **Custom query attribution history relation**: Replaces `SNOWFLAKE.ACCOUNT_USAGE.QUERY_ATTRIBUTION_HISTORY`.
+    - **Custom usage in currency daily relation**: Replaces `SNOWFLAKE.ORGANIZATION_USAGE.USAGE_IN_CURRENCY_DAILY`.
+6. Click **Save**.
 
 ## Enable dbt State (optional)
 

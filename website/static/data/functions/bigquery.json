@@ -2,7 +2,7 @@
   "_meta": {
     "platform": "bigquery",
     "platform_name": "BigQuery",
-    "count": 411
+    "count": 412
   },
   "functions": [
     {
@@ -1588,6 +1588,13 @@
       "fusion_typecheck": false
     },
     {
+      "name": "OBJ.LIST",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/objectref_functions#objlist",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "OBJ.MAKE_REF",
       "category": "Built-in",
       "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/objectref_functions#objmake_ref",
@@ -2803,7 +2810,7 @@
       "category": "Built-in",
       "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/utility-functions#typeof",
       "preview_status": "GA",
-      "fusion_typecheck": false
+      "fusion_typecheck": true
     },
     {
       "name": "UNICODE",

@@ -26,7 +26,7 @@ This is an advanced feature of dbt. Let us know if you need a hand! We're always
 
 :::info Custom materializations and static analysis
 
-dbt v2 automatically sets [`static_analysis: off`](/reference/resource-configs/static-analysis#custom-materializations) for models built with a custom materialization, because the materialization can change the schema of the persisted model. That setting cascades downstream, so models downstream of a model with a custom materialization are also ineligible for static analysis. Refer to [Custom materializations](/docs/build/about-static-analysis#custom-materializations) in the static analysis docs for details.
+Models that use a custom materialization follow the normal [`static_analysis`](/reference/resource-configs/static-analysis#custom-materializations) rules. If you use `strict` and your materialization changes the model's schema (for example, by adding, renaming, or retyping columns), set `static_analysis: off` on those models. Because `off` cascades, their downstream models lose static analysis too. Refer to [Custom materializations](/docs/build/about-static-analysis#custom-materializations) for details.
 
 :::
 

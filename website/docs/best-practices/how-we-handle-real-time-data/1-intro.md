@@ -19,6 +19,8 @@ Each pattern includes practical code examples, use cases, and tradeoffs to help 
 
 Anyone can use this guide, but it's primarily for data engineers and architects who want to achieve near real-time data freshness with dbt.
 
+This series is about freshness (minutes, not hours). For guidance on choosing incremental models vs snapshots for change history, refer to [CDC in dbt](/best-practices/how-we-handle-cdc/1-intro).
+
 ## Where does dbt fit?
 
 There are two main ways to use dbt to get near real-time data:
