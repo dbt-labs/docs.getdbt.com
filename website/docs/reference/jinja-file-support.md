@@ -3,6 +3,7 @@ title: "Jinja support by file type"
 id: "jinja-file-support"
 sidebar_label: "Jinja support by file type"
 description: "Reference for which dbt file types support Jinja expressions, built-in dbt functions, and custom macros."
+availability: all_users
 ---
 
 Jinja support varies by dbt file type. Some files accept full Jinja and custom macros, others allow only a limited set of dbt context functions and variables, and a few don’t support Jinja at all. Knowing what a file supports helps you avoid errors and choose the right place for dynamic logic.
