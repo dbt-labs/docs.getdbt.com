@@ -47,7 +47,7 @@ Read-only users only have access to Explore mode and see a simpler UI. The only 
 
 <Expandable alt_header="Which license does a read-only user need?">
 
-You can use Read-only license. For current license types and how they're assigned, refer to [User licenses](/docs/platform/manage-access/about-user-access). 
+You can use a Read-only license. For current license types and how they're assigned, refer to [User licenses](/docs/platform/manage-access/about-user-access). 
 
 </Expandable>
 
