@@ -78,9 +78,9 @@ Each provider lists how many of its models are enabled, such as `6/6 models enab
 ## Connectors
 MCP connectors give <Constant name="wizard" /> context about your pipelines, BI tools, and orchestration.
 
-If your project is connected to <Constant name="dbt_platform" />, <Constant name="wizard" /> connects to the remote dbt MCP server by default and asks you to sign in with OAuth. This adds platform tools like job management, run status, and run errors. Use the toggle on this pane to turn it on or off for each dbt account.
+If your project is connected to <Constant name="dbt_platform" />, <Constant name="wizard" /> connects to the [remote dbt MCP server](/docs/dbt-ai/mcp-quickstart-remote) by default and asks you to sign in with OAuth. This adds platform tools like job management, run status, and run errors. Use the toggle on this pane to turn it on or off for each dbt account.
 
-The remote dbt MCP server is available to <Constant name="dbt_platform" /> customers only. <Constant name="wizard" /> still uses its local index for project metadata.
+The remote dbt MCP server is available to <Constant name="dbt_platform" /> users only. <Constant name="wizard" /> still uses its local [index](/docs/dbt-ai/wizard-how-it-works#native-metadata-engine) for project metadata.
 
 Browsing and enabling other connectors from this pane is planned for future releases. Until then, add [MCP servers](/docs/dbt-ai/wizard-mcp) from the terminal:
 
