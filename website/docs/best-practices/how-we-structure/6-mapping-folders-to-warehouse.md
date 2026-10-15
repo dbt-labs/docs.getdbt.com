@@ -14,15 +14,15 @@ Folders are how you organize code. Schemas (datasets, on BigQuery) are how that 
 
 ## Default mapping
 
-Use the same names for your project folders and your custom schemas (`+schema: staging`, `+schema: marts`, and so on). You can change those custom schema names if your warehouse team already uses different ones. Matching names is the starting point so you do not invent a new layout for every project, and so people querying the warehouse can tell staging, intermediate, and marts apart without opening the dbt project.
+Name your custom schemas after your project folders: `+schema: staging`, `+schema: intermediate`, and `+schema: marts`. People querying the warehouse can then tell the layers apart without opening the dbt project. If your warehouse uses different names, then use those instead.
 
 Every dbt run has a _target schema_. That is the schema for the environment you are running in: your personal development schema, a CI schema, or production. The `+schema` values are custom schemas. They do not replace the target schema. By default, dbt joins the two names: `<target_schema>_<custom_schema>`. The [Custom schemas](/docs/build/custom-schemas) page calls this out because it is the piece people miss.
 
 That join is the point. If `+schema: marts` built a schema named only `marts`, every developer would write into the same `marts` schema, and could overwrite production. Prefixing with the target schema keeps development in `alice_dev_marts` and production in `analytics_prod_marts`.
 
-The following table shows the warehouse schema names for that config.
+The following table shows the resulting schema names:
 
-| Folder | Config | Production (`analytics_prod`) | Your development (`alice_dev`) |
+| Folder | Config | Production (`analytics_prod`) | Development (`alice_dev`) |
 | --- | --- | --- | --- |
 | `models/staging/` | `+schema: staging` | `analytics_prod_staging` | `alice_dev_staging` |
 | `models/intermediate/` | `+schema: intermediate` | `analytics_prod_intermediate` | `alice_dev_intermediate` |
@@ -30,9 +30,11 @@ The following table shows the warehouse schema names for that config.
 
 <br />
 
-You use the same `dbt_project.yml` in development and production. The warehouse schema names change because the target schema comes from the [environment](/docs/dbt-platform-environments) (<Constant name="dbt_platform" />) or the [profile](/docs/local/dbt-environments) (<Constant name="core" />).
+The target schema comes from the [environment](/docs/dbt-platform-environments) in <Constant name="dbt_platform" /> or from the [profile](/docs/local/dbt-environments) when you run locally, so you use the same `dbt_project.yml` everywhere.
 
-This mapping is the same on every warehouse, and on <Constant name="core" /> and <Constant name="fusion_engine" />. What changes is the container name: schema on Snowflake, Redshift, Postgres, and Databricks, dataset on BigQuery. Databricks Unity Catalog also has a catalog above the schema. Configure that with [custom databases](/docs/build/custom-databases) when you need it. You do not need a different folder mapping per warehouse.
+
+This mapping is the same on every warehouse. Only the container name changes: schema on Snowflake, Redshift, Postgres, and Databricks, and dataset on BigQuery. Warehouses also have a level above the schema (database, project, or catalog), which you configure with [custom databases](/docs/build/custom-databases).
+
 
 Each folder in the project maps to a layer like this:
 
