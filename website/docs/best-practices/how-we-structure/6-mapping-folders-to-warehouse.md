@@ -68,6 +68,7 @@ To use `marts` instead of `analytics_prod_marts` in production, use the built-in
 ## Use bronze, silver, and gold schema names
 
 If your warehouse follows the medallion architecture (bronze, silver, and gold), those names map to the same folders as this structure. You don't need a different dbt layout.
+
 The following table maps those names to the folders in this guide:
 
 | Warehouse name | In this guide |
