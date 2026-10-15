@@ -155,6 +155,22 @@ Add these optional fields to your Databricks output in `profiles.yml` to control
 | `retry_all` | Set to `true` to retry every connection error. Set to `false` to retry only errors Databricks marks as retryable. | `false` |
 
 These settings apply only to connecting. They don't retry queries that fail after dbt has connected.
+
+The example below sets `connect_timeout` to `600` (10 minutes) so dbt can wait for a SQL warehouse that is still starting. `connect_retries` is `3`, so dbt tries 3 more times after a retryable error and waits 10 minutes before each one. `retry_all` is `false`, so other connection errors are not retried.
+
+<File name="profiles.yml">
+
+```yml
+outputs:
+  dev:
+    type: databricks
+    connect_timeout: 600
+    connect_retries: 3
+    retry_all: false
+```
+
+</File>
+
 ## More information
 
 Find Databricks-specific configuration information in the [Databricks adapter reference guide](/reference/resource-configs/databricks-configs).
