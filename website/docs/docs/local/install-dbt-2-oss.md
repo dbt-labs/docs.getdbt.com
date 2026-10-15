@@ -24,10 +24,12 @@ To understand the differences between v1 and v2 refer to [dbt licensing](/docs/d
 The open-source v2 foundation is licensed under Apache 2.0. Most users don't need this page &mdash; [install dbt normally](/docs/local/install-dbt) with the standard instructions. This page is for organizations that require the Apache 2.0 codebase specifically.
 
 :::info Use an isolated environment
-Install `dbt-oss` in its own environment with `uv tool`, which automatically creates an isolated environment. Avoid installing it alongside `dbt` or `dbt-core`, which shares the same `dbt` entry point.
+Use `uv tool` to install `dbt-oss` in its own isolated environment. Avoid installing it alongside `dbt` or `dbt-core`, which shares the same `dbt` entry point. If you already have `dbt` installed, refer to [Run dbt-oss alongside other dbt installs](#run-dbt-oss-alongside-other-dbt-installs).
 :::
 
 ## Install
+
+Before installing dbt OSS, make sure you have [uv](https://docs.astral.sh/uv/getting-started/installation/) installed on your machine.
 
 Install `dbt-oss` with `uv tool`:
 
@@ -43,15 +45,15 @@ dbt --version
 
 For adapter install details, refer to the [`dbt` repository](https://github.com/dbt-labs/dbt).
 
-## Run dbt-oss alongside other dbt installs
+## Run `dbt-oss` alongside other dbt installs
 
-If you have `dbt` installed and need to invoke `dbt-oss` without replacing the `dbt` command, run it directly with `uvx` or add a shell alias:
+If you have `dbt` installed and want to run `dbt-oss` alongside it, use `uvx` with a shell alias to avoid conflicts:
 
 ```shell
 alias dbto='uvx --from dbt-oss dbt'
 ```
 
-Then, use `dbto <command>` instead of `dbt <command>` for dbt OSS invocations.
+You can then use `dbto <command>` instead of `dbt <command>` for dbt OSS invocations.
 
 ## What's included
 
