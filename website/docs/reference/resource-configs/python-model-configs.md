@@ -18,12 +18,16 @@ Use `dbt.config()` to set configs for a Python model. This page lists the parame
 
 These work on every platform that supports Python models.
 
+<SimpleTable>
+  
 | Parameter | Type | Description |
 | :-------- | :--- | :---------- |
 | [`materialized`](/reference/resource-configs/materialized) | `<string>` | How dbt builds the model, such as `table` or `incremental`. Python models don't support `view`. |
 | [`tags`](/reference/resource-configs/tags) | `<list>` | Tags to apply to the model. |
 | [`meta`](/reference/resource-configs/meta) | `<dictionary>` | Custom metadata. Read it with `dbt.config.meta_get()`. |
 | `packages` | `<list>` | Packages to install, with optional version pins such as `numpy==1.23.1`. Required on some platforms. Refer to [Configuring packages](/docs/build/python-models#configuring-packages). |
+
+</SimpleTable>
 
 Read any config back inside your model with `dbt.config.get()`.
 
@@ -41,6 +45,8 @@ For more details and comprehensive parameters, refer to [Snowflake configuration
 
 <TabItem value="databricks" label="Databricks">
 
+<SimpleTable>
+
 | Parameter | Type | Default | Description |
 | :-------- | :--- | :------ | :---------- |
 | `submission_method` | `<string>` | `all_purpose_cluster` | How dbt submits the job: `all_purpose_cluster`, `job_cluster`, `serverless_cluster`, or `workflow_job`. |
@@ -55,11 +61,16 @@ For more details and comprehensive parameters, refer to [Snowflake configuration
 | `access_control_list` | `<list>` | none | Access control for the job. |
 | `python_job_config` | `<dictionary>` | `{}` | Extra job and workflow settings. |
 
+</SimpleTable>
+
+
 Not every parameter works with every submission method. For more details and comprehensive parameters, refer to [Databricks configurations](/reference/resource-configs/databricks-configs#python-submission-methods).
 
 </TabItem>
 
 <TabItem value="bigquery" label="BigQuery">
+
+<SimpleTable>
 
 | Parameter | Type | Default | Description |
 | :-------- | :--- | :------ | :---------- |
@@ -73,6 +84,9 @@ Not every parameter works with every submission method. For more details and com
 | `timeout` | `<integer>` | none | Maximum run time in seconds. |
 | `enable_list_inference` | `<boolean>` | `True` | Let PySpark read multiple records in one operation. |
 | `intermediate_format` | `<string>` | `parquet` | File format for intermediate writes: `parquet` or `orc`. |
+
+</SimpleTable>
+
 
 For more details and comprehensive parameters, refer to [BigQuery configurations](/reference/resource-configs/bigquery-configs#additional-parameters).
 
