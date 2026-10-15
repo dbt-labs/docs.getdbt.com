@@ -6,7 +6,7 @@ description: "Which dbt file types support Jinja expressions, built-in dbt funct
 availability: all_users
 ---
 
-Jinja support varies by file type. Some files accept full Jinja and custom macros, others allow only a few built-in dbt functions, and some don't render Jinja at all. Use this page to find where dynamic logic works.
+Jinja support varies by file type. Some files support Jinja expressions, built-in dbt functions, and custom macros. Others support only a few built-in functions, and some don't render Jinja at all. Use this page to check what each file type supports.
 
 This page covers three kinds of support:
 
