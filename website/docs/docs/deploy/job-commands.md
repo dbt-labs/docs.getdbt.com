@@ -53,7 +53,6 @@ You can't add the `dbt lint` command to the **Commands** list. In a CI job, unde
 
 <VersionBlock firstVersion="2.0">
 
-
 For v2 jobs:
 
 - You don't need to add a docs command. Every job run refreshes [<Constant name="catalog" />](/docs/explore/explore-projects) metadata automatically. Read [Set up a documentation job](/docs/explore/build-and-view-your-docs?version=2#set-up-a-documentation-job) for more information.
