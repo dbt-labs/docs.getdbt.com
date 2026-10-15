@@ -8,15 +8,15 @@ hoverSnippet: Map dbt project folders to warehouse schemas.
 availability: all_users
 ---
 
-Folders organize your code. Schemas (datasets, on BigQuery) are how that code shows up in the warehouse. Map folders to schemas so staging, intermediate, and marts stay easy to find, and so development does not overwrite production.
+Folders organize your code. Schemas (or datasets, in BigQuery) organize the tables and views that code builds in your warehouse. Map folders to schemas so staging, intermediate, and marts are easy to find. dbt prefixes each schema with your target schema, so development doesn’t overwrite production.
 
-## Default mapping
+## Map folders to custom schemas
 
-Name your custom schemas after your project folders: `+schema: staging`, `+schema: intermediate`, and `+schema: marts`. If your warehouse uses different names, use those instead.
+By default, dbt builds every model in your target schema, which is the schema for the [environment](https://github.com/docs/dbt-platform-environments) you’re running in (for example, development, CI, or production). To give the models in a folder their own schema, set `+schema` on that folder. dbt calls this a custom schema, which doesn't replace the target schema. Instead it joins the two as `<target_schema>_<custom_schema>`, so development and production build into different schemas. Refer to [Custom schemas](/docs/build/custom-schemas).
 
-Every dbt run has a _target schema_ for the environment you are in (development, CI, or production). Custom `+schema` values do not replace it. By default, dbt joins them: `<target_schema>_<custom_schema>`. That keeps development in schemas like `alice_dev_marts` and production in `analytics_prod_marts`, so developers do not write into the same schemas as production. Refer to [Custom schemas](/docs/build/custom-schemas).
+We recommend naming your custom schemas after your project folders, so staging, intermediate, and marts models are easy to find in your warehouse. For example, set `+schema: staging`, `+schema: intermediate`, and `+schema: marts`. If your team already uses different names, use those instead.
 
-Resulting schema names:
+For example, with `analytics_prod` and `alice_dev` as target schemas, dbt builds each folder into these schemas:
 
 | Folder | Config | Production (`analytics_prod`) | Development (`alice_dev`) |
 | --- | --- | --- | --- |
@@ -26,21 +26,17 @@ Resulting schema names:
 
 <br />
 
-The target schema comes from the [environment](/docs/dbt-platform-environments) in <Constant name="dbt_platform" /> or from the [profile](/docs/local/dbt-environments) when you run locally, so you use the same `dbt_project.yml` everywhere.
 
-This mapping is the same on every warehouse. Only the container name changes: schema on Snowflake, Redshift, Postgres, and Databricks, and dataset on BigQuery. Configure the database, project, or catalog that contains the schema with [custom databases](/docs/build/custom-databases).
 
-Sources point at tables that already exist, typically in `raw`. dbt reads those tables; it does not build them. Refer to [Staging](/best-practices/how-we-structure/2-staging) and [Sources](/docs/build/sources).
+Sources point at tables that already exist, typically in `raw`. dbt reads those tables; it does not build them. For more information, refer to [Staging](/best-practices/how-we-structure/2-staging) and [Sources](/docs/build/sources).
 
 :::note
 If the [Jaffle Shop](https://github.com/dbt-labs/jaffle-shop) example loads seed data into `raw` with `load_source_data`, those seeds use `+schema: raw` and dbt builds them in `<target_schema>_raw` by default.
-
-If you materialize intermediate models as ephemeral, dbt does not create a relation in the intermediate schema. Refer to [Intermediate](/best-practices/how-we-structure/3-intermediate).
 :::
 
-## Folder config
+## Set custom schemas in `dbt_project.yml`
 
-Set `+schema` on the folder in `dbt_project.yml`. Every model in that folder inherits it. Configure a schema on an individual model only when that model should use a different schema.
+When you set `+schema` on the folder in `dbt_project.yml`. Every model in that folder inherits it. Configure a schema on an individual model only when that model should use a different schema.
 
 <File name="dbt_project.yml">
 
@@ -64,17 +60,15 @@ The `jaffle_shop` key must match the `name` in your `dbt_project.yml`. The [Jaff
 
 This guide sets defaults on folders instead of on every model. Refer to [The rest of the project](/best-practices/how-we-structure/5-the-rest-of-the-project).
 
-## Production schema names
+## Use only the custom schema in production
 
-To use `marts` in production (not `analytics_prod_marts`), use the built-in [`generate_schema_name_for_env`](/docs/build/custom-schemas#a-built-in-alternative-pattern-for-generating-schema-names) pattern.
+To use `marts` instead of `analytics_prod_marts` in production, use the built-in [`generate_schema_name_for_env`](/docs/build/custom-schemas#a-built-in-alternative-pattern-for-generating-schema-names) pattern. It uses the custom schema alone when `target.name` is `prod`. In every other environment, it ignores custom schemas and builds all models in your target schema (`alice_dev`). Don't change the default macro to drop the target schema everywhere, or development runs can write to the same schemas as production.
 
-In production (`target.name` is `prod`), dbt writes models to the custom schema only (`marts`). In development, dbt ignores custom schemas, so it writes every model to your target schema (`alice_dev`). Set the production target name to `prod` for that pattern to apply.
 
-Do not change the default `generate_schema_name` macro to drop the target schema in every environment, or developers will write into the same schemas as production.
+## Use bronze, silver, and gold schema names
 
-## Medallion names
-
-If your warehouse uses Bronze, Silver, and Gold, those names map to the same layers. You do not need a different dbt folder layout.
+If your warehouse follows the medallion architecture (bronze, silver, and gold), those names map to the same folders as this structure. You don't need a different dbt layout.
+The following table maps those names to the folders in this guide:
 
 | Warehouse name | In this guide |
 | --- | --- |
