@@ -35,23 +35,46 @@ Read any config back inside your model with `dbt.config.get()`.
 
 <SnowflakePythonParams />
 
-Full details: [Snowflake configurations](/reference/resource-configs/snowflake-configs#additional-parameters).
+For more details and comprehensive parameters, refer to [Snowflake configurations](/reference/resource-configs/snowflake-configs#additional-parameters).
 
 </TabItem>
 
 <TabItem value="databricks" label="Databricks">
 
-Databricks parameters depend on your `submission_method` (`all_purpose_cluster`, `job_cluster`, `serverless_cluster`, or `workflow_job`). Common ones include `create_notebook`, `cluster_id`, `job_cluster_config`, `timeout`, and `python_job_config`.
+| Parameter | Type | Default | Description |
+| :-------- | :--- | :------ | :---------- |
+| `submission_method` | `<string>` | `all_purpose_cluster` | How dbt submits the job: `all_purpose_cluster`, `job_cluster`, `serverless_cluster`, or `workflow_job`. |
+| `create_notebook` | `<boolean>` | `false` | With `all_purpose_cluster`, upload a notebook and run it as a job instead of using the Command API. |
+| `cluster_id` | `<string>` | `None` | ID of an existing all-purpose cluster to run on. |
+| `http_path` | `<string>` | `None` | Path of an existing all-purpose cluster to run on. |
+| `job_cluster_config` | `<dictionary>` | `{}` | Settings for the new cluster used by `job_cluster` and `workflow_job`. |
+| `timeout` | `<integer>` | `0` (no timeout) | Maximum time to wait for the command or job to run. |
+| `packages` | `<list>` | `[]` | Packages to install on the cluster. |
+| `index_url` | `<string>` | `None` (uses PyPI) | URL to install `packages` from. |
+| `additional_libs` | `<list>` | `[]` | Libraries to attach to the job. |
+| `access_control_list` | `<list>` | none | Access control for the job. |
+| `python_job_config` | `<dictionary>` | `{}` | Extra job and workflow settings. |
 
-Not every parameter works with every submission method. For the full list and support matrix, refer to [Databricks configurations](/reference/resource-configs/databricks-configs#python-submission-methods).
+Not every parameter works with every submission method. For more details and comprehensive parameters, refer to [Databricks configurations](/reference/resource-configs/databricks-configs#python-submission-methods).
 
 </TabItem>
 
 <TabItem value="bigquery" label="BigQuery">
 
-BigQuery parameters depend on your `submission_method` (`serverless`, `bigframes`, or `cluster`). Common ones include `gcs_bucket`, `dataproc_region`, `dataproc_cluster_name`, `packages` (`bigframes` only), and `timeout`.
+| Parameter | Type | Default | Description |
+| :-------- | :--- | :------ | :---------- |
+| `submission_method` | `<string>` | none | Where the job runs: `serverless`, `bigframes`, or `cluster`. |
+| `dataproc_cluster_name` | `<string>` | none | Dataproc cluster to run on. Required for `cluster`. |
+| `dataproc_region` | `<string>` | none | Google Cloud region where Dataproc is enabled. |
+| `gcs_bucket` | `<string>` | none | Cloud Storage bucket for job artifacts. |
+| `compute_region` | `<string>` | none | Region of the job. |
+| `notebook_template_id` | `<integer>` | none | Colab Enterprise runtime template. |
+| `packages` | `<list>` | none | Packages to `pip install`. `bigframes` only. |
+| `timeout` | `<integer>` | none | Maximum run time in seconds. |
+| `enable_list_inference` | `<boolean>` | `True` | Let PySpark read multiple records in one operation. |
+| `intermediate_format` | `<string>` | `parquet` | File format for intermediate writes: `parquet` or `orc`. |
 
-For the full list with defaults and valid values, refer to [BigQuery configurations](/reference/resource-configs/bigquery-configs#additional-parameters).
+For more details and comprehensive parameters, refer to [BigQuery configurations](/reference/resource-configs/bigquery-configs#additional-parameters).
 
 </TabItem>
 
