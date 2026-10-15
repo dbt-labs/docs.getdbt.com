@@ -1132,6 +1132,7 @@ const sidebarSettings = {
         "docs/dbt-apis/authentication",
         "docs/dbt-apis/user-tokens",
         "docs/dbt-apis/service-tokens",
+        "docs/dbt-apis/service-principals",
       ],
     },
     {
