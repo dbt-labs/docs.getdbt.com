@@ -2,7 +2,10 @@
 title: "Configure BYOK for dbt Wizard in dbt platform"
 sidebar_label: "BYOK configuration"
 description: "Bring your own API key to use dbt Wizard and dbt Copilot in dbt platform. Supports OpenAI, Azure AI Foundry, and Anthropic."
-availability: platform_login
+availability:
+  surface: platform
+  access: paid_plan
+  minPlan: starter
 ---
 
 import WizardSupportedProviders from '/snippets/_wizard-supported-providers.md';
@@ -21,7 +24,7 @@ If you'd rather skip that upkeep, the [dbt Labs-<Term id="managed" /> option](/d
 
 ## Prerequisites
 
-- A [<Constant name="dbt_platform" /> account](https://www.getdbt.com/pricing) on any plan &mdash; BYOK is available on Developer, Starter, Enterprise, and Enterprise+ plans
+- A [<Constant name="dbt_platform" /> account](https://www.getdbt.com/pricing) on a Starter, Enterprise, or Enterprise+ plan
 - <Constant name="dbt" /> admin permissions to enable AI features and configure providers in **Account settings**
 - An API key or credentials for your supported AI provider
 <Expandable alt_header="See the full list of supported AI providers">
@@ -30,7 +33,7 @@ If you'd rather skip that upkeep, the [dbt Labs-<Term id="managed" /> option](/d
 
 #### dbt Copilot
 
-dbt Copilot supports different AI providers, including bring your own key (BYOK) on any plan:
+dbt Copilot supports different AI providers, including bring your own key (BYOK) on Starter, Enterprise, and Enterprise+ plans:
 
 - dbt Labs-<Term id="managed" /> OpenAI API key
 - BYOK OpenAI API key
