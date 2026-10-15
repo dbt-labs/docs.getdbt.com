@@ -220,9 +220,9 @@ If you need SQLFluff behavior, you can either lint in the <Constant name="studio
 
 ## Promoting lint warnings to errors
 
-Rules [without an autofix](#rules-without-autofix) report as warnings, and `dbt lint` finishes successfully. Auto-fixable violations are already errors, so those fail the command on their own.
+By default, rules without an autofix report as warnings and don't fail `dbt lint`. Violations that `--fix` can fix are errors, so they fail the command.
 
-To make a warning fail the run, add its rule name to `warn_error_options` in `dbt_project.yml`. Use the name shown in the lint output. For example, rule `ST05` is reported as `PreferCTE`.
+To fail the run on a warning, add its name to `warn_error_options` in `dbt_project.yml`. Use the name in the lint output. For example, rule `ST05` is reported as `PreferCTE`:
 
 ```yaml
 flags:
@@ -232,7 +232,7 @@ flags:
 ```
 
 
-`error: all` promotes every dbt warning, including warnings from commands other than lint. To promote one lint rule, list that rule by name. Refer to [Warnings](/reference/global-configs/warnings).
+Setting `error: all` promotes every dbt warning, including warnings from commands other than lint. To promote one lint rule, list that rule by name. Refer to [Warnings](/reference/global-configs/warnings).
 
 In a CI job, the **Linting** checkbox runs `dbt lint` and uses this project file. Select **Stop running on error** to fail the job when lint reports an error. The **Commands** list doesn't accept `dbt lint`. Refer to [SQL linting](/docs/deploy/continuous-integration#sql-linting).
 
@@ -249,7 +249,7 @@ The following rules report violations but can't be auto-fixed by `--fix`. They r
 - **Structure:** `ST03`, `ST04`, `ST05`, `ST06`, `ST07`, `ST09`, `ST10`, `ST11`
 - **Ambiguity / convention:** `AM01`, `AM06`, `CV08`, `CV09`, `CV12`
 
-These rules report as warnings, so `dbt lint` finishes successfully. To fail the run on one of them, refer to [Promoting lint warnings to errors](#promoting-lint-warnings-to-errors).
+To fail the run on one of these rules, refer to [Promoting lint warnings to errors](#promoting-lint-warnings-to-errors).
 
 ### Single fix pass
 
