@@ -2,17 +2,17 @@
 title: "Jinja support by file type"
 id: "jinja-file-support"
 sidebar_label: "Jinja support by file type"
-description: "Reference for which dbt file types support Jinja expressions, built-in dbt functions, and custom macros."
+description: "Which dbt file types support Jinja expressions, built-in dbt functions, and custom macros in v1 and v2."
 availability: all_users
 ---
 
-Jinja support varies by dbt file type. Some files accept full Jinja and custom macros, others allow only a limited set of dbt context functions and variables, and a few don’t support Jinja at all. Knowing what a file supports helps you avoid errors and choose the right place for dynamic logic.
+Jinja support varies by file type. Some files accept full Jinja and custom macros, others allow only a few built-in dbt functions, and some don't render Jinja at all. Use this page to find where dynamic logic works.
 
-This reference shows which kinds of Jinja each file type supports:
+This page covers three kinds of support:
 
 - **Jinja expressions** (`{{ }}`, `{% %}`, and `{# #}`): Control flow, string output, and comments
 - **Built-in dbt functions and variables**: Context methods like [`env_var()`](/reference/dbt-jinja-functions/env_var), [`ref()`](/reference/dbt-jinja-functions/ref), and [`target`](/reference/dbt-jinja-functions/target)
-- **Custom macros**: Calling project-defined macros like `{{ my_macro() }}`
+- **Custom macros**: Project-defined macros like `{{ my_macro() }}`
 
 Also refer to:
 
@@ -77,12 +77,12 @@ The table below summarizes Jinja support by file type.
 
 ## Where to define custom Jinja blocks
 
-You can call a custom macro (for example `{{ my_macro() }}`) from many `.sql` files. To create a new macro, test, materialization, or other custom Jinja block, you must define it in a specific file type and directory. Use the table below to find where each block belongs.
+You can call a custom macro from many `.sql` files. To create a macro, test, materialization, or other custom Jinja block, define it in this file type and location:
 
 | Block | File type | Location | Notes |
 | --- | --- | --- | --- |
 | `{% macro %}` | `.sql` | `macros/` | Call from models, tests, hooks, and more. |
-| `{% test %}` | `.sql` | `tests/generic/` or `macros/` | Define the generic test here; you can also call other macros inside it. |
+| `{% test %}` | `.sql` | `tests/generic/` or `macros/` | Can call other macros. |
 | `{% materialization %}` | `.sql` | `macros/` | Define custom materializations here. |
 | `{% snapshot %}` | `.sql` | `snapshots/` (legacy) | Prefer [YAML snapshots](/docs/build/snapshots). Refer to [Legacy snapshot configurations](/reference/resource-configs/snapshots-jinja-legacy) for the older syntax. |
 | `{% docs %}` | `.md` | Any resource path or `docs/` | Pure Jinja only; no custom macro calls. |
