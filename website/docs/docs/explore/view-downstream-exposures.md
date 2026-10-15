@@ -14,7 +14,7 @@ availability:
 # Visualize downstream exposures
 
 <IntroText>
-Downstream exposures integrate natively with Tableau (Power BI coming soon) and auto-generate downstream lineage in <Constant name="catalog" /> for a richer experience.
+Downstream exposures integrate natively with Tableau and auto-generate downstream lineage in <Constant name="catalog" /> for a richer experience.
 </IntroText>
 
 As a data team, it’s critical that you have context into the downstream use cases and users of your data products. By leveraging downstream [exposures](/docs/build/exposures) automatically, data teams can:
