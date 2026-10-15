@@ -17,6 +17,8 @@ To review actions performed by people in your account, <Constant name="dbt" /> p
 
 You must be an **Account admin**, **Account viewer**, or **Security admin** to access the audit log, and this feature is only available on Enterprise plans.
 
+The audit log also records when [service principals](/docs/dbt-apis/service-principals) and their credentials are created, updated, or deleted, and shows actions they take as the `ACTOR_SERVICE_PRINCIPAL` actor type.
+
 The <Constant name="dbt" /> audit log stores all the events that occurred in your account in real time, including:
 
 - For events within 90 days, the <Constant name="dbt" /> audit log has a selectable date range that lists events triggered.

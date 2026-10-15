@@ -12,6 +12,8 @@ availability:
 
 Service account tokens enable you to securely authenticate with the <Constant name="dbt" /> API by assigning each token a narrow set of permissions that more precisely manages access to the API. While similar to [personal access tokens](user-tokens), service account tokens belong to an account rather than a user.
 
+To manage a non-human integration's identity and permissions separately from its credentials, see [service principals](/docs/dbt-apis/service-principals).
+
 You can use service account tokens for system-level integrations that do not run on behalf of any one user. Assign any permission sets available in <Constant name="dbt" /> to your service account token, which can vary slightly depending on your plan:
 
 * Enterprise and Enterprise+ plans can apply any permission sets available to service tokens.
