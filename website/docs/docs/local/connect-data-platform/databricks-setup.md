@@ -146,11 +146,11 @@ default:
 
 ## Optional connection settings
 
-The following profile fields are optional to set up. Add them to the Databricks output in `profiles.yml`. They control how dbt waits for a Databricks connection and retries it.
+Add these optional fields to your Databricks output in `profiles.yml` to control connection timeouts and retries.
 
 | Profile field | Description | Default |
 | --- | --- | --- |
-| `connect_timeout` | Maximum time, in seconds, allowed for one connection attempt. Retry delays are separate; when retries are configured, dbt waits 1 second before the first retry, 4 seconds before the second, and 9 seconds before the third. | `200` seconds per connection attempt; `connect_retries` defaults to `1`. |
+| `connect_timeout` | How many seconds one connection attempt can take. The value must be greater than `0`. For example, `600` gives a warehouse that is still starting 600 seconds. If you set this, dbt waits that many seconds before each retry. | `200` seconds if you leave it out |
 | `connect_retries` | How many extra times to try the connection after the first attempt. A retry runs only when Databricks marks the error as retryable, or when `retry_all` is `true`. | `1` |
 | `retry_all` | Set to `true` to retry every connection error. Set to `false` to retry only errors Databricks marks as retryable. | `false` |
 
