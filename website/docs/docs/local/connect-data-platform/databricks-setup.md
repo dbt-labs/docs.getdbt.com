@@ -156,7 +156,9 @@ Add these optional fields to your Databricks output in `profiles.yml` to control
 
 These settings apply only to connecting. They don't retry queries that fail after dbt has connected.
 
-The example below sets `connect_timeout` to `600` (10 minutes) so dbt can wait for a SQL warehouse that is still starting. `connect_retries` is `3`, so dbt tries 3 more times after a retryable error and waits 10 minutes before each one. `retry_all` is `false`, so other connection errors are not retried.
+#### Example
+
+The following example sets `connect_timeout` to `600` (10 minutes) so dbt can wait for a SQL warehouse that’s still starting. `connect_retries` is `3`, so if the connection fails with a temporary error, dbt retries up to 3 more times and waits 10 minutes before each retry. `retry_all` is `false`, so dbt doesn’t retry other connection errors.
 
 <File name="profiles.yml">
 
