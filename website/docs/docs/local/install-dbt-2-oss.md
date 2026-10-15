@@ -23,12 +23,16 @@ To understand the differences between v1 and v2 refer to [dbt licensing](/docs/d
 
 The open-source v2 foundation is licensed under Apache 2.0. Most users don't need this page &mdash; [install dbt normally](/docs/local/install-dbt) with the standard instructions. This page is for organizations that require the Apache 2.0 codebase specifically.
 
+:::info Use an isolated environment
+Install `dbt-oss` in its own environment with `uv tool`, which automatically creates an isolated environment. Avoid installing it alongside `dbt` or `dbt-core`, which shares the same `dbt` entry point.
+:::
+
 ## Install
 
-Install the dbt OSS with `pip`:
+Install `dbt-oss` with `uv tool`:
 
 ```shell
-python -m pip install dbt-oss
+uv tool install dbt-oss
 ```
 
 Confirm the installed version begins with `2.`:
@@ -38,6 +42,16 @@ dbt --version
 ```
 
 For adapter install details, refer to the [`dbt` repository](https://github.com/dbt-labs/dbt).
+
+## Run dbt-oss alongside other dbt installs
+
+If you have `dbt` installed and need to invoke `dbt-oss` without replacing the `dbt` command, run it directly with `uvx` or add a shell alias:
+
+```shell
+alias dbto='uvx --from dbt-oss dbt'
+```
+
+Then, use `dbto <command>` instead of `dbt <command>` for dbt OSS invocations.
 
 ## What's included
 
