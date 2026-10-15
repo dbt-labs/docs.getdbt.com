@@ -144,6 +144,15 @@ default:
 
 </Tabs>
 
+## Additional parameters
+
+These `profiles.yml` fields are optional. Fusion accepts them on a Databricks target (same keys as dbt Core):
+
+| Profile field | Description |
+| --- | --- |
+| `connect_retries` | How many extra times to retry connecting to Databricks. |
+| `connect_timeout` | How many seconds to wait on a connection attempt before it times out. |
+
 ## More information
 
 Find Databricks-specific configuration information in the [Databricks adapter reference guide](/reference/resource-configs/databricks-configs).
