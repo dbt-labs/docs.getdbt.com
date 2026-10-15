@@ -25,7 +25,7 @@ import StateModified from '/snippets/_state-modified-compare.md';
 
 :::
 
-Starting in dbt v1.12, `state_modified_compare_more_unrendered_values` defaults to `true`, reducing false positives during `state:modified` checks, especially when configs differ by target environment (such as `prod` vs. `dev`).
+In dbt v1.12, `state_modified_compare_more_unrendered_values` defaults to `true`, reducing false positives during `state:modified` checks, especially when configs differ by target environment (such as `prod` vs. `dev`).
 
 The flag changes the `state:modified` comparison from using rendered values to unrendered values instead, by persisting `unrendered_config` during model parsing and `unrendered_database` and `unrendered_schema` configs during source parsing.
 

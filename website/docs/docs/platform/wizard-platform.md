@@ -13,6 +13,7 @@ availability: platform_usage
 import WizardSupportedProviders from '/snippets/_wizard-supported-providers.md';
 import WizardTrialBilling from '/snippets/_wizard-trial-billing.md';
 import CopilotWizardDifferences from '/snippets/_copilot-wizard-diff.md';
+import WizardVideoCourse from '/snippets/_wizard-video-course.md';
 
 # About dbt Wizard in dbt platform <Lifecycle status="preview" />
 
@@ -20,7 +21,7 @@ import CopilotWizardDifferences from '/snippets/_copilot-wizard-diff.md';
 <Constant name="wizard" /> is dbt's AI agent in <Constant name="dbt_platform" />, helping teams investigate, change, validate, and ship trusted dbt work with warehouse-aware grounding.
 </IntroText>
 
-<Constant name="wizard" /> is more than a general coding agent with access to dbt. Built for governed data development in dbt, it understands lineage, documentation, tests, and semantic definitions, and accounts for dev builds, compute, run time, and post-build inspection. Its suggestions are grounded in your project's actual data _and_ context.
+<Constant name="wizard" /> is more than a general coding agent with access to dbt. Built for governed data development in dbt, it understands lineage, documentation, tests, and semantic definitions, and accounts for dev builds, compute, run time, and post-build inspection. Its suggestions are grounded in your project's actual data _and_ context. Be warned, the wizard has been known to <WizardPopcorn>cast spells</WizardPopcorn>.
 
 AI features are being enabled by default. They're already on for new accounts and are rolling out soon to existing accounts. If your organization opted out, they'll remain off. Admins can [turn AI off or back on and configure providers](/docs/platform/manage-dbt-ai) anytime.
 
@@ -67,6 +68,7 @@ Most of the workflows in [How to use dbt Wizard in your dbt project](/best-pract
    - `add not_null and unique tests to the primary key of stg_customers`
 4. ..and that's it 🎉!
 
+
 <DocCarousel slidesPerView={1}>
 
 <Lightbox src="/img/docs/dbt-platform/wizard-ide-refactor-lineage.png" width="85%" title="dbt Wizard in the Studio IDE refactoring a model and displaying the lineage inside the chat interface."/>
@@ -78,6 +80,8 @@ Most of the workflows in [How to use dbt Wizard in your dbt project](/best-pract
 For more prompt ideas, refer to the [prompt cookbook](/guides/prompt-cookbook).
 
 If <Constant name="wizard" /> isn't available, confirm that your plan is eligible and that an admin has [enabled account access to AI features](/docs/platform/manage-dbt-ai#manage-ai-features).
+
+<WizardVideoCourse />
 
 ## Trial and usage credits
 

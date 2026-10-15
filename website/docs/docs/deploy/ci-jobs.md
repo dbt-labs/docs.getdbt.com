@@ -72,14 +72,19 @@ To make CI job creation easier, many options on the **CI job** page are set to d
       :::
 
     - **Run timeout** &mdash; Cancel the CI job if the run time exceeds the timeout value. You can use this option to help ensure that a CI check doesn't consume too much of your warehouse resources. If you enable the **dbt compare** option, the timeout value defaults to `3600` (one hour) to prevent long-running comparisons.
-    - **Enable dbt State** &mdash; [dbt State](/docs/deploy/dbt-state-about) reduces unnecessary model rebuilds by reusing nodes when neither the logic nor the data has changed. For more details, refer to [Setting up dbt State](/docs/deploy/dbt-state-setup) and [Enabling dbt State on individual jobs](/docs/deploy/dbt-state-enable-jobs).
+    - **dbt State** &mdash; [dbt State](/docs/deploy/dbt-state-about) reuses nodes when their logic and data haven’t changed, avoiding unnecessary rebuilds. Select **On**, **Off**, or **Inherited from environment** to use the environment’s setting. This option appears only when dbt State is [enabled](/docs/deploy/dbt-state-setup) on your account. Learn more about [enabling dbt State on individual jobs](/docs/deploy/dbt-state-enable-env-jobs#enabling-dbt-state-on-individual-jobs).
 
 5. (optional) Options in the **Advanced settings** section: 
     - **Environment variables** &mdash; Define [environment variables](/docs/build/environment-variables) to customize the behavior of your project when this CI job runs. You can specify that a CI job is running in a _Staging_ or _CI_ environment by setting an environment variable and modifying your project code to behave differently, depending on the context. It's common for teams to process only a subset of data for CI runs, using environment variables to branch logic in their dbt project code.
     - **Target name** &mdash; Define the [target name](/docs/build/custom-target-names). Similar to **Environment Variables**, this option lets you customize the behavior of the project. You can use this option to specify that a CI job is running in a _Staging_ or _CI_ environment by setting the target name and modifying your project code to behave differently, depending on the context. 
     - **dbt version** &mdash; By default, it’s set to inherit the [dbt version](/docs/dbt-versions) from the environment. dbt Labs strongly recommends that you don't change the default setting. This option to change the version at the job level is useful only when you upgrade a project to the next dbt version; otherwise, mismatched versions between the environment and job can lead to confusing behavior.
     - **Threads** &mdash; By default, it’s set to 4 [threads](/docs/local/profiles.yml#understanding-threads). Increase the thread count to increase model execution concurrency.
+    <VersionBlock lastVersion="1.99">
+
     - **Generate docs on run** &mdash; Enable this if you want to [generate project docs](/docs/explore/build-and-view-your-docs) when this job runs. This is disabled by default since testing doc generation on every CI check is not a recommended practice.
+
+    </VersionBlock>
+
     - **Run source freshness** &mdash; Enable this option to invoke the `dbt source freshness` command before running this CI job. Refer to [Source freshness](/docs/deploy/source-freshness) for more details.
 
    <Lightbox src="/img/docs/dbt-platform/using-dbt-platform/create-ci-job.png" width="90%" title="Example of CI Job page in the dbt UI"/>

@@ -10,7 +10,7 @@ recently_updated: true
 intro_text: This guide helps you implement an in-place upgrade from the latest version of dbt v1 to dbt v2 in the dbt platform.
 ---
 
-import FusionAdapters from '/snippets/_fusion-dwh-platform.md';
+import FusionAdapters from '/snippets/_v2-dwh-platform.md';
 import SaoDeprecated from '/snippets/_sao-deprecated.md';
 
 ## Introduction 
@@ -230,7 +230,7 @@ Change your staging environment to use the <Constant name="fusion" /> release tr
 3. Select **v2 Stable** from the list.
 4. Scroll to the top and click **Save**.
 
-<Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/platform-upgrading-dbt-versions/upgrade-fusion.png" width="90%" title="Select v2 Stable from the dbt version dropdown"/>
+<Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/platform-upgrading-dbt-versions/upgrade-v2.png" width="90%" title="Select v2 Stable from the dbt version dropdown"/>
 
 Your staging environment is now configured to use <Constant name="fusion" />! Any jobs associated with this environment will use <Constant name="fusion" /> on their next run.
 
@@ -333,7 +333,7 @@ Update your production environment to use <Constant name="fusion" />:
 4. Review your settings one final time to ensure everything is correct.
 5. Scroll to the top and click **Save**.
 
-<Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/platform-upgrading-dbt-versions/upgrade-fusion.png" width="90%" title="Select v2 Stable for production"/>
+<Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/platform-upgrading-dbt-versions/upgrade-v2.png" width="90%" title="Select v2 Stable for production"/>
 
 Your production environment is now running on <Constant name="fusion" />!
 
@@ -352,7 +352,7 @@ Validate the upgrade by running a job:
 
 If the job succeeds, your production upgrade is successful!
 
-import FusionReadinessPanel from '/snippets/_fusion-migration-readiness-panel.md';
+import FusionReadinessPanel from '/snippets/_v2-migration-readiness-panel.md';
 
 <FusionReadinessPanel />
 

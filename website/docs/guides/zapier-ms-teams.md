@@ -97,7 +97,7 @@ api_token = secret_store.get('DBT_CLOUD_SERVICE_TOKEN')
 signature = hmac.new(hook_secret.encode('utf-8'), raw_body.encode('utf-8'), hashlib.sha256).hexdigest()
 
 if signature != auth_header:
-  raise Exception("Calculated signature doesn't match contents of the Authorization header. This webhook may not have been sent from <Constant name="dbt" />.")
+  raise Exception("Calculated signature doesn't match contents of the Authorization header. This webhook may not have been sent from dbt.")
 
 full_body = json.loads(raw_body)
 hook_data = full_body['data'] 

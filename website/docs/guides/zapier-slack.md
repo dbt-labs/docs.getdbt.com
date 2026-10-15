@@ -86,7 +86,7 @@ api_token = secret_store.get('DBT_CLOUD_SERVICE_TOKEN')
 signature = hmac.new(hook_secret.encode('utf-8'), raw_body.encode('utf-8'), hashlib.sha256).hexdigest()
 
 if signature != auth_header:
-  raise Exception("Calculated signature doesn't match contents of the Authorization header. This webhook may not have been sent from <Constant name="dbt" />.")
+  raise Exception("Calculated signature doesn't match contents of the Authorization header. This webhook may not have been sent from dbt.")
 
 full_body = json.loads(raw_body)
 hook_data = full_body['data'] 
@@ -229,7 +229,7 @@ If you haven't already got one, go to [https://zapier.com/app/connections/storag
 Choose **Run Python** as the Event. Run the following code: 
 ```python 
 store = StoreClient('abc123') #replace with your UUID secret
-store.set('DBT_CLOUD_SERVICE_TOKEN', 'abc123') #replace with your <Constant name="dbt" /> API token
+store.set('DBT_CLOUD_SERVICE_TOKEN', 'abc123') #replace with your dbt API token
 ```
 Test the step. You can delete this Action when the test succeeds. The key will remain stored as long as it is accessed at least once every three months.
 

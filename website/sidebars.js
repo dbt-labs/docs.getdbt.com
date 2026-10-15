@@ -31,8 +31,6 @@ const sidebarSettings = {
       link: { type: "doc", id: "docs/supported-data-platforms" },
       items: [
         "docs/supported-data-platforms",
-        "docs/connect-adapters",
-        "docs/trusted-adapters",
         "docs/community-adapters",
         "docs/contribute-dbt-adapters",
       ],
@@ -730,6 +728,7 @@ const sidebarSettings = {
                 "docs/build/iceberg/adapters/databricks-iceberg-support",
                 "docs/build/iceberg/adapters/bigquery-iceberg-support",
                 "docs/build/iceberg/adapters/duckdb-iceberg-support",
+                "docs/build/iceberg/adapters/aws-iceberg-support",
               ],
             },
           ],
@@ -871,10 +870,10 @@ const sidebarSettings = {
           label: "Set up dbt State",
           link: { type: "doc", id: "docs/deploy/dbt-state-setup" },
           items: [
-            "docs/deploy/dbt-state-setup", 
-            "docs/deploy/dbt-state-enable-jobs", 
-            "docs/deploy/dbt-state-enable-studio", 
-            "docs/deploy/dbt-state-cicd", 
+            "docs/deploy/dbt-state-setup",
+            "docs/deploy/dbt-state-enable-env-jobs",
+            "docs/deploy/dbt-state-enable-studio",
+            "docs/deploy/dbt-state-cicd",
             "docs/deploy/dbt-state-deferral",
           ],
         },
@@ -1074,8 +1073,8 @@ const sidebarSettings = {
         "docs/dbt-versions/experimental-features",
         {
           type: "link",
-          label: "Fusion changelog",
-          href: "https://github.com/dbt-labs/dbt/blob/main/CHANGELOG-fusion.md",
+          label: "dbt v2 changelog",
+          href: "https://github.com/dbt-labs/dbt/blob/main/CHANGELOG-dbt.md",
         },
         {
           type: "category",
@@ -1971,6 +1970,18 @@ const sidebarSettings = {
             "best-practices/how-we-handle-real-time-data/4-lambda-views",
             "best-practices/how-we-handle-real-time-data/5-views-only-pattern",
             "best-practices/how-we-handle-real-time-data/6-operational-considerations",
+          ],
+        },
+        {
+          type: "category",
+          label: "How to handle change data capture",
+          link: {
+            type: "doc",
+            id: "best-practices/how-we-handle-cdc/1-intro",
+          },
+          items: [
+            "best-practices/how-we-handle-cdc/1-intro",
+            "best-practices/how-we-handle-cdc/2-choosing-incremental-or-snapshots",
           ],
         },
         {

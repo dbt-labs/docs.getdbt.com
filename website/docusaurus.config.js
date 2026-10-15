@@ -5,6 +5,8 @@ import rehypeCodeLanguage from "./plugins/rehypeCodeLanguage.js";
 import rehypeCleanMarkdown from "./plugins/rehypeCleanMarkdown.js";
 import rehypeTabsToHeadings from "./plugins/rehypeTabsToHeadings.js";
 import rehypeMdHide from "./plugins/rehypeMdHide.js";
+import rehypeMdOnly from "./plugins/rehypeMdOnly.js";
+import llmsContentSelectors from "./plugins/llmsContentSelectors.js";
 import remarkBlogFootnoteLinks from "./plugins/remarkBlogFootnoteLinks.js";
 import remarkConstantsInCode from "./plugins/remarkConstantsInCode.js";
 const { themes } = require('prism-react-renderer')
@@ -91,13 +93,13 @@ var siteSettings = {
       //debug: true,
     },
     announcementBar: {
-      id: "dbt-summit-2026",
-      content: "Join us at dbt Summit, September 15–18 in Las Vegas. Come learn, swap ideas, and spend time with the dbt community as we shape the future of data and AI.",
+      id: "post-dbt-summit-2026",
+      content: "Relive the best of dbt Summit! Get access to the keynotes and breakout sessions from dbt Summit 2026. See the latest product innovations from dbt, and hear how data teams are leveling up for the agentic era.",
       isCloseable: true,
     },
     announcementBarActive: true,
     announcementBarLink:
-      "https://www.getdbt.com/dbt-summit/?utm_medium=internal&utm_source=docs&utm_campaign=q3-2027_dbt-summit-2026_aw&utm_content=dbt-summit____&utm_term=all_all__",
+      "https://www.getdbt.com/dbt-summit/registration/online",
     prism: {
       theme: (() => {
         var theme = themes.nightOwl;
@@ -266,7 +268,7 @@ var siteSettings = {
 
           <div class="footer-grid">
             <div class="footer-grid-item">
-              <h5 class="heading-5">Resources</h5>
+              <h3 class="heading-5">Resources</h3>
               <a href='/docs/about-dbt-extension'>VS Code Extension</a>
               <a href="https://www.getdbt.com/resources" target="_blank">Resource Hub</a>
               <a href="https://www.getdbt.com/dbt-learn" target="_blank">dbt Learn</a>
@@ -274,21 +276,21 @@ var siteSettings = {
               <a href="/blog">Developer Blog</a>
             </div>
             <div class="footer-grid-item">
-              <h5 class="heading-5">Community</h5>
+              <h3 class="heading-5">Community</h3>
               <a href='/community/join'>Join the Community</a>
               <a href="/community/contribute">Become a Contributor</a>
               <a href="https://hub.getdbt.com/" target="_blank">Open Source dbt Packages</a>
               <a href="https://discourse.getdbt.com/" target="_blank" rel="noreferrer noopener">Community Forum</a>
             </div>
             <div class="footer-grid-item">
-              <h5 class="heading-5">Support</h5>
+              <h3 class="heading-5">Support</h3>
               <a href='/docs/dbt-support'>Contact Support</a>
               <a href="https://www.getdbt.com/services" target="_blank">Professional Services</a>
               <a href="https://www.getdbt.com/partner-directory" target="_blank">Find a Partner</a>
               <a href="https://status.getdbt.com/" target="_blank">System Status</a>
             </div>
             <div class="footer-grid-item">
-              <h5 class="heading-5">Connect with Us</h5>
+              <h3 class="heading-5">Connect with Us</h3>
               <div class="social-icons">
             <!--! Font Awesome Pro 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
             <a href='https://github.com/dbt-labs/docs.getdbt.com' title="GitHub" target="_blank" rel="noreferrer noopener"><svg class="fa-brands" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg></a>
@@ -320,6 +322,7 @@ var siteSettings = {
       ],
     },
   },
+  clientModules: [require.resolve("./src/clientModules/resizeTransitionStopper.js")],
   presets: [
     [
       "@docusaurus/preset-classic",
@@ -392,7 +395,9 @@ var siteSettings = {
           relativePaths: false,
         },
         processing: {
-          beforeDefaultRehypePlugins: [rehypeCodeLanguage, rehypeCleanMarkdown, rehypeTabsToHeadings, rehypeMdHide],
+          beforeDefaultRehypePlugins: [rehypeCodeLanguage, rehypeCleanMarkdown, rehypeTabsToHeadings, rehypeMdHide, rehypeMdOnly],
+          // Adds a [data-md-root] marker ahead of the defaults; see the module.
+          contentSelectors: llmsContentSelectors,
         },
         include: {
           includeBlog: false,
@@ -498,6 +503,20 @@ var siteSettings = {
           siteTitle: "dbt Developer Hub",
           siteDescription:
             "End user documentation, guides and technical reference for dbt",
+          // Official install channels for the dbt CLI, so agents can find the
+          // package to install without parsing the install docs.
+          optionalLinks: [
+            {
+              title: "dbt on PyPI",
+              url: "https://pypi.org/project/dbt/",
+              description: "Official dbt CLI package. Install with `python -m pip install dbt`.",
+            },
+            {
+              title: "dbt Homebrew tap",
+              url: "https://github.com/dbt-labs/homebrew-dbt",
+              description: "Official Homebrew tap for macOS. Install with `brew tap dbt-labs/dbt && brew install dbt-labs/dbt/dbt`.",
+            },
+          ],
         },
       },
     ],

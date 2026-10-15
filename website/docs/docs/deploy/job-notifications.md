@@ -90,7 +90,7 @@ You can send dbt job [notification emails](#configure-email-notifications) direc
 ## Slack notifications (user) {#slack-notifications}
 You can receive Slack alerts about jobs by setting up the Slack integration and then configuring the <Constant name="dbt" /> Slack notification settings. <Constant name="dbt" /> integrates with Slack via OAuth to ensure secure authentication.
 
-This is the current Slack integration available for all users and set at the user level, not to be confused with the [Slack notifications at the account level](#slack-notifications-account) feature.
+This Slack integration is set at the user level, not to be confused with the [Slack notifications at the account level](#slack-notifications-account) feature.
 
 :::note 
 Virtual Private Cloud (VPC) admins must [contact support](mailto:support@getdbt.com) to complete the Slack integration.
@@ -173,7 +173,7 @@ IT licenses can receive job notifications but can't [configure them](/docs/platf
 
 The account-level Slack integration uses the official <Constant name="dbt_platform" /> Slack app, which is separate from the [user-linked Slack integration](#slack-notifications). 
 
-To use Slack notifications, you must unlink the old Slack app and then connect the new official app: 
+To use Slack notifications, you must unlink the old Slack app and then connect the official app: 
 
 1. Go to **Account settings** > **Integrations** > **OAuth**.
 2. Click the **X** icon next to Slack and select **Unlink**.
