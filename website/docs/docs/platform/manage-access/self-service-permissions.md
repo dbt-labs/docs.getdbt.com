@@ -32,7 +32,7 @@ You assign licenses to every user onboarded into <Constant name="dbt" />. You on
 There are three license types:
 
 - **Developer** &mdash; The default license. Developer licenses don't restrict access to any features, so users with this license should be assigned to either the Owner or Member group. You're allotted up to 5 developer licenses per account.
-- **Read-Only** &mdash; Read-only access to your project, including environments and <Constant name="catalog" />. Doesn't have access to account settings at all. Functions the same regardless of group assignments. For read-only license availability by plan, refer to [dbt pricing](https://www.getdbt.com/pricing).
+- **Read-Only** &mdash; Read-only access to your project, including environments and <Constant name="catalog" />. Doesn't have access to account settings at all. Functions the same regardless of group assignments. Non-developer [plans](https://www.getdbt.com/pricing) may provision an unlimited number of Read-Only licenses at no additional charge.
 - **IT** &mdash; Partial access to the account settings including users, integrations, billing, and API settings. Cannot create or edit connects or access the project at all. Functions the same regardless of group assignments. You're allocated 1 seat per account.
 
 See [Seats and Users](/docs/platform/manage-access/seats-and-users) for more information on the impact of licenses on these permissions.
