@@ -32,12 +32,17 @@ const products = [
     get subProducts() {
       const specific = [
         {
-          name: "dbt Core v1.12",
+          name: "dbt v1.13",
+          version: "1.13",
+          stage: "beta",
+        },
+        {
+          name: "dbt v1.12",
           EOLDate: "2027-07-15",
           version: "1.12",
         },
         {
-          name: "dbt Core v1.11",
+          name: "dbt v1.11",
           EOLDate: "2026-12-18",
           version: "1.11",
         },
@@ -112,7 +117,7 @@ exports.versionedPages = [
   { page: "docs/dbt/fusion-networking", firstVersion: "2.0" },
   { page: "docs/dbt/dbt-releases", firstVersion: "2.0" },
   { page: "docs/dbt/telemetry", firstVersion: "2.0" },
-  { page: "reference/commands/login", firstVersion: "2.0" },
+  { page: "reference/commands/login", firstVersion: "1.13" },
   { page: "docs/dbt/about-dbt", firstVersion: "2.0" },
   { page: "docs/dbt/about-dbt-install", firstVersion: "2.0" },
   { page: "docs/dbt/adbc", firstVersion: "2.0" },
@@ -176,6 +181,7 @@ exports.versionedPages = [
   { page: "docs/local/connect-data-platform/postgres-setup", lastVersion: "1.99" },
   { page: "docs/local/connect-data-platform/risingwave-setup", lastVersion: "1.99" },
   { page: "docs/local/connect-data-platform/rockset-setup", lastVersion: "1.99" },
+  { page: "docs/local/connect-data-platform/sail-setup", lastVersion: "1.99" },
   { page: "docs/local/connect-data-platform/singlestore-setup", lastVersion: "1.99" },
   { page: "docs/local/connect-data-platform/sqlite-setup", lastVersion: "1.99" },
   { page: "docs/local/connect-data-platform/starrocks-setup", lastVersion: "1.99" },

@@ -21,6 +21,10 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 For <Constant name="fusion_engine" /> updates, refer to the [v2 changelog](https://github.com/dbt-labs/dbt/blob/main/CHANGELOG-dbt.md).
 
 ## October 2026
+- **Enhancement:** You can now sort columns, search by connection name, and filter by connection type, credentials, and connection method (private link or OAuth).
+- **Enhancement:** When a dbt State trial ends, you'll get an email that communicates your Consumption, Developer, Starter, Legacy Teams, or Enterprise plan and includes the allowance end date when your plan has one.
+- **Fix:** Charts now show dates such as `2026-01` or `2026-01-15` from oldest to newest. Tables keep your query's row order until you sort a column.
+- **Behavior change:** You can no longer create a System for Cross-domain Identity Management (SCIM) token with a personal access token or a service token. Sign in to dbt and [create a SCIM token](/docs/platform/manage-access/scim#set-up-dbt).
 - **New:** The jobs list API endpoint (`GET /api/v2/accounts/{account_id}/jobs/`) now accepts a `pk__in` query parameter, letting you retrieve up to 500 specific jobs by ID in a single request.
 - **New:** You can now specify `clickhouse_v0` as the adapter_version when creating connections and credentials, filtering connections, and retrieving adapter schemas in the Administrative API v3. Contact your account representative to enable.
 - **New:** The `metrics` and `metricsPaginated` GraphQL queries now accept a `searchTerms` argument, letting you filter metrics by multiple terms in a single request with correct pagination. Note: `search` and `searchTerms` cannot be combined, and a maximum of 20 terms is allowed.
