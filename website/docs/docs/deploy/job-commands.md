@@ -47,7 +47,7 @@ For every job, you have the option to select the [Generate docs on run](/docs/ex
 
 You can add or remove as many dbt commands as necessary for every job. However, you need to have at least one dbt command. There are few commands listed as "<Constant name="dbt" /> CLI" or "<Constant name="core" />" in the [dbt Command reference page](/reference/dbt-commands) page. This means they are meant for use in <Constant name="core" /> or <Constant name="dbt" /> CLI, and not in <Constant name="studio_ide" />.
 
-Because you're unable to add the `dbt lint` command to the **Commands** list, you need to add it in a CI job. In a CI job, under **Execution settings**, select **Linting**. dbt runs SQLFluff on v1 and [`dbt lint`](/reference/commands/lint?version=2.0) on v2. Refer to [SQL linting](/docs/deploy/continuous-integration#sql-linting) for the files it checks and what happens when linting fails.
+Because you're unable to add the `dbt lint` command to the **Commands** list, if you want linting, you need to add it in a CI job. In a CI job, under **Execution settings**, select **Linting**. dbt runs SQLFluff on v1 and [`dbt lint`](/reference/commands/lint?version=2.0) on v2. Refer to [SQL linting](/docs/deploy/continuous-integration#sql-linting) for the files it checks and what happens when linting fails.
 
 <VersionBlock firstVersion="2.0">
 
