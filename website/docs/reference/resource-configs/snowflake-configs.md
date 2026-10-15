@@ -6,6 +6,7 @@ tags: ['Snowflake', 'dbt v2', 'dbt v1']
 ---
 
 import SnowflakeColumn from '/snippets/_snowflake-column-size.md';
+import SnowflakePythonParams from '/snippets/_snowflake-python-config-params.md';
 
 <SnowflakeColumn />
 
@@ -1369,21 +1370,7 @@ def model(dbt, session: snowpark.Session):
 
 Snowflake Python models accept these parameters in `dbt.config()`. Refer to [Configuring Python models](/docs/build/python-models#configuring-python-models).
 
-| Parameter | Type | Required | Default | Valid values |
-| :-------- | :--- | :------- | :------ | :----------- |
-| `python_version` | `<string>` | no | `3.10` | `3.9`, `3.10`, `3.11` |
-| `packages` | `<list>` | no | `[]` | `['numpy', 'pandas==1.5.3']` |
-| `imports` | `<list>` | no | `[]` | `['@mystage/mypackage.zip']` |
-| `external_access_integrations` | `<list>` | no | `[]` | `['my_integration']` |
-| `secrets` | `<dictionary>` | no | `{}` | `{'my_var': 'my_secret'}` |
-| `use_anonymous_sproc` | `<boolean>` | no | `True` | `True`, `False` |
-
-- `python_version`: Python version the Snowpark model runs on.
-- `packages`: Anaconda packages to install when the model runs. dbt always adds `snowflake-snowpark-python`.
-- `imports`: Staged files, such as zip files, to make available to your model. Refer to [Third-party Snowflake packages](#third-party-snowflake-packages).
-- `external_access_integrations`: Names of Snowflake external access integrations that let your model reach external APIs.
-- `secrets`: Maps a variable name in your code to the name of a Snowflake secret. Use it with `external_access_integrations`.
-- `use_anonymous_sproc`: When `True`, dbt runs your model as an anonymous stored procedure. When `False`, dbt creates a named procedure (`<model_name>__dbt_sp`), calls it, and then drops it.
+<SnowflakePythonParams />
 
 ### Third-party Snowflake packages
 

@@ -6,6 +6,8 @@ meta:
   resource_type: Models
 ---
 
+import SnowflakePythonParams from '/snippets/_snowflake-python-config-params.md';
+
 Use `dbt.config()` to set configs for a Python model. This page lists the parameters in one place, with links to each platform's full details. For how to write a Python model, refer to [Python models](/docs/build/python-models).
 
 :::note
@@ -31,14 +33,7 @@ Read any config back inside your model with `dbt.config.get()`.
 
 <TabItem value="snowflake" label="Snowflake">
 
-| Parameter | Type | Default | Description |
-| :-------- | :--- | :------ | :---------- |
-| `python_version` | `<string>` | `3.10` | Python version for the Snowpark model. |
-| `packages` | `<list>` | `[]` | Anaconda packages to install at run time. |
-| `imports` | `<list>` | `[]` | Staged files, such as zip files, to make available to your model. |
-| `external_access_integrations` | `<list>` | `[]` | Snowflake external access integrations that let your model call external APIs. |
-| `secrets` | `<dictionary>` | `{}` | Maps a variable name in your code to a Snowflake secret. |
-| `use_anonymous_sproc` | `<boolean>` | `True` | Run the model as an anonymous stored procedure. |
+<SnowflakePythonParams />
 
 Full details: [Snowflake configurations](/reference/resource-configs/snowflake-configs#additional-parameters).
 
