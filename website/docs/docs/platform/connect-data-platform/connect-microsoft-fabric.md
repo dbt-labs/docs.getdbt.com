@@ -2,6 +2,9 @@
 title: "Connect Microsoft Fabric"
 description: "Configure Microsoft Fabric connection."
 sidebar_label: "Connect Microsoft Fabric"
+availability:
+  surface: platform
+  access: login_required
 ---
 
 ## Supported authentication methods

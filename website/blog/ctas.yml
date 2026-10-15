@@ -41,3 +41,27 @@
   subheader: Join us July 15th to learn how to save on warehouse compute costs!
   button_text: Register here
   url: https://www.getdbt.com/resources/webinars/dbt-state-build-what-s-changed-skip-what-hasn-t/?utm_medium=internal&utm_source=docs&utm_campaign=q2-2027_dbt-state-deep-dive-product_aw&utm_content=themed-webinar____&utm_term=all_all__
+
+- name: dbt_summit_2026
+  header: Join us at dbt Summit
+  subheader: Meet us in Las Vegas, September 15–18, to learn from other dbt practitioners, swap ideas, and come together to shape the future of data and AI.
+  button_text: Learn more
+  url: https://www.getdbt.com/dbt-summit/?utm_medium=internal&utm_source=docs&utm_campaign=q3-2027_dbt-summit-2026_aw&utm_content=dbt-summit____&utm_term=all_all__
+
+- name: post_dbt_summit_2026
+  header: Relive the best of dbt Summit
+  subheader: Get access to the keynotes and breakout sessions from dbt Summit 2026. See the latest product innovations from dbt, and hear how data teams are leveling up for the agentic era.
+  button_text: Learn more
+  url: https://www.getdbt.com/dbt-summit/registration/online
+
+- name: dbt_core_v1_12_live
+  header: "dbt Core v1.12 Live"
+  subheader: Release updates, the road to dbt Core v2.0, and Q&A. Join a global-friendly session on August 26 or 27.
+  button_text: Register here
+  url: https://www.getdbt.com/resources/webinars/dbt-core-v1-12-live/?utm_medium=internal&utm_source=docs&utm_campaign=q3-2027_dbt-core-v1.12-live_aw&utm_content=themed-webinar____&utm_term=all_all__
+
+- name: wizard_desktop_waitlist
+  header: Try Wizard Desktop
+  subheader: Run parallel agents, review data diffs and lineage next to the code, and validate changes against your warehouse.
+  button_text: Join the waitlist
+  url: https://www.getdbt.com/wizard-desktop-waitlist

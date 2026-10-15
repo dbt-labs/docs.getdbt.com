@@ -4,9 +4,19 @@ on:
   schedule:
     # Run every day at 12:00 UTC
     - cron: '0 12 * * *'
+  pull_request:
+    paths:
+      - "website/docs/**/*.md"
+      - "website/docs/**/*.mdx"
+      - "website/snippets/**/*.md"
+      - "website/snippets/**/*.mdx"
+      - "website/blog/**/*.md"
+      - "website/blog/**/*.mdx"
+      - "website/static/**"
 
 jobs:
   markdown-link-check:
+    if: github.event_name == 'schedule'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -15,3 +25,30 @@ jobs:
         uses: lycheeverse/lychee-action@a8c4c7cb88f0c7386610c35eb25108e448569cb0 # lycheeverse/lychee-action@master
         with:
           args: --verbose --config .github/lychee.toml './website/**/*.md'
+
+  # lychee only sees real HTML <a>/<img> tags, so it misses JSX props like
+  # <Lightbox src="..."> — this job catches those on every PR instead of
+  # waiting for the next daily cron run.
+  check-image-paths:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@f43a0e5ff2bd294095638e18286ca9a3d1956744 # actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Get changed files
+        run: |
+          git diff --name-only "origin/${{ github.base_ref }}" "${{ github.event.pull_request.head.sha }}" \
+            -- website/docs website/snippets website/blog \
+            | grep -E '\.mdx?$' > changed_files.txt || true
+          cat changed_files.txt
+
+      - name: Check for broken local image paths
+        run: |
+          if [ -s changed_files.txt ]; then
+            node .github/scripts/check-image-paths.js $(cat changed_files.txt)
+          else
+            echo "No doc files changed."
+          fi

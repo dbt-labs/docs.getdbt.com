@@ -5,6 +5,7 @@ description: "Learn how to navigate the state-aware orchestration interface for 
 id: "state-aware-interface"
 tags: ['scheduler','SAO', 'cost savings', 'models built']
 unlisted: true
+availability: platform_login
 ---
 
 <IntroText>

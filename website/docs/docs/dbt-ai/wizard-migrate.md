@@ -4,6 +4,7 @@ id: "wizard-migrate"
 description: "Move project context and skills from Claude Code to dbt Wizard."
 sidebar_label: "Migrate to dbt Wizard"
 tags: [AI, Wizard]
+availability: local_all
 ---
 
 <IntroText>
@@ -16,7 +17,7 @@ Move from Claude Code to <Constant name="wizard" /> while keeping your project c
 
 You'll need:
 
-- [<Constant name="wizard" /> CLI](/docs/dbt-ai/wizard-cli) installed or <Constant name="wizard" /> enabled in the [<Constant name="dbt_platform" />](/docs/platform/wizard-platform)
+- [<Constant name="wizard" /> CLI](/docs/dbt-ai/wizard-cli) installed or <Constant name="wizard" /> enabled in [<Constant name="dbt_platform" />](/docs/platform/wizard-platform)
 - [BYOK](/docs/dbt-ai/wizard-byok) configured for a supported CLI provider (OpenAI, Anthropic, AWS Bedrock, or Snowflake Cortex in preview)
 - Any existing Claude Code files you want to migrate, such as `CLAUDE.md`, `.claude/CLAUDE.md`, or `.claude/skills/`
 
@@ -104,3 +105,4 @@ And if your conventions aren't applied, check:
 - [Skills](/docs/dbt-ai/wizard-skills)
 - [Configure BYOK](/docs/dbt-ai/wizard-byok)
 - [Use cases and examples](/docs/dbt-ai/wizard-use-cases)
+- [How to use dbt Wizard in your dbt project](/best-practices/how-to-use-wizard/wizard-1-intro) for recommended workflows

@@ -1,5 +1,5 @@
 ---
-title: "Connect Databend Cloud to dbt Core"
+title: "Connect Databend Cloud to dbt v1"
 sidebar_label: "Databend Cloud"
 description: "Read this guide to learn about the Databend warehouse setup in dbt."
 id: "databend-setup"
@@ -14,6 +14,7 @@ meta:
   min_supported_version: 'n/a'
   platform_name: 'Databend Cloud'
   config_page: '/reference/resource-configs/no-configs'
+availability: local_free
 ---
 
 

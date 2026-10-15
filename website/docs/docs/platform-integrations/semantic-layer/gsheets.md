@@ -3,15 +3,19 @@ title: "Google Sheets"
 description: "Integrate with Google Sheets to query your metrics in a spreadsheet."
 tags: [Semantic Layer]
 sidebar_label: "Google Sheets"
+availability:
+  surface: platform
+  access: paid_plan
+  minPlan: starter
 ---
 
-# Google Sheets <Lifecycle status="self_service,managed,managed_plus" />
+# Google Sheets
 
 The <Constant name="semantic_layer" /> offers a seamless integration with Google Sheets through a custom menu. This add-on allows you to build <Constant name="semantic_layer" /> queries and return data on your metrics directly within Google Sheets
 
 ## Prerequisites
 
-- You have [configured the <Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/setup-sl) and are using dbt v1.6 or higher.
+- You have [configured the <Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/setup-sl) and are using dbt v1.6 or higher. If you haven't created metrics yet, start with the [Quickstart for the <Constant name="semantic_layer" />](/guides/sl-qs).
 - You need a Google account with access to Google Sheets and the ability to install Google add-ons.
 - You have a [<Constant name="dbt" /> Environment ID](/docs/use-dbt-semantic-layer/setup-sl#set-up-dbt-semantic-layer).
 - You have a [service token](/docs/dbt-apis/service-tokens) or a [personal access token](/docs/dbt-apis/user-tokens) to authenticate with from a <Constant name="dbt" /> account.

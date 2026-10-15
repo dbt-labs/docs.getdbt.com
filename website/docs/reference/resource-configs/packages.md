@@ -1,10 +1,11 @@
 ---
 title: packages
+description: "Specify the third-party PyPI packages a Python user-defined function (UDF) needs so your warehouse installs them when it creates the function."
 sidebar_label: "packages"
 id: packages
 ---
 
-# packages<Lifecycle status="beta" />
+# packages
 
 <VersionCallout version="1.12" /> 
 

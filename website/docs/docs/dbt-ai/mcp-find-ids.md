@@ -3,6 +3,7 @@ title: "How to find your dbt MCP IDs"
 sidebar_label: "Finding your IDs"
 description: "Step-by-step instructions for finding the numeric IDs needed for dbt MCP configuration."
 id: "mcp-find-ids"
+availability: all_users
 ---
 
 Several dbt MCP environment variables and headers require numeric IDs from your <Constant name="dbt_platform"/> account. This guide shows exactly where to find each one.
@@ -49,7 +50,7 @@ Alternatively, see [Finding your user and account IDs](/faqs/Accounts/find-user-
 ## DBT_PROD_ENV_ID (production environment ID) {#dbt-prod-env-id}
 
 1. Log in to your <Constant name="dbt_platform"/> account.
-2. Go to **Deploy** → **Environments**.
+2. Go to **Orchestration** → **Environments**.
 3. Click on your production environment.
 4. The environment ID is in the URL: `https://cloud.getdbt.com/deploy/ACCOUNT_ID/projects/PROJECT_ID/environments/ENVIRONMENT_ID`. So for example, if the URL is `https://YOUR_ACCESS_URL/deploy/12345/projects/67890/environments/54321`, the environment ID would be `54321`.
 

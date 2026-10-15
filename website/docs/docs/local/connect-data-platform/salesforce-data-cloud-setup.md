@@ -4,7 +4,7 @@ description: "Read this guide to learn about the Salesforce Data 360 warehouse s
 id: "salesforce-data-cloud-setup"
 meta:
   maintained_by: dbt Labs
-  authors: 'Fusion dbt maintainers'
+  authors: 'dbt v2 dbt maintainers'
   github_repo: 'dbt-labs/dbt-fusion'
   pypi_package: N/A
   min_core_version: N/A
@@ -15,17 +15,18 @@ meta:
   platform_name: 'Salesforce Data 360'
   config_page: '/reference/resource-configs/data-cloud-configs'
 unlisted: true
+availability: local_free
 ---
 
 # Salesforce Data 360 setup <Lifecycle status="beta"/>
 
-This `dbt-salesforce` adapter is available via the <Constant name="fusion_engine" /> CLI. To access the adapter, [install <Constant name="fusion" />](/docs/fusion/about-fusion-install). We recommend using the [VS Code Extension](/docs/local/install-dbt?version=2) as the development interface. <Constant name="dbt_platform" /> support coming soon. 
+This `dbt-salesforce` adapter is available via the <Constant name="fusion_engine" /> CLI. To access the adapter, [install <Constant name="fusion" />](/docs/local/install-dbt). We recommend using the [VS Code Extension](/docs/local/install-dbt?version=2) as the development interface. <Constant name="dbt_platform" /> support coming soon. 
 
 import SalesforcePrereqs from '/snippets/_salesforce-data-cloud-prereqs.md';
 
 <SalesforcePrereqs />
 
-## Configure Fusion
+## Configure <Constant name="fusion" />
 
 To connect dbt to Salesforce Data 360, set up your `profiles.yml`. Refer to the following configuration:
 

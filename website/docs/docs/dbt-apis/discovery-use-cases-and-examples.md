@@ -1,6 +1,10 @@
 ---
 title: "Use cases and examples for the Discovery API"
 sidebar_label: "Uses and examples"
+availability:
+  surface: platform
+  access: paid_plan
+  minPlan: starter
 ---
 
 With the Discovery API, you can query the metadata in <Constant name="dbt" /> to learn more about your dbt deployments and the data it generates to analyze them and make improvements.

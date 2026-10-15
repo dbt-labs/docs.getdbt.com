@@ -22,7 +22,7 @@ To run dbt commands like `dbt seed`, `dbt run`, and `dbt test`, you also need db
 
 ### Related content
 
-- [Install dbt Core](/docs/local/install-dbt)
+- [Install <Constant name="core" />](/docs/local/install-dbt)
 - [About dbt projects](/docs/build/projects)
 - [Example dbt projects](/faqs/Project/example-projects)
 
@@ -174,7 +174,7 @@ Staging models sit closest to the raw seed data. Marts models join and shape tha
 
 To run or develop the project, you need dbt installed and a database connected. These links can help:
 
-- **[Install dbt locally](/docs/local/install-dbt):** Cloning doesn't install dbt. You need it to run commands.
+- **[Install self-hosted dbt](/docs/local/install-dbt):** Cloning doesn't install dbt. You need it to run commands.
 - **[Set up a virtual environment](/docs/local/install-dbt):** Keeps dbt separate from other Python projects on your machine.
 - **[About dbt deps command](/reference/commands/deps):** The repo lists packages in `packages.yml`. Run `dbt deps` after you install dbt.
 - **[About dbt projects](/docs/build/projects):** Learn the project structure before editing models.
@@ -188,7 +188,7 @@ To run the project, you need a database and adapter configured in `profiles.yml`
 - [Quickstart for dbt and BigQuery](/guides/bigquery)
 - [Quickstart for dbt and Databricks](/guides/databricks)
 - [Quickstart for dbt and Redshift](/guides/redshift)
-- [Quickstart for dbt Core using DuckDB](/guides/duckdb): Clone [`jaffle_shop_duckdb`](https://github.com/dbt-labs/jaffle_shop_duckdb) and follow the guide.
+- [Quickstart for <Constant name="core" /> using DuckDB](/guides/duckdb): Clone [`jaffle_shop_duckdb`](https://github.com/dbt-labs/jaffle_shop_duckdb) and follow the guide.
 
 You can also browse [all guides](/guides) or other [example dbt projects](/faqs/Project/example-projects).
 

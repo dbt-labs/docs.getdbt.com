@@ -2,6 +2,7 @@
 title: "Custom aliases"
 description: "Configure custom aliases to override default naming conventions for models and other resources in dbt."
 id: "custom-aliases"
+availability: all_users
 ---
 
 ## Overview

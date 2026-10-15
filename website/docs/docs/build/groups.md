@@ -4,6 +4,7 @@ sidebar_label: "Groups"
 id: "groups"
 keywords:
   - groups access mesh
+availability: all_users
 ---
 
 A group is a collection of nodes within a dbt DAG. Groups are named, and every group has an `owner`. They enable intentional collaboration within and across teams by restricting [access to private](/reference/resource-configs/access) models.

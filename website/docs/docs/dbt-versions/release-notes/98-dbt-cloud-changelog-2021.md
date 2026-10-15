@@ -17,7 +17,7 @@ Welcome to the 2021 changelog for the <Constant name="dbt" /> application! You c
 
 ## dbt Cloud v1.1.41 (December 8, 2021)
 
-It's one of the best weeks of the year - it's [Coalesce](https://coalesce.getdbt.com/)! We'll have some exciting product announcements to share! Did somebody say [metrics](https://coalesce.getdbt.com/talks/keynote-metric-system/) and [<Constant name="core" /> v1.0](https://coalesce.getdbt.com/talks/dbt-v10-reveal/)?!
+It's one of the best weeks of the year - it's [Coalesce](https://coalesce.getdbt.com/)! We'll have some exciting product announcements to share! Did somebody say [metrics](https://coalesce.getdbt.com/talks/keynote-metric-system/) and [<Constant name="core" />](https://coalesce.getdbt.com/talks/dbt-v10-reveal/)?!
 
 #### New products and features
 
@@ -128,7 +128,7 @@ We shipped a resizable folder pane in the <Constant name="studio_ide" />, and we
 
 
 ## dbt Cloud v1.1.29 (June 23, 2021)
-We're heads down working on a handful of new features that we're going to share at the end of this month. The finish line is in sight. In the meantime, check out our latest release candidates for <Constant name="core" />. The biggest changes are better tests, providing consistency, configurability, and persistence. Additionally, we've refactored partial parsing and introduced an experimental parser; both are set to off by default.
+We're heads down working on a handful of new features that we're going to share at the end of this month. The finish line is in sight. In the meantime, check out our latest release candidates for <Constant name="core" />. The biggest changes are better tests, providing consistency, configurability, and persistence.
 
 #### New products and features
 - Add support for latest Core release candidates to <Constant name="dbt" />: v0.19.2-rc2 and v0.20.0-rc1

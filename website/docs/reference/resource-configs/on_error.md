@@ -8,7 +8,7 @@ datatype: string
 
 <VersionCallout version="1.12" /> 
 
-# on_error<Lifecycle status="beta" />
+# on_error
 
 <Tabs
   groupId="config-languages"
@@ -66,10 +66,6 @@ models:
 </Tabs>
 
 ## Definition
-
-:::info Beta feature
-The `on_error` config is a beta feature in <Constant name="core" /> v1.12.
-:::
 
 The `on_error` config controls what happens to downstream (child) models when a model fails during a run. This config only applies to models; it has no effect on tests. To control whether downstream models run after a test failure, use the [`severity`](/reference/resource-configs/severity) config on your tests instead.
 

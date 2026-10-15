@@ -1,6 +1,7 @@
 ---
 title: "Custom databases"
 id: "custom-databases"
+availability: all_users
 ---
 
 

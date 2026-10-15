@@ -4,6 +4,9 @@ id: ide-user-interface
 description: "Develop, test, run, and build in the Studio IDE. With the Studio IDE, you can compile dbt code into SQL and run it against your database directly"
 sidebar_label: User interface
 tags: [IDE]
+availability:
+  surface: platform
+  access: login_required
 ---
 
 The [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio) is a tool for developers to effortlessly build, test, run, and version-control their dbt projects, and enhance data governance — all from the convenience of your browser. Use the <Constant name="studio_ide" /> to compile dbt code into SQL and run it against your database directly — no command line required!
@@ -30,7 +33,7 @@ The <Constant name="studio_ide" /> streamlines your workflow, and features a pop
 4. **File explorer:** The File explorer shows the filetree of your repository. You can:
     - Click on any file in the filetree to open the file in the file editor. 
     - Click and drag files between directories to move files. 
-    - Right-click a file to access the sub-menu options like duplicate file, copy file name, copy as `ref`, rename, delete.
+    - Right-click a file to access the sub-menu options like copy name, copy relative path, copy as `ref`, download, duplicate, rename, and delete.
     - Use file indicators, located to the right of your files or folder name, to see when changes or actions were made:
       * Unsaved (•) — The <Constant name="studio_ide" /> detects unsaved changes to your file/folder
       * Modification (M) — The <Constant name="studio_ide" /> detects a modification of existing files/folders
@@ -181,13 +184,13 @@ Starting from dbt v1.6 or higher, when you save changes to a model, you can comp
 
 4. **Lint button** &mdash; The **Lint** button runs the [linter](/docs/platform/studio-ide/lint-format) on the active file in the file editor. The linter checks for syntax errors and style issues in your code and displays the results in the **Code quality** tab.
 
-5. **dbt Wizard** &mdash; [dbt Wizard](/docs/dbt-ai/wizard-ide) is the new and recommended governed agentic experience integrated into the <Constant name="studio_ide" /> that uses your project context to help you develop governed dbt changes faster. It can generate or refactor models, semantic models, tests, and documentation from natural language prompts. <Lifecycle status="self_service,managed,managed_plus" />
+5. **dbt Wizard** &mdash; [dbt Wizard](/docs/dbt-ai/wizard-ide) is the new and recommended governed agentic experience integrated into the <Constant name="studio_ide" /> that uses your project context to help you develop governed dbt changes faster. It can generate or refactor models, semantic models, tests, and documentation from natural language prompts. 
 
     [dbt Copilot](/docs/platform/studio-ide/develop-studio-ai#dbt-copilot-in-studio-ide) is separate from <Constant name="wizard" /> and is dbt's inline AI assistance experience, providing single-click generation of SQL, documentation, tests, and semantic models in <Constant name="studio_ide" />, <Constant name="canvas" />, and <Constant name="insights" />. 
 
 6. **Commands tab** &mdash; View the most recently run [dbt commands](/reference/dbt-commands) from your current IDE session, their results, and relevant system logs.
 
-7. **Problems tab** &mdash; You must be running the <Constant name="fusion_engine" /> to utilize the problems tab. Gain insights into problems with your dbt project that may prevent it from running properly in <Constant name="fusion" /> as you edit and before you execute runs. 
+7. **Problems tab** &mdash; You must be running <Constant name="fusion_engine" /> to utilize the problems tab. Gain insights into problems with your dbt project that may prevent it from running properly in <Constant name="fusion" /> as you edit and before you execute runs. 
 <Lightbox src="/img/docs/dbt-platform/platform-ide/ide-problems-tab.png" width="90%" title="Preview results show up in the Results console tab"/>
 
 8. **Results tab** &mdash; The Results console tab displays the most recent Preview results in tabular format. 
