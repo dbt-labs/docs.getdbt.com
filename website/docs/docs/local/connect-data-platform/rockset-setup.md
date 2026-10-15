@@ -1,5 +1,5 @@
 ---
-title: "Connect Rockset to dbt Core"
+title: "Connect Rockset to dbt v1"
 sidebar_label: "Rockset"
 description: "Read this guide to learn about the Rockset warehouse setup in dbt."
 id: "rockset-setup"
@@ -15,6 +15,7 @@ meta:
   slack_channel_link: 'https://getdbt.slack.com/archives/C02J7AZUAMN'
   platform_name: 'Rockset'
   config_page: '/reference/resource-configs/no-configs'
+availability: local_free
 ---
 
 

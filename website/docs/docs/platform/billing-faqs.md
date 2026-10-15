@@ -5,7 +5,12 @@ description: "Answers to common questions about dbt plans, billing, usage, and t
 id: billing-faqs
 pagination_next: null
 pagination_prev: null
+availability:
+  surface: platform
+  access: login_required
 ---
+
+import DevToStarterUpgradeBody from '/snippets/_dev-to-starter-upgrade-body.md';
 
 <IntroText>
 Common questions about <Constant name="dbt" /> plans, billing, and usage. For pricing and plan details, refer to [Billing](/docs/platform/billing).
@@ -29,6 +34,12 @@ Yes. Your <Constant name="dbt" /> account will be upgraded without impacting you
 
 </Expandable>
 
+<Expandable alt_header="What happens when I upgrade from Developer to Starter?">
+
+<DevToStarterUpgradeBody />
+
+</Expandable>
+
 <Expandable alt_header="How do I determine the right plan for me?">
 
 The best option is to consult with our sales team. They'll help you figure out what is right for your needs. We also offer a free two-week trial on the Starter plan.
@@ -46,3 +57,9 @@ Starter and Enterprise-tier customers can sign up for a free trial of the <Const
 Each account will be limited to 1,000 Queried Metrics per month during the trial period and may be changed at the sole discretion of dbt Labs.
 
 </Expandable>
+
+## dbt Wizard
+
+<Constant name="wizard" /> is billed on usage: metered per token and drawn from your consumption pool. Enterprise and Enterprise+ accounts get a monthly pool; all other plans start with a 30-day trial and a $100 pool.
+
+For trials, consumption pools, spend limits, and BYOK billing, refer to [<Constant name="wizard" /> billing FAQs](/docs/dbt-ai/wizard-billing-faqs).

@@ -1,55 +1,70 @@
 ---
-title: "CI/CD setup for dbt State"
-sidebar_label: "CI/CD setup"
-description: "Learn how to configure dbt State authentication for CI/CD environments using OAuth client credentials."
+title: "Setting up authentication for non-interactive environments"
+sidebar_label: "Set up auth for non-interactive environments"
+description: "Learn how to configure dbt State authentication for CI/CD and other non-interactive environments using service tokens."
 id: "dbt-state-cicd"
 tags: ['dbt State']
+availability: everywhere_usage
 ---
 
-# Setting up CI/CD for dbt State <Lifecycle status="preview" />
+# Setting up authentication for non-interactive environments
 
-:::note
-CI/CD setup only applies when using the standalone [dbt State web app](https://app.state.dbt.com/).
-:::
+In a non-interactive environment, dbt runs without a person available to complete authentication manually &mdash; for example, CI/CD pipelines (such as GitHub Actions, GitLab CI, and Jenkins) and production orchestration tools (such as Airflow and Prefect). Browser-based authentication isn't possible in these environments. Instead, dbt State authenticates using credentials provided through environment variables, allowing it to continue caching state and optimizing your builds.
 
-When running dbt State in CI/CD environments (for example, GitHub Actions, GitLab CI, Jenkins), browser-based authentication is not possible. For this reason, dbt State supports OAuth client credentials for authentication in CI environments.
+dbt State automatically detects when it's running in a non-interactive environment. If valid credentials are not provided, dbt State disables itself and displays a warning, allowing your dbt commands to continue without caching.
 
-dbt State automatically detects when it's running in a CI environment. If OAuth client credentials are not provided, dbt State disables itself and displays a warning, allowing your dbt commands to continue without caching.
+Running dbt in a non-interactive environment requires a service account token for authentication. A <Constant name="dbt_platform" /> account is required to generate a service token; if you don't have one yet, refer to [Set up dbt State](/docs/deploy/dbt-state-setup) to create a free account before proceeding.
 
-## OAuth client credentials
-
-OAuth client authentication requires two credentials:
-
-- **Client ID** — A unique identifier for your OAuth client
-- **Client secret** — A secret key used to authenticate your client
+If you previously signed up for dbt State through the standalone app (`app.state.dbt.com`) and haven't migrated to <Constant name="dbt_platform" /> yet, refer to [OAuth client credentials](/docs/deploy/dbt-state-oauth).
 
 ## Prerequisites
 
-Before configuring CI/CD authentication, make sure you have:
+Before you begin, make sure you have:
 
+- A <Constant name="dbt_platform" /> account.
+- **Owner** or **Account Admin** permissions to create a service token.
 - dbt State installed and configured. Refer to [Set up dbt State](/docs/deploy/dbt-state-setup) for more information.
-- A standalone dbt State account at [app.state.dbt.com](https://app.state.dbt.com/).
-- Admin permissions in your dbt State organization.
 
-## Creating an OAuth client
+## Creating a service token
 
-1. In the [dbt State web app](https://app.state.dbt.com/), navigate to the **Clients** tab.
-2. Click **Add OAuth Client**.
-3. Enter a name and description for the new client and click **Create**.
-4. Copy the client ID and secret to use in your CI/CD environment configuration.
+To create a service account token in <Constant name="dbt_platform" />, refer to [Generate service account tokens](/docs/dbt-apis/service-tokens#generate-service-account-tokens). When adding permissions for the token, assign at least one of the following:
+
+- **Account Admin**
+
+The following are available on Enterprise plans only:
+- **Owner**
+- **Job Admin**
+- **Job Creator**
+- **Job Runner** (Recommended; provides the minimum access required for dbt State)
+- **Developer**
 
 ## Configuring authentication
 
-Once you have the client ID and secret, set the following environment variables in your CI/CD platform. Using environment variables is the recommended approach for CI/CD environments as it keeps sensitive credentials out of your code repository.
+Set the following environment variables in your orchestration environment:
 
 ```bash
-DBT_ENGINE_STATE_OAUTH_CLIENT_ID=your-client-id
-DBT_ENV_SECRET_STATE_OAUTH_CLIENT_SECRET=your-client-secret
+DBT_CLOUD_TOKEN=YOUR_SERVICE_TOKEN
+DBT_CLOUD_ACCOUNT_HOST=YOUR_ACCOUNT_HOST
+DBT_CLOUD_ACCOUNT_ID=YOUR_ACCOUNT_ID
 ```
 
-Make sure to replace `your-client-id` and `your-client-secret` with the values from your OAuth client.
+Replace `YOUR_SERVICE_TOKEN` with your service token, `YOUR_ACCOUNT_HOST` with your [account host](/docs/platform/about-platform/access-regions-ip-addresses) (for example, `abc123.us1.dbt.com`), and `YOUR_ACCOUNT_ID` with your numeric account ID. Go to **Account settings** > **Account** to find your account ID and account host (the hostname from the **Access URL** field).
 
-## Verify dbt State is active
+### Network requirements
+
+If your network or environment restricts outbound traffic, allow the following URLs so dbt State can authenticate and communicate with the <Constant name="dbt_platform" />:
+
+<SimpleTable>
+| URL | Description |
+|-----|-------------|
+| `auth.state.dbt.com` | dbt State authentication |
+| `api.state.dbt.com` | dbt State API |
+| `abc123.us1.dbt.com` | Your <Constant name="dbt_platform" /> [access URL](/docs/platform/about-platform/access-regions-ip-addresses) (Replace with your account's access URL) |
+</SimpleTable>
+
+Once authentication is configured, [verify dbt State is active](#verifying-dbt-state-is-active).
+
+## Verifying dbt State is active
 
 1. Run any dbt transformation job in your orchestrated environment.
 2. Check the log output. You should see a message like this, then the specific dbt State step status:

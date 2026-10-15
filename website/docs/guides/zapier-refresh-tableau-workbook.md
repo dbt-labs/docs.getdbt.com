@@ -67,7 +67,7 @@ Choose **Run Python** as the Event and input the following code:
 
 ```python 
 store = StoreClient('abc123') #replace with your UUID secret
-store.set('DBT_WEBHOOK_KEY', 'abc123') #replace with your <Constant name="dbt" /> Webhook key
+store.set('DBT_WEBHOOK_KEY', 'abc123') #replace with your dbt Webhook key
 store.set('TABLEAU_SITE_URL', 'abc123') #replace with your Tableau Site URL, inclusive of https:// and .com
 store.set('TABLEAU_SITE_NAME', 'abc123') #replace with your Tableau Site/Server Name
 store.set('TABLEAU_API_TOKEN_NAME', 'abc123') #replace with your Tableau API Token Name
@@ -105,14 +105,14 @@ pat_secret = secret_store.get('TABLEAU_API_TOKEN_SECRET')
 workbook_name = "YOUR_WORKBOOK_NAME"
 api_version = "ENTER_COMPATIBLE_VERSION"
 
-#Validate authenticity of webhook coming from <Constant name="dbt" />
+#Validate authenticity of webhook coming from dbt
 auth_header = input_data['auth_header']
 raw_body = input_data['raw_body']
 
 signature = hmac.new(hook_secret.encode('utf-8'), raw_body.encode('utf-8'), hashlib.sha256).hexdigest()
 
 if signature != auth_header:
-raise Exception("Calculated signature doesn't match contents of the Authorization header. This webhook may not have been sent from <Constant name="dbt" />.")
+raise Exception("Calculated signature doesn't match contents of the Authorization header. This webhook may not have been sent from dbt.")
 
 full_body = json.loads(raw_body)
 hook_data = full_body['data'] 

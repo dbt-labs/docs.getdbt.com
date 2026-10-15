@@ -1,6 +1,10 @@
 ---
 title: "Use cases and examples for the Discovery API"
 sidebar_label: "Uses and examples"
+availability:
+  surface: platform
+  access: paid_plan
+  minPlan: starter
 ---
 
 With the Discovery API, you can query the metadata in <Constant name="dbt" /> to learn more about your dbt deployments and the data it generates to analyze them and make improvements.
@@ -234,13 +238,29 @@ New example:
 ```graphql
 query ($jobId: BigInt!, $runId: BigInt!) {
   job(id: $jobId, runId: $runId) {
-    models {
+    models(first: 10, after: "{somePaginationCursorValue}") {
       name
       status
       tests {
         name
         status
       }
+      paginationCursor
+    }
+  }
+}
+```
+
+For jobs with many models, paginate with `first`, `after`, and `paginationCursor`. Refer to [Job-based queries](/docs/dbt-apis/discovery-querying#job-based-queries) in the Discovery API querying guide.
+
+```graphql
+query JobModelsPage($jobId: BigInt!, $runId: BigInt, $first: Int!, $after: String) {
+  job(id: $jobId, runId: $runId) {
+    models(first: $first, after: $after) {
+      uniqueId
+      name
+      status
+      paginationCursor
     }
   }
 }

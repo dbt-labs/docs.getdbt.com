@@ -2,11 +2,17 @@
 title: "APIs Overview"
 description: "Learn how dbt accounts on the Enterprise-tier plans can query the dbt APIs."
 id: "overview"
-pagination_next: "docs/dbt-apis/user-tokens"
+pagination_next: "docs/dbt-apis/rate-limits"
 pagination_prev: null
+availability:
+  surface: platform
+  access: paid_plan
+  minPlan: starter
 ---
 
-# APIs overview <Lifecycle status="self_service,managed,managed_plus" />
+import ApiRateLimitsCallout from '/snippets/_api-rate-limits-callout.md';
+
+# APIs overview
 
 Accounts on the Starter, Enterprise, and Enterprise+ plans can query the <Constant name="dbt" /> APIs.
 
@@ -17,6 +23,8 @@ Accounts on the Starter, Enterprise, and Enterprise+ plans can query the <Consta
 - The [<Constant name="semantic_layer" /> APIs](/docs/dbt-apis/sl-api-overview) provides multiple API options which allow you to query your metrics defined in the <Constant name="semantic_layer" />.
 
 If you want to learn more about webhooks, refer to [Webhooks for your jobs](/docs/deploy/webhooks).
+
+<ApiRateLimitsCallout />
 
 ## How to Access the APIs
 

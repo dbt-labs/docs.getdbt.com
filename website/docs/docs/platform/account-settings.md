@@ -2,6 +2,9 @@
 title: "Account settings in dbt"
 sidebar_label: "Account settings" 
 description: "Learn how to enable account settings for your dbt users."
+availability:
+  surface: platform
+  access: login_required
 ---
 
 The following sections describe the different **Account settings** available from your <Constant name="dbt" /> account in the sidebar (under your account name on the lower left-hand side). 
@@ -29,7 +32,8 @@ For improved reliability and performance on your job runs, you can enable <Const
 - <Constant name="git" /> authentication fails.
 - There are syntax errors in the `packages.yml` file. You can set up and use [continuous integration (CI)](/docs/deploy/continuous-integration) to find these errors sooner.
 - If a package doesn't work with the current dbt version. You can set up and use [continuous integration (CI)](/docs/deploy/continuous-integration) to identify this issue sooner.
-- Note, <Constant name="git" /> repository caching should not be used for CI jobs. CI jobs are designed to test the latest code changes in a pull request and ensure your code is up to date. Using a cached copy of the repo in CI jobs could result in stale code being tested.
+
+Repository caching is a single account-level setting, which means you don't need to configure it per job or environment. dbt automatically skips the cache for CI jobs, so they always test the latest code in your pull request.
 
 To use, select the **Enable repository caching** option from your account settings. 
 
@@ -64,14 +68,6 @@ To use Advanced CI features, your <Constant name="dbt" /> account must have acce
 Once enabled, the **dbt compare** option becomes available in the CI job settings for you to select.
 
 <Lightbox src="/img/docs/deploy/account-settings-advanced-ci.png" width="85%" title="The Enable account access to Advanced CI option" />
-
-### Enabling external metadata ingestion in dbt Catalog <Lifecycle status='self_service,managed,managed_plus' />
-
-[<Constant name="catalog" />](/docs/explore/explore-projects) allows you to view your project's resources (for example, models, tests, and metrics), their lineage, and model consumption to gain a better understanding of your project's latest production state.
-
-You can bring [external metadata](/docs/explore/external-metadata-ingestion) into <Constant name="catalog" /> by connecting directly to your warehouse. This enables you to view tables and other assets that aren't defined in dbt. Currently, external metadata ingestion is supported for Snowflake only.
-
-To use external metadata ingestion, you must be an [account admin](/docs/platform/manage-access/enterprise-permissions#account-admin) with permission to edit connections. Enable <Constant name="catalog" /> in your account by selecting the **Ingest external metadata in dbt Catalog (formerly dbt Explorer)** option from your account settings. For more information, see [Enable external metadata ingestion](/docs/explore/external-metadata-ingestion#enable-external-metadata-ingestion).
 
 ### Enable global account discovery
 

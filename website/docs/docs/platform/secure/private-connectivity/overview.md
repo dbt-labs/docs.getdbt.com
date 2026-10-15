@@ -3,6 +3,10 @@ title: "About private connectivity"
 id: private-connectivity
 description: "Configuring private connections."
 sidebar_label: "About private connectivity"
+availability:
+  surface: platform
+  access: paid_plan
+  minPlan: enterprise_plus
 ---
 
 import SetUpPages from '/snippets/_available-tiers-enterprise-plus.md';
@@ -11,11 +15,13 @@ import PrivateLinkHostnameWarning from '/snippets/_private-connection-hostname-r
 
 <SetUpPages />
 
-<PrivateLinkHostnameWarning />
-
 Private connections enables secure communication from any <Constant name="dbt" /> environment to your data platform hosted on a cloud provider, such as [AWS](https://aws.amazon.com/privatelink/), [Azure](https://azure.microsoft.com/en-us/products/private-link), or [GCP](https://cloud.google.com/vpc/docs/private-service-connect), using that provider's private connection technology. Private connections allow <Constant name="dbt" /> customers to meet security and compliance controls as it allows connectivity between <Constant name="dbt" /> and your data platform without traversing the public internet. This feature is supported in most regions across North America, Europe, and Asia, but [contact us](https://www.getdbt.com/contact/) if you have questions about availability.
 
 <CloudProviders />
+## Private endpoint configuration
+
+
+<PrivateLinkHostnameWarning />
 
 
 ## Available platforms

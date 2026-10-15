@@ -1,12 +1,15 @@
 ---
-title: "Use skills with dbt Wizard in the dbt platform"
+title: "Use skills with dbt Wizard in dbt platform"
 id: "wizard-platform-skills"
-description: "Create and use skills to give dbt Wizard in the dbt platform reusable, project-specific instructions."
+description: "Create and use skills to give dbt Wizard in dbt platform reusable, project-specific instructions."
 sidebar_label: "Use skills"
 tags: [AI, Wizard]
+pagination_prev: "docs/platform/wizard-home"
+pagination_next: "docs/dbt-ai/wizard-platform-mcp"
+availability: platform_usage
 ---
 
-# Use skills with <Constant name="wizard" /> in the <Constant name="dbt_platform" /> <Lifecycle status="beta"/>
+# Use skills with <Constant name="wizard" /> in <Constant name="dbt_platform" /> <Lifecycle status="beta"/>
 
 <IntroText>
 Skills are reusable instructions that help <Constant name="wizard" /> follow your team's SQL conventions, naming rules, modeling patterns, and workflows without repeating them in every prompt.
@@ -86,7 +89,7 @@ In the <Constant name="wizard"/> chat panel:
 
 ## Built-in dbt skills
 
-<Constant name="wizard"/> ships with skills from [dbt Agent Skills](https://github.com/dbt-labs/dbt-agent-skills), maintained by dbt Labs and the community. These capture analytics engineering knowledge for common workflows and are always available. The agent loads the relevant skill automatically when your prompt matches its use case.
+<Constant name="wizard"/> ships with skills from [dbt Agent Skills](https://github.com/dbt-labs/dbt-agent-skills), maintained by dbt Labs and the community. These capture analytics engineering knowledge for common workflows and all ship bundled with <Constant name="wizard"/>. You don't call them directly as the agent loads whichever one matches your prompt.
 
 For the latest catalog, refer to the [dbt Agent Skills repository](https://github.com/dbt-labs/dbt-agent-skills).
 

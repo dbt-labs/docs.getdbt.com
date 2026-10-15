@@ -5,9 +5,13 @@ sidebar_label: "Project dependencies"
 description: "Reference public models across dbt projects"
 pagination_next: null
 keyword: dbt mesh, project dependencies, ref, cross project ref, project dependencies
+availability:
+  surface: platform
+  access: paid_plan
+  minPlan: enterprise
 ---
 
-# Project dependencies <Lifecycle status='managed,managed_plus'/>
+# Project dependencies
 
 <IntroText>
 
@@ -169,4 +173,4 @@ These are the exceptions, rather than the rule. Installing another team's projec
 ## Related docs
 - Refer to the [<Constant name="mesh" />](/best-practices/how-we-mesh/mesh-1-intro) guide for more guidance on how to use <Constant name="mesh" />.
 - [Quickstart with <Constant name="mesh" />](/guides/mesh-qs)
-- [Hybrid development with <Constant name="dbt_platform"/> and <Constant name="fusion"/>](/guides/fusion-platform-local-workflow) — manage credentials, env vars, deferral, and <Constant name="fusion"/> versions when developing locally against a Mesh project
+- [Hybrid development with <Constant name="dbt_platform"/> and <Constant name="fusion"/>](/guides/dbt-platform-local-workflow) — manage credentials, env vars, deferral, and <Constant name="fusion"/> versions when developing locally against a Mesh project

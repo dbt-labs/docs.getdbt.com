@@ -2,6 +2,9 @@
 title: "Connect to GitLab"
 description: "Learn how connecting your GitLab account provides convenience and another layer of security to dbt."
 id: "connect-gitlab"
+availability:
+  surface: platform
+  access: login_required
 ---
 
 

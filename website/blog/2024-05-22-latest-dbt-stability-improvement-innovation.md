@@ -42,7 +42,7 @@ Any new change to dbt-core and adapters goes through the following steps before 
 
 ### **Step 1: Unit & functional tests in dbt Core + adapters**
 
-First up is a battery of thousands of tests that we run dozens of times per day. No change, in either dbt-core or in the [data platform adapters](https://docs.getdbt.com/docs/trusted-adapters) supported by dbt Cloud, is merged until it has passed this full suite of tests. 
+First up is a battery of thousands of tests that we run dozens of times per day. No change, in either dbt-core or in the [data platform adapters](https://docs.getdbt.com/docs/community-adapters) supported by dbt Cloud, is merged until it has passed this full suite of tests. 
 
 Here, *unit tests* test internal components in isolation from one another, and *functional tests* represent edge cases in expected behavior under known conditions.
 
@@ -110,13 +110,13 @@ We all want the benefits of a stable, actively maintained product. Occasionally 
 
 To accommodate both groups in these scenarios, we've extended dbt to support project-level behavior flags. These can be used to *opt into* or *opt out of* changes to default behavior. From now on, backward-incompatible changes to dbt functionality will be implemented behind a flag with a default value that preserves the legacy behavior. After a few months, the new behavior will become the default — but only after some proactive communication with customers and external package maintainers.
 
-The same behavior change flags will naturally extend to dbt packages, which are fundamentally just dbt projects. This allows package maintainers to ensure that behavior doesn't change unexpectedly as a result of changes to dbt Core. For more details, check out our user documentation on [legacy behaviors](https://docs.getdbt.com/reference/global-configs/legacy-behaviors#behaviors), as well as our [contributor documentation](https://github.com/dbt-labs/dbt-core/blob/main/docs/eli64/behavior-change-flags.md) for introducing behavior changes safely.
+The same behavior change flags will naturally extend to dbt packages, which are fundamentally just dbt projects. This allows package maintainers to ensure that behavior doesn't change unexpectedly as a result of changes to dbt Core. For more details, check out our user documentation on [legacy behaviors](https://docs.getdbt.com/reference/global-configs/legacy-behaviors#behaviors), as well as our [contributor documentation](https://github.com/dbt-labs/dbt/blob/main/docs/eli64/behavior-change-flags.md) for introducing behavior changes safely.
 
 ### Stability for metadata artifacts
 
 Lastly, we’ve revisited our process around artifact interfaces. These are the workhorses of many integrations in the dbt ecosystem: those maintained by dbt Labs, by third-party vendors, or just homegrown at a particular organization. While these schemas have been versioned and well-defined since dbt Core v1.0, they have changed in many of the minor releases since.
 
-We’ve now [formalized our development best practices](https://github.com/dbt-labs/dbt-core/blob/1.latest/docs/arch/7_Artifacts.md) to strongly prefer minor schema evolutions over major breaking changes. We’ve also put [checks in place](https://github.com/dbt-labs/dbt-core/blob/1.latest/.github/workflows/check-artifact-changes.yml) to ensure we’re not unintentionally introducing breaking changes to artifacts, thus avoiding disruption to integrations across the ecosystem.
+We’ve now [formalized our development best practices](https://github.com/dbt-labs/dbt/blob/1.latest/docs/arch/7_Artifacts.md) to strongly prefer minor schema evolutions over major breaking changes. We’ve also put [checks in place](https://github.com/dbt-labs/dbt/blob/1.latest/.github/workflows/check-artifact-changes.yml) to ensure we’re not unintentionally introducing breaking changes to artifacts, thus avoiding disruption to integrations across the ecosystem.
 
 ## Our commitment
 

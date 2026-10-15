@@ -1,10 +1,10 @@
 # position: 2.5 # float position is supported
-label: 'dbt Core'
+label: 'dbt v1'
 collapsible: true # make the category collapsible
 collapsed: true # keep the category collapsed by default
 className: red
 link:
   type: generated-index
-  title: 'dbt Core FAQs'
+  title: 'dbt v1 FAQs'
 customProps:
-  description: Frequently asked questions about dbt Core
+  description: Frequently asked questions about dbt v1

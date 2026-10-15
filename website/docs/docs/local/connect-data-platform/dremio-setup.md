@@ -1,5 +1,5 @@
 ---
-title: "Connect Dremio to dbt Core"
+title: "Connect Dremio to dbt v1"
 sidebar_label: "Dremio"
 description: "Read this guide to learn about the Dremio warehouse setup in dbt."
 meta:
@@ -14,6 +14,7 @@ meta:
   slack_channel_link: '[https://www.getdbt.com/community](https://getdbt.slack.com/archives/C049G61TKBK)'
   platform_name: 'Dremio'
   config_page: '/reference/resource-configs/no-configs'
+availability: local_free
 ---
 
 import SetUpPages from '/snippets/_setup-pages-intro.md';

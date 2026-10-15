@@ -224,7 +224,7 @@ Now that you've set up the foundational project, let's start building the data a
 Before a downstream team can leverage assets from this foundational project, you need to first:
 - [Create and define](/docs/mesh/govern/model-access) at least one model as “public”
 - Run a [deployment job](/docs/deploy/deploy-jobs) successfully
-  - Note, Enable [**Generate docs on run**](/docs/deploy/deploy-jobs) for this job to update assets in <Constant name="catalog" />. Once run, you can click **Catalog** from the main navigation and select your project to see its lineage, tests, and documentation coming through successfully.
+  - Note, <VersionBlock lastVersion="1.99">enable [**Generate docs on run**](/docs/deploy/deploy-jobs) for this job to update assets in <Constant name="catalog" />.</VersionBlock><VersionBlock firstVersion="2.0">this job updates assets in <Constant name="catalog" /> automatically.</VersionBlock> Once run, you can click **Catalog** from the main navigation and select your project to see its lineage, tests, and documentation coming through successfully.
 
 ## Define a public model and run first job
 
@@ -296,9 +296,13 @@ Before a downstream team can leverage assets from this foundational project, you
 To run your first deployment <Constant name="dbt" /> job, you will need to create a new <Constant name="dbt" /> job.  
 1. Go to **Orchestration** > **Jobs**. 
 2. Click **Create job** and then **Deploy job**.
-3. Select the **Generate docs on run** option. This will hydrate your metadata in <Constant name="catalog"/>.
+3. <VersionBlock lastVersion="1.99">Select the **Generate docs on run** option. This will hydrate your metadata in <Constant name="catalog"/>.</VersionBlock><VersionBlock firstVersion="2.0">Keep the default `dbt build` command. Every job run hydrates your metadata in <Constant name="catalog"/> automatically.</VersionBlock>
+
+<VersionBlock lastVersion="1.99">
 
 <Lightbox src="/img/guides/dbt-mesh/generate_docs_on_run.png" width="75%" title=" Select the 'Generate docs on run' option when configuring your dbt job." />
+
+</VersionBlock>
 
 4. Click **Save**.
 5. Click **Run now** to trigger the job.
@@ -640,7 +644,7 @@ Here are some additional resources to help you continue your journey:
 - [Implement <Constant name="mesh" /> with the <Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/sl-faqs#how-can-i-implement-dbt-mesh-with-the-dbt-semantic-layer)
 - [Cross-project references](/docs/mesh/govern/project-dependencies#how-to-write-cross-project-ref)
 - [<Constant name="catalog" />](/docs/explore/explore-projects)
-- [Hybrid development with <Constant name="dbt_platform"/> and <Constant name="fusion"/>](/guides/fusion-platform-local-workflow) — keep your local and platform environments in sync across credentials, env vars, and <Constant name="fusion"/> versions
+- [Hybrid development with <Constant name="dbt_platform"/> and <Constant name="fusion"/>](/guides/dbt-platform-local-workflow) — keep your local and platform environments in sync across credentials, env vars, and <Constant name="fusion"/> versions
 
 </ConfettiTrigger>
 

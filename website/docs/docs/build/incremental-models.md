@@ -4,6 +4,7 @@ description: "Learn how to configure and optimize incremental models when develo
 id: "incremental-models"
 keywords: ["incremental models", "incremental materialization","incremental", "materialization", "incremental model", "incremental strategy", "incremental model configuration", "incremental predicates"]
 intro_text: "Learn how to configure and optimize incremental models when developing in dbt."
+availability: all_users
 ---
 
 import SnowflakeColumn from '/snippets/_snowflake-column-size.md';
@@ -229,4 +230,3 @@ If you add a column to your incremental model, and execute a `dbt run`, this col
 If you remove a column from your incremental model and execute a `dbt run`, `dbt run` will fail.
 
 Instead, whenever the logic of your incremental changes, execute a full-refresh run of both your incremental model and any downstream models.
-

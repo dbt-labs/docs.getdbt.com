@@ -1,4 +1,5 @@
 ---
+description: "Customize the single-character delimiter dbt uses to separate values when loading a seed file."
 resource_types: [seeds]
 datatype: <string>
 default_value: ","

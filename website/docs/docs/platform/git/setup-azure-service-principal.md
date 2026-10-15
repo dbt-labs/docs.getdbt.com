@@ -3,9 +3,13 @@ title: "Set up Azure DevOps"
 id: "setup-service-principal"
 description: "You can set up your Azure DevOps by creating a Microsoft Entra ID app and adding it to dbt."
 sidebar_label: "Set up service principal"
+availability:
+  surface: platform
+  access: paid_plan
+  minPlan: enterprise
 ---
 
-# Set up Azure DevOps <Lifecycle status="managed,managed_plus" />
+# Set up Azure DevOps
 
 ## Service principal overview
 
@@ -33,6 +37,12 @@ The following personas are required to complete the steps on this page:
 - Azure admin (if your Entra ID and Azure DevOps environments are not connected)
 
 ## Register a Microsoft Entra ID app
+
+:::info Admin consent
+
+If your tenant is configured to disallow user self-consent, an Entra ID admin must grant tenant-wide admin consent to this app after you add the API permissions (Enterprise Applications -> your app -> Permissions -> Grant admin consent).
+
+:::
 
 A Microsoft Entra ID admin needs to perform the following steps:
 

@@ -3,9 +3,13 @@ title: "Configuring Snowflake and AWS PrivateLink"
 id: aws-snowflake
 description: "Configuring AWS PrivateLink for Snowflake."
 sidebar_label: "Snowflake"
+availability:
+  surface: platform
+  access: paid_plan
+  minPlan: enterprise_plus
 ---
 
-# Configuring Snowflake PrivateLink <Lifecycle status="managed_plus" />
+# Configuring Snowflake PrivateLink
 
 import SetUpPages from '/snippets/_available-tiers-enterprise-plus.md';
 import PrivateLinkCreateConnection from '/snippets/_privatelink-create-connection.md';
@@ -62,7 +66,7 @@ After Snowflake confirms they've allowlisted <Constant name="dbt" /> Labs' AWS a
    - **Connectivity status** (for example, **Success** or **Unknown**)
    - **Connections** — the number of <Constant name="dbt_platform" /> connections using the endpoint
 
-   You can search by **Name** or **URL**. You can only _create_ new endpoints for Snowflake at this time. To delete an endpoint, contact [dbt Support](mailto:support@getdbt.com).
+   You can search by **Name** or **URL**. The table lists all private endpoints in your account, but self-serve create, edit, and delete is only available for Snowflake on AWS at this time.
 
     <Lightbox src="/img/docs/dbt-platform/private-endpoint-page.png" title="Private endpoints table showing existing endpoints, connectivity status, and the Request new button"/>
 
@@ -82,6 +86,33 @@ Once you configure PrivateLink on the **Connections** page, you'll see the new e
 :::note DNS propagation
 If the connection test fails immediately after setup, this is expected &mdash; it doesn't mean something is wrong. DNS changes can take a few minutes to propagate. Wait a few minutes, then test again before contacting support.
 :::
+
+<Expandable alt_header="Edit or delete a private endpoint" is_open={true}>
+
+If you don't see **Edit** or **Delete endpoint**, contact your account manager to enable private endpoint updates for your account.
+
+**Edit an endpoint**
+
+1. In the **Private endpoints** table, click the endpoint you want to update.
+2. On the endpoint details page, click **Edit**.
+3. Update **Name** and/or **Port** as needed.
+4. Click **Save changes**.
+5. In the **Save changes?** modal, click **Save changes** to apply your updates.
+
+<Lightbox src="/img/docs/dbt-platform/private-endpoint-details-edit.png" title="Private endpoint details page with the Edit button" />
+
+**Delete an endpoint**
+
+An endpoint with associated connections can't be deleted. Remove those connections first.
+
+1. In the **Private endpoints** table, click the endpoint you want to delete.
+2. On the endpoint details page, click **Edit**.
+3. Scroll to the bottom of the page and click **Delete endpoint**.
+4. In the **Delete endpoint** modal, type `DELETE` to confirm, then click **Delete endpoint**.
+
+<Lightbox src="/img/docs/dbt-platform/private-endpoint-details-delete.png" title="Private endpoint details page in edit mode with the Delete endpoint button" />
+
+</Expandable>
 
 #### Duplicate endpoint requests
 
@@ -153,7 +184,7 @@ If an Internal Stage PrivateLink endpoint has been provisioned, your dbt environ
 
 1. Obtain the Internal Stage PrivateLink endpoint DNS from dbt Support. For example, `*.vpce-012345678abcdefgh-4321dcba.s3.us-west-2.vpce.amazonaws.com`.
 2. In the appropriate dbt project, navigate to **Orchestration** → **Environments**.
-3. In any environment that should use the dbt Internal Stage PrivateLink endpoint, set an **Extended Attribute** similar to the following:
+3. Open the environment that should use the dbt Internal Stage PrivateLink endpoint and set **Extended attributes**. Configuration steps differ for deployment and development; refer to [Extended attributes](/docs/dbt-platform-environments#extended-attributes). Use a value similar to the following:
 ```
 s3_stage_vpce_dns_name: '*.vpce-012345678abcdefgh-4321dcba.s3.us-west-2.vpce.amazonaws.com'
 ```
@@ -166,7 +197,7 @@ If your organization uses [Snowflake Network Policies](https://docs.snowflake.co
 
 You need a VPCE ID to create a network policy in Snowflake:
 1. In <Constant name="dbt_platform" />, go to **Account settings → Private endpoints** 
-2. Open your endpoint and locate its **VPCE ID** field on the endpoint details page. 
+2. Click the endpoint in the table, then locate its **Endpoint identifier** field on the endpoint details page. 
 3. If you configured PrivateLink through [Support-led setup](#support-led-setup), or **Private endpoints** is not available in your account settings, contact [<Constant name="dbt" /> Support](mailto:support@getdbt.com) to obtain the VPCE ID. 
 4. If you're creating an endpoint for Internal Stage, the VPCE ID is different from the VPCE ID for the main service endpoint.
 

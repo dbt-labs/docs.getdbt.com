@@ -1,0 +1,50 @@
+{
+	"docs.md frontmatter": {
+		"isFileTemplate":true, //
+		"prefix": "docs",
+		"body": [
+		  "---",
+		  "title: \"File title\"",
+		  "id: \"$TM_FILENAME\"",
+		  "description: \"Add clear description.\"",
+		  "tags: [\"product tag, if applicable\"]",
+		  "---"
+		],
+		"description": "This autocompletes the frontmatter properties for a new .md file"
+	  },
+	"availability: all_users": {
+		"prefix": "availability-all-users",
+		"body": "availability: all_users",
+		"description": "Applies to every dbt user, regardless of surface. No badge is rendered."
+	},
+	"availability: platform_login": {
+		"prefix": "availability-platform-login",
+		"body": "availability: platform_login",
+		"description": "dbt platform feature available to all signed-in users (free account, no paid plan)."
+	},
+	"availability: local_free": {
+		"prefix": "availability-local-free",
+		"body": "availability: local_free",
+		"description": "Local/CLI tool with no login required."
+	},
+	"availability: local_all": {
+		"prefix": "availability-local-all",
+		"body": "availability: local_all",
+		"description": "Local tool that also works with dbt platform-connected projects, any dbt version."
+	},
+	"availability: everywhere_usage": {
+		"prefix": "availability-everywhere-usage",
+		"body": "availability: everywhere_usage",
+		"description": "Works across every surface, needs a free dbt account, and is billed on usage."
+	},
+	"availability: paid_plan": {
+		"prefix": "availability-paid-plan",
+		"body": [
+			"availability:",
+			"  surface: ${1|platform,local,local_development|}",
+			"  access: paid_plan",
+			"  minPlan: ${2|starter,enterprise,enterprise_plus|}"
+		],
+		"description": "Paid-plan feature. minPlan is a tier and everything above it (\"starter\" = starter and up)."
+	}
+}

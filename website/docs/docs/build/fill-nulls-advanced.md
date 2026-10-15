@@ -3,6 +3,7 @@ title: "Fill null values for metrics"
 id: fill-nulls-advanced
 description: "Learn about advanced topics for dbt Semantic Layer and MetricFlow, such as modeling workflows and more."
 sidebar_label: Fill null values for metrics
+availability: all_users
 ---
 
 Understanding and implementing strategies to fill null values in metrics is key for accurate analytics. This guide explains `fill_nulls_with` and `join_to_timespine` to ensure data completeness, helping end users make more informed decisions and enhancing your dbt workflows.
