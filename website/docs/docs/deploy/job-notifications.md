@@ -326,7 +326,7 @@ To resolve this, have an Entra admin (Cloud Application Administrator or Global 
 - Complete the **Link** step themselves and approve the consent prompt.
 - Grant admin consent for the `dbt-cloud-integration` app from **Enterprise applications** in the Entra admin center.
 
-After admin consent is granted, retry the **Link** flow in <Constant name="dbt_platform" />.
+After admin consent is granted, retry the **Link** flow in <Constant name="dbt_platform" />. For more information, refer to the [Microsoft documentation](https://learn.microsoft.com/en-us/answers/questions/5637987/corporate-account-apps-registration-error-aadsts90).
 
 ### Configure Teams notifications
 
