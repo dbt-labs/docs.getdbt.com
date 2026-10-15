@@ -19,7 +19,7 @@ If you're developing with the <Constant name="studio_ide" />, you can refer to t
 
 This section clarifies where you can use [Jinja](/docs/build/jinja-macros), nest [vars](/reference/dbt-jinja-functions/var) and [`env_var`](/reference/dbt-jinja-functions/env_var) in your YAML files. For a full file-by-file reference, refer to [Jinja support by file type](/reference/jinja-file-support).
 
-<VersionBlock lastVersion="1.12">
+<VersionBlock lastVersion="1.99">
 
 - You can use Jinja in almost every YAML file in dbt. The [`dependencies.yml` file](/docs/build/packages#use-cases) is the main exception: <Constant name="core" /> does not support Jinja in that file.
 
