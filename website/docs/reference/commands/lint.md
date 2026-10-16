@@ -277,6 +277,24 @@ Because [linting in the <Constant name="studio_ide" />](/docs/platform/studio-id
 
 If you need SQLFluff behavior, you can either lint in the <Constant name="studio_ide" />, which continues to run SQLFluff, or run SQLFluff locally using the standalone <Constant name="core" /> engine templater. Refer to [<Constant name="fusion" /> limitations](/docs/dbt/supported-features#limitations) for more information.
 
+## Promoting lint warnings to errors
+
+By default, rules without an autofix report as warnings and don't fail `dbt lint`. Violations that `--fix` can fix are errors, so they fail the command.
+
+To fail the run on a warning, add its name to `warn_error_options` in `dbt_project.yml`. Use the name in the lint output. For example, rule `ST05` is reported as `PreferCTE`:
+
+```yaml
+flags:
+  warn_error_options:
+    error:
+      - PreferCTE
+```
+
+
+Setting `error: all` promotes every dbt warning, including warnings from commands other than lint. To promote one lint rule, list that rule by name. Refer to [Warnings](/reference/global-configs/warnings).
+
+In a CI job, the **Linting** checkbox runs `dbt lint` and uses this project file. Select **Stop running on error** to fail the job when lint reports an error. The **Commands** list doesn't accept `dbt lint`. Refer to [SQL linting](/docs/deploy/continuous-integration#sql-linting).
+
 ## Limitations
 
 Keep these limitations in mind:
@@ -289,6 +307,8 @@ The following rules report violations but can't be auto-fixed by `--fix`. They r
 - **References:** `RF01`, `RF02`, `RF04`, `RF05`
 - **Structure:** `ST03`, `ST04`, `ST05`, `ST06`, `ST07`, `ST09`, `ST10`, `ST11`
 - **Ambiguity / convention:** `AM01`, `AM06`, `CV08`, `CV09`, `CV12`
+
+To fail the run on one of these rules, refer to [Promoting lint warnings to errors](#promoting-lint-warnings-to-errors).
 
 ### Single fix pass
 
