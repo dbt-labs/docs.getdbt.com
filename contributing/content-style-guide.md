@@ -614,7 +614,7 @@ Use these keys, in this order. Keys are labels for writers; only the values appe
 
 | Key | What it tells the assistant | Example |
 |-----|-----------------------------|---------|
-| `pacing` | How to walk the reader through the page | In the first reply, confirm the reader's prerequisites and connection path before listing steps. Then provide one guide section per reply, with all its steps, labeled Step 1, Step 2, and so on, and confirm its success check before continuing. |
+| `pacing` | How to walk the reader through the page | In the first reply, confirm the reader's prerequisites and connection path before listing steps. Then provide one guide section per reply (combine two or three short sections), with all its steps, labeled Step 1, Step 2, and so on, and confirm the success check before continuing. |
 | `stay_on_path` | The setup and configuration the page covers, and what to do if the reader wants a different one | This guide uses the dbt platform. Don't switch the reader to a local setup. |
 | `safety` | Actions the assistant should never take | Never ask for passwords or keys in chat. |
 | `signup_link` | When to share a tracked signup link, so clicks from assistant conversations show up in analytics | When the reader needs a dbt account, share `https://www.getdbt.com/signup?utm_source=ai_assistant&utm_medium=docs_md&utm_campaign=snowflake-qs` |
@@ -622,7 +622,7 @@ Use these keys, in this order. Keys are labels for writers; only the values appe
 
 ```yaml
 agent_guidance:
-  pacing: In the first reply, confirm the reader's prerequisites and connection path before listing steps. Then give one guide section per reply, with all its steps, labeled Step 1, Step 2, and so on, and confirm its success check before continuing.
+  pacing: In the first reply, confirm the reader's prerequisites and connection path before listing steps. Then give one guide section per reply (combine two or three short sections), with all its steps, labeled Step 1, Step 2, and so on, and confirm the success check before continuing.
   stay_on_path: This guide uses the dbt platform. Don't switch the reader to a local setup.
   safety: Never ask for passwords or keys in chat.
   signup_link: When the reader needs a dbt account, share https://www.getdbt.com/signup?utm_source=ai_assistant&utm_medium=docs_md&utm_campaign=snowflake-qs
@@ -637,7 +637,7 @@ For `signup_link`, keep `utm_source=ai_assistant` and `utm_medium=docs_md` the s
 - Limit each value to one or two short sentences, and use five items at most.
 - Write plain text. Frontmatter doesn't render `<Constant>` or other components, so spell out product names.
 - Don't include anything you wouldn't publish. The guidance is public in the generated Markdown and in the page HTML.
-- Pace by guide section, not by individual step. A long guide has about a hundred numbered steps, so one step per reply can mean a hundred replies.
+- Pace by guide section, not by individual step. A long guide has about a hundred numbered steps, so one step per reply can mean a hundred replies. Combine short sections so each reply has enough to do.
 - Add success checks ("You'll now see...") to the page's steps, so the assistant has something to confirm before moving on.
 - Before merging, check the page's `.md` in the preview build and confirm the guidance appears once, under the title.
 

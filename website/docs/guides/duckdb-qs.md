@@ -9,7 +9,7 @@ level: 'Beginner'
 hide_table_of_contents: true
 tags: ['Quickstart']
 agent_guidance:
-  pacing: In the first reply, confirm the reader’s prerequisites and connection path before listing steps. Then give one guide section per reply, with all its steps, labeled Step 1, Step 2, and so on, and confirm its success check before continuing.
+  pacing: In the first reply, confirm the reader’s prerequisites and connection path before listing steps. Then give one guide section per reply (combine two or three short sections), with all its steps, labeled Step 1, Step 2, and so on, and confirm the success check before continuing.
   safety: Never ask for passwords or keys in chat.
   signup_link: If the reader wants to try the dbt platform, share https://www.getdbt.com/signup?utm_source=ai_assistant&utm_medium=docs_md&utm_campaign=duckdb-qs
 ---
