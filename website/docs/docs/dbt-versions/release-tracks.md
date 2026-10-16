@@ -39,6 +39,14 @@ _`v2 Stable` is the default for all new <Constant name="fusion" />-powered proje
 | **v1 Extended** | The previous month's **v1 Compatible** release. | Enterprise, Enterprise+ | `extended` |
 | **v1 Fallback** | The previous month's **v1 Extended** release. | Enterprise+ | `fallback` |
 
+:::note API differences
+
+The API calls for release tracks use differnt names than what's available in the UI. They use legacy naming that's been retired. We plan on updating these in the near future by providing aliases to the new names. We'll alert customers when these become availabl and update this page.
+
+Anything prefixed with `fusion` aligns with v2 and those without prefixes are for v1. 
+
+:::
+
 To configure an environment in the [dbt Admin API](/docs/dbt-apis/admin-api) or [Terraform](https://registry.terraform.io/providers/dbt-labs/dbtcloud/latest) to use a release track, set `dbt_version` to the release track name:
 - `fusion-nightly`
 - `fusion-stable` (formerly `latest-fusion`)
@@ -127,36 +135,25 @@ Switching to **v2 Fallback** alerts the dbt Support team, who may reach out to h
 
 ### How to upgrade {#upgrade-tips}
 
-If you regularly develop your dbt project in <Constant name="dbt" />, and you're still running on a legacy version of <Constant name="core" />, dbt Labs recommends that you try upgrading your project in a development environment. [Override your dbt version in development](/docs/dbt-versions/upgrade-dbt-platform-version#override-dbt-version). Then, launch the <Constant name="studio_ide" /> or <Constant name="platform_cli" /> and do your development work as usual. Everything should work as you expect.
+If you're running a deprecated version of dbt, we recommend that you upgrade or delete your project. For more information about the right path for you, refer to [Migrate off legacy dbt versions](/guides/migrate-off-legacy-dbt-versions)
 
-If you do see something unexpected or surprising, revert back to the previous version and record the differences you observed. [Contact <Constant name="dbt" /> support](/docs/dbt-support#dbt-cloud-support) with your findings for a more detailed investigation.
-
-Next, we recommend that you try upgrading your project’s [deployment environment](/docs/dbt-versions/upgrade-dbt-platform-version#environments). If your project has a [staging deployment environment](/docs/deploy/deploy-environments#staging-environment), upgrade and try working with it for a few days before you proceed with upgrading the production environment. 
-
-If your organization has multiple dbt projects, we recommend starting your upgrade with projects that are smaller, newer, or more familiar for your team. That way, if you do encounter any issues, it'll be easier and faster to troubleshoot those before proceeding to upgrade larger or more complex projects.
+We recommend you start upgrading projects that are smaller, newer, or more familiar for your team first. They'll be faster and easier to troubleshoot and enable you to more efficiently migrate complex projects.
 
 ### Considerations
 
 To learn more about how dbt Labs deploys stable dbt upgrades in a safe manner to <Constant name="dbt" />, we recommend that you read our blog post: [How we're making sure you can confidently switch to the \"Latest\" release track in <Constant name="dbt" />](/blog/latest-dbt-stability).
 
-If you're running dbt version 1.6 or older, please know that your version of <Constant name="core" /> has reached [end-of-life (EOL)](/docs/dbt-versions#eol-version-support) and is no longer supported. We strongly recommend that you update to a newer version as soon as reasonably possible.
-
-dbt Labs has extended the critical support period of <Constant name="dbt" /> v1.7 for <Constant name="dbt" /> Enterprise-tier customers to March 2025. At that point, we will be encouraging all customers to select a Release Track for ongoing updates in <Constant name="dbt" />.
 
 <Expandable alt_header="I'm using an older version of dbt in the dbt platform. What should I do? What happens if I do nothing?" >
 
-If you're running dbt version v1.6 or older, please know that your version of <Constant name="core" /> has reached [end-of-life (EOL)](/docs/dbt-versions#eol-version-support) and is no longer supported. We strongly recommend that you update to a newer version as soon as reasonably possible.
-
-dbt Labs has extended the "Critical Support" period of <Constant name="dbt" /> v1.7 for dbt Enterprise-tier customers while we work through the migration with those customers to Release Tracks. In the meantime, this means that v1.7 will continue to be accessible in dbt for Enterprise customers, jobs and environments on v1.7 for those customers will not be automatically migrated to "Latest," and dbt Labs will continue to fix critical bugs and security issues.
-
-Starting in October 2024, dbt accounts on the Developer and Starter (formerly Teams) plans have been migrated to release tracks from older <Constant name="core" /> versions. If your account was migrated to the **v1 Latest** release track and you notice new failures in scheduled jobs, please [contact dbt support](/docs/dbt-support#dbt-cloud-support) to report the problem or request an extension.
+If you're on version v1.3-v1.7, you need to follow the path for your project(s) as outlined in [Migrate off legacy versions](/guides/migrate-off-legacy-dbt-versions). If you have not migrated by January 31, 2027, you will lose access to these projects. If you have any questions or concerns, please [contact support](mailto:support@getdbt.com) 
 
 </Expandable>
 
 <Expandable alt_header="What are other known issues when upgrading from older v1 versions?" >
 
 If you are upgrading from a very old unsupported version of <Constant name="core" />, you may run into one of these edge cases after the upgrade to a newer version:
-- [v1.1] Customers on BigQuery should be aware that <Constant name="dbt" /> sets a default [per-model timeout](/docs/local/connect-data-platform/bigquery-setup#job_execution_timeout_seconds) of 5 minutes. You may override this config in your connection details. Older versions of dbt (including v1.0) did not appropriately respect this timeout configuration.
+
 - [v1.3] Customers with non-dbt `.py` files defined within their project directories, such as `models/`. Since v1.3, dbt expects these files be valid [Python models](/docs/build/python-models). The customer needs to move these files out of their `models/` directory, or ignore them via `.dbtignore`
 - [v1.5] Customers who have `--m` in their job definitions, instead of `-m` or `--models`. This autocompletion (`--m[odels]` for `--models`) has never been officially documented or supported. It was an implicit behavior of argparse (CLI library used in dbt-core v1.0-1.4) that is not supported by `click` (the CLI library used in dbt-core since v1.5+).
 - [v1.5] Empty invalid `tests` config start raising a validation error](/docs/dbt-versions/dbt-upgrade/Older%20versions/upgrading-to-v1.5). Replace empty `tests` config with `tests: []` or remove it altogether.
@@ -188,5 +185,3 @@ If the package you’ve installed relies on _undocumented_ functionality of db
 
 </Expandable>
 
-
-If you have comments or concerns, we’re happy to help. If you’re an existing <Constant name="dbt" /> customer, you may reach out to your account team or [contact support](/docs/dbt-support#dbt-cloud-support).

@@ -11,26 +11,16 @@ In <Constant name="dbt" />, both [jobs](/docs/deploy/jobs) and [environments](/d
 
 ## Environments
 
-Navigate to the settings page of an environment, then click **Edit**. Click the **dbt version** dropdown bar and make your selection. You can select a [release track](#release-tracks) to receive ongoing updates (recommended), or a legacy version of <Constant name="core" />. Be sure to save your changes before navigating away.
+Navigate to the settings page of an environment, then click **Edit**. Click the **dbt version** dropdown bar and make your selection. You can select a [release track](/docs/dbt-versions/dbt-release-tracks) to receive ongoing updates (recommended), or a legacy version of <Constant name="core" />. Be sure to save your changes before navigating away.
 
 <Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/choosing-dbt-version/example-environment-settings.png" width="90%" title="Example environment settings in dbt"/>
 
 ### Release Tracks
 
-Starting in 2024, your project gets upgraded automatically on a cadence that you choose:
-
-The **v1 Latest** track ensures you have up-to-date <Constant name="dbt" /> functionality, and early access to new features of the dbt framework. The **v1 Compatible** and **v1 Extended** tracks are designed for customers who need a less-frequent release cadence, the ability to test new dbt releases before they go live in production, and/or ongoing compatibility with the latest open source releases of <Constant name="core" />.
+Release tracks determine the version of dbt and release cadence for your projects. dbt supports two major versions &mdash; v1 and v2 &mdash; and automatically delivers [minor version updates](/docs/dbt-versions/dbt-upgrade) for you. For more information, refer to [About release tracks](/docs/dbt-versions/dbt-release-tracks)
 
 As a best practice, dbt Labs recommends that you test the upgrade in development first; use the [Override dbt version](#override-dbt-version) setting to test _your_ project on the latest dbt version before upgrading your deployment environments and the default development environment for all your colleagues.
 
-To upgrade an environment in the [<Constant name="dbt" /> Admin API](/docs/dbt-apis/admin-api) or [Terraform](https://registry.terraform.io/providers/dbt-labs/dbtcloud/latest), set `dbt_version` to the name of your release track:
-- `fusion-nightly`
-- `fusion-stable` (formerly `latest-fusion`)
-- `fusion-extended`
-- `fusion-fallback`
-- `latest` (default)
-- `compatible` (available to Starter, Enterprise, Enterprise+ plans)
-- `extended` (available to all Enterprise plans)
 
 ### Override dbt version
 
@@ -123,7 +113,7 @@ To begin the process of upgrading to <Constant name="fusion" /> with the assista
 
   <Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/choosing-dbt-version/autofix-success.png" width="60%" title="You're now ready to upgrade to v2 in your development environment!"/>
 
-Now that you've upgraded your development environment to <Constant name="fusion" />, you're ready to start the process of upgrading your Production, Staging, and General environments. Follow your organization's standard procedures and use the [release tracks](#release-tracks) to upgrade.
+Now that you've upgraded your development environment to <Constant name="fusion" />, you're ready to start the process of upgrading your Production, Staging, and General environments. Follow your organization's standard procedures and use the [release tracks](/docs/dbt-versions/dbt-release-tracks) to upgrade.
 
 import FusionReadinessPanel from '/snippets/_v2-migration-readiness-panel.md';
 
