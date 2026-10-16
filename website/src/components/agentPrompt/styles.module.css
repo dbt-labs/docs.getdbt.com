@@ -91,7 +91,7 @@
   padding: 0.6rem 1.25rem;
   background: var(--ifm-color-info);
   border: 1px solid var(--ifm-color-info);
-  border-radius: var(--ifm-button-border-radius);
+  border-radius: 0.75rem;
   color: #fff;
   font-family: inherit;
   font-size: 0.9375rem;
