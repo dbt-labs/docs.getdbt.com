@@ -21,5 +21,5 @@ dbt run --no-write-json
 
 By default, dbt will write JSON artifacts and compiled SQL files to a directory named `target/`. This directory is located relative to `dbt_project.yml` of the active project.
 
-Just like other global configs, it is possible to override these values for your environment or invocation by using the CLI option (`--target-path`) or environment variables (`DBT_TARGET_PATH`).
+Just like other global configs, it is possible to override these values for your environment or invocation by using the CLI option (`--target-path`) or environment variables (<VersionBlock lastVersion="1.10">`DBT_TARGET_PATH`</VersionBlock><VersionBlock firstVersion="1.11">`DBT_ENGINE_TARGET_PATH`</VersionBlock>).
 

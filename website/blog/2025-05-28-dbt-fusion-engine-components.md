@@ -2,7 +2,7 @@
 title: "The Components of the dbt Fusion engine and how they fit together"
 description: "The new engine makes it possible to decouple source code from functionality, introducing new ways to distribute functionality to the Community."
 slug: dbt-fusion-engine-components
-image: /img/blog/2025-05-28-dbt-fusion-engine/next-gen-star.png
+image: /img/blog/2025-05-28-dbt-v2-engine/next-gen-star.png
 authors: [jason_ganz, joel_labes]
 tags: [analytics craft, data ecosystem]
 hide_table_of_contents: false
@@ -60,7 +60,7 @@ As long as you comply with the [three restrictions in ELv2](http://www.getdbt.co
 
 Artifact type: Precompiled binary
 
-How to access: download following the instructions [here](/docs/fusion/install-fusion-cli)
+How to access: download following the instructions [here](/docs/local/install-dbt?version=2)
 
 License: ELv2
 
@@ -81,11 +81,11 @@ As long as you comply with the three restrictions in ELv2,
 
 Artifact type: Precompiled binary and managed service
 
-Available at: [Download binary](/docs/fusion/install-fusion-cli) and [sign up for the service](http://getdbt.com/signup)
+Available at: [Download binary](/docs/local/install-dbt?version=2) and [sign up for the service](http://getdbt.com/signup)
 
 License: ELv2 (binary) and Proprietary (service)
 
-Organizations who *do* have a commercial agreement will unlock even more capabilities, but they'll use the exact same publicly-released binary discussed above. If you want to start using platform features, [such as dbt Mesh](https://docs.getdbt.com/docs/mesh/govern/project-dependencies), all you need to do is [download a configuration file](https://docs.getdbt.com/docs/cloud/configure-cloud-cli#configure-the-dbt-cloud-cli). *(Joel commentary - As someone who has been juggling the dbt Cloud CLI alongside dbt Core for the last couple of years, I cannot overstate how thrilled I am by this.)*
+Organizations who *do* have a commercial agreement will unlock even more capabilities, but they'll use the exact same publicly-released binary discussed above. If you want to start using platform features, [such as dbt Mesh](https://docs.getdbt.com/docs/mesh/govern/project-dependencies), all you need to do is [download a configuration file](https://docs.getdbt.com/docs/platform/configure-dbt-cli#configure-the-dbt-cli). *(Joel commentary - As someone who has been juggling the dbt Cloud CLI alongside dbt Core for the last couple of years, I cannot overstate how thrilled I am by this.)*
 
 Obviously there's additional cloud-backed services necessary to deliver platform-specific features, such as State-Aware Orchestration. That code is proprietary and governed by your agreement with dbt Labs.
 
@@ -105,7 +105,7 @@ The dbt VS Code extension is one of the first product experiences built on top o
 
 The Language Server is built on top of a subset of the technology powering the extended Fusion engine: as an example, it can quickly compile SQL and interact with databases, but it defers to the dbt binary when it's time to actually run a model.
 
-<Lightbox src="/img/blog/2025-05-28-dbt-fusion-engine-components/vscode-ext-binary-roles.png" title="The VS Code extension interacts with the Language Server to understand your SQL, and the Fusion binary to execute your SQL." />
+<Lightbox src="/img/blog/2025-05-28-dbt-v2-engine-components/vscode-ext-binary-roles.png" title="The VS Code extension interacts with the Language Server to understand your SQL, and the Fusion binary to execute your SQL." />
 
 ### The dbt Authoring Layer
 

@@ -122,10 +122,10 @@ function BlogPostPageContent({sidebar, children}) {
 
       <BlogPostItem>{children}</BlogPostItem>
 
-      <DiscourseBlogComments
+      {/* <DiscourseBlogComments
         title={frontMatter.title}
         slug={frontMatter.slug}
-      />
+      /> */}
 
       {(nextItem || prevItem) && (
         <BlogPostPaginator nextItem={nextItem} prevItem={prevItem} />

@@ -3,7 +3,10 @@ title: "Analyses"
 description: "Configure SQL files in dbt to create compiled code used for analyses."
 id: "analyses"
 pagination_next: null
+availability: all_users
 ---
+
+import AnalysesProjectLevelConfig from '/snippets/_analyses-project-level-config.md';
 
 ## Overview
 
@@ -42,6 +45,54 @@ order by account_id, id
 ```
 
 </File>
+
+You can configure individual analyses in their property file. For example:
+
+<File name='analyses/<filename>.yml'>
+
+```yaml
+analyses:
+  - name: running_total_by_account
+    description: Calculates the running total of adjusted amounts per account over time.
+    config:
+      enabled: true
+      docs:
+        show: true
+        node_color: purple
+      tags: ['finance', 'accounting']
+    columns:
+      - name: account_id
+        description: The unique identifier for the account.
+      - name: adjusted_amount
+        description: The adjusted transaction amount for the account.
+```
+
+</File>
+
+For more information, refer to [Analysis properties](/reference/analysis-properties).
+
+<VersionBlock firstVersion="1.12">
+
+## Project-level configuration
+
+You can also configure analyses at the project level in `dbt_project.yml`.
+
+<AnalysesProjectLevelConfig />
+
+<File name='dbt_project.yml'>
+
+```yaml
+flags:
+  require_corrected_analysis_fqns: true
+
+analyses:
+  +enabled: true | false
+```
+</File>
+
+</VersionBlock>
+
+## Compiling analyses
 
 To compile this analysis into runnable sql, run:
 ```

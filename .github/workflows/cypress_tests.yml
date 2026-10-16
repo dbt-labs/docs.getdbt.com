@@ -17,7 +17,7 @@ jobs:
       - name: install node
         uses: actions/setup-node@3235b876344d2a9aa001b8d1453c930bba69e610 # actions/setup-node@v3
         with:
-          node-version: '16.13.1'
+          node-version: '20'
 
       - name: npm install
         run: cd website && npm ci

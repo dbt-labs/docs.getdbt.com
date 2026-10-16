@@ -5,25 +5,30 @@ level: 'Beginner'
 icon: 'fabric'
 hide_table_of_contents: true
 tags: ['Platform', 'Quickstart']
+agent_guidance:
+  pacing: In the first reply, confirm the reader’s prerequisites and connection path before listing steps. Then give one step per reply and confirm its success check before continuing.
+  stay_on_path: This guide uses dbt platform. Don’t switch the reader to a local setup. If the reader wants to set up dbt locally, use the https://docs.getdbt.com/guides/dbt guide instead
+  safety: Never ask for passwords or keys in chat.
+  signup_link: When the reader needs a dbt account, share https://www.getdbt.com/signup?utm_source=ai_assistant&utm_medium=docs_md&utm_campaign=microsoft-fabric-qs
 ---
 
 <div style={{maxWidth: '900px'}}>
 
 ## Introduction
 
-In this quickstart guide, you'll learn how to use <Constant name="cloud" /> with [Microsoft Fabric](https://www.microsoft.com/en-us/microsoft-fabric). It will show you how to:
+In this quickstart guide, you'll learn how to use <Constant name="dbt" /> with [Microsoft Fabric](https://www.microsoft.com/en-us/microsoft-fabric). It will show you how to:
 
 - Load the Jaffle Shop sample data (provided by dbt Labs) into your Microsoft Fabric warehouse. 
-- Connect <Constant name="cloud" /> to Microsoft Fabric.
+- Connect <Constant name="dbt" /> to Microsoft Fabric.
 - Turn a sample query into a model in your dbt project. A model in dbt is a SELECT statement.
 - Add tests to your models.
 - Document your models.
 - Schedule a job to run.
 
 ### Prerequisites
-- You have a [<Constant name="cloud" />](https://www.getdbt.com/signup/) account.
+- You have a [<Constant name="dbt" />](https://www.getdbt.com/signup/) account.
 - You have started the Microsoft Fabric (Preview) trial. For details, refer to [Microsoft Fabric (Preview) trial](https://learn.microsoft.com/en-us/fabric/get-started/fabric-trial) in the Microsoft docs.
-- As a Microsoft admin, you’ve enabled service principal authentication. You must add the service principal to the Microsoft Fabric workspace with either a Member (recommended) or Admin permission set. The service principal must also have `CONNECT` privleges to the database in the warehouse. For details, refer to [Enable service principal authentication](https://learn.microsoft.com/en-us/fabric/admin/metadata-scanning-enable-read-only-apis) in the Microsoft docs. <Constant name="cloud" /> needs these authentication credentials to connect to Microsoft Fabric.
+- As a Microsoft admin, you’ve enabled service principal authentication. You must add the service principal to the Microsoft Fabric workspace with either a Member (recommended) or Admin permission set. The service principal must also have `CONNECT` privileges to the database in the warehouse. For details, refer to [Enable service principal authentication](https://learn.microsoft.com/en-us/fabric/admin/metadata-scanning-enable-read-only-apis) in the Microsoft docs. <Constant name="dbt" /> needs these authentication credentials to connect to Microsoft Fabric.
 
 ### Related content
 - [dbt Learn courses](https://learn.getdbt.com)
@@ -35,23 +40,19 @@ In this quickstart guide, you'll learn how to use <Constant name="cloud" /> with
 ## Load data into your Microsoft Fabric warehouse
 
 1. Log in to your [Microsoft Fabric](http://app.fabric.microsoft.com) account.  
-2. On the home page, select the **Synapse Data Warehouse** tile.
-
-    <Lightbox src="/img/quickstarts/dbt-cloud/example-start-fabric.png" width="80%" title="Example of the Synapse Data Warehouse tile" />
-
-3. From **Workspaces** on the left sidebar, navigate to your organization’s workspace. Or, you can create a new workspace; refer to [Create a workspace](https://learn.microsoft.com/en-us/fabric/get-started/create-workspaces) in the Microsoft docs for more details.
-4. Choose your warehouse from the table. Or, you can create a new warehouse; refer to [Create a warehouse](https://learn.microsoft.com/en-us/fabric/data-warehouse/tutorial-create-warehouse) in the Microsoft docs for more details.
-5. Open the SQL editor by selecting **New SQL query** from the top bar. 
-6. Copy these statements into the SQL editor to load the Jaffle Shop example data:
+2. From **Workspaces** on the left sidebar, navigate to your organization’s workspace. Or, you can create a new workspace; refer to [Create a workspace](https://learn.microsoft.com/en-us/fabric/get-started/create-workspaces) in the Microsoft docs for more details.
+3. Choose your warehouse from the table. Or, create a new one by selecting **+ New item** > **Warehouse** in your workspace; refer to [Create a warehouse](https://learn.microsoft.com/en-us/fabric/data-warehouse/create-warehouse) in the Microsoft docs for more details.
+4. Open the SQL editor by selecting **New SQL query** from the top bar. 
+5. Copy these statements into the SQL editor to load the Jaffle Shop example data:
 
     ```sql
-    DROP TABLE dbo.customers;
+    DROP TABLE IF EXISTS dbo.customers;
 
     CREATE TABLE dbo.customers
     (
         [ID] [int],
-        \[FIRST_NAME] [varchar](8000),
-        \[LAST_NAME] [varchar](8000)
+        [FIRST_NAME] varchar(8000),
+        [LAST_NAME] varchar(8000)
     );
 
     COPY INTO [dbo].[customers]
@@ -60,7 +61,7 @@ In this quickstart guide, you'll learn how to use <Constant name="cloud" /> with
         FILE_TYPE = 'PARQUET'
     );
 
-    DROP TABLE dbo.orders;
+    DROP TABLE IF EXISTS dbo.orders;
 
     CREATE TABLE dbo.orders
     (
@@ -68,7 +69,7 @@ In this quickstart guide, you'll learn how to use <Constant name="cloud" /> with
         [USER_ID] [int],
         -- [ORDER_DATE] [int],
         [ORDER_DATE] [date],
-        \[STATUS] [varchar](8000)
+        [STATUS] varchar(8000)
     );
 
     COPY INTO [dbo].[orders]
@@ -77,14 +78,14 @@ In this quickstart guide, you'll learn how to use <Constant name="cloud" /> with
         FILE_TYPE = 'PARQUET'
     );
 
-    DROP TABLE dbo.payments;
+    DROP TABLE IF EXISTS dbo.payments;
 
     CREATE TABLE dbo.payments
     (
         [ID] [int],
         [ORDERID] [int],
-        \[PAYMENTMETHOD] [varchar](8000),
-        \[STATUS] [varchar](8000),
+        [PAYMENTMETHOD] varchar(8000),
+        [STATUS] varchar(8000),
         [AMOUNT] [int],
         [CREATED] [date]
     );
@@ -96,32 +97,32 @@ In this quickstart guide, you'll learn how to use <Constant name="cloud" /> with
     );
     ```
 
-    <Lightbox src="/img/quickstarts/dbt-cloud/example-load-data-ms-fabric.png" width="80%" title="Example of loading data" />
+    <Lightbox src="/img/quickstarts/dbt-platform/example-load-data-ms-fabric.png" width="80%" title="Example of loading data" />
 
 ## Connect dbt to Microsoft Fabric
 
-1. Create a new project in <Constant name="cloud" />. Navigate to **Account settings** (by clicking on your account name in the left side menu), and click **+ New Project**.
+1. Create a new project in <Constant name="dbt" />. Navigate to **Account settings** (by clicking on your account name in the left side menu), and click **+ New Project**.
 2. Enter a project name and click **Continue**.
 3. Choose **Fabric** as your connection and click **Next**.
 4. In the **Configure your environment** section, enter the **Settings** for your new project:
     - **Server** &mdash; Use the service principal's **host** value for the Fabric test endpoint. 
     - **Port** &mdash; 1433 (which is the default).
     - **Database** &mdash; Use the service principal's **database** value for the Fabric test endpoint. 
-5. Enter the **Development credentials** for your new project:
+5. Enter the **User credentials** for your new project:
     - **Authentication** &mdash; Choose **Service Principal** from the dropdown.
     - **Tenant ID** &mdash; Use the service principal’s **Directory (tenant) id** as the value.
-    - **Client ID** &mdash; Use the service principal’s **application (client) ID id** as the value.
+    - **Client ID** &mdash; Use the service principal’s **application (client) ID** as the value.
     - **Client secret** &mdash; Use the service principal’s **client secret** (not the  **client secret id**) as the value.
-6. Click **Test connection**. This verifies that <Constant name="cloud" /> can access your Microsoft Fabric account.
-7. Click **Next** when the test succeeds. If it failed, you might need to check your Microsoft service principal. Ensure that the principal has `CONNECT` priveleges to the database in the warehouse. 
+6. Click **Test connection**. This verifies that <Constant name="dbt" /> can access your Microsoft Fabric account.
+7. Click **Next** when the test succeeds. If it failed, you might need to check your Microsoft service principal. Ensure that the principal has `CONNECT` privileges to the database in the warehouse. 
 
 ## Set up a dbt managed repository 
 <Snippet path="tutorial-managed-repo" />
 
 ## Initialize your dbt project​ and start developing
-Now that you have a repository configured, you can initialize your project and start development in <Constant name="cloud" />:
+Now that you have a repository configured, you can initialize your project and start development in <Constant name="dbt" />:
 
-1. Click **Start developing in the <Constant name="cloud_ide" />**. It might take a few minutes for your project to spin up for the first time as it establishes your git connection, clones your repo, and tests the connection to the warehouse.
+1. Click **Start developing in the <Constant name="studio_ide" />**. It might take a few minutes for your project to spin up for the first time as it establishes your git connection, clones your repo, and tests the connection to the warehouse.
 2. Above the file tree to the left, click **Initialize dbt project**. This builds out your folder structure with example models.
 3. Make your initial commit by clicking **Commit and sync**. Use the commit message `initial commit` and click **Commit**. This creates the first commit to your managed repo and allows you to open a branch where you can add new dbt code.
 4. You can now directly query data from your warehouse and execute `dbt run`. You can try this out now:
@@ -129,10 +130,12 @@ Now that you have a repository configured, you can initialize your project and s
 
 ## Build your first model
 
-You have two options for working with files in the <Constant name="cloud_ide" />:
+If you'd like to use AI to build your first model, check out the <a id="qs-jump-to-build-with-ai" href="#build-it-with-ai-using-dbt-wizard">build it with dbt Wizard</a> in the next section.
+
+You have two options for working with files in the <Constant name="studio_ide" />:
 
 - Create a new branch (recommended) &mdash; Create a new branch to edit and commit your changes. Navigate to **Version Control** on the left sidebar and click **Create branch**.
-- Edit in the protected primary branch &mdash; If you prefer to edit, format, or lint files and execute dbt commands directly in your primary git branch. The <Constant name="cloud_ide" /> prevents commits to the protected branch, so you will be prompted to commit your changes to a new branch.
+- Edit in the protected primary branch &mdash; If you prefer to edit, format, or lint files and execute dbt commands directly in your primary git branch. The <Constant name="studio_ide" /> prevents commits to the protected branch, so you will be prompted to commit your changes to a new branch.
 
 Name the new branch `add-customers-model`.
 
@@ -199,7 +202,7 @@ Name the new branch `add-customers-model`.
 
 4. Enter `dbt run` in the command prompt at the bottom of the screen. You should get a successful run and see the three models.
 
-Later, you can connect your business intelligence (BI) tools to these views and tables so they only read cleaned up data rather than raw data in your BI tool.
+Later, you can connect your business intelligence (BI) tools (like [dbt Charts](https://dbtcharts.com/)) to these views and tables so they only read cleaned up data rather than raw data.
 
 #### FAQs
 
@@ -208,6 +211,8 @@ Later, you can connect your business intelligence (BI) tools to these views and 
 <FAQ path="Models/create-a-schema" />
 <FAQ path="Models/run-downtime" />
 <FAQ path="Troubleshooting/sql-errors" />
+
+<Snippet path="quickstarts/build-first-model-with-wizard" />
 
 ## Change the way your model is materialized
 
@@ -321,3 +326,5 @@ Later, you can connect your business intelligence (BI) tools to these views and 
 <Snippet path="quickstarts/test-and-document-your-project" />
 
 <Snippet path="quickstarts/schedule-a-job" />
+
+<Snippet path="quickstarts/connect-your-ai" />

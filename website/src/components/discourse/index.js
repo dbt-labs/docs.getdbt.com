@@ -94,7 +94,7 @@ export const DiscourseFeed = ({
   // Set initial min-height
   // This is to avoid layout shifts
   // which affects Lighthouse performance scores
-  const setMinHeight = isError || !topics?.length > 0
+  const setMinHeight = isError || !topics?.length
     ? 'auto'
     : 414
   
@@ -110,7 +110,7 @@ export const DiscourseFeed = ({
           className={feedStyles.loadingIcon} 
           data-testid="feed-loader"
         />
-        ) : isError || !topics?.length > 0 ? (
+        ) : isError || !topics?.length ? (
           <p data-testid='error-text'>No recent forum posts for this topic. Ask a question!</p>
         ) : (
         <ul data-testid="topics-list">

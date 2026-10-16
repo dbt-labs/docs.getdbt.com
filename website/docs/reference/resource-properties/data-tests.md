@@ -7,6 +7,14 @@ datatype: data-test
 keywords: [test, tests, custom tests, custom test name, test name]
 ---
 
+## Description
+
+The `data_tests` property defines assertions about a column, <Term id="table" />, or <Term id="view" />. The property contains a list of [generic data tests](/docs/build/data-tests#generic-data-tests), referenced by name, which can include the four built-in generic tests available in dbt. For example, you can add data tests that ensure a column contains no duplicates and zero null values. Any arguments or [configurations](/reference/data-test-configs) passed to those data tests should be nested below the `arguments` property.
+
+Once these data tests are defined, you can validate their correctness by running `dbt test`.
+
+To help you get started, the examples below show how to define the `data_tests` property on different resource types (models, sources, seeds, snapshots, and analyses).
+
 <Tabs
   defaultValue="models"
   values={[
@@ -155,16 +163,6 @@ This feature is not implemented for analyses.
 
 </Tabs>
 
-## Related documentation
-
-* [Data testing guide](/docs/build/data-tests)
-
-## Description
-
-The `data_tests` property defines assertions about a column, <Term id="table" />, or <Term id="view" />. The property contains a list of [generic data tests](/docs/build/data-tests#generic-data-tests), referenced by name, which can include the four built-in generic tests available in dbt. For example, you can add data tests that ensure a column contains no duplicates and zero null values. Any arguments or [configurations](/reference/data-test-configs) passed to those data tests should be nested below the `arguments` property.
-
-Once these data tests are defined, you can validate their correctness by running `dbt test`.
-
 ## Out-of-the-box data tests
 
 There are four generic data tests that are available out of the box, for everyone using dbt.
@@ -183,9 +181,12 @@ models:
       - name: order_id
         data_tests:
           - not_null
+      ...
 ```
 
 </File>
+
+You can add an arguments block for test inputs and a config block for options like `severity` or `where`. Refer to [Data test configurations](/reference/data-test-configs?version=2.0#data-test-specific-configurations) for the full list. If you see a deprecation warning about test arguments, refer to [Deprecations](/reference/deprecations?version=2.0) for test-related warnings.
 
 ### `unique`
 
@@ -475,3 +476,7 @@ models:
 ```
 
 </File>
+
+## Related documentation
+
+- [Data testing guide](/docs/build/data-tests)

@@ -8,6 +8,7 @@ search_weight: "heavy"
 id: "data-tests"
 keywords:
   - test, tests, testing, dag
+availability: all_users
 ---
 
 import CopilotBeta from '/snippets/_dbt-copilot-avail.md';
@@ -19,6 +20,7 @@ import CopilotBeta from '/snippets/_dbt-copilot-avail.md';
 * [Data test properties](/reference/resource-properties/data-tests)
 * [Data test configurations](/reference/data-test-configs)
 * [Test selection examples](/reference/node-selection/test-selection-examples)
+* [Batch tests](/reference/global-configs/batch-tests)
 
 :::important
 
@@ -32,14 +34,14 @@ Data tests are assertions you make about your models and other resources in your
 
 You can use data tests to improve the integrity of the SQL in each model by making assertions about the results generated. Out of the box, you can test whether a specified column in a model only contains non-null values, unique values, or values that have a corresponding value in another model (for example, a `customer_id` for an `order` corresponds to an `id` in the `customers` model), and values from a specified list. You can extend data tests to suit business logic specific to your organization – any assertion that you can make about your model in the form of a select query can be turned into a data test.
 
-Data tests return a set of failing records. Generic data tests (a.k.a. schema tests) are defined using `test` blocks.
+Data tests return a set of failing records. Generic data tests (also known as schema tests) are defined using `test` blocks.
 
-Like almost everything in dbt, data tests are SQL queries. In particular, they are `select` statements that seek to grab "failing" records, ones that disprove your assertion. If you assert that a column is unique in a model, the test query selects for duplicates; if you assert that a column is never null, the test seeks after nulls. If the data test returns zero failing rows, it passes, and your assertion has been validated.
+Like almost everything in dbt, data tests are SQL queries. In particular, they are `select` statements that seek to grab "failing" records, ones that disprove your assertion. If you assert that a column is unique in a model, the test query selects for duplicates; if you assert that a column is never null, the test seeks nulls. If the data test returns zero failing rows, it passes, and your assertion has been validated.
 
 There are two ways of defining data tests in dbt:
 
-- A **singular** data test is testing in its simplest form: If you can write a SQL query that returns failing rows, you can save that query in a `.sql` file within your [test directory](/reference/project-configs/test-paths). It's now a data test, and it will be executed by the `dbt test` command.
-- A **generic** data test is a parameterized query that accepts arguments. The test query is defined in a special `test` block (like a [macro](jinja-macros)). Once defined, you can reference the generic test by name throughout your `.yml` files—define it on models, columns, sources, snapshots, and seeds. dbt ships with four generic data tests built in, and we think you should use them!
+- A **singular** data test, in its simplest form, is when you write a SQL query that returns failing rows, you can save that query in a `.sql` file within your [test directory](/reference/project-configs/test-paths). It's now a data test, and it will be executed by the `dbt test` command.
+- A **generic** data test is a parameterized query that accepts arguments. The test query is defined in a special `test` block (like a [macro](/docs/build/jinja-macros)). Once defined, you can reference the generic test by name throughout your `.yml` files—define it on models, columns, sources, snapshots, and seeds. dbt ships with four generic data tests built in, and we think you should use them!
 
 Defining data tests is a great way to confirm that your outputs and inputs are as expected, and helps prevent regressions when your code changes. Because you can use them over and over again, making similar assertions with minor variations, generic data tests tend to be much more common—they should make up the bulk of your dbt data testing suite. That said, both ways of defining data tests have their time and place.
 
@@ -51,7 +53,7 @@ If you're new to dbt, we recommend that you check out our [online dbt Fundamenta
 
 The simplest way to define a data test is by writing the exact SQL that will return failing records. We call these "singular" data tests, because they're one-off assertions usable for a single purpose.
 
-These tests are defined in `.sql` files, typically in your `tests` directory (as defined by your [`test-paths` config](/reference/project-configs/test-paths)). You can use Jinja (including `ref` and `source`) in the test definition, just like you can when creating models. Each `.sql` file contains one `select` statement, and it defines one data test:
+These tests are defined in `.sql` files, typically in your `tests` directory (as defined by your `test-paths` config). **Note:** The `tests/` directory (`test-paths`) is reserved for singular and generic data tests (SQL). Unit test YAML definitions must live under your project’s `model-paths` (for example, in the `models/` directory), not in `tests/`. You can use Jinja (including `ref` and `source`) in the test definition, just like you can when creating models. Each `.sql` file contains one `select` statement, and it defines one data test:
 
 <File name='tests/assert_total_payment_amount_is_positive.sql'>
 
@@ -68,7 +70,7 @@ having total_amount < 0
 
 </File>
 
-The name of this test is the name of the file: `assert_total_payment_amount_is_positive`. 
+The test name is the file name: `assert_total_payment_amount_is_positive`. 
 
 Note:
 - Omit semicolons (;) at the end of the SQL statement in your singular test files, as they can cause your data test to fail.
@@ -92,7 +94,7 @@ data_tests:
 Singular data tests are so easy that you may find yourself writing the same basic structure repeatedly, only changing the name of a column or model. By that point, the test isn't so singular! In that case, we recommend generic data tests.
 
 ## Generic data tests
-Certain data tests are generic: they can be reused over and over again. A generic data test is defined in a `test` block, which contains a parametrized query and accepts arguments. It might look like:
+Certain data tests are generic: they can be reused over and over again. A generic data test is defined in a `test` block, which contains a parameterized query and accepts arguments. It might look like:
 
 ```sql
 {% test not_null(model, column_name) %}
@@ -104,15 +106,15 @@ Certain data tests are generic: they can be reused over and over again. A generi
 {% endtest %}
 ```
 
-You'll notice that there are two arguments, `model` and `column_name`, which are then templated into the query. This is what makes the data test "generic": it can be defined on as many columns as you like, across as many models as you like, and dbt will pass the values of `model` and `column_name` accordingly. Once that generic test has been defined, it can be added as a _property_ on any existing model (or source, seed, or snapshot). These properties are added in  `.yml` files in the same directory as your resource.
+You'll notice that there are two arguments, `model` and `column_name`, which are then templated into the query. This is what makes the data test "generic": it can be defined on as many columns as you like, across as many models as you like, and dbt will pass the values of `model` and `column_name` accordingly. Once that generic test has been defined, it can be added as a _property_ on any existing model (or source, seed, or snapshot). These properties are added in `.yml` files in the same directory as your resource.
 
 :::info
 If this is your first time working with adding properties to a resource, check out the docs on [declaring properties](/reference/configs-and-properties).
 :::
 
-Out of the box, dbt ships with four generic data tests already defined: `unique`, `not_null`, `accepted_values` and `relationships`. Here's a full example using those tests on an `orders` model:
+Out of the box, dbt ships with four generic data tests already defined: `unique`, `not_null`, `accepted_values`, and `relationships`. Here's a full example using those tests on an `orders` model:
 
-```yml
+```yaml
 
 models:
   - name: orders
@@ -137,10 +139,10 @@ models:
 In plain English, these data tests translate to:
 * `unique`: the `order_id` column in the `orders` model should be unique
 * `not_null`: the `order_id` column in the `orders` model should not contain null values
-* `accepted_values`: the `status` column in the `orders` should be  one of `'placed'`, `'shipped'`, `'completed'`, or  `'returned'`
+* `accepted_values`: the `status` column in the `orders` model should be one of `'placed'`, `'shipped'`, `'completed'`, or `'returned'`
 * `relationships`: each `customer_id` in the `orders` model exists as an `id` in the `customers` <Term id="table" /> (also known as referential integrity)
 
-Behind the scenes, dbt constructs a `select` query for each data test, using the parametrized query from the generic test block. These queries return the rows where your assertion is _not_ true; if the test returns zero rows, your assertion passes.
+Behind the scenes, dbt constructs a `select` query for each data test, using the parameterized query from the generic test block. These queries return the rows where your assertion is _not_ true; if the test returns zero rows, your assertion passes.
 
 You can find more information about these data tests, and additional configurations (including [`severity`](/reference/resource-configs/severity) and [`tags`](/reference/resource-configs/tags)) in the [reference section](/reference/resource-properties/data-tests). You can also add descriptions to the Jinja macro that provides the core logic of a generic data test. Refer to the [Add description to generic data test logic](/best-practices/writing-custom-generic-tests#add-description-to-generic-data-test-logic) for more information.
 
@@ -195,8 +197,8 @@ Done. PASS=2 WARN=0 ERROR=0 SKIP=0 TOTAL=2
 
 ```
 3. Check out the SQL dbt is running by either:
-   * **<Constant name="cloud" />:** checking the Details tab.
-   * **dbt Core:** checking the `target/compiled` directory
+   * **<Constant name="dbt" />:** checking the Details tab.
+   * **<Constant name="core" />:** checking the `target/compiled` directory
 
 
 **Unique test**
@@ -272,29 +274,41 @@ where {{ column_name }} is null
   </TabItem>
 </Tabs>
 
+
+## Running only data tests
+To run data tests while excluding unit tests, use the `test_type` selector &mdash; this works across all engines (<Constant name="core"/> and <Constant name="fusion"/>):
+
+```bash
+dbt test --select "test_type:data"
+```
+
+In <Constant name="dbt" /> (v1.9+), you can also use `dbt test --resource-type test`. For more options, refer to [test selection examples](/reference/node-selection/test-selection-examples).
+
+## Batch your data tests
+
+In <Constant name="dbt" /> v2, you can reduce the number of queries dbt issues for tests by enabling [batch tests](/reference/global-configs/batch-tests). Batching groups `unique` and `not_null` tests that are attached to the same model into one query per test type, and each test still reports its own pass or fail result.
+
 ## Storing data test failures
 
-Normally, a data test query will calculate failures as part of its execution. If you set the optional `--store-failures` flag,  the [`store_failures`](/reference/resource-configs/store_failures), or the [`store_failures_as`](/reference/resource-configs/store_failures_as) configs, dbt will first save the results of a test query to a table in the database, and then query that table to calculate the number of failures.
+Normally, a data test query will calculate failures as part of its execution. If you set the optional `--store-failures` flag, the [`store_failures`](/reference/resource-configs/store_failures), or the [`store_failures_as`](/reference/resource-configs/store_failures_as) configs, dbt will first save the results of a test query to a table in the database, and then query that table to calculate the number of failures.
 
 This workflow allows you to query and examine failing records much more quickly in development:
 
 <Lightbox src="/img/docs/building-a-dbt-project/test-store-failures.gif" title="Store test failures in the database for faster development-time debugging."/>
 
-Note that, if you select to store data test failures:
-* Test result tables are created in a schema suffixed or named `dbt_test__audit`, by default. It is possible to change this value by setting a `schema` config. (For more details on schema naming, see [using custom schemas](/docs/build/custom-schemas).)
+Note that, if you choose to store data test failures:
+- Test result tables are created in a schema suffixed or named `dbt_test__audit`, by default. It is possible to change this value by setting a `schema` config. (For more details on schema naming, see [using custom schemas](/docs/build/custom-schemas).)
 - A test's results will always **replace** previous failures for the same test.
 
-
-
 ## New `data_tests:` syntax
-  
-Data tests were historically called "tests" in dbt as the only form of testing available. With the introduction of unit tests, the key was renamed from `tests:` to `data_tests:`. 
 
-dbt still supports `tests:` in your YML configuration files for backwards-compatibility purposes, and you might see it used throughout our documentation. However, you can't have a `tests` and a `data_tests` key associated with the same resource (for example, a single model) at the same time.
+Data tests were historically called "tests" in dbt as the only form of testing available. With the introduction of unit tests, the key was renamed from `tests:` to `data_tests:`.
+
+dbt still supports `tests:` in your YAML configuration files for backward-compatibility purposes, and you might see it used throughout our documentation. However, you can't have a `tests` and a `data_tests` key associated with the same resource (for example, a single model) at the same time.
 
 <File name='models/schema.yml'>
 
-```yml
+```yaml
 models:
   - name: orders
     columns:
@@ -308,13 +322,86 @@ models:
 
 <File name='dbt_project.yml'>
 
-```yml
+```yaml
 data_tests:
   +store_failures: true
 ```
 
 </File>
 
+
+
+## Tests with and without `arguments`
+
+Some generic data tests need only the test name. Others need extra inputs, which you nest under an `arguments` property (available in v1.10.5 and higher). In v2, nesting test inputs under `arguments` is required. You will get a validation error if you set test inputs as top-level properties next to the test name.
+
+### Without `arguments`
+
+Tests like `unique` and `not_null` don't need extra inputs. For example, `unique` asserts that a column has no duplicate values, and `not_null` asserts that a column has no nulls. dbt already knows the model and column from the YAML context, so you can list the test by name:
+
+<File name='models/schema.yml'>
+
+```yaml
+models:
+  - name: orders
+    columns:
+      - name: order_id
+        data_tests:
+          - unique
+          - not_null
+```
+
+</File>
+
+### With `arguments`
+
+Tests like `accepted_values` and `relationships` need extra inputs for the test macro. For example, `accepted_values` asserts that a column's values are in a supplied list, and `relationships` asserts that each value exists in another model (referential integrity). Nest those inputs under `arguments:`:
+
+<File name='models/schema.yml'>
+
+```yaml
+models:
+  - name: orders
+    columns:
+      - name: status
+        data_tests:
+          - accepted_values:
+              arguments: # available in v1.10.5 and higher. 
+                values: ['placed', 'shipped', 'completed', 'returned']
+      - name: customer_id
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('customers')
+                field: id
+```
+
+</File>
+
+Use `arguments:` for inputs to the test macro (for example, `values`, `to`, and `field`). Use [`config`](/reference/data-test-configs) for framework options such as `severity`, `where`, and `store_failures`.
+
+If you previously set test inputs as top-level properties next to the test name, nest them under `arguments:` instead. For details, refer to [`require_generic_test_arguments_property`](/reference/global-configs/behavior-flags/require_generic_test_arguments_property) and [MissingArgumentsPropertyInGenericTestDeprecation](/reference/deprecations#missingargumentspropertyingenerictestdeprecation).
+
+## Add context to failing rows
+
+Data tests return one row for each failure. The columns in your test's SQL select statement are the columns you see when you debug failures, including when you [store test failures](#storing-data-test-failures).
+
+Built-in tests often return only the failing value. To include more context per failing row, write a [singular data test](#singular-data-tests) (or a [custom generic data test](/best-practices/writing-custom-generic-tests)) that selects the extra columns you want. Building on the `accepted_values` test above, here's a singular test that also captures `customer_id` for context. 
+
+<File name='tests/assert_unexpected_order_status.sql'>
+
+```sql
+select
+    order_id,
+    status,
+    customer_id
+from {{ ref('orders') }}
+where status not in ('placed', 'shipped', 'completed', 'returned')
+```
+
+</File>
+
+When you run `dbt test --store-failures` (or set the [`store_failures`](/reference/resource-configs/store_failures) config), dbt saves those rows so you can query them and inspect every selected column.
 
 ## FAQs
 

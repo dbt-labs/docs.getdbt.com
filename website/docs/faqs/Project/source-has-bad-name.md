@@ -1,6 +1,6 @@
 ---
 title: What if my source is in a poorly named schema or table?
-description: "Use schema and identifier properities to define names"
+description: "Use schema and identifier properties to define names"
 sidebar_label: 'Source is in a poorly-named scheme or table'
 id: source-has-bad-name
 
@@ -13,17 +13,13 @@ If these names are a little less-than-perfect, use the [schema](/reference/resou
 <File name='models/<filename>.yml'>
 
 ```yml
-version: 2
-
 sources:
   - name: jaffle_shop
-    schema: postgres_backend_public_schema
     database: raw
+    schema: postgres_backend_public_schema
     tables:
       - name: orders
         identifier: api_orders
-
-
 ```
 
 </File>

@@ -1,12 +1,6 @@
----
-title: How is state-aware orchestration different from using selectors in dbt Core?
-description: "Compare how state-aware orchestration differs from using selectors in dbt Core"
-sidebar_label: 'State-aware orchestration vs selectors in dbt Core'
-id: sao-difference-core
+# How is state-aware orchestration different from using selectors in dbt? 
 
----
-
-In <Constant name="core" /> , running with the selectors `state:modified+` and `source_status:fresher+` builds models that either:
+In <Constant name="core" />, running with the selectors `state:modified+` and `source_status:fresher+` builds models that either:
 
 - Have changed since the prior run (`state:modified+`)
 - Have upstream sources that are fresher than in the prior run (`source_status:fresher+`)

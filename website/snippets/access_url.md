@@ -1,1 +1,1 @@
-The following steps use `YOUR_AUTH0_URI` and `YOUR_AUTH0_ENTITYID`, which need to be replaced with the [appropriate Auth0 SSO URI and Auth0 Entity ID](/docs/cloud/manage-access/sso-overview#auth0-uris) for your region.
+The following steps use `YOUR_AUTH0_URI` and `YOUR_AUTH0_ENTITYID`. Replace these placeholders with the [appropriate Auth0 URI and Auth0 Entity ID](/docs/platform/manage-access/sso-overview#auth0-uris) for your region. You can find these values in **Account settings** > **SSO & SCIM** > **Edit** or **Get started** after selecting your identity provider.

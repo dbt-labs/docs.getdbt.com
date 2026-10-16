@@ -4,21 +4,23 @@ id: get-started-dbt
 hide_table_of_contents: true
 pagination_next: null
 pagination_prev: null
+availability: all_users
 ---
 
-Begin your dbt journey by trying one of our quickstarts, which provides a step-by-step guide to help you set up [<Constant name="cloud" />](#dbt-cloud) or [<Constant name="core" />](#dbt-core) with a [variety of data platforms](/docs/cloud/connect-data-platform/about-connections).
+Begin your dbt journey by choosing how you want to develop:
 
-## The dbt platform (formerly dbt Cloud) {#the-dbt-platform}
+- [**<Constant name="dbt_platform" />** ](#the-dbt-platform) &mdash; Develop in your browser (<Constant name="studio_ide" /> or <Constant name="canvas" />) or use local tools (VS Code extension, <Constant name="platform_cli" />) that connect to your platform account. The platform provides hosted CI/CD, documentation, and more. Supports both the [<Constant name="fusion_engine" />](/docs/introduction) and [<Constant name="core" />](/docs/local/install-dbt) engines.
+- [**Self-hosted only**](#self-hosted-dbt-installations) &mdash; Use local tools like the [dbt VS Code extension](/docs/about-dbt-extension) or [install dbt](/docs/local/install-dbt) locally, to develop and run dbt on your own infrastructure. You can use local tools with or without a <Constant name="dbt_platform" /> account.
+- **Local + <Constant name="dbt_platform" />** &mdash; Use the VS Code extension or <Constant name="platform_cli" /> with a <Constant name="dbt_platform" /> account to develop locally while leveraging platform features like CI/CD, documentation hosting, <Constant name="insights" />, <Constant name="canvas" />, and more.
+- [**<Constant name="wizard" />**](#dbt-wizard) &mdash; The AI agent for analytics engineering, available in the <Constant name="dbt_platform" /> and from your terminal. Grounded in your project's lineage, model health, and semantic definitions.
 
-<Constant name="cloud" /> is a scalable solution that enables you to develop, test, deploy, and explore data products using a single, fully managed software service. It enables teams with diverse skills to build reliable data products at any scale, with capabilities including:
+## The dbt platform
 
-- Development experiences tailored to multiple personas (in-browser [<Constant name="cloud_ide" />](/docs/cloud/studio-ide/develop-in-studio) or locally with the [<Constant name="cloud" /> CLI](/docs/cloud/cloud-cli-installation)).
-- Out-of-the-box [CI/CD workflows](/docs/deploy/ci-jobs).
-- The [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl) for consistent metrics that can be delivered to any endpoint.
-- Domain ownership of data with multi-project [<Constant name="mesh" />](/best-practices/how-we-mesh/mesh-1-intro) setups.
-- [<Constant name="explorer" />](/docs/explore/explore-projects) for collaborative data discovery and understanding.
+<Constant name="dbt" /> provides a fully managed environment to develop, run, and deploy dbt projects—with CI/CD, documentation hosting, and more. Learn more about [<Constant name="dbt" /> features](/docs/platform/about-platform/dbt-platform-features) and [start your free trial](https://www.getdbt.com/signup/) today. 
 
-Learn more about [<Constant name="cloud" /> features](/docs/cloud/about-cloud/dbt-cloud-features) and [start your free trial](https://www.getdbt.com/signup/) today.
+<Constant name="fusion_engine" /> adds managed execution and a unified development experience so you can focus on building rather than infrastructure.
+
+Choose your warehouse to get started with a quickstart:
 
 <div className="grid--3-col">
 
@@ -78,36 +80,47 @@ Learn more about [<Constant name="cloud" /> features](/docs/cloud/about-cloud/d
 
 </div>
 
-## dbt local installations
+## Self-hosted dbt installations
 
-[<Constant name="core" /> and <Constant name="fusion_engine" />](/docs/about-dbt-install) provide command-line tools that enable data practitioners to transform data using analytics engineering best practices. These tools suit individuals and small technical teams who prefer manual setup and customization, support community adapters, and follow open-source standards.
+When you install dbt into your Windows, macOS, or Linux environment, you get command-line tools and the VS Code extension that enable you to transform data using analytics engineering best practices.
+
+You can use self-hosted tools with or without a <Constant name="dbt_platform" /> account. With an account, the VS Code extension and <Constant name="platform_cli" /> sync with your platform project for CI/CD, documentation, and more. Without an account, you run dbt entirely on your own infrastructure.
 
 <div className="grid--3-col">
 
 <Card
-    title="dbt Fusion engine from a manual install"
-    body="Learn how to install dbt Fusion and set up a project."
-    link="/guides/fusion?step=2"
+    title="Self-hosted dbt v2 from a manual install"
+    body="Learn how to install self-hosted v2 and set up a project."
+    link="/guides/dbt?step=2"
     icon="dbt-bit"/>
 <Card
-    title="dbt Core from a manual install"
-    body="Learn how to install dbt Core and set up a project."
+    title="Self-hosted dbt v1 from a manual install"
+    body="Learn how to install self-hosted v1 and set up a project."
     link="/guides/manual-install"
     icon="dbt-bit"/>
 
 <Card
-    title="Quickstart for dbt Core using DuckDB"
-    body="Learn how to connect to DuckDB."
+    title="Quickstart for dbt with DuckDB"
+    body="Learn how to connect dbt to DuckDB."
     link="/guides/duckdb?step=1"
-    icon="duckdb"/>
+    icon="duckdb-seeklogo"/>
 </div>
+
+
+## Connect your AI to your data
+
+You don't have to choose between learning dbt and using AI &mdash; you can absolutely pair them from day one:
+
+- Use the <Constant name="wizard" /> and ask it to build, refactor, or document a model in natural language, grounded in your project's real lineage and tests. [Get started with <Constant name="wizard" />](/docs/dbt-ai/wizard-quickstart).
+- Set up the dbt MCP server to connect to Claude, Cursor, or another AI tool to query your project, run dbt commands, and pull metrics directly. [Connect the dbt MCP server](/docs/dbt-ai/about-mcp).
+- Connect to the Fivetran context layer to give any AI tool richer context about your data, so its answers are grounded in what your data actually means. [Explore the context layer](https://fivetran.com/docs/context-layer).
 
 ## Related docs
 
 Expand your dbt knowledge and expertise with these additional resources:
 
-- [Join the monthly demos](https://www.getdbt.com/resources/webinars/dbt-cloud-demos-with-experts) to see <Constant name="cloud" /> in action and ask questions.
-- [<Constant name="cloud" /> AWS marketplace](https://aws.amazon.com/marketplace/pp/prodview-tjpcf42nbnhko) contains information on how to deploy <Constant name="cloud" /> on AWS, user reviews, and more.
+- [Join the monthly demos](https://www.getdbt.com/resources/webinars/dbt-cloud-demos-with-experts) to see <Constant name="dbt" /> in action and ask questions.
+- [<Constant name="dbt" /> AWS marketplace](https://aws.amazon.com/marketplace/pp/prodview-tjpcf42nbnhko) contains information on how to deploy <Constant name="dbt" /> on AWS, user reviews, and more.
 - [Best practices](/best-practices) contains information on how dbt Labs approaches building projects through our current viewpoints on structure, style, and setup.
 - [dbt Learn](https://learn.getdbt.com) offers free online courses that cover dbt fundamentals, advanced topics, and more.
 - [Join the dbt Community](https://www.getdbt.com/community/join-the-community) to learn how other data practitioners globally are using dbt, share your own experiences, and get help with your dbt projects.

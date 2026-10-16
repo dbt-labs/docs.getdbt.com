@@ -153,9 +153,17 @@ details[open] :local(.toggle)::before {
 :global(html[data-theme="dark"]) :local(.headerText):not(:global([class*="admonitionContent_"] *)),
 :global(html[data-theme="dark"]) :local(.link):not(:global([class*="admonitionContent_"] *)),
 :global(html[data-theme="dark"]) :local(.header):not(:global([class*="admonitionContent_"] *)),
-:global(html[data-theme="dark"]) :local(.headerText) a:not(:global([class*="admonitionContent_"] *)),
-:global(html[data-theme="dark"]) :local(.link) a:not(:global([class*="admonitionContent_"] *)) {
+/* Exclude .lifecycle pills: they set their own colors; forcing link white breaks contrast on light gray pills.
+   Use :global(.lifecycle) — a bare .lifecycle is hashed by CSS modules and would never match the real class. */
+:global(html[data-theme="dark"]) :local(.headerText) a:not(:global(.lifecycle)):not(:global([class*="admonitionContent_"] *)),
+:global(html[data-theme="dark"]) :local(.link) a:not(:global(.lifecycle)):not(:global([class*="admonitionContent_"] *)) {
   color: #fff !important;
+}
+
+/* Plan / lifecycle pills inside expandable headers: keep dark label text in dark mode (parent link rules use !important) */
+:global(html[data-theme="dark"]) :local(.headerText) :global(a.lifecycle),
+:global(html[data-theme="dark"]) :local(.link) :global(a.lifecycle) {
+  color: #030711 !important;
 }
 
 /* Inside admonitions: ALWAYS black text (both light and dark mode) */

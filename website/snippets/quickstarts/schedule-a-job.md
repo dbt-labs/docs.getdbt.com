@@ -6,7 +6,7 @@ Now that you've built your customer model, you need to commit the changes you ma
 1. Click the **Commit and sync git** button. This action prepares your changes for commit.
 2. A modal titled **Commit to a new branch** will appear.
 3. In the modal window, name your new branch `add-customers-model`. This branches off from your primary branch with your new changes.
-4. Add a commit message, such as "Add customers model, tests, docs" and and commit your changes.
+4. Add a commit message, such as "Add customers model, tests, docs" and commit your changes.
 5. Click **Merge this branch to main** to add these changes to the main branch on your repo.
 
 
@@ -18,14 +18,14 @@ Now that you've built your customer model, you need to commit the changes you ma
 
 ## Deploy dbt
 
-Use <Constant name="cloud" />'s Scheduler to deploy your production jobs confidently and build observability into your processes. You'll learn to create a deployment environment and run a job in the following steps.
+Use <Constant name="dbt" />'s Scheduler to deploy your production jobs confidently and build observability into your processes. You'll learn to create a deployment environment and run a job in the following steps.
 
 ### Create a deployment environment
 
 1. From the main menu, go to **Orchestration** > **Environments**.
 2. Click **Create environment**.
 3. In the **Name** field, write the name of your deployment environment. For example, "Production."
-4. In the **dbt Version** field, select the latest version from the dropdown.
+4. The **dbt version** will default to the latest available. We recommend all new projects run on the latest version of dbt. 
 5. Under **Deployment connection**, enter the name of the dataset you want to use as the target, such as "Analytics". This will allow dbt to build and work with that dataset. For some data warehouses, the target dataset may be referred to as a "schema".
 6. Click **Save**.
 
@@ -41,11 +41,11 @@ As the `jaffle_shop` business gains more customers, and those customers create m
 3. Scroll down to the **Execution settings** section.
 4. Under **Commands**, add this command as part of your job if you don't see it:
    * `dbt build`
-5. Select the **Generate docs on run** option to automatically [generate updated project docs](/docs/explore/build-and-view-your-docs) each time your job runs. 
+5. <VersionBlock lastVersion="1.99">Select the **Generate docs on run** option to automatically [generate updated project docs](/docs/explore/build-and-view-your-docs) each time your job runs.</VersionBlock><VersionBlock firstVersion="2.0">You don't need to add a docs step. Every job run refreshes your project's metadata in [<Constant name="catalog" />](/docs/explore/build-and-view-your-docs) automatically.</VersionBlock>
 6. For this exercise, do _not_ set a schedule for your project to run &mdash; while your organization's project should run regularly, there's no need to run this example project on a schedule. Scheduling a job is sometimes referred to as _deploying a project_.
 7. Click **Save**, then click **Run now** to run your job.
 8. Click the run and watch its progress under **Run summary**.
-9. Once the run is complete, click **View Documentation** to see the docs for your project.
+9. Once the run is complete, <VersionBlock lastVersion="1.99">click **View Documentation** to see the docs for your project.</VersionBlock><VersionBlock firstVersion="2.0">click **Catalog** in the navigation to explore your project.</VersionBlock>
 
 
 Congratulations 🎉! You've just deployed your first dbt project!

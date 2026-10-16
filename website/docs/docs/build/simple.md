@@ -5,9 +5,10 @@ description: "Use simple metrics to aggregate data directly from columns in your
 sidebar_label: Simple
 tags: [Metrics, Semantic Layer]
 pagination_next: null
+availability: all_users
 ---
 
-<VersionBlock lastVersion="1.99">
+<VersionBlock lastVersion="1.11">
 Simple metrics are metrics that directly reference a single measure, without any additional measures involved. They are aggregations over a column in your data platform and can be filtered by one or multiple dimensions.
 
 The parameters, description, and type for simple metrics are:
@@ -33,7 +34,7 @@ Note that we use dot notation (`.`) to indicate whether a parameter is nested wi
 
 </VersionBlock>
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 
 Simple metrics are metrics that directly reference a single column expression within a semantic model, without any additional columns involved. They are aggregations over a column in your data platform and can be filtered by one or multiple dimensions.
 
@@ -44,7 +45,7 @@ The parameters, description, and type for simple metrics are:
 | `name` | The name of the metric. It must be unique within your project and can include lowercase letters, numbers, and underscores. Use this name to reference the metric from the <Constant name="semantic_layer" /> API. | Required | String |
 | `description` | The description of the metric. | Optional | String |
 | `type` | The type of the metric (cumulative, derived, ratio, or simple). | Required | String |
-| `label` | Defines the display value in downstream tools. Accepts plain text, spaces, and quotes (such as `orders_total` or `"orders_total"`). | Required | String |
+| `label` | Defines the display value in downstream tools. Accepts plain text, spaces, and quotes (such as `orders_total` or `"orders_total"`). | Optional | String |
 | `agg` | The aggregation function to use. Use `sum`,  `max`,  `min`,  `average`,  `median`, `count`, `count_distinct`,  `percentile`, and `sum_boolean`.| Required | String |
 | `expr` | The expression to use, like a column name. Defaults to the metric name. | Optional | String |
 | `percentile` | The percentile to use. Required if `agg` is `percentile`. | Optional | Integer |
@@ -59,7 +60,7 @@ The parameters, description, and type for simple metrics are:
 The following displays the complete specification for simple metrics, along with an example.
 
 
-<VersionBlock lastVersion="1.99">
+<VersionBlock lastVersion="1.11">
 
 ```yaml
 metrics:
@@ -79,7 +80,7 @@ metrics:
 
 </VersionBlock>
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 
 Note that you must define simple metrics within a semantic model's YAML entry.
 
@@ -120,7 +121,7 @@ If you've already defined the measure using the `create_metric: true` parameter,
 
 ## Simple metrics example
 
-<VersionBlock lastVersion="1.99">
+<VersionBlock lastVersion="1.11">
 
 ```yaml
   metrics: 
@@ -148,7 +149,7 @@ If you've already defined the measure using the `create_metric: true` parameter,
 
 </VersionBlock>
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 
 ```yaml
   metrics:

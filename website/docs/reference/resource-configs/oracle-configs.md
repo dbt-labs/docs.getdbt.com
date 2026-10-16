@@ -1,5 +1,6 @@
 ---
 title: "Oracle configurations"
+description: "Configure Oracle-specific settings for dbt models, including parallel hints and adapter options."
 id: "oracle-configs"
 ---
 
@@ -89,7 +90,7 @@ FROM {{ source('sh_database', 'sales') }}
 
 ## Session info in `v$session`
 
-Custom session information can be supplied under `session_info` in `profile.yml`
+Custom session information can be supplied under `session_info` in `profiles.yml`
 
 
 ```yaml

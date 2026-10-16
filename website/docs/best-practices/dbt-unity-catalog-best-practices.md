@@ -17,13 +17,13 @@ Raw data in your Bronze layer should be defined as dbt [sources](/docs/build/sou
 
 If you have different data catalogs/schemas for your source data depending on your environment, you can use the [target.name](/reference/dbt-jinja-functions/target#use-targetname-to-change-your-source-database) to change the data catalog/schema you’re pulling from depending on the environment.
 
-If you use multiple Databricks workspaces to isolate development from production, you can use <Constant name="cloud" />’s [environment variables](/docs/build/environment-variables) in your connection config strings to reference multiple workspaces from one <Constant name="cloud" /> project. You can also do the same thing for your SQL warehouse so you can have different sizes based on your environments.
+If you use multiple Databricks workspaces to isolate development from production, you can use <Constant name="dbt" />’s [environment variables](/docs/build/environment-variables) in your connection config strings to reference multiple workspaces from one <Constant name="dbt" /> project. You can also do the same thing for your SQL warehouse so you can have different sizes based on your environments.
 
 To do so, use dbt's [environment variable syntax](/docs/build/environment-variables#special-environment-variables) for Server Hostname of your Databricks workspace URL and HTTP Path for the SQL warehouse in your connection settings. Note that Server Hostname still needs to appear to be a valid domain name to pass validation checks, so you will need to hard-code the domain suffix on the URL, eg `{{env_var('DBT_HOSTNAME')}}.cloud.databricks.com` and the path prefix for your warehouses, eg `/sql/1.0/warehouses/{{env_var('DBT_HTTP_PATH')}}`.
 
 <Lightbox src="/img/guides/databricks-guides/databricks-connection-env-vars.png" title="Using environment variable syntax in connection configs" />
 
-When you create environments in <Constant name="cloud" />, you can assign environment variables to populate the connection information dynamically. Don’t forget to make sure the tokens you use in the credentials for those environments were generated from the associated workspace.
+When you create environments in <Constant name="dbt" />, you can assign environment variables to populate the connection information dynamically. Don’t forget to make sure the tokens you use in the credentials for those environments were generated from the associated workspace.
 
 <Lightbox src="/img/guides/databricks-guides/databricks-env-variables.png" title="Defining default environment variable values" />
 

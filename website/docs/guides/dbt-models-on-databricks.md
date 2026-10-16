@@ -7,7 +7,7 @@ hoverSnippet: Learn how to optimize and troubleshoot your dbt models on Databric
 # time_to_complete: '30 minutes' commenting out until we test
 icon: 'databricks'
 hide_table_of_contents: true
-tags: ['Databricks', 'dbt Core','dbt platform']
+tags: ['Databricks', 'dbt platform']
 level: 'Intermediate'
 ---
 
@@ -35,7 +35,7 @@ To select the appropriate size of your SQL warehouse, consider the use case and 
 
 ### Provision warehouses by workload
 
-Another technique worth implementing is to provision separate SQL warehouses for building dbt pipelines instead of ad hoc, interactive SQL analysis. This is because the query design patterns and compute usage are different for these two types of workloads. Choose T-shirt sizes based on data volumes and SLAs (scale-up principle), and choose auto-scaling based on concurrency requirements (scale-out principle). For larger deployments, this approach could be expanded to map different workload sizes to multiple “pipeline” warehouses, if needed. On the dbt side, take into account the [number of threads you have](/docs/core/connect-data-platform/connection-profiles#understanding-threads), meaning how many dbt models you can run in parallel. The higher the thread count, the more compute you will require.
+Another technique worth implementing is to provision separate SQL warehouses for building dbt pipelines instead of ad hoc, interactive SQL analysis. This is because the query design patterns and compute usage are different for these two types of workloads. Choose T-shirt sizes based on data volumes and SLAs (scale-up principle), and choose auto-scaling based on concurrency requirements (scale-out principle). For larger deployments, this approach could be expanded to map different workload sizes to multiple “pipeline” warehouses, if needed. On the dbt side, take into account the [number of threads you have](/docs/local/profiles.yml#understanding-threads), meaning how many dbt models you can run in parallel. The higher the thread count, the more compute you will require.
 
 ### Configure auto-stop
 
@@ -99,7 +99,7 @@ An important item to clarify is that you will want to prioritize statistics for 
 
 ### Vacuum
 
-When you delete a record from a Delta table, it is a soft delete. What this means is that the record is deleted from the transaction log and is not included in subsequent queries, but the underlying file still remains in cloud storage. If you want to delete the underlying files as well (whether for reducing storage cost or augmenting performance on merges), you can run a vacuum command. The factor you will want to be very cognizant of is restoring older versions of the table. Let’s say  you vacuum a table to delete all unused files that’s older than 7 days. You won’t be  able to restore versions of the table from over 7 days ago that rely on those deleted  files, so use with caution. If/when you choose to leverage vacuum, you will likely want to run vacuum using the dbt functionality [on-run-end](/reference/project-configs/on-run-start-on-run-end) after your model builds or run vacuum as a separate scheduled dbt job on a consistent cadence (whether it is daily, weekly, or monthly) using the dbt [run-operation](/reference/commands/run-operation) command (with the vaccum statement in a macro).
+When you delete a record from a Delta table, it is a soft delete. What this means is that the record is deleted from the transaction log and is not included in subsequent queries, but the underlying file still remains in cloud storage. If you want to delete the underlying files as well (whether for reducing storage cost or augmenting performance on merges), you can run a vacuum command. The factor you will want to be very cognizant of is restoring older versions of the table. Let’s say  you vacuum a table to delete all unused files that’s older than 7 days. You won’t be  able to restore versions of the table from over 7 days ago that rely on those deleted  files, so use with caution. If/when you choose to leverage vacuum, you will likely want to run vacuum using the dbt functionality [on-run-end](/reference/project-configs/on-run-start-on-run-end) after your model builds or run vacuum as a separate scheduled dbt job on a consistent cadence (whether it is daily, weekly, or monthly) using the dbt [run-operation](/reference/commands/run-operation) command (with the vacuum statement in a macro).
 
 ### Gold / Marts Layer
 
@@ -161,7 +161,7 @@ The concept of _exploding joins_ refers to a `join` operation that produces a mu
 
 Remember that data is stored as files, so the unit of I/O work is a file, not a row. That’s a lot of work if we’re dealing with TBs of data. Therefore we recommend relying on merge strategy as the recommended strategy for the majority of incremental models.
 
-Databricks is committed to continuously improving its performance. For example, in Delta and DBSQL, we’ve greatly improved performance of MERGE operations recently with [low-shuffle merge and Photon](https://www.databricks.com/blog/2022/10/17/faster-merge-performance-low-shuffle-merge-and-photon.html). With many future implementations in the pipeline such as deletion vectors for efficient deletes & upserts.Here’s the basic strategies to speed it up:
+Databricks is committed to continuously improving its performance. For example, in Delta and DBSQL, we’ve greatly improved performance of MERGE operations recently with [low-shuffle merge and Photon](https://www.databricks.com/blog/2022/10/17/faster-merge-performance-low-shuffle-merge-and-photon.html). With many future implementations in the pipeline such as deletion vectors for efficient deletes & upserts. Here’s the basic strategies to speed it up:
 
 1. Only read partitions that are important by pushing down filters to scan source and target using filters in *model* and *incremental_predicates*
 2. Only update important rows
@@ -170,11 +170,11 @@ Databricks is committed to continuously improving its performance. For example, 
 
 ### dbt Discovery API
 
-Now you might be wondering, how do you identify opportunities for performance improvement inside of dbt? Well, with each job run, <Constant name="cloud" /> generates metadata on the timing, configuration, and freshness of models in your dbt project. The [dbt Discovery API](/docs/dbt-cloud-apis/discovery-api) is a GraphQL service that supports queries on this metadata, using  the [graphical explorer](https://metadata.cloud.getdbt.com/graphiql) or the endpoint itself. Teams can pipe this data into their data warehouse and analyze it like any other data source in a business intelligence platform. <Constant name="cloud" /> users can also use the data from the [Model Timing tab](/docs/deploy/run-visibility#model-timing) to visually identify models that take the most time and may require refactoring.
+Now you might be wondering, how do you identify opportunities for performance improvement inside of dbt? Well, with each job run, <Constant name="dbt" /> generates metadata on the timing, configuration, and freshness of models in your dbt project. The [dbt Discovery API](/docs/dbt-apis/discovery-api) is a GraphQL service that supports queries on this metadata, using  the [graphical explorer](https://metadata.cloud.getdbt.com/graphiql) or the endpoint itself. Teams can pipe this data into their data warehouse and analyze it like any other data source in a business intelligence platform. <Constant name="dbt" /> users can also use the data from the [Model Timing tab](/docs/deploy/run-visibility#model-timing) to visually identify models that take the most time and may require refactoring.
 
 ### dbt Admin API
 
-With the [<Constant name="cloud" /> Admin API](/docs/dbt-cloud-apis/admin-cloud-api), you can  pull the dbt artifacts from your <Constant name="cloud" /> run,  put the generated `manifest.json` into an S3 bucket, stage it, and model the data using the [dbt artifacts package](https://hub.getdbt.com/brooklyn-data/dbt_artifacts/latest/). That package can help you identify inefficiencies in your dbt models and pinpoint where opportunities for improvement are.
+With the [<Constant name="dbt" /> Admin API](/docs/dbt-apis/admin-api), you can  pull the dbt artifacts from your <Constant name="dbt" /> run,  put the generated `manifest.json` into an S3 bucket, stage it, and model the data using the [dbt artifacts package](https://hub.getdbt.com/brooklyn-data/dbt_artifacts/latest/). That package can help you identify inefficiencies in your dbt models and pinpoint where opportunities for improvement are.
 
 ### Conclusion
 

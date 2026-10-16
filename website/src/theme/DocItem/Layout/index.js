@@ -75,7 +75,7 @@ function useDocTOC() {
 
     // Headings to remove from TOC
     const headingsToFilter = document.querySelectorAll(
-      ".tabs-container h2, .tabs-container h3, .expandable-anchor h2, .expandable-anchor h3"
+      ".tabs-container h2, .tabs-container h3, .expandable-anchor h2, .expandable-anchor h3, .faq-container h2, .faq-container h3"
     );
     
     // if headings exist on page
@@ -196,6 +196,7 @@ function useDocTOC() {
   };
 }
 export default function DocItemLayout({children}) {
+  const location = useLocation();
   const docTOC = useDocTOC();
 
   // dbt Custom
@@ -207,7 +208,6 @@ export default function DocItemLayout({children}) {
   const { siteConfig } = useDocusaurusContext();
 
   // Construct full URL for structured data
-  const location = useLocation();
   const isGuidesRoute = location.pathname.includes('/guides/');
   const siteUrl = siteConfig?.url || '';
   const fullUrl = `${siteUrl}${location.pathname}${location.search}${location.hash}`;

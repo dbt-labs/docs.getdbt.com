@@ -111,5 +111,5 @@ functions:
 - [User-defined functions](/docs/build/udfs)
 - [Function properties](/reference/function-properties)
 - [Function configurations](/reference/function-configs)
-- [Arguments](/reference/resource-properties/function-arguments)
+- [arguments](/reference/resource-properties/function-arguments)
 

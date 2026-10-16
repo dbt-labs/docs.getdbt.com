@@ -54,19 +54,19 @@ Things to note:
 ## Model File Naming and Coding
 
 - All objects should be plural.  
-  Example: `stg_stripe__invoices.sql` vs. `stg_stripe__invoice.sql`
+  Example: `stg_orders.sql` vs. `stg_order.sql`
 
 - All models should use the naming convention `<type/dag_stage>_<source/topic>__<additional_context>`. See [this article](/blog/stakeholder-friendly-model-names) for more information.
 
-  - Models in the **staging** folder should use the source's name as the `<source/topic>` and the entity name as the `additional_context`.
+  - Models in the **staging** folder should use the source's name as the `<source/topic>` and the entity name as the `additional_context`. In a single-source project like Jaffle Shop, `stg_orders.sql` and `stg_customers.sql` are clear enough without the source prefix.
 
     Examples:
 
     - seed_snowflake_spend.csv
-    - base_stripe\_\_invoices.sql
-    - stg_stripe\_\_customers.sql
-    - stg_salesforce\_\_customers.sql
-    - int_customers\_\_unioned.sql
+    - stg_orders.sql
+    - stg_customers.sql
+    - stg_salesforce__customers.sql
+    - int_customers__unioned.sql
     - fct_orders.sql
 
 - Schema, table, and column names should be in `snake_case`.
@@ -115,6 +115,6 @@ For more information about why we use so many CTEs, read [this glossary entry](h
 
 - Where performance permits, CTEs should perform a single, logical unit of work.
 - CTE names should be as verbose as needed to convey what they do.
-- CTEs with confusing or noteable logic should be commented with SQL comments as you would with any complex functions and should be located above the CTE.
+- CTEs with confusing or notable logic should be commented with SQL comments as you would with any complex functions and should be located above the CTE.
 - CTEs duplicated across models should be pulled out and created as their own models.
 ```

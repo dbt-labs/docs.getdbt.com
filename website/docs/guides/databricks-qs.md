@@ -5,17 +5,23 @@ level: 'Beginner'
 icon: 'databricks'
 hide_table_of_contents: true
 tags: ['Platform', 'Quickstart', 'Databricks']
+product_badge: "dbt v2 compatible"
+agent_guidance:
+  pacing: In the first reply, confirm the reader’s prerequisites and connection path before listing steps. Then give one step per reply and confirm its success check before continuing.
+  stay_on_path: This guide uses dbt platform. Don’t switch the reader to a local setup. If the reader wants to set up dbt locally, use the https://docs.getdbt.com/guides/dbt guide instead
+  safety: Never ask for passwords or keys in chat.
+  signup_link: When the reader needs a dbt account, share https://www.getdbt.com/signup?utm_source=ai_assistant&utm_medium=docs_md&utm_campaign=databricks-qs
 ---
 
 <div style={{maxWidth: '900px'}}>
 
-## Introduction
+## Introduction 
 
-In this quickstart guide, you'll learn how to use <Constant name="cloud" /> with Databricks. It will show you how to: 
+In this quickstart guide, you'll learn how to use <Constant name="dbt" /> with Databricks. It will show you how to: 
 
 - Create a Databricks workspace.
 - Load sample data into your Databricks account.
-- Connect <Constant name="cloud" /> to Databricks.
+- Connect <Constant name="dbt" /> to Databricks.
 - Take a sample query and turn it into a model in your dbt project. A model in dbt is a select statement.
 - Add tests to your models.
 - Document your models.
@@ -27,7 +33,7 @@ You can check out [dbt Fundamentals](https://learn.getdbt.com/courses/dbt-fundam
 
 ### Prerequisites​
 
-- You have a [<Constant name="cloud" /> account](https://www.getdbt.com/signup/). 
+- You have a [<Constant name="dbt" /> account](https://www.getdbt.com/signup/). 
 - You have an account with a cloud service provider (such as AWS, GCP, and Azure) and have permissions to create an S3 bucket with this account. For demonstrative purposes, this guide uses AWS as the cloud service provider.
 
 ### Related content
@@ -163,15 +169,15 @@ If you get a session error and don’t get redirected to this page, you can go b
 
 ## Connect dbt to Databricks
 
-There are two ways to connect <Constant name="cloud" /> to Databricks. The first option is Partner Connect, which provides a streamlined setup to create your <Constant name="cloud" /> account from within your new Databricks trial account. The second option is to create your <Constant name="cloud" /> account separately and build the Databricks connection yourself (connect manually). If you want to get started quickly, dbt Labs recommends using Partner Connect. If you want to customize your setup from the very beginning and gain familiarity with the <Constant name="cloud" /> setup flow, dbt Labs recommends connecting manually.
+There are two ways to connect <Constant name="dbt" /> to Databricks. The first option is Partner Connect, which provides a streamlined setup to create your <Constant name="dbt" /> account from within your new Databricks trial account. The second option is to create your <Constant name="dbt" /> account separately and build the Databricks connection yourself (connect manually). If you want to get started quickly, dbt Labs recommends using Partner Connect. If you want to customize your setup from the very beginning and gain familiarity with the <Constant name="dbt" /> setup flow, dbt Labs recommends connecting manually.
 
 ## Set up the integration from Partner Connect
 
 :::note
- Partner Connect is intended for trial partner accounts. If your organization already has a <Constant name="cloud" /> account, connect manually. Refer to [Connect to <Constant name="cloud" /> manually](https://docs.databricks.com/partners/prep/dbt-cloud.html#connect-to-dbt-cloud-manually) in the Databricks docs for instructions.
+ Partner Connect is intended for trial partner accounts. If your organization already has a <Constant name="dbt" /> account, connect manually. Refer to [Connect to <Constant name="dbt" /> manually](https://docs.databricks.com/partners/prep/dbt-cloud.html#connect-to-dbt-cloud-manually) in the Databricks docs for instructions.
 :::
 
-To connect <Constant name="cloud" /> to Databricks using Partner Connect, do the following:
+To connect <Constant name="dbt" /> to Databricks using Partner Connect, do the following:
 
 1. In the sidebar of your Databricks account, click **Partner Connect**.
 
@@ -208,13 +214,13 @@ To connect <Constant name="cloud" /> to Databricks using Partner Connect, do the
 
 8. Click **Next**.
 
-   The **Email** box displays the email address for your Databricks account. dbt Labs uses this email address to prompt you to create a trial <Constant name="cloud" /> account.
+   The **Email** box displays the email address for your Databricks account. dbt Labs uses this email address to prompt you to create a trial <Constant name="dbt" /> account.
 
-9. Click **Connect to <Constant name="cloud" />**.
+9. Click **Connect to <Constant name="dbt" />**.
 
    A new tab opens in your web browser, which displays the getdbt.com website.
 
-10. Complete the on-screen instructions on the getdbt.com website to create your trial <Constant name="cloud" /> account.
+10. Complete the on-screen instructions on the getdbt.com website to create your trial <Constant name="dbt" /> account.
 
 ## Set up a dbt managed repository
 
@@ -222,9 +228,9 @@ To connect <Constant name="cloud" /> to Databricks using Partner Connect, do the
 
 ## Initialize your dbt project​ and start developing
 
-Now that you have a repository configured, you can initialize your project and start development in <Constant name="cloud" />:
+Now that you have a repository configured, you can initialize your project and start development in <Constant name="dbt" />:
 
-1. Click **Start developing in the <Constant name="cloud_ide" />**. It might take a few minutes for your project to spin up for the first time as it establishes your git connection, clones your repo, and tests the connection to the warehouse.
+1. Click **Start developing in the <Constant name="studio_ide" />**. It might take a few minutes for your project to spin up for the first time as it establishes your git connection, clones your repo, and tests the connection to the warehouse.
 2. Above the file tree to the left, click **Initialize dbt project**. This builds out your folder structure with example models.
 3. Make your initial commit by clicking **Commit and sync**. Use the commit message `initial commit` and click **Commit**. This creates the first commit to your managed repo and allows you to open a branch where you can add new dbt code.
 4. You can now directly query data from your warehouse and execute `dbt run`. You can try this out now:
@@ -236,10 +242,12 @@ Now that you have a repository configured, you can initialize your project and s
 
 ## Build your first model
 
-You have two options for working with files in the <Constant name="cloud_ide" />:
+If you'd like to use AI to build your first model, check out the <a id="qs-jump-to-build-with-ai" href="#build-it-with-ai-using-dbt-wizard">build it with dbt Wizard</a> in the next section.
+
+You have two options for working with files in the <Constant name="studio_ide" />:
 
 - Create a new branch (recommended) &mdash; Create a new branch to edit and commit your changes. Navigate to **Version Control** on the left sidebar and click **Create branch**.
-- Edit in the protected primary branch &mdash; If you prefer to edit, format, or lint files and execute dbt commands directly in your primary git branch. The <Constant name="cloud_ide" /> prevents commits to the protected branch, so you will be prompted to commit your changes to a new branch.
+- Edit in the protected primary branch &mdash; If you prefer to edit, format, or lint files and execute dbt commands directly in your primary git branch. The <Constant name="studio_ide" /> prevents commits to the protected branch, so you will be prompted to commit your changes to a new branch.
 
 Name the new branch `add-customers-model`.
 
@@ -307,7 +315,7 @@ select * from final
 
 4. Enter `dbt run` in the command prompt at the bottom of the screen. You should get a successful run and see the three models.
 
-Later, you can connect your business intelligence (BI) tools to these views and tables so they only read cleaned up data rather than raw data in your BI tool.
+Later, you can connect your business intelligence (BI) tools (like [dbt Charts](https://dbtcharts.com/)) to these views and tables so they only read cleaned up data rather than raw data.
 
 #### FAQs
 
@@ -316,6 +324,8 @@ Later, you can connect your business intelligence (BI) tools to these views and 
 <FAQ path="Models/create-a-schema" />
 <FAQ path="Models/run-downtime" />
 <FAQ path="Troubleshooting/sql-errors" />
+
+<Snippet path="quickstarts/build-first-model-with-wizard" />
 
 ## Change the way your model is materialized
 
@@ -429,3 +439,5 @@ Later, you can connect your business intelligence (BI) tools to these views and 
 <Snippet path="quickstarts/test-and-document-your-project" />
 
 <Snippet path="quickstarts/schedule-a-job" />
+
+<Snippet path="quickstarts/connect-your-ai" />

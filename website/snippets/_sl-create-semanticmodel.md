@@ -8,7 +8,7 @@ If you're following the guide in your own project, pick a model that you want to
 
 It's best practice to create semantic models in the `/models/semantic_models` directory in your project. Semantic models are nested under the `semantic_models` key. First, fill in the name and appropriate metadata, map it to a model in your dbt project, and specify model defaults. For now, `default_agg_time_dimension` is the only supported default.
 
-<VersionBlock lastVersion="1.99">
+<VersionBlock lastVersion="1.11">
 
 ```yaml
 semantic_models:
@@ -24,7 +24,7 @@ semantic_models:
 
 </VersionBlock>
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 <!--insert new yaml spec-->
 </VersionBlock>
 
@@ -46,7 +46,7 @@ semantic_models:
 
 
 
-<VersionBlock lastVersion="1.99">
+<VersionBlock lastVersion="1.11">
 
 3. Define your dimensions and measures. Dimensions are properties of the records in your table that are non-aggregatable. They provide categorical or time-based context to enrich metrics. Measures are the building block for creating metrics. They are numerical columns that MetricFlow aggregates to create metrics.
 
@@ -149,7 +149,7 @@ semantic_models:
 
 </VersionBlock>
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 <!--insert step 3 with examples for version 2.0-->
 </VersionBlock>
 

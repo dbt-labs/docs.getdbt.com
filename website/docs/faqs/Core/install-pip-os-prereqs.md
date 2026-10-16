@@ -1,12 +1,12 @@
 ---
 title: "Does my operating system have prerequisites?"
-description: "You can check whether your operating system has prerequisites for installing dbt Core."
-sidebar_label: 'dbt Core system prerequisites'
+description: "You can check whether your operating system has prerequisites for installing dbt v1."
+sidebar_label: 'dbt v1 system prerequisites'
 id: install-pip-os-prereqs.md
 
 ---
 
-Your operating system may require pre-installation setup before installing <Constant name="core" /> with pip. After downloading and installing any dependencies specific to your development environment, you can proceed with the [pip installation of <Constant name="core" />](/docs/core/pip-install).
+Your operating system may require pre-installation setup before installing <Constant name="core" /> with pip. After downloading and installing any dependencies specific to your development environment, you can proceed with the [pip installation of <Constant name="core" />](/docs/local/install-dbt).
 
 ### CentOS
 

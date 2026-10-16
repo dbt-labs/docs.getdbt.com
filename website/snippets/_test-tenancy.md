@@ -1,2 +1,1 @@
-
-<Constant name="cloud" /> is available in both single (virtual private) and multi-tenant configurations.
+<Constant name="dbt" /> is available in single-tenant (virtual private) and multi-tenant SaaS configurations. Many multi-tenant accounts use cell-based hosting with account-specific access URLs. For more information, refer to [Multi-cell hosting](/docs/platform/about-platform/tenancy#multi-cell-hosting).

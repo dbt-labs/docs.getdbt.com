@@ -5,7 +5,7 @@ sidebar_label: 'Where can I find my user ID'
 id: find-user-id
 ---
 
-Knowing your <Constant name="cloud" /> user ID can help with interacting with support. 
+Knowing your <Constant name="dbt" /> user ID can help with interacting with support. 
 
 To find your user ID in the <Constant name="dbt_platform" />, read the following steps:
 

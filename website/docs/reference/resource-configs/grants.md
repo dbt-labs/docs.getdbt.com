@@ -1,4 +1,5 @@
 ---
+description: "Manage access to the database objects dbt produces by applying grants to models, seeds, and snapshots at build time."
 resource_types: [models,seeds,snapshots]
 datatype: "{<dictionary>}"
 default_value: {}
@@ -327,7 +328,13 @@ models:
 
 <div warehouse="Redshift">
 
-* Granting to / revoking from is only fully supported for Redshift users (not [groups](https://docs.aws.amazon.com/redshift/latest/dg/r_Groups.html) or [roles](https://docs.aws.amazon.com/redshift/latest/dg/r_roles-managing.html)). See [dbt-redshift#415](https://github.com/dbt-labs/dbt-redshift/issues/415) for the corresponding issue.
+* Redshift supports granting to users, [groups](https://docs.aws.amazon.com/redshift/latest/dg/r_Groups.html), and [roles](https://docs.aws.amazon.com/redshift/latest/dg/r_roles-managing.html). Use the `group:` or `role:` prefix in grantee names to grant to groups or roles. Unprefixed names are treated as users.
+
+```yaml
+models:
+  +grants:
+    select: ["user1", "user:user2", "group:analysts", "role:reporter"]
+```
 
 </div>
 

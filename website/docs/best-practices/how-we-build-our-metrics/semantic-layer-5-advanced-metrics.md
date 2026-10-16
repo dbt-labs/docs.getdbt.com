@@ -21,7 +21,7 @@ We're not limited to just passing measures through to our metrics, we can also _
 - 🥪 Let's calculate the **percentage** of our Jaffle Shop revenue that **comes from food items**.
 - 💰 We already have our denominator, revenue, but we'll want to **make a new metric for our numerator** called `food_revenue`.
 
-<File name="models/marts/orders.yml" />
+<File name="models/marts/order_items.yml" />
 
 ```yml
 - name: food_revenue
@@ -34,7 +34,7 @@ We're not limited to just passing measures through to our metrics, we can also _
 
 - 📝 Now we can set up our ratio metric.
 
-<File name="models/marts/orders.yml" />
+<File name="models/marts/order_items.yml" />
 
 ```yml
 - name: food_revenue_pct
@@ -54,7 +54,7 @@ We're not limited to just passing measures through to our metrics, we can also _
   - 🧮 An expression that performs a calculation with these metrics.
 - With these parts we can assemble complex logic that would otherwise need to be 'frozen' in logical models.
 
-<File name="models/marts/orders.yml" />
+<File name="models/marts/order_items.yml" />
 
 ```yml
 - name: revenue_growth_mom
@@ -76,7 +76,7 @@ We're not limited to just passing measures through to our metrics, we can also _
 - ➕ Lastly, lets build a **cumulative metric**. In keeping with our theme of business priorities, let's continue with revenue and build an **all-time revenue metric** for any given time window.
 - 🪟 All we need to do is indicate the type is `cumulative` and not supply a `window` in the `type_params`, which indicates we want cumulative for the entire time period our end users select.
 
-<File name="models/marts/orders.yml" />
+<File name="models/marts/order_items.yml" />
 
 ```yml
 - name: cumulative_revenue

@@ -109,11 +109,11 @@ We often:
 When developing, it often makes sense to only run the model you are actively working on and any downstream models. You can choose which models to run by using the [model selection syntax](/reference/node-selection/syntax).
 
 ### Run only modified models to test changes ("slim CI")
-To merge code changes with confidence, you want to know that those changes will not cause breakages elsewhere in your project. For that reason, we recommend running models and tests in a sandboxed environment, separated from your production data, as an automatic check in your git workflow. (If you use GitHub and <Constant name="cloud" />, read about [how to set up CI jobs](/docs/deploy/ci-jobs).
+To merge code changes with confidence, you want to know that those changes will not cause breakages elsewhere in your project. For that reason, we recommend running models and tests in a sandboxed environment, separated from your production data, as an automatic check in your git workflow. (If you use GitHub and <Constant name="dbt" />, read about [how to set up CI jobs](/docs/deploy/ci-jobs).
 
 At the same time, it costs time (and money) to run and test all the models in your project. This inefficiency feels especially painful if your PR only proposes changes to a handful of models.
 
-By comparing to artifacts from a previous production run, dbt can determine which models are modified and build them on top of of their unmodified parents.
+By comparing to artifacts from a previous production run, dbt can determine which models are modified and build them on top of their unmodified parents.
 
 ```bash
 dbt run -s state:modified+ --defer --state path/to/prod/artifacts
@@ -212,4 +212,4 @@ We find it most useful to separate these two types of transformations into diffe
 If you're using macros or other pieces of Jinja in your models, your compiled SQL (found in the `target/compiled` directory) may contain unwanted whitespace. Check out the [Jinja documentation](http://jinja.pocoo.org/docs/2.10/templates/#whitespace-control) to learn how to control generated whitespace.
 
 ## Related docs
-- [Updating our permissioning guidelines: grants as configs in <Constant name="core" /> v1.2](/blog/configuring-grants)
+- [Updating our permissioning guidelines: grants as configs in dbt v1.2](/blog/configuring-grants)

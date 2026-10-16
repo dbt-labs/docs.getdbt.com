@@ -5,17 +5,18 @@ description: "Define metrics in your dbt project to create quantitative indicato
 sidebar_label: "Creating metrics"
 tags: [Metrics, Semantic Layer]
 pagination_next: "docs/build/cumulative"
+availability: all_users
 ---
 
 After building [semantic models](/docs/build/semantic-models), it's time to start adding metrics. This page explains the different supported metric types you can add to your dbt project.
 
-<VersionBlock lastVersion="1.99">
+<VersionBlock lastVersion="1.11">
   
 Metrics must be defined in a YAML file &mdash; either within the same file as your semantic models or in a separate YAML file in a subdirectory of your dbt project. They shouldn't be defined in a `config` block on a model.
 
 </VersionBlock>
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 
 You can define metrics in two locations within your `models` YAML files:
 
@@ -30,7 +31,7 @@ Define metrics in YAML files within your dbt project, and not in a `config` bloc
 
 The keys for metrics parameters are:
 
-<VersionBlock lastVersion="1.99">
+<VersionBlock lastVersion="1.11">
 
 | Parameter | Description | Required | Type |
 | --------- | ----------- | ---- | ---- |
@@ -44,7 +45,7 @@ The keys for metrics parameters are:
 
 </VersionBlock>
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 
 | Parameter | Description | Required | Type |
 | --------- | ----------- | ---- | ---- |
@@ -73,7 +74,7 @@ Refer to the following sections about each metric type for detailed information 
 
 Here's a complete example of the metrics spec configuration:
 
-<VersionBlock lastVersion="1.99">
+<VersionBlock lastVersion="1.11">
 <File name="models/metrics/file_name.yml" >
 
 ```yaml
@@ -96,7 +97,7 @@ metrics:
 
 </VersionBlock>
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 
 <File name="models/file_name.yml">
 
@@ -145,7 +146,7 @@ import SLCourses from '/snippets/_sl-course.md';
 
 ## Default granularity for metrics
 
-<VersionBlock lastVersion="1.99">
+<VersionBlock lastVersion="1.11">
 
 It's possible to define a default time granularity for metrics if it's different from the granularity of the default aggregation time dimensions (`metric_time`). This is useful if your time dimension has a very fine grain, like second or hour, but you typically query metrics rolled up at a coarser grain.
 
@@ -182,13 +183,13 @@ metrics:
 
 </VersionBlock>
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 
 Set the native grain on the time dimension column and choose the rollup grain at query time.
 
 - Define the data’s grain on the time dimension column with granularity (for example, hour, day, month).
 - Metrics inherit the model’s default aggregation time dimension (set at the model level), and you can optionally override it per metric with `agg_time_dimension`.
-- When querying, pick the rollup grain (day/week/month/year) in your BI tool or with the [Semantic Layer API](/docs/dbt-cloud-apis/sl-api-overview). You can only roll up to grains coarser than or equal to the column’s native grain.
+- When querying, pick the rollup grain (day/week/month/year) in your BI tool or with the [Semantic Layer API](/docs/dbt-apis/sl-api-overview). You can only roll up to grains coarser than or equal to the column’s native grain.
 
 ### Example
 
@@ -240,7 +241,7 @@ models:
 
 [Conversion metrics](/docs/build/conversion) help you track when a base event and a subsequent conversion event occur for an entity within a set time period.
 
-<VersionBlock lastVersion="1.99">
+<VersionBlock lastVersion="1.11">
 
 <File name="models/metrics/file_name.yml" >
 
@@ -271,7 +272,7 @@ metrics:
 
 </VersionBlock>
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 
 <File name="models/file_name.yml">
 
@@ -324,7 +325,7 @@ metrics:
 
 ## Cumulative metrics
 
-<VersionBlock lastVersion="1.99">
+<VersionBlock lastVersion="1.11">
 
 [Cumulative metrics](/docs/build/cumulative) aggregate a measure over a given window. If no window is specified, the window will accumulate the measure over all of the recorded time period. Note that you will need to create the [time spine model](/docs/build/metricflow-time-spine) before you add cumulative metrics.
 
@@ -348,7 +349,7 @@ metrics:
 
 </VersionBlock>
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 
 [Cumulative metrics](/docs/build/cumulative) aggregate a simple metric over a given period. If no period is specified, the window will accumulate the simple metric over all of the recorded time period. Note that you will need to create the [time spine model](/docs/build/metricflow-time-spine) before you add cumulative metrics.
 
@@ -399,7 +400,7 @@ metrics:
 
 [Derived metrics](/docs/build/derived) allow you to perform calculations using other metrics. For example, you can calculate `gross_profit` by subtracting a `cost` metric from a `revenue` metric, or calculate growth by comparing a metric to its value from a previous time period.
 
-<VersionBlock lastVersion="1.99">
+<VersionBlock lastVersion="1.11">
 
 <File name="models/metrics/file_name.yml" >
 
@@ -421,7 +422,7 @@ metrics:
 
 </VersionBlock>
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 
 <File name="models/file_name.yml">
 
@@ -480,7 +481,7 @@ metrics:
 
 [Ratio metrics](/docs/build/ratio) involve a numerator metric and a denominator metric. A `filter` string can be applied to both the numerator and denominator or separately to the numerator or denominator.
 
-<VersionBlock lastVersion="1.99">
+<VersionBlock lastVersion="1.11">
 
 <File name="models/metrics/file_name.yml" >
 
@@ -508,7 +509,7 @@ metrics:
 
 </VersionBlock>
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 
 <File name="models/file_name.yml">
 
@@ -570,7 +571,7 @@ metrics:
 
 ## Simple metrics
 
-<VersionBlock lastVersion="1.99">
+<VersionBlock lastVersion="1.11">
 
 [Simple metrics](/docs/build/simple) point directly to a measure. You may think of it as a function that takes only one measure as the input.
 
@@ -598,7 +599,7 @@ metrics:
 
 </VersionBlock>
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 
 [Simple metrics](/docs/build/simple) point directly to a single column expression within a semantic model. You can think of a simple metric as the foundational building block for other metrics. It performs an aggregation (like `sum`, `count`, or `average`, and so on) on a single field in your model.
 

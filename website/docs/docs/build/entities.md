@@ -4,16 +4,17 @@ id: entities
 description: "Entities are real-world concepts that correspond to key parts of your business, such as customers, transactions, and ad campaigns."
 sidebar_label: "Entities"
 tags: [Metrics, Semantic Layer]
+availability: all_users
 ---
 
 Entities are real-world concepts in a business, such as customers, transactions, and ad campaigns. We often focus our analyses on specific entities, such as customer churn or annual recurring revenue modeling. In our Semantic Layer models, these entities serve as a join key across semantic models.
 
-<VersionBlock lastVersion="1.99">
+<VersionBlock lastVersion="1.11">
 
 Within a semantic graph, the required parameters for an entity are `name` and `type`. The `name` refers to either the key column name from the underlying data table, or it may serve as an alias with the column name referenced in the `expr` parameter. The `name` for your entity must be unique to the semantic model and can not be the same as an existing `measure` or `dimension` within that same model.
 </VersionBlock>
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 
 Within a semantic graph, the required parameters for an entity are `name` and `type`. The `name` refers to either the key column name from the underlying data table, or it may serve as an alias with the column name referenced in the `expr` parameter. The `name` for your entity must be unique to the semantic model and can not be the same as an existing simple metric or `dimension` within that same model.
 </VersionBlock>
@@ -103,7 +104,7 @@ Natural keys are columns or combinations of columns in a table that uniquely ide
 
 The following is the complete spec for entities:
 
-<VersionBlock firstVersion="1.9" lastVersion="1.99">
+<VersionBlock firstVersion="1.9" lastVersion="1.11">
 
 ```yaml
 semantic_models:
@@ -120,7 +121,7 @@ semantic_models:
 ```
 </VersionBlock>
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 
 ```yaml
 models:
@@ -147,7 +148,7 @@ models:
 
 Here's an example of how to define entities in a semantic model:
 
-<VersionBlock firstVersion="1.9" lastVersion="1.99"> 
+<VersionBlock firstVersion="1.9" lastVersion="1.11"> 
 
 ```yaml
 entities:
@@ -172,7 +173,7 @@ entities:
 ```
 </VersionBlock>
 
-<VersionBlock firstVersion="2.0"> 
+<VersionBlock firstVersion="1.12"> 
 
 ```yaml
 models:
@@ -213,7 +214,7 @@ derived_semantics:
 
 If a table doesn't have any key (like a primary key), use _surrogate combination_ to form a key that will help you identify a record by combining two columns. This applies to any [entity type](/docs/build/entities#entity-types). For example, you can combine `date_key` and `brand_code` from the `raw_brand_target_weekly` table to form a _surrogate key_. The following example creates a surrogate key by joining `date_key` and `brand_code` using a pipe (`|`) as a separator.
 
-<VersionBlock lastVersion="1.99"> 
+<VersionBlock lastVersion="1.11"> 
 
 ```yaml
 
@@ -224,7 +225,7 @@ entities:
 ```
 </VersionBlock>
 
-<VersionBlock firstVersion="2.0"> 
+<VersionBlock firstVersion="1.12"> 
 
 ```yaml
 models:
@@ -263,7 +264,7 @@ order_total
 How might we define our Semantic Layer YAML so that we can query `order_total` by `ordered_at` `fiscal_year_name`, and `delivered_at` `fiscal_year_name`?
 
 
-<VersionBlock lastVersion="1.99"> 
+<VersionBlock lastVersion="1.11"> 
 
 First, we need to define two `unique` entities in the `date_categories` with the expression set to `date_day`:
 
@@ -297,7 +298,7 @@ semantic_models:
 
 </VersionBlock>
 
-<VersionBlock firstVersion="2.0"> 
+<VersionBlock firstVersion="1.12"> 
 
 First, we need to define two `unique` entities in the `date_categories` with the expression set to `date_day`:
 
@@ -338,7 +339,7 @@ models:
 ```
 </VersionBlock>
 
-<VersionBlock lastVersion="1.99"> 
+<VersionBlock lastVersion="1.11"> 
 
 Then, we need to add these same entities as `foreign` keys to our `orders` model, with the expression set to `ordered_at` and `delivered_at`:
 
@@ -377,7 +378,7 @@ semantic_models:
 ```
 </VersionBlock>
 
-<VersionBlock firstVersion="2.0"> 
+<VersionBlock firstVersion="1.12"> 
 
 Then, we need to add these same entities as `foreign` keys to our `orders` model, with the expression set to `ordered_at` and `delivered_at`:
 

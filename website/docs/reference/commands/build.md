@@ -4,12 +4,16 @@ sidebar_label: "build"
 id: "build"
 ---
 
+import SnapshotFullRefresh from '/snippets/_snapshot-full-refresh.md';
+import InfoSchemaStaticAnalysis from '/snippets/_info-schema-static-analysis.md';
+import InfoSchemaIntro from '/snippets/_info-schema-intro.md';
+
 The `dbt build` command will:
 - run [models](/docs/build/models)
 - test [tests](/docs/build/data-tests)
 - snapshot [snapshots](/docs/build/snapshots)
 - seed [seeds](/docs/build/seeds)
-- build [user-defined functions](/docs/build/udfs) (available from dbt Core v1.11 and in the <Constant name="fusion_engine" />)
+- build [user-defined functions](/docs/build/udfs) (available from <Constant name="dbt" /> v1.11 and up)
 
 In DAG order, for selected resources or an entire project.
 
@@ -17,16 +21,75 @@ In DAG order, for selected resources or an entire project.
 
 **Artifacts:** The `build` task will write a single [manifest](/reference/artifacts/manifest-json) and a single [run results artifact](/reference/artifacts/run-results-json). The run results will include information about all models, tests, seeds, and snapshots that were selected to build, combined into one file.
 
+<VersionBlock firstVersion="2.0">
+
+<InfoSchemaIntro label="dbt Information Schema:" />
+
+```shell
+dbt build --generate-info-schema
+```
+
+<InfoSchemaStaticAnalysis />
+
+```shell
+dbt build --generate-info-schema --static-analysis strict
+```
+
+</VersionBlock>
+
 **Skipping on failures:** Tests on upstream resources will block downstream resources from running, and a test failure will cause those downstream resources to skip entirely. E.g. If `model_b` depends on `model_a`, and a `unique` test on `model_a` fails, then `model_b` will `SKIP`.
 - Don't want a test to cause skipping? Adjust its [severity or thresholds](/reference/resource-configs/severity) to `warn` instead of `error`
 - In the case of a test with multiple parents, where one parent depends on the other (e.g. a `relationships` test between `model_a` + `model_b`), that test will block-and-skip children of the most-downstream parent only (`model_b`).
-- If you have a test with multiple parents that are independent of each other, dbt [skips](https://github.com/dbt-labs/dbt-core/blob/d5071fa13502be273596a0b7c8b13d14b6c68655/core/dbt/compilation.py#L224-L257) the downstream node only if that node depends on all of those parents.
+- If you have a test with multiple parents that are independent of each other, dbt [skips](https://github.com/dbt-labs/dbt/blob/d5071fa13502be273596a0b7c8b13d14b6c68655/core/dbt/compilation.py#L224-L257) the downstream node only if that node depends on all of those parents.
+
+<VersionBlock firstVersion="2.0">
+
+**Checks:** `dbt build` runs [checks](/docs/build/checks) before it compiles or runs any models. Checks are SQL queries you write against the [dbt Information Schema](/docs/build/dbt-information-schema) to enforce your team's project standards. For example, a check might be that every model has a description. A check passes when its query returns no rows. A failing check stops the build before anything is materialized, unless the check's `severity` is set to `warn`.
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.12">
+
+**Skipping on model errors:** By default, if a model fails, all downstream models are skipped. Set [`on_error: continue`](/reference/resource-configs/on_error) on a model to allow its downstream models to run even when that model fails.
+
+</VersionBlock>
+
+<VersionBlock lastVersion="1.11">
 
 **Selecting resources:** The `build` task supports standard selection syntax (`--select`, `--exclude`, `--selector`), as well as a `--resource-type` flag that offers a final filter (just like `list`). Whichever resources are selected, those are the ones that `build` will run/test/snapshot/seed.
+</VersionBlock>
+
+<VersionBlock firstVersion="1.12">
+
+**Selecting resources:** The `build` task supports standard selection syntax (`--select`, `--exclude`), as well as a `--resource-type` flag that offers a final filter (just like `list`). Whichever resources are selected, those are the ones that `build` will run/test/snapshot/seed.
+</VersionBlock>
+
 - Remember that tests support indirect selection, so `dbt build -s model_a` will both run _and_ test `model_a`. What does that mean? Any tests that directly depend on `model_a` will be included, so long as those tests don't also depend on other unselected parents. See [test selection](/reference/node-selection/test-selection-examples) for details and examples.
 
-**Flags:** The `build` task supports all the same flags as `run`, `test`, `snapshot`, and `seed`. For flags that are shared between multiple tasks (e.g. `--full-refresh`), `build` will use the same value for all selected resource types (e.g. both models and seeds will be full refreshed).
+**Flags:** The `build` task supports all the same flags as `run`, `test`, `snapshot`, and `seed`. For flags that are shared between multiple tasks (e.g. `--full-refresh`), `build` will use the same value for all selected resource types that support it (e.g. both models and seeds will be full refreshed).
 
+<SnapshotFullRefresh />
+
+<VersionBlock firstVersion="2.0">
+
+### The `--skip-checks` flag
+
+The `build` command supports `--skip-checks` to bypass the [checks](/docs/build/checks) gate.
+
+```shell
+dbt build --skip-checks
+```
+
+To disable a single check rather than the entire gate, set `enabled: false` on that check's config:
+
+```yaml
+checks:
+  - name: all_models_have_descriptions
+    config:
+      enabled: false
+```
+
+</VersionBlock>
 
 ### The `--empty` flag
 
@@ -81,13 +144,13 @@ Done. PASS=7 WARN=0 ERROR=0 SKIP=0 TOTAL=7
 ```
 
 ## Functions
-_Available from dbt Core v1.11 and in the <Constant name="fusion_engine" />_
+_Available from <Constant name="dbt" /> v1.11 and up_
 
 The `build` command builds [user-defined functions](/docs/build/udfs) as part of the DAG execution. To build or rebuild only `functions` in your project, run `dbt build --select "resource_type:function"`. For example:
 
 ```bash
 dbt build --select "resource_type:function"
-dbt-fusion 2.0.0-preview.45
+dbt-fusion 2.0.1
  Succeeded [  0.98s] function dbt_schema.whoami (function)
  Succeeded [  1.12s] function dbt_schema.area_of_circle (function)
 ```

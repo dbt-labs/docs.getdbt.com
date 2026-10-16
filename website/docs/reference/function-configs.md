@@ -53,7 +53,10 @@ functions:
       [volatility](/reference/resource-configs/volatility): deterministic | stable | non-deterministic # optional
       [runtime_version](/reference/resource-configs/runtime-version): <string> # required for Python UDFs
       [entry_point](/reference/resource-configs/entry-point): <string> # required for Python UDFs
-      # Standard configs that apply to functions
+      [packages](/reference/resource-configs/packages): [<string>] # optional, Python UDFs only
+      snowflake:
+        [quote_args](/reference/resource-configs/quote_args): true | false # optional, JavaScript UDFs on Snowflake only, available in 1.12+
+      # standard configs that apply to functions
       [database](/reference/resource-configs/database): <string>
       [schema](/reference/resource-properties/schema): <string>
       [alias](/reference/resource-configs/alias): <string>

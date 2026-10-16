@@ -3,6 +3,7 @@ title: "Materializations"
 description: "Configure materializations in dbt to control how the SQL is run and resulting data is stored."
 id: "materializations"
 pagination_next: "docs/build/incremental-models"
+availability: all_users
 ---
 
 ## Overview
@@ -14,7 +15,10 @@ pagination_next: "docs/build/incremental-models"
 - ephemeral
 - materialized view
 
-You can also configure [custom materializations](/guides/create-new-materializations?step=1) in dbt. Custom materializations are a powerful way to extend dbt's functionality to meet your specific needs.
+You can also configure [custom materializations](/guides/create-new-materializations?step=1) in dbt. Custom materializations are a powerful way to extend dbt's functionality to meet your specific needs. 
+
+For a detailed guide on materializations, refer to [Materializations best practices](/best-practices/materializations/1-guide-overview). For information about data streaming, refer to [How to handle real-time data](/best-practices/how-we-handle-real-time-data/1-intro).
+
 
 import CourseCallout from '/snippets/_materialization-video-callout.md';
 
@@ -178,7 +182,7 @@ For example, a `dbt run` command is only needed if there is the potential for a 
 it's effectively a deploy action.
 By contrast, a `dbt run` command is needed for a table in the same scenarios *AND when the data in the table needs to be updated*.
 This also holds true for incremental and snapshot models, whose underlying relations are tables.
-In the table cases, the scheduling mechanism is either <Constant name="cloud" /> or your local scheduler;
+In the table cases, the scheduling mechanism is either <Constant name="dbt" /> or your local scheduler;
 there is no built-in functionality to automatically refresh the data behind a table.
 However, most platforms (Postgres excluded) provide functionality to configure automatically refreshing a materialized view.
 Hence, materialized views work similarly to incremental models with the benefit of not needing to run dbt to refresh the data.
@@ -186,6 +190,8 @@ This assumes, of course, that auto refresh is turned on and configured in the mo
 
 :::info
 `dbt-snowflake` _does not_ support materialized views, it uses Dynamic Tables instead. For details, refer to [Snowflake specific configurations](/reference/resource-configs/snowflake-configs#dynamic-tables).
+
+Beginning in v1.12, `dbt-snowflake` supports interactive tables, which are optimized for low-latency, interactive queries and can refresh automatically like dynamic tables. For details, refer to [Interactive tables](/reference/resource-configs/snowflake-configs#interactive-tables).
 :::
 
 ## Python materializations
@@ -263,7 +269,3 @@ def model(dbt, session):
 </WHCode>
 
 **Note:** Incremental models are supported on BigQuery/Dataproc for the `merge` incremental strategy. The `insert_overwrite` strategy is not yet supported.
-
-<Snippet path="discourse-help-feed-header" />
-<DiscourseHelpFeed tags="materialization"/>
-

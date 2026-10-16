@@ -4,15 +4,16 @@ id: dimensions
 description: "Dimensions determine the level of aggregation for a metric, and are non-aggregatable expressions."
 sidebar_label: "Dimensions"
 tags: [Metrics, Semantic Layer]
+availability: all_users
 ---
 
-<VersionBlock lastVersion="1.99">
+<VersionBlock lastVersion="1.11">
 
 Dimensions represent the non-aggregatable columns in your data set, which are the attributes, features, or characteristics that describe or categorize data. In the context of the <Constant name="semantic_layer" />, dimensions are part of a larger structure called a semantic model. They are created along with other elements like [entities](/docs/build/entities) and [measures](/docs/build/measures) and used to add more details to your data. In SQL, dimensions are typically included in the `group by` clause of your SQL query.
 
 </VersionBlock>
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 
 Dimensions represent the non-aggregatable columns in your data set, which are the attributes, features, or characteristics that describe or categorize data. In the context of the <Constant name="semantic_layer" />, dimensions are part of a larger structure called a semantic model. They are created along with other elements like [entities](/docs/build/entities) and [simple metrics](/docs/build/simple) and used to add more details to your data. In SQL, dimensions are typically included in the `group by` clause of your SQL query.
 
@@ -24,9 +25,10 @@ Dimensions represent the non-aggregatable columns in your data set, which are th
 
 Groups are defined within semantic models, alongside entities and measures, and correspond to non-aggregatable columns in your dbt model that provides categorical or time-based context. In SQL, dimensions  is typically included in the GROUP BY clause.-->
 
+<VersionBlock lastVersion="1.11">
+
 All dimensions require a `name`, `type`, and can optionally include an `expr` parameter. The `name` for your Dimension must be unique within the same semantic model.
 
-<VersionBlock lastVersion="1.99">
 
 | Parameter | Description | Required | Type |
 | --------- | ----------- | ---- | ---- |
@@ -52,14 +54,19 @@ dimensions:
 
 </VersionBlock>
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
+
+Dimensions are defined on the column they map to, so they only require a `type`. The `name` defaults to the column name and must be unique within the same semantic model.
+
+:::note
+You can't use `expr` inside a `dimension` block. To define a dimension from a SQL expression instead of a single column, use [`derived_semantics`](#derived_semantics-in-dimensions).
+:::
 
 | Parameter | Description | Required | Type |
 | --------- | ----------- | ---- | ---- |
-| `name` |  The name of the dimension that will be visible to the user in downstream tools. It can also serve as an alias for derived dimensions <br /><br /> Dimension names should be unique within a semantic model, but they can be non-unique across different models as MetricFlow uses [joins](/docs/build/join-logic) to identify the right dimension. | Required | String |
+| `name` |  The name of the dimension that will be visible to the user in downstream tools. It can also serve as an alias for derived dimensions <br /><br /> Dimension names should be unique within a semantic model, but they can be non-unique across different models as MetricFlow uses [joins](/docs/build/join-logic) to identify the right dimension. | Optional (defaults to the column name) | String |
 | `type` | Specifies the type of group created in the semantic model. There are two types:<br /><br />- **Categorical**: Describe attributes or features like geography or sales region. <br />- **Time**: Time-based dimensions like timestamps or dates. | Required | String |  
 | `description` | A clear description of the dimension. | Optional | String |  
-| `expr` | Defines the underlying column or SQL query for a dimension. If no `expr` is specified, MetricFlow will use the column with the same name as the group. You can use the column name itself to input a SQL expression. | Optional | String |
 | `label` | Defines the display value in downstream tools. Accepts plain text, spaces, and quotes (such as `orders_total` or `"orders_total"`).  | Optional | String |
 | [`meta`](/reference/resource-configs/meta) |  Set metadata for a resource and organize resources. Accepts plain text, spaces, and quotes. | Optional | Dictionary | 
 
@@ -85,13 +92,13 @@ models:
 
 Refer to the following example to see how dimensions are used in a semantic model:
 
-<VersionBlock firstVersion="1.9" lastVersion="1.99">
+<VersionBlock firstVersion="1.9" lastVersion="1.11">
 
 ```yaml
 semantic_models:
   - name: transactions
     description: A record for every transaction that takes place. Carts are considered multiple transactions for each SKU. 
-    model: {{ ref('fact_transactions') }}
+    model: {{ ref('fct_transactions') }}
     defaults:
       agg_time_dimension: order_date
 # --- entities --- 
@@ -121,11 +128,11 @@ semantic_models:
 ```
 </VersionBlock>
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 
 ```yaml
 models:
-  - name: fact_transactions
+  - name: fct_transactions
     semantic_model:
       enabled: true
       name: transactions
@@ -174,7 +181,7 @@ models:
 
 </VersionBlock>
 
-<VersionBlock lastVersion="1.99">
+<VersionBlock lastVersion="1.11">
 
 Dimensions are bound to the primary entity of the semantic model they are defined in. For example the dimension `type` is defined in a model that has `transaction` as a primary entity. `type` is scoped to the `transaction` entity, and to reference this dimension you would use the fully qualified dimension name i.e `transaction__type`. 
 
@@ -195,7 +202,7 @@ semantic_model:
 ```
 </VersionBlock>
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 
 Dimensions are bound to the primary entity of the semantic model they are defined in. 
 
@@ -258,9 +265,11 @@ This section further explains the dimension definitions, along with examples. Di
 
 ## Categorical
 
-Categorical dimensions are used to group metrics by different attributes, features, or characteristics such as product type. They can refer to existing columns in your dbt model or be calculated using a SQL expression with the `expr` parameter. An example of a categorical dimension is `is_bulk_transaction`, which is a group created by applying a case statement to the underlying column `quantity`. This allows users to group or filter the data based on bulk transactions.
+Categorical dimensions are used to group metrics by different attributes, features, or characteristics such as product type.
 
-<VersionBlock firstVersion="1.9">
+<VersionBlock firstVersion="1.9" lastVersion="1.11">
+
+They can refer to existing columns in your dbt model or be calculated using a SQL expression with the `expr` parameter. An example of a categorical dimension is `is_bulk_transaction`, which is a group created by applying a case statement to the underlying column `quantity`. This allows users to group or filter the data based on bulk transactions.
 
 ```yaml
 dimensions: 
@@ -273,15 +282,51 @@ dimensions:
 ```
 </VersionBlock>
 
+<VersionBlock firstVersion="1.12">
+
+Define a categorical dimension on the column it maps to. For example, the `transaction_type` column becomes a dimension you can group or filter metrics by:
+
+```yaml
+models:
+  - name: fct_transactions
+    semantic_model:
+      enabled: true
+
+    columns:
+      - name: transaction_type
+        dimension:
+          type: categorical
+          config:
+            meta:
+              usage: "Group transactions by their type, like refund or purchase."
+```
+
+To calculate a categorical dimension from a SQL expression instead of a single column, define it under [`derived_semantics`](#derived_semantics-in-dimensions) and use `expr`. For example, `is_bulk_transaction` applies a case statement to the underlying `quantity` column so users can group or filter by bulk transactions:
+
+```yaml
+models:
+  - name: fct_transactions
+    semantic_model:
+      enabled: true
+
+    derived_semantics:
+      dimensions:
+        - name: is_bulk_transaction
+          type: categorical
+          expr: "case when quantity > 10 then true else false end"
+```
+
+</VersionBlock>
+
 
 ## Time
 
-<VersionBlock lastVersion="1.99">
+<VersionBlock lastVersion="1.11">
 
 Time has additional parameters specified under the `type_params` section. When you query one or more metrics, the default time dimension for each metric is the aggregation time dimension, which you can refer to as `metric_time` or use the dimension's name. 
 
 </VersionBlock>
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 
 Time dimensions no longer use `type_params`. 
 - For dimensions defined on a column entry, add the column’s `granularity` at the column level. 
@@ -296,11 +341,11 @@ You can use multiple time groups in separate metrics. For example, the `users_cr
 # dbt users
 dbt sl query --metrics users_created,users_deleted --group-by metric_time__year --order-by metric_time__year
 
-# dbt Core users
+# dbt v1 users
 mf query --metrics users_created,users_deleted --group-by metric_time__year --order-by metric_time__year
 ```
 
-You can set `is_partition` for time to define specific time spans. <VersionBlock lastVersion="1.99">Additionally, use the `type_params` section to set `time_granularity` to adjust aggregation details (daily, weekly, and so on).</VersionBlock>
+You can set `is_partition` for time to define specific time spans. <VersionBlock lastVersion="1.11">Additionally, use the `type_params` section to set `time_granularity` to adjust aggregation details (daily, weekly, and so on).</VersionBlock>
 
 <Tabs queryString="dimension">
 
@@ -308,7 +353,7 @@ You can set `is_partition` for time to define specific time spans. <VersionBlock
 
 Use `is_partition: True` to show that a dimension exists over a specific time window. For example, a date-partitioned dimensional table. When you query metrics from different tables, the <Constant name="semantic_layer" /> uses this parameter to ensure that the correct dimensional values are joined to measures. 
 
-<VersionBlock firstVersion="1.9" lastVersion="1.99">
+<VersionBlock firstVersion="1.9" lastVersion="1.11">
 
 ```yaml
 dimensions: 
@@ -340,7 +385,7 @@ measures:
     agg: sum
 ```
 </VersionBlock>
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 
 ```yaml
 models:
@@ -383,13 +428,14 @@ models:
         expr: 1
 ```
 
+
 </VersionBlock>
 
 </TabItem>
 
 <TabItem value="time_gran" label="time_granularity">
 
-<VersionBlock firstVersion="1.9" lastVersion="1.99">
+<VersionBlock firstVersion="1.9" lastVersion="1.11">
 
 `time_granularity` specifies the grain of a time dimension. MetricFlow will transform the underlying column to the specified granularity. For example, if you add hourly granularity to a time dimension column, MetricFlow will run a `date_trunc` function to convert the timestamp to hourly. You can easily change the time grain at query time and aggregate it to a coarser grain, for example, from hourly to monthly. However, you can't go from a coarser grain to a finer grain (monthly to hourly).
 
@@ -437,7 +483,7 @@ measures:
 
 </VersionBlock>
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 
 `granularity` specifies the grain of a time dimension. MetricFlow will transform the underlying column to the specified granularity. For example, if you add hourly granularity to a time dimension column, MetricFlow will run a `date_trunc` function to convert the timestamp to hourly. You can easily change the time grain at query time and aggregate it to a coarser grain, for example, from hourly to monthly. However, you can't go from a coarser grain to a finer grain (monthly to hourly).
 
@@ -500,15 +546,36 @@ models:
 
 </Tabs>
 
+
+<VersionBlock firstVersion="1.12">
+
+To create a time dimension from a SQL expression instead of a single column, define it under [`derived_semantics`](#derived_semantics-in-dimensions) and add `expr` and `granularity`. For example, `order_month` truncates `ts_created` to the month:
+
+```yaml
+models:
+  - name: orders
+    semantic_model:
+      enabled: true
+
+    derived_semantics:
+      dimensions:
+        - name: order_month
+          type: time
+          granularity: month
+          expr: "date_trunc('month', ts_created)"
+```
+
+</VersionBlock>
+
 ### SCD Type II
 
-<VersionBlock lastVersion="1.99">
+<VersionBlock lastVersion="1.11">
 :::caution
 Currently, semantic models with SCD Type II dimensions cannot contain measures.
 :::
 </VersionBlock>
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 :::caution
 Currently, semantic models with SCD Type II dimensions cannot contain simple metrics.
 :::
@@ -518,7 +585,7 @@ MetricFlow supports joins against dimensions values in a semantic model built on
 
 #### Basic structure
 
-SCD Type II are groups that change values at a coarser time granularity. SCD Type II tables typically have two time columns that indicate the validity period of a dimension: `valid_from` (or `tier_start`) and `valid_to` (or `tier_end`). This creates a range of valid rows with different dimension values for a metric<VersionBlock lastVersion="1.99"> or measure</VersionBlock>.
+SCD Type II are groups that change values at a coarser time granularity. SCD Type II tables typically have two time columns that indicate the validity period of a dimension: `valid_from` (or `tier_start`) and `valid_to` (or `tier_end`). This creates a range of valid rows with different dimension values for a metric<VersionBlock lastVersion="1.11"> or measure</VersionBlock>.
 
 MetricFlow associates the metric with the earliest available dimension value within a coarser time window, such as a month. By default, it uses the group valid at the start of this time granularity.
 
@@ -542,7 +609,7 @@ When configuring an SCD Type II table in a semantic model, use `validity_params`
 
 Here’s an example configuration:
 
-<VersionBlock lastVersion="1.99">
+<VersionBlock lastVersion="1.11">
 
 ```yaml
 - name: tier_start #  The name of the dimension.
@@ -564,7 +631,7 @@ Here’s an example configuration:
 ```
 
 </VersionBlock>
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 
 ```yaml
 models:
@@ -647,7 +714,7 @@ As mentioned earlier, the `validity_params` include two important arguments that
 Additionally, the entity is tagged as `natural` to differentiate it from a `primary` entity. In a `primary` entity, each entity value has one row. In contrast, a `natural` entity has one row for each combination of entity value and its validity period.
 
 
-<VersionBlock lastVersion="1.99">
+<VersionBlock lastVersion="1.11">
 
 ```yaml 
 semantic_models:
@@ -687,7 +754,7 @@ semantic_models:
 
 </VersionBlock>
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 
 ```yaml
 models:
@@ -733,7 +800,7 @@ models:
 
 The following code represents a separate semantic model that holds a fact table for `transactions`:  
 
-<VersionBlock lastVersion="1.99">
+<VersionBlock lastVersion="1.11">
 
 ```yaml
 semantic_models: 
@@ -743,7 +810,7 @@ semantic_models:
       There is a transaction, product, sales_person, and customer id for 
       every transaction. There is only one transaction id per 
       transaction. The `metric_time` or date is reflected in UTC.
-    model: {{ ref('fact_transactions') }}
+    model: {{ ref('fct_transactions') }}
     defaults:
       agg_time_dimension: metric_time
 
@@ -783,11 +850,11 @@ semantic_models:
 ```
 
 </VersionBlock>
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 
 ```yaml
 models:
-  - name: fact_transactions
+  - name: fct_transactions
     semantic_model:
       enabled: true
 
@@ -872,7 +939,7 @@ The following command or code represents how to return the count of transactions
 # dbt platform users
 dbt sl query --metrics transactions --group-by metric_time__month,sales_person__tier --order-by metric_time__month,sales_person__tier
 
-# dbt Core users
+# dbt v1 users
 mf query --metrics transactions --group-by metric_time__month,sales_person__tier --order-by metric_time__month,sales_person__tier
 
 ```

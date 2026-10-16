@@ -47,7 +47,7 @@ What [is a semantic model](https://docs.getdbt.com/docs/build/semantic-models)? 
 
 Let’s dig into semantic models and metrics a bit more, and explain some of the data modeling decisions we made. First, we needed to decide what model to use as a base for our semantic model. We decide to use`fct_semantic_layer`queries as our base model because defining a semantic model on top of a normalized fact table gives us maximum flexibility to join to other tables. This increased the number of dimensions available, which means we  can answer more questions. 
 
-You may wonder: why not just build our metrics on top of raw tables and let MetricFlow figure out the rest? The reality is, that you will almost almost always need to do some form of data modeling to create the data set you want to build your metrics off of. MetricFlow’s job isn’t to do data modeling. The transformation step is done with dbt. 
+You may wonder: why not just build our metrics on top of raw tables and let MetricFlow figure out the rest? The reality is, that you will almost always need to do some form of data modeling to create the data set you want to build your metrics off of. MetricFlow’s job isn’t to do data modeling. The transformation step is done with dbt. 
 
 Next, we had to decide what we wanted to put into our semantic models. Semantic models contain [dimensions](https://docs.getdbt.com/docs/build/dimensions), [measures](https://docs.getdbt.com/docs/build/measures), and [entities](https://docs.getdbt.com/docs/build/entities). We took the following approach to add each of these components:
 
@@ -74,7 +74,7 @@ Now that we’ve done the pipeline work to set up our metrics for the semantic l
 
 ## Our Finance, Operations and GTM teams are all looking at the same metrics 😊 
 
-To query to Semantic Layer you have two paths: you can query metrics directly through the Semantic Layer APIs or use one of our [first-class integrations](https://docs.getdbt.com/docs/cloud-integrations/avail-sl-integrations). Our analytics team and product teams are big Hex users, while our operations and finance teams live and breathe Google Sheets, so it’s important for us to have the same metric definitions available in both tools. 
+To query to Semantic Layer you have two paths: you can query metrics directly through the Semantic Layer APIs or use one of our [first-class integrations](https://docs.getdbt.com/docs/platform-integrations/avail-sl-integrations). Our analytics team and product teams are big Hex users, while our operations and finance teams live and breathe Google Sheets, so it’s important for us to have the same metric definitions available in both tools. 
 
 The leg work of building our pipeline and defining metrics is all done, which makes last-mile consumption much easier. First, we set up a launch dashboard in Hex as the source of truth for semantic layer product metrics. This tool is used by cross-functional partners like marketing, sales, and the executive team to easily check product and usage metrics like total semantic layer queries, or weekly active semantic layer users. To set up our Hex connection, we simply enter a few details from our dbt Cloud environment and then we can work with metrics directly in Hex notebooks. We can use the JDBC interface, or use Hex’s GUI metric builder to build reports. We run all our WBRs off this dashboard, which allows us to spot trends in consumption and react quickly to changes in our business.
 

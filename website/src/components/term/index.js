@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import Link from '@docusaurus/Link';
 import ReactTooltip from "react-tooltip";
 import styles from './styles.module.css';
 
@@ -30,7 +31,7 @@ export default function Term({ id, children = undefined }) {
     return children || null
 
   // Get properties from front matter
-  const { displayText, hoverSnippet } = term;
+  const { displayText, hoverSnippet, hoverLink, hoverLinkText, hoverLinkSuffix } = term;
 
   // If component has children, show children text,
   // Else, default to displayText frontmatter field,
@@ -49,9 +50,17 @@ export default function Term({ id, children = undefined }) {
             className={styles.termToolTip}
             place="bottom"
             effect="solid"
+            clickable={Boolean(hoverLink)}
             wrapper="span"
           >
             {hoverSnippet}
+            {hoverLink ? (
+              <>
+                {" "}
+                <Link to={hoverLink}>{hoverLinkText || hoverLink}</Link>
+                {hoverLinkSuffix ? ` ${hoverLinkSuffix}` : null}
+              </>
+            ) : null}
           </ReactTooltip>
         </>
       ) : (

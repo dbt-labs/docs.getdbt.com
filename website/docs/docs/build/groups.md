@@ -4,6 +4,7 @@ sidebar_label: "Groups"
 id: "groups"
 keywords:
   - groups access mesh
+availability: all_users
 ---
 
 A group is a collection of nodes within a dbt DAG. Groups are named, and every group has an `owner`. They enable intentional collaboration within and across teams by restricting [access to private](/reference/resource-configs/access) models.
@@ -26,6 +27,36 @@ To centrally define a group in your project, there are two options:
   ```yml 
   model-paths: ["models", "groups"]
   ```
+
+
+### Group properties
+
+The following properties are available when defining a group:
+
+| Property | Required | Description |
+|----------|----------|-------------|
+| `name` | Required | A unique name for the group within the project. Used to assign resources via the [`group` config](/reference/resource-configs/group). |
+| `owner` | Required | Identifies who is responsible for the group. Must include either `name:` or `email:`. |
+| `description` | Optional | A human readable description of the group's purpose. Supports markdown and the [`doc` Jinja function](/reference/dbt-jinja-functions/doc).  Supported in v1.10 and later. |
+| `config.meta` | Optional | A dictionary of arbitrary key/value metadata about the group. Useful for storing information such as cost centers, data classifications, or team contact details.
+
+
+<File name='models/marts/finance/finance.yml'>
+
+```yaml
+groups:
+  - name: finance
+    description: "All models owned by the Finance team."
+    owner:
+      email: finance@jaffleshop.com
+    config:
+      meta:
+        data_owner: Finance team
+        cost_center: finance
+        data_classification: sensitive
+```
+
+</File>
 
 
 ### Adding a model to a group

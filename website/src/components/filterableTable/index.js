@@ -1,7 +1,8 @@
-import React, { useState, useMemo, useEffect, useRef, useLayoutEffect } from 'react';
+import React, { useState, useMemo, useEffect, useRef, useLayoutEffect, useContext } from 'react';
 import Markdown from 'markdown-to-jsx';
 import getSvgIcon from '../../utils/get-svg-icon';
 import styles from './styles.module.css';
+import { SimpleTableContext } from '../simpleTable';
 
 const stripMarkdown = (text) => {
   if (!text) return '';
@@ -119,6 +120,9 @@ const parseTableFromDOM = (tableElement) => {
 };
 
 const FilterableTable = ({ children }) => {
+  // Check if we're inside a SimpleTable wrapper
+  const isSimpleTable = useContext(SimpleTableContext);
+  
   const tableRef = useRef(null);
   const [tableData, setTableData] = useState({ headers: [], data: [], columnAlignments: [] });
   const [openFilterIndex, setOpenFilterIndex] = useState(null);
@@ -203,7 +207,7 @@ const FilterableTable = ({ children }) => {
       // Show filter if:
       // 1. Column has 1-20 unique values (good for dropdown)
       // 2. OR it's the first column (name/key column) with any number of values
-      if ((values.length >= 1 && values.length <= 20) || (colIndex === 0 && values.length >= 1)) {
+      if ((values.length >= 1 && values.length <= 50) || (colIndex === 0 && values.length >= 1)) {
         options[colIndex] = values;
       }
     });
@@ -357,13 +361,30 @@ const FilterableTable = ({ children }) => {
     return (columnFilters[colIndex] || []).length > 0;
   };
 
+  // If we're in a SimpleTable context, render as a plain table
+  if (isSimpleTable) {
+    return (
+      <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+        {children}
+      </table>
+    );
+  }
+
+  // Table data is parsed from the DOM after mount, so during SSR (and for
+  // no-JS visitors and the markdown derived from the built HTML) there is no
+  // parsed data yet. Show the source table itself until parsing completes
+  // rather than a "Loading table..." placeholder, so the static HTML always
+  // contains the real rows.
+  const isParsed = headers.length > 0;
+
   return (
     <div className={styles.filterableTableContainer}>
-      {/* Hidden table for data extraction */}
-      <table ref={tableRef} style={{ display: 'none' }}>
+      {/* Source table: visible until parsed, then kept (hidden) for re-parsing */}
+      <table ref={tableRef} style={isParsed ? { display: 'none' } : undefined}>
         {children}
       </table>
 
+      {isParsed && (
       <div className={styles.tableWrapper}>
         {/* Search bar positioned at top right - always visible */}
         <div className={styles.searchBar}>
@@ -558,6 +579,7 @@ const FilterableTable = ({ children }) => {
           </table>
         )}
       </div>
+      )}
     </div>
   );
 };

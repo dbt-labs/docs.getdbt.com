@@ -6,25 +6,18 @@ search_weight: "heavy"
 id: "unit-tests"
 keywords:
   - unit test, unit tests, unit testing, dag
+availability: all_users
 ---
 
 <VersionCallout version="1.8" />
 
 Historically, dbt's test coverage was confined to [“data” tests](/docs/build/data-tests), assessing the quality of input data or resulting datasets' structure. However, these tests could only be executed _after_ building a model. 
 
-There is an additional type of test to dbt - unit tests. In software programming, unit tests validate small portions of your functional code, and they work much the same way here. Unit tests allow you to validate your SQL modeling logic on a small set of static inputs _before_ you materialize your full model in production. Unit tests enable test-driven development, benefiting developer efficiency and code reliability. 
+There is an additional type of test in dbt: unit tests. In software programming, unit tests validate small portions of your functional code, and they work much the same way here. Unit tests allow you to validate your SQL modeling logic on a small set of static inputs _before_ you materialize your full model in production. Unit tests enable test-driven development, benefiting developer efficiency and code reliability. 
 
-## Before you begin
+import UnitTestsPrereqs from '/snippets/_unit-tests-prereqs.md';
 
-- We currently only support unit testing SQL models.
-- We currently only support adding unit tests to models in your _current_ project.
-- We currently _don't_ support unit testing models that use the [`materialized view`](/docs/build/materializations#materialized-view) materialization.
-- We currently _don't_ support unit testing models that use recursive SQL.
-- We currently _don't_ support unit testing models that use introspective queries.
-- If your model has multiple versions, by default the unit test will run on *all* versions of your model. Read [unit testing versioned models](/reference/resource-properties/unit-testing-versions) for more information.
-- Unit tests must be defined in a YML file in your [`models/` directory](/reference/project-configs/model-paths).
-- Table names must be aliased in order to unit test `join` logic.
-- Include all [`ref`](/reference/dbt-jinja-functions/ref) or [`source`](/reference/dbt-jinja-functions/source) model references in the unit test configuration as `input`s to avoid "node not found" errors during compilation.
+<UnitTestsPrereqs />
 
 #### Adapter-specific caveats
 - You must specify all fields in a BigQuery `STRUCT` in a unit test. You cannot use only a subset of fields in a `STRUCT`.
@@ -57,7 +50,96 @@ You should unit test a model:
 
 dbt Labs strongly recommends only running unit tests in development or CI environments. Since the inputs of the unit tests are static, there's no need to use additional compute cycles running them in production. Use them in development for a test-driven approach and CI to ensure changes don't break them. 
 
-Use the [resource type](/reference/global-configs/resource-type) flag `--exclude-resource-type` or the `DBT_EXCLUDE_RESOURCE_TYPES` environment variable to exclude unit tests from your production builds and save compute. 
+Use the [resource type](/reference/global-configs/resource-type) flag `--exclude-resource-type` or the <VersionBlock lastVersion="1.10">`DBT_EXCLUDE_RESOURCE_TYPES`</VersionBlock><VersionBlock firstVersion="1.11">`DBT_ENGINE_EXCLUDE_RESOURCE_TYPES`</VersionBlock> environment variable to exclude unit tests from your production builds and save compute.
+
+To run only unit tests on demand, use the `test_type` selector — this works across all engines (<Constant name="core" /> and <Constant name="fusion" />):
+
+```bash
+dbt test --select "test_type:unit"
+```
+
+<VersionBlock firstVersion="2.0">
+
+## Run unit tests locally
+
+:::note Opt in with an environment variable
+
+Running an individual unit test on local compute is currently an experimental feature. Set `DBT_ENGINE_EXPERIMENTAL_LOCAL_UNIT_TESTS=true` in the environment where dbt runs before you use `compute: local`.
+
+:::
+
+You can run unit tests locally when you're working through tricky SQL and you want to know right away whether your logic works. By default, each unit test sends a query to your data platform and waits for the result. This can slow down testing and use warehouse compute.
+
+Because unit tests use static fixtures instead of real data, they don’t need to necessarily run on your data platform. Use the [`compute: local` config](/reference/resource-configs/compute) to run them locally with DuckDB for faster feedback _without_ the warehouse compute cost.
+
+That gives you:
+
+- A test loop that keeps up with you. Change your SQL, rerun the test, and repeat without waiting on a warehouse queue.
+- Room to test as you go, so you catch broken logic while you're still writing it instead of finding it in CI (or worse, after it reaches production)
+- Queries that execute with the same functions and runtime semantics as the remote warehouse
+- Your data platform's compute left for building models.
+
+### Prerequisites
+
+- The `DBT_ENGINE_EXPERIMENTAL_LOCAL_UNIT_TESTS` environment variable set to `true`. This config is experimental and you need to opt in. Without it, dbt fails with an invalid configuration error that names the variable.
+- Snowflake or BigQuery. Local execution isn't available for other data platforms, and it only applies to unit tests.
+- The direct upstream models of the model you're testing already exist in your data platform. dbt fetches their schemas to translate your SQL, so if they don't exist, the test fails with an error about fetching the upstream relation schema.
+- `static_analysis` isn't set to `off` on the test. Local execution needs static analysis to translate your SQL, so `compute: local` promotes [static analysis](/reference/resource-configs/static-analysis) to `strict` for that test. If you set `static_analysis: off`, the test can't run locally and fails with `ExecutorFailed (dbt1401)`.
+
+### What to know before you use it
+
+- dbt fetches upstream schemas the first time you run the test, then caches them. Later runs reuse the cache, so they don't re-fetch.
+- Local execution only works if dbt can compile your model's SQL and translate it to DuckDB. Complex SQL and functions specific to your data platform might have no DuckDB equivalent so Snowflake's `AI_CLASSIFY` and `haversine` are two examples. So for example, a model that calls `haversine` fails with `failed in db_runner: Internal: Catalog Error: Scalar Function with name haversine does not exist!`.
+- A translation failure is a test failure. `local` doesn't fall back to your data platform, so the test fails and dbt exits with a non-zero code. 
+
+### How to configure
+
+First, opt in to the config in the environment where dbt runs:
+
+```bash
+export DBT_ENGINE_EXPERIMENTAL_LOCAL_UNIT_TESTS=true
+```
+
+Then you can configure it on a single unit test:
+
+<File name='models/schema.yml'>
+
+```yaml
+unit_tests:
+  - name: test_is_valid_email_address
+    model: dim_customers
+    config:
+      compute: local
+```
+
+</File>
+
+Or on every unit test in your project:
+
+<File name='dbt_project.yml'>
+
+```yaml
+unit_tests:
+  my_project:
+    +compute: local
+```
+
+</File>
+
+[`compute`](/reference/resource-configs/compute) accepts two values:
+
+<SimpleTable>
+
+| Value | What it does |
+|-------|--------------|
+| `remote` | Sends the test to your data platform to run, using warehouse compute like any other query. This is the default, so you only need to set it explicitly to opt a test out of a project-level `+compute: local`. |
+| `local` | Runs the test with DuckDB, wherever dbt itself is running. Nothing is sent to your data platform, so the test returns quickly and uses no warehouse compute. |
+
+</SimpleTable>
+
+You might also see `sidecar` in error messages but it means the same thing as `local`.
+
+</VersionBlock>
 
 ## Unit testing a model
 
@@ -112,16 +194,19 @@ unit_tests:
     model: dim_customers
     given:
       - input: ref('stg_customers')
+        format: dict
         rows:
           - {email: cool@example.com,    email_top_level_domain: example.com}
           - {email: cool@unknown.com,    email_top_level_domain: unknown.com}
           - {email: badgmail.com,        email_top_level_domain: gmail.com}
           - {email: missingdot@gmailcom, email_top_level_domain: gmail.com}
       - input: ref('top_level_email_domains')
+        format: dict
         rows:
           - {tld: example.com}
           - {tld: gmail.com}
     expect:
+      format: dict
       rows:
         - {email: cool@example.com,    is_valid_email_address: true}
         - {email: cool@unknown.com,    is_valid_email_address: false}
@@ -132,6 +217,61 @@ unit_tests:
 </file>
 
 The previous example defines the mock data using the inline `dict` format, but you can also use `csv` or `sql` either inline or in a separate fixture file. Store your fixture files in a `fixtures` subdirectory in any of your [test paths](/reference/project-configs/test-paths). For example, `tests/fixtures/my_unit_test_fixture.sql`. 
+
+The following examples show how to define mock data and expected output using `csv` and `sql`.
+
+<File name='models/schema.yml'>
+
+```yaml
+unit_tests:
+  - name: test_is_valid_email_address__csv
+    model: dim_customers
+    given:
+      - input: ref('stg_customers')
+        format: dict
+        rows:
+          - {email: cool@example.com,    email_top_level_domain: example.com}
+          - {email: cool@unknown.com,    email_top_level_domain: unknown.com}
+          - {email: badgmail.com,        email_top_level_domain: gmail.com}
+          - {email: missingdot@gmailcom, email_top_level_domain: gmail.com}
+      - input: ref('top_level_email_domains')
+        format: csv
+        rows: |
+          tld
+          example.com
+          gmail.com
+    expect:
+      format: csv
+      fixture: valid_email_address_fixture_output
+```
+
+</File>
+
+<File name='models/schema.yml'>
+
+```yaml
+unit_tests:
+  - name: test_is_valid_email_address__sql
+    model: dim_customers
+    given:
+      - input: ref('stg_customers')
+        format: dict
+        rows:
+          - {email: cool@example.com,    email_top_level_domain: example.com}
+          - {email: cool@unknown.com,    email_top_level_domain: unknown.com}
+          - {email: badgmail.com,        email_top_level_domain: gmail.com}
+          - {email: missingdot@gmailcom, email_top_level_domain: gmail.com}
+      - input: ref('top_level_email_domains')
+        format: sql
+        rows: |
+          select 'example.com' as tld union all
+          select 'gmail.com' as tld
+    expect:
+      format: sql
+      fixture: valid_email_address_fixture_output
+```
+
+</File>
 
 When using the `dict` or `csv` format, you only have to define the mock data for the columns relevant to you. This enables you to write succinct and _specific_ unit tests.
 
@@ -226,7 +366,7 @@ Your model is now ready for production! Adding this unit test helped catch an is
 When configuring your unit test, you can override the output of macros, vars, or environment variables. This enables you to unit test your incremental models in "full refresh" and "incremental" modes.
 
 :::note
-Incremental models need to exist in the database first before running unit tests or doing a `dbt build`. Use the [`--empty` flag](/reference/commands/build#the---empty-flag) to build an empty version of the models to save warehouse spend. You can also optionally select only your incremental models using the [`--select` flag](/reference/node-selection/syntax#shorthand).
+Incremental models need to exist in the database before running unit tests or doing a `dbt build`. Use the [`--empty` flag](/reference/commands/build#the---empty-flag) to build an empty version of the models to save warehouse spend. You can also optionally select only your incremental models using the [`--select` flag](/reference/node-selection/syntax#shorthand).
 
   ```shell
   dbt run --select "config.materialized:incremental" --empty
@@ -260,7 +400,7 @@ where event_time > (select max(event_time) from {{ this }})
 
 You can define unit tests on `my_incremental_model` to ensure your incremental logic is working as expected:
 
-```yml
+```yaml
 
 unit_tests:
   - name: my_incremental_model_full_refresh_mode
@@ -301,13 +441,13 @@ unit_tests:
 
 ```
 
-There is currently no way to unit test whether the dbt framework inserted/merged the records into your existing model correctly, but [we're investigating support for this in the future](https://github.com/dbt-labs/dbt-core/issues/8664).
+There is currently no way to unit test whether the dbt framework inserted/merged the records into your existing model correctly, but [we're investigating support for this in the future](https://github.com/dbt-labs/dbt/issues/8664).
 
 ## Unit testing a model that depends on ephemeral model(s)
 
 If you want to unit test a model that depends on an ephemeral model, you must use `format: sql` for that input.
 
-```yml
+```yaml
 unit_tests:
   - name: my_unit_test
     model: dim_customers
@@ -315,7 +455,7 @@ unit_tests:
       - input: ref('ephemeral_model')
         format: sql
         rows: |
-          select 1 as id, 'emily' as name
+          select 1 as id, 'emily' as first_name
     expect:
       rows:
         - {id: 1, first_name: emily}

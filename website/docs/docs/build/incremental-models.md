@@ -4,7 +4,12 @@ description: "Learn how to configure and optimize incremental models when develo
 id: "incremental-models"
 keywords: ["incremental models", "incremental materialization","incremental", "materialization", "incremental model", "incremental strategy", "incremental model configuration", "incremental predicates"]
 intro_text: "Learn how to configure and optimize incremental models when developing in dbt."
+availability: all_users
 ---
+
+import SnowflakeColumn from '/snippets/_snowflake-column-size.md';
+
+<SnowflakeColumn />
 
 Incremental models are built as tables in your <Term id="data-warehouse" />. The first time a model is run, the <Term id="table" /> is built by transforming _all_ rows of source data. On subsequent runs, dbt transforms _only_ the rows in your source data that you tell dbt to filter for, inserting them into the target table which is the table that has already been built.
 
@@ -225,6 +230,3 @@ If you add a column to your incremental model, and execute a `dbt run`, this col
 If you remove a column from your incremental model and execute a `dbt run`, `dbt run` will fail.
 
 Instead, whenever the logic of your incremental changes, execute a full-refresh run of both your incremental model and any downstream models.
-
-<Snippet path="discourse-help-feed-header" />
-<DiscourseHelpFeed tags="incremental"/>

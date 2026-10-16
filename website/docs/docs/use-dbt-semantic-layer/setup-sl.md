@@ -5,10 +5,14 @@ description: "Seamlessly set up the credentials and tokens to start querying the
 sidebar_label: "Administer the Semantic Layer"
 tags: [Semantic Layer]
 pagination_next: "docs/use-dbt-semantic-layer/sl-architecture"
-pagination_prev: "guides/sl-snowflake-qs"
+pagination_prev: "guides/sl-qs"
+availability:
+  surface: platform
+  access: paid_plan
+  minPlan: starter
 ---
 
-# Administer the Semantic Layer <Lifecycle status="self_service,managed,managed_plus" />
+# Administer the Semantic Layer
 
 With the dbt <Constant name="semantic_layer" />, you can centrally define business metrics, reduce code duplication and inconsistency, create self-service in downstream tools, and more. This topic shows you how to set up credentials and tokens so that other tools can query the <Constant name="semantic_layer" />.
 
@@ -29,7 +33,7 @@ import SlSetUp from '/snippets/_new-sl-setup.md';
 <SlSetUp/>
 
 <!--
-1. Create a new environment in <Constant name="cloud" /> by selecting **Deploy** and then **Environments**.
+1. Create a new environment in <Constant name="dbt" /> by selecting **Deploy** and then **Environments**.
 2. Select **dbt Version 1.6** (or the latest) and enter your deployment credentials.
 3. To configure the new Semantic Layer, you must have a successful run in your new environment. We recommend running `dbt ls` since `dbt build` won’t succeed until you’ve created and defined semantic models and metrics.
 4. To enable the <Constant name="semantic_layer" />, go to the **Account Settings** page and then select the specific project you want to enable the <Constant name="semantic_layer" /> for.
@@ -41,7 +45,8 @@ import SlSetUp from '/snippets/_new-sl-setup.md';
 
 ## Next steps
 
-- Now that you've set up your credentials and tokens, start querying your metrics with the [available integrations](/docs/cloud-integrations/avail-sl-integrations).
+- If you haven't created metrics yet, follow the [Quickstart for the <Constant name="semantic_layer" />](/guides/sl-qs).
+- Now that you've set up your credentials and tokens, start querying your metrics with the [available integrations](/docs/platform-integrations/avail-sl-integrations).
 - [Optimize querying performance](/docs/use-dbt-semantic-layer/sl-cache) using declarative caching.
 - [Validate semantic nodes in CI](/docs/deploy/ci-jobs#semantic-validations-in-ci) to ensure code changes made to dbt models don't break these metrics.
 - If you haven't already, learn how to [build you metrics and semantic models](/docs/build/build-metrics-intro) in your development tool of choice.

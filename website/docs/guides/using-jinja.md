@@ -6,7 +6,7 @@ hoverSnippet: "Improve your SQL code with Jinja"
 # time_to_complete: '30 minutes' commenting out until we test
 icon: 'guides'
 hide_table_of_contents: true
-tags: ['Jinja', 'dbt Core']
+tags: ['Jinja']
 level: 'Advanced'
 ---
 
@@ -19,8 +19,8 @@ In this guide, we're going to take a common pattern used in SQL, and then use Ji
 If you'd like to work through this query, add [this CSV](https://github.com/dbt-labs/jaffle_shop/blob/core-v1.0.0/seeds/raw_payments.csv) to the `seeds/` folder of your dbt project, and then execute `dbt seed`.
 
 While working through the steps of this model, we recommend that you have your compiled SQL open as well, to check what your Jinja compiles to. To do this:
-* **Using <Constant name="cloud" />:** Click the compile button to see the compiled SQL in the right hand pane
-* **Using dbt Core:** Run `dbt compile` from the command line. Then open the compiled SQL file in the `target/compiled/{project name}/` directory. Use a split screen in your code editor to keep both files open at once.
+* **Using <Constant name="dbt" />:** Click the compile button to see the compiled SQL in the right hand pane
+* **Using <Constant name="core" />:** Run `dbt compile` from the command line. Then open the compiled SQL file in the `target/compiled/{project name}/` directory. Use a split screen in your code editor to keep both files open at once.
 
 ## Write the SQL without Jinja
 Consider a data model in which an `order` can have many `payments`. Each `payment` may have a `payment_method` of `bank_transfer`, `credit_card` or `gift_card`, and therefore each `order` can have multiple `payment_methods`

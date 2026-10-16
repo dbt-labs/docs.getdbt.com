@@ -3,6 +3,7 @@ title: "Metrics as dimensions with metric filters"
 id: "ref-metrics-in-filters"
 description: "Add metrics as dimensions to your metric filters to create more complex metrics and gain more insights."
 sidebar_label: "Metrics as dimensions"
+availability: all_users
 ---
 
 [Metrics](/docs/build/metrics-overview) provide users with valuable insights into their data, like number of active users and overall performance trends to inform business decisions. [Dimensions](/docs/build/dimensions), on the other hand, help categorize data through attributes, like user type or number of orders placed by a customer.
@@ -66,7 +67,7 @@ from
 
 Using the same `activated_accounts` example mentioned in [the usage example](#usage-example), the following YAML example explains how a company can create [semantic models](/docs/build/semantic-models) and [metrics](/docs/build/metrics-overview), and use the `Metric()` object to reference the `data_model_runs` metric in the `activated_accounts` metric filter:
 
-<VersionBlock lastVersion="1.99">
+<VersionBlock lastVersion="1.11">
 
 - Create two semantic models: `model_runs` and `accounts`.
 - Create a `measure` and `metric` to count data model runs, and another measure to count users.
@@ -113,7 +114,7 @@ Using the same `activated_accounts` example mentioned in [the usage example](#us
 
 </VersionBlock>
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 
 - Create two semantic models: `model_runs` and `accounts`.
 - Create metrics to count data model runs and users.

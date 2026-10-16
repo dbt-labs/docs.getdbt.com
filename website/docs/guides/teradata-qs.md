@@ -5,17 +5,22 @@ level: 'Beginner'
 icon: 'teradata'
 tags: ['dbt platform', 'Quickstart','Teradata']
 hide_table_of_contents: true
+agent_guidance:
+  pacing: In the first reply, confirm the reader’s prerequisites and connection path before listing steps. Then give one step per reply and confirm its success check before continuing.
+  stay_on_path: This guide uses dbt platform. Don’t switch the reader to a local setup. If the reader wants to set up dbt locally, use the https://docs.getdbt.com/guides/dbt guide instead
+  safety: Never ask for passwords or keys in chat.
+  signup_link: When the reader needs a dbt account, share https://www.getdbt.com/signup?utm_source=ai_assistant&utm_medium=docs_md&utm_campaign=teradata-qs
 ---
 
 <div style={{maxWidth:'900px'}}>
 
 ## Introduction
 
-In this quickstart guide, you'll learn how to use <Constant name="cloud" /> with Teradata Vantage. It will show you how to:
+In this quickstart guide, you'll learn how to use <Constant name="dbt" /> with Teradata Vantage. It will show you how to:
 
 - Create a new Teradata Clearscape instance
 - Load sample data into your Teradata Database
-- Connect <Constant name="cloud" /> to Teradata.
+- Connect <Constant name="dbt" /> to Teradata.
 - Take a sample query and turn it into a model in your dbt project. A model in dbt is a select statement.
 - Add tests to your models.
 - Document your models.
@@ -27,7 +32,7 @@ You can check out [dbt Fundamentals](https://learn.getdbt.com/courses/dbt-fundam
 
 ### Prerequisites​
 
-- You have a [<Constant name="cloud" /> account](https://www.getdbt.com/signup/).
+- You have a [<Constant name="dbt" /> account](https://www.getdbt.com/signup/).
 - You have access to a Teradata Vantage instance. You can provision one for free at https://clearscape.teradata.com. See [the ClearScape Analytics Experience guide](https://developers.teradata.com/quickstarts/get-access-to-vantage/clearscape-analytics-experience/getting-started-with-csae/) for details.
 
 ### Related content
@@ -43,9 +48,9 @@ You can check out [dbt Fundamentals](https://learn.getdbt.com/courses/dbt-fundam
 
 The following steps will guide you through how to get the data stored as CSV files in a public S3 bucket and insert it into the tables.
 
-:::tip SQL <Constant name="cloud_ide" />
+:::tip SQL <Constant name="studio_ide" />
 
-If you created your Teradata Vantage database instance at https://clearscape.teradata.com and you don't have an SQL <Constant name="cloud_ide" /> handy, use the JupyterLab bundled with your database to execute SQL:
+If you created your Teradata Vantage database instance at https://clearscape.teradata.com and you don't have an SQL <Constant name="studio_ide" /> handy, use the JupyterLab bundled with your database to execute SQL:
 
 1. Navigate to [ClearScape Analytics Experience dashboard](https://clearscape.teradata.com/dashboard) and click the **Run Demos** button. The demo will launch JupyterLab.
 
@@ -104,7 +109,7 @@ If you created your Teradata Vantage database instance at https://clearscape.ter
 
 ## Connect dbt to Teradata
 
-1. Create a new project in <Constant name="cloud" />. Click on your account name in the left side menu, select **Account settings**, and click **+ New Project**. 
+1. Create a new project in <Constant name="dbt" />. Click on your account name in the left side menu, select **Account settings**, and click **+ New Project**. 
 2. Enter a project name and click **Continue**.
 3. In the **Configure your development environment** section, click the **Connection** dropdown menu and select **Add new connection**.
 4. In the **Type** section, select **Teradata**.
@@ -114,17 +119,17 @@ If you created your Teradata Vantage database instance at https://clearscape.ter
   
   <Lightbox src="/img/teradata/dbt_cloud_teradata_account_settings.png" title="dbt - Teradata Account Settings" />
 
-6. Set up your personal development credentials by going to **Your profile** > **Credentials**.
+6. Set up your personal user credentials by navigating to **Your profile** > **Credentials**.
 7. Select your project that uses the Teradata connection. 
-8. Click the **configure your development environment and add a connection** link. This directs you to a page where you can enter your personal development credentials.
-9. Enter your **Development credentials** for Teradata with:
+8. Click the **configure your development environment and add a connection** link. This directs you to a page where you can enter your personal user credentials.
+9. Enter your **User credentials** for Teradata with:
    * **Username** &mdash; The username of Teradata database.
    * **Password** &mdash; The password of Teradata database.
    * **Schema** &mdash; The default database to use.
   
-   <Lightbox src="/img/teradata/dbt_cloud_teradata_development_credentials.png" title="dbt - Teradata Development Credentials" />
+   <Lightbox src="/img/teradata/dbt_cloud_teradata_development_credentials.png" title="dbt - Teradata User credentials" />
 
-10. Click **Test Connection** to verify that <Constant name="cloud" /> can access your Teradata Vantage instance.
+10. Click **Test Connection** to verify that <Constant name="dbt" /> can access your Teradata Vantage instance.
 11. If the test succeeded, click **Save** to complete the configuration. If it failed, you may need to check your Teradata settings and credentials.
 
 ## Set up a dbt managed repository
@@ -133,9 +138,9 @@ If you created your Teradata Vantage database instance at https://clearscape.ter
 
 ## Initialize your dbt project​ and start developing
 
-Now that you have a repository configured, you can initialize your project and start development in <Constant name="cloud" />:
+Now that you have a repository configured, you can initialize your project and start development in <Constant name="dbt" />:
 
-1. Click **Start developing in the <Constant name="cloud_ide" />**. It might take a few minutes for your project to spin up for the first time as it establishes your git connection, clones your repo, and tests the connection to the warehouse.
+1. Click **Start developing in the <Constant name="studio_ide" />**. It might take a few minutes for your project to spin up for the first time as it establishes your git connection, clones your repo, and tests the connection to the warehouse.
 2. Above the file tree to the left, click **Initialize your project** to build out your folder structure with example models.
 3. Make your initial commit by clicking **Commit and sync**. Use the commit message `initial commit` to create the first commit to your managed repo. Once you’ve created the commit, you can open a branch to add new dbt code.
 
@@ -181,10 +186,12 @@ You can now delete the files that dbt created when you initialized the project:
 
 ## Build your first model
 
-You have two options for working with files in the <Constant name="cloud_ide" />:
+If you'd like to use AI to build your first model, check out the <a id="qs-jump-to-build-with-ai" href="#build-it-with-ai-using-dbt-wizard">build it with dbt Wizard</a> in the next section.
+
+You have two options for working with files in the <Constant name="studio_ide" />:
 
 - Create a new branch (recommended) &mdash; Create a new branch to edit and commit your changes. Navigate to **Version Control** on the left sidebar and click **Create branch**.
-- Edit in the protected primary branch &mdash; If you prefer to edit, format, lint files, or execute dbt commands directly in your primary git branch. The <Constant name="cloud_ide" /> prevents commits to the protected branch, so you will receive a prompt to commit your changes to a new branch.
+- Edit in the protected primary branch &mdash; If you prefer to edit, format, lint files, or execute dbt commands directly in your primary git branch. The <Constant name="studio_ide" /> prevents commits to the protected branch, so you will receive a prompt to commit your changes to a new branch.
 
 Name the new branch `add-customers-model`.
 
@@ -255,6 +262,8 @@ select * from final
 4. Enter `dbt run` in the command prompt at the bottom of the screen. You should get a successful run and see the three models.
 
 You can connect your business intelligence (BI) tools to these views and tables so they only read cleaned-up data rather than raw data in your BI tool.
+
+<Snippet path="quickstarts/build-first-model-with-wizard" />
 
 ## Change the way your model is materialized
 
@@ -640,7 +649,7 @@ Now that you've built your customer model, you need to commit the changes you ma
 
 ## Deploy dbt
 
-Use <Constant name="cloud" />'s Scheduler to deploy your production jobs confidently and build observability into your processes. You'll learn to create a deployment environment and run a job in the following steps.
+Use <Constant name="dbt" />'s Scheduler to deploy your production jobs confidently and build observability into your processes. You'll learn to create a deployment environment and run a job in the following steps.
 
 ### Create a deployment environment
 
@@ -678,3 +687,5 @@ Congratulations 🎉! You've just deployed your first dbt project!
 
 
 
+
+<Snippet path="quickstarts/connect-your-ai" />

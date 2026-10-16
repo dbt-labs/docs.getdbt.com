@@ -5,17 +5,25 @@ description: "Learn how the dbt Semantic Layer enables data teams to centrally d
 sidebar_label: "About the dbt Semantic Layer"
 tags: [Semantic Layer]
 hide_table_of_contents: false
-pagination_next: "guides/sl-snowflake-qs"
+pagination_next: "guides/sl-qs"
 pagination_prev: null
+availability:
+  surface: platform
+  access: paid_plan
+  minPlan: starter
 ---
 
-# dbt Semantic Layer <Lifecycle status="self_service,managed,managed_plus" />
+# dbt Semantic Layer
 
 <IntroText>
 
 The dbt Semantic Layer eliminates duplicate coding by allowing data teams to define metrics on top of existing models and automatically handling data joins.
 
 </IntroText>
+
+import SlConnectYourAi from '/snippets/_sl-connect-your-ai.md';
+
+<SlConnectYourAi/>
 
 The dbt Semantic Layer, powered by [MetricFlow](/docs/build/about-metricflow), simplifies the process of defining and using critical business metrics, like `revenue` in the modeling layer (your dbt project). By centralizing metric definitions, data teams can ensure consistent self-service access to these metrics in downstream data tools and applications.
 
@@ -42,8 +50,8 @@ This page points to various resources available to help you understand, configur
 
 
 Refer to the following resources to get started with the <Constant name="semantic_layer" />:
-- [Quickstart with the <Constant name="semantic_layer" />](/guides/sl-snowflake-qs) &mdash; Build and define metrics, set up the <Constant name="semantic_layer" />, and query them using our first-class integrations.
-- [Build your metrics](/docs/build/build-metrics-intro) &mdash; Use MetricFlow in <Constant name="cloud" /> to centrally define your metrics.
+- [Quickstart with the <Constant name="semantic_layer" />](/guides/sl-qs): Build and define metrics, set up the <Constant name="semantic_layer" />, and query them in Google Sheets and other tools.
+- [Build your metrics](/docs/build/build-metrics-intro) &mdash; Use MetricFlow in <Constant name="dbt" /> to centrally define your metrics.
 - [<Constant name="semantic_layer" /> FAQs](/docs/use-dbt-semantic-layer/sl-faqs) &mdash; Discover answers to frequently asked questions about the <Constant name="semantic_layer" />, such as availability, integrations, and more.
 
 ## Configure the dbt Semantic Layer
@@ -54,13 +62,13 @@ The following resources provide information on how to configure the <Constant na
 
 ## Deploy metrics
 This section provides information on how to deploy the <Constant name="semantic_layer" /> and materialize your metrics:
-- [Deploy your <Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/deploy-sl) &mdash; Run a <Constant name="cloud" /> job to deploy the <Constant name="semantic_layer" /> and materialize your metrics.
+- [Deploy your <Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/deploy-sl) &mdash; Run a <Constant name="dbt" /> job to deploy the <Constant name="semantic_layer" /> and materialize your metrics.
 - [Write queries with exports](/docs/use-dbt-semantic-layer/exports) &mdash; Use exports to write commonly used queries directly within your data platform, on a schedule.
 - [Cache common queries](/docs/use-dbt-semantic-layer/sl-cache) &mdash; Leverage result caching and declarative caching for common queries to speed up performance and reduce query computation.
 
 ## Consume metrics and integrate
 Consume metrics and integrate the <Constant name="semantic_layer" /> with downstream tools and applications:
 - [Consume metrics](/docs/use-dbt-semantic-layer/consume-metrics) &mdash; Query and consume metrics in downstream tools and applications using the <Constant name="semantic_layer" />.
-- [Available integrations](/docs/cloud-integrations/avail-sl-integrations) &mdash; Review a wide range of partners you can integrate and query with the <Constant name="semantic_layer" />.
-- [<Constant name="semantic_layer" /> APIs](/docs/dbt-cloud-apis/sl-api-overview) &mdash; Use the <Constant name="semantic_layer" /> APIs to query metrics in downstream tools for consistent, reliable data metrics.
+- [Available integrations](/docs/platform-integrations/avail-sl-integrations) &mdash; Review a wide range of partners you can integrate and query with the <Constant name="semantic_layer" />.
+- [<Constant name="semantic_layer" /> APIs](/docs/dbt-apis/sl-api-overview) &mdash; Use the <Constant name="semantic_layer" /> APIs to query metrics in downstream tools for consistent, reliable data metrics.
 

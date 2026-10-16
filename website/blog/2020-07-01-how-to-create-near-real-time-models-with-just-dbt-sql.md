@@ -70,7 +70,7 @@ Taking that approach, a lambda view is essentially the union of a historical tab
 
 ![lambda views](/img/blog/real-time-9eb7699399fe576a2a20b13bcf523a1e8b96cf09_2_624x244.png)
 
-The lamba view can be queried for always up-to-date data, no matter how often you have run your dbt models. Since the majority of the records in the lambda view come directly from a table, it should be relatively fast to query. And since the most recent rows come from the view, transformations are run on a small subset of data which shouldn’t take long in the lambda view. This provides a performant and always up-to-date model.
+The lambda view can be queried for always up-to-date data, no matter how often you have run your dbt models. Since the majority of the records in the lambda view come directly from a table, it should be relatively fast to query. And since the most recent rows come from the view, transformations are run on a small subset of data which shouldn’t take long in the lambda view. This provides a performant and always up-to-date model.
 
 The SQL in the lambda view is simple (just a `union all`), but there’s a bit of work to get to the unioned model. To better understand this, it is important to think about the flow of transformations as demonstrated below.
 

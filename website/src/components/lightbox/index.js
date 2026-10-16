@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styles from './styles.module.css';
 import imageCacheWrapper from '../../../functions/image-cache-wrapper';
 
-function Lightbox({ src, collapsed = false, alignment = "center", alt = undefined, title = undefined, width = undefined }) {
+function Lightbox({ src, collapsed = false, alignment = "center", alt = undefined, title = undefined, width = undefined, height = undefined }) {
   const [isHovered, setIsHovered] = useState(false);
   const [expandImage, setExpandImage] = useState(false);
   const [isScrolling, setIsScrolling] = useState(false);
@@ -66,7 +66,10 @@ function Lightbox({ src, collapsed = false, alignment = "center", alt = undefine
               alt={alt ? alt : title ? title : ''}
               title={title ? title : ''}
               src={imageCacheWrapper(src)}
-              style={expandImage ? { transform: 'scale(1.04)', transition: 'transform 0.3s ease' } : {}}
+              style={{
+                ...(height ? { height, width: 'auto', maxWidth: '100%' } : {}),
+                ...(expandImage ? { transform: 'scale(1.04)', transition: 'transform 0.3s ease' } : {}),
+              }}
             />
           </a>
         </span>

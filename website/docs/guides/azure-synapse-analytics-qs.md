@@ -11,10 +11,10 @@ tags: ['dbt platform','Quickstart']
 
 ## Introduction
 
-In this quickstart guide, you'll learn how to use <Constant name="cloud" /> with [Azure Synapse Analytics](https://azure.microsoft.com/en-us/products/synapse-analytics/). It will show you how to:
+In this quickstart guide, you'll learn how to use <Constant name="dbt" /> with [Azure Synapse Analytics](https://azure.microsoft.com/en-us/products/synapse-analytics/). It will show you how to:
 
 - Load the Jaffle Shop sample data (provided by dbt Labs) into your Azure Synapse Analytics warehouse. 
-- Connect <Constant name="cloud" /> to Azure Synapse Analytics.
+- Connect <Constant name="dbt" /> to Azure Synapse Analytics.
 - Turn a sample query into a model in your dbt project. A model in dbt is a SELECT statement.
 - Add tests to your models.
 - Document your models.
@@ -22,9 +22,9 @@ In this quickstart guide, you'll learn how to use <Constant name="cloud" /> with
 
 
 ### Prerequisites
-- You have a [<Constant name="cloud" />](https://www.getdbt.com/signup/) account.
+- You have a [<Constant name="dbt" />](https://www.getdbt.com/signup/) account.
 - You have an Azure Synapse Analytics account. For a free trial, refer to [Synapse Analytics](https://azure.microsoft.com/en-us/free/synapse-analytics/) in the Microsoft docs.
-- As a Microsoft admin, you’ve enabled service principal authentication. You must add the service principal to the Synapse workspace with either a Member (recommended) or Admin permission set. For details, refer to [Create a service principal using the Azure portal](https://learn.microsoft.com/en-us/entra/identity-platform/howto-create-service-principal-portal) in the Microsoft docs. <Constant name="cloud" /> needs these authentication credentials to connect to Azure Synapse Analytics.
+- As a Microsoft admin, you’ve enabled service principal authentication. You must add the service principal to the Synapse workspace with either a Member (recommended) or Admin permission set. For details, refer to [Create a service principal using the Azure portal](https://learn.microsoft.com/en-us/entra/identity-platform/howto-create-service-principal-portal) in the Microsoft docs. <Constant name="dbt" /> needs these authentication credentials to connect to Azure Synapse Analytics.
 
 ### Related content
 - [dbt Learn courses](https://learn.getdbt.com)
@@ -87,38 +87,40 @@ In this quickstart guide, you'll learn how to use <Constant name="cloud" /> with
     );
     ```
 
-    <Lightbox src="/img/quickstarts/dbt-cloud/example-load-data-azure-syn-analytics.png" width="80%" title="Example of loading data" />
+    <Lightbox src="/img/quickstarts/dbt-platform/example-load-data-azure-syn-analytics.png" width="80%" title="Example of loading data" />
 
 ## Connect dbt to Azure Synapse Analytics
 
-1. Create a new project in <Constant name="cloud" />. Click on your account name in the left side menu, select **Account settings**, and click **+ New Project**.
+1. Create a new project in <Constant name="dbt" />. Click on your account name in the left side menu, select **Account settings**, and click **+ New Project**.
 2. Enter a project name and click **Continue**.
 3. Choose **Synapse** as your connection and click **Next**.
 4. In the **Configure your environment** section, enter the **Settings** for your new project:
     - **Server** &mdash; Use the service principal's **Synapse host name** value (without the trailing `, 1433` string) for the Synapse test endpoint. 
     - **Port** &mdash; 1433 (which is the default).
     - **Database** &mdash; Use the service principal's **database** value for the Synapse test endpoint. 
-5. Enter the **Development credentials** for your new project:
+5. Enter the **User credentials** for your new project:
     - **Authentication** &mdash; Choose **Service Principal** from the dropdown.
     - **Tenant ID** &mdash; Use the service principal’s **Directory (tenant) id** as the value.
-    - **Client ID** &mdash; Use the service principal’s **application (client) ID id** as the value.
+    - **Client ID** &mdash; Use the service principal’s **application (client) ID** as the value.
     - **Client secret** &mdash; Use the service principal’s **client secret** (not the  **client secret id**) as the value.
-6. Click **Test connection**. This verifies that <Constant name="cloud" /> can access your Azure Synapse Analytics account.
+6. Click **Test connection**. This verifies that <Constant name="dbt" /> can access your Azure Synapse Analytics account.
 7. Click **Next** when the test succeeds. If it failed, you might need to check your Microsoft service principal.
 
 ## Set up a dbt managed repository 
 <Snippet path="tutorial-managed-repo" />
 
 ## Initialize your dbt project​ and start developing
-Now that you have a repository configured, you can initialize your project and start development in <Constant name="cloud" />:
+Now that you have a repository configured, you can initialize your project and start development in <Constant name="dbt" />:
 
-1. Click **Start developing in the <Constant name="cloud_ide" />**. It might take a few minutes for your project to spin up for the first time as it establishes your git connection, clones your repo, and tests the connection to the warehouse.
+1. Click **Start developing in the <Constant name="studio_ide" />**. It might take a few minutes for your project to spin up for the first time as it establishes your git connection, clones your repo, and tests the connection to the warehouse.
 2. Above the file tree to the left, click **Initialize dbt project**. This builds out your folder structure with example models.
 3. Make your initial commit by clicking **Commit and sync**. Use the commit message `initial commit` and click **Commit Changes**. This creates the first commit to your managed repo and allows you to open a branch where you can add new dbt code.
 4. You can now directly query data from your warehouse and execute `dbt run`. You can try this out now:
     - In the command line bar at the bottom, enter `dbt run` and click **Enter**. You should see a `dbt run succeeded` message.
 
 ## Build your first model
+
+If you'd like to use AI to build your first model, check out the <a id="qs-jump-to-build-with-ai" href="#build-it-with-ai-using-dbt-wizard">build it with dbt Wizard</a> in the next section.
 1. Under **Version Control** on the left, click **Create branch**. You can name it `add-customers-model`. You need to create a new branch since the main branch is set to read-only mode.
 1. Click the three dot menu (**...**) next to the `models` directory, then select **Create file**.  
 1. Name the file `customers.sql`, then click **Create**.
@@ -183,7 +185,7 @@ Now that you have a repository configured, you can initialize your project and s
 
 1. Enter `dbt run` in the command prompt at the bottom of the screen. You should get a successful run and see the three models.
 
-Later, you can connect your business intelligence (BI) tools to these views and tables so they only read cleaned up data rather than raw data in your BI tool.
+Later, you can connect your business intelligence (BI) tools (like [dbt Charts](https://dbtcharts.com/)) to these views and tables so they only read cleaned up data rather than raw data.
 
 #### FAQs
 
@@ -192,6 +194,8 @@ Later, you can connect your business intelligence (BI) tools to these views and 
 <FAQ path="Models/create-a-schema" />
 <FAQ path="Models/run-downtime" />
 <FAQ path="Troubleshooting/sql-errors" />
+
+<Snippet path="quickstarts/build-first-model-with-wizard" />
 
 ## Change the way your model is materialized
 
@@ -304,3 +308,5 @@ Later, you can connect your business intelligence (BI) tools to these views and 
 <Snippet path="quickstarts/test-and-document-your-project" />
 
 <Snippet path="quickstarts/schedule-a-job" />
+
+<Snippet path="quickstarts/connect-your-ai" />

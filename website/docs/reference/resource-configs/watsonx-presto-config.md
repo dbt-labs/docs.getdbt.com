@@ -1,5 +1,6 @@
 ---
 title: "IBM watsonx.data Presto configurations"
+description: "Configure IBM watsonx.data Presto-specific settings for dbt models, including instance requirements and catalog permissions."
 id: "watsonx-presto-config"
 ---
 

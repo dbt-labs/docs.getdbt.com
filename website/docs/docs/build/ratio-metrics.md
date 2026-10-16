@@ -4,13 +4,14 @@ title: "Ratio metrics"
 description: "Use ratio metrics to create a ratio out of two metrics. "
 sidebar_label: Ratio
 tags: [Metrics, Semantic Layer]
+availability: all_users
 ---
 
 Ratio metrics allow you to create a ratio between two metrics. You specify a numerator and a denominator metric. You can optionally apply filters, names, and aliases to both the numerator and denominator when computing the metric.
 
 The parameters for ratio metrics are as follows:
 
-<VersionBlock lastVersion="1.99">
+<VersionBlock lastVersion="1.11">
 
 | Parameter | Description | Required | Type | 
 | --------- | ----------- | ---- | ---- |
@@ -26,7 +27,7 @@ The parameters for ratio metrics are as follows:
 
 </VersionBlock>
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 
 | Parameter | Description | Required | Type | 
 | --------- | ----------- | ---- | ---- |
@@ -50,7 +51,7 @@ The following properties are available for the numerator and denominator diction
 
 The complete specification for ratio metrics is as follows:
 
-<VersionBlock lastVersion="1.99">
+<VersionBlock lastVersion="1.11">
 <File name="models/metrics/file_name.yml">
  
 ```yaml
@@ -73,7 +74,7 @@ metrics:
 
 </VersionBlock>
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 
 <File name="models/file_name.yml">
 
@@ -109,7 +110,7 @@ These examples demonstrate how to create ratio metrics in your model. They cover
 #### Example 1 
 This example is a basic ratio metric that calculates the ratio of food orders to total orders:
 
-<VersionBlock lastVersion="1.99">
+<VersionBlock lastVersion="1.11">
 <File name="models/metrics/file_name.yml">
  
 ```yaml
@@ -126,7 +127,7 @@ metrics:
 
 </VersionBlock>
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 
 <File name="models/file_name.yml">
  
@@ -145,7 +146,7 @@ metrics:
 #### Example 2 
 This example is a ratio metric that calculates the ratio of food orders to total orders, with a filter and alias applied to the numerator. Note that in order to add these attributes, you'll need to use an explicit key for the name attribute too.
 
-<VersionBlock lastVersion="1.99">
+<VersionBlock lastVersion="1.11">
 
 <File name="models/metrics/file_name.yml">
  
@@ -169,7 +170,7 @@ metrics:
 
 </VersionBlock>
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 
 <File name="models/file_name.yml">
  
@@ -245,7 +246,7 @@ on
 
 Users can define constraints on input metrics for a ratio metric by applying a filter directly to the input metric, like so:
 
-<VersionBlock lastVersion="1.99">
+<VersionBlock lastVersion="1.11">
 
 <File name="models/metrics/file_name.yml">
  
@@ -267,7 +268,7 @@ metrics:
 
 </VersionBlock>
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 
 <File name="models/file_name.yml">
  

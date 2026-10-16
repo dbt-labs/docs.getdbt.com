@@ -1,5 +1,6 @@
 ---
 title: volatility
+description: "Declare the volatility (deterministic, stable, or non-deterministic) of a user-defined function (UDF) so the warehouse can optimize how it runs."
 sidebar_label: "volatility"
 id: volatility
 ---
@@ -65,6 +66,6 @@ functions:
 - [User-defined functions](/docs/build/udfs)
 - [Function properties](/reference/function-properties)
 - [Function configurations](/reference/function-configs)
-- [Type](/reference/resource-configs/type)
-- [Arguments](/reference/resource-properties/function-arguments)
-- [Returns](/reference/resource-properties/returns)
+- [type](/reference/resource-configs/type)
+- [arguments](/reference/resource-properties/function-arguments)
+- [returns](/reference/resource-properties/returns)

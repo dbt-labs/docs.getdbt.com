@@ -8,19 +8,22 @@
 
 export const CONSTANTS = {
   git: 'Git',
-  cloud: 'dbt',
   dbt_platform: 'dbt platform',
-  core: 'dbt Core',
-  fusion: 'Fusion',
-  fusion_engine: 'dbt Fusion Engine',
+  core: 'dbt v1',
+  core_v1: 'dbt v1',
+  core_v2: 'dbt v2',
+  fusion: 'dbt v2',
+  fusion_engine: 'dbt v2',
   dbt: 'dbt',
-  cloud_cli: 'Cloud CLI',
-  explorer: 'Catalog',
-  visual_editor: 'Canvas',
-  query_page: 'Insights',
-  cloud_ide: 'Studio IDE',
+  platform_cli: 'dbt platform CLI',
+  catalog: 'Catalog',
+  canvas: 'Canvas',
+  insights: 'Insights',
+  studio_ide: 'Studio IDE',
   mesh: 'Mesh',
   orchestrator: 'Orchestrator',
-  copilot: 'Copilot',
+  wizard: 'dbt Wizard',
   semantic_layer: 'Semantic Layer',
+  legacy_deprecation_date: 'January 31, 2027'
+
 }

@@ -1,10 +1,11 @@
 ---
 title: "SingleStore configurations"
+description: "Configure SingleStore-specific settings for dbt models, including incremental strategies such as delete+insert, append, and microbatch."
 id: "singlestore-configs"
 ---
 
 ## Incremental materialization strategies
-The [`incremental_strategy` config](/docs/build/incremental-models#about-incremental_strategy) controls how dbt builds incremental models. Currently, SingleStoreDB supports only the `delete+insert` configuration.
+The [`incremental_strategy` config](/docs/build/incremental-models#about-incremental_strategy) controls how dbt builds incremental models. Currently, SingleStoreDB supports `delete+insert`, `append`, and `microbatch` configurations.
 
 The `delete+insert` incremental strategy directs dbt to follow a two-step incremental approach. Initially, it identifies and removes the records flagged by the configured `is_incremental()` block. Subsequently, it re-inserts these records.
 
@@ -24,9 +25,54 @@ select ...
 
 </File>
 
+### Reference tables
+
+SingleStore supports **REFERENCE** tables (available starting from [dbt-singlestore 1.10.0] (https://pypi.org/project/dbt-singlestore/1.10.0/)), which are replicated across the cluster and are useful for small/dimension tables that are frequently joined.
+
+To create a **REFERENCE** table from a dbt model, set `reference=true` on a `table` materialization:
+
+```sql
+{{
+    config(
+        materialized='table',
+        reference=true,
+    )
+}}
+
+select ...
+```
+
+When `reference=true` (default `false`), the adapter generates `CREATE REFERENCE TABLE ...` rather than a regular `CREATE TABLE ...`
+
+### Rowstore reference tables
+
+If you want a rowstore reference table, set `storage_type='rowstore'`:
+
+```sql
+{{
+    config(
+        materialized='table',
+        reference=true,
+        storage_type='rowstore',
+    )
+}}
+
+select ...
+```
+
+This maps to `CREATE ROWSTORE REFERENCE TABLE ...`
+
+#### Restrictions / validation
+
+To match SingleStore semantics, dbt-singlestore enforces:
+
+- No `shard_key` with `reference=true` — reference tables don’t use sharding; compilation fails if both are set.
+
+- SingleStore doesn’t support temporary reference tables. dbt-singlestore fails compilation if `reference=true` would result in a temporary table being created (for example, when `temporary=true` is set, or when a materialization strategy uses temporary tables internally).
+
 ### Keys
 
-SingleStore tables are [sharded](https://docs.singlestore.com/managed-service/en/getting-started-with-managed-service/about-managed-service/sharding.html) and can be created with various column definitions. The following options are supported by the dbt-singlestore adapter, each of them accepts `column_list` (a list of column names) as an option value. Please refer to [Creating a Columnstore Table](https://docs.singlestore.com/managed-service/en/create-a-database/physical-database-schema-design/procedures-for-physical-database-schema-design/creating-a-columnstore-table.html) for more informartion on various key types in SingleStore.
+SingleStore tables are [sharded](https://docs.singlestore.com/managed-service/en/getting-started-with-managed-service/about-managed-service/sharding.html) and can be created with various column definitions. The following options are supported by the dbt-singlestore adapter, each of them accepts `column_list` (a list of column names) as an option value. Please refer to [Creating a Columnstore Table](https://docs.singlestore.com/managed-service/en/create-a-database/physical-database-schema-design/procedures-for-physical-database-schema-design/creating-a-columnstore-table.html) for more information on various key types in SingleStore.
 - `primary_key` (translated to `PRIMARY KEY (column_list)`)
 - `sort_key` (translated to `KEY (column_list) USING CLUSTERED COLUMNSTORE`)
 - `shard_key` (translated to `SHARD KEY (column_list)`)
@@ -90,7 +136,7 @@ select ...
 
 ### Other options
 
-You can specify the character set and collation for the table using `charset` and/or `collation` options. Supported values for `charset` are `binary`, `utf8`, and `utf8mb4`.  Supported values for `collation` can be viewed as the output of `SHOW COLLATION` SQL query. Default collations for the corresponding charcter sets are `binary`, `utf8_general_ci`, and `utf8mb4_general_ci`.
+You can specify the character set and collation for the table using `charset` and/or `collation` options. Supported values for `charset` are `binary`, `utf8`, and `utf8mb4`.  Supported values for `collation` can be viewed as the output of `SHOW COLLATION` SQL query. Default collations for the corresponding character sets are `binary`, `utf8_general_ci`, and `utf8mb4_general_ci`.
 
 <File name='utf8mb4_model.sql'>
 

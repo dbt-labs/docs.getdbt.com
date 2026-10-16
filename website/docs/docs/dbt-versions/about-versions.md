@@ -6,6 +6,7 @@ sidebar: "Available dbt versions"
 pagination_next: null
 pagination_prev: null
 hide_table_of_contents: true
+availability: all_users
 ---
 
 Whether you're using the CLI or working within the <Constant name="dbt_platform" />, your environments are aligned with a versioned release of dbt.
@@ -13,21 +14,25 @@ Whether you're using the CLI or working within the <Constant name="dbt_platform"
 <div className="grid--3-col">
 
 <Card
-    title="About dbt Core versions"
-    body="Information about how dbt Core is versioned and how to target those versions."
-    link="/docs/dbt-versions/core"
+    title="About dbt versions"
+    body="Learn about semantic versioning for dbt engines, and how long those versions are supported."
+    link="/docs/dbt-versions"
     icon="dbt-bit"/>
-
+<Card
+    title="dbt v2 version compatibility"
+    body="Learn about version compatibility between v2, LSP, and VS Code extension."
+    link="/docs/dbt-versions/dbt-version-compatibility"
+    icon="dbt-bit"/>
 <Card
     title="About release tracks"
     body="Learn about how versions of dbt align with the release tracks available on the dbt platform."
-    link="/docs/dbt-versions/cloud-release-tracks"
+    link="/docs/dbt-versions/dbt-release-tracks"
     icon="dbt-bit"/>
 
 <Card
     title="Upgrade versions in dbt platform"
-    body="Instructions for upgrading your dbt platform projects to the latest version of dbt, including the Fusion Engine."
-    link="/docs/dbt-versions/upgrade-dbt-version-in-cloud"
+    body="Instructions for upgrading your dbt platform projects to the latest version of dbt, including dbt v2."
+    link="/docs/dbt-versions/upgrade-dbt-platform-version"
     icon="dbt-bit"/>
 
 <Card
@@ -44,8 +49,8 @@ Whether you're using the CLI or working within the <Constant name="dbt_platform"
 
 <Card
     title="dbt version upgrade guides"
-    body="All the information you need to prepare your projects for the next version of dbt, including Fusion. Includes guidance on new features, behavior changes, deprecations, and much more."
-    link="/docs/dbt-versions/core-upgrade"
+    body="All the information you need to prepare your projects for the next version of dbt, including dbt v2. Includes guidance on new features, behavior changes, deprecations, and much more."
+    link="/docs/dbt-versions/dbt-upgrade"
     icon="dbt-bit"/>
 
 </div> <br />

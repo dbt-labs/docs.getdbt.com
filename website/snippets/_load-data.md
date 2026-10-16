@@ -2,7 +2,7 @@ The data used here is stored as CSV files in a public S3 bucket and the followin
 
 1. Create a new virtual warehouse, two new databases (one for raw data, the other for future dbt development), and two new schemas (one for `jaffle_shop` data, the other for `stripe` data). 
 
-    To do this, run these SQL commands by typing them into the Editor of your new Snowflake worksheet and clicking **Run** in the upper right corner of the UI:
+    To do this, run these SQL commands by typing them into the Editor of your new Snowflake SQL file and clicking **Run**:
     ```sql
     create warehouse transforming;
     create database raw;
@@ -13,7 +13,7 @@ The data used here is stored as CSV files in a public S3 bucket and the followin
 
 2. In the `raw` database and `jaffle_shop` and `stripe` schemas, create three tables and load relevant data into them: 
 
-    - First, delete all contents (empty) in the Editor of the Snowflake worksheet. Then, run this SQL command to create the `customer` table:
+    - First, delete all contents (empty) in the Editor of the Snowflake SQL file. Then, run this SQL command to create the `customer` table:
 
         ```sql 
         create table raw.jaffle_shop.customers 

@@ -4,9 +4,10 @@ import styles from "./styles.module.css";
 import getIconType from "../../utils/get-icon-type";
 import getSvgIcon from "../../utils/get-svg-icon";
 import { isRecentlyUpdated } from "../../utils/get-recently-updated";
+import ProductCard from "../productCard";
 
 export default function QuickstartGuideCard({ frontMatter, onFavoriteUpdate }) {
-  const { id, title, time_to_complete, icon, last_updated } = frontMatter;
+  const { id, title, time_to_complete, icon, last_updated, product_badge } = frontMatter;
   const [isFavorite, setIsFavorite] = useState(false);
 
   useEffect(() => {
@@ -57,6 +58,14 @@ export default function QuickstartGuideCard({ frontMatter, onFavoriteUpdate }) {
 
       <div className={styles.cardHeader}>
         <h4 className="heading-4">{title}</h4>
+        {product_badge && (
+          <ProductCard 
+            text={product_badge.text || product_badge}
+            colorFrom={product_badge.colorFrom}
+            colorTo={product_badge.colorTo}
+            className={styles.productBadge}
+          />
+        )}
         {isRecent && <span className={styles.recently_updated}>Updated</span>}
         <button
           onClick={toggleFavorite}
@@ -170,7 +179,11 @@ export function QuickstartGuideTitle({ frontMatter }) {
         </div>
       </div>
       {(tags || level) && (
-        <div className={styles.tag_container}>
+        // data-md-hide keeps the tags/level pills on the rendered guide but
+        // drops them (via rehypeMdHide) from the generated Markdown, where
+        // they came out as orphan lines ("dbt Fusion engine", "Quickstart",
+        // "Beginner") with no surrounding context.
+        <div className={styles.tag_container} data-md-hide="true">
           {tags &&
             tags.map((tag, i) => (
               <div className={`${styles.tag} tag`} key={i}>

@@ -7,7 +7,7 @@ datatype: string
 keywords: [severity, error_if, warn_if]
 ---
 
-Tests return a number of failures—most often, this is the count of rows returned by the test query, but it could be a [custom calculation](/reference/resource-configs/fail_calc). Generally, if the number of failures is nonzero, the test returns an error. This makes sense, as test queries are designed to return all the rows you _don't_ want: duplicate records, null values, etc.
+Tests return a number of failures—most often, this is the count of rows returned by the test query, but it could be a [custom calculation](/reference/resource-configs/fail_calc). Generally, if the number of failures is nonzero, the test returns an error. This makes sense, as test queries are designed to return all the rows you _don't_ want: duplicate records, null values, and more.
 
 It's possible to configure tests to return warnings instead of errors, or to make the test status conditional on the number of failures returned. Maybe 1 duplicate record can count as a warning, but 10 duplicate records should count as an error.
 
@@ -27,7 +27,7 @@ By default, a test with `severity: warn` will only ever return a warning, and no
 * `--warn-error`: Promotes _all_ dbt warnings (including test warnings, Jinja warnings, deprecations, and so on.) to errors.
 * `--warn-error-options`: Promotes _only specific types_ of warnings. 
 
-Learn more about [Warnings](/reference/global-configs/warnings).
+For more information, refer to [Warnings](/reference/global-configs/warnings).
 
 <Tabs
   defaultValue="generic"
@@ -41,7 +41,7 @@ Learn more about [Warnings](/reference/global-configs/warnings).
  
 <TabItem value="generic">
 
-Configure a specific instance of a out-of-the-box generic test:
+Configure a specific instance of an out-of-the-box generic test:
 
 <File name='models/<filename>.yml'>
 
@@ -118,3 +118,28 @@ data_tests:
 </TabItem>
 
 </Tabs>
+
+### Asserting an expected failure
+
+You can use `error_if` to assert an expected failure. This is useful in package integration tests, for example when validating that a generic test catches known-bad fixture data.
+
+In the following example, the test passes only when it returns one or more failing rows. If the test returns `0` rows, dbt raises an error because `0` satisfies `error_if: '<1'`.
+<File name='models/always_bad.yml'>
+
+```yaml
+models:
+  - name: always_bad
+    data_tests:
+      - dbt_utils.expression_is_true:
+          arguments:
+            expression: "amount > 0"
+          config:
+            error_if: "<1"
+            warn_if: "<0"
+```
+
+</File>
+
+In this example, the test passes only when it returns one or more failing rows. If the test returns `0` rows, dbt raises an error because `0` satisfies `error_if: '<1'`.
+
+Set `warn_if: '<0'` to take warning behavior out of play for this pattern. Without overriding `warn_if`, the default warning condition (`!=0`) can still apply.
