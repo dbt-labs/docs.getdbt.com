@@ -39,7 +39,7 @@ _`v2 Stable` is the default for all new <Constant name="fusion" />-powered proje
 
 :::note API naming differences
 
-The API calls for release tracks use differnt names than what's available in the UI. They use legacy naming that's been retired. We plan on updating these in the near future by providing aliases to the new names. We'll alert customers when these become availabl and update this page.
+API release track names differ from the names in the UI. They still use legacy names. We plan to add aliases for the new names soon. We'll notify customers when those are available and update this page.”
 
 Names prefixed with `fusion` are for v2. Names without that prefix are for v1.
 
@@ -146,7 +146,7 @@ To learn more about how dbt Labs deploys stable dbt upgrades in a safe manner to
 
 <Expandable alt_header="I'm using an older version of dbt in the dbt platform. What should I do? What happens if I do nothing?" >
 
-If you're on version v1.3-v1.7, you need to follow the path for your project(s) as outlined in [Migrate off legacy versions](/guides/migrate-off-legacy-dbt-versions). If you have not migrated by January 31, 2027, you will lose access to these projects. If you have any questions or concerns, please [contact support](mailto:support@getdbt.com) 
+If you're on version v1.3-v1.7, you need to follow the path for your project(s) as outlined in [Migrate off legacy versions](/guides/migrate-off-legacy-dbt-versions). If you have not migrated by January 31, 2027, you will lose access to these projects. If you have any questions or concerns, please [contact support](/docs/dbt-support) 
 
 </Expandable>
 
