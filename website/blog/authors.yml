@@ -665,3 +665,17 @@ alex_noonan:
     linkedin: alexander-noonan
   name: Alex Noonan
   page: true
+jason_lin:
+  name: Jason Lin
+  title: Senior Software Engineer
+  image_url: /img/blog/authors/jason-lin.jpg
+  socials:
+    linkedin: jasonlin45
+  page: true
+sam_ferguson:
+  name: Sam Ferguson
+  title: Staff Product Designer
+  image_url: /img/blog/authors/sam-ferguson.jpg
+  socials:
+    linkedin: novaksam
+  page: true
