@@ -7,11 +7,9 @@ pagination_next: null
 pagination_prev: null
 ---
 
-The <Constant name="fusion_engine" /> is here and is now generally available for <Constant name="dbt_platform" /> projects on Snowflake, BigQuery, Redshift, and Databricks! 
+<Constant name="fusion_engine" /> is here and is now generally available for the <Constant name="dbt_platform" />.
 
-We currently offer it as a [preview](/docs/dbt-versions/product-lifecycles) for all other supported adapters. Even if we haven't enabled it for your account, you can still start preparing your projects for upgrade. Use this checklist to ensure a smooth upgrade once <Constant name="fusion" /> becomes available. If this is all new to you, first [learn about <Constant name="fusion" />](/docs/introduction), its current state, and the features available. 
-
-import FusionReadinessPanel from '/snippets/_fusion-migration-readiness-panel.md';
+import FusionReadinessPanel from '/snippets/_v2-migration-readiness-panel.md';
 
 <FusionReadinessPanel />
 
@@ -39,7 +37,7 @@ Start a new branch to begin resolving deprecation warnings using one of the foll
 - [ ] **Run autofix in the dbt platform:** You can address deprecation warnings using the [autofix tool in the Studio IDE](/docs/platform/studio-ide/autofix-deprecations). You can run the autofix tool on the **v1 Compatible** or **v1 Latest** release track.
 - [ ] **Run autofix locally:** Use the [VS Code extension](/docs/about-dbt-extension). The extension has a built-in ["Getting Started" workflow](/docs/install-dbt-extension#getting-started) that will debug your dbt project in the VS Code or Cursor IDE and execute the autofix tool. This has the added benefit of installing <Constant name="fusion" /> to your computer so you can begin testing locally before implementing in your <Constant name="dbt_platform" /> account.
 - [ ] **Run autofix locally (without the extension):** Visit the autofix [GitHub repo](https://github.com/dbt-labs/dbt-autofix) to run the tool locally if you're not using VS Code or Cursor. This will only run the tool, it will not install <Constant name="fusion" />.
-- [ ] **Remove behavior change flag overrides:** <Constant name="fusion" /> forcibly enables all behavior change flags. Remove any `flags:` overrides in your `dbt_project.yml` that opt out of these behaviors and validate that your project works correctly with them enabled.
+- [ ] **Review behavior change flag overrides:** <Constant name="fusion" /> removes the [behavior change flags](/reference/global-configs/behavior-changes#behavior-change-flags) marked `2.0` in the **Removed** column and always enables their new behavior. Delete any `flags:` overrides in your `dbt_project.yml` that opt out of those flags. Other flags remain configurable (including v2-specific flags on that page); validate that your project works with the mature / removed defaults before upgrading.
 
 ### Upgrade YAML spec
 
@@ -83,11 +81,3 @@ We determine <Constant name="fusion" /> eligibility using data from your job run
 - [ ] Delete any jobs that are no longer in use to ensure accurate eligibility reporting. 
 - [ ] Make sure you've promoted the changes for deprecation resolution and package upgrades to your git branches that map to your deployment environments.
 - [ ] For eligible jobs, use **Debug on <Constant name="fusion" />** to debug in <Constant name="studio_ide" /> or run once on <Constant name="fusion" />. Refer to [Update your jobs](/guides/prepare-v2-upgrade?step=7).
-
-### Stay informed about dbt v2 progress
-
-The <Constant name="fusion_engine" /> is generally available for <Constant name="dbt_platform" /> projects on Snowflake, BigQuery, Redshift, and Databricks, and in preview for all other eligible projects! Keep up-to-date with these resources: 
-
-- [ ] Check out the [v2 homepage](https://www.getdbt.com/product/fusion) for available resources, including supported adapters, prerequisites, installation instructions, limitations, and deprecations.
-- [ ] Read the [Upgrade guide](/docs/dbt-versions/dbt-upgrade/upgrading-to-v2) to learn about the new features and functionality that impact your dbt projects.
-- [ ] Learn how [dbt State](/docs/deploy/dbt-state-about) can reduce warehouse costs by 30%+ by rebuilding models only when data or code changes.

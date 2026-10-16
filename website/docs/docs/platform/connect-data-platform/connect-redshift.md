@@ -14,7 +14,7 @@ availability:
 
 ## Warehouse permissions for <Constant name="fusion" />
 
-import FusionRedshiftWarehousePerms from '/snippets/_fusion-warehouse-permissions-redshift.md';
+import FusionRedshiftWarehousePerms from '/snippets/_v2-warehouse-permissions-redshift.md';
 
 <FusionRedshiftWarehousePerms />
 
@@ -60,7 +60,7 @@ You will need to create an IAM User, generate an [access key](https://docs.aws.a
 | Profile field | Example | Description |
 | ------------- | ------- | ------------ |
 | `method` |IAM| use IAM to authenticate via IAM User authentication |
-| `cluster_id` | CLUSTER_ID| Required for IAM authentication only for provisoned cluster, not for Serverless |
+| `cluster_id` | CLUSTER_ID| Required for IAM authentication only for provisioned cluster, not for Serverless |
 | `user`   | username | User querying the database, ignored for Serverless (but still required) |
 | `region`  | us-east-1 | Region of your Redshift instance | 
 | `access_key_id` | ACCESS_KEY_ID | IAM user [access key id](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey) |

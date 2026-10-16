@@ -40,7 +40,7 @@ The Snowflake adapter for <Constant name="fusion" /> supports the following [aut
 
 ## Warehouse permissions
 
-import FusionSnowflakeWarehousePerms from '/snippets/_fusion-warehouse-permissions-snowflake.md';
+import FusionSnowflakeWarehousePerms from '/snippets/_v2-warehouse-permissions-snowflake.md';
 
 <FusionSnowflakeWarehousePerms />
 
@@ -54,7 +54,7 @@ The information required for configuring the Snowflake adapter can be found conv
 3. In the field with your account name, click **View account details**.
 4. Click **Config file** and select the appropriate **Warehouse** and **Database**. 
 
-<Lightbox src="/img/fusion/connect-adapters/snowflake-account-details.png" width="60%" title="Sample config file in Snowflake." />
+<Lightbox src="/img/v2/connect-adapters/snowflake-account-details.png" width="60%" title="Sample config file in Snowflake." />
 
 ## Configure <Constant name="fusion" />
 
@@ -65,7 +65,7 @@ Executing `dbt init` in your CLI will prompt for the following fields:
 - **Database:** The database within your Snowflake account to connect to your project
 - **Warehouse:** The compute warehouse that will handle the tasks for your project
 - **Schema:** The development/staging/deployment schema for the project
-- **Role (Optional):** The role dbt should assume when connnecting to the warehouse
+- **Role (Optional):** The role dbt should assume when connecting to the warehouse
 
 
 Alternatively, you can manually create the `profiles.yml` file and configure the fields. See examples in [authentication](#supported-authentication-types) section for formatting. If there is an existing `profiles.yml` file, you are given the option to retain the existing fields or overwrite them. 
@@ -132,11 +132,11 @@ Key pair authentication gives you the option to:
 - Define the path to the key. 
 - Provide the plain-text PEM format key inline.
 
-import FusionKeyPair from '/snippets/_fusion-key-pair.md';
+import FusionKeyPair from '/snippets/_v2-key-pair.md';
 
 <FusionKeyPair />
 
-  Once the key is configuted, you will be given the option to provide a passphrase, if required. 
+  Once the key is configured, you will be given the option to provide a passphrase, if required. 
 
 #### Example key pair configuration
 

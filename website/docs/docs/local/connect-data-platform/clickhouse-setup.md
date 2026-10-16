@@ -35,7 +35,7 @@ For connection examples and profile settings, refer to [Connecting to ClickHouse
 
 ## Warehouse permissions
 
-import FusionClickHouseWarehousePerms from '/snippets/_fusion-warehouse-permissions-clickhouse.md';
+import FusionClickHouseWarehousePerms from '/snippets/_v2-warehouse-permissions-clickhouse.md';
 
 <FusionClickHouseWarehousePerms />
 

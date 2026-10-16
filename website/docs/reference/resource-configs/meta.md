@@ -128,7 +128,7 @@ seeds:
 </File>
 
 The `meta` config can be defined:
-- Under the `seeds` config in the property file (shown in in previous 'seeds/schema.yml' example) 
+- Under the `seeds` config in the property file (shown in previous 'seeds/schema.yml' example) 
 - Under the `seeds` config in the project file (`dbt_project.yml`). See [configs and properties](/reference/configs-and-properties) for details.
 
 </TabItem>
@@ -453,7 +453,7 @@ models:
 </VersionBlock>
 
 The `meta` config can be defined:
-- Under the `semantic-models` config in the properties file (as showin in previous `models/semantic_models.yml` example) 
+- Under the `semantic-models` config in the properties file (as showing in previous `models/semantic_models.yml` example) 
 - Under the `semantic-models` config in the project file (`dbt_project.yml`). See [configs and properties](/reference/configs-and-properties) for details.
 
 </TabItem>

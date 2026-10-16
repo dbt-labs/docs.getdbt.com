@@ -12,7 +12,7 @@ id: "athena-configs"
 |-----------|---------|-------------|
 | `external_location` | None | The full S3 path to where the table is saved. It only works with incremental models. It doesn't work with Hive tables with `ha` set to `true`. |
 | `partitioned_by` | None | An array list of columns by which the table will be partitioned. Currently limited to 100 partitions. |
-| `bucketed_by` | None | An array list of the columns to bucket data. Ignored if using Iceberg. |
+| `bucketed_by` | None | An array list of the columns to bucket data. Ignored if using Iceberg. For Iceberg, refer to [Iceberg bucketing](#iceberg-bucketing). |
 | `bucket_count` | None | The number of buckets for bucketing your data. This parameter is ignored if using Iceberg. |
 | `table_type` | Hive | The type of table. Supports `hive` or `iceberg`. |
 | `ha` | False | Build the table using the high-availability method. Only available for Hive tables. |
@@ -184,8 +184,73 @@ select 'A'          as user_id,
        current_date as my_date
 ```
 
-Iceberg supports bucketing as hidden partitions. Use the `partitioned_by` config to add specific bucketing
-conditions.
+#### Iceberg bucketing
+
+Iceberg supports bucketing as hidden partitioning. Use the `partitioned_by` config with the `bucket` function to hash a column into a fixed number of buckets. The `bucketed_by` and `bucket_count` configs are ignored for Iceberg tables.
+
+The argument order depends on the engine that runs your model:
+
+<SimpleTable>
+  
+| Model type | Engine | Syntax | Example |
+| --- | --- | --- | --- |
+| SQL | Athena SQL | `bucket(column, count)` | `bucket(user_id, 5)` |
+| Python | Spark | `bucket(count, column)` | `bucket(5, user_id)` |
+
+</SimpleTable>
+
+:::info  Argument order differs by engine
+Athena SQL puts the column first. Spark puts the bucket count first. Mixing them up causes the model to fail or bucket the wrong column.
+:::
+
+<Tabs>
+
+<TabItem value="sql" label="SQL model">
+
+This example hashes `user_id` into 5 buckets:
+
+```sql
+{{ config(
+    materialized='table',
+    table_type='iceberg',
+    format='parquet',
+    partitioned_by=['bucket(user_id, 5)']
+) }}
+
+select 'A' as user_id,
+       'pi' as name
+```
+
+You can combine bucketing with other partitions, for example `partitioned_by=['status', 'bucket(user_id, 5)']`.
+
+</TabItem>
+
+<TabItem value="python" label="Python model">
+
+This example hashes `user_id` into 5 buckets:
+
+```python
+def model(dbt, session):
+    dbt.config(
+        materialized='table',
+        table_type='iceberg',
+        format='parquet',
+        partitioned_by=['bucket(5, user_id)']
+    )
+
+    return session.createDataFrame([("A", "pi")], ["user_id", "name"])
+```
+
+You can combine bucketing with other partitions, for example `partitioned_by=['status', 'bucket(5, user_id)']`.
+</TabItem>
+
+</Tabs>
+
+
+
+#### Iceberg catalogs
+
+In `dbt-athena` 1.11.1 and later, you can define Iceberg catalogs in `catalogs.yml` and select one with `catalog_name` on a model. The default catalog type for Athena is `glue`. Refer to [Using catalogs.yml](/docs/build/iceberg/catalogs-yml) for the `catalogs.yml` format.
 
 Iceberg supports the `PARQUET`, `AVRO` and `ORC` table formats for data .
 
@@ -286,11 +351,69 @@ select * from (
 
 </Tabs>
 
+#### AWS S3 Tables
+
+In `dbt-athena` 1.11.1 and later, you can write Iceberg models to [Amazon S3 Tables](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-tables.html) by defining a catalog with `type: s3_tables` in `catalogs.yml` and setting `catalog_name` on the model. `table`, `incremental`, and `snapshot` materializations are supported.
+
+##### Prerequisites
+
+- `dbt-athena` 1.11.1 or later, and <Constant name="dbt" /> v1.12 or later with `use_catalogs_v2` enabled.
+- An [S3 table bucket](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-tables-buckets.html).
+- [AWS Glue integration](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-tables-integrating-aws.html) enabled for that bucket, so it appears as `s3tablescatalog/YOUR_TABLE_BUCKET`. Without it, the catalog won't resolve.
+- A namespace in the table bucket that matches the schema dbt uses for the model. dbt doesn't create S3 Tables namespaces for you.
+- An IAM role with S3 Tables read and write access, plus Glue permissions to create and delete tables in that catalog. Refer to [Required IAM permissions](https://docs.aws.amazon.com/glue/latest/dg/s3tables-catalog-prerequisites.html#s3tables-required-iam-permissions) for details.
+
+##### Configure the catalog
+
+1. Enable the `use_catalogs_v2` flag in your `dbt_project.yml`:
+
+    <File name='dbt_project.yml'>
+
+    ```yml
+    flags:
+      use_catalogs_v2: true
+    ```
+
+    </File>
+
+2. Define the catalog in [`catalogs.yml`](/docs/build/iceberg/catalogs-yml). Set `catalog_database` to the catalog name Athena uses for your table bucket (`s3tablescatalog/YOUR_TABLE_BUCKET`). The model's schema maps to the S3 Tables namespace:
+
+    <File name='catalogs.yml'>
+
+    ```yml
+    catalogs:
+      - name: my_s3_tables
+        type: s3_tables
+        table_format: iceberg
+        config:
+          athena:
+            catalog_database: s3tablescatalog/my-table-bucket
+    ```
+
+    </File>
+
+3. Configure your model to use the catalog:
+
+    ```sql
+    {{ config(
+        materialized='table',
+        catalog_name='my_s3_tables'
+    ) }}
+
+    select 1 as id
+    ```
+
+##### Considerations
+
+- Python models aren't supported for S3 Tables catalogs.
+- `external_location`, `s3_data_dir`, and `s3_data_naming` are ignored because S3 Tables manages the storage location.
+- Table replacement uses drop and recreate. S3 Tables doesn't support `ALTER TABLE RENAME`, so the Iceberg high-availability behavior described in [High availability (HA) table](#high-availability-ha-table) doesn't apply.
+
 ### High availability (HA) table
 
-The current implementation of table materialization can lead to downtime, as the target table is dropped and re-created. For less destructive behavior, you can use the `ha` config on your `table` materialized models. It leverages the table versions feature of the glue catalog, which creates a temporary table and swaps the target table to the location of the temporary table. This materialization is only available for `table_type=hive` and requires using unique locations. For Iceberg, high availability is the default.
+The current implementation of table materialization can lead to downtime, as the target table is dropped and re-created. For less destructive behavior, you can use the `ha` config on your `table` materialized models. It leverages the table versions feature of the glue catalog, which creates a temporary table and swaps the target table to the location of the temporary table. This materialization is only available for `table_type=hive` and requires using unique locations. For Iceberg, high availability is the default, except for [AWS S3 Tables](#aws-s3-tables) catalogs, which drop and recreate the table instead.
 
-By default, the materialization keeps the last 4 table versions,but you can change it by setting `versions_to_keep`.
+By default, the materialization keeps the last 4 table versions, but you can change it by setting `versions_to_keep`.
 
 ```sql
 {{ config(
