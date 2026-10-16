@@ -26,7 +26,7 @@ Before you set up dbt State, make sure you have:
 <Tabs queryString="user-type">
 <TabItem value="new-signup" label="New dbt platform sign-up">
 
-1. Install dbt State and log in to <Constant name="dbt_platform" />.
+1. Log in to <Constant name="dbt_platform" /> and start your dbt State trial.
 
 
    <Tabs queryString="cli-version">
@@ -151,9 +151,13 @@ Before you set up dbt State, make sure you have:
 
 2. Click **Enable dbt State**.
 
-3. Select the jobs to enable dbt State for. You can either enable:
+3. Select where to enable dbt State. You can either enable:
 
-   - **By environment**: Enables dbt State on the selected environment. New jobs automatically default to **Inherited from environment** and have dbt State enabled without additional configuration. Existing jobs are not automatically updated &mdash; you must [configure each job manually](/docs/deploy/dbt-state-enable-env-jobs#enabling-dbt-state-on-individual-jobs).
+   - **By environment**: Enables dbt State on the selected deployment or development environment. 
+   
+      - For deployment environments, new jobs automatically default to **Inherited from environment** and have dbt State enabled without additional configuration. Existing jobs are not automatically updated &mdash; you must [configure each job manually](/docs/deploy/dbt-state-enable-env-jobs#enabling-dbt-state-on-individual-jobs). 
+      - For development environments, this [enables dbt State in the <Constant name="studio_ide" />](/docs/deploy/dbt-state-enable-studio).
+      
       <!-- TODO (ORC-4324): When this ships, replace with:
       - **By environment**: Enables dbt State on the selected environment. New jobs automatically default to **Inherited from environment** and have dbt State enabled without additional configuration. Existing jobs with **dbt State** set to **Off** automatically switch to **Inherited from environment**, enabling dbt State for those jobs.
       -->
@@ -173,7 +177,7 @@ Before you set up dbt State, make sure you have:
 After a run completes, confirm that dbt State is active:
 
 - **From the CLI:** Check the log output for a message like `dbt State adapter: dbt-state v2.10.1 is enabled`.
-- **From <Constant name="dbt_platform" />:** Check the [logs view of built resources](/docs/deploy/dbt-state-interface#logs-view-of-built-nodes) to see which were built or reused, or open the [**Explain** tab](/docs/deploy/dbt-state-interface#explain-tab) on the job run details page to see the State decision for each resource.
+- **From <Constant name="dbt_platform" />:** Check the [logs view of built resources](/docs/deploy/dbt-state-interface#logs-view-of-built-nodes) to see if they were built or reused, or open the [**Explain** tab](/docs/deploy/dbt-state-interface#explain-tab) on the job run details page to see the State decision for each resource.
 
 If dbt State isn't behaving as expected, see [Debugging dbt State](#debugging-dbt-state).
 
