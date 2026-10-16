@@ -47,7 +47,7 @@ dbt Copilot supports a smaller set of providers. Refer to [dbt Copilot](/docs/db
 
 <WizardConfigureAiProvider />
 
-To bring your own key instead of using dbt Labs' managed infrastructure, refer to [Configure BYOK for dbt Wizard in dbt platform](/docs/platform/wizard-byok-platform).
+To bring your own key instead of using dbt Labs' managed infrastructure, refer to [Configure BYOK for dbt Wizard in dbt platform](/docs/platform/wizard-byok-platform). BYOK is available on Starter, Enterprise, and Enterprise+ plans.
 
 ## Manage spend
 
