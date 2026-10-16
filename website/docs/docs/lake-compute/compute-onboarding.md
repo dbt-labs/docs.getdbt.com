@@ -232,6 +232,7 @@ Extended Attributes aren't a safe place for secrets, so never paste the token it
 
 Then within your environment variables, set:
 - `DBT_ALLOW_EXPERIMENTAL_ADAPTERS`: `true`
+- `DBT_ENGINE_EXPERIMENTAL_MULTI_ADAPTER`: `true`
 - `DBT_ENV_SECRET_LAKE_COMPUTE_TOKEN`: the token you generated in step 3
 
 This differs from running locally, where you set both `DBT_ENGINE_EXPERIMENTAL_MULTI_ADAPTER` and `DBT_ALLOW_EXPERIMENTAL_ADAPTERS`. Refer to [Required environment variable](/docs/lake-compute#required-environment-variable).
