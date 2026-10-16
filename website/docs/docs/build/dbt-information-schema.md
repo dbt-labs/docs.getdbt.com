@@ -18,7 +18,7 @@ The Information Schema doesn't use warehouse compute to build or to query it. db
 When you use the [`--generate-info-schema`](#generating-the-information-schema) flag, dbt writes these files to a versioned directory, such as `target/info_schema/v1/`. The available metadata grows as dbt processes your project:
 
 - Parsing provides basic project metadata
-- Compiling adds column types and column-level lineage (with `--static-analysis strict`)
+- Compiling adds model column types and column-level lineage (with `--static-analysis strict`)
 - Running or building adds runtime results
 
 Use `dbt show --inline` to run SQL queries or `dbt show --info` to query a view by name. You can also read the files with Parquet-compatible tools such as Pandas or Polars.
@@ -29,12 +29,12 @@ For available tables and their descriptions, see [Information Schema tables](/re
 
 Use `--generate-info-schema` flag with `dbt build`, `dbt run`, `dbt compile`, or `dbt parse`.
 
-- With `dbt build`, `dbt run`, or `dbt compile`, add `--static-analysis strict` to include column types in `dbt.node_columns` and column-level lineage in `dbt.column_lineage`:
+- With `dbt build`, `dbt run`, or `dbt compile`, add `--static-analysis strict` to include model column types in `dbt.node_columns` and column-level lineage in `dbt.column_lineage`:
 
   ```shell
   dbt build --generate-info-schema --static-analysis strict
   ```
-  Without this flag, `dbt.node_columns` and `dbt.column_lineage` contain no column types and no lineage.
+  dbt infers column types from your SQL for model columns only; warehouse types are not fetched with `--generate-info-schema`. For sources, dbt includes only columns declared in YAML, and their `data_type_inferred` reflects the YAML-declared type, not a SQL-inferred type. dbt omits sources without `columns:` entries from `dbt.node_columns` entirely.
 
 - For [`dbt parse`](/reference/commands/parse), the Information Schema contains no column types, no lineage, and no runtime results, because `dbt parse` doesn't connect to your warehouse.
 
