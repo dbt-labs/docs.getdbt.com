@@ -15,9 +15,9 @@ Navigate to the settings page of an environment, then click **Edit**. Click the 
 
 <Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/choosing-dbt-version/example-environment-settings.png" width="90%" title="Example environment settings in dbt"/>
 
-### Release Tracks
+### Release tracks
 
-Release tracks determine the version of dbt and release cadence for your projects. dbt supports two major versions &mdash; v1 and v2 &mdash; and automatically delivers [minor version updates](/docs/dbt-versions/dbt-upgrade) for you. For more information, refer to [About release tracks](/docs/dbt-versions/dbt-release-tracks)
+Release tracks determine the version of dbt and release cadence for your projects. dbt supports two major versions &mdash; v1 and v2 &mdash; and automatically delivers [minor version updates](/docs/dbt-versions/dbt-upgrade) for you. For more information, refer to [About release tracks](/docs/dbt-versions/dbt-release-tracks).
 
 As a best practice, dbt Labs recommends that you test the upgrade in development first; use the [Override dbt version](#override-dbt-version) setting to test _your_ project on the latest dbt version before upgrading your deployment environments and the default development environment for all your colleagues.
 

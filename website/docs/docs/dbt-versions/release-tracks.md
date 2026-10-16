@@ -41,7 +41,7 @@ _`v2 Stable` is the default for all new <Constant name="fusion" />-powered proje
 
 The API calls for release tracks use differnt names than what's available in the UI. They use legacy naming that's been retired. We plan on updating these in the near future by providing aliases to the new names. We'll alert customers when these become availabl and update this page.
 
-Anything prefixed with `fusion` aligns with v2 and those without prefixes are for v1. 
+Names prefixed with `fusion` are for v2. Names without that prefix are for v1.
 
 :::
 
@@ -135,7 +135,7 @@ Switching to **v2 Fallback** alerts the dbt Support team, who may reach out to h
 
 ### How to upgrade {#upgrade-tips}
 
-If you're running a deprecated version of dbt, we recommend that you upgrade or delete your project. For more information about the right path for you, refer to [Migrate off legacy dbt versions](/guides/migrate-off-legacy-dbt-versions)
+If you're running a deprecated version of dbt, we recommend that you upgrade or delete your project. For more information about the right path for you, refer to [Migrate off legacy dbt versions](/guides/migrate-off-legacy-dbt-versions).
 
 We recommend you start upgrading projects that are smaller, newer, or more familiar for your team first. They'll be faster and easier to troubleshoot and enable you to more efficiently migrate complex projects.
 
