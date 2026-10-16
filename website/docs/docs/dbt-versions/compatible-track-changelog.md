@@ -13,6 +13,86 @@ Each monthly **v1 Compatible** release includes functionality matching up-to-dat
 
 For more information, see [release tracks](/docs/dbt-versions/dbt-release-tracks).
 
+## October 2026
+
+Release date: October 15, 2026
+
+### dbt platform
+
+### Breaking Changes
+
+- Flip the default of legacy behavior-change flags to true: require_batched_execution_for_custom_microbatch_strategy, skip_nodes_if_on_run_start_fails, state_modified_compare_more_unrendered_values, require_yaml_configuration_for_mf_time_spines, require_nested_cumulative_type_params, validate_macro_args, require_all_warnings_handled_by_warn_error. Ports dbt-core#15489 into mantle now that the customer-communication deadline has passed.
+
+### Features
+
+- Add OpenTelemetry span instrumentation for node and hook execution, gated behind the --snowflake-projects-otel flag (off by default)
+- Private packages (`packages.private` in `packages.yml`) can now be resolved via the dbt platform's private-packages resolve endpoint, authenticated with an orchestration-injected HMAC token (`DBT_CLOUD_PRIVATE_PACKAGES_AUTH_TOKEN`, `DBT_CLOUD_ACCOUNT_ID`, `DBT_CLOUD_ACCOUNT_HOST`, `DBT_CLOUD_PROJECT_ID`). This is checked after the existing `DBT_ENV_PRIVATE_GIT_PROVIDER_INFO` legacy resolution (unchanged, still takes precedence when configured). A private package discovered after the initial resolve (e.g. a transitive private dependency) is resolved lazily via the same endpoint rather than falling back to SSH, since SSH credentials are never available under dbt platform orchestration. A failure to resolve any requested package raises immediately rather than falling back silently.
+- Accept Mesh environment routing metadata in cross-project dependencies
+- Warn users if they are using a deprecated dbt version
+- Add otel_trace_id() and otel_span_id() Jinja functions to correlate query comments and model SQL with OpenTelemetry trace/span ids
+
+### Fixes
+
+- Recognize Databricks adapter config keys (`query_tags`, `zorder`, `options`, `unique_tmp_table_suffix`, `skip_optimize`) in jsonschema validation so they no longer raise spurious `CustomKeyInConfigDeprecation` warnings (dbt-databricks#1540, dbt-databricks#1302)
+- Fix `dbt build` node count ("X of Y") being inflated when unit tests are selected, by adding the unit test count to num_nodes exactly once instead of on every dequeue while run_count is still 0
+- Stop resolving a unit test's tested model eagerly at parse time; resolve it only in the single deterministic post-parse pass so resolution no longer depends on filesystem parse order at all (deeper fix for
+- Fix OpenTelemetry hook spans: name them by hook and transaction phase, skip calls that run no hooks, and add node context and status.
+- Send the `x-ms-blob-type: BlockBlob` header and accept `201 Created` when uploading artifacts to an Azure Blob Storage signed URL, so artifact ingestion no longer fails with `400 MissingRequiredHeader` on Azure-hosted regions. Upload errors now include the storage provider's error code alongside the status code.
+- Resolve a function's `unrendered_config` from the `functions:` project config block instead of falling through to `models:`, so model-level defaults no longer appear in function configs and make functions compare as modified under `state:modified`
+- Backport v2-parser/fusion-parser fixes from main: default --v2-parser to the bundled fusion binary instead of dbt-core-experimental-parser (ports main's 1aa0e8020), re-parse adapter macros from the installed adapter package after loading a Fusion-generated manifest (ports dbt-core#15529), and rediscover the built-in generic test macros so they aren't left undefined at test-compile time (ports dbt-core#15925).
+- Capture and re-emit fusion parser subprocess output through dbt-core's event system instead of letting it pass through to raw stdout/stderr, re-leveling each line by its json-compat severity when available
+- Validate that a resolved package installation path stays within the configured packages-install-path
+- Fix `Dimension` to satisfy the `metricflow-semantic-interfaces` protocol and bump the `metricflow` floor to 0.213.0
+
+### Dependencies
+
+- Bump dbt-core-experimental-parser to 2.0.0b1 lowerbound
+- Require `sqlparse>=0.5.5,<0.7.0`, `sqlparse` 0.6.0 is the fixed release for CVE-2026-54284, CVE-2026-59893, CVE-2026-59894 and CVE-2026-71491 (parser denial-of-service).
+
+This compatible release includes functionality from the following versions of <Constant name="core" /> OSS:
+
+```
+dbt-core==1.12.5
+
+# shared interfaces
+dbt-adapters==1.24.5
+dbt-common==1.38.0
+dbt-extractor==0.6.0
+dbt-semantic-interfaces==0.9.0
+dbt-sl-sdk[sync]==0.13.4
+dbt-state==2.61.0
+
+# adapters
+dbt-athena==1.11.1
+dbt-bigquery==1.12.1
+dbt-databricks==1.12.7
+dbt-fabric==1.9.4
+dbt-postgres==1.11.0
+dbt-redshift==1.11.1
+dbt-snowflake==1.12.3
+dbt-spark==1.10.3
+dbt-synapse==1.8.5
+dbt-teradata==1.11.0
+dbt-trino==1.10.6
+```
+
+Changelogs:
+- [dbt-core 1.12.5](https://github.com/dbt-labs/dbt/blob/1.12.latest/CHANGELOG.md)
+- [dbt-adapters 1.24.5](https://github.com/dbt-labs/dbt-adapters/blob/main/dbt-adapters/CHANGELOG.md)
+- [dbt-common 1.38.0](https://github.com/dbt-labs/dbt-common/blob/main/CHANGELOG.md)
+- [dbt-state 2.61.0](https://github.com/dbt-labs/dbt-state)
+- [dbt-athena 1.11.1](https://github.com/dbt-labs/dbt-adapters/blob/stable/dbt-athena/CHANGELOG.md)
+- [dbt-bigquery 1.12.1](https://github.com/dbt-labs/dbt-adapters/blob/stable/dbt-bigquery/CHANGELOG.md)
+- [dbt-databricks 1.12.7](https://github.com/databricks/dbt-databricks/blob/main/CHANGELOG.md)
+- [dbt-fabric 1.9.4](https://github.com/microsoft/dbt-fabric/releases/tag/v1.9.4)
+- [dbt-postgres 1.11.0](https://github.com/dbt-labs/dbt-adapters/blob/stable/dbt-postgres/CHANGELOG.md)
+- [dbt-redshift 1.11.1](https://github.com/dbt-labs/dbt-adapters/blob/stable/dbt-redshift/CHANGELOG.md)
+- [dbt-snowflake 1.12.3](https://github.com/dbt-labs/dbt-adapters/blob/stable/dbt-snowflake/CHANGELOG.md)
+- [dbt-spark 1.10.3](https://github.com/dbt-labs/dbt-adapters/blob/stable/dbt-spark/CHANGELOG.md)
+- [dbt-synapse 1.8.5](https://github.com/microsoft/dbt-synapse/blob/v1.8.latest/CHANGELOG.md)
+- [dbt-teradata 1.11.0](https://github.com/Teradata/dbt-teradata/releases/tag/v1.11.0)
+- [dbt-trino 1.10.6](https://github.com/starburstdata/dbt-trino/blob/master/CHANGELOG.md)
+
 ## August 2026
 
 Release date: August 18, 2026
