@@ -92,7 +92,7 @@ Token-based authentication lets you connect to the remote MCP server without OAu
 
 Currently, token-based access is all-or-nothing: a token that passes the permission check gets every tool. If you want individual tools filtered to a narrower set of permissions, use [OAuth](#oauth-remote-mcp) instead. This also differs from the [self-hosted server](/docs/dbt-ai/setup-local-mcp), which authorizes each toolset independently as tools are called.
 
-:::note Service tokens need Developer access, which is available only on Enterprise plans
+:::note Required permission set
 Token-based connections currently require the `Developer` permission set, which can only be assigned to a service token on Enterprise and Enterprise+ plans. Starter and legacy Team plans don't support it and must use [OAuth](#oauth-remote-mcp) instead. For the permission sets available on each plan, refer to [Service tokens](/docs/dbt-apis/service-tokens#permissions-for-service-account-tokens).
 :::
 
