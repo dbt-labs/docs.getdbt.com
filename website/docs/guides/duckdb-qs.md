@@ -30,6 +30,8 @@ This guide will demonstrate how to:
 - Run any dbt command from the environment’s terminal. 
 - Generate a larger dataset for the Jaffle Shop café (for example, five years of data instead of just one).
 
+<AgentPrompt />
+
 You can learn more through high-quality [dbt Learn courses and workshops](https://learn.getdbt.com). 
 
 

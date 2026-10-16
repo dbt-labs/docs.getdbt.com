@@ -29,6 +29,8 @@ This quickstart guide will get you from zero to running your first dbt project w
 - The dbt VS Code extension installed and connected  
 - The ability to preview, compile, and run dbt commands directly from your IDE 
 
+<AgentPrompt />
+
 ### About <Constant name="fusion_engine" /> {#about-dbt-v2}
 
 <Constant name="fusion" /> and the features it provides are available in multiple environments:

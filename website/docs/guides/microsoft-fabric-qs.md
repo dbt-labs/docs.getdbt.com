@@ -25,6 +25,8 @@ In this quickstart guide, you'll learn how to use <Constant name="dbt" /> with [
 - Document your models.
 - Schedule a job to run.
 
+<AgentPrompt />
+
 ### Prerequisites
 - You have a [<Constant name="dbt" />](https://www.getdbt.com/signup/) account.
 - You have started the Microsoft Fabric (Preview) trial. For details, refer to [Microsoft Fabric (Preview) trial](https://learn.microsoft.com/en-us/fabric/get-started/fabric-trial) in the Microsoft docs.

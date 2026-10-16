@@ -38,13 +38,6 @@ Snowflake also provides a quickstart for you to learn how to use <Constant name=
 - You have a [<Constant name="dbt" /> account](https://www.getdbt.com/signup/). 
 - You have a [trial Snowflake account](https://signup.snowflake.com/). During trial account creation, make sure to choose the **Enterprise** Snowflake edition so you have `ACCOUNTADMIN` access. For a full implementation, you should consider organizational questions when choosing a cloud provider. For more information, see [Introduction to Cloud Platforms](https://docs.snowflake.com/en/user-guide/intro-cloud-platforms.html) in the Snowflake docs. For the purposes of this setup, all cloud providers and regions will work so choose whichever you’d like.
 
-
-:::tip Videos for you
-You can check out [dbt Fundamentals](https://learn.getdbt.com/courses/dbt-fundamentals) for free if you're interested in course learning with videos.
-
-You can also watch the [YouTube video on dbt and Snowflake](https://www.youtube.com/watch?v=kbCkwhySV_I&list=PL0QYlrC86xQm7CoOH6RS7hcgLnd3OQioG).
-:::
-
 ### Related content
 
 - Learn more with [dbt Learn courses](https://learn.getdbt.com)
@@ -53,6 +46,12 @@ You can also watch the [YouTube video on dbt and Snowflake](https://www.youtube.
 - [Deploy jobs](/docs/deploy/deploy-jobs)
 - [Job notifications](/docs/deploy/job-notifications)
 - [Source freshness](/docs/deploy/source-freshness)
+
+:::tip Videos for you
+You can check out [dbt Fundamentals](https://learn.getdbt.com/courses/dbt-fundamentals) for free if you're interested in course learning with videos.
+
+You can also watch the [YouTube video on dbt and Snowflake](https://www.youtube.com/watch?v=kbCkwhySV_I&list=PL0QYlrC86xQm7CoOH6RS7hcgLnd3OQioG).
+:::
 
 ## Create a new Snowflake SQL file
 

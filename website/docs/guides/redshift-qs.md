@@ -28,9 +28,7 @@ In this quickstart guide, you'll learn how to use <Constant name="dbt" /> with R
 - Document your models.
 - Schedule a job to run.
 
-:::tip Videos for you
-Check out [dbt Fundamentals](https://learn.getdbt.com/courses/dbt-fundamentals) for free if you're interested in course learning with videos.
-:::
+<AgentPrompt />
 
 ### Prerequisites 
 
@@ -44,6 +42,10 @@ Check out [dbt Fundamentals](https://learn.getdbt.com/courses/dbt-fundamentals) 
 - [Deploy jobs](/docs/deploy/deploy-jobs)
 - [Job notifications](/docs/deploy/job-notifications)
 - [Source freshness](/docs/deploy/source-freshness)
+
+:::tip Videos for you
+Check out [dbt Fundamentals](https://learn.getdbt.com/courses/dbt-fundamentals) for free if you're interested in course learning with videos.
+:::
 
 
 ## Create a Redshift cluster
