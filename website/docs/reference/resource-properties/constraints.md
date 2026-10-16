@@ -388,6 +388,28 @@ models:
 
 </File>
 
+### Expected DDL to enforce constraints:
+
+<File name='target/run/.../constraints_example.sql'>
+
+```sql
+create or replace table `<project>`.`<dataset>`.`constraints_example`        
+(
+    id integer not null,
+    customer_name string,
+    first_transaction_date date  
+)
+as
+(
+select 
+  1 as id, 
+  'My Favorite Customer' as customer_name, 
+  cast('2019-01-01' as date) as first_transaction_date
+);
+```
+
+</File>
+
 ### Column-level constraint on nested column:
 
 <File name='models/nested_column_constraints_example.sql'>
@@ -437,28 +459,6 @@ models:
         data_type: integer
         constraints: 
           - type: not_null
-```
-
-</File>
-
-### Expected DDL to enforce constraints:
-
-<File name='target/run/.../constraints_example.sql'>
-
-```sql
-create or replace table `<project>`.`<dataset>`.`constraints_example`        
-(
-    id integer not null,
-    customer_name string,
-    first_transaction_date date  
-)
-as
-(
-select 
-  1 as id, 
-  'My Favorite Customer' as customer_name, 
-  cast('2019-01-01' as date) as first_transaction_date
-);
 ```
 
 </File>
