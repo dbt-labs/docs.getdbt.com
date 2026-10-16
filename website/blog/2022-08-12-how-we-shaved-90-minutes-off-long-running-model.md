@@ -153,7 +153,7 @@ with model_execution as (
 
     {% elif is_incremental() %}
 
-        --incremental runs re-process a full day everytime to get an accurate mode below
+        --incremental runs re-process a full day every time to get an accurate mode below
         and collector_tstamp > (select max(max_collector_tstamp)::date from {{ this }})
 
     {% endif %}

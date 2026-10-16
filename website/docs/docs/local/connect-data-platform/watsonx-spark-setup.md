@@ -92,7 +92,7 @@ The following profile fields are required to configure watsonx.data Spark connec
 
 ### Schemas and catalogs
 
-When selecting the catalog, ensure the user has read and write access. This selection does not limit your ability to query into the schema spcified/created but also serves as the default location for materialized `tables`, `views`, and `incremental`.
+When selecting the catalog, ensure the user has read and write access. This selection does not limit your ability to query into the schema specified/created but also serves as the default location for materialized `tables`, `views`, and `incremental`.
 
 ### SSL verification
 

@@ -123,7 +123,7 @@ The problem is that you will only see the model names (which become the nodes in
 
 #### Within Pull Requests
 
-While reviewing code from someone else who is is contributing, you will see only the files that have been changed in the project’s repository.
+While reviewing code from someone else who is contributing, you will see only the files that have been changed in the project’s repository.
 
 ![A screenshot of the file names that have been listed in the "Files Changed" section of a GitHub Pull Request](/img/blog/2022-05-17-stakeholder-friendly-model-names/PR-view.png)
 

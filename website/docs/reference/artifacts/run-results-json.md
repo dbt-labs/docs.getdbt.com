@@ -21,7 +21,7 @@ sidebar_label: "Run results"
 
 This file contains information about a completed invocation of dbt, including timing and status info for each node (model, test, etc) that was executed. In aggregate, many `run_results.json` can be combined to calculate average model runtime, test failure rates, the number of record changes captured by snapshots, etc.
 
-Note that only executed nodes appear in the run results. If you have multiple run or test steps with different critiera, each will produce different run results.
+Note that only executed nodes appear in the run results. If you have multiple run or test steps with different criteria, each will produce different run results.
 
 <VersionBlock lastVersion="1.99">
 

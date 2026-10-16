@@ -90,7 +90,7 @@ Marts layer testing will follow the same hygiene-or-anomaly pattern as staging a
 - Unit tests: validate especially complex transformation logic. For example:
     - Calculating dates in a way that feeds into forecasting.
     - Customer segmentation logic, especially logic that has a lot of CASE-WHEN statements.
-- Primary key tests: focus on where where your mart's granularity has changed from its staging/intermediate inputs.
+- Primary key tests: focus on where your mart's granularity has changed from its staging/intermediate inputs.
     - Similar to the intermediate models above, you may also want to add primary key tests to models whose grain hasn’t changed, but have been enriched with other data. Primary key tests here communicate your intent.
 - Business focused anomaly tests: focus on *new* calculated fields, such as:
     - Singular tests on high-priority, high-impact tables where you have a specific problem you want forewarning about.

@@ -12,7 +12,7 @@ When materializing a model as `table`, you may include several optional configs 
 |---------|----------------------------------------------------|-------------------------|--------------------------|
 | partition_by | partition by a column, typically a directory per partition is created | No | partition_by=['name'] |
 | sort_by | sort by a column  | No | sort_by=['age'] |
-| row_format | format to be used when storing individual arows | No | row_format='delimited' |
+| row_format | format to be used when storing individual rows | No | row_format='delimited' |
 | stored_as | underlying storage format of the table | No | stored_as='PARQUET' |
 | location | storage location, typically an hdfs path | No | LOCATION='/user/etl/destination' |
 | comment | comment for the table | No | comment='this is the cleanest model' |
@@ -34,7 +34,7 @@ Supported modes for incremental model:
 
 
 Unsupported modes:
- - **`unique_key`** This is not suppored option for incremental models in dbt-impala
+ - **`unique_key`** This is not supported option for incremental models in dbt-impala
  - **`merge`**: Merge is not supported by the underlying warehouse, and hence not supported by dbt-impala
 
 ## Example: Using partition_by config option

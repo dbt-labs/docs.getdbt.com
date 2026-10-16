@@ -51,7 +51,7 @@ Choose the next steps based on your preferred enrollment selection:
 
 <Lightbox src="/img/docs/dbt-platform/scan-qr.png" title="Example of the user generated QR code." />
 
-3. Enter the code provide for "dbt Labs: YOUR_EMAIL_ADDRESS" from your authenticator app into the the field in <Constant name="dbt" />.
+3. Enter the code provided for "dbt Labs: YOUR_EMAIL_ADDRESS" from your authenticator app into the field in <Constant name="dbt" />.
 
 </Expandable>
 

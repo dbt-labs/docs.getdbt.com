@@ -27,7 +27,7 @@ For most people: <Constant name="fusion" />. It has more [capabilities](/docs/db
 
 We recommend everyone to just [install dbt](/docs/local/install-dbt) and get <Constant name="fusion" /> by default.
 
-Typically you'd choose the open source installtion directly only if you're in one of two specific situations: 
+Typically you'd choose the open source installation directly only if you're in one of two specific situations: 
 1. Your organization's license policy requires a strict open-source distribution
 2. You're building something custom on top of the OSS code itself. 
 

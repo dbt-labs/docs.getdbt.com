@@ -13,7 +13,7 @@ date: 2026-02-05
 is_featured: true
 ---
 
-Community-driven creation and curation of best practices is perhaps _the_ driving factor behind dbt and analytics engineering’s rise - transferrable workflows and processes enable everyone to create and disseminate organizational knowledge. In the early days, ~dbt Labs’~ Fishtown Analytics’ [dbt_style_guide.md](https://github.com/dbt-labs/corp/blob/773079cc140e8636403771e0c9f56ab9be528597/dbt_style_guide.md) contained foundational guidelines for anyone adopting the dbt viewpoint for the first time.
+Community-driven creation and curation of best practices is perhaps _the_ driving factor behind dbt and analytics engineering’s rise - transferable workflows and processes enable everyone to create and disseminate organizational knowledge. In the early days, ~dbt Labs’~ Fishtown Analytics’ [dbt_style_guide.md](https://github.com/dbt-labs/corp/blob/773079cc140e8636403771e0c9f56ab9be528597/dbt_style_guide.md) contained foundational guidelines for anyone adopting the dbt viewpoint for the first time.
 
 Today we released a collection of [dbt agent skills](https://github.com/dbt-labs/dbt-agent-skills) so that <Term id="agents">AI agents</Term> (like Claude Code, OpenAI's Codex, Cursor, Factory or Kilo Code) can follow the same dbt best practices you would expect of any collaborator in your codebase. This matters because by extending their baseline capabilities, **skills can transform generalist coding agents into highly capable data agents**.
 

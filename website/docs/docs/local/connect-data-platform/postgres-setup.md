@@ -51,7 +51,7 @@ company-name:
       [search_path](#search_path): [optional, override the default postgres search_path]
       [role](#role): [optional, set the role dbt assumes when executing queries]
       [sslmode](#sslmode): [optional, set the sslmode used to connect to the database]
-      [sslcert](#sslcert): [optional, set the sslcert to control the certifcate file location]
+      [sslcert](#sslcert): [optional, set the sslcert to control the certificate file location]
       [sslkey](#sslkey): [optional, set the sslkey to control the location of the private key]
       [sslrootcert](#sslrootcert): [optional, set the sslrootcert config value to a new file path in order to customize the file location that contain root certificates]
   

@@ -759,7 +759,7 @@ Release notes are grouped by date for single-tenant environments.
 
 ### APIs, Identity, and Administration
 
-- **Notification Manager permission set**: A new `notification_manager` account-level role grants read and write access to job notification settings, Slack integration status, and member listings without requiring broader admin permissions. Refer to [Notification Manger](/docs/platform/manage-access/enterprise-permissions#notification-manager) for more information.
+- **Notification Manager permission set**: A new `notification_manager` account-level role grants read and write access to job notification settings, Slack integration status, and member listings without requiring broader admin permissions. Refer to [Notification Manager](/docs/platform/manage-access/enterprise-permissions#notification-manager) for more information.
 
 ## Enhancements
 

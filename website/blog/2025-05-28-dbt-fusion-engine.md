@@ -100,7 +100,7 @@ But the real benefit of Fusion is not just going to be in the CLI itself — it�
 There’s a whole host of features in the VS Code extension. Some early favorites:
 
 - **Write code with confidence — live error detection and function autocomplete.**
-  - How many time have you hit `dbt run` only to realize that you typed `select * frmo`, misspelled a column name or tried to sum the unsummable? No more! With the LSP-powered VS Code extension, you can immediately see when pesky errors sneak into your code.
+  - How many time have you hit `dbt run` only to realize that you typed `select * from`, misspelled a column name or tried to sum the unsummable? No more! With the LSP-powered VS Code extension, you can immediately see when pesky errors sneak into your code.
 
     <Lightbox src="/img/blog/2025-05-28-dbt-v2-engine/you-wouldnt-sum-a-datetime.png" title="You wouldn't sum a datetime." />
 

@@ -55,7 +55,7 @@ Private selections mean your inputs are only visible to you. Note that anyone ad
 <!-- this comment explains the following:
 1. uses the /snippets/_sl-excel-gsheets.md snippet file to render gsheets and excel content since they're similar
 2. removes the below content (tip and using saved queries header) so it's not duplicative. removing the below content fully a month or so after the launch.
-3. keep tje limited policy section in gsheets only and do not add to the /snippets/_sl-excel-gsheets.md snippet file.
+3. keep the limited policy section in gsheets only and do not add to the /snippets/_sl-excel-gsheets.md snippet file.
 
 ## Using saved selections
 

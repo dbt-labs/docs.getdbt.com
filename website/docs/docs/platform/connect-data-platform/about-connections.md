@@ -132,7 +132,7 @@ Please consider the following actions, as the steps you take will depend on the 
 
 - Normalization
   - Understand how new connections should be created to avoid local overrides. If you currently use extended attributes to override the warehouse instance in your production environment - you should instead create a new connection for that instance, and wire your production environment to it, removing the need for the local overrides
-  - Create new connections, update relevant environments to target these connections, removing now unecessary local overrides (which may not be all of them!)
+  - Create new connections, update relevant environments to target these connections, removing now unnecessary local overrides (which may not be all of them!)
   - Test the new wiring by triggering jobs or starting <Constant name="studio_ide" /> sessions
 
 <Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/connections-post-rollout-5.png" width="60%" title="Connections normalized"/>

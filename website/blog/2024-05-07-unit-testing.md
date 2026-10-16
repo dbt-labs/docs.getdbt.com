@@ -36,9 +36,9 @@ I no longer had to worry about whether or not my primary key was actually unique
 
 `dbt test` quickly became a beloved command, allowing me to run our full suite of data quality tests in production each day. And these same tests would run in CI and development.
 
-But while this mechanism is tremendously useful at a holistic level, it doesn't lend itself as well at the granular level. It was not designed to handle minimal test cases for a model with with fixed inputs and the expected output from those inputs. Nor was it designed to handle isolated test cases that can run simultaneously for the same model.
+But while this mechanism is tremendously useful at a holistic level, it doesn't lend itself as well at the granular level. It was not designed to handle minimal test cases for a model with fixed inputs and the expected output from those inputs. Nor was it designed to handle isolated test cases that can run simultaneously for the same model.
 
-So it doesn't meet the standard software engineering use-case of setting up and running individual test cases and other [desireable properties](https://tidyfirst.substack.com/p/desirable-unit-tests).
+So it doesn't meet the standard software engineering use-case of setting up and running individual test cases and other [desirable properties](https://tidyfirst.substack.com/p/desirable-unit-tests).
 
 ## Introducing unit testing in dbt
 
@@ -220,7 +220,7 @@ See the docs for [helpful information before you begin](https://docs.getdbt.com/
 
 Another advanced topic is overcoming issues when non-deterministic factors are involved, such as a current timestamp. To ensure that the output remains consistent regardless of when the test is run, you can set a fixed, predetermined value by using the [`overrides`](https://docs.getdbt.com/reference/resource-properties/unit-test-overrides) configuration.
 
-Before we wrap up, let's do a brief comparison of the different data quality capabilties in dbt and identify the situations where each would be most effective.
+Before we wrap up, let's do a brief comparison of the different data quality capabilities in dbt and identify the situations where each would be most effective.
 
 ## Unit tests vs. model contracts vs. data tests
 
