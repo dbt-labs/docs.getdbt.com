@@ -24,7 +24,7 @@ To understand the differences between v1 and v2 refer to [dbt licensing](/docs/d
 The open-source v2 foundation is licensed under Apache 2.0. Most users don't need this page &mdash; [install dbt normally](/docs/local/install-dbt) with the standard instructions. This page is for organizations that require the Apache 2.0 codebase specifically.
 
 :::info Use an isolated environment
-Use `uv tool` to install `dbt-oss` in its own isolated environment. Avoid installing it alongside `dbt` or `dbt-core`, which shares the same `dbt` entry point. If you already have `dbt` installed, refer to [Run dbt-oss alongside other dbt installs](#run-dbt-oss-alongside-other-dbt-installs).
+Use `uv tool` to install `dbt-oss` in its own isolated environment. Avoid installing `dbt-oss` in the same environment as `dbt` or `dbt-core` because they all use the same `dbt` entry point. If you already have `dbt` installed, refer to [Run dbt-oss alongside other dbt installs](#run-dbt-oss-alongside-other-dbt-installs).
 :::
 
 ## Install
@@ -47,13 +47,22 @@ For adapter install details, refer to the [`dbt` repository](https://github.com/
 
 ## Run `dbt-oss` alongside other dbt installs
 
-If you have `dbt` installed and want to run `dbt-oss` alongside it, use `uvx` with a shell alias to avoid conflicts. For example:
+If you have `dbt` installed and want to run `dbt-oss` alongside it, use `uvx` with a shell alias to avoid conflicts. Running `uv tool install dbt-oss` fails if `dbt` is already installed in `~/.local/bin`. Use `uvx` instead, which runs `dbt-oss` in an isolated environment without modifying your PATH.
+
+Add the following to your shell profile. This example uses `dbto`, but you can choose a different name:
 
 ```shell
+# ~/.zshrc or ~/.bashrc
 alias dbto='uvx --from dbt-oss dbt'
 ```
 
-You can then use `dbto <command>` instead of `dbt <command>` for dbt OSS invocations.
+Reload your shell profile:
+
+```shell
+source ~/.zshrc   # or source ~/.bashrc
+```
+
+You can then use `dbto <command>` (or your chosen alias) instead of `dbt <command>` for dbt OSS invocations.
 
 ## What's included
 
