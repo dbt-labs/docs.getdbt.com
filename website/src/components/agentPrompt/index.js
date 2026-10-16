@@ -39,7 +39,11 @@ function star(cx, cy, r) {
   ].join("");
 }
 
-const SPARKLES_PATH = [star(9, 13, 7.5), star(19, 6, 4), star(18, 18.5, 3.5)].join("");
+const STARS = [
+  { d: star(9, 13, 7.5), className: styles.starLarge },
+  { d: star(19, 6, 4), className: styles.starTop },
+  { d: star(18, 18.5, 3.5), className: styles.starBottom },
+];
 
 function SparklesIcon({ className }) {
   return (
@@ -53,7 +57,9 @@ function SparklesIcon({ className }) {
       strokeWidth="1.2"
       strokeLinejoin="round"
     >
-      <path d={SPARKLES_PATH} />
+      {STARS.map(({ d, className: starClass }) => (
+        <path key={d} d={d} className={`${styles.star} ${starClass}`} />
+      ))}
     </svg>
   );
 }
