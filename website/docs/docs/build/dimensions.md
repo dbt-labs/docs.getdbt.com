@@ -98,7 +98,7 @@ Refer to the following example to see how dimensions are used in a semantic mode
 semantic_models:
   - name: transactions
     description: A record for every transaction that takes place. Carts are considered multiple transactions for each SKU. 
-    model: {{ ref('fact_transactions') }}
+    model: {{ ref('fct_transactions') }}
     defaults:
       agg_time_dimension: order_date
 # --- entities --- 
@@ -132,7 +132,7 @@ semantic_models:
 
 ```yaml
 models:
-  - name: fact_transactions
+  - name: fct_transactions
     semantic_model:
       enabled: true
       name: transactions
@@ -288,7 +288,7 @@ Define a categorical dimension on the column it maps to. For example, the `trans
 
 ```yaml
 models:
-  - name: fact_transactions
+  - name: fct_transactions
     semantic_model:
       enabled: true
 
@@ -305,7 +305,7 @@ To calculate a categorical dimension from a SQL expression instead of a single c
 
 ```yaml
 models:
-  - name: fact_transactions
+  - name: fct_transactions
     semantic_model:
       enabled: true
 
@@ -804,7 +804,7 @@ semantic_models:
       There is a transaction, product, sales_person, and customer id for 
       every transaction. There is only one transaction id per 
       transaction. The `metric_time` or date is reflected in UTC.
-    model: {{ ref('fact_transactions') }}
+    model: {{ ref('fct_transactions') }}
     defaults:
       agg_time_dimension: metric_time
 
@@ -848,7 +848,7 @@ semantic_models:
 
 ```yaml
 models:
-  - name: fact_transactions
+  - name: fct_transactions
     semantic_model:
       enabled: true
 
