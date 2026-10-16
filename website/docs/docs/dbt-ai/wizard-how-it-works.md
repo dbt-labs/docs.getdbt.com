@@ -14,7 +14,7 @@ import WizardArchitecturePlatform from '/snippets/_wizard-architecture-platform.
 Built for governed data development in dbt, <Constant name="wizard" /> understands your project, routes to the right dbt tools, and validates work with awareness of warehouse operations. Use it to investigate failed runs, debug models, assess impact, make changes, and ship trusted data work in one place.
 
 Most of how <Constant name="wizard" /> works is the same in [<Constant name="dbt_platform" />](/docs/platform/wizard-platform), [Wizard Desktop](/docs/dbt-ai/wizard-desktop), and in the [terminal CLI](/docs/dbt-ai/wizard-cli). The following sections explain shared behavior first, then call out what differs in each environment.
-## dbt Information Schema {#native-metadata-engine}
+## dbt Information Schema
 
 <Constant name="wizard" /> uses the [dbt Information Schema](/docs/build/dbt-information-schema) &mdash; a contracted interface into your project’s metadata that's ready before your first prompt.
 
