@@ -26,6 +26,8 @@ Before you set up dbt State, make sure you have:
 <Tabs queryString="user-type">
 <TabItem value="new-signup" label="New dbt platform sign-up">
 
+dbt State requires a <Constant name="dbt_platform" /> account for authentication, even when running dbt locally.
+
 1. Log in to <Constant name="dbt_platform" /> and start your dbt State trial.
 
 
