@@ -16,7 +16,7 @@ Built for governed data development in dbt, <Constant name="wizard" /> understan
 Most of how <Constant name="wizard" /> works is the same in [<Constant name="dbt_platform" />](/docs/platform/wizard-platform), [Wizard Desktop](/docs/dbt-ai/wizard-desktop), and in the [terminal CLI](/docs/dbt-ai/wizard-cli). The following sections explain shared behavior first, then call out what differs in each environment.
 ## dbt Information Schema {#native-metadata-engine}
 
-<Constant name="wizard" /> uses the [dbt Information Schema](/docs/build/dbt-information-schema) &mdash; a pre-built, structured view of your entire project that's ready before your first prompt.
+<Constant name="wizard" /> uses the [dbt Information Schema](/docs/build/dbt-information-schema) &mdash; a contracted interface into your project’s metadata that's ready before your first prompt.
 
 Think of it like a map of your whole city: <Constant name="wizard" /> knows how everything connects before it starts, rather than walking every street to figure out the layout. (No <WizardPopcorn>crystal ball</WizardPopcorn> required.)
 
