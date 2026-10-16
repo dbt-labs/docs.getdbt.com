@@ -428,21 +428,6 @@ models:
         expr: 1
 ```
 
-To create a time dimension from a SQL expression instead of a single column, define it under [`derived_semantics`](#derived_semantics-in-dimensions) and add `expr` and `granularity`. For example, `order_month` truncates `ts_created` to the month:
-
-```yaml
-models:
-  - name: orders
-    semantic_model:
-      enabled: true
-
-    derived_semantics:
-      dimensions:
-        - name: order_month
-          type: time
-          granularity: month
-          expr: "date_trunc('month', ts_created)"
-```
 
 </VersionBlock>
 
@@ -560,6 +545,27 @@ models:
 </TabItem>
 
 </Tabs>
+
+
+<VersionBlock firstVersion="1.12">
+
+To create a time dimension from a SQL expression instead of a single column, define it under [`derived_semantics`](#derived_semantics-in-dimensions) and add `expr` and `granularity`. For example, `order_month` truncates `ts_created` to the month:
+
+```yaml
+models:
+  - name: orders
+    semantic_model:
+      enabled: true
+
+    derived_semantics:
+      dimensions:
+        - name: order_month
+          type: time
+          granularity: month
+          expr: "date_trunc('month', ts_created)"
+```
+
+</VersionBlock>
 
 ### SCD Type II
 
