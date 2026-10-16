@@ -15,11 +15,24 @@
   color: var(--ifm-color-gray-900);
 }
 
+.lead {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  flex: 1 1 18rem;
+}
+
+.icon {
+  flex: 0 0 auto;
+  width: 2rem;
+  height: 2rem;
+  color: var(--ifm-color-info);
+}
+
 .text {
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
-  flex: 1 1 18rem;
 }
 
 .heading {

@@ -26,6 +26,38 @@ import styles from "./styles.module.css";
  * The callout itself (heading, button) is always dropped from the .md.
  */
 
+// Three four-point stars. Drawn with currentColor so the CSS sets the color,
+// and a round stroke softens the tips.
+function star(cx, cy, r) {
+  const k = r * 0.2;
+  return [
+    `M${cx} ${cy - r}`,
+    `Q${cx + k} ${cy - k} ${cx + r} ${cy}`,
+    `Q${cx + k} ${cy + k} ${cx} ${cy + r}`,
+    `Q${cx - k} ${cy + k} ${cx - r} ${cy}`,
+    `Q${cx - k} ${cy - k} ${cx} ${cy - r}Z`,
+  ].join("");
+}
+
+const SPARKLES_PATH = [star(9, 13, 7.5), star(19, 6, 4), star(18, 18.5, 3.5)].join("");
+
+function SparklesIcon({ className }) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+      focusable="false"
+      fill="currentColor"
+      stroke="currentColor"
+      strokeWidth="1.2"
+      strokeLinejoin="round"
+    >
+      <path d={SPARKLES_PATH} />
+    </svg>
+  );
+}
+
 const DEFAULT_HEADING = "Follow along with an AI assistant";
 const DEFAULT_DESCRIPTION =
   "Copy this prompt and paste it into your AI assistant. It guides you through this page.";
@@ -137,9 +169,12 @@ export default function AgentPrompt({
   return (
     <>
       <div className={styles.callout} data-md-hide="true">
-        <div className={styles.text}>
-          <span className={styles.heading}>{heading}</span>
-          <span className={styles.description}>{description}</span>
+        <div className={styles.lead}>
+          <SparklesIcon className={styles.icon} />
+          <div className={styles.text}>
+            <span className={styles.heading}>{heading}</span>
+            <span className={styles.description}>{description}</span>
+          </div>
         </div>
         <button type="button" className={styles.button} onClick={handleCopy}>
           {copied ? "Copied" : "Copy prompt"}
