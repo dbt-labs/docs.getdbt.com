@@ -159,7 +159,7 @@ python3 --version
 git --version
 ```
 
-Assuming both are availble in your system, then you can clone the example repository using your method of choice:
+Assuming both are available in your system, then you can clone the example repository using your method of choice:
 
 <details open>
 <summary>HTTPS</summary>

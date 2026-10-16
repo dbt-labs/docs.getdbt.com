@@ -89,7 +89,7 @@ Save the `aws_access_key_id` and `aws_secret_access_key` for a future step.
 ### AWS credentials file
 
 To obtain your AWS credentials file:
-1. Follow the instructions for [configuring the credentials file](https://docs.aws.amazon.com/cli/v1/userguide/cli-configure-files.html) usin the AWS CLI
+1. Follow the instructions for [configuring the credentials file](https://docs.aws.amazon.com/cli/v1/userguide/cli-configure-files.html) using the AWS CLI
 1. Locate the `~/.aws/credentials` file on your computer
     1. Windows: `%USERPROFILE%\.aws\credentials`
     2. Mac/Linux: `~/.aws/credentials`
