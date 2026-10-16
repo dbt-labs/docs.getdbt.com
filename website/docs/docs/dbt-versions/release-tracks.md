@@ -37,7 +37,7 @@ _`v2 Stable` is the default for all new <Constant name="fusion" />-powered proje
 
 ### API release tracks
 
-:::note API differences
+:::note API naming differences
 
 The API calls for release tracks use differnt names than what's available in the UI. They use legacy naming that's been retired. We plan on updating these in the near future by providing aliases to the new names. We'll alert customers when these become availabl and update this page.
 
