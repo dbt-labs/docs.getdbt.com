@@ -585,14 +585,14 @@ select
 
 ```yml
 models:
-  - name: dim_customers
+  - name: constraints_example
     config:
       contract:
         enforced: true
     constraints:
       - type: primary_key
         columns: [id]
-        name: pk_dim_customers
+        name: pk_constraints_example
     columns:
       - name: id
         data_type: int
@@ -621,7 +621,7 @@ create table schema_name.constraints_example
     first_transaction_date date
 );
 
-alter table schema_name.constraints_example add constraint pk_dim_customers primary key nonclustered(id) not enforced;
+alter table schema_name.constraints_example add constraint pk_constraints_example primary key nonclustered(id) not enforced;
 ```
 
 </File>
