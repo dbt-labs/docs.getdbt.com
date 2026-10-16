@@ -66,7 +66,7 @@ function SparklesIcon({ className }) {
 
 const DEFAULT_HEADING = "Follow along with an AI assistant";
 const DEFAULT_DESCRIPTION =
-  "Copy this prompt and paste it into your AI assistant. It guides you through this page.";
+  "Copy and paste this prompt into your AI assistant to walk through this guide.";
 
 function getGuidanceItems(guidance) {
   return (Array.isArray(guidance) ? guidance : Object.values(guidance ?? {}))
