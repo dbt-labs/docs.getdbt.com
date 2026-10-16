@@ -19,35 +19,35 @@ Release date: October 15, 2026
 
 ### dbt platform
 
-### Breaking Changes
+#### Breaking changes
 
-- Flip the default of legacy behavior-change flags to true: require_batched_execution_for_custom_microbatch_strategy, skip_nodes_if_on_run_start_fails, state_modified_compare_more_unrendered_values, require_yaml_configuration_for_mf_time_spines, require_nested_cumulative_type_params, validate_macro_args, require_all_warnings_handled_by_warn_error. Ports dbt-core#15489 into mantle now that the customer-communication deadline has passed.
+- The default value of the following legacy behavior-change flags is now `true`: `require_batched_execution_for_custom_microbatch_strategy`, `skip_nodes_if_on_run_start_fails`, `state_modified_compare_more_unrendered_values`, `require_yaml_configuration_for_mf_time_spines`, `require_nested_cumulative_type_params`, `validate_macro_args`, and `require_all_warnings_handled_by_warn_error`. This change ports dbt-core#15489 now that the customer-communication deadline has passed.
 
-### Features
+#### Features
 
-- Add OpenTelemetry span instrumentation for node and hook execution, gated behind the --snowflake-projects-otel flag (off by default)
-- Private packages (`packages.private` in `packages.yml`) can now be resolved via the dbt platform's private-packages resolve endpoint, authenticated with an orchestration-injected HMAC token (`DBT_CLOUD_PRIVATE_PACKAGES_AUTH_TOKEN`, `DBT_CLOUD_ACCOUNT_ID`, `DBT_CLOUD_ACCOUNT_HOST`, `DBT_CLOUD_PROJECT_ID`). This is checked after the existing `DBT_ENV_PRIVATE_GIT_PROVIDER_INFO` legacy resolution (unchanged, still takes precedence when configured). A private package discovered after the initial resolve (e.g. a transitive private dependency) is resolved lazily via the same endpoint rather than falling back to SSH, since SSH credentials are never available under dbt platform orchestration. A failure to resolve any requested package raises immediately rather than falling back silently.
-- Accept Mesh environment routing metadata in cross-project dependencies
-- Warn users if they are using a deprecated dbt version
-- Add otel_trace_id() and otel_span_id() Jinja functions to correlate query comments and model SQL with OpenTelemetry trace/span ids
+- Add OpenTelemetry span instrumentation for node and hook execution, gated behind the `--snowflake-projects-otel` flag (off by default).
+- You can now resolve private packages (`packages.private` in `packages.yml`) through the dbt platform's private-packages resolve endpoint, authenticated with an orchestration-injected HMAC token (`DBT_CLOUD_PRIVATE_PACKAGES_AUTH_TOKEN`, `DBT_CLOUD_ACCOUNT_ID`, `DBT_CLOUD_ACCOUNT_HOST`, `DBT_CLOUD_PROJECT_ID`). dbt checks this endpoint after the existing `DBT_ENV_PRIVATE_GIT_PROVIDER_INFO` legacy resolution, which is unchanged and still takes precedence when configured. dbt resolves a private package discovered after the initial resolve (for example, a transitive private dependency) lazily through the same endpoint rather than falling back to SSH, because SSH credentials are never available under dbt platform orchestration. dbt raises an error immediately if it can't resolve any requested package, rather than falling back silently.
+- Accept Mesh environment routing metadata in cross-project dependencies.
+- dbt now warns you if you use a deprecated dbt version.
+- Add `otel_trace_id()` and `otel_span_id()` Jinja functions to correlate query comments and model SQL with OpenTelemetry trace and span IDs.
 
-### Fixes
+#### Fixes
 
-- Recognize Databricks adapter config keys (`query_tags`, `zorder`, `options`, `unique_tmp_table_suffix`, `skip_optimize`) in jsonschema validation so they no longer raise spurious `CustomKeyInConfigDeprecation` warnings (dbt-databricks#1540, dbt-databricks#1302)
-- Fix `dbt build` node count ("X of Y") being inflated when unit tests are selected, by adding the unit test count to num_nodes exactly once instead of on every dequeue while run_count is still 0
-- Stop resolving a unit test's tested model eagerly at parse time; resolve it only in the single deterministic post-parse pass so resolution no longer depends on filesystem parse order at all (deeper fix for
+- Recognize Databricks adapter config keys (`query_tags`, `zorder`, `options`, `unique_tmp_table_suffix`, `skip_optimize`) in JSON schema validation so they no longer raise spurious `CustomKeyInConfigDeprecation` warnings (dbt-databricks#1540, dbt-databricks#1302).
+- Fix the `dbt build` node count ("X of Y") being inflated when you select unit tests. dbt now adds the unit test count to `num_nodes` exactly once, instead of on every dequeue while `run_count` is still 0.
+- Stop resolving a unit test's tested model eagerly at parse time. dbt now resolves it only in the single deterministic post-parse pass, so resolution no longer depends on filesystem parse order at all.
 - Fix OpenTelemetry hook spans: name them by hook and transaction phase, skip calls that run no hooks, and add node context and status.
 - Send the `x-ms-blob-type: BlockBlob` header and accept `201 Created` when uploading artifacts to an Azure Blob Storage signed URL, so artifact ingestion no longer fails with `400 MissingRequiredHeader` on Azure-hosted regions. Upload errors now include the storage provider's error code alongside the status code.
-- Resolve a function's `unrendered_config` from the `functions:` project config block instead of falling through to `models:`, so model-level defaults no longer appear in function configs and make functions compare as modified under `state:modified`
-- Backport v2-parser/fusion-parser fixes from main: default --v2-parser to the bundled fusion binary instead of dbt-core-experimental-parser (ports main's 1aa0e8020), re-parse adapter macros from the installed adapter package after loading a Fusion-generated manifest (ports dbt-core#15529), and rediscover the built-in generic test macros so they aren't left undefined at test-compile time (ports dbt-core#15925).
-- Capture and re-emit fusion parser subprocess output through dbt-core's event system instead of letting it pass through to raw stdout/stderr, re-leveling each line by its json-compat severity when available
-- Validate that a resolved package installation path stays within the configured packages-install-path
-- Fix `Dimension` to satisfy the `metricflow-semantic-interfaces` protocol and bump the `metricflow` floor to 0.213.0
+- Resolve a function's `unrendered_config` from the `functions:` project config block instead of falling through to `models:`, so model-level defaults no longer appear in function configs and make functions compare as modified under `state:modified`.
+- Backport v2 parser fixes: default `--v2-parser` to the bundled <Constant name="fusion" /> binary instead of `dbt-core-experimental-parser`, re-parse adapter macros from the installed adapter package after loading a <Constant name="fusion" />-generated manifest (ports dbt-core#15529), and rediscover the built-in generic test macros so they aren't left undefined at test-compile time (ports dbt-core#15925).
+- Capture and re-emit <Constant name="fusion" /> parser subprocess output through dbt-core's event system instead of letting it pass through to raw stdout and stderr, re-leveling each line by its JSON-compatible severity when available.
+- Validate that a resolved package installation path stays within the configured `packages-install-path`.
+- Fix `Dimension` to satisfy the `metricflow-semantic-interfaces` protocol and bump the `metricflow` floor to 0.213.0.
 
-### Dependencies
+#### Dependencies
 
-- Bump dbt-core-experimental-parser to 2.0.0b1 lowerbound
-- Require `sqlparse>=0.5.5,<0.7.0`, `sqlparse` 0.6.0 is the fixed release for CVE-2026-54284, CVE-2026-59893, CVE-2026-59894 and CVE-2026-71491 (parser denial-of-service).
+- Bump the `dbt-core-experimental-parser` lower bound to 2.0.0b1.
+- Require `sqlparse>=0.5.5,<0.7.0`. Version 0.6.0 is the fixed release for CVE-2026-54284, CVE-2026-59893, CVE-2026-59894, and CVE-2026-71491 (parser denial-of-service).
 
 This compatible release includes functionality from the following versions of <Constant name="core" /> OSS:
 
