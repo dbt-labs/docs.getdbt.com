@@ -6,15 +6,11 @@ description: "Learn how to get automatic upgrades to dbt in the dbt platform. Ac
 availability: platform_login
 ---
 
-Since May 2024, new capabilities in the dbt framework are delivered continuously to <Constant name="dbt" />. Your projects and environments are upgraded automatically on a cadence that you choose, depending on your <Constant name="dbt" /> plan.
-
-Previously, customers would pin to a minor version of <Constant name="core" />, and receive only patch updates during that specific version's active support period. Release tracks ensure that your project stays up-to-date with the modern capabilities of <Constant name="dbt" /> and recent versions of <Constant name="core" />.
-
-This will require you to make one final update to your current jobs and environments. When that's done, you'll never have to think about managing, coordinating, or upgrading dbt versions again.
-
-By moving your environments and jobs to release tracks you can get all the functionality in <Constant name="dbt" /> as soon as it's ready. On the **v1 Latest** release track, this includes access to features _before_ they're available in final releases of <Constant name="core" /> OSS.
+New capabilities in the dbt framework are delivered continuously to <Constant name="dbt_platform" />. Your projects and environments are upgraded automatically on a cadence that you choose, depending on your <Constant name="dbt" /> plan.
 
 ## Which release tracks are available?
+
+The release tracks available for your project vary depending on the major version of dbt.
 
 ### dbt v2 release tracks
 
@@ -39,6 +35,8 @@ _`v2 Stable` is the default for all new <Constant name="fusion" />-powered proje
 | **v1 Extended** | The previous month's **v1 Compatible** release. | Enterprise, Enterprise+ | `extended` |
 | **v1 Fallback** | The previous month's **v1 Extended** release. | Enterprise+ | `fallback` |
 
+### API release tracks
+
 :::note API differences
 
 The API calls for release tracks use differnt names than what's available in the UI. They use legacy naming that's been retired. We plan on updating these in the near future by providing aliases to the new names. We'll alert customers when these become availabl and update this page.
@@ -57,6 +55,8 @@ To configure an environment in the [dbt Admin API](/docs/dbt-apis/admin-api) or 
 - `extended`
 
 ## Which release track should I choose?
+
+We recommend that all new projects run dbt v2. Projects still on v1 release tracks are eligible for upgrade to v2 and projects on legacy versions of v1.x should [migrate to release tracks](/guides/migrate-off-legacy-dbt-versions).
 
 ### Choosing a dbt v2 release track
 
