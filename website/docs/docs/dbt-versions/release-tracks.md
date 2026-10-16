@@ -39,7 +39,7 @@ _`v2 Stable` is the default for all new <Constant name="fusion" />-powered proje
 
 :::note API naming differences
 
-API release track names differ from the names in the UI. They still use legacy names. We plan to add aliases for the new names soon. We'll notify customers when those are available and update this page.”
+API release track names differ from the names in the UI. They still use legacy names. We plan to add aliases for the new names soon. We'll notify customers when those are available and update this page.
 
 Names prefixed with `fusion` are for v2. Names without that prefix are for v1.
 
