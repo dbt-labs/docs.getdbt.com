@@ -8,15 +8,15 @@ meta:
 
 import SnowflakePythonParams from '/snippets/_snowflake-python-config-params.md';
 
-Use `dbt.config()` to set configs for a Python model. This page lists the parameters in one place, with links to each platform's full details. For how to write a Python model, refer to [Python models](/docs/build/python-models).
+Use `dbt.config()` to set configs for a Python model. This page lists the parameters needed. For how to write a Python model, refer to [Python models](/docs/build/python-models).
 
-:::note
+:::note Literal values only
 `dbt.config()` only accepts literal values (strings, booleans, and numbers). For anything more complex, set the config in a [properties YAML file](/reference/resource-properties/config). Refer to [Configuring Python models](/docs/build/python-models#configuring-python-models).
 :::
 
 ## Common parameters
 
-These work on every platform that supports Python models.
+The following parameters work on every platform that supports Python models.
 
 <SimpleTable>
   
@@ -39,7 +39,7 @@ Read any config back inside your model with `dbt.config.get()`.
 
 <SnowflakePythonParams />
 
-For more details and comprehensive parameters, refer to [Snowflake configurations](/reference/resource-configs/snowflake-configs#additional-parameters).
+For more details and a more comprehensive list, refer to [Snowflake configurations](/reference/resource-configs/snowflake-configs#additional-parameters).
 
 </TabItem>
 
@@ -64,7 +64,7 @@ For more details and comprehensive parameters, refer to [Snowflake configuration
 </SimpleTable>
 
 
-Not every parameter works with every submission method. For more details and comprehensive parameters, refer to [Databricks configurations](/reference/resource-configs/databricks-configs#python-submission-methods).
+Not every parameter works with every submission method. For more details and a more comprehensive list, refer to [Databricks configurations](/reference/resource-configs/databricks-configs#python-submission-methods).
 
 </TabItem>
 
@@ -88,7 +88,7 @@ Not every parameter works with every submission method. For more details and com
 </SimpleTable>
 
 
-For more details and comprehensive parameters, refer to [BigQuery configurations](/reference/resource-configs/bigquery-configs#additional-parameters).
+For more details and a more comprehensive list, refer to [BigQuery configurations](/reference/resource-configs/bigquery-configs#additional-parameters).
 
 </TabItem>
 

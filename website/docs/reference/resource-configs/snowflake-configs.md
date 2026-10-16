@@ -1368,7 +1368,7 @@ def model(dbt, session: snowpark.Session):
 
 ### Additional parameters
 
-Snowflake Python models accept these parameters in `dbt.config()`. Refer to [Configuring Python models](/docs/build/python-models#configuring-python-models).
+Snowflake Python models accept these parameters in `dbt.config()`. Refer to [Configuring Python models](/docs/build/python-models#configuring-python-models) for more info.
 
 <SnowflakePythonParams />
 
