@@ -74,6 +74,48 @@ In v1.11.0, this flag will stay set to `false` by default. Based on feedback abo
 Given feedback about lack of atomicity of the new materialization approach, we will not be flipping this flag to `true`.
 Instead, we will be investigating new ways to provide the same benefits while maintaining atomicity.
 
+### Set `use_materialization_v2` per model
+
+:::info
+Setting `use_materialization_v2` as a model config applies to <Constant name="fusion" /> only. `dbt-databricks` doesn't support it yet &mdash; use the project-level flag instead.
+:::
+
+You can also set `use_materialization_v2` as a model config to choose the materialization for individual `table`, `incremental`, and `view` models. Keep the atomic `create or replace` path for most models, and use the restructured materialization only where you need it &mdash; for example, tables that need [column masks](/reference/resource-configs/databricks-configs#configuring-columns) in place before any data lands.
+
+- A model-level `true` or `false` overrides the project-level flag for that model.
+- Models that don't set it follow the `flags:` value, which defaults to `false`.
+- Set it in a model's `config()` block, in its properties YAML, or for a whole folder with `+use_materialization_v2` in `dbt_project.yml`. Standard [config inheritance](/reference/define-configs#config-inheritance) applies.
+- The model config doesn't apply to seeds.
+
+This example keeps the project on the default materialization and switches one folder to the restructured materialization:
+
+<File name='dbt_project.yml'>
+
+```yaml
+flags:
+  use_materialization_v2: false
+
+models:
+  my_project:
+    governed:
+      +use_materialization_v2: true
+```
+
+</File>
+
+To opt a single model back out, set the config on that model:
+
+<File name='models/governed/schema.yml'>
+
+```yaml
+models:
+  - name: customer_dashboard
+    config:
+      use_materialization_v2: false
+```
+
+</File>
+
 ### Changes to the Seed materialization
 
 The seeds materialization should have the smallest difference between the old and new materialization, as the primary difference is just removing calls to methods that are not supported by Databricks, such as transaction operations.
