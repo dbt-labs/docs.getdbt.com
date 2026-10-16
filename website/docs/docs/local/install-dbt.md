@@ -99,7 +99,7 @@ Common issues and resolutions:
 
 - **dbt command not found:** Add the installation location to your `$PATH`.
 - **Version conflicts:** Check that no other self-hosted dbt or <Constant name="platform_cli" /> versions are installed or active on your machine.
-- **`dbt-oss` conflict:** `dbt-oss` and `dbt` cannot share a Python environment. Install `dbt-oss` with `uv tool` to keep it isolated. Refer to [Install dbt OSS](/docs/local/install-dbt-v2) for details.
+- **`dbt-oss` conflict:** `dbt-oss` and `dbt` cannot share a Python environment. If you need to run both, create an alias as described in [Run dbt-oss alongside other dbt installs](/docs/local/install-dbt-v2#run-dbt-oss-alongside-other-dbt-installs).
 - **Installation permissions:** Make sure your user account can install software locally.
 
 ## FAQs

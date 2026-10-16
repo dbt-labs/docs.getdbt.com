@@ -47,7 +47,7 @@ For adapter install details, refer to the [`dbt` repository](https://github.com/
 
 ## Run `dbt-oss` alongside other dbt installs
 
-If you have `dbt` installed and want to run `dbt-oss` alongside it, use `uvx` with a shell alias to avoid conflicts. Running `uv tool install dbt-oss` fails if `dbt` is already installed in `~/.local/bin`. Use `uvx` instead, which runs `dbt-oss` in an isolated environment without modifying your PATH.
+If you have `dbt` installed and want to run `dbt-oss` alongside it, use `uvx` with a shell alias to avoid conflicts. Using `uvx` ensures `dbt-oss` runs in its own isolated environment without interfering with your existing `dbt`.
 
 Add the following to your shell profile. This example uses `dbto`, but you can choose a different name:
 
