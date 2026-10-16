@@ -46,7 +46,7 @@ The combination of `entity_id` + [changing column(s)] you want to capture become
 | 1_submitted  | 1         | cool              | submitted        | 2022-03-03   |
 | 2_pending    | 2         | cool              | pending          | 2022-02-27   |
 
-Now the `entity_grain` clearly shows us which rows are duplicates! We only need to keep the most recent one, so row 2 above can be removed from the cleaned dataset, giving us the output below. In our full process below, we’ll make this concatenated key into a proper id, but this is funamentally what's happening under the hood.  
+Now the `entity_grain` clearly shows us which rows are duplicates! We only need to keep the most recent one, so row 2 above can be removed from the cleaned dataset, giving us the output below. In our full process below, we’ll make this concatenated key into a proper id, but this is fundamentally what's happening under the hood.  
 
 | entity_grain | entity_id | unimportant_value | important_status | updated_date |
 |--------------|-----------|-------------------|------------------|--------------|
