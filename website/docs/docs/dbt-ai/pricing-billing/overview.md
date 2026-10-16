@@ -65,6 +65,8 @@ Refer to the [Model Provider Rate Table](https://www.getdbt.com/legal/dbt-wizard
 
 With BYOK, you supply your own credentials for a provider &mdash; OpenAI, Anthropic, Azure AI Foundry, AWS Bedrock, Google Gemini, Snowflake Cortex, or Databricks.
 
+BYOK in <Constant name="dbt_platform" /> is available on Starter, Enterprise, and Enterprise+ plans.
+
 To set up BYOK, refer to [Configure BYOK for dbt platform](/docs/platform/wizard-byok-platform) or [Configure BYOK for the CLI](/docs/dbt-ai/wizard-byok).
 
 ## Supported AI providers
