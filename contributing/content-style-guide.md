@@ -593,6 +593,21 @@ Use the `agent_guidance` frontmatter field to give AI assistants short instructi
 
 Use it for step-by-step tutorials, like quickstarts, where assistants tend to share the whole guide at once or switch the reader to a different setup.
 
+### Add a "Copy prompt" callout
+
+Add `<AgentPrompt />` to a page to give readers a callout with a **Copy prompt** button. The prompt text stays hidden until they paste it into their AI assistant.
+
+- **Page has `agent_guidance`:** use `<AgentPrompt />` with no children. The component builds the prompt from the frontmatter, so you write the rules once. The generated Markdown doesn't include the prompt, so assistants see the rules once, under the title.
+- **Page has no `agent_guidance`:** put the prompt in the component. The prompt is hidden on the page, and the generated Markdown includes it.
+
+  ```mdx
+  <AgentPrompt>
+  Walk me through this page one step at a time. Never ask for passwords or keys in chat.
+  </AgentPrompt>
+  ```
+
+If a page has both, the frontmatter wins and the children are ignored. Don't restate `agent_guidance` rules in the callout.
+
 ### Recommended structure
 
 Use these keys, in this order. Keys are labels for writers; only the values appear in the output.

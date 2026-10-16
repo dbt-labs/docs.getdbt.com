@@ -28,6 +28,8 @@ In this quickstart guide, you'll learn how to use <Constant name="dbt" /> with S
 - Document your models.
 - Schedule a job to run.
 
+<AgentPrompt />
+
 Snowflake also provides a quickstart for you to learn how to use <Constant name="dbt" />. It makes use of a different public dataset (Knoema Economy Data Atlas) than what's shown in this guide. For more information, refer to [Accelerating Data Teams with <Constant name="dbt" /> & Snowflake](https://quickstarts.snowflake.com/guide/accelerating_data_teams_with_snowflake_and_dbt_cloud_hands_on_lab/) in the Snowflake docs.
 
 :::tip Videos for you
