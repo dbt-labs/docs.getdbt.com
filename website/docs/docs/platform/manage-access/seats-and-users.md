@@ -177,7 +177,7 @@ If your account is connected to an Identity Provider (IdP) for [Single Sign On](
 
 #### Fundamental licensing rules
 
-- **Default assignment**: New members without a mapped license get your account's [default license](#default-license-for-new-users). That's Developer unless an admin sets another.
+- **Default assignment**: New members without a mapped license receive your account's [default license](#default-license-for-new-users), which is Developer unless an admin changes it.
 - **Mapping basis**: License type mappings are based on _IdP groups_ (groups in your identity provider), not _<Constant name="dbt" /> groups_. Check group memberships in your IdP when configuring or troubleshooting.
 - **When changes take effect**: License types are adjusted when users sign into <Constant name="dbt" /> using single sign-on. Changes to license type mappings take effect the next time users sign in.
 
