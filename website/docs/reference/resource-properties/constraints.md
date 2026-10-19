@@ -131,7 +131,7 @@ select
 
 ```yml
 models:
-  - name: dim_customers
+  - name: constraints_example
     config:
       contract:
         enforced: true
@@ -205,7 +205,7 @@ select
 
 ```yml
 models:
-  - name: dim_customers
+  - name: constraints_example
     config:
       contract:
         enforced: true
@@ -291,7 +291,7 @@ select
 
 ```yml
 models:
-  - name: dim_customers
+  - name: constraints_example
     config:
       contract:
         enforced: true
@@ -318,7 +318,7 @@ Expected DDL to enforce constraints:
 <File name='target/run/.../constraints_example.sql'>
 
 ```sql
-create or replace transient table <database>.<schema>.constraints_model        
+create or replace transient table <database>.<schema>.constraints_example        
 (
     id integer not null primary key,
     customer_name text,
@@ -366,7 +366,7 @@ select
 
 ```yml
 models:
-  - name: dim_customers
+  - name: constraints_example
     config:
       contract:
         enforced: true
@@ -384,6 +384,28 @@ models:
         data_type: string
       - name: first_transaction_date
         data_type: date
+```
+
+</File>
+
+### Expected DDL to enforce constraints:
+
+<File name='target/run/.../constraints_example.sql'>
+
+```sql
+create or replace table `<project>`.`<dataset>`.`constraints_example`        
+(
+    id integer not null,
+    customer_name string,
+    first_transaction_date date  
+)
+as
+(
+select 
+  1 as id, 
+  'My Favorite Customer' as customer_name, 
+  cast('2019-01-01' as date) as first_transaction_date
+);
 ```
 
 </File>
@@ -441,28 +463,6 @@ models:
 
 </File>
 
-### Expected DDL to enforce constraints:
-
-<File name='target/run/.../constraints_example.sql'>
-
-```sql
-create or replace table `<project>`.`<dataset>`.`constraints_model`        
-(
-    id integer not null,
-    customer_name string,
-    first_transaction_date date  
-)
-as
-(
-select 
-  1 as id, 
-  'My Favorite Customer' as customer_name, 
-  cast('2019-01-01' as date) as first_transaction_date
-);
-```
-
-</File>
-
 </div>
 
 <div warehouse="Databricks">
@@ -502,7 +502,7 @@ select
 
 ```yml
 models:
-  - name: dim_customers
+  - name: constraints_example
     config:
       contract:
         enforced: true
@@ -528,7 +528,7 @@ Expected DDL to enforce constraints:
 <File name='target/run/.../constraints_example.sql'>
 
 ```sql
-  create or replace table schema_name.my_model 
+  create or replace table schema_name.constraints_example 
   using delta 
   as
     select
@@ -542,8 +542,8 @@ Expected DDL to enforce constraints:
 Followed by the statements
 
 ```sql
-alter table schema_name.my_model change column id set not null;
-alter table schema_name.my_model add constraint 472394792387497234 check (id > 0);
+alter table schema_name.constraints_example change column id set not null;
+alter table schema_name.constraints_example add constraint 472394792387497234 check (id > 0);
 ```
 
 </div>
@@ -652,7 +652,7 @@ Here's an example of how to implement tag-based masking policies with contracts 
 ```yaml
 
 models:
-  - name: my_model
+  - name: constraints_example
     config:
       contract:
         enforced: true
@@ -682,7 +682,7 @@ Alternatively, you can add a masking policy without tags:
 ```yaml
 
 models:
-  - name: my_model
+  - name: constraints_example
     config:
       contract:
         enforced: true

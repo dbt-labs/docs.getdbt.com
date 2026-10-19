@@ -130,7 +130,7 @@ In my case, the debugger returns the following (shortened) list:
 dict_keys(['l_1_schema_project_evaluator', 'l_1_db_project_evaluator', 't_2', ..., 'l_1_results', ..., 'l_2_graph', ..., 'l_2_sql_statement', 'environment', 'missing', 'resolve', 't_1', 'undefined'])
 ```
 
-A tip recommend is to to look for variables with similar names to variables I either defined myself or read from in my code. Here, I can see a `l_2_sql_statement` as part of my variables list and can also print its value in my terminal by typing `p l_2_sql_statement`.
+A tip recommend is to look for variables with similar names to variables I either defined myself or read from in my code. Here, I can see a `l_2_sql_statement` as part of my variables list and can also print its value in my terminal by typing `p l_2_sql_statement`.
 
 Typing `p l_2_sql_statement` returned the following to my terminal: 
 ```sql

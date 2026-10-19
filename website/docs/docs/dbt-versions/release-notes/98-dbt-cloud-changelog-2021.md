@@ -372,7 +372,7 @@ Continued stability and quality of life improvements for folks with multiple acc
 - Deleted Info and Logs <Constant name="studio_ide" /> Tabs, logs will now be displayed in Results Tab
 - Removed service token feature flag
 - List Jobs dropdown in alphabetical order
-- List Account and Project dropdowns in alphabetica order
+- List Account and Project dropdowns in alphabetical order
 - Pre-join Job Definition results to speed up scheduler
 - Combine scheduler queries to speedup runtime by about 30%
 
