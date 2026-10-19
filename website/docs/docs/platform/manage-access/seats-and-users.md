@@ -135,13 +135,11 @@ Great work! After completing these steps, your <Constant name="dbt" /> user coun
 
 ## Managing license types
 
-Licenses can be assigned to users individually or through group membership. To assign a license via group membership, you can manually add a user to a group during the invitation process or assign them to a group after they’ve enrolled in <Constant name="dbt" />. 
+You can assign licenses to users individually or through group membership. Add users to groups when inviting them or after they join <Constant name="dbt" />.
 
-Alternatively, with [SSO configuration](/docs/platform/manage-access/sso-overview) and [role-based access control](/docs/platform/manage-access/about-user-access#role-based-access-control-) (Enterprise-tier only), users can be automatically assigned to groups. 
+On Enterprise plans, you can also automatically assign users to groups using [SSO config](/docs/platform/manage-access/sso-overview) and [role-based access control](/docs/platform/manage-access/about-user-access#role-based-access-control-).
 
-By default, new users in an account are assigned a Developer license. 
-
-Admins can [set a different default license](#default-license-for-new-users).
+By default, new users receive a Developer license unless an admin changes the default. Refer to [set a different default license](#default-license-for-new-users) for more info.
 
 ### Manual configuration
 
