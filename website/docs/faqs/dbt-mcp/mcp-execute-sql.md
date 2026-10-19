@@ -14,7 +14,7 @@ The `execute_sql` tool in the dbt MCP server lets your AI assistant run SQL in y
 Here's what happens when your assistant calls it:
 
 1. The assistant writes a SQL query and calls `execute_sql`.
-2. The dbt MCP server forwards the request to the <Constant name="dbt_platform" />, along with your token, development environment ID, and user ID.
+2. The dbt MCP server forwards the request to <Constant name="dbt_platform" />, along with your token, development environment ID, and user ID.
 3. The <Constant name="dbt_platform" /> compiles the SQL (including any dbt Jinja, like `ref()`) and runs it in your warehouse.
 4. The results come back to your assistant as a table.
 
