@@ -264,7 +264,7 @@ The following table explains what each flag generates and where the metadata is 
 | [`--static-analysis strict`](/docs/build/about-static-analysis) | Enables inferred column types and column-level lineage when used with `--generate-info-schema`. | Depends on the accompanying flag |
 </SimpleTable>
 
-dbt Docs v2 reads metadata from the Parquet index, not from `catalog.json`. The `catalog.json` file is a separate artifact for external tools.
+dbt Docs v2 reads metadata from the dbt Information Schema, not from `catalog.json`. The `catalog.json` file is a separate artifact for external tools.
 
 ## dbt platform behavior
 dbt Docs v2 is built for local and self-hosted workflows. In <Constant name="dbt_platform" />, use [<Constant name="catalog" />](/docs/explore/build-and-view-your-docs), which gives you a cloud-hosted, always-up-to-date view of your project:
