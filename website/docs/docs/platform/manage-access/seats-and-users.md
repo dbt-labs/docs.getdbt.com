@@ -200,7 +200,7 @@ When a user belongs to multiple IdP groups, the Developer license takes preceden
 | Yes | Yes | Developer (Developer takes precedence) |
 
 :::note
-If a user's IdP groups do not match _any_ license type mappings, <Constant name="dbt" /> assigns your account's [default license](#default-license-for-new-users). That's Developer unless an admin sets another.
+If a user's IdP groups do not match _any_ license type mappings, <Constant name="dbt" /> assigns your account's [default license](#default-license-for-new-users). Admins can check the default and update as needed.
 :::
 
 ## Granular permissioning <Lifecycle status="managed,managed_plus" />
