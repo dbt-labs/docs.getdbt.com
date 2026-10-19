@@ -1,5 +1,3 @@
-import MCPFaqUvx from '/snippets/mcp-faqs/troubleshooting/_uvx.md';
-import MCPFaqServerNotStarting from '/snippets/mcp-faqs/troubleshooting/_server-not-starting.md';
 
 This quickstart walks you through connecting dbt MCP server to your local dbt project. This setup gives you dbt command tools (`run`, `build`, `test`, `compile`, and more) inside your AI assistant. 
 
@@ -174,9 +172,9 @@ Platform features like <Constant name="semantic_layer" />, Discovery API, and me
 
 ## Troubleshooting
 
-<MCPFaqUvx />
+<FAQ path="dbt-mcp/troubleshooting/uvx" />
 
-<MCPFaqServerNotStarting />
+<FAQ path="dbt-mcp/troubleshooting/server-not-starting" />
 
 For all troubleshooting topics, see [MCP troubleshooting](/docs/dbt-ai/mcp-troubleshooting).
 

@@ -6,51 +6,38 @@ id: "mcp-troubleshooting"
 availability: all_users
 ---
 
-import MCPFaqUvx from '/snippets/mcp-faqs/troubleshooting/_uvx.md';
-import MCPFaqOauth from '/snippets/mcp-faqs/troubleshooting/_oauth.md';
-import MCPFaqServerNotStarting from '/snippets/mcp-faqs/troubleshooting/_server-not-starting.md';
-import MCPFaqWsl from '/snippets/mcp-faqs/troubleshooting/_wsl.md';
-import MCPFaqExecuteSql from '/snippets/mcp-faqs/troubleshooting/_execute-sql.md';
-import MCPFaqToolsetDisabled from '/snippets/mcp-faqs/troubleshooting/_toolset-disabled.md';
-import MCPFaqUrlsVsIds from '/snippets/mcp-faqs/troubleshooting/_urls-vs-ids.md';
-import MCPFaqMulticell from '/snippets/mcp-faqs/troubleshooting/_multicell.md';
-import MCPFaqClaudeDesktop from '/snippets/mcp-faqs/troubleshooting/_claude-desktop-errors.md';
-import MCPFaqClaudeCode from '/snippets/mcp-faqs/troubleshooting/_claude-code.md';
-import MCPFaqSnowflakeOauth from '/snippets/mcp-faqs/troubleshooting/_snowflake-oauth-fails.md';
-import MCPFaqSnowflakeEmpty from '/snippets/mcp-faqs/troubleshooting/_snowflake-empty-results.md';
-import MCPFaqSnowflakePermissions from '/snippets/mcp-faqs/troubleshooting/_snowflake-permission-errors.md';
 
 This page consolidates troubleshooting steps for all dbt MCP setups. For specific troubleshooting steps for your AI client, see the troubleshooting sections in the [Get started](/docs/dbt-ai/mcp-quickstart-oauth) and [Setup and config](/docs/dbt-ai/setup-local-mcp) pages.
 
-<MCPFaqUvx />
+<FAQ path="dbt-mcp/troubleshooting/uvx" />
 
 
-<MCPFaqOauth />
+<FAQ path="dbt-mcp/troubleshooting/oauth" />
 
 
-<MCPFaqServerNotStarting />
+<FAQ path="dbt-mcp/troubleshooting/server-not-starting" />
 
 
-<MCPFaqWsl />
+<FAQ path="dbt-mcp/troubleshooting/wsl" />
 
 
-<MCPFaqExecuteSql />
+<FAQ path="dbt-mcp/troubleshooting/execute-sql" />
 
 
-<MCPFaqToolsetDisabled />
+<FAQ path="dbt-mcp/troubleshooting/toolset-disabled" />
 
 
-<MCPFaqUrlsVsIds />
+<FAQ path="dbt-mcp/troubleshooting/urls-vs-ids" />
 
 
-<MCPFaqMulticell />
+<FAQ path="dbt-mcp/troubleshooting/multicell" />
 
-<MCPFaqClaudeDesktop />
+<FAQ path="dbt-mcp/troubleshooting/claude-desktop-errors" />
 
-<MCPFaqClaudeCode />
+<FAQ path="dbt-mcp/troubleshooting/claude-code" />
 
-<MCPFaqSnowflakeOauth />
+<FAQ path="dbt-mcp/troubleshooting/snowflake-oauth-fails" />
 
-<MCPFaqSnowflakeEmpty />
+<FAQ path="dbt-mcp/troubleshooting/snowflake-empty-results" />
 
-<MCPFaqSnowflakePermissions />
+<FAQ path="dbt-mcp/troubleshooting/snowflake-permission-errors" />

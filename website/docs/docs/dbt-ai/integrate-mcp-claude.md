@@ -13,8 +13,6 @@ import MCPRemoteServerUrl from '/snippets/_mcp-remote-server-url.md';
 import MCPRemoteTokenHeaders from '/snippets/_mcp-remote-token-headers.md';
 import MCPOauthPreflight from '/snippets/_mcp-oauth-preflight.md';
 import MCPCustomConnectorOauth from '/snippets/_mcp-custom-connector-oauth.md';
-import MCPFaqClaudeDesktop from '/snippets/mcp-faqs/troubleshooting/_claude-desktop-errors.md';
-import MCPFaqClaudeCode from '/snippets/mcp-faqs/troubleshooting/_claude-code.md';
 
 Claude is an AI assistant from Anthropic with two primary interfaces:
 - [Claude Desktop](#claude-desktop): A GUI with MCP support for file access and commands, plus basic coding features.
@@ -230,6 +228,6 @@ Claude Code can connect to the remote dbt MCP server over HTTP using `"type": "h
 
 ## Troubleshooting
 
-<MCPFaqClaudeDesktop />
+<FAQ path="dbt-mcp/troubleshooting/claude-desktop-errors" />
 
-<MCPFaqClaudeCode />
+<FAQ path="dbt-mcp/troubleshooting/claude-code" />

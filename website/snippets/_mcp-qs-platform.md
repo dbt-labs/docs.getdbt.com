@@ -1,11 +1,4 @@
 import StaticSubdomainRequired from '/snippets/_static-subdomain-required.md';
-import MCPFaqOauth from '/snippets/mcp-faqs/troubleshooting/_oauth.md';
-import MCPFaqUvx from '/snippets/mcp-faqs/troubleshooting/_uvx.md';
-import MCPFaqServerNotStarting from '/snippets/mcp-faqs/troubleshooting/_server-not-starting.md';
-import MCPFaqExecuteSql from '/snippets/mcp-faqs/troubleshooting/_execute-sql.md';
-import MCPFaqToolsetDisabled from '/snippets/mcp-faqs/troubleshooting/_toolset-disabled.md';
-import MCPFaqUrlsVsIds from '/snippets/mcp-faqs/troubleshooting/_urls-vs-ids.md';
-import MCPFaqMulticell from '/snippets/mcp-faqs/troubleshooting/_multicell.md';
 
 
 This quickstart uses the local MCP server: it runs on your machine using `uvx dbt-mcp`, connects to your <Constant name="dbt_platform"/> for <Constant name="semantic_layer"/>, Discovery, and SQL, and optionally runs local dbt. 
@@ -389,19 +382,19 @@ If you only need to run dbt commands locally (with or without a <Constant name="
 
 ## Troubleshooting
 
-<MCPFaqUvx />
+<FAQ path="dbt-mcp/troubleshooting/uvx" />
 
-<MCPFaqOauth />
+<FAQ path="dbt-mcp/troubleshooting/oauth" />
 
-<MCPFaqServerNotStarting />
+<FAQ path="dbt-mcp/troubleshooting/server-not-starting" />
 
-<MCPFaqExecuteSql />
+<FAQ path="dbt-mcp/troubleshooting/execute-sql" />
 
-<MCPFaqToolsetDisabled />
+<FAQ path="dbt-mcp/troubleshooting/toolset-disabled" />
 
-<MCPFaqUrlsVsIds />
+<FAQ path="dbt-mcp/troubleshooting/urls-vs-ids" />
 
-<MCPFaqMulticell />
+<FAQ path="dbt-mcp/troubleshooting/multicell" />
 
 For all troubleshooting topics, see [MCP troubleshooting](/docs/dbt-ai/mcp-troubleshooting).
 

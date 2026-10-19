@@ -11,9 +11,6 @@ import MCPRemoteOauthBetaCallout from '/snippets/_mcp-remote-oauth-beta-callout.
 import MCPRemoteServerUrl from '/snippets/_mcp-remote-server-url.md';
 import MCPRemoteTokenHeaders from '/snippets/_mcp-remote-token-headers.md';
 import MCPOauthPreflight from '/snippets/_mcp-oauth-preflight.md';
-import MCPFaqUvx from '/snippets/mcp-faqs/troubleshooting/_uvx.md';
-import MCPFaqWsl from '/snippets/mcp-faqs/troubleshooting/_wsl.md';
-import MCPFaqServerNotStarting from '/snippets/mcp-faqs/troubleshooting/_server-not-starting.md';
 
 [Microsoft Visual Studio Code (VS Code)](https://code.visualstudio.com/mcp) is a powerful and popular integrated development environment (IDE).
 
@@ -265,11 +262,11 @@ The remote dbt MCP server runs in <Constant name="dbt_platform" /> &mdash; no `u
 
 This section contains troubleshooting steps for errors you might encounter when integrating VS Code with MCP.
 
-<MCPFaqUvx />
+<FAQ path="dbt-mcp/troubleshooting/uvx" />
 
-<MCPFaqWsl />
+<FAQ path="dbt-mcp/troubleshooting/wsl" />
 
-<MCPFaqServerNotStarting />
+<FAQ path="dbt-mcp/troubleshooting/server-not-starting" />
 
 ## Resources
 

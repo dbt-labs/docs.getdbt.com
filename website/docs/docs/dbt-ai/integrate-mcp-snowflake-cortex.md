@@ -10,9 +10,6 @@ import MCPRemoteServerUrl from '/snippets/_mcp-remote-server-url.md';
 import MCPRemoteOauthBetaCallout from '/snippets/_mcp-remote-oauth-beta-callout.md';
 import StaticSubdomainRequired from '/snippets/_static-subdomain-required.md';
 import MCPCreditUsage from '/snippets/_mcp-credit-usage.md';
-import MCPFaqSnowflakeOauth from '/snippets/mcp-faqs/troubleshooting/_snowflake-oauth-fails.md';
-import MCPFaqSnowflakeEmpty from '/snippets/mcp-faqs/troubleshooting/_snowflake-empty-results.md';
-import MCPFaqSnowflakePermissions from '/snippets/mcp-faqs/troubleshooting/_snowflake-permission-errors.md';
 
 [Snowflake Cortex agents](https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-agents) can call external [MCP servers](https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-agents-mcp-connectors) as tools. This guide walks you through connecting a Cortex agent to the remote dbt MCP server so it can query your <Constant name="semantic_layer" /> metrics and dimensions in plain English from Snowflake Intelligence.
 
@@ -162,11 +159,11 @@ Open your agent in Snowflake Intelligence and ask one of its sample questions, s
 
 ## Troubleshooting
 
-<MCPFaqSnowflakeOauth />
+<FAQ path="dbt-mcp/troubleshooting/snowflake-oauth-fails" />
 
-<MCPFaqSnowflakeEmpty />
+<FAQ path="dbt-mcp/troubleshooting/snowflake-empty-results" />
 
-<MCPFaqSnowflakePermissions />
+<FAQ path="dbt-mcp/troubleshooting/snowflake-permission-errors" />
 
 ## Related docs
 
