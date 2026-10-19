@@ -99,7 +99,7 @@ Since August, Wizard ([running GLM 5.3](/docs/dbt-ai/wizard-billing-faqs#dbt-man
 
 One key piece of tooling we introduce to aid Wizard with context discovery is the [dbt Information Schema](/docs/build/dbt-information-schema) for your dbt project. It's pre-built and ready before your first prompt, so instead of reading files to work out how your project fits together, Wizard queries the dbt Information Schema. It also checks upstream and downstream dependencies before it changes code.
 
-<Lightbox src="/img/blog/2026-10-14-wizard-agent-harness/dbt-index-metadata-engine.png" width="85%" title="dbt build artifacts (manifest, catalog, run results, and semantic manifest) feed the dbt Information Schema, a set of DuckDB views over Parquet that Wizard queries for impact analysis, health checks, validation planning, and data profiling." />
+<Lightbox src="/img/blog/2026-10-14-wizard-agent-harness/dbt-index-metadata-engine.png" width="85%" title="dbt build artifacts (manifest, catalog, run results, and semantic manifest) feed the dbt Information Schema, a set of DuckDB views over parquet artifacts that Wizard queries for impact analysis, health checks, validation planning, and data profiling." />
 
 That metadata includes models, columns, refs, lineage (including [column-level lineage](/docs/explore/column-level-lineage)), tests, [contracts](/reference/resource-configs/contract), [semantic definitions](/docs/use-dbt-semantic-layer/dbt-sl), run results, and model health. When you ask Wizard "what breaks if I rename this column?", it can answer immediately from the project graph without needing to hunt down every model in the lineage and read all their contents.
 
