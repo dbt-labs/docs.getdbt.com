@@ -4,7 +4,7 @@ dbt user accounts need the following permissions to read from and create tables 
 
 <VersionBlock firstVersion="1.12">
 
-Starting in <Constant name="dbt" /> v1.12, dbt lists and looks up BigQuery routines (functions and stored procedures) when it scans datasets. If you use a custom IAM role instead of a predefined role, also grant:
+dbt lists and looks up BigQuery routines (functions and stored procedures) when it scans datasets. If you use a custom IAM role instead of a predefined role, also grant:
 - `bigquery.routines.list`: list routines in a dataset
 - `bigquery.routines.get`: read routine metadata
 
