@@ -155,7 +155,7 @@ To manually assign a specific type of license to a user on your team:
 
 ### Default license for new users
 
-Users who aren't assigned a license through SSO, SCIM, or license mapping receive the default license (this is **Developer**). Admins can change the default to **Read-Only** or **Analyst** (if available) to prevent new users from automatically using Developer licenses.
+Users who aren't assigned a license through SSO, SCIM, or license mapping receive the default license. Admins should check the settings and change the default to **Read-Only**, Developer** or **Analyst** (if available).
 
 To set the default license:
 
