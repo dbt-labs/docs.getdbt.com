@@ -29,7 +29,7 @@ With `analytics_prod` and `alice_dev` as target schemas, dbt builds each folder 
 Sources point at tables that already exist, typically in `raw`. dbt reads those tables; it does not build them. For more information, refer to [Staging](/best-practices/how-we-structure/2-staging) and [Sources](/docs/build/sources).
 
 :::note
-If the [Jaffle Shop](https://github.com/dbt-labs/jaffle-shop) example loads seed data into `raw` with `load_source_data`, those seeds use `+schema: raw` and dbt builds them in `<target_schema>_raw` by default.
+The [Jaffle Shop](https://github.com/dbt-labs/jaffle-shop) example can load seed data into `raw` when `load_source_data` is enabled. Those seeds use `+schema: raw` and land in the `raw` schema.
 :::
 
 ## Set custom schemas in `dbt_project.yml`
