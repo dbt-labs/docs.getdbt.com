@@ -6,7 +6,7 @@ Permissions:
 
 :::note
 
-Some permissions sets have read-only access to environment settings that can be overriden with more privileged access if the user is assigned to a group with [Environment write access](/docs/platform/manage-access/about-user-access#environment-write-access) configured.
+Some permissions sets have read-only access to environment settings that can be overridden with more privileged access if the user is assigned to a group with [Environment write access](/docs/platform/manage-access/about-user-access#environment-write-access) configured.
 
 :::
 
@@ -111,12 +111,12 @@ Key:
 | Develop (IDE or CLI)     |   W   |    W    |      -       |         -           |          -           |       -        |     W     |      -       |     -     |     -     |      -      |     -       |      -      |                  -                      |       -        |     -       |      -     |
 | Environments             |   W   |    R    |      R       |         -           |          -           |       R        |     R     |      -       |     R     |     W     |      R      |      -      |      R      |                  -                      |       -        |     R       |     R      |
 | dbt v2 upgrade           |   -   |    -    |      -       |         -           |          -           |       -        |     -     |      W       |     -     |     -     |      -      |     -       |      -      |                  -                      |        -       |      -      |     -      |
-| Jobs                     |   W   |    R<sup>*</sup>   |      -       |         R           |          R           |       R<sup>*</sup>       |     R<sup>*</sup>    |      -       |     R<sup>*</sup>    |     W     |      W      |      R      |      R      |                  -                      |       -        |     R       |     R<sup>*</sup>     |
+| Jobs                     |   W   |    R<sup>*</sup>   |      -       |         R           |          R           |       R<sup>*</sup>       |     R<sup>*</sup>    |      -       |     R<sup>*</sup>    |     W     |      R<sup>*</sup>      |      R      |      R      |                  -                      |       -        |     R       |     R<sup>*</sup>     |
 | Metadata GraphQL API access| R   |    R    |      R       |         R           |          R           |       R        |     R     |      -       |     R     |     R     |      R      |      -      |      R      |                  R                      |       -        |     R       |     R      |
 | Permissions              |   W   |    -    |      -       |         -           |          -           |       R        |     R     |      -       |     R     |     -     |      -      |      -      |      -      |                  -                      |       -        |     -       |     R      |
 | Projects                 |   W   |    R    |      R       |         R           |          R           |       W        |     R     |      -       |     W     |     R     |      R      |      -      |      R      |                  -                      |       -        |     R       |     W      |
 | Repositories             |   W   |    R    |      R       |         -           |          -           |       R        |     R     |      -       |     W     |     -     |      R      |      -      |      -      |                  -                      |       -        |     R       |     R      |
-| Runs                     |   W   |    R<sup>*</sup>   |      -       |         -           |          -           |       R<sup>*</sup>       |     R<sup>*</sup>    |      -       |     R<sup>*</sup>    |     W     |      W      |      W      |      R      |                  -                      |       -        |     R       |     R<sup>*</sup>     |
+| Runs                     |   W   |    R<sup>*</sup>   |      -       |         -           |          -           |       R<sup>*</sup>       |     R<sup>*</sup>    |      -       |     R<sup>*</sup>    |     W     |      R<sup>*</sup>      |      W      |      R      |                  -                      |       -        |     R       |     R<sup>*</sup>     |
 | Semantic Layer config    |   W   |    R    |      R       |         -           |          -           |       W        |     R     |      -       |     R     |     R     |      R      |      -      |      -      |                  -                      |        W       |     R       |     R      |
 
 

@@ -2,7 +2,7 @@
   "_meta": {
     "platform": "trino",
     "platform_name": "Trino",
-    "count": 439
+    "count": 442
   },
   "functions": [
     {
@@ -1084,6 +1084,13 @@
       "fusion_typecheck": true
     },
     {
+      "name": "JSON",
+      "category": "J#",
+      "docs_url": "https://trino.io/docs/current/functions/json.html#json-value-constructor",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "JSON_ARRAY",
       "category": "J#",
       "docs_url": "https://trino.io/docs/current/functions/json.html#json-array",
@@ -1157,6 +1164,20 @@
       "name": "JSON_QUERY",
       "category": "J#",
       "docs_url": "https://trino.io/docs/current/functions/json.html#json-query",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "JSON_SCALAR",
+      "category": "J#",
+      "docs_url": "https://trino.io/docs/current/functions/json.html#json_scalar",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "JSON_SERIALIZE",
+      "category": "J#",
+      "docs_url": "https://trino.io/docs/current/functions/json.html#json-serialize",
       "preview_status": "GA",
       "fusion_typecheck": false
     },

@@ -131,7 +131,7 @@ select
 
 ```yml
 models:
-  - name: dim_customers
+  - name: constraints_example
     config:
       contract:
         enforced: true
@@ -205,7 +205,7 @@ select
 
 ```yml
 models:
-  - name: dim_customers
+  - name: constraints_example
     config:
       contract:
         enforced: true
@@ -291,7 +291,7 @@ select
 
 ```yml
 models:
-  - name: dim_customers
+  - name: constraints_example
     config:
       contract:
         enforced: true
@@ -318,7 +318,7 @@ Expected DDL to enforce constraints:
 <File name='target/run/.../constraints_example.sql'>
 
 ```sql
-create or replace transient table <database>.<schema>.constraints_model        
+create or replace transient table <database>.<schema>.constraints_example        
 (
     id integer not null primary key,
     customer_name text,
@@ -366,7 +366,7 @@ select
 
 ```yml
 models:
-  - name: dim_customers
+  - name: constraints_example
     config:
       contract:
         enforced: true
@@ -384,6 +384,28 @@ models:
         data_type: string
       - name: first_transaction_date
         data_type: date
+```
+
+</File>
+
+### Expected DDL to enforce constraints:
+
+<File name='target/run/.../constraints_example.sql'>
+
+```sql
+create or replace table `<project>`.`<dataset>`.`constraints_example`        
+(
+    id integer not null,
+    customer_name string,
+    first_transaction_date date  
+)
+as
+(
+select 
+  1 as id, 
+  'My Favorite Customer' as customer_name, 
+  cast('2019-01-01' as date) as first_transaction_date
+);
 ```
 
 </File>
@@ -441,28 +463,6 @@ models:
 
 </File>
 
-### Expected DDL to enforce constraints:
-
-<File name='target/run/.../constraints_example.sql'>
-
-```sql
-create or replace table `<project>`.`<dataset>`.`constraints_model`        
-(
-    id integer not null,
-    customer_name string,
-    first_transaction_date date  
-)
-as
-(
-select 
-  1 as id, 
-  'My Favorite Customer' as customer_name, 
-  cast('2019-01-01' as date) as first_transaction_date
-);
-```
-
-</File>
-
 </div>
 
 <div warehouse="Databricks">
@@ -502,7 +502,7 @@ select
 
 ```yml
 models:
-  - name: dim_customers
+  - name: constraints_example
     config:
       contract:
         enforced: true
@@ -528,7 +528,7 @@ Expected DDL to enforce constraints:
 <File name='target/run/.../constraints_example.sql'>
 
 ```sql
-  create or replace table schema_name.my_model 
+  create or replace table schema_name.constraints_example 
   using delta 
   as
     select
@@ -542,9 +542,89 @@ Expected DDL to enforce constraints:
 Followed by the statements
 
 ```sql
-alter table schema_name.my_model change column id set not null;
-alter table schema_name.my_model add constraint 472394792387497234 check (id > 0);
+alter table schema_name.constraints_example change column id set not null;
+alter table schema_name.constraints_example add constraint 472394792387497234 check (id > 0);
 ```
+
+</div>
+
+<div warehouse="Fabric">
+
+Microsoft Fabric allows you to define:
+
+- A `not_null` constraint, which is checked when the model builds
+- The `primary_key`, `foreign_key`, and `unique` constraints, which are recorded on the table for reference but not checked when new data is added
+
+Be aware of the following limitations and requirements:
+
+- `check` constraints are not supported on Microsoft Fabric. Use [data tests](/docs/build/data-tests) such as `dbt_utils.expression_is_true` to validate custom rules instead.
+- Microsoft Fabric does not include all constraints in the initial `create table` statement. dbt creates the table first, then runs separate statements to add model-level constraints.
+- You must provide a `name` for each model-level constraint.
+- Columns in [snapshot](/docs/build/snapshots) source tables cannot have constraints. If a source column has a `not_null` constraint or similar rule, the snapshot may fail.
+
+For more on Microsoft Fabric setup, refer to [Microsoft Fabric Data Warehouse configurations](/reference/resource-configs/fabric-configs).
+
+<File name='models/constraints_example.sql'>
+
+```sql
+{{
+  config(
+    materialized = "table"
+  )
+}}
+
+select 
+  1 as id, 
+  'My Favorite Customer' as customer_name, 
+  cast('2019-01-01' as date) as first_transaction_date
+```
+
+</File>
+
+<File name='models/schema.yml'>
+
+```yml
+models:
+  - name: constraints_example
+    config:
+      contract:
+        enforced: true
+    constraints:
+      - type: primary_key
+        columns: [id]
+        name: pk_constraints_example
+    columns:
+      - name: id
+        data_type: int
+        constraints:
+          - type: not_null
+          - type: check       # not supported -- will warn & skip
+            expression: "id > 0"
+        data_tests:
+          - unique            # primary_key constraint is not enforced
+      - name: customer_name
+        data_type: varchar(100)
+      - name: first_transaction_date
+        data_type: date
+```
+
+</File>
+
+Expected SQL to enforce constraints:
+<File name='target/run/.../constraints_example.sql'>
+
+```sql
+create table schema_name.constraints_example
+(
+    id int not null,
+    customer_name varchar(100),
+    first_transaction_date date
+);
+
+alter table schema_name.constraints_example add constraint pk_constraints_example primary key nonclustered(id) not enforced;
+```
+
+</File>
 
 </div>
 
@@ -572,7 +652,7 @@ Here's an example of how to implement tag-based masking policies with contracts 
 ```yaml
 
 models:
-  - name: my_model
+  - name: constraints_example
     config:
       contract:
         enforced: true
@@ -602,7 +682,7 @@ Alternatively, you can add a masking policy without tags:
 ```yaml
 
 models:
-  - name: my_model
+  - name: constraints_example
     config:
       contract:
         enforced: true
