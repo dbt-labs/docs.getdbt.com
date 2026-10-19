@@ -185,6 +185,12 @@ def model(dbt, session):
 
 There's a limit to how complex you can get with the `dbt.config()` method. It accepts _only_ literal values (strings, booleans, and numeric types) and dynamic configuration. Passing another function or a more complex data structure is not possible. The reason is that dbt statically analyzes the arguments to `config()` while parsing your model without executing your Python code. If you need to set a more complex configuration, we recommend you define it using the [`config` property](/reference/resource-properties/config) in a properties YAML file.
 
+Platform-specific parameters are documented on each adapter's page:
+
+- [BigQuery](/reference/resource-configs/bigquery-configs#additional-parameters)
+- [Databricks](/reference/resource-configs/databricks-configs#python-submission-methods)
+- [Snowflake](/reference/resource-configs/snowflake-configs#additional-parameters)
+
 #### Accessing project context
 
 dbt Python models don't use Jinja to render compiled code. Python models have limited access to global project contexts compared to SQL models. That context is made available from the `dbt` class, passed in as an argument to the `model()` function.

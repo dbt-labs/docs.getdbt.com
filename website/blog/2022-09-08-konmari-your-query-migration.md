@@ -112,7 +112,7 @@ We are ready to unpack our kitchen. Use your design as a guideline for [modulari
 
 - Build your staging tables first, and then your intermediate tables in your pre-planned buckets.
 - Important, reusable joins that are performed in the final query should be moved upstream into their own modular models, as well as any joins that are repeated in your query.
-- Remember that you don’t want to make these intermediate tables *too* specific. Don’t apply filters if it causes the model to be consumable by only one query downstream. If you do this, you aren’t creating a scalable project, you’re just recreating the same issue as your original query, but spread amongst mulitple models, which will be hard to untangle later.
+- Remember that you don’t want to make these intermediate tables *too* specific. Don’t apply filters if it causes the model to be consumable by only one query downstream. If you do this, you aren’t creating a scalable project, you’re just recreating the same issue as your original query, but spread amongst multiple models, which will be hard to untangle later.
 
 Your final query should be concretely defined — is it a <Term id="dimensional-modeling">fact or dimension</Term> table? Is it a report table? What are the stepping stones to get there? What’s the most performant way to [materialize](/docs/build/materializations)?
 

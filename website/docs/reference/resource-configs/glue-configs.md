@@ -29,7 +29,7 @@ For that reason, the dbt-glue plugin leans heavily on the [`incremental_strategy
 Each of these strategies has its pros and cons, which we'll discuss below. As with any model config, `incremental_strategy` may be specified in `dbt_project.yml` or within a model file's `config()` block.
 
 **Notes:**
-The default strategie is **`insert_overwrite`**
+The default strategy is **`insert_overwrite`**
 
 ### The `append` strategy
 
