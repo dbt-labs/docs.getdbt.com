@@ -306,7 +306,7 @@ Archived release notes for <Constant name="dbt" /> from 2023
     ## :zap: General docs projects
 
     * Added the ability to collapse sections you’re not currently looking at. There were quite a few people who wanted this, and it bugged us too, so we were happy to get this shipped!
-    * Introduced the idea of [“Trusted” adapters](/docs/supported-data-platforms#types-of-adapters).
+    * Introduced the idea of [“Trusted” adapters](/docs/community-adapters).
 
     ## ☁ Cloud projects
 
@@ -331,7 +331,7 @@ Archived release notes for <Constant name="dbt" /> from 2023
 
 - <Expandable alt_header='Removing prerelease versions'>
 
-    Previously, when dbt Labs released a new [version](/docs/dbt-versions#how-dbt-core-uses-semantic-versioning) in dbt Cloud, the older patch _prerelease_ version and the _latest_ version remained as options in the dropdown menu available in the **Environment settings**. Now, when the _latest_ version is released, the _prerelease_ version will be removed and all customers remaining on it will be migrated seamlessly. There will be no interruptions to service when this migration occurs. 
+    Previously, when dbt Labs released a new [version](/docs/dbt-versions#how-dbt-v1-uses-semantic-versioning) in dbt Cloud, the older patch _prerelease_ version and the _latest_ version remained as options in the dropdown menu available in the **Environment settings**. Now, when the _latest_ version is released, the _prerelease_ version will be removed and all customers remaining on it will be migrated seamlessly. There will be no interruptions to service when this migration occurs. 
 
     To see which version you are currently using and to upgrade, select **Deploy** in the top navigation bar and select **Environments**. Choose the preferred environment and click **Settings**. Click **Edit** to make a change to the current dbt version. dbt Labs recommends always using the latest version whenever possible to take advantage of new features and functionality. 
 

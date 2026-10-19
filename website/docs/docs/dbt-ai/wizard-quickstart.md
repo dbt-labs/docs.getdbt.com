@@ -29,7 +29,7 @@ Install <Constant name="wizard" /> locally and start an agentic dbt development 
 - Access to a [supported AI provider](#supported-ai-providers). Use a dbt managed provider or configure [BYOK](/docs/dbt-ai/wizard-byok) with your own provider credentials.
 - A dbt project with a built `target/` directory (run `dbt parse`, `dbt compile`, or `dbt build`)
 
-<Constant name="wizard" /> is data warehouse agnostic and works with both the [<Constant name="fusion_engine" />](/docs/introduction) and [<Constant name="core" />](/docs/local/install-dbt) &mdash; no specific engine is required.
+<Constant name="wizard" /> is data warehouse agnostic and works on both v1 and v2.
 
 ## Supported AI providers
 
@@ -37,7 +37,7 @@ Install <Constant name="wizard" /> locally and start an agentic dbt development 
 
 <VersionBlock lastVersion="1.99">
 
-:::tip Upgrade to the <Constant name="fusion_engine" />
+:::tip Upgrade to <Constant name="fusion_engine" />
 On <Constant name="fusion_engine"/> (version 2.0 and later), start <Constant name="wizard"/> with `wizard` and use `wizard COMMAND_NAME` for CLI commands.
 :::
 

@@ -2,7 +2,7 @@
   "_meta": {
     "platform": "databricks",
     "platform_name": "Databricks",
-    "count": 775
+    "count": 784
   },
   "functions": [
     {
@@ -76,6 +76,20 @@
       "fusion_typecheck": false
     },
     {
+      "name": "AI_DECIDE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/ai_decide",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "AI_DETECT_ANOMALIES",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/ai_detect_anomalies",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "AI_ENRICH",
       "category": "Built-in",
       "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/ai_enrich",
@@ -132,6 +146,20 @@
       "fusion_typecheck": false
     },
     {
+      "name": "AI_PREDICT_CLASS",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/ai_predict_class",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "AI_PREDICT_VALUE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/ai_predict_value",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "AI_PREP_SEARCH",
       "category": "Built-in",
       "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/ai_prep_search",
@@ -170,6 +198,13 @@
       "name": "AI_TOP_DRIVERS",
       "category": "Built-in",
       "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/ai_top_drivers",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "AI_TRANSCRIBE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/ai_transcribe",
       "preview_status": "GA",
       "fusion_typecheck": false
     },
@@ -888,6 +923,13 @@
       "fusion_typecheck": true
     },
     {
+      "name": "COUNTER_DIFF",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/counter_diff",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "COVAR_POP",
       "category": "Built-in",
       "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/covar_pop",
@@ -984,6 +1026,13 @@
       "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/current_schema",
       "preview_status": "GA",
       "fusion_typecheck": true
+    },
+    {
+      "name": "CURRENT_SNAPSHOT_VERSION",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/current_snapshot_version",
+      "preview_status": "GA",
+      "fusion_typecheck": false
     },
     {
       "name": "CURRENT_TIME",
@@ -1819,6 +1868,13 @@
       "fusion_typecheck": true
     },
     {
+      "name": "HMAC",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/hmac",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "HOUR",
       "category": "Built-in",
       "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/hour",
@@ -2286,6 +2342,13 @@
       "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/last_day",
       "preview_status": "GA",
       "fusion_typecheck": true
+    },
+    {
+      "name": "LAST_SNAPSHOT_VERSION",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/last_snapshot_version",
+      "preview_status": "GA",
+      "fusion_typecheck": false
     },
     {
       "name": "LAST_VALUE",

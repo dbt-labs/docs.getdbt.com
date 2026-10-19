@@ -7,7 +7,7 @@ hoverSnippet: Learn how to optimize and troubleshoot your dbt models on Databric
 # time_to_complete: '30 minutes' commenting out until we test
 icon: 'databricks'
 hide_table_of_contents: true
-tags: ['Databricks', 'dbt Core','dbt platform']
+tags: ['Databricks', 'dbt platform']
 level: 'Intermediate'
 ---
 
@@ -99,7 +99,7 @@ An important item to clarify is that you will want to prioritize statistics for 
 
 ### Vacuum
 
-When you delete a record from a Delta table, it is a soft delete. What this means is that the record is deleted from the transaction log and is not included in subsequent queries, but the underlying file still remains in cloud storage. If you want to delete the underlying files as well (whether for reducing storage cost or augmenting performance on merges), you can run a vacuum command. The factor you will want to be very cognizant of is restoring older versions of the table. Let’s say  you vacuum a table to delete all unused files that’s older than 7 days. You won’t be  able to restore versions of the table from over 7 days ago that rely on those deleted  files, so use with caution. If/when you choose to leverage vacuum, you will likely want to run vacuum using the dbt functionality [on-run-end](/reference/project-configs/on-run-start-on-run-end) after your model builds or run vacuum as a separate scheduled dbt job on a consistent cadence (whether it is daily, weekly, or monthly) using the dbt [run-operation](/reference/commands/run-operation) command (with the vaccum statement in a macro).
+When you delete a record from a Delta table, it is a soft delete. What this means is that the record is deleted from the transaction log and is not included in subsequent queries, but the underlying file still remains in cloud storage. If you want to delete the underlying files as well (whether for reducing storage cost or augmenting performance on merges), you can run a vacuum command. The factor you will want to be very cognizant of is restoring older versions of the table. Let’s say  you vacuum a table to delete all unused files that’s older than 7 days. You won’t be  able to restore versions of the table from over 7 days ago that rely on those deleted  files, so use with caution. If/when you choose to leverage vacuum, you will likely want to run vacuum using the dbt functionality [on-run-end](/reference/project-configs/on-run-start-on-run-end) after your model builds or run vacuum as a separate scheduled dbt job on a consistent cadence (whether it is daily, weekly, or monthly) using the dbt [run-operation](/reference/commands/run-operation) command (with the vacuum statement in a macro).
 
 ### Gold / Marts Layer
 
@@ -161,7 +161,7 @@ The concept of _exploding joins_ refers to a `join` operation that produces a mu
 
 Remember that data is stored as files, so the unit of I/O work is a file, not a row. That’s a lot of work if we’re dealing with TBs of data. Therefore we recommend relying on merge strategy as the recommended strategy for the majority of incremental models.
 
-Databricks is committed to continuously improving its performance. For example, in Delta and DBSQL, we’ve greatly improved performance of MERGE operations recently with [low-shuffle merge and Photon](https://www.databricks.com/blog/2022/10/17/faster-merge-performance-low-shuffle-merge-and-photon.html). With many future implementations in the pipeline such as deletion vectors for efficient deletes & upserts.Here’s the basic strategies to speed it up:
+Databricks is committed to continuously improving its performance. For example, in Delta and DBSQL, we’ve greatly improved performance of MERGE operations recently with [low-shuffle merge and Photon](https://www.databricks.com/blog/2022/10/17/faster-merge-performance-low-shuffle-merge-and-photon.html). With many future implementations in the pipeline such as deletion vectors for efficient deletes & upserts. Here’s the basic strategies to speed it up:
 
 1. Only read partitions that are important by pushing down filters to scan source and target using filters in *model* and *incremental_predicates*
 2. Only update important rows

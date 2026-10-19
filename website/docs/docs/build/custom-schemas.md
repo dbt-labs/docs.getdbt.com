@@ -208,10 +208,11 @@ In the `generate_schema_name` macro examples shown in the [built-in alternative 
 
 If your schema names are being generated incorrectly, double-check your target name in the relevant environment.
 
-For more information, consult the [managing environments in <Constant name="core" />](/docs/local/dbt-environments) guide.
+For more information, consult the [managing environments in <Constant name="dbt" />](/docs/local/dbt-environments) guide.
 
 ## Related docs
 
+- [Mapping project folders to warehouse schemas](/best-practices/how-we-structure/6-mapping-folders-to-warehouse) to map staging, intermediate, and marts folders to warehouse schemas
 - [Customize dbt models database, schema, and alias](/guides/customize-schema-alias?step=1) to learn how to customize dbt models database, schema, and alias
 - [Custom database](/docs/build/custom-databases) to learn how to customize dbt model database
 - [Custom aliases](/docs/build/custom-aliases) to learn how to customize dbt model alias name

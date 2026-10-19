@@ -29,15 +29,15 @@ sources:
 
     [config](/reference/resource-properties/config): # requires v1.1+
       [<source_config>](/reference/source-configs): <config_value>
-      [loaded_at_field](/reference/resource-properties/freshness#loaded_at_field): <column_name> # moved under config in v1.10
-      [freshness](/reference/resource-properties/freshness): # moved under config in v1.10
+      [loaded_at_field](/reference/resource-configs/freshness): <column_name> # moved under config in v1.10
+      [freshness](/reference/resource-configs/freshness): # moved under config in v1.10
         warn_after:
-          [count](/reference/resource-properties/freshness#count): <positive_integer>
-          [period](/reference/resource-properties/freshness#period): minute | hour | day
+          [count](/reference/resource-configs/freshness#count): <positive_integer>
+          [period](/reference/resource-configs/freshness#period): minute | hour | day
         error_after:
-          [count](/reference/resource-properties/freshness#count): <positive_integer>
-          [period](/reference/resource-properties/freshness#period): minute | hour | day
-        [filter](/reference/resource-properties/freshness#filter): <where-condition>
+          [count](/reference/resource-configs/freshness#count): <positive_integer>
+          [period](/reference/resource-configs/freshness#period): minute | hour | day
+        [filter](/reference/resource-configs/freshness#filter): <where-condition>
       [meta](/reference/resource-configs/meta): {<dictionary>} # moved under config in v1.10
       [tags](/reference/resource-configs/tags): [<string>] # moved under config in v1.10
 
@@ -56,17 +56,17 @@ sources:
           - <test>
           - ... # declare additional tests
         [config](/reference/resource-properties/config):
-          [loaded_at_field](/reference/resource-properties/freshness#loaded_at_field): <column_name>
+          [loaded_at_field](/reference/resource-configs/freshness): <column_name>
           [meta](/reference/resource-configs/meta): {<dictionary>}
           [tags](/reference/resource-configs/tags): [<string>]
-          [freshness](/reference/resource-properties/freshness):
+          [freshness](/reference/resource-configs/freshness):
             warn_after:
-              [count](/reference/resource-properties/freshness#count): <positive_integer>
-              [period](/reference/resource-properties/freshness#period): minute | hour | day
+              [count](/reference/resource-configs/freshness#count): <positive_integer>
+              [period](/reference/resource-configs/freshness#period): minute | hour | day
             error_after:
-              [count](/reference/resource-properties/freshness#count): <positive_integer>
-              [period](/reference/resource-properties/freshness#period): minute | hour | day
-            [filter](/reference/resource-properties/freshness#filter): <where-condition>
+              [count](/reference/resource-configs/freshness#count): <positive_integer>
+              [period](/reference/resource-configs/freshness#period): minute | hour | day
+            [filter](/reference/resource-configs/freshness#filter): <where-condition>
 
         [quoting](/reference/resource-properties/quoting):
           database: true | false

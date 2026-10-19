@@ -19,7 +19,7 @@ This guide will teach you how to refresh a Mode dashboard when a <Constant name=
  - Receive a webhook notification in Zapier
  - Trigger a refresh of a Mode report
 
-Although we are using the Mode API for a concrete example, the principles are readily transferrable to your [tool](https://learn.hex.tech/docs/develop-logic/hex-api/api-reference#operation/RunProject) [of](https://learn.microsoft.com/en-us/rest/api/power-bi/datasets/refresh-dataset) [choice](https://help.tableau.com/current/api/rest_api/en-us/REST/rest_api_ref.htm#update_workbook_now). 
+Although we are using the Mode API for a concrete example, the principles are readily transferable to your [tool](https://learn.hex.tech/docs/develop-logic/hex-api/api-reference#operation/RunProject) [of](https://learn.microsoft.com/en-us/rest/api/power-bi/datasets/refresh-dataset) [choice](https://help.tableau.com/current/api/rest_api/en-us/REST/rest_api_ref.htm#update_workbook_now). 
 
 ### Prerequisites
 
@@ -60,7 +60,7 @@ If you haven't already got one, go to [https://zapier.com/app/connections/storag
 Choose **Run Python** as the Event. Run the following code: 
 ```python 
 store = StoreClient('abc123') #replace with your UUID secret
-store.set('DBT_WEBHOOK_KEY', 'abc123') #replace with your <Constant name="dbt" /> API token
+store.set('DBT_WEBHOOK_KEY', 'abc123') #replace with your dbt API token
 store.set('MODE_API_TOKEN', 'abc123') #replace with your Mode API Token
 store.set('MODE_API_SECRET', 'abc123') #replace with your Mode API Secret
 ```
@@ -99,7 +99,7 @@ password = secret_store.get('MODE_API_SECRET')
 signature = hmac.new(hook_secret.encode('utf-8'), raw_body.encode('utf-8'), hashlib.sha256).hexdigest()
 
 if signature != auth_header:
-  raise Exception("Calculated signature doesn't match contents of the Authorization header. This webhook may not have been sent from <Constant name="dbt" />.")
+  raise Exception("Calculated signature doesn't match contents of the Authorization header. This webhook may not have been sent from dbt.")
 
 full_body = json.loads(raw_body)
 hook_data = full_body['data'] 

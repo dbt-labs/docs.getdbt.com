@@ -41,11 +41,23 @@ You should start using `catalogs` when:
 - You want to write to multiple catalogs ("external" as well as built-in / managed)
 - You want to access the same catalog across multiple data platforms / dbt projects
 
-dbt defines `catalogs` in a single top-level file, `catalogs.yml`, that lives in the root of your project directory. We first introduced `catalogs.yml` in <Constant name="core" /> v1.10; starting in <Constant name="core" /> v1.12, we've introduced a new simpler spec (recommended) behind an opt-in behavior flag.
+<VersionBlock lastVersion="1.99">
 
-### New spec (recommended) <Lifecycle status="beta" />
+dbt defines `catalogs` in a single top-level file, `catalogs.yml`, that lives in the root of your project directory. We first introduced `catalogs.yml` in <Constant name="dbt" /> v1.10; starting in <Constant name="dbt" /> v1.12, we've introduced a new simpler spec (recommended) behind an opt-in behavior flag.
 
-_Available in <Constant name="core" /> v1.12+ (including <Constant name="core_v2" /> and <Constant name="fusion" />). See GitHub discussion [dbt-core#12723](https://github.com/dbt-labs/dbt-core/discussions/12723) for an explanation of the motivations behind the new spec, and an overview of what's changed._
+</VersionBlock>
+
+<VersionBlock firstVersion="2.0">
+
+dbt defines `catalogs` in a single top-level file, `catalogs.yml`, that lives in the root of your project directory. We first introduced `catalogs.yml` in <Constant name="dbt" /> v1.10, and <Constant name="dbt" /> v1.12 added a new simpler spec (recommended). In <Constant name="fusion" />, the new spec is the default. To keep using the old spec, set `use_catalogs_v2: false` under `flags:` in `dbt_project.yml`.
+
+</VersionBlock>
+
+### New spec (recommended) <VersionBlock lastVersion="1.99"><Lifecycle status="beta" /></VersionBlock>
+
+_Available in <Constant name="dbt" /> v1.12+ (including v2). See GitHub discussion [dbt-labs/dbt#12723](https://github.com/dbt-labs/dbt/discussions/12723) for an explanation of the motivations behind the new spec, and an overview of what's changed._
+
+<VersionBlock lastVersion="1.99">
 
 To use the new spec, first set this behavior flag:
 
@@ -57,6 +69,8 @@ flags:
 ```
 
 </File>
+
+</VersionBlock>
 
 Each entry in `catalogs` refers to a specific catalog containing Iceberg tables. Each catalog **should** map to a top-level logical namespace (often called "database" in dbt). Each catalog may be managed or external for this data platform. Each catalog may be accessed (read from and written to) by one or multiple data platforms.
 
@@ -72,7 +86,7 @@ That said, one "catalog" **must** always point to the same actual data (Iceberg 
 catalogs:
   - name: my_iceberg_catalog
     type: CATALOG_TYPE     # see below
-    table_format: iceberg  # default, optional
+    table_format: iceberg  # required
     config:
       ADAPTER:
         # Configuration for a specific adapter to integrate with this catalog.
@@ -88,7 +102,8 @@ catalogs:
 | catalog `type`    | default for | supported by                  | Notes                                                                                         |
 |-------------------|-------------|-------------------------------|-----------------------------------------------------------------------------------------------|
 | horizon           | snowflake   | snowflake, duckdb             |                                                                                               |
-| glue              | athena      | athena, snowflake, duckdb     |                                                                                               |
+| glue              | athena      | athena, snowflake, duckdb     | Default catalog type for Athena. Refer to [Iceberg catalogs](/reference/resource-configs/athena-configs#iceberg-catalogs). |
+| s3_tables         |             | athena                        | Iceberg catalogs managed by Amazon S3 Tables (`dbt-athena` 1.11.1 and later). Refer to [AWS S3 Tables](/reference/resource-configs/athena-configs#aws-s3-tables). |
 | biglake_metastore | bigquery    | bigquery, snowflake           | Supports BigQuery [Lakehouse Runtime Catalog tables](/docs/build/iceberg/adapters/bigquery-iceberg-support#lakehouse-runtime-catalog-lrc) through the `lakehouse_catalog` config |
 | unity             | databricks  | databricks, snowflake, duckdb | Supports Iceberg (native), Delta, "Uniform" formats                                           |
 | hive_metastore    |             | databricks                    | Supports Hudi format, in addition to Iceberg + Delta                                          |
@@ -107,7 +122,7 @@ For example, you set a default `base_location_root` for all models in the `finan
 ```yml
 catalogs:
   - name: finance_db
-    catalog_type: unity
+    type: unity
     config:
       snowflake:
         base_location_root: 's3://my-bucket/finance_db'
@@ -143,7 +158,22 @@ If you don't specify a `catalog_database`, then dbt materializes models based on
 
 ### Old spec
 
-_Available in <Constant name="core" /> v1.10+_
+_Available in <Constant name="dbt" /> v1.10+_
+
+<VersionBlock firstVersion="2.0">
+
+To use the old spec, first set this behavior flag:
+
+<File name='dbt_project.yml'>
+
+```yml
+flags:
+  use_catalogs_v2: false
+```
+
+</File>
+
+</VersionBlock>
 
 Each catalog configures one or more `write_integrations`, and then specifies an "active" write integration to use for the current invocation / data warehouse.
 

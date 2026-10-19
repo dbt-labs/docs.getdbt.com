@@ -2,7 +2,7 @@
 title: "About References"
 id: "references-overview"
 sidebar_label: "About References"
-description: "Connect dbt to any data platform in the dbt platform or dbt Core, using a dedicated adapter plugin"
+description: "Connect dbt to any data platform in the dbt platform or locally, using a dedicated adapter plugin"
 hide_table_of_contents: true
 pagination_next: null
 pagination_prev: null
@@ -42,6 +42,12 @@ Learn how to add more configurations to your dbt project or adapter, use propert
     title="dbt Commands"
     body="Outlines the commands supported by dbt and their relevant flags."
     link="/reference/dbt-commands"
+    icon="computer"/>
+
+<Card
+    title="Jinja support by file type"
+    body="Which dbt file types support Jinja expressions, built-in functions, and custom macros."
+    link="/reference/jinja-file-support"
     icon="computer"/>
 
 <Card

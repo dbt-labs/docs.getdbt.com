@@ -16,12 +16,12 @@ The following sections list every tool by category, along with which server type
 | Tools | Local | Remote |
 | --- | --- | --- |
 | [dbt commands](#dbt-commands)  | ✅ | ❌ |
-| [Semantic Layer](#semantic-layer) | ✅ | ✅ |
+| [Semantic Layer (Semantic Layer API)](#semantic-layer) | ✅ | ✅ |
 | [SQL](#sql)  | ✅ | ✅ |
-| [Metadata Discovery](#discovery) | ✅ | ✅ |
-| [Administrative API](#admin-api) | ✅ | ✅ |
+| [Metadata Discovery (Discovery API)](#discovery) | ✅ | ✅ |
+| [Administrative API (Admin API)](#admin-api) | ✅ | ✅ |
 | [Codegen Tools](#dbt-codegen) | ✅ | ❌ |
-| [Fusion Tools](#dbt-lsp) | ✅ | ✅ |
+| [dbt v2 Tools](#dbt-lsp) | ✅ | ✅ |
 | [Product Docs Tools](#product-docs) |  ✅ | ✅ |
 | [MCP Server Metadata Tools](#mcp-server-metadata) | ✅ | ✅ |
 
@@ -38,4 +38,8 @@ If an admin turns AI features off, `text_to_sql` doesn't appear in the tool list
 The following tool list is available for your MCP server and is auto-fetched from the [dbt MCP server README on GitHub](https://github.com/dbt-labs/dbt-mcp#tools) when the docs are built, so it stays in sync with each release.
 
 <McpToolsFromReadme />
+
+### Find jobs across project environments
+
+Use the `list_jobs` [tool](#admin-api) with a `project_id` to list jobs across every environment in a dbt project. This is useful when you need to inspect jobs outside the configured production environment. Without `project_id`, `list_jobs` continues to use the configured production environment, or lists jobs across the account when no production environment is configured.
  

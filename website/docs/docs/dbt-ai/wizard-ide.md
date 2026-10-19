@@ -11,6 +11,7 @@ import CopilotResources from '/snippets/_use-copilot-resources.md';
 import WizardIde from '/snippets/_wizard-ide.md';
 import WizardExploreUsage from '/snippets/_wizard-explore-usage.md';
 import WizardModelPicker from '/snippets/_wizard-model-picker.md';
+import WizardVideoCourse from '/snippets/_wizard-video-course.md';
 
 # dbt Wizard in Studio IDE <Lifecycle status="preview"/>
 
@@ -32,6 +33,8 @@ The agent comes with the following out of the box, meaning no configuration need
 - [dbt MCP server Product docs toolset](/docs/dbt-ai/mcp-available-tools#product-docs): Tools for searching and fetching content from dbt's official documentation.
 
 AI features are being enabled by default. They're already on for new accounts and are rolling out soon to existing accounts. If your organization opted out, they'll remain off. Admins can [turn AI off or back on and configure providers](/docs/platform/manage-dbt-ai) anytime.
+
+<WizardVideoCourse />
 
 ### Prerequisites
 
@@ -66,7 +69,7 @@ In the <Constant name="studio_ide" />, the answer and its visualization appear i
 
 ## Related docs
 
-- [About dbt Wizard in the dbt platform](/docs/platform/wizard-platform)
+- [About dbt Wizard in dbt platform](/docs/platform/wizard-platform)
 - [dbt v2 readiness checklist](/docs/dbt/dbt-readiness)
 - [Develop with dbt Wizard](/docs/platform/studio-ide/develop-studio-ai)
 - [Prompt cookbook](/guides/prompt-cookbook)

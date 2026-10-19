@@ -89,7 +89,7 @@ Our [style guide](https://github.com/dbt-labs/corp/blob/main/dbt_style_guide.md)
 ### Consider the information architecture of your data warehouse
 When a user connects to a <Term id="data-warehouse" /> via a SQL client, they often rely on the names of schemas, relations, and columns, to understand the data they are presented with. To improve the information architecture of a data warehouse, we:
 
-* Use [custom schemas](/docs/build/custom-schemas) to separate relations into logical groupings, or hide intermediate models in a separate schema. Generally, these custom schemas align with the directories we use to group our models, and are configured from the `dbt_project.yml` file.
+* Use [custom schemas](/docs/build/custom-schemas) to separate relations into logical groupings, or hide intermediate models in a separate schema. Generally, these custom schemas align with the directories we use to group our models, and are configured from the `dbt_project.yml` file. For the recommended folder-to-schema mapping, refer to [Mapping project folders to warehouse schemas](/best-practices/how-we-structure/6-mapping-folders-to-warehouse).
 * Use prefixes in <Term id="table" /> names (for example, `stg_`, `fct_` and `dim_`) to indicate which relations should be queried by end users.
 
 ### Choose your materializations wisely
@@ -113,7 +113,7 @@ To merge code changes with confidence, you want to know that those changes will 
 
 At the same time, it costs time (and money) to run and test all the models in your project. This inefficiency feels especially painful if your PR only proposes changes to a handful of models.
 
-By comparing to artifacts from a previous production run, dbt can determine which models are modified and build them on top of of their unmodified parents.
+By comparing to artifacts from a previous production run, dbt can determine which models are modified and build them on top of their unmodified parents.
 
 ```bash
 dbt run -s state:modified+ --defer --state path/to/prod/artifacts
@@ -212,4 +212,4 @@ We find it most useful to separate these two types of transformations into diffe
 If you're using macros or other pieces of Jinja in your models, your compiled SQL (found in the `target/compiled` directory) may contain unwanted whitespace. Check out the [Jinja documentation](http://jinja.pocoo.org/docs/2.10/templates/#whitespace-control) to learn how to control generated whitespace.
 
 ## Related docs
-- [Updating our permissioning guidelines: grants as configs in <Constant name="core" /> v1.2](/blog/configuring-grants)
+- [Updating our permissioning guidelines: grants as configs in dbt v1.2](/blog/configuring-grants)

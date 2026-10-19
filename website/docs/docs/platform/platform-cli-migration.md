@@ -9,9 +9,9 @@ Starting September 14, 2026, `pip install dbt` will install dbt v2 instead of th
 
 ## What's changing
 
-Starting September 14, 2026, `pip install dbt` will install dbt v2, dbt's next-generation Rust-based engine, instead of the <Constant name="platform_cli" />. This is a one-time change to what the `dbt` package on PyPI contains, not a <Constant name="platform_cli" /> upgrade.
+Starting September 14, 2026, `pip install dbt` will install v2, dbt's next-generation Rust-based engine, instead of the <Constant name="platform_cli" />. This is a one-time change to what the `dbt` package on PyPI contains, not a <Constant name="platform_cli" /> upgrade.
 
-If you install the <Constant name="platform_cli" /> using pip today and don't pin a version, your next `pip install dbt` or `pip install --upgrade dbt` installs dbt v2 instead. dbt v2 is a different engine: it runs locally against a warehouse connection you configure yourself, instead of running your commands against your <Constant name="dbt_platform" /> development environment. Commands like `dbt cancel`, `dbt reattach`, `dbt environment`, `dbt sl export`, and `dbt sqlfluff` don't exist in dbt v2.
+If you install the <Constant name="platform_cli" /> using pip today and don't pin a version, your next `pip install dbt` or `pip install --upgrade dbt` installs v2 instead. dbt v2 is a different engine: it runs locally against a warehouse connection you configure yourself, instead of running your commands against your <Constant name="dbt_platform" /> development environment. Commands like `dbt cancel`, `dbt reattach`, `dbt environment`, `dbt sl export`, and `dbt sqlfluff` don't exist in v2.
 
 ## What to do
 
@@ -34,8 +34,8 @@ This keeps working indefinitely, but won't receive further <Constant name="platf
 
 ## FAQ
 
-- **Why is dbt Labs doing this?** dbt v2 is the new default `dbt` engine going forward. Publishing it under the `dbt` name on PyPI means new users get dbt v2 by default, matching how `dbt` already behaves everywhere else (Homebrew, standalone install).
+- **Why is dbt Labs doing this?** dbt v2 is the new default `dbt` engine going forward. Publishing it under the `dbt` name on PyPI means new users get v2 by default, matching how `dbt` already behaves everywhere else (Homebrew, standalone install).
 
 - **Will my pinned <Constant name="platform_cli" /> version stop working?** No. Pinned installs keep working. They just won't get new <Constant name="platform_cli" /> releases through pip after September 14. For that, reinstall using a currently supported method.
 
-- **How do I tell which one I have installed?** `dbt --version`. The <Constant name="platform_cli" /> prints a version like `0.40.20`; the corresponding version on PyPI is `1.0.0.40.20`. dbt v2's version string needs reconfirming post-update. At the time this article was published, dbt v2's binary still internally identifies as `dbt-fusion X.Y.Z`, which may change.
+- **How do I tell which one I have installed?** `dbt --version`. The <Constant name="platform_cli" /> prints a version like `0.40.20`; the corresponding version on PyPI is `1.0.0.40.20`. dbt v2's version string needs reconfirming post-update. At the time this article was published, v2's binary still internally identifies as `dbt-fusion X.Y.Z`, which may change.

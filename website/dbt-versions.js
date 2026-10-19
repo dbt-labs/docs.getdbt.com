@@ -32,12 +32,17 @@ const products = [
     get subProducts() {
       const specific = [
         {
-          name: "dbt Core v1.12",
+          name: "dbt v1.13",
+          version: "1.13",
+          stage: "beta",
+        },
+        {
+          name: "dbt v1.12",
           EOLDate: "2027-07-15",
           version: "1.12",
         },
         {
-          name: "dbt Core v1.11",
+          name: "dbt v1.11",
           EOLDate: "2026-12-18",
           version: "1.11",
         },
@@ -101,6 +106,9 @@ exports.versions = products.flatMap((product) =>
  * lastVersion to further restrict by version within that product.
  */
 exports.versionedPages = [
+  { page: "docs/build/ossie-semantic-models", firstVersion: "1.12", lastVersion: "1.99" },
+  { page: "docs/dbt-ai/package-skills", firstVersion: "2.0" },
+  { page: "reference/project-configs/skill-paths", firstVersion: "2.0" },
   { page: "docs/dbt/fusion", firstVersion: "2.0" },
   { page: "docs/dbt/dbt-availability", firstVersion: "2.0" },
   { page: "docs/dbt/dbt-readiness", firstVersion: "2.0" },
@@ -109,7 +117,7 @@ exports.versionedPages = [
   { page: "docs/dbt/fusion-networking", firstVersion: "2.0" },
   { page: "docs/dbt/dbt-releases", firstVersion: "2.0" },
   { page: "docs/dbt/telemetry", firstVersion: "2.0" },
-  { page: "reference/commands/login", firstVersion: "2.0" },
+  { page: "reference/commands/login", firstVersion: "1.13" },
   { page: "docs/dbt/about-dbt", firstVersion: "2.0" },
   { page: "docs/dbt/about-dbt-install", firstVersion: "2.0" },
   { page: "docs/dbt/adbc", firstVersion: "2.0" },
@@ -122,6 +130,7 @@ exports.versionedPages = [
   { page: "reference/commands/dbt-environment", firstVersion: "2.0" },
   { page: "reference/commands/invocation", firstVersion: "2.0" },
   { page: "reference/commands/system", firstVersion: "2.0" },
+  { page: "reference/commands/freshness", firstVersion: "2.0" },
   { page: "docs/local/connect-data-platform/salesforce-data-cloud-setup", firstVersion: "2.0" },
   { page: "docs/build/sample-flag", firstVersion: "1.10" },
   { page: "docs/build/empty-flag", firstVersion: "1.8" },
@@ -133,6 +142,7 @@ exports.versionedPages = [
   { page: "docs/platform/connect-data-platform/connect-onehouse", lastVersion: "1.99" },
   { page: "docs/platform/connect-data-platform/connect-postgresql-alloydb", lastVersion: "1.99" },
   { page: "docs/platform/connect-data-platform/connect-salesforce", firstVersion: "2.0" },
+  { page: "docs/platform/connect-data-platform/connect-clickhouse", firstVersion: "2.0" },
   { page: "docs/platform/connect-data-platform/connect-starburst-trino", lastVersion: "1.99" },
   { page: "docs/platform/connect-data-platform/connect-teradata", lastVersion: "1.99" },
   { page: "docs/build/measures", lastVersion: "1.11" },
@@ -141,7 +151,6 @@ exports.versionedPages = [
   { page: "docs/local/connect-data-platform/alloydb-setup", lastVersion: "1.99" },
   { page: "docs/local/connect-data-platform/athena-setup", lastVersion: "1.99" },
   { page: "docs/local/connect-data-platform/azuresynapse-setup", lastVersion: "1.99" },
-  { page: "docs/local/connect-data-platform/clickhouse-setup", lastVersion: "1.99" },
   { page: "docs/local/connect-data-platform/confluent-setup", lastVersion: "1.99" },
   { page: "docs/local/connect-data-platform/cratedb-setup", lastVersion: "1.99" },
   { page: "docs/local/connect-data-platform/databend-setup", lastVersion: "1.99" },
@@ -172,6 +181,7 @@ exports.versionedPages = [
   { page: "docs/local/connect-data-platform/postgres-setup", lastVersion: "1.99" },
   { page: "docs/local/connect-data-platform/risingwave-setup", lastVersion: "1.99" },
   { page: "docs/local/connect-data-platform/rockset-setup", lastVersion: "1.99" },
+  { page: "docs/local/connect-data-platform/sail-setup", lastVersion: "1.99" },
   { page: "docs/local/connect-data-platform/singlestore-setup", lastVersion: "1.99" },
   { page: "docs/local/connect-data-platform/sqlite-setup", lastVersion: "1.99" },
   { page: "docs/local/connect-data-platform/starrocks-setup", lastVersion: "1.99" },

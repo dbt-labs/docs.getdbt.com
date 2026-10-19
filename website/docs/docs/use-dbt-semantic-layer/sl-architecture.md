@@ -18,7 +18,7 @@ The <Constant name="semantic_layer" /> allows you to define metrics and use vari
 
 The <Constant name="semantic_layer" /> includes the following components:
 
-| Components | Information | <Constant name="core" /> users | Developer plans |  Starter plans | Enterprise-tier plans | License |
+| Components | Information | local dbt | Developer plans |  Starter plans | Enterprise-tier plans | License |
 | --- | --- | :---: | :---: | :---: | :---: | :---: |
 | **[MetricFlow](/docs/build/about-metricflow)** | MetricFlow in dbt allows users to centrally define their semantic models and metrics with YAML specifications. | ✅ | ✅ | ✅ |  ✅  | [Apache 2.0 license](https://github.com/dbt-labs/metricflow/blob/main/LICENSE)|
 | **dbt Semantic interfaces**| A configuration spec for defining metrics, dimensions, and how they link to each other. The [dbt-semantic-interfaces](https://github.com/dbt-labs/dbt-semantic-interfaces) is available under Apache 2.0. | ✅ | ✅ | ✅ | ✅ | [Apache 2.0 license](https://github.com/dbt-labs/dbt-semantic-interfaces/blob/main/LICENSE) |

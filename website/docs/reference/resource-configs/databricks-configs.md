@@ -2,14 +2,14 @@
 title: "Databricks configurations"
 description: "Configure Databricks-specific settings for models in dbt, including file formats, table properties, and materializations."
 id: "databricks-configs"
-tags: ['Databricks', 'dbt Fusion', 'dbt Core']
+tags: ['Databricks', 'dbt v2', 'dbt v1']
 ---
 
 ## Configuring tables
 
 When materializing a model as `table`, you may include several optional configs that are specific to the dbt-databricks plugin, in addition to the standard [model configs](/reference/model-configs).
 
-dbt-databricks v1.9 adds support for the `table_format: iceberg` config. Try it now on the [<Constant name="dbt" /> **Latest** release track](/docs/dbt-versions/dbt-release-tracks). All other table configurations were also supported in 1.8.
+dbt-databricks v1.9 adds support for the `table_format: iceberg` config. Try it now on the [<Constant name="dbt" /> **v1 Latest** release track](/docs/dbt-versions/dbt-release-tracks). All other table configurations were also supported in 1.8.
 
 
 | Option    | Description                                                                                                                                                                                                                                                                                                                              | Required?     | Model support   | Example      |
@@ -37,7 +37,7 @@ dbt-databricks v1.9 adds support for the `table_format: iceberg` config. Try it 
 
 <sup>4</sup>  Do not use `liquid_clustered_by` and `auto_liquid_cluster` on the same model.
 
-<sup>5</sup> We do not yet have a PySpark API to set tblproperties at table creation, so this feature is primarily to allow users to anotate their python-derived tables with tblproperties.
+<sup>5</sup> We do not yet have a PySpark API to set tblproperties at table creation, so this feature is primarily to allow users to annotate their python-derived tables with tblproperties.
 
 <sup>6</sup> `databricks_tags` are applied via `ALTER` statements. Tags cannot be removed via dbt-databricks once applied. To remove tags, use Databricks directly or a post-hook. Starting in `dbt-databricks` v1.12, `databricks_tags` set at multiple config hierarchy levels [merge additively](#databricks_tags) instead of the lower (more specific) level fully replacing the higher one.
 
@@ -50,7 +50,7 @@ For details, see the [documentation of Databricks behavior flags](/reference/glo
 ### Python submission methods
 _Available in versions 1.9 or higher_
 
-In dbt-databricks v1.9 (try it now in [the <Constant name="dbt" /> **Latest** release track](/docs/dbt-versions/dbt-release-tracks)), you can use these four options for `submission_method`: 
+In dbt-databricks v1.9 (try it now in [the <Constant name="dbt" /> **v1 Latest** release track](/docs/dbt-versions/dbt-release-tracks)), you can use these four options for `submission_method`: 
 
 * `all_purpose_cluster`: Executes the python model either directly using the [command api](https://docs.databricks.com/api/workspace/commandexecution) or by uploading a notebook and creating a one-off job run
 * `job_cluster`: Creates a new job cluster to execute an uploaded notebook as a one-off job run
@@ -1152,7 +1152,7 @@ dbt-databricks automatically adds the following tags to every query:
 | Tag key | Description |
 |---------|-------------|
 | `@@dbt_model_name` | The name of the model being executed |
-| `@@dbt_core_version` | The version of dbt-core being used |
+| `@@dbt_core_version` | The version of dbt being used |
 | `@@dbt_databricks_version` | The version of dbt-databricks being used |
 | `@@dbt_materialized` | The materialization type (table, view, incremental, and so on.) |
 

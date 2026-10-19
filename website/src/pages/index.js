@@ -59,6 +59,7 @@ function Home() {
         <div
           className="container container--fluid home"
           style={{ padding: 0, background: '#FFF' }}
+          data-md-root="true"
         >
           <header className="baton-hero baton-hero--compact">
             <div className="container">
@@ -88,20 +89,7 @@ function Home() {
               </div>
               <div className="home-card-grid">
                 <Card
-                  title="dbt Wizard"
-                  tag="Beta"
-                  body="Build, refactor, and validate dbt projects with an AI agent purpose-built for analytics engineering — in the dbt platform or from your terminal."
-                  link="/docs/platform/wizard-overview"
-                  icon="dbt-copilot"
-                />
-                <Card
-                  title="About dbt"
-                  tag="Article"
-                  body="Explore dbt and discover how its shared Rust runtime delivers faster, more scalable performance."
-                  link="/docs/introduction"
-                  icon="zap"
-                />
-                <Card
+                  headingLevel={3}
                   title="Get started with dbt"
                   tag="Guide"
                   body="Get up and running quickly with our dbt quickstart guides."
@@ -109,9 +97,18 @@ function Home() {
                   icon="settings"
                 />
                 <Card
+                  headingLevel={3}
+                  title="About dbt"
+                  tag="Article"
+                  body="Explore dbt and discover how its shared Rust runtime delivers faster, more scalable performance."
+                  link="/docs/introduction"
+                  icon="zap"
+                />
+                <Card
+                  headingLevel={3}
                   title="Move to the dbt platform"
                   tag="Guide"
-                  body="Move from self-hosted dbt Core to the dbt platform and follow recommended best practices for building scalable data pipelines."
+                  body="Move from self-hosted dbt to the dbt platform and follow recommended best practices for building scalable data pipelines."
                   link="/guides/dbt-migration-1?step=1"
                   icon="tool"
                 />
@@ -127,12 +124,14 @@ function Home() {
               </div>
               <div className="home-card-grid">
                 <Card
+                  headingLevel={3}
                   title="dbt Wizard"
                   body="AI agent purpose-built for analytics engineering — available in the dbt platform and from your terminal."
                   link="/docs/platform/wizard-overview"
                   icon="dbt-copilot"
                 />
                 <Card
+                  headingLevel={3}
                   title="VS Code Extension"
                   body="This free tool brings the full power of the dbt into your local environment with features like live error detection, lightning-fast parse times, insights and rich lineage all in VS Code or Cursor."
                   link="/docs/about-dbt-extension"
@@ -140,43 +139,49 @@ function Home() {
                   showBorderBeam
                 />
                 <Card
+                  headingLevel={3}
                   title="dbt State"
-                  tag="Preview"
                   body="dbt State makes dbt smarter about what to build — skipping unnecessary rebuilds by reusing nodes when logic and data haven't changed. Works with self-hosted dbt and the dbt platform."
                   link="/docs/deploy/dbt-state-about"
                   icon="forward"
                 />
                 <Card
+                  headingLevel={3}
                   title="dbt Orchestrator"
                   body="Every time a job runs, state-aware orchestration automatically determines which models to build by detecting changes in code or data."
                   link="/docs/deploy/state-aware-about"
                   icon="deploy"
                 />
                 <Card
+                  headingLevel={3}
                   title="dbt Insights"
                   body="dbt Insights in dbt empowers users to seamlessly explore and query data with an intuitive, context-rich interface."
                   link="/docs/explore/dbt-insights"
                   icon="insights"
                 />
                 <Card
+                  headingLevel={3}
                   title="dbt Semantic Layer"
                   body="The dbt Semantic Layer eliminates duplicate coding by allowing data teams to define metrics on top of existing models and automatically handling data joins."
                   link="/docs/use-dbt-semantic-layer/dbt-sl"
                   icon="semantic"
                 />
                 <Card
+                  headingLevel={3}
                   title="dbt Catalog"
                   body="Use dbt Catalog to navigate and manage your projects within dbt to help you and other data developers, analysts, and consumers discover and leverage your dbt resources."
                   link="/docs/explore/explore-projects"
                   icon="compass"
                 />
                 <Card
+                  headingLevel={3}
                   title="Studio IDE"
                   body="The dbt integrated development environment (Studio IDE) is a single web-based interface for building, testing, running, and version-controlling dbt projects."
                   link="/docs/platform/studio-ide/develop-in-studio#get-started-with-the-studio-ide"
                   icon="dashboard"
                 />
                 <Card
+                  headingLevel={3}
                   title="dbt Mesh"
                   body="dbt Mesh is a framework that helps organizations scale their teams and data assets effectively."
                   link="/docs/mesh/about-mesh"
@@ -195,27 +200,27 @@ function Home() {
               </div>
               <div className="home-link-grid">
                 <div className="home-link-grid-item">
-                  <h4 className="heading-4">Documentation</h4>
+                  <h3 className="heading-4">Documentation</h3>
                   <Link to="/docs/dbt-apis/overview">API Docs</Link>
                   <Link to="/docs/introduction">Product Docs</Link>
                   <Link to="/best-practices">Best Practices</Link>
                   <Link to="/docs/platform/wizard-overview">dbt Wizard</Link>
                 </div>
                 <div className="home-link-grid-item">
-                  <h4 className="heading-4">Guides</h4>
+                  <h3 className="heading-4">Guides</h3>
                   <Link to="/guides/snowflake?step=1">Quickstart for dbt and Snowflake</Link>
                   <Link to="/guides/databricks?step=1">Quickstart for dbt and Databricks</Link>
                   <Link to="/guides/airflow-and-dbt-cloud?step=1">Airflow and dbt</Link>
                   <Link to="/guides/debug-errors?step=1">Debugging errors</Link>
                 </div>
                 <div className="home-link-grid-item">
-                  <h4 className="heading-4">Reference Guides</h4>
+                  <h3 className="heading-4">Reference Guides</h3>
                   <Link to="/reference/dbt-commands">Command Reference</Link>
                   <Link to="/category/project-configs">Project Configurations</Link>
                   <Link to="/reference/artifacts/dbt-artifacts">dbt Artifacts</Link>
                 </div>
                 <div className="home-link-grid-item">
-                  <h4 className="heading-4">Other Resources</h4>
+                  <h3 className="heading-4">Other Resources</h3>
                   <Link to="/docs/dbt-versions/release-notes">Release Notes</Link>
                   <Link to="/blog">Developer Blog</Link>
                   <Link to="/community/join">Join the Community</Link>
@@ -233,6 +238,7 @@ function Home() {
               </div>
               <div className="home-card-grid">
                 <Card
+                  headingLevel={3}
                   title="Join Slack"
                   body="Ask questions, get answers, and meet people who speak your data language."
                   link="https://www.getdbt.com/community/join-the-community/"
@@ -240,6 +246,7 @@ function Home() {
                   target="_blank"
                 />
                 <Card
+                  headingLevel={3}
                   title="GitHub Discussions"
                   body="Join technical threads or open issues."
                   link="https://github.com/dbt-labs/docs.getdbt.com"
@@ -247,6 +254,7 @@ function Home() {
                   target="_blank"
                 />
                 <Card
+                  headingLevel={3}
                   title="Subscribe to the newsletter"
                   body="Get fresh community ideas, job posts, and tools delivered weekly."
                   link="https://www.getdbt.com/learn/newsletter"
@@ -254,6 +262,7 @@ function Home() {
                   target="_blank"
                 />
                 <Card
+                  headingLevel={3}
                   title="Answer a question on Discourse"
                   body="Help someone solve a real problem—and build your reputation doing it."
                   link="https://discourse.getdbt.com/"
@@ -261,6 +270,7 @@ function Home() {
                   target="_blank"
                 />
                 <Card
+                  headingLevel={3}
                   title="Webinars"
                   body="Upcoming and on-demand sessions from dbt Labs."
                   link="https://www.getdbt.com/resources/webinars"
@@ -268,6 +278,7 @@ function Home() {
                   target="_blank"
                 />
                 <Card
+                  headingLevel={3}
                   title="Events"
                   body="Meetups, conferences, and community gatherings."
                   link="https://www.getdbt.com/events"
@@ -275,6 +286,7 @@ function Home() {
                   target="_blank"
                 />
                 <Card
+                  headingLevel={3}
                   title="Courses & Tutorials"
                   body="Learn dbt with hands-on guidance."
                   link="https://learn.getdbt.com/catalog"
@@ -294,7 +306,7 @@ function Home() {
               </div>
               <div className="home-card-grid">
                 {recentBlogData.map((item) => (
-                  <BlogPostCard key={item.link} postMetaData={item} />
+                  <BlogPostCard key={item.link} postMetaData={item} headingLevel={3} />
                 ))}
               </div>
             </div>

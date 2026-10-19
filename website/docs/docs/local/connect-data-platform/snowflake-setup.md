@@ -22,7 +22,7 @@ import SnowflakeAuth from '/snippets/_snowflake-auth.md';
 
 <VersionBlock firstVersion="2.0">
 
-# Connect Snowflake to <Constant name="fusion" /> <Lifecycle status='preview' />
+# Connect Snowflake to <Constant name="fusion" />
 
 <SnowflakeAuth />
 
@@ -40,7 +40,7 @@ The Snowflake adapter for <Constant name="fusion" /> supports the following [aut
 
 ## Warehouse permissions
 
-import FusionSnowflakeWarehousePerms from '/snippets/_fusion-warehouse-permissions-snowflake.md';
+import FusionSnowflakeWarehousePerms from '/snippets/_v2-warehouse-permissions-snowflake.md';
 
 <FusionSnowflakeWarehousePerms />
 
@@ -54,7 +54,7 @@ The information required for configuring the Snowflake adapter can be found conv
 3. In the field with your account name, click **View account details**.
 4. Click **Config file** and select the appropriate **Warehouse** and **Database**. 
 
-<Lightbox src="/img/fusion/connect-adapters/snowflake-account-details.png" width="60%" title="Sample config file in Snowflake." />
+<Lightbox src="/img/v2/connect-adapters/snowflake-account-details.png" width="60%" title="Sample config file in Snowflake." />
 
 ## Configure <Constant name="fusion" />
 
@@ -65,7 +65,7 @@ Executing `dbt init` in your CLI will prompt for the following fields:
 - **Database:** The database within your Snowflake account to connect to your project
 - **Warehouse:** The compute warehouse that will handle the tasks for your project
 - **Schema:** The development/staging/deployment schema for the project
-- **Role (Optional):** The role dbt should assume when connnecting to the warehouse
+- **Role (Optional):** The role dbt should assume when connecting to the warehouse
 
 
 Alternatively, you can manually create the `profiles.yml` file and configure the fields. See examples in [authentication](#supported-authentication-types) section for formatting. If there is an existing `profiles.yml` file, you are given the option to retain the existing fields or overwrite them. 
@@ -118,7 +118,7 @@ default:
       account: ABC123
       user: JANE.SMITH@YOURCOMPANY.COM
       database: JAFFLE_SHOP
-      warehouse: TRANFORM
+      warehouse: TRANSFORM
       schema: JANE_SMITH
 ```
 
@@ -132,11 +132,11 @@ Key pair authentication gives you the option to:
 - Define the path to the key. 
 - Provide the plain-text PEM format key inline.
 
-import FusionKeyPair from '/snippets/_fusion-key-pair.md';
+import FusionKeyPair from '/snippets/_v2-key-pair.md';
 
 <FusionKeyPair />
 
-  Once the key is configuted, you will be given the option to provide a passphrase, if required. 
+  Once the key is configured, you will be given the option to provide a passphrase, if required. 
 
 #### Example key pair configuration
 
@@ -206,7 +206,7 @@ Find Snowflake-specific configuration information in the [Snowflake adapter refe
 
 <SnowflakeAuth />
 
-<ProductCard text="Fusion compatible" url="/docs/local/connect-data-platform/snowflake-setup?version=2" /> connection also available.
+<ProductCard text="dbt v2 compatible" url="/docs/local/connect-data-platform/snowflake-setup?version=2" /> connection also available.
 
 import SetUpPages from '/snippets/_setup-pages-intro.md';
 
@@ -295,7 +295,7 @@ my-snowflake-db:
 
 ### Key pair authentication
 
-To use key pair authentication, specify the `private_key_path` in your configuration, avoiding the use of a `password`. If needed, you can add a `private_key_passphrase`. **Note**: Unencrypted private keys are accepted, so add a passphrase only if necessary. However, for dbt Core versions 1.5 and 1.6, configurations using a private key in PEM format (for example, keys enclosed with BEGIN and END tags) are not supported. In these versions, you must use the `private_key_path` to reference the location of your private key file.
+To use key pair authentication, specify the `private_key_path` in your configuration, avoiding the use of a `password`. If needed, you can add a `private_key_passphrase`. **Note**: Unencrypted private keys are accepted, so add a passphrase only if necessary. However, for dbt v1.5 and v1.6, configurations using a private key in PEM format (for example, keys enclosed with BEGIN and END tags) are not supported. In these versions, you must use the `private_key_path` to reference the location of your private key file.
 
 dbt can specify a `private_key` directly as a string instead of a `private_key_path`. This `private_key` string can be in either Base64-encoded DER format, representing the key bytes, or in plain-text PEM format. Refer to [Snowflake documentation](https://docs.snowflake.com/en/user-guide/key-pair-auth) for more info on how they generate the key.
 
@@ -314,7 +314,7 @@ my-snowflake-db:
       role: [user role]
 
       # Keypair config
-      # For dbt Fusion engine, make sure to read requirements about using PKCS#8 format with AES-256 encryption in the following section.
+      # For dbt v2, make sure to read requirements about using PKCS#8 format with AES-256 encryption in the following section.
       private_key_path: [path/to/private.key]
       # or private_key instead of private_key_path
       private_key_passphrase: [passphrase for the private key, if key is encrypted]
@@ -459,11 +459,11 @@ Please also note that the Snowflake account name should only be the `account_nam
 
 ### client_session_keep_alive
 
-The `client_session_keep_alive` feature is intended to keep Snowflake sessions alive beyond the typical 4 hour timeout limit. The snowflake-connector-python implementation of this feature can prevent processes that use it (read: dbt) from exiting in specific scenarios. If you encounter this in your deployment of dbt, please let us know in [the GitHub issue](https://github.com/dbt-labs/dbt-core/issues/1271), and work around it by disabling the keepalive.
+The `client_session_keep_alive` feature is intended to keep Snowflake sessions alive beyond the typical 4 hour timeout limit. The snowflake-connector-python implementation of this feature can prevent processes that use it (read: dbt) from exiting in specific scenarios. If you encounter this in your deployment of dbt, please let us know in [the GitHub issue](https://github.com/dbt-labs/dbt/issues/1271), and work around it by disabling the keepalive.
 
 ### platform_detection_timeout_seconds
 
-The Snowflake connector uses the `platform_detection_timeout_seconds` parameter to determine how long it waits to detect the cloud platform for a connection. This parameter is available starting in <Constant name="core"/> v1.10.
+The Snowflake connector uses the `platform_detection_timeout_seconds` parameter to determine how long it waits to detect the cloud platform for a connection. This parameter is available starting in <Constant name="dbt"/> v1.10.
 
 
 - Set to `0.0` (default) to disable cloud platform detection for faster connections.

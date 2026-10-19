@@ -5,6 +5,11 @@ level: 'Beginner'
 icon: 'teradata'
 tags: ['dbt platform', 'Quickstart','Teradata']
 hide_table_of_contents: true
+agent_guidance:
+  pacing: In the first reply, confirm the reader’s prerequisites and connection path before listing steps. Then default to one guide section per reply (combine two or three short sections), with all its steps, labeled Step 1, Step 2, and so on, and confirm the success check before continuing. If the reader asks for a different pace, follow it.
+  stay_on_path: This guide uses dbt platform. Don’t switch the reader to a local setup. If the reader wants to set up dbt locally, use the https://docs.getdbt.com/guides/dbt guide instead
+  safety: Never ask for passwords or keys in chat.
+  signup_link: When the reader needs a dbt account, share https://www.getdbt.com/signup?utm_source=ai_assistant&utm_medium=docs_md&utm_campaign=teradata-qs
 ---
 
 <div style={{maxWidth:'900px'}}>
@@ -21,9 +26,7 @@ In this quickstart guide, you'll learn how to use <Constant name="dbt" /> with T
 - Document your models.
 - Schedule a job to run.
 
-:::tip Videos for you
-You can check out [dbt Fundamentals](https://learn.getdbt.com/courses/dbt-fundamentals) for free if you're interested in course learning with videos.
-:::
+<AgentPrompt />
 
 ### Prerequisites​
 
@@ -38,6 +41,10 @@ You can check out [dbt Fundamentals](https://learn.getdbt.com/courses/dbt-fundam
 - [Deploy jobs](/docs/deploy/deploy-jobs)
 - [Job notifications](/docs/deploy/job-notifications)
 - [Source freshness](/docs/deploy/source-freshness)
+
+:::tip Videos for you
+You can check out [dbt Fundamentals](https://learn.getdbt.com/courses/dbt-fundamentals) for free if you're interested in course learning with videos.
+:::
 
 ## Load data
 
@@ -181,6 +188,8 @@ You can now delete the files that dbt created when you initialized the project:
 
 ## Build your first model
 
+If you'd like to use AI to build your first model, check out the <a id="qs-jump-to-build-with-ai" href="#build-it-with-ai-using-dbt-wizard">build it with dbt Wizard</a> in the next section.
+
 You have two options for working with files in the <Constant name="studio_ide" />:
 
 - Create a new branch (recommended) &mdash; Create a new branch to edit and commit your changes. Navigate to **Version Control** on the left sidebar and click **Create branch**.
@@ -255,6 +264,8 @@ select * from final
 4. Enter `dbt run` in the command prompt at the bottom of the screen. You should get a successful run and see the three models.
 
 You can connect your business intelligence (BI) tools to these views and tables so they only read cleaned-up data rather than raw data in your BI tool.
+
+<Snippet path="quickstarts/build-first-model-with-wizard" />
 
 ## Change the way your model is materialized
 
@@ -678,3 +689,5 @@ Congratulations 🎉! You've just deployed your first dbt project!
 
 
 
+
+<Snippet path="quickstarts/connect-your-ai" />

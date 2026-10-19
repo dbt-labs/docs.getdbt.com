@@ -15,7 +15,7 @@
         },
         {
           "key": "Content-Security-Policy",
-          "value": "img-src 'self' data: https: https://*.optimizely.com; style-src 'self' 'unsafe-inline' https:; connect-src 'self' https:; frame-ancestors 'self' https://*.getdbt.com"
+          "value": "img-src 'self' data: https: https://*.optimizely.com; style-src 'self' 'unsafe-inline' https:; connect-src 'self' https: wss://*.qualified.com; frame-ancestors 'self' https://*.getdbt.com"
         },
         {
           "key": "Strict-Transport-Security",
@@ -41,7 +41,30 @@
       ]
     }
   ],
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "header",
+          "key": "accept",
+          "value": ".*text/markdown.*"
+        }
+      ],
+      "destination": "/api/markdown-not-found"
+    }
+  ],
   "redirects": [
+    {
+      "source": "/docs/deploy/dbt-state-enable-jobs",
+      "destination": "/docs/deploy/dbt-state-enable-env-jobs",
+      "permanent": true
+    },
+    {
+      "source": "/reference/resource-properties/freshness",
+      "destination": "/reference/resource-configs/freshness",
+      "permanent": true
+    },
     {
       "source": "/docs/fusion/about-core",
       "destination": "/docs/introduction",
@@ -2428,8 +2451,18 @@
       "permanent": true
     },
     {
+      "source": "/docs/trusted-adapters",
+      "destination": "/docs/community-adapters",
+      "permanent": true
+    },
+    {
       "source": "/docs/supported-data-platforms#adapter-installation",
-      "destination": "/docs/connect-adapters",
+      "destination": "/docs/supported-data-platforms#install-an-adapter",
+      "permanent": true
+    },
+    {
+      "source": "/docs/connect-adapters",
+      "destination": "/docs/supported-data-platforms#install-an-adapter",
       "permanent": true
     },
     {
@@ -2444,7 +2477,7 @@
     },
     {
       "source": "/docs/supported-data-platforms#maintainers",
-      "destination": "/docs/connect-adapters#maintainers",
+      "destination": "/docs/supported-data-platforms",
       "permanent": true
     },
     {

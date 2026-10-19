@@ -4,7 +4,7 @@ description: "Read this guide to learn about the Salesforce Data 360 warehouse s
 id: "salesforce-data-cloud-setup"
 meta:
   maintained_by: dbt Labs
-  authors: 'Fusion dbt maintainers'
+  authors: 'dbt v2 dbt maintainers'
   github_repo: 'dbt-labs/dbt-fusion'
   pypi_package: N/A
   min_core_version: N/A

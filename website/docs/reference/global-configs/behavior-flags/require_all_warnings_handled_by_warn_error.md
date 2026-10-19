@@ -6,7 +6,7 @@ sidebar_label: "require all warnings handled by warn error"
 
 
 
-| require_all_warnings_handled_by_warn_error | <Constant name="dbt" /> **Latest** | <Constant name="core" /> |
+| require_all_warnings_handled_by_warn_error | <Constant name="dbt" /> **v1 Latest** | <Constant name="core" /> |
 |---|---|---|
 | Introduced | 2025.06 | 1.10.0 |
 | Matured (default → `true`) | 2026.09 | 1.12.0 |
@@ -14,7 +14,7 @@ sidebar_label: "require all warnings handled by warn error"
 
 <br />
 
-Starting in <Constant name="core" /> v1.12, the `require_all_warnings_handled_by_warn_error` flag defaults to `true`.
+Starting in <Constant name="dbt" /> v1.12, the `require_all_warnings_handled_by_warn_error` flag defaults to `true`.
 
 With this flag enabled, all warnings raised during a run are routed through the `--warn-error` / `--warn-error-options` handler. This ensures consistent behavior when promoting warnings to errors or silencing them. When the flag is `false`, only some warnings are processed by the handler while others may bypass it.
 

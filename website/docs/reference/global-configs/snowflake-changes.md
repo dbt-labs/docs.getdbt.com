@@ -24,7 +24,7 @@ Set the `snowflake_default_transient_dynamic_tables` flag in your `dbt_project.y
 
 :::note dbt v2
 
-In dbt v2, this behavior is the default and there's no flag to set. `external_volume` defaults to `SNOWFLAKE_MANAGED`, and dbt omits `base_location` whenever the table uses Snowflake-managed storage.
+In v2, this behavior is the default and there's no flag to set. `external_volume` defaults to `SNOWFLAKE_MANAGED`, and dbt omits `base_location` whenever the table uses Snowflake-managed storage.
 
 :::
 

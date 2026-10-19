@@ -1,5 +1,5 @@
 ---
-title: "Connect AlloyDB to dbt Core"
+title: "Connect AlloyDB to dbt v1"
 sidebar_label: "AlloyDB"
 meta:
   maintained_by: dbt Labs

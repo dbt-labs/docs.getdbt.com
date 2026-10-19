@@ -1,17 +1,97 @@
 ---
-title: "dbt platform compatible track - changelog"
-sidebar_label: "Compatible track changelog"
-description: "The Compatible release track updates once per month, and it includes up-to-date open source versions as of the monthly release."
+title: "dbt platform v1 Compatible track - changelog"
+sidebar_label: "v1 Compatible track changelog"
+description: "The v1 Compatible release track updates once per month, and it includes up-to-date open source versions as of the monthly release."
 availability:
   surface: platform
   access: free
 ---
 
-Select the **Compatible** and **Extended** release tracks if you need a less-frequent release cadence, the ability to test new dbt releases before they go live in production, and/or ongoing compatibility with the latest open source releases of <Constant name="core" />.
+Select the **v1 Compatible** and **v1 Extended** release tracks if you need a less-frequent release cadence, the ability to test new dbt releases before they go live in production, and/or ongoing compatibility with the latest open source releases of <Constant name="core" />.
 
-Each monthly **Compatible** release includes functionality matching up-to-date open source versions of <Constant name="core" /> and adapters at the time of release.
+Each monthly **v1 Compatible** release includes functionality matching up-to-date open source versions of <Constant name="core" /> and adapters at the time of release.
 
 For more information, see [release tracks](/docs/dbt-versions/dbt-release-tracks).
+
+## October 2026
+
+Release date: October 15, 2026
+
+### dbt platform
+
+#### Breaking changes
+
+- The default value of the following legacy behavior-change flags is now `true`: `require_batched_execution_for_custom_microbatch_strategy`, `skip_nodes_if_on_run_start_fails`, `state_modified_compare_more_unrendered_values`, `require_yaml_configuration_for_mf_time_spines`, `require_nested_cumulative_type_params`, `validate_macro_args`, and `require_all_warnings_handled_by_warn_error`. This change ports dbt-core#15489 now that the customer-communication deadline has passed.
+
+#### Features
+
+- Add OpenTelemetry span instrumentation for node and hook execution, gated behind the `--snowflake-projects-otel` flag (off by default).
+- You can now resolve private packages (`packages.private` in `packages.yml`) through the dbt platform's private-packages resolve endpoint, authenticated with an orchestration-injected HMAC token (`DBT_CLOUD_PRIVATE_PACKAGES_AUTH_TOKEN`, `DBT_CLOUD_ACCOUNT_ID`, `DBT_CLOUD_ACCOUNT_HOST`, `DBT_CLOUD_PROJECT_ID`). dbt checks this endpoint after the existing `DBT_ENV_PRIVATE_GIT_PROVIDER_INFO` legacy resolution, which is unchanged and still takes precedence when configured. dbt resolves a private package discovered after the initial resolve (for example, a transitive private dependency) lazily through the same endpoint rather than falling back to SSH, because SSH credentials are never available under dbt platform orchestration. dbt raises an error immediately if it can't resolve any requested package, rather than falling back silently.
+- Accept Mesh environment routing metadata in cross-project dependencies.
+- dbt now warns you if you use a deprecated dbt version.
+- Add `otel_trace_id()` and `otel_span_id()` Jinja functions to correlate query comments and model SQL with OpenTelemetry trace and span IDs.
+
+#### Fixes
+
+- Recognize Databricks adapter config keys (`query_tags`, `zorder`, `options`, `unique_tmp_table_suffix`, `skip_optimize`) in JSON schema validation so they no longer raise spurious `CustomKeyInConfigDeprecation` warnings (dbt-databricks#1540, dbt-databricks#1302).
+- Fix the `dbt build` node count ("X of Y") being inflated when you select unit tests. dbt now adds the unit test count to `num_nodes` exactly once, instead of on every dequeue while `run_count` is still 0.
+- Stop resolving a unit test's tested model eagerly at parse time. dbt now resolves it only in the single deterministic post-parse pass, so resolution no longer depends on filesystem parse order at all.
+- Fix OpenTelemetry hook spans: name them by hook and transaction phase, skip calls that run no hooks, and add node context and status.
+- Send the `x-ms-blob-type: BlockBlob` header and accept `201 Created` when uploading artifacts to an Azure Blob Storage signed URL, so artifact ingestion no longer fails with `400 MissingRequiredHeader` on Azure-hosted regions. Upload errors now include the storage provider's error code alongside the status code.
+- Resolve a function's `unrendered_config` from the `functions:` project config block instead of falling through to `models:`, so model-level defaults no longer appear in function configs and make functions compare as modified under `state:modified`.
+- Backport v2 parser fixes: default `--v2-parser` to the bundled <Constant name="fusion" /> binary instead of `dbt-core-experimental-parser`, re-parse adapter macros from the installed adapter package after loading a <Constant name="fusion" />-generated manifest (ports dbt-core#15529), and rediscover the built-in generic test macros so they aren't left undefined at test-compile time (ports dbt-core#15925).
+- Capture and re-emit <Constant name="fusion" /> parser subprocess output through dbt-core's event system instead of letting it pass through to raw stdout and stderr, re-leveling each line by its JSON-compatible severity when available.
+- Validate that a resolved package installation path stays within the configured `packages-install-path`.
+- Fix `Dimension` to satisfy the `metricflow-semantic-interfaces` protocol and bump the `metricflow` floor to 0.213.0.
+
+#### Dependencies
+
+- Bump the `dbt-core-experimental-parser` lower bound to 2.0.0b1.
+- Require `sqlparse>=0.5.5,<0.7.0`. Version 0.6.0 is the fixed release for CVE-2026-54284, CVE-2026-59893, CVE-2026-59894, and CVE-2026-71491 (parser denial-of-service).
+
+This compatible release includes functionality from the following versions of <Constant name="core" /> OSS:
+
+```
+dbt-core==1.12.5
+
+# shared interfaces
+dbt-adapters==1.24.5
+dbt-common==1.38.0
+dbt-extractor==0.6.0
+dbt-semantic-interfaces==0.9.0
+dbt-sl-sdk[sync]==0.13.4
+dbt-state==2.61.0
+
+# adapters
+dbt-athena==1.11.1
+dbt-bigquery==1.12.1
+dbt-databricks==1.12.7
+dbt-fabric==1.9.4
+dbt-postgres==1.11.0
+dbt-redshift==1.11.1
+dbt-snowflake==1.12.3
+dbt-spark==1.10.3
+dbt-synapse==1.8.5
+dbt-teradata==1.11.0
+dbt-trino==1.10.6
+```
+
+Changelogs:
+- [dbt-core 1.12.5](https://github.com/dbt-labs/dbt/blob/1.12.latest/CHANGELOG.md)
+- [dbt-adapters 1.24.5](https://github.com/dbt-labs/dbt-adapters/blob/main/dbt-adapters/CHANGELOG.md)
+- [dbt-common 1.38.0](https://github.com/dbt-labs/dbt-common/blob/main/CHANGELOG.md)
+- [dbt-state 2.61.0](https://github.com/dbt-labs/dbt-state)
+- [dbt-athena 1.11.1](https://github.com/dbt-labs/dbt-adapters/blob/stable/dbt-athena/CHANGELOG.md)
+- [dbt-bigquery 1.12.1](https://github.com/dbt-labs/dbt-adapters/blob/stable/dbt-bigquery/CHANGELOG.md)
+- [dbt-databricks 1.12.7](https://github.com/databricks/dbt-databricks/blob/main/CHANGELOG.md)
+- [dbt-fabric 1.9.4](https://github.com/microsoft/dbt-fabric/releases/tag/v1.9.4)
+- [dbt-postgres 1.11.0](https://github.com/dbt-labs/dbt-adapters/blob/stable/dbt-postgres/CHANGELOG.md)
+- [dbt-redshift 1.11.1](https://github.com/dbt-labs/dbt-adapters/blob/stable/dbt-redshift/CHANGELOG.md)
+- [dbt-snowflake 1.12.3](https://github.com/dbt-labs/dbt-adapters/blob/stable/dbt-snowflake/CHANGELOG.md)
+- [dbt-spark 1.10.3](https://github.com/dbt-labs/dbt-adapters/blob/stable/dbt-spark/CHANGELOG.md)
+- [dbt-synapse 1.8.5](https://github.com/microsoft/dbt-synapse/blob/v1.8.latest/CHANGELOG.md)
+- [dbt-teradata 1.11.0](https://github.com/Teradata/dbt-teradata/releases/tag/v1.11.0)
+- [dbt-trino 1.10.6](https://github.com/starburstdata/dbt-trino/blob/master/CHANGELOG.md)
 
 ## August 2026
 
@@ -45,7 +125,7 @@ dbt-trino==1.10.3
 ```
 
 Changelogs:
-- [dbt-core 1.12.0](https://github.com/dbt-labs/dbt-core/blob/1.12.latest/CHANGELOG.md)
+- [dbt-core 1.12.0](https://github.com/dbt-labs/dbt/blob/1.12.latest/CHANGELOG.md)
 - [dbt-adapters 1.24.5](https://github.com/dbt-labs/dbt-adapters/blob/main/dbt-adapters/CHANGELOG.md)
 - [dbt-common 1.38.0](https://github.com/dbt-labs/dbt-common/blob/main/CHANGELOG.md)
 - [dbt-state 2.42.0](https://github.com/dbt-labs/dbt-state)
@@ -102,7 +182,7 @@ dbt-trino==1.10.2
 ```
 
 Changelogs:
-- [dbt-core 1.11.12](https://github.com/dbt-labs/dbt-core/blob/1.11.latest/CHANGELOG.md)
+- [dbt-core 1.11.12](https://github.com/dbt-labs/dbt/blob/1.11.latest/CHANGELOG.md)
 - [dbt-adapters 1.22.10](https://github.com/dbt-labs/dbt-adapters/blob/main/dbt-adapters/CHANGELOG.md)
 - [dbt-common 1.37.5](https://github.com/dbt-labs/dbt-common/blob/main/CHANGELOG.md)
 - [dbt-athena 1.10.2](https://github.com/dbt-labs/dbt-adapters/blob/stable/dbt-athena/CHANGELOG.md)
@@ -150,7 +230,7 @@ dbt-trino==1.10.2
 ```
 
 Changelogs:
-- [dbt-core 1.11.11](https://github.com/dbt-labs/dbt-core/blob/1.11.latest/CHANGELOG.md)
+- [dbt-core 1.11.11](https://github.com/dbt-labs/dbt/blob/1.11.latest/CHANGELOG.md)
 - [dbt-adapters 1.22.10](https://github.com/dbt-labs/dbt-adapters/blob/main/dbt-adapters/CHANGELOG.md)
 - [dbt-common 1.37.5](https://github.com/dbt-labs/dbt-common/blob/main/CHANGELOG.md)
 - [dbt-athena 1.10.1](https://github.com/dbt-labs/dbt-adapters/blob/stable/dbt-athena/CHANGELOG.md)
@@ -204,7 +284,7 @@ dbt-trino==1.10.1
 ```
 
 Changelogs:
-- [dbt-core 1.11.8](https://github.com/dbt-labs/dbt-core/blob/1.11.latest/CHANGELOG.md)
+- [dbt-core 1.11.8](https://github.com/dbt-labs/dbt/blob/1.11.latest/CHANGELOG.md)
 - [dbt-adapters 1.22.10](https://github.com/dbt-labs/dbt-adapters/blob/main/dbt-adapters/CHANGELOG.md)
 - [dbt-common 1.37.3](https://github.com/dbt-labs/dbt-common/blob/main/CHANGELOG.md)
 - [dbt-athena 1.10.0](https://github.com/dbt-labs/dbt-adapters/blob/stable/dbt-athena/CHANGELOG.md)
@@ -264,7 +344,7 @@ dbt-trino==1.10.1
 ```
 
 Changelogs:
-- [dbt-core 1.11.6](https://github.com/dbt-labs/dbt-core/blob/1.11.latest/CHANGELOG.md#dbt-core-1116---february-17-2026)
+- [dbt-core 1.11.6](https://github.com/dbt-labs/dbt/blob/1.11.latest/CHANGELOG.md#dbt-core-1116---february-17-2026)
 - [dbt-adapters 1.22.6](https://github.com/dbt-labs/dbt-adapters/blob/main/dbt-adapters/CHANGELOG.md#dbt-adapters-1226---february-17-2026)
 - [dbt-common 1.37.2](https://github.com/dbt-labs/dbt-common/blob/main/CHANGELOG.md#dbt-common-1372---december-15-2025)
 - [dbt-athena 1.10.0](https://github.com/dbt-labs/dbt-adapters/blob/stable/dbt-athena/CHANGELOG.md#dbt-athena-1100---december-22-2025)
@@ -286,7 +366,7 @@ Release date: January 22, 2026
 ### dbt cloud-based platform
 
 ### Under the Hood
-- Add debug log for local md5 hash for fusion conformance
+- Add debug log for local md5 hash for dbt v2 conformance
 - Resolve Click CLI UserWarning regarding --target and --profile usage in Advanced CI
 
 This compatible release includes functionality from the following versions of <Constant name="core" /> OSS:
@@ -316,7 +396,7 @@ dbt-trino==1.10.1
 ```
 
 Changelogs:
-- [dbt-core 1.10.19](https://github.com/dbt-labs/dbt-core/blob/1.10.latest/CHANGELOG.md#dbt-core-11019---january-20-2026)
+- [dbt-core 1.10.19](https://github.com/dbt-labs/dbt/blob/1.10.latest/CHANGELOG.md#dbt-core-11019---january-20-2026)
 - [dbt-adapters 1.22.5](https://github.com/dbt-labs/dbt-adapters/blob/main/dbt-adapters/CHANGELOG.md#dbt-adapters-1225---january-14-2026)
 - [dbt-common 1.37.2](https://github.com/dbt-labs/dbt-common/blob/main/CHANGELOG.md#dbt-common-1372---december-15-2025)
 - [dbt-athena 1.10.0](https://github.com/dbt-labs/dbt-adapters/blob/stable/dbt-athena/CHANGELOG.md#dbt-athena-1100---december-22-2025)
@@ -364,7 +444,7 @@ dbt-trino==1.9.3
 ```
 
 Changelogs:
-- [dbt-core 1.10.15](https://github.com/dbt-labs/dbt-core/blob/1.10.latest/CHANGELOG.md#dbt-core-11015---november-12-2025)
+- [dbt-core 1.10.15](https://github.com/dbt-labs/dbt/blob/1.10.latest/CHANGELOG.md#dbt-core-11015---november-12-2025)
 - [dbt-adapters 1.16.7](https://github.com/dbt-labs/dbt-adapters/blob/main/dbt-adapters/CHANGELOG.md#dbt-adapters-1166---september-03-2025)
 - [dbt-common 1.33.0](https://github.com/dbt-labs/dbt-common/blob/main/CHANGELOG.md#dbt-common-1330---october-20-2025)
 - [dbt-athena 1.9.5](https://github.com/dbt-labs/dbt-adapters/blob/main/dbt-athena/CHANGELOG.md#dbt-athena-194---april-28-2025)
@@ -419,7 +499,7 @@ dbt-trino==1.9.3
 ```
 
 Changelogs:
-- [dbt-core 1.10.15](https://github.com/dbt-labs/dbt-core/blob/1.10.latest/CHANGELOG.md#dbt-core-11015---november-12-2025)
+- [dbt-core 1.10.15](https://github.com/dbt-labs/dbt/blob/1.10.latest/CHANGELOG.md#dbt-core-11015---november-12-2025)
 - [dbt-adapters 1.16.7](https://github.com/dbt-labs/dbt-adapters/blob/main/dbt-adapters/CHANGELOG.md#dbt-adapters-1166---september-03-2025)
 - [dbt-common 1.33.0](https://github.com/dbt-labs/dbt-common/blob/main/CHANGELOG.md#dbt-common-1330---october-20-2025)
 - [dbt-athena 1.9.5](https://github.com/dbt-labs/dbt-adapters/blob/main/dbt-athena/CHANGELOG.md#dbt-athena-194---april-28-2025)
@@ -471,7 +551,7 @@ dbt-trino==1.9.3
 ```
 
 Changelogs:
-- [dbt-core 1.10.13](https://github.com/dbt-labs/dbt-core/blob/1.10.latest/CHANGELOG.md#dbt-core-11013---september-25-2025)
+- [dbt-core 1.10.13](https://github.com/dbt-labs/dbt/blob/1.10.latest/CHANGELOG.md#dbt-core-11013---september-25-2025)
 - [dbt-adapters 1.16.7](https://github.com/dbt-labs/dbt-adapters/blob/main/dbt-adapters/CHANGELOG.md#dbt-adapters-1166---september-03-2025)
 - [dbt-common 1.33.0](https://github.com/dbt-labs/dbt-common/blob/main/CHANGELOG.md#dbt-common-1330---october-20-2025)
 - [dbt-athena 1.9.5](https://github.com/dbt-labs/dbt-adapters/blob/main/dbt-athena/CHANGELOG.md#dbt-athena-194---april-28-2025)
@@ -519,7 +599,7 @@ dbt-trino==1.9.3
 ```
 
 Changelogs:
-- [dbt-core 1.10.11](https://github.com/dbt-labs/dbt-core/blob/1.10.latest/CHANGELOG.md#dbt-core-11011---september-04-2025)
+- [dbt-core 1.10.11](https://github.com/dbt-labs/dbt/blob/1.10.latest/CHANGELOG.md#dbt-core-11011---september-04-2025)
 - [dbt-adapters 1.16.6](https://github.com/dbt-labs/dbt-adapters/blob/main/dbt-adapters/CHANGELOG.md#dbt-adapters-1166---september-03-2025)
 - [dbt-common 1.29.0](https://github.com/dbt-labs/dbt-common/blob/main/CHANGELOG.md#dbt-common-1290---september-04-2025)
 - [dbt-athena 1.9.4](https://github.com/dbt-labs/dbt-adapters/blob/main/dbt-athena/CHANGELOG.md#dbt-athena-194---april-28-2025)
@@ -541,7 +621,7 @@ Release date: August 12, 2025
 ### Notable <Constant name="core" /> OSS changes
 
 This compatible upgrade brings in a minor update to `dbt-core`, from `dbt-core==1.9.8` to `dbt-core==1.10.8`. Some noteworthy changes from this minor version include:
-- Introduction of several new [deprecations](/reference/deprecations) that warn about project incompatibilities between <Constant name="core" /> and Fusion engines.
+- Introduction of several new [deprecations](/reference/deprecations) that warn about project incompatibilities between <Constant name="core" /> and v2.
 - Support for defining `meta` and `tags` within `config` of columns and exposures, as well as defining `freshness` within `config` of sources. These changes lead to manifest.json minor schema evolutions which may cause an intermittent increase in false positives during `state:modified` comparisons.
 
 ### dbt cloud-based platform 
@@ -587,7 +667,7 @@ dbt-trino==1.9.3
 ```
 
 Changelogs:
-- [dbt-core 1.10.8](https://github.com/dbt-labs/dbt-core/blob/1.10.latest/CHANGELOG.md#dbt-core-1108---august-12-2025)
+- [dbt-core 1.10.8](https://github.com/dbt-labs/dbt/blob/1.10.latest/CHANGELOG.md#dbt-core-1108---august-12-2025)
 - [dbt-adapters 1.16.3](https://github.com/dbt-labs/dbt-adapters/blob/main/dbt-adapters/CHANGELOG.md#dbt-adapters-1163---july-21-2025)
 - [dbt-common 1.25.0](https://github.com/dbt-labs/dbt-common/blob/main/CHANGELOG.md#dbt-common-1271---july-21-2025)
 - [dbt-athena 1.9.4](https://github.com/dbt-labs/dbt-adapters/blob/main/dbt-athena/CHANGELOG.md#dbt-athena-194---april-28-2025)
@@ -642,7 +722,7 @@ dbt-trino==1.9.2
 ```
 
 Changelogs:
-- [dbt-core 1.9.8](https://github.com/dbt-labs/dbt-core/blob/1.9.latest/CHANGELOG.md#dbt-core-198---june-10-2025)
+- [dbt-core 1.9.8](https://github.com/dbt-labs/dbt/blob/1.9.latest/CHANGELOG.md#dbt-core-198---june-10-2025)
 - [dbt-adapters 1.15.3](https://github.com/dbt-labs/dbt-adapters/blob/main/dbt-adapters/CHANGELOG.md#dbt-adapters-1153---may-20-2025)
 - [dbt-common 1.25.0](https://github.com/dbt-labs/dbt-common/blob/main/CHANGELOG.md#dbt-common-1250---may-20-2025)
 - [dbt-athena 1.9.4](https://github.com/dbt-labs/dbt-adapters/blob/main/dbt-athena/CHANGELOG.md#dbt-athena-194---april-28-2025)
@@ -697,7 +777,7 @@ dbt-trino==1.9.1
 ```
 
 Changelogs:
-- [dbt-core 1.9.4](https://github.com/dbt-labs/dbt-core/blob/1.9.latest/CHANGELOG.md#dbt-core-194---april-02-2025)
+- [dbt-core 1.9.4](https://github.com/dbt-labs/dbt/blob/1.9.latest/CHANGELOG.md#dbt-core-194---april-02-2025)
 - [dbt-adapters 1.14.8](https://github.com/dbt-labs/dbt-adapters/blob/main/dbt-adapters/CHANGELOG.md#dbt-adapters-1148---april-25-2025)
 - [dbt-common 1.24.0](https://github.com/dbt-labs/dbt-common/blob/main/CHANGELOG.md#dbt-common-1240---may-09-2025)
 - [dbt-athena 1.9.4](https://github.com/dbt-labs/dbt-adapters/blob/main/dbt-athena/CHANGELOG.md#dbt-athena-194---april-28-2025)
@@ -748,7 +828,7 @@ dbt-trino==1.9.1
 ```
 
 Changelogs:
-- [dbt-core 1.9.4](https://github.com/dbt-labs/dbt-core/blob/1.9.latest/CHANGELOG.md#dbt-core-194---april-02-2025)
+- [dbt-core 1.9.4](https://github.com/dbt-labs/dbt/blob/1.9.latest/CHANGELOG.md#dbt-core-194---april-02-2025)
 - [dbt-adapters 1.14.5](https://github.com/dbt-labs/dbt-adapters/blob/main/dbt-adapters/CHANGELOG.md#dbt-adapters-1145---april-07-2025)
 - [dbt-common 1.17.0](https://github.com/dbt-labs/dbt-common/blob/main/CHANGELOG.md#dbt-common-1170---march-31-2025)
 - [dbt-athena 1.9.3](https://github.com/dbt-labs/dbt-adapters/blob/main/dbt-athena/CHANGELOG.md#dbt-athena-193---april-07-2025)
@@ -791,7 +871,7 @@ dbt-trino==1.9.0
 ```
 
 Changelogs:
-- [<Constant name="core" /> 1.9.3](https://github.com/dbt-labs/dbt-core/blob/1.9.latest/CHANGELOG.md#dbt-core-193---march-07-2025)
+- [dbt 1.9.3](https://github.com/dbt-labs/dbt/blob/1.9.latest/CHANGELOG.md#dbt-core-193---march-07-2025)
 - [dbt-adapters 1.14.1](https://github.com/dbt-labs/dbt-adapters/blob/main/dbt-adapters/CHANGELOG.md#dbt-adapters-1141---march-04-2025)
 - [dbt-common 1.15.0](https://github.com/dbt-labs/dbt-common/blob/main/CHANGELOG.md#dbt-common-1150---february-14-2025)
 - [dbt-bigquery 1.9.1](https://github.com/dbt-labs/dbt-bigquery/blob/1.9.latest/CHANGELOG.md#dbt-bigquery-191---january-10-2025)
@@ -848,7 +928,7 @@ dbt-trino==1.9.0
 ```
 
 Changelogs:
-- [<Constant name="core" /> 1.9.2](https://github.com/dbt-labs/dbt-core/blob/1.9.latest/CHANGELOG.md#dbt-core-192---january-29-2025)
+- [dbt 1.9.2](https://github.com/dbt-labs/dbt/blob/1.9.latest/CHANGELOG.md#dbt-core-192---january-29-2025)
 - [dbt-adapters 1.14.0](https://github.com/dbt-labs/dbt-adapters/blob/main/dbt-adapters/CHANGELOG.md#dbt-adapters-1140---february-07-2025)
 - [dbt-common 1.14.0](https://github.com/dbt-labs/dbt-common/blob/main/CHANGELOG.md)
 - [dbt-bigquery 1.9.1](https://github.com/dbt-labs/dbt-bigquery/blob/1.9.latest/CHANGELOG.md#dbt-bigquery-191---january-10-2025)
@@ -902,7 +982,7 @@ dbt-trino==1.9.0
 ```
 
 Changelogs:
-- [<Constant name="core" /> 1.9.1](https://github.com/dbt-labs/dbt-core/blob/1.9.latest/CHANGELOG.md#dbt-core-191---december-16-2024)
+- [dbt 1.9.1](https://github.com/dbt-labs/dbt/blob/1.9.latest/CHANGELOG.md#dbt-core-191---december-16-2024)
 - [dbt-adapters 1.13.1](https://github.com/dbt-labs/dbt-adapters/blob/main/dbt-adapters/CHANGELOG.md#dbt-adapters-1131---january-10-2025)
 - [dbt-common 1.14.0](https://github.com/dbt-labs/dbt-common/blob/main/CHANGELOG.md)
 - [dbt-bigquery 1.9.1](https://github.com/dbt-labs/dbt-bigquery/blob/1.9.latest/CHANGELOG.md#dbt-bigquery-191---january-10-2025)
@@ -944,7 +1024,7 @@ dbt-trino==1.8.5
 ```
 
 Changelogs:
-- [<Constant name="core" /> 1.9.0](https://github.com/dbt-labs/dbt-core/blob/1.9.latest/CHANGELOG.md#dbt-core-190---december-09-2024)
+- [dbt 1.9.0](https://github.com/dbt-labs/dbt/blob/1.9.latest/CHANGELOG.md#dbt-core-190---december-09-2024)
 - [dbt-adapters 1.10.4](https://github.com/dbt-labs/dbt-adapters/blob/main/dbt-adapters/CHANGELOG.md#dbt-adapters-1104---november-11-2024)
 - [dbt-common 1.14.0](https://github.com/dbt-labs/dbt-common/blob/main/CHANGELOG.md)
 - [dbt-bigquery 1.9.0](https://github.com/dbt-labs/dbt-bigquery/blob/1.9.latest/CHANGELOG.md#dbt-bigquery-190---december-09-2024)

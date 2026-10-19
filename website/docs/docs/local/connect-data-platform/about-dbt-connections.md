@@ -12,16 +12,17 @@ availability: local_free
 dbt connects to your data platform to run SQL transformations against your data. 
 <VersionBlock firstVersion="2.0">
 
-## Supported Fusion data platforms
+## Supported dbt v2 data platforms
 
-The <Constant name="fusion_engine" /> includes built-in support for:
+<Constant name="fusion_engine" /> includes built-in support for:
 
-- [Snowflake](/docs/local/connect-data-platform/snowflake-setup) <Lifecycle status="preview" />
-- [Databricks](/docs/local/connect-data-platform/databricks-setup) <Lifecycle status="preview" />
-- [Amazon Redshift](/docs/local/connect-data-platform/redshift-setup) <Lifecycle status="preview" />
-- [Google BigQuery](/docs/local/connect-data-platform/bigquery-setup) <Lifecycle status="preview" />
-- [DuckDB](/docs/local/connect-data-platform/duckdb-setup) <Lifecycle status="beta" />
+- [Snowflake](/docs/local/connect-data-platform/snowflake-setup)
+- [Databricks](/docs/local/connect-data-platform/databricks-setup)
+- [Amazon Redshift](/docs/local/connect-data-platform/redshift-setup)
+- [Google BigQuery](/docs/local/connect-data-platform/bigquery-setup)
+- [DuckDB](/docs/local/connect-data-platform/duckdb-setup)
 - [Apache Spark](/docs/local/connect-data-platform/spark-setup) <Lifecycle status="beta" />
+- [ClickHouse](/docs/local/connect-data-platform/clickhouse-setup) <Lifecycle status="beta" />
 
 <small> _Adapter lifecycle can differ between the <Constant name="dbt_platform" /> and local development. An adapter can reach GA in the dbt platform before it reaches GA for local use._ </small> <br /><br />
 
@@ -51,9 +52,9 @@ For detailed configuration options, refer to [Connection profiles](/docs/local/p
 - [Microsoft Fabric](/docs/local/connect-data-platform/fabric-setup)
 - [Azure Synapse](/docs/local/connect-data-platform/azuresynapse-setup)
 
-When you install <Constant name="core" />, you also need to install the specific adapter for your data platform. Data platform adapters may be verified by our [Trusted Adapter Program](/docs/trusted-adapters), and maintained by dbt Labs, partners, or community members.
+When you install <Constant name="core" />, you also need to install the specific adapter for your data platform. Adapters are maintained by dbt Labs, partners, and community members. Refer to [community adapters](/docs/community-adapters).
 
-For the full list of supported platforms, see [Supported data platforms](/docs/supported-data-platforms).
+For the full list of supported platforms, refer to [Supported data platforms](/docs/supported-data-platforms).
 
 ## Connection profiles
 
@@ -77,11 +78,11 @@ The following table lists features available for adapters:
 
 ### Catalog 
 
-For adapters that support it, you can partially build the catalog (<Constant name="core_v1" /> only). This builds the catalog for only selected models via `dbt docs generate --select ...`. For adapters that don't support partial catalog generation, run `dbt docs generate` to build the full catalog.
+For adapters that support it, you can partially build the catalog (<Constant name="core_v1" /> only). This builds the catalog for only selected models using `dbt docs generate --select ...`. For adapters that don't support partial catalog generation, run `dbt docs generate` to build the full catalog.
 
 ### Source freshness
 
-You can measure source freshness using warehouse metadata tables on supported adapters. This calculates source freshness without using the [`loaded_at_field`](/reference/resource-properties/freshness#loaded_at_field) and without querying the table directly. This approach is faster and more flexible (though it might sometimes be inaccurate, depending on how the warehouse tracks altered tables). You can override this with the `loaded_at_field` in the [source config](/reference/source-configs). If the adapter doesn't support this, you can still use the `loaded_at_field`.
+You can measure source freshness using warehouse metadata tables on supported adapters. This calculates source freshness without using the [`loaded_at_field`](/reference/resource-configs/freshness) and without querying the table directly. This approach is faster and more flexible (though it might sometimes be inaccurate, depending on how the warehouse tracks altered tables). You can override this with the `loaded_at_field` in the [source config](/reference/source-configs). If the adapter doesn't support this, you can still use the `loaded_at_field`.
 
 </VersionBlock>
 

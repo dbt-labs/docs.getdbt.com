@@ -33,6 +33,7 @@ For questions not covered here, refer to the [Microsoft Writing Style Guide](htt
 - [Images](#images)
 - [Word choice and terminology](#word-choice-and-terminology)
 - [Callouts](#callouts)
+- [AI assistant guidance](#ai-assistant-guidance)
 
 ---
 
@@ -44,11 +45,12 @@ Always use these exact names (case-sensitive):
 
 | Product | Usage | Notes |
 |---------|-------|-------|
-| dbt Labs | The company | Always lowercase "dbt", capital "L" |
-| dbt | Generic reference | Use when content applies to all dbt offerings |
-| dbt Core | Versions ≤1.x | Lowercase "dbt", capital "C" |
-| dbt Fusion engine | Versions ≥2.x | Can shorten to "Fusion" in docs |
-| dbt | Cloud-based offering | Formerly "dbt Cloud"; use "managed dbt" or "dbt platform" for clarity |
+| dbt | Default reference | The product and the provider. Use for general features that don't need version gating (like for v1) or new default features going forward with v2 |
+| dbt v1 | Versions ≤1.x (formerly "dbt Core" or "dbt Core v1.x") | Always lowercase "dbt". Write "dbt v1" in a header or at the start of a sentence; use bare "v1" inline |
+| dbt v2 | Versions ≥2.x (formerly "Fusion" / "dbt Fusion engine" / "dbt Core 2.0") | Always lowercase "dbt". Write "dbt v2" in a header or at the start of a sentence; use bare "v2" inline |
+| dbt OSS | The Apache 2.0 open-source distribution of v2 | Hard-code the literal text — there is no `<Constant>` for it. Not a synonym for dbt v2, which also covers the proprietary distribution |
+| dbt platform | Cloud-based offering | Formerly "dbt Cloud"; "dbt" is the product name, "platform" is a descriptor and shouldn't be capitalized |
+| dbt VS Code extension | The official dbt extension for VS Code and related editors | Can be shortened to "vsce" for filenames and URLs but should always be spelled out in prose and titles |
 
 Plan tiers (capitalize): Developer, Starter, Enterprise, Enterprise+
 
@@ -64,7 +66,10 @@ Plan tiers (capitalize): Developer, Starter, Enterprise, Enterprise+
 - Semantic Layer
 - Copilot
 - dbt MCP server
-- dbt Agents
+- dbt Wizard
+- dbt Charts
+- Lake Compute
+- dbt Information Schema
 
 **Do not capitalize these features:**
 - dbt platform
@@ -529,7 +534,7 @@ Avoid Latin abbreviations. Use plain language:
 
 | ❌ Avoid | ✅ Use |
 |----------|--------|
-| CLI (alone) | dbt CLI or dbt Core |
+| CLI (alone) | dbt CLI or dbt v1/v2 |
 | dbt CLI | dbt platform CLI (full name) |
 | enter (in UI) | type |
 | type (in command line) | enter |
@@ -580,6 +585,62 @@ Callout content here.
 1. Keep content minimal
 2. Avoid general information, permissions, or prerequisites in callouts
 3. One key point per callout
+
+---
+
+## AI assistant guidance
+
+Use the `agent_guidance` frontmatter field to give AI assistants short instructions for a page. The build adds them under the title of the page's generated Markdown (`/<page>.md`) and in `llms-full.txt`. Readers don't see them on the rendered page.
+
+Use it for step-by-step tutorials, like quickstarts, where assistants tend to share the whole guide at once or switch the reader to a different setup.
+
+### Add a "Copy prompt" callout
+
+Add `<AgentPrompt />` to a page to give readers a callout with a **Copy prompt** button. The prompt text stays hidden until they paste it into their AI assistant.
+
+- **Page has `agent_guidance`:** use `<AgentPrompt />` with no children. The component builds the prompt from the frontmatter, so you write the rules once. The generated Markdown doesn't include the prompt, so assistants see the rules once, under the title.
+- **Page has no `agent_guidance`:** put the prompt in the component. The prompt is hidden on the page, and the generated Markdown includes it.
+
+  ```mdx
+  <AgentPrompt>
+  Walk me through this page one step at a time. Never ask for passwords or keys in chat.
+  </AgentPrompt>
+  ```
+
+If a page has both, the frontmatter wins and the children are ignored. Don't restate `agent_guidance` rules in the callout.
+
+### Recommended structure
+
+Use these keys, in this order. Keys are labels for writers; only the values appear in the output.
+
+| Key | What it tells the assistant | Example |
+|-----|-----------------------------|---------|
+| `pacing` | How to walk the reader through the page | In the first reply, confirm the reader's prerequisites and connection path before listing steps. Then default to one guide section per reply (combine two or three short sections), with all its steps, labeled Step 1, Step 2, and so on, and confirm the success check before continuing. If the reader asks for a different pace, follow it. |
+| `stay_on_path` | The setup and configuration the page covers, and what to do if the reader wants a different one | This guide uses the dbt platform. Don't switch the reader to a local setup. |
+| `safety` | Actions the assistant should never take | Never ask for passwords or keys in chat. |
+| `signup_link` | When to share a tracked signup link, so clicks from assistant conversations show up in analytics | When the reader needs a dbt account, share `https://www.getdbt.com/signup?utm_source=ai_assistant&utm_medium=docs_md&utm_campaign=snowflake-qs` |
+| `ask_when_unclear` | What to do when the page doesn't settle a question | Ask rather than guess when something is unclear. |
+
+```yaml
+agent_guidance:
+  pacing: In the first reply, confirm the reader's prerequisites and connection path before listing steps. Then default to one guide section per reply (combine two or three short sections), with all its steps, labeled Step 1, Step 2, and so on, and confirm the success check before continuing. If the reader asks for a different pace, follow it.
+  stay_on_path: This guide uses the dbt platform. Don't switch the reader to a local setup.
+  safety: Never ask for passwords or keys in chat.
+  signup_link: When the reader needs a dbt account, share https://www.getdbt.com/signup?utm_source=ai_assistant&utm_medium=docs_md&utm_campaign=snowflake-qs
+  ask_when_unclear: Ask rather than guess when something is unclear.
+```
+
+For `signup_link`, keep `utm_source=ai_assistant` and `utm_medium=docs_md` the same on every page, and set `utm_campaign` to the guide's ID plus `-qs` (for example, `bigquery-qs`). Write the full URL. The build turns it into a link in the generated Markdown.
+
+### Rules
+
+- Write direct instructions ("Give one guide section per reply"), not descriptions ("This guide is designed to be followed one step at a time").
+- Limit each value to three short sentences or fewer, and use five items at most.
+- Write plain text. Frontmatter doesn't render `<Constant>` or other components, so spell out product names.
+- Don't include anything you wouldn't publish. The guidance is public in the generated Markdown and in the page HTML.
+- Pace by guide section, not by individual step. A long guide has about a hundred numbered steps, so one step per reply can mean a hundred replies. Combine short sections so each reply has enough to do. Let the reader override the pace: say so in the rule.
+- Add success checks ("You'll now see...") to the page's steps, so the assistant has something to confirm before moving on.
+- Before merging, check the page's `.md` in the preview build and confirm the guidance appears once, under the title.
 
 ---
 

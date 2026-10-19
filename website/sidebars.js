@@ -31,8 +31,6 @@ const sidebarSettings = {
       link: { type: "doc", id: "docs/supported-data-platforms" },
       items: [
         "docs/supported-data-platforms",
-        "docs/connect-adapters",
-        "docs/trusted-adapters",
         "docs/community-adapters",
         "docs/contribute-dbt-adapters",
       ],
@@ -77,6 +75,7 @@ const sidebarSettings = {
                 "docs/platform/connect-data-platform/connect-amazon-athena",
                 "docs/platform/connect-data-platform/connect-azure-synapse-analytics",
                 "docs/platform/connect-data-platform/connect-bigquery",
+                "docs/platform/connect-data-platform/connect-clickhouse",
                 "docs/platform/connect-data-platform/connect-databricks",
                 "docs/platform/connect-data-platform/connect-microsoft-fabric",
                 "docs/platform/connect-data-platform/connect-onehouse",
@@ -423,6 +422,17 @@ const sidebarSettings = {
             },
             {
               type: "category",
+              label: "Wizard Desktop",
+              collapsed: true,
+              link: { type: "doc", id: "docs/dbt-ai/wizard-desktop" },
+              items: [
+                "docs/dbt-ai/wizard-desktop",
+                "docs/dbt-ai/wizard-desktop-use",
+                "docs/dbt-ai/wizard-desktop-settings",
+              ],
+            },
+            {
+              type: "category",
               label: "Wizard in platform",
               collapsed: true,
               link: { type: "doc", id: "docs/platform/wizard-platform" },
@@ -438,6 +448,7 @@ const sidebarSettings = {
             },
           ],
         },
+        "docs/dbt-ai/package-skills",
         {
           type: "category",
           label: "dbt Copilot",
@@ -571,6 +582,7 @@ const sidebarSettings = {
       items: [
         "docs/build/projects",
         "docs/build/about-static-analysis",
+        "docs/build/dbt-information-schema",
         "docs/build/dbt-tips",
         {
           type: "category",
@@ -594,6 +606,7 @@ const sidebarSettings = {
               link: { type: "doc", id: "docs/build/data-tests" },
               items: ["docs/build/data-tests", "docs/build/unit-tests"],
             },
+            "docs/build/checks",
             {
               type: "category",
               label: "Documentation",
@@ -715,6 +728,7 @@ const sidebarSettings = {
                 "docs/build/iceberg/adapters/databricks-iceberg-support",
                 "docs/build/iceberg/adapters/bigquery-iceberg-support",
                 "docs/build/iceberg/adapters/duckdb-iceberg-support",
+                "docs/build/iceberg/adapters/aws-iceberg-support",
               ],
             },
           ],
@@ -856,10 +870,10 @@ const sidebarSettings = {
           label: "Set up dbt State",
           link: { type: "doc", id: "docs/deploy/dbt-state-setup" },
           items: [
-            "docs/deploy/dbt-state-setup", 
-            "docs/deploy/dbt-state-enable-jobs", 
-            "docs/deploy/dbt-state-enable-studio", 
-            "docs/deploy/dbt-state-cicd", 
+            "docs/deploy/dbt-state-setup",
+            "docs/deploy/dbt-state-enable-env-jobs",
+            "docs/deploy/dbt-state-enable-studio",
+            "docs/deploy/dbt-state-cicd",
             "docs/deploy/dbt-state-deferral",
           ],
         },
@@ -983,6 +997,24 @@ const sidebarSettings = {
     },
     {
       type: 'html',
+      value: 'Compute',
+      className: 'sidebar-title',
+    },
+    "docs/lake-compute/lake-compute",
+    "docs/lake-compute/compute-onboarding",
+    "docs/lake-compute/compute-faq",
+    {
+      type: 'html',
+      value: 'Business intelligence',
+      className: 'sidebar-title',
+    },
+    {
+      type: "link",
+      label: "dbt Charts",
+      href: "https://docs.dbtcharts.com/",
+    },
+    {
+      type: 'html',
       value: 'Additional tools',
       className: 'sidebar-title',
     },
@@ -1041,8 +1073,8 @@ const sidebarSettings = {
         "docs/dbt-versions/experimental-features",
         {
           type: "link",
-          label: "Fusion changelog",
-          href: "https://github.com/dbt-labs/dbt-core/blob/main/CHANGELOG-fusion.md",
+          label: "dbt v2 changelog",
+          href: "https://github.com/dbt-labs/dbt/blob/main/CHANGELOG-dbt.md",
         },
         {
           type: "category",
@@ -1241,6 +1273,7 @@ const sidebarSettings = {
         "reference/dbtignore",
         "reference/project-configs/analysis-paths",
         "reference/project-configs/asset-paths",
+        "reference/project-configs/check-paths",
         "reference/project-configs/clean-targets",
         "reference/project-configs/config-version",
         "reference/project-configs/dispatch-config",
@@ -1255,6 +1288,7 @@ const sidebarSettings = {
         "reference/project-configs/query-comment",
         "reference/project-configs/quoting",
         "reference/project-configs/require-dbt-version",
+        "reference/project-configs/skill-paths",
         "reference/project-configs/snapshot-paths",
         "reference/project-configs/seed-paths",
         "reference/project-configs/model-paths",
@@ -1400,6 +1434,7 @@ const sidebarSettings = {
             "reference/resource-properties/model_name",
             "reference/resource-configs/on_configuration_change",
             "reference/resource-configs/on_error",
+            "reference/resource-configs/python-model-configs",
             "reference/resource-configs/sql_header",
           ],
         },
@@ -1488,7 +1523,7 @@ const sidebarSettings = {
             "reference/source-configs",
             "reference/resource-properties/database",
             "reference/resource-properties/external",
-            "reference/resource-properties/freshness",
+            { type: "ref", id: "reference/resource-configs/freshness" },
             "reference/resource-properties/identifier",
             "reference/resource-properties/loader",
             "reference/resource-properties/quoting",
@@ -1537,6 +1572,16 @@ const sidebarSettings = {
         },
         {
           type: "category",
+          label: "For checks",
+          link: { type: "doc", id: "reference/check-properties" },
+          items: [
+            "reference/check-properties",
+            "reference/check-configs",
+            "reference/resource-configs/selection-filter-on",
+          ],
+        },
+        {
+          type: "category",
           label: "For functions",
           link: { type: "doc", id: "reference/function-properties" },
           items: [
@@ -1571,6 +1616,7 @@ const sidebarSettings = {
           },
           items: [
             "reference/commands/build",
+            "reference/commands/check",
             "reference/commands/clean",
             "reference/commands/clone",
             "reference/commands/cmd-docs",
@@ -1578,6 +1624,7 @@ const sidebarSettings = {
             "reference/commands/debug",
             "reference/commands/deps",
             "reference/commands/dbt-environment",
+            "reference/commands/freshness",
             "reference/commands/init",
             "reference/commands/invocation",
             "reference/commands/lint",
@@ -1721,6 +1768,7 @@ const sidebarSettings = {
                 "reference/global-configs/usage-stats",
                 "reference/global-configs/version-compatibility",
                 "reference/global-configs/logs",
+                "reference/global-configs/batch-tests",
                 "reference/global-configs/cache",
                 "reference/global-configs/failing-fast",
                 "reference/global-configs/indirect-selection",
@@ -1755,6 +1803,7 @@ const sidebarSettings = {
         "reference/programmatic-invocations",
       ],
     },
+    "reference/info-schema",
     {
       type: "category",
       label: "Jinja reference",
@@ -1764,6 +1813,7 @@ const sidebarSettings = {
         description: "The list of Jinja functions and context variables available in dbt.",
       },
       items: [
+        "reference/jinja-file-support",
         {
           type: "category",
           label: "dbt Jinja context functions",
@@ -1771,7 +1821,7 @@ const sidebarSettings = {
             type: "generated-index",
             title: "dbt Jinja functions and context variables",
             description:
-              "In addition to the standard Jinja library, we've added additional functions and variables to the Jinja context that are useful when working with a dbt project. Note that dependencies.yml is not Jinja rendered and therefore does not support Jinja.",
+              "In addition to the standard Jinja library, we've added additional functions and variables to the Jinja context that are useful when working with a dbt project. For a file-by-file overview, refer to Jinja support by file type. Note that dependencies.yml is not Jinja rendered in dbt v1 and therefore, does not support Jinja.",
             slug: "/reference/dbt-jinja-functions-context-variables",
           },
           items: [
@@ -1794,6 +1844,7 @@ const sidebarSettings = {
         "reference/artifacts/manifest-json",
         "reference/artifacts/run-results-json",
         "reference/artifacts/sources-json",
+        "reference/artifacts/freshness-json",
         "reference/artifacts/sl-manifest",
         "reference/artifacts/other-artifacts",
       ],
@@ -1838,6 +1889,7 @@ const sidebarSettings = {
             "best-practices/how-we-structure/3-intermediate",
             "best-practices/how-we-structure/4-marts",
             "best-practices/how-we-structure/5-the-rest-of-the-project",
+            "best-practices/how-we-structure/6-mapping-folders-to-warehouse",
           ],
         },
         {
@@ -1921,6 +1973,18 @@ const sidebarSettings = {
             "best-practices/how-we-handle-real-time-data/4-lambda-views",
             "best-practices/how-we-handle-real-time-data/5-views-only-pattern",
             "best-practices/how-we-handle-real-time-data/6-operational-considerations",
+          ],
+        },
+        {
+          type: "category",
+          label: "How to handle change data capture",
+          link: {
+            type: "doc",
+            id: "best-practices/how-we-handle-cdc/1-intro",
+          },
+          items: [
+            "best-practices/how-we-handle-cdc/1-intro",
+            "best-practices/how-we-handle-cdc/2-choosing-incremental-or-snapshots",
           ],
         },
         {

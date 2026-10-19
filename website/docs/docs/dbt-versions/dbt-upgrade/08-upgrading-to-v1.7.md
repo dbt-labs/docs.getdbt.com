@@ -1,7 +1,7 @@
 ---
 title: "Upgrading to v1.7"
 id: upgrading-to-v1.7
-description: New features and changes in dbt Core v1.7
+description: New features and changes in dbt v1.7
 displayed_sidebar: "docs"
 availability:
   engine: v1
@@ -14,14 +14,14 @@ import CoreVersionDeprecation from '/snippets/_core-version-deprecation-callout.
 
 ## Resources
 
-- [Changelog](https://github.com/dbt-labs/dbt-core/blob/1.7.latest/CHANGELOG.md)
+- [Changelog](https://github.com/dbt-labs/dbt/blob/1.7.latest/CHANGELOG.md)
 - [<Constant name="core" /> CLI Installation guide](/docs/local/install-dbt)
 - [Cloud upgrade guide](/docs/dbt-versions/upgrade-dbt-platform-version)
-- [Release schedule](https://github.com/dbt-labs/dbt-core/issues/8260)
+- [Release schedule](https://github.com/dbt-labs/dbt/issues/8260)
 
 ## What to know before upgrading
 
-dbt Labs is committed to providing backward compatibility for all versions 1.x, with the exception of any changes explicitly mentioned below. If you encounter an error upon upgrading, please let us know by [opening an issue](https://github.com/dbt-labs/dbt-core/issues/new).
+dbt Labs is committed to providing backward compatibility for all versions 1.x, with the exception of any changes explicitly mentioned below. If you encounter an error upon upgrading, please let us know by [opening an issue](https://github.com/dbt-labs/dbt/issues/new).
 
 import SnowflakeColumn from '/snippets/_snowflake-column-size.md';
 
@@ -29,7 +29,7 @@ import SnowflakeColumn from '/snippets/_snowflake-column-size.md';
 
 ### Behavior changes
 
-<Constant name="core" /> v1.7 expands the amount of sources you can configure freshness for. Previously, freshness was limited to sources with a `loaded_at_field`; now, freshness can be generated from warehouse metadata tables when available. 
+<Constant name="dbt" /> v1.7 expands the amount of sources you can configure freshness for. Previously, freshness was limited to sources with a `loaded_at_field`; now, freshness can be generated from warehouse metadata tables when available. 
 
 As part of this change, the `loaded_at_field` is no longer required to generate source freshness. If a source has a `freshness:` block, dbt will attempt to calculate freshness for that source:
 - If a `loaded_at_field` is provided, dbt will calculate freshness via a select query (previous behavior).
@@ -66,7 +66,7 @@ To retain the behavior prior to v1.7, there are two main options:
 
 ### Model governance
 
-<Constant name="core" /> v1.5 introduced model governance which we're continuing to refine.  v1.7 includes these additional features and functionality:
+<Constant name="dbt" /> v1.5 introduced model governance which we're continuing to refine.  v1.7 includes these additional features and functionality:
 
 - **[Breaking change detection](/reference/resource-properties/versions#detecting-breaking-changes) for models with contracts enforced:** When dbt detects a breaking change to a model with an enforced contract during state comparison, it will now raise an error for versioned models and a warning for models that are not versioned.
 - **[Set `access` as a config](/reference/resource-configs/access):** You can now set a model's `access` within config blocks in the model's SQL file or in the project YAML file (`dbt_project.yml`) for an entire subfolder at once.

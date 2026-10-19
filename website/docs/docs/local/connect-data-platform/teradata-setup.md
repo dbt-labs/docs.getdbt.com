@@ -1,5 +1,5 @@
 ---
-title: "Connect Teradata to dbt Core"
+title: "Connect Teradata to dbt v1"
 sidebar_label: "Teradata"
 description: "Read this guide to learn about the Teradata warehouse setup in dbt."
 id: "teradata-setup"
@@ -213,7 +213,7 @@ For using cross-DB macros, teradata-utils as a macro namespace will not be used,
   \{\{ dbt.date_trunc("DD", "'2018-01-05 12:00:00'") \}\}
 
   ##### <a name="datediff"></a>datediff
-  `datediff` macro in teradata supports difference between dates. Differece between timestamps is not supported.
+  `datediff` macro in teradata supports difference between dates. Difference between timestamps is not supported.
 
   ##### <a name="hash"></a>hash
 
@@ -276,5 +276,5 @@ The adapter was originally created by [Doug Beatty](https://github.com/dbeatty10
 
 ## License
 
-The adapter is published using Apache-2.0 License. Refer to the [terms and conditions](https://github.com/dbt-labs/dbt-core/blob/main/LICENSE) to understand items such as creating derivative work and the support model.  
+The adapter is published using Apache-2.0 License. Refer to the [terms and conditions](https://github.com/dbt-labs/dbt/blob/main/LICENSE) to understand items such as creating derivative work and the support model.  
 

@@ -22,14 +22,14 @@ Instead of rebuilding every node on every run, it compares each node's logic and
 
 To enable dbt State:
 
-- **<Constant name="core" /> v1.7–1.12**: 
+- **<Constant name="dbt" /> v1.7–1.12**: 
 
     ```bash
     cd path/to/your/project
     pip install dbt-state
     ```
 
-- **<Constant name="core" /> v2**:
+- **<Constant name="core_v2" />**:
 
     ```bash
     cd path/to/your/project

@@ -1,5 +1,5 @@
 ---
-title: "Connect SingleStore to dbt Core"
+title: "Connect SingleStore to dbt v1"
 sidebar_label: "SingleStore"
 description: "Read this guide to learn about the SingleStore warehouse setup in dbt."
 id: "singlestore-setup"

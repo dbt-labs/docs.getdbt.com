@@ -60,7 +60,13 @@ dbt test --select "test_type:unit"
 
 <VersionBlock firstVersion="2.0">
 
-## Run unit tests locally <Lifecycle status="beta" />
+## Run unit tests locally
+
+:::note Opt in with an environment variable
+
+Running an individual unit test on local compute is currently an experimental feature. Set `DBT_ENGINE_EXPERIMENTAL_LOCAL_UNIT_TESTS=true` in the environment where dbt runs before you use `compute: local`.
+
+:::
 
 You can run unit tests locally when you're working through tricky SQL and you want to know right away whether your logic works. By default, each unit test sends a query to your data platform and waits for the result. This can slow down testing and use warehouse compute.
 
@@ -73,7 +79,28 @@ That gives you:
 - Queries that execute with the same functions and runtime semantics as the remote warehouse
 - Your data platform's compute left for building models.
 
-You can configure it on a single unit test:
+### Prerequisites
+
+- The `DBT_ENGINE_EXPERIMENTAL_LOCAL_UNIT_TESTS` environment variable set to `true`. This config is experimental and you need to opt in. Without it, dbt fails with an invalid configuration error that names the variable.
+- Snowflake or BigQuery. Local execution isn't available for other data platforms, and it only applies to unit tests.
+- The direct upstream models of the model you're testing already exist in your data platform. dbt fetches their schemas to translate your SQL, so if they don't exist, the test fails with an error about fetching the upstream relation schema.
+- `static_analysis` isn't set to `off` on the test. Local execution needs static analysis to translate your SQL, so `compute: local` promotes [static analysis](/reference/resource-configs/static-analysis) to `strict` for that test. If you set `static_analysis: off`, the test can't run locally and fails with `ExecutorFailed (dbt1401)`.
+
+### What to know before you use it
+
+- dbt fetches upstream schemas the first time you run the test, then caches them. Later runs reuse the cache, so they don't re-fetch.
+- Local execution only works if dbt can compile your model's SQL and translate it to DuckDB. Complex SQL and functions specific to your data platform might have no DuckDB equivalent so Snowflake's `AI_CLASSIFY` and `haversine` are two examples. So for example, a model that calls `haversine` fails with `failed in db_runner: Internal: Catalog Error: Scalar Function with name haversine does not exist!`.
+- A translation failure is a test failure. `local` doesn't fall back to your data platform, so the test fails and dbt exits with a non-zero code. 
+
+### How to configure
+
+First, opt in to the config in the environment where dbt runs:
+
+```bash
+export DBT_ENGINE_EXPERIMENTAL_LOCAL_UNIT_TESTS=true
+```
+
+Then you can configure it on a single unit test:
 
 <File name='models/schema.yml'>
 
@@ -111,18 +138,6 @@ unit_tests:
 </SimpleTable>
 
 You might also see `sidecar` in error messages but it means the same thing as `local`.
-
-### Prerequisites
-
-- Snowflake or BigQuery. Local execution isn't available for other data platforms, and it only applies to unit tests.
-- The direct upstream models of the model you're testing already exist in your data platform. dbt fetches their schemas to translate your SQL, so if they don't exist, the test fails with an error about fetching the upstream relation schema.
-- `static_analysis` isn't set to `off` on the test. Local execution needs static analysis to translate your SQL, so `compute: local` promotes [static analysis](/reference/resource-configs/static-analysis) to `strict` for that test. If you set `static_analysis: off`, the test can't run locally and fails with `ExecutorFailed (dbt1401)`.
-
-### What to know before you use it
-
-- dbt fetches upstream schemas the first time you run the test, then caches them. Later runs reuse the cache, so they don't re-fetch.
-- Local execution only works if dbt can compile your model's SQL and translate it to DuckDB. Complex SQL and functions specific to your data platform might have no DuckDB equivalent so Snowflake's `AI_CLASSIFY` and `haversine` are two examples. So for example, a model that calls `haversine` fails with `failed in db_runner: Internal: Catalog Error: Scalar Function with name haversine does not exist!`.
-- A translation failure is a test failure. `local` doesn't fall back to your data platform, so the test fails and dbt exits with a non-zero code. 
 
 </VersionBlock>
 
@@ -426,7 +441,7 @@ unit_tests:
 
 ```
 
-There is currently no way to unit test whether the dbt framework inserted/merged the records into your existing model correctly, but [we're investigating support for this in the future](https://github.com/dbt-labs/dbt-core/issues/8664).
+There is currently no way to unit test whether the dbt framework inserted/merged the records into your existing model correctly, but [we're investigating support for this in the future](https://github.com/dbt-labs/dbt/issues/8664).
 
 ## Unit testing a model that depends on ephemeral model(s)
 

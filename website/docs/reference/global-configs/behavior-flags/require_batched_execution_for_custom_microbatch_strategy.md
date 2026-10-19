@@ -4,15 +4,15 @@ id: "require_batched_execution_for_custom_microbatch_strategy"
 sidebar_label: "require batched execution for custom microbatch strategy"
 ---
 
-:::caution Removed in <Constant name="core_v2" />
+:::caution Removed in v2
 
-This flag was removed in <Constant name="core_v2" /> and in <Constant name="fusion" />. The new behavior is always enabled. If you're upgrading, remove this flag from your `dbt_project.yml`.
+This flag was removed in v2. The new behavior is always enabled. If you're upgrading, remove this flag from your `dbt_project.yml`.
 
 :::
 
 
 
-| require_batched_execution_for_custom_microbatch_strategy | <Constant name="dbt" /> **Latest** | <Constant name="core" /> |
+| require_batched_execution_for_custom_microbatch_strategy | <Constant name="dbt" /> **v1 Latest** | <Constant name="core" /> |
 |---|---|---|
 | Introduced | 2024.11 | 1.9.0 |
 | Matured (default → `true`) | 2026.09 | 1.12.0 |
@@ -22,7 +22,7 @@ This flag was removed in <Constant name="core_v2" /> and in <Constant name="fusi
 
 The `require_batched_execution_for_custom_microbatch_strategy` flag is only relevant if you already have a custom `get_incremental_microbatch_sql` macro in your project. If you don't have a custom microbatch macro, you don't need to set this flag — dbt handles microbatching automatically for any model using the [microbatch strategy](/docs/build/incremental-microbatch#how-microbatch-compares-to-other-incremental-strategies).
 
-Starting in <Constant name="core" /> v1.12, this flag defaults to `true`, meaning dbt executes custom microbatch strategies in batches. If you have a custom microbatch macro and set the flag to `false`, dbt issues a deprecation warning.
+Starting in <Constant name="dbt" /> v1.12, this flag defaults to `true`, meaning dbt executes custom microbatch strategies in batches. If you have a custom microbatch macro and set the flag to `false`, dbt issues a deprecation warning.
 
 Previously, users needed to set the `DBT_EXPERIMENTAL_MICROBATCH` environment variable to `true` to prevent unintended interactions with existing custom incremental strategies. Setting `DBT_EXPERIMENTAL_MICROBATCH` no longer has any effect on runtime functionality.
 

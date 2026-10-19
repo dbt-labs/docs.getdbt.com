@@ -20,7 +20,7 @@ You can run <Constant name="dbt" /> locally from your terminal with the dbt CLI,
 Install <Constant name="dbt" /> locally to run dbt commands from your terminal. You can install it with `pip`:
 
 ```shell
-python -m pip install --pre dbt
+python -m pip install dbt
 ```
 
 Or with `curl`:
@@ -51,7 +51,7 @@ The [dbt VS Code extension](/docs/about-dbt-extension) lets you develop dbt proj
 
 ## dbt Wizard
 
-[<Constant name="wizard" />](/docs/dbt-ai/wizard-quickstart) is a natural next step for local dbt development. It works with <Constant name="dbt" /> and adds an AI agent that understands your full project through dbt's [native metadata engine](/docs/dbt-ai/about-dbt-ai), a structured index of your [lineage](/docs/explore/explore-projects), model health, test coverage, and semantic definitions.
+[<Constant name="wizard" />](/docs/dbt-ai/wizard-quickstart) is a natural next step for local dbt development. It works with <Constant name="dbt" /> and adds an AI agent that understands your full project through the [dbt Information Schema](/docs/build/dbt-information-schema), a structured view of your [lineage](/docs/explore/explore-projects), model health, test coverage, and semantic definitions.
 
 - **Build and refactor from natural language:** Describe the change, get a reviewable diff, approve before anything is written.
 - **Validate in a tight loop:** Every proposed change compiles and runs against your warehouse, catching issues before production.
@@ -74,8 +74,7 @@ The dbt MCP server connects your local dbt project to AI assistants using the [M
 ## Licensing info
 dbt framework has two distributions which can both be installed locally for free, powered by a single engine:
 
-- <Constant name="core" /> is completely open-source and the code behind <Constant name="fusion" />. Its code and binary are subject to the Apache 2.0 license.
-  - Includes <Constant name="core_v1" /> and <Constant name="core_v2" />
-- dbt Fusion extends <Constant name="core" /> with additional advanced capabilities &mdash; some are free to use, and other premium features (under proprietary code) are unlocked with a free login or payment method.
+- The Apache 2.0 licensed open-source distribution. Both v1 and v2 are available as open source installations.
+- dbt v2 extends the dbt OSS offering with additional advanced capabilities &mdash; all free to use!
 
 Refer to [licensing](/docs/dbt-licensing) for more info.

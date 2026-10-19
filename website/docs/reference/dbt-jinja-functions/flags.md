@@ -21,7 +21,7 @@ drop table ...
 
 </File>
 
-The list of available flags is defined in the [`flags` module](https://github.com/dbt-labs/dbt-core/blob/HEAD/crates/dbt-jinja-utils/src/flags.rs) within `dbt-core`.
+The list of available flags is defined in the [`flags` module](https://github.com/dbt-labs/dbt/blob/HEAD/crates/dbt-jinja-utils/src/flags.rs) within `dbt-labs/dbt`.
 
 Recommended use cases include:
 - different <Term id="materialization" /> logic based on "run modes," such as `flags.FULL_REFRESH`, `flags.STORE_FAILURES`, and `flags.EMPTY`

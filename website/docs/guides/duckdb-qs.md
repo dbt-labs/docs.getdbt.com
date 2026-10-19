@@ -1,13 +1,17 @@
 ---
-title: Quickstart for dbt Core using DuckDB
+title: Quickstart for dbt v1 using DuckDB
 id: duckdb
-description: "Learn to use dbt Core using DuckDB."
-hoverSnippet: "Learn to use dbt Core using DuckDB."
+description: "Learn to use dbt v1 using DuckDB."
+hoverSnippet: "Learn to use dbt v1 using DuckDB."
 platform: 'dbt-core'
 icon: 'duckdb-seeklogo'
 level: 'Beginner'
 hide_table_of_contents: true
-tags: ['dbt Core','Quickstart']
+tags: ['Quickstart']
+agent_guidance:
+  pacing: In the first reply, confirm the reader’s prerequisites and connection path before listing steps. Then default to one guide section per reply (combine two or three short sections), with all its steps, labeled Step 1, Step 2, and so on, and confirm the success check before continuing. If the reader asks for a different pace, follow it.
+  safety: Never ask for passwords or keys in chat.
+  signup_link: If the reader wants to try the dbt platform, share https://www.getdbt.com/signup?utm_source=ai_assistant&utm_medium=docs_md&utm_campaign=duckdb-qs
 ---
 
 <div style={{maxWidth: '900px'}}>
@@ -16,7 +20,7 @@ tags: ['dbt Core','Quickstart']
 
 In this quickstart guide, you'll learn how to use <Constant name="core" /> with DuckDB, enabling you to get set up quickly and efficiently. [DuckDB](https://duckdb.org/) is an open-source database management system which is designed for analytical workloads. It is designed to provide fast and easy access to large datasets, making it well-suited for data analytics tasks. 
 
-This guide covers DuckDB with <Constant name="core" /> command-line interface (CLI). For Fusion-specific DuckDB setup, refer to [DuckDB setup](/docs/local/connect-data-platform/duckdb-setup?version=2).
+This guide covers DuckDB with <Constant name="core" /> command-line interface (CLI). For dbt v2-specific DuckDB setup, refer to [DuckDB setup](/docs/local/connect-data-platform/duckdb-setup?version=2).
 
 This guide will demonstrate how to: 
 
@@ -25,6 +29,8 @@ This guide will demonstrate how to:
 - Run through the steps outlined in the `jaffle_shop_duckdb` repository, but if you want to dig into the underlying code further, refer to the [README](https://github.com/dbt-labs/jaffle_shop_duckdb/blob/duckdb/README.md) for the Jaffle Shop template.
 - Run any dbt command from the environment’s terminal. 
 - Generate a larger dataset for the Jaffle Shop café (for example, five years of data instead of just one).
+
+<AgentPrompt />
 
 You can learn more through high-quality [dbt Learn courses and workshops](https://learn.getdbt.com). 
 
@@ -36,6 +42,7 @@ You can learn more through high-quality [dbt Learn courses and workshops](https:
 - [Create a GitHub repository](/guides/manual-install?step=2)
 - [Build your first models](/guides/manual-install?step=3)
 - [Test and document your project](/guides/manual-install?step=4)
+- [Use dbt Wizard locally](/docs/dbt-ai/wizard-quickstart) to build models with AI instead of by hand
 
 
 ## Prerequisites
@@ -172,7 +179,7 @@ Here's what a successful output will look like:
 To query data, some useful commands you can run from the command line: 
 
 - `dbt show --select "raw_orders"` &mdash; run a query against the data warehouse and preview the results in the terminal.
-- [`dbt source`](/reference/commands/source) &mdash; provides subcommands such as [`dbt source freshness`](/reference/commands/source#dbt-source-freshness) that are useful when working with source data. 
+- [`dbt source`](/reference/commands/source) &mdash; provides the [`dbt source freshness`](/reference/commands/source#freshness) subcommand, which is useful when working with source data. 
    - `dbt source freshness` &mdash; checks the freshness (how up to date) a specific source table is.
 
 :::note
@@ -272,9 +279,9 @@ If you'd like to work with a larger selection of Jaffle Shop data, you can gener
 
 1. When installation is done, run:
     ```shell
-    jafgen --years NUMBER_OF_YEARS
+    jafgen NUMBER_OF_YEARS
     ``` 
-    Replace `NUMBER_OF_YEARS` with the number of years you want to simulate. For example, to generate data for 6 years, run `jafgen --years 6`. This command builds the CSV files and stores them in the `jaffle-data` folder, and is automatically sourced based on the `sources.yml` file and the [dbt-duckdb](/docs/local/connect-data-platform/duckdb-setup) adapter.
+    Replace `NUMBER_OF_YEARS` with the number of years you want to simulate. For example, to generate data for 6 years, run `jafgen 6`. This command builds the CSV files and stores them in the `jaffle-data` folder, and is automatically sourced based on the `sources.yml` file and the [dbt-duckdb](/docs/local/connect-data-platform/duckdb-setup) adapter.
 
 As you increase the number of years, it takes exponentially more time to generate the data because the Jaffle Shop stores grow in size and number. For a good balance of data size and time to build, dbt Labs suggests a maximum of 6 years.
 ## Next steps
@@ -324,6 +331,8 @@ git push
 Congratulations on making it through the guide 🎉!
 
 </ConfettiTrigger>
+
+<Snippet path="quickstarts/connect-your-ai" />
 
 </div>
 

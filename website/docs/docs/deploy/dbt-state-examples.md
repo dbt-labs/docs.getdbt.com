@@ -1,7 +1,7 @@
 ---
 title: "dbt State usage examples"
 sidebar_label: "dbt State examples"
-description: "Side-by-side dbt Core and dbt Core with dbt State execution scenarios using the Jaffle Shop project."
+description: "Side-by-side standalone local dbt execution and local dbt with dbt State execution scenarios using the Jaffle Shop project."
 id: "dbt-state-examples"
 tags: ['dbt State']
 pagination_prev: "docs/deploy/dbt-state-deferral"
@@ -9,7 +9,7 @@ pagination_next: "docs/deploy/dbt-state-migration"
 availability: everywhere_usage
 ---
 
-# Example usage for dbt State <Lifecycle status="preview" />
+# Example usage for dbt State
 
 <IntroText>
 
@@ -21,7 +21,7 @@ The following examples use this [Jaffle Shop project](https://github.com/dbt-lab
 
 <Lightbox src="/img/docs/dbt-state/dbt_state_dag.png" title="The Jaffle Shop DAG" />
 
-Each of the following scenarios shows how a run differs between <Constant name="core" /> alone and <Constant name="core" /> with dbt State, using the same command and project.
+Each of the following scenarios shows how a run differs between <Constant name="dbt" /> alone and <Constant name="dbt" /> with dbt State, using the same command and project.
 
 | Scenario | Command | What dbt State changes |
 | --- | --- | --- |
@@ -362,7 +362,7 @@ Done. PASS=0 WARN=0 ERROR=0 SKIP=0 NO-OP=0 REUSED=1 TOTAL=1
 
 - [About dbt State](/docs/deploy/dbt-state-about)
 - [Setting up dbt State](/docs/deploy/dbt-state-setup)
-- [Non-interactive environment setup for dbt State](/docs/deploy/dbt-state-cicd)
+- [Set up authentication for non-interactive environments](/docs/deploy/dbt-state-cicd)
 - [Configuring deferral in dbt State](/docs/deploy/dbt-state-deferral)
 - [Monitoring dbt State activity in dbt platform](/docs/deploy/dbt-state-interface)
 - [Migrating from state-aware orchestration to dbt State](/docs/deploy/dbt-state-migration)

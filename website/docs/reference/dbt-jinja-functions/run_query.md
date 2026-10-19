@@ -19,9 +19,9 @@ Returns a [Table](https://agate.readthedocs.io/page/api/table.html) object with 
 
 <VersionBlock firstVersion="2.0">
 
-## Fusion type checking
+## dbt v2 type checking
 
-The <Constant name="fusion_engine" /> processes result sets with more strict null checking. This can cause failures when using `run_query` for <Term id="ddl" /> or maintenance operations (like `OPTIMIZE`, `VACUUM`). When a given result set returns null values in columns declared as non-nullable, fusion will fail - whereas <Constant name="core" /> would silently ignore it.
+<Constant name="fusion_engine" /> processes result sets with more strict null checking. This can cause failures when using `run_query` for <Term id="ddl" /> or maintenance operations (like `OPTIMIZE`, `VACUUM`). When a given result set returns null values in columns declared as non-nullable, v2 will fail - whereas <Constant name="core" /> would silently ignore it.
 
 For "fire and forget" operations where you don't need the result set, use a [statement block](/reference/dbt-jinja-functions/statement-blocks) with `fetch_result=False` instead, as highlighted in this Databricks example:
 

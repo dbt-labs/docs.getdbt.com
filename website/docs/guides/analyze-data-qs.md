@@ -71,7 +71,7 @@ From the **Customer model page** in <Constant name="catalog" />, Kimiko selects 
 
 </DocCarousel>
 
-When Kimiko runs the query, she can look at the data underyling it. The same context she saw in <Constant name="catalog" /> she now sees in her SQL editing experience.
+When Kimiko runs the query, she can look at the data underlying it. The same context she saw in <Constant name="catalog" /> she now sees in her SQL editing experience.
 
 As she looks through the data, she sees information about each customer. She also notices the `first_ordered_at` column. Kimiko wants to code the query but her SQL is a little rusty so she uses natural language in dbt Wizard:
 
@@ -111,13 +111,11 @@ order by 1;
 
 She's happy with the results and clicks **Details** to see the AI-generated report, which includes a title and description, supplied SQL, and the compiled SQL.
 
-<Lightbox src="/img/guides/analyst-qs/details.png" width="90%" title="Details report tabe" />
+<Lightbox src="/img/guides/analyst-qs/details.png" width="90%" title="Details report tab" />
 
 Once she's ready to get the insight to her stakeholder, she clicks **Chart** to view the chart prefilled with the data from the **Data** tab. 
 
 She adds x- and y-axis labels, such as "Month of first order" and "Total new customers" to make it more comprehensible for the final report she'll share with her stakeholder. Next, she takes a screenshot to share with them.
-
-<!-- ![ADD IMAGE Insights-axis-title](/img/analyst-walkthrough/insights-axis-title.png) -->
 
 She often comes back to this data so Kimiko decides to bookmark the page by clicking **Bookmark** in the top right. She also exports it to a CSV file.
 
@@ -127,11 +125,10 @@ Kimiko has a few conversations with teammates and she finds out they're running 
 
 To do this, she opens the query in <Constant name="insights" /> and clicks **Develop** then ***Develop in** <Constant name="canvas" />. This opens the SQL query in a visual form, represented in a DAG.
 
-<!-- ![ADD IMAGE Canvas-overview](/img/analyst-walkthrough/canvas-overview.png) -->
 
 When she examines the model, she notes it's selecting from customers as expected, filtering for 2024, showing dates by month, and aggregating over that month. She runs it in her development environment and clicks **Commit** to submit a pull request. 
 
-<!-- ![ADD IMAGE Canvas-commit](/img/analyst-walkthrough/canvas-commit.png) -->
+
 
 Now Kimiko's entire team, those who have the same access as her, can run this model and see the same results she does! What's more is they can help her improve the model as the stakeholder requests get more complicated, and she will benefit from their help.
 
@@ -141,5 +138,5 @@ Going forward, Kimiko is able to return to her project in <Constant name="catalo
 
 * Manually run the model, which also runs tests and is versioned so Kimiko can track changes over time
 * Trigger a scheduled job to run the dbt model, like every Monday for her stakeholder report
-* Set up a Slack notification in case the job fails so she can recitfy any problems
+* Set up a Slack notification in case the job fails so she can rectify any problems
 

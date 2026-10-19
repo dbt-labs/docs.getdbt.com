@@ -1,5 +1,5 @@
 ---
-title: "Connect SQLite to dbt Core"
+title: "Connect SQLite to dbt v1"
 sidebar_label: "SQLite"
 description: "Read this guide to learn about the SQLite warehouse setup in dbt."
 id: "sqlite-setup"
@@ -29,9 +29,9 @@ import SetUpPages from '/snippets/_setup-pages-intro.md';
 
 <SetUpPages meta={frontMatter.meta}/>
 
-Starting with the release of <Constant name="core" /> 1.0.0, versions of dbt-sqlite are aligned to the same major+minor [version](https://semver.org/) of <Constant name="core" />.
-- versions 1.1.x of this adapter work with <Constant name="core" /> 1.1.x
-- versions 1.0.x of this adapter work with <Constant name="core" /> 1.0.x
+Starting with the release of <Constant name="dbt" /> 1.0.0, versions of dbt-sqlite are aligned to the same major+minor [version](https://semver.org/) of <Constant name="core" />.
+- versions 1.1.x of this adapter work with <Constant name="dbt" /> 1.1.x
+- versions 1.0.x of this adapter work with <Constant name="dbt" /> 1.0.x
 
 ## Connecting to SQLite with dbt-sqlite
 
@@ -70,7 +70,7 @@ your_profile_name:
 | `schema`                 | Value of 'schema' must be defined in schema_paths below. in most cases, this should be main. |
 | `schemas_and_paths`      | Connect schemas to paths: at least one of these must be 'main' |
 | `schema_directory`	     | Directory where all *.db files are attached as schema, using base filename as schema name, and where new schemas are created. This can overlap with the dirs of files in schemas_and_paths as long as there's no conflicts. |
-| `extensions`             | Optional. List of file paths of SQLite extensions to load. crypto.so is needed for snapshots to work; see SQLlite Extensions below. |
+| `extensions`             | Optional. List of file paths of SQLite extensions to load. crypto.so is needed for snapshots to work; see SQLite Extensions below. |
 
 ## Caveats 
 

@@ -427,7 +427,7 @@ dbt Labs has developed a [project structure guide](/best-practices/how-we-struct
 
     <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/7-folder-structure/3-tree-of-new-folders.png" width="40%" title="File tree of new folders"/>
 
-Remember you can always reference the entire project in [GitHub](https://github.com/dbt-labs/python-snowpark-formula1/tree/python-formula1) to view the complete folder and file strucutre.  
+Remember you can always reference the entire project in [GitHub](https://github.com/dbt-labs/python-snowpark-formula1/tree/python-formula1) to view the complete folder and file structure.  
 
 ## Create source and staging models
 
@@ -946,7 +946,7 @@ By now, we are pretty good at creating new files in the correct directories so w
 
     That wraps up the intermediate models we need to create our core models!
 
-### <Constant name="core" /> models
+### dbt models
 
 1. Create a file `fct_results.sql`. This is what I like to refer to as the “mega table” &mdash; a really large denormalized table with all our context added in at row level for human readability. Importantly, we have a table `circuits` that is linked through the table `races`. When we joined `races` to `results` in `int_results.sql` we allowed our tables to make the connection from `circuits` to `results` in `fct_results.sql`. We are only taking information about pit stops at the result level so our join would not cause a [fanout](https://community.looker.com/technical-tips-tricks-1021/what-is-a-fanout-23327).
 
@@ -1202,7 +1202,7 @@ First, we want to find out: which constructor had the fastest pit stops in 2021?
 Let’s take a step back before starting machine learning to both review and go more in-depth at the methods that make running dbt python models possible. If you want to know more outside of this lab’s explanation read the documentation [here](/docs/build/python-models?version=1).
 
 - dbt model(dbt, session). For starters, each Python model lives in a .py file in your models/ folder. It defines a function named `model()`, which takes two parameters:
-  - dbt &mdash; A class compiled by <Constant name="core" />, unique to each model, enables you to run your Python code in the context of your dbt project and DAG.
+  - dbt &mdash; A class compiled by dbt, unique to each model, enables you to run your Python code in the context of your dbt project and DAG.
   - session &mdash; A class representing your data platform’s connection to the Python backend. The session is needed to read in tables as DataFrames and to write DataFrames back to tables. In PySpark, by convention, the SparkSession is named spark, and available globally. For consistency across platforms, we always pass it into the model function as an explicit argument called session.
 - The `model()` function must return a single DataFrame. On Snowpark (Snowflake), this can be a Snowpark or pandas DataFrame.
 - `.source()` and `.ref()` functions. Python models participate fully in dbt's directed acyclic graph (DAG) of transformations. If you want to read directly from a raw source table, use `dbt.source()`. We saw this in our earlier section using SQL with the source function. These functions have the same execution, but with different syntax. Use the `dbt.ref()` method within a Python model to read data from other models (SQL or Python). These methods return DataFrames pointing to the upstream source, model, seed, or snapshot.
@@ -1566,7 +1566,7 @@ If you haven’t seen code like this before or use joblib files to save machine 
                 - Specify our model is a logistic regression.
                 - Fit our model. In a logistic regression this means finding the coefficients that will give the least classification error.
                 - Round our predictions to the nearest integer since logistic regression creates a probability between for each class and calculate a balanced accuracy to account for imbalances in the target variable.
-        - Right now our model is only in memory, so we need to use our nifty function `save_file` to save our model file to our Snowflake stage. We save our model as a joblib file so Snowpark can easily call this model object back to create predictions. We really don’t need to know much else as a data practitioner unless we want to. It’s worth noting that joblib files aren’t able to be queried directly by SQL. To do this, we would need to transform the joblib file to an SQL querable format such as JSON or CSV (out of scope for this workshop).
+        - Right now our model is only in memory, so we need to use our nifty function `save_file` to save our model file to our Snowflake stage. We save our model as a joblib file so Snowpark can easily call this model object back to create predictions. We really don’t need to know much else as a data practitioner unless we want to. It’s worth noting that joblib files aren’t able to be queried directly by SQL. To do this, we would need to transform the joblib file to an SQL queryable format such as JSON or CSV (out of scope for this workshop).
         - Finally we want to return our dataframe, but create a new column indicating what rows were used for training and those for training.
 5. Viewing our output of this model:
   <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/12-machine-learning-training-prediction/1-preview-train-test-position.png" title="Preview which rows of our model were used for training and testing"/>
