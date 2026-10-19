@@ -39,13 +39,12 @@ The following tool list is available for your MCP server and is auto-fetched fro
 
 <McpToolsFromReadme />
 
-### execute_sql FAQs
-
-Common questions about what the `execute_sql` tool can and can't do.
-
-<FAQ path="dbt-mcp/mcp-execute-sql" />
-
 ### Find jobs across project environments
 
 Use the `list_jobs` [tool](#admin-api) with a `project_id` to list jobs across every environment in a dbt project. This is useful when you need to inspect jobs outside the configured production environment. Without `project_id`, `list_jobs` continues to use the configured production environment, or lists jobs across the account when no production environment is configured.
  
+## execute_sql FAQs
+
+Here are common questions about what the `execute_sql` tool can and can't do. Refer to [dbt MCP FAQs](/category/dbt-mcp) for additional questions.
+
+<FAQ path="dbt-mcp/mcp-execute-sql" />
