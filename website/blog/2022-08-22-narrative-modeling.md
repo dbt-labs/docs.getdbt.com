@@ -60,7 +60,7 @@ In the past, I’ve used a framework I call *narrative modeling*, naming and str
 
 - Navigating an analytical database should be intuitive and educational
 - Traversing the underlying code for an analytical database should be intuitive and stakeholder-friendly
-- Adding to an analytical database should be intuitive and scaleable
+- Adding to an analytical database should be intuitive and scalable
 
 Out of those principles came three primary conventions: event tables, details tables, and entity schemas.
 

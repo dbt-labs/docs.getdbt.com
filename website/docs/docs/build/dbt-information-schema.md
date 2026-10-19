@@ -25,6 +25,8 @@ Use `dbt show --inline` to run SQL queries or `dbt show --info` to query a view 
 
 For available tables and their descriptions, see [Information Schema tables](/reference/info-schema).
 
+<Constant name="wizard" /> also uses the Information Schema to understand your project. Refer to [How <Constant name="wizard" /> works](/docs/dbt-ai/wizard-how-it-works#dbt-information-schema) to learn more.
+
 ## Generating the Information Schema
 
 Use `--generate-info-schema` flag with `dbt build`, `dbt run`, `dbt compile`, or `dbt parse`.

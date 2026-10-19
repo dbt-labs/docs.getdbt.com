@@ -244,7 +244,7 @@ If you receive the "You must specify a region" error when using IAM Authenticati
 | ------------- | ------- | ------------ |
 | `method` |IAM| use IAM to authenticate via IAM User authentication |
 | `iam_profile` | analyst | dbt will use the specified profile from your ~/.aws/config file |
-| `cluster_id` | cluster_id| Required for IAM authentication only for provisoned cluster, not for Serverless |
+| `cluster_id` | cluster_id| Required for IAM authentication only for provisioned cluster, not for Serverless |
 | `user`   | username | User querying the database, ignored for Serverless (but field still required) |
 | `region`  | us-east-1 | Region of your Redshift instance | 
 
