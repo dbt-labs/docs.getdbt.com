@@ -1335,7 +1335,7 @@ Note the following considerations:
 
 - Only `_FILE_NAME` is supported. Other BigQuery pseudocolumns (such as `_PARTITIONTIME` or `_TABLE_SUFFIX`) are not supported in unit tests.
 - If you omit `_FILE_NAME` from a `given` fixture row, dbt defaults the value to `null`.
-- In `expect` rows, use the alias your model defines for `_FILE_NAME`.
+- Because `_FILE_NAME` is a reserved column name in BigQuery, your model must define an alias for it. In `expect` rows, use that alias.
 
 ### Limitations
 
