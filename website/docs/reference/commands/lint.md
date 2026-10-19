@@ -279,9 +279,9 @@ If you need SQLFluff behavior, you can either lint in the <Constant name="studio
 
 ## Promoting lint warnings to errors
 
-By default, rules without an autofix report as warnings and don't fail `dbt lint`. Violations that `--fix` can fix are errors, so they fail the command.
+By default, violations from [rules without an autofix](#rules-without-autofix) show as warnings and don't fail `dbt lint`. Violations that `--fix` can fix show as errors and fail the command.
 
-If you want to report a violation of a rule with an error instead of a warning, add its name to `warn_error_options` in `dbt_project.yml`. Use the name in the lint output. For example, rule `ST05` is reported as `PreferCTE`:
+To fail the run on a warning, add its name to `warn_error_options` in `dbt_project.yml`. Use the name from the lint output. For example, rule `ST05` shows as `PreferCTE`:
 
 ```yaml
 flags:
@@ -290,10 +290,17 @@ flags:
       - PreferCTE
 ```
 
+If you set `error: all` instead, dbt promotes every warning, including warnings from commands other than `lint`:
 
-Setting `error: all` promotes every dbt warning, including warnings from commands other than `lint`. To promote one lint rule, list that rule by name. Refer to [Warnings](/reference/global-configs/warnings).
+```yaml
+flags:
+  warn_error_options:
+    error: all
+```
 
-In a CI job, the **Linting** checkbox runs `dbt lint` and uses this project file. Select **Stop running on error** to fail the job when lint reports an error. The **Commands** list doesn't accept `dbt lint`. Refer to [SQL linting](/docs/deploy/continuous-integration#sql-linting).
+To promote one lint rule, list that rule by name as in the first example. Refer to [Warnings](/reference/global-configs/warnings).
+
+In a CI job, the **Linting** checkbox runs `dbt lint` and uses this project file. Select **Stop running on error** to fail the job when lint shows an error. To turn linting on, refer to [Set up CI jobs](/docs/deploy/ci-jobs#set-up-ci-jobs) and [SQL linting](/docs/deploy/continuous-integration#sql-linting).
 
 ## Limitations
 
