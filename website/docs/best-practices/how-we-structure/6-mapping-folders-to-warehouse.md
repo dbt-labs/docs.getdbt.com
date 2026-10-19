@@ -12,11 +12,11 @@ Folders organize your code. Schemas (or datasets, in BigQuery) organize the tabl
 
 ## Map folders to custom schemas
 
-By default, dbt builds every model in your target schema, which is the schema for the [environment](https://github.com/docs/dbt-platform-environments) you’re running in (for example, development, CI, or production). To give the models in a folder their own schema, set `+schema` on that folder. dbt calls this a custom schema, which doesn't replace the target schema. Instead it joins the two as `<target_schema>_<custom_schema>`, so development and production build into different schemas. Refer to [Custom schemas](/docs/build/custom-schemas).
+By default, dbt builds every model in your target schema, which comes from the [environment](/docs/dbt-platform-environments) in <Constant name="dbt_platform" /> or from the [profile](/docs/local/dbt-environments) when you run locally (for example, development, CI, or production). To give the models in a folder their own schema, set `+schema` on that folder. dbt calls this a custom schema, which doesn't replace the target schema. Instead it joins the two as `<target_schema>_<custom_schema>`, so development and production build into different schemas. Refer to [Custom schemas](/docs/build/custom-schemas).
 
 We recommend naming your custom schemas after your project folders, so staging, intermediate, and marts models are easy to find in your warehouse. For example, set `+schema: staging`, `+schema: intermediate`, and `+schema: marts`. If your team already uses different names, use those instead.
 
-For example, with `analytics_prod` and `alice_dev` as target schemas, dbt builds each folder into these schemas:
+With `analytics_prod` and `alice_dev` as target schemas, dbt builds each folder into these schemas:
 
 | Folder | Config | Production (`analytics_prod`) | Development (`alice_dev`) |
 | --- | --- | --- | --- |
@@ -26,8 +26,6 @@ For example, with `analytics_prod` and `alice_dev` as target schemas, dbt builds
 
 <br />
 
-
-
 Sources point at tables that already exist, typically in `raw`. dbt reads those tables; it does not build them. For more information, refer to [Staging](/best-practices/how-we-structure/2-staging) and [Sources](/docs/build/sources).
 
 :::note
@@ -36,7 +34,7 @@ If the [Jaffle Shop](https://github.com/dbt-labs/jaffle-shop) example loads seed
 
 ## Set custom schemas in `dbt_project.yml`
 
-When you set `+schema` on the folder in `dbt_project.yml`. Every model in that folder inherits it. Configure a schema on an individual model only when that model should use a different schema.
+When you set `+schema` on the folder in `dbt_project.yml`, every model in that folder inherits it. Configure a schema on an individual model only when that model should use a different schema.
 
 <File name="dbt_project.yml">
 
