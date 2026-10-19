@@ -28,7 +28,7 @@ Release notes are grouped by date for single-tenant environments.
 
 ### APIs, Identity, and Administration
 
-- **Default license for new users**: Admins can now set the [default license](/docs/platform/manage-access/seats-and-users#default-license-for-new-users) for new users who aren't assigned a license through SSO, SCIM, or license mapping. Choose Developer (the default), Read-Only, or Analyst. This is available for all single-tenant accounts.
+- **Default license for new users**: Admins can now set the [default license](/docs/platform/manage-access/seats-and-users#default-license-for-new-users) for new users who aren't assigned a license through SSO, SCIM, or license mapping. Choose Developer, Read-Only, or Analyst. Admins should check their settings and update the default as needed. This is available for all single-tenant accounts.
 
 ## October 14, 2026
 
