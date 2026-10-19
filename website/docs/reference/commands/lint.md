@@ -277,6 +277,31 @@ Because [linting in the <Constant name="studio_ide" />](/docs/platform/studio-id
 
 If you need SQLFluff behavior, you can either lint in the <Constant name="studio_ide" />, which continues to run SQLFluff, or run SQLFluff locally using the standalone <Constant name="core" /> engine templater. Refer to [<Constant name="fusion" /> limitations](/docs/dbt/supported-features#limitations) for more information.
 
+## Promoting lint warnings to errors
+
+By default, violations from [rules without an autofix](#rules-without-autofix) show as warnings and don't fail `dbt lint`. Violations that `--fix` can fix show as errors and fail the command.
+
+If you want to report a rule violation as an error instead of a warning, add the rule's name to `warn_error_options` in `dbt_project.yml`. You can find the rule name in the lint output. For example, rule `ST05` shows as `PreferCTE`:
+
+```yaml
+flags:
+  warn_error_options:
+    error:
+      - PreferCTE
+```
+
+If you set `error: all` instead, dbt promotes every warning, including warnings from commands other than `lint`:
+
+```yaml
+flags:
+  warn_error_options:
+    error: all
+```
+
+To promote one lint rule, list that rule by name as in the first example. Refer to [Warnings](/reference/global-configs/warnings).
+
+In a CI job, the **Linting** checkbox runs `dbt lint` and uses this project file. Select **Stop running on error** to fail the job when lint shows an error. To turn linting on, refer to [Set up CI jobs](/docs/deploy/ci-jobs#set-up-ci-jobs) and [SQL linting](/docs/deploy/continuous-integration#sql-linting).
+
 ## Limitations
 
 Keep these limitations in mind:
@@ -289,6 +314,8 @@ The following rules report violations but can't be auto-fixed by `--fix`. They r
 - **References:** `RF01`, `RF02`, `RF04`, `RF05`
 - **Structure:** `ST03`, `ST04`, `ST05`, `ST06`, `ST07`, `ST09`, `ST10`, `ST11`
 - **Ambiguity / convention:** `AM01`, `AM06`, `CV08`, `CV09`, `CV12`
+
+To fail the run on one of these rules, refer to [Promoting lint warnings to errors](#promoting-lint-warnings-to-errors).
 
 ### Single fix pass
 

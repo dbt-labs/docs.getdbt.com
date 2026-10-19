@@ -34,6 +34,7 @@ import Term from '@site/src/components/term';
 import Hero from '@site/src/components/hero'
 import Card from '@site/src/components/card'
 import Callout from '@site/src/components/callout'
+import AgentPrompt from '@site/src/components/agentPrompt';
 import BlogPostCard from '@site/src/components/blogPostCard';
 import DocCarousel from '@site/src/components/docCarousel';
 import PostCarousel from '@site/src/components/postCarousel';
@@ -123,5 +124,6 @@ const MDXComponents = {
   IntroText: IntroText,
   Constant: Constant,
   AvailabilityMatrix: AvailabilityMatrix,
+  AgentPrompt: AgentPrompt,
 };
 export default MDXComponents;

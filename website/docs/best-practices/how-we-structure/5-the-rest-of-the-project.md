@@ -49,9 +49,16 @@ models:
   jaffle_shop:
     staging:
       +materialized: view
+      +schema: staging
+    intermediate:
+      +materialized: view
+      +schema: intermediate
     marts:
       +materialized: table
+      +schema: marts
 ```
+
+Refer to [Mapping project folders to warehouse schemas](/best-practices/how-we-structure/6-mapping-folders-to-warehouse) to understand how those `+schema` values land in the warehouse in development and production.
 
 :::tip Define your defaults.
 One of the many benefits this consistent approach to project structure confers to us is this ability to cascade default behavior. Carefully organizing our folders and defining configuration at that level whenever possible frees us from configuring things like schema and materialization in every single model (not very DRY!) — we only need to configure exceptions to our general rules. Tagging is another area this principle comes into play. Many people new to dbt will rely on tags rather than a rigorous folder structure, and quickly find themselves in a place where every model _requires_ a tag. This creates unnecessary complexity. We want to lean on our folders as our primary selectors and grouping mechanism, and use tags to define groups that are _exceptions._ A folder-based selection like \*\*`dbt build --select marts.marketing` is much simpler than trying to tag every marketing-related model, hoping all developers remember to add that tag for new models, and using `dbt build --select tag:marketing`.
