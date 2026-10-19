@@ -81,7 +81,7 @@ Yes you can! Your AI tool can ask for results to show as a chart or table in the
 <Expandable alt_header="When should I use something other than execute_sql?">
 
 
-<SimpelTable>
+<SimpleTable>
   
 | If you want to... | Use |
 | --- | --- |
