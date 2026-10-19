@@ -2,7 +2,7 @@
 title: "Path to GA: How the dbt Fusion engine rolls out from beta to production"
 description: "We're moving quickly to enable as many teams as possible to start using the new dbt Fusion engine. Check out our roadmap and learn how to follow our progress."
 slug: dbt-fusion-engine-path-to-ga
-image: /img/blog/2025-05-28-dbt-fusion-engine-path-to-ga/indicative-timeline.png
+image: /img/blog/2025-05-28-dbt-v2-engine-path-to-ga/indicative-timeline.png
 authors: [jeremy_cohen, joel_labes]
 tags: [data ecosystem]
 hide_table_of_contents: false
@@ -33,7 +33,7 @@ The most popular dbt Labs packages (`dbt_utils`, `audit_helper`, `dbt_external_t
 
 So when is Fusion going to be GA? We're targeting later this year for full feature parity, but we're also hoping to approach it asymptotically — meaning that many existing dbt users ca start adopting Fusion much sooner.
 
-During the beta period, you may run into unanticipated (and anticipated) issues when trying to run your project on Fusion. Please share any issues in the [dbt-fusion](https://github.com/dbt-labs/dbt-fusion) repository or on Slack in [#dbt-fusion-engine](https://getdbt.slack.com/archives/C088YCAB6GH), and we'll do our best to to unblock you.
+During the beta period, you may run into unanticipated (and anticipated) issues when trying to run your project on Fusion. Please share any issues in the [dbt-fusion](https://github.com/dbt-labs/dbt-fusion) repository or on Slack in [#dbt-fusion-engine](https://getdbt.slack.com/archives/C088YCAB6GH), and we'll do our best to unblock you.
 
 ## Can I use Fusion for my dbt project today?
 
@@ -125,7 +125,7 @@ It's worth noting that *resolution* doesn't necessarily mean identical behaviour
 
 Here's a point-in-time snapshot of how we expect to tackle the known remaining work. Please refer to the [repository's issues page](https://github.com/dbt-labs/dbt-fusion/issues) as the source of truth:
 
-<Lightbox src="/img/blog/2025-05-28-dbt-fusion-engine-path-to-ga/indicative-timeline.png" title="An indication of the dbt Fusion engine's path to GA" width="100%" />
+<Lightbox src="/img/blog/2025-05-28-dbt-v2-engine-path-to-ga/indicative-timeline.png" title="An indication of the dbt Fusion engine's path to GA" width="100%" />
 
 ### Surprise unimplemented features
 

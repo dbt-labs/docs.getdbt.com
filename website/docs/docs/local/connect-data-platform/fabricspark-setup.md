@@ -259,7 +259,7 @@ Spark can be customized using [Application Properties](https://spark.apache.org/
 
 ### Supported functionality
 
-Most <Constant name="core" /> functionality is supported, Please refer to [Delta Lake interoporability](https://learn.microsoft.com/en-us/fabric/fundamentals/delta-lake-interoperability).
+Most <Constant name="core" /> functionality is supported, Please refer to [Delta Lake interoperability](https://learn.microsoft.com/en-us/fabric/fundamentals/delta-lake-interoperability).
 
 Delta-only features:
 1. Incremental model updates by `unique_key` instead of `partition_by` (see [`merge` strategy](/reference/resource-configs/spark-configs#the-merge-strategy))
