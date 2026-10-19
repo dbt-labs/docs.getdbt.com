@@ -14,6 +14,8 @@ This page covers three kinds of support:
 - **Built-in dbt functions and variables**: Context methods like [`env_var()`](/reference/dbt-jinja-functions/env_var), [`ref()`](/reference/dbt-jinja-functions/ref), and [`target`](/reference/dbt-jinja-functions/target)
 - **Custom macros**: Project-defined macros like `{{ my_macro() }}`
 
+Jinja expressions are how you write dynamic logic in a file. Custom macros are one kind of custom Jinja block you define with tags like `{% macro %}`. Other block types include `{% test %}`, `{% materialization %}`, `{% snapshot %}`, and `{% docs %}`. Refer to [Where to define custom Jinja blocks](#where-to-define-custom-jinja-blocks) for where each belongs.
+
 ## Summary table
 
 | File type | Jinja expressions | dbt functions and variables | Custom macros | Notes |
@@ -44,7 +46,7 @@ This page covers three kinds of support:
 
 ## Where to define custom Jinja blocks
 
-You can call a custom macro from many `.sql` files. To create a macro, test, materialization, or other custom Jinja block, define it in this file type and location:
+Calling a macro (`{{ my_macro() }}`) uses Jinja expressions. Defining one uses a custom Jinja block (`{% macro %}`). Use the table below for where each block type belongs:
 
 | Block | File type | Location | Notes |
 | --- | --- | --- | --- |
@@ -66,7 +68,7 @@ Values in the `vars:` block in `dbt_project.yml` are literal, not Jinja. To set 
 
 The [`sql_header`](/reference/resource-configs/sql_header) config doesn't support Jinja or macros like `ref()`, `source()`, and `{{ this }}`.
 
-## Write projects that run on v1 and v2
+## Jinja differences between v1 and v2
 
 v2 supports some Jinja that v1 doesn't:
 
