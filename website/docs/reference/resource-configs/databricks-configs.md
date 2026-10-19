@@ -37,7 +37,7 @@ dbt-databricks v1.9 adds support for the `table_format: iceberg` config. Try it 
 
 <sup>4</sup>  Do not use `liquid_clustered_by` and `auto_liquid_cluster` on the same model.
 
-<sup>5</sup> We do not yet have a PySpark API to set tblproperties at table creation, so this feature is primarily to allow users to anotate their python-derived tables with tblproperties.
+<sup>5</sup> We do not yet have a PySpark API to set tblproperties at table creation, so this feature is primarily to allow users to annotate their python-derived tables with tblproperties.
 
 <sup>6</sup> `databricks_tags` are applied via `ALTER` statements. Tags cannot be removed via dbt-databricks once applied. To remove tags, use Databricks directly or a post-hook. Starting in `dbt-databricks` v1.12, `databricks_tags` set at multiple config hierarchy levels [merge additively](#databricks_tags) instead of the lower (more specific) level fully replacing the higher one.
 

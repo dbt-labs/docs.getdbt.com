@@ -6,7 +6,7 @@ Permissions:
 
 :::note
 
-Some permissions sets have read-only access to environment settings that can be overriden with more privileged access if the user is assigned to a group with [Environment write access](/docs/platform/manage-access/about-user-access#environment-write-access) configured.
+Some permissions sets have read-only access to environment settings that can be overridden with more privileged access if the user is assigned to a group with [Environment write access](/docs/platform/manage-access/about-user-access#environment-write-access) configured.
 
 :::
 
