@@ -160,10 +160,10 @@ dbt docs generate --no-compile
 
 #### Column lineage and richer metadata
 
-`dbt build --write-index` fetches warehouse column types and writes them to the index. Add [`--static-analysis strict`](/docs/build/about-static-analysis) to include column types inferred from your SQL and column-level lineage. Because `dbt docs generate` runs a standard compile by default, build the index with strict static analysis first when you want column lineage, then export the site:
+To include column types inferred from your SQL and column-level lineage, run [`--generate-info-schema`](/docs/build/dbt-information-schema) with [`--static-analysis strict`](/docs/build/about-static-analysis) using `dbt build`, `dbt run`, or `dbt compile`, then export the site:
 
 ```shell
-dbt build --write-index --static-analysis strict
+dbt build --generate-info-schema --static-analysis strict
 dbt docs generate --no-compile
 ```
 
@@ -247,7 +247,7 @@ Use the following commands to generate project metadata for different purposes:
 <SimpleTable>
 | Goal | Command |
 |------|---------|
-| Display column types and column-level lineage in [dbt Docs v2](#dbt-docs-v2) | `dbt build --write-index --static-analysis strict`, then `dbt docs generate --no-compile` |
+| Display column types and column-level lineage in [dbt Docs v2](#dbt-docs-v2) | `dbt build --generate-info-schema --static-analysis strict`, then `dbt docs generate --no-compile` |
 | Generate the [dbt Information Schema](/docs/build/dbt-information-schema) with inferred model column types and column-level lineage | `dbt build --generate-info-schema --static-analysis strict` |
 | Generate [`catalog.json`](/reference/artifacts/catalog-json) with warehouse types for models and sources | `dbt build --write-catalog` |
 </SimpleTable>
@@ -260,9 +260,8 @@ The following table explains what each flag generates and where the metadata is 
 | Flag | Description | Output location |
 |------|-------------|-----------------|
 | [`--write-catalog`](#--write-catalog-flag) | Generates [`catalog.json`](/reference/artifacts/catalog-json) with warehouse column types for models and sources. Does not update the Parquet index used by dbt Docs v2. | `target/catalog.json` |
-| [`--write-index`](#dbt-docs-v2) | Updates the Parquet index used by dbt Docs v2. When used with `dbt build`, includes warehouse column types and source columns retrieved from the warehouse, including those not declared in YAML, for sources read by a selected node. Add `--static-analysis strict` to include inferred column types and column-level lineage. | dbt Docs v2 Parquet index |
 | [`--generate-info-schema`](/docs/build/dbt-information-schema) | Generates the [dbt Information Schema](/docs/build/dbt-information-schema). Add `--static-analysis strict` to include inferred model column types and column-level lineage. | `target/info_schema/v1/` |
-| [`--static-analysis strict`](/docs/build/about-static-analysis) | Enables inferred column types and column-level lineage when used with `--write-index` or `--generate-info-schema`. | Depends on the accompanying flag |
+| [`--static-analysis strict`](/docs/build/about-static-analysis) | Enables inferred column types and column-level lineage when used with `--generate-info-schema`. | Depends on the accompanying flag |
 </SimpleTable>
 
 dbt Docs v2 reads metadata from the Parquet index, not from `catalog.json`. The `catalog.json` file is a separate artifact for external tools.
