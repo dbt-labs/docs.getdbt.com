@@ -9,6 +9,8 @@ Here's what happens when your assistant calls it:
 3. The <Constant name="dbt_platform" /> compiles the SQL (including any dbt Jinja, like `ref()`) and runs it in your warehouse.
 4. The results come back to your assistant as a table.
 
+<Lightbox src="/img/docs/dbt-ai/mcp-execute-sql-flow.svg" title="Diagram of the execute_sql query flow: the AI assistant calls execute_sql, the dbt MCP server forwards it to the dbt platform, the dbt platform compiles the SQL and runs it in the warehouse with your development credentials, and the results return to the assistant" />
+
 </Expandable>
 
 <Expandable alt_header="Is execute_sql the same as dbt show?">
