@@ -22,6 +22,14 @@ Release notes are grouped by date for single-tenant environments.
 
 <span><img src="/img/fontawesome/rss.svg" alt="RSS" className="rss-icon" />Subscribe to release note updates via [RSS](https://docs.getdbt.com/feeds/release-notes-st-rss.xml), [Atom](https://docs.getdbt.com/feeds/release-notes-st-atom.xml), or [JSON Feed](https://docs.getdbt.com/feeds/release-notes-st-rss.json).</span>
 
+## October 19, 2026
+
+## New
+
+### APIs, Identity, and Administration
+
+- **Default license for new users**: Admins can now set the [default license](/docs/platform/manage-access/seats-and-users#default-license-for-new-users) for new users who aren't assigned a license through SSO, SCIM, or license mapping. Choose Developer (the default), Read-Only, or Analyst. This is available for all single-tenant accounts.
+
 ## October 14, 2026
 
 ## Enhancements

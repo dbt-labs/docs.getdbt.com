@@ -135,7 +135,7 @@ Great work! After completing these steps, your <Constant name="dbt" /> user coun
 
 ## Managing license types
 
-Licenses can be assigned to users individually or through group membership. To assign a license via group membership, you can manually add a user to a group during the invitation process or assign them to a group after they’ve enrolled in <Constant name="dbt" />. Alternatively, with [SSO configuration](/docs/platform/manage-access/sso-overview) and [role-based access control](/docs/platform/manage-access/about-user-access#role-based-access-control-) (Enterprise-tier only), users can be automatically assigned to groups. By default, new users in an account are assigned a Developer license.
+Licenses can be assigned to users individually or through group membership. To assign a license via group membership, you can manually add a user to a group during the invitation process or assign them to a group after they’ve enrolled in <Constant name="dbt" />. Alternatively, with [SSO configuration](/docs/platform/manage-access/sso-overview) and [role-based access control](/docs/platform/manage-access/about-user-access#role-based-access-control-) (Enterprise-tier only), users can be automatically assigned to groups. By default, new users in an account are assigned a Developer license. Admins can [set a different default license](#default-license-for-new-users).
 
 ### Manual configuration
 
@@ -148,6 +148,18 @@ To manually assign a specific type of license to a user on your team:
 **Note:** You will need to have an available license ready to allocate for the user. If your account does not have an available license to allocate, you will need to add more licenses to your plan to complete the license change.
 
 <Lightbox src="/img/docs/dbt-platform/access-control/license-manual.png" width="55%" title="Manually assigning licenses"/>
+
+### Default license for new users
+
+If a user isn't assigned a license through SSO, SCIM, or license mapping, they get the default license. That's Developer, unless an admin changes it. This keeps just-in-time (JIT) users from using up Developer licenses.
+
+Admins can set the default license to:
+
+- Developer (the default)
+- Read-Only
+- Analyst, if your account has Analyst licenses
+
+You can't set the IT license as the default.
 
 ### Mapped configuration <Lifecycle status="managed,managed_plus" /> 
 
@@ -164,7 +176,7 @@ If your account is connected to an Identity Provider (IdP) for [Single Sign On](
 
 #### Fundamental licensing rules
 
-- **Default assignment**: All new members of a <Constant name="dbt" /> account are assigned a Developer license unless you configure otherwise.
+- **Default assignment**: New members without a mapped license get your account's [default license](#default-license-for-new-users). That's Developer unless an admin sets another.
 - **Mapping basis**: License type mappings are based on _IdP groups_ (groups in your identity provider), not _<Constant name="dbt" /> groups_. Check group memberships in your IdP when configuring or troubleshooting.
 - **When changes take effect**: License types are adjusted when users sign into <Constant name="dbt" /> using single sign-on. Changes to license type mappings take effect the next time users sign in.
 
@@ -174,13 +186,13 @@ When a user belongs to multiple IdP groups, the Developer license takes preceden
 
 | In a Developer license-mapped group? | In a Read-Only license-mapped group? | License assigned |
 |---|---|---|
-| No | No | Developer (default) |
+| No | No | Account default license (Developer unless changed) |
 | No | Yes | Read-Only |
 | Yes | No | Developer |
 | Yes | Yes | Developer (Developer takes precedence) |
 
 :::note
-If a user's IdP groups do not match _any_ license type mappings, <Constant name="dbt" /> assigns a Developer license by default.
+If a user's IdP groups do not match _any_ license type mappings, <Constant name="dbt" /> assigns your account's [default license](#default-license-for-new-users). That's Developer unless an admin sets another.
 :::
 
 ## Granular permissioning <Lifecycle status="managed,managed_plus" />
