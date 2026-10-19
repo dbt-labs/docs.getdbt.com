@@ -259,7 +259,7 @@ The following table explains what each flag generates and where the metadata is 
 <SimpleTable>
 | Flag | Description | Output location |
 |------|-------------|-----------------|
-| [`--write-catalog`](#--write-catalog-flag) | Generates [`catalog.json`](/reference/artifacts/catalog-json) with warehouse column types for models and sources. Does not update the Parquet index used by dbt Docs v2. | `target/catalog.json` |
+| [`--write-catalog`](#--write-catalog-flag) | Generates [`catalog.json`](/reference/artifacts/catalog-json) with warehouse column types for models and sources. Does not update the [dbt Information Schema](/docs/build/dbt-information-schema) (Parquet files in `target/info_schema/`) used by dbt Docs v2. | `target/catalog.json` |
 | [`--generate-info-schema`](/docs/build/dbt-information-schema) | Generates the [dbt Information Schema](/docs/build/dbt-information-schema). Add `--static-analysis strict` to include inferred model column types and column-level lineage. | `target/info_schema/v1/` |
 | [`--static-analysis strict`](/docs/build/about-static-analysis) | Enables inferred column types and column-level lineage when used with `--generate-info-schema`. | Depends on the accompanying flag |
 </SimpleTable>
