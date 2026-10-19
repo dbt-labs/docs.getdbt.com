@@ -1,11 +1,11 @@
 import StaticSubdomainRequired from '/snippets/_static-subdomain-required.md';
-import MCPFaqOauth from '/snippets/_mcp-faq-oauth.md';
-import MCPFaqUvx from '/snippets/_mcp-faq-uvx.md';
-import MCPFaqServerNotStarting from '/snippets/_mcp-faq-server-not-starting.md';
-import MCPFaqExecuteSql from '/snippets/_mcp-faq-execute-sql.md';
-import MCPFaqToolsetDisabled from '/snippets/_mcp-faq-toolset-disabled.md';
-import MCPFaqUrlsVsIds from '/snippets/_mcp-faq-urls-vs-ids.md';
-import MCPFaqMulticell from '/snippets/_mcp-faq-multicell.md';
+import MCPFaqOauth from '/snippets/mcp-faqs/troubleshooting/_oauth.md';
+import MCPFaqUvx from '/snippets/mcp-faqs/troubleshooting/_uvx.md';
+import MCPFaqServerNotStarting from '/snippets/mcp-faqs/troubleshooting/_server-not-starting.md';
+import MCPFaqExecuteSql from '/snippets/mcp-faqs/troubleshooting/_execute-sql.md';
+import MCPFaqToolsetDisabled from '/snippets/mcp-faqs/troubleshooting/_toolset-disabled.md';
+import MCPFaqUrlsVsIds from '/snippets/mcp-faqs/troubleshooting/_urls-vs-ids.md';
+import MCPFaqMulticell from '/snippets/mcp-faqs/troubleshooting/_multicell.md';
 
 
 This quickstart uses the local MCP server: it runs on your machine using `uvx dbt-mcp`, connects to your <Constant name="dbt_platform"/> for <Constant name="semantic_layer"/>, Discovery, and SQL, and optionally runs local dbt. 
@@ -389,47 +389,19 @@ If you only need to run dbt commands locally (with or without a <Constant name="
 
 ## Troubleshooting
 
-<Expandable alt_header="Can't find the uvx executable">
-
 <MCPFaqUvx />
-
-</Expandable>
-
-<Expandable alt_header="OAuth login not initiating">
 
 <MCPFaqOauth />
 
-</Expandable>
-
-<Expandable alt_header="Server not starting">
-
 <MCPFaqServerNotStarting />
-
-</Expandable>
-
-<Expandable alt_header="execute_sql tool not working">
 
 <MCPFaqExecuteSql />
 
-</Expandable>
-
-<Expandable alt_header="Toolset unavailable or showing as disabled">
-
 <MCPFaqToolsetDisabled />
-
-</Expandable>
-
-<Expandable alt_header="Pasting full URLs instead of IDs">
 
 <MCPFaqUrlsVsIds />
 
-</Expandable>
-
-<Expandable alt_header="Multi-cell account connection issues">
-
 <MCPFaqMulticell />
-
-</Expandable>
 
 For all troubleshooting topics, see [MCP troubleshooting](/docs/dbt-ai/mcp-troubleshooting).
 

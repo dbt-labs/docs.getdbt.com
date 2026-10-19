@@ -10,7 +10,7 @@
 
 **Common causes:**
 
-- Missing or incorrect `DBT_PROJECT_DIR` or `DBT_PATH` — verify the paths exist and are absolute paths.
+- Missing or incorrect <VersionBlock lastVersion="1.10">`DBT_PROJECT_DIR`</VersionBlock><VersionBlock firstVersion="1.11">`DBT_ENGINE_PROJECT_DIR`</VersionBlock> or `DBT_PATH` — verify the paths exist and are absolute paths.
 - Invalid or expired authentication tokens — generate a new token and update your config.
 - Missing required environment variables for the toolset you're trying to use — see [Tool requirements](/docs/dbt-ai/setup-local-mcp#tool-requirements-at-a-glance).
 </Expandable>

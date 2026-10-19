@@ -9,8 +9,8 @@ availability:
 
 import MCPExample from '/snippets/_mcp-config-files.md';
 import StaticSubdomainRequired from '/snippets/_static-subdomain-required.md';
-import MCPFaqUvx from '/snippets/_mcp-faq-uvx.md';
-import MCPFaqOauth from '/snippets/_mcp-faq-oauth.md';
+import MCPFaqUvx from '/snippets/mcp-faqs/troubleshooting/_uvx.md';
+import MCPFaqOauth from '/snippets/mcp-faqs/troubleshooting/_oauth.md';
 
 [The self-hosted dbt MCP server](https://github.com/dbt-labs/dbt-mcp) runs on your machine and supports <Constant name="core" />, <Constant name="fusion_engine" />, and <Constant name="platform_cli" />. You can use it with or without a <Constant name="dbt_platform" /> account.
 
@@ -437,16 +437,8 @@ To see more detail about what’s happening inside the MCP server and help debug
 
 ## Troubleshooting
 
-<Expandable alt_header="Can't find the uvx executable">
-
 <MCPFaqUvx />
 
-</Expandable>
-
-<Expandable alt_header="OAuth login not initiating">
-
 <MCPFaqOauth />
-
-</Expandable>
 
 For all troubleshooting topics, see [MCP troubleshooting](/docs/dbt-ai/mcp-troubleshooting).

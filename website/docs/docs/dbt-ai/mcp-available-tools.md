@@ -6,7 +6,7 @@ id: "mcp-available-tools"
 availability: all_users
 ---
 import McpToolsFromReadme from '/snippets/_mcp-tools-from-readme.md';
-import McpExecuteSqlFaqs from '/snippets/_mcp-execute-sql-faqs.md';
+import McpExecuteSqlFaqs from '/snippets/mcp-faqs/_execute-sql-how-it-works.md';
 
 The dbt MCP server has access to many parts of the dbt experience related to development, deployment, and discovery. This page lists the tools available in the dbt MCP server and how to configure them.
 
