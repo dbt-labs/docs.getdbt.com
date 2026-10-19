@@ -260,7 +260,7 @@ The following table explains what each flag generates and where the metadata is 
 <SimpleTable>
 | Flag | Description | Output location |
 |------|-------------|-----------------|
-| [`--write-catalog`](#--write-catalog-flag) | Generates [`catalog.json`](/reference/artifacts/catalog-json) with warehouse column types for models and sources. <br /><br /> When used with `--generate-info-schema --static-analysis strict` on `dbt build` or `dbt run`, also populates warehouse column types and all source columns in the dbt Information Schema. | `target/catalog.json` |
+| [`--write-catalog`](#--write-catalog-flag) | Generates [`catalog.json`](/reference/artifacts/catalog-json) with warehouse column types for models and sources. <br /><br /> When used with `--generate-info-schema --static-analysis strict` on `dbt build` or `dbt run`, also populates warehouse column types and all source columns in the dbt Information Schema. | `target/catalog.json` (and `target/info_schema/v1/` when used with `--generate-info-schema`) |
 | [`--generate-info-schema`](/docs/build/dbt-information-schema) | Generates the [dbt Information Schema](/docs/build/dbt-information-schema). Add `--static-analysis strict` to include inferred model column types and column-level lineage. | `target/info_schema/v1/` |
 | [`--static-analysis strict`](/docs/build/about-static-analysis) | Enables inferred column types and column-level lineage when used with `--generate-info-schema`. | Depends on the accompanying flag |
 </SimpleTable>
