@@ -6,6 +6,7 @@ id: "mcp-available-tools"
 availability: all_users
 ---
 import McpToolsFromReadme from '/snippets/_mcp-tools-from-readme.md';
+import McpExecuteSqlFaqs from '/snippets/_mcp-execute-sql-faqs.md';
 
 The dbt MCP server has access to many parts of the dbt experience related to development, deployment, and discovery. This page lists the tools available in the dbt MCP server and how to configure them.
 
@@ -38,6 +39,12 @@ If an admin turns AI features off, `text_to_sql` doesn't appear in the tool list
 The following tool list is available for your MCP server and is auto-fetched from the [dbt MCP server README on GitHub](https://github.com/dbt-labs/dbt-mcp#tools) when the docs are built, so it stays in sync with each release.
 
 <McpToolsFromReadme />
+
+### execute_sql FAQs
+
+Common questions about what the `execute_sql` tool can and can't do.
+
+<McpExecuteSqlFaqs />
 
 ### Find jobs across project environments
 
