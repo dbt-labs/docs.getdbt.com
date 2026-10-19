@@ -8,7 +8,7 @@ hoverSnippet: Map dbt project folders to warehouse schemas.
 availability: all_users
 ---
 
-Folders organize your code. Schemas (or datasets, in BigQuery) organize the tables and views that code builds in your warehouse. Map folders to schemas so staging, intermediate, and marts are easy to find. dbt prefixes each schema with your target schema, so development doesn’t overwrite production.
+Folders organize your code. Schemas (or datasets, in BigQuery) organize the tables and views that code builds in your warehouse. You can map folders to schemas so staging, intermediate, and marts are easy to find. dbt prefixes each schema with your target schema, so development doesn’t overwrite production.
 
 ## Map folders to custom schemas
 
