@@ -28,12 +28,23 @@ For <Constant name="fusion_engine" /> updates, refer to the [v2 changelog](https
 - **New:** The jobs list API endpoint (`GET /api/v2/accounts/{account_id}/jobs/`) now accepts a `pk__in` query parameter, letting you retrieve up to 500 specific jobs by ID in a single request.
 - **New:** You can now specify `clickhouse_v0` as the adapter_version when creating connections and credentials, filtering connections, and retrieving adapter schemas in the Administrative API v3. Contact your account representative to enable.
 - **New:** The `metrics` and `metricsPaginated` GraphQL queries now accept a `searchTerms` argument, letting you filter metrics by multiple terms in a single request with correct pagination. Note: `search` and `searchTerms` cannot be combined, and a maximum of 20 terms is allowed.
+- **New:** In <Constant name="wizard" /> Desktop, you can attach files and images to a chat. Drag them in, paste them, or copy them from Finder into the composer, then preview them before you send. Sent files show up as readable cards.
+- **New:** In <Constant name="wizard" /> Desktop, projects connected to <Constant name="dbt_platform" /> now connect to the remote dbt MCP server by default, using OAuth sign-in. This adds platform tools like job management, run status, and run errors. Go to **Settings** → **Connectors** to turn it on or off for each dbt account.
+- **New:** In <Constant name="wizard" /> Desktop, you can pin chats and environments to a section at the top of the sidebar and reorder them.
+- **New:** In <Constant name="wizard" /> Desktop, you can open SQL from a chat in the **Queries** pane.
+- **New:** In <Constant name="wizard" /> Desktop, you can pick the Jaffle Shop sample project during onboarding.
 - **Enhancement:** Workspace @-mention queries now use server-side fuzzy matching instead of filtering a local list, returning better-ranked results for large repositories. The context file picker also prevents selecting stale results while a search is still in flight.
 - **Enhancement:** You can now add a `table` block type to `compose_report` reports to render query results as formatted, scrollable tables. Columns can be narrowed and reordered using the `columns` field, and the display caps at 50 rows on screen with a truncation notice for clipped results.
 - **Enhancement:** You can use the new transformation type badge on column cards to see how each column is derived.
 - **Enhancement:** The webhook subscription job picker now searches and paginates server-side. You see a search box with debounced filtering and scroll-to-load pagination instead of a slow or frozen dropdown when your account has many jobs.
 - **Enhancement:** The dbt State navigation option no longer carries a "Preview" badge. Incomplete projects (those without a repository or skipped setup) are also excluded from automatic project selection on the dbt State home page.
 - **Enhancement:** The GET, POST, and PATCH endpoints for Microsoft Entra applications now return `client_id` and `tenant_id` in their responses, giving you visibility into your Azure DevOps (ADO) integration configuration.
+- **Enhancement:** <Constant name="wizard" /> Desktop now installs and manages `uv` itself when a project's Python requirement blocks setup.
+- **Enhancement:** <Constant name="wizard" /> Desktop chats in the sidebar now show PR status, unread, and running indicators.
+- **Enhancement:** <Constant name="wizard" /> follows updated dbt best practices, including better use of the <Constant name="semantic_layer" />.
+- **Behavior change:** Pull requests that <Constant name="wizard" /> creates now say in their description that <Constant name="wizard" /> made them.
+- **Fix:** <Constant name="wizard" /> now detects when deferral isn't working because the upstream model doesn't exist in production, and recommends turning off deferral for the session.
+- **Fix:** <Constant name="wizard" /> Desktop now handles <Constant name="dbt_platform" /> sign-in errors better, fixes issues with the **Changes** and **Summary** panes (including generating a new summary when non-agent changes are detected), and fixes edge cases when creating environments with a missing adapter.
 - **Fix:** When the Wizard receives a malformed diff patch, it now displays a "Couldn't parse diff" error badge instead of crashing.
 - **Fix:** Charts with decimal data values (for example, 25.43 minutes) no longer push the y-axis name outside the visible canvas area. The axis gap is now calculated from rounded tick values.
 - **Fix:** The x-axis name, grid bottom margin, and legend centering on horizontal bar charts are now computed correctly so the axis label no longer overlaps the legend.
@@ -258,7 +269,7 @@ The following features are new or enhanced as part of dbt Labs announcements at 
   - **New**: [dbt State pricing](/docs/platform/billing/dbt-state-usage) is usage-based at $0.094 per daily unique reuse. New organizations receive a 30-day free trial with no usage limit.
   - **Behavior change**: State-aware orchestration is no longer being enabled for new customers. Refer to [Migrate to dbt State](/docs/deploy/dbt-state-migration) for more information.
 
-- **New**: dbt Wizard is available in dbt platform as a public preview. Introducing dbt Wizard CLI as a public beta. Purpose-built for agentic governed data development in dbt, dbt Wizard understands your project through a  [native metadata engine](/docs/dbt-ai/wizard-how-it-works#native-metadata-engine), unlike general-purpose coding agents.
+- **New**: dbt Wizard is available in dbt platform as a public preview. Introducing dbt Wizard CLI as a public beta. Purpose-built for agentic governed data development in dbt, dbt Wizard understands your project through the [dbt Information Schema](/docs/build/dbt-information-schema), unlike general-purpose coding agents.
   - **New**: [Support for Anthropic as a BYOK provider for dbt AI](/docs/platform/manage-dbt-ai#configure-ai-provider). 
   - **New**: [`dbt login`](/reference/commands/login?version=2.0) is a new CLI command available in dbt Core 2.0 and later. It opens browser-based authentication and shares your login state across the CLI, dbt VS Code extension, dbt State, and dbt Wizard CLI with no separate sign-in flows needed.
 - **New:** OAuth client registrations now accept custom-scheme redirect URIs (for example, `cursor://` or `vscode://`), so you can build native app OAuth integrations with Cursor and VS Code.

@@ -280,13 +280,13 @@ It’s nice to be able to sit back and watch how it performs without interventio
 
 ### Document before tweaking
 
-If you’re about to tweak these configurations, make sure you document how long the model takes before the changes! If you have dev limits in place, you can still run a benchmark against the limit before and after the tweaks, although it *is* more ideal to work with larger amounts of data to really understand how it would affect processing once in production. I’ve been able to successfully test tweaks on limited data sets and it’s translated beautifully within production environments, but your milage may vary.
+If you’re about to tweak these configurations, make sure you document how long the model takes before the changes! If you have dev limits in place, you can still run a benchmark against the limit before and after the tweaks, although it *is* more ideal to work with larger amounts of data to really understand how it would affect processing once in production. I’ve been able to successfully test tweaks on limited data sets and it’s translated beautifully within production environments, but your mileage may vary.
 
 ### Test removing legacy `dist` styles and sort keys first
 
 If there are any sort keys or distribution styles already defined, remove those to see how your models do with the default. Having a bad sort key or distribution style can negatively impact your performance, which is why I suggest not configuring these on any net new modeling unless you’re sure about the impact.
 
-### Decide whether you you need to optimize at all!
+### Decide whether you need to optimize at all!
 
 Identifying whether you need to change these configurations sometimes isn’t straightforward, especially when you have a lot going on in your model! Here’s some tips to help you out:
 
