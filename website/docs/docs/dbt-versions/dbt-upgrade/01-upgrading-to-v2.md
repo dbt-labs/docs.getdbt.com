@@ -193,7 +193,7 @@ v2 introduces [agent skills](/docs/dbt-ai/package-skills), which are reusable in
 To use agent skills, you need to:
 
 - Include skills in your project's `skills/` directory, use a package that ships skills, or both
-- Set the `ai_provider` flag in your root project to tell dbt which which coding agent you use. Supported values are `wizard`, `claude`, `openai`, `codex`, `cursor`, or `gemini` (case-insensitive).
+- Set the `ai_provider` flag in your root project to tell dbt which coding agent you use. Supported values are `wizard`, `claude`, `openai`, `codex`, `cursor`, or `gemini` (case-insensitive).
 
 Once both are in place, `dbt deps` installs those skills into the directory your agent reads from (such as `.claude/skills` or `.agents/skills`), and `dbt clean` removes them. If you're missing either piece, `dbt deps` installs your packages as usual and skips the skills.
 

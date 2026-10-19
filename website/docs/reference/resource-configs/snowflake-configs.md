@@ -6,6 +6,7 @@ tags: ['Snowflake', 'dbt v2', 'dbt v1']
 ---
 
 import SnowflakeColumn from '/snippets/_snowflake-column-size.md';
+import SnowflakePythonParams from '/snippets/_snowflake-python-config-params.md';
 
 <SnowflakeColumn />
 
@@ -1364,6 +1365,12 @@ def model(dbt, session: snowpark.Session):
 ```
 
 **Docs:** ["Developer Guide: Snowpark Python"](https://docs.snowflake.com/en/developer-guide/snowpark/python/index.html)
+
+### Additional parameters
+
+Snowflake Python models accept these parameters in `dbt.config()`. Refer to [Configuring Python models](/docs/build/python-models#configuring-python-models) for more info.
+
+<SnowflakePythonParams />
 
 ### Third-party Snowflake packages
 
