@@ -5,14 +5,16 @@ import Link from '@docusaurus/Link';
 import createPostPreview from '@site/functions/post-preview';
 
 
-function BlogPostCard({ postMetaData }) {
+function BlogPostCard({ postMetaData, headingLevel = 4 }) {
   const { title, description, link, image, tags } = postMetaData
+  // See Card: raise the level to keep the page outline sequential.
+  const Heading = `h${headingLevel}`
   return (
     <div className={styles.cardWrapper}>
       <article className={`${image ? styles.imageCard : styles.card}`}>
         {image && <div className={styles.imageContentContainer} style={{ "background": `no-repeat center/100% url(${image})` }}></div>}
         <div className={`${styles.contentContainer} ${image ? styles.imageContentContainer : null}`}>
-          <Link to={useBaseUrl(link)}><h4 className="heading-4">{title}</h4></Link>
+          <Link to={useBaseUrl(link)}><Heading className="heading-4">{title}</Heading></Link>
           <p>
             {createPostPreview(description, 140)}
           </p>

@@ -13,7 +13,7 @@ availability:
 ## Resources
 - [dbt v1.13 changelog](https://github.com/dbt-labs/dbt/blob/1.13.latest/CHANGELOG.md)
 - [<Constant name="core" /> CLI Installation guide](/docs/local/install-dbt)
-- [dbt platform upgrade guide](/docs/dbt-versions/upgrade-dbt-platform-version#release-tracks)
+- [dbt platform upgrade guide](/docs/dbt-versions/upgrade-dbt-platform-version)
 
 ## What to know before upgrading
 
@@ -23,7 +23,9 @@ dbt Labs is committed to providing backward compatibility for all versions 1.x. 
 
 ## New and changed features and functionality
 
-**Coming soon**
+### dbt State
+
+[dbt State](/docs/deploy/dbt-state-about) makes dbt smarter about what to build &mdash; instead of rebuilding every node on every run, dbt reuses nodes by cloning from another location or skipping a rebuild when the logic and data haven't changed. dbt State is natively available in dbt v1.13. To get started, refer to [Setting up dbt State](/docs/deploy/dbt-state-setup).
 
 ## Adapter-specific features and functionalities
 
