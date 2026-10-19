@@ -16,7 +16,7 @@ By default, dbt builds every model in your target schema, which comes from the [
 
 We recommend naming your custom schemas after your project folders, so staging, intermediate, and marts models are easy to find in your warehouse. For example, set `+schema: staging`, `+schema: intermediate`, and `+schema: marts`. If your team already uses different names, use those instead.
 
-With `analytics_prod` and `alice_dev` as target schemas, dbt builds each folder into these schemas:
+For example, using `analytics_prod` and `alice_dev` as target schemas, dbt builds each folder into these schemas:
 
 | Folder | Config | Production (`analytics_prod`) | Development (`alice_dev`) |
 | --- | --- | --- | --- |
