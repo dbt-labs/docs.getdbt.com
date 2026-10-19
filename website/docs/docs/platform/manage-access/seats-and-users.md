@@ -135,7 +135,13 @@ Great work! After completing these steps, your <Constant name="dbt" /> user coun
 
 ## Managing license types
 
-Licenses can be assigned to users individually or through group membership. To assign a license via group membership, you can manually add a user to a group during the invitation process or assign them to a group after they’ve enrolled in <Constant name="dbt" />. Alternatively, with [SSO configuration](/docs/platform/manage-access/sso-overview) and [role-based access control](/docs/platform/manage-access/about-user-access#role-based-access-control-) (Enterprise-tier only), users can be automatically assigned to groups. By default, new users in an account are assigned a Developer license. Admins can [set a different default license](#default-license-for-new-users).
+Licenses can be assigned to users individually or through group membership. To assign a license via group membership, you can manually add a user to a group during the invitation process or assign them to a group after they’ve enrolled in <Constant name="dbt" />. 
+
+Alternatively, with [SSO configuration](/docs/platform/manage-access/sso-overview) and [role-based access control](/docs/platform/manage-access/about-user-access#role-based-access-control-) (Enterprise-tier only), users can be automatically assigned to groups. 
+
+By default, new users in an account are assigned a Developer license. 
+
+Admins can [set a different default license](#default-license-for-new-users).
 
 ### Manual configuration
 
@@ -151,15 +157,12 @@ To manually assign a specific type of license to a user on your team:
 
 ### Default license for new users
 
-If a user isn't assigned a license through SSO, SCIM, or license mapping, they get the default license. That's Developer, unless an admin changes it. This keeps just-in-time (JIT) users from using up Developer licenses.
+Users who aren't assigned a license through SSO, SCIM, or license mapping receive the default license (this is **Developer**). Admins can change the default to **Read-Only** or **Analyst** (if available) to prevent new users from automatically using Developer licenses.
 
-Admins can set the default license to:
+The **IT** license can't be set as the default.
 
-- Developer (the default)
-- Read-Only
-- Analyst, if your account has Analyst licenses
 
-You can't set the IT license as the default.
+
 
 ### Mapped configuration <Lifecycle status="managed,managed_plus" /> 
 
