@@ -72,7 +72,7 @@ dbt build --generate-info-schema --static-analysis strict
 dbt docs generate --no-compile
 ```
 
-Refer to [dbt docs commands](/reference/commands/cmd-docs) for full usage and [Commands for generating metadata](/reference/commands/cmd-docs#commands-for-generating-metadata) for a breakdown of flags and their outputs.
+Refer to [dbt docs commands](/reference/commands/cmd-docs) for full usage and [Commands for generating metadata](/reference/commands/cmd-docs#commands-for-generating-metadata) for a breakdown of flags and the metadata they generate.
 
 #### Self-hosting dbt Docs v2
 
