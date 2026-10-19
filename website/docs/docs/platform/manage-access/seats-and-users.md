@@ -157,10 +157,15 @@ To manually assign a specific type of license to a user on your team:
 
 Users who aren't assigned a license through SSO, SCIM, or license mapping receive the default license (this is **Developer**). Admins can change the default to **Read-Only** or **Analyst** (if available) to prevent new users from automatically using Developer licenses.
 
+To set the default license:
+
+1. Click your account name in the left side menu and select **Account settings**.
+2. Go to **Groups & Licenses** and scroll to the **License mappings** section.
+3. Under "If no license mapping is set for new users, default to," select **Developer**, **Read-only**, or **Analyst**.
+
 The **IT** license can't be set as the default.
 
-
-
+<Lightbox src="/img/docs/dbt-platform/access-control/default-license.png" width="65%" title="Set the default license for new users"/>
 
 ### Mapped configuration <Lifecycle status="managed,managed_plus" /> 
 
