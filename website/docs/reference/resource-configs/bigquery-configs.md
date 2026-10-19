@@ -1303,6 +1303,17 @@ Pseudocolumns are queryable columns that don't appear in the information schema.
 
 You can include `_FILE_NAME` directly in `dict` or `csv` fixture rows without using `format: sql`. For example:
 
+<File name='my_external_model.sql'>
+
+```sql
+select id, value, _FILE_NAME as source_file
+from {{ source('my_source', 'external_table') }}
+```
+
+</File>
+
+<File name='schema.yml'>
+
 ```yaml
 unit_tests:
   - name: test_external_model
@@ -1318,11 +1329,13 @@ unit_tests:
         - {id: 2, source_file: "gs://my-bucket/file2.csv"}
 ```
 
-Note the following behaviors:
+</File>
+
+Note the following considerations:
 
 - Only `_FILE_NAME` is supported. Other BigQuery pseudocolumns (such as `_PARTITIONTIME` or `_TABLE_SUFFIX`) are not supported in unit tests.
-- If you omit `_FILE_NAME` from a fixture row, dbt defaults the value to `null`.
-- In `expect` rows, use the column name as it appears in the model output (the alias, if one is defined).
+- If you omit `_FILE_NAME` from a `given` fixture row, dbt defaults the value to `null`.
+- In `expect` rows, use the alias your model defines for `_FILE_NAME`.
 
 ### Limitations
 
