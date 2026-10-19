@@ -281,7 +281,7 @@ If you need SQLFluff behavior, you can either lint in the <Constant name="studio
 
 By default, violations from [rules without an autofix](#rules-without-autofix) show as warnings and don't fail `dbt lint`. Violations that `--fix` can fix show as errors and fail the command.
 
-To fail the run on a warning, add its name to `warn_error_options` in `dbt_project.yml`. Use the name from the lint output. For example, rule `ST05` shows as `PreferCTE`:
+If you want to report a rule violation as an error instead of a warning, add the rule's name to `warn_error_options` in `dbt_project.yml`. You can find the rule name in the lint output. For example, rule `ST05` shows as `PreferCTE`:
 
 ```yaml
 flags:
