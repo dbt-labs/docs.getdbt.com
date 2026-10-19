@@ -247,7 +247,7 @@ Use the following commands to generate project metadata for different purposes:
 <SimpleTable>
 | Goal | Command |
 |------|---------|
-| Display column types and column-level lineage in [dbt Docs v2](#dbt-docs-v2) | `dbt build --generate-info-schema --static-analysis strict`, then `dbt docs generate --no-compile` |
+| Display inferred model column types and column-level lineage in [dbt Docs v2](#dbt-docs-v2) | `dbt build --generate-info-schema --static-analysis strict`, then `dbt docs generate --no-compile` |
 | Generate the [dbt Information Schema](/docs/build/dbt-information-schema) with inferred model column types and column-level lineage | `dbt build --generate-info-schema --static-analysis strict` |
 | Generate [`catalog.json`](/reference/artifacts/catalog-json) with warehouse types for models and sources | `dbt build --write-catalog` |
 </SimpleTable>

@@ -38,6 +38,8 @@ Use `--generate-info-schema` flag with `dbt build`, `dbt run`, `dbt compile`, or
   ```
   dbt infers column types from your SQL for model columns only; warehouse types are not fetched with `--generate-info-schema`. For sources, dbt includes only columns declared in YAML, and their `data_type_inferred` reflects the YAML-declared type, not a SQL-inferred type. dbt omits sources without `columns:` entries from `dbt.node_columns` entirely.
 
+  Without `--static-analysis strict`, `dbt.node_columns` and `dbt.column_lineage` contain no column types and no lineage.
+
 - For [`dbt parse`](/reference/commands/parse), the Information Schema contains no column types, no lineage, and no runtime results, because `dbt parse` doesn't connect to your warehouse.
 
 - `dbt show` reads your project's metadata directly, so you don't need to generate anything before using the command. Use `--generate-info-schema` when you want to export the Parquet files to disk (for example, to read them with [external tools](#querying-with-external-tools)).
@@ -98,6 +100,7 @@ You can find the schema version in the versioned subdirectory name (for example,
 
 ## Related docs
 - [Information Schema tables](/reference/info-schema)
+- [Commands for generating metadata](/reference/commands/cmd-docs#commands-for-generating-metadata)
 - [`dbt build`](/reference/commands/build)
 - [`dbt run`](/reference/commands/run)
 - [`dbt compile`](/reference/commands/compile)
