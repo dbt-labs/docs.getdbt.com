@@ -1434,6 +1434,7 @@ const sidebarSettings = {
             "reference/resource-properties/model_name",
             "reference/resource-configs/on_configuration_change",
             "reference/resource-configs/on_error",
+            "reference/resource-configs/python-model-configs",
             "reference/resource-configs/sql_header",
           ],
         },

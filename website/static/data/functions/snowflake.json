@@ -2,7 +2,7 @@
   "_meta": {
     "platform": "snowflake",
     "platform_name": "Snowflake",
-    "count": 1101
+    "count": 1190
   },
   "functions": [
     {
@@ -1483,6 +1483,27 @@
       "fusion_typecheck": false
     },
     {
+      "name": "ALL_SPACE_COUNT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_all_space_count",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "ALL_SPACE_PERCENT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_all_space_percent",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "APPROX_QUANTILE_20 (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_approx_quantile_20",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "APPROX_QUANTILE_25 (SYSTEM DATA METRIC FUNCTION)",
       "category": "Data metric",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_approx_quantile_25",
@@ -1490,9 +1511,37 @@
       "fusion_typecheck": false
     },
     {
+      "name": "APPROX_QUANTILE_40 (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_approx_quantile_40",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "APPROX_QUANTILE_50 (SYSTEM DATA METRIC FUNCTION)",
       "category": "Data metric",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_approx_quantile_50",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "APPROX_QUANTILE_60 (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_approx_quantile_60",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "APPROX_QUANTILE_80 (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_approx_quantile_80",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "APPROX_QUANTILE_95 (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_approx_quantile_95",
       "preview_status": "GA",
       "fusion_typecheck": false
     },
@@ -1535,6 +1584,20 @@
       "name": "CASE_FORMAT_VIOLATION_PERCENT (SYSTEM DATA METRIC FUNCTION)",
       "category": "Data metric",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_case_format_violation_percent",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "CONTAINS_SPACES_COUNT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_contains_spaces_count",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "CONTAINS_SPACES_PERCENT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_contains_spaces_percent",
       "preview_status": "GA",
       "fusion_typecheck": false
     },
@@ -1616,6 +1679,20 @@
       "fusion_typecheck": false
     },
     {
+      "name": "FALSE_COUNT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_false_count",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "FALSE_PERCENT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_false_percent",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "FRESHNESS (SYSTEM DATA METRIC FUNCTION)",
       "category": "Data metric",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_freshness",
@@ -1651,6 +1728,48 @@
       "fusion_typecheck": false
     },
     {
+      "name": "INVALID_CA_POSTAL_CODE_COUNT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_invalid_ca_postal_code_count",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "INVALID_CA_POSTAL_CODE_PERCENT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_invalid_ca_postal_code_percent",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "INVALID_CA_SIN_COUNT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_invalid_ca_sin_count",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "INVALID_CA_SIN_PERCENT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_invalid_ca_sin_percent",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "INVALID_CH_OASI_COUNT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_invalid_ch_oasi_count",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "INVALID_CH_OASI_PERCENT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_invalid_ch_oasi_percent",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "INVALID_CUSIP_COUNT (SYSTEM DATA METRIC FUNCTION)",
       "category": "Data metric",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_invalid_cusip_count",
@@ -1661,6 +1780,34 @@
       "name": "INVALID_CUSIP_PERCENT (SYSTEM DATA METRIC FUNCTION)",
       "category": "Data metric",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_invalid_cusip_percent",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "INVALID_DE_POSTAL_CODE_COUNT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_invalid_de_postal_code_count",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "INVALID_DE_POSTAL_CODE_PERCENT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_invalid_de_postal_code_percent",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "INVALID_DE_TAX_ID_COUNT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_invalid_de_tax_id_count",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "INVALID_DE_TAX_ID_PERCENT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_invalid_de_tax_id_percent",
       "preview_status": "GA",
       "fusion_typecheck": false
     },
@@ -1679,6 +1826,20 @@
       "fusion_typecheck": false
     },
     {
+      "name": "INVALID_ES_DNI_COUNT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_invalid_es_dni_count",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "INVALID_ES_DNI_PERCENT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_invalid_es_dni_percent",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "INVALID_FIGI_COUNT (SYSTEM DATA METRIC FUNCTION)",
       "category": "Data metric",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_invalid_figi_count",
@@ -1693,6 +1854,48 @@
       "fusion_typecheck": false
     },
     {
+      "name": "INVALID_FR_INSEE_CODE_COUNT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_invalid_fr_insee_code_count",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "INVALID_FR_INSEE_CODE_PERCENT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_invalid_fr_insee_code_percent",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "INVALID_FR_POSTAL_CODE_COUNT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_invalid_fr_postal_code_count",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "INVALID_FR_POSTAL_CODE_PERCENT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_invalid_fr_postal_code_percent",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "INVALID_INTEGER_COUNT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_invalid_integer_count",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "INVALID_INTEGER_PERCENT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_invalid_integer_percent",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "INVALID_ISIN_COUNT (SYSTEM DATA METRIC FUNCTION)",
       "category": "Data metric",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_invalid_isin_count",
@@ -1703,6 +1906,34 @@
       "name": "INVALID_ISIN_PERCENT (SYSTEM DATA METRIC FUNCTION)",
       "category": "Data metric",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_invalid_isin_percent",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "INVALID_ISO8601_FORMAT_COUNT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_invalid_iso8601_format_count",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "INVALID_ISO8601_FORMAT_PERCENT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_invalid_iso8601_format_percent",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "INVALID_IT_FISCAL_CODE_COUNT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_invalid_it_fiscal_code_count",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "INVALID_IT_FISCAL_CODE_PERCENT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_invalid_it_fiscal_code_percent",
       "preview_status": "GA",
       "fusion_typecheck": false
     },
@@ -1763,6 +1994,20 @@
       "fusion_typecheck": false
     },
     {
+      "name": "INVALID_NL_BSN_COUNT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_invalid_nl_bsn_count",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "INVALID_NL_BSN_PERCENT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_invalid_nl_bsn_percent",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "INVALID_NUMERIC_TYPE_CAST_COUNT (SYSTEM DATA METRIC FUNCTION)",
       "category": "Data metric",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_invalid_numeric_type_cast_count",
@@ -1777,6 +2022,20 @@
       "fusion_typecheck": false
     },
     {
+      "name": "INVALID_PERCENTAGE_RANGE_COUNT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_invalid_percentage_range_count",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "INVALID_PERCENTAGE_RANGE_PERCENT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_invalid_percentage_range_percent",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "INVALID_PERM_ID_COUNT (SYSTEM DATA METRIC FUNCTION)",
       "category": "Data metric",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_invalid_perm_id_count",
@@ -1787,6 +2046,34 @@
       "name": "INVALID_PERM_ID_PERCENT (SYSTEM DATA METRIC FUNCTION)",
       "category": "Data metric",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_invalid_perm_id_percent",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "INVALID_PL_PESEL_COUNT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_invalid_pl_pesel_count",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "INVALID_PL_PESEL_PERCENT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_invalid_pl_pesel_percent",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "INVALID_PROBABILITY_RANGE_COUNT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_invalid_probability_range_count",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "INVALID_PROBABILITY_RANGE_PERCENT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_invalid_probability_range_percent",
       "preview_status": "GA",
       "fusion_typecheck": false
     },
@@ -1815,6 +2102,48 @@
       "name": "INVALID_TIMESTAMP_STRING_PERCENT (SYSTEM DATA METRIC FUNCTION)",
       "category": "Data metric",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_invalid_timestamp_string_percent",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "INVALID_TR_ID_NO_COUNT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_invalid_tr_id_no_count",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "INVALID_TR_ID_NO_PERCENT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_invalid_tr_id_no_percent",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "INVALID_UK_NINO_COUNT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_invalid_uk_nino_count",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "INVALID_UK_NINO_PERCENT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_invalid_uk_nino_percent",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "INVALID_UK_POSTAL_CODE_COUNT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_invalid_uk_postal_code_count",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "INVALID_UK_POSTAL_CODE_PERCENT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_invalid_uk_postal_code_percent",
       "preview_status": "GA",
       "fusion_typecheck": false
     },
@@ -1875,6 +2204,13 @@
       "fusion_typecheck": false
     },
     {
+      "name": "KURTOSIS (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_kurtosis",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
       "name": "MAX (SYSTEM DATA METRIC FUNCTION)",
       "category": "Data metric",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_max",
@@ -1896,6 +2232,20 @@
       "fusion_typecheck": true
     },
     {
+      "name": "NAN_COUNT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_nan_count",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "NAN_PERCENT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_nan_percent",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "NEGATIVE_COUNT (SYSTEM DATA METRIC FUNCTION)",
       "category": "Data metric",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_negative_count",
@@ -1906,6 +2256,20 @@
       "name": "NEGATIVE_PERCENT (SYSTEM DATA METRIC FUNCTION)",
       "category": "Data metric",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_negative_percent",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "NOT_FRIDAY_COUNT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_not_friday_count",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "NOT_FRIDAY_PERCENT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_not_friday_percent",
       "preview_status": "GA",
       "fusion_typecheck": false
     },
@@ -1924,6 +2288,20 @@
       "fusion_typecheck": false
     },
     {
+      "name": "NOT_MONDAY_COUNT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_not_monday_count",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "NOT_MONDAY_PERCENT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_not_monday_percent",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "NOT_NULL_COUNT (SYSTEM DATA METRIC FUNCTION)",
       "category": "Data metric",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_not_null_count",
@@ -1938,9 +2316,135 @@
       "fusion_typecheck": false
     },
     {
+      "name": "NOT_SATURDAY_COUNT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_not_saturday_count",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "NOT_SATURDAY_PERCENT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_not_saturday_percent",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "NOT_SUNDAY_COUNT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_not_sunday_count",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "NOT_SUNDAY_PERCENT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_not_sunday_percent",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "NOT_THURSDAY_COUNT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_not_thursday_count",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "NOT_THURSDAY_PERCENT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_not_thursday_percent",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "NOT_TODAY_COUNT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_not_today_count",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "NOT_TODAY_PERCENT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_not_today_percent",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "NOT_TUESDAY_COUNT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_not_tuesday_count",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "NOT_TUESDAY_PERCENT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_not_tuesday_percent",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "NOT_WEDNESDAY_COUNT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_not_wednesday_count",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "NOT_WEDNESDAY_PERCENT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_not_wednesday_percent",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "NOT_WEEKDAY_COUNT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_not_weekday_count",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "NOT_WEEKDAY_PERCENT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_not_weekday_percent",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "NOT_YESTERDAY_COUNT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_not_yesterday_count",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "NOT_YESTERDAY_PERCENT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_not_yesterday_percent",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "NULL_COUNT (SYSTEM DATA METRIC FUNCTION)",
       "category": "Data metric",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_null_count",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "NULL_KEYWORD_COUNT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_null_keyword_count",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "NULL_KEYWORD_PERCENT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_null_keyword_percent",
       "preview_status": "GA",
       "fusion_typecheck": false
     },
@@ -2008,11 +2512,88 @@
       "fusion_typecheck": false
     },
     {
+      "name": "ROWS_IN_PAST_DAY_COUNT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_rows_in_past_day_count",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "ROWS_IN_PAST_DAY_PERCENT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_rows_in_past_day_percent",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "ROWS_IN_PAST_HOUR_COUNT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_rows_in_past_hour_count",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "ROWS_IN_PAST_HOUR_PERCENT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_rows_in_past_hour_percent",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "ROWS_IN_PAST_MONTH_COUNT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_rows_in_past_month_count",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "ROWS_IN_PAST_MONTH_PERCENT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_rows_in_past_month_percent",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "ROWS_IN_PAST_WEEK_COUNT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_rows_in_past_week_count",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "ROWS_IN_PAST_WEEK_PERCENT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_rows_in_past_week_percent",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "ROWS_IN_PAST_YEAR_COUNT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_rows_in_past_year_count",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "ROWS_IN_PAST_YEAR_PERCENT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_rows_in_past_year_percent",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "SCHEMA_CHANGE_COUNT (SYSTEM DATA METRIC FUNCTION)",
       "category": "Data metric",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_schema_change_count",
       "preview_status": "GA",
       "fusion_typecheck": false
+    },
+    {
+      "name": "SKEW (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_skew",
+      "preview_status": "GA",
+      "fusion_typecheck": true
     },
     {
       "name": "SPECIAL_CHARACTER_COUNT (SYSTEM DATA METRIC FUNCTION)",
@@ -2057,11 +2638,32 @@
       "fusion_typecheck": false
     },
     {
+      "name": "STRING_LENGTH_STDDEV (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_string_length_stddev",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "SUM (SYSTEM DATA METRIC FUNCTION)",
       "category": "Data metric",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_sum",
       "preview_status": "GA",
       "fusion_typecheck": true
+    },
+    {
+      "name": "TRUE_COUNT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_true_count",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "TRUE_PERCENT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_true_percent",
+      "preview_status": "GA",
+      "fusion_typecheck": false
     },
     {
       "name": "UNIQUE_COUNT (SYSTEM DATA METRIC FUNCTION)",
@@ -2074,6 +2676,20 @@
       "name": "UNIQUE_PERCENT (SYSTEM DATA METRIC FUNCTION)",
       "category": "Data metric",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_unique_percent",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "UNIX_ZERO_COUNT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_unix_zero_count",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "UNIX_ZERO_PERCENT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_unix_zero_percent",
       "preview_status": "GA",
       "fusion_typecheck": false
     },
@@ -6232,6 +6848,13 @@
       "name": "SYSTEM$GET_CMK_KMS_KEY_POLICY",
       "category": "System",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/system_get_cmk_kms_key_policy",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "SYSTEM$GET_COLUMN_COMMENT_PROPAGATION_SOURCE",
+      "category": "System",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/system_get_column_comment_propagation_source",
       "preview_status": "GA",
       "fusion_typecheck": false
     },

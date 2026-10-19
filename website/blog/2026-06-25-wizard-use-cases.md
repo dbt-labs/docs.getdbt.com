@@ -106,7 +106,7 @@ For this process, I didn't have to look up any documentation and only had to go 
 
 Three things made that work, some of them can be replicated with other harnesses using skills, MCPs, hooks and other automation but these came out of the box.
 
-**It knew the graph before it started.** Wizard has a [native metadata engine](/docs/dbt-ai/wizard-how-it-works#native-metadata-engine), a structured index of lineage, models, tests, and metric definitions, built before the first prompt. When it wrote `std_diff_1yr` and `current_price` into that `expr`, it didn't have to grep through the sql files to find the right name it was able to quickly know what field was the right ones. 
+**It knew the graph before it started.** Wizard uses the [dbt Information Schema](/docs/build/dbt-information-schema), a structured view of lineage, models, tests, and metric definitions, built before the first prompt. When it wrote `std_diff_1yr` and `current_price` into that `expr`, it didn't have to grep through the sql files to find the right name it was able to quickly know what field was the right ones. 
 
 **Validation was the default.** I never said "check that it compiles." The loop runs on write operations whether you ask or not. You can turn this feature off if it isn't interesting to you. 
 

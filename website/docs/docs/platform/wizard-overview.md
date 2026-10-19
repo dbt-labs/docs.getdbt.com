@@ -24,11 +24,11 @@ import WizardVideoCourse from '/snippets/_wizard-video-course.md';
 Your personal dbt agent &mdash; wherever you work.
 </IntroText>
 
-<Constant name="wizard" /> is an AI agent purpose-built for governed data development in dbt. Unlike general-purpose coding agents, it understands your dbt project through a [native metadata engine](/docs/dbt-ai/wizard-how-it-works#native-metadata-engine) &mdash; a structured index of lineage, model health, tests, contracts, run results, and semantic definitions.
+<Constant name="wizard" /> is an AI agent purpose-built for governed data development in dbt. Unlike general-purpose coding agents, it understands your dbt project through the [dbt Information Schema](/docs/build/dbt-information-schema) &mdash; a structured view of lineage, model health, tests, contracts, run results, and semantic definitions.
 
 Think of it like a map of your city: <Constant name="wizard" /> knows how everything connects before it starts, rather than walking every street to figure out the layout. <Constant name="wizard"/> comes with:
 
-- **Project understanding:** A native dbt metadata engine for lineage, contracts, tests, and runtime context
+- **Project understanding:** The dbt Information Schema for lineage, contracts, tests, and runtime context
 - **Impact awareness:** Checks upstream and downstream dependencies before you change code
 - **Safe validation:** Compiles and builds changes before review
 - **Complete workflow:** Investigate, change, validate, and review in one place

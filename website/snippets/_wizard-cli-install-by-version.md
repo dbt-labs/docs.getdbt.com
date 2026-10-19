@@ -24,7 +24,7 @@ Windows (PowerShell):
 irm https://public.cdn.getdbt.com/dbt-wizard/install/install-wizard.ps1 | iex
 ```
 
-This installs <Constant name="wizard"/> to `/usr/local/bin/wizard`, along with the dbt [metadata engine](/docs/dbt-ai/wizard-how-it-works#native-metadata-engine) that powers <Constant name="wizard"/>'s project-aware answers.
+This installs <Constant name="wizard"/> to `/usr/local/bin/wizard`, along with the [dbt Information Schema](/docs/build/dbt-information-schema) that powers <Constant name="wizard"/>'s project-aware answers.
 
 </Step>
 
