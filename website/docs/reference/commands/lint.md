@@ -281,7 +281,7 @@ If you need SQLFluff behavior, you can either lint in the <Constant name="studio
 
 By default, rules without an autofix report as warnings and don't fail `dbt lint`. Violations that `--fix` can fix are errors, so they fail the command.
 
-To fail the run on a warning, add its name to `warn_error_options` in `dbt_project.yml`. Use the name in the lint output. For example, rule `ST05` is reported as `PreferCTE`:
+If you want to report a violation of a rule with an error instead of a warning, add its name to `warn_error_options` in `dbt_project.yml`. Use the name in the lint output. For example, rule `ST05` is reported as `PreferCTE`:
 
 ```yaml
 flags:
@@ -291,7 +291,7 @@ flags:
 ```
 
 
-Setting `error: all` promotes every dbt warning, including warnings from commands other than lint. To promote one lint rule, list that rule by name. Refer to [Warnings](/reference/global-configs/warnings).
+Setting `error: all` promotes every dbt warning, including warnings from commands other than `lint`. To promote one lint rule, list that rule by name. Refer to [Warnings](/reference/global-configs/warnings).
 
 In a CI job, the **Linting** checkbox runs `dbt lint` and uses this project file. Select **Stop running on error** to fail the job when lint reports an error. The **Commands** list doesn't accept `dbt lint`. Refer to [SQL linting](/docs/deploy/continuous-integration#sql-linting).
 
