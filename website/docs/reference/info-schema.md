@@ -52,7 +52,7 @@ The `dbt` namespace tables contain metadata about your project's structure, reso
 | `dbt.time_spines` | Time spine definitions |
 | `dbt.classifiers` | Resource classifiers |
 | `dbt.edges` | DAG edges (parent → child) |
-| `dbt.node_columns` | Column names, types, and descriptions for nodes; for sources, only YAML-declared columns are included |
+| `dbt.node_columns` | Column names, types, and descriptions for nodes; for sources, only YAML-declared columns are included (use [`--write-catalog`](/docs/build/dbt-information-schema#generating-the-information-schema) to include all source columns) |
 | `dbt.column_lineage` | Column-level lineage (populated with `--static-analysis strict`) |
 
 ### `dbt_rt` namespace

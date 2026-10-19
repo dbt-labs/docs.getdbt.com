@@ -36,9 +36,18 @@ Use `--generate-info-schema` flag with `dbt build`, `dbt run`, `dbt compile`, or
   ```shell
   dbt build --generate-info-schema --static-analysis strict
   ```
-  dbt infers column types from your SQL for model columns only; warehouse types are not fetched with `--generate-info-schema`. For sources, dbt includes only columns declared in YAML, and their `data_type_inferred` reflects the YAML-declared type, not a SQL-inferred type. dbt omits sources without `columns:` entries from `dbt.node_columns` entirely.
 
   Without `--static-analysis strict`, `dbt.node_columns` and `dbt.column_lineage` contain no column types and no lineage.
+
+  dbt infers column types from your SQL for model columns only. For sources, dbt includes only columns declared in YAML, and their `data_type_inferred` reflects the YAML-declared type, not a SQL-inferred type. dbt omits sources without `columns:` entries from `dbt.node_columns` entirely.
+
+- To include warehouse column types and all source columns in `dbt.node_columns`, add [`--write-catalog`](/reference/commands/cmd-docs#--write-catalog-flag) when using `dbt build` or `dbt run`:
+
+  ```shell
+  dbt build --generate-info-schema --static-analysis strict --write-catalog
+  ```
+
+  With `--write-catalog`, models get both `data_type_inferred` and `data_type_actual`. Sources get `data_type_actual` only; `data_type_inferred` stays `NULL` for sources.
 
 - For [`dbt parse`](/reference/commands/parse), the Information Schema contains no column types, no lineage, and no runtime results, because `dbt parse` doesn't connect to your warehouse.
 
