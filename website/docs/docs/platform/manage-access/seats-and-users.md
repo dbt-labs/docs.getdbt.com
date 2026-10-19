@@ -160,8 +160,10 @@ Users who aren't assigned a license through SSO, SCIM, or license mapping receiv
 To set the default license:
 
 1. Click your account name in the left side menu and select **Account settings**.
-2. Go to **Groups & Licenses** and scroll to the **License mappings** section.
-3. Under "If no license mapping is set for new users, default to," select **Developer**, **Read-only**, or **Analyst**.
+2. Go to **Groups & Licenses** and scroll to the **Default license type** section.
+3. Click **Edit**.
+4. Select **Developer**, **Read-Only**, or **Analyst**.
+5. Click **Save**.
 
 The **IT** license can't be set as the default.
 
