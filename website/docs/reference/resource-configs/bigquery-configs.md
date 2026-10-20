@@ -411,7 +411,7 @@ models:
 </File>
 
 :::caution
-In your `dbt_project.yml`, put numerical and boolean values, such as `yes`, `no`, `on`, `off`, `true`, `false`, or `123`, in quotes so they're treated as strings. In a model `config()` block, quotes are required because that block is Python, for example `labels={'contains_pii': 'yes'}`.
+In `dbt_project.yml`, quote label values that YAML might interpret as booleans or numbers, such as `yes`, `no`, `on`, `off`, `true`, `false`, or `123`. Label values must be strings, so write `test: "yes"`. In a model `config()` block, quote string values, for example `labels={'contains_pii': 'yes'}`.
 :::
 
 <Lightbox src="/img/docs/building-a-dbt-project/building-models/73eaa8a-Screen_Shot_2020-01-20_at_12.12.54_PM.png" title="Viewing labels in the BigQuery console"/>
