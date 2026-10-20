@@ -13,9 +13,6 @@ import PlayInvite from './playInvite';
  * delivers a line, then dissolves away. The counter resets afterward, so it
  * can be summoned again.
  *
- * Pass `bare` to wrap your own clickable content instead of rendering a
- * button: clicks inside it pop the Wizards and still do their normal thing.
- *
  * Accessibility: the link is a real <button>; the burst is decorative
  * (aria-hidden) and is suppressed under `prefers-reduced-motion`.
  */
@@ -159,7 +156,7 @@ const PUFFS = Array.from({ length: 18 }, (_, i) => {
   };
 });
 
-const WizardPopcorn = ({ children = 'wizard logo', bare = false }) => {
+const WizardPopcorn = ({ children = 'wizard logo' }) => {
   const [pops, setPops] = useState([]);
   const nextId = useRef(0);
 
@@ -257,17 +254,9 @@ const WizardPopcorn = ({ children = 'wizard logo', bare = false }) => {
 
   return (
     <>
-      {bare ? (
-        // Wraps its own links or buttons: any click inside pops the Wizards,
-        // and the child's own action (such as a download) still runs.
-        <span className={styles.bare} onClick={burst}>
-          {children}
-        </span>
-      ) : (
-        <button type="button" className={styles.link} onClick={burst}>
-          {children}
-        </button>
-      )}
+      <button type="button" className={styles.link} onClick={burst}>
+        {children}
+      </button>
       {invite && !game && (
         <PlayInvite
           onPlay={() => {
