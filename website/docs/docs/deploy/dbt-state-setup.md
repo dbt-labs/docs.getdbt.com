@@ -181,7 +181,7 @@ After a run completes, confirm that dbt State is active:
 - **From the CLI:** Check the log output for a message like `dbt State adapter: dbt-state v2.10.1 is enabled`.
 - **From <Constant name="dbt_platform" />:** Check the [logs view of built resources](/docs/deploy/dbt-state-interface#logs-view-of-built-resources) to see if they were built or reused, or open the [**Explain** tab](/docs/deploy/dbt-state-interface#explain-tab) on the job run details page to see the State decision for each resource.
 
-If dbt State isn't behaving as expected, see [Debugging dbt State](#debugging-dbt-state).
+If dbt State isn't behaving as expected, refer to [Debugging dbt State](#debugging-dbt-state).
 
 ## Inviting team members {#invite}
 
