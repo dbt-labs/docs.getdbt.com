@@ -14,7 +14,7 @@ For current unit price and more information, refer to the [dbt Labs Service Cons
 
 ### DATT chart
 
-You can view your DATT count in **Account settings** > **Billing & Usage** > **Usage-based features**. Under the **State** tab, the DATT chart shows DATTs split into **Billable** and **Free**. During a trial, all DATTs are counted as free.
+You can view your DATT count in **Account settings** > **Billing & Usage** > **Usage-based features**. Under the **State** tab, the DATT chart shows DATTs split into **Billable** and **Free**. During a trial, all DATTs are counted as free. DATTs within your [monthly allowance](#free-monthly-datt-allowance) are also counted as free and do _not_ appear on your invoice.
 
 ### Cancellation
 

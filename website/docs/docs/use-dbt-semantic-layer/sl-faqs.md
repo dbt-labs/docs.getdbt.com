@@ -168,7 +168,7 @@ Read our [dbt Semantic Layer quickstart](/guides/sl-qs) guide for more informati
 
 <Expandable alt_header="How does caching work in the dbt Semantic Layer?">
 
-Beginning in March 2024, the dbt Semantic Layer will offer two layers of caching:
+The dbt Semantic Layer offers two layers of caching:
 
 - The result cache, which caches query results in the data platform so that subsequent runs of the same query are faster.
 - A declarative cache which also lives in your data platform.

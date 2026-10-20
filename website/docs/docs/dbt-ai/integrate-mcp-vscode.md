@@ -262,52 +262,11 @@ The remote dbt MCP server runs in <Constant name="dbt_platform" /> &mdash; no `u
 
 This section contains troubleshooting steps for errors you might encounter when integrating VS Code with MCP.
 
-<Expandable alt_header="Cannot find `uvx` executable">
+<FAQ path="dbt-mcp/troubleshooting/uvx" />
 
-If you see errors like `Could not connect to MCP server dbt` or `spawn uvx ENOENT`, VS Code may be unable to find the `uvx` executable.
+<FAQ path="dbt-mcp/troubleshooting/wsl" />
 
-To resolve, use the full path to `uvx` in your configuration:
-
-1. Find the full path:
-   - macOS/Linux: Run `which uvx` in Terminal.
-   - Windows: Run `where uvx` in Command Prompt or PowerShell.
-
-2. Update your `mcp.json` to use the full path:
-   ```json
-   {
-     "servers": {
-       "dbt": {
-         "command": "/full/path/to/uvx",
-         "args": ["dbt-mcp"],
-         "env": { ... }
-       }
-     }
-   }
-   ```
-
-   Example on macOS with Homebrew: `"command": "/opt/homebrew/bin/uvx"`
-
-</Expandable>
-
-<Expandable alt_header="Configuration not working in WSL">
-
-If you're using VS Code with Windows Subsystem for Linux (WSL), make sure you've configured the MCP server in the WSL-specific settings, not the local user settings. Use the **Remote** tab in the Settings editor or run **Preferences: Open Remote Settings** from the Command Palette.
-
-</Expandable>
-
-<Expandable alt_header="Server not starting" >
-
-Check the MCP server status:
-1. Run `MCP: List Servers` from the Command Palette (Control/Command + Shift + P).
-2. Look for any error messages next to the dbt server.
-3. Click on the server to see detailed logs.
-
-Common issues:
-- Missing or incorrect paths for <VersionBlock lastVersion="1.10">`DBT_PROJECT_DIR`</VersionBlock><VersionBlock firstVersion="1.11">`DBT_ENGINE_PROJECT_DIR`</VersionBlock> or `DBT_PATH`
-- Invalid authentication tokens
-- Missing required environment variables
-
-</Expandable>
+<FAQ path="dbt-mcp/troubleshooting/server-not-starting" />
 
 ## Resources
 

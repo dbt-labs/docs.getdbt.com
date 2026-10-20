@@ -72,16 +72,16 @@ A model doesn’t appear in the table if it’s a view or its current `lag_toler
 
 When you go to your **Account home**, you'll see a chart showing the number of models built and reused, giving you visibility into how dbt State is optimizing your data builds. You can also view the number of reused models per project on **Account home**.
 
-## Logs view of built models
+## Logs view of built resources
 
-When you run a job, or when you run `dbt run` or `dbt build` locally, a structured logs view shows which models were built, skipped, or reused.
+When you run a job, or when you run `dbt run` or `dbt build` locally, a structured logs view shows which resources were built, skipped, or reused.
 
-<Lightbox src="/img/docs/dbt-platform/using-dbt-platform/sao-logs-view.png" title="Logs view of built models" />
+<Lightbox src="/img/docs/dbt-platform/using-dbt-platform/sao-logs-view.png" title="Logs view of built resources" />
 
-1. Each model has an icon indicating its status.
-2. The **Reused** tab indicates the total number of reused models.
+1. Each resource has an icon indicating its status.
+2. The **Reused** tab indicates the total number of reused resources.
 3. You can use the search bar or filter the logs to show **All**, **Success**, **Warning**, **Failed**, **Running**, **Skipped**, **Reused**, or **Debugged** messages.
-4. Detailed log messages provide context on why models were built, reused, or skipped. These messages are highlighted in the logs.
+4. Detailed log messages provide context on why resources were built, reused, or skipped. These messages are highlighted in the logs.
 
 ## Reused tag in the Latest status lens
 
