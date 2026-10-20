@@ -153,7 +153,7 @@ To manually assign a specific type of license to a user on your team:
 
 <Lightbox src="/img/docs/dbt-platform/access-control/license-manual.png" width="55%" title="Manually assigning licenses"/>
 
-### Default license for new users
+### Default license for new users <Lifecycle status="managed,managed_plus" />
 
 Users who aren't assigned a license through SSO, SCIM, or license mapping receive your account's default license. Admins should check the current default and change it to **Read-Only**, **Developer**, or **Analyst** (if available) as needed.
 
