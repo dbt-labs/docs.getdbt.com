@@ -139,7 +139,7 @@ You can assign licenses to users individually or through group membership. Add u
 
 On Enterprise plans, you can also automatically assign users to groups using [SSO config](/docs/platform/manage-access/sso-overview) and [role-based access control](/docs/platform/manage-access/about-user-access#role-based-access-control-).
 
-By default, new users receive a Read Only license. Admins can check the settings and update the default as needed. Refer to [set a different default license](#default-license-for-new-users) for more info.
+New users receive your account's default license. Admins can check the default and update it as needed. Refer to [set a different default license](#default-license-for-new-users) for more info.
 
 ### Manual configuration
 
@@ -155,7 +155,7 @@ To manually assign a specific type of license to a user on your team:
 
 ### Default license for new users
 
-Users who aren't assigned a license through SSO, SCIM, or license mapping receive the default license. Admins should check the settings and change the default to **Read-Only**, **Developer** or **Analyst** (if available). By default, new users receive a Read Only license.
+Users who aren't assigned a license through SSO, SCIM, or license mapping receive your account's default license. Admins should check the current default and change it to **Read-Only**, **Developer**, or **Analyst** (if available) as needed.
 
 To set the default license:
 
