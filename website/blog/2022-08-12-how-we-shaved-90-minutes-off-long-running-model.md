@@ -20,13 +20,13 @@ Here at dbt Labs, we used the Model Timing tab in our internal analytics dbt pro
 
 The dbt Labs internal project is a beast! Our daily incremental dbt Cloud job runs 4x/day and invokes over 1,700 models. We like to sift through our dbt Cloud job using the [Model Timing](https://docs.getdbt.com/docs/dbt-cloud/using-dbt-cloud/cloud-model-timing-tab) tab in dbt Cloud. The `Model Timing` dashboard displays the model composition, order, and run time for every job run in dbt Cloud (for team and enterprise plans). The top 1% of model durations are automatically highlighted, which makes it easy to find bottlenecks in our runs. You can see that our longest running model stuck out like a sore thumb -- here's an example of our incremental job before a fix was applied:
 
-<Lightbox src="/img/blog/2022-08-12-model-timing/model_timing_before.png" title="Model Timing tab before picture" />
+<Lightbox src="/img/blog/2022-08-12-model-timing/model_timing_before.png" title="Model timing tab before picture" />
 
 As you can see, it's straightforward to identify the model that's causing the long run times and holding up other models. The model `fct_dbt_invocations` takes, on average, 1.5 hours to run. This isn't surprising, given that it's a relatively large dataset (~5B records) and that we're performing several intense SQL calculations. Additionally, this model calls an [ephemeral model](https://docs.getdbt.com/docs/build/materializations#ephemeral) named `dbt_model_summary` that also does some heavy lifting. Still, we decided to explore if we could refactor this model and make it faster.
 
 After refactoring this code, we ended up swapping the ephemeral model `dbt_model_summary` to an incremental model that took the bulk of the processing out of the main `fct_dbt_invocations` model. Instead of recalculating this complex logic every run, we pull only new data and run that logic on the smaller subset of those records. The combined run time of the new `dbt_model_summary` and `fct_dbt_invocations` is now ~15-20 minutes, a savings of over an hour per run!
 
-<Lightbox src="/img/blog/2022-08-12-model-timing/model_timing_after.png" title="Model Timing tab after picture" />
+<Lightbox src="/img/blog/2022-08-12-model-timing/model_timing_after.png" title="Model timing tab after picture" />
 
 ## Identifying the problem
 

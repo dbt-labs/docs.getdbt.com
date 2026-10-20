@@ -74,7 +74,7 @@ Switching back and forth between those SQL syntaxes, at least for me, usually re
 
 So I made this handy 2 x 2 matrix to help sort the differences out:
 
-<Lightbox src="/img/blog/dateadd_matrix.png" title="blank 2x2 matrix" />
+<Lightbox src="/img/blog/dateadd_matrix.png" title="Blank 2x2 matrix" />
 
 I am sorry - that’s just a blank 2x2 matrix. I've surrendered to just searching for the docs.
 

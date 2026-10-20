@@ -16,11 +16,11 @@ As an analytics engineer at your company, doesn’t that last sentence describe 
 
 Let’s talk about how to apply the KonMari Method to a new migration project. Perhaps you’ve been tasked with unpacking the kitchen in your new house; AKA, you’re the engineer hired to move your legacy SQL  queries into dbt and get everything working smoothly. That might mean you’re grabbing a query that is 1500 lines of SQL and reworking it into modular pieces. When you’re finished, you have a performant, scalable, easy-to-navigate data flow. <!--truncate--> That does take a bit of planning, but you’ll see that we can take this… 
 
-<Lightbox src="/img/blog/2022-09-08-konmari-your-query-migration/buried-in-boxes.webp" title="buried in boxes" />
+<Lightbox src="/img/blog/2022-09-08-konmari-your-query-migration/buried-in-boxes.webp" title="Buried in boxes" />
 
 to THIS!
 
-<Lightbox src="/img/blog/2022-09-08-konmari-your-query-migration/cat_kitchen.jpeg" title="cat perched in kitchen" />
+<Lightbox src="/img/blog/2022-09-08-konmari-your-query-migration/cat_kitchen.jpeg" title="Cat perched in kitchen" />
 
 That’s the power of the KonMari Method. Let’s apply the method specifically to data:  
 
@@ -70,11 +70,11 @@ This is my favorite part. If you dive in to all the boxes labeled “kitchen stu
 
 Let’s plan how to unpack our query. This may be what you’re working with: 30+ sources all packed into one SUPER query 🦸. 
 
-<Lightbox src="/img/blog/2022-09-08-konmari-your-query-migration/many-to-one-dag.png" title="many-to-one DAG" />
+<Lightbox src="/img/blog/2022-09-08-konmari-your-query-migration/many-to-one-dag.png" title="Many-to-one DAG" />
 
 Or, perhaps you’re migrating a stored procedure, and you have DAG Spaghetti that you’re contending with, as [Matt talks through in this article](/blog/migrating-from-stored-procs).
 
-<Lightbox src="/img/blog/2022-09-08-konmari-your-query-migration/spaghetti-data-dag.png" title="spaghetti data DAG" />
+<Lightbox src="/img/blog/2022-09-08-konmari-your-query-migration/spaghetti-data-dag.png" title="Spaghetti data DAG" />
 
 Now we can look at the details of this code, and start to categorize. You can start building out what this may look like as a DAG in a process mapping tool, like [Whimsical](https://whimsical.com/). 
 
@@ -88,7 +88,7 @@ Perhaps your redesigned DAG looks something like this — you have intermediate 
 
 **Before you accuse me of wishful thinking, this is the result of a real client project! We broke up almost 1500 lines of code in a single query into this beautiful waterfall. Marie Kondo would be proud.* 
 
-<Lightbox src="/img/blog/2022-09-08-konmari-your-query-migration/fully-konmarid-project.png" title="fully konmarid project" />
+<Lightbox src="/img/blog/2022-09-08-konmari-your-query-migration/fully-konmarid-project.png" title="Fully konmarid project" />
 
 While you don’t *have to* design your flow this way, it is incredibly important to consider modularity, readability, scalability, and performance in your design. Design with intention! Remember, don’t put your forks too far from the dishwasher. 
 

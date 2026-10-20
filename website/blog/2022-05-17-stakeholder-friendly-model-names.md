@@ -52,7 +52,7 @@ The end users might not even know what tables the data refers to, as potentially
 #### Read only access to the dbt Cloud IDE docs
 If Analysts want more context via documentation, they may traverse back to the dbt layer and check out the data models in either the context of the Project or Database. In the Project view, they will see the data models in the folder hierarchy present in your project’s repository. In the Database view you will see the output of the data models as present in your database, ie. `database / schema / object`.
 
-<Lightbox src="/img/blog/2022-05-17-stakeholder-friendly-model-names/project-view.png" title="A screenshot depicting the dbt Cloud IDE menu's Database view which shows you the output of your data models. Next to this view, is the Project view." />
+<Lightbox src="/img/blog/2022-05-17-stakeholder-friendly-model-names/project-view.png" title="A screenshot depicting the dbt Cloud IDE menu's database view which shows you the output of your data models. Next to this view, is the project view." />
 
 **How model names can make this painful:**
 For the Project view, generally abstracted department or organizational structures as folder names presupposes the reader/engineer knows what is contained within the folder beforehand or what that department actually does, or promotes haphazard clicking to open folders to see what is within. Organizing the final outputs by business unit or analytics function is great for end users but doesn't accurately represent all the sources and references that had to come together to build this output, as they often live in another folder.
@@ -125,7 +125,7 @@ The problem is that you will only see the model names (which become the nodes in
 
 While reviewing code from someone else who is contributing, you will see only the files that have been changed in the project’s repository.
 
-<Lightbox src="/img/blog/2022-05-17-stakeholder-friendly-model-names/PR-view.png" title="A screenshot of the file names that have been listed in the &quot;Files Changed&quot; section of a GitHub Pull Request" />
+<Lightbox src="/img/blog/2022-05-17-stakeholder-friendly-model-names/PR-view.png" title="A screenshot of the file names that have been listed in the &quot;Files Changed&quot; section of a GitHub pull request" />
 
 **How model names can make this painful:**
 This will severely limit the amount of information you see, because it will be localized to the changed files. You will still see changed folders and changed model names, but lack the total project context where those are helpful. Hopefully you have a robust pull request template and traditions of linking to the task ticket and providing context to why the work was completed this way, otherwise the person reviewing your changes will not have a lot of information at hand to make clear suggestions for improvement.

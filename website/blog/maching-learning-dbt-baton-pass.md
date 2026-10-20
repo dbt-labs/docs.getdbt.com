@@ -46,7 +46,7 @@ After some initial planning, I knew we had this raw data living somewhere in our
 
 The ML engineer stepped in from here. She was used to doing her statistics and preprocessing in python [pandas](https://pandas.pydata.org/) and [scikit-learn](https://scikit-learn.org/stable/index.html). Before she opened up her Jupyter notebook, we had a heart-to-heart conversation and realized the same work could be done through dbt. Preprocessing could be done through this [open source dbt package](https://github.com/omnata-labs/dbt-ml-preprocessing/tree/1.1.0/#dbt-ml-preprocessing) and there were plenty of others like it in the [package registry](https://hub.getdbt.com/).
 
-<Lightbox src="/img/blog/2022-02-18-machine-learning-dbt-baton-pass/macro-names.png" title="image of table with macro names and connector compatibility" />
+<Lightbox src="/img/blog/2022-02-18-machine-learning-dbt-baton-pass/macro-names.png" title="Image of table with macro names and connector compatibility" />
 
 The ML engineer got the preprocessing steps (think: one-hot encoding, feature scaling, imputation) finalized. She used SQL to read the dbt models (tables) into a Jupyter notebook to perform model training. After iterating on the machine learning models and tracking model fit (think: AUC/Precision/Recall (for classification)), she ran the model over dbt-created tables and output the predicted results as a table in the database. To keep documentation clean, she [configured a source](/docs/build/sources) within the dbt project to reflect this predicted results table. It wasn’t intuitive, but it was better than leaving it out of dbt docs.
 

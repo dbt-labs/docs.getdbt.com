@@ -296,7 +296,7 @@ As with the earlier steps, these specific instructions are for Bitbucket but the
 
 Lastly, under Repository > Repository Settings > Pipelines Settings, check “Enable Pipelines”.
 
-<Lightbox src="/img/blog/2022-04-14-add-ci-cd-to-bitbucket/2022-04-14-add-ci-cd-to-bitbucket-image-3.png" title="Bitbucket Pipeline Settings enabling screenshot" />
+<Lightbox src="/img/blog/2022-04-14-add-ci-cd-to-bitbucket/2022-04-14-add-ci-cd-to-bitbucket-image-3.png" title="Bitbucket pipeline settings enabling screenshot" />
 
 ## Step 4: Test
 
