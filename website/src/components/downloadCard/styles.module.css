@@ -21,6 +21,8 @@
   --dl-detected-border: #8b7cf0;
   --dl-link: var(--color-transform-orange-600, #fe6703);
   --dl-link-hover: #16171b;
+  --dl-hover-border: var(--color-transform-orange-600, #fe6703);
+  --dl-hover-bg: rgba(254, 103, 3, 0.14);
 }
 
 /* Dark mode: the Wizard panel */
@@ -35,6 +37,8 @@ html[data-theme='dark'] .card {
   --dl-detected-border: #b0a3ff;
   --dl-link: #b0a3ff;
   --dl-link-hover: #fff;
+  --dl-hover-border: var(--color-coalesce-purple-400, #9786ff);
+  --dl-hover-bg: rgba(118, 85, 253, 0.22);
 }
 
 .content {
@@ -67,8 +71,8 @@ html[data-theme='dark'] .card {
 .card .tile:hover {
   color: var(--dl-text);
   text-decoration: none;
-  border-color: var(--color-transform-orange-600, #fe6703);
-  background: rgba(254, 103, 3, 0.14);
+  border-color: var(--dl-hover-border);
+  background: var(--dl-hover-bg);
   transform: translateY(-1px);
 }
 
