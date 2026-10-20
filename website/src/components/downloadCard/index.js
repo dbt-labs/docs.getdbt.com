@@ -7,8 +7,6 @@ import styles from './styles.module.css';
  * straight to an installer, plus a note for the other architectures. The card
  * matching the reader's operating system is highlighted.
  *
- * @param {string} title - Card heading
- * @param {string} subtitle - Line under the heading
  * @param {Array} platforms - Cards: { os, icon, title, description, ext, url }
  * @param {Array} alternates - Other installers: { label, ext, url }
  */
@@ -18,6 +16,7 @@ const CDN = 'https://public.cdn.getdbt.com/dbt-wizard/latest';
 const DEFAULT_PLATFORMS = [
   {
     os: 'mac',
+    color: 'lavender',
     icon: faApple,
     title: 'Download for macOS',
     description: 'For Apple silicon Macs',
@@ -26,6 +25,7 @@ const DEFAULT_PLATFORMS = [
   },
   {
     os: 'windows',
+    color: 'white',
     icon: faWindows,
     title: 'Download for Windows',
     description: 'For x64 processors',
@@ -34,6 +34,7 @@ const DEFAULT_PLATFORMS = [
   },
   {
     os: 'linux',
+    color: 'orange',
     icon: faLinux,
     title: 'Download for Linux',
     description: 'For x86_64, Ubuntu and Debian',
@@ -53,20 +54,6 @@ const DEFAULT_ALTERNATES = [
     ext: '.deb',
     url: `${CDN}/dbt-wizard-app-aarch64-unknown-linux-gnu.deb`,
   },
-];
-
-// The Wizard, colored by part to match the brand (hat, face, legs)
-const WIZARD = [
-  { text: '   ▄', part: 'hat' },
-  { text: '    █▄', part: 'hat' },
-  { text: '   ████', part: 'hat' },
-  { text: '▄▄██████▄▄', part: 'hat' },
-  { text: '  ▄▄ ▄ ▄▄', part: 'face' },
-  { text: '  ▀██▀██', part: 'face' },
-  { text: '   ▀▀▀▀▀', part: 'face' },
-  { text: '   ███ █', part: 'legs' },
-  { text: ' ████   █', part: 'legs' },
-  { text: '███ █   ███', part: 'legs' },
 ];
 
 function detectOs() {
@@ -97,8 +84,6 @@ function BrandIcon({ icon }) {
 }
 
 export default function DownloadCard({
-  title = 'Download Wizard Desktop',
-  subtitle = 'Free to download for macOS, Windows, and Linux.',
   platforms = DEFAULT_PLATFORMS,
   alternates = DEFAULT_ALTERNATES,
 }) {
@@ -110,22 +95,7 @@ export default function DownloadCard({
 
   return (
     <div className={styles.card}>
-      <pre className={styles.wizard} aria-hidden="true">
-        {WIZARD.map((line, i) => (
-          <span key={i} className={styles[line.part]}>
-            {line.text}
-            {'\n'}
-          </span>
-        ))}
-      </pre>
-
       <div className={styles.content}>
-        <div className={styles.heading}>
-          <h3 className={styles.title}>{title}</h3>
-          <span className={styles.badge}>Public beta</span>
-        </div>
-        <p className={styles.subtitle}>{subtitle}</p>
-
         <div className={styles.tiles}>
           {platforms.map((p) => (
             <a
@@ -135,7 +105,9 @@ export default function DownloadCard({
               download
               rel="noopener noreferrer"
             >
-              <BrandIcon icon={p.icon} />
+              <span className={`${styles.block} ${styles[p.color]}`}>
+                <BrandIcon icon={p.icon} />
+              </span>
               <span className={styles.tileText}>
                 <span className={styles.tileTitle}>{p.title}</span>
                 <span className={styles.tileDescription}>
