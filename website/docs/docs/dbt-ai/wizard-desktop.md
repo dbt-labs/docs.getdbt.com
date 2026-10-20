@@ -21,12 +21,12 @@ Wizard Desktop is <Constant name="wizard" /> as a native app. View rich data vis
 
 Desktop is powered by the same technology as the [<Constant name="wizard" /> CLI](/docs/dbt-ai/wizard-quickstart), with a visual interface to help you follow the work, guide it, and manage several threads at once. This means:
 
-- **Parallel chats**: each project chat gets its own <Constant name="git" /> <Term id="git-worktree" /> automatically, so several pieces of work run at once without conflicting.
-- **Validation you can see:** run validation and get structured results back, including a `dbt-compare` view of what your changes did to the data.
-- **Contextual commenting:** hover almost anything to leave a comment on that exact spot, then send several together for more detailed feedback.
-- **Charts and visualizations:** ask a question about your data and see the answer as inline charts and tables.
+- **Parallel chats:** each chat gets its own <Constant name="git" /> <Term id="git-worktree" />, so several pieces of work run at once without conflicts.
+- **Visible validation:** see structured results, including a `dbt-compare` view of what your changes did to the data.
+- **Contextual comments:** hover almost anything to comment on that exact spot, then send several together.
+- **Charts and tables:** ask a question about your data and see the answer inline.
 - **Inline impact:** see which models <Constant name="wizard" />'s changes touch, with diffs you open inline.
-- **Lineage, file, and metrics browsing:** browse the project you're in right alongside the chat.
+- **Lineage, file, and metrics browsing:** browse your project right alongside the chat.
 
 This page walks you through installing the app, connecting it to the services it needs, and starting your first session. For everything the app can do, refer to [Use Wizard Desktop](/docs/dbt-ai/wizard-desktop-use). Be warned, the wizard has been known to <WizardPopcorn>cast spells</WizardPopcorn>.
 
