@@ -55,7 +55,7 @@ dbt State requires a dbt account, even when running dbt locally, to authenticate
 
    3. Agree to the dbt State Terms of Service and click **Start 30-day trial**.
 
-      Once started, you cannot pause the trial. For information about how the trial period and billing work, refer to [dbt State trial and billing](/docs/deploy/dbt-state-trial).
+      Once started, you cannot pause the trial. After the trial ends, your account receives a free monthly DATT allowance, which varies by plan. For details, refer to [dbt State trial and billing](/docs/deploy/dbt-state-trial).
 
    You can also enable or disable dbt State per run using [CLI flags](/reference/global-configs/about-global-configs): `--manage-state` or `--no-manage-state`, or set the `DBT_ENGINE_MANAGE_STATE` environment variable.
 
@@ -104,7 +104,7 @@ dbt State requires a dbt account, even when running dbt locally, to authenticate
 
    5. Agree to the dbt State Terms of Service and click **Start 30-day trial**.
 
-      Once started, you cannot pause the trial. For information about how the trial period and billing work, refer to [dbt State trial and billing](/docs/deploy/dbt-state-trial).
+      Once started, you cannot pause the trial. After the trial ends, your account receives a free monthly DATT allowance, which varies by plan. For details, refer to [dbt State trial and billing](/docs/deploy/dbt-state-trial).
 
    The CLI flags `--manage-state` and `--no-manage-state` are not available in older <Constant name="core" /> versions. Use the environment variable (`DBT_ENGINE_ENABLE_STATE`) or project flag (`enable_state`) to enable or disable dbt State.
 
@@ -139,7 +139,7 @@ dbt State requires a dbt account, even when running dbt locally, to authenticate
 
    3. Under the **State** tab, click **Start free trial**.
 
-      Once started, you cannot pause the trial. For information about how the trial period and billing work, refer to [dbt State trial and billing](/docs/deploy/dbt-state-trial).
+      Once started, you cannot pause the trial. After the trial ends, your account receives a free monthly DATT allowance, which varies by plan. For details, refer to [dbt State trial and billing](/docs/deploy/dbt-state-trial).
 
       :::info Extended trial for state-aware orchestration users
       If you were using state-aware orchestration prior to June 1, 2026, your dbt State trial will be extended beyond 30 days. If the extension isn't applied to your account, contact your account team.
