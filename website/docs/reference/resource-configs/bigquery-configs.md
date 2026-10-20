@@ -371,7 +371,7 @@ dbt supports the specification of BigQuery labels for the tables and <Term id="v
 
 The `labels` config can be provided in a model config, or in the `dbt_project.yml` file, as shown below.
 
-If you set `labels` in `dbt_project.yml` and in a model file, the model file's labels are the only labels on that model. <Constant name="dbt" /> does not combine the two sets. A model with no `labels` config keeps the labels from `dbt_project.yml`.
+A model with no `labels` config inherits the labels from `dbt_project.yml`. Labels set in a model config take precedence over labels set in the `dbt_project.yml`. <Constant name="dbt" /> doesn't combine the two sets.
 
   BigQuery key-value pair entries for labels larger than 63 characters are truncated.
 
@@ -411,7 +411,7 @@ models:
 </File>
 
 :::caution
-In `dbt_project.yml`, quote label values that YAML might interpret as booleans or numbers, such as `yes`, `no`, `on`, `off`, `true`, `false`, or `123`. Label values must be strings, so write `test: "yes"`. In a model `config()` block, quotes are required because that block is Python, for example `labels={'contains_pii': 'yes'}`.
+In your `dbt_project.yml`, put numerical and boolean values, such as `yes`, `no`, `on`, `off`, `true`, `false`, or `123`, in quotes so they're treated as strings. In a model `config()` block, quotes are required because that block is Python, for example `labels={'contains_pii': 'yes'}`.
 :::
 
 <Lightbox src="/img/docs/building-a-dbt-project/building-models/73eaa8a-Screen_Shot_2020-01-20_at_12.12.54_PM.png" title="Viewing labels in the BigQuery console"/>
