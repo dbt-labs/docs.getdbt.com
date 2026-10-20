@@ -22,10 +22,10 @@ The driver requires Redis Search commands, including `FT._LIST` and `FT.CREATE`.
 
 ## Install the adapter and driver
 
-Install the adapter from its public GitHub repository. The adapter package is in the `adapter` subdirectory:
+Install the adapter from [PyPI](https://pypi.org/project/dbt-redis-adbc/):
 
 ```shell
-python -m pip install "dbt-redis-adbc @ git+https://github.com/alberttwong/redis-dbt-adapter-with-project.git#subdirectory=adapter"
+python -m pip install dbt-redis-adbc
 ```
 
 Download and extract the shared-library archive for your platform from the [Redis ADBC driver releases](https://github.com/alberttwong/redis-adbc-driver/releases). The example project's pinned driver release is [v0.0.14](https://github.com/alberttwong/redis-adbc-driver/releases/tag/v0.0.14). Prebuilt libraries are available for macOS Apple Silicon, Linux x86-64, and Linux arm64. Other platforms require a [source build](https://github.com/alberttwong/redis-adbc-driver#quick-start).
