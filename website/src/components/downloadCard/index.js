@@ -1,5 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { faApple, faWindows, faLinux } from '@fortawesome/free-brands-svg-icons';
+import {
+  faApple,
+  faWindows,
+  faLinux,
+} from '@fortawesome/free-brands-svg-icons';
+import WizardPopcorn from '../wizardPopcorn';
 import styles from './styles.module.css';
 
 /**
@@ -95,41 +100,44 @@ export default function DownloadCard({
 
   return (
     <div className={styles.card}>
-      <div className={styles.content}>
-        <div className={styles.tiles}>
-          {platforms.map((p) => (
-            <a
-              key={p.os}
-              className={`${styles.tile} ${p.os === os ? styles.detected : ''}`}
-              href={p.url}
-              download
-              rel="noopener noreferrer"
-            >
-              <span className={`${styles.block} ${styles[p.color]}`}>
-                <BrandIcon icon={p.icon} />
-              </span>
-              <span className={styles.tileText}>
-                <span className={styles.tileTitle}>{p.title}</span>
-                <span className={styles.tileDescription}>
-                  {p.description} · <span className={styles.ext}>{p.ext}</span>
+      <WizardPopcorn bare>
+        <div className={styles.content}>
+          <div className={styles.tiles}>
+            {platforms.map((p) => (
+              <a
+                key={p.os}
+                className={`${styles.tile} ${p.os === os ? styles.detected : ''}`}
+                href={p.url}
+                download
+                rel="noopener noreferrer"
+              >
+                <span className={`${styles.block} ${styles[p.color]}`}>
+                  <BrandIcon icon={p.icon} />
                 </span>
-              </span>
-            </a>
-          ))}
-        </div>
-
-        <p className={styles.others}>
-          Need a different build?{' '}
-          {alternates.map((a, i) => (
-            <React.Fragment key={a.label}>
-              {i > 0 && ' · '}
-              <a href={a.url} download rel="noopener noreferrer">
-                {a.label} ({a.ext})
+                <span className={styles.tileText}>
+                  <span className={styles.tileTitle}>{p.title}</span>
+                  <span className={styles.tileDescription}>
+                    {p.description} ·{' '}
+                    <span className={styles.ext}>{p.ext}</span>
+                  </span>
+                </span>
               </a>
-            </React.Fragment>
-          ))}
-        </p>
-      </div>
+            ))}
+          </div>
+
+          <p className={styles.others}>
+            Need a different build?{' '}
+            {alternates.map((a, i) => (
+              <React.Fragment key={a.label}>
+                {i > 0 && ' · '}
+                <a href={a.url} download rel="noopener noreferrer">
+                  {a.label} ({a.ext})
+                </a>
+              </React.Fragment>
+            ))}
+          </p>
+        </div>
+      </WizardPopcorn>
     </div>
   );
 }

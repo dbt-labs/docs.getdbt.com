@@ -345,3 +345,8 @@
     display: none;
   }
 }
+
+/* `bare` mode: wrap children without adding a box to the layout */
+.bare {
+  display: contents;
+}
