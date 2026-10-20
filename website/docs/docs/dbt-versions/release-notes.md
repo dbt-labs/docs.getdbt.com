@@ -21,6 +21,7 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 For <Constant name="fusion_engine" /> updates, refer to the [v2 changelog](https://github.com/dbt-labs/dbt/blob/main/CHANGELOG-dbt.md).
 
 ## October 2026
+- **New:** Custom GitHub applications are now generally available. If you're on an Enterprise or Enterprise+ plan and use GitHub Enterprise Server or GitHub with EU data residency, you can [register your own GitHub app](/docs/platform/git/connect-github#custom-github-application) and connect it to <Constant name="dbt" />.
 - **New:** Admins can now set the [default license](/docs/platform/manage-access/seats-and-users#default-license-for-new-users) for new users who aren't assigned a license through SSO, SCIM, or license mapping. Choose Developer, Read-Only, or Analyst. 
 Admins can check their settings and update the default as needed. This is available for all multi-tenant and single-tenant accounts.
 - **Enhancement:** You can now sort columns, search by connection name, and filter by connection type, credentials, and connection method (private link or OAuth).
