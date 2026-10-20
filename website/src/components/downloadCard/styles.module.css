@@ -1,10 +1,11 @@
-/* Wizard brand: dark panel, lavender/white/orange Wizard, Menlo type */
+/* dbt + Wizard: dbt's rounded shapes and fonts on Wizard's dark panel and lavender, white, and orange palette */
 .card {
   display: flex;
   align-items: center;
   margin: 1.5rem 0;
   padding: 1rem;
-  border-radius: 8px;
+  border-radius: 16px;
+  font-family: var(--font-sans);
   background: #16171b;
   color: #fff;
 }
@@ -26,7 +27,7 @@
   gap: 0.75rem;
   padding: 0.7rem 0.9rem;
   border: 1px solid rgba(255, 255, 255, 0.18);
-  border-radius: 4px;
+  border-radius: 12px;
   background: rgba(255, 255, 255, 0.04);
   color: #fdfdfd;
   text-decoration: none;
@@ -36,8 +37,8 @@
 .tile:hover {
   color: #fdfdfd;
   text-decoration: none;
-  border-color: #fe6702;
-  background: rgba(254, 103, 2, 0.14);
+  border-color: var(--color-transform-orange-600, #fe6703);
+  background: rgba(254, 103, 3, 0.14);
   transform: translateY(-1px);
 }
 
@@ -52,9 +53,9 @@
   flex-shrink: 0;
   align-items: center;
   justify-content: center;
-  width: 38px;
-  height: 38px;
-  border-radius: 2px;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
   color: #16171b;
 }
 
@@ -67,7 +68,7 @@
 }
 
 .orange {
-  background: #fe6702;
+  background: var(--color-transform-orange-600, #fe6703);
 }
 
 .icon {
@@ -82,8 +83,8 @@
 }
 
 .tileTitle {
-  font-family: Menlo, Monaco, 'Courier New', monospace;
-  font-size: 0.88rem;
+  font-family: var(--font-display, var(--font-sans));
+  font-size: 0.92rem;
   font-weight: 700;
 }
 
@@ -93,7 +94,7 @@
 }
 
 .ext {
-  font-family: Menlo, Monaco, 'Courier New', monospace;
+  font-family: var(--font-mono);
 }
 
 .others {
