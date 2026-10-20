@@ -48,7 +48,7 @@ Release notes are grouped by date for single-tenant environments.
 
 ### APIs, Identity, and Administration
 
-- **SCIM `licenseType` updates applied to pending invites**: If you manage access through SCIM (your identity provider, like Okta or Azure AD), you can change the user's license type before they even log in. Previously this only worked for active users, but now it works for pending and not-yet-fully-signed-in users too. dbt still checks that you have an available seat of that license type before applying any change.
+- **SCIM `licenseType` updates applied to pending invites**: If you manage access through SCIM (your identity provider, like Okta or Microsoft Entra ID), you can change the user's license type before they even log in. Previously this only worked for active users, but now it works for pending and not-yet-fully-signed-in users too. dbt still checks that you have an available seat of that license type before applying any change.
 
 - **Clearer API validation errors**: API requests with an invalid permission value or a malformed body now return a descriptive error instead of a server error.
 
