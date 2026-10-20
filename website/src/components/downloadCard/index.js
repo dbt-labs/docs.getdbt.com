@@ -21,7 +21,6 @@ const CDN = 'https://public.cdn.getdbt.com/dbt-wizard/latest';
 const DEFAULT_PLATFORMS = [
   {
     os: 'mac',
-    color: 'lavender',
     icon: faApple,
     title: 'Download for macOS',
     description: 'For Apple silicon Macs',
@@ -30,7 +29,6 @@ const DEFAULT_PLATFORMS = [
   },
   {
     os: 'windows',
-    color: 'white',
     icon: faWindows,
     title: 'Download for Windows',
     description: 'For x64 processors',
@@ -39,7 +37,6 @@ const DEFAULT_PLATFORMS = [
   },
   {
     os: 'linux',
-    color: 'orange',
     icon: faLinux,
     title: 'Download for Linux',
     description: 'For x86_64, Ubuntu and Debian',
@@ -111,9 +108,7 @@ export default function DownloadCard({
                 download
                 rel="noopener noreferrer"
               >
-                <span className={`${styles.block} ${styles[p.color]}`}>
-                  <BrandIcon icon={p.icon} />
-                </span>
+                <BrandIcon icon={p.icon} />
                 <span className={styles.tileText}>
                   <span className={styles.tileTitle}>{p.title}</span>
                   <span className={styles.tileDescription}>
