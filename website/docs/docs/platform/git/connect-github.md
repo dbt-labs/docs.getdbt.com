@@ -42,7 +42,7 @@ When specifying a GitHub repository in the <Constant name="dbt_platform" /> usin
 
 You can use one GitHub application per <Constant name="dbt" /> account, not one per project.
 
-## Install the shared dbt app {#installing-dbt-in-your-github-account}
+## Installing the shared dbt app {#installing-dbt-in-your-github-account}
 
 You can connect your <Constant name="dbt" /> account to GitHub by installing the <Constant name="dbt" /> application in your GitHub organization and providing access to the right repos:
 
