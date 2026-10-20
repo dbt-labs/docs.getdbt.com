@@ -210,7 +210,7 @@ While direct three-hop paths are limited to prevent confusion from multiple rout
 
 For example, if you have two models, `country` and `region`, where customers are linked to countries, which in turn are linked to regions, you can join all of them in a single SQL query and can dissect `orders` by `customer__country_country_name` but not by `customer__country__region_name`.
 
-![Multi-Hop-Join](/img/docs/building-a-dbt-project/multihop-diagram.png "Example schema for reference")
+<Lightbox src="/img/docs/building-a-dbt-project/multihop-diagram.png" title="Multi-Hop-Join" />
 
 <VersionBlock lastVersion="1.11">
 

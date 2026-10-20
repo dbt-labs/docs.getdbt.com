@@ -57,19 +57,19 @@ This approach works great for the case where we have a standard business schedul
 
 Let’s assume that your customer support team always works Monday to Friday, and from 8am to 8pm, and your schedule looks something like this:
 
-![image alt text](/img/blog/2022-01-12-time-on-task/image_0.png)
+<Lightbox src="/img/blog/2022-01-12-time-on-task/image_0.png" title="image alt text" />
 
 And let’s say you have a few tickets that come in, and your team works through them diligently, as always:
 
-![image alt text](/img/blog/2022-01-12-time-on-task/image_1.png)
+<Lightbox src="/img/blog/2022-01-12-time-on-task/image_1.png" title="image alt text" />
 
 Our schedule-aware metric should only capture the non-grey time:
 
-![image alt text](/img/blog/2022-01-12-time-on-task/image_2.png)
+<Lightbox src="/img/blog/2022-01-12-time-on-task/image_2.png" title="image alt text" />
 
 How do we get there? For any of these tickets, the general formula to get the answer we want can be boiled down to subtracting non-working time from the total amount of time between the dates (i.e. a regular ol’ datediff):
 
-![image alt text](/img/blog/2022-01-12-time-on-task/image_3.png)
+<Lightbox src="/img/blog/2022-01-12-time-on-task/image_3.png" title="image alt text" />
 
 Those blocks of non-working time can be broken down into two sections: overnights and weekends. But how can we dynamically count the number of overnights or weekend days? Enter the weekday macro!
 
@@ -81,7 +81,7 @@ This ends up being helpful twice - the result of the weekdays macro is the same 
 
 We can use this result to measure the number of weekend days between the two dates – subtracting the number of weekdays from the total number of days between the two dates gives you the number of weekend days. Let’s focus on our example ticket that was opened on Friday and closed on Monday to explain:
 
-![image alt text](/img/blog/2022-01-12-time-on-task/image_4.png)
+<Lightbox src="/img/blog/2022-01-12-time-on-task/image_4.png" title="image alt text" />
 
 You might have already picked up the huge caveat here — a consistent schedule is baked into this calculation, and that’s usually not the case. Throw in a public holiday, or a new hire in a different time zone, and suddenly these calculations stop reflecting reality! Some edge cases and how we deal with them:
 
