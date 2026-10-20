@@ -185,7 +185,44 @@ select * from analytics.orders;
 
 </File>
 
+### Redshift
 
+Leave the default quoting values.
+
+Redshift lowercases database, schema, table, and column names, even when they're quoted, when `enable_case_sensitive_identifier` is `false` (the default). Set it to `true` in the cluster parameter group, or as a Serverless workgroup configuration, so quoted names keep their case. Unquoted names are still lowercased. <Constant name="dbt" /> doesn't turn this setting on, and there's no `dbt_project.yml` option for it. A `SET` command applies only to the current session. Refer to Amazon Redshift's [`enable_case_sensitive_identifier`](https://docs.aws.amazon.com/redshift/latest/dg/r_enable_case_sensitive_identifier.html) parameter.
+
+<File name="redshift_casing.sql">
+
+```sql
+/*
+  Run these queries to understand how Redshift handles casing and quoting.
+*/
+
+-- Default: quoted names are still lowercased
+SET enable_case_sensitive_identifier TO false;
+
+CREATE TABLE "MixedCasedTable" ("MixedCasedColumn" int);
+INSERT INTO "MixedCasedTable" VALUES (1);
+
+-- This works. Redshift stored the names in lowercase.
+SELECT mixedcasedcolumn FROM mixedcasedtable;
+
+DROP TABLE mixedcasedtable;
+
+-- Quoted names keep their case only when this setting is on
+SET enable_case_sensitive_identifier TO true;
+
+CREATE TABLE "MixedCasedTable" ("MixedCasedColumn" int);
+INSERT INTO "MixedCasedTable" ("MixedCasedColumn") VALUES (1);
+
+-- This works. You must quote the names and match the case.
+SELECT "MixedCasedColumn" FROM "MixedCasedTable";
+
+-- This fails: relation "mixedcasedtable" does not exist
+SELECT mixedcasedcolumn FROM mixedcasedtable;
+```
+
+</File>
 
 ### Other warehouses
 
