@@ -8,11 +8,12 @@ availability:
   access: login_required
 ---
 
-
 Connecting your GitHub account to <Constant name="dbt" /> provides convenience and another layer of security to <Constant name="dbt" />:
 - Import new GitHub repositories with a couple clicks during <Constant name="dbt" /> project setup.
 - Clone repos using HTTPS rather than SSH.
 - Trigger [Continuous integration](/docs/deploy/continuous-integration)(CI) builds when pull requests are opened in GitHub.
+
+You can connect with the shared <Constant name="dbt" /> GitHub App, or [register your own custom GitHub app](#custom-github-application) if you're on Enterprise or Enterprise+ and use GitHub Enterprise Server or GitHub with EU data residency.
 
 :::note GitHub Enterprise Cloud (`ghe.com`) domains
 If your organization uses GitHub Enterprise Cloud, hosted on a `ghe.com` domain, the shared <Constant name="dbt" /> GitHub App can't reach it. Note that `ghe.com` accounts are cloud-managed (not on-premises), but this limitation still applies.
@@ -36,12 +37,12 @@ When specifying a GitHub repository in the <Constant name="dbt_platform" /> usin
 
 <Constant name="dbt" /> connects to GitHub through a GitHub App. You have two options:
 
+- Your own [custom GitHub application](#custom-github-application), available to Enterprise and Enterprise+ accounts on MT or ST using GitHub Enterprise Server or GitHub with EU data residency.
 - [Shared <Constant name="dbt" /> application (default)](#installing-dbt-in-your-github-account), available to any org connecting to `github.com`. 
-- Your own [custom GitHub application](#custom-github-application), available in private beta to Enterprise and Enterprise+ accounts on MT or ST using GitHub Enterprise Server or GitHub with EU data residency. Reach out to your account manager to join the beta.  <Lifecycle status="private_beta"/>
 
 You can use one GitHub application per <Constant name="dbt" /> account, not one per project.
 
-## Installing dbt in your GitHub account
+## Install the shared dbt app {#installing-dbt-in-your-github-account}
 
 You can connect your <Constant name="dbt" /> account to GitHub by installing the <Constant name="dbt" /> application in your GitHub organization and providing access to the right repos:
 
@@ -70,11 +71,7 @@ You can connect your <Constant name="dbt" /> account to GitHub by installing the
 If you are your GitHub organization owner, you can also configure the <Constant name="dbt" /> GitHub application to have access to only select repositories. This configuration must be done in GitHub, but we provide an easy link in <Constant name="dbt" /> to start this process.
 <Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/connecting-github/configure-github.png" title="Configuring the dbt app"/>
 
-## Custom GitHub application <Lifecycle status="managed,managed_plus,private_beta" /> {#custom-github-application}
-
-:::info Available in private beta
-Configuring a custom GitHub app is available in private beta. To join, reach out to your account manager.
-:::
+## Custom GitHub application <Lifecycle status="managed,managed_plus" /> {#custom-github-application}
 
 The shared <Constant name="dbt" /> GitHub App is hosted per [region](/docs/platform/about-platform/access-regions-ip-addresses), so it can only reach repositories on `github.com`. If your organization runs [GitHub Enterprise Server](https://docs.github.com/en/enterprise-server@3.14/admin/overview/about-github-enterprise-server) or [GitHub with EU data residency](https://github.com/enterprise/data-residency), register your own GitHub application and point <Constant name="dbt" /> at it. 
 
