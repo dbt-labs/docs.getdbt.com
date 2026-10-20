@@ -79,16 +79,11 @@ A terminal-based agent for governed data development in dbt, whether your team u
 <WizardCliInstall />
 <NewToTerminal />
 
-### Wizard Desktop <Lifecycle status="private_beta"/>
+### Wizard Desktop <Lifecycle status="beta"/>
 
 Wizard Desktop is Wizard as a native app. Wizard Desktop runs the same engine as the dbt Wizard CLI, but you get the full view: charts, tables, diffs, and lineage render right in the app, so you can see the work, steer it, and keep several chats moving at once, each on its own branch.
 
-:::info Available in Private beta 
-
-Wizard Desktop is in private beta. [Sign up to get an invite](https://www.getdbt.com/wizard-desktop-waitlist), and dbt Labs emails you the download page to get started!
-:::
-
-To learn more, refer to [Get started with Wizard Desktop](/docs/dbt-ai/wizard-desktop).
+To download the app and learn more, refer to [Get started with Wizard Desktop](/docs/dbt-ai/wizard-desktop).
 
 ### Wizard in dbt platform <Lifecycle status="preview"/>
 
