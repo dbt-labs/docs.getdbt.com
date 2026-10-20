@@ -1,4 +1,9 @@
-<Expandable alt_header="execute_sql tool not working">
+---
+title: "execute_sql tool not working"
+sidebar_label: "execute_sql tool not working"
+description: "Troubleshooting: execute_sql tool not working"
+id: mcp-troubleshoot-execute-sql
+---
 
 **Symptoms:** The `execute_sql` tool returns an authentication error or is unavailable.
 
@@ -14,4 +19,3 @@
 2. If you use token-based auth or local MCP, create a [personal access token (PAT)](/docs/dbt-apis/user-tokens) in **Account settings** → **API tokens** → **Personal tokens**.
 3. For token-based remote MCP, add the PAT to the `Authorization` header as `Token YOUR_PAT`. For local MCP, set the PAT as your `DBT_TOKEN` value.
 4. Also ensure `DBT_DEV_ENV_ID` and `DBT_USER_ID` are set (local MCP) or `x-dbt-dev-environment-id` and `x-dbt-user-id` headers are set (remote MCP). Refer to [Finding your IDs](/docs/dbt-ai/mcp-find-ids) for details.
-</Expandable>

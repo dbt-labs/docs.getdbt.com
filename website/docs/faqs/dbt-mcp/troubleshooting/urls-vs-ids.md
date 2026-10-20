@@ -1,4 +1,9 @@
-<Expandable alt_header="Pasting full URLs instead of IDs">
+---
+title: "Pasting full URLs instead of IDs"
+sidebar_label: "Pasting full URLs instead of IDs"
+description: "Troubleshooting: Pasting full URLs instead of IDs"
+id: mcp-troubleshoot-urls-vs-ids
+---
 
 **Symptoms:** Authentication errors, unexpected behavior, or the server failing to connect to the right environment.
 
@@ -18,5 +23,3 @@ DBT_USER_ID=https://cloud.getdbt.com/settings/profile
 ```
 
 See [Finding your IDs](/docs/dbt-ai/mcp-find-ids) for step-by-step instructions.
-
-</Expandable>
