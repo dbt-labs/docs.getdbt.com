@@ -30,9 +30,7 @@ dbt State requires a dbt account, even when running dbt locally, to authenticate
 
 1. Log in to your dbt account and start your dbt State trial.
 
-
-   <Tabs queryString="cli-version">
-   <TabItem value="latest-versions" label="dbt v1.13 / dbt v2">
+   <VersionBlock firstVersion="1.13">
 
    1. Navigate to your project:
 
@@ -68,8 +66,9 @@ dbt State requires a dbt account, even when running dbt locally, to authenticate
      manage_state: true
    ```
 
-   </TabItem>
-   <TabItem value="core-legacy" label="dbt v1.7–1.12">
+   </VersionBlock>
+
+   <VersionBlock lastVersion="1.12">
 
    dbt State is available as a plugin for dbt v1.7-1.12. If you are running on dbt v1.9 or older, we encourage you to upgrade to a [more recent version with ongoing support](/docs/dbt-versions#latest-releases).
 
@@ -109,8 +108,7 @@ dbt State requires a dbt account, even when running dbt locally, to authenticate
 
    The CLI flags `--manage-state` and `--no-manage-state` are not available in older <Constant name="core" /> versions. Use the environment variable (`DBT_ENGINE_ENABLE_STATE`) or project flag (`enable_state`) to enable or disable dbt State.
 
-   </TabItem>
-   </Tabs>
+   </VersionBlock>
 
 2. Run `dbt run` or `dbt build`.
 
