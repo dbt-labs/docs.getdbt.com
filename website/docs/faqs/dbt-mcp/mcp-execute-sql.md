@@ -5,7 +5,7 @@ sidebar_label: 'How execute_sql works'
 id: mcp-execute-sql
 ---
 
-The `execute_sql` tool in the dbt MCP server lets your AI assistant run SQL in your warehouse. These FAQs go oer how it works and where its limits are.
+The `execute_sql` tool in the dbt Model Context Protocol (MCP) server lets your AI assistant run SQL in your warehouse. These FAQs cover how it works and what its limits are.
 
 <Expandable alt_header="What does execute_sql do?">
 
