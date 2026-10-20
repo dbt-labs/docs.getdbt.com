@@ -21,6 +21,8 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 For <Constant name="fusion_engine" /> updates, refer to the [v2 changelog](https://github.com/dbt-labs/dbt/blob/main/CHANGELOG-dbt.md).
 
 ## October 2026
+- **New:** Admins can now set the [default license](/docs/platform/manage-access/seats-and-users#default-license-for-new-users) for new users who aren't assigned a license through SSO, SCIM, or license mapping. Choose Developer, Read-Only, or Analyst. 
+Admins can check their settings and update the default as needed. This is available for all multi-tenant and single-tenant accounts.
 - **Enhancement:** You can now sort columns, search by connection name, and filter by connection type, credentials, and connection method (private link or OAuth).
 - **Enhancement:** When a dbt State trial ends, you'll get an email that communicates your Consumption, Developer, Starter, Legacy Teams, or Enterprise plan and includes the allowance end date when your plan has one.
 - **Fix:** Charts now show dates such as `2026-01` or `2026-01-15` from oldest to newest. Tables keep your query's row order until you sort a column.
