@@ -17,6 +17,8 @@ import WizardTrialBilling from '/snippets/_wizard-trial-billing.md';
 Wizard Desktop is <Constant name="wizard" /> as a native app. View rich data visualizations, data diffs, lineage, and more to get to your results faster than ever before.
 </IntroText>
 
+<DownloadCard />
+
 Desktop is powered by the same technology as the [<Constant name="wizard" /> CLI](/docs/dbt-ai/wizard-quickstart), with a visual interface to help you follow the work, guide it, and manage several threads at once. This means:
 
 - **Parallel chats**: each project chat gets its own <Constant name="git" /> <Term id="git-worktree" /> automatically, so several pieces of work run at once without conflicting.
@@ -46,11 +48,7 @@ To use Wizard Desktop, you'll need:
 
 ## Install and open Wizard Desktop
 
-Download the installer for your operating system, then open it.
-
-<DownloadCard />
-
-1. Run the installer you downloaded.
+1. Use the download card at the top of this page to get the installer for your operating system, then run it.
 2. Open Wizard Desktop and select **Get started** on the welcome screen.
 3. Follow the onboarding prompts. When prompted, create a free dbt account or sign in to an existing account.
 

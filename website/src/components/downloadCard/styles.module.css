@@ -1,74 +1,91 @@
+/* Wizard brand: dark panel, lavender/white/orange Wizard, Menlo type */
 .card {
-  position: relative;
-  overflow: hidden;
-  margin: 2rem 0;
-  border: 1px solid var(--border-neutral-tertiary);
-  border-radius: 16px;
-  background-color: var(--bg-surface-default);
-  text-align: center;
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+  margin: 1.5rem 0;
+  padding: 1.5rem 1.75rem;
+  border-radius: 12px;
+  background: #16171b;
+  color: #fff;
 }
 
-/* Soft gradient wash across the top of the card */
-.glow {
-  position: absolute;
-  inset: 0 0 auto 0;
-  height: 160px;
-  background: radial-gradient(
-    ellipse at 50% -20%,
-    rgba(156, 64, 255, 0.28),
-    rgba(255, 170, 64, 0.12) 55%,
-    transparent 75%
-  );
-  pointer-events: none;
+.wizard {
+  flex-shrink: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  font-family: Menlo, Monaco, 'Courier New', monospace;
+  font-size: 14px;
+  line-height: 14px;
+  white-space: pre;
 }
 
-.body {
-  position: relative;
-  padding: 2.5rem 2rem 2rem;
+.hat {
+  color: #b0a3ff;
 }
 
-.badge {
-  display: inline-block;
-  margin-bottom: 0.75rem;
-  padding: 0.1rem 0.75rem;
-  border-radius: 1.5rem;
-  background: #bab2ff;
-  color: #030711;
-  font-size: 0.8rem;
-  font-weight: 600;
+.face {
+  color: #fff;
+}
+
+.legs {
+  color: #fe6702;
+}
+
+.content {
+  min-width: 0;
+}
+
+.heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem;
 }
 
 .title {
-  margin: 0 0 0.25rem;
-  font-size: 1.6rem;
+  margin: 0;
+  color: #fff;
+  font-size: 1.25rem;
+}
+
+.badge {
+  padding: 0.05rem 0.6rem;
+  border-radius: 1.5rem;
+  background: #b0a3ff;
+  color: #16171b;
+  font-size: 0.75rem;
+  font-weight: 600;
 }
 
 .subtitle {
-  margin: 0 0 1.5rem;
-  color: var(--text-neutral-secondary);
+  margin: 0.25rem 0 1rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.95rem;
 }
 
-.primaryButton {
+.button {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  gap: 0.6rem;
-  padding: 0.85rem 1.75rem;
-  border-radius: 10px;
-  background: var(--ifm-color-primary);
-  color: #fff;
-  font-size: 1.1rem;
+  gap: 0.5rem;
+  height: 36px;
+  padding: 0 1rem;
+  border-radius: 8px;
+  background: #fdfdfd;
+  color: #16171b;
+  font-size: 0.95rem;
   font-weight: 600;
   text-decoration: none;
-  box-shadow: 0 6px 20px rgba(255, 105, 56, 0.25);
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  transition: background-color 0.15s ease, box-shadow 0.15s ease;
 }
 
-.primaryButton:hover {
-  color: #fff;
+.button:hover {
+  background: #fff;
+  color: #16171b;
   text-decoration: none;
-  transform: translateY(-2px);
-  box-shadow: 0 10px 26px rgba(255, 105, 56, 0.35);
+  box-shadow: 0 0 0 2px #fe6702;
 }
 
 .icon {
@@ -76,79 +93,41 @@
 }
 
 .ext {
-  padding: 0.05rem 0.5rem;
-  border-radius: 6px;
-  background: rgba(255, 255, 255, 0.22);
-  font-size: 0.8rem;
+  padding: 0 0.4rem;
+  border-radius: 4px;
+  background: #e8e5ff;
+  color: #16171b;
+  font-family: Menlo, Monaco, 'Courier New', monospace;
+  font-size: 0.75rem;
   font-weight: 500;
 }
 
-.detected {
-  margin: 0.6rem 0 0;
-  color: var(--text-neutral-secondary);
-  font-size: 0.9rem;
-}
-
-.divider {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  margin: 1.75rem 0 1rem;
-  color: var(--text-neutral-secondary);
+.others {
+  margin: 0.85rem 0 0;
+  color: rgba(255, 255, 255, 0.6);
   font-size: 0.85rem;
 }
 
-.divider::before,
-.divider::after {
-  content: '';
-  flex: 1;
-  height: 1px;
-  background: var(--border-neutral-tertiary);
-}
-
-.list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-  gap: 0.6rem;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.75rem;
-  padding: 0.6rem 0.9rem;
-  border: 1px solid var(--border-neutral-tertiary);
-  border-radius: 10px;
-  color: inherit;
+.others a {
+  color: #b0a3ff;
   text-decoration: none;
-  transition: border-color 0.15s ease, background-color 0.15s ease;
+  white-space: nowrap;
 }
 
-.row:hover {
-  border-color: var(--ifm-color-primary);
-  color: inherit;
-  text-decoration: none;
-  background-color: rgba(255, 105, 56, 0.06);
+.others a:hover {
+  color: #fff;
+  text-decoration: underline;
 }
 
-.rowLabel {
-  font-weight: 500;
-}
-
-.rowExt {
-  color: var(--text-neutral-secondary);
-  font-size: 0.85rem;
+@media (max-width: 600px) {
+  .card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .primaryButton {
+  .button {
     transition: none;
-  }
-  .primaryButton:hover {
-    transform: none;
   }
 }

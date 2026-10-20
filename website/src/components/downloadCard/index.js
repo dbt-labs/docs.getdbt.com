@@ -67,12 +67,26 @@ function detectOs() {
   return 'mac';
 }
 
+// The Wizard, colored by part to match the brand (hat, face, legs)
+const WIZARD = [
+  { text: '   ▄', part: 'hat' },
+  { text: '    █▄', part: 'hat' },
+  { text: '   ████', part: 'hat' },
+  { text: '▄▄██████▄▄', part: 'hat' },
+  { text: '  ▄▄ ▄ ▄▄', part: 'face' },
+  { text: '  ▀██▀██', part: 'face' },
+  { text: '   ▀▀▀▀▀', part: 'face' },
+  { text: '   ███ █', part: 'legs' },
+  { text: ' ████   █', part: 'legs' },
+  { text: '███ █   ███', part: 'legs' },
+];
+
 function DownloadIcon() {
   return (
     <svg
       className={styles.icon}
-      width="18"
-      height="18"
+      width="16"
+      height="16"
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
@@ -90,7 +104,7 @@ function DownloadIcon() {
 
 export default function DownloadCard({
   title = 'Download Wizard Desktop',
-  subtitle = 'Free to download. Available for macOS, Windows, and Linux.',
+  subtitle = 'Free to download for macOS, Windows, and Linux.',
   downloads = DEFAULT_DOWNLOADS,
 }) {
   // Render macOS on the server so the first paint matches, then swap on mount
@@ -104,38 +118,39 @@ export default function DownloadCard({
 
   return (
     <div className={styles.card}>
-      <div className={styles.glow} aria-hidden="true" />
-      <div className={styles.body}>
-        <span className={styles.badge}>Public beta</span>
-        <h3 className={styles.title}>{title}</h3>
+      <pre className={styles.wizard} aria-hidden="true">
+        {WIZARD.map((line, i) => (
+          <span key={i} className={styles[line.part]}>
+            {line.text}
+            {'\n'}
+          </span>
+        ))}
+      </pre>
+
+      <div className={styles.content}>
+        <div className={styles.heading}>
+          <h3 className={styles.title}>{title}</h3>
+          <span className={styles.badge}>Public beta</span>
+        </div>
         <p className={styles.subtitle}>{subtitle}</p>
 
-        <a
-          className={styles.primaryButton}
-          href={primary.url}
-          download
-          rel="noopener noreferrer"
-        >
+        <a className={styles.button} href={primary.url} download rel="noopener noreferrer">
           <DownloadIcon />
           <span>Download for {OS_NAMES[primary.os]}</span>
           <span className={styles.ext}>{primary.ext}</span>
         </a>
-        <p className={styles.detected}>{primary.label}</p>
 
-        <div className={styles.divider}>
-          <span>Other downloads</span>
-        </div>
-
-        <ul className={styles.list}>
-          {others.map((d) => (
-            <li key={d.id}>
-              <a className={styles.row} href={d.url} download rel="noopener noreferrer">
-                <span className={styles.rowLabel}>{d.label}</span>
-                <span className={styles.rowExt}>{d.ext}</span>
+        <p className={styles.others}>
+          {primary.label}. Also available:{' '}
+          {others.map((d, i) => (
+            <React.Fragment key={d.id}>
+              {i > 0 && ' · '}
+              <a href={d.url} download rel="noopener noreferrer">
+                {d.label}
               </a>
-            </li>
+            </React.Fragment>
           ))}
-        </ul>
+        </p>
       </div>
     </div>
   );
