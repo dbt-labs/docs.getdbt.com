@@ -6,7 +6,7 @@
   display: flex;
   align-items: center;
   height: auto;
-  background-image: /* webpackIgnore: true */ url('/img/announcement-bar-bg.jpg');
+  background-image: url('https://d2z3qofvp275uy.cloudfront.net/img/announcement-bar-bg.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: right;
