@@ -17,9 +17,11 @@ import WizardTrialBilling from '/snippets/_wizard-trial-billing.md';
 Wizard Desktop is <Constant name="wizard" /> as a native app. View rich data visualizations, data diffs, lineage, and more to get to your results faster than ever before.
 </IntroText>
 
+This page walks you through installing the app, connecting it to the services it needs, and starting your first session. For everything the app can do, refer to [Use Wizard Desktop](/docs/dbt-ai/wizard-desktop-use). Be warned, the wizard has been known to <WizardPopcorn>cast spells</WizardPopcorn>.
+
 <DownloadCard />
 
-Desktop is powered by the same technology as the [<Constant name="wizard" /> CLI](/docs/dbt-ai/wizard-quickstart), with a visual interface to help you follow the work, guide it, and manage several threads at once. This means:
+Desktop is powered by the same technology as the [<Constant name="wizard" /> CLI](/docs/dbt-ai/wizard-quickstart), with a visual interface to help you follow the work, guide it, and manage several threads at once:
 
 - **Parallel chats:** each chat gets its own <Constant name="git" /> <Term id="git-worktree" />, so several pieces of work run at once without conflicts.
 - **Visible validation:** see structured results, including a `dbt-compare` view of what your changes did to the data.
@@ -28,7 +30,7 @@ Desktop is powered by the same technology as the [<Constant name="wizard" /> CLI
 - **Inline impact:** see which models <Constant name="wizard" />'s changes touch, with diffs you open inline.
 - **Lineage, file, and metrics browsing:** browse your project right alongside the chat.
 
-This page walks you through installing the app, connecting it to the services it needs, and starting your first session. For everything the app can do, refer to [Use Wizard Desktop](/docs/dbt-ai/wizard-desktop-use). Be warned, the wizard has been known to <WizardPopcorn>cast spells</WizardPopcorn>.
+
 
 <DocCarousel slidesPerView={1}>
 
