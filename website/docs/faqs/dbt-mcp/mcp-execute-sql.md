@@ -68,7 +68,7 @@ To query a development table, use its full name instead, for example `my_dev_sch
 
 <Expandable alt_header="Are there limits on query size or run time?">
 
-Yes, long-running queries time out, and large result sets are capped. Add filters and `limit` clauses to keep queries small and fast.
+Yes. Long-running queries time out, and dbt caps large result sets. Add filters and `limit` clauses to keep queries small and fast.
 
 </Expandable>
 
