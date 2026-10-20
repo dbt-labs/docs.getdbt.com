@@ -1,7 +1,7 @@
 ---
 title: "Billing FAQs"
 sidebar_label: "Billing FAQs"
-description: "Answers to common questions about dbt plans, billing, usage, and the Semantic Layer trial."
+description: "Answers to common questions about dbt plans, billing, and usage."
 id: billing-faqs
 pagination_next: null
 pagination_prev: null
