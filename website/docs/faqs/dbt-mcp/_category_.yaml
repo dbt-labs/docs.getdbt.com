@@ -1,0 +1,9 @@
+label: 'dbt MCP'
+collapsible: true # make the category collapsible
+collapsed: true # keep the category collapsed by default
+className: red
+link:
+  type: generated-index
+  title: dbt MCP FAQs
+customProps:
+  description: Frequently asked questions about the dbt MCP server
