@@ -45,7 +45,7 @@ To enable dbt State:
 
 3. Under the **State** tab, click **Start free trial**.
 
-   Once started, you cannot pause the trial. After 30 days, you must add a credit card or enterprise contract to continue. For information about how the trial period and billing work, refer to [dbt State trial and billing](/docs/deploy/dbt-state-trial).
+   Once started, you cannot pause the trial. After the trial ends, your account receives a free monthly DATT allowance, which varies by plan. For details, refer to [dbt State trial and billing](/docs/deploy/dbt-state-trial).
 
    :::info Extended trial for state-aware orchestration users
    If you were using state-aware orchestration prior to June 1, 2026, your dbt State trial will be extended beyond 30 days. If the extension isn’t applied to your account, contact your account team.
@@ -86,8 +86,8 @@ For next steps, see:
    - If you already have a dbt platform account, log in with your existing credentials.
 
 2. Agree to the dbt State Terms of Service and click **Start 30-day trial**.
-
-   Once started, you cannot pause the trial. After 30 days, you must add a credit card or enterprise contract to continue. For information about how the trial period and billing work, refer to [dbt State trial and billing](/docs/deploy/dbt-state-trial).
+   
+   Once started, you cannot pause the trial. After the trial ends, your account receives a free monthly DATT allowance, which varies by plan. For details, refer to [dbt State trial and billing](/docs/deploy/dbt-state-trial).
 
 3. Go to **Orchestration** to [create your environments](/docs/deploy/deploy-environments) and [jobs](/docs/deploy/jobs).
 
@@ -121,7 +121,7 @@ For next steps, see:
 
 3. Agree to the dbt State Terms of Service and click **Start 30-day trial**.
    
-   Once started, you cannot pause the trial. After 30 days, you must add a credit card or enterprise contract to continue. For information about how the trial period and billing work, refer to [dbt State trial and billing](/docs/deploy/dbt-state-trial).
+   Once started, you cannot pause the trial. After the trial ends, your account receives a free monthly DATT allowance, which varies by plan. For details, refer to [dbt State trial and billing](/docs/deploy/dbt-state-trial).
 
 dbt State is now enabled and will run automatically on every `dbt run` or `dbt build`.
 
@@ -175,7 +175,7 @@ To install the plugin:
 
 5. Agree to the dbt State Terms of Service and click **Start 30-day trial**. 
 
-   Once started, you cannot pause the trial. After 30 days, you must add a credit card or enterprise contract to continue. For information about how the trial period and billing work, refer to [dbt State trial and billing](/docs/deploy/dbt-state-trial).
+   Once started, you cannot pause the trial. After the trial ends, your account receives a free monthly DATT allowance, which varies by plan. For details, refer to [dbt State trial and billing](/docs/deploy/dbt-state-trial).
 
 dbt State is now enabled and will run automatically on every `dbt run` or `dbt build`.
 
