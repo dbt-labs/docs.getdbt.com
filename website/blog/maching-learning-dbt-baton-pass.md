@@ -46,7 +46,7 @@ After some initial planning, I knew we had this raw data living somewhere in our
 
 The ML engineer stepped in from here. She was used to doing her statistics and preprocessing in python [pandas](https://pandas.pydata.org/) and [scikit-learn](https://scikit-learn.org/stable/index.html). Before she opened up her Jupyter notebook, we had a heart-to-heart conversation and realized the same work could be done through dbt. Preprocessing could be done through this [open source dbt package](https://github.com/omnata-labs/dbt-ml-preprocessing/tree/1.1.0/#dbt-ml-preprocessing) and there were plenty of others like it in the [package registry](https://hub.getdbt.com/).
 
-![image of table with macro names and connector compatibility](/img/blog/2022-02-18-machine-learning-dbt-baton-pass/macro-names.png)
+<Lightbox src="/img/blog/2022-02-18-machine-learning-dbt-baton-pass/macro-names.png" title="image of table with macro names and connector compatibility" />
 
 The ML engineer got the preprocessing steps (think: one-hot encoding, feature scaling, imputation) finalized. She used SQL to read the dbt models (tables) into a Jupyter notebook to perform model training. After iterating on the machine learning models and tracking model fit (think: AUC/Precision/Recall (for classification)), she ran the model over dbt-created tables and output the predicted results as a table in the database. To keep documentation clean, she [configured a source](/docs/build/sources) within the dbt project to reflect this predicted results table. It wasn’t intuitive, but it was better than leaving it out of dbt docs.
 
@@ -56,7 +56,7 @@ Finally, she created a dashboard on top of this table to publicize model accurac
 
 Let’s parse out the job-to-be-done we’re seeing in our story.
 
-![Image flowchart of the story's Jobs to be Done workflow](/img/blog/2022-02-18-machine-learning-dbt-baton-pass/JTBD-workflow.png)
+<Lightbox src="/img/blog/2022-02-18-machine-learning-dbt-baton-pass/JTBD-workflow.png" title="Image flowchart of the story's Jobs to be Done workflow" />
 
 | Jobs to be Done | Intended Results | Role |
 | --- | --- | --- |
@@ -100,9 +100,9 @@ My ML engineer would know the quality of input data created by dbt before starti
 Also, I would create a data app (in Hex) where users plug in different input scenarios that feed into the predictive model. Even better, I could track versions of my ML models deployed over time in Modelbit + Hex and deploy ML external functions as [dbt macros](/docs/build/jinja-macros)
  (by the way: how is this not more normal?!).
 
-![Image showing the notebook and dbt synchronization](/img/blog/2022-02-18-machine-learning-dbt-baton-pass/notebook-dbt-sync.png)
+<Lightbox src="/img/blog/2022-02-18-machine-learning-dbt-baton-pass/notebook-dbt-sync.png" title="Image showing the notebook and dbt synchronization" />
 
-![Screenshot of code snippet for modelbit api integration](/img/blog/2022-02-18-machine-learning-dbt-baton-pass/modelbit-api.png)
+<Lightbox src="/img/blog/2022-02-18-machine-learning-dbt-baton-pass/modelbit-api.png" title="Screenshot of code snippet for modelbit api integration" />
 
 #### What are the tradeoffs?
 
@@ -135,7 +135,7 @@ My ML engineer and I would get to unite on SQL even more. Wherever the pipeline 
 
 Beyond fixing problems once they arise, this workflow would avoid much of the complexity involved in building ML Ops pipelines: massive amounts of [extra infrastructure](https://dl.acm.org/doi/10.5555/2969442.2969519) (think: where does my python code run?). As a ML engineer, I want to live in a world where I can manage exploration, training, versioning, and inference from one control plane. **In-warehouse ML has the potential to make that real.**
 
-![Image of lineage graph for unified machine learning and analytics engineering DAG expressed in SQL](/img/blog/2022-02-18-machine-learning-dbt-baton-pass/lineage-graph.png)
+<Lightbox src="/img/blog/2022-02-18-machine-learning-dbt-baton-pass/lineage-graph.png" title="Image of lineage graph for unified machine learning and analytics engineering DAG expressed in SQL" />
 
 #### What are the tradeoffs?
 
