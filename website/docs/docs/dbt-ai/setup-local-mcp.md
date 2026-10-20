@@ -439,4 +439,4 @@ To see more detail about what’s happening inside the MCP server and help debug
 
 <FAQ path="dbt-mcp/troubleshooting/oauth" />
 
-For all troubleshooting topics, see [MCP troubleshooting](/docs/dbt-ai/mcp-troubleshooting).
+For all troubleshooting topics, see [dbt MCP FAQs and troubleshooting](/docs/dbt-ai/mcp-troubleshooting).

@@ -42,9 +42,25 @@ The following tool list is available for your MCP server and is auto-fetched fro
 ### Find jobs across project environments
 
 Use the `list_jobs` [tool](#admin-api) with a `project_id` to list jobs across every environment in a dbt project. This is useful when you need to inspect jobs outside the configured production environment. Without `project_id`, `list_jobs` continues to use the configured production environment, or lists jobs across the account when no production environment is configured.
- 
-## execute_sql FAQs
 
-Here are common questions about what the `execute_sql` tool can and can't do. Refer to [dbt MCP FAQs](/category/dbt-mcp) for additional questions.
+## FAQs
 
-<FAQ path="dbt-mcp/mcp-execute-sql" />
+<Expandable alt_header="Is execute_sql read-only?">
+
+No. `execute_sql` doesn't block write statements. What a query can do depends on the permissions of the warehouse credentials it runs with. Use least-privilege warehouse roles for each user's development credentials.
+
+</Expandable>
+
+<Expandable alt_header="Whose warehouse credentials does execute_sql use?">
+
+Your personal development credentials for the project's development environment, not your production deployment credentials.
+
+</Expandable>
+
+<Expandable alt_header="Why doesn't ref() point to my development tables?">
+
+`ref('model')` resolves to the production relation, even though the query runs with your development credentials. To query a development table, use its full name instead.
+
+</Expandable>
+
+For more answers about `execute_sql` and fixes for common setup issues, see [dbt MCP FAQs and troubleshooting](/docs/dbt-ai/mcp-troubleshooting).

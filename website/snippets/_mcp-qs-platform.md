@@ -396,7 +396,7 @@ If you only need to run dbt commands locally (with or without a <Constant name="
 
 <FAQ path="dbt-mcp/troubleshooting/multicell" />
 
-For all troubleshooting topics, see [MCP troubleshooting](/docs/dbt-ai/mcp-troubleshooting).
+For all troubleshooting topics, see [dbt MCP FAQs and troubleshooting](/docs/dbt-ai/mcp-troubleshooting).
 
 ## Next steps
 

@@ -176,7 +176,7 @@ Platform features like <Constant name="semantic_layer" />, Discovery API, and me
 
 <FAQ path="dbt-mcp/troubleshooting/server-not-starting" />
 
-For all troubleshooting topics, see [MCP troubleshooting](/docs/dbt-ai/mcp-troubleshooting).
+For all troubleshooting topics, see [dbt MCP FAQs and troubleshooting](/docs/dbt-ai/mcp-troubleshooting).
 
 ## Next steps
 
