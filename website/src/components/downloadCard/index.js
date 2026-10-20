@@ -1,71 +1,59 @@
 import React, { useEffect, useState } from 'react';
+import { faApple, faWindows, faLinux } from '@fortawesome/free-brands-svg-icons';
 import styles from './styles.module.css';
 
 /**
- * DownloadCard - A download card with a one-click primary button for the
- * reader's operating system, plus every other installer underneath.
+ * DownloadCard - Three platform cards (macOS, Windows, Linux) that each link
+ * straight to an installer, plus a note for the other architectures. The card
+ * matching the reader's operating system is highlighted.
  *
  * @param {string} title - Card heading
  * @param {string} subtitle - Line under the heading
- * @param {Array} downloads - Installers: { id, os, label, ext, url, note? }
- *   `os` is one of 'mac', 'windows', or 'linux' and drives auto-detection.
- *   The first entry for each `os` is the primary button for that OS.
+ * @param {Array} platforms - Cards: { os, icon, title, description, ext, url }
+ * @param {Array} alternates - Other installers: { label, ext, url }
  */
 
 const CDN = 'https://public.cdn.getdbt.com/dbt-wizard/latest';
 
-const DEFAULT_DOWNLOADS = [
+const DEFAULT_PLATFORMS = [
   {
-    id: 'mac-arm',
     os: 'mac',
-    label: 'macOS (Apple silicon)',
+    icon: faApple,
+    title: 'Download for macOS',
+    description: 'For Apple silicon Macs',
     ext: '.dmg',
     url: `${CDN}/dbt-wizard-app-aarch64-apple-darwin.dmg`,
   },
   {
-    id: 'mac-intel',
-    os: 'mac',
-    label: 'macOS (Intel)',
-    ext: '.dmg',
-    url: `${CDN}/dbt-wizard-app-x86_64-apple-darwin.dmg`,
-  },
-  {
-    id: 'windows',
     os: 'windows',
-    label: 'Windows (64-bit)',
+    icon: faWindows,
+    title: 'Download for Windows',
+    description: 'For x64 processors',
     ext: '.exe',
     url: `${CDN}/dbt-wizard-app-x86_64-pc-windows-msvc.exe`,
   },
   {
-    id: 'linux-x64',
     os: 'linux',
-    label: 'Linux (x86_64)',
+    icon: faLinux,
+    title: 'Download for Linux',
+    description: 'For x86_64, Ubuntu and Debian',
     ext: '.deb',
     url: `${CDN}/dbt-wizard-app-x86_64-unknown-linux-gnu.deb`,
   },
+];
+
+const DEFAULT_ALTERNATES = [
   {
-    id: 'linux-arm',
-    os: 'linux',
-    label: 'Linux (ARM64)',
+    label: 'Intel Mac',
+    ext: '.dmg',
+    url: `${CDN}/dbt-wizard-app-x86_64-apple-darwin.dmg`,
+  },
+  {
+    label: 'Linux ARM64',
     ext: '.deb',
     url: `${CDN}/dbt-wizard-app-aarch64-unknown-linux-gnu.deb`,
   },
 ];
-
-const OS_NAMES = { mac: 'macOS', windows: 'Windows', linux: 'Linux' };
-
-function detectOs() {
-  if (typeof navigator === 'undefined') return 'mac';
-  const platform = (
-    navigator.userAgentData?.platform ||
-    navigator.platform ||
-    navigator.userAgent ||
-    ''
-  ).toLowerCase();
-  if (platform.includes('win')) return 'windows';
-  if (platform.includes('linux') || platform.includes('x11')) return 'linux';
-  return 'mac';
-}
 
 // The Wizard, colored by part to match the brand (hat, face, legs)
 const WIZARD = [
@@ -81,23 +69,29 @@ const WIZARD = [
   { text: '███ █   ███', part: 'legs' },
 ];
 
-function DownloadIcon() {
+function detectOs() {
+  if (typeof navigator === 'undefined') return 'mac';
+  const platform = (
+    navigator.userAgentData?.platform ||
+    navigator.platform ||
+    navigator.userAgent ||
+    ''
+  ).toLowerCase();
+  if (platform.includes('win')) return 'windows';
+  if (platform.includes('linux') || platform.includes('x11')) return 'linux';
+  return 'mac';
+}
+
+function BrandIcon({ icon }) {
+  const [width, height, , , path] = icon.icon;
   return (
     <svg
       className={styles.icon}
-      width="16"
-      height="16"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
+      viewBox={`0 0 ${width} ${height}`}
+      fill="currentColor"
       aria-hidden="true"
     >
-      <path d="M12 3v12" />
-      <path d="m7 10 5 5 5-5" />
-      <path d="M5 21h14" />
+      <path d={path} />
     </svg>
   );
 }
@@ -105,15 +99,14 @@ function DownloadIcon() {
 export default function DownloadCard({
   title = 'Download Wizard Desktop',
   subtitle = 'Free to download for macOS, Windows, and Linux.',
-  downloads = DEFAULT_DOWNLOADS,
+  platforms = DEFAULT_PLATFORMS,
+  alternates = DEFAULT_ALTERNATES,
 }) {
   // Render macOS on the server so the first paint matches, then swap on mount
   const [os, setOs] = useState('mac');
   useEffect(() => {
     setOs(detectOs());
   }, []);
-
-  const detected = downloads.find((d) => d.os === os) || downloads[0];
 
   return (
     <div className={styles.card}>
@@ -133,21 +126,37 @@ export default function DownloadCard({
         </div>
         <p className={styles.subtitle}>{subtitle}</p>
 
-        <div className={styles.buttons}>
-          {downloads.map((d) => (
+        <div className={styles.tiles}>
+          {platforms.map((p) => (
             <a
-              key={d.id}
-              className={`${styles.button} ${d.id === detected.id ? styles.detected : ''}`}
-              href={d.url}
+              key={p.os}
+              className={`${styles.tile} ${p.os === os ? styles.detected : ''}`}
+              href={p.url}
               download
               rel="noopener noreferrer"
             >
-              <DownloadIcon />
-              <span>{d.label}</span>
-              <span className={styles.ext}>{d.ext}</span>
+              <BrandIcon icon={p.icon} />
+              <span className={styles.tileText}>
+                <span className={styles.tileTitle}>{p.title}</span>
+                <span className={styles.tileDescription}>
+                  {p.description} · <span className={styles.ext}>{p.ext}</span>
+                </span>
+              </span>
             </a>
           ))}
         </div>
+
+        <p className={styles.others}>
+          Need a different build?{' '}
+          {alternates.map((a, i) => (
+            <React.Fragment key={a.label}>
+              {i > 0 && ' · '}
+              <a href={a.url} download rel="noopener noreferrer">
+                {a.label} ({a.ext})
+              </a>
+            </React.Fragment>
+          ))}
+        </p>
       </div>
     </div>
   );
