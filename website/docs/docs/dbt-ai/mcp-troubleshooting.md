@@ -56,7 +56,7 @@ To keep things safe:
 
 <Expandable alt_header="Who can use execute_sql?">
 
-Anyone with a developer seat or a read-only seat, as long as they connect with OAuth or a [personal access token (PAT)](/docs/dbt-apis/user-tokens). Service tokens don't work, because development credentials belong to a person.
+Anyone with a developer seat or a read-only seat, as long as they connect with OAuth or a [personal access token (PAT)](/docs/dbt-apis/user-tokens). Service tokens don't work because development credentials belong to a person.
 
 Read-only seats can run plain SQL. SQL that contains Jinja, like `ref()` or `source()`, needs a developer seat.
 
