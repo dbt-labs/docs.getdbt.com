@@ -50,7 +50,7 @@ html[data-theme='dark'] .card {
   gap: 0.6rem;
 }
 
-.tile {
+.card .tile {
   display: flex;
   align-items: center;
   gap: 0.75rem;
@@ -63,7 +63,7 @@ html[data-theme='dark'] .card {
   transition: border-color 0.15s ease, background-color 0.15s ease, transform 0.15s ease;
 }
 
-.tile:hover {
+.card .tile:hover {
   color: var(--dl-text);
   text-decoration: none;
   border-color: var(--color-transform-orange-600, #fe6703);
@@ -133,15 +133,15 @@ html[data-theme='dark'] .card {
   font-size: 0.8rem;
 }
 
-.others a {
+.card .others a {
   color: var(--dl-link);
   text-decoration: none;
   white-space: nowrap;
 }
 
-.others a:hover {
+.card .others a:hover {
   color: var(--dl-link-hover);
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 @media (max-width: 600px) {
