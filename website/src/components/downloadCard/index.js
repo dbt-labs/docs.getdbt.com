@@ -113,8 +113,7 @@ export default function DownloadCard({
     setOs(detectOs());
   }, []);
 
-  const primary = downloads.find((d) => d.os === os) || downloads[0];
-  const others = downloads.filter((d) => d.id !== primary.id);
+  const detected = downloads.find((d) => d.os === os) || downloads[0];
 
   return (
     <div className={styles.card}>
@@ -134,23 +133,21 @@ export default function DownloadCard({
         </div>
         <p className={styles.subtitle}>{subtitle}</p>
 
-        <a className={styles.button} href={primary.url} download rel="noopener noreferrer">
-          <DownloadIcon />
-          <span>Download for {OS_NAMES[primary.os]}</span>
-          <span className={styles.ext}>{primary.ext}</span>
-        </a>
-
-        <p className={styles.others}>
-          {primary.label}. Also available:{' '}
-          {others.map((d, i) => (
-            <React.Fragment key={d.id}>
-              {i > 0 && ' · '}
-              <a href={d.url} download rel="noopener noreferrer">
-                {d.label}
-              </a>
-            </React.Fragment>
+        <div className={styles.buttons}>
+          {downloads.map((d) => (
+            <a
+              key={d.id}
+              className={`${styles.button} ${d.id === detected.id ? styles.detected : ''}`}
+              href={d.url}
+              download
+              rel="noopener noreferrer"
+            >
+              <DownloadIcon />
+              <span>{d.label}</span>
+              <span className={styles.ext}>{d.ext}</span>
+            </a>
           ))}
-        </p>
+        </div>
       </div>
     </div>
   );

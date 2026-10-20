@@ -61,30 +61,52 @@
 }
 
 .subtitle {
-  margin: 0.25rem 0 1rem;
+  margin: 0.25rem 0 0.9rem;
   color: rgba(255, 255, 255, 0.7);
   font-size: 0.95rem;
+}
+
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
 }
 
 .button {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  height: 36px;
-  padding: 0 1rem;
+  gap: 0.4rem;
+  height: 32px;
+  padding: 0 0.7rem;
+  border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 8px;
-  background: #fdfdfd;
-  color: #16171b;
-  font-size: 0.95rem;
-  font-weight: 600;
+  background: transparent;
+  color: #fdfdfd;
+  font-size: 0.85rem;
+  font-weight: 500;
   text-decoration: none;
   transition: background-color 0.15s ease, box-shadow 0.15s ease;
 }
 
 .button:hover {
-  background: #fff;
-  color: #16171b;
+  color: #fdfdfd;
   text-decoration: none;
+  border-color: #fe6702;
+  background: rgba(254, 103, 2, 0.15);
+}
+
+/* The installer that matches the reader's OS */
+.detected {
+  border-color: #fdfdfd;
+  background: #fdfdfd;
+  color: #16171b;
+  font-weight: 600;
+}
+
+.detected:hover {
+  color: #16171b;
+  background: #fff;
+  border-color: #fe6702;
   box-shadow: 0 0 0 2px #fe6702;
 }
 
@@ -95,28 +117,10 @@
 .ext {
   padding: 0 0.4rem;
   border-radius: 4px;
-  background: #e8e5ff;
-  color: #16171b;
+  background: rgba(176, 163, 255, 0.25);
   font-family: Menlo, Monaco, 'Courier New', monospace;
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   font-weight: 500;
-}
-
-.others {
-  margin: 0.85rem 0 0;
-  color: rgba(255, 255, 255, 0.6);
-  font-size: 0.85rem;
-}
-
-.others a {
-  color: #b0a3ff;
-  text-decoration: none;
-  white-space: nowrap;
-}
-
-.others a:hover {
-  color: #fff;
-  text-decoration: underline;
 }
 
 @media (max-width: 600px) {
