@@ -1,7 +1,7 @@
 ---
 title: "Get started with Wizard Desktop"
 id: "wizard-desktop"
-description: "Sign up to get the download link for Wizard Desktop, download it, and start your first session with rich data visualizations, data diffs, and lineage."
+description: "Download Wizard Desktop and start your first session with rich data visualizations, data diffs, and lineage."
 sidebar_label: "Get started with Desktop"
 image: /img/wizard/desktop/wizard-desktop-ui.png
 tags: [AI, Agents, dbt Wizard]
@@ -10,26 +10,27 @@ availability: local_all
 
 import WizardFeedbackCallout from '/snippets/_wizard-feedback-callout.md';
 import WizardTrialBilling from '/snippets/_wizard-trial-billing.md';
-import WizardDesktopPrivatePreview from '/snippets/_wizard-desktop-private-preview.md';
 
-# Get started with Wizard Desktop <Lifecycle status="private_beta"/>
+# Get started with Wizard Desktop <Lifecycle status="beta"/>
 
 <IntroText>
 Wizard Desktop is <Constant name="wizard" /> as a native app. View rich data visualizations, data diffs, lineage, and more to get to your results faster than ever before.
 </IntroText>
 
-Desktop is powered by the same technology as the [<Constant name="wizard" /> CLI](/docs/dbt-ai/wizard-quickstart), with a visual interface to help you follow the work, guide it, and manage several threads at once. This means:
-
-- **Parallel chats**: each project chat gets its own <Constant name="git" /> <Term id="git-worktree" /> automatically, so several pieces of work run at once without conflicting.
-- **Validation you can see:** run validation and get structured results back, including a `dbt-compare` view of what your changes did to the data.
-- **Contextual commenting:** hover almost anything to leave a comment on that exact spot, then send several together for more detailed feedback.
-- **Charts and visualizations:** ask a question about your data and see the answer as inline charts and tables.
-- **Inline impact:** see which models <Constant name="wizard" />'s changes touch, with diffs you open inline.
-- **Lineage, file, and metrics browsing:** browse the project you're in right alongside the chat.
-
-<WizardDesktopPrivatePreview />
-
 This page walks you through installing the app, connecting it to the services it needs, and starting your first session. For everything the app can do, refer to [Use Wizard Desktop](/docs/dbt-ai/wizard-desktop-use). Be warned, the wizard has been known to <WizardPopcorn>cast spells</WizardPopcorn>.
+
+<DownloadCard />
+
+Desktop is powered by the same technology as the [<Constant name="wizard" /> CLI](/docs/dbt-ai/wizard-quickstart), with a visual interface to help you follow the work, guide it, and manage several threads at once:
+
+- **Parallel chats:** each chat gets its own <Constant name="git" /> <Term id="git-worktree" />, so several pieces of work run at once without conflicts.
+- **Visible validation:** see structured results, including a `dbt-compare` view of what your changes did to the data.
+- **Contextual comments:** hover almost anything to comment on that exact spot, then send several together.
+- **Charts and tables:** ask a question about your data and see the answer inline.
+- **Inline impact:** see which models <Constant name="wizard" />'s changes touch, with diffs you open inline.
+- **Lineage, file, and metrics browsing:** browse your project right alongside the chat.
+
+
 
 <DocCarousel slidesPerView={1}>
 
@@ -47,14 +48,14 @@ To use Wizard Desktop, you'll need:
 - Warehouse credentials if you want <Constant name="wizard" /> to run your project or query data. You don't need to configure them before opening the app.
 
 
-## Install and open Wizard Desktop
+## Install Wizard Desktop
 
-Wizard Desktop is in private beta, so you need to sign up to get the download link.
-
-1. [Sign up for Wizard Desktop access](https://www.getdbt.com/wizard-desktop-waitlist). After you sign up, dbt Labs sends you a download link.
-2. Open the download link and install the app for your operating system.
-3. Open Wizard Desktop and select **Get started** on the welcome screen.
-4. Follow the onboarding prompts. When prompted, create a free dbt account or sign in to an existing account.
+1. Download the installer for your operating system:
+   - [macOS, Apple silicon (.dmg)](https://public.cdn.getdbt.com/dbt-wizard/latest/dbt-wizard-app-aarch64-apple-darwin.dmg) or [macOS, Intel (.dmg)](https://public.cdn.getdbt.com/dbt-wizard/latest/dbt-wizard-app-x86_64-apple-darwin.dmg)
+   - [Windows, x64 (.exe)](https://public.cdn.getdbt.com/dbt-wizard/latest/dbt-wizard-app-x86_64-pc-windows-msvc.exe)
+   - [Linux, x86_64 (.deb)](https://public.cdn.getdbt.com/dbt-wizard/latest/dbt-wizard-app-x86_64-unknown-linux-gnu.deb) or [Linux, ARM64 (.deb)](https://public.cdn.getdbt.com/dbt-wizard/latest/dbt-wizard-app-aarch64-unknown-linux-gnu.deb)
+2. Open Wizard Desktop and select **Get started** on the welcome screen.
+3. Follow the onboarding prompts. When prompted, create a free dbt account or sign in to an existing account.
 
 ## Add your dbt projects
 
@@ -131,7 +132,7 @@ To update at any time:
 
 It's the same <Constant name="wizard" /> you already know, running the same engine as the [<Constant name="wizard" /> CLI](/docs/dbt-ai/wizard-quickstart). The app has a built-in terminal, so you can keep running dbt commands the way you always have, and you can select **Open in** at any time to jump to the same branch in iTerm, Terminal, VS Code, Cursor, or Finder.
 
-Wizard Desktop is in private beta, so [sign up to get the download link](https://www.getdbt.com/wizard-desktop-waitlist) and install the app.
+[Download Wizard Desktop](#install-and-open-wizard-desktop) and install the app.
 
 Refer to [the config reference](/docs/dbt-ai/wizard-config) for the configuration files used by the CLI.
 
@@ -145,7 +146,7 @@ Refer to [the config reference](/docs/dbt-ai/wizard-config) for the configuratio
 | Rendered tables, charts, and diffs | Yes | Plain text in your terminal | Yes |
 | Parallel work | Yes, each chat gets its own worktree | One session per terminal | Yes |
 | Chat history | Kept in the app | Resume a past session with `wizard resume` | Kept in your dbt account |
-| Availability | Private beta, sign up for access | Public beta, install the CLI | Public preview, in your dbt account |
+| Availability | Public beta, download the app | Public beta, install the CLI | Public preview, in your dbt account |
 
 </SimpleTable>
 
