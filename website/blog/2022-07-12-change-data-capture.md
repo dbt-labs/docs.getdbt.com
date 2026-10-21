@@ -58,7 +58,7 @@ Let’s return to Joanne. Using dbt and her favorite BI tool, Joanne has created
 
 You can imagine her DAG as shown below, where `fct_income` captures income per month for each product category.
 
-![](/img/blog/2022-07-12-change-data-capture-metrics/fct-income-dag.png)
+<Lightbox src="/img/blog/2022-07-12-change-data-capture-metrics/fct-income-dag.png" />
 
 Joanne executes a `dbt run` on January 30th, 2022 and queries the resulting table:
 
@@ -92,7 +92,7 @@ A few days later, Joanne finds a bug in her `dbt code`. She fixes the bug and ex
 
 When the head of sales messages Joanne the following question: “Can you tell me the income for January 2022 for all clothing products?”, she’s unsure which number to give: 100, 50, or 52.
 
-![](/img/blog/2022-07-12-change-data-capture-metrics/income-meme.png)
+<Lightbox src="/img/blog/2022-07-12-change-data-capture-metrics/income-meme.png" />
 
 Because of this complexity, she decides to capture the history of her income report so that she can easily swap between versions in her BI tool.
 
@@ -161,7 +161,7 @@ In order to keep track of which version has been marked as “correct” by the 
 
 Her final DAG now looks like this:
 
-![](/img/blog/2022-07-12-change-data-capture-metrics/income-report-versions-dag.png)
+<Lightbox src="/img/blog/2022-07-12-change-data-capture-metrics/income-report-versions-dag.png" />
 
 She's snapshotting `fct_income`, joining the seed file with the snapshot, then exposing the final output to her BI tool. The final output of `stg_snapshot_fct_income` looks like this:
 
@@ -238,7 +238,7 @@ The final config block for `int_income_history` might look something like this:
 
 As a final step, Joanne would create `fct_income_history` to join in the seed file to determine which versions are “correct”. Her new DAG looks like this, where `int_income_history` is an incremental model without a unique key:
 
-![](/img/blog/2022-07-12-change-data-capture-metrics/int-income-history-dag.png)
+<Lightbox src="/img/blog/2022-07-12-change-data-capture-metrics/int-income-history-dag.png" />
 
 The final output of `fct_income_history` would look identical to `stg_snapshot_fct_income` from her initial approach:
 
@@ -260,7 +260,7 @@ Alternatively, Joanne could snapshot her source data and add flexibility to her 
 
 Joanne could track changes in the source data by adding snapshots directly on top of her raw data.
 
-![](/img/blog/2022-07-12-change-data-capture-metrics/snapshots-dag.png)
+<Lightbox src="/img/blog/2022-07-12-change-data-capture-metrics/snapshots-dag.png" />
 
 This would *change the <Term id="grain" />* of these `stg_` tables, so she would see a row for each version of each field. The staging models will contain the history of each record.
 
@@ -334,7 +334,7 @@ The contents of the seed `income_report_versions` would look slightly different 
 
 After joining in the seed file (check out [Tackling the complexity of joining snapshots](https://docs.getdbt.com/blog/joining-snapshot-complexity)), her new DAG looks like this:
 
-![](/img/blog/2022-07-12-change-data-capture-metrics/final-dag.png)
+<Lightbox src="/img/blog/2022-07-12-change-data-capture-metrics/final-dag.png" />
 
 The final output of `fct_income_history` would accomplish the same goal as `stg_snapshot_fct_income` from her initial approach:
 

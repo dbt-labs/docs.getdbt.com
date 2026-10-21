@@ -212,14 +212,14 @@ Notably, we found **significant benefits in tasks which require iterative work**
 
 **Without skills**
 
-![Without skills, agents may skip important validation steps](/img/blog/2026-02-03-dbt-agent-skills/without_skill.gif)
+<Lightbox src="/img/blog/2026-02-03-dbt-agent-skills/without_skill.gif" title="Without skills, agents may skip important validation steps" />
 
 </div>
 <div style={{textAlign: 'center'}}>
 
 **With skills**
 
-![With access to skills, agents take a systematic approach to tasks](/img/blog/2026-02-03-dbt-agent-skills/with_skill.gif)
+<Lightbox src="/img/blog/2026-02-03-dbt-agent-skills/with_skill.gif" title="With access to skills, agents take a systematic approach to tasks" />
 
 </div>
 </div>

@@ -21,8 +21,32 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 For <Constant name="fusion_engine" /> updates, refer to the [v2 changelog](https://github.com/dbt-labs/dbt/blob/main/CHANGELOG-dbt.md).
 
 ## October 2026
+
+- **New:** In <Constant name="wizard" /> Desktop, you can search the current chat and jump between matches, including text in code blocks.
+- **New:** In <Constant name="wizard" /> Desktop, use `/new`, `/clear`, and `/rename` to manage conversations. `/new` accepts an optional starting prompt and works while another response is running.
+- **New:** In <Constant name="wizard" /> Desktop, you can discard all uncommitted changes and remove new files in one confirmed action. Conflicted files are left alone.
+- **New:** In <Constant name="wizard" /> Desktop, you can opt into automatic background updates, choose the Stable or Unstable channel in **General** settings, and relaunch when an update is ready. Refer to [Update the app](/docs/dbt-ai/wizard-desktop#update-the-app).
+- **Enhancement:** Question cards in <Constant name="wizard" /> Desktop now let you answer multiple questions, write your own response, or skip a question. You can also reply in the composer while questions are waiting, with masked inputs for sensitive answers.
+- **Enhancement:** In <Constant name="wizard" /> Desktop, **Changes** and the target branch now follow the base branch of your open pull request.
+- **Enhancement:** In <Constant name="wizard" /> Desktop, expand **Show error details** to see why a response failed, including provider errors and spending limits.
+- **Fix:** <Constant name="wizard" /> Desktop now uses browser sign-in by default for OpenAI subscriptions, including for workspaces that disable device-code login. Expired or revoked credentials no longer block startup, and you get clearer reconnect guidance.
+- **Fix:** <Constant name="wizard" /> Desktop keeps model, lineage, and metric lookups current after you edit files or run dbt outside <Constant name="wizard" />.
+- **Fix:** <Constant name="wizard" /> validation now skips runs when no changed dbt models are in scope and explains why.
+- **Fix:** <Constant name="wizard" /> Desktop now shows clearer ownership and trust prompts for shared repositories. You can also start chats and terminals in trusted repositories owned by another user, including on Windows subsystems for Linux (WSL).
+- **Fix:** Subagent approval requests in <Constant name="wizard" /> Desktop now appear in the chat that owns them and name the requesting agent.
+- **New:** Billing admins now receive proactive email notifications about dbt State usage, including a warning at 80% of the monthly allowance (with a projected run-out date), a notification when the allowance is fully used and State is paused, and a reminder 7 days before a trial expires. All emails include plan-specific messaging and calls to action.
+- **New:** Account admins now receive an email when Cost Insights ingestion has been failing for 3 or more cycles, with follow-up emails at 14 and 28 days if it continues.
+- **Enhancement:** The dbt State usage graph now includes a dropdown to select the reporting period: this month, previous month, last 30 days, last 60 days, or last 90 days. The chart x-axis also shows month abbreviations when the selected range spans multiple months.
+- **Enhancement:** <Constant name="wizard" /> now displays how long each turn took at the bottom of every completed turn. For previously loaded conversations, the completion timestamp is also shown.
+- **Fix:** If you manage access through SCIM (your identity provider, like Okta or Microsoft Entra ID), you can change the user's license type before they even log in. Previously this only worked for active users, but now it works for pending and not-yet-fully-signed-in users too. dbt still checks that you have an available seat of that license type before applying any change.
+- **Fix:** API requests with an invalid permission value or a malformed body now return a descriptive error instead of a server error.
+- **New:** dbt State trial and DATT allowance updates:
+  - **New:** Self-hosted dbt users using dbt State now get a free plan after their trial ends, with 1,000 daily active target tables (DATT) per month at no cost. Developer and paid <Constant name="dbt_platform" /> accounts also receive a monthly DATT allowance, with amounts and availability varying by plan. For more information, refer to [dbt State usage](/docs/platform/billing/dbt-state-usage).
+  - **New:** When your dbt State trial ends, you’ll receive an email confirming your plan, monthly DATT allowance, and allowance end date if your plan has one.
+  - **New:** If your dbt State trial has ended, dbt State is now active again on your account with your plan’s free monthly DATT allowance. No action is required.
+- **New:** Admins can now set the [default license](/docs/platform/manage-access/seats-and-users#default-license-for-new-users) for new users who aren't assigned a license through SSO, SCIM, or license mapping. Choose Developer, Read-Only, or Analyst. 
+Admins can check their settings and update the default as needed. This is available for all multi-tenant and single-tenant accounts.
 - **Enhancement:** You can now sort columns, search by connection name, and filter by connection type, credentials, and connection method (private link or OAuth).
-- **Enhancement:** When a dbt State trial ends, you'll get an email that communicates your Consumption, Developer, Starter, Legacy Teams, or Enterprise plan and includes the allowance end date when your plan has one.
 - **Fix:** Charts now show dates such as `2026-01` or `2026-01-15` from oldest to newest. Tables keep your query's row order until you sort a column.
 - **Behavior change:** You can no longer create a System for Cross-domain Identity Management (SCIM) token with a personal access token or a service token. Sign in to dbt and [create a SCIM token](/docs/platform/manage-access/scim#set-up-dbt).
 - **New:** The jobs list API endpoint (`GET /api/v2/accounts/{account_id}/jobs/`) now accepts a `pk__in` query parameter, letting you retrieve up to 500 specific jobs by ID in a single request.
@@ -140,8 +164,8 @@ Two other things moved:
 - **Behavior change:** AI features in the <Constant name="dbt_platform" /> are being enabled by default. They're already on for new accounts and are rolling out soon to existing accounts. Organizations that opted out stay off, and admins can turn AI features on or off anytime in **Account settings**. Refer to [AI features in dbt platform](/docs/platform/manage-dbt-ai).
 - **New:** <Constant name="wizard" /> now uses usage-based billing for dbt-<Term id="managed" /> AI. Usage is metered per token against your consumption pool, with monthly included usage or a trial to start and admin-set spend limits. Refer to [Trial and billing](/docs/dbt-ai/pricing-billing/trial-and-billing) and the [Billing and access FAQs](/docs/dbt-ai/wizard-billing-faqs).
 - **New:** [dbt State](/docs/deploy/dbt-state-about) onboarding and billing updates:
-  - **New:** New users can now sign up for a free <Constant name="dbt_platform" /> account and start a 30-day dbt State trial through a guided onboarding flow. For details, refer to [Setting up dbt State](/docs/deploy/dbt-state-setup?type=platform-signup).
-  - **New:** dbt v1.7-1.12 users who are using the dbt State plugin can now create a free <Constant name="dbt_platform" /> account to start a 30-day dbt State trial. For details, refer to [Setting up dbt State](/docs/deploy/dbt-state-setup).
+  - **New:** New users can now sign up for a free <Constant name="dbt_platform" /> account and start a 30-day dbt State trial through a guided onboarding flow. For details, refer to [Setting up dbt State](/docs/deploy/dbt-state-setup?user-type=self-hosted).
+  - **New:** dbt v1.7-1.12 users who are using the dbt State plugin can now create a free <Constant name="dbt_platform" /> account to start a 30-day dbt State trial. For details, refer to [Setting up dbt State](/docs/deploy/dbt-state-setup?user-type=self-hosted&version=1.12).
   - **New:** dbt State billing is now available for self-serve accounts. You can set up usage-based billing in the **Usage-based features** dashboard. Note that you're billed per target table that dbt State reuses each day, not per <Constant name="dbt_platform" /> seat. Refer to [Setting up usage-based billing](/docs/deploy/dbt-state-trial#setting-up-usage-based-billing) for more information.
   - **Behavior change**: The standalone dbt State app (`app.state.dbt.com`) is being retired and is no longer accepting new users. Existing dbt State app users should [create a free <Constant name="dbt_platform" /> account](http://us1.dbt.com/register?_dbtsrc=dbt-state) to continue using dbt State &mdash; your free trial will be extended upon account creation.
 
