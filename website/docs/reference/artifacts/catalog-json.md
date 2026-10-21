@@ -7,7 +7,7 @@ sidebar_label: "Catalog"
     
 **Produced by:** <VersionBlock lastVersion="1.99">[`docs generate`](/reference/commands/cmd-docs)</VersionBlock><VersionBlock firstVersion="2.0">[`--write-catalog`](/reference/commands/cmd-docs#--write-catalog-flag) flag</VersionBlock>
 
-This file contains information from your <Term id="data-warehouse" /> about the tables and <Term id="view">views</Term> produced and defined by the resources in your project. <VersionBlock lastVersion="1.99">In v1, dbt uses this file to populate metadata, such as column types and <Term id="table" /> statistics, in the [docs site](/docs/explore/build-and-view-your-docs).</VersionBlock><VersionBlock firstVersion="2.0">In dbt v2, [dbt Docs v2](/reference/commands/cmd-docs#dbt-docs-v2) reads the [dbt Information Schema](/docs/build/dbt-information-schema) rather than this file. `catalog.json` remains available as a separate artifact for external tools and legacy compatibility.</VersionBlock>
+This file contains information from your <Term id="data-warehouse" /> about the tables and <Term id="view">views</Term> produced and defined by the resources in your project. <VersionBlock lastVersion="1.99">dbt uses this file to populate metadata, such as column types and <Term id="table" /> statistics, in the [docs site](/docs/explore/build-and-view-your-docs).</VersionBlock><VersionBlock firstVersion="2.0">[dbt Docs v2](/reference/commands/cmd-docs#dbt-docs-v2) reads the [dbt Information Schema](/docs/build/dbt-information-schema) rather than this file. `catalog.json` remains available as a separate artifact for [<Constant name="catalog" />](/docs/explore/explore-projects) and external tools.</VersionBlock>
 
 ### Top-level keys
 
