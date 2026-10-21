@@ -167,7 +167,7 @@ dbt build --generate-info-schema --static-analysis strict
 dbt docs generate --no-compile
 ```
 
-`--no-compile` skips the default compile step in `dbt docs generate`, so it exports the metadata from the previous step instead of recompiling without strict analysis.
+`--no-compile` skips the default compile step in `dbt docs generate` and exports the existing index.
 
 If you generate the site without column lineage, dbt Docs v2 hides those features instead of showing empty data.
 
@@ -247,13 +247,15 @@ Both write artifacts, but only `dbt docs generate` builds a documentation site y
 Choose a command based on the metadata you need:
 
 <SimpleTable>
+
 | Goal | Command |
 |------|---------|
 | Display inferred model column types and column-level lineage in [dbt Docs v2](#dbt-docs-v2) | `dbt build --generate-info-schema --static-analysis strict`, then `dbt docs generate --no-compile` |
 | Generate the [dbt Information Schema](/docs/build/dbt-information-schema) with inferred model column types and column-level lineage | `dbt build --generate-info-schema --static-analysis strict` |
-| Generate the [dbt Information Schema](/docs/build/dbt-information-schema) with inferred model column types and column-level lineage, plus warehouse types and all columns from sources used by the selected nodes | `dbt build --generate-info-schema --static-analysis strict --write-catalog` |
-| Generate the [dbt Information Schema](/docs/build/dbt-information-schema) with warehouse column types only | `dbt build --generate-info-schema --write-catalog` |
-| Generate [`catalog.json`](/reference/artifacts/catalog-json) with warehouse types for models and sources | `dbt build --write-catalog` |
+| Generate the dbt Information Schema with inferred model column types and column-level lineage, plus warehouse types and all columns from sources used by the selected nodes | `dbt build --generate-info-schema --static-analysis strict --write-catalog` |
+| Generate the dbt Information Schema with warehouse column types only | `dbt build --generate-info-schema --write-catalog` |
+| Generate [`catalog.json`](/reference/artifacts/catalog-json) with warehouse column types | `dbt build --write-catalog` |
+
 </SimpleTable>
 
 #### Flag reference
@@ -265,7 +267,7 @@ The following table explains what each flag generates and where the metadata is 
 |------|-------------|-----------------|
 | [`--generate-info-schema`](/docs/build/dbt-information-schema) | Generates the [dbt Information Schema](/docs/build/dbt-information-schema). Add `--static-analysis strict` to include inferred model column types and column-level lineage. | `target/info_schema/v1/` |
 | [`--static-analysis strict`](/docs/build/about-static-analysis) | Enables inferred column types and column-level lineage when used with `--generate-info-schema`. | Depends on the flag it's combined with |
-| [`--write-catalog`](#--write-catalog-flag) | Generates [`catalog.json`](/reference/artifacts/catalog-json) with warehouse column types for models and sources. <br /><br /> When combined with `--generate-info-schema` on `dbt build` or `dbt run`, also writes warehouse column types and all source columns for selected nodes to the dbt Information Schema. `--static-analysis strict` is not required. | `target/catalog.json` (and `target/info_schema/v1/` when used with `--generate-info-schema`) |
+| [`--write-catalog`](#--write-catalog-flag) | Generates [`catalog.json`](/reference/artifacts/catalog-json) with warehouse column types. <br /><br /> When combined with `--generate-info-schema` on `dbt build` or `dbt run`, writes warehouse column types and all source columns for selected nodes to the dbt Information Schema. | `target/catalog.json` (and `target/info_schema/v1/` when used with `--generate-info-schema`) |
 </SimpleTable>
 
 dbt Docs v2 reads metadata from the dbt Information Schema, not from `catalog.json`. The `catalog.json` file is a separate artifact for external tools.

@@ -72,7 +72,7 @@ dbt build --generate-info-schema --static-analysis strict
 dbt docs generate --no-compile
 ```
 
-`--no-compile` skips the default compile step in `dbt docs generate`, so it exports the metadata from the previous step instead of recompiling without strict analysis.
+`--no-compile` skips the default compile step in `dbt docs generate` and exports the existing index.
 
 Refer to [dbt docs commands](/reference/commands/cmd-docs) for full usage and [Commands for generating metadata](/reference/commands/cmd-docs#commands-for-generating-metadata) for a breakdown of flags and the metadata they generate.
 
