@@ -1,0 +1,8 @@
+label: 'Troubleshooting'
+collapsible: true # make the category collapsible
+collapsed: true # keep the category collapsed by default
+link:
+  type: generated-index
+  title: dbt MCP troubleshooting FAQs
+customProps:
+  description: Troubleshooting answers for the dbt MCP server

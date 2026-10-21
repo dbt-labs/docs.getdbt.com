@@ -18,13 +18,9 @@ meta:
 availability: local_free
 ---
 
-import SnowflakeAuth from '/snippets/_snowflake-auth.md';
-
 <VersionBlock firstVersion="2.0">
 
 # Connect Snowflake to <Constant name="fusion" />
-
-<SnowflakeAuth />
 
 You can configure the Snowflake adapter by running `dbt init` in your CLI or manually providing the `profiles.yml` file with the fields configured for your authentication type. To check out which Snowflake functions are supported in <Constant name="fusion"/> in `strict` mode, refer to [Snowflake function support](/reference/resource-configs/snowflake-function-support).
 
@@ -203,8 +199,6 @@ Find Snowflake-specific configuration information in the [Snowflake adapter refe
 <VersionBlock lastVersion="1.99">
 
 # Connect Snowflake to <Constant name="core" />
-
-<SnowflakeAuth />
 
 <ProductCard text="dbt v2 compatible" url="/docs/local/connect-data-platform/snowflake-setup?version=2" /> connection also available.
 

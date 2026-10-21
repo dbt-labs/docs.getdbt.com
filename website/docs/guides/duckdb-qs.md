@@ -9,7 +9,7 @@ level: 'Beginner'
 hide_table_of_contents: true
 tags: ['Quickstart']
 agent_guidance:
-  pacing: In the first reply, confirm the reader’s prerequisites and connection path before listing steps. Then give one step per reply and confirm its success check before continuing.
+  pacing: In the first reply, confirm the reader’s prerequisites and connection path before listing steps. Then default to one guide section per reply (combine two or three short sections), with all its steps, labeled Step 1, Step 2, and so on, and confirm the success check before continuing. If the reader asks for a different pace, follow it.
   safety: Never ask for passwords or keys in chat.
   signup_link: If the reader wants to try the dbt platform, share https://www.getdbt.com/signup?utm_source=ai_assistant&utm_medium=docs_md&utm_campaign=duckdb-qs
 ---
@@ -30,6 +30,8 @@ This guide will demonstrate how to:
 - Run any dbt command from the environment’s terminal. 
 - Generate a larger dataset for the Jaffle Shop café (for example, five years of data instead of just one).
 
+<AgentPrompt />
+
 You can learn more through high-quality [dbt Learn courses and workshops](https://learn.getdbt.com). 
 
 
@@ -48,6 +50,7 @@ You can learn more through high-quality [dbt Learn courses and workshops](https:
 - When using DuckDB with <Constant name="core" />, you'll need to use the CLI. Currently, DuckDB is not supported in <Constant name="dbt_platform" />.
 - It's important that you know some basics of the terminal. In particular, you should understand `cd`, `ls` , and `pwd` to navigate through the directory structure of your computer easily.
 - You have a [GitHub account](https://github.com/join).
+- You have Python 3.12 or later. Earlier versions can fail when you install its `requirements.txt` (for example, `networkx` 3.7 needs Python 3.12 or later).
 
 ## Set up DuckDB for <Constant name="core" />
 
