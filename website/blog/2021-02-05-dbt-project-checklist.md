@@ -42,7 +42,7 @@ This post is the checklist I created to guide our internal work, and I’m shari
     *   This creates unnecessary clutter.
 *   Do you use post-hooks to grant permissions to other transformers and BI users?
     *   If no, you should! This will ensure that any changes made will be accessible to your collaborators and be utilized on the BI layer.
-        ![on run end](/img/blog/checklist-on-run-end.png)
+        <Lightbox src="/img/blog/checklist-on-run-end.png" title="On run end" />
 *   Are you utilizing tags in your project?
     *   The majority of your project’s models should be untagged. Use tags for models and tests that fall out of the norm with how you want to interact with them. For example, tagging ‘nightly’ models makes sense, but _also_ tagging all your non-nightly models as ‘hourly’ is unnecessary - you can simply exclude the nightly models!
     *   Check to see if a node selector is a good option here instead of tags.
@@ -118,7 +118,7 @@ This post is the checklist I created to guide our internal work, and I’m shari
     *   If so, do you use source freshness tests?
 *   Do you use refs and sources for everything?
     *   Make sure nothing is querying off of raw tables, etc.
-        ![no querying raw tables](/img/blog/checklist-8ddc2f76de24c98690ef986dcc7974bff09adb59.png)
+        <Lightbox src="/img/blog/checklist-8ddc2f76de24c98690ef986dcc7974bff09adb59.png" title="No querying raw tables" />
 
 *   Do you regularly run `dbt test` as part of your workflow and production jobs?
 *   Do you use Jinja & Macros for repeated code?
@@ -213,13 +213,13 @@ _Note: diagrams in this section show what NOT to do!_
 
         *   All sources should have a corresponding staging model to clean and standardize the data structure. They should not look like the image below.  
 
-            ![bad dag](/img/blog/checklist-28c75101367e272fbc2db2ebb1a1ec030517bb5e_2_517x250.jpeg)
+            <Lightbox src="/img/blog/checklist-28c75101367e272fbc2db2ebb1a1ec030517bb5e_2_517x250.jpeg" title="Bad dag" />
 
     *   Do sources join directly together?
 
         *   All sources should have a corresponding staging model to clean and standardize the data structure. They should not look like the image below.  
 
-            ![bad dag 2](/img/blog/checklist-5d8ad45deb695eb6771003e010b242c0a3c122b9_2_517x220.jpeg)
+            <Lightbox src="/img/blog/checklist-5d8ad45deb695eb6771003e010b242c0a3c122b9_2_517x220.jpeg" title="Bad dag 2" />
 
     *   Are there any rejoining of upstream concepts?
 
@@ -227,21 +227,21 @@ _Note: diagrams in this section show what NOT to do!_
             *   a model may need to be expanded so all the necessary data is available downstream
             *   a new intermediate model is necessary to join the concepts for use in both places  
 
-                ![bad dag 2](/img/blog/checklist-acd57c0e781b1eaf75a65b5063f97ac3ddc5c493_2_517x136.jpeg)
+                <Lightbox src="/img/blog/checklist-acd57c0e781b1eaf75a65b5063f97ac3ddc5c493_2_517x136.jpeg" title="Bad dag 2" />
 
     *   Are there any “bending connections”?
 
         *   Are models in the same layer dependent on each other?
         *   This may indicate a change in naming is necessary, or the model should reference further upstream models  
 
-            ![bad dag 3](/img/blog/checklist-0532fd13a7d63e3e5df71d025700c4d9c158a7ff_2_517x155.jpeg)
+            <Lightbox src="/img/blog/checklist-0532fd13a7d63e3e5df71d025700c4d9c158a7ff_2_517x155.jpeg" title="Bad dag 3" />
 
     *   Are there model fan outs of intermediate/dimension/fact models?
 
         *   This might indicate some transformations should move to the BI layer, or transformations should be moved upstream
         *   Your dbt project needs a defined end point!  
 
-            [![bad dag 4](/img/blog/checklist-33fcd7c4922233412d1364b39227c876d0cb8215_2_517x111.jpeg)
+            <Lightbox src="/img/blog/checklist-33fcd7c4922233412d1364b39227c876d0cb8215_2_517x111.jpeg" title="Bad dag 4" />
 
     *   Is there repeated logic found in multiple models?
 
