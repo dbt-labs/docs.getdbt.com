@@ -27,29 +27,30 @@ Some core functionality may be limited. If you're interested in contributing, ch
 
 import SetUpPages from '/snippets/_setup-pages-intro.md';
 
-<SetUpPages meta={frontMatter.meta}/>
+<SetUpPages meta={frontMatter.meta} installPackages="dbt-core dbt-firebird">
+
+Note: Installing an adapter doesn't install <Constant name="core" /> automatically. This is because adapters and <Constant name="core" /> versions are decoupled to avoid overwriting <Constant name="core" /> installations. Use the following command for installation:
+
+</SetUpPages>
 
 
 The <a href="https://pypi.org/project/dbt-firebird/">dbt-firebird</a> adapter connects <Constant name="core" /> to <a href="https://firebirdsql.org/">Firebird</a> databases (3.0, 4.0, and 5.0) through the official <a href="https://pypi.org/project/firebird-driver/">firebird-driver</a> package. It supports table, view, incremental, seed, and snapshot (SCD2) materializations, data tests, generated documentation, and an interactive `dbt init` experience.
 
 The adapter is validated against the official <Constant name="core" /> test suites and a CI matrix covering Firebird 3/4/5 on Python 3.9 to 3.12.
 
-## Installing dbt-firebird
-
-```shell
-pip install dbt-firebird dbt-core
-```
-
 ## Connecting to Firebird with dbt-firebird
 
-Firebird databases are single files. The `path` field is the database file path **as seen by the server**. If dbt runs on the same machine as the server, this is a normal local path; for a remote server, it is a server-side path (for example, `/data/prod.fdb` on Linux).
+Firebird databases are single files. The `path` field is the database file path as seen by the server. If dbt runs on the same machine as the server, this is a normal local path; for a remote server, it is a server-side path (for example, `/data/prod.fdb` on Linux).
 
-### Local (server on the same machine)
+### Local
+
+Use this profile when Firebird is running on the same computer as dbt. You only need the database file `path`.
 
 <File name='~/.dbt/profiles.yml'>
 
 ```yaml
-lakehouse:
+# Replace PROFILE_NAME with the profile name in your dbt_project.yml
+PROFILE_NAME:
   target: dev
   outputs:
     dev:
@@ -64,10 +65,13 @@ lakehouse:
 
 ### Remote server
 
+Use this profile when Firebird is running on another computer. Include `host`, `port`, and the `path` as that server sees the file.
+
 <File name='~/.dbt/profiles.yml'>
 
 ```yaml
-lakehouse:
+# Replace PROFILE_NAME with the profile name in your dbt_project.yml
+PROFILE_NAME:
   target: dev
   outputs:
     dev:
@@ -83,33 +87,41 @@ lakehouse:
 
 </File>
 
-#### Description of Firebird Profile Fields
+### Description of Firebird profile fields
+
+These fields apply to both local and remote profiles:
 
 | Field | Description | Required? | Example |
 |-------|-------------|-----------|---------|
 | type | The specific adapter to use | Required | `firebird` |
-| path | Database file path as seen by the **server**. Use forward slashes | Required | `C:/data/mydb.fdb` |
+| path | Database file path as seen by the server. Use forward slashes | Required | `C:/data/mydb.fdb` |
 | host | Server hostname or IP. Omit it to connect to a local file directly | Optional | `192.168.0.10` |
 | port | Server TCP port | Optional (default `3050`) | `3050` |
 | user | Database user | Required | `SYSDBA` |
 | password | Password | Required | `masterkey` |
-| charset | Connection character set. See [Character sets](#character-sets) | Optional (default `UTF8`) | `WIN1252` |
+| charset | Connection character set. Refer to [Character sets](#character-sets) | Optional (default `UTF8`) | `WIN1252` |
 | role | Firebird role, if you use them | Optional | `RDB$ADMIN` |
 | lock_timeout | Seconds a statement waits for a lock held by another transaction before failing. `0` = do not wait, `-1` = wait indefinitely | Optional (default `10`) | `30` |
 | threads | Parallel model executions. `1` is recommended | Optional (default `1`) | `1` |
 | database | Logical label used internally by dbt. Never rendered in SQL. Defaults to the file base name | Optional | `mydb` |
 | schema | Logical label used internally by dbt. Firebird has no schemas, so this is never rendered in SQL. Defaults to `main` | Optional | `main` |
 
+<br />
+
 `dbt init` also works: it lists `firebird`, asks for every field above, writes the profile, and runs `dbt debug` at the end.
 
 ## Character sets
+
+Pick the `charset` value that matches how your Firebird database stores text:
 
 | Situation | `charset` |
 |-----------|-----------|
 | Database created with `UTF8`, or plain ASCII data | `UTF8` (default) |
 | Legacy/restored databases with character set `NONE` and accented data (for example, WIN1252) | `WIN1252` |
 
-If reads fail with `UnicodeDecodeError: 'utf-8' codec can't decode byte ...`, set `charset: WIN1252` — this is the most common case for legacy Brazilian Firebird databases.
+<br />
+
+If reads fail with `UnicodeDecodeError: 'utf-8' codec can't decode byte ...`, set `charset: WIN1252`. This is the most common case for legacy Brazilian Firebird databases.
 
 ## Object naming and case sensitivity
 
@@ -132,7 +144,7 @@ seeds:
 ## Supported features
 
 - Materializations: `table` (atomic swap), `view` (`CREATE OR ALTER`), `incremental` (strategies `append`, `delete+insert`, `merge`), `seed` (atomic data replacement), and `snapshot` (strategies `check` and `timestamp`)
-- `on_schema_change` handling (`ignore`, `fail`, `append`, `sync_all`)
+- `on_schema_change` handling (`ignore`, `fail`, `append_new_columns`, `sync_all_columns`)
 - Data tests, generic and singular
 - `dbt docs generate` and `persist_docs` (writes `COMMENT ON` statements)
 - Automatic retries for lock conflicts and a configurable `lock_timeout`
@@ -148,16 +160,18 @@ seeds:
 
 ## Database privileges
 
-The profile user needs read and write access to the objects dbt manages, plus permission to create and alter tables and views:
+The profile user needs read and write access to the objects dbt manages, plus permission to create and alter tables and views. These grants cover all dbt work: tables, views, seeds, snapshots, and incremental models:
 
-| Privilege |
-|-----------|
-| SELECT |
-| INSERT |
-| UPDATE |
-| DELETE |
-| CREATE (tables and views) |
-| ALTER |
-| DROP |
+| Privilege | Purpose |
+|-----------|---------|
+| `SELECT` | Read <Term id="table">tables</Term> and <Term id="view">views</Term> |
+| `INSERT` | Load models, [seeds](/docs/build/seeds), and [snapshots](/docs/build/snapshots) |
+| `UPDATE` | Change existing rows ([incremental models](/docs/build/incremental-models) and [snapshots](/docs/build/snapshots)) |
+| `DELETE` | Replace data (table swap and [incremental models](/docs/build/incremental-models)) |
+| `CREATE` | Create <Term id="table">tables</Term> and <Term id="view">views</Term> |
+| `ALTER` | Change <Term id="table">tables</Term> and <Term id="view">views</Term> |
+| `DROP` | Replace objects dbt rebuilds |
+
+<br />
 
 For SYSDBA or the database owner, no extra grants are needed.
