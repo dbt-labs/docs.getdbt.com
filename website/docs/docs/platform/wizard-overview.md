@@ -84,8 +84,6 @@ A terminal-based agent for governed data development in dbt, whether your team u
 
 Wizard Desktop is Wizard as a native app. Wizard Desktop runs the same engine as the dbt Wizard CLI, but you get the full view: charts, tables, diffs, and lineage render right in the app, so you can see the work, steer it, and keep several chats moving at once, each on its own branch.
 
-<DownloadCard />
-
 What you get with Desktop:
 
 - **Parallel chats:** each chat gets its own <Constant name="git" /> <Term id="git-worktree" />, so several pieces of work run at once without conflicts.
@@ -94,6 +92,8 @@ What you get with Desktop:
 - **Charts and tables:** ask a question about your data and see the answer inline.
 - **Inline impact:** see which models <Constant name="wizard" />'s changes touch, with diffs you open inline.
 - **Lineage, file, and metrics browsing:** browse your project right alongside the chat.
+
+<DownloadCard />
 
 To learn more, refer to [Get started with Wizard Desktop](/docs/dbt-ai/wizard-desktop).
 
