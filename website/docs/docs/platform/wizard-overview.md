@@ -68,7 +68,7 @@ For pricing and how billing works, refer to [Models and pricing](/docs/dbt-ai/pr
 
 You can get started with Wizard wherever you work, whether it's the terminal or <Constant name="dbt_platform" />:
 - [Wizard in the CLI](#wizard-in-the-cli)
-- [Wizard in Desktop](#wizard-desktop)
+- [Wizard in Desktop](#wizard-in-desktop)
 - [Wizard in <Constant name="dbt_platform"/>](#wizard-in-dbt-platform)
 
 (Be warned, the wizard has been known to <WizardPopcorn>cast spells</WizardPopcorn>.)
@@ -80,7 +80,7 @@ A terminal-based agent for governed data development in dbt, whether your team u
 <WizardCliInstall />
 <NewToTerminal />
 
-### Wizard Desktop <Lifecycle status="beta"/>
+### Wizard in Desktop <Lifecycle status="beta"/>
 
 Wizard Desktop is Wizard as a native app. Wizard Desktop runs the same engine as the dbt Wizard CLI, but you get the full view: charts, tables, diffs, and lineage render right in the app, so you can see the work, steer it, and keep several chats moving at once, each on its own branch.
 
