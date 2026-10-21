@@ -22,6 +22,18 @@ For <Constant name="fusion_engine" /> updates, refer to the [v2 changelog](https
 
 ## October 2026
 
+- **New:** In <Constant name="wizard" /> Desktop, you can search the current chat and jump between matches, including text in code blocks.
+- **New:** In <Constant name="wizard" /> Desktop, use `/new`, `/clear`, and `/rename` to manage conversations. `/new` accepts an optional starting prompt and works while another response is running.
+- **New:** In <Constant name="wizard" /> Desktop, you can discard all uncommitted changes and remove new files in one confirmed action. Conflicted files are left alone.
+- **New:** In <Constant name="wizard" /> Desktop, you can opt into automatic background updates, choose the Stable or Unstable channel in **General** settings, and relaunch when an update is ready. Refer to [Update the app](/docs/dbt-ai/wizard-desktop#update-the-app).
+- **Enhancement:** Question cards in <Constant name="wizard" /> Desktop now let you answer multiple questions, write your own response, or skip a question. You can also reply in the composer while questions are waiting, with masked inputs for sensitive answers.
+- **Enhancement:** In <Constant name="wizard" /> Desktop, **Changes** and the target branch now follow the base branch of your open pull request.
+- **Enhancement:** In <Constant name="wizard" /> Desktop, expand **Show error details** to see why a response failed, including provider errors and spending limits.
+- **Fix:** <Constant name="wizard" /> Desktop now uses browser sign-in by default for OpenAI subscriptions, including for workspaces that disable device-code login. Expired or revoked credentials no longer block startup, and you get clearer reconnect guidance.
+- **Fix:** <Constant name="wizard" /> Desktop keeps model, lineage, and metric lookups current after you edit files or run dbt outside <Constant name="wizard" />.
+- **Fix:** <Constant name="wizard" /> validation now skips runs when no changed dbt models are in scope and explains why.
+- **Fix:** <Constant name="wizard" /> Desktop now shows clearer ownership and trust prompts for shared repositories, and fixes starting chats and terminals in trusted repositories owned by another user, including on WSL.
+- **Fix:** Subagent approval requests in <Constant name="wizard" /> Desktop now appear in the chat that owns them and name the requesting agent.
 - **New:** dbt State trial and DATT allowance updates:
   - **New:** Self-hosted dbt users using dbt State now get a free plan after their trial ends, with 1,000 daily active target tables (DATT) per month at no cost. Developer and paid <Constant name="dbt_platform" /> accounts also receive a monthly DATT allowance, with amounts and availability varying by plan. For more information, refer to [dbt State usage](/docs/platform/billing/dbt-state-usage).
   - **New:** When your dbt State trial ends, you’ll receive an email confirming your plan, monthly DATT allowance, and allowance end date if your plan has one.
@@ -39,13 +51,6 @@ Admins can check their settings and update the default as needed. This is availa
 - **New:** In <Constant name="wizard" /> Desktop, you can pin chats and environments to a section at the top of the sidebar and reorder them.
 - **New:** In <Constant name="wizard" /> Desktop, you can open SQL from a chat in the **Queries** pane.
 - **New:** In <Constant name="wizard" /> Desktop, you can pick the Jaffle Shop sample project during onboarding.
-- **New:** In <Constant name="wizard" /> Desktop, you can search the current chat and jump between matches, including text in code blocks.
-- **New:** In <Constant name="wizard" /> Desktop, use `/new`, `/clear`, and `/rename` to manage conversations. `/new` accepts an optional starting prompt and works while another response is running.
-- **New:** In <Constant name="wizard" /> Desktop, you can discard all uncommitted changes and remove new files in one confirmed action. Conflicted files are left alone.
-- **New:** In <Constant name="wizard" /> Desktop, you can opt into automatic background updates, choose the Stable or Unstable channel in **General** settings, and relaunch when an update is ready. Refer to [Update the app](/docs/dbt-ai/wizard-desktop#update-the-app).
-- **Enhancement:** Question cards in <Constant name="wizard" /> Desktop now let you answer multiple questions, write your own response, or skip a question. You can also reply in the composer while questions are waiting, with masked inputs for sensitive answers.
-- **Enhancement:** In <Constant name="wizard" /> Desktop, **Changes** and the target branch now follow the base branch of your open pull request.
-- **Enhancement:** In <Constant name="wizard" /> Desktop, expand **Show error details** to see why a response failed, including provider errors and spending limits.
 - **Enhancement:** Workspace @-mention queries now use server-side fuzzy matching instead of filtering a local list, returning better-ranked results for large repositories. The context file picker also prevents selecting stale results while a search is still in flight.
 - **Enhancement:** You can now add a `table` block type to `compose_report` reports to render query results as formatted, scrollable tables. Columns can be narrowed and reordered using the `columns` field, and the display caps at 50 rows on screen with a truncation notice for clipped results.
 - **Enhancement:** You can use the new transformation type badge on column cards to see how each column is derived.
@@ -59,11 +64,6 @@ Admins can check their settings and update the default as needed. This is availa
 - **Fix:** <Constant name="wizard" /> now detects when deferral isn't working because the upstream model doesn't exist in production, and recommends turning off deferral for the session.
 - **Fix:** <Constant name="wizard" /> Desktop now handles <Constant name="dbt_platform" /> sign-in errors better, fixes issues with the **Changes** and **Summary** panes (including generating a new summary when non-agent changes are detected), and fixes edge cases when creating environments with a missing adapter.
 - **Fix:** When the Wizard receives a malformed diff patch, it now displays a "Couldn't parse diff" error badge instead of crashing.
-- **Fix:** <Constant name="wizard" /> Desktop now uses browser sign-in by default for OpenAI subscriptions, including for workspaces that disable device-code login. Expired or revoked credentials no longer block startup, and you get clearer reconnect guidance.
-- **Fix:** <Constant name="wizard" /> Desktop keeps model, lineage, and metric lookups current after you edit files or run dbt outside <Constant name="wizard" />.
-- **Fix:** <Constant name="wizard" /> validation now skips runs when no changed dbt models are in scope and explains why.
-- **Fix:** <Constant name="wizard" /> Desktop now shows clearer ownership and trust prompts for shared repositories, and fixes starting chats and terminals in trusted repositories owned by another user, including on WSL.
-- **Fix:** Subagent approval requests in <Constant name="wizard" /> Desktop now appear in the chat that owns them and name the requesting agent.
 - **Fix:** Charts with decimal data values (for example, 25.43 minutes) no longer push the y-axis name outside the visible canvas area. The axis gap is now calculated from rounded tick values.
 - **Fix:** The x-axis name, grid bottom margin, and legend centering on horizontal bar charts are now computed correctly so the axis label no longer overlaps the legend.
 - **Fix:** The Cost Insights dashboard no longer shows a perpetual loading spinner when partial cost data exists. You now see available cost data even when some rows have not been fully processed.
