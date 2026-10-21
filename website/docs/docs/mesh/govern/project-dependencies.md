@@ -156,7 +156,7 @@ To avoid causing downtime for downstream developers, you should define and trigg
 By default, <Constant name="dbt" /> picks the upstream environment for a cross-project `ref` using the production and staging rules detailed in the previous section. To customize which upstream environment is used, add the `mesh_environment_routing` field to each upstream project in the downstream project's `dependencies.yml`. The `ref` in your model code remains unchanged.
 
 :::note Availability
-Routing environments is supported on the <Constant name="dbt_platform" /> [Latest release track](/docs/dbt-versions/release-tracks).
+Routing environments is supported on the <Constant name="dbt_platform" /> [Latest release track](/docs/dbt-versions/dbt-release-tracks).
 :::
 
 #### How routing works
