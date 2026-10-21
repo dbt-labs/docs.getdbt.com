@@ -281,7 +281,7 @@ As with the earlier steps, these specific instructions are for Bitbucket but the
 1. Determine the values of all of the variables in `.ci/profiles.yml` (`DB_{CI,PROD}_{HOST,PORT,USER,PWD,DBNAME,SCHEMA}`)
 2. Go to Repository > Repository Settings > Repository Variables in Bitbucket and define them there, making sure to store any confidential values as “Secured”.
 
-![Bitbucket repository variables settings screenshot](/img/blog/2022-04-14-add-ci-cd-to-bitbucket/2022-04-14-add-ci-cd-to-bitbucket-image-2.png)
+<Lightbox src="/img/blog/2022-04-14-add-ci-cd-to-bitbucket/2022-04-14-add-ci-cd-to-bitbucket-image-2.png" title="Bitbucket repository variables settings screenshot" />
 
 ### Bitbucket Downloads authentication
 
@@ -290,13 +290,13 @@ As with the earlier steps, these specific instructions are for Bitbucket but the
     1. `BITBUCKET_USERNAME`, which is not your sign-up e-mail, but rather the username found by clicking your avatar in the top left > Personal settings > Account settings page, under Bitbucket Profile Settings.
     2. `BITBUCKET_APP_PASSWORD`, making sure to store it as “Secured”
 
-![Bitbucket repository app password scope settings screenshot](/img/blog/2022-04-14-add-ci-cd-to-bitbucket/2022-04-14-add-ci-cd-to-bitbucket-image-1.png)
+<Lightbox src="/img/blog/2022-04-14-add-ci-cd-to-bitbucket/2022-04-14-add-ci-cd-to-bitbucket-image-1.png" title="Bitbucket repository app password scope settings screenshot" />
 
 ### Enable Bitbucket Pipelines
 
 Lastly, under Repository > Repository Settings > Pipelines Settings, check “Enable Pipelines”.
 
-![Bitbucket Pipeline Settings enabling screenshot](/img/blog/2022-04-14-add-ci-cd-to-bitbucket/2022-04-14-add-ci-cd-to-bitbucket-image-3.png)
+<Lightbox src="/img/blog/2022-04-14-add-ci-cd-to-bitbucket/2022-04-14-add-ci-cd-to-bitbucket-image-3.png" title="Bitbucket pipeline settings enabling screenshot" />
 
 ## Step 4: Test
 
@@ -311,4 +311,3 @@ It’s important to remember that CI/CD is a convenience, not a panacea. You mus
 
 Plus, it’s a good time, and it’s fun to watch the test lights turn green. Ding!
 
-![wild-child-yes.gif](https://c.tenor.com/wemr0g_Do8IAAAAC/wild-child-yes.gif)

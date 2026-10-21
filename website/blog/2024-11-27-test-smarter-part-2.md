@@ -28,7 +28,7 @@ First, here’s our opinions on where specific tests should go:
 
 ## Where should tests go in your pipeline?
 
-![A horizontal, multicolored diagram that shows examples of where tests ought to be placed in a data pipeline.](/img/blog/2024-11-27-test-smarter-part-2/testing_pipeline.png)
+<Lightbox src="/img/blog/2024-11-27-test-smarter-part-2/testing_pipeline.png" title="A horizontal, multicolored diagram that shows examples of where tests ought to be placed in a data pipeline." />
 
 This diagram above outlines where you might put specific data tests in your pipeline. Let’s expand on it and discuss where each type of data quality issue should be tested. 
 

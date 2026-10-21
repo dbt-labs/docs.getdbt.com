@@ -27,7 +27,7 @@ Pipelines (which are known by many names, such as workflows, actions, or build s
 
 Jobs are executed on [runners](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions#runners), which are virtual servers. The runners come pre-configured with Ubuntu Linux, macOS, or Windows. That means the commands you execute are determined by the operating system of your runner. You’ll see how this comes into play later in the setup, but for now just remember that your code is executed on virtual servers that are, typically, hosted by the code hosting platform.
 
-![Diagram of how pipelines work](/img/guides/orchestration/custom-cicd-pipelines/pipeline-diagram.png)
+<Lightbox src="/img/guides/orchestration/custom-cicd-pipelines/pipeline-diagram.png" title="Diagram of how pipelines work" />
 
 Please note, runners hosted by your code hosting platform provide a certain amount of free time. After that, billing charges may apply depending on how your account is setup. You also have the ability to host your own runners. That is beyond the scope of this article, but checkout the links below for more information if you’re interested in setting that up:
 
@@ -42,7 +42,7 @@ Please note, runners hosted by your code hosting platform provide a certain amou
 
 Additionally, if you’re using the free tier of GitLab you can still follow this guide, but it may ask you to provide a credit card to verify your account. You’ll see something like this the first time you try to run a pipeline:
 
-![Warning from GitLab showing payment information is required](/img/guides/orchestration/custom-cicd-pipelines/gitlab-cicd-payment-warning.png)
+<Lightbox src="/img/guides/orchestration/custom-cicd-pipelines/gitlab-cicd-payment-warning.png" title="Warning from GitLab showing payment information is required" />
 
 ### How to setup pipelines
 
@@ -52,7 +52,7 @@ Pipelines can be triggered by various events. The [<Constant name="dbt" /> webho
 
 Here’s a quick look at what this pipeline will accomplish:
 
-![Diagram showing the pipelines to be created and the programs involved](/img/guides/orchestration/custom-cicd-pipelines/pipeline-programs-diagram.png)
+<Lightbox src="/img/guides/orchestration/custom-cicd-pipelines/pipeline-programs-diagram.png" title="Diagram showing the pipelines to be created and the programs involved" />
 
 ## Run a dbt job on merge
 
@@ -171,7 +171,7 @@ In Bitbucket:
 - Make sure the check box next to Secured is checked. This will mask the value in logs, and you won't be able to see the value for the variable in the UI.
 - Click **Add** to save the variable
 
-    ![View of the Bitbucket window for entering DBT_API_KEY](/img/guides/orchestration/custom-cicd-pipelines/dbt-api-key-bitbucket.png)
+    <Lightbox src="/img/guides/orchestration/custom-cicd-pipelines/dbt-api-key-bitbucket.png" title="View of the Bitbucket window for entering DBT_API_KEY" />
 
     Here’s a video showing these steps:
     <WistiaVideo id="1fddpsqpfv" />
@@ -226,7 +226,7 @@ In order to call the <Constant name="dbt" /> API, there are a few pieces of info
 - `DBT_PROJECT_ID` - this is the number just after `projects/` in the URL
 - `DBT_PR_JOB_ID` - this is the number just after `jobs/` in the URL
 
-![Image of a dbt job URL with the pieces for account, project, and job highlighted](/img/guides/orchestration/custom-cicd-pipelines/dbt-cloud-job-url.png)
+<Lightbox src="/img/guides/orchestration/custom-cicd-pipelines/dbt-cloud-job-url.png" title="Image of a dbt job URL with the pieces for account, project, and job highlighted" />
 
 ### 4. Update your project to include the new API call
 
@@ -955,10 +955,10 @@ Now that you have a new pipeline, it's time to run it and make sure it works. Si
 <TabItem value="bitbucket">
 
 Bitbucket pipeline:
-![dbt run on PR job in Bitbucket](/img/guides/orchestration/custom-cicd-pipelines/bitbucket-run-on-pr.png)
+<Lightbox src="/img/guides/orchestration/custom-cicd-pipelines/bitbucket-run-on-pr.png" title="dbt run on PR job in Bitbucket" />
 
 dbt job:
-![<Constant name="dbt" /> job showing it was triggered by Bitbucket](/img/guides/orchestration/custom-cicd-pipelines/bitbucket-dbt-cloud-pr.png)
+<Lightbox src="/img/guides/orchestration/custom-cicd-pipelines/bitbucket-dbt-cloud-pr.png" title="dbt job showing it was triggered by Bitbucket" />
 
 </TabItem>
 <TabItem value="codecommit">
@@ -1019,7 +1019,7 @@ Add this as a macro to your project. It takes 2 arguments that lets you control 
 ```
 
 This macro goes into a <Constant name="dbt" /> job that is run on a schedule. The command will look like this (text below for copy/paste):
-![<Constant name="dbt" /> job showing the run operation command for the cleanup macro](/img/guides/orchestration/custom-cicd-pipelines/dbt-macro-cleanup-pr.png)
+<Lightbox src="/img/guides/orchestration/custom-cicd-pipelines/dbt-macro-cleanup-pr.png" title="dbt job showing the run operation command for the cleanup macro" />
 `dbt run-operation pr_schema_cleanup --args "{ 'database_to_clean': 'development','age_in_days':15}"`
 
 ## Consider risk of conflicts when using multiple orchestration tools

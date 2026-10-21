@@ -99,7 +99,7 @@ For more information about cloning GitHub repositories, refer to "[Cloning a rep
    - Username: admin
    - Password: admin
 
-   ![Airflow login screen](/img/guides/orchestration/airflow-and-dbt-platform/airflow-login.png)
+   <Lightbox src="/img/guides/orchestration/airflow-and-dbt-platform/airflow-login.png" title="Airflow login screen" />
 
 <WistiaVideo id="2rzsjo0uml" paddingTweak="62.25%" />
 
@@ -131,15 +131,15 @@ Now you have all the working pieces to get up and running with Airflow + <Consta
 
 1. From the Airflow interface, navigate to Admin and click on **Connections**
 
-    ![Airflow connections menu](/img/guides/orchestration/airflow-and-dbt-platform/airflow-connections-menu.png)
+    <Lightbox src="/img/guides/orchestration/airflow-and-dbt-platform/airflow-connections-menu.png" title="Airflow connections menu" />
 
 2. Click on the `+` sign to add a new connection, then click on the drop down to search for the <Constant name="dbt" /> Connection Type.
 
-    ![Connection type](/img/guides/orchestration/airflow-and-dbt-platform/connection-type.png)
+    <Lightbox src="/img/guides/orchestration/airflow-and-dbt-platform/connection-type.png" title="Connection type" />
 
 3. Add in your connection details and your default <Constant name="dbt" /> account id. This is found in your <Constant name="dbt" /> URL after the accounts route section (`/accounts/{YOUR_ACCOUNT_ID}`), for example the account with id 16173 would see this in their URL: `https://YOUR_ACCESS_URL/#/accounts/16173/projects/36467/jobs/65767/`
 
-    ![Connection type](/img/guides/orchestration/airflow-and-dbt-platform/connection-type-configured.png)
+    <Lightbox src="/img/guides/orchestration/airflow-and-dbt-platform/connection-type-configured.png" title="Connection type" />
 
 ## Update the placeholders in the sample code
 
@@ -161,10 +161,10 @@ JOB_ID = "65767"
 
 Turn on the DAG and trigger it to run. Verify the job succeeded after running.
 
-![Airflow DAG](/img/guides/orchestration/airflow-and-dbt-platform/airflow-dag.png)
+<Lightbox src="/img/guides/orchestration/airflow-and-dbt-platform/airflow-dag.png" title="Airflow DAG" />
 
 Click **Monitor Job Run** to open the run details in <Constant name="dbt" />.
-![Task run instance](/img/guides/orchestration/airflow-and-dbt-platform/task-run-instance.png)
+<Lightbox src="/img/guides/orchestration/airflow-and-dbt-platform/task-run-instance.png" title="Task run instance" />
 
 ## Cleaning up
 
