@@ -26,7 +26,7 @@ To use our native integration with Azure DevOps in <Constant name="dbt" />, an a
 4. [Connect Azure DevOps to your new app](#connect-azure-devops-to-your-new-app).
 5. [Add your Entra ID app to <Constant name="dbt" />](#add-your-azure-ad-app-to-dbt-cloud).
 
-Once the Microsoft Entra ID app is added to <Constant name="dbt" />, an account admin must also [connect a service user](#connecting-a-service-user) via OAuth, which will be used to power headless actions in <Constant name="dbt" /> such as deployment runs and CI.
+Once the Microsoft Entra ID app is added to <Constant name="dbt" />, an account admin must also [connect a service user](#connect-a-service-user) using OAuth, which will be used to power headless actions in <Constant name="dbt" /> such as deployment runs and CI.
 
 
 Once the Microsoft Entra ID app is added to <Constant name="dbt" /> and the service user is connected, then <Constant name="dbt" /> developers can personally authenticate in <Constant name="dbt" /> from Azure DevOps. For more on this, see [Authenticate with Azure DevOps](/docs/platform/git/authenticate-azure).
@@ -102,7 +102,7 @@ An Azure admin will need one of the following permissions in both the Microsoft 
 - Azure Service Administrator
 - Azure Co-administrator
 
-If your Azure DevOps account is connected to Entra ID, then you can proceed to [Connecting a service user](#connecting-a-service-user). However, if you're just getting set up, connect Azure DevOps to the Microsoft Entra ID app you just created:
+If your Azure DevOps account is connected to Entra ID, then you can proceed to [Set up a service user](#set-up-a-service-user). However, if you're just getting set up, connect Azure DevOps to the Microsoft Entra ID app you just created:
 
 1. From your Azure DevOps account, select **Organization settings** in the bottom left.
 2. Navigate to Microsoft Entra ID.
@@ -131,7 +131,7 @@ Once you connect your Microsoft Entra ID app and Azure DevOps, you need to provi
 Your Microsoft Entra ID app should now be added to your <Constant name="dbt" /> Account. People on your team who want to develop in the <Constant name="studio_ide" /> or <Constant name="dbt" /> CLI can now personally [authorize Azure DevOps from their profiles](/docs/platform/git/authenticate-azure).
 
 
-## Connect a service user
+## Set up a service user
 
 A service user is a pseudo user set up in the same way an admin would set up a real user, but it's given permissions specifically scoped for service to service interactions. You should avoid linking authentication to a real Azure DevOps user because if this person leaves your organization, <Constant name="dbt" /> will lose privileges to the dbt Azure DevOps repositories, causing production runs to fail.
 
@@ -139,6 +139,10 @@ A service user is a pseudo user set up in the same way an admin would set up a r
 <Constant name="dbt" /> will refresh the authentication for the service user on each run triggered by the scheduler, API, or CI. If your account does not have any active runs for over 90 days, an admin will need to manually refresh the authentication of the service user by disconnecting and reconnecting the service user's profile via the OAuth flow described above in order to resume headless interactions like project set up, deployment runs, and CI.
 
 :::
+
+If the <Constant name="studio_ide" /> fails to start and displays `Failed to start server. The project is not fully set up: Azure Service User not found`, the account-level service user isn't connected. Refer to [Connect a service user](#connect-a-service-user) for more details.
+
+If it displays `Missing Azure user` instead, a developer's own Azure DevOps account isn't linked to <Constant name="dbt" />. Refer to [Authenticate with Azure DevOps](/docs/platform/git/authenticate-azure#troubleshooting) for more details.
 
 ### Service users permissions
 
@@ -372,6 +376,8 @@ az devops security permission update --organization https://dev.azure.com/<org_n
 
 
 </details>
+
+### Connect a service user
 
 You must connect your service user before setting up a <Constant name="dbt" /> project, as the service user's permissions determine which projects <Constant name="dbt" /> can import.
 

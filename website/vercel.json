@@ -43,6 +43,10 @@
   ],
   "rewrites": [
     {
+      "source": "/img/:path*",
+      "destination": "https://d2z3qofvp275uy.cloudfront.net/img/:path*"
+    },
+    {
       "source": "/(.*)",
       "has": [
         {
