@@ -160,12 +160,14 @@ dbt docs generate --no-compile
 
 #### Column lineage and richer metadata
 
-To include column types inferred from your SQL and column-level lineage, run `dbt build`, `dbt run`, or `dbt compile` with [`--generate-info-schema`](/docs/build/dbt-information-schema) and [`--static-analysis strict`](/docs/build/about-static-analysis), then export the site:
+To include model column types inferred from your SQL and column-level lineage, run `dbt build`, `dbt run`, or `dbt compile` with [`--generate-info-schema`](/docs/build/dbt-information-schema) and [`--static-analysis strict`](/docs/build/about-static-analysis), then export the site:
 
 ```shell
 dbt build --generate-info-schema --static-analysis strict
 dbt docs generate --no-compile
 ```
+
+`--no-compile` skips the default compile step in `dbt docs generate`, so it exports the metadata from the previous step instead of recompiling without strict analysis.
 
 If you generate the site without column lineage, dbt Docs v2 hides those features instead of showing empty data.
 

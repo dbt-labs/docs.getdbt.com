@@ -37,17 +37,21 @@ Use `--generate-info-schema` flag with `dbt build`, `dbt run`, `dbt compile`, or
   dbt build --generate-info-schema --static-analysis strict
   ```
 
-  dbt infers column types from your SQL for model columns only. For sources, dbt includes only columns declared in YAML, and their `data_type_inferred` reflects the type declared in YAML, not the type inferred from SQL. dbt omits sources without `columns:` entries from `dbt.node_columns` entirely.
+  For models, dbt infers column types from your SQL. For sources, dbt includes only columns declared in YAML; `data_type_inferred` reflects the declared `data_type`. dbt omits sources without `columns:` entries from `dbt.node_columns` entirely.
 
-  Without `--static-analysis strict`, `dbt.node_columns` has no inferred column types and `dbt.column_lineage` is empty. To get warehouse column types without strict analysis, use `--write-catalog`.
+  Without `--static-analysis strict`, `dbt.node_columns` has no inferred column types and `dbt.column_lineage` is empty.
 
-- To add warehouse column types and all columns from sources used by the selected nodes to `dbt.node_columns`, add [`--write-catalog`](/reference/commands/cmd-docs#--write-catalog-flag) when using `dbt build` or `dbt run`:
+- To get warehouse column types and all columns from sources used by the selected nodes in `dbt.node_columns`, add [`--write-catalog`](/reference/commands/cmd-docs#--write-catalog-flag) when running `dbt build` or `dbt run`:
+
+  ```shell
+  dbt build --generate-info-schema --write-catalog
+  ```
+
+  With `--write-catalog`, models and sources get `data_type_actual` (warehouse column types). `data_type_inferred` is only populated for sources where the YAML declares a `data_type`. Add `--static-analysis strict` to also include inferred model column types and column-level lineage:
 
   ```shell
   dbt build --generate-info-schema --static-analysis strict --write-catalog
   ```
-
-  With `--write-catalog`, models get both `data_type_inferred` and `data_type_actual`. Sources get `data_type_actual` for all their columns; `data_type_inferred` is only populated for sources where the YAML declares a `data_type`.
 
 - For [`dbt parse`](/reference/commands/parse), the Information Schema contains no column types, no lineage, and no runtime results, because `dbt parse` doesn't connect to your warehouse.
 
