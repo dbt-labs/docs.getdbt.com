@@ -241,7 +241,12 @@ To simplify the docs experience, clarify availability, and make it easier to fin
 
 ## June 2026
 
-- **New:** The list users API endpoint (`GET /api/v3/accounts/{account_id}/users/`) now accepts `search`, `group_id`, and `license_type` query parameters, so you can find users in large accounts without paging through the full list. `search` matches email, first name, last name, or full name (case-insensitive). `group_id` returns only active members of that group. `license_type` filters by license, for example `developer` or `read_only`. You can combine them with `limit` and `offset`, and `total_count` reflects the filtered results.
+- **New:** The list users API endpoint (`GET /api/v3/accounts/{account_id}/users/`) supports new query parameters to help find users in large accounts without paging through the full list: 
+    - `search`: Matches email, first name, last name, or full name (case-insensitive). 
+    - `group_id`: Returns only active members of that group. 
+    - `license_type`: Filters by license, for example `developer` or `read_only`. 
+    
+    You can combine them with `limit` and `offset`, and `total_count` reflects the filtered results.
 - **Enhancement:** [Column-level tags](/reference/resource-configs/tags) defined in your dbt project now appear on the **Columns** tab of resource details pages in <Constant name="catalog" />. You can click any tag badge to filter the lineage view, or search for columns directly by tag name. Refer to [View resource details](/docs/explore/explore-projects#view-resource-details).
 - **Enhancement:** You can now enable [dbt State](/docs/deploy/dbt-state-about) on continuous integration and merge job types, in addition to deploy jobs. For more information, refer to [Enabling dbt State on environments and jobs](/docs/deploy/dbt-state-enable-env-jobs).
 - **Enhancement**: The [Cost Insights](/docs/explore/cost-insights) table view now includes **All** and **Jobs** buttons to switch between an aggregated cost view and a per-job cost breakdown. Available in the project dashboard and the **Model performance** section in <Constant name="catalog" />. When **Jobs** is selected, the CSV export includes job-level data. For more information, refer to [Explore cost data](/docs/explore/explore-cost-data).
