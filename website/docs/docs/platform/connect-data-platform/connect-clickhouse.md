@@ -9,7 +9,7 @@ availability:
   engine: v2
 ---
 
-# Connect ClickHouse <Lifecycle status="private_beta" /> <ProductCard text="v2 compatible" />
+# Connect ClickHouse <Lifecycle status="private_beta" /> <ProductCard text="dbt v2 compatible" />
 
 The <Constant name="fusion_engine" /> in <Constant name="dbt_platform" /> supports connecting to [ClickHouse Cloud](https://clickhouse.com/cloud) and to self-managed single-node ClickHouse. Use a <Constant name="fusion" /> release track for the environment that uses this connection.
 
