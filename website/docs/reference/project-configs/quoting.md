@@ -187,29 +187,33 @@ select * from analytics.orders;
 
 ### Redshift
 
-Leave the default quoting values.
+Leave the default quoting values. You can omit `quoting` in `dbt_project.yml`, or set `database`, `schema`, and `identifier` to `true`. If that block already matches the defaults, leave it. Do not change `quoting` to work around mixed-case names. If you need mixed-case names, turn on Redshift's `enable_case_sensitive_identifier` setting instead.
 
-Redshift lowercases database, schema, table, and column names, even when they're quoted, when `enable_case_sensitive_identifier` is `false` (the default). Set it to `true` in the cluster parameter group, or as a Serverless workgroup configuration, so quoted names keep their case. Unquoted names are still lowercased. <Constant name="dbt" /> doesn't turn this setting on, and there's no `dbt_project.yml` option for it. A `SET` command applies only to the current session. Refer to Amazon Redshift's [`enable_case_sensitive_identifier`](https://docs.aws.amazon.com/redshift/latest/dg/r_enable_case_sensitive_identifier.html) parameter.
+By default, Redshift lowercases database, schema, table, and column names, even when they're quoted, so <Constant name="dbt" /> can't preserve the case of a model or column name. There's no `dbt_project.yml` option for this. To keep the case of quoted names, turn on the Redshift setting `enable_case_sensitive_identifier`:
+
+- `false` (default): Redshift lowercases all names, whether or not they're quoted.
+- `true`: Redshift keeps the case of quoted names. Unquoted names are still lowercased.
+
+You can set this parameter to `true` for a cluster or workgroup. A `SET` command applies only to the current session. Refer to [Turn on case sensitivity](https://docs.aws.amazon.com/redshift/latest/mgmt/zero-etl-setting-up.case-sensitivity.html) and the [parameter reference](https://docs.aws.amazon.com/redshift/latest/dg/r_enable_case_sensitive_identifier.html) in the Amazon Redshift documentation.
+
+The following statements show the difference. Run them in a Redshift session. With the setting off, quoted names are lowercased:
 
 <File name="redshift_casing.sql">
 
 ```sql
-/*
-  Run these queries to understand how Redshift handles casing and quoting.
-*/
-
 -- Default: quoted names are still lowercased
 SET enable_case_sensitive_identifier TO false;
 
 CREATE TABLE "MixedCasedTable" ("MixedCasedColumn" int);
 INSERT INTO "MixedCasedTable" VALUES (1);
 
--- This works. Redshift stored the names in lowercase.
+-- These work. Redshift stored the names in lowercase.
 SELECT mixedcasedcolumn FROM mixedcasedtable;
+SELECT "MixedCasedColumn" FROM "MixedCasedTable";
 
 DROP TABLE mixedcasedtable;
 
--- Quoted names keep their case only when this setting is on
+-- With the setting on, quoted names keep their case.
 SET enable_case_sensitive_identifier TO true;
 
 CREATE TABLE "MixedCasedTable" ("MixedCasedColumn" int);
@@ -220,6 +224,8 @@ SELECT "MixedCasedColumn" FROM "MixedCasedTable";
 
 -- This fails: relation "mixedcasedtable" does not exist
 SELECT mixedcasedcolumn FROM mixedcasedtable;
+
+DROP TABLE "MixedCasedTable";
 ```
 
 </File>
