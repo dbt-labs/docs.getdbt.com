@@ -1434,6 +1434,7 @@ const sidebarSettings = {
             "reference/resource-properties/model_name",
             "reference/resource-configs/on_configuration_change",
             "reference/resource-configs/on_error",
+            "reference/resource-configs/python-model-configs",
             "reference/resource-configs/sql_header",
           ],
         },
@@ -1812,6 +1813,7 @@ const sidebarSettings = {
         description: "The list of Jinja functions and context variables available in dbt.",
       },
       items: [
+        "reference/jinja-file-support",
         {
           type: "category",
           label: "dbt Jinja context functions",
@@ -1819,7 +1821,7 @@ const sidebarSettings = {
             type: "generated-index",
             title: "dbt Jinja functions and context variables",
             description:
-              "In addition to the standard Jinja library, we've added additional functions and variables to the Jinja context that are useful when working with a dbt project. Note that dependencies.yml is not Jinja rendered and therefore does not support Jinja.",
+              "In addition to the standard Jinja library, we've added additional functions and variables to the Jinja context that are useful when working with a dbt project. For a file-by-file overview, refer to Jinja support by file type. Note that dependencies.yml is not Jinja rendered in dbt v1 and therefore, does not support Jinja.",
             slug: "/reference/dbt-jinja-functions-context-variables",
           },
           items: [
@@ -1887,6 +1889,7 @@ const sidebarSettings = {
             "best-practices/how-we-structure/3-intermediate",
             "best-practices/how-we-structure/4-marts",
             "best-practices/how-we-structure/5-the-rest-of-the-project",
+            "best-practices/how-we-structure/6-mapping-folders-to-warehouse",
           ],
         },
         {

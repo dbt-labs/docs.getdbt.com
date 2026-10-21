@@ -21,8 +21,14 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 For <Constant name="fusion_engine" /> updates, refer to the [v2 changelog](https://github.com/dbt-labs/dbt/blob/main/CHANGELOG-dbt.md).
 
 ## October 2026
+
+- **New:** dbt State trial and DATT allowance updates:
+  - **New:** Self-hosted dbt users using dbt State now get a free plan after their trial ends, with 1,000 daily active target tables (DATT) per month at no cost. Developer and paid <Constant name="dbt_platform" /> accounts also receive a monthly DATT allowance, with amounts and availability varying by plan. For more information, refer to [dbt State usage](/docs/platform/billing/dbt-state-usage).
+  - **New:** When your dbt State trial ends, you’ll receive an email confirming your plan, monthly DATT allowance, and allowance end date if your plan has one.
+  - **New:** If your dbt State trial has ended, dbt State is now active again on your account with your plan’s free monthly DATT allowance. No action is required.
+- **New:** Admins can now set the [default license](/docs/platform/manage-access/seats-and-users#default-license-for-new-users) for new users who aren't assigned a license through SSO, SCIM, or license mapping. Choose Developer, Read-Only, or Analyst. 
+Admins can check their settings and update the default as needed. This is available for all multi-tenant and single-tenant accounts.
 - **Enhancement:** You can now sort columns, search by connection name, and filter by connection type, credentials, and connection method (private link or OAuth).
-- **Enhancement:** When a dbt State trial ends, you'll get an email that communicates your Consumption, Developer, Starter, Legacy Teams, or Enterprise plan and includes the allowance end date when your plan has one.
 - **Fix:** Charts now show dates such as `2026-01` or `2026-01-15` from oldest to newest. Tables keep your query's row order until you sort a column.
 - **Behavior change:** You can no longer create a System for Cross-domain Identity Management (SCIM) token with a personal access token or a service token. Sign in to dbt and [create a SCIM token](/docs/platform/manage-access/scim#set-up-dbt).
 - **New:** The jobs list API endpoint (`GET /api/v2/accounts/{account_id}/jobs/`) now accepts a `pk__in` query parameter, letting you retrieve up to 500 specific jobs by ID in a single request.
@@ -140,8 +146,8 @@ Two other things moved:
 - **Behavior change:** AI features in the <Constant name="dbt_platform" /> are being enabled by default. They're already on for new accounts and are rolling out soon to existing accounts. Organizations that opted out stay off, and admins can turn AI features on or off anytime in **Account settings**. Refer to [AI features in dbt platform](/docs/platform/manage-dbt-ai).
 - **New:** <Constant name="wizard" /> now uses usage-based billing for dbt-<Term id="managed" /> AI. Usage is metered per token against your consumption pool, with monthly included usage or a trial to start and admin-set spend limits. Refer to [Trial and billing](/docs/dbt-ai/pricing-billing/trial-and-billing) and the [Billing and access FAQs](/docs/dbt-ai/wizard-billing-faqs).
 - **New:** [dbt State](/docs/deploy/dbt-state-about) onboarding and billing updates:
-  - **New:** New users can now sign up for a free <Constant name="dbt_platform" /> account and start a 30-day dbt State trial through a guided onboarding flow. For details, refer to [Setting up dbt State](/docs/deploy/dbt-state-setup?type=platform-signup).
-  - **New:** dbt v1.7-1.12 users who are using the dbt State plugin can now create a free <Constant name="dbt_platform" /> account to start a 30-day dbt State trial. For details, refer to [Setting up dbt State](/docs/deploy/dbt-state-setup).
+  - **New:** New users can now sign up for a free <Constant name="dbt_platform" /> account and start a 30-day dbt State trial through a guided onboarding flow. For details, refer to [Setting up dbt State](/docs/deploy/dbt-state-setup?user-type=self-hosted).
+  - **New:** dbt v1.7-1.12 users who are using the dbt State plugin can now create a free <Constant name="dbt_platform" /> account to start a 30-day dbt State trial. For details, refer to [Setting up dbt State](/docs/deploy/dbt-state-setup?user-type=self-hosted&version=1.12).
   - **New:** dbt State billing is now available for self-serve accounts. You can set up usage-based billing in the **Usage-based features** dashboard. Note that you're billed per target table that dbt State reuses each day, not per <Constant name="dbt_platform" /> seat. Refer to [Setting up usage-based billing](/docs/deploy/dbt-state-trial#setting-up-usage-based-billing) for more information.
   - **Behavior change**: The standalone dbt State app (`app.state.dbt.com`) is being retired and is no longer accepting new users. Existing dbt State app users should [create a free <Constant name="dbt_platform" /> account](http://us1.dbt.com/register?_dbtsrc=dbt-state) to continue using dbt State &mdash; your free trial will be extended upon account creation.
 
@@ -269,7 +275,7 @@ The following features are new or enhanced as part of dbt Labs announcements at 
   - **New**: [dbt State pricing](/docs/platform/billing/dbt-state-usage) is usage-based at $0.094 per daily unique reuse. New organizations receive a 30-day free trial with no usage limit.
   - **Behavior change**: State-aware orchestration is no longer being enabled for new customers. Refer to [Migrate to dbt State](/docs/deploy/dbt-state-migration) for more information.
 
-- **New**: dbt Wizard is available in dbt platform as a public preview. Introducing dbt Wizard CLI as a public beta. Purpose-built for agentic governed data development in dbt, dbt Wizard understands your project through a  [native metadata engine](/docs/dbt-ai/wizard-how-it-works#native-metadata-engine), unlike general-purpose coding agents.
+- **New**: dbt Wizard is available in dbt platform as a public preview. Introducing dbt Wizard CLI as a public beta. Purpose-built for agentic governed data development in dbt, dbt Wizard understands your project through the [dbt Information Schema](/docs/build/dbt-information-schema), unlike general-purpose coding agents.
   - **New**: [Support for Anthropic as a BYOK provider for dbt AI](/docs/platform/manage-dbt-ai#configure-ai-provider). 
   - **New**: [`dbt login`](/reference/commands/login?version=2.0) is a new CLI command available in dbt Core 2.0 and later. It opens browser-based authentication and shares your login state across the CLI, dbt VS Code extension, dbt State, and dbt Wizard CLI with no separate sign-in flows needed.
 - **New:** OAuth client registrations now accept custom-scheme redirect URIs (for example, `cursor://` or `vscode://`), so you can build native app OAuth integrations with Cursor and VS Code.

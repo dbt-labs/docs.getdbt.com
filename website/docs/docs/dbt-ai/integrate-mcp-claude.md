@@ -227,18 +227,7 @@ Claude Code can connect to the remote dbt MCP server over HTTP using `"type": "h
 4. Save the file. Claude Code picks up `.mcp.json` on startup &mdash; ask it a data question to confirm the connection.
 
 ## Troubleshooting
-<Expandable alt_header="Claude Desktop errors">
 
-Claude Desktop may return errors such as `Error: spawn uvx ENOENT`, `Error: spawn npx ENOENT`, `Could not connect to MCP server dbt-mcp`, or `Server disconnected`. For self-hosted installations, replace the `command` with the full path to `uvx`: run `which uvx` on Unix systems or `where uvx` on Windows and paste the full path into your JSON (for example, `"command": "/the/full/path/to/uvx"`). For token-based remote setups with `mcp-remote`, apply the same full-path fix for `npx`.
+<FAQ path="dbt-mcp/troubleshooting/claude-desktop-errors" />
 
-If Claude reports that entries in `claude_desktop_config.json` are not valid and were skipped, check that you are not using `"type": "http"` in that file. Use the [token-based `mcp-remote` config](#desktop-remote) instead.
-
-For remote setups, double-check that the MCP URL ends in `/api/ai/v1/mcp/` (including the trailing slash) and that your `Authorization` header value is `Token YOUR_DBT_ACCESS_TOKEN` or `Bearer YOUR_DBT_ACCESS_TOKEN`.
-
-Logs are at `~/Library/Logs/Claude` (macOS) or `%APPDATA%\Claude\logs` (Windows).
-</Expandable>
-
-<Expandable alt_header="Claude Code">
-
-If the dbt MCP server doesn't connect, confirm `.mcp.json` is at the _project root_ and that the `dbt` block matches one of the examples on this page. For self-hosted installations, apply the same full-path fix for `uvx` (and for `--env-file` paths). For remote setups, verify the URL and headers, and try the equivalent `claude mcp add --transport http` command to compare.
-</Expandable>
+<FAQ path="dbt-mcp/troubleshooting/claude-code" />

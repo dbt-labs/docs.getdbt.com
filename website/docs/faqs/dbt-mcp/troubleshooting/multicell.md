@@ -1,4 +1,9 @@
-<Expandable alt_header="Multi-cell or static subdomain account connection issues">
+---
+title: "Multi-cell or static subdomain account connection issues"
+sidebar_label: "Multi-cell or static subdomain account connection issues"
+description: "Troubleshooting: Multi-cell or static subdomain account connection issues"
+id: mcp-troubleshoot-multicell
+---
 
 **Symptoms:** Connection errors when your account URL includes a prefix (for example, `abc123.us1.dbt.com`).
 
@@ -11,4 +16,3 @@ DBT_ACCOUNT_ID=12345  # required for PAT-based auth
 ```
 
 You no longer need to set `MULTICELL_ACCOUNT_PREFIX` or `DBT_HOST_PREFIX`. If you have these set from an older configuration, remove them.
-</Expandable>

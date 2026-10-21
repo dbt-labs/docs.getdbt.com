@@ -9,8 +9,6 @@ availability:
 
 import MCPExample from '/snippets/_mcp-config-files.md';
 import StaticSubdomainRequired from '/snippets/_static-subdomain-required.md';
-import MCPFaqUvx from '/snippets/_mcp-faq-uvx.md';
-import MCPFaqOauth from '/snippets/_mcp-faq-oauth.md';
 
 [The self-hosted dbt MCP server](https://github.com/dbt-labs/dbt-mcp) runs on your machine and supports <Constant name="core" />, <Constant name="fusion_engine" />, and <Constant name="platform_cli" />. You can use it with or without a <Constant name="dbt_platform" /> account.
 
@@ -273,7 +271,7 @@ uvx dbt-mcp
 | Environment variable | Required | Description |
 | --- | --- | --- |
 | `DBT_HOST` | Required | Your <Constant name="dbt_platform" /> [instance hostname](/docs/platform/about-platform/access-regions-ip-addresses). The default is `cloud.getdbt.com`. For multi-cell and multi-tenant accounts with a static subdomain, use the full hostname — for example, `abc123.us1.dbt.com`. |
-| `DBT_TOKEN` | Required | Your personal access token or service token from the <Constant name="dbt_platform" />. <br/>**Note**: The `execute_sql` tool requires a [Personal Access Token (PAT)](/docs/dbt-apis/user-tokens) — service tokens do not work for this tool. For Semantic Layer use, a PAT is also recommended. If you're using a service token for other toolsets, make sure it has at least `Semantic Layer Only`, `Metadata Only`, and `Developer` permissions. |
+| `DBT_TOKEN` | Required | Your personal access token or service token from the <Constant name="dbt_platform" />. <br/>**Note**: If you're using a service token, assign the permission sets for the toolsets you enable: `Semantic Layer Only` for <Constant name="semantic_layer" /> tools and `Metadata Only` for Discovery tools. The self-hosted server doesn't check permissions when it starts. Instead, each API authorizes the token when a tool calls it. A token that covers only some toolsets works for those toolsets, and calls to the other toolsets fail individually. In contrast, the [remote MCP server](/docs/dbt-ai/setup-remote-mcp#token-based-authentication) checks the token once when you connect. <br/><br/> The `execute_sql` tool requires a [personal access token (PAT)](/docs/dbt-apis/user-tokens) and doesn't work with service tokens. We also recommend a PAT for <Constant name="semantic_layer" /> tools. |
 | `DBT_ACCOUNT_ID` | Required for Administrative API tools and PAT-based auth | Your [dbt account ID](/faqs/Accounts/find-user-id). Also required when using a Personal Access Token (PAT) as your `DBT_TOKEN`. |
 | `DBT_PROD_ENV_ID` | Required | Your <Constant name="dbt_platform" /> production environment ID |
 | `DBT_DEV_ENV_ID` | Optional | Your <Constant name="dbt_platform" /> development environment ID |
@@ -437,16 +435,8 @@ To see more detail about what’s happening inside the MCP server and help debug
 
 ## Troubleshooting
 
-<Expandable alt_header="Can't find the uvx executable">
+<FAQ path="dbt-mcp/troubleshooting/uvx" />
 
-<MCPFaqUvx />
+<FAQ path="dbt-mcp/troubleshooting/oauth" />
 
-</Expandable>
-
-<Expandable alt_header="OAuth login not initiating">
-
-<MCPFaqOauth />
-
-</Expandable>
-
-For all troubleshooting topics, see [MCP troubleshooting](/docs/dbt-ai/mcp-troubleshooting).
+For all troubleshooting topics, see [dbt MCP FAQs and troubleshooting](/docs/dbt-ai/mcp-troubleshooting).
