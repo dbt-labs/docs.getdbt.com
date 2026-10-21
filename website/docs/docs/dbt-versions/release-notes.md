@@ -22,6 +22,8 @@ For <Constant name="fusion_engine" /> updates, refer to the [v2 changelog](https
 
 ## October 2026
 
+- **New:** Custom GitHub applications are now generally available. If you're on an Enterprise or Enterprise+ plan and use GitHub Enterprise Server or GitHub with EU data residency, you can [register your own GitHub app](/docs/platform/git/connect-github#custom-github-application) and connect it to <Constant name="dbt" />.
+
 - **New:** dbt State trial and DATT allowance updates:
   - **New:** Self-hosted dbt users using dbt State now get a free plan after their trial ends, with 1,000 daily active target tables (DATT) per month at no cost. Developer and paid <Constant name="dbt_platform" /> accounts also receive a monthly DATT allowance, with amounts and availability varying by plan. For more information, refer to [dbt State usage](/docs/platform/billing/dbt-state-usage).
   - **New:** When your dbt State trial ends, you’ll receive an email confirming your plan, monthly DATT allowance, and allowance end date if your plan has one.
