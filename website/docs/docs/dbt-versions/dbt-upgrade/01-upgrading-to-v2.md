@@ -10,11 +10,11 @@ availability:
 
 # Upgrading to v2
 
-import FusionAdapters from '/snippets/_fusion-dwh.md';
-import FusionUpgradeSteps from '/snippets/_fusion-upgrade-steps.md';
-import FusionLifecycle from '/snippets/_fusion-lifecycle-callout.md';
-import FusionThreads from '/snippets/_fusion-threads.md';
-import FusionPartialParseCliFlags from '/snippets/_fusion-partial-parse-cli-flags.md';
+import FusionAdapters from '/snippets/_v2-dwh.md';
+import FusionUpgradeSteps from '/snippets/_v2-upgrade-steps.md';
+import FusionLifecycle from '/snippets/_v2-lifecycle-callout.md';
+import FusionThreads from '/snippets/_v2-threads.md';
+import FusionPartialParseCliFlags from '/snippets/_v2-partial-parse-cli-flags.md';
 import SourceFreshnessLegacy from '/snippets/_source-freshness-legacy.md';
 
 v2 is the current era of dbt, delivered through <Constant name="fusion" />. When you install dbt, you get <Constant name="fusion" /> by default. This guide walks you through upgrading a v1 project to v2. 
@@ -24,7 +24,7 @@ v2 is faster and stricter, but your existing project language and DAG semantics 
 
 <FusionLifecycle />
 
-import AboutFusion from '/snippets/_about-fusion.md';
+import AboutFusion from '/snippets/_about-v2.md';
 
 <AboutFusion hideUpgradeLink />
 
@@ -44,7 +44,7 @@ If you have an older project that isn't ready to move to v2, or you need compati
 
 This new major version is an opportunity to _strengthen the framework_ by removing deprecated functionality, rationalizing confusing behavior, and providing more rigorous validation on erroneous inputs. This means that there is some work involved in preparing an existing dbt project for v2.
 
-That work is documented below — it should be simple, straightforward, and in many cases, auto-fixable with the [`dbt-autofix`](https://github.com/dbt-labs/dbt-autofix) helper or the [agent skill](https://github.com/dbt-labs/dbt-agent-skills/tree/main/skills/dbt-migration/skills/migrating-dbt-core-to-fusion).
+That work is documented below — it should be simple, straightforward, and in many cases, auto-fixable with the [`dbt-autofix`](https://github.com/dbt-labs/dbt-autofix) helper or the [agent skill](https://github.com/dbt-labs/dbt-agent-skills/tree/main/skills/dbt-migration/skills/migrating-dbt-core-to-v2).
 
 :::tip Test v2 parser compatibility from <Constant name="dbt" /> v1.12
 
@@ -64,7 +64,7 @@ The following adapters are supported in v2:
 
 v2 will not support any deprecated functionality (see the [Changes overview](/reference/changes-overview) for details):
 - All [deprecation warnings](/reference/deprecations) must be resolved before upgrading to the new engine. This includes historic deprecations and [new ones as of <Constant name="dbt" /> v1.10](/docs/dbt-versions/dbt-upgrade/upgrading-to-v1.10#deprecation-warnings).
-- Some [behavior change flags](/reference/global-configs/behavior-changes#behavior-change-flags) will be removed (generally enabled). You can no longer opt out of them using `flags:` in your `dbt_project.yml`.
+- Some [behavior change flags](/reference/global-configs/behavior-changes#behavior-change-flags) will be removed (generally enabled). Flags marked `2.0` in the **Removed** column in that table are removed: the new behavior is always enabled and you can no longer opt out with `flags:` in your `dbt_project.yml`. All other flags without a removal version (marked `-`) remain configurable, including v2-specific flags listed later on that page.
 
 ### Ecosystem packages
 
@@ -193,7 +193,7 @@ v2 introduces [agent skills](/docs/dbt-ai/package-skills), which are reusable in
 To use agent skills, you need to:
 
 - Include skills in your project's `skills/` directory, use a package that ships skills, or both
-- Set the `ai_provider` flag in your root project to tell dbt which which coding agent you use. Supported values are `wizard`, `claude`, `openai`, `codex`, `cursor`, or `gemini` (case-insensitive).
+- Set the `ai_provider` flag in your root project to tell dbt which coding agent you use. Supported values are `wizard`, `claude`, `openai`, `codex`, `cursor`, or `gemini` (case-insensitive).
 
 Once both are in place, `dbt deps` installs those skills into the directory your agent reads from (such as `.claude/skills` or `.agents/skills`), and `dbt clean` removes them. If you're missing either piece, `dbt deps` installs your packages as usual and skips the skills.
 
@@ -222,6 +222,22 @@ Without this flag, dbt fails at parse time if any node in the project has an `ad
 When developing v2, there were opportunities to improve the dbt framework — failing earlier (when possible), fixing bugs, optimizing run order, and deprecating flags that are no longer relevant. The result is a handful of specific and nuanced changes to existing behavior.
 
 When upgrading to v2, you should expect the following changes in functionality:
+
+#### Calling project macros in YAML files
+
+You can call project macros directly in YAML files such as `sources.yml` and `schema.yml`:
+
+```yaml
+sources:
+  - name: raw_orders
+    database: "{{ get_environment() }}"
+```
+
+This is not supported in <Constant name="core_v1" />, because the two engines use different Jinja contexts when rendering YAML:
+- <Constant name="core_v2" /> registers project macros before rendering, so they're available to Jinja in the YAML.
+- In <Constant name="core_v1" />, YAML files are rendered using a separate, restricted context that doesn't include project macros &mdash; only built-in Jinja functions like `env_var()` and `doc()`.
+
+For more information, refer to [Jinja support by file type](/reference/jinja-file-support).
 
 #### Parse time printing of relations will print out the full qualified name, instead of an empty string
 
@@ -578,12 +594,23 @@ or config.meta_require('my_key') instead.
 
 Behavior when a key exists only in meta:
 
+<SimpleTable>
 | Method | Behavior |
 |--------|----------|
 | `config.get('my_key')` | Returns the default value and emits a warning. |
 | `config.require('my_key')` | Raises an error and emits a warning. |
+</SimpleTable>
 
-To access custom configurations stored under meta, use the explicit methods:
+In addition, accessing the `meta` dictionary itself (rather than a specific key) behaves differently across engines:
+
+<SimpleTable>
+| Engine | `config.get('meta', default={})` |
+|--------|-----------------------------------|
+| <Constant name="core_v1" /> | Does not work. |
+| <Constant name="core_v2" /> | Returns the full `meta` dictionary. |
+</SimpleTable>
+
+To access custom configurations stored under `meta`, use the explicit methods:
 
 ```jinja
 {% set owner = config.meta_get('owner') %}
@@ -601,7 +628,7 @@ For more information, see [config.meta_get()](/reference/dbt-jinja-functions/con
 
 ## Package support
 
-import FusionPackages from '/snippets/_fusion-supported-packages.md';
+import FusionPackages from '/snippets/_v2-supported-packages.md';
 
 <FusionPackages />
 

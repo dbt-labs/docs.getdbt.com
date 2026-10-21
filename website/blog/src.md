@@ -57,7 +57,7 @@ There is some prior art on this topic -  the foundational post[ How We Structure
 
 I am elated to stand on the shoulders of giants to write a follow up to this post, with the caveat that this is aimed at a different audience. The above discourse is usually read or linked in 101 courses, where the focus is on initial project setup. In this series of posts you will see how our approach has shifted after working with and implementing these practices at scale.
 
-![example marts folder structure](/img/blog/on_the_importance_of_naming_image_0.png)
+<Lightbox src="/img/blog/on_the_importance_of_naming_image_0.png" title="Example marts folder structure" />
 
 If you follow the advice from ‘How We Structure Our dbt Projects', you will end up with a project which is fairly easy to read when viewing within the folder hierarchy (from the Analytics Engineer perspective), but the same is not true when viewing in the DAG or the database itself. For the analyst or stakeholder who simply has access to the output database objects and not the hierarchy and flow with which they were developed, it can be at best slightly overwhelming, and at worst, unmanageable. With that in mind, I set out to help answer some of the outstanding questions around model naming and organization:
 
@@ -71,7 +71,7 @@ The folder structure is a useful way to organize a project based off of your sta
 
 **When your company scales to have hundreds or thousands of models, the subtle freedom to name models whatever you want starts to wreak havoc on the system** — the developer isn't sure which model to add to or what it's usage is, so they start spinning up tangentially related models using some of the pieces and adding another slightly different variant of the, for example, _`users`_ model. We should do a favor to others in our organization, including our future selves, by sensibly naming and keeping a lid on maintainability, preventing our DAG from descending into chaos.
 
-Backing up, dbt builds a [directed acyclic graph (DAG)](https://docs.getdbt.com/docs/introduction#what-makes-dbt-so-powerful) based on the interdepencies between models – each node of the graph represents a model, and edges between the nodes are defined by ref functions, where a model specified in a ref function is recognized as a predecessor of the current model. Analytics Engineers often use the DAG to get a holistic <Term id="table" /> of the project or at least the subset of models that our model of interest is interacting with, typically a few models in either direction that are direct parents or children. The DAG helps you visualize how the data flows from left to right (from raw to transformed), without having to comb through SQL with a magnifying glass.
+Backing up, dbt builds a [directed acyclic graph (DAG)](https://docs.getdbt.com/docs/introduction#what-makes-dbt-so-powerful) based on the interdependencies between models – each node of the graph represents a model, and edges between the nodes are defined by ref functions, where a model specified in a ref function is recognized as a predecessor of the current model. Analytics Engineers often use the DAG to get a holistic <Term id="table" /> of the project or at least the subset of models that our model of interest is interacting with, typically a few models in either direction that are direct parents or children. The DAG helps you visualize how the data flows from left to right (from raw to transformed), without having to comb through SQL with a magnifying glass.
 
 **Here are some real life examples of a company's DAG, simplified using model selection syntax:**
 
@@ -83,7 +83,7 @@ Let’s take a look at a real life example of an (admittedly rather complex)  DA
 
 * Meaning, all the descendants needed to build the `users` model
 
-![zoomed out screenshot of a DAG](/img/blog/on_the_importance_of_naming_image_1.png)
+<Lightbox src="/img/blog/on_the_importance_of_naming_image_1.png" title="Zoomed out screenshot of a DAG" />
 
 `users+`
 
@@ -91,7 +91,7 @@ Let’s take a look at a real life example of an (admittedly rather complex)  DA
 
 * Meaning, all the ancestor references that depend on the `users` model once created
 
-![zoomed out screenshot of the right of a dag](/img/blog/on_the_importance_of_naming_image_2.png)
+<Lightbox src="/img/blog/on_the_importance_of_naming_image_2.png" title="Zoomed out screenshot of the right of a dag" />
 
 Imagine trying to mentally internalize this after reading through countless SQL files, without looking at the DAG!
 
@@ -99,7 +99,7 @@ Imagine trying to mentally internalize this after reading through countless SQL 
 
 You're not actually supposed to be able to read those DAGs, as they are notoriously hard to grok when zoomed out. Let's pick a random zoom in point to show the "spider web", aka uncontrollable references to other models with no clear movement from left to right in a logical fashion.
 
-![zoomed in picture of a DAG](/img/blog/on_the_importance_of_naming_image_3.png)
+<Lightbox src="/img/blog/on_the_importance_of_naming_image_3.png" title="Zoomed in picture of a DAG" />
 
 In my utopia, when you zoom into a DAG and you  would see  a swimlane, or etymology, such that you would be able to understand the purpose of a given model. This real world example gives us a view into what happens when we don’t have that.
 

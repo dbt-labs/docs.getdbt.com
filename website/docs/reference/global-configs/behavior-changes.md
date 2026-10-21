@@ -11,7 +11,7 @@ dbt gates these changes behind behavior change flags, so you control when to ado
 
 The following are examples of behavior changes:
 - dbt begins raising a validation _error_ that it didn't previously.
-- dbt changes the signature of a built-in macro. Your project has a custom reimplementation of that macro. This could lead to errors, because your custom reimplementation will be passed arguments it cannot accept.
+- dbt changes the signature of a built-in macro. Your project has a custom re-implementation of that macro. This could lead to errors, because your custom re-implementation will be passed arguments it cannot accept.
 - A dbt adapter renames or removes a method that was previously available on the `{{ adapter }}` object in the dbt-Jinja context.
 
 The following are *not* behavior changes:
@@ -29,13 +29,13 @@ Behavior change flags go through three phases of development:
 
 1. **Introduced (disabled by default):** dbt adds logic to support both 'old' and 'new' behaviors. The 'new' behavior is gated behind a flag, disabled by default, preserving the old behavior.
 2. **Mature (enabled by default):** The default value of the flag is switched to the new behavior by default. You can still preserve the old behavior, but you may see deprecation warnings.
-3. **Removed (generally enabled):** The old behavior is removed from the dbt codebase(s). Most flags are supported indefinitely, but there is no committement to supporting them forever. If a flag is removed, there will be significant advanced warning.
+3. **Removed (generally enabled):** The old behavior is removed from the dbt codebase(s). Most flags are supported indefinitely, but there is no commitment to supporting them forever. If a flag is removed, there will be significant advance warning.
 
 ### Introduced in <Constant name="core_v1" />
 
-This table outlines which month of the **v1 Latest** release track in <Constant name="dbt" /> and which version of <Constant name="core" /> contains the behavior change's introduction (disabled by default) or maturity (enabled by default).
+This table outlines which month of the **v1 Latest** release track in <Constant name="dbt" /> and which version of <Constant name="core" /> contains the behavior change's introduction (disabled by default) or maturity (enabled by default). Flags marked 2.0 in the **Removed** column are removed in dbt v2 and the new behavior is always enabled.
 
-| Flag | <Constant name="dbt" /> **v1 Latest**: Intro | <Constant name="dbt" /> **v1 Latest**: Maturity | <Constant name="core" />: Intro | <Constant name="core" />: Maturity | <Constant name="core" />: Removed |
+| Flag | **v1 Latest**: Intro | **v1 Latest**: Maturity | <Constant name="core" />: Intro | <Constant name="core" />: Maturity |  Removed |
 |-----------------------------------------------------------------|------------------|---------------------|-----------------|--------------------|----|
 | [require_explicit_package_overrides_for_builtin_materializations](/reference/global-configs/behavior-flags/require_explicit_package_overrides_for_builtin_materializations) | 2024.04 | 2024.06 | 1.6.14, 1.7.14 | 1.8.0 | 2.0 |
 | [require_resource_names_without_spaces](/reference/global-configs/behavior-flags/require_resource_names_without_spaces) | 2024.05 | 2025.05 | 1.8.0 | 1.10.0 | 2.0 |
@@ -44,7 +44,7 @@ This table outlines which month of the **v1 Latest** release track in <Constant 
 | [state_modified_compare_more_unrendered_values](/reference/global-configs/behavior-flags/state_modified_compare_more_unrendered_values) | 2024.10 | 2026.09 | 1.9.0 | 1.12.0 | 2.0 |
 | [require_yaml_configuration_for_mf_time_spines](/reference/global-configs/behavior-flags/require_yaml_configuration_for_mf_time_spines) | 2024.10 | 2026.09 | 1.9.0 | 1.12.0 | 2.0 |
 | [require_batched_execution_for_custom_microbatch_strategy](/reference/global-configs/behavior-flags/require_batched_execution_for_custom_microbatch_strategy) | 2024.11 | 2026.09 | 1.9.0 | 1.12.0 | 2.0 |
-| [require_nested_cumulative_type_params](/reference/global-configs/behavior-flags/require_nested_cumulative_type_params) | 2024.11 | 2026.09 | 1.9.0 | 1.12.0 | - |
+| [require_nested_cumulative_type_params](/reference/global-configs/behavior-flags/require_nested_cumulative_type_params) | 2024.11 | 2026.09 | 1.9.0 | 1.12.0 | 2.0 |
 | [enable_truthy_nulls_equals_macro](/reference/global-configs/behavior-flags/enable_truthy_nulls_equals_macro) | 2025.02 | - | 1.9.0 | - | - |
 | [validate_macro_args](/reference/global-configs/behavior-flags/validate_macro_args) | 2025.03 | 2026.09 | 1.10.0 | 1.12.0 | - |
 | [require_all_warnings_handled_by_warn_error](/reference/global-configs/behavior-flags/require_all_warnings_handled_by_warn_error) | 2025.06 | 2026.09 | 1.10.0 | 1.12.0 | - |
@@ -57,20 +57,6 @@ This table outlines which month of the **v1 Latest** release track in <Constant 
 | [require_source_and_semantic_model_names_without_spaces](/reference/global-configs/behavior-flags/require_source_and_semantic_model_names_without_spaces) | 2026.4 | - | 1.12.0 | - | - |
 | [allow_jinja_file_extensions](/reference/global-configs/behavior-flags/allow_jinja_file_extensions) | 2026.5 | - | 1.12.0 | - | - |
 | [latest_version_pointer_enabled_by_default](/reference/global-configs/behavior-flags/latest_version_pointer_enabled_by_default) | 2026.5 | - | 1.12.0 | - | - |
-
-### Flags reaching maturity
-
-Several behavior change flags on the <Constant name="dbt_platform" /> `v1 Latest` release track are planned to reach maturity on September 1, 2026, switching their default values from `false` to `true`. The September 1 date applies only to the <Constant name="dbt_platform" /> release tracks. The flags have reached maturity in <Constant name="dbt" /> v1.12. For intro dates, refer to the <Constant name="core" /> behavior changes table.
-
-| Flag | Impact |
-|---|---|
-| [skip_nodes_if_on_run_start_fails](/reference/global-configs/behavior-flags/skip_nodes_if_on_run_start_fails) | Can stop build |
-| [require_nested_cumulative_type_params](/reference/global-configs/behavior-flags/require_nested_cumulative_type_params) | Can stop build (parse error) |
-| [require_all_warnings_handled_by_warn_error](/reference/global-configs/behavior-flags/require_all_warnings_handled_by_warn_error) | Can stop build (when `--warn-error` is set) |
-| [require_batched_execution_for_custom_microbatch_strategy](/reference/global-configs/behavior-flags/require_batched_execution_for_custom_microbatch_strategy) | Behavior change for custom microbatch macros |
-| [state_modified_compare_more_unrendered_values](/reference/global-configs/behavior-flags/state_modified_compare_more_unrendered_values) | Selection-set change with potential CI impact |
-| [require_yaml_configuration_for_mf_time_spines](/reference/global-configs/behavior-flags/require_yaml_configuration_for_mf_time_spines) | Suppresses a deprecation warning (no functional change) |
-| [validate_macro_args](/reference/global-configs/behavior-flags/validate_macro_args) | New warning for mismatched macro arguments; errors with `--warn-error` |
 
 ### Introduced in <Constant name="fusion" /> {#introduced-in-dbt-v2}
 
@@ -85,9 +71,9 @@ The following flags are specific to <Constant name="fusion" /> and have no equiv
 
 ### Adapter-specific behavior change flags
 
-This table outlines which version of the dbt adapter contains the behavior change's introduction (disabled by default) or maturity (enabled by default).
+This table outlines which version of the dbt adapter contains the behavior change's introduction (disabled by default) or maturity (enabled by default). Flags marked 2.0 are in the **Removed** column are removed in dbt v2 and the new behavior is always enabled.
 
-| Flag | dbt-ADAPTER: Intro | dbt-ADAPTER: Maturity | <Constant name="core" />: Removed |
+| Flag | dbt-ADAPTER: Intro | dbt-ADAPTER: Maturity | Removed |
 | ----------------------------- | ----------------------- | -------------------------- |-----------------|
 | [use_info_schema_for_columns](/reference/global-configs/databricks-changes#use-information-schema-for-columns) | Databricks 1.9.0 | - | 2.0 |
 | [use_user_folder_for_python](/reference/global-configs/databricks-changes#use-users-folder-for-python-model-notebooks) | Databricks 1.9.0 | - | 2.0 |

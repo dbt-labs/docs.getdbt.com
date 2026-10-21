@@ -7,10 +7,10 @@ on:
   workflow_dispatch:
     inputs:
       auto_close:
-        description: 'Close high-confidence matches (leave off for report-only)'
+        description: 'Close high-confidence matches (uncheck for report-only)'
         required: false
         type: boolean
-        default: false
+        default: true
       dry_run_close:
         description: 'If auto_close is on, print closes without applying them'
         required: false
@@ -42,7 +42,8 @@ jobs:
           # Needs access to dbt-labs/docs-internal issues.
           # Store a docs-team PAT (or bot token) as DOCS_INTERNAL_TOKEN.
           GH_TOKEN: ${{ secrets.DOCS_INTERNAL_TOKEN }}
-          AUTO_CLOSE: ${{ github.event_name == 'workflow_dispatch' && inputs.auto_close || false }}
+          # Schedule always closes high matches. Manual runs default to on; uncheck for report-only.
+          AUTO_CLOSE: ${{ github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && inputs.auto_close) }}
           DRY_RUN_CLOSE: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run_close || false }}
         run: |
           if [ -z "$GH_TOKEN" ]; then

@@ -31,8 +31,6 @@ const sidebarSettings = {
       link: { type: "doc", id: "docs/supported-data-platforms" },
       items: [
         "docs/supported-data-platforms",
-        "docs/connect-adapters",
-        "docs/trusted-adapters",
         "docs/community-adapters",
         "docs/contribute-dbt-adapters",
       ],
@@ -730,6 +728,7 @@ const sidebarSettings = {
                 "docs/build/iceberg/adapters/databricks-iceberg-support",
                 "docs/build/iceberg/adapters/bigquery-iceberg-support",
                 "docs/build/iceberg/adapters/duckdb-iceberg-support",
+                "docs/build/iceberg/adapters/aws-iceberg-support",
               ],
             },
           ],
@@ -871,10 +870,10 @@ const sidebarSettings = {
           label: "Set up dbt State",
           link: { type: "doc", id: "docs/deploy/dbt-state-setup" },
           items: [
-            "docs/deploy/dbt-state-setup", 
-            "docs/deploy/dbt-state-enable-jobs", 
-            "docs/deploy/dbt-state-enable-studio", 
-            "docs/deploy/dbt-state-cicd", 
+            "docs/deploy/dbt-state-setup",
+            "docs/deploy/dbt-state-enable-env-jobs",
+            "docs/deploy/dbt-state-enable-studio",
+            "docs/deploy/dbt-state-cicd",
             "docs/deploy/dbt-state-deferral",
           ],
         },
@@ -1435,6 +1434,7 @@ const sidebarSettings = {
             "reference/resource-properties/model_name",
             "reference/resource-configs/on_configuration_change",
             "reference/resource-configs/on_error",
+            "reference/resource-configs/python-model-configs",
             "reference/resource-configs/sql_header",
           ],
         },
@@ -1813,6 +1813,7 @@ const sidebarSettings = {
         description: "The list of Jinja functions and context variables available in dbt.",
       },
       items: [
+        "reference/jinja-file-support",
         {
           type: "category",
           label: "dbt Jinja context functions",
@@ -1820,7 +1821,7 @@ const sidebarSettings = {
             type: "generated-index",
             title: "dbt Jinja functions and context variables",
             description:
-              "In addition to the standard Jinja library, we've added additional functions and variables to the Jinja context that are useful when working with a dbt project. Note that dependencies.yml is not Jinja rendered and therefore does not support Jinja.",
+              "In addition to the standard Jinja library, we've added additional functions and variables to the Jinja context that are useful when working with a dbt project. For a file-by-file overview, refer to Jinja support by file type. Note that dependencies.yml is not Jinja rendered in dbt v1 and therefore, does not support Jinja.",
             slug: "/reference/dbt-jinja-functions-context-variables",
           },
           items: [
@@ -1888,6 +1889,7 @@ const sidebarSettings = {
             "best-practices/how-we-structure/3-intermediate",
             "best-practices/how-we-structure/4-marts",
             "best-practices/how-we-structure/5-the-rest-of-the-project",
+            "best-practices/how-we-structure/6-mapping-folders-to-warehouse",
           ],
         },
         {
@@ -1971,6 +1973,18 @@ const sidebarSettings = {
             "best-practices/how-we-handle-real-time-data/4-lambda-views",
             "best-practices/how-we-handle-real-time-data/5-views-only-pattern",
             "best-practices/how-we-handle-real-time-data/6-operational-considerations",
+          ],
+        },
+        {
+          type: "category",
+          label: "How to handle change data capture",
+          link: {
+            type: "doc",
+            id: "best-practices/how-we-handle-cdc/1-intro",
+          },
+          items: [
+            "best-practices/how-we-handle-cdc/1-intro",
+            "best-practices/how-we-handle-cdc/2-choosing-incremental-or-snapshots",
           ],
         },
         {

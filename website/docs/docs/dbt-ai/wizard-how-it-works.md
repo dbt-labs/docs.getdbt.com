@@ -14,24 +14,24 @@ import WizardArchitecturePlatform from '/snippets/_wizard-architecture-platform.
 Built for governed data development in dbt, <Constant name="wizard" /> understands your project, routes to the right dbt tools, and validates work with awareness of warehouse operations. Use it to investigate failed runs, debug models, assess impact, make changes, and ship trusted data work in one place.
 
 Most of how <Constant name="wizard" /> works is the same in [<Constant name="dbt_platform" />](/docs/platform/wizard-platform), [Wizard Desktop](/docs/dbt-ai/wizard-desktop), and in the [terminal CLI](/docs/dbt-ai/wizard-cli). The following sections explain shared behavior first, then call out what differs in each environment.
-## Native metadata engine
+## dbt Information Schema
 
-<Constant name="wizard" /> ships with a metadata engine &mdash; a pre-built, structured index of your entire project that's ready before your first prompt.
+<Constant name="wizard" /> uses the [dbt Information Schema](/docs/build/dbt-information-schema) &mdash; a contracted interface into your project’s metadata that's ready before your first prompt.
 
 Think of it like a map of your whole city: <Constant name="wizard" /> knows how everything connects before it starts, rather than walking every street to figure out the layout. (No <WizardPopcorn>crystal ball</WizardPopcorn> required.)
 
-That index gives <Constant name="wizard" /> four capabilities that aren't possible from file-reading alone:
+That metadata gives <Constant name="wizard" /> four capabilities that aren't possible from file-reading alone:
 
 <SimpleTable>
 | Capability | Description |
 |---|---|
-| Impact analysis | When you ask "what breaks if I change this column?", <Constant name="wizard" /> returns the exact set of downstream models, metrics, tests, and exposures affected — instantly, from the index. Column-level lineage is tracked, so <Constant name="wizard" /> knows not just which models reference a table, but which ones reference that specific column. |
+| Impact analysis | When you ask "what breaks if I change this column?", <Constant name="wizard" /> returns the exact set of downstream models, metrics, tests, and exposures affected — instantly, from the dbt Information Schema. Column-level lineage is tracked, so <Constant name="wizard" /> knows not just which models reference a table, but which ones reference that specific column. |
 | Health checks | <Constant name="wizard" /> knows which models have tests, which don't, which have stale data, which have failing contracts, and which had recent run failures — as a structured dataset. You can ask "what's unhealthy in this part of my DAG?" and get a precise answer without running anything. |
 | Data profiling | <Constant name="wizard" /> can profile your data — row counts, column distributions, null rates — and use that context when deciding how to build or refactor a model. It can reason about your data without materializing models or running expensive queries. |
 | Validation planning | <Constant name="wizard" /> uses project metadata to identify affected resources and choose relevant checks. In the CLI, you control the depth of structured validation before commands run. |
 </SimpleTable>
 
-<Constant name="wizard" /> builds and updates this index from dbt artifacts. In <Constant name="dbt_platform" />, project state comes from your connected development environment. In the terminal, run `dbt parse`, `dbt compile`, or `dbt build` before a session so <Constant name="wizard" /> has your latest local project state.
+<Constant name="wizard" /> builds and updates this metadata from dbt artifacts. In <Constant name="dbt_platform" />, project state comes from your connected development environment. In the terminal, run `dbt parse`, `dbt compile`, or `dbt build` before a session so <Constant name="wizard" /> has your latest local project state.
 
 :::note dbt version shown in the status panel
 The dbt version <Constant name="wizard" /> displays comes from your project's manifest (`target/manifest.json`), not the `dbt` executable on your `PATH`. If you generated the manifest with a different binary, <Constant name="wizard" /> reports that version until you recompile. Run `dbt compile` (or `dbt parse`/`dbt build`) with your intended dbt to refresh the manifest and the displayed version.
@@ -108,6 +108,10 @@ In the platform, a session is a saved conversation in the <Constant name="wizard
 - Review prior prompts, responses, and proposed changes in the conversation list
 
 Start a new session with **Start new dbt Wizard chat** in the panel. Chat history is retained for 90 days. Refreshing the same browser tab keeps your active session; opening a new tab starts empty.
+
+:::tip Start a new chat for each task
+Use a separate chat for each discrete unit of work, such as building one model, debugging one job failure, or reviewing a change. A focused conversation keeps the context relevant to the task, so <Constant name="wizard" /> doesn't carry over assumptions from unrelated work. Return to an existing chat only when you're continuing that same task.
+:::
 
 For Studio-specific behavior and availability, refer to [<Constant name="wizard" /> in Studio IDE](/docs/dbt-ai/wizard-ide).
 
@@ -223,6 +227,10 @@ wizard resume --last # resume the most recent session
 ```
 
 Local sessions are saved on your machine, in the CLI and in Wizard Desktop alike. This is separate from platform conversations, which are stored in your <Constant name="dbt_platform" /> account.
+
+:::tip Start a new session for each task
+Use a separate session for each discrete unit of work, such as building one model, debugging one job failure, or reviewing one change. Resume a previous session only when you're continuing the same task. In the CLI, type `/new` to start fresh without leaving the TUI, or type `/compact` to summarize the conversation if a long session for a single task approaches the context limit. For more information, refer to [Slash commands](/docs/dbt-ai/wizard-slash-commands).
+:::
 
 ## Related docs
 

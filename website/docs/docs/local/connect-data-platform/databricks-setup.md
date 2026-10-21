@@ -33,7 +33,7 @@ The Databricks adapter for <Constant name="fusion" /> supports the following [au
 
 ## Warehouse permissions for <Constant name="fusion" />
 
-import FusionDatabricksWarehousePerms from '/snippets/_fusion-warehouse-permissions-databricks.md';
+import FusionDatabricksWarehousePerms from '/snippets/_v2-warehouse-permissions-databricks.md';
 
 <FusionDatabricksWarehousePerms />
 
@@ -143,6 +143,34 @@ default:
 </TabItem>
 
 </Tabs>
+
+## Optional connection settings
+
+Add these optional fields to your Databricks output in `profiles.yml` to control connection timeouts and retries.
+
+| Profile field | Description | Default |
+| --- | --- | --- |
+| `connect_timeout` | How many seconds dbt waits for a connection to Databricks before giving up. Enter a number greater than `0`, or dbt returns an error. For example, `600` becomes 600s (10 mins). Raise this if your jobs start while your SQL warehouse is still starting up. | `200` |
+| `connect_retries` | The number of times dbt should retry the connection to Databricks after the first attempt fails. A retry runs only when Databricks marks the error as retryable, or when `retry_all` is `true`. | `1` |
+| `retry_all` | Set to `true` to retry every connection error. Set to `false` to retry only errors Databricks marks as retryable. | `false` |
+
+These settings apply only to connecting. They don't retry queries that fail after dbt has connected.
+
+#### Example
+
+The following example sets `connect_timeout` to `600` (10 minutes) so dbt can wait for a SQL warehouse that is still starting.
+
+<File name="profiles.yml">
+
+```yml
+outputs:
+  dev:
+    type: databricks
+    # ...your other connection fields
+    connect_timeout: 600
+```
+
+</File>
 
 ## More information
 

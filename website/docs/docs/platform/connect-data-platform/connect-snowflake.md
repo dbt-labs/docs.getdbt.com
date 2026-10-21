@@ -21,7 +21,7 @@ Refer to [Snowflake permissions](/reference/database-permissions/snowflake-permi
 
 ## Warehouse permissions for <Constant name="fusion" />
 
-import FusionSnowflakeWarehousePerms from '/snippets/_fusion-warehouse-permissions-snowflake.md';
+import FusionSnowflakeWarehousePerms from '/snippets/_v2-warehouse-permissions-snowflake.md';
 
 <FusionSnowflakeWarehousePerms />
 
@@ -80,7 +80,7 @@ If you are creating Snowflake credentials for the first time in <Constant name="
 
 #### dbt v2 key pair
 
-import FusionKeyPair from '/snippets/_fusion-key-pair.md';
+import FusionKeyPair from '/snippets/_v2-key-pair.md';
 
 <FusionKeyPair />
 

@@ -23,7 +23,7 @@ import SaoDeprecated from '/snippets/_sao-deprecated.md';
 
 <SaoDeprecated />
 
-import FusionLifecycle from '/snippets/_fusion-lifecycle-callout.md';
+import FusionLifecycle from '/snippets/_v2-lifecycle-callout.md';
 
 <FusionLifecycle />
 
@@ -67,7 +67,6 @@ To create a state-aware job:
 
 - **Execution settings** section:
      - **Commands**: By default, it includes the `dbt build` command. Click **Add command** to add more [commands](/docs/deploy/job-commands) that you want to be invoked when the job runs.
-     - **Generate docs on run**: Enable this option if you want to [generate project docs](/docs/build/documentation) when this deploy job runs.
      - **Enable dbt v2 cost optimization features**: Select this option to enable **State-aware orchestration**. **Efficient testing** is disabled by default. You can expand **More options** to enable or disable individual settings. 
 - **Triggers** section:
     - **Run on schedule**: Run the deploy job on a set schedule.

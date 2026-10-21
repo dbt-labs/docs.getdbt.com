@@ -45,6 +45,12 @@ Learn how to add more configurations to your dbt project or adapter, use propert
     icon="computer"/>
 
 <Card
+    title="Jinja support by file type"
+    body="Which dbt file types support Jinja expressions, built-in functions, and custom macros."
+    link="/reference/jinja-file-support"
+    icon="computer"/>
+
+<Card
     title="dbt Jinja functions and context variables"
     body="Additional functions and variables to the Jinja context that are useful when working with a dbt project."
     link="/reference/dbt-jinja-functions-context-variables"
