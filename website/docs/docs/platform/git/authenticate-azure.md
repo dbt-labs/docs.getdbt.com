@@ -30,7 +30,7 @@ You will be directed back to <Constant name="dbt" />, and your profile should be
 
 ## Troubleshooting
 
-The following section provides troubleshooting steps for common issues when authenticating with Azure DevOps.
+Use these troubleshooting steps for common issues when authenticating with Azure DevOps.
 
 <Expandable alt_header="Missing Azure user error when starting Studio">
 
