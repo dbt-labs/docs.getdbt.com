@@ -21,7 +21,7 @@
   :local(.copyIcon) {
     width: 12px;
     height: 12px;
-    background-image: url('/img/copy.png');
+    background-image: /* webpackIgnore: true */ url('/img/copy.png');
     background-size: contain;
     background-repeat: no-repeat;
     opacity: 0;
@@ -118,7 +118,7 @@ details[open] :local(.toggle)::before {
     display: inline-block;
     width: 12px;
     height: 12px;
-    background-image: url('/img/copy.png');
+    background-image: /* webpackIgnore: true */ url('/img/copy.png');
     background-size: contain;
     background-repeat: no-repeat;
     opacity: 0; /* Start with icon hidden */

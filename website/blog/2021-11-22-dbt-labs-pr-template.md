@@ -72,7 +72,7 @@ Checking for things like modularity and 1:1 relationships between sources and st
 
 This section should show something to confirm that your model is doing what you intended it to do. This could be a [dbt test](/docs/build/data-tests) like uniqueness or not null, or could be an ad-hoc query that you wrote to validate your data. Here is a screenshot from a test run on a local development branch:
 
-<Lightbox src="/img/blog/pr-template-test-validation.png" title="test validation" />
+<Lightbox src="/img/blog/pr-template-test-validation.png" title="Test validation" />
 
 Adding uniqueness tests shows that you have put thought into the <Term id="grain" /> of each of your models, and then ensures that those assumptions hold true over time. 
 
@@ -99,7 +99,7 @@ This also makes things much easier on your reviewer. Reviewing a PR with multipl
 
 Think of yourself! What if you need to roll back a change, but in a moment of post-coding fogginess, you made a massive commit of unrelated concepts that “updated all the things”. Woof.
 
-<Lightbox src="/img/blog/pr-template-woof.gif" title="woof" />
+<Lightbox src="/img/blog/pr-template-woof.gif" title="Woof" />
 
 **My SQL follows the [dbt Labs style guide](https://github.com/dbt-labs/corp/blob/master/dbt_style_guide.md).**
 
@@ -115,7 +115,7 @@ Documentation follows the same reasoning as the PR description. You will know mo
 
 This is all about performance. Our ultimate goal is to model data such that end users can easily and efficiently query the resulting database objects.
 
-<Lightbox src="/img/blog/pr-template-fct-meme.jpeg" title="choose your materializations wisely" />
+<Lightbox src="/img/blog/pr-template-fct-meme.jpeg" title="Choose your materializations wisely" />
 
 
 **I have updated the README file.**  

@@ -53,7 +53,7 @@ The answers to these questions should help you navigate through the four options
 ## Option 1: One Repository
 ------------------------------------------------------
 
-<Lightbox src="/img/blog/monorepo-52954083da8268c53f27a578b4b5722b35803b03_2_624x439.png" title="one repository" />
+<Lightbox src="/img/blog/monorepo-52954083da8268c53f27a578b4b5722b35803b03_2_624x439.png" title="One repository" />
 
 This is the most common structure we see for dbt repository configuration. Though the illustration separates models by business unit, all of the SQL files are stored and organized in a single repository.
 
@@ -78,7 +78,7 @@ This is our most time tested option and our most recommended. However, we have s
 ## Option 2: Separate Team Repository with One Shared Repository
 --------------------------------------------------------------------------------------------------------------------------------
 
-<Lightbox src="/img/blog/monorepo-3d6f91c1ab275d953417d2239f66e8f81bad7078_2_600x217.png" title="separate repository" />
+<Lightbox src="/img/blog/monorepo-3d6f91c1ab275d953417d2239f66e8f81bad7078_2_600x217.png" title="Separate repository" />
 
 This is one of the first structures we see people move toward when they “outgrow” the mono repo: there is one “core” repository that is incorporated into team specific repositories as a package. If you aren’t familiar with packages, [see the documentation](https://docs.getdbt.com/docs/build/packages/) for more information.
 
@@ -111,7 +111,7 @@ This is the option I recommend the most when one must stray away from Option 2. 
 ## Option 3: Completely Separate Repositories
 ------------------------------------------------------------------------------------------
 
-<Lightbox src="/img/blog/monorepo-7f6c787766d980479e44a0419e845bc2fc80fa1a_2_296x390.png" title="completely separate repos" />
+<Lightbox src="/img/blog/monorepo-7f6c787766d980479e44a0419e845bc2fc80fa1a_2_296x390.png" title="Completely separate repos" />
 
 Then, there is the “don’t allow any overlap” complete separation of repositories within a single organization.
 
@@ -132,7 +132,7 @@ There is a time and a place where this makes sense but you start to lose the reu
 ## Option 4: Separate Team Repositories + One Documentation Repository
 ------------------------------------------------------------------------------------------------------------------------------------------
 
-<Lightbox src="/img/blog/monorepo-275ba0c84ef31370a57f125ac13a0cbcb808af9a_2_600x365.png" title="separate team repositories" />
+<Lightbox src="/img/blog/monorepo-275ba0c84ef31370a57f125ac13a0cbcb808af9a_2_600x365.png" title="Separate team repositories" />
 
 This approach is nearly identical to the former (completely separate repositories) but solves one of the weaknesses (“incomplete lineage/documentation”) by introducing an additional repository. If you need something akin to Option 3, this is the better approach.
 

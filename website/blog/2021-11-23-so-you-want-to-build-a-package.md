@@ -158,7 +158,7 @@ This is basically pineapple on pizza. It’s an alternative use case where you m
 
 Here is a diagram that shows the workflow. You might notice that this looks a lot like how you might work on a dbt project and you would be absolutely right. Once again, you just need to know dbt and SQL to create a package :)
 
-<Lightbox src="/img/blog/how_to_build_a_package_image_0.png" title="image alt text" />
+<Lightbox src="/img/blog/how_to_build_a_package_image_0.png" title="Image alt text" />
 
 Now let’s deep dive into what happens in this flow.
 
