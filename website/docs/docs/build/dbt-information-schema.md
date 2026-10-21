@@ -37,11 +37,11 @@ Use `--generate-info-schema` flag with `dbt build`, `dbt run`, `dbt compile`, or
   dbt build --generate-info-schema --static-analysis strict
   ```
 
-  Without `--static-analysis strict`, `dbt.node_columns` and `dbt.column_lineage` contain no column types and no lineage.
-
   dbt infers column types from your SQL for model columns only. For sources, dbt includes only columns declared in YAML, and their `data_type_inferred` reflects the YAML-declared type, not a SQL-inferred type. dbt omits sources without `columns:` entries from `dbt.node_columns` entirely.
 
-- To include warehouse column types and all source columns in `dbt.node_columns`, add [`--write-catalog`](/reference/commands/cmd-docs#--write-catalog-flag) when using `dbt build` or `dbt run`:
+  Without `--static-analysis strict`, `dbt.node_columns` has no inferred column types and `dbt.column_lineage` is empty. To get warehouse column types without strict analysis, use `--write-catalog`.
+
+- To add warehouse column types and all columns from sources used by the selected nodes to `dbt.node_columns`, add [`--write-catalog`](/reference/commands/cmd-docs#--write-catalog-flag) when using `dbt build` or `dbt run`:
 
   ```shell
   dbt build --generate-info-schema --static-analysis strict --write-catalog
