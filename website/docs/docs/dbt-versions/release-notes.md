@@ -28,7 +28,6 @@ For <Constant name="fusion_engine" /> updates, refer to the [v2 changelog](https
 - **Enhancement:** <Constant name="wizard" /> now displays how long each turn took at the bottom of every completed turn. For previously loaded conversations, the completion timestamp is also shown.
 - **Fix:** If you manage access through SCIM (your identity provider, like Okta or Microsoft Entra ID), you can change the user's license type before they even log in. Previously this only worked for active users, but now it works for pending and not-yet-fully-signed-in users too. dbt still checks that you have an available seat of that license type before applying any change.
 - **Fix:** API requests with an invalid permission value or a malformed body now return a descriptive error instead of a server error.
-
 - **New:** dbt State trial and DATT allowance updates:
   - **New:** Self-hosted dbt users using dbt State now get a free plan after their trial ends, with 1,000 daily active target tables (DATT) per month at no cost. Developer and paid <Constant name="dbt_platform" /> accounts also receive a monthly DATT allowance, with amounts and availability varying by plan. For more information, refer to [dbt State usage](/docs/platform/billing/dbt-state-usage).
   - **New:** When your dbt State trial ends, you’ll receive an email confirming your plan, monthly DATT allowance, and allowance end date if your plan has one.
