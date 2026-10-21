@@ -187,7 +187,7 @@ select * from analytics.orders;
 
 ### Redshift
 
-Leave the default quoting values. You can omit `quoting` in `dbt_project.yml`, or set `database`, `schema`, and `identifier` to `true`. If that block already matches the defaults, leave it. Do not change `quoting` to work around mixed-case names. If you need mixed-case names, turn on Redshift's `enable_case_sensitive_identifier` setting instead.
+Leave the default quoting values. You can omit `quoting` in `dbt_project.yml`, or set `database`, `schema`, and `identifier` to `true`. If that block already matches the defaults, leave it. Do not change `quoting` to work around mixed-case names. If you need mixed-case names, turn on Redshift's `enable_case_sensitive_identifier` setting instead. If you set `quoting` to `false`, Redshift still lowercases the name, even when that setting is `true`.
 
 By default, Redshift lowercases database, schema, table, and column names, even when they're quoted, so <Constant name="dbt" /> can't preserve the case of a model or column name. There's no `dbt_project.yml` option for this. To keep the case of quoted names, turn on the Redshift setting `enable_case_sensitive_identifier`:
 
@@ -196,7 +196,7 @@ By default, Redshift lowercases database, schema, table, and column names, even 
 
 You can set this parameter to `true` for a cluster or workgroup. A `SET` command applies only to the current session. Refer to [Turn on case sensitivity](https://docs.aws.amazon.com/redshift/latest/mgmt/zero-etl-setting-up.case-sensitivity.html) and the [parameter reference](https://docs.aws.amazon.com/redshift/latest/dg/r_enable_case_sensitive_identifier.html) in the Amazon Redshift documentation.
 
-The following statements show the difference. Run them in a Redshift session. With the setting off, quoted names are lowercased:
+The following example shows the difference between setting the parameter to `false` or `true` when run in a Redshift session:
 
 <File name="redshift_casing.sql">
 
