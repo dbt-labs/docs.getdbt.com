@@ -107,21 +107,38 @@ jobs:
 
       # New commits, a new label, or a human review can push a PR out of the
       # safe zone. Withdraw everything the bot did so the PR looks untouched.
+      # GITHUB_TOKEN can't dismiss reviews: branch protection only lets the
+      # Product Docs team (and listed apps) dismiss. This short-lived token comes
+      # from a dedicated GitHub App that is on that list and has only
+      # pull-requests: write. It is used for the dismiss call and nothing else.
+      - name: Create dismissal token
+        id: dismiss-token
+        if: steps.risk.outputs.eligible != 'true'
+        uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
+        with:
+          app-id: ${{ secrets.DISMISS_APP_ID }}
+          private-key: ${{ secrets.DISMISS_APP_KEY }}
+          permission-pull-requests: write
+
       - name: Withdraw when no longer low-risk
         if: steps.risk.outputs.eligible != 'true'
         uses: actions/github-script@f28e40c7f34bde8b3046d885e986cb6290c5673b # v7
         env:
           REASONS: ${{ steps.risk.outputs.reasons }}
+          DISMISS_TOKEN: ${{ steps.dismiss-token.outputs.token }}
         with:
           script: |
             const { owner, repo } = context.repo
             const pull_number = context.payload.pull_request.number
             const marker = '<!-- auto-approve-low-risk -->'
 
+            // Only the dismiss call uses the app token.
+            const dismisser = getOctokit(process.env.DISMISS_TOKEN)
+
             const reviews = await github.paginate(github.rest.pulls.listReviews, { owner, repo, pull_number })
             for (const r of reviews) {
               if (r.user.login === 'github-actions[bot]' && r.state === 'APPROVED') {
-                await github.rest.pulls.dismissReview({
+                await dismisser.rest.pulls.dismissReview({
                   owner, repo, pull_number, review_id: r.id,
                   message: `No longer low-risk: ${process.env.REASONS}`,
                 })
