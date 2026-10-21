@@ -18,13 +18,9 @@ meta:
 availability: local_free
 ---
 
-import SnowflakeAuth from '/snippets/_snowflake-auth.md';
-
 <VersionBlock firstVersion="2.0">
 
 # Connect Snowflake to <Constant name="fusion" />
-
-<SnowflakeAuth />
 
 You can configure the Snowflake adapter by running `dbt init` in your CLI or manually providing the `profiles.yml` file with the fields configured for your authentication type. To check out which Snowflake functions are supported in <Constant name="fusion"/> in `strict` mode, refer to [Snowflake function support](/reference/resource-configs/snowflake-function-support).
 
@@ -65,7 +61,7 @@ Executing `dbt init` in your CLI will prompt for the following fields:
 - **Database:** The database within your Snowflake account to connect to your project
 - **Warehouse:** The compute warehouse that will handle the tasks for your project
 - **Schema:** The development/staging/deployment schema for the project
-- **Role (Optional):** The role dbt should assume when connnecting to the warehouse
+- **Role (Optional):** The role dbt should assume when connecting to the warehouse
 
 
 Alternatively, you can manually create the `profiles.yml` file and configure the fields. See examples in [authentication](#supported-authentication-types) section for formatting. If there is an existing `profiles.yml` file, you are given the option to retain the existing fields or overwrite them. 
@@ -136,7 +132,7 @@ import FusionKeyPair from '/snippets/_v2-key-pair.md';
 
 <FusionKeyPair />
 
-  Once the key is configuted, you will be given the option to provide a passphrase, if required. 
+  Once the key is configured, you will be given the option to provide a passphrase, if required. 
 
 #### Example key pair configuration
 
@@ -203,8 +199,6 @@ Find Snowflake-specific configuration information in the [Snowflake adapter refe
 <VersionBlock lastVersion="1.99">
 
 # Connect Snowflake to <Constant name="core" />
-
-<SnowflakeAuth />
 
 <ProductCard text="dbt v2 compatible" url="/docs/local/connect-data-platform/snowflake-setup?version=2" /> connection also available.
 

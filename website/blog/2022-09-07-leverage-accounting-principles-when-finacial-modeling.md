@@ -48,7 +48,7 @@ Similarly, the header and line item detail table schema version is great for und
 
 Regardless of which scenario you find your financial data in, it is best to take some time to gain an understanding of the schema design. The next step is going to involve using the raw table(s) to begin the financial modeling journey.
 
-![](/img/blog/2022-09-07-leverage-accounting-principles-when-financial-modeling/hobbit-adventure.gif)
+<Lightbox src="/img/blog/2022-09-07-leverage-accounting-principles-when-financial-modeling/hobbit-adventure.gif" />
 
 ## Step 2: Generating the General Ledger/Transaction Detail Report
 The General Ledger/Transaction Detail report rests at the core of every company's financial story. This report will contain every verifiable transaction (cash coming in, cash going out, etc.) that has taken place within the company, but with a fun accounting twist!
@@ -90,7 +90,7 @@ Once you ensure you’re properly accounting for the double entry method in the 
 
 At this point, regardless of which schema design you began with, you should be at the same place with a single table that contains all your transactions (and their offsetting entry) across the company! Now you can start joining in your <Term id="dimensional-modeling">dimensional fields</Term> such as vendor name, account name, account type, and account classification to name a few. Okay, now that I mention account classification, it is a crucial component for building your end financial models and I should talk more about it.
 
-![](/img/blog/2022-09-07-leverage-accounting-principles-when-financial-modeling/top-gun-classified.gif)
+<Lightbox src="/img/blog/2022-09-07-leverage-accounting-principles-when-financial-modeling/top-gun-classified.gif" />
 
 ## Step 3: Verify the Account Classifications
 All financial data sources will have some variation of the company chart of accounts. Typically this is in the form of the accounts table. This table is able to be joined to the General Ledger to enrich your transactions with the corresponding account information. This is an extremely important piece of the equation as you want to make sure the transactions are impacting the right accounts and are being classified correctly. The account classification allows you to identify if the account is either an Asset, Liability, Equity, Expense or Revenue account. In turn, this then serves as the key component in generating the Balance Sheet and Income Statement reports.
@@ -99,7 +99,7 @@ Sometimes you will get lucky and the account classification will be provided wit
 
 Once you verify, or create, the account classification field, you are safe to join the account (and other dimensional) tables with your General Ledger table. Now that everything is joined together, you will start to see the tapestry of the financial history unfolding before your eyes. Beautiful, isn’t it. Time really flies when you are having fun. Actually, now that I am on the topic of time, I can’t wait to talk about the next step. Aggregating your General Ledger data by a date period!
 
-![](/img/blog/2022-09-07-leverage-accounting-principles-when-financial-modeling/office-its-a-date.gif)
+<Lightbox src="/img/blog/2022-09-07-leverage-accounting-principles-when-financial-modeling/office-its-a-date.gif" />
 
 ## Step 4: General Ledger by Period and the Date Spine
 As of right now, your Finance team is probably ecstatic that they currently have a fully functional (and, most importantly, accurate) General Ledger available. While this is great, it can be quite difficult to generate the final financial statements with the data in this format. It will be much easier to wrangle the data if it is aggregated into date periods by account. While you can aggregate by whichever period you like, I suggest aggregating by month, as it allows you and your Finance team to slice and dice by month/quarter/annual to your liking. In order to achieve this, you are going to use our best friend - the date spine.
@@ -120,7 +120,7 @@ I recommend referencing the dbt_quickbooks [general_ledger_balances](https://git
 
 There has been a lot to retain up to this point, but you are almost ready to finish the process and generate the final financial statements without any additional adjustments. Before you get there, you need to capture the Retained Earnings/Adjusted Income entries!
 
-![](/img/blog/2022-09-07-leverage-accounting-principles-when-financial-modeling/crown-adjustment.gif)
+<Lightbox src="/img/blog/2022-09-07-leverage-accounting-principles-when-financial-modeling/crown-adjustment.gif" />
 
 ## Step 5: Retained Earnings / Adjusted Income
 
@@ -130,7 +130,7 @@ Thankfully, the bulk of the heavy lifting has already been completed in Step 4 a
 
 With that, you are finally at the last piece of aggregating the General Ledger by Period! Combining the Retained Earnings/Adjusted Income model with the General Ledger by Period model.
 
-![](/img/blog/2022-09-07-leverage-accounting-principles-when-financial-modeling/captain-planet-combine.gif)
+<Lightbox src="/img/blog/2022-09-07-leverage-accounting-principles-when-financial-modeling/captain-planet-combine.gif" />
 
 ## Step 6: Finish the General Ledger by Period Model
 
@@ -138,7 +138,7 @@ Union the General Ledger by Period model with your Retained Earnings/Adjusted In
 
 Now you can finally move into the last steps and generate the Balance Sheet and Income Statement/Profit and Loss statements.
 
-![](/img/blog/2022-09-07-leverage-accounting-principles-when-financial-modeling/devil-prada-glacial-pace.gif)
+<Lightbox src="/img/blog/2022-09-07-leverage-accounting-principles-when-financial-modeling/devil-prada-glacial-pace.gif" />
 
 ## Step 7: Generate the Balance Sheet Report
 
@@ -146,7 +146,7 @@ To create the Balance Sheet, you can now simply reference your General Ledger by
 
 Wow that was easy. It can’t be that simple to generate the Income Statement/Profit and Loss report, right?
 
-![](/img/blog/2022-09-07-leverage-accounting-principles-when-financial-modeling/supranos-bada-bing.gif)
+<Lightbox src="/img/blog/2022-09-07-leverage-accounting-principles-when-financial-modeling/supranos-bada-bing.gif" />
 
 ## Step 8: Generate the Income Statement / Profit and Loss Report
 
@@ -154,12 +154,12 @@ To create the Income Statement/Profit and Loss report you can now simply referen
 
 Geez, I wasn't kidding. It really is that easy!
 
-![](/img/blog/2022-09-07-leverage-accounting-principles-when-financial-modeling/supranos-boom.gif)
+<Lightbox src="/img/blog/2022-09-07-leverage-accounting-principles-when-financial-modeling/supranos-boom.gif" />
 
 # That’s a wrap!
 You just walked through a _quick_ 8 step process to take your financial data from raw to comprehensive financial statements. I have little doubts you are currently being given a calzone party by your entire Finance team for generating the perfect financial reports!
 
-![](/img/blog/2022-09-07-leverage-accounting-principles-when-financial-modeling/parks-and-rec-ben-wyatt.gif)
+<Lightbox src="/img/blog/2022-09-07-leverage-accounting-principles-when-financial-modeling/parks-and-rec-ben-wyatt.gif" />
 
 This is by no means a simple process, but the silver lining is that this is similarly performed by countless other analysts. You now have the knowledge to go forth and wrangle your own financial data with the same principles other analysts have used. Additionally, with the advent of dbt packages you can directly leverage the past work of other analysts by using the pre-built financial models without any modifications on your end! 
 
