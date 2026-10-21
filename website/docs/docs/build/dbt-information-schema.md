@@ -47,7 +47,7 @@ Use `--generate-info-schema` flag with `dbt build`, `dbt run`, `dbt compile`, or
   dbt build --generate-info-schema --static-analysis strict --write-catalog
   ```
 
-  With `--write-catalog`, models get both `data_type_inferred` and `data_type_actual`. Sources get `data_type_actual` only; `data_type_inferred` stays `NULL` for sources.
+  With `--write-catalog`, models get both `data_type_inferred` and `data_type_actual`. Sources get `data_type_actual` for all their columns; `data_type_inferred` is only populated for sources where the YAML declares a `data_type`.
 
 - For [`dbt parse`](/reference/commands/parse), the Information Schema contains no column types, no lineage, and no runtime results, because `dbt parse` doesn't connect to your warehouse.
 
