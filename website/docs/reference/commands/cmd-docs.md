@@ -244,19 +244,37 @@ Both write artifacts, but only `dbt docs generate` builds a documentation site y
 
 ## Commands for generating metadata
 
-Each flag targets different metadata and use cases. Find the right command in the table below; [Flag reference](#flag-reference) breaks down what each flag generates and where it writes.
+Each flag targets different metadata and use cases. Find the right command below; [Flag reference](#flag-reference) breaks down what each flag generates and where it writes.
 
-<SimpleTable>
+- To display inferred model column types and column-level lineage in [dbt Docs v2](#dbt-docs-v2):
 
-| Goal | Command |
-|------|---------|
-| Display inferred model column types and column-level lineage in [dbt Docs v2](#dbt-docs-v2) | `dbt build --generate-info-schema --static-analysis strict`, then `dbt docs generate --no-compile` |
-| Generate the [dbt Information Schema](/docs/build/dbt-information-schema) with inferred model column types and column-level lineage | `dbt build --generate-info-schema --static-analysis strict` |
-| Generate the dbt Information Schema with inferred model column types and column-level lineage, plus warehouse types and all columns from sources used by the selected nodes | `dbt build --generate-info-schema --static-analysis strict --write-catalog` |
-| Generate the dbt Information Schema with warehouse column types only | `dbt build --generate-info-schema --write-catalog` |
-| Generate [`catalog.json`](/reference/artifacts/catalog-json) with warehouse column types | `dbt build --write-catalog` |
+  ```shell
+  dbt build --generate-info-schema --static-analysis strict
+  dbt docs generate --no-compile
+  ```
 
-</SimpleTable>
+- To generate the [dbt Information Schema](/docs/build/dbt-information-schema) with inferred model column types and column-level lineage:
+
+  ```shell
+  dbt build --generate-info-schema --static-analysis strict
+  ```
+
+- To generate the dbt Information Schema with inferred model column types and column-level lineage, plus warehouse types and all columns from sources used by the selected nodes:
+
+  ```shell
+  dbt build --generate-info-schema --static-analysis strict --write-catalog
+  ```
+
+- To generate the dbt Information Schema with warehouse column types only:
+  ```shell
+  dbt build --generate-info-schema --write-catalog
+  ```
+
+- To generate [`catalog.json`](/reference/artifacts/catalog-json) with warehouse column types:
+
+  ```shell
+  dbt build --write-catalog
+  ```
 
 #### Flag reference
 
