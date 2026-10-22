@@ -420,6 +420,52 @@ my-snowflake-db:
       token: [OAuth refresh token]
 ```
 
+<VersionBlock firstVersion="1.12">
+
+### Workload identity federation
+
+Workload identity federation (WIF) lets you authenticate to Snowflake from a cloud workload using that platform's identity, instead of a password or key. You can use OpenID Connect (OIDC), for example GitHub Actions, or a native identity from AWS, Azure, or GCP.
+
+Before you configure dbt, create a Snowflake service user with workload identity. For that setup, refer to [Snowflake's workload identity federation documentation](https://docs.snowflake.com/en/user-guide/workload-identity-federation).
+
+In your `profiles.yml` file, set `authenticator` to `workload_identity` and set `workload_identity_provider` to `OIDC`, `AWS`, `AZURE`, or `GCP`. The `user` field is optional for this method.
+
+The following example uses OIDC. For AWS, Azure, or GCP, use the same configuration, change `workload_identity_provider`, and omit `token` unless your provider requires one.
+
+<File name='~/.dbt/profiles.yml'>
+
+```yaml
+my-snowflake-db:
+  target: dev
+  outputs:
+    dev:
+      type: snowflake
+      account: ACCOUNT_ID  # Snowflake account identifier
+      role: USER_ROLE  # Snowflake role to assume
+      database: DATABASE_NAME  # Snowflake database
+      warehouse: WAREHOUSE_NAME  # Snowflake warehouse
+      schema: SCHEMA_NAME  # dbt schema
+      threads: 1
+
+      authenticator: workload_identity
+      workload_identity_provider: OIDC  # Or AWS, AZURE, or GCP
+      token: "{{ env_var('SNOWFLAKE_TOKEN') }}"  # OIDC token
+```
+
+</File>
+
+Set these fields in your `profiles.yml` file:
+
+| Config | Required? | Description |
+| ------ | --------- | ----------- |
+| `authenticator` | Yes | Set to `workload_identity`. |
+| `workload_identity_provider` | Yes | The identity provider. Must be `OIDC`, `AWS`, `AZURE`, or `GCP`. |
+| `token` | No | The OIDC token. Typically required for OIDC. You can pass it with `env_var()`. |
+| `workload_identity_entra_resource` | No | Azure only. Leave this unset unless Snowflake expects a custom Entra app as the token audience. Set it to that app's application ID URI (for example `api://APPLICATION_ID`). |
+| `platform_detection_timeout_seconds` | No | Set to a positive value when you use AWS, Azure, or GCP so the connector can detect the cloud environment. Defaults to `0.0`, which skips detection. |
+
+</VersionBlock>
+
 ## Configurations
 
 The "base" configs for Snowflake targets are shown below. Note that you should also specify auth-related configs specific to the authentication method you are using as described above.
@@ -429,7 +475,7 @@ The "base" configs for Snowflake targets are shown below. Note that you should a
 | Config | Required? | Description |
 | ------ | --------- | ----------- |
 | account | Yes | The account to connect to as per [Snowflake's documentation](https://docs.snowflake.com/en/user-guide/intro-regions.html#specifying-region-information-in-your-account-hostname). See notes [below](#account) |
-| user | Yes | The user to log in as |
+| user | Yes | The user to log in as. Optional for workload identity federation. |
 | database | Yes | The database that dbt should create models in |
 | warehouse | Yes | The warehouse to use when building models |
 | schema | Yes | The schema to build models into by default. Can be overridden with [custom schemas](/docs/build/custom-schemas) |
@@ -461,7 +507,7 @@ The Snowflake connector uses the `platform_detection_timeout_seconds` parameter 
 
 
 - Set to `0.0` (default) to disable cloud platform detection for faster connections.
-- Set to a positive value only if you're using WIF authentication, which requires the connector to detect the cloud environment.
+- Set to a positive value if you're using WIF with AWS, Azure, or GCP, which requires the connector to detect the cloud environment.
 
 ### query_tag
 
