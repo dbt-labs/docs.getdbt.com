@@ -187,9 +187,9 @@ select * from analytics.orders;
 
 ### Redshift
 
-Leave the default quoting values. You can omit `quoting` in `dbt_project.yml`, or set `database`, `schema`, and `identifier` to `true`. If that block already matches the defaults, leave it. Do not change `quoting` to work around mixed-case names. If you need mixed-case names, turn on Redshift's `enable_case_sensitive_identifier` setting instead. If you set `quoting` to `false`, Redshift still lowercases the name, even when that setting is `true`.
+Leave the default quoting values. You can do this by either omitting `quoting` in `dbt_project.yml` or setting `database`, `schema`, and `identifier` to `true`. The `quoting` config only controls whether dbt wraps names in double quotes, so it can't work around Redshift lowercasing mixed-case names. If you need mixed-case names, turn on the Redshift `enable_case_sensitive_identifier` setting and keep `quoting` on. If you set `quoting` to `false`, dbt sends unquoted names, and Redshift lowercases them even when `enable_case_sensitive_identifier` is `true`.
 
-By default, Redshift lowercases database, schema, table, and column names, even when they're quoted, so <Constant name="dbt" /> can't preserve the case of a model or column name. There's no `dbt_project.yml` option for this. To keep the case of quoted names, turn on the Redshift setting `enable_case_sensitive_identifier`:
+By default, Redshift lowercases database, schema, table, and column names, even when they're quoted. The `enable_case_sensitive_identifier` setting controls this:
 
 - `false` (default): Redshift lowercases all names, whether or not they're quoted.
 - `true`: Redshift keeps the case of quoted names. Unquoted names are still lowercased.
