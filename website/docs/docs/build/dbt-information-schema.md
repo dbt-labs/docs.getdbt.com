@@ -43,12 +43,7 @@ Use `--generate-info-schema` with `dbt build`, `dbt run`, `dbt compile`, or `dbt
 
   ```shell
   dbt build --generate-info-schema --write-catalog
-  ```
-
-  Combine with `--static-analysis strict` to also get inferred model column types and column-level lineage:
-
-  ```shell
-  dbt build --generate-info-schema --static-analysis strict --write-catalog
+  dbt build --generate-info-schema --static-analysis strict --write-catalog # to get inferred model column types and column-level lineage
   ```
 
 - For [`dbt parse`](/reference/commands/parse), the Information Schema contains no column types, no lineage, and no runtime results, because `dbt parse` doesn't connect to your warehouse.
