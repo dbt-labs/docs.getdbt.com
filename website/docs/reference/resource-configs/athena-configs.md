@@ -142,6 +142,7 @@ The following [incremental models](/docs/build/incremental-models) strategies ar
 - `insert_overwrite` (default): The insert-overwrite strategy deletes the overlapping partitions from the destination table and then inserts the new records from the source. This strategy depends on the `partitioned_by` keyword! dbt will fall back to the `append` strategy if no partitions are defined. This strategy is only available for Hive tables.
 - `append`: Insert new records without updating, deleting or overwriting any existing data. There might be duplicate data (great for log or historical data).
 - `merge`: Conditionally updates, deletes, or inserts rows into an Iceberg table. Used in combination with `unique_key`. It is only available when using Iceberg.
+- `microbatch`: Process large time-series datasets in batches. Refer to [About microbatch incremental models](/docs/build/incremental-microbatch).
 
 Consider these limitations when using Iceberg models:
 
