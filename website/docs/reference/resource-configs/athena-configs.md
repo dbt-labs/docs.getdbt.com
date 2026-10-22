@@ -145,7 +145,7 @@ The following [incremental models](/docs/build/incremental-models) strategies ar
 
 Consider these limitations when using Iceberg models:
 
-- Incremental Iceberg models don't support the `insert_overwrite` strategy. Use `append`, `merge`, or `microbatch` instead.
+- Incremental Iceberg models don't support the `insert_overwrite` strategy. They support `append`, `merge`, and `microbatch`.
 - Incremental Iceberg models sync all columns on schema change. You can't remove columns used for partitioning with an incremental refresh; you must fully refresh the model.
 
 ### On schema change
