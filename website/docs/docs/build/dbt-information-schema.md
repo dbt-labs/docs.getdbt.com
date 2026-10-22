@@ -29,25 +29,23 @@ For available tables and their descriptions, see [Information Schema tables](/re
 
 ## Generating the Information Schema
 
-Use `--generate-info-schema` flag with `dbt build`, `dbt run`, `dbt compile`, or `dbt parse`.
+Use `--generate-info-schema` with `dbt build`, `dbt run`, `dbt compile`, or `dbt parse`. By default, the `dbt.node_columns` table contains only YAML-declared columns for both models and sources.
 
-- With `dbt build`, `dbt run`, or `dbt compile`, add `--static-analysis strict` to include model column types in `dbt.node_columns` and column-level lineage in `dbt.column_lineage`:
+- To include inferred model column types and column-level lineage, add `--static-analysis strict`:
 
   ```shell
   dbt build --generate-info-schema --static-analysis strict
   ```
 
-  For models, dbt infers column types from your SQL. For sources, only columns declared in YAML appear in `dbt.node_columns`. Sources with no `columns:` entries are omitted entirely.
+  With this flag, dbt infers column types from your model SQL. Source columns are still limited to what's declared in YAML.
 
-  Without `--static-analysis strict`, `dbt.node_columns` has no inferred column types and `dbt.column_lineage` is empty.
-
-- To get warehouse column types and all columns from sources used by the selected nodes in `dbt.node_columns`, add [`--write-catalog`](/reference/commands/cmd-docs#--write-catalog-flag) when running `dbt build` or `dbt run`:
+- To include warehouse column types and all columns from sources used by the selected nodes, add [`--write-catalog`](/reference/commands/cmd-docs#--write-catalog-flag) on `dbt build` or `dbt run`:
 
   ```shell
   dbt build --generate-info-schema --write-catalog
   ```
 
-  Add `--static-analysis strict` to also include inferred model column types and column-level lineage:
+  Combine both flags to also get inferred model column types and column-level lineage:
 
   ```shell
   dbt build --generate-info-schema --static-analysis strict --write-catalog
