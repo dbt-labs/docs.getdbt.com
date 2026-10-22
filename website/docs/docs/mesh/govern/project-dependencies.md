@@ -50,7 +50,7 @@ If your dbt project relies on models from another project, you can define that r
 3. (Optional) Define the specific models you expect from that upstream project to make the dependency explicit.
 4. Use [`ref()`](/reference/dbt-jinja-functions/ref) with the project name to reference upstream models in your SQL.
 5. Commit the changes and ensure the dependency is configured in <Constant name="dbt" />.
-6. dbt will resolve the dependency, ensure upstream projects are built first, and surface cross-project lineage in the lineage and DAG (Directed Acyclic Graph) views.
+6. dbt resolves the dependency using public model metadata from the selected upstream environment and surfaces cross-project lineage in the lineage and DAG (Directed Acyclic Graph) views. Run upstream deployment jobs separately, or configure [job chaining](/docs/deploy/deploy-jobs#trigger-on-job-completion) if you need coordinated execution.
 
 ### Example
 
@@ -134,9 +134,9 @@ For more guidance on how to use <Constant name="mesh" />, refer to the dedicated
 
 ### Safeguarding production data with staging environments
 
-When working in a Development environment, cross-project `ref`s normally resolve to the Production environment of the project. However, to protect production data, set up a [Staging deployment environment](/docs/deploy/deploy-environments#staging-environment) within your projects. 
+To protect production data, set up a [Staging deployment environment](/docs/deploy/deploy-environments#staging-environment) within your projects.
 
-With a staging environment integrated into the project, <Constant name="mesh" /> automatically fetches public model information from the producer’s staging environment if the consumer is also in staging. Similarly, <Constant name="mesh" /> fetches from the producer’s production environment if the consumer is in production. This ensures consistency between environments and adds a layer of security by preventing access to production data during development workflows.
+When the upstream project has a Staging environment, cross-project `ref`s from downstream Development and Staging environments resolve to the upstream Staging environment. When the upstream project has no Staging environment, they resolve to the upstream Production environment. References from downstream Production environments always resolve to the upstream Production environment. This ensures consistency between environments and adds a layer of security by preventing access to production data during development workflows.
 
 Read [Why use a staging environment](/docs/deploy/deploy-environments#why-use-a-staging-environment) for more information about the benefits. To override this automatic selection, refer to [Route environments across projects](#route-environments-across-projects).
 
@@ -156,7 +156,7 @@ To avoid causing downtime for downstream developers, you should define and trigg
 By default, <Constant name="dbt" /> picks the upstream environment for a cross-project `ref` using the production and staging rules detailed in the previous section. To customize which upstream environment is used, add the `mesh_environment_routing` field to each upstream project in the downstream project's `dependencies.yml`. The `ref` in your model code remains unchanged.
 
 :::note Availability
-Routing environments is supported on the <Constant name="dbt_platform" /> [Latest release track](/docs/dbt-versions/dbt-release-tracks).
+Routing environments is available on the <Constant name="dbt_platform" /> v1 Latest and v2 Stable or Nightly [release tracks](/docs/dbt-versions/release-tracks). It will be available in the Extended release tracks in November 2026.
 :::
 
 #### How routing works
@@ -168,7 +168,7 @@ You configure each project separately, so a single downstream run can use differ
 | Production | Upstream production | Upstream environment you choose |
 | Staging | Upstream staging if configured; otherwise production | Upstream environment you choose, such as production |
 | General | Upstream staging if configured; otherwise production | Upstream environment you choose, such as a specific general environment by ID |
-| Development | Upstream production | Upstream environment you choose |
+| Development | Upstream staging if configured; otherwise production | Upstream environment you choose |
 
 If an environment doesn't match any route, <Constant name="dbt" /> uses that project's `default_upstream_environment` (if you set one). With no matching route and no default, <Constant name="dbt" /> keeps the default behavior for that project. You don't need to route every environment.
 
@@ -216,7 +216,7 @@ Keep the following rules in mind when configuring routes:
 - The first matching route in a project entry takes precedence. Avoid duplicate selectors.
 - A matching route takes precedence over the project's `default_upstream_environment`.
 - To target a general or other custom deployment environment, use its environment ID. `general` isn't a keyword.
-- Use the bare variable name (`DBT_ROUTE_TO_ID`), not Jinja delimiters (`{{ DBT_ROUTE_TO_ID }}`). The value must resolve to a valid ID or keyword.
+- Use the bare variable name (`DBT_ROUTE_TO_ID`), not Jinja delimiters (`{{ DBT_ROUTE_TO_ID }}`). The value must resolve to a valid ID or keyword. Define `DBT_ROUTE_TO_ID` in the downstream run or development environment. Its value must identify a valid deployment environment in `orders_project`, or be the supported `production` or `staging` keyword.
 
 #### Validate routes
 
