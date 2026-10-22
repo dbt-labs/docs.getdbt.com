@@ -45,7 +45,7 @@ Use `--generate-info-schema` with `dbt build`, `dbt run`, `dbt compile`, or `dbt
   dbt build --generate-info-schema --write-catalog
   ```
 
-  Combine both flags to also get inferred model column types and column-level lineage:
+  Combine with `--static-analysis strict` to also get inferred model column types and column-level lineage:
 
   ```shell
   dbt build --generate-info-schema --static-analysis strict --write-catalog

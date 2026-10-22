@@ -244,7 +244,7 @@ Both write artifacts, but only `dbt docs generate` builds a documentation site y
 
 ## Commands for generating metadata
 
-Choose a command based on the metadata you need:
+Each flag targets different metadata and use cases. Find the right command in the table below; [Flag reference](#flag-reference) breaks down what each flag generates and where it writes.
 
 <SimpleTable>
 
