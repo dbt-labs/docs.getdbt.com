@@ -22,6 +22,9 @@ For <Constant name="fusion_engine" /> updates, refer to the [v2 changelog](https
 
 ## October 2026
 
+- **Fix:** Several gaps in the [columns available for checks](/reference/info-schema#columns-available-for-checks) have been resolved:
+  - The `exposures` view now includes `meta`, `config`, and `enabled` columns. Previously these were always `NULL` or absent, preventing checks from filtering disabled exposures or reading exposure `meta`.
+  - The `unit_tests`, `saved_queries`, `semantic_models`, `semantic_entities`, `semantic_measures`, and `semantic_dimensions` views now include `config`. The `node_columns` view now includes `meta`.
 - **New:** In <Constant name="wizard" /> Desktop, you can search the current chat and jump between matches, including text in code blocks.
 - **New:** In <Constant name="wizard" /> Desktop, use `/new`, `/clear`, and `/rename` to manage conversations. `/new` accepts an optional starting prompt and works while another response is running.
 - **New:** In <Constant name="wizard" /> Desktop, you can discard all uncommitted changes and remove new files in one confirmed action. Conflicted files are left alone.
