@@ -229,7 +229,7 @@ wizard resume --last # resume the most recent session
 Local sessions are saved on your machine, in the CLI and in Wizard Desktop alike. This is separate from platform conversations, which are stored in your <Constant name="dbt_platform" /> account.
 
 :::tip Start a new session for each task
-Use a separate session for each discrete unit of work, such as building one model, debugging one job failure, or reviewing one change. Resume a previous session only when you're continuing the same task. In the CLI, type `/new` to start fresh without leaving the TUI, or type `/compact` to summarize the conversation if a long session for a single task approaches the context limit. For more information, refer to [Slash commands](/docs/dbt-ai/wizard-slash-commands).
+Use a separate session for each discrete unit of work, such as building one model, debugging one job failure, or reviewing one change. Resume a previous session only when you're continuing the same task. In the CLI, type `/new` to start fresh without leaving the TUI, or type `/compact` to summarize the conversation if a long session for a single task approaches the context limit. If an unrelated task comes up mid-session (for example, you spot a data bug while working on a different change), type `/fork` to continue in a new chat that starts with the current context, so your original session stays focused. For a quick question that doesn't need its own chat, use `/side`. For more information, refer to [Slash commands](/docs/dbt-ai/wizard-slash-commands).
 :::
 
 ## Related docs
