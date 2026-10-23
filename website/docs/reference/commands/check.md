@@ -33,6 +33,10 @@ Passing an unknown check name fails the command. Passing a disabled check name i
 
 ### `--limit`
 
+:::info 
+Currently available on the **v2 Nightly** release track.
+:::
+
 By default, `dbt check` shows up to 10 violation rows per check. If a check finds more violations than the limit, dbt shows the total count and suggests rerunning with a higher `--limit`. Use `-1` to see all violations at once.
 
 ```shell
