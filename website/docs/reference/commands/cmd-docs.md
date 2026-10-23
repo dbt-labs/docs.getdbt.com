@@ -244,7 +244,7 @@ Both write artifacts, but only `dbt docs generate` builds a documentation site y
 
 ## Commands for generating metadata
 
-Each flag targets different metadata and use cases. Find the right command below; [Flag reference](#flag-reference) breaks down what each flag generates and where it writes.
+Each flag targets different metadata and addresses different use cases. Find the right command for your use case in the following list. The [Flag reference](#flag-reference) section breaks down what each flag generates and where it writes.
 
 - To display inferred model column types and column-level lineage in [dbt Docs v2](#dbt-docs-v2):
 
