@@ -19,6 +19,7 @@ availability: local_free
 ---
 
 import RedshiftBrowserIdc from '/snippets/_redshift-browser-identity-center.md';
+import RedshiftIdentifierCase from '/snippets/_redshift-identifier-case.md';
 
 <VersionBlock firstVersion="2.0">
 
@@ -123,6 +124,10 @@ default:
 
 </TabItem>
 </Tabs>
+
+## Identifier case
+
+<RedshiftIdentifierCase />
 
 ## More information
 
@@ -303,6 +308,10 @@ When the `iam_profile` configuration is set, dbt will use the specified profile 
 </Tabs>
 
 ## Redshift notes
+
+### Identifier case
+
+<RedshiftIdentifierCase />
 
 ### `sslmode` change
 
