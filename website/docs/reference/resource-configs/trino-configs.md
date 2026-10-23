@@ -426,7 +426,9 @@ my_project:
 </File>
 
 ### Model-level routing
+
 _Available in `dbt-trino` v1.10.4 and later_
+
 Set `client_tags` and `http_headers` on a model to override the profile's values for the statements that model runs.
 
 <File name='models/YOUR_MODEL_NAME.sql'>
