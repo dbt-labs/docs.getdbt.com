@@ -53,7 +53,7 @@ Next, [sign in](/docs/sign-in-dbt-extension) to a <Constant name="dbt_platform" 
 - From your terminal, run:
 
     ```shell
-    dbt init --fusion-upgrade
+    dbt init --v2-upgrade
     ```
 
 The upgrade tool guides you through a series of prompts:
