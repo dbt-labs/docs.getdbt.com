@@ -179,7 +179,7 @@ To preview the site locally, run:
 dbt docs serve
 ```
 
-Use `dbt docs serve` to view your documentation locally on your own machine. In <Constant name="dbt_platform"/>, use <Constant name="catalog" /> to explore your project. Refer to [platform behavior](#platform-behavior) for details.
+Use `dbt docs serve` to view your documentation locally on your own machine. In <Constant name="dbt_platform"/>, use <Constant name="catalog" /> to explore your project. Refer to [platform behavior](#dbt-platform-behavior) for details.
 
 `dbt docs serve` generates the site if it's missing or older than the index, then serves the static files. The server starts on port `8580` by default and opens in your browser. Use `--port` to change the port:
 
