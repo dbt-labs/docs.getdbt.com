@@ -391,7 +391,6 @@ Before using `not_null` constraints in your model, make sure the underlying conn
 
 ## Query routing
 
-_Model-level routing overrides are available in `dbt-trino` v1.10.4 and later._
 
 A Trino router picks the cluster that runs each statement from the request headers, so setting `client_tags` and `http_headers` lets a single dbt run send individual models to different clusters. For example, a large incremental model can run on a fault-tolerant cluster while the rest of the project stays on the default one.
 
@@ -427,7 +426,7 @@ my_project:
 </File>
 
 ### Model-level routing
-
+_Available in `dbt-trino` v1.10.4 and later_
 Set `client_tags` and `http_headers` on a model to override the profile's values for the statements that model runs.
 
 <File name='models/YOUR_MODEL_NAME.sql'>
@@ -467,4 +466,4 @@ The two configs interact with the profile's values differently:
 - Statements that dbt runs outside of a model context use the profile's `client_tags` and `http_headers`. For example, startup bookkeeping, such as listing schemas, creating schemas, and populating the relation cache, runs before models execute and doesn't use a model's values.
 - Tests are separate nodes with their own config &mdash; they don't inherit the routing config of the model they test. To route a test to the same cluster as its model, set `client_tags` or `http_headers` on the test directly, either in the test's `config` block or path-scoped under `data_tests:` in `dbt_project.yml`.
 - You can't set `X-Trino-Client-Tags` through `http_headers` because Trino builds that header itself from `client_tags`.
-- Headers managed by the Trino Python client can't be overridden through `http_headers`. For header descriptions, refer to Trino's [client request headers](https://trino.io/docs/current/develop/client-protocol.html#client-request-headers). For the reserved-header list enforced by `dbt-trino`, refer to `RESERVED_HTTP_HEADERS` in the adapter's [connection implementation](https://github.com/starburstdata/dbt-trino/blob/master/dbt/adapters/trino/connections.py).
+- You can't override headers managed by the Trino Python client through `http_headers`. For header descriptions, refer to Trino's [client request headers](https://trino.io/docs/current/develop/client-protocol.html#client-request-headers). For the reserved-header list enforced by `dbt-trino`, refer to `RESERVED_HTTP_HEADERS` in the adapter's [connection implementation](https://github.com/starburstdata/dbt-trino/blob/master/dbt/adapters/trino/connections.py).
