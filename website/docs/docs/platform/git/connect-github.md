@@ -88,7 +88,7 @@ Then each developer on the account needs to [relink their GitHub profile](#relin
 
 ### Register a GitHub application
 
-:::note repo availability
+:::note Repo availability
 
 dbt platform doesn’t support concurrent integrations with public and private GitHub repositories. To register a GitHub App, you need a private repository. Disconnect your configured public repository before you follow the steps in this section.
 
