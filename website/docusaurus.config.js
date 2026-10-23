@@ -366,6 +366,7 @@ var siteSettings = {
   plugins: [
     [path.resolve("plugins/insertMetaTags"), { metatags }],
     path.resolve("plugins/customWebpackConfig"),
+    path.resolve("plugins/s3-img-proxy"),
     [
       path.resolve("plugins/buildGlobalData"),
       { versionedPages, versionedCategories },

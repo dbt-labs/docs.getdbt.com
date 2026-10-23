@@ -44,7 +44,7 @@ If you aren’t using <Constant name="dbt" />, that’s okay! We don’t get a f
 
 If you’ve ever run dbt, whether `build`, `test`, `run` or something else, you’ve seen some output like below. Let’s take a closer look at how to read this.
 
-![CLI output from a dbt build command](/img/best-practices/materializations/dbt-build-output.png)
+<Lightbox src="/img/best-practices/materializations/dbt-build-output.png" title="CLI output from a dbt build command" />
 
 - There are two entries per model, the **start** of a model’s build and the **completion**, which will include **how long** the model took to run. The **type** of model is included as well. For example:
 
