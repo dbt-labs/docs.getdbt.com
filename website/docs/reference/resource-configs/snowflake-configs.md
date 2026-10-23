@@ -505,9 +505,9 @@ Learn more about `IMMUTABLE WHERE` in [Snowflake's docs](https://docs.snowflake.
 
 ### Copy grants (dynamic tables)
 
-Starting `dbt-snowflake` v1.11, you can use `copy_grants` to preserve existing object-level privileges when dbt generates a `CREATE OR REPLACE DYNAMIC TABLE` statement. When disabled, all previously granted permissions are dropped when the table is recreated, and downstream users or roles lose access until grants are manually re-applied.
+You can set `copy_grants` on a dynamic table. When you set `copy_grants: true`, dbt adds `COPY GRANTS` to the `CREATE OR REPLACE DYNAMIC TABLE` statement during `--full-refresh` runs.
 
-When you set `copy_grants: true` on a dynamic table, dbt adds the `COPY GRANTS` clause to the `CREATE OR REPLACE DYNAMIC TABLE` statement. This preserves existing object-level privileges on the table during `--full-refresh` runs, so you don't need to re-grant access after the table is recreated.
+The default is `false`. That does not always drop existing grants. Refer to [Copying grants](#copying-grants) for details on how this works with Snowflake and the `grants` config.
 
 To configure the `copy_grants` parameter, refer to the following example:
 
@@ -1516,7 +1516,7 @@ select * from index_sessions
 
 ## Copying grants
 
-When the `copy_grants` config is set to `true`, dbt will add the `copy grants` <Term id="ddl" /> qualifier when rebuilding tables, <Term id="view">views</Term>, and [dynamic tables](#copy-grants-dynamic-tables) (`dbt-snowflake` v1.11 and later). The default value is `false`.
+When `copy_grants` is `true`, dbt adds the `COPY GRANTS` <Term id="ddl" /> qualifier when rebuilding tables, <Term id="view">views</Term>, and [dynamic tables](#copy-grants-dynamic-tables) (`dbt-snowflake` v1.11 and later). The default is `false`.
 
 <File name='dbt_project.yml'>
 
@@ -1526,6 +1526,13 @@ models:
 ```
 
 </File>
+
+`COPY GRANTS` keeps existing object-level privileges (except ownership) when Snowflake runs `CREATE OR REPLACE`. When `copy_grants` is `false`, Snowflake keeps existing grants if [copying grants on CREATE OR REPLACE](https://docs.snowflake.com/en/release-notes/bcr-bundles/2026_08/bcr-2433) is enabled on your account. If it isn't, Snowflake drops them. Object ownership does not change.
+
+If you also set the [`grants`](/reference/resource-configs/grants) config:
+
+- With `copy_grants: false`, dbt adds any missing grants but does not revoke extra grants that Snowflake copied.
+- To have dbt revoke grants that aren't in your config, set `copy_grants: true` and declare the grants you want. An empty `grants` config does not revoke copied grants.
 
 <VersionBlock firstVersion="1.10">
 
