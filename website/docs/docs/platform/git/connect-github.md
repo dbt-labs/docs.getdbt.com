@@ -67,6 +67,7 @@ You can connect your <Constant name="dbt" /> account to GitHub by installing the
 8. Ask your team members to individually authenticate by connecting their [personal GitHub profiles](#authenticate-your-personal-github-account).
 
 ## Limiting repository access in GitHub
+
 If you are your GitHub organization owner, you can also configure the <Constant name="dbt" /> GitHub application to have access to only select repositories. This configuration must be done in GitHub, but we provide an easy link in <Constant name="dbt" /> to start this process.
 <Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/connecting-github/configure-github.png" title="Configuring the dbt app"/>
 
@@ -86,6 +87,12 @@ An account admin (or security admin) can set this up once:
 Then each developer on the account needs to [relink their GitHub profile](#relink-your-github-profile).
 
 ### Register a GitHub application
+
+:::note Repo availability
+
+dbt platform doesn’t support concurrent integrations with public and private GitHub repositories. To register a GitHub App, you need a private repository. Disconnect your configured public repository before you follow the steps in this section.
+
+:::
 
 We recommend creating the app in your GitHub organization instead of a personal account to ensure the connection doesn't break should a person leave. For the full walkthrough on the GitHub side, check out GitHub's guide to [registering a GitHub App](https://docs.github.com/en/apps/creating-github-apps/registering-a-github-app/registering-a-github-app).
 
