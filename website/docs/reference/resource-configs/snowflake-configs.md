@@ -1532,7 +1532,7 @@ models:
 If you also set the [`grants`](/reference/resource-configs/grants) config:
 
 - With `copy_grants: false`, dbt adds any missing grants but does not revoke extra grants that Snowflake copied.
-- To have dbt revoke grants that aren't in your config, set `copy_grants: true` and declare the grants you want. An empty `grants` config does not revoke copied grants.
+- To have dbt revoke grants that aren't in your config, set `copy_grants: true` and declare the grants you want. If `grants` is missing or set to `{}`, dbt does not revoke copied grants.
 
 <VersionBlock firstVersion="1.10">
 
