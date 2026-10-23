@@ -388,3 +388,84 @@ The `starburst_metadata_failure_strategy` controls how dbt handles errors from t
 
 The `dbt-trino` adapter supports [model contracts](/docs/mesh/govern/model-contracts). Currently, only [constraints](/reference/resource-properties/constraints) with `type` as `not_null` are supported.
 Before using `not_null` constraints in your model, make sure the underlying connector supports `not null`, to avoid running into errors.
+
+## Query routing
+
+
+A Trino router picks the cluster that runs each statement from the request headers, so setting `client_tags` and `http_headers` lets a single dbt run send individual models to different clusters. For example, a large incremental model can run on a fault-tolerant cluster while the rest of the project stays on the default one.
+
+With [Starburst Galaxy](https://docs.starburst.io/starburst-galaxy/working-with-data/query-routing/user-role-based-routing.html), the routing decision is made from the client tags and the user's role.
+
+Use the following configs to set the request headers:
+
+- `client_tags` &mdash; A list of strings sent to Trino in the `X-Trino-Client-Tags` header. Trino routers use these tags to select the cluster that runs each statement. Tag values can't contain commas.
+- `http_headers` &mdash; HTTP headers sent alongside requests to Trino, specified as a YAML dictionary of header names and values. You can use custom headers for routers that support them, but you can't override reserved headers or set `X-Trino-Client-Tags` here. Refer to [Limitations](#limitations) for details.
+
+### Connection-level routing
+
+Set `client_tags` and `http_headers` in your connection profile to apply them to every statement dbt runs.
+
+<File name='~/.dbt/profiles.yml'>
+
+```yaml
+my_project:
+  target: dev
+  outputs:
+    dev:
+      type: trino
+      host: mycluster.mydomain.com
+      database: my_catalog
+      schema: my_schema
+      port: 443
+      client_tags:
+        - analytics
+      http_headers:
+        X-Trino-Client-Info: dbt-trino
+```
+
+</File>
+
+### Model-level routing
+
+_Available in `dbt-trino` v1.10.4 and later_
+
+Set `client_tags` and `http_headers` on a model to override the profile's values for the statements that model runs.
+
+<File name='models/<model_name>.sql'>
+
+```sql
+{{
+  config(
+    materialized = 'table',
+    client_tags = ['fault-tolerant']
+  )
+}}
+```
+
+</File>
+
+<File name='dbt_project.yml'>
+
+```yaml
+models:
+  my_project:
+    heavy_models:
+      +client_tags: ['fault-tolerant']
+```
+
+</File>
+
+### Precedence and merging
+
+The two configs interact with the profile's values differently:
+
+- `client_tags` &mdash; A model's tags *replace* the profile's tags entirely. They aren't added to them.
+- `http_headers` &mdash; A model's headers *merge with* the profile's headers. If both define the same header, the model's value takes precedence. Any headers the model doesn't define are inherited from the profile.
+
+### Limitations
+
+- If your tags don't match any routing rule and the router has no default rule configured, the query is rejected. Ensure your profile's `client_tags` match at least one routing rule.
+- Statements that dbt runs outside of a model context use the profile's `client_tags` and `http_headers`. For example, startup bookkeeping, such as listing schemas, creating schemas, and populating the relation cache, runs before models execute and doesn't use a model's values.
+- Tests are separate nodes with their own config &mdash; they don't inherit the routing config of the model they test. To route a test to the same cluster as its model, set `client_tags` or `http_headers` on the test directly, either in the test's `config` block or path-scoped under `data_tests:` in `dbt_project.yml`.
+- You can't set `X-Trino-Client-Tags` through `http_headers` because Trino builds that header itself from `client_tags`.
+- You can't override headers managed by the Trino Python client through `http_headers`. For header descriptions, refer to Trino's [client request headers](https://trino.io/docs/current/develop/client-protocol.html#client-request-headers). For the reserved-header list enforced by `dbt-trino`, refer to `RESERVED_HTTP_HEADERS` in the adapter's [connection implementation](https://github.com/starburstdata/dbt-trino/blob/master/dbt/adapters/trino/connections.py).
