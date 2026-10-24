@@ -375,7 +375,7 @@ For more information, including CLI examples and an optional environment variabl
 
 With baseline mode enabled by default, static analysis is less likely to block your runs. You should only disable it if <Constant name="fusion_engine" /> cannot parse SQL that is valid for your database of choice.
 
-This is a very rare occurrence. If you encounter this situation, please [open an issue](https://github.com/dbt-labs/dbt-fusion/issues) with an example of the failing SQL so we can update our parsers.
+This is a very rare occurrence. If you encounter this situation, please [open an issue](https://github.com/dbt-labs/dbt/issues) with an example of the failing SQL so we can update our parsers.
 
 import AboutFusion from '/snippets/_about-v2.md';
 

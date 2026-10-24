@@ -254,7 +254,7 @@ To simplify the docs experience, clarify availability, and make it easier to fin
 - **Enhancement:** [Static analysis](/docs/build/about-static-analysis) now lives with the rest of your build docs and available in v2.
 - **Enhancement:** The Fusion upgrade readiness checklist now sits right next to the [v2 upgrade guide](/docs/dbt-versions/dbt-upgrade/upgrading-to-v2), and the networking and telemetry references moved in [local install](/docs/local/dbt-networking-requirements) and [Reference](/reference/telemetry-observability).
 - **Enhancement:** More adapters are closer to general availability &mdash; Snowflake, BigQuery, Databricks, and Redshift are now in **Preview**, and Spark and DuckDB are in **Beta**. Refer to [Adapter lifecycles](/docs/dbt/dbt-availability?version=2.0#adapter-lifecycle) for the current status of each adapter.
-- **Enhancement:** Simplified and clarified the [Fusion feature tables](/docs/dbt/dbt-availability?version=2.0#what-you-get-with-fusion) to make it easier to see what's available and how to get it.
+- **Enhancement:** Simplified and clarified the [Fusion feature tables](/docs/dbt/dbt-availability?version=2.0#what-you-get-with-v2) to make it easier to see what's available and how to get it.
 - **New:** Added availability badges to pages and sections so you can quickly see what applies to your setup at a glance.
 
 ## June 2026
