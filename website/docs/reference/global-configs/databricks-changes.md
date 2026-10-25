@@ -66,13 +66,11 @@ The `use_materialization_v2` flag is `false` by default and guards significant r
 
 When set to `true`, `dbt-databricks` uses the updated logic for all model types (views, tables, incremental, seeds). It also enables additional, optional config options for more fine-tuned control:
 * `view_update_via_alter` &mdash; When enabled, this config attempts to update the view in place using alter view, instead of using create or replace to replace it.
-* `use_safer_relation_operation` &mdash; When enabled (and if `view_update_via_alter` isn't set), this config makes dbt model updates more safe by staging relations and using rename operations to ensure the live version of the table or view is not disrupted by failures.
+* `use_safer_relation_operations` &mdash; When enabled (and if `view_update_via_alter` isn't set), this config makes dbt model updates more safe by staging relations and using rename operations to ensure the live version of the table or view is not disrupted by failures.
 
 These configs aren't required to receive the core benefits of this flag &mdash; like better performance and column/constraint functionality &mdash; but they are gated behind the flag because they introduce more significant changes to how materializations behave.
 
-In v1.11.0, this flag will stay set to `false` by default. Based on feedback about the new materialization’s lack of atomicity (all-or-nothing updates), we won’t enable it automatically. We’ll explore other ways to achieve the same benefits without losing atomicity.
-Given feedback about lack of atomicity of the new materialization approach, we will not be flipping this flag to `true`.
-Instead, we will be investigating new ways to provide the same benefits while maintaining atomicity.
+This flag stays `false` by default because the new materializations aren't atomic (all-or-nothing): while a table is rebuilt, queries against it can see an empty table, as described in [Changes to the Table materialization](#changes-to-the-table-materialization). We're investigating ways to provide the same benefits while keeping atomicity.
 
 ### Changes to the Seed materialization
 
@@ -152,6 +150,14 @@ The benefits though are improvements in performance, safety, and unblocking feat
 :::
 
 When `use_materialization_v2` is set to `true`, all materialization paths are updated. The key change is that table creation is separated from inserting rows into the table. This separation greatly improves performance for setting table comments, since adding comments at create time is faster than using separate `alter table` statements. It also resolves compatibility issues in Databricks, where creating and inserting in one step prevents setting comments.
+
+:::caution Table rebuilds aren't atomic with this flag.
+
+Because creating the table and inserting its rows are separate commits, a rebuild first replaces the existing table with an empty one and then inserts the new rows. Queries that run in between, such as dashboards or downstream jobs, can see an empty table. This happens on every rebuild, not only when a run fails.
+
+With the flag set to `false`, dbt replaces the table in a single atomic `create or replace table ... as select`. To keep the existing table readable while the new one is built with the flag on, use [`use_safer_relation_operations`](#use_safer_relation_operations), at the cost of the table's Unity Catalog history.
+
+:::
 
 Additionally, this change makes it possible to support other column features &mdash; like column-level masks &mdash; that aren’t compatible with inserting data during creation. While these features aren’t included in version 1.10.0, they can now be added in future releases.
 
