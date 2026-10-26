@@ -154,7 +154,7 @@ Checks run with `dbt check` and `dbt build`.
 Currently available on the **v2 Nightly** release track.
 :::
 
-By default, `dbt check` shows up to 10 violation rows per check. Use the [`--limit` flag](/reference/commands/check#--limit) to show more. You can pass `-1` to see all violations at once.
+By default, `dbt check` shows up to 10 violation rows per check. Use the [`--limit` flag](/reference/commands/check#--limit) to change how many violation rows are shown. You can pass `-1` to see all violations at once.
 
 ```shell
 dbt check --limit 50     # show up to 50 violations per check
