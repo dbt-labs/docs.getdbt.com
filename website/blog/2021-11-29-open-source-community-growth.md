@@ -458,7 +458,7 @@ Emitted 16 openlineage events
 A lineage graph of the entire pipeline can now be viewed in Marquez, which shows the relationships between datasets and provides detail about the run history.
 
 
-![marquez dashboard](/img/blog/community-growth-marquez.png "marquez dashboard")
+<Lightbox src="/img/blog/community-growth-marquez.png" title="Marquez dashboard" />
 
 
 ## Visualizing the Results
@@ -472,7 +472,7 @@ Once the database connection was in place, I created datasets for each of my `*_
 With the database and datasets configured, I was able to use the charting interface to explore the various measures and dimensions in the warehouse. After about fifteen minutes, I had created a dashboard that shows the evolution of the communities where my colleagues and I do our work.
 
 
-![community growth dashboard](/img/blog/community-growth-dashboard.png "community growth dashboard")
+<Lightbox src="/img/blog/community-growth-dashboard.png" title="Community growth dashboard" />
 
 
 This overall view is interesting - it suggests acceleration in activity across every channel during the summer of 2021, which makes a lot of sense. That is when the first release of OpenLineage happened, and also when a few talks and podcasts were released. Things have slowed down as the holiday approaches, which also checks out. Unless you're in the retail business, that kind of thing happens.
@@ -481,7 +481,7 @@ Indeed, you can see a familiar pattern happen every year on the PyPI chart. That
 
 Something else can be learned from this PyPI data, something more specific to my project. Over the summer, several integrations were moved from the Marquez project to the OpenLineage project. That means that `marquez-airflow` has become `openlineage-airflow`. I'd like to know whether the old packages are still being used. When I create a chart using `num_downloads` as a metric and `package` as a dimension, with monthly granularity, it shows:
 
-![community growth trends](/img/blog/community-growth-trend.png "community growth trends")
+<Lightbox src="/img/blog/community-growth-trend.png" title="Community growth trends" />
 
 The shift began in August, and as of right now the Marquez packages still account for about half of the total downloads. That means we have some work to do. Likely there is some old documentation still out there to be found and updated.
 

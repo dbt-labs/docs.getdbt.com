@@ -177,7 +177,7 @@ Models that use custom materializations follow these same rules, with one except
 The [`static_analysis`](/reference/resource-configs/static-analysis) config options are:
 
 - `baseline` (default): Statically analyze SQL. This is the recommended starting point for users transitioning from <Constant name="core" />, providing a smooth migration experience while still catching most SQL errors.
-- `strict` (previously `on`): Statically analyze all SQL before execution begins. Use this for maximum validation guarantees &mdash; nothing runs until the entire project is proven valid.
+- `strict`: Statically analyze all SQL before execution begins. Use this for maximum validation guarantees &mdash; nothing runs until the entire project is proven valid.
 - `off`: Skip SQL analysis on this model and its descendants.
 
 <VersionBlock firstVersion="2.0">
@@ -185,12 +185,6 @@ The [`static_analysis`](/reference/resource-configs/static-analysis) config opti
 Any run that uses `strict` mode requires authentication using [`dbt login`](/reference/commands/login?version=2.0), whether `strict` is set with the `--static-analysis strict` CLI flag or in `dbt_project.yml`. Unauthenticated runs fall back to `baseline`.
 
 </VersionBlock>
-
-:::caution Deprecated values
-
-The `on` and `unsafe` values are deprecated and will be removed in May 2026. Use `strict` instead.
-
-:::
 
 When you disable static analysis, features of the VS Code extension which depend on SQL comprehension will be unavailable.
 
@@ -381,7 +375,7 @@ For more information, including CLI examples and an optional environment variabl
 
 With baseline mode enabled by default, static analysis is less likely to block your runs. You should only disable it if <Constant name="fusion_engine" /> cannot parse SQL that is valid for your database of choice.
 
-This is a very rare occurrence. If you encounter this situation, please [open an issue](https://github.com/dbt-labs/dbt-fusion/issues) with an example of the failing SQL so we can update our parsers.
+This is a very rare occurrence. If you encounter this situation, please [open an issue](https://github.com/dbt-labs/dbt/issues) with an example of the failing SQL so we can update our parsers.
 
 import AboutFusion from '/snippets/_about-v2.md';
 

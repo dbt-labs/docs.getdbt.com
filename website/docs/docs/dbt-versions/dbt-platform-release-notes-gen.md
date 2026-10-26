@@ -22,6 +22,36 @@ Release notes are grouped by date for single-tenant environments.
 
 <span><img src="/img/fontawesome/rss.svg" alt="RSS" className="rss-icon" />Subscribe to release note updates via [RSS](https://docs.getdbt.com/feeds/release-notes-st-rss.xml), [Atom](https://docs.getdbt.com/feeds/release-notes-st-atom.xml), or [JSON Feed](https://docs.getdbt.com/feeds/release-notes-st-rss.json).</span>
 
+## October 21, 2026
+
+## New
+
+### dbt platform
+
+- **dbt State allowance and trial email notifications**: Billing admins now receive proactive email notifications about dbt State usage, including a warning at 80% of the monthly allowance (with a projected run-out date), a notification when the allowance is fully used and State is paused, and a reminder 7 days before a trial expires. All emails include plan-specific messaging and calls to action.
+
+### Insights
+
+- **Cost Insights ingestion failure email alerts**: Account admins now receive an email when Cost Insights ingestion has been failing for 3 or more cycles, with follow-up emails at 14 and 28 days if it continues.
+
+## Enhancements
+
+### dbt platform
+
+- **dbt State usage graph period selector**: The dbt State usage graph now includes a dropdown to select the reporting period: this month, previous month, last 30 days, last 60 days, or last 90 days. The chart x-axis also shows month abbreviations when the selected range spans multiple months.
+
+### dbt AI and agents
+
+- **Turn duration visible in Wizard conversations**: dbt Wizard now displays how long each turn took at the bottom of every completed turn. For previously loaded conversations, the completion timestamp is also shown.
+
+## Fixes
+
+### APIs, Identity, and Administration
+
+- **SCIM `licenseType` updates applied to pending invites**: If you manage access through SCIM (your identity provider, like Okta or Microsoft Entra ID), you can change the user's license type before they even log in. Previously this only worked for active users, but now it works for pending and not-yet-fully-signed-in users too. dbt still checks that you have an available seat of that license type before applying any change.
+
+- **Clearer API validation errors**: API requests with an invalid permission value or a malformed body now return a descriptive error instead of a server error.
+
 ## October 19, 2026
 
 ## New
