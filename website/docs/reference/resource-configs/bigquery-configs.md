@@ -1291,7 +1291,53 @@ The BigQuery Python models also have the following additional configuration para
 - [PySpark DataFrame syntax](https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.html)
 
 
-## Unit test limitations
+## Unit tests in BigQuery
+
+### Pseudocolumns <Lifecycle status="beta" />
+
+:::note
+Available with a BigQuery connection in the <Constant name="dbt_platform" /> ["Latest" release track](/docs/dbt-versions/dbt-release-tracks), or `dbt-bigquery` v1.13 and later.
+:::
+
+Pseudocolumns are queryable columns that don't appear in the information schema. BigQuery [external tables](https://docs.cloud.google.com/bigquery/docs/external-tables) expose a [`_FILE_NAME` pseudocolumn](https://docs.cloud.google.com/bigquery/docs/query-cloud-storage-data#query_the_file_name_pseudo-column) that identifies the source file for each row.
+
+You can include `_FILE_NAME` directly in `dict` or `csv` fixture rows without using `format: sql`. For example:
+
+<File name='my_external_model.sql'>
+
+```sql
+select id, value, _FILE_NAME as source_file
+from {{ source('my_source', 'external_table') }}
+```
+
+</File>
+
+<File name='schema.yml'>
+
+```yaml
+unit_tests:
+  - name: test_external_model
+    model: my_external_model
+    given:
+      - input: source('my_source', 'external_table')
+        rows:
+          - {id: 1, value: "foo", _FILE_NAME: "gs://my-bucket/file1.csv"}
+          - {id: 2, value: "bar", _FILE_NAME: "gs://my-bucket/file2.csv"}
+    expect:
+      rows:
+        - {id: 1, source_file: "gs://my-bucket/file1.csv"}
+        - {id: 2, source_file: "gs://my-bucket/file2.csv"}
+```
+
+</File>
+
+Note the following considerations:
+
+- Only `_FILE_NAME` is supported. Other BigQuery pseudocolumns (such as `_PARTITIONTIME` or `_TABLE_SUFFIX`) are not supported in unit tests.
+- If you omit `_FILE_NAME` from a `given` fixture row, dbt defaults the value to `null`.
+- Because `_FILE_NAME` is a reserved column name in BigQuery, your model must define an alias for it. In `expect` rows, use that alias.
+
+### Limitations
 
 You must specify all fields in a BigQuery `STRUCT` for [unit tests](/docs/build/unit-tests). You cannot use only a subset of fields in a `STRUCT`.
 
