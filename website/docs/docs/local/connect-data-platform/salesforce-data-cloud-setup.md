@@ -5,7 +5,7 @@ id: "salesforce-data-cloud-setup"
 meta:
   maintained_by: dbt Labs
   authors: 'dbt v2 dbt maintainers'
-  github_repo: 'dbt-labs/dbt-fusion'
+  github_repo: 'dbt-labs/dbt'
   pypi_package: N/A
   min_core_version: N/A
   cloud_support: N/A
