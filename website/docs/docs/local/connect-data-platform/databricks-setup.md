@@ -173,7 +173,7 @@ default:
 
 To provide the OIDC token using a token file, set `auth_type: file-oidc` in `profiles.yml` and provide the file path in `oidc_token_filepath`.
 
-You can instead leave `oidc_token_filepath` out of `profiles.yml` and set the path in the `DATABRICKS_OIDC_TOKEN_FILE` or `DATABRICKS_OIDC_TOKEN_FILEPATH` environment variable. We recommend setting the path in `profiles.yml`.
+You can instead leave `oidc_token_filepath` out of `profiles.yml` and set the path in the `DATABRICKS_OIDC_TOKEN_FILE` or `DATABRICKS_OIDC_TOKEN_FILEPATH` environment variable. dbt uses the environment variable only when `oidc_token_filepath` isn't in `profiles.yml`. When both are set, dbt only uses the `profiles.yml` setting and never falls back to the environment variable. We recommend setting the path in `profiles.yml`.
 
 <File name="profiles.yml">
 
@@ -363,7 +363,7 @@ your_profile_name:
 
 To provide the OIDC token using a token file, set `auth_type: file-oidc` in `profiles.yml` and provide the file path in `oidc_token_filepath`.
 
-You can instead leave `oidc_token_filepath` out of `profiles.yml` and set the path in the `DATABRICKS_OIDC_TOKEN_FILE` or `DATABRICKS_OIDC_TOKEN_FILEPATH` environment variable. We recommend setting the path in `profiles.yml`.
+You can instead leave `oidc_token_filepath` out of `profiles.yml` and set the path in the `DATABRICKS_OIDC_TOKEN_FILE` or `DATABRICKS_OIDC_TOKEN_FILEPATH` environment variable. dbt uses the environment variable only when `oidc_token_filepath` isn't in `profiles.yml`. When both are set, dbt only uses the `profiles.yml` setting and never falls back to the environment variable. We recommend setting the path in `profiles.yml`.
 
 <File name='~/.dbt/profiles.yml'>
 
