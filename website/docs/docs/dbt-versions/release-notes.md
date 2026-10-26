@@ -23,7 +23,7 @@ For <Constant name="fusion_engine" /> updates, refer to the [v2 changelog](https
 ## October 2026
 
 - **Fix:** Several gaps in the [columns available for checks](/reference/info-schema#columns-available-for-checks) have been resolved:
-  - The `exposures` view now includes `meta`, `config`, and `enabled` columns. Previously these were always `NULL` or absent, preventing checks from filtering disabled exposures or reading exposure `meta`.
+  - The `exposures` view now includes `meta` and `config` columns. Previously these were always `NULL`, preventing checks from reading exposure `meta` or config values.
   - The `unit_tests`, `saved_queries`, `semantic_models`, `semantic_entities`, `semantic_measures`, and `semantic_dimensions` views now include `config`. The `node_columns` view now includes `meta`.
 - **Fix:** `models.config` is now stored correctly as a JSON object in [checks](/docs/build/checks). Previously, `json_extract` and `json_extract_string` on `models.config` returned `NULL` silently, preventing checks from reading model config values such as `enabled` or custom `meta` fields.
 - **New:** In <Constant name="wizard" /> Desktop, you can search the current chat and jump between matches, including text in code blocks.
