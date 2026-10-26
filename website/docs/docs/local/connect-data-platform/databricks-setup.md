@@ -30,7 +30,7 @@ The Databricks adapter for <Constant name="fusion" /> supports the following [au
 - Personal access token (for individual users)
 - Service Principal token (for service users)
 - OAuth
-- OAuth Token Federation using OIDC
+- OAuth token federation using OIDC
 
 ## Warehouse permissions for <Constant name="fusion" />
 
@@ -145,7 +145,7 @@ default:
 
 <TabItem value="OAuth Token Federation">
 
-To use OAuth Token Federation, you may provide an OIDC token either in an environment variable or a file.
+To use OAuth token federation, you may provide an OIDC token either in an environment variable or a file.
 
 #### Example OIDC configuration using an environment variable
 
@@ -153,7 +153,6 @@ To provide the OIDC token using an environment variable, set `auth_type: env-oid
 
 <File name="profiles.yml">
 
-```yml
 default:
   target: dev
   outputs:
@@ -172,11 +171,12 @@ default:
 
 #### Example OIDC configuration using a token file
 
-To provide the OIDC token using a token file, set `auth_type: file-oidc` in `profiles.yml`, and provide the file path in `oidc_token_filepath`. Alternatively, you may set `DATABRICKS_OIDC_TOKEN_FILE` or `DATABRICKS_OIDC_TOKEN_FILEPATH`.
+To provide the OIDC token using a token file, set `auth_type: file-oidc` in `profiles.yml` and provide the file path in `oidc_token_filepath`.
+
+You can instead leave `oidc_token_filepath` out of `profiles.yml` and set the path in the `DATABRICKS_OIDC_TOKEN_FILE` or `DATABRICKS_OIDC_TOKEN_FILEPATH` environment variable. We recommend setting the path in `profiles.yml`.
 
 <File name="profiles.yml">
 
-```yml
 default:
   target: dev
   outputs:
@@ -335,7 +335,7 @@ your_profile_name:
 
 <TabItem value="oauth-token-federation" label="OAuth Token Federation">
 
-To use OAuth Token Federation, you may provide an OIDC token either in an environment variable or a file.
+To use OAuth token federation, you may provide an OIDC token either in an environment variable or a file.
 
 #### Example OIDC configuration using an environment variable
 
@@ -361,7 +361,9 @@ your_profile_name:
 
 #### Example OIDC configuration using a token file
 
-To provide the OIDC token using a token file, set `auth_type: file-oidc` in `profiles.yml`, and provide the file path in `oidc_token_filepath`. Alternatively, you may set `DATABRICKS_OIDC_TOKEN_FILE` or `DATABRICKS_OIDC_TOKEN_FILEPATH`.
+To provide the OIDC token using a token file, set `auth_type: file-oidc` in `profiles.yml` and provide the file path in `oidc_token_filepath`.
+
+You can instead leave `oidc_token_filepath` out of `profiles.yml` and set the path in the `DATABRICKS_OIDC_TOKEN_FILE` or `DATABRICKS_OIDC_TOKEN_FILEPATH` environment variable. We recommend setting the path in `profiles.yml`.
 
 <File name='~/.dbt/profiles.yml'>
 
