@@ -2,7 +2,7 @@
 title: "Have skills been bitter lesson’d?"
 description: "We ran 17 coding agents through a Formula 1 dbt project, with and without dbt agent skills. Do coding agents still need dbt skills? Process, not skills, decided correctness."
 slug: dbt-agent-skills-bitter-lesson
-image: /img/blog/2026-10-27-dbt-skills-eval/correctness-by-arm.png
+image: /img/blog/2026-10-27-dbt-skills-eval/hero-summary.png
 
 authors: [alex_noonan]
 
@@ -18,6 +18,8 @@ When we shipped [dbt agent skills](/blog/dbt-agent-skills), the bet was simple: 
 Models have improved a lot since then, and the [bitter lesson](http://www.incompleteideas.net/IncIdeas/BitterLesson.html) says that hand-built knowledge tends to lose to general capability as models scale. So we wanted to check whether that bet still holds, or whether skills have been bitter lesson’d. Can the latest models build and maintain a real dbt project at a meaningful level of complexity *without* skills, and if so, where do skills still earn their place?
 
 We built an eval to find out. It ran 17 agents through up to 12 tickets each on a Formula 1 dbt project in Snowflake. The short version: **skills didn't decide whether the work was correct.** Every model built correct projects without them. What separated good runs from bad ones was process: tests that froze today's answers, a backup restored without checking it, a definition skimmed instead of read. That points to a different job for skills than the one we originally gave them.
+
+<Lightbox src="/img/blog/2026-10-27-dbt-skills-eval/hero-summary.png" width="100%" title="All 17 runs at a glance: correctness, blind code-review score, skill files opened, and defects by cause, split by skills arm. The arms overlap on every outcome, and every defect was a process mistake." />
 
 <!-- truncate -->
 
