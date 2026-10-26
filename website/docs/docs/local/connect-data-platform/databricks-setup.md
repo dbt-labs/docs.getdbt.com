@@ -72,7 +72,7 @@ Enter your personal access token (PAT) for the Databricks environment. For more 
 
 <File name="profiles.yml">
 
-```yml
+```yaml
 default:
   target: dev
   outputs:
@@ -99,7 +99,7 @@ Enter your Service Principal token for the Databricks environment. For more info
 
 <File name="profiles.yml">
 
-```yml
+```yaml
 default:
   target: dev
   outputs:
@@ -126,7 +126,7 @@ Selecting the OAuth option will create a connection to your Databricks environme
 
 <File name="profiles.yml">
 
-```yml
+```yaml
 default:
   target: dev
   outputs:
@@ -152,7 +152,8 @@ To use OAuth token federation, you may provide an OIDC token either in an enviro
 To provide the OIDC token using an environment variable, set `auth_type: env-oidc` in `profiles.yml`, and provide the OIDC token in `DATABRICKS_OIDC_TOKEN`.
 
 <File name="profiles.yml">
-
+  
+```yaml
   target: dev
   outputs:
     dev:
@@ -175,6 +176,8 @@ To provide the OIDC token using a token file, set `auth_type: file-oidc` in `pro
 You can instead leave `oidc_token_filepath` out of `profiles.yml` and set the path in the `DATABRICKS_OIDC_TOKEN_FILE` or `DATABRICKS_OIDC_TOKEN_FILEPATH` environment variable. dbt uses the environment variable only when `oidc_token_filepath` isn't in `profiles.yml`. When both are set, dbt only uses the `profiles.yml` setting and never falls back to the environment variable. We recommend setting the path in `profiles.yml`.
 
 <File name="profiles.yml">
+
+```yaml
 default:
   target: dev
   outputs:
@@ -214,7 +217,7 @@ The following example sets `connect_timeout` to `600` (10 minutes) so dbt can wa
 
 <File name="profiles.yml">
 
-```yml
+```yaml
 outputs:
   dev:
     type: databricks
