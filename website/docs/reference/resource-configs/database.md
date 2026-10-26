@@ -103,6 +103,34 @@ data_tests:
 This would result in the test results being stored in the `test_results` database.
 </File>
 </TabItem>
+
+<TabItem value="functions" label="Functions">
+
+Specify a custom database for a function in your `dbt_project.yml` or properties file.
+
+<File name='dbt_project.yml'>
+
+```yml
+functions:
+  your_project:
+    your_function:
+      +database: analytics
+```
+
+</File>
+
+<File name='functions/schema.yml'>
+
+```yaml
+functions:
+  - name: [<function-name>]
+    config:
+      database: analytics
+```
+
+</File>
+
+</TabItem>
 </Tabs>
 
 

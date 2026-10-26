@@ -194,6 +194,34 @@ When using [`store_failures_as`](/reference/resource-configs/store_failures_as),
 
 
 </TabItem>
+
+<TabItem value="functions" label="Functions">
+
+Specify a custom alias for a function in your `dbt_project.yml` or properties file.
+
+<File name='dbt_project.yml'>
+
+```yml
+functions:
+  your_project:
+    your_function:
+      +alias: my_function_alias
+```
+
+</File>
+
+<File name='functions/schema.yml'>
+
+```yaml
+functions:
+  - name: [<function-name>]
+    config:
+      alias: my_function_alias
+```
+
+</File>
+
+</TabItem>
 </Tabs>
 
 ## Definition

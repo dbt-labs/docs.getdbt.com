@@ -19,6 +19,7 @@ default_value: true
     { label: 'Exposures', value: 'exposures', },
     { label: 'Semantic models', value: 'semantic models', },
     { label: 'Saved queries', value: 'saved queries', },
+    { label: 'Functions', value: 'functions', },
     { label: 'Skills', value: 'skills', },
   ]
 }>
@@ -360,6 +361,31 @@ saved-queries:
 ```yaml
 saved_queries:
   - name: [<saved_query_name>]
+    [config](/reference/resource-properties/config):
+      enabled: true | false
+```
+
+</File>
+
+</TabItem>
+
+<TabItem value="functions">
+
+<File name='dbt_project.yml'>
+
+```yaml
+functions:
+  [<resource-path>](/reference/resource-configs/resource-path):
+    [+](/reference/resource-configs/plus-prefix)enabled: true | false
+```
+
+</File>
+
+<File name='functions/schema.yml'>
+
+```yaml
+functions:
+  - name: [<function-name>]
     [config](/reference/resource-properties/config):
       enabled: true | false
 ```

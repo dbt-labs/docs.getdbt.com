@@ -131,6 +131,34 @@ data_tests:
 This would result in the test results being stored in the `test_results` schema.
 </File>
 </TabItem>
+
+<TabItem value="functions" label="Functions">
+
+Specify a [custom schema](/docs/build/custom-schemas#understanding-custom-schemas) for a function in your `dbt_project.yml` or properties file.
+
+<File name='dbt_project.yml'>
+
+```yml
+functions:
+  your_project:
+    your_function:
+      +schema: udf_schema
+```
+
+</File>
+
+<File name='functions/schema.yml'>
+
+```yaml
+functions:
+  - name: [<function-name>]
+    config:
+      schema: udf_schema
+```
+
+</File>
+
+</TabItem>
 </Tabs>
 
 Refer to [Usage](#usage) for more examples.
