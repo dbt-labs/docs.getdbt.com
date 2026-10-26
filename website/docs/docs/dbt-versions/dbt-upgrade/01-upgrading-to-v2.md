@@ -17,7 +17,7 @@ import FusionThreads from '/snippets/_v2-threads.md';
 import FusionPartialParseCliFlags from '/snippets/_v2-partial-parse-cli-flags.md';
 import SourceFreshnessLegacy from '/snippets/_source-freshness-legacy.md';
 
-v2 is the current era of dbt, delivered through <Constant name="fusion" />. When you install dbt, you get <Constant name="fusion" /> by default. This guide walks you through upgrading a v1 project to v2. 
+dbt v2 is the latest major version of the dbt framework. When you install dbt, you get <Constant name="fusion" /> by default. This guide walks you through upgrading a v1 project to v2. 
 
 v2 is faster and stricter, but your existing project language and DAG semantics carry over, so once you upgrade, your project works as before &mdash; just faster.
 
@@ -30,7 +30,7 @@ import AboutFusion from '/snippets/_about-v2.md';
 
 ## Install dbt
 
-Upgrading to v2 is an install step. Install dbt using `pip` to get <Constant name="fusion" /> for v2:
+dbt v2 has a new PyPI name: `dbt`. When installing with a package manager like `pip`, use the `dbt` namespace to get the free, fully-featured distribution:
 
 ```shell
 python -m pip install dbt
