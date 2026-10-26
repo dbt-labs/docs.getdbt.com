@@ -143,7 +143,7 @@ default:
 
 </TabItem>
 
-<TabItem value="OAuth Token Federation">
+<TabItem value="OAuth token federation">
 
 To use OAuth token federation, you may provide an OIDC token either in an environment variable or a file.
 
@@ -334,7 +334,7 @@ your_profile_name:
 
 </TabItem>
 
-<TabItem value="oauth-token-federation" label="OAuth Token Federation">
+<TabItem value="oauth-token-federation" label="OAuth token federation">
 
 To use OAuth token federation, you may provide an OIDC token either in an environment variable or a file.
 
