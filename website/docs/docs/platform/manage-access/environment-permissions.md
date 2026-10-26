@@ -36,7 +36,11 @@ Environment-level permissions give <Constant name="dbt" /> admins more flexibili
 
 ### Environment write permissions
 
-Environment write permissions grant access to create, edit, and delete runs and jobs within an environment. However, they don't grant users access to create or delete environments themselves. See [Enterprise permissions](/docs/platform/manage-access/enterprise-permissions) for more information about elevated permission sets. 
+Environment write permissions apply only to the permission sets listed below. These are the sets marked with an asterisk in the [project permission sets table](/docs/platform/manage-access/enterprise-permissions#project-access-for-project-permissions).
+
+For those sets, this setting lets group members create, edit, and delete jobs and runs in the environment types you choose. It does not let them create or delete the environment itself.
+
+Admin and Job admin are different. They have write access in the Environments row of that table, which includes creating and deleting environments. This setting does not control those permission sets.
 
 Environment write permissions can be specified for the following roles:
 

@@ -94,7 +94,7 @@ The **Access & Permissions** section of a group is where you can assign users th
 
 * Projects the group can access
 * Roles that the group members are assigned for each
-* Environments the group can edit
+* Jobs and runs the group can edit in those environments
 
 This setup provides you with the flexibility to determine the level of access users in any given group will have. For example, you might allow one group of analysts to edit jobs in their project, but only let them view related projects, or you could grant admin-level access to a team that owns a specific project while keeping others restricted to read-only.
 
@@ -102,13 +102,17 @@ This setup provides you with the flexibility to determine the level of access us
 
 #### Environment write access
 
-Some permission sets grant users read-only access to environment settings that can be overridden if you assign them to a group with **Environment write access**. They will then be able to create, edit, and delete environment settings such as jobs and runs, bypassing the read-only restriction. This elevated access doesn't grant users the ability to create or delete environments.
+Some permission sets grant users read-only access to jobs and runs. You can override that if you assign them to a group with **Environment write access**. They can then create, edit, and delete jobs and runs in the environment types you choose.
+
+This setting applies to the permission sets marked with an asterisk in the [project permission sets table](/docs/platform/manage-access/enterprise-permissions#project-access-for-project-permissions): Analyst, Database admin, Developer, Git admin, Job creator, and Team admin. It does not let them create or delete the environment itself.
+
+Admin and Job admin are different. They have write access in the Environments row of that table, which includes creating and deleting environments. **Environment write access** does not control those permission sets.
 
 In the following example, the `analyst` permission set, which by default has read-only access to jobs, is assigned to the group across all projects; however, the **Environment write access** is set to `All Environments`.  This grants all users in this group the ability to create, edit, and delete jobs across all environments and projects. 
 
-<Lightbox src="/img/docs/dbt-platform/dbt-platform-enterprise/access-control/environment-write.png" width="60%" title="Users assigned environment write access will be able to edit environment settings." />
+<Lightbox src="/img/docs/dbt-platform/dbt-platform-enterprise/access-control/environment-write.png" width="60%" title="Users assigned environment write access can edit jobs and runs." />
 
-Only use **Environment write access** settings when you intend to grant users the ability to edit environments. To grant users only the permissions inherent to their set, leave this setting blank (all boxes unchecked).
+Only use **Environment write access** when you intend to let users create, edit, and delete jobs and runs in those environments. To grant users only the permissions inherent to their set, leave this setting blank (all boxes unchecked).
 
 ### SSO mappings <Lifecycle status="managed,managed_plus" />
 
