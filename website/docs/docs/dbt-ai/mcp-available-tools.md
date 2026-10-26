@@ -46,7 +46,7 @@ You can find jobs outside production, including staging, CI, or UAT (user accept
 - `list_jobs`: Finds jobs without running them
 - `trigger_job_run`: Starts a run
 
-By default, `list_jobs` only returns jobs from the production environment set in your MCP config: `x-dbt-prod-environment-id` for [remote MCP](/docs/dbt-ai/setup-remote-mcp), or `DBT_PROD_ENV_ID` for [self-hosted MCP](/docs/dbt-ai/setup-local-mcp). Refer to [How to find your dbt MCP IDs](/docs/dbt-ai/mcp-find-ids#dbt-prod-env-id) for details. Staging, CI, or UAT jobs often don't appear in those default results.
+By default, if your MCP config includes a production environment, `list_jobs` only returns jobs from that environment: `x-dbt-prod-environment-id` for token-based [remote MCP](/docs/dbt-ai/setup-remote-mcp), or `DBT_PROD_ENV_ID` for [self-hosted MCP](/docs/dbt-ai/setup-local-mcp). Refer to [How to find your dbt MCP IDs](/docs/dbt-ai/mcp-find-ids#dbt-prod-env-id) for details. If no production environment is configured, `list_jobs` can return jobs across the account. Staging, CI, or UAT jobs often don't appear when a production environment is set.
 
 You can pass a `project_id` (from `list_projects`) to return jobs from every environment in that project.
 
