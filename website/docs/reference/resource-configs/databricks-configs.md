@@ -69,7 +69,8 @@ As such, the supported config matrix is somewhat complicated:
 | `create_notebook`     | if false, use Command API, otherwise upload notebook and use job run | `false`            | ✅                     | ❌             | ❌                   | ❌             |
 | `timeout`             | maximum time to wait for command/job to run                          | `0` (No timeout)   | ✅                     | ✅             | ✅                   | ✅             |
 | `job_cluster_config`  | configures a [new cluster](https://docs.databricks.com/api/workspace/jobs/submit#tasks-new_cluster) for running the model | `{}` | ❌ | ✅ | ❌            | ✅             |
-| `access_control_list` | directly configures [access control](https://docs.databricks.com/api/workspace/jobs/submit#access_control_list) for the job | `{}` | ✅ | ✅ | ✅          | ✅             |
+| `access_control_list` | who can view or manage the Databricks [job](https://docs.databricks.com/api/workspace/jobs/submit#access_control_list) that runs this Python model | `{}` | ✅ | ✅ | ✅          | ✅             |
+| `notebook_access_control_list` | who can view, run, or edit the [notebook](https://docs.databricks.com/aws/en/security/auth/access-control/#notebook-acls) dbt creates in Databricks from this Python model | `[]` | ✅ | ✅ | ✅ | ✅ |
 | `packages`            | list of packages to install on the executing cluster                 | `[]`               | ✅                     | ✅             | ✅                   | ✅             |
 | `index_url`           | url to install `packages` from                                       | `None` (uses pypi) | ✅                     | ✅             | ✅                   | ✅             |
 | `additional_libs`     | directly configures [libraries](https://docs.databricks.com/api/workspace/jobs/submit#tasks-libraries) | `[]` | ✅ | ✅             | ✅                   | ✅             |
@@ -77,7 +78,9 @@ As such, the supported config matrix is somewhat complicated:
 | `cluster_id`          | id of existing all purpose cluster to execute against                | `None`             | ✅                     | ❌             | ❌                   | ✅             |
 | `http_path`           | path to existing all purpose cluster to execute against              | `None`             | ✅                     | ❌             | ❌                   | ❌             |
 
-\* Only `timeout` and `cluster_id`/`http_path` are supported when `create_notebook` is false
+\* Only `timeout` and `cluster_id`/`http_path` are supported when `create_notebook` is false. `notebook_access_control_list` applies only when dbt creates a notebook in Databricks.
+
+When dbt runs a Python model on Databricks, it copies the model's code into a notebook in your Databricks workspace and runs that notebook as a job. Use `access_control_list` to control who can view or manage the job. Use `notebook_access_control_list` to control who can open the notebook in Databricks, for example if a run fails and someone else needs to inspect the code. Job permission levels are `CAN_VIEW`, `CAN_MANAGE_RUN`, and `CAN_MANAGE`. Notebook permission levels are `CAN_READ`, `CAN_RUN`, `CAN_EDIT`, and `CAN_MANAGE`.
 
 With the introduction of the `workflow_job` submission method, we chose to segregate further configuration of the python model submission under a top level configuration named `python_job_config`. This keeps configuration options for jobs and workflows namespaced in such a way that they do not interfere with other model config, allowing us to be much more flexible with what is supported for job execution.
 
