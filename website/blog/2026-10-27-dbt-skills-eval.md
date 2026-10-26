@@ -8,7 +8,7 @@ authors: [alex_noonan]
 tags: [ai]
 hide_table_of_contents: false
 
-date: 2026-10-21
+date: 2026-10-27
 is_featured: false
 ---
 
@@ -59,7 +59,7 @@ Correctness was graded by the harness, not by the agent's own tests. After each 
 2. **Rebuilt the project.** It ran `dbt build` itself, never with `--full-refresh`, so incremental logic had to actually work.
 3. **Graded every required model against an answer key.** It compared each model row by row with the answer key, which was computed from a separate clean copy of the data that received the legitimate changes but none of the breakage.
 
-<Lightbox src="/img/blog/2026-10-21-dbt-skills-eval/eval-loop.png" width="90%" title="The eval loop: each ticket is followed by data injection, an independent rebuild without full refresh, and grading against answer keys. Later tickets re-check every earlier model, so regressions show up." />
+<Lightbox src="/img/blog/2026-10-27-dbt-skills-eval/eval-loop.png" width="90%" title="The eval loop: each ticket is followed by data injection, an independent rebuild without full refresh, and grading against answer keys. Later tickets re-check every earlier model, so regressions show up." />
 
 Every grade was cumulative. A mistake in ticket 1 kept costing points in every later ticket until the agent fixed it, which is how a real project works too.
 
@@ -97,7 +97,7 @@ Round 2 also hid harder traps. The vendor drift ticket switched dates to `DD/MM/
 
 ### Correctness: skills didn't move it
 
-<Lightbox src="/img/blog/2026-10-21-dbt-skills-eval/correctness-by-arm.png" width="95%" title="Share of answer-key checks passed across every ticket, by model and skills arm. Round 1 had 43 checks per run; Round 2 had 154." />
+<Lightbox src="/img/blog/2026-10-27-dbt-skills-eval/correctness-by-arm.png" width="95%" title="Share of answer-key checks passed across every ticket, by model and skills arm. Round 1 had 43 checks per run; Round 2 had 154." />
 
 Across both rounds, 11 of 17 runs passed every check on every ticket. Of the six that didn't, **five had skills available or forced.** No pattern links skills to correctness in either direction. The lowest score in the whole experiment, Sonnet with skills available at 61%, came from a single bad decision. While fixing the Ferrari bug, the agent restored its tables from a backup it had taken earlier. That backup predated the lap-time corrections from ticket 2, so the restore silently reverted 215 laps and the damage cascaded into four downstream models.
 
@@ -110,7 +110,7 @@ The harder engineering tickets were solved almost everywhere:
 
 ### Code quality: a small lift that fades with model strength
 
-<Lightbox src="/img/blog/2026-10-21-dbt-skills-eval/review-score-by-arm.png" width="95%" title="Blind code-review score, 1 to 5, by model and skills arm. Reviewing the same project twice gave 4.00 and 4.22, so gaps under about 0.2 are noise." />
+<Lightbox src="/img/blog/2026-10-27-dbt-skills-eval/review-score-by-arm.png" width="95%" title="Blind code-review score, 1 to 5, by model and skills arm. Reviewing the same project twice gave 4.00 and 4.22, so gaps under about 0.2 are noise." />
 
 In Round 1, skills did nudge code quality. Every skills arm scored above its model's no-skills run, by about 0.1 for Opus and 0.1–0.5 for Sonnet and Haiku. The most common reviewer complaint was layering, such as intermediate models reading from marts, and it showed up most in smaller models without skills.
 
@@ -118,7 +118,7 @@ In Round 2, that lift mostly disappeared. Every model produced projects scoring 
 
 ### Usage: agents reach for skills only when the ground is unfamiliar
 
-<Lightbox src="/img/blog/2026-10-21-dbt-skills-eval/skill-usage.png" width="95%" title="Skill files opened across each whole suite, for runs that had skills. Without an instruction to use them, agents opened between zero and four." />
+<Lightbox src="/img/blog/2026-10-27-dbt-skills-eval/skill-usage.png" width="95%" title="Skill files opened across each whole suite, for runs that had skills. Without an instruction to use them, agents opened between zero and four." />
 
 When the skills were simply available, agents opened between zero and four skill files across an entire suite. Where they did reach for one, the pattern is telling: the Semantic Layer skill and the dbt Mesh skill (for contracts and versioning). Those are the corners of dbt where the model is least sure of current syntax. For staging models, incrementals, snapshots, and tests, the models already knew what to do.
 
@@ -128,7 +128,7 @@ Forcing skills changed usage but not outcomes. Haiku with skills forced used abo
 
 When we sorted every failure by cause, we found none that came from the agent not knowing dbt.
 
-<Lightbox src="/img/blog/2026-10-21-dbt-skills-eval/defects-by-arm.png" width="95%" title="Every defect across the 17 runs, by cause and skills arm. The most common, hard-coded tests that broke on new data, split evenly three ways." />
+<Lightbox src="/img/blog/2026-10-27-dbt-skills-eval/defects-by-arm.png" width="95%" title="Every defect across the 17 runs, by cause and skills arm. The most common, hard-coded tests that broke on new data, split evenly three ways." />
 
 - **Tests that froze today's answers.** Nine runs, three in each arm, wrote a test that hard-coded expected values: a list of world champions ending in 2023, or fixed career totals. When the harness delivered the final 2024 race, those tests failed the build even though the data was correct. It's an easy mistake to make, and a test that breaks on correct data is a test people learn to ignore.
 - **Skimming the spec.** Three runs missed a detail the ticket stated plainly, such as "Grands Prix entered" rather than starts, or a placeholder row for a late-arriving driver.
