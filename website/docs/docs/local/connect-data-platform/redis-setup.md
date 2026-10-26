@@ -8,7 +8,7 @@ availability:
   engine: v1
 ---
 
-The community-maintained [`dbt-redis-adbc` adapter](https://github.com/alberttwong/redis-dbt-adapter-with-project) connects <Constant name="core" /> to Redis through the [Redis Arrow Database Connectivity (ADBC) driver](https://github.com/alberttwong/redis-adbc-driver). Albert T. Wong maintains the adapter. It supports Python-based dbt v1; it does not support v2 or the dbt platform.
+The community-maintained [`dbt-redis-adbc` adapter](https://github.com/redis/redis-dbt-adapter) connects <Constant name="core" /> to Redis through the [Redis Arrow Database Connectivity (ADBC) driver](https://github.com/redis/redis-adbc-driver). Albert T. Wong maintains the adapter. It supports Python-based dbt v1; it does not support v2 or the dbt platform.
 
 ## Prerequisites
 
@@ -16,9 +16,9 @@ The community-maintained [`dbt-redis-adbc` adapter](https://github.com/alberttwo
 - `dbt-core>=1.10,<2` and `dbt-adapters>=1.16,<2`
 - Redis 8.x with the Query Engine (Search) enabled; the adapter's continuous integration tests use Redis 8.6.2
 - A Redis ADBC shared library for your operating system and architecture
-- A Redis user with the [driver's required access control list permissions](https://github.com/alberttwong/redis-adbc-driver#acl-users)
+- A Redis user with the [driver's required access control list permissions](https://github.com/redis/redis-adbc-driver/blob/main/docs/driver-reference.md#acl-users)
 
-The driver requires Redis Search commands, including `FT._LIST` and `FT.CREATE`. Refer to the driver's [server requirements](https://github.com/alberttwong/redis-adbc-driver#server-requirements) for deployment compatibility. Valkey and Redis 7.2 derivatives are not supported.
+The driver requires Redis Search commands, including `FT._LIST` and `FT.CREATE`. Refer to the driver's [server requirements](https://github.com/redis/redis-adbc-driver/blob/main/docs/driver-reference.md#server-requirements) for deployment compatibility. Valkey and Redis 7.2 derivatives are not supported.
 
 ## Install the adapter and driver
 
@@ -28,7 +28,7 @@ Install the adapter from [PyPI](https://pypi.org/project/dbt-redis-adbc/):
 python -m pip install dbt-redis-adbc
 ```
 
-Download and extract the shared-library archive for your platform from the [Redis ADBC driver releases](https://github.com/alberttwong/redis-adbc-driver/releases). The example project's pinned driver release is [v0.0.14](https://github.com/alberttwong/redis-adbc-driver/releases/tag/v0.0.14). Prebuilt libraries are available for macOS Apple Silicon, Linux x86-64, and Linux arm64. Other platforms require a [source build](https://github.com/alberttwong/redis-adbc-driver#quick-start).
+Download and extract the shared-library archive for your platform from the [Redis ADBC driver releases](https://github.com/redis/redis-adbc-driver/releases). The example project's pinned driver release is [v0.0.18](https://github.com/redis/redis-adbc-driver/releases/tag/v0.0.18). Prebuilt libraries are available for macOS Apple Silicon, Linux x86-64, and Linux arm64. Other platforms require a [source build](https://github.com/redis/redis-adbc-driver#quick-start).
 
 Set `REDIS_ADBC_DRIVER` to the extracted library's absolute path, or provide the path in your profile's `driver` field. Installing the adapter installs its Python dependencies, but does not install the shared library.
 
@@ -72,6 +72,6 @@ Use separate `username` and `password` fields instead of embedding credentials i
 | `time_zone` | No | Session time zone, such as `America/New_York`. The driver defaults to UTC. |
 | `read_timeout` | No | Time to wait for each reply: a duration such as `30s` or `10m`, a number of seconds, or `0` for no timeout. The driver defaults to five minutes. |
 | `write_timeout` | No | Time to send each command, using the same format and default as `read_timeout`. |
-| `driver_options` | No | Mapping of additional [driver options](https://github.com/alberttwong/redis-adbc-driver#options) to string, numeric, or Boolean values. Options with their own profile field must use that field instead. |
+| `driver_options` | No | Mapping of additional [driver options](https://github.com/redis/redis-adbc-driver/blob/main/docs/driver-reference.md#options) to string, numeric, or Boolean values. Options with their own profile field must use that field instead. |
 
 Run `dbt debug --profile redis_project` from your project to verify the connection. For materializations and limitations, refer to [Redis configurations](/reference/resource-configs/redis-configs).

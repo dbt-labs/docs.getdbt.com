@@ -78,10 +78,10 @@ Incremental Python models are not supported.
 
 The driver exposes one catalog named `redis`. SQL relations render as `schema.table`, without the catalog. Schema and table names retain their case. Use dbt's `quoting` configuration when identifiers require quotes.
 
-Redis controls access through ACL users, commands, and key patterns. The adapter skips SQL `grants` configurations with a warning. Configure permissions in Redis instead, following the [driver's ACL documentation](https://github.com/alberttwong/redis-adbc-driver#acl-users).
+Redis controls access through ACL users, commands, and key patterns. The adapter skips SQL `grants` configurations with a warning. Configure permissions in Redis instead, following the [driver's ACL documentation](https://github.com/redis/redis-adbc-driver/blob/main/docs/driver-reference.md#acl-users).
 
 ## Transactions and interrupted runs
 
 Every statement autocommits; the driver does not provide SQL transactions or rollback. A failed or cancelled materialization can leave partial writes and `__dbt_tmp` or `__dbt_backup` relations. dbt drops those relations at the start of the next run of that model. Account for this behavior when planning recovery from an interrupted run.
 
-For package-specific macro overrides, refer to the adapter repository's [package compatibility documentation](https://github.com/alberttwong/redis-dbt-adapter-with-project#package-compatibility).
+For package-specific macro overrides, refer to the adapter repository's [package compatibility documentation](https://github.com/redis/redis-dbt-adapter/blob/main/v1/README.md#package-compatibility).
