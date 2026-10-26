@@ -23,7 +23,7 @@ If you have a older project that isn’t ready to move to v2, continue using v1.
 
 ## Which one should I use?
 
-For most people: <Constant name="fusion" />. It has more [capabilities](/docs/dbt/dbt-availability?version=2.0#what-you-get-with-fusion) out of the box than the open source v2 &mdash; including a built-in high-performance SQL linter &mdash; even if you never create a dbt account.
+For most people: <Constant name="fusion" />. It has more [capabilities](/docs/dbt/dbt-availability?version=2.0#what-you-get-with-v2) out of the box than the open source v2 &mdash; including a built-in high-performance SQL linter &mdash; even if you never create a dbt account.
 
 We recommend everyone to just [install dbt](/docs/local/install-dbt) and get <Constant name="fusion" /> by default.
 
@@ -66,7 +66,7 @@ When you're ready to upgrade to v2, check out the [Upgrade to v2](/docs/dbt-vers
 
 ## Licensing details
 
-[<Constant name="core" />](https://github.com/dbt-labs/dbt) is released under the [Apache 2.0 license](http://www.apache.org/licenses/LICENSE-2.0). <Constant name="fusion" /> is proprietary to dbt Labs, made available under the [dbt Product Licensing Agreement](https://www.getdbt.com/dbt-fusion-engine-license-agreement).
+[<Constant name="core" />](https://github.com/dbt-labs/dbt) is released under the [Apache 2.0 license](http://www.apache.org/licenses/LICENSE-2.0). <Constant name="fusion" /> is proprietary to dbt Labs, made available under the [dbt Product Licensing Agreement](https://www.getdbt.com/dbt-product-license-agreement).
 
 For the full breakdown of what's permitted under each license &mdash; source visibility, contributions, modifications, self-hosting, and redistribution &mdash; see the [dbt Licensing FAQ](https://www.getdbt.com/licenses-faq).
 
