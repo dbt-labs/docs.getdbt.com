@@ -336,6 +336,7 @@ const sidebarSettings = {
                 "docs/local/connect-data-platform/duckdb-setup",
                 "docs/local/connect-data-platform/exasol-setup",
                 "docs/local/connect-data-platform/extrica-setup",
+                "docs/local/connect-data-platform/firebird-setup",
                 "docs/local/connect-data-platform/firebolt-setup",
                 "docs/local/connect-data-platform/greenplum-setup",
                 "docs/local/connect-data-platform/ibm-db2-setup",
