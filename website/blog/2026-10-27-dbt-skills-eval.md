@@ -1,7 +1,8 @@
 ---
-title: "Do coding agents still need dbt skills? We ran 17 agents through an F1 project to find out"
-description: "We had Claude Opus, Sonnet, and Haiku build and maintain a Formula 1 dbt project from scratch, with and without dbt agent skills. Skills didn't decide correctness. Process did."
-slug: dbt-skills-eval
+title: "Have skills been bitter lesson’d?"
+description: "We ran 17 coding agents through a Formula 1 dbt project, with and without dbt agent skills. Do coding agents still need dbt skills? Process, not skills, decided correctness."
+slug: dbt-agent-skills-bitter-lesson
+image: /img/blog/2026-10-27-dbt-skills-eval/correctness-by-arm.png
 
 authors: [alex_noonan]
 
@@ -14,7 +15,7 @@ is_featured: false
 
 When we shipped [dbt agent skills](/blog/dbt-agent-skills), the bet was simple: coding agents know SQL, but they don't know dbt well enough to build a project the way an analytics engineer would. Skills would fill that gap with the conventions, commands, and patterns the model was missing.
 
-Models have improved a lot since then, so we wanted to check whether that bet still holds. Can the latest models build and maintain a real dbt project at a meaningful level of complexity *without* skills, and if so, where do skills still earn their place?
+Models have improved a lot since then, and the [bitter lesson](http://www.incompleteideas.net/IncIdeas/BitterLesson.html) says that hand-built knowledge tends to lose to general capability as models scale. So we wanted to check whether that bet still holds, or whether skills have been bitter lesson’d. Can the latest models build and maintain a real dbt project at a meaningful level of complexity *without* skills, and if so, where do skills still earn their place?
 
 We built an eval to find out. It ran 17 agents through up to 12 tickets each on a Formula 1 dbt project in Snowflake. The short version: **skills didn't decide whether the work was correct.** Every model built correct projects without them. What separated good runs from bad ones was process: tests that froze today's answers, a backup restored without checking it, a definition skimmed instead of read. That points to a different job for skills than the one we originally gave them.
 
