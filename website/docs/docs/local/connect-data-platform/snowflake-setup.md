@@ -29,7 +29,7 @@ The Snowflake adapter for <Constant name="fusion" /> supports the following [aut
 - Key pair
 - Single sign-on (SSO)
 - Password with MFA
-- Workload identity federation
+- Workload Identity Federation
 
 :::note
 [Snowflake is deprecating single-access password login](https://docs.snowflake.com/en/user-guide/security-mfa-rollout). Individual developers should use MFA or SSO instead of password authentication. Password-based login remains supported for service users (Snowflake user type: `LEGACY_SERVICE`).
@@ -191,13 +191,16 @@ default:
 
 <TabItem value="Workload identity federation">
 
-Workload identity federation (WIF) lets you authenticate to Snowflake from a cloud workload using that platform's identity. Snowflake maps that identity to a service user, so you don't store a password or key. You can use OpenID Connect (OIDC), for example, GitHub Actions, or a native identity from AWS, Azure, or GCP.
+Workload identity federation (WIF) lets you authenticate to Snowflake from a cloud workload using that platform's identity. Snowflake maps that identity to a service user, so you don't store a password or key. You can use an OpenID Connect (OIDC) token, such as one issued to a GitHub Actions workflow, or a native identity from AWS, Azure, or GCP.
 
-Before you configure dbt, create a Snowflake service user with workload identity. For that setup, refer to [Snowflake's workload identity federation documentation](https://docs.snowflake.com/en/user-guide/workload-identity-federation).
+Before you configure dbt, create a Snowflake service user with workload identity. For that setup, refer to the [Snowflake documentation](https://docs.snowflake.com/en/user-guide/workload-identity-federation).
 
-In your `profiles.yml` file, set `method` to `workload_identity` and set `workload_identity_provider` to `OIDC`, `AWS`, `AZURE`, or `GCP`. Don't set `authenticator`. If you set both `method` and `authenticator`, the profile won't work. You can omit `user`.
+In your `profiles.yml` file, set the following values:
+       - `method` to `workload_identity`
+       - `workload_identity_provider` to `OIDC`, `AWS`, `AZURE`, or `GCP`
+Don't set the `authenticator` field. If you set both `method` and `authenticator`, the profile won't work. You can omit `user`.
 
-The following example uses OIDC. For AWS, Azure, or GCP, use the same configuration, change `workload_identity_provider`, and omit `token` unless your provider requires one. AWS, Azure, and GCP only work when dbt is running in that cloud environment.
+The following example uses OIDC. For AWS, Azure, or GCP, use the same configuration, change the `workload_identity_provider` value, and omit `token` unless your provider requires one. AWS, Azure, and GCP only work when dbt is running in that cloud environment.
 
 <File name="profiles.yml">
 
@@ -221,13 +224,13 @@ default:
 
 </File>
 
-Set these fields in your `profiles.yml` file:
+To authenticate with WIF, configure the following fields in your `profiles.yml` file:
 
 | Config | Required? | Description |
 | ------ | --------- | ----------- |
 | `method` | Yes | Set to `workload_identity`. |
 | `workload_identity_provider` | Yes | The identity provider. Must be one of `OIDC`, `AWS`, `AZURE`, or `GCP`. |
-| `token` | No | The OIDC token. Typically required for OIDC. You can pass it with `env_var()`. |
+| `token` | No | Required for OIDC. Not used for AWS, Azure, or GCP. Pass it with `env_var()`. |
 | `workload_identity_entra_resource` | No | Azure only. Leave this unset unless Snowflake expects a custom Entra app as the token audience. Set it to that app's application ID URI (for example `api://APPLICATION_ID`). |
 
 </TabItem>
@@ -468,9 +471,9 @@ my-snowflake-db:
 
 ### Workload identity federation
 
-Workload identity federation (WIF) lets you authenticate to Snowflake from a cloud workload using that platform's identity. Snowflake maps that identity to a service user, so you don't store a password or key. You can use OpenID Connect (OIDC), for example GitHub Actions, or a native identity from AWS, Azure, or GCP.
+Workload identity federation (WIF) lets you authenticate to Snowflake from a cloud workload using that platform's identity. Snowflake maps that identity to a service user, so you don't store a password or key. You can use an OpenID Connect (OIDC) token, such as one issued to a GitHub Actions workflow, or a native identity from AWS, Azure, or GCP.
 
-Before you configure dbt, create a Snowflake service user with workload identity. For that setup, refer to [Snowflake's workload identity federation documentation](https://docs.snowflake.com/en/user-guide/workload-identity-federation).
+Before you configure dbt, create a Snowflake service user with workload identity. For that setup, refer to the [Snowflake documentation](https://docs.snowflake.com/en/user-guide/workload-identity-federation).
 
 In your `profiles.yml` file, set `authenticator` to `workload_identity` and set `workload_identity_provider` to `OIDC`, `AWS`, `AZURE`, or `GCP`. The `user` field is optional for this method.
 
