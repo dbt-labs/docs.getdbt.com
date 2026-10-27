@@ -2,9 +2,13 @@
 
 For purposes of pricing, daily active target tables (DATT) are measured as the number of distinct target tables (as defined below) for which dbt State performs at least one of the following unique operations on a given day (based on UTC time): a skip, clone, or test reuse.
 
-A target table is a database object managed by your dbt project for a given database and schema name. It includes seeds, snapshots, dbt models (including incremental models). It also includes each distinct test (even if the tests are not built into the database because `store_failures` is disabled). For example, if `stg_customers` has `not_null` and `unique` tests on its `id` column, that's three target tables: the model and its two tests.
+A target table is a database object managed by your dbt project for a given database and schema name. It includes seeds, snapshots, dbt models (including incremental models). Tests can also count toward a DATT through test reuse, but they are grouped by unique target &mdash; _not_ counted individually. Multiple tests on the same model count as a single target table, even if those tests are not built into the database because `store_failures` is disabled. For example, if `stg_customers` has `not_null` and `unique` tests on its `id` column, that's one target table: the model.
 
-When you run `dbt build` or a similar command, a target table is selected for execution. It counts as an active target table if dbt State can reuse it based on your configuration rules. All reuses of the same active target table in a single day (based on UTC time) count as a single daily active target table (DATT).
+When you run `dbt build` or a similar command, a target table is selected for execution. It counts as an active target table if dbt State can reuse it based on your configuration rules. All reuses of the same active target table in a single day (based on UTC time) count as a single DATT.
+
+:::note
+DATT is not a count of your reused assets &mdash; it's a daily tally that accumulates across a billing period. Each day a target table is reused, it counts toward that day's total. A table reused daily across a 30-day billing period accrues 30 DATTs over that period.
+:::
 
 ### Monthly cost calculation
 
