@@ -22,6 +22,24 @@ For <Constant name="fusion_engine" /> updates, refer to the [v2 changelog](https
 
 ## October 2026
 - **New:** <Constant name="wizard" /> Desktop is now in public beta. [Download the app](/docs/dbt-ai/wizard-desktop#install-and-open-wizard-desktop) for macOS, Windows, or Linux and start your first session.
+- **New:** In <Constant name="wizard" /> Desktop, you can search the current chat and jump between matches, including text in code blocks.
+- **New:** In <Constant name="wizard" /> Desktop, use `/new`, `/clear`, and `/rename` to manage conversations. `/new` accepts an optional starting prompt and works while another response is running.
+- **New:** In <Constant name="wizard" /> Desktop, you can discard all uncommitted changes and remove new files in one confirmed action. Conflicted files are left alone.
+- **New:** In <Constant name="wizard" /> Desktop, you can opt into automatic background updates, choose the Stable or Unstable channel in **General** settings, and relaunch when an update is ready. Refer to [Update the app](/docs/dbt-ai/wizard-desktop#update-the-app).
+- **Enhancement:** Question cards in <Constant name="wizard" /> Desktop now let you answer multiple questions, write your own response, or skip a question. You can also reply in the composer while questions are waiting, with masked inputs for sensitive answers.
+- **Enhancement:** In <Constant name="wizard" /> Desktop, **Changes** and the target branch now follow the base branch of your open pull request.
+- **Enhancement:** In <Constant name="wizard" /> Desktop, expand **Show error details** to see why a response failed, including provider errors and spending limits.
+- **Fix:** <Constant name="wizard" /> Desktop now uses browser sign-in by default for OpenAI subscriptions, including for workspaces that disable device-code login. Expired or revoked credentials no longer block startup, and you get clearer reconnect guidance.
+- **Fix:** <Constant name="wizard" /> Desktop keeps model, lineage, and metric lookups current after you edit files or run dbt outside <Constant name="wizard" />.
+- **Fix:** <Constant name="wizard" /> validation now skips runs when no changed dbt models are in scope and explains why.
+- **Fix:** <Constant name="wizard" /> Desktop now shows clearer ownership and trust prompts for shared repositories. You can also start chats and terminals in trusted repositories owned by another user, including on Windows subsystems for Linux (WSL).
+- **Fix:** Subagent approval requests in <Constant name="wizard" /> Desktop now appear in the chat that owns them and name the requesting agent.
+- **New:** Billing admins now receive proactive email notifications about dbt State usage, including a warning at 80% of the monthly allowance (with a projected run-out date), a notification when the allowance is fully used and State is paused, and a reminder 7 days before a trial expires. All emails include plan-specific messaging and calls to action.
+- **New:** Account admins now receive an email when Cost Insights ingestion has been failing for 3 or more cycles, with follow-up emails at 14 and 28 days if it continues.
+- **Enhancement:** The dbt State usage graph now includes a dropdown to select the reporting period: this month, previous month, last 30 days, last 60 days, or last 90 days. The chart x-axis also shows month abbreviations when the selected range spans multiple months.
+- **Enhancement:** <Constant name="wizard" /> now displays how long each turn took at the bottom of every completed turn. For previously loaded conversations, the completion timestamp is also shown.
+- **Fix:** If you manage access through SCIM (your identity provider, like Okta or Microsoft Entra ID), you can change the user's license type before they even log in. Previously this only worked for active users, but now it works for pending and not-yet-fully-signed-in users too. dbt still checks that you have an available seat of that license type before applying any change.
+- **Fix:** API requests with an invalid permission value or a malformed body now return a descriptive error instead of a server error.
 - **New:** dbt State trial and DATT allowance updates:
   - **New:** Self-hosted dbt users using dbt State now get a free plan after their trial ends, with 1,000 daily active target tables (DATT) per month at no cost. Developer and paid <Constant name="dbt_platform" /> accounts also receive a monthly DATT allowance, with amounts and availability varying by plan. For more information, refer to [dbt State usage](/docs/platform/billing/dbt-state-usage).
   - **New:** When your dbt State trial ends, you’ll receive an email confirming your plan, monthly DATT allowance, and allowance end date if your plan has one.
@@ -236,11 +254,17 @@ To simplify the docs experience, clarify availability, and make it easier to fin
 - **Enhancement:** [Static analysis](/docs/build/about-static-analysis) now lives with the rest of your build docs and available in v2.
 - **Enhancement:** The Fusion upgrade readiness checklist now sits right next to the [v2 upgrade guide](/docs/dbt-versions/dbt-upgrade/upgrading-to-v2), and the networking and telemetry references moved in [local install](/docs/local/dbt-networking-requirements) and [Reference](/reference/telemetry-observability).
 - **Enhancement:** More adapters are closer to general availability &mdash; Snowflake, BigQuery, Databricks, and Redshift are now in **Preview**, and Spark and DuckDB are in **Beta**. Refer to [Adapter lifecycles](/docs/dbt/dbt-availability?version=2.0#adapter-lifecycle) for the current status of each adapter.
-- **Enhancement:** Simplified and clarified the [Fusion feature tables](/docs/dbt/dbt-availability?version=2.0#what-you-get-with-fusion) to make it easier to see what's available and how to get it.
+- **Enhancement:** Simplified and clarified the [Fusion feature tables](/docs/dbt/dbt-availability?version=2.0#what-you-get-with-v2) to make it easier to see what's available and how to get it.
 - **New:** Added availability badges to pages and sections so you can quickly see what applies to your setup at a glance.
 
 ## June 2026
 
+- **New:** The list users API endpoint (`GET /api/v3/accounts/{account_id}/users/`) supports new query parameters to help find users in large accounts without paging through the full list: 
+    - `search`: Matches email, first name, last name, or full name (case-insensitive). 
+    - `group_id`: Returns only active members of that group. 
+    - `license_type`: Filters by license, for example `developer` or `read_only`. 
+    
+    You can combine them with `limit` and `offset`, and `total_count` reflects the filtered results.
 - **Enhancement:** [Column-level tags](/reference/resource-configs/tags) defined in your dbt project now appear on the **Columns** tab of resource details pages in <Constant name="catalog" />. You can click any tag badge to filter the lineage view, or search for columns directly by tag name. Refer to [View resource details](/docs/explore/explore-projects#view-resource-details).
 - **Enhancement:** You can now enable [dbt State](/docs/deploy/dbt-state-about) on continuous integration and merge job types, in addition to deploy jobs. For more information, refer to [Enabling dbt State on environments and jobs](/docs/deploy/dbt-state-enable-env-jobs).
 - **Enhancement**: The [Cost Insights](/docs/explore/cost-insights) table view now includes **All** and **Jobs** buttons to switch between an aggregated cost view and a per-job cost breakdown. Available in the project dashboard and the **Model performance** section in <Constant name="catalog" />. When **Jobs** is selected, the CSV export includes job-level data. For more information, refer to [Explore cost data](/docs/explore/explore-cost-data).

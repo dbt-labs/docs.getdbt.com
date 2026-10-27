@@ -119,7 +119,7 @@ Every change lands as a reviewable diff, and you can comment on an exact line, t
 
 ## Update the app
 
-When a new version of Wizard Desktop is available, the app generally will tell you a few seconds after launching it. Select **Install** to update, or **Dismiss** to skip it until next launch.
+When a new version of Wizard Desktop is available, the app generally will tell you a few seconds after launching it. Select **Install** to update, or **Dismiss** to skip it until next launch. 
 
 To update at any time:
 
@@ -127,6 +127,8 @@ To update at any time:
 2. Select **Check for updates**.
 3. If there's a new version, select **Install version** and wait for the install progress to finish.
 4. Select **Restart to finish update**. The app won't restart on its own.
+
+You can also enable automatic updates by clicking on the **Automatic updates** toggle in the same section.
 
 ## Coming from the CLI?
 
