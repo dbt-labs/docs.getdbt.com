@@ -124,3 +124,68 @@ value2="versioned models will raise an error. unversioned models will raise a wa
 />
 
 More details are available in the [contract reference](/reference/resource-configs/contract#incremental-models-and-on_schema_change).
+
+### Can I use model contracts with nested fields?
+
+Yes, on BigQuery. Model contracts are useful when a model contains nested JSON or event data, where a nested field that changes type could break downstream models.
+
+Nested fields (structs) are columns inside other columns. List each inner field in YAML with a dotted name, such as `b.id` or `b.double_nested.another.even_more`. You must declare a `name` and `data_type` for every inner field. You do not have to declare the parent (`b` or `b.double_nested`) unless you want a description or a constraint on the whole struct.
+
+<File name="models/nested_fields.yml">
+
+```yaml
+models:
+  - name: double_nested_fields
+    config:
+      contract:
+        enforced: true
+      materialized: table
+    columns:
+      - name: a
+        data_type: string
+      - name: b.id
+        data_type: integer
+      - name: b.name
+        data_type: string
+      - name: b.double_nested.id
+        data_type: integer
+      - name: b.double_nested.another.again
+        data_type: string
+      - name: b.double_nested.another.even_more
+        data_type: integer
+```
+
+</File>
+
+<File name="models/double_nested_fields.sql">
+
+```sql
+select
+  'string' as a,
+  struct(
+    1 as id,
+    'name' as name,
+    struct(2 as id, struct('test' as again, 2 as even_more) as another) as double_nested
+  ) as b
+```
+
+</File>
+
+When every nested field's `name` and `data_type` match the SQL, the model builds as usual. If they do not match, the contract fails and the model does not build. For example, if `even_more` is a string in SQL but `integer` in the contract, dbt returns:
+
+| column_name | definition_type | contract_type | mismatch_reason |
+| --- | --- | --- | --- |
+| b.double_nested.another.even_more | STRING | INT64 | data type mismatch |
+
+Arrays of structs are supported too. Declare the parent with `data_type: array`, then list each inner field:
+
+```yaml
+- name: my_array
+  data_type: array
+- name: my_array.id
+  data_type: integer
+- name: my_array.name
+  data_type: string
+```
+
+To add constraints such as `not_null` on nested fields, refer to [Constraints](/reference/resource-properties/constraints).
