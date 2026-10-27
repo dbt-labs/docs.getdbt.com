@@ -50,41 +50,43 @@ dbt Labs updates the <Constant name="dbt" /> GitHub application, the Slack appli
 
 ### Git providers
 
-GitLab and Azure DevOps repositories use your legacy **getdbt.com** URL for OAuth flows until you update them.
+GitLab and Azure DevOps repositories connected before your account had an account-specific access URL keep using your legacy **getdbt.com** URL for OAuth until you update them. Repositories connected after that already use your new access URL.
 
-For GitLab, account admins can update an existing GitLab application to your new account access URL in the <Constant name="dbt_platform" />. See [Update redirect URIs in the dbt platform](#update-redirect-uris-in-the-dbt-platform). You can't yet update an existing Azure DevOps repository. Instead, recreate the repository to generate a redirect URI based on your new account access URL.
+For GitLab, account admins can update an existing GitLab application to your new account access URL in <Constant name="dbt_platform" />. See [Update redirect URIs in dbt platform](#update-redirect-uris-in-dbt-platform). You can't yet update an existing Azure DevOps repository. Instead, recreate the repository to generate a redirect URI based on your new account access URL.
 
 | Integration | Action required |
 |---|---|
-| [GitLab (dbt Labs app)](/docs/platform/git/connect-gitlab#setting-up-a-gitlab-oauth-application) | Add the new redirect URI to your GitLab group application, then [update it in dbt](#update-redirect-uris-in-the-dbt-platform) |
-| [GitLab (bring-your-own app)](/docs/platform/git/connect-gitlab#setting-up-a-gitlab-oauth-application) | Add the new redirect URI to your GitLab group application, then [update it in dbt](#update-redirect-uris-in-the-dbt-platform) |
+| [GitLab (dbt Labs app)](/docs/platform/git/connect-gitlab#setting-up-a-gitlab-oauth-application) | Add the new redirect URI to your GitLab group application, then [update it in <Constant name="dbt_platform" />](#update-redirect-uris-in-dbt-platform) |
+| [GitLab (bring-your-own app)](/docs/platform/git/connect-gitlab#setting-up-a-gitlab-oauth-application) | Add the new redirect URI to your GitLab group application, then [update it in <Constant name="dbt_platform" />](#update-redirect-uris-in-dbt-platform) |
 | [Azure DevOps (service principal)](/docs/platform/git/setup-service-principal) | Update or add an app registration |
 | GitHub On-premises | Contact [dbt Labs Support](mailto:support@getdbt.com) |
 
 ### Data platform connections
 
-Data platform connections use your legacy **getdbt.com** URL for OAuth flows until you update them. Account admins can update existing Snowflake, Databricks, and BigQuery OAuth connections to your new account access URL in the <Constant name="dbt_platform" />. See [Update redirect URIs in the dbt platform](#update-redirect-uris-in-the-dbt-platform).
+Data platform connections created before your account had an account-specific access URL keep using your legacy **getdbt.com** URL for OAuth until you update them. Connections created after that already use your new access URL, so they need no changes.
+
+Account admins can update older Snowflake, Databricks, and BigQuery OAuth connections to your new access URL directly in <Constant name="dbt_platform" />. See [Update redirect URIs in dbt platform](#update-redirect-uris-in-dbt-platform).
 
 | Integration | Action required |
 |---|---|
-| [Snowflake OAuth](/docs/platform/manage-access/set-up-snowflake-oauth#subdomain-migration) | Add the new redirect URI to your security integration, then [update it in dbt](#update-redirect-uris-in-the-dbt-platform) |
+| [Snowflake OAuth](/docs/platform/manage-access/set-up-snowflake-oauth#subdomain-migration) | Add the new redirect URI to your security integration, then [update it in <Constant name="dbt_platform" />](#update-redirect-uris-in-dbt-platform) |
 | [Snowflake External OAuth](/docs/platform/manage-access/snowflake-external-oauth#identity-provider-configuration) | Update the redirect URI in your IdP application |
-| [Databricks OAuth](/docs/platform/manage-access/set-up-databricks-oauth) | Add the new redirect URI to your Databricks OAuth app, then [update it in dbt](#update-redirect-uris-in-the-dbt-platform) |
-| [BigQuery OAuth](/docs/platform/manage-access/set-up-bigquery-oauth) | Add the new redirect URI to your Google Cloud OAuth client, then [update it in dbt](#update-redirect-uris-in-the-dbt-platform) |
+| [Databricks OAuth](/docs/platform/manage-access/set-up-databricks-oauth) | Add the new redirect URI to your Databricks OAuth app, then [update it in <Constant name="dbt_platform" />](#update-redirect-uris-in-dbt-platform) |
+| [BigQuery OAuth](/docs/platform/manage-access/set-up-bigquery-oauth) | Add the new redirect URI to your Google Cloud OAuth client, then [update it in <Constant name="dbt_platform" />](#update-redirect-uris-in-dbt-platform) |
 | [Redshift External OAuth](/docs/platform/manage-access/redshift-external-oauth) | Update the redirect URI in your IdP application |
 
-### Update redirect URIs in the dbt platform
+### Update redirect URIs in dbt platform
 
 If your account has an account-specific access URL, <Constant name="dbt_platform" /> flags each Snowflake, Databricks, or BigQuery OAuth connection and GitLab application that still uses a legacy redirect URI. Updating connections requires the Account Admin or Project Creator [permission set](/docs/platform/manage-access/enterprise-permissions). Updating a GitLab application requires the Account Admin permission set.
 
 1. In **Account settings**, go to **Connections** (or **Integrations** for GitLab) and select a flagged item. The page shows the new redirect URI.
 2. Add the new redirect URI to the OAuth configuration in your data platform or GitLab, alongside the existing one. The existing URI keeps working until you remove it.
-3. In the <Constant name="dbt_platform" />, click **Update redirect URI**.
-4. Test data platform connections by signing in again from your development credentials. For GitLab, repeat the [personal GitLab authorization flow](/docs/platform/git/connect-gitlab#personally-authenticating-with-gitlab) from **Account settings** > **Personal profile** > **Linked accounts**. Confirm that the relevant OAuth flow returns successfully to the <Constant name="dbt_platform" /> before removing the old redirect URI.
+3. In <Constant name="dbt_platform" />, click **Update redirect URI**.
+4. Test data platform connections by signing in again from your development credentials. For GitLab, repeat the [personal GitLab authorization flow](/docs/platform/git/connect-gitlab#personally-authenticating-with-gitlab) from **Account settings** > **Personal profile** > **Linked accounts**. Confirm that the relevant OAuth flow returns successfully to <Constant name="dbt_platform" /> before removing the old redirect URI.
 
-Existing sessions keep working after the update. When a session expires, <Constant name="dbt_platform" /> uses the updated redirect URI.
+Updating the redirect URI doesn't interrupt active sessions. The new URI takes effect the next time a session expires and the user signs in again.
 
-If the test fails, click **Revert to previous URI** within 7 days to restore the previous redirect URI. Once all your integrations use the new URI, you can remove the old one from your data platform or GitLab.
+If sign-in fails after the update, you have 7 days to roll back. Open the connection or GitLab application and click **Revert to previous URI** to restore the previous redirect URI while you troubleshoot. After you confirm that every integration works with the new URI, remove the old URI from your data platform or GitLab.
 
 If several connections share one OAuth app, add the new redirect URI to that app once, then update each connection in <Constant name="dbt_platform" />.
 

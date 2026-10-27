@@ -136,7 +136,7 @@ SET OAUTH_ALTERNATE_REDIRECT_URIS = ('<ACCESS_URL>/complete/snowflake')
 
 Values for `OAUTH_REDIRECT_URI` and `OAUTH_ALTERNATE_REDIRECT_URIS` are interchangeable.
 
-After you add the new redirect URI, update the existing connection in <Constant name="dbt" /> to use it. See [Update redirect URIs in the dbt platform](/docs/platform/about-platform/account-url-migration#update-redirect-uris-in-the-dbt-platform).
+After you add the new redirect URI, update the existing connection in <Constant name="dbt_platform" /> to use it. See [Update redirect URIs in dbt platform](/docs/platform/about-platform/account-url-migration#update-redirect-uris-in-dbt-platform).
 
 ### Troubleshooting
 
