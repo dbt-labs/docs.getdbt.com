@@ -80,7 +80,7 @@ If your account has an account-specific access URL, <Constant name="dbt_platform
 1. In **Account settings**, go to **Connections** (or **Integrations** for GitLab) and select a flagged item. The page shows the new redirect URI.
 2. Add the new redirect URI to the OAuth configuration in your data platform or GitLab, alongside the existing one. The existing URI keeps working until you remove it.
 3. In the <Constant name="dbt_platform" />, click **Update redirect URI**.
-4. Test it by signing in again from your development credentials. If it works, your provider accepts the new URI.
+4. Test data platform connections by signing in again from your development credentials. For GitLab, repeat the [personal GitLab authorization flow](/docs/platform/git/connect-gitlab#personally-authenticating-with-gitlab) from **Account settings** > **Personal profile** > **Linked accounts**. Confirm that the relevant OAuth flow returns successfully to the <Constant name="dbt_platform" /> before removing the old redirect URI.
 
 Existing sessions keep working after the update. When a session expires, <Constant name="dbt_platform" /> uses the updated redirect URI.
 
