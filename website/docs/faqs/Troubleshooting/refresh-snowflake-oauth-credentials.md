@@ -4,7 +4,7 @@ description: "Reconnect Snowflake OAuth when you get the authentication has expi
 sidebar_label: 'Reconnecting to Snowflake OAuth after authentication expires'
 ---
 
-When you connect Snowflake to <Constant name="dbt_platform"/> using [OAuth](/docs/platform/manage-access/set-up-snowflake-oauth), dbt stores a refresh token. This allows your user credentials to be reused in the <Constant name="studio_ide" />, and in <Constant name="semantic_layer" /> queries made with a personal access token, without needing to reconnect each time.
+When you connect Snowflake to <Constant name="dbt_platform"/> using [OAuth](/docs/platform/manage-access/set-up-snowflake-oauth), <Constant name="dbt" /> stores a refresh token. This allows your user credentials to be reused in the <Constant name="studio_ide" />, and in <Constant name="semantic_layer" /> queries made with a personal access token, without needing to reconnect each time.
 
 If you get `This error occurs when authentication has expired` when you try to run queries, you must reconnect Snowflake and the <Constant name="dbt_platform"/>.
 
