@@ -4,7 +4,6 @@ id: "account-url-migration"
 description: "Learn how to migrate to account-specific access URLs."
 pagination_next: null
 pagination_prev: null
-unlisted: true
 availability:
   surface: platform
   access: login_required
