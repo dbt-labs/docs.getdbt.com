@@ -75,7 +75,7 @@ Data platform connections use your legacy **getdbt.com** URL for OAuth flows unt
 
 ### Update redirect URIs in the dbt platform
 
-If your account has an account-specific access URL, <Constant name="dbt_platform" /> flags each Snowflake, Databricks, or BigQuery OAuth connection and GitLab application that still uses a legacy redirect URI. You can update them without recreating anything. Updating a connection requires the Account Admin or Project Creator [permission set](/docs/platform/manage-access/enterprise-permissions); updating a GitLab application requires Account Admin.
+If your account has an account-specific access URL, <Constant name="dbt_platform" /> flags each Snowflake, Databricks, or BigQuery OAuth connection and GitLab application that still uses a legacy redirect URI. Updating connections requires the Account Admin or Project Creator [permission set](/docs/platform/manage-access/enterprise-permissions). Updating a GitLab application requires the Account Admin permission set.
 
 1. In **Account settings**, go to **Connections** (or **Integrations** for GitLab) and select a flagged item. The page shows the new redirect URI.
 2. Add the new redirect URI to the OAuth configuration in your data platform or GitLab, alongside the existing one. The existing URI keeps working until you remove it.
