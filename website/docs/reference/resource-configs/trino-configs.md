@@ -384,6 +384,31 @@ The `starburst_metadata_failure_strategy` controls how dbt handles errors from t
 - `continue_on_error` (default) &mdash; Logs a warning and continues the run.
 - `fail_fast` &mdash; Aborts the run.
 
+In `dbt-trino` v1.11.0 and later, column names are matched case-insensitively, including quoted names. dbt warns about missing columns and skips their descriptions for both SQL comments and Data Discovery synchronization.
+
+## User-defined functions
+
+The `dbt-trino` adapter supports scalar SQL [user-defined functions (UDFs)](/docs/build/udfs).
+
+### Function location
+
+On Trino and Starburst Enterprise, use a catalog whose connector supports stored functions, such as Hive or Memory. For connector requirements, refer to Trino's [CREATE FUNCTION documentation](https://trino.io/docs/current/sql/create-function.html).
+
+Starburst Galaxy stores all functions in the built-in `galaxy.functions` schema. Set `database: galaxy` and `schema: functions` in your function configuration; dbt uses this schema without adding the target schema prefix. Because all projects in your account share this schema, use distinct function names across projects.
+
+### Function volatility
+
+Trino defaults to `DETERMINISTIC`. Set `volatility: non-deterministic` to generate `NOT DETERMINISTIC`. The `stable` value is ignored with a warning.
+
+Trino checks that the declared volatility matches the function body. For example, a body that calls `random()` requires `volatility: non-deterministic`. For more information, refer to Trino's [function characteristics](https://trino.io/docs/current/udf/function.html#description).
+
+### Function limitations
+
+- Python, JavaScript, aggregate, and table functions aren't supported.
+- The SQL body must be a single expression, without `SELECT` statements or subqueries. The adapter adds `RETURN`.
+- Argument `default_value`, function `grants`, and `persist_docs` aren't supported. Setting `grants` logs a warning. The function's `description` becomes its `COMMENT`.
+- Changing an argument's type leaves the old signature in place. Remove it manually with [DROP FUNCTION](https://trino.io/docs/current/sql/drop-function.html).
+
 ## Model contracts
 
 The `dbt-trino` adapter supports [model contracts](/docs/mesh/govern/model-contracts). Currently, only [constraints](/reference/resource-properties/constraints) with `type` as `not_null` are supported.

@@ -29,6 +29,7 @@ Refer to [Function properties](/reference/function-properties) or [Function conf
 	- Redshift
 	- Postgres
 	- Databricks
+	- [Starburst/Trino](/reference/resource-configs/trino-configs#user-defined-functions)
 	
 	</TabItem>
 	
@@ -71,6 +72,9 @@ Follow these steps to define UDFs in dbt:
 
     # syntax for Redshift and Postgres
     SELECT REGEXP_INSTR(a_string, '^[0-9]+$')
+
+    # syntax for Starburst/Trino
+    CASE WHEN regexp_like(a_string, '^[0-9]+$') THEN 1 ELSE 0 END
 
     ```
 
@@ -146,6 +150,8 @@ Follow these steps to define UDFs in dbt:
           data_type: integer        # required
     ```
     </File>
+
+    For Starburst/Trino, set the argument's `data_type` to a valid engine data type (such as `varchar` instead of `string`) and omit `default_value`. On Starburst Galaxy, the database and schema values must be set as `database: galaxy` and `schema: functions`.
 
     </TabItem>
 
@@ -326,6 +332,20 @@ Follow these steps to define UDFs in dbt:
       SELECT regexp_instr(a_string, '^[0-9]+$')
     $$;
     ```
+
+    </TabItem>
+
+    <TabItem value="Starburst/Trino">
+
+    ```sql
+    CREATE OR REPLACE FUNCTION galaxy.functions.is_positive_int(a_string VARCHAR)
+    RETURNS INTEGER
+    DETERMINISTIC
+    COMMENT 'My UDF that returns 1 if a string represents a naked positive integer (like "10", "+8" is not allowed).'
+    RETURN CASE WHEN regexp_like(a_string, '^[0-9]+$') THEN 1 ELSE 0 END;
+    ```
+
+    For more information, refer to [Starburst/Trino configurations](/reference/resource-configs/trino-configs#user-defined-functions).
 
     </TabItem>
 
