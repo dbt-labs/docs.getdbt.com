@@ -22,7 +22,7 @@ For <Constant name="fusion_engine" /> updates, refer to the [v2 changelog](https
 
 ## October 2026
 
-- **New:** You can now [route cross-project `ref()`](/docs/mesh/govern/project-dependencies?version=2#route-environments-across-projects) to a specific upstream environment, such as Staging, instead of only the default Production or Staging environment.
+- **New:** You can now [route cross-project `ref()`](/docs/mesh/govern/project-dependencies#route-environments-across-projects) to a specific upstream environment, such as Staging, instead of only the default Production or Staging environment.
 - **New:** In <Constant name="wizard" /> Desktop, you can search the current chat and jump between matches, including text in code blocks.
 - **New:** In <Constant name="wizard" /> Desktop, use `/new`, `/clear`, and `/rename` to manage conversations. `/new` accepts an optional starting prompt and works while another response is running.
 - **New:** In <Constant name="wizard" /> Desktop, you can discard all uncommitted changes and remove new files in one confirmed action. Conflicted files are left alone.
