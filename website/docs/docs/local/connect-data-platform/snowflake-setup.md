@@ -191,7 +191,7 @@ default:
 
 <TabItem value="Workload Identity Federation">
 
-Workload identity federation (WIF) lets you authenticate to Snowflake from a cloud workload using that platform's identity. Snowflake maps that identity to a service user, so you don't store a password or key. You can use an OpenID Connect (OIDC) token, such as one issued to a GitHub Actions workflow, or a native identity from AWS, Azure, or GCP.
+Workload Identity Federation (WIF) lets you authenticate to Snowflake from a cloud workload using that platform's identity. Snowflake maps that identity to a service user, so you don't store a password or key. You can use an OpenID Connect (OIDC) token, such as one issued to a GitHub Actions workflow, or a native identity from AWS, Azure, or GCP.
 
 Before you configure dbt, create a Snowflake service user with workload identity. For that setup, refer to the [Snowflake documentation](https://docs.snowflake.com/en/user-guide/workload-identity-federation).
 
@@ -466,9 +466,9 @@ my-snowflake-db:
 
 <VersionBlock firstVersion="1.12">
 
-### Workload identity federation
+### Workload Identity Federation
 
-Workload identity federation (WIF) lets you authenticate to Snowflake from a cloud workload using that platform's identity. Snowflake maps that identity to a service user, so you don't store a password or key. You can use an OpenID Connect (OIDC) token, such as one issued to a GitHub Actions workflow, or a native identity from AWS, Azure, or GCP.
+Workload Identity Federation (WIF) lets you authenticate to Snowflake from a cloud workload using that platform's identity. Snowflake maps that identity to a service user, so you don't store a password or key. You can use an OpenID Connect (OIDC) token, such as one issued to a GitHub Actions workflow, or a native identity from AWS, Azure, or GCP.
 
 Before you configure dbt, create a Snowflake service user with workload identity. For that setup, refer to the [Snowflake documentation](https://docs.snowflake.com/en/user-guide/workload-identity-federation).
 
@@ -519,7 +519,7 @@ The "base" configs for Snowflake targets are shown below. Note that you should a
 | Config | Required? | Description |
 | ------ | --------- | ----------- |
 | account | Yes | The account to connect to as per [Snowflake's documentation](https://docs.snowflake.com/en/user-guide/intro-regions.html#specifying-region-information-in-your-account-hostname). See notes [below](#account) |
-| user | Yes | The user to log in as. Optional for workload identity federation. |
+| user | Yes | The user to log in as. Optional for Workload Identity Federation. |
 | database | Yes | The database that dbt should create models in |
 | warehouse | Yes | The warehouse to use when building models |
 | schema | Yes | The schema to build models into by default. Can be overridden with [custom schemas](/docs/build/custom-schemas) |
