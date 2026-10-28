@@ -17,7 +17,7 @@ import FusionThreads from '/snippets/_v2-threads.md';
 import FusionPartialParseCliFlags from '/snippets/_v2-partial-parse-cli-flags.md';
 import SourceFreshnessLegacy from '/snippets/_source-freshness-legacy.md';
 
-v2 is the current era of dbt, delivered through <Constant name="fusion" />. When you install dbt, you get <Constant name="fusion" /> by default. This guide walks you through upgrading a v1 project to v2. 
+dbt v2 is the latest major version of the dbt framework. When you install dbt, you get <Constant name="fusion" /> by default. This guide walks you through upgrading a v1 project to v2. 
 
 v2 is faster and stricter, but your existing project language and DAG semantics carry over, so once you upgrade, your project works as before &mdash; just faster.
 
@@ -30,7 +30,7 @@ import AboutFusion from '/snippets/_about-v2.md';
 
 ## Install dbt
 
-Upgrading to v2 is an install step. Install dbt using `pip` to get <Constant name="fusion" /> for v2:
+dbt v2 has a new PyPI name: `dbt`. When installing with a package manager like `pip`, use the `dbt` namespace to get the free, fully-featured distribution:
 
 ```shell
 python -m pip install dbt
@@ -84,7 +84,7 @@ The v2 engine is a complete rewrite in Rust, delivering faster parse and compile
 
 Similar to a database's `INFORMATION_SCHEMA`, the [dbt Information Schema](/docs/build/dbt-information-schema) is a contracted interface into the metadata for all of the resources in your dbt project.
 
-When you use the [`--generate-info-schema`](#generating-the-information-schema) flag, dbt writes the Information Schema to `target/info_schema/` in a versioned subdirectory (for example, `target/info_schema/v1/`) as standard Parquet files. The metadata available in the schema grows with each step: parsing produces basic metadata, compiling adds column types and column-level lineage (with `--static-analysis strict`), and running or building populates runtime results.
+When you use the `--generate-info-schema` flag or set `DBT_ENGINE_GENERATE_INFO_SCHEMA=true`, dbt writes the Information Schema to `target/info_schema/` in a versioned subdirectory (for example, `target/info_schema/v1/`) as standard Parquet files. The metadata available in the schema grows with each step: parsing produces basic metadata, compiling adds model column types and column-level lineage (with `--static-analysis strict`), and running or building populates runtime results.
 
 For more information, refer to [dbt Information Schema](/docs/build/dbt-information-schema).
 
