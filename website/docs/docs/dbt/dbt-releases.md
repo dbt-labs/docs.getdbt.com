@@ -29,7 +29,7 @@ dbt v2 is distributed through three release channels:
 
 ### Version formats
 
-Daily development builds are versioned by build date, prefixed with `dev`. For example, `2.0.0.dev20261022`. Prerelease builds of an upcoming minor version are labeled alpha, beta, or release candidate (RC). For what can change at each stage, refer to [Prerelease stages and the release cycle](/docs/dbt-versions/dbt-versions#prerelease-stages).
+Daily development builds are versioned by build date, prefixed with `dev`. For example, `2.0.0.dev20261022`. Prerelease builds of an upcoming minor version are labeled alpha, beta, or release candidate (RC). For what can change at each stage, refer to [Prerelease stages and the release cycle](/docs/dbt-versions#prerelease-stages).
 
 ## Known-bad releases
 

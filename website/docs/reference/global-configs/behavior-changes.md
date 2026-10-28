@@ -31,7 +31,7 @@ Behavior change flags go through three phases of development:
 2. **Mature (enabled by default):** The default value of the flag is switched to the new behavior by default. You can still preserve the old behavior, but you may see deprecation warnings.
 3. **Removed (generally enabled):** The old behavior is removed from the dbt codebase(s). Most flags are supported indefinitely, but there is no commitment to supporting them forever. If a flag is removed, there will be significant advance warning.
 
-In dbt v2, flag lifecycle changes follow the [prerelease stages](/docs/dbt-versions/dbt-versions#prerelease-stages) of each minor version. New flags are introduced as opt-in by default. A flag's default can change to the new behavior only during an alpha prerelease, never during beta or release candidate. By the time a minor version reaches beta, its flag defaults are settled, so you have advance notice before general availability (GA).
+In dbt v2, flag lifecycle changes follow the [prerelease stages](/docs/dbt-versions#prerelease-stages) of each minor version. New flags are introduced as opt-in by default. A flag's default can change to the new behavior only during an alpha prerelease, never during beta or release candidate. By the time a minor version reaches beta, its flag defaults are settled, so you have advance notice before general availability (GA).
 
 ### Introduced in <Constant name="core_v1" />
 
