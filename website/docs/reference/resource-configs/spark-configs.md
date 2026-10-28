@@ -69,7 +69,7 @@ tblproperties ('team' = 'analytics_engineering' , 'review_interval_days' = '90')
 
 When `file_format` is `delta` or `iceberg`, dbt sends `create or replace table` instead of `create table`.
 
-To read the properties on the table, run `SHOW TBLPROPERTIES` in Spark. Spark returns each value without extra quotes, so `90` comes back as `90`.
+To read the properties on the table, run `SHOW TBLPROPERTIES SCHEMA_NAME.TABLE_NAME` in Spark. Spark returns each value without extra quotes, so `90` comes back as `90`.
 
 :::caution
 If you change `tblproperties` on an incremental model, run a full refresh for that model only:
