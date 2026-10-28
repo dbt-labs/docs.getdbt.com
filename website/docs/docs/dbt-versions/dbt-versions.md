@@ -28,8 +28,22 @@ If you're using the <Constant name="dbt_platform" /> (including the <Constant na
 <Constant name="fusion" /> follows [semantic versioning](https://semver.org/):
 
 - **Major versions** (for example, v2 to v3) may include breaking changes. Deprecated functionality will stop working.
-- **Minor versions** (for example, v2.0 to v2.1) add features and are backwards compatible. They will not break project code that relies on documented functionality.
+- **Minor versions** (for example, v2.0 to v2.1) add features and are backwards compatible. They will not break project code that relies on documented functionality. Any deliberate behavior change ships behind a [behavior change flag](/reference/global-configs/behavior-changes), and we give advanced notice before the default flag value flips.
 - **Patch versions** (for example, v2.0.0 to v2.0.1) include fixes only: bug fixes, security fixes, or installation fixes.
+
+### Types of changes
+
+Changes to the v2 engine fall into three categories:
+
+- **New features**: Net new capabilities, frequently with new YAML configs or flags. As these are new features that require additional configuration, they should not break existing projects. Significant new features ship first as `experimental` and become official features when a minor version is promoted to general availability (GA). Refer to [Preview new and experimental features](/docs/dbt-versions/experimental-features#experimental-features-in-the-dbt-v2-engine).
+- **Non-breaking improvements**: Optimizations, feature improvements, bug fixes, or security patches that are not expected to break a deployment with automatic upgrades. They roll out continuously and are sometimes [backported](#backports) to previous minor versions.
+- **Behavior changes** are deliberate,but breaking, changes to existing behavior. They're released behind a [behavior change flag](/reference/global-configs/behavior-changes). The flag starts opt-in (default `false`), and later becomes the default so the new behavior applies to everyone.
+
+### Backports {#backports}
+
+A backport is a patch made to a previous minor version of dbt. Backports are made only when explicitly requested or when a security patch is identified internally or externally. A backport contains only the fix, not other updates made to the newer minor version.
+
+For example, suppose a fix is first released in a prerelease of 2.1. If it's backported, it also ships as a new patch of 2.0 (for example, 2.0.16), which contains only that fix.
 
 ### Release channels
 

@@ -27,6 +27,10 @@ dbt v2 is distributed through three release channels:
 | `canary` | The latest version to be officially released | ⚠️ Most recent stable version but still undergoing thorough testing |
 | `dev` | The latest development build | ❌ May be unstable; may not have passed all internal tests |
 
+### Version formats
+
+Daily development builds are versioned by build date, prefixed with `dev`. For example, `2.0.0.dev20261022`. Prerelease builds of an upcoming minor version are labeled alpha, beta, or release candidate (RC). For what can change at each stage, refer to [Prerelease stages and the release cycle](/docs/dbt-versions/dbt-versions#prerelease-stages).
+
 ## Known-bad releases
 
 If a shipped v2 release is later found to contain a regression, dbt Labs flags it as a known-bad release. If you have a flagged version installed, the dbt VS Code extension shows a warning notification telling you which version to update to. To move off a flagged version, update it using your installation method (for example, pip or Homebrew). For details, including how air-gapped users receive these notifications, refer to [Known-bad releases](/docs/dbt-versions/dbt-version-compatibility#known-bad-releases).
