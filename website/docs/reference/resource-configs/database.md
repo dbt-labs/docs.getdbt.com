@@ -123,7 +123,7 @@ functions:
 
 ```yaml
 functions:
-  - name: [<function-name>]
+  - name: function_name
     config:
       database: analytics
 ```

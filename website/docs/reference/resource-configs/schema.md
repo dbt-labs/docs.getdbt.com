@@ -151,7 +151,7 @@ functions:
 
 ```yaml
 functions:
-  - name: [<function-name>]
+  - name: my_function
     config:
       schema: udf_schema
 ```

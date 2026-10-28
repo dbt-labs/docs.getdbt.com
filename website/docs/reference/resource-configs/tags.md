@@ -321,7 +321,7 @@ functions:
 
 ```yaml
 functions:
-  - name: [<function-name>]
+  - name: function_name
     config:
       tags: <string> | [<string>]
 ```
