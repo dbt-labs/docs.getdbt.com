@@ -14,16 +14,17 @@ The release tracks available for your project vary depending on the major versio
 
 ### dbt v2 release tracks
 
-The <Constant name="dbt_platform" /> has four <Constant name="fusion" /> release tracks available to give you control over stability vs. velocity.
+The <Constant name="dbt_platform" /> has five <Constant name="fusion" /> release tracks available to give you control over stability vs. velocity.
 
 _`v2 Stable` is the default for all new <Constant name="fusion" />-powered projects._
 
-| Release track | Cadence | Description | [Plan availability](https://www.getdbt.com/pricing) | API value |
+| Release track | Updates | Description | [Plan availability](https://www.getdbt.com/pricing) | API value |
 | ------------- | ------- | ----------- | ----------------- | --------- |
-| **v2 Nightly** | Nightly | The latest nightly build. Includes early access to new features. | All plans | `fusion-nightly` |
-| **v2 Stable** (default) | Weekly | A weekly release that balances stability and feature access. <br /> | All plans | `fusion-stable` |
-| **v2 Extended** | Monthly | The previous month's final v2 Stable release. Designed for those who want maximum stability and additional testing time. | Enterprise, Enterprise+ | `fusion-extended` |
-| **v2 Fallback** | Monthly | The previous month's v2 Extended release. Emergency rollback option for account admins. | Enterprise+ | `fusion-fallback` |
+| **v2 Nightly** | Nightly | A new build cut from `main` every night, versioned by build date (for example, `2.x.0.dev20261022`). Includes early access to new features. | All plans. See [dbt releases](/docs/dbt/dbt-releases) for current version. | `fusion-nightly` |
+| **v2 Preview** | Weekly | The most recent prerelease (alpha, beta, or release candidate) of the next minor version. Each week the prerelease is incremented (for example, `2.x-alpha.1` to `2.x-alpha.2`). When a release candidate reaches general availability (GA), Preview moves to `alpha.1` of the next minor version. Use it to test upcoming changes before they reach Stable. For what can change at each stage, refer to [Prerelease stages](/docs/dbt-versions/dbt-versions#prerelease-stages). | TBD | TBD |
+| **v2 Stable** (default) | Each new minor version GA | The latest generally available minor version, including its patches. Balances stability and feature access. | All plans | `fusion-stable` |
+| **v2 Extended** | Each new minor version GA | The previous minor version, including its patches. When a new minor version reaches GA, Extended moves to the previous minor version. Designed for those who want maximum stability and additional testing time. | Enterprise, Enterprise+ | `fusion-extended` |
+| **v2 Fallback** | Each new minor version GA | The minor version two back (N-2), including its patches. Emergency rollback option for account admins. | Enterprise+ | `fusion-fallback` |
 
 
 ### <Constant name="core" /> release tracks {#dbt-v1-release-tracks}
@@ -60,13 +61,15 @@ We recommend that all new projects run dbt v2. Projects still on v1 release trac
 
 ### Choosing a dbt v2 release track
 
-Choose **v2 Stable** (the default for new projects) for a weekly release cadence that balances stability and feature access. This is the recommended starting point for most customers migrating to <Constant name="fusion_engine" />.
+Choose **v2 Stable** (the default for new projects) for the latest generally available minor version, which balances stability and feature access. This is the recommended starting point for most customers migrating to <Constant name="fusion_engine" />.
 
-Choose **v2 Nightly** if you want the latest features and are comfortable with a daily release cadence. This track ideal for teams prioritizing the most recent features.
+Choose **v2 Nightly** if you want the latest features and are comfortable with a daily release cadence. This track is ideal for teams prioritizing the most recent features.
 
-Choose **v2 Extended** if your team needs maximum stability and more time to test before updates roll out. This track generally lags v2 Stable by one month and is available for Enterprise and Enterprise+ accounts.
+Choose **v2 Preview** if you want to test the next minor version before it reaches GA, including new experimental features and behavior change flags. Preview is a prerelease track and isn't recommended for production.
 
-Choose **v2 Fallback** as an emergency measure only. This is a temporary rollback option for Enterprise+ accounts, not for ongoing use.
+Choose **v2 Extended** if your team needs maximum stability and more time to test before updates roll out. This track lags v2 Stable by one minor version and is available for Enterprise and Enterprise+ accounts.
+
+Choose **v2 Fallback** as an emergency measure only. It runs the minor version two back (N-2), so expect more differences from Stable than with Extended. This is a temporary rollback option for Enterprise+ accounts, not for ongoing use.
 
 Account admins can set the org-wide default release track for new projects via a toggle in **Account Settings**. Individual project owners can then override that default per environment.
 
@@ -99,8 +102,13 @@ Switching to **v2 Fallback** alerts the dbt Support team, who may reach out to h
 #### dbt v2 track architectures
 
 **Default** &mdash; All plans
-- Prioritize a weekly release cadence that balances stability and new features
+- Prioritize the latest generally available minor version, which balances stability and new features
 - Leave all environments on the **v2 Stable** release track (default for new projects at GA)
+
+**Pre-GA testing** &mdash; All plans
+- Prioritize early visibility into upcoming changes, such as behavior change flags and experimental features, before they reach production
+- Configure development or test environments to use **v2 Preview**
+- Leave production environments on **v2 Stable**
 
 **Velocity-focused** &mdash; All plans
 - Prioritize immediate access to the latest v2 features and fixes
@@ -108,7 +116,7 @@ Switching to **v2 Fallback** alerts the dbt Support team, who may reach out to h
 
 **Cautious** &mdash; Enterprise, Enterprise+
 - Prioritize maximum stability and additional testing time
-- Configure production environments to use **v2 Extended** (one month behind v2 Stable)
+- Configure production environments to use **v2 Extended** (one minor version behind v2 Stable)
 - Configure development environments to use **v2 Stable** so developers get access to upcoming changes before they reach production
 
 #### dbt v1 track architectures

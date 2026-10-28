@@ -39,11 +39,36 @@ Changes to the v2 engine fall into three categories:
 - **Non-breaking improvements**: Optimizations, feature improvements, bug fixes, or security patches that are not expected to break a deployment with automatic upgrades. They roll out continuously and are sometimes [backported](#backports) to previous minor versions.
 - **Behavior changes** are deliberate,but breaking, changes to existing behavior. They're released behind a [behavior change flag](/reference/global-configs/behavior-changes). The flag starts opt-in (default `false`), and later becomes the default so the new behavior applies to everyone.
 
+### Prerelease stages and the release cycle {#prerelease-stages}
+
+Each v2 minor version moves through three prerelease stages before it reaches GA and becomes stable:
+
+| Stage | What can change |
+|-------|-----------------|
+| **Alpha** | Any change is acceptable. New behavior change flags can be introduced, and existing flags can be flipped so the new behavior is the default. New experimental features can be introduced, and existing experimental features can be promoted out of experimental gating. |
+| **Beta** | Most changes are acceptable. New behavior change flags can be introduced, but existing flags cannot be flipped to default. New experimental features can be introduced, and experimental features can be promoted to standard features. |
+| **Release candidate (RC)** | The release is considered to be ready for GA, so this stage acts as a code freeze. Only small, non-breaking patches land. No new behavior change flags, no default flips, no new experimental features, and no promotions. |
+
+Each minor version starts at `alpha.1`. Successive alpha releases build toward beta, then RC, and finally GA. When a minor version reaches GA, `alpha.1` of the next minor version opens, cut from the latest nightly build.
+
+```txt
+2.x-alpha.1 → alpha.2 → …   Bigger changes and behavior-default flips
+                 ↓
+2.x-beta.1  → beta.2  → …   More improvements; no default flips
+                 ↓
+2.x-RC.1    → RC.2    → …   Small, non-breaking patches
+                 ↓
+2.x GA                      Stable release
+                 └──────→ 2.x+1-alpha.1 opens immediately
+```
+
+Because default flag flips only occur during alpha, the behavior defaults of a minor version are settled by the time it reaches beta. This gives you time to test and prepare before GA. For the current prerelease, refer to [dbt releases](/docs/dbt/dbt-releases).
+
 ### Backports {#backports}
 
 A backport is a patch made to a previous minor version of dbt. Backports are made only when explicitly requested or when a security patch is identified internally or externally. A backport contains only the fix, not other updates made to the newer minor version.
 
-For example, suppose a fix is first released in a prerelease of 2.1. If it's backported, it also ships as a new patch of 2.0 (for example, 2.0.16), which contains only that fix.
+For example, suppose a fix is first released in a prerelease of the next minor version (2.x). If it's backported, it also ships as a new patch of the current minor version, which contains only that fix.
 
 ### Release channels
 
