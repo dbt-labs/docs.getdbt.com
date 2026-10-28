@@ -47,7 +47,7 @@ Each v2 minor version moves through three prerelease stages before it reaches GA
 |-------|-----------------|
 | **Alpha** | Any change is acceptable. New behavior change flags can be introduced, and existing flags can be flipped so the new behavior is the default. New experimental features can be introduced, and existing experimental features can be promoted out of experimental gating. |
 | **Beta** | Most changes are acceptable. New behavior change flags can be introduced, but existing flags cannot be flipped to default. New experimental features can be introduced, and experimental features can be promoted to standard features. |
-| **Release candidate (RC)** | The release is considered to be ready for GA, so this stage acts as a code freeze. Only small, non-breaking patches land. No new behavior change flags, no default flips, no new experimental features, and no promotions. |
+| **Release candidate (RC)** | Considered to be ready for GA, so this stage acts as a code freeze. Only small, non-breaking patches land. No new behavior change flags, no default flips, no new experimental features, and no promotions. |
 
 Each minor version starts at `alpha.1`. Successive alpha releases build toward beta, then RC, and finally GA. When a minor version reaches GA, `alpha.1` of the next minor version opens, cut from the latest nightly build.
 
