@@ -195,7 +195,9 @@ Workload Identity Federation (WIF) lets you authenticate to Snowflake from a clo
 
 Before you configure dbt, create a Snowflake service user with workload identity. For that setup, refer to the [Snowflake documentation](https://docs.snowflake.com/en/user-guide/workload-identity-federation).
 
-Don't set the `authenticator` field. If you set both `method` and `authenticator`, the profile won't work. You can omit `user`.
+Leave the `authenticator` field unset. Setting both `method` and `authenticator` will prevent the profile from working.
+
+The `user` field is optional. Snowflake uses the service user mapped to this cloud identity.
 
 To authenticate with WIF, configure the following fields in your `profiles.yml` file:
 
@@ -472,7 +474,7 @@ Workload Identity Federation (WIF) lets you authenticate to Snowflake from a clo
 
 Before you configure dbt, create a Snowflake service user with workload identity. For that setup, refer to the [Snowflake documentation](https://docs.snowflake.com/en/user-guide/workload-identity-federation).
 
-You can omit `user`.
+The `user` field is optional. Snowflake uses the service user mapped to this cloud identity.
 
 To authenticate with WIF, configure the following fields in your `profiles.yml` file:
 
