@@ -12,7 +12,7 @@ To-do:
 <Snippet path="dbt-databricks-for-databricks" />
 
 :::note
-See [Databricks configuration](#databricks-configs) for the Databricks version of this page.
+For the Databricks version of this page, refer to [Databricks configuration](/reference/resource-configs/databricks-configs).
 :::
 
 ## Configuring tables
@@ -26,9 +26,60 @@ When materializing a model as `table`, you may include several optional configs 
 | partition_by  | Partition the created table by the specified columns. A directory is created for each partition.                                   | Optional                | `date_day`              |
 | clustered_by  | Each partition in the created table will be split into a fixed number of buckets by the specified columns.                         | Optional               | `country_code`              |
 | buckets  | The number of buckets to create while clustering                                                                                   | Required if `clustered_by` is specified                | `8`              |
-| tblproperties | The table properties configure table behavior. Properties differ depending on the file format, see reference docs ([Iceberg](https://iceberg.apache.org/docs/latest/configuration/#table-properties), [Parquet](https://spark.apache.org/docs/3.5.4/sql-data-sources-parquet.html#data-source-option), [Delta](https://docs.databricks.com/aws/en/delta/table-properties#delta-table-properties), [Hudi](https://hudi.apache.org/docs/sql_ddl/#table-properties)). | Optional |<code># Iceberg Example<br /> tblproperties:<br />   read.split.target-size: 268435456<br />   commit.retry.num-retries: 10</code> |
+| tblproperties | The table properties configure table behavior. Properties differ by file format. Read the reference for [Iceberg](https://iceberg.apache.org/docs/latest/configuration/#table-properties), [Delta Lake](https://docs.delta.io/latest/table-properties.html), and [Hudi](https://hudi.apache.org/docs/sql_ddl/#table-properties). | Optional |<code>tblproperties:<br />   team: analytics_engineering<br />   review_interval_days: 90</code> |
 
 [^1]: If you configure `location_root`, dbt specifies a location path in the `create table` statement. This changes the table from "managed" to "external" in Spark/Databricks.
+
+## Setting table properties
+
+A table property is a key-value pair stored in a table's metadata. Use the `tblproperties` config to set them on a model. The config works the same way on a table and on an incremental model.
+
+You might set a property for either of these reasons:
+
+- A file format reads specific keys that change how the table behaves. Each format documents its own keys for [Iceberg](https://iceberg.apache.org/docs/latest/configuration/#table-properties), [Delta Lake](https://docs.delta.io/latest/table-properties.html), and [Hudi](https://hudi.apache.org/docs/sql_ddl/#table-properties).
+- You want to attach your own label, such as the team that maintains the table.
+
+dbt does not check the keys or values. It sends every value to Spark as text, so a number such as `90` is sent as `'90'`. Do not use `owner` for your own label. Spark reserves that name and rejects it.
+
+<File name="models/events_summary.sql">
+
+```sql
+{{ config(
+    materialized='table',
+    tblproperties={
+      'team': 'analytics_engineering',
+      'review_interval_days': 90
+    }
+) }}
+
+select
+    event_date,
+    count(*) as event_count
+from {{ ref('events') }}
+group by event_date
+```
+
+</File>
+
+dbt adds a `tblproperties` clause to the `create table` statement. For this model, that clause looks like this:
+
+```sql
+tblproperties ('team' = 'analytics_engineering' , 'review_interval_days' = '90')
+```
+
+When `file_format` is `delta` or `iceberg`, dbt sends `create or replace table` instead of `create table`.
+
+To read the properties on the table, run `SHOW TBLPROPERTIES` in Spark. Spark returns each value without extra quotes, so `90` comes back as `90`.
+
+:::caution
+If you change `tblproperties` on an incremental model, run a full refresh for that model only:
+
+```bash
+dbt run --full-refresh --select MODEL_NAME
+```
+
+dbt applies the new properties when it creates the table, including on a full refresh. An incremental run leaves the existing properties in place.
+:::
 
 ## Incremental models
 
@@ -278,11 +329,9 @@ merge into analytics.merge_incremental as DBT_INTERNAL_DEST
 ## Persisting model descriptions
 
 Relation-level docs persistence is supported in dbt. For more
-information on configuring docs persistence, see [the docs](/reference/resource-configs/persist_docs).
+information on configuring docs persistence, refer to [persist_docs](/reference/resource-configs/persist_docs).
 
-When the `persist_docs` option is configured appropriately, you'll be able to
-see model descriptions in the `Comment` field of `describe [table] extended`
-or `show table extended in [database] like '*'`.
+When the `persist_docs` option is configured appropriately, model descriptions appear in the `Comment` field of `describe [table] extended` or `show table extended in [database] like '*'`.
 
 ## Always `schema`, never `database`
 
