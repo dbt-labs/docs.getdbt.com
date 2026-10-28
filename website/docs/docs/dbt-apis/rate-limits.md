@@ -62,7 +62,7 @@ Treat remote MCP automation like any other API client: avoid retrying without pa
 
 ## Semantic Layer APIs
 
-dbt rate limits the [Semantic Layer APIs](/docs/dbt-apis/sl-api-overview) (GraphQL, JDBC, and Python SDK) independently of the Administrative API and Discovery API. The Semantic Layer limit is shared across clients and users, so your own request volume isn't the only factor that determines whether you hit it.
+dbt rate limits the [Semantic Layer APIs](/docs/dbt-apis/sl-api-overview) (GraphQL, JDBC, and Python SDK) independently of the Administrative API and Discovery API. The Semantic Layer limit is shared across all clients, users, and accounts in the same instance (for example, every account in US1 shares a single limit), so your own request volume isn't the only factor that determines whether you hit it.
 
 ## Self-hosted MCP {#local-mcp}
 
@@ -70,11 +70,13 @@ dbt rate limits the [Semantic Layer APIs](/docs/dbt-apis/sl-api-overview) (Graph
 
 ## Exceeding the rate limit
 
-For the [Administrative API](/docs/dbt-apis/admin-api) and [Discovery API](/docs/dbt-apis/discovery-api), if you exceed the limit, dbt returns `429 Too Many Requests` and enforces a five-minute cooldown. After five minutes, you can send requests again as usual. This cooldown doesn't apply to the Semantic Layer API.
+For the [Administrative API](/docs/dbt-apis/admin-api) and [Discovery API](/docs/dbt-apis/discovery-api), if you exceed the limit, dbt returns `429 Too Many Requests` and enforces a five-minute cooldown. After five minutes, you can send requests again as usual. 
+
+This cooldown doesn't apply to the Semantic Layer API.
 
 ### Exceeding the rate limit for the Semantic Layer API
 
-If you receive a `429 Too Many Requests` error, you exceeded the Semantic Layer limit. To reduce your own request footprint:
+If you receive a `429 Too Many Requests` error, you exceeded the Semantic Layer limit. There's no cooldown period, so requests succeed again as soon as shared usage drops back under the limit. To reduce your own request footprint:
 
 - Batch multiple metrics into a single query.
 - Retry with exponential backoff and jitter instead of polling at a fixed interval.
