@@ -214,7 +214,7 @@ functions:
 
 ```yaml
 functions:
-  - name: my_function
+  - name: function_name
     config:
       alias: my_function_alias
 ```
