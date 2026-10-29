@@ -129,7 +129,7 @@ More details are available in the [contract reference](/reference/resource-confi
 
 Yes, on BigQuery, because nested fields inside [struct columns](https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/data-types#struct_type) are strongly typed. Model contracts are useful when a model contains nested JSON or event data, where a nested field that changes type could break downstream models.
 
-Nested fields (structs) are columns inside other columns. List each inner field in YAML with a dotted name, such as `b.id` or `b.double_nested.another.even_more`. You must declare a `name` and `data_type` for every inner field. You do not have to declare the parent (`b` or `b.double_nested`) unless you want a description or a constraint on the whole struct.
+Nested fields (structs) are columns inside other columns. List each inner field in YAML with a dotted name, such as `b.id` or `b.double_nested.another.even_more`. You must declare a `name` and `data_type` for every inner field. You may optionally declare the struct column (in this example, `b` or `b.double_nested`) in order to add a description or a constraint on the struct.
 
 <File name="models/nested_fields.yml">
 
