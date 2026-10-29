@@ -2,7 +2,7 @@
   "_meta": {
     "platform": "snowflake",
     "platform_name": "Snowflake",
-    "count": 1190
+    "count": 1206
   },
   "functions": [
     {
@@ -1315,6 +1315,13 @@
       "fusion_typecheck": true
     },
     {
+      "name": "TO_IPADDRESS",
+      "category": "Conversion",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/to_ipaddress",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "TO_JSON",
       "category": "Conversion",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/to_json",
@@ -1413,6 +1420,13 @@
       "fusion_typecheck": true
     },
     {
+      "name": "TRY_TO_IPADDRESS",
+      "category": "Conversion",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/try_to_ipaddress",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "TRY_TO_TIME",
       "category": "Conversion",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/try_to_time",
@@ -1479,6 +1493,13 @@
       "name": "ACCEPTED_VALUES (SYSTEM DATA METRIC FUNCTION)",
       "category": "Data metric",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_accepted_values",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "ACCURACY (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_accuracy",
       "preview_status": "GA",
       "fusion_typecheck": false
     },
@@ -2211,11 +2232,32 @@
       "fusion_typecheck": true
     },
     {
+      "name": "MAE (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_mae",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "MAPE (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_mape",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "MAX (SYSTEM DATA METRIC FUNCTION)",
       "category": "Data metric",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_max",
       "preview_status": "GA",
       "fusion_typecheck": true
+    },
+    {
+      "name": "MEAN_ERROR (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_mean_error",
+      "preview_status": "GA",
+      "fusion_typecheck": false
     },
     {
       "name": "MEDIAN (SYSTEM DATA METRIC FUNCTION)",
@@ -2498,9 +2540,23 @@
       "fusion_typecheck": false
     },
     {
+      "name": "R_SQUARED (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_r_squared",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "REFERENTIAL_INTEGRITY_COUNT (SYSTEM DATA METRIC FUNCTION)",
       "category": "Data metric",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_referential_integrity_count",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "RMSE (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_rmse",
       "preview_status": "GA",
       "fusion_typecheck": false
     },
@@ -2582,9 +2638,30 @@
       "fusion_typecheck": false
     },
     {
+      "name": "SCHEMA_CHANGE_ADD_COUNT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_schema_change_add_count",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "SCHEMA_CHANGE_COUNT (SYSTEM DATA METRIC FUNCTION)",
       "category": "Data metric",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_schema_change_count",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "SCHEMA_CHANGE_DROP_COUNT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_schema_change_drop_count",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "SCHEMA_CHANGE_TYPE_COUNT (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_schema_change_type_count",
       "preview_status": "GA",
       "fusion_typecheck": false
     },
@@ -2594,6 +2671,13 @@
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_skew",
       "preview_status": "GA",
       "fusion_typecheck": true
+    },
+    {
+      "name": "SOURCE_TARGET_LAG (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_source_target_lag",
+      "preview_status": "GA",
+      "fusion_typecheck": false
     },
     {
       "name": "SPECIAL_CHARACTER_COUNT (SYSTEM DATA METRIC FUNCTION)",
@@ -2650,6 +2734,13 @@
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_sum",
       "preview_status": "GA",
       "fusion_typecheck": true
+    },
+    {
+      "name": "TABLE_SIZE_BYTES (SYSTEM DATA METRIC FUNCTION)",
+      "category": "Data metric",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/dmf_table_size_bytes",
+      "preview_status": "GA",
+      "fusion_typecheck": false
     },
     {
       "name": "TRUE_COUNT (SYSTEM DATA METRIC FUNCTION)",
@@ -4190,6 +4281,13 @@
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/warehouse_metering_history",
       "preview_status": "GA",
       "fusion_typecheck": true
+    },
+    {
+      "name": "IPADDRESS_TRUNC",
+      "category": "IPADDRESS",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/ipaddress_trunc",
+      "preview_status": "GA",
+      "fusion_typecheck": false
     },
     {
       "name": "DATA_QUALITY_MONITORING_EXPECTATION_STATUS",
@@ -6852,13 +6950,6 @@
       "fusion_typecheck": false
     },
     {
-      "name": "SYSTEM$GET_COLUMN_COMMENT_PROPAGATION_SOURCE",
-      "category": "System",
-      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/system_get_column_comment_propagation_source",
-      "preview_status": "GA",
-      "fusion_typecheck": false
-    },
-    {
       "name": "SYSTEM$GET_COMPUTE_POOL_PENDING_MAINTENANCE",
       "category": "System",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/system_get_compute_pool_pending_maintenance",
@@ -7314,6 +7405,13 @@
       "fusion_typecheck": false
     },
     {
+      "name": "SYSTEM$MIGRATE_LEGACY_EVENT_ROUTING_CONFIGURATION",
+      "category": "System",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/system_migrate_legacy_event_routing_configuration",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "SYSTEM$MIGRATE_SAML_IDP_REGISTRATION",
       "category": "System",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/system_migrate_saml_idp_registration",
@@ -7338,6 +7436,13 @@
       "name": "SYSTEM$OPT_OUT_MALICIOUS_IP_PROTECTION_BY_CATEGORY",
       "category": "System",
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/system_opt_out_malicious_ip_protection_by_category",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "SYSTEM$PARQUET_DIRECT_AUTO_REFRESH_STATUS",
+      "category": "System",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/system_parquet_direct_auto_refresh_status",
       "preview_status": "GA",
       "fusion_typecheck": false
     },
@@ -8082,6 +8187,13 @@
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/get_object_references",
       "preview_status": "GA",
       "fusion_typecheck": true
+    },
+    {
+      "name": "ICEBERG_TABLE_FILE_REGISTRATION_HISTORY",
+      "category": "Table",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/iceberg_table_file_registration_history",
+      "preview_status": "GA",
+      "fusion_typecheck": false
     },
     {
       "name": "ICEBERG_TABLE_FILES",
