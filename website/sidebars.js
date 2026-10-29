@@ -21,6 +21,7 @@ const sidebarSettings = {
         "docs/platform/about-platform/change-your-dbt-theme",
         "docs/platform/about-platform/dbt-platform-features",
         "docs/platform/about-platform/access-regions-ip-addresses",
+        "docs/platform/about-platform/account-url-migration",
         "docs/platform/about-platform/tenancy",
       ],
     }, // About dbt platform directory
