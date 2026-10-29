@@ -280,6 +280,8 @@ These are the additional configurations, specific to Snowflake, that can be supp
 | `catalog_linked_database_type` | Optional | Catalog-linked database type. For example, `glue`  |
 | `max_data_extension_time_in_days` | Optional |  `0` to `90` (default: `14`)  |
 | `target_file_size` | Optional | Values like `'AUTO'`, `'16MB'`, `'32MB'`, `'64MB'`, `'128MB'`. Case-insensitive  |
+| `base_location_root` | Optional | Storage path prefix for tables in the catalog-linked database, for example `'s3://my-bucket/prefix'`. Must be an absolute path when the catalog integration vends credentials. Refer to [Base location for external catalogs](#base-location-for-external-catalogs) |
+| `base_location_subpath` | Optional | Path segment appended after the table name (for example, `'v1'`), only configurable per-model. Requires `base_location_root` |
 | `iceberg_version` (v1.12+) | Optional | `2` (default) or `3` |
 
 </VersionBlock>
@@ -295,12 +297,12 @@ These are the additional configurations, specific to Snowflake, that can be supp
 - **iceberg_version:** Specifies the Iceberg format version for the table. Default value is `2`. Set to `3` for improved support for `VARIANT` data types and faster incremental operations. Version 3 uses [deletion vectors](https://docs.snowflake.com/en/user-guide/tables-iceberg-manage#tables-iceberg-deletion-vectors), which let Snowflake mark rows as deleted without rewriting the underlying data files, making incremental runs faster. Note that you can't change the Iceberg version after table creation. As an alternative, you can [configure the default Iceberg version](https://docs.snowflake.com/en/user-guide/tables-iceberg-v3-specification-support#configure-the-default-iceberg-version) at the account, database, or schema level in Snowflake.
 </VersionBlock>
 
-- **base_location_root:** Specifies the prefix of the [`BASE_LOCATION`](https://docs.snowflake.com/en/sql-reference/sql/create-iceberg-table-snowflake#optional-parameters), the write path for the Iceberg table.
+- **base_location_root:** Specifies the prefix of the [`BASE_LOCATION`](https://docs.snowflake.com/en/sql-reference/sql/create-iceberg-table-snowflake#optional-parameters), the write path for the Iceberg table. For tables in external catalogs, this is required for catalog-linked databases that vend credentials. Refer to [Base location for external catalogs](#base-location-for-external-catalogs).
 - **base_location_subpath:** Specifies the suffix of the [`BASE_LOCATION`](https://docs.snowflake.com/en/sql-reference/sql/create-iceberg-table-snowflake#optional-parameters), the write path for the Iceberg table. This property can only be set in model configurations, not in `catalogs.yml`.
 
 ### Base location 
 
-Snowflake's `CREATE ICEBERG TABLE` DDL requires a `base_location` when the table uses a custom external volume. dbt defines this parameter on your behalf to streamline usage and enforce basic isolation of table data within the `EXTERNAL VOLUME`. By default, dbt provides a `base_location` string of the form `_dbt/{SCHEMA_NAME}/{MODEL_NAME}`.
+Snowflake's `CREATE ICEBERG TABLE` DDL requires a `base_location` when the table uses a custom external volume. dbt defines this parameter on your behalf to streamline usage and enforce basic isolation of table data within the `EXTERNAL VOLUME`. By default, dbt provides a `base_location` string of the form `_dbt/{SCHEMA_NAME}/{MODEL_NAME}`. This default applies to Snowflake-managed (Horizon) Iceberg tables; for tables in external catalogs, refer to [Base location for external catalogs](#base-location-for-external-catalogs).
 
 Snowflake rejects `BASE_LOCATION` for Iceberg tables that use Snowflake-managed storage, so dbt omits it when you set `external_volume` to `SNOWFLAKE_MANAGED`. dbt also omits it when you leave `external_volume` unset, depending on the version you're running &mdash; refer to [External volume defaults](#external-volume-defaults).
 
@@ -335,6 +337,25 @@ select * from {{ ref('jaffle_shop_customers') }}
 </File>
 
 <BaseLocationEnvIsolation />
+
+#### Base location for external catalogs
+
+When you write Iceberg tables to an external catalog through a [catalog-linked database](https://docs.snowflake.com/en/user-guide/tables-iceberg-catalog-linked-database) (CLD), Snowflake requires an absolute `BASE_LOCATION` if the catalog integration vends credentials. Refer to the [Snowflake documentation](https://docs.snowflake.com/en/sql-reference/sql/create-iceberg-table-rest#optional-parameters).
+
+For these tables, dbt doesn't apply the `_dbt` default. dbt only emits `BASE_LOCATION` when you set `base_location_root`, and the DDL is unchanged when you don't. dbt can't tell whether a catalog integration vends credentials. A default value would silently move existing tables on integrations that don't vend credentials, and the relative default path would still fail on integrations that do.
+
+You can set `base_location_root` in `catalogs.yml` or in the model configuration. The model configuration takes precedence. `base_location_subpath` is only accepted in the model configuration and requires `base_location_root`.
+
+- If `base_location_root` = `s3://my-bucket/prefix`, dbt outputs `s3://my-bucket/prefix/{{ schema }}/{{ model_name }}`
+- If `base_location_root` = `s3://my-bucket/prefix` and `base_location_subpath` = `v1`, dbt outputs `s3://my-bucket/prefix/{{ schema }}/{{ model_name }}/v1`
+
+dbt validates these values:
+
+- A `base_location_root` that's empty after trimming whitespace and trailing `/` is a configuration error.
+- A `base_location_subpath` without a `base_location_root` is a configuration error.
+- dbt removes trailing `/` characters from both values.
+
+Setting `base_location_root` in project-level or model configuration applies it to every model it matches, including models that write to external catalogs. For example, a project-wide `+base_location_root` that you set for built-in Iceberg tables also applies to models in the same project that use a catalog-linked database.
 
 #### Rationale
 
