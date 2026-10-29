@@ -9,7 +9,7 @@ availability:
   access: login_required
 ---
 
-Account-specific access URLs are being assigned to <Constant name="dbt" /> accounts as part of our ongoing efforts to improve your experience and strengthen security. Each account will receive its own unique <Constant name="dbt_platform" /> and [API access URLs](/docs/dbt-apis/overview) on the **dbt.com** domain rather than sharing generic **getdbt.com** region URLs. For example:
+Account-specific access URLs are being assigned to <Constant name="dbt" /> accounts as part of our ongoing efforts to improve your experience and strengthen security. Each account will receive its own unique <Constant name="dbt_platform" /> and [API access URLs](/docs/dbt-apis/overview) on the `dbt.com` domain rather than sharing legacy region URLs such as `cloud.getdbt.com`, `emea.dbt.com`, and `au.dbt.com`. For example:
 
 - Multi-tenant: `https://cloud.getdbt.com` becomes `https://ab123.us1.dbt.com`
 - Single tenant: `https://acme.getdbt.com` becomes `https://ab123.acme.dbt.com`
@@ -18,57 +18,57 @@ Account-specific access URLs are being assigned to <Constant name="dbt" /> accou
 
 If your account has been assigned a new access URL, please review the [migration timeline](#migration-timeline) and update your account's external integrations using the [integration checklist](#integration-checklist).
 
-If your account has not been assigned a new access URL, you will receive an email and in-app notification with a scheduled enablement date. When the change takes effect, you'll be automatically redirected to your **dbt.com** account-specific access URL. Account sign-in remains the same. Both the new **dbt.com** and **getdbt.com** region URLs will support integrations according to the dates on the [migration timeline](#migration-timeline).
+If your account has not been assigned a new access URL, you will receive an email and in-app notification with a scheduled enablement date. When the change takes effect, you'll be automatically redirected to your account-specific access URL. Account sign-in remains the same. Both your new access URL and your legacy region URL will support integrations according to the dates on the [migration timeline](#migration-timeline).
 
 :::info Update network rules before your assignment date
-Network rules must be in place before your assignment date. The other integrations in the [integration checklist](#integration-checklist) can be updated any time before the end-of-support date.
+Network rules must be in place before your assignment date. You can update the other integrations in the [integration checklist](#integration-checklist) any time before the end-of-support date. For a summary, refer to [What do I need to update before and after my assignment date?](#what-do-i-need-to-update-before-and-after-my-assignment-date)
 
-If your organization uses network allowlisting, add a rule that matches all subdomains of **dbt.com** (for example, `*.dbt.com`). Some access URLs are more than one level deep, such as `ab123.us1.dbt.com`, so confirm your wildcard matches multi-level subdomains. We recommend domain-based rules over IP-based rules. For single-tenant accounts, IP addresses don't change as part of this migration. For multi-tenant accounts, refer to [Access, Regions, & IP addresses](/docs/platform/about-platform/access-regions-ip-addresses) for updated IPs. If your account has [IP restrictions](/docs/platform/secure/ip-restrictions) enabled, review [Validating IP restrictions](#validating-ip-restrictions) before your assignment date.
+If your organization uses network allowlisting, add a rule that matches all subdomains of `dbt.com` (for example, `*.dbt.com`). Some access URLs are more than one level deep, such as `ab123.us1.dbt.com`, so confirm your wildcard matches multi-level subdomains. For single-tenant accounts, IP addresses don't change as part of this migration. For multi-tenant accounts, refer to [Access, Regions, & IP addresses](/docs/platform/about-platform/access-regions-ip-addresses) for updated IPs. If your account has [IP restrictions](/docs/platform/secure/ip-restrictions) enabled, review [Validating IP restrictions](#validating-ip-restrictions) before your assignment date.
 
-If your account uses inbound private connectivity (ingress PrivateLink), dbt Labs will contact you before your assignment with guidance for your configuration.
+If your account uses inbound private connectivity (ingress PrivateLink), [dbt Support](mailto:support@getdbt.com) will contact you before your assignment with guidance for your configuration.
 :::
 
 ## Migration timeline
 
-Accounts across all regions and service providers are being assigned new access URLs. **getdbt.com** region URLs will continue to support integrations until the end-of-support date for your account.
+Accounts across all regions and service providers are being assigned new access URLs. Legacy region URLs will continue to support integrations until the end-of-support date for your account.
 
 | Stage | Status | Timeline |
 |---|---|---|
-| Multi-tenant **dbt.com** access URL assignment | ✅ Completed | January 2026 |
-| Single tenant **dbt.com** access URL assignment | In Progress | April 2026 - March 2027 |
-| **getdbt.com** region URL end of support (multi-tenant) | Scheduled | February 3, 2027 |
-| **getdbt.com** region URL end of support (single tenant) | Scheduled | Provided in your assignment notification |
+| Multi-tenant account-specific access URL assignment | ✅ Completed | January 2026 |
+| Single tenant account-specific access URL assignment | In Progress | April 2026 - March 2027 |
+| Legacy region URL end of support (multi-tenant) | Scheduled | February 3, 2027 |
+| Legacy region URL end of support (single tenant) | Scheduled | Provided in your assignment notification |
 
 ## Integration checklist
 
-Review the following checklist before the **getdbt.com** region URL end-of-support date documented in the [migration timeline](#migration-timeline). Update each integration that uses a <Constant name="dbt" /> access URL. If your integration isn't in this list, please speak with your IT or applicable team to identify whether you need to take action. 
+Review the following checklist before the legacy region URL end-of-support date documented in the [migration timeline](#migration-timeline). Update each integration that uses a <Constant name="dbt" /> access URL. If your integration isn't in this list, please speak with your IT or applicable team to identify whether you need to take action. 
 
-dbt Labs updates the dbt Labs-managed <Constant name="dbt" /> GitHub application, the Slack application, and GitLab webhooks automatically. Customer-owned GitHub Enterprise applications and inbound Azure DevOps service hooks are not included.
+The managed <Constant name="dbt" /> GitHub application, the Slack application, and GitLab webhooks are updated automatically. Customer-owned GitHub Enterprise applications and inbound Azure DevOps service hooks are not included.
 
 ### Identity and access management
 
 | Integration | Action required |
 |---|---|
-| SAML 2.0 SSO (Okta, Microsoft Entra ID, PingFederate, and others) | No change to your IdP application. The ACS URL and entity ID stay the same. If users sign in through an IdP-initiated link, update the link to your new access URL. |
+| [SAML 2.0 SSO](/docs/platform/manage-access/set-up-sso-saml-2.0) | No change to your identity provider application. Update any identity provider-initiated sign-in links to your new access URL. |
 | [Google Workspace SSO](/docs/platform/manage-access/set-up-sso-google-workspace#creating-credentials) | Update or add an OAuth client |
 | [SCIM (Okta)](/docs/platform/manage-access/scim#set-up-dbt-cloud) | Update the SCIM base URL in Okta |
 
 ### Git providers
 
-GitLab and Azure DevOps repositories connected before your account had an account-specific access URL keep using your legacy **getdbt.com** URL for OAuth until you update them. Repositories connected after that already use your new access URL.
+GitLab and Azure DevOps repositories connected before your account had an account-specific access URL keep using your legacy region URL for OAuth until you update them. Repositories connected after that already use your new access URL.
 
 For GitLab, account admins can update an existing GitLab application to your new account access URL in <Constant name="dbt_platform" />. See [Update redirect URIs in dbt platform](#update-redirect-uris-in-dbt-platform). You can't yet update an existing Azure DevOps repository. Instead, recreate the repository to generate a redirect URI based on your new account access URL.
 
 | Integration | Action required |
 |---|---|
-| [GitLab (dbt Labs app)](/docs/platform/git/connect-gitlab#setting-up-a-gitlab-oauth-application) | Add the new redirect URI to your GitLab group application, then [update it in <Constant name="dbt_platform" />](#update-redirect-uris-in-dbt-platform) |
+| [GitLab (managed app)](/docs/platform/git/connect-gitlab#setting-up-a-gitlab-oauth-application) | Add the new redirect URI to your GitLab group application, then [update it in <Constant name="dbt_platform" />](#update-redirect-uris-in-dbt-platform) |
 | [GitLab (bring-your-own app)](/docs/platform/git/connect-gitlab#setting-up-a-gitlab-oauth-application) | Add the new redirect URI to your GitLab group application, then [update it in <Constant name="dbt_platform" />](#update-redirect-uris-in-dbt-platform) |
 | [Azure DevOps (service principal)](/docs/platform/git/setup-service-principal) | Update or add an app registration |
-| GitHub Enterprise (customer-owned app) | Before your assignment date, add `https://oauth.<tenant>.dbt.com/complete/github` as a callback URL in your GitHub app. Update webhook URLs to your new access URL before the end-of-support date. For help, contact [dbt Labs Support](mailto:support@getdbt.com). |
+| GitHub Enterprise (customer-owned app) | Before your assignment date, add `https://oauth.TENANT_NAME.dbt.com/complete/github` as a callback URL in your GitHub app. Update webhook URLs to your new access URL before the end-of-support date. For help, contact [dbt Support](mailto:support@getdbt.com). |
 
 ### Data platform connections
 
-Data platform connections created before your account had an account-specific access URL keep using your legacy **getdbt.com** URL for OAuth until you update them. Connections created after that already use your new access URL, so they need no changes.
+Data platform connections created before your account had an account-specific access URL keep using your legacy region URL for OAuth until you update them. Connections created after that already use your new access URL, so they need no changes.
 
 Account admins can update older Snowflake, Databricks, and BigQuery OAuth connections to your new access URL directly in <Constant name="dbt_platform" />. See [Update redirect URIs in dbt platform](#update-redirect-uris-in-dbt-platform).
 
@@ -107,9 +107,9 @@ If several connections share one OAuth app, add the new redirect URI once to tha
 
 ## Validating IP restrictions
 
-If you've received notification of a new access URL assignment and have IP restrictions enabled, review the network rules that point specifically at your **\*.getdbt.com** domain. These include VPN split-tunneling rules, proxy (PAC) rules, and firewall egress rules. Update these rules for your new **\*.dbt.com** access URL before your account's scheduled assignment date so access isn't disrupted.
+If you've received notification of a new access URL assignment and have IP restrictions enabled, review the network rules that point specifically at your legacy region URL. These include VPN split-tunneling rules, proxy (PAC) rules, and firewall egress rules. Update these rules for your new `*.dbt.com` access URL before your account's scheduled assignment date so access isn't disrupted.
 
-To confirm your new access URL is accessible, send a test request from the same network you'd normally use to reach your **\*.getdbt.com** URL. Replace `NEW_ACCESS_URL` with your account's new access URL and `ACCOUNT_ID` with your account ID:
+To confirm your new access URL is accessible, send a test request from the same network you'd normally use to reach your legacy region URL. Replace `NEW_ACCESS_URL` with your account's new access URL and `ACCOUNT_ID` with your account ID:
 
 - **Browser:** Go to `https://NEW_ACCESS_URL/api/v2/accounts/ACCOUNT_ID/`
 - **Terminal:** Run `curl -s https://NEW_ACCESS_URL/api/v2/accounts/ACCOUNT_ID/`
@@ -129,7 +129,7 @@ We are transitioning from generic region URLs to account-specific URLs to enhanc
 
 <Expandable alt_header="How do I know if my account has new access URLs?">
 
-Sign in to your <Constant name="dbt_platform" /> account. If your browser location has `dbt.com`, your account has been assigned a new access URL. If your browser location has `getdbt.com`, your account has not been assigned a new access URL. You may refer to [API Access URLs](/docs/platform/about-platform/access-regions-ip-addresses#api-access-urls).
+Sign in to your <Constant name="dbt_platform" /> account. If your browser location starts with an account prefix, such as `ab123.us1.dbt.com`, your account has been assigned a new access URL. If your browser location is a legacy region URL, such as `cloud.getdbt.com`, `emea.dbt.com`, or `au.dbt.com`, your account has not been assigned a new access URL. You may refer to [API Access URLs](/docs/platform/about-platform/access-regions-ip-addresses#api-access-urls).
 
 </Expandable>
 
@@ -139,21 +139,24 @@ Refer to [API Access URLs](/docs/platform/about-platform/access-regions-ip-addre
 
 </Expandable>
 
-<Expandable alt_header="What happens if my integrations are not updated by the getdbt.com end-of-support date?">
+<Expandable alt_header="What do I need to update before and after my assignment date?">
 
-After the end-of-support date, **getdbt.com** region URLs are no longer supported. Update your integrations before this date to avoid disruption. For assistance, contact [dbt Labs Support](mailto:support@getdbt.com).
+| When | What to update |
+|---|---|
+| Before your assignment date | [Network allowlists](#what-does-this-mean-for-me), VPN, proxy, and firewall rules for [IP restrictions](#validating-ip-restrictions), and callback URLs for customer-owned GitHub Enterprise applications |
+| After your assignment date, before the end-of-support date | OAuth redirect URIs for [data platform connections](#data-platform-connections) and [Git providers](#git-providers), [identity and access management](#identity-and-access-management) settings, API clients, Terraform configurations, inbound webhooks, and bookmarks |
 
 </Expandable>
 
-<Expandable alt_header="Can I keep using my getdbt.com URL?">
+<Expandable alt_header="What happens if my integrations are not updated by the end-of-support date?">
 
-No. All accounts are moving to account-specific access URLs, and some newer features are available only on your **dbt.com** access URL.
+After the end-of-support date, legacy region URLs are no longer actively supported. Update your integrations before this date to avoid disruption. For assistance, contact [dbt Support](mailto:support@getdbt.com).
 
 </Expandable>
 
 <Expandable alt_header="Do my API tokens and API calls keep working?">
 
-Yes. Personal access tokens and service tokens work with both your **getdbt.com** and **dbt.com** URLs. API requests to **getdbt.com** URLs are served directly rather than redirected, so update your API clients to your new access URL before the end-of-support date.
+Yes. Personal access tokens and service tokens work with both your legacy region URL and your new access URL. API requests to legacy region URLs are served directly rather than redirected, so update your API clients to your new access URL before the end-of-support date.
 
 </Expandable>
 
@@ -163,10 +166,10 @@ The following are unaffected:
 - Your dbt project code, models, and configurations
 - Your data platform credentials (OAuth connections need a redirect URI update; see [Data platform connections](#data-platform-connections))
 - Your account settings, environments, jobs, and schedules
-- The dbt Labs-managed <Constant name="dbt" /> GitHub application, the Slack application, and GitLab webhooks
+- The managed <Constant name="dbt" /> GitHub application, the Slack application, and GitLab webhooks
 - Egress private connectivity
 - The underlying <Constant name="dbt_platform" /> functionality
 
 </Expandable>
 
-For questions or assistance, contact [dbt Labs Support](mailto:support@getdbt.com).
+For questions or assistance, contact [dbt Support](mailto:support@getdbt.com).
