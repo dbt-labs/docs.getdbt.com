@@ -12,7 +12,6 @@ import BlogPostPageMetadata from '@theme/BlogPostPage/Metadata';
 import TOC from '@theme/TOC';
 import TOCCollapsible from '@theme/TOCCollapsible';
 import styles from './styles.module.css';
-import { DiscourseBlogComments } from '@site/src/components/discourseBlogComments';
 import { useDateTimeFormat } from "@docusaurus/theme-common/internal";
 import StructuredData from '@site/src/components/StructuredData';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
@@ -121,11 +120,6 @@ function BlogPostPageContent({sidebar, children}) {
       )}
 
       <BlogPostItem>{children}</BlogPostItem>
-
-      {/* <DiscourseBlogComments
-        title={frontMatter.title}
-        slug={frontMatter.slug}
-      /> */}
 
       {(nextItem || prevItem) && (
         <BlogPostPaginator nextItem={nextItem} prevItem={prevItem} />
