@@ -35,7 +35,7 @@ If you're using the <Constant name="dbt_platform" /> (including the <Constant na
 
 Changes to the v2 engine fall into three categories:
 
-- **New features**: Net new capabilities, frequently with new YAML configs or flags. As these are new features that require additional configuration, they should not break existing projects. Significant new features ship first as `experimental` and become official features when a minor version is promoted to general availability (GA). Refer to [Preview new and experimental features](/docs/dbt-versions/experimental-features#experimental-features-in-the-dbt-v2-engine).
+- **New features**: Net new capabilities, frequently with new YAML configs or flags. As these are new features that require additional configuration, they will not break existing projects.
 - **Non-breaking improvements**: Optimizations, feature improvements, bug fixes, or security patches that are not expected to break a deployment with automatic upgrades. They roll out continuously and are sometimes [backported](#backports) to previous minor versions.
 - **Behavior changes** are deliberate,but breaking, changes to existing behavior. They're released behind a [behavior change flag](/reference/global-configs/behavior-changes). The flag starts opt-in (default `false`), and later becomes the default so the new behavior applies to everyone.
 
@@ -45,21 +45,21 @@ Each v2 minor version moves through three prerelease stages before it reaches GA
 
 | Stage | What can change |
 |-------|-----------------|
-| **Alpha** | Any change is acceptable. New behavior change flags can be introduced, and existing flags can be flipped so the new behavior is the default. New experimental features can be introduced, and existing experimental features can be promoted out of experimental gating. |
-| **Beta** | Most changes are acceptable. New behavior change flags can be introduced, but existing flags cannot be flipped to default. New experimental features can be introduced, and experimental features can be promoted to standard features. |
-| **Release candidate (RC)** | Considered to be ready for GA, so this stage acts as a code freeze. Only small, non-breaking patches land. No new behavior change flags, no default flips, no new experimental features, and no promotions. |
+| **Alpha** | Any change is acceptable. New behavior change flags can be introduced, and existing flags can be flipped so the new behavior is the default. |
+| **Beta** | Most changes are acceptable. New behavior change flags can be introduced, but existing flags cannot be flipped to default. |
+| **Release candidate (RC)** | Considered to be ready for GA, so this stage acts as a code freeze. Only small, non-breaking patches land. No new behavior change flags and no default flips. |
 
-Each minor version starts at `alpha.1`. Successive alpha releases build toward beta, then RC, and finally GA. When a minor version reaches GA, `alpha.1` of the next minor version opens, cut from the latest nightly build.
+Each minor version starts at its first alpha (for example, `2.1.0a1`). Successive alpha releases build toward beta, then RC, and finally GA. When a minor version reaches GA, the first alpha of the next minor version opens, cut from the latest nightly build.
 
 ```txt
-2.x-alpha.1 → alpha.2 → …   Bigger changes and behavior-default flips
-                 ↓
-2.x-beta.1  → beta.2  → …   More improvements; no default flips
-                 ↓
-2.x-RC.1    → RC.2    → …   Small, non-breaking patches
-                 ↓
-2.x GA                      Stable release
-                 └──────→ 2.x+1-alpha.1 opens immediately
+2.x.0a1  → a2  → …   Bigger changes and behavior-default flips
+              ↓
+2.x.0b1  → b2  → …   More improvements; no default flips
+              ↓
+2.x.0rc1 → rc2 → …   Small, non-breaking patches
+              ↓
+2.x.0 GA             Stable release
+              └──────→ 2.x+1.0a1 opens immediately
 ```
 
 Because default flag flips only occur during alpha, the behavior defaults of a minor version are settled by the time it reaches beta. This gives you time to test and prepare before GA. For the current prerelease, refer to [dbt releases](/docs/dbt/dbt-releases).

@@ -24,10 +24,6 @@ To enable or disable experimental features:
 3. Click **Beta** to toggle the features on or off as shown in the following image.
    <Lightbox src="/img/docs/dbt-versions/experimental-feats.png" title="Experimental features" />
 
-## Experimental features in v2
-
-Significant new features in dbt v2 may ship as `experimental` first. These features are gated behind an experimental flag or config so they don't impact projects that haven't explicitly opted in. Experimental features can be introduced during an alpha or beta [prerelease](/docs/dbt-versions#prerelease-stages) phases, and may be promoted to standard features during those same phases, never during the release candidate or at general availability (GA) stages.
-
 ## Beta terms and conditions
 
 By using or enabling features that are not yet in general release ("Beta Features"), you agree to the [Beta Features Terms and Conditions](/assets/beta-tc.pdf).
