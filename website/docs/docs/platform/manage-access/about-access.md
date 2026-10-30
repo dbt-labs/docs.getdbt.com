@@ -94,7 +94,7 @@ The **Access & Permissions** section of a group is where you can assign users th
 
 * Projects the group can access
 * Roles that the group members are assigned for each
-* Jobs and runs the group can edit in those environments
+* Jobs and runs the group can edit in defined environments
 
 This setup provides you with the flexibility to determine the level of access users in any given group will have. For example, you might allow one group of analysts to edit jobs in their project, but only let them view related projects, or you could grant admin-level access to a team that owns a specific project while keeping others restricted to read-only.
 
