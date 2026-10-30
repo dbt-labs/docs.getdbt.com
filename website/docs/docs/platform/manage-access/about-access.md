@@ -104,7 +104,16 @@ This setup provides you with the flexibility to determine the level of access us
 
 Some permission sets grant users read-only access to jobs and runs. You can override that if you assign them to a group with **Environment write access**. They can then create, edit, and delete jobs and runs in the environment types you choose.
 
-This setting applies to the permission sets marked with an asterisk in the [project permission sets table](/docs/platform/manage-access/enterprise-permissions#project-access-for-project-permissions): Analyst, Database admin, Developer, Git admin, Job creator, and Team admin. It does not let them create or delete the environment itself.
+This setting applies to the permission sets marked with an asterisk in the [project permission sets table](/docs/platform/manage-access/enterprise-permissions#project-access-for-project-permissions):
+
+- Analyst
+- Database admin
+- Developer
+- Git admin
+- Job creator
+- Team admin
+
+It does not let them create or delete the environment itself.
 
 **Environment write access** does not grant permission to create or delete environments. Users require an elevated permission set (like Admin and Job admin) to take those actions.
 
