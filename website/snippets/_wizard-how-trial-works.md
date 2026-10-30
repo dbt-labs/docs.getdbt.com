@@ -16,5 +16,5 @@ Every new account gets free {props.product} usage credits to start. What you get
 - If you [bring your own key (BYOK)](/docs/dbt-ai/wizard-byok), you don't need a dbt account or a trial. Your AI provider bills you directly.
 
 :::info Using {props.product} with a self-hosted dbt project?
-The trial is opt-in here too. In the CLI, running `dbt login` (or `wizard login`) is how you opt in. In Wizard Desktop, signing in during onboarding does the same. Either way, you get a free dbt account and the same 30-day trial, and that account is where you manage usage and spend limits.
+The trial is opt-in here too. In the CLI, running `dbt login` (or `wizard login`) is how you opt in. In Wizard Desktop, signing in to a dbt acount during onboarding does the same. Either way, you get a free dbt account and the same 30-day trial, and that account is where you manage usage and spend limits.
 :::
