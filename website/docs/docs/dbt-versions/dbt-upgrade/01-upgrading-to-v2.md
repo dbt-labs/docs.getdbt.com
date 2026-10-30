@@ -84,7 +84,7 @@ The v2 engine is a complete rewrite in Rust, delivering faster parse and compile
 
 Similar to a database's `INFORMATION_SCHEMA`, the [dbt Information Schema](/docs/build/dbt-information-schema) is a contracted interface into the metadata for all of the resources in your dbt project.
 
-When you use the [`--generate-info-schema`](#generating-the-information-schema) flag, dbt writes the Information Schema to `target/info_schema/` in a versioned subdirectory (for example, `target/info_schema/v1/`) as standard Parquet files. The metadata available in the schema grows with each step: parsing produces basic metadata, compiling adds column types and column-level lineage (with `--static-analysis strict`), and running or building populates runtime results.
+When you use the `--generate-info-schema` flag or set `DBT_ENGINE_GENERATE_INFO_SCHEMA=true`, dbt writes the Information Schema to `target/info_schema/` in a versioned subdirectory (for example, `target/info_schema/v1/`) as standard Parquet files. The metadata available in the schema grows with each step: parsing produces basic metadata, compiling adds model column types and column-level lineage (with `--static-analysis strict`), and running or building populates runtime results.
 
 For more information, refer to [dbt Information Schema](/docs/build/dbt-information-schema).
 
@@ -153,7 +153,7 @@ Or pass `--static-analysis baseline` on the CLI. For details, refer to [About st
 
 #### Strict static analysis
 
-Strict mode fully resolves column types and validates references across your entire project before execution begins; nothing runs until the project is proven valid. It is required to produce [column-level lineage](/docs/explore/column-level-lineage) and unlocks additional LSP features like column go-to-definition and type checking. Strict mode requires authentication through [`dbt login`](/reference/commands/login?version=2.0); unauthenticated runs fall back to baseline.
+Strict mode fully resolves column types and validates references across your entire project before execution begins; nothing runs until the project is proven valid. It is required to produce [column-level lineage](/docs/explore/column-level-lineage) and unlocks additional LSP features like column go-to-definition and type checking.
 
 Enable it per-model or project-wide:
 
