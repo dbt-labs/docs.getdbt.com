@@ -25,7 +25,7 @@ I spent an afternoon or two building a [proof of concept eval](https://github.co
 
 - **Run-to-run variance is bigger than any skills effect.** The same arm, Sonnet 5.5 with skills available, scored 61%, 100% and 67% on three runs.
 - **The 5.5 models already know dbt.** 12 of 19 Claude 5.5 runs passed every check, and without skills every 5.5 model cleared at least 92%.
-- **Agents only opened a skill when the ground was unfamiliar,** like the Semantic Layer or dbt Mesh.
+- **Agents rarely opened a skill on their own,** and when they did, it was most often for unfamiliar ground like the Semantic Layer or dbt Mesh.
 - **A model generation is worth more than a skill.** Sonnet 4.5 scored 38% without skills and 17% with them forced, the two lowest scores of any run, and the forced run had read the skills before it wrote its first model. (The Bitter Lesson.)
 - **Process failures dominated:** a test that froze today's answers, failed backup attempts, ignoring definitions, miscalibrated lookback windows.
 
@@ -50,7 +50,7 @@ F1 data is full of traps that don't look like traps:
 - Sprint result IDs collide with Grand Prix result IDs.
 - Red-flag stoppages show up as 20-minute "pit stops."
 
-I never mentioned any of these in the prompts. The agents had to find them.
+I didn't mention most of these in the prompts, so the agents had to find them. The exception is red-flag stops: Round 2's first ticket says to exclude pit stops over 60 seconds.
 
 ### The arms
 
@@ -63,6 +63,8 @@ Three Claude models, Opus 5.5, Sonnet 5.5, and Haiku 5.5 (Opus, Sonnet, and Haik
 | Skills forced | The same, plus a one-line `CLAUDE.md` telling the agent to use the relevant skills before each task |
 
 Same tickets word for word, own Snowflake schemas, Claude Code's Auto permission mode, and a canned "use your best judgment" reply to any question. After the first 17 runs I added five more: the Sonnet 5.5 skills-available arm twice more, and Sonnet 4.5 (September 2025) in all three arms.
+
+The runs weren't fully isolated, though. The app gave these sessions a shared notes folder, and eight runs read another run's notes about the data, mostly during Round 2's first ticket, before I noticed and locked it. Some data quirks were passed between runs rather than rediscovered; [`results/run_extra.json`](https://github.com/C00ldudeNoonan/f1-dbt-skills-eval/blob/main/results/run_extra.json) in the repo lists which runs read which notes.
 
 ### The grading loop
 
@@ -115,9 +117,9 @@ Across both rounds, 12 of the 19 Claude 5.5 runs passed every check on every tic
 
 <Lightbox src="/img/blog/2026-10-30-dbt-skills-eval/03_checks_passed.png" width="100%" title="Answer-key checks passed by model and arm" />
 
-The lowest score in the whole experiment, Sonnet with skills available at 61%, came from a single bad decision that compounded. While fixing the Ferrari bug, the agent restored its tables from a backup it had taken earlier. That backup predated the lap-time corrections from ticket 2, so the restore silently reverted 215 laps, and the damage cascaded into four downstream models. So I ran that arm twice more. The repeats scored 100% and 67%. The 67% run never touched a backup; it got `is_podium` off by one on ticket 2 and missed a 215-row lap-time correction on ticket 6 because its lookback window was too short, and both carried through every later ticket. Same pattern, different mistake, and a wider spread inside one arm than between any two arms. With one run per arm you can't say whether skills help, only what that run did.
+The lowest score of any Claude 5.5 run, Sonnet with skills available at 61%, came from a single bad decision that compounded. While fixing the Ferrari bug, the agent restored its tables from a backup it had taken earlier. That backup predated the lap-time corrections from ticket 2, so the restore silently reverted 215 laps, and the damage cascaded into four downstream models. So I ran that arm twice more. The repeats scored 100% and 67%. The 67% run never touched a backup; it got `is_podium` off by one on ticket 2 and missed a 215-row lap-time correction on ticket 6 because its lookback window was too short, and both carried through every later ticket. Same pattern, different mistake, and a wider spread inside one arm than between any two arms. With one run per arm you can't say whether skills help, only what that run did.
 
-The harder engineering tickets were solved almost everywhere:
+Among the original nine Claude 5.5 Round 2 runs, the harder engineering tickets were solved almost everywhere:
 
 - **Slim CI:** all 9 Round 2 runs built exactly the edited model, its downstream models, and any new models, deferring the rest to prod.
 - **Vendor feed:** all 9 matched every one of 41 drivers and 167 sessions automatically, including the Spielberg double-header.
@@ -132,7 +134,7 @@ To see what a model generation is worth next to a skill, I ran Sonnet 4.5 (Septe
 
 In Round 1, skills did nudge code quality. Every skills arm scored above its model's no-skills run, by about 0.1 for Opus and 0.1–0.5 for Sonnet and Haiku. The most common reviewer complaint was layering, such as intermediate models reading from marts, and it showed up most in smaller models without skills.
 
-In Round 2, every model produced projects scoring 3.9–4.7, the arms overlap, and the differences sit inside the reviewer's own noise. I measured that noise by reviewing the same project twice, which gave 4.00 and 4.22. Model size mattered more than skills: in Round 1, Opus projects scored 4.5–4.6 while Sonnet and Haiku scored 3.5–4.0. The three Sonnet 5.5 skills-available runs reviewed at 4.22, 4.44 and 4.33, so review scores were steadier than correctness, and Sonnet 4.5's 2.67 (no skills) and 2.22 (skills forced) are the lowest of any run. One caveat on all of these: the reviews weren't perfectly blind, because run IDs survived in schema names.
+In Round 2, every Claude 5.5 model produced projects scoring 3.9–4.7, the arms overlap, and the differences sit inside the reviewer's own noise. I measured that noise by reviewing the same project twice, which gave 4.00 and 4.22. Model size mattered more than skills: in Round 1, Opus projects scored 4.5–4.6 while Sonnet and Haiku scored 3.5–4.0. The three Sonnet 5.5 skills-available runs reviewed at 4.22, 4.44 and 4.33, so review scores were steadier than correctness, and Sonnet 4.5's 2.67 (no skills) and 2.22 (skills forced) are the lowest of any run. One caveat on all of these: the reviews weren't perfectly blind, because run IDs survived in schema names.
 
 <Lightbox src="/img/blog/2026-10-30-dbt-skills-eval/04_review_scores.png" width="100%" title="Blind code-review score by model and arm" />
 
@@ -140,7 +142,7 @@ In Round 1 every orange point sits to the right of its grey one. In Round 2 the 
 
 ### Skill usage
 
-When the skills were available, agents opened between zero and five skill files across an entire suite, and Sonnet 4.5 with skills available opened none at all. Where they did reach for one, it was for a feature that is more specific to dbt: the Semantic Layer skill and the dbt Mesh skill (for contracts and versioning). Those are the corners of dbt where the model is least sure of current syntax. For staging models, incrementals, snapshots, and tests, the models already knew what to do.
+When the skills were available, agents opened between zero and five skill files across an entire suite, and Sonnet 4.5 with skills available opened none at all. Where they did reach for one, it was usually for a feature that is more specific to dbt: the Semantic Layer skill and the dbt Mesh skill (for contracts and versioning). Those are the corners of dbt where the model is least sure of current syntax. For staging models, incrementals, snapshots, and tests, the models already knew what to do.
 
 <Lightbox src="/img/blog/2026-10-30-dbt-skills-eval/05_skill_files_opened.png" width="100%" title="Skill files opened per run, available vs forced" />
 
@@ -173,11 +175,11 @@ So dbt is close to a best case for "it's already in the weights," and this resul
 
 ### Cut what's already in the weights or the docs
 
-The frontier models already carry most of what a dbt skill can teach about dbt itself: layering, incremental strategies, snapshots, tests, deferral, the CLI. I watched 17 agents build staging layers, incremental models, snapshots, and slim CI pipelines without opening a skill file, and get them right. Anything a skill explains that the model already knows, or that's one search away in the dbt docs, is dead weight. You might even be hampering frontier models with vestigial documentation.
+The frontier models already carry most of what a dbt skill can teach about dbt itself: layering, incremental strategies, snapshots, tests, deferral, the CLI. The six Claude 5.5 runs with no skills installed built staging layers, incremental models, and snapshots, plus slim CI pipelines in Round 2, and every one of them cleared 92% of the answer-key checks. Anything a skill explains that the model already knows, or that's one search away in the dbt docs, is dead weight. You might even be hampering frontier models with vestigial documentation.
 
 ### Write skills for the four things the model can't infer
 
-**1. Knowledge that isn't common, because it's new or because it's niche.** The Semantic Layer and dbt Mesh skills were the only ones agents reached for on their own. Neither is new: contracts and versioning date back to dbt 1.5 and 1.6. They're niche, so there's less public code for the model to have learned from, and the YAML is easy to get subtly wrong. The same goes for anything that shipped after the model's training data ends, which with dbt v2 is a lot. For those, a well-written skill still beats a guess.
+**1. Knowledge that isn't common, because it's new or because it's niche.** The Semantic Layer skill was the one agents reached for most often on their own, with the dbt Mesh skill close behind. Neither is new: contracts and versioning date back to dbt 1.5 and 1.6. They're niche, so there's less public code for the model to have learned from, and the YAML is easy to get subtly wrong. The same goes for anything that shipped after the model's training data ends, which with dbt v2 is a lot. For those, a well-written skill still beats a guess.
 
 **2. How your team works.** Who approves a prod build, and through which job. Which branch CI runs against. What "done" means for a ticket. Investing in process will set you up for success as more automation is added to your workflow.
 
