@@ -29,4 +29,6 @@ For local workflows, make sure the <Constant name="wizard" /> CLI is installed, 
 
 Start a new <Constant name="wizard" /> chat for each discrete unit of work, such as building one model, debugging one job failure, or validating a change. A focused conversation keeps the context relevant to the task so <Constant name="wizard" /> doesn't carry over assumptions from unrelated work. Go back to an existing chat only when you're continuing that same task.
 
+If an unrelated task comes up partway through, split it off instead of folding it into the current chat. For example, if you notice a data bug while working on a different change, type `/fork` in the CLI to continue in a new chat that starts with your current context. You can fix the bug there, and open a separate pull request if you need one, while your original chat stays focused on the change you started.
+
 The workflows in this guide follow that pattern: each one is a self-contained task you can run in its own chat. For how to start, resume, and manage sessions on each surface, refer to [Sessions and conversations](/docs/dbt-ai/wizard-how-it-works#sessions-and-conversations) for the <Constant name="dbt_platform" /> and [Sessions](/docs/dbt-ai/wizard-how-it-works#sessions) for the CLI and Wizard Desktop.
