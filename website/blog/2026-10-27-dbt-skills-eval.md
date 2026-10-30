@@ -13,6 +13,8 @@ date: 2026-10-27
 is_featured: false
 ---
 
+<Lightbox src="/img/blog/2026-10-27-dbt-skills-eval/bitter-lesson-meme.jpg" width="80%" title="The grim reaper, labeled The Bitter Lesson, has already visited the doors marked Natural Language Processing and Prompt Engineering, and is now knocking on the door marked Skills" />
+
 Do you remember what it was like trying to code with AI this time last year? The models could write SQL, but their judgment was poor. They skipped many of the signals of tradecraft that skilled analytics engineers have. Skills were the intuitive fix: give the agent the knowledge it needs for this task, without starting from zero every time or stuffing one AGENTS.md with everything that might come up. Skills arrived for Claude in October 2025 and became an open standard that December. We built our own set of [dbt agent skills](https://github.com/dbt-labs/dbt-agent-skills) to give coding agents the conventions, commands, and patterns they were missing.
 
 Models have improved a lot since then, and one must always remember the [Bitter Lesson for AI](http://www.incompleteideas.net/IncIdeas/BitterLesson.html), where being too clever is a losing strategy compared to just pointing more computing resources at the problem. So I wanted to check whether that bet still holds. Can the latest models build and maintain a real dbt project at the scale of a real project without skills? And if they can, where do skills still earn their place?
