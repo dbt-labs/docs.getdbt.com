@@ -43,7 +43,7 @@ Wizard Desktop is powered by the same technology as the [<Constant name="wizard"
 
 To use Wizard Desktop, you'll need:
 - A computer using macOS, Linux, or Windows.
-- A dbt account. You can create a free account when you sign in or use an existing account. You don't need a paid dbt platform plan.
+- A dbt account, if you want to use dbt-managed keys. You can create a free account when you sign in, or use an existing one. If you you use [BYOK](/docs/dbt-ai/wizard-byok), you can use Wizard Desktop without a dbt account.
 - A local copy of your dbt project on your machine if you want <Constant name="wizard" /> to work on project files. The app scans for existing projects, and you can also select a project folder yourself.
 - Warehouse credentials if you want <Constant name="wizard" /> to run your project or query data. You don't need to configure them before opening the app.
 
@@ -57,7 +57,7 @@ To use Wizard Desktop, you'll need:
 
    On other Linux distributions, install the app with the [<Constant name="wizard" /> CLI](/docs/dbt-ai/wizard-cli) instead: run `wizard app`.
 2. Open Wizard Desktop and select **Get started** on the welcome screen.
-3. Follow the onboarding prompts. When prompted, create a free dbt account or sign in to an existing account.
+3. Follow the onboarding prompts. When prompted, create a free dbt account or sign in to an existing account. When you use your own AI provider credentials ([BYOK](/docs/dbt-ai/wizard-byok), you can skip signing in.
 
 ## Add your dbt projects
 

@@ -88,7 +88,7 @@ No, dbt Copilot actions apply only to dbt Copilot usage. Refer to [<Constant nam
 When enabled by an admin, <Constant name="wizard" /> is available to users with a <Constant name="dbt" /> [developer license](/docs/platform/manage-access/seats-and-users) on any [dbt platform account](https://www.getdbt.com/contact).
 **In Wizard Desktop**:
 
-<Constant name="wizard" /> Desktop works without a paid <Constant name="dbt_platform" /> plan, so you can use it with a self-hosted dbt project. Use [BYOK](/docs/dbt-ai/wizard-byok) to connect your own AI provider credentials.
+<Constant name="wizard" /> Desktop works without a <Constant name="dbt_platform" /> account, so you can use it with a self-hosted dbt project. Use [BYOK](/docs/dbt-ai/wizard-byok) to connect your own AI provider credentials, with no sign-in required. If you sign up for a free <Constant name="dbt" /> account instead, you get a 30-day trial that includes dbt-managed keys.
 
 Refer to [Wizard Desktop](/docs/dbt-ai/wizard-desktop) for installation and setup.
 
