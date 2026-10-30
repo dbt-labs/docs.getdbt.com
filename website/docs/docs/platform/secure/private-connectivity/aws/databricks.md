@@ -68,7 +68,19 @@ With self-serve, you request a Databricks PrivateLink endpoint in <Constant name
    :::
 
 8. After submission, a confirmation popup appears. From the popup, you can request another endpoint or return to **Private endpoints** to track request status.
-9. Proceed to the **Connections** page and follow the steps in the [Create connection in dbt](#create-connection-in-dbt) section to configure PrivateLink. Once you configure PrivateLink on the **Connections** page, the new endpoint appears under **Private endpoints → Associated connections**.
+9. Once the private endpoint is showing an Endpoint Status of `Available` and Connectivity Status as `Success`, [register the VPC endpoint in Databricks](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html#step-3-register-privatelink-objects-and-attach-them-to-a-workspace) and attach it to the workspace:
+    - [Register your VPC endpoint](https://docs.databricks.com/en/security/network/classic/vpc-endpoints.html) &mdash; Register the VPC endpoint using its VPCE ID. To find it, go to **Account settings → Private endpoints**, click the endpoint in the table, and copy the **Endpoint identifier** field on the endpoint details page.
+    - [Create a Private Access Settings object](https://docs.databricks.com/en/security/network/classic/private-access-settings.html) &mdash; Create a Private Access Settings (PAS) object with your desired public access settings, and setting Private Access Level to **Endpoint**. Choose the registered endpoint created in the previous step.
+    - [Create or update your workspace](https://docs.databricks.com/en/security/network/classic/privatelink.html#step-3d-create-or-update-the-workspace-front-end-back-end-or-both) &mdash; Create a workspace, or update an existing workspace. Under **Advanced configurations → Private Link** choose the private access settings object created in the previous step.
+
+    :::warning
+    If using an existing Databricks workspace, all workloads running in the workspace need to be stopped to enable Private Link. Workloads also can't be started for another 20 minutes after making changes. From the [Databricks documentation](https://docs.databricks.com/en/security/network/classic/privatelink.html#step-3d-create-or-update-the-workspace-front-end-back-end-or-both):
+
+    "After creating (or updating) a workspace, wait until it’s available for using or creating clusters. The workspace status stays at status RUNNING and the VPC change happens immediately. However, you cannot use or create clusters for another 20 minutes. If you create or use clusters before this time interval elapses, clusters do not launch successfully, fail, or could cause other unexpected behavior."
+
+    :::
+
+10. Proceed to the **Connections** page and follow the steps in the [Create connection in dbt](#create-connection-in-dbt) section to configure PrivateLink. Once you configure PrivateLink on the **Connections** page, the new endpoint appears under **Private endpoints → Associated connections**.
 
 :::note DNS propagation
 If the connection test fails immediately after setup, this is expected &mdash; it doesn't mean something is wrong. DNS changes can take a few minutes to propagate. Wait a few minutes, then test again before contacting support.
