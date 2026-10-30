@@ -58,7 +58,8 @@ For more details and a more comprehensive list, refer to [Snowflake configuratio
 | `packages` | `<list>` | `[]` | Packages to install on the cluster. |
 | `index_url` | `<string>` | `None` (uses PyPI) | URL to install `packages` from. |
 | `additional_libs` | `<list>` | `[]` | Libraries to attach to the job. |
-| `access_control_list` | `<list>` | none | Access control for the job. |
+| `access_control_list` | `<list>` | none | Who can view or manage the Databricks job that runs this Python model. |
+| `notebook_access_control_list` | `<list>` | none | Permissions on the Databricks notebook that dbt creates from this Python model on each run. Each entry grants a user, group, or service principal a permission level: `CAN_READ`, `CAN_RUN`, `CAN_EDIT`, or `CAN_MANAGE`. |
 | `python_job_config` | `<dictionary>` | `{}` | Extra job and workflow settings. |
 
 </SimpleTable>
