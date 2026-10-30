@@ -2,18 +2,18 @@
 title: "Have dbt skills been bitter lesson’d?"
 description: "Models have improved a lot since we shipped dbt agent skills, so I ran Claude Opus, Sonnet, and Haiku 5.5, and then Sonnet 4.5, through a Formula 1 dbt project with and without them. The 5.5 models already knew dbt, run-to-run noise was bigger than any skills effect, and what separated good runs from bad ones was process."
 slug: do-coding-agents-still-need-dbt-skills
-image: /img/blog/2026-10-27-dbt-skills-eval/00_summary_results.png
+image: /img/blog/2026-10-30-dbt-skills-eval/00_summary_results.png
 
 authors: [alex_noonan]
 
 tags: [ai]
 hide_table_of_contents: false
 
-date: 2026-10-27
+date: 2026-10-30
 is_featured: false
 ---
 
-<Lightbox src="/img/blog/2026-10-27-dbt-skills-eval/bitter-lesson-meme.jpg" width="80%" title="The grim reaper, labeled The Bitter Lesson, has already visited the doors marked Natural Language Processing and Prompt Engineering, and is now knocking on the door marked Skills" />
+<Lightbox src="/img/blog/2026-10-30-dbt-skills-eval/bitter-lesson-meme.jpg" width="80%" title="The grim reaper, labeled The Bitter Lesson, has already visited the doors marked Natural Language Processing and Prompt Engineering, and is now knocking on the door marked Skills" />
 
 Do you remember what it was like trying to code with AI this time last year? The models could write SQL, but their judgment was poor. They skipped many of the signals of tradecraft that skilled analytics engineers have. Skills were the intuitive fix: give the agent the knowledge it needs for this task, without starting from zero every time or stuffing one AGENTS.md with everything that might come up. Skills arrived for Claude in October 2025 and became an open standard that December. We built our own set of [dbt agent skills](https://github.com/dbt-labs/dbt-agent-skills) to give coding agents the conventions, commands, and patterns they were missing.
 
@@ -21,7 +21,7 @@ Models have improved a lot since then, and one must always remember the [Bitter 
 
 I spent an afternoon or two building a [proof of concept eval](https://github.com/C00ldudeNoonan/f1-dbt-skills-eval) to find out: 22 agent runs, up to 12 tickets each, on a Formula 1 dbt project in Snowflake. I found that the difference between good runs and bad ones was process, not dbt knowledge. I wouldn't call that conclusive, but in an environment moving this fast it has changed how I think about skills.
 
-<Lightbox src="/img/blog/2026-10-27-dbt-skills-eval/00_summary_results.png" width="100%" title="Round 2 checks passed by model and arm. Model generation moved the score; skills didn't" />
+<Lightbox src="/img/blog/2026-10-30-dbt-skills-eval/00_summary_results.png" width="100%" title="Round 2 checks passed by model and arm. Model generation moved the score; skills didn't" />
 
 - **Run-to-run variance is bigger than any skills effect.** The same arm, Sonnet 5.5 with skills available, scored 61%, 100% and 67% on three runs.
 - **The 5.5 models already know dbt.** 12 of 19 Claude 5.5 runs passed every check, and without skills every 5.5 model cleared at least 92%.
@@ -68,7 +68,7 @@ Same tickets word for word, own Snowflake schemas, Claude Code's Auto permission
 
 After each ticket the harness injected new data (late races, corrected lap times, vendor drift, duplicate rows), rebuilt the project itself without `--full-refresh`, and graded every required model row by row against an answer key built from a clean copy. The agent never saw a score. Grades were cumulative, so a mistake in ticket 1 kept costing points until it was fixed, and each run was one continuous session, so a skill read on ticket 1 could still shape ticket 9.
 
-<Lightbox src="/img/blog/2026-10-27-dbt-skills-eval/01_grading_loop.png" width="100%" title="The per-ticket loop: the harness injects data, rebuilds and grades after every ticket" />
+<Lightbox src="/img/blog/2026-10-30-dbt-skills-eval/01_grading_loop.png" width="100%" title="The per-ticket loop: the harness injects data, rebuilds and grades after every ticket" />
 
 At the end, a fresh Opus session gave each project a blind code review on a 1–5 rubric, with the skills, `CLAUDE.md`, and git history stripped out.
 
@@ -103,7 +103,7 @@ Round 2 also hid harder traps. The vendor drift ticket switched dates to `DD/MM/
 | Models in the Opus no-skills project | 20 | 50 |
 | Beyond the marts | Incremental lap times, driver snapshot, sprints, vendor drift, a planted Ferrari bug, contracts and a versioned model | All of that, plus stints, late-arriving drivers, countback scoring, Semantic Layer metrics, a vendor cross-check, telemetry at scale, slim CI and two vague asks |
 
-<Lightbox src="/img/blog/2026-10-27-dbt-skills-eval/02_project_architecture.png" width="100%" title="dbt project layers: grey in both rounds, orange added in Round 2" />
+<Lightbox src="/img/blog/2026-10-30-dbt-skills-eval/02_project_architecture.png" width="100%" title="dbt project layers: grey in both rounds, orange added in Round 2" />
 
 The grey boxes are the whole Round 1 project. Round 2 asked for all of it again and added the orange, so a mistake in a grey box kept costing points through 12 tickets instead of 7.
 
@@ -113,7 +113,7 @@ The grey boxes are the whole Round 1 project. Round 2 asked for all of it again 
 
 Across both rounds, 12 of the 19 Claude 5.5 runs passed every check on every ticket, and without skills every 5.5 model cleared at least 92%. Six of the seven misses were in a skills arm, but I wouldn't read much into that. The forced-arm misses came from busywork and misread definitions, not from anything a skill said about dbt, and the repeats below show how far a single run can swing. What the data doesn't support is the idea that skills made the work more correct.
 
-<Lightbox src="/img/blog/2026-10-27-dbt-skills-eval/03_checks_passed.png" width="100%" title="Answer-key checks passed by model and arm" />
+<Lightbox src="/img/blog/2026-10-30-dbt-skills-eval/03_checks_passed.png" width="100%" title="Answer-key checks passed by model and arm" />
 
 The lowest score in the whole experiment, Sonnet with skills available at 61%, came from a single bad decision that compounded. While fixing the Ferrari bug, the agent restored its tables from a backup it had taken earlier. That backup predated the lap-time corrections from ticket 2, so the restore silently reverted 215 laps, and the damage cascaded into four downstream models. So I ran that arm twice more. The repeats scored 100% and 67%. The 67% run never touched a backup; it got `is_podium` off by one on ticket 2 and missed a 215-row lap-time correction on ticket 6 because its lookback window was too short, and both carried through every later ticket. Same pattern, different mistake, and a wider spread inside one arm than between any two arms. With one run per arm you can't say whether skills help, only what that run did.
 
@@ -134,7 +134,7 @@ In Round 1, skills did nudge code quality. Every skills arm scored above its mod
 
 In Round 2, every model produced projects scoring 3.9–4.7, the arms overlap, and the differences sit inside the reviewer's own noise. I measured that noise by reviewing the same project twice, which gave 4.00 and 4.22. Model size mattered more than skills: in Round 1, Opus projects scored 4.5–4.6 while Sonnet and Haiku scored 3.5–4.0. The three Sonnet 5.5 skills-available runs reviewed at 4.22, 4.44 and 4.33, so review scores were steadier than correctness, and Sonnet 4.5's 2.67 (no skills) and 2.22 (skills forced) are the lowest of any run. One caveat on all of these: the reviews weren't perfectly blind, because run IDs survived in schema names.
 
-<Lightbox src="/img/blog/2026-10-27-dbt-skills-eval/04_review_scores.png" width="100%" title="Blind code-review score by model and arm" />
+<Lightbox src="/img/blog/2026-10-30-dbt-skills-eval/04_review_scores.png" width="100%" title="Blind code-review score by model and arm" />
 
 In Round 1 every orange point sits to the right of its grey one. In Round 2 the gaps shrink to about the width of the noise bar at the bottom, and model size explains more than the arm does.
 
@@ -142,7 +142,7 @@ In Round 1 every orange point sits to the right of its grey one. In Round 2 the 
 
 When the skills were available, agents opened between zero and five skill files across an entire suite, and Sonnet 4.5 with skills available opened none at all. Where they did reach for one, it was for a feature that is more specific to dbt: the Semantic Layer skill and the dbt Mesh skill (for contracts and versioning). Those are the corners of dbt where the model is least sure of current syntax. For staging models, incrementals, snapshots, and tests, the models already knew what to do.
 
-<Lightbox src="/img/blog/2026-10-27-dbt-skills-eval/05_skill_files_opened.png" width="100%" title="Skill files opened per run, available vs forced" />
+<Lightbox src="/img/blog/2026-10-30-dbt-skills-eval/05_skill_files_opened.png" width="100%" title="Skill files opened per run, available vs forced" />
 
 The lighter points are what agents did on their own. The darker ones are what a one-line `CLAUDE.md` made them do, and the extra reading didn't change the scores.
 
