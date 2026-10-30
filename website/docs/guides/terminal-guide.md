@@ -120,7 +120,7 @@ You may need to run the command with elevated permissions, or check that the fil
 Make sure you pressed **Enter** after the command.
 
 ## Next steps
-- [<Constant name="wizard" /> quickstart](/docs/dbt-ai/wizard-cli) — use the <Constant name="wizard" /> CLI in your terminal
+- [Install the <Constant name="wizard" /> CLI](/docs/dbt-ai/wizard-cli) — use the <Constant name="wizard" /> CLI in your terminal
 - [Install dbt](/docs/local/install-dbt) — set up <Constant name="fusion_engine" /> or <Constant name="core" /> locally
 - [dbt commands reference](/reference/dbt-commands) — all available dbt CLI commands
 

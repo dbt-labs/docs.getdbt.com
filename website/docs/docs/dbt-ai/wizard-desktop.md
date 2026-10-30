@@ -21,7 +21,7 @@ This page walks you through installing the app, connecting it to the services it
 
 <DownloadCard />
 
-Desktop is powered by the same technology as the [<Constant name="wizard" /> CLI](/docs/dbt-ai/wizard-cli), with a visual interface to help you follow the work, guide it, and manage several threads at once:
+Wizard Desktop is powered by the same technology as the [<Constant name="wizard" /> CLI](/docs/dbt-ai/wizard-cli), with a visual interface to help you follow the work, guide it, and manage several threads at once:
 
 - **Parallel chats:** each chat gets its own <Constant name="git" /> <Term id="git-worktree" />, so several pieces of work run at once without conflicts.
 - **Visible validation:** see structured results, including a `dbt-compare` view of what your changes did to the data.
@@ -143,7 +143,7 @@ Refer to [the config reference](/docs/dbt-ai/wizard-config) for the configuratio
 
 <SimpleTable>
 
-| | Wizard Desktop | [CLI](/docs/dbt-ai/wizard-cli) | [dbt platform](/docs/platform/wizard-platform) |
+| | [Wizard Desktop](/docs/dbt-ai/wizard-desktop) | [CLI](/docs/dbt-ai/wizard-cli) | [dbt platform](/docs/platform/wizard-platform) |
 |---|---|---|---|
 | Where it runs | Native app on your machine | Your terminal | Browser |
 | Best for | Seeing and steering the work, several threads at once | Scripting and terminal-native workflows | Full development and business-user analytics |

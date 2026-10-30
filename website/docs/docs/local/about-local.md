@@ -57,7 +57,7 @@ The [dbt VS Code extension](/docs/about-dbt-extension) lets you develop dbt proj
 - **Validate in a tight loop:** Every proposed change compiles and runs against your warehouse, catching issues before production.
 - **Navigate with full project context:** Traverse the [DAG](/docs/explore/explore-projects), surface downstream impact, and keep tests and YAML in sync as models evolve.
 
-For data practitioners, <Constant name="wizard" /> adds an AI layer that knows your project, not just your code. Refer to the [dbt Wizard quickstart](/docs/platform/wizard-overview#get-started) to get started.
+For data practitioners, <Constant name="wizard" /> adds an AI layer that knows your project, not just your code. Refer to the [dbt Wizard overview](/docs/platform/wizard-overview#get-started) to get started.
 
 ## dbt MCP server
 

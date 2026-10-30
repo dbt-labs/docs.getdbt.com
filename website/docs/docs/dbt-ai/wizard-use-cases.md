@@ -240,7 +240,7 @@ For version-specific examples and validation steps, refer to [Build Semantic Lay
 
 ## Related docs
 
-- [Use dbt Wizard locally](/docs/platform/wizard-overview#get-started)
+- [Get started with dbt Wizard](/docs/platform/wizard-overview#get-started)
 - [Understand a dbt project](/best-practices/how-to-use-wizard/wizard-2-understand-project)
 - [Validate dbt changes](/best-practices/how-to-use-wizard/wizard-3-validate-changes)
 - [Add data-informed tests](/best-practices/how-to-use-wizard/wizard-4-data-informed-tests)
