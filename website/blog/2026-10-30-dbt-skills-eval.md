@@ -15,9 +15,9 @@ is_featured: false
 
 <Lightbox src="/img/blog/2026-10-30-dbt-skills-eval/bitter-lesson-meme.jpg" width="80%" title="The grim reaper, labeled The Bitter Lesson, has already visited the doors marked Natural Language Processing and Prompt Engineering, and is now knocking on the door marked Skills" />
 
-Do you remember what it was like trying to code with AI this time last year? The models could write SQL, but their judgment was poor. They skipped many of the signals of tradecraft that skilled analytics engineers have. Skills were the intuitive fix: give the agent the knowledge it needs for this task, without starting from zero every time or stuffing one AGENTS.md with everything that might come up. Skills arrived for Claude in October 2025 and became an open standard that December. We built our own set of [dbt agent skills](https://github.com/dbt-labs/dbt-agent-skills) to give coding agents the conventions, commands, and patterns they were missing.
+Do you remember what it was like trying to code with AI this time last year? The models could write SQL, but their judgment was poor. They skipped many of the signals of tradecraft that skilled analytics engineers have. Skills were the intuitive fix: give the agent the knowledge it needs for this task, without starting from zero every time or stuffing one `AGENTS.md` with everything that might come up. Skills arrived for Claude in October 2025 and became an open standard that December. We built our own set of [dbt agent skills](https://github.com/dbt-labs/dbt-agent-skills) to give coding agents the conventions, commands, and patterns they were missing.
 
-Models have improved a lot since then, and one must always remember the [Bitter Lesson for AI](http://www.incompleteideas.net/IncIdeas/BitterLesson.html), where being too clever is a losing strategy compared to just pointing more computing resources at the problem. So I wanted to check whether that bet still holds. Can the latest models build and maintain a real dbt project at the scale of a real project without skills? And if they can, where do skills still earn their place?
+Models have improved a lot since then, and one must always remember the [Bitter Lesson for AI](http://www.incompleteideas.net/IncIdeas/BitterLesson.html), where being too clever is a losing strategy compared to just pointing more computing resources at the problem. So I wanted to check whether that bet still holds. Can the latest models build and maintain a dbt project at real-project scale without skills? And if they can, where do skills still earn their place?
 
 I spent an afternoon or two building a [proof of concept eval](https://github.com/C00ldudeNoonan/f1-dbt-skills-eval) to find out: 22 agent runs, up to 12 tickets each, on a Formula 1 dbt project in Snowflake. I found that the difference between good runs and bad ones was process, not dbt knowledge. I wouldn't call that conclusive, but in an environment moving this fast it has changed how I think about skills.
 
@@ -39,7 +39,7 @@ I wanted something closer to a real analytics engineering job than a set of task
 
 ### The data
 
-I used the [Formula 1 World Championship dataset](https://www.kaggle.com/datasets/rohanrao/formula-1-world-championship-1950-2020) from Kaggle, which is a copy of the old Ergast F1 database (hence the stg_ergast model names later on): 14 relational tables covering every race from 1950 to 2024, about 700,000 rows in total, including 589,000 lap times. I loaded everything into Snowflake as text, exactly as it appeared in the CSVs, so cleaning and typing were part of the work. The agents built against dbt v2, the Fusion engine.
+I used the [Formula 1 World Championship dataset](https://www.kaggle.com/datasets/rohanrao/formula-1-world-championship-1950-2020) from Kaggle, which is a copy of the old Ergast F1 database (hence the stg_ergast model names later on): 14 relational tables covering every race from 1950 to 2024, about 700,000 rows in total, including 589,000 lap times. I loaded everything into Snowflake as text, exactly as it appeared in the CSVs, so cleaning and typing were part of the work. The agents built against dbt v2.
 
 F1 data is full of traps that don't look like traps:
 
@@ -80,9 +80,9 @@ The first suite had seven tickets: build four marts, add an incremental lap-time
 
 ## Round 2: a harder suite
 
-For round 2 I wanted to increase the scale and complexity and feature usage of dbt, to more closely mimic the analytics engineer workflow and also find the point to where I could get some significant results.
+For round 2, I wanted to increase the scale and complexity and feature usage of dbt, to more closely mimic the analytics engineer workflow and also find the point where I could get some significant results.
 
-Round 2 has 12 tickets. It starts with a deeper version of every Round 1 ticket: seven required marts instead of four, plus tyre stints, late-arriving drivers, and what-if championship scoring with full countback tie-breaks. Then it adds work that tests engineering judgment more than dbt syntax:
+Round 2 has 12 tickets. It starts with a deeper version of every Round 1 ticket: seven required marts instead of four, plus tire stints, late-arriving drivers, and what-if championship scoring with full countback tie-breaks. Then it adds work that tests engineering judgment more than dbt syntax:
 
 | Ticket | What it tests |
 | --- | --- |
@@ -179,7 +179,7 @@ The frontier models already carry most of what a dbt skill can teach about dbt i
 
 ### Write skills for the four things the model can't infer
 
-**1. Knowledge that isn't common, because it's new or because it's niche.** The Semantic Layer skill was the one agents reached for most often on their own, with the dbt Mesh skill close behind. Neither is new: contracts and versioning date back to dbt 1.5 and 1.6. They're niche, so there's less public code for the model to have learned from, and the YAML is easy to get subtly wrong. The same goes for anything that shipped after the model's training data ends, which with dbt v2 is a lot. For those, a well-written skill still beats a guess.
+**1. Knowledge that isn't common, because it's new or because it's niche.** The Semantic Layer skill was the one agents reached for most often on their own, with the dbt Mesh skill close behind. Neither is new: contracts and versioning date back to dbt v1.5 and v1.6. They're niche, so there's less public code for the model to have learned from, and the YAML is easy to get subtly wrong. The same goes for anything that shipped after the model's training data ends, which with dbt v2 is a lot. For those, a well-written skill still beats a guess.
 
 **2. How your team works.** Who approves a prod build, and through which job. Which branch CI runs against. What "done" means for a ticket. Investing in process will set you up for success as more automation is added to your workflow.
 
