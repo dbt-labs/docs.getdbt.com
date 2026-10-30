@@ -9,10 +9,14 @@ availability:
   access: login_required
 ---
 
-Account-specific access URLs are being assigned to <Constant name="dbt" /> accounts as part of our ongoing efforts to improve your experience and strengthen security. Each account will receive its own unique <Constant name="dbt_platform" /> and [API access URLs](/docs/dbt-apis/overview) on the `dbt.com` domain rather than sharing legacy region URLs such as `cloud.getdbt.com`, `emea.dbt.com`, and `au.dbt.com`. For example:
+Account-specific access URLs are being assigned to <Constant name="dbt" /> accounts as part of our ongoing efforts to improve your experience and strengthen security. Each account will receive its own unique <Constant name="dbt_platform" /> and [API access URLs](/docs/dbt-apis/overview), replacing the legacy region URLs that accounts share today. An account-specific access URL starts with a prefix unique to your account, such as `ab123`.
 
-- Multi-tenant: `https://cloud.getdbt.com` becomes `https://ab123.us1.dbt.com`
-- Single tenant: `https://acme.getdbt.com` becomes `https://ab123.acme.dbt.com`
+| Deployment | Legacy region URL (shared) | Account-specific access URL |
+|---|---|---|
+| Multi-tenant (North America) | `cloud.getdbt.com` | `ab123.us1.dbt.com` |
+| Multi-tenant (EMEA) | `emea.dbt.com` | `ab123.eu1.dbt.com` |
+| Multi-tenant (APAC) | `au.dbt.com` | `ab123.au1.dbt.com` |
+| Single tenant | `acme.getdbt.com` | `ab123.acme.dbt.com` |
 
 ## What does this mean for me?
 
@@ -43,7 +47,7 @@ Accounts across all regions and service providers are being assigned new access 
 
 Review the following checklist before the legacy region URL end-of-support date documented in the [migration timeline](#migration-timeline). Update each integration that uses a <Constant name="dbt" /> access URL. If your integration isn't in this list, please speak with your IT or applicable team to identify whether you need to take action. 
 
-The managed <Constant name="dbt" /> GitHub application, the Slack application, and GitLab webhooks are updated automatically. Customer-owned GitHub Enterprise applications and inbound Azure DevOps service hooks are not included.
+The managed <Constant name="dbt" /> GitHub application, the Slack application, and GitLab webhooks are updated automatically. Self-managed GitHub Enterprise applications and inbound Azure DevOps service hooks are not included.
 
 ### Identity and access management
 
@@ -64,7 +68,7 @@ For GitLab, account admins can update an existing GitLab application to your new
 | [GitLab (managed app)](/docs/platform/git/connect-gitlab#setting-up-a-gitlab-oauth-application) | Add the new redirect URI to your GitLab group application, then [update it in <Constant name="dbt_platform" />](#update-redirect-uris-in-dbt-platform) |
 | [GitLab (bring-your-own app)](/docs/platform/git/connect-gitlab#setting-up-a-gitlab-oauth-application) | Add the new redirect URI to your GitLab group application, then [update it in <Constant name="dbt_platform" />](#update-redirect-uris-in-dbt-platform) |
 | [Azure DevOps (service principal)](/docs/platform/git/setup-service-principal) | Update or add an app registration |
-| GitHub Enterprise (customer-owned app) | Before your assignment date, add `https://oauth.TENANT_NAME.dbt.com/complete/github` as a callback URL in your GitHub app. Update webhook URLs to your new access URL before the end-of-support date. For help, contact [dbt Support](mailto:support@getdbt.com). |
+| GitHub Enterprise (self-managed app) | Before your assignment date, add `https://oauth.TENANT_NAME.dbt.com/complete/github` as a callback URL in your GitHub app. Update webhook URLs to your new access URL before the end-of-support date. For help, contact [dbt Support](mailto:support@getdbt.com). |
 
 ### Data platform connections
 
@@ -143,7 +147,7 @@ Refer to [API Access URLs](/docs/platform/about-platform/access-regions-ip-addre
 
 | When | What to update |
 |---|---|
-| Before your assignment date | [Network allowlists](#what-does-this-mean-for-me), VPN, proxy, and firewall rules for [IP restrictions](#validating-ip-restrictions), and callback URLs for customer-owned GitHub Enterprise applications |
+| Before your assignment date | [Network allowlists](#what-does-this-mean-for-me), VPN, proxy, and firewall rules for [IP restrictions](#validating-ip-restrictions), and callback URLs for self-managed GitHub Enterprise applications |
 | After your assignment date, before the end-of-support date | OAuth redirect URIs for [data platform connections](#data-platform-connections) and [Git providers](#git-providers), [identity and access management](#identity-and-access-management) settings, API clients, Terraform configurations, inbound webhooks, and bookmarks |
 
 </Expandable>
