@@ -50,7 +50,7 @@ By default, if your MCP config includes a production environment, `list_jobs` on
 
 You can pass a `project_id` (from `list_projects`) to return jobs from every environment in that project.
 
-Once you ask, your assistant typically:
+Once you query your assistant, it will typically:
 
 1. Looks up your project ID with `list_projects` (if you don't already have it)
 2. Lists the jobs with that `project_id`
