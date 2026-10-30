@@ -49,10 +49,10 @@ You can pass a `project_id` (from `list_projects`) to return jobs from every env
 
 Once you query your assistant, it will typically:
 
-1. Looks up your project ID with `list_projects` (if you don't already have it)
-2. Lists the jobs with that `project_id`
-3. Picks the UAT, staging, or CI job you asked for
-4. Starts it with `trigger_job_run` and the job's ID
+1. Look up your project ID with `list_projects` (if you don't already have it)
+2. List the jobs with that `project_id`
+3. Pick the UAT, staging, or CI job you requested
+4. Start it with `trigger_job_run` and the job's ID
 
 You don't have to call the tools yourself. Try a prompt like: "List jobs in this project, find the UAT, staging, or CI job, and trigger it."
 
