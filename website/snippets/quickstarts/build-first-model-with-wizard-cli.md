@@ -32,4 +32,4 @@ irm https://public.cdn.getdbt.com/dbt-wizard/install/install-wizard.ps1 | iex
 4. Review the SQL <Constant name="wizard" /> generates, then accept it to save the model.
 5. Type `dbt run` to build it.
 
-Either way, you end up with the same working model. For full setup details, refer to [Use dbt Wizard locally](/docs/dbt-ai/wizard-quickstart?section=qs-build-with-ai-cli).
+Either way, you end up with the same working model. For full setup details, refer to [Use dbt Wizard locally](/docs/dbt-ai/wizard-cli).

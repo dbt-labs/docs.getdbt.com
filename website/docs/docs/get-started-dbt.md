@@ -111,7 +111,7 @@ You can use self-hosted tools with or without a <Constant name="dbt_platform" />
 
 You don't have to choose between learning dbt and using AI &mdash; you can absolutely pair them from day one:
 
-- Use the <Constant name="wizard" /> and ask it to build, refactor, or document a model in natural language, grounded in your project's real lineage and tests. [Get started with <Constant name="wizard" />](/docs/dbt-ai/wizard-quickstart).
+- Use the <Constant name="wizard" /> and ask it to build, refactor, or document a model in natural language, grounded in your project's real lineage and tests. [Get started with <Constant name="wizard" />](/docs/platform/wizard-overview#get-started).
 - Set up the dbt MCP server to connect to Claude, Cursor, or another AI tool to query your project, run dbt commands, and pull metrics directly. [Connect the dbt MCP server](/docs/dbt-ai/about-mcp).
 - Connect to the Fivetran context layer to give any AI tool richer context about your data, so its answers are grounded in what your data actually means. [Explore the context layer](https://fivetran.com/docs/context-layer).
 

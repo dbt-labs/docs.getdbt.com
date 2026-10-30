@@ -13,7 +13,8 @@ Every new account gets free {props.product} usage credits to start. What you get
 - Legacy Enterprise plans get the same {props.product} access and monthly usage credits as current Enterprise. Only legacy Team has no access.
 - Enterprise and Enterprise+ usage credits are granted automatically &mdash; there's no trial to start and no credit card required. Credits don't roll over or get prorated, and if you downgrade out of Enterprise or Enterprise+, any unused credits are removed at the plan change.
 - Enterprise and Enterprise+ accounts should add a committed spend amount to their contract to keep using <Constant name="wizard" />. You may lose access to <Constant name="wizard" /> without this commit in place. If you've set an optional monthly <Constant name="wizard" /> spend limit, that still applies and pauses usage once reached.
+- If you [bring your own key (BYOK)](/docs/dbt-ai/wizard-byok), you don't need a dbt account or a trial. Your AI provider bills you directly.
 
-:::info Running {props.product} from the CLI against a self-hosted dbt project?
-The trial is opt-in here too &mdash; running `dbt login` (or `wizard login`) is how you opt in. The command creates your free dbt account and starts the same 30-day trial, and that account is where you manage usage and spend limits.
+:::info Using {props.product} with a self-hosted dbt project?
+The trial is opt-in here too. In the CLI, running `dbt login` (or `wizard login`) is how you opt in. In Wizard Desktop, signing in to a dbt acount during onboarding does the same. Either way, you get a free dbt account and the same 30-day trial, and that account is where you manage usage and spend limits.
 :::

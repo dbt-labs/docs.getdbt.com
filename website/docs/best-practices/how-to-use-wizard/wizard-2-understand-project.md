@@ -16,7 +16,7 @@ This workflow helps when you join a project, review an unfamiliar area of the DA
 
 ## Prerequisites
 
-Start <Constant name="wizard" /> from the dbt project root, and make sure the project has a current `target/manifest.json`. Refer to [Use <Constant name="wizard" /> locally](/docs/dbt-ai/wizard-quickstart) for setup.
+Start <Constant name="wizard" /> from the dbt project root, and make sure the project has a current `target/manifest.json`. Refer to [Install <Constant name="wizard" /> CLI](/docs/dbt-ai/wizard-cli) for setup.
 
 If you want <Constant name="wizard" /> to inspect warehouse results, you also need a working development connection and permission to query the relevant relations.
 

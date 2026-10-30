@@ -38,7 +38,7 @@ const DEFAULT_PLATFORMS = [
     os: 'linux',
     icon: faLinux,
     title: 'Download for Linux',
-    description: 'For x86_64, Ubuntu and Debian',
+    description: 'For x86_64, Debian-based distributions',
     ext: '.deb',
     url: `${CDN}/dbt-wizard-app-x86_64-unknown-linux-gnu.deb`,
   },
@@ -51,7 +51,7 @@ const DEFAULT_ALTERNATES = [
     url: `${CDN}/dbt-wizard-app-x86_64-apple-darwin.dmg`,
   },
   {
-    label: 'Linux ARM64',
+    label: 'Linux ARM64 (Debian-based)',
     ext: '.deb',
     url: `${CDN}/dbt-wizard-app-aarch64-unknown-linux-gnu.deb`,
   },

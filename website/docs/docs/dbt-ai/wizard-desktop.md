@@ -21,7 +21,7 @@ This page walks you through installing the app, connecting it to the services it
 
 <DownloadCard />
 
-Desktop is powered by the same technology as the [<Constant name="wizard" /> CLI](/docs/dbt-ai/wizard-quickstart), with a visual interface to help you follow the work, guide it, and manage several threads at once:
+Wizard Desktop is powered by the same technology as the [<Constant name="wizard" /> CLI](/docs/dbt-ai/wizard-cli), with a visual interface to help you follow the work, guide it, and manage several threads at once:
 
 - **Parallel chats:** each chat gets its own <Constant name="git" /> <Term id="git-worktree" />, so several pieces of work run at once without conflicts.
 - **Visible validation:** see structured results, including a `dbt-compare` view of what your changes did to the data.
@@ -43,7 +43,7 @@ Desktop is powered by the same technology as the [<Constant name="wizard" /> CLI
 
 To use Wizard Desktop, you'll need:
 - A computer using macOS, Linux, or Windows.
-- A dbt account. You can create a free account when you sign in or use an existing account.
+- A dbt account, if you want to use dbt-managed keys. You can create a free account when you sign in, or use an existing one. If you you use [BYOK](/docs/dbt-ai/wizard-byok), you can use Wizard Desktop without a dbt account.
 - A local copy of your dbt project on your machine if you want <Constant name="wizard" /> to work on project files. The app scans for existing projects, and you can also select a project folder yourself.
 - Warehouse credentials if you want <Constant name="wizard" /> to run your project or query data. You don't need to configure them before opening the app.
 
@@ -53,9 +53,11 @@ To use Wizard Desktop, you'll need:
 1. Download the installer for your operating system:
    - [macOS, Apple silicon (.dmg)](https://public.cdn.getdbt.com/dbt-wizard/latest/dbt-wizard-app-aarch64-apple-darwin.dmg) or [macOS, Intel (.dmg)](https://public.cdn.getdbt.com/dbt-wizard/latest/dbt-wizard-app-x86_64-apple-darwin.dmg)
    - [Windows, x64 (.exe)](https://public.cdn.getdbt.com/dbt-wizard/latest/dbt-wizard-app-x86_64-pc-windows-msvc.exe)
-   - [Linux, x86_64 (.deb)](https://public.cdn.getdbt.com/dbt-wizard/latest/dbt-wizard-app-x86_64-unknown-linux-gnu.deb) or [Linux, ARM64 (.deb)](https://public.cdn.getdbt.com/dbt-wizard/latest/dbt-wizard-app-aarch64-unknown-linux-gnu.deb)
+   - [Linux, x86_64 (.deb)](https://public.cdn.getdbt.com/dbt-wizard/latest/dbt-wizard-app-x86_64-unknown-linux-gnu.deb) or [Linux, ARM64 (.deb)](https://public.cdn.getdbt.com/dbt-wizard/latest/dbt-wizard-app-aarch64-unknown-linux-gnu.deb) — for Debian-based distributions, such as Ubuntu
+
+   On other Linux distributions, install the app with the [<Constant name="wizard" /> CLI](/docs/dbt-ai/wizard-cli) instead: run `wizard app`.
 2. Open Wizard Desktop and select **Get started** on the welcome screen.
-3. Follow the onboarding prompts. When prompted, create a free dbt account or sign in to an existing account.
+3. Follow the onboarding prompts. When prompted, create a free dbt account or sign in to an existing account. When you use your own AI provider credentials ([BYOK](/docs/dbt-ai/wizard-byok), you can skip signing in.
 
 ## Add your dbt projects
 
@@ -72,7 +74,7 @@ On the **Scan for your dbt projects** screen, choose how <Constant name="wizard"
 On the **Connect an AI model provider** screen, choose how <Constant name="wizard" /> accesses an AI model:
 
 - **Start free trial with dbt-managed keys**: dbt Labs manages the keys and keeps you on current models from OpenAI, Anthropic, and open source. Usage is metered against your dbt usage credits.
-- **Use my own API key**: bring your own provider credentials with [BYOK](/docs/dbt-ai/wizard-byok) for OpenAI, Anthropic, AWS Bedrock, Azure, Snowflake Cortex, Google Gemini, Databricks, and more. Your provider bills you directly.
+- **Use my own API key**: bring your own provider credentials with [BYOK](/docs/dbt-ai/wizard-byok) for OpenAI, Anthropic, AWS Bedrock, Azure, Snowflake Cortex, Google Gemini, Databricks, and more. Your provider bills you directly, and this option works without a dbt platform plan.
 - **Skip, I'll do this later**: continue without choosing a provider. To configure one later, go to **Settings** &rarr; **AI providers**.
 
 <WizardTrialBilling />
@@ -132,7 +134,7 @@ You can also enable automatic updates by clicking on the **Automatic updates** t
 
 ## Coming from the CLI?
 
-It's the same <Constant name="wizard" /> you already know, running the same engine as the [<Constant name="wizard" /> CLI](/docs/dbt-ai/wizard-quickstart). The app has a built-in terminal, so you can keep running dbt commands the way you always have, and you can select **Open in** at any time to jump to the same branch in iTerm, Terminal, VS Code, Cursor, or Finder.
+It's the same <Constant name="wizard" /> you already know, running the same engine as the [<Constant name="wizard" /> CLI](/docs/dbt-ai/wizard-cli). The app has a built-in terminal, so you can keep running dbt commands the way you always have, and you can select **Open in** at any time to jump to the same branch in iTerm, Terminal, VS Code, Cursor, or Finder.
 
 [Download Wizard Desktop](#install-and-open-wizard-desktop) and install the app.
 
@@ -141,7 +143,7 @@ Refer to [the config reference](/docs/dbt-ai/wizard-config) for the configuratio
 
 <SimpleTable>
 
-| | Wizard Desktop | [CLI](/docs/dbt-ai/wizard-quickstart) | [dbt platform](/docs/platform/wizard-platform) |
+| | [Wizard Desktop](/docs/dbt-ai/wizard-desktop) | [CLI](/docs/dbt-ai/wizard-cli) | [dbt platform](/docs/platform/wizard-platform) |
 |---|---|---|---|
 | Where it runs | Native app on your machine | Your terminal | Browser |
 | Best for | Seeing and steering the work, several threads at once | Scripting and terminal-native workflows | Full development and business-user analytics |

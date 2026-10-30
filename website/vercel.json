@@ -365,6 +365,11 @@
       "permanent": true
     },
     {
+      "source": "/docs/dbt-ai/wizard-quickstart",
+      "destination": "/docs/platform/wizard-overview#get-started",
+      "permanent": true
+    },
+    {
       "source": "/docs/dbt-ai/about-dbt-wizard",
       "destination": "/docs/dbt-ai/wizard-cli",
       "permanent": true
