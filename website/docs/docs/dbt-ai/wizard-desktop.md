@@ -53,7 +53,9 @@ To use Wizard Desktop, you'll need:
 1. Download the installer for your operating system:
    - [macOS, Apple silicon (.dmg)](https://public.cdn.getdbt.com/dbt-wizard/latest/dbt-wizard-app-aarch64-apple-darwin.dmg) or [macOS, Intel (.dmg)](https://public.cdn.getdbt.com/dbt-wizard/latest/dbt-wizard-app-x86_64-apple-darwin.dmg)
    - [Windows, x64 (.exe)](https://public.cdn.getdbt.com/dbt-wizard/latest/dbt-wizard-app-x86_64-pc-windows-msvc.exe)
-   - [Linux, x86_64 (.deb)](https://public.cdn.getdbt.com/dbt-wizard/latest/dbt-wizard-app-x86_64-unknown-linux-gnu.deb) or [Linux, ARM64 (.deb)](https://public.cdn.getdbt.com/dbt-wizard/latest/dbt-wizard-app-aarch64-unknown-linux-gnu.deb)
+   - [Linux, x86_64 (.deb)](https://public.cdn.getdbt.com/dbt-wizard/latest/dbt-wizard-app-x86_64-unknown-linux-gnu.deb) or [Linux, ARM64 (.deb)](https://public.cdn.getdbt.com/dbt-wizard/latest/dbt-wizard-app-aarch64-unknown-linux-gnu.deb) — for Debian-based distributions, such as Ubuntu
+
+   On other Linux distributions, install the app with the [<Constant name="wizard" /> CLI](/docs/dbt-ai/wizard-cli) instead: run `wizard app`.
 2. Open Wizard Desktop and select **Get started** on the welcome screen.
 3. Follow the onboarding prompts. When prompted, create a free dbt account or sign in to an existing account.
 
