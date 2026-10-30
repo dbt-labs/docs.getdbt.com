@@ -111,7 +111,7 @@ dbt-fusion 2.0.1
 ## Common issues
 
 **`command not found`**
-The tool isn't installed or isn't on your PATH. Double-check the install instructions for [<Constant name="core" />](/docs/local/install-dbt) or [<Constant name="wizard" /> CLI](/docs/dbt-ai/wizard-quickstart).
+The tool isn't installed or isn't on your PATH. Double-check the install instructions for [<Constant name="core" />](/docs/local/install-dbt) or [<Constant name="wizard" /> CLI](/docs/dbt-ai/wizard-cli).
 
 **`Permission denied`**
 You may need to run the command with elevated permissions, or check that the file is executable.
@@ -120,7 +120,7 @@ You may need to run the command with elevated permissions, or check that the fil
 Make sure you pressed **Enter** after the command.
 
 ## Next steps
-- [<Constant name="wizard" /> quickstart](/docs/dbt-ai/wizard-quickstart) — use the <Constant name="wizard" /> CLI in your terminal
+- [<Constant name="wizard" /> quickstart](/docs/dbt-ai/wizard-cli) — use the <Constant name="wizard" /> CLI in your terminal
 - [Install dbt](/docs/local/install-dbt) — set up <Constant name="fusion_engine" /> or <Constant name="core" /> locally
 - [dbt commands reference](/reference/dbt-commands) — all available dbt CLI commands
 

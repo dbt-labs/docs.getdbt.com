@@ -21,7 +21,7 @@ This page walks you through installing the app, connecting it to the services it
 
 <DownloadCard />
 
-Desktop is powered by the same technology as the [<Constant name="wizard" /> CLI](/docs/dbt-ai/wizard-quickstart), with a visual interface to help you follow the work, guide it, and manage several threads at once:
+Desktop is powered by the same technology as the [<Constant name="wizard" /> CLI](/docs/dbt-ai/wizard-cli), with a visual interface to help you follow the work, guide it, and manage several threads at once:
 
 - **Parallel chats:** each chat gets its own <Constant name="git" /> <Term id="git-worktree" />, so several pieces of work run at once without conflicts.
 - **Visible validation:** see structured results, including a `dbt-compare` view of what your changes did to the data.
@@ -134,7 +134,7 @@ You can also enable automatic updates by clicking on the **Automatic updates** t
 
 ## Coming from the CLI?
 
-It's the same <Constant name="wizard" /> you already know, running the same engine as the [<Constant name="wizard" /> CLI](/docs/dbt-ai/wizard-quickstart). The app has a built-in terminal, so you can keep running dbt commands the way you always have, and you can select **Open in** at any time to jump to the same branch in iTerm, Terminal, VS Code, Cursor, or Finder.
+It's the same <Constant name="wizard" /> you already know, running the same engine as the [<Constant name="wizard" /> CLI](/docs/dbt-ai/wizard-cli). The app has a built-in terminal, so you can keep running dbt commands the way you always have, and you can select **Open in** at any time to jump to the same branch in iTerm, Terminal, VS Code, Cursor, or Finder.
 
 [Download Wizard Desktop](#install-and-open-wizard-desktop) and install the app.
 
@@ -143,7 +143,7 @@ Refer to [the config reference](/docs/dbt-ai/wizard-config) for the configuratio
 
 <SimpleTable>
 
-| | Wizard Desktop | [CLI](/docs/dbt-ai/wizard-quickstart) | [dbt platform](/docs/platform/wizard-platform) |
+| | Wizard Desktop | [CLI](/docs/dbt-ai/wizard-cli) | [dbt platform](/docs/platform/wizard-platform) |
 |---|---|---|---|
 | Where it runs | Native app on your machine | Your terminal | Browser |
 | Best for | Seeing and steering the work, several threads at once | Scripting and terminal-native workflows | Full development and business-user analytics |

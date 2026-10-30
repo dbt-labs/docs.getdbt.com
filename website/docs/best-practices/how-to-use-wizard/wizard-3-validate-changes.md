@@ -22,7 +22,7 @@ The validation levels on this page are available in <Constant name="wizard" /> C
 
 Before you begin:
 
-- [Install and configure <Constant name="wizard" /> CLI](/docs/dbt-ai/wizard-quickstart).
+- [Install and configure <Constant name="wizard" /> CLI](/docs/dbt-ai/wizard-cli).
 - Open your dbt project in the terminal and start <Constant name="wizard" /> from the project root.
 - Make sure the project has a current `target/manifest.json`. Run `dbt parse`, `dbt compile`, or `dbt build` if needed.
 - Configure a development target that <Constant name="wizard" /> can use for commands that query or materialize data.

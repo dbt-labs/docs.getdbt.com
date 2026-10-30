@@ -44,6 +44,10 @@ This guide explains how to install, verify, update, and uninstall the <Constant 
 
 <WizardCliOnboarding />
 
+:::tip Need to re-run setup?
+To re-authenticate, reset project config, or retrigger the trusted folder prompt, refer to [Re-trigger onboarding flows](/docs/dbt-ai/wizard-config#re-trigger-onboarding-flows).
+:::
+
 ## Update
 
 Run the following command to update <Constant name="wizard" /> to the latest version:
@@ -86,7 +90,7 @@ Once you're set up, refer to [How to use dbt Wizard in your dbt project](/best-p
 
 ## Related docs
 
-- [Use <Constant name="wizard" /> locally](/docs/dbt-ai/wizard-quickstart): Install <Constant name="wizard" /> and start a local terminal session
+- [Overview of <Constant name="wizard" />](/docs/platform/wizard-overview): Where <Constant name="wizard" /> is available and how to get started
 - [Configure BYOK](/docs/dbt-ai/wizard-byok): Manage your API key and choose an AI model
 - [Command reference](/docs/dbt-ai/wizard-cli-reference): Full reference for all `wizard` subcommands and global flags
 - [Use cases and examples](/docs/dbt-ai/wizard-use-cases): Realistic analytics engineering scenarios

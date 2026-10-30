@@ -91,7 +91,7 @@ When enabled by an admin, <Constant name="wizard" /> is available to users with 
 
 <Constant name="wizard" /> CLI uses dbt Labs-managed models (OpenAI, Anthropic, or open weight models), billed through dbt's spend-limit billing. You can also bring your own API key or credentials for a supported provider using [BYOK](/docs/dbt-ai/wizard-byok): OpenAI, Anthropic, Azure AI Foundry, AWS Bedrock, Google Gemini, or Snowflake Cortex (preview). BYOK is a good backup option if you want to manage AI costs directly &mdash; token costs are billed directly by whichever provider you choose. Install and configure the CLI on your local machine.
 
-Refer to [Use dbt Wizard locally](/docs/dbt-ai/wizard-quickstart) for more information.
+Refer to [Use dbt Wizard locally](/docs/platform/wizard-overview#get-started) for more information.
 
 </Expandable>
 

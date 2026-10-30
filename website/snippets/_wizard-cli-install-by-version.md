@@ -41,4 +41,4 @@ wizard             # start a session
 
 </Steps>
 
-For first-run setup and billing, refer to [Use <Constant name="wizard" /> locally](/docs/dbt-ai/wizard-quickstart).
+For first-run setup and billing, refer to [Use <Constant name="wizard" /> locally](/docs/dbt-ai/wizard-cli).

@@ -5,6 +5,7 @@ description: "Install the dbt Wizard local CLI, complete first-run onboarding, a
 sidebar_label: "Use dbt Wizard locally"
 tags: [AI, CLI, dbt Wizard]
 availability: local_all
+unlisted: true
 ---
 
 import WizardSupportedProviders from '/snippets/_wizard-supported-providers.md';

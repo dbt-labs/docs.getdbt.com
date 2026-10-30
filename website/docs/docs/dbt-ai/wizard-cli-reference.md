@@ -38,6 +38,9 @@ Most people use a handful of commands to get started. View the following table a
 | Pick up where I left off | `wizard resume --last` | Reopens your most recent session with its full history. |
 | Check that my install is healthy | `wizard doctor` | Diagnoses your install, config, auth, runtime health |
 | Update to the latest version | `wizard update` | Updates wizard to the newest release. |
+| Apply the latest Wizard diff | `wizard apply TASK_ID` | Applies the latest Wizard diff to your working directory. |
+| Sign in or out | `wizard login` / `wizard logout` | Authenticates with or signs out of your dbt account. |
+| Manage MCP servers | `wizard mcp add dbt` | Manages MCP server connections. |
 </SimpleTable>
 
 <CliGenerated />
