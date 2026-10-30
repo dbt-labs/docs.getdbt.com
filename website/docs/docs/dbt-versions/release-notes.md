@@ -21,7 +21,25 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 For <Constant name="fusion_engine" /> updates, refer to the [v2 changelog](https://github.com/dbt-labs/dbt/blob/main/CHANGELOG-dbt.md).
 
 ## October 2026
+
 - **New:** <Constant name="wizard" /> Desktop is now in public beta. [Download the app](/docs/dbt-ai/wizard-desktop#install-and-open-wizard-desktop) for macOS, Windows, or Linux and start your first session.
+- **New:** If your GitHub Enterprise Server can only be reached over a private connection (PrivateLink), you can now save that connection on the GitHub app. Set `private_link_endpoint_id` when you create or update the app through the API, and dbt routes the connection over your private network.
+- **New:** **Filter the Model timing table:** On the Model timing tab, you can now filter [Resource details](/docs/deploy/run-visibility#resource-details) to find what's slowing a run down. Use the **Est. critical path** filter to show only the resources on the longest chain of dependent resources, which sets the minimum run time (Yes), or everything else (No). Use the resource type filter to narrow the list to **Model**, **Test**, **Snapshot**, or **Exposure**. You can still search by name.
+- **New:** Set [`allow_jinja_file_extensions`](/reference/global-configs/behavior-flags/allow_jinja_file_extensions) in your project config so dbt reads files with an extra Jinja ending, such as `model.sql.j2` or `doc.md.j2`. Jinja is the templating language dbt already uses inside SQL and Markdown files.
+- **New:** In the <Constant name="wizard" /> [home tab](/docs/platform/wizard-home), the conversation you have open appears in the browser URL. You can bookmark that conversation and open it again from the URL.
+- **Enhancement:** If a project can use dbt v2 but you do not have permission to select it, the dbt v2 choices stay visible and disabled in the environment, job, and development version menus. The tooltip says that an Account Admin or a [v2 Migration Admin](/docs/platform/manage-access/enterprise-permissions#v2-migration-admin) has to select dbt v2.
+- **Enhancement:** If a [usage chart](/docs/platform/billing/how-pricing-works#viewing-usage-in-the-product) fails to load or refresh, you see a message and a **Retry** button. This applies to the monthly models built chart on **Project home** and the top jobs chart on an **Environment** page. A chart that loaded earlier keeps its last numbers and shows when they were updated while the retry runs.
+- **Enhancement:** In Studio [User development settings](/docs/dbt-versions/upgrade-dbt-platform-version#override-dbt-version), the **v2 Stable** option no longer shows a **Preview** label. dbt v2 is generally available.
+- **Enhancement:** In the dbt VS Code extension, drag the edge of a column header in the query results panel to make that column wider or narrower.
+- **Enhancement:** **Longer email verification window**: Email verification short codes now expire after 10 minutes instead of 5, giving you more time to complete account verification.
+- **Fix:** If a signup uses an email address that already has an account, including when two signups use that email at the same time, dbt shows a page that says the email is already taken. You no longer get a generic error page.
+- **Fix:** A request with a bad value now returns a clear error instead of a server error. An unsupported `order_by` value on version 3 list endpoints, and a negative or too-large `limit` or `offset` on version 2 list endpoints, return a 400 error (the request was invalid). Creating a project with `POST /api/v2/accounts/{id}/projects/` also returns a 400 error when `type` is not text. Getting run timing with `GET /api/v3/accounts/:id/projects/:id/runs/:id/timing/` returns a 404 (not found) when that run is not in the account or project in the URL.
+- **Fix:** In <Constant name="studio_ide" />, an [ephemeral](/docs/build/materializations#ephemeral) model is a model that is not built as its own table or view. Those models were missing from the command result list, so a tab such as **Error**, **Warn**, **Skip**, **Reused**, or **Pass** could show a count and no rows. They now appear on the matching tab with the other models.
+- **Fix:** Open a job run, select a step, and open **System logs**. That tab now includes the logs from your models, so you can troubleshoot a failed run in one place.
+- **Fix:** [`dbt fmt`](/reference/commands/lint#dbt-format) no longer shifts a Jinja tag to the left when that same line ends with a SQL comment. It also settles on one indentation for Jinja tags inside a `for` loop, and for an `{% if %}...{%- else -%}` block whose condition looks up warehouse information, such as the columns on a table. Running `dbt fmt` again does not keep changing those lines.
+- **Behavior change:** The **System logs** tab on a run step used to show only system messages. It now shows every log for that step, including logs from your models. If you used this tab for system messages only, you will see more lines there.
+- **Behavior change:** dbt v2 renamed the variable that selects an AI provider, and the two variables that write the [information schema](/docs/build/dbt-information-schema#generating-the-information-schema) (a local copy of project metadata you can query). If you set `DBT_AI_PROVIDER`, change it to [`DBT_ENGINE_AI_PROVIDER`](/docs/dbt-ai/package-skills#set-the-ai_provider-flag). If you set `DBT_GENERATE_INFO_SCHEMA` or `DBT_INFO_SCHEMA_DIR`, change them to `DBT_ENGINE_GENERATE_INFO_SCHEMA` and `DBT_ENGINE_INFO_SCHEMA_DIR`. The command-line flags for these options are unchanged. Update the variables anywhere you set them, including continuous integration (CI).
+- **New:** You can now [route cross-project `ref()`](/docs/mesh/govern/project-dependencies#route-environments-across-projects) to a specific upstream environment, such as Staging, instead of only the default Production or Staging environment.
 - **New:** In <Constant name="wizard" /> Desktop, you can search the current chat and jump between matches, including text in code blocks.
 - **New:** In <Constant name="wizard" /> Desktop, use `/new`, `/clear`, and `/rename` to manage conversations. `/new` accepts an optional starting prompt and works while another response is running.
 - **New:** In <Constant name="wizard" /> Desktop, you can discard all uncommitted changes and remove new files in one confirmed action. Conflicted files are left alone.
@@ -218,7 +236,6 @@ Two other things moved:
 - **Enhancement:** Memory-tuning optimizations are now applied automatically to all <Constant name="fusion" /> runs, reducing out-of-memory kill rates and improving overall uptime.
 - **Fix:** Claude-backed agents can return longer answers and handle some previously broken interactions more reliably.
 - **New**: [Apache Ossie](https://github.com/apache/ossie) semantic layer support:
-
     - Open Semantic Interchange (OSI) has been renamed to Apache Ossie. For more information, refer to [OSI is now Apache Ossie (Incubating)](https://www.getdbt.com/blog/osi-is-now-apache-ossie).
     - dbt writes an `osi_document.json` file to your `target/` directory alongside `semantic_manifest.json` at parse time. This artifact provides an Ossie representation of your project's <Constant name="semantic_layer" />. For more information, refer to [Semantic manifest](/reference/artifacts/sl-manifest#apache-ossie-document).
     - <Constant name="dbt" /> supports the Ossie standard for defining semantic models and metrics. You can place Ossie-format `.json` files in an `osi/` directory at the root of your project, and dbt parses them into the manifest alongside any native dbt semantic models. To use a different directory, configure [`osi-paths`](/reference/project-configs/osi-paths) in `dbt_project.yml`. Ossie versions `0.1.0` and `0.1.1` are supported; any other version raises a parse error. For more information, refer to [Ossie semantic layer documents](/docs/build/ossie-semantic-models).
@@ -241,7 +258,6 @@ Two other things moved:
 - **New:** You can now access dbt State settings from **Account settings** > **Billing & Usage**, previously found under **State**. You can manage your trial, enable dbt State on environments and jobs, and set spend alerts &mdash; all in one place. For details, refer to [dbt State trial and billing](/docs/deploy/dbt-state-trial).
 - **New:** Redshift development connections now support [external OAuth](/docs/platform/manage-access/redshift-external-oauth) (Okta or Entra ID) through AWS IAM Identity Center.
 
-  
 #### Docs changes
 
 To simplify the docs experience, clarify availability, and make it easier to find what applies to you, we made the following changes to the docs site:
@@ -397,17 +413,14 @@ The Invites endpoints of the dbt platform Admin v2 API now include these additio
 - **Enhancement:** [State-aware orchestration](/docs/deploy/state-aware-about) improvements:
   - When a model fails a data test, state-aware orchestration rebuilds it on subsequent runs instead of reusing it from prior state to ensure dbt reevaluates data quality issues.
   - State-aware orchestration now detects and rebuilds models whose tables are deleted from the warehouse, even when there are no code or data changes. Previously, tables deleted externally were not detected, and therefore not rebuilt, unless code or data had changed. For more information, review [Handling deleted tables](/docs/deploy/state-aware-about#handling-deleted-tables). 
-
   State-aware orchestration is in private preview. refer to the [prerequisites for using the feature](/docs/deploy/state-aware-setup#prerequisites).
 - **Enhancement:** [dbt <Constant name="wizard" />](/docs/platform/wizard-platform) correctly detects column names across various `schema.yml` files, adds only missing descriptions, and preserves existing ones.
 - **Enhancement**: v2 now automatically reads environment variables from a `.env` file in your current working directory (the folder you `cd` into and run dbt commands from in your terminal), if one exists. This provides a simple way to manage credentials and configuration without hardcoding them in your `profiles.yml`. The [dbt VS Code extension](/docs/about-dbt-extension) also supports `.env` files and <Term id="lsp" />-powered features. For more information, refer to [Configure environment variables](/docs/local/configure-environment-variables).
 - **New**: The new <Constant name="semantic_layer"/>  YAML specification creates an open standard for defining metrics and dimensions that works across multiple platforms. The new spec is now live in <Constant name="fusion_engine" />.
-  
   Key changes:
   - Semantic models are now embedded within model YAML entries. This removes the need to manage YAML entries across multiple files.
   - Measures are now simple metrics. 
   - Frequently used options are now top-level keys, reducing YAML nesting depth.
-
   For an overview of the changes and steps how to migrate to the latest YAML spec, check [Migrate to the latest YAML spec](/docs/build/latest-metrics-spec).
 - **Fix:** Debug logs in the **Run summary** tab are now properly truncated to improve performance and user interface responsiveness. Previously, debug logs were not truncated correctly, causing slower page loads. You can access the full debug logs by clicking **Download > Download all debug logs**. For more information, review [Run visibility](/docs/deploy/run-visibility#run-summary-tab).
 - **New:** The [Semantic Layer querying](/docs/explore/navigate-dbt-insights#semantic-layer-querying) within dbt <Constant name="insights" /> is now generally available (GA), enabling you to build SQL queries against the Semantic Layer without writing SQL code.
