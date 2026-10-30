@@ -52,7 +52,7 @@ The following table shows where <Constant name="wizard" /> is available, the AI 
 | [<Constant name="dbt_platform" />: <Constant name="studio_ide" /> ](/docs/dbt-ai/wizard-ide) | Public preview | dbt <Term id="managed" /> or BYOK |
 | [<Constant name="dbt_platform" />: Wizard home tab](/docs/platform/wizard-home) | Public preview | dbt <Term id="managed" /> or BYOK |
 | [Locally: Wizard terminal (CLI)](/docs/dbt-ai/wizard-cli) | Public beta | dbt <Term id="managed" />, BYOK, or OpenAI subscription |
-| [Locally: Wizard Desktop](/docs/dbt-ai/wizard-desktop) | Private beta | dbt <Term id="managed" /> or BYOK |
+| [Locally: Wizard Desktop](/docs/dbt-ai/wizard-desktop) | Public beta | dbt <Term id="managed" /> or BYOK |
 
 </SimpleTable>
 
@@ -68,6 +68,7 @@ For pricing and how billing works, refer to [Models and pricing](/docs/dbt-ai/pr
 
 You can get started with Wizard wherever you work, whether it's the terminal or <Constant name="dbt_platform" />:
 - [Wizard in the CLI](#wizard-in-the-cli)
+- [Wizard Desktop](#wizard-desktop)
 - [Wizard in <Constant name="dbt_platform"/>](#wizard-in-dbt-platform)
 
 (Be warned, the wizard has been known to <WizardPopcorn>cast spells</WizardPopcorn>.)
@@ -79,14 +80,20 @@ A terminal-based agent for governed data development in dbt, whether your team u
 <WizardCliInstall />
 <NewToTerminal />
 
-### Wizard Desktop <Lifecycle status="private_beta"/>
+### Wizard Desktop <Lifecycle status="beta"/>
 
 Wizard Desktop is Wizard as a native app. Wizard Desktop runs the same engine as the dbt Wizard CLI, but you get the full view: charts, tables, diffs, and lineage render right in the app, so you can see the work, steer it, and keep several chats moving at once, each on its own branch.
 
-:::info Available in Private beta 
+What you get with Desktop:
 
-Wizard Desktop is in private beta. [Sign up to get an invite](https://www.getdbt.com/wizard-desktop-waitlist), and dbt Labs emails you the download page to get started!
-:::
+- **Parallel chats:** each chat gets its own <Constant name="git" /> <Term id="git-worktree" />, so several pieces of work run at once without conflicts.
+- **Visible validation:** see structured results, including a `dbt-compare` view of what your changes did to the data.
+- **Contextual comments:** hover almost anything to comment on that exact spot, then send several together.
+- **Charts and tables:** ask a question about your data and see the answer inline.
+- **Inline impact:** see which models <Constant name="wizard" />'s changes touch, with diffs you open inline.
+- **Lineage, file, and metrics browsing:** browse your project right alongside the chat.
+
+<DownloadCard />
 
 To learn more, refer to [Get started with Wizard Desktop](/docs/dbt-ai/wizard-desktop).
 
