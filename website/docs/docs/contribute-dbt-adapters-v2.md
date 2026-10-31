@@ -176,6 +176,8 @@ cargo clean  # frees old build artifacts — you'll do this often
 
 Before editing code, read the repository's [`AGENTS.md`](https://github.com/dbt-labs/dbt/blob/main/AGENTS.md) and [adapter architecture rules](https://github.com/dbt-labs/dbt/blob/main/.agents/adapters.md). These files are versioned with the code and take precedence over this guide when commands, paths, or interfaces differ. Check for nested `AGENTS.md` files in every directory you change.
 
+If you use an AI coding agent, invoke the repository's [`/create-adapter` skill](https://github.com/dbt-labs/dbt/blob/main/.agents/skills/create-adapter/SKILL.md). It turns this guide into a current-tree implementation workflow and covers registries that compiler exhaustiveness does not discover. The separate `/adapters-critic` skill is for final review, not implementation.
+
 The core development loop is the same whether you write code manually or with an AI assistant:
 
 1. Add `AdapterType::MyWarehouse` to the enum (Step 4.1)
@@ -625,7 +627,7 @@ cargo build -p dbt-cli --bin dbt
 
 ### CI testing
 
-Before opening your PR, run the repository's [`/adapters-critic` review skill](https://github.com/dbt-labs/dbt/blob/main/.agents/skills/adapters-critic/SKILL.md) against the final diff and address its findings. The critic checks adapter architecture and the repository rules that compiler exhaustiveness does not cover.
+Before opening your PR, run the repository's [`/adapters-critic` review skill](https://github.com/dbt-labs/dbt/blob/main/.agents/skills/adapters-critic/SKILL.md) against the final diff and address its findings. Keep this review separate from `/create-adapter` so the critic independently checks adapter architecture and repository rules that compiler exhaustiveness does not cover.
 
 CI testing for community adapter PRs is coordinated with the dbt Labs adapters team — the test infrastructure is not publicly distributed. When your PR is ready, reach out in `#adapter-ecosystem` and the adapters team will work with you on warehouse validation.
 
