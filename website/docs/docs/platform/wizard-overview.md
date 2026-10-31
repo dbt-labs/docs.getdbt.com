@@ -51,9 +51,8 @@ The following table shows where <Constant name="wizard" /> is available, the AI 
 |---|---|---|
 | [<Constant name="dbt_platform" />: <Constant name="studio_ide" /> ](/docs/dbt-ai/wizard-ide) | Public preview | dbt <Term id="managed" /> or BYOK |
 | [<Constant name="dbt_platform" />: Wizard home tab](/docs/platform/wizard-home) | Public preview | dbt <Term id="managed" /> or BYOK |
-| [Locally: Wizard terminal (CLI)](/docs/dbt-ai/wizard-cli) | Public beta | dbt <Term id="managed" />, BYOK, or OpenAI subscription |
 | [Locally: Wizard Desktop](/docs/dbt-ai/wizard-desktop) | Public beta | dbt <Term id="managed" /> or BYOK |
-
+| [Locally: Wizard terminal (CLI)](/docs/dbt-ai/wizard-cli) | Public beta | dbt <Term id="managed" />, BYOK, or OpenAI subscription |
 </SimpleTable>
 
 <WizardVideoCourse />
@@ -67,18 +66,11 @@ For pricing and how billing works, refer to [Models and pricing](/docs/dbt-ai/pr
 ## Get started
 
 You can get started with Wizard wherever you work, whether it's the terminal or <Constant name="dbt_platform" />:
-- [Wizard in the CLI](#wizard-in-the-cli)
 - [Wizard Desktop](#wizard-desktop)
 - [Wizard in <Constant name="dbt_platform"/>](#wizard-in-dbt-platform)
+- [Wizard in the CLI](#wizard-in-the-cli)
 
 (Be warned, the wizard has been known to <WizardPopcorn>cast spells</WizardPopcorn>.)
-
-### Wizard in the CLI <Lifecycle status="beta"/>
-
-A terminal-based agent for governed data development in dbt, whether your team uses <Constant name="dbt_platform" /> or self-hosts. Bring your own key to experience the full agentic analytics engineering loop.
-
-<WizardCliInstall />
-<NewToTerminal />
 
 ### Wizard Desktop <Lifecycle status="beta"/>
 
@@ -114,6 +106,13 @@ To get started:
     - `add not_null and unique tests to the primary key of stg_customers`
 
 Refer to [Use cases and examples](/docs/dbt-ai/wizard-use-cases) for more prompts.
+
+### Wizard in the CLI <Lifecycle status="beta"/>
+
+A terminal-based agent for governed data development in dbt, whether your team uses <Constant name="dbt_platform" /> or self-hosts. Bring your own key to experience the full agentic analytics engineering loop.
+
+<WizardCliInstall />
+<NewToTerminal />
 
 ## Related docs
 

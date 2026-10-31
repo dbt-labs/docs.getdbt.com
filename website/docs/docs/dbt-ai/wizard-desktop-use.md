@@ -229,7 +229,7 @@ The app only scans <Constant name="git" /> repos in your home folder. If your pr
 
 - [Get started with Wizard Desktop](/docs/dbt-ai/wizard-desktop)
 - [Wizard Desktop settings](/docs/dbt-ai/wizard-desktop-settings)
-- [Use <Constant name="wizard" /> locally (CLI)](/docs/dbt-ai/wizard-quickstart)
+- [Use <Constant name="wizard" /> locally (CLI)](/docs/dbt-ai/wizard-cli)
 - [<Constant name="wizard" /> config reference](/docs/dbt-ai/wizard-config)
 - [Data use and telemetry](/docs/dbt-ai/wizard-telemetry)
 

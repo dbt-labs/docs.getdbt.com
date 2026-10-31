@@ -11,7 +11,7 @@ availability: local_all
 Move from Claude Code to <Constant name="wizard" /> while keeping your project conventions.
 </IntroText>
 
-<Constant name="wizard" /> automatically imports Claude Code instructions, skills, and settings from your repo. Use this page if you already use Claude Code on dbt projects and want to bring over project context, skills, or model settings. If you're new to AI agents, start with [Use dbt Wizard locally](/docs/dbt-ai/wizard-quickstart).
+<Constant name="wizard" /> automatically imports Claude Code instructions, skills, and settings from your repo. Use this page if you already use Claude Code on dbt projects and want to bring over project context, skills, or model settings. If you're new to AI agents, check out the [dbt Wizard overview](/docs/platform/wizard-overview).
 
 ## Prerequisites
 
@@ -101,7 +101,7 @@ And if your conventions aren't applied, check:
 
 ## Related docs
 
-- [Use dbt Wizard locally](/docs/dbt-ai/wizard-quickstart)
+- [Use dbt Wizard locally](/docs/platform/wizard-overview#get-started)
 - [Skills](/docs/dbt-ai/wizard-skills)
 - [Configure BYOK](/docs/dbt-ai/wizard-byok)
 - [Use cases and examples](/docs/dbt-ai/wizard-use-cases)

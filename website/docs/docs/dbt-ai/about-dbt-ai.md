@@ -29,7 +29,7 @@ import CopilotWizardDifferences from '/snippets/_copilot-wizard-diff.md';
 <Card
     title="Use dbt Wizard locally"
     body="Install dbt Wizard locally and start a terminal session."
-    link="/docs/dbt-ai/wizard-quickstart"
+    link="/docs/platform/wizard-overview#get-started"
     icon="wizard"/>
 
 <Card
