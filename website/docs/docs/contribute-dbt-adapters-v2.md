@@ -17,7 +17,7 @@ This guide is a work in progress — synthesized from internal v2 adapter team d
 
 <Constant name="core_v2" /> adapters work very differently from <Constant name="core_v1" /> adapters. In v1, each adapter was a standalone Python package that implemented a fragmented Python interface. In v2, adapters live **inside a monorepo written in Rust**, connected to warehouses through ADBC (Arrow Database Connectivity) drivers — and the community contribution model has changed accordingly.
 
-This guide walks you through contributing a new v2 adapter to `dbt-labs/dbt` as a community member. The file breakdown in the [reference section](#reference-file-by-file-implementation-guide) shows the ~13 files a complete community v2 adapter touches. Exasol, a community contributed v2 adapter, is the example used throughout this guide.
+This guide walks you through contributing a new v2 adapter to `dbt-labs/dbt` as a community member. The [reference section](#reference-file-by-file-implementation-guide) identifies the core integration surfaces a community v2 adapter touches. Exasol, a community contributed v2 adapter, is the example used throughout this guide.
 
 :::info What is <Constant name="core_v2" />?
 dbt v2 is the new Rust-based dbt engine. Adapters in v2 are written in Rust and live inside the `dbt-labs/dbt` monorepo, rather than as standalone Python packages.
@@ -41,7 +41,7 @@ The practical upside: **adding a new adapter requires far less code than it did 
 
 ### What you'll be building
 
-As a community contributor, you're building the **foundation**: connect your warehouse, run dbt macros, and support basic materializations (`dbt run`, `dbt build`). The ~13 files in the reference section define the complete scope.
+As a community contributor, you're building the **foundation**: connect your warehouse, run dbt macros, and support basic materializations (`dbt run`, `dbt build`). The reference section defines the expected integration surfaces.
 
 ---
 
@@ -126,7 +126,7 @@ For warehouses not yet in `AdapterType` at all (MySQL, Hive, Vertica, SQL Server
 | Custom materializations and adapter-overrides | Same location | Look out for Jinja that might not yet be supported in v2; that will need to be addressed separately |
 | Profile fields in `credentials.py` / `profile_template.yml` | `DbConfig` struct in `dbt-schemas` | Each profile field becomes a struct field — optional fields use `Option<T>` |
 | Connection URI / DSN construction in `connections.py` | `dbt-auth/src/<wh>/mod.rs` | The URI building logic maps cleanly to the auth module pattern |
-| `BaseRelation.quote_policy` / identifier casing behavior | `Policy::new(...)` in `relation_object.rs` | The 3-part vs. 2-part name structure and quote flags map 1:1 to the v2 `Policy` struct |
+| `BaseRelation.quote_policy` / identifier casing behavior | `Policy::new(...)` in `relation_impl.rs` | The 3-part vs. 2-part name structure and quote flags map 1:1 to the v2 `Policy` struct |
 | Catalog introspection SQL in macros and `adapter.py` | `get_relation.rs` and Jinja macros | The system catalog table names and queries you already know transfer directly |
 
 **What doesn't transfer by design**
@@ -158,8 +158,8 @@ go version  # verify
 git clone https://github.com/dbt-labs/dbt
 cd dbt
 
-# Verify you can build
-cargo build --bin dbt
+# Verify you can build the CLI package
+cargo build -p dbt-cli --bin dbt
 ```
 
 If you hit Z3 errors:
@@ -174,6 +174,10 @@ cargo clean  # frees old build artifacts — you'll do this often
 
 ### Development workflow
 
+Before editing code, read the repository's [`AGENTS.md`](https://github.com/dbt-labs/dbt/blob/main/AGENTS.md) and [adapter architecture rules](https://github.com/dbt-labs/dbt/blob/main/.agents/adapters.md). These files are versioned with the code and take precedence over this guide when commands, paths, or interfaces differ. Check for nested `AGENTS.md` files in every directory you change.
+
+If you use an AI coding agent, invoke the repository's [`/create-adapter` skill](https://github.com/dbt-labs/dbt/blob/main/.agents/skills/create-adapter/SKILL.md). It turns this guide into a current-tree implementation workflow and covers registries that compiler exhaustiveness does not discover. The separate `/adapters-critic` skill is for final review, not implementation.
+
 The core development loop is the same whether you write code manually or with an AI assistant:
 
 1. Add `AdapterType::MyWarehouse` to the enum (Step 4.1)
@@ -183,7 +187,7 @@ The core development loop is the same whether you write code manually or with an
 4. Fill in the arm; verify with `cargo check` again
 5. Repeat for each crate until error-free
 
-Every missing case is a compile error, so the AI always has a precise specification to work from.
+Every missing arm in an exhaustive `match` is a compile error, so the compiler provides a precise specification for those call sites. Lists, registries, and other non-exhaustive integration surfaces still require the checklist in this guide and review against a current adapter.
 
 **What context helps for each arm:**
 - **The file you're editing** — paste the relevant `match` block or function. For example: the `match self.adapter_type()` block from `adapter_impl.rs` that needs a new arm.
@@ -192,9 +196,10 @@ Every missing case is a compile error, so the AI always has a precise specificat
 - **Your warehouse's specifics** — system catalog table names and the connection fields from your `profiles.yml`.
 
 **Watch out for:**
-- **Hallucinated file paths** — AI often invents v2 paths. Use the file breakdown below as ground truth.
+- **Stale examples and hallucinated file paths** — verify every path and function signature against the current checkout. This guide describes the integration surfaces, but the repository is the source of truth for current interfaces.
 - **Always verify with the type checker** — run `cargo check -p <crate>` after any AI-generated changes.
 - **SQL macro patterns from v1** may not apply cleanly in <Constant name="fusion" />. Compare against the reference `adapters.sql` in `crates/dbt-loader/src/dbt_macro_assets/dbt-exasol/macros/adapters.sql` in [dbt-labs/dbt](https://github.com/dbt-labs/dbt).
+- **Repository-wide rules** — logging, error codes, test runtimes, changelog generation, and macro edits have requirements in `AGENTS.md`. Do not infer those rules from nearby legacy code.
 
 ---
 
@@ -215,7 +220,7 @@ ADBC is column-native end-to-end — if your warehouse supports columnar output 
 ### The vertical model
 
 Unlike v1 where *each warehouse* had its own monolithic adapter class (`SnowflakeAdapter`, `BigqueryAdapter`), v2 organizes adapter logic by **vertical** — feature areas that *span all warehouses*:
-- **`dbt-xdbc`** — driver loading, ADBC connections (all warehouses)
+- **`dbt-adbc`** — driver loading, ADBC connections (all warehouses)
 - **`dbt-auth`** — credential resolution (all warehouses, per-warehouse modules)
 - **`dbt-adapter`** — a single `ConcreteAdapter` with warehouse-specific behavior driven by `match adapter_type()`, not per-warehouse structs
 - **`dbt-loader`** — Jinja SQL macros per warehouse
@@ -248,7 +253,7 @@ profiles.yml / dbt_project.yml
   dbt-auth           ← credential resolution
         │
         ▼
-  dbt-xdbc           ← ADBC driver loading
+  dbt-adbc           ← ADBC driver loading
         │
         ▼
   dbt-adapter        ← relation types, metadata adapter, adapter methods
@@ -261,13 +266,15 @@ profiles.yml / dbt_project.yml
 
 ### Crate map
 
-In Rust, a **crate** is a package — the unit of compilation, roughly equivalent to a "library" or "module" in other languages. The `dbt-labs/dbt` monorepo has multiple crates, each responsible for one vertical slice of functionality across all warehouses. This is a quick-reference map of the six crates you'll touch to build your adapter, in the order you'll work through them in Step 4.
+In Rust, a **crate** is a package — the unit of compilation, roughly equivalent to a "library" or "module" in other languages. The `dbt-labs/dbt` monorepo has multiple crates, each responsible for one vertical slice of functionality across all warehouses. This is a quick-reference map of the crates you'll touch to build your adapter, in the order you'll work through them in Step 4.
 
 | Crate | Location | What you touch |
 |---|---|---|
 | `dbt-adapter-core` | `crates/dbt-adapter-core/` | `AdapterType` enum variant, `quote_char` arm |
-| `dbt-xdbc` | `crates/dbt-xdbc/` | ADBC driver registration (`Backend` enum, library name) |
+| `dbt-adbc` | `crates/dbt-adbc/` | ADBC driver registration (`Backend` enum, library name) |
 | `dbt-schemas` | `crates/dbt-schemas/` | `profiles.yml` config struct (`DbConfig` variant) |
+| `dbt-profile-schemas` | `crates/dbt-profile-schemas/` | Interactive and headless profile field definitions |
+| `dbt-init` | `crates/dbt-init/` | Adapter list used by interactive `dbt init` |
 | `dbt-auth` | `crates/dbt-auth/` | Credential resolution, connection URI construction |
 | `dbt-adapter` | `crates/dbt-adapter/` | Relation quoting, metadata catalog queries, adapter match arms, column builder, sql_types |
 | `dbt-loader` | `crates/dbt-loader/` | Jinja SQL macros (`dbt_macro_assets/dbt-<adapter>/`) |
@@ -282,7 +289,7 @@ This step walks you through each crate you need to touch. Work through them in o
 cargo check -p <crate-name>
 ```
 
-Replace `<crate-name>` with the crate you just edited — for example, `dbt-adapter-core`, `dbt-xdbc`, `dbt-schemas`, `dbt-auth`, `dbt-adapter`, or `dbt-loader`. These match the names in the crate map.
+Replace `<crate-name>` with the crate you just edited — for example, `dbt-adapter-core`, `dbt-adbc`, `dbt-schemas`, `dbt-profile-schemas`, `dbt-init`, `dbt-auth`, `dbt-adapter`, or `dbt-loader`. These match the names in the crate map.
 
 ### 4.1 — Register the adapter type
 
@@ -319,7 +326,7 @@ fn quote_char(&self) -> char {
 
 ### 4.2 — Register the ADBC driver
 
-**Crate:** `crates/dbt-xdbc/`
+**Crate:** `crates/dbt-adbc/`
 
 This is where v2 learns how to find and load your warehouse's ADBC driver at runtime.
 
@@ -362,6 +369,19 @@ pub struct ExasolDbConfig {
 
 After adding the config struct, also add `DbConfig::MyWarehouse(Box<MyWarehouseDbConfig>)` as a new variant to the `DbConfig` enum. This registers your new config type so the rest of the codebase knows it exists. Once you do, the compiler will point you at every place that reads from `DbConfig` and needs a new case for your warehouse — follow those errors to wire it in.
 
+#### Add `dbt init` profile setup
+
+Profile setup has both interactive and headless registration surfaces. Compiler exhaustiveness does not catch omissions from adapter lists, so compare both paths with a supported adapter such as Exasol.
+
+| Crate and file | What to do |
+|---|---|
+| `crates/dbt-profile-schemas/src/<warehouse>_config.rs` | Implement `InteractiveSetup` for your `DbConfig`, including fields and setters |
+| `crates/dbt-profile-schemas/src/lib.rs` | Export the module and add the adapter to `ProfileSetup::setup` |
+| `crates/dbt-profile-schemas/src/headless.rs` | Add the adapter to `supported_adapters`, `adapter_fields`, and config construction |
+| `crates/dbt-init/src/profile_setup.rs` | Add the adapter to `ProfileSetup::get_available_adapters` for interactive `dbt init` |
+
+Test both the interactive adapter choice and headless profile construction. Supporting one path does not automatically register the other.
+
 ### 4.4 — Add authentication
 
 **Crate:** `crates/dbt-auth/`
@@ -392,35 +412,18 @@ If your warehouse uses standard `schema.table` or `database.schema.table` naming
 
 #### Relation type and quoting
 
-:::note
-The relation crate is currently being verticalized — `Policy` is moving from `relation_object.rs` to `relation_impl.rs`. Verify file paths against the current repo before using them.
-:::
+**File:** `src/relation/relation_impl.rs`
 
-**File:** `src/relation/relation_object.rs`
-
-Add a match arm that constructs a `Relation` with your quoting policy. The policy controls three things: whether the database is included in fully-qualified names, whether the schema is quoted, and whether the identifier is quoted.
+Add a match arm to `include_policy` for your quoting policy. The policy controls three things: whether the database is included in fully-qualified names, whether the schema is quoted, and whether the identifier is quoted.
 
 For example, Exasol uses a 2-part name (`schema.table`, no database prefix) and quotes both:
 
 ```rust
-// src/relation/relation_object.rs
-Exasol => Box::new(Relation::new_with_policy(
-    Exasol,
-    RelationPath {
-        database: Some(database).filter(|s| !s.is_empty()),
-        schema: Some(schema),
-        identifier,
-    },
-    relation_type,
-    Policy::new(false, true, true),
-    //          ↑      ↑     ↑
-    //       database schema identifier
-    //       disabled quoted  quoted
-    custom_quoting,
-    None,
-    false,
-    false,
-)) as Box<dyn BaseRelation>,
+// src/relation/relation_impl.rs
+AdapterType::ClickHouse | AdapterType::Exasol => Policy::new(false, true, true),
+//                                                           ↑      ↑     ↑
+//                                                        database schema identifier
+//                                                        disabled quoted  quoted
 ```
 
 Decide up front whether your warehouse uses 2-part or 3-part names, and whether identifiers are case-sensitive. For example, Exasol uppercases unquoted identifiers by default — so all catalog lookup SQL uses `upper()` comparisons.
@@ -453,7 +456,7 @@ fn exasol_get_relation(
     adapter: &AdapterImpl,
     state: &State,
     ctx: &QueryCtx,
-    conn: &mut dyn Connection,
+    conn: &mut ConnectionGuard<'_>,
     database: &str,
     schema: &str,
     identifier: &str,
@@ -492,7 +495,7 @@ Exasol => "name",
 AdapterType::Exasol => "DATA_TYPE",  // in src/sql_types.rs
 ```
 
-For capabilities your adapter doesn't support yet (for example, `valid_incremental_strategies`), return `unimplemented!()` — that's fine for an initial community adapter contribution. The reference PR has several of these.
+For capabilities your adapter doesn't support yet (for example, `valid_incremental_strategies`), follow the current neighboring adapter pattern. Use `unimplemented!()` only when the repository's architecture rules allow it and the unsupported path fails clearly.
 
 #### Column builder
 
@@ -597,12 +600,14 @@ If your warehouse is similar to an existing one (for example, Postgres-compatibl
 Run the type checker after completing work in each crate to catch missed match arms and type errors:
 
 ```bash
-cargo build -p dbt-adapter-core
-cargo build -p dbt-xdbc
-cargo build -p dbt-schemas
-cargo build -p dbt-auth
-cargo build -p dbt-adapter
-cargo build -p dbt-loader
+cargo check -p dbt-adapter-core
+cargo check -p dbt-adbc
+cargo check -p dbt-schemas
+cargo check -p dbt-profile-schemas
+cargo check -p dbt-init
+cargo check -p dbt-auth
+cargo check -p dbt-adapter
+cargo check -p dbt-loader
 ```
 
 ### End-to-end test
@@ -611,7 +616,7 @@ Run a real `dbt build` against your warehouse. At minimum, exercise table, view,
 
 ```bash
 # Build the CLI
-cargo build --bin dbt
+cargo build -p dbt-cli --bin dbt
 
 # Create a test project (or clone jaffle-shop-classic)
 ./target/debug/dbt init
@@ -621,6 +626,8 @@ cargo build --bin dbt
 ```
 
 ### CI testing
+
+Before opening your PR, run the repository's [`/adapters-critic` review skill](https://github.com/dbt-labs/dbt/blob/main/.agents/skills/adapters-critic/SKILL.md) against the final diff and address its findings. Keep this review separate from `/create-adapter` so the critic independently checks adapter architecture and repository rules that compiler exhaustiveness does not cover.
 
 CI testing for community adapter PRs is coordinated with the dbt Labs adapters team — the test infrastructure is not publicly distributed. When your PR is ready, reach out in `#adapter-ecosystem` and the adapters team will work with you on warehouse validation.
 
@@ -672,19 +679,22 @@ Align with the adapters team on: which materializations you're targeting in the 
 
 ## Reference: File-by-file implementation guide
 
-A community contributed v2 adapter touches roughly 13 files, all in the public [dbt-labs/dbt](https://github.com/dbt-labs/dbt) repo. The "Exasol example" column shows what it looks like in practice — substitute your warehouse name and system catalog throughout.
+A community contributed v2 adapter touches several integration surfaces in the public [dbt-labs/dbt](https://github.com/dbt-labs/dbt) repo. The "Exasol example" column shows what it looks like in practice — substitute your warehouse name and system catalog throughout.
 
 | Generic path | What it does | Exasol example |
 |---|---|---|
-| `.changes/unreleased/Features-*.yaml` | Changelog entry | Same for all adapters |
+| `.changes/unreleased/Features-*.yaml` | Changelog entry generated with `changie new` as required by `AGENTS.md`; never write it manually | Same for all adapters |
 | `crates/dbt-adapter-core/src/lib.rs` | Add `AdapterType::<Warehouse>` variant and `quote_char` arm | `AdapterType::Exasol` |
-| `crates/dbt-xdbc/src/driver.rs` | Add `Backend::<Warehouse>` variant — the ADBC library name and FFI protocol | `Backend::Exasol`, library name `"adbc_driver_exasol"` |
+| `crates/dbt-adbc/src/driver.rs` | Add `Backend::<Warehouse>` variant — the ADBC library name and FFI protocol | `Backend::Exasol`, library name `"adbc_driver_exasol"` |
 | `crates/dbt-schemas/src/schemas/profiles.rs` | `<Warehouse>DbConfig` struct + `DbConfig::<Warehouse>` variant, wired into all config match arms | `ExasolDbConfig` struct + `DbConfig::Exasol` variant |
+| `crates/dbt-profile-schemas/src/<warehouse>_config.rs` | Interactive field schema and setters | `src/exasol_config.rs` |
+| `crates/dbt-profile-schemas/src/headless.rs` | Headless adapter registration, fields, and config construction | `AdapterType::Exasol` arms |
+| `crates/dbt-init/src/profile_setup.rs` | Interactive `dbt init` adapter list | `AdapterType::Exasol` in `get_available_adapters` |
 | `crates/dbt-auth/src/<warehouse>/mod.rs` | Auth module — reads config fields, resolves credentials, constructs connection URI | `src/exasol/mod.rs` — builds URI from host, port, user/pass, TLS options |
 | `crates/dbt-adapter/src/adapter/adapter_impl.rs` | All exhaustive `match adapter_type()` arms — most delegate to existing patterns; use `unimplemented!()` for unimplemented features | Exasol adds ~10 arms, most are 1–2 lines |
 | `crates/dbt-adapter/src/column/column_builder.rs` | Column builder match arm — maps Arrow record batches to dbt column objects | `Exasol => Ok(Self::build_postgres_like(...))` |
 | `crates/dbt-adapter/src/metadata/get_relation.rs` | Catalog lookup function — queries system tables to find a relation by name | `exasol_get_relation()` — queries `sys.exa_all_tables` / `sys.exa_all_views` |
-| `crates/dbt-adapter/src/relation/relation_object.rs` | Match arm — quoting policy and whether database prefix is included in fully-qualified names | `Policy::new(false, true, true)` — database disabled, schema + identifier quoted |
+| `crates/dbt-adapter/src/relation/relation_impl.rs` | Match arm — quoting policy and whether database prefix is included in fully-qualified names | `Policy::new(false, true, true)` — database disabled, schema + identifier quoted |
 | `crates/dbt-adapter/src/relation/factory.rs` | Add warehouse to `RelationStatic` arm in `create_static_relation` | Exasol added alongside Postgres, Redshift, DuckDB, and more. |
 | `crates/dbt-adapter/src/sql_types.rs` | Metadata column name arms — `DATA_TYPE` and schema listing column names | Exasol uses standard `DATA_TYPE` column name |
 | `crates/dbt-loader/src/dbt_macro_assets/dbt-<warehouse>/dbt_project.yml` | Macro plugin project definition | `dbt-exasol/dbt_project.yml` |
@@ -694,10 +704,10 @@ A community contributed v2 adapter touches roughly 13 files, all in the public [
 
 ```bash
 # Type check a specific crate
-cargo build -p <crate-name>
+cargo check -p <crate-name>
 
 # Build the CLI binary
-cargo build --bin dbt
+cargo build -p dbt-cli --bin dbt
 
 # Run a full dbt build against your warehouse
 ./target/debug/dbt build --project-dir <your-project>
