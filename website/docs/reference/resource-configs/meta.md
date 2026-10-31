@@ -20,6 +20,7 @@ default_value: {}
     { label: 'Semantic models', value: 'semantic models', },
     { label: 'Metrics', value: 'metrics', },
     { label: 'Saved queries', value: 'saved queries', },
+    { label: 'Functions', value: 'functions', },
   ]
 }>
 <TabItem value="models">
@@ -539,6 +540,31 @@ saved_queries:
 ```
 
 </File>
+</TabItem>
+
+<TabItem value="functions">
+
+<File name='dbt_project.yml'>
+
+```yml
+functions:
+  [<resource-path>](/reference/resource-configs/resource-path):
+    [+](/reference/resource-configs/plus-prefix)meta: {<dictionary>}
+```
+
+</File>
+
+<File name='functions/schema.yml'>
+
+```yaml
+functions:
+  - name: function_name
+    config:
+      meta: {<dictionary>}
+```
+
+</File>
+
 </TabItem>
 </Tabs>
 
