@@ -20,6 +20,7 @@ Start a new [chat or session](/best-practices/how-to-use-wizard/wizard-1-intro#u
     - [Upgrade a project to dbt v2](#upgrade-a-project-to-dbt-v2)
     - [Fix a result by commenting on it](#fix-a-result-by-commenting-on-it)
     - [Work on several tasks at once](#work-on-several-tasks-at-once)
+    - [Migrate legacy code to dbt](#migrate-legacy-code-to-dbt)
 - Everyday tasks
     - [Build a new model](#build-a-new-model)
     - [Refactor to incremental](#refactor-to-incremental)
@@ -106,6 +107,30 @@ What <Constant name="wizard" /> does:
 Tips:
 - Select **+ New** to start each task in its own chat.
 - For more on how this works, refer to [Chats and worktrees](/docs/dbt-ai/wizard-desktop-use#chats-and-worktrees).
+
+### Migrate legacy code to dbt
+_Recommended with <Constant name="dbt_platform" />_
+
+Let's say your transformation logic lives in a script or stored procedure outside dbt. Point <Constant name="wizard" /> at it and ask it to rebuild the logic as dbt models that follow your project's conventions.
+
+**Example prompt:**
+
+<AgentPrompt heading="Copy this prompt" description="Replace the [placeholders] with your own values, then paste it into Wizard.">
+Migrate [path to your script or stored procedure] to dbt. Split the logic into staging models and a mart that follow this project's naming and YAML conventions, load any static inputs as seeds, add tests, and run dbt build on the new models. Reuse existing models and sources where they already cover the logic, and summarize what you created.
+</AgentPrompt>
+
+{/* TODO: add trimmed migration clip (source is ~11 MB, 2 min). */}
+
+What <Constant name="wizard" /> does:
+1. Reads the script and checks your project for existing models and sources, so it doesn't duplicate logic
+2. Learns your naming, CTE, and YAML conventions from nearby staging and mart models
+3. Splits the script into staging models, seeds for static inputs, and a mart, with tests and YAML
+4. Asks permission before it runs `dbt parse` and `dbt build` on the new models, then lists every new and changed file in your version control changes
+
+Tips:
+- Attach the script to your chat so <Constant name="wizard" /> starts from the exact file.
+- Compare the new models' output with the legacy output before you retire the original.
+- Review every file before you commit. <Constant name="wizard" /> doesn't run destructive commands without your approval.
 
 ## Everyday tasks
 
