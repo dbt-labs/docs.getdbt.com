@@ -43,6 +43,9 @@ Shows the dbt accounts <Constant name="wizard" /> uses for hosted models and pla
     2. Enter your account's **Access URL** from your <Constant name="dbt_platform" /> account settings in **dbt account host**, such as `ab123.us1.dbt.com`.
     3. (Optional) Enter your **dbt account ID**.
     4. Click **Save**. <Constant name="wizard" /> signs in there directly.
+
+    <Lightbox src="/img/wizard/desktop/wizard-desktop-sign-in-options.png" title="Sign-in options in Wizard Desktop" />
+
 - **Maintenance** reclaims disk space or returns <Constant name="wizard" /> to a clean state. This will affect the Wizard CLI too:
 
     <SimpleTable>
