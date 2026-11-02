@@ -39,7 +39,7 @@ Shows the dbt accounts <Constant name="wizard" /> uses for hosted models and pla
 - **Connected dbt accounts** lists each <Constant name="dbt_platform" /> account you've connected, with the platform account hostname, such as `abc123.us1.dbt.com`. Connect more than one account by clicking on **+Add account** and switch between them without signing in again. Each account has its own **Sign out**. To pick which account powers AI models, go to [AI providers](#ai-providers).
 - **Sign-in options** lets you choose where <Constant name="wizard" /> signs in to <Constant name="dbt_platform" />. Most people don't need this. Use it if signing in sends you to a registration page, or the page says your user already exists. To set it up:
 
-    1. Go to **Settings** --> **Account**, and then click **Sign-in options**.
+    1. Go to **Settings** &rarr; **Account**, and then click **Sign-in options**.
     2. Enter your account's [Access URL](/docs/platform/about-platform/access-regions-ip-addresses) in **dbt account host**, such as `ab123.us1.dbt.com`. You can find it in your <Constant name="dbt_platform" /> account settings.
     3. (Optional) Enter your **dbt account ID**. To find it, go to **Account settings** &rarr; **Account** in <Constant name="dbt_platform" />.
     4. Click **Save**.
