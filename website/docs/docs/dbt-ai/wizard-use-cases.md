@@ -17,7 +17,7 @@ Start a new [chat or session](/best-practices/how-to-use-wizard/wizard-1-intro#u
 
 <!-- no toc -->
 - Featured scenarios
-    - [Migrate a script to dbt](#migrate-a-script-to-dbt)
+    - [Upgrade a project to dbt v2](#upgrade-a-project-to-dbt-v2)
     - [Fix a result by commenting on it](#fix-a-result-by-commenting-on-it)
     - [Work on several tasks at once](#work-on-several-tasks-at-once)
 - Everyday tasks
@@ -42,30 +42,32 @@ Once you're set up, refer to [How to use dbt Wizard in your dbt project](/best-p
 
 Start here. Each scenario has a prompt you can copy.
 
-### Migrate a script to dbt
+### Upgrade a project to dbt v2
 
-You have a legacy script, like a Python or stored procedure job that nobody wants to touch. You want it rebuilt as dbt models, and you want proof the new output matches the old.
+**Wizard Desktop only.** You have a project on an older dbt version and don't know what stands between it and an upgrade. Ask <Constant name="wizard" /> to check, then fix what's blocking it.
 
-**Example prompt:**
+**Example prompts**, one after the other:
 
 ```text
-Please migrate this script to dbt.
+Is this dbt project ready to be upgraded?
 ```
 
-<!-- TODO: confirm the migrate-to-dbt skill is public, crop the clip to the app window (it shows the browser, account and project IDs), then add the video here -->
+```text
+Let's do that so we can upgrade to v2.
+```
 
-Attach the script to the chat before you send the prompt.
+<!-- TODO: add the v2 upgrade video once the personal details (username and local paths) are redacted -->
 
 **What <Constant name="wizard" /> does:**
-1. Reads the script and breaks it into its distinct steps
-2. Checks your project for existing models and sources, and for your naming, CTE, and YAML conventions, so it doesn't duplicate logic
-3. Builds the dbt models, seeds, and YAML, and shows the changes for you to review
-4. Asks for permission before it runs dbt commands, like `dbt parse`
-5. Compares the output of the new models with the script's output, and reports any rows that differ
+1. Loads its built-in upgrade workflow and checks your project's prerequisites, adapter, and blockers
+2. Tells you whether the project is ready and what's in the way. In the demo, that's a deprecated `source-paths` config, packages that aren't installed, and a project that doesn't parse on dbt v2
+3. Patches the project settings, installs the declared packages, and parses the project on dbt v2 without running any models
+4. Shows every changed file in the **Changes** pane, and leaves the warehouse checks for you to start from **Validation**
 
 **Tips:**
-- The migration in the demo runs on a `migrate-to-dbt` skill in the project's `.agents/skills` folder. To write your own, refer to [Skills](/docs/dbt-ai/wizard-skills).
-- Run the comparison before you merge. For the checks <Constant name="wizard" /> can run, refer to [Validate dbt changes](/best-practices/how-to-use-wizard/wizard-3-validate-changes).
+- Ask whether the project is ready before you ask for the upgrade. The answer is your checklist.
+- Run [Validation](/docs/dbt-ai/wizard-desktop-use#validation) before you open a pull request. Parsing and compiling don't build your models.
+- For the skills <Constant name="wizard" /> ships with, refer to [Skills](/docs/dbt-ai/wizard-skills).
 
 ### Fix a result by commenting on it
 
@@ -104,7 +106,7 @@ Look at our test coverage and find data quality improvement opportunities. Check
 Find a model or group of models that could be refactored.
 ```
 
-<!-- TODO: add the parallel chats video once the personal details are cropped out -->
+<!-- TODO: add the parallel chats video once the personal details (username and local paths) are redacted -->
 
 **What <Constant name="wizard" /> does:**
 1. Creates a separate <Constant name="git" /> worktree for each chat, so edits in one chat never touch the files in another
