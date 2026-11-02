@@ -8,7 +8,7 @@ availability:
   access: free
 ---
 
-# Upgrading to v1.13 <Lifecycle status="beta" />
+# Upgrading to v1.13 (release candidate)
 
 ## Resources
 - [dbt v1.13 changelog](https://github.com/dbt-labs/dbt/blob/1.13.latest/CHANGELOG.md)
@@ -16,6 +16,12 @@ availability:
 - [dbt platform upgrade guide](/docs/dbt-versions/upgrade-dbt-platform-version)
 
 ## What to know before upgrading
+
+v1.13 is a release candidate. Behavior can still change before the final release.
+
+### Python 3.10
+
+v1.13 requires Python 3.11 or later. Python 3.10 is no longer supported. Refer to [What version of Python can I use?](/faqs/Core/install-python-compatibility).
 
 dbt Labs is committed to providing backward compatibility for all versions 1.x. Any behavior changes will be accompanied by a [behavior change flag](/reference/global-configs/behavior-changes#behavior-change-flags) to provide a migration window for existing projects. If you encounter an error upon upgrading, please let us know by [opening an issue](https://github.com/dbt-labs/dbt/issues/new).
 
