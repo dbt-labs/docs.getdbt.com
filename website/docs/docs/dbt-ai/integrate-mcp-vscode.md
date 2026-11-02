@@ -11,6 +11,7 @@ import MCPRemoteOauthBetaCallout from '/snippets/_mcp-remote-oauth-beta-callout.
 import MCPRemoteServerUrl from '/snippets/_mcp-remote-server-url.md';
 import MCPRemoteTokenHeaders from '/snippets/_mcp-remote-token-headers.md';
 import MCPOauthPreflight from '/snippets/_mcp-oauth-preflight.md';
+import MCPRemoteReadOnlyCredentials from '/snippets/_mcp-remote-read-only-credentials.md';
 
 [Microsoft Visual Studio Code (VS Code)](https://code.visualstudio.com/mcp) is a powerful and popular integrated development environment (IDE).
 
@@ -18,6 +19,7 @@ VS Code can connect to either the **self-hosted** dbt MCP server (runs on your m
 - VS Code installed with the latest updates.
 - For self-hosted MCP: completed the [self-hosted MCP setup](/docs/dbt-ai/setup-local-mcp) and configured your dbt project paths.
 - For remote MCP: your **MCP URL** from **Account settings** &rarr; **Access URLs** &rarr; **MCP Endpoint URL** in <Constant name="dbt_platform" />.
+- For remote MCP: <MCPRemoteReadOnlyCredentials />
 
 ## Set up with self-hosted dbt MCP server
 
