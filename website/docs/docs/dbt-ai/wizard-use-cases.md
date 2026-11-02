@@ -48,7 +48,6 @@ _Recommended with Wizard Desktop_
 
 Let's say you have a project on an older dbt version and are curious how to upgrade it. Use <Constant name="wizard" /> Desktop to review what needs to change for the upgrade and help fix any issues blocking it.
 
-**Example prompt:**
 
 <AgentPrompt heading="Copy this prompt" description="Replace the [placeholders] with your own values, then paste it into Wizard Desktop.">
 Check whether this dbt project is ready to upgrade to dbt v2. List everything that blocks the upgrade, such as deprecated configs, packages that aren't installed, or code that doesn't parse on v2. Then fix what you can, parse the project on dbt v2 without running any models, and summarize what changed. My adapter is [adapter, for example Snowflake] and I'm currently on dbt [current version].
@@ -72,7 +71,6 @@ _Wizard Desktop only_
 
 If you're working on something and noticed part of <Constant name="wizard" />'s answer is wrong &mdash; you can comment on any line, diff, table cell, or chart and <Constant name="wizard"/> takes care of the rest. Mark up a few and send them together.
 
-**Example prompt:**
 
 <AgentPrompt heading="Copy this prompt" description="Replace the [placeholders] with your own values, then paste it into Wizard Desktop.">
 Show [metric, for example Q1 revenue] from [model name] and briefly explain how it's calculated.
@@ -113,7 +111,6 @@ _Recommended with <Constant name="dbt_platform" />_
 
 Let's say your transformation logic lives in a script or stored procedure outside dbt. Point <Constant name="wizard" /> at it and ask it to rebuild the logic as dbt models that follow your project's conventions.
 
-**Example prompt:**
 
 <AgentPrompt heading="Copy this prompt" description="Replace the [placeholders] with your own values, then paste it into Wizard.">
 Migrate [path to your script or stored procedure] to dbt. Split the logic into staging models and a mart that follow this project's naming and YAML conventions, load any static inputs as seeds, add tests, and run dbt build on the new models. Reuse existing models and sources where they already cover the logic, and summarize what you created.
