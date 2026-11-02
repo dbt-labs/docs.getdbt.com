@@ -37,7 +37,12 @@ Controls what appears alongside a chat while you work.
 Shows the dbt accounts <Constant name="wizard" /> uses for hosted models and platform access, and gives you the tools to clean up what the app has written to disk. 
 
 - **Connected dbt accounts** lists each <Constant name="dbt_platform" /> account you've connected, with the platform account hostname, such as `abc123.us1.dbt.com`. Connect more than one account by clicking on **+Add account** and switch between them without signing in again. Each account has its own **Sign out**. To pick which account powers AI models, go to [AI providers](#ai-providers).
-- **Sign-in options** lets you choose where <Constant name="wizard" /> signs in to <Constant name="dbt_platform" />. Use it if sign-in sends you to a registration page, or says your user already exists, when you try to sign in. 
+- **Sign-in options** lets you choose where <Constant name="wizard" /> signs in to <Constant name="dbt_platform" />. Most people don't need this. Use it if sign-in sends you to a registration page, or says your user already exists, when you try to sign in. This usually happens if:
+
+    - You're on a single-tenant account that hasn't moved to a unique account URL yet.
+    - Your account opted out of account discovery.
+
+    To set it up:
 
     1. Go to **Settings** --> **Account**, and then click **Sign-in options**.
     2. Enter your account's [Access URL](/docs/platform/about-platform/access-regions-ip-addresses) in **dbt account host**, such as `ab123.us1.dbt.com`. You can find it in your <Constant name="dbt_platform" /> account settings.
@@ -45,6 +50,12 @@ Shows the dbt accounts <Constant name="wizard" /> uses for hosted models and pla
     4. Click **Save**.
 
     <Lightbox src="/img/wizard/desktop/wizard-desktop-sign-in-options.png" width="90%" title="Sign-in options in Wizard Desktop" />
+
+    You can also set the sign-in host from **Settings** &rarr; **AI providers**, or in the <Constant name="wizard" /> CLI with the `DBT_CLOUD_LOGIN_HOST` environment variable. For example:
+
+    ```shell
+    export DBT_CLOUD_LOGIN_HOST=ab123.us1.dbt.com
+    ```
 
 - **Maintenance** reclaims disk space or returns <Constant name="wizard" /> to a clean state. This will affect the Wizard CLI too:
 
