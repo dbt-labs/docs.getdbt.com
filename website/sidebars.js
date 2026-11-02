@@ -72,6 +72,7 @@ const sidebarSettings = {
               },
               items: [
                 "docs/platform/connect-data-platform/about-connections",
+                "docs/platform/connect-data-platform/analytics-credentials",
                 "docs/platform/connect-data-platform/connect-apache-spark",
                 "docs/platform/connect-data-platform/connect-amazon-athena",
                 "docs/platform/connect-data-platform/connect-azure-synapse-analytics",

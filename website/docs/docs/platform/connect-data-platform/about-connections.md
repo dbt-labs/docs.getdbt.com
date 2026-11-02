@@ -137,6 +137,10 @@ Please consider the following actions, as the steps you take will depend on the 
 
 <Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/connections-post-rollout-5.png" width="60%" title="Connections normalized"/>
 
+## Analytics credentials
+
+A connection can have one shared [analytics credential](/docs/platform/connect-data-platform/analytics-credentials). Read-only users query through it in <Constant name="wizard" /> Explore mode and remote MCP when they don't have personal credentials.
+
 ## IP Restrictions
 
 <Constant name="dbt" /> will always connect to your data platform from the IP addresses specified in the [Regions & IP addresses](/docs/platform/about-platform/access-regions-ip-addresses) page.
