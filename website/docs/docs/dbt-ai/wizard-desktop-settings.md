@@ -40,8 +40,8 @@ Shows the dbt accounts <Constant name="wizard" /> uses for hosted models and pla
 - **Sign-in options** lets you choose where <Constant name="wizard" /> signs in to <Constant name="dbt_platform" />. If sign-in sends you to a registration page instead of your account, use this to skip it:
 
     1. Go to **Settings** --> **Account**, and then click **Sign-in options**.
-    2. Enter your account's **Access URL** from your <Constant name="dbt_platform" /> account settings in **dbt account host**, such as `ab123.us1.dbt.com`.
-    3. (Optional) Enter your **dbt account ID**.
+    2. Enter your account's [Access URL](/docs/platform/about-platform/access-regions-ip-addresses) in **dbt account host**, such as `ab123.us1.dbt.com`. You can find it in your <Constant name="dbt_platform" /> account settings.
+    3. (Optional) Enter your **dbt account ID**. To find it, go to **Account settings** &rarr; **Account** in <Constant name="dbt_platform" />.
     4. Click **Save**. <Constant name="wizard" /> signs in there directly.
 
     <Lightbox src="/img/wizard/desktop/wizard-desktop-sign-in-options.png" title="Sign-in options in Wizard Desktop" />
