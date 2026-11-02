@@ -3,7 +3,7 @@ Every new account gets free {props.product} usage credits to start. What you get
 <SimpleTable>
 | Plan | What you get | How it renews | When it runs out |
 |---|---|---|---|
-| Developer and Starter, or self-hosted dbt with a free dbt account | 30-day trial with $100 in usage credits per account | One-time | Add a credit card and set a monthly spend limit or contact your account team. |
+| Developer and Starter, or self-hosted dbt with a dbt account | 30-day trial with $100 in usage credits per account | One-time | Add a credit card and set a monthly spend limit or contact your account team. |
 | Enterprise, including [legacy Enterprise](/docs/platform/billing/plans-and-billing#legacy-plans) | $100/month in usage credits per account | Resets each billing month | [Contact your account team](https://www.getdbt.com/contact) to add committed spend |
 | Enterprise+ | $200/month in usage credits per account | Resets each billing month | [Contact your account team](https://www.getdbt.com/contact) to add committed spend |
 | [Legacy Team](/docs/platform/billing/plans-and-billing#legacy-plans) | No access to {props.product} | &mdash; | Move to a [Starter, Enterprise, or Enterprise+ plan](https://www.getdbt.com/pricing) |
@@ -16,5 +16,5 @@ Every new account gets free {props.product} usage credits to start. What you get
 - If you [bring your own key (BYOK)](/docs/dbt-ai/wizard-byok), you don't need a dbt account or a trial. Your AI provider bills you directly.
 
 :::info Using {props.product} with a self-hosted dbt project?
-The trial is opt-in here too. In the CLI, running `dbt login` (or `wizard login`) is how you opt in. In Wizard Desktop, signing in to a dbt acount during onboarding does the same. Either way, you get a free dbt account and the same 30-day trial, and that account is where you manage usage and spend limits.
+The trial is opt-in here too. In the CLI, running `dbt login` (or `wizard login`) is how you opt in. In Wizard Desktop, signing in to a dbt account during onboarding does the same. Either way, you get a [Developer plan](https://www.getdbt.com/pricing) dbt account and the same 30-day trial, and that account is where you manage usage and spend limits.
 :::

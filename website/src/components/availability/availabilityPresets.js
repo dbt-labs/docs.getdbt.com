@@ -78,7 +78,7 @@ const PLAN_TIER_ORDER = ['developer', 'starter', 'enterprise', 'enterprise_plus'
 
 const ACCESS_TOOLTIPS = {
   Free: 'No account needed.',
-  'Login required': 'Sign in with a dbt account. No paid dbt seat required.',
+  'Login required': 'Sign in with a dbt account. Supported across all dbt plans, including Developer plans.',
   'Usage-based': 'Billed based on usage.',
 };
 
@@ -118,7 +118,7 @@ export function getAccessFacets(access, { minPlan, plans } = {}, surface) {
       return surface === 'platform' ? [] : [{ facet: 'Login required', tooltip: ACCESS_TOOLTIPS['Login required'], tooltipLink: { href: 'https://www.getdbt.com/pricing', text: 'dbt seat' } }];
     case 'usage_based':
       return [
-        ...(surface === 'platform' ? [] : [{ facet: 'Login required', tooltip: 'Sign in with a dbt account. No paid dbt seat required.', tooltipLink: { href: 'https://www.getdbt.com/pricing', text: 'dbt seat' } }]),
+        ...(surface === 'platform' ? [] : [{ facet: 'Login required', tooltip: 'Sign in with a dbt account. Supported across all dbt plans.', tooltipLink: { href: 'https://www.getdbt.com/pricing', text: 'dbt seat' } }]),
         { facet: 'Usage-based', tooltip: ACCESS_TOOLTIPS['Usage-based'], label: FIELD_LABELS.usage },
       ];
     case 'paid_plan': {
