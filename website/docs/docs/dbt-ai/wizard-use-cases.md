@@ -40,38 +40,30 @@ Once you're set up, refer to [How to use dbt Wizard in your dbt project](/best-p
 
 ## Featured scenarios
 
-Start here. Each scenario has a prompt you can copy.
+Start here and use each scenario's prompt you can copy.
 
 ### Upgrade a project to dbt v2
+_Recommended with Wizard Desktop_
 
-**Wizard Desktop only.** You have a project on an older dbt version and don't know what stands between it and an upgrade. Ask <Constant name="wizard" /> to check, then fix what's blocking it.
-
-**Example prompts**, one after the other:
-
-```text
-Is this dbt project ready to be upgraded?
-```
-
-```text
-Let's do that so we can upgrade to v2.
-```
+Let's say you have a project on an older dbt version and are curious how to upgrade it. Use <Constant name="wizard" /> Desktop to check and have it fix what's blocking it.
 
 <Lightbox src="/img/wizard/desktop/wizard-desktop-v2-upgrade.gif" title="Wizard Desktop checking whether a project is ready to upgrade, then fixing what blocks it" />
 
-**What <Constant name="wizard" /> does:**
+What <Constant name="wizard" /> does:
 1. Loads its built-in upgrade workflow and checks your project's prerequisites, adapter, and blockers
-2. Tells you whether the project is ready and what's in the way. In the demo, that's a deprecated `source-paths` config, packages that aren't installed, and a project that doesn't parse on dbt v2
+2. Tells you whether the project is ready and what's in the way. 
 3. Patches the project settings, installs the declared packages, and parses the project on dbt v2 without running any models
 4. Shows every changed file in the **Changes** pane, and leaves the warehouse checks for you to start from **Validation**
 
-**Tips:**
-- Ask whether the project is ready before you ask for the upgrade. The answer is your checklist.
+Tips:
+- Ask whether the project is ready before you ask for the upgrade. That answer is your checklist.
 - Run [Validation](/docs/dbt-ai/wizard-desktop-use#validation) before you open a pull request. Parsing and compiling don't build your models.
 - For the skills <Constant name="wizard" /> ships with, refer to [Skills](/docs/dbt-ai/wizard-skills).
 
 ### Fix a result by commenting on it
+_Wizard Desktop only_
 
-**Wizard Desktop only.** Part of <Constant name="wizard" />'s answer is wrong, and describing exactly which part takes a paragraph. Comment on it instead.
+If you're working on something and noticed part of <Constant name="wizard" />'s answer is wrong &mdash; you can comment on any line, diff, table cell, or chart and <Constant name="wizard"/> takes care of the rest. Mark up a few and send them together.
 
 **Example prompt:**
 
@@ -83,37 +75,29 @@ Show Q1 revenue and briefly explain how it's calculated.
   <source src="/img/wizard/desktop/wizard-desktop-comment-fix.mp4" type="video/mp4" />
 </video>
 
-**What you do:**
-1. Hover over the line that's wrong. In this example, it's "Cancelled orders are included."
-2. Add a comment that says what to change: `Exclude those and refresh the totals.`
-3. Send it. The comment goes to <Constant name="wizard" /> with the line attached, so it knows exactly what you mean.
+What you do:
+1. Hover over the line that's wrong and add a comment to fix it. In this example video, it says what to change: `Exclude those and refresh the totals.`
+2. Send it. The comment goes to <Constant name="wizard" /> with the line attached, so it knows exactly what you mean.
 
-**Tips:**
-- You can comment on a line, diff, table cell, or chart. Mark up a few and send them together.
+Tips:
+- You can comment on a line, diff, table cell, or chart.
 - For more on comments, refer to [Review and validate changes](/docs/dbt-ai/wizard-desktop-use#review-and-validate-changes).
 
 ### Work on several tasks at once
+_Wizard Desktop only_
 
-**Wizard Desktop only.** You want to refactor a model, chase down test gaps, and answer a data question, without the work colliding.
+Let's say you want to refactor a model, chase down test gaps, and answer a data question, without the work getting mixed together. 
 
-**Example prompts**, one per chat:
-
-```text
-Look at our test coverage and find data quality improvement opportunities. Check recent issues and pull requests for trends and areas where we could add coverage.
-```
-
-```text
-Find a model or group of models that could be refactored.
-```
+Wizard Desktop helps you work in parallel so you can run several complex tasks side by side without having to juggle terminal windows.
 
 <Lightbox src="/img/wizard/desktop/wizard-desktop-parallel-chats.gif" title="Several Wizard Desktop chats open at once, each in its own worktree and schema" />
 
-**What <Constant name="wizard" /> does:**
+What <Constant name="wizard" /> does:
 1. Creates a separate <Constant name="git" /> worktree for each chat, so edits in one chat never touch the files in another
 2. Builds each chat into its own schema: your project's schema plus a random four-character suffix
 3. Keeps each chat's context, branch, and changes separate, so you can switch between them freely
 
-**Tips:**
+Tips:
 - Select **+ New** to start each task in its own chat.
 - For more on how this works, refer to [Chats and worktrees](/docs/dbt-ai/wizard-desktop-use#chats-and-worktrees).
 
