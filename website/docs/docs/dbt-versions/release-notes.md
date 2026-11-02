@@ -22,7 +22,7 @@ For <Constant name="fusion_engine" /> updates, refer to the [v2 changelog](https
 
 ## November 2026
 
-- **New:** Admins can set up one shared [analytics credential](/docs/platform/wizard-read-only-users#set-up-analytics-credentials) on a connection, and read-only users can then query metrics through [remote MCP](/docs/dbt-ai/setup-remote-mcp#read-only-users-and-warehouse-credentials) without logging in to <Constant name="dbt_platform" /> to set up their own warehouse credentials.
+- **New**: Read-only users can query metrics through [remote MCP](/docs/dbt-ai/setup-remote-mcp#read-only-users-and-warehouse-credentials) using the shared [analytics credential](/docs/platform/wizard-read-only-users#set-up-analytics-credentials), which needs to be set up by an admin. 
 
 ## October 2026
 
