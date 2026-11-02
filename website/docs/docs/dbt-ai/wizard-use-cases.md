@@ -49,7 +49,6 @@ Let's say you have a project on an older dbt version and are curious how to upgr
 
 **Example prompts**, one after the other:
 
-
 <AgentPrompt heading="Copy this prompt" description="Is this dbt project ready to be upgraded?">
 Is this dbt project ready to be upgraded?
 </AgentPrompt>
