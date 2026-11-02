@@ -16,24 +16,110 @@ Common use cases for <Constant name="wizard" />, with example prompts and what t
 Start a new [chat or session](/best-practices/how-to-use-wizard/wizard-1-intro#use-one-chat-per-task) for each discrete task. For example, building a model and debugging an unrelated job failure should be two separate conversations.
 
 <!-- no toc -->
-- [Build a new model](#build-a-new-model)
-- [Refactor to incremental](#refactor-to-incremental)
-- [Add tests and docs](#add-tests-and-docs)
-- [Debug a job failure](#debug-a-job-failure)
-- [Assess source impact](#assess-source-impact)
-- [Rename a column project-wide](#rename-a-column-project-wide)
-- [Multi-file changes](#multi-file-changes)
-- [Validate before shipping](#validate-before-shipping)
-- [Add a semantic model](#add-a-semantic-model)
+- Featured scenarios
+    - [Migrate a script to dbt](#migrate-a-script-to-dbt)
+    - [Fix a result by commenting on it](#fix-a-result-by-commenting-on-it)
+    - [Work on several tasks at once](#work-on-several-tasks-at-once)
+- Everyday tasks
+    - [Build a new model](#build-a-new-model)
+    - [Refactor to incremental](#refactor-to-incremental)
+    - [Add tests and docs](#add-tests-and-docs)
+    - [Debug a job failure](#debug-a-job-failure)
+    - [Assess source impact](#assess-source-impact)
+    - [Rename a column project-wide](#rename-a-column-project-wide)
+    - [Multi-file changes](#multi-file-changes)
+    - [Validate before shipping](#validate-before-shipping)
+    - [Add a semantic model](#add-a-semantic-model)
 
-These prompts work the same across surfaces &mdash; the [CLI](/docs/dbt-ai/wizard-cli), the [Wizard Desktop](/docs/dbt-ai/wizard-desktop), and <Constant name="wizard" /> in [<Constant name="dbt_platform" />](/docs/platform/wizard-platform). For examples specific to the Studio IDE, refer to the [Prompt cookbook](/guides/prompt-cookbook). To use <Constant name="wizard" /> in the CLI, use the `wizard` [command reference](/docs/dbt-ai/wizard-cli-reference).
+The everyday tasks work the same across surfaces &mdash; the [CLI](/docs/dbt-ai/wizard-cli), the [Wizard Desktop](/docs/dbt-ai/wizard-desktop), and <Constant name="wizard" /> in [<Constant name="dbt_platform" />](/docs/platform/wizard-platform). Featured scenarios marked **Wizard Desktop only** use features that live in the app. For examples specific to the Studio IDE, refer to the [Prompt cookbook](/guides/prompt-cookbook). To use <Constant name="wizard" /> in the CLI, use the `wizard` [command reference](/docs/dbt-ai/wizard-cli-reference).
 
 
 :::tip Best practices for using dbt Wizard
 Once you're set up, refer to [How to use dbt Wizard in your dbt project](/best-practices/how-to-use-wizard/wizard-1-intro) for recommended workflows on real project tasks.
 :::
 
-## Build a new model
+## Featured scenarios
+
+Start here. Each scenario has a prompt you can copy.
+
+### Migrate a script to dbt
+
+You have a legacy script, like a Python or stored procedure job that nobody wants to touch. You want it rebuilt as dbt models, and you want proof the new output matches the old.
+
+**Example prompt:**
+
+```text
+Please migrate this script to dbt.
+```
+
+<!-- TODO: confirm the migrate-to-dbt skill is public, crop the clip to the app window (it shows the browser, account and project IDs), then add the video here -->
+
+Attach the script to the chat before you send the prompt.
+
+**What <Constant name="wizard" /> does:**
+1. Reads the script and breaks it into its distinct steps
+2. Checks your project for existing models and sources, and for your naming, CTE, and YAML conventions, so it doesn't duplicate logic
+3. Builds the dbt models, seeds, and YAML, and shows the changes for you to review
+4. Asks for permission before it runs dbt commands, like `dbt parse`
+5. Compares the output of the new models with the script's output, and reports any rows that differ
+
+**Tips:**
+- The migration in the demo runs on a `migrate-to-dbt` skill in the project's `.agents/skills` folder. To write your own, refer to [Skills](/docs/dbt-ai/wizard-skills).
+- Run the comparison before you merge. For the checks <Constant name="wizard" /> can run, refer to [Validate dbt changes](/best-practices/how-to-use-wizard/wizard-3-validate-changes).
+
+### Fix a result by commenting on it
+
+**Wizard Desktop only.** Part of <Constant name="wizard" />'s answer is wrong, and describing exactly which part takes a paragraph. Comment on it instead.
+
+**Example prompt:**
+
+```text
+Show Q1 revenue and briefly explain how it's calculated.
+```
+
+<video width="100%" height="100%" playsinline muted controls>
+  <source src="/img/wizard/desktop/wizard-desktop-comment-fix.mp4" type="video/mp4" />
+</video>
+
+**What you do:**
+1. Hover over the line that's wrong. In this example, it's "Cancelled orders are included."
+2. Add a comment that says what to change: `Exclude those and refresh the totals.`
+3. Send it. The comment goes to <Constant name="wizard" /> with the line attached, so it knows exactly what you mean.
+
+**Tips:**
+- You can comment on a line, diff, table cell, or chart. Mark up a few and send them together.
+- For more on comments, refer to [Review and validate changes](/docs/dbt-ai/wizard-desktop-use#review-and-validate-changes).
+
+### Work on several tasks at once
+
+**Wizard Desktop only.** You want to refactor a model, chase down test gaps, and answer a data question, without the work colliding.
+
+**Example prompts**, one per chat:
+
+```text
+Look at our test coverage and find data quality improvement opportunities. Check recent issues and pull requests for trends and areas where we could add coverage.
+```
+
+```text
+Find a model or group of models that could be refactored.
+```
+
+<!-- TODO: add the parallel chats video once the personal details are cropped out -->
+
+**What <Constant name="wizard" /> does:**
+1. Creates a separate <Constant name="git" /> worktree for each chat, so edits in one chat never touch the files in another
+2. Builds each chat into its own schema: your project's schema plus a random four-character suffix
+3. Keeps each chat's context, branch, and changes separate, so you can switch between them freely
+
+**Tips:**
+- Select **+ New** to start each task in its own chat.
+- For more on how this works, refer to [Chats and worktrees](/docs/dbt-ai/wizard-desktop-use#chats-and-worktrees).
+
+## Everyday tasks
+
+These prompts work on any surface.
+
+### Build a new model
 
 You have clean source data and want a new mart model without writing all the SQL by hand.
 
@@ -56,7 +142,7 @@ to the primary key and a unique test on the grain.
 - If your project has a team style guide in `.agents/skills/`, <Constant name="wizard" /> picks it up automatically and applies naming and materialization conventions
 
 
-## Refactor to incremental
+### Refactor to incremental
 
 A full-refresh mart is getting slow. You want to switch it to incremental without breaking existing tests.
 
@@ -78,7 +164,7 @@ and an updated_at filter. Keep all existing tests and don't change the output sc
 - Ask it to add a `full_refresh` note to the model description so future maintainers understand the intent
 
 
-## Add tests and docs
+### Add tests and docs
 
 You've inherited a model with no tests or YAML. You want coverage without writing boilerplate.
 
@@ -102,7 +188,7 @@ active, churned, and prospect. Write a column description for each.
 For a workflow that finds coverage gaps and checks candidate assertions against warehouse data, refer to [Add data-informed tests with <Constant name="wizard" />](/best-practices/how-to-use-wizard/wizard-4-data-informed-tests).
 
 
-## Debug a job failure
+### Debug a job failure
 
 A <Constant name="dbt_platform" /> job failed overnight. You want to understand why without digging through logs manually.
 
@@ -125,7 +211,7 @@ The nightly job failed. What's the root cause and how do I fix it?
 For the evidence-gathering, diagnosis, and validation procedure, refer to [Debug a failed dbt job with <Constant name="wizard" />](/best-practices/how-to-use-wizard/wizard-5-debug-failed-job).
 
 
-## Assess source impact
+### Assess source impact
 
 Before modifying a stg model, you want to know what other downstream models might be affected.
 
@@ -146,7 +232,7 @@ payment attempt, which downstream models break?
 - You don't need to be precise about the change: even a "what depends on stg_payments?" gives you the blast radius
 - Follow up with: "Write a migration plan for making this change safely"
 
-## Rename a column project-wide
+### Rename a column project-wide
 
 A source column has been renamed. You need to update all references without missing anything.
 
@@ -167,7 +253,7 @@ Update stg_customers and find any downstream models that reference user_id direc
 - Always run `dbt compile` after <Constant name="wizard" />'s changes to catch any references it might have missed
 - Ask Wizard to "check for user_id in any raw SQL strings or Jinja macros too" for thorough coverage
 
-## Multi-file changes
+### Multi-file changes
 
 You need to make a change that touches multiple files at once — a model rename, a contract update, or a schema change — and have all the related files stay in sync.
 
@@ -191,7 +277,7 @@ downstream ref(), the tests, the documentation, and any exposures that point to 
 - For column type or schema changes, name the new type explicitly: "Change `order_amount` in `fct_orders` from `numeric` to `decimal(18,2)` and update downstream models and tests"
 
 
-## Validate before shipping
+### Validate before shipping
 
 For changes where correctness matters more than speed, ask <Constant name="wizard" /> to assess impact and validate the result against your project.
 
@@ -214,7 +300,7 @@ In <Constant name="wizard" /> CLI, choose light, medium, heavy, or skipped valid
 **Tips:**
 - State the business behavior that must remain true, not only the commands to run
 
-## Add a semantic model
+### Add a semantic model
 
 You have a mart model and want to expose it via the dbt Semantic Layer.
 
@@ -241,6 +327,7 @@ For version-specific examples and validation steps, refer to [Build Semantic Lay
 ## Related docs
 
 - [Get started with dbt Wizard](/docs/platform/wizard-overview#get-started)
+- [Use Wizard Desktop](/docs/dbt-ai/wizard-desktop-use)
 - [Understand a dbt project](/best-practices/how-to-use-wizard/wizard-2-understand-project)
 - [Validate dbt changes](/best-practices/how-to-use-wizard/wizard-3-validate-changes)
 - [Add data-informed tests](/best-practices/how-to-use-wizard/wizard-4-data-informed-tests)
