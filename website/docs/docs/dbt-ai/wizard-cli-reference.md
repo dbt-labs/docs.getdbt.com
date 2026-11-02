@@ -42,7 +42,7 @@ Most people use a handful of commands to get started. View the following table a
 | Update to the latest version | `wizard update` | Updates Wizard to the newest release. |
 | Apply the latest Wizard diff | `wizard apply TASK_ID` | Applies the latest Wizard diff to your working directory. |
 | Sign in or out | `wizard login` / `wizard logout` | Authenticates into or signs out of your dbt account. |
-| Manage MCP servers | `wizard mcp add dbt` | Manages MCP server connections. |
+| Connect to MCP servers | `wizard mcp add dbt` | Connects to MCP server connections. |
 </SimpleTable>
 
 <CliGenerated />

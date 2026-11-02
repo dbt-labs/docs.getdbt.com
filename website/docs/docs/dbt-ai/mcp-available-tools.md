@@ -41,7 +41,20 @@ The following tool list is available for your MCP server and is auto-fetched fro
 
 ### Find jobs across project environments
 
-Use the `list_jobs` [tool](#admin-api) with a `project_id` to list jobs across every environment in a dbt project. This is useful when you need to inspect jobs outside the configured production environment. Without `project_id`, `list_jobs` continues to use the configured production environment, or lists jobs across the account when no production environment is configured.
+You can find jobs outside production, including staging, CI, or UAT (user acceptance testing), without changing your MCP config. Use the `list_jobs` tool to list jobs. Use `trigger_job_run` to start a run.
+
+By default, if your MCP config includes a production environment, `list_jobs` only returns jobs from that environment: `x-dbt-prod-environment-id` for token-based [remote MCP](/docs/dbt-ai/setup-remote-mcp), or `DBT_PROD_ENV_ID` for [self-hosted MCP](/docs/dbt-ai/setup-local-mcp). Refer to [How to find your dbt MCP IDs](/docs/dbt-ai/mcp-find-ids#dbt-prod-env-id) for details. If no production environment is configured, `list_jobs` can return jobs across the account. Staging, CI, or UAT jobs often don't appear when a production environment is set.
+
+You can pass a `project_id` (from `list_projects`) to return jobs from every environment in that project.
+
+Once you query your assistant, it will typically:
+
+1. Look up your project ID with `list_projects` (if you don't already have it)
+2. List the jobs with that `project_id`
+3. Pick the UAT, staging, or CI job you requested
+4. Start it with `trigger_job_run` and the job's ID
+
+You don't have to call the tools yourself. Try a prompt like: "List jobs in this project, find the UAT, staging, or CI job, and trigger it."
 
 ## FAQs
 

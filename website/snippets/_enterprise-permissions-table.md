@@ -120,7 +120,7 @@ Key:
 | Semantic Layer config    |   W   |    R    |      R       |         -           |          -           |       W        |     R     |      -       |     R     |     R     |      R      |      -      |      -      |                  -                      |        W       |     R       |     R      |
 
 
-<sup>*</sup>These permissions are `R`ead-only by default, but may be changed to `W`rite with [environment permissions](/docs/platform/manage-access/environment-permissions#environments-and-roles).
+<sup>*</sup>These permissions are `R`ead-only by default, but may be changed to `W`rite with [environment permissions](/docs/platform/manage-access/environment-permissions#environment-write-permissions). That setting lets those sets create, edit, and delete jobs and runs. It does not let them create or delete the environment. Write (`W`) on Environments is a different right. Admin and Job admin have it, and it includes creating and deleting environments.
 
 <sup>**</sup>Custom env. variables for the `Developer` and `Analyst` roles are set in the **Credentials** section of **Account settings**.
 
