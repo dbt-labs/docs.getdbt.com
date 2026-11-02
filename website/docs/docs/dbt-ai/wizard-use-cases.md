@@ -56,7 +56,7 @@ Is this dbt project ready to be upgraded?
 Let's do that so we can upgrade to v2.
 ```
 
-<!-- TODO: add the v2 upgrade video once the personal details (username and local paths) are redacted -->
+<Lightbox src="/img/wizard/desktop/wizard-desktop-v2-upgrade.gif" title="Wizard Desktop checking whether a project is ready to upgrade, then fixing what blocks it" />
 
 **What <Constant name="wizard" /> does:**
 1. Loads its built-in upgrade workflow and checks your project's prerequisites, adapter, and blockers
@@ -106,7 +106,7 @@ Look at our test coverage and find data quality improvement opportunities. Check
 Find a model or group of models that could be refactored.
 ```
 
-<!-- TODO: add the parallel chats video once the personal details (username and local paths) are redacted -->
+<Lightbox src="/img/wizard/desktop/wizard-desktop-parallel-chats.gif" title="Several Wizard Desktop chats open at once, each in its own worktree and schema" />
 
 **What <Constant name="wizard" /> does:**
 1. Creates a separate <Constant name="git" /> worktree for each chat, so edits in one chat never touch the files in another
