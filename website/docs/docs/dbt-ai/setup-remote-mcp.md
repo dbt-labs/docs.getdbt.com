@@ -84,7 +84,7 @@ For the full list of scopes and what each one allows, refer to [Scopes and conse
 
 Read-only users need warehouse credentials to run queries, such as `query_metrics`, through remote MCP. They have two options:
 
-- **Analytics credential (recommended):** An admin sets up one shared [analytics credential](/docs/platform/wizard-read-only-users#set-up-analytics-credentials) on the connection. Read-only users who haven't set up personal credentials use it automatically, so they never need to log in to <Constant name="dbt_platform" />.
+- **Analytics credential (recommended):** An admin sets up one shared [analytics credential](/docs/platform/connect-data-platform/analytics-credentials) on the connection. Read-only users who haven't set up personal credentials use it automatically, so they never need to log in to <Constant name="dbt_platform" />.
 - **Personal credentials:** Users with the [Analyst read](/docs/platform/manage-access/enterprise-permissions#analyst-read) permission set can add their own on **Your profile** &rarr; **Credentials**. If they have personal credentials, those take priority.
 
 If a user has neither, the query fails and asks them to set up credentials or contact an admin.

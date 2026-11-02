@@ -67,7 +67,7 @@ Refer to [How to use dbt Wizard in your dbt project](/best-practices/how-to-use-
 
 Explore mode in the <Constant name="wizard"/> home tab lets you ask questions of your production data in plain language. <Constant name="wizard" /> in Explore mode answers and explains but never changes your project. This option is great for exploratory data analysis and getting a quick understanding of your data.
 
-Explore mode queries with your personal warehouse credentials. If you don't have any, it falls back to the project's [analytics credential](/docs/platform/wizard-read-only-users#set-up-analytics-credentials), a shared credential an admin sets up on Snowflake, BigQuery, Redshift, or Databricks connections. This is how [read-only users](/docs/platform/wizard-read-only-users) query without their own credentials. If neither exists, <Constant name="wizard" /> asks you to set up credentials or contact an admin.
+Explore mode queries with your personal warehouse credentials. If you don't have any, it falls back to the project's [analytics credential](/docs/platform/connect-data-platform/analytics-credentials), a shared credential an admin sets up on Snowflake, BigQuery, Redshift, or Databricks connections. This is how [read-only users](/docs/platform/wizard-read-only-users) query without their own credentials. If neither exists, <Constant name="wizard" /> asks you to set up credentials or contact an admin.
 
 Explore mode answers are grounded in what your project defines, so it needs metadata or <Constant name="semantic_layer" /> definitions to answer against. For what makes answers better, refer to [Set your team up for good answers](/docs/platform/wizard-read-only-users#set-your-team-up-for-good-answers).
 
