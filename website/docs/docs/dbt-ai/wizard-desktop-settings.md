@@ -42,7 +42,7 @@ Shows the dbt accounts <Constant name="wizard" /> uses for hosted models and pla
     1. Go to **Settings** --> **Account**, and then click **Sign-in options**.
     2. Enter your account's [Access URL](/docs/platform/about-platform/access-regions-ip-addresses) in **dbt account host**, such as `ab123.us1.dbt.com`. You can find it in your <Constant name="dbt_platform" /> account settings.
     3. (Optional) Enter your **dbt account ID**. To find it, go to **Account settings** &rarr; **Account** in <Constant name="dbt_platform" />.
-    4. Click **Save**. <Constant name="wizard" /> signs in there directly.
+    4. Click **Save**.
 
     <Lightbox src="/img/wizard/desktop/wizard-desktop-sign-in-options.png" width="90%" title="Sign-in options in Wizard Desktop" />
 
