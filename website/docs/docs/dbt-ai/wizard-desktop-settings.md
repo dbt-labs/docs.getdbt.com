@@ -37,10 +37,8 @@ Controls what appears alongside a chat while you work.
 Shows the dbt accounts <Constant name="wizard" /> uses for hosted models and platform access, and gives you the tools to clean up what the app has written to disk. 
 
 - **Connected dbt accounts** lists each <Constant name="dbt_platform" /> account you've connected, with the platform account hostname, such as `abc123.us1.dbt.com`. Connect more than one account by clicking on **+Add account** and switch between them without signing in again. Each account has its own **Sign out**. To pick which account powers AI models, go to [AI providers](#ai-providers).
-- **Sign-in options** lets you choose where <Constant name="wizard" /> signs in to <Constant name="dbt_platform" />. Most people don't need this. Use it if sign-in sends you to a registration page, or says your user already exists, when you try to sign in. This usually happens if:
+- **Sign-in options** lets you choose where <Constant name="wizard" /> signs in to <Constant name="dbt_platform" />. Most people don't need this. Use it if sign-in sends you to a registration page, or says your user already exists, when you try to sign in.
 
-    - You're on a single-tenant account that hasn't moved to a unique account URL yet.
-    - Your account opted out of account discovery.
 
     To set it up:
 
