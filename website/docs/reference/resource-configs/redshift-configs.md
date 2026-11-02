@@ -118,7 +118,7 @@ The Redshift adapter supports the `query_group` session parameter, enabling dbt 
 
 </VersionBlock>
 
-## Datasharing <Lifecycle status="beta" />
+## Datasharing
 
 <RedshiftDatasharing />
 
