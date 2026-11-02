@@ -45,7 +45,7 @@ Start here and use each scenario's prompt you can copy.
 ### Upgrade a project to dbt v2
 _Recommended with Wizard Desktop_
 
-Let's say you have a project on an older dbt version and are curious how to upgrade it. Use <Constant name="wizard" /> Desktop to check and have it fix what's blocking it.
+Let's say you have a project on an older dbt version and are curious how to upgrade it. Use <Constant name="wizard" /> Desktop to review what needs to change for the upgrade and help fix any issues blocking it.
 
 <Lightbox src="/img/wizard/desktop/wizard-desktop-v2-upgrade.gif" title="Wizard Desktop checking whether a project is ready to upgrade, then fixing what blocks it" />
 
