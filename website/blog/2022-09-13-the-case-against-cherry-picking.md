@@ -23,7 +23,7 @@ The simplest branching strategy for making code changes to your dbt project repo
 1. Test locally
 1. When ready, open a pull request to merge their changes back into the `main` branch
 
-![Basic git workflow](/img/blog/2022-09-13-the-case-against-cherry-picking/1_basic_git_workflow.png)
+<Lightbox src="/img/blog/2022-09-13-the-case-against-cherry-picking/1_basic_git_workflow.png" title="Basic git workflow" />
 
 If you are just getting started in dbt and deciding which branching strategy to use, this approach–often referred to as “continuous deployment” or “direct promotion”–is the way to go. It provides many benefits including:
 
@@ -53,7 +53,7 @@ After a final review of the `staging` branch:
 
 6. The entire `staging` branch is merged into the `prod` branch
 
-![Multi-environment workflow](/img/blog/2022-09-13-the-case-against-cherry-picking/2_multienvironment.png)
+<Lightbox src="/img/blog/2022-09-13-the-case-against-cherry-picking/2_multienvironment.png" title="Multi-environment workflow" />
 
 While this approach—often referred to as “continuous delivery” or “indirect promotion”—is more complex, it allows for a higher level of protection for your production code. You can think of these additional branches as layers of protective armor. The more layers you have, the harder it will be to move quickly and nimbly on the battlefield, but you’ll also be less likely to sustain injuries. If you’ve ever played D&D, you’ll understand this tradeoff.
 
@@ -73,13 +73,13 @@ In practice, however, when cherry picking is used this way, it introduces more r
 - Flawed testing practices that don’t account for dependent code changes
 - Increase chance of merge conflicts, draining developer time and prone to human error
 
-![Gru meets cherry picking](/img/blog/2022-09-13-the-case-against-cherry-picking/3_gru.jpg)
+<Lightbox src="/img/blog/2022-09-13-the-case-against-cherry-picking/3_gru.jpg" title="Gru meets cherry picking" />
 
 ## If you’re not testing changes independently, you shouldn’t promote them independently
 
 If you’ve attempted a branching strategy that involves cherry picking into upper environments, you’ve probably encountered a scenario like this, where feature branches are only tested in combination with others:
 
-![Feature branches tested in combination with others](/img/blog/2022-09-13-the-case-against-cherry-picking/4_scenario_1.png)
+<Lightbox src="/img/blog/2022-09-13-the-case-against-cherry-picking/4_scenario_1.png" title="Feature branches tested in combination with others" />
 
 1. Alex wants to make a code change, so they create a new branch from `dev` called `feature_alex`
 1. Becca has a different code change she’s working on, so she creates a new branch from dev called `feature_becca`
@@ -100,7 +100,7 @@ In the example above, the team has only ever tested `feature_becca` *in combinat
 
 Let’s imagine another version of the story, where Carol’s changes are the only ones that are ultimately merged into `prod`:
 
-![Feature branches contain more than meets the eye...](/img/blog/2022-09-13-the-case-against-cherry-picking/5_scenario_2.png)
+<Lightbox src="/img/blog/2022-09-13-the-case-against-cherry-picking/5_scenario_2.png" title="Feature branches contain more than meets the eye..." />
 
 1. Alex wants to make a code change, so they create a new branch from `dev` called `feature_alex`.
 1. Becca has a different code change she’s working on, so she creates a new branch from `dev` called `feature_becca`.
@@ -121,7 +121,7 @@ Because `feature_carol` was created *after* `feature_alex` and `feature_becca` w
 
 In order to avoid this dependency issue, your team might have the idea to create feature branches directly from `prod` (instead of `dev`). If we imagine the previous scenario with this alteration, however, we can easily see why this doesn’t work either:
 
-![Development branches made from prod](/img/blog/2022-09-13-the-case-against-cherry-picking/6_scenario_3.png)
+<Lightbox src="/img/blog/2022-09-13-the-case-against-cherry-picking/6_scenario_3.png" title="Development branches made from prod" />
 
 1. Alex wants to make a code change, so they create a new branch from `prod` called `feature_alex`.
 1. Becca has a different code change she’s working on, so she creates a new branch from `prod` called `feature_becca`.
@@ -142,7 +142,7 @@ A new issue emerges, however, if `feature_alex` or `feature_becca` alter the *sa
 
 ## What to do instead: The recommended branching strategy for multi-environment dbt projects
 
-![Bernie is begging you to stop cherry picking](/img/blog/2022-09-13-the-case-against-cherry-picking/7_bernie.jpg)
+<Lightbox src="/img/blog/2022-09-13-the-case-against-cherry-picking/7_bernie.jpg" title="Bernie is begging you to stop cherry picking" />
 
 In the end, **cherry picking into upper branches** is a branching strategy that causes more trouble than it’s worth.
 
@@ -152,7 +152,7 @@ Instead, if you decide to use a branching strategy that involves multiple primar
 - Ensure thorough code reviews (check out our recommended [PR template](https://docs.getdbt.com/blog/analytics-pull-request-template))
 - Only promote each primary branch hierarchically into each other
 
-![Hierarchical branching strategy](/img/blog/2022-09-13-the-case-against-cherry-picking/2_multienvironment.png)
+<Lightbox src="/img/blog/2022-09-13-the-case-against-cherry-picking/2_multienvironment.png" title="Hierarchical branching strategy" />
 
 If issues arise during testing on the `dev` or `staging` branch, the developers should create additional branches as necessary to fix the bugs until the *entire* branch is ready to be promoted.
 

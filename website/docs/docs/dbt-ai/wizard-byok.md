@@ -52,7 +52,7 @@ Replace `PROVIDER_NAME` with the name of a supported provider, such as `openai`,
 The `wizard providers list` command shows you the currently configured providers and their status:
 
 ```bash
-➜  jaffle-shop git:(mwong-fusion) wizard providers list
+➜  jaffle-shop git:(mwong-v2) wizard providers list
 provider              enabled  route      auth         models
 dbt                   true     remote     dbt          3
 openai                false    local      missing      3

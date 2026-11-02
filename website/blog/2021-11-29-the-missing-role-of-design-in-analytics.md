@@ -136,11 +136,11 @@ Let’s take a look at one of the OG analytical applications: the weather foreca
 
 Like most people, I rely on weather apps to make all sorts of decisions throughout the day. We are fortunate  to have very smart and talented user experience designers working on these apps.
 
-[![twitter screenshot](/img/blog/analyst-ux-twitter.png)](https://twitter.com/sethrosen/status/1455176609288396807)
+<Lightbox src="/img/blog/analyst-ux-twitter.png" title="Twitter screenshot" />
 
 Here are a few examples from AccuWeather and the decisions it enables me to make:
 
-![weather app screenshots](/img/blog/analyst-ux-weather.png)
+<Lightbox src="/img/blog/analyst-ux-weather.png" title="Weather app screenshots" />
 
 While the data being presented in the weather app could technically be presented in any dashboarding tool, the designers of this app agonized about every screen, interaction, and component to build a bespoke experience.  
 

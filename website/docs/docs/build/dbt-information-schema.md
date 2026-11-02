@@ -18,7 +18,7 @@ The Information Schema doesn't use warehouse compute to build or to query it. db
 When you use the [`--generate-info-schema`](#generating-the-information-schema) flag, dbt writes these files to a versioned directory, such as `target/info_schema/v1/`. The available metadata grows as dbt processes your project:
 
 - Parsing provides basic project metadata
-- Compiling adds column types and column-level lineage (with `--static-analysis strict`)
+- Compiling adds model column types and column-level lineage (with `--static-analysis strict`)
 - Running or building adds runtime results
 
 Use `dbt show --inline` to run SQL queries or `dbt show --info` to query a view by name. You can also read the files with Parquet-compatible tools such as Pandas or Polars.
@@ -29,14 +29,22 @@ For available tables and their descriptions, see [Information Schema tables](/re
 
 ## Generating the Information Schema
 
-Use `--generate-info-schema` flag with `dbt build`, `dbt run`, `dbt compile`, or `dbt parse`.
+Use `--generate-info-schema` or `DBT_ENGINE_GENERATE_INFO_SCHEMA=true` with `dbt build`, `dbt run`, `dbt compile`, or `dbt parse`. By default, the `dbt.node_columns` table contains only YAML-declared columns for both models and sources.
 
-- With `dbt build`, `dbt run`, or `dbt compile`, add `--static-analysis strict` to include column types in `dbt.node_columns` and column-level lineage in `dbt.column_lineage`:
+- To include inferred model column types and column-level lineage, add `--static-analysis strict`:
 
   ```shell
   dbt build --generate-info-schema --static-analysis strict
   ```
-  Without this flag, `dbt.node_columns` and `dbt.column_lineage` contain no column types and no lineage.
+
+  With this flag, dbt infers column types from your model SQL. Source columns are still limited to what's declared in YAML.
+
+- To include warehouse column types and all columns from sources used by the selected nodes, add [`--write-catalog`](/reference/commands/cmd-docs#--write-catalog-flag) on `dbt build` or `dbt run`:
+
+  ```shell
+  dbt build --generate-info-schema --write-catalog
+  dbt build --generate-info-schema --static-analysis strict --write-catalog # to get inferred model column types and column-level lineage
+  ```
 
 - For [`dbt parse`](/reference/commands/parse), the Information Schema contains no column types, no lineage, and no runtime results, because `dbt parse` doesn't connect to your warehouse.
 
@@ -48,7 +56,7 @@ The Information Schema Parquet files live in a versioned subdirectory under your
 
 #### Overriding the output directory
 
-Use `--info-schema-dir` to write the Information Schema to a custom directory. The versioned subdirectory (`v1/`) is still appended under whatever directory you set.
+Use `--info-schema-dir` or `DBT_ENGINE_INFO_SCHEMA_DIR` to write the Information Schema to a custom directory. The versioned subdirectory (`v1/`) is still appended under whatever directory you set.
 
 ```shell
 dbt build --generate-info-schema --info-schema-dir /tmp/my_schema
@@ -98,6 +106,7 @@ You can find the schema version in the versioned subdirectory name (for example,
 
 ## Related docs
 - [Information Schema tables](/reference/info-schema)
+- [Commands for generating metadata](/reference/commands/cmd-docs#commands-for-generating-metadata)
 - [`dbt build`](/reference/commands/build)
 - [`dbt run`](/reference/commands/run)
 - [`dbt compile`](/reference/commands/compile)

@@ -6,7 +6,7 @@ icon: 'starburst'
 hide_table_of_contents: true
 tags: ['dbt platform','Quickstart']
 agent_guidance:
-  pacing: In the first reply, confirm the reader’s prerequisites and connection path before listing steps. Then give one step per reply and confirm its success check before continuing.
+  pacing: In the first reply, confirm the reader’s prerequisites and connection path before listing steps. Then default to one guide section per reply (combine two or three short sections), with all its steps, labeled Step 1, Step 2, and so on, and confirm the success check before continuing. If the reader asks for a different pace, follow it.
   stay_on_path: This guide uses dbt platform. Don’t switch the reader to a local setup. If the reader wants to set up dbt locally, use the https://docs.getdbt.com/guides/dbt guide instead
   safety: Never ask for passwords or keys in chat.
   signup_link: When the reader needs a dbt account, share https://www.getdbt.com/signup?utm_source=ai_assistant&utm_medium=docs_md&utm_campaign=starburst-galaxy-qs
@@ -28,11 +28,7 @@ In this quickstart guide, you'll learn how to use <Constant name="dbt" /> with [
 - Schedule a job to run.
 - Connect to multiple data sources in addition to your S3 bucket. 
 
-:::tip Videos for you
-You can check out [dbt Fundamentals](https://learn.getdbt.com/courses/dbt-fundamentals) for free if you're interested in course learning with videos.
-
-You can also watch the [Build Better Data Pipelines with dbt and Starburst](https://www.youtube.com/watch?v=tfWm4dWgwRg) YouTube video produced by Starburst Data, Inc.
-:::
+<AgentPrompt />
 
 ### Prerequisites 
 
@@ -51,6 +47,12 @@ You can also watch the [Build Better Data Pipelines with dbt and Starburst](http
 - [Job notifications](/docs/deploy/job-notifications)
 - [Source freshness](/docs/deploy/source-freshness)
 - [SQL overview for Starburst Galaxy](https://docs.starburst.io/starburst-galaxy/sql/index.html)    
+
+:::tip Videos for you
+You can check out [dbt Fundamentals](https://learn.getdbt.com/courses/dbt-fundamentals) for free if you're interested in course learning with videos.
+
+You can also watch the [Build Better Data Pipelines with dbt and Starburst](https://www.youtube.com/watch?v=tfWm4dWgwRg) YouTube video produced by Starburst Data, Inc.
+:::
 
 ## Load data to an Amazon S3 bucket {#load-data-to-s3}
 

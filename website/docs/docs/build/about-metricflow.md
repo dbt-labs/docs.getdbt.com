@@ -122,8 +122,6 @@ The following example data is based on the Jaffle Shop repo. You can view the co
 - `orders` is a production data platform export that has been cleaned up and organized for analytical consumption
 - `customers` is a partially denormalized table in this case with a column derived from the orders table through some upstream process
 
-<!-- ![MetricFlow-SchemaExample](/img/docs/building-a-dbt-project/MetricFlow-SchemaExample.jpeg) -->
-
 To make this more concrete, consider the metric `order_total`, which is defined using the SQL expression:
 
 `select sum(order_total) as order_total from orders` 

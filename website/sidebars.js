@@ -21,6 +21,7 @@ const sidebarSettings = {
         "docs/platform/about-platform/change-your-dbt-theme",
         "docs/platform/about-platform/dbt-platform-features",
         "docs/platform/about-platform/access-regions-ip-addresses",
+        "docs/platform/about-platform/account-url-migration",
         "docs/platform/about-platform/tenancy",
       ],
     }, // About dbt platform directory
@@ -336,6 +337,7 @@ const sidebarSettings = {
                 "docs/local/connect-data-platform/duckdb-setup",
                 "docs/local/connect-data-platform/exasol-setup",
                 "docs/local/connect-data-platform/extrica-setup",
+                "docs/local/connect-data-platform/firebird-setup",
                 "docs/local/connect-data-platform/firebolt-setup",
                 "docs/local/connect-data-platform/greenplum-setup",
                 "docs/local/connect-data-platform/ibm-db2-setup",
@@ -386,7 +388,6 @@ const sidebarSettings = {
           link: { type: "doc", id: "docs/platform/wizard-overview" },
           items: [
             "docs/platform/wizard-overview",
-            "docs/dbt-ai/wizard-quickstart",
             "docs/platform/manage-dbt-ai",
             "docs/dbt-ai/wizard-use-cases",
             "docs/dbt-ai/wizard-how-it-works",
@@ -1813,6 +1814,7 @@ const sidebarSettings = {
         description: "The list of Jinja functions and context variables available in dbt.",
       },
       items: [
+        "reference/jinja-file-support",
         {
           type: "category",
           label: "dbt Jinja context functions",
@@ -1820,7 +1822,7 @@ const sidebarSettings = {
             type: "generated-index",
             title: "dbt Jinja functions and context variables",
             description:
-              "In addition to the standard Jinja library, we've added additional functions and variables to the Jinja context that are useful when working with a dbt project. Note that dependencies.yml is not Jinja rendered and therefore does not support Jinja.",
+              "In addition to the standard Jinja library, we've added additional functions and variables to the Jinja context that are useful when working with a dbt project. For a file-by-file overview, refer to Jinja support by file type. Note that dependencies.yml is not Jinja rendered in dbt v1 and therefore, does not support Jinja.",
             slug: "/reference/dbt-jinja-functions-context-variables",
           },
           items: [
@@ -1888,6 +1890,7 @@ const sidebarSettings = {
             "best-practices/how-we-structure/3-intermediate",
             "best-practices/how-we-structure/4-marts",
             "best-practices/how-we-structure/5-the-rest-of-the-project",
+            "best-practices/how-we-structure/6-mapping-folders-to-warehouse",
           ],
         },
         {

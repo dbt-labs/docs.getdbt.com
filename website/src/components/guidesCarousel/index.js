@@ -2,7 +2,7 @@ import React from 'react';
 import QuickstartGuideCard from '@site/src/components/quickstartGuideCard';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
-import { Navigation, Pagination } from 'swiper';
+import { Navigation, Pagination } from 'swiper/modules';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import styles from './styles.module.css';

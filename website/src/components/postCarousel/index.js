@@ -2,7 +2,7 @@ import React from 'react';
 import BlogPostCard from '@site/src/components/blogPostCard';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
-import { Navigation } from 'swiper';
+import { Navigation } from 'swiper/modules';
 import 'swiper/css/navigation';
 
 
