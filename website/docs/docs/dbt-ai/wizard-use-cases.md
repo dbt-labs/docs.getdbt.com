@@ -119,7 +119,7 @@ Let's say your transformation logic lives in a script or stored procedure outsid
 Migrate [path to your script or stored procedure] to dbt. Split the logic into staging models and a mart that follow this project's naming and YAML conventions, load any static inputs as seeds, add tests, and run dbt build on the new models. Reuse existing models and sources where they already cover the logic, and summarize what you created.
 </AgentPrompt>
 
-<!-- TODO: add trimmed migration clip (source is ~11 MB, 2 min) -->
+<!--need to add the video but have to trim it since its big -->
 
 What <Constant name="wizard" /> does:
 1. Reads the script and checks your project for existing models and sources, so it doesn't duplicate logic
