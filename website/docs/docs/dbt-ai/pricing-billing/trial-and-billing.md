@@ -58,7 +58,7 @@ No credit card is required. Your 30-day trial with $100 in usage credits starts 
 
 There's no **Start trial** button in the CLI. Logging in is what starts your trial &mdash; one command creates your free <Constant name="dbt" /> account, if you don't have one, and provisions the 30-day trial with $100 in usage credits for your account at the same time. The $100 is per account, not per user, so it's shared with anyone else on your account.
 
-1. [Install <Constant name="wizard" />](/docs/dbt-ai/wizard-quickstart).
+1. [Install <Constant name="wizard" />](/docs/dbt-ai/wizard-cli).
 2. Run `dbt login` and complete the browser sign-in, or create a new account to manage your <Constant name="wizard" /> spend limits:
 
    ```shell
@@ -67,7 +67,7 @@ There's no **Start trial** button in the CLI. Logging in is what starts your tri
 
 3. Run `wizard` in your project and choose **dbt-managed** when onboarding asks how AI usage is billed. You don't need an AI provider key.
 
-You don't need a paid <Constant name="dbt_platform" /> plan, so this path is the same whether you're on a <Constant name="dbt_platform" /> plan or running against a self-hosted <Constant name="dbt" /> project. Refer to [Use <Constant name="wizard" /> locally](/docs/dbt-ai/wizard-quickstart) for the full onboarding walkthrough.
+You don't need a paid <Constant name="dbt_platform" /> plan, so this path is the same whether you're on a <Constant name="dbt_platform" /> plan or running against a self-hosted <Constant name="dbt" /> project. Refer to [Use <Constant name="wizard" /> locally](/docs/dbt-ai/wizard-cli) for the full onboarding walkthrough.
 
 </TabItem>
 

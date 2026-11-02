@@ -77,7 +77,7 @@ Now, this will return all fields from `table_a` with the `my_new_alias.field_nam
 
 It’s no hidden fact: the Data Team at dbt Labs loves to use dbt util’s macros and tests when appropriate. We like dbt utils so much we created a March Madness Utils Bracket for them (not taking questions at this time) and we used the `star` macro alone over 30 times in our internal dbt repository.
 
-![](/img/blog/2022-07-13-star-sql-love-letter/utils-madness-1.png)
+<Lightbox src="/img/blog/2022-07-13-star-sql-love-letter/utils-madness-1.png" />
 
 
 Overall, the `star` macro is a great way to dip your toes into the dbt utils package, write DRY code, and reduce your carpal tunnel.

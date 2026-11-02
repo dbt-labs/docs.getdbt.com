@@ -8,17 +8,14 @@ availability: local_all
 ---
 
 import WizardFeedbackCallout from '/snippets/_wizard-feedback-callout.md';
-import WizardDesktopPrivatePreview from '/snippets/_wizard-desktop-private-preview.md';
 
-# Wizard Desktop settings <Lifecycle status="private_beta"/>
+# Wizard Desktop settings <Lifecycle status="beta"/>
 
 <IntroText>
 Open **Settings** from the bottom left of the app to change how <Constant name="wizard" /> behaves. Settings are grouped into General, Account, AI providers, Connectors, Appearance, Shortcuts, and version control.
 </IntroText>
 
 Settings that also exist in the Wizard CLI are shared. Changing them here changes them for `wizard` in your terminal too. Refer to [the config reference](/docs/dbt-ai/wizard-config) for the underlying files.
-
-<WizardDesktopPrivatePreview />
 
 ## General
 

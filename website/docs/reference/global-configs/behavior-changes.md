@@ -44,7 +44,7 @@ This table outlines which month of the **v1 Latest** release track in <Constant 
 | [state_modified_compare_more_unrendered_values](/reference/global-configs/behavior-flags/state_modified_compare_more_unrendered_values) | 2024.10 | 2026.09 | 1.9.0 | 1.12.0 | 2.0 |
 | [require_yaml_configuration_for_mf_time_spines](/reference/global-configs/behavior-flags/require_yaml_configuration_for_mf_time_spines) | 2024.10 | 2026.09 | 1.9.0 | 1.12.0 | 2.0 |
 | [require_batched_execution_for_custom_microbatch_strategy](/reference/global-configs/behavior-flags/require_batched_execution_for_custom_microbatch_strategy) | 2024.11 | 2026.09 | 1.9.0 | 1.12.0 | 2.0 |
-| [require_nested_cumulative_type_params](/reference/global-configs/behavior-flags/require_nested_cumulative_type_params) | 2024.11 | 2026.09 | 1.9.0 | 1.12.0 | - |
+| [require_nested_cumulative_type_params](/reference/global-configs/behavior-flags/require_nested_cumulative_type_params) | 2024.11 | 2026.09 | 1.9.0 | 1.12.0 | 2.0 |
 | [enable_truthy_nulls_equals_macro](/reference/global-configs/behavior-flags/enable_truthy_nulls_equals_macro) | 2025.02 | - | 1.9.0 | - | - |
 | [validate_macro_args](/reference/global-configs/behavior-flags/validate_macro_args) | 2025.03 | 2026.09 | 1.10.0 | 1.12.0 | - |
 | [require_all_warnings_handled_by_warn_error](/reference/global-configs/behavior-flags/require_all_warnings_handled_by_warn_error) | 2025.06 | 2026.09 | 1.10.0 | 1.12.0 | - |
@@ -57,20 +57,6 @@ This table outlines which month of the **v1 Latest** release track in <Constant 
 | [require_source_and_semantic_model_names_without_spaces](/reference/global-configs/behavior-flags/require_source_and_semantic_model_names_without_spaces) | 2026.4 | - | 1.12.0 | - | - |
 | [allow_jinja_file_extensions](/reference/global-configs/behavior-flags/allow_jinja_file_extensions) | 2026.5 | - | 1.12.0 | - | - |
 | [latest_version_pointer_enabled_by_default](/reference/global-configs/behavior-flags/latest_version_pointer_enabled_by_default) | 2026.5 | - | 1.12.0 | - | - |
-
-### Flags reaching maturity
-
-Several behavior change flags on the <Constant name="dbt_platform" /> `v1 Latest` release track are planned to reach maturity on September 1, 2026, switching their default values from `false` to `true`. The September 1 date applies only to the <Constant name="dbt_platform" /> release tracks. The flags have reached maturity in <Constant name="dbt" /> v1.12. For intro dates, refer to the <Constant name="core" /> behavior changes table.
-
-| Flag | Impact |
-|---|---|
-| [skip_nodes_if_on_run_start_fails](/reference/global-configs/behavior-flags/skip_nodes_if_on_run_start_fails) | Can stop build |
-| [require_nested_cumulative_type_params](/reference/global-configs/behavior-flags/require_nested_cumulative_type_params) | Can stop build (parse error) |
-| [require_all_warnings_handled_by_warn_error](/reference/global-configs/behavior-flags/require_all_warnings_handled_by_warn_error) | Can stop build (when `--warn-error` is set) |
-| [require_batched_execution_for_custom_microbatch_strategy](/reference/global-configs/behavior-flags/require_batched_execution_for_custom_microbatch_strategy) | Behavior change for custom microbatch macros |
-| [state_modified_compare_more_unrendered_values](/reference/global-configs/behavior-flags/state_modified_compare_more_unrendered_values) | Selection-set change with potential CI impact |
-| [require_yaml_configuration_for_mf_time_spines](/reference/global-configs/behavior-flags/require_yaml_configuration_for_mf_time_spines) | Suppresses a deprecation warning (no functional change) |
-| [validate_macro_args](/reference/global-configs/behavior-flags/validate_macro_args) | New warning for mismatched macro arguments; errors with `--warn-error` |
 
 ### Introduced in <Constant name="fusion" /> {#introduced-in-dbt-v2}
 

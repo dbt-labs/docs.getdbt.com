@@ -1,4 +1,9 @@
-<Expandable alt_header="OAuth login not initiating">
+---
+title: "OAuth login not initiating"
+sidebar_label: "OAuth login not initiating"
+description: "Troubleshooting: OAuth login not initiating"
+id: mcp-troubleshoot-oauth
+---
 
 **Symptoms:** The OAuth browser window never opens, or authentication appears to hang.
 
@@ -13,4 +18,3 @@
 3. Restart your client and try connecting again.
 
 If these steps don't resolve the issue, confirm that AI features are enabled on your account. An account admin can enable them in **Account settings** → **Edit** → toggle on **Enable account access to dbt Wizard features**. Refer to [Enable dbt Wizard](/docs/platform/manage-dbt-ai).
-</Expandable>

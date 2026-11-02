@@ -160,6 +160,7 @@ exports.versionedPages = [
   { page: "docs/local/connect-data-platform/dremio-setup", lastVersion: "1.99" },
   { page: "docs/local/connect-data-platform/exasol-setup", lastVersion: "1.99" },
   { page: "docs/local/connect-data-platform/extrica-setup", lastVersion: "1.99" },
+  { page: "docs/local/connect-data-platform/firebird-setup", lastVersion: "1.99" },
   { page: "docs/local/connect-data-platform/firebolt-setup", lastVersion: "1.99" },
   { page: "docs/local/connect-data-platform/glue-setup", lastVersion: "1.99" },
   { page: "docs/local/connect-data-platform/greenplum-setup", lastVersion: "1.99" },

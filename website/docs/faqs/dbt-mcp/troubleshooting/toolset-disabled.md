@@ -1,4 +1,9 @@
-<Expandable alt_header="Toolset unavailable or showing as disabled">
+---
+title: "Toolset unavailable or showing as disabled"
+sidebar_label: "Toolset unavailable or showing as disabled"
+description: "Troubleshooting: Toolset unavailable or showing as disabled"
+id: mcp-troubleshoot-toolset-disabled
+---
 
 **Symptoms:** A toolset (Semantic Layer, Discovery, Admin API) is not available in your AI client even though you've configured credentials.
 
@@ -10,4 +15,3 @@
 2. Check whether you have any `DISABLE_*` variables set to `true` that might be turning off the toolset.
 3. If you're using enable mode (`DBT_MCP_ENABLE_*`), make sure the toolset you need is listed.
 4. Set `DBT_MCP_LOG_LEVEL=DEBUG` to see which toolsets are active at startup.
-</Expandable>
