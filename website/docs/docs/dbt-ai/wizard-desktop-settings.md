@@ -46,7 +46,7 @@ Shows the dbt accounts <Constant name="wizard" /> uses for hosted models and pla
 
     <Lightbox src="/img/wizard/desktop/wizard-desktop-sign-in-options.png" width="90%" title="Sign-in options in Wizard Desktop" />
 
-    You can also set the sign-in host from the <Constant name="wizard" /> CLI with the `DBT_CLOUD_LOGIN_HOST` environment variable. For example:
+    You can also set the account host from the <Constant name="wizard" /> CLI with the `DBT_CLOUD_LOGIN_HOST` environment variable. For example:
 
     ```shell
     export DBT_CLOUD_LOGIN_HOST=ab123.us1.dbt.com
