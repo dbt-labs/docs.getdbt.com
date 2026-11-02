@@ -20,6 +20,10 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 
 For <Constant name="fusion_engine" /> updates, refer to the [v2 changelog](https://github.com/dbt-labs/dbt/blob/main/CHANGELOG-dbt.md).
 
+## November 2026
+
+- **New**: Read-only users can query metrics through [remote MCP](/docs/dbt-ai/setup-remote-mcp#read-only-users-and-warehouse-credentials) using the shared [analytics credential](/docs/platform/wizard-read-only-users#set-up-analytics-credentials), which needs to be set up by an admin. 
+
 ## October 2026
 
 - **New:** <Constant name="wizard" /> Desktop is now in public beta. [Download the app](/docs/dbt-ai/wizard-desktop#install-and-open-wizard-desktop) for macOS, Windows, or Linux and start your first session.

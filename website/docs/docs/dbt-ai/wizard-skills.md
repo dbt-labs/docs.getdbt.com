@@ -209,7 +209,7 @@ These skills are for migration projects rather than everyday sessions:
 
 | Skill | What it does |
 |-------|-------------|
-| `migrating-dbt-core-to-fusion` | Migrate dbt projects from <Constant name="core" /> to <Constant name="fusion_engine" /> |
+| `migrating-dbt-core-to-v2` | Migrate dbt projects from <Constant name="core" /> to <Constant name="fusion_engine" /> |
 | `migrating-dbt-project-across-platforms` | Migrate dbt projects across data platforms |
 </SimpleTable>
 
