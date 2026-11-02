@@ -26,7 +26,7 @@ Start a new [chat or session](/best-practices/how-to-use-wizard/wizard-1-intro#u
 - [Validate before shipping](#validate-before-shipping)
 - [Add a semantic model](#add-a-semantic-model)
 
-These prompts work the same across surfaces &mdash; the [CLI](/docs/dbt-ai/wizard-quickstart), the [Wizard Desktop](/docs/dbt-ai/wizard-desktop), and <Constant name="wizard" /> in [<Constant name="dbt_platform" />](/docs/platform/wizard-platform). For examples specific to the Studio IDE, refer to the [Prompt cookbook](/guides/prompt-cookbook). To use <Constant name="wizard" /> in the CLI, use the `wizard` [command reference](/docs/dbt-ai/wizard-cli-reference).
+These prompts work the same across surfaces &mdash; the [CLI](/docs/dbt-ai/wizard-cli), the [Wizard Desktop](/docs/dbt-ai/wizard-desktop), and <Constant name="wizard" /> in [<Constant name="dbt_platform" />](/docs/platform/wizard-platform). For examples specific to the Studio IDE, refer to the [Prompt cookbook](/guides/prompt-cookbook). To use <Constant name="wizard" /> in the CLI, use the `wizard` [command reference](/docs/dbt-ai/wizard-cli-reference).
 
 
 :::tip Best practices for using dbt Wizard
@@ -240,7 +240,7 @@ For version-specific examples and validation steps, refer to [Build Semantic Lay
 
 ## Related docs
 
-- [Use dbt Wizard locally](/docs/dbt-ai/wizard-quickstart)
+- [Get started with dbt Wizard](/docs/platform/wizard-overview#get-started)
 - [Understand a dbt project](/best-practices/how-to-use-wizard/wizard-2-understand-project)
 - [Validate dbt changes](/best-practices/how-to-use-wizard/wizard-3-validate-changes)
 - [Add data-informed tests](/best-practices/how-to-use-wizard/wizard-4-data-informed-tests)
