@@ -86,12 +86,17 @@ No, dbt Copilot actions apply only to dbt Copilot usage. Refer to [<Constant nam
 **In the <Constant name="dbt_platform" />**:
 
 When enabled by an admin, <Constant name="wizard" /> is available to users with a <Constant name="dbt" /> [developer license](/docs/platform/manage-access/seats-and-users) on any [dbt platform account](https://www.getdbt.com/contact).
+**In Wizard Desktop**:
+
+<Constant name="wizard" /> Desktop works without a <Constant name="dbt_platform" /> account, so you can use it with a self-hosted dbt project. Use [BYOK](/docs/dbt-ai/wizard-byok) to connect your own AI provider credentials, with no sign-in required. If you sign up for a free <Constant name="dbt" /> account instead, you get a 30-day trial that includes dbt-managed keys.
+
+Refer to [Wizard Desktop](/docs/dbt-ai/wizard-desktop) for installation and setup.
 
 **In the CLI**:
 
 <Constant name="wizard" /> CLI uses dbt Labs-managed models (OpenAI, Anthropic, or open weight models), billed through dbt's spend-limit billing. You can also bring your own API key or credentials for a supported provider using [BYOK](/docs/dbt-ai/wizard-byok): OpenAI, Anthropic, Azure AI Foundry, AWS Bedrock, Google Gemini, or Snowflake Cortex (preview). BYOK is a good backup option if you want to manage AI costs directly &mdash; token costs are billed directly by whichever provider you choose. Install and configure the CLI on your local machine.
 
-Refer to [Use dbt Wizard locally](/docs/dbt-ai/wizard-quickstart) for more information.
+Refer to [Wizard in the CLI](/docs/platform/wizard-overview#wizard-in-the-cli-) for more information.
 
 </Expandable>
 

@@ -22,6 +22,80 @@ Release notes are grouped by date for single-tenant environments.
 
 <span><img src="/img/fontawesome/rss.svg" alt="RSS" className="rss-icon" />Subscribe to release note updates via [RSS](https://docs.getdbt.com/feeds/release-notes-st-rss.xml), [Atom](https://docs.getdbt.com/feeds/release-notes-st-atom.xml), or [JSON Feed](https://docs.getdbt.com/feeds/release-notes-st-rss.json).</span>
 
+## October 28, 2026
+
+## New
+
+### dbt platform
+
+- **Private connection for a GitHub Enterprise Server app you manage**: If your GitHub Enterprise Server can only be reached over a private connection (PrivateLink), you can now save that connection on the GitHub app. Set `private_link_endpoint_id` when you create or update the app through the API, and dbt routes the connection over your private network.
+
+### Orchestration and run status
+
+- **Filter the Model timing table:** On the Model timing tab, you can now filter [Resource details](/docs/deploy/run-visibility#resource-details) to find what's slowing a run down. Use the **Est. critical path** filter to show only the resources on the longest chain of dependent resources, which sets the minimum run time (Yes), or everything else (No). Use the resource type filter to narrow the list to **Model**, **Test**, **Snapshot**, or **Exposure**. You can still search by name.
+
+### dbt v2
+
+- **Set the environment for a Mesh dependency**: You can now route cross-project refs to a specific upstream environment, such as Staging, instead of only the default Production or Staging environment.
+
+- **Files that end with a Jinja suffix**: Set [`allow_jinja_file_extensions`](/reference/global-configs/behavior-flags/allow_jinja_file_extensions) in your project config so dbt reads files with an extra Jinja ending, such as `model.sql.j2` or `doc.md.j2`. Jinja is the templating language dbt already uses inside SQL and Markdown files.
+
+### dbt AI and agents
+
+- **Bookmarkable dbt Wizard home conversations**: In the dbt Wizard [home tab](/docs/platform/wizard-home), the conversation you have open appears in the browser URL. You can bookmark that conversation and open it again from the URL.
+
+## Enhancements
+
+### dbt platform
+
+- **Clearer message when you cannot select dbt v2**: If a project can use dbt v2 but you do not have permission to select it, the dbt v2 choices stay visible and disabled in the environment, job, and development version menus. The tooltip says that an Account Admin or a [v2 Migration Admin](/docs/platform/manage-access/enterprise-permissions#v2-migration-admin) has to select dbt v2.
+
+### Orchestration and run status
+
+- **Definitions on the Model timing tiles**: The six [summary tiles](/docs/deploy/run-visibility#metric-tiles) on the Model timing tab now have a question-mark icon: **Est. critical path**, **Peak concurrency**, **Avg active models**, **Longest model**, **Wall clock**, and **Latest start**. Select the icon to read what that number means.
+
+- **Retry when a usage chart does not load**: If a [usage chart](/docs/platform/billing/how-pricing-works#viewing-usage-in-the-product) fails to load or refresh, you see a message and a **Retry** button. This applies to the monthly models built chart on **Project home** and the top jobs chart on an **Environment** page. A chart that loaded earlier keeps its last numbers and shows when they were updated while the retry runs.
+
+### Studio IDE
+
+- **dbt v2 Stable no longer shows Preview**: In Studio [User development settings](/docs/dbt-versions/upgrade-dbt-platform-version#override-dbt-version), the **v2 Stable** option no longer shows a **Preview** label. dbt v2 is generally available.
+
+### dbt v2
+
+- **Resize columns in query results**: In the dbt VS Code extension, drag the edge of a column header in the query results panel to make that column wider or narrower.
+
+## Fixes
+
+### dbt platform
+
+- **Signup tells you when an email is already taken**: If a signup uses an email address that already has an account, including when two signups use that email at the same time, dbt shows a page that says the email is already taken. You no longer get a generic error page.
+
+### Identity, APIs, and Administration
+
+- **Clearer errors for an invalid API request**: A request with a bad value now returns a clear error instead of a server error. An unsupported `order_by` value on version 3 list endpoints, and a negative or too-large `limit` or `offset` on version 2 list endpoints, return a 400 error (the request was invalid). Creating a project with `POST /api/v2/accounts/{id}/projects/` also returns a 400 error when `type` is not text. Getting run timing with `GET /api/v3/accounts/:id/projects/:id/runs/:id/timing/` returns a 404 (not found) when that run is not in the account or project in the URL.
+
+### Studio IDE
+
+- **Ephemeral models show in command results**: In Studio IDE, an [ephemeral](/docs/build/materializations#ephemeral) model is a model that is not built as its own table or view. Those models were missing from the command result list, so a tab such as **Error**, **Warn**, **Skip**, **Reused**, or **Pass** could show a count and no rows. They now appear on the matching tab with the other models.
+
+### Orchestration and run status
+
+- **Model logs on the System logs tab**: Open a job run, select a step, and open **System logs**. That tab now includes the logs from your models, so you can troubleshoot a failed run in one place.
+
+### dbt v2
+
+- **`dbt fmt` keeps a stable indentation**: [`dbt fmt`](/reference/commands/lint#dbt-format) no longer shifts a Jinja tag to the left when that same line ends with a SQL comment. It also settles on one indentation for Jinja tags inside a `for` loop, and for an `{% if %}...{%- else -%}` block whose condition looks up warehouse information, such as the columns on a table. Running `dbt fmt` again does not keep changing those lines.
+
+## Behavior changes
+
+### Orchestration and run status
+
+- **System logs now include model logs**: The **System logs** tab on a run step used to show only system messages. It now shows every log for that step, including logs from your models. If you used this tab for system messages only, you will see more lines there.
+
+### dbt v2
+
+- **New names for three environment variables**: dbt v2 renamed the variable that selects an AI provider, and the two variables that write the [information schema](/docs/build/dbt-information-schema#generating-the-information-schema) (a local copy of project metadata you can query). If you set `DBT_AI_PROVIDER`, change it to [`DBT_ENGINE_AI_PROVIDER`](/docs/dbt-ai/package-skills#set-the-ai_provider-flag). If you set `DBT_GENERATE_INFO_SCHEMA` or `DBT_INFO_SCHEMA_DIR`, change them to `DBT_ENGINE_GENERATE_INFO_SCHEMA` and `DBT_ENGINE_INFO_SCHEMA_DIR`. The command-line flags for these options are unchanged. Update the variables anywhere you set them, including continuous integration (CI).
+
 ## October 21, 2026
 
 ## New
