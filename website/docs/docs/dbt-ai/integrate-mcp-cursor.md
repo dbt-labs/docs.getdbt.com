@@ -7,6 +7,7 @@ availability: all_users
 ---
 
 import MCPOauthPreflight from '/snippets/_mcp-oauth-preflight.md';
+import MCPRemoteReadOnlyCredentials from '/snippets/_mcp-remote-read-only-credentials.md';
 
 [Cursor](https://docs.cursor.com/context/model-context-protocol) is an AI-powered code editor, powered by Microsoft Visual Studio Code (VS Code). 
 
@@ -86,6 +87,7 @@ Remote MCP supports **OAuth** or **token-based** headers.
 
 - _Remote MCP OAuth is available in public beta for Starter, Enterprise, and Enterprise+ accounts._
 - For either method, the MCP URL is `https://<Access URL>/api/ai/v1/mcp`. You can find the URL in <Constant name="dbt_platform"/> under **Account settings** &rarr; **Access URLs** &rarr; **MCP Endpoint URL**.
+- <MCPRemoteReadOnlyCredentials />
 
 <MCPOauthPreflight />
 
