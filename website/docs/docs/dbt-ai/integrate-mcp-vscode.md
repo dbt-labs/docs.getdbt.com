@@ -19,7 +19,7 @@ VS Code can connect to either the **self-hosted** dbt MCP server (runs on your m
 - VS Code installed with the latest updates.
 - For self-hosted MCP: completed the [self-hosted MCP setup](/docs/dbt-ai/setup-local-mcp) and configured your dbt project paths.
 - For remote MCP: your **MCP URL** from **Account settings** &rarr; **Access URLs** &rarr; **MCP Endpoint URL** in <Constant name="dbt_platform" />.
-- For remote MCP: <MCPRemoteReadOnlyCredentials />
+- <MCPRemoteReadOnlyCredentials />
 
 ## Set up with self-hosted dbt MCP server
 
