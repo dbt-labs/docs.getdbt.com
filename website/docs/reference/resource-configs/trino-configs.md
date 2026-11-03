@@ -402,7 +402,7 @@ Trino defaults to `DETERMINISTIC`. Set `volatility: non-deterministic` to genera
 
 Trino checks that the declared volatility matches the function body. For example, a body that calls `random()` requires `volatility: non-deterministic`. For more information, refer to Trino's [function characteristics](https://trino.io/docs/current/udf/function.html#description).
 
-### Function considerations
+### Considerations
 
 - Python, JavaScript, aggregate, and table functions aren't supported.
 - The SQL body must be a single expression, without `SELECT` statements or subqueries. The adapter adds `RETURN`.
