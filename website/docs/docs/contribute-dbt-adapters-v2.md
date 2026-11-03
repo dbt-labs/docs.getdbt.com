@@ -41,7 +41,7 @@ The practical upside: **adding a new adapter requires far less code than it did 
 
 ### What you'll be building
 
-As a community contributor, you're building the **foundation**: connect your warehouse, run dbt macros, and support basic materializations (`dbt run`, `dbt build`). The reference section defines the expected integration surfaces.
+As a community contributor, you're building the **foundation**: connect your warehouse, run dbt macros, and support basic materializations (`dbt run`, `dbt build`). The file-by-file reference section defines the complete scope.
 
 ---
 
@@ -158,8 +158,8 @@ go version  # verify
 git clone https://github.com/dbt-labs/dbt
 cd dbt
 
-# Verify you can build the CLI package
-cargo build -p dbt-cli --bin dbt
+# Verify you can build
+cargo build
 ```
 
 If you hit Z3 errors:
@@ -495,7 +495,7 @@ Exasol => "name",
 AdapterType::Exasol => "DATA_TYPE",  // in src/sql_types.rs
 ```
 
-For capabilities your adapter doesn't support yet (for example, `valid_incremental_strategies`), follow the current neighboring adapter pattern. Use `unimplemented!()` only when the repository's architecture rules allow it and the unsupported path fails clearly.
+For capabilities your adapter doesn't support yet (for example, `valid_incremental_strategies`), return `unimplemented!()` — that's fine for an initial community adapter contribution, per the repository's [adapter architecture rules](https://github.com/dbt-labs/dbt/blob/main/.agents/adapters.md). The reference PR has several of these.
 
 #### Column builder
 
@@ -616,7 +616,7 @@ Run a real `dbt build` against your warehouse. At minimum, exercise table, view,
 
 ```bash
 # Build the CLI
-cargo build -p dbt-cli --bin dbt
+cargo build
 
 # Create a test project (or clone jaffle-shop-classic)
 ./target/debug/dbt init
@@ -707,7 +707,7 @@ A community contributed v2 adapter touches several integration surfaces in the p
 cargo check -p <crate-name>
 
 # Build the CLI binary
-cargo build -p dbt-cli --bin dbt
+cargo build
 
 # Run a full dbt build against your warehouse
 ./target/debug/dbt build --project-dir <your-project>
