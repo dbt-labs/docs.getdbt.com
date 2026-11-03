@@ -160,7 +160,7 @@ functions:
 
 </File>
 
-This results in the function being located in the `finance` schema, so the full relation name would be `analytics.finance.calculate_tax` instead of the default target schema.
+This results in the function being located in the `target_schema_finance` schema, so the full relation name would be `analytics.target_schema_finance.calculate_tax`.
 
 </TabItem>
 </Tabs>
