@@ -50,6 +50,21 @@ select ...
 
 </File>
 
+<VersionBlock firstVersion="1.9">
+
+<File name='models/properties.yml'>
+
+```yaml
+models:
+  - name: <model_name>
+    config:
+      [enabled](/reference/resource-configs/enabled): true | false
+```
+
+</File>
+
+</VersionBlock>
+
 </TabItem>
 
 
@@ -65,6 +80,21 @@ seeds:
 ```
 
 </File>
+
+<VersionBlock firstVersion="1.9">
+
+<File name='seeds/properties.yml'>
+
+```yaml
+seeds:
+  - name: <seed_name>
+    config:
+      [enabled](/reference/resource-configs/enabled): true | false
+```
+
+</File>
+
+</VersionBlock>
 
 </TabItem>
 
@@ -153,6 +183,21 @@ select ...
 {{ config(
   enabled=true | false
 ) }}
+```
+
+</File>
+
+<File name='models/properties.yml'>
+
+```yaml
+models:
+  - name: <model_name>
+    columns:
+      - name: <column_name>
+        data_tests:
+          - <test_name>:
+              config:
+                [enabled](/reference/resource-configs/enabled): true | false
 ```
 
 </File>
