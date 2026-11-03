@@ -1,6 +1,6 @@
 <Constant name="wizard" /> supports [<Term id="managed" /> models](/docs/dbt-ai/pricing-billing/overview#dbt-managed-providers) (billed by dbt Labs, no key to manage) and [bring-your-own-key (BYOK)](/docs/dbt-ai/wizard-byok) models (billed directly by your provider).
 
-In the <Constant name="dbt_platform" />, dbt <Term id="managed" /> models also switch to an [automatic backup provider](/docs/dbt-ai/pricing-billing/overview#automatic-backup-during-outages) if a provider has an outage.
+In <Constant name="dbt_platform" />, dbt <Term id="managed" /> models also switch to an [automatic backup provider](/docs/dbt-ai/pricing-billing/overview#automatic-backup-during-outages) if a provider has an outage.
 
 Here are the following AI providers supported depending on where you work. Refer to [Model Provider Rate table](https://www.getdbt.com/legal/dbt-wizard-token-costs-by-model) for the full list of available models. 
 
