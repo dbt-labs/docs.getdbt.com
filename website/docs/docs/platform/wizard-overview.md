@@ -61,7 +61,7 @@ The following table shows where <Constant name="wizard" /> is available, the AI 
 
 <WizardSupportedProviders />
 
-For pricing and how billing works, refer to [Models and pricing](/docs/dbt-ai/pricing-billing/overview). If a provider has an outage, dbt <Term id="managed" /> traffic switches to a [backup provider](/docs/dbt-ai/pricing-billing/overview#automatic-backup-during-outages) in <Constant name="dbt_platform"/>, so <Constant name="wizard" /> keeps working.
+For pricing and how billing works, refer to [Models and pricing](/docs/dbt-ai/pricing-billing/overview). If AI providers Anthropic, OpenAI, or Fireworks have an outage, dbt <Term id="managed" /> traffic switches to a [backup provider](/docs/dbt-ai/pricing-billing/overview#automatic-backup-during-outages) in <Constant name="dbt_platform"/>, so <Constant name="wizard" /> keeps working.
 
 ## Get started
 
