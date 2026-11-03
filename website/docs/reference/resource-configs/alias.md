@@ -1,8 +1,8 @@
 ---
-resource_types: [models, seeds, snapshots, tests]
+resource_types: [models, seeds, snapshots, tests, functions]
 description: "Aliasing a resource lets you give it a custom name in the database instead of using the filename."
 datatype: string
-intro_text: Specify a custom alias for a model, data test, snapshot, or seed and give it a more user-friendly name in the database.
+intro_text: Specify a custom alias for a model, data test, snapshot, seed, or function and give it a more user-friendly name in the database.
 ---
 
 
@@ -197,36 +197,58 @@ When using [`store_failures_as`](/reference/resource-configs/store_failures_as),
 
 <TabItem value="functions" label="Functions">
 
-Specify a custom alias for a function in your `dbt_project.yml` or properties file.
+Configure a function's alias in your project YAML file (`dbt_project.yml`), a properties YAML file (for example, `functions/properties.yml`), or in a SQL file config block.
+
+The following examples demonstrate how to `alias` a function named `calculate_tax` to `tax_calculator`.
+
+In the `dbt_project.yml` file at the project level:
 
 <File name='dbt_project.yml'>
 
 ```yml
 functions:
   your_project:
-    your_function:
-      +alias: my_function_alias
+    calculate_tax:
+      +alias: tax_calculator
 ```
 
 </File>
+
+In `functions/properties.yml`:
 
 <File name='functions/properties.yml'>
 
-```yaml
+```yml
 functions:
-  - name: function_name
+  - name: calculate_tax
     config:
-      alias: my_function_alias
+      alias: tax_calculator
 ```
 
 </File>
+
+In `functions/calculate_tax.sql`:
+
+<File name='functions/calculate_tax.sql'>
+
+```sql
+{{ config(
+    alias="tax_calculator"
+) }}
+```
+
+</File>
+
+This creates the function as `analytics.finance.tax_calculator` in the database. Without an alias, dbt uses the filename (`calculate_tax`) as the identifier.
+
+When referencing the function in your project, use `{{ function('calculate_tax') }}`. dbt looks up the filename and returns the fully-qualified name using the alias, for example `analytics.finance.tax_calculator`.
 
 </TabItem>
 </Tabs>
 
 ## Definition
 
-Optionally specify a custom alias for a [model](/docs/build/models), [data test](/docs/build/data-tests), [snapshot](/docs/build/snapshots), or [seed](/docs/build/seeds).
+Optionally specify a custom alias for a [model](/docs/build/models), [data test](/docs/build/data-tests), [snapshot](/docs/build/snapshots), [seed](/docs/build/seeds), or [function](/docs/build/udfs).
 
 When dbt creates a relation (<Term id="table" />/<Term id="view" />) in a database, it creates it as: `{{ database }}.{{ schema }}.{{ identifier }}`, e.g. `analytics.finance.payments`
 

@@ -328,6 +328,16 @@ functions:
 
 </File>
 
+<File name='functions/<filename>.sql'>
+
+```sql
+{{ config(
+    tags="<string>" | ["<string>"]
+) }}
+```
+
+</File>
+
 </TabItem>
 
 </Tabs>

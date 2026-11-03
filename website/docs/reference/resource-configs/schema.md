@@ -1,6 +1,6 @@
 ---
 sidebar_label: "schema"
-resource_types: [models, seeds, tests]
+resource_types: [models, seeds, tests, snapshots, saved queries, functions]
 description: "Override the default schema when dbt creates resources in your data platform."
 datatype: string
 ---
@@ -136,13 +136,15 @@ This would result in the test results being stored in the `test_results` schema.
 
 Specify a [custom schema](/docs/build/custom-schemas#understanding-custom-schemas) for a function in your `dbt_project.yml` or properties file.
 
+For example, if you want to place a function in a schema called `finance` instead of the target schema, you can configure it in the `dbt_project.yml` or `properties.yml` file:
+
 <File name='dbt_project.yml'>
 
 ```yml
 functions:
   your_project:
-    your_function:
-      +schema: udf_schema
+    calculate_tax:
+      +schema: finance
 ```
 
 </File>
@@ -151,12 +153,14 @@ functions:
 
 ```yaml
 functions:
-  - name: my_function
+  - name: calculate_tax
     config:
-      schema: udf_schema
+      schema: finance
 ```
 
 </File>
+
+This results in the function being located in the `finance` schema, so the full relation name would be `analytics.finance.calculate_tax` instead of the default target schema.
 
 </TabItem>
 </Tabs>
