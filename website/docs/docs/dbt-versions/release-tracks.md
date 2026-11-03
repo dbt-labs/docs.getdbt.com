@@ -10,7 +10,9 @@ New capabilities in the dbt framework are delivered continuously to <Constant na
 
 ## Which release tracks are available?
 
-The release tracks available for your project vary depending on the major version of dbt.
+The release tracks available for your project vary depending on the major version of dbt &mdash; The Python-based [dbt v1](/docs/dbt-versions/dbt-release-tracks?version=1#which-release-tracks-are-available) or the Rust-based [dbt v2](/docs/dbt-versions/dbt-release-tracks?version=2#which-release-tracks-are-available)(recommended)
+
+<VersionBlock firstVersion="2.0">
 
 ### dbt v2 release tracks
 
@@ -26,6 +28,40 @@ _`v2 Stable` is the default for all new <Constant name="fusion" />-powered proje
 | **v2 Extended** | Each new minor version GA | The previous minor version, including its patches. When a new minor version reaches GA, Extended moves to the previous minor version (for example, `v2.1`, once dbt reaches `v2.2`). Designed for teams that adopt new behavior changes more slowly and need to stay on a previous minor version for longer. | Enterprise, Enterprise+ | `fusion-extended` |
 | **v2 Fallback** | Each new minor version GA | Two minor versions behind the current release (starting with v2.2, when the fallback will be v2.0), including its patches. Emergency rollback option for account admins. | Enterprise+ | `fusion-fallback` |
 
+#### Choosing a dbt v2 release track
+
+Choose **v2 Stable** (the default for new projects) for the latest generally available minor version, which balances stability and feature access. This is the recommended starting point for most customers migrating to <Constant name="fusion_engine" />.
+
+Choose **v2 Nightly** if you want the latest features and are comfortable with a daily release cadence. This track is ideal for teams that want to detect potential breaking changes early or work at the cutting edge of feature development.
+
+Choose **v2 Preview** if you want the most recent features in a release that is mostly stable. Preview tracks the next minor version before it reaches GA, including behavior change flags, so expect the occasional hiccup of alpha and beta software. It isn't recommended for production.
+
+Choose **v2 Extended** if your team adopts behavior changes more slowly and needs to stay on a previous minor version for a longer period. This track lags v2 Stable by one minor version (once dbt reaches v2.1) and is available for Enterprise and Enterprise+ accounts.
+
+Choose **v2 Fallback** as an emergency measure only. It runs the minor version two back (N-2, once dbt reaches v2.2), so expect more differences from Stable than with Extended. This is a temporary rollback option for Enterprise+ accounts, not for ongoing use.
+
+Account admins can set the org-wide default release track for new projects via a toggle in **Account Settings**. Individual project owners can then override that default per environment.
+
+### Using the v2 Fallback release track
+
+The **v2 Fallback** release track provides an emergency rollback option for account admins if you suspect a regression in the "v2 Extended" track. This is available only for <Constant name="fusion_engine" /> in Enterprise+ accounts.
+
+1. Go to **Account settings**
+2. Click the **Revert to Fallback** release track button in the <Constant name="dbt_platform" /> interface. This is not accessible through environment settings.
+3. Fill in the details in the **Revert to Fallback** pop-up to confirm and share information with dbt Support.
+
+Switching to **v2 Fallback** alerts the dbt Support team, who may reach out to help resolve the issue. This track is meant only as a temporary safety option to unblock you and not for ongoing use. Return to "v2 Extended" or "v2 Stable" (<Constant name="fusion" />) / "v1 Compatible" (<Constant name="core" />) once the issue is resolved.
+<DocCarousel slidesPerView={1}>
+
+<Lightbox src="/img/docs/dbt-versions/rollback.png" width="80%" title="v2 Fallback release track button in dbt platform"/>
+
+<Lightbox src="/img/docs/dbt-versions/rollback-popup.png" width="80%" title="v2 Fallback release track popup in dbt platform"/>
+
+</DocCarousel>
+
+</VersionBlock>
+
+<VersionBlock lastVersion="1.99">
 
 ### <Constant name="core" /> release tracks {#dbt-v1-release-tracks}
 
@@ -35,6 +71,16 @@ _`v2 Stable` is the default for all new <Constant name="fusion" />-powered proje
 | **v1 Compatible** | Provides a monthly release aligned with the most recent open source versions of <Constant name="core" /> and adapters, plus functionality exclusively available in the dbt platform.<br /><br />See [v1 Compatible track changelog](/docs/dbt-versions/compatible-track-changelog) for more information. |  Starter, Enterprise, Enterprise+ | `compatible` |
 | **v1 Extended** | The previous month's **v1 Compatible** release. | Enterprise, Enterprise+ | `extended` |
 | **v1 Fallback** | The previous month's **v1 Extended** release. | Enterprise+ | `fallback` |
+
+#### Choosing a v1 release track
+
+We recommend that all new projects run dbt v2. Projects still on v1 release tracks are eligible for upgrade to v2 and projects on legacy versions of v1.x should [migrate to release tracks](/guides/migrate-off-legacy-dbt-versions).
+
+Choose the **v1 Latest** release track to continuously receive new features, fixes, performance improvements — latest & greatest dbt. This is the default for all customers on <Constant name="dbt" />.
+
+Choose the **v1 Compatible** and **v1 Extended** release tracks if you need a less-frequent release cadence, the ability to test new dbt releases before they go live in production, and/or ongoing compatibility with the latest open source releases of <Constant name="core" />.
+
+</VersionBlock>
 
 ### API release tracks
 
@@ -54,48 +100,6 @@ To configure an environment in the [dbt Admin API](/docs/dbt-apis/admin-api) or 
 - `latest`
 - `compatible`
 - `extended`
-
-## Which release track should I choose?
-
-We recommend that all new projects run dbt v2. Projects still on v1 release tracks are eligible for upgrade to v2 and projects on legacy versions of v1.x should [migrate to release tracks](/guides/migrate-off-legacy-dbt-versions).
-
-### Choosing a dbt v2 release track
-
-Choose **v2 Stable** (the default for new projects) for the latest generally available minor version, which balances stability and feature access. This is the recommended starting point for most customers migrating to <Constant name="fusion_engine" />.
-
-Choose **v2 Nightly** if you want the latest features and are comfortable with a daily release cadence. This track is ideal for teams that want to detect potential breaking changes early or work at the cutting edge of feature development.
-
-Choose **v2 Preview** if you want the most recent features in a release that is mostly stable. Preview tracks the next minor version before it reaches GA, including behavior change flags, so expect the occasional hiccup of alpha and beta software. It isn't recommended for production.
-
-Choose **v2 Extended** if your team adopts behavior changes more slowly and needs to stay on a previous minor version for a longer period. This track lags v2 Stable by one minor version (once dbt reaches v2.1) and is available for Enterprise and Enterprise+ accounts.
-
-Choose **v2 Fallback** as an emergency measure only. It runs the minor version two back (N-2, once dbt reaches v2.2), so expect more differences from Stable than with Extended. This is a temporary rollback option for Enterprise+ accounts, not for ongoing use.
-
-Account admins can set the org-wide default release track for new projects via a toggle in **Account Settings**. Individual project owners can then override that default per environment.
-
-### Choosing a dbt v1 release track
-
-Choose the **v1 Latest** release track to continuously receive new features, fixes, performance improvements — latest & greatest dbt. This is the default for all customers on <Constant name="dbt" />.
-
-Choose the **v1 Compatible** and **v1 Extended** release tracks if you need a less-frequent release cadence, the ability to test new dbt releases before they go live in production, and/or ongoing compatibility with the latest open source releases of <Constant name="core" />.
-
-### Using the v2 Fallback release track
-
-The **v2 Fallback** release track provides an emergency rollback option for account admins if you suspect a regression in the "v2 Extended" track. This is available only for <Constant name="fusion_engine" /> in Enterprise+ accounts.
-
-1. Go to **Account settings**
-2. Click the **Revert to Fallback** release track button in the <Constant name="dbt_platform" /> interface. This is not accessible through environment settings.
-3. Fill in the details in the **Revert to Fallback** pop-up to confirm and share information with dbt Support.
-
-Switching to **v2 Fallback** alerts the dbt Support team, who may reach out to help resolve the issue. This track is meant only as a temporary safety option to unblock you and not for ongoing use. Return to "v2 Extended" or "v2 Stable" (<Constant name="fusion" />) / "v1 Compatible" (<Constant name="core" />) once the issue is resolved.
-<DocCarousel slidesPerView={1}>
-
-<Lightbox src="/img/docs/dbt-versions/rollback.png" width="80%" title="v2 Fallback release track button in dbt platform"/>
-
-<Lightbox src="/img/docs/dbt-versions/rollback-popup.png" width="80%" title="v2 Fallback release track popup in dbt platform"/>
-
-</DocCarousel>
-
 
 ### Common architectures
 
