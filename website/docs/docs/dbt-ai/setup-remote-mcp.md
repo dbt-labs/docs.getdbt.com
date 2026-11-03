@@ -25,6 +25,15 @@ The remote MCP server is the ideal choice when:
 
 <MCPCreditUsage />
 
+## Tool changes on the remote MCP server
+
+The remote MCP server is built for AI agents, so its tools can change without notice or a deprecation period. Don't treat tool input or output formats (for example, response structure or pagination) as a contract.
+
+- We aim not to remove existing features and avoid renaming tools, because some clients use tool names for auto-approve or allow/reject lists.
+- If you build a wrapper or app logic on top of the remote MCP server, expect its responses to change over time.
+- If you need a stable, versioned response format, use the [dbt APIs](/docs/dbt-apis/overview) directly.
+- If you need a frozen set of tools and inputs/outputs, pin a version of the [self-hosted MCP server](/docs/dbt-ai/setup-local-mcp) and run it yourself. You won't get fixes or improvements until you upgrade. See the [dbt-mcp examples](https://github.com/dbt-labs/dbt-mcp/tree/main/examples) for setups you can adapt.
+
 ## Choose your auth method
 
 | If you need... | Use... |
