@@ -414,17 +414,34 @@ If your warehouse uses standard `schema.table` or `database.schema.table` naming
 
 **File:** `src/relation/relation_impl.rs`
 
-Add a match arm to `include_policy` for your quoting policy. The policy controls three things: whether the database is included in fully-qualified names, whether the schema is quoted, and whether the identifier is quoted.
-
-For example, Exasol uses a 2-part name (`schema.table`, no database prefix) and quotes both:
+`include_policy` decides which parts of a relation name appear in fully-qualified names. Its `Policy::new(database, schema, identifier)` arguments are booleans, and quoting is configured separately through the relation's quote policy. Warehouses that use standard three-part names fall through to the default, `Policy::trues()`, so many adapters need no arm at all. Add one only when your warehouse differs. The existing arms show the common shapes:
 
 ```rust
 // src/relation/relation_impl.rs
-AdapterType::ClickHouse | AdapterType::Exasol => Policy::new(false, true, true),
-//                                                           ↑      ↑     ↑
-//                                                        database schema identifier
-//                                                        disabled quoted  quoted
+fn include_policy(adapter_type: AdapterType, path: &RelationPath) -> Policy {
+    match adapter_type {
+        // Database is included only when it is a real attached database,
+        // not DuckDB's implicit "main" or "memory".
+        AdapterType::DuckDB => Policy::new(
+            path.database.as_ref().is_some_and(|db| {
+                !db.is_empty()
+                    && !db.eq_ignore_ascii_case("main")
+                    && !db.eq_ignore_ascii_case("memory")
+            }),
+            true,
+            true,
+        ),
+        // Two-part `schema.table` names: no database part.
+        AdapterType::ClickHouse | AdapterType::Exasol => Policy::new(false, true, true),
+        // Only the identifier is rendered; no database or schema.
+        AdapterType::Salesforce => Policy::new(false, false, true),
+        // Everything else: `database.schema.identifier`.
+        _ => Policy::trues(),
+    }
+}
 ```
+
+Exasol is the closest example for a community adapter: it uses two-part names, so the database is excluded.
 
 Decide up front whether your warehouse uses 2-part or 3-part names, and whether identifiers are case-sensitive. For example, Exasol uppercases unquoted identifiers by default — so all catalog lookup SQL uses `upper()` comparisons.
 
