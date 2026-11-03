@@ -22,7 +22,7 @@ For <Constant name="fusion_engine" /> updates, refer to the [v2 changelog](https
 
 ## November 2026
 
-- **New:** <Constant name="wizard" /> now automatically switches to AWS Bedrock if OpenAI, Anthropic, or Fireworks has an outage, so you can keep working. Available if you use dbt AI <Term id="managed" /> models in <Constant name="dbt_platform" />. Learn more about [automatic backup during outages](/docs/dbt-ai/pricing-billing/overview#automatic-backup-during-outages).
+- **New:** <Constant name="wizard" /> now automatically switches to AWS Bedrock if an AI model provider (OpenAI, Anthropic, or Fireworks) has an outage, so you can keep working. Available if you use dbt AI <Term id="managed" /> models in <Constant name="dbt_platform" />. Learn more about [automatic backup during outages](/docs/dbt-ai/pricing-billing/overview#automatic-backup-during-outages).
 - **New**: Read-only users can query metrics through [remote MCP](/docs/dbt-ai/setup-remote-mcp#read-only-users-and-warehouse-credentials) using the shared [analytics credential](/docs/platform/wizard-read-only-users#set-up-analytics-credentials), which needs to be set up by an admin. 
 
 ## October 2026
