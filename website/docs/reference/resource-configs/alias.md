@@ -239,9 +239,9 @@ In `functions/calculate_tax.sql`:
 
 </File>
 
-This creates the function as `analytics.finance.tax_calculator` in the database. Without an alias, dbt uses the filename (`calculate_tax`) as the identifier.
+This creates the function as `analytics.finance.tax_calculator` in the database. Without an alias, dbt uses the function name (`calculate_tax`) as the identifier.
 
-When referencing the function in your project, use `{{ function('calculate_tax') }}`. dbt looks up the filename and returns the fully-qualified name using the alias, for example `analytics.finance.tax_calculator`.
+When referencing the function in your project, use `{{ function('calculate_tax') }}`. dbt looks up the function name and returns the fully-qualified name using the alias, for example `analytics.finance.tax_calculator`.
 
 </TabItem>
 </Tabs>

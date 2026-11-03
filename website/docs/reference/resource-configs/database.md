@@ -121,8 +121,6 @@ functions:
 
 </File>
 
-In a `functions/properties.yml` file:
-
 <File name='functions/properties.yml'>
 
 ```yaml
