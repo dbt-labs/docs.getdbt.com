@@ -37,7 +37,7 @@ Changes to the v2 engine fall into three categories:
 
 - **New features**: Net new capabilities, frequently with new YAML configs or flags. As these are new features that require additional configuration, they will not break existing projects.
 - **Non-breaking improvements**: Optimizations, feature improvements, bug fixes, or security patches that are not expected to break a deployment with automatic upgrades. They roll out continuously and are sometimes [backported](#backports) to previous minor versions.
-- **Behavior changes** are deliberate,but breaking, changes to existing behavior. They're released behind a [behavior change flag](/reference/global-configs/behavior-changes). The flag starts opt-in (default `false`), and later becomes the default so the new behavior applies to everyone.
+- **Behavior changes** are deliberate, but breaking, changes to existing behavior. They're released behind a [behavior change flag](/reference/global-configs/behavior-changes). The flag starts opt-in (default `false`), and later becomes the default so the new behavior applies to everyone.
 
 ### Prerelease stages and the release cycle {#prerelease-stages}
 
@@ -46,8 +46,8 @@ Each v2 minor version moves through three prerelease stages before it reaches GA
 | Stage | What can change |
 |-------|-----------------|
 | **Alpha** | Any change is acceptable. New behavior change flags can be introduced, and existing flags can be flipped so the new behavior is the default. |
-| **Beta** | Most changes are acceptable. New behavior change flags can be introduced, but existing flags cannot be flipped to default. |
-| **Release candidate (RC)** | Considered to be ready for GA, so this stage acts as a code freeze. Only small, non-breaking patches land. No new behavior change flags and no default flips. |
+| **Beta** | Most changes are acceptable. New behavior change flags can be introduced, but existing flags cannot be flipped to default behavior. |
+| **Release candidate (RC)** | Considered to be ready for GA, so this stage acts as a code freeze. Only small, non-breaking patches land. No new behavior change flags and no existing behavior change flags can be flipped to default behavior. |
 
 Each minor version starts at its first alpha (for example, `2.1.0a1`). Successive alpha releases build toward beta, then RC, and finally GA. When a minor version reaches GA, the first alpha of the next minor version opens, cut from the latest nightly build.
 
