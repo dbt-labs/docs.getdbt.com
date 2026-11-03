@@ -1,0 +1,144 @@
+/* dbt + Wizard: dbt's rounded shapes and fonts on Wizard's dark panel and lavender, white, and orange palette */
+.card {
+  display: flex;
+  align-items: center;
+  margin: 1.5rem 0;
+  padding: 1.25rem;
+  border: 1px solid var(--dl-border);
+  border-radius: 16px;
+  font-family: var(--font-sans);
+  background: var(--dl-bg);
+  color: var(--dl-text);
+
+  /* Light mode (default) */
+  --dl-bg: #fff;
+  --dl-border: rgba(22, 23, 27, 0.15);
+  --dl-text: #16171b;
+  --dl-text-muted: rgba(22, 23, 27, 0.65);
+  --dl-tile-bg: rgba(22, 23, 27, 0.03);
+  --dl-tile-border: rgba(22, 23, 27, 0.15);
+  --dl-detected-bg: rgba(176, 163, 255, 0.2);
+  --dl-detected-border: #8b7cf0;
+  --dl-link: var(--color-transform-orange-600, #fe6703);
+  --dl-link-hover: #16171b;
+  --dl-hover-border: var(--color-transform-orange-600, #fe6703);
+  --dl-hover-bg: rgba(254, 103, 3, 0.14);
+}
+
+/* Dark mode: the Wizard panel */
+html[data-theme='dark'] .card {
+  --dl-bg: #16171b;
+  --dl-border: rgba(255, 255, 255, 0.12);
+  --dl-text: #fdfdfd;
+  --dl-text-muted: rgba(255, 255, 255, 0.65);
+  --dl-tile-bg: rgba(255, 255, 255, 0.04);
+  --dl-tile-border: rgba(255, 255, 255, 0.18);
+  --dl-detected-bg: rgba(176, 163, 255, 0.14);
+  --dl-detected-border: #b0a3ff;
+  --dl-link: #b0a3ff;
+  --dl-link-hover: #fff;
+  --dl-hover-border: var(--color-coalesce-purple-400, #9786ff);
+  --dl-hover-bg: rgba(118, 85, 253, 0.22);
+}
+
+.content {
+  flex: 1;
+  min-width: 0;
+}
+
+.tiles {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0.85rem;
+}
+
+.card .tile {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1.5rem;
+  min-height: 140px;
+  padding: 1.1rem 1.25rem;
+  border: 1px solid var(--dl-tile-border);
+  border-radius: 12px;
+  background: var(--dl-tile-bg);
+  color: var(--dl-text);
+  text-decoration: none;
+  transition: border-color 0.15s ease, background-color 0.15s ease, transform 0.15s ease;
+}
+
+.card .tile:hover {
+  color: var(--dl-text);
+  text-decoration: none;
+  border-color: var(--dl-hover-border);
+  background: var(--dl-hover-bg);
+  transform: translateY(-1px);
+}
+
+/* The installer that matches the reader's OS */
+.detected {
+  border-color: var(--dl-detected-border);
+  background: var(--dl-detected-bg);
+}
+
+.icon {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  color: var(--dl-text);
+}
+
+.tileText {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.tileTitle {
+  font-family: var(--font-display, var(--font-sans));
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.tileDescription {
+  color: var(--dl-text-muted);
+  font-size: 0.85rem;
+}
+
+.ext {
+  font-family: var(--font-mono);
+}
+
+.others {
+  margin: 1rem 0 0;
+  color: var(--dl-text-muted);
+  font-size: 0.8rem;
+}
+
+.card .others a {
+  color: var(--dl-link);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.card .others a:hover {
+  color: var(--dl-link-hover);
+  text-decoration: none;
+}
+
+@media (max-width: 600px) {
+  .card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tile {
+    transition: none;
+  }
+  .tile:hover {
+    transform: none;
+  }
+}

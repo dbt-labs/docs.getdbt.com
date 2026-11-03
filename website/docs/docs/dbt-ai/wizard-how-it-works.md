@@ -236,6 +236,6 @@ Use a separate session for each discrete unit of work, such as building one mode
 
 - [<Constant name="wizard" /> overview](/docs/platform/wizard-overview)
 - [<Constant name="wizard" /> in dbt platform](/docs/platform/wizard-platform)
-- [Use <Constant name="wizard" /> locally](/docs/dbt-ai/wizard-quickstart)
+- [Use <Constant name="wizard" /> locally](/docs/platform/wizard-overview#get-started)
 - [<Constant name="wizard" /> command reference](/docs/dbt-ai/wizard-cli-reference)
 - [How to use dbt Wizard in your dbt project](/best-practices/how-to-use-wizard/wizard-1-intro) for recommended workflows
