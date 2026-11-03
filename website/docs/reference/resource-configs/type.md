@@ -39,6 +39,7 @@ Support for `type` differs based on the warehouse and language (SQL or Python) y
 | dbt-databricks	| ✅	| ❌	| ❌	| ❌ |
 | dbt-postgres	| ✅	| ❌	| ❌	| ❌ |
 | dbt-redshift	| ✅	| ❌	| ❌	| ❌ |
+| dbt-trino	| ✅	| ❌	| ❌	| ❌ |
 
 ### scalar (default)
 
