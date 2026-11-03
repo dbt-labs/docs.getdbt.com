@@ -76,10 +76,6 @@ import MCPCreditUsage from '/snippets/_mcp-credit-usage.md';
 
 <MCPCreditUsage />
 
-:::caution Remote MCP tools can change without notice
-Remote MCP tool inputs and outputs can change without notice or a deprecation period, so don't treat them as a contract. If you need a stable response format, use the [dbt APIs](/docs/dbt-apis/overview). If you need a frozen set of tools, pin a version of the [self-hosted MCP server](/docs/dbt-ai/setup-local-mcp). Learn more in [Tool changes on the remote MCP server](/docs/dbt-ai/setup-remote-mcp#tool-changes-on-the-remote-mcp-server).
-:::
-
 ### Supported tools by MCP server type
 The dbt MCP server has access to many parts of the dbt experience related to development, deployment, and discovery. Here are the categories of tools supported based on what form of the MCP server you connect to as well as detailed information on exact commands or queries available to the LLM.
 
