@@ -34,7 +34,7 @@ const products = [
         {
           name: "dbt v1.13",
           version: "1.13",
-          stage: "rc",
+          stage: "beta",
         },
         {
           name: "dbt v1.12",

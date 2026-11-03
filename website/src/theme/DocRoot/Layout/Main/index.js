@@ -38,7 +38,6 @@ export default function DocRootLayoutMain({
     version: dbtVersion,
     EOLDate,
     isPrerelease,
-    stage,
     latestStableRelease,
   } = useContext(VersionContext);
 
@@ -77,11 +76,6 @@ export default function DocRootLayoutMain({
           showisPrereleaseBanner: true,
           isPrereleaseBannerText: `You're viewing the preview docs for <a href="https://docs.getdbt.com/docs/dbt/about-dbt">dbt v2</a>.`,
         });
-      } else if (stage === "rc") {
-        setPreData({
-          showisPrereleaseBanner: true,
-          isPrereleaseBannerText: `You're viewing the docs for the dbt v${dbtVersion} release candidate. Features may change before the final release. Read more in the <a href="/docs/dbt-versions/dbt-upgrade/upgrading-to-v${dbtVersion}">upgrade guide</a>.`,
-        });
       } else {
         // For other prerelease versions (like 1.11 beta)
         setPreData({
@@ -116,7 +110,7 @@ export default function DocRootLayoutMain({
         });
       }
     }
-  }, [dbtVersion, stage]);
+  }, [dbtVersion]);
 
   return (
     <main

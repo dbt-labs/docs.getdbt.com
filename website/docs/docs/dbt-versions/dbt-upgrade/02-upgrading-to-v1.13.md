@@ -8,7 +8,7 @@ availability:
   access: free
 ---
 
-# Upgrading to v1.13 (release candidate)
+# Upgrading to v1.13 <Lifecycle status="beta" />
 
 ## Resources
 - [dbt v1.13 changelog](https://github.com/dbt-labs/dbt/blob/1.13.latest/CHANGELOG.md)
@@ -16,8 +16,6 @@ availability:
 - [dbt platform upgrade guide](/docs/dbt-versions/upgrade-dbt-platform-version)
 
 ## What to know before upgrading
-
-v1.13 is a release candidate. Behavior can still change before the final release.
 
 ### Python 3.10
 
