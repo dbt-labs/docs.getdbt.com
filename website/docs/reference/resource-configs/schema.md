@@ -147,7 +147,7 @@ functions:
 
 </File>
 
-<File name='functions/schema.yml'>
+<File name='functions/properties.yml'>
 
 ```yaml
 functions:
