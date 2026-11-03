@@ -17,9 +17,9 @@ availability:
 
 ## What to know before upgrading
 
-### Python 3.10
-
-v1.13 requires Python 3.11 or later. Python 3.10 is no longer supported. Refer to [What version of Python can I use?](/faqs/Core/install-python-compatibility).
+:::info
+dbt v1.13 requires Python 3.11 or later. Python 3.10 is no longer supported. Refer to [What version of Python can I use?](/faqs/Core/install-python-compatibility).
+:::
 
 dbt Labs is committed to providing backward compatibility for all versions 1.x. Any behavior changes will be accompanied by a [behavior change flag](/reference/global-configs/behavior-changes#behavior-change-flags) to provide a migration window for existing projects. If you encounter an error upon upgrading, please let us know by [opening an issue](https://github.com/dbt-labs/dbt/issues/new).
 

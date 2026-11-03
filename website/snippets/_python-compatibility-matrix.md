@@ -9,5 +9,3 @@
 | Python 3.10      | ❌    | ✅    | ✅    | ✅    | ✅    | ✅    | ✅    | ✅    | ✅    | ✅    | ✅    | ✅    | ✅    | ✅    |
 
 ⚠️ Python 3.13 is supported in dbt v1.10 for the Postgres adapter.
-
-Python 3.10 is not supported in dbt v1.13. Use Python 3.11 or later.
