@@ -51,15 +51,17 @@ Each v2 minor version moves through three prerelease stages before it reaches GA
 
 Each minor version starts at its first alpha (for example, `2.1.0a1`). Successive alpha releases build toward beta, then RC, and finally GA. When a minor version reaches GA, the first alpha of the next minor version opens, cut from the latest nightly build.
 
+Using 2.1 as an example:
+
 ```txt
-2.x.0a1  → a2  → …   Bigger changes and behavior-default flips
+2.1.0a1  → a2  → …   Bigger changes and behavior-default flips
               ↓
-2.x.0b1  → b2  → …   More improvements; no default flips
+2.1.0b1  → b2  → …   More improvements; no default flips
               ↓
-2.x.0rc1 → rc2 → …   Small, non-breaking patches
+2.1.0rc1 → rc2 → …   Small, non-breaking patches
               ↓
-2.x.0 GA             Stable release
-              └──────→ 2.x+1.0a1 opens immediately
+2.1.0 GA             Stable release
+              └──────→ 2.2.0a1 opens immediately
 ```
 
 Because default flag flips only occur during alpha, the behavior defaults of a minor version are settled by the time it reaches beta. This gives you time to test and prepare before GA. For the current prerelease, refer to [dbt releases](/docs/dbt/dbt-releases).
@@ -68,7 +70,7 @@ Because default flag flips only occur during alpha, the behavior defaults of a m
 
 A backport is a patch made to a previous minor version of dbt. Backports are made only when explicitly requested or when a security patch is identified internally or externally. A backport contains only the fix, not other updates made to the newer minor version.
 
-For example, suppose a fix is first released in a prerelease of the next minor version (2.x). If it's backported, it also ships as a new patch of the current minor version, which contains only that fix.
+For example, suppose a fix is first released in a prerelease of a minor version. If it's backported, it also ships as a new patch of the current minor version, which contains only that fix. For example, a fix released in 2.2.0b1 could be backported to the GA 2.1 release as a patch. 
 
 ### Release channels
 

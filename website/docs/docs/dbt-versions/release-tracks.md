@@ -24,7 +24,7 @@ _`v2 Stable` is the default for all new <Constant name="fusion" />-powered proje
 | **v2 Preview** | Weekly | The most recent prerelease (alpha, beta, or release candidate) of the next minor version. Each week the prerelease is incremented (for example, `2.1.0a1` to `2.1.0a2`). When a release candidate reaches general availability (GA), Preview moves to the first alpha (for example, `2.2.0a1`) of the next minor version. Use it to test upcoming changes before they reach Stable. For what can change at each stage, refer to [Prerelease stages](/docs/dbt-versions#prerelease-stages). | All plans | `fusion-preview` |
 | **v2 Stable** (default) | Each new minor version GA | The latest generally available minor version, including its patches. Balances stability and feature access. | All plans | `fusion-stable` |
 | **v2 Extended** | Each new minor version GA | The previous minor version, including its patches. When a new minor version reaches GA, Extended moves to the previous minor version (for example, `v2.1`, once dbt reaches `v2.2`). Designed for teams that adopt new behavior changes more slowly and need to stay on a previous minor version for longer. | Enterprise, Enterprise+ | `fusion-extended` |
-| **v2 Fallback** | Each new minor version GA | The minor version two back (N-2, once dbt reaches v2.2), including its patches. Emergency rollback option for account admins. | Enterprise+ | `fusion-fallback` |
+| **v2 Fallback** | Each new minor version GA | Two minor versions behind the current release (starting with v2.2, when the fallback will be v2.0), including its patches. Emergency rollback option for account admins. | Enterprise+ | `fusion-fallback` |
 
 
 ### <Constant name="core" /> release tracks {#dbt-v1-release-tracks}
