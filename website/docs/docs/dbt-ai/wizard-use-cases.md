@@ -57,7 +57,7 @@ Check whether this dbt project is ready to upgrade to dbt v2. List everything th
 
 What <Constant name="wizard" /> does:
 1. Loads its built-in upgrade workflow and checks your project's prerequisites, adapter, version, and blockers
-2. Tells you whether the project is ready and what's in the way. 
+2. Reports whether the project is ready and what's blocking it.
 3. Patches the project settings, installs the declared packages, and parses the project on dbt v2 without running any models
 4. Shows every changed file in the **Changes** pane, and leaves the warehouse checks for you to start from **Validation**
 
