@@ -65,7 +65,7 @@ Refer to the [Model Provider Rate Table](https://www.getdbt.com/legal/dbt-wizard
 
 If your AI model provider (OpenAI, Anthropic, Fireworks, and so on) has an outage and downtime, <Constant name="wizard" /> keeps working: dbt Labs automatically reroutes your requests to Amazon Web Services (AWS) Bedrock, with no action from your end.
 
-- **Who gets it:** <Constant name="dbt_platform" /> accounts on AWS that use dbt <Term id="managed" /> models.
+- **Who gets it:** This only applies to <Constant name="dbt_platform" /> accounts that use AWS that use dbt <Term id="managed" /> AI models.
 - **Who doesn't:** BYOK users as traffic only goes to the provider you configured, so if that provider is down, requests will fail.
 
 ## Bring your own key (BYOK)
