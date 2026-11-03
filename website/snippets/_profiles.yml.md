@@ -21,13 +21,14 @@ The `profile` field in [`dbt_project.yml`](/reference/dbt_project.yml) reference
 Only one `profiles.yml` file is required and it can manage multiple projects and connections. 
 
 <Tabs>
+
 <TabItem value="fusion" label="dbt v2">
 
 <Constant name="fusion"/> searches for the parent directory of `profiles.yml` in the following order and uses the first location it finds:
 
-1. `--profiles-dir` flag &mdash; Override for CI/CD or testing.
-2. Project root directory &mdash; Project-specific credentials.
-3. `~/.dbt/` directory (Recommended location) &mdash; Shared across all projects.
+1. `--profiles-dir` flag &mdash; Override for CI/CD or testing. 
+2. Current working directory &mdash; Project-specific credentials.
+3. `~/.dbt/profiles.yml` (Recommended location) &mdash; Shared across all projects.
 
 </TabItem>
 <TabItem value="core" label="dbt v1">
