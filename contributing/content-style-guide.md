@@ -70,6 +70,7 @@ Plan tiers (capitalize): Developer, Starter, Enterprise, Enterprise+
 - dbt Charts
 - Lake Compute
 - dbt Information Schema
+- Wizard Desktop
 
 **Do not capitalize these features:**
 - dbt platform
