@@ -16,12 +16,12 @@ Common use cases for <Constant name="wizard" />, with example prompts and what t
 Start a new [chat or session](/best-practices/how-to-use-wizard/wizard-1-intro#use-one-chat-per-task) for each discrete task. For example, building a model and debugging an unrelated job failure should be two separate conversations.
 
 <!-- no toc -->
-- Featured scenarios
+- **[Featured scenarios](#featured-scenarios)**
     - [Upgrade a project to dbt v2](#upgrade-a-project-to-dbt-v2)
     - [Fix a result by commenting on it](#fix-a-result-by-commenting-on-it)
     - [Work on several tasks at once](#work-on-several-tasks-at-once)
     - [Migrate legacy code to dbt](#migrate-legacy-code-to-dbt)
-- Everyday tasks
+- **[Everyday tasks](#everyday-tasks)**
     - [Build a new model](#build-a-new-model)
     - [Refactor to incremental](#refactor-to-incremental)
     - [Add tests and docs](#add-tests-and-docs)
@@ -46,7 +46,7 @@ Start here and use each scenario's prompt you can copy.
 ### Upgrade a project to dbt v2
 _Recommended with Wizard Desktop_
 
-Let's say you have a project on an older dbt version and are curious how to upgrade it. Use <Constant name="wizard" /> Desktop to review what needs to change for the upgrade and help fix any issues blocking it.
+Let's say you have a project on an older dbt version and are curious how to [upgrade it to dbt v2](/docs/dbt-versions/dbt-upgrade/upgrading-to-v2). Use <Constant name="wizard" /> Desktop to review what needs to change for the upgrade and help fix any issues blocking it.
 
 
 <AgentPrompt heading="Copy this prompt" description="Replace the [placeholders] with your own values, then paste it into Wizard Desktop.">
