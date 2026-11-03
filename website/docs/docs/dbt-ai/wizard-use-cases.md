@@ -50,7 +50,7 @@ Let's say you have a project on an older dbt version and are curious how to upgr
 
 
 <AgentPrompt heading="Copy this prompt" description="Replace the [placeholders] with your own values, then paste it into Wizard Desktop.">
-Check whether this dbt project is ready to upgrade to dbt v2. List everything that blocks the upgrade, such as deprecated configs, packages that aren't installed, or code that doesn't parse on v2. Then fix what you can, parse the project on dbt v2 without running any models, and summarize what changed. My adapter is [adapter, for example Snowflake] and I'm currently on dbt [current version].
+Check whether this dbt project is ready to upgrade to dbt v2. List everything that blocks the upgrade, such as deprecated configs, packages that aren't installed, or code that doesn't parse on v2. Then fix what you can, parse the project on dbt v2 without running any models, and summarize what changed. In the results confirm what my adapter and current dbt version are.
 </AgentPrompt>
 
 <Lightbox src="/img/wizard/desktop/wizard-desktop-v2-upgrade.gif" title="Wizard Desktop checking whether a project is ready to upgrade, then fixing what blocks it" />
@@ -73,7 +73,7 @@ If you're working on something and noticed part of <Constant name="wizard" />'s 
 
 
 <AgentPrompt heading="Copy this prompt" description="Replace the [placeholders] with your own values, then paste it into Wizard Desktop.">
-Show [metric, for example Q1 revenue] from [model name] and briefly explain how it's calculated.
+Exclude records where [condition, e.g., status = 'cancelled'] and recalculate all aggregate metrics
 </AgentPrompt>
 
 <video width="100%" height="100%" playsinline muted controls>
@@ -89,7 +89,7 @@ Tips:
 - For more on comments, refer to [Review and validate changes](/docs/dbt-ai/wizard-desktop-use#review-and-validate-changes).
 
 ### Work on several tasks at once
-_Wizard Desktop only_
+_Recommended with Wizard Desktop_
 
 Let's say you want to refactor a model, chase down test gaps, and answer a data question, without the work getting mixed together. 
 
