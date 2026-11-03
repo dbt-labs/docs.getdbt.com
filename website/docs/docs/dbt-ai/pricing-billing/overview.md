@@ -61,7 +61,7 @@ You'll see two kinds of models across these pages:
 
 Refer to the [Model Provider Rate Table](https://www.getdbt.com/legal/dbt-wizard-token-costs-by-model) and [Supported AI providers](#supported-ai-providers) for the full list of what's available where.
 
-### Model failover
+### Automatic backup during outages
 
 Provider outages happen. If OpenAI, Anthropic, or Fireworks goes down, <Constant name="wizard" /> keeps working: dbt Labs automatically reroutes your requests to AWS Bedrock, with no action from you.
 
