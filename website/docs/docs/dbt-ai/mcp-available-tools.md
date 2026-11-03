@@ -9,10 +9,6 @@ import McpToolsFromReadme from '/snippets/_mcp-tools-from-readme.md';
 
 The dbt MCP server has access to many parts of the dbt experience related to development, deployment, and discovery. This page lists the tools available in the dbt MCP server and how to configure them.
 
-:::caution Remote MCP tools can change without notice
-Remote MCP tool inputs and outputs can change without notice or a deprecation period. Refer to [Tool changes on the remote MCP server](#tool-changes-on-the-remote-mcp-server).
-:::
-
 ## Supported tools by MCP server type
 
 The following sections list every tool by category, along with which server type (local or remote) supports it.
@@ -29,21 +25,15 @@ The following sections list every tool by category, along with which server type
 | [Product Docs Tools](#product-docs) |  ✅ | ✅ |
 | [MCP Server Metadata Tools](#mcp-server-metadata) | ✅ | ✅ |
 
-Note that access to the Discovery API and the Semantic Layer API is limited depending on your [plan type](https://www.getdbt.com/pricing).
+Note that access to the Discovery API and the Semantic Layer API is limited depending on your [plan type](https://www.getdbt.com/pricing). 
+
+Remote MCP tools can change without notice or a deprecation period, refer to [Tool changes on the remote MCP server](#tool-changes-on-the-remote-mcp-server).
 
 ### Tools that require AI features
 
 `text_to_sql` is the only tool that depends on [AI features](/docs/platform/manage-dbt-ai) being enabled for your account.
 
 If an admin turns AI features off, `text_to_sql` doesn't appear in the tool list for the remote MCP server. Every other tool keeps working. Turning off AI features doesn't disable remote MCP.
-
-## Tool changes on the remote MCP server
-
-The remote MCP server is built for AI agents, so its tools can change without notice or a deprecation period. Don't treat tool input or output formats (for example, response structure or pagination) as a contract.
-
-- We aim not to remove existing features and avoid renaming tools, because some clients use tool names for auto-approve or allow/reject lists.
-- If you need a stable, versioned response format, use the [dbt APIs](/docs/dbt-apis/overview) directly.
-- If you need a frozen set of tools and inputs/outputs, pin a version of the [self-hosted MCP server](/docs/dbt-ai/setup-local-mcp) and run it yourself. You won't get fixes or improvements until you upgrade. See the [dbt-mcp examples](https://github.com/dbt-labs/dbt-mcp/tree/main/examples) for setups you can adapt.
 
 ## dbt MCP server tool list
 
@@ -67,6 +57,14 @@ Once you query your assistant, it will typically:
 4. Start it with `trigger_job_run` and the job's ID
 
 You don't have to call the tools yourself. Try a prompt like: "List jobs in this project, find the UAT, staging, or CI job, and trigger it."
+
+## Tool changes on the MCP server
+
+dbt MCP tools are generally built for AI agents, so their structure can change without notice or a deprecation period.
+
+- We aim not to remove existing features and avoid renaming tools, because some clients use tool names for auto-approve or allow/reject lists.
+- If you need a stable, versioned response format, we recommend using the [dbt APIs](/docs/dbt-apis/overview) directly.
+- If you need a frozen set of tools and inputs/outputs, we recommend pinning a version of the [self-hosted MCP server](/docs/dbt-ai/setup-local-mcp) and run it yourself. Refer to the [dbt-mcp examples](https://github.com/dbt-labs/dbt-mcp/tree/main/examples) for examples.
 
 ## FAQs
 
