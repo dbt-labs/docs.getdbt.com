@@ -65,9 +65,8 @@ Refer to the [Model Provider Rate Table](https://www.getdbt.com/legal/dbt-wizard
 
 <Constant name="wizard" /> switches to an automatic backup provider if your AI model provider has an outage or downtime by automatically rerouting your requests to Amazon Web Services (AWS) Bedrock, with no action from your end and to help you avoid disruption.
 
-This only applies to <Constant name="dbt_platform" /> accounts on AWS and that use dbt <Term id="managed" /> AI models.
-
-BYOK users will not be automatically rerouted as traffic only goes to the configured AI provider, so if that provider is down, requests will fail.
+- This only applies to <Constant name="dbt_platform" /> accounts on AWS and that use dbt <Term id="managed" /> AI models.
+- BYOK users will not be automatically rerouted as traffic only goes to the configured AI provider, so if that provider is down, requests will fail.
 
 ## Bring your own key (BYOK)
 
