@@ -388,7 +388,6 @@ const sidebarSettings = {
           link: { type: "doc", id: "docs/platform/wizard-overview" },
           items: [
             "docs/platform/wizard-overview",
-            "docs/dbt-ai/wizard-quickstart",
             "docs/platform/manage-dbt-ai",
             "docs/dbt-ai/wizard-use-cases",
             "docs/dbt-ai/wizard-how-it-works",
