@@ -116,13 +116,15 @@ Let's say your transformation logic lives in a script or stored procedure outsid
 Migrate [path to your script or stored procedure] to dbt. Split the logic into staging models and a mart that follow this project's naming and YAML conventions, load any static inputs as seeds, add tests, and run dbt build on the new models. Reuse existing models and sources where they already cover the logic, and summarize what you created.
 </AgentPrompt>
 
-<!--need to add the video but have to trim it since its big -->
+<video width="100%" height="100%" playsinline muted controls>
+  <source src="/img/wizard/platform/wizard-platform-migration.mp4" type="video/mp4" />
+</video>
 
 What <Constant name="wizard" /> does:
 1. Reads the script and checks your project for existing models and sources, so it doesn't duplicate logic
 2. Learns your naming, CTE, and YAML conventions from nearby staging and mart models
 3. Splits the script into staging models, seeds for static inputs, and a mart, with tests and YAML
-4. Asks permission before it runs `dbt parse` and `dbt build` on the new models, then lists every new and changed file in your version control changes
+4. Asks permission before it runs `dbt parse` and `dbt build` on the new models, checks that the new output matches the legacy output, then lists every new and changed file in your version control changes
 
 Tips:
 - Attach the script to your chat so <Constant name="wizard" /> starts from the exact file.
