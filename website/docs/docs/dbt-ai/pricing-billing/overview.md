@@ -61,6 +61,13 @@ You'll see two kinds of models across these pages:
 
 Refer to the [Model Provider Rate Table](https://www.getdbt.com/legal/dbt-wizard-token-costs-by-model) and [Supported AI providers](#supported-ai-providers) for the full list of what's available where.
 
+### Model failover
+
+Provider outages happen. If OpenAI, Anthropic, or Fireworks goes down, <Constant name="wizard" /> keeps working: dbt Labs automatically reroutes your requests to AWS Bedrock, with no action from you.
+
+- **Who gets it:** <Constant name="dbt_platform" /> accounts on AWS that use dbt <Term id="managed" /> models.
+- **Who doesn't:** BYOK users. Traffic only goes to the provider you configured, so if that provider is down, requests fail.
+
 ## Bring your own key (BYOK)
 
 With BYOK, you supply your own credentials for a provider &mdash; OpenAI, Anthropic, Azure AI Foundry, AWS Bedrock, Google Gemini, Snowflake Cortex, or Databricks.

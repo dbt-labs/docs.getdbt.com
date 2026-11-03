@@ -61,7 +61,7 @@ The following table shows where <Constant name="wizard" /> is available, the AI 
 
 <WizardSupportedProviders />
 
-For pricing and how billing works, refer to [Models and pricing](/docs/dbt-ai/pricing-billing/overview).
+For pricing and how billing works, refer to [Models and pricing](/docs/dbt-ai/pricing-billing/overview). If a provider has an outage, dbt <Term id="managed" /> traffic [fails over](/docs/dbt-ai/pricing-billing/overview#model-failover) to a backup, so <Constant name="wizard" /> keeps working.
 
 ## Get started
 

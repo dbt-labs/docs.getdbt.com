@@ -22,6 +22,7 @@ For <Constant name="fusion_engine" /> updates, refer to the [v2 changelog](https
 
 ## November 2026
 
+- **New:** <Constant name="wizard" /> in the <Constant name="dbt_platform" /> now fails over automatically. If your AI provider has an outage, dbt <Term id="managed" /> traffic reroutes to a backup so you can keep working. Refer to [dbt managed providers](/docs/dbt-ai/pricing-billing/overview#dbt-managed-providers).
 - **New**: Read-only users can query metrics through [remote MCP](/docs/dbt-ai/setup-remote-mcp#read-only-users-and-warehouse-credentials) using the shared [analytics credential](/docs/platform/wizard-read-only-users#set-up-analytics-credentials), which needs to be set up by an admin. 
 
 ## October 2026
