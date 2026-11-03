@@ -68,7 +68,7 @@ For GitLab, account admins can update an existing GitLab application to your new
 | [GitLab (managed app)](/docs/platform/git/connect-gitlab#setting-up-a-gitlab-oauth-application) | Add the new redirect URI to your GitLab group application, then [update it in <Constant name="dbt_platform" />](#update-redirect-uris-in-dbt-platform) |
 | [GitLab (bring-your-own app)](/docs/platform/git/connect-gitlab#setting-up-a-gitlab-oauth-application) | Add the new redirect URI to your GitLab group application, then [update it in <Constant name="dbt_platform" />](#update-redirect-uris-in-dbt-platform) |
 | [Azure DevOps (service principal)](/docs/platform/git/setup-service-principal) | Update or add an app registration |
-| GitHub Enterprise (self-managed app) | Before your assignment date, contact [dbt Support](mailto:support@getdbt.com) for the callback URL to add to your GitHub app. Update webhook URLs to your new access URL before the end-of-support date. |
+| GitHub Enterprise (self-managed app) | Before your assignment date, add the callback URL from your assignment notification email to your GitHub app. Update webhook URLs to your new access URL before the end-of-support date. |
 
 ### Data platform connections
 
