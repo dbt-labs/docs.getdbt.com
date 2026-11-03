@@ -107,7 +107,7 @@ Tips:
 - For more on how this works, refer to [Chats and worktrees](/docs/dbt-ai/wizard-desktop-use#chats-and-worktrees).
 
 ### Migrate legacy code to dbt
-_Recommended with <Constant name="dbt_platform" />_
+_Recommended with <Constant name="dbt_platform" /> or Wizard Desktop_
 
 Let's say your transformation logic lives in a script or stored procedure outside dbt. Point <Constant name="wizard" /> at it and ask it to rebuild the logic as dbt models that follow your project's conventions.
 
