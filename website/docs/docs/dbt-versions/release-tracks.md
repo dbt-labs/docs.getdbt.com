@@ -101,9 +101,9 @@ To configure an environment in the [dbt Admin API](/docs/dbt-apis/admin-api) or 
 - `compatible`
 - `extended`
 
-### Common architectures
+<VersionBlock firstVersion="2.0">
 
-#### dbt v2 track architectures
+### dbt v2 track architectures
 
 **Default** &mdash; All plans
 - Prioritize the latest generally available minor version, which balances stability and new features
@@ -123,7 +123,11 @@ To configure an environment in the [dbt Admin API](/docs/dbt-apis/admin-api) or 
 - Configure production environments to use **v2 Extended** (one minor version behind v2 Stable)
 - Configure development environments to use **v2 Stable** so developers get access to upcoming changes before they reach production
 
-#### dbt v1 track architectures
+</VersionBlock>
+
+<VersionBlock lastVersion="1.99">
+
+### dbt v1 track architectures
 
 **Default** &mdash; Majority of customers on all plans
 - Prioritize immediate access to fixes and features
@@ -142,6 +146,8 @@ To configure an environment in the [dbt Admin API](/docs/dbt-apis/admin-api) or 
 
 **Virtual Private dbt or Single Tenant**
 - Changes to all release tracks roll out as part of <Constant name="dbt" /> instance upgrades once per week
+
+</VersionBlock>
 
 ## Upgrading from older versions
 
