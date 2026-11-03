@@ -73,7 +73,7 @@ If you're working on something and noticed part of <Constant name="wizard" />'s 
 
 
 <AgentPrompt heading="Copy this prompt" description="Replace the [placeholders] with your own values, then paste it into Wizard Desktop.">
-Exclude records where [condition, e.g., status = 'cancelled'] and recalculate all aggregate metrics
+Show [metric, for example Q1 revenue] from [model name] and briefly explain how it's calculated.
 </AgentPrompt>
 
 <video width="100%" height="100%" playsinline muted controls>
@@ -81,7 +81,7 @@ Exclude records where [condition, e.g., status = 'cancelled'] and recalculate al
 </video>
 
 What you do:
-1. Hover over the line that's wrong and add a comment to fix it. In this example video, it says what to change: `Exclude those and refresh the totals.`
+1. Hover over the line that's wrong and add a comment that says what to change. For example: `Exclude records where [condition, for example status = 'cancelled'] and recalculate the totals.` In the video, the comment is `Exclude those and refresh the totals.`
 2. Send it. The comment goes to <Constant name="wizard" /> with the line attached, so it knows exactly what you mean.
 
 Tips:
