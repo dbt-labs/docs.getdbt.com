@@ -27,7 +27,7 @@ If your account has not been assigned a new access URL, you will receive an emai
 :::info Update network rules before your assignment date
 Network rules must be in place before your assignment date. You can update the other integrations in the [integration checklist](#integration-checklist) any time before the end-of-support date. For a summary, refer to [What do I need to update before and after my assignment date?](#what-do-i-need-to-update-before-and-after-my-assignment-date)
 
-If your organization uses network allowlisting, add a rule that matches all subdomains of `dbt.com` (for example, `*.dbt.com`). Some access URLs are more than one level deep, such as `ab123.us1.dbt.com`, so confirm your wildcard matches multi-level subdomains. For single-tenant accounts, IP addresses don't change as part of this migration. For multi-tenant accounts, refer to [Access, Regions, & IP addresses](/docs/platform/about-platform/access-regions-ip-addresses) for updated IPs. If your account has [IP restrictions](/docs/platform/secure/ip-restrictions) enabled, review [Validating IP restrictions](#validating-ip-restrictions) before your assignment date.
+If your organization uses network allowlisting, allow the `dbt.com` domain and its subdomains. Access URLs can be more than one level deep, such as `ab123.us1.dbt.com`, so make sure your rules cover multi-level subdomains. For single-tenant accounts, IP addresses don't change as part of this migration. For multi-tenant accounts, refer to [Access, Regions, & IP addresses](/docs/platform/about-platform/access-regions-ip-addresses) for updated IPs. If your account has [IP restrictions](/docs/platform/secure/ip-restrictions) enabled, review [Validating IP restrictions](#validating-ip-restrictions) before your assignment date.
 
 If your account uses inbound private connectivity (ingress PrivateLink), [dbt Support](mailto:support@getdbt.com) will contact you before your assignment with guidance for your configuration.
 :::
@@ -68,7 +68,7 @@ For GitLab, account admins can update an existing GitLab application to your new
 | [GitLab (managed app)](/docs/platform/git/connect-gitlab#setting-up-a-gitlab-oauth-application) | Add the new redirect URI to your GitLab group application, then [update it in <Constant name="dbt_platform" />](#update-redirect-uris-in-dbt-platform) |
 | [GitLab (bring-your-own app)](/docs/platform/git/connect-gitlab#setting-up-a-gitlab-oauth-application) | Add the new redirect URI to your GitLab group application, then [update it in <Constant name="dbt_platform" />](#update-redirect-uris-in-dbt-platform) |
 | [Azure DevOps (service principal)](/docs/platform/git/setup-service-principal) | Update or add an app registration |
-| GitHub Enterprise (self-managed app) | Before your assignment date, add `https://oauth.TENANT_NAME.dbt.com/complete/github` as a callback URL in your GitHub app. Update webhook URLs to your new access URL before the end-of-support date. For help, contact [dbt Support](mailto:support@getdbt.com). |
+| GitHub Enterprise (self-managed app) | Before your assignment date, add `https://oauth.INSTANCE_NAME.dbt.com/complete/github` as a callback URL in your GitHub app, where `INSTANCE_NAME` is the part of your access URL after the account prefix (for example, `acme` in `ab123.acme.dbt.com`). Update webhook URLs to your new access URL before the end-of-support date. For help, contact [dbt Support](mailto:support@getdbt.com). |
 
 ### Data platform connections
 
@@ -103,7 +103,7 @@ If several connections share one OAuth app, add the new redirect URI once to tha
 
 | Integration | Action required |
 |---|---|
-| Network allowlists | Add `*.dbt.com` to your allowlist policies before your assignment date. See the [note on network rules](#what-does-this-mean-for-me). |
+| Network allowlists | Allow `dbt.com` and its subdomains in your allowlist policies before your assignment date. See the [note on network rules](#what-does-this-mean-for-me). |
 | Inbound webhooks | Update access URLs in your webhook configurations |
 | [API integrations](/docs/dbt-apis/overview) | Update access URLs in your API clients |
 | [Terraform provider](https://registry.terraform.io/providers/dbt-labs/dbtcloud/latest/docs) | Update access URLs in your Terraform configuration |
@@ -111,7 +111,7 @@ If several connections share one OAuth app, add the new redirect URI once to tha
 
 ## Validating IP restrictions
 
-If you've received notification of a new access URL assignment and have IP restrictions enabled, review the network rules that point specifically at your legacy region URL. These include VPN split-tunneling rules, proxy (PAC) rules, and firewall egress rules. Update these rules for your new `*.dbt.com` access URL before your account's scheduled assignment date so access isn't disrupted.
+If you've received notification of a new access URL assignment and have IP restrictions enabled, review the network rules that point specifically at your legacy region URL. These include VPN split-tunneling rules, proxy (PAC) rules, and firewall egress rules. Update these rules for your new access URL before your account's scheduled assignment date so access isn't disrupted.
 
 To confirm your new access URL is accessible, send a test request from the same network you'd normally use to reach your legacy region URL. Replace `NEW_ACCESS_URL` with your account's new access URL and `ACCOUNT_ID` with your account ID:
 
