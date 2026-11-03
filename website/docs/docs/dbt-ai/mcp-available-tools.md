@@ -27,7 +27,7 @@ The following sections list every tool by category, along with which server type
 
 Note that access to the Discovery API and the Semantic Layer API is limited depending on your [plan type](https://www.getdbt.com/pricing). 
 
-Remote MCP tools can change without notice or a deprecation period, refer to [Tool changes on the remote MCP server](#tool-changes-on-the-remote-mcp-server).
+Remote MCP tools can change without notice or a deprecation period, refer to [Tool changes on the remote MCP server](#tool-changes-on-the-mcp-server).
 
 ### Tools that require AI features
 
