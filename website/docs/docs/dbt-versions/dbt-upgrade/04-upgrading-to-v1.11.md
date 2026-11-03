@@ -135,7 +135,7 @@ dbt parse --warn-error-options '{"silence": ["Deprecations"]}'
 
 ### Starburst/Trino
 
-- The Starburst/Trino adapter supports scalar SQL [user-defined functions](/docs/build/udfs) (UDFs). For configuration details and limitations, refer to [Starburst/Trino configurations](/reference/resource-configs/trino-configs#user-defined-functions).
+- The Starburst/Trino adapter supports scalar SQL [UDFs](/docs/build/udfs). For configuration details and limitations, refer to [Starburst/Trino configurations](/reference/resource-configs/trino-configs#user-defined-functions).
 
 ## Quick hits
 
