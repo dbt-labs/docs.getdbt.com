@@ -297,9 +297,13 @@ Euclid is now logged in to their account. They only have access to the `Jaffle S
 
 The `Production` environment is visible, but it is `read-only`, and they have full access in the `Staging` environment. 
 
+<DocCarousel slidesPerView={1}>
+
 <Lightbox src="/img/docs/dbt-platform/dbt-platform-enterprise/access-control/production-restricted.png" width="60%" title="The Production environment landing page with read-only access." />
 
 <Lightbox src="/img/docs/dbt-platform/dbt-platform-enterprise/access-control/staging-access.png" width="60%" title="The Staging environment landing page with full access." />
+
+</DocCarousel>
 
 </Expandable>
 
