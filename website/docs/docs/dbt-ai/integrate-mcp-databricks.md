@@ -29,8 +29,6 @@ This is the easiest path:
 5. Leave the remaining fields at their defaults, then select **Install**.
 6. Open the MCP service page and authorize access to <Constant name="dbt_platform" />.
 
-<Lightbox src="/img/mcp/databricks-install-dbt-mcp.png" width="60%" title="The Install dbt MCP dialog in Databricks Marketplace" />
-
 The install dialog is prefilled with these values:
 
 | Field | Value |
