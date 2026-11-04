@@ -30,15 +30,7 @@ This is the easiest path:
 6. Leave the remaining fields at their defaults, then select **Install**.
 7. Open the MCP service page and authorize access to <Constant name="dbt_platform" />.
 
-The install dialog is prefilled with these values:
-
-| Field | Value |
-| --- | --- |
-| Host | `https://{tenant}.dbt.com` |
-| Base path | `/api/ai/v1/mcp/` |
-| Credential type | Dynamic Client Registration |
-| Port | `443` |
-| OAuth scope | `offline_access account:read projects:query catalog:read projects:develop jobs:run` |
+The install requests these OAuth scopes: `offline_access account:read projects:query catalog:read projects:develop jobs:run`.
 
 ## Use the dbt MCP server in Databricks
 
