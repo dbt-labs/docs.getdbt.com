@@ -22,12 +22,12 @@ For <Constant name="fusion_engine" /> updates, refer to the [v2 changelog](https
 
 ## November 2026
 
-- **New:** In <Constant name="wizard" /> Desktop, you can edit existing text files in the [Explorer](/docs/dbt-ai/wizard-desktop-use). Select **Save** or press <kbd>Cmd</kbd>/<kbd>Ctrl</kbd> + <kbd>S</kbd>. Edits save to a separate copy of your project, not your original files, and unsaved drafts stick around after you navigate away or restart.
+- **New:** In <Constant name="wizard" /> Desktop, you can edit existing text files in the [Explorer](/docs/dbt-ai/wizard-desktop-use). Select **Save** or press <kbd>Cmd</kbd>/<kbd>Ctrl</kbd> + <kbd>S</kbd>. Edits save to a separate copy of your project, not your original files, and unsaved drafts persist after you navigate away or restart.
 - **New:** In <Constant name="wizard" /> Desktop, switch between local dbt profiles and the <Constant name="platform_cli" /> from the connection menu. <Constant name="wizard" /> remembers your choice, even for projects linked to <Constant name="dbt_platform" />.
 - **New:** In the <Constant name="wizard" /> Desktop lineage view, right-click a model to copy its name, add it to chat, open its code, or view its diff. The actions you see depend on the model and the view you're in.
 - **New:** Use Claude Haiku 5.5 and Claude Sonnet 5.5 through Databricks in <Constant name="wizard" />.
 - **Enhancement:** In <Constant name="wizard" /> Desktop, multi-question cards now open as a single paged card. Go back to change your answers, and submit multiple-choice responses with clearer inline controls.
-- **Enhancement:** In <Constant name="wizard" /> Desktop, the Inspector's **Checks** tab is now **CI checks**, so it's easier to tell apart from [dbt checks](/docs/build/checks?version=2).
+- **Enhancement:** In <Constant name="wizard" /> Desktop, the Inspector's **Checks** tab is now **CI checks**, so it's easier to tell apart from [dbt checks](/docs/build/checks).
 - **Fix:** Signing out of your AI model account in <Constant name="wizard" /> Desktop no longer switches you to another account. Pick a replacement, or sign out without switching. Your other signed-in accounts still work for your profile and dbt tools.
 - **Fix:** When dbt AI providers need an account, chat and the model picker now tell you what's missing and open the account picker, instead of showing a generic provider error.
 - **Fix:** <Constant name="wizard" /> validation now works with Azure, Snowflake, Gemini, and Databricks models.
