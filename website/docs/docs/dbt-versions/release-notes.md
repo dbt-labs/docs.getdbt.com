@@ -27,7 +27,7 @@ For <Constant name="fusion_engine" /> updates, refer to the [v2 changelog](https
 - **New:** In the <Constant name="wizard" /> Desktop lineage view, right-click a model to copy its name, add it to chat, open its code, or view its diff. The actions you see depend on the model and the view you're in.
 - **New:** You can use Claude Haiku 5.5 and Claude Sonnet 5.5 through Databricks in <Constant name="wizard" />, including native tool use and, for Haiku, reasoning controls.
 - **Enhancement:** In <Constant name="wizard" /> Desktop, multi-question cards now open as a single paged card. Revisit your answers and submit multiple-choice responses with clearer inline controls.
-- **Enhancement:** In <Constant name="wizard" /> Desktop, the Inspector's **Checks** tab is now **CI checks**, so it's easier to tell apart from dbt checks.
+- **Enhancement:** In <Constant name="wizard" /> Desktop, the Inspector's **Checks** tab is now **CI checks**, so it's easier to tell apart from [dbt checks](/docs/build/checks?version=2).
 - **Fix:** Signing out of the account that powers dbt AI models in <Constant name="wizard" /> Desktop no longer silently switches you to another account. Choose a replacement, or sign out without switching. Your other signed-in accounts stay available for your profile and dbt tools.
 - **Fix:** When dbt AI providers need an account, chat and the model picker now explain what's missing and open the account picker, instead of showing a generic provider error.
 - **Fix:** <Constant name="wizard" /> validation agents now start with Azure, Snowflake, Gemini, and Databricks models.
