@@ -684,30 +684,46 @@ Additionally, you’ll see the job in the run history of <Constant name="dbt" />
 
 <TabItem value="github">
 
+<DocCarousel slidesPerView={1}>
+
 <Lightbox src="/img/guides/orchestration/custom-cicd-pipelines/dbt-run-on-merge-github.png" title="dbt run on merge job in GitHub" width="80%" />
 
 <Lightbox src="/img/guides/orchestration/custom-cicd-pipelines/dbt-cloud-job-github-triggered.png" title="dbt job showing it was triggered by GitHub" width="80%" />
 
+</DocCarousel>
+
 </TabItem>
 <TabItem value="gitlab">
+
+<DocCarousel slidesPerView={1}>
 
 <Lightbox src="/img/guides/orchestration/custom-cicd-pipelines/dbt-run-on-merge-gitlab.png" title="dbt run on merge job in GitLab" width="80%" />
 
 <Lightbox src="/img/guides/orchestration/custom-cicd-pipelines/dbt-cloud-job-gitlab-triggered.png" title="dbt job showing it was triggered by GitLab" width="80%" />
 
+</DocCarousel>
+
 </TabItem>
 <TabItem value="ado">
+
+<DocCarousel slidesPerView={1}>
 
 <Lightbox src="/img/guides/orchestration/custom-cicd-pipelines/dbt-run-on-merge-azure.png" width="85%" title="dbt run on merge job in ADO"/>
 
 <Lightbox src="/img/guides/orchestration/custom-cicd-pipelines/dbt-cloud-job-azure-triggered.png" width="80" title="ADO-triggered job in dbt"/>
 
+</DocCarousel>
+
 </TabItem>
 <TabItem value="bitbucket">
+
+<DocCarousel slidesPerView={1}>
 
 <Lightbox src="/img/guides/orchestration/custom-cicd-pipelines/dbt-run-on-merge-bitbucket.png" title="dbt run on merge job in Bitbucket" width="80%" />
 
 <Lightbox src="/img/guides/orchestration/custom-cicd-pipelines/dbt-cloud-job-bitbucket-triggered.png" title="dbt job showing it was triggered by Bitbucket" width="80%" />
+
+</DocCarousel>
 
 </TabItem>
 <TabItem value="codecommit">
