@@ -49,11 +49,6 @@
 .cardWrapper a:hover {
   text-decoration: none;
 }
-.cardWrapper h3 {
-  font-size: 1.25rem;
-  line-height: 1.875rem;
-}
-
 a.ctaLink {
   color: var(--text-neutral-primary);
   font-weight: 500;

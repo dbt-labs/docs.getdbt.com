@@ -18,7 +18,7 @@ Refer to [VS Code extension features](/docs/dbt-extension-features#feature-avail
 
 <VersionBlock firstVersion="1.13">
 
-You can sign in from the command line using [`dbt login`](/reference/commands/login?version=2.0), available with v2 and later. Your login state can be shared across dbt features, including the dbt VS Code extension and, in supported versions, dbt State.
+You can sign in from the command line using [`dbt login`](/reference/commands/login?version=2.0), available with v1.13 and later. Your login state can be shared across dbt features, including the dbt VS Code extension and, in supported versions, dbt State.
 
 </VersionBlock>
 
@@ -26,7 +26,7 @@ Run [`dbt login status`](/reference/commands/login?version=2.0#dbt-login-status)
 
 ## Key points
 
-- The extension is available to all users. Refer to the the [dbt Product License Agreement](https://www.getdbt.com/dbt-product-license-agreement) for more information.
+- The extension is available to all users. Refer to the [dbt Product License Agreement](https://www.getdbt.com/dbt-product-license-agreement) for more information.
 - Signing in links your editor to your <Constant name="dbt_platform" /> account so the extension can use <Constant name="dbt_platform" /> capabilities.
 - You can authenticate with `dbt login` or sign in from inside the extension. If you don't have a <Constant name="dbt_platform" /> account, you can create a free account during authentication.
 - If a valid [`dbt_cloud.yml`](/reference/dbt_cloud.yml) file exists on your machine, the extension can use it automatically.

@@ -12,9 +12,15 @@
 
 <h2> Installing {props.meta.pypi_package}</h2>
 
-Use `pip` to install the adapter. Use the following command for installation:
+{props.children}
 
-<code>python -m pip install {props.meta.pypi_package}</code>
+{!props.children && (
+  <>
+    Use `pip` to install the adapter. Use the following command for installation:
+  </>
+)}
+
+<code>python -m pip install {props.installPackages || props.meta.pypi_package}</code>
 
 <h2> Configuring {props.meta.pypi_package} </h2>
 

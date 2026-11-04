@@ -25,6 +25,8 @@ The following permissions are required for fundamental dbt features::
 | `bigquery.tables.list` | List tables in dataset |
 | `bigquery.tables.update` | Update table schema |
 | `bigquery.tables.updateData` | Insert, update, or delete rows |
+| `bigquery.routines.get` | Read routine metadata |
+| `bigquery.routines.list` | List routines in a dataset |
 | `bigquery.jobs.create` | Run queries |
 
 The following are optional permissions for additional dbt features:
@@ -56,7 +58,7 @@ The following are required for fundamental dbt features:
 | Query type | SQL or API used | Required permission |
 | --- | --- | --- |
 | Get table schema | `get_table_schema` API | `bigquery.tables.get` |
-| List relations | Query against dataset | `bigquery.tables.list` |
+| List relations | Query against dataset | `bigquery.tables.list`, `bigquery.routines.list` |
 | Source freshness | Query `__TABLES__` metadata | `bigquery.tables.get` |
 | Get table stats | Query `INFORMATION_SCHEMA` | `bigquery.tables.get` |
 | Create dataset | `CREATE SCHEMA` | `bigquery.datasets.create` |

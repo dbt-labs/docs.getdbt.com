@@ -218,7 +218,7 @@ class NodeType(Enum):
 
 
 class CatalogExploreCommand(ClickBaseModel):
-    """An inteactive application for exploring catalog artifacts."""
+    """An interactive application for exploring catalog artifacts."""
 
     file: Path = Field(default="catalog.json", description="Catalog file path.")
     title: str = Field(

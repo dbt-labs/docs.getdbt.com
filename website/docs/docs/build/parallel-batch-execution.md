@@ -28,7 +28,7 @@ To use parallel execution, you must meet the following prerequisites:
 
 After checking for the conditions in the [prerequisites](#prerequisites), and if `concurrent_batches` value isn't set, dbt will intelligently auto-detect if the model invokes the [`{{ this }}`](/reference/dbt-jinja-functions/this) Jinja function. If it references `{{ this }}`, the batches will run sequentially since  `{{ this }}` represents the database of the current model and referencing the same relation causes conflict. 
 
-Otherwise, if `{{ this }}` isn't detected (and other conditions are met), the batches will run in parallel, which can be overriden when you [set a value for `concurrent_batches`](/reference/resource-properties/concurrent_batches).
+Otherwise, if `{{ this }}` isn't detected (and other conditions are met), the batches will run in parallel, which can be overridden when you [set a value for `concurrent_batches`](/reference/resource-properties/concurrent_batches).
 
 ## Parallel or sequential execution
 

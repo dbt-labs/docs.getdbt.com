@@ -315,7 +315,7 @@ select * from final
 
 At the end of the above step, we have a table that looks very much like the `erp_components` that it used as the source, but with a few additional valuable columns:
 
-* `top_assembly_id` - This is the most important output of the hierarchy traversal.  It ties all sub components to a their common parent.  We'll use this in the next step to chop up the hierarchy into all the distinct ranges of time where the components that share a common top assembly are constant (and each distict range of time and `top_assembly_id` getting their own surrogate key).
+* `top_assembly_id` - This is the most important output of the hierarchy traversal.  It ties all sub components to a their common parent.  We'll use this in the next step to chop up the hierarchy into all the distinct ranges of time where the components that share a common top assembly are constant (and each distinct range of time and `top_assembly_id` getting their own surrogate key).
 * `component_hierarchy_depth` - Indicates how far removed a component is from the top assembly.
 * `component_trace` - Contains an array of all the components linking this component to the top assembly.
 * `valid_from_at`/`valid_to_at` - If you have really high-quality source data, these will be identical to `installed_at`/`removed_at`.  However, in the real world, we've found cases where the installed and removal dates are not consistent between parent and child, either due to a data entry error or a technician forgetting to note when a component was removed.  So for example, we may have a parent assembly that was removed along with all of its children, but only the parent assembly has `removed_at` populated.  At this point, the `valid_from_at` and `valid_to_at` tidy up these kinds of scenarios.

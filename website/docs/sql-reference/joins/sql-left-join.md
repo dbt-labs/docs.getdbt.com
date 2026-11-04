@@ -25,7 +25,7 @@ left join <table_2> as t2
 on t1.id = t2.id 
 ```
 
-In this example above, there’s only one field from each table being used to join the two together together; if you’re joining between two database objects that require multiple fields, you can leverage AND/OR operators, and more preferably, <Term id="surrogate-key">surrogate keys</Term>. You may additionally add [WHERE](/sql-reference/where), [GROUP BY](/sql-reference/group-by), [ORDER BY](/sql-reference/order-by), [HAVING](/sql-reference/having), and other clauses after your joins to create filtering, ordering, and performing aggregations. You may also left (or any join really) as many joins as you’d like in an individual query or <Term id="cte" />.
+In this example above, there’s only one field from each table being used to join the two together; if you’re joining between two database objects that require multiple fields, you can leverage AND/OR operators, and more preferably, <Term id="surrogate-key">surrogate keys</Term>. You may additionally add [WHERE](/sql-reference/where), [GROUP BY](/sql-reference/group-by), [ORDER BY](/sql-reference/order-by), [HAVING](/sql-reference/having), and other clauses after your joins to create filtering, ordering, and performing aggregations. You may also left (or any join really) as many joins as you’d like in an individual query or <Term id="cte" />.
 
 ### SQL left join example
 

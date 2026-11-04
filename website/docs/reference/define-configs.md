@@ -48,7 +48,7 @@ Most configurations are "clobbered"  when applied hierarchically. Whenever a mor
   {owner: "alice", dagster: {asset_key: "my_key"}}
   ```
  
-  `owner` is kept because it appears at only one level. `dagster` appears at both levels, so the more specific value replaces it as a whole — and because the merge never looks inside `dagster`, the nested `automation_condition` is lost.  A deep (recursive) merge would instead combine the nested keys, producing `dagster: {automation_condition: "eager", asset_key: "my_key"}`. `meta` doen't do this &mdash; nested dictionaries are replaced, not merged.
+  `owner` is kept because it appears at only one level. `dagster` appears at both levels, so the more specific value replaces it as a whole — and because the merge never looks inside `dagster`, the nested `automation_condition` is lost.  A deep (recursive) merge would instead combine the nested keys, producing `dagster: {automation_condition: "eager", asset_key: "my_key"}`. `meta` doesn't do this &mdash; nested dictionaries are replaced, not merged.
 
 ### Which config wins across levels
 For clobbering and merging configurations that are inherited from multiple levels, the general rules are:

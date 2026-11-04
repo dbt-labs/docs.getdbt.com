@@ -2,7 +2,7 @@
   "_meta": {
     "platform": "databricks",
     "platform_name": "Databricks",
-    "count": 783
+    "count": 813
   },
   "functions": [
     {
@@ -80,7 +80,7 @@
       "category": "Built-in",
       "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/ai_decide",
       "preview_status": "GA",
-      "fusion_typecheck": false
+      "fusion_typecheck": true
     },
     {
       "name": "AI_DETECT_ANOMALIES",
@@ -1014,6 +1014,20 @@
       "fusion_typecheck": true
     },
     {
+      "name": "CURRENT_OAUTH_CUSTOM_IDENTITY_CLAIM",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/current_oauth_custom_identity_claim",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "CURRENT_PATH",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/current_path",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "CURRENT_RECIPIENT",
       "category": "Built-in",
       "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/current_recipient",
@@ -1462,6 +1476,13 @@
       "fusion_typecheck": true
     },
     {
+      "name": "FROM_PROTOBUF",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/from_protobuf",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "FROM_UNIXTIME",
       "category": "Built-in",
       "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/from_unixtime",
@@ -1535,6 +1556,20 @@
       "name": "GTEQSIGN",
       "category": "Built-in",
       "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/gteqsign",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "GTGTGTSIGN",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/gtgtgtsign",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "GTGTSIGN",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/gtgtsign",
       "preview_status": "GA",
       "fusion_typecheck": false
     },
@@ -1868,6 +1903,13 @@
       "fusion_typecheck": true
     },
     {
+      "name": "HMAC",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/hmac",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "HOUR",
       "category": "Built-in",
       "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/hour",
@@ -1879,7 +1921,7 @@
       "category": "Built-in",
       "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/http_request",
       "preview_status": "GA",
-      "fusion_typecheck": false
+      "fusion_typecheck": true
     },
     {
       "name": "HYPOT",
@@ -2435,6 +2477,20 @@
       "fusion_typecheck": true
     },
     {
+      "name": "LOCALTIME",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/localtime",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "LOCALTIMESTAMP",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/localtimestamp",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
       "name": "LOCATE",
       "category": "Built-in",
       "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/locate",
@@ -2505,6 +2561,13 @@
       "fusion_typecheck": false
     },
     {
+      "name": "LTLTSIGN",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/ltltsign",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "LTRIM",
       "category": "Built-in",
       "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/ltrim",
@@ -2557,6 +2620,20 @@
       "name": "MAKE_TIMESTAMP",
       "category": "Built-in",
       "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/make_timestamp",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "MAKE_TIMESTAMP_LTZ",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/make_timestamp_ltz",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "MAKE_TIMESTAMP_NTZ",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/make_timestamp_ntz",
       "preview_status": "GA",
       "fusion_typecheck": true
     },
@@ -2788,6 +2865,13 @@
       "name": "MONTH",
       "category": "Built-in",
       "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/month",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "MONTHNAME",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/monthname",
       "preview_status": "GA",
       "fusion_typecheck": true
     },
@@ -3385,6 +3469,13 @@
       "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/rtrim",
       "preview_status": "GA",
       "fusion_typecheck": true
+    },
+    {
+      "name": "SCHEMA_OF_AVRO",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/schema_of_avro",
+      "preview_status": "GA",
+      "fusion_typecheck": false
     },
     {
       "name": "SCHEMA_OF_CSV",
@@ -4514,6 +4605,13 @@
       "fusion_typecheck": false
     },
     {
+      "name": "TIME",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/time",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "TIME_BUCKET",
       "category": "Built-in",
       "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/time_bucket",
@@ -4603,6 +4701,13 @@
       "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/timestamp_millis",
       "preview_status": "GA",
       "fusion_typecheck": true
+    },
+    {
+      "name": "TIMESTAMP_NANOS",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/timestamp_nanos",
+      "preview_status": "GA",
+      "fusion_typecheck": false
     },
     {
       "name": "TIMESTAMP_SECONDS",
@@ -4703,6 +4808,13 @@
       "fusion_typecheck": true
     },
     {
+      "name": "TO_PROTOBUF",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/to_protobuf",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "TO_TIME",
       "category": "Built-in",
       "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/to_time",
@@ -4713,6 +4825,20 @@
       "name": "TO_TIMESTAMP",
       "category": "Built-in",
       "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/to_timestamp",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TO_TIMESTAMP_LTZ",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/to_timestamp_ltz",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TO_TIMESTAMP_NTZ",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/to_timestamp_ntz",
       "preview_status": "GA",
       "fusion_typecheck": true
     },
@@ -4871,6 +4997,34 @@
       "fusion_typecheck": false
     },
     {
+      "name": "TRY_MAKE_INTERVAL",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/try_make_interval",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "TRY_MAKE_TIMESTAMP",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/try_make_timestamp",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TRY_MAKE_TIMESTAMP_LTZ",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/try_make_timestamp_ltz",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TRY_MAKE_TIMESTAMP_NTZ",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/try_make_timestamp_ntz",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
       "name": "TRY_MOD",
       "category": "Built-in",
       "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/try_mod",
@@ -4930,6 +5084,13 @@
       "name": "TRY_TO_BINARY",
       "category": "Built-in",
       "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/try_to_binary",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TRY_TO_DATE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/try_to_date",
       "preview_status": "GA",
       "fusion_typecheck": true
     },
@@ -5018,6 +5179,20 @@
       "fusion_typecheck": true
     },
     {
+      "name": "TUPLE_DIFFERENCE_THETA_DOUBLE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/tuple_difference_theta_double",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "TUPLE_DIFFERENCE_THETA_INTEGER",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/tuple_difference_theta_integer",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "TUPLE_INTERSECTION_AGG_DOUBLE",
       "category": "Built-in",
       "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/tuple_intersection_agg_double",
@@ -5044,6 +5219,20 @@
       "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/tuple_intersection_integer",
       "preview_status": "GA",
       "fusion_typecheck": true
+    },
+    {
+      "name": "TUPLE_INTERSECTION_THETA_DOUBLE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/tuple_intersection_theta_double",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "TUPLE_INTERSECTION_THETA_INTEGER",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/tuple_intersection_theta_integer",
+      "preview_status": "GA",
+      "fusion_typecheck": false
     },
     {
       "name": "TUPLE_SKETCH_AGG_DOUBLE",
@@ -5130,6 +5319,20 @@
       "fusion_typecheck": true
     },
     {
+      "name": "TUPLE_UNION_THETA_DOUBLE",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/tuple_union_theta_double",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "TUPLE_UNION_THETA_INTEGER",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/tuple_union_theta_integer",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "TYPEOF",
       "category": "Built-in",
       "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/typeof",
@@ -5184,6 +5387,13 @@
       "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/unix_millis",
       "preview_status": "GA",
       "fusion_typecheck": true
+    },
+    {
+      "name": "UNIX_NANOS",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/unix_nanos",
+      "preview_status": "GA",
+      "fusion_typecheck": false
     },
     {
       "name": "UNIX_SECONDS",

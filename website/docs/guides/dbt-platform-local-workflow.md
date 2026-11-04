@@ -287,11 +287,11 @@ On <Constant name="dbt_platform" />, <Constant name="fusion" /> follows a versio
 
 ### Versions installed locally
 
-By default, the <Constant name="fusion" /> [installation script](/docs/local/install-dbt) installs the latest stable release, the same version that ships with the **v2 Stable** release track on <Constant name="dbt_platform" />:
+By default, the <Constant name="fusion" /> [installation instructions](/docs/local/install-dbt) install the latest stable release, the same version that ships with the **v2 Stable** release track on <Constant name="dbt_platform" />:
 
 ```shell
 # macOS / Linux
-curl -fsSL https://downloads.getdbt.com/install/dbt-fusion.sh | sh
+pip install dbt
 ```
 
 To update your self-hosted installation to the latest stable release at any time:

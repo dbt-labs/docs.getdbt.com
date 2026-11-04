@@ -12,7 +12,7 @@ id: "athena-configs"
 |-----------|---------|-------------|
 | `external_location` | None | The full S3 path to where the table is saved. It only works with incremental models. It doesn't work with Hive tables with `ha` set to `true`. |
 | `partitioned_by` | None | An array list of columns by which the table will be partitioned. Currently limited to 100 partitions. |
-| `bucketed_by` | None | An array list of the columns to bucket data. Ignored if using Iceberg. |
+| `bucketed_by` | None | An array list of the columns to bucket data. Ignored if using Iceberg. For Iceberg, refer to [Iceberg bucketing](#iceberg-bucketing). |
 | `bucket_count` | None | The number of buckets for bucketing your data. This parameter is ignored if using Iceberg. |
 | `table_type` | Hive | The type of table. Supports `hive` or `iceberg`. |
 | `ha` | False | Build the table using the high-availability method. Only available for Hive tables. |
@@ -139,13 +139,15 @@ Note: If you're using a workgroup with a default output location configured, `s3
 
 The following [incremental models](/docs/build/incremental-models) strategies are supported:
 
-- `insert_overwrite` (default): The insert-overwrite strategy deletes the overlapping partitions from the destination table and then inserts the new records from the source. This strategy depends on the `partitioned_by` keyword! dbt will fall back to the `append` strategy if no partitions are defined.
+- `insert_overwrite` (default): The insert-overwrite strategy deletes the overlapping partitions from the destination table and then inserts the new records from the source. This strategy depends on the `partitioned_by` keyword! dbt will fall back to the `append` strategy if no partitions are defined. This strategy is only available for Hive tables.
 - `append`: Insert new records without updating, deleting or overwriting any existing data. There might be duplicate data (great for log or historical data).
-- `merge`: Conditionally updates, deletes, or inserts rows into an Iceberg table. Used in combination with `unique_key`.It is only available when using Iceberg.
+- `merge`: Conditionally updates, deletes, or inserts rows into an Iceberg table. Used in combination with `unique_key`. It is only available when using Iceberg.
+- `microbatch`: Process large time-series datasets in batches. Refer to [About microbatch incremental models](/docs/build/incremental-microbatch).
 
-Consider this limitation when using Iceberg models:
+Consider these limitations when using Iceberg models:
 
-- Incremental Iceberg models &mdash; Sync all columns on schema change. You can't remove columns used for partitioning with an incremental refresh; you must fully refresh the model.
+- Incremental Iceberg models don't support the `insert_overwrite` strategy. They support `append`, `merge`, and `microbatch`.
+- Incremental Iceberg models sync all columns on schema change. You can't remove columns used for partitioning with an incremental refresh; you must fully refresh the model.
 
 ### On schema change
 
@@ -184,12 +186,73 @@ select 'A'          as user_id,
        current_date as my_date
 ```
 
+#### Iceberg bucketing
+
+Iceberg supports bucketing as hidden partitioning. Use the `partitioned_by` config with the `bucket` function to hash a column into a fixed number of buckets. The `bucketed_by` and `bucket_count` configs are ignored for Iceberg tables.
+
+The argument order depends on the engine that runs your model:
+
+<SimpleTable>
+  
+| Model type | Engine | Syntax | Example |
+| --- | --- | --- | --- |
+| SQL | Athena SQL | `bucket(column, count)` | `bucket(user_id, 5)` |
+| Python | Spark | `bucket(count, column)` | `bucket(5, user_id)` |
+
+</SimpleTable>
+
+:::info  Argument order differs by engine
+Athena SQL puts the column first. Spark puts the bucket count first. Mixing them up causes the model to fail or bucket the wrong column.
+:::
+
+<Tabs>
+
+<TabItem value="sql" label="SQL model">
+
+This example hashes `user_id` into 5 buckets:
+
+```sql
+{{ config(
+    materialized='table',
+    table_type='iceberg',
+    format='parquet',
+    partitioned_by=['bucket(user_id, 5)']
+) }}
+
+select 'A' as user_id,
+       'pi' as name
+```
+
+You can combine bucketing with other partitions, for example `partitioned_by=['status', 'bucket(user_id, 5)']`.
+
+</TabItem>
+
+<TabItem value="python" label="Python model">
+
+This example hashes `user_id` into 5 buckets:
+
+```python
+def model(dbt, session):
+    dbt.config(
+        materialized='table',
+        table_type='iceberg',
+        format='parquet',
+        partitioned_by=['bucket(5, user_id)']
+    )
+
+    return session.createDataFrame([("A", "pi")], ["user_id", "name"])
+```
+
+You can combine bucketing with other partitions, for example `partitioned_by=['status', 'bucket(5, user_id)']`.
+</TabItem>
+
+</Tabs>
+
+
+
 #### Iceberg catalogs
 
 In `dbt-athena` 1.11.1 and later, you can define Iceberg catalogs in `catalogs.yml` and select one with `catalog_name` on a model. The default catalog type for Athena is `glue`. Refer to [Using catalogs.yml](/docs/build/iceberg/catalogs-yml) for the `catalogs.yml` format.
-
-Iceberg supports bucketing as hidden partitions. Use the `partitioned_by` config to add specific bucketing
-conditions.
 
 Iceberg supports the `PARQUET`, `AVRO` and `ORC` table formats for data .
 
@@ -202,6 +265,7 @@ The following are the supported strategies for using Iceberg incrementally:
   - `delete_condition` (optional): SQL condition that identifies records that should be deleted.
   - `update_condition` (optional): SQL condition that identifies records that should be updated.
   - `insert_condition` (optional): SQL condition that identifies records that should be inserted.
+- `microbatch`: Process large time-series datasets in batches. Refer to [About microbatch incremental models](/docs/build/incremental-microbatch).
 
 `incremental_predicates`, `delete_condition`, `update_condition` and `insert_condition` can include any column of the incremental table (`src`) or the final table (`target`). Column names must be prefixed by either `src` or `target` to prevent a `Column is ambiguous` error.
 

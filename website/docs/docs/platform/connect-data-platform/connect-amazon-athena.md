@@ -46,8 +46,10 @@ Enter your _development_ (not deployment) credentials with the following fields:
 If you prefer to not store long-lived IAM user AWS Access Key ID and AWS Secret Access Key in the <Constant name="dbt_platform" />, you can use `aws_session_token`, which is part of [temporary AWS Security Token Service (STS) credentials](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html), instead. This approach mirrors a user or role’s long-term permissions.
 
 To use temporary credentials:
-1. Enter the **AWS Access Key ID** and **AWS Secret Access Key** in the [development environment settings](/docs/dbt-platform-environments#create-a-development-environment) in the <Constant name="dbt_platform" /> user interface (UI).
-2. Since the `aws_session_token` isn't available as a UI field in <Constant name="dbt_platform" />, add it using [Extended attributes](/docs/dbt-platform-environments#extended-attributes) in the environment settings or [<Constant name="dbt_platform" /> profiles](/docs/platform/about-profiles). 
+1. Enter the **AWS Access Key ID** and **AWS Secret Access Key** in the <Constant name="dbt_platform" /> UI:
+   - For a deployment environment, set them on the [connection profile](/docs/platform/about-profiles).
+   - For a development environment, set them in the [development environment settings](/docs/dbt-platform-environments#create-a-development-environment).
+2. Since the `aws_session_token` isn't available as a UI field in <Constant name="dbt_platform" />, add it with [Extended attributes](/docs/dbt-platform-environments#extended-attributes), which explains where to configure them for deployment and development environments.
 
       When you set the `aws_session_token` in **Extended attributes**, the key is case-sensitive and must be exactly `aws_session_token`.
 
@@ -57,4 +59,8 @@ To use temporary credentials:
       aws_session_token: '{{ env_var(''DBT_ENV_AWS_SESSION_TOKEN'') }}'
       ```
 
-3. [Assign](/docs/build/environment-variables#setting-environment-variables) `DBT_ENV_AWS_SESSION_TOKEN` for each environment. Since temporary credentials expire, you need to refresh your STS credentials and update the environment (or the variable value) before expiration.
+3. [Assign](/docs/build/environment-variables#setting-environment-variables) `DBT_ENV_AWS_SESSION_TOKEN`:
+   - For a deployment connection profile, set a value in the **Project default** column. Profile-backed `env_var()` references need a project-scoped value for connection tests.
+   - For a development environment, you can assign the variable for that environment.
+
+   Since temporary credentials expire, you need to refresh your STS credentials and update the variable value before expiration.

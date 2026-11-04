@@ -97,7 +97,7 @@ To access model performance data:
 1. From the main menu, go to **Catalog**.
 2. Click your project from the file tree.
 3. Navigate to the model whose cost data you want to view. You can search for it or click **Models** under **Project assets** in the sidebar to view all available models in the project.
-4. Go to the the **Performance** tab on the model's details page.
+4. Go to the **Performance** tab on the model's details page.
 
 import ModelPerformance from '/snippets/_model-performance.md';
 

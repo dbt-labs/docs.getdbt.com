@@ -1,6 +1,6 @@
 import OpenAiProjectRegion from '/snippets/_open-ai-project-region.md';
 
-dbt Copilot supports fewer providers than <Constant name="wizard" />, including bring your own key (BYOK) on any plan:
+dbt Copilot supports fewer providers than <Constant name="wizard" />, including bring your own key (BYOK) on Starter, Enterprise, and Enterprise+ plans:
 
 - dbt Labs-<Term id="managed" /> OpenAI API key
 - BYOK OpenAI API key

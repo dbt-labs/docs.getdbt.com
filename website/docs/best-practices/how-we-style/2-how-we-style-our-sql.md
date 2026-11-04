@@ -112,6 +112,7 @@ with
 my_data as (
 
     select
+        id,
         field_1,
         field_2,
         field_3,
@@ -177,8 +178,6 @@ joined as (
             my_data.field_2 = 'def' or
             my_data.field_2 = 'ghi'
         )
-
-    having count(*) > 1
 
 )
 

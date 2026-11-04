@@ -13,9 +13,13 @@ availability:
 ## Resources
 - [dbt v1.13 changelog](https://github.com/dbt-labs/dbt/blob/1.13.latest/CHANGELOG.md)
 - [<Constant name="core" /> CLI Installation guide](/docs/local/install-dbt)
-- [dbt platform upgrade guide](/docs/dbt-versions/upgrade-dbt-platform-version#release-tracks)
+- [dbt platform upgrade guide](/docs/dbt-versions/upgrade-dbt-platform-version)
 
 ## What to know before upgrading
+
+:::info
+dbt v1.13 requires Python 3.11 or later. Python 3.10 is no longer supported. Refer to [What version of Python can I use?](/faqs/Core/install-python-compatibility) for the full compatibility matrix.
+:::
 
 dbt Labs is committed to providing backward compatibility for all versions 1.x. Any behavior changes will be accompanied by a [behavior change flag](/reference/global-configs/behavior-changes#behavior-change-flags) to provide a migration window for existing projects. If you encounter an error upon upgrading, please let us know by [opening an issue](https://github.com/dbt-labs/dbt/issues/new).
 
@@ -23,7 +27,9 @@ dbt Labs is committed to providing backward compatibility for all versions 1.x. 
 
 ## New and changed features and functionality
 
-**Coming soon**
+### dbt State
+
+[dbt State](/docs/deploy/dbt-state-about) makes dbt smarter about what to build &mdash; instead of rebuilding every node on every run, dbt reuses nodes by cloning from another location or skipping a rebuild when the logic and data haven't changed. dbt State is natively available in dbt v1.13. To get started, refer to [Setting up dbt State](/docs/deploy/dbt-state-setup).
 
 ## Adapter-specific features and functionalities
 

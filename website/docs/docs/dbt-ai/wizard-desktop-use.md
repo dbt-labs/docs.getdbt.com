@@ -8,17 +8,14 @@ availability: local_all
 ---
 
 import WizardFeedbackCallout from '/snippets/_wizard-feedback-callout.md';
-import WizardDesktopPrivatePreview from '/snippets/_wizard-desktop-private-preview.md';
 
-# Use Wizard Desktop <Lifecycle status="private_beta"/>
+# Use Wizard Desktop <Lifecycle status="beta"/>
 
 <IntroText>
 Navigate Wizard Desktop and learn how to work in a session with dbt Wizard &mdash; with rich data visualizations, data diffs, lineage, and more rendered right in the app. Start with [Get started](/docs/dbt-ai/wizard-desktop).
 </IntroText>
 
 This page is your map of the app: where everything lives, how a session works, what to do when <Constant name="wizard" /> proposes a change, and how it <WizardPopcorn>conjures its magic</WizardPopcorn>.
-
-<WizardDesktopPrivatePreview />
 
 ## Tour the app
 
@@ -33,7 +30,7 @@ When you open Wizard Desktop, everything you need is in one window &mdash; you'l
 
 | What you see | What it's for |
 |---|---|
-| Sidebar (left) | **+ New** starts a session. **Projects** lists your projects and the sessions in each one, **Chats** holds conversations that aren't tied to a project, and **Settings** sits at the bottom |
+| Sidebar (left) | **+ New** starts a session. **Pinned** keeps the chats and environments you pin at the top, and you can reorder them. **Projects** lists your projects and the sessions in each one, **Chats** holds conversations that aren't tied to a project, and **Settings** sits at the bottom |
 | Session header | The session name, the branch it's working on, and **Open in** to jump to the same branch in Finder, VS Code, Cursor, iTerm, or Terminal |
 | Chat area (middle) | Your conversation. Replies, charts, tables, and diffs all render here |
 | Wayfinder bar | Above the chat composer box: your project, branch, connection · environment, plus **Validation** and **Create PR** |
@@ -120,7 +117,7 @@ This section goes over what you can do when you're working in a chat session.
 ### Prompt Wizard
 
 - Type your prompt and hit **Enter**. <Constant name="wizard" /> reads your files, lineage, tests, and metadata, then edits and runs things based on your permission mode.
-- Select **+** next to the chat composer to attach an image, like a screenshot of the error you hit, a chart that looks wrong, or a mockup of what you want. Images are all you can attach for now. Support for adding a file is coming soon.
+- Attach files and images, like a screenshot of the error you hit, a chart that looks wrong, or a mockup of what you want. Select **+** next to the chat composer, drag files in, paste them, or copy them from Finder. You can preview attachments before you send them, and sent files show up as readable cards in the chat.
 - Changed your mind halfway through? No worries, just stop the run, or just type the correction and send it &mdash; <Constant name="wizard" /> then picks it up after the current step and adjusts.
 - When <Constant name="wizard" /> mentions a dbt model, select its name to:
     - **Copy name**
@@ -167,6 +164,8 @@ Sometimes you just want to poke at the data yourself:
 1. Select **Queries** in the pane rail on the right.
 2. Write your ad hoc SQL in the query editor.
 3. Select **Run**. Your results render in **Results** underneath the editor.
+
+To run SQL that <Constant name="wizard" /> wrote, select **Open in Queries** on the SQL in the chat. It opens in the same pane.
 
 The pane sits alongside your chat, so you can check something yourself without losing your place in the conversation. To start another conversation instead, select **+ New** in the left sidebar.
 
@@ -230,7 +229,7 @@ The app only scans <Constant name="git" /> repos in your home folder. If your pr
 
 - [Get started with Wizard Desktop](/docs/dbt-ai/wizard-desktop)
 - [Wizard Desktop settings](/docs/dbt-ai/wizard-desktop-settings)
-- [Use <Constant name="wizard" /> locally (CLI)](/docs/dbt-ai/wizard-quickstart)
+- [Use <Constant name="wizard" /> locally (CLI)](/docs/dbt-ai/wizard-cli)
 - [<Constant name="wizard" /> config reference](/docs/dbt-ai/wizard-config)
 - [Data use and telemetry](/docs/dbt-ai/wizard-telemetry)
 

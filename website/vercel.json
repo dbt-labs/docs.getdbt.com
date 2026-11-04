@@ -41,6 +41,23 @@
       ]
     }
   ],
+  "rewrites": [
+    {
+      "source": "/img/:path*",
+      "destination": "https://d2z3qofvp275uy.cloudfront.net/img/:path*"
+    },
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "header",
+          "key": "accept",
+          "value": ".*text/markdown.*"
+        }
+      ],
+      "destination": "/api/markdown-not-found"
+    }
+  ],
   "redirects": [
     {
       "source": "/docs/deploy/dbt-state-enable-jobs",
@@ -345,6 +362,11 @@
     {
       "source": "/docs/platform/wizard-chat-in-studio",
       "destination": "/docs/dbt-ai/wizard-ide",
+      "permanent": true
+    },
+    {
+      "source": "/docs/dbt-ai/wizard-quickstart",
+      "destination": "/docs/platform/wizard-overview#get-started",
       "permanent": true
     },
     {
@@ -2438,8 +2460,18 @@
       "permanent": true
     },
     {
+      "source": "/docs/trusted-adapters",
+      "destination": "/docs/community-adapters",
+      "permanent": true
+    },
+    {
       "source": "/docs/supported-data-platforms#adapter-installation",
-      "destination": "/docs/connect-adapters",
+      "destination": "/docs/supported-data-platforms#install-an-adapter",
+      "permanent": true
+    },
+    {
+      "source": "/docs/connect-adapters",
+      "destination": "/docs/supported-data-platforms#install-an-adapter",
       "permanent": true
     },
     {
@@ -2454,7 +2486,7 @@
     },
     {
       "source": "/docs/supported-data-platforms#maintainers",
-      "destination": "/docs/connect-adapters#maintainers",
+      "destination": "/docs/supported-data-platforms",
       "permanent": true
     },
     {

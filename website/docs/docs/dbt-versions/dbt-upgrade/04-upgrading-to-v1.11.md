@@ -14,13 +14,13 @@ availability:
 
 - [<Constant name="dbt" /> v1.11 changelog](https://github.com/dbt-labs/dbt/blob/1.11.latest/CHANGELOG.md)
 - [<Constant name="core" /> CLI Installation guide](/docs/local/install-dbt)
-- [dbt platform upgrade guide](/docs/dbt-versions/upgrade-dbt-platform-version#release-tracks)
+- [dbt platform upgrade guide](/docs/dbt-versions/upgrade-dbt-platform-version)
 
 ## What to know before upgrading
 
 dbt Labs is committed to providing backward compatibility for all versions 1.x. Any behavior changes will be accompanied by a [behavior change flag](/reference/global-configs/behavior-changes#behavior-change-flags) to provide a migration window for existing projects. If you encounter an error upon upgrading, please let us know by [opening an issue](https://github.com/dbt-labs/dbt/issues/new).
 
-Starting in 2024, <Constant name="dbt" /> provides the functionality from new versions of <Constant name="core" /> via [release tracks](/docs/dbt-versions/dbt-release-tracks) with automatic upgrades. If you have selected the **v1 Latest** release track in <Constant name="dbt" />, you already have access to all the features, fixes, and other functionality included in the latest <Constant name="core" /> version! If you have selected the **v1 Compatible** release track, you will have access in the next monthly **v1 Compatible** release after the <Constant name="dbt" /> v1.11 final release.
+<Constant name="dbt" /> provides the functionality from new versions of <Constant name="core" /> via [release tracks](/docs/dbt-versions/dbt-release-tracks) with automatic upgrades. If you have selected the **v1 Latest** release track in <Constant name="dbt" />, you already have access to all the features, fixes, and other functionality included in the latest <Constant name="core" /> version! If you have selected the **v1 Compatible** release track, you will have access in the next monthly **v1 Compatible** release after the <Constant name="dbt" /> v1.11 final release.
 
 ## New and changed features and functionality
 
@@ -123,7 +123,7 @@ dbt parse --warn-error-options '{"silence": ["Deprecations"]}'
 
 ### Redshift
 
-- The new `datasharing` profile credential enables `dbt-redshift` to use Redshift-native metadata commands (`SHOW` commands such as `SHOW TABLES` and `SHOW COLUMNS`) instead of PostgreSQL catalog tables such as `pg_*` and `information_schema`. This supports cross-database and cross-cluster access with [Redshift Datasharing](https://docs.aws.amazon.com/redshift/latest/dg/datashare-overview.html). For configuration details, refer to [Redshift setup](/docs/local/connect-data-platform/redshift-setup#datasharing).<Lifecycle status="beta" />
+- The new `datasharing` profile credential enables `dbt-redshift` to use Redshift-native metadata commands (`SHOW` commands such as `SHOW TABLES` and `SHOW COLUMNS`) instead of PostgreSQL catalog tables such as `pg_*` and `information_schema`. This supports cross-database and cross-cluster access with [Redshift Datasharing](https://docs.aws.amazon.com/redshift/latest/dg/datashare-overview.html). For configuration details, refer to [Redshift setup](/docs/local/connect-data-platform/redshift-setup#datasharing).
 - The `drop_without_cascade` profile credential emits `DROP TABLE/VIEW/MATERIALIZED VIEW` statements without `CASCADE`. Redshift resolves the `CASCADE` dependency graph on every `DROP`, which adds overhead on large clusters. If your project has no downstream dependents (for example, it uses only unbound views) you can set `drop_without_cascade: true` to skip that cost. When enabled and a dependent object exists, Redshift raises an error. For configuration details, refer to [Redshift setup](/docs/local/connect-data-platform/redshift-setup).
 
 ### Spark
@@ -132,6 +132,10 @@ dbt parse --warn-error-options '{"silence": ["Deprecations"]}'
   - `poll_interval`: Controls how frequently the adapter polls the Thrift server to check if an async query has completed.
   - `query_timeout`: Adds an overall timeout (in seconds) for query execution. If a query exceeds the set duration during polling, it raises a `DbtRuntimeError`. This helps prevent indefinitely hanging queries.
   - `query_retries`: Handles connection loss during query polling by automatically retrying.
+
+### Starburst/Trino
+
+- The Starburst/Trino adapter supports scalar SQL [UDFs](/docs/build/udfs). For configuration details and limitations, refer to [Starburst/Trino configurations](/reference/resource-configs/trino-configs#user-defined-functions).
 
 ## Quick hits
 

@@ -109,7 +109,7 @@ Refer to the [Apollo explorer documentation](https://www.apollographql.com/docs/
 4. Select **Authorization** in the **header key** dropdown list and enter your Bearer auth token in the **value** field. Remember to include the Token prefix. Your header key should be in this format: `{"Authorization": "Bearer <YOUR_TOKEN>}`.
 
 <!-- TODO: Screenshot needs to be replaced with new one. If we want to show model historical runs, show `environment { applied { modelHistoricalRuns } }` -->
-<!-- However we can choose to leave this be, since the important info from the screenshot is to show how the GraphQL API canbe used -- the content (request and response) doesn't matter too much` -->
+<!-- However we can choose to leave this be, since the important info from the screenshot is to show how the GraphQL API can be used -- the content (request and response) doesn't matter too much` -->
 
 <br />
 
@@ -118,7 +118,7 @@ Refer to the [Apollo explorer documentation](https://www.apollographql.com/docs/
 1. Run your query by clicking the blue query button in the top right of the **Operation** editor (to the right of the query). You should see a successful query response on the right side of the explorer.
 
 <!-- TODO: Screenshot needs to be replaced with new one. If we want to show model historical runs, show `environment { applied { modelHistoricalRuns } }` -->
-<!-- However we can choose to leave this be, since the important info from the screenshot is to show how the GraphQL API canbe used -- the content (request and response) doesn't matter too much` -->
+<!-- However we can choose to leave this be, since the important info from the screenshot is to show how the GraphQL API can be used -- the content (request and response) doesn't matter too much` -->
 
 <Lightbox src="/img/docs/dbt-platform/discovery-api/graphql.jpg" width="85%" title="Run queries using the Apollo Server GraphQL explorer"/>
 
@@ -192,7 +192,7 @@ There are connection variables available when making the query:
 Below is an example that returns the `first` 500 models `after` the specified Object ID in the variables. The `PageInfo` object returns where the object ID where the cursor starts, where it ends, and whether there is a next page.
 
 <!-- TODO: Update screenshot to use `$environmentId: BigInt!, or remove it` -->
-<!-- However we can choose to leave this be, since the important info from the screenshot is to show how the GraphQL API canbe used -- the content (request and response) doesn't matter too much` -->
+<!-- However we can choose to leave this be, since the important info from the screenshot is to show how the GraphQL API can be used -- the content (request and response) doesn't matter too much` -->
 
 <Lightbox src="/img/Paginate.png" width="75%" title="Example of pagination"/>
 
@@ -284,7 +284,7 @@ Below is an example that filters for results of models that have succeeded on th
 Below is an example that filters for models that have an error on their last run and tests that have failed:
 
 <!-- TODO: Update screenshot to use `$environmentId: BigInt!, or remove it` -->
-<!-- However we can choose to leave this be, since the important info from the screenshot is to show how the GraphQL API canbe used -- the content (request and response) doesn't matter too much` -->
+<!-- However we can choose to leave this be, since the important info from the screenshot is to show how the GraphQL API can be used -- the content (request and response) doesn't matter too much` -->
 
 ```graphql
 query ModelsAndTests($environmentId: BigInt!, $first: Int!) {

@@ -43,7 +43,7 @@ These four terms come up on every <Constant name="wizard" /> billing page:
 | Term | What it means |
 |---|---|
 | Token | The unit of AI model usage. How many tokens you use, and the rate you pay for them, depends on the model, the context window, the length and complexity of your prompt, and the size of the response |
-| Usage credits | The free balance included with your plan, shared by everyone on the account, whether thats trial credits on Developer and Starter, or monthly credits on Enterprise and Enterprise+. Scoped to <Constant name="wizard" /> only |
+| Usage credits | The free balance included with your plan, shared by everyone on the account, whether that's trial credits on Developer and Starter, or monthly credits on Enterprise and Enterprise+. Scoped to <Constant name="wizard" /> only |
 | Consumption pool | Your overall dbt <Term id="managed" /> usage balance, including any pool you purchase once your credits run out. A purchased pool covers both <Constant name="wizard" /> and dbt State. Shown as **Consumption pool** in **Billing & Usage** |
 | Spend limit | The maximum dbt <Term id="managed" /> usage your account can consume in a billing period |
 </SimpleTable>
@@ -64,6 +64,8 @@ Refer to the [Model Provider Rate Table](https://www.getdbt.com/legal/dbt-wizard
 ## Bring your own key (BYOK)
 
 With BYOK, you supply your own credentials for a provider &mdash; OpenAI, Anthropic, Azure AI Foundry, AWS Bedrock, Google Gemini, Snowflake Cortex, or Databricks.
+
+BYOK in <Constant name="dbt_platform" /> is available on Starter, Enterprise, and Enterprise+ plans.
 
 To set up BYOK, refer to [Configure BYOK for dbt platform](/docs/platform/wizard-byok-platform) or [Configure BYOK for the CLI](/docs/dbt-ai/wizard-byok).
 

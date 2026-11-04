@@ -12,13 +12,13 @@ availability:
 
 - <Constant name="dbt" /> [v1.10 changelog](https://github.com/dbt-labs/dbt/blob/1.10.latest/CHANGELOG.md)
 - [<Constant name="core" /> CLI Installation guide](/docs/local/install-dbt)
-- [dbt platform upgrade guide](/docs/dbt-versions/upgrade-dbt-platform-version#release-tracks)
+- [dbt platform upgrade guide](/docs/dbt-versions/upgrade-dbt-platform-version)
 
 ## What to know before upgrading
 
 dbt Labs is committed to providing backward compatibility for all versions 1.x. Any behavior changes will be accompanied by a [behavior change flag](/reference/global-configs/behavior-changes#behavior-change-flags) to provide a migration window for existing projects. If you encounter an error upon upgrading, please let us know by [opening an issue](https://github.com/dbt-labs/dbt/issues/new).
 
-Starting in 2024, <Constant name="dbt" /> provides the functionality from new versions of <Constant name="core" /> via [release tracks](/docs/dbt-versions/dbt-release-tracks) with automatic upgrades. If you have selected the **v1 Latest** release track in <Constant name="dbt" />, you already have access to all the features, fixes, and other functionality that is included in <Constant name="dbt" /> v1.10! If you have selected the **v1 Compatible** release track, you will have access in the next monthly **v1 Compatible** release after the <Constant name="dbt" /> v1.10 final release.
+<Constant name="dbt" /> provides the functionality from new versions of <Constant name="core" /> via [release tracks](/docs/dbt-versions/dbt-release-tracks) with automatic upgrades. If you have selected the **v1 Latest** release track in <Constant name="dbt" />, you already have access to all the features, fixes, and other functionality that is included in <Constant name="dbt" /> v1.10! If you have selected the **v1 Compatible** release track, you will have access in the next monthly **v1 Compatible** release after the <Constant name="dbt" /> v1.10 final release.
 
 ## New and changed features and functionality
 
@@ -128,7 +128,7 @@ Check out our [docs on external catalog support](/docs/build/iceberg/about-catal
 With [hybrid projects](/docs/deploy/hybrid-projects), <Constant name="core"/> users working in the command line interface (CLI) can execute runs that seamlessly upload [artifacts](/reference/artifacts/dbt-artifacts) into <Constant name="dbt"/>. This enhances hybrid <Constant name="core"/>/<Constant name="dbt"/> deployments by:
 
 - Fostering collaboration between <Constant name="dbt"/> + <Constant name="core"/> users by enabling them to visualize and perform [cross-project references](/docs/mesh/govern/project-dependencies#how-to-write-cross-project-ref) to models defined in <Constant name="core"/> projects. This feature unifies <Constant name="dbt"/> + <Constant name="core"/> workflows for a more connected dbt experience.
-- Giving <Constant name="dbt"/> and <Constant name="core"/> users insights into their models and assets in [<Constant name="catalog"/>](/docs/explore/explore-projects). To view <Constant name="catalog"/>, you must have have a [developer or read-only license](/docs/platform/manage-access/seats-and-users).
+- Giving <Constant name="dbt"/> and <Constant name="core"/> users insights into their models and assets in [<Constant name="catalog"/>](/docs/explore/explore-projects). To view <Constant name="catalog"/>, you must have a [developer or read-only license](/docs/platform/manage-access/seats-and-users).
 - (Coming soon) Enabling users working in the [<Constant name="canvas"/>](/docs/platform/canvas) to build off of models already created by a central data team in <Constant name="core"/> rather than having to start from scratch.
 
 Hybrid projects are available as a private beta to [<Constant name="dbt"/> Enterprise accounts](https://www.getdbt.com/pricing). Contact your account representative to register your interest in the beta.
@@ -176,7 +176,7 @@ models:
 ```
 
 dbt detects the unrecognized custom property (`dbt_is_awesome`) and silently continues. Without a set of strictly defined inputs, it becomes challenging to validate your project's configuration. This creates unintended issues such as:
-- Silently ignoring misspelled properties and configurations (for example, `desciption:` instead of `description:`).
+- Silently ignoring misspelled properties and configurations (for example, `description:` instead of `description:`).
 - Unintended collisions with user code when dbt introduces a new “reserved” property or configuration.
 
 If you have an unrecognized custom property, you will receive a warning, and in a future version, dbt will cease to support custom properties. Moving forward, these should be nested under the [`meta` config](/reference/resource-configs/meta), which will be the only place to put custom user-defined attributes:

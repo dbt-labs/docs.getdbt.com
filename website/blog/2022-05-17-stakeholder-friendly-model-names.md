@@ -52,7 +52,7 @@ The end users might not even know what tables the data refers to, as potentially
 #### Read only access to the dbt Cloud IDE docs
 If Analysts want more context via documentation, they may traverse back to the dbt layer and check out the data models in either the context of the Project or Database. In the Project view, they will see the data models in the folder hierarchy present in your project’s repository. In the Database view you will see the output of the data models as present in your database, ie. `database / schema / object`.
 
-![A screenshot depicting the dbt Cloud IDE menu's Database view which shows you the output of your data models. Next to this view, is the Project view.](/img/blog/2022-05-17-stakeholder-friendly-model-names/project-view.png)
+<Lightbox src="/img/blog/2022-05-17-stakeholder-friendly-model-names/project-view.png" title="A screenshot depicting the dbt Cloud IDE menu's database view which shows you the output of your data models. Next to this view, is the project view." />
 
 **How model names can make this painful:**
 For the Project view, generally abstracted department or organizational structures as folder names presupposes the reader/engineer knows what is contained within the folder beforehand or what that department actually does, or promotes haphazard clicking to open folders to see what is within. Organizing the final outputs by business unit or analytics function is great for end users but doesn't accurately represent all the sources and references that had to come together to build this output, as they often live in another folder.
@@ -63,7 +63,7 @@ For the Database view, pray your team has been declaring a logical schema bucket
 
 If they have access to Worksheets, SQL runner, or another way to write ad hoc SQL queries, then they will have access to the data models as present in your database, ie. `database / schema / object`, but with less documentation attached, and more proclivity towards querying tables to check out their contents, which costs time and money.
 
-![A screenshot of the SQL Runner menu within Looker showcasing the dropdown list of all data models present in the database.](/img/blog/2022-05-17-stakeholder-friendly-model-names/data-warehouse-dropdown.png)
+<Lightbox src="/img/blog/2022-05-17-stakeholder-friendly-model-names/data-warehouse-dropdown.png" title="A screenshot of the SQL Runner menu within Looker showcasing the dropdown list of all data models present in the database." />
 
 **How model names can make this painful:**
 Without proper naming conventions, you will encounter `analytics.order`, `analytics.orders`, `analytics.orders_new` and not know which one is which, so you will open up a scratch statement tab and attempt to figure out which is correct:
@@ -103,7 +103,7 @@ It takes time to become a subject matter expert in the database. You will need t
 Change management is hard; how many places would you need to update, rename, re-document, and retest to fix a poor naming choice from long ago? It is a daunting position, which can create internal strife when constrained for time over whether we should continually revamp and refactor for maintainability or focus on building new models in the same pattern as before.
 
 #### Within the folder structure of Cloud IDE
-![A screenshot of the folder explorer within the dbt Cloud IDE that exposes the data model names.](/img/blog/2022-05-17-stakeholder-friendly-model-names/dbt-cloud-ide-folder.png)
+<Lightbox src="/img/blog/2022-05-17-stakeholder-friendly-model-names/dbt-cloud-ide-folder.png" title="A screenshot of the folder explorer within the dbt Cloud IDE that exposes the data model names." />
 
 While developing within the IDE, you have almost the full range of information to reason about what is contained with a data model. You have a folder structure which will determine staging vs marts or any other helpful bucketing. You can see any configurations which might determine the target for your data model – database, schema, etc. You have documentation, both in line as comments and more formalized in descriptions in yml. Finally, you have the model name which should give you additional context.
 
@@ -116,16 +116,16 @@ Without proper naming conventions, you are missing out on a way to determine lin
 
 By contrast, when viewing the DAG within the docs site or within the lineage tab, you get a lineage which adds more context to dependencies and directional flow. You get insight into how models are used as building blocks from left to right to transform your data from crude or normalized raw sources, into cleaned up modular derived pieces, and finally into the final outputs on the far right of the DAG, ready to be used by the analyst in infinite combinations to present it in ways to help clients, customers, and organizations make better decisions.
 
-![A screenshot of the lineage graph within dbt Cloud that showcases all data models within the project and their outputs.](/img/blog/2022-05-17-stakeholder-friendly-model-names/dag-view.png)
+<Lightbox src="/img/blog/2022-05-17-stakeholder-friendly-model-names/dag-view.png" title="A screenshot of the lineage graph within dbt Cloud that showcases all data models within the project and their outputs." />
 
 **How model names can make this painful:**
 The problem is that you will only see the model names (which become the nodes in the DAG), but you will not see folders, database/schema configurations, docs, etc. You can see the logical flow of data through your dbt pipeline, but without clearly defined model/node naming, the purpose of the model might be misconstrued, leading to wonky DAG pathways in the future.
 
 #### Within Pull Requests
 
-While reviewing code from someone else who is is contributing, you will see only the files that have been changed in the project’s repository.
+While reviewing code from someone else who is contributing, you will see only the files that have been changed in the project’s repository.
 
-![A screenshot of the file names that have been listed in the "Files Changed" section of a GitHub Pull Request](/img/blog/2022-05-17-stakeholder-friendly-model-names/PR-view.png)
+<Lightbox src="/img/blog/2022-05-17-stakeholder-friendly-model-names/PR-view.png" title="A screenshot of the file names that have been listed in the &quot;Files Changed&quot; section of a GitHub pull request" />
 
 **How model names can make this painful:**
 This will severely limit the amount of information you see, because it will be localized to the changed files. You will still see changed folders and changed model names, but lack the total project context where those are helpful. Hopefully you have a robust pull request template and traditions of linking to the task ticket and providing context to why the work was completed this way, otherwise the person reviewing your changes will not have a lot of information at hand to make clear suggestions for improvement.

@@ -1,6 +1,6 @@
 import OpenAiProjectRegion from '/snippets/_open-ai-project-region.md';
 
-A <Constant name="dbt_platform"/> account on any plan can use a dbt <Term id="managed"/> provider to get started right away or configure a custom AI provider by BYOK. If you use BYOK, you will incur API calls and associated charges from that provider.
+A <Constant name="dbt_platform"/> account on any plan can use a dbt <Term id="managed"/> provider to get started right away. Accounts on Starter, Enterprise, and Enterprise+ plans can also configure a custom AI provider by BYOK. If you use BYOK, you will incur API calls and associated charges from that provider.
 
 The following instructions explain how to configure a dbt Labs managed or BYOK AI provider for <Constant name="wizard" />. dbt managed AI providers are administered by dbt Labs and don’t require a user-provided API key. The AI providers shown in **Account settings** may change as dbt Labs adds <Term id="managed" /> models. For the current list of models and providers, refer to the [Model Provider Rate table](https://www.getdbt.com/legal/dbt-wizard-token-costs-by-model).
 

@@ -59,7 +59,8 @@ export default function ReportCodeButton({className, code, language}) {
           />
         </svg>
       </button>
-      <span className={tooltipStyles.tooltip} role="tooltip">
+      {/* Visual-only copy of the aria-label; aria-hidden also keeps it out of the generated .md */}
+      <span className={tooltipStyles.tooltip} aria-hidden="true">
         {label}
       </span>
     </span>

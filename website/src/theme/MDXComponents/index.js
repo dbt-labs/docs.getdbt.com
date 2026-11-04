@@ -34,6 +34,7 @@ import Term from '@site/src/components/term';
 import Hero from '@site/src/components/hero'
 import Card from '@site/src/components/card'
 import Callout from '@site/src/components/callout'
+import AgentPrompt from '@site/src/components/agentPrompt';
 import BlogPostCard from '@site/src/components/blogPostCard';
 import DocCarousel from '@site/src/components/docCarousel';
 import PostCarousel from '@site/src/components/postCarousel';
@@ -45,6 +46,7 @@ import Expandable from '@site/src/components/expandable';
 import Steps, { Step } from '@site/src/components/steps';
 import ConfettiTrigger from '@site/src/components/confetti/';
 import WizardPopcorn from '@site/src/components/wizardPopcorn/';
+import DownloadCard from '@site/src/components/downloadCard';
 import VersionCallout from '@site/src/components/versionCallout';
 import IntroText from '@site/src/components/IntroText';
 import Constant from '@site/src/components/constant';
@@ -116,6 +118,7 @@ const MDXComponents = {
   Step: Step,
   ConfettiTrigger: ConfettiTrigger,
   WizardPopcorn: WizardPopcorn,
+  DownloadCard: DownloadCard,
   SortableTable: SortableTable,
   FilterableTable: FilterableTable,
   SimpleTable: SimpleTable,
@@ -123,5 +126,6 @@ const MDXComponents = {
   IntroText: IntroText,
   Constant: Constant,
   AvailabilityMatrix: AvailabilityMatrix,
+  AgentPrompt: AgentPrompt,
 };
 export default MDXComponents;

@@ -368,7 +368,7 @@ payments_with_months AS(
 | E | 2023-04-25 5:55:05 | 2023-02-05 12:17:19 | EE | 10630 |
 | E | 2023-04-01 0:00:00 | 2023-02-05 12:17:19 | EE | 10630 |
 
-### Getting the lastest status
+### Getting the latest status
 
 Once we have our historical model built, we can add another model that runs after it in our dependency graph. This can help reduce the latency in use cases where querying the whole history is not needed (like personalization initiatives).
 
@@ -394,7 +394,7 @@ With the new approach, our dependency graph would look like this:
 
 - For analysts that want to see how the segments changed over time, they can query the historical model. There is also an option to build an aggregated model before loading it in a Business Intelligence tool.
 - For ML model training, data scientists and machine learning practitioners can import this model into their notebooks or their feature store, instead of rebuilding the attributes from scratch.
-- If you want to personalize the experience of a user based on their segment, like in the CX example from the beginning, you can query the current segmention and export it to your CRM with a Reverse ETL tool.
+- If you want to personalize the experience of a user based on their segment, like in the CX example from the beginning, you can query the current segmentation and export it to your CRM with a Reverse ETL tool.
 
 ## Conclusions
 
