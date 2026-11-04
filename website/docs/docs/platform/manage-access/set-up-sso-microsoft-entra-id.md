@@ -153,8 +153,13 @@ If you set up SSO before December 2025, your existing configuration may request 
 21. Click **Add** to finish creating the client secret value (not the client secret ID).
 22. Record the generated client secret somewhere safe. Later in the setup process, we'll use this client secret in <Constant name="dbt" /> to finish configuring the integration.
 
+<DocCarousel slidesPerView={1}>
+
 <Lightbox src="/img/docs/dbt-platform/dbt-platform-enterprise/azure/azure-secret-config.png" title="Configuring certificates & secrets" />
+
 <Lightbox src="/img/docs/dbt-platform/dbt-platform-enterprise/azure/azure-secret-saved.png" title="Recording the client secret" />
+
+</DocCarousel>
 
 ### Collect client credentials
 
