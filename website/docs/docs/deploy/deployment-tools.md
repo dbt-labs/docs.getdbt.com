@@ -19,8 +19,13 @@ If your organization uses [Airflow](https://airflow.apache.org/), there are a nu
 
 Installing the [<Constant name="dbt" /> Provider](https://airflow.apache.org/docs/apache-airflow-providers-dbt-cloud/stable/index.html) to orchestrate <Constant name="dbt" /> jobs. This package contains multiple Hooks, Operators, and Sensors to complete various actions within <Constant name="dbt" />.
 
+<DocCarousel slidesPerView={1}>
+
 <Lightbox src="/img/docs/running-a-dbt-project/airflow_dbt_connector.png" title="Airflow DAG using DbtCloudRunJobOperator"/>
+
 <Lightbox src="/img/docs/running-a-dbt-project/dbt_cloud_airflow_trigger.png" title="dbt job triggered by Airflow"/>
+
+</DocCarousel>
 
 </TabItem>
 
