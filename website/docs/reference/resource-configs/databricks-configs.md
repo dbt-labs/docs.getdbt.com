@@ -52,7 +52,7 @@ _Available in versions 1.9 or higher_
 
 In dbt-databricks v1.9 (try it now in [the <Constant name="dbt" /> **v1 Latest** release track](/docs/dbt-versions/dbt-release-tracks)), you can use these four options for `submission_method`: 
 
-* `all_purpose_cluster`: Executes the python model either directly using the [command api](https://docs.databricks.com/api/workspace/commandexecution) or by uploading a notebook and creating a one-off job run
+* `all_purpose_cluster`: Executes the python model either directly using the [command api](https://docs.databricks.com/api/command-execution/v2/execute) or by uploading a notebook and [creating a one-off job run](https://docs.databricks.com/api/jobs/v2/submit-run)
 * `job_cluster`: Creates a new job cluster to execute an uploaded notebook as a one-off job run
 * `serverless_cluster`: Uses a [serverless cluster](https://docs.databricks.com/en/jobs/run-serverless-jobs.html) to execute an uploaded notebook as a one-off job run
 * `workflow_job`: Creates/updates a reusable workflow and uploaded notebook, for execution on all-purpose, job, or serverless clusters.
