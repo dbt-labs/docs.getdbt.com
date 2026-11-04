@@ -55,7 +55,7 @@ Select an icon in the right hand pane rail to open a pane in the side panel:
 | Summary | A summary of the work in this chat |
 | Changes | Diffs waiting for review |
 | Validation | Your validation plan and its results &mdash; what passed, what failed, and what needs a look. Refer to [Validation](#validation) |
-| Explorer | Your project files. Select a file path in the chat to open it here. To edit an existing text file, make your changes, then select **Save** or press <kbd>Cmd</kbd>/<kbd>Ctrl</kbd> + <kbd>S</kbd>. Saves go to the chat's isolated environment, not your original checkout. Unsaved drafts stay put when you navigate away or restart, and indicators show where you've left edits. If a file changed outside the Explorer, the save is rejected rather than overwriting it |
+| Explorer |  View and edit your project files here or by clicking file paths in chat. Save changes with Save or <kbd>Cmd</kbd>/<kbd>Ctrl</kbd> + <kbd>S</kbd>.  Edits stay isolated to the chat environment, unsaved drafts remain intact if you navigate away or restart, and if you make external changes &mdash; it won't be overwritten.|
 | Lineage | How your dbt models connect |
 | Queries | Write and run ad hoc SQL against your connection. Refer to [Explore your data](#explore-your-data) |
 | Commands | Queries you run and commands <Constant name="wizard" /> executes, scoped to this chat |
