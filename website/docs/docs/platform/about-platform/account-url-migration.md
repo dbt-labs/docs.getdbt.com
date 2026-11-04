@@ -116,7 +116,7 @@ If you've received notification of a new access URL assignment and have IP restr
 To confirm your new access URL is accessible, send a test request from the same network you'd normally use to reach your legacy region URL. Replace `NEW_ACCESS_URL` with your account's new access URL and `ACCOUNT_ID` with your account ID:
 
 - **Browser:** Go to `https://NEW_ACCESS_URL/api/v2/accounts/ACCOUNT_ID/`
-- **Terminal:** Run `curl -s https://NEW_ACCESS_URL/api/v2/accounts/ACCOUNT_ID/`
+- **Terminal:** Run `curl https://NEW_ACCESS_URL/api/v2/accounts/ACCOUNT_ID/`
 
 | Result | Response detail | What it means |
 |---|---|---|
