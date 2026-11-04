@@ -63,7 +63,6 @@ You don't have to call the tools yourself. Try a prompt like: "List jobs in this
 dbt MCP tools are generally built for AI agents, so their structure can change without notice or a deprecation period.
 
 - We aim not to remove existing features and avoid renaming tools, because some clients use tool names for auto-approve or allow/reject lists.
-- If you need a stable, versioned response format, we recommend using the [dbt APIs](/docs/dbt-apis/overview) directly.
 - If you need a frozen set of tools and inputs/outputs, we recommend pinning a version of the [self-hosted MCP server](/docs/dbt-ai/setup-local-mcp) and run it yourself. Refer to the [dbt-mcp examples](https://github.com/dbt-labs/dbt-mcp/tree/main/examples) for examples.
 
 ## FAQs
