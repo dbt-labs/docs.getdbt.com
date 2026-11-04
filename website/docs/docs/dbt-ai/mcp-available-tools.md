@@ -25,9 +25,9 @@ The following sections list every tool by category, along with which server type
 | [Product Docs Tools](#product-docs) |  ✅ | ✅ |
 | [MCP Server Metadata Tools](#mcp-server-metadata) | ✅ | ✅ |
 
-Note that access to the Discovery API and the Semantic Layer API is limited depending on your [plan type](https://www.getdbt.com/pricing). 
+Note that access to the Discovery API and the <Constant name="semantic_layer" /> API is limited depending on your [plan type](https://www.getdbt.com/pricing).
 
-Remote MCP tools can change without notice or a deprecation period, refer to [Tool changes on the remote MCP server](#tool-changes-on-the-mcp-server).
+Remote MCP tools can change without notice or a deprecation period. Refer to [Tool changes on the remote MCP server](#tool-changes-on-the-mcp-server).
 
 ### Tools that require AI features
 
@@ -62,8 +62,8 @@ You don't have to call the tools yourself. Try a prompt like: "List jobs in this
 
 dbt MCP tools are generally built for AI agents, so their structure can change without notice or a deprecation period.
 
-- We aim not to remove existing features and avoid renaming tools, because some clients use tool names for auto-approve or allow/reject lists.
-- If you need a frozen set of tools and inputs/outputs, we recommend pinning a version of the [self-hosted MCP server](/docs/dbt-ai/setup-local-mcp) and run it yourself. Refer to the [dbt-mcp examples](https://github.com/dbt-labs/dbt-mcp/tree/main/examples) for examples.
+- We aim not to remove existing features or rename tools, because some clients use tool names for auto-approve or allow/reject lists.
+- If you need a frozen set of tools and inputs/outputs, we recommend pinning a version of the [self-hosted MCP server](/docs/dbt-ai/setup-local-mcp) and running it yourself. Refer to the [dbt-mcp examples](https://github.com/dbt-labs/dbt-mcp/tree/main/examples).
 
 ## FAQs
 
