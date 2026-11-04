@@ -22,6 +22,7 @@ For <Constant name="fusion_engine" /> updates, refer to the [v2 changelog](https
 
 ## November 2026
 
+- **New:** The remote dbt MCP server is now available on [Databricks Marketplace](https://marketplace.databricks.com/details/6d83d4e0-5279-47b7-831c-3cb90a82ecb3/dbt-Labs_dbt-MCP). Install it in a few steps to use your dbt project from Databricks. Refer to [Integrate Databricks with dbt MCP](/docs/dbt-ai/integrate-mcp-databricks).
 - **New**: Read-only users can query metrics through [remote MCP](/docs/dbt-ai/setup-remote-mcp#read-only-users-and-warehouse-credentials) using the shared [analytics credential](/docs/platform/wizard-read-only-users#set-up-analytics-credentials), which needs to be set up by an admin. 
 
 ## October 2026

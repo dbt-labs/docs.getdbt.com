@@ -36,7 +36,7 @@ The install requests these OAuth scopes: `offline_access account:read projects:q
 
 ## Use the dbt MCP server in Databricks
 
-After you authorize access, add the MCP service to Genie, or use it with any Databricks tool that supports MCP.
+After you authorize access, add the MCP service to [Genie Code](https://docs.databricks.com/aws/en/genie-code/mcp), or use it in other Databricks tools that support MCP. Refer to [Databricks MCP docs](https://docs.databricks.com/aws/en/agents/mcp-tools/) for the options.
 
 :::info About AI models in Genie Playground
 Some models in Genie Playground don't accept tool calls, so they can't use the dbt MCP server. If tools don't show up, try a different model.
