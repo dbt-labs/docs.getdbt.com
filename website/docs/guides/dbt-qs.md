@@ -183,8 +183,13 @@ You can quickly access model results and underlying data structures directly fro
 2. Click **Preview CTE** above `orders as (` to preview results in the **Query Results** tab.
     <Lightbox src="/img/docs/extension/preview-cte-query-results-3.png" width="80%" title="Preview CTE query results."/>
 3. Locate the code icon for **Compile File** in between the dbt and the table icons. Clicking this icon opens a window with the compiled version of the model.
+    <DocCarousel slidesPerView={1}>
+
     <Lightbox src="/img/docs/extension/compile-file-icon.png" width="50%" title="Compile File icon."/>
+
     <Lightbox src="/img/docs/extension/compile-file.png" width="80%" title="Compile File results."/>
+
+    </DocCarousel>
 
 #### Navigate your project with lineage tools
 

@@ -117,9 +117,13 @@ If you created your Teradata Vantage database instance at https://clearscape.ter
 4. In the **Type** section, select **Teradata**.
 5. Enter your Teradata settings and click **Save**.
 
+  <DocCarousel slidesPerView={1}>
+
   <Lightbox src="/img/teradata/dbt_cloud_teradata_setup_connection_start.png" title="dbt - Choose Teradata Connection" />
-  
+
   <Lightbox src="/img/teradata/dbt_cloud_teradata_account_settings.png" title="dbt - Teradata Account Settings" />
+
+  </DocCarousel>
 
 6. Set up your personal user credentials by navigating to **Your profile** > **Credentials**.
 7. Select your project that uses the Teradata connection. 
