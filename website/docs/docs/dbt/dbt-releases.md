@@ -39,7 +39,7 @@ If a shipped v2 release is later found to contain a regression, dbt Labs flags i
 
 On <Constant name="dbt_platform" />, each [environment](/docs/deploy/deploy-environments) uses the account default or your chosen **release track**. Release tracks control how often that environment receives new v2 builds. They're separate from the local CLI release channels in the previous section.
 
-For cadence, plan availability, and API values (`nightly`, `stable`, and more), refer to [release tracks](/docs/dbt-versions/dbt-release-tracks#dbt-v2-release-tracks). To change the release track for an environment, follow [Upgrade dbt in dbt platform](/docs/dbt-versions/upgrade-dbt-platform-version).
+For cadence, plan availability, and API values, refer to [release tracks](/docs/dbt-versions/dbt-release-tracks#dbt-v2-release-tracks). To change the release track for an environment, follow [Upgrade dbt in dbt platform](/docs/dbt-versions/upgrade-dbt-platform-version).
 
 :::tip Live data below is for local CLI channels
 
