@@ -10,7 +10,7 @@ New capabilities in the dbt framework are delivered continuously to <Constant na
 
 ## Which release tracks are available?
 
-The release tracks available for your project vary depending on the major version of dbt &mdash; The Python-based [dbt v1](/docs/dbt-versions/dbt-release-tracks?version=1#which-release-tracks-are-available) or the Rust-based [dbt v2](/docs/dbt-versions/dbt-release-tracks?version=2#which-release-tracks-are-available)(recommended)
+The release tracks available for your project vary depending on the major version of dbt &mdash; The Python-based [dbt v1](/docs/dbt-versions/dbt-release-tracks?version=1#which-release-tracks-are-available) or the Rust-based [dbt v2](/docs/dbt-versions/dbt-release-tracks?version=2#which-release-tracks-are-available) (recommended)
 
 <VersionBlock firstVersion="2.0">
 
