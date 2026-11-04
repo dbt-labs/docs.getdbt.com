@@ -59,7 +59,7 @@ Select an icon in the right hand pane rail to open a pane in the side panel:
 | Lineage | How your dbt models connect |
 | Queries | Write and run ad hoc SQL against your connection. Refer to [Explore your data](#explore-your-data) |
 | Commands | Queries you run and commands <Constant name="wizard" /> executes, scoped to this chat |
-| CI checks | The checks <Constant name="wizard" /> ran and their results |
+| CI checks | The CI checks <Constant name="wizard" /> ran and their results |
 | Insights | Analysis of your project and data |
 | Metrics | The metrics in your project |
 | Terminal | Run commands without leaving the app. Sits underneath whichever pane you've opened |
