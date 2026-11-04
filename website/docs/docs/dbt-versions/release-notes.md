@@ -193,6 +193,7 @@ Two other things moved:
 
 ## August 2026
 
+- **Beta:** You can now request a Redshift interface-type PrivateLink endpoint in <Constant name="dbt_platform" /> without contacting dbt Support. Go to **Account settings → Private endpoints**. For more information, refer to [Configure AWS PrivateLink for Redshift](/docs/platform/secure/private-connectivity/aws/aws-redshift#self-serve-private-endpoints).
 - **New:** A new **Explain** tab on the run details page shows dbt State's decision for each model in a run (rebuilt, reused, or cloned), with expandable details, search, and Comma-Separated Values (CSV) download. You can use this tab to investigate why each model was rebuilt or reused. Contact your account manager to enable.
 - **Enhancement:** Non-admin users now see an "Ask an admin to enable" message on the <Constant name="wizard" /> and dbt State cards in Billing & Usage when a trial is available but they lack permission to start it, instead of a blank space. The same message appears if a non-admin tries to start a trial from a dbt State or <Constant name="wizard" /> link.
 - **Enhancement:** dbt State is now available for jobs running on the Compatible, <Constant name="fusion" /> Extended, and <Constant name="fusion" /> Fallback release tracks, in addition to previously supported tracks.
