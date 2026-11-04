@@ -6,7 +6,7 @@ id: "integrate-mcp-databricks"
 availability: platform_login
 ---
 
-The remote dbt MCP server is listed on [Databricks Marketplace](https://marketplace.databricks.com/details/6d83d4e0-5279-47b7-831c-3cb90a82ecb3/dbt-Labs_dbt-MCP). Install it from the marketplace to give Databricks access to your dbt project through Genie and other Databricks tools.
+The remote dbt MCP server is listed on [Databricks Marketplace](https://marketplace.databricks.com/details/6d83d4e0-5279-47b7-831c-3cb90a82ecb3/dbt-Labs_dbt-MCP). Install it from the marketplace to give Databricks access to your dbt project through [Genie](https://docs.databricks.com/aws/en/genie/) and other Databricks tools.
 
 The connection uses OAuth with Dynamic Client Registration (DCR), so you don't manage a client secret. You authorize access from the MCP service page after installation.
 
@@ -18,14 +18,14 @@ The connection uses OAuth with Dynamic Client Registration (DCR), so you don't m
 
 ## Install from Databricks Marketplace
 
-This is the easiest path:
+_Recommended and easiest path_
 
 1. Go to the [dbt MCP listing](https://marketplace.databricks.com/details/6d83d4e0-5279-47b7-831c-3cb90a82ecb3/dbt-Labs_dbt-MCP) on Databricks Marketplace.
    - If you're logged in to Databricks, select **Install**.
    - If you're not, select **Get access**, then log in to Databricks or create a new account.
-2. Select a **Catalog** and a **Schema**, then enter an **MCP service name**.
-3. Find your <Constant name="dbt_platform" /> access URL. It looks like `https://vu491.us1.dbt.com/`. Refer to [Access, regions, and IP addresses](/docs/platform/about-platform/access-regions-ip-addresses) if you need help.
-4. In **Host**, leave `{tenant}` as is. If your access URL has a region such as `us1`, add it, so the host is `https://{tenant}.us1.dbt.com`. If it doesn't, keep the default `https://{tenant}.dbt.com`.
+2. Select a **Catalog** and a **Schema**, then enter an **MCP service name** (such as `dbt_mcp`)
+3. Find your <Constant name="dbt_platform" /> [access URL](/docs/platform/about-platform/access-regions-ip-addresses). It looks like `https://vu491.us1.dbt.com/`. 
+4. In **Host**, leave the `{tenant}` placeholder as is. If your access URL has a region such as `us1`, add it, so the host is `https://{tenant}.us1.dbt.com`. If it doesn't, keep the default `https://{tenant}.dbt.com`.
 5. In **Tenant**, enter the first part of your access URL, before the first dot. For `https://vu491.us1.dbt.com/`, enter `vu491`. The **Server host** line under **Tenant** should now match your access URL.
 6. Leave the remaining fields at their defaults, accept the terms, then select **Install**.
 7. Open the MCP service page and authorize access to <Constant name="dbt_platform" />.
@@ -44,7 +44,7 @@ Some models in Genie Playground don't accept tool calls, so they can't use the d
 
 ## Legacy: manual DCR setup
 
-Use the marketplace install instead. If you need to create the connection yourself, set it up manually:
+We recommend using the marketplace install instead as it's the easiest but if you need to create the connection yourself, you can set it up manually:
 
 1. In Databricks, go to **Connections** and create a new connection.
 2. Select **HTTP** as the connection type.
