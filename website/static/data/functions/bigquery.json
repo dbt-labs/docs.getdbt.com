@@ -2,7 +2,7 @@
   "_meta": {
     "platform": "bigquery",
     "platform_name": "BigQuery",
-    "count": 412
+    "count": 413
   },
   "functions": [
     {
@@ -1810,6 +1810,13 @@
       "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/string_functions#regexp_extract_all",
       "preview_status": "GA",
       "fusion_typecheck": true
+    },
+    {
+      "name": "REGEXP_EXTRACT_GROUPS",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/string_functions#regexp_extract_groups",
+      "preview_status": "GA",
+      "fusion_typecheck": false
     },
     {
       "name": "REGEXP_INSTR",

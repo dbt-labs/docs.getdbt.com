@@ -180,12 +180,6 @@ The [`static_analysis`](/reference/resource-configs/static-analysis) config opti
 - `strict`: Statically analyze all SQL before execution begins. Use this for maximum validation guarantees &mdash; nothing runs until the entire project is proven valid.
 - `off`: Skip SQL analysis on this model and its descendants.
 
-<VersionBlock firstVersion="2.0">
-
-Any run that uses `strict` mode requires authentication using [`dbt login`](/reference/commands/login?version=2.0), whether `strict` is set with the `--static-analysis strict` CLI flag or in `dbt_project.yml`. Unauthenticated runs fall back to `baseline`.
-
-</VersionBlock>
-
 When you disable static analysis, features of the VS Code extension which depend on SQL comprehension will be unavailable.
 
 The best place to configure `static_analysis` is as a config on an individual model or group of models. As a debugging aid, you can also use the [`--static-analysis strict`](/reference/global-configs/static-analysis-flag) or `--static-analysis off` CLI flags to override all model-level configuration.

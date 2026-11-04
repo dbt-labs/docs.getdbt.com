@@ -82,18 +82,21 @@ When building a model with a defined contract, dbt will do two things differentl
 ## Platform constraint support
 
 import ConstraintsTable from '/snippets/_constraints-table.md'; 
+import BreakingChanges from '/snippets/_versions-contracts.md';
 
 <ConstraintsTable />
 
 ## FAQs
 
-### Which models should have contracts?
+<Expandable alt_header="Which models should have contracts?">
 
 Any model meeting the criteria described above _can_ define a contract. We recommend defining contracts for ["public" models](model-access) that are being relied on downstream.
 - Inside of dbt: Shared with other groups, other teams, and [other dbt projects](/best-practices/how-we-mesh/mesh-1-intro).
 - Outside of dbt: Reports, dashboards, or other systems & processes that expect this model to have a predictable structure. You might reflect these downstream uses with [exposures](/docs/build/exposures).
 
-### How are contracts different from tests?
+</Expandable>
+
+<Expandable alt_header="How are contracts different from tests?">
 
 A model's contract defines the **shape** of the returned dataset. If the model's logic or input data doesn't conform to that shape, the model does not build.
 
@@ -106,17 +109,19 @@ In some cases, you can replace a data test with its equivalent constraint. This 
 
 **Why aren't tests part of the contract?** In a parallel for software APIs, the structure of the API response is the contract. Quality and reliability ("uptime") are also very important attributes of an API's quality, but they are not part of the contract per se. When the contract changes in a backwards-incompatible way, it is a breaking change that requires a bump in major version.
 
-### Do I need to define every column for a contract?
+</Expandable>
+
+<Expandable alt_header="Do I need to define every column for a contract?">
 
 Yes. dbt contracts apply to _all_ columns defined in a model, and they require declaring explicit expectations about _all_ of those columns. The explicit declaration of a contract is not an accident &mdash; it's very much the intent of this feature.
 
 At the same time, for models with many columns, we understand that this can mean a _lot_ of YAML. See [dbt-labs/dbt#11764](https://github.com/dbt-labs/dbt/issues/11764) for discussion of potential approaches to generate and update model contract definitions.
 
-### How are breaking changes handled?
+</Expandable>
+
+<Expandable alt_header="How are breaking changes handled?">
 
 When comparing to a previous project state, dbt will look for breaking changes that could impact downstream consumers. If breaking changes are detected, dbt will present a contract error. 
-
-import BreakingChanges from '/snippets/_versions-contracts.md';
 
 <BreakingChanges 
 value="Removing a contracted model by deleting, renaming, or disabling it (dbt v1.9 or higher)."
@@ -124,3 +129,77 @@ value2="versioned models will raise an error. unversioned models will raise a wa
 />
 
 More details are available in the [contract reference](/reference/resource-configs/contract#incremental-models-and-on_schema_change).
+
+</Expandable>
+
+<Expandable alt_header="Can I use model contracts with nested fields?">
+
+Yes, but only on BigQuery, because nested fields inside [struct columns](https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/data-types#struct_type) are strongly typed. Model contracts are useful when a model contains nested JSON or event data, where a nested field that changes type could break downstream models.
+
+Nested fields (structs) are columns inside other columns. List each inner field in YAML with a dotted name, such as `b.id` or `b.double_nested.another.even_more`. You must declare a `name` and `data_type` for every inner field. You may optionally declare the struct column (in this example, `b` or `b.double_nested`) in order to add a description or a constraint on the struct.
+
+<File name="models/nested_fields.yml">
+
+```yaml
+models:
+  - name: double_nested_fields
+    config:
+      contract:
+        enforced: true
+      materialized: table
+    columns:
+      - name: a
+        data_type: string
+      - name: b.id
+        data_type: integer
+      - name: b.name
+        data_type: string
+      - name: b.double_nested.id
+        data_type: integer
+      - name: b.double_nested.another.again
+        data_type: string
+      - name: b.double_nested.another.even_more
+        data_type: integer
+```
+
+</File>
+
+<File name="models/double_nested_fields.sql">
+
+```sql
+select
+  'string' as a,
+  struct(
+    1 as id,
+    'name' as name,
+    struct(2 as id, struct('test' as again, 2 as even_more) as another) as double_nested
+  ) as b
+```
+
+</File>
+
+When every nested field's `name` and `data_type` match the SQL, the model builds as usual. If they do not match, the contract fails and the model does not build. For example, if `even_more` is a string in SQL but `integer` in the contract, dbt returns:
+
+```text
+This model has an enforced contract that failed.
+Please ensure the name, data_type, and number of columns in your contract match the columns in your model's definition.
+
+| column_name                       | definition_type | contract_type | mismatch_reason    |
+| --------------------------------- | --------------- | ------------- | ------------------ |
+| b.double_nested.another.even_more | STRING          | INT64         | data type mismatch |
+```
+
+Arrays of structs are supported too. Declare the parent with `data_type: array`, then list each inner field:
+
+```yaml
+- name: my_array
+  data_type: array
+- name: my_array.id
+  data_type: integer
+- name: my_array.name
+  data_type: string
+```
+
+To add constraints such as `not_null` on nested fields, refer to [Constraints](/reference/resource-properties/constraints).
+
+</Expandable>
