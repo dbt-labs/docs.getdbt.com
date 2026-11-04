@@ -22,6 +22,20 @@ For <Constant name="fusion_engine" /> updates, refer to the [v2 changelog](https
 
 ## November 2026
 
+- **New:** In <Constant name="wizard" /> Desktop, you can edit existing text files in the [Explorer](/docs/dbt-ai/wizard-desktop-use). Select **Save** or press <kbd>Cmd</kbd>/<kbd>Ctrl</kbd> + <kbd>S</kbd>. Saves go to an isolated environment, not your original checkout. Unsaved drafts survive navigation and restarts, and indicators show where you left edits.
+- **New:** In <Constant name="wizard" /> Desktop, switch between local dbt profiles and the <Constant name="platform_cli" /> from the connection menu. Projects linked to <Constant name="dbt_platform" /> can still use local profiles, and <Constant name="wizard" /> remembers your choice.
+- **New:** In the <Constant name="wizard" /> Desktop lineage view, right-click a model to copy its name, add it to chat, open its code, or view its diff. The actions you see depend on the model and the view you're in.
+- **New:** You can use Claude Haiku 5.5 and Claude Sonnet 5.5 through Databricks in <Constant name="wizard" />, including native tool use and, for Haiku, reasoning controls.
+- **Enhancement:** In <Constant name="wizard" /> Desktop, multi-question cards now open as a single paged card. Revisit your answers and submit multiple-choice responses with clearer inline controls.
+- **Enhancement:** In <Constant name="wizard" /> Desktop, the Inspector's **Checks** tab is now **CI checks**, so it's easier to tell apart from dbt checks.
+- **Fix:** Signing out of the account that powers dbt AI models in <Constant name="wizard" /> Desktop no longer silently switches you to another account. Choose a replacement, or sign out without switching. Your other signed-in accounts stay available for your profile and dbt tools.
+- **Fix:** When dbt AI providers need an account, chat and the model picker now explain what's missing and open the account picker, instead of showing a generic provider error.
+- **Fix:** <Constant name="wizard" /> validation agents now start with Azure, Snowflake, Gemini, and Databricks models.
+- **Fix:** Explorer saves in <Constant name="wizard" /> Desktop are more reliable. Conflicting external edits are rejected instead of overwritten, failed saves keep your draft, and existing chats keep working after you switch environments.
+- **Fix:** <Constant name="wizard" /> no longer puts its internal ownership file in new environment checkouts or your commits. Creating and restoring environments also works when your repository already tracks the old filename.
+- **Fix:** Fatal <Constant name="platform_cli" /> errors now show as readable messages instead of raw JSON when <Constant name="wizard" /> prepares validation.
+- **Fix:** Lineage graph state in <Constant name="wizard" /> Desktop stays stable when the index refreshes, and model actions and context menus are more reliable.
+
 - **New**: Read-only users can query metrics through [remote MCP](/docs/dbt-ai/setup-remote-mcp#read-only-users-and-warehouse-credentials) using the shared [analytics credential](/docs/platform/wizard-read-only-users#set-up-analytics-credentials), which needs to be set up by an admin. 
 
 ## October 2026

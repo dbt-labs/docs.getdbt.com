@@ -35,8 +35,8 @@ When you open Wizard Desktop, everything you need is in one window &mdash; you'l
 | Chat area (middle) | Your conversation. Replies, charts, tables, and diffs all render here |
 | Wayfinder bar | Above the chat composer box: your project, branch, connection · environment, plus **Validation** and **Create PR** |
 | Chat composer | Where you ask. Press <kbd>⌘</kbd> + <kbd>L</kbd> to jump to it. **+** attaches files, and the two pickers set your permission mode and AI model |
-| Side pane (right) | Whichever pane you've opened, with a terminal underneath. The Explorer is read-only, so browse your files here but edit them in your own editor |
-| Pane rail (far right) | Switch panes: Explorer, Lineage, Changes, Queries, Commands, Validation, Summary, Checks, Metrics, and Insights. A badge means something needs a look |
+| Side pane (right) | Whichever pane you've opened, with a terminal underneath. You can edit text files in the Explorer |
+| Pane rail (far right) | Switch panes: Explorer, Lineage, Changes, Queries, Commands, Validation, Summary, CI checks, Metrics, and Insights. A badge means something needs a look |
 
 </SimpleTable>
 
@@ -55,11 +55,11 @@ Select an icon in the right hand pane rail to open a pane in the side panel:
 | Summary | A summary of the work in this chat |
 | Changes | Diffs waiting for review |
 | Validation | Your validation plan and its results &mdash; what passed, what failed, and what needs a look. Refer to [Validation](#validation) |
-| Explorer | Your project files. Select a file path in the chat to open it here. The Explorer is read-only, so edit files in your own editor |
+| Explorer | Your project files. Select a file path in the chat to open it here. To edit an existing text file, make your changes, then select **Save** or press <kbd>Cmd</kbd>/<kbd>Ctrl</kbd> + <kbd>S</kbd>. Saves go to the chat's isolated environment, not your original checkout. Unsaved drafts stay put when you navigate away or restart, and indicators show where you've left edits. If a file changed outside the Explorer, the save is rejected rather than overwriting it |
 | Lineage | How your dbt models connect |
 | Queries | Write and run ad hoc SQL against your connection. Refer to [Explore your data](#explore-your-data) |
 | Commands | Queries you run and commands <Constant name="wizard" /> executes, scoped to this chat |
-| Checks | The checks <Constant name="wizard" /> ran and their results |
+| CI checks | The checks <Constant name="wizard" /> ran and their results |
 | Insights | Analysis of your project and data |
 | Metrics | The metrics in your project |
 | Terminal | Run commands without leaving the app. Sits underneath whichever pane you've opened |
