@@ -28,7 +28,6 @@ For <Constant name="fusion_engine" /> updates, refer to the [v2 changelog](https
 - **Fix:** When an account had more than 1,000 groups, some of a user's assigned [groups](/docs/platform/manage-access/about-user-access#groups) were missing from the user details view. All assigned groups now appear checked. Saving with `POST /api/v3/accounts/{id}/assign-groups/` also keeps the full list of groups.
 - **Fix:** Creating or updating an [IP restriction](/docs/platform/secure/ip-restrictions) with a missing or invalid `type` now returns a 400 error (the request was invalid) and a message that describes the problem, instead of a 500 server error. A missing `name` is rejected with a 400 error too. Before this fix, dbt saved that missing name as the word None.
 - **Behavior change:** These runs now follow the [`threads`](/docs/running-a-dbt-project/using-threads) value in your [user credentials](/docs/dbt-platform-environments#set-user-credentials) instead of the dbt v2 default (for example, 48 on Snowflake). The same change also applies to Canvas runs. Jobs, dbt v1 runs, and editor features such as autocomplete are unchanged.
-
 - **New**: Read-only users can query metrics through [remote MCP](/docs/dbt-ai/setup-remote-mcp#read-only-users-and-warehouse-credentials) using the shared [analytics credential](/docs/platform/wizard-read-only-users#set-up-analytics-credentials), which needs to be set up by an admin. 
 
 ## October 2026
