@@ -27,8 +27,10 @@ This is the easiest path:
 3. Find your <Constant name="dbt_platform" /> access URL. It looks like `https://vu491.us1.dbt.com/`. Refer to [Access, regions, and IP addresses](/docs/platform/about-platform/access-regions-ip-addresses) if you need help.
 4. In **Host**, leave `{tenant}` as is. If your access URL has a region such as `us1`, add it, so the host is `https://{tenant}.us1.dbt.com`. If it doesn't, keep the default `https://{tenant}.dbt.com`.
 5. In **Tenant**, enter the first part of your access URL, before the first dot. For `https://vu491.us1.dbt.com/`, enter `vu491`. The **Server host** line under **Tenant** should now match your access URL.
-6. Leave the remaining fields at their defaults, then select **Install**.
+6. Leave the remaining fields at their defaults, accept the terms, then select **Install**.
 7. Open the MCP service page and authorize access to <Constant name="dbt_platform" />.
+
+<Lightbox src="/img/mcp/databricks-install-dbt-mcp.png" width="60%" title="The Install dbt MCP dialog filled in for tenant vu491 in the us1 region" />
 
 The install requests these OAuth scopes: `offline_access account:read projects:query catalog:read projects:develop jobs:run`.
 
