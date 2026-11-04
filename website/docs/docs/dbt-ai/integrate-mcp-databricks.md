@@ -24,10 +24,18 @@ This is the easiest path:
    - If you're logged in to Databricks, select **Install**.
    - If you're not, select **Get access**, then log in to Databricks or create a new account.
 2. Select a **Catalog** and a **Schema**, then enter an **MCP service name**.
-3. Set the host. In **Tenant**, enter the first part of your <Constant name="dbt_platform" /> host. For `https://vu491.us1.dbt.com/`, the tenant is `vu491`.
-4. If your host includes a region, add it to the **Host** field. For `https://vu491.us1.dbt.com/`, change `https://{tenant}.dbt.com` to `https://{tenant}.us1.dbt.com`.
-5. Leave the remaining fields at their defaults, then select **Install**.
-6. Open the MCP service page and authorize access to <Constant name="dbt_platform" />.
+3. Find your <Constant name="dbt_platform" /> URL in **Account settings** or in your browser's address bar. It looks like `https://vu491.us1.dbt.com/`.
+4. Enter your **Tenant**. This is the first part of your URL, before the first dot. In `https://vu491.us1.dbt.com/`, the tenant is `vu491`.
+5. Check the **Host** field. If your URL has a region such as `us1`, add it to the host. If it doesn't, leave the host as is.
+
+   | Your <Constant name="dbt_platform" /> URL | Tenant | Host |
+   | --- | --- | --- |
+   | `https://vu491.dbt.com/` | `vu491` | `https://{tenant}.dbt.com` (default) |
+   | `https://vu491.us1.dbt.com/` | `vu491` | `https://{tenant}.us1.dbt.com` |
+
+   Keep `{tenant}` in the host as is. Databricks fills it in from the **Tenant** field. The **Server host** line under **Tenant** shows the final URL, so check that it matches your <Constant name="dbt_platform" /> URL.
+6. Leave the remaining fields at their defaults, then select **Install**.
+7. Open the MCP service page and authorize access to <Constant name="dbt_platform" />.
 
 The install dialog is prefilled with these values:
 
