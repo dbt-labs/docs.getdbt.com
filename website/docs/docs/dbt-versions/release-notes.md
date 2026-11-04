@@ -35,7 +35,6 @@ For <Constant name="fusion_engine" /> updates, refer to the [v2 changelog](https
 - **Fix:** <Constant name="wizard" /> no longer puts its internal ownership file in new environment checkouts or your commits. Creating and restoring environments also works when your repository already tracks the old filename.
 - **Fix:** Fatal <Constant name="platform_cli" /> errors now show as readable messages instead of raw JSON when <Constant name="wizard" /> prepares validation.
 - **Fix:** Lineage graph state in <Constant name="wizard" /> Desktop stays stable when the index refreshes, and model actions and context menus are more reliable.
-
 - **New**: Read-only users can query metrics through [remote MCP](/docs/dbt-ai/setup-remote-mcp#read-only-users-and-warehouse-credentials) using the shared [analytics credential](/docs/platform/wizard-read-only-users#set-up-analytics-credentials), which needs to be set up by an admin. 
 
 ## October 2026
