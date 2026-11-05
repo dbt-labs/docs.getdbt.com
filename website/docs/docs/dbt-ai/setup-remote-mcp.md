@@ -142,7 +142,7 @@ AI features are enabled by default. Admins can [turn them off or back on anytime
   | --- | --- | --- |
   | Authorization | Required | Your [personal access token (PAT)](/docs/dbt-apis/user-tokens) or [service token](/docs/dbt-apis/service-tokens) from the <Constant name="dbt_platform"/> with the [required permissions](#permissions). When using the <Constant name="semantic_layer" />, we recommend using a PAT. <br /><br /> The value must be in the format `Token YOUR_DBT_ACCESS_TOKEN` or `Bearer YOUR_DBT_ACCESS_TOKEN`, replacing `YOUR_DBT_ACCESS_TOKEN` with your actual token.  |
   | x-dbt-prod-environment-id | Required | Your <Constant name="dbt_platform"/> production environment ID. Refer to [How to find your dbt MCP IDs](/docs/dbt-ai/mcp-find-ids#dbt-prod-env-id) for step-by-step instructions. |
-  </Constant>SimpleTable>
+  </SimpleTable>
     
   #### Additional configuration for SQL tools
   <SimpleTable>
