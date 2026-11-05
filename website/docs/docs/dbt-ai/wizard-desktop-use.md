@@ -35,8 +35,8 @@ When you open Wizard Desktop, everything you need is in one window &mdash; you'l
 | Chat area (middle) | Your conversation. Replies, charts, tables, and diffs all render here |
 | Wayfinder bar | Above the chat composer box: your project, branch, connection · environment, plus **Validation** and **Create PR** |
 | Chat composer | Where you ask. Press <kbd>⌘</kbd> + <kbd>L</kbd> to jump to it. **+** attaches files, and the two pickers set your permission mode and AI model |
-| Side pane (right) | Whichever pane you've opened, with a terminal underneath. The Explorer is read-only, so browse your files here but edit them in your own editor |
-| Pane rail (far right) | Switch panes: Explorer, Lineage, Changes, Queries, Commands, Validation, Summary, Checks, Metrics, and Insights. A badge means something needs a look |
+| Side pane (right) | Whichever pane you've opened, with a terminal underneath. You can edit text files in the Explorer |
+| Pane rail (far right) | Switch panes: Explorer, Lineage, Changes, Queries, Commands, Validation, Summary, CI checks, Metrics, and Insights. A badge means something needs a look |
 
 </SimpleTable>
 
@@ -55,11 +55,11 @@ Select an icon in the right hand pane rail to open a pane in the side panel:
 | Summary | A summary of the work in this chat |
 | Changes | Diffs waiting for review |
 | Validation | Your validation plan and its results &mdash; what passed, what failed, and what needs a look. Refer to [Validation](#validation) |
-| Explorer | Your project files. Select a file path in the chat to open it here. The Explorer is read-only, so edit files in your own editor |
+| Explorer |  View and edit your project files here or by clicking file paths in chat. Save changes with Save or <kbd>Cmd</kbd>/<kbd>Ctrl</kbd> + <kbd>S</kbd>.  Edits stay isolated to the chat environment, unsaved drafts remain intact if you navigate away or restart, and if you make external changes &mdash; it won't be overwritten.|
 | Lineage | How your dbt models connect |
 | Queries | Write and run ad hoc SQL against your connection. Refer to [Explore your data](#explore-your-data) |
 | Commands | Queries you run and commands <Constant name="wizard" /> executes, scoped to this chat |
-| Checks | The checks <Constant name="wizard" /> ran and their results |
+| CI checks | The CI checks <Constant name="wizard" /> ran and their results |
 | Insights | Analysis of your project and data |
 | Metrics | The metrics in your project |
 | Terminal | Run commands without leaving the app. Sits underneath whichever pane you've opened |
