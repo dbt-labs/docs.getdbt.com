@@ -1,35 +1,35 @@
 ---
-title: "How we do context engineering"
+title: "How to do context engineering"
 id: 1-guide-overview
-description: Learn how we model the data AI agents read, and why it's the next job for analytics engineers.
-displayText: How we do context engineering
+description: Learn how to model the data AI agents read, and why it's the next job for analytics engineers.
+displayText: How to do context engineering
 hoverSnippet: Learn how we model the data AI agents read.
 ---
 
-## Why does context need engineering?
+For a decade, we've modelled data for one reader: the dashboard. And every model, test, and metric existed so a person could look at a number and trust it.
 
-For a decade, we modeled data for one reader: the dashboard. Every model, test, and metric existed so a person could look at a number and trust it.
+That worked for a bit but a metric is thousands of rows squashed into something you can read at a glance, and you can't un-squash it. Every number on a dashboard sets off the same three questions (give or take): which ones moved and why? and what do we do about it? Since dashboards can't answer any of them, they usually become a ticket in the data team's queue.
 
-That work succeeded. But a metric is thousands of rows squashed into something you can read at a glance, and you can't un-squash it. Every number on a dashboard sets off the same three questions: why did it move, which ones, and what do we do about it. The chart can't answer any of them, so they become a ticket in the data team's queue.
+That always existed except it was sitting in your warehouse, or could easily land there: call transcripts, support tickets, CRM notes, contracts, emails, etc. It's not something you really modelled, mostly because there's no bar (or `gasp: pie chart`) chart for a call transcript.
 
-The detail was never deleted. It's sitting in your warehouse, or could easily land there: call transcripts, support tickets, CRM notes, contracts, and emails. Nobody modeled it because there's no bar chart for a call transcript.
-
-AI agents are the first readers that can use that detail. But they can only be as good as what you hand them. Context engineering is the practice of modeling data for that new reader, with the same discipline you already apply to metrics: staging, tests, docs, and one governed DAG.
+AI agents are the first readers that can use that detail. But they can only be as good as what they get. Context engineering is the practice of modeling data for that new reader, with the same discipline you already apply to metrics: staging, tests, docs, and one governed DAG.
 
 ## What is context?
 
 Context is the information an AI agent reads to do its job. Good context is:
 
-- **Governed.** Someone owns it, and changes are reviewed.
-- **Tested.** You can prove it's correct, not just hope.
-- **Traceable.** Every claim points back to the source it came from.
+- Governed, which means someone owns it, and changes are reviewed
+- Tested so you can prove it’s correct &mdash; and our teammate Hope can continue rowing 🚣‍♀️
+- Traceable so every claim points back to the source it came from
 
-Context isn't just your semantic layer. They work side by side:
+Context isn't _just_ your semantic layer &mdash; they work side by side:
 
+<SimpleTable>
 | Layer | What it holds | Example question |
 |-------|---------------|------------------|
 | Semantic layer | Your metrics and how they're defined | "What was on-time delivery last quarter?" |
 | Context | Your unstructured and semi-structured data, modeled so agents can find and cite it | "Why did on-time delivery slip, and which accounts drove it?" |
+</SimpleTable>
 
 Your metrics tell an agent _what_ happened. Context tells it _why_.
 
