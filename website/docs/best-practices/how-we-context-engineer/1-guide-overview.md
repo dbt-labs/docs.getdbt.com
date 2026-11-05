@@ -20,6 +20,10 @@ AI agents are the first readers that can use that detail. But they can only be a
 
 You'll walk away able to turn a pile of raw text into context an agent can search, cite, and trust. Each recommendation comes with an example and a _why_, so you can decide when to deviate.
 
+Here's the whole idea in one picture. Text is split into chunks, each chunk becomes numbers that capture its meaning, and a question finds the chunks closest to it. The numbers and chunks are made up, and the map is simplified: real embeddings have hundreds of dimensions, not two.
+
+<Lightbox src="/img/best-practices/context-engineering/pipeline.svg" width="100%" title="A call transcript is chunked, embedded as numbers, and placed on a map where similar meanings sit close together. A question lands on the same map, and the closest chunks come back with a score and a source." />
+
 The [`dbt_context_engineering` package](https://github.com/dbt-labs/dbt-context-engineering) gives you the building blocks: chunk your text, embed it, search it, label it, test it, and keep an eye on cost. The [`jaffle-logistics`](https://github.com/dbt-labs/jaffle-logistics) project shows them working together. The patterns are tool-agnostic, and patterns still being hardened carry a <Lifecycle status="beta" /> pill. Keep your own conventions if they fit your team better. Just write them down and stay consistent.
 
 ## What is context?

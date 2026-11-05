@@ -101,7 +101,27 @@ from {{ ref('chunk_transcripts') }}
 ) }}
 ```
 
-You get the top 10 chunks, each with a similarity `score`. That's a working context pipeline. The rest of this guide explains why each piece is built the way it is.
+## What it looks like
+
+Run all three steps and `vector_search` hands back a table like this. It's illustrative and trimmed to three rows, so your chunks and scores will differ:
+
+<SimpleTable>
+
+| chunk_id | chunk_text | score |
+|----------|------------|-------|
+| `CT-99021::2` | "…I'll bring findings next time, not just a promise." | 0.57 |
+| `CT-99021::1` | "We've flagged a pattern in late deliveries, but we don't know the cause yet." | 0.54 |
+| `CT-99022::1` | "The late deliveries are clustering around the Columbus warehouse." | 0.50 |
+
+</SimpleTable>
+
+Here's how to read it:
+
+- Each row is one chunk. The `chunk_id` points to the call and the piece, so you can trace any answer back to its source.
+- `score` is how close the chunk is in meaning to your question. 1.0 means the same meaning, and rows come back highest first.
+- The top chunk never says "late deliveries", yet it's the closest match to a question about them. That's search by meaning.
+
+That's a working context pipeline. It's not perfect yet, though. Short, formulaic text can sneak into the top results. [Embed and retrieve](/best-practices/how-we-context-engineer/4-embed-and-retrieve) explains why, and [Enrich with AI](/best-practices/how-we-context-engineer/5-enrich-with-ai) fixes it.
 
 ## What's next
 
