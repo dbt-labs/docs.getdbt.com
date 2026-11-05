@@ -1901,6 +1901,7 @@ const sidebarSettings = {
             id: "best-practices/how-we-context-engineer/1-guide-overview",
           },
           items: [
+            "best-practices/how-we-context-engineer/1-guide-overview",
             "best-practices/how-we-context-engineer/2-get-started",
             "best-practices/how-we-context-engineer/3-prepare-your-text",
             "best-practices/how-we-context-engineer/4-embed-and-retrieve",
