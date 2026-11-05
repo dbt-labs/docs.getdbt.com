@@ -22,7 +22,8 @@ For <Constant name="fusion_engine" /> updates, refer to the [v2 changelog](https
 
 ## November 2026
 
-- **New**: Read-only users can query metrics through [remote MCP](/docs/dbt-ai/setup-remote-mcp#read-only-users-and-warehouse-credentials) using the shared [analytics credential](/docs/platform/wizard-read-only-users#set-up-analytics-credentials), which needs to be set up by an admin. 
+- **New:** Use [`ignore_external_modifications`](/reference/resource-configs/ignore-external-modifications) to control whether dbt State forces a rebuild when it detects that a model was changed outside of dbt (for example, by a direct DDL statement run in your warehouse). This config is set to `true` by default; dbt State reuses the node even if it was modified externally. Set to `false` to force a rebuild when an external change is detected. Applies to views, tables, and incremental models.
+- **New**: Read-only users can query metrics through [remote MCP](/docs/dbt-ai/setup-remote-mcp#read-only-users-and-warehouse-credentials) using the shared [analytics credential](/docs/platform/wizard-read-only-users#set-up-analytics-credentials), which needs to be set up by an admin.
 
 ## October 2026
 
