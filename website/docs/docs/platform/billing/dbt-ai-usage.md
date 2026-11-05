@@ -101,8 +101,6 @@ The following interactions count as dbt Copilot actions:
 
 - **Each generation of documentation, tests, semantic models, or metrics** &mdash; Any time you ask dbt AI to automatically create things like documentation, tests, data models, or metrics, it counts as one interaction.
 
-- **Each generation within dbt AI chats on <Constant name="canvas" /> or <Constant name="insights" />** &mdash; Any time you use dbt Copilot chat in <Constant name="canvas" /> or <Constant name="insights" /> to generate something, it counts as an interaction.
-
 </Expandable>
 
 <Expandable alt_header="Allowed limits on number of dbt Copilot actions per month per license">
