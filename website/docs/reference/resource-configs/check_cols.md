@@ -4,6 +4,8 @@ description: "Read this guide to understand the check_cols configuration in dbt.
 datatype: "[column_name] | all"
 ---
 
+import BigQueryCheckColsCasing from '/snippets/_bigquery-check-cols-casing.md';
+
 <VersionBlock firstVersion="1.9">
 <File name="snapshots/<filename>.yml">
   
@@ -40,6 +42,8 @@ A list of columns within the results of your snapshot query to check for changes
 Alternatively, use all columns using the `all` value (however this may be less performant).
 
 This parameter is **required if using the `check` [strategy](/reference/resource-configs/strategy)**.
+
+<BigQueryCheckColsCasing />
 
 ## Default
 No default is provided.
