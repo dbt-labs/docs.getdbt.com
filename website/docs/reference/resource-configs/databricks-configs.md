@@ -62,7 +62,7 @@ In dbt-databricks v1.9 (try it now in [the <Constant name="dbt" /> **v1 Latest**
 
 We are currently in a transitionary period where there is a disconnect between old submission methods (which were grouped by compute), and the logically distinct submission methods (command, job run, workflow).
 
-As such, the supported config matrix is somewhat complicated:
+As such, the supported config matrix is somewhat complicated. In the **Default** column, `[]` means an empty list and `{}` means an empty dictionary (no values set yet).
 
 | Config                | Use                                                                  | Default            | `all_purpose_cluster`* | `job_cluster` | `serverless_cluster` | `workflow_job` |
 | --------------------- | -------------------------------------------------------------------- | ------------------ | ---------------------- | ------------- | -------------------- | -------------- |
