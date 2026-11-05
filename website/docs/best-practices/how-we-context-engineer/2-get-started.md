@@ -38,7 +38,9 @@ To see real embeddings and search results, point the project at Snowflake, Datab
 
 ## Use it in your own project
 
-Install the package in `packages.yml`, as `jaffle-logistics` does:
+Add the package to a `packages.yml` file at the root of your dbt project, as `jaffle-logistics` does, then run `dbt deps`:
+
+<File name="packages.yml">
 
 ```yaml
 packages:
@@ -46,7 +48,11 @@ packages:
     version: [">=0.1.0", "<1.0.0"]
 ```
 
+</File>
+
 Set the variables the package reads in `dbt_project.yml`. AI functions are off by default, so nothing bills until you turn them on for a target:
+
+<File name="dbt_project.yml">
 
 ```yaml
 vars:
@@ -54,9 +60,31 @@ vars:
   embedding_model: "snowflake-arctic-embed-m-v1.5" # example for Snowflake. Name your own model.
 ```
 
-Then each step is one model. These snippets are trimmed down from `jaffle-logistics`, which adds hashing, incremental refresh, and cost hooks (we cover those later).
+</File>
 
-**1. Chunk** each text into pieces. Here, a call transcript's turns become chunks that never split a turn or mix two calls:
+Each step below is one dbt model: a plain `.sql` file in your `models/` folder. These snippets are trimmed down from `jaffle-logistics`, which adds hashing, incremental refresh, and cost hooks (we cover those later).
+
+### What `chunk()` reads
+
+`chunk()` needs a model with one row per piece of text, in order. For call transcripts, that's one row per speaker turn. The first snippet reads a model called `int_transcript_turns` with these columns. Swap in your own table and column names:
+
+<SimpleTable>
+
+| Column | What it holds |
+|--------|---------------|
+| `turn_id` | A unique id for each turn |
+| `turn_index` | The turn's position in the call, so chunks keep their order |
+| `transcript_id` | Which call the turn belongs to, so chunks never mix two calls |
+| `speaker` | Who's talking |
+| `turn_text` | What they said |
+
+</SimpleTable>
+
+### 1. Chunk
+
+Break each text into pieces. Here, a call transcript's turns become chunks that never split a turn or mix two calls:
+
+<File name="models/context/chunk_transcripts.sql">
 
 ```sql
 {{ config(materialized='table') }}
@@ -71,7 +99,13 @@ Then each step is one model. These snippets are trimmed down from `jaffle-logist
 ) }}
 ```
 
-**2. Embed** each chunk. The guard in the pre-hook stops a run that's too big before it spends anything:
+</File>
+
+### 2. Embed
+
+Turn each chunk into numbers. The guard in the pre-hook stops a run that's too big before it spends anything:
+
+<File name="models/context/transcript_embeddings.sql">
 
 ```sql
 {{ config(
@@ -86,7 +120,13 @@ select
 from {{ ref('chunk_transcripts') }}
 ```
 
-**3. Search** by embedding your question with the same model, then ranking every chunk by how close it is:
+</File>
+
+### 3. Search
+
+Embed your question with the same model, then rank every chunk by how close it is:
+
+<File name="models/context/search_transcripts.sql">
 
 ```sql
 {{ config(materialized='table') }}
@@ -101,9 +141,29 @@ from {{ ref('chunk_transcripts') }}
 ) }}
 ```
 
+</File>
+
+### 4. Run it
+
+Build the search model and everything it depends on:
+
+```bash
+dbt build --select +search_transcripts --vars '{"ai_functions_enabled": true}'
+```
+
+`ai_functions_enabled` turns on real AI calls, so this run bills your warehouse. Try it on a small table of text first.
+
+When the build finishes, print the results in your terminal:
+
+```bash
+dbt show --select search_transcripts --limit 10
+```
+
+You can also query `search_transcripts` in your warehouse like any other table.
+
 ## What it looks like
 
-Run all three steps and `vector_search` hands back a table like this. It's illustrative and trimmed to three rows, so your chunks and scores will differ:
+`search_transcripts` returns a table like this. It's illustrative and trimmed to three rows, so your chunks and scores will differ:
 
 <SimpleTable>
 
