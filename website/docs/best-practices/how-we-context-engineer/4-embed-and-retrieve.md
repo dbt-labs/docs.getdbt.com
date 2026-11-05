@@ -69,6 +69,8 @@ Retrieval is the read side of context engineering: given a question, find the mo
 
 In the package, that's one macro, `vector_search`. It returns the id and columns you ask for, plus a `score`:
 
+<File name="models/context/ai/search.sql">
+
 ```sql
 {{ dbt_context_engineering.vector_search(
     relation=ref('knowledge_base'),
@@ -80,6 +82,8 @@ In the package, that's one macro, `vector_search`. It returns the id and columns
     filter="account_key = 'CLI-0042'"
 ) }}
 ```
+
+</File>
 
 Retrieval is the contract with your agent. A chunk earns its place by being similar, filterable, and traceable, so the agent can cite a source instead of paraphrasing one.
 
@@ -160,6 +164,8 @@ With this in place, one filtered search answers a cross-system question, and eve
 
 In the package, you list each source and say which of its columns map to the shared shape. Here are two of the five sources in `jaffle-logistics`:
 
+<File name="models/context/ai/knowledge_base.sql">
+
 ```sql
 {{ dbt_context_engineering.knowledge_base([
     {'relation': ref('legal_docs_embedded_classified'), 'source_type': 'Legal Document',
@@ -172,6 +178,8 @@ In the package, you list each source and say which of its columns map to the sha
      'citation_url': 'citation_url', 'classification': 'classification'}
 ]) }}
 ```
+
+</File>
 
 Our recommendations:
 

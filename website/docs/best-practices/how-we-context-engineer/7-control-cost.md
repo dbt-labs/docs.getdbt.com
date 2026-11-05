@@ -48,6 +48,8 @@ Our recommendations:
 - **Estimate the whole call, not just the text.** A row sent to a generative function (generate, classify, or extract) is billed for its text plus the prompt template and schema, plus the model's reply. On one Snowflake extraction workload, billed input plus output tokens were about 6.4 times an input-text-only estimate. For those functions, the guard estimates input text, prompt template, schema, and an output allowance for every row. Embedding calls send only the text, so they count the text alone.
 - **Name the prompt once.** Set `meta.ai_prompt` (a prompt name and version) in the model's config. The AI function in the model body and both hooks read it, so a version bump can't leave a hook undercounting. Here's the shape:
 
+<File name="models/context/ai/call_transcripts_classify.sql">
+
 ```sql
 {{ config(
     meta={'ai_prompt': {'name': 'jaffle_content_type', 'version': 'v1'}},
@@ -63,6 +65,8 @@ select
     ) }} as content_type
 from {{ ref('call_transcripts_hashed') }}
 ```
+
+</File>
 
 - **Set ceilings in configuration.** A deliberate large batch should be a one-line override, which makes the guard a safety net and not an obstacle.
 - **On incremental models, guard only the new rows.** Pass the same filter the model uses, so the guard counts the delta, not the whole table.

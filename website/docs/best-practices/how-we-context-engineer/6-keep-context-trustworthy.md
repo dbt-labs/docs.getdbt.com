@@ -54,13 +54,19 @@ The `dbt_context_engineering` package ships all three. The jaffle project doesn'
 
 A groundedness test fails any row whose evidence quote isn't actually in its source text. This is the highest-leverage check you can add, because it turns a convention you already follow, carrying a verbatim quote with every extracted fact, from an honor system into an enforced rule. A required-but-unchecked field is a false sense of safety.
 
+<File name="models/context/ai/_context_ai.yml">
+
 ```yaml
-columns:
-  - name: evidence
-    data_tests:
-      - dbt_context_engineering.grounded:
-          source_text_column: chunk_text
+models:
+  - name: extracted_facts
+    columns:
+      - name: evidence
+        data_tests:
+          - dbt_context_engineering.grounded:
+              source_text_column: chunk_text
 ```
+
+</File>
 
 Our recommendations:
 
@@ -74,12 +80,15 @@ A conformance test fails any row whose label isn't in the schema's allowed value
 
 You write it as a one-line singular test. A singular test is a SQL file in your `tests/` folder that returns the rows that fail (see [data tests](/docs/build/data-tests)):
 
+<File name="tests/assert_content_types_conform.sql">
+
 ```sql
--- tests/assert_content_types_conform.sql
 {{ dbt_context_engineering.conforms_to_schema(
     ref('call_transcripts_classify'), 'content_type', 'jaffle_content_type', 'v1'
 ) }}
 ```
+
+</File>
 
 Our recommendations:
 
@@ -93,21 +102,27 @@ An evaluation test scores your predictions against a hand-labeled **golden set**
 
 The package's `eval` macro takes a table with a predicted column and an expected column, and returns one row per metric:
 
+<File name="models/eval_metrics.sql">
+
 ```sql
--- models/eval_metrics.sql
 {{ dbt_context_engineering.eval(ref('predictions'), 'predicted_label', 'expected_label') }}
 ```
 
+</File>
+
 Then a singular test turns a metric into a gate. This one fails the build if overall accuracy drops below 90%:
 
+<File name="tests/assert_accuracy_above_bar.sql">
+
 ```sql
--- tests/assert_accuracy_above_bar.sql
 select *
 from {{ ref('eval_metrics') }}
 where metric = 'accuracy'
   and label = '__overall__'
   and value < 0.9
 ```
+
+</File>
 
 Our recommendations:
 

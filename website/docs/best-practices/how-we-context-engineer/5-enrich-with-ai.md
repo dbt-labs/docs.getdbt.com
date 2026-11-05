@@ -62,22 +62,68 @@ Every major warehouse exposes these as SQL functions, but each names them differ
 
 ### Classify
 
-Classify picks exactly one label from a fixed set. Use it when you have a closed list of categories (a **taxonomy**), such as whether a chunk is an account assessment, a weather disruption, a handling error, or routine status.
+Classify sorts each chunk into one bucket from a list you write, like `weather_disruption` or `routine_status`.
 
-In the package, it's one call. `jaffle-logistics` classifies every chunk like this:
+**Who does the sorting?** An AI model, through your warehouse's built-in AI function. You don't label anything by hand. You write the list of labels and what each one means, and `classify()` does the rest.
 
-```sql
-select
-    chunk_id,
-    {{ dbt_context_engineering.classify(
-        'chunk_text',
-        prompt=dbt_context_engineering.prompt('jaffle_content_type', 'v1'),
-        output_schema=dbt_context_engineering.schema_def('jaffle_content_type', 'v1')
-    ) }} as content_type
-from {{ ref('call_transcripts_hashed') }}
-```
+#### Create your labels
 
-Each chunk gets one label from the taxonomy (the values here are illustrative):
+1. **Pick your labels.** Keep the list short, and make each label a business category. Include a catch-all, like `routine_status`, so every chunk has somewhere to go.
+2. **Write them in a macro file.** Create a `.sql` file in your project's `macros/` folder. It holds two macros. One has the instructions for the model, with each label and what it means. The other has the list of allowed labels. The macro names include a version, like `v1`.
+
+    <File name="macros/prompts/jaffle_content_type.sql">
+
+    ```sql
+    {% macro prompt__jaffle_content_type__v1() -%}
+    {%- raw -%}
+    Classify the text below into exactly one label.
+
+    weather_disruption: caused by severe weather (a storm, ice, snow).
+    handling_or_warehouse_error: a warehouse or loading mistake.
+    routine_status: a routine update with no problem to report.
+
+    Text:
+    {{ input }}
+    {%- endraw -%}
+    {%- endmacro %}
+
+    {% macro schema__jaffle_content_type__v1() -%}
+    {%- raw -%}
+    { "type": "object",
+      "properties": { "content_type": { "type": "string",
+        "enum": ["weather_disruption", "handling_or_warehouse_error", "routine_status"] } },
+      "required": ["content_type"] }
+    {%- endraw -%}
+    {%- endmacro %}
+    ```
+
+    </File>
+
+3. **Call `classify()` in a model.** It points at your macros by name and version. This is the pattern `jaffle-logistics` uses to classify every chunk:
+
+    <File name="models/context/ai/call_transcripts_classify.sql">
+
+    ```sql
+    select
+        chunk_id,
+        {{ dbt_context_engineering.classify(
+            'chunk_text',
+            prompt=dbt_context_engineering.prompt('jaffle_content_type', 'v1'),
+            output_schema=dbt_context_engineering.schema_def('jaffle_content_type', 'v1')
+        ) }} as content_type
+    from {{ ref('call_transcripts_hashed') }}
+    ```
+
+    </File>
+
+4. **Run it and check a few rows.** Like any AI step, this bills your warehouse, so start small (see [Control cost](/best-practices/how-we-context-engineer/7-control-cost)):
+
+    ```bash
+    dbt build --select call_transcripts_classify --vars '{"ai_functions_enabled": true}'
+    dbt show --select call_transcripts_classify --limit 10
+    ```
+
+Each chunk now has one label (the values here are illustrative):
 
 <SimpleTable>
 
@@ -89,13 +135,20 @@ Each chunk gets one label from the taxonomy (the values here are illustrative):
 
 </SimpleTable>
 
-Classification is the highest-value enrichment step, because it makes search precise. Without it, short boilerplate chunks crowd the top results (see [Embed and retrieve](/best-practices/how-we-context-engineer/4-embed-and-retrieve#embedding-buys-recall-classification-buys-precision)). With it, you filter the search to the category your question is about. In our test, every result in the top 10 became real account content, and the boilerplate was gone.
+Labels make search precise. Without them, short boilerplate chunks crowd the top results (see [Embed and retrieve](/best-practices/how-we-context-engineer/4-embed-and-retrieve#embedding-buys-recall-classification-buys-precision)). With them, you filter search to the category your question is about. In our test, every result in the top 10 became real account content.
 
-- **Use the label as a filter on search.** Retrieval narrows to the right category before ranking.
-- **Version your taxonomy like any other prompt.** Changing it should be a reviewable diff, as covered [below](#treat-prompts-and-schemas-as-code).
+#### Change your labels
+
+Treat your labels like any other model: someone owns them, and changes go through a pull request.
+
+- **Never edit `v1`.** Copy both macros to `v2`, make your change, and point your model at `v2`.
+- **Change both macros together.** The instructions and the list need the same labels. A test catches a label that isn't on the list (see [Keep context trustworthy](/best-practices/how-we-context-engineer/6-keep-context-trustworthy)).
+- **Rebuild.** Classify relabels every chunk on each build, so it bills again.
+- **Check accuracy.** Keep a small set of chunks you've labeled yourself, and test the model's labels against them.
+- **Revisit the list when your questions change.** A list built for today's questions may not fit tomorrow's.
 
 :::caution
-Two honest limits. A taxonomy built for the questions you've thought of may not generalize to questions you haven't. Also, labels aren't cached the way embeddings are, so a rebuild relabels everything and the same text can land in a different category between runs.
+The same text can get a different label when you rerun the build. Tests catch that drift, but they don't prevent it.
 :::
 
 ### Extract <Lifecycle status="beta" />
@@ -125,31 +178,17 @@ The **output schema** is the same. It declares the shape the model must return: 
 - **Version prompts and schemas like database migrations.** Each version is an immutable, named artifact, such as `v3`. To improve a prompt, write `v4`. Never edit a released version in place.
 - **Reference an explicit version every time.** There's no "latest". A model on `v3` stays on `v3` until you deliberately bump it, so changes roll out and roll back one model at a time.
 - **Keep prompts where they show up in a pull request.** If a prompt lives in a warehouse console under a mutable pointer, you can't answer "what changed, and when?"
-- **Define each taxonomy once.** The allowed labels belong in the schema, and everything else (the classifier, your tests, the prompt) should derive from it. A label list copied into two places will silently drift.
+- **Treat the schema's label list as the source of truth.** Your tests check against it, and the package copies it into the prompt where a warehouse needs that. If you also name labels in the prompt's instructions, update both together so they don't drift.
 
-In the package, a prompt and a schema are each a macro, and the macro's name carries its version. This one is trimmed from `jaffle-logistics`:
+In the package, a prompt and a schema are each a macro, and the macro's name carries its version, like `prompt__jaffle_content_type__v1`. The [Classify](#classify) section shows a full example.
+
+Here's a schema macro that follows these recommendations:
+
+<File name="macros/prompts/deal_signal.sql">
 
 ```sql
-{% macro prompt__jaffle_content_type__v1() -%}
+{% macro schema__deal_signal__v1() -%}
 {%- raw -%}
-Classify the operational text below into exactly one content-type label.
-
-account_assessment: evaluates the account as a whole, not one shipment or incident.
-contract_reference: contractual or legal terms, SLA credit language.
-weather_disruption: describes or was caused by severe weather.
-...
-
-Text:
-{{ input }}
-{%- endraw -%}
-{%- endmacro %}
-```
-
-The `{{ input }}` placeholder is where each row's text goes. To change the prompt, add `prompt__jaffle_content_type__v2` and bump the version in the model that uses it.
-
-Here's a schema that follows these recommendations:
-
-```json
 {
   "type": "object",
   "properties": {
@@ -161,7 +200,11 @@ Here's a schema that follows these recommendations:
   },
   "required": ["signal"]
 }
+{%- endraw -%}
+{%- endmacro %}
 ```
+
+</File>
 
 Two things to notice:
 

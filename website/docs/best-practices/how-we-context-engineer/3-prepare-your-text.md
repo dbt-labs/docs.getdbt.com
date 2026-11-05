@@ -51,6 +51,8 @@ Think of **packing** instead. You work through the text in order, keeping a runn
 
 Here's the idea in plain SQL. Estimate tokens per unit, keep a running total within each partition, and use the total to number the chunks:
 
+<File name="models/context/chunk_by_hand.sql">
+
 ```sql
 with units as (
 
@@ -80,6 +82,8 @@ select
     floor(tokens_before / 512) as chunk_seq
 from running_total
 ```
+
+</File>
 
 The package's `chunk()` macro does this for you and returns one row per chunk, with the chunk's text, its id, the source rows it packed, and a token estimate. Here's the shape of the result (the values are illustrative):
 
