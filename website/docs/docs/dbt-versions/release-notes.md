@@ -22,6 +22,20 @@ For <Constant name="fusion_engine" /> updates, refer to the [v2 changelog](https
 
 ## November 2026
 
+- **New:** In <Constant name="wizard" /> Desktop, you can edit existing text files in the [Explorer](/docs/dbt-ai/wizard-desktop-use). Select **Save** or press <kbd>Cmd</kbd>/<kbd>Ctrl</kbd> + <kbd>S</kbd>. Edits save to a separate copy of your project, not your original files, and unsaved drafts persist after you navigate away or restart.
+- **New:** In <Constant name="wizard" /> Desktop, switch between local dbt profiles and the <Constant name="platform_cli" /> from the connection menu. <Constant name="wizard" /> remembers your choice, even for projects linked to <Constant name="dbt_platform" />.
+- **New:** In the <Constant name="wizard" /> Desktop lineage view, right-click a model to copy its name, add it to chat, open its code, or view its diff. The actions you see depend on the model and the view you're in.
+- **New:** Use Claude Haiku 5.5 and Claude Sonnet 5.5 through Databricks in <Constant name="wizard" />.
+- **Enhancement:** In <Constant name="wizard" /> Desktop, multi-question cards now open as a single paged card. Go back to change your answers, and submit multiple-choice responses with clearer inline controls.
+- **Enhancement:** In <Constant name="wizard" /> Desktop, the Inspector's **Checks** tab is now **CI checks**, so it's easier to tell apart from [dbt checks](/docs/build/checks).
+- **Fix:** Signing out of your AI model account in <Constant name="wizard" /> Desktop no longer switches you to another account. Pick a replacement, or sign out without switching. Your other signed-in accounts still work for your profile and dbt tools.
+- **Fix:** When dbt AI providers need an account, chat and the model picker now tell you what's missing and open the account picker, instead of showing a generic provider error.
+- **Fix:** <Constant name="wizard" /> validation now works with Azure, Snowflake, Gemini, and Databricks models.
+- **Fix:** Failed Explorer saves in <Constant name="wizard" /> Desktop keep your draft, and a save no longer overwrites changes made outside <Constant name="wizard" />. Existing chats also keep working after you switch environments.
+- **Fix:** <Constant name="wizard" /> no longer adds a stray file to new environments or your commits. Creating and restoring environments also works in repositories that already track that file.
+- **Fix:** When <Constant name="wizard" /> prepares validation, fatal <Constant name="platform_cli" /> errors now show as readable messages instead of raw JSON.
+- **Fix:** The lineage graph in <Constant name="wizard" /> Desktop no longer jumps around when your project refreshes, and model actions and right-click menus are more reliable.
+- **New:** <Constant name="wizard" /> now automatically switches to AWS Bedrock if an AI model provider (OpenAI, Anthropic, or Fireworks) has an outage, so you can keep working. Available for <Constant name="dbt_platform" /> accounts hosted on AWS that use dbt <Term id="managed" /> models. Learn more about [automatic backup during outages](/docs/dbt-ai/pricing-billing/overview#automatic-backup-during-outages).
 - **Enhancement:** The [**Marts**](/docs/explore/explore-projects#catalog-overview) table on the Catalog project landing page now shows 20 rows per page by default, up from 5. The page size dropdown includes a **20 Rows** option, so you move through the list with fewer page turns.
 - **Enhancement:** The [Assign User to Groups API](/dbt-cloud/api-v3?version=2#/operations/Assign%20User%20to%20Groups) (`POST /api/v3/accounts/{account_id}/assign-groups/`) now accepts `add_group_ids` and `remove_group_ids`. Use these fields to add a user to groups, or remove them from groups, without replacing every group they belong to. Sending `desired_group_ids` still replaces the full list.
 - **Fix:** In the [Discovery API](/docs/dbt-apis/discovery-api), a model's parents used to leave out models that live in another project ([Mesh](/docs/mesh/about-mesh)). Those parent models are included now. Lineage already listed these parents.
