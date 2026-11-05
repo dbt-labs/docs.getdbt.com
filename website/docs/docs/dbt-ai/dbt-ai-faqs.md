@@ -69,7 +69,7 @@ No, <Constant name="wizard" /> and dbt Copilot are separate products.
 
 <Constant name="wizard" /> is the latest and next generation of agentic product available in the <Constant name="dbt_platform" /> and as a CLI. It uses your project context to help you develop governed dbt changes faster. Think of it like a smart AI agent that has a map of your project. Instead of having to read through each file and understand the context, it can answer questions and help you develop _and_ validate your changes faster.
 
-dbt Copilot features for those who have access to them, include quick-action buttons in <Constant name="studio_ide" />.
+dbt Copilot features for those who have access to them, include quick-action buttons in <Constant name="studio_ide" /> and the Copilot pane in <Constant name="insights" />.
 
 </Expandable>
 
