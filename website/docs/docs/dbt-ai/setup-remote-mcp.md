@@ -27,12 +27,14 @@ The remote MCP server is the ideal choice when:
 
 ## Choose your auth method
 
+<SimpleTable>
 | If you need... | Use... |
 | --- | --- |
 | Fastest first-time setup and your MCP client supports OAuth for HTTP servers (including `execute_sql`) | **[OAuth (remote)](#oauth-remote-mcp)** <br /> Available in public beta for Starter, Enterprise, and Enterprise+ accounts |
 | `execute_sql` with token-based auth, automation, shared setup, or clients without OAuth | **Token-based** with a [personal access token (PAT)](/docs/dbt-apis/user-tokens) |
 | Shared or team setup | **Service token** (token-based) |
 | CI or automation | **Service token** (token-based) |
+</SimpleTable>
 
 :::warning Service tokens do not work for `execute_sql`
 If you connect with a token instead of OAuth, `execute_sql` only works with a [personal access token (PAT)](/docs/dbt-apis/user-tokens). Service tokens won't work. To run SQL without creating a PAT, use [OAuth (remote MCP)](#oauth-remote-mcp) instead.
@@ -43,6 +45,7 @@ If you connect with a token instead of OAuth, `execute_sql` only works with a [p
 Remote MCP checks your access when you connect and authorizes each tool call against the project, environment, job, or run it targets. These checks apply to OAuth, personal access tokens (PATs), and service tokens. A successful connection or a tool appearing in your client doesn't mean you can use that tool on every resource.
 
 You don't need the `Developer` permission set just to connect. Ask your admin to grant the permissions needed for your workflow:
+
 <SimpleTable>
 | Workflow | Required access |
 | --- | --- |
@@ -52,6 +55,7 @@ You don't need the `Developer` permission set just to connect. Ask your admin to
 | Run SQL containing dbt Jinja, such as `ref()` or `source()` | The requirements for plain SQL, plus develop access. Production deferral also requires metadata read access. |
 | Read or manage jobs and runs | The corresponding jobs or runs read or write permission for the target resource. Unfiltered account-wide listings require account-wide access. |
 </SimpleTable>
+
 For available permission sets, refer to [Enterprise permissions](/docs/platform/manage-access/enterprise-permissions) and [Service tokens](/docs/dbt-apis/service-tokens#permissions-for-service-account-tokens). PATs inherit the permissions of the user who created them. OAuth also restricts access to the scopes and projects you consented to.
 
 Service tokens with metadata read access can use `text_to_sql` to generate SQL. They can't use `execute_sql` to run it.
@@ -132,37 +136,42 @@ AI features are enabled by default. Admins can [turn them off or back on anytime
 2. For the remote MCP, you will pass on headers through the JSON blob to configure required fields:
 
   #### Configuration for APIs and SQL tools
-
+  
+  <SimpleTable>
   | Header | Required | Description |
   | --- | --- | --- |
   | Authorization | Required | Your [personal access token (PAT)](/docs/dbt-apis/user-tokens) or [service token](/docs/dbt-apis/service-tokens) from the <Constant name="dbt_platform"/> with the [required permissions](#permissions). When using the <Constant name="semantic_layer" />, we recommend using a PAT. <br /><br /> The value must be in the format `Token YOUR_DBT_ACCESS_TOKEN` or `Bearer YOUR_DBT_ACCESS_TOKEN`, replacing `YOUR_DBT_ACCESS_TOKEN` with your actual token.  |
   | x-dbt-prod-environment-id | Required | Your <Constant name="dbt_platform"/> production environment ID. Refer to [How to find your dbt MCP IDs](/docs/dbt-ai/mcp-find-ids#dbt-prod-env-id) for step-by-step instructions. |
-
+  </Constant>SimpleTable>
+    
   #### Additional configuration for SQL tools
+  <SimpleTable>
   | Header | Required | Description |
   | --- | --- | --- |
   | x-dbt-dev-environment-id | Required for `execute_sql` | Your <Constant name="dbt_platform"/> development environment ID. Refer to [How to find your dbt MCP IDs](/docs/dbt-ai/mcp-find-ids#dbt-dev-env-id) for step-by-step instructions. |
   | x-dbt-user-id | Required for `execute_sql` | Your <Constant name="dbt_platform"/> user ID. Refer to [Where can I find my user ID?](/faqs/Accounts/find-user-id) for details. |
-
+  </SimpleTable>
+    
   Use positive numeric IDs in project and environment headers. Development and production environment headers must identify environments of the corresponding type in the same project. If a tool accepts a project or environment argument, it must agree with the configured target. `list_jobs` preserves its existing behavior: an explicit `project_id` overrides the configured environment filter.
 
   #### Additional configuration for dbt v2 tools
 
 By default, <Constant name="fusion"/> tools use the environment you set in `x-dbt-prod-environment-id` for model and table metadata.
-
+  <SimpleTable>
   | Header | Required | Description |
   | --- | --- | --- |
   | x-dbt-dev-environment-id | Required| Your <Constant name="dbt_platform"/> development environment ID. Refer to [How to find your dbt MCP IDs](/docs/dbt-ai/mcp-find-ids#dbt-dev-env-id) for step-by-step instructions. |
   | x-dbt-user-id | Required | Your <Constant name="dbt_platform"/> user ID. Refer to [Where can I find my user ID?](/faqs/Accounts/find-user-id) for details. |
   | x-dbt-fusion-disable-defer | Optional | Default: `false`. When set to `true`, <Constant name="fusion"/> tools will not defer to the production environment and use the models and table metadata from the development environment (`x-dbt-dev-environment-id`) instead. |
-
+ </SimpleTable>
 
   #### Configuration to disable tools
+  <SimpleTable>
   | Header | Required  | Description |
   | --- | --- | --- |
   | x-dbt-disable-tools | Optional | A comma-separated list of tools to disable. For instance: `get_all_models,text_to_sql,list_entities` |
   | x-dbt-disable-toolsets | Optional | A comma-separated list of toolsets to disable. For instance: `semantic_layer,sql,discovery` |
-
+  </SimpleTable>
 3. After establishing which headers you need, you can follow the [examples](https://github.com/dbt-labs/dbt-mcp/tree/main/examples) to create your own agent. 
 
 ## Examples
