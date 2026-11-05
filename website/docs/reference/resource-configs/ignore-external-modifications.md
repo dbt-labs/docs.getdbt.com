@@ -55,22 +55,30 @@ models:
 
 ## Definition
 
-dbt State tracks whether a node has been modified outside of dbt (for example, by a direct DDL statement in your warehouse or by another tool) and can use that signal to force a rebuild on the next run.
+By default, dbt State reuses a node even if it was changed outside of dbt since the last run (for example, by a direct change to the table in your warehouse).
 
-By default, `ignore_external_modifications` is `true` &mdash; dbt State reuses a node even if it was changed externally since the last run. This is appropriate when external modifications to dbt-managed objects are expected and intentional.
-
-Set `ignore_external_modifications: false` if you want dbt State to treat external changes as a signal to rebuild. When a modification is detected, dbt State forces a rebuild the next time that node is selected.
+Set `ignore_external_modifications: false` if you want dbt State to force a rebuild when it detects an external change. dbt State detects external changes by comparing the target's last-modified timestamp in your warehouse against what it recorded on the previous run.
 
 | Value | Behavior |
 |-------|----------|
-| `true` (default) | dbt State reuses nodes even if they were modified outside of dbt. |
-| `false` | dbt State forces a rebuild when it detects an external modification. |
+| `true` (default) | dbt State reuses a node even if it was modified outside of dbt. |
+| `false` | dbt State forces a rebuild when the target's last-modified time is newer than what dbt State recorded. |
+
+If dbt State decides to clone a node from the deferred environment, it clones regardless of whether an external modification is detected.
+
+## Interactions with other configs
+
+The following interactions apply when `ignore_external_modifications` is `false`.
+
+- [`lag_tolerance`](/reference/resource-configs/lag-tolerance): A model is rebuilt when an external change is detected, even if it was built recently enough to fall within its `lag_tolerance` window.
+
+- [`execute_hooks_on_any_reuse`](/reference/resource-configs/execute-hooks-on-any-reuse): If `execute_hooks_on_any_reuse` is `true` and a post-hook modifies the target relation, the warehouse timestamp moves. dbt State sees the updated timestamp as an external change and forces a rebuild on the next run. To avoid this, set `lag_tolerance: 0` or remove post-hook statements that modify the target.
 
 ## Example
 
 ### Enforce strict ownership for a single model
 
-Use `ignore_external_modifications: false` for models where external changes should never go undetected:
+Use `ignore_external_modifications: false` for models where external changes should trigger a rebuild:
 
 <File name="models/schema.yml">
 
@@ -84,7 +92,7 @@ models:
 
 </File>
 
-If `fct_orders` is modified outside of dbt (for example by a direct `ALTER TABLE` statement), dbt State triggers a rebuild on the next run.
+With this config set, dbt State triggers a rebuild the next time `fct_orders` runs if its last-modified timestamp in the warehouse is newer than what dbt State recorded.
 
 
 ## Related docs
