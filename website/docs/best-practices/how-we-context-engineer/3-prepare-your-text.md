@@ -41,8 +41,6 @@ Think of **packing** instead. You work through the text in order, keeping a runn
 
 </SimpleTable>
 
-<!-- MEME: "one does not simply cut every N characters" -->
-
 ### Our recommendations
 
 - **Never split a unit.** Meaning lives in whole thoughts. If two goals conflict, keep the one that protects meaning.

@@ -123,8 +123,6 @@ Opt in to the `no_oversized_chunks` test to flag any chunk over your size target
 
 A test that has only ever passed hasn't been shown to work. Validate in both directions: it passes on good data, and it fails on planted bad data. Deliberately add a hallucinated quote and an invented label, and confirm each one turns the build red.
 
-<!-- MEME: all tests green, hallucinated evidence ships anyway -->
-
 This is also why conformance is worth running early. In our own cross-engine testing, one warehouse silently dropped the allowed values, and every conformance check failed 10 out of 10, while the extraction itself was perfect.
 
 ## Carry lineage at every stage

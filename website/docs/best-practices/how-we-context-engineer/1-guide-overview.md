@@ -12,8 +12,6 @@ That worked for a bit but a metric is thousands of rows squashed into something 
 
 That always existed except it was sitting in your warehouse, or could easily land there: call transcripts, support tickets, CRM notes, contracts, emails, etc. It's not something you really modelled, mostly because there's no bar (or `gasp: pie chart`) chart for a call transcript.
 
-<!-- MEME: pie chart of a call transcript -->
-
 AI agents are the first readers that can use that detail. But they can only be as good as what they get. Context engineering is the practice of modeling data for that new reader, with the same discipline you already apply to metrics: staging, tests, docs, and one governed DAG.
 
 ## What you'll learn

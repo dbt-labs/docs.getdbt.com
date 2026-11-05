@@ -131,8 +131,6 @@ Semantic search finds text that means something like your query. That isn't the 
 
 We ran plain similarity search on a realistic multi-source corpus and asked, "late deliveries and what is driving them." The highest-scoring chunk for the account was six tokens long: a trailing fragment reading "Reviewed with dispatch." Most of the rest of the top 10 was boilerplate and routine check-ins. The quarterly business reviews that documented the real root cause never made the list.
 
-<!-- MEME: top search result is a six-token fragment -->
-
 The cause is structural, not a tuning problem. Short, formulaic text sits near the center of embedding space, so it scores respectably against almost any query. Recall was fine. Precision wasn't.
 
 **Classification closes the gap.** Give each chunk one label, then filter the search to the category your question is about. You don't need it to get started: run chunk → embed → search first, and what you see is exactly why you'll want it. We cover how in [Enrich with AI](/best-practices/how-we-context-engineer/5-enrich-with-ai).

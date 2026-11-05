@@ -23,8 +23,6 @@ The instinct most teams bring is to pull rows into a notebook, call an API in a 
 
 Warehouses now expose AI as SQL functions. That makes a different pattern possible, and it's the one we recommend: **an AI call is just a column expression**. You call the model from SQL, one row at a time, and the answer is a new column in a model that dbt builds like any other.
 
-<!-- MEME: notebook-with-an-API-loop vs. a dbt model -->
-
 You get three things for free:
 
 - **Governance.** The AI step inherits version control, code review, tests, lineage, and scheduling.

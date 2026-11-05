@@ -25,8 +25,6 @@ Analytics engineers carry a good instinct: "just run it again." AI breaks it for
 
 Here's what that looks like in practice. In our own testing, one generation run over 10 one-sentence rows on BigQuery produced 65,825 output tokens, about 6,600 per row. Nearly all of it was the model's default "thinking," which is billed as output. The inputs were tiny. The cost wasn't.
 
-<!-- MEME: "it's just ten one-sentence rows" next to the invoice -->
-
 So we treat cost as a first-class output of the pipeline, not an afterthought. A report the next morning tells you what you already spent, and it can't prevent anything. The control has to fire before the tokens are spent.
 
 ## Use a circuit breaker and a meter
