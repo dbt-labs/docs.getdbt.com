@@ -36,11 +36,11 @@ These credentials are configured separately from dbt environment credentials and
 
 ## Configuration instructions
 
-### Enable external metadata ingestion
+:::note
+The **Ingest external metadata in dbt <Constant name="catalog" /> (formerly dbt Explorer)** toggle has been removed from **Account settings**.
 
-1. Click your account name at the bottom of the left-side menu and click **[Account settings](/docs/platform/account-settings)**.
-2. Under Account information, go to **Settings** and click **Edit** at the top right corner of the page.
-3. Select the **Ingest external metadata in dbt <Constant name="catalog" /> (formerly dbt Explorer)** option (if not already enabled).
+The **External metadata ingestion** checkbox is in **Platform metadata credentials** on a connection. It appears only when that connection already has ingestion turned on. A connection that never had it on does not show the checkbox, so you cannot turn ingestion on for it.
+:::
 
 ### Configure the warehouse connection
 
@@ -52,9 +52,8 @@ These credentials are configured separately from dbt environment credentials and
     - If you previously canceled and see **Add credentials**, click the button to reopen the form.
     - If you have multiple connections that reference the same account identifier, you will only be prompted to configure platform metadata ingestion for one of them. Other connections using the same account identifier will display a message indicating that platform metadata ingestion is already configured.
 5. Enter the necessary credentials. These should have warehouse-level visibility across relevant databases and schemas.
-6. Select the **External metadata ingestion** option.
-    - This allows metadata from this connection to populate the <Constant name="catalog" />.
-    - *Optional*: Enable additional features such as **Cost insights** in the **Features** section under **Platform metadata credentials**.
+6. When the **External metadata ingestion** checkbox is shown, metadata from this connection populates <Constant name="catalog" />.
+    - _Optional_: Enable additional features such as **Cost insights** in the **Features** section under **Platform metadata credentials**.
 7. Under **Catalog filters**, apply filters to restrict which metadata is ingested:
     - You can filter by **database**, **schema**, **table**, or **view**.
       - **Note:** To include all databases or schemas, enter `.*`  in the **Allow** field.
