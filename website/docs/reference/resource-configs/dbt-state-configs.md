@@ -27,6 +27,7 @@ models:
     evaluate_volatile_sql: true | false
     pre_clone: never | if_missing | always
     execute_hooks_on_any_reuse: true | false
+    ignore_external_modifications: true | false
 ```
 
 </File>
@@ -47,6 +48,7 @@ models:
         evaluate_volatile_sql: true | false
         pre_clone: never | if_missing | always
         execute_hooks_on_any_reuse: true | false
+        ignore_external_modifications: true | false
 ```
 
 </File>
@@ -64,7 +66,8 @@ models:
         "require_fresh_data_from": "any" | "all",
         "evaluate_volatile_sql": true | false,
         "pre_clone": "never" | "if_missing" | "always",
-        "execute_hooks_on_any_reuse": true | false
+        "execute_hooks_on_any_reuse": true | false,
+        "ignore_external_modifications": true | false
     }
 ) }}
 ```
@@ -101,6 +104,7 @@ my_project:
 | [`pre_clone`](/reference/resource-configs/pre-clone) | `if_missing` | Node, folder, or project-level via model config | Whether dbt State pre-populates incremental models and snapshots by cloning production before a run. |
 | [`execute_hooks_on_any_reuse`](/reference/resource-configs/execute-hooks-on-any-reuse) | `false` | Node, folder, or project-level via model config | Whether pre- and post-hooks run when a node is reused without rebuilding. |
 | [`evaluate_volatile_sql`](/reference/resource-configs/evaluate-volatile-sql) | `false` | Node, folder, or project-level via model config | Whether dbt State stores and compares the runtime output of volatile SQL functions when deciding whether to rebuild. |
+| [`ignore_external_modifications`](/reference/resource-configs/ignore-external-modifications) | `true` | Node, folder, or project-level via model config | Whether dbt State reuses a node even if it was modified outside of dbt. When `false`, dbt State forces a rebuild when it detects an external modification. |
 | [`defer_to_target`](/reference/resource-configs/defer-to-target) | `prod` | Profile | (Self-managed only) Which profile target dbt State defers to. |
 | [`allow_clones`](/reference/resource-configs/allow-clones) | `true` | Profile | Whether dbt State can clone tables into a target. For example, set to `false` on `prod` to prevent dbt State from cloning dev tables into production. |
 | [`metadata_warehouse`](/reference/resource-configs/metadata-warehouse) | Profile `warehouse` | Profile | (Snowflake only) A separate warehouse for dbt State metadata lookups. When set, dbt issues multiple, individual queries (one per schema) instead of a single, consolidated query. |
