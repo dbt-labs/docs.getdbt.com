@@ -24,11 +24,15 @@ AI output fails in ways ordinary tests never probe. A value can be well-formed, 
 
 Models fail in three characteristic ways:
 
+<SimpleTable>
+
 | Failure | What it looks like |
 |---------|--------------------|
 | Hallucinated evidence | The model reports a fact and attaches a supporting quote that appears nowhere in the source |
 | Out-of-taxonomy labels | A classifier told to pick from `pain_point`, `requirement`, or `objection` returns `PROBLEM` |
 | Silent regression | A prompt tweak or model upgrade quietly drops accuracy, and nothing turns red |
+
+</SimpleTable>
 
 ## Check with code, not with another model
 
@@ -131,12 +135,16 @@ In analytics, tracing a value back to where it came from is lineage. For context
 
 Our core rule: **every piece of context carries enough identity, at every stage, to trace it back to the original row, and extracted facts carry the verbatim span that supports them.**
 
+<SimpleTable>
+
 | Stage | What carries lineage |
 |-------|----------------------|
 | Chunking | The ids of the source rows packed into each chunk |
 | Extraction | A required-or-optional `evidence` field with the verbatim quote |
 | Knowledge base | The source type and source id on every row |
 | Retrieval | Those ids carried into every result |
+
+</SimpleTable>
 
 A retrieved hit can then say: this came from ticket T-42, and here's the exact sentence. That's the difference between an answer and a defensible answer.
 
@@ -151,11 +159,15 @@ Two granularities matter, and you need both:
 
 The tests are mostly portable, so there's little to configure.
 
+<SimpleTable>
+
 | Topic | What to know |
 |-------|--------------|
 | Structured result type | Snowflake returns a `VARIANT`, Databricks a `JSON` string, and BigQuery a `STRUCT`. Flatten to a scalar before testing. |
 | Allowed values | BigQuery drops enum constraints from its output schema, so conformance tests matter most there. |
 | Warehouse access | These checks are deterministic, so you can run them without warehouse credentials against sample data, for example on DuckDB. |
+
+</SimpleTable>
 
 ## What's next
 

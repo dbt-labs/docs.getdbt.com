@@ -37,6 +37,8 @@ We recommend running the model **per row**, not stuffing many rows into one gian
 
 Context engineering runs on a small vocabulary. There are four row-level operations and one group-level operation, and picking the right one is most of the skill:
 
+<SimpleTable>
+
 | Operation | Returns | Output shape defined by | Use it to |
 |-----------|---------|------------------------|-----------|
 | Classify | One label | Required. The allowed values are the labels. | Put each row in a bucket |
@@ -45,7 +47,11 @@ Context engineering runs on a small vocabulary. There are four row-level operati
 | Embed | A vector | None. You pin a model. | Make text searchable by meaning (covered in [Embed and retrieve](/best-practices/how-we-context-engineer/4-embed-and-retrieve)) |
 | Aggregate | One answer per group | None | Reason across every row in a group at once |
 
+</SimpleTable>
+
 Every major warehouse exposes these as SQL functions, but each names them differently:
+
+<SimpleTable>
 
 | Operation | Snowflake | Databricks | BigQuery |
 |-----------|-----------|------------|----------|
@@ -53,6 +59,8 @@ Every major warehouse exposes these as SQL functions, but each names them differ
 | Classify | `AI_CLASSIFY` | `ai_classify` | `AI.GENERATE` |
 | Extract | `AI_COMPLETE` | `ai_query` | `AI.GENERATE` |
 | Embed | `AI_EMBED` | Serving endpoint | `AI.EMBED` |
+
+</SimpleTable>
 
 ### Classify
 
@@ -73,11 +81,15 @@ from {{ ref('call_transcripts_hashed') }}
 
 Each chunk gets one label from the taxonomy (the values here are illustrative):
 
+<SimpleTable>
+
 | chunk_text | content_type |
 |------------|--------------|
 | "Reviewed with dispatch." | `routine_status` |
 | "Truck slid on ice during the storm and missed the delivery window." | `weather_disruption` |
 | "This quarter's review: on-time delivery has slipped for three months." | `account_assessment` |
+
+</SimpleTable>
 
 Classification is the highest-value enrichment step, because it makes search precise. Without it, short boilerplate chunks crowd the top results (see [Embed and retrieve](/best-practices/how-we-context-engineer/4-embed-and-retrieve#embedding-buys-recall-classification-buys-precision)). With it, you filter the search to the category your question is about. In our test, every result in the top 10 became real account content, and the boilerplate was gone.
 
@@ -171,11 +183,15 @@ Our recommendation: **normalize once, right after the call.** Use a thin accesso
 
 The operations are the same everywhere, but the warehouses behave differently in ways that matter. Check these before you ship.
 
+<SimpleTable>
+
 | Topic | Snowflake | Databricks | BigQuery |
 |-------|-----------|------------|----------|
 | Structured result type | `VARIANT` object | `JSON` string | `STRUCT` |
 | Enforces the allowed values in the schema | Yes | Yes | No. Enums are silently dropped. |
 | Group-level aggregation | Native | No native function | Native |
+
+</SimpleTable>
 
 **BigQuery drops enum constraints.** BigQuery's output schema can't express an allowed-value list, so it quietly turns the field into a plain string. The call succeeds and returns well-formed output, but the model never saw your labels and invents its own, like `PROBLEM` or `Discovery Question` instead of `pain_point`. Nothing errors, so nothing turns red.
 

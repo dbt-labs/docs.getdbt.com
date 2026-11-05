@@ -35,6 +35,7 @@ Context is the information an AI agent reads to do its job. Good context is:
 Use the semantic layer for your metrics and context for your unstructured and semi-structured data. They work side by side:
 
 <SimpleTable>
+
 | Layer | What it holds | Example question |
 |-------|---------------|------------------|
 | Semantic layer | Your metrics and how they're defined | "What was on-time delivery last quarter?" |
@@ -51,6 +52,8 @@ Anything that carries meaning but doesn't fit neatly in rows and columns. If you
 
 Our example project is Jaffle Logistics, a fictional logistics company whose customer story is scattered across roughly eight disconnected systems. Five of them go through the pipeline in the [`jaffle-logistics`](https://github.com/dbt-labs/jaffle-logistics) project, the reference implementation for the package. The question we keep asking: _"What's driving late deliveries for this account?"_ The answer isn't in any one system. Here are the five sources:
 
+<SimpleTable>
+
 | Source | What's hiding in it | What you'd do with it |
 |--------|---------------------|-----------------------|
 | Call transcripts | The reason a customer is unhappy, in their own words | Find what a customer actually raised on a call |
@@ -59,17 +62,23 @@ Our example project is Jaffle Logistics, a fictional logistics company whose cus
 | Contracts | What you actually committed to | Look up what you promised a customer |
 | Incident reports | What went wrong on the ground, and why | Trace late deliveries to a root cause |
 
+</SimpleTable>
+
 Emails, runbooks, and internal docs work the same way.
 
 ## How context engineering maps to what you know
 
 You already have most of the instincts:
 
+<SimpleTable>
+
 | In dbt you... | In context engineering you... |
 |---------------|-------------------------------|
 | Test models | Test that AI output is grounded in its source |
 | Build incremental models | Refresh embeddings only when text or settings change |
 | Build a conformed dimension | Build a knowledge base, one common shape for every source |
+
+</SimpleTable>
 
 ## What you need
 

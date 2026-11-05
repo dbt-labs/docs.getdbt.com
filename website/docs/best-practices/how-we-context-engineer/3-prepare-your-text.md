@@ -31,11 +31,15 @@ The naive approach is cutting the text every _N_ characters. Don't. A blind cut 
 
 Think of **packing** instead. You work through the text in order, keeping a running token count. Each whole **unit** goes into the chunk it _starts_ in. A unit is the smallest piece of text you'll never split, like a speaker turn in a transcript or a sentence in a document.
 
+<SimpleTable>
+
 | Source | Unit |
 |--------|------|
 | Call transcript | One speaker turn |
 | Contract, incident report, or CRM note | One sentence |
 | Support ticket | The whole ticket. It's already one record, so there's nothing to chunk. |
+
+</SimpleTable>
 
 <!-- MEME: "one does not simply cut every N characters" -->
 
@@ -81,10 +85,14 @@ from running_total
 
 The package's `chunk()` macro does this for you and returns one row per chunk, with the chunk's text, its id, the source rows it packed, and a token estimate. Here's the shape of the result (the values are illustrative):
 
+<SimpleTable>
+
 | chunk_id | source_rows | token_estimate | chunk_text |
 |----------|-------------|----------------|------------|
 | `CT-99001::1` | The ids of the turns packed into this chunk | 96 | "Marcus: Janet, thanks for taking this. …" |
 | `CT-99001::2` | The ids of the next turns | 88 | "Janet: It did. My question is whether you can handle our peak volume. …" |
+
+</SimpleTable>
 
 The example SQL above uses 512 tokens, a typical target. The jaffle project uses 100 on purpose. Its sample documents are short, so 512 would never split anything.
 
@@ -110,10 +118,14 @@ A chunk needs to carry details about its source so you can filter, cite, and pre
 
 The same metadata serves two readers with different eyes:
 
+<SimpleTable>
+
 | Reader | Sees | Needs metadata as |
 |--------|------|-------------------|
 | SQL | Columns | Columns, to filter, join, and build a citation link |
 | Embedding model and LLM | Only the chunk's text | Text, written into the chunk |
+
+</SimpleTable>
 
 ### Our recommendations
 

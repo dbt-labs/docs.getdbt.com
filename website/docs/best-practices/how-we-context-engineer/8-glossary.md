@@ -8,6 +8,8 @@ hoverSnippet: Look up the terms used in the context engineering guide.
 
 New to a term? Look it up here. The terms are in alphabetical order.
 
+<SimpleTable>
+
 | Term | What it means |
 |------|---------------|
 | Canary | A few frozen probe texts you re-embed on every build and compare to a reviewed baseline, to catch a model that quietly changed |
@@ -29,3 +31,5 @@ New to a term? Look it up here. The terms are in alphabetical order.
 | Token | The sub-word piece a model reads and bills by, roughly four characters of English |
 | Unit | The smallest piece of text you never split, such as a speaker turn or a sentence |
 | Vector | The list of numbers an embedding is stored as. Only comparable to vectors from the same model. |
+
+</SimpleTable>

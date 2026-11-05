@@ -33,10 +33,14 @@ So we treat cost as a first-class output of the pipeline, not an afterthought. A
 
 We use two tools you'd want around any expensive, hard-to-undo operation:
 
+<SimpleTable>
+
 | Tool | What it does | When it runs |
 |------|--------------|--------------|
 | Guard | Counts the rows and the estimated tokens for the whole call, and raises an error if either is over your ceiling | Before the model runs, as a pre-hook (SQL dbt runs before a model builds) |
 | Run log | Records what the run actually used | After the run, as an append to a log table |
+
+</SimpleTable>
 
 ### Guard every AI call
 
@@ -112,10 +116,14 @@ This section is advanced. Skim it now and come back when you see run log failure
 
 dbt runs independent models on different threads, with no coordination between their hooks. Every AI model writes to the same log table, so unsafe writes can turn your audit mechanism into a source of build failures. We found two separate causes:
 
+<SimpleTable>
+
 | Problem | What went wrong | Fix |
 |---------|-----------------|-----|
 | Redundant creation | Every model's hook tried to create the log table the first time it ran, so ten models selected together made ten concurrent attempts at the same statement | Create the table once, in an `on-run-start` hook. Those hooks run serially, before any model starts. |
 | Updates colliding | Marking a run as complete with an `update` conflicted with other concurrent writes to the same table | Never update. Append a new `completed` row instead. |
+
+</SimpleTable>
 
 The second fix is **event sourcing**. Instead of flipping a field on an existing row, you append a second row. Whether a run finished becomes an existence check: is there a `completed` row for this run? Two inserts into one table don't touch the same row, so they can't conflict.
 
@@ -123,12 +131,16 @@ To see the effect, we ran eight independent models on eight threads. With an upd
 
 ## Adapter notes
 
+<SimpleTable>
+
 | Topic | Snowflake | Databricks | BigQuery |
 |-------|-----------|------------|----------|
 | Turning off default thinking | Not applicable | Not applicable | Set the thinking budget to `0` (Gemini models) |
 | Concurrent writes to the run log | Use append-only writes | Updates conflict with concurrent writes | Updates hit a table-update rate limit |
 | Group-level ceiling for aggregation | Handled by the engine | You set a token ceiling | Handled by the engine |
 | Extra requirements | None | A recent runtime (DBR 15.4 LTS or above, not Databricks SQL Classic) | A connection is optional |
+
+</SimpleTable>
 
 - **Use an append-only log on every engine.** Concurrency failures show up differently per engine, with a transaction conflict on Databricks and a rate-limit error on BigQuery, but the fix is the same.
 - **Don't pay for an index you forgot.** A managed vector index is billed separately and charges even when idle. Create it as a deliberate operation, and drop it when you're done. See [Embed and retrieve](/best-practices/how-we-context-engineer/4-embed-and-retrieve).

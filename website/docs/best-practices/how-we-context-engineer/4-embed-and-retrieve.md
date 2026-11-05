@@ -23,19 +23,27 @@ An **embedding** is a list of numbers, called a **vector**, that captures what a
 
 Here's what that looks like. Each chunk becomes a vector. We show three numbers per chunk to keep it readable. Real vectors have hundreds (for example, 768 for `snowflake-arctic-embed-m-v1.5`), and the values below are made up for illustration:
 
+<SimpleTable>
+
 | Chunk text | Vector (first 3 numbers) |
 |------------|--------------------------|
 | "The customer is worried about resigning." | `[0.70, -0.05, 0.50, …]` |
 | "Renewal paperwork is due next week." | `[0.60, 0.10, 0.55, …]` |
 | "Truck 14 was delayed by a winter storm." | `[-0.20, 0.65, 0.05, …]` |
 
+</SimpleTable>
+
 You can't read meaning off the numbers by eye. What matters is how close two vectors are. When you search for "renewal risk," the question gets embedded too (here, `[0.80, -0.10, 0.42, …]`), and every chunk gets a **cosine similarity** score against it: 1.0 means the same direction, and -1.0 means the opposite.
+
+<SimpleTable>
 
 | Chunk text | Score against "renewal risk" |
 |------------|------------------------------|
 | "The customer is worried about resigning." | 0.99 |
 | "Renewal paperwork is due next week." | 0.94 |
 | "Truck 14 was delayed by a winter storm." | -0.33 |
+
+</SimpleTable>
 
 The two renewal chunks score high and the truck chunk scores low, even though only one chunk shares a word with the query. That's search by meaning.
 
@@ -79,10 +87,14 @@ Retrieval is the contract with your agent. A chunk earns its place by being simi
 
 There are two ways to rank:
 
+<SimpleTable>
+
 | Approach | How it works | Best for |
 |----------|--------------|----------|
 | Brute force | Compare the query to every row and sort. Exact, plain SQL. | Thousands to low millions of rows |
 | Vector index | A specialized structure or service that returns approximate matches fast | Very large corpora |
+
+</SimpleTable>
 
 We recommend **brute force by default**. It works on the table you already have, with nothing new to provision, learn, or pay for. Because the vector is an ordinary column, it inherits your tests, lineage, and governance. For most real corpora, a linear scan is fast enough.
 
@@ -102,10 +114,14 @@ Narrow the candidate set before ranking, such as by account (the `filter` argume
 
 ### Adapter notes for retrieval
 
+<SimpleTable>
+
 | Topic | Snowflake | Databricks | BigQuery |
 |-------|-----------|------------|----------|
 | Similarity | Scalar cosine function | Scalar cosine function | A `VECTOR_SEARCH` table function, in brute-force mode |
 | Managed index | Cortex Search | Vector Search, created through its API | Vector index |
+
+</SimpleTable>
 
 Hide the BigQuery difference behind one interface so your models read the same on every engine.
 
@@ -127,6 +143,8 @@ Useful questions rarely live in one table. "Tell me everything about this accoun
 
 You've solved this problem before. A conformed dimension defines one canonical shape and maps every source into it. A **knowledge base** is the same idea for context: a retrieval-ready table where every source lands in one common shape.
 
+<SimpleTable>
+
 | Column | Meaning |
 |--------|---------|
 | `source_type` | Which system the row came from, such as ticket or call |
@@ -137,6 +155,8 @@ You've solved this problem before. A conformed dimension defines one canonical s
 | `ts` | When it happened |
 | `citation_url` | A link back to the original. Optional per source. |
 | `classification` | The label from [Enrich with AI](/best-practices/how-we-context-engineer/5-enrich-with-ai). Optional per source. |
+
+</SimpleTable>
 
 With this in place, one filtered search answers a cross-system question, and every hit says which system and row it came from.
 
@@ -173,10 +193,14 @@ An embedding goes stale when anything on the input side changes: the text, the m
 
 Because vectors are only comparable within one model, your model needs to know which of two modes it's in on each run:
 
+<SimpleTable>
+
 | Mode | Trigger | What happens |
 |------|---------|--------------|
 | Steady state | Model and config unchanged | Embed only new and changed rows. Cheap. |
 | Version bump | You pinned a new model or changed a setting | Re-embed the whole corpus so it's consistent again. Expensive, but correct. |
+
+</SimpleTable>
 
 Think of it like a schema migration for a derived column: normally you append, but when the definition changes, you rebuild every row.
 
@@ -189,6 +213,8 @@ Think of it like a schema migration for a derived column: normally you append, b
 
 Store enough with each vector to know whether it still matches what the function would produce today:
 
+<SimpleTable>
+
 | Column | Answers |
 |--------|---------|
 | Vector | The embedding itself |
@@ -197,6 +223,8 @@ Store enough with each vector to know whether it still matches what the function
 | Dimension | How long is the vector the engine actually returned, not the one you configured? |
 | Embedded at | When was it made? |
 | Model name | Which model made it? Keep this for humans. It's an audit column, and nothing should depend on it. |
+
+</SimpleTable>
 
 You need both the content hash and the fingerprint. Without the fingerprint, a settings change with identical text goes undetected. Without the hash, an edit to a row under the same model goes undetected.
 
@@ -221,11 +249,15 @@ A **canary** catches this. You keep a handful of frozen probe strings, re-embed 
 
 ### Adapter notes for freshness
 
+<SimpleTable>
+
 | Topic | Snowflake | Databricks | BigQuery |
 |-------|-----------|------------|----------|
 | Embedding function | `AI_EMBED` | Serving endpoint | `AI.EMBED` |
 | Run-to-run variation | Small | Small | None observed |
 | Canary configuration | Set the vector dimension explicitly | Defaults | Defaults |
+
+</SimpleTable>
 
 - **Vectors aren't bit-for-bit repeatable on Snowflake and Databricks.** Re-embedding the same text gives cosine similarity above 0.999999 between runs. Never compare vectors for exact equality.
 - **Databricks needs a recent runtime for AI functions.** It requires DBR 15.4 LTS or above, and not Databricks SQL Classic. If you don't meet this, you'll see an opaque SQL error, so check it first when troubleshooting.

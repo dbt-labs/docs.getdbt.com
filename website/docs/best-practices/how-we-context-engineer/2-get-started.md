@@ -8,11 +8,15 @@ hoverSnippet: Chunk, embed, and search your text in three steps.
 
 You don't need the whole guide to get value. Three steps take you from raw text to a working search:
 
+<SimpleTable>
+
 | Step | What you do | Package macro | Where to learn more |
 |------|-------------|---------------|---------------------|
 | 1. Chunk | Break each text into pieces small enough to search | `chunk()` | [Prepare your text](/best-practices/how-we-context-engineer/3-prepare-your-text) |
 | 2. Embed | Turn each chunk into a list of numbers that captures its meaning | `embed()` | [Embed and retrieve](/best-practices/how-we-context-engineer/4-embed-and-retrieve) |
 | 3. Search | Find the chunks closest in meaning to a question | `vector_search()` | [Embed and retrieve](/best-practices/how-we-context-engineer/4-embed-and-retrieve) |
+
+</SimpleTable>
 
 Everything after that makes the result better: labels for precision, tests for trust, and guards for cost.
 
