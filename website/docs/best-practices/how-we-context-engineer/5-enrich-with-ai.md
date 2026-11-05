@@ -1,6 +1,6 @@
 ---
 title: "Enrich with AI"
-id: 4-enrich-with-ai
+id: 5-enrich-with-ai
 description: Learn how to use a model to label, extract, and summarize your text, with prompts managed as versioned code.
 displayText: Enrich with AI
 hoverSnippet: Learn how to label, extract, and summarize text with a model.
@@ -15,7 +15,7 @@ In this section, you'll learn how to:
 - Manage prompts and output shapes as versioned code
 - Read the model's answer back out the same way on every warehouse
 
-Stuck on a term? Check the [glossary](/best-practices/how-we-context-engineer/1-guide-overview#glossary).
+Stuck on a term? Check the [glossary](/best-practices/how-we-context-engineer/8-glossary).
 
 ## Treat inference as a transformation
 
@@ -29,7 +29,7 @@ You get three things for free:
 
 - **Governance.** The AI step inherits version control, code review, tests, lineage, and scheduling.
 - **Data stays put.** Nothing is exported, so there's no second copy to secure.
-- **Clean lineage.** One row in, one answer out. Incremental builds work, and so do cost controls (see [Control cost](/best-practices/how-we-context-engineer/6-control-cost)).
+- **Clean lineage.** One row in, one answer out. Incremental builds work, and so do cost controls (see [Control cost](/best-practices/how-we-context-engineer/7-control-cost)).
 
 We recommend running the model **per row**, not stuffing many rows into one giant prompt. A giant prompt breaks the one-to-one link between input and output, doesn't work with incremental builds, and can blow past the model's context window (how much text it can read at once).
 
@@ -42,8 +42,17 @@ Context engineering runs on a small vocabulary. There are four row-level operati
 | Classify | One label | Required. The allowed values are the labels. | Put each row in a bucket |
 | Extract | A record with several fields | Required | Pull out facts that are present in the text, with a quote you can verify |
 | Generate | Free text, or a structured object | Optional | Summarize, rewrite, or answer |
-| Embed | A vector | None. You pin a model. | Make text searchable by meaning (covered in [Embed and retrieve](/best-practices/how-we-context-engineer/3-embed-and-retrieve)) |
+| Embed | A vector | None. You pin a model. | Make text searchable by meaning (covered in [Embed and retrieve](/best-practices/how-we-context-engineer/4-embed-and-retrieve)) |
 | Aggregate | One answer per group | None | Reason across every row in a group at once |
+
+Every major warehouse exposes these as SQL functions, but each names them differently:
+
+| Operation | Snowflake | Databricks | BigQuery |
+|-----------|-----------|------------|----------|
+| Generate | `AI_COMPLETE` | `ai_query` | `AI.GENERATE` |
+| Classify | `AI_CLASSIFY` | `ai_classify` | `AI.GENERATE` |
+| Extract | `AI_COMPLETE` | `ai_query` | `AI.GENERATE` |
+| Embed | `AI_EMBED` | Serving endpoint | `AI.EMBED` |
 
 ### Classify
 
@@ -70,7 +79,7 @@ Each chunk gets one label from the taxonomy (the values here are illustrative):
 | "Truck slid on ice during the storm and missed the delivery window." | `weather_disruption` |
 | "This quarter's review: on-time delivery has slipped for three months." | `account_assessment` |
 
-Classification is the highest-value enrichment step, because it makes search precise. Without it, short boilerplate chunks crowd the top results (see [Embed and retrieve](/best-practices/how-we-context-engineer/3-embed-and-retrieve#embedding-buys-recall-classification-buys-precision)). With it, you filter the search to the category your question is about. In our test, every result in the top 10 became real account content, and the boilerplate was gone.
+Classification is the highest-value enrichment step, because it makes search precise. Without it, short boilerplate chunks crowd the top results (see [Embed and retrieve](/best-practices/how-we-context-engineer/4-embed-and-retrieve#embedding-buys-recall-classification-buys-precision)). With it, you filter the search to the category your question is about. In our test, every result in the top 10 became real account content, and the boilerplate was gone.
 
 - **Use the label as a filter on search.** Retrieval narrows to the right category before ranking.
 - **Version your taxonomy like any other prompt.** Changing it should be a reviewable diff, as covered [below](#treat-prompts-and-schemas-as-code).
@@ -83,7 +92,7 @@ Two honest limits. A taxonomy built for the questions you've thought of may not 
 
 Extract pulls typed facts out of the text into fields. Use it when you need several facts at once, such as the account, the stated problem, and the date.
 
-Every extracted fact should carry an `evidence` field: the verbatim quote that supports it. That quote is what makes the fact checkable (see [Keep context trustworthy](/best-practices/how-we-context-engineer/5-keep-context-trustworthy)).
+Every extracted fact should carry an `evidence` field: the verbatim quote that supports it. That quote is what makes the fact checkable (see [Keep context trustworthy](/best-practices/how-we-context-engineer/6-keep-context-trustworthy)).
 
 ### Generate <Lifecycle status="beta" />
 
@@ -189,4 +198,4 @@ Here's how to handle it:
 
 ## What's next
 
-Your text now has labels, facts, and summaries. Next, you'll make sure it's correct in [Keep context trustworthy](/best-practices/how-we-context-engineer/5-keep-context-trustworthy).
+Your text now has labels, facts, and summaries. Next, you'll make sure it's correct in [Keep context trustworthy](/best-practices/how-we-context-engineer/6-keep-context-trustworthy).

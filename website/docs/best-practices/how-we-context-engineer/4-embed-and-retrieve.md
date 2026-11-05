@@ -1,12 +1,12 @@
 ---
 title: "Embed and retrieve"
-id: 3-embed-and-retrieve
+id: 4-embed-and-retrieve
 description: Learn how to turn text into searchable vectors, search across sources with citations, and keep embeddings fresh.
 displayText: Embed and retrieve
 hoverSnippet: Learn how to make text searchable by meaning and keep it fresh.
 ---
 
-Your text is chunked and traceable. Now you make it searchable by meaning, so an agent can find the right piece without knowing the exact words. Run chunk → embed → search first. Classifying chunks is the precision step on top, and we cover it in [Enrich with AI](/best-practices/how-we-context-engineer/4-enrich-with-ai).
+Your text is chunked and traceable. Now you make it searchable by meaning, so an agent can find the right piece without knowing the exact words. Run chunk → embed → search first. Classifying chunks is the precision step on top, and we cover it in [Enrich with AI](/best-practices/how-we-context-engineer/5-enrich-with-ai).
 
 In this section, you'll learn how to:
 
@@ -15,7 +15,7 @@ In this section, you'll learn how to:
 - Combine many sources into one knowledge base that cites its origins
 - Keep embeddings fresh without overspending
 
-Stuck on a term? Check the [glossary](/best-practices/how-we-context-engineer/1-guide-overview#glossary).
+Stuck on a term? Check the [glossary](/best-practices/how-we-context-engineer/8-glossary).
 
 ## Embed your text
 
@@ -119,7 +119,7 @@ We ran plain similarity search on a realistic multi-source corpus and asked, "la
 
 The cause is structural, not a tuning problem. Short, formulaic text sits near the center of embedding space, so it scores respectably against almost any query. Recall was fine. Precision wasn't.
 
-**Classification closes the gap.** Give each chunk one label, then filter the search to the category your question is about. You don't need it to get started: run chunk → embed → search first, and what you see is exactly why you'll want it. We cover how in [Enrich with AI](/best-practices/how-we-context-engineer/4-enrich-with-ai).
+**Classification closes the gap.** Give each chunk one label, then filter the search to the category your question is about. You don't need it to get started: run chunk → embed → search first, and what you see is exactly why you'll want it. We cover how in [Enrich with AI](/best-practices/how-we-context-engineer/5-enrich-with-ai).
 
 ## Combine sources into a knowledge base
 
@@ -136,7 +136,7 @@ You've solved this problem before. A conformed dimension defines one canonical s
 | `embedding` | Its vector |
 | `ts` | When it happened |
 | `citation_url` | A link back to the original. Optional per source. |
-| `classification` | The label from [Enrich with AI](/best-practices/how-we-context-engineer/4-enrich-with-ai). Optional per source. |
+| `classification` | The label from [Enrich with AI](/best-practices/how-we-context-engineer/5-enrich-with-ai). Optional per source. |
 
 With this in place, one filtered search answers a cross-system question, and every hit says which system and row it came from.
 
@@ -232,4 +232,4 @@ A **canary** catches this. You keep a handful of frozen probe strings, re-embed 
 
 ## What's next
 
-Your context is searchable and cited. Next, you'll make that search precise with labels in [Enrich with AI](/best-practices/how-we-context-engineer/4-enrich-with-ai).
+Your context is searchable and cited. Next, you'll make that search precise with labels in [Enrich with AI](/best-practices/how-we-context-engineer/5-enrich-with-ai).

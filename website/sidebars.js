@@ -1901,11 +1901,13 @@ const sidebarSettings = {
             id: "best-practices/how-we-context-engineer/1-guide-overview",
           },
           items: [
-            "best-practices/how-we-context-engineer/2-prepare-your-text",
-            "best-practices/how-we-context-engineer/3-embed-and-retrieve",
-            "best-practices/how-we-context-engineer/4-enrich-with-ai",
-            "best-practices/how-we-context-engineer/5-keep-context-trustworthy",
-            "best-practices/how-we-context-engineer/6-control-cost",
+            "best-practices/how-we-context-engineer/2-get-started",
+            "best-practices/how-we-context-engineer/3-prepare-your-text",
+            "best-practices/how-we-context-engineer/4-embed-and-retrieve",
+            "best-practices/how-we-context-engineer/5-enrich-with-ai",
+            "best-practices/how-we-context-engineer/6-keep-context-trustworthy",
+            "best-practices/how-we-context-engineer/7-control-cost",
+            "best-practices/how-we-context-engineer/8-glossary",
           ],
         },
         {

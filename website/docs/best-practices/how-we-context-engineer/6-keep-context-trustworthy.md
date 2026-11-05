@@ -1,6 +1,6 @@
 ---
 title: "Keep context trustworthy"
-id: 5-keep-context-trustworthy
+id: 6-keep-context-trustworthy
 description: Learn how to test AI output with deterministic checks and keep lineage and citations intact end to end.
 displayText: Keep context trustworthy
 hoverSnippet: Learn how to test AI output and keep every claim traceable.
@@ -14,7 +14,7 @@ In this section, you'll learn how to:
 - Gate prompt and model changes so quality can't slip quietly
 - Keep every claim traceable to the exact source it came from
 
-Stuck on a term? Check the [glossary](/best-practices/how-we-context-engineer/1-guide-overview#glossary).
+Stuck on a term? Check the [glossary](/best-practices/how-we-context-engineer/8-glossary).
 
 ## Why do you need a new kind of test?
 
@@ -61,7 +61,7 @@ columns:
 Our recommendations:
 
 - **Normalize case and whitespace by default.** Trivial formatting differences shouldn't fail a build.
-- **Let a missing quote be null.** If a quote legitimately doesn't exist, null is correct, and the test shouldn't flag it. This only works if the field is optional in your schema, as covered in [Enrich with AI](/best-practices/how-we-context-engineer/4-enrich-with-ai).
+- **Let a missing quote be null.** If a quote legitimately doesn't exist, null is correct, and the test shouldn't flag it. This only works if the field is optional in your schema, as covered in [Enrich with AI](/best-practices/how-we-context-engineer/5-enrich-with-ai).
 - **Know its limit.** A passing test proves the quote is real. It doesn't prove the model read it correctly.
 
 ### Conformance
@@ -79,7 +79,7 @@ You write it as a one-line singular test. A singular test is a SQL file in your 
 
 Our recommendations:
 
-- **Test a flattened scalar.** Pull the field out of the structured result first, using the accessor from [Enrich with AI](/best-practices/how-we-context-engineer/4-enrich-with-ai) <Lifecycle status="beta" />. Then the test reads the same plain value on every engine.
+- **Test a flattened scalar.** Pull the field out of the structured result first, using the accessor from [Enrich with AI](/best-practices/how-we-context-engineer/5-enrich-with-ai) <Lifecycle status="beta" />. Then the test reads the same plain value on every engine.
 - **Read the allowed values from the schema.** Don't copy the label list into the test. One definition, many uses.
 - **Keep it a singular test.** Looking up a versioned schema by name can't be done in a generic test. Write down why, so the next person doesn't "tidy" it into a generic test and quietly break it.
 
@@ -159,4 +159,4 @@ The tests are mostly portable, so there's little to configure.
 
 ## What's next
 
-Your context is correct and traceable. The last piece is cost: AI calls aren't free to re-run, so [Control cost](/best-practices/how-we-context-engineer/6-control-cost) shows how to build in limits and a record of what each run spent.
+Your context is correct and traceable. The last piece is cost: AI calls aren't free to re-run, so [Control cost](/best-practices/how-we-context-engineer/7-control-cost) shows how to build in limits and a record of what each run spent.

@@ -1,6 +1,6 @@
 ---
 title: "Prepare your text"
-id: 2-prepare-your-text
+id: 3-prepare-your-text
 description: Learn how to chunk raw text and attach source metadata so every piece of context stays whole and citable.
 displayText: Prepare your text
 hoverSnippet: Learn how to chunk raw text and attach source metadata.
@@ -13,7 +13,7 @@ In this section, you'll learn how to:
 - Break long text into chunks that keep their meaning
 - Carry source details onto every chunk so each one can cite its origin
 
-Stuck on a term? Check the [glossary](/best-practices/how-we-context-engineer/1-guide-overview#glossary).
+Stuck on a term? Check the [glossary](/best-practices/how-we-context-engineer/8-glossary).
 
 ## Why does preparation matter?
 
@@ -120,7 +120,7 @@ The same metadata serves two readers with different eyes:
 - **Attach metadata in its own step, after chunking.** Attaching is a simple collapse and join. Chunking is the fragile step. Keep the simple concern out of the fragile one, so a change to metadata can never break your chunks.
 - **Keep metadata as columns, and add it to the text only if the model needs it.** The columns are always there. Writing metadata into the text is additive, so SQL never has to parse it back out.
 - **Count the extra tokens.** Metadata written into the text adds real tokens, so recompute your size estimate afterward. Otherwise you'll understate what the model reads and costs.
-- **Promote the citation link later.** In the knowledge base, where many sources merge into one shape, a citation link earns its own guaranteed column. We cover that in [Embed and retrieve](/best-practices/how-we-context-engineer/3-embed-and-retrieve).
+- **Promote the citation link later.** In the knowledge base, where many sources merge into one shape, a citation link earns its own guaranteed column. We cover that in [Embed and retrieve](/best-practices/how-we-context-engineer/4-embed-and-retrieve).
 
 Here's what metadata written into a chunk's text looks like:
 
@@ -135,4 +135,4 @@ Attaching metadata uses plain, portable SQL, so there's nothing adapter-specific
 
 ## What's next
 
-Your text is now whole, bounded, and traceable. Next, you'll make it searchable in [Embed and retrieve](/best-practices/how-we-context-engineer/3-embed-and-retrieve).
+Your text is now whole, bounded, and traceable. Next, you'll make it searchable in [Embed and retrieve](/best-practices/how-we-context-engineer/4-embed-and-retrieve).

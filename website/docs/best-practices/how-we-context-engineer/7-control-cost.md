@@ -1,6 +1,6 @@
 ---
 title: "Control cost"
-id: 6-control-cost
+id: 7-control-cost
 description: Learn how to put limits on AI spend before a run starts and keep a record of what each run used.
 displayText: Control cost
 hoverSnippet: Learn how to limit AI spend and track what each run used.
@@ -14,7 +14,7 @@ In this section, you'll learn how to:
 - Cap the part of the bill the model controls
 - Keep a safe, append-only record of what each run used
 
-Stuck on a term? Check the [glossary](/best-practices/how-we-context-engineer/1-guide-overview#glossary).
+Stuck on a term? Check the [glossary](/best-practices/how-we-context-engineer/8-glossary).
 
 ## Why does AI cost need its own controls?
 
@@ -131,4 +131,4 @@ To see the effect, we ran eight independent models on eight threads. With an upd
 | Extra requirements | None | A recent runtime (DBR 15.4 LTS or above, not Databricks SQL Classic) | A connection is optional |
 
 - **Use an append-only log on every engine.** Concurrency failures show up differently per engine, with a transaction conflict on Databricks and a rate-limit error on BigQuery, but the fix is the same.
-- **Don't pay for an index you forgot.** A managed vector index is billed separately and charges even when idle. Create it as a deliberate operation, and drop it when you're done. See [Embed and retrieve](/best-practices/how-we-context-engineer/3-embed-and-retrieve).
+- **Don't pay for an index you forgot.** A managed vector index is billed separately and charges even when idle. Create it as a deliberate operation, and drop it when you're done. See [Embed and retrieve](/best-practices/how-we-context-engineer/4-embed-and-retrieve).
