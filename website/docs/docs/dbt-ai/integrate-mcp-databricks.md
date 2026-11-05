@@ -8,7 +8,7 @@ availability: platform_login
 
 The remote dbt MCP server is listed on [Databricks Marketplace](https://marketplace.databricks.com/details/6d83d4e0-5279-47b7-831c-3cb90a82ecb3/dbt-Labs_dbt-MCP). Install it from the marketplace to give Databricks access to your dbt project through [Genie](https://docs.databricks.com/aws/en/genie/) and other Databricks tools.
 
-The connection uses OAuth with Dynamic Client Registration (DCR), so you don't manage a client secret. You authorize access from the MCP service page after installation.
+The connection uses OAuth with Dynamic Client Registration (DCR), so you don't need to manage a client secret. You authorize access from the MCP service page after installation.
 
 ## Prerequisites
 
@@ -18,7 +18,7 @@ The connection uses OAuth with Dynamic Client Registration (DCR), so you don't m
 
 ## Install from Databricks Marketplace
 
-_Recommended and easiest path_
+Use these steps to install the dbt MCP sever from the Databricks marketplace: 
 
 1. Go to the [dbt MCP listing](https://marketplace.databricks.com/details/6d83d4e0-5279-47b7-831c-3cb90a82ecb3/dbt-Labs_dbt-MCP) on Databricks Marketplace.
    - If you're logged in to Databricks, select **Install**.
