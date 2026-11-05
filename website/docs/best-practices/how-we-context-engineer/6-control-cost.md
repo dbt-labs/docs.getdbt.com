@@ -14,6 +14,8 @@ In this section, you'll learn how to:
 - Cap the part of the bill the model controls
 - Keep a safe, append-only record of what each run used
 
+Stuck on a term? Check the [glossary](/best-practices/how-we-context-engineer/1-guide-overview#glossary).
+
 ## Why does AI cost need its own controls?
 
 Analytics engineers carry a good instinct: "just run it again." AI breaks it for two reasons:
@@ -33,7 +35,7 @@ We use two tools you'd want around any expensive, hard-to-undo operation:
 
 | Tool | What it does | When it runs |
 |------|--------------|--------------|
-| Guard | Counts the rows and the estimated tokens for the whole call, and raises an error if either is over your ceiling | Before the model runs, as a pre-hook |
+| Guard | Counts the rows and the estimated tokens for the whole call, and raises an error if either is over your ceiling | Before the model runs, as a pre-hook (SQL dbt runs before a model builds) |
 | Run log | Records what the run actually used | After the run, as an append to a log table |
 
 ### Guard every AI call
@@ -42,7 +44,24 @@ Our recommendations:
 
 - **Ship the guard with the first AI call.** If the guard is optional or arrives later, there's always an ungoverned call somewhere. "We'll add it later" is how unguarded AI reaches production.
 - **Estimate the whole call, not just the text.** A row sent to a generative function (generate, classify, or extract) is billed for its text plus the prompt template and schema, plus the model's reply. On one Snowflake extraction workload, billed input plus output tokens were about 6.4 times an input-text-only estimate. For those functions, the guard estimates input text, prompt template, schema, and an output allowance for every row. Embedding calls send only the text, so they count the text alone.
-- **Name the prompt once.** Set `meta.ai_prompt` (a prompt name and version) in the model's config. The AI function in the model body and both hooks read it, so a version bump can't leave a hook undercounting.
+- **Name the prompt once.** Set `meta.ai_prompt` (a prompt name and version) in the model's config. The AI function in the model body and both hooks read it, so a version bump can't leave a hook undercounting. Here's the shape:
+
+```sql
+{{ config(
+    meta={'ai_prompt': {'name': 'jaffle_content_type', 'version': 'v1'}},
+    pre_hook="{{ dbt_context_engineering.guard_batch(ref('call_transcripts_hashed'), 'chunk_text') }}"
+) }}
+
+select
+    chunk_id,
+    {{ dbt_context_engineering.classify(
+        'chunk_text',
+        prompt=dbt_context_engineering.config_prompt(),
+        output_schema=dbt_context_engineering.config_schema()
+    ) }} as content_type
+from {{ ref('call_transcripts_hashed') }}
+```
+
 - **Set ceilings in configuration.** A deliberate large batch should be a one-line override, which makes the guard a safety net and not an obstacle.
 - **On incremental models, guard only the new rows.** Pass the same filter the model uses, so the guard counts the delta, not the whole table.
 - **Test the trip path.** Confirm in CI that an oversized batch actually raises, not just that a normal one passes.
@@ -59,7 +78,7 @@ The guard can only _estimate_ the reply, because the model decides how long it i
 Record each run's function, model, row count, estimated tokens, estimated cost, timestamp, and invocation id in an append-only table. Spend becomes observable and comparable run to run.
 
 - **Record the dbt node, too.** One invocation can run several models that call the same function with the same model. The log's `node_id` is the node's unique id, so you can tell their rows apart and join the log to warehouse query history, where dbt query comments carry the same id.
-- **Keep the log in the current target.** When a CI job defers to production, the run log should still be written in the environment doing the work, never in production's table.
+- **Keep the log in the current target.** When a CI job [defers](/reference/node-selection/defer) to production (reads production's models instead of rebuilding them), the run log should still be written in the environment doing the work, never in production's table.
 - **Treat the log as observability, not an invoice.** It's built from estimates. Reconciling it against each engine's billing tables is separate work, and it's yours to add.
 
 The jaffle project shows the gates, the guard, and the event-sourced run log on its embedding models.
@@ -88,6 +107,8 @@ A view re-runs its query every time someone reads it. Materialize AI models as t
 When you're developing, cap each model to a small random sample of rows, so nothing runs against the full corpus by accident. Switch the sample off when you're ready for the real run.
 
 ## Keep the run log safe under concurrency
+
+This section is advanced. Skim it now and come back when you see run log failures.
 
 dbt runs independent models on different threads, with no coordination between their hooks. Every AI model writes to the same log table, so unsafe writes can turn your audit mechanism into a source of build failures. We found two separate causes:
 

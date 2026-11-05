@@ -13,6 +13,8 @@ In this section, you'll learn how to:
 - Break long text into chunks that keep their meaning
 - Carry source details onto every chunk so each one can cite its origin
 
+Stuck on a term? Check the [glossary](/best-practices/how-we-context-engineer/1-guide-overview#glossary).
+
 ## Why does preparation matter?
 
 Retrieval quality is decided before any AI runs. A chunk that splits a sentence in half, or mixes two customers' calls, can't be rescued by a better model downstream.
@@ -42,7 +44,7 @@ Think of **packing** instead. You work through the text in order, keeping a runn
 - **Never split a unit.** Meaning lives in whole thoughts. If two goals conflict, keep the one that protects meaning.
 - **Treat the size limit as soft, and watch for big units.** Because units are never split, a unit that starts a chunk can push it over the limit. One very large unit makes an oversized chunk, which can exceed your embedding model's input limit. Chunking flags these rows with `exceeds_target`, and you can opt in to the `no_oversized_chunks` test to fail on them.
 - **Never cross a partition key.** A partition key is the column that identifies one source object, such as `call_id`. Chunks stay inside one call, so turns from different customers never end up together.
-- **Make chunking deterministic and free.** Chunking runs over everything, so it must be cheap. It also sits upstream of every embedding, search, and test, so the same input should always produce the same chunks. Skip AI calls here.
+- **Make chunking deterministic and free.** Deterministic means the same input always produces the same chunks. Chunking runs over everything and sits upstream of every embedding, search, and test, so it must be cheap and repeatable. Skip AI calls here.
 - **Estimate size, don't measure it.** Estimating tokens as characters divided by four is close enough for budgeting and needs no model.
 
 Here's the idea in plain SQL. Estimate tokens per unit, keep a running total within each partition, and use the total to number the chunks:
@@ -77,13 +79,20 @@ select
 from running_total
 ```
 
-The example uses 512 tokens, a typical target. The jaffle project uses 100 on purpose. Its sample documents are short, so 512 would never split anything.
+The package's `chunk()` macro does this for you and returns one row per chunk, with the chunk's text, its id, the source rows it packed, and a token estimate. Here's the shape of the result (the values are illustrative):
+
+| chunk_id | source_rows | token_estimate | chunk_text |
+|----------|-------------|----------------|------------|
+| `CT-99001::1` | The ids of the turns packed into this chunk | 96 | "Marcus: Janet, thanks for taking this. …" |
+| `CT-99001::2` | The ids of the next turns | 88 | "Janet: It did. My question is whether you can handle our peak volume. …" |
+
+The example SQL above uses 512 tokens, a typical target. The jaffle project uses 100 on purpose. Its sample documents are short, so 512 would never split anything.
 
 If searches miss answers that straddle a chunk boundary, you can repeat the last unit or two of the previous chunk at the start of the next. It costs extra tokens, so add it only when you need it.
 
 ### Keep lineage from the start
 
-Every chunk should record which source rows it packed. This is non-negotiable. An agent will quote this context to a person, often to justify a decision. If a chunk forgets where it came from, nobody can trace the claim, and you can't rebuild that link later. You can only carry it forward.
+**Lineage** means you can trace any piece of context back to the source rows it came from. Every chunk should record which source rows it packed. This is non-negotiable. An agent will quote this context to a person, often to justify a decision. If a chunk forgets where it came from, nobody can trace the claim, and you can't rebuild that link later. You can only carry it forward.
 
 ### Adapter notes
 

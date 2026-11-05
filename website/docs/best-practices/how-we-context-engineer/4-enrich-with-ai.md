@@ -15,6 +15,8 @@ In this section, you'll learn how to:
 - Manage prompts and output shapes as versioned code
 - Read the model's answer back out the same way on every warehouse
 
+Stuck on a term? Check the [glossary](/best-practices/how-we-context-engineer/1-guide-overview#glossary).
+
 ## Treat inference as a transformation
 
 The instinct most teams bring is to pull rows into a notebook, call an API in a loop, and write the results back. It works, but the AI step now sits outside everything you've built: it's untested, unversioned, and has no lineage. It also moves your data out of the warehouse.
@@ -29,7 +31,7 @@ You get three things for free:
 - **Data stays put.** Nothing is exported, so there's no second copy to secure.
 - **Clean lineage.** One row in, one answer out. Incremental builds work, and so do cost controls (see [Control cost](/best-practices/how-we-context-engineer/6-control-cost)).
 
-We recommend running the model **per row**, not stuffing many rows into one giant prompt. A giant prompt breaks the one-to-one link between input and output, doesn't work with incremental builds, and can blow past the model's context window.
+We recommend running the model **per row**, not stuffing many rows into one giant prompt. A giant prompt breaks the one-to-one link between input and output, doesn't work with incremental builds, and can blow past the model's context window (how much text it can read at once).
 
 ## Choose an operation
 
@@ -45,7 +47,28 @@ Context engineering runs on a small vocabulary. There are four row-level operati
 
 ### Classify
 
-Classify picks exactly one label from a fixed set. Use it when you have a closed list of categories, such as whether a chunk is an account assessment, a weather disruption, a handling error, or routine status.
+Classify picks exactly one label from a fixed set. Use it when you have a closed list of categories (a **taxonomy**), such as whether a chunk is an account assessment, a weather disruption, a handling error, or routine status.
+
+In the package, it's one call. `jaffle-logistics` classifies every chunk like this:
+
+```sql
+select
+    chunk_id,
+    {{ dbt_context_engineering.classify(
+        'chunk_text',
+        prompt=dbt_context_engineering.prompt('jaffle_content_type', 'v1'),
+        output_schema=dbt_context_engineering.schema_def('jaffle_content_type', 'v1')
+    ) }} as content_type
+from {{ ref('call_transcripts_hashed') }}
+```
+
+Each chunk gets one label from the taxonomy (the values here are illustrative):
+
+| chunk_text | content_type |
+|------------|--------------|
+| "Reviewed with dispatch." | `routine_status` |
+| "Truck slid on ice during the storm and missed the delivery window." | `weather_disruption` |
+| "This quarter's review: on-time delivery has slipped for three months." | `account_assessment` |
 
 Classification is the highest-value enrichment step, because it makes search precise. Without it, short boilerplate chunks crowd the top results (see [Embed and retrieve](/best-practices/how-we-context-engineer/3-embed-and-retrieve#embedding-buys-recall-classification-buys-precision)). With it, you filter the search to the category your question is about. In our test, every result in the top 10 became real account content, and the boilerplate was gone.
 
@@ -85,6 +108,26 @@ The **output schema** is the same. It declares the shape the model must return: 
 - **Keep prompts where they show up in a pull request.** If a prompt lives in a warehouse console under a mutable pointer, you can't answer "what changed, and when?"
 - **Define each taxonomy once.** The allowed labels belong in the schema, and everything else (the classifier, your tests, the prompt) should derive from it. A label list copied into two places will silently drift.
 
+In the package, a prompt and a schema are each a macro, and the macro's name carries its version. This one is trimmed from `jaffle-logistics`:
+
+```sql
+{% macro prompt__jaffle_content_type__v1() -%}
+{%- raw -%}
+Classify the operational text below into exactly one content-type label.
+
+account_assessment: evaluates the account as a whole, not one shipment or incident.
+contract_reference: contractual or legal terms, SLA credit language.
+weather_disruption: describes or was caused by severe weather.
+...
+
+Text:
+{{ input }}
+{%- endraw -%}
+{%- endmacro %}
+```
+
+The `{{ input }}` placeholder is where each row's text goes. To change the prompt, add `prompt__jaffle_content_type__v2` and bump the version in the model that uses it.
+
 Here's a schema that follows these recommendations:
 
 ```json
@@ -104,11 +147,11 @@ Here's a schema that follows these recommendations:
 Two things to notice:
 
 - **`signal` is required, `evidence` is optional.** A classification always resolves to a label, with `other` as the floor. A supporting quote might genuinely not exist, and if you mark a field required that the model can't fill, it will make something up. An invented quote is an ungrounded citation, which is exactly what you're trying to avoid.
-- **The `enum` is the one source of truth** for the label set.
+- **The `enum` is the one source of truth** for the label set. An `enum` is a fixed list of allowed values.
 
 ## Read the answer back the same way everywhere
 
-Calling the model is only half of portability. The other half is what comes back. Ask three warehouses for the same structured result, and you get three different types. If you don't deal with it, every downstream `where`, join, and test has to branch by engine.
+Calling the model is only half of portability. The other half is what comes back. Ask three warehouses for the same structured result, and you get three different types (each is that warehouse's way of storing JSON-like data). If you don't deal with it, every downstream `where`, join, and test has to branch by engine.
 
 Our recommendation: **normalize once, right after the call.** Use a thin accessor layer that reads each engine's native shape and hands back a plain scalar. Past that boundary, nothing downstream needs to know which warehouse produced the value.
 

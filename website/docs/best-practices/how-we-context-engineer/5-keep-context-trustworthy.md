@@ -14,11 +14,13 @@ In this section, you'll learn how to:
 - Gate prompt and model changes so quality can't slip quietly
 - Keep every claim traceable to the exact source it came from
 
+Stuck on a term? Check the [glossary](/best-practices/how-we-context-engineer/1-guide-overview#glossary).
+
 ## Why do you need a new kind of test?
 
 The rest of your pipeline answers "is this data shaped right?" Right type, in range, not null. None of that answers "is it correct?"
 
-AI output fails in ways ordinary tests never probe. A value can be well-formed, the right type, and non-null, and still be something the model made up. The checks pass while the content is a lie.
+AI output fails in ways ordinary tests never probe. A value can be well-formed, the right type, and non-null, and still be something the model made up (a **hallucination**). The checks pass while the content is a lie.
 
 Models fail in three characteristic ways:
 
@@ -66,15 +68,42 @@ Our recommendations:
 
 A conformance test fails any row whose label isn't in the schema's allowed values. It's the check that catches silent failures: when an engine drops your allowed-value list, the call succeeds and returns well-formed output, and only this test notices the labels are wrong.
 
+You write it as a one-line singular test. A singular test is a SQL file in your `tests/` folder that returns the rows that fail (see [data tests](/docs/build/data-tests)):
+
+```sql
+-- tests/assert_content_types_conform.sql
+{{ dbt_context_engineering.conforms_to_schema(
+    ref('call_transcripts_classify'), 'content_type', 'jaffle_content_type', 'v1'
+) }}
+```
+
 Our recommendations:
 
 - **Test a flattened scalar.** Pull the field out of the structured result first, using the accessor from [Enrich with AI](/best-practices/how-we-context-engineer/4-enrich-with-ai) <Lifecycle status="beta" />. Then the test reads the same plain value on every engine.
 - **Read the allowed values from the schema.** Don't copy the label list into the test. One definition, many uses.
-- **Write it as a singular test in dbt.** Looking up a versioned schema by name can't be done in a generic test. Let the platform's constraint set the shape, and write down why, so the next person doesn't "tidy" it back into a generic test and quietly break it.
+- **Keep it a singular test.** Looking up a versioned schema by name can't be done in a generic test. Write down why, so the next person doesn't "tidy" it into a generic test and quietly break it.
 
 ### Evaluation
 
 An evaluation test scores your predictions against a hand-labeled **golden set**: accuracy overall, plus precision and recall for each label. Put a threshold on a metric and you have a gate. If a prompt tweak or model upgrade drops accuracy below the bar, the build fails.
+
+The package's `eval` macro takes a table with a predicted column and an expected column, and returns one row per metric:
+
+```sql
+-- models/eval_metrics.sql
+{{ dbt_context_engineering.eval(ref('predictions'), 'predicted_label', 'expected_label') }}
+```
+
+Then a singular test turns a metric into a gate. This one fails the build if overall accuracy drops below 90%:
+
+```sql
+-- tests/assert_accuracy_above_bar.sql
+select *
+from {{ ref('eval_metrics') }}
+where metric = 'accuracy'
+  and label = '__overall__'
+  and value < 0.9
+```
 
 Our recommendations:
 
