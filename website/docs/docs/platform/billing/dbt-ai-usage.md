@@ -98,8 +98,8 @@ dbt Copilot actions refer to requests made to the dbt Copilot assistant through 
 The following interactions count as dbt Copilot actions:
 
 - **Each inline generation** &mdash; Every time dbt AI writes or suggests code in your file, it counts toward your usage limit.
-
 - **Each generation of documentation, tests, semantic models, or metrics** &mdash; Any time you ask dbt AI to automatically create things like documentation, tests, data models, or metrics, it counts as one interaction.
+- - **Each generation within dbt AI chats on <Constant name="insights" />** &mdash; Any time you use dbt Copilot chat in <Constant name="insights" /> to generate something, it counts as an interaction.
 
 </Expandable>
 
