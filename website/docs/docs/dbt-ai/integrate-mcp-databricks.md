@@ -6,7 +6,9 @@ id: "integrate-mcp-databricks"
 availability: platform_login
 ---
 
-The remote dbt MCP server is listed on [Databricks Marketplace](https://marketplace.databricks.com/details/6d83d4e0-5279-47b7-831c-3cb90a82ecb3/dbt-Labs_dbt-MCP). Install it from the marketplace to give Databricks access to your dbt project through [Genie](https://docs.databricks.com/aws/en/genie/) and other Databricks tools.
+Databricks agents can call external MCP servers as tools. This guide walks you through connecting a Databricks agent to the remote dbt MCP server so it can query your Semantic Layer metrics and data in plain English through [Genie](https://docs.databricks.com/aws/en/genie/) and other Databricks tools.
+
+To get started, install the server from [Databricks Marketplace](https://marketplace.databricks.com/details/6d83d4e0-5279-47b7-831c-3cb90a82ecb3/dbt-Labs_dbt-MCP).
 
 The connection uses OAuth with Dynamic Client Registration (DCR), so you don't need to manage a client secret. You authorize access from the MCP service page after installation.
 
