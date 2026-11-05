@@ -1,17 +1,17 @@
 ---
 title: "Embed and retrieve"
-id: 4-embed-and-retrieve
+id: 3-embed-and-retrieve
 description: Learn how to turn text into searchable vectors, keep them fresh, and search across sources with citations.
 displayText: Embed and retrieve
 hoverSnippet: Learn how to make text searchable by meaning and keep it fresh.
 ---
 
-Your text is chunked, labeled, and traceable. Now you make it searchable by meaning, so an agent can find the right piece without knowing the exact words.
+Your text is chunked and traceable. Now you make it searchable by meaning, so an agent can find the right piece without knowing the exact words. Run chunk → embed → search first. Classifying chunks is the precision step on top, and we cover it in [Enrich with AI](/best-practices/how-we-context-engineer/4-enrich-with-ai).
 
 In this section, you'll learn how to:
 
 - Embed text and keep those embeddings fresh without overspending
-- Search by meaning, and make that search precise
+- Search by meaning, and see where plain search falls short
 - Combine many sources into one knowledge base that cites its origins
 
 ## Embed your text
@@ -74,10 +74,11 @@ Store each vector in the same row as the entity it describes. A separate table k
 
 Your code and config can stay exactly the same while the provider changes what comes back, for example when a model alias moves to a new snapshot. Nothing in your project would show it.
 
-A **canary** catches this. You keep a handful of frozen probe strings, re-embed them on every build, and compare each result to a baseline a person has already reviewed. If similarity drops below your threshold, the test fails.
+A **canary** catches this. You keep a handful of frozen probe strings, re-embed them on every build, and compare each result to a baseline a person has already reviewed. If similarity drops below your threshold, the test raises a warning.
 
-- **Compare by cosine similarity, not exact match.** Identical text doesn't always produce identical vectors (see [adapter notes](#adapter-notes)), so ask "would this difference change a search result?" instead of "are these numbers the same?"
-- **Run it on a schedule in production only.** A canary makes real embedding calls, so it costs money. Leave it off by default and add it to a scheduled production job.
+- **Compare by cosine similarity, not exact match.** Identical text doesn't always produce identical vectors (see [adapter notes](#adapter-notes)), so ask "would this difference change a search result?" instead of "are these numbers the same?" The default threshold is 0.999.
+- **Expect a warning, not a failure.** The default severity is `warn`, so a benign build never fails on a mismatch. Set the severity to `error` if you want it to fail, for example in CI.
+- **Turn it on deliberately.** The canary makes real embedding calls, so it's off by default and its baseline seed ships disabled. Enable the monitor and the seed together, and run it on a scheduled production job.
 
 ### Adapter notes
 
@@ -87,9 +88,8 @@ A **canary** catches this. You keep a handful of frozen probe strings, re-embed 
 | Run-to-run variation | Small | Small | None observed |
 | Canary configuration | Set the vector dimension explicitly | Defaults | Defaults |
 
-- **Vectors aren't bit-for-bit repeatable on Snowflake and Databricks.** Re-embedding the same text lands on a few exact, repeating vectors, with cosine similarity above 0.999999 between them. This looks like requests being routed across serving replicas that are each consistent but numerically a hair apart. BigQuery showed no variation. Never compare vectors for exact equality. Use similarity with a threshold.
-- **Changed-row detection needs a multi-column `not in`, and BigQuery rejects the usual form.** BigQuery wants the subquery's select list wrapped as a single tuple, and Snowflake and Databricks reject that wrapped form. Isolate the one line that differs rather than repeating it across models.
-- **Databricks needs a recent runtime for AI functions.** It requires DBR 15.4 LTS or above, and not Databricks SQL Classic. If you don't meet this, you'll see an opaque SQL error rather than a clear message, so check it first when troubleshooting.
+- **Vectors aren't bit-for-bit repeatable on Snowflake and Databricks.** Re-embedding the same text gives cosine similarity above 0.999999 between runs. Never compare vectors for exact equality. Use similarity with a threshold.
+- **Databricks needs a recent runtime for AI functions.** It requires DBR 15.4 LTS or above, and not Databricks SQL Classic. If you don't meet this, you'll see an opaque SQL error, so check it first when troubleshooting.
 
 ## Retrieve by meaning
 
@@ -141,19 +141,11 @@ Semantic search finds text that means something like your query. That isn't the 
 
 We ran plain similarity search on a realistic multi-source corpus and asked, "late deliveries and what is driving them." The highest-scoring chunk for the account was six tokens long: a trailing fragment reading "Reviewed with dispatch." Most of the rest of the top 10 was boilerplate and routine check-ins. The quarterly business reviews that documented the real root cause never made the list.
 
+<!-- MEME: top search result is a six-token fragment -->
+
 The cause is structural, not a tuning problem. Short, formulaic text sits near the center of embedding space, so it scores respectably against almost any query. Recall was fine. Precision wasn't.
 
-**Classification closes the gap.** Give each chunk one label from a closed business taxonomy, such as an account assessment, a weather disruption, a handling error, or routine status. Then run the same search, filtered to the category your question is actually about. In our test, every result in the top 10 became real account content, in coherent order, with the boilerplate gone.
-
-Our recommendations:
-
-- **Run the basic pipeline first.** Chunk, embed, and search works without classification. What you learn from running it is exactly why you'll want classification.
-- **Use the label as a filter on search.** Retrieval narrows to the right category before ranking.
-- **Version your taxonomy like any other prompt.** Changing it should be a reviewable diff, as covered in [Enrich with AI](/best-practices/how-we-context-engineer/3-enrich-with-ai).
-
-:::caution
-Two honest limits. A taxonomy built for the questions you've thought of may not generalize to questions you haven't, and that's unsolved. Also, labels aren't cached the way embeddings are, so a rebuild relabels everything and the same text can land in a different category between runs. Filtering removes the wrong categories, but it doesn't guarantee the best chunk in a category wins.
-:::
+**Classification closes the gap.** Give each chunk one label, then filter the search to the category your question is about. You don't need it to get started: run chunk → embed → search first, and what you see is exactly why you'll want it. We cover how in [Enrich with AI](/best-practices/how-we-context-engineer/4-enrich-with-ai).
 
 ## Combine sources into a knowledge base
 
@@ -170,18 +162,18 @@ You've solved this problem before. A conformed dimension defines one canonical s
 | `embedding` | Its vector |
 | `ts` | When it happened |
 | `citation_url` | A link back to the original. Optional per source. |
-| `classification` | The label from the previous section. Optional per source. |
+| `classification` | The label from [Enrich with AI](/best-practices/how-we-context-engineer/4-enrich-with-ai). Optional per source. |
 
 With this in place, one filtered search answers a cross-system question, and every hit says which system and row it came from.
 
 Our recommendations:
 
-- **Make adding a source a one-line change.** The only per-source work is a mapping: this source's `body` is the shared `text`, its `created_at` is `ts`. If adding a source means rewriting your search, people won't do it, and the knowledge base drifts from reality.
+- **Make adding a source a small change to the knowledge base.** The knowledge base only needs one mapping per source: this source's `body` is the shared `text`, its `created_at` is `ts`. That's a one-line change. The source still needs its own prepare and embed models (and a classify model, if you classify), as the jaffle project shows. If adding a source means rewriting your search, people won't do it, and the knowledge base drifts from reality.
 - **Embed every source with the same model.** This is where someone accidentally mixes models, and the rankings turn quietly wrong.
 - **Carry lineage on every row.** A hit can come from any system, so "which system and which row" must travel with it into every result.
-- **Give the citation link and the label their own columns.** In the transform that prepares each source, every field is treated the same. In the knowledge base, the columns your consumers depend on are guaranteed. A citation link a consumer can only sometimes find isn't a promise it can rely on, so the column is always there, and `null` when a source has no link. That's why [Prepare your text](/best-practices/how-we-context-engineer/2-prepare-your-text) treats metadata generically and this layer doesn't.
+- **Give the citation link and the label their own columns.** In the knowledge base, the columns your consumers depend on are guaranteed. A citation link a consumer can only sometimes find isn't a promise it can rely on, so the column is always there, and `null` when a source has no link.
 - **Use plain SQL.** Combining sources is a union with casts, and it behaves the same everywhere, so there's no engine-specific logic to hide.
 
 ## What's next
 
-Your context is searchable and cited. Next, you'll make sure it's correct in [Keep context trustworthy](/best-practices/how-we-context-engineer/5-keep-context-trustworthy).
+Your context is searchable and cited. Next, you'll make that search precise with labels in [Enrich with AI](/best-practices/how-we-context-engineer/4-enrich-with-ai).

@@ -23,6 +23,8 @@ Analytics engineers carry a good instinct: "just run it again." AI breaks it for
 
 Here's what that looks like in practice. In our own testing, one generation run over 10 one-sentence rows on BigQuery produced 65,825 output tokens, about 6,600 per row. Nearly all of it was the model's default "thinking," which is billed as output. The inputs were tiny. The cost wasn't.
 
+<!-- MEME: "it's just ten one-sentence rows" next to the invoice -->
+
 So we treat cost as a first-class output of the pipeline, not an afterthought. A report the next morning tells you what you already spent, and it can't prevent anything. The control has to fire before the tokens are spent.
 
 ## Use a circuit breaker and a meter
@@ -31,7 +33,7 @@ We use two tools you'd want around any expensive, hard-to-undo operation:
 
 | Tool | What it does | When it runs |
 |------|--------------|--------------|
-| Guard | Counts the rows and estimated tokens, and raises an error if either is over your ceiling | Before the model runs, as a pre-hook |
+| Guard | Counts the rows and the estimated tokens for the whole call, and raises an error if either is over your ceiling | Before the model runs, as a pre-hook |
 | Run log | Records what the run actually used | After the run, as an append to a log table |
 
 ### Guard every AI call
@@ -39,23 +41,28 @@ We use two tools you'd want around any expensive, hard-to-undo operation:
 Our recommendations:
 
 - **Ship the guard with the first AI call.** If the guard is optional or arrives later, there's always an ungoverned call somewhere. "We'll add it later" is how unguarded AI reaches production.
+- **Estimate the whole call, not just the text.** A row sent to a generative function (generate, classify, or extract) is billed for its text plus the prompt template and schema, plus the model's reply. On one Snowflake extraction workload, billed input plus output tokens were about 6.4 times an input-text-only estimate. For those functions, the guard estimates input text, prompt template, schema, and an output allowance for every row. Embedding calls send only the text, so they count the text alone.
+- **Name the prompt once.** Set `meta.ai_prompt` (a prompt name and version) in the model's config. The AI function in the model body and both hooks read it, so a version bump can't leave a hook undercounting.
 - **Set ceilings in configuration.** A deliberate large batch should be a one-line override, which makes the guard a safety net and not an obstacle.
 - **On incremental models, guard only the new rows.** Pass the same filter the model uses, so the guard counts the delta, not the whole table.
 - **Test the trip path.** Confirm in CI that an oversized batch actually raises, not just that a normal one passes.
 
 ### Cap the output, too
 
-An input guard can't see an output blow-up, because output volume isn't visible from the input at all. Input cost and output cost are different variables, and each needs its own lever:
+The guard can only _estimate_ the reply, because the model decides how long it is. Input cost and output cost are different variables, and each needs its own lever:
 
-- **Set a maximum output size** for every call, across all engines.
+- **Set a maximum output size** for every call, across all engines. The guard uses it as the output allowance, so a lower cap also makes the estimate tighter.
 - **Turn off default "thinking" where you can.** On BigQuery with Gemini models, setting the thinking budget to `0` disables it. That default caused the 65,825-token run above.
 
 ### Keep a run log
 
 Record each run's function, model, row count, estimated tokens, estimated cost, timestamp, and invocation id in an append-only table. Spend becomes observable and comparable run to run.
 
-- **Record the dbt node, too.** One invocation can run several models that call the same function with the same model. Without the node's unique id, you can't tell their rows apart, or join the log to warehouse query history, where dbt query comments carry the same id.
-- **Treat the log as observability, not an invoice.** It's built from estimates. Reconciling it against each engine's billing tables is separate work that depends on a live warehouse, and it's yours to add.
+- **Record the dbt node, too.** One invocation can run several models that call the same function with the same model. The log's `node_id` is the node's unique id, so you can tell their rows apart and join the log to warehouse query history, where dbt query comments carry the same id.
+- **Keep the log in the current target.** When a CI job defers to production, the run log should still be written in the environment doing the work, never in production's table.
+- **Treat the log as observability, not an invoice.** It's built from estimates. Reconciling it against each engine's billing tables is separate work, and it's yours to add.
+
+The jaffle project shows the gates, the guard, and the event-sourced run log on its embedding models.
 
 ## Make spend an opt-in
 
@@ -66,7 +73,6 @@ A plain `dbt build` in a fresh environment, or a CI job that never meant to call
 Our recommendations:
 
 - **Put the check inside the AI function, not in a value you pass.** A wrapper around a config value only protects people who remember to use it, and skipping it is the easy path. If calling the function triggers the check, there's nothing to forget.
-- **Only enforce it when the model actually runs.** dbt renders every model's code when it builds its project graph, whether or not you selected that model. An unconditional error would fail unrelated models that never touch AI.
 - **Enable it per target.** Turn it on for production and leave it off elsewhere.
 
 ### Gate full refreshes
@@ -94,10 +100,6 @@ The second fix is **event sourcing**. Instead of flipping a field on an existing
 
 To see the effect, we ran eight independent models on eight threads. With an update, 7 of 8 failed on Databricks and 1 of 8 failed on BigQuery. With only inserts, all 8 succeeded on both.
 
-:::note
-You might reach for running with a single thread, or retrying a failed write. Neither is a good answer here. A single thread throws away the parallelism dbt gives independent models, and doesn't help an unattended scheduled job. Retrying isn't possible inside a dbt macro, because Jinja can't catch a database error.
-:::
-
 ## Adapter notes
 
 | Topic | Snowflake | Databricks | BigQuery |
@@ -108,15 +110,4 @@ You might reach for running with a single thread, or retrying a failed write. Ne
 | Extra requirements | None | A recent runtime (DBR 15.4 LTS or above, not Databricks SQL Classic) | A connection is optional |
 
 - **Use an append-only log on every engine.** Concurrency failures show up differently per engine, with a transaction conflict on Databricks and a rate-limit error on BigQuery, but the fix is the same.
-- **Put a ceiling on aggregation on Databricks** <Lifecycle status="beta" />. Snowflake and BigQuery handle a group bigger than the model's context window for you. Databricks doesn't, so set a per-group token ceiling before the call. An oversized group then fails the build loudly instead of being silently truncated.
-- **Don't pay for an index you forgot.** A managed vector index is billed separately and charges even when idle. Create it as a deliberate operation, and drop it when you're done. See [Embed and retrieve](/best-practices/how-we-context-engineer/4-embed-and-retrieve).
-
-## Putting it together
-
-Here's the cost story in one line per stage:
-
-- **Prepare:** Chunking is deterministic SQL with no AI cost.
-- **Enrich:** Guard each call, cap its output, and log it.
-- **Embed:** Refresh incrementally, and gate full rebuilds.
-- **Retrieve:** Use brute force by default, and build an index only on purpose.
-- **Always:** Keep AI functions off until you turn them on for a target.
+- **Don't pay for an index you forgot.** A managed vector index is billed separately and charges even when idle. Create it as a deliberate operation, and drop it when you're done. See [Embed and retrieve](/best-practices/how-we-context-engineer/3-embed-and-retrieve).

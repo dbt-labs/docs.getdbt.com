@@ -42,6 +42,8 @@ Wherever you can, verify AI output with non-AI checks.
 
 ## Three tests we recommend
 
+The `dbt_context_engineering` package ships all three. The jaffle project doesn't wire them yet, so treat the package README as your reference for these.
+
 ### Groundedness
 
 A groundedness test fails any row whose evidence quote isn't actually in its source text. This is the highest-leverage check you can add, because it turns a convention you already follow, carrying a verbatim quote with every extracted fact, from an honor system into an enforced rule. A required-but-unchecked field is a false sense of safety.
@@ -50,14 +52,14 @@ A groundedness test fails any row whose evidence quote isn't actually in its sou
 columns:
   - name: evidence
     data_tests:
-      - grounded:
+      - dbt_context_engineering.grounded:
           source_text_column: chunk_text
 ```
 
 Our recommendations:
 
 - **Normalize case and whitespace by default.** Trivial formatting differences shouldn't fail a build.
-- **Let a missing quote be null.** If a quote legitimately doesn't exist, null is correct, and the test shouldn't flag it. This only works if the field is optional in your schema, as covered in [Enrich with AI](/best-practices/how-we-context-engineer/3-enrich-with-ai).
+- **Let a missing quote be null.** If a quote legitimately doesn't exist, null is correct, and the test shouldn't flag it. This only works if the field is optional in your schema, as covered in [Enrich with AI](/best-practices/how-we-context-engineer/4-enrich-with-ai).
 - **Know its limit.** A passing test proves the quote is real. It doesn't prove the model read it correctly.
 
 ### Conformance
@@ -66,7 +68,7 @@ A conformance test fails any row whose label isn't in the schema's allowed value
 
 Our recommendations:
 
-- **Test a flattened scalar.** Pull the field out of the structured result first, using the accessor from [Enrich with AI](/best-practices/how-we-context-engineer/3-enrich-with-ai) <Lifecycle status="beta" />. Then the test reads the same plain value on every engine.
+- **Test a flattened scalar.** Pull the field out of the structured result first, using the accessor from [Enrich with AI](/best-practices/how-we-context-engineer/4-enrich-with-ai) <Lifecycle status="beta" />. Then the test reads the same plain value on every engine.
 - **Read the allowed values from the schema.** Don't copy the label list into the test. One definition, many uses.
 - **Write it as a singular test in dbt.** Looking up a versioned schema by name can't be done in a generic test. Let the platform's constraint set the shape, and write down why, so the next person doesn't "tidy" it back into a generic test and quietly break it.
 
@@ -82,16 +84,15 @@ Our recommendations:
 
 ### Chunk size
 
-Opt in to a test that flags any chunk over your size target. Treat it as a data-quality signal about your source text, such as one very long unit, not as a bug in your chunking.
+Opt in to the `no_oversized_chunks` test to flag any chunk over your size target. It's a data-quality signal about your source text, such as one very long unit, not a bug in your chunking.
 
 ## Prove your tests can fail
 
-A test that has only ever passed hasn't been shown to work. Validate in both directions:
+A test that has only ever passed hasn't been shown to work. Validate in both directions: it passes on good data, and it fails on planted bad data. Deliberately add a hallucinated quote and an invented label, and confirm each one turns the build red.
 
-- **Passes on good data.**
-- **Fails on planted bad data.** Deliberately add a hallucinated quote, an invented label, and a wrong metric, and confirm each one turns the build red.
+<!-- MEME: all tests green, hallucinated evidence ships anyway -->
 
-This is also why conformance is worth running early. In our own cross-engine testing, one warehouse silently dropped the allowed values, and every conformance check failed 10 out of 10, while the extraction itself was perfect. Only looking at outputs, not contracts, exposed it.
+This is also why conformance is worth running early. In our own cross-engine testing, one warehouse silently dropped the allowed values, and every conformance check failed 10 out of 10, while the extraction itself was perfect.
 
 ## Carry lineage at every stage
 
@@ -115,7 +116,7 @@ Two granularities matter, and you need both:
 - **Row-level lineage** says _where_ a fact came from. It doesn't prove the fact is in that row, because a model can cite the right ticket and still invent the detail.
 - **Span-level evidence** says _what in the row_ supports it. Because it's literal text, you can machine-check it, which is what makes the groundedness test possible.
 
-**Design lineage in on day one.** Lineage is destroyed, not derived. The moment a chunk forgets which sentences it packed, that information is gone, and no later step can recover it. You can only carry provenance forward. The cost is small: a few extra columns and an evidence field. Pay it everywhere, rather than regret its absence later.
+**Design lineage in on day one.** Lineage is destroyed, not derived. The moment a chunk forgets which sentences it packed, that information is gone, and no later step can recover it. The cost is small: a few extra columns and an evidence field.
 
 ## Adapter notes
 
@@ -124,7 +125,6 @@ The tests are mostly portable, so there's little to configure.
 | Topic | What to know |
 |-------|--------------|
 | Structured result type | Snowflake returns a `VARIANT`, Databricks a `JSON` string, and BigQuery a `STRUCT`. Flatten to a scalar before testing. |
-| Substring and whitespace checks | The one place engines differ. BigQuery uses `STRPOS` where others use `POSITION ... IN`, so isolate these behind one interface. |
 | Allowed values | BigQuery drops enum constraints from its output schema, so conformance tests matter most there. |
 | Warehouse access | These checks are deterministic, so you can run them without warehouse credentials against sample data, for example on DuckDB. |
 
