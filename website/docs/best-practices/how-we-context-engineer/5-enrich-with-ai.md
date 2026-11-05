@@ -21,15 +21,12 @@ Stuck on a term? Check the [glossary](/best-practices/how-we-context-engineer/8-
 
 The instinct most teams bring is to pull rows into a notebook, call an API in a loop, and write the results back. It works, but the AI step now sits outside everything you've built: it's untested, unversioned, and has no lineage. It also moves your data out of the warehouse.
 
-Warehouses now expose AI as SQL functions. That makes a different pattern possible, and it's the one we recommend: **an AI call is just a column expression**. You call the model from SQL, one row at a time, and the answer is a new column in a model that dbt builds like any other.
-
-You get three things for free:
+Warehouses now expose AI as SQL functions, so **an AI call is just a column expression**. You call the model from SQL, one row at a time, and the answer is a new column in a model that dbt builds like any other. That gives you two things for free:
 
 - **Governance.** The AI step inherits version control, code review, tests, lineage, and scheduling.
 - **Data stays put.** Nothing is exported, so there's no second copy to secure.
-- **Clean lineage.** One row in, one answer out. Incremental builds work, and so do cost controls (see [Control cost](/best-practices/how-we-context-engineer/7-control-cost)).
 
-We recommend running the model **per row**, not stuffing many rows into one giant prompt. A giant prompt breaks the one-to-one link between input and output, doesn't work with incremental builds, and can blow past the model's context window (how much text it can read at once).
+Run the model **per row**, not with many rows stuffed into one giant prompt. A giant prompt breaks the one-to-one link between input and output, doesn't work with incremental builds, and can blow past the model's context window (how much text it can read at once). Per-row calls also keep cost controls simple (see [Control cost](/best-practices/how-we-context-engineer/7-control-cost)).
 
 ## Choose an operation
 
@@ -155,7 +152,7 @@ The same text can get a different label when you rerun the build. Tests catch th
 
 Extract pulls typed facts out of the text into fields. Use it when you need several facts at once, such as the account, the stated problem, and the date.
 
-Every extracted fact should carry an `evidence` field: the verbatim quote that supports it. That quote is what makes the fact checkable (see [Keep context trustworthy](/best-practices/how-we-context-engineer/6-keep-context-trustworthy)).
+Every extracted fact should carry an `evidence` field: the verbatim quote that supports it. That quote is what makes the fact checkable (see [Keep context trustworthy](/best-practices/how-we-context-engineer/6-keep-context-trustworthy)). Mark `evidence` as optional in your schema. A quote might genuinely not exist, and a required field the model can't fill invites an invented quote, which is an ungrounded citation.
 
 ### Generate <Lifecycle status="beta" />
 
@@ -182,43 +179,9 @@ The **output schema** is the same. It declares the shape the model must return: 
 
 In the package, a prompt and a schema are each a macro, and the macro's name carries its version, like `prompt__jaffle_content_type__v1`. The [Classify](#classify) section shows a full example.
 
-Here's a schema macro that follows these recommendations:
-
-<File name="macros/prompts/deal_signal.sql">
-
-```sql
-{% macro schema__deal_signal__v1() -%}
-{%- raw -%}
-{
-  "type": "object",
-  "properties": {
-    "signal": {
-      "type": "string",
-      "enum": ["pain_point", "requirement", "objection", "buying_signal", "other"]
-    },
-    "evidence": { "type": "string" }
-  },
-  "required": ["signal"]
-}
-{%- endraw -%}
-{%- endmacro %}
-```
-
-</File>
-
-Two things to notice:
-
-- **`signal` is required, `evidence` is optional.** A classification always resolves to a label, with `other` as the floor. A supporting quote might genuinely not exist, and if you mark a field required that the model can't fill, it will make something up. An invented quote is an ungrounded citation, which is exactly what you're trying to avoid.
-- **The `enum` is the one source of truth** for the label set. An `enum` is a fixed list of allowed values.
-
 ## Read the answer back the same way everywhere
 
-Calling the model is only half of portability. The other half is what comes back. Ask three warehouses for the same structured result, and you get three different types (each is that warehouse's way of storing JSON-like data). If you don't deal with it, every downstream `where`, join, and test has to branch by engine.
-
-Our recommendation: **normalize once, right after the call.** Use a thin accessor layer that reads each engine's native shape and hands back a plain scalar. Past that boundary, nothing downstream needs to know which warehouse produced the value.
-
-- **Classify returns a plain label string.** That's the contract: give me the label, not an engine object.
-- **Flatten structured results into typed columns right away.** Pull each field out as its own column, then treat it as an ordinary scalar.
+Calling the model is only half of portability. Each warehouse returns structured results as a different type, so normalize once, right after the call: read each warehouse's native shape and hand back a plain value. Classify returns a plain label string, and you should flatten structured results into ordinary typed columns right away.
 
 ## Adapter notes
 
@@ -234,22 +197,9 @@ The operations are the same everywhere, but the warehouses behave differently in
 
 </SimpleTable>
 
-**BigQuery drops enum constraints.** BigQuery's output schema can't express an allowed-value list, so it quietly turns the field into a plain string. The call succeeds and returns well-formed output, but the model never saw your labels and invents its own, like `PROBLEM` or `Discovery Question` instead of `pain_point`. Nothing errors, so nothing turns red.
+**BigQuery drops enum constraints.** BigQuery's output schema can't express an allowed-value list, so it quietly turns the field into a plain string. The call succeeds, but the model never saw your labels and invents its own, like `PROBLEM` or `Discovery Question` instead of `pain_point`. Nothing errors, so nothing turns red. On BigQuery, put the labels in the prompt too, generated from the schema's list so they still live in one place. You don't need this on Snowflake and Databricks, where the schema already enforces them.
 
-:::caution
-Silent failures are the most dangerous kind. Don't assume a structured-output contract is enforced. Check what each engine actually returns.
-:::
-
-Here's how to handle it:
-
-- **Put the labels in the prompt too, on BigQuery.** Generate that instruction from the schema's `enum` at compile time, so the labels still live in one place. You don't need it on Snowflake and Databricks, where the schema already enforces them, and adding it there only adds noise to the model's input.
-- **Bind, don't steer.** A schema `enum` binds the output so it can't leave the set. A prompt instruction only steers it. Use binding wherever the engine supports it, and steering where it doesn't.
-
-**Aggregation differs the most** <Lifecycle status="beta" />:
-
-- **Models:** Snowflake picks the model internally, so you can't choose one. Databricks and BigQuery let you.
-- **Row order:** Snowflake respects an `order by` placed ahead of the `group by`. BigQuery ignores input order entirely.
-- **Oversized groups:** Snowflake and BigQuery handle a group bigger than the model's context window for you. Databricks has no native aggregate, so you collapse the group in SQL and set a token ceiling so an oversized group fails the build instead of being silently truncated.
+**Aggregation differs the most** <Lifecycle status="beta" />. Databricks has no native aggregate function, and Snowflake and BigQuery differ on model choice and row order. Check your warehouse's documentation before you rely on it.
 
 **Name your models explicitly.** Set the model for each operation in configuration rather than relying on defaults.
 

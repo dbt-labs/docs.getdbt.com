@@ -21,35 +21,23 @@ Stuck on a term? Check the [glossary](/best-practices/how-we-context-engineer/8-
 
 An **embedding** is a list of numbers, called a **vector**, that captures what a piece of text means. Texts with similar meaning get similar numbers. That's what lets a search for "renewal risk" find a chunk that says "the customer is worried about resigning," even though they share no words.
 
-Here's what that looks like. Each chunk becomes a vector. We show three numbers per chunk to keep it readable. Real vectors have hundreds (for example, 768 for `snowflake-arctic-embed-m-v1.5`), and the values below are made up for illustration:
+Here's what that looks like. Each chunk becomes a vector. We show three numbers per chunk to keep it readable. Real vectors have hundreds (for example, 768 for `snowflake-arctic-embed-m-v1.5`), and the values below are made up for illustration.
+
+When you search for "renewal risk," the question gets embedded too (here, `[0.80, -0.10, 0.42, …]`), and every chunk gets a **cosine similarity** score against it: 1.0 means the same direction, and -1.0 means the opposite.
 
 <SimpleTable>
 
-| Chunk text | Vector (first 3 numbers) |
-|------------|--------------------------|
-| "The customer is worried about resigning." | `[0.70, -0.05, 0.50, …]` |
-| "Renewal paperwork is due next week." | `[0.60, 0.10, 0.55, …]` |
-| "Truck 14 was delayed by a winter storm." | `[-0.20, 0.65, 0.05, …]` |
+| Chunk text | Vector (first 3 numbers) | Score against "renewal risk" |
+|------------|--------------------------|------------------------------|
+| "The customer is worried about resigning." | `[0.70, -0.05, 0.50, …]` | 0.99 |
+| "Renewal paperwork is due next week." | `[0.60, 0.10, 0.55, …]` | 0.94 |
+| "Truck 14 was delayed by a winter storm." | `[-0.20, 0.65, 0.05, …]` | -0.33 |
 
 </SimpleTable>
 
-You can't read meaning off the numbers by eye. What matters is how close two vectors are. When you search for "renewal risk," the question gets embedded too (here, `[0.80, -0.10, 0.42, …]`), and every chunk gets a **cosine similarity** score against it: 1.0 means the same direction, and -1.0 means the opposite.
-
-<SimpleTable>
-
-| Chunk text | Score against "renewal risk" |
-|------------|------------------------------|
-| "The customer is worried about resigning." | 0.99 |
-| "Renewal paperwork is due next week." | 0.94 |
-| "Truck 14 was delayed by a winter storm." | -0.33 |
-
-</SimpleTable>
-
-The two renewal chunks score high and the truck chunk scores low, even though only one chunk shares a word with the query. That's search by meaning.
+You can't read meaning off the numbers by eye. What matters is how close two vectors are. The two renewal chunks score high and the truck chunk scores low, even though only one chunk shares a word with the query. That's search by meaning.
 
 ### Treat embeddings as derived assets
-
-An embedding is the output of a function: text, plus a model, plus any preprocessing, goes in, and a vector comes out.
 
 Vectors have one rule that ordinary columns don't: **they're only comparable to vectors from the same model.** Two models place meaning in different spaces, so similarity between their vectors is meaningless. This is the sharpest edge in the whole practice, and it drives most of our recommendations:
 
@@ -87,7 +75,7 @@ In the package, that's one macro, `vector_search`. It returns the id and columns
 
 Retrieval is the contract with your agent. A chunk earns its place by being similar, filterable, and traceable, so the agent can cite a source instead of paraphrasing one.
 
-### Start with brute force
+### Pick how to search
 
 There are two ways to rank:
 
@@ -100,34 +88,11 @@ There are two ways to rank:
 
 </SimpleTable>
 
-We recommend **brute force by default**. It works on the table you already have, with nothing new to provision, learn, or pay for. Because the vector is an ordinary column, it inherits your tests, lineage, and governance. For most real corpora, a linear scan is fast enough.
+We recommend **brute force by default**. It works on the table you already have, with nothing new to provision or pay for, and the vector is an ordinary column, so it inherits your tests and lineage. For most real corpora, a linear scan is fast enough.
 
-An index is a deliberate opt-in. A table costs storage and nothing more when idle. An index is a long-lived, separately billed service that charges even when nobody queries it. dbt manages tables, not services, so a routine `dbt run` should never quietly stand one up.
+An index is a deliberate opt-in <Lifecycle status="beta" />. It's a long-lived, separately billed service that charges even when nobody queries it, and dbt manages tables, not services. If you outgrow brute force, create it as an operation, never as a model, and drop it yourself when you're done. On Databricks, you create it through its API.
 
-### Build an index only on purpose <Lifecycle status="beta" />
-
-When you outgrow brute force, create the index:
-
-- **Run it as an operation, never as a model.** It should be impossible to trigger by accident.
-- **Expect to tear it down yourself.** Nothing cleans it up for you, and it keeps billing until you drop it.
-- **Check your engine's path.** On Databricks, the index is created through an API or SDK rather than SQL.
-
-### Filter before you rank
-
-Narrow the candidate set before ranking, such as by account (the `filter` argument above). This is how you scope a search to one customer, and it keeps results relevant.
-
-### Adapter notes for retrieval
-
-<SimpleTable>
-
-| Topic | Snowflake | Databricks | BigQuery |
-|-------|-----------|------------|----------|
-| Similarity | Scalar cosine function | Scalar cosine function | A `VECTOR_SEARCH` table function, in brute-force mode |
-| Managed index | Cortex Search | Vector Search, created through its API | Vector index |
-
-</SimpleTable>
-
-Hide the BigQuery difference behind one interface so your models read the same on every engine.
+To scope a search to one customer, filter before you rank, as the `filter` argument above does.
 
 ## Embedding buys recall. Classification buys precision.
 
@@ -184,10 +149,8 @@ In the package, you list each source and say which of its columns map to the sha
 Our recommendations:
 
 - **Make adding a source a small change to the knowledge base.** Each new source needs one mapping like the ones above, which is a one-line change here. The source still needs its own prepare and embed models (and a classify model, if you classify), as `jaffle-logistics` shows. If adding a source means rewriting your search, people won't do it.
-- **Embed every source with the same model.** This is where someone accidentally mixes models, and the rankings turn quietly wrong.
 - **Carry lineage on every row.** A hit can come from any system, so "which system and which row" must travel with it into every result.
 - **Give the citation link and the label their own columns.** Consumers depend on them, so they're always there, and `null` when a source has no link.
-- **Use plain SQL.** Combining sources is a union with casts, so there's no engine-specific logic to hide.
 
 ## Keep embeddings fresh
 
@@ -208,40 +171,15 @@ Because vectors are only comparable within one model, your model needs to know w
 
 </SimpleTable>
 
-Think of it like a schema migration for a derived column: normally you append, but when the definition changes, you rebuild every row.
-
 - **Decide the mode at run time, not parse time.** "Did the stored version change?" can only be answered by reading the table when the model runs. Use a runtime signal that flips an ordinary incremental model's `where` clause.
-- **Stick with a standard incremental model.** A custom materialization hides the logic that decides when you spend money. Keep that decision in plain sight.
 - **Catch edited rows, not just new ones.** Store a hash (a short fingerprint of the text) of exactly what you embedded, and re-embed when it changes.
 - **Gate full rebuilds.** A bare `--full-refresh` shouldn't be able to silently re-bill your whole corpus.
 
 ### Store a cache key with every vector
 
-Store enough with each vector to know whether it still matches what the function would produce today:
+Alongside the hash of the text, store a fingerprint of the model, vector size, and provider settings you used. You need both. Without the fingerprint, a settings change with identical text goes undetected. Without the hash, an edit to a row under the same model goes undetected. Keep each vector in the same row as the entity it describes.
 
-<SimpleTable>
-
-| Column | Answers |
-|--------|---------|
-| Vector | The embedding itself |
-| Content hash | Did the text change? |
-| Function fingerprint | Did the model, dimension, or provider settings change, with the text held constant? |
-| Dimension | How long is the vector the engine actually returned, not the one you configured? |
-| Embedded at | When was it made? |
-| Model name | Which model made it? Keep this for humans. It's an audit column, and nothing should depend on it. |
-
-</SimpleTable>
-
-You need both the content hash and the fingerprint. Without the fingerprint, a settings change with identical text goes undetected. Without the hash, an edit to a row under the same model goes undetected.
-
-:::tip
-Store each vector in the same row as the entity it describes. A separate table keyed on the hash only pays off when the same text repeats across many rows, and chunks are close to unique by construction.
-:::
-
-### Watch for orphans and nulls
-
-- **Orphaned chunks.** If you re-chunk and a chunk id disappears, nothing detects the stale vector. Add a `relationships` test between your embeddings and your current chunks.
-- **Null text.** A row whose text later becomes null is left frozen rather than re-embedded. For a brand-new row with null text, filter it out with `where body is not null`.
+Two more things to watch for. If you re-chunk and a chunk id disappears, nothing detects the stale vector, so add a `relationships` test between your embeddings and your current chunks. And a row whose text later becomes null is left frozen rather than re-embedded, so filter out null text with `where body is not null`.
 
 ### Monitor for drift <Lifecycle status="beta" />
 
@@ -255,17 +193,8 @@ A **canary** catches this. You keep a handful of frozen probe strings, re-embed 
 
 ### Adapter notes for freshness
 
-<SimpleTable>
-
-| Topic | Snowflake | Databricks | BigQuery |
-|-------|-----------|------------|----------|
-| Embedding function | `AI_EMBED` | Serving endpoint | `AI.EMBED` |
-| Run-to-run variation | Small | Small | None observed |
-| Canary configuration | Set the vector dimension explicitly | Defaults | Defaults |
-
-</SimpleTable>
-
-- **Vectors aren't bit-for-bit repeatable on Snowflake and Databricks.** Re-embedding the same text gives cosine similarity above 0.999999 between runs. Never compare vectors for exact equality.
+- **Vectors aren't bit-for-bit repeatable on Snowflake and Databricks.** Re-embedding the same text gives cosine similarity above 0.999999 between runs. Never compare vectors for exact equality. BigQuery showed no variation in our tests.
+- **Set the vector dimension explicitly for the canary on Snowflake.** Databricks and BigQuery use the defaults.
 - **Databricks needs a recent runtime for AI functions.** It requires DBR 15.4 LTS or above, and not Databricks SQL Classic. If you don't meet this, you'll see an opaque SQL error, so check it first when troubleshooting.
 
 ## What's next
