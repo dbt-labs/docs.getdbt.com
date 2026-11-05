@@ -72,7 +72,7 @@ The following interactions apply when `ignore_external_modifications` is `false`
 
 - [`lag_tolerance`](/reference/resource-configs/lag-tolerance): A model is rebuilt when an external change is detected, even if it was built recently enough to fall within its `lag_tolerance` window.
 
-- [`execute_hooks_on_any_reuse`](/reference/resource-configs/execute-hooks-on-any-reuse): If `execute_hooks_on_any_reuse` is `true` and a post-hook modifies the target relation, the warehouse timestamp moves. dbt State sees the updated timestamp as an external change and forces a rebuild on the next run. To avoid this, set `lag_tolerance: 0` or remove post-hook statements that modify the target.
+- [`execute_hooks_on_any_reuse`](/reference/resource-configs/execute-hooks-on-any-reuse): If `execute_hooks_on_any_reuse` is `true` and a post-hook modifies the target relation, the target's last-modified timestamp in the warehouse is updated. When `lag_tolerance` is above `0`, dbt State sees this as an external change and forces a rebuild on the next run. This can happen silently for incremental models. To avoid this, set `execute_hooks_on_any_reuse: false`, set `lag_tolerance: 0`, or remove post-hook statements that modify the target.
 
 ## Example
 
