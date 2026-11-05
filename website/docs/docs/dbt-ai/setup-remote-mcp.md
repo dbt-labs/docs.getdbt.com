@@ -43,7 +43,7 @@ If you connect with a token instead of OAuth, `execute_sql` only works with a [p
 Remote MCP checks your access when you connect and authorizes each tool call against the project, environment, job, or run it targets. These checks apply to OAuth, personal access tokens (PATs), and service tokens. A successful connection or a tool appearing in your client doesn't mean you can use that tool on every resource.
 
 You don't need the `Developer` permission set just to connect. Ask your admin to grant the permissions needed for your workflow:
-
+<SimpleTable>
 | Workflow | Required access |
 | --- | --- |
 | Explore models and lineage, or generate SQL with `text_to_sql` | Metadata read access on the selected project. `text_to_sql` also requires AI features to be enabled. |
@@ -51,7 +51,7 @@ You don't need the `Developer` permission set just to connect. Ask your admin to
 | Run plain SQL with `execute_sql` | Semantic Layer configuration read access on the project, a development environment, and warehouse credentials. Connect with OAuth or a PAT. |
 | Run SQL containing dbt Jinja, such as `ref()` or `source()` | The requirements for plain SQL, plus develop access. Production deferral also requires metadata read access. |
 | Read or manage jobs and runs | The corresponding jobs or runs read or write permission for the target resource. Unfiltered account-wide listings require account-wide access. |
-
+</SimpleTable>
 For available permission sets, refer to [Enterprise permissions](/docs/platform/manage-access/enterprise-permissions) and [Service tokens](/docs/dbt-apis/service-tokens#permissions-for-service-account-tokens). PATs inherit the permissions of the user who created them. OAuth also restricts access to the scopes and projects you consented to.
 
 Service tokens with metadata read access can use `text_to_sql` to generate SQL. They can't use `execute_sql` to run it.
