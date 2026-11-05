@@ -52,7 +52,7 @@ This guide covers _modeling_ context, not serving it. The package isn't an agent
 
 ## What counts as unstructured data?
 
-Anything that carries meaning but doesn't fit neatly in rows and columns. If you only picture call centers, you're thinking too small. Context engineering is a new way to think about the data you already have, not one use case.
+Anything that carries meaning but doesn't fit neatly in rows and columns, like support tickets, transcripts, call, etc. Context engineering is a new way to think about the data you already have, not one use case.
 
 Our example project is Jaffle Logistics, a fictional logistics company whose customer story is scattered across roughly eight disconnected systems. Five of them go through the pipeline in the [`jaffle-logistics`](https://github.com/dbt-labs/jaffle-logistics) project, the reference implementation for the package. The question we keep asking: _"What's driving late deliveries for this account?"_ The answer isn't in any one system. Here are the five sources:
 
