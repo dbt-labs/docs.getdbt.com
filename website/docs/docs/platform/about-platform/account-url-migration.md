@@ -22,16 +22,19 @@ Account-specific access URLs are being assigned to <Constant name="dbt" /> accou
 
 If your account has been assigned a new access URL, please review the [migration timeline](#migration-timeline) and update your account's external integrations using the [integration checklist](#integration-checklist).
 
-If your account has not been assigned a new access URL, you will receive an email and in-app notification with a scheduled enablement date. When the change takes effect, you'll be automatically redirected to your account-specific access URL. Account sign-in remains the same. Both your new access URL and your legacy region URL will support integrations according to the dates on the [migration timeline](#migration-timeline).
+If your account has not been assigned a new access URL, you will receive an email and in-app notification with a scheduled enablement date. When the change takes effect, you'll be automatically redirected to your account-specific access URL. Account sign-in remains the same. Both your new access URL and your legacy region URL will support integrations according to the dates on the [migration timeline](#migration-timeline). You can update most integrations any time before the end-of-support date, but network rules must be ready before your assignment date. For a summary, refer to [the update checklist by date](#what-do-i-need-to-update-before-and-after-my-assignment-date).
 
 :::info Update network rules before your assignment date
-Network rules must be in place before your assignment date. You can update the other integrations in the [integration checklist](#integration-checklist) any time before the end-of-support date. For a summary, refer to [What do I need to update before and after my assignment date?](#what-do-i-need-to-update-before-and-after-my-assignment-date)
+If your organization uses network allowlisting or [IP restrictions](/docs/platform/secure/ip-restrictions), update the following before your assignment date so access isn't disrupted:
 
-If your organization uses network allowlisting, add your new access URL and your account's [API access URLs](/docs/platform/about-platform/access-regions-ip-addresses#api-access-urls) to your allowlist. For the access URL format in each region, refer to [Accessing your account](/docs/platform/about-platform/access-regions-ip-addresses#accessing-your-account). For single-tenant accounts, IP addresses don't change as part of this migration. For multi-tenant accounts, refer to [Access, Regions, & IP addresses](/docs/platform/about-platform/access-regions-ip-addresses) for updated IPs. If your account has [IP restrictions](/docs/platform/secure/ip-restrictions) enabled, review [Validating IP restrictions](#validating-ip-restrictions) before your assignment date.
+- **Allowlists** — add your new access URL and your account's [API access URLs](/docs/platform/about-platform/access-regions-ip-addresses#api-access-urls). For the URL format in each region, refer to [Accessing your account](/docs/platform/about-platform/access-regions-ip-addresses#accessing-your-account).
+- **IP addresses** — multi-tenant accounts have updated IPs. Refer to [Access, Regions, & IP addresses](/docs/platform/about-platform/access-regions-ip-addresses). Single-tenant IP addresses don't change.
+- **VPN, proxy, and firewall rules** — refer to [Validating IP restrictions](#validating-ip-restrictions) to test your new URL before the date.
 
-If your account uses inbound private connectivity (ingress PrivateLink), [dbt Support](mailto:support@getdbt.com) will contact you before your assignment with guidance for your configuration.
+
 :::
 
+If your account uses inbound private connectivity (ingress PrivateLink), [dbt Support](mailto:support@getdbt.com) will contact you before your assignment with guidance for your configuration.
 ## Migration timeline
 
 Accounts across all regions and service providers are being assigned new access URLs. Legacy region URLs will continue to support integrations until the end-of-support date for your account.
