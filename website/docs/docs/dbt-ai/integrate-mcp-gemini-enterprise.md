@@ -41,7 +41,7 @@ In Gemini Enterprise, the MCP server lives in a data store.
 
    <Lightbox src="/img/mcp/gemini-enterprise/gemini-add-custom-mcp-server.png" width="70%" title="The Custom MCP Server card on the Create data store page" />
 
-3. Select **OAuth 2.0**, then fill in the fields. Replace `YOUR_DBT_HOST_URL` with your host, with no `https://`.
+3. Select **OAuth 2.0**, then fill in the fields. Replace `YOUR_DBT_HOST_URL` with your host, without the `https://`. For example, if your host url is `abc123.us1.dbt.com`, you'd enter `https://abc123.us1.dbt.com/oauth/authorize` for Authorization URL.
 
    <SimpleTable>
    | Field | Value |
@@ -56,41 +56,25 @@ In Gemini Enterprise, the MCP server lives in a data store.
    | Use HTTP Basic Authentication | Leave the checkbox cleared |
    </SimpleTable>
 
-   For example, if your host is `abc123.us1.dbt.com`, enter these URLs:
-
-   ```text
-   MCP Server URL:    https://abc123.us1.dbt.com/api/ai/v1/mcp
-   Authorization URL: https://abc123.us1.dbt.com/oauth/authorize
-   Token URL:         https://abc123.us1.dbt.com/oauth/token
-   ```
-
    <Lightbox src="/img/mcp/gemini-enterprise/gemini-mcp-server-config.png" width="70%" title="The MCP Server Configuration form filled in for dbt" />
 
-4. Select **Verify auth**. A <Constant name="dbt_platform" /> window opens. Select **Allow access**.
-
+4. Once you click **Authorize**, it will open a separate window for you to allow Gemini access to <Constant name="dbt_platform" /> to perform the tasks and skills needed when communicating to the MCP. Select **Allow access**.
    <Lightbox src="/img/mcp/gemini-enterprise/gemini-authorize-dbt-window.png" width="70%" title="The dbt platform window asking you to authorize the Gemini Enterprise connector" />
-
 5. When you see **Successfully logged in**, select **Continue**.
-6. Under **Advanced options**, add a description for the server. Gemini Enterprise uses it to decide when to call the server. Select **Continue**.
-7. Choose a region and name the connector, then select **Create**.
+6. Once you allow access, click the first **Continue** button. Under **Advanced options**, add a description for the server. Gemini Enterprise uses it to decide when to call the server. Select **Continue**.
+7. On the next page, choose a `region` and `name` the connector, then select **Create**.
 
    <Lightbox src="/img/mcp/gemini-enterprise/gemini-configure-data-connector.png" width="70%" title="The data connector configuration with the region and connector name" />
 
-:::note
-Google may charge for a data store that isn't linked to a Gemini Enterprise app. You link it when you [create the app](#create-a-gemini-enterprise-app).
-:::
-
-Once the connector is created, **Connector state** shows **Active**. Its actions stay disabled until you turn them on.
+Once the connector is created, **Connector state** shows **Active**. Its actions stay disabled until you manually turn them on.
 
 ## Enable the dbt actions
 
-1. Open the connector and go to the **Actions** tab.
-2. Select **Reload custom actions**.
-
+1. In Gemini Enterprise, go to the connector and then the **Actions** tab.
+2. Select **Reload custom actions**, which will prompt a authorization request.
    <Lightbox src="/img/mcp/gemini-enterprise/gemini-reload-custom-actions.png" width="80%" title="The Actions tab with the Reload custom actions button" />
-
-3. In the <Constant name="dbt_platform" /> window, select **Allow access**. The dbt MCP tools load as **Disabled**.
-4. Select the actions you want, then select **Enable actions**.
+3. In the <Constant name="dbt_platform" /> window, select **Allow access**. The dbt MCP tools will then load as **Disabled**.
+4. Select the actions you want, then select **Enable actions**. Once enabled, your MCP connector is ready to be used within a Gemini App.
 
 <Lightbox src="/img/mcp/gemini-enterprise/gemini-enable-actions.png" width="80%" title="Selecting dbt MCP actions and enabling them" />
 
