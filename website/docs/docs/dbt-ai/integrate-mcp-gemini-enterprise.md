@@ -18,7 +18,7 @@ The connection uses OAuth. You register an app integration in <Constant name="db
 
 - A <Constant name="dbt_platform" /> account with a deployed production environment. Remote MCP reads your production metadata, so with no models or jobs, you get very little back. Refer to [Set up the remote MCP server](/docs/dbt-ai/setup-remote-mcp).
 - Admin access to **App integrations** in <Constant name="dbt_platform" />. Refer to [Connect apps with OAuth](/docs/platform/manage-access/connect-apps-oauth).
-- A Google Cloud account with access to Gemini Enterprise, where you can create data stores and apps.
+- A Google Cloud account with access to Gemini Enterprise, where you can create data stores and apps. You can get started by contacting Google Cloud sales, or try [Gemini Enterprise Plus edition at no cost for 30 days](https://console.cloud.google.com/freetrial?redirectPath=gemini-enterprise) without sales assistance.
 
 ## Register the app in dbt platform
 
@@ -83,6 +83,9 @@ For what each tool does, refer to [Available MCP tools](/docs/dbt-ai/mcp-availab
 
 1. In Gemini Enterprise, go to **Apps** and select **Create app**.
 2. Enter an app name, choose a location (**global** works if you have no preference), and enter your company name. Select **Create**.
+
+   <Lightbox src="/img/mcp/gemini-enterprise/gemini-create-app.png" width="70%" title="The Create app form with the app name, location, and company name" />
+
 3. On the **Overview** page, copy the web app URL. You use it to chat with Gemini.
 4. Go to **Connected data stores** and select **Add existing data stores**.
 5. Select the dbt MCP connector, then select **Connect**.
