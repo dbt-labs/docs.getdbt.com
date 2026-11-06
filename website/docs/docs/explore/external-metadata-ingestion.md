@@ -55,7 +55,6 @@ External metadata ingestion is now set per connection, under the **Platform meta
 6. In the **Features** section, choose which features use these credentials:
   - External metadata ingestion: Brings non-dbt tables, views, and other metadta into <Constant name="catalog"/>. This option appears only if the connection already had ingestion turned on.
   - Cost insights (optional): Shows warehouse cost and performance data in <Constant name="dbt_platform"/>.
-    - _Optional_: Enable additional features such as **Cost insights** in the **Features** section under **Platform metadata credentials**.
 7. Under **Catalog filters**, apply filters to restrict which metadata is ingested:
     - You can filter by **database**, **schema**, **table**, or **view**.
       - **Note:** To include all databases or schemas, enter `.*`  in the **Allow** field.
