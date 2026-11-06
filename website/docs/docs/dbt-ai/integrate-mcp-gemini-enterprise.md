@@ -25,11 +25,10 @@ The connection uses OAuth. You register an app integration in <Constant name="db
 1. In <Constant name="dbt_platform" />, go to **Account settings** → **Integrations** → **App integrations**.
 2. Copy your **MCP Endpoint URL** and note your host, for example `abc123.us1.dbt.com`. You use both in the next section.
 3. Select **+ Add integration**.
+   <Lightbox src="/img/mcp/gemini-enterprise/dbt-mcp-endpoint-and-add-integration.png" width="80%" title="The App integrations page, with the MCP Endpoint URL and the Add integration button" />
 4. Enter an integration name, such as `Gemini Enterprise connector`.
 5. Set the **Redirect URI** to `https://vertexaisearch.cloud.google.com/oauth-redirect`, then select **Create integration**.
 6. Copy the **Client ID**. The integration uses PKCE, so there's no client secret.
-
-<Lightbox src="/img/mcp/gemini-enterprise/dbt-mcp-endpoint-and-add-integration.png" width="80%" title="The App integrations page, with the MCP Endpoint URL and the Add integration button" />
 
 <Lightbox src="/img/mcp/gemini-enterprise/dbt-integration-client-id.png" width="80%" title="The registered integration, with its Client ID and the PKCE only note" />
 
