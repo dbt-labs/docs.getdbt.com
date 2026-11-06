@@ -21,6 +21,32 @@ function changelogUrlForVersion(version) {
   return `${CHANGELOG_BASE}#${versionToChangelogFragment(version)}`;
 }
 
+/**
+ * Nightly builds, alphas, betas, and release candidates (e.g. `2.1.0.dev20261105`,
+ * `2.1.0a1`, `2.1.0b1`, `2.1.0rc1`) have no section in CHANGELOG-dbt.md, so they
+ * aren't linked.
+ */
+function isPrereleaseVersion(version) {
+  return /(\.dev\d+|a\d+|b\d+|rc\d+)$/i.test(version.replace(/^v/i, ""));
+}
+
+function VersionLink({ version, className, title, children }) {
+  if (isPrereleaseVersion(version)) {
+    return <span className={className}>{children}</span>;
+  }
+  return (
+    <a
+      href={changelogUrlForVersion(version)}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={className}
+      title={title}
+    >
+      {children}
+    </a>
+  );
+}
+
 /** dbt versions that should show a “release candidate” label in the UI. */
 const FUSION_RELEASE_CANDIDATE_VERSIONS = new Set(["2.0.0-preview.173"]);
 
@@ -103,14 +129,12 @@ function VersionCards({ versions }) {
           <div key={channel} className={styles.versionCard}>
             <h4>{CHANNEL_LABELS[channel] || channel}</h4>
             <div className={styles.versionCardVersionRow}>
-              <a
-                href={changelogUrlForVersion(info.tag)}
-                target="_blank"
-                rel="noopener noreferrer"
+              <VersionLink
+                version={info.tag}
                 title="View this version in the dbt v2 changelog"
               >
                 <code>{info.tag}</code>
-              </a>
+              </VersionLink>
               <ReleaseCandidateLabel version={info.tag} />
             </div>
             <span className={styles.versionDate}>{info.date}</span> 
@@ -141,15 +165,13 @@ function ReleaseItem({ version, data }) {
   return (
     <div className={styles.releaseItem}>
       <div className={styles.releaseHeader}>
-        <a
-          href={changelogUrlForVersion(version)}
-          target="_blank"
-          rel="noopener noreferrer"
+        <VersionLink
+          version={version}
           className={styles.versionTag}
           title="View this release in the dbt v2 changelog"
         >
           {version}
-        </a>
+        </VersionLink>
         <ReleaseCandidateLabel version={version} />
         {data.known_bad ? (
           <span className={styles.badgeBad}>Known Bad</span>
