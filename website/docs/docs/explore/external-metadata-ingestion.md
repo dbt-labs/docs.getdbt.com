@@ -52,7 +52,9 @@ External metadata ingestion is now set per connection, under the **Platform meta
     - If you previously canceled and see **Add credentials**, click the button to reopen the form.
     - If you have multiple connections that reference the same account identifier, you will only be prompted to configure platform metadata ingestion for one of them. Other connections using the same account identifier will display a message indicating that platform metadata ingestion is already configured.
 5. Enter the necessary credentials. These should have warehouse-level visibility across relevant databases and schemas.
-6. When the **External metadata ingestion** checkbox is shown, metadata from this connection populates <Constant name="catalog" />.
+6. In the **Features** section, choose which features use these credentials:
+  - External metadata ingestion: Brings non-dbt tables, views, and other metadta into <Constant name="catalog"/>. This option appears only if the connection already had ingestion turned on.
+  - Cost insights (optional): Shows warehouse cost and performance data in <Constant name="dbt_platform"/>.
     - _Optional_: Enable additional features such as **Cost insights** in the **Features** section under **Platform metadata credentials**.
 7. Under **Catalog filters**, apply filters to restrict which metadata is ingested:
     - You can filter by **database**, **schema**, **table**, or **view**.
