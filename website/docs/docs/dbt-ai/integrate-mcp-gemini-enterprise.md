@@ -58,6 +58,9 @@ In Gemini Enterprise, the MCP server lives in a data store.
    <Lightbox src="/img/mcp/gemini-enterprise/gemini-mcp-server-config.png" width="70%" title="The MCP Server Configuration form filled in for dbt" />
 
 4. Select **Verify auth**. A <Constant name="dbt_platform" /> window opens. Select **Allow access**.
+
+   <Lightbox src="/img/mcp/gemini-enterprise/gemini-authorize-dbt-window.png" width="70%" title="The dbt platform window asking you to authorize the Gemini Enterprise connector" />
+
 5. When you see **Successfully logged in**, select **Continue**.
 6. Under **Advanced options**, add a description for the server. Gemini Enterprise uses it to decide when to call the server. Select **Continue**.
 7. Choose a region and name the connector, then select **Create**.
