@@ -21,7 +21,7 @@
   :local(.copyIcon) {
     width: 12px;
     height: 12px;
-    background-image: /* webpackIgnore: true */ url('/img/copy.png');
+    background-image: url('https://d2z3qofvp275uy.cloudfront.net/img/copy.png');
     background-size: contain;
     background-repeat: no-repeat;
     opacity: 0;
@@ -118,7 +118,7 @@ details[open] :local(.toggle)::before {
     display: inline-block;
     width: 12px;
     height: 12px;
-    background-image: /* webpackIgnore: true */ url('/img/copy.png');
+    background-image: url('https://d2z3qofvp275uy.cloudfront.net/img/copy.png');
     background-size: contain;
     background-repeat: no-repeat;
     opacity: 0; /* Start with icon hidden */
