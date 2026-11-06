@@ -32,12 +32,14 @@ When materializing a model as `table`, you may include several optional configs 
 
 ## Setting table properties
 
-A table property is a key-value pair stored in a table's metadata. Use the `tblproperties` config to set them on a model. The config works the same way on a table and on an incremental model.
+A table property is a key-value pair stored in a table's metadata. Use the `tblproperties` config to set them on a SQL model. The config works the same way on a table and on an incremental model.
 
 You might set a property for either of these reasons:
 
 - A file format reads specific keys that change how the table behaves. Each format documents its own keys for [Iceberg](https://iceberg.apache.org/docs/latest/configuration/#table-properties), [Delta Lake](https://docs.delta.io/latest/table-properties.html), and [Hudi](https://hudi.apache.org/docs/sql_ddl/#table-properties).
 - You want to attach your own label, such as the team that maintains the table.
+
+If you write the model in Python, dbt still creates the table, but it does not include these properties.
 
 dbt does not check the keys or values. It sends every value to Spark as text, so a number such as `90` is sent as `'90'`. Do not use `owner` for your own label. Spark reserves that name and rejects it.
 
