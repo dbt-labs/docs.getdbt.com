@@ -111,6 +111,8 @@ Gemini calls the dbt MCP tools and returns your projects and environments, with 
 
 <Lightbox src="/img/mcp/gemini-enterprise/gemini-list-projects-result.png" width="90%" title="Gemini Enterprise listing dbt projects and environments through the dbt MCP connector" />
 
+You can now use [42+ different tools](/docs/dbt-ai/about-mcp#supported-tools-by-mcp-server-type) supported by dbt through this Gemini app. The tools you see depend on your [plan](https://www.getdbt.com/pricing).
+
 ## Related docs
 
 - [Set up the remote MCP server](/docs/dbt-ai/setup-remote-mcp)
