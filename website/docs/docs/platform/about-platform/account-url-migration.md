@@ -35,6 +35,7 @@ If your organization uses network allowlisting or [IP restrictions](/docs/platfo
 :::
 
 If your account uses inbound private connectivity (ingress PrivateLink), [dbt Support](mailto:support@getdbt.com) will contact you before your assignment with guidance for your configuration.
+
 ## Migration timeline
 
 Accounts across all regions and service providers are being assigned new access URLs. Legacy region URLs will continue to support integrations until the end-of-support date for your account.
