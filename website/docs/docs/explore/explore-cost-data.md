@@ -47,10 +47,10 @@ To go to your project dashboard, select your project in the main menu and click 
 
 The project dashboard displays the following metrics that summarize the overall cost and optimization impact for your project:
 
-- **Total cost reduction**
-- **Total % reduction**
-- **Total query run time reduction**
-- **Reused assets**
+- **Total cost reduction**: The amount you saved by reusing assets instead of rebuilding them in the selected environment. dbt multiplies each asset's reuse count by its average cost per build, then adds up the results.
+- **Total % reduction**: The percentage you saved compared to what you would have paid without reuse. dbt calculates this as `(cost without reuse − actual cost) / cost without reuse = total % reduction`.
+- **Total query run time reduction**: The overall query time you saved by reusing assets instead of rebuilding them. dbt multiplies each asset's reuse count by its average query time per build, then totals the results.
+- **Reused assets**: The total number of times dbt reused the selected asset types in the selected environment and time frame. By default, this includes models and tests.
 
 ### Filters
 
