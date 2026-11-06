@@ -25,7 +25,7 @@ dbt Labs is committed to protecting your privacy and data. This page provides in
 
 Use <Constant name="wizard" /> to investigate lineage and downstream impact, generate or refactor SQL from natural-language prompts, create [documentation](/docs/build/documentation), [data tests](/docs/build/data-tests), [metrics](/docs/build/metrics-overview), and [semantic models](/docs/build/semantic-models), and validate changes with warehouse awareness.
 
-In the <Constant name="dbt_platform" />, <Constant name="wizard" /> is available in the [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-studio-ai) and the [<Constant name="wizard" /> home tab](/docs/platform/wizard-home). dbt Copilot is available in [<Constant name="canvas" />](/docs/platform/use-canvas) and [<Constant name="insights" />](/docs/explore/dbt-insights).
+In the <Constant name="dbt_platform" />, <Constant name="wizard" /> is available in the [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-studio-ai) and the [<Constant name="wizard" /> home tab](/docs/platform/wizard-home). dbt Copilot is available in [<Constant name="insights" />](/docs/explore/dbt-insights).
 
 In the CLI, you can use <Constant name="wizard" /> from your terminal for local development workflows.
 
@@ -69,7 +69,7 @@ No, <Constant name="wizard" /> and dbt Copilot are separate products.
 
 <Constant name="wizard" /> is the latest and next generation of agentic product available in the <Constant name="dbt_platform" /> and as a CLI. It uses your project context to help you develop governed dbt changes faster. Think of it like a smart AI agent that has a map of your project. Instead of having to read through each file and understand the context, it can answer questions and help you develop _and_ validate your changes faster.
 
-dbt Copilot features for those who have access to them, include quick-action buttons in <Constant name="studio_ide" />, the Copilot pane in <Constant name="insights" /> and <Constant name="canvas" />.
+dbt Copilot features for those who have access to them, include quick-action buttons in <Constant name="studio_ide" /> and the Copilot pane in <Constant name="insights" />.
 
 </Expandable>
 
@@ -224,11 +224,5 @@ We recommend the following URLs to be allowlisted:
 - `/api/ide/accounts/${accountId}/develop/${developId}/ai/generate_inline`
 - `/api/ide/accounts/${accountId}/develop/${developId}/ai/generate_metrics/...`
 - `/api/ide/accounts/${accountId}/develop/${developId}/ai/track_response`
-
-**For dbt Copilot in Canvas**:
-
-- `/api/private/visual-editor/v1/ai/llm-generate`
-- `/api/private/visual-editor/v1/ai/track-response`
-- `/api/private/visual-editor/v1/files/${fileId}/llm-generate-dag-through-chat`
 
 </Expandable>
