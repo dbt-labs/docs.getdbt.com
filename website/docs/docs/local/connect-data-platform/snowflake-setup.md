@@ -520,7 +520,7 @@ my-snowflake-db:
 
 </File>
 
-For AWS, Azure, or GCP, use the same configuration, change the `workload_identity_provider` value, and omit `token`.
+For AWS, Azure, or GCP, use the same configuration, but change the `workload_identity_provider` value and omit `token`.
 
 </VersionBlock>
 
