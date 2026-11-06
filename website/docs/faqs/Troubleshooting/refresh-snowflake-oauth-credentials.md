@@ -14,7 +14,7 @@ To resolve the issue, complete the following steps:
 2. Navigate to **Credentials** and then choose the project where you're experiencing the issue.
 3. Under **User credentials**, click the **Reconnect Snowflake Account** button. This reconnects you through your SSO workflow.
 
-Your Snowflake administrator can [configure the refresh token validity period](/docs/platform/manage-access/set-up-snowflake-oauth#create-a-security-integration). Snowflake's default is 90 days.
+Your Snowflake administrator can [configure the refresh token validity period](/docs/platform/manage-access/set-up-snowflake-oauth#create-a-security-integration). Snowflake's default and maximum are both 90 days.
 
 If reconnecting works but the next command fails with the same error, or you get `http status: 400` on `/oauth/token-request`, ask your Snowflake administrator to check whether `OAUTH_SINGLE_USE_REFRESH_TOKENS_REQUIRED` is `TRUE` on the security integration. It needs to be `FALSE`, because <Constant name="dbt" /> doesn't currently store the replacement token Snowflake issues when it's on. After they change it, click **Reconnect Snowflake Account** again. For the admin steps, refer to [Authentication has expired after authorizing](/docs/platform/manage-access/set-up-snowflake-oauth#authentication-has-expired-after-authorizing).
 

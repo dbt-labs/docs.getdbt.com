@@ -53,7 +53,11 @@ In the following `CREATE OR REPLACE SECURITY INTEGRATION` example query, replace
 
 Important: If you’re using secondary roles, you must include `OAUTH_USE_SECONDARY_ROLES = 'IMPLICIT';` in the statement.
 
-Snowflake uses a refresh token to keep users signed in. With `OAUTH_SINGLE_USE_REFRESH_TOKENS_REQUIRED` set to `TRUE`, each refresh token works only once and Snowflake issues a replacement. Some security baselines recommend enabling this. For <Constant name="dbt" />, leave it at `FALSE` (the Snowflake default), because <Constant name="dbt" /> doesn't currently store the replacement token. If you turn it on, authorization succeeds, then the next command fails and users have to re-authorize. If that's already happening, refer to [Authentication has expired after authorizing](#authentication-has-expired-after-authorizing).
+:::caution Single-use refresh tokens
+Leave `OAUTH_SINGLE_USE_REFRESH_TOKENS_REQUIRED` at `FALSE` (the Snowflake default). Setting it to `TRUE` makes authorization succeed once, then later commands fail, because <Constant name="dbt" /> doesn't currently store the replacement token.
+:::
+
+Snowflake uses a refresh token to keep users signed in. With this setting on, each refresh token works only once and Snowflake issues a replacement. Some security baselines recommend enabling it. If that's already happening, refer to [Authentication has expired after authorizing](#authentication-has-expired-after-authorizing).
 
 ```sql
 CREATE OR REPLACE SECURITY INTEGRATION DBT_CLOUD
@@ -184,7 +188,7 @@ For the full query example, see [Create a security integration](#create-a-securi
 
 <Expandable alt_header="Authentication has expired after authorizing">
 
-If you can authorize Snowflake in <Constant name="dbt" /> but the next command fails with `This error occurs when authentication has expired` or `http status: 400` on `/oauth/token-request`, check the security integration:
+If you can authorize Snowflake in <Constant name="dbt" /> but the next command fails with `This error occurs when authentication has expired` or `http status: 400` on `/oauth/token-request`, check the security integration in Snowflake:
 
 ```sql
 DESCRIBE SECURITY INTEGRATION <INTEGRATION_NAME>;
