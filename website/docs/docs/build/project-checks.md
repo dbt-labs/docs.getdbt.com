@@ -148,6 +148,13 @@ Checks run with `dbt check` and `dbt build`.
 | `dbt build` | Runs all enabled checks before models compile. A failing check stops the run before any model is compiled or executed. Warn failures are reported and the build continues. Use `--skip-checks` to bypass. |
 </SimpleTable>
 
+By default, `dbt check` shows up to 10 violation rows per check. Use the [`--limit` flag](/reference/commands/check#--limit) to change how many violation rows are shown. You can pass `-1` to see all violations at once.
+
+```shell
+dbt check --limit 50     # show up to 50 violations per check
+dbt check --limit -1     # show all violations
+```
+
 ## Skipping checks on build
 
 To skip all checks, pass the [`--skip-checks` flag](/reference/commands/build?version=2#the---skip-checks-flag) to `dbt build`.
