@@ -74,6 +74,8 @@ In Gemini Enterprise, the MCP server lives in a data store.
 6. Under **Advanced options**, add a description for the server. Gemini Enterprise uses it to decide when to call the server. Select **Continue**.
 7. Choose a region and name the connector, then select **Create**.
 
+   <Lightbox src="/img/mcp/gemini-enterprise/gemini-configure-data-connector.png" width="70%" title="The data connector configuration with the region and connector name" />
+
 :::note
 Google may charge for a data store that isn't linked to a Gemini Enterprise app. You link it when you [create the app](#create-a-gemini-enterprise-app).
 :::
