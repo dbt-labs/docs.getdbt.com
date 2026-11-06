@@ -36,10 +36,10 @@ These credentials are configured separately from dbt environment credentials and
 
 ## Configuration instructions
 
-:::note
+:::note  Changes to external metadata ingestion toggle
 The **Ingest external metadata in dbt <Constant name="catalog" /> (formerly dbt Explorer)** toggle has been removed from **Account settings**.
 
-The **External metadata ingestion** checkbox is in **Platform metadata credentials** on a connection. It appears only when that connection already has ingestion turned on. A connection that never had it on does not show the checkbox, so you cannot turn ingestion on for it.
+External metadata ingestion is now set per connection, under the **Platform metadata credentials** section in the **Connections** configuration. The **External metadata ingestion** checkbox appears only on connections that already had ingestion turned on.
 :::
 
 ### Configure the warehouse connection
