@@ -88,8 +88,16 @@ For what each tool does, refer to [Available MCP tools](/docs/dbt-ai/mcp-availab
    <Lightbox src="/img/mcp/gemini-enterprise/gemini-create-app.png" width="70%" title="The Create app form with the app name, location, and company name" />
 
 3. On the **Overview** page, copy the web app URL. You use it to chat with Gemini.
+
+   <Lightbox src="/img/mcp/gemini-enterprise/gemini-app-overview.png" width="70%" title="The app Overview page with the web app URL" />
+
 4. Go to **Connected data stores** and select **Add existing data stores**.
+
+   <Lightbox src="/img/mcp/gemini-enterprise/gemini-add-existing-data-stores.png" width="70%" title="The Connected data stores page with the Add existing data stores button" />
+
 5. Select the dbt MCP connector, then select **Connect**.
+
+   <Lightbox src="/img/mcp/gemini-enterprise/gemini-connect-existing-data-store.png" width="70%" title="Selecting the dbt MCP connector in the Connect an existing data store dialog" />
 
 ## Use dbt MCP from Gemini
 
