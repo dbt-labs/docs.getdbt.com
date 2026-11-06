@@ -54,6 +54,14 @@ In Gemini Enterprise, the MCP server lives in a data store.
    | Enable PKCE Support | Select the checkbox |
    | Use HTTP Basic Authentication | Leave the checkbox cleared |
 
+   For example, if your host is `abc123.us1.dbt.com`, enter these URLs:
+
+   ```text
+   MCP Server URL:    https://abc123.us1.dbt.com/api/ai/v1/mcp
+   Authorization URL: https://abc123.us1.dbt.com/oauth/authorize
+   Token URL:         https://abc123.us1.dbt.com/oauth/token
+   ```
+
    <Lightbox src="/img/mcp/gemini-enterprise/gemini-mcp-server-config.png" width="70%" title="The MCP Server Configuration form filled in for dbt" />
 
 4. Select **Verify auth**. A <Constant name="dbt_platform" /> window opens. Select **Allow access**.
