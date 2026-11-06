@@ -242,7 +242,7 @@ on customer_id. Filter to the last 30 days for preview only.
 
 Fast-track your semantic layer strategy with AI-generated YAML using <Constant name="wizard" />.
 
-<Constant name="dbt_platform" /> provides built-in generation buttons that automatically  [generate code](/docs/dbt-ai/wizard-ide), [documentation](/docs/build/documentation), [data tests](/docs/build/data-tests), [metrics](/docs/build/metrics-overview), and [semantic models](/docs/build/semantic-models) for you with the click of a button in the [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-studio-ai), [<Constant name="canvas" />](/docs/platform/build-canvas-copilot), and [<Constant name="insights" />](/docs/explore/dbt-insights).
+<Constant name="dbt_platform" /> provides built-in generation buttons that automatically  [generate code](/docs/dbt-ai/wizard-ide), [documentation](/docs/build/documentation), [data tests](/docs/build/data-tests), [metrics](/docs/build/metrics-overview), and [semantic models](/docs/build/semantic-models) for you with the click of a button in the [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-studio-ai) and [<Constant name="insights" />](/docs/explore/dbt-insights).
 
 These features understand your model's structure and generate YAML in the correct location.
 

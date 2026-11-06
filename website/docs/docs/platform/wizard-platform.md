@@ -97,7 +97,7 @@ To choose a provider or bring your own key, refer to [Manage AI features](/docs/
 
 <Constant name="dbt_platform" /> also has AI features that work separately from <Constant name="wizard" />:
 
-- [dbt Copilot](/docs/dbt-ai/copilot-overview) generates SQL, documentation, tests, and semantic models in one click in <Constant name="studio_ide" />, <Constant name="canvas" />, and <Constant name="insights" />.
+- [dbt Copilot](/docs/dbt-ai/copilot-overview) generates SQL, documentation, tests, and semantic models in one click in <Constant name="studio_ide" /> or <Constant name="insights" />.
 - The [dbt Support Assistant](/docs/dbt-support?version=2#ask-dbt-support-assistant) answers product questions and helps you open a ticket. Contact the [dbt Support team](mailto:support@getdbt.com) for more info.
 
 <Expandable alt_header="What's the difference between dbt Wizard and dbt Copilot?">

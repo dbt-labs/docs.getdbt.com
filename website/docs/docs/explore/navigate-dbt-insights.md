@@ -37,7 +37,7 @@ The Query console menu is located at the top right of the Query editor. It conta
   - When you click **Bookmark**, a **Bookmark Query Details** modal (pop up box) will appear where you can add a **Title** and **Description**.
   - Let dbt Copilot do the writing for you &mdash; use the AI assistant to automatically generate a helpful description for your bookmark.
   - Access the newly created bookmark from the **Bookmark** icon in the [Query console sidebar menu](#query-console-sidebar-menu). 
- - **Develop**: Open the [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio) or [<Constant name="canvas" />](/docs/platform/canvas) to continue editing your SQL query.
+ - **Develop**: Open the [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio) to continue editing your SQL query.
 - **Run** button &mdash; Run your SQL query and view the results in the **Data** tab.
 
 ## Semantic Layer querying

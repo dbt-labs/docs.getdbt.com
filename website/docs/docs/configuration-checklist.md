@@ -35,7 +35,6 @@ The dbt platform supports [global connections](/docs/platform/connect-data-platf
 - [ ] dbt models are primarily written as [SELECT statements](/docs/build/sql-models), so an early step for measuring success is having a developer run a simple select statement in the IDE and validating the results. 
     - [ ] You can also verify the connection by running basic SQL queries using [dbt Insights](/docs/explore/access-dbt-insights).
 - [ ] Create a single model and ensure that you can [run it](/reference/dbt-commands) successfully. 
-    - [ ] For an easy to use drag-and-drop interface, try creating it with [dbt Canvas](/docs/platform/canvas).
 - [ ] Create a service account with proper access for your [production jobs](/docs/deploy/jobs).
 
 ## Git configuration

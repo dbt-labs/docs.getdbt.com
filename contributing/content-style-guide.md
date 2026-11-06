@@ -58,7 +58,6 @@ Plan tiers (capitalize): Developer, Starter, Enterprise, Enterprise+
 
 **Capitalize these product names:**
 - Studio IDE
-- Canvas
 - Insights
 - Catalog
 - dbt Mesh

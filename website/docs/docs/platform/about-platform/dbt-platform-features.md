@@ -32,12 +32,6 @@ In addition to providing a hosted architecture for running dbt across your organ
     icon="dbt-bit"/>
 
 <Card
-    title="dbt Canvas"
-    body="Develop with Canvas, a seamless drag-and-drop experience that helps analysts quickly create and visualize dbt models in dbt."
-    link="/docs/platform/canvas"
-    icon="dbt-bit"/>
-
-<Card
     title="dbt Wizard*"
     body="dbt Wizard is an AI agent that helps teams ship higher-quality dbt changes faster and with less risk. Built for governed data development in dbt, dbt Wizard has full project context and assesses how changes impact the projects."
     link="/docs/platform/wizard-overview"

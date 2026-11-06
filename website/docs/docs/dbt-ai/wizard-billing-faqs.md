@@ -32,7 +32,7 @@ The following surfaces are on by default:
 
 - <Constant name="wizard" /> in <Constant name="studio_ide" />
 - <Constant name="wizard" /> home tab
-- dbt Copilot in <Constant name="dbt_platform"/> (includes Canvas and Insights).
+- dbt Copilot in <Constant name="dbt_platform"/>.
 - Any future dbt AI features will automatically become available as well.           
 </Expandable>
 
