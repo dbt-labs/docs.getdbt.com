@@ -43,6 +43,7 @@ In Gemini Enterprise, the MCP server lives in a data store.
 
 3. Select **OAuth 2.0**, then fill in the fields. Replace `YOUR_DBT_HOST_URL` with your host, with no `https://`.
 
+   <SimpleTable>
    | Field | Value |
    | --- | --- |
    | MCP Server URL | Your **MCP Endpoint URL** from the previous section |
@@ -53,6 +54,7 @@ In Gemini Enterprise, the MCP server lives in a data store.
    | Scopes | `user_access` |
    | Enable PKCE Support | Select the checkbox |
    | Use HTTP Basic Authentication | Leave the checkbox cleared |
+   </SimpleTable>
 
    For example, if your host is `abc123.us1.dbt.com`, enter these URLs:
 
