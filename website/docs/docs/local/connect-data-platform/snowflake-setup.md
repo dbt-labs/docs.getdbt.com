@@ -236,7 +236,7 @@ default:
 
 </File>
 
-For AWS, Azure, or GCP, use the same configuration, change the `workload_identity_provider` value, and omit `token`. AWS, Azure, and GCP only work when dbt is running in that cloud environment.
+For AWS, Azure, or GCP, use the same configuration, but change the `workload_identity_provider` value and omit `token`. AWS, Azure, and GCP only work when dbt is running in that cloud environment.
 
 </TabItem>
 
