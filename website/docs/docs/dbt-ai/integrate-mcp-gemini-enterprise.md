@@ -75,6 +75,9 @@ Once the connector is created, **Connector state** shows **Active**. Its actions
 
 1. Open the connector and go to the **Actions** tab.
 2. Select **Reload custom actions**.
+
+   <Lightbox src="/img/mcp/gemini-enterprise/gemini-reload-custom-actions.png" width="80%" title="The Actions tab with the Reload custom actions button" />
+
 3. In the <Constant name="dbt_platform" /> window, select **Allow access**. The dbt MCP tools load as **Disabled**.
 4. Select the actions you want, then select **Enable actions**.
 
