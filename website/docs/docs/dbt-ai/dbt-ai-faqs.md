@@ -146,7 +146,7 @@ This section covers <Constant name="wizard" /> in the <Constant name="dbt_platfo
 
 <Constant name="wizard" /> can run dbt commands and queries on your behalf, and every query needs your explicit permission first. When a query runs, <Constant name="wizard" /> sends those results &mdash; which may include row-level data &mdash; to the AI provider so it can respond in your session.
 
-For dbt-<Term id="managed"/> AI providers, we have zero data retention (ZDR) agreements in place that prevents the provider from retaining or using this data for training. If you bring your own AI provider (BYOK), that provider's terms will govern retention and training. Always review AI output for accuracy.
+For dbt-<Term id="managed"/> AI providers, we have agreements in place that prevent the provider from using this data for training, and have limited retention. If you bring your own AI provider (BYOK), that provider's terms will govern retention and training. Always review AI output for accuracy.
 
 Refer to [Model Provider Rate table](https://www.getdbt.com/legal/dbt-wizard-token-costs-by-model) and [Service Consumption Table](https://www.getdbt.com/legal/service-consumption-table) for more information.
 
@@ -162,7 +162,7 @@ You control the information you submit to <Constant name="wizard" />. dbt Labs d
 
 <Expandable alt_header="Is my data used by dbt Labs to train AI models?">
 
-No. dbt Labs does not use customer content processed by <Constant name="wizard" /> &mdash; including warehouse query results, prompts, or conversation history &mdash; for AI model training. A zero data retention (ZDR) policy is also in place with AI providers, which prevents training on the provider side as well.
+No. dbt Labs does not use customer content processed by <Constant name="wizard" /> &mdash; including warehouse query results, prompts, or conversation history &mdash; for AI model training. Our terms with AI providers prevent training on the provider side as well.
 
 </Expandable>
 
