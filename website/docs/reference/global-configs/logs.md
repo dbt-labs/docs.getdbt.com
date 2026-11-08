@@ -102,6 +102,20 @@ When the `LOG_FORMAT` is set explicitly, it will take effect in both the console
 
 </VersionBlock>
 
+<VersionBlock lastVersion="1.99">
+
+The format also determines how timestamps are written. The time zone, whether the timestamp is aware or naive (includes a UTC offset or not), and the precision depend on the log format:
+
+| Log format | Time zone | Aware vs. naive | Precision |
+|------------|-----------|-----------------|-----------|
+| `text`     | UTC       | Naive           | Second    |
+| `debug`    | System local time zone | Naive | Microsecond |
+| `json`     | UTC       | Aware (the `ts` value ends in `Z`) | Microsecond |
+
+Because the log file uses the `debug` format by default, its timestamps are in the system's local time zone unless you set `LOG_FORMAT_FILE` to `json` or `text`.
+
+</VersionBlock>
+
 <VersionBlock firstVersion="2.0">
 
 When the `LOG_FORMAT` is set explicitly to `text`, `json`, or `default`, it takes effect in both the console and log files. The `otel` value applies to console output only. Use `LOG_FORMAT_FILE` to set a different format for the log file (`text`, `json`, or `default`).
