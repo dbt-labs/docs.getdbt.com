@@ -32,7 +32,9 @@ Start a new [chat or session](/best-practices/how-to-use-wizard/wizard-1-intro#u
     - [Validate before shipping](#validate-before-shipping)
     - [Add a semantic model](#add-a-semantic-model)
 
-The everyday tasks work the same across surfaces &mdash; the [CLI](/docs/dbt-ai/wizard-cli), the [Wizard Desktop](/docs/dbt-ai/wizard-desktop), and <Constant name="wizard" /> in [<Constant name="dbt_platform" />](/docs/platform/wizard-platform). Featured scenarios marked **Wizard Desktop only** use features that live in the app. For examples specific to the Studio IDE, refer to the [Prompt cookbook](/guides/prompt-cookbook). To use <Constant name="wizard" /> in the CLI, use the `wizard` [command reference](/docs/dbt-ai/wizard-cli-reference).
+The everyday tasks work the same across surfaces &mdash; the [CLI](/docs/dbt-ai/wizard-cli), the [Wizard Desktop](/docs/dbt-ai/wizard-desktop), and <Constant name="wizard" /> in [<Constant name="dbt_platform" />](/docs/platform/wizard-platform).
+
+Each scenario recommends where to best use Wizard. For examples specific to the Studio IDE, refer to the [Prompt cookbook](/guides/prompt-cookbook). To use <Constant name="wizard" /> in the CLI, use the `wizard` [command reference](/docs/dbt-ai/wizard-cli-reference).
 
 
 :::tip Best practices for using dbt Wizard
