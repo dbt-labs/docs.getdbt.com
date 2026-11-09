@@ -18,7 +18,7 @@ AI agents are new readers that can now use that detail, but they can only be as 
 
 You'll walk away able to turn a pile of raw text into context an agent can search, cite, and trust. Each recommendation comes with an example and a _why_, so you can decide when to deviate.
 
-Here's the whole idea in one picture. Text is split into chunks, each chunk becomes numbers that capture its meaning, and a question finds the chunks closest to it. The numbers and chunks are made up, and the map is simplified: real embeddings have hundreds of dimensions, not two.
+Here's the whole idea in one picture. Text is split into chunks, each chunk becomes numbers that capture its meaning, and a question finds the chunks closest to it. The numbers and chunks in the following diagram are made up amd is simplified: embeddings for reals have hundreds of dimensions, not two.
 
 <Lightbox src="/img/best-practices/context-engineering/pipeline.svg" width="100%" title="A call transcript is chunked, embedded as numbers, and placed on a map where similar meanings sit close together. A question lands on the same map, and the closest chunks come back with a score and a source." />
 
