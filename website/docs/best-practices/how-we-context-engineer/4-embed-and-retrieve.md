@@ -6,7 +6,7 @@ displayText: Embed and retrieve
 hoverSnippet: Learn how to make text searchable by meaning and keep it fresh.
 ---
 
-Your text is chunked and traceable. Now you make it searchable by meaning, so an agent can find the right piece without knowing the exact words. Run chunk → embed → search first. Classifying chunks is the precision step on top, and we cover it in [Enrich with AI](/best-practices/how-we-context-engineer/5-enrich-with-ai).
+Now that your text is chunked and traceable, let's make it searchable by meaning so an agent can find the right piece without knowing the exact words. 
 
 In this section, you'll learn how to:
 
@@ -21,9 +21,9 @@ Stuck on a term? Check the [glossary](/best-practices/how-we-context-engineer/8-
 
 An **embedding** is a list of numbers, called a **vector**, that captures what a piece of text means. Texts with similar meaning get similar numbers. That's what lets a search for "renewal risk" find a chunk that says "the customer is worried about resigning," even though they share no words.
 
-Here's what that looks like. Each chunk becomes a vector. We show three numbers per chunk to keep it readable. Real vectors have hundreds (for example, 768 for `snowflake-arctic-embed-m-v1.5`), and the values below are made up for illustration.
+Here's what that looks like. Each chunk becomes a vector. We show three numbers per chunk to keep it readable. Real vectors have hundreds (for example, 768 for `snowflake-arctic-embed-m-v1.5`), and the values in this guide are made up ([fugazi](https://www.urbandictionary.com/define.php?term=fugazi) one would say) for illustration.
 
-When you search for "renewal risk," the question gets embedded too (here, `[0.80, -0.10, 0.42, …]`), and every chunk gets a **cosine similarity** score against it: 1.0 means the same direction, and -1.0 means the opposite.
+So when you search for "renewal risk," the question gets embedded too (here, `[0.80, -0.10, 0.42, …]`), and every chunk gets a **cosine similarity** score against it: 1.0 means the same direction, and -1.0 means the opposite.
 
 <SimpleTable>
 
@@ -39,23 +39,22 @@ You can't read meaning off the numbers by eye. What matters is how close two vec
 
 ### Treat embeddings as derived assets
 
-Vectors have one rule that ordinary columns don't: **they're only comparable to vectors from the same model.** Two models place meaning in different spaces, so similarity between their vectors is meaningless. This is the sharpest edge in the whole practice, and it drives most of our recommendations:
+An embedding only matches embeddings from the same model. Each model arranges meaning differently, so comparing embeddings from two models gives meaningless scores. This is the biggest gotcha in the practice, and it drives three rules:
 
-- **Pin one embedding model for the whole corpus.** Never mix models in one searchable set.
-- **Embed your query with the same model as your corpus.** A query vector from a different model returns confidently wrong results.
-- **Set the model explicitly in configuration.** A floating alias can quietly resolve to a new snapshot. In the package, that's the `embedding_model` var.
+- Use one embedding model for the whole corpus. Never mix models in one searchable set.
+- Embed your question with the same model as your chunks. A different model returns confidently wrong results.
+- Set the model explicitly in your config, with the `embedding_model` var. A floating alias like "latest" can quietly switch to a new version.
 
-Embedding costs money, so you'll want to refresh vectors incrementally. We cover that in [Keep embeddings fresh](#keep-embeddings-fresh), once you have search working.
+Embedding costs money, so refresh only what changed. [Keep embeddings fresh](#keep-embeddings-fresh) covers how, once you have search working.
 
 ## Retrieve by meaning
+Retrieval is how an agent finds what it needs: given a question, it returns the most relevant chunks. It takes three steps:
 
-Retrieval is the read side of context engineering: given a question, find the most relevant chunks. It takes three steps:
+1. Turn the question into an embedding, using the same model as your chunks.
+2. Score every chunk by how close its meaning is to the question (cosine similarity).
+3. Return the highest-scoring chunks, usually the top 10.
 
-1. **Embed the query** into the same vector space as your corpus.
-2. **Score** every chunk by its cosine similarity to the query.
-3. **Return** the highest-scoring chunks, usually the top 10.
-
-In the package, that's one macro, `vector_search`. It returns the id and columns you ask for, plus a `score`:
+In the package, the `embed()` macro handles step 1, and the `vector_search` macro handles steps 2 and 3. It returns the columns you ask for, plus a `score`. The `filter` limits the search to one account's rows:
 
 <File name="models/context/ai/search.sql">
 
@@ -73,36 +72,39 @@ In the package, that's one macro, `vector_search`. It returns the id and columns
 
 </File>
 
-Retrieval is the contract with your agent. A chunk earns its place by being similar, filterable, and traceable, so the agent can cite a source instead of paraphrasing one.
+A good chunk is similar to the question, filterable, and traceable to its source. That's what lets an agent cite a source instead of paraphrasing one.
 
 ### Pick how to search
 
 There are two ways to rank:
 
 <SimpleTable>
-
-| Approach | How it works | Best for |
-|----------|--------------|----------|
-| Brute force | Compare the query to every row and sort. Exact, plain SQL. | Thousands to low millions of rows |
-| Vector index | A specialized structure or service that returns approximate matches fast | Very large corpora |
+| Approach     | How it works                                                     | Best for                          |
+|--------------|------------------------------------------------------------------|-----------------------------------|
+| Brute force  | Compares the question to every row and sorts. Exact, plain SQL.  | Thousands to low millions of rows |
+| Vector index | A separate service that finds approximate matches fast           | Very large corpora                |
 
 </SimpleTable>
 
-We recommend **brute force by default**. It works on the table you already have, with nothing new to provision or pay for, and the vector is an ordinary column, so it inherits your tests and lineage. For most real corpora, a linear scan is fast enough.
+Start with brute force. It runs on the table you already have, with nothing new to set up or pay for. The embedding is an ordinary column, so your tests and lineage already cover it. For most corpora, scanning every row is fast enough.
 
-An index is a deliberate opt-in <Lifecycle status="beta" />. It's a long-lived, separately billed service that charges even when nobody queries it, and dbt manages tables, not services. If you outgrow brute force, create it as an operation, never as a model, and drop it yourself when you're done. On Databricks, you create it through its API.
+An index is optional and in beta. It's a separate service that bills even when no one is searching, and dbt builds tables, not services. If you outgrow brute force:
+
+- Create it with `dbt run-operation` (the package's `create_vector_index` macro), not as a model.
+- Drop it yourself when you're done.
+- On Databricks, you create it through its Vector Search API.
 
 To scope a search to one customer, filter before you rank, as the `filter` argument above does.
 
 ## Embedding buys recall. Classification buys precision.
 
-Semantic search finds text that means something like your query. That isn't the same as finding the text you needed. **Recall** is whether search finds the right chunk at all. **Precision** is whether the right chunk ranks near the top.
+Semantic search finds text that means something like your question, but not always the text you needed. **Recall** is whether search finds the right chunk at all. **Precision** is whether the right chunk ranks near the top.
 
-We ran plain similarity search on a realistic multi-source corpus and asked, "late deliveries and what is driving them." The highest-scoring chunk for the account was six tokens long: a trailing fragment reading "Reviewed with dispatch." Most of the rest of the top 10 was boilerplate and routine check-ins. The quarterly business reviews that documented the real root cause never made the list.
+We ran plain similarity search on a realistic multi-source corpus and asked, "late deliveries and what is driving them." The top-scoring chunk for the account was six tokens long: "Reviewed with dispatch." Most of the rest of the top 10 was boilerplate and routine check-ins. The quarterly business reviews that documented the real root cause never made the list.
 
-The cause is structural, not a tuning problem. Short, formulaic text sits near the center of embedding space, so it scores respectably against almost any query. Recall was fine. Precision wasn't.
+The cause is structural, not a tuning problem. Short, formulaic text sits near the center of embedding space, so it scores decently against almost any question. Recall was fine 🙂. Precision wasn't 🙁.
 
-**Classification closes the gap.** Give each chunk one label, then filter the search to the category your question is about. You don't need it to get started: run chunk → embed → search first, and what you see is exactly why you'll want it. We cover how in [Enrich with AI](/best-practices/how-we-context-engineer/5-enrich-with-ai).
+By adding classification, that now closes the gap! Give each chunk one label, then filter the search to the category your question is about. You don't need it to get started. Run chunk → embed → search first, and what you see is exactly why you'll want it. [Enrich with AI](/best-practices/how-we-context-engineer/5-enrich-with-ai) covers how.
 
 ## Combine sources into a knowledge base
 
@@ -148,23 +150,23 @@ In the package, you list each source and say which of its columns map to the sha
 
 Our recommendations:
 
-- **Make adding a source a small change to the knowledge base.** Each new source needs one mapping like the ones above, which is a one-line change here. The source still needs its own prepare and embed models (and a classify model, if you classify), as `jaffle-logistics` shows. If adding a source means rewriting your search, people won't do it.
-- **Carry lineage on every row.** A hit can come from any system, so "which system and which row" must travel with it into every result.
-- **Give the citation link and the label their own columns.** Consumers depend on them, so they're always there, and `null` when a source has no link.
+- **Keep adding a source small.** A new source needs one entry plus its own prepare and embed models (and a classify model, if you classify), as `jaffle-logistics` shows. If adding a source means rewriting your search, people won't do it.
+- **Carry lineage on every row.** Each result should say which system and row it came from.
+- **Give the citation link and the label their own columns.** They're always there, and `null` when a source has none.
 
 ## Keep embeddings fresh
 
-You can skip this section on a first pass. Come back to it once you're re-running builds and want to stop paying to re-embed text that hasn't changed.
+You can skip this section on a first pass and come back to it once you're re-running builds and want to stop paying to re-embed text that hasn't changed.
 
-An embedding goes stale when anything on the input side changes: the text, the model, or the settings. Embedding costs money, so you don't want to re-embed a row you've already processed. That makes an incremental model the natural fit. The [`dbt_context_engineering` package](https://github.com/dbt-labs/dbt-context-engineering) builds these practices in, and each recommendation below names the macro or var that does it.
+An embedding goes stale when anything on the input side changes: the text, the model, or the settings. Embedding costs money, so you really don't want to re-embed a row you've already processed. That makes an incremental model the natural fit. The [`dbt_context_engineering` package](https://github.com/dbt-labs/dbt-context-engineering) builds these practices in, and each recommendation in the next section names the macro or var that does it.
 
-:::tip
+:::tip Accessing the `var` list
+
 Browse the package's [`macros` folder](https://github.com/dbt-labs/dbt-context-engineering/tree/main/macros). The [var reference](https://github.com/dbt-labs/dbt-context-engineering/blob/main/skills/dbt-ce-setup/references/vars-reference.md) lists every var and its default.
 :::
 
-### Refresh incrementally, with two modes
-
-Because vectors are only comparable within one model, your model needs to know which of two modes it's in on each run:
+### Refresh incrementally
+Since vectors are only comparable within one model, your model needs to know which of two modes it's in on each run:
 
 <SimpleTable>
 
@@ -189,9 +191,9 @@ Two more things to watch for. If you re-chunk and a chunk id disappears, nothing
 
 ### Monitor for drift <Lifecycle status="beta" />
 
-Your code and config can stay exactly the same while the provider changes what comes back, for example when a model alias moves to a new snapshot. Nothing in your project would show it.
+Your code and config can stay exactly the same while the provider changes what comes back, for example when a model alias moves to a new snapshot.
 
-A **canary** catches this. You keep a handful of frozen probe strings, re-embed them on every build, and compare each result to a baseline a person has already reviewed. If similarity drops below your threshold, the test raises a warning.
+You can use a **canary** to catch this. You keep a handful of frozen probe strings, re-embed them on every build, and compare each result to a baseline a person has already reviewed. If similarity drops below your threshold, the test raises a warning.
 
 - **Compare by cosine similarity, not exact match.** Identical text doesn't always produce identical vectors (check out [adapter notes](#adapter-notes-for-freshness)), so ask "would this difference change a search result?" The default threshold is 0.999, set with the `embedding_canary_similarity_threshold` var.
 - **Expect a warning, not a failure.** The default severity is `warn`, so a benign build never fails on a mismatch. Set the `embedding_canary_test_severity` var to `error` if you want it to fail, for example in CI.
@@ -222,4 +224,4 @@ When you change the embedding function on purpose, re-review the baseline. Run `
 
 ## What's next
 
-Your context is searchable and cited. Next, you'll make that search precise with labels in [Enrich with AI](/best-practices/how-we-context-engineer/5-enrich-with-ai).
+Okayyy so your context is searchable and cited. Next, you'll make that search precise with labels in [Enrich with AI](/best-practices/how-we-context-engineer/5-enrich-with-ai).
