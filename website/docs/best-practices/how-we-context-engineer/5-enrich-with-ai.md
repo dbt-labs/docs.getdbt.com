@@ -61,7 +61,7 @@ Every major warehouse exposes these as SQL functions, but each names them differ
 
 Classify sorts each chunk into one bucket from a list you write, like `weather_disruption` or `routine_status`.
 
-**Who does the sorting?** An AI model, through your warehouse's built-in AI function. You don't label anything by hand. You write the list of labels and what each one means, and `classify()` does the rest.
+Who does the sorting? An AI model, through your warehouse's built-in AI function. You don't label anything by hand. You write the list of labels and what each one means, and the package's `classify()` macro sends each chunk to the model.
 
 #### Create your labels
 
@@ -78,6 +78,7 @@ Classify sorts each chunk into one bucket from a list you write, like `weather_d
     weather_disruption: caused by severe weather (a storm, ice, snow).
     handling_or_warehouse_error: a warehouse or loading mistake.
     routine_status: a routine update with no problem to report.
+    account_assessment: a review of how the account or service is performing overall.
 
     Text:
     {{ input }}
@@ -88,7 +89,7 @@ Classify sorts each chunk into one bucket from a list you write, like `weather_d
     {%- raw -%}
     { "type": "object",
       "properties": { "content_type": { "type": "string",
-        "enum": ["weather_disruption", "handling_or_warehouse_error", "routine_status"] } },
+       "enum": ["weather_disruption", "handling_or_warehouse_error", "routine_status", "account_assessment"] } },
       "required": ["content_type"] }
     {%- endraw -%}
     {%- endmacro %}
@@ -96,7 +97,7 @@ Classify sorts each chunk into one bucket from a list you write, like `weather_d
 
     </File>
 
-3. **Call `classify()` in a model.** Name your prompt once in `meta.ai_prompt`, and the model reads it from there. The cost guard reads the same name (refer to [Control cost](/best-practices/how-we-context-engineer/7-control-cost)):
+3. **Call the package's `classify()` macro in a model.** Name your prompt once in `meta.ai_prompt`, and the model reads it from there. The cost guard reads the same name (refer to [Control cost](/best-practices/how-we-context-engineer/7-control-cost)):
 
     <File name="models/context/ai/call_transcripts_classify.sql">
 
@@ -142,13 +143,13 @@ Labels make search precise. Without them, short boilerplate chunks crowd the top
 
 Treat your labels like any other model: someone owns them, and changes go through a pull request.
 
-- **Never edit `v1`.** Copy both macros to `v2`, make your change, and change the version in `meta.ai_prompt` to `v2`.
-- **Change both macros together.** The instructions and the list need the same labels. A test catches a label that isn't on the list (refer to [Keep context trustworthy](/best-practices/how-we-context-engineer/6-keep-context-trustworthy)).
-- **Rebuild.** Classify relabels every chunk on each build, so it bills again.
-- **Check accuracy.** Keep a small set of chunks you've labeled yourself, and test the model's labels against them.
-- **Revisit the list when your questions change.** A list built for today's questions may not fit tomorrow's.
+- **Never edit `v1`: Copy both macros to `v2`, make your change, and change the version in `meta.ai_prompt` to `v2`.
+- Change both macros together: The instructions and the list need the same labels. A test catches a label that isn't on the list (refer to [Keep context trustworthy](/best-practices/how-we-context-engineer/6-keep-context-trustworthy)).
+- Rebuild: Classify relabels every chunk on each build, so it bills again.
+- Check accuracy: Keep a small set of chunks you've labeled yourself, and test the model's labels against them.
+- Revisit the list when your questions change: A list built for today's questions may not fit tomorrow's.
 
-:::caution
+:::caution Different labels when you rerun
 The same text can get a different label when you rerun the build. Tests catch that drift, but they don't prevent it.
 :::
 
@@ -176,16 +177,17 @@ The **output schema** is the same. It declares the shape the model must return: 
 
 ### Our recommendations
 
-- **Version prompts and schemas like database migrations.** Each version is an immutable, named artifact, such as `v3`. To improve a prompt, write `v4`. Never edit a released version in place.
-- **Reference an explicit version every time.** There's no "latest". A model on `v3` stays on `v3` until you deliberately bump it, so changes roll out and roll back one model at a time.
-- **Keep prompts where they show up in a pull request.** If a prompt lives in a warehouse console under a mutable pointer, you can't answer "what changed, and when?"
-- **Treat the schema's label list as the source of truth.** Your tests check against it, and the package copies it into the prompt where a warehouse needs that. If you also name labels in the prompt's instructions, update both together so they don't drift.
+- **Version prompts and schemas like database migrations:** Each version is an immutable, named artifact, such as `v3`. To improve a prompt, write `v4`. Never edit a released version in place.
+- **Reference an explicit version every time:** There's no "latest". A model on `v3` stays on `v3` until you deliberately bump it, so changes roll out and roll back one model at a time.
+- **Keep prompts where they show up in a pull request:** If a prompt lives in a warehouse console under a mutable pointer, you can't answer "what changed, and when?"
+- **Treat the schema's label list as the source of truth:** Your tests check against it, and the package copies it into the prompt where a warehouse needs that. If you also name labels in the prompt's instructions, update both together so they don't drift.
 
 In the package, a prompt and a schema are each a macro, and the macro's name carries its version, like `prompt__jaffle_content_type__v1`. The [Classify](#classify) section shows a full example.
 
-## Read the answer back the same way everywhere
+Calling the model is only half of portability. Each warehouse returns structured results in its own format, so convert them right away into plain columns:
 
-Calling the model is only half of portability. Each warehouse returns structured results as a different type, so normalize once, right after the call: read each warehouse's native shape and hand back a plain value. Classify returns a plain label string, and you should flatten structured results into ordinary typed columns right away.
+- `classify` already returns a plain label string on every warehouse, so you can use it as is.
+- For structured results, pull each field into an ordinary typed column straight after the call. Don't pass the raw result downstream. In the package, `field()` does this for a structured result (`extract`, or `generate` with a schema), and `text()` does it for plain generated text. Both are in beta.
 
 ## Adapter notes
 
@@ -201,11 +203,11 @@ The operations are the same everywhere, but the warehouses behave differently in
 
 </SimpleTable>
 
-**BigQuery drops enum constraints.** BigQuery's output schema can't express an allowed-value list, so it quietly turns the field into a plain string. The call succeeds, but the model never saw your labels and invents its own, like `PROBLEM` or `Discovery Question` instead of `pain_point`. Nothing errors, so nothing turns red. On BigQuery, put the labels in the prompt too, generated from the schema's list so they still live in one place. You don't need this on Snowflake and Databricks, where the schema already enforces them.
+**BigQuery drops enum constraints:** BigQuery's output schema can't express an allowed-value list, so it quietly turns the field into a plain string. The call succeeds, but the model never saw your labels and invents its own, like `PROBLEM` or `Discovery Question` instead of `pain_point`. Nothing errors, so nothing turns red. On BigQuery, put the labels in the prompt too, generated from the schema's list so they still live in one place. You don't need this on Snowflake and Databricks, where the schema already enforces them.
 
-**Aggregation differs the most** <Lifecycle status="beta" />. Databricks has no native aggregate function, and Snowflake and BigQuery differ on model choice and row order. Check your warehouse's documentation before you rely on it.
+**Aggregation differs the most** <Lifecycle status="beta" />: Databricks has no native aggregate function, and Snowflake and BigQuery differ on model choice and row order. Check your warehouse's documentation before you rely on it.
 
-**Name your models explicitly.** Set the model for each operation in configuration rather than relying on defaults. In the package, those are the `model_generate`, `model_classify`, and `model_extract` vars.
+**Name your models explicitly:** Set the model for each operation in configuration rather than relying on defaults. In the package, those are the `model_generate`, `model_classify`, and `model_extract` vars.
 
 ## What's next
 
