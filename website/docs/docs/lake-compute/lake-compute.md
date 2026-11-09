@@ -13,18 +13,19 @@ To request access or region support, fill out the [Lake Compute signup form](htt
 
 :::
 
-Lake Compute is a hosted, serverless compute engine for running dbt models. It is powered by DuckDB and Apache Iceberg, and it is intended to support transformation workloads that do not need the full scale or feature set of a distributed cloud data warehouse.
+Lake Compute is a hosted, serverless compute engine for running dbt models, powered by DuckDB and Apache Iceberg. It's designed to cut the cost of your dbt transformations while keeping one dbt project, one DAG, and one `ref` graph.
 
 Lake Compute supports two execution models:
 
-1. As a "sidecar" alongside your existing data warehouse, such as Snowflake or Databricks. You can choose the execution engine model by model while keeping one dbt project, one DAG, and one `ref` graph.
-2. As the primary compute adapter for new dbt projects, along with an Iceberg catalog (such as Fivetran MDLS).
+1. As a "sidecar" alongside your existing data warehouse, such as Snowflake or Databricks. Start small by moving some models to Lake Compute and keeping the rest in your primary warehouse. You choose the execution engine model by model, and you can move more models over time.
+2. As the primary compute adapter, along with an Iceberg catalog (such as Fivetran MDLS), so all of your models run on Lake Compute.
 
-Lake Compute doesn't intend to fully replace your cloud data warehouse, and it isn't a general-purpose query engine. Use Lake Compute for dbt transformations only. Keep workloads that need high concurrency, BI connectivity, advanced data warehouse features (such as ML or AI functions), or distributed compute on your primary data warehouse.
+
+Some workloads, such as those that use warehouse-native AI functions, may still belong on your primary warehouse. Refer to [Private beta limitations](#private-beta-limitations) for what Lake Compute doesn't support yet.
 
 ## Why use Lake Compute
 
-Optionality and flexibility. Simpler and smaller transformations can run on Lake Compute, while your warehouse remains available for workloads that need distributed processing, high concurrency, proprietary functions, or advanced analytics. Lake Compute always reads and writes data in the Iceberg table format, so it’s easy to add in other compute engines.
+Lower transformation costs, with flexibility. Move as many or as few models as you like to Lake Compute, and keep your warehouse available for anything that still needs it. Lake Compute always reads and writes data in the Iceberg table format, so it's easy to add other compute engines.
 
 ## Prerequisites
 
