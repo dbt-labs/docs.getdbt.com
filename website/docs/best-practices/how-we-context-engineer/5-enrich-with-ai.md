@@ -6,7 +6,7 @@ displayText: Enrich with AI
 hoverSnippet: Learn how to label, extract, and summarize text with a model.
 ---
 
-Your text is chunked, embedded, and searchable. Enrichment is where a model reads each piece and adds meaning: a label, a set of facts, or a summary. The result is new columns you can filter on, test, and search by. Classify is the precision step on top of chunk → embed → search. The package calls it an "unlock", not a prerequisite.
+Enrichment is where a model reads each piece and adds meaning: a label, a set of facts, or a summary. This gives you new columns you can filter on, test, and search by. Classify is the precision step on top of chunk → embed → search.
 
 In this section, you'll learn how to:
 
@@ -21,12 +21,12 @@ Stuck on a term? Check the [glossary](/best-practices/how-we-context-engineer/8-
 
 The instinct most teams bring is to pull rows into a notebook, call an API in a loop, and write the results back. It works, but the AI step now sits outside everything you've built: it's untested, unversioned, and has no lineage. It also moves your data out of the warehouse.
 
-Warehouses now expose AI as SQL functions, so **an AI call is just a column expression**. You call the model from SQL, one row at a time, and the answer is a new column in a model that dbt builds like any other. That gives you two things for free:
+Warehouses now expose AI as SQL functions, so an AI call is just a column expression. You call the model from SQL, one row at a time, and the answer is a new column in a model that dbt builds like any other. That gives you two things for free:
 
-- **Governance.** The AI step inherits version control, code review, tests, lineage, and scheduling.
-- **Data stays put.** Nothing is exported, so there's no second copy to secure.
+- Governance which allows the AI step to inherit version control, code review, tests, lineage, and scheduling.
+- Data remains so nothing is exported and there's no second copy to secure.
 
-Run the model **per row**, not with many rows stuffed into one giant prompt. A giant prompt breaks the one-to-one link between input and output, doesn't work with incremental builds, and can blow past the model's context window (how much text it can read at once). Per-row calls also keep cost controls simple (read [Control cost](/best-practices/how-we-context-engineer/7-control-cost) for more info).
+Run the model _per row_, not with many rows stuffed into one giant prompt. A giant prompt breaks the one-to-one link between input and output, doesn't work with incremental builds, and can blow past the model's context window (how much text it can read at once). Per-row calls also keep cost controls simple (read [Control cost](/best-practices/how-we-context-engineer/7-control-cost) for more info).
 
 ## Choose an operation
 
