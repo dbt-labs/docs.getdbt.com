@@ -37,9 +37,10 @@ You can pick the model and reasoning effort for each chat from the chat composer
 <WizardSupportedProviders defaultSurface="local" />
 
 ## Update or turn off a provider
+You can update or disable a provider directly in Wizard Desktop's **Settings** -> **AI providers** page:
 
-- **Update credentials:** Select **Configure**, enter the new key, and select **Save**. Leave the key blank to keep the saved one.
-- **Turn a provider off:** Select **Configure**, clear every model, and select **Save**.
+- To update credentials: Select **Configure**, enter the new key, and select **Save**. Leave the key blank to keep the saved one.
+- To turn a provider off: Select **Configure**, clear every model, and select **Save**.
 
 ## Switch the dbt account for managed models
 
