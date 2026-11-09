@@ -7,6 +7,11 @@ hide_table_of_contents: true
 tags: ['dbt v2', 'dbt platform', 'Upgrade']
 recently_updated: true
 intro_text: This guide helps you prepare for an in-place upgrade from v1 to v2 in the dbt platform.
+agent_guidance:
+  pacing: In the first reply, confirm the reader's prerequisites, the dbt platform account they use, and whether they can use dbt Wizard before listing steps. Then default to one guide section per reply (combine two or three short sections), with all its steps, labeled Step 1, Step 2, and so on, and confirm the success check before continuing. If the reader asks for a different pace, follow it.
+  stay_on_path: This guide prepares an existing dbt platform project for an in-place upgrade from dbt v1 to dbt v2. Don't switch the reader to a new local setup or a new project. If the reader wants to work locally, point them to the dbt VS Code extension install guide at https://docs.getdbt.com/docs/install-dbt-extension.
+  safety: Never ask for passwords or keys in chat. Don't merge, commit, or change environment settings for the reader without asking first.
+  ask_when_unclear: Ask rather than guess when something is unclear.
 ---
 
 <div style={{maxWidth: '900px'}}>
@@ -18,6 +23,8 @@ import FusionAdapters from '/snippets/_v2-dwh-platform.md';
 <Constant name="fusion_engine" /> represents the next evolution of data transformation. dbt has been rebuilt from the ground up but at its most basic, <Constant name="fusion" /> is a new version, and like any new version you should take steps to prepare to upgrade. This guide will take you through those preparations. 
 
 If <Constant name="fusion" /> is brand new to you, take a look at our [comprehensive documentation](/docs/introduction) on what it is, how it behaves, and what's different from <Constant name="core" /> before getting started with this guide. Once you're caught up, it's time to begin preparing your projects for the speed and power that <Constant name="fusion" /> has to offer.
+
+<AgentPrompt />
 
 ## Prerequisites
 
@@ -76,16 +83,18 @@ With the readiness experience enabled, you can monitor your project's eligibilit
 <Lightbox src="/img/v2/v2-readiness.png" width="60%" title="The dbt v2 readiness checklist"/>
 
 Common ineligibility reasons include:
-- Environment(s) not on the **v1 Latest** [release track](/docs/dbt-versions/dbt-release-tracks#which-release-tracks-are-available)
+- No environment on a [release track](/docs/dbt-versions/dbt-release-tracks#which-release-tracks-are-available) that supports <Constant name="fusion" /> (a pinned legacy version such as 1.9 blocks eligibility)
 - Not using a [supported data platform](/docs/dbt/supported-features?version=2.0#requirements)
-- Project doesn't have at least one successful job run
-- Jobs that haven't run in the last 7 days or have recent failures
+- Project has jobs but none have run successfully
+- Jobs that haven't run in the last 7 days, or that failed during that time, show an unknown status
+- Jobs that aren't on the **v1 Latest** release track aren't tested
+- Jobs whose steps use only commands that eligibility checks don't test (only `seed`, `build`, `run`, `test`, and `snapshot` are tested), or that use `state:modified`
 
 As you complete the steps in this guide, check the readiness panel to see your eligibility improve.
 
-## Upgrade to the latest <Constant name="core" /> version
+## Upgrade to the latest <Constant name="core" /> version {#upgrade-to-latest-v1}
 
-Before upgrading to <Constant name="fusion" />, you need to move your environments to the **v1 Latest** [<Constant name="core" /> release track](/docs/dbt-versions/dbt-release-tracks). The **v1 Latest** track includes all the features and tooling to help you prepare for <Constant name="fusion" />. It ensures the smoothest upgrade experience by validating that your project doesn't rely on deprecated behaviors.
+Before upgrading to <Constant name="fusion" />, we recommend moving your environments to the **v1 Latest** [<Constant name="core" /> release track](/docs/dbt-versions/dbt-release-tracks). The **v1 Latest** track includes all the features and tooling to help you prepare for <Constant name="fusion" />. It ensures the smoothest upgrade experience by validating that your project doesn't rely on deprecated behaviors.
 
 :::tip Test before you deploy
 
@@ -107,7 +116,7 @@ Test the **v1 Latest** release track for your individual account without changin
 5. Launch the <Constant name="studio_ide" /> or <Constant name="platform_cli" /> and test your normal development workflows.
 6. Verify the override is active by running any dbt command and checking the **System Logs**. The first line should show `Running with dbt=` and your selected version. If the version number is `v1.11` or higher, you're on the right path to <Constant name="fusion" /> readiness.
 
-If everything works as expected, proceed to the next step to start upgrading your environments. If you encounter deprecation warnings, don't fear! We'll address those [later in this guide](/guides/prepare-v2-upgrade?step=4). If you encounter errors, revert to your previous version and refer to the [version upgrade guides](/docs/dbt-versions/dbt-upgrade) to resolve any differences between your current version and the latest available <Constant name="core" /> version.
+If everything works as expected, proceed to the next step to start upgrading your environments. If you encounter deprecation warnings, don't fear! We'll address those [later in this guide](/guides/prepare-v2-upgrade?step=5). If you encounter errors, revert to your previous version and refer to the [version upgrade guides](/docs/dbt-versions/dbt-upgrade) to resolve any differences between your current version and the latest available <Constant name="core" /> version.
 
 ### Step 2: Upgrade your development environment
 
@@ -443,9 +452,9 @@ In the <Constant name="studio_ide" />, run <Constant name="fusion" /> in your de
 4. When the project runs with no warnings or errors, commit and publish your changes.
 5. After you merge the changes, wait for the job to run again or run it manually.
 
-To revert the `latest-fusion` override, use the dbt version control in <Constant name="studio_ide" /> or update the **dbt version** under **User development settings** in [Account settings](/docs/platform/account-settings) → **Credentials**. For more details, refer to [Override dbt version](/docs/dbt-versions/upgrade-dbt-platform-version#override-dbt-version).
+To revert the v2 override, use the dbt version control in <Constant name="studio_ide" /> or update the **dbt version** under **User development settings** in [Account settings](/docs/platform/account-settings) → **Credentials**. For more details, refer to [Override dbt version](/docs/dbt-versions/upgrade-dbt-platform-version#override-dbt-version).
 
-#### Debug in Studio with dbt Wizard <Lifecycle status="beta" size="80%" />
+#### Debug in Studio with dbt Wizard
 
 import FusionMigrationWorkflow from '/snippets/_v2-migration-workflow.md';
 
@@ -463,6 +472,39 @@ When you are confident a job is ready for <Constant name="fusion" />, you can ru
 Congratulations! You have validated <Constant name="fusion" /> eligibility for your jobs.
 
 <Lightbox src="/img/v2/v2-eligible.png" width="60%" title="Your job is now ready for v2!"/>
+
+## Prepare with dbt Wizard workflows {#prepare-with-wizard}
+
+If you're taking advantage of <Constant name="wizard" />, you can use it to do most of the preparation in this guide for you: run the autofix tool, triage the errors that remain, apply validated fixes, and confirm your project compiles. This section covers only the upgrade workflows and assumes you already have <Constant name="wizard" /> configured. To set up <Constant name="wizard" />, refer to the [<Constant name="wizard" /> overview](/docs/platform/wizard-overview).
+
+Before you start, make sure you're on a new branch and that your environments use the **v1 Latest** release track.
+
+### Run the v2 migration workflow in Studio IDE
+
+The v2 migration workflow is the fastest way to update an ineligible job. You can start it from either:
+
+- **Job list:** Click **Review job** for a job, then choose **Debug in Studio with dbt Wizard**. Refer to [Debug in Studio with dbt Wizard](#debug-in-studio-with-dbt-wizard).
+- **Studio IDE:** Run **Check & fix deprecations**, then click **Migrate with dbt Wizard** when dbt prompts you to enable v2.
+
+### Run a migration workflow from your terminal or Wizard Desktop
+
+If you develop locally, ask <Constant name="wizard" /> to run the `migrating-dbt-core-to-v2` skill from your dbt project root:
+
+```text
+Use the migrating-dbt-core-to-v2 skill to get this project ready for dbt v2. Run dbt-autofix first, then triage anything that's left.
+```
+
+<Constant name="wizard" /> runs [`dbt-autofix`](https://github.com/dbt-labs/dbt-autofix), classifies the remaining errors as auto-fixable, guided, needs your input, or blocked, and applies fixes in that order. Review each permission request and the final summary before you commit.
+
+### Check readiness with Wizard
+
+When <Constant name="wizard" /> finishes, use it to confirm the work:
+
+- `Run dbt compile --static-analysis strict and summarize any remaining errors or warnings.`
+- `List any packages in packages.yml that aren't compatible with dbt v2 and the version I should upgrade to.`
+- `Summarize every file you changed and why, so I can review the diff.`
+
+Then commit your changes and open a pull request. After you merge it, re-run your jobs and check the readiness panel to confirm they're eligible.
 
 ## What's next? 
 
