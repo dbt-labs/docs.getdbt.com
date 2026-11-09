@@ -26,7 +26,7 @@ Warehouses now expose AI as SQL functions, so **an AI call is just a column expr
 - **Governance.** The AI step inherits version control, code review, tests, lineage, and scheduling.
 - **Data stays put.** Nothing is exported, so there's no second copy to secure.
 
-Run the model **per row**, not with many rows stuffed into one giant prompt. A giant prompt breaks the one-to-one link between input and output, doesn't work with incremental builds, and can blow past the model's context window (how much text it can read at once). Per-row calls also keep cost controls simple (see [Control cost](/best-practices/how-we-context-engineer/7-control-cost)).
+Run the model **per row**, not with many rows stuffed into one giant prompt. A giant prompt breaks the one-to-one link between input and output, doesn't work with incremental builds, and can blow past the model's context window (how much text it can read at once). Per-row calls also keep cost controls simple (read [Control cost](/best-practices/how-we-context-engineer/7-control-cost) for more info).
 
 ## Choose an operation
 
@@ -96,7 +96,7 @@ Classify sorts each chunk into one bucket from a list you write, like `weather_d
 
     </File>
 
-3. **Call `classify()` in a model.** Name your prompt once in `meta.ai_prompt`, and the model reads it from there. The cost guard reads the same name (see [Control cost](/best-practices/how-we-context-engineer/7-control-cost)):
+3. **Call `classify()` in a model.** Name your prompt once in `meta.ai_prompt`, and the model reads it from there. The cost guard reads the same name (refer to [Control cost](/best-practices/how-we-context-engineer/7-control-cost)):
 
     <File name="models/context/ai/call_transcripts_classify.sql">
 
@@ -117,7 +117,7 @@ Classify sorts each chunk into one bucket from a list you write, like `weather_d
 
     </File>
 
-4. **Run it and check a few rows.** Like any AI step, this bills your warehouse, so start small (see [Control cost](/best-practices/how-we-context-engineer/7-control-cost)):
+4. **Run it and check a few rows.** Like any AI step, this bills your warehouse, so start small (refer to [Control cost](/best-practices/how-we-context-engineer/7-control-cost)):
 
     ```bash
     dbt build --select call_transcripts_classify --vars '{"ai_functions_enabled": true}'
@@ -136,14 +136,14 @@ Each chunk now has one label (the values here are illustrative):
 
 </SimpleTable>
 
-Labels make search precise. Without them, short boilerplate chunks crowd the top results (see [Embed and retrieve](/best-practices/how-we-context-engineer/4-embed-and-retrieve#embedding-buys-recall-classification-buys-precision)). With them, you filter search to the category your question is about. In our test, every result in the top 10 became real account content.
+Labels make search precise. Without them, short boilerplate chunks crowd the top results (check out [Embed and retrieve](/best-practices/how-we-context-engineer/4-embed-and-retrieve#embedding-buys-recall-classification-buys-precision)). With them, you filter search to the category your question is about. In our test, every result in the top 10 became real account content.
 
 #### Change your labels
 
 Treat your labels like any other model: someone owns them, and changes go through a pull request.
 
 - **Never edit `v1`.** Copy both macros to `v2`, make your change, and change the version in `meta.ai_prompt` to `v2`.
-- **Change both macros together.** The instructions and the list need the same labels. A test catches a label that isn't on the list (see [Keep context trustworthy](/best-practices/how-we-context-engineer/6-keep-context-trustworthy)).
+- **Change both macros together.** The instructions and the list need the same labels. A test catches a label that isn't on the list (refer to [Keep context trustworthy](/best-practices/how-we-context-engineer/6-keep-context-trustworthy)).
 - **Rebuild.** Classify relabels every chunk on each build, so it bills again.
 - **Check accuracy.** Keep a small set of chunks you've labeled yourself, and test the model's labels against them.
 - **Revisit the list when your questions change.** A list built for today's questions may not fit tomorrow's.
@@ -156,7 +156,7 @@ The same text can get a different label when you rerun the build. Tests catch th
 
 Extract pulls typed facts out of the text into fields. Use it when you need several facts at once, such as the account, the stated problem, and the date.
 
-Every extracted fact should carry an `evidence` field: the verbatim quote that supports it. That quote is what makes the fact checkable (see [Keep context trustworthy](/best-practices/how-we-context-engineer/6-keep-context-trustworthy)). Mark `evidence` as optional in your schema. A quote might genuinely not exist, and a required field the model can't fill invites an invented quote, which is an ungrounded citation.
+Every extracted fact should carry an `evidence` field: the verbatim quote that supports it. That quote is what makes the fact checkable (refer to [Keep context trustworthy](/best-practices/how-we-context-engineer/6-keep-context-trustworthy)). Mark `evidence` as optional in your schema. A quote might genuinely not exist, and a required field the model can't fill invites an invented quote, which is an ungrounded citation.
 
 ### Generate <Lifecycle status="beta" />
 

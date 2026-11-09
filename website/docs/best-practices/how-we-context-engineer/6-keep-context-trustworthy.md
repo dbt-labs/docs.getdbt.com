@@ -78,7 +78,7 @@ Our recommendations:
 
 A conformance test fails any row whose label isn't in the schema's allowed values. It's the check that catches silent failures: when an engine drops your allowed-value list, the call succeeds and returns well-formed output, and only this test notices the labels are wrong.
 
-You write it as a one-line singular test. A singular test is a SQL file in your `tests/` folder that returns the rows that fail (see [data tests](/docs/build/data-tests)):
+You write it as a one-line singular test. A singular test is a SQL file in your `tests/` folder that returns the rows that fail (refer to [data tests](/docs/build/data-tests)):
 
 <File name="tests/assert_content_types_conform.sql">
 

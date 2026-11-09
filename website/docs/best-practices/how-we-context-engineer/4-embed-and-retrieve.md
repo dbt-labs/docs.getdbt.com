@@ -193,7 +193,7 @@ Your code and config can stay exactly the same while the provider changes what c
 
 A **canary** catches this. You keep a handful of frozen probe strings, re-embed them on every build, and compare each result to a baseline a person has already reviewed. If similarity drops below your threshold, the test raises a warning.
 
-- **Compare by cosine similarity, not exact match.** Identical text doesn't always produce identical vectors (see [adapter notes](#adapter-notes-for-freshness)), so ask "would this difference change a search result?" The default threshold is 0.999, set with the `embedding_canary_similarity_threshold` var.
+- **Compare by cosine similarity, not exact match.** Identical text doesn't always produce identical vectors (check out [adapter notes](#adapter-notes-for-freshness)), so ask "would this difference change a search result?" The default threshold is 0.999, set with the `embedding_canary_similarity_threshold` var.
 - **Expect a warning, not a failure.** The default severity is `warn`, so a benign build never fails on a mismatch. Set the `embedding_canary_test_severity` var to `error` if you want it to fail, for example in CI.
 - **Turn it on deliberately.** The canary is the `embedding_canary` model. It makes real embedding calls, so it's off by default and its baseline seed ships disabled. Enable the model and the seed together, and run it on a scheduled production job:
 
