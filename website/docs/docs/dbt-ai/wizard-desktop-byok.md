@@ -24,17 +24,15 @@ Using the CLI or <Constant name="dbt_platform" /> instead? Refer to [Configure B
 
 1. Open **Settings** (<kbd>⌘</kbd> + <kbd>,</kbd>) and select **AI providers**.
 2. Under **Managed by you**, find your provider and select **Configure**.
+   <Lightbox src="/img/wizard/desktop/wizard-desktop-byok-ai-providers.png" width="90%" title="AI providers settings in Wizard Desktop" />
 3. Select the models you want to use. Select **Use provider defaults** to go back to the recommended selection.
 4. Fill in the fields shown for your provider. The app explains each one as you go.
 5. Select **Save**.
-
-<Lightbox src="/img/wizard/desktop/wizard-desktop-byok-ai-providers.png" width="90%" title="AI providers settings in Wizard Desktop" />
+<Lightbox src="/img/wizard/desktop/wizard-desktop-byok-configure-provider.png" width="60%" title="Configure a provider, using Amazon Bedrock as an example" />
 
 Each provider shows whether it's set up and how many models are available. You can click **Refresh** if a provider or model you expect isn't listed.
 
 You can pick the model and reasoning effort for each chat from the chat composer.
-
-<Lightbox src="/img/wizard/desktop/wizard-desktop-byok-configure-provider.png" width="60%" title="Configure a provider, using Amazon Bedrock as an example" />
 
 ## Supported providers
 
