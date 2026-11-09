@@ -21,6 +21,7 @@ const sidebarSettings = {
         "docs/platform/about-platform/change-your-dbt-theme",
         "docs/platform/about-platform/dbt-platform-features",
         "docs/platform/about-platform/access-regions-ip-addresses",
+        "docs/platform/about-platform/account-url-migration",
         "docs/platform/about-platform/tenancy",
       ],
     }, // About dbt platform directory
@@ -387,7 +388,6 @@ const sidebarSettings = {
           link: { type: "doc", id: "docs/platform/wizard-overview" },
           items: [
             "docs/platform/wizard-overview",
-            "docs/dbt-ai/wizard-quickstart",
             "docs/platform/manage-dbt-ai",
             "docs/dbt-ai/wizard-use-cases",
             "docs/dbt-ai/wizard-how-it-works",
@@ -499,6 +499,7 @@ const sidebarSettings = {
             "docs/dbt-ai/integrate-mcp-cursor",
             "docs/dbt-ai/integrate-mcp-vscode",
             "docs/dbt-ai/integrate-mcp-snowflake-cortex",
+            "docs/dbt-ai/integrate-mcp-databricks",
           ],
         },
         "docs/dbt-ai/mcp-troubleshooting",
