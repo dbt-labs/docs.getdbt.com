@@ -117,4 +117,4 @@ Three ideas show up on every page: context is modeled, not dumped; lineage is ne
 
 ## What's next
 
-Ready to try it? Head to [Get started](/best-practices/how-we-context-engineer/2-get-started). Hope it's smooth rowing from here 🚣‍♀️
+Ready to try it? Head to [Get started](/best-practices/how-we-context-engineer/2-get-started). **Hope** it's smooth rowing from here 🚣‍♀️
