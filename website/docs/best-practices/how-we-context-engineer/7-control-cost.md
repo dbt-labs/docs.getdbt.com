@@ -6,7 +6,11 @@ displayText: Control cost
 hoverSnippet: Learn how to limit AI spend and track what each run used.
 ---
 
-Every other transformation in your project is effectively free to re-run. It's just compute on a warehouse you already pay for. AI calls aren't. This page shows how to build limits and a spending record into the pipeline, so a routine `dbt run` never turns into a surprise invoice. The [`dbt_context_engineering` package](https://github.com/dbt-labs/dbt-context-engineering) builds these controls in, and each section names the macro or var that does it. You can browse the macros in the package's [`macros` folder](https://github.com/dbt-labs/dbt-context-engineering/tree/main/macros).
+Every other transformation in your project is effectively free to re-run. It's just compute on a warehouse you already pay for. AI calls aren't. This page shows how to build limits and a spending record into the pipeline, so a routine `dbt run` never turns into a surprise invoice. The [`dbt_context_engineering` package](https://github.com/dbt-labs/dbt-context-engineering) builds these controls in, and each section names the macro or var that does it.
+
+:::tip
+Browse the package's [`macros` folder](https://github.com/dbt-labs/dbt-context-engineering/tree/main/macros). The [var reference](https://github.com/dbt-labs/dbt-context-engineering/blob/main/skills/dbt-ce-setup/references/vars-reference.md#spend-safety) lists every var and its default.
+:::
 
 In this section, you'll learn how to:
 

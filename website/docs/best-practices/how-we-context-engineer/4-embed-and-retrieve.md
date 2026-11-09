@@ -156,7 +156,11 @@ Our recommendations:
 
 You can skip this section on a first pass. Come back to it once you're re-running builds and want to stop paying to re-embed text that hasn't changed.
 
-An embedding goes stale when anything on the input side changes: the text, the model, or the settings. Embedding costs money, so you don't want to re-embed a row you've already processed. That makes an incremental model the natural fit. The [`dbt_context_engineering` package](https://github.com/dbt-labs/dbt-context-engineering) builds these practices in, and each recommendation below names the macro or var that does it. You can browse the macros in the package's [`macros` folder](https://github.com/dbt-labs/dbt-context-engineering/tree/main/macros).
+An embedding goes stale when anything on the input side changes: the text, the model, or the settings. Embedding costs money, so you don't want to re-embed a row you've already processed. That makes an incremental model the natural fit. The [`dbt_context_engineering` package](https://github.com/dbt-labs/dbt-context-engineering) builds these practices in, and each recommendation below names the macro or var that does it.
+
+:::tip
+Browse the package's [`macros` folder](https://github.com/dbt-labs/dbt-context-engineering/tree/main/macros). The [var reference](https://github.com/dbt-labs/dbt-context-engineering/blob/main/skills/dbt-ce-setup/references/vars-reference.md) lists every var and its default.
+:::
 
 ### Refresh incrementally, with two modes
 
