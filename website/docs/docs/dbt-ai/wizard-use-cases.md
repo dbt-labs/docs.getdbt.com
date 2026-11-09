@@ -69,7 +69,7 @@ Tips:
 ### Fix a result by commenting on it
 _Wizard Desktop only_
 
-If you're working on something and noticed part of <Constant name="wizard" />'s answer is wrong &mdash; you can comment on any line, diff, table cell, or chart and <Constant name="wizard"/> takes care of the rest. Mark up a few and send them together.
+If you're working on something and you notice part of <Constant name="wizard" />'s answer is wrong &mdash; you can comment on any line, diff, table cell, or chart and <Constant name="wizard" /> takes care of the rest. Mark up a few and send them together.
 
 <video width="100%" height="100%" playsinline muted controls>
   <source src="/img/wizard/desktop/wizard-desktop-comment-fix.mp4" type="video/mp4" />
