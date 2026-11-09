@@ -40,7 +40,7 @@ The terms are in alphabetical order.
 
 ## Macros
 
-These come from the [`dbt_context_engineering` package](https://github.com/dbt-labs/dbt-context-engineering/tree/main/macros). You call them as `dbt_context_engineering.<macro>`.
+The following table lists most of the macros in the the [`dbt_context_engineering` package](https://github.com/dbt-labs/dbt-context-engineering/tree/main/macros), but refer to the repo for the official list. You call them as `dbt_context_engineering.MACRO_NAME` (replacing `MACRO_NAME` with the macro name). 
 
 <SimpleTable>
 
@@ -82,7 +82,7 @@ These come from the [`dbt_context_engineering` package](https://github.com/dbt-l
 
 ## Vars
 
-Set these in `dbt_project.yml` under `vars:`. The package's [var reference](https://github.com/dbt-labs/dbt-context-engineering/blob/main/skills/dbt-ce-setup/references/vars-reference.md) lists them too.
+Set these in `dbt_project.yml` under `vars:`. The package's [var reference](https://github.com/dbt-labs/dbt-context-engineering/blob/main/skills/dbt-ce-setup/references/vars-reference.md) officially lists the vars.
 
 <SimpleTable>
 
