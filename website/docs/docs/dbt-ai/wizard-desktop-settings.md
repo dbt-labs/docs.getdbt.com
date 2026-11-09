@@ -94,11 +94,7 @@ If your project is connected to <Constant name="dbt_platform" />, <Constant name
 
 The remote dbt MCP server is available to <Constant name="dbt_platform" /> users only. <Constant name="wizard" /> still uses its local [dbt Information Schema](/docs/build/dbt-information-schema) for project metadata.
 
-Browsing and enabling other connectors from this pane is planned for future releases. Until then, add [MCP servers](/docs/dbt-ai/wizard-mcp) from the terminal:
-
-1. Start a project chat and send your first message, which starts the terminal.
-2. Run `wizard` from the terminal.
-3. Run `/mcp` to add a connector or manage the ones you've already added.
+Browsing and enabling other connectors from this pane is coming soon. Until then, you can add [MCP servers](/docs/dbt-ai/wizard-mcp) through the CLI. Refer to [Connect MCP servers](/docs/dbt-ai/wizard-desktop-use#connect-mcp-servers).
 
 ## Appearance
 

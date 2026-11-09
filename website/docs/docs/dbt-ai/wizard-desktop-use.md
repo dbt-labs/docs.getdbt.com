@@ -180,9 +180,7 @@ The app uses the same config as the CLI, so the skills, subagents, and MCP serve
 
 MCP servers give <Constant name="wizard" /> more tools and context, such as your orchestrator, BI tool, or GitHub. Adding them directly from the **Connectors** pane in Settings is coming soon. Until then, you can set them up through the <Constant name="wizard" /> CLI and use them in Desktop right away, because both share the same config.
 
-If your project is connected to <Constant name="dbt_platform" />, Desktop already connects to the [remote dbt MCP server](/docs/dbt-ai/mcp-quickstart-remote) for you. To turn it on or off, or sign in for an account, go to **Settings** &rarr; **Connectors**. Refer to [Desktop settings](/docs/dbt-ai/wizard-desktop-settings#connectors).
-
-To add any other server:
+To add a server:
 
 1. [Install the <Constant name="wizard" /> CLI](/docs/dbt-ai/wizard-cli).
 2. Add a server with `wizard mcp add`. Refer to [Add an MCP server](/docs/dbt-ai/wizard-mcp#add-an-mcp-server).
