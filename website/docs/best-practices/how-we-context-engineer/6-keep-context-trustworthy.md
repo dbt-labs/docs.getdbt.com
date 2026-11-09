@@ -6,9 +6,7 @@ displayText: Keep context trustworthy
 hoverSnippet: Learn how to test AI output and keep every claim traceable.
 ---
 
-Trusted metrics earned their trust from tests. Context has to earn it the same way. And asking a model to grade another model isn't a test. It's a second opinion, billed by the token.
-
-In this section, you'll learn how to:
+Like metrics, trusted context need to be tested in order to be trusted. In this section, you'll learn how to:
 
 - Test AI output with checks that need no model and cost nothing to run
 - Gate prompt and model changes so quality can't slip quietly
@@ -16,7 +14,7 @@ In this section, you'll learn how to:
 
 ## Why do you need a new kind of test?
 
-Ordinary tests check shape: right type, in range, not null. They can't tell you whether a value is correct. A model can return a well-formed answer it made up (a **hallucination**), and every check still passes.
+Ordinary tests check shape: right type, in range, not null. They can't tell you whether a value is correct. A model can return a well-formed answer it made up (a hallucination), and every check still passes.
 
 AI output fails in three ways:
 
@@ -42,7 +40,11 @@ Every check is exact string, set, or arithmetic logic: no model, no spend, no ra
 
 ## Three tests we recommend
 
-The `dbt_context_engineering` package ships all three. The jaffle project doesn't wire them yet.
+The `dbt_context_engineering` package ships with three of the following tests:
+- Groundedness
+- Conformance
+- Evaluation
+- Chunk size
 
 ### Groundedness
 
