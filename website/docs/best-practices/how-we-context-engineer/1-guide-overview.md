@@ -26,6 +26,17 @@ The following diagram explains the entire concept: text is split into chunks, ea
 
 <Lightbox src="/img/best-practices/context-engineering/pipeline.svg" width="100%" title="A call transcript is chunked, embedded as numbers, and placed on a map where similar meanings sit close together. A question lands on the same map, and the closest chunks come back with a score and a source." />
 
+## What's in the guide
+
+This guide covers the following:
+
+1. **Get started:** Chunk, embed, and search your text in three steps.
+2. **Prepare your text:** Break raw text into pieces an agent can retrieve, and attach source details so every piece can cite where it came from.
+3. **Embed and retrieve:** Make text searchable by meaning, search across sources, and keep vectors fresh.
+4. **Enrich with AI:** Label each piece so search gets precise, with prompts managed as versioned code.
+5. **Keep context trustworthy:** Test AI output the way you test any other model, and keep lineage and citations intact.
+6. **Control cost:** Build in limits and a record of what each run spent.
+7. **Glossary:** Glossary of new terms to help you understand context engineering a bit more.
 
 ## What is context?
 
@@ -102,18 +113,6 @@ If you're new to dbt, we recommend you skim [SQL models](/docs/build/sql-models)
 If you're unsure on some context engineering terms, check out the [glossary](/best-practices/how-we-context-engineer/8-glossary).
 :::
 
-## What's in the guide
-
-Context moves through a pipeline, and the guide follows it:
-
-1. **Get started.** Chunk, embed, and search your text in three steps.
-2. **Prepare your text.** Break raw text into pieces an agent can retrieve, and attach source details so every piece can cite where it came from.
-3. **Embed and retrieve.** Make text searchable by meaning, search across sources, and keep vectors fresh.
-4. **Enrich with AI.** Label each piece so search gets precise, with prompts managed as versioned code.
-5. **Keep context trustworthy.** Test AI output the way you test any other model, and keep lineage and citations intact.
-6. **Control cost.** Build in limits and a record of what each run spent.
-
-Three ideas show up on every page: context is modeled, not dumped; lineage is never optional; and testing applies to AI output too.
 
 ## What's next
 
