@@ -182,7 +182,7 @@ MCP servers give <Constant name="wizard" /> more tools and context, such as your
 
 To add a server:
 
-1. [Install the <Constant name="wizard" /> CLI](/docs/dbt-ai/wizard-cli).
+1. [Install the <Constant name="wizard" /> CLI](/docs/dbt-ai/wizard-cli?version=2#install-and-set-up-dbt-wizard-cli).
 2. Add a server with `wizard mcp add`. Refer to [Add an MCP server](/docs/dbt-ai/wizard-mcp#add-an-mcp-server).
 3. If the server uses OAuth, run `wizard mcp login SERVER_NAME`. Refer to [Authenticate a server](/docs/dbt-ai/wizard-mcp#authenticate-a-server).
 4. Open <Constant name="wizard" /> Desktop and start a new chat. <Constant name="wizard" /> loads MCP servers at the start of a session.
