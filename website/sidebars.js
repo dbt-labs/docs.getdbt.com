@@ -1896,7 +1896,7 @@ const sidebarSettings = {
         },
         {
           type: "category",
-          label: "How we do context engineering",
+          label: "How to do context engineering",
           link: {
             type: "doc",
             id: "best-practices/how-we-context-engineer/1-guide-overview",
