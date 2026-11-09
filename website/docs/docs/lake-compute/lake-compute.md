@@ -17,8 +17,10 @@ Lake Compute is a hosted, serverless compute engine for running dbt models, powe
 
 Lake Compute supports two execution models:
 
-1. As a "sidecar" alongside your existing data warehouse, such as Snowflake or Databricks. Start small by moving some models to Lake Compute and keeping the rest in your primary warehouse. You choose the execution engine model by model, and you can move more models over time.
-2. As the primary compute adapter, along with an Iceberg catalog (such as Fivetran MDLS), so all of your models run on Lake Compute.
+- **As a "sidecar" alongside your existing data warehouse, such as Snowflake or Databricks:**
+ Start small by moving some models to Lake Compute and keeping the rest in your primary warehouse. You choose the execution engine model by model, and you can move more models over time.
+- **As the primary compute adapter, along with an Iceberg catalog, such as Fivetran MDLS:** 
+Adopt completely by running all of your models on Lake Compute.
 
 
 Some workloads, such as those that use warehouse-native AI functions, may still belong on your primary warehouse. Refer to [Private beta limitations](#private-beta-limitations) for what Lake Compute doesn't support yet.
