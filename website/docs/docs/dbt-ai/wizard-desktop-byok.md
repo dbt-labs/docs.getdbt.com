@@ -28,9 +28,9 @@ Using the CLI or <Constant name="dbt_platform" /> instead? Refer to [Configure B
 4. Fill in the fields shown for your provider. The app explains each one as you go.
 5. Select **Save**.
 
-Each provider shows whether it's set up and how many models are available, such as `Not set up · 9 models available`. Select **Refresh** if a provider or model you expect isn't listed.
+Each provider shows whether it's set up and how many models are available. You can click **Refresh** if a provider or model you expect isn't listed.
 
-Pick the model and reasoning effort for each chat from the chat composer.
+You can pick the model and reasoning effort for each chat from the chat composer.
 
 ## Supported providers
 
