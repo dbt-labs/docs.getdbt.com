@@ -46,7 +46,7 @@ Once you're set up, refer to [How to use dbt Wizard in your dbt project](/best-p
 Read some of the scenarios depending on your use case. Some scenarios have a prompt you can copy if applicable. 
 
 ### Upgrade a project to dbt v2
-_Recommended with Wizard Desktop_
+_Recommended with <Constant name="wizard"/>_
 
 Let's say you have a project on an older dbt version and are curious how to [upgrade it to dbt v2](/docs/dbt-versions/dbt-upgrade/upgrading-to-v2). Use <Constant name="wizard" /> Desktop to review what needs to change for the upgrade and help fix any issues blocking it.
 
