@@ -6,7 +6,7 @@ displayText: Get started
 hoverSnippet: Chunk, embed, and search your text in three steps.
 ---
 
-You don't need the whole guide to get value. Three steps take you from raw text to a working search:
+To get started with context engineering in practice, make sure you check out the following steps to go from raw text to a working search:
 
 <SimpleTable>
 
@@ -18,27 +18,26 @@ You don't need the whole guide to get value. Three steps take you from raw text 
 
 </SimpleTable>
 
-Everything after that makes the result better: labels for precision, tests for trust, and guards for cost.
+All the other concepts after that makes the result better: labels for precision, tests for trust, and guards for cost.
 
 Stuck on a term? Check the [glossary](/best-practices/how-we-context-engineer/8-glossary).
 
 ## Try it first, no credentials needed
 
-The fastest way to see the pipeline is the `jaffle-logistics` project on DuckDB. It runs on your laptop and can't bill you, because the AI step is skipped by default.
+The fastest way to see the pipeline is the `jaffle-logistics` project on DuckDB. Note that it runs on your laptop and can't bill you since the AI step is skipped by default.
 
-1. Clone [`jaffle-logistics`](https://github.com/dbt-labs/jaffle-logistics). It needs <Constant name="core" /> 1.12 or later and the `dbt-duckdb` adapter.
+1. Clone [`jaffle-logistics`](https://github.com/dbt-labs/jaffle-logistics). It needs [<Constant name="core" /> 1.12](/docs/local/connect-data-platform/duckdb-setup?version=1.12) or later and the `dbt-duckdb` adapter.
 2. Add a `jaffle-logistics` profile to your `profiles.yml` that points at DuckDB, as the project README shows.
 3. Run `dbt deps`, then `dbt build`.
+4. Then open `analyses/the_pattern/` in the project. It walks the whole pipeline in seven numbered queries: raw transcript, chunk, embed, knowledge base, raw search, classify, and search with classify.
 
-Then open `analyses/the_pattern/` in the project. It walks the whole pipeline in seven numbered queries: raw transcript, chunk, embed, knowledge base, raw search, classify, and search with classify.
-
-:::caution
+:::caution About setting `ai_functions_enabled` to `true`
 To see real embeddings and search results, point the project at Snowflake, Databricks, or BigQuery and set `ai_functions_enabled` to `true`. Those are real AI calls, and they bill. The [Control cost](/best-practices/how-we-context-engineer/7-control-cost) page shows how to keep that safe.
 :::
 
 ## Use it in your own project
 
-Add the package to a `packages.yml` file at the root of your dbt project, as `jaffle-logistics` does, then run `dbt deps`:
+Add the [`dbt_context_engineering` package](https://github.com/dbt-labs/dbt-context-engineering) to a `packages.yml` file at the root of your dbt project, as `jaffle-logistics` does, then run `dbt deps`:
 
 <File name="packages.yml">
 
@@ -50,7 +49,7 @@ packages:
 
 </File>
 
-This guide needs version 0.2.0 or later. Earlier versions are missing features that [Control cost](/best-practices/how-we-context-engineer/7-control-cost) uses.
+This guide needs package version 0.2.0 or later. You can use earlier versions of the package but they'll be missing features that [Control cost](/best-practices/how-we-context-engineer/7-control-cost) uses.
 
 Set the variables the package reads in `dbt_project.yml`. AI functions are off by default, so nothing bills until you turn them on for a target:
 
@@ -64,27 +63,27 @@ vars:
 
 </File>
 
-Each step below is one dbt model: a plain `.sql` file in your `models/` folder. These snippets are trimmed down from `jaffle-logistics`, which adds hashing, incremental refresh, and cost hooks (we cover those later).
+Each step in the next section is one dbt model: a plain `.sql` file in your `models/` folder. These snippets are trimmed down from `jaffle-logistics`, which adds hashing, incremental refresh, and cost hooks (we cover those later).
 
 ### What `chunk()` reads
 
-`chunk()` needs a model with one row per piece of text, in order. For call transcripts, that's one row per speaker turn. The first snippet reads a model called `int_transcript_turns` with these columns. Swap in your own table and column names:
+`chunk()` needs a model with one row per piece of text, in order. For call transcripts, that's one row per speaker turn. The first snippet reads a model called `int_transcript_turns` with these columns. Swap in your own table and column names. Note that a turn is one person speaking until someone else takes over:
 
 <SimpleTable>
 
-| Column | What it holds |
-|--------|---------------|
-| `turn_id` | A unique id for each turn |
-| `turn_index` | The turn's position in the call, so chunks keep their order |
-| `transcript_id` | Which call the turn belongs to, so chunks never mix two calls |
-| `speaker` | Who's talking |
-| `turn_text` | What they said |
+| Column          | `chunk()` argument | What it holds                                                 |
+|-----------------|--------------------|---------------------------------------------------------------|
+| `turn_id`       | `id_column`        | A unique id for each turn                                     |
+| `turn_index`    | `order_column`     | The turn's position in the call, so chunks keep their order   |
+| `transcript_id` | `partition_column` | Which call the turn belongs to, so chunks never mix two calls |
+| `speaker`       | `label_column`     | Who's talking. It's added to the start of each turn           |
+| `turn_text`     | `text_column`      | What they said                                                |
+
 
 </SimpleTable>
 
 ### 1. Chunk
-
-Break each text into pieces. Here, a call transcript's turns become chunks that never split a turn or mix two calls:
+Chunking is one macro call. You tell `chunk()` which of your columns is which, and it groups neighboring rows into chunks by breaking each text into pieces small enough to search. A chunk never splits a turn and never mixes two calls:
 
 <File name="models/context/chunk_transcripts.sql">
 
@@ -105,7 +104,7 @@ Break each text into pieces. Here, a call transcript's turns become chunks that 
 
 ### 2. Embed
 
-Turn each chunk into numbers. The guard in the pre-hook stops a run that's too big before it spends anything:
+Turn each chunk into numbers. This model is a regular `select` with two package macros plugged in. One checks the size of the run before it starts, and the other does the embedding:
 
 <File name="models/context/transcript_embeddings.sql">
 
@@ -126,7 +125,7 @@ from {{ ref('chunk_transcripts') }}
 
 ### 3. Search
 
-Embed your question with the same model, then rank every chunk by how close it is:
+Find the chunks closest in meaning to a question. This model turns your question into numbers with the same `embed()` macro from step 2, then ranks every chunk by how close it is:
 
 <File name="models/context/search_transcripts.sql">
 
@@ -144,6 +143,10 @@ Embed your question with the same model, then rank every chunk by how close it i
 ```
 
 </File>
+
+The result is your top 10 chunks with one new column, `score`. A higher score means the chunk is closer in meaning to your question. You'll see what that looks like in [What it looks like](#what-it-looks-like).
+
+The question and the chunks are embedded with the same macro and the same `embedding_model` setting, so their numbers are comparable. If you embedded them with different models, the scores wouldn't mean anything.
 
 ### 4. Run it
 
@@ -165,15 +168,15 @@ You can also query `search_transcripts` in your warehouse like any other table.
 
 ## What it looks like
 
-`search_transcripts` returns a table like this. It's illustrative and trimmed to three rows, so your chunks and scores will differ:
+`search_transcripts` returns a table like this. The results are for this example only and trimmed to three rows, so your chunks and scores for your own data will be different:
 
 <SimpleTable>
 
 | chunk_id | chunk_text | score |
 |----------|------------|-------|
-| `CT-99021::2` | "…I'll bring findings next time, not just a promise." | 0.57 |
-| `CT-99021::1` | "We've flagged a pattern in late deliveries, but we don't know the cause yet." | 0.54 |
-| `CT-99022::1` | "The late deliveries are clustering around the Columbus warehouse." | 0.50 |
+| `CT-99021::2` | "Jerco: …I'll bring findings next time, not just a promise." | 0.57 |
+| `CT-99021::1` | "Christine: We've flagged a pattern in late deliveries, but we don't know the cause yet." | 0.54 |
+| `CT-99022::1` | "Treven: The late deliveries are clustering around the Columbus warehouse. Stephen: Same one as last month?" | 0.50 |
 
 </SimpleTable>
 
@@ -187,4 +190,4 @@ That's a working context pipeline. It's not perfect yet, though. Short, formulai
 
 ## What's next
 
-You've got a working pipeline. Next, you'll learn why each piece is built the way it is, starting with [Prepare your text](/best-practices/how-we-context-engineer/3-prepare-your-text).
+Ok no we've got a working pipeline! Next, you'll learn why each piece is built the way it is, starting with [Prepare your text](/best-practices/how-we-context-engineer/3-prepare-your-text).
