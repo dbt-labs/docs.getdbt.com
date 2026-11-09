@@ -150,9 +150,9 @@ In the package, you list each source and say which of its columns map to the sha
 
 Our recommendations:
 
-- **Keep adding a source small.** A new source needs one entry plus its own prepare and embed models (and a classify model, if you classify), as `jaffle-logistics` shows. If adding a source means rewriting your search, people won't do it.
-- **Carry lineage on every row.** Each result should say which system and row it came from.
-- **Give the citation link and the label their own columns.** They're always there, and `null` when a source has none.
+- **Keep adding a source small:** A new source needs one entry plus its own prepare and embed models (and a classify model, if you classify), as `jaffle-logistics` shows. If adding a source means rewriting your search, people won't do it.
+- **Carry lineage on every row:** Each result should say which system and row it came from.
+- **Give the citation link and the label their own columns:** They're always there, and `null` when a source has none.
 
 ## Keep embeddings fresh
 
@@ -179,9 +179,9 @@ Since vectors are only comparable within one model, your model needs to know whi
 
 </SimpleTable>
 
-- **Decide the mode at run time, not parse time.** "Did the stored version change?" can only be answered by reading the table when the model runs. Use a runtime signal that flips an ordinary incremental model's `where` clause. In the package, `version_guard` returns true when the stored version differs from the pinned one, and `incremental_delta_predicate` builds the `where` clause for you. [ADR-0004](https://github.com/dbt-labs/dbt-context-engineering/blob/main/adr/0004-version-aware-incremental-refresh.md) explains the reasoning.
-- **Catch edited rows, not just new ones.** Store a hash (a short fingerprint of the text) of exactly what you embedded, and re-embed when it changes. In the package, that's `content_hash`.
-- **Gate full rebuilds.** A bare `--full-refresh` shouldn't be able to silently re-bill your whole corpus. [Control cost](/best-practices/how-we-context-engineer/7-control-cost#gate-full-refreshes) shows how.
+- Decide the mode when the model runs, not when dbt parses it. "Did the stored version change?" can only be answered by reading the table. Use a runtime signal that flips an ordinary incremental model's `where` clause. In the package, `version_guard` returns true when the stored version differs from the pinned one, and `incremental_delta_predicate` builds the `where` clause for you. [ADR-0004](https://github.com/dbt-labs/dbt-context-engineering/blob/main/adr/0004-version-aware-incremental-refresh.md) explains the reasoning.
+- To catch edited rows, not just new ones, store a hash (a short fingerprint of the text) of exactly what you embedded, and re-embed when it changes. In the package, that's `content_hash`.
+- Gate full rebuilds, so a bare `--full-refresh` can't silently re-bill your whole corpus. [Control cost](/best-practices/how-we-context-engineer/7-control-cost#gate-full-refreshes) shows how.
 
 ### Store a cache key with every vector
 
@@ -197,9 +197,9 @@ Your code and config can stay exactly the same while the provider changes what c
 
 You can use a **canary** to catch this. You keep a handful of frozen probe strings, re-embed them on every build, and compare each result to a baseline a person has already reviewed. If similarity drops below your threshold, the test raises a warning.
 
-- **Compare by cosine similarity, not exact match.** Identical text doesn't always produce identical vectors (check out [adapter notes](#adapter-notes-for-freshness)), so ask "would this difference change a search result?" The default threshold is 0.999, set with the `embedding_canary_similarity_threshold` var.
-- **Expect a warning, not a failure.** The default severity is `warn`, so a benign build never fails on a mismatch. Set the `embedding_canary_test_severity` var to `error` if you want it to fail, for example in CI.
-- **Turn it on deliberately.** The canary is the `embedding_canary` model. It makes real embedding calls, so it's off by default and its baseline seed ships disabled. Enable the model and the seed together, and run it on a scheduled production job:
+- Compare by cosine similarity, not exact match, because identical text doesn't always produce identical vectors (check out [adapter notes](#adapter-notes-for-freshness)). Ask "would this difference change a search result?" The default threshold is 0.999, set with the `embedding_canary_similarity_threshold` var.
+- Expect a warning, not a failure. The default severity is `warn`, so a benign build never fails on a mismatch. Set the `embedding_canary_test_severity` var to `error` if you want it to fail, for example in CI.
+- The canary is the `embedding_canary` model. It makes real embedding calls, so it's off by default and its baseline seed ships disabled. Turn it on deliberately: enable the model and the seed together, and run it on a scheduled production job:
 
 <File name="dbt_project.yml">
 
@@ -220,9 +220,9 @@ When you change the embedding function on purpose, re-review the baseline. Run `
 
 ### Adapter notes for freshness
 
-- **Vectors aren't bit-for-bit repeatable on Snowflake and Databricks.** Re-embedding the same text gives cosine similarity above 0.999999 between runs. Never compare vectors for exact equality. BigQuery showed no variation in our tests.
-- **On Snowflake, check the canary's vector size.** The `embedding_canary_vector_dimension` var defaults to 768, the size of `snowflake-arctic-embed-m-v1.5`. Set it if your model's vectors are a different size. Databricks and BigQuery need nothing.
-- **Databricks needs a recent runtime for AI functions.** It requires DBR 15.4 LTS or above, and not Databricks SQL Classic. If you don't meet this, you'll see an opaque SQL error, so check it first when troubleshooting.
+- **Vectors aren't bit-for-bit repeatable on Snowflake and Databricks:** Re-embedding the same text gives cosine similarity above 0.999999 between runs. Never compare vectors for exact equality. BigQuery showed no variation in our tests.
+- **On Snowflake, check the canary's vector size:** The `embedding_canary_vector_dimension` var defaults to 768, the size of `snowflake-arctic-embed-m-v1.5`. Set it if your model's vectors are a different size. Databricks and BigQuery need nothing.
+- **Databricks needs a recent runtime for AI functions:** It requires DBR 15.4 LTS or above, and not Databricks SQL Classic. If you don't meet this, you'll see an opaque SQL error, so check it first when troubleshooting.
 
 ## What's next
 

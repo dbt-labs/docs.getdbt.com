@@ -68,8 +68,8 @@ Who does the sorting? An AI model, through your warehouse's built-in AI function
 
 #### Create your labels
 
-1. **Pick your labels.** Keep the list short, and make each label a business category. Include a catch-all, like `routine_status`, so every chunk has somewhere to go.
-2. **Write them in a macro file.** Create a `.sql` file in your project's `macros/` folder. It holds two macros. One has the instructions for the model, with each label and what it means. The other has the list of allowed labels. The macro names include a version, like `v1`.
+1. Pick a short list of labels, each one a business category. Include a catch-all, like `routine_status`, so every chunk has somewhere to go.
+2. Create a `.sql` file in your project's `macros/` folder and write your labels in it. It holds two macros: one with the instructions for the model (each label and what it means) and one with the list of allowed labels. The macro names include a version, like `v1`.
 
     <File name="macros/prompts/jaffle_content_type.sql">
 
@@ -100,7 +100,7 @@ Who does the sorting? An AI model, through your warehouse's built-in AI function
 
     </File>
 
-3. **Call the package's `classify()` macro in a model.** Name your prompt once in `meta.ai_prompt`, and the model reads it from there. The cost guard reads the same name (refer to [Control cost](/best-practices/how-we-context-engineer/7-control-cost)). Set `materialized='table'` too. The package refuses to run an AI call in a view, which would re-bill on every read ([why](/best-practices/how-we-context-engineer/7-control-cost#dont-use-views-for-ai-models)):
+3. Call the package's `classify()` macro in a model. Name your prompt once in `meta.ai_prompt` and the model reads it from there. The cost guard reads the same name (refer to [Control cost](/best-practices/how-we-context-engineer/7-control-cost)). Set `materialized='table'` too, because the package refuses to run an AI call in a view, which would re-bill on every read ([why](/best-practices/how-we-context-engineer/7-control-cost#dont-use-views-for-ai-models)):
 
     <File name="models/context/ai/call_transcripts_classify.sql">
 
@@ -122,7 +122,7 @@ Who does the sorting? An AI model, through your warehouse's built-in AI function
 
     </File>
 
-4. **Run it and check a few rows.** Like any AI step, this bills your warehouse, so start small (refer to [Control cost](/best-practices/how-we-context-engineer/7-control-cost)):
+4. Run it and check a few rows. Like any AI step, this bills your warehouse, so start small (refer to [Control cost](/best-practices/how-we-context-engineer/7-control-cost)):
 
     ```bash
     dbt build --select call_transcripts_classify --vars '{"ai_functions_enabled": true}'

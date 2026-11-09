@@ -70,9 +70,9 @@ models:
 
 Our recommendations:
 
-- **Normalize case and whitespace by default.** Trivial formatting differences shouldn't fail a build.
-- **Let a missing quote be null.** If a quote legitimately doesn't exist, null is correct, and the test shouldn't flag it. This only works if the field is optional in your schema, as covered in [Enrich with AI](/best-practices/how-we-context-engineer/5-enrich-with-ai).
-- **Know its limit.** A passing test proves the quote is real. It doesn't prove the model read it correctly.
+- **Normalize case and whitespace by default:** Trivial formatting differences shouldn't fail a build.
+- **Let a missing quote be null:** If a quote legitimately doesn't exist, null is correct, and the test shouldn't flag it. This only works if the field is optional in your schema, as covered in [Enrich with AI](/best-practices/how-we-context-engineer/5-enrich-with-ai).
+- **Know its limit:** A passing test proves the quote is real. It doesn't prove the model read it correctly.
 
 ### Conformance
 
@@ -92,9 +92,9 @@ You write it as a one-line singular test. A singular test is a SQL file in your 
 
 Our recommendations:
 
-- **Test a flattened scalar.** Pull the field out of the structured result first, as described in [Enrich with AI](/best-practices/how-we-context-engineer/5-enrich-with-ai) <Lifecycle status="beta" />. Then the test reads the same plain value on every engine.
-- **Read the allowed values from the schema.** Don't copy the label list into the test. One definition, many uses.
-- **Keep it a singular test.** Looking up a versioned schema by name can't be done in a generic test. Write down why, so the next person doesn't "tidy" it into a generic test and quietly break it.
+- **Test a flattened scalar:** Pull the field out of the structured result first, as described in [Enrich with AI](/best-practices/how-we-context-engineer/5-enrich-with-ai) <Lifecycle status="beta" />. Then the test reads the same plain value on every engine.
+- **Read the allowed values from the schema:** Don't copy the label list into the test. One definition, many uses.
+- **Keep it a singular test:** Looking up a versioned schema by name can't be done in a generic test. Write down why, so the next person doesn't "tidy" it into a generic test and quietly break it.
 
 ### Evaluation
 
@@ -126,9 +126,9 @@ where metric = 'accuracy'
 
 Our recommendations:
 
-- **Build a golden set early.** A small hand-labeled set beats none. Without it, you can't tell an improvement from a regression.
-- **Gate every prompt and model change on it.** Regression is silent by nature. A gate is how it becomes loud.
-- **Keep the set stable.** Add to it as you find edge cases, but don't quietly relabel to make a new prompt look better.
+- **Build a golden set early:** A small hand-labeled set beats none. Without it, you can't tell an improvement from a regression.
+- **Gate every prompt and model change on it:** Regression is silent by nature. A gate is how it becomes loud.
+- **Keep the set stable:** Add to it as you find edge cases, but don't quietly relabel to make a new prompt look better.
 
 ### Chunk size
 
@@ -166,7 +166,7 @@ Two granularities matter, and you need both:
 - **Row-level lineage** says _where_ a fact came from. It doesn't prove the fact is in that row, because a model can cite the right ticket and still invent the detail.
 - **Span-level evidence** says _what in the row_ supports it. Because it's literal text, you can machine-check it, which is what makes the groundedness test possible.
 
-**Design lineage in on day one.** Lineage is destroyed, not derived. The moment a chunk forgets which sentences it packed, that information is gone, and no later step can recover it. The cost is small: a few extra columns and an evidence field.
+Design lineage in on day one, because lineage is destroyed, not derived. The moment a chunk forgets which sentences it packed, that information is gone, and no later step can recover it. The cost is small: a few extra columns and an evidence field.
 
 ## Adapter notes
 
