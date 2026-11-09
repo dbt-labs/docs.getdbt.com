@@ -282,7 +282,7 @@ fabric_dw:
       authentication: CLI
       workspace_id: e4487eff-d67d-4b58-917c-ffbb61a5c05f
       warehouse_snapshot_name: dbt-dwtests-snpshot
-      
+```
 ### Behavior
 - Before a dbt operation (`run`, `build`, `snapshot`), the adapter captures the pre-state of affected tables.
 - After execution, the warehouse snapshot is created with snapshot timestamp.

@@ -2,7 +2,7 @@
   "_meta": {
     "platform": "databricks",
     "platform_name": "Databricks",
-    "count": 813
+    "count": 815
   },
   "functions": [
     {
@@ -1082,6 +1082,13 @@
       "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/current_version",
       "preview_status": "GA",
       "fusion_typecheck": true
+    },
+    {
+      "name": "DATA_SKIPPING_SUMMARY",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/data_skipping_summary",
+      "preview_status": "GA",
+      "fusion_typecheck": false
     },
     {
       "name": "DATE",
@@ -2172,6 +2179,13 @@
       "name": "ISTRUE",
       "category": "Built-in",
       "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/istrue",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "JARO_WINKLER_SIMILARITY",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/jaro_winkler_similarity",
       "preview_status": "GA",
       "fusion_typecheck": false
     },
