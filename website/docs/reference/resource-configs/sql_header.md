@@ -213,4 +213,20 @@ select yes_no_to_boolean(yes_no) from {{ ref('other_model') }}
 
 </File>
 
+### Declare a BigQuery script variable
 
+Use `set_sql_header` to declare a variable before the model query, then reference it in the query:
+
+<File name='models/my_model.sql'>
+
+```sql
+{% call set_sql_header(config) %}
+DECLARE cutoff_date DATE DEFAULT DATE '2024-01-01';
+{% endcall %}
+
+select order_id, order_date
+from {{ ref('orders') }}
+where order_date >= cutoff_date
+```
+
+</File>
