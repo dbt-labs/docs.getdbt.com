@@ -37,7 +37,7 @@ Context is the information an AI agent reads to do its job. Good context is:
 
 ## Context and the semantic layer
 
-Use the semantic layer for your metrics and context for your unstructured and semi-structured data. They work side by side:
+You might've previously asked yourself, 'when should I use the semantic layer and when should I use context?'.  Use the semantic layer for your metrics and context for your unstructured and semi-structured data. They complement each other and work side by side:
 
 <SimpleTable>
 
