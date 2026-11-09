@@ -95,7 +95,12 @@ You already have most of the instincts:
 
 On Redshift, AI runs through Amazon Bedrock. Structured output is best-effort, there's no managed vector index, and the drift canary isn't supported.
 
-New to some dbt basics? Skim [SQL models](/docs/build/sql-models), [materializations](/docs/build/materializations), [incremental models](/docs/build/incremental-models), [data tests](/docs/build/data-tests), [hooks](/docs/build/hooks-operations), [project variables](/docs/build/project-variables), and [packages](/docs/build/packages) first. You don't need to be an expert. Stuck on a context engineering term? Check the [glossary](/best-practices/how-we-context-engineer/8-glossary).
+
+:::info New to some dbt basics? 
+If you're new to dbt, we recommend you skim [SQL models](/docs/build/sql-models), [materializations](/docs/build/materializations), [incremental models](/docs/build/incremental-models), [data tests](/docs/build/data-tests), [hooks](/docs/build/hooks-operations), [project variables](/docs/build/project-variables), and [packages](/docs/build/packages) first. You don't need to be an expert. Stuck on a context engineering term? 
+
+Check the [glossary](/best-practices/how-we-context-engineer/8-glossary).
+:::
 
 ## What's in the guide
 
