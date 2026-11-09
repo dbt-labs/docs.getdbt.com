@@ -154,7 +154,7 @@ State-aware orchestration and dbt State differ in a few ways:
     To reduce unnecessary rebuilds from non-determinism, set [`compare_unrendered_code: true`](/reference/resource-configs/compare-unrendered-code). When enabled, dbt State only rebuilds when both the unrendered Jinja template and the rendered SQL have changed. For macros that dynamically discover relations (like `get_relations_by_pattern`), this setting may prevent a rebuild when new matching tables are added to the warehouse.
   - **Models with external sources on BigQuery**: Models that use external sources (such as Google Sheets) always rebuild because BigQuery doesn't expose modification timestamps for external sources, so dbt State can't determine freshness. 
   
-  To avoid this, configure [`loaded_at_field`](/reference/resource-configs/freshness) or [`loaded_at_query`](/reference/resource-configs/freshness) in your source definition to point to a timestamp field &mdash; this lets dbt State query a timestamp field directly to determine freshness, instead of relying on warehouse metadata.
+    To avoid this, configure [`loaded_at_field`](/reference/resource-configs/freshness) or [`loaded_at_query`](/reference/resource-configs/freshness) in your source definition to point to a timestamp field &mdash; this lets dbt State query a timestamp field directly to determine freshness, instead of relying on warehouse metadata.
 
   Refer to [Why is my model being rebuilt instead of reused?](/faqs/State/views-rebuilt) for details on each cause and how to diagnose them.
 
