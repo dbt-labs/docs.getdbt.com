@@ -32,7 +32,7 @@ The following diagram explains the entire concept: text is split into chunks, ea
 Context is the information an AI agent reads to do its job. Good context is:
 
 - Governed, which means someone owns it, and changes are reviewed
-- Tested so you can prove it’s correct &mdash; and our teammate Hope can continue rowing 🚣‍♀️
+- Tested so you can prove it’s correct
 - Traceable so every claim points back to the source it came from
 
 ## Context and the semantic layer
