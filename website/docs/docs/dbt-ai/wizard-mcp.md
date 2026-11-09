@@ -52,25 +52,12 @@ Avoid defining the same MCP server name in more than one location unless you int
 The <Constant name="wizard"/> CLI lets you add, remove, authenticate, and customize MCP servers, including per-tool approvals, through the `config.toml` file.
 
 :::info Add MCP servers from the CLI
-You add MCP servers through the <Constant name="wizard" /> CLI, which <Constant name="wizard" /> Desktop shares. The Desktop **Connectors** pane can't add other servers yet. You can't add your own MCP servers in <Constant name="dbt_platform" /> (<Constant name="studio_ide" /> and the home app), but <Constant name="wizard" /> includes built-in dbt tools, such as [dbt Agent skills](https://github.com/dbt-labs/dbt-agent-skills) and product documentation fetching through the dbt MCP server.
+You add MCP servers through the <Constant name="wizard" /> CLI, which <Constant name="wizard" /> Desktop shares. Adding servers from the Desktop **Connectors** pane is coming soon. You can't add your own MCP servers in <Constant name="dbt_platform" /> (<Constant name="studio_ide" /> and the home app), but <Constant name="wizard" /> includes built-in dbt tools, such as [dbt Agent skills](https://github.com/dbt-labs/dbt-agent-skills) and product documentation fetching through the dbt MCP server.
 :::
 
 ## Use MCP servers in Wizard Desktop
 
-<Constant name="wizard" /> Desktop uses the same config as the CLI, so a server you add in the CLI is available in your Desktop chats. To set one up:
-
-1. [Install the <Constant name="wizard" /> CLI](/docs/dbt-ai/wizard-cli).
-2. Add a server with `wizard mcp add`. Refer to [Add an MCP server](#add-an-mcp-server).
-3. If the server uses OAuth, run `wizard mcp login SERVER_NAME`. Refer to [Authenticate a server](#authenticate-a-server).
-4. Open <Constant name="wizard" /> Desktop and start a new chat. <Constant name="wizard" /> loads MCP servers at the start of a session.
-
-Don't want to leave Desktop? You can run the same commands from its built-in terminal:
-
-1. Start a new project-scoped chat and send your first message to start the terminal.
-2. Run `wizard` from the terminal.
-3. Run `/mcp` to add a new connector and manage the ones you've already added.
-
-If your project is connected to <Constant name="dbt_platform" />, Desktop also connects to the [remote dbt MCP server](/docs/dbt-ai/mcp-quickstart-remote) by default. To turn it on or off, or sign in for an account, go to **Settings** &rarr; **Connectors**. Refer to [Desktop settings](/docs/dbt-ai/wizard-desktop-settings#connectors).
+Adding connectors directly in <Constant name="wizard" /> Desktop is coming soon. Until then, set up a server with the CLI as described on this page, and it's available in Desktop too. For the full steps, refer to [Connect MCP servers](/docs/dbt-ai/wizard-desktop-use#connect-mcp-servers) in the Desktop guide.
 
 ## Supported MCP server types
 
@@ -321,4 +308,4 @@ new columns and confirm downstream refs still resolve.
 - [<Constant name="wizard" /> CLI config](/docs/dbt-ai/wizard-config): `config.toml` keys and precedence
 - [<Constant name="wizard" /> CLI command reference](/docs/dbt-ai/wizard-cli-reference): `wizard mcp` flags and subcommands
 - [How <Constant name="wizard" /> works](/docs/dbt-ai/wizard-how-it-works): Approvals and sandboxing
-- [Wizard Desktop settings](/docs/dbt-ai/wizard-desktop-settings#connectors): The Connectors pane
+- [Connect MCP servers in Wizard Desktop](/docs/dbt-ai/wizard-desktop-use#connect-mcp-servers): Use your servers in Desktop
