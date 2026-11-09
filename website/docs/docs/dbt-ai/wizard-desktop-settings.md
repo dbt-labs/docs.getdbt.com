@@ -8,17 +8,14 @@ availability: local_all
 ---
 
 import WizardFeedbackCallout from '/snippets/_wizard-feedback-callout.md';
-import WizardDesktopPrivatePreview from '/snippets/_wizard-desktop-private-preview.md';
 
-# Wizard Desktop settings <Lifecycle status="private_beta"/>
+# Wizard Desktop settings <Lifecycle status="beta"/>
 
 <IntroText>
 Open **Settings** from the bottom left of the app to change how <Constant name="wizard" /> behaves. Settings are grouped into General, Account, AI providers, Connectors, Appearance, Shortcuts, and version control.
 </IntroText>
 
 Settings that also exist in the Wizard CLI are shared. Changing them here changes them for `wizard` in your terminal too. Refer to [the config reference](/docs/dbt-ai/wizard-config) for the underlying files.
-
-<WizardDesktopPrivatePreview />
 
 ## General
 
@@ -40,6 +37,21 @@ Controls what appears alongside a chat while you work.
 Shows the dbt accounts <Constant name="wizard" /> uses for hosted models and platform access, and gives you the tools to clean up what the app has written to disk. 
 
 - **Connected dbt accounts** lists each <Constant name="dbt_platform" /> account you've connected, with the platform account hostname, such as `abc123.us1.dbt.com`. Connect more than one account by clicking on **+Add account** and switch between them without signing in again. Each account has its own **Sign out**. To pick which account powers AI models, go to [AI providers](#ai-providers).
+- **Sign-in or Advanced sign-in options** lets you choose where <Constant name="wizard" /> signs in to <Constant name="dbt_platform" />. Most people don't need this. Use it if signing in sends you to a registration page, or the page says your user already exists. To set it up:
+
+    1. Go to **Settings** &rarr; **Account**, and then click **Sign-in options**.
+    2. Enter your account's [Access URL](/docs/platform/about-platform/access-regions-ip-addresses) in **dbt account host**, such as `ab123.us1.dbt.com`. You can find it in your <Constant name="dbt_platform" /> account settings.
+    3. (Optional) Enter your **dbt account ID**. To find it, go to **Account settings** &rarr; **Account** in <Constant name="dbt_platform" />.
+    4. Click **Save**.
+
+    <Lightbox src="/img/wizard/desktop/wizard-desktop-sign-in-options.png" width="90%" title="Sign-in options in Wizard Desktop" />
+
+    You can also set the account host from the <Constant name="wizard" /> CLI with the `DBT_CLOUD_LOGIN_HOST` environment variable. For example:
+
+    ```shell
+    export DBT_CLOUD_LOGIN_HOST=ab123.us1.dbt.com
+    ```
+
 - **Maintenance** reclaims disk space or returns <Constant name="wizard" /> to a clean state. This will affect the Wizard CLI too:
 
     <SimpleTable>

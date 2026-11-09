@@ -388,7 +388,6 @@ const sidebarSettings = {
           link: { type: "doc", id: "docs/platform/wizard-overview" },
           items: [
             "docs/platform/wizard-overview",
-            "docs/dbt-ai/wizard-quickstart",
             "docs/platform/manage-dbt-ai",
             "docs/dbt-ai/wizard-use-cases",
             "docs/dbt-ai/wizard-how-it-works",
@@ -500,6 +499,7 @@ const sidebarSettings = {
             "docs/dbt-ai/integrate-mcp-cursor",
             "docs/dbt-ai/integrate-mcp-vscode",
             "docs/dbt-ai/integrate-mcp-snowflake-cortex",
+            "docs/dbt-ai/integrate-mcp-databricks",
           ],
         },
         "docs/dbt-ai/mcp-troubleshooting",
