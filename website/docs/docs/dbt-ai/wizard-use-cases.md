@@ -41,7 +41,7 @@ Once you're set up, refer to [How to use dbt Wizard in your dbt project](/best-p
 
 ## Featured scenarios
 
-Start here and use each scenario's prompt you can copy.
+Read some of the scenarios depending on your use case. Some scenarios have a prompt you can copy if applicable. 
 
 ### Upgrade a project to dbt v2
 _Recommended with Wizard Desktop_
