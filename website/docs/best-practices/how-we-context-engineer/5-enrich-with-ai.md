@@ -34,13 +34,13 @@ Context engineering runs on a small vocabulary. There are four row-level operati
 
 <SimpleTable>
 
-| Operation | Returns | Output shape defined by | Use it to |
-|-----------|---------|------------------------|-----------|
-| Classify | One label | Required. The allowed values are the labels. | Put each row in a bucket |
-| Extract | A record with several fields | Required | Pull out facts that are present in the text, with a quote you can verify |
-| Generate | Free text, or a structured object | Optional | Summarize, rewrite, or answer |
-| Embed | A vector | None. You pin a model. | Make text searchable by meaning (covered in [Embed and retrieve](/best-practices/how-we-context-engineer/4-embed-and-retrieve)) |
-| Aggregate | One answer per group | None | Reason across every row in a group at once |
+| Operation | Package macro | Returns | Output shape defined by | Use it to |
+|-----------|---------------|---------|------------------------|-----------|
+| Classify | `classify()` | One label | Required. The allowed values are the labels. | Put each row in a bucket |
+| Extract | `extract()` | A record with several fields | Required | Pull out facts that are present in the text, with a quote you can verify |
+| Generate | `generate()` | Free text, or a structured object | Optional | Summarize, rewrite, or answer |
+| Embed | `embed()` | A vector | None. You pin a model. | Make text searchable by meaning (covered in [Embed and retrieve](/best-practices/how-we-context-engineer/4-embed-and-retrieve)) |
+| Aggregate | `ai_agg()` | One answer per group | None | Reason across every row in a group at once |
 
 </SimpleTable>
 
@@ -50,18 +50,21 @@ Every major warehouse exposes these as SQL functions, but each names them differ
 
 | Operation | Snowflake | Databricks | BigQuery |
 |-----------|-----------|------------|----------|
-| Generate | `AI_COMPLETE` | `ai_query` | `AI.GENERATE` |
-| Classify | `AI_CLASSIFY` | `ai_classify` | `AI.GENERATE` |
-| Extract | `AI_COMPLETE` | `ai_query` | `AI.GENERATE` |
-| Embed | `AI_EMBED` | Serving endpoint | `AI.EMBED` |
+| Generate | [`AI_COMPLETE`](https://docs.snowflake.com/en/sql-reference/functions/ai_complete) | [`ai_query`](https://docs.databricks.com/aws/en/sql/language-manual/functions/ai_query) | [`AI.GENERATE`](https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/bigqueryml-syntax-ai-generate) |
+| Classify | [`AI_CLASSIFY`](https://docs.snowflake.com/en/sql-reference/functions/ai_classify) | [`ai_classify`](https://docs.databricks.com/aws/en/sql/language-manual/functions/ai_classify) | [`AI.GENERATE`](https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/bigqueryml-syntax-ai-generate) |
+| Extract | [`AI_COMPLETE`](https://docs.snowflake.com/en/sql-reference/functions/ai_complete) | [`ai_query`](https://docs.databricks.com/aws/en/sql/language-manual/functions/ai_query) | [`AI.GENERATE`](https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/bigqueryml-syntax-ai-generate) |
+| Embed | [`AI_EMBED`](https://docs.snowflake.com/en/sql-reference/functions/ai_embed) | [Serving endpoint](https://docs.databricks.com/aws/en/machine-learning/model-serving/query-embedding-models) | [`AI.EMBED`](https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/bigqueryml-syntax-ai-embed) |
+| Aggregate | [`AI_AGG`](https://docs.snowflake.com/en/sql-reference/functions/ai_agg) | No native function. The package builds it with [`ai_query`](https://docs.databricks.com/aws/en/sql/language-manual/functions/ai_query). | [`AI.AGG`](https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/bigqueryml-syntax-ai-agg) |
 
 </SimpleTable>
+
+You don't write these by hand. In your models, you call the package macro from the first table, and it writes your warehouse's function for you. The examples on this page use Snowflake. On Databricks or BigQuery, the same macro call works. Only the function it writes changes.
 
 ### Classify
 
 Classify sorts each chunk into one bucket from a list you write, like `weather_disruption` or `routine_status`.
 
-Who does the sorting? An AI model, through your warehouse's built-in AI function. You don't label anything by hand. You write the list of labels and what each one means, and the package's `classify()` macro sends each chunk to the model.
+Who does the sorting? An AI model, through your warehouse's built-in AI function (on Snowflake, `AI_CLASSIFY`). You don't label anything by hand. You write the list of labels and what each one means, and the package's `classify()` macro sends each chunk to the model.
 
 #### Create your labels
 
@@ -159,13 +162,94 @@ Extract pulls typed facts out of the text into fields. Use it when you need seve
 
 Every extracted fact should carry an `evidence` field: the verbatim quote that supports it. That quote is what makes the fact checkable (refer to [Keep context trustworthy](/best-practices/how-we-context-engineer/6-keep-context-trustworthy)). Mark `evidence` as optional in your schema. A quote might genuinely not exist, and a required field the model can't fill invites an invented quote, which is an ungrounded citation.
 
+On Snowflake, `extract()` runs `AI_COMPLETE` with your schema. Write the prompt macro the same way you did for classify. The schema is where Extract differs, because it lists fields instead of labels:
+
+<File name="macros/prompts/jaffle_incident_facts.sql">
+
+```sql
+{% macro schema__jaffle_incident_facts__v1() -%}
+{%- raw -%}
+{ "type": "object",
+  "properties": {
+    "account": { "type": "string" },
+    "problem": { "type": "string" },
+    "evidence": { "type": "string" } },
+  "required": ["problem"] }
+{%- endraw -%}
+{%- endmacro %}
+```
+
+</File>
+
+Then call `extract()` in a model, the same way you called `classify()`:
+
+<File name="models/context/ai/incident_facts.sql">
+
+```sql
+{{ config(
+    meta={'ai_prompt': {'name': 'jaffle_incident_facts', 'version': 'v1'}}
+) }}
+
+select
+    chunk_id,
+    {{ dbt_context_engineering.extract(
+        'chunk_text',
+        prompt=dbt_context_engineering.config_prompt(),
+        output_schema=dbt_context_engineering.config_schema()
+    ) }} as facts
+from {{ ref('chunk_transcripts') }}
+```
+
+</File>
+
+Set the `model_extract` var (or `model_generate`) to a model your Snowflake account can use.
+
 ### Generate <Lifecycle status="beta" />
 
 Generate produces open-ended output: a summary, a rewrite, or an answer. Reach for it when no label or field set fits. Because the output is free-form, it's the hardest operation to test, so prefer classify or extract when either would do.
 
+On Snowflake, `generate()` runs `AI_COMPLETE`. It takes a prompt macro like the one for classify, with no schema needed:
+
+<File name="models/context/ai/call_summaries.sql">
+
+```sql
+{{ config(
+    meta={'ai_prompt': {'name': 'jaffle_call_summary', 'version': 'v1'}}
+) }}
+
+select
+    chunk_id,
+    {{ dbt_context_engineering.generate(
+        'chunk_text',
+        prompt=dbt_context_engineering.config_prompt()
+    ) }} as summary
+from {{ ref('chunk_transcripts') }}
+```
+
+</File>
+
+Set the `model_generate` var to a model your Snowflake account can use.
+
 ### Aggregate <Lifecycle status="beta" />
 
 Aggregate asks a model to reason across every row in a `group by` group instead of row by row, such as summarizing a whole call transcript or rolling up sentiment for an account.
+
+On Snowflake, `ai_agg()` runs `AI_AGG`. The prompt is a plain instruction, not a template, and your `group by` decides what counts as one group. Here, every chunk from one call becomes one summary:
+
+<File name="models/context/ai/call_rollups.sql">
+
+```sql
+select
+    partition_key as transcript_id,
+    {{ dbt_context_engineering.ai_agg(
+        'chunk_text',
+        'Summarize what this customer raised on the call, in two sentences.'
+    ) }} as call_summary
+from {{ ref('chunk_transcripts') }}
+group by partition_key
+```
+
+</File>
 
 This is the operation where warehouses diverge the most. See [adapter notes](#adapter-notes) below.
 
