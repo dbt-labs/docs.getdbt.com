@@ -44,13 +44,6 @@ import CopilotWizardDifferences from '/snippets/_copilot-wizard-diff.md';
     link="/docs/dbt-ai/wizard-desktop"
     icon="wizard"/>
 
-
-<Card
-    title="Move to dbt Wizard"
-    body="Move from Claude Code, Cursor, or another AI agent to dbt Wizard CLI with native project context."
-    link="/docs/dbt-ai/wizard-migrate"
-    icon="wizard"/>
-
 </div>
 
 ## Explore dbt Copilot

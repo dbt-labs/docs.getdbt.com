@@ -1,0 +1,58 @@
+---
+title: "Configure BYOK in Wizard Desktop"
+id: "wizard-desktop-byok"
+description: "Bring your own API key to use Wizard Desktop. Set up Amazon Bedrock, Anthropic, Azure OpenAI, Databricks, Google Gemini, OpenAI, and more from Settings."
+sidebar_label: "BYOK configuration"
+tags: [AI, Agents, dbt Wizard]
+availability: local_all
+---
+
+import WizardByokProviderSetup from '/snippets/_wizard-byok-provider-setup.md';
+import WizardFeedbackCallout from '/snippets/_wizard-feedback-callout.md';
+
+# Configure BYOK in Wizard Desktop <Lifecycle status="beta"/>
+
+<IntroText>
+Bring your own key (BYOK) means you use credentials from your own AI provider instead of dbt Labs-managed models. Add them in <Constant name="wizard" /> Desktop under **Settings** &rarr; **AI providers**.
+</IntroText>
+
+With BYOK, <Constant name="wizard" /> calls your provider directly, so usage costs show up on your provider account, not your dbt Labs account. You don't need a <Constant name="dbt_platform" /> plan to use it.
+
+Using the CLI or <Constant name="dbt_platform" /> instead? Refer to [Configure BYOK for the CLI](/docs/dbt-ai/wizard-byok) or [Configure BYOK in dbt platform](/docs/platform/wizard-byok-platform).
+
+## Add a provider
+
+1. Open **Settings** (<kbd>⌘</kbd> + <kbd>,</kbd>) and select **AI providers**.
+2. Under **Managed by you**, find your provider and select **Configure**.
+3. Select the models you want to use. Select **Use provider defaults** to go back to the recommended selection.
+4. Enter your credentials. Refer to [Provider setup](#provider-setup) for what each provider needs.
+5. Select **Save**.
+
+Each provider shows whether it's set up and how many models are available, such as `Not set up · 9 models available`. Select **Refresh** if a provider or model you expect isn't listed.
+
+Pick the model and reasoning effort for each chat from the chat composer.
+
+## Provider setup
+
+<WizardByokProviderSetup />
+
+## Update or turn off a provider
+
+- **Update credentials:** Select **Configure**, enter the new key, and select **Save**. Leave the key blank to keep the saved one.
+- **Turn a provider off:** Select **Configure**, clear every model, and select **Save**.
+
+## Switch the dbt account for managed models
+
+Under **Managed by dbt Labs**, select **Configure** on the `dbt` provider to:
+
+- Choose which dbt account <Constant name="wizard" /> uses for hosted models and billing. This doesn't change which accounts <Constant name="wizard" /> can import projects from.
+- Turn individual dbt-managed models on or off.
+
+## Related docs
+
+- [Wizard Desktop settings](/docs/dbt-ai/wizard-desktop-settings)
+- [Get started with Wizard Desktop](/docs/dbt-ai/wizard-desktop)
+- [Configure BYOK for the CLI](/docs/dbt-ai/wizard-byok)
+- [dbt Labs-managed providers and billing](/docs/dbt-ai/pricing-billing/overview#dbt-managed-providers)
+
+<WizardFeedbackCallout />

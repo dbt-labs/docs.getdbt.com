@@ -80,7 +80,7 @@ Choose how <Constant name="wizard" /> reaches a model. Come here if you selected
 | Option | What it means |
 |---|---|
 | Managed by dbt Labs | No setup. dbt Labs [manages](/docs/dbt-ai/pricing-billing/overview#dbt-managed-providers) the keys and keeps you on the latest models, and usage is metered against your dbt usage credits. The `dbt` provider shows as **Active** when it's in use |
-| Managed by you | Bring your own key for Amazon Bedrock, Anthropic, Azure OpenAI, Databricks, Google Gemini, OpenAI, or an OpenAI subscription, and more. That provider's API charges apply. Refer to [BYOK](/docs/dbt-ai/wizard-byok) |
+| Managed by you | Bring your own key for Amazon Bedrock, Anthropic, Azure OpenAI, Databricks, Google Gemini, OpenAI, or an OpenAI subscription, and more. That provider's API charges apply. Refer to [BYOK in Wizard Desktop](/docs/dbt-ai/wizard-desktop-byok) |
 
 </SimpleTable>
 
@@ -157,7 +157,7 @@ Set how <Constant name="wizard" /> authenticates with GitHub to read repos and o
 - [Get started with Wizard Desktop](/docs/dbt-ai/wizard-desktop)
 - [Use Wizard Desktop](/docs/dbt-ai/wizard-desktop-use)
 - [<Constant name="wizard" /> config reference](/docs/dbt-ai/wizard-config)
-- [Configure BYOK](/docs/dbt-ai/wizard-byok)
+- [Configure BYOK in Wizard Desktop](/docs/dbt-ai/wizard-desktop-byok)
 - [Use MCP servers](/docs/dbt-ai/wizard-mcp)
 
 <WizardFeedbackCallout />

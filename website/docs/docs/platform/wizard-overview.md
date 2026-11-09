@@ -122,7 +122,6 @@ A terminal-based agent for governed data development in dbt, whether your team u
 - [Invite read-only users to dbt Wizard](/docs/platform/wizard-read-only-users) — let business users ask questions of production data in Explore mode, without development access
 - [Use skills in dbt platform](/docs/dbt-ai/wizard-platform-skills) — give dbt Wizard reusable instructions for your project
 - [Use MCP servers with dbt Wizard CLI](/docs/dbt-ai/wizard-mcp) — connect the dbt Wizard CLI to more tools and context
-- [Migrate to dbt Wizard](/docs/dbt-ai/wizard-migrate) — switch from Claude Code, Cursor, or another AI agent to dbt Wizard
 - [Privacy and data FAQs](/docs/dbt-ai/dbt-ai-faqs#privacy-and-data) — understand how dbt Wizard handles privacy and data
 
 <WizardFeedbackCallout />
