@@ -43,7 +43,7 @@ Vectors have one rule that ordinary columns don't: **they're only comparable to 
 
 - **Pin one embedding model for the whole corpus.** Never mix models in one searchable set.
 - **Embed your query with the same model as your corpus.** A query vector from a different model returns confidently wrong results.
-- **Set the model explicitly in configuration.** A floating alias can quietly resolve to a new snapshot.
+- **Set the model explicitly in configuration.** A floating alias can quietly resolve to a new snapshot. In the package, that's the `embedding_model` var.
 
 Embedding costs money, so you'll want to refresh vectors incrementally. We cover that in [Keep embeddings fresh](#keep-embeddings-fresh), once you have search working.
 
@@ -156,7 +156,7 @@ Our recommendations:
 
 You can skip this section on a first pass. Come back to it once you're re-running builds and want to stop paying to re-embed text that hasn't changed.
 
-An embedding goes stale when anything on the input side changes: the text, the model, or the settings. Embedding costs money, so you don't want to re-embed a row you've already processed. That makes an incremental model the natural fit.
+An embedding goes stale when anything on the input side changes: the text, the model, or the settings. Embedding costs money, so you don't want to re-embed a row you've already processed. That makes an incremental model the natural fit. The [`dbt_context_engineering` package](https://github.com/dbt-labs/dbt-context-engineering) builds these practices in, and each recommendation below names the macro or var that does it. You can browse the macros in the package's [`macros` folder](https://github.com/dbt-labs/dbt-context-engineering/tree/main/macros).
 
 ### Refresh incrementally, with two modes
 
@@ -171,13 +171,15 @@ Because vectors are only comparable within one model, your model needs to know w
 
 </SimpleTable>
 
-- **Decide the mode at run time, not parse time.** "Did the stored version change?" can only be answered by reading the table when the model runs. Use a runtime signal that flips an ordinary incremental model's `where` clause.
-- **Catch edited rows, not just new ones.** Store a hash (a short fingerprint of the text) of exactly what you embedded, and re-embed when it changes.
-- **Gate full rebuilds.** A bare `--full-refresh` shouldn't be able to silently re-bill your whole corpus.
+- **Decide the mode at run time, not parse time.** "Did the stored version change?" can only be answered by reading the table when the model runs. Use a runtime signal that flips an ordinary incremental model's `where` clause. In the package, `version_guard` returns true when the stored version differs from the pinned one, and `incremental_delta_predicate` builds the `where` clause for you. [ADR-0004](https://github.com/dbt-labs/dbt-context-engineering/blob/main/adr/0004-version-aware-incremental-refresh.md) explains the reasoning.
+- **Catch edited rows, not just new ones.** Store a hash (a short fingerprint of the text) of exactly what you embedded, and re-embed when it changes. In the package, that's `content_hash`.
+- **Gate full rebuilds.** A bare `--full-refresh` shouldn't be able to silently re-bill your whole corpus. [Control cost](/best-practices/how-we-context-engineer/7-control-cost#gate-full-refreshes) shows how.
 
 ### Store a cache key with every vector
 
 Alongside the hash of the text, store a fingerprint of the model, vector size, and provider settings you used. You need both. Without the fingerprint, a settings change with identical text goes undetected. Without the hash, an edit to a row under the same model goes undetected. Keep each vector in the same row as the entity it describes.
+
+In the package, `embedding_fn_fingerprint` covers the model and settings, `embedding_dimension` records the vector size the engine returned, and `embedding_logic_hash` fingerprints the embedding code itself. [ADR-0023](https://github.com/dbt-labs/dbt-context-engineering/blob/main/adr/0023-embedding-metadata-and-content-hash-delta.md) explains the reasoning.
 
 Two more things to watch for. If you re-chunk and a chunk id disappears, nothing detects the stale vector, so add a `relationships` test between your embeddings and your current chunks. And a row whose text later becomes null is left frozen rather than re-embedded, so filter out null text with `where body is not null`.
 
@@ -187,14 +189,31 @@ Your code and config can stay exactly the same while the provider changes what c
 
 A **canary** catches this. You keep a handful of frozen probe strings, re-embed them on every build, and compare each result to a baseline a person has already reviewed. If similarity drops below your threshold, the test raises a warning.
 
-- **Compare by cosine similarity, not exact match.** Identical text doesn't always produce identical vectors (see [adapter notes](#adapter-notes-for-freshness)), so ask "would this difference change a search result?" The default threshold is 0.999.
-- **Expect a warning, not a failure.** The default severity is `warn`, so a benign build never fails on a mismatch. Set the severity to `error` if you want it to fail, for example in CI.
-- **Turn it on deliberately.** The canary makes real embedding calls, so it's off by default and its baseline seed ships disabled. Enable the monitor and the seed together, and run it on a scheduled production job.
+- **Compare by cosine similarity, not exact match.** Identical text doesn't always produce identical vectors (see [adapter notes](#adapter-notes-for-freshness)), so ask "would this difference change a search result?" The default threshold is 0.999, set with the `embedding_canary_similarity_threshold` var.
+- **Expect a warning, not a failure.** The default severity is `warn`, so a benign build never fails on a mismatch. Set the `embedding_canary_test_severity` var to `error` if you want it to fail, for example in CI.
+- **Turn it on deliberately.** The canary is the `embedding_canary` model. It makes real embedding calls, so it's off by default and its baseline seed ships disabled. Enable the model and the seed together, and run it on a scheduled production job:
+
+<File name="dbt_project.yml">
+
+```yaml
+models:
+  dbt_context_engineering:
+    monitoring:
+      +enabled: true
+
+seeds:
+  dbt_context_engineering:
+    +enabled: true
+```
+
+</File>
+
+When you change the embedding function on purpose, re-review the baseline. Run `dbt run-operation print_embedding_canary` to print the current probes.
 
 ### Adapter notes for freshness
 
 - **Vectors aren't bit-for-bit repeatable on Snowflake and Databricks.** Re-embedding the same text gives cosine similarity above 0.999999 between runs. Never compare vectors for exact equality. BigQuery showed no variation in our tests.
-- **Set the vector dimension explicitly for the canary on Snowflake.** Databricks and BigQuery use the defaults.
+- **On Snowflake, check the canary's vector size.** The `embedding_canary_vector_dimension` var defaults to 768, the size of `snowflake-arctic-embed-m-v1.5`. Set it if your model's vectors are a different size. Databricks and BigQuery need nothing.
 - **Databricks needs a recent runtime for AI functions.** It requires DBR 15.4 LTS or above, and not Databricks SQL Classic. If you don't meet this, you'll see an opaque SQL error, so check it first when troubleshooting.
 
 ## What's next

@@ -96,9 +96,9 @@ The package's `chunk()` macro does this for you and returns one row per chunk, w
 
 </SimpleTable>
 
-The example SQL above uses 512 tokens, a typical target. The jaffle project uses 100 on purpose. Its sample documents are short, so 512 would never split anything.
+The example SQL above uses 512 tokens, a typical target, and it's the package's default. Change it with the `chunk_target_tokens` var. The jaffle project uses 100 on purpose. Its sample documents are short, so 512 would never split anything.
 
-If searches miss answers that straddle a chunk boundary, you can repeat the last unit or two of the previous chunk at the start of the next. It costs extra tokens, so add it only when you need it.
+If searches miss answers that straddle a chunk boundary, you can repeat the last unit or two of the previous chunk at the start of the next. It costs extra tokens, so add it only when you need it. In the package, that's the `chunk_overlap_tokens` var, which defaults to 0.
 
 ### Keep lineage from the start
 

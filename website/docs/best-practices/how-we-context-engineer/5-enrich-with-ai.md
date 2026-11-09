@@ -96,17 +96,21 @@ Classify sorts each chunk into one bucket from a list you write, like `weather_d
 
     </File>
 
-3. **Call `classify()` in a model.** It points at your macros by name and version. This is the pattern `jaffle-logistics` uses to classify every chunk:
+3. **Call `classify()` in a model.** Name your prompt once in `meta.ai_prompt`, and the model reads it from there. The cost guard reads the same name (see [Control cost](/best-practices/how-we-context-engineer/7-control-cost)):
 
     <File name="models/context/ai/call_transcripts_classify.sql">
 
     ```sql
+    {{ config(
+        meta={'ai_prompt': {'name': 'jaffle_content_type', 'version': 'v1'}}
+    ) }}
+
     select
         chunk_id,
         {{ dbt_context_engineering.classify(
             'chunk_text',
-            prompt=dbt_context_engineering.prompt('jaffle_content_type', 'v1'),
-            output_schema=dbt_context_engineering.schema_def('jaffle_content_type', 'v1')
+            prompt=dbt_context_engineering.config_prompt(),
+            output_schema=dbt_context_engineering.config_schema()
         ) }} as content_type
     from {{ ref('call_transcripts_hashed') }}
     ```
@@ -138,7 +142,7 @@ Labels make search precise. Without them, short boilerplate chunks crowd the top
 
 Treat your labels like any other model: someone owns them, and changes go through a pull request.
 
-- **Never edit `v1`.** Copy both macros to `v2`, make your change, and point your model at `v2`.
+- **Never edit `v1`.** Copy both macros to `v2`, make your change, and change the version in `meta.ai_prompt` to `v2`.
 - **Change both macros together.** The instructions and the list need the same labels. A test catches a label that isn't on the list (see [Keep context trustworthy](/best-practices/how-we-context-engineer/6-keep-context-trustworthy)).
 - **Rebuild.** Classify relabels every chunk on each build, so it bills again.
 - **Check accuracy.** Keep a small set of chunks you've labeled yourself, and test the model's labels against them.
@@ -201,7 +205,7 @@ The operations are the same everywhere, but the warehouses behave differently in
 
 **Aggregation differs the most** <Lifecycle status="beta" />. Databricks has no native aggregate function, and Snowflake and BigQuery differ on model choice and row order. Check your warehouse's documentation before you rely on it.
 
-**Name your models explicitly.** Set the model for each operation in configuration rather than relying on defaults.
+**Name your models explicitly.** Set the model for each operation in configuration rather than relying on defaults. In the package, those are the `model_generate`, `model_classify`, and `model_extract` vars.
 
 ## What's next
 

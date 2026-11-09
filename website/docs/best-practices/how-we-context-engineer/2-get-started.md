@@ -45,10 +45,12 @@ Add the package to a `packages.yml` file at the root of your dbt project, as `ja
 ```yaml
 packages:
   - package: dbt-labs/dbt_context_engineering
-    version: [">=0.1.0", "<1.0.0"]
+    version: [">=0.2.0", "<1.0.0"]
 ```
 
 </File>
+
+This guide needs version 0.2.0 or later. Earlier versions are missing features that [Control cost](/best-practices/how-we-context-engineer/7-control-cost) uses.
 
 Set the variables the package reads in `dbt_project.yml`. AI functions are off by default, so nothing bills until you turn them on for a target:
 
