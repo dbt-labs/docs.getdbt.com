@@ -16,7 +16,7 @@ import WizardFeedbackCallout from '/snippets/_wizard-feedback-callout.md';
 Bring your own key (BYOK) means you use credentials from your own AI provider instead of dbt Labs-managed models. Add them in <Constant name="wizard" /> Desktop under **Settings** &rarr; **AI providers**.
 </IntroText>
 
-With BYOK, <Constant name="wizard" /> calls your provider directly, so usage costs show up on your provider account, not your dbt Labs account. You don't need a <Constant name="dbt_platform" /> plan to use it.
+With BYOK, <Constant name="wizard" /> calls your provider directly, so usage costs show up on your provider account, not your dbt account. 
 
 Using the CLI or <Constant name="dbt_platform" /> instead? Refer to [Configure BYOK for the CLI](/docs/dbt-ai/wizard-byok) or [Configure BYOK in dbt platform](/docs/platform/wizard-byok-platform).
 
