@@ -14,15 +14,11 @@ In this section, you'll learn how to:
 - Gate prompt and model changes so quality can't slip quietly
 - Keep every claim traceable to the exact source it came from
 
-Stuck on a term? Check the [glossary](/best-practices/how-we-context-engineer/8-glossary).
-
 ## Why do you need a new kind of test?
 
-The rest of your pipeline answers "is this data shaped right?" Right type, in range, not null. None of that answers "is it correct?"
+Ordinary tests check shape: right type, in range, not null. They can't tell you whether a value is correct. A model can return a well-formed answer it made up (a **hallucination**), and every check still passes.
 
-AI output fails in ways ordinary tests never probe. A value can be well-formed, the right type, and non-null, and still be something the model made up (a **hallucination**). The checks pass while the content is a lie.
-
-Models fail in three characteristic ways:
+AI output fails in three ways:
 
 <SimpleTable>
 
@@ -36,23 +32,21 @@ Models fail in three characteristic ways:
 
 ## Check with code, not with another model
 
-Here's the idea that makes this practical: **checking is far cheaper than producing.**
+Checking is far cheaper than producing:
 
 - To produce a grounded quote, you need a model. To check that a quote is grounded, you need a substring test.
 - To produce a correct label, you need a model. To check a label is allowed, you need set membership.
 - To score accuracy, you compare against a hand-labeled answer key.
 
-Every check is exact string, set, or arithmetic logic. No model, no spend, no randomness. That's what lets these tests run on every pull request like any other dbt test, instead of being an expensive, occasional, human-run ritual.
-
-Wherever you can, verify AI output with non-AI checks.
+Every check is exact string, set, or arithmetic logic: no model, no spend, no randomness. So these tests run on every pull request like any other dbt test.
 
 ## Three tests we recommend
 
-The `dbt_context_engineering` package ships all three. The jaffle project doesn't wire them yet, so treat the package README as your reference for these.
+The `dbt_context_engineering` package ships all three. The jaffle project doesn't wire them yet.
 
 ### Groundedness
 
-A groundedness test fails any row whose evidence quote isn't actually in its source text. This is the highest-leverage check you can add, because it turns a convention you already follow, carrying a verbatim quote with every extracted fact, from an honor system into an enforced rule. A required-but-unchecked field is a false sense of safety.
+A groundedness test fails any row whose evidence quote isn't actually in its source text. This is the highest-leverage check you can add. It turns a convention you already follow, carrying a verbatim quote with every extracted fact, from an honor system into an enforced rule.
 
 <File name="models/context/ai/_context_ai.yml">
 
@@ -76,9 +70,9 @@ Our recommendations:
 
 ### Conformance
 
-A conformance test fails any row whose label isn't in the schema's allowed values. It's the check that catches silent failures: when an engine drops your allowed-value list, the call succeeds and returns well-formed output, and only this test notices the labels are wrong.
+A conformance test fails any row whose label isn't in the schema's allowed values. It catches silent failures, such as an engine dropping your allowed-value list.
 
-You write it as a one-line singular test. A singular test is a SQL file in your `tests/` folder that returns the rows that fail (refer to [data tests](/docs/build/data-tests)):
+You write it as a one-line singular test, a SQL file in your `tests/` folder that returns the failing rows (refer to [data tests](/docs/build/data-tests)):
 
 <File name="tests/assert_content_types_conform.sql">
 
@@ -98,7 +92,7 @@ Our recommendations:
 
 ### Evaluation
 
-An evaluation test scores your predictions against a hand-labeled **golden set**: accuracy overall, plus precision and recall for each label. Put a threshold on a metric and you have a gate. If a prompt tweak or model upgrade drops accuracy below the bar, the build fails.
+An evaluation test scores your predictions against a hand-labeled **golden set**: accuracy overall, plus precision and recall for each label. Set a threshold on a metric and you have a gate: if a prompt tweak or model upgrade drops accuracy below the bar, the build fails.
 
 The package's `eval` macro takes a table with a predicted column and an expected column, and returns one row per metric:
 
@@ -138,13 +132,11 @@ Opt in to the `no_oversized_chunks` test to flag any chunk over your size target
 
 A test that has only ever passed hasn't been shown to work. Validate in both directions: it passes on good data, and it fails on planted bad data. Deliberately add a hallucinated quote and an invented label, and confirm each one turns the build red.
 
-This is also why conformance is worth running early. In our own cross-engine testing, one warehouse silently dropped the allowed values, and every conformance check failed 10 out of 10, while the extraction itself was perfect.
-
 ## Carry lineage at every stage
 
 When an agent says "Acme is a churn risk," the only useful follow-up is "how do you know?" The answer has to point at the exact source: this ticket, that call turn, this sentence.
 
-In analytics, tracing a value back to where it came from is lineage. For context an AI reads and repeats, the same trace is the **citation**.
+Tracing a value back to its source is lineage. For context an AI repeats, it's the **citation**.
 
 Our core rule: **every piece of context carries enough identity, at every stage, to trace it back to the original row, and extracted facts carry the verbatim span that supports them.**
 
@@ -159,18 +151,16 @@ Our core rule: **every piece of context carries enough identity, at every stage,
 
 </SimpleTable>
 
-A retrieved hit can then say: this came from ticket T-42, and here's the exact sentence. That's the difference between an answer and a defensible answer.
+A retrieved hit can then say: this came from ticket T-42, and here's the exact sentence.
 
 Two granularities matter, and you need both:
 
 - **Row-level lineage** says _where_ a fact came from. It doesn't prove the fact is in that row, because a model can cite the right ticket and still invent the detail.
 - **Span-level evidence** says _what in the row_ supports it. Because it's literal text, you can machine-check it, which is what makes the groundedness test possible.
 
-Design lineage in on day one, because lineage is destroyed, not derived. The moment a chunk forgets which sentences it packed, that information is gone, and no later step can recover it. The cost is small: a few extra columns and an evidence field.
+Design lineage in on day one, because it can't be rebuilt later. Once a chunk forgets which sentences it packed, no later step can recover that. The cost is small: a few extra columns and an evidence field.
 
 ## Adapter notes
-
-The tests are mostly portable, so there's little to configure.
 
 <SimpleTable>
 
@@ -184,4 +174,4 @@ The tests are mostly portable, so there's little to configure.
 
 ## What's next
 
-Your context is correct and traceable. The last piece is cost: AI calls aren't free to re-run, so [Control cost](/best-practices/how-we-context-engineer/7-control-cost) shows how to build in limits and a record of what each run spent.
+Next, [Control cost](/best-practices/how-we-context-engineer/7-control-cost) shows how to limit what AI calls spend and record what each run used.
