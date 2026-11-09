@@ -134,7 +134,7 @@ Here's what metadata written into a chunk's text looks like:
 
 ```text
 title: Q3 renewal call
-assignee: dana
+assignee: ric
 ---
 <original chunk text follows>
 ```
