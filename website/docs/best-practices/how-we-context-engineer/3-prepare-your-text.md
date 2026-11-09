@@ -19,6 +19,8 @@ In this section, you'll learn how to:
 
 A **chunk** is a piece of text small enough to embed (turn into a list of numbers that captures its meaning) and retrieve. Models can only read so much at once, so a 90-minute transcript or a 40-page contract has to be broken up.
 
+<Lightbox src="/img/best-practices/context-engineering/chunk-too-big.jpg" width="50%" title="Meme of Chunk from The Goonies shouting, captioned: when your chunk is bigger than the embedding model's limit." />
+
 ### Pack, don't cut
 
 It makes sense to use the approach of cutting the text every _N_ characters. But doing a blind cut can split a sentence or cut off a speaker's convo. And each half embeds to something that represents nothing.
