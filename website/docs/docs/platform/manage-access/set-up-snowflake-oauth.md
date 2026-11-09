@@ -54,7 +54,7 @@ In the following `CREATE OR REPLACE SECURITY INTEGRATION` example query, replace
 Important: If you’re using secondary roles, you must include `OAUTH_USE_SECONDARY_ROLES = 'IMPLICIT';` in the statement.
 
 :::caution Single-use refresh tokens
-Leave `OAUTH_SINGLE_USE_REFRESH_TOKENS_REQUIRED` at `FALSE` (the Snowflake default). Setting it to `TRUE` makes authorization succeed once, then later commands fail, because <Constant name="dbt" /> doesn't currently store the replacement token.
+Leave `OAUTH_SINGLE_USE_REFRESH_TOKENS_REQUIRED` set as `FALSE` (the Snowflake default). Setting it to `TRUE` causes authorization to succeed once, but subsequent commands will fail, because <Constant name="dbt" /> doesn't currently store the replacement token.
 :::
 
 Snowflake uses a refresh token to keep users signed in. With this setting on, each refresh token works only once and Snowflake issues a replacement. Some security baselines recommend enabling it. If that's already happening, refer to [Authentication has expired after authorizing](#authentication-has-expired-after-authorizing).
@@ -93,7 +93,7 @@ Additional configuration options may be specified for the security integration a
 
 ### Configure a connection in dbt
 
-The Database Admin is responsible for creating a Snowflake Connection in <Constant name="dbt" />. This Connection is configured using a Snowflake Client ID and Client Secret. These values can be determined by running the following query in Snowflake:
+The Database Admin is responsible for creating a Snowflake connection in <Constant name="dbt" />. This Connection is configured using a Snowflake Client ID and Client Secret. These values can be determined by running the following query in Snowflake:
 
 ```sql
 with
@@ -188,7 +188,7 @@ For the full query example, see [Create a security integration](#create-a-securi
 
 <Expandable alt_header="Authentication has expired after authorizing">
 
-If you can authorize Snowflake in <Constant name="dbt" /> but the next command fails with `This error occurs when authentication has expired` or `http status: 400` on `/oauth/token-request`, check the security integration in Snowflake:
+If you can authorize Snowflake in <Constant name="dbt" /> but subsequent commands fail with `This error occurs when authentication has expired` or `http status: 400` on `/oauth/token-request`, check the security integration in Snowflake:
 
 ```sql
 DESCRIBE SECURITY INTEGRATION <INTEGRATION_NAME>;
