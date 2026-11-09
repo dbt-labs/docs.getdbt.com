@@ -78,7 +78,7 @@ If you're working on something and you notice part of <Constant name="wizard" />
 </video>
 
 What you do:
-1. Hover over the line that's wrong and add a comment that says what to change. For example: `Exclude records where [condition, for example status = 'cancelled'] and recalculate the totals.` In the video, the comment is `Exclude those and refresh the totals.`
+1. Hover over the line that's wrong and add a comment that says what to change. In the example video,   we added the comment `Exclude those and refresh the totals`.
 2. Send it. The comment goes to <Constant name="wizard" /> with the line attached, so it knows exactly what you mean.
 
 Tips:
