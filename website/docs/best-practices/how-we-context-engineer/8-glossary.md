@@ -1,12 +1,16 @@
 ---
 title: "Glossary"
 id: 8-glossary
-description: Plain-language definitions of the terms used in the context engineering guide.
+description: Plain-language definitions of the terms used in the context engineering guide, plus every package macro and var in one place.
 displayText: Glossary
 hoverSnippet: Look up the terms used in the context engineering guide.
 ---
 
-New to a term? Look it up here. The terms are in alphabetical order.
+Look up a term, a package macro, or a var here. Jump to [macros](#macros) or [vars](#vars).
+
+## Terms
+
+The terms are in alphabetical order.
 
 <SimpleTable>
 
@@ -31,5 +35,79 @@ New to a term? Look it up here. The terms are in alphabetical order.
 | Token | The sub-word piece a model reads and bills by, roughly four characters of English |
 | Unit | The smallest piece of text you never split, such as a speaker turn or a sentence |
 | Vector | The list of numbers an embedding is stored as. Only comparable to vectors from the same model. |
+
+</SimpleTable>
+
+## Macros
+
+These come from the [`dbt_context_engineering` package](https://github.com/dbt-labs/dbt-context-engineering/tree/main/macros). You call them as `dbt_context_engineering.<macro>`.
+
+<SimpleTable>
+
+| Macro | What it does | Learn more |
+|-------|--------------|------------|
+| `chunk` | Splits text into chunks without cutting a unit in half | [Prepare your text](/best-practices/how-we-context-engineer/3-prepare-your-text) |
+| `no_oversized_chunks` | Test that flags chunks over your size target | [Prepare your text](/best-practices/how-we-context-engineer/3-prepare-your-text) |
+| `embed` | Turns text into a vector | [Embed and retrieve](/best-practices/how-we-context-engineer/4-embed-and-retrieve) |
+| `vector_search` | Finds the chunks closest in meaning to a question | [Embed and retrieve](/best-practices/how-we-context-engineer/4-embed-and-retrieve) |
+| `knowledge_base` | Puts every source into one common shape | [Embed and retrieve](/best-practices/how-we-context-engineer/4-embed-and-retrieve) |
+| `create_vector_index` | Creates a managed vector index. Run it with `dbt run-operation`. | [Embed and retrieve](/best-practices/how-we-context-engineer/4-embed-and-retrieve) |
+| `version_guard` | Says whether the stored embedding version differs from the pinned one | [Embed and retrieve](/best-practices/how-we-context-engineer/4-embed-and-retrieve) |
+| `incremental_delta_predicate` | Builds the `where` clause that picks which rows to embed | [Embed and retrieve](/best-practices/how-we-context-engineer/4-embed-and-retrieve) |
+| `content_hash` | Fingerprints the text you embedded | [Embed and retrieve](/best-practices/how-we-context-engineer/4-embed-and-retrieve) |
+| `embedding_fn_fingerprint` | Fingerprints the model and settings | [Embed and retrieve](/best-practices/how-we-context-engineer/4-embed-and-retrieve) |
+| `embedding_dimension` | Records the size of the vector the engine returned | [Embed and retrieve](/best-practices/how-we-context-engineer/4-embed-and-retrieve) |
+| `embedding_logic_hash` | Fingerprints the embedding code | [Embed and retrieve](/best-practices/how-we-context-engineer/4-embed-and-retrieve) |
+| `print_embedding_canary` | Prints the canary's probe texts. Run it with `dbt run-operation`. | [Embed and retrieve](/best-practices/how-we-context-engineer/4-embed-and-retrieve) |
+| `classify` | Gives each row one label | [Enrich with AI](/best-practices/how-we-context-engineer/5-enrich-with-ai) |
+| `extract` | Pulls typed fields out of text | [Enrich with AI](/best-practices/how-we-context-engineer/5-enrich-with-ai) |
+| `generate` | Writes free text | [Enrich with AI](/best-practices/how-we-context-engineer/5-enrich-with-ai) |
+| `ai_agg` | Reasons across every row in a group | [Enrich with AI](/best-practices/how-we-context-engineer/5-enrich-with-ai) |
+| `config_prompt` and `config_schema` | Read the prompt and schema named in `meta.ai_prompt` | [Enrich with AI](/best-practices/how-we-context-engineer/5-enrich-with-ai), [Control cost](/best-practices/how-we-context-engineer/7-control-cost) |
+| `field` and `text` | Pull a result into a typed column (beta) | [Enrich with AI](/best-practices/how-we-context-engineer/5-enrich-with-ai) |
+| `grounded` | Test that an evidence quote appears in its source | [Keep context trustworthy](/best-practices/how-we-context-engineer/6-keep-context-trustworthy) |
+| `conforms_to_schema` | Test that output uses only the allowed values | [Keep context trustworthy](/best-practices/how-we-context-engineer/6-keep-context-trustworthy) |
+| `eval` | Scores predictions against known-correct answers | [Keep context trustworthy](/best-practices/how-we-context-engineer/6-keep-context-trustworthy) |
+| `guard_batch` | Stops a run that's over your row or token ceiling | [Control cost](/best-practices/how-we-context-engineer/7-control-cost) |
+| `guard_agg_batch` | Stops a group that's too big for `ai_agg`. Databricks needs it. | [Enrich with AI](/best-practices/how-we-context-engineer/5-enrich-with-ai) |
+| `log_ai_run` | Adds a `started` row to the run log | [Control cost](/best-practices/how-we-context-engineer/7-control-cost) |
+| `complete_ai_run` | Adds a `completed` row to the run log | [Control cost](/best-practices/how-we-context-engineer/7-control-cost) |
+| `create_ai_run_log_table` | Creates the run log once, in an `on-run-start` hook | [Control cost](/best-practices/how-we-context-engineer/7-control-cost) |
+| `dev_sample_filter` | Caps a model to a random sample of rows while you develop | [Control cost](/best-practices/how-we-context-engineer/7-control-cost) |
+| `require_ai_functions_enabled` | Raises an error unless `ai_functions_enabled` is `true` | [Control cost](/best-practices/how-we-context-engineer/7-control-cost) |
+| `require_safe_materialization` | Raises an error if an AI function runs in a view | [Control cost](/best-practices/how-we-context-engineer/7-control-cost) |
+| `require_full_refresh_gate` | Raises an error if an incremental AI model sets no `full_refresh` | [Control cost](/best-practices/how-we-context-engineer/7-control-cost) |
+
+</SimpleTable>
+
+## Vars
+
+Set these in `dbt_project.yml` under `vars:`. The package's [var reference](https://github.com/dbt-labs/dbt-context-engineering/blob/main/skills/dbt-ce-setup/references/vars-reference.md) lists them too.
+
+<SimpleTable>
+
+| Var | Default | What it controls | Learn more |
+|-----|---------|------------------|------------|
+| `embedding_model` | None | The model `embed()` uses. Pin it. | [Embed and retrieve](/best-practices/how-we-context-engineer/4-embed-and-retrieve) |
+| `model_generate` | None | The model `generate()` uses | [Enrich with AI](/best-practices/how-we-context-engineer/5-enrich-with-ai) |
+| `model_classify` | None | The model `classify()` uses | [Enrich with AI](/best-practices/how-we-context-engineer/5-enrich-with-ai) |
+| `model_extract` | None | The model `extract()` uses. Falls back to `model_generate`. | [Enrich with AI](/best-practices/how-we-context-engineer/5-enrich-with-ai) |
+| `chunk_target_tokens` | `512` | Target chunk size | [Prepare your text](/best-practices/how-we-context-engineer/3-prepare-your-text) |
+| `chunk_overlap_tokens` | `0` | How much text adjacent chunks share | [Prepare your text](/best-practices/how-we-context-engineer/3-prepare-your-text) |
+| `ai_functions_enabled` | `false` | The master switch. AI calls raise an error unless it's `true`. | [Control cost](/best-practices/how-we-context-engineer/7-control-cost) |
+| `allow_full_reembed` | Unset | Wire it to `full_refresh` so a stray `--full-refresh` can't re-bill your corpus | [Control cost](/best-practices/how-we-context-engineer/7-control-cost) |
+| `max_batch_rows` | `10000` | Row ceiling for `guard_batch` | [Control cost](/best-practices/how-we-context-engineer/7-control-cost) |
+| `max_est_tokens` | `5000000` | Estimated-token ceiling for `guard_batch` | [Control cost](/best-practices/how-we-context-engineer/7-control-cost) |
+| `max_agg_group_tokens` | `100000` | Per-group token ceiling for `guard_agg_batch` | [Enrich with AI](/best-practices/how-we-context-engineer/5-enrich-with-ai) |
+| `est_output_tokens_per_row` | None | Output allowance per row in the guard's estimate | [Control cost](/best-practices/how-we-context-engineer/7-control-cost) |
+| `max_output_tokens` | None | Cap on the model's reply | [Control cost](/best-practices/how-we-context-engineer/7-control-cost) |
+| `bq_thinking_budget` | None | BigQuery and Gemini only. `0` turns off default "thinking". | [Control cost](/best-practices/how-we-context-engineer/7-control-cost) |
+| `ai_sample_rows` | None (off) | Row cap for `dev_sample_filter` | [Control cost](/best-practices/how-we-context-engineer/7-control-cost) |
+| `cost_per_1k_tokens` | None | Price behind the estimated cost in the run log | [Control cost](/best-practices/how-we-context-engineer/7-control-cost) |
+| `ai_run_log_relation` | None | Where the run log is written | [Control cost](/best-practices/how-we-context-engineer/7-control-cost) |
+| `embedding_canary_similarity_threshold` | `0.999` | Lowest similarity a canary probe can score against its baseline | [Embed and retrieve](/best-practices/how-we-context-engineer/4-embed-and-retrieve) |
+| `embedding_canary_test_severity` | `warn` | Whether a canary mismatch warns or fails | [Embed and retrieve](/best-practices/how-we-context-engineer/4-embed-and-retrieve) |
+| `embedding_canary_vector_dimension` | `768` | Snowflake only. Match your embedding model's vector size. | [Embed and retrieve](/best-practices/how-we-context-engineer/4-embed-and-retrieve) |
+| `bq_connection` | None | BigQuery only. A Vertex AI connection, optional for interactive runs. | [Control cost](/best-practices/how-we-context-engineer/7-control-cost) |
 
 </SimpleTable>
