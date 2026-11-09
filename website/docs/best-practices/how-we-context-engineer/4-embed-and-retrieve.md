@@ -168,6 +168,8 @@ Browse the package's [`macros` folder](https://github.com/dbt-labs/dbt-context-e
 ### Refresh incrementally
 Since vectors are only comparable within one model, your model needs to know which of two modes it's in on each run:
 
+<Lightbox src="/img/best-practices/context-engineering/refresh-modes.webp" width="70%" title="On each run, the embedding model checks whether the stored version differs from the pinned one. If not, it embeds only new and changed rows. If so, it re-embeds the whole corpus. Either way, the corpus ends up on one model." />
+
 <SimpleTable>
 
 | Mode | Trigger | What happens |
