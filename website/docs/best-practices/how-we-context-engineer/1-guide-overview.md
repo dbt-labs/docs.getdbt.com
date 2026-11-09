@@ -55,14 +55,16 @@ This guide covers _modeling_ context, not serving it. The package isn't an agent
 
 Anything that carries meaning but doesn't fit neatly in rows and columns, like support tickets, transcripts, call, etc. Context engineering is a new way to think about the data you already have, not one use case.
 
-Our example project is Jaffle Logistics, a fictional logistics company whose customer story is scattered across roughly eight disconnected systems. Five of them go through the pipeline in the [`jaffle-logistics`](https://github.com/dbt-labs/jaffle-logistics) project, the reference implementation for the package. The question we keep asking: _"What's driving late deliveries for this account?"_ The answer isn't in any one system. Here are the five sources:
+Our example project is Jaffle Logistics, a fictional logistics company whose customer story is scattered across roughly eight disconnected systems. Five of them go through the pipeline in the [`jaffle-logistics`](https://github.com/dbt-labs/jaffle-logistics) project, the reference implementation for the package. 
+
+The question people keep asking is: _"What's driving late deliveries for this account?"_. But the answer isn't in any one system. Here are the five sources:
 
 <SimpleTable>
 
 | Source | What's hiding in it | What you'd do with it |
 |--------|---------------------|-----------------------|
 | Call transcripts | The reason a customer is unhappy, in their own words | Find what a customer actually raised on a call |
-| Support tickets | Patterns in what's breaking, and for whom | Spot recurring problems for one account |
+| Support tickets | Patterns in what's breaking, and for whom | Spot recurring problems for an account |
 | CRM notes | Account history that never made it into a field | Check the health of an account before a renewal |
 | Contracts | What you actually committed to | Look up what you promised a customer |
 | Incident reports | What went wrong on the ground, and why | Trace late deliveries to a root cause |
