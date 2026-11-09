@@ -7,7 +7,7 @@ tags: [AI, Agents, dbt Wizard]
 availability: local_all
 ---
 
-import WizardByokProviderSetup from '/snippets/_wizard-byok-provider-setup.md';
+import WizardSupportedProviders from '/snippets/_wizard-supported-providers.md';
 import WizardFeedbackCallout from '/snippets/_wizard-feedback-callout.md';
 
 # Configure BYOK in Wizard Desktop <Lifecycle status="beta"/>
@@ -25,16 +25,16 @@ Using the CLI or <Constant name="dbt_platform" /> instead? Refer to [Configure B
 1. Open **Settings** (<kbd>⌘</kbd> + <kbd>,</kbd>) and select **AI providers**.
 2. Under **Managed by you**, find your provider and select **Configure**.
 3. Select the models you want to use. Select **Use provider defaults** to go back to the recommended selection.
-4. Enter your credentials. Refer to [Provider setup](#provider-setup) for what each provider needs.
+4. Fill in the fields shown for your provider. The app explains each one as you go.
 5. Select **Save**.
 
 Each provider shows whether it's set up and how many models are available, such as `Not set up · 9 models available`. Select **Refresh** if a provider or model you expect isn't listed.
 
 Pick the model and reasoning effort for each chat from the chat composer.
 
-## Provider setup
+## Supported providers
 
-<WizardByokProviderSetup />
+<WizardSupportedProviders defaultSurface="local" />
 
 ## Update or turn off a provider
 
