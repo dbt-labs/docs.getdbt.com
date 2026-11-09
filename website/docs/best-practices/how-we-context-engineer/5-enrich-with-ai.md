@@ -100,12 +100,13 @@ Who does the sorting? An AI model, through your warehouse's built-in AI function
 
     </File>
 
-3. **Call the package's `classify()` macro in a model.** Name your prompt once in `meta.ai_prompt`, and the model reads it from there. The cost guard reads the same name (refer to [Control cost](/best-practices/how-we-context-engineer/7-control-cost)):
+3. **Call the package's `classify()` macro in a model.** Name your prompt once in `meta.ai_prompt`, and the model reads it from there. The cost guard reads the same name (refer to [Control cost](/best-practices/how-we-context-engineer/7-control-cost)). Set `materialized='table'` too. The package refuses to run an AI call in a view, which would re-bill on every read ([why](/best-practices/how-we-context-engineer/7-control-cost#dont-use-views-for-ai-models)):
 
     <File name="models/context/ai/call_transcripts_classify.sql">
 
     ```sql
     {{ config(
+        materialized='table',
         meta={'ai_prompt': {'name': 'jaffle_content_type', 'version': 'v1'}}
     ) }}
 
@@ -187,6 +188,7 @@ Then call `extract()` in a model, the same way you called `classify()`:
 
 ```sql
 {{ config(
+    materialized='table',
     meta={'ai_prompt': {'name': 'jaffle_incident_facts', 'version': 'v1'}}
 ) }}
 
@@ -214,6 +216,7 @@ On Snowflake, `generate()` runs `AI_COMPLETE`. It takes a prompt macro like the 
 
 ```sql
 {{ config(
+    materialized='table',
     meta={'ai_prompt': {'name': 'jaffle_call_summary', 'version': 'v1'}}
 ) }}
 
@@ -239,6 +242,8 @@ On Snowflake, `ai_agg()` runs `AI_AGG`. The prompt is a plain instruction, not a
 <File name="models/context/ai/call_rollups.sql">
 
 ```sql
+{{ config(materialized='table') }}
+
 select
     partition_key as transcript_id,
     {{ dbt_context_engineering.ai_agg(

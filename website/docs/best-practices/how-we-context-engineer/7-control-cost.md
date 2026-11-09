@@ -56,6 +56,7 @@ Our recommendations:
 
 ```sql
 {{ config(
+    materialized='table',
     meta={'ai_prompt': {'name': 'jaffle_content_type', 'version': 'v1'}},
     pre_hook="{{ dbt_context_engineering.guard_batch(ref('call_transcripts_hashed'), 'chunk_text') }}"
 ) }}
