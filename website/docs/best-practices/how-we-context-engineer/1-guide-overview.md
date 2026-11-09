@@ -46,6 +46,19 @@ Context is the information an AI agent reads to do its job. Good context is:
 - Tested so you can prove it’s correct
 - Traceable so every claim points back to the source it came from
 
+### Good context vs. bad context
+
+Ask an agent, _"Why were deliveries late for this account?"_
+
+<SimpleTable>
+
+| | Bad context | Good context |
+|---|---|---|
+| What the agent reads | One pasted blob: "…pattern of late deliveries. Reviewed with dispatch. Truck 14 slid on ice…" | Small pieces, each with an id, account, and source: `IR-9001::1`, "Truck slid on ice during the storm and missed the delivery window." |
+| The answer | "Probably weather." No source, so you can't check it. | "An ice storm (`IR-9001::1`)." You can check it. |
+
+</SimpleTable>
+
 ## Context and the semantic layer
 
 You might've previously asked yourself, 'when should I use the semantic layer and when should I use context?'.  Use the semantic layer for your metrics and context for your unstructured and semi-structured data. They complement each other and work side by side:
