@@ -27,12 +27,6 @@ import CopilotWizardDifferences from '/snippets/_copilot-wizard-diff.md';
     icon="wizard"/>    
 
 <Card
-    title="Use dbt Wizard locally"
-    body="Install dbt Wizard locally and start a terminal session."
-    link="/docs/platform/wizard-overview#get-started"
-    icon="wizard"/>
-
-<Card
     title="dbt Wizard in dbt platform"
     body="AI is on by default in your dbt platform account. Use dbt Wizard for governed dbt data development and dbt Copilot for inline AI assistance."
     link="/docs/platform/wizard-platform"
@@ -42,6 +36,12 @@ import CopilotWizardDifferences from '/snippets/_copilot-wizard-diff.md';
     title="Wizard Desktop"
     body="A native app for data authors and analysts. View rich data visualizations, data diffs, lineage, and more to get to your results faster than ever before."
     link="/docs/dbt-ai/wizard-desktop"
+    icon="wizard"/>
+
+<Card
+    title="dbt Wizard CLI"
+    body="Install the dbt Wizard CLI and start a terminal session."
+    link="/docs/platform/wizard-overview#get-started"
     icon="wizard"/>
 
 </div>
