@@ -10,7 +10,7 @@ For a decade, we've modelled data for one reader: the dashboard. And every model
 
 That worked for a bit but a metric is thousands of rows squashed into something you can read at a glance, and you can't un-squash it. Every number on a dashboard sets off the same three questions (give or take): which ones moved and why? and what do we do about it? Since dashboards can't answer any of them, they usually become a ticket in the data team's queue.
 
-That always existed except it was sitting in your warehouse, or could easily land there: call transcripts, support tickets, CRM notes, contracts, emails, etc. It's not something you really modelled, mostly because there's no bar (or `gasp: pie chart`) chart for a call transcript.
+The answer always existed except it was sitting in your warehouse, or could easily land there: call transcripts, support tickets, CRM notes, contracts, emails, etc. But historically, it's not something you really modelled, mostly because there's no bar chart (or `gasp: pie chart`) for a call transcript.
 
 AI agents are the first readers that can use that detail. But they can only be as good as what they get. Context engineering is the practice of modeling data for that new reader, with the same discipline you already apply to metrics: staging, tests, docs, and one governed DAG.
 
